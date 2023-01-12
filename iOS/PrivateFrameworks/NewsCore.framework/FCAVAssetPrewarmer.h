@@ -24,18 +24,8 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSTimer *reprocessTimer; // @synthesize reprocessTimer=_reprocessTimer;
-@property(nonatomic) unsigned long long highWaterMark; // @synthesize highWaterMark=_highWaterMark;
-@property(retain, nonatomic) NSMutableDictionary *interestTokensByAsset; // @synthesize interestTokensByAsset=_interestTokensByAsset;
-@property(retain, nonatomic) NSMutableDictionary *interestModificationDates; // @synthesize interestModificationDates=_interestModificationDates;
-@property(retain, nonatomic) NSCountedSet *interestedAssets; // @synthesize interestedAssets=_interestedAssets;
-@property(retain, nonatomic) FCKeyedOperationQueue *prefetchQueue; // @synthesize prefetchQueue=_prefetchQueue;
-@property(retain, nonatomic) id <FCAVAssetResourceLoaderType> assetResourceLoader; // @synthesize assetResourceLoader=_assetResourceLoader;
 - (void)_revisitSuspendedState;
-- (void)_flushIfNeeded;
 - (void)_reprocessInterestedAssets;
-- (void)_didChangeInterestedAssets;
-- (void)_prewarmAsset:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)keyedOperationQueue:(id)arg1 performAsyncOperationForKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeInterestInAsset:(id)arg1;
 - (void)addInterestInAsset:(id)arg1;

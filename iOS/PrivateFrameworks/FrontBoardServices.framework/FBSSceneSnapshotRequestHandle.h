@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class FBSSceneSnapshotContext, FBSSceneSnapshotRequestAction;
+@class BSActionResponder, FBSSceneSnapshotContext;
 
 @interface FBSSceneSnapshotRequestHandle : NSObject
 {
     unsigned long long _type;
     FBSSceneSnapshotContext *_context;
-    FBSSceneSnapshotRequestAction *_action;
+    BSActionResponder *_responder;
     _Bool _canceled;
 }
 

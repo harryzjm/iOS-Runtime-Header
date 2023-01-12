@@ -13,24 +13,25 @@
 @interface HAPAccessoryReachabilityProfile : HMFObject <HAPAccessoryReachabilityProfile>
 {
     double _sleepInterval;
-    double _activityInterval;
     HAPCharacteristic *_sleepIntervalCharacteristic;
     HAPCharacteristic *_pollCharacteristic;
 }
 
++ (id)shortDescription;
 + (double)timeIntervalFromMillisecondNumberValue:(id)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) HAPCharacteristic *pollCharacteristic; // @synthesize pollCharacteristic=_pollCharacteristic;
 @property(retain, nonatomic) HAPCharacteristic *sleepIntervalCharacteristic; // @synthesize sleepIntervalCharacteristic=_sleepIntervalCharacteristic;
-@property(nonatomic) double activityInterval; // @synthesize activityInterval=_activityInterval;
 @property(nonatomic) double sleepInterval; // @synthesize sleepInterval=_sleepInterval;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)attributeDescriptions;
+@property(readonly, copy) NSString *description;
 - (id)initWithDiscoveredServices:(id)arg1;
+- (id)initWithProfile:(id)arg1;
 - (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

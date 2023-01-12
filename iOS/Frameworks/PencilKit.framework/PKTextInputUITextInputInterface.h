@@ -21,6 +21,8 @@
 + (struct CGRect)firstRectForRange:(struct _NSRange)arg1 inCoordinateSpace:(id)arg2 inTextInput:(id)arg3;
 + (struct _NSRange)rangeOfCharacterAtIndex:(unsigned long long)arg1 inTextInput:(id)arg2;
 + (id)protectedCharacterIndexesInRange:(struct _NSRange)arg1 inTextInput:(id)arg2;
++ (_Bool)isProtectedTextAttachment:(id)arg1;
++ (id)editableTextAttachmentFileTypes;
 + (id)stringInRange:(struct _NSRange)arg1 inTextInput:(id)arg2;
 + (long long)contentLengthForTextInput:(id)arg1;
 + (_Bool)clearActivePreviewInTextInput:(id)arg1;

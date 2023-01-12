@@ -18,7 +18,6 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableDictionary *anchorRangesByEntityIdentifier; // @synthesize anchorRangesByEntityIdentifier=_anchorRangesByEntityIdentifier;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

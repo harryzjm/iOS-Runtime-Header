@@ -9,6 +9,7 @@
 @class ICMediaRedownloadRequest, ICStoreRequestContext, MPCModelGenericAVItemAssetLoadProperties, NSObject;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface MPCModelGenericAVItemMediaRedownloadOperation : MPAsyncOperation
 {
     NSObject<OS_dispatch_queue> *_accessQueue;

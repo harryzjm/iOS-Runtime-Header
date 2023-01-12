@@ -27,6 +27,7 @@
 }
 
 + (id)supplementaryMetrics;
+- (void).cxx_destruct;
 @property(nonatomic) long long animateWithSection; // @synthesize animateWithSection=_animateWithSection;
 @property(nonatomic) struct _NSRange globalSectionRange; // @synthesize globalSectionRange=_globalSectionRange;
 @property(nonatomic) _Bool shouldPinGlobal; // @synthesize shouldPinGlobal=_shouldPinGlobal;
@@ -42,7 +43,6 @@
 - (struct CGSize)sizeForCollectionView:(id)arg1;
 - (id)description;
 - (id)localDescription;
-- (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 

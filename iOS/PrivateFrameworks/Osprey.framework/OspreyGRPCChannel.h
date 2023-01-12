@@ -41,6 +41,9 @@ __attribute__((visibility("hidden")))
 - (id)clientStreamingContextForRequest:(id)arg1 streamingResponseHandler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_startTask:(id)arg1;
 - (void)setAbsintheTimestampForKey:(id)arg1;
+- (void)cancel;
+- (void)close;
+- (void)dealloc;
 - (id)initWithURL:(id)arg1 configuration:(id)arg2 queue:(id)arg3;
 
 // Remaining properties

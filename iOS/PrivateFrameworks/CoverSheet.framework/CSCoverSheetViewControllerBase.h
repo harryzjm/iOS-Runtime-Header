@@ -9,7 +9,7 @@
 #import <CoverSheet/BSDescriptionProviding-Protocol.h>
 #import <CoverSheet/CSCoverSheetViewPresenting-Protocol.h>
 
-@class CSAppearance, CSBehavior, CSPresentation, FBDisplayLayoutElement, NSArray, NSHashTable, NSSet, NSString, UIColor, _UILegibilitySettings;
+@class CSAppearance, CSBehavior, CSPresentation, FBDisplayLayoutElement, NSArray, NSHashTable, NSSet, NSString, _UILegibilitySettings;
 @protocol CSCoverSheetViewPresenting, UICoordinateSpace;
 
 @interface CSCoverSheetViewControllerBase : UIViewController <CSCoverSheetViewPresenting, BSDescriptionProviding>
@@ -50,13 +50,13 @@
 - (void)conformsToCSBehaviorProviding;
 @property(readonly, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property(readonly, copy, nonatomic) NSSet *components;
-@property(readonly, nonatomic) UIColor *backgroundColor;
-@property(readonly, nonatomic) long long backgroundStyle;
 @property(readonly, copy, nonatomic) NSString *appearanceIdentifier;
 - (void)conformsToCSAppearanceProviding;
 - (_Bool)wouldHandleButtonEvent:(id)arg1;
 - (_Bool)handleEvent:(id)arg1;
 - (void)conformsToCSEventHandling;
+@property(readonly, nonatomic) unsigned int presentationFrameRateRangeReason;
+@property(readonly, nonatomic) struct CAFrameRateRange presentationPreferredFrameRateRange;
 @property(readonly, nonatomic) long long presentationAltitude;
 @property(readonly, nonatomic) long long presentationTransition;
 @property(readonly, nonatomic) long long presentationPriority;

@@ -10,14 +10,15 @@
 
 @interface TSCH3DChartSceneAreaLayoutItemCache : NSObject
 {
-    struct TSCH3DChartSceneAreaLayoutItemCacheValues mValues;
+    struct TSCH3DChartSceneAreaLayoutItemCacheValues _values;
     TSCH3DVector *_containingViewportVector;
 }
 
-+ (id)cacheWithCacheValues:(const struct TSCH3DChartSceneAreaLayoutItemCacheValues *)arg1;
++ (id)cacheWithCacheValues:(const void *)arg1;
 - (id).cxx_construct;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) TSCH3DVector *containingViewportVector; // @synthesize containingViewportVector=_containingViewportVector;
-@property(readonly, nonatomic) CDStruct_b1c75024 layoutSettings;
+@property(readonly, nonatomic) CDStruct_c48db077 layoutSettings;
 @property(readonly, nonatomic) tvec2_3b141483 modelSize;
 @property(readonly, nonatomic) _Bool forcedValid;
 @property(readonly, nonatomic) struct CGSize requestChartBodyLayoutSize;
@@ -28,9 +29,8 @@
 @property(readonly, nonatomic) tvec2_3b141483 containingViewport;
 @property(readonly, nonatomic) tvec4_ac57c72d infoChartScale;
 - (void)printDebug;
-- (const struct TSCH3DChartSceneAreaLayoutItemCacheValues *)values;
-- (id)initWithCacheValues:(const struct TSCH3DChartSceneAreaLayoutItemCacheValues *)arg1;
-- (id)init;
+- (const void *)values;
+- (id)initWithCacheValues:(const void *)arg1;
 
 @end
 

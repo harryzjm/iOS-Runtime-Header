@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString, PKPaymentPass;
+@class NSArray, NSData, NSString, PKSecureElementSignatureInfo;
 
 @interface PKAuxiliaryCapabilityFetchBarcodeRequest
 {
@@ -13,17 +13,20 @@
     NSString *_lastUsedBarcodeIdentifier;
     NSArray *_encryptionCertificateChain;
     long long _fetchReason;
-    PKPaymentPass *_pass;
+    NSData *_signatureData;
+    PKSecureElementSignatureInfo *_signatureInfo;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
+@property(retain, nonatomic) PKSecureElementSignatureInfo *signatureInfo; // @synthesize signatureInfo=_signatureInfo;
+@property(copy, nonatomic) NSData *signatureData; // @synthesize signatureData=_signatureData;
 @property(nonatomic) long long fetchReason; // @synthesize fetchReason=_fetchReason;
 @property(copy, nonatomic) NSArray *encryptionCertificateChain; // @synthesize encryptionCertificateChain=_encryptionCertificateChain;
 @property(copy, nonatomic) NSString *lastUsedBarcodeIdentifier; // @synthesize lastUsedBarcodeIdentifier=_lastUsedBarcodeIdentifier;
 @property(nonatomic) long long barcodeCount; // @synthesize barcodeCount=_barcodeCount;
 @property(copy, nonatomic) NSString *dpanIdentifier; // @synthesize dpanIdentifier=_dpanIdentifier;
-- (void)_urlRequestWithServiceURL:(id)arg1 deviceIdentifier:(id)arg2 appleAccountInformation:(id)arg3 webService:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (id)_dataToSign;
+- (id)_urlRequestWithServiceURL:(id)arg1 deviceIdentifier:(id)arg2 appleAccountInformation:(id)arg3;
 
 @end
 

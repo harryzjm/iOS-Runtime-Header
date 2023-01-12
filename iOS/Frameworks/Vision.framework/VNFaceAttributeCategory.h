@@ -8,11 +8,12 @@
 
 #import <Vision/NSCopying-Protocol.h>
 #import <Vision/NSSecureCoding-Protocol.h>
+#import <Vision/VNObjectCloning-Protocol.h>
 #import <Vision/VNRequestRevisionProviding-Protocol.h>
 
 @class NSArray, VNClassificationObservation;
 
-@interface VNFaceAttributeCategory : NSObject <NSSecureCoding, NSCopying, VNRequestRevisionProviding>
+@interface VNFaceAttributeCategory : NSObject <VNObjectCloning, NSSecureCoding, NSCopying, VNRequestRevisionProviding>
 {
     VNClassificationObservation *_mostLikelyLabel;
     NSArray *_allLabelsWithConfidences;

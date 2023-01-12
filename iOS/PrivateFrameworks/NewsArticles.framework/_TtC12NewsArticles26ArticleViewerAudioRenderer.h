@@ -13,7 +13,5 @@
     MISSING_TYPE *styler;
 }
 
-- (void)renderNavigationBarPaletteContents:(id)arg1 messageContainer:(id)arg2 audioButton:(id)arg3 headline:(id)arg4;
-
 @end
 

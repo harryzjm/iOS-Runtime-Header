@@ -22,6 +22,7 @@
 - (void)logScrollEventWithContentOffset:(struct CGPoint)arg1;
 - (void)logSelectionAction:(long long)arg1;
 - (void)recordSmartSelectionEventWithType:(long long)arg1 contentType:(long long)arg2 gestureInvoked:(long long)arg3;
+- (void)recordLassoSelectionEventWithContentType:(long long)arg1;
 - (void)recordDidMakeSelectionWithType:(long long)arg1;
 
 @end

@@ -4,28 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, SBWorkspaceEntity;
+@class NSString, SBApplicationSceneEntity, SBPIPController, SBPIPControllerCoordinator;
 
-@interface SBAutoPiPWorkspaceTransaction
+@interface SBAutoPIPWorkspaceTransaction
 {
-    int _pidToPiP;
-    SBWorkspaceEntity *_entityToPiP;
-    long long _transitionStyle;
+    int _pidToPIP;
     long long _inferredTransitionStyle;
+    SBPIPControllerCoordinator *_pipCoordinator;
+    SBPIPController *_pipController;
     NSString *_reason;
+    _Bool _startPictureInPictureDidComplete;
+    long long _transitionStyle;
+    SBApplicationSceneEntity *_entityToPIP;
 }
 
-+ (long long)transitionStyleForProcessIdentifier:(int)arg1 entityToPiP:(id)arg2 withTransitionContext:(id)arg3 request:(id)arg4;
-+ (_Bool)shouldAutoPiPEnteringBackgroundForRequest:(id)arg1 entityFoundBlock:(CDUnknownBlockType)arg2;
-+ (_Bool)shouldAutoPiPEnteringBackgroundForRequest:(id)arg1;
++ (_Bool)shouldAutoPIPEnteringBackgroundForRequest:(id)arg1 foundEntity:(id *)arg2 tetheringMode:(long long *)arg3 transitionStyle:(long long *)arg4 reason:(long long)arg5;
++ (_Bool)shouldAutoPIPEnteringBackgroundForRequest:(id)arg1 foundEntity:(id *)arg2 transitionStyle:(long long *)arg3;
++ (_Bool)shouldAutoPIPEnteringBackgroundForRequest:(id)arg1 transitionStyle:(long long *)arg2;
++ (_Bool)shouldAutoPIPEnteringBackgroundForRequest:(id)arg1 foundEntity:(id *)arg2;
++ (_Bool)shouldAutoPIPEnteringBackgroundForRequest:(id)arg1 tetheringMode:(long long *)arg2 reason:(long long)arg3;
++ (_Bool)shouldAutoPIPEnteringBackgroundForRequest:(id)arg1 reason:(long long)arg2;
++ (_Bool)shouldAutoPIPEnteringBackgroundForRequest:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) SBWorkspaceEntity *entityToPiP; // @synthesize entityToPiP=_entityToPiP;
+@property(readonly, copy, nonatomic) SBApplicationSceneEntity *entityToPIP; // @synthesize entityToPIP=_entityToPIP;
 @property(nonatomic) long long transitionStyle; // @synthesize transitionStyle=_transitionStyle;
 - (id)_customizedDescriptionProperties;
 - (void)_didComplete;
 - (_Bool)_canBeInterrupted;
 - (void)_begin;
-- (id)initWithTransitionRequest:(id)arg1 includeActiveAppEntity:(_Bool)arg2;
+- (id)initWithTransitionRequest:(id)arg1 includeActiveAppEntity:(_Bool)arg2 reason:(long long)arg3;
 - (id)initWithTransitionRequest:(id)arg1;
 
 @end

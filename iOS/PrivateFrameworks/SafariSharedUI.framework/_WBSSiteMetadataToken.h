@@ -11,6 +11,7 @@
 @interface _WBSSiteMetadataToken : NSObject
 {
     _Bool _cancelled;
+    struct os_unfair_lock_s _cancelledLock;
     _Bool _isOneTimeRequest;
     _Bool _didReceiveResponse;
     WBSSiteMetadataRequest *_request;
@@ -26,7 +27,8 @@
 @property(nonatomic) long long priority; // @synthesize priority=_priority;
 @property(readonly, nonatomic) WBSSiteMetadataRequest *request; // @synthesize request=_request;
 @property(readonly, nonatomic) _Bool isOneTimeRequest; // @synthesize isOneTimeRequest=_isOneTimeRequest;
-@property(getter=isCancelled) _Bool cancelled; // @synthesize cancelled=_cancelled;
+- (id)description;
+@property(getter=isCancelled) _Bool cancelled;
 - (void)dispatchResponse:(id)arg1;
 - (void)dealloc;
 - (id)initWithOneTimeRequest:(id)arg1 priority:(long long)arg2 responseHandler:(CDUnknownBlockType)arg3;

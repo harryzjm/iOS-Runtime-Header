@@ -6,10 +6,11 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKMessageEntryView, CKThrowAnimationManager, NSArray;
+@class CKMessageEntryView, CKThrowAnimationManager, NSArray, UIView;
 @protocol CKSendAnimationContext;
 
 @protocol CKThrowAnimationManagerDelegate <NSObject>
+- (UIView *)throwAnimationContainerSuperview:(CKThrowAnimationManager *)arg1;
 - (double)throwAnimationFinalFrameOffset:(CKThrowAnimationManager *)arg1;
 - (struct CGRect)throwAnimationWindowFrame:(CKThrowAnimationManager *)arg1;
 - (struct CGRect)throwAnimationKeyboardFrame:(CKThrowAnimationManager *)arg1;

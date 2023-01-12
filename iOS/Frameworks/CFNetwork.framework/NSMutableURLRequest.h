@@ -10,11 +10,16 @@
 {
 }
 
+- (void)_setPrivacyProxyFailClosed:(_Bool)arg1;
+- (void)set_trackerContext:(id)arg1;
+- (void)_setNonAppInitiated:(_Bool)arg1;
+- (void)_setKnownTracker:(_Bool)arg1;
 - (void)setBoundInterfaceIdentifier:(id)arg1;
 @property _Bool allowsCellularAccess; // @dynamic allowsCellularAccess;
 @property unsigned long long networkServiceType; // @dynamic networkServiceType;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-@property(getter=isKnownHTTP3Capable) _Bool knownHTTP3Capable; // @dynamic knownHTTP3Capable;
+@property unsigned long long attribution; // @dynamic attribution;
+@property _Bool assumesHTTP3Capable; // @dynamic assumesHTTP3Capable;
 @property _Bool allowsExpensiveNetworkAccess; // @dynamic allowsExpensiveNetworkAccess;
 @property _Bool allowsConstrainedNetworkAccess; // @dynamic allowsConstrainedNetworkAccess;
 @property(copy) NSURL *mainDocumentURL; // @dynamic mainDocumentURL;

@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIKBKeyView;
+@class UIView;
 
 __attribute__((visibility("hidden")))
 @interface _UIUCBKBSelectionBackground
 {
-    UIKBKeyView *_backgroundProvidingView;
+    UIView *_backgroundProvidingView;
     _Bool _showButtonShape;
 }
 
@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (void)_updateBackgroundProvidingView;
-- (id)_makeBackgroundView;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

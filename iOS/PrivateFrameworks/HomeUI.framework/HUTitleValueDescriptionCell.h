@@ -9,6 +9,7 @@
 @interface HUTitleValueDescriptionCell
 {
     _Bool _hideValue;
+    _Bool _valueColorFollowsTintColor;
     NSString *_valueText;
     UIFont *_valueFont;
     UILabel *_valueLabel;
@@ -17,10 +18,12 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSLayoutConstraint *valueLabelWidthConstraint; // @synthesize valueLabelWidthConstraint=_valueLabelWidthConstraint;
+@property(nonatomic) _Bool valueColorFollowsTintColor; // @synthesize valueColorFollowsTintColor=_valueColorFollowsTintColor;
 @property(retain, nonatomic) UILabel *valueLabel; // @synthesize valueLabel=_valueLabel;
 @property(nonatomic) _Bool hideValue; // @synthesize hideValue=_hideValue;
 @property(retain, nonatomic) UIFont *valueFont; // @synthesize valueFont=_valueFont;
 @property(retain, nonatomic) NSString *valueText; // @synthesize valueText=_valueText;
+- (void)_updateValue;
 - (void)_updateValueHidden;
 - (void)_updateValueWidthConstraintConstant;
 - (void)updateUIWithAnimation:(_Bool)arg1;

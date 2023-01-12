@@ -6,11 +6,12 @@
 
 #import <PhotoLibraryServices/PLResource-Protocol.h>
 
-@protocol PLCodecIdentity, PLResourceDataStore, PLResourceDataStoreKey, PLUniformTypeIdentifierIdentity;
+@class NSString, PLUniformTypeIdentifier;
+@protocol PLResourceDataStore, PLResourceDataStoreKey;
 
 @protocol PLWriteableResource <PLResource>
-@property(retain, nonatomic) id <PLUniformTypeIdentifierIdentity> uniformTypeIdentifierID;
-@property(retain, nonatomic) id <PLCodecIdentity> codecID;
+@property(retain, nonatomic) PLUniformTypeIdentifier *uniformTypeIdentifier;
+@property(retain, nonatomic) NSString *codecFourCharCodeName;
 @property(nonatomic) int qualitySortValue;
 @property(nonatomic) long long unorientedHeight;
 @property(nonatomic) long long unorientedWidth;

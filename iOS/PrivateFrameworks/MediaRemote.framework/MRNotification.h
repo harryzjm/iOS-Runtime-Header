@@ -7,22 +7,20 @@
 #import <objc/NSObject.h>
 
 @class NSDictionary, NSString;
-@protocol OS_dispatch_queue, OS_xpc_object;
+@protocol OS_xpc_object;
 
 @interface MRNotification : NSObject
 {
     NSString *_notification;
     NSDictionary *_userInfo;
-    NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_xpc_object> *_xpcMessage;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_xpc_object> *xpcMessage; // @synthesize xpcMessage=_xpcMessage;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 @property(readonly, nonatomic) NSString *notification; // @synthesize notification=_notification;
-- (id)initWithNotification:(id)arg1 userInfo:(id)arg2 queue:(id)arg3;
+- (id)initWithNotification:(id)arg1 userInfo:(id)arg2;
 
 @end
 

@@ -9,7 +9,6 @@
 }
 
 + (_Bool)shouldLogAtOperationStart;
-- (void)_disableSyncLocally;
 - (void)main;
 
 @end

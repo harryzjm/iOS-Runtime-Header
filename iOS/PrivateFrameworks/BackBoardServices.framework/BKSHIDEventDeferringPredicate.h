@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <BackBoardServices/BSDescriptionStreamable-Protocol.h>
 #import <BackBoardServices/NSCopying-Protocol.h>
 #import <BackBoardServices/NSMutableCopying-Protocol.h>
 #import <BackBoardServices/NSSecureCoding-Protocol.h>
 
-@class BKSHIDEventDeferringEnvironment, BKSHIDEventDeferringToken, BKSHIDEventDisplay;
+@class BKSHIDEventDeferringEnvironment, BKSHIDEventDeferringToken, BKSHIDEventDisplay, NSString;
 
-@interface BKSHIDEventDeferringPredicate : NSObject <NSSecureCoding, NSCopying, NSMutableCopying>
+@interface BKSHIDEventDeferringPredicate : NSObject <NSSecureCoding, BSDescriptionStreamable, NSCopying, NSMutableCopying>
 {
     BKSHIDEventDeferringEnvironment *_environment;
     BKSHIDEventDisplay *_display;
@@ -23,16 +24,21 @@
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) BKSHIDEventDeferringToken *token; // @synthesize token=_token;
 @property(readonly, copy, nonatomic) BKSHIDEventDisplay *display; // @synthesize display=_display;
-@property(readonly, nonatomic) BKSHIDEventDeferringEnvironment *environment; // @synthesize environment=_environment;
-- (id)description;
+@property(readonly, copy, nonatomic) BKSHIDEventDeferringEnvironment *environment; // @synthesize environment=_environment;
+- (void)appendDescriptionToFormatter:(id)arg1;
+@property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)_initWithEnvironment:(id)arg1 display:(id)arg2 token:(id)arg3;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

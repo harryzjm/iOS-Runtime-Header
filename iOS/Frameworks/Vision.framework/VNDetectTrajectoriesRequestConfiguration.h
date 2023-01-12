@@ -10,8 +10,10 @@ __attribute__((visibility("hidden")))
     float _objectMinimumNormalizedRadius;
     float _objectMaximumNormalizedRadius;
     long long _trajectoryLength;
+    CDStruct_1b6d18a9 _targetFrameTime;
 }
 
+@property(nonatomic) CDStruct_1b6d18a9 targetFrameTime; // @synthesize targetFrameTime=_targetFrameTime;
 @property(nonatomic) float objectMaximumNormalizedRadius; // @synthesize objectMaximumNormalizedRadius=_objectMaximumNormalizedRadius;
 @property(nonatomic) float objectMinimumNormalizedRadius; // @synthesize objectMinimumNormalizedRadius=_objectMinimumNormalizedRadius;
 @property(nonatomic) long long trajectoryLength; // @synthesize trajectoryLength=_trajectoryLength;

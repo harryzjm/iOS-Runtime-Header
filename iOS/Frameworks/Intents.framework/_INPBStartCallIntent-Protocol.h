@@ -6,16 +6,21 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSArray, NSString, _INPBCallRecordFilter, _INPBCallRecordValue, _INPBContact, _INPBIntentMetadata;
+@class NSArray, NSString, _INPBCallGroup, _INPBCallRecordFilter, _INPBCallRecordValue, _INPBContact, _INPBIntentMetadata;
 
 @protocol _INPBStartCallIntent <NSObject>
 + (Class)contactsType;
++ (Class)callGroupsType;
 @property(nonatomic) _Bool hasTtyType;
 @property(nonatomic) int ttyType;
 @property(nonatomic) _Bool hasRecordTypeForRedialing;
 @property(nonatomic) int recordTypeForRedialing;
 @property(nonatomic) _Bool hasPreferredCallProvider;
 @property(nonatomic) int preferredCallProvider;
+@property(readonly, nonatomic) _Bool hasNotificationThreadIdentifier;
+@property(copy, nonatomic) NSString *notificationThreadIdentifier;
+@property(nonatomic) _Bool hasIsGroupCall;
+@property(nonatomic) _Bool isGroupCall;
 @property(readonly, nonatomic) _Bool hasIntentMetadata;
 @property(retain, nonatomic) _INPBIntentMetadata *intentMetadata;
 @property(nonatomic) _Bool hasDestinationType;
@@ -26,6 +31,8 @@
 @property(retain, nonatomic) _INPBCallRecordValue *callRecordToCallBack;
 @property(readonly, nonatomic) _Bool hasCallRecordFilter;
 @property(retain, nonatomic) _INPBCallRecordFilter *callRecordFilter;
+@property(readonly, nonatomic) unsigned long long callGroupsCount;
+@property(copy, nonatomic) NSArray *callGroups;
 @property(nonatomic) _Bool hasCallCapability;
 @property(nonatomic) int callCapability;
 @property(nonatomic) _Bool hasAudioRoute;
@@ -41,6 +48,9 @@
 - (_INPBContact *)contactsAtIndex:(unsigned long long)arg1;
 - (void)addContacts:(_INPBContact *)arg1;
 - (void)clearContacts;
+- (_INPBCallGroup *)callGroupsAtIndex:(unsigned long long)arg1;
+- (void)addCallGroups:(_INPBCallGroup *)arg1;
+- (void)clearCallGroups;
 - (int)StringAsCallCapability:(NSString *)arg1;
 - (NSString *)callCapabilityAsString:(int)arg1;
 - (int)StringAsAudioRoute:(NSString *)arg1;

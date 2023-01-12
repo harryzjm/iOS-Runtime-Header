@@ -21,11 +21,7 @@
 - (id)consolidateAssets:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (_Bool)_consolidateResource:(id)arg1 assetUUID:(id)arg2 error:(id *)arg3;
 - (void)translatePersistentURL:(id)arg1 withAdjustments:(_Bool)arg2 handler:(CDUnknownBlockType)arg3;
-- (id)_utiFromPathConstrainedToImageOrMovie:(id)arg1;
-- (id)_generateFullsizeRenderForAssetIfNecessary:(id)arg1 format:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_generateFullsizeRenderForAsset:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (_Bool)_requiresFullsizeRenderGenerationForAsset:(id)arg1 format:(id)arg2;
-- (void)generateOnDemandResourcesForAsset:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (id)_typeFromPathConstrainedToImageOrMovie:(id)arg1;
 - (void)downloadCloudSharedAsset:(id)arg1 wantedPlaceholderkind:(short)arg2 shouldPrioritize:(_Bool)arg3 shouldExtendTimer:(_Bool)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)estimatedFileLengthOfVideo:(id)arg1 fallbackFilePath:(id)arg2 exportPreset:(id)arg3 exportProperties:(id)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)asynchronousAdjustmentDataForAsset:(id)arg1 networkAccessAllowed:(_Bool)arg2 withDataBlob:(_Bool)arg3 reply:(CDUnknownBlockType)arg4;

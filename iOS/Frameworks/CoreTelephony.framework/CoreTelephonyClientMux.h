@@ -8,13 +8,15 @@
 
 #import <CoreTelephony/MuxNotificationSinkDelegate-Protocol.h>
 
-@class MuxNotificationSink, NSError, NSSet, NSXPCConnection, NSXPCListenerEndpoint;
+@class FrameworkCache, MuxNotificationSink, NSError, NSSet, NSXPCConnection, NSXPCListenerEndpoint;
 
 __attribute__((visibility("hidden")))
 @interface CoreTelephonyClientMux : NSObject <MuxNotificationSinkDelegate>
 {
-    struct map<__unsafe_unretained id, (anonymous namespace)::DelegateContext, std::__1::less<__unsafe_unretained id>, std::__1::allocator<std::__1::pair<const __unsafe_unretained id, (anonymous namespace)::DelegateContext>>> _delegates;
+    struct map<__unsafe_unretained id, (anonymous namespace)::DelegateContext, std::less<__unsafe_unretained id>, std::allocator<std::pair<const __unsafe_unretained id, (anonymous namespace)::DelegateContext>>> _delegates;
     NSSet *_currentSelectorSet;
+    struct map<__CTAssertionType *, std::pair<dispatch::queue, void (^)(NSError *)>, std::less<__CTAssertionType *>, std::allocator<std::pair<__CTAssertionType *const, std::pair<dispatch::queue, void (^)(NSError *)>>>> _clientCallback;
+    FrameworkCache *_cache;
     NSXPCConnection *_connection;
     struct queue _xpcQueue;
     NSXPCListenerEndpoint *_endpoint;
@@ -29,6 +31,11 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSXPCListenerEndpoint *endpoint; // @synthesize endpoint=_endpoint;
 @property(nonatomic) struct queue xpcQueue; // @synthesize xpcQueue=_xpcQueue;
 @property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
+- (void)registerBlockForInvalidationNotification:(struct __CTAssertionType *)arg1 callbackQueue:(struct queue)arg2 callback:(CDUnknownBlockType)arg3;
+- (struct __CTAssertionType *)createCTAssertionForConnectionType:(int)arg1 allocator:(struct __CFAllocator *)arg2 proxy:(id)arg3;
+- (unsigned long long)_getAssertionTypeId;
+- (void)removeAssertionForInvalidationNotification:(struct __CTAssertionType *)arg1;
+- (void)_sendConnectionInvalidatedNotification:(id)arg1;
 - (id)_connection;
 - (void)_ensureConnectionSetup_sync:(_Bool)arg1;
 - (void)_ensureConnectionSetup_sync;
@@ -41,6 +48,8 @@ __attribute__((visibility("hidden")))
 - (void)_computeNotificationSetForced_sync:(CDUnknownBlockType)arg1;
 - (void)_computeNotificationSetForced_sync;
 - (id)proxyWithErrorHandler_sync:(CDUnknownBlockType)arg1;
+- (void)cacheValue:(id)arg1 forSelector:(SEL)arg2;
+- (id)cachedValueForSelector:(SEL)arg1;
 - (id)synchronousProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)proxyWithQueue:(struct queue)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (void)sink:(id)arg1 handleNotification:(id)arg2;

@@ -6,7 +6,7 @@
 
 #import <FileProvider/NSProgressReporting-Protocol.h>
 
-@class FPItem, FPItemManager, FPService, FPStitchingSession, NSArray, NSDictionary, NSProgress, NSString;
+@class FPItem, FPItemManager, FPService, FPStitchingSession, NSArray, NSDictionary, NSProgress, NSSet, NSString;
 @protocol FPXOperationService;
 
 @interface FPActionOperation <NSProgressReporting>
@@ -31,11 +31,14 @@
     FPService<FPXOperationService> *_remoteService;
     NSString *_action;
     NSArray *_sourceItemsToPreflight;
+    NSSet *_sourceItemKeysAllowList;
     FPItem *_destinationItemToPreflight;
 }
 
++ (id)newArrayRemovingFirstElement:(id)arg1;
 - (void).cxx_destruct;
 @property(copy, nonatomic) FPItem *destinationItemToPreflight; // @synthesize destinationItemToPreflight=_destinationItemToPreflight;
+@property(copy, nonatomic) NSSet *sourceItemKeysAllowList; // @synthesize sourceItemKeysAllowList=_sourceItemKeysAllowList;
 @property(copy, nonatomic) NSArray *sourceItemsToPreflight; // @synthesize sourceItemsToPreflight=_sourceItemsToPreflight;
 @property(copy, nonatomic) NSString *action; // @synthesize action=_action;
 @property(nonatomic) _Bool haveStitching; // @synthesize haveStitching=_haveStitching;
@@ -61,6 +64,7 @@
 - (void)_preflightAndRun;
 - (void)preflightWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_runUserInteractionsPreflight:(CDUnknownBlockType)arg1;
+- (void)runUserInteractionsPreflight:(CDUnknownBlockType)arg1;
 - (id)operationDescription;
 - (void)_dispatchToSubOperations;
 - (id)replicateForItems:(id)arg1;

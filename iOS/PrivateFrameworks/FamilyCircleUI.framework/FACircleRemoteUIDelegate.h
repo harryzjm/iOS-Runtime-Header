@@ -19,9 +19,9 @@
     NSURLRequest *_cachedRequest;
     NSMutableDictionary *_objectModelDecorators;
     FAProfilePictureStore *_familyPictureStore;
-    NSDictionary *_dismissInfo;
     _Bool _isReplacing;
     RUIPage *_cachedPage;
+    NSDictionary *_dismissInfo;
     FACircleContext *_context;
     id <FACircleRemoteUIDelegateDelegate> _delegate;
 }
@@ -29,6 +29,7 @@
 - (void).cxx_destruct;
 @property __weak id <FACircleRemoteUIDelegateDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) FACircleContext *context; // @synthesize context=_context;
+@property(retain, nonatomic) NSDictionary *dismissInfo; // @synthesize dismissInfo=_dismissInfo;
 - (void)_broadcastServicesDidChangeNotification;
 - (void)_broadcastFamilyDidChangeNotification;
 - (void)_reportRequestFailureWithResponse:(id)arg1;

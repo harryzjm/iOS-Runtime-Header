@@ -46,7 +46,7 @@
 - (void)_initializeSpeech:(CDStruct_24e90a37 *)arg1;
 - (void)_initializeSpeechEngine:(CDStruct_24e90a37 *)arg1;
 - (_Bool)_footprintOrVoiceNameHasChanged:(CDStruct_24e90a37 *)arg1;
-- (id)_ttSSpeechServerCopyVoiceNamesForLanguage:(id)arg1 voiceType:(long long)arg2 queryingMobileAssets:(_Bool)arg3;
+- (id)_ttSSpeechServerCopyVoiceInfoForLanguage:(id)arg1 voiceType:(long long)arg2 queryingMobileAssets:(_Bool)arg3;
 - (void)_newVoiceInstalled;
 - (void)processMarker:(long long)arg1 withByteOffset:(unsigned int)arg2 markerPosition:(unsigned int)arg3 markerLength:(unsigned int)arg4 context:(CDStruct_24e90a37 *)arg5 currentTime:(unsigned long long)arg6 secondPass:(_Bool)arg7;
 - (unsigned char)_shouldContinueSpeechGivenMark:(CDStruct_24e90a37 *)arg1 markType:(long long)arg2 blockIfPaused:(unsigned char)arg3;

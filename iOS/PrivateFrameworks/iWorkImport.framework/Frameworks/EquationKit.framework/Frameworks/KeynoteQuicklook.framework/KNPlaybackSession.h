@@ -8,7 +8,7 @@
 
 #import <KeynoteQuicklook/TSDAnimationSession-Protocol.h>
 
-@class CALayer, KNAnimatedSlideView, KNAnimatedTextureManager, KNAnimationContext, KNAnimationTestResultLogger, KNPlaybackSessionConfiguration, KNShow, KNSlide, KNSlideNode, NSArray, NSMutableArray, NSString, TSDBitmapRenderingQualityInfo, TSDGLLayer, TSDMPSImageConversionStorage, TSKAccessController, TSULRUCache;
+@class CALayer, KNAnimatedSlideView, KNAnimatedTextureManager, KNAnimationContext, KNAnimationRegistryWithFallbacks, KNAnimationTestResultLogger, KNPlaybackSessionConfiguration, KNShow, KNSlide, KNSlideNode, NSArray, NSMutableArray, NSString, TSDBitmapRenderingQualityInfo, TSDGLLayer, TSDMPSImageConversionStorage, TSKAccessController, TSULRUCache;
 @protocol KNPlaybackLayerHost, TSDCanvasDelegate, TSKAccessControllerReadTicket;
 
 @interface KNPlaybackSession : NSObject <TSDAnimationSession>
@@ -39,6 +39,7 @@
     _Bool _shouldSkipBuilds;
     _Bool _shouldRespectSkippedSlides;
     _Bool _shouldAlwaysLoop;
+    _Bool _shouldShowLiveVideos;
     TSDGLLayer *_sharedGLLayer;
     KNShow *_show;
     id <TSDCanvasDelegate> _canvasDelegate;
@@ -46,6 +47,7 @@
     id <TSKAccessControllerReadTicket> _accessControllerReadTicket;
     KNAnimatedTextureManager *_textureManager;
     KNAnimationContext *_animationContext;
+    KNAnimationRegistryWithFallbacks *_registry;
     KNAnimationTestResultLogger *_animationTestResultLogger;
     TSDBitmapRenderingQualityInfo *_bitmapRenderingQualityInfo;
     long long _playMode;
@@ -77,6 +79,7 @@
 @property(readonly, nonatomic) TSULRUCache *movieAssetCache; // @synthesize movieAssetCache=_movieAssetCache;
 @property(copy, nonatomic) NSArray *slideNodesWithinPlayableRange; // @synthesize slideNodesWithinPlayableRange=_slideNodesWithinPlayableRange;
 @property(nonatomic) long long floatingCommentBehavior; // @synthesize floatingCommentBehavior=_floatingCommentBehavior;
+@property(nonatomic) _Bool shouldShowLiveVideos; // @synthesize shouldShowLiveVideos=_shouldShowLiveVideos;
 @property(nonatomic) _Bool shouldAlwaysLoop; // @synthesize shouldAlwaysLoop=_shouldAlwaysLoop;
 @property(nonatomic) _Bool shouldRespectSkippedSlides; // @synthesize shouldRespectSkippedSlides=_shouldRespectSkippedSlides;
 @property(nonatomic) _Bool shouldSkipBuilds; // @synthesize shouldSkipBuilds=_shouldSkipBuilds;
@@ -103,6 +106,7 @@
 @property(nonatomic) _Bool disableAutoAnimationRemoval; // @synthesize disableAutoAnimationRemoval=_disableAutoAnimationRemoval;
 @property(retain, nonatomic) TSDBitmapRenderingQualityInfo *bitmapRenderingQualityInfo; // @synthesize bitmapRenderingQualityInfo=_bitmapRenderingQualityInfo;
 @property(readonly, nonatomic) KNAnimationTestResultLogger *animationTestResultLogger; // @synthesize animationTestResultLogger=_animationTestResultLogger;
+@property(readonly, nonatomic) KNAnimationRegistryWithFallbacks *registry; // @synthesize registry=_registry;
 @property(readonly, nonatomic) KNAnimationContext *animationContext; // @synthesize animationContext=_animationContext;
 @property(readonly, nonatomic) KNAnimatedTextureManager *textureManager; // @synthesize textureManager=_textureManager;
 @property(retain, nonatomic) id <TSKAccessControllerReadTicket> accessControllerReadTicket; // @synthesize accessControllerReadTicket=_accessControllerReadTicket;
@@ -121,7 +125,7 @@
 - (void)tearDownSharedGLLayer;
 @property(readonly, nonatomic) TSDGLLayer *sharedGLLayer; // @synthesize sharedGLLayer=_sharedGLLayer;
 @property(readonly, nonatomic) NSArray *playableSlideNodes;
-- (void)didChangeRootLayerGeometryAndScreenEnvironment:(id)arg1;
+- (void)didChangeRootLayerGeometryAndScreenEnvironment;
 @property(readonly, nonatomic) _Bool isRealtime;
 @property(readonly, nonatomic) _Bool isSceneRenderingEnabled;
 @property(readonly, nonatomic) _Bool isWideGamut;

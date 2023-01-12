@@ -10,25 +10,30 @@
 
 @interface _TtC7FMFCore14FMFDataManager : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *identifier;
     MISSING_TYPE *delegate;
+    MISSING_TYPE *configuration;
     MISSING_TYPE *dataManagerUpdateQueue;
     MISSING_TYPE *dataManagerDelegateQueue;
     MISSING_TYPE *cacheBlobQueue;
     MISSING_TYPE *pendingDataManager;
-    MISSING_TYPE *following;
     MISSING_TYPE *followers;
     MISSING_TYPE *pendingFollowers;
     MISSING_TYPE *futureFollowing;
     MISSING_TYPE *futureFollowers;
     MISSING_TYPE *internalFriends;
-    MISSING_TYPE *intermediateLocations;
     MISSING_TYPE *locatesInProgress;
+    MISSING_TYPE *liveLocatesInProgress;
+    MISSING_TYPE *intermediateLocations;
     MISSING_TYPE *internalLocations;
     MISSING_TYPE *internalUnshiftedLocations;
     MISSING_TYPE *locationAlertsOnMeByMe;
     MISSING_TYPE *locationAlertsOnMeByFriends;
     MISSING_TYPE *locationAlertsOnFriendsByMe;
     MISSING_TYPE *locationAlertsOnFriendsByFriends;
+    MISSING_TYPE *isSnapshotMode;
+    MISSING_TYPE *following;
+    MISSING_TYPE *secureLocationCapableFollowing;
     MISSING_TYPE *internalLocationAlerts;
     MISSING_TYPE *permanentDataCache;
     MISSING_TYPE *_cacheBlob;
@@ -36,13 +41,14 @@
     MISSING_TYPE *contactsController;
     MISSING_TYPE *contactMatchingCache;
     MISSING_TYPE *prefetchedContactCache;
+    MISSING_TYPE *reverseGeocoder;
     MISSING_TYPE *internalPreferences;
-    MISSING_TYPE *features;
-    MISSING_TYPE *config;
+    MISSING_TYPE *internalFeatures;
+    MISSING_TYPE *internalConfig;
     MISSING_TYPE *internalMyInfo;
-    MISSING_TYPE *devices;
-    MISSING_TYPE *labelledLocations;
-    MISSING_TYPE *labels;
+    MISSING_TYPE *internalDevices;
+    MISSING_TYPE *internalLabelledLocations;
+    MISSING_TYPE *internalLabels;
 }
 
 @end

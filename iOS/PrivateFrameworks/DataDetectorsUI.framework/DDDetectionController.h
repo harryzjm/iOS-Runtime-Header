@@ -28,6 +28,7 @@
 + (id)filterResults:(id)arg1 forTypes:(unsigned long long)arg2 referenceDate:(id)arg3 referenceTimeZone:(id)arg4;
 + (unsigned long long)allPublicTypes;
 + (id)barcodeContext:(id)arg1 preview:(_Bool)arg2 contact:(id)arg3 ics:(id)arg4;
++ (_Bool)largeScreenIdiom;
 + (_Bool)_shouldConsiderResultForCoreRecents:(struct __DDResult *)arg1;
 + (CDUnknownBlockType)messagesActionHandler;
 + (void)setMessagesActionHandler:(CDUnknownBlockType)arg1;
@@ -57,6 +58,8 @@
 - (_Bool)shouldIgnoreMessageActionForURL:(id)arg1;
 - (_Bool)shouldImmediatelyLaunchDefaultActionForResult:(struct __DDResult *)arg1;
 - (_Bool)shouldImmediatelyLaunchDefaultActionForURL:(id)arg1;
+- (_Bool)_shouldImmediatelyLaunchDefaultActionForURL:(id)arg1 result:(struct __DDResult *)arg2;
+- (_Bool)tryDismissActionInView:(id)arg1;
 - (void)cancelAction;
 - (_Bool)actionIsCancellable;
 - (_Bool)isPerformingAction;

@@ -16,10 +16,6 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSArray *newlyCreatedArticleIDs; // @synthesize newlyCreatedArticleIDs=_newlyCreatedArticleIDs;
-@property(retain, nonatomic) NSArray *deletedArticleIDs; // @synthesize deletedArticleIDs=_deletedArticleIDs;
-@property(retain, nonatomic) NSArray *modifiedArticleIDs; // @synthesize modifiedArticleIDs=_modifiedArticleIDs;
-- (id)initWithModifiedArticleIDs:(id)arg1 deletedArticleIDs:(id)arg2 newArticleIDs:(id)arg3;
 
 @end
 

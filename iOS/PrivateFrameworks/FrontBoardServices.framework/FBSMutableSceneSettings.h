@@ -15,6 +15,8 @@
 - (void)_setDisplayConfiguration:(id)arg1;
 - (id)transientLocalSettings;
 - (id)ignoreOcclusionReasons;
+- (void)setJetsamMode:(BOOL)arg1;
+- (void)setActivityMode:(BOOL)arg1;
 - (id)otherSettings;
 @property(nonatomic) long long interruptionPolicy; // @dynamic interruptionPolicy;
 @property(nonatomic, getter=isBackgrounded) _Bool backgrounded; // @dynamic backgrounded;

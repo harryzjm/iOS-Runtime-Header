@@ -6,9 +6,11 @@
 
 #import <UIKitCore/NSCollectionLayoutEnvironment-Protocol.h>
 
-@protocol _UIDataSourceSnapshot;
+@protocol _UIDataSourceSnapshotTranslating;
 
 @protocol NSCollectionLayoutEnvironment_Private <NSCollectionLayoutEnvironment>
-@property(readonly, nonatomic) id <_UIDataSourceSnapshot> _dataSourceSnapshot;
+@property(readonly, nonatomic) _Bool _wantsCollapsedTopSpacing;
+@property(readonly, nonatomic) long long _sectionIndex;
+@property(readonly, nonatomic) id <_UIDataSourceSnapshotTranslating> _dataSourceSnapshot;
 @end
 

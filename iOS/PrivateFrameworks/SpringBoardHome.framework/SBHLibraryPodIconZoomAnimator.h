@@ -30,10 +30,12 @@
 @property(readonly, nonatomic) SBIconView *targetIconView; // @synthesize targetIconView=_targetIconView;
 @property(readonly, nonatomic) SBFolderIcon *targetIcon; // @synthesize targetIcon=_targetIcon;
 - (void)_cancelAnimationForIconViewClippedOrObscured;
+- (void)_handleIconZoomNotification:(id)arg1;
 - (void)_handleIconViewClippedNotification:(id)arg1;
 - (void)libraryViewController:(id)arg1 willPresentSearchController:(id)arg2;
 - (void)_removeMatchMoveAnimation;
 - (void)_setupMatchMoveAnimation;
+- (void)_updateVisibleIconViewsPointerAllowed:(_Bool)arg1;
 - (void)_cleanupMiniPodIconViewsAfterCrossfade;
 - (void)_prepareToCrossfadeMiniPodIconViews;
 - (void)_captureVisibleAndMiniPodIconViews;

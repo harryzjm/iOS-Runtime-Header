@@ -20,7 +20,7 @@
 - (id)serializeCurrentVersion:(unsigned int *)arg1;
 - (void)mergeVersion:(unsigned int)arg1 fromData:(id)arg2;
 - (unsigned long long)mergeWithStringVersionedDocument:(id)arg1;
-- (id)initWithArchive:(const Document_22a49c75 *)arg1 andReplicaID:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 andReplicaID:(id)arg2;
 - (id)initWithMergeableString:(id)arg1;
 - (id)initWithData:(id)arg1 andReplicaID:(id)arg2;
 - (id)clockElementListForReplicaUUID:(id)arg1;

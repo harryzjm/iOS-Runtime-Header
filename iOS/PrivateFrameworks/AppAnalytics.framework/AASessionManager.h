@@ -16,7 +16,9 @@
 }
 
 - (void).cxx_destruct;
+- (id)initWithAccessQueue:(id)arg1 privacyValidationProvider:(id)arg2;
 - (id)initWithAccessQueue:(id)arg1;
+- (id)initWithPrivacyValidationProvider:(id)arg1;
 - (id)init;
 @property(nonatomic, readonly) AAProcessorManager *processorManager; // @synthesize processorManager;
 @property(nonatomic, readonly) AATracker *tracker; // @synthesize tracker;

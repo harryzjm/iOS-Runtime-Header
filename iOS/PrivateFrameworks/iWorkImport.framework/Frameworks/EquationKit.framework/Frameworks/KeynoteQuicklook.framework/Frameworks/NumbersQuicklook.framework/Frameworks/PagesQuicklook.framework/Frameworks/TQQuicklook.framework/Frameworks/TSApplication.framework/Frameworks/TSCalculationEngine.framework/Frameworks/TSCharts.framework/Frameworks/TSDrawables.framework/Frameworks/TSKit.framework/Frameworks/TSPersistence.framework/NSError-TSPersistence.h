@@ -6,7 +6,7 @@
 
 #import <Foundation/NSError.h>
 
-@class NSSet, NSString;
+@class NSDate, NSSet, NSString;
 
 @interface NSError (TSPersistence)
 + (id)tsp_ensureSaveErrorWithError:(id)arg1;
@@ -28,6 +28,20 @@
 + (id)tsp_errorWithCode:(long long)arg1 userInfo:(id)arg2 isRecoverable:(_Bool)arg3;
 + (id)tsp_errorWithCode:(long long)arg1 userInfo:(id)arg2;
 + (id)tsp_errorWithCode:(long long)arg1;
++ (id)tsp_dataCorruptionErrorWithError:(id)arg1 reason:(id)arg2 data:(id)arg3 dataProperties:(struct DataProperties)arg4 actualDataDigest:(id)arg5 isLikelyOSCorruption:(_Bool)arg6 isLikelyZeroBytesCorruption:(_Bool)arg7;
+@property(readonly, nonatomic) NSString *tsp_dataType;
+@property(readonly, nonatomic) unsigned long long tsp_dataLength;
+@property(readonly, nonatomic) NSString *tsp_dataCreationVersion;
+@property(readonly, nonatomic) NSDate *tsp_dataCreationTime;
+@property(readonly, nonatomic) _Bool tsp_isLikelyZeroBytesCorruption;
+@property(readonly, nonatomic) _Bool tsp_isLikelyOSCorruption;
+@property(readonly, nonatomic) _Bool tsp_expectedDataDigestMatch;
+@property(readonly, nonatomic) NSString *tsp_actualDataDigest;
+@property(readonly, nonatomic) NSString *tsp_expectedDataDigest;
+@property(readonly, nonatomic) long long tsp_dataIdentifier;
+@property(readonly, nonatomic) _Bool tsp_isDataDigestMismatchError;
+@property(readonly, nonatomic) NSString *tsp_dataValidationReason;
+@property(readonly, nonatomic) _Bool tsp_isDataCorruptionError;
 @property(readonly, nonatomic) _Bool tsp_isPasswordInputError;
 @property(readonly, nonatomic) _Bool tsp_isCorruptZipOfPackageError;
 @property(readonly, nonatomic) _Bool tsp_isUnsupportedVersionError;

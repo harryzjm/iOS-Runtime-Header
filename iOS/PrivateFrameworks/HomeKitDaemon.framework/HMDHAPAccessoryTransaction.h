@@ -22,12 +22,14 @@
 @property(retain, nonatomic) NSString *bridgeUUID; // @dynamic bridgeUUID;
 @property(retain, nonatomic) NSData *broadcastKey; // @dynamic broadcastKey;
 @property(retain, nonatomic) NSNumber *certificationStatus; // @dynamic certificationStatus;
+@property(retain, nonatomic) NSNumber *communicationProtocol; // @dynamic communicationProtocol;
 @property(retain, nonatomic) HMFConnectivityInfo *connectivityInfo; // @dynamic connectivityInfo;
 @property(retain, nonatomic) NSNumber *hardwareSupport; // @dynamic hardwareSupport;
 @property(retain, nonatomic) NSNumber *hasOnboardedForNaturalLighting; // @dynamic hasOnboardedForNaturalLighting;
-@property(retain, nonatomic) NSSet *initialServiceTypeUUIDs; // @dynamic initialServiceTypeUUIDs;
+@property(copy, nonatomic) NSSet *initialServiceTypeUUIDs; // @dynamic initialServiceTypeUUIDs;
 @property(retain, nonatomic) NSNumber *keyUpdatedStateNumber; // @dynamic keyUpdatedStateNumber;
 @property(retain, nonatomic) NSDate *keyUpdatedTime; // @dynamic keyUpdatedTime;
+@property(retain, nonatomic) NSNumber *needsOnboarding; // @dynamic needsOnboarding;
 @property(retain, nonatomic) NSString *pairingUsername; // @dynamic pairingUsername;
 @property(retain, nonatomic) NSData *publicKey; // @dynamic publicKey;
 @property(retain, nonatomic) NSData *relayAccessToken; // @dynamic relayAccessToken;
@@ -35,6 +37,7 @@
 @property(retain, nonatomic) NSNumber *relayState; // @dynamic relayState;
 @property(retain, nonatomic) NSNumber *sleepInterval; // @dynamic sleepInterval;
 @property(retain, nonatomic) NSNumber *supportsRelay; // @dynamic supportsRelay;
+@property(retain, nonatomic) NSNumber *suspendedState; // @dynamic suspendedState;
 @property(retain, nonatomic) NSArray *targetUUIDs; // @dynamic targetUUIDs;
 @property(retain, nonatomic) NSArray *transportInformation; // @dynamic transportInformation;
 @property(retain, nonatomic) NSString *uniqueIdentifier; // @dynamic uniqueIdentifier;

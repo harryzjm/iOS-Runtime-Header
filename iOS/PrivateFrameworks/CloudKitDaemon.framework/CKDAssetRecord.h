@@ -8,7 +8,6 @@
 
 @class CKRecordID, NSArray, NSMutableDictionary, NSNumber, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDAssetRecord : NSObject
 {
     NSString *_recordType;

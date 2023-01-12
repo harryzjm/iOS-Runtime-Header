@@ -7,12 +7,14 @@
 #import <Photos/PHInsertChangeRequest-Protocol.h>
 #import <Photos/PHUpdateChangeRequest-Protocol.h>
 
-@class NSManagedObjectID, NSString, PHFaceprint, PHObjectPlaceholder;
+@class NSManagedObjectID, NSMutableArray, NSString, PHFaceprint, PHObjectPlaceholder;
 
 @interface PHFaceChangeRequest <PHInsertChangeRequest, PHUpdateChangeRequest>
 {
     PHFaceprint *_faceprint;
     _Bool _didSetFaceprint;
+    NSMutableArray *_detectionTraits;
+    _Bool _didSetDetectionTraits;
     _Bool _shouldClearFaceCropGenerationState;
 }
 
@@ -21,22 +23,31 @@
 + (id)creationRequestForFace;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool shouldClearFaceCropGenerationState; // @synthesize shouldClearFaceCropGenerationState=_shouldClearFaceCropGenerationState;
+- (void)setDetectionTraits:(id)arg1;
 @property(retain, nonatomic) PHFaceprint *faceprint;
 - (id)createManagedObjectForInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
 - (_Bool)applyMutationsToManagedObject:(id)arg1 photoLibrary:(id)arg2 error:(id *)arg3;
 @property(readonly, nonatomic) NSString *managedEntityName;
-@property(nonatomic) unsigned short sexType;
 @property(copy, nonatomic) id adjustmentVersion;
 @property(retain, nonatomic) NSString *groupingIdentifier;
+@property(nonatomic) double gazeCenterY;
+@property(nonatomic) double gazeCenterX;
+@property(nonatomic) unsigned short gazeType;
+@property(nonatomic) _Bool hasFaceMask;
+@property(nonatomic) unsigned short ethnicityType;
+@property(nonatomic) unsigned short skintoneType;
+@property(nonatomic) unsigned short poseType;
+@property(nonatomic) unsigned short hairType;
+@property(nonatomic) unsigned short headgearType;
+@property(nonatomic) unsigned short faceExpressionType;
 @property(nonatomic) unsigned short lipMakeupType;
 @property(nonatomic) unsigned short eyeMakeupType;
 @property(nonatomic) unsigned short glassesType;
-@property(nonatomic) unsigned short baldType;
 @property(nonatomic) unsigned short hairColorType;
 @property(nonatomic) unsigned short facialHairType;
 @property(nonatomic) unsigned short smileType;
 @property(nonatomic) unsigned short eyesState;
-@property(nonatomic) unsigned short genderType;
+@property(nonatomic) unsigned short sexType;
 @property(nonatomic) unsigned short ageType;
 @property(nonatomic) double quality;
 @property(nonatomic) long long qualityMeasure;
@@ -62,6 +73,11 @@
 @property(nonatomic) double leftEyeX;
 @property(nonatomic) long long sourceHeight;
 @property(nonatomic) long long sourceWidth;
+@property(nonatomic) short detectionType;
+@property(nonatomic) double bodyHeight;
+@property(nonatomic) double bodyWidth;
+@property(nonatomic) double bodyCenterY;
+@property(nonatomic) double bodyCenterX;
 @property(nonatomic) double centerY;
 @property(nonatomic) double centerX;
 @property(nonatomic) double size;

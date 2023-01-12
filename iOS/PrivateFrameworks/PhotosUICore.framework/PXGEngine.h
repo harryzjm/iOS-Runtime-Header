@@ -8,16 +8,19 @@
 
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
 #import <PhotosUICore/PXGLayoutUpdateDelegate-Protocol.h>
-#import <PhotosUICore/PXGMetalRendererDelegate-Protocol.h>
+#import <PhotosUICore/PXGRendererDelegate-Protocol.h>
 #import <PhotosUICore/PXGTextureManagerDelegate-Protocol.h>
 #import <PhotosUICore/PXTilingScrollControllerUpdateDelegate-Protocol.h>
 
-@class NSArray, NSString, PXDisplayLink, PXGAXCoalescingResponder, PXGAnimator, PXGChangeDetails, PXGLayout, PXGMetalRenderer, PXGSpriteDataStore, PXGSpriteMetadataStore, PXGTextureManager, PXGViewEnvironment, PXGViewRenderer, PXScrollViewController, PXScrollViewSpeedometer;
-@protocol PXGEngineDelegate;
+@class NSArray, NSMutableArray, NSMutableSet, NSString, PXGAXCoalescingResponder, PXGAnimator, PXGChangeDetails, PXGEntityManager, PXGLayout, PXGSpriteDataStore, PXGSpriteMetadataStore, PXGTextureManager, PXGViewEnvironment, PXMediaProvider, PXScrollViewController, PXScrollViewSpeedometer, UIView;
+@protocol OS_dispatch_queue, PXDisplayLinkProtocol, PXGEngineDelegate, PXGHitTestEnvironment, PXGRenderer;
 
-@interface PXGEngine : NSObject <PXGMetalRendererDelegate, PXGLayoutUpdateDelegate, PXGTextureManagerDelegate, PXTilingScrollControllerUpdateDelegate, PXChangeObserver>
+@interface PXGEngine : NSObject <PXGLayoutUpdateDelegate, PXGTextureManagerDelegate, PXGRendererDelegate, PXTilingScrollControllerUpdateDelegate, PXChangeObserver>
 {
     PXGAnimator *_animator;
+    struct {
+        _Bool updateDebugHUDWithStats;
+    } _delegateRespondsTo;
     PXGSpriteDataStore *_layoutSpriteDataStore;
     PXGChangeDetails *_layoutChangeDetails;
     struct CGPoint _viewportShift;
@@ -27,24 +30,27 @@
     PXGLayout *_animationLayout;
     PXGChangeDetails *_animationChangeDetails;
     PXGSpriteMetadataStore *_presentationSpriteMetadaStore;
-    CDStruct_d97c9657 _updateFlags;
+    CDStruct_af00bf4e _updateFlags;
     unsigned long long _previousUpdateEntities;
-    CDStruct_a02a4563 _previousInteractionState;
+    CDStruct_da8e67cd _previousInteractionState;
     unsigned long long _pendingUpdateEntities;
     _Bool _keepDisplayLinkAlive;
     double _renderForTargetTimestamp;
     double _lastRenderCompletionTimestamp;
     _Bool _animatorWasAnimatingAtBeginningOfFrame;
     _Bool _isUpdatingScrollView;
+    _Bool _isUpdatingTextureManager;
     _Bool _viewSizeDidChange;
     _Bool _lowMemoryMode;
     CDUnknownBlockType _pendingIsInvisibleForSomeTimeBlock;
     _Bool _extensionHostIsInBackground;
+    _Bool _didDisappear;
     _Bool _didRenderThisFrame;
     _Bool _expectingScrollEvents;
     _Bool _gotScrollEventThisFrame;
     _Bool _missedScrollEventThisFrame;
     _Bool _isInvisibleForSomeTime;
+    _Bool _isExporting;
     _Bool _visible;
     _Bool _statsTrackingEnabled;
     _Bool _slowAnimationsEnabled;
@@ -53,45 +59,59 @@
     PXScrollViewController *_scrollViewController;
     PXScrollViewSpeedometer *_scrollViewSpeedometer;
     PXGLayout *_layout;
+    PXGEntityManager *_entityManager;
+    NSObject<OS_dispatch_queue> *_layoutQueue;
     PXGTextureManager *_textureManager;
+    id <PXDisplayLinkProtocol> _displayLink;
     CDUnknownBlockType _animationRenderingCompletionHandler;
     double _lastScrollEventTime;
+    id <PXGRenderer> _drivingRenderer;
+    NSMutableSet *_interactions;
+    NSMutableSet *_activeInteractions;
+    NSMutableArray *_pendingContentLoadedNotificationBlocks;
     id <PXGEngineDelegate> _delegate;
-    PXGMetalRenderer *_metalRenderer;
-    PXGViewRenderer *_viewRenderer;
     NSArray *_renderers;
     PXGViewEnvironment *_viewEnvironment;
+    UIView<PXGHitTestEnvironment> *_interactionView;
     CDStruct_58b866b9 *_stats;
-    PXDisplayLink *_displayLink;
     PXGAXCoalescingResponder *_coalescingAXResponder;
-    CDStruct_a02a4563 _interactionState;
+    PXMediaProvider *_mediaProvider;
+    CDStruct_da8e67cd _interactionState;
     struct _PXGEngineScrollState _scrollState;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) PXMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property(readonly, nonatomic) PXGAXCoalescingResponder *coalescingAXResponder; // @synthesize coalescingAXResponder=_coalescingAXResponder;
 @property(nonatomic) _Bool isInitialLoad; // @synthesize isInitialLoad=_isInitialLoad;
 @property(nonatomic) _Bool wantsImmediateUpdates; // @synthesize wantsImmediateUpdates=_wantsImmediateUpdates;
 @property(nonatomic) _Bool slowAnimationsEnabled; // @synthesize slowAnimationsEnabled=_slowAnimationsEnabled;
-@property(readonly, nonatomic) PXDisplayLink *displayLink; // @synthesize displayLink=_displayLink;
 @property(readonly, nonatomic) CDStruct_58b866b9 *stats; // @synthesize stats=_stats;
 @property(nonatomic) _Bool statsTrackingEnabled; // @synthesize statsTrackingEnabled=_statsTrackingEnabled;
+@property(nonatomic) __weak UIView<PXGHitTestEnvironment> *interactionView; // @synthesize interactionView=_interactionView;
 @property(retain, nonatomic) PXGViewEnvironment *viewEnvironment; // @synthesize viewEnvironment=_viewEnvironment;
 @property(nonatomic, getter=isVisible) _Bool visible; // @synthesize visible=_visible;
 @property(readonly, nonatomic) NSArray *renderers; // @synthesize renderers=_renderers;
-@property(readonly, nonatomic) PXGViewRenderer *viewRenderer; // @synthesize viewRenderer=_viewRenderer;
-@property(readonly, nonatomic) PXGMetalRenderer *metalRenderer; // @synthesize metalRenderer=_metalRenderer;
 @property(nonatomic) __weak id <PXGEngineDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) NSMutableArray *pendingContentLoadedNotificationBlocks; // @synthesize pendingContentLoadedNotificationBlocks=_pendingContentLoadedNotificationBlocks;
+@property(readonly, nonatomic) NSMutableSet *activeInteractions; // @synthesize activeInteractions=_activeInteractions;
+@property(readonly, nonatomic) NSMutableSet *interactions; // @synthesize interactions=_interactions;
+@property(readonly, nonatomic) id <PXGRenderer> drivingRenderer; // @synthesize drivingRenderer=_drivingRenderer;
+@property(nonatomic) _Bool isExporting; // @synthesize isExporting=_isExporting;
 @property(nonatomic) _Bool isInvisibleForSomeTime; // @synthesize isInvisibleForSomeTime=_isInvisibleForSomeTime;
 @property(nonatomic) _Bool missedScrollEventThisFrame; // @synthesize missedScrollEventThisFrame=_missedScrollEventThisFrame;
 @property(nonatomic) double lastScrollEventTime; // @synthesize lastScrollEventTime=_lastScrollEventTime;
 @property(nonatomic) _Bool gotScrollEventThisFrame; // @synthesize gotScrollEventThisFrame=_gotScrollEventThisFrame;
 @property(nonatomic) _Bool expectingScrollEvents; // @synthesize expectingScrollEvents=_expectingScrollEvents;
 @property(nonatomic) _Bool didRenderThisFrame; // @synthesize didRenderThisFrame=_didRenderThisFrame;
-@property(nonatomic) CDStruct_a02a4563 interactionState; // @synthesize interactionState=_interactionState;
+@property(nonatomic) _Bool didDisappear; // @synthesize didDisappear=_didDisappear;
+@property(nonatomic) CDStruct_da8e67cd interactionState; // @synthesize interactionState=_interactionState;
 @property(readonly, nonatomic) struct _PXGEngineScrollState scrollState; // @synthesize scrollState=_scrollState;
 @property(copy, nonatomic) CDUnknownBlockType animationRenderingCompletionHandler; // @synthesize animationRenderingCompletionHandler=_animationRenderingCompletionHandler;
+@property(readonly, nonatomic) id <PXDisplayLinkProtocol> displayLink; // @synthesize displayLink=_displayLink;
 @property(readonly, nonatomic) PXGTextureManager *textureManager; // @synthesize textureManager=_textureManager;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *layoutQueue; // @synthesize layoutQueue=_layoutQueue;
+@property(readonly, nonatomic) PXGEntityManager *entityManager; // @synthesize entityManager=_entityManager;
 @property(retain, nonatomic) PXGLayout *layout; // @synthesize layout=_layout;
 @property(retain, nonatomic) PXScrollViewSpeedometer *scrollViewSpeedometer; // @synthesize scrollViewSpeedometer=_scrollViewSpeedometer;
 @property(retain, nonatomic) PXScrollViewController *scrollViewController; // @synthesize scrollViewController=_scrollViewController;
@@ -100,48 +120,60 @@
 - (void)tilingScrollControllerDidScroll:(id)arg1;
 - (void)tilingScrollControllerDidUpdate:(id)arg1;
 - (void)textureManagerNeedsUpdate:(id)arg1;
+- (void)layoutNeedsRenderUpdate:(id)arg1;
 - (void)layoutNeedsUpdate:(id)arg1;
-- (void)metalRendererDidChangeTextureConverter:(id)arg1;
+- (void)rendererDidChangeTextureConverter:(id)arg1;
 - (void)rendererNeedsUpdate:(id)arg1;
 - (void)rendererPerformRender:(id)arg1;
 - (void)renderer:(id)arg1 viewportSizeWillChange:(struct CGSize)arg2;
 - (void)_updateScrollStateWithReason:(unsigned long long)arg1;
+- (void)_propagateTextureConverters;
 - (void)_resetChangeDetails;
-- (void)_render;
-- (void)_setNeedsRender;
+- (void)_retargetAnimations;
 - (_Bool)_shouldDeferContentOffsetUpdates;
 - (_Bool)_shouldWaitForScrollEvent;
 - (_Bool)_shouldDeferRenderUntilNextFrame;
 - (_Bool)_isInBackground;
 - (void)_enumerateRenderers:(CDUnknownBlockType)arg1;
+- (void)_performRender;
+- (void)_setNeedsRender;
 - (void)_updateTextureManager;
 - (void)_updateInteractionState;
 - (void)_updateAnimatorWithTargetTimestamp:(double)arg1;
 - (void)_updateLayout;
+- (void)_updateLayoutInteractions;
 - (void)_updateIfNeededWithReason:(id)arg1;
+- (void)updateIfNeeded;
 - (void)ensureUpdatedLayout;
+- (void)allowSecondRenderThisFrame;
 - (void)__setNeedsUpdate;
 - (void)_forceInvalidate:(unsigned long long)arg1;
 - (void)_deferredInvalidate:(unsigned long long)arg1;
 - (void)_invalidateOrDefer:(unsigned long long)arg1;
 - (void)_updateDisplayLink;
 - (void)handleDisplayLink:(id)arg1;
+- (void)_notifyContentLoadedObserversIfNeeded;
+- (void)_handleTimeoutForNotificationBlock:(CDUnknownBlockType)arg1;
+- (void)notifyContentFullyLoadedWithTimeout:(double)arg1 block:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) PXGAnimator *ppt_animator;
 @property(readonly, nonatomic) long long currentFrameTime;
 - (void)test_installRenderSnapshotHandler:(CDUnknownBlockType)arg1;
 - (void)_releaseResources;
-- (void)_purgeResources;
+- (void)_updateInvisibleTextureManager;
 - (void)_hasBeenInvisibleForSomeTime;
 @property(nonatomic) _Bool lowMemoryMode;
 - (void)_extensionHostWillEnterForeground:(id)arg1;
 - (void)_extensionHostDidEnterBackground:(id)arg1;
 - (void)handleScreensDidWakeNotification:(id)arg1;
-@property(readonly, nonatomic) unsigned int presentedSpriteCount;
-- (void)enumerateSpritesInRange:(struct _PXGSpriteIndexRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (_Bool)copyPresentedSpriteFor:(id)arg1 geometry:(CDStruct_4f725fed *)arg2 style:(CDStruct_76b550e2 *)arg3 info:(CDStruct_9d1ebe49 *)arg4;
 - (void)enumerateSpritesInRect:(struct CGRect)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)init;
-- (id)initWithAnimator:(id)arg1 textureManager:(id)arg2 metalRenderer:(id)arg3 viewRenderer:(id)arg4 displayLinkClass:(Class)arg5;
+- (id)initForExportWithPixelBufferDestination:(id)arg1 layoutQueue:(id)arg2 displayLinkClass:(Class)arg3;
+- (id)initWithAnimator:(id)arg1 renderers:(id)arg2 displayLinkClass:(Class)arg3 layoutQueue:(id)arg4;
+- (void)registerAllTextureProvidersWithMediaProvider:(id)arg1;
+- (void)registerTextureProvider:(id)arg1 forMediaKind:(int)arg2;
+- (void)registerAllTextureProvidersWithMediaProvider:(id)arg1 pixelBufferSourcesProvider:(id)arg2 namedImagesBundle:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

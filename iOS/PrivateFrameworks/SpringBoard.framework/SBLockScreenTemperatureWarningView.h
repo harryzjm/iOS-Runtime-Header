@@ -12,6 +12,7 @@
 }
 
 - (void).cxx_destruct;
+- (_Bool)_statusBarOrientationIsPortrait;
 - (void)layoutSubviews;
 - (double)_iconYPosition;
 - (double)_subtitleBaseline;

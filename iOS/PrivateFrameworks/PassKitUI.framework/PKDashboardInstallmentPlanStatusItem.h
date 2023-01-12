@@ -8,20 +8,24 @@
 
 #import <PassKitUI/PKDashboardItem-Protocol.h>
 
-@class NSString, PKAccount, PKInstallmentPlan, PKTransactionSource;
+@class NSString, PKAccount, PKAccountUserCollection, PKCreditInstallmentPlan, PKFamilyMemberCollection, PKTransactionSourceCollection;
 
 @interface PKDashboardInstallmentPlanStatusItem : NSObject <PKDashboardItem>
 {
-    PKInstallmentPlan *_installmentPlan;
+    PKCreditInstallmentPlan *_installmentPlan;
     PKAccount *_account;
-    PKTransactionSource *_transactionSource;
+    PKTransactionSourceCollection *_transactionSourceCollection;
+    PKAccountUserCollection *_accountUserCollection;
+    PKFamilyMemberCollection *_familyMemberCollection;
 }
 
 + (id)identifier;
 - (void).cxx_destruct;
-@property(retain, nonatomic) PKTransactionSource *transactionSource; // @synthesize transactionSource=_transactionSource;
+@property(retain, nonatomic) PKFamilyMemberCollection *familyMemberCollection; // @synthesize familyMemberCollection=_familyMemberCollection;
+@property(retain, nonatomic) PKAccountUserCollection *accountUserCollection; // @synthesize accountUserCollection=_accountUserCollection;
+@property(retain, nonatomic) PKTransactionSourceCollection *transactionSourceCollection; // @synthesize transactionSourceCollection=_transactionSourceCollection;
 @property(retain, nonatomic) PKAccount *account; // @synthesize account=_account;
-@property(retain, nonatomic) PKInstallmentPlan *installmentPlan; // @synthesize installmentPlan=_installmentPlan;
+@property(retain, nonatomic) PKCreditInstallmentPlan *installmentPlan; // @synthesize installmentPlan=_installmentPlan;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

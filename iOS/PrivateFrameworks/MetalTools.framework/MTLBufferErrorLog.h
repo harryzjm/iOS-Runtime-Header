@@ -8,12 +8,13 @@
 
 #import <MetalTools/MTLFunctionLog-Protocol.h>
 
-@class MTLArgument, NSArray, NSString;
+@class MTLArgument, MTLDebugInstrumentationData, NSArray, NSString;
 @protocol MTLBuffer, MTLFunction, MTLFunctionLogDebugLocation;
 
 __attribute__((visibility("hidden")))
 @interface MTLBufferErrorLog : NSObject <MTLFunctionLog>
 {
+    MTLDebugInstrumentationData *_debugData;
     id <MTLFunctionLogDebugLocation> _debugLocation;
     NSString *_encoderLabel;
     id <MTLFunction> _function;
@@ -39,7 +40,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *encoderLabel; // @synthesize encoderLabel=_encoderLabel;
 @property(readonly, nonatomic) id <MTLFunctionLogDebugLocation> debugLocation; // @synthesize debugLocation=_debugLocation;
 - (void)dealloc;
-- (id)initWithType:(unsigned long long)arg1 function:(id)arg2 encoderLabel:(id)arg3 addressSpace:(unsigned long long)arg4 buffer:(id)arg5 offset:(unsigned long long)arg6 operation:(unsigned long long)arg7 stackTrace:(id)arg8 argument:(id)arg9;
+- (id)initWithType:(unsigned long long)arg1 function:(id)arg2 encoderLabel:(id)arg3 addressSpace:(unsigned long long)arg4 buffer:(id)arg5 offset:(unsigned long long)arg6 operation:(unsigned long long)arg7 stackTrace:(id)arg8 argument:(id)arg9 debugData:(id)arg10;
 @property(readonly, copy) NSString *description;
 
 // Remaining properties

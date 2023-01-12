@@ -14,13 +14,18 @@
 
 @interface ASDTestFlightAppMetadata : NSObject <ASDAppMetadata, NSCopying, NSSecureCoding>
 {
+    _Bool _requiresPowerPluggedIn_wasSet;
+    _Bool _requiresPowerPluggedIn;
+    _Bool _userInitiated;
     _Bool _hasMessagesExtension;
     _Bool _launchProhibited;
-    _Bool _userInitiated;
     ACAccount *_account;
     NSURL *_artworkURL;
+    NSString *_betaBuildGroupID;
     NSString *_bundleID;
+    NSString *_bundleVersion;
     NSString *_companionBundleID;
+    NSURL *_existingBundleURL;
     NSNumber *_externalVersionIdentifier;
     NSNumber *_initialODRSize;
     NSNumber *_itemID;
@@ -32,6 +37,9 @@
     NSData *_packageSINF;
     NSURL *_packageURL;
     NSArray *_provisioningProfiles;
+    NSData *_receipt;
+    NSString *_shortBundleVersion;
+    long long _softwarePlatform;
     NSString *_storeCohort;
     NSNumber *_storeFront;
     NSString *_variantID;
@@ -42,9 +50,11 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *vendorName; // @synthesize vendorName=_vendorName;
 @property(copy, nonatomic) NSString *variantID; // @synthesize variantID=_variantID;
-@property(nonatomic) _Bool userInitiated; // @synthesize userInitiated=_userInitiated;
 @property(copy, nonatomic) NSNumber *storeFront; // @synthesize storeFront=_storeFront;
 @property(copy, nonatomic) NSString *storeCohort; // @synthesize storeCohort=_storeCohort;
+@property long long softwarePlatform; // @synthesize softwarePlatform=_softwarePlatform;
+@property(copy, nonatomic) NSString *shortBundleVersion; // @synthesize shortBundleVersion=_shortBundleVersion;
+@property(copy, nonatomic) NSData *receipt; // @synthesize receipt=_receipt;
 @property(copy, nonatomic) NSArray *provisioningProfiles; // @synthesize provisioningProfiles=_provisioningProfiles;
 @property(copy, nonatomic) NSURL *packageURL; // @synthesize packageURL=_packageURL;
 @property(copy, nonatomic) NSData *packageSINF; // @synthesize packageSINF=_packageSINF;
@@ -58,14 +68,19 @@
 @property(copy, nonatomic) NSNumber *initialODRSize; // @synthesize initialODRSize=_initialODRSize;
 @property(nonatomic) _Bool hasMessagesExtension; // @synthesize hasMessagesExtension=_hasMessagesExtension;
 @property(copy, nonatomic) NSNumber *externalVersionIdentifier; // @synthesize externalVersionIdentifier=_externalVersionIdentifier;
+@property(copy, nonatomic) NSURL *existingBundleURL; // @synthesize existingBundleURL=_existingBundleURL;
 @property(copy, nonatomic) NSString *companionBundleID; // @synthesize companionBundleID=_companionBundleID;
+@property(copy, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
 @property(readonly, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
+@property(copy, nonatomic) NSString *betaBuildGroupID; // @synthesize betaBuildGroupID=_betaBuildGroupID;
 @property(copy, nonatomic) NSURL *artworkURL; // @synthesize artworkURL=_artworkURL;
 @property(copy, nonatomic) ACAccount *account; // @synthesize account=_account;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly) long long metadataType;
+@property(nonatomic) _Bool userInitiated; // @synthesize userInitiated=_userInitiated;
+@property _Bool requiresPowerPluggedIn; // @synthesize requiresPowerPluggedIn=_requiresPowerPluggedIn;
 - (id)initWithBundleID:(id)arg1;
 
 // Remaining properties

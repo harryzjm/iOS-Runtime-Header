@@ -18,17 +18,19 @@
     NSNumber *_payloadAllowGameCenterProfilePrivacyModification;
     NSNumber *_payloadAllowGameCenterProfileModification;
     NSNumber *_payloadAllowedGameCenterOtherPlayerTypes;
+    NSNumber *_payloadAllowGameCenterFriendsSharingModification;
 }
 
 + (id)buildRequiredOnlyWithIdentifier:(id)arg1;
-+ (id)buildWithIdentifier:(id)arg1 withAllowGameCenter:(id)arg2 withAllowMultiplayerGaming:(id)arg3 withAllowAddingGameCenterFriends:(id)arg4;
 + (id)buildWithIdentifier:(id)arg1 withAllowGameCenter:(id)arg2 withAllowMultiplayerGaming:(id)arg3 withAllowAddingGameCenterFriends:(id)arg4 withAllowGameCenterNearbyMultiplayer:(id)arg5 withAllowGameCenterPrivateMessaging:(id)arg6 withAllowGameCenterProfilePrivacyModification:(id)arg7 withAllowGameCenterProfileModification:(id)arg8 withAllowedGameCenterOtherPlayerTypes:(id)arg9;
++ (id)buildWithIdentifier:(id)arg1 withAllowGameCenter:(id)arg2 withAllowMultiplayerGaming:(id)arg3 withAllowAddingGameCenterFriends:(id)arg4 withAllowGameCenterNearbyMultiplayer:(id)arg5 withAllowGameCenterPrivateMessaging:(id)arg6 withAllowGameCenterProfilePrivacyModification:(id)arg7 withAllowGameCenterProfileModification:(id)arg8 withAllowedGameCenterOtherPlayerTypes:(id)arg9 withAllowGameCenterFriendsSharingModification:(id)arg10;
 + (id)restrictionPayloadKeys;
 + (id)allowedPayloadKeys;
 + (id)profileType;
 + (id)registeredIdentifier;
 + (id)registeredClassName;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSNumber *payloadAllowGameCenterFriendsSharingModification; // @synthesize payloadAllowGameCenterFriendsSharingModification=_payloadAllowGameCenterFriendsSharingModification;
 @property(copy, nonatomic) NSNumber *payloadAllowedGameCenterOtherPlayerTypes; // @synthesize payloadAllowedGameCenterOtherPlayerTypes=_payloadAllowedGameCenterOtherPlayerTypes;
 @property(copy, nonatomic) NSNumber *payloadAllowGameCenterProfileModification; // @synthesize payloadAllowGameCenterProfileModification=_payloadAllowGameCenterProfileModification;
 @property(copy, nonatomic) NSNumber *payloadAllowGameCenterProfilePrivacyModification; // @synthesize payloadAllowGameCenterProfilePrivacyModification=_payloadAllowGameCenterProfilePrivacyModification;

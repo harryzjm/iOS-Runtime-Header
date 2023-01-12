@@ -13,10 +13,12 @@
     MISSING_TYPE *item;
     MISSING_TYPE *$__lazy_storage_$_titleLabel;
     MISSING_TYPE *$__lazy_storage_$_iconImageView;
-    MISSING_TYPE *titleLabelCenterYConstraint;
+    MISSING_TYPE *titleLabelImageViewCenterYConstraint;
     MISSING_TYPE *iconImageViewWidthConstraint;
     MISSING_TYPE *iconImageViewBaselineConstraint;
     MISSING_TYPE *iconImageViewBottomConstraint;
+    MISSING_TYPE *iconImageViewTopConstraint;
+    MISSING_TYPE *zeroHeightConstraint;
 }
 
 - (void).cxx_destruct;

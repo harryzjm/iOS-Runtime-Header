@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProactiveSupport/_PASZonedObject.h>
+#import <objc/NSObject.h>
 
 #import <PersonalizationPortrait/MLFeatureProvider-Protocol.h>
 #import <PersonalizationPortrait/NSCopying-Protocol.h>
@@ -12,7 +12,7 @@
 
 @class NSArray, NSDate, NSSet, NSString, PPSourceMetadata;
 
-@interface PPSource : _PASZonedObject <NSCopying, NSSecureCoding, MLFeatureProvider>
+@interface PPSource : NSObject <NSCopying, NSSecureCoding, MLFeatureProvider>
 {
     PPSourceMetadata *_metadata;
     NSDate *_relevanceDate;
@@ -43,6 +43,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)description;
 - (id)initWithBundleId:(id)arg1 groupId:(id)arg2 documentId:(id)arg3 date:(id)arg4 relevanceDate:(id)arg5 contactHandles:(id)arg6 language:(id)arg7 metadata:(id)arg8;
 - (id)initWithBundleId:(id)arg1 groupId:(id)arg2 documentId:(id)arg3 date:(id)arg4;
 

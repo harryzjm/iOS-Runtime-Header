@@ -37,6 +37,7 @@
     NSObject<OS_dispatch_source> *_reindexAllItemsWithIdentifiersSource;
     SPCoreSpotlightTask *_reindexAllItemsTask;
     NSMutableSet *_knownPersonas;
+    NSObject<OS_dispatch_queue> *_personaQueue;
     NSObject<OS_dispatch_queue> *_indexQueue;
     NSObject<OS_dispatch_queue> *_firstUnlockQueue;
     NSObject<OS_dispatch_queue> *_reindexAllQueue;
@@ -66,6 +67,7 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *reindexAllQueue; // @synthesize reindexAllQueue=_reindexAllQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *firstUnlockQueue; // @synthesize firstUnlockQueue=_firstUnlockQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *indexQueue; // @synthesize indexQueue=_indexQueue;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *personaQueue; // @synthesize personaQueue=_personaQueue;
 @property(nonatomic) _Bool updatePersonas; // @synthesize updatePersonas=_updatePersonas;
 @property(retain, nonatomic) NSMutableSet *knownPersonas; // @synthesize knownPersonas=_knownPersonas;
 @property(retain) SPCoreSpotlightTask *reindexAllItemsTask; // @synthesize reindexAllItemsTask=_reindexAllItemsTask;
@@ -94,7 +96,7 @@
 @property(readonly) NSURL *personaListURL;
 - (id)queryForWord:(id)arg1 matchingAttributes:(id)arg2 prefixMatch:(_Bool)arg3;
 - (void)powerStateChanged;
-- (void)revokeExpiredItems:(id)arg1;
+- (void)revokeExpiredItems:(id)arg1 protected:(_Bool)arg2;
 - (void)fetchAttributesForProtectionClass:(id)arg1 attributes:(id)arg2 bundleID:(id)arg3 identifiers:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)fetchAttributes:(id)arg1 protectionClass:(id)arg2 bundleID:(id)arg3 identifiers:(id)arg4 includeParents:(_Bool)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (double)lastUpdateTime;
@@ -147,6 +149,7 @@
 - (void)_closeIndexWithIndexers:(id)arg1;
 - (void)shrink:(unsigned long long)arg1;
 - (void)coolDown;
+- (void)issueMessagesFixup:(CDUnknownBlockType)arg1;
 - (void)issueDuplicateOidCheck:(id)arg1;
 - (void)issueConsistencyCheck:(id)arg1;
 - (void)issueDumpForward:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;

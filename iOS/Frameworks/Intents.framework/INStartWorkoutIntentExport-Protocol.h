@@ -7,9 +7,14 @@
 #import <Intents/JSExport-Protocol.h>
 #import <Intents/NSObject-Protocol.h>
 
-@class INSpeakableString, NSNumber;
+@class INSpeakableString, INWorkoutCustomization, NSArray, NSNumber;
 
 @protocol INStartWorkoutIntentExport <NSObject, JSExport>
+@property(copy, nonatomic) INWorkoutCustomization *customization;
+@property(nonatomic) long long sequenceLabel;
+@property(copy, nonatomic) NSNumber *isVoiceOnly;
+@property(copy, nonatomic) NSNumber *isBuiltInWorkoutType;
+@property(copy, nonatomic) NSArray *associatedItems;
 @property(copy, nonatomic) NSNumber *isOpenEnded;
 @property(nonatomic) long long workoutLocationType;
 @property(nonatomic) long long workoutGoalUnitType;

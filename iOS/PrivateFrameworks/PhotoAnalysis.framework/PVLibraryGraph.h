@@ -21,8 +21,6 @@
 + (id)graphForFacesDataSnapshotAtPath:(id)arg1;
 + (id)originGraphForFacesDataSnapshotAtPath:(id)arg1;
 + (id)graphForLibrary:(id)arg1 ingestPeople:(_Bool)arg2;
-+ (Class)edgeClassForLabel:(id)arg1 domain:(unsigned short)arg2;
-+ (Class)nodeClassForLabel:(id)arg1 domain:(unsigned short)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *distanceIdentityDictionary; // @synthesize distanceIdentityDictionary=_distanceIdentityDictionary;
 @property(retain, nonatomic) NSDictionary *faceprintDictionary; // @synthesize faceprintDictionary=_faceprintDictionary;
@@ -49,6 +47,7 @@
 - (id)pv_fetchMomentsForPerson:(id)arg1;
 - (id)pv_fetchMomentsWithLocalIdentifiers:(id)arg1;
 - (id)pv_fetchMoments;
+- (id)pv_fetchAssetsForFaceLocalIdentifiers:(id)arg1;
 - (id)pv_fetchFacesGroupedByAssetLocalIdentifierForAssets:(id)arg1;
 - (id)pv_fetchFacesForFaceGroup:(id)arg1;
 - (id)pv_fetchFacesForPersonLocalIdentifiers:(id)arg1 inMoment:(id)arg2;

@@ -19,6 +19,7 @@
 }
 
 + (id)creationDateForSignpost:(long long)arg1;
++ (id)systemPropertyForKey:(id)arg1;
 + (id)bucketNameForDouble:(double)arg1 bucketLimits:(id)arg2 numberFormatter:(id)arg3;
 + (id)bucketNameForInteger:(long long)arg1 bucketLimits:(long long)arg2;
 + (void)removeDestination:(id)arg1;

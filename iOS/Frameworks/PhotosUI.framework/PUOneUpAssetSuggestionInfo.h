@@ -6,20 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSProgress, PUOneUpSuggestion, PXContextualNotification;
+@class NSProgress, PXContextualNotification;
 
 __attribute__((visibility("hidden")))
 @interface PUOneUpAssetSuggestionInfo : NSObject
 {
     long long _state;
     NSProgress *_progress;
-    PUOneUpSuggestion *_suggestion;
     PXContextualNotification *_contextualNotification;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) PXContextualNotification *contextualNotification; // @synthesize contextualNotification=_contextualNotification;
-@property(retain, nonatomic) PUOneUpSuggestion *suggestion; // @synthesize suggestion=_suggestion;
 @property(retain, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
 @property(nonatomic) long long state; // @synthesize state=_state;
 

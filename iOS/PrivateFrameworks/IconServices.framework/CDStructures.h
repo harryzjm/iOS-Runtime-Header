@@ -10,15 +10,6 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct CGAffineTransform {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
-    double _field5;
-    double _field6;
-};
-
 struct CGPoint {
     double x;
     double y;
@@ -45,4 +36,63 @@ struct _LIIconVariantInfo {
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
+
+#pragma mark Typedef'd Structures
+
+typedef struct {
+    unsigned int _field1;
+    _Bool _field2;
+    unsigned int _field3;
+    unsigned int _field4;
+    unsigned int _field5;
+} CDStruct_bb19e42a;
+
+typedef struct {
+    unsigned int _field1;
+    _Bool _field2;
+    unsigned int _field3;
+} CDStruct_7956d949;
+
+typedef struct {
+    unsigned char _field1[16];
+    struct {
+        double _field1;
+        double _field2;
+    } _field2;
+    double _field3;
+    unsigned int _field4;
+    unsigned char _field5[16];
+    unsigned char _field6[16];
+    struct {
+        unsigned char _field1[16];
+        unsigned long long _field2;
+        unsigned char _field3[16];
+    } _field7;
+} CDStruct_f186bacb;
+
+typedef struct {
+    CDUnion_698d0922 _field1;
+    _Bool _field2;
+    unsigned char _field3[3];
+    unsigned char _field4[0];
+} CDStruct_845cb7ef;
+
+typedef struct {
+    CDUnion_698d0922 _field1;
+    unsigned char _field2[16];
+    CDUnion_698d0922 _field3;
+    _Bool _field4;
+    unsigned char _field5[3];
+    unsigned char _field6[0];
+} CDStruct_0d004e74;
+
+#pragma mark Typedef'd Unions
+
+typedef union {
+    struct {
+        unsigned int _field1;
+        unsigned int _field2;
+    } _field1;
+    unsigned long long _field2;
+} CDUnion_698d0922;
 

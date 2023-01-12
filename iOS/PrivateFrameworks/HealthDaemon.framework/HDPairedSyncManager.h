@@ -22,19 +22,10 @@
 
 + (id)syncCoordinatorWithServiceName:(id)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSHashTable *unfinishedSyncSessions; // @synthesize unfinishedSyncSessions=_unfinishedSyncSessions;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property(nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
-@property(retain, nonatomic) PSYSyncCoordinator *pairedSyncCoordinator; // @synthesize pairedSyncCoordinator=_pairedSyncCoordinator;
 - (id)diagnosticDescription;
-- (id)_syncRestrictionString;
-- (id)_typeStringForSyncSession:(id)arg1;
 - (void)syncCoordinatorDidChangeSyncRestriction:(id)arg1;
 - (void)syncCoordinator:(id)arg1 didInvalidateSyncSession:(id)arg2;
 - (void)syncCoordinator:(id)arg1 beginSyncSession:(id)arg2;
-- (void)_queue_didFinishRestoreForSession:(id)arg1 error:(id)arg2;
-- (void)_queue_didSendRestoreMessagesForSession:(id)arg1 error:(id)arg2;
-- (void)_queue_pairedSyncDidStartWithSession:(id)arg1;
 - (_Bool)permitSynchronization;
 @property(readonly) PSYSyncCoordinator *syncCoordinator;
 - (void)dealloc;

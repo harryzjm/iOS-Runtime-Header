@@ -57,12 +57,12 @@
 - (_Bool)pointInside:(struct CGPoint)arg1;
 - (void)addFeaturesFromElement:(id)arg1;
 - (void)addFeatureWrapper:(id)arg1;
-- (void)addFeature:(CDStruct_66740237 *)arg1;
+- (void)addFeature:(id)arg1;
 - (void)removeFeatures;
 - (id)accessibilityLabel;
 - (void)_updateElementStatus;
 - (_Bool)_allowCustomActionHintSpeakOverride;
-- (id)initWithAccessibilityContainer:(id)arg1 feature:(CDStruct_66740237 *)arg2 ignoreMissingName:(_Bool)arg3 useLocalizedLabels:(_Bool)arg4;
+- (id)initWithAccessibilityContainer:(id)arg1 feature:(id)arg2 ignoreMissingName:(_Bool)arg3 useLocalizedLabels:(_Bool)arg4;
 
 @end
 

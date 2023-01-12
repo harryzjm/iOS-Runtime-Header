@@ -9,7 +9,7 @@
 #import <CoverSheet/SBUIProudLockContainerViewControllerLockStatusProvider-Protocol.h>
 
 @class CSLockScreenPearlSettings, NSString, SBUIProudLockContainerViewController, UIView;
-@protocol BSInvalidatable, SBFAuthenticationStatusProvider, SBUIBiometricResource;
+@protocol BSInvalidatable, CSProudLockViewControllerDelegate, SBFAuthenticationStatusProvider, SBUIBiometricResource;
 
 @interface CSProudLockViewController <PTSettingsKeyObserver, SBUIProudLockContainerViewControllerLockStatusProvider, SBUIProudLockContainerViewControllerDelegate>
 {
@@ -20,9 +20,11 @@
     SBUIProudLockContainerViewController *_proudLockContainerViewController;
     id <SBUIBiometricResource> _biometricResource;
     id <SBFAuthenticationStatusProvider> _authenticationStatusProvider;
+    id <CSProudLockViewControllerDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <CSProudLockViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool suspendLockUpdates; // @synthesize suspendLockUpdates=_suspendLockUpdates;
 @property(retain, nonatomic) id <SBFAuthenticationStatusProvider> authenticationStatusProvider; // @synthesize authenticationStatusProvider=_authenticationStatusProvider;
 @property(retain, nonatomic) id <SBUIBiometricResource> biometricResource; // @synthesize biometricResource=_biometricResource;
@@ -34,6 +36,7 @@
 - (void)_updateForAuthenticated:(_Bool)arg1;
 - (void)aggregateAppearance:(id)arg1;
 - (_Bool)handleEvent:(id)arg1;
+- (_Bool)proudLockContainerViewControllerIsCoverSheetVisible:(id)arg1;
 - (void)proudLockContainerViewController:(id)arg1 guidanceTextVisibilityDidChangeAnimated:(_Bool)arg2;
 @property(readonly, nonatomic) _Bool hasPasscodeSet;
 @property(readonly, nonatomic) _Bool isBiometricLockedOut;

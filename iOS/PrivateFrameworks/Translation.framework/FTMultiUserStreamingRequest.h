@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_2c19e347)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_2c19e347)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) FTSetAlternateRecognitionSausage *contentAsFTSetAlternateRecognitionSausage;
 @property(readonly, nonatomic) FTResetServerEndpointer *contentAsFTResetServerEndpointer;
 @property(readonly, nonatomic) FTFinishAudio *contentAsFTFinishAudio;

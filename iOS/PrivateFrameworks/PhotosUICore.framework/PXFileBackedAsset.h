@@ -10,7 +10,7 @@
 #import <PhotosUICore/PXLayoutItemInput-Protocol.h>
 #import <PhotosUICore/PXMetadataAsset-Protocol.h>
 
-@class CLLocation, NSDate, NSNumber, NSString, NSURL, PXFileBackedAssetDescription, _PXFileBackedAssetMetadata;
+@class CLLocation, NSData, NSDate, NSNumber, NSString, NSURL, PXFileBackedAssetDescription, _PXFileBackedAssetMetadata;
 
 @interface PXFileBackedAsset : NSObject <PXDisplayAsset, PXLayoutItemInput, PXMetadataAsset>
 {
@@ -39,6 +39,7 @@
 @property(readonly, nonatomic) double aspectRatio;
 @property(readonly, nonatomic) struct CGPoint positionOffset;
 @property(readonly, nonatomic) struct CGAffineTransform transform;
+@property(readonly, nonatomic) struct CGRect faceAreaRect;
 @property(readonly, nonatomic) struct CGRect acceptableCropRect;
 @property(readonly, nonatomic) struct CGRect preferredCropRect;
 @property(readonly, nonatomic) struct CGSize size;
@@ -71,10 +72,12 @@
 @property(readonly, nonatomic) _Bool cloudIsDeletable;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, nonatomic) double duration;
+@property(readonly, nonatomic) NSData *fetchColorNormalizationData;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) NSNumber *hdrGain;
 @property(readonly, nonatomic) NSDate *importDate;
 @property(readonly, nonatomic) _Bool isAutoPlaybackEligibilityEstimated;
+@property(readonly, nonatomic) CDStruct_1b6d18a9 livePhotoVideoDuration;
 @property(readonly, nonatomic) NSString *localizedGeoDescription;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) unsigned long long thumbnailVersion;

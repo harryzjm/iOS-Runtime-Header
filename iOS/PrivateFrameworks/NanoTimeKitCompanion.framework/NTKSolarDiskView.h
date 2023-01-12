@@ -23,7 +23,7 @@
 @property(nonatomic) double horizonLine; // @synthesize horizonLine=_horizonLine;
 - (void)layoutSubviews;
 - (void)setCenter:(struct CGPoint)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 forDevice:(id)arg2;
+- (id)initWithSize:(double)arg1 forDevice:(id)arg2;
 
 @end
 

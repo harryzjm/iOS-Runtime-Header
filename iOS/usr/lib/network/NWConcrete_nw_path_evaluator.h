@@ -9,14 +9,15 @@
 #import <network/OS_nw_path_evaluator-Protocol.h>
 
 @class NSString, NWConcrete_nw_path;
-@protocol OS_dispatch_queue, OS_nw_advertise_descriptor, OS_nw_browse_descriptor, OS_nw_endpoint, OS_nw_parameters;
+@protocol OS_dispatch_queue, OS_nw_advertise_descriptor, OS_nw_browse_descriptor, OS_nw_endpoint, OS_nw_group_descriptor, OS_nw_parameters;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_path_evaluator : NSObject <OS_nw_path_evaluator>
 {
     NSObject<OS_nw_parameters> *parameters;
     NSObject<OS_nw_endpoint> *endpoint;
-    NSObject<OS_nw_browse_descriptor> *descriptor;
+    NSObject<OS_nw_group_descriptor> *group_descriptor;
+    NSObject<OS_nw_browse_descriptor> *browse_descriptor;
     NSObject<OS_nw_advertise_descriptor> *advertise_descriptor;
     NWConcrete_nw_path *path;
     NSObject<OS_dispatch_queue> *client_queue;

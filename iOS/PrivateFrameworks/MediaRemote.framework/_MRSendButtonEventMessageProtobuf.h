@@ -8,6 +8,7 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface _MRSendButtonEventMessageProtobuf : PBCodable <NSCopying>
 {
     unsigned int _usage;
@@ -20,21 +21,13 @@
     } _has;
 }
 
-@property(nonatomic) _Bool buttonDown; // @synthesize buttonDown=_buttonDown;
-@property(nonatomic) unsigned int usage; // @synthesize usage=_usage;
-@property(nonatomic) unsigned int usagePage; // @synthesize usagePage=_usagePage;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasButtonDown;
-@property(nonatomic) _Bool hasUsage;
-@property(nonatomic) _Bool hasUsagePage;
 
 @end
 

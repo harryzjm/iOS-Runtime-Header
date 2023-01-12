@@ -4,15 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProactiveSupport/_PASZonedObject.h>
+#import <objc/NSObject.h>
 
 #import <PersonalizationPortrait/NSCopying-Protocol.h>
 #import <PersonalizationPortrait/NSSecureCoding-Protocol.h>
 
-@class NSObject;
 @protocol NSCopying><NSSecureCoding;
 
-@interface PPScoredItem : _PASZonedObject <NSCopying, NSSecureCoding>
+@interface PPScoredItem : NSObject <NSCopying, NSSecureCoding>
 {
     unsigned short _resultPosition;
     unsigned short _resultCount;

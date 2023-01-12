@@ -19,7 +19,8 @@
     unsigned long long _queue_operationCount;
     _Bool _queue_isComplete;
     BSMonotonicReferenceTime *_queue_cloudSyncStartReferenceTime;
-    NSMutableArray *_testOperations;
+    NSMutableArray *_blockingTestOperations;
+    NSMutableArray *_nonblockingTestOperations;
 }
 
 - (void).cxx_destruct;
@@ -30,8 +31,8 @@
 - (id)_queue_fetchCloudAccountOperation;
 - (void)_queue_startFetchingCloudCriticalData;
 - (_Bool)_queue_isComplete;
-- (void)_queue_addOperation:(id)arg1;
-- (void)_addTestOperation:(id)arg1;
+- (void)_queue_addOperation:(id)arg1 shouldBlock:(_Bool)arg2;
+- (void)_addTestOperation:(id)arg1 shouldBlock:(_Bool)arg2;
 - (unsigned long long)_pendingOperationCount;
 - (_Bool)waitForSynchronizeToCompleteWithTimeout:(double)arg1;
 - (void)startSynchronize;

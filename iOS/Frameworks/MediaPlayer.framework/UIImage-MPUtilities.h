@@ -9,6 +9,7 @@
 @class NSURL;
 
 @interface UIImage (MPUtilities)
+- (id)imageWithRoundedCornersOfRadius:(double)arg1;
 - (id)imageWithShadow:(id)arg1;
 - (id)imageWithEtchedBorderOfColor:(id)arg1 radius:(double)arg2;
 - (id)initWithContentsOfExactFilePath:(id)arg1;

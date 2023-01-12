@@ -8,8 +8,8 @@
 
 #import <NanoTimeKitCompanion/ASCLockupViewDelegate-Protocol.h>
 
-@class ASCLockupView, BPSWatchView, NSArray, NSError, NSNumber, NSObject, NSSet, NSString, NTKGreenfieldDecodedRecipe, NTKGreenfieldHighlightableFaceContainerView;
-@protocol NTKGreenfieldCompanionContentViewControllerDelegate, OS_dispatch_queue;
+@class ASCLockupView, NSArray, NSError, NSNumber, NSObject, NSSet, NSString, NTKGreenfieldDecodedRecipe, NTKGreenfieldHighlightableFaceContainerView, UIView;
+@protocol BPSWatchViewProtocol, NTKGreenfieldCompanionContentViewControllerDelegate, OS_dispatch_queue;
 
 @interface NTKGreenfieldCompanionContentViewController : BPSWelcomeOptinViewController <ASCLockupViewDelegate>
 {
@@ -25,7 +25,8 @@
     NSString *_unavailableDescription;
     ASCLockupView *_appStoreView;
     _Bool _lockupViewStateDidChange;
-    BPSWatchView *_watchView;
+    _Bool _lockupViewDidUpdateStateForInstallingOrOpenable;
+    UIView<BPSWatchViewProtocol> *_watchView;
     NTKGreenfieldHighlightableFaceContainerView *_faceView;
     long long _installMode;
     NSObject<OS_dispatch_queue> *_workQueue;

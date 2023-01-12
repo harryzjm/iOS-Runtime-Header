@@ -54,7 +54,7 @@
 - (void)_callConfigurationUpdated;
 - (void)_callNetworkDeteriorated;
 - (void)_callNetworkImproved;
-- (void)_callStreamStopped:(id)arg1;
+- (void)_callStreamStoppedWithError:(id)arg1;
 - (void)_callRelayStarted;
 - (void)_callReceivedFirstFrame:(id)arg1;
 - (void)_callStreamStarted:(id)arg1;

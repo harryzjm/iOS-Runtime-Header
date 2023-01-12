@@ -20,8 +20,8 @@ __attribute__((visibility("hidden")))
     NSArray *_lastReportedScores;
     struct SharingImportanceMeasurements _measurements;
     NSSortDescriptor *_scoreSortDescriptor;
-    struct unique_ptr<SharingImportanceManager, std::__1::default_delete<SharingImportanceManager>> _estimatorRangeOnly;
-    struct unique_ptr<SharingImportanceManager, std::__1::default_delete<SharingImportanceManager>> _estimatorRangeAndAngle;
+    struct unique_ptr<SharingImportanceManager, std::default_delete<SharingImportanceManager>> _estimatorRangeOnly;
+    struct unique_ptr<SharingImportanceManager, std::default_delete<SharingImportanceManager>> _estimatorRangeAndAngle;
     _Bool _useRegionBasedEstimator;
     _Bool _outputScoreCalculatedWithAngle;
     _Bool _currentlyInitiating;
@@ -38,7 +38,7 @@ __attribute__((visibility("hidden")))
 @property _Bool outputScoreCalculatedWithAngle; // @synthesize outputScoreCalculatedWithAngle=_outputScoreCalculatedWithAngle;
 @property _Bool useRegionBasedEstimator; // @synthesize useRegionBasedEstimator=_useRegionBasedEstimator;
 @property(copy) CDUnknownBlockType newScoresHandler; // @synthesize newScoresHandler=_newScoresHandler;
-- (void)updateScoresWithNewMeasurement:(const struct NeighborMeasurements *)arg1;
+- (void)updateScoresWithNewMeasurement:(const void *)arg1;
 - (void)updateScoresForTime:(double)arg1;
 - (void)reportScoresToClientAlways:(_Bool)arg1 useUpdatedScoreList:(_Bool)arg2 currentMachContTime:(double)arg3;
 - (void)heartbeatTimeout:(double)arg1 currentMachContTime:(double)arg2 useUpdatedScores:(_Bool)arg3;

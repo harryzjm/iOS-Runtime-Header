@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HDAWDSubmissionManager, HDAgeGatingManager, HDAppSubscriptionManager, HDCurrentActivitySummaryHelper, HDDataCollectionManager, HDDemoDataManager, HDFitnessMachineManager, HDHealthServiceManager, HDNanoSyncManager, HDNotificationManager, HDServiceConnectionManager, HDTinkerPrivacyAlertCoordinator, HDWorkoutManager;
+@class HDAWDSubmissionManager, HDAgeGatingManager, HDAppSubscriptionManager, HDAssertionManager, HDCurrentActivitySummaryHelper, HDDataCollectionManager, HDDemoDataManager, HDFitnessMachineManager, HDHealthServiceManager, HDNanoSyncManager, HDNotificationManager, HDPeriodicCountryMonitor, HDRestorableAlarmScheduler, HDServiceConnectionManager, HDSummarySharingEntryIDSManager, HDSummarySharingEntryManager, HDTinkerPrivacyAlertCoordinator, HDWorkoutCondenser, HDWorkoutManager;
 
 @interface HDPrimaryProfile
 {
@@ -16,35 +16,47 @@
     HDFitnessMachineManager *_fitnessMachineManager;
     HDNanoSyncManager *_nanoSyncManager;
     HDNotificationManager *_notificationManager;
+    HDPeriodicCountryMonitor *_periodicCountryMonitor;
     HDHealthServiceManager *_serviceManager;
+    HDRestorableAlarmScheduler *_alarmScheduler;
     HDServiceConnectionManager *_serviceConnectionManager;
+    HDAssertionManager *_sessionAssertionManager;
     HDWorkoutManager *_workoutManager;
+    HDWorkoutCondenser *_workoutCondenser;
     HDDemoDataManager *_demoDataManager;
     HDTinkerPrivacyAlertCoordinator *_tinkerPrivacyAlertCoordinator;
+    HDSummarySharingEntryManager *_summarySharingEntryManager;
+    HDSummarySharingEntryIDSManager *_summarySharingEntryIDSManager;
 }
 
 - (void).cxx_destruct;
-- (void)_applyPPTUpdates;
 - (void)unitTest_setNanoSyncManager:(id)arg1;
 - (void)unitTest_setServiceManager:(id)arg1;
 - (id)_newWorkoutManager;
-- (id)_newNotificationManager;
+- (id)_newPeriodicCountryMonitorWithNanoSyncManager:(id)arg1;
 - (id)_newNanoSyncManager;
 - (id)_newAWDSubmissionManager;
-- (id)_newAppSubscriptionManager;
+- (id)summarySharingEntryIDSManager;
+- (id)sharingEntryManager;
 - (id)tinkerPrivacyAlertCoordinator;
+- (id)sessionAssertionManager;
 - (id)serviceManager;
 - (id)serviceConnectionManager;
+- (id)periodicCountryMonitor;
 - (id)notificationManager;
 - (id)nanoSyncManager;
 - (id)fitnessMachineManager;
+- (id)workoutCondenser;
 - (id)workoutManager;
 - (id)dataCollectionManager;
 - (id)currentActivitySummaryHelper;
 - (id)awdSubmissionManager;
 - (id)appSubscriptionManager;
+- (id)alarmScheduler;
+- (id)ageGatingManager;
 - (id)activityCacheManager;
 - (void)terminationCleanup;
+- (id)_initWithDirectoryPath:(id)arg1 medicalIDDirectoryPath:(id)arg2 daemon:(id)arg3 profileIdentifier:(id)arg4;
 - (id)initWithDirectoryPath:(id)arg1 medicalIDDirectoryPath:(id)arg2 daemon:(id)arg3;
 
 @end

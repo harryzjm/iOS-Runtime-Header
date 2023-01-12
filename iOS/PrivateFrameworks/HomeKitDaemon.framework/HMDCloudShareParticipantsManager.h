@@ -33,6 +33,7 @@
 - (id)_untrustedInvitationContextForUser:(id)arg1 shouldGrantWriteAccess:(_Bool)arg2;
 - (id)fetchInvitationContextForUser:(id)arg1 shouldGrantWriteAccess:(_Bool)arg2;
 - (id)fetchInvitationToUser:(id)arg1 shouldGrantWriteAccess:(_Bool)arg2;
+- (_Bool)isAcceptedUser:(id)arg1 error:(id *)arg2;
 - (void)clearParticipants;
 - (void)updateShareParticipants;
 - (void)configure;

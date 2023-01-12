@@ -12,8 +12,8 @@
 
 @interface TSCHSelectionPathType : NSObject <NSCopying>
 {
-    NSString *mType;
-    NSString *mName;
+    NSString *_type;
+    NSString *_name;
 }
 
 + (id)selectionPathTypeWithType:(id)arg1 name:(id)arg2;
@@ -42,10 +42,10 @@
 + (id)chartDataSetNameType;
 + (id)chartTitleType;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSString *name; // @synthesize name=mName;
-@property(readonly, nonatomic) NSString *type; // @synthesize type=mType;
-- (void)saveToArchive:(struct ChartSelectionPathTypeArchive *)arg1;
-- (id)initWithArchive:(const struct ChartSelectionPathTypeArchive *)arg1;
+@property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
+@property(readonly, nonatomic) NSString *type; // @synthesize type=_type;
+- (void)saveToArchive:(void *)arg1;
+- (id)initWithArchive:(const void *)arg1;
 - (_Bool)canApplyChartStyleWithDescription:(id)arg1;
 - (_Bool)canApplyShapeStyle;
 - (_Bool)canApplyParagraphStyle;

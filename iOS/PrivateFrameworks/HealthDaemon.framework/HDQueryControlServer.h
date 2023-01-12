@@ -24,20 +24,14 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
-@property(readonly, nonatomic) HDHealthStoreClient *client; // @synthesize client=_client;
-@property(readonly, nonatomic) __weak HDHealthStoreServer *server; // @synthesize server=_server;
 - (void)queryServerDidFinish:(id)arg1;
 - (void)queryServer:(id)arg1 shouldStartWithCompletion:(CDUnknownBlockType)arg2;
-- (void)queryServer:(id)arg1 requestsAuthorizationForSamples:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_startQueryServer:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (_Bool)_lock_hasActiveQueries;
+- (void)queryServer:(id)arg1 requestsAuthorizationWithContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)taskServerDidInvalidate:(id)arg1;
 - (void)taskServerDidFailToInitializeForUUID:(id)arg1;
 - (void)taskServerDidFinishInitialization:(id)arg1;
-- (id)taskServerWithUUID:(id)arg1;
 - (_Bool)hasActiveQueries;
-- (id)createQueryServerEndpointForIdentifier:(id)arg1 queryUUID:(id)arg2 configuration:(id)arg3 error:(id *)arg4;
+- (id)createQueryServerEndpointForIdentifier:(id)arg1 queryUUID:(id)arg2 configuration:(id)arg3 forceReactivation:(_Bool)arg4 error:(id *)arg5;
 - (void)invalidate;
 - (id)initWithParentServer:(id)arg1 connectionQueue:(id)arg2;
 

@@ -8,7 +8,7 @@
 
 #import <Weather/WAIdentifiable-Protocol.h>
 
-@class CLLocation, NSArray, NSDate, NSDictionary, NSError, NSHashTable, NSNumber, NSString, NSTimeZone, NSTimer, NSURL, WFAQIScaleCategory, WFGeocodeRequest, WFLocation, WFNextHourPrecipitation, WFTemperature, WeatherAQIAttribution;
+@class CLLocation, NSArray, NSDate, NSDictionary, NSError, NSHashTable, NSNumber, NSString, NSTimeZone, NSTimer, NSURL, WFAQIScale, WFAQIScaleCategory, WFGeocodeRequest, WFLocation, WFNextHourPrecipitation, WFTemperature, WeatherAQIAttribution;
 
 @interface City : NSObject <WAIdentifiable>
 {
@@ -59,12 +59,14 @@
     NSURL *_severeWeatherEventLearnMoreURL;
     NSNumber *_airQualityIdx;
     NSNumber *_airQualityCategory;
-    NSString *_airQualityScale;
+    NSString *_airQualityScaleIdentifier;
     WFAQIScaleCategory *_airQualityScaleCategory;
     unsigned long long _airQualitySignificance;
-    NSString *_airQualityLocalizedRecommendation;
+    NSString *_airQualityRecommendation;
     WeatherAQIAttribution *_airQualityAttribution;
-    NSURL *_airQualityProviderURL;
+    NSURL *_airQualityLearnMoreURL;
+    WFAQIScale *_airQualityScale;
+    WFAQIScaleCategory *_airQualityCurrentScaleCategory;
     WFLocation *_wfLocation;
     unsigned long long _lastUpdateStatus;
     long long _updateInterval;
@@ -99,13 +101,15 @@
 @property(nonatomic) _Bool isUpdating; // @synthesize isUpdating=_isUpdating;
 @property(nonatomic) unsigned long long lastUpdateStatus; // @synthesize lastUpdateStatus=_lastUpdateStatus;
 @property(retain, nonatomic) WFLocation *wfLocation; // @synthesize wfLocation=_wfLocation;
-@property(copy, nonatomic) NSURL *airQualityProviderURL; // @synthesize airQualityProviderURL=_airQualityProviderURL;
+@property(retain, nonatomic) WFAQIScaleCategory *airQualityCurrentScaleCategory; // @synthesize airQualityCurrentScaleCategory=_airQualityCurrentScaleCategory;
+@property(retain, nonatomic) WFAQIScale *airQualityScale; // @synthesize airQualityScale=_airQualityScale;
+@property(copy, nonatomic) NSURL *airQualityLearnMoreURL; // @synthesize airQualityLearnMoreURL=_airQualityLearnMoreURL;
 @property(retain, nonatomic) WeatherAQIAttribution *airQualityAttribution; // @synthesize airQualityAttribution=_airQualityAttribution;
 @property(nonatomic) _Bool airQualityTemporarilyUnavailable; // @synthesize airQualityTemporarilyUnavailable=_airQualityTemporarilyUnavailable;
-@property(copy, nonatomic) NSString *airQualityLocalizedRecommendation; // @synthesize airQualityLocalizedRecommendation=_airQualityLocalizedRecommendation;
+@property(copy, nonatomic) NSString *airQualityRecommendation; // @synthesize airQualityRecommendation=_airQualityRecommendation;
 @property(nonatomic) unsigned long long airQualitySignificance; // @synthesize airQualitySignificance=_airQualitySignificance;
 @property(retain, nonatomic) WFAQIScaleCategory *airQualityScaleCategory; // @synthesize airQualityScaleCategory=_airQualityScaleCategory;
-@property(copy, nonatomic) NSString *airQualityScale; // @synthesize airQualityScale=_airQualityScale;
+@property(copy, nonatomic) NSString *airQualityScaleIdentifier; // @synthesize airQualityScaleIdentifier=_airQualityScaleIdentifier;
 @property(retain, nonatomic) NSNumber *airQualityCategory; // @synthesize airQualityCategory=_airQualityCategory;
 @property(retain, nonatomic) NSNumber *airQualityIdx; // @synthesize airQualityIdx=_airQualityIdx;
 @property(copy, nonatomic) NSURL *severeWeatherEventLearnMoreURL; // @synthesize severeWeatherEventLearnMoreURL=_severeWeatherEventLearnMoreURL;
@@ -145,8 +149,10 @@
 @property(nonatomic) _Bool isLocalWeatherCity; // @synthesize isLocalWeatherCity=_isLocalWeatherCity;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(copy, nonatomic) NSString *updateTimeString; // @synthesize updateTimeString=_updateTimeString;
+@property(readonly, nonatomic) _Bool airQualityScaleIsNumerical;
+@property(readonly, nonatomic) _Bool airQualityScaleIsAscending;
 - (_Bool)airQualityCanUseDefaultAttribution;
-@property(readonly, nonatomic) _Bool airQualityForceHideRecommendationString;
+@property(readonly, nonatomic) _Bool airQualityForceHideRecommendation;
 - (unsigned long long)aqiDataAvailabilityStatusFromAppConfig;
 @property(readonly, nonatomic) unsigned long long aqiDataAvailabilityStatus;
 @property(readonly, nonatomic) NSString *countryCode;

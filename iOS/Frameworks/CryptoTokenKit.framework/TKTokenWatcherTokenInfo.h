@@ -8,17 +8,16 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface TKTokenWatcherTokenInfo : NSObject
 {
     NSString *_tokenID;
-    NSString *_driverName;
     NSString *_slotName;
+    NSString *_driverName;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSString *slotName; // @synthesize slotName=_slotName;
 @property(readonly, nonatomic) NSString *driverName; // @synthesize driverName=_driverName;
+@property(readonly, nonatomic) NSString *slotName; // @synthesize slotName=_slotName;
 @property(readonly, nonatomic) NSString *tokenID; // @synthesize tokenID=_tokenID;
 - (id)initWithTokenInfo:(id)arg1;
 

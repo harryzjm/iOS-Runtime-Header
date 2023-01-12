@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CRKASMCredentialStore, NSString;
+@class CRKASMCredentialStore, NSMapTable, NSString;
 @protocol CRKClassKitRosterRequirements;
 
 @interface CRKASMRosterProviderConfiguration : NSObject
@@ -18,14 +18,21 @@
     long long _maxCourseUsersCount;
     long long _maxCourseTrustedUsersCount;
     double _rosterMutationTimeout;
+    NSMapTable *_userCache;
+    NSMapTable *_trustedUserCache;
 }
 
++ (_Bool)userCachingEnabled;
++ (_Bool)dataSeparationEnabled;
 + (_Bool)currentPlatformRequiresPersonaAdoption;
 + (id)makeStandardClassKitFacade;
++ (id)makeInstructorClassKitFacade;
 + (id)makeStudentClassKitFacade;
 + (id)instructorRosterConfiguration;
 + (id)studentRosterConfiguration;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSMapTable *trustedUserCache; // @synthesize trustedUserCache=_trustedUserCache;
+@property(readonly, nonatomic) NSMapTable *userCache; // @synthesize userCache=_userCache;
 @property(readonly, nonatomic) double rosterMutationTimeout; // @synthesize rosterMutationTimeout=_rosterMutationTimeout;
 @property(readonly, nonatomic) long long maxCourseTrustedUsersCount; // @synthesize maxCourseTrustedUsersCount=_maxCourseTrustedUsersCount;
 @property(readonly, nonatomic) long long maxCourseUsersCount; // @synthesize maxCourseUsersCount=_maxCourseUsersCount;
@@ -33,7 +40,7 @@
 @property(readonly, nonatomic) NSObject<CRKClassKitRosterRequirements> *rosterRequirements; // @synthesize rosterRequirements=_rosterRequirements;
 @property(readonly, copy, nonatomic) NSString *trustedUserCommonNamePrefix; // @synthesize trustedUserCommonNamePrefix=_trustedUserCommonNamePrefix;
 @property(readonly, copy, nonatomic) NSString *userCommonNamePrefix; // @synthesize userCommonNamePrefix=_userCommonNamePrefix;
-- (id)initWithUserCommonNamePrefix:(id)arg1 trustedUserCommonNamePrefix:(id)arg2 rosterRequirements:(id)arg3 credentialStore:(id)arg4 maxCourseUsersCount:(long long)arg5 maxCourseTrustedUsersCount:(long long)arg6 rosterMutationTimeout:(double)arg7;
+- (id)initWithUserCommonNamePrefix:(id)arg1 trustedUserCommonNamePrefix:(id)arg2 rosterRequirements:(id)arg3 credentialStore:(id)arg4 maxCourseUsersCount:(long long)arg5 maxCourseTrustedUsersCount:(long long)arg6 rosterMutationTimeout:(double)arg7 userCachingEnabled:(_Bool)arg8;
 
 @end
 

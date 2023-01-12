@@ -17,6 +17,8 @@
 
 @property(readonly) struct Object *_apiObject;
 @property(nonatomic) _Bool allLoadsBlockedByDeviceManagementRestrictionsForTesting;
+@property(nonatomic) _Bool allowsHSTSWithUntrustedRootCertificate;
+@property(nonatomic) _Bool enableInAppBrowserPrivacyForTesting;
 @property(copy, nonatomic) NSURL *standaloneApplicationURL;
 @property(copy, nonatomic) NSDictionary *proxyConfiguration;
 @property(nonatomic) _Bool requiresSecureHTTPSProxyConnection;
@@ -33,6 +35,7 @@
 @property(nonatomic) _Bool networkCacheSpeculativeValidationEnabled;
 @property(nonatomic) _Bool deviceManagementRestrictionsEnabled;
 @property(copy, nonatomic) NSURL *alternativeServicesStorageDirectory;
+@property(copy, nonatomic, setter=setHSTSStorageDirectory:) NSURL *hstsStorageDirectory;
 @property(copy, nonatomic) NSURL *mediaKeysStorageDirectory;
 @property(copy, nonatomic) NSURL *mediaCacheDirectory;
 @property(copy, nonatomic) NSString *applicationCacheFlatFileSubdirectoryName;

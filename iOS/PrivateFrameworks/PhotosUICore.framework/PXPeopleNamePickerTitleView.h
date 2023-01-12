@@ -8,7 +8,7 @@
 
 #import <PhotosUICore/PXPhotoLibraryUIChangeObserver-Protocol.h>
 
-@class NSMutableArray, NSString, PHPerson, UIFont, UIImageView, UITextField;
+@class NSMutableArray, NSString, PHFace, PHPerson, UIFont, UIImageView, UITextField;
 
 @interface PXPeopleNamePickerTitleView : UIView <PXPhotoLibraryUIChangeObserver>
 {
@@ -20,12 +20,14 @@
     NSMutableArray *_fetchResults;
     UIImageView *_avatarView;
     PHPerson *_person;
+    PHFace *_face;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) PHPerson *person; // @synthesize person=_person;
-@property(retain, nonatomic) UIImageView *avatarView; // @synthesize avatarView=_avatarView;
-@property(retain, nonatomic) NSMutableArray *fetchResults; // @synthesize fetchResults=_fetchResults;
+@property(readonly, nonatomic) PHFace *face; // @synthesize face=_face;
+@property(readonly, nonatomic) PHPerson *person; // @synthesize person=_person;
+@property(readonly, nonatomic) UIImageView *avatarView; // @synthesize avatarView=_avatarView;
+@property(readonly, nonatomic) NSMutableArray *fetchResults; // @synthesize fetchResults=_fetchResults;
 @property(retain, nonatomic) UIFont *placeholderFont; // @synthesize placeholderFont=_placeholderFont;
 @property(copy, nonatomic) NSString *placeholder; // @synthesize placeholder=_placeholder;
 @property(retain, nonatomic) UIFont *nameFont; // @synthesize nameFont=_nameFont;
@@ -38,6 +40,8 @@
 - (void)finishEditing;
 - (void)dealloc;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 person:(id)arg2 face:(id)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 face:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 person:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

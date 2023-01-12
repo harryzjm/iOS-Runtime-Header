@@ -6,11 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <NanoTimeKitCompanion/_TtP21DeveloperToolsSupport17PreviewDisplaying_-Protocol.h>
+#import <NanoTimeKitCompanion/PreviewDisplaying-Protocol.h>
 
 @class NSArray, NSString, NTKFaceViewController, UIView;
 
-@interface NTKUVPreviewComplicationViewController : UIViewController <_TtP21DeveloperToolsSupport17PreviewDisplaying_>
+@interface NTKUVPreviewComplicationViewController : UIViewController <PreviewDisplaying>
 {
     _Bool _displayingLivePreview;
     NSArray *_previewTimeline;
@@ -22,19 +22,19 @@
 @property(retain, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
 @property(retain, nonatomic) NTKFaceViewController *faceVC; // @synthesize faceVC=_faceVC;
 @property(copy, nonatomic) NSArray *previewTimeline; // @synthesize previewTimeline=_previewTimeline;
-@property(nonatomic) _Bool displayingLivePreview; // @synthesize displayingLivePreview=_displayingLivePreview;
+@property _Bool displayingLivePreview; // @synthesize displayingLivePreview=_displayingLivePreview;
 - (void)_updateLiveness:(id)arg1;
 - (id)_faceViewControllerWithFace:(id)arg1;
 - (void)_updateFaceForTimeline;
 @property(readonly, nonatomic) NSArray *timeline;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
-@property(readonly, nonatomic) _Bool wantsCustomPreviewSize;
+@property(readonly) _Bool wantsCustomPreviewSize;
 - (struct CGSize)preferredContentSize;
 - (id)initWithTimeline:(id)arg1;
 
 // Remaining properties
-@property(readonly, nonatomic) double customPreviewSizeCornerRadius;
+@property(readonly) double customPreviewSizeCornerRadius;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

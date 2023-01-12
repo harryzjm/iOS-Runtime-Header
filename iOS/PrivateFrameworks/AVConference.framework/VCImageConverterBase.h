@@ -12,6 +12,9 @@ __attribute__((visibility("hidden")))
 @interface VCImageConverterBase : NSObject
 {
     struct __CVPixelBufferPool *_bufferPool;
+    unsigned int _formatType;
+    unsigned long long _outputWidth;
+    unsigned long long _outputHeight;
     NSMutableDictionary *_bufferPoolDictionary;
 }
 

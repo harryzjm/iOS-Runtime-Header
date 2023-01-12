@@ -4,22 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ObjCVersion;
+@class NSObject, NSUUID;
 
 @protocol CRStringDecoderProtocol
 - (unsigned int)substringChild:(long long)arg1;
 - (long long)substringChildCount;
 - (unsigned int)substringLength;
 - (unsigned int)substringAddedByCounter:(long long)arg1;
-- (unsigned int)substringAddedByReplica:(long long)arg1;
+- (NSUUID *)substringAddedByReplica:(long long)arg1 withError:(id *)arg2;
 - (long long)substringAddedByCount;
 - (unsigned int)substringCharClock;
-- (unsigned int)substringCharReplica;
+- (NSUUID *)substringCharReplicaWithError:(id *)arg1;
 - (void)decodeSubstring:(long long)arg1;
 - (long long)substringCount;
 - (id)context;
-- (ObjCVersion *)addedByVersionWithError:(id *)arg1;
-- (ObjCVersion *)versionWithError:(id *)arg1;
+- (NSObject *)addedByVersionWithError:(id *)arg1;
+- (NSObject *)versionWithError:(id *)arg1;
 - (id)storageWithError:(id *)arg1;
 @end
 

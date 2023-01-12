@@ -19,6 +19,7 @@
     _Bool _arcadeApp;
     NSString *_bundleVersion;
     NSDictionary *_extensionDictionary;
+    NSDictionary *_exAppExtensionAttributes;
     NSString *_minimumOSVersion;
     NSDictionary *_requiredDeviceCapabilities;
     NSArray *_sbAppTags;
@@ -38,6 +39,7 @@
 @property(copy, nonatomic) NSArray *sbAppTags; // @synthesize sbAppTags=_sbAppTags;
 @property(copy, nonatomic) NSDictionary *requiredDeviceCapabilities; // @synthesize requiredDeviceCapabilities=_requiredDeviceCapabilities;
 @property(copy, nonatomic) NSString *minimumOSVersion; // @synthesize minimumOSVersion=_minimumOSVersion;
+@property(copy, nonatomic) NSDictionary *exAppExtensionAttributes; // @synthesize exAppExtensionAttributes=_exAppExtensionAttributes;
 @property(copy, nonatomic) NSDictionary *extensionDictionary; // @synthesize extensionDictionary=_extensionDictionary;
 @property(copy, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
 @property(nonatomic) _Bool launchProhibited; // @synthesize launchProhibited=_launchProhibited;

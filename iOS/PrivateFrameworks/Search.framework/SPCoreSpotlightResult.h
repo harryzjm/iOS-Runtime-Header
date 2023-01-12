@@ -11,8 +11,11 @@
 @interface SPCoreSpotlightResult <NSCopying>
 {
     _Bool _completed;
+    _Bool _bestInContainer;
     _Bool _hasAssociatedUserActivity;
+    NSString *_containerIdentifier;
     NSString *_relatedUniqueIdentifier;
+    NSString *_accountIdentifier;
     NSString *_itemIdentifier;
     NSDate *_interestingDate;
     NSString *_domainIdentifier;
@@ -32,6 +35,7 @@
 @property(retain, nonatomic) NSDate *contentCreationDate; // @synthesize contentCreationDate=_contentCreationDate;
 @property(retain, nonatomic) NSArray *launchDates; // @synthesize launchDates=_launchDates;
 @property(nonatomic) _Bool hasAssociatedUserActivity; // @synthesize hasAssociatedUserActivity=_hasAssociatedUserActivity;
+@property(nonatomic) _Bool bestInContainer; // @synthesize bestInContainer=_bestInContainer;
 @property(retain) NSString *stringForDedupe; // @synthesize stringForDedupe=_stringForDedupe;
 @property(retain) NSString *mailConversationIdentifier; // @synthesize mailConversationIdentifier=_mailConversationIdentifier;
 @property(retain) NSString *relatedBundleID; // @synthesize relatedBundleID=_relatedBundleID;
@@ -42,7 +46,9 @@
 @property(retain) NSDate *interestingDate; // @synthesize interestingDate=_interestingDate;
 @property(retain) NSString *itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
 @property MISSING_TYPE *buddyScore; // @synthesize buddyScore=_buddyScore;
+@property(retain) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
 @property(retain) NSString *relatedUniqueIdentifier; // @synthesize relatedUniqueIdentifier=_relatedUniqueIdentifier;
+@property(retain) NSString *containerIdentifier; // @synthesize containerIdentifier=_containerIdentifier;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;
 - (Class)classForCoder;

@@ -21,7 +21,7 @@
 - (void).cxx_destruct;
 - (void)serviceSuspended;
 - (void)serviceResumed;
-- (void)notifyPaymentPassIdentifierUsed:(id)arg1 withTransactionInfo:(id)arg2;
+- (void)notifyPaymentPassUsedWithTransactionInfo:(id)arg1;
 - (void)notifyPassUsed:(id)arg1 fromSource:(long long)arg2;
 - (void)initializeUsageNotificationServer;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;

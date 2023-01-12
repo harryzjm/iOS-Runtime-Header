@@ -10,7 +10,6 @@
 
 @class CKDPDateStatistics, CKDPRecord, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDPRecordSaveResponse : PBCodable <NSCopying>
 {
     NSString *_etag;

@@ -46,7 +46,6 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)adjustedFrameFromDesiredFrame:(struct CGRect)arg1 textHeight:(double)arg2;
 - (_Bool)isAcceptableFrame:(struct CGRect)arg1 afterScrollBy:(double)arg2;
 - (struct CGRect)adjustedInlineRectFromInlineText:(id)arg1 inlineRect:(struct CGRect)arg2;
-- (struct CGRect)convertFromInputDelegateRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

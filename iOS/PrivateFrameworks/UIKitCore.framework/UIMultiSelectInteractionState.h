@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGPoint startPoint; // @synthesize startPoint=_startPoint;
 - (id)pathsToDeselectForInterpolatedIndexPaths:(id)arg1 currentlySelectedIndexPaths:(id)arg2;
 - (id)pathsToSelectForInterpolatedIndexPaths:(id)arg1;
+- (void)beginSelectingWithStartingIndexPath:(id)arg1 otherSelectedIndexPaths:(id)arg2 keepCurrentSelection:(_Bool)arg3;
 - (void)updateStateWithStartingIndexPath:(id)arg1 otherSelectedIndexPaths:(id)arg2;
 - (void)updateStateWithDifferenceFromCurrentSelection:(id)arg1;
 - (_Bool)stillValidForSelectedIndexPaths:(id)arg1;

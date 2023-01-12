@@ -6,20 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class NSBundle, NSString;
+@class NSArray, NSBundle, NSString;
 
 @interface FPLocalizableStringLookup : NSObject
 {
     NSBundle *_bundle;
     id _cfBundle;
-    NSString *_tableName;
+    NSArray *_tableNames;
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSString *tableName; // @synthesize tableName=_tableName;
+@property(copy, nonatomic) NSArray *tableNames; // @synthesize tableNames=_tableNames;
 @property(retain, nonatomic) id cfBundle; // @synthesize cfBundle=_cfBundle;
 @property(retain, nonatomic) NSBundle *bundle; // @synthesize bundle=_bundle;
 - (id)localizedStringForKey:(id)arg1;
+@property(copy, nonatomic) NSString *tableName;
 
 @end
 

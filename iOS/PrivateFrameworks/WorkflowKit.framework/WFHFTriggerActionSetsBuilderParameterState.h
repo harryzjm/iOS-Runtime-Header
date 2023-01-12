@@ -8,7 +8,7 @@
 
 #import <WorkflowKit/WFParameterState-Protocol.h>
 
-@class HFTriggerActionSetsBuilder, NSArray, NSString;
+@class HFTriggerActionSetsBuilder, HMHome, NSArray, NSString;
 
 @interface WFHFTriggerActionSetsBuilderParameterState : NSObject <WFParameterState>
 {
@@ -26,8 +26,10 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)serializedRepresentation;
 - (id)initWithSerializedRepresentation:(id)arg1 variableProvider:(id)arg2 parameter:(id)arg3;
-- (id)initWithTriggerActionSetsBuilder:(id)arg1;
+- (id)initWithActionSets:(id)arg1 home:(id)arg2;
 @property(readonly, nonatomic) HFTriggerActionSetsBuilder *triggerActionSetsBuilder;
+@property(readonly, nonatomic) NSArray *actionSets;
+@property(readonly, nonatomic) HMHome *home;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

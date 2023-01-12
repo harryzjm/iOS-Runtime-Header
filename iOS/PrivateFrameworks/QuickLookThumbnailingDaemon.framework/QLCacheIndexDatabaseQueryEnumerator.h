@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDate, NSDictionary, QLCacheBlobInfo, QLCacheFileIdentifier;
+@class NSArray, NSDate, NSDictionary, QLCacheBlobInfo, QLCacheFileIdentifier, QLTBitmapFormat;
 
 @interface QLCacheIndexDatabaseQueryEnumerator
 {
@@ -13,12 +13,6 @@
     unsigned char _iconMode;
     float _size;
     unsigned int _hitCount;
-    unsigned int _width;
-    unsigned int _height;
-    unsigned int _bitsPerComponent;
-    unsigned int _bitsPerPixel;
-    unsigned int _bytesPerRow;
-    unsigned int _bitmapInfo;
     int _interpolationQuality;
     int _flavor;
     unsigned long long _cacheId;
@@ -29,21 +23,17 @@
     NSDate *_lastHitDate;
     QLCacheBlobInfo *_bitmapDataBlobInfo;
     QLCacheBlobInfo *_plistBufferBlobInfo;
+    QLTBitmapFormat *_bitmapFormat;
     struct CGRect _contentRect;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) struct CGRect contentRect; // @synthesize contentRect=_contentRect;
 @property(readonly, nonatomic) int flavor; // @synthesize flavor=_flavor;
+@property(readonly, nonatomic) QLTBitmapFormat *bitmapFormat; // @synthesize bitmapFormat=_bitmapFormat;
 @property(readonly, nonatomic) int interpolationQuality; // @synthesize interpolationQuality=_interpolationQuality;
 @property(readonly, nonatomic) QLCacheBlobInfo *metadataBlobInfo; // @synthesize metadataBlobInfo=_plistBufferBlobInfo;
 @property(readonly, nonatomic) QLCacheBlobInfo *bitmapDataBlobInfo; // @synthesize bitmapDataBlobInfo=_bitmapDataBlobInfo;
-@property(readonly, nonatomic) unsigned int bitmapInfo; // @synthesize bitmapInfo=_bitmapInfo;
-@property(readonly, nonatomic) unsigned int bytesPerRow; // @synthesize bytesPerRow=_bytesPerRow;
-@property(readonly, nonatomic) unsigned int bitsPerPixel; // @synthesize bitsPerPixel=_bitsPerPixel;
-@property(readonly, nonatomic) unsigned int bitsPerComponent; // @synthesize bitsPerComponent=_bitsPerComponent;
-@property(readonly, nonatomic) unsigned int height; // @synthesize height=_height;
-@property(readonly, nonatomic) unsigned int width; // @synthesize width=_width;
 @property(readonly, nonatomic) NSDate *lastHitDate; // @synthesize lastHitDate=_lastHitDate;
 @property(readonly, nonatomic) unsigned int hitCount; // @synthesize hitCount=_hitCount;
 @property(readonly, nonatomic) unsigned long long externalGeneratorDataHash; // @synthesize externalGeneratorDataHash=_externalGeneratorDataHash;

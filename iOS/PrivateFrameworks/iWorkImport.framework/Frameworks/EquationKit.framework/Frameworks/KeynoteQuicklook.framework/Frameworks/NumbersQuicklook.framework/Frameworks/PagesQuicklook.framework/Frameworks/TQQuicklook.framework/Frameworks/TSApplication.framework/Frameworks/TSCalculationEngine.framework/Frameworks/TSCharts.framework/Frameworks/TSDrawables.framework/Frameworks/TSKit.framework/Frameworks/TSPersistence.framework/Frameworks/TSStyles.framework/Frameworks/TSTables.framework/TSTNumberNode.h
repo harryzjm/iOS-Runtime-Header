@@ -15,14 +15,14 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly) struct TSUDecimal number; // @synthesize number=_number;
-- (void)saveToArchive:(struct NumberNodeArchive *)arg1 archiver:(id)arg2;
-- (void)loadFromArchive:(const struct NumberNodeArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)buildASTNodeArray:(struct TSCEASTNodeArray *)arg1 hostCell:(struct TSUCellCoord)arg2 symbolTable:(struct TSCESymbolTable *)arg3;
+- (void)buildASTNodeArray:(struct TSCEASTNodeArray *)arg1 hostCell:(struct TSUCellCoord)arg2 symbolTable:(void *)arg3;
 - (id)exportString;
 - (void)insertFormulaText:(id)arg1 includeWhitespace:(_Bool)arg2;
-- (struct TSCEFunctionArgSpec *)argumentSpec;
+- (void *)argumentSpec;
 @property(retain, nonatomic) NSString *string;
 - (int)tokenType;
 - (void)fixStorageLanguage:(id)arg1;

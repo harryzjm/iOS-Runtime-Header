@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
     long long type;
     struct objc_ivar *ivar;
-    CDUnion_a3b3b741 flagMask;
+    CDUnion_4ebc605d flagMask;
     CDUnknownFunctionPointerType processObject;
 }
 

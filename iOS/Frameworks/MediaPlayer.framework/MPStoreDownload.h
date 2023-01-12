@@ -24,8 +24,6 @@
 
 + (id)_SSPurchaseForType:(long long)arg1 attributes:(id)arg2;
 + (id)storeDownloadWithDownloadIdentifier:(long long)arg1;
-+ (id)storeDownloadForStoreOffer:(id)arg1 type:(long long)arg2 attributes:(id)arg3;
-+ (id)storeDownloadForStoreItemOffer:(id)arg1 attributes:(id)arg2;
 + (id)storeDownloadForMediaItem:(id)arg1 type:(long long)arg2 attributes:(id)arg3;
 + (_Bool)_getEffectiveStoreDownloadAttributes:(id *)arg1 forPlaybackItemMetadata:(id)arg2 attributes:(id)arg3;
 + (id)storeDownloadForPlaybackItemMetadata:(id)arg1 type:(long long)arg2 attributes:(id)arg3;

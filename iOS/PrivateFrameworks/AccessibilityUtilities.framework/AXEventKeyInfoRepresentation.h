@@ -29,6 +29,7 @@
 }
 
 + (struct __GSKeyboard *)_getUIKitKeyboardRef;
++ (unsigned char)_getIOHIDKeyboardTypeForGSKeyboardType:(unsigned char)arg1;
 + (struct __GSKeyboard *)_getUSUIKitKeyboardRef;
 + (void)prepareForKeycodeTranslation;
 + (_Bool)supportsSecureCoding;

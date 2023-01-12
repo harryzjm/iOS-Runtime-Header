@@ -16,11 +16,15 @@
     NSHashTable *_sceneUpdateContributers;
     unsigned long long _userLaunchSignpostID;
     double _userLaunchEventTime;
+    _Bool _sceneUpdateInProgress;
+    _Bool _insetForHomeAffordance;
     long long _layoutRole;
 }
 
 + (id)lookupOrCreatePersistenceIDFromApplication:(id)arg1 sceneID:(id)arg2;
 - (void).cxx_destruct;
+@property(nonatomic, getter=isInsetForHomeAffordance) _Bool insetForHomeAffordance; // @synthesize insetForHomeAffordance=_insetForHomeAffordance;
+@property(nonatomic, getter=isSceneUpdateInProgress) _Bool sceneUpdateInProgress; // @synthesize sceneUpdateInProgress=_sceneUpdateInProgress;
 @property(nonatomic) long long layoutRole; // @synthesize layoutRole=_layoutRole;
 @property(readonly, nonatomic, getter=isSecure) _Bool secure; // @synthesize secure=_isSecure;
 @property(readonly, nonatomic) NSString *persistenceIdentifier; // @synthesize persistenceIdentifier=_persistenceIdentifier;
@@ -43,6 +47,7 @@
 - (id)_createParametersFromTransitionContext:(id)arg1 entity:(id)arg2;
 - (void)dealloc;
 - (void)_commonInitWithApplication:(id)arg1 sceneIdentifier:(id)arg2 displayIdentity:(id)arg3;
+- (void)_commonInit;
 - (id)_initWithApplication:(id)arg1 sceneDefinition:(id)arg2 displayIdentity:(id)arg3;
 - (id)_initWithApplication:(id)arg1 scene:(id)arg2 displayIdentity:(id)arg3;
 - (id)_initWithDefinition:(id)arg1;

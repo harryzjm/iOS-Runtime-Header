@@ -18,6 +18,7 @@
     _Bool _invalidateDone;
     struct LogCategory *_ucat;
     WiFiAwareDataSession *_wfaDataSessionClient;
+    unsigned int _controlFlags;
     unsigned int _localInterfaceIndex;
     unsigned int _trafficFlags;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
@@ -43,13 +44,16 @@
 @property(copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
+@property(nonatomic) unsigned int controlFlags; // @synthesize controlFlags=_controlFlags;
 - (void)dataSession:(id)arg1 terminatedWithReason:(long long)arg2;
 - (_Bool)_dataSession:(id)arg1 confirmedForPeerDataAddress:(id)arg2 serviceSpecificInfo:(id)arg3 error:(id *)arg4;
 - (void)dataSession:(id)arg1 confirmedForPeerDataAddress:(id)arg2 serviceSpecificInfo:(id)arg3;
 - (void)dataSession:(id)arg1 failedToStartWithError:(long long)arg2;
 - (void)dataSessionRequestStarted:(id)arg1;
 - (void)_terminateServerDataSession;
+- (void)updateLinkStatus:(int)arg1;
 - (void)reportIssue:(id)arg1;
+- (void)generateStatisticsReportWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_invalidated;
 - (void)_invalidate;
 - (void)invalidate;

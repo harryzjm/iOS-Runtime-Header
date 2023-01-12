@@ -20,6 +20,8 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldRenderFrameStroke; // @synthesize shouldRenderFrameStroke=_shouldRenderFrameStroke;
+@property(nonatomic) struct CGRect boundsForStandardKnobs; // @synthesize boundsForStandardKnobs=_boundsForStandardKnobs;
 - (void)invalidateAlignmentFrame;
 @property(readonly, nonatomic) struct CGRect alignmentFrameInRoot;
 - (struct CGRect)alignmentFrame;
@@ -31,10 +33,6 @@
 - (id)initWithInfo:(id)arg1;
 - (void)processChangedProperty:(int)arg1;
 - (_Bool)supportsRotation;
-- (void)setShouldRenderFrameStroke:(_Bool)arg1;
-- (_Bool)shouldRenderFrameStroke;
-- (void)setBoundsForStandardKnobs:(struct CGRect)arg1;
-- (struct CGRect)boundsForStandardKnobs;
 
 @end
 

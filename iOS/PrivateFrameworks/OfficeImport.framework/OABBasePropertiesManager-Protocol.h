@@ -24,7 +24,7 @@
 - (int)strokeStartArrowType;
 - (int)strokeJoinStyle;
 - (int)strokeCapStyle;
-- (const struct EshTablePropVal<int> *)strokeCustomDash;
+- (const void *)strokeCustomDash;
 - (int)strokePresetDash;
 - (int)strokeCompoundType;
 - (int)strokeMiterLimit;

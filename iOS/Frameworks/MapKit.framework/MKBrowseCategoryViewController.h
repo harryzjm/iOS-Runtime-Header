@@ -13,9 +13,9 @@
 @class MKBrowseCategoryCollectionView, MKFixedToTopCollectionViewFlowLayout, MKMapItem, NSArray, NSLayoutConstraint, NSString, UIColor, UIFont;
 @protocol MKBrowseCategoryViewControllerDelegate;
 
-__attribute__((visibility("hidden")))
 @interface MKBrowseCategoryViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, MKModuleViewControllerProtocol>
 {
+    _Bool _disableBottomPadding;
     id <MKBrowseCategoryViewControllerDelegate> _delegate;
     NSArray *_browseItems;
     MKBrowseCategoryCollectionView *_collectionView;
@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) MKFixedToTopCollectionViewFlowLayout *collectionViewFlowLayout; // @synthesize collectionViewFlowLayout=_collectionViewFlowLayout;
 @property(retain, nonatomic) MKBrowseCategoryCollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property(retain, nonatomic) NSArray *browseItems; // @synthesize browseItems=_browseItems;
+@property(nonatomic) _Bool disableBottomPadding; // @synthesize disableBottomPadding=_disableBottomPadding;
 @property(nonatomic) __weak id <MKBrowseCategoryViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_ppt_postNotificationName:(id)arg1 object:(id)arg2;
 - (id)didDisplayCategoriesNotificationName;
@@ -44,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (void)infoCardThemeChanged;
+@property(readonly, nonatomic) NSArray *buttons;
 - (int)placeCardTypeForAnalytics;
 - (void)updateCellTitleLabelTextColor;
 - (void)contentSizeCategoryDidChange:(id)arg1;

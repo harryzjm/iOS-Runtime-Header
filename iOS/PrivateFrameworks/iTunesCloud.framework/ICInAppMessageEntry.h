@@ -20,11 +20,13 @@
     NSMutableDictionary *_resourceCache;
     _Bool _shouldDownloadResources;
     _Bool _didCacheRequiredResources;
+    _Bool _isBadgingApplication;
     ICIAMApplicationMessage *_applicationMessage;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isBadgingApplication; // @synthesize isBadgingApplication=_isBadgingApplication;
 @property(nonatomic) _Bool didCacheRequiredResources; // @synthesize didCacheRequiredResources=_didCacheRequiredResources;
 @property(nonatomic) _Bool shouldDownloadResources; // @synthesize shouldDownloadResources=_shouldDownloadResources;
 @property(readonly, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;

@@ -18,6 +18,8 @@ __attribute__((visibility("hidden")))
 {
     _Bool _ppt_isLoaded;
     _Bool _areLocalMediaItemsAvailable;
+    _Bool _makeNavigationBarHidden;
+    _Bool _viewIsOrWillBeVisible;
     VUIFamilyMember *_familyMember;
     VUILibraryMenuDataSource *_menuDataSource;
     VUILibrarySplitViewController *_librarySplitViewController;
@@ -28,6 +30,8 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool viewIsOrWillBeVisible; // @synthesize viewIsOrWillBeVisible=_viewIsOrWillBeVisible;
+@property(nonatomic) _Bool makeNavigationBarHidden; // @synthesize makeNavigationBarHidden=_makeNavigationBarHidden;
 @property(readonly, nonatomic) VUIMediaLibrary *mediaLibrary; // @synthesize mediaLibrary=_mediaLibrary;
 @property(retain, nonatomic) VUIViewControllerContentPresenter *contentPresenter; // @synthesize contentPresenter=_contentPresenter;
 @property(retain, nonatomic) UINavigationController *downloadNavigationViewController; // @synthesize downloadNavigationViewController=_downloadNavigationViewController;
@@ -58,6 +62,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (void)loadView;
 - (void)viewWillLayoutSubviews;
+- (void)viewWillDisappear:(_Bool)arg1;
+- (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)dealloc;

@@ -24,7 +24,7 @@
 - (void).cxx_destruct;
 - (void)_notifyPausedStateChange;
 - (void)endPausingChanges:(id)arg1;
-- (id)beginPausingChangesWithTimeout:(double)arg1;
+- (id)beginPausingChangesWithTimeout:(double)arg1 identifier:(id)arg2;
 - (void)distributeChangeOnMainQueue:(id)arg1;
 - (void)photoLibraryDidChange:(id)arg1;
 - (void)unregisterChangeObserver:(id)arg1;

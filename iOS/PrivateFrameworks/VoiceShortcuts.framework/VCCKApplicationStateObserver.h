@@ -6,17 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class FBSDisplayLayoutMonitor;
+@class FBSDisplayLayoutMonitor, NSString;
 
 @interface VCCKApplicationStateObserver : NSObject
 {
-    _Bool _applicationVisible;
+    _Atomic _Bool _atomicApplicationVisible;
     FBSDisplayLayoutMonitor *_layoutMonitor;
+    NSString *_bundleIdentifier;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Atomic _Bool atomicApplicationVisible; // @synthesize atomicApplicationVisible=_atomicApplicationVisible;
+@property(readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(readonly, nonatomic) FBSDisplayLayoutMonitor *layoutMonitor; // @synthesize layoutMonitor=_layoutMonitor;
-@property(nonatomic, getter=isApplicationVisible) _Bool applicationVisible; // @synthesize applicationVisible=_applicationVisible;
+@property(nonatomic, getter=isApplicationVisible) _Bool applicationVisible;
 - (void)dealloc;
 - (id)initWithBundleIdentifier:(id)arg1;
 

@@ -6,42 +6,46 @@
 
 #import <UIKit/UIControl.h>
 
+#import <LinkPresentation/LPComponentMediaPlayable-Protocol.h>
 #import <LinkPresentation/UIGestureRecognizerDelegate-Protocol.h>
 
-@class LPMusicPlayButtonStyle, LPPlayButtonShapeView, NSString, UIImageView, UILongPressGestureRecognizer, UIView;
+@class CAShapeLayer, LPAudioPlayButtonStyle, LPAudioPlayButtonTheme, NSString, UIImageView, UILongPressGestureRecognizer, UIView;
 
 __attribute__((visibility("hidden")))
-@interface LPPlayButtonControl : UIControl <UIGestureRecognizerDelegate>
+@interface LPPlayButtonControl : UIControl <UIGestureRecognizerDelegate, LPComponentMediaPlayable>
 {
-    LPMusicPlayButtonStyle *_style;
-    LPPlayButtonShapeView *_borderView;
-    LPPlayButtonShapeView *_innerProgressView;
-    LPPlayButtonShapeView *_outerProgressView;
-    LPPlayButtonShapeView *_highlightView;
+    LPAudioPlayButtonStyle *_style;
+    LPAudioPlayButtonTheme *_theme;
+    CAShapeLayer *_borderLayer;
+    CAShapeLayer *_innerProgressLayer;
+    CAShapeLayer *_outerProgressLayer;
+    CAShapeLayer *_highlightLayer;
     UILongPressGestureRecognizer *_highlightRecognizer;
     UIView *_backgroundView;
     UIImageView *_imageView;
     _Bool _indeterminate;
     float _progress;
     _Bool _showingProgress;
+    _Bool _isPlaying;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) float progress; // @synthesize progress=_progress;
 @property(readonly, nonatomic, getter=isIndeterminate) _Bool indeterminate; // @synthesize indeterminate=_indeterminate;
 @property(retain, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
+- (id)playable;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)_updateEnabledState;
 - (void)_updateInnerProgressLayerStroke;
 - (void)_toggleToPlayState;
 - (void)_showPlayIndicator:(_Bool)arg1;
-- (void)_createHighlightView;
+- (void)_createHighlightLayer;
 - (void)_createOuterProgressView;
 - (void)_createInnerProgressView;
 - (void)_createImageView;
 - (void)_createBackgroundView;
 - (void)_createBorderView;
-- (id)_createProgressIndicatorViewWithBounds:(struct CGRect)arg1 lineWidth:(double)arg2;
+- (id)_createProgressIndicatorLayerWithBounds:(struct CGRect)arg1 lineWidth:(double)arg2;
 - (void)_updateOuterProgressLayerStroke;
 - (void)showPlayIndicator:(_Bool)arg1;
 - (void)setShowOuterBorder:(_Bool)arg1;
@@ -60,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)buttonPressed:(id)arg1;
 - (void)installRecognizersOnView:(id)arg1;
+- (void)layoutPlayButton;
 - (void)layoutSubviews;
 - (float)buttonCornerRadius;
 - (struct CGSize)buttonSize;
@@ -68,7 +73,8 @@ __attribute__((visibility("hidden")))
 - (id)pauseImage;
 - (id)playImage;
 - (void)setPlayButtonState:(unsigned long long)arg1;
-- (id)initWithStyle:(id)arg1;
+- (_Bool)isFlipped;
+- (id)initWithStyle:(id)arg1 theme:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

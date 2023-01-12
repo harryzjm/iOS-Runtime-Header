@@ -9,7 +9,7 @@
 #import <IDS/IDSBaseSocketPairConnectionDelegate-Protocol.h>
 #import <IDS/IDSDaemonListenerProtocol-Protocol.h>
 
-@class CUTWeakReference, IDSBaseSocketPairConnection, NSArray, NSDictionary, NSError, NSMutableDictionary, NSNumber, NSSet, NSString;
+@class CUTWeakReference, IDSBaseSocketPairConnection, IDSGroupEncryptionKeyMaterialCache, NSArray, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSNumber, NSSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface _IDSGroupSession : NSObject <IDSDaemonListenerProtocol, IDSBaseSocketPairConnectionDelegate>
@@ -35,6 +35,8 @@
     _Bool _preferCellularForCallSetup;
     NSString *_clientUUID;
     _Bool _alwaysSkipSelf;
+    _Bool _startAsUPlusOneSession;
+    _Bool _isLightweightParticipant;
     unsigned int _sessionEndedReason;
     NSMutableDictionary *_preferences;
     NSMutableDictionary *_sessionConfig;
@@ -53,14 +55,37 @@
     NSNumber *_qrReason;
     NSNumber *_previousError;
     unsigned long long _localParticipantID;
+    IDSGroupEncryptionKeyMaterialCache *_keyMaterialCache;
+    NSMutableArray *_dataCryptorRequests;
+    NSMutableDictionary *_createParticipantIDAliasCallbacks;
+    NSMutableDictionary *_getParticipantIDForAliasCallbacks;
+    NSSet *_requiredCapabilities;
+    NSSet *_requiredLackOfCapabilities;
 }
 
 - (void).cxx_destruct;
+@property(readonly) _Bool isLightweightParticipant; // @synthesize isLightweightParticipant=_isLightweightParticipant;
+@property(readonly, nonatomic) NSSet *requiredLackOfCapabilities; // @synthesize requiredLackOfCapabilities=_requiredLackOfCapabilities;
+@property(readonly, nonatomic) NSSet *requiredCapabilities; // @synthesize requiredCapabilities=_requiredCapabilities;
 @property(readonly, nonatomic) unsigned long long localParticipantID; // @synthesize localParticipantID=_localParticipantID;
 @property(retain, nonatomic) id boostContext; // @synthesize boostContext=_boostContext;
 @property(readonly, nonatomic) unsigned int state; // @synthesize state=_state;
+- (void)setKeyMaterialCache:(id)arg1;
+- (void)setUniqueID:(id)arg1;
 - (void)xpcObject:(id)arg1 objectContext:(id)arg2;
+- (void)session:(id)arg1 didReceiveParticipantID:(unsigned long long)arg2 forParticipantIDAlias:(unsigned long long)arg3 salt:(id)arg4;
+- (void)session:(id)arg1 didCreateParticipantIDAlias:(unsigned long long)arg2 forParticipantID:(unsigned long long)arg3 salt:(id)arg4;
+- (void)session:(id)arg1 hasOutdatedSKI:(id)arg2;
+- (void)participantUpdatedForSession:(id)arg1;
+- (void)session:(id)arg1 shouldInvalidateKeyMaterialByKeyIndexes:(id)arg2;
+- (void)session:(id)arg1 didReceiveKeyMaterial:(id)arg2;
+- (void)session:(id)arg1 didRemoveParticipantIDs:(id)arg2 withCode:(unsigned int)arg3 isTruncated:(_Bool)arg4;
+- (void)session:(id)arg1 didReceiveQueryBlockedParticipantIDs:(id)arg2 withCode:(unsigned int)arg3 isTruncated:(_Bool)arg4;
+- (void)session:(id)arg1 didReceiveBlockedParticipantIDs:(id)arg2 withCode:(unsigned int)arg3 withType:(unsigned short)arg4 isTruncated:(_Bool)arg5;
+- (void)session:(id)arg1 didUnregisterPluginAllocationInfo:(id)arg2;
+- (void)session:(id)arg1 didRegisterPluginAllocationInfo:(id)arg2;
 - (void)session:(id)arg1 didReceivePluginAllocationInfo:(id)arg2;
+- (void)session:(id)arg1 didReceiveActiveLightweightParticipants:(id)arg2 success:(_Bool)arg3;
 - (void)session:(id)arg1 didReceiveActiveParticipants:(id)arg2 success:(_Bool)arg3;
 - (void)session:(id)arg1 participantDidLeaveGroupWithInfo:(id)arg2;
 - (void)session:(id)arg1 participantDidJoinGroupWithInfo:(id)arg2;
@@ -71,16 +96,29 @@
 - (void)groupSessionEnded:(id)arg1 withReason:(unsigned int)arg2 error:(id)arg3;
 - (void)groupSessionDidTerminate:(id)arg1;
 - (void)session:(id)arg1 didReceiveReport:(id)arg2;
+- (void)getParticipantIDForAlias:(unsigned long long)arg1 salt:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)createAliasForParticipantID:(unsigned long long)arg1 salt:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)sessionIDAliasWithSalt:(id)arg1;
+- (void)requestDataCryptorForTopic:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_checkAndSendDataCryptor;
+- (void)requestEncryptionKeyForParticipants:(id)arg1;
+- (void)unregisterPluginWithOptions:(id)arg1;
+- (void)registerPluginWithOptions:(id)arg1;
 - (void)requestActiveParticipants;
 @property(readonly, nonatomic) unsigned int sessionEndedReason;
+- (void)setRequiredCapabilities:(id)arg1 requiredLackOfCapabilities:(id)arg2;
 - (void)setPreferences:(id)arg1;
+- (void)reconnectUPlusOneSession;
 - (void)leaveGroupSession;
 - (void)joinWithOptions:(id)arg1;
 - (void)setParticipantInfo:(id)arg1;
 - (void)updateParticipantData:(id)arg1 withContext:(id)arg2;
+- (void)removeParticipantIDs:(id)arg1;
+- (void)manageDesignatedMembers:(id)arg1 withType:(unsigned short)arg2;
+- (void)updateMembers:(id)arg1 withContext:(id)arg2 messagingCapabilities:(id)arg3 triggeredLocally:(_Bool)arg4;
 - (void)updateMembers:(id)arg1 withContext:(id)arg2 triggeredLocally:(_Bool)arg3;
 - (void)_cleanupSocketPairConnections;
-@property(readonly, nonatomic) NSString *uniqueID;
+@property(readonly, nonatomic) NSString *uniqueID; // @synthesize uniqueID=_uniqueID;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
 - (void)_callDelegateWithBlock:(CDUnknownBlockType)arg1;
 - (void)_broadcastNewSessionToDaemon;

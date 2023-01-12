@@ -13,6 +13,8 @@
 @interface SBAppLibraryMetric : NSObject <SBFAnalyticsBackendEventHandling>
 {
     PETScalarEventTracker *_appDownloadSettingsTracker;
+    PETScalarEventTracker *_libraryDockSettingsTracker;
+    PETScalarEventTracker *_modalLibraryPresentedTracker;
 }
 
 - (void).cxx_destruct;

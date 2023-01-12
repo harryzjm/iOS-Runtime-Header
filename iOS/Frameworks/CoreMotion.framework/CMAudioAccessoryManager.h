@@ -17,8 +17,8 @@
 + (_Bool)_selectActiveAudioRouteForAccelerometerWithBTAddress:(id)arg1 modelID:(id)arg2;
 + (_Bool)_isAvailable;
 - (void)onAudioAccessoryDeviceMotionStatus:(const int *)arg1;
-- (void)onAudioAccessoryDeviceMotionConfig:(const struct Config *)arg1;
-- (void)onAudioAccessoryDeviceMotion:(const struct AudioAccessorySample *)arg1;
+- (void)onAudioAccessoryDeviceMotionConfig:(const void *)arg1;
+- (void)onAudioAccessoryDeviceMotion:(const void *)arg1;
 - (void)onAudioAccessoryGyro:(const struct Sample *)arg1;
 - (void)onAudioAccessoryAccelerometer:(const struct Sample *)arg1;
 - (void)_stopAudioAccessoryDeviceMotionStatusUpdatesPrivate;

@@ -12,11 +12,11 @@
 + (Class)propertiesClass;
 - (void)sortElements:(id *)arg1 pipeline:(id)arg2;
 - (tvec3_17f03ce0)sortingPositionForElement:(id)arg1;
-- (tvec3_17f03ce0)adjustedScaleForInfoChartScale:(const tvec3_17f03ce0 *)arg1 scene:(id)arg2;
+- (tvec3_17f03ce0)adjustedScaleForInfoChartScale:(const void *)arg1 scene:(id)arg2;
 - (float)chartMinZForScene:(id)arg1;
 - (float)depthForScene:(id)arg1;
 - (void)updateElementEffectsStates:(id)arg1 depthToWidthRatio:(float)arg2;
-- (void)updateTilingEffect:(struct TexCoordTilingShaderEffectState *)arg1 series:(id)arg2 properties:(id)arg3 textureTiling:(id)arg4 areaSize:(tvec3_17f03ce0 *)arg5 element:(tvec2_3b141483 *)arg6;
+- (void)updateTilingEffect:(void *)arg1 series:(id)arg2 properties:(id)arg3 textureTiling:(id)arg4 areaSize:(void *)arg5 element:(void *)arg6;
 - (_Bool)shouldRenderEachValue;
 - (void)renderLabelsSceneObject:(id)arg1 pipeline:(id)arg2 enumerator:(id)arg3 properties:(id)arg4;
 - (tvec2_84d5962d)p_valueLabelPaddingForLabelPosition:(unsigned int)arg1;

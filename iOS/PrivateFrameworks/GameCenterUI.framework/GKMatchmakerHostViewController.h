@@ -34,6 +34,7 @@
 - (void)setAutomatchPlayerCount:(long long)arg1;
 - (void)setDefaultInvitationMessage:(id)arg1;
 - (void)setExistingPlayers:(id)arg1;
+- (void)setCanStartWithMinimumPlayers:(_Bool)arg1;
 - (void)setMatchmakingMode:(long long)arg1;
 - (void)setHosted:(_Bool)arg1;
 - (void)setAcceptedInviteInternal:(id)arg1;

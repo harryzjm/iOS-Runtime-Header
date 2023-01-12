@@ -9,7 +9,6 @@
 @class CKDPCSCache;
 @protocol CKSQLiteItem;
 
-__attribute__((visibility("hidden")))
 @interface CKDPCSCacheFetchOperationInfo : CKDatabaseOperationInfo
 {
     id <CKSQLiteItem> _itemID;

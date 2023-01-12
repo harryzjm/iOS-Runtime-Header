@@ -8,12 +8,14 @@
 
 #import <HealthUI/HKInteractiveChartsAxisScalingRule-Protocol.h>
 
-@class HKValueRange, NSDictionary, NSString;
+@class HKValueRange, NSDictionary, NSNumber, NSString;
 
 @interface HKAbstractFixedAxisScalingRule : NSObject <HKInteractiveChartsAxisScalingRule>
 {
     HKValueRange *_defaultAxisBounds;
     NSDictionary *_axisBoundsOverrides;
+    NSNumber *_minimumValue;
+    NSNumber *_maximumValue;
     _Bool _shouldExpandBoundsForOutliers;
     long long _portraitPrettyNumberRule;
 }
@@ -25,6 +27,7 @@
 @property(nonatomic) _Bool shouldExpandBoundsForOutliers; // @synthesize shouldExpandBoundsForOutliers=_shouldExpandBoundsForOutliers;
 - (id)_valueRangeForZoomLevel:(long long)arg1;
 - (id)portraitYValueRangeForRange:(id)arg1 zoomLevel:(long long)arg2 allowedDecimalPrecision:(long long)arg3;
+- (id)yAxisBounds;
 - (id)yValueRangeForRange:(id)arg1 zoomLevel:(long long)arg2;
 - (id)init;
 

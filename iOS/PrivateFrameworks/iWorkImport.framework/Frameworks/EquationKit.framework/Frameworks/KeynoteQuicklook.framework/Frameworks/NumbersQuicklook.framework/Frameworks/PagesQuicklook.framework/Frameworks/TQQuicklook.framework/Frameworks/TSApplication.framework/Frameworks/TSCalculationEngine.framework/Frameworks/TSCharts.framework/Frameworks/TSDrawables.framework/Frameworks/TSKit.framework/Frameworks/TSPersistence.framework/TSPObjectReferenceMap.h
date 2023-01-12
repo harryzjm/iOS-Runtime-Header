@@ -13,8 +13,8 @@
 {
     TSPObjectContext *_context;
     id <TSPExternalReferenceDelegate> _delegate;
-    struct unordered_map<const long long, TSP::ReferenceMapInfo, TSP::IdentifierHash, std::__1::equal_to<const long long>, std::__1::allocator<std::__1::pair<const long long, TSP::ReferenceMapInfo>>> _inverseReferenceMap;
-    struct unordered_map<const long long, __unsafe_unretained Class, TSP::IdentifierHash, std::__1::equal_to<const long long>, std::__1::allocator<std::__1::pair<const long long, __unsafe_unretained Class>>> _classMap;
+    struct IdentifierMap<TSP::ReferenceMapInfo> _inverseReferenceMap;
+    struct IdentifierMap<__unsafe_unretained Class> _classMap;
 }
 
 - (id).cxx_construct;

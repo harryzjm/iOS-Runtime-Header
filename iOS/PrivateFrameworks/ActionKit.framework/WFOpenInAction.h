@@ -17,12 +17,14 @@
 + (id)userInterfaceProtocol;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *contentClasses; // @synthesize contentClasses=_contentClasses;
-- (id)targetContentAttribution;
+- (id)contentDestinationWithError:(id *)arg1;
 - (id)selectedApp;
 - (id)outputContentClasses;
 - (id)inputContentClasses;
 - (void)updateContentClasses;
+- (_Bool)inputsMultipleItems;
 - (_Bool)setParameterState:(id)arg1 forKey:(id)arg2;
+- (void)openContentUsingDefaultApp:(id)arg1;
 - (void)openContentInSelectedApp:(id)arg1;
 - (void)runWithRemoteUserInterface:(id)arg1 input:(id)arg2;
 - (void)runAsynchronouslyWithInput:(id)arg1;

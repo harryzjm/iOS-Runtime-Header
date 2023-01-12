@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessChat/BCDictionaryImageSerializable-Protocol.h>
+#import <BusinessChat/BCDictionarySerializable-Protocol.h>
 #import <BusinessChat/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSDictionary, NSString;
 
-@interface BCInternalAuthenticationRequest : NSObject <BCDictionaryImageSerializable, NSSecureCoding>
+@interface BCInternalAuthenticationRequest : NSObject <BCDictionarySerializable, NSSecureCoding>
 {
     NSString *_businessIdentifier;
     NSString *_groupIdentifier;
@@ -22,16 +22,15 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSDictionary *labels; // @synthesize labels=_labels;
-@property(retain, nonatomic) NSArray *retrieve; // @synthesize retrieve=_retrieve;
-@property(retain, nonatomic) NSString *responseEncryptionKey; // @synthesize responseEncryptionKey=_responseEncryptionKey;
-@property(retain, nonatomic) NSString *groupIdentifier; // @synthesize groupIdentifier=_groupIdentifier;
-@property(retain, nonatomic) NSString *businessIdentifier; // @synthesize businessIdentifier=_businessIdentifier;
+@property(readonly, nonatomic) NSDictionary *labels;
+@property(readonly, nonatomic) NSArray *retrieve;
+@property(readonly, nonatomic) NSString *responseEncryptionKey;
+@property(readonly, nonatomic) NSString *groupIdentifier;
+@property(readonly, nonatomic) NSString *businessIdentifier;
 @property(readonly, nonatomic) NSDictionary *dictionaryValue;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
-- (id)initWithDictionary:(id)arg1 imageDictionary:(id)arg2;
 
 @end
 

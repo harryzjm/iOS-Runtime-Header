@@ -41,12 +41,12 @@
 - (long long)_facetimeAudioIDStatusForEntity:(id)arg1;
 - (long long)_facetimeIDStatusForEntity:(id)arg1;
 - (_Bool)_hasLinkedTelephoneNumbersForEntity:(id)arg1;
-- (_Bool)_isFaceTimeAudioAvailable;
-- (_Bool)_isFaceTimeVideoAvailable;
-- (_Bool)_isTelephonyAvailable;
 - (_Bool)_showMessageButtonForEntity:(id)arg1;
 - (_Bool)showScreenSharingButtonForEntity:(id)arg1;
+- (_Bool)isFaceTimeAudioAvailableForEntity:(id)arg1;
+- (_Bool)isFaceTimeVideoAvailableForEntity:(id)arg1;
 - (_Bool)_showFaceTimeVideoButtonForEntity:(id)arg1;
+- (_Bool)isTelephonyCallAvailableForEntity:(id)arg1;
 - (_Bool)_showPhoneButtonForEntity:(id)arg1;
 - (void)_inviteEntityToShareTheirScreen:(id)arg1;
 - (void)_shareMyScreenWithEntity:(id)arg1;
@@ -54,12 +54,13 @@
 - (void)_startCallWithEntity:(id)arg1 phoneAddress:(id)arg2;
 - (void)_startCommunicationForEntity:(id)arg1 usePreferredRouteIfAvailable:(_Bool)arg2;
 - (void)_startMessageWithEntity:(id)arg1;
+- (void)startCommunicationForViewModel:(id)arg1 action:(unsigned long long)arg2 address:(id)arg3;
 - (void)startCommunicationForEntity:(id)arg1 action:(unsigned long long)arg2 address:(id)arg3 usePreferredRouteIfAvailable:(_Bool)arg4;
 - (void)startCommunicationForEntity:(id)arg1 action:(unsigned long long)arg2 address:(id)arg3;
+- (id)callActionsForEntity:(id)arg1;
 - (id)callMenuForEntity:(id)arg1;
 - (_Bool)shouldAlwaysShowCallMenuForEntity:(id)arg1;
 - (_Bool)hasPreferredCallServiceForEntity:(id)arg1;
-- (_Bool)isFaceTimeAudioAvailableForEntity:(id)arg1;
 - (void)callableAddressesForEntity:(id)arg1 withResult:(CDUnknownBlockType)arg2;
 - (void)sendEmail;
 - (id)contextMenuForUnknownRecipient:(id)arg1 atom:(id)arg2;
@@ -67,17 +68,19 @@
 - (id)conversationContextMenuForUnknownEntity:(id)arg1 allowConversationRemoval:(_Bool)arg2 showUnknownContactActionInPopover:(_Bool)arg3 unknownContactActionHandler:(CDUnknownBlockType)arg4;
 - (id)conversationContextMenuForEntity:(id)arg1 allowConversationRemoval:(_Bool)arg2;
 - (id)conversationContextMenuConfigForEntity:(id)arg1 allowConversationRemoval:(_Bool)arg2;
+- (void)_handleMultiwayStateChanged:(id)arg1;
 - (void)_handleAddressBookChange:(id)arg1;
-- (_Bool)_conversationHasLeft;
 - (void)_handleConversationPendingRecipientsDidChange:(id)arg1;
 - (void)_conversationJoinStateDidChange:(id)arg1;
 - (void)_handleConversationRecipientsDidChange:(id)arg1;
 - (void)_handleLocationChanged:(id)arg1;
 - (void)dealloc;
 @property(readonly, copy, nonatomic) NSArray *contacts;
+- (_Bool)_isHandleActiveParticipantInTUConversation:(id)arg1;
 - (void)_performUpdateViewModels;
 - (void)_updateViewModelsWithDelay:(_Bool)arg1;
 - (id)initWithConversation:(id)arg1 delegate:(id)arg2;
+- (_Bool)__im_ff_isExpanseEnabled;
 
 @end
 

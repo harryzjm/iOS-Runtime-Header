@@ -34,6 +34,8 @@
 - (oneway void)_remote_IXSPlaceholder:(NSUUID *)arg1 setSinfPromiseUUID:(NSUUID *)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)_remote_IXSPlaceholder:(NSUUID *)arg1 getMetadataWithCompletion:(void (^)(MIStoreMetadata *, NSError *))arg2;
 - (oneway void)_remote_IXSPlaceholder:(NSUUID *)arg1 setMetadataPromiseUUID:(NSUUID *)arg2 completion:(void (^)(NSError *))arg3;
+- (oneway void)_remote_IXSOwnedDataPromise:(NSUUID *)arg1 setTargetLastPathComponent:(NSString *)arg2 withCompletion:(void (^)(NSError *))arg3;
+- (oneway void)_remote_IXSOwnedDataPromise:(NSUUID *)arg1 getTargetLastPathComponent:(void (^)(NSString *, NSError *))arg2;
 - (oneway void)_remote_IXSOwnedDataPromise:(NSUUID *)arg1 getStagedPath:(void (^)(NSURL *, NSError *))arg2;
 - (oneway void)_remote_IXSOwnedDataPromise:(NSUUID *)arg1 setStagedPath:(NSURL *)arg2;
 - (oneway void)_remote_IXSDataPromise:(NSUUID *)arg1 preflightWithCompletion:(void (^)(NSError *))arg2;
@@ -64,6 +66,7 @@
 - (oneway void)_remote_IXSCoordinatedAppInstall:(NSUUID *)arg1 hasInitialODRAssetPromises:(void (^)(_Bool, NSError *))arg2;
 - (oneway void)_remote_IXSCoordinatedAppInstall:(NSUUID *)arg1 getInitialODRAssetPromises:(void (^)(NSArray *, NSError *))arg2;
 - (oneway void)_remote_IXSCoordinatedAppInstall:(NSUUID *)arg1 setInitialODRAssetPromiseUUIDs:(NSArray *)arg2 completion:(void (^)(NSError *))arg3;
+- (oneway void)_remote_IXSCoordinatedAppInstall:(NSUUID *)arg1 conveyPriorityReplacingExisting:(_Bool)arg2 withCompletion:(void (^)(NSError *))arg3;
 - (oneway void)_remote_IXSCoordinatedAppInstall:(NSUUID *)arg1 importanceWithCompletion:(void (^)(unsigned long long, NSError *))arg2;
 - (oneway void)_remote_IXSCoordinatedAppInstall:(NSUUID *)arg1 setImportance:(unsigned long long)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)_remote_IXSCoordinatedAppInstall:(NSUUID *)arg1 hasInstallOptions:(void (^)(_Bool, NSError *))arg2;
@@ -83,14 +86,16 @@
 - (void)_remote_displayUserPresentableErrorForApp:(NSString *)arg1 code:(long long)arg2;
 - (void)_remote_registerTransientObserver:(NSXPCListenerEndpoint *)arg1 forClientIdentifiers:(NSSet *)arg2 respondingToSelectors:(unsigned long long)arg3;
 - (void)_remote_registerObserverMachServiceName:(NSString *)arg1 forClientIdentifiers:(NSSet *)arg2 respondingToSelectors:(unsigned long long)arg3;
+- (void)_remote_refreshContainerTypes:(unsigned long long)arg1 forBundleID:(NSString *)arg2 reason:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
+- (void)_remote_revertAppWithBundleID:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)_remote_uninstallAppWithBundleID:(NSString *)arg1 options:(IXUninstallOptions *)arg2 completion:(void (^)(unsigned long long, NSError *))arg3;
 - (void)_remote_prioritizeCoordinatorForAppWithBundleID:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)_remote_setIsPaused:(_Bool)arg1 forCoordinatorForAppWithBundleID:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)_remote_cancelCoordinatorsForAppsWithBundleIDs:(NSArray *)arg1 reason:(NSError *)arg2 client:(unsigned long long)arg3 completion:(void (^)(NSError *))arg4;
 - (void)_remote_cancelCoordinatorForAppWithBundleID:(NSString *)arg1 reason:(NSError *)arg2 client:(unsigned long long)arg3 completion:(void (^)(NSError *))arg4;
-- (void)_remote_setRemovability:(unsigned long long)arg1 forAppWithBundleID:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)_remote_setRemovability:(unsigned long long)arg1 forAppWithBundleID:(NSString *)arg2 byClient:(unsigned long long)arg3 completion:(void (^)(NSError *))arg4;
 - (void)_remote_removabilityForAppWithBundleID:(NSString *)arg1 completion:(void (^)(unsigned long long, NSError *))arg2;
-- (void)_remote_setTestModeForIdentifierPrefix:(NSString *)arg1 testMode:(unsigned long long)arg2 completion:(void (^)(NSError *))arg3;
+- (void)_remote_setTestModeForIdentifierPrefix:(NSString *)arg1 testMode:(unsigned long long)arg2 testSpecificValidationData:(NSDictionary *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)_remote_setTestingEnabled:(_Bool)arg1 completion:(void (^)(NSError *))arg2;
 - (void)_remote_postNSCurrentLocaleDidChangeNotification:(void (^)(NSError *))arg1;
 - (void)_remote_pingDaemonWithCompletion:(void (^)(int, NSError *))arg1;

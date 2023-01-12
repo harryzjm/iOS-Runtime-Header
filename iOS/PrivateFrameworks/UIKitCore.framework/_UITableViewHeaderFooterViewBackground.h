@@ -4,19 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIView;
+@class _UISystemBackgroundView;
 
 __attribute__((visibility("hidden")))
 @interface _UITableViewHeaderFooterViewBackground
 {
-    UIView *_opaqueBackgroundView;
-    UIView *_transparentBackgroundView;
+    _UISystemBackgroundView *_systemBackgroundView;
 }
 
 - (void).cxx_destruct;
-- (void)setBackgroundImage:(id)arg1;
-- (id)_transparentBackgroundView;
-- (id)_opaqueBackgroundView;
+- (void)applyBackgroundConfiguration:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

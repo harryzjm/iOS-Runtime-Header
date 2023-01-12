@@ -26,7 +26,7 @@
     NSString *_pathAWDTasking;
 }
 
-+ (void)ensureConformanceOfFile:(int)arg1;
++ (void)ensureConformanceOfFile:(int)arg1 options:(id)arg2;
 + (id)ensureUsablePath:(id)arg1 component:(id)arg2 options:(id)arg3;
 + (id)sharedInstance;
 - (void).cxx_destruct;
@@ -34,6 +34,7 @@
 - (id)logExt:(id)arg1;
 - (id)logPrefix:(id)arg1;
 - (id)createReportMetadata:(id)arg1 with:(id)arg2 at:(double)arg3 usingOptions:(id)arg4;
+- (_Bool)isAllowed:(id)arg1 forDomain:(id)arg2;
 - (_Bool)isWhitelisted:(id)arg1 forDomain:(id)arg2;
 - (id)submissionParam:(id)arg1;
 @property(readonly) NSString *pathAWDTasking;
@@ -41,6 +42,7 @@
 @property(readonly) NSString *pathDiagnostics;
 @property(readonly) NSString *pathPreferences;
 - (id)logPath;
+- (id)pathSubmissionWithHomeDirectory:(id)arg1;
 - (id)pathSubmissionForOwner:(id)arg1;
 @property(readonly) NSString *pathSubmission;
 @property(readonly) NSString *pathContainerRoot;

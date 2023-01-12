@@ -16,6 +16,7 @@
 + (id)contentCategories;
 + (id)outputTypes;
 + (id)ownedTypes;
++ (id)stringConversionBehavior;
 - (id)generateObjectRepresentationsForClass:(Class)arg1 options:(id)arg2 error:(id *)arg3;
 
 @end

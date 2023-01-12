@@ -17,6 +17,7 @@
     NSURL *_passURL;
     NSString *_sha1Hex;
     NSNumber *_size;
+    _Bool _required;
     NSDictionary *_manifest;
     NSURL *_encryptedContentsLocalURL;
     NSString *_ephemeralPublicKey;
@@ -30,6 +31,7 @@
 + (id)itemWithLocalURL:(id)arg1 passURL:(id)arg2 dictionary:(id)arg3 error:(id *)arg4;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic, getter=isRequired) _Bool required; // @synthesize required=_required;
 @property(nonatomic) long long encryptionSource; // @synthesize encryptionSource=_encryptionSource;
 @property(copy, nonatomic) NSString *encryptionScheme; // @synthesize encryptionScheme=_encryptionScheme;
 @property(copy, nonatomic) NSString *seid; // @synthesize seid=_seid;
@@ -42,6 +44,7 @@
 @property(copy, nonatomic) NSString *sha1Hex; // @synthesize sha1Hex=_sha1Hex;
 @property(copy, nonatomic) NSURL *passURL; // @synthesize passURL=_passURL;
 @property(copy, nonatomic) NSURL *localURL; // @synthesize localURL=_localURL;
+- (void)downloadAssetWithCloudStoreCoordinatorDelegate:(id)arg1 tryCount:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)downloadAssetWithCloudStoreCoordinatorDelegate:(id)arg1 completion:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) unsigned long long itemType;
 - (_Bool)isZipFile;

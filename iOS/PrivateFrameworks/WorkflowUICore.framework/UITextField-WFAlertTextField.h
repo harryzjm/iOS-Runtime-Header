@@ -7,10 +7,11 @@
 #import <UIKit/UITextField.h>
 
 #import <WorkflowUICore/WFAlertTextField-Protocol.h>
+#import <WorkflowUICore/WFInputViewMutable-Protocol.h>
 
-@class NSArray, NSString, UITextInputPasswordRules;
+@class NSArray, NSString, UITextInputPasswordRules, UIView;
 
-@interface UITextField (WFAlertTextField) <WFAlertTextField>
+@interface UITextField (WFAlertTextField) <WFAlertTextField, WFInputViewMutable>
 + (_Bool)usesSuggestions;
 @property(nonatomic) long long alertTextInputMode;
 @property(copy, nonatomic) NSArray *suggestions;
@@ -23,6 +24,8 @@
 @property(readonly, copy) NSString *description;
 @property(nonatomic) _Bool enablesReturnKeyAutomatically;
 @property(readonly) unsigned long long hash;
+@property(retain, nonatomic) UIView *inputAccessoryView;
+@property(retain, nonatomic) UIView *inputView;
 @property(nonatomic) long long keyboardAppearance;
 @property(nonatomic) long long keyboardType;
 @property(copy, nonatomic) UITextInputPasswordRules *passwordRules;

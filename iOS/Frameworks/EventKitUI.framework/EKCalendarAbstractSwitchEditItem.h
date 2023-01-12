@@ -4,11 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray, UILabel, UISwitch, UITableViewHeaderFooterView;
+@class NSMutableArray, UILabel, UISwitch;
 
 @interface EKCalendarAbstractSwitchEditItem
 {
-    UITableViewHeaderFooterView *_footerView;
     UILabel *_descriptionLabel;
     _Bool _underlyingCalendarState;
     _Bool _switchState;
@@ -23,18 +22,14 @@
 @property(nonatomic) _Bool allowEventAlerts; // @synthesize allowEventAlerts=_allowEventAlerts;
 @property(nonatomic) _Bool switchState; // @synthesize switchState=_switchState;
 @property(nonatomic) _Bool underlyingCalendarState; // @synthesize underlyingCalendarState=_underlyingCalendarState;
+- (_Bool)shouldHideSwitch;
 - (_Bool)cellWrapsLongText;
 - (id)descriptionLabelText;
 - (id)cellText;
 - (_Bool)saveStateToCalendar:(id)arg1;
 - (unsigned long long)numberOfSubitems;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
-- (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
-- (double)footerHeightForSection;
-- (id)footerViewForSection;
-- (void)_applyStyleToUILabel:(id)arg1;
-- (id)footerView;
-- (void)layoutForWidth:(double)arg1;
+- (id)footerTitle;
 - (id)cell;
 - (void)_switchStateChanged:(id)arg1;
 - (void)reset;

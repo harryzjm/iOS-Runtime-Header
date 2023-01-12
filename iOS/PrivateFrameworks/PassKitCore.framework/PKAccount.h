@@ -9,33 +9,45 @@
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate, NSSet, NSString, NSURL, PKAccountAdditionalPushTopics, PKAccountDetails, PKCreditAccountDetails;
+@class NSArray, NSDate, NSSet, NSString, NSURL, PKAccountAdditionalPushTopics, PKAccountDetails, PKAccountFetchPeriods, PKCreditAccountDetails;
 
 @interface PKAccount : NSObject <NSSecureCoding, NSCopying>
 {
     _Bool _blockNotifications;
+    _Bool _coOwner;
+    _Bool _sharedAccount;
     _Bool _accountStateDirty;
     NSString *_accountIdentifier;
     NSURL *_accountBaseURL;
+    NSURL *_applyServiceURL;
     unsigned long long _feature;
     unsigned long long _type;
     PKAccountDetails *_details;
     unsigned long long _state;
     unsigned long long _stateReason;
     unsigned long long _accessLevel;
+    NSString *_altDSID;
+    NSSet *_previousAccountIdentifiers;
     NSSet *_supportedFeatures;
     PKAccountAdditionalPushTopics *_additionalPushTopics;
+    PKAccountFetchPeriods *_fetchPeriods;
     NSDate *_lastUpdated;
     NSArray *_cloudStoreZoneNames;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)analyticsAccountTypeForAccount:(id)arg1;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *cloudStoreZoneNames; // @synthesize cloudStoreZoneNames=_cloudStoreZoneNames;
 @property(retain, nonatomic) NSDate *lastUpdated; // @synthesize lastUpdated=_lastUpdated;
 @property(nonatomic) _Bool accountStateDirty; // @synthesize accountStateDirty=_accountStateDirty;
+@property(retain, nonatomic) PKAccountFetchPeriods *fetchPeriods; // @synthesize fetchPeriods=_fetchPeriods;
 @property(retain, nonatomic) PKAccountAdditionalPushTopics *additionalPushTopics; // @synthesize additionalPushTopics=_additionalPushTopics;
 @property(copy, nonatomic) NSSet *supportedFeatures; // @synthesize supportedFeatures=_supportedFeatures;
+@property(copy, nonatomic) NSSet *previousAccountIdentifiers; // @synthesize previousAccountIdentifiers=_previousAccountIdentifiers;
+@property(nonatomic, getter=isSharedAccount) _Bool sharedAccount; // @synthesize sharedAccount=_sharedAccount;
+@property(nonatomic, getter=isCoOwner) _Bool coOwner; // @synthesize coOwner=_coOwner;
+@property(copy, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
 @property(nonatomic) _Bool blockNotifications; // @synthesize blockNotifications=_blockNotifications;
 @property(nonatomic) unsigned long long accessLevel; // @synthesize accessLevel=_accessLevel;
 @property(nonatomic) unsigned long long stateReason; // @synthesize stateReason=_stateReason;
@@ -43,6 +55,7 @@
 @property(retain, nonatomic) PKAccountDetails *details; // @synthesize details=_details;
 @property(nonatomic) unsigned long long type; // @synthesize type=_type;
 @property(nonatomic) unsigned long long feature; // @synthesize feature=_feature;
+@property(retain, nonatomic) NSURL *applyServiceURL; // @synthesize applyServiceURL=_applyServiceURL;
 @property(retain, nonatomic) NSURL *accountBaseURL; // @synthesize accountBaseURL=_accountBaseURL;
 @property(copy, nonatomic) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
 - (_Bool)supportsExtendedFetch;
@@ -53,12 +66,22 @@
 - (_Bool)isContentEqualToAccount:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+@property(readonly, nonatomic) NSSet *allAccountIdentifiers;
+- (id)analyticsEventAccountType;
 @property(readonly, nonatomic) PKCreditAccountDetails *creditDetails;
 - (id)associatedPassUniqueID;
 - (id)initWithDictionary:(id)arg1;
 - (id)_featureWithIdentifier:(id)arg1;
+- (id)showBillPaymentInterestFeatureDescriptor;
+- (_Bool)showBillPaymentInterest;
+- (id)physicalCardActivationFeatureDescriptor;
+- (_Bool)supportsPhysicalCardActivation;
+- (id)accountUserInvitationAllowedFeatureDescriptor;
+- (_Bool)accountUserInvitationAllowed;
 - (id)provisioningAllowedFeatureDescriptor;
 - (_Bool)provisioningAllowed;
+- (id)dynamicSecurityCodesFeatureDescriptor;
+- (_Bool)supportsDynamicSecurityCodes;
 - (id)showVirtualCardFeatureDescriptor;
 - (_Bool)supportsShowVirtualCard;
 - (id)addFundingSourceFeatureDescriptor;

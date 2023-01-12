@@ -7,7 +7,7 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (HomeLocation)
-- (id)regionFromDataForKey:(id)arg1;
-- (id)locationFromDataForKey:(id)arg1;
+- (id)hm_regionFromDataForKey:(id)arg1;
+- (id)hm_locationFromDataForKey:(id)arg1;
 @end
 

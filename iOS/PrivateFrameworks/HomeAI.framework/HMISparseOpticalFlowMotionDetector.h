@@ -21,8 +21,10 @@
 - (void).cxx_destruct;
 @property(readonly) struct CGSize size; // @synthesize size=_size;
 @property(readonly) NSMutableArray *frames; // @synthesize frames=_frames;
-- (id)detectWithGlobalMotionScore:(float *)arg1;
-- (id)_computeOpticalFlow:(struct __CVBuffer *)arg1 with:(struct __CVBuffer *)arg2 globalMotionScore:(float *)arg3;
+- (id)detectWithGlobalMotionScore:(float *)arg1 activityZones:(id)arg2 detectorMode:(unsigned long long)arg3;
+- (_Bool)applyActivityZoneFilteringOnSourcePoint:(struct CGPoint)arg1 destinationPoint:(struct CGPoint)arg2 activityZones:(id)arg3;
+- (id)calculateMotionDetection:(vector_5af41bf5)arg1 score:(vector_8ca568ff)arg2 srcFeatureCVPoints:(vector_3e5b63dd)arg3 dstFeatreCVPoints:(vector_3e5b63dd)arg4 activityZones:(id)arg5 operationMode:(unsigned long long)arg6 srcPyramid:(vector_a9771444)arg7 brightnessChange:(float)arg8;
+- (id)_computeOpticalFlow:(struct __CVBuffer *)arg1 with:(struct __CVBuffer *)arg2 globalMotionScore:(float *)arg3 activityZones:(id)arg4 operationMode:(unsigned long long)arg5;
 - (void)appendFramePixelBuffer:(struct __CVBuffer *)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (id)initWithSize:(struct CGSize)arg1;
 

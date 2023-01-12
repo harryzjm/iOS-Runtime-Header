@@ -31,16 +31,16 @@
 @property(readonly, nonatomic) __weak id <PHImageRequestDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) struct CGSize desiredImageSize; // @synthesize desiredImageSize=_desiredImageSize;
 - (id)description;
-- (void)configureWithURL:(id)arg1;
 - (void)configureWithURL:(id)arg1 uniformTypeIdentifier:(id)arg2 exifOrientation:(int)arg3;
 - (void)handleAvailabilityChangeForResource:(id)arg1 url:(id)arg2 info:(id)arg3 error:(id)arg4;
 - (void)startRequest;
 - (void)cancel;
+- (long long)downloadPriority;
 - (long long)downloadIntent;
 - (_Bool)isNetworkAccessAllowed;
 - (_Bool)isSynchronous;
 - (id)initWithRequestID:(int)arg1 requestIndex:(unsigned long long)arg2 contextType:(long long)arg3 managerID:(unsigned long long)arg4 asset:(id)arg5 displaySpec:(id)arg6 behaviorSpec:(id)arg7 chooser:(id)arg8 delegate:(id)arg9;
-- (void)_decodeImageConfiguredWithURL:(id)arg1 isPrimaryFormat:(_Bool)arg2 exifOrientation:(long long)arg3;
+- (void)_decodeImageConfiguredWithURL:(id)arg1 isPrimaryFormat:(_Bool)arg2;
 
 @end
 

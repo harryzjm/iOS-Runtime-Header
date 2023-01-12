@@ -50,6 +50,8 @@ __attribute__((visibility("hidden")))
 @property(readonly) id <MTLHeap> heap;
 @property(readonly) unsigned long long heapOffset;
 @property(copy) NSString *label;
+@property(nonatomic) unsigned long long parentGPUAddress;
+@property(nonatomic) unsigned long long parentGPUSize;
 @property(readonly) unsigned long long protectionOptions;
 @property(readonly, nonatomic) unsigned long long resourceIndex;
 @property(readonly) unsigned long long resourceOptions;

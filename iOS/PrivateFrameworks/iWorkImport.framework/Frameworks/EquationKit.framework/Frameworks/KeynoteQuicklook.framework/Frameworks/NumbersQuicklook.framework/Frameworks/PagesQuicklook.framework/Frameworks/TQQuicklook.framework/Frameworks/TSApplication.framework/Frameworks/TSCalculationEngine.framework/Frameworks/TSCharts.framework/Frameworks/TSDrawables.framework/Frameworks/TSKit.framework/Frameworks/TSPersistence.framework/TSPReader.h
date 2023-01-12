@@ -9,7 +9,7 @@
 #import <TSPersistence/TSPObjectDelegate-Protocol.h>
 #import <TSPersistence/TSPUnarchiverDelegate-Protocol.h>
 
-@class NSError, NSHashTable, NSMapTable, NSString, TSPCancellationState, TSPComponent, TSPComponentObjectUUIDMap, TSPFinalizeHandlerQueue, TSPObjectContext;
+@class NSError, NSHashTable, NSMapTable, NSString, TSPCancellationState, TSPComponent, TSPComponentObjectUUIDMap, TSPFinalizeHandlerQueue, TSPMutableComponentDataReferenceMap, TSPObjectContext;
 @protocol OS_dispatch_group, OS_dispatch_queue, TSPReaderDelegate;
 
 @interface TSPReader : NSObject <TSPObjectDelegate, TSPUnarchiverDelegate>
@@ -18,15 +18,17 @@
     id <TSPReaderDelegate> _delegate;
     TSPCancellationState *_cancellationState;
     TSPComponent *_component;
+    unsigned long long _fileFormatVersion;
     TSPComponentObjectUUIDMap *_componentObjectUUIDMap;
+    TSPMutableComponentDataReferenceMap *_componentDataReferenceMap;
     TSPFinalizeHandlerQueue *_finalizeHandlerQueue;
     NSObject<OS_dispatch_group> *_completionGroup;
     NSObject<OS_dispatch_queue> *_errorQueue;
     NSError *_error;
     NSObject<OS_dispatch_queue> *_unarchiveQueue;
     NSObject<OS_dispatch_queue> *_objectsQueue;
-    struct unordered_map<long long, TSP::ObjectInfo, TSP::ObjectIdentifierHash, std::__1::equal_to<long long>, std::__1::allocator<std::__1::pair<const long long, TSP::ObjectInfo>>> _objectInfoMap;
-    vector_cc556b2d _repeatedReferences;
+    struct IdentifierMap<TSP::ObjectInfo> _objectInfoMap;
+    struct vector<TSP::UnarchiverRepeatedReference, std::allocator<TSP::UnarchiverRepeatedReference>> _repeatedReferences;
     NSMapTable *_objects;
     NSObject<OS_dispatch_queue> *_objectsToModifyQueue;
     NSHashTable *_objectsToModify;
@@ -35,9 +37,9 @@
         unsigned int needsUpgrade:1;
         unsigned int hasDocumentVersionUUID:1;
         unsigned int sourceType:3;
-        unsigned int canRetainObjectReferencedByWeakLazyReference:1;
         unsigned int isCrossDocumentPaste:1;
         unsigned int isCrossAppPaste:1;
+        unsigned int ignoreDataReferenceCountValidationWhileReading:1;
         unsigned int delegateRespondsToDidResetObjectIdentifierForObject:1;
         unsigned int delegateRespondsToDidResetObjectUUID:1;
         unsigned int delegateRespondsToDidUnarchiveObject:1;
@@ -49,17 +51,17 @@
 @property(readonly, nonatomic) NSObject<OS_dispatch_group> *completionGroup; // @synthesize completionGroup=_completionGroup;
 @property(readonly, nonatomic) TSPComponent *component; // @synthesize component=_component;
 @property(readonly, nonatomic) __weak id <TSPReaderDelegate> delegate; // @synthesize delegate=_delegate;
-- (struct ObjectInfo *)objectInfoForIdentifier:(long long)arg1;
+- (void *)objectInfoForIdentifier:(long long)arg1;
 @property(readonly, nonatomic) _Bool isCrossAppPaste;
 @property(readonly, nonatomic) _Bool isCrossDocumentPaste;
-@property(readonly, nonatomic) _Bool canRetainObjectReferencedByWeakLazyReference;
-@property(readonly, nonatomic) long long sourceType;
+@property(readonly, nonatomic) unsigned int sourceType;
 @property(readonly, nonatomic) _Bool hasDocumentVersionUUID;
 @property(readonly, nonatomic) _Bool didFinishResolvingReferences;
 @property(readonly, nonatomic) unsigned long long readVersion;
 @property(readonly, nonatomic) unsigned long long fileFormatVersion;
+@property(readonly, nonatomic) unsigned char packageIdentifier;
 @property(readonly, nonatomic) long long componentIdentifier;
-- (id)dataForIdentifier:(long long)arg1;
+- (id)dataForIdentifier:(long long)arg1 referencedByObjectIdentifier:(long long)arg2 objectClass:(Class)arg3;
 - (id)UUIDForObjectIdentifier:(long long)arg1;
 - (long long)objectIdentifierForUUID:(id)arg1;
 - (void)unarchiver:(id)arg1 didReadLazyReference:(id)arg2 isExternal:(_Bool *)arg3;

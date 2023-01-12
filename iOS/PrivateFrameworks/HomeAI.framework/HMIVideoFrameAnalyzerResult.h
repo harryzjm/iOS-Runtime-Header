@@ -8,21 +8,25 @@
 
 #import <HomeAI/HMIVideoEvent-Protocol.h>
 
-@class HMIVideoFrame, NSSet, NSString;
+@class HMIVideoFrame, NSArray, NSSet, NSString;
 
 @interface HMIVideoFrameAnalyzerResult : HMFObject <HMIVideoEvent>
 {
     HMIVideoFrame *_frame;
     NSSet *_events;
+    NSArray *_motionDetections;
+    struct CGRect _regionOfInterest;
 }
 
 - (void).cxx_destruct;
+@property(readonly) NSArray *motionDetections; // @synthesize motionDetections=_motionDetections;
+@property(readonly) struct CGRect regionOfInterest; // @synthesize regionOfInterest=_regionOfInterest;
 @property(readonly) NSSet *events; // @synthesize events=_events;
 @property(readonly) HMIVideoFrame *frame; // @synthesize frame=_frame;
 @property(readonly) CDStruct_1b6d18a9 time;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-- (id)initWithFrame:(id)arg1 events:(id)arg2;
+- (id)initWithFrame:(id)arg1 events:(id)arg2 regionOfInterest:(struct CGRect)arg3 motionDetections:(id)arg4;
 
 // Remaining properties
 @property(readonly) unsigned long long hash;

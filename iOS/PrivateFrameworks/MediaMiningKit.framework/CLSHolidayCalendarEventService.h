@@ -8,21 +8,35 @@
 
 #import <MediaMiningKit/CLSHolidayCalendarEventDateRuleDelegate-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSLocale, NSString;
 
 @interface CLSHolidayCalendarEventService : NSObject <CLSHolidayCalendarEventDateRuleDelegate>
 {
     NSArray *_eventRules;
+    NSLocale *_locale;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSArray *eventRules; // @synthesize eventRules=_eventRules;
-- (id)_ruleWithUUID:(id)arg1;
+@property(readonly, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
+@property(readonly, nonatomic) NSArray *eventRules; // @synthesize eventRules=_eventRules;
+- (id)_ruleWithUUID:(id)arg1 countryCode:(id *)arg2;
 - (id)dateForRuleWithUUID:(id)arg1 byEvaluatingForYear:(long long)arg2;
-- (void)enumerateEventRulesBetweenLocalDate:(id)arg1 andLocalDate:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
-- (id)eventRuleForLocalDate:(id)arg1;
+- (id)supportedLanguageCodes;
+- (id)eventRuleForHolidayName:(id)arg1;
+- (id)triggerHolidaysForCountryCode:(id)arg1;
+- (void)enumerateEventRulesWithNames:(id)arg1 betweenLocalDate:(id)arg2 andLocalDate:(id)arg3 supportedCountryCode:(id)arg4 usingBlock:(CDUnknownBlockType)arg5;
+- (void)enumerateEventRulesBetweenLocalDate:(id)arg1 andLocalDate:(id)arg2 supportedCountryCode:(id)arg3 usingBlock:(CDUnknownBlockType)arg4;
+- (void)enumerateEventRulesWithNames:(id)arg1 betweenLocalDate:(id)arg2 andLocalDate:(id)arg3 usingBlock:(CDUnknownBlockType)arg4;
+- (void)enumerateEventRulesForAllCountriesWithNames:(id)arg1 betweenLocalDate:(id)arg2 andLocalDate:(id)arg3 usingBlock:(CDUnknownBlockType)arg4;
+- (void)enumerateEventRulesForAllCountriesBetweenLocalDate:(id)arg1 andLocalDate:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (void)_enumerateEventRulesWithNames:(id)arg1 betweenLocalDate:(id)arg2 andLocalDate:(id)arg3 supportedCountryCode:(id)arg4 usingBlock:(CDUnknownBlockType)arg5;
+- (id)eventRuleForHolidayName:(id)arg1 localDate:(id)arg2;
+- (id)eventRulesForLocalDate:(id)arg1;
+- (unsigned long long)peopleTraitForHolidayName:(id)arg1;
+- (id)sceneNamesForHolidayName:(id)arg1;
 - (id)initWithLocale:(id)arg1;
 - (id)initWithLocale:(id)arg1 calendarSourcesURL:(id)arg2;
+- (id)initWithEventRules:(id)arg1 locale:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

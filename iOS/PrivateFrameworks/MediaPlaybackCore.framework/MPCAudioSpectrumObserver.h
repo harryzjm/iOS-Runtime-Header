@@ -10,6 +10,7 @@
 {
     struct _MPCAudioSpectrumAnalyzerBandInternal *_bands;
     unsigned long long _bandsStorageSize;
+    float _powerLevel;
     long long _numberOfBands;
     CDUnknownBlockType _onUpdate;
 }
@@ -17,6 +18,7 @@
 + (id)defaultObserver;
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType onUpdate; // @synthesize onUpdate=_onUpdate;
+@property(nonatomic) float powerLevel; // @synthesize powerLevel=_powerLevel;
 - (void)finishReport;
 - (void)beginReport;
 - (void)_resizeBandStorage;

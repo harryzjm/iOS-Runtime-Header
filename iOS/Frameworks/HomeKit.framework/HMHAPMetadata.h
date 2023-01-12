@@ -8,10 +8,11 @@
 
 #import <HomeKit/HMProtoBufMerge-Protocol.h>
 
-@class NSDictionary, NSNumber, NSString;
+@class HMFUnfairLock, NSDictionary, NSNumber, NSString;
 
 @interface HMHAPMetadata : NSObject <HMProtoBufMerge>
 {
+    HMFUnfairLock *_lock;
     NSNumber *_version;
     NSDictionary *_hapChrMap;
     NSDictionary *_hapSvcMap;
@@ -23,13 +24,14 @@
 @property(retain, nonatomic) NSDictionary *hapCategoryMap; // @synthesize hapCategoryMap=_hapCategoryMap;
 @property(retain, nonatomic) NSDictionary *hapSvcMap; // @synthesize hapSvcMap=_hapSvcMap;
 @property(retain, nonatomic) NSDictionary *hapChrMap; // @synthesize hapChrMap=_hapChrMap;
-@property(retain, nonatomic) NSNumber *version; // @synthesize version=_version;
 - (_Bool)shouldNotCacheCharacteristicOfType:(id)arg1;
 - (_Bool)applyProtoBufData:(id)arg1 callbackOperations:(id)arg2;
 - (id)categoryForCategoryType:(id)arg1;
 - (id)categoryForNumber:(id)arg1;
 - (id)characteristicTypeDescription:(id)arg1;
 - (id)serviceTypeDescription:(id)arg1;
+- (id)init;
+@property(retain) NSNumber *version; // @synthesize version=_version;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

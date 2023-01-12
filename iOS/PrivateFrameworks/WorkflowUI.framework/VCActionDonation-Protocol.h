@@ -9,16 +9,16 @@
 @class INShortcut, NSDate, NSString;
 
 @protocol VCActionDonation <NSObject>
-@property(readonly, nonatomic) INShortcut *shortcut;
-@property(readonly, nonatomic) id uniqueProperty;
-@property(readonly, copy, nonatomic) NSString *suggestedPhrase;
-@property(readonly, copy, nonatomic) NSString *fullDescription;
-@property(readonly, nonatomic) NSString *subtitle;
-@property(readonly, nonatomic) NSString *title;
-@property(readonly, copy, nonatomic) NSString *sourceAppIdentifierForLaunching;
-@property(readonly, copy, nonatomic) NSString *sourceAppIdentifierForDisplay;
-@property(readonly, copy, nonatomic) NSString *sourceAppIdentifier;
-@property(readonly, copy, nonatomic) NSDate *date;
-@property(readonly, copy, nonatomic) NSString *identifier;
+@property(nonatomic, readonly) INShortcut *shortcut;
+@property(nonatomic, readonly) id uniqueProperty;
+@property(nonatomic, readonly) NSString *suggestedPhrase;
+@property(nonatomic, readonly) NSString *fullDescription;
+@property(nonatomic, readonly) NSString *subtitle;
+@property(nonatomic, readonly) NSString *title;
+@property(nonatomic, readonly) NSString *sourceAppIdentifierForLaunching;
+@property(nonatomic, readonly) NSString *sourceAppIdentifierForDisplay;
+@property(nonatomic, readonly) NSString *sourceAppIdentifier;
+@property(nonatomic, readonly) NSDate *date;
+@property(nonatomic, readonly) NSString *identifier;
 @end
 

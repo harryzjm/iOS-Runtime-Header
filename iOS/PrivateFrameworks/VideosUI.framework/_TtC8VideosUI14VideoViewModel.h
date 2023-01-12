@@ -12,6 +12,7 @@
     MISSING_TYPE *tvVideosPlayable;
     MISSING_TYPE *phoneVideosPlayable;
     MISSING_TYPE *padVideosPlayable;
+    MISSING_TYPE *macVideosPlayable;
 }
 
 @end

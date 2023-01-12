@@ -7,25 +7,38 @@
 #import <UIKitCore/NSCoding-Protocol.h>
 #import <UIKitCore/UIPickerViewScrollTesting-Protocol.h>
 
-@class NSCalendar, NSDate, NSLocale, NSString, NSTimeZone, UIColor, UIView, _UIDatePickerDataModel;
-@protocol _UIDatePickerViewComponent;
+@class NSCalendar, NSDate, NSDictionary, NSLocale, NSString, NSTimeZone, UIColor, UIView, _UIDatePickerDataModel, _UIDatePickerOverlayPresentation;
+@protocol _UIDatePickerCompactStyleDelegate, _UIDatePickerViewComponent;
 
 @interface UIDatePicker <UIPickerViewScrollTesting, NSCoding>
 {
+    struct {
+        unsigned int selectionBarIgnoresInset;
+    } _datePickerViewFlags;
     UIView<_UIDatePickerViewComponent> *_pickerView;
     _UIDatePickerDataModel *_data;
     _Bool _useCurrentDateDuringDecoding;
+    _Bool __displaysTimeZone;
+    id <_UIDatePickerCompactStyleDelegate> __compactStyleDelegate;
     long long _preferredDatePickerStyle;
+    _UIDatePickerOverlayPresentation *__overlayPresentation;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic, setter=_setDisplaysTimeZone:) _Bool _displaysTimeZone; // @synthesize _displaysTimeZone=__displaysTimeZone;
+@property(nonatomic) __weak _UIDatePickerOverlayPresentation *_overlayPresentation; // @synthesize _overlayPresentation=__overlayPresentation;
 @property(nonatomic) long long preferredDatePickerStyle; // @synthesize preferredDatePickerStyle=_preferredDatePickerStyle;
+@property(retain, nonatomic, setter=_setOverrideCompactTextAttributes:) NSDictionary *_overrideCompactTextAttributes;
+- (void)_compactStyleSetActiveComponent:(long long)arg1;
+- (void)_compactStyleResignActiveComponent;
+@property(nonatomic, setter=_setCompactStyleDelegate:) __weak id <_UIDatePickerCompactStyleDelegate> _compactStyleDelegate; // @synthesize _compactStyleDelegate=__compactStyleDelegate;
 - (id)_lastSelectedDateComponents;
 - (id)_labelTextForCalendarUnit:(unsigned long long)arg1;
 - (id)_selectedTextForCalendarUnit:(unsigned long long)arg1;
 @property(nonatomic) double timeInterval; // @dynamic timeInterval;
 @property(readonly, nonatomic) long long datePickerStyle;
 - (void)_updatePickerViewIfNecessary;
+- (struct UIEdgeInsets)_appliedInsetsToEdgeOfContent;
 @property(nonatomic, getter=_useCurrentDateDuringDecoding, setter=_setUseCurrentDateDuringDecoding:) _Bool useCurrentDateDuringDecoding;
 @property(retain, nonatomic, getter=_magnifierLineColor, setter=_setMagnifierLineColor:) UIColor *magnifierLineColor;
 @property(retain, nonatomic, getter=_textShadowColor, setter=_setTextShadowColor:) UIColor *textShadowColor;
@@ -53,11 +66,12 @@
 - (void)setDateComponents:(id)arg1;
 - (id)dateComponents;
 - (void)setDelegate:(id)arg1;
+- (void)setContentHorizontalAlignment:(long long)arg1;
 - (void)_workaround66574039_updateLayoutMargins;
 - (void)layoutMarginsDidChange;
 - (_Bool)resignFirstResponder;
 - (_Bool)becomeFirstResponder;
-- (id)_systemDefaultFocusGroupDescriptor;
+- (id)_systemDefaultFocusGroupIdentifier;
 - (void)_emitEndEditing;
 - (void)_emitValueChanged;
 - (void)_emitBeginEditing;
@@ -72,6 +86,9 @@
 - (_Bool)_contentHuggingDefault_isUsuallyFixedHeight;
 @property(retain, nonatomic, getter=_customFontDesign, setter=_setCustomFontDesign:) NSString *customFontDesign;
 - (void)setDate:(id)arg1 animated:(_Bool)arg2;
+@property(nonatomic, setter=_setSelectionBarIgnoresInset:) _Bool _selectionBarIgnoresInset;
+@property(nonatomic, setter=_setRoundsToMinuteInterval:) _Bool _roundsToMinuteInterval;
+@property(nonatomic) _Bool roundsToMinuteInterval;
 @property(nonatomic) long long minuteInterval; // @dynamic minuteInterval;
 @property(nonatomic) double countDownDuration; // @dynamic countDownDuration;
 @property(retain, nonatomic) NSDate *maximumDate; // @dynamic maximumDate;

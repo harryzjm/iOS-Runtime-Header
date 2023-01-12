@@ -16,6 +16,8 @@
 
 + (id)publicAssetsLibraryErrorFromPrivateError:(id)arg1;
 + (id)publicAssetsLibraryErrorFromPrivateDomain:(id)arg1 withPrivateCode:(long long)arg2;
++ (CDUnknownBlockType)createWriteVideoCompletionBlockWithVideoPath:(id)arg1 target:(id)arg2 selector:(SEL)arg3 contextInfo:(void *)arg4;
++ (CDUnknownBlockType)createWriteImageCompletionBlockWithImage:(id)arg1 target:(id)arg2 selector:(SEL)arg3 contextInfo:(void *)arg4;
 + (id)sharedAssetsSaver;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *_pendingSaveAssetJobs; // @synthesize _pendingSaveAssetJobs=__pendingSaveAssetJobs;
@@ -25,16 +27,10 @@
 - (void)deletePhotoStreamAssetsWithUUIDs:(id)arg1 streamID:(id)arg2;
 - (void)deletePhotoStreamDataForStreamID:(id)arg1;
 - (void)savePhotoStreamImage:(id)arg1 imageData:(id)arg2 properties:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
-- (void)saveVideoAtPath:(id)arg1 properties:(id)arg2 completionTarget:(id)arg3 completionSelector:(SEL)arg4 contextInfo:(void *)arg5;
 - (void)saveVideoAtPath:(id)arg1 properties:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
-- (void)saveImage:(id)arg1 imageData:(id)arg2 properties:(id)arg3 completionTarget:(id)arg4 completionSelector:(SEL)arg5 contextInfo:(void *)arg6;
-- (void)saveImageData:(id)arg1 properties:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
-- (void)saveImage:(id)arg1 properties:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)saveImageRef:(struct CGImage *)arg1 orientation:(long long)arg2 imageData:(id)arg3 properties:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (void)_saveVideoAtPath:(id)arg1 properties:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)_saveImage:(id)arg1 imageData:(id)arg2 properties:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
-- (CDUnknownBlockType)_createWriteVideoCompletionBlockWithVideoPath:(id)arg1 target:(id)arg2 selector:(SEL)arg3 contextInfo:(void *)arg4;
-- (CDUnknownBlockType)_createWriteImageCompletionBlockWithImage:(id)arg1 target:(id)arg2 selector:(SEL)arg3 contextInfo:(void *)arg4;
 - (void)saveCameraAvalancheWithUUID:(id)arg1 allAssetUUIDs:(id)arg2 allAssets:(id)arg3 stackAsset:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (void)regenerateVideoThumbnailsForVideo:(id)arg1 withCreationDate:(id)arg2 progressStack:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)saveCameraVideoAtPath:(id)arg1 withMetadata:(id)arg2 thumbnailImage:(id)arg3 createPreviewWellImage:(_Bool)arg4 progressStack:(id)arg5 isSlalom:(_Bool)arg6 assetAdjustments:(id)arg7 videoHandler:(CDUnknownBlockType)arg8 requestEnqueuedBlock:(CDUnknownBlockType)arg9 completionBlock:(CDUnknownBlockType)arg10;

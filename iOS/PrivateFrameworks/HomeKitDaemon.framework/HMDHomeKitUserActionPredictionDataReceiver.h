@@ -12,12 +12,13 @@
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
 @class HMFMessageDispatcher, HMFTimer, NSMapTable, NSObject, NSString, NSUUID;
-@protocol HMDUserActionPredictionDataSource, OS_dispatch_queue;
+@protocol HMDUserActionPredictionDataSource, HMFLocking, OS_dispatch_queue;
 
 @interface HMDHomeKitUserActionPredictionDataReceiver : HMFObject <HMFTimerDelegate, HMFLogging, HMFMessageReceiver, HMDUserActionPredictionDataReceiver>
 {
     HMFTimer *_notifyDebounceTimer;
     unsigned long long _debouncedNotifyPredictionLimit;
+    id <HMFLocking> _lock;
     NSMapTable *_subscribedClientConnections;
     id <HMDUserActionPredictionDataSource> _dataSource;
     NSObject<OS_dispatch_queue> *_workQueue;
@@ -40,7 +41,6 @@
 - (void)_handleRemoveAllPredictionsMessage:(id)arg1;
 - (void)_handleRemovePredictionMessage:(id)arg1;
 - (void)_handleUpdatePredictionMessage:(id)arg1;
-- (id)decodeUserActionPredictionsFromMessage:(id)arg1 error:(id *)arg2;
 - (void)_notifySubscribersOfUpdateBelowLimit:(unsigned long long)arg1;
 - (void)_debounceNotifySubscribersOfUpdateBelowLimit:(unsigned long long)arg1;
 - (void)_notifySubscriber:(id)arg1 clientConnection:(id)arg2 messageName:(id)arg3 payload:(id)arg4;

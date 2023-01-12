@@ -15,6 +15,13 @@
 
 + (id)sharedLogger;
 - (void).cxx_destruct;
+- (void)logBarcodePreviewedEventForContentType:(long long)arg1;
+- (void)logBarcodeActivatedEventForAction:(id)arg1;
+- (void)logBarcodeDetectedEventForAction:(id)arg1 fromBundleID:(id)arg2;
+- (void)logBarcodeDetectedEventForAction:(id)arg1 startTime:(unsigned long long)arg2;
+- (id)_eventPayloadForAction:(id)arg1;
+- (id)_stringForDataType:(long long)arg1;
+- (id)_stringForCodeType:(long long)arg1;
 - (void)_sendEventLazyWithName:(id)arg1 payload:(id)arg2;
 - (void)didScanNFCTagOfType:(long long)arg1;
 - (void)didActivateNFCReader;

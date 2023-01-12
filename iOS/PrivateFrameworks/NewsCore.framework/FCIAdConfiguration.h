@@ -13,21 +13,27 @@
     NTPBIAdConfig *_pbConfig;
     NSDictionary *_configDict;
     _Bool _segmentsEnabled;
+    _Bool _preRequestPolicyValidationEnabled;
     double _segmentsThreshold;
     long long _segmentsSubmissionFrequency;
     long long _segmentsHistoryWindowInterval;
     long long _segmentsMinimumArticleCount;
+    long long _segmentsMinimumEventCount;
+    double _segmentsMinRelativeRate;
     NSArray *_iAdSegmentIDs;
     NSDictionary *_adStatusConditionsByType;
-    double _feedNumberofViewportsBetweenAds;
-    double _articleNumberofViewportsBetweenAds;
+    double _feedNumberOfViewportsBetweenAds;
+    double _articleNumberOfViewportsBetweenAds;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) double articleNumberofViewportsBetweenAds; // @synthesize articleNumberofViewportsBetweenAds=_articleNumberofViewportsBetweenAds;
-@property(readonly, nonatomic) double feedNumberofViewportsBetweenAds; // @synthesize feedNumberofViewportsBetweenAds=_feedNumberofViewportsBetweenAds;
+@property(readonly, nonatomic, getter=isPreRequestPolicyValidationEnabled) _Bool preRequestPolicyValidationEnabled; // @synthesize preRequestPolicyValidationEnabled=_preRequestPolicyValidationEnabled;
+@property(readonly, nonatomic) double articleNumberOfViewportsBetweenAds; // @synthesize articleNumberOfViewportsBetweenAds=_articleNumberOfViewportsBetweenAds;
+@property(readonly, nonatomic) double feedNumberOfViewportsBetweenAds; // @synthesize feedNumberOfViewportsBetweenAds=_feedNumberOfViewportsBetweenAds;
 @property(readonly, nonatomic) NSDictionary *adStatusConditionsByType; // @synthesize adStatusConditionsByType=_adStatusConditionsByType;
 @property(readonly, nonatomic) NSArray *iAdSegmentIDs; // @synthesize iAdSegmentIDs=_iAdSegmentIDs;
+@property(readonly, nonatomic) double segmentsMinRelativeRate; // @synthesize segmentsMinRelativeRate=_segmentsMinRelativeRate;
+@property(readonly, nonatomic) long long segmentsMinimumEventCount; // @synthesize segmentsMinimumEventCount=_segmentsMinimumEventCount;
 @property(readonly, nonatomic) long long segmentsMinimumArticleCount; // @synthesize segmentsMinimumArticleCount=_segmentsMinimumArticleCount;
 @property(readonly, nonatomic) long long segmentsHistoryWindowInterval; // @synthesize segmentsHistoryWindowInterval=_segmentsHistoryWindowInterval;
 @property(readonly, nonatomic) long long segmentsSubmissionFrequency; // @synthesize segmentsSubmissionFrequency=_segmentsSubmissionFrequency;

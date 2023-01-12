@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_bac1c052)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_bac1c052)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSString *corrected_words;
 @property(readonly, nonatomic) NSString *original_words;
 - (id)copyWithZone:(struct _NSZone *)arg1;

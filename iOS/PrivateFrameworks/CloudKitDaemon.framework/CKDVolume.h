@@ -8,20 +8,22 @@
 
 @class NSNumber, NSString, NSUUID;
 
-__attribute__((visibility("hidden")))
 @interface CKDVolume : NSObject
 {
     NSUUID *_volumeUUID;
     NSNumber *_deviceID;
-    NSString *_mountToPath;
+    NSString *_mountPath;
 }
 
++ (id)mountedVolumes;
++ (id)volumeForPath:(const char *)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSString *mountToPath; // @synthesize mountToPath=_mountToPath;
-@property(retain, nonatomic) NSNumber *deviceID; // @synthesize deviceID=_deviceID;
-@property(retain, nonatomic) NSUUID *volumeUUID; // @synthesize volumeUUID=_volumeUUID;
+@property(readonly, nonatomic) NSString *mountPath; // @synthesize mountPath=_mountPath;
+@property(readonly, nonatomic) NSNumber *deviceID; // @synthesize deviceID=_deviceID;
+@property(readonly, nonatomic) NSUUID *volumeUUID; // @synthesize volumeUUID=_volumeUUID;
 - (id)description;
 - (id)CKPropertiesDescription;
+@property(readonly, nonatomic) _Bool isRootVolume;
 - (id)initWithVolumeUUID:(id)arg1 deviceID:(id)arg2 mountToPath:(id)arg3;
 
 @end

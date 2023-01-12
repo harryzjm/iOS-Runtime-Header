@@ -10,6 +10,7 @@
 
 @interface CBL2CAPChannel : NSObject
 {
+    _Bool _isIncoming;
     unsigned short _PSM;
     int _socketFD;
     CBPeer *_peer;
@@ -20,6 +21,7 @@
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) int socketFD; // @synthesize socketFD=_socketFD;
+@property(nonatomic) _Bool isIncoming; // @synthesize isIncoming=_isIncoming;
 @property(retain, nonatomic) CBUUID *serviceUUID; // @synthesize serviceUUID=_serviceUUID;
 @property(readonly, nonatomic) unsigned short PSM; // @synthesize PSM=_PSM;
 @property(readonly, nonatomic) NSOutputStream *outputStream; // @synthesize outputStream=_outputStream;

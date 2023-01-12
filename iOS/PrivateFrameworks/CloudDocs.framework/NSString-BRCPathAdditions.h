@@ -7,6 +7,12 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (BRCPathAdditions)
++ (id)br_currentHomeDir;
++ (id)_br_containerPathForDataSeparatedPersona;
++ (id)br_personaGroupDir;
++ (id)br_currentMobileDocumentsDir;
++ (id)br_currentSupportDir;
++ (id)br_currentPersonaIDWithIsDataSeparated:(_Bool *)arg1;
 + (id)br_pathForDirectory:(unsigned long long)arg1;
 + (id)br_representableHFSFileNameWithBase:(id)arg1 suffix:(id)arg2 extension:(id)arg3 makeDotFile:(_Bool)arg4;
 + (id)br_emptyFilenameAlternativeName;
@@ -41,7 +47,8 @@
 - (id)br_displayFilenameWithExtensionHidden:(_Bool)arg1;
 - (id)brc_stringByDeletingPathExtension;
 - (id)br_pathExtension;
-- (id)brc_libnotifyPerUserNotificationName;
-- (id)brc_stringByBackslashEscapingCharactersInString:(id)arg1;
+- (id)br_decodeIndexStringToIndexSet;
+- (id)br_libnotifyPerUserNotificationName;
+- (id)br_stringByBackslashEscapingCharactersInString:(id)arg1;
 @end
 

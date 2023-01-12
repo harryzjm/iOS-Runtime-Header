@@ -31,8 +31,6 @@
 - (void)_terminateWithRequest:(id)arg1 forWatchdog:(id)arg2;
 - (id)_watchdog:(id)arg1 terminationRequestForViolatedProvision:(id)arg2 error:(id)arg3;
 - (_Bool)_watchdog:(id)arg1 shouldTerminateWithDeclineReason:(out id *)arg2;
-- (void)_watchdogStopped:(id)arg1;
-- (void)_watchdogStarted:(id)arg1;
 @property(readonly, retain, nonatomic) RBSProcessIdentity *identity;
 @property(readonly, retain, nonatomic) BSProcessHandle *handle;
 @property(readonly, nonatomic) int pid;

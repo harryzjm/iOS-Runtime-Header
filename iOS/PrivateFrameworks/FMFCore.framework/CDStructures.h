@@ -6,8 +6,24 @@
 
 #pragma mark Named Structures
 
-struct _NSRange {
-    unsigned long long _field1;
-    unsigned long long _field2;
+struct CGSize {
+    double _field1;
+    double _field2;
 };
+
+#pragma mark Typedef'd Structures
+
+typedef struct {
+    double _field1;
+    double _field2;
+} CDStruct_c3b9c2ee;
+
+typedef struct {
+    int _field1;
+    union {
+        int _field1;
+        int _field2;
+        int _field3;
+    } _field2;
+} CDStruct_026435ec;
 

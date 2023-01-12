@@ -15,10 +15,11 @@
 + (id)markerStyleAttributes;
 + (id)styleAttributesForDraggingWithAttributes:(id)arg1;
 + (id)styleAttributesForCalloutWithAttributes:(id)arg1;
-+ (id)styleAttributesForUnpickedFeatureWithAttributes:(id)arg1;
 + (id)styleAttributesForSearchResultWithAttributes:(id)arg1;
++ (id)styleAttributesForUnpickedFeatureWithAttributes:(id)arg1;
 + (id)styleAttributesForRouteAnnotationWithAttributes:(id)arg1;
 + (id)styleAttributesForTrafficIncidentType:(long long)arg1;
 + (id)styleAttributesForTrafficCameraType:(long long)arg1 isAboveThreshold:(_Bool)arg2;
+- (id)styleAttributesWithElevatedGround:(_Bool)arg1;
 @end
 

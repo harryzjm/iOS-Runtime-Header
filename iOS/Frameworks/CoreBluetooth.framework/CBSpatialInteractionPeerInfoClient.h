@@ -12,11 +12,13 @@ __attribute__((visibility("hidden")))
 @interface CBSpatialInteractionPeerInfoClient : NSObject
 {
     unsigned int _peerID;
+    unsigned int _uwbTokenFlags;
     NSData *_tokenData;
     NSDictionary *_userInfo;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned int uwbTokenFlags; // @synthesize uwbTokenFlags=_uwbTokenFlags;
 @property(copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 @property(copy, nonatomic) NSData *tokenData; // @synthesize tokenData=_tokenData;
 @property(nonatomic) unsigned int peerID; // @synthesize peerID=_peerID;

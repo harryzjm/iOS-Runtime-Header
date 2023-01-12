@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     NSNumber *_releaseYear;
     NSNumber *_duration;
     NSNumber *_episodeNumber;
+    NSNumber *_fractionalEpisodeNumber;
     NSNumber *_numberOfMediaItems;
     NSNumber *_numberOfMediaItemsDownloading;
     NSMutableArray *_assetControllers;
@@ -33,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSMutableArray *assetControllers; // @synthesize assetControllers=_assetControllers;
 @property(retain, nonatomic) NSNumber *numberOfMediaItemsDownloading; // @synthesize numberOfMediaItemsDownloading=_numberOfMediaItemsDownloading;
 @property(retain, nonatomic) NSNumber *numberOfMediaItems; // @synthesize numberOfMediaItems=_numberOfMediaItems;
+@property(retain, nonatomic) NSNumber *fractionalEpisodeNumber; // @synthesize fractionalEpisodeNumber=_fractionalEpisodeNumber;
 @property(retain, nonatomic) NSNumber *episodeNumber; // @synthesize episodeNumber=_episodeNumber;
 @property(retain, nonatomic) NSNumber *duration; // @synthesize duration=_duration;
 @property(retain, nonatomic) NSNumber *releaseYear; // @synthesize releaseYear=_releaseYear;
@@ -46,7 +48,9 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)mediaEntityAssetController:(id)arg1 stateDidChange:(id)arg2;
+- (void)_clearAssetControllers;
 - (void)_configureWithMediaEntities:(id)arg1;
+- (void)dealloc;
 - (id)initWithMediaEntities:(id)arg1 withDownloadType:(long long)arg2;
 - (id)initWithMediaEntity:(id)arg1 withDownloadType:(long long)arg2;
 

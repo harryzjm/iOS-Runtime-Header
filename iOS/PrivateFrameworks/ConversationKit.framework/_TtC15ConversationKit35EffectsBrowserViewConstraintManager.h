@@ -10,7 +10,11 @@
 
 @interface _TtC15ConversationKit35EffectsBrowserViewConstraintManager : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *containingGuide;
+    MISSING_TYPE *effectsBrowserView;
+    MISSING_TYPE *localParticipantView;
     MISSING_TYPE *constantConstraints;
+    MISSING_TYPE *effectsBrowserViewHeightAnchor;
     MISSING_TYPE *effectsBrowserViewTopAnchor;
 }
 

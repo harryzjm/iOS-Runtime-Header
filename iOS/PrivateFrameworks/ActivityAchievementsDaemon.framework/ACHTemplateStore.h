@@ -56,7 +56,7 @@
 - (_Bool)addTemplates:(id)arg1 databaseContext:(id)arg2 error:(id *)arg3;
 - (void)addTemplates:(id)arg1;
 - (id)_queue_templatesFilteredForDuplicates:(id)arg1;
-- (void)loadAllTemplatesFromDatabaseIfNecessary;
+- (_Bool)loadAllTemplatesFromDatabaseIfNecessary;
 - (id)availableTemplatesForDateComponents:(id)arg1 countryCode:(id)arg2;
 - (id)templateForTemplateKey:(unsigned long long)arg1;
 - (id)templateForUniqueName:(id)arg1;

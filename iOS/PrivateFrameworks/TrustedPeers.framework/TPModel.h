@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSData, NSMutableDictionary, NSMutableSet;
+@class NSData, NSMutableDictionary, NSMutableSet;
 @protocol TPDecrypter;
 
 @interface TPModel : NSObject
@@ -18,14 +18,12 @@
     id <TPDecrypter> _decrypter;
     NSData *_recoverySigningPubKey;
     NSData *_recoveryEncryptionPubKey;
-    NSArray *_cachedViableBottles;
-    NSArray *_cachedPartialViableBottles;
+    NSMutableDictionary *_custodianRecoveryKeys;
 }
 
 + (id)preapprovalsFromKeys:(id)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSArray *cachedPartialViableBottles; // @synthesize cachedPartialViableBottles=_cachedPartialViableBottles;
-@property(retain, nonatomic) NSArray *cachedViableBottles; // @synthesize cachedViableBottles=_cachedViableBottles;
+@property(retain, nonatomic) NSMutableDictionary *custodianRecoveryKeys; // @synthesize custodianRecoveryKeys=_custodianRecoveryKeys;
 @property(retain, nonatomic) NSData *recoveryEncryptionPubKey; // @synthesize recoveryEncryptionPubKey=_recoveryEncryptionPubKey;
 @property(retain, nonatomic) NSData *recoverySigningPubKey; // @synthesize recoverySigningPubKey=_recoverySigningPubKey;
 @property(retain, nonatomic) id <TPDecrypter> decrypter; // @synthesize decrypter=_decrypter;
@@ -33,19 +31,26 @@
 @property(retain, nonatomic) NSMutableSet *uncheckedVouchers; // @synthesize uncheckedVouchers=_uncheckedVouchers;
 @property(retain, nonatomic) NSMutableDictionary *policiesByVersion; // @synthesize policiesByVersion=_policiesByVersion;
 @property(retain, nonatomic) NSMutableDictionary *peersByID; // @synthesize peersByID=_peersByID;
+- (_Bool)currentStatePossiblyMissingData;
+- (id)allCustodianRecoveryKeys;
+- (id)findCustodianRecoveryKeyWithUUID:(id)arg1;
+- (void)removeCustodianRecoveryKey:(id)arg1;
+- (void)registerCustodianRecoveryKey:(id)arg1;
 - (id)recoveryEncryptionPublicKey;
 - (id)recoverySigningPublicKey;
-- (void)clearViableBottles;
-- (void)setViableBottles:(id)arg1;
-- (id)currentCachedViableBottlesSet;
 - (void)setRecoveryKeys:(id)arg1;
+- (_Bool)isCustodianRecoveryKeyEnrolled:(id)arg1;
 - (_Bool)isRecoveryKeyEnrolled;
-- (id)peerIDThatTrustsRecoveryKeys:(id)arg1;
+- (id)peerIDThatTrustsCustodianRecoveryKeys:(id)arg1 canIntroducePeer:(id)arg2 stableInfo:(id)arg3;
+- (id)peerIDThatTrustsRecoveryKeys:(id)arg1 canIntroducePeer:(id)arg2 stableInfo:(id)arg3;
 - (id)untrustedPeerIDs;
+- (id)bestWalrusAcrossTrustedPeers;
+- (id)bestWalrusForStableInfo:(id)arg1 dynamicInfo:(id)arg2 walrusStableChanges:(id)arg3;
 - (id)bestRecoveryKeyForStableInfo:(id)arg1 dynamicInfo:(id)arg2;
 - (id)vectorClock;
 - (id)getPeerIDsTrustedByPeerWithDynamicInfo:(id)arg1 toAccessView:(id)arg2 error:(id *)arg3;
 - (id)getPeerIDsTrustedByPeerWithID:(id)arg1 toAccessView:(id)arg2 error:(id *)arg3;
+- (id)getViewsForCRK:(id)arg1 donorPermanentInfo:(id)arg2 donorStableInfo:(id)arg3 error:(id *)arg4;
 - (id)getViewsForPeer:(id)arg1 stableInfo:(id)arg2 error:(id *)arg3;
 - (_Bool)considerPolicyFromPeerID:(id)arg1 stableInfo:(id)arg2 secrets:(id)arg3 newestPolicyDoc:(id *)arg4 error:(id *)arg5;
 - (id)policyForPeerIDs:(id)arg1 candidatePeerID:(id)arg2 candidateStableInfo:(id)arg3 error:(id *)arg4;
@@ -62,6 +67,7 @@
 - (void)checkVouchers;
 - (void)registerVoucher:(id)arg1;
 - (_Bool)validateVoucherForPeer:(id)arg1 sponsor:(id)arg2;
+- (_Bool)verifyVoucherSignature:(id)arg1;
 - (id)createVoucherForCandidate:(id)arg1 stableInfo:(id)arg2 withSponsorID:(id)arg3 reason:(unsigned long long)arg4 signingKeyPair:(id)arg5 error:(id *)arg6;
 - (_Bool)checkIntroductionForCandidate:(id)arg1 stableInfo:(id)arg2 withSponsorID:(id)arg3 error:(id *)arg4;
 - (_Bool)canIntroduceCandidate:(id)arg1 withSponsor:(id)arg2 toEpoch:(unsigned long long)arg3 underPolicy:(id)arg4 disposition:(id)arg5;
@@ -69,12 +75,11 @@
 - (id)createDynamicInfoWithIncludedPeerIDs:(id)arg1 excludedPeerIDs:(id)arg2 dispositions:(id)arg3 preapprovals:(id)arg4 signingKeyPair:(id)arg5 error:(id *)arg6;
 - (unsigned long long)maxClock;
 - (_Bool)updateDynamicInfo:(id)arg1 forPeerWithID:(id)arg2 error:(id *)arg3;
-- (id)createStableInfoWithFrozenPolicyVersion:(id)arg1 flexiblePolicyVersion:(id)arg2 policySecrets:(id)arg3 syncUserControllableViews:(int)arg4 deviceName:(id)arg5 serialNumber:(id)arg6 osVersion:(id)arg7 signingKeyPair:(id)arg8 recoverySigningPubKey:(id)arg9 recoveryEncryptionPubKey:(id)arg10 error:(id *)arg11;
+- (id)createStableInfoWithFrozenPolicyVersion:(id)arg1 flexiblePolicyVersion:(id)arg2 policySecrets:(id)arg3 syncUserControllableViews:(int)arg4 secureElementIdentity:(id)arg5 walrusSetting:(id)arg6 deviceName:(id)arg7 serialNumber:(id)arg8 osVersion:(id)arg9 signingKeyPair:(id)arg10 recoverySigningPubKey:(id)arg11 recoveryEncryptionPubKey:(id)arg12 isInheritedAccount:(_Bool)arg13 error:(id *)arg14;
 - (_Bool)updateStableInfo:(id)arg1 forPeerWithID:(id)arg2 error:(id *)arg3;
 - (int)userViewSyncabilityConsensusAmongTrustedPeers:(id)arg1;
 - (id)getDynamicInfoForPeerWithID:(id)arg1;
 - (id)getStableInfoForPeerWithID:(id)arg1;
-- (_Bool)setWrappedPrivateKeys:(id)arg1 forPeerWithID:(id)arg2 error:(id *)arg3;
 - (unsigned long long)statusOfPeerWithID:(id)arg1;
 - (_Bool)validatePeerWithPreApproval:(id)arg1 sponsor:(id)arg2;
 - (_Bool)hasPotentiallyTrustedPeerWithSigningKey:(id)arg1;
@@ -83,10 +88,12 @@
 - (id)viablePeerCountsByModelID;
 - (id)allMachineIDs;
 - (id)actualPeerWithID:(id)arg1 error:(id *)arg2;
+- (id)custodianPeerWithID:(id)arg1;
 - (id)peerWithID:(id)arg1;
 - (_Bool)hasPeerWithID:(id)arg1;
 - (void)deletePeerWithID:(id)arg1;
 - (void)registerPeerWithPermanentInfo:(id)arg1;
+- (id)allRegisteredPolicyVersions;
 - (id)allPolicyVersions;
 - (id)allVouchers;
 - (id)allPeers;

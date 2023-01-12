@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _signaledValue;
 }
 
+- (_Bool)waitSignaledValue:(unsigned long long)arg1 timeoutMS:(unsigned long long)arg2;
 @property unsigned long long signaledValue; // @dynamic signaledValue;
 - (void)notifyListener:(id)arg1 atValue:(unsigned long long)arg2 block:(CDUnknownBlockType)arg3;
 - (id)newSharedEventHandle;

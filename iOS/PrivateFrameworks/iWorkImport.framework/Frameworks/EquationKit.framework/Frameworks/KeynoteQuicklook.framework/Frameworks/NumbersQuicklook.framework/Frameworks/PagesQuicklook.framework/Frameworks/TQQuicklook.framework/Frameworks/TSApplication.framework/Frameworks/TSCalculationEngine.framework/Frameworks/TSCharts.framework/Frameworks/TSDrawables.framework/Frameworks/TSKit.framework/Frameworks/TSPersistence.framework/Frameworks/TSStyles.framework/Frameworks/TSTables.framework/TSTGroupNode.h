@@ -6,89 +6,110 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/TSTUidReturning-Protocol.h>
+@class NSMutableDictionary, NSUUID, TSCECellValue, TSCEMutableUIDSet, TSCEUIDSet, TSTGroupBy, TSTGroupNodeFormatManager, TSTGroupValueTuple;
 
-@class NSMutableDictionary, TSCECellValue, TSTGroupNodeFormatManager, TSTGroupValueTuple, TSUMutableUUIDSet, TSUUUIDSet;
-
-@interface TSTGroupNode : NSObject <TSTUidReturning>
+@interface TSTGroupNode : NSObject
 {
-    UUIDData_5fbc143e _groupUid;
+    struct TSKUIDStruct _groupUid;
     TSCECellValue *_groupCellValue;
+    TSTGroupValueTuple *_cachedGroupValueTuple;
+    TSTGroupBy *_groupBy;
     unsigned char _groupLevel;
-    unordered_map_facfd2e8 _aggNodes;
+    struct unordered_map<TSKUIDStruct, TSTAggNode *, std::hash<TSKUIDStruct>, std::equal_to<TSKUIDStruct>, std::allocator<std::pair<const TSKUIDStruct, TSTAggNode *>>> _aggNodes;
     NSMutableDictionary *_children;
     struct os_unfair_lock_s _childrenLock;
-    TSUMutableUUIDSet *_rowUids;
+    struct TSUIndexSet _rowUidsIndexSet;
+    struct TSUIndexSet _pivotOnlyRowIndexes;
     TSTGroupNode *_parentNode;
     TSTGroupNodeFormatManager *_formatManager;
-    unordered_map_8a2ad1cf _childNodesByRowUid;
+    struct unordered_map<TSKUIDStruct, TSTGroupNode *, std::hash<TSKUIDStruct>, std::equal_to<TSKUIDStruct>, std::allocator<std::pair<const TSKUIDStruct, TSTGroupNode *>>> _childNodesByRowUid;
+    TSCEMutableUIDSet *_disconnectedRowUids;
 }
 
 + (id)localizedStringForCellValue:(id)arg1 categoryLevel:(unsigned char)arg2 groupBy:(id)arg3;
 + (id)normalizedStringForCompare:(id)arg1;
 + (_Bool)needFormulasForAggregateType:(unsigned char)arg1;
-+ (id)keyStringForCellValue:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(nonatomic) TSTGroupNode *parentNode; // @synthesize parentNode=_parentNode;
-@property(readonly, retain, nonatomic) TSUUUIDSet *rowUids; // @synthesize rowUids=_rowUids;
 @property(readonly, nonatomic) unsigned char groupLevel; // @synthesize groupLevel=_groupLevel;
 @property(readonly, retain, nonatomic) TSCECellValue *groupCellValue; // @synthesize groupCellValue=_groupCellValue;
-@property(readonly) const UUIDData_5fbc143e *groupUid; // @synthesize groupUid=_groupUid;
-- (vector_4dc5f307)nodePath;
-- (id)aggNodeForColumnUid:(const UUIDData_5fbc143e *)arg1;
-- (id)groupNodeForRowUid:(const UUIDData_5fbc143e *)arg1 atLevel:(unsigned char)arg2;
-- (id)groupNodeForGroupUid:(const UUIDData_5fbc143e *)arg1;
+@property(readonly) struct TSKUIDStruct groupUid; // @synthesize groupUid=_groupUid;
+@property(nonatomic) TSTGroupBy *groupBy; // @synthesize groupBy=_groupBy;
+- (TSKUIDStructVectorTemplate_de88e035)nodePath;
+- (id)aggNodeForColumnUid:(const struct TSKUIDStruct *)arg1;
+- (id)groupNodeForRowUid:(const struct TSKUIDStruct *)arg1 atLevel:(unsigned char)arg2;
+- (id)groupNodeForGroupUid:(const struct TSKUIDStruct *)arg1;
 - (void)addAggNode:(id)arg1;
 - (void)enumerateDirectChildren:(CDUnknownBlockType)arg1;
+- (void)enumerateGroupsBetweenLevel:(unsigned char)arg1 andLevel:(unsigned char)arg2 withBlock:(CDUnknownBlockType)arg3;
+- (void)enumerateGroupsBetweenLevel:(unsigned char)arg1 andLevel:(unsigned char)arg2 withStop:(_Bool *)arg3 withBlock:(CDUnknownBlockType)arg4;
 - (void)enumerateGroupsAtLevel:(unsigned char)arg1 withBlock:(CDUnknownBlockType)arg2;
-- (void)enumerateAllGroupsWithBlock:(CDUnknownBlockType)arg1;
-- (id)descriptionWithGroupBy:(id)arg1;
+- (void)enumerateGroupsAtLevel:(unsigned char)arg1 withStop:(_Bool *)arg2 withBlock:(CDUnknownBlockType)arg3;
+- (void)enumerateAllGroupsWithStop:(_Bool *)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (id)groupHierarchyTreeAsFiltered:(_Bool)arg1 usingOrder:(id)arg2 forDimension:(long long)arg3;
+- (struct TSKUIDStruct)firstVisibleNodeUsingColumnRowUIDMap:(id)arg1 forDimension:(long long)arg2 leafLevel:(unsigned char)arg3 pivotTableHiddenExtent:(id)arg4;
 - (id)groupValueHierarchyStringWithDelimiterString:(id)arg1;
-- (id)groupValueHierarchyStringWithDelimiterString:(id)arg1 groupBy:(id)arg2 namingContext:(id)arg3;
-- (id)groupValueHierarchyForChart:(_Bool)arg1 groupBy:(id)arg2;
+- (id)groupValueHierarchyStringWithDelimiterString:(id)arg1 namingContext:(id)arg2;
+- (id)groupValueHierarchyForChart:(_Bool)arg1 groupBySet:(id)arg2 aggIndex:(unsigned short)arg3 appendAggregateName:(_Bool)arg4;
+- (id)groupValueHierarchyForChart:(_Bool)arg1;
+- (id)groupValueCellValueForGroupBySet:(id)arg1 aggIndex:(unsigned short)arg2 appendAggregateName:(_Bool)arg3;
+- (id)groupValueCellValue;
+- (id)canonicalKeyStringAtLevel:(unsigned char)arg1;
 - (id)groupValueAtLevel:(unsigned char)arg1;
-- (void)clearEmptyNodesWithGroupBy:(id)arg1;
-- (void)clearWithGroupBy:(id)arg1;
+- (void)clearEmptyNodes;
+- (void)clearAllGroupNodes;
 - (void)removeAllRowUids;
-- (_Bool)containsRowUid:(const UUIDData_5fbc143e *)arg1;
-- (void)addRowUid:(const UUIDData_5fbc143e *)arg1;
+- (_Bool)containsAnyRowUidInRowUidSet:(id)arg1;
+- (_Bool)containsRowUid:(const struct TSKUIDStruct *)arg1;
+- (void)addRowUid:(const struct TSKUIDStruct *)arg1;
+- (void)enumerateRowUidsWithBlock:(CDUnknownBlockType)arg1;
+- (struct TSUIndexSet)pivotOnlyRowIndexes;
+- (TSKUIDStructVectorTemplate_de88e035)rowUidsAsVector;
 - (void)markDependentsAsDirtyWithCalcEngine:(id)arg1;
 - (void)markAsDirtyWithCalcEngine:(id)arg1;
-- (void)rebuildFormulasForAggNode:(id)arg1 forGroupBy:(id)arg2;
-- (void)removeRowUids:(id)arg1 forGroupBy:(id)arg2;
-- (void)removeRowUid:(const UUIDData_5fbc143e *)arg1 forGroupValueTuple:(id)arg2 atLevel:(unsigned char)arg3 forGroupBy:(id)arg4 withLocale:(id)arg5;
-- (id)insertRowUid:(const UUIDData_5fbc143e *)arg1 forGroupValueTuple:(id)arg2 atLevel:(unsigned char)arg3 forGroupBy:(id)arg4 withLocale:(id)arg5;
+- (void)rebuildFormulasForAggNode:(id)arg1;
+- (void)removeRowUids:(id)arg1;
+- (void)removeRowUid:(const struct TSKUIDStruct *)arg1 forGroupValueTuple:(id)arg2 atLevel:(unsigned char)arg3 withLocale:(id)arg4;
+- (id)insertRowUid:(const struct TSKUIDStruct *)arg1 atRowIndex:(unsigned int)arg2 forGroupValueTuple:(id)arg3 atLevel:(unsigned char)arg4 withLocale:(id)arg5 createdGroupNodeCount:(unsigned long long *)arg6;
 - (_Bool)updateGroupCellValueIfKeyMatches:(id)arg1;
 - (void)p_refreshGroupValue;
 - (void)addChangesTo:(id)arg1 forDemotingValueAtLevel:(unsigned char)arg2 toLevel:(unsigned char)arg3;
 - (void)addChangesTo:(id)arg1 forPromotingValueAtLevel:(unsigned char)arg2 toLevel:(unsigned char)arg3;
 - (void)addChangesTo:(id)arg1 forRemovingValueAtLevel:(unsigned char)arg2;
 - (void)addChangesTo:(id)arg1 forReplacingValue:(id)arg2 atLevel:(unsigned char)arg3;
-- (id)findGroupNodeForDisplayValuesFromSplitter:(id)arg1 atLevel:(unsigned char)arg2 groupBy:(id)arg3 startAtComponent:(unsigned long long)arg4 startAtWord:(unsigned long long)arg5 preserveFlags:(struct TSUPreserveFlags *)arg6;
+- (id)findGroupNodeForDisplayValuesFromSplitter:(id)arg1 atLevel:(unsigned char)arg2 startAtComponent:(unsigned long long)arg3 startAtWord:(unsigned long long)arg4 preserveFlags:(struct TSUPreserveFlags *)arg5;
 - (id)findGroupNodeForValue:(id)arg1 atLevel:(unsigned char)arg2 locale:(id)arg3;
-- (struct TSCECategoryRef)groupValueHierarchyRefAtLevel:(unsigned char)arg1 forGroupBy:(id)arg2;
-- (struct TSCECategoryRef)groupValueRefAtLevel:(unsigned char)arg1 forGroupBy:(id)arg2;
-- (struct TSCECategoryRef)aggregateRefForType:(unsigned char)arg1 atLevel:(unsigned char)arg2 forGroupBy:(id)arg3 forColumnUid:(const UUIDData_5fbc143e *)arg4;
-@property(readonly, retain, nonatomic) TSUUUIDSet *directChildGroupUids;
-@property(readonly, retain, nonatomic) TSUUUIDSet *childGroupUids;
-- (void)p_addChildGroupUidsIntoSet:(id)arg1 recursively:(_Bool)arg2;
-- (const UUIDData_5fbc143e *)uidReturn;
+- (id)groupValueHierarchyRefAtLevel:(unsigned char)arg1;
+- (id)groupValueRefAtLevel:(unsigned char)arg1;
+- (id)aggregateRefForType:(unsigned char)arg1 atLevel:(unsigned char)arg2 forColumnUid:(const struct TSKUIDStruct *)arg3;
+@property(readonly, nonatomic) TSCEUIDSet *unfilteredDirectChildGroupUids;
+@property(readonly, nonatomic) TSCEUIDSet *directChildGroupUids;
+@property(readonly, nonatomic) TSCEUIDSet *unfilteredChildGroupUids;
+@property(readonly, nonatomic) TSCEUIDSet *childGroupUids;
+- (void)p_addChildGroupUidsIntoSet:(id)arg1 recursively:(_Bool)arg2 skipFiltered:(_Bool)arg3;
+- (struct TSKUIDStruct)uidReturn;
 - (void)updateWithDocumentRoot:(id)arg1;
 @property(readonly, nonatomic) _Bool isErrorNode;
 @property(readonly, nonatomic) _Bool isBlankNode;
 @property(readonly, nonatomic) _Bool isLeaf;
-- (void)encodeToArchive:(struct CategoryOwnerArchive_GroupByArchive_GroupNodeArchive *)arg1;
+- (void)encodeToArchive:(void *)arg1 backwardCompat:(_Bool)arg2;
 - (id)safeChildren;
 - (void)removeChildForKey:(id)arg1;
 - (void)addChild:(id)arg1 withKey:(id)arg2;
 - (void)dealloc;
-- (id)initWithArchive:(const struct CategoryOwnerArchive_GroupByArchive_GroupNodeArchive *)arg1 forGroupBy:(id)arg2 atLevel:(unsigned char)arg3;
-- (id)initWithGroupCellValue:(id)arg1 atLevel:(unsigned char)arg2 groupUid:(UUIDData_5fbc143e)arg3 children:(id)arg4;
-- (id)initAsRootNode;
-@property(readonly, nonatomic) unordered_map_facfd2e8 *aggNodes;
+- (id)initWithArchive:(const void *)arg1 forGroupBy:(id)arg2 atLevel:(unsigned char)arg3;
+- (id)initWithGroupCellValue:(id)arg1 groupBy:(id)arg2 atLevel:(unsigned char)arg3 groupUid:(struct TSKUIDStruct)arg4 children:(id)arg5;
+- (id)initAsRootNodeForGroupBy:(id)arg1;
+@property(readonly, nonatomic) _Bool hasUnfilteredRows;
+@property(readonly, nonatomic) void *aggNodes;
 @property(readonly, nonatomic) TSTGroupValueTuple *groupValueTuple;
-@property(readonly) UUIDData_5fbc143e labelUid;
+- (id)computedGroupValueTuple;
+@property(readonly) struct TSKUIDStruct labelUid;
+@property(readonly, nonatomic) unsigned int rowCount;
+@property(readonly) NSUUID *groupValueUuid;
+@property(readonly) NSUUID *groupUuid;
+@property(readonly) struct TSKUIDStruct groupValueUid;
 
 @end
 

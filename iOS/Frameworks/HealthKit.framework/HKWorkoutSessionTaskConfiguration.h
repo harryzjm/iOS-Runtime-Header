@@ -12,12 +12,14 @@
     _Bool _requiresRecovery;
     _Bool _supportsAppRelaunchForRecovery;
     _Bool _shouldStopPreviousSession;
+    _Bool _supports3rdPartyAOT;
     HKWorkoutConfiguration *_workoutConfiguration;
     NSUUID *_sessionUUID;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool supports3rdPartyAOT; // @synthesize supports3rdPartyAOT=_supports3rdPartyAOT;
 @property(nonatomic) _Bool shouldStopPreviousSession; // @synthesize shouldStopPreviousSession=_shouldStopPreviousSession;
 @property(nonatomic) _Bool supportsAppRelaunchForRecovery; // @synthesize supportsAppRelaunchForRecovery=_supportsAppRelaunchForRecovery;
 @property(nonatomic) _Bool requiresRecovery; // @synthesize requiresRecovery=_requiresRecovery;

@@ -7,7 +7,15 @@
 #import <SearchFoundation/SFCardSection.h>
 
 @interface SFCardSection (SearchUIViewClass)
+- (Class)_searchUIHorizontalViewClass;
 - (Class)_searchUIViewClass;
 - (Class)_searchUIHorizontallyScrollingButtonControllerClass;
+- (double)searchUIGridSectionModel_interItemSpacing;
+- (_Bool)searchUIGridSectionModel_useBackground;
+- (id)searchUIGridSectionModel_heightDimensionWithColumnCount:(unsigned long long)arg1;
+- (_Bool)searchUIHorizontallyScrollingSectionModel_useBackground;
+- (id)searchUIHorizontallyScrollingSectionModel_heightDimension;
+- (id)searchUIHorizontallyScrollingSectionModel_widthDimension;
+- (double)searchUIHorizontallyScrollingSectionModel_widthDimensionMultiplier;
 @end
 

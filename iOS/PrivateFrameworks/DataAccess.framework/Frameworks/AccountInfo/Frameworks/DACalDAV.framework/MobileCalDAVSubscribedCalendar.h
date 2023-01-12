@@ -15,6 +15,7 @@
 }
 
 - (void).cxx_destruct;
+- (void)updatePropertiesFromCalCalendar;
 @property(nonatomic) _Bool isSubscribed;
 - (_Bool)shouldCalendarBeReadOnly;
 @property(nonatomic) _Bool isManagedByServer;

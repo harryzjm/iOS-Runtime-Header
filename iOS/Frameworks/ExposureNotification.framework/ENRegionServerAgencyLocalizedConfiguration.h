@@ -19,12 +19,17 @@
     NSString *_displayName;
     NSString *_legalConsentText;
     NSString *_onboardingNotificationBody;
+    NSString *_phaTelemetryOptInMessage;
     NSString *_regionName;
     NSString *_revokedNotificationBody;
     NSString *_revokedNotificationSubject;
     NSString *_symptomsOnsetDescription;
     NSString *_testVerificationIntroMessage;
+    NSString *_testVerificationNotificationBody;
     NSString *_traveledQuestionText;
+    NSString *_vaccinationQuestionText;
+    NSString *_selfReportNotificationBody;
+    NSString *_selfReportIntroMessage;
     NSArray *_notificationConfigurations;
 }
 
@@ -32,12 +37,17 @@
 + (_Bool)getLocalizedAgencyConfiguration:(id *)arg1 region:(id)arg2 fromDictionary:(id)arg3 locale:(id)arg4;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *notificationConfigurations; // @synthesize notificationConfigurations=_notificationConfigurations;
+@property(copy, nonatomic) NSString *selfReportIntroMessage; // @synthesize selfReportIntroMessage=_selfReportIntroMessage;
+@property(copy, nonatomic) NSString *selfReportNotificationBody; // @synthesize selfReportNotificationBody=_selfReportNotificationBody;
+@property(copy, nonatomic) NSString *vaccinationQuestionText; // @synthesize vaccinationQuestionText=_vaccinationQuestionText;
 @property(copy, nonatomic) NSString *traveledQuestionText; // @synthesize traveledQuestionText=_traveledQuestionText;
+@property(copy, nonatomic) NSString *testVerificationNotificationBody; // @synthesize testVerificationNotificationBody=_testVerificationNotificationBody;
 @property(copy, nonatomic) NSString *testVerificationIntroMessage; // @synthesize testVerificationIntroMessage=_testVerificationIntroMessage;
 @property(copy, nonatomic) NSString *symptomsOnsetDescription; // @synthesize symptomsOnsetDescription=_symptomsOnsetDescription;
 @property(copy, nonatomic) NSString *revokedNotificationSubject; // @synthesize revokedNotificationSubject=_revokedNotificationSubject;
 @property(copy, nonatomic) NSString *revokedNotificationBody; // @synthesize revokedNotificationBody=_revokedNotificationBody;
 @property(copy, nonatomic) NSString *regionName; // @synthesize regionName=_regionName;
+@property(copy, nonatomic) NSString *phaTelemetryOptInMessage; // @synthesize phaTelemetryOptInMessage=_phaTelemetryOptInMessage;
 @property(copy, nonatomic) NSString *onboardingNotificationBody; // @synthesize onboardingNotificationBody=_onboardingNotificationBody;
 @property(copy, nonatomic) NSString *legalConsentText; // @synthesize legalConsentText=_legalConsentText;
 @property(copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
@@ -48,6 +58,7 @@
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)description;
+- (id)notificationConfigurationForName:(id)arg1;
 - (id)initWithRegion:(id)arg1;
 
 @end

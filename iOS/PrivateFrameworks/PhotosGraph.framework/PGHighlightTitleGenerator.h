@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class PGTitleTuple, PHAsset, PHAssetCollection;
+@class PGTitleGenerationContext, PGTitleTuple, PHAsset, PHAssetCollection;
 @protocol PGEventEnrichment;
 
 @interface PGHighlightTitleGenerator : NSObject
 {
+    PGTitleGenerationContext *_titleGenerationContext;
     _Bool _createVerboseTitle;
     id <PGEventEnrichment> _collection;
     PHAssetCollection *_curatedAssetCollection;
@@ -28,7 +29,7 @@
 @property(retain, nonatomic) PHAssetCollection *curatedAssetCollection; // @synthesize curatedAssetCollection=_curatedAssetCollection;
 @property(retain, nonatomic) id <PGEventEnrichment> collection; // @synthesize collection=_collection;
 - (void)_generateTitleTuples;
-- (id)initWithCollection:(id)arg1 curatedAssetCollection:(id)arg2 keyAsset:(id)arg3 createVerboseTitle:(_Bool)arg4;
+- (id)initWithCollection:(id)arg1 curatedAssetCollection:(id)arg2 keyAsset:(id)arg3 createVerboseTitle:(_Bool)arg4 titleGenerationContext:(id)arg5;
 
 @end
 

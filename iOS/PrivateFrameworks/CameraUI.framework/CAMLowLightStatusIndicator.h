@@ -14,6 +14,7 @@
 @property(nonatomic, getter=isLowLightDisabled) _Bool lowLightDisabled; // @synthesize lowLightDisabled=_lowLightDisabled;
 @property(nonatomic) long long lowLightMode; // @synthesize lowLightMode=_lowLightMode;
 @property(nonatomic) double duration; // @synthesize duration=_duration;
+- (id)imageNameForAXHUD;
 - (id)valueText;
 - (_Bool)shouldShowSlashForCurrentState;
 - (_Bool)shouldUseSlash;

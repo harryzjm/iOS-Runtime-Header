@@ -10,9 +10,10 @@
 #import <MediaPlaybackCore/MPRTCReportingItemSessionContaining-Protocol.h>
 #import <MediaPlaybackCore/MPRequestResponseControllerDelegate-Protocol.h>
 
-@class MPAVItem, MPCModelGenericAVItemUserIdentityPropertySet, MPCModelPlaybackContext, MPCPlaybackRequestEnvironment, MPIdentifierSet, MPModelGenericObject, MPModelRequest, MPModelResponse, MPRequestResponseController, NSDictionary, NSHashTable, NSLock, NSObject, NSString;
+@class MPAVItem, MPCModelGenericAVItemUserIdentityPropertySet, MPCModelPlaybackContext, MPCPlaybackRequestEnvironment, MPIdentifierSet, MPModelGenericObject, MPModelRequest, MPModelResponse, MPPropertySet, MPRequestResponseController, NSDictionary, NSHashTable, NSLock, NSObject, NSString;
 @protocol MPCModelPlaybackRequest, MPCModelPlaybackResponse, MPMutableIdentifierListSection, OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface MPCModelQueueFeeder : MPQueueFeeder <MPRTCReportingItemSessionContaining, MPRequestResponseControllerDelegate, MPCQueueControllerDataSource>
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
@@ -26,7 +27,6 @@
     CDUnknownBlockType _loadingCompletionHandler;
     MPRequestResponseController *_requestController;
     MPModelRequest<MPCModelPlaybackRequest> *_request;
-    MPModelResponse<MPCModelPlaybackResponse> *_response;
     NSString *_rtcReportingPlayQueueSourceIdentifier;
     _Bool _isSiriInitiated;
     MPCPlaybackRequestEnvironment *_playbackRequestEnvironment;
@@ -36,22 +36,28 @@
     MPCModelGenericAVItemUserIdentityPropertySet *_identityPropertySet;
     MPAVItem *_currentItem;
     MPCModelPlaybackContext *_playbackContext;
+    MPPropertySet *_representativeMetadataPropertySet;
+    MPModelResponse<MPCModelPlaybackResponse> *_response;
     MPModelGenericObject *_fallbackSectionRepresentation;
 }
 
 + (id)requiredPropertiesForStaticMediaClips;
 - (void).cxx_destruct;
 @property(copy, nonatomic) MPModelGenericObject *fallbackSectionRepresentation; // @synthesize fallbackSectionRepresentation=_fallbackSectionRepresentation;
+@property(readonly, nonatomic) MPModelResponse<MPCModelPlaybackResponse> *response; // @synthesize response=_response;
 - (id)_supplementalLibraryRequest;
 - (id)_sectionedModelObjectsRepresentationForSectionedCollection:(id)arg1;
 - (id)_equivalencySourceAdamIDForIdentifierSet:(id)arg1;
 - (void)_endBackgroundTaskAssertion;
 - (void)_beginBackgroundTaskAssertion;
+- (void)_didUpdateToResponse:(id)arg1;
+- (void)_performRequestUpdate:(CDUnknownBlockType)arg1;
 - (_Bool)section:(id)arg1 shouldShuffleExcludeItem:(id)arg2;
 - (_Bool)section:(id)arg1 supportsShuffleType:(long long)arg2;
 - (void)reloadSection:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)shouldUsePlaceholderForItem:(id)arg1 inSection:(id)arg2;
 - (id)itemForItem:(id)arg1 inSection:(id)arg2;
+- (id)identifiersForItem:(id)arg1 inSection:(id)arg2;
 - (void)itemDidBeginPlayback:(id)arg1;
 - (void)loadPlaybackContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)firstItemIntersectingIdentifierSet:(id)arg1;
@@ -63,8 +69,9 @@
 - (void)willBeginLoadingRequestForController:(id)arg1;
 - (void)controller:(id)arg1 defersResponseReplacement:(CDUnknownBlockType)arg2;
 - (_Bool)controller:(id)arg1 shouldRetryFailedRequestWithError:(id)arg2;
-- (void)getRepresentativeMetadataForPlaybackContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)modelPlayEvent;
+- (void)getRepresentativeMetadataForPlaybackContext:(id)arg1 properties:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)modelPlayEventForItem:(id)arg1 inSection:(id)arg2;
+- (id)firstModelPlayEvent;
 - (id)uniqueIdentifier;
 - (id)updatedPlaybackContext;
 - (id)supplementalPlaybackContextWithReason:(long long)arg1;

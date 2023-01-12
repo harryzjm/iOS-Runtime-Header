@@ -8,20 +8,20 @@
 
 @interface TSCERewriteTableUIDInfo : NSObject
 {
-    UUIDMap_b66c2694 _tableUIDMap;
+    struct TSKUIDStructMap _tableUIDMap;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)rollbackMappings:(id)arg1;
-- (void)tableWasAdded:(const UUIDData_5fbc143e *)arg1;
-- (id)extendMappingWithTableUIDs:(const UUIDMap_b66c2694 *)arg1 calcEngine:(id)arg2;
-- (void)saveToMessage:(struct RewriteTableUIDInfoArchive *)arg1;
-- (id)initFromMessage:(const struct RewriteTableUIDInfoArchive *)arg1;
+- (void)tableWasAdded:(const struct TSKUIDStruct *)arg1;
+- (id)extendMappingWithTableUIDs:(const void *)arg1 calcEngine:(id)arg2;
+- (void)saveToMessage:(void *)arg1;
+- (id)initFromMessage:(const void *)arg1;
 - (id)description;
-- (vector_4dc5f307)originalTableUIDs;
-- (const UUIDMap_b66c2694 *)tableUIDMap;
-- (id)initWithTableUIDMap:(const UUIDMap_b66c2694 *)arg1;
+- (TSKUIDStructVectorTemplate_de88e035)originalTableUIDs;
+- (const void *)tableUIDMap;
+- (id)initWithTableUIDMap:(const void *)arg1;
 
 @end
 

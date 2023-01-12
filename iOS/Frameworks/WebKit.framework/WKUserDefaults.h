@@ -6,18 +6,19 @@
 
 #import <Foundation/NSUserDefaults.h>
 
-@class NSString, WKPreferenceObserver;
-
 __attribute__((visibility("hidden")))
 @interface WKUserDefaults : NSUserDefaults
 {
-    NSString *m_suiteName;
-    WKPreferenceObserver *m_observer;
+    struct RetainPtr<NSString> m_suiteName;
+    struct WeakObjCPtr<WKPreferenceObserver> m_observer;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (id)initWithSuiteName:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_notifyObserversOfChangeFromValuesForKeys:(id)arg1 toValuesForKeys:(id)arg2;
+- (void)findPreferenceChangesAndNotifyForKeys:(id)arg1 toValuesForKeys:(id)arg2;
 
 @end
 

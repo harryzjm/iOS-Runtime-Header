@@ -14,11 +14,13 @@
     UIImage *_image;
     UIImageView *_imageView;
     UIView *_imageBackgroundView;
+    _Bool _strokeImage;
     _Bool _useShadows;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool useShadows; // @synthesize useShadows=_useShadows;
+- (void)setStrokeImage:(_Bool)arg1;
 - (void)_setupImageView;
 - (void)setImage:(id)arg1 animated:(_Bool)arg2;
 @property(copy, nonatomic) NSString *subtitle;

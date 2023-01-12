@@ -12,6 +12,10 @@
 + (_Bool)supportsSecureCoding;
 + (id)localizedDisplayExplanation;
 + (id)localizedDisplayName;
++ (_Bool)isSupportedOnThisDevice;
++ (long long)triggerBacking;
++ (id)displayGlyphTintColor;
++ (id)displayGlyphName;
 + (_Bool)isAllowedToRunAutomatically;
 @property(nonatomic) unsigned long long selection; // @synthesize selection=_selection;
 - (id)copyWithZone:(struct _NSZone *)arg1;

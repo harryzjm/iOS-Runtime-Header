@@ -6,14 +6,17 @@
 
 #import <MetalTools/MTLFunctionSPI-Protocol.h>
 
-@class MTLType, NSArray, NSDictionary, NSString;
-@protocol MTLDevice;
+@class MTLDebugInstrumentationData, MTLType, NSArray, NSDictionary, NSString;
+@protocol MTLDevice, MTLFunctionHandle;
 
 @interface MTLToolsFunction <MTLFunctionSPI>
 {
+    NSArray *_relocations;
 }
 
-+ (id)newFunctionWithBaseObject:(id)arg1 parent:(id)arg2;
+- (void)dealloc;
+- (id)precompiledOutput;
+@property(readonly, nonatomic) id <MTLFunctionHandle> functionHandle;
 - (id)newFunctionWithPluginData:(id)arg1 bitcodeType:(unsigned char)arg2;
 - (const CDStruct_41a22ec7 *)bitCodeHash;
 - (void)reflectionWithOptions:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -21,6 +24,7 @@
 - (id)reflectionWithOptions:(unsigned long long)arg1 pipelineLibrary:(id)arg2;
 - (id)reflectionWithOptions:(unsigned long long)arg1;
 - (id)bitcodeData;
+@property(copy, nonatomic) NSArray *relocations;
 - (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id *)arg2 binaryArchives:(id)arg3;
 - (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id *)arg2 pipelineLibrary:(id)arg3;
 - (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 pipelineLibrary:(id)arg2;
@@ -32,17 +36,21 @@
 @property(readonly) NSDictionary *functionConstantsDictionary;
 @property(readonly) unsigned long long renderTargetArrayIndexType;
 @property(copy) NSString *label;
+@property(readonly, nonatomic) MTLDebugInstrumentationData *debugInstrumentationData;
 - (id)functionInputs;
 @property(readonly, copy) NSString *unpackedFilePath;
 @property(readonly) long long lineNumber;
 @property(readonly, copy) NSString *filePath;
 @property(readonly) NSString *name;
 @property(readonly) NSArray *stageInputAttributes;
+@property(readonly) NSArray *importedLibraries;
+@property(readonly) NSArray *importedSymbols;
 @property(readonly) NSArray *arguments;
 @property(readonly) MTLType *returnType;
 @property(readonly) NSArray *vertexAttributes;
 @property(readonly) unsigned long long functionType;
 - (id)formattedDescription:(unsigned long long)arg1;
+- (id)initWithFunction:(id)arg1 library:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

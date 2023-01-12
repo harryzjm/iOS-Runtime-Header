@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class APSOutgoingMessageCheckpointTrace, NSArray, NSData, NSDictionary, NSError, NSNumber, NSString;
+@class NSArray, NSData, NSDictionary, NSError, NSNumber, NSString;
 
 @interface IDSDeliveryContext : NSObject
 {
@@ -20,7 +20,6 @@
     long long _idsResponseCode;
     _Bool _lastCall;
     _Bool _lastCourierAck;
-    APSOutgoingMessageCheckpointTrace *_apsCheckpointTrace;
     NSString *_deviceID;
     NSNumber *_currentAverageRTT;
     NSNumber *_isDeviceBlackedOut;
@@ -30,7 +29,6 @@
     NSDictionary *_wpConnectionErrorUserInfo;
     NSNumber *_endpointState;
     NSNumber *_failureReason;
-    APSOutgoingMessageCheckpointTrace *_apsdCheckpointTrace;
 }
 
 + (long long)_endpointStateForServerDeliveryStatus:(id)arg1;
@@ -43,7 +41,6 @@
 @property(copy, nonatomic) NSNumber *isDeviceBlackedOut; // @synthesize isDeviceBlackedOut=_isDeviceBlackedOut;
 @property(copy, nonatomic) NSNumber *currentAverageRTT; // @synthesize currentAverageRTT=_currentAverageRTT;
 @property(copy, nonatomic) NSString *deviceID; // @synthesize deviceID=_deviceID;
-@property(copy, nonatomic) APSOutgoingMessageCheckpointTrace *apsdCheckpointTrace; // @synthesize apsdCheckpointTrace=_apsdCheckpointTrace;
 @property(nonatomic) _Bool lastCourierAck; // @synthesize lastCourierAck=_lastCourierAck;
 @property(nonatomic) _Bool lastCall; // @synthesize lastCall=_lastCall;
 @property(nonatomic) long long idsResponseCode; // @synthesize idsResponseCode=_idsResponseCode;

@@ -27,11 +27,10 @@
 @property(nonatomic) double defaultCollectionHeight; // @synthesize defaultCollectionHeight=_defaultCollectionHeight;
 @property(nonatomic) struct UIEdgeInsets sectionInset; // @synthesize sectionInset=_sectionInset;
 - (double)minimumInterItemSpacing;
-- (double)minimumLineSpacing;
 - (struct UIEdgeInsets)sectionInsets;
 - (struct CGSize)sizeForCollectionWithMaxCollectionsWidth:(double)arg1;
-- (id)initWithCollectionsConfiguration:(CDStruct_7ddafc85)arg1 isSingleCollection:(_Bool)arg2 usingTraitCollections:(id)arg3;
-- (id)initWithDefaultCollectionsConfigurationUsingTraitCollections:(id)arg1;
+- (id)initWithCollectionsConfiguration:(CDStruct_7ddafc85)arg1 isSingleCollection:(_Bool)arg2 usingTraitCollections:(id)arg3 inContext:(long long)arg4;
+- (id)initWithDefaultCollectionsConfigurationUsingTraitCollections:(id)arg1 inContext:(long long)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

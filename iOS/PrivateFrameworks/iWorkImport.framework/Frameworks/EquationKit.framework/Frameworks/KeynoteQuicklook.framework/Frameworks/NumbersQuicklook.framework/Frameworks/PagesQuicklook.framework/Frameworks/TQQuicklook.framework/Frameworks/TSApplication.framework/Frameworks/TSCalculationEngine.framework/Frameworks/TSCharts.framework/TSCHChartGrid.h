@@ -14,33 +14,41 @@
 
 @interface TSCHChartGrid : NSObject <NSCopying, TSDMixing>
 {
-    id <TSCHNotifyOnModify> mModifyDelegate;
-    int mDirection;
-    NSMutableArray *mRowNames;
-    NSMutableArray *mColumnNames;
-    NSMutableArray *mValues;
-    _Bool mDirty;
-    _Bool mAddingMultipleRows;
-    unsigned long long mNextRowNumber;
-    _Bool mAddingMultipleCols;
-    unsigned long long mNextColNumber;
-    NSMutableArray *mRowIds;
-    NSMutableArray *mColumnIds;
-    unsigned long long mTransitionLevel;
-    _Bool mSkipUUIDAssertions;
-    NSMutableDictionary *mRowIdToIndexMap;
-    NSMutableDictionary *mColumnIdToIndexMap;
+    int _direction;
+    _Bool _dirty;
+    NSMutableArray *_rowNames;
+    NSMutableArray *_columnNames;
+    NSMutableArray *_values;
+    NSMutableArray *_mutableRowIds;
+    NSMutableArray *_mutableColumnIds;
+    _Bool _addingMultipleRows;
+    _Bool _addingMultipleCols;
+    _Bool _skipUUIDAssertions;
+    id <TSCHNotifyOnModify> _objectToNotify;
+    NSMutableDictionary *_rowIdToIndexMap;
+    NSMutableDictionary *_columnIdToIndexMap;
+    unsigned long long _nextRowNumber;
+    unsigned long long _nextColNumber;
+    unsigned long long _transitionLevel;
 }
 
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSArray *values; // @synthesize values=mValues;
-@property(readonly, copy, nonatomic) NSArray *columnNames; // @synthesize columnNames=mColumnNames;
-@property(readonly, copy, nonatomic) NSArray *rowNames; // @synthesize rowNames=mRowNames;
-@property(readonly, copy, nonatomic) NSArray *columnIds; // @synthesize columnIds=mColumnIds;
-@property(readonly, copy, nonatomic) NSArray *rowIds; // @synthesize rowIds=mRowIds;
-@property(nonatomic) __weak id <TSCHNotifyOnModify> objectToNotify; // @synthesize objectToNotify=mModifyDelegate;
-@property(nonatomic) _Bool dirty; // @synthesize dirty=mDirty;
-@property(nonatomic) int direction; // @synthesize direction=mDirection;
+@property(retain, nonatomic) NSMutableArray *mutableColumnIds; // @synthesize mutableColumnIds=_mutableColumnIds;
+@property(retain, nonatomic) NSMutableArray *mutableRowIds; // @synthesize mutableRowIds=_mutableRowIds;
+@property(retain, nonatomic) NSMutableArray *values; // @synthesize values=_values;
+@property(retain, nonatomic) NSMutableArray *columnNames; // @synthesize columnNames=_columnNames;
+@property(retain, nonatomic) NSMutableArray *rowNames; // @synthesize rowNames=_rowNames;
+@property(nonatomic) _Bool skipUUIDAssertions; // @synthesize skipUUIDAssertions=_skipUUIDAssertions;
+@property(nonatomic) unsigned long long transitionLevel; // @synthesize transitionLevel=_transitionLevel;
+@property(nonatomic) unsigned long long nextColNumber; // @synthesize nextColNumber=_nextColNumber;
+@property(nonatomic) _Bool addingMultipleCols; // @synthesize addingMultipleCols=_addingMultipleCols;
+@property(nonatomic) unsigned long long nextRowNumber; // @synthesize nextRowNumber=_nextRowNumber;
+@property(nonatomic) _Bool addingMultipleRows; // @synthesize addingMultipleRows=_addingMultipleRows;
+@property(retain, nonatomic) NSMutableDictionary *columnIdToIndexMap; // @synthesize columnIdToIndexMap=_columnIdToIndexMap;
+@property(retain, nonatomic) NSMutableDictionary *rowIdToIndexMap; // @synthesize rowIdToIndexMap=_rowIdToIndexMap;
+@property(nonatomic) _Bool dirty; // @synthesize dirty=_dirty;
+@property(nonatomic) int direction; // @synthesize direction=_direction;
+@property(nonatomic) __weak id <TSCHNotifyOnModify> objectToNotify; // @synthesize objectToNotify=_objectToNotify;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 - (_Bool)isEquivalentForCrossDocumentPasteMasterComparison:(id)arg1;
@@ -68,14 +76,16 @@
 - (void)setNameForRow:(unsigned long long)arg1 toName:(id)arg2;
 - (void)insertColumn:(unsigned long long)arg1 withName:(id)arg2 withId:(id)arg3;
 - (void)insertRow:(unsigned long long)arg1 withName:(id)arg2 withId:(id)arg3;
+- (void)decrementTransitionLevel;
+- (void)incrementTransitionLevel;
+- (void)setColumnIds:(id)arg1;
+- (void)setRowIds:(id)arg1;
 - (void)p_updateIdMapStartingAtIndex:(unsigned long long)arg1 isRow:(_Bool)arg2;
 - (void)p_updateColumnMapStartingAtIndex:(unsigned long long)arg1;
 - (void)p_updateRowMapStartingAtIndex:(unsigned long long)arg1;
 - (void)p_updateColumnIndexMap;
 - (void)p_updateRowIndexMap;
 - (void)updateRowAndColumnIndexMaps;
-- (void)setColumnIds:(id)arg1;
-- (void)setRowIds:(id)arg1;
 - (id)p_uuidsForColumns:(struct _NSRange)arg1;
 - (id)p_uuidsForRows:(struct _NSRange)arg1;
 - (id)createUUIDArrayWithCount:(unsigned long long)arg1;
@@ -101,17 +111,17 @@
 @property(readonly, nonatomic) unsigned long long numberOfRows;
 - (unsigned long long)noAssertNumberOfColumns;
 - (unsigned long long)noAssertNumberOfRows;
-- (void)decrementTransitionLevel;
-- (void)incrementTransitionLevel;
-- (_Bool)contentsEqualToGrid:(id)arg1;
+@property(readonly, nonatomic) NSArray *columnIds;
+@property(readonly, nonatomic) NSArray *rowIds;
 - (void)willModify;
+- (_Bool)contentsEqualToGrid:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
-- (void)loadFromPreUFFArchive:(const struct ChartGridArchive *)arg1;
+- (void)loadFromPreUFFArchive:(const void *)arg1;
 - (void)insertColumn:(unsigned long long)arg1 withName:(id)arg2;
 - (void)insertRow:(unsigned long long)arg1 withName:(id)arg2;
-- (void)saveToUnityArchive:(struct ChartArchive *)arg1 forCopy:(_Bool)arg2;
-- (void)loadFromUnityArchive:(const struct ChartArchive *)arg1 chartInfo:(id)arg2;
+- (void)saveToUnityArchive:(void *)arg1 forCopy:(_Bool)arg2;
+- (void)loadFromUnityArchive:(const void *)arg1 chartInfo:(id)arg2;
 
 @end
 

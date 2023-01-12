@@ -17,30 +17,16 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_collectionIds;
 }
 
-+ (_Bool)isValid:(id)arg1;
-+ (Class)collectionIdType;
 + (id)collectionIdComponentForPlaceData:(id)arg1;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (id)collectionIdAtIndex:(unsigned long long)arg1;
-- (unsigned long long)collectionIdsCount;
-- (void)addCollectionId:(id)arg1;
-- (void)clearCollectionIds;
-@property(retain, nonatomic) NSMutableArray *collectionIds;
 
 @end
 

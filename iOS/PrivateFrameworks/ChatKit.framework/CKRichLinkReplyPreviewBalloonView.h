@@ -21,6 +21,7 @@
 - (void)prepareForDisplay;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1 textAlignmentInsets:(struct UIEdgeInsets *)arg2;
 - (void)layoutSubviews;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (id)description;
 - (void)configureForTranscriptPlugin:(id)arg1;
 

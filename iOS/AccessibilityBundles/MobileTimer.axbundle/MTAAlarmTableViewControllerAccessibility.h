@@ -11,6 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
+- (void)_axSetHeaderLabelForSleepSection:(id)arg1;
 - (void)_axSetDetailLabelsForVisibleCells;
 - (void)viewDidLoad;
 - (void)_accessibilityLoadAccessibilityInformation;

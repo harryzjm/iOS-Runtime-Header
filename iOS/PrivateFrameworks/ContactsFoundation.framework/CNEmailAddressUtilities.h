@@ -10,6 +10,8 @@
 {
 }
 
++ (id)makeEmailRegex;
++ (_Bool)isStringEmailAddress:(id)arg1;
 + (id)safeUserVisibleEmailAddress:(id)arg1;
 + (id)aliasedDomains;
 + (id)expandAliasedDomainsInAddress:(id)arg1;

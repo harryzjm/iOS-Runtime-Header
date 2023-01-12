@@ -16,7 +16,8 @@
 }
 
 + (_Bool)canonicalizedEqualityTestValue1:(id)arg1 value2:(id)arg2 key:(id)arg3 object1:(id)arg4 object2:(id)arg5;
-+ (_Bool)doesParticipantURL:(id)arg1 email:(id)arg2 andPhoneNumber:(id)arg3 matchParticipantURL:(id)arg4 email:(id)arg5 andPhoneNumber:(id)arg6;
++ (_Bool)doesParticipantURLString:(id)arg1 email:(id)arg2 andPhoneNumber:(id)arg3 matchParticipantURLString:(id)arg4 email:(id)arg5 andPhoneNumber:(id)arg6;
++ (_Bool)needsResponseForParticipantStatus:(long long)arg1;
 + (id)knownSingleValueKeysForComparison;
 + (id)knownIdentityKeysForComparison;
 + (id)participantWithName:(id)arg1 emailAddress:(id)arg2 phoneNumber:(id)arg3 url:(id)arg4;
@@ -25,6 +26,7 @@
 @property(readonly, nonatomic) EKCalendarItem *owner; // @synthesize owner=_owner;
 @property(readonly, copy) NSString *description;
 - (id)semanticIdentifier;
+@property(readonly, nonatomic) int scheduleStatus;
 - (id)existingContact;
 - (id)setInviterNameString;
 @property(copy, nonatomic) NSString *inviterNameString; // @dynamic inviterNameString;
@@ -41,9 +43,12 @@
 - (_Bool)isEqualToParticipant:(id)arg1;
 - (void)setURL:(id)arg1;
 @property(readonly, nonatomic) NSURL *URL;
+- (void)setURLString:(id)arg1;
+- (id)URLString;
 @property(readonly, nonatomic, getter=isCurrentUser) _Bool currentUser;
 @property(copy, nonatomic) NSString *comment;
 @property(readonly, nonatomic) long long participantRole;
+@property(readonly, nonatomic) _Bool needsResponse;
 @property(readonly, nonatomic) long long participantStatus;
 @property(readonly, nonatomic) long long participantType;
 - (id)url;

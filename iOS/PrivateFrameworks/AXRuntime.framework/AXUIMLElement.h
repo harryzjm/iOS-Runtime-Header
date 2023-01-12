@@ -26,6 +26,8 @@
 
 + (id)elementsInDirection:(long long)arg1 withElement:(id)arg2 nextElements:(id)arg3;
 + (void)_queue_createMLElements:(id)arg1 postDelegateCallback:(_Bool)arg2;
++ (CDStruct_37f6246c)_windowContextInformation:(id)arg1;
++ (id)_textDetectionOptions:(id)arg1 options:(id)arg2;
 + (id)_cachedMLElementsForID:(id)arg1;
 + (void)_setCachedMLElements:(id)arg1 forID:(id)arg2;
 + (void)_fireRefreshTimer;
@@ -84,6 +86,8 @@
 - (id)previousElementsWithCount:(unsigned long long)arg1;
 - (id)nextElementsWithCount:(unsigned long long)arg1 baseElement:(id)arg2;
 - (id)nextElementsWithCount:(unsigned long long)arg1;
+- (id)previousElementsWithParameters:(id)arg1;
+- (id)nextElementsWithParameters:(id)arg1;
 - (void)updateCacheWithAttributes:(id)arg1;
 - (void)updateCache:(long long)arg1;
 - (void)disableCache;

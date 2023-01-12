@@ -9,7 +9,7 @@
 #import <SpringBoard/SBIconViewDelegate-Protocol.h>
 #import <SpringBoard/SBIconViewProviding-Protocol.h>
 
-@class NSString, SBFloatingDockViewController, SBIconController, SBRootFolderController, SBWallpaperController, _SBHomeScreenFolderDelegate;
+@class NSString, SBFloatingDockViewController, SBHIconManager, SBRootFolderController, SBWallpaperController, _SBHomeScreenFolderDelegate;
 @protocol SBDockOffscreenFractionModifying;
 
 @interface SBHomeScreenPreviewView : UIView <SBIconViewProviding, SBIconViewDelegate>
@@ -19,7 +19,7 @@
     UIView *_statusBar;
     SBRootFolderController *_rootFolderController;
     _SBHomeScreenFolderDelegate *_folderDelegate;
-    SBIconController *_iconController;
+    SBHIconManager *_iconManager;
     SBWallpaperController *_wallpaperController;
     SBFloatingDockViewController *_floatingDockViewController;
     unsigned long long _snapshotOptions;
@@ -31,7 +31,7 @@
 @property(readonly, nonatomic) unsigned long long snapshotOptions; // @synthesize snapshotOptions=_snapshotOptions;
 @property(readonly, nonatomic) SBFloatingDockViewController *floatingDockViewController; // @synthesize floatingDockViewController=_floatingDockViewController;
 @property(readonly, nonatomic) SBWallpaperController *wallpaperController; // @synthesize wallpaperController=_wallpaperController;
-@property(readonly, nonatomic) SBIconController *iconController; // @synthesize iconController=_iconController;
+@property(readonly, nonatomic) SBHIconManager *iconManager; // @synthesize iconManager=_iconManager;
 - (id)backgroundViewForComponentsOfIconView:(id)arg1;
 - (id)behaviorDelegateForIconView:(id)arg1;
 - (void)configureIconView:(id)arg1 forIcon:(id)arg2;
@@ -39,7 +39,7 @@
 - (void)recycleIconView:(id)arg1;
 - (id)dequeueReusableIconViewOfClass:(Class)arg1;
 - (void)layoutSubviews;
-- (id)initWithFrame:(struct CGRect)arg1 iconController:(id)arg2 wallpaperController:(id)arg3 options:(unsigned long long)arg4 wallpaperImage:(id)arg5;
+- (id)initWithFrame:(struct CGRect)arg1 iconController:(id)arg2 wallpaperController:(id)arg3 options:(unsigned long long)arg4 wallpaperImage:(id)arg5 pageIndexOffset:(long long)arg6 rootFolder:(id)arg7;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

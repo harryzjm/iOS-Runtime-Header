@@ -7,22 +7,45 @@
 #import <HMFoundation/HMFObject.h>
 
 #import <CoreHAP/HAPKeyStore-Protocol.h>
+#import <CoreHAP/HAPSystemKeychainStore-Protocol.h>
 #import <CoreHAP/HMFDumpState-Protocol.h>
+#import <CoreHAP/HMFLogging-Protocol.h>
 
 @class NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HAPSystemKeychainStore : HMFObject <HAPKeyStore, HMFDumpState>
+@interface HAPSystemKeychainStore : HMFObject <HAPKeyStore, HMFDumpState, HMFLogging, HAPSystemKeychainStore>
 {
+    int _keychainStoreUpdatedNotificationToken;
     NSObject<OS_dispatch_queue> *_queue;
     NSString *_activeControllerIdentifier;
 }
 
-+ (id)allocWithZone:(struct _NSZone *)arg1;
++ (id)viewHintForType:(id)arg1;
++ (id)logCategory;
 + (id)systemStore;
 - (void).cxx_destruct;
+@property int keychainStoreUpdatedNotificationToken; // @synthesize keychainStoreUpdatedNotificationToken=_keychainStoreUpdatedNotificationToken;
 @property(retain, nonatomic) NSString *activeControllerIdentifier; // @synthesize activeControllerIdentifier=_activeControllerIdentifier;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+- (_Bool)getOrCreateHK2ControllerKey:(id *)arg1 secretKey:(id *)arg2 keyPair:(id *)arg3 username:(id *)arg4;
+- (int)createHK2ControllerKey:(id *)arg1 secretKey:(id *)arg2 keyPair:(id *)arg3 username:(id *)arg4;
+- (id)allAccessoryPairingKeysWithError:(id *)arg1;
+- (_Bool)deletePairingKeysForAccessory:(id)arg1 error:(id *)arg2;
+- (_Bool)createAccessoryPairingKey:(id)arg1 error:(id *)arg2;
+- (_Bool)updateAccessoryPairingKey:(id)arg1 error:(id *)arg2;
+- (id)readAccessoryPairingKeyForAccessory:(id)arg1 error:(id *)arg2;
+- (_Bool)updateKeychainItem:(id)arg1 createIfNeeded:(_Bool)arg2 error:(id *)arg3;
+- (_Bool)deleteKeychainItem:(id)arg1 error:(id *)arg2;
+- (id)allKeychainItemsForType:(id)arg1 identifier:(id)arg2 syncable:(id)arg3 error:(id *)arg4;
+- (_Bool)_getFirstAvailableControllerKeyChainItemForAccount:(id)arg1 publicKey:(id *)arg2 secretKey:(id *)arg3 userName:(id *)arg4 keyPair:(id *)arg5 error:(id *)arg6;
+- (id)_serializeDictionary:(id)arg1;
+- (id)_updateAccessoryPairingGenericData:(id)arg1 updatedControllerKeyIdentifier:(id)arg2;
+- (id)_getDictionaryFromGenericData:(id)arg1;
+- (_Bool)_getControllerPublicKey:(id *)arg1 secretKey:(id *)arg2 keyPair:(id *)arg3 username:(id *)arg4 allowCreation:(_Bool)arg5 forAccessory:(id)arg6 error:(id *)arg7;
+- (_Bool)getControllerPublicKey:(id *)arg1 secretKey:(id *)arg2 keyPair:(id *)arg3 username:(id *)arg4 allowCreation:(_Bool)arg5 forAccessory:(id)arg6 error:(id *)arg7;
+- (_Bool)getControllerPublicKey:(id *)arg1 secretKey:(id *)arg2 username:(id *)arg3 allowCreation:(_Bool)arg4 forAccessory:(id)arg5 error:(id *)arg6;
+- (id)readControllerPairingKeyForAccessory:(id)arg1 error:(id *)arg2;
 - (int)_deleteAllPeripheralIdentifiers;
 - (_Bool)deleteAllPeripheralIdentifiers:(id *)arg1;
 - (id)getPeripherialIdentifiersAndAccessoryNames;
@@ -36,6 +59,7 @@
 - (int)_removeKeychainItem:(id)arg1 leaveTombstone:(_Bool)arg2;
 - (int)_addKeychainItem:(id)arg1 logDuplicateItemError:(_Bool)arg2;
 - (id)_getKeychainItemsForAccessGroup:(id)arg1 type:(id)arg2 account:(id)arg3 shouldReturnData:(_Bool)arg4 error:(int *)arg5;
+- (_Bool)_updateKeychainItemWithPlatformIdentifier:(void *)arg1 keychainItem:(id)arg2 error:(id *)arg3;
 - (void)_updateKeychainItemToInvisible:(id)arg1;
 - (id)_auditKeychainItems:(id)arg1 managedAccessories:(id)arg2;
 - (id)auditKeysOfManagedAccessories:(id)arg1;
@@ -43,13 +67,11 @@
 - (_Bool)removeAllAccessoryKeys:(id *)arg1;
 - (_Bool)removeAccessoryKeyForName:(id)arg1 error:(id *)arg2;
 - (_Bool)registerAccessoryWithHomeKit:(id)arg1 error:(id *)arg2;
+- (_Bool)updateAccessoryPublicKey:(id)arg1 error:(id *)arg2;
 - (int)_savePublicKey:(id)arg1 forAccessoryName:(id)arg2;
 - (_Bool)savePublicKey:(id)arg1 forAccessoryName:(id)arg2 error:(id *)arg3;
 - (int)_getPublicKey:(id *)arg1 registeredWithHomeKit:(_Bool *)arg2 forAccessoryName:(id)arg3;
 - (id)readPublicKeyForAccessoryName:(id)arg1 registeredWithHomeKit:(_Bool *)arg2 error:(id *)arg3;
-- (int)_createMetadataSecretKey:(id *)arg1;
-- (int)_getMetadataSecretKey:(id *)arg1;
-- (_Bool)getMetadataSecretKey:(id *)arg1 error:(id *)arg2;
 - (int)_removeControllerKeyPairForKeyType:(id)arg1 identifier:(id)arg2 leaveTombstone:(_Bool)arg3;
 - (int)_removeControllerKeyPairForIdentifier:(id)arg1 leaveTombstone:(_Bool)arg2;
 - (_Bool)removeControllerKeyPairForIdentifier:(id)arg1 leaveTombstone:(_Bool)arg2 error:(id *)arg3;
@@ -77,6 +99,9 @@
 - (id)getLocalPairingIdentity:(id *)arg1;
 - (void)ensureControllerKeyExistsForAllViews;
 - (id)dumpState;
+- (void)dealloc;
+- (void)configure;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

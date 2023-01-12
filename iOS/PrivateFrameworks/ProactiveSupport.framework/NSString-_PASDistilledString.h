@@ -11,10 +11,13 @@
 @interface NSString (_PASDistilledString) <_PASDistilledString>
 + (id)_pas_distilledStringClasses;
 + (id)_pas_proxyStringByConcatenatingStrings:(id)arg1;
++ (id)_pas_stringWithDataNoCopy:(id)arg1 encoding:(unsigned long long)arg2 nullTerminated:(_Bool)arg3;
++ (id)_pas_stringWithDataNoCopy:(id)arg1 encoding:(unsigned long long)arg2 nullTerminated:(_Bool)arg3 isExternalRepresentation:(_Bool)arg4;
 - (id)_pas_revivedString;
 - (id)_pas_distilledString;
 - (_Bool)_pas_retainsConmingledBackingStore;
 - (void)_pas_setRetainsConmingledBackingStore:(_Bool)arg1;
+- (id)_pas_stringBackedByUTF8CString;
 - (id)_pas_proxyArrayOfSubstringsWithRanges:(id)arg1;
 
 // Remaining properties

@@ -13,7 +13,11 @@
 - (void)fullScreenBalloonViewController:(CKFullScreenBalloonViewController *)arg1 sendMessageAcknowledgment:(long long)arg2 forChatItem:(CKMessagePartChatItem *)arg3;
 
 @optional
+- (void)fullScreenBalloonViewControllerMessageHighlightButtonDidFinishAnimating:(CKFullScreenBalloonViewController *)arg1;
+- (void)fullScreenBalloonViewController:(CKFullScreenBalloonViewController *)arg1 sendMessageHighlight:(_Bool)arg2 forChatItem:(CKMessagePartChatItem *)arg3;
+- (_Bool)fullScreenBalloonViewControllerShouldShowHightlightButton:(CKFullScreenBalloonViewController *)arg1 forChatItem:(CKMessagePartChatItem *)arg2;
 - (struct CGRect)fullScreenBalloonViewControllerSafeAreaLayoutFrame:(CKFullScreenBalloonViewController *)arg1;
+- (BOOL)fullScreenBalloonViewControllerAnchorVertialOrientation:(CKFullScreenBalloonViewController *)arg1 withBalloonFrame:(struct CGRect)arg2;
 - (_Bool)fullScreenBalloonViewControllerShouldShowReplyButton:(CKFullScreenBalloonViewController *)arg1;
 - (void)fullScreenBalloonViewController:(CKFullScreenBalloonViewController *)arg1 replyButtonPressedForChatItem:(CKChatItem *)arg2;
 - (void)fullScreenBalloonViewController:(CKFullScreenBalloonViewController *)arg1 deleteStickerWithTransferGUID:(NSString *)arg2;

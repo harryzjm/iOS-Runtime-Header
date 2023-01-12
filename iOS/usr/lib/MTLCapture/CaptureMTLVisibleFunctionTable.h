@@ -10,25 +10,23 @@
 #import <MTLCapture/MTLResourceSPI-Protocol.h>
 #import <MTLCapture/MTLVisibleFunctionTableSPI-Protocol.h>
 
-@class NSString;
-@protocol MTLBuffer, MTLDevice, MTLHeap, MTLVisibleFunctionTable, MTLVisibleFunctionTableSPI><MTLResourceSPI;
+@class NSArray, NSMutableArray, NSString;
+@protocol MTLBuffer, MTLComputePipelineState, MTLDevice, MTLHeap, MTLRenderPipelineState, MTLVisibleFunctionTable, MTLVisibleFunctionTableSPI><MTLResourceSPI;
 
 @interface CaptureMTLVisibleFunctionTable : NSObject <MTLVisibleFunctionTableSPI, MTLResourceSPI, CaptureMTLObject>
 {
     id <MTLVisibleFunctionTableSPI><MTLResourceSPI> _baseObject;
     id <MTLDevice> _captureDevice;
-    id <MTLHeap> _captureHeap;
+    id <MTLComputePipelineState> _computePipelineState;
+    id <MTLRenderPipelineState> _renderPipelineState;
     struct GTTraceContext *_traceContext;
     struct GTTraceStream *_traceStream;
+    NSMutableArray *_functionArray;
 }
 
 - (void).cxx_destruct;
+@property(readonly) NSArray *functionArray; // @synthesize functionArray=_functionArray;
 - (void)waitUntilComplete;
-- (void)setVisibleFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
-- (unsigned long long)setPurgeableState:(unsigned long long)arg1;
-- (void)setFunction:(id)arg1 atIndex:(unsigned long long)arg2;
-- (void)setBuffers:(const id *)arg1 offsets:(const unsigned long long *)arg2 withRange:(struct _NSRange)arg3;
-- (void)setBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)makeAliasable;
 - (_Bool)isPurgeable;
 - (_Bool)isComplete;
@@ -37,19 +35,15 @@
 - (_Bool)doesAliasAnyResources:(const id *)arg1 count:(unsigned long long)arg2;
 - (_Bool)doesAliasAllResources:(const id *)arg1 count:(unsigned long long)arg2;
 - (void)dealloc;
-@property(readonly) unsigned long long uniqueIdentifier;
 @property(readonly) unsigned long long unfilteredResourceOptions;
 @property(readonly) unsigned long long storageMode;
 @property int responsibleProcess;
 @property(readonly) unsigned long long resourceOptions;
-@property(readonly, nonatomic) unsigned long long resourceIndex;
 @property(readonly) unsigned long long protectionOptions;
 @property(copy) NSString *label;
 @property(readonly) unsigned long long heapOffset;
 @property(readonly) id <MTLHeap> heap;
 @property(readonly) unsigned long long hazardTrackingMode;
-@property(nonatomic) unsigned long long globalBufferOffset;
-@property(retain, nonatomic) id <MTLBuffer> globalBuffer;
 @property(readonly) id <MTLDevice> device;
 @property(readonly) unsigned long long cpuCacheMode;
 @property(readonly) unsigned long long allocationID;
@@ -63,12 +57,22 @@
 @property(readonly) struct GTTraceContext *traceContext;
 - (void)touch;
 - (id)originalObject;
+- (void)setVisibleFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setValue:(unsigned long long)arg1 withRange:(struct _NSRange)arg2;
+- (void)setValue:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
+- (unsigned long long)setPurgeableState:(unsigned long long)arg1;
+- (void)setBuffers:(const id *)arg1 offsets:(const unsigned long long *)arg2 withRange:(struct _NSRange)arg3;
+- (void)setBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
+@property(readonly) unsigned long long uniqueIdentifier;
+@property(readonly, nonatomic) unsigned long long resourceIndex;
+@property(nonatomic) unsigned long long globalBufferOffset;
+@property(retain, nonatomic) id <MTLBuffer> globalBuffer;
+- (void)setFunction:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)setVisibleFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
 - (void)setFunctions:(const id *)arg1 withRange:(struct _NSRange)arg2;
 @property(readonly) id <MTLVisibleFunctionTable> baseObject;
-- (id)initWithBaseObject:(id)arg1 captureDevice:(id)arg2;
-- (id)initWithBaseObject:(id)arg1 captureContext:(struct GTTraceContext *)arg2 captureHeap:(id)arg3;
-- (id)initWithBaseObject:(id)arg1 captureContext:(struct GTTraceContext *)arg2 captureDevice:(id)arg3;
+- (id)initWithBaseObject:(id)arg1 captureRenderPipelineState:(id)arg2 descriptor:(id)arg3;
+- (id)initWithBaseObject:(id)arg1 captureComputePipelineState:(id)arg2 descriptor:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

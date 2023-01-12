@@ -13,12 +13,12 @@
     long long _ringStyle;
 }
 
++ (void)_imageSDKSize:(struct CGSize *)arg1 deviceSize:(struct CGSize *)arg2 forSDKVersion:(long long)arg3;
 + (id)templateWithImageProvider:(id)arg1 progressProvider:(id)arg2 ringStyle:(long long)arg3;
 - (void).cxx_destruct;
 @property(nonatomic) long long ringStyle; // @synthesize ringStyle=_ringStyle;
 @property(copy, nonatomic) CLKProgressProvider *progressProvider; // @synthesize progressProvider=_progressProvider;
 @property(copy, nonatomic) CLKImageProvider *imageProvider; // @synthesize imageProvider=_imageProvider;
-- (struct CGSize)_imageSize;
 - (void)_enumerateIntegerKeysWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateProgressProviderKeysWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateImageProviderKeysWithBlock:(CDUnknownBlockType)arg1;

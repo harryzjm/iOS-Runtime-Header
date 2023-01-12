@@ -8,7 +8,7 @@
 
 #import <AXMediaUtilities/NSSecureCoding-Protocol.h>
 
-@class AXMTextDetectionOptions, NSArray, NSData;
+@class AXMTextDetectionOptions, NSArray, NSData, NSLocale;
 
 @interface AXMVisionAnalysisOptions : NSObject <NSSecureCoding>
 {
@@ -19,6 +19,7 @@
     _Bool _detectFaceLandmarks;
     _Bool _detectFacePose;
     _Bool _detectScenes;
+    _Bool _detectObjects;
     _Bool _detectNSFW;
     _Bool _detectSignificantEvents;
     _Bool _detectModelClassifications;
@@ -36,6 +37,7 @@
     long long _clientID;
     NSData *_equivalenceToken;
     AXMTextDetectionOptions *_textDetectionOptions;
+    NSLocale *_preferredOutputLocale;
     NSArray *_ignoredLayerContextIDs;
     NSArray *_includedLayerContextIDs;
 }
@@ -47,6 +49,7 @@
 @property(nonatomic) _Bool preserveInputImageSize; // @synthesize preserveInputImageSize=_preserveInputImageSize;
 @property(retain, nonatomic) NSArray *includedLayerContextIDs; // @synthesize includedLayerContextIDs=_includedLayerContextIDs;
 @property(retain, nonatomic) NSArray *ignoredLayerContextIDs; // @synthesize ignoredLayerContextIDs=_ignoredLayerContextIDs;
+@property(retain, nonatomic) NSLocale *preferredOutputLocale; // @synthesize preferredOutputLocale=_preferredOutputLocale;
 @property(nonatomic) _Bool includeImageInResult; // @synthesize includeImageInResult=_includeImageInResult;
 @property(retain, nonatomic) AXMTextDetectionOptions *textDetectionOptions; // @synthesize textDetectionOptions=_textDetectionOptions;
 @property(nonatomic) _Bool detectText; // @synthesize detectText=_detectText;
@@ -62,6 +65,7 @@
 @property(nonatomic) _Bool detectModelClassifications; // @synthesize detectModelClassifications=_detectModelClassifications;
 @property(nonatomic) _Bool detectSignificantEvents; // @synthesize detectSignificantEvents=_detectSignificantEvents;
 @property(nonatomic) _Bool detectNSFW; // @synthesize detectNSFW=_detectNSFW;
+@property(nonatomic) _Bool detectObjects; // @synthesize detectObjects=_detectObjects;
 @property(nonatomic) _Bool detectScenes; // @synthesize detectScenes=_detectScenes;
 @property(nonatomic) _Bool detectFacePose; // @synthesize detectFacePose=_detectFacePose;
 @property(nonatomic) _Bool detectFaceLandmarks; // @synthesize detectFaceLandmarks=_detectFaceLandmarks;

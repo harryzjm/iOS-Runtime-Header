@@ -12,7 +12,7 @@
 
 @interface MDLAnimatedValue : NSObject <NSCopying>
 {
-    struct vector<(anonymous namespace)::TimeSampledVtValue, std::__1::allocator<(anonymous namespace)::TimeSampledVtValue>> _timeSampledData;
+    struct vector<(anonymous namespace)::TimeSampledVtValue, std::allocator<(anonymous namespace)::TimeSampledVtValue>> _timeSampledData;
     unsigned long long _interpolation;
 }
 
@@ -20,8 +20,8 @@
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long interpolation; // @synthesize interpolation=_interpolation;
 - (_Bool)isAnimated;
-- (void)resetWithUsdAttribute:(const struct UsdAttribute *)arg1 timeScale:(double)arg2 time:(double)arg3;
-- (void)resetWithUsdAttribute:(const struct UsdAttribute *)arg1 timeScale:(double)arg2;
+- (void)resetWithUsdAttribute:(const void *)arg1 timeScale:(double)arg2 time:(double)arg3;
+- (void)resetWithUsdAttribute:(const void *)arg1 timeScale:(double)arg2;
 - (unsigned long long)getTimes:(double *)arg1 maxCount:(unsigned long long)arg2;
 @property(readonly, nonatomic) NSArray *keyTimes;
 - (void)clear;

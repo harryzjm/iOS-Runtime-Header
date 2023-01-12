@@ -8,29 +8,31 @@
 
 #import <PhotosGraph/PGHighlightItemEnrichmentRule-Protocol.h>
 
-@class NSString, PGManager;
-@protocol PGHighlightItemModelReader;
+@class NSString, PGGraphMomentNodeCollection;
+@protocol OS_os_log, PGHighlightItemModelReader;
 
 @interface PGMonthEnrichmentRule : NSObject <PGHighlightItemEnrichmentRule>
 {
-    PGManager *_manager;
+    PGGraphMomentNodeCollection *_momentNodesAtWork;
     id <PGHighlightItemModelReader> _modelReader;
+    NSObject<OS_os_log> *_loggingConnection;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSObject<OS_os_log> *loggingConnection; // @synthesize loggingConnection=_loggingConnection;
 @property(readonly, nonatomic) id <PGHighlightItemModelReader> modelReader; // @synthesize modelReader=_modelReader;
-@property(readonly, nonatomic) PGManager *manager; // @synthesize manager=_manager;
 - (id)sortedItemsByWeekOfMonthFromItems:(id)arg1 sortDescriptors:(id)arg2;
 - (id)bestItemsFromSortedItemsByWeekOfMonth:(id)arg1 previouslySelectedItemsCountByWeek:(id)arg2 maximumNumberOfItems:(unsigned long long)arg3 sortDescriptors:(id)arg4;
-- (void)enumerateChildVisibilityStateForHighlightItemList:(id)arg1 withBlock:(CDUnknownBlockType)arg2 maximumNumberOfVisibleItems:(unsigned long long)arg3 maximumNumberOfVisibleRegularItems:(unsigned long long)arg4;
-- (void)enumerateChildVisibilityStateForHighlightItemList:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (id)_momentNodesAtWorkWithGraph:(id)arg1;
+- (void)enumerateChildVisibilityStateForHighlightItemList:(id)arg1 withGraph:(id)arg2 neighborScoreComputer:(id)arg3 usingBlock:(CDUnknownBlockType)arg4 maximumNumberOfVisibleItems:(unsigned long long)arg5 maximumNumberOfVisibleRegularItems:(unsigned long long)arg6;
+- (void)enumerateChildVisibilityStateForHighlightItemList:(id)arg1 withGraph:(id)arg2 neighborScoreComputer:(id)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (id)_sampleAssets:(id)arg1 withSize:(unsigned long long)arg2;
 - (id)curatedAssetsForHighlightItemList:(id)arg1 contextualKeyAssetByHighlighItemUUID:(id)arg2;
 - (id)fallbackKeyAssetWithHighlightItemList:(id)arg1;
 - (id)firstKeyAssetWithHighlightItemList:(id)arg1;
 - (id)keyAssetForHighlightItemList:(id)arg1 contextualKeyAssetByHighlighItemUUID:(id)arg2;
 - (double)promotionScoreForHighlightItemList:(id)arg1;
-- (id)initWithManager:(id)arg1 modelReader:(id)arg2;
+- (id)initWithModelReader:(id)arg1 loggingConnection:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

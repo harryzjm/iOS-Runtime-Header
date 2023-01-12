@@ -8,7 +8,6 @@
 
 @class BRCAppLibrary, BRCItemGlobalID, BRFileObjectID, NSMutableSet, NSSet, NSString, NSURL;
 
-__attribute__((visibility("hidden")))
 @interface BRCNotification : BRQueryItem
 {
     _Bool _isInDocumentScope;

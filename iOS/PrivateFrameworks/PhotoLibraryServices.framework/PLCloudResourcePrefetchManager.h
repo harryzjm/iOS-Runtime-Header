@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSDictionary, PLCloudPhotoLibraryManager, PLCloudResourcePruneManager, PLPhotoLibrary, PLVolumeInfo;
+@class NSDate, NSDictionary, PLCloudPhotoLibraryManager, PLCloudResourcePruneManager, PLPhotoLibrary, PLPrefetchConfiguration, PLVolumeInfo;
 @protocol OS_dispatch_queue;
 
 @interface PLCloudResourcePrefetchManager : NSObject
@@ -15,29 +15,43 @@
     PLCloudPhotoLibraryManager *_cplManager;
     PLCloudResourcePruneManager *_pruneManager;
     NSDictionary *_inflightResources;
-    long long _defaultPrefetchMode;
+    long long _prefetchMode;
+    long long _prefetchOptimizeMode;
     NSDate *_lastCheckCPLBGDownloadDate;
     _Bool _enqueuedCheckCPLBGDownload;
     NSObject<OS_dispatch_queue> *_workQueue;
     PLVolumeInfo *_volumeInfo;
+    NSDate *_initialSyncDate;
+    NSDate *_lastCompletePrefetchDate;
+    PLPrefetchConfiguration *_prefetchConfiguration;
 }
 
++ (id)_descriptionForPrefetchMode:(long long)arg1;
++ (id)_overridePrefetchMode;
 + (id)_identifierForResourceDownload:(id)arg1;
 + (id)descriptionForPrefetchPhase:(unsigned long long)arg1;
 - (void).cxx_destruct;
-- (void)_resourcesToPrefetchWithPrefetchPhase:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_resourcesToPrefetchWithPrefetchPhase:(unsigned long long)arg1 applyPerPrefetchLimit:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)_prefetchIsEnabledForPhase:(unsigned long long)arg1;
 - (void)_resourcesWithPredicate:(id)arg1 limit:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (id)_lastCompletePrefetchDate;
-- (long long)diskSpaceBudgetForPrefetchPhase:(unsigned long long)arg1;
+- (void)_setLastCompletePrefetchDate:(id)arg1;
+- (long long)_prefetchOptimizeModeBasedOnLibrarySize;
+- (unsigned long long)_smallLibrarySizeThresholdForTotalSizeOfLocallyAvailableOriginalResources:(long long)arg1;
+- (long long)_totalSizeOfLocallyAvailableOriginalResources;
+- (long long)_totalSizeOfOriginalResources;
+- (long long)_totalSizeOfOriginalResourcesForPrefetchWithPredicate:(id)arg1;
+- (long long)_diskSpaceBudgetForPrefetchPhase:(unsigned long long)arg1 prefetchOptimizeMode:(long long)arg2;
+- (long long)_diskSpaceBudgetForPrefetchPhase:(unsigned long long)arg1;
 - (id)_volumeInfo;
 - (void)_handlePrefetchError:(id)arg1 forPLCloudResourceWithObjectID:(id)arg2;
-- (void)_incrementPrefetchCountForPLCloudResources:(id)arg1;
+- (void)_incrementPrefetchCountForPrefetchPhase:(unsigned long long)arg1 resources:(id)arg2;
 - (void)_prefetchResources:(id)arg1 prefetchPhase:(unsigned long long)arg2 shouldAutoPefetchNextBatch:(_Bool)arg3;
 - (unsigned long long)_intentForPrefetchPhase:(unsigned long long)arg1;
 - (void)_startPrefetchNextBatch;
 - (void)clearPrefetchState;
 - (void)_writeDownloadFinishedMarkerIfNeeded;
 - (_Bool)_canPrefetch;
+- (_Bool)_isPrefetchDisabled;
 - (void)_removeAllInflightResourceIdentifiers;
 - (void)_removeInflightResourceIdentifier:(id)arg1 prefetchPhase:(unsigned long long)arg2 cplResource:(id)arg3;
 - (void)_addInflightResourceIdentifier:(id)arg1 prefetchPhase:(unsigned long long)arg2 cplResource:(id)arg3;
@@ -50,12 +64,16 @@
 - (void)_reloadDefaultDownload;
 - (void)_reloadDownloadOriginalsSetting;
 - (void)prefetchResourcesWithPredicates:(id)arg1 prefetchPhase:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)_prefetchStatusForDebug:(_Bool)arg1;
 - (id)prefetchStatusForDebug:(_Bool)arg1;
 - (void)stop;
 - (void)_cleanupInflightResources;
 - (void)_enqueueCheckCPLBGDownloadFromNow:(id)arg1 withReason:(id)arg2;
 - (void)_checkCPLBackgroundDownloadOperations;
 - (void)handleOptimizeModeChange;
+- (void)handleCPLConfigurationChange;
+- (void)handleCPLStatusChange;
+- (void)_startAutomaticPrefetch;
 - (void)startAutomaticPrefetch;
 - (void)invalidate;
 - (id)initWithCPLManager:(id)arg1 pruneManager:(id)arg2 library:(id)arg3;

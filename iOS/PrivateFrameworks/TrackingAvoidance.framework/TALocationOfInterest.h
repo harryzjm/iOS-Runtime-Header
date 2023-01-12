@@ -17,12 +17,14 @@
     double _latitude;
     double _longitude;
     double _horizontalAccuracy;
+    unsigned long long _referenceFrame;
     NSDate *_date;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSDate *date; // @synthesize date=_date;
+@property(readonly, nonatomic) unsigned long long referenceFrame; // @synthesize referenceFrame=_referenceFrame;
 @property(readonly, nonatomic) double horizontalAccuracy; // @synthesize horizontalAccuracy=_horizontalAccuracy;
 @property(readonly, nonatomic) double longitude; // @synthesize longitude=_longitude;
 @property(readonly, nonatomic) double latitude; // @synthesize latitude=_latitude;
@@ -36,6 +38,7 @@
 - (id)descriptionDictionary;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
+- (id)initWithType:(unsigned long long)arg1 latitude:(double)arg2 longitude:(double)arg3 horizontalAccuracy:(double)arg4 referenceFrame:(unsigned long long)arg5 date:(id)arg6;
 - (id)initWithType:(unsigned long long)arg1 latitude:(double)arg2 longitude:(double)arg3 horizontalAccuracy:(double)arg4 date:(id)arg5;
 
 // Remaining properties

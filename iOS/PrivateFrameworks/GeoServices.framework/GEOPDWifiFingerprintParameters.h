@@ -21,32 +21,15 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
-+ (Class)measurementType;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
-- (void)clearSensitiveFields;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasMaxLabels;
-@property(nonatomic) unsigned int maxLabels;
-- (id)measurementAtIndex:(unsigned long long)arg1;
-- (unsigned long long)measurementsCount;
-- (void)addMeasurement:(id)arg1;
-- (void)clearMeasurements;
-@property(retain, nonatomic) NSMutableArray *measurements;
 
 @end
 

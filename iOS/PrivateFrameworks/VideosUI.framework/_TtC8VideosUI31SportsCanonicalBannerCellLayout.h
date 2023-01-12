@@ -9,7 +9,6 @@
 @interface _TtC8VideosUI31SportsCanonicalBannerCellLayout
 {
     MISSING_TYPE *$__lazy_storage_$_titleLabelLayout;
-    MISSING_TYPE *$__lazy_storage_$_scoreRowLayout;
     MISSING_TYPE *$__lazy_storage_$_descriptionLabelLayout;
     MISSING_TYPE *$__lazy_storage_$_footerLabelLayout;
     MISSING_TYPE *$__lazy_storage_$_availabilityImageLayout;

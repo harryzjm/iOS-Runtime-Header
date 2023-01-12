@@ -9,7 +9,7 @@
 #import <network/OS_nw_endpoint_proxy-Protocol.h>
 
 @class NSString, NWConcrete_nw_endpoint_handler;
-@protocol OS_nw_array, OS_xpc_object;
+@protocol OS_nw_array, OS_nw_error;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_endpoint_proxy : NSObject <OS_nw_endpoint_proxy>
@@ -18,18 +18,26 @@ __attribute__((visibility("hidden")))
     NSObject<OS_nw_array> *failed_child_endpoint_handlers;
     unsigned int next_child_endpoint_index;
     NWConcrete_nw_endpoint_handler *connected_child;
-    NSObject<OS_xpc_object> *proxy_settings;
-    NSObject<OS_xpc_object> *parsed_proxy_settings;
+    NSObject<OS_nw_array> *proxy_configs;
+    NSObject<OS_nw_array> *parsed_proxy_configs;
     struct __CFURL *url;
     NSObject<OS_nw_array> *pac_resolvers;
+    NSObject<OS_nw_error> *child_error;
+    void *child_timer;
+    unsigned int has_privacy_proxy:1;
+    unsigned int privacy_proxy_fail_closed:1;
+    unsigned int allow_non_privacy_proxy_children:1;
     unsigned int direct_prohibited:1;
     unsigned int synthesized_url:1;
+    unsigned int pac_failed_missing_url:1;
     unsigned int overrode_to_https:1;
     unsigned int has_pac:1;
     unsigned int transport_finished:1;
+    unsigned int is_known_tracker:1;
     unsigned int is_custom_proxy:1;
     unsigned int is_pac_connection:1;
-    unsigned int __pad_bits:1;
+    unsigned int is_http_scheme:1;
+    unsigned int is_https_scheme:1;
 }
 
 - (void).cxx_destruct;

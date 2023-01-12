@@ -12,13 +12,14 @@
 #import <SpringBoardUIServices/SBUIPasscodeBiometricAuthenticationViewLayoutDelegate-Protocol.h>
 #import <SpringBoardUIServices/SBUIPasscodeLockView-Protocol.h>
 #import <SpringBoardUIServices/SBUIPasscodeLockView_Internal-Protocol.h>
+#import <SpringBoardUIServices/SBUIPhoneUnlockWithWatchControllerObserver-Protocol.h>
 #import <SpringBoardUIServices/SBUIPoseidonContainerViewControllerLockStatusProvider-Protocol.h>
 #import <SpringBoardUIServices/SBUIProudLockContainerViewControllerLockStatusProvider-Protocol.h>
 
 @class NSMutableSet, NSString, NSTimer, SBUIPasscodeBiometricAuthenticationView, SBUIPasscodeEntryField, SBUIPoseidonContainerViewController, SBUIProudLockContainerViewController, UIColor, UINotificationFeedbackGenerator, _UIKeyboardFeedbackGenerator, _UILegibilitySettings;
 @protocol BSInvalidatable, SBFLegibilitySettingsProvider, SBUIBiometricResource, SBUIPasscodeLockViewDelegate;
 
-@interface SBUIPasscodeLockViewBase : UIView <SBUIBiometricResourceObserver, SBFLegibilitySettingsProviderDelegate, SBUIPasscodeBiometricAuthenticationViewLayoutDelegate, SBUIPasscodeBiometricAuthenticationViewDelegate, SBUIProudLockContainerViewControllerLockStatusProvider, SBUIPoseidonContainerViewControllerLockStatusProvider, SBUIPasscodeLockView_Internal, SBUIPasscodeLockView>
+@interface SBUIPasscodeLockViewBase : UIView <SBUIBiometricResourceObserver, SBFLegibilitySettingsProviderDelegate, SBUIPasscodeBiometricAuthenticationViewLayoutDelegate, SBUIPasscodeBiometricAuthenticationViewDelegate, SBUIProudLockContainerViewControllerLockStatusProvider, SBUIPoseidonContainerViewControllerLockStatusProvider, SBUIPhoneUnlockWithWatchControllerObserver, SBUIPasscodeLockView_Internal, SBUIPasscodeLockView>
 {
     _Bool _needStatusTextUpdate;
     _Bool _playsKeypadSounds;
@@ -48,6 +49,8 @@
     SBUIProudLockContainerViewController *_proudLockContainerViewController;
     SBUIProudLockContainerViewController *_overrideProudLockContainerViewController;
     _Bool _shouldConsiderTapGuard;
+    unsigned long long _phoneUnlockWithWatchFailedStatusState;
+    long long _errorCode;
     _Bool _screenOn;
     _Bool _confirmedNotInPocket;
     _Bool _canSuggestSwipeToRetry;
@@ -103,6 +106,8 @@
 @property(nonatomic) _Bool usesBiometricPresentation; // @synthesize usesBiometricPresentation=_usesBiometricPresentation;
 @property(nonatomic) _Bool showsStatusField; // @synthesize showsStatusField=_showsStatusField;
 @property(nonatomic) __weak id <SBUIPasscodeLockViewDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)phoneUnlockWithWatchControllerAttemptFailed:(id)arg1 withError:(id)arg2;
+- (void)phoneUnlockWithWatchControllerAttemptSucceeded:(id)arg1;
 - (void)passcodeBiometricAuthenticationViewEmergencyCallButtonHit:(id)arg1;
 - (void)passcodeBiometricAuthenticationViewCancelButtonHit:(id)arg1;
 - (void)passcodeBiometricAuthenticationViewUsePasscodeButtonHit:(id)arg1;
@@ -119,6 +124,7 @@
 - (void)_updateProudLockForBioUnlockWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_notifyDelegatePasscodeEnteredViaMesa;
 - (void)_handleBiometricAuthentication;
+- (void)_handleNonPasscodeAuthenticationAndUpdateProudLock;
 - (void)_resetForFailedBiometricAttempt;
 - (void)_resetProudLockAndTitleTextForFailedBiometricAttempt;
 - (void)_resetStatusText;
@@ -129,7 +135,6 @@
 - (void)_clearBrightnessChangeTimer;
 - (_Bool)_proudLockShowingBiometricStates;
 - (void)_noteScreenBrightnessDidChange;
-- (void)_noteBottomFaceHasBeenOccluded;
 - (void)_playAuthenticationFeedbackForSuccess:(_Bool)arg1 jiggleLock:(_Bool)arg2;
 - (void)_noteDeviceHasBeenUnlockedOnceSinceBoot:(_Bool)arg1;
 - (void)_resetForFailedPasscode:(_Bool)arg1;
@@ -168,7 +173,7 @@
 @property(readonly, nonatomic) NSString *passcode; // @dynamic passcode;
 - (void)setAllowsStatusTextUpdatingOnResignFirstResponder:(_Bool)arg1;
 - (void)reset;
-- (void)resetForSuccessViaPasscode:(_Bool)arg1;
+- (void)resetForSuccess;
 - (void)resetForScreenOff;
 - (void)resetForFailedPasscode;
 - (void)dealloc;
@@ -176,22 +181,27 @@
 - (void)updateForTransitionToPasscodeView:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)willTransitionToPasscodeView;
 - (void)_advanceToPasscodeForMatchFailure:(_Bool)arg1;
-- (void)_advanceToPasscodeTimerFiredWithReason:(id)arg1;
+- (void)_advanceToPasscodeTimerFired;
 - (void)_disarmAdvanceToPasscodeTimer;
-- (void)_armAdvanceToPasscodeTimerWithReason:(id)arg1;
+- (void)_armAdvanceToPasscodeTimer;
 - (double)_biometricViewAlphaFromPasscodeLockViewState:(long long)arg1;
 - (void)_updateBiometricAlpha;
 - (void)didEndTransitionToState:(long long)arg1;
 - (void)willEndTransitionToState:(long long)arg1;
 - (void)updateTransitionWithProgress:(double)arg1;
 - (void)beginTransitionToState:(long long)arg1;
+@property(readonly, nonatomic) _Bool hasBiometricAuthenticationCapabilityEnabled;
 @property(readonly, nonatomic) _Bool hasPasscodeSet;
 @property(readonly, nonatomic) _Bool isBiometricLockedOut;
+- (_Bool)_setAuthenticationViewTypeToFaceIDWithWatch;
+- (void)noteBottomFaceHasBeenOccluded;
+- (void)noteFaceHasBeenOccluded;
 - (void)_setPasscodeLockViewState:(long long)arg1 animated:(_Bool)arg2;
 - (void)setPasscodeLockViewState:(long long)arg1 animated:(_Bool)arg2;
 - (id)_proudLockContainerViewControllerToUpdate;
 - (_Bool)_supportsProudLock;
 - (void)_applyProudLockContainerViewControllerConfiguration;
+- (_Bool)supportsPoseidonCoaching;
 @property(nonatomic) _Bool biometricPresentationAncillaryButtonsVisible;
 @property(nonatomic) _Bool showsCancelButton;
 @property(nonatomic) _Bool showsEmergencyCallButton;

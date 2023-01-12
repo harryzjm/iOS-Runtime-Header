@@ -17,7 +17,7 @@
 @property(readonly) MAFeatureExtractor *faceFeatureExtractor; // @synthesize faceFeatureExtractor=_faceFeatureExtractor;
 - (_Bool)_generateError:(id *)arg1 withCode:(long long)arg2 andMessage:(id)arg3 underlyingError:(id)arg4;
 - (id)floatVectorWithFaces:(id)arg1 error:(id *)arg2;
-- (id)floatVectorWithEntity:(id)arg1 error:(id *)arg2;
+- (id)floatMatrixWithEntities:(id)arg1 progressReporter:(id)arg2 error:(id *)arg3;
 - (id)featureNames;
 - (long long)featureLength;
 - (id)initWithFaceFeatureExtractor:(id)arg1 name:(id)arg2;

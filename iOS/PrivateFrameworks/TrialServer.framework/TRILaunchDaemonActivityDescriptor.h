@@ -17,10 +17,15 @@
 }
 
 + (id)launchDaemonActivityDescriptorWithName:(id)arg1 supportedTaskCapabilities:(unsigned long long)arg2;
++ (id)clientHotfixWifiDescriptor;
++ (id)clientHotfixCellularAllowBatteryDescriptor;
 + (id)clientTriggeredCellularDescriptor;
 + (id)clientTriggeredWifiDescriptor;
++ (id)setupAssistantFetchDescriptor;
++ (id)postUpgradeDescriptorRequireInexpensiveNetworking;
 + (id)postUpgradeDescriptor;
 + (id)inexpensiveNetworkingDescriptor;
++ (id)recurrentRollbackDescriptor;
 + (id)cellularDescriptor;
 + (id)taskQueueDescriptor;
 + (id)retryFailuresDescriptor;

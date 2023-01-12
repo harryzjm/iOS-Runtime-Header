@@ -36,8 +36,6 @@
 - (void)stopForceIncludingAllAssets;
 - (void)forceIncludeAssetsAtIndexPaths:(id)arg1;
 - (void)startBackgroundFetchIfNeeded;
-- (void)resumeChangeDeliveryAndBackgroundLoading:(id)arg1;
-- (id)pauseChangeDeliveryWithTimeout:(double)arg1;
 - (void)ensureStartingSectionHasContent;
 - (void)ensureLastSectionHasContent;
 - (void)refreshResultsForAssetCollection:(id)arg1;

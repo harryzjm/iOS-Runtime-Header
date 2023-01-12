@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CTCellularPlanManager, PSListController, PSSimStatusCache, PSSpecifier, PSUICallingSubgroup, PSUICarrierSpaceGroup, PSUICellularDataOptionsController, PSUICellularPlanManagerCache, PSUICoreTelephonyCallCache, PSUICoreTelephonyCarrierBundleCache, PSUICoreTelephonyDataCache, PSUIDataModeSubgroup, PSUIMyNumberSubgroup, PSUINetworkSelectionSubgroup, PSUINetworkSettingsSubgroup, PSUISIMSubgroup;
+@class CTCellularPlanManager, CTXPCServiceSubscriptionContext, PSListController, PSSimStatusCache, PSSpecifier, PSUICallingSubgroup, PSUICarrierSpaceGroup, PSUICellularDataOptionsController, PSUICellularPlanManagerCache, PSUICoreTelephonyCallCache, PSUICoreTelephonyCarrierBundleCache, PSUICoreTelephonyDataCache, PSUIDataModeSubgroup, PSUIDevicePasscodeState, PSUIMyNumberSubgroup, PSUINetworkSelectionSubgroup, PSUINetworkSettingsSubgroup, PSUISIMSubgroup;
 
 @protocol PSUISubscriptionContextMenusFactory
 - (PSUICellularDataOptionsController *)createRoamingSpecifiersSubgroup;
-- (PSUIDataModeSubgroup *)createDataModeSubgroup;
+- (PSUIDataModeSubgroup *)createDataModeSubgroupWithContext:(CTXPCServiceSubscriptionContext *)arg1;
+- (PSUIDevicePasscodeState *)createPasscodeStatusCache;
 - (CTCellularPlanManager *)createCellularPlanManager;
 - (PSUICellularPlanManagerCache *)createCellularPlanManagerCache;
 - (PSUICoreTelephonyDataCache *)createDataCache;

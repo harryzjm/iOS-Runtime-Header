@@ -11,7 +11,9 @@
 }
 
 + (id)_configURLString:(id *)arg1;
-+ (void)fetchWithOptions:(long long)arg1 cachePolicy:(unsigned long long)arg2 sessionConfiguration:(id)arg3 queryParameters:(id)arg4 completion:(CDUnknownBlockType)arg5;
++ (void)_fetchV3WithOptions:(long long)arg1 cachePolicy:(unsigned long long)arg2 sessionConfiguration:(id)arg3 queryParameters:(id)arg4 completion:(CDUnknownBlockType)arg5;
++ (void)_fetchV3WithOptions:(long long)arg1 cachePolicy:(unsigned long long)arg2 sessionConfiguration:(id)arg3 queryParameters:(id)arg4 fileStorage:(id)arg5 completion:(CDUnknownBlockType)arg6;
++ (void)fetchWithOptions:(long long)arg1 cachePolicy:(unsigned long long)arg2 sessionConfiguration:(id)arg3 queryParameters:(id)arg4 fileStorage:(id)arg5 completion:(CDUnknownBlockType)arg6;
 
 @end
 

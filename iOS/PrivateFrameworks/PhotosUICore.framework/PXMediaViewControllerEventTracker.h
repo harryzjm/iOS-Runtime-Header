@@ -7,7 +7,7 @@
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
 #import <PhotosUICore/PXMediaViewControllerEventTracker-Protocol.h>
 
-@class NSMutableDictionary, NSString;
+@class NSMutableDictionary, NSString, _PXTrackedMediaRecord;
 @protocol PXDisplayAsset, PXDisplayAssetCollection;
 
 @interface PXMediaViewControllerEventTracker <PXMediaViewControllerEventTracker, PXChangeObserver>
@@ -16,9 +16,8 @@
     NSString *_viewName;
     id <PXDisplayAsset> _displayedAsset;
     id <PXDisplayAssetCollection> _displayedAssetCollection;
-    id _currentlyVisibleMedia;
+    _PXTrackedMediaRecord *_currentlyVisibleMediaRecord;
     id _lastVisibleMedia;
-    double _currentlyVisibleMediaTimestamp;
     long long _mediaViewedSignpost;
     long long _specificMediaViewedSignpost;
 }
@@ -26,15 +25,14 @@
 - (void).cxx_destruct;
 @property(nonatomic) long long specificMediaViewedSignpost; // @synthesize specificMediaViewedSignpost=_specificMediaViewedSignpost;
 @property(nonatomic) long long mediaViewedSignpost; // @synthesize mediaViewedSignpost=_mediaViewedSignpost;
-@property(readonly, nonatomic) double currentlyVisibleMediaTimestamp; // @synthesize currentlyVisibleMediaTimestamp=_currentlyVisibleMediaTimestamp;
 @property(retain, nonatomic) id lastVisibleMedia; // @synthesize lastVisibleMedia=_lastVisibleMedia;
-@property(retain, nonatomic) id currentlyVisibleMedia; // @synthesize currentlyVisibleMedia=_currentlyVisibleMedia;
+@property(retain, nonatomic) _PXTrackedMediaRecord *currentlyVisibleMediaRecord; // @synthesize currentlyVisibleMediaRecord=_currentlyVisibleMediaRecord;
 @property(retain, nonatomic) id <PXDisplayAssetCollection> displayedAssetCollection; // @synthesize displayedAssetCollection=_displayedAssetCollection;
 @property(retain, nonatomic) id <PXDisplayAsset> displayedAsset; // @synthesize displayedAsset=_displayedAsset;
 @property(readonly, nonatomic) NSString *viewName; // @synthesize viewName=_viewName;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
-- (void)_logDidEndViewingMedia:(id)arg1 duration:(double)arg2;
-- (void)_logDidStartViewingMedia:(id)arg1;
+- (void)logDidEndViewingMedia:(id)arg1 mediaKind:(long long)arg2 duration:(double)arg3;
+- (void)logDidStartViewingMedia:(id)arg1 mediaKind:(long long)arg2;
 - (void)_updateCurrentlyVisibleMedia;
 - (void)_invalidateCurrentlyVisibleMedia;
 - (id)initWithViewName:(id)arg1;

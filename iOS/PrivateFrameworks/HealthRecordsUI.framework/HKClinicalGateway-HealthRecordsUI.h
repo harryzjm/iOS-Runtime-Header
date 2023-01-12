@@ -7,6 +7,7 @@
 #import <HealthKit/HKClinicalGateway.h>
 
 @interface HKClinicalGateway (HealthRecordsUI)
+@property(nonatomic, readonly) _Bool supportsSharingToProvider;
 @property(nonatomic, readonly) _Bool hasLogo;
 @end
 

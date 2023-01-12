@@ -26,9 +26,7 @@
 - (void)viewport:(id)arg1 appearStateChangedFromState:(unsigned long long)arg2;
 - (void)viewport:(id)arg1 dynamicBoundsDidChangeFromBounds:(struct CGRect)arg2;
 - (void)viewport:(id)arg1 boundsDidChangeFromBounds:(struct CGRect)arg2;
-- (void)presentOnView:(id)arg1;
 - (void)dealloc;
-- (id)initWithViewport:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

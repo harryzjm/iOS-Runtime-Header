@@ -14,7 +14,6 @@
 
 + (id)category;
 - (void).cxx_destruct;
-- (id)localizedFullNameForFirstName:(id)arg1 lastName:(id)arg2;
 - (id)body;
 - (id)title;
 - (id)initWithNotificationManager:(id)arg1 guardianFirstName:(id)arg2 lastName:(id)arg3;

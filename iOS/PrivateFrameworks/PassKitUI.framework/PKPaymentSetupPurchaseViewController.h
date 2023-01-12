@@ -14,7 +14,7 @@
 #import <PassKitUI/PKViewControllerPreflightable-Protocol.h>
 #import <PassKitUI/RemoteUIControllerDelegate-Protocol.h>
 
-@class NSDecimalNumber, NSString, PKPaymentAuthorizationCoordinator, PKPaymentProvisioningController, PKPaymentProvisioningMethodMetadata, PKPaymentSetupProduct, PKPaymentSetupPurchaseAmountView, PKPaymentSetupPurchaseController, PKServiceProviderPurchase, RemoteUIController, UIActivityIndicatorView, UIImage, UIImageView, UILabel;
+@class NSDecimalNumber, NSLayoutConstraint, NSString, PKPaymentAuthorizationCoordinator, PKPaymentProvisioningController, PKPaymentProvisioningMethodMetadata, PKPaymentSetupProduct, PKPaymentSetupPurchaseAmountView, PKPaymentSetupPurchaseController, PKServiceProviderPurchase, RemoteUIController, UIActivityIndicatorView, UIImage, UIImageView, UILabel;
 @protocol PKPaymentSetupViewControllerDelegate;
 
 @interface PKPaymentSetupPurchaseViewController : UIViewController <PKPaymentSetupPurchaseAmountViewDelegate, PKPaymentAuthorizationCoordinatorDelegate, PKPaymentAuthorizationCoordinatorPrivateDelegate, PKPaymentSetupViewControllerDelegate, RemoteUIControllerDelegate, PKPaymentSetupDelegate, PKViewControllerPreflightable>
@@ -32,6 +32,7 @@
     UIImageView *_passView;
     UILabel *_titleLabel;
     PKPaymentSetupPurchaseAmountView *_amountView;
+    NSLayoutConstraint *_amountViewBottomHeightConstraint;
     NSDecimalNumber *_currentAmount;
     PKPaymentAuthorizationCoordinator *_authorizationCoordinator;
     PKServiceProviderPurchase *_purchase;
@@ -49,6 +50,7 @@
 @property(retain, nonatomic) PKServiceProviderPurchase *purchase; // @synthesize purchase=_purchase;
 @property(retain, nonatomic) PKPaymentAuthorizationCoordinator *authorizationCoordinator; // @synthesize authorizationCoordinator=_authorizationCoordinator;
 @property(copy, nonatomic) NSDecimalNumber *currentAmount; // @synthesize currentAmount=_currentAmount;
+@property(retain, nonatomic) NSLayoutConstraint *amountViewBottomHeightConstraint; // @synthesize amountViewBottomHeightConstraint=_amountViewBottomHeightConstraint;
 @property(retain, nonatomic) PKPaymentSetupPurchaseAmountView *amountView; // @synthesize amountView=_amountView;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) UIImageView *passView; // @synthesize passView=_passView;
@@ -58,6 +60,7 @@
 @property(retain, nonatomic) PKPaymentProvisioningController *provisioningController; // @synthesize provisioningController=_provisioningController;
 @property(readonly, nonatomic) PKPaymentSetupPurchaseController *purchaseController; // @synthesize purchaseController=_purchaseController;
 @property(readonly, nonatomic) PKPaymentSetupProduct *product; // @synthesize product=_product;
+- (void)_updateBottomHeightConstraint;
 - (struct CGSize)_imageSizeShowingTransferButton:(_Bool)arg1;
 - (void)_presentTermsAndConditionsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_paymentRequestForAmount:(id)arg1;
@@ -69,6 +72,7 @@
 - (id)_rightBarButton;
 - (void)_createConstraints;
 - (void)_createSubviews;
+- (_Bool)_isCompactHeight;
 - (_Bool)_shouldHideImage;
 - (_Bool)_readerModeIsSupported;
 - (void)paymentSetupDidFinish:(id)arg1;
@@ -77,6 +81,7 @@
 - (void)paymentAuthorizationCoordinator:(id)arg1 didAuthorizePurchase:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)paymentAuthorizationCoordinatorDidFinish:(id)arg1;
 - (void)paymentAuthorizationCoordinator:(id)arg1 didAuthorizePayment:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)paymentSetupPurchaseAmountViewDidLayoutKeyboard:(id)arg1;
 - (void)transferBalanceFromExistingCard;
 - (void)didUpdateAmount:(id)arg1 isValid:(_Bool)arg2;
 - (void)shakeCard;

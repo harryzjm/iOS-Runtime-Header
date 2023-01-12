@@ -12,7 +12,9 @@
 
 + (id)_representationForNode:(id)arg1 inModel:(id)arg2;
 + (void)_addValuesForCustomIconElement:(id)arg1 toRepresentation:(id)arg2;
++ (_Bool)_widgetDataSourceIsSuggestion:(id)arg1;
 + (id)_representationForCustomIcon:(id)arg1 inModel:(id)arg2;
++ (id)_representationForApplicationIcon:(id)arg1 inModel:(id)arg2;
 + (id)iconStateRepresentationForFolder:(id)arg1 inModel:(id)arg2;
 + (id)_representationForFolder:(id)arg1 inModel:(id)arg2;
 + (id)_folderTypeForFolder:(id)arg1;

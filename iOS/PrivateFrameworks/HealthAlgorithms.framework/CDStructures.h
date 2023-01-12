@@ -4,9 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#pragma mark Blocks
+
+typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
+
 #pragma mark Named Structures
 
 struct CnAlgs;
+
+struct PhaseCondenser;
 
 struct _NSRange {
     unsigned long long location;
@@ -25,20 +31,26 @@ struct optional<unsigned int> {
     _Bool __engaged_;
 };
 
-struct unique_ptr<CinnAlgs::CnAlgs, std::__1::default_delete<CinnAlgs::CnAlgs>> {
-    struct __compressed_pair<CinnAlgs::CnAlgs *, std::__1::default_delete<CinnAlgs::CnAlgs>> {
+struct unique_ptr<CinnAlgs::CnAlgs, std::default_delete<CinnAlgs::CnAlgs>> {
+    struct __compressed_pair<CinnAlgs::CnAlgs *, std::default_delete<CinnAlgs::CnAlgs>> {
         struct CnAlgs *__value_;
     } __ptr_;
 };
 
-struct unique_ptr<Nightingale::ngt_DayStreamProcessor, std::__1::default_delete<Nightingale::ngt_DayStreamProcessor>> {
-    struct __compressed_pair<Nightingale::ngt_DayStreamProcessor *, std::__1::default_delete<Nightingale::ngt_DayStreamProcessor>> {
+struct unique_ptr<HealthAlgorithms::PhaseCondenser, std::default_delete<HealthAlgorithms::PhaseCondenser>> {
+    struct __compressed_pair<HealthAlgorithms::PhaseCondenser *, std::default_delete<HealthAlgorithms::PhaseCondenser>> {
+        struct PhaseCondenser *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<Nightingale::ngt_DayStreamProcessor, std::default_delete<Nightingale::ngt_DayStreamProcessor>> {
+    struct __compressed_pair<Nightingale::ngt_DayStreamProcessor *, std::default_delete<Nightingale::ngt_DayStreamProcessor>> {
         struct ngt_DayStreamProcessor *__value_;
     } __ptr_;
 };
 
-struct unique_ptr<Nightingale::ngt_HistoricalAnalyzer, std::__1::default_delete<Nightingale::ngt_HistoricalAnalyzer>> {
-    struct __compressed_pair<Nightingale::ngt_HistoricalAnalyzer *, std::__1::default_delete<Nightingale::ngt_HistoricalAnalyzer>> {
+struct unique_ptr<Nightingale::ngt_HistoricalAnalyzer, std::default_delete<Nightingale::ngt_HistoricalAnalyzer>> {
+    struct __compressed_pair<Nightingale::ngt_HistoricalAnalyzer *, std::default_delete<Nightingale::ngt_HistoricalAnalyzer>> {
         struct ngt_HistoricalAnalyzer *__value_;
     } __ptr_;
 };

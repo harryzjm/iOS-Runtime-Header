@@ -15,7 +15,10 @@
 {
     _Bool _removeTimestamps;
     _Bool _duEnabled;
+    _Bool _isInternalCarry;
     int _previousSessionEndReason;
+    unsigned int _devicePersistentD20;
+    int _privateRelayStatus;
     NSString *_agent;
     NSString *_userGuidString;
     NSDictionary *_resourceVersions;
@@ -32,6 +35,9 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *feedbacks; // @synthesize feedbacks=_feedbacks;
 @property(copy, nonatomic) NSData *jsonFeedback; // @synthesize jsonFeedback=_jsonFeedback;
+@property(nonatomic) _Bool isInternalCarry; // @synthesize isInternalCarry=_isInternalCarry;
+@property(nonatomic) int privateRelayStatus; // @synthesize privateRelayStatus=_privateRelayStatus;
+@property(nonatomic) unsigned int devicePersistentD20; // @synthesize devicePersistentD20=_devicePersistentD20;
 @property(retain, nonatomic) _CPUsageEnvelope *cohortsFeedback; // @synthesize cohortsFeedback=_cohortsFeedback;
 @property(retain, nonatomic) _CPUsageSinceLookback *usageSinceLookback; // @synthesize usageSinceLookback=_usageSinceLookback;
 @property(copy, nonatomic) NSString *locale; // @synthesize locale=_locale;
@@ -44,10 +50,6 @@
 @property(copy, nonatomic) NSDictionary *resourceVersions; // @synthesize resourceVersions=_resourceVersions;
 @property(copy, nonatomic) NSString *userGuidString; // @synthesize userGuidString=_userGuidString;
 @property(copy, nonatomic) NSString *agent; // @synthesize agent=_agent;
-- (id)initWithDictionary:(id)arg1;
-- (id)initWithJSON:(id)arg1;
-@property(readonly, nonatomic) NSData *jsonData;
-- (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
@@ -63,6 +65,7 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) NSData *jsonData; // @dynamic jsonData;
 @property(readonly) Class superclass;
 
 @end

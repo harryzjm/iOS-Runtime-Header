@@ -15,6 +15,7 @@
     MISSING_TYPE *notifyOfAvailableTagsDelay;
     MISSING_TYPE *notificationConfiguration;
     MISSING_TYPE *notificationService;
+    MISSING_TYPE *subscriptionService;
 }
 
 @end

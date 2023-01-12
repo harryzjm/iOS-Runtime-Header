@@ -12,6 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)viewDidLoad;
+- (_Bool)isAccessibilityElement;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

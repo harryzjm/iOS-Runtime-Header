@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 + (_Bool)requiresEventOrReminderAccess;
 + (_Bool)requiresReminderAccess;
 + (_Bool)requiresEventAccess;
+- (void)CADWaitForSpotlightUpdatesWithReply:(CDUnknownBlockType)arg1;
 - (id)_gatherAllCalendarItemUUIDs;
 - (void)CADPushItemsToSpotlight:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (_Bool)accessGrantedToPerformSelector:(SEL)arg1;

@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *sequence;
     MISSING_TYPE *subsequence;
+    MISSING_TYPE *encoder;
 }
 
 - (void).cxx_destruct;
@@ -23,8 +24,8 @@ __attribute__((visibility("hidden")))
 - (void)finishSubstring;
 - (void)addChildWithId:(unsigned int)arg1;
 - (void)setWithLength:(unsigned int)arg1;
-- (void)addAddedById:(unsigned int)arg1 clock:(unsigned int)arg2;
-- (void)setCharWithId:(unsigned int)arg1 clock:(unsigned int)arg2;
+- (void)addAddedById:(id)arg1 clock:(unsigned int)arg2;
+- (void)setCharWithId:(id)arg1 clock:(unsigned int)arg2;
 
 @end
 

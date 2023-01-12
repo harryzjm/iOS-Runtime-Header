@@ -20,6 +20,7 @@
     unsigned long long _retryCount;
     long long _dataType;
     NSString *_identifier;
+    NSString *_requestType;
     id _formattedData;
     NSURLSessionTask *_task;
     NSHTTPURLResponse *_response;
@@ -38,6 +39,7 @@
 @property(retain, nonatomic) NSHTTPURLResponse *response; // @synthesize response=_response;
 @property(retain, nonatomic) NSURLSessionTask *task; // @synthesize task=_task;
 @property(retain, nonatomic) id formattedData; // @synthesize formattedData=_formattedData;
+@property(retain, nonatomic) NSString *requestType; // @synthesize requestType=_requestType;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(nonatomic) long long dataType; // @synthesize dataType=_dataType;
 @property(nonatomic) unsigned long long retryCount; // @synthesize retryCount=_retryCount;

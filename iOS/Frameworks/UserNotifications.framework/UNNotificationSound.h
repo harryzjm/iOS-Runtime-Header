@@ -20,6 +20,7 @@
     NSNumber *_audioVolume;
     double _maximumDuration;
     _Bool _critical;
+    _Bool _shouldIgnoreAccessibilityDisabledVibrationSetting;
     _Bool _shouldIgnoreRingerSwitch;
     _Bool _shouldRepeat;
     NSString *_toneFileName;
@@ -50,6 +51,7 @@
 @property(readonly, copy, nonatomic) NSString *toneFileName; // @synthesize toneFileName=_toneFileName;
 @property(readonly, nonatomic) _Bool shouldRepeat; // @synthesize shouldRepeat=_shouldRepeat;
 @property(readonly, nonatomic) _Bool shouldIgnoreRingerSwitch; // @synthesize shouldIgnoreRingerSwitch=_shouldIgnoreRingerSwitch;
+@property(readonly, nonatomic) _Bool shouldIgnoreAccessibilityDisabledVibrationSetting; // @synthesize shouldIgnoreAccessibilityDisabledVibrationSetting=_shouldIgnoreAccessibilityDisabledVibrationSetting;
 @property(readonly, nonatomic) double maximumDuration; // @synthesize maximumDuration=_maximumDuration;
 @property(readonly, nonatomic) unsigned long long toneMediaLibraryItemIdentifier; // @synthesize toneMediaLibraryItemIdentifier=_toneMediaLibraryItemIdentifier;
 @property(readonly, copy, nonatomic) NSNumber *audioVolume; // @synthesize audioVolume=_audioVolume;
@@ -63,7 +65,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;
-- (id)_initWithAlertType:(long long)arg1 alertTopic:(id)arg2 audioCategory:(id)arg3 audioVolume:(id)arg4 critical:(_Bool)arg5 maximumDuration:(double)arg6 shouldIgnoreRingerSwitch:(_Bool)arg7 shouldRepeat:(_Bool)arg8 toneFileName:(id)arg9 toneFileURL:(id)arg10 toneIdentifier:(id)arg11 toneMediaLibraryItemIdentifier:(unsigned long long)arg12 vibrationIdentifier:(id)arg13 vibrationPatternFileURL:(id)arg14;
+- (id)_initWithAlertType:(long long)arg1 alertTopic:(id)arg2 audioCategory:(id)arg3 audioVolume:(id)arg4 critical:(_Bool)arg5 maximumDuration:(double)arg6 shouldIgnoreAccessibilityDisabledVibrationSetting:(_Bool)arg7 shouldIgnoreRingerSwitch:(_Bool)arg8 shouldRepeat:(_Bool)arg9 toneFileName:(id)arg10 toneFileURL:(id)arg11 toneIdentifier:(id)arg12 toneMediaLibraryItemIdentifier:(unsigned long long)arg13 vibrationIdentifier:(id)arg14 vibrationPatternFileURL:(id)arg15;
 
 @end
 

@@ -11,7 +11,7 @@
 #import <CarPlaySupport/CPUINowPlayingViewControllerDataSource-Protocol.h>
 #import <CarPlaySupport/CPUINowPlayingViewControllerDelegate-Protocol.h>
 
-@class CARSessionStatus, CPNowPlayingTemplate, CPSNowPlayingViewController, CPSTemplateEnvironment, CPUINowPlayingManager, CPUINowPlayingSnapshot, MPArtworkCatalog, NSString, UIImage;
+@class CPNowPlayingTemplate, CPSNowPlayingViewController, CPSTemplateEnvironment, CPUINowPlayingManager, CPUINowPlayingSnapshot, MPArtworkCatalog, NSString, UIImage;
 @protocol CPNowPlayingClientTemplateDelegate;
 
 @interface CPSAudioPlaybackManager : NSObject <CPUINowPlayingObserving, CARSessionObserving, CPUINowPlayingViewControllerDataSource, CPUINowPlayingViewControllerDelegate>
@@ -22,7 +22,6 @@
     CPUINowPlayingManager *_nowPlayingManager;
     CPNowPlayingTemplate *_template;
     id <CPNowPlayingClientTemplateDelegate> _templateDelegate;
-    CARSessionStatus *_sessionStatus;
     MPArtworkCatalog *_artworkCatalog;
     UIImage *_fullSizeArtwork;
     CPUINowPlayingSnapshot *_lastSnapshot;
@@ -36,7 +35,6 @@
 @property(retain, nonatomic) CPUINowPlayingSnapshot *lastSnapshot; // @synthesize lastSnapshot=_lastSnapshot;
 @property(retain, nonatomic) UIImage *fullSizeArtwork; // @synthesize fullSizeArtwork=_fullSizeArtwork;
 @property(retain, nonatomic) MPArtworkCatalog *artworkCatalog; // @synthesize artworkCatalog=_artworkCatalog;
-@property(retain, nonatomic) CARSessionStatus *sessionStatus; // @synthesize sessionStatus=_sessionStatus;
 @property(retain, nonatomic) id <CPNowPlayingClientTemplateDelegate> templateDelegate; // @synthesize templateDelegate=_templateDelegate;
 @property(readonly, nonatomic) CPNowPlayingTemplate *template; // @synthesize template=_template;
 @property(retain, nonatomic) CPUINowPlayingManager *nowPlayingManager; // @synthesize nowPlayingManager=_nowPlayingManager;
@@ -44,6 +42,7 @@
 - (void)nowPlayingManager:(id)arg1 didThrottleUpdateForBundleIdentifier:(id)arg2;
 - (void)nowPlayingManager:(id)arg1 didUpdateSnapshot:(id)arg2;
 - (void)session:(id)arg1 didUpdateConfiguration:(id)arg2;
+- (_Bool)nowPlayingViewControllerIsRightHandDrive:(id)arg1;
 - (void)nowPlayingViewControllerWillAppear:(id)arg1;
 - (_Bool)nowPlayingViewControllerCanShowAlbumArt:(id)arg1;
 - (_Bool)nowPlayingViewControllerCanShowMore:(id)arg1;
@@ -77,7 +76,7 @@
 - (id)titleForNowPlayingController:(id)arg1;
 - (id)albumTextForNowPlayingController:(id)arg1;
 - (id)artistTextForNowPlayingController:(id)arg1;
-- (void)_loadArtworkIfNeeded:(id)arg1;
+- (void)_loadArtwork:(id)arg1;
 - (void)_updateAlbumArtFromSessionConfiguration:(id)arg1;
 - (id)nowPlayingButtonWithIdentifier:(id)arg1;
 - (id)nowPlayingButtonWithClass:(Class)arg1;

@@ -20,14 +20,20 @@
     NSMutableDictionary *_userModelValuesCollection;
     NSDictionary *_settingsDictionary;
     double _timeOfLastPersist;
+    _Bool _explicitTearDown;
     _Bool _userModelRateLimitingDisabled;
     id <TIUserModelConfigurationDelegate> _configurationDelegate;
+    NSArray *_weeklyMetricKeys;
+    NSDate *_fromDate;
     NSDate *_loadedDate;
 }
 
 - (void).cxx_destruct;
 @property _Bool userModelRateLimitingDisabled; // @synthesize userModelRateLimitingDisabled=_userModelRateLimitingDisabled;
 @property(retain, nonatomic) NSDate *loadedDate; // @synthesize loadedDate=_loadedDate;
+@property(readonly) _Bool explicitTearDown; // @synthesize explicitTearDown=_explicitTearDown;
+@property(readonly, nonatomic) NSDate *fromDate; // @synthesize fromDate=_fromDate;
+@property(copy, nonatomic) NSArray *weeklyMetricKeys; // @synthesize weeklyMetricKeys=_weeklyMetricKeys;
 @property(readonly, nonatomic) NSString *inputMode; // @synthesize inputMode=_inputMode;
 @property(nonatomic) __weak id <TIUserModelConfigurationDelegate> configurationDelegate; // @synthesize configurationDelegate=_configurationDelegate;
 - (int)valueForDurableKey:(id)arg1;
@@ -45,7 +51,9 @@
 - (void)configureDurableCounters;
 - (void)configureDurableCounterForName:(id)arg1;
 @property(readonly, nonatomic) NSArray *contexts;
+- (void)tearDown;
 - (void)dealloc;
+- (id)initWithInputMode:(id)arg1 userModelDataStore:(id)arg2 weeklyMetricKeys:(id)arg3 fromDate:(id)arg4 explicitTearDown:(_Bool)arg5;
 - (id)initWithInputMode:(id)arg1 userModelDataStore:(id)arg2;
 
 // Remaining properties

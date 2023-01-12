@@ -11,12 +11,14 @@
 }
 
 + (id)__hasTimeSyncedLyrics_KEY;
++ (id)__hasLibraryLyrics_KEY;
 + (id)__hasStoreLyrics_KEY;
 + (id)__TTML_KEY;
 + (id)__text_KEY;
 
 // Remaining properties
 @property(copy, nonatomic) NSString *TTML; // @dynamic TTML;
+@property(nonatomic) _Bool hasLibraryLyrics; // @dynamic hasLibraryLyrics;
 @property(nonatomic) _Bool hasStoreLyrics; // @dynamic hasStoreLyrics;
 @property(nonatomic) _Bool hasTimeSyncedLyrics; // @dynamic hasTimeSyncedLyrics;
 @property(copy, nonatomic) NSString *text; // @dynamic text;

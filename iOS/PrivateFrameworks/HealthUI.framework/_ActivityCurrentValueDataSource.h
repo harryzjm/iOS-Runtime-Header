@@ -26,7 +26,7 @@
 - (id)valueViewForColumnAtIndex:(long long)arg1 orientation:(long long)arg2;
 - (long long)numberOfValuesForAnnotationView:(id)arg1;
 - (id)leftMarginViewWithOrientation:(long long)arg1;
-- (id)initWithDisplayTypeController:(id)arg1 unitController:(id)arg2 wheelchairUseCharacteristicCache:(id)arg3 currentValueViewContext:(_Bool)arg4 currentValueViewCallbacks:(id)arg5;
+- (id)initWithDisplayTypeController:(id)arg1 unitController:(id)arg2 wheelchairUseCharacteristicCache:(id)arg3 currentValueViewContext:(_Bool)arg4 firstWeekday:(long long)arg5 currentValueViewCallbacks:(id)arg6;
 
 @end
 

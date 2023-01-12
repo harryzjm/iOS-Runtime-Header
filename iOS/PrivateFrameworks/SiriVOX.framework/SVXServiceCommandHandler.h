@@ -8,7 +8,7 @@
 
 #import <SiriVOX/SVXModuleInstance-Protocol.h>
 
-@class NSMutableSet, NSString, SVXModule, SVXServiceCommandDelayedActionStore, SVXServiceCommandHandlerFallback, SVXServiceCommandHandlerRegistry;
+@class MDFixedModeProvider, NSMutableSet, NSString, SVXModule, SVXServiceCommandDelayedActionStore, SVXServiceCommandHandlerFallback, SVXServiceCommandHandlerRegistry;
 
 __attribute__((visibility("hidden")))
 @interface SVXServiceCommandHandler : NSObject <SVXModuleInstance>
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     SVXServiceCommandHandlerFallback *_fallbackHandler;
     SVXServiceCommandDelayedActionStore *_delayedActionStore;
     NSMutableSet *_transactions;
+    MDFixedModeProvider *_fallbackModeProvider;
 }
 
 - (void).cxx_destruct;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)_reset;
 - (void)stopWithModuleInstanceProvider:(id)arg1;
 - (void)startWithModuleInstanceProvider:(id)arg1 platformDependencies:(id)arg2;
+- (id)fallbackModeProvider;
 - (id)initWithModule:(id)arg1;
 - (void)handleCommand:(id)arg1 taskTracker:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)isCommandUUFR:(id)arg1;

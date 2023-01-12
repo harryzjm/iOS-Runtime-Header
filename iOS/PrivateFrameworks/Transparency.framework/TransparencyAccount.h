@@ -11,9 +11,6 @@
 }
 
 + (_Bool)initiateCredentialRenewal:(id *)arg1 completionHandler:(CDUnknownBlockType)arg2;
-+ (_Bool)eligibleForEnrollmentVerify;
-+ (_Bool)eligibleForPeerVerify;
-+ (_Bool)eligibleForSelfVerify;
 + (id)authToken:(id *)arg1;
 + (id)primaryAccount:(id *)arg1;
 + (unsigned long long)accountLevel:(id)arg1;

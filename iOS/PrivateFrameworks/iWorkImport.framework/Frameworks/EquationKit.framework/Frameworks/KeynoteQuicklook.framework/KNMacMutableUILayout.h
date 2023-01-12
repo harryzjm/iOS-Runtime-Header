@@ -8,7 +8,7 @@
 {
 }
 
-@property(nonatomic, getter=isShowingMasterSlides) _Bool showingMasterSlides; // @dynamic showingMasterSlides;
+@property(nonatomic, getter=isShowingTemplateSlides) _Bool showingTemplateSlides; // @dynamic showingTemplateSlides;
 @property(nonatomic) long long inspectorPaneViewMode; // @dynamic inspectorPaneViewMode;
 @property(nonatomic) long long inspectorPaneHiddenState; // @dynamic inspectorPaneHiddenState;
 @property(nonatomic, getter=isShowingLightTable) _Bool showingLightTable; // @dynamic showingLightTable;

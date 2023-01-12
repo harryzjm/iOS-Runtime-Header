@@ -8,14 +8,15 @@
 
 @interface TSCH3DChartTexcoordSharedResource
 {
-    TSCH3Dvec3DataBuffer *mVertex;
-    TSCH3Dvec3DataBuffer *mNormal;
-    TSCH3DTexCoordGeneration *mGenerator;
+    TSCH3Dvec3DataBuffer *_vertex;
+    TSCH3Dvec3DataBuffer *_normal;
+    TSCH3DTexCoordGeneration *_generator;
 }
 
-@property(retain, nonatomic) TSCH3DTexCoordGeneration *generator; // @synthesize generator=mGenerator;
-@property(retain, nonatomic) TSCH3Dvec3DataBuffer *normal; // @synthesize normal=mNormal;
-@property(retain, nonatomic) TSCH3Dvec3DataBuffer *vertex; // @synthesize vertex=mVertex;
+- (void).cxx_destruct;
+@property(retain, nonatomic) TSCH3DTexCoordGeneration *generator; // @synthesize generator=_generator;
+@property(retain, nonatomic) TSCH3Dvec3DataBuffer *normal; // @synthesize normal=_normal;
+@property(retain, nonatomic) TSCH3Dvec3DataBuffer *vertex; // @synthesize vertex=_vertex;
 - (void)flushMemory;
 - (id)get;
 - (void)setChildRegenerated:(_Bool)arg1;

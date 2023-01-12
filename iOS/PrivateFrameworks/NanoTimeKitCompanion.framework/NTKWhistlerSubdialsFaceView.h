@@ -12,41 +12,35 @@
 @interface NTKWhistlerSubdialsFaceView <NTKRichComplicationRectangularBaseViewDelegate, CLKMonochromeFilterProvider>
 {
     UIView *_timeViewContainerView;
-    unsigned long long _faceColor;
 }
 
-+ (id)_swatchColorForColorOption:(id)arg1 forDevice:(id)arg2;
 + (id)_swatchForEditModeDependsOnOptions:(long long)arg1 forDevice:(id)arg2;
 - (void).cxx_destruct;
-- (id)_renderDialSwatchImageForStyle:(unsigned long long)arg1 color:(unsigned long long)arg2;
+- (id)_renderDialSwatchImageForStyle:(unsigned long long)arg1 colorOption:(id)arg2;
 - (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (void)rectangularViewDidEndInteractive:(id)arg1;
 - (void)rectangularViewDidBecomeInteractive:(id)arg1;
-- (_Bool)_shouldShowEditingPageDotsOnBottom;
 - (void)_applyRubberBandingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
-- (_Bool)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
-- (struct CGRect)_legacyUnscaledKeylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
+- (struct CGRect)_relativeKeylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (unsigned long long)_keylineLabelAlignmentForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (double)_complicationAlphaForEditMode:(long long)arg1;
 - (double)_timeViewAlphaForEditMode:(long long)arg1;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (void)_configureForEditMode:(long long)arg1;
-- (void)_applyTransitionFraction:(double)arg1 fromColor:(unsigned long long)arg2 toColor:(unsigned long long)arg3;
+- (void)_applyTransitionFraction:(double)arg1 fromPalette:(id)arg2 toPalette:(id)arg3;
 - (void)_applyTransitionFraction:(double)arg1 fromOption:(id)arg2 toOption:(id)arg3 forCustomEditMode:(long long)arg4 slot:(id)arg5;
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_cleanupAfterEditing;
 - (void)_prepareForEditing;
-- (id)complicationPickerViewForSlot:(id)arg1;
 - (double)_minimumBreathingScaleForComplicationSlot:(id)arg1;
 - (double)_keylineCornerRadiusForComplicationSlot:(id)arg1;
 - (double)_horizontalPaddingForStatusBar;
 - (void)layoutSubviews;
 - (long long)_keylineStyleForComplicationSlot:(id)arg1;
-- (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
 - (void)_loadLayoutRules;
-- (void)setFaceColor:(unsigned long long)arg1;
+- (void)updateWithColorPalette:(id)arg1;
 - (_Bool)_isAnalog;
 - (void)_removeDialView;
 - (id)dialView;
@@ -56,6 +50,7 @@
 - (void)updateMonochromeColorForRichComplicationView:(id)arg1;
 - (void)_configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
+- (id)createFaceColorPalette;
 - (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
 
 // Remaining properties

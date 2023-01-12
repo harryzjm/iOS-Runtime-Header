@@ -8,18 +8,21 @@
 
 @interface WBSBookmarkAndHistoryCompletionMatch
 {
-    struct RefPtr<SafariShared::BookmarkAndHistoryCompletionMatch, WTF::DumbPtrTraits<SafariShared::BookmarkAndHistoryCompletionMatch>> _match;
+    struct RefPtr<SafariShared::BookmarkAndHistoryCompletionMatch, WTF::RawPtrTraits<SafariShared::BookmarkAndHistoryCompletionMatch>, WTF::DefaultRefDerefTraits<SafariShared::BookmarkAndHistoryCompletionMatch>> _match;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (float)topSitesScore;
+- (long long)visitCountScore;
 @property(readonly, nonatomic) float weight;
 - (id)parsecDomainIdentifier;
+- (_Bool)containsBookmark;
 - (id)userVisibleURLString;
 - (id)title;
 - (id)originalURLString;
 @property(readonly, nonatomic) id <WBSURLCompletionMatchData> data;
-- (id)initWithBookmarkAndHistoryCompletionMatch:(Ref_a2762e75 *)arg1 userInput:(id)arg2 forQueryID:(long long)arg3;
+- (id)initWithBookmarkAndHistoryCompletionMatch:(void *)arg1 userInput:(id)arg2 forQueryID:(long long)arg3;
 
 @end
 

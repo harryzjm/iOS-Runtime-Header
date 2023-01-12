@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSString, WBSSearchParameters;
 
 @protocol WBSURLCompletionSessionProtocol
-- (void)getBestMatchesForTypedString:(NSString *)arg1 limit:(unsigned long long)arg2 forQueryID:(long long)arg3 completionHandler:(void (^)(NSArray *, NSArray *, NSError *))arg4;
+- (void)getBestMatchesForTypedString:(NSString *)arg1 limit:(unsigned long long)arg2 forQueryID:(long long)arg3 withSearchParameters:(WBSSearchParameters *)arg4 completionHandler:(void (^)(NSArray *, NSArray *, NSError *))arg5;
 @end
 

@@ -8,7 +8,7 @@
 
 #import <AccessibilityUtilities/AXImageMonitorObserver-Protocol.h>
 
-@class NSMutableSet, NSString;
+@class NSMutableDictionary, NSMutableSet, NSString;
 @protocol AXImageMonitor, OS_dispatch_queue, OS_dispatch_source;
 
 @interface AXCodeLoader : NSObject <AXImageMonitorObserver>
@@ -20,6 +20,7 @@
     long long _monitoredLoadTriggeringImageCountSinceLastLoad;
     NSMutableSet *_trackedCodeItems;
     NSMutableSet *_accessibilityCodeItems;
+    NSMutableDictionary *_codeItemsByNameType;
     CDUnknownBlockType _beginTrackingCompletion;
     NSObject<OS_dispatch_queue> *_beginTrackingCompletionQueue;
     _Bool _initialLoadHasOccurred;
@@ -52,6 +53,7 @@
 - (id)_accessibilityCodeItemMatchingName:(id)arg1 type:(long long)arg2 path:(id)arg3;
 - (id)_platformKeyForPlatform:(unsigned int)arg1;
 - (void)_reconcileTrackedCodeItemsWithAccessibilityCodeItemDefinitions;
+- (void)_initializeCodeItemMappings;
 - (void)_updateAccessibilityCodeItemDefinitionsIfNeeded;
 - (void)prewarmAccessibilityCodeItemDefinitionsWithCompletion:(CDUnknownBlockType)arg1 targetQueue:(id)arg2;
 - (void)_consumeBeginTrackingCompletionHandlerIfNeeded;

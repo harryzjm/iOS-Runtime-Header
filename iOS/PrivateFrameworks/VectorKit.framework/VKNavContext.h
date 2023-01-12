@@ -13,11 +13,11 @@
     GEOComposedRoute *_route;
     GEORouteMatch *_routeMatch;
     unsigned long long _currentStepIndex;
-    struct vector<GEOLocationCoordinate2D, std::__1::allocator<GEOLocationCoordinate2D>> _pointsToFrame;
+    struct vector<AdditionalPointInfo, std::allocator<AdditionalPointInfo>> _pointsToFrame;
     NSHashTable *_observers;
     NSArray *_groupedManeuverCounts;
     unsigned long long _navCameraHeadingOverride;
-    struct vector<AdditionalRouteInfo, std::__1::allocator<AdditionalRouteInfo>> _additionalRoutesToFrame;
+    struct vector<AdditionalRouteInfo, std::allocator<AdditionalRouteInfo>> _additionalRoutesToFrame;
     unsigned long long _navigationCameraHeadingOverride;
 }
 
@@ -35,7 +35,9 @@
 - (void)addObserver:(id)arg1;
 - (void)_notifyObserversStateChanged;
 - (void)enumeratePointsToFrameUsingBlock:(CDUnknownBlockType)arg1;
-- (void)addPointToFrame:(CDStruct_c3b9c2ee)arg1;
+- (void)enumeratePointsToFrameOfType:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)addPointToFrame:(CDStruct_071ac149)arg1 ofType:(unsigned long long)arg2;
+- (void)clearPointsToFrameOfType:(unsigned long long)arg1;
 - (void)clearPointsToFrame;
 @property(readonly, nonatomic) unsigned long long groupedManeuverCount; // @dynamic groupedManeuverCount;
 - (void)updateWithNewRoute:(id)arg1 currentStepIndex:(unsigned long long)arg2;

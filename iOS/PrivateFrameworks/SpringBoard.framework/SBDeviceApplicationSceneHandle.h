@@ -8,34 +8,40 @@
 #import <SpringBoard/SBIdleTimerProviding-Protocol.h>
 
 @class NSData, NSDictionary, NSMutableSet, NSString, SBDeviceApplicationSceneStatusBarBreadcrumbProvider, SBDeviceApplicationSceneStatusBarStateProvider, SBModalAlertPresenter, _UIStatusBarData;
-@protocol SBIdleTimerCoordinating;
+@protocol SBIdleTimerCoordinating, SBScenePlaceholderContentViewProvider;
 
 @interface SBDeviceApplicationSceneHandle <FBApplicationProcessObserver, SBIdleTimerProviding>
 {
     long long _lastActivationSource;
     SBModalAlertPresenter *_modalAlertPresenter;
-    int _statusBarStyleOverridesToSuppress;
+    unsigned long long _statusBarStyleOverridesToSuppress;
     long long _whitePointAdaptivityStyle;
     NSMutableSet *_statusBarForcedHiddenReasons;
     _Bool _hasMainSceneBeenForegroundAtLeastOnce;
     _Bool _isEffectivelyForeground;
     unsigned long long _keyboardLayerMaskStyle;
     long long _statusBarParts;
+    long long _defaultBackgroundStyle;
     NSDictionary *_alertSuppressionContextsBySectionIdentifier;
     id <SBIdleTimerCoordinating> _idleTimerCoordinator;
     SBDeviceApplicationSceneStatusBarBreadcrumbProvider *_breadcrumbProvider;
     SBDeviceApplicationSceneStatusBarStateProvider *_statusBarStateProvider;
+    id <SBScenePlaceholderContentViewProvider> _placeholderContentProvider;
     NSString *_lastActivationIconLeafIdentifier;
     struct CGRect _statusBarAvoidanceFrame;
 }
 
++ (double)_homeAffordanceInsetBottom;
++ (double)_homeAffordanceInsetTop;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) SBDeviceApplicationSceneStatusBarBreadcrumbProvider *breadcrumbProvider; // @synthesize breadcrumbProvider=_breadcrumbProvider;
 @property(nonatomic) struct CGRect statusBarAvoidanceFrame; // @synthesize statusBarAvoidanceFrame=_statusBarAvoidanceFrame;
 @property(copy, nonatomic) NSString *lastActivationIconLeafIdentifier; // @synthesize lastActivationIconLeafIdentifier=_lastActivationIconLeafIdentifier;
 @property(nonatomic, getter=_idleTimerCoordinator, setter=_setIdleTimerCoordinator:) __weak id <SBIdleTimerCoordinating> idleTimerCoordinator; // @synthesize idleTimerCoordinator=_idleTimerCoordinator;
+@property(retain, nonatomic) id <SBScenePlaceholderContentViewProvider> placeholderContentProvider; // @synthesize placeholderContentProvider=_placeholderContentProvider;
+@property(nonatomic) long long defaultBackgroundStyle; // @synthesize defaultBackgroundStyle=_defaultBackgroundStyle;
 @property(nonatomic) long long whitePointAdaptivityStyle; // @synthesize whitePointAdaptivityStyle=_whitePointAdaptivityStyle;
-@property(nonatomic) int statusBarStyleOverridesToSuppress; // @synthesize statusBarStyleOverridesToSuppress=_statusBarStyleOverridesToSuppress;
+@property(nonatomic) unsigned long long statusBarStyleOverridesToSuppress; // @synthesize statusBarStyleOverridesToSuppress=_statusBarStyleOverridesToSuppress;
 @property(nonatomic) _Bool hasMainSceneBeenForegroundAtLeastOnce; // @synthesize hasMainSceneBeenForegroundAtLeastOnce=_hasMainSceneBeenForegroundAtLeastOnce;
 @property(readonly, nonatomic, getter=isEffectivelyForeground) _Bool effectivelyForeground; // @synthesize effectivelyForeground=_isEffectivelyForeground;
 @property(nonatomic) long long lastActivationSource; // @synthesize lastActivationSource=_lastActivationSource;
@@ -70,8 +76,10 @@
 - (void)_noteMainSceneBackgroundStyleChanged;
 - (void)_noteActivationConditionsChanged;
 - (void)_noteSceneTitleChanged;
+- (long long)_classicPhoneOnPadActivationOrientationForOrientation:(long long)arg1;
 - (long long)_launchingInterfaceOrientationForOrientation:(long long)arg1;
 - (long long)_resumingInterfaceOrientationForOrientation:(long long)arg1;
+- (long long)_bestSupportedInterfaceOrientationForOrientation:(long long)arg1;
 - (unsigned long long)_mainSceneSupportedInterfaceOrientations;
 - (_Bool)_mainSceneSupportsInterfaceOrientation:(long long)arg1;
 - (_Bool)forbidsActivationByBreadcrumbAction;
@@ -82,6 +90,8 @@
 - (unsigned long long)preferredHardwareButtonEventTypes;
 - (_Bool)handleHardwareButtonEventType:(long long)arg1;
 - (id)additionalActionsForActivatingSceneEntity:(id)arg1 withTransitionContext:(id)arg2;
+@property(readonly, nonatomic) _Bool requestedFullScreenCenterWindow;
+@property(readonly, nonatomic) _Bool supportsCenterWindow;
 - (_Bool)isEdgeProtectEnabledForHomeGesture;
 - (_Bool)isAutoHideEnabledForHomeAffordance;
 - (void)setKeyboardContextMaskStyle:(unsigned long long)arg1;
@@ -90,7 +100,6 @@
 @property(readonly, nonatomic) long long wallpaperStyle;
 @property(readonly, nonatomic) long long backgroundStyle;
 @property(readonly, copy, nonatomic) NSData *activationConditionsData;
-@property(readonly, nonatomic) long long activationBias;
 @property(readonly, copy, nonatomic) NSString *sceneTitle;
 - (id)displayEdgeInfoForForLayoutEnvironment:(long long)arg1 isInsetForHomeAffordance:(_Bool)arg2;
 - (_Bool)wantsDeviceOrientationEventsEnabled;
@@ -98,6 +107,8 @@
 - (long long)activationInterfaceOrientationForCurrentOrientation;
 - (long long)defaultInterfaceOrientation;
 - (long long)currentInterfaceOrientation;
+- (unsigned long long)_debugPostModernRotationSupportedInterfaceOrientations;
+- (unsigned long long)supportedInterfaceOrientations;
 @property(nonatomic) long long statusBarParts;
 - (long long)statusBarOrientation;
 - (double)defaultStatusBarHeightForOrientation:(long long)arg1;
@@ -110,7 +121,7 @@
 - (_Bool)isStatusBarForcedHiddenForOrientation:(long long)arg1;
 - (void)setStatusBarForceHidden:(_Bool)arg1 forReason:(id)arg2 animationSettings:(id)arg3;
 - (_Bool)isStatusBarForceHidden;
-- (int)effectiveStatusBarStyleOverrides;
+- (unsigned long long)effectiveStatusBarStyleOverrides;
 - (id)statusBarEffectiveStyleRequestWithStyle:(long long)arg1;
 - (id)effectiveStatusBarStyleRequestForActivation:(id)arg1;
 - (id)currentEffectiveStatusBarStyleRequest;
@@ -127,7 +138,7 @@
 - (id)mostRecentSceneSnapshotsForScale:(double)arg1 launchingOrientation:(long long)arg2;
 - (void)saveSuspendSnapshot:(id)arg1;
 - (void)dealloc;
-- (void)_commonInit;
+- (void)_commonInitWithApplication:(id)arg1 sceneIdentifier:(id)arg2 displayIdentity:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

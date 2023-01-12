@@ -6,13 +6,14 @@
 
 #import <MobileMailUI/NSObject-Protocol.h>
 
-@class NSURL;
+@class NSArray, NSURL;
 
 @protocol MFMailWebProcessDelegate <NSObject>
 - (void)webProcessDidCreateBrowserContextControllerLoadDelegate;
+- (void)webProcessFailedToLoadResourceWithProxyForURL:(NSURL *)arg1;
 - (void)webProcessDidBlockLoadingResourceWithURL:(NSURL *)arg1;
 - (void)webProcessDidFinishLoadForURL:(NSURL *)arg1;
-- (void)webProcessDidFinishDocumentLoadForURL:(NSURL *)arg1;
+- (void)webProcessDidFinishDocumentLoadForURL:(NSURL *)arg1 andRequestedRemoteURLs:(NSArray *)arg2;
 - (void)webProcessDidFailLoadingResourceWithURL:(NSURL *)arg1;
 @end
 

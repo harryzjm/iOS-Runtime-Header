@@ -27,7 +27,6 @@
 - (_Bool)isMessageEligibleForSuggestions:(id)arg1;
 - (void)sendContextForMessage:(id)arg1;
 - (void)setupContextIfNeededForConversation:(id)arg1;
-- (id)_remoteSuggestionManager;
 - (void)setManagerForTesting:(id)arg1;
 - (id)init;
 

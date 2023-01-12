@@ -10,12 +10,17 @@
 + (_Bool)safari_passwordManagerIsInDemoMode;
 + (id)safari_notificationNameForUserDefaultsKey:(id)arg1;
 + (id)safari_cloudBookmarksDefaults;
-- (id)safari_observeValueForKey:(id)arg1 onQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;
++ (id)_safari_browserDefaults;
++ (id)safari_browserDefaults;
++ (id)sf_safariSharedDefaults;
+- (id)safari_observeValueForKey:(id)arg1 onQueue:(id)arg2 notifyForInitialValue:(_Bool)arg3 handler:(CDUnknownBlockType)arg4;
 - (_Bool)safari_boolForKey:(id)arg1 defaultValue:(_Bool)arg2;
 - (_Bool)safari_toggleBoolAndNotifyForKey:(id)arg1;
+- (void)safari_setObject:(id)arg1 andNotifyForKey:(id)arg2;
 - (void)safari_setBool:(_Bool)arg1 andNotifyForKey:(id)arg2;
 - (void)safari_setInteger:(long long)arg1 andNotifyForKey:(id)arg2;
 - (_Bool)safari_toggleBoolForKey:(id)arg1;
+- (double)safari_doubleForKey:(id)arg1 defaultValue:(double)arg2;
 - (void)safari_setDate:(id)arg1 forKey:(id)arg2;
 - (id)safari_dateForKey:(id)arg1;
 - (void)safari_incrementNumberForKey:(id)arg1;

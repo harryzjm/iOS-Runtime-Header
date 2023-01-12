@@ -56,6 +56,7 @@
 - (void)_performQueryIfNeeded;
 - (void)_cancelQuery;
 - (void)_performQuery;
+- (void)refresh;
 - (void)stopObserving:(id)arg1;
 - (void)beginObserving:(id)arg1;
 @property(readonly, nonatomic) EFFuture *allItemIDs;

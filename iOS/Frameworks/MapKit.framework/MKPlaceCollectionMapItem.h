@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEOPlaceCollectionItem, MKMapItem;
+@class GEOPlaceCollectionItem, GEOQuickLink, MKMapItem;
 
 @interface MKPlaceCollectionMapItem : NSObject
 {
@@ -18,6 +18,7 @@
 @property(readonly, nonatomic) GEOPlaceCollectionItem *placeCollectionItem; // @synthesize placeCollectionItem=_placeCollectionItem;
 @property(readonly, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
 - (id)description;
+@property(readonly, nonatomic) GEOQuickLink *appClip;
 - (id)initWithMapItem:(id)arg1 placeCollectionItem:(id)arg2;
 
 @end

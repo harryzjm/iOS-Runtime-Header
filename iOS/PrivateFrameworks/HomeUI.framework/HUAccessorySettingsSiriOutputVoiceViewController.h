@@ -5,16 +5,18 @@
 //
 
 #import <HomeUI/HUAccessorySettingsDetailsViewControllerProtocol-Protocol.h>
+#import <HomeUI/HUHomeKitAccessorySettingDetailsViewControllerProtocol-Protocol.h>
 
 @class HUAccessorySettingsSiriOutputVoiceItemManager, NSString;
 
-@interface HUAccessorySettingsSiriOutputVoiceViewController <HUAccessorySettingsDetailsViewControllerProtocol>
+@interface HUAccessorySettingsSiriOutputVoiceViewController <HUAccessorySettingsDetailsViewControllerProtocol, HUHomeKitAccessorySettingDetailsViewControllerProtocol>
 {
 }
 
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3 animated:(_Bool)arg4;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
+- (id)initWithAccessorySettingItem:(id)arg1 module:(id)arg2;
 - (id)initWithAccessoryGroupItem:(id)arg1;
 - (id)initWithItemManager:(id)arg1 tableViewStyle:(long long)arg2;
 

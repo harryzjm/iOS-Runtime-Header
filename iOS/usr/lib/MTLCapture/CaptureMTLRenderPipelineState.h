@@ -9,7 +9,7 @@
 #import <MTLCapture/CaptureMTLObject-Protocol.h>
 #import <MTLCapture/MTLRenderPipelineStateSPI-Protocol.h>
 
-@class CaptureMTLDevice, MTLDebugInstrumentationData, MTLRenderPipelineDescriptor, MTLTileRenderPipelineDescriptor, NSString;
+@class CaptureMTLDevice, MTLDebugInstrumentationData, MTLRenderPipelineDescriptor, MTLTileRenderPipelineDescriptor, NSMapTable, NSString;
 @protocol MTLDevice, MTLRenderPipelineState, MTLRenderPipelineStateSPI;
 
 @interface CaptureMTLRenderPipelineState : NSObject <MTLRenderPipelineStateSPI, CaptureMTLObject>
@@ -18,6 +18,7 @@
     CaptureMTLDevice *_captureDevice;
     struct GTTraceContext *_traceContext;
     struct GTTraceStream *_traceStream;
+    NSMapTable *_functionHandleMap;
     MTLRenderPipelineDescriptor *_descriptor;
     MTLTileRenderPipelineDescriptor *_tileDescriptor;
 }
@@ -26,8 +27,12 @@
 @property(copy, nonatomic) MTLTileRenderPipelineDescriptor *tileDescriptor; // @synthesize tileDescriptor=_tileDescriptor;
 @property(copy, nonatomic) MTLRenderPipelineDescriptor *descriptor; // @synthesize descriptor=_descriptor;
 - (id)newVertexShaderDebugInfo;
+- (id)newTileRenderPipelineStateWithAdditionalBinaryFunctions:(id)arg1 error:(id *)arg2;
+- (id)newRenderPipelineStateWithAdditionalBinaryFunctions:(id)arg1 fragmentAdditionalBinaryFunctions:(id)arg2 error:(id *)arg3;
+- (id)newRenderPipelineStateWithAdditionalBinaryFunctions:(id)arg1 error:(id *)arg2;
 - (id)newFragmentShaderDebugInfo;
 - (unsigned long long)imageblockMemoryLengthForDimensions:(CDStruct_14f26992)arg1;
+- (void)dealloc;
 @property(readonly) unsigned long long uniqueIdentifier;
 @property(readonly) _Bool threadgroupSizeMatchesTileSize;
 @property(readonly) long long textureWriteRoundingMode;
@@ -38,6 +43,7 @@
 @property(readonly) unsigned long long imageblockSampleLength;
 @property(readonly, nonatomic) unsigned long long gpuAddress;
 @property(readonly) id <MTLDevice> device;
+@property(readonly, nonatomic) unsigned long long allocatedSize;
 - (_Bool)conformsToProtocol:(id)arg1;
 - (_Bool)respondsToSelector:(SEL)arg1;
 @property(readonly, copy) NSString *description;
@@ -47,7 +53,20 @@
 @property(readonly) struct GTTraceContext *traceContext;
 - (void)touch;
 - (id)originalObject;
-- (void)dealloc;
+- (id)functionHandleWithFunction:(id)arg1 stage:(unsigned long long)arg2;
+- (id)fragmentFunctionHandleWithFunction:(id)arg1;
+- (id)vertexFunctionHandleWithFunction:(id)arg1;
+- (id)tileFunctionHandleWithFunction:(id)arg1;
+- (id)newVisibleFunctionTableWithDescriptor:(id)arg1 stage:(unsigned long long)arg2;
+- (id)newIntersectionFunctionTableWithDescriptor:(id)arg1 stage:(unsigned long long)arg2;
+- (id)newTileIntersectionFunctionTableWithDescriptor:(id)arg1;
+- (id)newFragmentIntersectionFunctionTableWithDescriptor:(id)arg1;
+- (id)newVertexIntersectionFunctionTableWithDescriptor:(id)arg1;
+- (id)newVisibleFunctionTableFromFragmentStageWithDescriptor:(id)arg1;
+- (id)newVisibleFunctionTableFromVertexStageWithDescriptor:(id)arg1;
+- (id)newVisibleFunctionTableFromTileStageWithDescriptor:(id)arg1;
+- (_Bool)newFunctionHandle:(out id *)arg1 associatedWithBaseFunctionHandle:(id)arg2 captureFunction:(id)arg3;
+- (id)functionHandleMap;
 @property(readonly) id <MTLRenderPipelineState> baseObject;
 - (void)swapObject:(id)arg1;
 - (id)initWithBaseObject:(id)arg1 captureDevice:(id)arg2;

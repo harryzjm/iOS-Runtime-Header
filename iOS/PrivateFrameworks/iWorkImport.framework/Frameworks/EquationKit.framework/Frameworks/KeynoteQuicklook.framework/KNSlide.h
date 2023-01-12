@@ -7,21 +7,21 @@
 #import <KeynoteQuicklook/TSKModel-Protocol.h>
 #import <KeynoteQuicklook/TSKTransformableObject-Protocol.h>
 
-@class KNMasterSlide, KNNoteInfo, NSMutableSet, NSSet, NSString;
+@class KNNoteInfo, KNTemplateSlide, NSMutableSet, NSSet, NSString;
 
 @interface KNSlide <TSKModel, TSKTransformableObject>
 {
-    KNMasterSlide *_master;
+    KNTemplateSlide *_templateSlide;
     KNNoteInfo *_note;
     NSMutableSet *_infosUsingObjectPlaceholderGeometry;
 }
 
-+ (id)blankSlideWithSlideNode:(id)arg1 master:(id)arg2 andShow:(id)arg3;
++ (id)blankSlideWithSlideNode:(id)arg1 templateSlide:(id)arg2 andShow:(id)arg3;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSSet *infosUsingObjectPlaceholderGeometry; // @synthesize infosUsingObjectPlaceholderGeometry=_infosUsingObjectPlaceholderGeometry;
 @property(retain, nonatomic) KNNoteInfo *note; // @synthesize note=_note;
 - (id)paragraphIndexesOfTopLevelBullets;
-- (void)p_checkMaster;
+- (void)p_checkTemplateSlide;
 - (void)addMapForStorage:(id)arg1 forHyperlink:(id)arg2;
 - (void)removeMapForStorage:(id)arg1 forHyperlink:(id)arg2;
 - (void)updateSlideSpecificHyperlinkMapForStorage:(id)arg1 oldHyperlink:(id)arg2 newHyperlink:(id)arg3;
@@ -39,25 +39,25 @@
 - (void)removeDrawable:(id)arg1;
 - (_Bool)p_oneOrMoreDrawablesMayHaveImplicitBuildEventsInDrawables:(id)arg1;
 - (void)insertDrawables:(id)arg1 atIndex:(unsigned long long)arg2 dolcContext:(id)arg3;
-- (_Bool)isMasterSlide;
-@property(readonly, nonatomic) _Bool slideObjectsLayerWithMaster;
-- (id)infoCorrespondingToMasterInfo:(id)arg1;
+- (_Bool)isTemplateSlide;
+@property(readonly, nonatomic) _Bool slideObjectsLayerWithTemplate;
+- (id)infoCorrespondingToTemplateSlideInfo:(id)arg1;
 - (id)defaultSlideNumberPlaceholder;
 - (id)defaultBodyPlaceholder;
 - (id)defaultTitlePlaceholder;
-- (void)setToMaster:(id)arg1;
+- (void)setToTemplateSlide:(id)arg1;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 @property(readonly, nonatomic) _Bool areInfosUsingObjectPlaceholderGeometry;
 - (void)setInfosUsingObjectPlaceholderGeometry:(id)arg1;
 - (void)removeInfoUsingObjectPlaceholderGeometry:(id)arg1;
 - (void)addInfoUsingObjectPlaceholderGeometry:(id)arg1;
-@property(retain, nonatomic) KNMasterSlide *master;
-- (void)setMaster:(id)arg1 resetMasterBackgroundObjects:(_Bool)arg2;
-- (id)initWithSlideNode:(id)arg1 master:(id)arg2 andShow:(id)arg3;
+@property(retain, nonatomic) KNTemplateSlide *templateSlide;
+- (void)setTemplateSlide:(id)arg1 resetTemplateSlideBackgroundObjects:(_Bool)arg2;
+- (id)initWithSlideNode:(id)arg1 templateSlide:(id)arg2 andShow:(id)arg3;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)saveToArchive:(struct SlideArchive *)arg1 archiver:(id)arg2;
-- (void)loadFromArchive:(const struct SlideArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (_Bool)isComponentRoot;
 - (id)packageLocator;
 

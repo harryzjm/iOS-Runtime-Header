@@ -7,10 +7,7 @@
 @interface PXKeyboardSettings
 {
     _Bool _enableTungstenKeyboardNavigation;
-    _Bool _enableTungstenShiftClickSelection;
     _Bool _enableTungstenFocusEnvironmentSupport;
-    _Bool _enableAssetSelectionShortcuts;
-    _Bool _enableFocusRing;
     _Bool _enableShadow;
     double _animationDuration;
     double _dampingRatio;
@@ -52,12 +49,9 @@
 @property(nonatomic) double shadowYOffset; // @synthesize shadowYOffset=_shadowYOffset;
 @property(nonatomic) double dimmingFactor; // @synthesize dimmingFactor=_dimmingFactor;
 @property(nonatomic) _Bool enableShadow; // @synthesize enableShadow=_enableShadow;
-@property(nonatomic) _Bool enableFocusRing; // @synthesize enableFocusRing=_enableFocusRing;
 @property(nonatomic) double dampingRatio; // @synthesize dampingRatio=_dampingRatio;
 @property(nonatomic) double animationDuration; // @synthesize animationDuration=_animationDuration;
-@property(nonatomic) _Bool enableAssetSelectionShortcuts; // @synthesize enableAssetSelectionShortcuts=_enableAssetSelectionShortcuts;
 @property(nonatomic) _Bool enableTungstenFocusEnvironmentSupport; // @synthesize enableTungstenFocusEnvironmentSupport=_enableTungstenFocusEnvironmentSupport;
-@property(nonatomic) _Bool enableTungstenShiftClickSelection; // @synthesize enableTungstenShiftClickSelection=_enableTungstenShiftClickSelection;
 @property(nonatomic) _Bool enableTungstenKeyboardNavigation; // @synthesize enableTungstenKeyboardNavigation=_enableTungstenKeyboardNavigation;
 - (id)globalFocusAnimationShadow;
 - (id)archiveValueForKey:(id)arg1;

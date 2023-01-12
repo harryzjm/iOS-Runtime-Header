@@ -11,7 +11,6 @@
 @class MKPlaceSectionRowView, NSArray, NSMutableAttributedString, NSString, UIButton, _MKPlaceActionButtonController;
 @protocol GEOTransitLineItem, MKPlaceHeaderButtonsViewControllerDelegate, _MKPlaceActionControlledButton, _MKPlaceItem;
 
-__attribute__((visibility("hidden")))
 @interface MKPlaceHeaderButtonsViewController <MKModuleViewControllerProtocol, MKStackingViewControllerFixedHeightAware, MKETAProviderObserver>
 {
     MKPlaceSectionRowView *_buttonsContainerView;
@@ -27,9 +26,11 @@ __attribute__((visibility("hidden")))
     unsigned long long _primaryButtonType;
     _MKPlaceActionButtonController *_alternatePrimaryButtonController;
     _MKPlaceActionButtonController *_secondaryButtonController;
+    NSArray *_buttons;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *buttons; // @synthesize buttons=_buttons;
 @property(retain, nonatomic) _MKPlaceActionButtonController *secondaryButtonController; // @synthesize secondaryButtonController=_secondaryButtonController;
 @property(retain, nonatomic) _MKPlaceActionButtonController *alternatePrimaryButtonController; // @synthesize alternatePrimaryButtonController=_alternatePrimaryButtonController;
 @property(nonatomic) unsigned long long primaryButtonType; // @synthesize primaryButtonType=_primaryButtonType;

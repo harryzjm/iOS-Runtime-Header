@@ -11,11 +11,12 @@
 #import <CoreParsec/_CPFeedbackUUID-Protocol.h>
 #import <CoreParsec/_CPProcessableFeedback-Protocol.h>
 
-@class NSData, NSDictionary, NSString, _CPNetworkTimingData;
+@class NSData, NSString, _CPNetworkTimingData;
 
 @interface _CPEndNetworkSearchFeedback : PBCodable <_CPProcessableFeedback, _CPFeedbackUUID, _CPEndNetworkSearchFeedback, NSSecureCoding>
 {
     int _statusCode;
+    int _endpointType;
     unsigned long long _timestamp;
     long long _responseSize;
     NSString *_uuid;
@@ -27,6 +28,7 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) int endpointType; // @synthesize endpointType=_endpointType;
 @property(retain, nonatomic) _CPNetworkTimingData *timingData; // @synthesize timingData=_timingData;
 @property(copy, nonatomic) NSString *partialClientIp; // @synthesize partialClientIp=_partialClientIp;
 @property(nonatomic) double duration; // @synthesize duration=_duration;
@@ -36,23 +38,18 @@
 @property(nonatomic) int statusCode; // @synthesize statusCode=_statusCode;
 @property(nonatomic) long long responseSize; // @synthesize responseSize=_responseSize;
 @property(nonatomic) unsigned long long timestamp;
-- (id)initWithDictionary:(id)arg1;
-- (id)initWithJSON:(id)arg1;
-@property(readonly, nonatomic) NSData *jsonData;
-@property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)init;
-@property(readonly, nonatomic) id feedbackJSON;
-- (id)_formatNetworkTimingData;
 - (id)initWithStartSearch:(id)arg1 responseSize:(long long)arg2 statusCode:(long long)arg3 parsecStatus:(id)arg4 parsecDuration:(double)arg5 fbq:(id)arg6 partialClientIp:(id)arg7 networkTimingData:(id)arg8;
 - (id)initWithFacade:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) NSData *jsonData; // @dynamic jsonData;
 @property(readonly) Class superclass;
 
 @end

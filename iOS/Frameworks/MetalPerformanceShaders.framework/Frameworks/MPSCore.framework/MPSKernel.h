@@ -15,9 +15,11 @@
 @interface MPSKernel : NSObject <NSCopying, NSSecureCoding>
 {
     unsigned long long _options;
-    struct MPSDevice *_device;
-    struct MPSLibrary *_library;
+    unsigned long long _verbosityLevel;
+    void *_device;
+    void *_library;
     NSString *_label;
+    unsigned long long _labelHash;
     _Bool _enableConcurrency;
     unsigned long long _allowedOptions;
     unsigned int _tuningParams;
@@ -26,11 +28,10 @@
     unsigned int _privateOptions;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
++ (const struct MPSLibraryInfo *)libraryInfo:(void *)arg1;
 + (_Bool)supportsSecureCoding;
 @property(nonatomic) _Bool enableConcurrency; // @synthesize enableConcurrency=_enableConcurrency;
 @property(nonatomic) CDUnion_cbb8185c fileVersion; // @synthesize fileVersion=_fileVersion;
-@property(copy) NSString *label; // @synthesize label=_label;
 @property(nonatomic) unsigned long long options; // @synthesize options=_options;
 - (_Bool)disableConcurrentEncoder;
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
@@ -45,6 +46,7 @@
 @property(readonly, retain, nonatomic) id <MTLDevice> device;
 - (void)dealloc;
 - (id)init;
+@property(copy) NSString *label;
 
 @end
 

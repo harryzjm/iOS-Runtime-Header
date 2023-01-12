@@ -13,11 +13,18 @@
 + (id)tapbackLayoutAnchorForAcknowledgmentChatItem:(id)arg1;
 + (id)tapbackSupplementaryItemForChatItem:(id)arg1 layoutEnvironment:(id)arg2;
 + (id)avatarSupplementaryItemForChatItem:(id)arg1 layoutEnvironment:(id)arg2;
-+ (id)transcriptBalloonVerticalLayoutSpacingWithTopSpacing:(double)arg1 layoutEnvironment:(id)arg2;
 + (id)balloonEdgeSpacingForItemWithLayoutEnvironment:(id)arg1 orientation:(BOOL)arg2 itemSize:(struct CGSize)arg3 supplementaryItems:(id)arg4;
 + (id)layoutGroupForItem:(id)arg1;
 + (struct CGSize)sizeWithLayoutSize:(id)arg1;
 + (id)layoutSizeWithSize:(struct CGSize)arg1;
++ (_Bool)nextItemIsOriginatorWithRepliesForIndex:(unsigned long long)arg1 allDatasourceItems:(id)arg2;
++ (_Bool)nextMessageIsReplyForIndex:(unsigned long long)arg1 allDatasourceItems:(id)arg2;
++ (_Bool)needsAdditionalBracketPaddingForChatItem:(id)arg1 prevChatItem:(id)arg2;
++ (id)dynamicWidthLayoutSizeWithHeight:(double)arg1;
++ (id)transcriptBalloonVerticalLayoutSpacingWithTopSpacing:(double)arg1 bottomSpacing:(double)arg2 previousChatItem:(id)arg3;
++ (id)transcriptVerticalEdgeSpacingForChatItem:(id)arg1 previousChatItem:(id)arg2 topSpacing:(double)arg3 bottomSpacing:(double)arg4;
++ (double)adjustedTopSpacingForTextAlignmentInsetsWithSpacing:(double)arg1 chatItem:(id)arg2 previousChatItem:(id)arg3;
++ (double)adjustedBalloonTopSpacingWithSpacing:(double)arg1 previousChatItem:(id)arg2;
 
 @end
 

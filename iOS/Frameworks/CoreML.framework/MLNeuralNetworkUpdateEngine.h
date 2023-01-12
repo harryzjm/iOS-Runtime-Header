@@ -26,7 +26,7 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)createCoreMLToEspressoParamsMap;
-+ (id)loadModelFromCompiledArchive:(struct _MLModelInputArchiver *)arg1 modelVersionInfo:(id)arg2 compilerVersionInfo:(id)arg3 configuration:(id)arg4 error:(id *)arg5;
++ (id)loadModelFromCompiledArchive:(void *)arg1 modelVersionInfo:(id)arg2 compilerVersionInfo:(id)arg3 configuration:(id)arg4 error:(id *)arg5;
 - (void).cxx_destruct;
 @property(retain, nonatomic) MLParameterContainer *parameterContainer; // @synthesize parameterContainer=_parameterContainer;
 @property(retain, nonatomic) MLShufflingBatchProvider *shuffableTrainingData; // @synthesize shuffableTrainingData=_shuffableTrainingData;
@@ -62,10 +62,10 @@
 - (id)predictionsFromBatch:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)predictionFromFeatures:(id)arg1 error:(id *)arg2;
 - (id)predictionFromFeatures:(id)arg1 options:(id)arg2 error:(id *)arg3;
-- (id)initWithCompiledArchive:(struct _MLModelInputArchiver *)arg1 nnContainer:(id)arg2 configuration:(id)arg3 error:(id *)arg4;
-- (void)loadLossTargetName:(id *)arg1 lossOutputName:(id *)arg2 fromUpdateParameters:(struct NetworkUpdateParameters *)arg3;
-- (void)loadLossInputName:(id *)arg1 updatableLayerNames:(id *)arg2 fromCompiledArchive:(struct _MLModelInputArchiver *)arg3;
-- (id)createEspressoTaskFrom:(id)arg1 updateParameters:(struct NetworkUpdateParameters *)arg2 lossInputName:(id)arg3 lossTargetName:(id)arg4 lossOutputName:(id)arg5 updatableLayerNames:(id)arg6 configuration:(id)arg7 error:(id *)arg8;
+- (id)initWithCompiledArchive:(void *)arg1 nnContainer:(id)arg2 configuration:(id)arg3 error:(id *)arg4;
+- (void)loadLossTargetName:(id *)arg1 lossOutputName:(id *)arg2 fromUpdateParameters:(void *)arg3;
+- (void)loadLossInputName:(id *)arg1 updatableLayerNames:(id *)arg2 fromCompiledArchive:(void *)arg3;
+- (id)createEspressoTaskFrom:(id)arg1 updateParameters:(void *)arg2 lossInputName:(id)arg3 lossTargetName:(id)arg4 lossOutputName:(id)arg5 updatableLayerNames:(id)arg6 configuration:(id)arg7 error:(id *)arg8;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

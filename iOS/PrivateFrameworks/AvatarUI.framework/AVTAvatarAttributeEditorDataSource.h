@@ -16,6 +16,7 @@
     unsigned long long _currentCategoryIndex;
     NSArray *_categories;
     NSMutableDictionary *_sectionControllers;
+    NSMutableDictionary *_sectionCoordinatorsByProvider;
     AVTUIEnvironment *_environment;
     id <AVTTaskScheduler> _renderingScheduler;
 }
@@ -25,6 +26,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id <AVTTaskScheduler> renderingScheduler; // @synthesize renderingScheduler=_renderingScheduler;
 @property(readonly, nonatomic) AVTUIEnvironment *environment; // @synthesize environment=_environment;
+@property(retain, nonatomic) NSMutableDictionary *sectionCoordinatorsByProvider; // @synthesize sectionCoordinatorsByProvider=_sectionCoordinatorsByProvider;
 @property(retain, nonatomic) NSMutableDictionary *sectionControllers; // @synthesize sectionControllers=_sectionControllers;
 @property(retain, nonatomic) NSArray *categories; // @synthesize categories=_categories;
 @property(nonatomic) unsigned long long currentCategoryIndex; // @synthesize currentCategoryIndex=_currentCategoryIndex;
@@ -35,12 +37,15 @@
 - (long long)indexForSection:(id)arg1 inCategoryAtIndex:(long long)arg2;
 - (id)sectionForIndex:(long long)arg1 inCategoryAtIndex:(long long)arg2;
 - (id)sectionControllerForSection:(id)arg1;
+- (id)sectionCoordinatorForSectionAtIndex:(long long)arg1 inCategoryAtIndex:(long long)arg2;
 - (id)sectionControllerForSectionIndex:(long long)arg1 inCategoryAtIndex:(long long)arg2;
 - (long long)numberOfSectionsForCategoryAtIndex:(long long)arg1;
+- (id)sectionProviderForSectionAtIndex:(long long)arg1 inCategoryAtIndex:(long long)arg2;
 - (id)categoryAtIndex:(long long)arg1;
 - (id)groupPickerItemsForCategories;
 - (long long)numberOfCategories;
 - (void)discardControllersForNonCurrentCategory;
+- (void)updateCoordinatorsFromCategory:(id)arg1 currentCoordinators:(id)arg2;
 - (void)reloadWithCategories:(id)arg1 currentCategoryIndex:(unsigned long long)arg2;
 - (id)initWithCategories:(id)arg1 currentCategoryIdentifier:(id)arg2 renderingScheduler:(id)arg3 environment:(id)arg4;
 - (id)initWithCategories:(id)arg1 currentCategoryIdentifier:(id)arg2 renderingScheduler:(id)arg3;

@@ -9,9 +9,11 @@
 @interface EKCalendarAccountEditItem
 {
     EKSource *_limitedToSource;
+    _Bool _editable;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool editable; // @synthesize editable=_editable;
 - (void)calendarEditor:(id)arg1 didSelectSubitem:(unsigned long long)arg2;
 - (_Bool)calendarEditor:(id)arg1 shouldSelectSubitem:(unsigned long long)arg2;
 - (id)currentSource;

@@ -4,21 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+@class HMCharacteristicRequest;
 
-@class HMCharacteristicRequest, NSError;
-
-@interface HMCharacteristicResponse : NSObject
+@interface HMCharacteristicResponse
 {
-    HMCharacteristicRequest *_request;
-    NSError *_error;
 }
 
-- (void).cxx_destruct;
-@property(readonly, nonatomic) NSError *error; // @synthesize error=_error;
-@property(retain, nonatomic) HMCharacteristicRequest *request; // @synthesize request=_request;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithRequest:(id)arg1 error:(id)arg2;
+- (id)initWithRequest:(id)arg1 value:(id)arg2 error:(id)arg3;
+
+// Remaining properties
+@property(readonly, nonatomic) HMCharacteristicRequest *request; // @dynamic request;
 
 @end
 

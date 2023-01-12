@@ -7,7 +7,7 @@
 #import <TSUtility/TSUFormattingSymbols.h>
 
 @interface TSUFormattingSymbols (PersistenceAdditions)
-- (void)saveToArchive:(struct FormattingSymbolsArchive *)arg1;
-- (id)initWithArchive:(const struct FormattingSymbolsArchive *)arg1;
+- (void)saveToArchive:(void *)arg1;
+- (id)initWithArchive:(const void *)arg1;
 @end
 

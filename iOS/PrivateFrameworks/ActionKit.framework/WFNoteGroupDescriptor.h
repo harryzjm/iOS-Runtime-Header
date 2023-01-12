@@ -8,7 +8,7 @@
 
 #import <ActionKit/NSSecureCoding-Protocol.h>
 
-@class INSpeakableString, NSString, WFContentAttribution;
+@class INSpeakableString, NSString;
 
 @interface WFNoteGroupDescriptor : NSObject <NSSecureCoding>
 {
@@ -25,7 +25,6 @@
 @property(readonly, nonatomic) INSpeakableString *speakableString; // @synthesize speakableString=_speakableString;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-@property(readonly, nonatomic) WFContentAttribution *targetContentAttribution;
 - (id)descriptorWithTargetAccountIdentifier:(id)arg1 targetManagedLevel:(unsigned long long)arg2;
 - (id)initWithNoteGroupSpeakableString:(id)arg1;
 - (id)initWithNoteGroupSpeakableString:(id)arg1 accountIdentifier:(id)arg2 managedLavel:(unsigned long long)arg3;

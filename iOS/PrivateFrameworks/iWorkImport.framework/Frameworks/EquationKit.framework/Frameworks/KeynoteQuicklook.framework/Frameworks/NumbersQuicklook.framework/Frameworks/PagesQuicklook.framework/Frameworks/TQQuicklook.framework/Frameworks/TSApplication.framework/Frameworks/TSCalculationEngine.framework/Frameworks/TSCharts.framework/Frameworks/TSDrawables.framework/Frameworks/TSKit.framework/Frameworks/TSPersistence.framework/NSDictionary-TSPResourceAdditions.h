@@ -11,13 +11,13 @@
 @class NSString;
 
 @interface NSDictionary (TSPResourceAdditions) <TSPResourceLocalStrategyProvider>
-+ (id)tsp_decoderResourceNameDictionaryFromMessage:(const RepeatedPtrField_6277dbb5 *)arg1;
-+ (id)tsp_decoderDataInfoDictionaryFromMessage:(const RepeatedPtrField_6277dbb5 *)arg1;
-+ (id)tsp_identifierToObjectUUIDDictionaryFromMessage:(const RepeatedPtrField_f8410f9e *)arg1;
-+ (id)tsp_identifierToObjectUUIDDictionaryFromWeakExternalReferences:(id)arg1 updatingComponentInfo:(struct ComponentInfo *)arg2 failIfReferenceIsNotPersisted:(_Bool)arg3 context:(id)arg4 error:(id *)arg5;
++ (id)tsp_decoderResourceNameDictionaryFromMessage:(const void *)arg1;
++ (id)tsp_decoderDataInfoDictionaryFromMessage:(const void *)arg1;
++ (id)tsp_identifierToObjectUUIDDictionaryFromMessage:(const void *)arg1;
++ (id)tsp_identifierToObjectUUIDDictionaryFromWeakExternalReferences:(id)arg1 updatingComponentInfo:(void *)arg2 failIfReferenceIsNotPersisted:(_Bool)arg3 context:(id)arg4 error:(id *)arg5;
 - (long long)localStrategyForDocumentResourceInfo:(id)arg1;
 - (void)tsp_enumerateKeysAndObjectsUsingBlock:(CDUnknownBlockType)arg1;
-- (void)tsp_saveIdentifierToObjectUUIDDictionaryToMessage:(RepeatedPtrField_f8410f9e *)arg1;
+- (void)tsp_saveIdentifierToObjectUUIDDictionaryToMessage:(void *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

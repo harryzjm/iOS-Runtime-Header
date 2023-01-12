@@ -16,6 +16,7 @@
     struct shared_ptr<PKProtobufUnknownFields> _unknownFields;
     _Bool _didValidateTimestamps;
     _Bool _hasValidTimestampData;
+    double _cachedMaxWidth;
     unsigned long long _immutablePointsCount;
     unsigned long long _startIndex;
     long long _inputType;
@@ -24,13 +25,14 @@
 
 + (void)_calculateOffsets:(unsigned long long *)arg1 sizes:(unsigned long long *)arg2;
 + (void)calculateOffsets;
-+ (id)strokeDataFromDataArchive:(const struct StrokeData *)arg1;
++ (id)strokeDataFromDataArchive:(const void *)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSUUID *_strokeDataUUID; // @synthesize _strokeDataUUID;
 @property(readonly, nonatomic) long long _inputType; // @synthesize _inputType;
 @property(readonly, nonatomic) unsigned long long _startIndex; // @synthesize _startIndex;
 @property(readonly, nonatomic) unsigned long long _immutablePointsCount; // @synthesize _immutablePointsCount;
+- (double)_maxWidth;
 - (void)enumerateInterpolatedPointsInRange:(id)arg1 strideByParametricStep:(double)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateInterpolatedPointsInRange:(id)arg1 strideByTime:(double)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateInterpolatedPointsInRange:(id)arg1 strideByDistance:(double)arg2 usingBlock:(CDUnknownBlockType)arg3;
@@ -52,6 +54,7 @@
 - (struct CGPoint)locationAtIndex:(unsigned long long)arg1;
 - (void)setPointsFrom:(id)arg1 range:(struct _NSRange)arg2;
 - (void)setPoints:(struct PKCompressedStrokePoint *)arg1 pointsCount:(unsigned long long)arg2 timestamp:(double)arg3;
+- (unsigned int)_legacyRandomSeed;
 - (_Bool)inflight;
 @property(readonly, nonatomic) _Bool hasValidPointTimestampData;
 @property(readonly, nonatomic) NSDate *creationDate;
@@ -64,9 +67,12 @@
 - (id)initWithPoints:(struct PKCompressedStrokePoint *)arg1 count:(unsigned long long)arg2 immutableCount:(unsigned long long)arg3 inputType:(long long)arg4 timestamp:(double)arg5 UUID:(id)arg6;
 - (id)init;
 - (id)dataApplying:(id)arg1;
+- (_Bool)canApplyDelta:(id)arg1;
 - (id)deltaTo:(id)arg1;
-- (void)readStrokeDataFromArchive:(const struct StrokeData *)arg1;
-- (_Bool)saveToDataArchive:(struct StrokeData *)arg1;
+- (void)readStrokeDataFromArchive:(const void *)arg1;
+- (id)rawValue;
+- (id)initWithRawValue:(id)arg1;
+- (_Bool)saveToDataArchive:(void *)arg1;
 
 @end
 

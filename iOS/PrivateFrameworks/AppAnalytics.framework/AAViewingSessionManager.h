@@ -21,7 +21,7 @@
 - (void)endActiveViewingSession;
 - (void)endViewingSessionForContentIdentifier:(id)arg1;
 - (void)removeObject:(id)arg1 forContentIdentifier:(id)arg2;
-- (id)viewingSessionForContentIdentifier:(id)arg1 object:(id)arg2;
+- (id)viewingSessionForContentIdentifier:(id)arg1 object:(id)arg2 onEnd:(CDUnknownBlockType)arg3;
 
 @end
 

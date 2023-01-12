@@ -29,9 +29,11 @@ __attribute__((visibility("hidden")))
 - (void)setProps:(unsigned int)arg1 atIndex:(long long)arg2;
 - (void)setOrigin:(struct CGPoint)arg1 atIndex:(long long)arg2;
 - (struct CGPoint)originAtIndex:(long long)arg1;
+- (void)resetOrigins:(CDStruct_912cb5d2)arg1;
 - (_Bool)implementsOrigins;
 - (void)setAttachmentCount:(long long)arg1 atIndex:(long long)arg2;
 - (long long)attachmentCountAtIndex:(long long)arg1;
+- (const struct CGSize *)allocatedAdvances;
 - (void)dealloc;
 - (unsigned long long)retainCount;
 - (oneway void)release;

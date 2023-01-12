@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_dd07f1bb)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_dd07f1bb)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSArray *index;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithFlatbuffData:(id)arg1 root:(const struct Alignment *)arg2 verify:(_Bool)arg3;

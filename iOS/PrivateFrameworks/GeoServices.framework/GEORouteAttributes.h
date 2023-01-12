@@ -15,6 +15,7 @@
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _additionalTransportTypes;
+    CDStruct_95bda58d _initialPromptTypes;
     CDStruct_95bda58d _uiContexts;
     struct GEOTimepoint _timepoint;
     GEOAutomobileOptions *_automobileOptions;
@@ -41,8 +42,10 @@
     _Bool _includeTrafficAlongRoute;
     _Bool _includeTrafficIncidents;
     _Bool _includeZilchPoints;
+    _Bool _includeCellularCoverage;
     _Bool _includeCrossLanguagePhonetics;
     _Bool _includeLaneWidths;
+    _Bool _includeRoutingPathLeg;
     _Bool _useMetricThreshold;
     struct {
         unsigned int has_timepoint:1;
@@ -61,11 +64,14 @@
         unsigned int has_includeTrafficAlongRoute:1;
         unsigned int has_includeTrafficIncidents:1;
         unsigned int has_includeZilchPoints:1;
+        unsigned int has_includeCellularCoverage:1;
         unsigned int has_includeCrossLanguagePhonetics:1;
         unsigned int has_includeLaneWidths:1;
+        unsigned int has_includeRoutingPathLeg:1;
         unsigned int has_useMetricThreshold:1;
         unsigned int read_unknownFields:1;
         unsigned int read_additionalTransportTypes:1;
+        unsigned int read_initialPromptTypes:1;
         unsigned int read_uiContexts:1;
         unsigned int read_automobileOptions:1;
         unsigned int read_cyclingOptions:1;
@@ -95,6 +101,16 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasIncludeCellularCoverage;
+@property(nonatomic) _Bool includeCellularCoverage;
+- (int)StringAsInitialPromptTypes:(id)arg1;
+- (id)initialPromptTypesAsString:(int)arg1;
+- (void)setInitialPromptTypes:(int *)arg1 count:(unsigned long long)arg2;
+- (int)initialPromptTypeAtIndex:(unsigned long long)arg1;
+- (void)addInitialPromptType:(int)arg1;
+- (void)clearInitialPromptTypes;
+@property(readonly, nonatomic) int *initialPromptTypes;
+@property(readonly, nonatomic) unsigned long long initialPromptTypesCount;
 @property(nonatomic) _Bool hasIncludeLaneWidths;
 @property(nonatomic) _Bool includeLaneWidths;
 @property(nonatomic) _Bool hasDirectZilchByLaneFlowlines;
@@ -159,6 +175,8 @@
 @property(nonatomic) _Bool includeLaneGuidance;
 @property(nonatomic) _Bool hasIncludeContingencyRoutes;
 @property(nonatomic) _Bool includeContingencyRoutes;
+@property(nonatomic) _Bool hasIncludeRoutingPathLeg;
+@property(nonatomic) _Bool includeRoutingPathLeg;
 @property(nonatomic) _Bool hasIncludeZilchPoints;
 @property(nonatomic) _Bool includeZilchPoints;
 @property(nonatomic) _Bool hasIncludeManeuverIcons;
@@ -175,6 +193,7 @@
 - (_Bool)shouldRetryForError:(id)arg1;
 - (void)buildRouteAttributesForETAUpdateRequest:(id)arg1 queue:(id)arg2 result:(CDUnknownBlockType)arg3;
 - (void)buildRouteAttributes:(id)arg1 result:(CDUnknownBlockType)arg2;
+- (void)setRoutePointTypeForTransportType:(int)arg1;
 
 @end
 

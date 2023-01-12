@@ -9,7 +9,7 @@
     _Bool canDealloc;
     _Bool canEndEncoding;
     _Bool hasEndedEncoding;
-    struct deque<id, std::__1::allocator<id>> updatedFences;
+    struct deque<id, std::allocator<id>> updatedFences;
 }
 
 - (id).cxx_construct;

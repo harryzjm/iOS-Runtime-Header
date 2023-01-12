@@ -13,6 +13,8 @@
 
 @optional
 - (void)iconView:(SBIconView *)arg1 configurationDidEndWithInteraction:(id <SBHIconViewConfigurationInteraction>)arg2;
+- (void)iconView:(SBIconView *)arg1 configurationWillEndWithInteraction:(id <SBHIconViewConfigurationInteraction>)arg2;
+- (void)iconView:(SBIconView *)arg1 configurationDidBeginWithInteraction:(id <SBHIconViewConfigurationInteraction>)arg2;
 - (void)iconView:(SBIconView *)arg1 configurationWillBeginWithInteraction:(id <SBHIconViewConfigurationInteraction>)arg2;
 - (void)iconView:(SBIconView *)arg1 configurationDidUpdateWithInteraction:(id <SBHIconViewConfigurationInteraction>)arg2;
 - (UIView *)iconView:(SBIconView *)arg1 homeScreenContentViewForConfigurationInteraction:(id <SBHIconViewConfigurationInteraction>)arg2;

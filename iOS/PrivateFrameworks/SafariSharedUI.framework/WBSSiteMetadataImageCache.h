@@ -13,32 +13,27 @@
 {
     NSObject<OS_dispatch_queue> *_diskAccessQueue;
     NSObject<OS_dispatch_queue> *_internalQueue;
+    struct os_unfair_lock_s _cacheAccessLock;
+    struct atomic<bool> _terminating;
     NSMutableDictionary *_imagesForKeyStrings;
-    NSMutableSet *_pendingKeyStringRequests;
     NSMutableSet *_missingImageKeyStrings;
+    NSMutableDictionary *_keyStringRequestsToCompletionHandlers;
     WBSCacheRetainReleasePolicy *_cachePolicy;
     NSMutableDictionary *_cacheSettings;
     WBSCoalescedAsynchronousWriter *_cacheSettingsWriter;
     unsigned long long _fileProtectionOptions;
-    _Bool _terminating;
     NSURL *_imageDirectoryURL;
     long long _imageType;
     id <WBSSiteMetadataImageCacheDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) __weak id <WBSSiteMetadataImageCacheDelegate> delegate; // @synthesize delegate=_delegate;
-@property(readonly, nonatomic, getter=isTerminating) _Bool terminating; // @synthesize terminating=_terminating;
+@property __weak id <WBSSiteMetadataImageCacheDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) long long imageType; // @synthesize imageType=_imageType;
 @property(readonly, nonatomic) NSURL *imageDirectoryURL; // @synthesize imageDirectoryURL=_imageDirectoryURL;
-- (void)_internalQueueDispatchBarrierAsync:(CDUnknownBlockType)arg1;
-- (void)_internalQueueDispatchSync:(CDUnknownBlockType)arg1;
-- (void)_internalSetSetting:(id)arg1 forKey:(id)arg2;
 - (void)setSetting:(id)arg1 forKey:(id)arg2;
-- (id)_internalSettingForKey:(id)arg1;
 - (id)settingForKey:(id)arg1;
 - (void)_notifyDidFinishLoadingSettings;
-- (void)_saveCacheSettingsSoon;
 - (id)_cacheSettingsFileURL;
 - (void)_internalRemoveImagesFromCacheForKeyStrings:(id)arg1;
 - (void)removeImagesFromCacheForKeyStrings:(id)arg1;
@@ -59,15 +54,14 @@
 - (void)setImage:(id)arg1 forKeyString:(id)arg2;
 - (void)_internalSaveImageToDisk:(id)arg1 forKeyString:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)saveImageToDisk:(id)arg1 forKeyString:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (id)_internalImageForKeyString:(id)arg1;
-- (void)imageForKeyString:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_requestImageForKeyString:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getImageForKeyString:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)imageForKeyString:(id)arg1 getImageState:(long long *)arg2;
 - (void)_removeImagesPassingTest:(CDUnknownBlockType)arg1;
 - (void)_didLoadImage:(id)arg1 forKeyString:(id)arg2 fromDisk:(_Bool)arg3;
-- (id)_loadImageFromDiskForKeyString:(id)arg1;
+- (_Bool)_internalDidLoadImageAndShouldNotify:(id)arg1 forKeyString:(id)arg2 fromDisk:(_Bool)arg3;
 - (id)_fileNameForKeyString:(id)arg1;
 - (id)_fileLocationForKeyString:(id)arg1;
-- (void)_requestImageForKeyString:(id)arg1;
 - (void)_dispatchDiskAccessBlock:(CDUnknownBlockType)arg1;
 - (void)_emptyCacheDirectory;
 - (void)emptyCache;
@@ -78,6 +72,7 @@
 - (void)setUpImageCache;
 - (id)_diskAccessQueueName;
 - (id)_internalQueueName;
+@property(readonly, nonatomic, getter=isTerminating) _Bool terminating;
 - (id)initWithImageDirectoryURL:(id)arg1 imageType:(long long)arg2 fileProtectionOptions:(unsigned long long)arg3;
 - (id)initWithImageDirectoryURL:(id)arg1 imageType:(long long)arg2;
 - (id)init;

@@ -6,7 +6,7 @@
 
 #import <UIKit/UINavigationBar.h>
 
-@class NSArray, SBHFeatherBlurView, UILabel, UINavigationBarAppearance, UINavigationItem, UIView;
+@class NSArray, SBFFeatherBlurView, UILabel, UINavigationBarAppearance, UINavigationItem, UIView;
 
 @interface SBHFeatherBlurNavigationBar : UINavigationBar
 {
@@ -18,7 +18,7 @@
     UIView *_capturedLargeTextLabelContainerView;
     UIView *_capturedTinyTextLabelContainerView;
     _Bool _allowsAnimatedUpdating;
-    SBHFeatherBlurView *_featherBlurBackgroundView;
+    SBFFeatherBlurView *_featherBlurBackgroundView;
     double _sb_minimumNavbarHeight;
     double _sb_maximumNavbarHeight;
     struct CGRect _gradientMaskFrame;
@@ -29,9 +29,10 @@
 @property(readonly, nonatomic) double sb_maximumNavbarHeight; // @synthesize sb_maximumNavbarHeight=_sb_maximumNavbarHeight;
 @property(readonly, nonatomic) double sb_minimumNavbarHeight; // @synthesize sb_minimumNavbarHeight=_sb_minimumNavbarHeight;
 @property(readonly, nonatomic) struct CGRect gradientMaskFrame; // @synthesize gradientMaskFrame=_gradientMaskFrame;
-@property(retain, nonatomic) SBHFeatherBlurView *featherBlurBackgroundView; // @synthesize featherBlurBackgroundView=_featherBlurBackgroundView;
+@property(retain, nonatomic) SBFFeatherBlurView *featherBlurBackgroundView; // @synthesize featherBlurBackgroundView=_featherBlurBackgroundView;
 - (void)_updateLabel;
 - (void)_updateAppearance;
+- (double)_topMargin;
 - (void)_updateHeights;
 - (struct CGRect)_calculateCompactNavBarFrame;
 - (struct CGRect)_calculateFeatherBlurBackgroundViewFrame;

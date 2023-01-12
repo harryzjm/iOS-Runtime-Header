@@ -24,9 +24,10 @@ __attribute__((visibility("hidden")))
 - (void)resetDatabaseToVersion:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)scheduleBackupIfNonexistent:(CDUnknownBlockType)arg1;
 - (void)triggerKeychainMigrationIfNecessary:(CDUnknownBlockType)arg1;
-- (void)removeAccountsFromPairedDeviceWithCompletion:(CDUnknownBlockType)arg1;
+- (void)removeAccountFromPairedDevice:(id)arg1 withOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)removeAccountsFromPairedDeviceWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)saveAccount:(id)arg1 toPairedDeviceWithOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)notifyRemoteDevicesOfModifiedAccount:(id)arg1 withChangeType:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)notifyRemoteDevicesOfModifiedAccount:(id)arg1 withChangeType:(id)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)notifyRemoteDevicesOfModifiedAccount:(id)arg1 withChangeType:(id)arg2;
 - (void)accountsWithAccountTypeIdentifiers:(id)arg1 preloadedProperties:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)visibleTopLevelAccountsWithAccountTypeIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -44,7 +45,6 @@ __attribute__((visibility("hidden")))
 - (void)renewCredentialsForAccount:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)verifyCredentialsForAccount:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)clearAllPermissionsGrantedForAccountType:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
-- (void)typeIdentifierForDomain:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)clearGrantedPermissionsForAccountType:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)grantedPermissionsForAccountType:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)permissionForAccountType:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
@@ -85,7 +85,7 @@ __attribute__((visibility("hidden")))
 - (void)accountIdentifiersEnabledToSyncDataclass:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)childAccountsForAccountWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)parentAccountForAccountWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)accountsOnPairedDeviceWithAccountType:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)accountsOnPairedDeviceWithAccountTypes:(id)arg1 withOptions:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)accountsWithAccountType:(id)arg1 options:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)accountsWithAccountType:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)accountWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;

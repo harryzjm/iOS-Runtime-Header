@@ -6,11 +6,12 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
-@class HDDatabaseTransaction, HDSQLiteDatabase;
+@class HDDatabaseTransaction, HDSQLiteDatabase, NSDictionary;
 
 @protocol HDSQLiteDatabaseProvider <NSObject>
-- (void)checkInDatabase:(HDSQLiteDatabase *)arg1 type:(long long)arg2;
+- (void)checkInDatabase:(HDSQLiteDatabase *)arg1 type:(long long)arg2 protectedResources:(NSDictionary *)arg3;
+- (NSDictionary *)checkOutProtectedResources:(HDDatabaseTransaction *)arg1 error:(id *)arg2;
 - (HDSQLiteDatabase *)checkOutUnprotectedDatabase:(HDDatabaseTransaction *)arg1 error:(id *)arg2;
-- (HDSQLiteDatabase *)checkOutProtectedDatabase:(HDDatabaseTransaction *)arg1 highFrequencyDataStore:(id *)arg2 error:(id *)arg3;
+- (HDSQLiteDatabase *)checkOutProtectedDatabase:(HDDatabaseTransaction *)arg1 error:(id *)arg2;
 @end
 

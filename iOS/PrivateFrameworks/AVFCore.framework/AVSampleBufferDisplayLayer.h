@@ -10,16 +10,27 @@
 #import <AVFCore/AVQueuedSampleBufferRendering-Protocol.h>
 #import <AVFCore/AVQueuedSampleBufferRenderingInternal-Protocol.h>
 
-@class AVSampleBufferDisplayLayerInternal, AVSampleBufferVideoOutput, NSError, NSString;
+@class AVSampleBufferVideoOutput, AVSampleBufferVideoRenderer, NSError, NSObject, NSString;
+@protocol OS_dispatch_queue;
 
 @interface AVSampleBufferDisplayLayer : CALayer <AVQueuedSampleBufferRendering, AVMediaDataRequesterConsumer, AVQueuedSampleBufferRenderingInternal>
 {
-    AVSampleBufferDisplayLayerInternal *_sampleBufferDisplayLayerInternal;
+    CALayer *_contentLayer;
+    NSString *_videoGravity;
+    struct CGSize _presentationSize;
+    struct CGRect _bounds;
+    NSObject<OS_dispatch_queue> *_serialQueue;
+    AVSampleBufferVideoRenderer *_sampleBufferVideoRenderer;
+    AVSampleBufferVideoOutput *_videoOutput;
+    NSString *_STSLabel;
+    CALayer *_STSLayer;
 }
 
-+ (_Bool)automaticallyNotifiesObserversOfError;
-+ (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
-+ (_Bool)automaticallyNotifiesObserversOfStatus;
++ (id)keyPathsForValuesAffectingOutputObscuredDueToInsufficientExternalProtection;
++ (id)keyPathsForValuesAffectingError;
++ (id)keyPathsForValuesAffectingStatus;
+@property(readonly, nonatomic, getter=_sampleBufferVideoRenderer) AVSampleBufferVideoRenderer *sampleBufferVideoRenderer; // @synthesize sampleBufferVideoRenderer=_sampleBufferVideoRenderer;
+- (id)_contentLayer;
 @property(readonly, nonatomic) NSError *error;
 @property(readonly, nonatomic) long long status;
 @property(readonly, getter=isReadyForMoreMediaData) _Bool readyForMoreMediaData;
@@ -27,45 +38,28 @@
 - (void)setSTSLabel:(id)arg1;
 - (void)copyFigSampleBufferAudioRenderer:(struct OpaqueFigSampleBufferAudioRenderer **)arg1;
 - (_Bool)setRenderSynchronizer:(id)arg1 error:(id *)arg2;
-- (void)removeAllAnimations;
-- (void)removeAnimationForKey:(id)arg1;
-- (void)addAnimation:(id)arg1 forKey:(id)arg2;
-- (void)_forBoundsAnimations:(id)arg1 applyBlock:(CDUnknownBlockType)arg2;
-- (id)_transformToAbsoluteAnimationOfBounds:(id)arg1;
-- (void)_addAnimationsForContentLayer:(id)arg1 size:(struct CGSize)arg2 gravity:(id)arg3;
+- (void)postVideoRectDidChangeNotification;
+- (struct CGRect)videoRect;
+- (void)layerDidBecomeVisible:(_Bool)arg1;
+- (void)layoutSublayers;
 - (void)setBounds:(struct CGRect)arg1;
 @property(copy) NSString *videoGravity;
 @property(retain) struct OpaqueCMTimebase *controlTimebase;
 - (void)dealloc;
 - (id)init;
-- (void)_setRequiresFlushToResumeDecoding:(_Bool)arg1;
-- (void)_removeFigVideoQueueListeners;
-- (void)_addFigVideoQueueListeners;
-- (id)_weakReference;
-- (void)_setOutputObscuredDueToInsufficientExternalProtection:(_Bool)arg1;
-- (void)_resetStatusWithOSStatus:(int)arg1;
-- (void)_setStatus:(long long)arg1 error:(id)arg2;
-- (void)_refreshAboveHighWaterLevel;
+- (struct CGRect)_destRectForAspectRatio:(struct CGSize)arg1;
 - (void)_updatePresentationSize:(struct CGSize)arg1;
-- (void)_updateLayerTreeGeometryWithVideoGravity:(id)arg1 bounds:(struct CGRect)arg2 presentationSize:(struct CGSize)arg3;
-- (struct OpaqueFigVideoQueue *)_copyVideoQueue;
-- (int)_createVideoQueue:(struct OpaqueFigVideoQueue **)arg1;
-- (int)_initializeTimebases;
-- (_Bool)_setSynchronizerTimebase:(struct OpaqueCMTimebase *)arg1 error:(id *)arg2;
-- (void)_setControlTimebase:(struct OpaqueCMTimebase *)arg1;
+- (void)_updateLayerTreeGeometryWithVideoGravity:(id)arg1 presentationSize:(struct CGSize)arg2 videoGravityShouldTriggerAnimation:(_Bool)arg3;
 @property(readonly, nonatomic) _Bool requiresFlushToResumeDecoding;
+@property(readonly, nonatomic) _Bool hasSufficientMediaDataForReliablePlaybackStart;
 - (void)stopRequestingMediaData;
 - (void)requestMediaDataWhenReadyOnQueue:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)prerollDecodeWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_completedDecodeForPrerollForRequestID:(int)arg1;
-- (void)_callOldPrerollCompletionHandlerWithSuccess:(_Bool)arg1 andSetNewPrerollCompletionHandler:(CDUnknownBlockType)arg2 forRequestID:(int)arg3;
-- (void)_flushComplete;
 - (void)flushWithRemovalOfDisplayedImage:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)flushAndRemoveImage;
 - (void)flush;
 - (void)enqueueSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
 @property(readonly, retain) struct OpaqueCMTimebase *timebase;
-- (void)_didFinishSuspension:(id)arg1;
 - (id)videoPerformanceMetrics;
 @property(readonly, nonatomic) _Bool outputObscuredDueToInsufficientExternalProtection;
 @property(nonatomic) _Bool preventsCapture;
@@ -73,7 +67,6 @@
 - (void)resetUpcomingSampleBufferPresentationTimeExpectations;
 - (void)expectMonotonicallyIncreasingUpcomingSampleBufferPresentationTimes;
 - (void)expectMinimumUpcomingSampleBufferPresentationTime:(CDStruct_1b6d18a9)arg1;
-- (_Bool)setUpcomingPresentationTimeExpectations:(int)arg1 minimumPresentationTime:(CDStruct_1b6d18a9)arg2;
 @property(nonatomic) AVSampleBufferVideoOutput *output;
 
 // Remaining properties

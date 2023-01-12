@@ -19,9 +19,9 @@ __attribute__((visibility("hidden")))
 + (id)batchesFromEvents:(id)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *batches; // @synthesize batches=_batches;
-- (void)willStartBatchingWithLogKey:(id)arg1 error:(id *)arg2;
-- (void)skipEvents:(id)arg1 error:(id *)arg2;
-- (void)removeEvents:(id)arg1 error:(id *)arg2;
+- (_Bool)willStartBatchingWithLogKey:(id)arg1 error:(id *)arg2;
+- (_Bool)skipEvents:(id)arg1 error:(id *)arg2;
+- (_Bool)removeEvents:(id)arg1 error:(id *)arg2;
 - (void)enumerateSortedEventsForTopic:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)didFinishBatching;
 - (void)cancel;

@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
     id <MKLocationProviderDelegate> _delegate;
     _Bool _locationServicesPreferencesDialogEnabled;
     int _authorizationStatus;
-    _Bool _authorizedForPreciseLocation;
+    long long _accuracyAuthorization;
     NSBundle *_effectiveBundle;
     NSString *_effectiveBundleIdentifier;
     CDUnknownBlockType _authorizationRequestBlock;
@@ -44,7 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)locationManager:(id)arg1 didUpdateVehicleSpeed:(id)arg2;
 - (void)locationManagerDidResumeLocationUpdates:(id)arg1;
 - (void)locationManagerDidPauseLocationUpdates:(id)arg1;
-- (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
+- (void)locationManagerDidChangeAuthorization:(id)arg1;
 - (void)requestTemporaryPreciseLocationAuthorizationWithPurposeKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestWhenInUseAuthorizationWithPrompt;
 - (void)requestWhenInUseAuthorization;
@@ -58,9 +58,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) double timeScale;
 @property(readonly, nonatomic) _Bool isTracePlayer;
 @property(readonly, nonatomic) _Bool shouldShiftIfNecessary;
-- (void)isAuthorizedForPreciseLocationOnQueue:(id)arg1 result:(CDUnknownBlockType)arg2;
-@property(readonly, nonatomic) _Bool isAuthorizedForPreciseLocation;
-- (_Bool)_isAuthorizedForPreciseLocationOnQueue;
+- (void)accuracyAuthorizationOnQueue:(id)arg1 result:(CDUnknownBlockType)arg2;
+@property(readonly, nonatomic) long long accuracyAuthorization;
+- (long long)_accuracyAuthorizationOnQueue;
 - (void)authorizationStatusOnQueue:(id)arg1 result:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) int authorizationStatus;
 - (int)_authorizationStatusOnQueue;
@@ -83,7 +83,7 @@ __attribute__((visibility("hidden")))
 - (void)stopUpdatingLocation;
 - (void)startUpdatingLocation;
 - (void)_updateAuthorizationStatus;
-- (void)_updateAuthorizedForPreciseLocationOnQueue:(id)arg1;
+- (void)_updateAccuracyAuthorizationOnQueue:(id)arg1;
 @property(readonly, nonatomic) _Bool usesCLMapCorrection;
 @property(readonly, nonatomic) CLLocationManager *_clLocationManager;
 - (void)_createCLLocationManager;

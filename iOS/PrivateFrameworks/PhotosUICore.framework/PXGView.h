@@ -11,14 +11,18 @@
 #import <PhotosUICore/PXGAXResponder-Protocol.h>
 #import <PhotosUICore/PXGDiagnosticsProvider-Protocol.h>
 #import <PhotosUICore/PXGEngineDelegate-Protocol.h>
+#import <PhotosUICore/PXGHitTestEnvironment-Protocol.h>
+#import <PhotosUICore/PXGLayoutScrollDelegate-Protocol.h>
+#import <PhotosUICore/PXGLayoutViewDelegate-Protocol.h>
 #import <PhotosUICore/PXScrollViewControllerObserver-Protocol.h>
 #import <PhotosUICore/PXSettingsKeyObserver-Protocol.h>
+#import <PhotosUICore/PXTapToRadarDiagnosticProvider-Protocol.h>
 #import <PhotosUICore/UIGestureRecognizerDelegate-Protocol.h>
 
-@class MTKView, NSArray, NSDictionary, NSString, PXGAXCoalescingResponder, PXGAnchor, PXGDebugHUDLayer, PXGEngine, PXGLayout, PXGRectDiagnosticsLayer, PXScrollViewController, PXScrollViewSpeedometer, UIColor;
-@protocol PXGAXResponder, PXGViewAccessibilityDelegate, PXGViewDiagnosticsSource;
+@class MTKView, NSArray, NSDictionary, NSObject, NSString, PXGAXCoalescingResponder, PXGAnchor, PXGDebugHUDLayer, PXGEngine, PXGLayout, PXGMetalRenderer, PXGRectDiagnosticsLayer, PXGViewRenderer, PXScrollViewController, PXScrollViewSpeedometer, PXUpdater, UIColor;
+@protocol PXAnonymousScrollView, PXGAXResponder, PXGViewAccessibilityDelegate, PXGViewDiagnosticsSource;
 
-@interface PXGView : UIView <PXDiagnosticsEnvironment, PXGEngineDelegate, PXScrollViewControllerObserver, PXSettingsKeyObserver, UIGestureRecognizerDelegate, PXGAXResponder, PXGDiagnosticsProvider, PXDebugHierarchyProvider>
+@interface PXGView : UIView <PXDiagnosticsEnvironment, PXGEngineDelegate, PXScrollViewControllerObserver, PXGLayoutScrollDelegate, PXGLayoutViewDelegate, PXSettingsKeyObserver, UIGestureRecognizerDelegate, PXGAXResponder, PXGDiagnosticsProvider, PXDebugHierarchyProvider, PXTapToRadarDiagnosticProvider, PXGHitTestEnvironment>
 {
     PXGDebugHUDLayer *_debugHUDLayer;
     PXGRectDiagnosticsLayer *_rectDiagnosticsLayer;
@@ -31,16 +35,22 @@
     _Bool _isSceneBackgrounded;
     _Bool _showDebugHUD;
     _Bool _showPerspectiveDebug;
+    _Bool _shouldScrollViewContentInsetAlwaysAdjustToAvoidSafeArea;
     _Bool _shouldWorkaround18475431;
+    _Bool _resizeDrawableManually;
     id <PXGAXResponder> axNextResponder;
     id <PXGViewAccessibilityDelegate> _accessibilityDelegate;
     PXScrollViewController *_scrollViewController;
     PXScrollViewSpeedometer *_scrollingSpeedometer;
+    PXGMetalRenderer *_metalRenderer;
+    PXGViewRenderer *_viewRenderer;
     MTKView *_metalView;
+    PXUpdater *_updater;
     PXGAnchor *_scrollingAnimationAnchor;
     NSDictionary *_ppt_currentTestOptions;
     CDUnknownBlockType _nextDidLayoutHandler;
     id <PXGViewDiagnosticsSource> _diagnosticsSource;
+    unsigned long long _offscreenEffectQuality;
     PXGEngine *_engine;
     struct UIEdgeInsets _hitTestPadding;
 }
@@ -51,14 +61,18 @@
 + (void)enumerateAllViewsUsingBlock:(CDUnknownBlockType)arg1;
 + (_Bool)forceAccessibilityEnabled;
 + (void)setForceAccessibilityEnabled:(_Bool)arg1;
-+ (_Bool)isAvailable;
++ (unsigned long long)supportLevel;
 + (long long)screenPixelCount;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) PXGEngine *engine; // @synthesize engine=_engine;
+@property(nonatomic) _Bool resizeDrawableManually; // @synthesize resizeDrawableManually=_resizeDrawableManually;
 @property(nonatomic) _Bool shouldWorkaround18475431; // @synthesize shouldWorkaround18475431=_shouldWorkaround18475431;
+@property(nonatomic) _Bool shouldScrollViewContentInsetAlwaysAdjustToAvoidSafeArea; // @synthesize shouldScrollViewContentInsetAlwaysAdjustToAvoidSafeArea=_shouldScrollViewContentInsetAlwaysAdjustToAvoidSafeArea;
+@property(nonatomic) unsigned long long offscreenEffectQuality; // @synthesize offscreenEffectQuality=_offscreenEffectQuality;
 @property(retain, nonatomic) id <PXGViewDiagnosticsSource> diagnosticsSource; // @synthesize diagnosticsSource=_diagnosticsSource;
 @property(nonatomic) _Bool showPerspectiveDebug; // @synthesize showPerspectiveDebug=_showPerspectiveDebug;
 @property(nonatomic) _Bool showDebugHUD; // @synthesize showDebugHUD=_showDebugHUD;
+@property(readonly, nonatomic) struct UIEdgeInsets hitTestPadding; // @synthesize hitTestPadding=_hitTestPadding;
 @property(nonatomic) _Bool isSceneBackgrounded; // @synthesize isSceneBackgrounded=_isSceneBackgrounded;
 @property(nonatomic) _Bool isAccessibilityEnabled; // @synthesize isAccessibilityEnabled=_isAccessibilityEnabled;
 @property(copy, nonatomic) CDUnknownBlockType nextDidLayoutHandler; // @synthesize nextDidLayoutHandler=_nextDidLayoutHandler;
@@ -66,23 +80,33 @@
 @property(retain, nonatomic) PXGAnchor *scrollingAnimationAnchor; // @synthesize scrollingAnimationAnchor=_scrollingAnimationAnchor;
 @property(nonatomic) _Bool isAnimatingScroll; // @synthesize isAnimatingScroll=_isAnimatingScroll;
 @property(nonatomic) _Bool isScrolling; // @synthesize isScrolling=_isScrolling;
-@property(readonly, nonatomic) struct UIEdgeInsets hitTestPadding; // @synthesize hitTestPadding=_hitTestPadding;
+@property(readonly, nonatomic) PXUpdater *updater; // @synthesize updater=_updater;
 @property(readonly, nonatomic) MTKView *metalView; // @synthesize metalView=_metalView;
+@property(readonly, nonatomic) PXGViewRenderer *viewRenderer; // @synthesize viewRenderer=_viewRenderer;
+@property(readonly, nonatomic) PXGMetalRenderer *metalRenderer; // @synthesize metalRenderer=_metalRenderer;
 @property(readonly, nonatomic) PXScrollViewSpeedometer *scrollingSpeedometer; // @synthesize scrollingSpeedometer=_scrollingSpeedometer;
 @property(readonly, nonatomic) PXScrollViewController *scrollViewController; // @synthesize scrollViewController=_scrollViewController;
 @property(nonatomic) _Bool lowMemoryModeEnabled; // @synthesize lowMemoryModeEnabled=_lowMemoryModeEnabled;
 @property(nonatomic) __weak id <PXGViewAccessibilityDelegate> accessibilityDelegate; // @synthesize accessibilityDelegate=_accessibilityDelegate;
 @property(nonatomic) __weak id <PXGAXResponder> axNextResponder; // @synthesize axNextResponder;
+- (void)forceUpdate;
+- (void)ensureUpdatedLayout;
 - (id)viewForSpriteReference:(id)arg1;
+- (id)trackingContainerViewForSpriteIndex:(unsigned int)arg1;
 - (id)viewForSpriteIndex:(unsigned int)arg1;
 @property(readonly, nonatomic) NSDictionary *ppt_extraResults;
 - (void)ppt_cleanUpAfterTest:(id)arg1 isScrollTest:(_Bool)arg2;
 - (void)ppt_prepareForTest:(id)arg1 withOptions:(id)arg2 isScrollTest:(_Bool)arg3;
+@property(readonly, nonatomic) NSObject<PXAnonymousScrollView> *ppt_mainScrollView;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
+- (id)layout:(id)arg1 viewForSpriteIndex:(unsigned int)arg2;
+- (id)contentCoordinateSpaceForLayout:(id)arg1;
+- (void)setNeedsUpdateOfScrollableAxisForLayout:(id)arg1;
 - (void)test_installRenderSnapshotHandler:(CDUnknownBlockType)arg1;
+- (void)collectTapToRadarDiagnosticsIntoContainer:(id)arg1;
 - (_Bool)axGroup:(id)arg1 didRequestToPerformAction:(long long)arg2 userInfo:(id)arg3;
 - (void)axGroup:(id)arg1 didChange:(unsigned long long)arg2 userInfo:(id)arg3;
-- (id)axContainingViewForAXGroup:(id)arg1;
+- (id)axContainingScrollViewForAXGroup:(id)arg1;
 - (void)enumerateDebugHierarchyWithIdentifier:(id)arg1 options:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic) NSArray *debugHierarchyIdentifiers;
 @property(readonly, copy, nonatomic) NSString *diagnosticDescription;
@@ -95,6 +119,8 @@
 - (void)scrollViewControllerDidLayoutSubviews:(id)arg1;
 @property(nonatomic) _Bool slowAnimationsEnabled;
 - (void)engine:(id)arg1 updateDebugHUDWithStats:(CDStruct_58b866b9 *)arg2;
+- (_Bool)engine:(id)arg1 shouldRenderLayout:(id)arg2 sprites:(id)arg3;
+- (void)engineSetNeedsUpdate:(id)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)handlePan:(id)arg1;
 - (void)_updateRectDiagnosticsLayer;
@@ -103,6 +129,10 @@
 - (id)regionOfInterestForObjectReference:(id)arg1;
 - (id)regionOfInterestForHitTestResult:(id)arg1;
 - (id)regionOfInterestForSpriteReference:(id)arg1;
+- (struct CGRect)convertRect:(struct CGRect)arg1 fromLayout:(id)arg2;
+- (struct CGRect)convertRect:(struct CGRect)arg1 toLayout:(id)arg2;
+- (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromLayout:(id)arg2;
+- (struct CGPoint)convertPoint:(struct CGPoint)arg1 toLayout:(id)arg2;
 - (id)dropTargetObjectReferenceForLocation:(struct CGPoint)arg1;
 - (id)hitTestResultsInDirection:(unsigned long long)arg1 fromSpriteReference:(id)arg2;
 - (id)hitTestResultsInRect:(struct CGRect)arg1 passingTest:(CDUnknownBlockType)arg2;
@@ -115,6 +145,8 @@
 - (void)installLayoutCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_installNextDidLayoutHandler:(CDUnknownBlockType)arg1;
 - (void)_updateEngineLowMemoryMode;
+- (void)_updateScrollableAxis;
+- (void)_invalidateScrollableAxis;
 - (void)_updateDebugHUD;
 - (void)_updateFocusItemProvider;
 - (void)_updateUserInterfaceDirection;
@@ -135,15 +167,20 @@
 - (void)_updateMetalView;
 @property(readonly, nonatomic) NSString *preferredFileNameForExportingDebugHierarchy;
 - (_Bool)exportDebugHierarchyToURL:(id)arg1 error:(id *)arg2;
+- (void)notifyContentFullyLoadedWithTimeout:(double)arg1 block:(CDUnknownBlockType)arg2;
+- (void)_setNeedsUpdate;
 - (void)_handleSceneWillEnterForeground:(id)arg1;
 - (void)_handleSceneDidEnterBackground:(id)arg1;
-- (void)safeAreaInsetsDidChange;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)safeAreaInsetsDidChange;
 - (void)_willChangeBoundsSizeFrom:(struct CGRect)arg1 toBounds:(struct CGRect)arg2;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (id)initWithFrame:(struct CGRect)arg1 allowedPresentationTypes:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithCoder:(id)arg1;
 @property(readonly, nonatomic) _Bool hasExtendedColorDisplay;
 - (id)curatedLibraryHitTestResultsInRect:(struct CGRect)arg1 withControl:(long long)arg2;
 - (void)enumerateCuratedLibraryHitTestResultsInRect:(struct CGRect)arg1 usingBlock:(CDUnknownBlockType)arg2;
@@ -152,8 +189,9 @@
 - (void)enumerateCuratedLibraryHitTestResultsAtPoint:(struct CGPoint)arg1 withControls:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateCuratedLibraryHitTestResultsAtPoint:(struct CGPoint)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
-- (struct CGImage *)_fallbackImageForAssetReference:(id)arg1 mediaProvider:(id)arg2;
-- (id)regionOfInterestForAssetReference:(id)arg1 image:(struct CGImage **)arg2 fallbackMediaProvider:(id)arg3;
+- (CDUnknownBlockType)handleStoryTouchAtPoint:(struct CGPoint)arg1;
+- (_Bool)handlePrimaryStoryInteractionAtPoint:(struct CGPoint)arg1;
+- (id)storyHitTestResultAtPoint:(struct CGPoint)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

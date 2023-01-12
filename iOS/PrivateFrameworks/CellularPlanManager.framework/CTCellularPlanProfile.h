@@ -31,6 +31,7 @@
 @property(nonatomic) _Bool isDisableNotAllowed; // @synthesize isDisableNotAllowed=_isDisableNotAllowed;
 @property(nonatomic) _Bool isBootstrap; // @synthesize isBootstrap=_isBootstrap;
 @property(nonatomic) _Bool isSelected; // @synthesize isSelected=_isSelected;
+- (id)redactedDescription;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

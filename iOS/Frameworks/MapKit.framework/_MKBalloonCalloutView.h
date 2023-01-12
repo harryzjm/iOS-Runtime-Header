@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIColor, UIImage, UIImageView, UIView, _MKBezierPathView;
+@class UIColor, UIImage, UIImageView, UIView, UIVisualEffectView, _MKBezierPathView;
 
 @interface _MKBalloonCalloutView
 {
@@ -23,7 +23,9 @@
     _Bool _originatesAsSmallBalloon;
     double _croppedImageScale;
     UIImageView *_contentViewMaskView;
-    _MKBezierPathView *_backgroundView;
+    UIView *_backgroundView;
+    _MKBezierPathView *_backgroundShapeView;
+    UIVisualEffectView *_backgroundVisualEffectView;
     _Bool _centerAnnotationWhenOffscreen;
     _Bool _showsArrow;
     _Bool _dismissed;

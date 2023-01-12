@@ -11,19 +11,20 @@
 
 @interface TSCH3DScene : NSObject
 {
-    TSCH3DScene *mOriginal;
-    NSObject<TSCH3DScenePropertyAccessorFactory> *mAccessorFactory;
-    TSCH3DScenePropertyAccessor *mAccessor;
-    NSMutableDictionary *mEnumeratorMap;
-    NSMutableDictionary *mPropertiesMap;
-    TSUNoCopyDictionary *mDelegateMap;
-    TSCH3DSceneObject *mMain;
-    NSMutableArray *mObjects;
-    TSCH3DCamera *mCamera;
+    TSCH3DScene *_original;
+    NSObject<TSCH3DScenePropertyAccessorFactory> *_accessorFactory;
+    TSCH3DScenePropertyAccessor *_accessor;
+    NSMutableDictionary *_enumeratorMap;
+    NSMutableDictionary *_propertiesMap;
+    TSUNoCopyDictionary *_delegateMap;
+    TSCH3DSceneObject *_main;
+    NSMutableArray *_objects;
+    TSCH3DCamera *_camera;
 }
 
 + (id)scene;
-@property(retain, nonatomic) TSCH3DScene *original; // @synthesize original=mOriginal;
+- (void).cxx_destruct;
+@property(retain, nonatomic) TSCH3DScene *original; // @synthesize original=_original;
 - (id)extractObjectsNotOfClasses:(id)arg1;
 - (id)extractObjectsNotOfClass:(Class)arg1;
 - (id)extractObjectsOfClasses:(id)arg1;
@@ -35,9 +36,6 @@
 - (id)removeObjects:(_Bool)arg1 ofClasses:(id)arg2 addTo:(id)arg3;
 - (id)returnRemoved:(_Bool)arg1 removeObjectsPassingTest:(CDUnknownBlockType)arg2;
 - (id)reallocateObjects;
-- (void)makeObjectsPerformSelector:(SEL)arg1 withObject:(id)arg2 withObject:(id)arg3;
-- (void)makeObjectsPerformSelector:(SEL)arg1 withObject:(id)arg2;
-- (void)makeAllObjectsPerformSelector:(SEL)arg1 withObject:(id)arg2;
 - (void)enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateAllObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)makeDelegatesFromDelegator:(id)arg1;
@@ -74,7 +72,6 @@
 - (id)enumeratorMap;
 - (id)clone;
 - (id)description;
-- (void)dealloc;
 - (id)init;
 - (id)renderCache;
 

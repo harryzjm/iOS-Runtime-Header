@@ -12,6 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_axClear;
+- (void)_axAppClipOpenInSafari;
 - (id)_axHandwritingDescriptionForDataSource:(id)arg1;
 - (_Bool)_axIsAttachedHandwritingPlugin;
 - (id)_axAppClipDescriptionForMetadata:(id)arg1;

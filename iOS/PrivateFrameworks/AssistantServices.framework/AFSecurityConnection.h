@@ -8,7 +8,7 @@
 
 #import <AssistantServices/AFSecurityService-Protocol.h>
 
-@class NSString, NSXPCConnection;
+@class AFInstanceContext, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 @interface AFSecurityConnection : NSObject <AFSecurityService>
@@ -16,6 +16,7 @@
     NSXPCConnection *_connection;
     NSObject<OS_dispatch_queue> *_connectionQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
+    AFInstanceContext *_instanceContext;
 }
 
 - (void).cxx_destruct;
@@ -27,12 +28,17 @@
 - (void)_connectionInterrupted;
 - (void)_invalidateConnection;
 - (id)_connection;
+- (oneway void)internalAuthSessionToken:(CDUnknownBlockType)arg1;
+- (oneway void)internalAuthAppleConnectServiceTicket:(CDUnknownBlockType)arg1;
+- (oneway void)setInternalAuthSessionToken:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (oneway void)setInternalAuthAppleConnectServiceTicket:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)setKeychainValue:(id)arg1 forKey:(id)arg2 accountIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (oneway void)processDataMap:(id)arg1 usingProcedure:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (oneway void)processData:(id)arg1 usingProcedure:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)invalidate;
 - (void)dealloc;
 - (id)init;
+- (id)initWithInstanceContext:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

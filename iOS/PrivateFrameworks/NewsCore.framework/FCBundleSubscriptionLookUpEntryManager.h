@@ -6,20 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class FCBundleSubscriptionLookUpEntry, FCKeyValueStore;
+@class FCBundleSubscriptionLookUpEntry, FCKeyValueStore, NFUnfairLock;
 
 @interface FCBundleSubscriptionLookUpEntryManager : NSObject
 {
-    FCBundleSubscriptionLookUpEntry *_bundleSubscriptionLookUpEntry;
+    FCBundleSubscriptionLookUpEntry *__bundleSubscriptionLookUpEntry;
     FCKeyValueStore *_localStore;
+    NFUnfairLock *_lock;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NFUnfairLock *lock; // @synthesize lock=_lock;
 @property(retain, nonatomic) FCKeyValueStore *localStore; // @synthesize localStore=_localStore;
-@property(retain, nonatomic) FCBundleSubscriptionLookUpEntry *bundleSubscriptionLookUpEntry; // @synthesize bundleSubscriptionLookUpEntry=_bundleSubscriptionLookUpEntry;
+@property(retain, nonatomic) FCBundleSubscriptionLookUpEntry *_bundleSubscriptionLookUpEntry; // @synthesize _bundleSubscriptionLookUpEntry=__bundleSubscriptionLookUpEntry;
+- (void)setBundleSubscriptionLookUpEntry:(id)arg1;
+@property(readonly, nonatomic) FCBundleSubscriptionLookUpEntry *bundleSubscriptionLookUpEntry;
 - (void)cleanupStaleExpiredEntry;
 - (void)updateEntry:(id)arg1;
-- (void)addBundleChannelIDs:(id)arg1 purchaseID:(id)arg2 inTrialPeriod:(_Bool)arg3 isPurchaser:(_Bool)arg4 servicesBundlePurchaseID:(id)arg5 isAmplifyUser:(_Bool)arg6;
+- (void)addBundleChannelIDs:(id)arg1 bundleChannelIDsVersion:(id)arg2 purchaseID:(id)arg3 inTrialPeriod:(_Bool)arg4 isPurchaser:(_Bool)arg5 servicesBundlePurchaseID:(id)arg6 isAmplifyUser:(_Bool)arg7;
 - (id)_bundleSubscriptionLookupEntryForPurchaseID:(id)arg1;
 - (void)loadLocalCachesFromStore;
 - (id)initWithLocalStore:(id)arg1;

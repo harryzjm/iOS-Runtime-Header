@@ -13,13 +13,13 @@ __attribute__((visibility("hidden")))
 {
     _UITextKitTextPosition *_start;
     _UITextKitTextPosition *_end;
+    long long _affinity;
 }
 
-+ (id)defaultRange;
-+ (id)rangeWithRange:(struct _NSRange)arg1 affinity:(long long)arg2;
 + (id)rangeWithRange:(struct _NSRange)arg1;
 + (id)rangeWithStart:(id)arg1 end:(id)arg2;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) long long affinity; // @synthesize affinity=_affinity;
 @property(retain, nonatomic) UITextPosition *end; // @synthesize end=_end;
 @property(retain, nonatomic) UITextPosition *start; // @synthesize start=_start;
 - (id)description;
@@ -27,7 +27,6 @@ __attribute__((visibility("hidden")))
 - (struct _NSRange)asRange;
 - (_Bool)isEmpty;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-@property(readonly, nonatomic) long long affinity;
 - (id)init;
 
 @end

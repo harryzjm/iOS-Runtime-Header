@@ -12,15 +12,15 @@
 
 @interface TSCHStyleAndPropertyPair : NSObject <NSCopying>
 {
-    TSSStyle *mStyle;
-    int mProperty;
+    int _property;
+    TSSStyle *_style;
 }
 
 + (id)pairWithStyle:(id)arg1 property:(int)arg2;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) int property; // @synthesize property=_property;
+@property(readonly, nonatomic) TSSStyle *style; // @synthesize style=_style;
 - (id)description;
-- (int)property;
-- (id)style;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

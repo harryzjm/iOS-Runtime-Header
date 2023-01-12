@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <PeopleSuggester/ATXSuggestionExecutableProtocol-Protocol.h>
 #import <PeopleSuggester/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSDate, NSDictionary, NSString, NSUUID;
 
-@interface _PSPredictionContext : NSObject <NSSecureCoding>
+@interface _PSPredictionContext : NSObject <NSSecureCoding, ATXSuggestionExecutableProtocol>
 {
     _Bool _showPotentialFamilyMembers;
     NSDate *_suggestionDate;
@@ -24,10 +25,14 @@
     NSDictionary *_appBundleIdsToShareExtensionBundleIdsMapping;
     NSArray *_attachments;
     NSArray *_photoSuggestedPeople;
+    long long _suggestionPurpose;
+    NSString *_searchPrefix;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *searchPrefix; // @synthesize searchPrefix=_searchPrefix;
+@property long long suggestionPurpose; // @synthesize suggestionPurpose=_suggestionPurpose;
 @property(nonatomic) _Bool showPotentialFamilyMembers; // @synthesize showPotentialFamilyMembers=_showPotentialFamilyMembers;
 @property(copy, nonatomic) NSArray *photoSuggestedPeople; // @synthesize photoSuggestedPeople=_photoSuggestedPeople;
 @property(retain, nonatomic) NSArray *attachments; // @synthesize attachments=_attachments;
@@ -40,9 +45,17 @@
 @property(copy, nonatomic) NSArray *locationUUIDs; // @synthesize locationUUIDs=_locationUUIDs;
 @property(copy, nonatomic) NSUUID *locationUUID; // @synthesize locationUUID=_locationUUID;
 @property(copy, nonatomic) NSDate *suggestionDate; // @synthesize suggestionDate=_suggestionDate;
+- (_Bool)isEqual:(id)arg1;
+@property(readonly) unsigned long long hash;
+- (unsigned long long)totalHashOfElementsFromArray:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) Class superclass;
 
 @end
 

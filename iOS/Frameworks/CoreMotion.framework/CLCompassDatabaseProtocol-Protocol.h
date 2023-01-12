@@ -14,8 +14,8 @@
 - (int)syncgetPendingSetBiasCount;
 - (void)setBias:(CDStruct_03942939)arg1 withMagneticField:(CDStruct_03942939)arg2 level:(int)arg3 magnitude:(float)arg4 inclination:(float)arg5;
 - (void)dumpDatabase:(NSString *)arg1 onCompletion:(void (^)(NSString *))arg2;
-- (_Bool)syncgetDoSync:(void (^)(struct CLCompassDatabase *))arg1;
-- (void)doAsync:(void (^)(struct CLCompassDatabase *))arg1 withReply:(void (^)(void))arg2;
-- (void)doAsync:(void (^)(struct CLCompassDatabase *))arg1;
+- (_Bool)syncgetDoSync:(void (^)(void *))arg1;
+- (void)doAsync:(void (^)(void *))arg1 withReply:(void (^)(void))arg2;
+- (void)doAsync:(void (^)(void *))arg1;
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <IBFoundation/IBPlaceholderImageInfo.h>
+#import <AssetCatalogFoundation/IBPlaceholderImageInfo.h>
 
 @interface IBPlaceholderImageInfo (IBCTTSupport)
 + (id)placeholderImageWithSize:(struct CGSize)arg1;

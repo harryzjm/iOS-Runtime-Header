@@ -13,7 +13,6 @@
 __attribute__((visibility("hidden")))
 @interface WFOverlayImageEditorCanvasView : UIView <UIGestureRecognizerDelegate>
 {
-    _Bool _rotationEnabled;
     WFOverlayImageTransform *_imageTransform;
     UIRotationGestureRecognizer *_rotateRecognizer;
     UIImageView *_backgroundImageView;
@@ -25,10 +24,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) __weak UIImageView *backgroundImageView; // @synthesize backgroundImageView=_backgroundImageView;
 @property(readonly, nonatomic) __weak UIRotationGestureRecognizer *rotateRecognizer; // @synthesize rotateRecognizer=_rotateRecognizer;
 @property(readonly, nonatomic) WFOverlayImageTransform *imageTransform; // @synthesize imageTransform=_imageTransform;
-@property(nonatomic) _Bool rotationEnabled; // @synthesize rotationEnabled=_rotationEnabled;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)reset;
 - (void)setOverlayImageOpacity:(double)arg1;
+@property(nonatomic, getter=isRotationEnabled) _Bool rotationEnabled;
 - (void)handlePinchGesture:(id)arg1;
 - (void)handlePanGesture:(id)arg1;
 - (void)handleRotateGesture:(id)arg1;

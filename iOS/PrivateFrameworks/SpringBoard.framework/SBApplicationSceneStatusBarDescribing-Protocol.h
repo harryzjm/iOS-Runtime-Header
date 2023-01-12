@@ -16,7 +16,7 @@
 @property(readonly, nonatomic) NSString *statusBarSceneIdentifier;
 @property(readonly, nonatomic) _Bool sceneWantsDeviceOrientationEventsEnabled;
 @property(readonly, nonatomic) struct CGRect statusBarAvoidanceFrame;
-@property(readonly, nonatomic) int statusBarStyleOverridesToSuppress;
+@property(readonly, nonatomic) unsigned long long statusBarStyleOverridesToSuppress;
 @property(readonly, nonatomic) long long statusBarOrientation;
 @property(readonly, nonatomic) double statusBarAlpha;
 @property(readonly, nonatomic) _Bool statusBarHidden;

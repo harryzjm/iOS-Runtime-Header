@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     long long _modifierFlags;
     NSString *_privateInput;
     long long _privateModifierFlags;
+    NSString *_privateShiftModifiedInput;
     NSString *_hint;
     long long __keyCode;
     long long _source;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long source; // @synthesize source=_source;
 @property(nonatomic) long long _keyCode; // @synthesize _keyCode=__keyCode;
 @property(retain, nonatomic) NSString *_hint; // @synthesize _hint;
+@property(retain, nonatomic) NSString *_privateShiftModifiedInput; // @synthesize _privateShiftModifiedInput;
 @property(nonatomic) long long _privateModifierFlags; // @synthesize _privateModifierFlags;
 @property(retain, nonatomic) NSString *_privateInput; // @synthesize _privateInput;
 @property(nonatomic) int _inputFlags; // @synthesize _inputFlags;
@@ -45,7 +47,8 @@ __attribute__((visibility("hidden")))
 - (void)_privatize;
 - (id)_cloneEvent;
 - (_Bool)isEqual:(id)arg1;
-- (_Bool)_matchesKeyCommand:(id)arg1;
+- (_Bool)_shouldAttemptSecurePasteAuthentication;
+- (_Bool)_matchesKeyCommand:(id)arg1 usesPrivateShiftModifiedInput:(_Bool)arg2;
 - (void)_setHIDEvent:(struct __IOHIDEvent *)arg1 keyboard:(struct __GSKeyboard *)arg2;
 @property(readonly, nonatomic) _Bool _isARepeat;
 @property(readonly, nonatomic) _Bool _isModifierKey;

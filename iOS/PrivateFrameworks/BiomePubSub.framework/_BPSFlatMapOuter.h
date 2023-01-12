@@ -7,7 +7,7 @@
 #import <BiomePubSub/BPSSubscriber-Protocol.h>
 
 @class BPSSubscription, NSMutableArray, NSMutableDictionary, NSString;
-@protocol BPSSubscriber;
+@protocol BMBookmark, BPSSubscriber;
 
 @interface _BPSFlatMapOuter <BPSSubscriber>
 {
@@ -16,9 +16,10 @@
     struct os_unfair_recursive_lock_s _downstreamLock;
     _Bool _downstreamRecursive;
     _Bool _innerRecursive;
-    _Bool _cancelledOrOperation;
+    _Bool _cancelledOrCompleted;
     _Bool _outerFinished;
     BPSSubscription *_outerSubscription;
+    id <BMBookmark> _outerBookmark;
     id <BPSSubscriber> _downstream;
     long long _downstreamDemand;
     NSMutableDictionary *_subscriptions;
@@ -31,7 +32,7 @@
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool outerFinished; // @synthesize outerFinished=_outerFinished;
-@property(nonatomic) _Bool cancelledOrOperation; // @synthesize cancelledOrOperation=_cancelledOrOperation;
+@property(nonatomic) _Bool cancelledOrCompleted; // @synthesize cancelledOrCompleted=_cancelledOrCompleted;
 @property(copy, nonatomic) CDUnknownBlockType map; // @synthesize map=_map;
 @property(nonatomic) long long maxPublishers; // @synthesize maxPublishers=_maxPublishers;
 @property(retain, nonatomic) NSMutableArray *buffer; // @synthesize buffer=_buffer;
@@ -42,10 +43,13 @@
 @property(nonatomic) _Bool downstreamRecursive; // @synthesize downstreamRecursive=_downstreamRecursive;
 @property(nonatomic) long long downstreamDemand; // @synthesize downstreamDemand=_downstreamDemand;
 @property(retain, nonatomic) id <BPSSubscriber> downstream; // @synthesize downstream=_downstream;
+@property(retain, nonatomic) id <BMBookmark> outerBookmark; // @synthesize outerBookmark=_outerBookmark;
 @property(retain, nonatomic) BPSSubscription *outerSubscription; // @synthesize outerSubscription=_outerSubscription;
 - (void)receiveInnerCompletion:(id)arg1 index:(long long)arg2;
 - (long long)receiveInnerInput:(id)arg1 index:(long long)arg2;
 - (void)receiveInnerSubscription:(id)arg1 index:(long long)arg2;
+- (id)newBookmark;
+- (void)_updateBookmarkWhenLocked;
 - (id)upstreamSubscriptions;
 - (void)cancel;
 - (void)requestDemand:(long long)arg1;

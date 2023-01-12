@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ICAction, NSArray;
+@class ICAction, INAppDescriptor, NSArray, WFAppInstalledResource;
 
 @interface WFInterchangeAction
 {
+    WFAppInstalledResource *_appResource;
+    INAppDescriptor *_appDescriptor;
     ICAction *_interchangeAction;
     NSArray *_contentClasses;
 }
@@ -15,6 +17,9 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *contentClasses; // @synthesize contentClasses=_contentClasses;
 @property(readonly, nonatomic) ICAction *interchangeAction; // @synthesize interchangeAction=_interchangeAction;
+- (void)setAppDescriptor:(id)arg1;
+- (void)setAppResource:(id)arg1;
+- (id)appResource;
 - (id)disabledPlatformsForInterchangeActionWithIdentifier:(id)arg1;
 - (void)performActionWithInput:(id)arg1 parameters:(id)arg2 userInterface:(id)arg3 successHandler:(CDUnknownBlockType)arg4 errorHandler:(CDUnknownBlockType)arg5;
 - (void)runAsynchronouslyWithInput:(id)arg1;
@@ -36,6 +41,8 @@
 - (id)app;
 - (id)userInterfaceTypes;
 - (id)requiredResources;
+- (_Bool)appResourceRequiresAppInstall;
+- (id)appDescriptor;
 - (_Bool)isDiscoverable;
 - (_Bool)isDiscontinued;
 - (id)lastModifiedDate;

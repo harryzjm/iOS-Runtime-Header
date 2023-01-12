@@ -7,23 +7,31 @@
 #import <objc/NSObject.h>
 
 #import <ReminderKit/REMObjectIDProviding-Protocol.h>
-#import <ReminderKit/REMSortingStyleReadonlyProtocol-Protocol.h>
+#import <ReminderKit/REMSupportedVersionProviding-Protocol.h>
 
-@class NSArray, NSData, NSString, REMObjectID, REMResolutionTokenMap, REMSmartListStorage, REMStore;
+@class NSData, NSString, REMAccount, REMColor, REMList, REMObjectID, REMResolutionTokenMap, REMSmartListCustomContext, REMSmartListStorage, REMStore;
 
-@interface REMSmartList : NSObject <REMObjectIDProviding, REMSortingStyleReadonlyProtocol>
+@interface REMSmartList : NSObject <REMObjectIDProviding, REMSupportedVersionProviding>
 {
     REMStore *_store;
     REMSmartListStorage *_storage;
+    REMAccount *_account;
+    REMList *_parentList;
 }
 
 + (id)cdEntityName;
 + (id)objectIDWithUUID:(id)arg1;
 + (id)newObjectID;
 - (void).cxx_destruct;
+@property(retain, nonatomic) REMList *parentList; // @synthesize parentList=_parentList;
+@property(retain, nonatomic) REMAccount *account; // @synthesize account=_account;
 @property(copy, nonatomic) REMSmartListStorage *storage; // @synthesize storage=_storage;
 @property(readonly, nonatomic) REMStore *store; // @synthesize store=_store;
+@property(readonly, nonatomic) REMSmartListCustomContext *customContext;
+- (_Bool)isUnsupported;
 @property(readonly, nonatomic) REMObjectID *remObjectID; // @dynamic remObjectID;
+- (id)manualOrderingListID;
+- (id)manualOrderingObjectID;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
 - (_Bool)respondsToSelector:(SEL)arg1;
 - (id)valueForUndefinedKey:(id)arg1;
@@ -32,16 +40,26 @@
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)optionalObjectID;
+- (id)initWithStore:(id)arg1 account:(id)arg2 parentList:(id)arg3 storage:(id)arg4;
 - (id)initWithStore:(id)arg1 storage:(id)arg2;
 
 // Remaining properties
+@property(readonly, nonatomic) REMObjectID *accountID; // @dynamic accountID;
+@property(readonly, nonatomic) NSString *badgeEmblem; // @dynamic badgeEmblem;
+@property(readonly, nonatomic) REMColor *color; // @dynamic color;
+@property(readonly, nonatomic) long long effectiveMinimumSupportedVersion; // @dynamic effectiveMinimumSupportedVersion;
+@property(readonly, nonatomic) NSData *filterData; // @dynamic filterData;
 @property(nonatomic) _Bool isPersisted; // @dynamic isPersisted;
+@property(readonly, nonatomic) long long minimumSupportedVersion; // @dynamic minimumSupportedVersion;
+@property(readonly, nonatomic) NSString *name; // @dynamic name;
 @property(readonly, nonatomic) REMObjectID *objectID; // @dynamic objectID;
-@property(retain, nonatomic) NSArray *ordering; // @dynamic ordering;
+@property(readonly, nonatomic) REMObjectID *parentAccountID; // @dynamic parentAccountID;
+@property(readonly, nonatomic) REMObjectID *parentListID; // @dynamic parentListID;
 @property(readonly, nonatomic) REMResolutionTokenMap *resolutionTokenMap; // @dynamic resolutionTokenMap;
 @property(readonly, nonatomic) NSData *resolutionTokenMapData; // @dynamic resolutionTokenMapData;
-@property(copy, nonatomic) NSString *smartListTag; // @dynamic smartListTag;
-@property(readonly, nonatomic) long long sortingDirection; // @dynamic sortingDirection;
+@property(readonly, nonatomic) _Bool showingLargeAttachments; // @dynamic showingLargeAttachments;
+@property(copy, nonatomic) NSString *smartListType; // @dynamic smartListType;
 @property(readonly, nonatomic) NSString *sortingStyle; // @dynamic sortingStyle;
 
 @end

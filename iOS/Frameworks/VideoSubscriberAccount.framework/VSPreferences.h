@@ -22,6 +22,9 @@
 @property(retain, nonatomic) NSUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
 @property(retain, nonatomic) NSUndoManager *undoManager; // @synthesize undoManager=_undoManager;
 - (id)metricUserIDLastGenerated;
+- (void)clearSetTopBoxActivationTime;
+- (void)noteSetTopBoxActicationTime;
+- (id)setTopBoxActivationTime;
 - (void)setMetricUserID:(id)arg1;
 - (id)metricUserID;
 - (_Bool)ignoreSetTopBoxProfile;

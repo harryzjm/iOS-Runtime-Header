@@ -20,9 +20,9 @@
 + (int)defaultIntValueForProperty:(int)arg1;
 + (id)properties;
 - (void)saveToArchiver:(id)arg1;
-- (void)saveToArchive:(struct ColumnStyleArchive *)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)loadFromArchive:(const struct ColumnStyleArchive *)arg1 unarchiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 @property(readonly, nonatomic) _Bool columnsAreLeftToRight;
 @property(readonly, nonatomic) _Bool shrinkTextToFit;
 @property(readonly, nonatomic) _Bool alwaysStartsNewTarget;
@@ -33,7 +33,7 @@
 - (_Bool)equalWidth;
 - (id)layoutMarginsForTarget:(id)arg1;
 @property(readonly, nonatomic) TSWPPadding *layoutMargins;
-- (struct CGSize)adjustedInsetsForTarget:(id)arg1;
+- (struct UIEdgeInsets)adjustedInsetsForTarget:(id)arg1;
 
 // Remaining properties
 @property(readonly, nonatomic) double textScaleFactor;

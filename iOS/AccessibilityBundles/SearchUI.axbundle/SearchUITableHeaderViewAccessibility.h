@@ -16,6 +16,8 @@
 - (id)accessibilityHint;
 - (id)_accessibilityUserTestingChildren;
 - (id)accessibilityLabel;
+- (unsigned long long)accessibilityTraits;
+- (id)accessibilityIdentifier;
 - (_Bool)accessibilityRespondsToUserInteraction;
 - (_Bool)accessibilityActivate;
 - (_Bool)isAccessibilityElement;

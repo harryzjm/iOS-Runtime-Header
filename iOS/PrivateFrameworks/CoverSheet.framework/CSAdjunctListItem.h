@@ -6,33 +6,40 @@
 
 #import <objc/NSObject.h>
 
-#import <CoverSheet/CSAdjunctListItemProviding-Protocol.h>
+#import <CoverSheet/BSDescriptionProviding-Protocol.h>
 
 @class NSMutableSet, NSString, SBSLockScreenContentAction, UIView, UIViewController;
 @protocol CSAdjunctItemHosting;
 
-@interface CSAdjunctListItem : NSObject <CSAdjunctListItemProviding>
+@interface CSAdjunctListItem : NSObject <BSDescriptionProviding>
 {
     NSMutableSet *_actions;
-    UIView *platterView;
+    _Bool _animatePresentation;
+    _Bool _animateDismissal;
+    UIView *itemView;
     UIViewController<CSAdjunctItemHosting> *contentHost;
     NSString *_identifier;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(nonatomic) _Bool animateDismissal; // @synthesize animateDismissal=_animateDismissal;
+@property(nonatomic) _Bool animatePresentation; // @synthesize animatePresentation=_animatePresentation;
+@property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) UIViewController<CSAdjunctItemHosting> *contentHost; // @synthesize contentHost;
-@property(retain, nonatomic) UIView *platterView; // @synthesize platterView;
+@property(retain, nonatomic) UIView *itemView; // @synthesize itemView;
+- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)descriptionWithMultilinePrefix:(id)arg1;
+- (id)succinctDescriptionBuilder;
+- (id)succinctDescription;
+@property(readonly, copy) NSString *description;
 - (_Bool)isValid;
 - (void)removeAction:(id)arg1;
 - (void)addAction:(id)arg1;
 @property(readonly, nonatomic) SBSLockScreenContentAction *action;
-- (void)conformsToCSAdjunctListItemProviding;
-- (id)init;
+- (id)initWithIdentifier:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

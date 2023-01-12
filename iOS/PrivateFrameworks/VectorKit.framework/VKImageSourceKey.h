@@ -53,7 +53,7 @@
 @property(readonly, nonatomic) unsigned int secondaryVariant;
 @property(readonly, nonatomic) unsigned int variant;
 @property(readonly, nonatomic) CDStruct_83984b6f transitLineColor;
-- (id)initWithLabelImageKey:(const shared_ptr_85e81048 *)arg1;
+- (id)initWithLabelImageKey:(const void *)arg1;
 - (id)initWithIconName:(const char *)arg1;
 - (id)initWithIconAttributeKey:(unsigned int)arg1 attributeValue:(unsigned int)arg2;
 - (id)initWithShieldName:(const char *)arg1 text:(const char *)arg2 locale:(const char *)arg3 color:(Color_c5f82c4a)arg4;

@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class CNContact, CNContactStore, NSArray, NSData, NSDictionary, NSMutableDictionary;
+@protocol OS_dispatch_queue;
 
 @interface IMContactStore : NSObject
 {
@@ -19,6 +20,7 @@
     double _lastContactStoreSync;
     double _lastMeContactStoreSync;
     CNContact *_meContact;
+    NSObject<OS_dispatch_queue> *_changeHistoryFetchQueue;
     NSArray *_CNIDsForBatchFetch;
 }
 
@@ -71,6 +73,7 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *CNIDsForBatchFetch; // @synthesize CNIDsForBatchFetch=_CNIDsForBatchFetch;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *changeHistoryFetchQueue; // @synthesize changeHistoryFetchQueue=_changeHistoryFetchQueue;
 @property(retain, nonatomic) CNContact *meContact; // @synthesize meContact=_meContact;
 @property(nonatomic) double lastMeContactStoreSync; // @synthesize lastMeContactStoreSync=_lastMeContactStoreSync;
 @property(nonatomic) double lastContactStoreSync; // @synthesize lastContactStoreSync=_lastContactStoreSync;
@@ -86,6 +89,7 @@
 - (id)getHandleIDToCNIDMap;
 - (void)checkForContactStoreChanges;
 - (void)handleDropEverythingEvent;
+- (id)fetchMeContactWithKeys:(id)arg1 withError:(id *)arg2;
 - (id)fetchMeContactWithKeys:(id)arg1;
 - (void)meCardChanged:(id)arg1;
 - (void)resetMeCard;
@@ -98,8 +102,12 @@
 - (id)getContactForID:(id)arg1;
 - (void)addContact:(id)arg1 withID:(id)arg2;
 - (_Bool)isContactWithIDAlreadyFetched:(id)arg1;
+- (_Bool)isIDAKnownContact:(id)arg1;
+- (void)addIDToCNIDToHandleIDsMap:(id)arg1 withCNID:(id)arg2;
+- (void)removeIDFromCNIDToHandleIDsMap:(id)arg1 withCNID:(id)arg2;
 - (void)generateCNIDToHandleIDMap;
 - (id)handleIDsForCNID:(id)arg1;
+- (void)_setBatchFetchingIsCompleted:(_Bool)arg1;
 - (void)setBatchFetchingCompleted;
 - (_Bool)isBatchFetchingForLaunchCompleted;
 - (id)fetchCNContactWithIdentifier:(id)arg1;
@@ -119,7 +127,7 @@
 - (void)logCNContact:(id)arg1;
 - (void)logCurrentHistoryToken;
 - (void)logContactFetchRequestResults:(id)arg1;
-- (void)logHandleIDs:(id)arg1;
+- (void)logHandleIDs:(id)arg1 checkAdditionalLoggingEnabled:(_Bool)arg2;
 - (void)logDictionary:(id)arg1 inBatchesOfSize:(long long)arg2;
 - (void)logDictionary:(id)arg1;
 

@@ -8,7 +8,7 @@
 
 #import <PhotosUICore/NSCopying-Protocol.h>
 
-@class UIColor;
+@class NSString, UIColor;
 
 @interface PXViewSpec : NSObject <NSCopying>
 {
@@ -18,14 +18,20 @@
     UIColor *_borderColor;
     double _borderWidth;
     double _cornerRadius;
+    NSString *_cornerCurve;
+    unsigned long long _cornerMask;
     double _displayScale;
+    double _rotationAngle;
     long long _compositingFilterType;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic, getter=isHidden) _Bool hidden; // @synthesize hidden=_hidden;
 @property(nonatomic) long long compositingFilterType; // @synthesize compositingFilterType=_compositingFilterType;
+@property(nonatomic) double rotationAngle; // @synthesize rotationAngle=_rotationAngle;
 @property(nonatomic) double displayScale; // @synthesize displayScale=_displayScale;
+@property(nonatomic) unsigned long long cornerMask; // @synthesize cornerMask=_cornerMask;
+@property(copy, nonatomic) NSString *cornerCurve; // @synthesize cornerCurve=_cornerCurve;
 @property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property(nonatomic) double borderWidth; // @synthesize borderWidth=_borderWidth;
 @property(copy, nonatomic) UIColor *borderColor; // @synthesize borderColor=_borderColor;

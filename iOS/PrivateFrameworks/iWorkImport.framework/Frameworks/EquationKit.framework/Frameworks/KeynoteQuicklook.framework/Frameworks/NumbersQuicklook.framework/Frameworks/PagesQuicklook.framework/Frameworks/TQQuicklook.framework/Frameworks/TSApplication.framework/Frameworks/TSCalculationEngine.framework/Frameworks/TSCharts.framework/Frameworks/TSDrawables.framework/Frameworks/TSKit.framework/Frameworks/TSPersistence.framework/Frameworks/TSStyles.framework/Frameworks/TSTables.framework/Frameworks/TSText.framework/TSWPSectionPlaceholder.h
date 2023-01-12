@@ -20,7 +20,7 @@
 + (_Bool)needsObjectUUID;
 - (void).cxx_destruct;
 @property(nonatomic) __weak TSWPStorage *parentStorage; // @synthesize parentStorage=_parentStorage;
-- (id)pageMasterOwningModel:(id)arg1;
+- (id)sectionTemplatePageOwningModel:(id)arg1;
 - (void)i_ensureHeaderFooterStoragesExistWithStylesheet:(id)arg1;
 - (void)wasRemovedFromDocumentRoot:(id)arg1;
 - (void)willBeRemovedFromDocumentRoot:(id)arg1;

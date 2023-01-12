@@ -74,6 +74,7 @@
 - (id)addReminderWithTitle:(id)arg1 toListChangeItem:(id)arg2;
 - (id)addReminderWithTitle:(id)arg1 toListChangeItem:(id)arg2 reminderObjectID:(id)arg3;
 - (id)updateSmartList:(id)arg1;
+- (id)addCustomSmartListWithName:(id)arg1 toAccountChangeItem:(id)arg2 smartListObjectID:(id)arg3;
 - (id)_updateListWithReminderChangeItem:(id)arg1;
 - (id)_updateListStorage:(id)arg1 accountCapabilities:(id)arg2;
 - (id)updateList:(id)arg1;
@@ -85,6 +86,7 @@
 - (id)addGroupWithName:(id)arg1 toAccountGroupContextChangeItem:(id)arg2 groupObjectID:(id)arg3;
 - (id)_updateAccountWithListChangeItem:(id)arg1;
 - (id)updateAccount:(id)arg1;
+- (id)_addTestOnlyNonPrimaryCKAccountWithName:(id)arg1 accountObjectID:(id)arg2;
 - (id)_addAccountWithType:(long long)arg1 name:(id)arg2;
 - (id)_addAccountWithType:(long long)arg1 name:(id)arg2 accountObjectID:(id)arg3;
 - (id)description;
@@ -99,6 +101,7 @@
 - (_Bool)updateReminderChangeItem:(id)arg1 fromICSData:(id)arg2 isNew:(_Bool)arg3 withOptions:(id)arg4 error:(id *)arg5;
 - (void)updateReminderChangeItem:(id)arg1 fromICSTodo:(id)arg2 icsCalendar:(id)arg3 isNew:(_Bool)arg4 withOptions:(id)arg5;
 - (id)importRemindersFromICSData:(id)arg1 insertIntoListChangeItem:(id)arg2 error:(id *)arg3;
+- (id)addCustomSmartListWithName:(id)arg1 toListSublistContextChangeItem:(id)arg2 smartListObjectID:(id)arg3;
 
 @end
 

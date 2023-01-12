@@ -9,6 +9,7 @@
 @class NSSet, NSString;
 
 @protocol _UICollectionCompositionalLayoutSolverResolveResult <NSObject>
+@property(nonatomic) _Bool sectionsWereRequeried;
 @property(readonly, nonatomic) struct CGSize contentSizeAdjustment;
 @property(readonly, nonatomic) struct CGPoint contentOffsetAdjustment;
 - (NSSet *)indexPathsForDeletedDecorationsForElementKind:(NSString *)arg1;

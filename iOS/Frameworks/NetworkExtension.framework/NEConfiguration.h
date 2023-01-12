@@ -60,6 +60,7 @@
 @property(copy) NSString *application; // @synthesize application=_application;
 @property(readonly) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property(readonly) long long grade; // @synthesize grade=_grade;
+- (void)applyOverrides;
 - (void)copyPasswordsFromSystemKeychain;
 @property(readonly) NSString *pluginType;
 - (void)clearUserKeychain;

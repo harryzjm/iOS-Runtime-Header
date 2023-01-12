@@ -4,24 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+#import <PhotosGraph/MAUniquelyIdentifiableNode-Protocol.h>
 
-@interface PGGraphNamedLocationNode
+@class MANodeFilter, NSString;
+
+@interface PGGraphNamedLocationNode <MAUniquelyIdentifiableNode>
 {
     NSString *_name;
     NSString *_uuid;
 }
 
++ (id)filterBySettingNameNotEmptyPropertyOnFilter:(id)arg1;
++ (id)filter;
++ (id)filterWithUUID:(id)arg1;
++ (id)filterWithName:(id)arg1;
++ (void)setUUID:(id)arg1 onLocationNodeForIdentifier:(unsigned long long)arg2 inGraph:(id)arg3;
++ (void)setName:(id)arg1 onLocationNodeForIdentifier:(unsigned long long)arg2 inGraph:(id)arg3;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSString *UUID; // @synthesize UUID=_uuid;
-@property(retain, nonatomic) NSString *name; // @synthesize name=_name;
+@property(readonly, nonatomic) NSString *UUID; // @synthesize UUID=_uuid;
+@property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
+- (id)featureIdentifier;
+@property(readonly, nonatomic) MANodeFilter *uniquelyIdentifyingFilter;
 - (unsigned short)domain;
 - (id)description;
 - (id)propertyDictionary;
 - (_Bool)hasProperties:(id)arg1;
-- (void)setLocalProperties:(id)arg1;
-- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
-- (id)initWithLabel:(id)arg1;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3 properties:(id)arg4;
+- (id)initWithName:(id)arg1 uuid:(id)arg2;
 
 @end
 

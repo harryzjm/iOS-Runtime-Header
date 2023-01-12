@@ -12,6 +12,7 @@
 {
     HKFillStyle *_unselectedFillStyle;
     HKFillStyle *_selectedFillStyle;
+    HKFillStyle *_inactiveFillStyle;
     CDUnknownBlockType _isIncludedBlock;
     UIBezierPath *_selectedBezierPath;
     UIBezierPath *_unselectedBezierPath;
@@ -21,6 +22,7 @@
 @property(retain, nonatomic) UIBezierPath *unselectedBezierPath; // @synthesize unselectedBezierPath=_unselectedBezierPath;
 @property(retain, nonatomic) UIBezierPath *selectedBezierPath; // @synthesize selectedBezierPath=_selectedBezierPath;
 @property(copy, nonatomic) CDUnknownBlockType isIncludedBlock; // @synthesize isIncludedBlock=_isIncludedBlock;
+@property(retain, nonatomic) HKFillStyle *inactiveFillStyle; // @synthesize inactiveFillStyle=_inactiveFillStyle;
 @property(retain, nonatomic) HKFillStyle *selectedFillStyle; // @synthesize selectedFillStyle=_selectedFillStyle;
 @property(retain, nonatomic) HKFillStyle *unselectedFillStyle; // @synthesize unselectedFillStyle=_unselectedFillStyle;
 

@@ -10,9 +10,9 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDPThrottlingConfigCriteria : PBCodable <NSCopying>
 {
+    NSString *_bundleID;
     int _containerEnvironment;
     NSString *_containerName;
     int _databaseType;
@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *invernessFunctionName; // @synthesize invernessFunctionName=_invernessFunctionName;
 @property(retain, nonatomic) NSString *invernessServiceName; // @synthesize invernessServiceName=_invernessServiceName;
+@property(retain, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property(retain, nonatomic) NSString *operationGroupName; // @synthesize operationGroupName=_operationGroupName;
 @property(retain, nonatomic) NSString *zoneName; // @synthesize zoneName=_zoneName;
 @property(retain, nonatomic) NSString *containerName; // @synthesize containerName=_containerName;
@@ -45,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 @property(readonly, nonatomic) _Bool hasInvernessFunctionName;
 @property(readonly, nonatomic) _Bool hasInvernessServiceName;
+@property(readonly, nonatomic) _Bool hasBundleID;
 @property(readonly, nonatomic) _Bool hasOperationGroupName;
 @property(readonly, nonatomic) _Bool hasZoneName;
 - (int)StringAsDatabaseType:(id)arg1;

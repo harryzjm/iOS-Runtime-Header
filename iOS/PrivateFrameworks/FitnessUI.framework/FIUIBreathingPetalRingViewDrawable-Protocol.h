@@ -23,6 +23,7 @@
 - (void)setBlurTrailAtIndex:(long long)arg1 center:(struct CGPoint)arg2 radius:(float)arg3 blurriness:(float)arg4 alpha:(float)arg5;
 - (void)setPetalAtIndex:(long long)arg1 center:(struct CGPoint)arg2 radius:(float)arg3 alpha:(float)arg4;
 - (void)importDataFromPetalRing:(id <FIUIBreathingPetalRingViewDrawable>)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 petalColor:(long long)arg2 numberOfPetals:(long long)arg3 showBlurTrails:(_Bool)arg4 device:(id <MTLDevice>)arg5;
 - (id)initWithFrame:(struct CGRect)arg1 numberOfPetals:(long long)arg2 showBlurTrails:(_Bool)arg3 device:(id <MTLDevice>)arg4;
 @end
 

@@ -11,6 +11,7 @@
 @interface _TtC12GameCenterUI20FriendsListPresenter : _TtCs12_SwiftObject
 {
     MISSING_TYPE *playerId;
+    MISSING_TYPE *newFriendPlayerIds;
     MISSING_TYPE *friendType;
     MISSING_TYPE *requiredData;
     MISSING_TYPE *gameCenterDataUpdatePresenter;

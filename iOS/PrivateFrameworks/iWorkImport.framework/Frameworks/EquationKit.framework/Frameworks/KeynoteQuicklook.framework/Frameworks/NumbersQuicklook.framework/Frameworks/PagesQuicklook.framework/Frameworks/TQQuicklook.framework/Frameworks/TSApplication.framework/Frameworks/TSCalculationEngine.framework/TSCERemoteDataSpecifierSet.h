@@ -12,7 +12,7 @@
 
 @interface TSCERemoteDataSpecifierSet : NSObject <NSCopying>
 {
-    struct unordered_map<unsigned long, NSMutableSet<TSCERemoteDataSpecifier *>*, std::__1::hash<unsigned long>, std::__1::equal_to<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, NSMutableSet<TSCERemoteDataSpecifier *>*>>> _coldDataByYear;
+    struct unordered_map<unsigned long, NSMutableSet<TSCERemoteDataSpecifier *>*, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<const unsigned long, NSMutableSet<TSCERemoteDataSpecifier *>*>>> _coldDataByYear;
     NSMutableSet *_hotData;
 }
 

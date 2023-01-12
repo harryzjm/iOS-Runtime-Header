@@ -12,8 +12,10 @@
 {
     MISSING_TYPE *entityManager;
     MISSING_TYPE *runtimeEntityManager;
-    MISSING_TYPE *isPrecompiledScriptEmbeddingEnabled;
     MISSING_TYPE *dumpREMaterials;
+    MISSING_TYPE *isSavingForExport;
+    MISSING_TYPE *layout;
+    MISSING_TYPE *targetsToPrecompile;
 }
 
 @end

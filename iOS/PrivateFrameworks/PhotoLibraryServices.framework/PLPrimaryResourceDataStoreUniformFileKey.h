@@ -20,7 +20,7 @@
 - (unsigned int)resourceVersion;
 - (unsigned int)resourceType;
 - (id)fileURLForAssetID:(id)arg1;
-- (id)initWithFilePath:(id)arg1 resourceVersion:(unsigned int)arg2 resourceType:(unsigned int)arg3 recipeID:(unsigned int)arg4;
+- (id)initWithFilePath:(id)arg1 resourceVersion:(unsigned int)arg2 resourceType:(unsigned int)arg3 recipeID:(unsigned int)arg4 pathManager:(id)arg5;
 - (id)initFromExistingLocationOfExternalResource:(id)arg1 asset:(id)arg2;
 - (id)uniformTypeIdentifier;
 - (id)initWithKeyStruct:(const void *)arg1;

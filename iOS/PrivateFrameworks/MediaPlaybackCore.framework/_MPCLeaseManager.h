@@ -10,6 +10,7 @@
 
 @class MPCPlaybackEngine, NSMutableDictionary, NSMutableSet, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MPCLeaseManager : NSObject <MPCPlaybackEngineEventObserving>
 {
     MPCPlaybackEngine *_playbackEngine;

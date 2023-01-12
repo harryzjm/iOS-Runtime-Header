@@ -7,15 +7,6 @@
 #import <HealthKit/_HKWorkoutComparisonFilter.h>
 
 @interface _HKWorkoutComparisonFilter (HealthDaemon)
-+ (unsigned long long)_goalTypeForQuantity:(id)arg1;
-- (id)_predicateForGoalType;
-- (id)_predicateForGoal;
-- (id)_predicateForWorkoutActivityType;
-- (id)_predicateForTotalSwimmingStrokeCount;
-- (id)_predicateForTotalFlightsClimbed;
-- (id)_predicateForTotalEnergyBurned;
-- (id)_predicateForTotalDistance;
-- (id)_predicateForDuration;
 - (id)predicateWithProfile:(id)arg1;
 @end
 

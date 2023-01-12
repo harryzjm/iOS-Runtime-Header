@@ -9,6 +9,7 @@
 @protocol GEOComposedRouteStepTransitInstructionMerging;
 
 @protocol GEOComposedRouteStepTransitInstructionMerging <NSObject>
-- (void)_transit_prepareForDeepMergeFrom:(id <GEOComposedRouteStepTransitInstructionMerging>)arg1;
+- (void)_transit_mergeFrom:(id <GEOComposedRouteStepTransitInstructionMerging>)arg1;
+- (_Bool)_transit_hasAnyFieldSet;
 @end
 

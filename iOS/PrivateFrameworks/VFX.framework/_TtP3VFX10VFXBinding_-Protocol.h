@@ -11,8 +11,10 @@
 @property(nonatomic, readonly) double min;
 @property(nonatomic, readonly) long long semantic;
 @property(nonatomic, readonly) long long type;
+@property(nonatomic, readonly) NSString *userManual;
 @property(nonatomic, readonly) NSString *bindingName;
 @property(nonatomic, readonly) NSString *objectName;
+@property(nonatomic, readonly) long long objectID;
 @property(nonatomic, readonly) NSString *identifier;
 @end
 

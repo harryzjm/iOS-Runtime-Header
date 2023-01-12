@@ -8,22 +8,41 @@
 
 #import <PreferencesUI/DevicePINControllerDelegate-Protocol.h>
 #import <PreferencesUI/HMHomeManagerDelegate-Protocol.h>
+#import <PreferencesUI/SFAutoUnlockManagerDelegate-Protocol.h>
 
-@class HMHomeManager, NSString, PSSpecifier;
+@class HMHomeManager, NSArray, NSString, PSSpecifier, SFAutoUnlockManager;
 
-@interface PSUIPasscodeLockController : PSListController <HMHomeManagerDelegate, DevicePINControllerDelegate>
+@interface PSUIPasscodeLockController : PSListController <HMHomeManagerDelegate, SFAutoUnlockManagerDelegate, DevicePINControllerDelegate>
 {
     int _policyDictatedMaxFailedAttempts;
     PSSpecifier *_voiceDialSpecifier;
     PSSpecifier *_voiceDialGroupSpecifier;
     _Bool _canUnlockWatch;
     HMHomeManager *_homeManager;
+    SFAutoUnlockManager *_autoUnlockManager;
+    NSArray *_autoUnlockSpecifiers;
 }
 
 + (long long)passcodeGracePeriod;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *autoUnlockSpecifiers; // @synthesize autoUnlockSpecifiers=_autoUnlockSpecifiers;
+@property(retain, nonatomic) SFAutoUnlockManager *autoUnlockManager; // @synthesize autoUnlockManager=_autoUnlockManager;
 @property(retain, nonatomic) HMHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 @property(nonatomic) _Bool canUnlockWatch; // @synthesize canUnlockWatch=_canUnlockWatch;
+- (void)manager:(id)arg1 failedToEnableDevice:(id)arg2 error:(id)arg3;
+- (void)manager:(id)arg1 didEnableDevice:(id)arg2;
+- (void)manager:(id)arg1 enablingLockedDevice:(id)arg2;
+- (unsigned long long)errorActionWithAutoUnlockError:(id)arg1;
+- (void)presentAutoUnlockEnableFailureAlertWithDevice:(id)arg1 withError:(id)arg2;
+- (void)enableAutoUnlockForDevice:(id)arg1 ofSpecifier:(id)arg2;
+- (void)showAlertForPhoneAutoUnlockEnablementOfDevice:(id)arg1 ofSpecifier:(id)arg2;
+- (void)updateAutoUnlockDevicewithDevice:(id)arg1;
+- (void)setAutoUnlockEnabled:(id)arg1 specifier:(id)arg2;
+- (id)autoUnlockEnabled:(id)arg1;
+- (_Bool)useAlternateFooterTextForPAU;
+- (void)updateAutoUnlockSpecifiers;
+- (void)updatePhoneAutounlockSection:(_Bool)arg1;
+- (_Bool)isEnrolledInFaceID;
 - (void)profileNotification:(id)arg1;
 - (void)disablePasscodeRequiredSpecifiers:(id)arg1;
 - (void)setEnabledInLockScreenForUSB:(id)arg1 specifier:(id)arg2;

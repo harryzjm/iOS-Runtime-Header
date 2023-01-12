@@ -16,9 +16,6 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) id <SXBlueprintMarker> marker; // @synthesize marker=_marker;
-@property(readonly, nonatomic) SXComponentInsert *insert; // @synthesize insert=_insert;
-- (id)initWithInsert:(id)arg1 marker:(id)arg2;
 
 @end
 

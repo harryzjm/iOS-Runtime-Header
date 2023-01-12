@@ -18,10 +18,12 @@ __attribute__((visibility("hidden")))
     unsigned char _locus;
     struct __IOHIDEvent *_hidEvent;
     unsigned int _fallbackContextId;
+    unsigned long long _digitizerSenderID;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) unsigned int fallbackContextId; // @synthesize fallbackContextId=_fallbackContextId;
+@property(nonatomic) unsigned long long digitizerSenderID; // @synthesize digitizerSenderID=_digitizerSenderID;
 - (id)hidEventFromCurrentState;
 - (struct __IOHIDEvent *)_createCollectionEventForEvent:(struct __IOHIDEvent *)arg1;
 - (unsigned int)_collectionMask;

@@ -10,8 +10,9 @@
 {
     MISSING_TYPE *focusAccessibilityNode;
     MISSING_TYPE *baseItem;
-    MISSING_TYPE *transform;
-    MISSING_TYPE *size;
+    MISSING_TYPE *_baseItemFrame;
+    MISSING_TYPE *isPlatformFocusSystemEnabled;
+    MISSING_TYPE *groupID;
     MISSING_TYPE *_uikitFocusItem;
 }
 

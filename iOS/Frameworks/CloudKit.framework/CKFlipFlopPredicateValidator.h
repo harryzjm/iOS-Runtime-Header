@@ -6,7 +6,6 @@
 
 @protocol CKObjectValidating;
 
-__attribute__((visibility("hidden")))
 @interface CKFlipFlopPredicateValidator
 {
     id <CKObjectValidating> _validator;

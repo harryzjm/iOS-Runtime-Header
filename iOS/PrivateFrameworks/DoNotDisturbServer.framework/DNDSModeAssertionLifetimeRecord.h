@@ -20,11 +20,19 @@
     NSNumber *_endDate;
     NSString *_scheduleIdentifier;
     NSString *_behavior;
+    NSNumber *_latitude;
+    NSNumber *_longitude;
+    NSNumber *_radius;
+    NSString *_regionIdentifier;
 }
 
 + (id)recordForAssertionLifetime:(id)arg1;
-+ (id)recordForDictionary:(id)arg1 keys:(const CDStruct_0a6492a9 *)arg2;
++ (id)recordForDictionary:(id)arg1 keys:(const CDStruct_c4e2040f *)arg2;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *regionIdentifier; // @synthesize regionIdentifier=_regionIdentifier;
+@property(retain, nonatomic) NSNumber *radius; // @synthesize radius=_radius;
+@property(retain, nonatomic) NSNumber *longitude; // @synthesize longitude=_longitude;
+@property(retain, nonatomic) NSNumber *latitude; // @synthesize latitude=_latitude;
 @property(retain, nonatomic) NSString *behavior; // @synthesize behavior=_behavior;
 @property(retain, nonatomic) NSString *scheduleIdentifier; // @synthesize scheduleIdentifier=_scheduleIdentifier;
 @property(retain, nonatomic) NSNumber *endDate; // @synthesize endDate=_endDate;
@@ -34,7 +42,7 @@
 @property(retain, nonatomic) NSString *eventUniqueID; // @synthesize eventUniqueID=_eventUniqueID;
 @property(retain, nonatomic) NSString *lifetimeType; // @synthesize lifetimeType=_lifetimeType;
 - (id)object;
-- (id)dictionaryWithKeys:(const CDStruct_0a6492a9 *)arg1 options:(unsigned long long)arg2;
+- (id)dictionaryWithKeys:(const CDStruct_c4e2040f *)arg1 options:(unsigned long long)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

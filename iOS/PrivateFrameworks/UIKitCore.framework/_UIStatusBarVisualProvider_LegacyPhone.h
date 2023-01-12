@@ -28,22 +28,9 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_expandedTrailingBottomConstraint;
 }
 
-+ (struct CGSize)smallPillSize;
-+ (struct CGSize)pillSize;
-+ (id)pillFont;
-+ (id)expandedFont;
-+ (id)timeFont;
-+ (id)normalFont;
-+ (double)lowerExpandedBaselineOffset;
-+ (double)dualLineExpandedBaselineOffset;
-+ (double)expandedBaselineOffset;
-+ (double)baselineOffset;
-+ (struct NSDirectionalEdgeInsets)edgeInsets;
-+ (double)regionSpacing;
 + (double)height;
 + (struct CGSize)intrinsicLockScreenContentSizeForOrientation:(long long)arg1;
 + (double)_heightExpanded:(_Bool)arg1;
-+ (_Bool)wantsExpandedLeadingPlacements;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSLayoutConstraint *expandedTrailingBottomConstraint; // @synthesize expandedTrailingBottomConstraint=_expandedTrailingBottomConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *expandedLeadingBottomConstraint; // @synthesize expandedLeadingBottomConstraint=_expandedLeadingBottomConstraint;
@@ -77,14 +64,27 @@ __attribute__((visibility("hidden")))
 - (id)removalAnimationForDisplayItemWithIdentifier:(id)arg1 itemAnimation:(id)arg2;
 - (id)additionAnimationForDisplayItemWithIdentifier:(id)arg1 itemAnimation:(id)arg2;
 - (id)_animationForSingleLineDualCarrier;
-- (void)updateDataForBackgroundActivity:(id)arg1;
+- (id)willUpdateWithData:(id)arg1;
 - (void)actionable:(id)arg1 highlighted:(_Bool)arg2 initialPress:(_Bool)arg3;
 - (id)condensedFontForCellularType:(long long)arg1 defaultFont:(id)arg2 baselineOffset:(double *)arg3;
 - (id)stringForCellularType:(long long)arg1 condensed:(_Bool)arg2;
 - (void)itemCreated:(id)arg1;
 - (id)orderedDisplayItemPlacementsInRegionWithIdentifier:(id)arg1;
 - (id)setupInContainerView:(id)arg1;
+- (struct CGSize)smallPillSize;
+- (struct CGSize)pillSize;
+- (id)pillFont;
+- (id)expandedFont;
+- (id)timeFont;
+- (id)normalFont;
+- (double)lowerExpandedBaselineOffset;
+- (double)dualLineExpandedBaselineOffset;
+- (double)expandedBaselineOffset;
+- (double)baselineOffset;
+- (struct NSDirectionalEdgeInsets)edgeInsets;
+- (double)regionSpacing;
 - (double)effectiveHeight;
+- (_Bool)wantsExpandedLeadingPlacements;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

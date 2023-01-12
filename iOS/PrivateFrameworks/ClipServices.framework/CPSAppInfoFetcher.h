@@ -20,6 +20,8 @@
 - (void).cxx_destruct;
 - (void)_lookUpClipDemoAMSMetadataWithBundleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_downloadIconIfNeeded:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)evictCachedMetadataForClipBundleID:(id)arg1;
+- (void)lookUpClipMetadataByBundleID:(id)arg1 sourceBundleID:(id)arg2 URL:(id)arg3 downloadIconIfNeeded:(_Bool)arg4 skipCaching:(_Bool)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)lookUpClipMetadataByBundleID:(id)arg1 sourceBundleID:(id)arg2 downloadIconIfNeeded:(_Bool)arg3 skipCaching:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)init;
 

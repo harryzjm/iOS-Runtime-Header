@@ -8,7 +8,6 @@
 {
 }
 
-- (_Bool)_canRetryWithError:(id)arg1 retryAfter:(id *)arg2;
 - (_Bool)shouldStartThrottlingWithError:(id)arg1 retryAfter:(double *)arg2;
 - (_Bool)canRetryWithError:(id)arg1 retryAfter:(id *)arg2;
 - (unsigned long long)maxRetries;

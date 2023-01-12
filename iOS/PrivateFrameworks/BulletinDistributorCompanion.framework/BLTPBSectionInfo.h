@@ -8,7 +8,7 @@
 
 #import <BulletinDistributorCompanion/NSCopying-Protocol.h>
 
-@class BLTPBSectionIcon, NSMutableArray, NSString;
+@class BLTPBSectionIcon, BLTPBSectionInfoSettings, NSMutableArray, NSString;
 
 @interface BLTPBSectionInfo : PBCodable <NSCopying>
 {
@@ -27,6 +27,7 @@
     unsigned int _pushSettings;
     int _sectionCategory;
     NSString *_sectionID;
+    BLTPBSectionInfoSettings *_sectionInfoSettings;
     int _sectionType;
     int _spokenNotificationSetting;
     NSString *_subsectionID;
@@ -80,6 +81,7 @@
 
 + (Class)subsectionsType;
 - (void).cxx_destruct;
+@property(retain, nonatomic) BLTPBSectionInfoSettings *sectionInfoSettings; // @synthesize sectionInfoSettings=_sectionInfoSettings;
 @property(nonatomic) double lastUserGrantedAuthorizationDate; // @synthesize lastUserGrantedAuthorizationDate=_lastUserGrantedAuthorizationDate;
 @property(nonatomic) double authorizationExpirationDate; // @synthesize authorizationExpirationDate=_authorizationExpirationDate;
 @property(retain, nonatomic) NSString *watchSectionID; // @synthesize watchSectionID=_watchSectionID;
@@ -120,6 +122,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasSectionInfoSettings;
 @property(nonatomic) _Bool hasLastUserGrantedAuthorizationDate;
 @property(nonatomic) _Bool hasAuthorizationExpirationDate;
 @property(readonly, nonatomic) _Bool hasWatchSectionID;
@@ -170,6 +173,7 @@
 @property(nonatomic) _Bool hasSectionType;
 @property(readonly, nonatomic) _Bool hasSubsectionID;
 @property(readonly, nonatomic) _Bool hasSectionID;
+- (id)requestWithKeypaths:(id)arg1;
 - (id)description;
 
 @end

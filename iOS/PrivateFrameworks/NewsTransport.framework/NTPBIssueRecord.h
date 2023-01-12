@@ -23,9 +23,12 @@
     NSMutableArray *_bundleFeaturedArticleIDs;
     NSString *_channelTagID;
     COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleConversionStats *_conversionStats;
+    NSString *_coverAccentColor;
     NSString *_coverArticleID;
+    NSString *_coverBackgroundColor;
     NSString *_coverImageURL;
     NSString *_coverPrimaryColor;
+    NSString *_coverTextColor;
     NSString *_edition;
     NSString *_issueDescription;
     NSString *_layeredCover;
@@ -60,6 +63,9 @@
 + (Class)blockedStorefrontIDsType;
 + (Class)allowedStorefrontIDsType;
 + (Class)allArticleIDsType;
+@property(retain, nonatomic) NSString *coverAccentColor; // @synthesize coverAccentColor=_coverAccentColor;
+@property(retain, nonatomic) NSString *coverTextColor; // @synthesize coverTextColor=_coverTextColor;
+@property(retain, nonatomic) NSString *coverBackgroundColor; // @synthesize coverBackgroundColor=_coverBackgroundColor;
 @property(retain, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleConversionStats *conversionStats; // @synthesize conversionStats=_conversionStats;
 @property(retain, nonatomic) NSString *personalizationVectorAltFullURL; // @synthesize personalizationVectorAltFullURL=_personalizationVectorAltFullURL;
 @property(retain, nonatomic) NSString *personalizationVectorFullURL; // @synthesize personalizationVectorFullURL=_personalizationVectorFullURL;
@@ -99,6 +105,9 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasCoverAccentColor;
+@property(readonly, nonatomic) _Bool hasCoverTextColor;
+@property(readonly, nonatomic) _Bool hasCoverBackgroundColor;
 @property(readonly, nonatomic) _Bool hasConversionStats;
 @property(readonly, nonatomic) _Bool hasPersonalizationVectorAltFullURL;
 @property(readonly, nonatomic) _Bool hasPersonalizationVectorFullURL;

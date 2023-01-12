@@ -13,6 +13,7 @@
     NSString *_status;
     NSString *_error;
     NSArray *_response;
+    NSArray *_visualRefs;
     NSDictionary *_meta;
     NSNumber *_elapsedTimeMs;
     NSNumber *_elapsedTimeThreadMs;
@@ -24,6 +25,7 @@
 @property(retain, nonatomic) NSNumber *elapsedTimeThreadMs; // @synthesize elapsedTimeThreadMs=_elapsedTimeThreadMs;
 @property(retain, nonatomic) NSNumber *elapsedTimeMs; // @synthesize elapsedTimeMs=_elapsedTimeMs;
 @property(retain, nonatomic) NSDictionary *meta; // @synthesize meta=_meta;
+@property(retain, nonatomic) NSArray *visualRefs; // @synthesize visualRefs=_visualRefs;
 @property(retain, nonatomic) NSArray *response; // @synthesize response=_response;
 @property(retain, nonatomic) NSString *error; // @synthesize error=_error;
 @property(retain, nonatomic) NSString *status; // @synthesize status=_status;

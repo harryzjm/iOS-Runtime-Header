@@ -18,6 +18,7 @@
 }
 
 + (id)localPropertyListForGameDescriptor:(id)arg1;
+- (void).cxx_destruct;
 @property(retain) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property(retain) NSDictionary *root; // @synthesize root=_root;
 - (id)achievementDescriptions;
@@ -31,7 +32,6 @@
 - (id)localizedStringForKey:(id)arg1;
 - (id)localizedStringForKey:(id)arg1 forLocalization:(id)arg2;
 - (id)_mainBundle;
-- (void)dealloc;
 
 @end
 

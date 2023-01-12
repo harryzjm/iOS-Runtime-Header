@@ -42,6 +42,7 @@
     NSMutableDictionary *_environment;
 }
 
++ (struct _CSTypeRef)symbolicatorFromBinaryImagesDescription:(id)arg1 withArchitecture:(struct _CSArchitecture)arg2;
 + (struct _CSTypeRef)symbolicatorFromBinaryImagesDescription:(id)arg1;
 + (id)parseBinaryImagesDescription:(id)arg1;
 - (void).cxx_destruct;

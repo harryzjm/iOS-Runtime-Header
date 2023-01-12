@@ -6,7 +6,10 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
+@class PXDataSectionEnablementForwarder;
+
 @protocol PXDataSectionManagerEnabling <NSObject>
+@property(retain, nonatomic) PXDataSectionEnablementForwarder *enablementForwarder;
 @property(nonatomic, getter=isEnabled) _Bool enabled;
 @end
 

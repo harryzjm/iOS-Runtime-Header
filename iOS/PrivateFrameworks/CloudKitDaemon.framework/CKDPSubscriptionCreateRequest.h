@@ -10,7 +10,6 @@
 
 @class CKDPSubscription;
 
-__attribute__((visibility("hidden")))
 @interface CKDPSubscriptionCreateRequest : PBRequest <NSCopying>
 {
     CKDPSubscription *_subscription;

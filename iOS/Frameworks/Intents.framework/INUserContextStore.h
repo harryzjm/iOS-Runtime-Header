@@ -14,11 +14,13 @@
 }
 
 + (id)keyForBundleIdentifier:(id)arg1 andType:(long long)arg2;
++ (id)keyPrefixForType:(long long)arg1;
 + (id)findDataInValue:(id)arg1;
 + (id)sharedStore;
 - (void).cxx_destruct;
 - (id)_initWithKnowledgeStore:(id)arg1;
 - (id)_init;
+- (void)userContextOfClass:(Class)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)userContextOfClass:(Class)arg1 forBundleIdentifiers:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)storeUserContextViaHelper:(id)arg1 forBundleIdentifier:(id)arg2;
 - (void)removeUserContextOfClass:(Class)arg1 forBundleIdentifier:(id)arg2;

@@ -12,8 +12,8 @@
 
 @interface ETImageFolderDataProvider : NSObject <ETDataProvider>
 {
-    struct vector<std::__1::pair<NSString *, unsigned long>, std::__1::allocator<std::__1::pair<NSString *, unsigned long>>> samples;
-    struct vector<NSString *, std::__1::allocator<NSString *>> classes;
+    struct vector<std::pair<NSString *, unsigned long>, std::allocator<std::pair<NSString *, unsigned long>>> samples;
+    struct vector<NSString *, std::allocator<NSString *>> classes;
     struct shared_ptr<Espresso::blob_cpu> labelBlob;
     NSString *imageTensorName;
     NSString *labelTensorName;

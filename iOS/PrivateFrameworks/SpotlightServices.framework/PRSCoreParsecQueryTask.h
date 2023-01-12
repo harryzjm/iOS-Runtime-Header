@@ -4,19 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PARSession, PARTask, SFSearchSuggestion;
+@class PARSession, PARTask, SPSearchSuggestionResult;
 
 @interface PRSCoreParsecQueryTask
 {
     PARSession *_parSession;
     _Bool _parsecEnabled;
-    SFSearchSuggestion *_suggestion;
+    SPSearchSuggestionResult *_suggestionResult;
     PARTask *_task;
 }
 
 - (void).cxx_destruct;
 @property(retain) PARTask *task; // @synthesize task=_task;
-@property(retain, nonatomic) SFSearchSuggestion *suggestion; // @synthesize suggestion=_suggestion;
+@property(retain, nonatomic) SPSearchSuggestionResult *suggestionResult; // @synthesize suggestionResult=_suggestionResult;
 - (void)resume;
 - (void)handleResults:(id)arg1;
 - (id)initWithSession:(id)arg1 parsecSession:(id)arg2 handler:(id)arg3 queue:(id)arg4 queryContext:(id)arg5 queryIdent:(unsigned long long)arg6;

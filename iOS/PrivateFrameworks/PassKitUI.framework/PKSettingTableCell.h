@@ -18,10 +18,11 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) UISwitch *settingSwitch; // @synthesize settingSwitch=_settingSwitch;
 @property(readonly, nonatomic) SEL action; // @synthesize action=_action;
-@property(readonly, nonatomic) id target; // @synthesize target=_target;
+@property(readonly, nonatomic) __weak id target; // @synthesize target=_target;
 - (void)prepareForReuse;
 - (void)showSpinner:(_Bool)arg1;
 - (void)setTarget:(id)arg1 action:(SEL)arg2;
+- (void)setOn:(_Bool)arg1 notify:(_Bool)arg2;
 @property(nonatomic, getter=isOn) _Bool on;
 - (void)dealloc;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;

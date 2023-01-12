@@ -10,26 +10,30 @@
 @interface TSPFilePackageDataStorage
 {
     NSString *_path;
-    id <TSPCryptoInfo> _decryptionInfo;
     TSPFilePackage *_package;
     _Atomic _Bool _didCalculateEncodedLength;
     _Atomic unsigned long long _encodedLength;
     _Atomic _Bool _didCalculateCRC;
     _Atomic unsigned int _CRC;
     _Atomic _Bool _isMissingData;
-    _Bool _gilligan_isRemote;
+    _Bool _isUnmaterializedDueToPartiallyDownloadedDocument;
+    id <TSPCryptoInfo> _decryptionInfo;
 }
 
 - (void).cxx_destruct;
-- (void)setGilligan_isRemote:(_Bool)arg1;
-- (_Bool)gilligan_isRemote;
+- (void)setIsUnmaterializedDueToPartiallyDownloadedDocument:(_Bool)arg1;
+- (_Bool)isUnmaterializedDueToPartiallyDownloadedDocument;
+- (id)newDataCopyReadChannelProviderWithDocumentURL:(id)arg1 encryptionInfo:(id)arg2 error:(id *)arg3;
 - (_Bool)linkOrCopyToURL:(id)arg1 encryptionInfo:(id)arg2 canLink:(_Bool)arg3;
+- (unsigned long long)fileFormatVersion;
 - (_Bool)isInPackage:(id)arg1;
 - (unsigned int)CRC;
 - (unsigned long long)encodedLength;
+- (_Bool)isLengthPrecise;
 - (unsigned long long)length;
-- (id)writeData:(id)arg1 toPackageWriter:(id)arg2 infoMessage:(struct DataInfo *)arg3 preferredFilename:(id)arg4 error:(id *)arg5;
-- (id)streamReadChannel;
+- (id)writeData:(id)arg1 toPackageWriter:(id)arg2 infoMessage:(void *)arg3 preferredFilename:(id)arg4 shouldRemoveData:(_Bool)arg5 error:(id *)arg6;
+- (id)streamReadChannelForWriteWithPackageWriter:(id)arg1;
+- (_Bool)shouldValidateCRCOnWrite;
 - (void)performIOChannelReadWithAccessor:(CDUnknownBlockType)arg1;
 - (void)setEncodedLength:(unsigned long long)arg1 isMissingData:(_Bool)arg2;
 - (_Bool)isMissingData;

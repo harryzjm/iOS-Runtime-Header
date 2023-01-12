@@ -6,7 +6,7 @@
 
 #import <Foundation/NSCoder.h>
 
-@class NSMutableData, NSMutableSet;
+@class NSMutableData;
 
 @interface UINibEncoder : NSCoder
 {
@@ -21,9 +21,10 @@
         unsigned int currentObjectID;
         unsigned int nextAnonymousKey;
     } recursiveState;
-    NSMutableSet *objectsUniquedByValue;
     struct __CFSet *objectsReplacedWithNil;
     id delegate;
+    struct __CFArray *encodedOrderedObjects;
+    struct __CFSet *objectsUniquedByValue;
 }
 
 + (_Bool)archiveRootObject:(id)arg1 toFile:(id)arg2;

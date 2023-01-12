@@ -30,6 +30,7 @@
 @property(copy) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property long long archiveType; // @synthesize archiveType=_archiveType;
 @property(copy) NSNumber *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
+- (id)description;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 

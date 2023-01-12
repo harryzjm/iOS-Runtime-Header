@@ -7,8 +7,8 @@
 #import <CoreMotion/CLNotifierServiceProtocol-Protocol.h>
 
 @protocol CLGeomagneticModelProviderProtocol <CLNotifierServiceProtocol>
-- (_Bool)syncgetDoSync:(void (^)(struct CLGeomagneticModelProvider *))arg1;
-- (void)doAsync:(void (^)(struct CLGeomagneticModelProvider *))arg1 withReply:(void (^)(void))arg2;
-- (void)doAsync:(void (^)(struct CLGeomagneticModelProvider *))arg1;
+- (_Bool)syncgetDoSync:(void (^)(void *))arg1;
+- (void)doAsync:(void (^)(void *))arg1 withReply:(void (^)(void))arg2;
+- (void)doAsync:(void (^)(void *))arg1;
 @end
 

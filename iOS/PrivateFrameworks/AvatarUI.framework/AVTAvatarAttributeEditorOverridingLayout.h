@@ -43,6 +43,7 @@
 
 // Remaining properties
 @property(readonly, nonatomic) _Bool RTL;
+@property(readonly, nonatomic) double maxGroupLabelWidth;
 
 @end
 

@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_455c03b6)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_455c03b6)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) float log_weight;
 @property(readonly, nonatomic) NSString *pron_sequence;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -11,6 +11,7 @@
 
 @protocol SBFUserAuthenticationModel <NSObject>
 @property(readonly, nonatomic) double timeUntilUnblockedSinceReferenceDate;
+@property(readonly, nonatomic, getter=isUserRequestedEraseEnabled) _Bool userRequestedEraseEnabled;
 @property(readonly, nonatomic, getter=isPermanentlyBlocked) _Bool permanentlyBlocked;
 @property(readonly, nonatomic, getter=isTemporarilyBlocked) _Bool temporarilyBlocked;
 @property(nonatomic) id <SBFUserAuthenticationModelDelegate> delegate;

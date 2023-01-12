@@ -6,9 +6,9 @@
 
 #import <KeynoteQuicklook/TSADocumentRootDelegate-Protocol.h>
 
-@class TSPObject;
+@class TSKViewStateRoot;
 
 @protocol KNDocumentRootDelegate <TSADocumentRootDelegate>
-- (TSPObject *)createViewStateRoot;
+- (TSKViewStateRoot *)createViewStateRoot;
 @end
 

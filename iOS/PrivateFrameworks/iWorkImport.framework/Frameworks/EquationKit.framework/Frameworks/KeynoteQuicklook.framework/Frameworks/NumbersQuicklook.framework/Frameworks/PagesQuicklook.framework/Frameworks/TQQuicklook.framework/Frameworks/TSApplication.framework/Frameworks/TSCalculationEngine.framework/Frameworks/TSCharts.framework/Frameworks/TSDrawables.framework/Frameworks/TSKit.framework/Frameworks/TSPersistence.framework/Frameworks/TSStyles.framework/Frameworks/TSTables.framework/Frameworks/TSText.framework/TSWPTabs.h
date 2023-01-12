@@ -36,8 +36,8 @@
 - (id)tabAtIndex:(unsigned long long)arg1;
 - (unsigned long long)count;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)saveToArchive:(struct TabsArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct TabsArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (id)initWithTabs:(id)arg1;
 - (id)init;
 

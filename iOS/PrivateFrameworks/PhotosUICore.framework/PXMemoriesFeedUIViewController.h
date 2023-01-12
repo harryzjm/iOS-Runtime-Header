@@ -65,6 +65,7 @@
 - (void)ppt_navigateToMemoryWithReference:(id)arg1 animated:(_Bool)arg2;
 - (void)ppt_revealMemoryWithReference:(id)arg1 animated:(_Bool)arg2;
 @property(readonly, nonatomic) PXSectionedDataSource *ppt_memoriesDataSource;
+- (void)ppt_navigateToLatestInteractiveMemoryWithWillPresentHandler:(CDUnknownBlockType)arg1;
 - (void)ppt_navigateToLatestMemoryAnimated:(_Bool)arg1;
 @property(readonly, nonatomic) UIScrollView *ppt_scrollView;
 - (_Bool)pu_scrollToInitialPositionAnimated:(_Bool)arg1;
@@ -108,6 +109,7 @@
 - (void)_handleTouch:(id)arg1;
 - (id)_memoryObjectReferenceForPhotosDetailsContext:(id)arg1;
 - (id)_photosDetailsContextForMemoryObjectReference:(id)arg1;
+- (void)_navigateToMemoryAtSectionObjectReference:(id)arg1 willPresentHandler:(CDUnknownBlockType)arg2;
 - (void)_navigateToMemoryAtSectionObjectReference:(id)arg1;
 - (void)_handleScrollViewTap:(id)arg1;
 - (void)revealMostRecentMemoryAnimated:(_Bool)arg1;

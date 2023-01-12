@@ -33,6 +33,7 @@
 - (_Bool)isEqualToContactMatch:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithContact:(id)arg1 matchingRecordId:(id)arg2 matchType:(long long)arg3 matchTokens:(id)arg4;
 - (id)initWithContact:(id)arg1 matchingPhoneRecordId:(id)arg2 matchTokens:(id)arg3;
 - (id)initWithContact:(id)arg1 matchingEmailAddressRecordId:(id)arg2 matchTokens:(id)arg3;
 - (id)initWithContact:(id)arg1 matchingNameRecordId:(id)arg2 matchTokens:(id)arg3;

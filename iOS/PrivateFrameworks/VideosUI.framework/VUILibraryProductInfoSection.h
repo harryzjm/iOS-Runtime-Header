@@ -15,14 +15,12 @@ __attribute__((visibility("hidden")))
     UIView *_headerContentView;
     NSArray *_dataViews;
     double _lineSpacing;
-    long long _layoutType;
     struct UIEdgeInsets _headerPadding;
 }
 
 + (id)dataViewWithString:(id)arg1;
 + (id)headerViewWithString:(id)arg1;
 - (void).cxx_destruct;
-@property(nonatomic) long long layoutType; // @synthesize layoutType=_layoutType;
 @property(nonatomic) struct UIEdgeInsets headerPadding; // @synthesize headerPadding=_headerPadding;
 @property(nonatomic) double lineSpacing; // @synthesize lineSpacing=_lineSpacing;
 @property(copy, nonatomic) NSArray *dataViews; // @synthesize dataViews=_dataViews;

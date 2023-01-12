@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
     id <UIVectorOperatable> _velocity;
     id <UIVectorOperatable> _zero;
     CDStruct_289c5ec3 _state;
-    CDStruct_9e265dec _parameters;
+    CDStruct_500c0369 _parameters;
     id <UIVectorOperatable> _distance;
     id <UIVectorOperatable> _scaledVelocity;
     id <UIVectorOperatable> _epsilon;

@@ -18,6 +18,9 @@
 }
 
 + (id)sampleBufferAudioRenderer;
++ (void)setFigAudioRendererFactory:(id)arg1 forQueue:(id)arg2;
++ (id)currentFigAudioRendererFactory;
+@property(readonly, nonatomic) _Bool hasSufficientMediaDataForReliablePlaybackStart;
 - (void)stopRequestingMediaData;
 - (void)requestMediaDataWhenReadyOnQueue:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 @property(readonly, getter=isReadyForMoreMediaData) _Bool readyForMoreMediaData;
@@ -32,14 +35,22 @@
 - (void)setMuted:(_Bool)arg1;
 - (float)volume;
 - (void)setVolume:(float)arg1;
+@property(nonatomic) unsigned long long allowedAudioSpatializationFormats;
+- (struct opaqueMTAudioProcessingTap *)audioTapProcessor;
+- (void)setAudioTapProcessor:(struct opaqueMTAudioProcessingTap *)arg1;
+- (_Bool)willTrimShortDurationSamples;
 @property(copy, nonatomic) NSString *audioTimePitchAlgorithm;
 @property(copy, nonatomic) NSString *audioOutputDeviceUniqueID;
 @property(readonly, nonatomic) NSError *error;
 @property(readonly, nonatomic) long long status;
 - (void)_transitionToFailedStatusWithOSStatus:(int)arg1;
 - (void)_transitionToStatus:(long long)arg1 error:(id)arg2;
+- (id)audioSession;
+- (void)setAudioSession:(id)arg1;
 - (void)dealloc;
 - (id)init;
+- (void)setOutputContext:(id)arg1;
+- (id)outputContext;
 - (void)_uninstallNotificationHandlers;
 - (int)_installNotificationHandlers;
 - (void)_wasFlushedAutomaticallyAtTime:(CDStruct_1b6d18a9)arg1;

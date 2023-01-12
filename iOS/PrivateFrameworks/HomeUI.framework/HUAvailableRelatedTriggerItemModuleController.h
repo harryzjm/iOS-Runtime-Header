@@ -26,7 +26,7 @@
 @property(retain, nonatomic) NAFuture *addAutomationPresentingFuture; // @synthesize addAutomationPresentingFuture=_addAutomationPresentingFuture;
 @property(retain, nonatomic) UIViewController *addAutomationPresentedViewController; // @synthesize addAutomationPresentedViewController=_addAutomationPresentedViewController;
 - (id)_addAutomationViewControllerWithActionFactories:(id)arg1;
-- (id)_addAutomationViewControllerWithAlarmCharacteristics:(id)arg1;
+- (id)_addAutomationViewControllerWithSensorCharacteristics:(id)arg1;
 - (id)_createAddAutomationViewController;
 - (void)_presentAddAutomationViewController;
 - (void)_presentTriggerSummaryForTriggerBuilder:(id)arg1 flow:(id)arg2;
@@ -37,6 +37,7 @@
 - (void)_enableItemPressed:(id)arg1 enabled:(_Bool)arg2;
 - (void)_updateUIAnimated:(_Bool)arg1;
 - (void)itemSection:(id)arg1 accessoryButtonPressedInHeader:(id)arg2;
+- (void)triggerEditor:(id)arg1 didCommitTriggerBuilder:(id)arg2 withError:(id)arg3;
 - (void)triggerEditor:(id)arg1 didFinishWithTriggerBuilder:(id)arg2;
 - (void)switchCell:(id)arg1 didTurnOn:(_Bool)arg2;
 - (void)_presentTriggerSummaryForAvailableTriggerItem:(id)arg1;

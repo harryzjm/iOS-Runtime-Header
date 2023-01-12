@@ -38,7 +38,7 @@
 @property(readonly, nonatomic) _Bool columnsAreLeftToRight;
 @property(readonly, nonatomic) unsigned long long columnCount;
 @property(readonly, nonatomic) TSWPPadding *layoutMargins;
-- (struct CGSize)adjustedInsetsForTarget:(id)arg1;
+- (struct UIEdgeInsets)adjustedInsetsForTarget:(id)arg1;
 - (_Bool)textLayoutShouldLayoutVertically:(id)arg1;
 - (double)maxAutoGrowBlockHeightForTextLayout:(id)arg1;
 - (Class)repClassForTextLayout:(id)arg1;

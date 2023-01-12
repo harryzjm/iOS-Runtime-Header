@@ -15,7 +15,7 @@
 - (int)_accessibilityRemotePid;
 - (_Bool)_accessibilityHandlesRemoteFocusMovement;
 - (id)_viewToAddFocusLayer;
-- (id)_systemDefaultFocusGroupDescriptor;
+- (id)_systemDefaultFocusGroupIdentifier;
 - (_Bool)canBecomeFocused;
 - (id)accessibilityDragSourceDescriptors;
 - (void)_hideKeyboard;

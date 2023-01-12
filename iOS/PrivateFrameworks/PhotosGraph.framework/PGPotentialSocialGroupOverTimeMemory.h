@@ -21,6 +21,8 @@
 @property(retain) NSArray *curatedAssetLocalIdentifiers; // @synthesize curatedAssetLocalIdentifiers=_curatedAssetLocalIdentifiers;
 @property(readonly) NSSet *personNodes; // @synthesize personNodes=_personNodes;
 @property(readonly) PGGraphSocialGroupNode *socialGroupNode; // @synthesize socialGroupNode=_socialGroupNode;
+- (id)memoryFeatureNodesInGraph:(id)arg1;
+- (unsigned long long)memoryCategory;
 - (id)initWithSocialGroupNode:(id)arg1 momentNodes:(id)arg2;
 
 @end

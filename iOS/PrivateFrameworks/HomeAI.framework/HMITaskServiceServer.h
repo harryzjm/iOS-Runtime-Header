@@ -4,21 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMFUnfairLock, NSOperationQueue;
+@class NSOperationQueue;
 
 __attribute__((visibility("hidden")))
 @interface HMITaskServiceServer
 {
+    struct os_unfair_lock_s _lock;
     int _nextTaskID;
     NSOperationQueue *_operationQueue;
-    HMFUnfairLock *_lock;
 }
 
 + (id)logCategory;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) HMFUnfairLock *lock; // @synthesize lock=_lock;
 @property int nextTaskID; // @synthesize nextTaskID=_nextTaskID;
 @property(readonly) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
+- (id)buildUpdateTorsoModelTaskFromOptions:(id)arg1 error:(id *)arg2;
 - (id)buildSubmitFeedbackTaskFromOptions:(id)arg1 error:(id *)arg2;
 - (id)buildPersonsModelsSummaryTaskFromOptions:(id)arg1 error:(id *)arg2;
 - (id)buildTuriTrialUpdateTaskFromOptions:(id)arg1 error:(id *)arg2;

@@ -18,30 +18,14 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (void)setPlaceDataComponents:(int *)arg1 count:(unsigned long long)arg2;
-- (int)placeDataComponentsAtIndex:(unsigned long long)arg1;
-- (void)addPlaceDataComponents:(int)arg1;
-- (void)clearPlaceDataComponents;
-@property(readonly, nonatomic) int *placeDataComponents;
-@property(readonly, nonatomic) unsigned long long placeDataComponentsCount;
-- (int)StringAsActionComponent:(id)arg1;
-- (id)actionComponentAsString:(int)arg1;
-@property(nonatomic) _Bool hasActionComponent;
-@property(nonatomic) int actionComponent;
 - (void)dealloc;
 
 @end

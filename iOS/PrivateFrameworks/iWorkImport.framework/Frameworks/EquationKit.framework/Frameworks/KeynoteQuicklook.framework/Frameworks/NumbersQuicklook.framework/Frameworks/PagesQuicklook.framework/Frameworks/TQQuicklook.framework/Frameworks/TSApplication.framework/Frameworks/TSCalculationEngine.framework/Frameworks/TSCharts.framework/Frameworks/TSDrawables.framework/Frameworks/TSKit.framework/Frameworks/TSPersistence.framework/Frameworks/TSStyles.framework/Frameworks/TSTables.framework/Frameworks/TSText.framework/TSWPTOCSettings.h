@@ -14,19 +14,19 @@
 
 @interface TSWPTOCSettings : TSPObject <TSPCopying, TSSPreset, TSSStyleClient>
 {
-    int _scope;
     NSString *_displayName;
+    unsigned long long _scope;
     TSURetainedPointerKeyDictionary *_map;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) TSURetainedPointerKeyDictionary *map; // @synthesize map=_map;
-@property(nonatomic) int scope; // @synthesize scope=_scope;
+@property(nonatomic) unsigned long long scope; // @synthesize scope=_scope;
 @property(copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 - (void)upgradeWithStylesheet:(id)arg1;
 - (void)p_upgradeStyle:(id)arg1 withStylesheet:(id)arg2;
 - (void)replaceReferencedStylesUsingBlock:(CDUnknownBlockType)arg1;
-- (id)referencedStyles;
+@property(readonly, nonatomic) NSSet *referencedStyles;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 @property(readonly, copy) NSString *description;
 - (_Bool)showInTOCForParagraphStyle:(id)arg1;
@@ -37,9 +37,9 @@
 @property(readonly, nonatomic) NSSet *paragraphStylesShownInTOC;
 @property(readonly, nonatomic) NSSet *indexedStyles;
 - (void)saveToArchiver:(id)arg1;
-- (void)saveToArchive:(struct TOCSettingsArchive *)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)loadFromArchive:(const struct TOCSettingsArchive *)arg1 unarchiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 @property(readonly, nonatomic) NSString *presetKind;
 - (id)copyUsingDeepCopy;
 - (id)copyWithContext:(id)arg1;

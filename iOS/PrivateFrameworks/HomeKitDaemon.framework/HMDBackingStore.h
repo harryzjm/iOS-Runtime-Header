@@ -6,13 +6,15 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMDBackingStoreDataSource-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
 @class CKRecordID, HMDBackingStoreLocal, HMDHome, HMDHomeManager, HMDObjectLookup, NSString, NSUUID;
-@protocol HMDBackingStoreObjectProtocol;
+@protocol HMDBackingStoreDataSource, HMDBackingStoreObjectProtocol;
 
-@interface HMDBackingStore : HMFObject <HMFLogging>
+@interface HMDBackingStore : HMFObject <HMDBackingStoreDataSource, HMFLogging>
 {
+    _Bool _removedLegacyArchive;
     CKRecordID *_root;
     HMDBackingStoreLocal *_local;
     HMDHomeManager *_homeManager;
@@ -20,8 +22,11 @@
     NSUUID *_uuid;
     HMDObjectLookup *_lookup;
     id <HMDBackingStoreObjectProtocol> _delegate;
+    id <HMDBackingStoreDataSource> _dataSource;
 }
 
++ (id)_saveToLocalStoreWithReason:(id)arg1 homeManager:(id)arg2 shouldIncrementGenerationCounter:(_Bool)arg3 backingStore:(id)arg4;
++ (void)saveToPersistentStoreWithReason:(id)arg1 homeManager:(id)arg2 shouldIncrementGenerationCounter:(_Bool)arg3 backingStore:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 + (id)currentDevice;
 + (id)logCategory;
 + (id)resetBackingStore;
@@ -38,22 +43,29 @@
 @property(nonatomic) __weak HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 @property(retain, nonatomic) HMDBackingStoreLocal *local; // @synthesize local=_local;
 @property(readonly, nonatomic) CKRecordID *root; // @synthesize root=_root;
+@property(readonly) _Bool isAtomicSaveFeatureEnabled;
+@property(readonly) NSString *activeControllerKeyUsername;
+- (id)dataForPersistentStoreIncrementingGeneration:(_Bool)arg1 reason:(id)arg2;
+- (id)createHomeObjectLookupWithHome:(id)arg1;
+- (id)backingStoreOperationQueue;
+- (id)localBackingStore;
+- (id)createBackingStoreOperation;
+- (id)createBackingStoreLogAddTransactionOperationWithTransaction:(id)arg1;
 - (id)__fetchWithGroup:(id)arg1 uuids:(id)arg2 error:(id *)arg3;
 - (void)submitBlock:(CDUnknownBlockType)arg1;
 - (void)saveToPersistentStoreWithReason:(id)arg1 incrementGeneration:(_Bool)arg2;
-- (id)dumpState;
 - (id)logIdentifier;
 @property(readonly, copy) NSString *description;
 - (void)submit:(id)arg1;
 - (void)deleteModelObjects:(id)arg1 destination:(unsigned long long)arg2;
 - (void)updateModelObjects:(id)arg1 destination:(unsigned long long)arg2;
+- (void)commit:(id)arg1 run:(_Bool)arg2 save:(_Bool)arg3 archiveInline:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)commit:(id)arg1 run:(_Bool)arg2 save:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)transaction:(id)arg1 options:(id)arg2;
-- (id)transactionWithOptions:(id)arg1;
 - (id)initWithUUID:(id)arg1;
 - (id)initWithUUID:(id)arg1 home:(id)arg2;
 - (id)initWithUUID:(id)arg1 homeManager:(id)arg2;
-- (id)initWithUUID:(id)arg1 homeManager:(id)arg2 home:(id)arg3;
+- (id)initWithUUID:(id)arg1 homeManager:(id)arg2 home:(id)arg3 dataSource:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

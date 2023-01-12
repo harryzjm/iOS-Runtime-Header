@@ -12,6 +12,7 @@
 {
 }
 
+- (void)markResourcesPurgeableWithUrgency:(long long)arg1 assetUuids:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)getResetSyncStatusWithReply:(CDUnknownBlockType)arg1;
 - (void)forceSyncMomentShareWithUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)queryUserIdentitiesWithEmails:(id)arg1 phoneNumbers:(id)arg2 reply:(CDUnknownBlockType)arg3;
@@ -27,6 +28,7 @@
 - (void)setCloudPhotoLibraryEnabledState:(_Bool)arg1;
 - (void)syncCloudPhotoLibrary;
 - (void)shouldAutoEnableiCPLOnOSXWithReply:(CDUnknownBlockType)arg1;
+- (void)isReadyForAnalysisWithReply:(CDUnknownBlockType)arg1;
 - (void)isReadyForCloudPhotoLibraryWithReply:(CDUnknownBlockType)arg1;
 - (void)setPersonInfoDictionary:(id)arg1 forPersonID:(id)arg2;
 - (void)personInfoDictionaryForPersonID:(id)arg1 reply:(CDUnknownBlockType)arg2;

@@ -8,7 +8,7 @@
 
 #import <FileProvider/NSFileProviderItem-Protocol.h>
 
-@class NSData, NSDate, NSDictionary, NSError, NSNumber, NSPersonNameComponents, NSString, UTType;
+@class NSData, NSDate, NSDictionary, NSError, NSFileProviderItemVersion, NSNumber, NSPersonNameComponents, NSString, UTType;
 
 __attribute__((visibility("hidden")))
 @interface FPNSFileProviderItemHelper : NSObject <NSFileProviderItem>
@@ -44,8 +44,11 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=isDownloaded) _Bool downloaded;
 @property(readonly, nonatomic, getter=isDownloading) _Bool downloading;
 @property(readonly, copy, nonatomic) NSError *downloadingError;
+@property(readonly, nonatomic) NSDictionary *extendedAttributes;
 @property(readonly, copy, nonatomic) NSNumber *favoriteRank;
+@property(readonly, nonatomic) unsigned long long fileSystemFlags;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) NSFileProviderItemVersion *itemVersion;
 @property(readonly, copy, nonatomic) NSDate *lastUsedDate;
 @property(readonly, nonatomic) NSPersonNameComponents *mostRecentEditorNameComponents;
 @property(readonly, nonatomic, getter=isMostRecentVersionDownloaded) _Bool mostRecentVersionDownloaded;
@@ -53,8 +56,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=isShared) _Bool shared;
 @property(readonly, nonatomic, getter=isSharedByCurrentUser) _Bool sharedByCurrentUser;
 @property(readonly) Class superclass;
+@property(readonly, copy, nonatomic) NSString *symlinkTargetPath;
 @property(readonly, copy, nonatomic) NSData *tagData;
 @property(readonly, nonatomic, getter=isTrashed) _Bool trashed;
+@property(readonly, nonatomic) struct NSFileProviderTypeAndCreator typeAndCreator;
 @property(readonly, nonatomic, getter=isUploaded) _Bool uploaded;
 @property(readonly, nonatomic, getter=isUploading) _Bool uploading;
 @property(readonly, copy, nonatomic) NSError *uploadingError;

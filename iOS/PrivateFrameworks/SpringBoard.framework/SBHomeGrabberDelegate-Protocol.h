@@ -9,8 +9,10 @@
 @class SBHomeGrabberView;
 
 @protocol SBHomeGrabberDelegate <NSObject>
+- (double)additionalEdgeSpacingForHomeGrabberView:(SBHomeGrabberView *)arg1;
+
+@optional
 - (_Bool)shouldAllowAutoHideForHomeGrabberView:(SBHomeGrabberView *)arg1;
 - (_Bool)shouldAllowThinStyleForHomeGrabberView:(SBHomeGrabberView *)arg1;
-- (double)additionalEdgeSpacingForHomeGrabberView:(SBHomeGrabberView *)arg1;
 @end
 

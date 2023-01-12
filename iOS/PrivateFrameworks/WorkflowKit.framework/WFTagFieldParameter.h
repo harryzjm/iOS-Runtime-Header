@@ -8,7 +8,6 @@
 
 @interface WFTagFieldParameter
 {
-    _Bool _allowsTextEntry;
     long long _keyboardType;
     long long _autocapitalizationType;
     long long _autocorrectionType;
@@ -22,7 +21,6 @@
 @property(readonly, nonatomic) long long autocorrectionType; // @synthesize autocorrectionType=_autocorrectionType;
 @property(readonly, nonatomic) long long autocapitalizationType; // @synthesize autocapitalizationType=_autocapitalizationType;
 @property(readonly, nonatomic) long long keyboardType; // @synthesize keyboardType=_keyboardType;
-@property(readonly, nonatomic) _Bool allowsTextEntry; // @synthesize allowsTextEntry=_allowsTextEntry;
 - (_Bool)shouldAlignLabels;
 - (id)initWithDefinition:(id)arg1;
 - (Class)singleStateClass;

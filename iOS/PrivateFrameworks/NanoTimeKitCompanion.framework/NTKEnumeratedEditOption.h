@@ -15,6 +15,9 @@
 + (unsigned long long)indexOfOption:(id)arg1 forDevice:(id)arg2;
 + (id)optionAtIndex:(unsigned long long)arg1 forDevice:(id)arg2;
 + (unsigned long long)numberOfOptionsForDevice:(id)arg1;
++ (id)domain;
++ (id)legacyOptionWithPigmentEditOption:(id)arg1 forDevice:(id)arg2;
++ (id)legacyOptionWithName:(id)arg1 forDevice:(id)arg2;
 
 // Remaining properties
 @property(readonly, nonatomic) unsigned long long _value; // @dynamic _value;

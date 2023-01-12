@@ -21,11 +21,13 @@
     MISSING_TYPE *contextBuilder;
     MISSING_TYPE *eventManager;
     MISSING_TYPE *offerManager;
-    MISSING_TYPE *articlePaywallTypeProvider;
+    MISSING_TYPE *paywallTypeProvider;
     MISSING_TYPE *articlePurchaseOffersProvider;
     MISSING_TYPE *loadingIndicatorProvider;
     MISSING_TYPE *articleLoadingStateMachine;
     MISSING_TYPE *errorMessageFactory;
+    MISSING_TYPE *loggingIdentifier;
+    MISSING_TYPE *articleReadingHistoryRecorder;
 }
 
 @end

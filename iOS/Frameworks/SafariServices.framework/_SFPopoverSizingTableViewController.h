@@ -13,6 +13,7 @@
     UIBlurEffect *_backgroundBlurEffect;
     _Bool _didUpdateTranslucentAppearanceAtLeastOnce;
     _Bool _didHaveTranslucentAppearance;
+    struct CGSize _lastLayoutContentSize;
     _Bool _updatePreferredContentSizeAfterNextLayout;
 }
 
@@ -20,7 +21,7 @@
 + (id)tableViewCellForSizeEstimation;
 + (void)initialize;
 - (void).cxx_destruct;
-- (void)cancelPopoverKeyPressed;
+- (void)cancelKeyPressed;
 - (id)keyCommands;
 - (id)backgroundColorUsingTranslucentAppearance:(_Bool)arg1;
 - (id)_backgroundBlurEffect;

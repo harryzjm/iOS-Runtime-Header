@@ -8,10 +8,20 @@
 
 #import <NanoMailKitServer/NSCopying-Protocol.h>
 
+@class NSString;
+
 @interface NNMKProtoFetchRequestCompletedNotification : PBCodable <NSCopying>
 {
+    NSString *_mailboxId;
+    _Bool _failed;
+    struct {
+        unsigned int failed:1;
+    } _has;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool failed; // @synthesize failed=_failed;
+@property(retain, nonatomic) NSString *mailboxId; // @synthesize mailboxId=_mailboxId;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -21,6 +31,8 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasFailed;
+@property(readonly, nonatomic) _Bool hasMailboxId;
 
 @end
 

@@ -50,8 +50,8 @@
 - (long long)compare:(id)arg1;
 - (long long)compareToPosition:(double)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)saveToArchive:(struct TabArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct TabArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (id)initWithPosition:(double)arg1 alignment:(int)arg2 leader:(id)arg3;
 - (id)init;
 - (void)setPositionInInches:(double)arg1;

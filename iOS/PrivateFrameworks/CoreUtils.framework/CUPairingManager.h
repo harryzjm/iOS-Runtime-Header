@@ -19,6 +19,7 @@
     unsigned long long _monitorOptions;
     NSXPCConnection *_xpcCnx;
     _Bool _targetUserSession;
+    unsigned int _targetUserID;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     CDUnknownBlockType _identityCreatedHandler;
     CDUnknownBlockType _identityDeletedHandler;
@@ -32,6 +33,7 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSXPCListenerEndpoint *testListenerEndpoint; // @synthesize testListenerEndpoint=_testListenerEndpoint;
+@property(nonatomic) unsigned int targetUserID; // @synthesize targetUserID=_targetUserID;
 @property(nonatomic) _Bool targetUserSession; // @synthesize targetUserSession=_targetUserSession;
 @property(copy, nonatomic) CDUnknownBlockType pairedPeerChangedHandler; // @synthesize pairedPeerChangedHandler=_pairedPeerChangedHandler;
 @property(copy, nonatomic) CDUnknownBlockType pairedPeerRemovedHandler; // @synthesize pairedPeerRemovedHandler=_pairedPeerRemovedHandler;

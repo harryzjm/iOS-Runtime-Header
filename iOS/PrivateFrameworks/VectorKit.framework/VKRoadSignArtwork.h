@@ -16,10 +16,10 @@ __attribute__((visibility("hidden")))
     struct RoadSignTextMetrics _textMetrics;
     struct RoadSignGeneratedMetrics _generatedMetrics;
     struct RoadSignColoring _signColoring;
-    shared_ptr_611acf5c _glyph;
+    struct shared_ptr<md::LabelIcon> _glyph;
     struct CGImage *_cgGlyph;
-    struct vector<std::__1::pair<CGPoint, geo::Color<float, 4, geo::ColorSpace::Linear>>, std::__1::allocator<std::__1::pair<CGPoint, geo::Color<float, 4, geo::ColorSpace::Linear>>>> _debugPoints;
-    struct vector<std::__1::pair<CGRect, geo::Color<float, 4, geo::ColorSpace::Linear>>, std::__1::allocator<std::__1::pair<CGRect, geo::Color<float, 4, geo::ColorSpace::Linear>>>> _debugRects;
+    struct vector<std::pair<CGPoint, geo::Color<float, 4, geo::ColorSpace::Linear>>, std::allocator<std::pair<CGPoint, geo::Color<float, 4, geo::ColorSpace::Linear>>>> _debugPoints;
+    struct vector<std::pair<CGRect, geo::Color<float, 4, geo::ColorSpace::Linear>>, std::allocator<std::pair<CGRect, geo::Color<float, 4, geo::ColorSpace::Linear>>>> _debugRects;
     struct mutex _imageLock;
 }
 
@@ -32,10 +32,11 @@ __attribute__((visibility("hidden")))
 - (Box_8bd38d92)localSignBounds;
 - (Box_8bd38d92)localRenderBounds;
 - (Matrix_8746f91e)offsetPixelForPixel:(Matrix_8746f91e)arg1;
+- (const void *)glyph;
 - (id)image;
 - (void)dealloc;
-- (id)initWithLine:(struct __CTLine *)arg1 signMetrics:(struct RoadSignMetrics)arg2 textMetrics:(struct RoadSignTextMetrics)arg3 signColoring:(struct RoadSignColoring)arg4 glyph:(const shared_ptr_611acf5c *)arg5 cgGlyph:(struct CGImage *)arg6;
-- (id)initWithFramesetter:(struct __CTFramesetter *)arg1 signMetrics:(struct RoadSignMetrics)arg2 textMetrics:(struct RoadSignTextMetrics)arg3 signColoring:(struct RoadSignColoring)arg4 glyph:(const shared_ptr_611acf5c *)arg5 cgGlyph:(struct CGImage *)arg6;
+- (id)initWithLine:(struct __CTLine *)arg1 signMetrics:(struct RoadSignMetrics)arg2 textMetrics:(struct RoadSignTextMetrics)arg3 signColoring:(struct RoadSignColoring)arg4 glyph:(const void *)arg5 cgGlyph:(struct CGImage *)arg6;
+- (id)initWithFramesetter:(struct __CTFramesetter *)arg1 signMetrics:(struct RoadSignMetrics)arg2 textMetrics:(struct RoadSignTextMetrics)arg3 signColoring:(struct RoadSignColoring)arg4 glyph:(const void *)arg5 cgGlyph:(struct CGImage *)arg6;
 
 @end
 

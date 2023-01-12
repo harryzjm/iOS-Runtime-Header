@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <FileProvider/NSFileProviderItemDecorating-Protocol.h>
 #import <FileProvider/NSFileProviderItem_Private-Protocol.h>
 
-@class FPItem, NSData, NSDate, NSDictionary, NSError, NSFileProviderItemVersion, NSNumber, NSPersonNameComponents, NSSet, NSString, NSURL, UTType;
-@protocol NSFileProviderItemFlags;
+@class FPItem, NSArray, NSData, NSDate, NSDictionary, NSError, NSFileProviderItemVersion, NSNumber, NSPersonNameComponents, NSSet, NSString, NSURL, UTType;
 
 __attribute__((visibility("hidden")))
-@interface FPXEnumeratorAlternateContentsItem : NSObject <NSFileProviderItem_Private>
+@interface FPXEnumeratorAlternateContentsItem : NSObject <NSFileProviderItem_Private, NSFileProviderItemDecorating>
 {
     FPItem *_documentItem;
     NSDictionary *_resourceValues;
@@ -31,6 +31,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, getter=isDownloadRequested) NSNumber *downloadRequested;
 @property(readonly, copy) NSString *containerDisplayName;
 @property(readonly, copy) NSNumber *hasUnresolvedConflicts;
+@property(readonly, nonatomic) NSFileProviderItemVersion *itemVersion;
+@property(readonly, nonatomic) NSData *versionIdentifier;
+@property(readonly, nonatomic, getter=isTopLevelSharedItem) _Bool topLevelSharedItem;
+@property(readonly, nonatomic) NSArray *decorations;
 @property(readonly, nonatomic) NSDictionary *userInfo;
 @property(readonly, nonatomic) NSPersonNameComponents *mostRecentEditorNameComponents;
 @property(readonly, nonatomic) NSPersonNameComponents *ownerNameComponents;
@@ -65,8 +69,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=isExcludedFromSync) _Bool excludedFromSync;
 @property(readonly, nonatomic) NSDictionary *extendedAttributes;
 @property(readonly, copy) NSString *fileSystemFilename;
+@property(readonly, nonatomic) unsigned long long fileSystemFlags;
 @property(readonly, copy) NSURL *fileURL;
-@property(readonly, nonatomic) id <NSFileProviderItemFlags> flags;
 @property(readonly, nonatomic, getter=fp_isAddedByCurrentUser) _Bool fp_addedByCurrentUser;
 @property(readonly, nonatomic) NSPersonNameComponents *fp_addedByNameComponents;
 @property(readonly, copy) NSSet *fp_cloudContainerClientBundleIdentifiers;
@@ -77,13 +81,14 @@ __attribute__((visibility("hidden")))
 @property(readonly, getter=fp_isUbiquitous) _Bool fp_ubiquitous;
 @property(readonly) unsigned long long hash;
 @property(readonly, getter=isHidden) _Bool hidden;
-@property(readonly, nonatomic) NSFileProviderItemVersion *itemVersion;
 @property(readonly, nonatomic) NSString *preformattedMostRecentEditorName;
 @property(readonly, nonatomic) NSString *preformattedOwnerName;
 @property(readonly, copy) NSString *providerIdentifier;
+@property(readonly, copy, nonatomic) NSData *quarantineBlob;
 @property(readonly) Class superclass;
-@property(readonly, nonatomic, getter=isTopLevelSharedItem) _Bool topLevelSharedItem;
-@property(readonly, nonatomic) NSData *versionIdentifier;
+@property(readonly, copy, nonatomic) NSString *symlinkTargetPath;
+@property(getter=isSyncRoot) _Bool syncRoot;
+@property(readonly, nonatomic) struct NSFileProviderTypeAndCreator typeAndCreator;
 
 @end
 

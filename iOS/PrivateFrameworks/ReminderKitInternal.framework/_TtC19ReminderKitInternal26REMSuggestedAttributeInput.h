@@ -16,6 +16,10 @@
     MISSING_TYPE *list;
     MISSING_TYPE *dueDayOfWeek;
     MISSING_TYPE *location;
+    MISSING_TYPE *flagged;
+    MISSING_TYPE *priority;
+    MISSING_TYPE *tags;
+    MISSING_TYPE *contact;
 }
 
 @end

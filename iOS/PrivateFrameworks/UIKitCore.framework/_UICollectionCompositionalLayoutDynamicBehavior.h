@@ -4,7 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSCollectionLayoutVisibleItem;
 @protocol _NSCollectionLayoutVisibleItem;
 
 __attribute__((visibility("hidden")))
@@ -14,9 +13,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSCollectionLayoutVisibleItem *visibleItem; // @synthesize visibleItem=_visibleItem;
-- (id)item;
-- (id)initWithVisibleItem:(id)arg1;
 
 @end
 

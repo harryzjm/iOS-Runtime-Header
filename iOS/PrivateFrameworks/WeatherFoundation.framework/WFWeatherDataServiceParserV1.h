@@ -16,6 +16,9 @@
 
 + (id)dateFormatter;
 + (id)dateFormatter;
+- (id)parsedGradientStopFromDictionary:(id)arg1;
+- (id)parsedCategoryFromDictionary:(id)arg1;
+- (id)parseAQIScaleNamed:(id)arg1 data:(id)arg2 error:(id *)arg3;
 - (id)parseForecastDataFromDict:(id)arg1 types:(unsigned long long)arg2 location:(id)arg3 units:(int)arg4 locale:(id)arg5 date:(id)arg6 error:(id *)arg7 rules:(id)arg8;
 - (id)parseForecastData:(id)arg1 types:(unsigned long long)arg2 location:(id)arg3 locale:(id)arg4 date:(id)arg5 error:(id *)arg6 rules:(id)arg7;
 - (id)parseForecastData:(id)arg1 types:(unsigned long long)arg2 location:(id)arg3 locale:(id)arg4 date:(id)arg5 error:(id *)arg6;
@@ -39,6 +42,7 @@
 - (id)parseMetaDataFromData:(id)arg1;
 - (void)parseWeatherComponentsFromData:(id)arg1 intoConditions:(id)arg2 withUnit:(int)arg3;
 - (id)parseWeatherComponentsFromData:(id)arg1 withUnit:(int)arg2;
+- (_Bool)isProviderAttribution:(id)arg1 stillValidWithMetadata:(id)arg2;
 - (id)airQualityDictFromData:(id)arg1 types:(unsigned long long)arg2;
 - (id)parsePollutants:(id)arg1;
 - (id)parseAirQualityFromData:(id)arg1 locale:(id)arg2;

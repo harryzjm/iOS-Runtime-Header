@@ -9,6 +9,9 @@
 @class NSString, NSURL;
 
 @protocol IMFileTransferCenter <NSObject>
+- (_Bool)registerGUID:(NSString *)arg1 forNewOutgoingTransferWithLocalURL:(NSURL *)arg2;
+- (void)setAuxVideoForTransfer:(NSString *)arg1 value:(_Bool)arg2;
+- (void)setAuxImageForTransfer:(NSString *)arg1 value:(_Bool)arg2;
 - (void)registerTransferWithDaemon:(NSString *)arg1;
 - (NSString *)guidForNewOutgoingTransferWithLocalURL:(NSURL *)arg1;
 @end

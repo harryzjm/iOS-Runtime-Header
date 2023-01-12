@@ -10,6 +10,7 @@
 
 - (void)acceptVisitor:(id)arg1;
 - (id)defaultBuildChunkTitle;
+- (id)typeName;
 - (id)copyToInstantiateMasterPlaceholder;
 - (id)initWithKNPlaceholderInfo:(id)arg1;
 - (int)kind;

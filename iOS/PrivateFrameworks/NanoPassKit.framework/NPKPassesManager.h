@@ -11,24 +11,28 @@
 #import <NanoPassKit/PKGroupsControllerDelegate-Protocol.h>
 
 @class NPKStandaloneFirstUnlockCoordinator, NSArray, NSHashTable, NSString, PKGroupsController;
+@protocol OS_dispatch_queue;
 
 @interface NPKPassesManager : NSObject <PKGroupsControllerDelegate, PKGroupDelegate, NPKPassesDataSource>
 {
-    _Bool _shouldMemoryMapImages;
-    _Bool _shouldWaitForContentAndImageSets;
+    NSObject<OS_dispatch_queue> *_loadImageQueue;
     int _notifyToken;
     NSHashTable *_observers;
     PKGroupsController *_groupsController;
     NSArray *_currentPasses;
     NSArray *_currentPaymentPasses;
+    NSArray *_currentSecureElementPasses;
+    NSArray *_currentExpiredPasses;
     NPKStandaloneFirstUnlockCoordinator *_firstUnlockCoordinator;
+    unsigned long long _options;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) int notifyToken; // @synthesize notifyToken=_notifyToken;
-@property(nonatomic) _Bool shouldWaitForContentAndImageSets; // @synthesize shouldWaitForContentAndImageSets=_shouldWaitForContentAndImageSets;
-@property(nonatomic) _Bool shouldMemoryMapImages; // @synthesize shouldMemoryMapImages=_shouldMemoryMapImages;
+@property(nonatomic) unsigned long long options; // @synthesize options=_options;
 @property(retain, nonatomic) NPKStandaloneFirstUnlockCoordinator *firstUnlockCoordinator; // @synthesize firstUnlockCoordinator=_firstUnlockCoordinator;
+@property(retain, nonatomic) NSArray *currentExpiredPasses; // @synthesize currentExpiredPasses=_currentExpiredPasses;
+@property(retain, nonatomic) NSArray *currentSecureElementPasses; // @synthesize currentSecureElementPasses=_currentSecureElementPasses;
 @property(retain, nonatomic) NSArray *currentPaymentPasses; // @synthesize currentPaymentPasses=_currentPaymentPasses;
 @property(retain, nonatomic) NSArray *currentPasses; // @synthesize currentPasses=_currentPasses;
 @property(retain, nonatomic) PKGroupsController *groupsController; // @synthesize groupsController=_groupsController;
@@ -38,8 +42,10 @@
 - (void)_loadContentAndImageSetsForPass:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_reloadPassesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_reloadPasses;
+- (void)_didFinishLoadPasses;
+- (void)_loadImageSetFromPasses:(CDUnknownBlockType)arg1;
 - (void)_loadPasses;
-- (id)_reorderedPassesForDisplay:(id)arg1;
+- (void)_setGroupControllerGroupsDelegate;
 - (void)_updateCurrentPasses;
 - (void)reloadPassesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)reloadPasses;
@@ -47,10 +53,13 @@
 - (void)enableRemoteUpdates;
 - (void)setDefaultPaymentPass:(id)arg1;
 - (void)removePass:(id)arg1;
+- (void)unarchivePass:(id)arg1;
 - (void)movePassAtIndex:(unsigned long long)arg1 toIndex:(unsigned long long)arg2;
 - (_Bool)shouldAllowMovingItemAtIndex:(unsigned long long)arg1 toIndex:(unsigned long long)arg2;
 - (id)passForUniqueID:(id)arg1;
+- (id)secureElementPasses;
 - (id)paymentPasses;
+- (id)expiredPasses;
 - (id)passes;
 - (void)group:(id)arg1 didUpdatePass:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)group:(id)arg1 didRemovePass:(id)arg2 atIndex:(unsigned long long)arg3;
@@ -62,7 +71,7 @@
 - (void)unregisterObserver:(id)arg1;
 - (void)registerObserver:(id)arg1;
 - (void)dealloc;
-- (id)initWithShouldMemoryMapImages:(_Bool)arg1 shouldWaitForContentAndImageSets:(_Bool)arg2;
+- (id)initWithOptions:(unsigned long long)arg1;
 - (id)init;
 
 // Remaining properties

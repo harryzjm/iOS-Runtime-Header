@@ -33,6 +33,8 @@
 + (id)_foundationBaseUnits;
 + (id)_unitForStringPrewarmCache;
 + (void)_prewarmUnitForStringCache;
++ (id)_millimolesBloodGlucosePerLiterUnit;
++ (id)_milligramsPerDeciliterUnit;
 + (id)_countPerMinuteUnit;
 + (id)_countPerSecondUnit;
 + (id)equivalentsUnitWithMolarMass:(double)arg1 valence:(long long)arg2;

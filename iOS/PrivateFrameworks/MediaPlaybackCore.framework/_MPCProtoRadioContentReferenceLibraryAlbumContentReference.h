@@ -10,6 +10,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MPCProtoRadioContentReferenceLibraryAlbumContentReference : PBCodable <NSCopying>
 {
     long long _representativeItemCloudID;
@@ -19,10 +20,6 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) long long storeAdamID; // @synthesize storeAdamID=_storeAdamID;
-@property(nonatomic) long long representativeItemCloudID; // @synthesize representativeItemCloudID=_representativeItemCloudID;
-@property(retain, nonatomic) NSString *albumName; // @synthesize albumName=_albumName;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -30,9 +27,6 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasStoreAdamID;
-@property(nonatomic) _Bool hasRepresentativeItemCloudID;
-@property(readonly, nonatomic) _Bool hasAlbumName;
 
 @end
 

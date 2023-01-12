@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class HFMutableSetDiff, HFSetDiff, HFTriggerAnonymousActionSetBuilder, HMHome, HMShortcutAction, NSArray, WFHomeWorkflow;
+#import <Home/HFComparable-Protocol.h>
 
-@interface HFTriggerActionSetsBuilder : NSObject
+@class HFMutableSetDiff, HFSetDiff, HFTriggerAnonymousActionSetBuilder, HMHome, HMShortcutAction, NSArray, NSString, WFHomeWorkflow;
+
+@interface HFTriggerActionSetsBuilder : NSObject <HFComparable>
 {
     HFTriggerAnonymousActionSetBuilder *_anonymousActionSetBuilder;
     HMHome *_home;
@@ -57,6 +59,13 @@
 - (id)_generateSummaryInformationForShortcutOwnedTrigger;
 - (id)_generateSummaryInformation;
 - (id)actionSetsSummary;
+@property(readonly) unsigned long long hash;
+- (id)compareToObject:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) Class superclass;
 
 @end
 

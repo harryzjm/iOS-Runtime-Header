@@ -13,9 +13,5 @@
     long long _lastSyncStatusCount;
 }
 
-@property(nonatomic) long long lastSyncStatusCount; // @synthesize lastSyncStatusCount=_lastSyncStatusCount;
-@property(nonatomic) long long mostRecentStatusCount; // @synthesize mostRecentStatusCount=_mostRecentStatusCount;
-@property(nonatomic) long long serverCount; // @synthesize serverCount=_serverCount;
-
 @end
 

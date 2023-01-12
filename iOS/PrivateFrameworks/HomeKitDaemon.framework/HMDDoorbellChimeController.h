@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMDCharacteristicsAvailabilityListenerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
@@ -12,28 +12,33 @@
 @class NSDate, NSSet, NSString;
 @protocol HMDDoorbellChimeControllerContext;
 
-@interface HMDDoorbellChimeController : NSObject <HMFLogging, HMDCharacteristicsAvailabilityListenerDelegate>
+@interface HMDDoorbellChimeController : HMFObject <HMDCharacteristicsAvailabilityListenerDelegate, HMFLogging>
 {
+    id <HMDDoorbellChimeControllerContext> _context;
     NSSet *_availableCharacteristics;
     NSDate *_lastUnidentifiedChimeDate;
-    id <HMDDoorbellChimeControllerContext> _context;
 }
 
 + (id)logCategory;
 - (void).cxx_destruct;
-@property(retain) id <HMDDoorbellChimeControllerContext> context; // @synthesize context=_context;
 @property(retain) NSDate *lastUnidentifiedChimeDate; // @synthesize lastUnidentifiedChimeDate=_lastUnidentifiedChimeDate;
-@property(retain) NSSet *availableCharacteristics; // @synthesize availableCharacteristics=_availableCharacteristics;
-- (void)dealloc;
+@property(copy) NSSet *availableCharacteristics; // @synthesize availableCharacteristics=_availableCharacteristics;
+@property(readonly) id <HMDDoorbellChimeControllerContext> context; // @synthesize context=_context;
 - (void)listener:(id)arg1 didUpdateAvailableCharacteristics:(id)arg2;
 - (id)logIdentifier;
+- (void)handleCharacteristicsValueUpdatedNotification:(id)arg1;
+- (unsigned long long)_numHomePodsWithDoorbellChimeEnabled;
+- (_Bool)_isDoorbellChimeSettingEnabledForHomePodAccessory:(id)arg1;
+- (id)_destinationIDsToNotifyForDoorbellChimeUsingCoreUtilAction;
+- (void)_chimeCoreUtilDoorbellWithDestination:(id)arg1 shouldPlayChime:(_Bool)arg2 logEvent:(id)arg3 personIdentificationText:(id)arg4;
 - (void)_notifyAllAccessoriesForDoorbellPressAndPlayChimeSound:(_Bool)arg1 attemptCloudPullIfNoPersonsFound:(_Bool)arg2;
-- (void)configureWithContext:(id)arg1;
-- (void)_handleCharacteristicsValueUpdated:(id)arg1;
-- (void)handleUpdatedPersonIdentificationInformation;
-- (void)handleCharacteristicsValueUpdated:(id)arg1;
+- (void)_handleCharacteristicsValueUpdatedNotification:(id)arg1;
 - (id)clientIdentifier;
-- (id)init;
+- (void)handleUpdatedPersonIdentificationInformation;
+- (void)configure;
+- (void)dealloc;
+- (id)initWithContext:(id)arg1;
+- (id)initWithWorkQueue:(id)arg1 accessory:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

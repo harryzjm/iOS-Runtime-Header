@@ -7,18 +7,20 @@
 #import <objc/NSObject.h>
 
 @class NSError;
+@protocol FPXOperationService;
 
 __attribute__((visibility("hidden")))
 @interface FPBlockRecoveryAttempter : NSObject
 {
     CDUnknownBlockType _recoveryBlock;
+    id <FPXOperationService> _fpxOperationService;
     NSError *_expectedError;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak NSError *expectedError; // @synthesize expectedError=_expectedError;
 - (_Bool)attemptRecoveryFromError:(id)arg1 optionIndex:(unsigned long long)arg2;
-- (id)initWithBlock:(CDUnknownBlockType)arg1;
+- (id)initWithBlock:(CDUnknownBlockType)arg1 operationService:(id)arg2;
 
 @end
 

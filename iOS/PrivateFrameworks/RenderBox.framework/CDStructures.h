@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSError, NSObject, NSURL, NSXMLParser, RBDevice, RBDisplayList, RBFill, RBShape;
+@class MISSING_TYPE, NSData, NSObject, RBDevice, RBDisplayList, RBImageQueueLayer;
 
 #pragma mark Function Pointers and Blocks
 
@@ -14,19 +14,12 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct Bounds {
-    int x;
-    int y;
-    int w;
-    int h;
+struct AffineTransform {
+    MISSING_TYPE *ab__cd__txy;
 };
 
-struct Buffer;
-
-struct BufferRegion {
-    struct Buffer *_field1;
-    unsigned long long _field2;
-    unsigned long long _field3;
+struct Bounds {
+    MISSING_TYPE *origin__size;
 };
 
 struct CGAffineTransform {
@@ -37,8 +30,6 @@ struct CGAffineTransform {
     double tx;
     double ty;
 };
-
-struct CGGlyphLock;
 
 struct CGImage;
 
@@ -57,81 +48,41 @@ struct CGSize {
     double height;
 };
 
-struct Clip;
+struct ClipNode;
 
-struct Device {
-    CDUnknownFunctionPointerType *_field1;
-    unsigned int _field2;
-    struct objc_ptr<id<MTLDevice>> _field3;
-    struct objc_ptr<id<MTLLibrary>> _field4;
-    struct objc_ptr<id<MTLPipelineLibrary>> _field5;
-    struct objc_ptr<id<MTLCommandQueue>> _field6;
-    struct objc_ptr<id<MTLCaptureScope>> _field7;
-    struct BufferRegion _field8;
-    struct BufferRegion _field9;
-    struct BufferRegion _field10;
-    struct objc_ptr<id<MTLTexture>> _field11;
-    struct spin_lock _field12;
-    unsigned int _field13;
-    struct atomic<unsigned int> _field14;
-    struct vector<RB::Device::FrameContinuation, 2, unsigned long> _field15;
-    unsigned long long _field16;
-    unsigned long long _field17;
-    _Bool _field18;
-    _Bool _field19;
-    _Bool _field20;
-    _Bool _field21;
-    struct Heap _field22;
-    struct list<RB::refcounted_ptr<RB::Buffer>, std::__1::allocator<RB::refcounted_ptr<RB::Buffer>>> _field23;
-    unsigned long long _field24;
-    struct list<RB::refcounted_ptr<RB::Texture>, std::__1::allocator<RB::refcounted_ptr<RB::Texture>>> _field25;
-    struct list<RB::refcounted_ptr<RB::Texture>, std::__1::allocator<RB::refcounted_ptr<RB::Texture>>> _field26;
-    unsigned long long _field27;
-    struct Table<const RB::FormattedRenderState *, RB::Device::RenderPipelineEntry *> _field28;
-    struct unordered_set<RB::FormattedRenderState, std::__1::hash<RB::FormattedRenderState>, std::__1::equal_to<RB::FormattedRenderState>, std::__1::allocator<RB::FormattedRenderState>> _field29;
-    _Bool _field30;
-    _Bool _field31;
-    struct objc_ptr<id<MTLSamplerState>> _field32[6];
-    struct objc_ptr<id<MTLDepthStencilState>> _field33[3][6];
-    struct Table<unsigned long, RB::Texture *> _field34;
-    struct unique_ptr<RB::GlyphPathCache, std::__1::default_delete<RB::GlyphPathCache>> _field35;
-    struct CGGlyphLock *_field36;
-};
+struct Contents;
+
+struct Device;
 
 struct DisplayList {
-    struct Heap _heap;
-    struct Layer *_layer;
+    unsigned int _crop_seed;
+    unsigned int _layer_id;
+    struct unique_ptr<RB::DisplayList::Contents, RB::Destroy<RB::DisplayList::Contents>> _contents;
+    struct Pool<RB::DisplayList::State, const RB::Malloc> _state_pool;
+    struct Pool<RB::DisplayList::Layer, RB::Heap> _layer_pool;
+    struct Layer *_active_layer;
+    struct State _root_state;
     struct State *_state;
-    struct Pool<RB::DisplayList::State> _state_pool;
-    struct Pool<RB::DisplayList::Layer> _layer_pool;
-    struct Clip *_all_clips;
-    struct Style *_all_styles;
-    _Bool _empty;
-    unsigned char _required_depth;
 };
+
+struct DisplayListPredicate {
+    struct vector<RB::DisplayListPredicate::Term, 1, unsigned int> _terms;
+};
+
+struct DisplayListTransform {
+    struct vector<RB::DisplayListTransform::Term, 1, unsigned int> _terms;
+};
+
+struct Document;
 
 struct Drawable;
-
-struct Element;
-
-struct FrameContinuation;
-
-struct GlyphPathCache;
-
-struct Heap {
-    unsigned long long _page_size;
-    struct Page *_pages;
-    char *_sbrk;
-    char *_sbrk_end;
-};
-
-struct ImageQueue;
 
 struct InlineHeap<256> {
     unsigned long long _page_size;
     struct Page *_pages;
     char *_sbrk;
     char *_sbrk_end;
+    struct ObjectTable *_objects;
     unsigned char _buffer[256];
 };
 
@@ -140,234 +91,92 @@ struct InlineHeap<64> {
     struct Page *_pages;
     char *_sbrk;
     char *_sbrk_end;
+    struct ObjectTable *_objects;
     unsigned char _buffer[64];
+};
+
+struct Invertible {
+    struct DisplayListPredicate predicate;
+    _Bool inverts_result;
 };
 
 struct Item;
 
 struct Layer;
 
-struct Node;
+struct ObjectTable;
 
 struct Page;
 
-struct Pool<RB::DisplayList::Layer> {
+struct Pool<RB::DisplayList::Layer, RB::Heap> {
     struct Item *_freelist;
 };
 
-struct Pool<RB::DisplayList::State> {
+struct Pool<RB::DisplayList::State, const RB::Malloc> {
     struct Item *_freelist;
-};
-
-struct Pool<RB::UntypedTable::Node> {
-    struct Item *_field1;
 };
 
 struct RBFillData {
     int type;
-    unsigned char data[144];
+    unsigned char data[104];
 };
 
 struct RBShapeData {
     int type;
-    unsigned char data[144];
+    unsigned char data[88];
 };
 
 struct Rect {
-    float _field1;
-    float _field2;
-    float _field3;
-    float _field4;
+    MISSING_TYPE *origin__size;
 };
-
-struct RenderFrame {
-    struct Device *_field1;
-    struct Drawable *_field2;
-    struct objc_ptr<id<MTLCommandBuffer>> _field3;
-    struct unique_ptr<RB::RenderQueue, std::__1::default_delete<RB::RenderQueue>> _field4;
-    unsigned long long _field5[5];
-    double _field6;
-    unsigned int _field7;
-    unsigned int _field8;
-    unsigned int _field9;
-    struct vector<RB::refcounted_ptr<RB::Buffer>, std::__1::allocator<RB::refcounted_ptr<RB::Buffer>>> _field10;
-    struct vector<unsigned long, std::__1::allocator<unsigned long>> _field11;
-    struct forward_list<RB::refcounted_ptr<RB::Texture>, std::__1::allocator<RB::refcounted_ptr<RB::Texture>>> _field12;
-    struct Buffer *_field13;
-    unsigned long long _field14;
-    _Bool _field15;
-    struct Table<const RB::RenderFrame::RegionKey *, const RB::RenderFrame::RegionEntry *> _field16;
-};
-
-struct RenderQueue;
 
 struct State {
-    CDUnknownFunctionPointerType *_field1;
-    struct State *_field2;
+    struct State *_next;
+    void *_context;
+    struct AffineTransform _ctm;
+    struct ClipNode *_clip;
+    struct Style *_style;
+    struct AffineTransform *_copied_ctm;
+    struct Rect _crop;
+    unsigned int _layer_id;
+    unsigned int _crop_seed;
+    struct optional<RB::ColorSpace> _default_color_space;
 };
 
 struct Style;
 
-struct Table<const RB::FormattedRenderState *, RB::Device::RenderPipelineEntry *> {
-    CDUnknownFunctionPointerType _field1;
-    CDUnknownFunctionPointerType _field2;
-    CDUnknownFunctionPointerType _field3;
-    CDUnknownFunctionPointerType _field4;
-    struct Heap *_field5;
-    struct Pool<RB::UntypedTable::Node> _field6;
-    struct Node **_field7;
-    unsigned long long _field8;
-    unsigned long long _field9;
-    unsigned int _field10;
-    _Bool _field11;
-    _Bool _field12;
-};
-
-struct Table<const RB::RenderFrame::RegionKey *, const RB::RenderFrame::RegionEntry *> {
-    CDUnknownFunctionPointerType _field1;
-    CDUnknownFunctionPointerType _field2;
-    CDUnknownFunctionPointerType _field3;
-    CDUnknownFunctionPointerType _field4;
-    struct Heap *_field5;
-    struct Pool<RB::UntypedTable::Node> _field6;
-    struct Node **_field7;
-    unsigned long long _field8;
-    unsigned long long _field9;
-    unsigned int _field10;
-    _Bool _field11;
-    _Bool _field12;
-};
-
-struct Table<unsigned long, RB::Texture *> {
-    CDUnknownFunctionPointerType _field1;
-    CDUnknownFunctionPointerType _field2;
-    CDUnknownFunctionPointerType _field3;
-    CDUnknownFunctionPointerType _field4;
-    struct Heap *_field5;
-    struct Pool<RB::UntypedTable::Node> _field6;
-    struct Node **_field7;
-    unsigned long long _field8;
-    unsigned long long _field9;
-    unsigned int _field10;
-    _Bool _field11;
-    _Bool _field12;
-};
+struct Term;
 
 struct Texture;
 
-struct Tree {
-    struct refcounted_ptr<RB::XMLRecorder::Element> _root;
-    struct stack<RB::XMLRecorder::Element *, std::__1::deque<RB::XMLRecorder::Element *, std::__1::allocator<RB::XMLRecorder::Element *>>> _stack;
-};
-
-struct __hash_node_base<std::__1::__hash_node<RB::FormattedRenderState, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<RB::FormattedRenderState, void *>*> *_field1;
-};
-
-struct __list_node_base<RB::refcounted_ptr<RB::Buffer>, void *> {
-    struct __list_node_base<RB::refcounted_ptr<RB::Buffer>, void *> *_field1;
-    struct __list_node_base<RB::refcounted_ptr<RB::Buffer>, void *> *_field2;
-};
-
-struct __list_node_base<RB::refcounted_ptr<RB::Texture>, void *> {
-    struct __list_node_base<RB::refcounted_ptr<RB::Texture>, void *> *_field1;
-    struct __list_node_base<RB::refcounted_ptr<RB::Texture>, void *> *_field2;
-};
+struct _CAImageQueue;
 
 struct atomic<bool> {
-    struct __cxx_atomic_impl<bool, std::__1::__cxx_atomic_base_impl<bool>> {
+    struct __cxx_atomic_impl<bool, std::__cxx_atomic_base_impl<bool>> {
         _Atomic _Bool __a_value;
     } __a_;
 };
 
 struct atomic<unsigned int> {
-    struct __cxx_atomic_impl<unsigned int, std::__1::__cxx_atomic_base_impl<unsigned int>> {
+    struct __cxx_atomic_impl<unsigned int, std::__cxx_atomic_base_impl<unsigned int>> {
         _Atomic unsigned int __a_value;
     } __a_;
-};
-
-struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
-    struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__rep, std::__1::allocator<char>> {
-        struct __rep {
-            union {
-                struct __long {
-                    char *__data_;
-                    unsigned long long __size_;
-                    unsigned long long __cap_;
-                } __l;
-                struct __short {
-                    char __data_[23];
-                    struct {
-                        unsigned char __size_;
-                    } ;
-                } __s;
-                struct __raw {
-                    unsigned long long __words[3];
-                } __r;
-            } ;
-        } __value_;
-    } __r_;
 };
 
 struct cf_ptr<CGImage *> {
     struct CGImage *_p;
 };
 
-struct cf_ptr<__CFDictionary *> {
-    struct __CFDictionary *_p;
+struct cf_ptr<_CAImageQueue *> {
+    struct _CAImageQueue *_p;
 };
 
-struct deque<RB::XMLRecorder::Element *, std::__1::allocator<RB::XMLRecorder::Element *>> {
-    struct __split_buffer<RB::XMLRecorder::Element **, std::__1::allocator<RB::XMLRecorder::Element **>> {
-        struct Element ***__first_;
-        struct Element ***__begin_;
-        struct Element ***__end_;
-        struct __compressed_pair<RB::XMLRecorder::Element ***, std::__1::allocator<RB::XMLRecorder::Element **>> {
-            struct Element ***__value_;
-        } __end_cap_;
-    } __map_;
-    unsigned long long __start_;
-    struct __compressed_pair<unsigned long, std::__1::allocator<RB::XMLRecorder::Element *>> {
-        unsigned long long __value_;
-    } __size_;
-};
-
-struct forward_list<RB::refcounted_ptr<RB::Texture>, std::__1::allocator<RB::refcounted_ptr<RB::Texture>>> {
-    struct __compressed_pair<std::__1::__forward_begin_node<std::__1::__forward_list_node<RB::refcounted_ptr<RB::Texture>, void *>*>, std::__1::allocator<std::__1::__forward_list_node<RB::refcounted_ptr<RB::Texture>, void *>>> {
-        struct __forward_begin_node<std::__1::__forward_list_node<RB::refcounted_ptr<RB::Texture>, void *>*> {
-            struct __forward_list_node<RB::refcounted_ptr<RB::Texture>, void *> *_field1;
-        } _field1;
-    } _field1;
-};
-
-struct list<RB::refcounted_ptr<RB::Buffer>, std::__1::allocator<RB::refcounted_ptr<RB::Buffer>>> {
-    struct __list_node_base<RB::refcounted_ptr<RB::Buffer>, void *> _field1;
-    struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<RB::refcounted_ptr<RB::Buffer>, void *>>> {
-        unsigned long long _field1;
-    } _field2;
-};
-
-struct list<RB::refcounted_ptr<RB::Texture>, std::__1::allocator<RB::refcounted_ptr<RB::Texture>>> {
-    struct __list_node_base<RB::refcounted_ptr<RB::Texture>, void *> _field1;
-    struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<RB::refcounted_ptr<RB::Texture>, void *>>> {
-        unsigned long long _field1;
-    } _field2;
-};
-
-struct objc_ptr<NSError *> {
-    NSError *_p;
+struct objc_ptr<NSData *> {
+    NSData *_p;
 };
 
 struct objc_ptr<NSObject<OS_dispatch_queue>*> {
     NSObject *_p;
-};
-
-struct objc_ptr<NSURL *> {
-    NSURL *_p;
-};
-
-struct objc_ptr<NSXMLParser *> {
-    NSXMLParser *_p;
 };
 
 struct objc_ptr<RBDevice *> {
@@ -378,184 +187,97 @@ struct objc_ptr<RBDisplayList *> {
     RBDisplayList *_p;
 };
 
-struct objc_ptr<RBFill *> {
-    RBFill *_p;
-};
-
-struct objc_ptr<RBShape *> {
-    RBShape *_p;
-};
-
-struct objc_ptr<id<MTLCaptureScope>> {
-    id _field1;
-};
-
-struct objc_ptr<id<MTLCommandBuffer>> {
-    id _field1;
-};
-
-struct objc_ptr<id<MTLCommandQueue>> {
-    id _field1;
-};
-
-struct objc_ptr<id<MTLDepthStencilState>> {
-    id _field1;
+struct objc_ptr<RBImageQueueLayer *> {
+    RBImageQueueLayer *_p;
 };
 
 struct objc_ptr<id<MTLDevice>> {
     id _p;
 };
 
-struct objc_ptr<id<MTLLibrary>> {
-    id _field1;
-};
-
-struct objc_ptr<id<MTLPipelineLibrary>> {
-    id _field1;
-};
-
-struct objc_ptr<id<MTLSamplerState>> {
-    id _field1;
-};
-
 struct objc_ptr<id<MTLTexture>> {
-    id _field1;
+    id _p;
+};
+
+struct objc_ptr<id<RBDisplayListContents>> {
+    id _p;
 };
 
 struct objc_ptr<void (^)(id<RBDrawableStatistics>)> {
     CDUnknownBlockType _p;
 };
 
+struct optional<RB::ColorSpace> {
+    union {
+        char __null_state_;
+        unsigned char __val_;
+    } ;
+    _Bool __engaged_;
+};
+
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
 
-struct pair<RB::cf_ptr<CGContext *>, RB::ContextDelegate *>;
-
-struct pair<const char *, RB::refcounted_ptr<RB::XMLRecorder::AttrValue>>;
-
-struct refcounted_ptr<(anonymous namespace)::ImageQueue> {
-    struct ImageQueue *_p;
-};
-
-struct refcounted_ptr<RB::Buffer>;
-
 struct refcounted_ptr<RB::Device> {
     struct Device *_p;
+};
+
+struct refcounted_ptr<RB::Drawable> {
+    struct Drawable *_p;
 };
 
 struct refcounted_ptr<RB::Texture> {
     struct Texture *_p;
 };
 
-struct refcounted_ptr<RB::XMLRecorder::Element> {
-    struct Element *_p;
-};
-
 struct spin_lock {
     struct os_unfair_lock_s _lock;
 };
 
-struct stack<RB::XMLRecorder::Element *, std::__1::deque<RB::XMLRecorder::Element *, std::__1::allocator<RB::XMLRecorder::Element *>>> {
-    struct deque<RB::XMLRecorder::Element *, std::__1::allocator<RB::XMLRecorder::Element *>> c;
-};
-
-struct unique_ptr<RB::Drawable, std::__1::default_delete<RB::Drawable>> {
-    struct __compressed_pair<RB::Drawable *, std::__1::default_delete<RB::Drawable>> {
-        struct Drawable *__value_;
+struct unique_ptr<RB::DisplayList::Contents, RB::Destroy<RB::DisplayList::Contents>> {
+    struct __compressed_pair<RB::DisplayList::Contents *, RB::Destroy<RB::DisplayList::Contents>> {
+        struct Contents *__value_;
     } __ptr_;
 };
 
-struct unique_ptr<RB::GlyphPathCache, std::__1::default_delete<RB::GlyphPathCache>> {
-    struct __compressed_pair<RB::GlyphPathCache *, std::__1::default_delete<RB::GlyphPathCache>> {
-        struct GlyphPathCache *_field1;
-    } _field1;
+struct unique_ptr<RB::XML::Document, std::default_delete<RB::XML::Document>> {
+    struct __compressed_pair<RB::XML::Document *, std::default_delete<RB::XML::Document>> {
+        struct Document *__value_;
+    } __ptr_;
 };
 
-struct unique_ptr<RB::RenderQueue, std::__1::default_delete<RB::RenderQueue>> {
-    struct __compressed_pair<RB::RenderQueue *, std::__1::default_delete<RB::RenderQueue>> {
-        struct RenderQueue *_field1;
-    } _field1;
+struct vector<RB::DisplayListPredicate::Term, 1, unsigned int> {
+    unsigned char _p[24];
+    struct Term *_p;
+    unsigned int _size;
+    unsigned int _capacity;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<RB::FormattedRenderState, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<RB::FormattedRenderState, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<RB::FormattedRenderState, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<RB::FormattedRenderState, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<RB::FormattedRenderState, void *>*> **_field1;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<RB::FormattedRenderState, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<RB::FormattedRenderState, void *>*>*>> {
-                unsigned long long _field1;
-            } _field1;
-        } _field2;
-    } _field1;
+struct vector<RB::DisplayListTransform::Term, 1, unsigned int> {
+    unsigned char _p[24];
+    struct Term *_p;
+    unsigned int _size;
+    unsigned int _capacity;
 };
 
-struct unordered_set<RB::FormattedRenderState, std::__1::hash<RB::FormattedRenderState>, std::__1::equal_to<RB::FormattedRenderState>, std::__1::allocator<RB::FormattedRenderState>> {
-    struct __hash_table<RB::FormattedRenderState, std::__1::hash<RB::FormattedRenderState>, std::__1::equal_to<RB::FormattedRenderState>, std::__1::allocator<RB::FormattedRenderState>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<RB::FormattedRenderState, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<RB::FormattedRenderState, void *>*>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<RB::FormattedRenderState, void *>*>, std::__1::allocator<std::__1::__hash_node<RB::FormattedRenderState, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<RB::FormattedRenderState, void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::hash<RB::FormattedRenderState>> {
-            unsigned long long _field1;
-        } _field3;
-        struct __compressed_pair<float, std::__1::equal_to<RB::FormattedRenderState>> {
-            float _field1;
-        } _field4;
-    } _field1;
-};
-
-struct vector<RB::Device::FrameContinuation, 2, unsigned long> {
-    unsigned char _field1[48];
-    struct FrameContinuation *_field2;
-    unsigned long long _field3;
-    unsigned long long _field4;
-};
-
-struct vector<RB::refcounted_ptr<RB::Buffer>, std::__1::allocator<RB::refcounted_ptr<RB::Buffer>>> {
-    struct refcounted_ptr<RB::Buffer> *_field1;
-    struct refcounted_ptr<RB::Buffer> *_field2;
-    struct __compressed_pair<RB::refcounted_ptr<RB::Buffer>*, std::__1::allocator<RB::refcounted_ptr<RB::Buffer>>> {
-        struct refcounted_ptr<RB::Buffer> *_field1;
-    } _field3;
-};
-
-struct vector<RBStrokeElement, std::__1::allocator<RBStrokeElement>> {
-    unsigned char *__begin_;
-    unsigned char *__end_;
-    struct __compressed_pair<RBStrokeElement *, std::__1::allocator<RBStrokeElement>> {
-        unsigned char *__value_;
-    } __end_cap_;
-};
-
-struct vector<float, std::__1::allocator<float>> {
-    float *__begin_;
-    float *__end_;
-    struct __compressed_pair<float *, std::__1::allocator<float>> {
-        float *__value_;
-    } __end_cap_;
-};
-
-struct vector<std::__1::pair<RB::cf_ptr<CGContext *>, RB::ContextDelegate *>, 1, unsigned long> {
-    unsigned char _p[16];
-    struct pair<RB::cf_ptr<CGContext *>, RB::ContextDelegate *> *_p;
+struct vector<RBStrokeElement, 0, unsigned long> {
+    unsigned char *_p;
     unsigned long long _size;
     unsigned long long _capacity;
 };
 
-struct vector<std::__1::pair<const char *, RB::refcounted_ptr<RB::XMLRecorder::AttrValue>>, std::__1::allocator<std::__1::pair<const char *, RB::refcounted_ptr<RB::XMLRecorder::AttrValue>>>> {
-    struct pair<const char *, RB::refcounted_ptr<RB::XMLRecorder::AttrValue>> *__begin_;
-    struct pair<const char *, RB::refcounted_ptr<RB::XMLRecorder::AttrValue>> *__end_;
-    struct __compressed_pair<std::__1::pair<const char *, RB::refcounted_ptr<RB::XMLRecorder::AttrValue>>*, std::__1::allocator<std::__1::pair<const char *, RB::refcounted_ptr<RB::XMLRecorder::AttrValue>>>> {
-        struct pair<const char *, RB::refcounted_ptr<RB::XMLRecorder::AttrValue>> *__value_;
-    } __end_cap_;
+struct vector<float, 0, unsigned long> {
+    float *_p;
+    unsigned long long _size;
+    unsigned long long _capacity;
 };
 
-struct vector<unsigned long, std::__1::allocator<unsigned long>> {
-    unsigned long long *_field1;
-    unsigned long long *_field2;
-    struct __compressed_pair<unsigned long *, std::__1::allocator<unsigned long>> {
-        unsigned long long *_field1;
-    } _field3;
+struct vector<std::pair<RB::cf_ptr<CGContext *>, RB::ContextDelegate *>, 1, unsigned long> {
+    unsigned char _p[16];
+    void *_p;
+    unsigned long long _size;
+    unsigned long long _capacity;
 };
 
 #pragma mark Typedef'd Structures

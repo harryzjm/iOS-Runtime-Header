@@ -19,8 +19,11 @@
 @property(readonly, nonatomic) struct CGContext *CGContext; // @synthesize CGContext=_CGContext;
 @property(readonly, nonatomic) double scale; // @synthesize scale=_scale;
 @property(readonly, nonatomic) struct CGSize size; // @synthesize size=_size;
+- (void)resignCurrent;
+- (void)becomeCurrent;
 - (id)imageWithOrientation:(unsigned int)arg1;
 - (void)dealloc;
+- (id)initWithSize:(struct CGSize)arg1 opaque:(_Bool)arg2 scale:(double)arg3 colorspace:(struct CGColorSpace *)arg4;
 - (id)initWithSize:(struct CGSize)arg1 opaque:(_Bool)arg2 scale:(double)arg3;
 - (id)initWithCGContext:(struct CGContext *)arg1 scale:(double)arg2;
 - (id)image;

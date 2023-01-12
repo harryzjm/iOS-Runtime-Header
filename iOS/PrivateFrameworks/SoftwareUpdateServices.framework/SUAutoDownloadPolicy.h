@@ -11,6 +11,7 @@
 - (id)computeTimeOfWifiOnlyPeriodEndFromDate:(id)arg1;
 - (id)computAutoDownloadEndDateFromDate:(id)arg1;
 - (unsigned long long)wifiOnlyPeriodInDays;
+- (_Bool)is5GDownloadAllowed;
 - (_Bool)allowExpensiveNetwork;
 - (_Bool)isDownloadAllowableForCellular;
 - (id)initWithDescriptor:(id)arg1;

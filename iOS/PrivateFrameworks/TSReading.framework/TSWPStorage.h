@@ -186,7 +186,7 @@
 - (void)setParagraphStyle:(id)arg1 atParIndex:(unsigned long long)arg2 undoTransaction:(struct TSWPStorageTransaction *)arg3;
 - (id)paragraphStyleAtParIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
 - (void)setDictationAndAutocorrection:(id)arg1 forCharRange:(struct _NSRange)arg2 undoTransaction:(struct TSWPStorageTransaction *)arg3;
-- (void)addAllDictationAndAutocorrectionKeyRangesInRange:(struct _NSRange)arg1 toRanges:(struct TSWPRangeVector *)arg2;
+- (void)addAllDictationAndAutocorrectionKeyRangesInRange:(struct _NSRange)arg1 toRanges:(void *)arg2;
 - (id)dictationAndAutocorrectionKeyAtCharIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
 - (id)languageAtParIndex:(unsigned long long)arg1 useStringTokenizer:(_Bool)arg2 useCreationLanguage:(_Bool)arg3;
 - (id)languageForTextRange:(struct _NSRange)arg1 useStringTokenizer:(_Bool)arg2 useCreationLanguage:(_Bool)arg3;
@@ -363,12 +363,12 @@
 - (id)pExportAttributes:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2 stickyFont:(id *)arg3 scale:(double)arg4;
 - (id)pNSAttributedStringWithAttributeDelegate:(id)arg1 ignoreLists:(_Bool)arg2 stripTextualAttachments:(_Bool)arg3 stripGraphicalAttachments:(_Bool)arg4 stripInlineAttachments:(_Bool)arg5 attachmentChar:(id)arg6 scale:(double)arg7 withLayoutParent:(id)arg8;
 - (id)pNSAttributedStringWithDefaultDelegateIgnoreLists:(_Bool)arg1 stripTextualAttachments:(_Bool)arg2 stripGraphicalAttachments:(_Bool)arg3 stripInlineAttachments:(_Bool)arg4 attachmentChar:(id)arg5 scale:(double)arg6 withLayoutParent:(id)arg7;
-- (struct _NSRange)replaceCharactersInSelection:(id)arg1 withStorage:(id)arg2 usePasteRules:(_Bool)arg3 dolcContext:(id)arg4 changeSession:(id)arg5 undoTransaction:(struct TSWPStorageTransaction *)arg6;
-- (struct _NSRange)replaceCharactersInRange:(struct _NSRange)arg1 withStorage:(id)arg2 usePasteRules:(_Bool)arg3 dolcContext:(id)arg4 undoTransaction:(struct TSWPStorageTransaction *)arg5;
-- (void)transferAttributeArraySource:(struct TSWPAttributeArray *)arg1 toAttributeArrayDest:(struct TSWPAttributeArray *)arg2 atCharIndex:(unsigned long long)arg3 dolcContext:(id)arg4 undoTransaction:(struct TSWPStorageTransaction *)arg5;
+- (struct _NSRange)replaceCharactersInSelection:(id)arg1 withStorage:(id)arg2 usePasteRules:(_Bool)arg3 dolcContext:(id)arg4 changeSession:(id)arg5 undoTransaction:(void *)arg6;
+- (struct _NSRange)replaceCharactersInRange:(struct _NSRange)arg1 withStorage:(id)arg2 usePasteRules:(_Bool)arg3 dolcContext:(id)arg4 undoTransaction:(void *)arg5;
+- (void)transferAttributeArraySource:(struct TSWPAttributeArray *)arg1 toAttributeArrayDest:(struct TSWPAttributeArray *)arg2 atCharIndex:(unsigned long long)arg3 dolcContext:(id)arg4 undoTransaction:(void *)arg5;
 - (struct _NSRange)textRangeIgnoringTrailingLineBreaksForParagraphAtIndex:(unsigned long long)arg1;
-- (void)p_fillMarkers:(vector_06e666a8 *)arg1 startingAtCharIndex:(unsigned long long)arg2 forCount:(unsigned long long)arg3;
-- (void)p_fillMarkers:(vector_a36e5995 *)arg1 string:(id)arg2 length:(unsigned long long)arg3 hasAttachments:(_Bool *)arg4 hasFootnotes:(_Bool *)arg5 hasBreaks:(_Bool *)arg6;
+- (void)p_fillMarkers:(void *)arg1 startingAtCharIndex:(unsigned long long)arg2 forCount:(unsigned long long)arg3;
+- (void)p_fillMarkers:(void *)arg1 string:(id)arg2 length:(unsigned long long)arg3 hasAttachments:(_Bool *)arg4 hasFootnotes:(_Bool *)arg5 hasBreaks:(_Bool *)arg6;
 - (void)p_lowLevelReplaceCharactersInRange:(struct _NSRange)arg1 withString:(id)arg2 length:(unsigned long long)arg3 undoTransaction:(struct TSWPStorageTransaction *)arg4;
 - (void)p_replaceCharactersInSelection:(id)arg1 withString:(id)arg2 length:(unsigned long long)arg3 undoTransaction:(struct TSWPStorageTransaction *)arg4;
 - (void)p_didChangeRange:(struct _NSRange)arg1 delta:(long long)arg2 broadcastKind:(int)arg3;
@@ -382,7 +382,7 @@
 - (_Bool)canBeStoredInAStringValueCell;
 - (_Bool)p_passesExtraTablesChecksForStoringInAStringValueCell;
 - (_Bool)p_shouldInsertionSplitChange:(id)arg1 changeSession:(id)arg2;
-- (void)p_handleChangeSplittingForInsertedRange:(struct _NSRange)arg1 changeSession:(id)arg2 undoTransaction:(struct TSWPStorageTransaction *)arg3;
+- (void)p_handleChangeSplittingForInsertedRange:(struct _NSRange)arg1 changeSession:(id)arg2 undoTransaction:(void *)arg3;
 - (id)p_replacementsForSelection:(id)arg1 withString:(id)arg2 changeSession:(id)arg3 shouldTrackDeletions:(_Bool)arg4;
 - (id)editableAnnotationForInsertionPointSelection:(id)arg1 includeComments:(_Bool)arg2 withOutRange:(struct _NSRange *)arg3 selectionIsOnEdge:(_Bool *)arg4;
 - (_Bool)highlightsAllowed;
@@ -395,8 +395,8 @@
 - (id)changeDetailsAtCharIndex:(unsigned long long)arg1 outRange:(struct _NSRange *)arg2;
 - (id)previousChangeFromCharIndex:(unsigned long long)arg1 beforeChange:(id)arg2 changeRange:(struct _NSRange *)arg3;
 - (id)nextChangeFromCharIndex:(unsigned long long)arg1 afterChange:(id)arg2 changeRange:(struct _NSRange *)arg3;
-- (void)applyChanges:(_Bool)arg1 inRange:(struct _NSRange)arg2 inSelectionRange:(struct _NSRange)arg3 outChangedRange:(struct _NSRange *)arg4 outSelectionRange:(struct _NSRange *)arg5 undoTransaction:(struct TSWPStorageTransaction *)arg6 forceAll:(_Bool)arg7;
-- (void)applyChange:(id)arg1 changeRange:(struct _NSRange)arg2 accept:(_Bool)arg3 undoTransaction:(struct TSWPStorageTransaction *)arg4;
+- (void)applyChanges:(_Bool)arg1 inRange:(struct _NSRange)arg2 inSelectionRange:(struct _NSRange)arg3 outChangedRange:(struct _NSRange *)arg4 outSelectionRange:(struct _NSRange *)arg5 undoTransaction:(void *)arg6 forceAll:(_Bool)arg7;
+- (void)applyChange:(id)arg1 changeRange:(struct _NSRange)arg2 accept:(_Bool)arg3 undoTransaction:(void *)arg4;
 - (_Bool)hasDeletionInRange:(struct _NSRange)arg1;
 - (unsigned long long)indexAfterLastVisibleCharInRange:(struct _NSRange)arg1;
 - (unsigned long long)indexOfFirstNonDeletedCharInRange:(struct _NSRange)arg1;

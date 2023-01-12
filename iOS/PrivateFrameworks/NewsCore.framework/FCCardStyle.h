@@ -22,7 +22,6 @@
 }
 
 + (id)styleWithConfigDict:(id)arg1;
-+ (id)styleWithPBCardStyle:(id)arg1;
 - (void).cxx_destruct;
 @property(copy, nonatomic) FCColor *ctaForegroundColor; // @synthesize ctaForegroundColor=_ctaForegroundColor;
 @property(copy, nonatomic) FCColor *ctaBackgroundColor; // @synthesize ctaBackgroundColor=_ctaBackgroundColor;
@@ -35,7 +34,6 @@
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithTitleForegroundColor:(id)arg1 eyebrowForegroundColor:(id)arg2 cardBackgroundColor:(id)arg3 cardForegroundColor:(id)arg4 sauceGradient:(id)arg5 ctaBackgroundColor:(id)arg6 ctaForegroundColor:(id)arg7;
-- (id)pbCardStyle;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

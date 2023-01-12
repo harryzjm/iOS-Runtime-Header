@@ -6,17 +6,20 @@
 
 #import <objc/NSObject.h>
 
+@class NSHashTable;
 @protocol WBSFluidProgressControllerDelegate, WBSFluidProgressControllerWindowDelegate;
 
 @interface WBSFluidProgressController : NSObject
 {
+    NSHashTable *_observers;
     id <WBSFluidProgressControllerDelegate> _delegate;
     id <WBSFluidProgressControllerWindowDelegate> _windowDelegate;
 }
 
 - (void).cxx_destruct;
 @property __weak id <WBSFluidProgressControllerWindowDelegate> windowDelegate; // @synthesize windowDelegate=_windowDelegate;
-@property __weak id <WBSFluidProgressControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak id <WBSFluidProgressControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)sendProgressUpdateToObservers:(id)arg1 progressStateSource:(id)arg2;
 - (void)progressStateSourceDidCommitLoad:(id)arg1 loadingSingleResource:(_Bool)arg2;
 - (void)animationStepCompleted:(id)arg1;
 - (void)frontmostTabDidChange;
@@ -25,6 +28,10 @@
 - (void)finishFluidProgressWithProgressStateSource:(id)arg1;
 - (void)updateFluidProgressWithProgressStateSource:(id)arg1;
 - (void)startFluidProgressWithProgressStateSource:(id)arg1;
+- (void)unregisterObserver:(id)arg1;
+- (void)registerObserver:(id)arg1;
+- (id)init;
+- (void)_sendUpdateFluidProgressToObservers:(id)arg1 progressState:(id)arg2 source:(id)arg3 updateAnimationPhase:(_Bool)arg4;
 - (void)_updateFluidProgressWithProgressStateSource:(id)arg1;
 
 @end

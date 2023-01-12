@@ -4,15 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSArray;
+
 @interface SearchUIMultiResultRowModel
 {
+    NSArray *_multiResults;
 }
 
+- (void).cxx_destruct;
+@property(retain) NSArray *multiResults; // @synthesize multiResults=_multiResults;
+- (_Bool)isFocusable;
+- (Class)collectionViewCellClass;
+- (id)accessibilityIdentifier;
 - (int)separatorStyle;
 - (id)dragAppBundleID;
 - (_Bool)isDraggable;
 - (_Bool)isTappable;
 - (Class)cellViewClass;
+- (id)results;
+- (long long)removeResult:(id)arg1;
+- (id)initWithResults:(id)arg1;
 
 @end
 

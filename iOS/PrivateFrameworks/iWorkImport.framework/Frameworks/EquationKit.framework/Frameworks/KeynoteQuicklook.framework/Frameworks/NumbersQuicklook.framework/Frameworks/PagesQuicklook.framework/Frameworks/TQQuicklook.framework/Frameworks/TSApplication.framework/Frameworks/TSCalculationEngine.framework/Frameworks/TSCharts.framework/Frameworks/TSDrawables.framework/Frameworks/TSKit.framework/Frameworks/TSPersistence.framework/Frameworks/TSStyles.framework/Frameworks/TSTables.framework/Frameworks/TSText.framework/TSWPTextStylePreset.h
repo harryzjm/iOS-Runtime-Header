@@ -26,8 +26,8 @@
 @property(readonly, nonatomic) NSString *presetKind;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)saveToArchiver:(id)arg1;
-- (void)saveToArchive:(struct TextStylePresetArchive *)arg1 archiver:(id)arg2;
-- (void)loadFromArchive:(const struct TextStylePresetArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (id)initWithContext:(id)arg1 presetIdentifier:(id)arg2 paragraphStyle:(id)arg3 listStyle:(id)arg4;
 
 // Remaining properties

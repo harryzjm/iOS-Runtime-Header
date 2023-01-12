@@ -17,7 +17,6 @@
 - (_Bool)sanitizedProfileSignerCertificateChainIsAllowedToInstallSupervisedRestrictionsOnUnsupervisedDevices:(id)arg1;
 - (_Bool)sanitizedProfileSignerCertificateChainIsAllowedToWriteDefaults:(id)arg1;
 - (_Bool)sanitizedProfileSignerCertificateChainIsAllowedToInstallUnsupportedPayload:(id)arg1;
-- (id)profileTrustEvaluators;
 - (void)_sendChangeNotificationsBasedOnDefaultsRemovalByDomain:(id)arg1;
 - (void)_sendChangeNotificationsBasedOnDefaultsAdditionByDomain:(id)arg1;
 - (id)_deviceSpecificDefaultSettings;

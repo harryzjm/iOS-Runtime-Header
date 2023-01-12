@@ -6,7 +6,7 @@
 
 #import <CoreML/MLRegressor-Protocol.h>
 
-@class MLModelDescription, MLModelInterface, MLModelMetadata;
+@class MLModelDescription, MLModelMetadata, MLPredictionEvent;
 
 @interface MLRegressor <MLRegressor>
 {
@@ -15,14 +15,14 @@
 + (id)predictionFromFeatures:(id)arg1 regressor:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (id)regress:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)predictionFromFeatures:(id)arg1 options:(id)arg2 error:(id *)arg3;
-- (id)initWithInterface:(id)arg1 metadata:(id)arg2 error:(id *)arg3;
+- (id)initWithDescription:(id)arg1 error:(id *)arg2;
 - (id)regressorResultFromOutputFeatures:(id)arg1 error:(id *)arg2;
-- (id)initDescriptionOnlyWithSpecification:(struct _MLModelSpecification *)arg1 configuration:(id)arg2 error:(id *)arg3;
+- (id)initDescriptionOnlyWithSpecification:(void *)arg1 configuration:(id)arg2 error:(id *)arg3;
 
 // Remaining properties
-@property(readonly) MLModelInterface *interface;
 @property(readonly) MLModelMetadata *metadata;
 @property(retain, nonatomic) MLModelDescription *modelDescription;
+@property(retain, nonatomic) MLPredictionEvent *predictionEvent;
 
 @end
 

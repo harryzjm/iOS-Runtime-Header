@@ -10,10 +10,10 @@
 {
 }
 
-+ (id)arrayForBezierControlPoints:(CDStruct_d2b197d1)arg1;
-+ (_Bool)bezierControlPoints:(CDStruct_d2b197d1)arg1 isEqual:(CDStruct_d2b197d1)arg2;
-+ (unsigned long long)functionTypeForBezierControlPoints:(CDStruct_d2b197d1)arg1;
-+ (CDStruct_d2b197d1)controlPointsForFunctionType:(unsigned long long)arg1;
++ (id)arrayForBezierControlPoints:(CDStruct_3ead2808)arg1;
++ (_Bool)bezierControlPoints:(CDStruct_3ead2808)arg1 isEqual:(CDStruct_3ead2808)arg2;
++ (unsigned long long)functionTypeForBezierControlPoints:(CDStruct_3ead2808)arg1;
++ (CDStruct_3ead2808)controlPointsForFunctionType:(unsigned long long)arg1;
 + (unsigned long long)functionTypeForName:(id)arg1;
 + (id)functionNames;
 + (id)inputNames;

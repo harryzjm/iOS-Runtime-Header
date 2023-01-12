@@ -85,7 +85,6 @@
 - (void)paletteViewStateDidChangeSelectedTool:(id)arg1;
 - (void)paletteViewStateDidChangeShowsHandwritingTool:(id)arg1;
 - (void)paletteViewStateDidChangeAutoHide:(id)arg1;
-- (void)paletteViewStateDidChangeAnnotationSupport:(id)arg1;
 - (void)paletteViewStateDidChangeScaleFactor:(id)arg1;
 - (void)paletteViewStateDidChange:(id)arg1;
 - (void)paletteViewReturnKeyTypeDidChange:(id)arg1;
@@ -122,6 +121,7 @@
 - (void)_updateConstraintsToDockPaletteToPosition:(long long)arg1;
 - (void)_dockPaletteToPosition:(long long)arg1 isFromUserReposition:(_Bool)arg2 animated:(_Bool)arg3;
 - (void)_dockPaletteToPosition:(long long)arg1 animated:(_Bool)arg2;
+- (double)_paletteViewCompactHeight;
 - (void)_updatePaletteHeightConstraint;
 - (void)_updateConstraintsToFixToBottomEdge;
 - (void)_fixToBottomEdge;

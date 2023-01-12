@@ -61,8 +61,10 @@
 - (void)fetchFaceCropDataRepresentationForSignificantEventWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchHeroFrameURLOfClipWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchHeroFrameDataRepresentationForClipWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchCountOfClipsWithDateInterval:(id)arg1 quality:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchCountOfClipsWithDateInterval:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchCountOfAllClipsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchClipsWithDateInterval:(id)arg1 quality:(long long)arg2 limit:(unsigned long long)arg3 shouldOrderAscending:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)fetchClipsWithDateInterval:(id)arg1 limit:(unsigned long long)arg2 shouldOrderAscending:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)fetchAllClipsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchClipForSignificantEventWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;

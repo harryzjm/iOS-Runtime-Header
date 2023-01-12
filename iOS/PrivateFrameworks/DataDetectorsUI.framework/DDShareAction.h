@@ -10,8 +10,12 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)performFromView:(id)arg1;
-- (id)icon;
+- (void)prepareViewControllerForActionController:(id)arg1;
+- (id)viewController;
+- (int)interactionType;
+- (id)iconName;
 - (id)localizedName;
+- (id)initWithURL:(id)arg1 result:(struct __DDResult *)arg2 context:(id)arg3;
 
 @end
 

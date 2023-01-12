@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CNPhotoPickerProviderItem, NSArray, NSIndexPath, NSString;
+@class CNPhotoPickerActionButton, CNPhotoPickerProviderItem, NSArray, NSIndexPath, NSString;
 @protocol CNPhotoPickerActionsDelegate;
 
 __attribute__((visibility("hidden")))
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     id <CNPhotoPickerActionsDelegate> _delegate;
     CNPhotoPickerProviderItem *_providerItem;
     NSArray *_currentInlineActionButtons;
+    CNPhotoPickerActionButton *_deleteButton;
     NSIndexPath *_indexPath;
     NSString *_assignActionTitleOverride;
 }
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *assignActionTitleOverride; // @synthesize assignActionTitleOverride=_assignActionTitleOverride;
 @property(nonatomic) _Bool canDelete; // @synthesize canDelete=_canDelete;
 @property(retain, nonatomic) NSIndexPath *indexPath; // @synthesize indexPath=_indexPath;
+@property(retain, nonatomic) CNPhotoPickerActionButton *deleteButton; // @synthesize deleteButton=_deleteButton;
 @property(retain, nonatomic) NSArray *currentInlineActionButtons; // @synthesize currentInlineActionButtons=_currentInlineActionButtons;
 @property(retain, nonatomic) CNPhotoPickerProviderItem *providerItem; // @synthesize providerItem=_providerItem;
 @property(nonatomic) __weak id <CNPhotoPickerActionsDelegate> delegate; // @synthesize delegate=_delegate;

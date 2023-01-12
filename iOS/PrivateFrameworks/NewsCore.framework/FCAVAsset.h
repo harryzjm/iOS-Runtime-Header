@@ -6,38 +6,33 @@
 
 #import <objc/NSObject.h>
 
+#import <NewsCore/FCContentArchivable-Protocol.h>
 #import <NewsCore/NSCopying-Protocol.h>
 
-@class AVURLAsset, NFUnfairLock, NSDictionary, NSString, NSURL;
-@protocol FCAVAssetCacheType, FCAVAssetKeyManagerType, FCAVAssetResourceLoaderType;
+@class AVURLAsset, FCContentArchive, NFUnfairLock, NSDictionary, NSString, NSURL;
+@protocol FCAVAssetCacheType, FCAVAssetKeyCacheType, FCAVAssetKeyManagerType, FCAVAssetResourceLoaderType;
 
-@interface FCAVAsset : NSObject <NSCopying>
+@interface FCAVAsset : NSObject <NSCopying, FCContentArchivable>
 {
     AVURLAsset *_asset;
     NSString *_identifier;
     NSDictionary *_assetOptions;
-    NSURL *_remoteURL;
     NFUnfairLock *_assetLock;
     id <FCAVAssetCacheType> _assetCache;
+    id <FCAVAssetKeyCacheType> _assetKeyCache;
     id <FCAVAssetResourceLoaderType> _assetResourceLoader;
     id <FCAVAssetKeyManagerType> _assetKeyManager;
+    NSURL *_remoteURL;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) __weak id <FCAVAssetKeyManagerType> assetKeyManager; // @synthesize assetKeyManager=_assetKeyManager;
-@property(readonly, nonatomic) __weak id <FCAVAssetResourceLoaderType> assetResourceLoader; // @synthesize assetResourceLoader=_assetResourceLoader;
-@property(readonly, nonatomic) __weak id <FCAVAssetCacheType> assetCache; // @synthesize assetCache=_assetCache;
-@property(readonly, nonatomic) NFUnfairLock *assetLock; // @synthesize assetLock=_assetLock;
-@property(readonly, copy, nonatomic) NSURL *remoteURL; // @synthesize remoteURL=_remoteURL;
-@property(readonly, copy, nonatomic) NSDictionary *assetOptions; // @synthesize assetOptions=_assetOptions;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (void)_resetUnderlyingAsset;
-@property(readonly, nonatomic) _Bool isHLS;
+@property(readonly, nonatomic) FCContentArchive *contentArchive;
 @property(readonly, nonatomic) AVURLAsset *asset; // @synthesize asset=_asset;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithIdentifier:(id)arg1 remoteURL:(id)arg2 assetCache:(id)arg3 assetKeyManager:(id)arg4 assetResourceLoader:(id)arg5 overrideMIMEType:(id)arg6;
 - (id)init;
 
 @end

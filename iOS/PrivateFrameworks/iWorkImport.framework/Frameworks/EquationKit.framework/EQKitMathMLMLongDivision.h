@@ -19,7 +19,7 @@
 - (id)schemataDivisor;
 - (struct Schemata)layoutSchemata;
 - (void)dealloc;
-- (const set_c5c159f9 *)mathMLAttributes;
+- (const void *)mathMLAttributes;
 - (id)initFromXMLNode:(struct _xmlNode *)arg1 parser:(id)arg2;
 
 // Remaining properties

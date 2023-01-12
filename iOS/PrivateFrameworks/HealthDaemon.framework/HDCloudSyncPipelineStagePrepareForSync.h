@@ -8,9 +8,6 @@
 {
 }
 
-- (id)_validateSubscriptionsOperationForPrimaryContainerWithConfiguration:(id)arg1 cloudState:(id)arg2;
-- (id)_computeAndValidateTargetsOperationWithConfiguration:(id)arg1 cloudState:(id)arg2;
-- (id)allOwnerIdentifiersWithError:(id *)arg1;
 - (void)main;
 
 @end

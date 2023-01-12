@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <ReminderKit/REMChangeTrackingProvider-Protocol.h>
+#import <ReminderKit/REMClientConnectionsInteractable-Protocol.h>
 
 @class REMStoreContainerToken, _REMInProgressSaveRequestsContainer;
 @protocol REMDaemonController;
 
-@interface REMStore : NSObject <REMChangeTrackingProvider>
+@interface REMStore : NSObject <REMChangeTrackingProvider, REMClientConnectionsInteractable>
 {
     _Bool _assertOnMainThreadFetches;
     struct os_unfair_lock_s _lock;
@@ -44,6 +45,7 @@
 - (void)_incrementStoreGeneration;
 - (id)_withInProgressSaveRequestContainer:(CDUnknownBlockType)arg1;
 - (id)fetchDefaultAccountWithError:(id *)arg1;
+- (id)fetchDefaultListRequiringCloudKitWithError:(id *)arg1;
 - (id)fetchDefaultListWithError:(id *)arg1;
 - (id)fetchEligibleDefaultListsWithError:(id *)arg1;
 - (id)compressedDistributedEvaluationDataWithOptions:(id)arg1 error:(id *)arg2;
@@ -51,7 +53,7 @@
 - (void)acceptShareWithMetadata:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)stopShare:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)updateShare:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)createShareForListWithID:(id)arg1 error:(id *)arg2;
+- (id)createShareForListWithID:(id)arg1 appIconData:(id)arg2 error:(id *)arg3;
 - (id)fetchShareForListWithID:(id)arg1 error:(id *)arg2;
 - (void)_saveAccountChangeItems:(id)arg1 listChangeItems:(id)arg2 smartListChangeItems:(id)arg3 reminderChangeItems:(id)arg4 author:(id)arg5 replicaManagerProvider:(id)arg6 synchronously:(_Bool)arg7 syncToCloudKit:(_Bool)arg8 performer:(id)arg9 completion:(CDUnknownBlockType)arg10;
 - (id)_xpcSyncStorePerformerWithReason:(id)arg1 errorHandler:(CDUnknownBlockType)arg2;
@@ -73,13 +75,14 @@
 - (id)fetchRemindersWithParentReminderIDs:(id)arg1 error:(id *)arg2;
 - (id)fetchRemindersMatchingPredicateDescriptor:(id)arg1 sortDescriptors:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (id)fetchRemindersWithObjectIDs:(id)arg1 error:(id *)arg2;
-- (id)smartListWithSmartListTag:(id)arg1 objectID:(id)arg2 ordering:(id)arg3 error:(id *)arg4;
-- (id)fetchSmartListWithSmartListTag:(id)arg1 reminderIDs:(id)arg2 createIfNeeded:(_Bool)arg3 error:(id *)arg4;
-- (id)fetchSmartListWithSmartListTag:(id)arg1 createIfNeeded:(_Bool)arg2 error:(id *)arg3;
+- (id)fetchCustomSmartListsWithError:(id *)arg1;
+- (id)fetchCustomSmartListWithObjectID:(id)arg1 error:(id *)arg2;
 - (id)fetchListsWithObjectIDs:(id)arg1 error:(id *)arg2;
 - (id)fetchListWithObjectID:(id)arg1 error:(id *)arg2;
 - (id)fetchAccountsWithObjectIDs:(id)arg1 error:(id *)arg2;
 - (id)fetchAccountWithObjectID:(id)arg1 error:(id *)arg2;
+- (id)fetchPrimaryActiveCloudKitAccountWithError:(id *)arg1;
+- (id)fetchPrimaryActiveCloudKitAccountREMObjectIDWithError:(id *)arg1;
 - (id)optimisticallyMaterializeReminderChangeItem:(id)arg1;
 - (id)refreshReminder:(id)arg1;
 - (id)refreshList:(id)arg1;
@@ -101,10 +104,20 @@
 - (void)_respondToCalDAVSharedList:(id)arg1 withResponse:(long long)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)rejectCalDAVSharedList:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)acceptCalDAVSharedList:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)fetchReminderIncludingMarkedForDeleteWithObjectID:(id)arg1 error:(id *)arg2;
+- (id)fetchReminderIncludingConcealedWithObjectID:(id)arg1 error:(id *)arg2;
+- (id)fetchListIncludingConcealedWithObjectID:(id)arg1 error:(id *)arg2;
+- (id)fetchListIncludingMarkedForDeleteWithObjectID:(id)arg1 error:(id *)arg2;
 - (id)provideChangeTrackingForAccountID:(id)arg1 clientName:(id)arg2 transactionAuthorKeysToExclude:(id)arg3;
 - (id)provideChangeTrackingForAccountID:(id)arg1 clientName:(id)arg2;
+- (id)fetchRemindersIncludingUnsupportedWithObjectIDs:(id)arg1 error:(id *)arg2;
 - (id)provideAnonymousChangeTrackingWithTransactionAuthorKeysToExclude:(id)arg1;
 - (void)notifyOfInteractionWithPeople:(id)arg1 force:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (_Bool)containsHashtagsForTipKitWithError:(id *)arg1;
+- (_Bool)containsCustomSmartListForTipKitWithError:(id *)arg1;
+- (unsigned long long)completedRemindersCountForTipKitWithError:(id *)arg1;
+- (_Bool)containsListWithCustomBadgeForTipKitWithError:(id *)arg1;
+- (_Bool)hasActiveCloudKitAccountForTipKitWithError:(id *)arg1;
 - (id)fetchAllRemindersWithExternalIdentifier:(id)arg1 error:(id *)arg2;
 - (id)fetchCompletedRemindersForEventKitBridgingWithCompletionDateFrom:(id)arg1 to:(id)arg2 withListIDs:(id)arg3 error:(id *)arg4;
 - (id)fetchIncompleteRemindersForEventKitBridgingWithDueDateFrom:(id)arg1 to:(id)arg2 withListIDs:(id)arg3 error:(id *)arg4;
@@ -115,29 +128,30 @@
 - (id)fetchReminderWithDACalendarItemUniqueIdentifier:(id)arg1 inList:(id)arg2 error:(id *)arg3;
 - (id)fetchRemindersWithExternalIdentifiers:(id)arg1 inList:(id)arg2 error:(id *)arg3;
 - (id)fetchReminderWithExternalIdentifier:(id)arg1 inList:(id)arg2 error:(id *)arg3;
-- (id)fetchReminderIncludingMarkedForDeleteWithObjectID:(id)arg1 error:(id *)arg2;
 - (id)fetchListIncludingSpecialContainerWithObjectID:(id)arg1 error:(id *)arg2;
-- (id)fetchListIncludingMarkedForDeleteWithObjectID:(id)arg1 error:(id *)arg2;
 - (id)fetchListsIncludingSpecialContainersInAccount:(id)arg1 error:(id *)arg2;
 - (id)fetchAccountsWithExternalIdentifiers:(id)arg1 error:(id *)arg2;
 - (id)fetchAccountWithExternalIdentifier:(id)arg1 error:(id *)arg2;
 - (id)MCIsManagedAccountWithObjectID:(id)arg1 error:(id *)arg2;
-- (id)fetchAssignmentsWithObjectIDs:(id)arg1 includeLazyDeleteObjects:(_Bool)arg2 error:(id *)arg3;
+- (id)fetchAssignmentsWithObjectIDs:(id)arg1 includeConcealedObjects:(_Bool)arg2 error:(id *)arg3;
+- (id)fetchHashtagsWithObjectIDs:(id)arg1 includeConcealedObjects:(_Bool)arg2 error:(id *)arg3;
 - (id)fetchAllListsWithExternalIdentifier:(id)arg1 error:(id *)arg2;
 - (void)requestToDeleteLocalDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)requestToDeleteSyncDataWithAccountIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestToMergeLocalDataIntoSyncDataWithAccountIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_triggerSyncWithReason:(id)arg1 forcingCloudKitReload:(_Bool)arg2 discretionary:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_triggerSyncWithReason:(id)arg1 forcingCloudKitReload:(_Bool)arg2 discretionary:(_Bool)arg3 bypassThrottler:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)removeOrphanedAccountsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)deleteAccountWithAccountID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateAccountWithAccountID:(id)arg1 restartDA:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)updateAccountWithAccountID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)updateAccountsAndFetchMigrationState:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateAccountsAndSync:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)triggerSyncForDataAccessAccountsWithAccountIDs:(id)arg1;
 - (void)triggerThrottledSyncWithReason:(id)arg1 discretionary:(_Bool)arg2 WithCompletion:(CDUnknownBlockType)arg3;
 - (id)replicaManagerProviderForCalDAVSync;
+- (void)requestToUpdateClientConnectionsAsynchronously:(_Bool)arg1 shouldKeepAlive:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)debugFetchPhantomListsWithError:(id *)arg1;
+- (void)test_refreshHashtagLabelsImmediately;
+- (void)test_setupForManualHashtagLabelRefreshing;
 
 @end
 

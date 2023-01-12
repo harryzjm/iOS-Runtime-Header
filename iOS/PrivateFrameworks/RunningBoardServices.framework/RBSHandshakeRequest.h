@@ -8,18 +8,22 @@
 
 #import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
-@class NSSet, NSString;
+@class NSArray, NSSet, NSString;
 
 @interface RBSHandshakeRequest : NSObject <RBSXPCSecureCoding>
 {
+    unsigned int _auid;
     unsigned int _euid;
     NSSet *_assertionDescriptors;
+    NSArray *_savedEndowments;
 }
 
 + (_Bool)supportsRBSXPCSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *savedEndowments; // @synthesize savedEndowments=_savedEndowments;
 @property(retain, nonatomic) NSSet *assertionDescriptors; // @synthesize assertionDescriptors=_assertionDescriptors;
 @property(nonatomic) unsigned int euid; // @synthesize euid=_euid;
+@property(nonatomic) unsigned int auid; // @synthesize auid=_auid;
 - (id)initWithRBSXPCCoder:(id)arg1;
 - (void)encodeWithRBSXPCCoder:(id)arg1;
 @property(readonly) unsigned long long hash;

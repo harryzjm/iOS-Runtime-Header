@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class UITableView;
+@class UIScrollView;
 
 @interface TLKTableViewScrollTester : NSObject
 {
@@ -15,7 +15,7 @@
     double _scrollTime;
     CDUnknownBlockType _completion;
     CDUnknownBlockType _firstScroll;
-    UITableView *_tableView;
+    UIScrollView *_tableView;
     double _startTime;
 }
 
@@ -23,7 +23,7 @@
 @property(nonatomic) _Bool finishedFirstScroll; // @synthesize finishedFirstScroll=_finishedFirstScroll;
 @property(nonatomic) double startTime; // @synthesize startTime=_startTime;
 @property(nonatomic) _Bool directionUp; // @synthesize directionUp=_directionUp;
-@property(retain, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
+@property(retain, nonatomic) UIScrollView *tableView; // @synthesize tableView=_tableView;
 @property(copy, nonatomic) CDUnknownBlockType firstScroll; // @synthesize firstScroll=_firstScroll;
 @property(copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
 @property(nonatomic) double scrollTime; // @synthesize scrollTime=_scrollTime;

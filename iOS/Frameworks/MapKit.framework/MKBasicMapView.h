@@ -42,6 +42,8 @@ __attribute__((visibility("hidden")))
 - (void)didMoveToWindow;
 - (void)willMoveToWindow:(id)arg1;
 - (void)_unregisterSceneNotifications;
+- (void)_sceneDidEnterBackground:(id)arg1;
+- (void)_sceneWillEnterForeground:(id)arg1;
 - (void)_registerSceneNotifications;
 - (void)_updateForCurrentScreen;
 - (void)_updateMapViewHidden;
@@ -58,8 +60,11 @@ __attribute__((visibility("hidden")))
 - (void)addCalloutSubview:(id)arg1;
 @property(readonly, nonatomic) struct UIEdgeInsets edgeInsets;
 - (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1 andGlobe:(_Bool)arg2 shouldRasterize:(_Bool)arg3 allowsAntialiasing:(_Bool)arg4;
 - (id)initWithFrame:(struct CGRect)arg1 andGlobe:(_Bool)arg2 shouldRasterize:(_Bool)arg3;
 - (void)_finishedSnapshot:(id)arg1;
+- (void)_didEnterBackground;
+- (void)_updateBackgroundState:(long long)arg1;
 - (void)_updateBackgroundState;
 
 // Remaining properties

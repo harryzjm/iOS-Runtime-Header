@@ -12,7 +12,7 @@
 
 @interface IDSOpportunisticOptions : NSObject <NSSecureCoding>
 {
-    NSArray *_blacklistedDestinations;
+    NSArray *_blocklistedDestinations;
     NSDate *_expiryDate;
     _Bool _destinationsMustBeInContacts;
 }
@@ -21,13 +21,13 @@
 - (void).cxx_destruct;
 @property(nonatomic) _Bool destinationsMustBeInContacts; // @synthesize destinationsMustBeInContacts=_destinationsMustBeInContacts;
 @property(retain, nonatomic) NSDate *expiryDate; // @synthesize expiryDate=_expiryDate;
-@property(retain, nonatomic) NSArray *blacklistedDestinations; // @synthesize blacklistedDestinations=_blacklistedDestinations;
+@property(retain, nonatomic) NSArray *blocklistedDestinations; // @synthesize blocklistedDestinations=_blocklistedDestinations;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)description;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 - (id)initWithDictionary:(id)arg1;
-- (id)initWithBlacklistedDestinations:(id)arg1 expiryDate:(id)arg2 destinationsMustBeInContacts:(_Bool)arg3;
+- (id)initWithBlocklistedDestinations:(id)arg1 expiryDate:(id)arg2 destinationsMustBeInContacts:(_Bool)arg3;
 - (id)init;
 
 @end

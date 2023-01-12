@@ -53,10 +53,10 @@
 - (_Bool)barButton:(id)arg1 setImage:(id)arg2;
 - (_Bool)control:(id)arg1 setSelected:(_Bool)arg2;
 - (_Bool)control:(id)arg1 setEnabled:(_Bool)arg2;
-- (void)templateDidDisappear:(id)arg1 animated:(_Bool)arg2;
-- (void)templateDidAppear:(id)arg1 animated:(_Bool)arg2;
-- (void)templateWillDisappear:(id)arg1 animated:(_Bool)arg2;
-- (void)templateWillAppear:(id)arg1 animated:(_Bool)arg2;
+- (void)templateDidDisappearWithIdentifier:(id)arg1 animated:(_Bool)arg2;
+- (void)templateDidAppearWithIdentifier:(id)arg1 animated:(_Bool)arg2;
+- (void)templateWillDisappearWithIdentifier:(id)arg1 animated:(_Bool)arg2;
+- (void)templateWillAppearWithIdentifier:(id)arg1 animated:(_Bool)arg2;
 - (void)handleActionForControlIdentifier:(id)arg1;
 @property(retain, nonatomic) NSArray *trailingNavigationBarButtons;
 @property(retain, nonatomic) NSArray *leadingNavigationBarButtons;

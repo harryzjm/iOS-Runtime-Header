@@ -45,7 +45,6 @@
 - (id)preferredFocusEnvironments;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;
-- (void)dealloc;
 - (id)initWithChallenge:(id)arg1;
 
 @end

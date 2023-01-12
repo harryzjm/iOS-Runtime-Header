@@ -12,11 +12,10 @@
 + (id)_pu_debugSearchViewControllerHierarchyUsingBlock:(CDUnknownBlockType)arg1;
 + (id)pu_firstViewControllerPassingTest:(CDUnknownBlockType)arg1;
 + (id)pu_debugCurrentViewModel;
++ (id)pu_debugCurrentlySelectedAssets;
 + (id)pu_debugCurrentAsset;
 - (void)pu_finishedAnimationSubTest:(id)arg1 forTest:(id)arg2;
 - (void)pu_startedAnimationSubTest:(id)arg1 forTest:(id)arg2;
 - (id)ppt_testDefinitions;
-- (void)pu_endDisablingIdleTimer:(id)arg1;
-- (id)pu_beginDisablingIdleTimer;
 @end
 

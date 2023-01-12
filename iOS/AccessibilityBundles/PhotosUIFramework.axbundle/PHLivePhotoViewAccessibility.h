@@ -13,6 +13,9 @@
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityElementStoredUserLabel;
 - (_Bool)_accessibilitySavePhotoLabel:(id)arg1;
+- (_Bool)_accessibilityIsPHAssetLocallyAvailable;
+- (id)_accessibilityPHAssetLocalIdentifier;
+- (id)accessibilityURL;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (id)accessibilityLabel;

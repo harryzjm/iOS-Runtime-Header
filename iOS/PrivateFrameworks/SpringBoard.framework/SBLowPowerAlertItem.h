@@ -6,15 +6,22 @@
 
 #import <SpringBoardUI/SBAlertItem.h>
 
+@class SPBeaconManager;
+
 @interface SBLowPowerAlertItem : SBAlertItem
 {
     unsigned int _talkLevel;
+    _Bool _showFindMyAlert;
+    SPBeaconManager *_beaconManager;
 }
 
 + (void)setBatteryLevel:(unsigned int)arg1;
 + (_Bool)_shouldIgnoreChangeToBatteryLevel:(unsigned int)arg1;
 + (unsigned int)_thresholdForLevel:(unsigned int)arg1;
 + (void)initialize;
+- (void).cxx_destruct;
+@property(retain, nonatomic) SPBeaconManager *beaconManager; // @synthesize beaconManager=_beaconManager;
+@property(nonatomic) _Bool showFindMyAlert; // @synthesize showFindMyAlert=_showFindMyAlert;
 - (_Bool)wakeDisplay;
 - (_Bool)shouldShowInEmergencyCall;
 - (_Bool)shouldShowInLockScreen;

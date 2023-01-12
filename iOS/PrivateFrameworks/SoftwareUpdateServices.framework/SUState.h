@@ -8,19 +8,20 @@
 
 #import <SoftwareUpdateServices/NSKeyedUnarchiverDelegate-Protocol.h>
 
-@class NSDate, NSDictionary, NSString, SUDescriptor, SUDownload, SUInstallPolicy, SUManagedDeviceUpdateDelay, _SUAutoInstallOperationModel;
+@class NSArray, NSDate, NSDictionary, NSString, SUDescriptor, SUDownload, SUInstallPolicy, SUManagedDeviceUpdateDelay, SUScanOptions, _SUAutoInstallOperationModel;
 @protocol OS_dispatch_queue;
 
 @interface SUState : NSObject <NSKeyedUnarchiverDelegate>
 {
     SUDownload *_lastDownload;
-    SUDescriptor *_lastScannedDescriptor;
-    SUDescriptor *_currentDescriptor;
-    SUDescriptor *_failedPatchDescriptor;
-    NSDate *_lastScannedDescriptorTime;
+    SUDescriptor *_preferredLastScannedDescriptor;
+    SUDescriptor *_alternateLastScannedDescriptor;
+    NSArray *_failedPatchDescriptors;
+    SUScanOptions *_lastScannedDescriptorScanOptions;
     NSDate *_scheduledManualDownloadWifiPeriodEndTime;
     NSDate *_scheduledAutodownloadWifiPeriodEndTime;
     NSDate *_scheduledAutodownloadPolicyChangeTime;
+    NSDate *_lastScanDate;
     _Bool _autodownloadNeedsOneTimeRetry;
     _Bool _stashbagPersisted;
     NSString *_lastProductVersion;
@@ -32,23 +33,25 @@
     _SUAutoInstallOperationModel *_lastAutoInstallOperationModel;
     SUManagedDeviceUpdateDelay *_mdmDelay;
     SUInstallPolicy *_installPolicy;
-    _Bool _manifestSubmitted;
     NSString *_sessionID;
     NSString *_lastDeletedSUAssetID;
     NSString *_lastAssetAudience;
     NSDate *_appliedTime;
     NSObject<OS_dispatch_queue> *_stateQueue;
+    NSDictionary *_updateDiscoveryDates;
+    _Bool _underExclusiveControl;
 }
 
 + (id)currentState;
 + (id)statePath;
 - (void).cxx_destruct;
+@property(retain, nonatomic) SUScanOptions *lastScannedDescriptorScanOptions; // @synthesize lastScannedDescriptorScanOptions=_lastScannedDescriptorScanOptions;
 - (Class)unarchiver:(id)arg1 cannotDecodeObjectOfClassName:(id)arg2 originalClasses:(id)arg3;
+@property(nonatomic) _Bool underExclusiveControl; // @synthesize underExclusiveControl=_underExclusiveControl;
 @property(retain, nonatomic) NSDate *appliedTime; // @synthesize appliedTime=_appliedTime;
 @property(retain, nonatomic) NSString *lastAssetAudience; // @synthesize lastAssetAudience=_lastAssetAudience;
 @property(retain, nonatomic) NSString *lastDeletedSUAssetID; // @synthesize lastDeletedSUAssetID=_lastDeletedSUAssetID;
 @property(retain, nonatomic) NSString *sessionID; // @synthesize sessionID=_sessionID;
-@property(nonatomic) _Bool manifestSubmitted; // @synthesize manifestSubmitted=_manifestSubmitted;
 @property(retain, nonatomic) SUInstallPolicy *installPolicy; // @synthesize installPolicy=_installPolicy;
 @property(retain, nonatomic) SUManagedDeviceUpdateDelay *mdmDelay; // @synthesize mdmDelay=_mdmDelay;
 @property(retain, nonatomic) _SUAutoInstallOperationModel *lastAutoInstallOperationModel; // @synthesize lastAutoInstallOperationModel=_lastAutoInstallOperationModel;
@@ -60,15 +63,20 @@
 @property(retain, nonatomic) NSString *lastProductVersion; // @synthesize lastProductVersion=_lastProductVersion;
 @property(nonatomic) _Bool stashbagPersisted; // @synthesize stashbagPersisted=_stashbagPersisted;
 @property(nonatomic) _Bool autodownloadNeedsOneTimeRetry; // @synthesize autodownloadNeedsOneTimeRetry=_autodownloadNeedsOneTimeRetry;
+@property(retain, nonatomic) NSDate *lastScanDate; // @synthesize lastScanDate=_lastScanDate;
 @property(retain, nonatomic) NSDate *scheduledAutodownloadPolicyChangeTime; // @synthesize scheduledAutodownloadPolicyChangeTime=_scheduledAutodownloadPolicyChangeTime;
 @property(retain, nonatomic) NSDate *scheduledAutodownloadWifiPeriodEndTime; // @synthesize scheduledAutodownloadWifiPeriodEndTime=_scheduledAutodownloadWifiPeriodEndTime;
 @property(retain, nonatomic) NSDate *scheduledManualDownloadWifiPeriodEndTime; // @synthesize scheduledManualDownloadWifiPeriodEndTime=_scheduledManualDownloadWifiPeriodEndTime;
-@property(copy, nonatomic) SUDescriptor *failedPatchDescriptor; // @synthesize failedPatchDescriptor=_failedPatchDescriptor;
-@property(copy, nonatomic) SUDescriptor *currentDescriptor; // @synthesize currentDescriptor=_currentDescriptor;
-@property(retain, nonatomic) NSDate *lastScannedDescriptorTime; // @synthesize lastScannedDescriptorTime=_lastScannedDescriptorTime;
-@property(copy, nonatomic) SUDescriptor *lastScannedDescriptor; // @synthesize lastScannedDescriptor=_lastScannedDescriptor;
+@property(copy, nonatomic) NSArray *failedPatchDescriptors; // @synthesize failedPatchDescriptors=_failedPatchDescriptors;
+- (void)_queue_addFailedPatchDescriptor:(id)arg1;
+- (void)addFailedPatchDescriptor:(id)arg1;
+@property(retain, nonatomic) NSDictionary *updateDiscoveryDates; // @synthesize updateDiscoveryDates=_updateDiscoveryDates;
+@property(copy, nonatomic) SUDescriptor *alternateLastScannedDescriptor; // @synthesize alternateLastScannedDescriptor=_alternateLastScannedDescriptor;
+@property(copy, nonatomic) SUDescriptor *preferredLastScannedDescriptor; // @synthesize preferredLastScannedDescriptor=_preferredLastScannedDescriptor;
 @property(copy, nonatomic) SUDownload *lastDownload; // @synthesize lastDownload=_lastDownload;
 @property(readonly, copy) NSString *description;
+- (void)loadPersistedFailedPatchDescriptors;
+- (void)persistFailedPatchDescriptors;
 - (void)save;
 - (void)load;
 - (id)_stateAsDictionary;

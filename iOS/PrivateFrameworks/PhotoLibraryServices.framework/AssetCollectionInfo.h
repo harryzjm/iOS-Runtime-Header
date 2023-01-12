@@ -24,10 +24,14 @@
     NSNumber *_height;
     NSDate *_timestamp;
     NSString *_derivativeUTI;
+    NSNumber *_originalFilesize;
+    NSString *_originalFilename;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *originalFilename; // @synthesize originalFilename=_originalFilename;
+@property(readonly, nonatomic) NSNumber *originalFilesize; // @synthesize originalFilesize=_originalFilesize;
 @property(readonly, nonatomic) NSString *derivativeUTI; // @synthesize derivativeUTI=_derivativeUTI;
 @property(readonly, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
 @property(readonly, nonatomic) NSNumber *height; // @synthesize height=_height;

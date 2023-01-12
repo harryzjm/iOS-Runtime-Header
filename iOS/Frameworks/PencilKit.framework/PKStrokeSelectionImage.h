@@ -15,12 +15,17 @@
     UIImage *_image;
     PKStrokeSelectionImageConfig *_config;
     PKStrokeSelectionImageConfig *_fullSizeConfig;
+    UIImage *_addImage;
+    UIImage *_mulImage;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIImage *mulImage; // @synthesize mulImage=_mulImage;
+@property(retain, nonatomic) UIImage *addImage; // @synthesize addImage=_addImage;
 @property(readonly, nonatomic) PKStrokeSelectionImageConfig *fullSizeConfig; // @synthesize fullSizeConfig=_fullSizeConfig;
 @property(readonly, nonatomic) PKStrokeSelectionImageConfig *config; // @synthesize config=_config;
 @property(copy, nonatomic) UIImage *image; // @synthesize image=_image;
+@property(readonly, nonatomic) UIImage *combinedImage;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithImage:(id)arg1 config:(id)arg2 fullSizeConfig:(id)arg3;
 

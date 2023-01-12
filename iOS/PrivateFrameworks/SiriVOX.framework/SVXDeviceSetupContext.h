@@ -9,18 +9,22 @@
 #import <SiriVOX/NSCopying-Protocol.h>
 #import <SiriVOX/NSSecureCoding-Protocol.h>
 
-@class SVXDeviceSetupFlowScene, SVXDeviceSetupOptions;
+@class NSDate, SVXDeviceSetupFlowScene, SVXDeviceSetupOptions;
 
 @interface SVXDeviceSetupContext : NSObject <NSCopying, NSSecureCoding>
 {
     unsigned long long _timestamp;
     SVXDeviceSetupOptions *_options;
     SVXDeviceSetupFlowScene *_flowScene;
+    NSDate *_beginDate;
+    NSDate *_endDate;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)newWithBuilder:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
+@property(readonly, copy, nonatomic) NSDate *beginDate; // @synthesize beginDate=_beginDate;
 @property(readonly, copy, nonatomic) SVXDeviceSetupFlowScene *flowScene; // @synthesize flowScene=_flowScene;
 @property(readonly, copy, nonatomic) SVXDeviceSetupOptions *options; // @synthesize options=_options;
 @property(readonly, nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
@@ -31,8 +35,9 @@
 - (unsigned long long)hash;
 - (id)_descriptionWithIndent:(unsigned long long)arg1;
 - (id)description;
-- (id)initWithTimestamp:(unsigned long long)arg1 options:(id)arg2 flowScene:(id)arg3;
+- (id)initWithTimestamp:(unsigned long long)arg1 options:(id)arg2 flowScene:(id)arg3 beginDate:(id)arg4 endDate:(id)arg5;
 - (id)mutatedCopyWithMutator:(CDUnknownBlockType)arg1;
+- (id)initWithTimestamp:(unsigned long long)arg1 options:(id)arg2 flowScene:(id)arg3;
 - (id)initWithTimestamp:(unsigned long long)arg1 options:(id)arg2;
 - (id)initWithTimestamp:(unsigned long long)arg1 presentsAlternativeFlowWhenStoreAccountIsUnavailable:(_Bool)arg2;
 - (id)initWithTimestamp:(unsigned long long)arg1;

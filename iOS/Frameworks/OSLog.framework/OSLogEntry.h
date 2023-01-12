@@ -6,19 +6,25 @@
 
 #import <objc/NSObject.h>
 
+#import <OSLog/NSSecureCoding-Protocol.h>
+
 @class NSDate, NSString;
 
-@interface OSLogEntry : NSObject
+@interface OSLogEntry : NSObject <NSSecureCoding>
 {
     NSString *_composedMessage;
     NSDate *_date;
     long long _storeCategory;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) long long storeCategory; // @synthesize storeCategory=_storeCategory;
 @property(readonly, nonatomic) NSDate *date; // @synthesize date=_date;
 @property(readonly, nonatomic) NSString *composedMessage; // @synthesize composedMessage=_composedMessage;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithDate:(id)arg1 composedMessage:(id)arg2;
 - (id)initWithEventProxy:(id)arg1;
 
 @end

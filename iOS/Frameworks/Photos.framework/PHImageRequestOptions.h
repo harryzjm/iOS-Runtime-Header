@@ -19,6 +19,8 @@
     _Bool _synchronous;
     _Bool _allowPlaceholder;
     _Bool _allowSecondaryOpportunisticImage;
+    _Bool _includeHDRGainMap;
+    _Bool _includeHDRGainMapInIntermediateImage;
     _Bool _onlyUseFetchedAssetPropertiesDuringChoosing;
     _Bool _useLowMemoryMode;
     _Bool _useLimitedLibraryMode;
@@ -30,17 +32,23 @@
     NSObject<OS_dispatch_queue> *_resultHandlerQueue;
     CDUnknownBlockType _cachingCompleteHandler;
     long long _downloadIntent;
+    long long _downloadPriority;
+    struct CGSize _fallbackTargetSizeIfRequestedSizeNotLocallyAvailable;
     struct CGRect _normalizedCropRect;
 }
 
 + (id)defaultOptionsAllowingPlaceholder;
 - (void).cxx_destruct;
+@property(nonatomic) struct CGSize fallbackTargetSizeIfRequestedSizeNotLocallyAvailable; // @synthesize fallbackTargetSizeIfRequestedSizeNotLocallyAvailable=_fallbackTargetSizeIfRequestedSizeNotLocallyAvailable;
+@property(nonatomic) long long downloadPriority; // @synthesize downloadPriority=_downloadPriority;
 @property(nonatomic) long long downloadIntent; // @synthesize downloadIntent=_downloadIntent;
 @property(nonatomic) _Bool useLimitedLibraryMode; // @synthesize useLimitedLibraryMode=_useLimitedLibraryMode;
 @property(nonatomic) _Bool useLowMemoryMode; // @synthesize useLowMemoryMode=_useLowMemoryMode;
 @property(copy, nonatomic) CDUnknownBlockType cachingCompleteHandler; // @synthesize cachingCompleteHandler=_cachingCompleteHandler;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *resultHandlerQueue; // @synthesize resultHandlerQueue=_resultHandlerQueue;
 @property(nonatomic) _Bool onlyUseFetchedAssetPropertiesDuringChoosing; // @synthesize onlyUseFetchedAssetPropertiesDuringChoosing=_onlyUseFetchedAssetPropertiesDuringChoosing;
+@property(nonatomic) _Bool includeHDRGainMapInIntermediateImage; // @synthesize includeHDRGainMapInIntermediateImage=_includeHDRGainMapInIntermediateImage;
+@property(nonatomic) _Bool includeHDRGainMap; // @synthesize includeHDRGainMap=_includeHDRGainMap;
 @property(nonatomic) _Bool allowSecondaryOpportunisticImage; // @synthesize allowSecondaryOpportunisticImage=_allowSecondaryOpportunisticImage;
 @property(nonatomic) _Bool allowPlaceholder; // @synthesize allowPlaceholder=_allowPlaceholder;
 @property(nonatomic) long long loadingMode; // @synthesize loadingMode=_loadingMode;

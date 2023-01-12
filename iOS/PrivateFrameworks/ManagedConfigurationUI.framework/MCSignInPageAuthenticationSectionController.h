@@ -10,7 +10,6 @@
 
 @class AKInlineSignInViewController, MCSignInPageAuthenticationCell, NSString;
 
-__attribute__((visibility("hidden")))
 @interface MCSignInPageAuthenticationSectionController : NSObject <MCProfileTitlePageSectionController>
 {
     MCSignInPageAuthenticationCell *_cell;

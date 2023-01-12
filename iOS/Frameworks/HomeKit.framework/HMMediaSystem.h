@@ -11,14 +11,16 @@
 #import <HomeKit/HMControllable-Protocol.h>
 #import <HomeKit/HMFLogging-Protocol.h>
 #import <HomeKit/HMFMessageReceiver-Protocol.h>
+#import <HomeKit/HMMediaDestination-Protocol.h>
+#import <HomeKit/HMMediaDestinationInternal-Protocol.h>
 #import <HomeKit/HMMediaObject-Protocol.h>
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMAccessoryCategory, HMAccessorySettings, HMApplicationData, HMFUnfairLock, HMHome, HMMediaSession, HMMutableArray, HMSymptomsHandler, NSArray, NSString, NSUUID, _HMContext;
+@class HMAccessoryCategory, HMAccessorySettings, HMApplicationData, HMFUnfairLock, HMHome, HMMediaDestination, HMMediaSession, HMMutableArray, HMSymptomsHandler, NSArray, NSString, NSUUID, _HMContext;
 @protocol HMMediaSystemDelegate, OS_dispatch_queue;
 
-@interface HMMediaSystem : NSObject <HMFLogging, HMFMessageReceiver, HMControllable, HMObjectMerge, NSSecureCoding, HMAccessorySettingsContainer, HMApplicationData, HMMediaObject>
+@interface HMMediaSystem : NSObject <HMFLogging, HMFMessageReceiver, HMControllable, HMMediaDestinationInternal, HMObjectMerge, NSSecureCoding, HMAccessorySettingsContainer, HMApplicationData, HMMediaDestination, HMMediaObject>
 {
     HMFUnfairLock *_lock;
     _Bool _compatible;
@@ -33,22 +35,36 @@
     _HMContext *_context;
     NSUUID *_uuid;
     HMMutableArray *_componentsArray;
+    HMMediaDestination *_audioDestination;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)logCategory;
 + (id)mediaSystemWithDictionary:(id)arg1 home:(id)arg2;
 - (void).cxx_destruct;
+@property(retain) HMMediaDestination *audioDestination; // @synthesize audioDestination=_audioDestination;
 @property(retain, nonatomic) HMMutableArray *componentsArray; // @synthesize componentsArray=_componentsArray;
 @property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property(retain, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property(readonly, nonatomic) HMSymptomsHandler *symptomsHandler; // @synthesize symptomsHandler=_symptomsHandler;
 @property(nonatomic) __weak HMHome *home; // @synthesize home=_home;
+- (void)updateAudioDestinationSupportedOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
+@property(readonly, copy) NSUUID *audioDestinationGroupIdentifier;
+@property(readonly, copy) NSArray *audioDestinationMediaProfiles;
+@property(readonly, copy) NSString *audioDestinationParentIdentifier;
+@property(readonly) _Bool supportsAudioGroup;
+@property(readonly) _Bool supportsAudioDestination;
+@property(readonly, copy) NSString *audioDestinationName;
+@property(readonly) long long audioDestinationType;
+@property(readonly, copy) NSString *audioDestinationIdentifier;
+- (void)callCompletionHandler:(CDUnknownBlockType)arg1 error:(id)arg2;
+- (void)callCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;
 - (id)logIdentifier;
+- (void)notifyDelegateOfUpdatedAudioDestination;
 - (void)notifyDelegateOfUpdatedMediaSession:(id)arg1;
 - (void)notifyDelegateOfUpdatedSettings:(id)arg1;
 - (void)notifyDelegateOfUpdatedApplicationData:(id)arg1;
@@ -83,7 +99,6 @@
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 @property(readonly, copy) NSString *description;
-- (void)dealloc;
 - (void)_unconfigure;
 - (void)_unconfigureContext;
 - (id)initWithHome:(id)arg1 uuid:(id)arg2 name:(id)arg3 configuredName:(id)arg4 compatible:(_Bool)arg5 components:(id)arg6 settings:(id)arg7 symptomHandler:(id)arg8;

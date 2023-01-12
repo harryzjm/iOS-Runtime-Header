@@ -18,6 +18,7 @@
 }
 
 - (void).cxx_destruct;
+- (_Bool)_isUUIDString:(id)arg1;
 - (_Bool)_queue_saveDictionary:(id)arg1 atPath:(id)arg2;
 - (id)_queue_dataAtPath:(id)arg1;
 - (id)_queue_dictionaryAtPath:(id)arg1;
@@ -28,7 +29,10 @@
 - (id)_queue_uniqueIdentifierForBundleIdentifier:(id)arg1;
 - (id)_queue_bundleIdentifierForUniqueIdentifier:(id)arg1;
 - (void)_removeBundleLibrary;
-- (void)migrateRepositoriesInDirectory:(id)arg1;
+- (void)_queue_migrateBundleDirectoriesInDirectory:(id)arg1;
+- (void)_queue_removeUnknownDirectoriesInDirectory:(id)arg1;
+- (void)_queue_removeUnknownDirectoriesFromLibrary;
+- (void)migrateLibraryFromDirectory:(id)arg1 toDirectory:(id)arg2;
 - (void)removeMappingForBundleIdentifier:(id)arg1;
 - (id)uniqueIdentifierForBundleIdentifier:(id)arg1;
 - (id)bundleIdentifierForUniqueIdentifier:(id)arg1;

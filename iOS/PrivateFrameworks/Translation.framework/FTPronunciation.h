@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_5121ad8d)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_5121ad8d)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSString *phonemes;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithFlatbuffData:(id)arg1 root:(const struct Pronunciation *)arg2 verify:(_Bool)arg3;

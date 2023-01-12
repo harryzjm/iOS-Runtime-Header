@@ -19,7 +19,10 @@
     struct _PXValueAnimationSpec _currentAnimationSpec;
     NSMutableArray *_animations;
     PXDisplayLink *_displayLink;
+    _Bool _skipFirstNumberWhenAnimationStart;
     _Bool _isBeingMutated;
+    unsigned int _highFrameRateReason;
+    double _currentTime;
     double _value;
     double _presentationValue;
     double _epsilon;
@@ -29,21 +32,25 @@
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <PXNumberAnimatorDisplayLinkTarget> displayLinkTarget; // @synthesize displayLinkTarget=_displayLinkTarget;
+@property(nonatomic) unsigned int highFrameRateReason; // @synthesize highFrameRateReason=_highFrameRateReason;
 @property(copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property(readonly, nonatomic) _Bool isBeingMutated; // @synthesize isBeingMutated=_isBeingMutated;
 @property(readonly, nonatomic) double epsilon; // @synthesize epsilon=_epsilon;
 @property(nonatomic, setter=_setPresentationValue:) double presentationValue; // @synthesize presentationValue=_presentationValue;
 @property(readonly, nonatomic) double value; // @synthesize value=_value;
+@property(readonly, nonatomic) double currentTime; // @synthesize currentTime=_currentTime;
 - (void)_updatePresentationValueIfNeeded;
 - (void)_invalidatePresentationValue;
 - (void)_updateIfNeeded;
 - (void)_setNeedsUpdate;
 - (_Bool)_needsUpdate;
 - (void)setValue:(double)arg1;
+- (void)setValue:(double)arg1 skipFirstNumberWhenAnimationStart:(_Bool)arg2;
 - (void)didPerformChanges;
 - (id)mutableChangeObject;
 - (void)performChanges:(CDUnknownBlockType)arg1;
-- (void)_handleDisplayLink:(id)arg1;
+- (void)handleDisplayLink:(id)arg1;
+- (void)_setAnimating:(_Bool)arg1 deferredStart:(_Bool)arg2;
 - (void)_setAnimating:(_Bool)arg1;
 @property(readonly, nonatomic) double approximateVelocity;
 @property(readonly, nonatomic) _Bool isAnimating;

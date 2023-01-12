@@ -4,23 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CloudKit/CKXPCClient-Protocol.h>
+#import <CloudKit/CKXPCContainerScopedClient-Protocol.h>
 
-@class NSString;
-
-__attribute__((visibility("hidden")))
-@interface CKContainerCallbackProxy <CKXPCClient>
+@interface CKContainerCallbackProxy <CKXPCContainerScopedClient>
 {
 }
-
-- (void)handleSignificantIssueBehavior:(unsigned long long)arg1 reason:(id)arg2;
-- (id)initWithContainer:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

@@ -10,7 +10,7 @@
 #import <HealthDaemon/HDSyncChange-Protocol.h>
 #import <HealthDaemon/NSCopying-Protocol.h>
 
-@class HDCodableEntityIdentifier, NSMutableArray, NSNumber, NSString;
+@class HDCodableEntityIdentifier, HDCodableSyncVersionRange, NSMutableArray, NSNumber, NSString;
 
 @interface HDCodableNanoSyncChange : PBCodable <HDSyncChange, HDNanoSyncDescription, NSCopying>
 {
@@ -21,6 +21,7 @@
     NSMutableArray *_objectDatas;
     int _objectType;
     NSMutableArray *_requiredAnchors;
+    HDCodableSyncVersionRange *_version;
     _Bool _complete;
     _Bool _speculative;
     struct {
@@ -35,8 +36,9 @@
 
 + (Class)requiredAnchorsType;
 + (Class)objectDataType;
-+ (id)changeWithNanoSyncEntityClass:(Class)arg1;
++ (id)changeWithNanoSyncEntityClass:(Class)arg1 version:(CDStruct_c12fb951)arg2;
 - (void).cxx_destruct;
+@property(retain, nonatomic) HDCodableSyncVersionRange *version; // @synthesize version=_version;
 @property(retain, nonatomic) HDCodableEntityIdentifier *entityIdentifier; // @synthesize entityIdentifier=_entityIdentifier;
 @property(nonatomic) _Bool complete; // @synthesize complete=_complete;
 @property(nonatomic) long long sequence; // @synthesize sequence=_sequence;
@@ -54,6 +56,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) _Bool hasVersion;
 @property(readonly, nonatomic) _Bool hasEntityIdentifier;
 @property(nonatomic) _Bool hasComplete;
 @property(nonatomic) _Bool hasSequence;
@@ -75,6 +78,7 @@
 - (id)nanoSyncDescription;
 - (id)decodedObjectsForProfile:(id)arg1 error:(id *)arg2;
 - (id)requiredAnchorMapWithProfile:(id)arg1 error:(id *)arg2;
+- (void)setVersionRange:(CDStruct_c12fb951)arg1;
 - (void)setSequenceNumber:(long long)arg1 done:(_Bool)arg2;
 @property(readonly, nonatomic) _Bool done;
 @property(readonly, nonatomic) NSNumber *sequenceNumber;
@@ -82,6 +86,7 @@
 - (id)speculativeCopy;
 - (Class)syncEntityClassForProfile:(id)arg1;
 - (id)syncEntityIdentifier;
+@property(readonly, nonatomic) CDStruct_c12fb951 versionRange;
 @property(readonly, nonatomic) struct HDSyncAnchorRange syncAnchorRange;
 
 // Remaining properties

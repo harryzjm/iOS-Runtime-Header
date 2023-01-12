@@ -26,6 +26,8 @@
 + (void)commit;
 + (void)begin;
 + (id)_implicitAnimationForLayer:(id)arg1 keyPath:(id)arg2;
++ (void)flushAsRunLoopObserver;
++ (void)setImplicitTransactionDidBeginHandler:(CDUnknownBlockType)arg1;
 + (void)setCommittingContexts:(id)arg1;
 + (id)committingContexts;
 + (void)setBoolValue:(_Bool)arg1 forKey:(unsigned int)arg2;
@@ -44,10 +46,14 @@
 + (_Bool)frameStallSkipRequest;
 + (void)setInputTime:(double)arg1;
 + (double)inputTime;
++ (void)setDefaultDisableRunLoopObserverCommits:(_Bool)arg1;
++ (_Bool)defaultDisableRunLoopObserverCommits;
 + (void)setDisableRunLoopObserverCommits:(_Bool)arg1;
 + (_Bool)disableRunLoopObserverCommits;
 + (void)setEarliestAutomaticCommitTime:(double)arg1;
 + (double)earliestAutomaticCommitTime;
++ (void)setUpdateDeadline:(double)arg1;
++ (double)updateDeadline;
 + (void)setCommitTime:(double)arg1;
 + (double)commitTime;
 + (void)setDisableSignPosts:(_Bool)arg1;

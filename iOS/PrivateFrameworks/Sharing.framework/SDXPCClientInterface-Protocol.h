@@ -24,10 +24,11 @@
 - (void)openSetupURL:(NSURL *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)getPeopleSuggestions:(SFPeopleSuggesterParams *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)getDeviceAssets:(SFClientGetDeviceAssetsParams *)arg1 completion:(void (^)(SFClientGetDeviceAssetsResults *, NSError *))arg2;
-- (void)findContact:(SFContactInfo *)arg1 completion:(void (^)(SFContactInfo *, NSError *))arg2;
+- (void)findContact:(SFContactInfo *)arg1 skipIfContactBlocked:(_Bool)arg2 completion:(void (^)(SFContactInfo *, NSError *))arg3;
 - (void)displayStringForContactIdentifier:(NSString *)arg1 deviceIdentifier:(NSUUID *)arg2 completion:(void (^)(NSString *, _Bool, NSError *))arg3;
 - (void)displayNameForEmailHash:(NSString *)arg1 phoneHash:(NSString *)arg2 completion:(void (^)(NSString *, NSError *))arg3;
 - (void)contactIDForEmailHash:(NSString *)arg1 phoneHash:(NSString *)arg2 completion:(void (^)(NSString *, NSError *))arg3;
+- (void)clearXPCHelperImageCacheWithCompletion:(void (^)(NSError *))arg1;
 - (void)broadwayPresentCardWithCode:(NSString *)arg1 options:(NSDictionary *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)subCredentialPresentCardWithParams:(SFClientSubCredentialParams *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)appleIDInfoWithCompletion:(void (^)(NSString *, NSData *, NSError *))arg1;

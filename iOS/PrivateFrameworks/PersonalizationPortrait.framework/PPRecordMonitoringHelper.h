@@ -20,7 +20,7 @@
 - (id)_handleRecentChangesWithDelegates:(id)arg1 changeGenerator:(CDUnknownBlockType)arg2 recordGenerator:(CDUnknownBlockType)arg3;
 - (id)_setupRecentChangesWithDelegates:(id)arg1 recordGenerator:(CDUnknownBlockType)arg2;
 - (void)sendChangesToDelegatesWithChangeGenerator:(CDUnknownBlockType)arg1 recordGenerator:(CDUnknownBlockType)arg2;
-- (void)resetWithDelegate:(id)arg1 recordGenerator:(CDUnknownBlockType)arg2;
+- (void)resetWithDelegate:(id)arg1 recentChangesInProgress:(_Bool)arg2 recordGenerator:(CDUnknownBlockType)arg3;
 - (void)sendResetToAllDelegatesWithRecordGenerator:(CDUnknownBlockType)arg1;
 - (void)handleChangeNotificationWithName:(id)arg1 afterDelaySeconds:(double)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)loadRecordsWithDelegate:(id)arg1 recordGenerator:(CDUnknownBlockType)arg2;

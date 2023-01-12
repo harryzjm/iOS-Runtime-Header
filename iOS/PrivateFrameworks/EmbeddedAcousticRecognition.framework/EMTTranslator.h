@@ -6,12 +6,18 @@
 
 #import <objc/NSObject.h>
 
+@class NSLocale, NSOperationQueue;
 @protocol OS_dispatch_queue;
 
 @interface EMTTranslator : NSObject
 {
     struct shared_ptr<quasar::TranslatorFactory> _translatorFactory;
-    struct SystemConfig _config;
+    struct shared_ptr<quasar::Translator> _translator;
+    NSLocale *_sourceLocale;
+    NSLocale *_targetLocale;
+    struct vector<quasar::SystemConfig, std::allocator<quasar::SystemConfig>> _configs;
+    _Bool _skipNonFinalToCatchup;
+    NSOperationQueue *_translationRequestsQueue;
     NSObject<OS_dispatch_queue> *_translationQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
 }
@@ -20,14 +26,22 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
-- (void)_translate:(vector_9492931a)arg1 from:(id)arg2 to:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (vector_9492931a)_tokenizeString:(id)arg1;
+- (void)_dispatchTranslationRequest:(vector_74824a0a)arg1 isFinal:(_Bool)arg2 spans:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_prepareFor:(id)arg1 to:(id)arg2;
+- (vector_74824a0a)_tokenizeString:(id)arg1;
+- (void)prepareFor:(id)arg1 to:(id)arg2;
+- (void)translateTokens:(id)arg1 isFinal:(_Bool)arg2 spans:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)translateTokens:(id)arg1 isFinal:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)translateTokens:(id)arg1 from:(id)arg2 to:(id)arg3 spans:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)translateTokens:(id)arg1 from:(id)arg2 to:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)translateString:(id)arg1 from:(id)arg2 to:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)translateString:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)translateSpeech:(id)arg1 from:(id)arg2 to:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)translateSpeech:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)loadTranslatorFrom:(id)arg1 to:(id)arg2;
+- (id)initWithModelURLs:(id)arg1 task:(id)arg2 skipNonFinalToCatchup:(_Bool)arg3;
+- (id)initWithModelURLs:(id)arg1 task:(id)arg2;
+- (id)initWithModelURL:(id)arg1 task:(id)arg2 skipNonFinalToCatchup:(_Bool)arg3;
 - (id)initWithModelURL:(id)arg1 task:(id)arg2;
 - (id)initWithModelURL:(id)arg1;
 

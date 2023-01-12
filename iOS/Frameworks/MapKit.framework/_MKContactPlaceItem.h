@@ -28,5 +28,11 @@
 @property(readonly, nonatomic) MKMapItem *mapItem;
 @property(readonly, nonatomic) NSString *name;
 
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
+
 @end
 

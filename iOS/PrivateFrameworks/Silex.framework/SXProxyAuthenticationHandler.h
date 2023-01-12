@@ -9,19 +9,21 @@
 #import <Silex/SXProxyAuthenticationHandler-Protocol.h>
 
 @class NSString;
-@protocol SXProxyAuthenticationCredentialFactory;
+@protocol SXProxyAuthenticationCredentialFactory, SXProxyConfiguration;
 
 @interface SXProxyAuthenticationHandler : NSObject <SXProxyAuthenticationHandler>
 {
     id <SXProxyAuthenticationCredentialFactory> _credentialFactory;
+    id <SXProxyConfiguration> _proxyConfiguration;
     unsigned long long _retryCount;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long retryCount; // @synthesize retryCount=_retryCount;
+@property(readonly, nonatomic) id <SXProxyConfiguration> proxyConfiguration; // @synthesize proxyConfiguration=_proxyConfiguration;
 @property(readonly, nonatomic) id <SXProxyAuthenticationCredentialFactory> credentialFactory; // @synthesize credentialFactory=_credentialFactory;
 - (void)handleAuthenticationChallenge:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)initWithCredentialFactory:(id)arg1 retryCount:(unsigned long long)arg2;
+- (id)initWithCredentialFactory:(id)arg1 proxyConfiguration:(id)arg2 retryCount:(unsigned long long)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

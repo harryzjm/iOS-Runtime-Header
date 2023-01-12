@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudDocsDaemon/NSSecureCoding-Protocol.h>
-
 @class BRCAccountSession, BRCAppLibrary, BRCBookmark, BRCGenerationID, BRFileObjectID, NSData, NSSet, NSString, NSURL;
 
-@interface BRCRelativePath : NSObject <NSSecureCoding>
+@interface BRCRelativePath : NSObject
 {
     NSSet *_roots;
     NSString *_absolutePath;
@@ -46,6 +44,8 @@
     unsigned int _qtnResolved:1;
     unsigned int _xattrsResolved:1;
     unsigned int _sharedBookmarkResolved:1;
+    unsigned int _openedProtected:1;
+    unsigned int _unresolvableDueToProtection:1;
     int _fd;
     _Atomic int _openRefCount;
     struct brc_mutex _mutex;
@@ -55,15 +55,12 @@
     NSString *_sharedItemBookmark;
 }
 
-+ (_Bool)supportsSecureCoding;
 + (int)locateByFileID:(unsigned long long)arg1 session:(id)arg2;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned char itemScope; // @synthesize itemScope=_itemScope;
 @property(nonatomic) unsigned short type; // @synthesize type=_type;
 @property(retain, nonatomic) BRCAppLibrary *appLibrary; // @synthesize appLibrary=_appLibrary;
 @property(readonly, nonatomic) BRCAccountSession *session; // @synthesize session=_session;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
 - (id)description;
 @property(readonly) unsigned long long parentHash;
 @property(readonly) unsigned long long hash;
@@ -125,6 +122,7 @@
 @property(readonly, nonatomic) NSString *absolutePath;
 @property(readonly, nonatomic) _Bool exists;
 @property(readonly, nonatomic) _Bool isSymLink;
+@property(readonly, nonatomic) _Bool isUnresolvableDueToProtection;
 @property(readonly, nonatomic) _Bool isExcluded;
 - (_Bool)isResolved;
 @property(readonly, nonatomic) _Bool isRoot;

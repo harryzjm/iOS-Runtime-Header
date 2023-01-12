@@ -41,7 +41,6 @@
 @property(retain, nonatomic) PUPhotoPickerRemoteNavigationController *contentNavigationController; // @synthesize contentNavigationController=_contentNavigationController;
 @property(retain, nonatomic) UIViewController *contentViewController; // @synthesize contentViewController=_contentViewController;
 @property(nonatomic) __weak PUPhotoPickerExtensionContext *extensionContext; // @synthesize extensionContext=_extensionContext;
-- (_Bool)_useLibraryPresentation;
 - (void)_allowSharingSelectionOfInfoDictionaries:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_logAssetSelectionIfNeeded:(id)arg1;
 - (void)performPhotoPickerPreviewOfFirstAsset;

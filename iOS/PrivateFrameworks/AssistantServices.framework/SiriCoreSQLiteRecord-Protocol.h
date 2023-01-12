@@ -7,6 +7,6 @@
 #import <AssistantServices/NSObject-Protocol.h>
 
 @protocol SiriCoreSQLiteRecord <NSObject>
-- (void)siriCoreSQLiteRecord_enumerateStorageKeysAndValuesUsingBlock:(void (^)(NSString *, id <SiriCoreSQLiteValue>, _Bool *))arg1;
+- (void)siriCoreSQLiteRecord_enumerateColumnNamesAndValuesUsingBlock:(void (^)(NSString *, id <SiriCoreSQLiteValue>, _Bool *))arg1;
 @end
 

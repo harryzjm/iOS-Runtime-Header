@@ -13,6 +13,7 @@
 + (id)descriptor;
 
 // Remaining properties
+@property(nonatomic) _Bool accountMismatch; // @dynamic accountMismatch;
 @property(nonatomic) unsigned long long addedMs; // @dynamic addedMs;
 @property(nonatomic) unsigned long long appVersion; // @dynamic appVersion;
 @property(copy, nonatomic) NSData *clientDataVrfoutput; // @dynamic clientDataVrfoutput;

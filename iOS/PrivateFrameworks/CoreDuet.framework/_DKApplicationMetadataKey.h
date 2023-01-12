@@ -10,6 +10,8 @@
 {
 }
 
++ (id)dyldPlatform;
++ (id)isNativeArchitecture;
 + (id)extensionContainingBundleIdentifier;
 + (id)extensionHostIdentifier;
 + (id)launchReason;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSHashTable, NSMutableSet, NSObject, NSSet, NSUUID, TSPObject, TSPReferenceOrderedSet, TSPUnknownContentSnapshot;
+@class NSHashTable, NSMutableSet, NSObject, NSSet, NSUUID, TSPObject, TSPReferenceOrderedSet, TSPUnknownContentSnapshot, _TtC13TSPersistence23TSPMutableIdentifierSet;
 @protocol OS_dispatch_data, OS_dispatch_group;
 
 @interface TSPArchiver
@@ -21,9 +21,11 @@
     TSPReferenceOrderedSet *_aggregatedWeakReferences;
     NSHashTable *_aggregatedLazyReferences;
     NSHashTable *_aggregatedDataReferences;
+    _TtC13TSPersistence23TSPMutableIdentifierSet *_aggregatedCountedDataReferences;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _TtC13TSPersistence23TSPMutableIdentifierSet *aggregatedCountedDataReferences; // @synthesize aggregatedCountedDataReferences=_aggregatedCountedDataReferences;
 @property(readonly, nonatomic) NSHashTable *aggregatedDataReferences; // @synthesize aggregatedDataReferences=_aggregatedDataReferences;
 @property(readonly, nonatomic) NSHashTable *aggregatedLazyReferences; // @synthesize aggregatedLazyReferences=_aggregatedLazyReferences;
 @property(readonly, nonatomic) TSPReferenceOrderedSet *aggregatedWeakReferences; // @synthesize aggregatedWeakReferences=_aggregatedWeakReferences;
@@ -39,7 +41,7 @@
 - (id)calculateOrderedArchivableContent;
 - (void)cleanup;
 - (void)serialize;
-- (_Bool)updateMessageInfo:(struct MessageInfo *)arg1 withArchiver:(id)arg2;
+- (_Bool)updateMessageInfo:(void *)arg1 withArchiver:(id)arg2;
 - (void)aggregateReferencesFromArchiver:(id)arg1;
 - (void)archive;
 @property(readonly, nonatomic) _Bool success;
@@ -48,7 +50,7 @@
 - (_Bool)beginArchive;
 @property(readonly, nonatomic) _Bool needsToScheduleArchive;
 - (void)willScheduleArchive;
-- (id)addAlternateArchiverForVersion:(unsigned long long)arg1 fieldPath:(const struct FieldPath *)arg2 isDiffArchiver:(_Bool)arg3 diffReadVersion:(unsigned long long)arg4 message:(const struct Message *)arg5;
+- (id)addAlternateArchiverForVersion:(unsigned long long)arg1 fieldPath:(const void *)arg2 isDiffArchiver:(_Bool)arg3 diffReadVersion:(unsigned long long)arg4 message:(const struct Message *)arg5;
 - (id)alternateForVersion:(unsigned long long)arg1;
 - (void)requiresDocumentVersion:(unsigned long long)arg1 featureIdentifier:(id)arg2;
 - (void)requiresDocumentVersion:(unsigned long long)arg1;

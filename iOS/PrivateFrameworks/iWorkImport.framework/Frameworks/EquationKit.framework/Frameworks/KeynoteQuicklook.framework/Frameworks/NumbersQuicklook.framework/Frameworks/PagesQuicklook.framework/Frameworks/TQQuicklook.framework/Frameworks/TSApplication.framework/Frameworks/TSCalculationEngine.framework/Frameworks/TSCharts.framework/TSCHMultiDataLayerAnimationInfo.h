@@ -12,38 +12,38 @@
 
 @interface TSCHMultiDataLayerAnimationInfo : NSObject <NSCopying>
 {
-    _Bool mShouldAnimate;
-    _Bool mAboveIntercept;
-    _Bool mCrossesIntercept;
-    NSArray *mKeyTimes;
-    struct CGRect mInterceptRect;
-    _Bool mHorizontalChart;
-    double mDuration;
-    struct CGRect mChartBodyFrameInRepElementSpace;
-    NSMutableArray *mLayerAnimationValues;
-    CAMediaTimingFunction *mTimingFunction;
-    _Bool mElementUndefined;
-    _Bool mAtIntercept;
-    _Bool mCurrentAtIntercept;
-    _Bool mCurrentAboveIntercept;
+    _Bool _shouldAnimate;
+    _Bool _aboveIntercept;
+    _Bool _crossesIntercept;
+    NSArray *_keyTimes;
+    struct CGRect _interceptRect;
+    _Bool _horizontalChart;
+    double _duration;
+    struct CGRect _chartBodyFrameInRepElementSpace;
+    NSMutableArray *_layerAnimationValues;
+    CAMediaTimingFunction *_timingFunction;
+    _Bool _elementUndefined;
+    _Bool _atIntercept;
+    _Bool _currentAtIntercept;
+    _Bool _currentAboveIntercept;
 }
 
 + (id)animationInfo;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool currentAboveIntercept; // @synthesize currentAboveIntercept=mCurrentAboveIntercept;
-@property(nonatomic) _Bool atIntercept; // @synthesize atIntercept=mAtIntercept;
-@property(nonatomic) _Bool currentAtIntercept; // @synthesize currentAtIntercept=mCurrentAtIntercept;
-@property(nonatomic) _Bool elementUndefined; // @synthesize elementUndefined=mElementUndefined;
-@property(retain, nonatomic) CAMediaTimingFunction *timingFunction; // @synthesize timingFunction=mTimingFunction;
-@property(readonly, nonatomic) NSArray *layerAnimationValues; // @synthesize layerAnimationValues=mLayerAnimationValues;
-@property(nonatomic) struct CGRect chartBodyFrameInRepElementSpace; // @synthesize chartBodyFrameInRepElementSpace=mChartBodyFrameInRepElementSpace;
-@property(nonatomic) double duration; // @synthesize duration=mDuration;
-@property(nonatomic) _Bool horizontalChart; // @synthesize horizontalChart=mHorizontalChart;
-@property(nonatomic) struct CGRect interceptRect; // @synthesize interceptRect=mInterceptRect;
-@property(copy, nonatomic) NSArray *keyTimes; // @synthesize keyTimes=mKeyTimes;
-@property(nonatomic) _Bool crossesIntercept; // @synthesize crossesIntercept=mCrossesIntercept;
-@property(nonatomic) _Bool aboveIntercept; // @synthesize aboveIntercept=mAboveIntercept;
-@property(nonatomic) _Bool shouldAnimate; // @synthesize shouldAnimate=mShouldAnimate;
+@property(nonatomic) _Bool currentAboveIntercept; // @synthesize currentAboveIntercept=_currentAboveIntercept;
+@property(nonatomic) _Bool atIntercept; // @synthesize atIntercept=_atIntercept;
+@property(nonatomic) _Bool currentAtIntercept; // @synthesize currentAtIntercept=_currentAtIntercept;
+@property(nonatomic) _Bool elementUndefined; // @synthesize elementUndefined=_elementUndefined;
+@property(retain, nonatomic) CAMediaTimingFunction *timingFunction; // @synthesize timingFunction=_timingFunction;
+@property(readonly, nonatomic) NSArray *layerAnimationValues; // @synthesize layerAnimationValues=_layerAnimationValues;
+@property(nonatomic) struct CGRect chartBodyFrameInRepElementSpace; // @synthesize chartBodyFrameInRepElementSpace=_chartBodyFrameInRepElementSpace;
+@property(nonatomic) double duration; // @synthesize duration=_duration;
+@property(nonatomic) _Bool horizontalChart; // @synthesize horizontalChart=_horizontalChart;
+@property(nonatomic) struct CGRect interceptRect; // @synthesize interceptRect=_interceptRect;
+@property(copy, nonatomic) NSArray *keyTimes; // @synthesize keyTimes=_keyTimes;
+@property(nonatomic) _Bool crossesIntercept; // @synthesize crossesIntercept=_crossesIntercept;
+@property(nonatomic) _Bool aboveIntercept; // @synthesize aboveIntercept=_aboveIntercept;
+@property(nonatomic) _Bool shouldAnimate; // @synthesize shouldAnimate=_shouldAnimate;
 - (void)addImageContentsAnimationForLayer:(id)arg1 fromImage:(id)arg2 toImage:(id)arg3 keyTimes:(id)arg4;
 - (void)addAnimationForLayer:(id)arg1 key:(id)arg2 values:(id)arg3 keyTimes:(id)arg4 needPresentationLayerValues:(_Bool)arg5;
 - (void)addAnimationForLayer:(id)arg1 key:(id)arg2 values:(id)arg3 keyTimes:(id)arg4;

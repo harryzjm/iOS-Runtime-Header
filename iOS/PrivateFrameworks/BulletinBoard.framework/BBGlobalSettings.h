@@ -9,22 +9,36 @@
 #import <BulletinBoard/NSCopying-Protocol.h>
 #import <BulletinBoard/NSSecureCoding-Protocol.h>
 
+@class NSArray;
+
 @interface BBGlobalSettings : NSObject <NSCopying, NSSecureCoding>
 {
     long long _globalContentPreviewSetting;
-    long long _globalSpokenNotificationSetting;
+    long long _globalAnnounceSetting;
+    long long _globalAnnounceHeadphonesSetting;
+    long long _globalAnnounceCarPlaySetting;
+    long long _globalScheduledDeliverySetting;
+    NSArray *_globalScheduledDeliveryTimes;
+    long long _globalScheduledDeliveryShowNextSummarySetting;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic) long long globalSpokenNotificationSetting; // @synthesize globalSpokenNotificationSetting=_globalSpokenNotificationSetting;
+- (void).cxx_destruct;
+@property(nonatomic) long long globalScheduledDeliveryShowNextSummarySetting; // @synthesize globalScheduledDeliveryShowNextSummarySetting=_globalScheduledDeliveryShowNextSummarySetting;
+@property(copy, nonatomic) NSArray *globalScheduledDeliveryTimes; // @synthesize globalScheduledDeliveryTimes=_globalScheduledDeliveryTimes;
+@property(nonatomic) long long globalScheduledDeliverySetting; // @synthesize globalScheduledDeliverySetting=_globalScheduledDeliverySetting;
+@property(nonatomic) long long globalAnnounceCarPlaySetting; // @synthesize globalAnnounceCarPlaySetting=_globalAnnounceCarPlaySetting;
+@property(nonatomic) long long globalAnnounceHeadphonesSetting; // @synthesize globalAnnounceHeadphonesSetting=_globalAnnounceHeadphonesSetting;
+@property(nonatomic) long long globalAnnounceSetting; // @synthesize globalAnnounceSetting=_globalAnnounceSetting;
 @property(nonatomic) long long globalContentPreviewSetting; // @synthesize globalContentPreviewSetting=_globalContentPreviewSetting;
+@property(readonly, nonatomic) long long globalSpokenNotificationSetting;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)description;
-- (id)initWithContentPreviewSetting:(long long)arg1 spokenNotificationSetting:(long long)arg2;
+- (id)initWithContentPreviewSetting:(long long)arg1 announceSetting:(long long)arg2 announceHeadphonesSetting:(long long)arg3 announceCarPlaySetting:(long long)arg4 scheduledDeliverySetting:(long long)arg5 scheduledDeliveryTimes:(id)arg6 scheduledDeliveryShowNextSummarySetting:(long long)arg7;
 
 @end
 

@@ -15,6 +15,7 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) TIKeyboardInput *keyboardInput; // @synthesize keyboardInput=_keyboardInput;
 @property(readonly, copy) NSString *description;
 - (void)sendTo:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

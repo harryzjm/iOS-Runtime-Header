@@ -12,6 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)viewDidAppear:(_Bool)arg1;
+- (_Bool)_accessibilityShouldPostScreenChangedOnPresentation;
 
 @end
 

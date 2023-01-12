@@ -22,12 +22,12 @@
 - (CDUnknownBlockType)_actionCompletionOnClientQueue:(CDUnknownBlockType)arg1;
 - (void)_performWithProxyHandler:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (void)_performSyncWithProxyHandler:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
-- (void)hintDismissedByPerformedOutcomeForIdentifier:(id)arg1 bundleID:(id)arg2 context:(id)arg3;
-- (void)hintDismissedByUserForIdentifier:(id)arg1 bundleID:(id)arg2 context:(id)arg3;
-- (void)hintDisplayedForIdentifier:(id)arg1 context:(id)arg2;
+- (void)restartTrackingForContentIdentifiers:(id)arg1;
+- (void)hintDismissedForIdentifier:(id)arg1 bundleID:(id)arg2 context:(id)arg3 reason:(long long)arg4;
+- (void)hintDisplayedForIdentifier:(id)arg1 correlationID:(id)arg2 context:(id)arg3;
 - (void)personalizationFailedForContentID:(id)arg1 bundleID:(id)arg2 context:(id)arg3;
-- (void)validateAndPrepareContentForDisplay:(id)arg1 bundleID:(id)arg2 context:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)contentWithContentID:(id)arg1 bundleID:(id)arg2 context:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)validateAndPrepareContentForDisplay:(id)arg1 bundleID:(id)arg2 context:(id)arg3 synchronous:(_Bool)arg4 skipUsageCheck:(_Bool)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)contentWithContentIdentifiers:(id)arg1 bundleID:(id)arg2 context:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)invalidate;
 - (id)init;
 

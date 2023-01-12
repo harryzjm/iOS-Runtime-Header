@@ -8,8 +8,8 @@
 
 #import <ProactiveML/PMLPlanProtocol-Protocol.h>
 
-@class NSArray, NSString, PMLModelWeights, PMLSessionDescriptor, PMLTrainingStore;
-@protocol PMLLogRegTrackerProtocol, PMLNoiseStrategy, PMLTransformerProtocol;
+@class NSString, PMLModelWeights, PMLSessionDescriptor, PMLTrainingStore;
+@protocol PMLLogRegTrackerProtocol, PMLNoiseStrategy;
 
 @interface PMLLogRegTrainingPlan : NSObject <PMLPlanProtocol>
 {
@@ -32,16 +32,12 @@
     unsigned long long _positiveLabel;
     unsigned long long _evaluationLevel;
     _Bool _reportScale;
-    id <PMLTransformerProtocol> _transformer;
-    NSArray *_refeaturizationDescriptors;
     _Bool _intercept;
     NSString *_planId;
 }
 
 + (id)planWithStore:(id)arg1 tracker:(id)arg2 sessionDescriptor:(id)arg3 arguments:(id)arg4;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSArray *refeaturizationDescriptors; // @synthesize refeaturizationDescriptors=_refeaturizationDescriptors;
-@property(readonly, nonatomic) id <PMLTransformerProtocol> transformer; // @synthesize transformer=_transformer;
 @property(readonly, nonatomic) _Bool reportScale; // @synthesize reportScale=_reportScale;
 @property(readonly, nonatomic) unsigned long long evaluationLevel; // @synthesize evaluationLevel=_evaluationLevel;
 @property(readonly, nonatomic) _Bool intercept; // @synthesize intercept=_intercept;
@@ -66,7 +62,7 @@
 - (id)normalizeRegressor:(id)arg1;
 - (void)loadSessionsWithBlock:(CDUnknownBlockType)arg1;
 - (id)evaluationMetricsForPredictions:(id)arg1 objectives:(id)arg2 predicate:(CDUnknownBlockType)arg3 start:(id)arg4;
-- (id)initWithStore:(id)arg1 tracker:(id)arg2 noiseStrategy:(id)arg3 planId:(id)arg4 sessionDescriptor:(id)arg5 maxSessionsLimit:(unsigned long long)arg6 sessionsInBatch:(unsigned long long)arg7 currentServerIteration:(unsigned long long)arg8 currentModelWeights:(id)arg9 localLearningRate:(float)arg10 stoppingThreshold:(float)arg11 localMinimumIterations:(unsigned long long)arg12 localGradientIterations:(unsigned long long)arg13 useOnlyAppleInternalSessions:(_Bool)arg14 skew:(double)arg15 threshold:(double)arg16 isMultiLabel:(_Bool)arg17 intercept:(_Bool)arg18 positiveLabel:(unsigned long long)arg19 evaluationLevel:(unsigned long long)arg20 reportScale:(_Bool)arg21 transformer:(id)arg22 refeaturizationDescriptors:(id)arg23;
+- (id)initWithStore:(id)arg1 tracker:(id)arg2 noiseStrategy:(id)arg3 planId:(id)arg4 sessionDescriptor:(id)arg5 maxSessionsLimit:(unsigned long long)arg6 sessionsInBatch:(unsigned long long)arg7 currentServerIteration:(unsigned long long)arg8 currentModelWeights:(id)arg9 localLearningRate:(float)arg10 stoppingThreshold:(float)arg11 localMinimumIterations:(unsigned long long)arg12 localGradientIterations:(unsigned long long)arg13 useOnlyAppleInternalSessions:(_Bool)arg14 skew:(double)arg15 threshold:(double)arg16 isMultiLabel:(_Bool)arg17 intercept:(_Bool)arg18 positiveLabel:(unsigned long long)arg19 evaluationLevel:(unsigned long long)arg20 reportScale:(_Bool)arg21;
 - (id)init;
 
 // Remaining properties

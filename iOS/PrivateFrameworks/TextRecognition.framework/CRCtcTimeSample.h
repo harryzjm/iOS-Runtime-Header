@@ -9,17 +9,17 @@
 @interface CRCtcTimeSample : NSObject
 {
     struct CRCtcCandidate _blank;
-    struct CRCTCPriorityQueue *_sample;
+    void *_sample;
 }
 
-@property struct CRCTCPriorityQueue *sample; // @synthesize sample=_sample;
+@property void *sample; // @synthesize sample=_sample;
 @property struct CRCtcCandidate blank; // @synthesize blank=_blank;
 - (void)dealloc;
 - (id)init;
 - (void)addCandidate:(struct CRCtcCandidate)arg1;
 - (struct CRCtcCandidate)topCandidate;
 - (void)trimCandidates;
-- (const vector_cdb6db61 *)candidates;
+- (const void *)candidates;
 
 @end
 

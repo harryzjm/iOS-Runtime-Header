@@ -15,6 +15,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)customAttributes;
+@property(retain, nonatomic) NSNumber *inputUseInverseLookUpTable; // @synthesize inputUseInverseLookUpTable;
+@property(retain, nonatomic) AVCameraCalibrationData *inputAVCameraCalibrationData; // @synthesize inputAVCameraCalibrationData;
+@property(retain, nonatomic) CIImage *inputImage; // @synthesize inputImage;
 - (id)outputImage;
 - (struct CGRect)regionOf:(int)arg1 destRect:(struct CGRect)arg2 userInfo:(id)arg3;
 - (struct CGPoint)ReferenceensDistortionPointForPoint:(struct CGPoint)arg1 lookupTable:(id)arg2 distortionOpticalCenter:(struct CGPoint)arg3 imageSize:(struct CGSize)arg4;

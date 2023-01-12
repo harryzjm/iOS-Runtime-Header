@@ -15,11 +15,11 @@
 @property(copy, nonatomic) NSArray *subparts; // @synthesize subparts=_subparts;
 @property(readonly, copy, nonatomic) NSString *title;
 - (id)rtfDocumentItemsWithFormatString:(id)arg1 selectedTextRange:(struct _NSRange)arg2;
-- (id)pasteboardItems;
+- (id)pasteboardItemProviders;
 - (Class)balloonViewClass;
 - (id)loadTranscriptText;
 - (id)initWithIMChatItem:(id)arg1 maxWidth:(double)arg2;
-- (id)composition;
+- (id)compositionWithContext:(id)arg1;
 
 @end
 

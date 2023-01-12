@@ -20,9 +20,11 @@
     double _pageControlAreaHeight;
     double _rubberBandIntervalForOverscroll;
     struct CGSize _contentBackgroundSize;
+    struct CGSize _pageControlCustomPadding;
 }
 
 @property(nonatomic) double rubberBandIntervalForOverscroll; // @synthesize rubberBandIntervalForOverscroll=_rubberBandIntervalForOverscroll;
+@property(nonatomic) struct CGSize pageControlCustomPadding; // @synthesize pageControlCustomPadding=_pageControlCustomPadding;
 @property(nonatomic) double pageControlAreaHeight; // @synthesize pageControlAreaHeight=_pageControlAreaHeight;
 @property(nonatomic) double titleHorizontalInset; // @synthesize titleHorizontalInset=_titleHorizontalInset;
 @property(nonatomic) double titleFontSizeInLandscape; // @synthesize titleFontSizeInLandscape=_titleFontSizeInLandscape;

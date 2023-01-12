@@ -10,6 +10,7 @@
 {
 }
 
++ (_Bool)shouldEnableAnimationPluginDevelopment;
 + (_Bool)shouldDisableViewScaling;
 + (_Bool)isDiscreteGPUAquisitionDisabled;
 + (_Bool)isDiscreteGPUNeededInShow:(id)arg1;
@@ -18,7 +19,6 @@
 + (struct CGRect)recommendedLayerBoundsForNaturalPlaybackSize:(struct CGSize)arg1 inContainerWithBounds:(struct CGRect)arg2 contentsScale:(double)arg3 isExternalDisplay:(_Bool)arg4;
 + (id)CAAccelerationFromSFXActionAcceleration:(unsigned long long)arg1;
 + (_Bool)isMotionBlurCapableWithAnimationContext:(id)arg1;
-+ (_Bool)isMotionBlurBlacklistedWithCapabilities:(id)arg1;
 + (id)videoControllerSignpostLog;
 + (_Bool)isCustomEffectTimingCurveEditingEnabled;
 + (_Bool)shouldForceDisplayPreferredMode;

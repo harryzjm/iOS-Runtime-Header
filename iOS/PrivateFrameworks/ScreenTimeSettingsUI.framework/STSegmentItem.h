@@ -10,6 +10,7 @@
 
 @interface STSegmentItem : NSObject
 {
+    NSString *_accessibilityText;
     NSString *_titleText;
     NSString *_detailText;
     UIColor *_titleColor;
@@ -23,6 +24,7 @@
 @property(readonly, nonatomic) UIColor *titleColor; // @synthesize titleColor=_titleColor;
 @property(readonly, copy, nonatomic) NSString *detailText; // @synthesize detailText=_detailText;
 @property(readonly, copy, nonatomic) NSString *titleText; // @synthesize titleText=_titleText;
+@property(copy) NSString *accessibilityText; // @synthesize accessibilityText=_accessibilityText;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithTitleText:(id)arg1 detailText:(id)arg2 titleColor:(id)arg3 detailImage:(id)arg4 detailImageTintColor:(id)arg5;

@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _TtC7SwiftUI16AppSceneDelegate : UIResponder
 {
+    MISSING_TYPE *$__lazy_storage_$_appDelegate;
     MISSING_TYPE *window;
     MISSING_TYPE *sceneItemID;
     MISSING_TYPE *lastVersion;
@@ -18,6 +19,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *scenePhase;
     MISSING_TYPE *sceneDelegateBox;
     MISSING_TYPE *sceneStorageValues;
+    MISSING_TYPE *presentedID;
 }
 
 - (void).cxx_destruct;

@@ -6,8 +6,8 @@
 
 #import <UserNotificationsUIKit/NSObject-Protocol.h>
 
-@class BSAnimationSettings, NCNotificationAction, NCNotificationListCell, NCNotificationListSectionHeaderView, NCNotificationRequest, NCNotificationSectionSettings, NCNotificationViewController, NSDictionary, NSSet, NSString, UIView, UIWindow, _UILegibilitySettings;
-@protocol NCNotificationListCoalescingControlsHandler, NCNotificationListComponent, PLKeyboardHomeAffordanceAssertion, UIViewSpringAnimationBehaviorDescribing;
+@class BSAnimationSettings, DNDModeConfiguration, NCNotificationAction, NCNotificationListCell, NCNotificationListSectionHeaderView, NCNotificationRequest, NCNotificationSectionSettings, NCNotificationViewController, NSDate, NSDictionary, NSSet, NSString, NSUUID, UIView, UIWindow, _UILegibilitySettings;
+@protocol NCContainerViewProviding, NCNotificationListCoalescingControlsHandler, NCNotificationListComponent, PLKeyboardHomeAffordanceAssertion, UIViewSpringAnimationBehaviorDescribing;
 
 @protocol NCNotificationListComponentDelegate <NSObject>
 
@@ -33,15 +33,26 @@
 - (void)notificationListComponent:(id <NCNotificationListComponent>)arg1 didEndUserInteractionWithNotificationViewController:(NCNotificationViewController *)arg2;
 - (void)notificationListComponent:(id <NCNotificationListComponent>)arg1 didBeginUserInteractionWithNotificationViewController:(NCNotificationViewController *)arg2;
 - (void)notificationListComponentDidSignificantUserInteraction:(id <NCNotificationListComponent>)arg1;
+- (void)notificationListComponent:(id <NCNotificationListComponent>)arg1 setModeConfiguration:(DNDModeConfiguration *)arg2;
+- (DNDModeConfiguration *)notificationListComponentRequestsCurrentModeConfiguration:(id <NCNotificationListComponent>)arg1;
+- (NCNotificationRequest *)notificationListComponent:(id <NCNotificationListComponent>)arg1 notificationRequestForUUID:(NSUUID *)arg2;
+- (void)notificationListComponent:(id <NCNotificationListComponent>)arg1 setAllowsDirectMessages:(_Bool)arg2 forSectionIdentifier:(NSString *)arg3;
+- (void)notificationListComponent:(id <NCNotificationListComponent>)arg1 setAllowsTimeSensitive:(_Bool)arg2 forSectionIdentifier:(NSString *)arg3;
+- (void)notificationListComponent:(id <NCNotificationListComponent>)arg1 setScheduledDelivery:(_Bool)arg2 forSectionIdentifier:(NSString *)arg3;
+- (void)notificationListComponent:(id <NCNotificationListComponent>)arg1 setMuted:(_Bool)arg2 untilDate:(NSDate *)arg3 forSectionIdentifier:(NSString *)arg4 threadIdentifier:(NSString *)arg5;
+- (void)notificationListComponent:(id <NCNotificationListComponent>)arg1 requestsPresentingOptionsMenuForNotificationRequest:(NCNotificationRequest *)arg2 presentingViewProvider:(void (^)(void (^)(NCNotificationListCell *, UIView *)))arg3 completion:(void (^)(_Bool))arg4;
 - (void)notificationListComponent:(id <NCNotificationListComponent>)arg1 requestsPresentingManagementViewForNotificationRequest:(NCNotificationRequest *)arg2 managementViewType:(unsigned long long)arg3 withPresentingView:(UIView *)arg4 completion:(void (^)(_Bool))arg5;
 - (void)notificationListComponent:(id <NCNotificationListComponent>)arg1 isPresentingLongLookForViewController:(NCNotificationViewController *)arg2;
 - (void)notificationListComponent:(id <NCNotificationListComponent>)arg1 shouldFinishLongLookTransitionForNotificationRequest:(NCNotificationRequest *)arg2 trigger:(long long)arg3 withCompletionBlock:(void (^)(_Bool))arg4;
+- (id <NCContainerViewProviding>)notificationListComponent:(id <NCNotificationListComponent>)arg1 containerViewProviderForExpandedContentForViewController:(NCNotificationViewController *)arg2;
 - (double)insetHorizontalMarginForNotificationListComponent:(id <NCNotificationListComponent>)arg1;
 - (void)notificationListComponent:(id <NCNotificationListComponent>)arg1 requestsAuthenticationAndPerformBlock:(void (^)(_Bool))arg2;
 - (_Bool)notificationListComponent:(id <NCNotificationListComponent>)arg1 shouldAllowInteractionsForNotificationRequest:(NCNotificationRequest *)arg2;
 - (_Bool)notificationListComponentShouldHintForDefaultAction:(id <NCNotificationListComponent>)arg1;
 - (_UILegibilitySettings *)legibilitySettingsForNotificationListComponent:(id <NCNotificationListComponent>)arg1;
 - (NCNotificationSectionSettings *)notificationListComponent:(id <NCNotificationListComponent>)arg1 sectionSettingsForSectionIdentifier:(NSString *)arg2;
+- (void)notificationListComponent:(id <NCNotificationListComponent>)arg1 didRemoveNotificationRequest:(NCNotificationRequest *)arg2;
+- (void)notificationListComponentDidRemoveAllNotificationRequests:(id <NCNotificationListComponent>)arg1;
 - (void)notificationListComponent:(id <NCNotificationListComponent>)arg1 requestsClearingNotificationRequests:(NSSet *)arg2;
 - (void)notificationListComponent:(id <NCNotificationListComponent>)arg1 requestsClearingNotificationRequestsInSections:(NSSet *)arg2;
 - (void)notificationListComponentRequestsClearingAllNotificationRequests:(id <NCNotificationListComponent>)arg1;

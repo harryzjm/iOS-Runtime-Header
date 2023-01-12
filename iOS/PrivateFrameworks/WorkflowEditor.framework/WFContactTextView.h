@@ -45,6 +45,8 @@
 - (void)tintColorDidChange;
 - (void)updateTextAttachments;
 - (id)attributesByAddingTintColorToAttributes:(id)arg1;
+@property(retain, nonatomic) UIFont *font;
+@property(nonatomic) long long textAlignment;
 @property(copy, nonatomic) NSString *placeholder;
 @property(copy, nonatomic) NSString *text;
 @property(copy, nonatomic) NSAttributedString *attributedText;
@@ -62,7 +64,6 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(nonatomic, getter=isEditable) _Bool editable;
-@property(retain, nonatomic) UIFont *font;
 @property(readonly) unsigned long long hash;
 @property(nonatomic) long long keyboardAppearance;
 @property(nonatomic) long long keyboardType;
@@ -70,7 +71,6 @@
 @property(nonatomic) long long smartDashesType;
 @property(nonatomic) long long smartQuotesType;
 @property(readonly) Class superclass;
-@property(nonatomic) long long textAlignment;
 @property(retain, nonatomic) UIColor *textColor;
 @property(copy, nonatomic) NSString *textContentType;
 

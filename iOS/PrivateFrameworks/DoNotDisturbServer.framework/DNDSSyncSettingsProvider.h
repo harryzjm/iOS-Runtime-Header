@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 @class DNDSSyncSettings, NPSDomainAccessor;
-@protocol DNDSSyncSettingsProviderDelegate, OS_dispatch_queue;
+@protocol DNDSSyncSettingsProviderDelegate;
 
 @interface DNDSSyncSettingsProvider : NSObject
 {
-    NSObject<OS_dispatch_queue> *_queue;
+    struct os_unfair_lock_s _lock;
     NPSDomainAccessor *_accessor;
+    _Bool _initialized;
     DNDSSyncSettings *_syncSettings;
     id <DNDSSyncSettingsProviderDelegate> _delegate;
 }
@@ -20,12 +21,22 @@
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <DNDSSyncSettingsProviderDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy) DNDSSyncSettings *syncSettings; // @synthesize syncSettings=_syncSettings;
-- (void)_queue_updateSyncPreferences;
-- (void)_updateSyncPreferences;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)_lock_updateSyncSettingsIfNewSettingsDiffer:(id)arg1;
+- (void)_updateCloudSyncPreferences;
+- (void)_lock_updatePairSyncPreferences;
+- (void)_updatePairSyncPreferences;
 - (void)_endMonitoringForChanges;
 - (void)_beginMonitoringForChanges;
+- (_Bool)_lock_isPairSyncPreferenceEnabled;
+- (id)_lock_accessor;
+- (_Bool)_lock_isCloudSyncPreferenceEnabled;
+- (_Bool)_isCloudSyncPreferenceEnabled;
+- (void)_lock_setCompanionCloudSyncPreferenceEnabled:(_Bool)arg1;
+- (void)pairedDeviceDidChange;
+- (void)setPairSyncEnabled:(_Bool)arg1;
 - (void)dealloc;
-- (id)initWithQueue:(id)arg1;
+- (id)init;
 
 @end
 

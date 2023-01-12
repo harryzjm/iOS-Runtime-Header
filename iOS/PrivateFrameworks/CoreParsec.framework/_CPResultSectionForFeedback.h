@@ -30,10 +30,6 @@
 @property(nonatomic) double rankingScore; // @synthesize rankingScore=_rankingScore;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(copy, nonatomic) NSArray *results; // @synthesize results=_results;
-- (id)initWithDictionary:(id)arg1;
-- (id)initWithJSON:(id)arg1;
-@property(readonly, nonatomic) NSData *jsonData;
-- (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
@@ -46,11 +42,11 @@
 - (void)clearResults;
 - (void)clearBundleid;
 - (id)initWithFacade:(id)arg1;
-- (id)feedbackJSON;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) NSData *jsonData; // @dynamic jsonData;
 @property(readonly) Class superclass;
 
 @end

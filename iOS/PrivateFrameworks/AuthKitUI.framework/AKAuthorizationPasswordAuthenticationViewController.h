@@ -27,6 +27,7 @@
 - (void)dealloc;
 - (id)_username;
 - (id)_contextForAuthentication;
+- (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidLoad;
 
 // Remaining properties

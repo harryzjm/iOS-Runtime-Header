@@ -31,7 +31,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 @property(readonly, nonatomic) MPModelKind *identityKind;
-- (shared_ptr_cf7b8a22)predicateWithBaseProperty:(struct ModelPropertyBase *)arg1;
+- (shared_ptr_cf7b8a22)predicateWithBaseProperty:(void *)arg1;
 - (shared_ptr_cf7b8a22)representedSearchScopePredicate;
 - (void)applyToView:(shared_ptr_5c01893c)arg1 withContext:(id)arg2;
 

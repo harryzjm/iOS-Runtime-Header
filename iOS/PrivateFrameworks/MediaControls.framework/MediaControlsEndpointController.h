@@ -11,7 +11,7 @@
 #import <MediaControls/_MCStateDumpPropertyListTransformable-Protocol.h>
 
 @class MPAVEndpointRoute, MPAVRoutingController, MPCPlayerPath, MPCPlayerResponse, MPMediaControlsConfiguration, MPRequestResponseController, NSArray, NSString;
-@protocol MediaControlsEndpointControllerConnectionDelegate, MediaControlsEndpointControllerDelegate, MediaControlsEndpointObserverDelegate;
+@protocol MediaControlsEndpointControllerConnectionDelegate, MediaControlsEndpointControllerDelegate, MediaControlsEndpointObserverDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface MediaControlsEndpointController : NSObject <MPRequestResponseControllerDelegate, MPAVRoutingControllerDelegate, _MCStateDumpPropertyListTransformable>
@@ -28,14 +28,20 @@ __attribute__((visibility("hidden")))
     id <MediaControlsEndpointControllerDelegate> _delegate;
     id <MediaControlsEndpointObserverDelegate> _proxyDelegate;
     MPRequestResponseController *_requestController;
+    NSString *_specifiedClient;
+    NSString *_specifiedPlayer;
     MPAVRoutingController *_routingController;
+    NSObject<OS_dispatch_queue> *_routingControllerQueue;
     id <MediaControlsEndpointControllerConnectionDelegate> _connectionDelegate;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <MediaControlsEndpointControllerConnectionDelegate> connectionDelegate; // @synthesize connectionDelegate=_connectionDelegate;
 @property(nonatomic, getter=isAutomaticResponseLoading) _Bool automaticResponseLoading; // @synthesize automaticResponseLoading=_automaticResponseLoading;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *routingControllerQueue; // @synthesize routingControllerQueue=_routingControllerQueue;
 @property(retain, nonatomic) MPAVRoutingController *routingController; // @synthesize routingController=_routingController;
+@property(readonly, nonatomic) NSString *specifiedPlayer; // @synthesize specifiedPlayer=_specifiedPlayer;
+@property(readonly, nonatomic) NSString *specifiedClient; // @synthesize specifiedClient=_specifiedClient;
 @property(nonatomic, getter=isAttemptingConnection) _Bool attemptingConnection; // @synthesize attemptingConnection=_attemptingConnection;
 @property(nonatomic) _Bool hasEverReceivedResponse; // @synthesize hasEverReceivedResponse=_hasEverReceivedResponse;
 @property(readonly, nonatomic) MPRequestResponseController *requestController; // @synthesize requestController=_requestController;
@@ -79,8 +85,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) NSString *representedBundleID;
 @property(readonly, copy, nonatomic) NSString *bundleID;
 @property(readonly, copy) NSString *description;
-- (void)dealloc;
 - (id)initWithEndpoint:(id)arg1;
+- (id)initWithEndpoint:(id)arg1 client:(id)arg2 player:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

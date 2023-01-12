@@ -11,6 +11,8 @@
 @protocol AFMyriadDelegate <NSObject>
 
 @optional
+- (void)myriadCoordinatorDidHandleEmergency:(AFMyriadCoordinator *)arg1;
+- (void)myriadCoordinatorWillHandleEmergency:(AFMyriadCoordinator *)arg1;
 - (void)listeningDidEnd:(AFMyriadCoordinator *)arg1;
 - (void)listeningDidBegin:(AFMyriadCoordinator *)arg1;
 - (void)advertisingDidEnd:(AFMyriadCoordinator *)arg1;

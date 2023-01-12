@@ -12,6 +12,7 @@
 }
 
 - (void).cxx_destruct;
+- (_Bool)_isStatus:(id)arg1 observedForType:(long long)arg2;
 - (void)queryEvents:(id)arg1;
 - (id)init;
 

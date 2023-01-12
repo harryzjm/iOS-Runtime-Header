@@ -11,8 +11,8 @@
     CKComponent *_component;
 }
 
-+ (id)newWithView:(const struct CKComponentViewConfiguration *)arg1 size:(const struct CKComponentSize *)arg2;
-+ (id)newWithView:(const struct CKComponentViewConfiguration *)arg1 component:(id)arg2;
++ (id)newWithView:(const void *)arg1 size:(const struct CKComponentSize *)arg2;
++ (id)newWithView:(const void *)arg1 component:(id)arg2;
 + (id)newWithComponent:(id)arg1;
 - (void).cxx_destruct;
 - (id)viewForAnimation;

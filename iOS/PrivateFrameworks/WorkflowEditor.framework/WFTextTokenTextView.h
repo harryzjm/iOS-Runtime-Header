@@ -50,9 +50,6 @@
 @property(nonatomic) __weak id <WFVariableProvider> variableProvider; // @synthesize variableProvider=_variableProvider;
 @property(nonatomic) _Bool variablesDisabled; // @synthesize variablesDisabled=_variablesDisabled;
 @property(copy, nonatomic) WFVariableString *variableString; // @synthesize variableString=_variableString;
-- (void)defaultPaste:(id)arg1;
-- (void)defaultCopy:(id)arg1;
-- (void)defaultCut:(id)arg1;
 - (void)paste:(id)arg1;
 - (void)copy:(id)arg1;
 - (void)cut:(id)arg1;
@@ -79,6 +76,7 @@
 - (void)handleTextDidChangeNotification;
 - (void)textUpdated;
 - (void)tintColorDidChange;
+@property(nonatomic) long long textAlignment;
 @property(retain, nonatomic) UIFont *font;
 - (void)setTextContainerInset:(struct UIEdgeInsets)arg1;
 @property(readonly, nonatomic) NSArray *currentVariables;
@@ -122,7 +120,6 @@
 @property(nonatomic) long long spellCheckingType;
 @property(readonly) Class superclass;
 @property(copy, nonatomic) NSString *text;
-@property(nonatomic) long long textAlignment;
 @property(retain, nonatomic) UIColor *textColor;
 @property(copy, nonatomic) NSString *textContentType;
 @property(readonly, nonatomic) UIView *textInputView;

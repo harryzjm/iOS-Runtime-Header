@@ -15,12 +15,15 @@
 {
     NSDictionary *_speechRecognitionFeatures;
     NSDictionary *_acousticFeatures;
+    double _snr;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) double snr; // @synthesize snr=_snr;
 @property(readonly, nonatomic) NSDictionary *acousticFeatures; // @synthesize acousticFeatures=_acousticFeatures;
 @property(readonly, nonatomic) NSDictionary *speechRecognitionFeatures; // @synthesize speechRecognitionFeatures=_speechRecognitionFeatures;
+- (id)initWithSpeechRecognitionFeatures:(id)arg1 acousticFeatures:(id)arg2 snr:(double)arg3;
 - (id)initWithSpeechRecognitionFeatures:(id)arg1 acousticFeatures:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

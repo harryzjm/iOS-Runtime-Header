@@ -26,7 +26,9 @@
 - (void)grabberTongueEndedPulling:(SBGrabberTongue *)arg1 withDistance:(double)arg2 andVelocity:(double)arg3 andGesture:(UIGestureRecognizer *)arg4;
 - (void)grabberTongueUpdatedPulling:(SBGrabberTongue *)arg1 withDistance:(double)arg2 andVelocity:(double)arg3 andGesture:(UIGestureRecognizer *)arg4;
 - (void)grabberTongueBeganPulling:(SBGrabberTongue *)arg1 withDistance:(double)arg2 andVelocity:(double)arg3 andGesture:(UIGestureRecognizer *)arg4;
+- (void)grabberTongueTapped:(SBGrabberTongue *)arg1;
 - (_Bool)grabberTongueHonorsAmbiguousActivationMargin:(SBGrabberTongue *)arg1;
+- (_Bool)grabberTongue:(SBGrabberTongue *)arg1 shouldDismissTongueOnSecondSwipeWithEdgeLocation:(double)arg2;
 - (_Bool)grabberTongue:(SBGrabberTongue *)arg1 shouldAllowSecondSwipeWithEdgeLocation:(double)arg2;
 - (_Bool)grabberTongue:(SBGrabberTongue *)arg1 shouldReceiveTouch:(UITouch *)arg2;
 @end

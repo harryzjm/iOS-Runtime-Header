@@ -19,17 +19,18 @@ __attribute__((visibility("hidden")))
     FPDExtensionManager *_extensionManager;
 }
 
++ (id)requestForClaimID:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) __weak FPDExtensionManager *extensionManager; // @synthesize extensionManager=_extensionManager;
-- (void)coordinateForMovingFromURL:(id)arg1 toURL:(id)arg2 handler:(CDUnknownBlockType)arg3;
-- (void)coordinateForMovingFromURL:(id)arg1 toURL:(id)arg2 toTargetFolderURL:(id)arg3 targetMaterializeOption:(unsigned long long)arg4 sourceMaterializeOption:(unsigned long long)arg5 handler:(CDUnknownBlockType)arg6;
+- (void)coordinateForMovingFromURL:(id)arg1 toURL:(id)arg2 request:(id)arg3 handler:(CDUnknownBlockType)arg4;
+- (void)coordinateForMovingFromURL:(id)arg1 toURL:(id)arg2 toTargetFolderURL:(id)arg3 targetMaterializeOption:(unsigned long long)arg4 sourceMaterializeOption:(unsigned long long)arg5 request:(id)arg6 handler:(CDUnknownBlockType)arg7;
 - (id)_readingIntentWithURL:(id)arg1 materializeOption:(unsigned long long)arg2;
-- (void)coordinateForCopyingFromURL:(id)arg1 toURL:(id)arg2 handler:(CDUnknownBlockType)arg3;
-- (void)coordinateAtURL:(id)arg1 recursively:(_Bool)arg2 handler:(CDUnknownBlockType)arg3;
-- (void)resolveItemOrURL:(id)arg1 recursively:(_Bool)arg2 coordinateIfExport:(_Bool)arg3 handler:(CDUnknownBlockType)arg4;
-- (void)resolveItemOrURL:(id)arg1 recursively:(_Bool)arg2 andCoordinateWithHandler:(CDUnknownBlockType)arg3;
+- (void)coordinateForCopyingFromURL:(id)arg1 toURL:(id)arg2 request:(id)arg3 handler:(CDUnknownBlockType)arg4;
+- (void)coordinateAtURL:(id)arg1 recursively:(_Bool)arg2 request:(id)arg3 handler:(CDUnknownBlockType)arg4;
+- (void)resolveItemOrURL:(id)arg1 recursively:(_Bool)arg2 coordinateIfExport:(_Bool)arg3 request:(id)arg4 handler:(CDUnknownBlockType)arg5;
+- (void)resolveItemOrURL:(id)arg1 recursively:(_Bool)arg2 request:(id)arg3 andCoordinateWithHandler:(CDUnknownBlockType)arg4;
 - (void)resolveItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)resolveItem:(id)arg1 recursively:(_Bool)arg2 andCoordinateWithHandler:(CDUnknownBlockType)arg3;
+- (void)resolveItem:(id)arg1 recursively:(_Bool)arg2 request:(id)arg3 andCoordinateWithHandler:(CDUnknownBlockType)arg4;
 - (void)stopAccessingAllURLs;
 - (void)stopAccessingURL:(id)arg1;
 - (void)startAccessingURLForAtomDuration:(id)arg1;

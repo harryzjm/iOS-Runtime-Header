@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSString, PGMeaningfulEventLocationMobilityTrait, PGMeaningfulEventLocationSetTrait, PGMeaningfulEventNumberTrait, PGMeaningfulEventPartOfDayTrait, PGMeaningfulEventSceneSetTrait, PGMeaningfulEventSetTrait;
+@class NSDictionary, NSString, PGMeaningfulEventLocationMobilityTrait, PGMeaningfulEventLocationSetTrait, PGMeaningfulEventNumberTrait, PGMeaningfulEventPartOfDayTrait, PGMeaningfulEventSceneCollectionTrait, PGMeaningfulEventSetTrait;
 
 @interface PGMeaningfulEventRequiredCriteria
 {
@@ -38,7 +38,7 @@
 @property(retain, nonatomic) PGMeaningfulEventSetTrait *poisTrait; // @dynamic poisTrait;
 @property(retain, nonatomic) PGMeaningfulEventSetTrait *publicEventCategoriesTrait; // @dynamic publicEventCategoriesTrait;
 @property(retain, nonatomic) PGMeaningfulEventSetTrait *roisTrait; // @dynamic roisTrait;
-@property(retain, nonatomic) PGMeaningfulEventSceneSetTrait *scenesTrait; // @dynamic scenesTrait;
+@property(retain, nonatomic) PGMeaningfulEventSceneCollectionTrait *scenesTrait; // @dynamic scenesTrait;
 @property(retain, nonatomic) PGMeaningfulEventPartOfDayTrait *significantPartsOfDayTrait; // @dynamic significantPartsOfDayTrait;
 @property(retain, nonatomic) PGMeaningfulEventSetTrait *socialGroupsTrait; // @dynamic socialGroupsTrait;
 

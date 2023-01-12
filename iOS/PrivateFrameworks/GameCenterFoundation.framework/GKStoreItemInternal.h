@@ -21,6 +21,7 @@
 }
 
 + (id)secureCodedPropertyKeys;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool owned; // @synthesize owned=_owned;
 @property(nonatomic) float averageUserRating; // @synthesize averageUserRating=_averageUserRating;
 @property(nonatomic) unsigned int numberOfUserRatings; // @synthesize numberOfUserRatings=_numberOfUserRatings;
@@ -36,7 +37,6 @@
 - (_Bool)isValid;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (void)dealloc;
 
 @end
 

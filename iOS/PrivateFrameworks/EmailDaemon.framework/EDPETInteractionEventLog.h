@@ -10,18 +10,19 @@
 #import <EmailDaemon/EDPBHasher-Protocol.h>
 #import <EmailDaemon/EFLoggable-Protocol.h>
 
-@class CNContactStore, EDInteractionEventLogSaltProvider, EFLazyCache, EFMutableInt64Set, NSData, NSFileHandle, NSString, NSURL;
+@class CNContactStore, EFLazyCache, EFMutableInt64Set, NSData, NSFileHandle, NSNumber, NSString, NSURL, SGMailIntelligenceStringHasher;
 @protocol EMUserProfileProvider, EMVIPManager, OS_dispatch_queue;
 
 @interface EDPETInteractionEventLog : NSObject <EFLoggable, EDPBHasher, EDInteractionEventLog>
 {
-    _Atomic _Bool _shouldLog;
-    _Atomic unsigned int _sequenceNumber;
+    SGMailIntelligenceStringHasher *_stringHasher;
     long long _userID;
     long long _deviceID;
+    NSNumber *_persistentBits;
+    _Atomic _Bool _shouldLog;
+    _Atomic unsigned int _sequenceNumber;
     NSURL *_currentLogFile;
     id <EMUserProfileProvider> _profileProvider;
-    EDInteractionEventLogSaltProvider *_saltProvider;
     CNContactStore *_contactStore;
     id <EMVIPManager> _vipManager;
     EFLazyCache *_contactIDCache;
@@ -47,7 +48,6 @@
 @property(readonly, nonatomic) EFLazyCache *contactIDCache; // @synthesize contactIDCache=_contactIDCache;
 @property(readonly, nonatomic) id <EMVIPManager> vipManager; // @synthesize vipManager=_vipManager;
 @property(readonly, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
-@property(readonly, nonatomic) EDInteractionEventLogSaltProvider *saltProvider; // @synthesize saltProvider=_saltProvider;
 @property(readonly, nonatomic) id <EMUserProfileProvider> profileProvider; // @synthesize profileProvider=_profileProvider;
 @property(retain, nonatomic) NSURL *currentLogFile; // @synthesize currentLogFile=_currentLogFile;
 - (void)persistEvent:(id)arg1 date:(id)arg2 message:(id)arg3 mailboxType:(long long)arg4;
@@ -87,11 +87,10 @@
 - (_Bool)_openCurrentLogfile;
 - (void)_rotateLogWithCompressedData:(id)arg1;
 - (void)_resetIdentifiers;
-- (unsigned int)_persistentBits;
-- (id)_salt;
-@property(readonly, nonatomic) long long deviceID; // @synthesize deviceID=_deviceID;
-@property(readonly, nonatomic) long long userID; // @synthesize userID=_userID;
-- (id)initWithDirectory:(id)arg1 userProfileProvider:(id)arg2 saltProvider:(id)arg3 contactStore:(id)arg4 vipManager:(id)arg5;
+- (id)persistentBits;
+- (long long)deviceID;
+- (long long)userID;
+- (id)initWithDirectory:(id)arg1 userProfileProvider:(id)arg2 contactStore:(id)arg3 vipManager:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <GeoServices/GEOCancellable-Protocol.h>
 #import <GeoServices/GEODataSessionTaskDelegate-Protocol.h>
 
 @class GEODataSession, GEODataSessionTask, NSString;
 
 __attribute__((visibility("hidden")))
-@interface GEODataSessionWaiter : NSObject <GEODataSessionTaskDelegate>
+@interface GEODataSessionWaiter : NSObject <GEOCancellable, GEODataSessionTaskDelegate>
 {
     GEODataSession *_session;
     GEODataSessionTask *_task;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
 @property(retain, nonatomic) GEODataSessionTask *task; // @synthesize task=_task;
 @property(retain, nonatomic) GEODataSession *session; // @synthesize session=_session;
+- (void)cancel;
 - (void)dataSession:(id)arg1 didCompleteTask:(id)arg2;
 - (id)initWithSession:(id)arg1 request:(id)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)init;

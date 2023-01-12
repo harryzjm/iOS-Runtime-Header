@@ -25,6 +25,7 @@
 @property(readonly, nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
+- (void)resolveIdentifier:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, copy) NSString *description;
 - (id)initWithIdentifier:(unsigned long long)arg1 labels:(id)arg2 weight:(float)arg3 properties:(id)arg4;

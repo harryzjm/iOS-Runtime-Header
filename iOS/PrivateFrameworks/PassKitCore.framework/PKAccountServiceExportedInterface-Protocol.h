@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, PKAccount;
+@class NSSet, NSString, PKAccount;
 
 @protocol PKAccountServiceExportedInterface
+- (void)accountUsersChanged:(NSSet *)arg1 forAccountIdentifier:(NSString *)arg2;
 - (void)scheduledPaymentsChangedForAccountIdentifier:(NSString *)arg1;
 - (void)statementsChangedForAccountIdentifier:(NSString *)arg1;
 - (void)accountRemoved:(PKAccount *)arg1;

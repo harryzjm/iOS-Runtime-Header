@@ -6,7 +6,7 @@
 
 #import <MediaPlayer/NSObject-Protocol.h>
 
-@class MPMusicPlayerControllerNowPlaying, MPMusicPlayerControllerNowPlayingTimeSnapshot, MPMusicPlayerQueueDescriptor;
+@class MPMusicPlayerControllerNowPlaying, MPMusicPlayerControllerNowPlayingTimeSnapshot, MPMusicPlayerQueueDescriptor, MPMusicPlayerServerStateUpdateRecord;
 
 @protocol MPMusicPlayerControllerClient <NSObject>
 - (void)serverQueueDidEnd;
@@ -15,5 +15,6 @@
 - (void)setServerTimeSnapshot:(MPMusicPlayerControllerNowPlayingTimeSnapshot *)arg1;
 - (void)setServerNowPlaying:(MPMusicPlayerControllerNowPlaying *)arg1;
 - (void)setServerQueueDescriptor:(MPMusicPlayerQueueDescriptor *)arg1;
+- (void)applyServerStateUpdateRecord:(MPMusicPlayerServerStateUpdateRecord *)arg1;
 @end
 

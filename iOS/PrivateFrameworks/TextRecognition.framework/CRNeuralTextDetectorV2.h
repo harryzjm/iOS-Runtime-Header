@@ -11,20 +11,18 @@
     CRTextDetectorModel *_model;
 }
 
-+ (void)convertVImageGeoMaps:(vector_a2667c0f *)arg1 toVector:(vector_e130d805 *)arg2;
-+ (void)convertVImageScoreMap:(struct vImage_Buffer *)arg1 toVector:(vector_f9ed6fc8 *)arg2;
-+ (void)genPolyResultsForMIVSNMS:(struct vImage_Buffer *)arg1 geoMap:(vector_a2667c0f *)arg2 targetSize:(struct CGSize)arg3 output:(vector_ef8269a8 *)arg4 mergingType:(int)arg5;
-+ (void)scaleBufferNearestNeighbor:(struct vImage_Buffer *)arg1 geoMap:(vector_a2667c0f *)arg2 dest:(struct vImage_Buffer *)arg3 destGeomap:(vector_a2667c0f *)arg4 binaryMask:(struct vImage_Buffer *)arg5;
-+ (unique_ptr_c24e9db1)createImageMap:(id)arg1 targetSize:(struct CGSize)arg2;
++ (void)genPolyResultsForMIVSNMS:(struct vImage_Buffer *)arg1 geoMap:(void *)arg2 output:(void *)arg3 mergingType:(int)arg4;
++ (void)scaleBufferNearestNeighbor:(struct vImage_Buffer *)arg1 geoMap:(void *)arg2 dest:(struct vImage_Buffer *)arg3 destGeomap:(void *)arg4 binaryMask:(struct vImage_Buffer *)arg5;
++ (unique_ptr_e6e70e7e)createImageMap:(id)arg1 targetSize:(struct CGSize)arg2;
 + (void)getMasksForScoreMap:(struct vImage_Buffer *)arg1 imageMask:(struct vImage_Buffer *)arg2 binaryMask:(struct vImage_Buffer *)arg3;
-+ (void)aggregateScoreAndGeoMap:(id)arg1 inputGeo:(id)arg2 targetSize:(struct CGSize)arg3 outputScoreMap:(struct vImage_Buffer *)arg4 outputGeoMap:(vector_a2667c0f *)arg5 outputOrigin:(struct CGPoint)arg6;
-+ (vector_a2667c0f)createGeometricMaps:(struct CGSize)arg1;
++ (void)aggregateScoreAndGeoMap:(id)arg1 inputGeo:(id)arg2 targetSize:(struct CGSize)arg3 outputScoreMap:(struct vImage_Buffer *)arg4 outputGeoMap:(void *)arg5 outputOrigin:(struct CGPoint)arg6;
++ (vector_1f6c974b)createGeometricMaps:(struct CGSize)arg1;
 + (void)calculateTargetOutputSize:(struct CGSize *)arg1 adjustedInputScale:(double *)arg2 paddedSize:(struct CGSize *)arg3 imageSize:(struct CGSize)arg4 maximumSize:(struct CGSize)arg5;
-+ (struct CGSize)smallestImageSizeForTextWithRelativeHeight:(double)arg1 originalImageSize:(struct CGSize)arg2;
 - (void).cxx_destruct;
 @property(retain) CRTextDetectorModel *model; // @synthesize model=_model;
-- (id)processScoreMap:(struct vImage_Buffer *)arg1 geoMap:(vector_a2667c0f *)arg2 adjustedSize:(struct CGSize)arg3 scoreMapFullTile:(struct vImage_Buffer *)arg4 geoMapFullTile:(vector_a2667c0f *)arg5 adjustedFullTileSize:(struct CGSize)arg6 targetSize:(struct CGSize)arg7 targetSizeFullTile:(struct CGSize)arg8 intermediateResults:(id *)arg9;
+- (id)processScoreMap:(struct vImage_Buffer *)arg1 geoMap:(void *)arg2 adjustedSize:(struct CGSize)arg3 scoreMapFullTile:(struct vImage_Buffer *)arg4 geoMapFullTile:(void *)arg5 adjustedFullTileSize:(struct CGSize)arg6 targetSize:(struct CGSize)arg7 targetSizeFullTile:(struct CGSize)arg8 intermediateResults:(id *)arg9;
 - (id)detectInImage:(id)arg1 error:(id *)arg2;
+- (struct CGSize)smallestImageSizeForTextWithRelativeHeight:(double)arg1 originalImageSize:(struct CGSize)arg2;
 - (id)initWithConfiguration:(id)arg1 error:(id *)arg2;
 - (id)init;
 

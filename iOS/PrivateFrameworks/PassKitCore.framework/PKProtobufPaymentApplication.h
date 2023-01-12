@@ -8,13 +8,17 @@
 
 #import <PassKitCore/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, PKProtobufCustomPrecisionAmount;
 
 @interface PKProtobufPaymentApplication : PBCodable <NSCopying>
 {
     long long _inAppPINRequiredAmount;
     long long _inAppPriority;
+    NSString *_apanIdentifier;
+    NSString *_apanSuffix;
     NSString *_applicationIdentifier;
+    unsigned int _auxiliaryPaymentType;
+    PKProtobufCustomPrecisionAmount *_customPrecisionInAppPINRequiredAmount;
     NSString *_displayName;
     NSString *_dpanIdentifier;
     NSString *_dpanSuffix;
@@ -29,9 +33,12 @@
     _Bool _inAppPINRequired;
     _Bool _supportsContactlessPayment;
     _Bool _supportsInAppPayment;
+    _Bool _supportsMerchantTokens;
+    _Bool _supportsMultiTokens;
     struct {
         unsigned int inAppPINRequiredAmount:1;
         unsigned int inAppPriority:1;
+        unsigned int auxiliaryPaymentType:1;
         unsigned int paymentNetworkIdentifier:1;
         unsigned int paymentType:1;
         unsigned int state:1;
@@ -39,10 +46,18 @@
         unsigned int inAppPINRequired:1;
         unsigned int supportsContactlessPayment:1;
         unsigned int supportsInAppPayment:1;
+        unsigned int supportsMerchantTokens:1;
+        unsigned int supportsMultiTokens:1;
     } _has;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) PKProtobufCustomPrecisionAmount *customPrecisionInAppPINRequiredAmount; // @synthesize customPrecisionInAppPINRequiredAmount=_customPrecisionInAppPINRequiredAmount;
+@property(nonatomic) _Bool supportsMultiTokens; // @synthesize supportsMultiTokens=_supportsMultiTokens;
+@property(nonatomic) _Bool supportsMerchantTokens; // @synthesize supportsMerchantTokens=_supportsMerchantTokens;
+@property(retain, nonatomic) NSString *apanSuffix; // @synthesize apanSuffix=_apanSuffix;
+@property(retain, nonatomic) NSString *apanIdentifier; // @synthesize apanIdentifier=_apanIdentifier;
+@property(nonatomic) unsigned int auxiliaryPaymentType; // @synthesize auxiliaryPaymentType=_auxiliaryPaymentType;
 @property(nonatomic) long long inAppPriority; // @synthesize inAppPriority=_inAppPriority;
 @property(nonatomic) _Bool auxiliary; // @synthesize auxiliary=_auxiliary;
 @property(retain, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
@@ -69,6 +84,12 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasCustomPrecisionInAppPINRequiredAmount;
+@property(nonatomic) _Bool hasSupportsMultiTokens;
+@property(nonatomic) _Bool hasSupportsMerchantTokens;
+@property(readonly, nonatomic) _Bool hasApanSuffix;
+@property(readonly, nonatomic) _Bool hasApanIdentifier;
+@property(nonatomic) _Bool hasAuxiliaryPaymentType;
 @property(nonatomic) _Bool hasInAppPriority;
 @property(nonatomic) _Bool hasAuxiliary;
 @property(readonly, nonatomic) _Bool hasDisplayName;

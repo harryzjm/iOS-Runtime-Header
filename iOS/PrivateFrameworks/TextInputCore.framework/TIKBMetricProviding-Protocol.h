@@ -6,10 +6,10 @@
 
 #import <TextInputCore/TIMetricProviding-Protocol.h>
 
-@class NSArray, NSObject, NSString, TIAnalyticsMetricsContext, TIMetricDescriptorRegistry;
+@class NSArray, NSObject, NSString, TIAnalyticsMetricsContext;
 
 @protocol TIKBMetricProviding <TIMetricProviding>
-- (NSArray *)valuesByBucketedWordLengthForMetricWithName:(NSString *)arg1 withContext:(TIAnalyticsMetricsContext *)arg2 fromRegistry:(TIMetricDescriptorRegistry *)arg3;
-- (NSObject *)valueForMetricWithName:(NSString *)arg1 withContext:(TIAnalyticsMetricsContext *)arg2 fromRegistry:(TIMetricDescriptorRegistry *)arg3;
+- (NSArray *)valuesByBucketedWordLengthForMetricWithName:(NSString *)arg1 withContext:(TIAnalyticsMetricsContext *)arg2;
+- (NSObject *)valueForMetricWithName:(NSString *)arg1 withContext:(TIAnalyticsMetricsContext *)arg2;
 @end
 

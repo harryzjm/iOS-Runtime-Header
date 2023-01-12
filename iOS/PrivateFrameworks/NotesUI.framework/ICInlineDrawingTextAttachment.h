@@ -6,20 +6,25 @@
 
 #import <NotesUI/PKTextAttachment-Protocol.h>
 
-@class ICInlineDrawingChangeCoalescer, NSHashTable, NSString;
+@class ICDrawingHashtagsAndMentionsController, ICInlineDrawingChangeCoalescer, NSHashTable, NSString, UIView;
 
 @interface ICInlineDrawingTextAttachment <PKTextAttachment>
 {
     _Bool _isHandlingDrawingDidChange;
     ICInlineDrawingChangeCoalescer *_changeCoalescer;
     NSHashTable *_inlineDrawingViews;
+    ICDrawingHashtagsAndMentionsController *_hashtagsAndMentionsController;
+    UIView *_cachedDrawingViewForPlaceView;
+    UIView *_cachedControlViewForPlaceView;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) __weak UIView *cachedControlViewForPlaceView; // @synthesize cachedControlViewForPlaceView=_cachedControlViewForPlaceView;
+@property(nonatomic) __weak UIView *cachedDrawingViewForPlaceView; // @synthesize cachedDrawingViewForPlaceView=_cachedDrawingViewForPlaceView;
+@property(retain, nonatomic) ICDrawingHashtagsAndMentionsController *hashtagsAndMentionsController; // @synthesize hashtagsAndMentionsController=_hashtagsAndMentionsController;
 @property(nonatomic) _Bool isHandlingDrawingDidChange; // @synthesize isHandlingDrawingDidChange=_isHandlingDrawingDidChange;
 @property(retain, nonatomic) NSHashTable *inlineDrawingViews; // @synthesize inlineDrawingViews=_inlineDrawingViews;
 @property(retain, nonatomic) ICInlineDrawingChangeCoalescer *changeCoalescer; // @synthesize changeCoalescer=_changeCoalescer;
-- (void)setViewSelected:(_Bool)arg1 inWindow:(id)arg2;
 - (void)drawingDataDidChange:(id)arg1 view:(id)arg2;
 - (void)resetZoom;
 - (id)_image;
@@ -30,7 +35,8 @@
 - (id)printableTextContentForAppearanceType:(unsigned long long)arg1;
 - (id)attachmentAsNSTextAttachment;
 - (id)contents;
-- (void)updatePaletteVisibility;
+- (id)attachmentViews;
+- (id)inlineViews;
 - (void)detachView;
 - (void)saveIfNeeded;
 - (_Bool)canDragWithoutSelecting;

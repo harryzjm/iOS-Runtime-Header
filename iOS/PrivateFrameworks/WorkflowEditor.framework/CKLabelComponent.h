@@ -8,7 +8,7 @@
 {
 }
 
-+ (id)newWithLabelAttributes:(const struct CKLabelAttributes *)arg1 viewAttributes:(const unordered_map_b2cee720 *)arg2 size:(const struct CKComponentSize *)arg3;
++ (id)newWithLabelAttributes:(const struct CKLabelAttributes *)arg1 viewAttributes:(const void *)arg2 size:(const struct CKComponentSize *)arg3;
 
 @end
 

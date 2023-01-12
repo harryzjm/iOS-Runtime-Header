@@ -25,6 +25,7 @@
 @property(retain, nonatomic) NSDate *alternateImportImageDate;
 @property(readonly, nonatomic) NSDate *imageDate;
 @property(readonly, nonatomic) NSString *fileName;
+@property(readonly, nonatomic) NSString *uuid;
 - (id)objectID;
 - (id)description;
 - (_Bool)isLegacy;

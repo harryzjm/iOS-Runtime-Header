@@ -10,11 +10,14 @@
 {
 }
 
+- (id)smartPromptWithContentDescription:(id)arg1 contentDestination:(id)arg2 workflowName:(id)arg3;
+- (void)getContentDestinationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (_Bool)populatesInputFromInputParameter;
 - (void)openURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 - (void)resolveSlot:(id)arg1 withProcessedValue:(id)arg2 parameter:(id)arg3 input:(id)arg4 completion:(CDUnknownBlockType)arg5;
-- (id)generatedAccessResource;
+- (id)contentDestinationWithError:(id *)arg1;
+- (id)generatedAccessResourceNode;
 - (_Bool)requiresRemoteExecution;
 
 @end

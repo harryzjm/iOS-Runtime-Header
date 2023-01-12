@@ -13,22 +13,26 @@
 {
     NSMutableDictionary *_sessions;
     NSObject<OS_dispatch_queue> *_queue;
-    id <CPSAppInfoFetching> _appInfoFetcher;
-    id <CPSBusinessItemFetching> _businessItemFetcher;
     NSObject<OS_dispatch_source> *_memoryPressureSource;
     CPSInstallationController *_clipInstaller;
     id <CPSLegacyAppInstalling> _legacyInstaller;
+    id <CPSAppInfoFetching> _appInfoFetcher;
+    id <CPSBusinessItemFetching> _businessItemFetcher;
 }
 
 + (id)sharedManager;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <CPSBusinessItemFetching> businessItemFetcher; // @synthesize businessItemFetcher=_businessItemFetcher;
+@property(readonly, nonatomic) id <CPSAppInfoFetching> appInfoFetcher; // @synthesize appInfoFetcher=_appInfoFetcher;
 @property(retain, nonatomic) id <CPSLegacyAppInstalling> legacyInstaller; // @synthesize legacyInstaller=_legacyInstaller;
 @property(readonly, nonatomic) CPSInstallationController *clipInstaller; // @synthesize clipInstaller=_clipInstaller;
+- (void)_localeChanged:(id)arg1;
 - (void)getSessionWithURL:(id)arg1 configuration:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getSessionWithURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)clearSessionWithURL:(id)arg1;
 - (id)sessionWithURL:(id)arg1 createIfNoExist:(_Bool)arg2;
 @property(readonly, nonatomic) NSArray *allSessions;
+- (void)handleManagedConfigurationChanged;
 - (void)_handleMemoryPressure:(unsigned long long)arg1;
 - (void)_setUpMemoryPressureHandler;
 - (id)init;

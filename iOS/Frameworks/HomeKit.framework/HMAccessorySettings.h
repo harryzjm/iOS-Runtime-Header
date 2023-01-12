@@ -30,6 +30,7 @@
 @property(readonly, nonatomic) NSUUID *uniqueIdentifier;
 - (void)__notifyDelegateSettingsDidUpdate;
 - (void)__notifyDelegateSettingsWillUpdateWithCompletionHanlder:(CDUnknownBlockType)arg1;
+- (void)_notifyDelegateDidUpdateKeyPath:(id)arg1;
 - (void)_updateSettingsWithBlock:(CDUnknownBlockType)arg1;
 @property(readonly, getter=isControllable) _Bool controllable;
 @property __weak id <HMControllable> settingsControl; // @synthesize settingsControl=_settingsControl;

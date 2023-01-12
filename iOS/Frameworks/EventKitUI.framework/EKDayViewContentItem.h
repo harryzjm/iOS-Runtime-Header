@@ -63,6 +63,7 @@
 @property(readonly, nonatomic) _Bool hideTravelTime;
 @property(readonly, nonatomic) double viewMaxNaturalTextHeight;
 @property(readonly, nonatomic) double enoughHeightForOneLine;
+@property(readonly, nonatomic) NSString *eventIdentifier;
 @property(readonly, nonatomic) NSDate *end;
 @property(readonly, nonatomic) NSDate *start;
 @property(readonly, nonatomic) NSDate *startWithTravelTime;

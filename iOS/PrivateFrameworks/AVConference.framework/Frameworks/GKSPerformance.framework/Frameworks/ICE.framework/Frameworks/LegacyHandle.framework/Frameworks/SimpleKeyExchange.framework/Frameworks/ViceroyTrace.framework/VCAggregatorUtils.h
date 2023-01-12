@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)validBitmapIndices:(unsigned int)arg1 size:(int)arg2;
 + (id)safeRoundOffNumber:(id)arg1 toSignificantDigits:(unsigned char)arg2;
 
 @end

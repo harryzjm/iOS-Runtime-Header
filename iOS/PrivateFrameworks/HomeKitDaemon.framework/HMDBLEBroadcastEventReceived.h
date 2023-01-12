@@ -4,19 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitMetrics/HMMLogEvent.h>
+
 #import <HomeKitDaemon/HMDAWDLogEvent-Protocol.h>
 
 @class HMDAccessory, NSString;
 
-@interface HMDBLEBroadcastEventReceived <HMDAWDLogEvent>
+@interface HMDBLEBroadcastEventReceived : HMMLogEvent <HMDAWDLogEvent>
 {
     _Bool _hasExpectedGSN;
     HMDAccessory *_accessory;
 }
 
 + (id)broadcastEventFromAccessory:(id)arg1 withExpectedGSN:(_Bool)arg2;
-+ (id)uuid;
-+ (void)initialize;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool hasExpectedGSN; // @synthesize hasExpectedGSN=_hasExpectedGSN;
 @property(readonly, nonatomic) HMDAccessory *accessory; // @synthesize accessory=_accessory;

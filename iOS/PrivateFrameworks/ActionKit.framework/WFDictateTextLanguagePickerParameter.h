@@ -4,19 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WorkflowKit/WFEnumerationParameter.h>
-
-@class NSArray;
-
-@interface WFDictateTextLanguagePickerParameter : WFEnumerationParameter
+@interface WFDictateTextLanguagePickerParameter
 {
-    NSArray *_possibleStates;
 }
 
-- (void).cxx_destruct;
-- (id)localizedLabelForPossibleState:(id)arg1;
++ (id)availableLocaleIdentifiers;
 - (id)defaultSerializedRepresentation;
-- (id)possibleStates;
 
 @end
 

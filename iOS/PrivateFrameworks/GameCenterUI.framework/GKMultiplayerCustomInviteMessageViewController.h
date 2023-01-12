@@ -6,36 +6,27 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <GameCenterUI/UITextFieldDelegate-Protocol.h>
-
-@class NSObject, NSString, UIButton, UITextField, UIVisualEffectView;
+@class NSObject, NSString, UIButton, UITextView, UIVisualEffectView;
 @protocol GKMultiplayerCustomInviteMessageViewControllerDelegate;
 
-@interface GKMultiplayerCustomInviteMessageViewController : UIViewController <UITextFieldDelegate>
+@interface GKMultiplayerCustomInviteMessageViewController : UIViewController
 {
     NSObject<GKMultiplayerCustomInviteMessageViewControllerDelegate> *_delegate;
-    UITextField *_messageTextField;
+    NSString *_message;
     UIButton *_doneButton;
+    UITextView *_messageTextField;
     UIVisualEffectView *_backgroundEffectView;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIVisualEffectView *backgroundEffectView; // @synthesize backgroundEffectView=_backgroundEffectView;
+@property(retain, nonatomic) UITextView *messageTextField; // @synthesize messageTextField=_messageTextField;
 @property(retain, nonatomic) UIButton *doneButton; // @synthesize doneButton=_doneButton;
-@property(retain, nonatomic) UITextField *messageTextField; // @synthesize messageTextField=_messageTextField;
+@property(retain, nonatomic) NSString *message; // @synthesize message=_message;
 @property(nonatomic) __weak NSObject<GKMultiplayerCustomInviteMessageViewControllerDelegate> *delegate; // @synthesize delegate=_delegate;
-@property(retain, nonatomic) NSString *message;
 - (void)donePressed:(id)arg1;
-- (id)blurEffectForTraitCollection:(id)arg1;
-- (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

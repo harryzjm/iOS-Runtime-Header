@@ -10,6 +10,7 @@
 {
 }
 
+- (void)recordScreenForDuration:(double)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)grabScreenWithRect:(struct CGRect)arg1 orientation:(long long)arg2 options:(id)arg3 metrics:(id)arg4 error:(id *)arg5;
 
 @end

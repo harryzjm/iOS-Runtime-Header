@@ -12,10 +12,12 @@
 {
     UIBarButtonItem *_barButtonItem;
     UIView *_customView;
+    CDUnknownBlockType _menuProvider;
 }
 
 + (id)_imageByApplyingDefaultImageSymbolConfigurationWithImage:(id)arg1;
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType menuProvider; // @synthesize menuProvider=_menuProvider;
 @property(retain, nonatomic) UIView *customView; // @synthesize customView=_customView;
 @property(readonly, nonatomic) UIBarButtonItem *barButtonItem; // @synthesize barButtonItem=_barButtonItem;
 - (void)_itemDidChangeEnabledState:(id)arg1;
@@ -27,6 +29,9 @@
 - (void)_checkCurrentBarButtonItemState;
 - (void)_handleTouchUpInside:(id)arg1 event:(id)arg2;
 - (void)setTintColor:(id)arg1;
+- (id)_contextMenuInteraction:(id)arg1 styleForMenuWithConfiguration:(id)arg2;
+- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
+- (void)_updateMenu;
 - (void)_updateForButtonItemChange;
 - (void)layoutSubviews;
 - (id)initWithBarButtonItem:(id)arg1;

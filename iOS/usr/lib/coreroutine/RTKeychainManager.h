@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <coreroutine/RTDiagnosticProvider-Protocol.h>
 
 @class NSString;
 
-@interface RTKeychainManager : NSObject <RTDiagnosticProvider>
+@interface RTKeychainManager <RTDiagnosticProvider>
 {
 }
 
@@ -20,6 +18,7 @@
 - (id)encryptionKeyWithSize:(long long)arg1 identifier:(id)arg2 error:(id *)arg3;
 - (_Bool)removeEncryptionKeyWithIdentifier:(id)arg1 error:(id *)arg2;
 - (id)createSymmetricKeyWithSize:(long long)arg1 identifier:(id)arg2 storeInKeychain:(_Bool)arg3 error:(id *)arg4;
+- (void)_shutdownWithHandler:(CDUnknownBlockType)arg1;
 - (_Bool)_updateKey:(id)arg1 forIdentifier:(id)arg2 error:(id *)arg3;
 - (_Bool)_removeItemWithIdentifier:(id)arg1 error:(id *)arg2;
 - (_Bool)_setKey:(id)arg1 forIdentifier:(id)arg2 error:(id *)arg3;

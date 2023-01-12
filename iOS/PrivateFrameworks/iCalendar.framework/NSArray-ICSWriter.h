@@ -10,6 +10,8 @@
 - (void)_ICSStringsForPropertyValuesWithOptions:(unsigned long long)arg1 appendingToString:(id)arg2;
 - (void)_ICSParametersAppendingToString:(id)arg1;
 - (void)_ICSStringWithOptions:(unsigned long long)arg1 appendingToString:(id)arg2;
+- (id)VCS_filter:(CDUnknownBlockType)arg1;
+- (id)VCS_map:(CDUnknownBlockType)arg1;
 - (_Bool)ICSContainsArray:(id)arg1;
 @end
 

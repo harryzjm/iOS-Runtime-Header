@@ -8,6 +8,7 @@
 
 @class MISSING_TYPE;
 
+__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI222AudioFeedDataPrewarmer : NSObject
 {
     MISSING_TYPE *session;

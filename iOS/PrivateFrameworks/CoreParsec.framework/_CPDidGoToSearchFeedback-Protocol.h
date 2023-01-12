@@ -10,6 +10,7 @@
 
 @protocol _CPDidGoToSearchFeedback <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(nonatomic) int triggerEvent;
 @property(nonatomic) int endpoint;
 @property(copy, nonatomic) NSString *input;
 @property(nonatomic) unsigned long long timestamp;

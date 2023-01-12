@@ -4,13 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/NSTextAttachmentViewProvider.h>
+#import <UIFoundation/NSTextAttachmentViewProvider.h>
 
 @interface PKTextAttachmentDrawingViewProvider : NSTextAttachmentViewProvider
 {
 }
 
++ (Class)tiledViewClassForDrawingClass:(Class)arg1;
++ (Class)drawingViewClassForDrawingClass:(Class)arg1;
++ (Class)drawingClassForFileType:(id)arg1;
 + (void)registerViewProviderClassIfNecessary;
++ (_Bool)isSystemNoteTakingEnabled;
 + (void)didInsertDrawingAttachment:(id)arg1;
 - (void)loadView;
 

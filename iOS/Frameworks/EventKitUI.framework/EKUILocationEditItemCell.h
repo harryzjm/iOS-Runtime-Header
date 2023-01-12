@@ -6,7 +6,7 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class UIActivityIndicatorView, UIButton, UIImageView, UILabel;
+@class UIActivityIndicatorView, UIButton, UIImageView, UILabel, UIView;
 
 @interface EKUILocationEditItemCell : UITableViewCell
 {
@@ -14,13 +14,11 @@
     UIImageView *_image;
     UIActivityIndicatorView *_spinner;
     UIButton *_clearButton;
-    CDUnknownBlockType _clearButtonTapped;
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) CDUnknownBlockType clearButtonTapped; // @synthesize clearButtonTapped=_clearButtonTapped;
-- (void)_clearButtonTapped:(id)arg1;
 - (void)updateWithName:(id)arg1 sourceSupportsAvailability:(_Bool)arg2 availabilityRequestInProgress:(_Bool)arg3 availabilityType:(long long)arg4 showClearButton:(_Bool)arg5;
+@property(retain, nonatomic) UIView *clearButtonView;
 - (id)description;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 

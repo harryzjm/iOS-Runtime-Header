@@ -16,6 +16,7 @@
 
 + (void)flushEverything;
 + (void)persistEverything;
++ (id)genericPreferencesEphemeral;
 + (id)buddyPreferencesInternal;
 + (id)buddyPreferencesEphemeral;
 + (id)buddyPreferencesExcludedFromBackup;

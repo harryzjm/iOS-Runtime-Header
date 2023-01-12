@@ -26,15 +26,8 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (unsigned int)exifOrientation;
-- (id)imageData;
-- (id)imageURL;
-- (struct CGImageSource *)obtainImageSourceRefWithSubSampleFactor:(unsigned int)arg1 andLowPriorityHint:(_Bool)arg2;
-- (struct CGImageSource *)obtainImageSourceRef;
 - (struct CGImageSource *)_obtainCreatedCGImageSourceRefAtAddress:(struct CGImageSource **)arg1 forSubSampleFactor:(unsigned int)arg2 protectedWithUnfairLock:(struct os_unfair_lock_s *)arg3 operatingInLowPriority:(_Bool)arg4;
 - (void)dealloc;
-- (id)initWithImageData:(id)arg1;
-- (id)initWithImageURL:(id)arg1;
 
 @end
 

@@ -10,7 +10,7 @@
 #import <UIKitCore/_UIViewRepresentingKeyboardLayout-Protocol.h>
 
 @class NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSString, NSUUID, UIEvent, UIKBCadenceMonitor, UIKBScreenTraits, UIKBTextEditingTraits, UIKeyboardTaskQueue, UIKeyboardTypingStyleEstimator, UITextInputTraits, _UIKBRTFingerDetection, _UIKBRTRecognizer, _UIKBRTTouchDrifting, _UIKBRTTouchVelocities, _UIScreenEdgePanRecognizer;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, UIKeyboardLayoutSizeDelegate;
 
 @interface UIKeyboardLayout <_UIKBRTRecognizerDelegate, _UIKBRTTouchDriftingDelegate, _UIViewRepresentingKeyboardLayout, _UIScreenEdgePanRecognizerDelegate>
 {
@@ -40,6 +40,7 @@
     UIKBCadenceMonitor *_cadenceMonitor;
     _UIKBRTTouchVelocities *_touchVelocities;
     double lastTouchUpTime;
+    id <UIKeyboardLayoutSizeDelegate> _sizeDelegate;
     double _timestampOfLastTouchesEnded;
     CDUnknownBlockType _deferredTaskForActiveTouch;
     _UIKBRTTouchDrifting *_touchDrifting;
@@ -62,6 +63,8 @@
 @property(nonatomic) _Bool ignoringKeyplaneChange; // @synthesize ignoringKeyplaneChange=_ignoringKeyplaneChange;
 @property(copy, nonatomic) CDUnknownBlockType deferredTaskForActiveTouch; // @synthesize deferredTaskForActiveTouch=_deferredTaskForActiveTouch;
 @property(readonly, nonatomic) double timestampOfLastTouchesEnded; // @synthesize timestampOfLastTouchesEnded=_timestampOfLastTouchesEnded;
+@property(retain, nonatomic) UIKBScreenTraits *screenTraits; // @synthesize screenTraits=_screenTraits;
+@property(nonatomic) id <UIKeyboardLayoutSizeDelegate> sizeDelegate; // @synthesize sizeDelegate=_sizeDelegate;
 @property(nonatomic) double lastTouchUpTime; // @synthesize lastTouchUpTime;
 @property(retain, nonatomic) _UIKBRTTouchVelocities *touchVelocities; // @synthesize touchVelocities=_touchVelocities;
 @property(retain, nonatomic) UIKBCadenceMonitor *cadenceMonitor; // @synthesize cadenceMonitor=_cadenceMonitor;
@@ -76,6 +79,7 @@
 @property(nonatomic) unsigned long long cursorLocation; // @synthesize cursorLocation=_cursorLocation;
 @property(retain, nonatomic) NSUUID *shiftKeyTouchUUID; // @synthesize shiftKeyTouchUUID=_shiftKeyTouchUUID;
 @property(retain, nonatomic) NSUUID *activeTouchUUID; // @synthesize activeTouchUUID=_activeTouchUUID;
+- (id)getRomanAccentVariantsForString:(id)arg1 inputMode:(id)arg2 keyboardVariantIndludes:(int)arg3;
 - (_Bool)isHandwritingPlane;
 - (_Bool)hasActiveContinuousPathInput;
 - (id)simulateTouchForCharacter:(id)arg1 errorVector:(struct CGPoint)arg2 shouldTypeVariants:(_Bool)arg3 baseKeyForVariants:(_Bool)arg4;
@@ -246,6 +250,8 @@
 - (unsigned long long)textEditingKeyMask;
 - (void)setTextEditingTraits:(id)arg1;
 - (void)showKeyboardWithInputTraits:(id)arg1 screenTraits:(id)arg2 splitTraits:(id)arg3;
+- (void)reloadKeyboardWithInputTraits:(id)arg1 screenTraits:(id)arg2 splitTraits:(id)arg3;
+@property(readonly, nonatomic) _Bool isFloating;
 @property(readonly, nonatomic) long long idiom;
 @property(readonly, nonatomic) long long orientation;
 @property(retain, nonatomic) UIKeyboardTaskQueue *taskQueue;

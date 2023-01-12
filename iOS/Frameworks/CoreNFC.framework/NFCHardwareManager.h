@@ -9,12 +9,12 @@
 #import <CoreNFC/NFCHardwareManagerCallbacks-Protocol.h>
 #import <CoreNFC/NFCSessionCallbacks-Protocol.h>
 
-@class NFCSession, NSArray, NSMutableArray, NSMutableDictionary, NSString;
+@class NFCSession, NSArray, NSMutableDictionary, NSMutableSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface NFCHardwareManager : NSObject <NFCSessionCallbacks, NFCHardwareManagerCallbacks>
 {
-    NSMutableArray *_delegates;
+    NSMutableSet *_delegates;
     NFCSession *_xpcSession;
     NSMutableDictionary *_queuedReaderSessions;
 }

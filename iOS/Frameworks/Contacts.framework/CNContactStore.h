@@ -55,6 +55,7 @@
 - (id)descriptorForRequiredKeysForMatchingDictionary;
 - (id)userActivityUserInfoForContact:(id)arg1;
 - (id)contactWithUserActivityUserInfo:(id)arg1 keysToFetch:(id)arg2;
+- (id)descriptorForRequiredKeysForUserActivityUserInfo;
 - (id)sectionListOffsetsForSortOrder:(long long)arg1 error:(id *)arg2;
 - (_Bool)setDefaultAccountIdentifier:(id)arg1 error:(id *)arg2;
 - (_Bool)resetSortDataIfNeededWithError:(id *)arg1;
@@ -101,6 +102,7 @@
 - (id)unifiedContactWithIdentifier:(id)arg1 keysToFetch:(id)arg2 error:(id *)arg3;
 - (id)requestAccessForEntityType:(long long)arg1;
 - (void)requestAccessForEntityType:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)initWithConfiguration:(id)arg1;
 - (id)initWithEnvironment:(id)arg1 options:(unsigned long long)arg2 managedConfiguration:(id)arg3;
 - (id)initWithEnvironment:(id)arg1 options:(unsigned long long)arg2;
 - (id)initWithEnvironment:(id)arg1;

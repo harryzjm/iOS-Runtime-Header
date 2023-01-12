@@ -10,7 +10,9 @@
 @protocol SBSwitcherLiveContentOverlay;
 
 @protocol SBSwitcherLiveContentOverlayCoordinatorDelegate <NSObject>
+- (double)displayScaleForContentOverlay;
 - (UIViewController *)parentViewControllerForContentOverlay;
+- (void)moveExistingLiveContentOverlay:(id <SBSwitcherLiveContentOverlay>)arg1 forAppLayout:(SBAppLayout *)arg2 toAppLayout:(SBAppLayout *)arg3;
 - (void)removeLiveContentOverlayForAppLayout:(SBAppLayout *)arg1 animated:(_Bool)arg2;
 - (void)addLiveContentOverlay:(id <SBSwitcherLiveContentOverlay>)arg1 forAppLayout:(SBAppLayout *)arg2 animated:(_Bool)arg3;
 @end

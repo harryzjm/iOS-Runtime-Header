@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class LPFetcher, NSDictionary, NSString, NSURL;
+@class LPFetcher, MPStoreLyricsSnippetURLComponents, NSDictionary, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface LPiTunesMediaAsset : NSObject
 {
-    Class _customFetcherClass;
     long long _type;
+    MPStoreLyricsSnippetURLComponents *_lyricComponents;
     NSURL *_URL;
     NSDictionary *_colors;
     NSString *_name;
@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property(readonly, retain, nonatomic) LPFetcher *fetcher;
 - (id)metadata;
-- (id)initWithName:(id)arg1 customFetcherClass:(Class)arg2;
+- (id)initWithName:(id)arg1 lyricComponents:(id)arg2;
 - (id)initWithVideoURL:(id)arg1 name:(id)arg2;
 - (id)initWithImageURL:(id)arg1 colors:(id)arg2 name:(id)arg3;
 

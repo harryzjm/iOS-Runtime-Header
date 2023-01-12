@@ -6,14 +6,19 @@
 
 #import <GameCenterFoundation/GKUtilityService-Protocol.h>
 
-@class CNContact, NSArray, NSData, NSNumber, NSURL;
+@class NSArray, NSData, NSNumber, NSString, NSURL;
 
 @protocol GKUtilityServicePrivate <GKUtilityService>
 - (oneway void)clearCoreRecencyBlackList;
+- (oneway void)contactSuggestionsWithLimit:(NSNumber *)arg1 handler:(void (^)(NSArray *))arg2;
 - (oneway void)suggestedContactsListWithLimit:(NSNumber *)arg1 handler:(void (^)(NSArray *, NSError *))arg2;
 - (oneway void)loadContactsFromCoreRecencyWithLimit:(NSNumber *)arg1 contactKeyDescriptors:(NSArray *)arg2 handler:(void (^)(NSArray *, NSError *))arg3;
-- (oneway void)blackListRecentContact:(CNContact *)arg1 handler:(void (^)(NSError *))arg2;
+- (oneway void)denyGroup:(NSString *)arg1 handler:(void (^)(NSError *))arg2;
+- (oneway void)denyContact:(NSString *)arg1 handler:(void (^)(NSError *))arg2;
+- (oneway void)contactAndGroupSuggestions:(NSNumber *)arg1 handler:(void (^)(NSArray *))arg2;
+- (oneway void)cancelNetworkManagerTasks;
 - (oneway void)loadDataForURL:(NSURL *)arg1 postBody:(NSData *)arg2 completionHandler:(void (^)(NSData *, NSError *))arg3;
+- (oneway void)refreshPreferencesWithDataType:(unsigned int)arg1;
 - (oneway void)refreshPreferences;
 - (oneway void)updateNotificationTopics;
 - (oneway void)pingWithHandler:(void (^)(void))arg1;

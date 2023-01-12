@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <_UIDatePickerCalendarHeaderViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (struct CGSize)intrinsicContentSize;
 - (void)setExpanded:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)_didTap:(id)arg1;
 - (void)_adjustMonth:(id)arg1;

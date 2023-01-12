@@ -6,21 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class MPSGraphExecutable;
-
 @interface MPSGraphExecutionDescriptor : NSObject
 {
     _Bool _waitUntilCompleted;
+    _Bool _enableCommitAndContinue;
     CDUnknownBlockType _scheduledHandler;
     CDUnknownBlockType _completionHandler;
-    MPSGraphExecutable *_executable;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) MPSGraphExecutable *executable; // @synthesize executable=_executable;
+@property _Bool enableCommitAndContinue; // @synthesize enableCommitAndContinue=_enableCommitAndContinue;
 @property _Bool waitUntilCompleted; // @synthesize waitUntilCompleted=_waitUntilCompleted;
 @property(copy) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property(copy) CDUnknownBlockType scheduledHandler; // @synthesize scheduledHandler=_scheduledHandler;
+- (id)init;
 
 @end
 

@@ -11,7 +11,7 @@
 #import <Rapport/RPCompanionLinkXPCClientInterface-Protocol.h>
 #import <Rapport/RPMessageable-Protocol.h>
 
-@class NSString, NSXPCConnection, RPConnection, RPEndpoint;
+@class NSArray, NSString, NSXPCConnection, RPConnection, RPEndpoint;
 @protocol OS_dispatch_queue;
 
 @interface RPSession : NSObject <NSSecureCoding, RPCompanionLinkXPCClientInterface, RPAuthenticatable, RPMessageable>
@@ -25,6 +25,8 @@
     unsigned int _pairVerifyFlags;
     int _passwordType;
     int _passwordTypeActual;
+    NSArray *_allowedMACAddresses;
+    NSArray *_pairSetupACL;
     NSString *_password;
     CDUnknownBlockType _authCompletionHandler;
     CDUnknownBlockType _showPasswordHandler;
@@ -65,6 +67,8 @@
 @property(copy, nonatomic) NSString *password; // @synthesize password=_password;
 @property(nonatomic) unsigned int pairVerifyFlags; // @synthesize pairVerifyFlags=_pairVerifyFlags;
 @property(nonatomic) unsigned int pairSetupFlags; // @synthesize pairSetupFlags=_pairSetupFlags;
+@property(retain, nonatomic) NSArray *pairSetupACL; // @synthesize pairSetupACL=_pairSetupACL;
+@property(retain, nonatomic) NSArray *allowedMACAddresses; // @synthesize allowedMACAddresses=_allowedMACAddresses;
 - (void)sendRequestID:(id)arg1 request:(id)arg2 destinationID:(id)arg3 options:(id)arg4 responseHandler:(CDUnknownBlockType)arg5;
 - (void)sendRequestID:(id)arg1 request:(id)arg2 options:(id)arg3 responseHandler:(CDUnknownBlockType)arg4;
 - (void)deregisterRequestID:(id)arg1;

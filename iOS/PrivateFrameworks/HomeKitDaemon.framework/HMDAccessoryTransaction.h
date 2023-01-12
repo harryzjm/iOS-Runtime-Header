@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMDUserManagementOperationTimestamp, NSArray, NSData, NSNumber, NSObject, NSString;
+@class HMDUserManagementOperationTimestamp, NSArray, NSData, NSNumber, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_group;
 
 @interface HMDAccessoryTransaction
@@ -40,6 +40,9 @@
 @property(retain, nonatomic) NSString *networkClientProfileFingerprint; // @dynamic networkClientProfileFingerprint;
 @property(retain, nonatomic) NSString *networkRouterUUID; // @dynamic networkRouterUUID;
 @property(retain, nonatomic) HMDUserManagementOperationTimestamp *pairingsAuditedTimestamp; // @dynamic pairingsAuditedTimestamp;
+@property(retain, nonatomic) NSString *pendingConfigurationIdentifier; // @dynamic pendingConfigurationIdentifier;
+@property(copy) NSUUID *preferredMediaUserUUID; // @dynamic preferredMediaUserUUID;
+@property(copy, nonatomic) NSNumber *preferredUserSelectionType; // @dynamic preferredUserSelectionType;
 @property(retain, nonatomic) NSString *primaryProfileVersion; // @dynamic primaryProfileVersion;
 @property(retain, nonatomic) NSString *productData; // @dynamic productData;
 @property(retain, nonatomic) NSString *productDataV2; // @dynamic productDataV2;

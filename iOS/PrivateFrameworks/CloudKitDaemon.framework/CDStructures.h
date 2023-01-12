@@ -12,6 +12,15 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct __SecKey {
+    struct __CFRuntimeBase {
+        unsigned long long _field1;
+        _Atomic unsigned long long _field2;
+    } _field1;
+    struct __SecKeyDescriptor *_field2;
+    void *_field3;
+};
+
 struct internal_state;
 
 struct pcc_invocation_key {
@@ -41,15 +50,6 @@ struct z_stream_s {
 };
 
 #pragma mark Typedef'd Structures
-
-typedef struct {
-    unsigned int _field1[8];
-} CDStruct_6ad76789;
-
-typedef struct {
-    int _field1;
-    unsigned char _field2[16];
-} CDStruct_46dcf1da;
 
 // Ambiguous groups
 typedef struct {

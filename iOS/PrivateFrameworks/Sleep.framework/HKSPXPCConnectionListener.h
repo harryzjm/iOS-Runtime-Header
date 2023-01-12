@@ -10,10 +10,12 @@
 #import <Sleep/NSXPCListenerDelegate-Protocol.h>
 
 @class HKSPXPCClient, HKSPXPCConnectionInfo, NSArray, NSMutableSet, NSString, NSXPCListener;
+@protocol HKSPXPCConnectionListenerDelegate;
 
 @interface HKSPXPCConnectionListener : NSObject <NSXPCListenerDelegate, BSDescriptionProviding>
 {
     struct os_unfair_lock_s _clientLock;
+    id <HKSPXPCConnectionListenerDelegate> _delegate;
     HKSPXPCConnectionInfo *_connectionInfo;
     NSXPCListener *_connectionListener;
     NSMutableSet *_connectedClientSet;
@@ -25,6 +27,7 @@
 @property(readonly, nonatomic) struct os_unfair_lock_s clientLock; // @synthesize clientLock=_clientLock;
 @property(readonly, nonatomic) NSXPCListener *connectionListener; // @synthesize connectionListener=_connectionListener;
 @property(readonly, nonatomic) HKSPXPCConnectionInfo *connectionInfo; // @synthesize connectionInfo=_connectionInfo;
+@property(nonatomic) __weak id <HKSPXPCConnectionListenerDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
@@ -32,9 +35,11 @@
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (void)performRemoteBlock:(CDUnknownBlockType)arg1 onClient:(id)arg2;
+- (void)performRemoteBlockOnClients:(CDUnknownBlockType)arg1 passingTest:(CDUnknownBlockType)arg2;
 - (void)performRemoteBlockOnClients:(CDUnknownBlockType)arg1;
 - (id)_currentClientForConnection:(id)arg1;
 @property(readonly, nonatomic) HKSPXPCClient *currentClient;
+- (id)connectedClientsWithPID:(int)arg1;
 @property(readonly, nonatomic) NSArray *connectedClients;
 - (void)_lock_logConnectedClients;
 - (void)removeClientConnection:(id)arg1;

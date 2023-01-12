@@ -7,15 +7,9 @@
 #import <TSText/NSCopying-Protocol.h>
 #import <TSText/NSObject-Protocol.h>
 
-@class NSDictionary, NSObject, TSWPListStyle;
-@protocol TSWPTopicNumberHints;
+@class NSMapTable;
 
 @protocol TSWPTopicNumberHints <NSObject, NSCopying>
-- (NSDictionary *)entries;
-- (unsigned long long)previousCharIndexForList:(TSWPListStyle *)arg1 level:(unsigned long long)arg2;
-- (unsigned long long)nextTopicNumberForList:(TSWPListStyle *)arg1 level:(unsigned long long)arg2;
-- (_Bool)isEquivalentStateToTopicNumberHints:(NSObject<TSWPTopicNumberHints> *)arg1;
-- (unsigned long long)charIndexValidThrough;
-- (unsigned long long)charIndex;
+@property(retain, nonatomic) NSMapTable *entryForListStyle;
 @end
 

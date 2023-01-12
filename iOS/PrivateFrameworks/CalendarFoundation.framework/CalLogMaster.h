@@ -35,11 +35,10 @@
 @property(retain, nonatomic) NSArray *topLevelNodes; // @synthesize topLevelNodes=_topLevelNodes;
 - (void)processEnvelope:(id)arg1;
 - (_Bool)flush;
-- (id)findWhiteList;
+- (id)findPermittedList;
 - (int)findMinimumLevel;
 - (void)registerForConfigUpdateNotifications;
 - (void)reloadTopLevelNodes;
-- (id)copyLegacyLoggingDefaultsConvertedToNamespaces;
 - (_Bool)shouldProcessNamespace:(id)arg1;
 - (void)configureRootConfigurationNode;
 - (void)configureStandardOutNode;

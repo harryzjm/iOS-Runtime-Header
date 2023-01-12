@@ -6,18 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <ChatKit/CKFullScreenAppViewControllerDelegate-Protocol.h>
+#import <ChatKit/CKExpandedAppViewControllerDelegate-Protocol.h>
 
-@class CKConversation, CKFullScreenAppViewController, NSString, UINavigationController, UIViewController, UIWindow;
+@class CKConversation, CKExpandedAppViewController, NSString, UINavigationController, UIViewController, UIWindow;
 @protocol CKBrowserTransitionCoordinatorDelegate, CKBrowserViewControllerProtocol, CKBrowserViewControllerSendDelegate;
 
-@interface CKBrowserTransitionCoordinator : NSObject <CKFullScreenAppViewControllerDelegate>
+@interface CKBrowserTransitionCoordinator : NSObject <CKExpandedAppViewControllerDelegate>
 {
     _Bool _expanded;
     _Bool _underTest;
     id <CKBrowserTransitionCoordinatorDelegate> _delegate;
     long long _currentConsumer;
-    CKFullScreenAppViewController *_fullscreenViewController;
+    CKExpandedAppViewController *_expandedAppViewController;
     UIViewController *_presentingViewController;
     CKConversation *_conversation;
     id <CKBrowserViewControllerSendDelegate> _sendDelegate;
@@ -46,7 +46,7 @@
 @property(nonatomic) __weak id <CKBrowserViewControllerSendDelegate> sendDelegate; // @synthesize sendDelegate=_sendDelegate;
 @property(retain, nonatomic) CKConversation *conversation; // @synthesize conversation=_conversation;
 @property(nonatomic) __weak UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
-@property(retain, nonatomic) CKFullScreenAppViewController *fullscreenViewController; // @synthesize fullscreenViewController=_fullscreenViewController;
+@property(retain, nonatomic) CKExpandedAppViewController *expandedAppViewController; // @synthesize expandedAppViewController=_expandedAppViewController;
 @property(nonatomic, getter=isExpanded) _Bool expanded; // @synthesize expanded=_expanded;
 @property(nonatomic) long long currentConsumer; // @synthesize currentConsumer=_currentConsumer;
 @property(nonatomic) __weak id <CKBrowserTransitionCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
@@ -54,23 +54,24 @@
 - (id)appIconOverride;
 - (id)appTitleOverride;
 - (_Bool)shouldAlwaysShowAppTitle;
-- (_Bool)fullscreenAppViewControllerShouldDismissOnDragSuccess:(id)arg1;
-- (double)fullscreenAppViewControllerCollapsedContentHeight:(id)arg1;
-- (void)fullscreenAppViewControllerDidTransitionFromOrientation:(long long)arg1 toOrientation:(long long)arg2;
-- (void)fullscreenAppViewControllerSwitcherDidSelectAppManager:(id)arg1;
-- (void)fullscreenAppViewControllerSwitcherDidSelectAppStore:(id)arg1;
-- (void)fullscreenAppViewController:(id)arg1 hasUpdatedLastTouchDate:(id)arg2;
-- (void)fullscreenAppViewController:(id)arg1 wantsToSwitchToPlugin:(id)arg2 datasource:(id)arg3;
-- (void)fullscreenAppViewControllerWantsToCollapse:(id)arg1;
+- (_Bool)expandedAppViewControllerShouldDismissOnDragSuccess:(id)arg1;
+- (double)expandedAppViewControllerCollapsedContentHeight:(id)arg1;
+- (void)expandedAppViewControllerDidTransitionFromOrientation:(long long)arg1 toOrientation:(long long)arg2;
+- (void)expandedAppViewControllerSwitcherDidSelectAppManager:(id)arg1;
+- (void)expandedAppViewControllerSwitcherDidSelectAppStore:(id)arg1;
+- (void)expandedAppViewController:(id)arg1 hasUpdatedLastTouchDate:(id)arg2;
+- (void)expandedAppViewController:(id)arg1 wantsToSwitchToPlugin:(id)arg2 datasource:(id)arg3;
+- (void)expandedAppViewControllerWantsToCollapse:(id)arg1;
 - (void)dismissCurrentFullScreenModalAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic, getter=isPresentingFullScreenModal) _Bool presentingFullScreenModal;
 - (void)presentPluginFullScreenModal:(id)arg1 datasource:(id)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)presentPluginFullScreenModal:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)dismissCurrentFullscreenBrowserAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)dismissCurrentExpandedBrowserAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)transitionCurrentBrowserToCollapsedPresentationAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)transitionCurrentBrowserToExpandedPresentationAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)releaseOwnershipOfBrowserForConsumer:(long long)arg1;
 - (id)requestOwnershipOfBrowserForConsumer:(long long)arg1;
+- (void)updateBrowser:(id)arg1;
 - (_Bool)updateBrowserSessionForPlugin:(id)arg1 datasource:(id)arg2;
 - (id)transitionViewController;
 - (id)modalPresentationViewController;

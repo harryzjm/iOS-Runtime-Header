@@ -8,31 +8,34 @@
 
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HAPAccessory, NSNumber, NSString;
+@class HAPAccessory, NSDate, NSNumber, NSString;
 
 @interface HMDAccessoryTransportInformation : HMFObject <NSSecureCoding>
 {
+    struct os_unfair_lock_s _lock;
     _Bool _reachable;
     HAPAccessory *_hapAccessory;
-    NSString *_serverIdentifier;
     NSString *_protocolVersion;
+    NSDate *_reachableLastChangedTime;
+    NSString *_serverIdentifier;
     NSNumber *_instanceID;
     long long _linkType;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property _Bool reachable; // @synthesize reachable=_reachable;
-@property long long linkType; // @synthesize linkType=_linkType;
-@property(retain, nonatomic) NSNumber *instanceID; // @synthesize instanceID=_instanceID;
-@property(retain, nonatomic) NSString *protocolVersion; // @synthesize protocolVersion=_protocolVersion;
-@property(retain, nonatomic) NSString *serverIdentifier; // @synthesize serverIdentifier=_serverIdentifier;
-@property(retain, nonatomic) HAPAccessory *hapAccessory; // @synthesize hapAccessory=_hapAccessory;
+@property(readonly, nonatomic) long long linkType; // @synthesize linkType=_linkType;
+@property(readonly, copy, nonatomic) NSNumber *instanceID; // @synthesize instanceID=_instanceID;
+@property(readonly, copy, nonatomic) NSString *serverIdentifier; // @synthesize serverIdentifier=_serverIdentifier;
+- (id)attributeDescriptions;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)description;
-- (id)initWithHAPAccessory:(id)arg1;
-- (id)initWithServerIdentifier:(id)arg1 instanceID:(id)arg2 linkType:(long long)arg3 reachable:(_Bool)arg4;
+- (id)report;
+@property(readonly, copy) NSDate *reachableLastChangedTime; // @synthesize reachableLastChangedTime=_reachableLastChangedTime;
+@property(getter=isReachable) _Bool reachable; // @synthesize reachable=_reachable;
+@property(copy) NSString *protocolVersion; // @synthesize protocolVersion=_protocolVersion;
+@property(retain) HAPAccessory *hapAccessory; // @synthesize hapAccessory=_hapAccessory;
+- (id)initWithServerIdentifier:(id)arg1 instanceID:(id)arg2 linkType:(long long)arg3;
 
 @end
 

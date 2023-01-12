@@ -13,10 +13,12 @@
     _Bool _alertAfterDownload;
     NSNumber *_passcodeRequiredDays;
     _Bool _needsAlertPresentationAfterOTAUpdate;
+    _Bool _preventCountdownAlert;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool preventCountdownAlert; // @synthesize preventCountdownAlert=_preventCountdownAlert;
 @property(nonatomic, setter=setNeedsAlertPresentationAfterOTAUpdate:) _Bool needsAlertPresentationAfterOTAUpdate; // @synthesize needsAlertPresentationAfterOTAUpdate=_needsAlertPresentationAfterOTAUpdate;
 @property(readonly, retain, nonatomic) NSNumber *passcodeRequiredDays; // @synthesize passcodeRequiredDays=_passcodeRequiredDays;
 @property(readonly, nonatomic) _Bool alertAfterDownload; // @synthesize alertAfterDownload=_alertAfterDownload;

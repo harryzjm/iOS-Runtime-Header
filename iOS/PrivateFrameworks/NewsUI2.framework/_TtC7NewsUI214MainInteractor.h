@@ -14,6 +14,10 @@
     MISSING_TYPE *dataManager;
     MISSING_TYPE *followingSelection;
     MISSING_TYPE *offerManager;
+    MISSING_TYPE *tabBarEngagementModifier;
+    MISSING_TYPE *engagementEventHandler;
+    MISSING_TYPE *engagementViewControllerFactory;
+    MISSING_TYPE *engagementOverlayManager;
 }
 
 @end

@@ -21,6 +21,7 @@
 - (void).cxx_destruct;
 @property(readonly, retain, nonatomic) NSDate *dateLastCallEnded; // @synthesize dateLastCallEnded=_lastCallDate;
 - (void)callObserver:(id)arg1 callChanged:(id)arg2;
+@property(readonly, nonatomic) _Bool isOnTelephonyCall;
 @property(readonly, nonatomic) _Bool isOnCall;
 - (id)init;
 

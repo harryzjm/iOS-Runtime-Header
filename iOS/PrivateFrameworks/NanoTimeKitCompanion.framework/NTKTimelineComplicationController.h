@@ -21,7 +21,7 @@
 @property(nonatomic) _Bool ignoreNewTemplates; // @synthesize ignoreNewTemplates=_ignoreNewTemplates;
 @property(readonly, nonatomic) CLKComplicationTemplate *alwaysOnTemplate; // @synthesize alwaysOnTemplate=_alwaysOnTemplate;
 @property(readonly, nonatomic) CLKComplicationTemplate *activeDisplayTemplate;
-- (void)_aggdAppLaunchForTimeTravelDate:(id)arg1 timelineEntryDate:(id)arg2;
+- (void)_analyticsAppLaunchForTimeTravelDate:(id)arg1 timelineEntryDate:(id)arg2;
 - (unsigned long long)_animationForTimelineEntryTransitionFrom:(id)arg1 to:(id)arg2 withAnimationBehavior:(unsigned long long)arg3;
 
 @end

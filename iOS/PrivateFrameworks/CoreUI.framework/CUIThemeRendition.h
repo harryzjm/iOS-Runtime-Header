@@ -91,6 +91,7 @@
 - (_Bool)isTintable;
 - (_Bool)preservedVectorRepresentation;
 - (void)_setFlippable:(_Bool)arg1;
+- (_Bool)isInterpolatable;
 - (_Bool)isFlippable;
 - (_Bool)optOutOfThinning;
 - (long long)templateRenderingMode;

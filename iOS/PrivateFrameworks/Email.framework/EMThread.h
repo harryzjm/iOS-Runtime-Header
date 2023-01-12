@@ -10,7 +10,7 @@
 #import <Email/NSCopying-Protocol.h>
 #import <Email/NSSecureCoding-Protocol.h>
 
-@class ECMessageFlags, ECSubject, EFFuture, EFQuery, EMMailboxScope, EMMessageRepository, EMObjectID, NSArray, NSDate, NSIndexSet, NSString;
+@class ECMessageFlags, ECSubject, EFFuture, EFQuery, EMMailboxScope, EMMessageRepository, EMObjectID, EMThreadObjectID, NSArray, NSDate, NSIndexSet, NSString;
 @protocol EMCollectionItemID, EMMailboxTypeResolver;
 
 @interface EMThread <EMThreadBuilder, EFLoggable, NSCopying, NSSecureCoding, EMMessageListItem>
@@ -85,7 +85,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)ef_publicDescription;
+@property(readonly, copy, nonatomic) NSString *ef_publicDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, copy) NSString *debugDescription;
 - (void)_commonInitWithOriginatingQuery:(id)arg1 builder:(CDUnknownBlockType)arg2;
@@ -95,7 +95,7 @@
 
 // Remaining properties
 @property(readonly) unsigned long long hash;
-@property(readonly, copy, nonatomic) EMObjectID *objectID;
+@property(readonly, copy, nonatomic) EMThreadObjectID *objectID; // @dynamic objectID;
 @property(readonly) Class superclass;
 
 @end

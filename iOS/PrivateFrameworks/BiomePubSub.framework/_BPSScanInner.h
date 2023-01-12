@@ -22,6 +22,7 @@
 @property(copy, nonatomic) CDUnknownBlockType nextPartialResult; // @synthesize nextPartialResult=_nextPartialResult;
 @property(retain, nonatomic) id result; // @synthesize result=_result;
 @property(retain, nonatomic) id <BPSSubscriber> downstream; // @synthesize downstream=_downstream;
+- (void)cancel;
 - (void)receiveCompletion:(id)arg1;
 - (long long)receiveInput:(id)arg1;
 - (void)receiveSubscription:(id)arg1;

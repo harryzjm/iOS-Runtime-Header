@@ -7,7 +7,7 @@
 #import <DeviceManagement/CATOperation.h>
 
 @class DMFControlGroupIdentifier, NSData, NSString;
-@protocol CRKIDSAddressTranslator, CRKIDSListener, CRKIDSPrimitives;
+@protocol CRKCancelable, CRKIDSAddressTranslator, CRKIDSPrimitives;
 
 @interface CRKFetchASMCertificatesOperation : CATOperation
 {
@@ -20,11 +20,11 @@
     long long _sourceRole;
     long long _destinationRole;
     NSData *_requesterCertificate;
-    id <CRKIDSListener> _messageReceiveListener;
+    id <CRKCancelable> _messageReceiveSubscription;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) id <CRKIDSListener> messageReceiveListener; // @synthesize messageReceiveListener=_messageReceiveListener;
+@property(retain, nonatomic) id <CRKCancelable> messageReceiveSubscription; // @synthesize messageReceiveSubscription=_messageReceiveSubscription;
 @property(readonly, copy, nonatomic) NSData *requesterCertificate; // @synthesize requesterCertificate=_requesterCertificate;
 @property(readonly, nonatomic) long long destinationRole; // @synthesize destinationRole=_destinationRole;
 @property(readonly, nonatomic) long long sourceRole; // @synthesize sourceRole=_sourceRole;
@@ -39,6 +39,7 @@
 - (void)main;
 - (void)cancel;
 - (_Bool)isAsynchronous;
+- (void)operationWillFinish;
 - (id)initWithIDSPrimitives:(id)arg1 addressTranslator:(id)arg2 controlGroupIdentifier:(id)arg3 destinationAppleID:(id)arg4 sourceAppleID:(id)arg5 destinationDeviceIdentifier:(id)arg6 sourceRole:(long long)arg7 destinationRole:(long long)arg8 requesterCertificate:(id)arg9;
 
 @end

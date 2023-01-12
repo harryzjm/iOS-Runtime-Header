@@ -20,7 +20,7 @@
 - (id)targetDataURLForPath:(id)arg1;
 - (id)newRawComponentWriteChannelWithPackageLocator:(id)arg1 storeOutsideObjectArchive:(_Bool)arg2;
 - (id)packageEntryInfoForComponentLocator:(id)arg1 isStoredOutsideObjectArchive:(_Bool)arg2 packageURL:(id)arg3;
-- (id)initWithURL:(id)arg1 documentTargetURL:(id)arg2 relativeURLForExternalData:(id)arg3 packageIdentifier:(unsigned char)arg4 documentProperties:(id)arg5 fileFormatVersion:(unsigned long long)arg6 updateType:(long long)arg7 cloneMode:(_Bool)arg8 encryptionKey:(id)arg9 originalDocumentPackage:(id)arg10 originalSuppportPackage:(id)arg11 fileCoordinatorDelegate:(id)arg12 progress:(id)arg13 error:(id *)arg14;
+- (id)initWithURL:(id)arg1 documentTargetURL:(id)arg2 relativeURLForExternalData:(id)arg3 packageIdentifier:(unsigned char)arg4 documentProperties:(id)arg5 documentMetadata:(id)arg6 fileFormatVersion:(unsigned long long)arg7 updateType:(long long)arg8 cloneMode:(_Bool)arg9 documentSaveValidationPolicy:(id)arg10 encryptionKey:(id)arg11 originalDocumentPackage:(id)arg12 originalSupportPackage:(id)arg13 fileCoordinatorDelegate:(id)arg14 progress:(id)arg15 error:(id *)arg16;
 
 @end
 

@@ -20,17 +20,17 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly) NSURL *syncRequestURL; // @synthesize syncRequestURL=_syncRequestURL;
-@property(readonly) long long type; // @synthesize type=_type;
+@property(readonly, nonatomic) NSURL *syncRequestURL; // @synthesize syncRequestURL=_syncRequestURL;
+@property(readonly, nonatomic) long long type; // @synthesize type=_type;
 - (void)processDataInResponse:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-@property(readonly) NSArray *keysToDelete; // @synthesize keysToDelete=_keysToDelete;
-@property(readonly) NSArray *keysToUpdate; // @synthesize keysToUpdate=_keysToUpdate;
-@property(readonly) long long conflictDetectionType; // @synthesize conflictDetectionType=_conflictDetectionType;
-@property(readonly, copy) NSString *syncAnchor; // @synthesize syncAnchor=_syncAnchor;
+@property(readonly, nonatomic) NSArray *keysToDelete; // @synthesize keysToDelete=_keysToDelete;
+@property(readonly, nonatomic) NSArray *keysToUpdate; // @synthesize keysToUpdate=_keysToUpdate;
+@property(readonly, nonatomic) long long conflictDetectionType; // @synthesize conflictDetectionType=_conflictDetectionType;
+@property(readonly, copy, nonatomic) NSString *syncAnchor; // @synthesize syncAnchor=_syncAnchor;
 - (id)keyValuePairForUpdatedKey:(id)arg1;
 - (id)conflictDetectionOrdinalForKey:(id)arg1;
 - (id)description;
-@property __weak id <SBKSyncTransactionProcessing> transactionProcessor; // @synthesize transactionProcessor=_transactionProcessor;
+@property(nonatomic) __weak id <SBKSyncTransactionProcessing> transactionProcessor; // @synthesize transactionProcessor=_transactionProcessor;
 - (void)_validateTransactionProcessor:(id)arg1;
 - (id)newRequest;
 - (id)requestURL;

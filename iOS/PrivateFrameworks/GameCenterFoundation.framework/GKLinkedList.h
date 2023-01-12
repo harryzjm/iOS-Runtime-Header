@@ -14,8 +14,9 @@
     GKListNode *_tailNode;
 }
 
-@property(nonatomic) GKListNode *tailNode; // @synthesize tailNode=_tailNode;
-@property(nonatomic) GKListNode *headNode; // @synthesize headNode=_headNode;
+- (void).cxx_destruct;
+@property(retain, nonatomic) GKListNode *tailNode; // @synthesize tailNode=_tailNode;
+@property(retain, nonatomic) GKListNode *headNode; // @synthesize headNode=_headNode;
 - (id)nodeForInsertionWithValue:(id)arg1;
 - (void)removeNode:(id)arg1;
 - (void)insertNodeAtBeginning:(id)arg1;

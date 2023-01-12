@@ -13,6 +13,7 @@
 }
 
 + (_Bool)isSuggestionsSupported;
++ (id)os_log;
 + (id)storeIdentifier;
 + (id)storeInfoClasses;
 - (void).cxx_destruct;

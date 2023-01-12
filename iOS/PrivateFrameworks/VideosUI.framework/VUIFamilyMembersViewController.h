@@ -7,21 +7,22 @@
 #import <UIKit/UIViewController.h>
 
 #import <VideosUI/UICollectionViewDelegate-Protocol.h>
-#import <VideosUI/VUICollectionViewDelegate-Protocol.h>
+#import <VideosUI/VUILegacyCollectionViewDelegate-Protocol.h>
 #import <VideosUI/VUILibraryDataSourceDelegate-Protocol.h>
 
-@class NSDictionary, NSString, UICollectionViewDiffableDataSource, VUICollectionView, VUIFamilyMemberCell, VUILibraryFamilyMembersDataSource, VUIViewControllerContentPresenter;
+@class NSDictionary, NSString, UICollectionViewDiffableDataSource, VUIFamilyMemberCell, VUILegacyCollectionView, VUILibraryFamilyMembersDataSource, VUIViewControllerContentPresenter;
 @protocol VUIFamilyMembersViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VUIFamilyMembersViewController : UIViewController <VUILibraryDataSourceDelegate, UICollectionViewDelegate, VUICollectionViewDelegate>
+@interface VUIFamilyMembersViewController : UIViewController <VUILibraryDataSourceDelegate, UICollectionViewDelegate, VUILegacyCollectionViewDelegate>
 {
+    double _lastAppearWidth;
     _Bool _requiresRelayout;
     id <VUIFamilyMembersViewControllerDelegate> _delegate;
     VUILibraryFamilyMembersDataSource *_dataSource;
     UICollectionViewDiffableDataSource *_diffableDataSource;
     VUIViewControllerContentPresenter *_contentPresenter;
-    VUICollectionView *_collectionView;
+    VUILegacyCollectionView *_collectionView;
     VUIFamilyMemberCell *_sizingCell;
     NSDictionary *_familyMemberHashToFamilyMemberDictionary;
     long long _gridType;
@@ -36,11 +37,12 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long gridType; // @synthesize gridType=_gridType;
 @property(retain, nonatomic) NSDictionary *familyMemberHashToFamilyMemberDictionary; // @synthesize familyMemberHashToFamilyMemberDictionary=_familyMemberHashToFamilyMemberDictionary;
 @property(retain, nonatomic) VUIFamilyMemberCell *sizingCell; // @synthesize sizingCell=_sizingCell;
-@property(retain, nonatomic) VUICollectionView *collectionView; // @synthesize collectionView=_collectionView;
+@property(retain, nonatomic) VUILegacyCollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property(retain, nonatomic) VUIViewControllerContentPresenter *contentPresenter; // @synthesize contentPresenter=_contentPresenter;
 @property(retain, nonatomic) UICollectionViewDiffableDataSource *diffableDataSource; // @synthesize diffableDataSource=_diffableDataSource;
 @property(retain, nonatomic) VUILibraryFamilyMembersDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property(nonatomic) __weak id <VUIFamilyMembersViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)_updateNavigationBarPadding;
 - (void)_clearCollectionViewSelections:(_Bool)arg1;
 - (void)_updateLayoutForSize:(struct CGSize)arg1;
 - (void)_updateCurrentViewIfNeeded;
@@ -57,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;
 - (void)loadView;

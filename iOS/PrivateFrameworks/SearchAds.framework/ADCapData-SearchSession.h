@@ -7,8 +7,8 @@
 #import <AdCore/ADCapData.h>
 
 @interface ADCapData (SearchSession)
-- (id)toroClickCountDataParameter;
-- (id)frequencyCapDataParameter;
+- (id)clickCountByLine;
+- (id)impressionCountByLine;
 - (void)cleanDownloadArray;
 @end
 

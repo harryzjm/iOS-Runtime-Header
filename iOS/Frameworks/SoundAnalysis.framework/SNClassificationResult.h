@@ -10,32 +10,43 @@
 #import <SoundAnalysis/NSSecureCoding-Protocol.h>
 #import <SoundAnalysis/SNResult-Protocol.h>
 #import <SoundAnalysis/SNTimeRangeProvidingWritable-Protocol.h>
+#import <SoundAnalysis/SRSampling-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSDictionary, NSString;
 
-@interface SNClassificationResult : NSObject <NSCopying, NSSecureCoding, SNTimeRangeProvidingWritable, SNResult>
+@interface SNClassificationResult : NSObject <NSCopying, NSSecureCoding, SRSampling, SNTimeRangeProvidingWritable, SNResult>
 {
-    NSArray *_classifications;
+    NSArray *_cachedClassifications;
+    NSDictionary *_classificationDictionary;
+    NSString *_classifierIdentifier;
     CDStruct_e83c9415 _timeRange;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)classificationsFromClassificationDictionary:(id)arg1;
 + (id)new;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *classifierIdentifier; // @synthesize classifierIdentifier=_classifierIdentifier;
 @property(nonatomic) CDStruct_e83c9415 timeRange; // @synthesize timeRange=_timeRange;
-@property(copy, nonatomic) NSArray *classifications; // @synthesize classifications=_classifications;
+@property(copy, nonatomic) NSDictionary *classificationDictionary; // @synthesize classificationDictionary=_classificationDictionary;
+@property(readonly, copy) NSString *description;
+- (id)initWithBinarySampleRepresentation:(id)arg1 metadata:(id)arg2 timestamp:(double)arg3;
+- (id)binarySampleRepresentation;
+- (id)initWithBinarySampleRepresentation:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqualToClassificationResult:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly, copy) NSArray *classifications;
+- (id)classificationForIdentifier:(id)arg1;
+- (id)initWithClassificationDictionary:(id)arg1;
 - (id)_init;
 - (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) Class superclass;
 
 @end

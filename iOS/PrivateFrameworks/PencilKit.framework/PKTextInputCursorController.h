@@ -18,6 +18,8 @@
     id <UITextCursorAssertion> _ghostAssertion;
     _Bool _cursorShouldFlash;
     CDUnknownBlockType _restoreAfterFlashCursorBlock;
+    _Bool _lastKnownTextInputResponderWasKey;
+    _Bool __trackedLastKnownTextInputResponderWindowIsKey;
     id <PKTextInputCursorControllerDelegate> _delegate;
     double _lastElementTapToFocusTimestamp;
     long long _cursorStyle;
@@ -30,6 +32,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) double _lastSwitchToIdleWritingStateTime; // @synthesize _lastSwitchToIdleWritingStateTime=__lastSwitchToIdleWritingStateTime;
 @property(retain, nonatomic) UITextCursorAssertionController *implicitAssertionController; // @synthesize implicitAssertionController=_implicitAssertionController;
+@property(nonatomic, setter=_setTrackedLastKnownTextInputResponderWindowIsKey:) _Bool _trackedLastKnownTextInputResponderWindowIsKey; // @synthesize _trackedLastKnownTextInputResponderWindowIsKey=__trackedLastKnownTextInputResponderWindowIsKey;
 @property(nonatomic, setter=_setLastKnownTextInputResponder:) __weak UIResponder<UITextInput> *_lastKnownTextInputResponder; // @synthesize _lastKnownTextInputResponder=__lastKnownTextInputResponder;
 @property(nonatomic, setter=_setMode:) long long mode; // @synthesize mode=_mode;
 @property(nonatomic, setter=_setCursorStyle:) long long cursorStyle; // @synthesize cursorStyle=_cursorStyle;
@@ -43,12 +46,15 @@
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (id)_windowForResponder:(id)arg1;
 - (_Bool)lastKnownTextInputResponderWindowIsKey;
+- (void)_textInputSourceDidChange:(id)arg1;
 - (void)textInputSourceDidChange:(id)arg1;
 - (void)keyWindowDidChange:(id)arg1;
 - (void)firstResponderDidChange:(id)arg1;
+- (_Bool)scribbleEnabled;
 - (void)invalidateGhostAssertion;
 - (void)invalidateNonVisibleAssertion;
 - (void)invalidateNonBlinkingAssertion;
+- (void)resetState;
 - (void)removeAllAssertions;
 - (id)_implicitAssertionControllerIfPossible;
 - (id)_currentAssertionController;

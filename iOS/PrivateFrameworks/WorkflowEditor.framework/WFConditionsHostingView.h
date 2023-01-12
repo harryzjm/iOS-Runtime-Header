@@ -6,19 +6,21 @@
 
 #import <UIKit/UICollectionReusableView.h>
 
-@class MISSING_TYPE, UIViewController, WFWorkflow;
+@class MISSING_TYPE, WFWorkflow;
+@protocol WFConditionsHostingViewDelegate;
 
 @interface WFConditionsHostingView : UICollectionReusableView
 {
     MISSING_TYPE *workflow;
-    MISSING_TYPE *viewController;
-    MISSING_TYPE *hostingController;
+    MISSING_TYPE *delegate;
+    MISSING_TYPE *sizingView;
 }
 
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-@property(nonatomic) __weak UIViewController *viewController; // @synthesize viewController;
+- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
+@property(nonatomic) __weak id <WFConditionsHostingViewDelegate> delegate; // @synthesize delegate;
 @property(nonatomic, retain) WFWorkflow *workflow; // @synthesize workflow;
 
 @end

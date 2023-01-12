@@ -10,6 +10,7 @@
 {
 }
 
++ (id)textContentFromSearchableItem:(id)arg1;
 + (id)contactHandlesForSearchableItem:(id)arg1;
 + (id)contactHandlesForTextMessage:(id)arg1;
 + (id)contactHandlesForMailMessage:(id)arg1;

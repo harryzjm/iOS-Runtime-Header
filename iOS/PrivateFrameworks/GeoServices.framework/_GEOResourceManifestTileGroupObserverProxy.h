@@ -18,11 +18,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-- (unsigned long long)observersCount;
-- (void)forEachObserver:(CDUnknownBlockType)arg1 finished:(CDUnknownBlockType)arg2;
-- (void)removeObserver:(id)arg1;
-- (void)addObserver:(id)arg1;
+- (void)registerObserver:(id)arg1;
 - (id)description;
 - (id)init;
 

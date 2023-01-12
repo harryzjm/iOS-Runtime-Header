@@ -19,6 +19,7 @@
 + (int)assistiveTouchPid;
 + (int)accessibilityUIServerPid;
 + (void)setLockScreenDimTimerEnabled:(_Bool)arg1;
++ (id)_authenticationMessageForLocationInCAScreenCoordinates:(struct CGPoint)arg1 eventType:(unsigned int)arg2 excludeContextIDsFromHitTest:(id)arg3;
 + (void)processExternalHIDEvent:(struct __IOHIDEvent *)arg1;
 + (struct CGPoint)displayConvertToCAScreen:(struct CGPoint)arg1 withDisplayIntegerId:(unsigned int)arg2;
 + (struct CGPoint)displayConvertFromCAScreen:(struct CGPoint)arg1 withDisplayIntegerId:(unsigned int)arg2;
@@ -32,7 +33,6 @@
 - (void)setCapsLockLightOn:(_Bool)arg1;
 - (void)setDisableSystemGestureRecognitionInEvents:(_Bool)arg1;
 - (void)userEventOccurred;
-- (void)enableEventTap:(_Bool)arg1 forApplication:(int)arg2;
 - (unsigned int)contextIdHosterForContextId:(unsigned int)arg1;
 - (unsigned int)contextIdForDisplayPoint:(struct CGPoint)arg1;
 - (void)postEvent:(id)arg1 systemEvent:(_Bool)arg2 afterNamedTap:(id)arg3 namedTaps:(id)arg4;

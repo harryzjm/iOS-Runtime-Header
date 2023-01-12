@@ -25,6 +25,5 @@
 - (void)appDidBecomeActive;
 - (void)appWillResignActive;
 - (unsigned int)sampleRate;
-- (_Bool)isBluetoothAndUSBMirrored;
 @end
 

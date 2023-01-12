@@ -9,11 +9,12 @@
 #import <ContactsUI/CNAvatarCardControllerDelegate-Protocol.h>
 #import <ContactsUI/CNCardTransitioning-Protocol.h>
 #import <ContactsUI/CNContactChangesObserver-Protocol.h>
+#import <ContactsUI/CNUILikenessCachingRendererDelegate-Protocol.h>
 
 @class CNAvatarCardController, CNContact, CNContactStore, NSArray, NSIndexSet, NSString, PRPersonaStore, UIImage, UIImageView, UINavigationController;
 @protocol CNAvatarViewDelegate, CNAvatarViewUpdateToken, CNCancelable, CNSchedulerProvider, CNUILikenessRendering;
 
-@interface CNAvatarView : UIView <CNContactChangesObserver, CNAvatarCardControllerDelegate, CNCardTransitioning>
+@interface CNAvatarView : UIView <CNContactChangesObserver, CNAvatarCardControllerDelegate, CNUILikenessCachingRendererDelegate, CNCardTransitioning>
 {
     _Bool _showsActionsOnTap;
     _Bool _showsActionsOnForcePress;
@@ -38,16 +39,16 @@
     NSString *_name;
     NSString *_message;
     id <CNAvatarViewDelegate> _delegate;
-    id <CNUILikenessRendering> _imageRenderer;
     id <CNCancelable> _rendererToken;
     UIImageView *_imageView;
     long long _displayedImageState;
     UINavigationController *_contactViewNavigationController;
     CNAvatarCardController *_cardController;
-    id <CNSchedulerProvider> _schedulerProvider;
     unsigned long long _stateCaptureHandle;
     id <CNAvatarViewUpdateToken> _groupViewConfigurationUpdateToken;
     UIImage *_overrideImage;
+    id <CNUILikenessRendering> _imageRenderer;
+    id <CNSchedulerProvider> _schedulerProvider;
     long long _monogrammerStyle;
     NSString *_contextToken;
 }
@@ -67,6 +68,8 @@
 @property(nonatomic) _Bool asynchronousRendering; // @synthesize asynchronousRendering=_asynchronousRendering;
 @property(nonatomic) _Bool autoUpdateContact; // @synthesize autoUpdateContact=_autoUpdateContact;
 @property(nonatomic) long long monogrammerStyle; // @synthesize monogrammerStyle=_monogrammerStyle;
+@property(retain, nonatomic) id <CNSchedulerProvider> schedulerProvider; // @synthesize schedulerProvider=_schedulerProvider;
+@property(retain, nonatomic) id <CNUILikenessRendering> imageRenderer; // @synthesize imageRenderer=_imageRenderer;
 @property(nonatomic) _Bool disableCornerRadiusForAvatar; // @synthesize disableCornerRadiusForAvatar=_disableCornerRadiusForAvatar;
 @property(retain, nonatomic) UIImage *overrideImage; // @synthesize overrideImage=_overrideImage;
 @property _Bool registeredContactAction; // @synthesize registeredContactAction=_registeredContactAction;
@@ -74,14 +77,12 @@
 @property(nonatomic) _Bool allowStaleRenderingWithMatchingContextToken; // @synthesize allowStaleRenderingWithMatchingContextToken=_allowStaleRenderingWithMatchingContextToken;
 @property(retain, nonatomic) id <CNAvatarViewUpdateToken> groupViewConfigurationUpdateToken; // @synthesize groupViewConfigurationUpdateToken=_groupViewConfigurationUpdateToken;
 @property(nonatomic) unsigned long long stateCaptureHandle; // @synthesize stateCaptureHandle=_stateCaptureHandle;
-@property(retain, nonatomic) id <CNSchedulerProvider> schedulerProvider; // @synthesize schedulerProvider=_schedulerProvider;
 @property(retain, nonatomic) CNAvatarCardController *cardController; // @synthesize cardController=_cardController;
 @property(retain, nonatomic) UINavigationController *contactViewNavigationController; // @synthesize contactViewNavigationController=_contactViewNavigationController;
 @property(nonatomic) long long displayedImageState; // @synthesize displayedImageState=_displayedImageState;
 @property(nonatomic) _Bool shouldUpdateMaskedAvatars; // @synthesize shouldUpdateMaskedAvatars=_shouldUpdateMaskedAvatars;
 @property(copy, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property(retain, nonatomic) id <CNCancelable> rendererToken; // @synthesize rendererToken=_rendererToken;
-@property(retain, nonatomic) id <CNUILikenessRendering> imageRenderer; // @synthesize imageRenderer=_imageRenderer;
 @property(nonatomic) _Bool showsContactOnTap; // @synthesize showsContactOnTap=_showsContactOnTap;
 @property(nonatomic) __weak id <CNAvatarViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic) NSString *message; // @synthesize message=_message;
@@ -92,6 +93,7 @@
 @property(readonly, nonatomic) PRPersonaStore *personaStore; // @synthesize personaStore=_personaStore;
 @property(readonly, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 @property(nonatomic) unsigned long long style; // @synthesize style=_style;
+- (void)avatarCacheDidUpdateForIdentifiers:(id)arg1;
 @property _Bool transitioningImageVisible;
 @property(readonly, nonatomic) struct CGRect transitioningImageFrame;
 @property(readonly, nonatomic) UIImage *transitioningImage;

@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     NSArray *_removedItems;
     NSMutableDictionary *_itemsGroupedByProvider;
     NSArray *_availablePaddingItems;
+    NSArray *_removedPaddingItems;
     NSArray *_paddingItems;
     id <CNScheduler> _workQueue;
     id <CNScheduler> _providerItemRenderingQueue;
@@ -42,6 +43,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) id <CNScheduler> providerItemRenderingQueue; // @synthesize providerItemRenderingQueue=_providerItemRenderingQueue;
 @property(readonly, nonatomic) id <CNScheduler> workQueue; // @synthesize workQueue=_workQueue;
 @property(retain, nonatomic) NSArray *paddingItems; // @synthesize paddingItems=_paddingItems;
+@property(retain, nonatomic) NSArray *removedPaddingItems; // @synthesize removedPaddingItems=_removedPaddingItems;
 @property(retain, nonatomic) NSArray *availablePaddingItems; // @synthesize availablePaddingItems=_availablePaddingItems;
 @property(retain, nonatomic) NSMutableDictionary *itemsGroupedByProvider; // @synthesize itemsGroupedByProvider=_itemsGroupedByProvider;
 @property(retain, nonatomic) NSArray *removedItems; // @synthesize removedItems=_removedItems;

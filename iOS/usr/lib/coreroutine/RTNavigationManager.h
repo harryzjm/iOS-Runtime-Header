@@ -26,6 +26,7 @@
 - (void)internalRemoveObserver:(id)arg1 name:(id)arg2;
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
 - (void)dealloc;
+- (void)_shutdownWithHandler:(CDUnknownBlockType)arg1;
 - (void)setup;
 - (id)initWithAuthorizationManager:(id)arg1;
 - (id)init;

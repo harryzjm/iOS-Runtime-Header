@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 #import <CoreSpeech/CSAlarmMonitorDelegate-Protocol.h>
+#import <CoreSpeech/CSAutomaticVolumeEnabledMonitorDelegate-Protocol.h>
 #import <CoreSpeech/CSTimerMonitorDelegate-Protocol.h>
 #import <CoreSpeech/CSVoiceTriggerDelegate-Protocol.h>
 #import <CoreSpeech/CSVolumeMonitorDelegate-Protocol.h>
@@ -14,7 +15,7 @@
 @class NSString;
 @protocol CSConnectionServiceDelegate, CSSmartSiriVolumeProcessor, OS_dispatch_queue;
 
-@interface CSSmartSiriVolumeManager : NSObject <CSVoiceTriggerDelegate, CSAlarmMonitorDelegate, CSTimerMonitorDelegate, CSVolumeMonitorDelegate>
+@interface CSSmartSiriVolumeManager : NSObject <CSVoiceTriggerDelegate, CSAlarmMonitorDelegate, CSTimerMonitorDelegate, CSVolumeMonitorDelegate, CSAutomaticVolumeEnabledMonitorDelegate>
 {
     id <CSConnectionServiceDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_queue;
@@ -26,11 +27,15 @@
 @property(retain, nonatomic) id <CSSmartSiriVolumeProcessor> smartSiriVolume; // @synthesize smartSiriVolume=_smartSiriVolume;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(nonatomic) __weak id <CSConnectionServiceDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)CSAutomaticVolumeEnabledMonitor:(id)arg1 didReceiveEnabled:(_Bool)arg2;
 - (void)voiceTriggerDidDetectKeyword:(id)arg1 deviceId:(id)arg2;
 - (void)CSVolumeMonitor:(id)arg1 didReceiveAlarmVolumeChanged:(float)arg2;
 - (void)CSVolumeMonitor:(id)arg1 didReceiveMusicVolumeChanged:(float)arg2;
 - (void)CSTimerMonitor:(id)arg1 didReceiveTimerChanged:(long long)arg2;
 - (void)CSAlarmMonitor:(id)arg1 didReceiveAlarmChanged:(long long)arg2;
+- (void)setPermanentVolumeOffsetWithDirection:(_Bool)arg1;
+- (void)setSmartSiriVolumeDirection:(_Bool)arg1;
+- (void)setSmartSiriVolumePercentage:(float)arg1;
 - (id)getVolumeForTTSType:(unsigned long long)arg1 withOverrideMediaVolume:(id)arg2 WithRequestTime:(unsigned long long)arg3;
 - (void)setAsset:(id)arg1;
 - (void)startSmartSiriVolume;

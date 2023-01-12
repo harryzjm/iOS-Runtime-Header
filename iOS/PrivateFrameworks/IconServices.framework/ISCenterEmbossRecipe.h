@@ -8,13 +8,24 @@
 
 #import <IconServices/ISCompositorRecipe-Protocol.h>
 
-__attribute__((visibility("hidden")))
+@class NSString;
+
 @interface ISCenterEmbossRecipe : NSObject <ISCompositorRecipe>
 {
+    unsigned long long _variant;
 }
 
+@property unsigned long long variant; // @synthesize variant=_variant;
 - (id)layerTreeForSize:(struct CGSize)arg1 scale:(double)arg2;
+- (id)hintedImageBadgeRect;
 - (id)hintedBadgeRect;
+- (id)hintedFontSize;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

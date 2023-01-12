@@ -8,7 +8,7 @@
 #import <AVConference/VCAudioIOSink-Protocol.h>
 #import <AVConference/VCMediaStreamSyncSource-Protocol.h>
 
-@class AVTelephonyInterface, DTMFEventHandler, NSMutableArray, NSNumber, NSObject, NSString, VCAudioIO, VCAudioPayload, VCAudioPowerSpectrumSource, VCAudioTransmitter, WRMClient;
+@class AVCStatisticsCollector, AVTelephonyInterface, DTMFEventHandler, NSMutableArray, NSNumber, NSObject, NSString, VCAudioIO, VCAudioPayload, VCAudioPowerSpectrumSource, VCAudioTransmitter, WRMClient;
 @protocol OS_dispatch_source, VCMediaStreamSyncSourceDelegate;
 
 __attribute__((visibility("hidden")))
@@ -23,11 +23,10 @@ __attribute__((visibility("hidden")))
     unsigned int conferenceID;
     unsigned int lastInputAudioTimeStamp;
     unsigned int lastSentAudioSampleTime;
-    long long sampleRate;
-    long long samplesPerFrame;
     struct _opaque_pthread_rwlock_t stateLock;
     NSMutableArray *audioPayloads;
-    struct AudioStreamBasicDescription vpioFormat;
+    struct tagVCAudioFrameFormat _vpioFormat;
+    _Bool _useExternalIO;
     int preferredAudioCodec;
     DTMFEventHandler *dtmfEventHandler;
     WRMClient *wrmClient;
@@ -55,11 +54,17 @@ __attribute__((visibility("hidden")))
     long long _outputAudioPowerSpectrumToken;
     VCAudioPowerSpectrumSource *_inputAudioPowerSpectrumSource;
     VCAudioPowerSpectrumSource *_outputAudioPowerSpectrumSource;
+    unsigned int _abnormalOWRDCount;
+    double _lastAbnormalOWRDVerificationTime;
+    unsigned int _preferredMediaBitrate;
+    AVCStatisticsCollector *_statsCollector;
+    _Bool _enableAudioPowerSpectrum;
 }
 
 + (id)capabilities;
 + (id)supportedAudioPayloads;
 + (unsigned char)audioIODirectionWithMediaStreamDirection:(long long)arg1;
++ (int)operatingModeForAudioStreamMode:(long long)arg1;
 @property(retain, nonatomic) NSNumber *targetStreamID; // @synthesize targetStreamID=_targetStreamID;
 @property(nonatomic, getter=isCurrentDTXEnabled) _Bool currentDTXEnable; // @synthesize currentDTXEnable=_currentDTXEnable;
 @property(retain) VCAudioIO *audioIO; // @synthesize audioIO=_audioIO;
@@ -69,22 +74,22 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned int conferenceID; // @synthesize conferenceID;
 - (void)didUpdateBasebandCodec:(const struct _VCRemoteCodecInfo *)arg1;
 - (void)handleActiveConnectionChange:(id)arg1;
-- (void)collectTxChannelMetrics:(CDStruct_3ab08b48 *)arg1;
-- (void)collectRxChannelMetrics:(CDStruct_3ab08b48 *)arg1;
-- (void)collectRxChannelMetrics:(CDStruct_3ab08b48 *)arg1 interval:(float)arg2;
+- (void)collectTxChannelMetrics:(CDStruct_a4f8a7cd *)arg1;
+- (void)collectRxChannelMetrics:(CDStruct_a4f8a7cd *)arg1;
+- (void)collectRxChannelMetrics:(CDStruct_a4f8a7cd *)arg1 interval:(float)arg2;
 - (void)didResumeAudioIO:(id)arg1;
 - (void)didSuspendAudioIO:(id)arg1;
 - (void)handleCodecRateModeChange:(int)arg1 payload:(int)arg2;
 - (void)unregisterCodecRateModeChangeNotifications;
 - (void)registerActiveAudioStreamChangeNotifications;
 - (void)registerCodecRateModeChangeNotifications;
-- (void)vcMediaStreamTransport:(id)arg1 updateSourceNTPTime:(double)arg2 rtpTimeStamp:(unsigned int)arg3;
 - (long long)getSyncSourceSampleRate;
 @property(nonatomic) NSObject<VCMediaStreamSyncSourceDelegate> *syncSourceDelegate; // @synthesize syncSourceDelegate;
 - (void)setCanProcessAudio:(_Bool)arg1;
 - (_Bool)canProcessAudio;
 - (void)pushAudioSamples:(struct opaqueVCAudioBufferList *)arg1;
 - (void)pullAudioSamples:(struct opaqueVCAudioBufferList *)arg1;
+- (void)reportingAlgosAudioStreamEvent:(unsigned short)arg1;
 - (void)reportingAudioStreamEvent:(unsigned short)arg1;
 - (id)getReportingServiceID;
 - (struct __CFString *)getReportingClientName;
@@ -112,7 +117,8 @@ __attribute__((visibility("hidden")))
 - (id)supportedPayloads;
 @property(readonly, nonatomic) unsigned int actualAudioSendingBitrate;
 - (void)setTargetBitrate:(unsigned int)arg1 rateChangeCounter:(unsigned int)arg2;
-- (void)setVCStatistics:(CDStruct_56e8fa21)arg1;
+- (void)setVCStatistics:(CDStruct_c0785916)arg1;
+- (CDUnknownFunctionPointerType)pullSamplesCallback;
 @property(readonly, nonatomic) void *realtimeSourceContext;
 @property(nonatomic) float volume;
 @property(nonatomic, getter=isRemoteMuted) _Bool remoteMuted;
@@ -131,25 +137,24 @@ __attribute__((visibility("hidden")))
 - (void)sendDTMFEvent:(id)arg1;
 - (_Bool)createAudioTransmitter:(long long)arg1 streamIDs:(id)arg2;
 - (_Bool)createAudioReceiver;
-- (int)bundlingSchemeForOperatingMode:(int)arg1 payloadType:(int)arg2;
+- (void)configureAudioJBAlgos:(struct tagVCAudioReceiverConfig *)arg1;
 - (int)getPacketsPerBundleForStreamConfig:(id)arg1;
 - (void)dealloc;
-- (_Bool)setupAudioStreamWithClientPid:(int)arg1;
+- (_Bool)setupAudioStreamWithClientPid:(int)arg1 enableAudioPowerSpectrum:(_Bool)arg2;
 - (id)setLocalParticipantInfo:(id)arg1 networkSockets:(id)arg2 withError:(id *)arg3;
 - (id)initWithClientPid:(int)arg1 ssrc:(unsigned int)arg2 transportSessionID:(unsigned int)arg3;
 - (id)initWithClientPid:(int)arg1 ssrc:(unsigned int)arg2;
 - (id)initWithClientPid:(int)arg1;
 - (void)setupAudioPowerSpectrum;
-- (int)operatingModeForAudioStreamMode:(long long)arg1;
-- (void)stateEnter;
-- (void)stateExit;
-- (void)setState:(int)arg1;
+- (void)didEnterState:(int)arg1 oldState:(int)arg2;
+- (void)willExitState:(int)arg1 newState:(int)arg2;
 - (double)lastReceivedRTCPPacketTime;
 - (double)lastReceivedRTPPacketTime;
 - (_Bool)setReceiverPayloads;
 - (void)setDTXPayload:(id)arg1;
 - (id)addAudioPayload:(int)arg1;
 - (id)configForPayloadType:(int)arg1;
+- (id)newPayloadConfigForCodecConfig:(id)arg1 streamConfig:(id)arg2;
 - (unsigned int)preferredAudioBitrateForPayload:(int)arg1;
 - (void)getCodecConfigForPayload:(int)arg1 block:(CDUnknownBlockType)arg2;
 - (_Bool)setupPayloads;
@@ -159,7 +164,7 @@ __attribute__((visibility("hidden")))
 - (unsigned int)codecTypeFromAudioPayload:(int)arg1;
 - (int)captureMeshMode:(struct opaqueVCAudioBufferList *)arg1;
 - (void)setInputTimestamp:(unsigned int)arg1 packetTimestamp:(int)arg2 hostTime:(double)arg3;
-- (void)_computeInternalFormatForAudioConfig:(id)arg1;
+- (void)_computeInternalFormatForStreamConfigurations:(id)arg1;
 - (unsigned int)internalSampleRateForCodecType:(long long)arg1;
 - (unsigned int)computePacketTimestampWithInputTimestamp:(unsigned int)arg1 numSamples:(int)arg2 hostTime:(double)arg3;
 

@@ -4,25 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIView, UIVisualEffectView, _UISystemBackgroundStrokeView;
+@class UIImageView, UIView, UIVisualEffectView, _UISystemBackgroundStrokeView;
 @protocol _UIBackgroundConfigurationInternal;
 
-__attribute__((visibility("hidden")))
 @interface _UISystemBackgroundView
 {
-    UIView *_backgroundView;
+    UIView *_colorView;
     UIVisualEffectView *_visualEffectView;
+    UIImageView *_imageView;
     _UISystemBackgroundStrokeView *_strokeView;
     UIView *_shadowView;
     double _currentlyAppliedCornerRadius;
+    unsigned char _subviewInsertionIndices[6];
     struct {
         unsigned int currentlyAppliedCornersAreContinuous:1;
+        unsigned int lockCornerCurve:1;
         unsigned int didSetCustomViewMasking:1;
     } _systemBackgroundViewFlags;
     id <_UIBackgroundConfigurationInternal> _configuration;
 }
 
 - (void).cxx_destruct;
+- (id)outlinePathInContainerView:(id)arg1;
 - (id)currentVisiblePathInContainerView:(id)arg1;
 - (id)currentBackgroundColor;
 - (struct UIEdgeInsets)effectiveInsetsInContainerView:(id)arg1;
@@ -32,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)setFrame:(struct CGRect)arg1;
 - (void)tintColorDidChange;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)prepareForReuse;
 @property(copy, nonatomic) id <_UIBackgroundConfigurationInternal> configuration; // @synthesize configuration=_configuration;
 - (id)description;
 - (id)_encodableSubviews;

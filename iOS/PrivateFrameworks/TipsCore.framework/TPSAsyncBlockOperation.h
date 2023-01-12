@@ -4,16 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class MISSING_TYPE;
+
 @interface TPSAsyncBlockOperation
 {
-    CDUnknownBlockType _asyncBlock;
+    MISSING_TYPE *asyncBlock;
 }
 
-+ (id)asyncBlockOperationWithAsyncBlock:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) CDUnknownBlockType asyncBlock; // @synthesize asyncBlock=_asyncBlock;
+- (id)init;
 - (void)main;
 - (id)initWithAsyncBlock:(CDUnknownBlockType)arg1;
+@property(nonatomic, copy) CDUnknownBlockType asyncBlock;
 
 @end
 

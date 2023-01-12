@@ -10,8 +10,11 @@
 {
 }
 
-+ (int)_majorVersionForBuildVersion:(id)arg1;
++ (long long)userTypeFromMigratorData;
++ (long long)userTypeFromCloudDataWithKey:(id)arg1;
 + (long long)userType;
++ (id)_previousBuildVersion;
++ (int)_majorVersionForBuildVersion:(id)arg1;
 
 @end
 

@@ -41,6 +41,9 @@
     unsigned int _flags;
     int _flowControlState;
     int _keepAliveSeconds;
+    int _keepAliveIdleSeconds;
+    int _keepAliveIntervalSeconds;
+    int _keepAliveMaxCount;
     unsigned int _netTransportType;
     int _socketFD;
     unsigned int _trafficFlags;
@@ -69,6 +72,9 @@
 @property(retain, nonatomic) CUNetLinkManager *netLinkManager; // @synthesize netLinkManager=_netLinkManager;
 @property(retain, nonatomic) CUNANDataSession *nanDataSession; // @synthesize nanDataSession=_nanDataSession;
 @property(copy, nonatomic) NSString *label; // @synthesize label=_label;
+@property(nonatomic) int keepAliveMaxCount; // @synthesize keepAliveMaxCount=_keepAliveMaxCount;
+@property(nonatomic) int keepAliveIntervalSeconds; // @synthesize keepAliveIntervalSeconds=_keepAliveIntervalSeconds;
+@property(nonatomic) int keepAliveIdleSeconds; // @synthesize keepAliveIdleSeconds=_keepAliveIdleSeconds;
 @property(nonatomic) int keepAliveSeconds; // @synthesize keepAliveSeconds=_keepAliveSeconds;
 @property(copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property(copy, nonatomic) NSString *interfaceName; // @synthesize interfaceName=_interfaceName;

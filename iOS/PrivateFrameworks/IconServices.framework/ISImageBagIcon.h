@@ -6,7 +6,6 @@
 
 @class ISImageCache, NSArray;
 
-__attribute__((visibility("hidden")))
 @interface ISImageBagIcon
 {
     NSArray *_images;
@@ -18,12 +17,11 @@ __attribute__((visibility("hidden")))
 @property(retain) ISImageCache *imageCache; // @synthesize imageCache=_imageCache;
 - (id)decorations;
 @property(readonly) NSArray *images; // @synthesize images=_images;
-- (void)getCGImageForImageDescriptor:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (struct CGImage *)CGImageForImageDescriptor:(id)arg1;
 - (void)getImageForImageDescriptor:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)imageForImageDescriptor:(id)arg1;
-- (void)prepareImagesForImageDescriptors:(id)arg1;
-- (_Bool)hasValidImage;
+- (void)_prepareImagesForImageDescriptors:(id)arg1;
+- (id)_generateImageWithDescriptor:(id)arg1;
+- (id)initWithImageBag:(id)arg1;
 - (id)initWithImages:(id)arg1 decorations:(id)arg2;
 - (id)initWithImages:(id)arg1;
 

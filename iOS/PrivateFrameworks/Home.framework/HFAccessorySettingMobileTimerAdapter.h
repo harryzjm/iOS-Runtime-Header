@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMAccessoryCollectionSetting, NAFuture, NSHashTable, NSMutableSet, NSSet;
+@class HMAccessoryCollectionSetting, NAFuture, NSHashTable, NSMutableSet, NSSet, NSUserDefaults;
 
 @interface HFAccessorySettingMobileTimerAdapter
 {
@@ -14,9 +14,11 @@
     NSMutableSet *_internalAlarmsBeingAdded;
     NSMutableSet *_internalAlarmsBeingRemoved;
     NSMutableSet *_internalAlarmsBeingUpdated;
+    NSUserDefaults *_soundBoardPrefs;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSUserDefaults *soundBoardPrefs; // @synthesize soundBoardPrefs=_soundBoardPrefs;
 @property(readonly, copy, nonatomic) NSMutableSet *internalAlarmsBeingUpdated; // @synthesize internalAlarmsBeingUpdated=_internalAlarmsBeingUpdated;
 @property(readonly, copy, nonatomic) NSMutableSet *internalAlarmsBeingRemoved; // @synthesize internalAlarmsBeingRemoved=_internalAlarmsBeingRemoved;
 @property(readonly, copy, nonatomic) NSMutableSet *internalAlarmsBeingAdded; // @synthesize internalAlarmsBeingAdded=_internalAlarmsBeingAdded;
@@ -44,6 +46,7 @@
 - (id)allAlarmsFuture;
 - (id)allAlarms;
 - (void)homeKitSettingWasUpdated:(id)arg1 value:(id)arg2;
+@property(readonly, nonatomic) _Bool shouldSynchronizeMobileTimerToHomeKit;
 @property(readonly, nonatomic) _Bool isAdapterReady;
 @property(readonly, nonatomic) HMAccessoryCollectionSetting *alarmCollectionSetting;
 @property(readonly, copy, nonatomic) NSSet *alarmsWithPendingEdits;

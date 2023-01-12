@@ -6,36 +6,36 @@
 
 #import <objc/NSObject.h>
 
-@class MPCPlaybackEngineEvent, MSVSQLDatabase, NSHashTable, NSMutableArray, NSString, NSUUID;
+@class MPCPlaybackEngineEvent, MSVSQLDatabase, NSHashTable, NSMutableArray;
 @protocol MPCPlabackEngineEventStreamTestingDelegate, OS_dispatch_queue;
 
 @interface MPCPlaybackEngineEventStream : NSObject
 {
-    unsigned long long _maximumEventDeliveryTimestamp;
-    NSString *_playerID;
     NSMutableArray *_subscriptions;
     NSHashTable *_deferralAssertions;
     MSVSQLDatabase *_database;
     NSObject<OS_dispatch_queue> *_queue;
-    NSUUID *_lastReceivedEventIdentifier;
+    long long _scheduledFlushes;
     id <MPCPlabackEngineEventStreamTestingDelegate> _testingDelegate;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <MPCPlabackEngineEventStreamTestingDelegate> testingDelegate; // @synthesize testingDelegate=_testingDelegate;
-@property(readonly, copy, nonatomic) NSString *playerID; // @synthesize playerID=_playerID;
 - (void)resetConsumerEventDeliveryToTimestamp:(unsigned long long)arg1;
-@property(nonatomic) unsigned long long maximumEventDeliveryTimestamp;
+- (void)setMaximumEventDeliveryTimestamp:(unsigned long long)arg1;
 - (id)lastEventsWithCount:(long long)arg1;
 @property(readonly, nonatomic) MPCPlaybackEngineEvent *lastEvent;
+- (void)flushEventsWithConsumer:(id)arg1 fromTimestamp:(unsigned long long)arg2 untilTimestamp:(unsigned long long)arg3;
+- (void)flushEvents;
 - (void)emitEventType:(id)arg1 payload:(id)arg2 atTime:(CDStruct_aeb9a598)arg3;
 - (void)emitEventType:(id)arg1 payload:(id)arg2;
 - (id)eventDeliveryDeferralAssertionForReason:(id)arg1;
 - (void)removeConsumer:(id)arg1;
 - (void)addConsumer:(id)arg1;
 - (id)debugDescription;
-- (id)initWithPlayerID:(id)arg1 database:(id)arg2;
-- (id)initWithPlayerID:(id)arg1;
+- (void)dealloc;
+- (id)initWithParameters:(id)arg1;
+- (id)initWithDatabaseCreationBlock:(CDUnknownBlockType)arg1;
 
 @end
 

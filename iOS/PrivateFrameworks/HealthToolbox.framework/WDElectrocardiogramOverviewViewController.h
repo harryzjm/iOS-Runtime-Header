@@ -8,43 +8,53 @@
 
 #import <HealthToolbox/HKHeartRhythmAvailabilityObserver-Protocol.h>
 #import <HealthToolbox/HKOnboardingSetupViewDelegate-Protocol.h>
+#import <HealthToolbox/HRElectrocardiogramOnboardingManagerDelegate-Protocol.h>
 #import <HealthToolbox/HRFeatureRegulatoryReenableFeatureActionDelegate-Protocol.h>
-#import <HealthToolbox/HROnboardingManagerDelegate-Protocol.h>
 #import <HealthToolbox/WDElectrocardiogramFilterDataProviderDelegate-Protocol.h>
 
-@class HKDisplayType, HKHeartRhythmAvailability, HROnboardingManager, NSString, UITapGestureRecognizer, WDElectrocardiogramFilterDataProvider, WDElectrocardiogramListDataProvider, WDProfile;
+@class HKDisplayType, HKElectrocardiogramMoreHealthDataProvider, HKHeartRhythmAvailability, HRElectrocardiogramOnboardingManager, NSNumber, NSString, UITapGestureRecognizer, WDElectrocardiogramFilterDataProvider, WDElectrocardiogramListDataProvider, WDProfile;
 @protocol HKDataMetadataSectionProtocol;
 
-@interface WDElectrocardiogramOverviewViewController : HKTableViewController <HRFeatureRegulatoryReenableFeatureActionDelegate, HROnboardingManagerDelegate, WDElectrocardiogramFilterDataProviderDelegate, HKOnboardingSetupViewDelegate, HKHeartRhythmAvailabilityObserver>
+@interface WDElectrocardiogramOverviewViewController : HKTableViewController <HRFeatureRegulatoryReenableFeatureActionDelegate, HRElectrocardiogramOnboardingManagerDelegate, WDElectrocardiogramFilterDataProviderDelegate, HKOnboardingSetupViewDelegate, HKHeartRhythmAvailabilityObserver>
 {
     _Bool _firstViewDidLayoutSubviews;
-    _Bool _previousElectrocardiogramDisabledCacheValue;
+    _Bool _displayAboutRowBeforeOnboarding;
     long long _placeholderCellCount;
     HKDisplayType *_displayType;
     WDProfile *_profile;
-    HROnboardingManager *_onboardingManager;
+    long long _mode;
     WDElectrocardiogramListDataProvider *_dataProvider;
+    HRElectrocardiogramOnboardingManager *_onboardingManager;
     WDElectrocardiogramFilterDataProvider *_filterDataProvider;
+    HKElectrocardiogramMoreHealthDataProvider *_moreHealthDataProvider;
     HKHeartRhythmAvailability *_heartRhythmAvailability;
     id <HKDataMetadataSectionProtocol> _educationSection;
     UITapGestureRecognizer *_tripleTapToSettingsRecognizer;
+    long long _previousElectrocardiogramRescindedStatusCache;
+    NSNumber *_availabilityStateCache;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool previousElectrocardiogramDisabledCacheValue; // @synthesize previousElectrocardiogramDisabledCacheValue=_previousElectrocardiogramDisabledCacheValue;
+@property(nonatomic) NSNumber *availabilityStateCache; // @synthesize availabilityStateCache=_availabilityStateCache;
+@property(nonatomic) _Bool displayAboutRowBeforeOnboarding; // @synthesize displayAboutRowBeforeOnboarding=_displayAboutRowBeforeOnboarding;
+@property(nonatomic) long long previousElectrocardiogramRescindedStatusCache; // @synthesize previousElectrocardiogramRescindedStatusCache=_previousElectrocardiogramRescindedStatusCache;
 @property(retain, nonatomic) UITapGestureRecognizer *tripleTapToSettingsRecognizer; // @synthesize tripleTapToSettingsRecognizer=_tripleTapToSettingsRecognizer;
 @property(retain, nonatomic) id <HKDataMetadataSectionProtocol> educationSection; // @synthesize educationSection=_educationSection;
 @property(retain, nonatomic) HKHeartRhythmAvailability *heartRhythmAvailability; // @synthesize heartRhythmAvailability=_heartRhythmAvailability;
+@property(retain, nonatomic) HKElectrocardiogramMoreHealthDataProvider *moreHealthDataProvider; // @synthesize moreHealthDataProvider=_moreHealthDataProvider;
 @property(retain, nonatomic) WDElectrocardiogramFilterDataProvider *filterDataProvider; // @synthesize filterDataProvider=_filterDataProvider;
+@property(retain, nonatomic) HRElectrocardiogramOnboardingManager *onboardingManager; // @synthesize onboardingManager=_onboardingManager;
 @property(retain, nonatomic) WDElectrocardiogramListDataProvider *dataProvider; // @synthesize dataProvider=_dataProvider;
-@property(retain, nonatomic) HROnboardingManager *onboardingManager; // @synthesize onboardingManager=_onboardingManager;
+@property(readonly, nonatomic) long long mode; // @synthesize mode=_mode;
 @property(nonatomic) __weak WDProfile *profile; // @synthesize profile=_profile;
 @property(retain, nonatomic) HKDisplayType *displayType; // @synthesize displayType=_displayType;
 @property(nonatomic) _Bool firstViewDidLayoutSubviews; // @synthesize firstViewDidLayoutSubviews=_firstViewDidLayoutSubviews;
 @property(nonatomic) long long placeholderCellCount; // @synthesize placeholderCellCount=_placeholderCellCount;
+- (_Bool)_shouldDisplayAboutRowBeforeOnboarding;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)_showDataSourcesAndAccessController;
+- (id)_dataListViewControllerForSummaryData;
 - (id)_dataListViewControllerWithFilterType:(long long)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (void)didDismissOnboarding;
@@ -53,32 +63,43 @@
 - (void)didSelectReenableFeatureForProductName:(id)arg1;
 - (void)beginOnboardingForOnboardingSetupView:(id)arg1;
 - (void)electrocardiogramFilterDataProvider:(id)arg1 didUpdateCount:(long long)arg2 type:(long long)arg3;
-- (void)isFavorited:(_Bool)arg1;
-- (_Bool)isPrimaryProfile;
 - (long long)_filterTypeForDataSectionRow:(long long)arg1;
 - (id)_cellWithDisclosureIndicatorAndText:(id)arg1 value:(id)arg2;
 - (id)_cellForDescription;
-- (_Bool)_isDisplayTypeFavorited;
 - (id)_cellForRegulatoryPane;
 - (id)_cellForDataSourcesAndAccess;
 - (id)_cellForFavorites;
+- (id)_showAllResultsForSummarySharingProfile;
 - (id)_showAllResultsCellForType:(long long)arg1;
 - (id)_cellForSampleAtIndex:(long long)arg1 section:(long long)arg2;
-- (id)_electrocardiogramSetupContainerView;
+- (id)_electrocardiogramSetupContainerViewWithUpgrade:(_Bool)arg1;
+- (void)_setTableHeaderViewWithUpgradeView:(_Bool)arg1;
 - (void)_reloadAllSections;
+- (_Bool)_userLocaleOnlySupportsECG1;
+- (_Bool)_showUpgradeTileInProminentPosition;
+- (void)_reloadMoreHealthSectionWithAnimation:(_Bool)arg1;
+- (void)_removeUpgradeTileNotProminentIfNeeded;
+- (void)_showUpgradeTileNotProminent;
 - (void)_reloadElectrocardiogramSetupTableHeaderView;
-- (_Bool)_shouldShowElectrocardiogramSetupTableHeaderView;
-- (id)_recordingDisabledHeaderView;
+- (long long)_availabilityStateToShowInSetupTableHeaderView;
+- (id)_recordingRescindedHeaderView;
 - (id)_sectionHeaderViewWithTitle:(id)arg1;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
-- (_Bool)shouldShowRecordingDisabledHeader;
-- (unsigned long long)availabilityState;
+@property(nonatomic, getter=isFavorited) _Bool favorited;
+- (void)reloadFavoritesSection;
+- (_Bool)shouldShowRecordingRescindedHeader;
+- (long long)_maxOnboardedAlgorithmVersion;
+- (id)_anyUpgradeSoftwareSupportedAboveAlgorithmVersion:(long long)arg1;
+- (id)_fetchMobileCountryCode;
+- (_Bool)_isUpgradeMCCSupported;
+- (long long)availabilityState;
 - (struct WDElectrocardiogramOverviewUserConfigurationRowInfo)userConfigurationRowInfo;
 - (struct WDElectrocardiogramOverviewSectionInfo)sectionInfo;
+- (void)_startUpgrade;
 - (void)_startOnboardingForFirstTime:(_Bool)arg1;
 - (void)protectedDataDidBecomeAvailable:(id)arg1;
 - (void)heartRhythmAvailabilityDidUpdate;
@@ -89,8 +110,9 @@
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
+- (id)createDataProviderWithDisplayType:(id)arg1 profile:(id)arg2 mode:(long long)arg3;
 - (void)dealloc;
-- (id)initWithDisplayType:(id)arg1 profile:(id)arg2;
+- (id)initWithDisplayType:(id)arg1 profile:(id)arg2 mode:(long long)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

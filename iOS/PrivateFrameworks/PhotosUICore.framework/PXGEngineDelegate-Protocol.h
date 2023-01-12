@@ -6,9 +6,13 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class PXGEngine;
+@class PXGEngine, PXGLayout, PXGSpriteDataStore;
 
 @protocol PXGEngineDelegate <NSObject>
+- (_Bool)engine:(PXGEngine *)arg1 shouldRenderLayout:(PXGLayout *)arg2 sprites:(PXGSpriteDataStore *)arg3;
+- (void)engineSetNeedsUpdate:(PXGEngine *)arg1;
+
+@optional
 - (void)engine:(PXGEngine *)arg1 updateDebugHUDWithStats:(CDStruct_58b866b9 *)arg2;
 @end
 

@@ -11,7 +11,7 @@
 - (id)_celebrationSubtitle;
 - (id)_celebrationTitle;
 - (void)_generateTitleAndSubtitleWithResult:(CDUnknownBlockType)arg1;
-- (id)initWithMomentNodes:(id)arg1;
+- (id)initWithMomentNodes:(id)arg1 titleGenerationContext:(id)arg2;
 
 @end
 

@@ -8,18 +8,24 @@
 
 #import <IconServices/ISCompositorRecipe-Protocol.h>
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
 @interface ISiOSAppClipRecipe : NSObject <ISCompositorRecipe>
 {
     _Bool _shouldOnlyDrawBorder;
-    _Bool _shouldDrawPlaceholder;
 }
 
-@property _Bool shouldDrawPlaceholder; // @synthesize shouldDrawPlaceholder=_shouldDrawPlaceholder;
 @property _Bool shouldOnlyDrawBorder; // @synthesize shouldOnlyDrawBorder=_shouldOnlyDrawBorder;
 - (id)layerTreeForSize:(struct CGSize)arg1 scale:(double)arg2;
 - (id)blurRadius;
 - (id)appRect;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

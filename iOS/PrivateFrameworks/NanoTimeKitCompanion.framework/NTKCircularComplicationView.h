@@ -34,6 +34,7 @@
 + (id)_stopwatchImageProviderMedium:(_Bool)arg1;
 + (id)_alarmImageProviderMedium:(_Bool)arg1;
 + (id)_timerImageProviderMedium:(_Bool)arg1;
++ (id)_imageProviderForImageSymbolName:(id)arg1 imageAssetNamePrefix:(id)arg2;
 + (_Bool)handlesComplicationTemplate:(id)arg1;
 + (id)mediumViewForComplicationType:(unsigned long long)arg1;
 + (id)viewForComplicationType:(unsigned long long)arg1;
@@ -50,7 +51,7 @@
 @property(nonatomic) _Bool canUseCurvedText; // @synthesize canUseCurvedText;
 @property(nonatomic) __weak id <NTKComplicationDisplayObserver> displayObserver; // @synthesize displayObserver;
 - (id)_fontForDynamicFontSize:(long long)arg1;
-- (CDStruct_69ceb9b6)_layoutConstants;
+- (CDStruct_51515351)_layoutConstants;
 - (void)_updateForTemplateChange;
 - (id)_mediumStackFontForText:(id)arg1;
 - (long long)_variableFontSizeForText:(id)arg1;

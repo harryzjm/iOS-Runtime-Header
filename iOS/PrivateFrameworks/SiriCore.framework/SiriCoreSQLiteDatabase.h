@@ -53,6 +53,7 @@
 - (id)selectValueTuplesFromTableWithName:(id)arg1 columnNames:(id)arg2 behavior:(long long)arg3 indexedBy:(id)arg4 criterion:(id)arg5 order:(id)arg6 range:(id)arg7 error:(id *)arg8;
 - (_Bool)insertIntoTableWithName:(id)arg1 record:(id)arg2 error:(id *)arg3;
 - (_Bool)insertIntoTableWithName:(id)arg1 valueMap:(id)arg2 error:(id *)arg3;
+- (_Bool)updateTableWithName:(id)arg1 columnName:(id)arg2 columnValue:(id)arg3 criterion:(id)arg4 error:(id *)arg5;
 - (_Bool)updateTableWithName:(id)arg1 valueMap:(id)arg2 criterion:(id)arg3 error:(id *)arg4;
 - (_Bool)deleteFromTableWithName:(id)arg1 indexedBy:(id)arg2 criterion:(id)arg3 error:(id *)arg4;
 

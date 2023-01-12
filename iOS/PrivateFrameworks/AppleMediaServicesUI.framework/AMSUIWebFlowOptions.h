@@ -13,24 +13,28 @@ __attribute__((visibility("hidden")))
 {
     _Bool _animated;
     _Bool _deferredPresentation;
-    _Bool _initialLoad;
-    _Bool _isReappear;
+    _Bool _disableTimeout;
+    _Bool _reuseExistingPage;
+    _Bool _suppressErrorPage;
     NSString *_backgroundColor;
     AMSUIWebLoadingPageModel *_loadingPage;
     long long _modalPresentationStyle;
     long long _modalTransitionStyle;
     AMSUIWebNavigationBarModel *_navigationBar;
     NSDictionary *_pageData;
+    struct CGSize _modalWindowSize;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool suppressErrorPage; // @synthesize suppressErrorPage=_suppressErrorPage;
 @property(retain, nonatomic) NSDictionary *pageData; // @synthesize pageData=_pageData;
 @property(retain, nonatomic) AMSUIWebNavigationBarModel *navigationBar; // @synthesize navigationBar=_navigationBar;
+@property(nonatomic) struct CGSize modalWindowSize; // @synthesize modalWindowSize=_modalWindowSize;
 @property(nonatomic) long long modalTransitionStyle; // @synthesize modalTransitionStyle=_modalTransitionStyle;
 @property(nonatomic) long long modalPresentationStyle; // @synthesize modalPresentationStyle=_modalPresentationStyle;
 @property(retain, nonatomic) AMSUIWebLoadingPageModel *loadingPage; // @synthesize loadingPage=_loadingPage;
-@property(nonatomic) _Bool isReappear; // @synthesize isReappear=_isReappear;
-@property(nonatomic) _Bool initialLoad; // @synthesize initialLoad=_initialLoad;
+@property(nonatomic) _Bool reuseExistingPage; // @synthesize reuseExistingPage=_reuseExistingPage;
+@property(nonatomic) _Bool disableTimeout; // @synthesize disableTimeout=_disableTimeout;
 @property(nonatomic) _Bool deferredPresentation; // @synthesize deferredPresentation=_deferredPresentation;
 @property(retain, nonatomic) NSString *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(nonatomic) _Bool animated; // @synthesize animated=_animated;

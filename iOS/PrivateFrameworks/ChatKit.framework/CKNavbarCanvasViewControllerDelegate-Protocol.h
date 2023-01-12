@@ -11,9 +11,10 @@
 @protocol CKNavbarCanvasViewControllerDelegate <NSObject>
 - (struct NSDirectionalEdgeInsets)systemMinimumLayoutMarginsForViewController:(UIViewController *)arg1;
 - (void)navbarCanvasViewControllerWantsNavbarResize:(CKNavbarCanvasViewController *)arg1;
+- (void)navbarCanvasViewController:(CKNavbarCanvasViewController *)arg1 updatedJoinStateWithStyle:(long long)arg2;
 - (void)navbarCanvasViewController:(CKNavbarCanvasViewController *)arg1 infoButtonTapped:(CKNavigationButtonView *)arg2;
-- (void)navbarCanvasViewController:(CKNavbarCanvasViewController *)arg1 facetimeVideoButtonTapped:(CKNavigationButtonView *)arg2;
-- (void)navbarCanvasViewController:(CKNavbarCanvasViewController *)arg1 facetimeAudioButtonTapped:(CKNavigationButtonView *)arg2;
+- (void)navbarCanvasViewControllerFaceTimeVideoButtonTapped:(CKNavbarCanvasViewController *)arg1;
+- (void)navbarCanvasViewControllerFaceTimeAudioButtonTapped:(CKNavbarCanvasViewController *)arg1;
 - (void)navbarCanvasViewController:(CKNavbarCanvasViewController *)arg1 didTapView:(UIView *)arg2;
 - (_Bool)shouldShowAvatarViewInNavBarCanvas;
 

@@ -10,13 +10,13 @@
 
 @interface CKSyncEngineModifyRecordBatchesOperation : NSOperation
 {
-    _Bool _isExecuting;
-    _Bool _isFinished;
+    int _executionState;
     CKDatabase *_database;
     CKOperationGroup *_group;
     CDUnknownBlockType _populateNextBatchBlock;
     CDUnknownBlockType _perRecordProgressBlock;
-    CDUnknownBlockType _perRecordSaveCompletionBlock;
+    CDUnknownBlockType _perRecordSaveBlock;
+    CDUnknownBlockType _perRecordDeleteBlock;
     CDUnknownBlockType _batchCompletionBlock;
     CDUnknownBlockType _modifyRecordBatchesCompletionBlock;
     CDUnknownBlockType _willEnqueueOperationBlock;
@@ -26,15 +26,14 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool isFinished; // @synthesize isFinished=_isFinished;
-@property(nonatomic) _Bool isExecuting; // @synthesize isExecuting=_isExecuting;
 @property(retain, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
 @property(retain, nonatomic) NSSet *zoneIDs; // @synthesize zoneIDs=_zoneIDs;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
 @property(copy, nonatomic) CDUnknownBlockType willEnqueueOperationBlock; // @synthesize willEnqueueOperationBlock=_willEnqueueOperationBlock;
 @property(copy, nonatomic) CDUnknownBlockType modifyRecordBatchesCompletionBlock; // @synthesize modifyRecordBatchesCompletionBlock=_modifyRecordBatchesCompletionBlock;
 @property(copy, nonatomic) CDUnknownBlockType batchCompletionBlock; // @synthesize batchCompletionBlock=_batchCompletionBlock;
-@property(copy, nonatomic) CDUnknownBlockType perRecordSaveCompletionBlock; // @synthesize perRecordSaveCompletionBlock=_perRecordSaveCompletionBlock;
+@property(copy, nonatomic) CDUnknownBlockType perRecordDeleteBlock; // @synthesize perRecordDeleteBlock=_perRecordDeleteBlock;
+@property(copy, nonatomic) CDUnknownBlockType perRecordSaveBlock; // @synthesize perRecordSaveBlock=_perRecordSaveBlock;
 @property(copy, nonatomic) CDUnknownBlockType perRecordProgressBlock; // @synthesize perRecordProgressBlock=_perRecordProgressBlock;
 @property(copy, nonatomic) CDUnknownBlockType populateNextBatchBlock; // @synthesize populateNextBatchBlock=_populateNextBatchBlock;
 @property(retain, nonatomic) CKOperationGroup *group; // @synthesize group=_group;
@@ -45,6 +44,10 @@
 - (void)finishWithError:(id)arg1;
 - (void)cancel;
 - (void)start;
+- (void)transitionToFinished;
+- (void)transitionToExecuting;
+- (_Bool)isExecuting;
+- (_Bool)isFinished;
 - (_Bool)isAsynchronous;
 - (id)init;
 - (id)initWithDatabase:(id)arg1;

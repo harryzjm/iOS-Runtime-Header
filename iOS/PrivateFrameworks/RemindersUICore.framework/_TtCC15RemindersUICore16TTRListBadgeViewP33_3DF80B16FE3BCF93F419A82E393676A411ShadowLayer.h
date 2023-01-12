@@ -8,10 +8,10 @@
 {
 }
 
-- (void)layoutSublayers;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithLayer:(id)arg1;
 - (id)init;
+- (void)layoutSublayers;
 
 @end
 

@@ -7,15 +7,17 @@
 #import <objc/NSObject.h>
 
 #import <TSUtility/NSCopying-Protocol.h>
+#import <TSUtility/NSSecureCoding-Protocol.h>
 
 @class NSString, UIColor;
 
-@interface TSUColor : NSObject <NSCopying>
+@interface TSUColor : NSObject <NSCopying, NSSecureCoding>
 {
     struct CGColor *mCGColor;
     unsigned long long mColorRGBSpace;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)brownColor;
 + (id)purpleColor;
 + (id)orangeColor;
@@ -41,6 +43,8 @@
 + (id)colorWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4;
 + (id)colorWithCGColor:(struct CGColor *)arg1;
 @property(readonly, nonatomic) unsigned long long colorRGBSpace; // @synthesize colorRGBSpace=mColorRGBSpace;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)p_colorForComparingWithColor:(id)arg1;
 - (double)p_rgbComponentWithIndex:(unsigned char)arg1;
 - (_Bool)p_isEqualToColor:(id)arg1 withTolerance:(double)arg2;
@@ -50,7 +54,7 @@
 - (id)colorByCompositingSourceOverDestinationColor:(id)arg1;
 - (id)newBlendedColorWithFraction:(double)arg1 ofColor:(id)arg2;
 - (id)blendedColorWithFraction:(double)arg1 ofColor:(id)arg2;
-- (_Bool)improvesContrastWhenDisplayedOverAlternateBackgroundColor:(id)arg1 ratherThanStandardBackgroundColor:(id)arg2;
+- (_Bool)improvesContrastWhenDisplayedOverAlternateBackgroundColor:(id)arg1 ratherThanStandardBackgroundColor:(id)arg2 inScenario:(unsigned long long)arg3;
 - (double)contrastRatioWithColor:(id)arg1;
 - (_Bool)requiresOutlineOnBackgroundWithAppearance:(unsigned long long)arg1;
 @property(readonly, nonatomic) _Bool isNearlyWhite;
@@ -79,6 +83,7 @@
 - (id)initWithUIColor:(id)arg1;
 - (id)initWithHexString:(id)arg1;
 - (id)initWithPatternImage:(id)arg1;
+- (id)initWithCyan:(double)arg1 magenta:(double)arg2 yellow:(double)arg3 black:(double)arg4 alpha:(double)arg5;
 - (id)initWithHue:(double)arg1 saturation:(double)arg2 brightness:(double)arg3 alpha:(double)arg4 targetRGBSpace:(unsigned long long)arg5;
 - (id)initWithHue:(double)arg1 saturation:(double)arg2 brightness:(double)arg3 alpha:(double)arg4;
 - (id)initWithWhite:(double)arg1 alpha:(double)arg2;

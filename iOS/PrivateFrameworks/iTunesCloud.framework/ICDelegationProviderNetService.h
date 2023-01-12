@@ -11,6 +11,7 @@
 @class ICDelegationNetServiceTXTRecord, NSArray, NSMutableArray, NSNetService, NSString;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface ICDelegationProviderNetService : NSObject <NSNetServiceDelegate>
 {
     NSObject<OS_dispatch_queue> *_accessQueue;

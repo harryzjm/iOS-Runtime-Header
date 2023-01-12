@@ -23,6 +23,7 @@
 
 + (id)sharedManager;
 - (void).cxx_destruct;
+- (id)searchWithTriggers:(id)arg1 application:(id)arg2 recipient:(id)arg3 localeIdentifier:(id)arg4 isResponseDenyListed:(_Bool)arg5 shouldDisableAutoCaps:(_Bool)arg6 timeoutInMilliseconds:(int)arg7 resultLimit:(int)arg8 error:(id *)arg9;
 - (void)propogateMetrics:(id)arg1 data:(id)arg2;
 - (void)provideFeedbackForString:(id)arg1 type:(unsigned char)arg2 style:(unsigned char)arg3;
 - (void)providePredictionFeedbackForString:(id)arg1 type:(unsigned char)arg2 style:(unsigned char)arg3;
@@ -32,6 +33,7 @@
 - (void)hibernate;
 - (void)warmUp;
 - (void)unloadLexicons;
+- (id)loadLexicons;
 - (id)loadLexiconsUsingFilter:(CDUnknownBlockType)arg1;
 - (id)loadLexicons:(CDUnknownBlockType)arg1;
 - (void)removeContactObserver:(CDUnknownBlockType)arg1;

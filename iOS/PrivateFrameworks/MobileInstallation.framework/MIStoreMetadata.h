@@ -9,7 +9,7 @@
 #import <MobileInstallation/NSCopying-Protocol.h>
 #import <MobileInstallation/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSNumber, NSString;
+@class NSArray, NSData, NSDictionary, NSNumber, NSString;
 
 @interface MIStoreMetadata : NSObject <NSSecureCoding, NSCopying>
 {
@@ -51,6 +51,7 @@
     NSString *_storeCohort;
     NSNumber *_storefront;
     NSString *_variantID;
+    NSString *_betaBuildGroupID;
     NSString *_genre;
     NSNumber *_genreID;
     NSArray *_subGenres;
@@ -61,6 +62,7 @@
     NSString *_redownloadParams;
     NSDictionary *_nameTranscriptions;
     NSString *_md5;
+    NSData *_protectedMetadata;
 }
 
 + (id)metadataFromDictionary:(id)arg1;
@@ -68,6 +70,7 @@
 + (id)metadataFromPlistData:(id)arg1 error:(id *)arg2;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSData *protectedMetadata; // @synthesize protectedMetadata=_protectedMetadata;
 @property(copy, nonatomic) NSString *md5; // @synthesize md5=_md5;
 @property(nonatomic, getter=isFactoryInstall) _Bool factoryInstall; // @synthesize factoryInstall=_factoryInstall;
 @property(copy, nonatomic) NSDictionary *nameTranscriptions; // @synthesize nameTranscriptions=_nameTranscriptions;
@@ -84,6 +87,7 @@
 @property(copy, nonatomic) NSArray *subGenres; // @synthesize subGenres=_subGenres;
 @property(retain, nonatomic) NSNumber *genreID; // @synthesize genreID=_genreID;
 @property(copy, nonatomic) NSString *genre; // @synthesize genre=_genre;
+@property(copy, nonatomic) NSString *betaBuildGroupID; // @synthesize betaBuildGroupID=_betaBuildGroupID;
 @property(copy, nonatomic) NSString *variantID; // @synthesize variantID=_variantID;
 @property(retain, nonatomic) NSNumber *storefront; // @synthesize storefront=_storefront;
 @property(copy, nonatomic) NSString *storeCohort; // @synthesize storeCohort=_storeCohort;

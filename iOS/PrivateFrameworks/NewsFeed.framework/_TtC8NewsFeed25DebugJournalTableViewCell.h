@@ -12,9 +12,11 @@ __attribute__((visibility("hidden")))
 @interface _TtC8NewsFeed25DebugJournalTableViewCell : UITableViewCell
 {
     MISSING_TYPE *stripView;
+    MISSING_TYPE *activityIndicatorView;
 }
 
 - (void).cxx_destruct;
+- (void)prepareForReuse;
 - (void)layoutSubviews;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;

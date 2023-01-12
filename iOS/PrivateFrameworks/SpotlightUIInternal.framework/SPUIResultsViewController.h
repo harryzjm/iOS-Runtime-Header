@@ -38,14 +38,14 @@
 @property(copy, nonatomic) CDUnknownBlockType didFinishGettingAllResultsHandler; // @synthesize didFinishGettingAllResultsHandler;
 - (void)changeTextFieldsReturnKeyType:(long long)arg1 withGoTakeoverResult:(id)arg2;
 - (void)forceHighlightForResult:(id)arg1;
+- (void)highlightResultAfterUnmarkingText;
 - (void)_pushSectionsUpdate;
-- (void)insertYahooAttributionIfNecessaryForResult:(id)arg1;
 - (id)asTypedSearchResult;
 - (void)removeCompletionAndHighlightAsTyped:(_Bool)arg1;
 - (_Bool)_hasRealSuggestions;
 - (void)clearSuggestionSection;
-- (void)searchUpdatedWithString:(id)arg1 tokenEntity:(id)arg2 queryId:(unsigned long long)arg3 wantsCompletions:(_Bool)arg4;
-- (id)makeAsYouTypeSuggestionSearchResultWithSearchString:(id)arg1 detailText:(id)arg2 suggestionIdentifier:(id)arg3 queryId:(unsigned long long)arg4;
+- (void)searchUpdatedWithString:(id)arg1 tokenEntity:(id)arg2 queryId:(unsigned long long)arg3 wantsCompletions:(_Bool)arg4 keyboardLanguage:(id)arg5;
+- (id)makeAsYouTypeSuggestionSearchResultWithSearchString:(id)arg1 detailText:(id)arg2 suggestionIdentifier:(id)arg3 queryContext:(id)arg4;
 @property(readonly) SFSearchResult *actualSearchSuggestionResult;
 - (void)searchAgentClearedResults:(id)arg1;
 - (void)searchAgentFinishedQueryWithoutAdditionalResults:(id)arg1;

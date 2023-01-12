@@ -18,8 +18,10 @@
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
+    _Bool _supportsCollectionByRegion;
     _Bool _supportsMultipleAddresses;
     struct {
+        unsigned int has_supportsCollectionByRegion:1;
         unsigned int has_supportsMultipleAddresses:1;
         unsigned int read_personID:1;
         unsigned int read_token:1;
@@ -44,6 +46,8 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasSupportsCollectionByRegion;
+@property(nonatomic) _Bool supportsCollectionByRegion;
 @property(nonatomic) _Bool hasSupportsMultipleAddresses;
 @property(nonatomic) _Bool supportsMultipleAddresses;
 @property(retain, nonatomic) NSString *personID;

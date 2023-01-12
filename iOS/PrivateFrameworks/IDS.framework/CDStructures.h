@@ -53,8 +53,10 @@ typedef struct {
     unsigned int _field13;
     unsigned int _field14;
     unsigned short _field15;
-    unsigned char _field16[2];
-} CDStruct_d2f8504d;
+    _Bool _field16;
+    char _field17[16];
+    unsigned char _field18;
+} CDStruct_ab50c87c;
 
 typedef struct {
     char *_field1;
@@ -67,9 +69,10 @@ typedef struct {
 typedef struct {
     char _field1;
     unsigned short _field2;
-    unsigned short _field3;
-    unsigned char _field4;
-} CDStruct_54fea20c;
+    unsigned char _field3;
+    unsigned short _field4;
+    unsigned char _field5;
+} CDStruct_4aae7d13;
 
 typedef struct {
     long long _field1;
@@ -89,7 +92,9 @@ typedef struct {
     CDStruct_9d3ac55b _field9;
     double _field10;
     unsigned long long _field11;
-} CDStruct_6bf83f29;
+    _Bool _field12;
+    unsigned long long _field13;
+} CDStruct_a035aa27;
 
 typedef struct {
     char *_field1;
@@ -107,7 +112,8 @@ typedef struct {
     struct sockaddr_storage _field13;
     struct sockaddr_storage _field14;
     unsigned short _field15;
-    int _field16;
+    unsigned char _field16;
+    int _field17;
     struct {
         char *_field1;
         unsigned short _field2;
@@ -122,13 +128,17 @@ typedef struct {
         unsigned short _field11;
         CDStruct_9d3ac55b _field12;
         _Bool _field13;
-        unsigned int _field14;
-    } _field17[8];
-    char _field18;
+        _Bool _field14;
+        int _field15;
+        unsigned short _field16[4];
+        unsigned char _field17;
+        unsigned int _field18;
+    } _field18[8];
     char _field19;
-    int _field20;
-    double _field21;
-    unsigned long long _field22;
-    unsigned char _field23[0];
-} CDStruct_3310d7af;
+    char _field20;
+    int _field21;
+    double _field22;
+    unsigned long long _field23;
+    unsigned char _field24[0];
+} CDStruct_d00011ad;
 

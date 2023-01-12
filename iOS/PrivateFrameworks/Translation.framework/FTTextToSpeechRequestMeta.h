@@ -21,7 +21,8 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_ad483e0b)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_ad483e0b)addObjectToBuffer:(void *)arg1;
+@property(readonly, nonatomic) _Bool is_synthesis;
 @property(readonly, nonatomic) NSString *app_id;
 @property(readonly, nonatomic) long long channel_type;
 - (id)copyWithZone:(struct _NSZone *)arg1;

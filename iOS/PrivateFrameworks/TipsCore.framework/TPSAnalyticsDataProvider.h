@@ -18,6 +18,7 @@
 - (unsigned long long)hintDisplayedCountForIdentifier:(id)arg1;
 - (id)contextForIdentifier:(id)arg1;
 - (id)bundleIDForIdentifier:(id)arg1;
+- (id)correlationIDForIdentifier:(id)arg1;
 - (id)deliveryInfoVersion;
 - (id)experimentID;
 - (id)experimentCampID;

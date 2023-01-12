@@ -10,7 +10,6 @@
 
 @class CKCDPError, NSData, NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface CKCDPCodeServiceResponse : PBCodable <NSCopying>
 {
     NSMutableArray *_assetAuthorizationResponses;

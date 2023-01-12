@@ -6,21 +6,27 @@
 
 #import <objc/NSObject.h>
 
+#import <SystemStatus/STDynamicActivityAttributionClientHandle-Protocol.h>
 #import <SystemStatus/STDynamicAttributionXPCServerProtocol-Protocol.h>
 
 @class NSString, NSXPCConnection;
 @protocol STDynamicActivityAttributionServerHandle;
 
-@interface STDynamicActivityAttributionXPCClientHandle : NSObject <STDynamicAttributionXPCServerProtocol>
+@interface STDynamicActivityAttributionXPCClientHandle : NSObject <STDynamicActivityAttributionClientHandle, STDynamicAttributionXPCServerProtocol>
 {
+    CDStruct_4c969caf _auditToken;
     id <STDynamicActivityAttributionServerHandle> _serverHandle;
-    NSXPCConnection *_clientXPCConnection;
+    NSXPCConnection *_connection;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSXPCConnection *clientXPCConnection; // @synthesize clientXPCConnection=_clientXPCConnection;
+@property(readonly, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property(readonly, nonatomic) __weak id <STDynamicActivityAttributionServerHandle> serverHandle; // @synthesize serverHandle=_serverHandle;
+- (void)subscribeToUpdates;
+- (void)setCurrentAttributionStringWithFormat:(id)arg1 maskingClientAuditToken:(CDStruct_4c969caf)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)setCurrentAttributionKey:(id)arg1 application:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)currentAttributionsDidChange:(id)arg1;
+- (CDStruct_4c969caf)auditToken;
 - (id)initWithXPCConnection:(id)arg1 serverHandle:(id)arg2;
 
 // Remaining properties

@@ -6,18 +6,19 @@
 
 #import <ClipServices/CPSDaemonProtocolNonEntitled-Protocol.h>
 
-@class CPSClipLaunchOptions, CPSSessionConfiguration, NSArray, NSString, NSURL;
+@class CPSClipLaunchOptions, CPSSessionConfiguration, CPSValidationRequest, NSArray, NSString, NSURL;
 
 @protocol CPSDaemonProtocol <CPSDaemonProtocolNonEntitled>
+- (void)performValidationWithRequest:(CPSValidationRequest *)arg1 reply:(void (^)(CPSValidationResult *))arg2;
 - (void)checkAndConsumeShowsAppAttributionBannerForBundleID:(NSString *)arg1 completion:(void (^)(_Bool))arg2;
 - (void)getLastLaunchOptionsWithBundleID:(NSString *)arg1 reply:(void (^)(CPSClipLaunchOptions *))arg2;
-- (void)notifyWebClipActivationWithBundleID:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)notifyWebClipActivationWithBundleID:(NSString *)arg1 referrerBundleID:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)getUserNotificationConsentForBundleID:(NSString *)arg1 reply:(void (^)(_Bool, NSDate *, NSError *))arg2;
 - (void)unregisterSessionWithURL:(NSURL *)arg1;
 - (void)registerSessionWithURL:(NSURL *)arg1 configuration:(CPSSessionConfiguration *)arg2;
 - (void)stopStallingCurrentInstallationWithReply:(void (^)(_Bool))arg1;
 - (void)openClipWithInvocationUIIfNeededWithURL:(NSURL *)arg1 reply:(void (^)(NSError *))arg2;
-- (void)fetchClipMetadataWithURLHash:(NSString *)arg1 sourceBundleID:(NSString *)arg2 reply:(void (^)(CPSClipMetadata *, NSError *))arg3;
+- (void)fetchClipURLWithURLHash:(NSString *)arg1 sourceBundleID:(NSString *)arg2 reply:(void (^)(NSURL *, NSError *))arg3;
 - (void)fetchClipMetadataWithURL:(NSURL *)arg1 reply:(void (^)(NSError *, CPSClipMetadata *))arg2;
 - (void)uninstallClipsWithBundleIDs:(NSArray *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)uninstallClipWithURL:(NSURL *)arg1 reply:(void (^)(NSError *))arg2;

@@ -31,6 +31,7 @@
 - (id)enumerateAttribute:(id)arg1 inRange:(struct _NSRange)arg2 options:(unsigned long long)arg3;
 - (void)addAttribute:(id)arg1 value:(id)arg2 range:(struct _NSRange)arg3;
 - (void)addAttributes:(id)arg1 range:(struct _NSRange)arg2;
+@property(readonly, nonatomic) unsigned long long length;
 - (id)NSAttributedString;
 @property(copy, nonatomic) NSString *string;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -36,13 +36,6 @@
 @property(readonly, nonatomic) MPMediaItem *representativeItem;
 @property(readonly, nonatomic) unsigned long long persistentID;
 - (id)genericModelObjectWithRequestedProperties:(id)arg1;
-@property(readonly, nonatomic) _Bool isPurchasableStoreOffer;
-@property(readonly, nonatomic) _Bool isDownloadableStoreOffer;
-@property(readonly, nonatomic) long long preferredStoreOfferVariant;
-- (id)buyOffer;
-- (id)completionOfferForVariant:(long long)arg1;
-- (id)buyOfferForVariant:(long long)arg1;
-@property(readonly, nonatomic) _Bool isDownloadable;
 
 @end
 

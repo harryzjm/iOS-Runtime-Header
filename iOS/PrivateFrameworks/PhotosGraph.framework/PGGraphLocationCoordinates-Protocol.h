@@ -6,10 +6,10 @@
 
 #import <PhotosGraph/NSObject-Protocol.h>
 
-@class NSSet;
+@protocol PGGraphLocationOrAreaNodeCollection;
 
 @protocol PGGraphLocationCoordinates <NSObject>
-- (NSSet *)addressNodes;
+- (id <PGGraphLocationOrAreaNodeCollection>)locationOrAreaNodeCollection;
 - (struct CLLocationCoordinate2D)coordinate;
 @end
 

@@ -11,13 +11,14 @@
 #import <MapKit/UICollectionViewDelegate-Protocol.h>
 #import <MapKit/UICollectionViewDelegateFlowLayout-Protocol.h>
 
-@class MKPlaceCollectionsLogicController, NSString, UICollectionView, UICollectionViewFlowLayout;
-@protocol MKCollectionCarouselAnalyticsDelegate, MKCollectionCarouselRoutingDelegate, MKCollectionsSizeProvider, UIScrollViewDelegate;
+@class GEOExploreGuides, MKPlaceCollectionsLogicController, NSObject, NSString, UICollectionView, UICollectionViewFlowLayout, UIStackView;
+@protocol MKCollectionCarouselAnalyticsDelegate, MKCollectionCarouselRoutingDelegate, MKCollectionsSizeProvider, OS_dispatch_queue, UIScrollViewDelegate;
 
 @interface MKCollectionsCarouselView : UIView <UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, MKCollectionCarouselSizeProvider, MKCollectionCarouselUpdater>
 {
     CDStruct_7ddafc85 _collectionsConfiguration;
     _Bool _hasDisplayedCollections;
+    NSObject<OS_dispatch_queue> *_utilityQueue;
     UICollectionView *_collectionView;
     UICollectionViewFlowLayout *_flowLayout;
     MKPlaceCollectionsLogicController *_logicController;
@@ -25,11 +26,17 @@
     id <MKCollectionCarouselRoutingDelegate> _routingDelegate;
     id <UIScrollViewDelegate> _scrollViewDelegate;
     id <MKCollectionCarouselAnalyticsDelegate> _analyticsDelegate;
+    GEOExploreGuides *_exploreGuides;
+    long long _carouselContext;
+    UIStackView *_contentView;
 }
 
-+ (double)verticalLayoutHeightWithNumberOfItems:(unsigned long long)arg1 maxWidth:(double)arg2 usingTraitEnvironment:(id)arg3;
-+ (double)horizontalLayoutHeight;
++ (double)verticalLayoutHeightWithNumberOfItems:(unsigned long long)arg1 maxWidth:(double)arg2 usingTraitEnvironment:(id)arg3 inContext:(long long)arg4;
++ (double)horizontalLayoutHeightInContext:(long long)arg1 includeExploreGuidesHeight:(_Bool)arg2 isSingleCollection:(_Bool)arg3;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIStackView *contentView; // @synthesize contentView=_contentView;
+@property(nonatomic) long long carouselContext; // @synthesize carouselContext=_carouselContext;
+@property(retain, nonatomic) GEOExploreGuides *exploreGuides; // @synthesize exploreGuides=_exploreGuides;
 @property(nonatomic) __weak id <MKCollectionCarouselAnalyticsDelegate> analyticsDelegate; // @synthesize analyticsDelegate=_analyticsDelegate;
 @property(nonatomic) __weak id <UIScrollViewDelegate> scrollViewDelegate; // @synthesize scrollViewDelegate=_scrollViewDelegate;
 @property(nonatomic) __weak id <MKCollectionCarouselRoutingDelegate> routingDelegate; // @synthesize routingDelegate=_routingDelegate;
@@ -38,7 +45,6 @@
 @property(retain, nonatomic) UICollectionViewFlowLayout *flowLayout; // @synthesize flowLayout=_flowLayout;
 @property(retain, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 - (double)collectionView:(id)arg1 layout:(id)arg2 minimumInteritemSpacingForSectionAtIndex:(long long)arg3;
-- (double)collectionView:(id)arg1 layout:(id)arg2 minimumLineSpacingForSectionAtIndex:(long long)arg3;
 - (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
@@ -46,17 +52,21 @@
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
-- (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (void)fetchCollections;
 - (void)configureCarouselCollectionView;
 - (void)configureCarouselMetadata:(long long)arg1;
+- (void)resetCollectionsLayout;
+- (void)refreshCollections;
 - (void)updateCollections:(id)arg1;
+- (id)visibleFocusItems;
+- (void)resetScrollOffset;
+- (_Bool)isShowingExploreGuides;
 - (_Bool)isDisplayingCollections;
 - (void)displayCollectionsUsingBatchIds:(id)arg1 usingGuideFetcher:(id)arg2;
-- (void)refreshCollections;
+- (void)dismissedCollections;
 - (void)displayCollections;
-- (id)initCollectionsCarouselViewWithContext:(long long)arg1 withPlaceCollections:(id)arg2 usingSyncCoordinator:(id)arg3 withRoutingDelegate:(id)arg4 withScrollViewDelegate:(id)arg5 withAnalyticsDelegate:(id)arg6;
+- (id)initCollectionsCarouselViewWithContext:(long long)arg1 withPlaceCollections:(id)arg2 usingSyncCoordinator:(id)arg3 withRoutingDelegate:(id)arg4 withScrollViewDelegate:(id)arg5 withAnalyticsDelegate:(id)arg6 exploreGuides:(id)arg7;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -13,7 +13,7 @@
     long long _ringStyle;
 }
 
-+ (struct CGSize)imageSize;
++ (void)imageSDKSize:(struct CGSize *)arg1 deviceSize:(struct CGSize *)arg2 forSDKVersion:(long long)arg3;
 + (id)templateWithImageProvider:(id)arg1 progressProvider:(id)arg2 ringStyle:(long long)arg3;
 - (void).cxx_destruct;
 @property(nonatomic) long long ringStyle; // @synthesize ringStyle=_ringStyle;

@@ -30,8 +30,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isXPCService;
 - (unsigned char)defaultManageFlags;
 - (_Bool)isExtension;
-- (id)copyWithEuid:(unsigned int)arg1;
-- (id)_initWithXPCServiceID:(id)arg1 pid:(int)arg2 euid:(unsigned int)arg3;
+- (id)copyWithAuid:(unsigned int)arg1;
 
 @end
 

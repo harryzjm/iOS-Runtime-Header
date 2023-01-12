@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)pickerDidSelectContacts:(id)arg1 properties:(id)arg2;
 - (void)pickerDidSelectContact:(id)arg1 property:(id)arg2;
 - (void)pickerDidSelectAddNewContact;
+- (void)viewServiceDidTerminateWithError:(id)arg1;
 - (void)invalidate;
 - (void)invalidateSelectionAnimated:(_Bool)arg1;
 - (void)setupWithOptions:(id)arg1 readyBlock:(CDUnknownBlockType)arg2;

@@ -9,6 +9,7 @@
 @class NSString;
 
 @protocol MPRadioIdentifiers <NSObject>
+@property(readonly, copy, nonatomic) NSString *stationEventID;
 @property(readonly, nonatomic) long long stationID;
 @property(readonly, copy, nonatomic) NSString *stationHash;
 @property(readonly, copy, nonatomic) NSString *stationStringID;

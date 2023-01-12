@@ -23,7 +23,7 @@
 @property(nonatomic) __weak id <PXGAXResponder> axNextResponder; // @synthesize axNextResponder;
 - (_Bool)axGroup:(id)arg1 didRequestToPerformAction:(long long)arg2 userInfo:(id)arg3;
 - (void)axGroup:(id)arg1 didChange:(unsigned long long)arg2 userInfo:(id)arg3;
-- (id)axContainingViewForAXGroup:(id)arg1;
+- (id)axContainingScrollViewForAXGroup:(id)arg1;
 - (void)_distributeEvents;
 - (void)_notifyResponder:(CDUnknownBlockType)arg1;
 

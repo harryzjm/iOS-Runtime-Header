@@ -7,6 +7,5 @@
 #import <Foundation/NSNotification.h>
 
 @interface NSNotification (BCSError)
-- (id)error;
 @end
 

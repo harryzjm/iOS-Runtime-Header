@@ -12,6 +12,10 @@
 {
 }
 
+- (id)alertMessageForEventType:(unsigned long long)arg1;
+- (id)alertTitleForEventType:(unsigned long long)arg1;
+- (void)displayAlertForItem:(id)arg1;
+- (_Bool)hasNotificationSettingForItem:(id)arg1;
 - (void)switchCell:(id)arg1 didTurnOn:(_Bool)arg2;
 - (unsigned long long)didSelectItem:(id)arg1;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 animated:(_Bool)arg3;

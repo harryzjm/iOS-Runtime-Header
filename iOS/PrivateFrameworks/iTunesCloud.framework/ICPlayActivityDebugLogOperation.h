@@ -8,6 +8,7 @@
 
 @class NSArray;
 
+__attribute__((visibility("hidden")))
 @interface ICPlayActivityDebugLogOperation : NSOperation
 {
     NSArray *_playActivityEvents;

@@ -10,7 +10,6 @@
 @protocol SBUIActiveOrientationObserver, SBUIIdleTimerHandler;
 
 @protocol SBUIUserAgent <NSObject>
-@property(nonatomic) long long softwareUpdatePasscodePolicyType;
 - (NSString *)topSuspendedEventsOnlyDisplayID;
 - (_Bool)isInternalInstall;
 - (struct __CFRunLoop *)wifiRunLoopRef;

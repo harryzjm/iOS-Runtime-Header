@@ -9,7 +9,7 @@
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSDecimalNumber, PKCreditAccountBalanceSummary, PKCreditAccountStatement;
+@class NSDate, NSDecimalNumber, NSSet, PKCreditAccountBalanceSummary, PKCreditAccountMergeSummary, PKCreditAccountStatement;
 
 @interface PKCreditAccountSummary : NSObject <NSSecureCoding, NSCopying>
 {
@@ -21,6 +21,7 @@
     NSDecimalNumber *_currentBalance;
     NSDecimalNumber *_rewardsBalance;
     NSDecimalNumber *_remainingStatementBalance;
+    NSDecimalNumber *_remainingStatementBalanceForInterestCalculation;
     NSDecimalNumber *_remainingMinimumPayment;
     NSDecimalNumber *_remainingMinimumPaymentExcludedFromInterestCalculation;
     NSDecimalNumber *_installmentBalance;
@@ -28,6 +29,8 @@
     long long _cyclesPastDue;
     unsigned long long _balanceStatus;
     PKCreditAccountBalanceSummary *_balanceSummary;
+    NSSet *_accountUserActivity;
+    PKCreditAccountMergeSummary *_mergeSummary;
     NSDecimalNumber *_unpostedInterest;
     NSDate *_unpostedInterestTimestamp;
     NSDecimalNumber *_chargeOffPreventionAmount;
@@ -49,6 +52,8 @@
 @property(copy, nonatomic) NSDate *unpostedInterestTimestamp; // @synthesize unpostedInterestTimestamp=_unpostedInterestTimestamp;
 @property(copy, nonatomic) NSDecimalNumber *unpostedInterest; // @synthesize unpostedInterest=_unpostedInterest;
 @property(nonatomic) _Bool requiresDebtCollectionNotices; // @synthesize requiresDebtCollectionNotices=_requiresDebtCollectionNotices;
+@property(retain, nonatomic) PKCreditAccountMergeSummary *mergeSummary; // @synthesize mergeSummary=_mergeSummary;
+@property(copy, nonatomic) NSSet *accountUserActivity; // @synthesize accountUserActivity=_accountUserActivity;
 @property(retain, nonatomic) PKCreditAccountBalanceSummary *balanceSummary; // @synthesize balanceSummary=_balanceSummary;
 @property(nonatomic) unsigned long long balanceStatus; // @synthesize balanceStatus=_balanceStatus;
 @property(nonatomic) long long cyclesPastDue; // @synthesize cyclesPastDue=_cyclesPastDue;
@@ -56,6 +61,7 @@
 @property(copy, nonatomic) NSDecimalNumber *installmentBalance; // @synthesize installmentBalance=_installmentBalance;
 @property(copy, nonatomic) NSDecimalNumber *remainingMinimumPaymentExcludedFromInterestCalculation; // @synthesize remainingMinimumPaymentExcludedFromInterestCalculation=_remainingMinimumPaymentExcludedFromInterestCalculation;
 @property(copy, nonatomic) NSDecimalNumber *remainingMinimumPayment; // @synthesize remainingMinimumPayment=_remainingMinimumPayment;
+@property(copy, nonatomic) NSDecimalNumber *remainingStatementBalanceForInterestCalculation; // @synthesize remainingStatementBalanceForInterestCalculation=_remainingStatementBalanceForInterestCalculation;
 @property(copy, nonatomic) NSDecimalNumber *remainingStatementBalance; // @synthesize remainingStatementBalance=_remainingStatementBalance;
 @property(copy, nonatomic) NSDecimalNumber *rewardsBalance; // @synthesize rewardsBalance=_rewardsBalance;
 @property(copy, nonatomic) NSDecimalNumber *currentBalance; // @synthesize currentBalance=_currentBalance;
@@ -67,6 +73,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)accountUserActivityForAccountUserAltDSID:(id)arg1;
 - (void)ingestExtendedAccountDetails:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 

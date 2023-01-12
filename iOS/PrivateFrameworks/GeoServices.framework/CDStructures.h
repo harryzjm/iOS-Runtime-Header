@@ -18,6 +18,12 @@ struct Angle {
     unsigned short _field1;
 };
 
+struct Arena;
+
+struct ArenaStringPtr {
+    struct TaggedPtr<std::string> _field1;
+};
+
 struct Box<float, 2> {
     Matrix_8746f91e _field1;
     Matrix_8746f91e _field2;
@@ -33,17 +39,13 @@ struct CAARiseTransitSetDetails {
     double Set;
 };
 
-struct CAARiseTransitSetDetails2 {
-    int type;
-    double JD;
-    double Bearing;
-    double GeometricAltitude;
-    _Bool bAboveHorizon;
-};
-
 struct CGSize {
     double width;
     double height;
+};
+
+struct CachedSize {
+    struct atomic<int> _field1;
 };
 
 struct Color<float, 4, geo::ColorSpace::Linear> {
@@ -66,6 +68,8 @@ struct DispatchTimer;
 struct Entry;
 
 struct ErrorInfo;
+
+struct FeatureStyleAttributes;
 
 struct FormOfWay {
     int _field1;
@@ -107,9 +111,15 @@ struct GEOCoverageException {
     } _field6;
 };
 
-struct GEOFeatureShield {
-    CDStruct_29923528 _field1;
-    long long _field2;
+struct GEOECEFCoordinate {
+    double _x;
+    double _y;
+    double _z;
+    struct {
+        unsigned int x:1;
+        unsigned int y:1;
+        unsigned int z:1;
+    } _has;
 };
 
 struct GEOFlyoverRegion {
@@ -138,28 +148,6 @@ struct GEOJunctionElement {
     int _field2;
     int _field3;
     CDStruct_8a1bf2a3 _field4;
-};
-
-struct GEOLabelLineAttribute {
-    unsigned char _field1;
-    unsigned char _field2;
-    struct GEOLabelLineRange _field3;
-};
-
-struct GEOLabelLineFeatureSection {
-    unsigned int _field1;
-    struct GEOLabelLineRange _field2;
-    unsigned short _field3;
-    unsigned short _field4;
-    unsigned short _field5;
-    _Bool _field6;
-    _Bool _field7;
-    _Bool _field8;
-};
-
-struct GEOLabelLineRange {
-    double _field1;
-    double _field2;
 };
 
 struct GEOLensModel {
@@ -291,6 +279,13 @@ struct GEOPDTimeRange {
     CDStruct_beabc505 _has;
 };
 
+struct GEOPathMatcherRoadKey {
+    unsigned long long _field1;
+    long long _field2;
+    double _field3;
+    double _field4;
+};
+
 struct GEOPixelPoint {
     double _x;
     double _y;
@@ -343,16 +338,6 @@ struct GEOThrottleKey {
     unsigned int _field1;
 };
 
-struct GEOTileLabelLine {
-    double _field1;
-    struct GEOLabelLineRange _field2;
-    unsigned long long _field3;
-    unsigned int _field4;
-    unsigned int _field5;
-    unsigned short _field6;
-    unsigned short _field7;
-};
-
 struct GEOTileLoaderAdditionalInfo {
     unsigned int _field1[4];
 };
@@ -366,12 +351,6 @@ struct GEOTileSetRegion {
     unsigned int _field6;
 };
 
-struct GEOTileUsage {
-    unsigned int _field1;
-    int _field2;
-    CDStruct_d7010776 _field3;
-};
-
 struct GEOTimepoint {
     double _currentUserTime;
     double _time;
@@ -383,28 +362,15 @@ struct GEOTimepoint {
     } _has;
 };
 
-struct GEOTransitNodeFeature {
-    CDStruct_bc8de1a2 _field1;
-    struct _NSRange _field2;
-    CDStruct_183601bc *_field3;
-    struct GEOTransitNodeFeature *_field4;
-    unsigned long long *_field5;
-    unsigned long long *_field6;
-    char _field7;
-    unsigned char _field8;
-    unsigned char _field9;
-    unsigned char _field10;
-    unsigned short _field11;
-    unsigned long long _field12;
-    unsigned int _field13;
-    unsigned int _field14;
-    unsigned int _field15;
-    float _field16;
-    struct _NSRange _field17;
-    _Bool _field18;
-    _Bool _field19;
-    _Bool _field20;
-    struct _NSRange _field21;
+struct GEOVLFPositionContextClassification {
+    double _indoorProbability;
+    double _outdoorProbability;
+    int _type;
+    struct {
+        unsigned int indoorProbability:1;
+        unsigned int outdoorProbability:1;
+        unsigned int type:1;
+    } _has;
 };
 
 struct GEOVersionedTileSet {
@@ -418,11 +384,347 @@ struct GEOWiFiQualityTimeRange {
     CDStruct_d7010776 _field3;
 };
 
-struct GEOsslpmTileInfo {
+struct GeoCodecsAddressRange {
+    unsigned short _field1[2];
+    unsigned short _field2[2];
+};
+
+struct GeoCodecsCharacteristic {
+    unsigned int _field1;
+    int _field2;
+    float _field3;
+    _Bool _field4;
+    _Bool _field5;
+    _Bool _field6;
+    _Bool _field7;
+    _Bool _field8;
+    struct GeoCodecsVectorTileLaneInfo _field9[16];
+};
+
+struct GeoCodecsCharacteristicPoint {
+    struct GeoCodecsConnectivityPointOnRoad _field1;
+    struct GeoCodecsCharacteristic _field2;
+};
+
+struct GeoCodecsConnectivityJunction {
+    unsigned int _field1;
+    unsigned int _field2;
+    struct GeoCodecsPointFeature *_field3;
+};
+
+struct GeoCodecsConnectivityOverpass {
+    unsigned short _field1;
+};
+
+struct GeoCodecsConnectivityPointOnRoad {
+    unsigned int _field1;
+    unsigned int _field2;
+    unsigned int _field3;
+    unsigned int _field4;
+};
+
+struct GeoCodecsCurveVertexPool {
+    unsigned char _field1;
+    struct GeoCodecsTileCurveVertex *_field2;
+    unsigned long long _field3;
+    float *_field4;
+    struct GeoCodecsRange *_field5;
+    unsigned long long _field6;
+};
+
+struct GeoCodecsDaVinciBuildingSection {
+    _Bool _field1;
+    unsigned char _field2;
+    float _field3;
+    float _field4;
+    unsigned int _field5;
+    unsigned short _field6;
+};
+
+struct GeoCodecsDaVinciDirectionalXYTextureMappingData {
+    unsigned int _field1;
+    unsigned short _field2;
+    float _field3;
+    float _field4;
+    float _field5;
+    float _field6;
+};
+
+struct GeoCodecsDaVinciExplicitTextureMappingData {
+    unsigned int _field1;
+    unsigned short _field2;
+    struct GeoCodecsVectorTilePoint *_field3;
+};
+
+struct GeoCodecsDaVinciLineLoop {
+    unsigned int _field1;
+    unsigned short _field2;
+};
+
+struct GeoCodecsDaVinciMaterial;
+
+struct GeoCodecsDaVinciMaterialMap;
+
+struct GeoCodecsDaVinciMaterialSheet {
+    unsigned long long _field1;
+    unsigned short _field2;
+    unsigned short _field3;
+    unsigned char _field4;
+    struct GeoCodecsDaVinciMaterial *_field5;
+    struct GeoCodecsDaVinciMaterial *_field6;
+    struct GeoCodecsDaVinciTextureData *_field7;
+};
+
+struct GeoCodecsDaVinciMesh {
+    unsigned char _field1;
+    unsigned int _field2;
+    unsigned int _field3;
+    unsigned int _field4;
+    unsigned int _field5;
+    unsigned int _field6;
+    _Bool _field7;
+    float *_field8;
+};
+
+struct GeoCodecsDaVinciMetaData {
+    float _field1;
+    float _field2;
+    unsigned short _field3;
+    struct GeoCodecsPackedElevationRange *_field4;
+    unsigned char *_field5;
+};
+
+struct GeoCodecsDaVinciPrimitive;
+
+struct GeoCodecsDaVinciRenderable {
+    struct GeoCodecsMatrix4x3 *_field1;
+    char *_field2;
+    unsigned long long _field3;
+    unsigned long long _field4;
+    unsigned long long _field5;
+    unsigned short _field6;
+    unsigned short _field7;
+    unsigned char _field8;
+    _Bool _field9;
+};
+
+struct GeoCodecsDaVinciScene {
+    struct GeoCodecsDaVinciPrimitive *_field1;
+    struct GeoCodecsDaVinciSceneMesh *_field2;
+    struct GeoCodecsDaVinciSceneNode *_field3;
+    struct GeoCodecsDaVinciMaterialMap *_field4;
+    unsigned short *_field5;
+    unsigned short _field6;
+    unsigned short _field7;
+    unsigned short _field8;
+    unsigned short _field9;
+    unsigned char _field10;
+};
+
+struct GeoCodecsDaVinciSceneMesh;
+
+struct GeoCodecsDaVinciSceneNode;
+
+struct GeoCodecsDaVinciStyleAttributeRaster {
+    char *_field1;
+    unsigned int _field2;
+    unsigned int _field3;
+    unsigned char _field4;
+    unsigned short _field5;
+    unsigned short _field6;
+};
+
+struct GeoCodecsDaVinciTextureData;
+
+struct GeoCodecsFeatureStylePair {
+    unsigned int _field1;
+    int _field2;
+};
+
+struct GeoCodecsFeatureStylePairExt {
+    unsigned int _field1;
+    unsigned long long _field2;
+};
+
+struct GeoCodecsGhostPoint;
+
+struct GeoCodecsLabelLineAttribute {
+    unsigned char _field1;
+    unsigned char _field2;
+    struct GeoCodecsLabelLineRange _field3;
+};
+
+struct GeoCodecsLabelLineFeatureSection {
+    unsigned int _field1;
+    struct GeoCodecsLabelLineRange _field2;
+    unsigned short _field3;
+    unsigned short _field4;
+    unsigned short _field5;
+    _Bool _field6;
+    _Bool _field7;
+    _Bool _field8;
+};
+
+struct GeoCodecsLabelLineRange {
+    double _field1;
+    double _field2;
+};
+
+struct GeoCodecsLabelSummaryIcon {
+    unsigned int _field1;
+    unsigned int _field2;
+    unsigned int _field3;
+};
+
+struct GeoCodecsLabelTextPlacement {
+    unsigned char _field1;
+    unsigned char _field2;
+    unsigned char _field3;
+    _Bool _field4;
+    unsigned char _field5;
+    _Bool _field6;
+    struct GeoCodecsVectorTilePoint _field7;
+};
+
+struct GeoCodecsLaneGeometry {
+    float _field1;
+    float _field2;
+    float _field3;
+    float _field4;
+    float _field5;
+    float _field6;
+};
+
+struct GeoCodecsLineCrossing {
+    unsigned short _field1;
+    unsigned short _field2;
+    float _field3;
+    char _field4;
+    unsigned char _field5;
+};
+
+struct GeoCodecsMatrix4x3;
+
+struct GeoCodecsMultiSectionFeature;
+
+struct GeoCodecsPackedElevationRange;
+
+struct GeoCodecsPointFeature;
+
+struct GeoCodecsRGBAColor8 {
+    unsigned char _field1;
+    unsigned char _field2;
+    unsigned char _field3;
+    unsigned char _field4;
+};
+
+struct GeoCodecsRange {
+    unsigned long long _field1;
+    unsigned long long _field2;
+};
+
+struct GeoCodecsRoadEdge {
+    struct GeoCodecsMultiSectionFeature *road;
+    unsigned long long vertexIndexA;
+    unsigned long long vertexIndexB;
+    unsigned long long junctionIndexA;
+    unsigned long long junctionIndexB;
+    struct GeoCodecsConnectivityJunction *junctionA;
+    struct GeoCodecsConnectivityJunction *junctionB;
+};
+
+struct GeoCodecsSslpmTileInfo {
     unsigned char _field1;
     _Bool _field2;
     double _field3;
     double _field4;
+};
+
+struct GeoCodecsStrokeSpecification {
+    unsigned int _field1;
+    unsigned int _field2;
+    unsigned int _field3;
+    unsigned int _field4;
+};
+
+struct GeoCodecsTileCurveVertex;
+
+struct GeoCodecsTileKey {
+    unsigned int :7;
+    unsigned int :1;
+    unsigned int :6;
+    unsigned int :26;
+    unsigned int :26;
+    unsigned int :14;
+    unsigned int :4;
+    unsigned int :4;
+};
+
+struct GeoCodecsTileLabelLine {
+    double _field1;
+    struct GeoCodecsLabelLineRange _field2;
+    unsigned long long _field3;
+    unsigned int _field4;
+    unsigned int _field5;
+    unsigned short _field6;
+    unsigned short _field7;
+};
+
+struct GeoCodecsTransitLinkSection {
+    float _field1;
+    float _field2;
+};
+
+struct GeoCodecsVectorTileLaneInfo {
+    unsigned char _field1;
+    unsigned short _field2;
+};
+
+struct GeoCodecsVectorTilePoint {
+    float _field1;
+    float _field2;
+};
+
+struct GeoCodecsVectorTilePoint3D {
+    float _field1;
+    float _field2;
+    float _field3;
+};
+
+struct GeoCodecsVenueComponent {
+    unsigned long long _field1;
+    unsigned char _field2;
+    unsigned long long _field3;
+    unsigned long long _field4;
+    _Bool _field5;
+    unsigned long long _field6;
+    unsigned long long _field7;
+};
+
+struct GeoCodecsVenueLevel {
+    unsigned long long _field1;
+    int _field2;
+    _Bool _field3;
+    _Bool _field4;
+    unsigned long long _field5;
+    char *_field6;
+    char *_field7;
+    _Bool _field8;
+    float _field9;
+    unsigned long long _field10;
+    unsigned long long _field11;
+};
+
+struct GeoCodecsVertexPool {
+    unsigned char _field1;
+    struct GeoCodecsVectorTilePoint *_field2;
+    unsigned long long _field3;
+    float *_field4;
+    struct GeoCodecsRange *_field5;
+    unsigned long long _field6;
+    unsigned long long _field7;
+    struct GeoCodecsGhostPoint *_field8;
+    struct GeoCodecsRange *_field9;
 };
 
 struct GeoCoordinates {
@@ -431,12 +733,15 @@ struct GeoCoordinates {
     int _field3;
 };
 
-struct GeoPolyline {
-    struct shared_ptr<const std::__1::vector<zilch::GeoCoordinates, std::__1::allocator<zilch::GeoCoordinates>>> _field1;
-    int _field2;
+struct GeometryPathElement;
+
+struct HasBits<1> {
+    unsigned int _field1[1];
 };
 
-struct GeometryPathElement;
+struct InternalMetadata {
+    void *_field1;
+};
 
 struct Latitude {
     unsigned int _field1;
@@ -466,12 +771,12 @@ struct Matrix<float, 4, 1> {
 
 struct Message;
 
-struct Path<std::__1::shared_ptr<geo::MapEdge>> {
+struct Path<std::shared_ptr<geo::MapEdge>> {
     struct GeoCoordinates _field1;
     struct GeoCoordinates _field2;
-    struct vector<zilch::RoadPathElement<std::__1::shared_ptr<geo::MapEdge>>, std::__1::allocator<zilch::RoadPathElement<std::__1::shared_ptr<geo::MapEdge>>>> _field3;
-    struct vector<zilch::GeometryPathElement, std::__1::allocator<zilch::GeometryPathElement>> _field4;
-    struct vector<zilch::Path<std::__1::shared_ptr<geo::MapEdge>>::Entry, std::__1::allocator<zilch::Path<std::__1::shared_ptr<geo::MapEdge>>::Entry>> _field5;
+    struct vector<zilch::RoadPathElement<std::shared_ptr<geo::MapEdge>>, std::allocator<zilch::RoadPathElement<std::shared_ptr<geo::MapEdge>>>> _field3;
+    struct vector<zilch::GeometryPathElement, std::allocator<zilch::GeometryPathElement>> _field4;
+    struct vector<zilch::Path<std::shared_ptr<geo::MapEdge>>::Entry, std::allocator<zilch::Path<std::shared_ptr<geo::MapEdge>>::Entry>> _field5;
 };
 
 struct PolylineCoordinate {
@@ -479,41 +784,61 @@ struct PolylineCoordinate {
     float offset;
 };
 
+struct Rep;
+
+struct RepeatedPtrField<maps::path_codec::geo3::RoutingPathPoint> {
+    struct Arena *_field1;
+    int _field2;
+    int _field3;
+    struct Rep *_field4;
+};
+
 struct RequesterTileKeys;
 
-struct RoadPathElement<std::__1::shared_ptr<geo::MapEdge>> {
-    CDUnknownFunctionPointerType *_field1;
-    int _field2;
-    unsigned long long _field3;
-    shared_ptr_035a2da2 _field4;
-    struct GeoPolyline _field5;
-    int _field6;
+struct RoadNetworkPath<GEOPathMatcherRoadKey> {
+    double _field1;
+    double _field2;
+    struct vector<GEOPathMatcherRoadKey, std::allocator<GEOPathMatcherRoadKey>> _field3;
 };
 
 struct RouteMapMatchingSection {
     CDUnknownFunctionPointerType *_field1;
 };
 
-struct Sphere<float, 2, std::__1::enable_if<true, void>> {
+struct RoutingPathLeg {
+    CDUnknownFunctionPointerType *_field1;
+    struct InternalMetadata _field2;
+    struct HasBits<1> _field3;
+    struct CachedSize _field4;
+    struct RepeatedPtrField<maps::path_codec::geo3::RoutingPathPoint> _field5;
+    struct ArenaStringPtr _field6;
+};
+
+struct Sphere<float, 2, std::enable_if<true>> {
     Matrix_8746f91e _field1;
     float _field2;
+};
+
+struct TaggedPtr<std::string> {
+    void *_field1;
+};
+
+struct TileId {
+    unsigned long long tile_id_;
+    unsigned char zoom_;
 };
 
 struct Timestamp;
 
 struct TransitEdgePiece {
-    CDStruct_183601bc *_field1;
+    id _field1;
     unsigned long long _field2;
-    CDStruct_183601bc *_field3;
-    struct _retain_ptr<GEOFeature *, geo::_retain_GEOFeature, geo::_release_GEOFeature, geo::_hash_ptr, geo::_equal_ptr> {
-        CDUnknownFunctionPointerType *_field1;
-        CDStruct_183601bc *_field2;
-        struct _retain_GEOFeature _field3;
-        struct _release_GEOFeature _field4;
-    } _field4;
-    unsigned int _field5;
-    _Bool _field6;
+    id _field3;
+    unsigned int _field4;
+    _Bool _field5;
 };
+
+struct VectorTile;
 
 struct ZilchMapModel;
 
@@ -528,20 +853,20 @@ struct _GEOFlyoverKey {
     unsigned int textScale:8;
 };
 
-struct _GEOGenericContainer<_GEOTileKey, GEOTileData *, std::__1::hash<GEOTileKey>, std::__1::equal_to<GEOTileKey>, geo::GEOGenericContainerWeakReferenceTag, 0, 0, geo::GEOGenericContainerLockingTag, detail::_default_pointer_type> {
+struct _GEOGenericContainer<_GEOTileKey, GEOTileData *, std::hash<GEOTileKey>, std::equal_to<GEOTileKey>, geo::GEOGenericContainerWeakReferenceTag, 0, 0, geo::GEOGenericContainerLockingTag, detail::_default_pointer_type> {
     struct mutex _lock;
-    struct list<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, std::__1::allocator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>>> _list;
-    struct unordered_map<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>, std::__1::hash<GEOTileKey>, std::__1::equal_to<GEOTileKey>, std::__1::allocator<std::__1::pair<const _GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>>> _map;
+    struct list<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, std::allocator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>>> _list;
+    struct unordered_map<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>, std::hash<GEOTileKey>, std::equal_to<GEOTileKey>, std::allocator<std::pair<const _GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>>> _map;
     unsigned long long _maxCapacity;
     unsigned long long _maxCost;
     unsigned long long _currentCost;
     unsigned long long _currentCount;
 };
 
-struct _GEOGenericContainer<_GEOTileKey, id, std::__1::hash<GEOTileKey>, std::__1::equal_to<GEOTileKey>, geo::GEOGenericContainerWeakReferenceTag, 0, 0, geo::GEOGenericContainerLockingTag, detail::_default_pointer_type> {
+struct _GEOGenericContainer<_GEOTileKey, id, std::hash<GEOTileKey>, std::equal_to<GEOTileKey>, geo::GEOGenericContainerWeakReferenceTag, 0, 0, geo::GEOGenericContainerLockingTag, detail::_default_pointer_type> {
     struct mutex _lock;
-    struct list<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, std::__1::allocator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>>> _list;
-    struct unordered_map<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>, std::__1::hash<GEOTileKey>, std::__1::equal_to<GEOTileKey>, std::__1::allocator<std::__1::pair<const _GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>>> _map;
+    struct list<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, std::allocator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>>> _list;
+    struct unordered_map<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>, std::hash<GEOTileKey>, std::equal_to<GEOTileKey>, std::allocator<std::pair<const _GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>>> _map;
     unsigned long long _maxCapacity;
     unsigned long long _maxCost;
     unsigned long long _currentCost;
@@ -556,11 +881,11 @@ struct _GEOGloriaQuadIDTileKey {
 };
 
 struct _GEOIdentifiedResourceKey {
-    unsigned int identifier;
+    unsigned long long identifier;
     unsigned char levelOfDetail;
     unsigned char type;
-    unsigned int padding:64;
-    unsigned int padding2:8;
+    unsigned int supportsASTC:1;
+    unsigned int padding:39;
 };
 
 struct _GEOMuninMeshKey {
@@ -586,6 +911,22 @@ struct _GEORegionalResourceKey {
     unsigned int textScale:8;
     unsigned int forceRefetch:1;
     unsigned int padding:57;
+};
+
+struct _GEORiseTransitSetEvent {
+    double JD;
+    unsigned int type;
+};
+
+struct _GEOS2TileKey {
+    unsigned int z:6;
+    unsigned int x:26;
+    unsigned int y:26;
+    unsigned int f:3;
+    unsigned int type:14;
+    unsigned int pixelSize:4;
+    unsigned int textScale:4;
+    unsigned int padding:37;
 };
 
 struct _GEOSputnikMetadataKey {
@@ -623,6 +964,7 @@ struct _GEOTileKey {
         struct _GEOVisualLocalizationTrackKey visualLocalization;
         struct _GEOVisualLocalizationMetadataKey visualLocalizationMetadata;
         struct _GEOVisualLocalizationDataKey visualLocalizationData;
+        struct _GEOS2TileKey s2Tile;
     } ;
 };
 
@@ -632,7 +974,8 @@ struct _GEOTileOverlayKey {
     unsigned int y:26;
     unsigned int contentScale:8;
     unsigned int providerId:32;
-    unsigned int padding:22;
+    unsigned int keyframeIndex:16;
+    unsigned int padding:6;
 };
 
 struct _GEOTransitLineSelectionKey {
@@ -676,79 +1019,24 @@ struct _NSRange {
     unsigned long long length;
 };
 
-struct __hash_node_base<std::__1::__hash_node<GEORoadEdge, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<GEORoadEdge, void *>*> *__next_;
-};
-
-struct __hash_node_base<std::__1::__hash_node<_GEOTileKey, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<_GEOTileKey, void *>*> *__next_;
-};
-
-struct __hash_node_base<std::__1::__hash_node<geo::TransitEdgePiece, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<geo::TransitEdgePiece, void *>*> *__next_;
-};
-
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<CacheItem, void *>>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<CacheItem, void *>>, void *>*> *__next_;
-};
-
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>, void *>*> *__next_;
-};
-
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>, void *>*> *__next_;
-};
-
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, unsigned long>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, unsigned long>, void *>*> *__next_;
-};
-
-struct __list_iterator<LoadItem, void *> {
-    struct __list_node_base<LoadItem, void *> *_field1;
-};
-
-struct __list_node_base<CacheItem, void *> {
-    struct __list_node_base<CacheItem, void *> *__prev_;
-    struct __list_node_base<CacheItem, void *> *__next_;
-};
-
-struct __list_node_base<LoadItem, void *> {
-    struct __list_node_base<LoadItem, void *> *__prev_;
-    struct __list_node_base<LoadItem, void *> *__next_;
-};
-
-struct __list_node_base<_CacheRequester<void (^)(unsigned long long)>, void *> {
-    struct __list_node_base<_CacheRequester<void (^)(unsigned long long)>, void *> *__prev_;
-    struct __list_node_base<_CacheRequester<void (^)(unsigned long long)>, void *> *__next_;
-};
-
-struct __list_node_base<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *> {
-    struct __list_node_base<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *> *__prev_;
-    struct __list_node_base<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *> *__next_;
-};
-
-struct __list_node_base<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *> {
-    struct __list_node_base<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *> *__prev_;
-    struct __list_node_base<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *> *__next_;
-};
-
 struct __shared_weak_count;
-
-struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
-    struct __tree_node_base<void *> *__left_;
-};
 
 struct __wrap_iter<(anonymous namespace)::RequesterTileKeys *> {
     struct RequesterTileKeys *_field1;
+};
+
+struct atomic<int> {
+    struct __cxx_atomic_impl<int, std::__cxx_atomic_base_impl<int>> {
+        _Atomic int _field1;
+    } _field1;
 };
 
 struct atomic_flag {
     _Atomic _Bool _Value;
 };
 
-struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
-    struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__rep, std::__1::allocator<char>> {
+struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
+    struct __compressed_pair<std::basic_string<char>::__rep, std::allocator<char>> {
         struct __rep {
             union {
                 struct __long {
@@ -770,93 +1058,110 @@ struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>
     } _field1;
 };
 
-struct deque<ErrorInfo, std::__1::allocator<ErrorInfo>> {
-    struct __split_buffer<ErrorInfo *, std::__1::allocator<ErrorInfo *>> {
+struct deque<ErrorInfo, std::allocator<ErrorInfo>> {
+    struct __split_buffer<ErrorInfo *, std::allocator<ErrorInfo *>> {
         struct ErrorInfo **__first_;
         struct ErrorInfo **__begin_;
         struct ErrorInfo **__end_;
-        struct __compressed_pair<ErrorInfo **, std::__1::allocator<ErrorInfo *>> {
+        struct __compressed_pair<ErrorInfo **, std::allocator<ErrorInfo *>> {
             struct ErrorInfo **__value_;
         } __end_cap_;
     } __map_;
     unsigned long long __start_;
-    struct __compressed_pair<unsigned long, std::__1::allocator<ErrorInfo>> {
+    struct __compressed_pair<unsigned long, std::allocator<ErrorInfo>> {
         unsigned long long __value_;
     } __size_;
 };
 
-struct deque<GEORoadEdge, std::__1::allocator<GEORoadEdge>> {
-    struct __split_buffer<GEORoadEdge *, std::__1::allocator<GEORoadEdge *>> {
-        CDStruct_183601bc **__first_;
-        CDStruct_183601bc **__begin_;
-        CDStruct_183601bc **__end_;
-        struct __compressed_pair<GEORoadEdge **, std::__1::allocator<GEORoadEdge *>> {
-            CDStruct_183601bc **__value_;
+struct deque<GEORoadEdge *, std::allocator<GEORoadEdge *>> {
+    struct __split_buffer<GEORoadEdge *__strong *, std::allocator<GEORoadEdge *__strong *>> {
+        id **__first_;
+        id **__begin_;
+        id **__end_;
+        struct __compressed_pair<GEORoadEdge *__strong **, std::allocator<GEORoadEdge *__strong *>> {
+            id **__value_;
         } __end_cap_;
     } __map_;
     unsigned long long __start_;
-    struct __compressed_pair<unsigned long, std::__1::allocator<GEORoadEdge>> {
+    struct __compressed_pair<unsigned long, std::allocator<GEORoadEdge *>> {
         unsigned long long __value_;
     } __size_;
 };
 
-struct deque<geo::TransitEdgePiece, std::__1::allocator<geo::TransitEdgePiece>> {
-    struct __split_buffer<geo::TransitEdgePiece *, std::__1::allocator<geo::TransitEdgePiece *>> {
+struct deque<geo::TransitEdgePiece, std::allocator<geo::TransitEdgePiece>> {
+    struct __split_buffer<geo::TransitEdgePiece *, std::allocator<geo::TransitEdgePiece *>> {
         struct TransitEdgePiece **__first_;
         struct TransitEdgePiece **__begin_;
         struct TransitEdgePiece **__end_;
-        struct __compressed_pair<geo::TransitEdgePiece **, std::__1::allocator<geo::TransitEdgePiece *>> {
+        struct __compressed_pair<geo::TransitEdgePiece **, std::allocator<geo::TransitEdgePiece *>> {
             struct TransitEdgePiece **__value_;
         } __end_cap_;
     } __map_;
     unsigned long long __start_;
-    struct __compressed_pair<unsigned long, std::__1::allocator<geo::TransitEdgePiece>> {
+    struct __compressed_pair<unsigned long, std::allocator<geo::TransitEdgePiece>> {
         unsigned long long __value_;
     } __size_;
 };
 
-struct list<CacheItem, std::__1::allocator<CacheItem>> {
-    struct __list_node_base<CacheItem, void *> __end_;
-    struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<CacheItem, void *>>> {
+struct list<CacheItem, std::allocator<CacheItem>> {
+    struct __list_node_base<CacheItem, void *> {
+        void *__prev_;
+        void *__next_;
+    } __end_;
+    struct __compressed_pair<unsigned long, std::allocator<std::__list_node<CacheItem, void *>>> {
         unsigned long long __value_;
     } __size_alloc_;
 };
 
-struct list<LoadItem, std::__1::allocator<LoadItem>> {
-    struct __list_node_base<LoadItem, void *> __end_;
-    struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<LoadItem, void *>>> {
+struct list<LoadItem, std::allocator<LoadItem>> {
+    struct __list_node_base<LoadItem, void *> {
+        void *__prev_;
+        void *__next_;
+    } __end_;
+    struct __compressed_pair<unsigned long, std::allocator<std::__list_node<LoadItem, void *>>> {
         unsigned long long __value_;
     } __size_alloc_;
 };
 
-struct list<_CacheRequester<void (^)(unsigned long long)>, std::__1::allocator<_CacheRequester<void (^)(unsigned long long)>>> {
-    struct __list_node_base<_CacheRequester<void (^)(unsigned long long)>, void *> __end_;
-    struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<_CacheRequester<void (^)(unsigned long long)>, void *>>> {
+struct list<_CacheRequester<void (^)(unsigned long long)>, std::allocator<_CacheRequester<void (^)(unsigned long long)>>> {
+    struct __list_node_base<_CacheRequester<void (^)(unsigned long long)>, void *> {
+        void *__prev_;
+        void *__next_;
+    } __end_;
+    struct __compressed_pair<unsigned long, std::allocator<std::__list_node<_CacheRequester<void (^)(unsigned long long)>, void *>>> {
         unsigned long long __value_;
     } __size_alloc_;
 };
 
-struct list<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, std::__1::allocator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>>> {
-    struct __list_node_base<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *> __end_;
-    struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>> {
+struct list<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, std::allocator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>>> {
+    struct __list_node_base<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *> {
+        void *__prev_;
+        void *__next_;
+    } __end_;
+    struct __compressed_pair<unsigned long, std::allocator<std::__list_node<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>> {
         unsigned long long __value_;
     } __size_alloc_;
 };
 
-struct list<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, std::__1::allocator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>>> {
-    struct __list_node_base<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *> __end_;
-    struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>> {
+struct list<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, std::allocator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>>> {
+    struct __list_node_base<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *> {
+        void *__prev_;
+        void *__next_;
+    } __end_;
+    struct __compressed_pair<unsigned long, std::allocator<std::__list_node<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>> {
         unsigned long long __value_;
     } __size_alloc_;
 };
 
-struct map<unsigned int, _GEOAltitudeTriggerData, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, _GEOAltitudeTriggerData>>> {
-    struct __tree<std::__1::__value_type<unsigned int, _GEOAltitudeTriggerData>, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, _GEOAltitudeTriggerData>, std::__1::less<unsigned int>, true>, std::__1::allocator<std::__1::__value_type<unsigned int, _GEOAltitudeTriggerData>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned int, _GEOAltitudeTriggerData>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
+struct map<unsigned int, _GEOAltitudeTriggerData, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, _GEOAltitudeTriggerData>>> {
+    struct __tree<std::__value_type<unsigned int, _GEOAltitudeTriggerData>, std::__map_value_compare<unsigned int, std::__value_type<unsigned int, _GEOAltitudeTriggerData>, std::less<unsigned int>, true>, std::allocator<std::__value_type<unsigned int, _GEOAltitudeTriggerData>>> {
+        void *__begin_node_;
+        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<unsigned int, _GEOAltitudeTriggerData>, void *>>> {
+            struct __tree_end_node<std::__tree_node_base<void *>*> {
+                void *__left_;
+            } __value_;
         } __pair1_;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, _GEOAltitudeTriggerData>, std::__1::less<unsigned int>, true>> {
+        struct __compressed_pair<unsigned long, std::__map_value_compare<unsigned int, std::__value_type<unsigned int, _GEOAltitudeTriggerData>, std::less<unsigned int>, true>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
@@ -885,16 +1190,18 @@ struct os_unfair_recursive_lock_s {
     unsigned int ourl_count;
 };
 
-struct set<CAARiseTransitSetDetails2, _CAARiseTransitSetDetails2IsLessThan, std::__1::allocator<CAARiseTransitSetDetails2>> {
-    struct __tree<CAARiseTransitSetDetails2, _CAARiseTransitSetDetails2IsLessThan, std::__1::allocator<CAARiseTransitSetDetails2>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<CAARiseTransitSetDetails2, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
-        } __pair1_;
-        struct __compressed_pair<unsigned long, _CAARiseTransitSetDetails2IsLessThan> {
-            unsigned long long __value_;
-        } __pair3_;
-    } __tree_;
+struct pair<GEOLocationCoordinate3D, geo::PolylineCoordinate> {
+    struct {
+        double _field1;
+        double _field2;
+        double _field3;
+    } _field1;
+    struct PolylineCoordinate _field2;
+};
+
+struct shared_ptr<FeatureStyleAttributes> {
+    struct FeatureStyleAttributes *__ptr_;
+    struct __shared_weak_count *__cntrl_;
 };
 
 struct shared_ptr<addr_obj::AddressObject> {
@@ -902,8 +1209,8 @@ struct shared_ptr<addr_obj::AddressObject> {
     struct __shared_weak_count *__cntrl_;
 };
 
-struct shared_ptr<const std::__1::vector<zilch::GeoCoordinates, std::__1::allocator<zilch::GeoCoordinates>>> {
-    struct vector<zilch::GeoCoordinates, std::__1::allocator<zilch::GeoCoordinates>> *_field1;
+struct shared_ptr<const FeatureStyleAttributes> {
+    struct FeatureStyleAttributes *_field1;
     struct __shared_weak_count *_field2;
 };
 
@@ -929,6 +1236,11 @@ struct shared_ptr<geo::MapEdgeTransit> {
 
 struct shared_ptr<geo::MapNodeTransit> {
     struct MapNodeTransit *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+};
+
+struct shared_ptr<geo::codec::VectorTile> {
+    struct VectorTile *__ptr_;
     struct __shared_weak_count *__cntrl_;
 };
 
@@ -964,309 +1276,355 @@ struct sqlite3_module {
     CDUnknownFunctionPointerType _field24;
 };
 
-struct unique_ptr<geo::DispatchTimer, std::__1::default_delete<geo::DispatchTimer>> {
-    struct __compressed_pair<geo::DispatchTimer *, std::__1::default_delete<geo::DispatchTimer>> {
+struct timeval {
+    long long tv_sec;
+    int tv_usec;
+};
+
+struct unique_ptr<geo::DispatchTimer, std::default_delete<geo::DispatchTimer>> {
+    struct __compressed_pair<geo::DispatchTimer *, std::default_delete<geo::DispatchTimer>> {
         struct DispatchTimer *__value_;
     } __ptr_;
 };
 
-struct unique_ptr<geo::RouteMapMatchingSection, std::__1::default_delete<geo::RouteMapMatchingSection>> {
-    struct __compressed_pair<geo::RouteMapMatchingSection *, std::__1::default_delete<geo::RouteMapMatchingSection>> {
+struct unique_ptr<geo::RouteMapMatchingSection, std::default_delete<geo::RouteMapMatchingSection>> {
+    struct __compressed_pair<geo::RouteMapMatchingSection *, std::default_delete<geo::RouteMapMatchingSection>> {
         struct RouteMapMatchingSection *__value_;
     } __ptr_;
 };
 
-struct unique_ptr<geo::ZilchMapModel, std::__1::default_delete<geo::ZilchMapModel>> {
-    struct __compressed_pair<geo::ZilchMapModel *, std::__1::default_delete<geo::ZilchMapModel>> {
+struct unique_ptr<geo::ZilchMapModel, std::default_delete<geo::ZilchMapModel>> {
+    struct __compressed_pair<geo::ZilchMapModel *, std::default_delete<geo::ZilchMapModel>> {
         struct ZilchMapModel *__value_;
     } __ptr_;
 };
 
-struct unique_ptr<gloria::DB, std::__1::default_delete<gloria::DB>> {
-    struct __compressed_pair<gloria::DB *, std::__1::default_delete<gloria::DB>> {
+struct unique_ptr<gloria::DB, std::default_delete<gloria::DB>> {
+    struct __compressed_pair<gloria::DB *, std::default_delete<gloria::DB>> {
         struct DB *__value_;
     } __ptr_;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<GEORoadEdge, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<GEORoadEdge, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<GEORoadEdge, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<GEORoadEdge, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<GEORoadEdge, void *>*> **__value_;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<GEORoadEdge, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<GEORoadEdge, void *>*>*>> {
+struct unique_ptr<std::__hash_node_base<std::__hash_node<GEORoadEdge *, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<GEORoadEdge *, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<GEORoadEdge *, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<GEORoadEdge *, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<GEORoadEdge *, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<GEORoadEdge *, void *>*>*>> {
                 unsigned long long __value_;
             } __data_;
         } __value_;
     } __ptr_;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<_GEOTileKey, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<_GEOTileKey, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<_GEOTileKey, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<_GEOTileKey, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<_GEOTileKey, void *>*> **__value_;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<_GEOTileKey, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<_GEOTileKey, void *>*>*>> {
+struct unique_ptr<std::__hash_node_base<std::__hash_node<_GEOTileKey, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<_GEOTileKey, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<_GEOTileKey, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<_GEOTileKey, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<_GEOTileKey, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<_GEOTileKey, void *>*>*>> {
                 unsigned long long __value_;
             } __data_;
         } __value_;
     } __ptr_;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<geo::TransitEdgePiece, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<geo::TransitEdgePiece, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<geo::TransitEdgePiece, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<geo::TransitEdgePiece, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<geo::TransitEdgePiece, void *>*> **__value_;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<geo::TransitEdgePiece, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<geo::TransitEdgePiece, void *>*>*>> {
+struct unique_ptr<std::__hash_node_base<std::__hash_node<geo::TransitEdgePiece, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<geo::TransitEdgePiece, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<geo::TransitEdgePiece, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<geo::TransitEdgePiece, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<geo::TransitEdgePiece, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<geo::TransitEdgePiece, void *>*>*>> {
                 unsigned long long __value_;
             } __data_;
         } __value_;
     } __ptr_;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<CacheItem, void *>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<CacheItem, void *>>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<CacheItem, void *>>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<CacheItem, void *>>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<CacheItem, void *>>, void *>*> **__value_;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<CacheItem, void *>>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<CacheItem, void *>>, void *>*>*>> {
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<_GEOTileKey, std::__list_iterator<CacheItem, void *>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<_GEOTileKey, std::__list_iterator<CacheItem, void *>>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<_GEOTileKey, std::__list_iterator<CacheItem, void *>>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<_GEOTileKey, std::__list_iterator<CacheItem, void *>>, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<_GEOTileKey, std::__list_iterator<CacheItem, void *>>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<_GEOTileKey, std::__list_iterator<CacheItem, void *>>, void *>*>*>> {
                 unsigned long long __value_;
             } __data_;
         } __value_;
     } __ptr_;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>, void *>*> **__value_;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>, void *>*>*>> {
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>, void *>*>*>> {
                 unsigned long long __value_;
             } __data_;
         } __value_;
     } __ptr_;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>, void *>*> **__value_;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>, void *>*>*>> {
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>, void *>*>*>> {
                 unsigned long long __value_;
             } __data_;
         } __value_;
     } __ptr_;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, unsigned long>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, unsigned long>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, unsigned long>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, unsigned long>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, unsigned long>, void *>*> **__value_;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, unsigned long>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, unsigned long>, void *>*>*>> {
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned int, unsigned long>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned int, unsigned long>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned int, unsigned long>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned int, unsigned long>, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned int, unsigned long>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned int, unsigned long>, void *>*>*>> {
                 unsigned long long __value_;
             } __data_;
         } __value_;
     } __ptr_;
 };
 
-struct unordered_map<_GEOTileKey, std::__1::__list_iterator<CacheItem, void *>, hashkey, eqkey, std::__1::allocator<std::__1::pair<const _GEOTileKey, std::__1::__list_iterator<CacheItem, void *>>>> {
-    struct __hash_table<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<CacheItem, void *>>, std::__1::__unordered_map_hasher<_GEOTileKey, std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<CacheItem, void *>>, hashkey, true>, std::__1::__unordered_map_equal<_GEOTileKey, std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<CacheItem, void *>>, eqkey, true>, std::__1::allocator<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<CacheItem, void *>>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<CacheItem, void *>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<CacheItem, void *>>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<CacheItem, void *>>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<CacheItem, void *>>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<CacheItem, void *>>, void *>*> __value_;
+struct unordered_map<_GEOTileKey, std::__list_iterator<CacheItem, void *>, hashkey, eqkey, std::allocator<std::pair<const _GEOTileKey, std::__list_iterator<CacheItem, void *>>>> {
+    struct __hash_table<std::__hash_value_type<_GEOTileKey, std::__list_iterator<CacheItem, void *>>, std::__unordered_map_hasher<_GEOTileKey, std::__hash_value_type<_GEOTileKey, std::__list_iterator<CacheItem, void *>>, hashkey, eqkey, true>, std::__unordered_map_equal<_GEOTileKey, std::__hash_value_type<_GEOTileKey, std::__list_iterator<CacheItem, void *>>, eqkey, hashkey, true>, std::allocator<std::__hash_value_type<_GEOTileKey, std::__list_iterator<CacheItem, void *>>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<_GEOTileKey, std::__list_iterator<CacheItem, void *>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<_GEOTileKey, std::__list_iterator<CacheItem, void *>>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<_GEOTileKey, std::__list_iterator<CacheItem, void *>>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<_GEOTileKey, std::__list_iterator<CacheItem, void *>>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<_GEOTileKey, std::__list_iterator<CacheItem, void *>>, void *>*> {
+                void *__next_;
+            } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<_GEOTileKey, std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<CacheItem, void *>>, hashkey, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<_GEOTileKey, std::__hash_value_type<_GEOTileKey, std::__list_iterator<CacheItem, void *>>, hashkey, eqkey, true>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<_GEOTileKey, std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<CacheItem, void *>>, eqkey, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<_GEOTileKey, std::__hash_value_type<_GEOTileKey, std::__list_iterator<CacheItem, void *>>, eqkey, hashkey, true>> {
             float __value_;
         } __p3_;
     } __table_;
 };
 
-struct unordered_map<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>, std::__1::hash<GEOTileKey>, std::__1::equal_to<GEOTileKey>, std::__1::allocator<std::__1::pair<const _GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>>> {
-    struct __hash_table<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>, std::__1::__unordered_map_hasher<_GEOTileKey, std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>, std::__1::hash<GEOTileKey>, true>, std::__1::__unordered_map_equal<_GEOTileKey, std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>, std::__1::equal_to<GEOTileKey>, true>, std::__1::allocator<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>, void *>*> __value_;
+struct unordered_map<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>, std::hash<GEOTileKey>, std::equal_to<GEOTileKey>, std::allocator<std::pair<const _GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>>> {
+    struct __hash_table<std::__hash_value_type<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>, std::__unordered_map_hasher<_GEOTileKey, std::__hash_value_type<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>, std::hash<GEOTileKey>, std::equal_to<GEOTileKey>, true>, std::__unordered_map_equal<_GEOTileKey, std::__hash_value_type<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>, std::equal_to<GEOTileKey>, std::hash<GEOTileKey>, true>, std::allocator<std::__hash_value_type<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>, void *>*> {
+                void *__next_;
+            } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<_GEOTileKey, std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>, std::__1::hash<GEOTileKey>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<_GEOTileKey, std::__hash_value_type<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>, std::hash<GEOTileKey>, std::equal_to<GEOTileKey>, true>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<_GEOTileKey, std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>, std::__1::equal_to<GEOTileKey>, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<_GEOTileKey, std::__hash_value_type<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, GEOTileData *, _value_ptr>, void *>>, std::equal_to<GEOTileKey>, std::hash<GEOTileKey>, true>> {
             float __value_;
         } __p3_;
     } __table_;
 };
 
-struct unordered_map<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>, std::__1::hash<GEOTileKey>, std::__1::equal_to<GEOTileKey>, std::__1::allocator<std::__1::pair<const _GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>>> {
-    struct __hash_table<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>, std::__1::__unordered_map_hasher<_GEOTileKey, std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>, std::__1::hash<GEOTileKey>, true>, std::__1::__unordered_map_equal<_GEOTileKey, std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>, std::__1::equal_to<GEOTileKey>, true>, std::__1::allocator<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>, void *>*> __value_;
+struct unordered_map<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>, std::hash<GEOTileKey>, std::equal_to<GEOTileKey>, std::allocator<std::pair<const _GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>>> {
+    struct __hash_table<std::__hash_value_type<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>, std::__unordered_map_hasher<_GEOTileKey, std::__hash_value_type<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>, std::hash<GEOTileKey>, std::equal_to<GEOTileKey>, true>, std::__unordered_map_equal<_GEOTileKey, std::__hash_value_type<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>, std::equal_to<GEOTileKey>, std::hash<GEOTileKey>, true>, std::allocator<std::__hash_value_type<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>, void *>*> {
+                void *__next_;
+            } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<_GEOTileKey, std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>, std::__1::hash<GEOTileKey>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<_GEOTileKey, std::__hash_value_type<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>, std::hash<GEOTileKey>, std::equal_to<GEOTileKey>, true>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<_GEOTileKey, std::__1::__hash_value_type<_GEOTileKey, std::__1::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>, std::__1::equal_to<GEOTileKey>, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<_GEOTileKey, std::__hash_value_type<_GEOTileKey, std::__list_iterator<geo::detail::_CacheItem<_GEOTileKey, id, _value_ptr>, void *>>, std::equal_to<GEOTileKey>, std::hash<GEOTileKey>, true>> {
             float __value_;
         } __p3_;
     } __table_;
 };
 
-struct unordered_map<unsigned int, unsigned long, std::__1::hash<unsigned int>, std::__1::equal_to<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, unsigned long>>> {
-    struct __hash_table<std::__1::__hash_value_type<unsigned int, unsigned long>, std::__1::__unordered_map_hasher<unsigned int, std::__1::__hash_value_type<unsigned int, unsigned long>, std::__1::hash<unsigned int>, true>, std::__1::__unordered_map_equal<unsigned int, std::__1::__hash_value_type<unsigned int, unsigned long>, std::__1::equal_to<unsigned int>, true>, std::__1::allocator<std::__1::__hash_value_type<unsigned int, unsigned long>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, unsigned long>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, unsigned long>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, unsigned long>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, unsigned long>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, unsigned long>, void *>*> __value_;
+struct unordered_map<unsigned int, unsigned long, std::hash<unsigned int>, std::equal_to<unsigned int>, std::allocator<std::pair<const unsigned int, unsigned long>>> {
+    struct __hash_table<std::__hash_value_type<unsigned int, unsigned long>, std::__unordered_map_hasher<unsigned int, std::__hash_value_type<unsigned int, unsigned long>, std::hash<unsigned int>, std::equal_to<unsigned int>, true>, std::__unordered_map_equal<unsigned int, std::__hash_value_type<unsigned int, unsigned long>, std::equal_to<unsigned int>, std::hash<unsigned int>, true>, std::allocator<std::__hash_value_type<unsigned int, unsigned long>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned int, unsigned long>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned int, unsigned long>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned int, unsigned long>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<unsigned int, unsigned long>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<unsigned int, unsigned long>, void *>*> {
+                void *__next_;
+            } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<unsigned int, std::__1::__hash_value_type<unsigned int, unsigned long>, std::__1::hash<unsigned int>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<unsigned int, std::__hash_value_type<unsigned int, unsigned long>, std::hash<unsigned int>, std::equal_to<unsigned int>, true>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<unsigned int, std::__1::__hash_value_type<unsigned int, unsigned long>, std::__1::equal_to<unsigned int>, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<unsigned int, std::__hash_value_type<unsigned int, unsigned long>, std::equal_to<unsigned int>, std::hash<unsigned int>, true>> {
             float __value_;
         } __p3_;
     } __table_;
 };
 
-struct unordered_set<GEORoadEdge, std::__1::hash<GEORoadEdge>, std::__1::equal_to<GEORoadEdge>, std::__1::allocator<GEORoadEdge>> {
-    struct __hash_table<GEORoadEdge, std::__1::hash<GEORoadEdge>, std::__1::equal_to<GEORoadEdge>, std::__1::allocator<GEORoadEdge>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<GEORoadEdge, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<GEORoadEdge, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<GEORoadEdge, void *>*>, std::__1::allocator<std::__1::__hash_node<GEORoadEdge, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<GEORoadEdge, void *>*> __value_;
+struct unordered_set<GEORoadEdge *, std::hash<GEORoadEdge *>, std::equal_to<GEORoadEdge *>, std::allocator<GEORoadEdge *>> {
+    struct __hash_table<GEORoadEdge *, std::hash<GEORoadEdge *>, std::equal_to<GEORoadEdge *>, std::allocator<GEORoadEdge *>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<GEORoadEdge *, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<GEORoadEdge *, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<GEORoadEdge *, void *>*>, std::allocator<std::__hash_node<GEORoadEdge *, void *>>> {
+            struct __hash_node_base<std::__hash_node<GEORoadEdge *, void *>*> {
+                void *__next_;
+            } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::hash<GEORoadEdge>> {
+        struct __compressed_pair<unsigned long, std::hash<GEORoadEdge *>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__1::equal_to<GEORoadEdge>> {
+        struct __compressed_pair<float, std::equal_to<GEORoadEdge *>> {
             float __value_;
         } __p3_;
     } __table_;
 };
 
-struct unordered_set<_GEOTileKey, std::__1::hash<GEOTileKey>, std::__1::equal_to<GEOTileKey>, std::__1::allocator<_GEOTileKey>> {
-    struct __hash_table<_GEOTileKey, std::__1::hash<GEOTileKey>, std::__1::equal_to<GEOTileKey>, std::__1::allocator<_GEOTileKey>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<_GEOTileKey, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<_GEOTileKey, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<_GEOTileKey, void *>*>, std::__1::allocator<std::__1::__hash_node<_GEOTileKey, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<_GEOTileKey, void *>*> __value_;
+struct unordered_set<_GEOTileKey, std::hash<GEOTileKey>, std::equal_to<GEOTileKey>, std::allocator<_GEOTileKey>> {
+    struct __hash_table<_GEOTileKey, std::hash<GEOTileKey>, std::equal_to<GEOTileKey>, std::allocator<_GEOTileKey>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<_GEOTileKey, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<_GEOTileKey, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<_GEOTileKey, void *>*>, std::allocator<std::__hash_node<_GEOTileKey, void *>>> {
+            struct __hash_node_base<std::__hash_node<_GEOTileKey, void *>*> {
+                void *__next_;
+            } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::hash<GEOTileKey>> {
+        struct __compressed_pair<unsigned long, std::hash<GEOTileKey>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__1::equal_to<GEOTileKey>> {
+        struct __compressed_pair<float, std::equal_to<GEOTileKey>> {
             float __value_;
         } __p3_;
     } __table_;
 };
 
-struct unordered_set<geo::TransitEdgePiece, std::__1::hash<geo::TransitEdgePiece>, std::__1::equal_to<geo::TransitEdgePiece>, std::__1::allocator<geo::TransitEdgePiece>> {
-    struct __hash_table<geo::TransitEdgePiece, std::__1::hash<geo::TransitEdgePiece>, std::__1::equal_to<geo::TransitEdgePiece>, std::__1::allocator<geo::TransitEdgePiece>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<geo::TransitEdgePiece, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<geo::TransitEdgePiece, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<geo::TransitEdgePiece, void *>*>, std::__1::allocator<std::__1::__hash_node<geo::TransitEdgePiece, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<geo::TransitEdgePiece, void *>*> __value_;
+struct unordered_set<geo::TransitEdgePiece, std::hash<geo::TransitEdgePiece>, std::equal_to<geo::TransitEdgePiece>, std::allocator<geo::TransitEdgePiece>> {
+    struct __hash_table<geo::TransitEdgePiece, std::hash<geo::TransitEdgePiece>, std::equal_to<geo::TransitEdgePiece>, std::allocator<geo::TransitEdgePiece>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<geo::TransitEdgePiece, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<geo::TransitEdgePiece, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<geo::TransitEdgePiece, void *>*>, std::allocator<std::__hash_node<geo::TransitEdgePiece, void *>>> {
+            struct __hash_node_base<std::__hash_node<geo::TransitEdgePiece, void *>*> {
+                void *__next_;
+            } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::hash<geo::TransitEdgePiece>> {
+        struct __compressed_pair<unsigned long, std::hash<geo::TransitEdgePiece>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__1::equal_to<geo::TransitEdgePiece>> {
+        struct __compressed_pair<float, std::equal_to<geo::TransitEdgePiece>> {
             float __value_;
         } __p3_;
     } __table_;
 };
 
-struct vector<(anonymous namespace)::RequesterTileKeys, std::__1::allocator<(anonymous namespace)::RequesterTileKeys>> {
-    struct RequesterTileKeys *_field1;
-    struct RequesterTileKeys *_field2;
-    struct __compressed_pair<(anonymous namespace)::RequesterTileKeys *, std::__1::allocator<(anonymous namespace)::RequesterTileKeys>> {
-        struct RequesterTileKeys *_field1;
-    } _field3;
-};
-
-struct vector<(anonymous namespace)::Timestamp, std::__1::allocator<(anonymous namespace)::Timestamp>> {
+struct vector<(anonymous namespace)::Timestamp, std::allocator<(anonymous namespace)::Timestamp>> {
     struct Timestamp *__begin_;
     struct Timestamp *__end_;
-    struct __compressed_pair<(anonymous namespace)::Timestamp *, std::__1::allocator<(anonymous namespace)::Timestamp>> {
+    struct __compressed_pair<(anonymous namespace)::Timestamp *, std::allocator<(anonymous namespace)::Timestamp>> {
         struct Timestamp *__value_;
     } __end_cap_;
 };
 
-struct vector<GEOLocationCoordinate2D, std::__1::allocator<GEOLocationCoordinate2D>> {
+struct vector<GEOLocationCoordinate2D, std::allocator<GEOLocationCoordinate2D>> {
     CDStruct_183601bc *__begin_;
     CDStruct_183601bc *__end_;
-    struct __compressed_pair<GEOLocationCoordinate2D *, std::__1::allocator<GEOLocationCoordinate2D>> {
+    struct __compressed_pair<GEOLocationCoordinate2D *, std::allocator<GEOLocationCoordinate2D>> {
         CDStruct_183601bc *__value_;
     } __end_cap_;
 };
 
-struct vector<GEOPosition2f, std::__1::allocator<GEOPosition2f>> {
+struct vector<GEOLocationCoordinate3D, std::allocator<GEOLocationCoordinate3D>> {
     CDStruct_183601bc *__begin_;
     CDStruct_183601bc *__end_;
-    struct __compressed_pair<GEOPosition2f *, std::__1::allocator<GEOPosition2f>> {
+    struct __compressed_pair<GEOLocationCoordinate3D *, std::allocator<GEOLocationCoordinate3D>> {
         CDStruct_183601bc *__value_;
     } __end_cap_;
 };
 
-struct vector<geo::PolylineCoordinate, std::__1::allocator<geo::PolylineCoordinate>> {
+struct vector<GEOPathMatcherRoadKey, std::allocator<GEOPathMatcherRoadKey>> {
+    struct GEOPathMatcherRoadKey *_field1;
+    struct GEOPathMatcherRoadKey *_field2;
+    struct __compressed_pair<GEOPathMatcherRoadKey *, std::allocator<GEOPathMatcherRoadKey>> {
+        struct GEOPathMatcherRoadKey *_field1;
+    } _field3;
+};
+
+struct vector<GEOPolylineCoordinateRange, std::allocator<GEOPolylineCoordinateRange>> {
+    struct GEOPolylineCoordinateRange *__begin_;
+    struct GEOPolylineCoordinateRange *__end_;
+    struct __compressed_pair<GEOPolylineCoordinateRange *, std::allocator<GEOPolylineCoordinateRange>> {
+        struct GEOPolylineCoordinateRange *__value_;
+    } __end_cap_;
+};
+
+struct vector<GeoCodecsVectorTilePoint, std::allocator<GeoCodecsVectorTilePoint>> {
+    struct GeoCodecsVectorTilePoint *__begin_;
+    struct GeoCodecsVectorTilePoint *__end_;
+    struct __compressed_pair<GeoCodecsVectorTilePoint *, std::allocator<GeoCodecsVectorTilePoint>> {
+        struct GeoCodecsVectorTilePoint *__value_;
+    } __end_cap_;
+};
+
+struct vector<double, std::allocator<double>> {
+    double *__begin_;
+    double *__end_;
+    struct __compressed_pair<double *, std::allocator<double>> {
+        double *__value_;
+    } __end_cap_;
+};
+
+struct vector<geo::PolylineCoordinate, std::allocator<geo::PolylineCoordinate>> {
     struct PolylineCoordinate *__begin_;
     struct PolylineCoordinate *__end_;
-    struct __compressed_pair<geo::PolylineCoordinate *, std::__1::allocator<geo::PolylineCoordinate>> {
+    struct __compressed_pair<geo::PolylineCoordinate *, std::allocator<geo::PolylineCoordinate>> {
         struct PolylineCoordinate *__value_;
     } __end_cap_;
 };
 
-struct vector<unsigned char, std::__1::allocator<unsigned char>> {
-    char *__begin_;
-    char *__end_;
-    struct __compressed_pair<unsigned char *, std::__1::allocator<unsigned char>> {
-        char *__value_;
+struct vector<std::pair<GEOLocationCoordinate3D, geo::PolylineCoordinate>, std::allocator<std::pair<GEOLocationCoordinate3D, geo::PolylineCoordinate>>> {
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<std::pair<GEOLocationCoordinate3D, geo::PolylineCoordinate>*, std::allocator<std::pair<GEOLocationCoordinate3D, geo::PolylineCoordinate>>> {
+        void *__value_;
     } __end_cap_;
 };
 
-struct vector<zilch::GeoCoordinates, std::__1::allocator<zilch::GeoCoordinates>>;
+struct vector<zilch::ControlPoint, std::allocator<zilch::ControlPoint>> {
+    struct ControlPoint *__begin_;
+    struct ControlPoint *__end_;
+    struct __compressed_pair<zilch::ControlPoint *, std::allocator<zilch::ControlPoint>> {
+        struct ControlPoint *__value_;
+    } __end_cap_;
+};
 
-struct vector<zilch::GeometryPathElement, std::__1::allocator<zilch::GeometryPathElement>> {
+struct vector<zilch::GeometryPathElement, std::allocator<zilch::GeometryPathElement>> {
     struct GeometryPathElement *_field1;
     struct GeometryPathElement *_field2;
-    struct __compressed_pair<zilch::GeometryPathElement *, std::__1::allocator<zilch::GeometryPathElement>> {
+    struct __compressed_pair<zilch::GeometryPathElement *, std::allocator<zilch::GeometryPathElement>> {
         struct GeometryPathElement *_field1;
     } _field3;
 };
 
-struct vector<zilch::Path<std::__1::shared_ptr<geo::MapEdge>>::Entry, std::__1::allocator<zilch::Path<std::__1::shared_ptr<geo::MapEdge>>::Entry>> {
+struct vector<zilch::Path<std::shared_ptr<geo::MapEdge>>::Entry, std::allocator<zilch::Path<std::shared_ptr<geo::MapEdge>>::Entry>> {
     struct Entry *_field1;
     struct Entry *_field2;
-    struct __compressed_pair<zilch::Path<std::__1::shared_ptr<geo::MapEdge>>::Entry *, std::__1::allocator<zilch::Path<std::__1::shared_ptr<geo::MapEdge>>::Entry>> {
+    struct __compressed_pair<zilch::Path<std::shared_ptr<geo::MapEdge>>::Entry *, std::allocator<zilch::Path<std::shared_ptr<geo::MapEdge>>::Entry>> {
         struct Entry *_field1;
     } _field3;
 };
 
-struct vector<zilch::RoadPathElement<std::__1::shared_ptr<geo::MapEdge>>, std::__1::allocator<zilch::RoadPathElement<std::__1::shared_ptr<geo::MapEdge>>>> {
-    RoadPathElement_1a15aef6 *_field1;
-    RoadPathElement_1a15aef6 *_field2;
-    struct __compressed_pair<zilch::RoadPathElement<std::__1::shared_ptr<geo::MapEdge>>*, std::__1::allocator<zilch::RoadPathElement<std::__1::shared_ptr<geo::MapEdge>>>> {
-        RoadPathElement_1a15aef6 *_field1;
+struct vector<zilch::RoadPathElement<std::shared_ptr<geo::MapEdge>>, std::allocator<zilch::RoadPathElement<std::shared_ptr<geo::MapEdge>>>> {
+    void *_field1;
+    void *_field2;
+    struct __compressed_pair<zilch::RoadPathElement<std::shared_ptr<geo::MapEdge>>*, std::allocator<zilch::RoadPathElement<std::shared_ptr<geo::MapEdge>>>> {
+        void *_field1;
     } _field3;
 };
 
+#if 0
+// Names with conflicting types:
+typedef struct {
+    CDStruct_3f2a7a20 _field1;
+    CDStruct_3f2a7a20 _field2;
+} GEOPolylineCoordinateRange_38d3edb7;
+
+typedef struct {
+    CDStruct_3f2a7a20 start;
+    CDStruct_3f2a7a20 end;
+} GEOPolylineCoordinateRange_482ebfc6;
+
+typedef struct {
+    struct PolylineCoordinate _field1;
+    struct PolylineCoordinate _field2;
+} GEOPolylineCoordinateRange_3ad5eabb;
+
+#endif
+
 #pragma mark Typedef'd Structures
-
-typedef struct {
-    id _field1;
-    char *_field2;
-    unsigned long long _field3;
-    unsigned long long _field4;
-    unsigned long long _field5;
-    unsigned long long _field6;
-    unsigned int _field7;
-    unsigned long long _field8;
-    _Bool _field9;
-    unsigned long long _field10;
-    float _field11;
-    unsigned long long _field12;
-    id _field13;
-    int _field14;
-} CDStruct_58d0ca89;
-
-typedef struct {
-    unsigned char _field1;
-    float _field2;
-} CDStruct_1c2d31f2;
 
 typedef struct {
     unsigned int _field1;
@@ -1276,50 +1634,14 @@ typedef struct {
 } CDStruct_7523a67d;
 
 typedef struct {
-    unsigned int _field1;
-    unsigned int _field2;
-    unsigned int _field3;
-} CDStruct_32a7f38a;
-
-typedef struct {
-    unsigned int _field1;
-    unsigned int _field2;
-} CDStruct_c0454aff;
-
-typedef struct {
-    unsigned int _field1;
-    unsigned long long _field2;
-} CDStruct_d008d4b8;
-
-typedef struct {
     unsigned int identifier;
     void *metadata;
 } CDStruct_065526f1;
 
 typedef struct {
-    unsigned int _field1;
-    double _field2;
-} CDStruct_e4886f83;
-
-typedef struct {
     unsigned int index;
     float offset;
 } CDStruct_3f2a7a20;
-
-typedef struct {
-    unsigned int _field1;
-    int _field2;
-} CDStruct_1e94be47;
-
-typedef struct {
-    unsigned long long _field1;
-    unsigned char _field2;
-    unsigned long long _field3;
-    unsigned long long _field4;
-    _Bool _field5;
-    unsigned long long _field6;
-    unsigned long long _field7;
-} CDStruct_2faeb20b;
 
 typedef struct {
     unsigned long long stopID;
@@ -1333,30 +1655,6 @@ typedef struct {
     unsigned long long *_field3;
     unsigned long long _field4[5];
 } CDStruct_70511ce9;
-
-typedef struct {
-    unsigned long long _field1;
-    long long _field2;
-    _Bool _field3;
-    _Bool _field4;
-    unsigned long long _field5;
-    char *_field6;
-    char *_field7;
-    unsigned long long _field8;
-    unsigned long long _field9;
-} CDStruct_9d4f1c73;
-
-typedef struct {
-    unsigned short _field1;
-    unsigned short _field2;
-    float _field3;
-    char _field4;
-    unsigned char _field5;
-} CDStruct_da7bd76e;
-
-typedef struct {
-    unsigned short _field1;
-} CDStruct_f6a177db;
 
 typedef struct {
     unsigned int *list;
@@ -1375,12 +1673,6 @@ typedef struct {
     unsigned long long _field2;
     unsigned long long _field3;
 } CDStruct_8bf61218;
-
-typedef struct {
-    char *_field1;
-    char *_field2;
-    unsigned int _field3;
-} CDStruct_29923528;
 
 typedef struct {
     double *list;
@@ -1407,82 +1699,16 @@ typedef struct {
 } CDStruct_5df41632;
 
 typedef struct {
-    float _field1;
-    float _field2;
-    float _field3;
-} CDStruct_869f9c67;
-
-typedef struct {
     float x;
     float y;
 } CDStruct_6e3f967a;
 
-typedef struct CDStruct_183601bc;
-
 typedef struct {
-    id _field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    struct _NSRange _field4;
-    CDStruct_183601bc *_field5;
-    CDStruct_183601bc *_field6;
-    unsigned long long _field7;
-    unsigned long long _field8;
-    struct _NSRange _field9;
-    struct _NSRange _field10;
-    _Bool _field11;
-    struct _NSRange _field12;
-    struct _NSRange _field13;
-    struct _NSRange _field14[2];
-    struct _NSRange _field15[2];
-} CDStruct_32d7d945;
-
-typedef struct {
-    unsigned char _field1;
-    unsigned char _field2;
-    unsigned char _field3;
-    _Bool _field4;
-    unsigned char _field5;
-    _Bool _field6;
-    CDStruct_6e3f967a _field7;
-} CDStruct_d2cf4d6c;
-
-typedef struct {
-    unsigned char _field1;
-    CDStruct_183601bc *_field2;
-    unsigned long long _field3;
-    float *_field4;
-    struct _NSRange *_field5;
-    unsigned long long _field6;
-    unsigned long long _field7;
-    CDStruct_183601bc *_field8;
-    struct _NSRange *_field9;
-} CDStruct_9df870a8;
-
-typedef struct {
-    unsigned char _field1;
-    CDStruct_183601bc *_field2;
-    unsigned long long _field3;
-    float *_field4;
-    struct _NSRange *_field5;
-    unsigned long long _field6;
-} CDStruct_3cfc3106;
-
-typedef struct {
-    unsigned int _field1;
-    unsigned int _field2;
-    CDStruct_183601bc *_field3;
-} CDStruct_3b01f0aa;
-
-typedef struct {
-    CDStruct_183601bc *_field1;
+    int _field1;
     unsigned long long _field2;
-    unsigned long long _field3;
-    unsigned long long _field4;
-    unsigned long long _field5;
-    CDStruct_183601bc *_field6;
-    CDStruct_183601bc *_field7;
-} CDStruct_91f75a7f;
+} CDStruct_fca5f1f5;
+
+typedef struct CDStruct_183601bc;
 
 typedef struct {
     int type;
@@ -1494,63 +1720,8 @@ typedef struct {
 } CDStruct_d1a7ebee;
 
 typedef struct {
-    CDStruct_58d0ca89 _field1;
-    unsigned char _field2;
-    unsigned char _field3;
-    unsigned char _field4;
-    unsigned char _field5;
-    unsigned int _field6;
-    float _field7;
-    unsigned int _field8;
-    unsigned int _field9;
-    unsigned int _field10;
-} CDStruct_5be08681;
-
-typedef struct {
-    CDStruct_58d0ca89 _field1;
-    char *_field2;
-    unsigned long long _field3;
-} CDStruct_2da3f85a;
-
-typedef struct {
-    CDStruct_58d0ca89 _field1;
-    CDStruct_6e3f967a _field2;
-    float _field3;
-    float _field4;
-    float _field5;
-    CDStruct_6e3f967a _field6;
-    unsigned long long _field7;
-    unsigned long long _field8;
-    unsigned long long _field9;
-    unsigned long long _field10;
-    short _field11;
-    short _field12;
-    unsigned char _field13;
-    float _field14;
-    float _field15;
-    unsigned int _field16;
-    unsigned int _field17;
-    unsigned int _field18;
-    unsigned int _field19;
-    unsigned char _field20;
-    unsigned char _field21;
-    unsigned char _field22;
-    unsigned char _field23;
-    _Bool _field24;
-    _Bool _field25;
-    _Bool _field26;
-    _Bool _field27;
-    _Bool _field28;
-    _Bool _field29;
-    _Bool _field30;
-    _Bool _field31;
-} CDStruct_bc8de1a2;
-
-typedef struct {
-    CDStruct_58d0ca89 _field1;
-    struct _NSRange _field2;
-    float _field3;
-} CDStruct_36ada299;
+    CDStruct_065526f1 _field1;
+} CDStruct_d6563f51;
 
 typedef struct {
     CDStruct_31142d93 origin;
@@ -1562,165 +1733,11 @@ typedef struct {
 } CDStruct_953f3dc7;
 
 typedef struct {
-    struct _NSRange _field1;
-    unsigned long long _field2;
-    id _field3;
-    unsigned long long _field4;
-    unsigned long long _field5;
-    char *_field6;
-    unsigned int _field7;
-} CDStruct_8f1ffc8e;
-
-typedef struct {
-    CDStruct_7523a67d _field1;
-    struct {
-        unsigned int _field1;
-        int _field2;
-        float _field3;
-        _Bool _field4;
-        _Bool _field5;
-        _Bool _field6;
-        _Bool _field7;
-        _Bool _field8;
-        struct {
-            unsigned char _field1;
-            unsigned short _field2;
-        } _field9[16];
-    } _field2;
-} CDStruct_db2bd8f2;
-
-typedef struct {
-    CDStruct_bc8de1a2 _field1;
-    unsigned long long _field2;
-    unsigned char _field3;
-    float _field4;
-    unsigned short _field5;
-    float _field6;
-} CDStruct_bc67eba8;
-
-typedef struct {
-    unsigned char _field1;
-    unsigned char _field2;
-    unsigned char _field3;
-    unsigned char _field4;
-    union {
-        struct {
-            unsigned int _field1;
-            float _field2;
-            float _field3;
-            unsigned char _field4;
-            unsigned char _field5;
-        } _field1;
-        struct {
-            unsigned int _field1;
-        } _field2;
-        struct {
-            unsigned int _field1;
-            CDStruct_1c2d31f2 _field2;
-            CDStruct_1c2d31f2 _field3;
-        } _field3;
-    } _field5;
-    float _field6;
-    float _field7;
-} CDStruct_361566eb;
-
-typedef struct {
-    CDStruct_58d0ca89 _field1;
-    unsigned long long _field2;
-    unsigned long long _field3;
-    int _field4;
-    int _field5;
-    int _field6;
-    unsigned long long _field7;
-    unsigned long long _field8;
-    unsigned int _field9;
-    unsigned int _field10;
-    union {
-        struct {
-            CDStruct_6e3f967a _field1;
-            CDStruct_6e3f967a _field2;
-        } _field1;
-        struct {
-            float _field1;
-            float _field2;
-            float _field3;
-            float _field4;
-        } _field2;
-    } _field11;
-    CDStruct_183601bc *_field12;
-    struct {
-        unsigned short _field1[2];
-        unsigned short _field2[2];
-    } _field13;
-    unsigned char _field14;
-    _Bool _field15;
-    unsigned char _field16;
-    _Bool _field17;
-    _Bool _field18;
-    unsigned char _field19;
-    _Bool _field20;
-    unsigned short _field21;
-    struct _NSRange _field22;
-    _Bool _field23;
-    unsigned int _field24;
-} CDStruct_4da79865;
-
-typedef struct {
-    CDStruct_4da79865 _field1;
-    unsigned long long _field2;
-    unsigned long long _field3;
-    _Bool _field4;
-    _Bool _field5;
-} CDStruct_1d944ba4;
-
-typedef struct {
-    CDStruct_4da79865 _field1;
-    unsigned long long _field2;
-    unsigned long long _field3;
-    short _field4;
-    CDStruct_6e3f967a _field5;
-    unsigned long long _field6;
-} CDStruct_86707bff;
-
-typedef struct {
-    CDStruct_4da79865 _field1;
-    unsigned long long _field2;
-    CDStruct_6e3f967a _field3;
-    char *_field4;
-    char *_field5;
-} CDStruct_a4572dce;
-
-typedef struct {
-    CDStruct_4da79865 _field1;
-    CDStruct_6e3f967a _field2;
-    _Bool _field3;
-    _Bool _field4;
-    unsigned char _field5;
-    unsigned long long _field6;
-    unsigned long long _field7;
-    CDStruct_6e3f967a _field8;
-    unsigned long long _field9;
-} CDStruct_bf4ccc58;
+    CDUnion_23a7df3d _field1;
+    double _field2;
+} CDStruct_61711f31;
 
 // Ambiguous groups
-typedef struct {
-    unsigned int has_connectEnd:1;
-    unsigned int has_connectStart:1;
-    unsigned int has_domainLookupEnd:1;
-    unsigned int has_domainLookupStart:1;
-    unsigned int has_fetchStart:1;
-    unsigned int has_requestEnd:1;
-    unsigned int has_requestStart:1;
-    unsigned int has_responseEnd:1;
-    unsigned int has_responseStart:1;
-    unsigned int has_secureConnectEnd:1;
-    unsigned int has_secureConnectStart:1;
-    unsigned int has_protocolName:1;
-    unsigned int has_resourceFetchType:1;
-    unsigned int has_proxyConnection:1;
-    unsigned int has_reusedConnection:1;
-} CDStruct_60b58840;
-
 typedef struct {
     unsigned int has_junctionType:1;
     unsigned int has_maneuverType:1;
@@ -1750,15 +1767,6 @@ typedef struct {
 } CDStruct_f55cf389;
 
 typedef struct {
-    unsigned int has_navigationAudioFeedback:1;
-    unsigned int has_durationOfTrip:1;
-    unsigned int has_arrivedAtDestination:1;
-    unsigned int read_directionsFeedbacks:1;
-    unsigned int read_finalLocation:1;
-    unsigned int wrote_anyField:1;
-} CDStruct_8bb9be38;
-
-typedef struct {
     unsigned int has_operatingHoursRange:1;
     unsigned int has_includeRealTimeDepartures:1;
     unsigned int read_unknownFields:1;
@@ -1774,14 +1782,6 @@ typedef struct {
     unsigned int read_filterKeyword:1;
     unsigned int wrote_anyField:1;
 } CDStruct_85060554;
-
-typedef struct {
-    unsigned int has_timestamp:1;
-    unsigned int read_bundleIdentifier:1;
-    unsigned int read_destination:1;
-    unsigned int read_source:1;
-    unsigned int wrote_anyField:1;
-} CDStruct_2aceabc6;
 
 typedef struct {
     unsigned int read_index:1;
@@ -1814,6 +1814,20 @@ typedef struct {
 } CDStruct_e664d718;
 
 typedef struct {
+    unsigned int has_type:1;
+    unsigned int read_contents:1;
+    unsigned int read_metadata:1;
+    unsigned int wrote_anyField:1;
+} CDStruct_08ef82c2;
+
+typedef struct {
+    unsigned int read_addeds:1;
+    unsigned int read_originals:1;
+    unsigned int read_removeds:1;
+    unsigned int wrote_anyField:1;
+} CDStruct_c0dca870;
+
+typedef struct {
     unsigned int read_powerTypes:1;
     unsigned int read_regions:1;
     unsigned int read_vehicleTypes:1;
@@ -1835,17 +1849,16 @@ typedef struct {
 } CDStruct_9fa62941;
 
 typedef struct {
-    unsigned int read_unknownFields:1;
-    unsigned int read_text:1;
-    unsigned int read_title:1;
-    unsigned int wrote_anyField:1;
-} CDStruct_e54d7a96;
-
-typedef struct {
     unsigned int has_x:1;
     unsigned int has_y:1;
     unsigned int has_z:1;
 } CDStruct_ad44f281;
+
+typedef struct {
+    unsigned int read_edited:1;
+    unsigned int read_original:1;
+    unsigned int wrote_anyField:1;
+} CDStruct_c5c608f9;
 
 typedef struct {
     unsigned int :1;
@@ -1864,9 +1877,9 @@ typedef struct {
 } CDStruct_2d9f5d20;
 
 typedef struct {
-    unsigned int has_count:1;
-    unsigned int has_type:1;
-} CDStruct_dd28a305;
+    unsigned int has_edited:1;
+    unsigned int has_original:1;
+} CDStruct_ccf110de;
 
 typedef struct {
     unsigned int has_height:1;
@@ -1884,10 +1897,6 @@ typedef struct {
 } CDStruct_d7010776;
 
 typedef struct {
-    unsigned int has_action:1;
-} CDStruct_6f2d9b33;
-
-typedef struct {
     unsigned int has_correctionType:1;
 } CDStruct_ef3e2236;
 
@@ -1900,16 +1909,16 @@ typedef struct {
 } CDStruct_7c00b98a;
 
 typedef struct {
+    unsigned int has_muid:1;
+} CDStruct_26a2534e;
+
+typedef struct {
     unsigned int has_score:1;
 } CDStruct_f58e6c32;
 
 typedef struct {
     unsigned int has_statusCode:1;
 } CDStruct_ade9d5f7;
-
-typedef struct {
-    unsigned int has_travelTime:1;
-} CDStruct_b5054928;
 
 typedef struct {
     unsigned int has_type:1;
@@ -1924,6 +1933,12 @@ typedef struct {
     double _field2;
     double _field3;
 } CDStruct_39925896;
+
+typedef struct {
+    double latitude;
+    double longitude;
+    double altitude;
+} CDStruct_071ac149;
 
 typedef struct {
     double x;
@@ -1988,38 +2003,31 @@ typedef struct Matrix<float, 2, 1> {
     float _e[2];
 } Matrix_8746f91e;
 
-typedef struct Path<std::__1::shared_ptr<geo::MapEdge>> {
+typedef struct Path<std::shared_ptr<geo::MapEdge>> {
     struct GeoCoordinates _field1;
     struct GeoCoordinates _field2;
-    struct vector<zilch::RoadPathElement<std::__1::shared_ptr<geo::MapEdge>>, std::__1::allocator<zilch::RoadPathElement<std::__1::shared_ptr<geo::MapEdge>>>> _field3;
-    struct vector<zilch::GeometryPathElement, std::__1::allocator<zilch::GeometryPathElement>> _field4;
-    struct vector<zilch::Path<std::__1::shared_ptr<geo::MapEdge>>::Entry, std::__1::allocator<zilch::Path<std::__1::shared_ptr<geo::MapEdge>>::Entry>> _field5;
-} Path_7969893c;
+    struct vector<zilch::RoadPathElement<std::shared_ptr<geo::MapEdge>>, std::allocator<zilch::RoadPathElement<std::shared_ptr<geo::MapEdge>>>> _field3;
+    struct vector<zilch::GeometryPathElement, std::allocator<zilch::GeometryPathElement>> _field4;
+    struct vector<zilch::Path<std::shared_ptr<geo::MapEdge>>::Entry, std::allocator<zilch::Path<std::shared_ptr<geo::MapEdge>>::Entry>> _field5;
+} Path_3f73a495;
 
-typedef struct RoadPathElement<std::__1::shared_ptr<geo::MapEdge>> {
-    CDUnknownFunctionPointerType *_field1;
-    int _field2;
-    unsigned long long _field3;
-    shared_ptr_035a2da2 _field4;
-    struct GeoPolyline _field5;
-    int _field6;
-} RoadPathElement_1a15aef6;
+typedef struct RoadNetworkPath<GEOPathMatcherRoadKey> {
+    double _field1;
+    double _field2;
+    struct vector<GEOPathMatcherRoadKey, std::allocator<GEOPathMatcherRoadKey>> _field3;
+} RoadNetworkPath_17a82ac0;
 
-typedef struct Sphere<float, 2, std::__1::enable_if<true, void>> {
+typedef struct Sphere<float, 2, std::enable_if<true>> {
     Matrix_8746f91e _field1;
     float _field2;
-} Sphere_37dc312c;
-
-typedef struct __list_iterator<LoadItem, void *> {
-    struct __list_node_base<LoadItem, void *> *_field1;
-} __list_iterator_aef25af4;
+} Sphere_67aef8b0;
 
 typedef struct __wrap_iter<(anonymous namespace)::RequesterTileKeys *> {
     struct RequesterTileKeys *_field1;
 } __wrap_iter_9a08789a;
 
-typedef struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
-    struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__rep, std::__1::allocator<char>> {
+typedef struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
+    struct __compressed_pair<std::basic_string<char>::__rep, std::allocator<char>> {
         struct __rep {
             union {
                 struct __long {
@@ -2039,7 +2047,26 @@ typedef struct basic_string<char, std::__1::char_traits<char>, std::__1::allocat
             } _field1;
         } _field1;
     } _field1;
-} basic_string_7c0a1c0b;
+} basic_string_05660eb3;
+
+typedef struct pair<GEOLocationCoordinate3D, geo::PolylineCoordinate> {
+    struct {
+        double _field1;
+        double _field2;
+        double _field3;
+    } _field1;
+    struct PolylineCoordinate _field2;
+} pair_cb14b7b7;
+
+typedef struct shared_ptr<FeatureStyleAttributes> {
+    struct FeatureStyleAttributes *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+} shared_ptr_659eff70;
+
+typedef struct shared_ptr<const FeatureStyleAttributes> {
+    struct FeatureStyleAttributes *_field1;
+    struct __shared_weak_count *_field2;
+} shared_ptr_82272e24;
 
 typedef struct shared_ptr<geo::MapAccessPointFeature> {
     struct MapAccessPointFeature *__ptr_;
@@ -2066,35 +2093,30 @@ typedef struct shared_ptr<geo::MapNodeTransit> {
     struct __shared_weak_count *__cntrl_;
 } shared_ptr_52e51bdf;
 
+typedef struct shared_ptr<geo::codec::VectorTile> {
+    struct VectorTile *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+} shared_ptr_07a3cc42;
+
 typedef struct shared_ptr<zilch::Message> {
     struct Message *__ptr_;
     struct __shared_weak_count *__cntrl_;
 } shared_ptr_27244a92;
 
-typedef struct unordered_set<_GEOTileKey, std::__1::hash<GEOTileKey>, std::__1::equal_to<GEOTileKey>, std::__1::allocator<_GEOTileKey>> {
-    struct __hash_table<_GEOTileKey, std::__1::hash<GEOTileKey>, std::__1::equal_to<GEOTileKey>, std::__1::allocator<_GEOTileKey>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<_GEOTileKey, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<_GEOTileKey, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<_GEOTileKey, void *>*>, std::__1::allocator<std::__1::__hash_node<_GEOTileKey, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<_GEOTileKey, void *>*> __value_;
-        } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::hash<GEOTileKey>> {
-            unsigned long long __value_;
-        } __p2_;
-        struct __compressed_pair<float, std::__1::equal_to<GEOTileKey>> {
-            float __value_;
-        } __p3_;
-    } __table_;
-} unordered_set_684af1c2;
-
-typedef struct vector<(anonymous namespace)::RequesterTileKeys, std::__1::allocator<(anonymous namespace)::RequesterTileKeys>> {
-    struct RequesterTileKeys *_field1;
-    struct RequesterTileKeys *_field2;
-    struct __compressed_pair<(anonymous namespace)::RequesterTileKeys *, std::__1::allocator<(anonymous namespace)::RequesterTileKeys>> {
-        struct RequesterTileKeys *_field1;
-    } _field3;
-} vector_49336e52;
-
 #pragma mark Named Unions
+
+union GeoCodecsVectorTileRect {
+    struct {
+        struct GeoCodecsVectorTilePoint _field1;
+        struct GeoCodecsVectorTilePoint _field2;
+    } _field1;
+    struct {
+        float _field1;
+        float _field2;
+        float _field3;
+        float _field4;
+    } _field2;
+};
 
 union _GEOPlaceDataComponentKey {
     struct {
@@ -2105,4 +2127,24 @@ union _GEOPlaceDataComponentKey {
     } _field1;
     CDStruct_7523a67d _field2;
 };
+
+#pragma mark Typedef'd Unions
+
+typedef union {
+    unsigned int value;
+    struct {
+        unsigned int type:8;
+        union {
+            struct {
+                unsigned int style:14;
+                unsigned int size:4;
+                unsigned int scale:4;
+            } standard;
+            struct {
+                unsigned int style:8;
+                unsigned int region:16;
+            } flyoverRegion;
+        } ;
+    } structured;
+} CDUnion_23a7df3d;
 

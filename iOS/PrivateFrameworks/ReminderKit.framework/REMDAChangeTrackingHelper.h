@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSString, REMChangeSet, REMChangeToken, REMChangeTracking, REMChangeTrackingState, REMObjectID, REMStore;
+@class NSArray, NSMutableDictionary, NSString, REMChangeSet, REMChangeToken, REMChangeTracking, REMChangeTrackingState, REMObjectID, REMStore;
 @protocol REMDAAccountProviding;
 
 @interface REMDAChangeTrackingHelper : NSObject
 {
-    NSString *_entityName;
+    NSArray *_entityNames;
     NSString *_clientName;
     id <REMDAAccountProviding> _account;
     REMChangeSet *_changeSet;
@@ -40,7 +40,7 @@
 @property(retain, nonatomic) REMChangeSet *changeSet; // @synthesize changeSet=_changeSet;
 @property(readonly, nonatomic) id <REMDAAccountProviding> account; // @synthesize account=_account;
 @property(retain, nonatomic) NSString *clientName; // @synthesize clientName=_clientName;
-@property(retain, nonatomic) NSString *entityName; // @synthesize entityName=_entityName;
+@property(retain, nonatomic) NSArray *entityNames; // @synthesize entityNames=_entityNames;
 - (id)_rem_accountObjectID;
 - (id)_rem_changeTracking:(id)arg1;
 - (void)clearCachedModelObjectResultsForModelClass:(Class)arg1;
@@ -48,9 +48,9 @@
 - (id)_cachedModeObjectResultsForModelClass:(Class)arg1 changeType:(long long)arg2;
 - (long long)_changeTypeMaskFromChangeType:(long long)arg1;
 - (id)_fetchModelObjectsOfClass:(Class)arg1 withObjectIDs:(id)arg2;
-- (id)_fetchModelObjectOfClass:(Class)arg1 withObjectID:(id)arg2 includeLazyDeleteObjects:(_Bool)arg3;
-- (void)_handleLazyDeletionChange:(id)arg1 ofModelClass:(Class)arg2 forClientID:(id)arg3 deleteHandler:(CDUnknownBlockType)arg4 undeleteHandler:(CDUnknownBlockType)arg5;
-- (id)_changedModelObjectsOfClass:(Class)arg1 ofChangeTypes:(long long)arg2;
+- (id)_fetchModelObjectOfClass:(Class)arg1 withObjectID:(id)arg2 includeConcealedObjects:(_Bool)arg3;
+- (void)_handleIsConcealedUpdatesInChange:(id)arg1 ofModelClass:(Class)arg2 forClientID:(id)arg3 concealedHandler:(CDUnknownBlockType)arg4 unconcealedHandler:(CDUnknownBlockType)arg5;
+- (id)_changedModelObjectsOfClass:(Class)arg1 ofChangeTypes:(long long)arg2 shouldOutputFetchedModels:(_Bool)arg3;
 - (id)changedIdentifiersOfModelClass:(Class)arg1 ofChangeType:(long long)arg2;
 - (id)changedModelObjectsOfModelClass:(Class)arg1 ofChangeType:(long long)arg2;
 - (void)markChangesConsumed:(_Bool)arg1;
@@ -59,7 +59,7 @@
 - (_Bool)compareCurrentChangeTokenToLastConsumedWithResult:(long long *)arg1 error:(id *)arg2;
 - (id)fetchAndInitializeChangeTrackingStateIfNeeded;
 - (id)currentChangeTokenWithError:(id *)arg1;
-- (id)initWithREMDAAccount:(id)arg1 clientName:(id)arg2 withREMStore:(id)arg3 entityName:(id)arg4;
+- (id)initWithREMDAAccount:(id)arg1 clientName:(id)arg2 withREMStore:(id)arg3 entityNames:(id)arg4;
 - (id)initWithREMDAAccount:(id)arg1 clientName:(id)arg2 withREMStore:(id)arg3;
 - (void)_debug_resetCaches;
 

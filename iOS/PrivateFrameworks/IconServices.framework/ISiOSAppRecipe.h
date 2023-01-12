@@ -8,17 +8,27 @@
 
 #import <IconServices/ISCompositorRecipe-Protocol.h>
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
 @interface ISiOSAppRecipe : NSObject <ISCompositorRecipe>
 {
     _Bool _shouldDrawBorder;
+    _Bool _templateVariant;
     unsigned long long _options;
 }
 
+@property(nonatomic) _Bool templateVariant; // @synthesize templateVariant=_templateVariant;
 @property _Bool shouldDrawBorder; // @synthesize shouldDrawBorder=_shouldDrawBorder;
 @property(nonatomic) unsigned long long options; // @synthesize options=_options;
 @property _Bool shouldApplyMask;
 - (id)layerTreeForSize:(struct CGSize)arg1 scale:(double)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -13,6 +13,7 @@
 
 @interface UIViewController (GKAdditions) <GKContentRefresh, GKURLHandling>
 + (id)_gkKeyWindowRootViewController;
+- (void)_gkConfigureFocusGuidesForNavigationBar:(id)arg1;
 - (_Bool)_gkShouldRefreshContentsForDataType:(unsigned int)arg1 userInfo:(id)arg2;
 - (void)_gkRefreshContentsForDataType:(unsigned int)arg1 userInfo:(id)arg2;
 - (id)_gkPresentActivityViewControllerForActivityItems:(id)arg1 fromView:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;

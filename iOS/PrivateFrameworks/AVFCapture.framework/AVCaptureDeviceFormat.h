@@ -20,6 +20,7 @@
 - (float)spatialOverCapturePercentage;
 - (_Bool)isSpatialOverCaptureSupported;
 - (_Bool)isMomentCaptureMovieRecordingSupported;
+- (_Bool)isSemanticStyleRenderingSupported;
 - (_Bool)isFastCapturePrioritizationSupported;
 - (float)maxPortraitLightingEffectStrength;
 - (float)minPortraitLightingEffectStrength;
@@ -31,8 +32,10 @@
 - (_Bool)isVisionDataDeliverySupported;
 - (_Bool)isVariableFrameRateVideoCaptureSupported;
 - (_Bool)isLowLightVideoCaptureSupported;
+- (unsigned int)supportedDemosaicedRawPixelFormat;
+- (unsigned int)internalDemosaicedRawPixelFormat;
 - (unsigned int)supportedRawPixelFormat;
-- (_Bool)isEquivalentToVirtualDeviceFormat:(id)arg1;
+@property(readonly, nonatomic, getter=isHighPhotoQualitySupported) _Bool highPhotoQualitySupported;
 - (int)ispPowerConsumption;
 - (int)variableSensorPowerConsumption;
 - (int)baseSensorPowerConsumption;
@@ -75,6 +78,11 @@
 - (long long)videoHDRFlavor;
 - (_Bool)prefersVideoHDREnabledForSessionPreset:(id)arg1;
 - (int)supportedStabilizationMethod;
+- (_Bool)isBackgroundBlurSupported;
+- (_Bool)isPortraitEffectSupported;
+- (_Bool)isCinematicFramingSupported;
+- (_Bool)isCenterStageSupported;
+- (_Bool)isContentAwareDistortionCorrectionSupported;
 - (float)geometricDistortionCorrectedVideoFieldOfView;
 - (_Bool)isMultiCamSupported;
 - (id)supportedSemanticSegmentationMatteTypes;
@@ -92,6 +100,11 @@
 @property(readonly, nonatomic, getter=isGlobalToneMappingSupported) _Bool globalToneMappingSupported;
 - (long long)stabilizationTypeForTimelapse;
 @property(readonly, nonatomic, getter=isVideoStabilizationSupported) _Bool videoStabilizationSupported;
+- (id)videoFrameRateRangeForBackgroundBlur;
+- (id)videoFrameRateRangeForPortraitEffect;
+- (id)videoFrameRateRangeForCenterStage;
+- (double)videoMaxZoomFactorForCenterStage;
+- (double)videoMinZoomFactorForCenterStage;
 - (double)videoMaxZoomFactorForCameraCalibrationDataDelivery;
 - (double)videoMinZoomFactorForCameraCalibrationDataDelivery;
 @property(readonly, nonatomic) double videoMaxZoomFactorForDepthDataDelivery;

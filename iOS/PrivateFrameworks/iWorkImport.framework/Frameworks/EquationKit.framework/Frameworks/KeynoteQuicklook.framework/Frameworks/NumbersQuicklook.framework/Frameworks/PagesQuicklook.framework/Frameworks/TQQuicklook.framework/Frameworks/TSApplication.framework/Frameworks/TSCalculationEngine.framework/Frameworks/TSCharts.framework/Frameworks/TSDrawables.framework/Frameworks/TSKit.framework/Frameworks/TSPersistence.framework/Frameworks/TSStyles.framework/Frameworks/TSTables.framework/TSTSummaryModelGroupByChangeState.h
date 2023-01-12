@@ -10,21 +10,21 @@
 
 @interface TSTSummaryModelGroupByChangeState : TSKSosBase
 {
-    vector_b67dfe3a _summaryRowHeightList;
-    vector_b67dfe3a _labelRowHeightList;
-    vector_12bd641b _labelRowVisibilityList;
+    struct vector<double, std::allocator<double>> _summaryRowHeightList;
+    struct vector<double, std::allocator<double>> _labelRowHeightList;
+    struct vector<int, std::allocator<int>> _labelRowVisibilityList;
     TSTCellMap *_cellMap;
     _Bool _definedCellMap;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) vector_12bd641b *labelRowVisibilityList; // @synthesize labelRowVisibilityList=_labelRowVisibilityList;
-@property(readonly, nonatomic) vector_b67dfe3a *labelRowHeightList; // @synthesize labelRowHeightList=_labelRowHeightList;
-@property(readonly, nonatomic) vector_b67dfe3a *summaryRowHeightList; // @synthesize summaryRowHeightList=_summaryRowHeightList;
+@property(readonly, nonatomic) void *labelRowVisibilityList; // @synthesize labelRowVisibilityList=_labelRowVisibilityList;
+@property(readonly, nonatomic) void *labelRowHeightList; // @synthesize labelRowHeightList=_labelRowHeightList;
+@property(readonly, nonatomic) void *summaryRowHeightList; // @synthesize summaryRowHeightList=_summaryRowHeightList;
 @property(retain, nonatomic) TSTCellMap *cellMap; // @synthesize cellMap=_cellMap;
-- (id)initWithMessage:(const struct SummaryModelGroupByChangeStateArchive *)arg1 unarchiver:(id)arg2;
-- (void)saveToMessage:(struct SummaryModelGroupByChangeStateArchive *)arg1 archiver:(id)arg2;
+- (id)initWithMessage:(const void *)arg1 unarchiver:(id)arg2;
+- (void)saveToMessage:(void *)arg1 archiver:(id)arg2;
 
 @end
 

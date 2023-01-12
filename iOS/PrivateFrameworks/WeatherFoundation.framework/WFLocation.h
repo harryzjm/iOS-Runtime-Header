@@ -54,7 +54,6 @@
 - (id)cloudDictionaryRepresentation;
 - (id)initWithLocalDataRepresentation:(id)arg1;
 - (id)localDataRepresentation;
-- (id)countriesSupportAQI;
 @property(readonly, nonatomic) _Bool shouldQueryForAirQualityData;
 - (id)sunsetForDate:(id)arg1;
 - (id)sunriseForDate:(id)arg1;

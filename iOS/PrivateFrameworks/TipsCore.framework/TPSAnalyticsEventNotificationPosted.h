@@ -13,13 +13,15 @@
     _Bool _landingPage;
     NSString *_contentID;
     NSString *_collectionID;
+    NSString *_correlationID;
     NSString *_errorCode;
 }
 
-+ (id)eventWithContentID:(id)arg1 collectionID:(id)arg2 remainingNotificationsCount:(id)arg3 errorCode:(id)arg4;
++ (id)eventWithContentID:(id)arg1 collectionID:(id)arg2 correlationID:(id)arg3 remainingNotificationsCount:(id)arg4 errorCode:(id)arg5;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *errorCode; // @synthesize errorCode=_errorCode;
+@property(retain, nonatomic) NSString *correlationID; // @synthesize correlationID=_correlationID;
 @property(retain, nonatomic) NSString *collectionID; // @synthesize collectionID=_collectionID;
 @property(retain, nonatomic) NSString *contentID; // @synthesize contentID=_contentID;
 @property(readonly, nonatomic) _Bool landingPage; // @synthesize landingPage=_landingPage;
@@ -28,7 +30,7 @@
 @property(readonly, nonatomic) NSNumber *notificationsPosted;
 - (id)eventName;
 - (void)encodeWithCoder:(id)arg1;
-- (id)_initWithContentID:(id)arg1 collectionID:(id)arg2 remainingNotificationsCount:(id)arg3 errorCode:(id)arg4;
+- (id)_initWithContentID:(id)arg1 collectionID:(id)arg2 correlationID:(id)arg3 remainingNotificationsCount:(id)arg4 errorCode:(id)arg5;
 - (id)initWithCoder:(id)arg1;
 
 @end

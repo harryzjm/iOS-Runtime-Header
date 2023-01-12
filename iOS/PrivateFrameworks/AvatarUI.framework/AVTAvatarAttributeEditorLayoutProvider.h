@@ -12,6 +12,7 @@
 
 + (id)editorToActionsTransitionStartingLayoutInContainerOfSize:(struct CGSize)arg1 insets:(struct UIEdgeInsets)arg2 RTL:(_Bool)arg3 environment:(id)arg4;
 + (id)actionsToEditorTransitionStartingLayoutInContainerOfSize:(struct CGSize)arg1 attributesContentViewExtraHeight:(double)arg2 insets:(struct UIEdgeInsets)arg3 RTL:(_Bool)arg4 avatarViewStartFrame:(struct CGRect)arg5 avatarViewAlpha:(double)arg6 environment:(id)arg7;
++ (id)defaultLayoutInContainerOfSize:(struct CGSize)arg1 insets:(struct UIEdgeInsets)arg2 RTL:(_Bool)arg3 environment:(id)arg4 maxGroupLabelWidth:(double)arg5;
 + (id)defaultLayoutInContainerOfSize:(struct CGSize)arg1 insets:(struct UIEdgeInsets)arg2 RTL:(_Bool)arg3 environment:(id)arg4;
 + (_Bool)shouldShowSideGroupPickerForContainerSize:(struct CGSize)arg1 forEnvironment:(id)arg2;
 

@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_axStringForValue:(id)arg1;
 - (void)configureWithTitle2:(id)arg1 value2:(id)arg2;
 - (void)configureWithTitle1:(id)arg1 value1:(id)arg2;
 - (id)accessibilityElements;

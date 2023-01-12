@@ -47,6 +47,7 @@
 - (void)outputTime:(id)arg1 preferredVoice:(unsigned long long)arg2;
 - (void)outputTime:(id)arg1;
 - (_Bool)_canTapticTime;
+- (_Bool)canOutputTime;
 - (_Bool)_canSpeakTimeForVoice:(unsigned long long)arg1 andGesture:(unsigned long long)arg2;
 - (void)_ringerStateChanged;
 - (void)_unregisterForNotifications;

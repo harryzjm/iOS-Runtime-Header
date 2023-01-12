@@ -6,7 +6,7 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class NSString, SBIcon, SBLeafIcon, UIImage;
+@class NSArray, NSString, SBIcon, SBLeafIcon, UIImage;
 
 @protocol SBLeafIconDataSource <NSObject>
 - (NSString *)icon:(SBLeafIcon *)arg1 displayNameForLocation:(NSString *)arg2;
@@ -15,6 +15,10 @@
 @optional
 @property(readonly, copy, nonatomic) NSString *configurationStorageIdentifier;
 @property(readonly, copy, nonatomic) NSString *uniqueIdentifier;
+- (NSArray *)iTunesCategoriesOrderedByRelevancyForIcon:(SBLeafIcon *)arg1;
+- (NSArray *)tagsForIcon:(SBLeafIcon *)arg1;
+- (NSString *)folderFallbackTitleForIcon:(SBLeafIcon *)arg1;
+- (NSArray *)folderTitleOptionsForIcon:(SBLeafIcon *)arg1;
 - (unsigned long long)supportedGridSizeClassesForIcon:(SBLeafIcon *)arg1;
 - (_Bool)iconShouldIgnoreOtherDataSources:(SBLeafIcon *)arg1;
 - (_Bool)iconSupportsRasterization:(SBLeafIcon *)arg1;
@@ -33,8 +37,10 @@
 - (_Bool)isProgressPausedForIcon:(SBLeafIcon *)arg1;
 - (double)progressPercentForIcon:(SBLeafIcon *)arg1;
 - (long long)progressStateForIcon:(SBLeafIcon *)arg1;
+- (NSString *)icon:(SBLeafIcon *)arg1 statusDescriptionForLocation:(NSString *)arg2;
 - (_Bool)iconCanTightenLabel:(SBLeafIcon *)arg1;
 - (_Bool)iconCanTruncateLabel:(SBLeafIcon *)arg1;
+- (_Bool)canGenerateIconsInBackgroundForIcon:(SBLeafIcon *)arg1;
 - (UIImage *)icon:(SBLeafIcon *)arg1 unmaskedImageWithInfo:(struct SBIconImageInfo)arg2;
 - (UIImage *)icon:(SBLeafIcon *)arg1 defaultImageWithInfo:(struct SBIconImageInfo)arg2;
 - (UIImage *)icon:(SBLeafIcon *)arg1 imageWithInfo:(struct SBIconImageInfo)arg2;

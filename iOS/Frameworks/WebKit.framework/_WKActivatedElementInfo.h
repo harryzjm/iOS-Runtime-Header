@@ -15,7 +15,7 @@
     struct RetainPtr<NSString> _title;
     struct IntPoint _interactionLocation;
     struct RetainPtr<NSString> _ID;
-    struct RefPtr<WebKit::ShareableBitmap, WTF::DumbPtrTraits<WebKit::ShareableBitmap>> _image;
+    struct RefPtr<WebKit::ShareableBitmap, WTF::RawPtrTraits<WebKit::ShareableBitmap>, WTF::DefaultRefDerefTraits<WebKit::ShareableBitmap>> _image;
     RetainPtr_337fe565 _cocoaImage;
     struct RetainPtr<NSDictionary> _userInfo;
     _Bool _animatedImage;
@@ -23,7 +23,7 @@
     struct CGRect _boundingRect;
 }
 
-+ (id)activatedElementInfoWithInteractionInformationAtPosition:(const struct InteractionInformationAtPosition *)arg1 userInfo:(id)arg2;
++ (id)activatedElementInfoWithInteractionInformationAtPosition:(const void *)arg1 userInfo:(id)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) struct CGRect boundingRect; // @synthesize boundingRect=_boundingRect;
@@ -36,9 +36,9 @@
 @property(readonly, nonatomic) NSString *title;
 @property(readonly, nonatomic) NSURL *imageURL;
 @property(readonly, nonatomic) NSURL *URL;
-- (id)_initWithType:(long long)arg1 URL:(id)arg2 imageURL:(id)arg3 location:(const struct IntPoint *)arg4 title:(id)arg5 ID:(id)arg6 rect:(struct CGRect)arg7 image:(struct ShareableBitmap *)arg8 userInfo:(id)arg9;
-- (id)_initWithType:(long long)arg1 URL:(id)arg2 imageURL:(id)arg3 location:(const struct IntPoint *)arg4 title:(id)arg5 ID:(id)arg6 rect:(struct CGRect)arg7 image:(struct ShareableBitmap *)arg8;
-- (id)_initWithInteractionInformationAtPosition:(const struct InteractionInformationAtPosition *)arg1 userInfo:(id)arg2;
+- (id)_initWithType:(long long)arg1 URL:(id)arg2 imageURL:(id)arg3 location:(const struct IntPoint *)arg4 title:(id)arg5 ID:(id)arg6 rect:(struct CGRect)arg7 image:(void *)arg8 userInfo:(id)arg9;
+- (id)_initWithType:(long long)arg1 URL:(id)arg2 imageURL:(id)arg3 location:(const struct IntPoint *)arg4 title:(id)arg5 ID:(id)arg6 rect:(struct CGRect)arg7 image:(void *)arg8;
+- (id)_initWithInteractionInformationAtPosition:(const void *)arg1 userInfo:(id)arg2;
 
 @end
 

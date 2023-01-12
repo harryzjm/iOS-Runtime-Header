@@ -57,7 +57,6 @@
 - (id)_observersForAllDownloads;
 - (id)_existingDownloadForSSDownload:(id)arg1;
 - (_Bool)hasFetchedInitialDownloads;
-- (void)_addStoreDownloadForRedownloadProductItem:(id)arg1;
 - (void)_addPurchaseFinishedHandler:(CDUnknownBlockType)arg1 forDownloads:(id)arg2;
 - (void)downloadManagerNetworkUsageDidChange:(id)arg1;
 - (void)downloadManager:(id)arg1 downloadStatesDidChange:(id)arg2;

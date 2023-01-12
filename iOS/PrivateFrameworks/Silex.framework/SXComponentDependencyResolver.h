@@ -16,16 +16,7 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSDictionary *mappedComponentNodes; // @synthesize mappedComponentNodes=_mappedComponentNodes;
-@property(readonly, nonatomic) NSMutableArray *componentNodes; // @synthesize componentNodes=_componentNodes;
-@property(readonly, nonatomic) NSArray *solvedComponentNodes; // @synthesize solvedComponentNodes=_solvedComponentNodes;
 - (id)debugDescription;
-- (id)createComponentNodesForComponentIdentifiers:(id)arg1;
-- (void)reset;
-- (void)resolveStack:(id)arg1 withSolvedNodes:(id)arg2;
-- (id)solvedOrderForComponentNodes:(id)arg1;
-- (void)addComponentNode:(id)arg1;
-- (id)initWithComponentIdentifiers:(id)arg1;
 
 @end
 

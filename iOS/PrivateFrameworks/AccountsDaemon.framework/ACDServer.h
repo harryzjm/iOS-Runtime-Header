@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <AccountsDaemon/ACDAccountStoreDelegate-Protocol.h>
+#import <AccountsDaemon/NSXPCConnectionDelegate-Protocol.h>
 #import <AccountsDaemon/NSXPCListenerDelegate-Protocol.h>
 
 @class ACDAccessPluginManager, ACDAccountNotifier, ACDAuthenticationDialogManager, ACDAuthenticationPluginManager, ACDDatabaseBackupActivity, ACDDataclassOwnersManager, ACRemoteDeviceProxy, NSMutableArray, NSMutableDictionary, NSString, NSXPCListener;
-@protocol ACDClientProviderProtocol, ACDDatabaseProtocol, OS_dispatch_queue, OS_dispatch_semaphore;
+@protocol ACDClientProviderProtocol, ACDDatabaseProtocol, OS_dispatch_queue;
 
-@interface ACDServer : NSObject <ACDAccountStoreDelegate, NSXPCListenerDelegate>
+@interface ACDServer : NSObject <ACDAccountStoreDelegate, NSXPCConnectionDelegate, NSXPCListenerDelegate>
 {
     struct os_unfair_lock_s _propertyLock;
     NSMutableArray *_accountStoreClients;
@@ -20,8 +21,6 @@
     NSMutableArray *_authenticationDialogManagerClients;
     NSMutableDictionary *_clientsByConnection;
     unsigned int _clientCountMaximum;
-    NSObject<OS_dispatch_queue> *_deferredConnectionResumeQueue;
-    NSObject<OS_dispatch_semaphore> *_deferredConnectionResumeQueueSemaphore;
     NSObject<OS_dispatch_queue> *_performMigrationQueue;
     NSXPCListener *_accountStoreListener;
     NSXPCListener *_oauthSignerListener;
@@ -57,9 +56,7 @@
 - (void)_handleLanguageChangedDarwinNotification;
 - (void)_endObservingLanguageChangeNotification;
 - (void)_beginObservingLanguageChangeNotfication;
-- (void)_signalDeferredConnectionResumeQueueSemaphore;
-- (void)_endObservingMigrationDidFinishDarwinNotifications;
-- (void)_beginObservingMigrationDidFinishDarwinNotifications;
+- (void)connection:(id)arg1 handleInvocation:(id)arg2 isReply:(_Bool)arg3;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (id)_newOAuthSignerForClient:(id)arg1;
 - (id)_newDaemonAccountStoreFilterForClient:(id)arg1;

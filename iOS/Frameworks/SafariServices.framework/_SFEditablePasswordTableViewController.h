@@ -4,20 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <SafariServices/PSStateRestoration-Protocol.h>
 #import <SafariServices/SFAddPasswordViewControllerDelegate-Protocol.h>
 #import <SafariServices/SFCredentialProviderExtensionManagerObserver-Protocol.h>
 #import <SafariServices/SFPasswordDetailViewControllerDelegate-Protocol.h>
+#import <SafariServices/SFPasswordTableViewCellDelegate-Protocol.h>
 #import <SafariServices/_ASAccountAuthenticationModificationExtensionManagerObserver-Protocol.h>
+#import <SafariServices/_SFSharedSiteMetadataManagerProvider-Protocol.h>
+#import <SafariServices/_SFTableViewDiffableDataSourceDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, SFAutoFillFeatureManager, SFSharablePassword, UIBarButtonItem, UITableViewCell, WBSAutoFillQuirksManager, WBSPasswordGenerationManager, WBSPasswordWarningManager, WBSSavedPassword, WBSSavedPasswordStore, _SFSecurityRecommendationsDrillInTableViewCell, _SFSiteMetadataManager;
+@class NSString, SFAutoFillFeatureManager, SFPasswordListSectionIdentifier, SFSharablePassword, UIBarButtonItem, UITableViewCell, WBSAutoFillQuirksManager, WBSPasswordGenerationManager, WBSPasswordWarningManager, WBSSavedPassword, WBSSavedPasswordStore, _SFSecurityRecommendationsDrillInTableViewCell, _SFSiteMetadataManager, _SFTableViewDiffableDataSource;
 @protocol _SFEditablePasswordTableViewControllerDelegate;
 
-@interface _SFEditablePasswordTableViewController <SFAddPasswordViewControllerDelegate, SFPasswordDetailViewControllerDelegate, SFCredentialProviderExtensionManagerObserver, _ASAccountAuthenticationModificationExtensionManagerObserver>
+@interface _SFEditablePasswordTableViewController <PSStateRestoration, SFAddPasswordViewControllerDelegate, SFPasswordDetailViewControllerDelegate, SFPasswordTableViewCellDelegate, _SFSharedSiteMetadataManagerProvider, _SFTableViewDiffableDataSourceDelegate, SFCredentialProviderExtensionManagerObserver, _ASAccountAuthenticationModificationExtensionManagerObserver>
 {
-    NSMutableArray *_cachedSavedPasswords;
-    NSMutableArray *_cellDataBySection;
-    NSArray *_allPasswordCellData;
-    NSArray *_cellDataMatchingSearchPattern;
+    _SFTableViewDiffableDataSource *_diffableDataSource;
+    SFPasswordListSectionIdentifier *_autoFillSectionIdentifier;
+    SFPasswordListSectionIdentifier *_securityRecommendationsSectionIdentifier;
     UIBarButtonItem *_addNavigationBarItem;
     UIBarButtonItem *_cancelNavigationBarItem;
     UIBarButtonItem *_deleteNavigationBarItem;
@@ -39,44 +42,53 @@
     _Bool _userIsEditingCellInTableView;
     NSString *_securityRecommendationsSubtitleText;
     _Bool _isFirstWillAppear;
+    _Bool _isObservingExtensionManagers;
     _Bool _hasLoadedSecurityRecommendations;
+    _Bool _hasLoadedPasswords;
+    _Bool _isSearching;
+    _Bool _hasLoadedCredentialProviderExtensions;
     _SFSecurityRecommendationsDrillInTableViewCell *_securityRecommendationsCell;
     UITableViewCell *_autoFillPasswordsCell;
+    _Bool _showsPasswordManagerLockedView;
     id <_SFEditablePasswordTableViewControllerDelegate> _delegate;
     WBSSavedPassword *_passwordToRemoveAfterCompletedUpgradeInDetailView;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool showsPasswordManagerLockedView; // @synthesize showsPasswordManagerLockedView=_showsPasswordManagerLockedView;
 @property(retain, nonatomic) WBSSavedPassword *passwordToRemoveAfterCompletedUpgradeInDetailView; // @synthesize passwordToRemoveAfterCompletedUpgradeInDetailView=_passwordToRemoveAfterCompletedUpgradeInDetailView;
 @property(nonatomic) __weak id <_SFEditablePasswordTableViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (id)newSharedSiteMetadataManager;
 - (void)credentialProviderExtensionManagerExtensionListDidChange:(id)arg1;
+- (void)updateAccessibilityIdentifierForPasswordCell:(id)arg1;
 - (id)passwordGeneratorForPasswordDetailViewController:(id)arg1;
 - (id)passwordWarningManagerForPasswordDetailViewController:(id)arg1;
-- (_Bool)_shouldUseInsetGroupedStyle;
 - (long long)_warningStyleForSecurityRecommendationsDrillInCell;
 - (void)_updateSecurityRecommendationsSubtitleTextWithWarnings:(id)arg1;
 - (void)_reloadSecurityRecommendationsSection;
-- (id)_indexPathForSavedPassword:(id)arg1;
 - (void)_findAndRemoveEntryForCompletedDetailViewUpgrade;
 - (void)_updateCredentialProviderExtensionStatus;
 - (void)_autoFillSwitchValueChanged:(id)arg1;
 - (void)_didSelectAutoFillCellAtIndexPath:(id)arg1 inTableView:(id)arg2;
 - (id)_drillInAutoFillCellForTableView:(id)arg1;
 - (id)_switchAutoFillCellForTableView:(id)arg1 enabled:(_Bool)arg2;
-- (id)_autoFillCellForTableView:(id)arg1;
-- (long long)_sectionForSectionIndex:(long long)arg1;
-- (long long)_securityRecommendationsSectionIndex;
-- (long long)_sectionOffset;
+- (id)_autoFillCellWithoutAccessoryForTableView:(id)arg1;
+- (id)_autoFillCellForTableView:(id)arg1 cellData:(id)arg2;
+- (id)_securityRecommendationsSectionIdentifier;
+- (id)_autoFillSectionIdentifier;
+- (long long)_indexOfFirstPasswordSection;
 - (_Bool)_shouldShowSecurityRecommendationsItem;
 - (_Bool)_shouldShowAutoFillItem;
 - (void)_updateContentUnavailableView;
 - (void)_deletePasswordsAtIndexPaths:(id)arg1;
-- (id)_passwordCellDataForIndexPath:(id)arg1;
 - (void)_passwordStoreDidChange;
 - (void)_reloadPasswords;
 - (void)_reloadPasswordsAndTableViewData;
-- (void)_updateMatchingPasswords;
+- (void)_updateNavigationBarItems;
 - (void)searchPatternDidUpdate;
+- (long long)dataSource:(id)arg1 sectionForSectionIndexTitle:(id)arg2 atIndex:(long long)arg3;
+- (id)sectionIndexTitlesForDataSource:(id)arg1;
+- (id)dataSource:(id)arg1 headerTextForSection:(long long)arg2;
 - (void)addPasswordViewControllerDidFinish:(id)arg1 withSavedPassword:(id)arg2;
 - (_Bool)_sectionWithIndexIsConfigurationSection:(long long)arg1;
 - (_Bool)tableView:(id)arg1 shouldHaveFullLengthBottomSeparatorForSection:(long long)arg2;
@@ -92,17 +104,15 @@
 - (void)tableView:(id)arg1 didEndEditingRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 willBeginEditingRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
-- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (void)_setAccessibilityIdentifiersOnPasswordCell:(id)arg1;
+- (id)_cellForIdentifier:(id)arg1 tableView:(id)arg2 indexPath:(id)arg3;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didDeselectRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;
-- (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
-- (long long)tableView:(id)arg1 sectionForSectionIndexTitle:(id)arg2 atIndex:(long long)arg3;
-- (id)sectionIndexTitlesForTableView:(id)arg1;
-- (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
-- (long long)numberOfSectionsInTableView:(id)arg1;
-- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
+- (long long)dataSource:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
+- (_Bool)dataSource:(id)arg1 canEditRowAtIndexPath:(id)arg2;
+- (void)_managedConfigurationSettingsDidChange:(id)arg1;
 - (_Bool)_autoFillWhiteListExists;
 - (_Bool)_canAddPasswords;
 - (void)_beginEditing;
@@ -128,14 +138,19 @@
 - (void)showConflictAlertForSharablePasswordIfNecessary;
 - (id)_savePasswordIfPossibleAndGetController:(id)arg1;
 - (id)_sharablePasswordFromResourceDictionary:(id)arg1;
+- (void)_presentInvalidOtpauthURLAlert;
+- (void)_presentDuplicateCodeGeneratorAlert;
 - (id)passwordControllerForQuery:(id)arg1 queryBundleID:(id)arg2 authenticationRequirementsMet:(_Bool)arg3;
+- (id)viewControllerToPresentWithURLResourceDictionary:(id)arg1;
 - (id)additionalViewControllersToPushHandlingURLResourceDictionary:(id)arg1 didAuthenticate:(_Bool)arg2;
 - (void)_updateHeaderAndFooterViewsFloat;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)_configureTableView;
+- (void)_configureNavigationBar;
 - (void)viewDidLoad;
 - (void)viewWillDisappear:(_Bool)arg1;
-- (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (_Bool)canBeShownFromSuspendedState;
 - (id)navigationItem;
 - (id)initWithSiteMetadataManager:(id)arg1 autoFillQuirksManager:(id)arg2 persona:(unsigned long long)arg3;
 - (id)initWithSiteMetadataManager:(id)arg1 autoFillQuirksManager:(id)arg2;

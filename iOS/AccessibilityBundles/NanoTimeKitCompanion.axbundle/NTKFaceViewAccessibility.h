@@ -33,6 +33,7 @@
 - (_Bool)_axIsDoneAnnouncing;
 - (void)_loadSnapshotContentViews;
 - (void)setTimeView:(id)arg1;
+- (_Bool)_accessibilityFKAShouldProcessChildren;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)layoutSubviews;
 

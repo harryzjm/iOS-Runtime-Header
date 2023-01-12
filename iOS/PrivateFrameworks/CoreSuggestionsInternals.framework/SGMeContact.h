@@ -17,10 +17,12 @@
     NSSet *_emailAddresses;
     NSSet *_phoneNumbers;
     NSSet *_postalAddresses;
+    NSSet *_socialProfileIdentifiers;
 }
 
 + (id)keysToFetch;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSSet *socialProfileIdentifiers; // @synthesize socialProfileIdentifiers=_socialProfileIdentifiers;
 @property(readonly, nonatomic) NSSet *postalAddresses; // @synthesize postalAddresses=_postalAddresses;
 @property(readonly, nonatomic) NSSet *phoneNumbers; // @synthesize phoneNumbers=_phoneNumbers;
 @property(readonly, nonatomic) NSSet *emailAddresses; // @synthesize emailAddresses=_emailAddresses;

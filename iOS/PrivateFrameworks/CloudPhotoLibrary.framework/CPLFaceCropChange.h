@@ -14,6 +14,7 @@
     NSString *_rejectedPersonIdentifier;
 }
 
++ (Class)relatedRecordClass;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *rejectedPersonIdentifier; // @synthesize rejectedPersonIdentifier=_rejectedPersonIdentifier;
 @property(nonatomic) long long faceCropType; // @synthesize faceCropType=_faceCropType;

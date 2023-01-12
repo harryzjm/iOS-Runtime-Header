@@ -31,9 +31,9 @@
 - (void)startedProactiveTileDownloadForIdentifier:(id)arg1 policy:(unsigned char)arg2;
 - (void)purgeAllCounts;
 - (void)_purgeOlderThan:(id)arg1;
-- (void)logsStartingFrom:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)countsStartingFrom:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)incrementForApp:(id)arg1 time:(id)arg2 requestId:(id)arg3 requestType:(int)arg4 result:(unsigned char)arg5 xmitBytes:(long long)arg6 recvBytes:(long long)arg7 withCompletion:(CDUnknownBlockType)arg8;
+- (void)logsDuring:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)countsDuring:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)incrementForApp:(id)arg1 startTime:(id)arg2 endTime:(id)arg3 requestType:(int)arg4 result:(unsigned char)arg5 xmitBytes:(long long)arg6 recvBytes:(long long)arg7 usedInterfaces:(unsigned long long)arg8 withCompletion:(CDUnknownBlockType)arg9;
 - (void)_tearDown;
 - (void)dealloc;
 - (id)initWithDBFilePath:(id)arg1 maxCountAge:(double)arg2;

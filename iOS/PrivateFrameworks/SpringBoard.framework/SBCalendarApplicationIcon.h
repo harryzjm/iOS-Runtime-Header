@@ -4,25 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SpringBoard/SBCalendarIconImageProviderDelegate-Protocol.h>
+#import <SpringBoardHome/SBHCalendarApplicationIcon.h>
 
-@class SBCalendarIconImageProvider;
-
-@interface SBCalendarApplicationIcon <SBCalendarIconImageProviderDelegate>
+@interface SBCalendarApplicationIcon : SBHCalendarApplicationIcon
 {
-    SBCalendarIconImageProvider *_imageProvider;
 }
-
-+ (_Bool)canGenerateIconsInBackground;
-+ (Class)downloadingIconClass;
-- (void).cxx_destruct;
-- (void)dealloc;
-- (void)calendarIconImageProviderHasChanged:(id)arg1;
-- (void)_boldTextStatusDidChange:(id)arg1;
-- (id)unmaskedIconImageWithInfo:(struct SBIconImageInfo)arg1;
-- (id)generateIconImageWithInfo:(struct SBIconImageInfo)arg1;
-- (void)localeChanged;
-- (id)initWithApplication:(id)arg1;
 
 @end
 

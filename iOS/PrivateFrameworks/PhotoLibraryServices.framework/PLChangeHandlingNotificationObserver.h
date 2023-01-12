@@ -13,21 +13,25 @@
     NSObject<OS_dispatch_queue> *_targetQueue;
     NSObject<OS_dispatch_queue> *_lowNotifyQueue;
     NSObject<OS_dispatch_queue> *_highNotifyQueue;
+    double _throttleInterval;
+    struct os_unfair_lock_s _lock;
     int _notifyTokenLow;
     int _notifyTokenHigh;
     CDUnknownBlockType _notificationBlock;
-    double _throttleInterval;
 }
 
 - (void).cxx_destruct;
-- (void)_inq_stopObservingRemoteNotifications;
-- (void)stopObservingRemoteNotifications;
+- (_Bool)_locked_stopObservingRemoteNotifications;
+- (_Bool)stopObservingRemoteNotifications;
 - (void)_inq_handleHighPriorityNotification;
 - (void)_inq_handleThrottleTimer;
 - (void)_inq_suspendIfThrottling;
 - (void)_inq_handleLowPriorityNotification;
-- (void)_inq_startObservingRemoteNotificationsWithBlock:(CDUnknownBlockType)arg1;
+- (void)_locked_startObservingRemoteNotificationsWithBlock:(CDUnknownBlockType)arg1;
 - (void)startObservingRemoteNotificationsWithBlock:(CDUnknownBlockType)arg1;
+@property(readonly, copy) CDUnknownBlockType notificationBlock;
+@property(readonly) int notifyTokenHigh;
+@property(readonly) int notifyTokenLow;
 - (void)dealloc;
 - (id)initWithLowPriorityThrottleInterval:(double)arg1;
 

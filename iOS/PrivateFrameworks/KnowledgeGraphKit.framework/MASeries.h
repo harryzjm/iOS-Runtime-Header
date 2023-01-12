@@ -22,6 +22,7 @@
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)valueByLabels;
 - (id)valueForLabel:(id)arg1;
 - (float)valueAtIndex:(long long)arg1;
 @property(readonly, copy, nonatomic) NSArray *labels;

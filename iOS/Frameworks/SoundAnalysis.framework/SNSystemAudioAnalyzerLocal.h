@@ -8,7 +8,7 @@
 
 #import <SoundAnalysis/SNSystemAudioAnalyzerProtocol-Protocol.h>
 
-@class AVAudioFormat, NSMutableArray, SNAudioRecordingQueue, SNAudioStreamAnalyzer;
+@class AVAudioFormat, AVAudioSession, NSMutableArray, SNAudioConfiguration, SNAudioRecordingQueue, SNAudioStreamAnalyzer;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -16,11 +16,14 @@ __attribute__((visibility("hidden")))
 {
     AVAudioFormat *_recordFormat;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
+    NSObject<OS_dispatch_queue> *_analysisQueue;
     SNAudioRecordingQueue *_recordingQueue;
     SNAudioStreamAnalyzer *_streamAnalyzer;
     long long _recordingState;
     _Bool _clientStartedAnalysis;
     NSMutableArray *_requests;
+    SNAudioConfiguration *_audioConfiguration;
+    AVAudioSession *_audioSession;
 }
 
 - (void).cxx_destruct;
@@ -40,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)removeRequest:(id)arg1;
 - (_Bool)_addRequest:(id)arg1 withObserver:(id)arg2 error:(id *)arg3;
 - (_Bool)addRequest:(id)arg1 withObserver:(id)arg2 error:(id *)arg3;
+- (void)setAudioConfiguration:(id)arg1;
 - (id)init;
 
 @end

@@ -16,8 +16,8 @@
 }
 
 + (id)keyWithRequest:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSURLRequest *request; // @synthesize request=_request;
-- (void)dealloc;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;

@@ -37,6 +37,7 @@
 @property(readonly, nonatomic) CNContactStore *contactStore;
 @property(nonatomic) long long prohibitedSources;
 - (id)likenessLookup;
+- (id)badgeObservableWithLikenessBadge:(id)arg1 workScheduler:(id)arg2;
 - (id)basicMonogramObservableFromString:(id)arg1 color:(id)arg2;
 - (void)refreshCacheKey:(id)arg1;
 - (id)likenessesForContact:(id)arg1 options:(id)arg2 workScheduler:(id)arg3;

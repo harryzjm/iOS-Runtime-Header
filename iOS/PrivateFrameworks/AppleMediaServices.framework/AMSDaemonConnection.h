@@ -27,10 +27,14 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSXPCConnection *sharedConnection; // @synthesize sharedConnection=_sharedConnection;
 - (void)_handleInvalidation;
 - (void)_handleInterruption;
+- (void)_checkOutPromise:(id)arg1;
+- (void)_checkInPromise:(id)arg1;
 - (id)_connectionProxyForAsync:(_Bool)arg1 accessBlock:(CDUnknownBlockType)arg2;
 - (id)securityServiceProxyWithDelegate:(id)arg1;
 - (id)pushNotificationService;
+- (id)fraudReportServiceProxy;
 - (id)deviceMessengerProxyWithDelegate:(id)arg1;
+- (id)callService:(id)arg1 then:(CDUnknownBlockType)arg2;
 - (void)addInterruptionHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)init;

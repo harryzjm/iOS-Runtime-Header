@@ -25,7 +25,7 @@
 - (void)_accessibilityPerformScrollDown;
 - (void)_accessibilityPerformScrollUp;
 - (void)_dispatchSafariEventWithDictionary:(id)arg1 andIdentifier:(id)arg2;
-- (id)_safariQueryDictionaryFromURL:(id)arg1;
+- (id)_copySafariQueryDictionaryFromURL:(id)arg1;
 - (void)_safariViewControllerDataUpdate:(id)arg1;
 - (void)_subscriptionStatusDidChangeNotification:(id)arg1;
 - (void)_storeBagDidChangeNotification:(id)arg1;

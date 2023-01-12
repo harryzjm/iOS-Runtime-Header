@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CNContact, PKAccountServicePaymentMethod, PKApplePayTrustSignature, PKAuthorizedPeerPaymentQuote, PKDisbursementVoucher, PKPayment, PKPaymentMethod, PKServiceProviderPurchase, PKShippingMethod;
+@class CNContact, NSString, PKAccountServicePaymentMethod, PKApplePayTrustSignature, PKAuthorizedPeerPaymentQuote, PKDisbursementVoucher, PKPayment, PKPaymentMethod, PKServiceProviderPurchase, PKShippingMethod;
 
 @interface PKPaymentAuthorizationClientCallbackStateParam
 {
@@ -26,6 +26,7 @@
 @property(readonly, nonatomic) PKShippingMethod *shippingMethod;
 @property(readonly, nonatomic) PKPaymentMethod *paymentMethod;
 @property(readonly, nonatomic) CNContact *shippingContact;
+@property(readonly, nonatomic) NSString *couponCode;
 
 @end
 

@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface SAUICloseAssistant
 {
 }
@@ -11,6 +13,7 @@
 + (id)closeAssistantWithDictionary:(id)arg1 context:(id)arg2;
 + (id)closeAssistant;
 - (_Bool)requiresResponse;
+@property(copy, nonatomic) NSString *reason;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

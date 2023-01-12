@@ -22,7 +22,7 @@
 - (void)resetForAccountChangeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)updateConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchDateOfNextPermittedSaveChangesAttemptWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (CDUnknownBlockType)_defaultProxyErrorHandlerWithSimpleReplyCompletionHandler:(CDUnknownBlockType)arg1;
+- (CDUnknownBlockType)_defaultProxyErrorHandlerWithSimpleReplyHandler:(CDUnknownBlockType)arg1;
 - (id)initWithProxy:(id)arg1;
 
 // Remaining properties

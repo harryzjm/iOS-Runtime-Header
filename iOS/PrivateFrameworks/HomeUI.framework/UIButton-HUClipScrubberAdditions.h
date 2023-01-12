@@ -12,5 +12,6 @@
 + (void)hu_talkStateForButton:(id)arg1 usingStandardSymbolConfiguration:(_Bool)arg2;
 + (id)hu_clipScrubberNearbyAccessoryButton;
 + (id)hu_clipScrubberLiveButton;
++ (id)hu_clipScrubberLiveButtonWithMaximimumLineHeight:(double)arg1;
 @end
 

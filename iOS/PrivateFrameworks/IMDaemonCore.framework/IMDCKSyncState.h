@@ -35,7 +35,8 @@
 - (void)clearLocalCloudKitSyncState;
 - (void)setSyncingFinished;
 @property(readonly, copy) NSString *description;
-- (id)syncReportDictionaryForAttempt:(unsigned long long)arg1 withSuccess:(_Bool)arg2;
+- (id)syncReportDictionaryForAttempt:(unsigned long long)arg1 withSuccess:(_Bool)arg2 duration:(double)arg3;
+- (id)describeRecordCounts;
 - (id)syncReportDictionary;
 - (id)syncUserType;
 - (_Bool)_shouldReportNewUserIfCreatedChatZones:(_Bool)arg1 deletedZones:(_Bool)arg2;

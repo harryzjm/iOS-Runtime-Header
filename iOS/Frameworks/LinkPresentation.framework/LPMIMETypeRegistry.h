@@ -19,6 +19,7 @@
 + (_Bool)isARAssetType:(id)arg1;
 + (_Bool)isHLSType:(id)arg1;
 + (_Bool)isJSONType:(id)arg1;
++ (_Bool)isAudioType:(id)arg1;
 + (_Bool)isMediaType:(id)arg1;
 + (_Bool)isVideoType:(id)arg1;
 + (_Bool)isImageType:(id)arg1;

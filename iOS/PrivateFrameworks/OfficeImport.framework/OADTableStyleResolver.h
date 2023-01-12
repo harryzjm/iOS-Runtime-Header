@@ -16,9 +16,9 @@ __attribute__((visibility("hidden")))
     OADTableStyle *mTableStyle;
     int mColumnCount;
     int mRowCount;
-    struct OADTFTemplateMatrix<OADTableCell *> *mCellMatrix;
-    struct OADTFTemplateMatrix<OADTablePartStyle *> *mCellStyles;
-    struct OADTFTemplateMatrix<OADStroke *> *mStrokes[2];
+    void *mCellMatrix;
+    void *mCellStyles;
+    void *mStrokes[2];
 }
 
 - (void).cxx_destruct;

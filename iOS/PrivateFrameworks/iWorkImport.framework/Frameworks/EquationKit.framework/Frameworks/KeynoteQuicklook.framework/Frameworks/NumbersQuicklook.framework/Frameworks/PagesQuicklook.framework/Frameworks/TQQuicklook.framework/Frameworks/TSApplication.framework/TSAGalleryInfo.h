@@ -12,12 +12,13 @@
 #import <TSApplication/TSDMixing-Protocol.h>
 #import <TSApplication/TSDModelContainer-Protocol.h>
 #import <TSApplication/TSDReducibleImageContainer-Protocol.h>
+#import <TSApplication/TSDSelectableHintMediaContainer-Protocol.h>
 #import <TSApplication/TSWPStorageParent-Protocol.h>
 
 @class NSArray, NSObject, NSString, TSDInfoGeometry, TSDMediaStyle, TSPObject, TSWPStorage;
 @protocol TSDInfo, TSDOwningAttachment;
 
-@interface TSAGalleryInfo : TSDDrawableInfo <TSWPStorageParent, TSDContainerInfo, TSDModelContainer, TSDReducibleImageContainer, TSDCompatibilityAwareMediaContainer, TSDMixing, TSDDrawableInfoCustomUnarchivingSubclassProviding>
+@interface TSAGalleryInfo : TSDDrawableInfo <TSWPStorageParent, TSDContainerInfo, TSDModelContainer, TSDReducibleImageContainer, TSDCompatibilityAwareMediaContainer, TSDSelectableHintMediaContainer, TSDMixing, TSDDrawableInfoCustomUnarchivingSubclassProviding>
 {
     NSArray *_items;
     long long _captionMode;
@@ -35,8 +36,8 @@
 + (id)i_newCaptionStorageWithContext:(id)arg1;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *items; // @synthesize items=_items;
-- (void)saveToArchive:(struct ImageArchive *)arg1 archiver:(id)arg2;
-- (void)loadFromArchive:(const struct ImageArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
@@ -46,6 +47,7 @@
 - (id)animationFilters;
 - (struct CGSize)targetSizeForImageData:(id)arg1 associatedHint:(id)arg2;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
+- (_Bool)supportsHyperlinks;
 @property(readonly, nonatomic) _Bool supportsDropCapsInChildStorages;
 @property(readonly, nonatomic) _Bool supportsMultipleColumns;
 @property(readonly, nonatomic) _Bool storageChangesInvalidateWrap;
@@ -69,6 +71,7 @@
 - (id)childEnumeratorForUserSearch;
 - (id)childEnumerator;
 - (unsigned int)elementKind;
+- (id)typeName;
 - (_Bool)allowsTitle;
 - (_Bool)allowsCaption;
 - (_Bool)canCopyData;

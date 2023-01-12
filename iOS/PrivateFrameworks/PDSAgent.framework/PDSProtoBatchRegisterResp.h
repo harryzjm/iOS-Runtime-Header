@@ -14,17 +14,20 @@
 {
     long long _responseTtl;
     long long _retryInterval;
+    long long _serverTimestamp;
     NSString *_message;
     int _status;
     NSMutableArray *_userPushTokenRegResponses;
     struct {
         unsigned int responseTtl:1;
         unsigned int retryInterval:1;
+        unsigned int serverTimestamp:1;
     } _has;
 }
 
 + (Class)userPushTokenRegResponsesType;
 - (void).cxx_destruct;
+@property(nonatomic) long long serverTimestamp; // @synthesize serverTimestamp=_serverTimestamp;
 @property(nonatomic) long long retryInterval; // @synthesize retryInterval=_retryInterval;
 @property(nonatomic) long long responseTtl; // @synthesize responseTtl=_responseTtl;
 @property(retain, nonatomic) NSMutableArray *userPushTokenRegResponses; // @synthesize userPushTokenRegResponses=_userPushTokenRegResponses;
@@ -39,6 +42,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasServerTimestamp;
 @property(nonatomic) _Bool hasRetryInterval;
 @property(nonatomic) _Bool hasResponseTtl;
 - (id)userPushTokenRegResponsesAtIndex:(unsigned long long)arg1;

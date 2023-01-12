@@ -12,6 +12,8 @@
 }
 
 - (void).cxx_destruct;
+- (id)renderDestinationForSurface:(id)arg1;
+- (id)imageForSurface:(id)arg1 options:(id)arg2;
 - (id)name;
 - (id)initWithMetalDevice:(id)arg1 options:(id)arg2;
 - (id)initWithCIContext:(id)arg1 priority:(long long)arg2;

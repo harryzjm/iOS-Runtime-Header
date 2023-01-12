@@ -19,12 +19,14 @@
     NSString *_lyricsID;
     long long _purchasedAdamID;
     long long _radioAdamID;
+    long long _reportingAdamID;
     long long _subscriptionAdamID;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) long long subscriptionAdamID; // @synthesize subscriptionAdamID=_subscriptionAdamID;
+@property(readonly, nonatomic) long long reportingAdamID; // @synthesize reportingAdamID=_reportingAdamID;
 @property(readonly, nonatomic) long long equivalencySourceAdamID; // @synthesize equivalencySourceAdamID=_equivalencySourceAdamID;
 @property(readonly, nonatomic) long long radioAdamID; // @synthesize radioAdamID=_radioAdamID;
 @property(readonly, nonatomic) long long purchasedAdamID; // @synthesize purchasedAdamID=_purchasedAdamID;

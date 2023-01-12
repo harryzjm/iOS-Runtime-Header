@@ -12,6 +12,7 @@
 - (void)collectionsCarouselDidRouteToCollectionId:(GEOMapItemIdentifier *)arg1 atIndex:(long long)arg2 isSaved:(_Bool)arg3;
 
 @optional
+- (void)exploreGuidesButtonTapped;
 - (void)collectionsCarouselDidScrollDown;
 - (void)collectionsCarouselDidScrollUp;
 - (void)collectionsCarouselDidScrollBackward;

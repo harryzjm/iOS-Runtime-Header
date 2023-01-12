@@ -11,9 +11,11 @@
 @interface SCROBrailleSubstitutionManager : NSObject
 {
     NSMutableDictionary *_lookup;
-    NSLinguisticTagger *_lingusticTagger;
+    NSLinguisticTagger *_linguisticTagger;
+    struct os_unfair_lock_s _taggerLock;
 }
 
++ (id)_bundleForStrings;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)stringWithBrailleSubstitutions:(id)arg1 withLanguage:(id)arg2;

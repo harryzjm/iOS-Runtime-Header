@@ -25,16 +25,6 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) HDFitnessMachineStateTimer *mfaTimer; // @synthesize mfaTimer=_mfaTimer;
-@property(retain, nonatomic) HDFitnessMachineStateTimer *retryConnectionTimer; // @synthesize retryConnectionTimer=_retryConnectionTimer;
-@property(retain, nonatomic) HDFitnessMachineStateTimer *disconnectTimer; // @synthesize disconnectTimer=_disconnectTimer;
-@property(retain, nonatomic) HDFitnessMachineStateTimer *pauseTimer; // @synthesize pauseTimer=_pauseTimer;
-@property(retain, nonatomic) HDFitnessMachineStateTimer *waitForMachineStartTimer; // @synthesize waitForMachineStartTimer=_waitForMachineStartTimer;
-@property(retain, nonatomic) HDFitnessMachineStateTimer *userAcceptanceTimer; // @synthesize userAcceptanceTimer=_userAcceptanceTimer;
-@property(retain, nonatomic) HDFitnessMachineStateTimer *machineIdentityVerificationTimer; // @synthesize machineIdentityVerificationTimer=_machineIdentityVerificationTimer;
-@property(retain, nonatomic) HDFitnessMachineStateTimer *tagReadTimer; // @synthesize tagReadTimer=_tagReadTimer;
-@property(retain, nonatomic) HDFitnessMachineStateTimer *fieldDetectTimer; // @synthesize fieldDetectTimer=_fieldDetectTimer;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(nonatomic) __weak id <HDFitnessMachineStateTimersDelegate> delegate; // @synthesize delegate=_delegate;
 - (_Bool)isMfaTimerValid;
 - (void)cancelMfaTimeout;

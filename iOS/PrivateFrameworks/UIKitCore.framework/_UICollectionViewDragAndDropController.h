@@ -107,7 +107,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_hasReorderingMoved;
 - (_Bool)_isReordering;
 - (_Bool)_removeMoveShadowUpdateMatchingReorderedItem:(id)arg1;
-- (void)_removeReorderedItemsCellsFromViewHierarchy;
+- (void)_updateReorderedCellStatesRemovingFromViewHierarchyIfRequired;
 - (void)_resetReorderedItems;
 - (void)_updateCellAppearanceForCell:(id)arg1 appearance:(long long)arg2;
 - (long long)_determineAppearanceForItemAtIndexPath:(id)arg1;
@@ -119,6 +119,7 @@ __attribute__((visibility("hidden")))
 - (void)_rollbackCurrentDropInsertion;
 - (void)_beginReorderingForItemAtIndexPath:(id)arg1 cell:(id)arg2;
 - (void)_beginDragAndDropInsertingItemAtIndexPath:(id)arg1;
+- (void)rebaseCellAppearanceStatesWithUpdateMap:(id)arg1;
 - (void)_resetAnyDragStateModifiedVisibleCells;
 - (void)_removeAnyDeferredReuseCells;
 - (void)_cleanupAfterOutstandingSessionCompletion;
@@ -134,6 +135,7 @@ __attribute__((visibility("hidden")))
 - (id)indexPathForDragAndDropInsertion;
 @property(readonly, nonatomic) unsigned long long reorderingCapabilities;
 @property(readonly, nonatomic) NSArray *reorderedItems;
+@property(readonly, nonatomic) unsigned long long reorderedItemCount;
 - (id)placeholderContextForDragItem:(id)arg1;
 - (_Bool)isDragDestinationInteractivelyReordering;
 - (void)reset;

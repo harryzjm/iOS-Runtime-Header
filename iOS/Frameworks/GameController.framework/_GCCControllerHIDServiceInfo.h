@@ -17,7 +17,6 @@
     struct __IOHIDServiceClient *_service;
     NSNumber *_registryID;
     NSData *_inputData;
-    _Bool _isPreallocatedSiriRemote;
 }
 
 - (void).cxx_destruct;
@@ -35,7 +34,6 @@
 - (id)init;
 - (id)initWithService:(struct __IOHIDServiceClient *)arg1;
 - (id)name;
-@property(nonatomic) _Bool isPreallocatedSiriRemote;
 @property(retain, nonatomic) NSData *inputData;
 
 // Remaining properties

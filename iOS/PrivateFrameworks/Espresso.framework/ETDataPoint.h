@@ -8,13 +8,13 @@
 
 @interface ETDataPoint : NSObject
 {
-    map_b74cfcc1 image_buffers;
-    struct map<std::__1::basic_string<char>, ETDataPoint_buffer, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, ETDataPoint_buffer>>> buffers;
+    map_74c237bc image_buffers;
+    struct map<std::string, ETDataPoint_buffer, std::less<std::string>, std::allocator<std::pair<const std::string, ETDataPoint_buffer>>> buffers;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (unordered_map_74b681bc)getSampleData;
+- (unordered_map_d1ad3d59)getSampleData;
 - (void)dealloc;
 - (float *)bufferWithKey:(id)arg1;
 - (struct vImage_Buffer)imageWithKey:(id)arg1;

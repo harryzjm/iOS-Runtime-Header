@@ -78,7 +78,6 @@
 - (_Bool)notifyZoomKeyboardWillBecomeVisibleWithFrame:(struct CGRect)arg1 inAppWithBundleID:(id)arg2;
 - (_Bool)notifyZoomFocusDidChangeWithType:(long long)arg1 rect:(struct CGRect)arg2 contextId:(unsigned int)arg3 keyboardFrame:(struct CGRect)arg4;
 - (_Bool)notifyZoomFocusDidChangeWithType:(long long)arg1 rect:(struct CGRect)arg2 contextId:(unsigned int)arg3;
-- (_Bool)notifyZoomSpeakUnderFingerSettingChanged;
 - (void)removeZoomAttributesChangedHandler:(id)arg1;
 - (id)registerForZoomAttributes:(id)arg1 updatesImmediatelyWithChangedHandler:(CDUnknownBlockType)arg2;
 - (void)removeCoalescedZoomAttributesChangedHandler:(id)arg1;
@@ -93,6 +92,7 @@
 - (void)connectionWithServiceWasInterruptedForUserInterfaceClient:(id)arg1;
 - (id)userInterfaceClient:(id)arg1 accessQueueForProcessingMessageWithIdentifier:(unsigned long long)arg2;
 - (id)userInterfaceClient:(id)arg1 processMessageFromServer:(id)arg2 withIdentifier:(unsigned long long)arg3 error:(id *)arg4;
+- (void)startMagnifierChangeTripleClickMenu:(_Bool)arg1;
 - (void)startMagnifier;
 - (void)isMagnifierVisibleWithCompletion:(CDUnknownBlockType)arg1;
 - (void)showMagnifier;

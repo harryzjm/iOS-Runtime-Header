@@ -24,6 +24,7 @@
 @property(readonly, nonatomic) NSArray *allErrorProperties;
 @property(readonly, nonatomic) NSArray *allMediaProperties;
 @property(readonly, nonatomic) NSArray *allStandardProperties;
+- (void)updateWithConfig:(id)arg1;
 - (void)processEvent:(id)arg1;
 - (id)initWithConfig:(id)arg1 cpAnalyticsInstance:(id)arg2;
 - (id)init;
@@ -31,6 +32,7 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) _Bool disabled;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

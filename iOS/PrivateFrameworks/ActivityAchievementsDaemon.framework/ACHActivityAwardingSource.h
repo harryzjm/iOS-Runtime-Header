@@ -73,6 +73,8 @@
 - (void)_runIncrementallyForChangedSummaryFields:(unsigned long long)arg1;
 - (id)_queue_companionProgressEnvironment;
 - (id)_queue_progressEnvironment;
+- (_Bool)_hasMetGoalForTemplate:(id)arg1 andActivitySummary:(id)arg2;
+- (_Bool)_isAchievementStillEarnableForTemplate:(id)arg1 andProgressEnvironment:(id)arg2;
 - (id)currentGoalQuantityForTemplate:(id)arg1;
 - (id)currentProgressQuantityForTemplate:(id)arg1;
 - (_Bool)providesProgressForTemplate:(id)arg1;

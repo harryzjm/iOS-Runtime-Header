@@ -4,9 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString, NSURL, TRIDownloadOptions;
+@class NSArray, NSDictionary, NSSet, NSString, NSURL, TRIDownloadOptions, TRIRolloutDeployment;
+@protocol TRIFactorPackId;
 
 @protocol TRIXPCNamespaceManagementServiceProtocol
+- (void)statusOfDownloadForFactors:(NSArray *)arg1 withNamespace:(NSString *)arg2 completion:(void (^)(unsigned long long, NSString *, NSError *))arg3;
+- (void)promoteFactorPackId:(NSString<TRIFactorPackId> *)arg1 forNamespaceName:(NSString *)arg2 rolloutDeployment:(TRIRolloutDeployment *)arg3 completion:(void (^)(_Bool, NSError *))arg4;
+- (void)rejectFactorPackId:(NSString<TRIFactorPackId> *)arg1 forNamespaceName:(NSString *)arg2 rolloutDeployment:(TRIRolloutDeployment *)arg3 completion:(void (^)(_Bool, NSError *))arg4;
+- (void)setProvisionalFactorPackId:(NSString<TRIFactorPackId> *)arg1 forNamespaceName:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
+- (void)loadNamespaceMetadataForNamespaceName:(NSString *)arg1 completion:(void (^)(TRIClientNamespaceMetadata *, NSError *))arg2;
+- (void)setPurgeabilityLevelsForFactors:(NSDictionary *)arg1 forNamespaceName:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)removeLevelsForFactors:(NSArray *)arg1 withNamespace:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)immediateDownloadForNamespaceNames:(NSSet *)arg1 allowExpensiveNetworking:(_Bool)arg2 completion:(void (^)(NSError *))arg3;
 - (void)startDownloadLevelsForFactors:(NSArray *)arg1 withNamespace:(NSString *)arg2 options:(TRIDownloadOptions *)arg3 completion:(void (^)(NSString *, NSError *))arg4;
 - (void)startDownloadNamespaceWithName:(NSString *)arg1 options:(TRIDownloadOptions *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)deregisterNamespaceWithNamespaceName:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;

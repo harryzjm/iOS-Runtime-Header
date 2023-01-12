@@ -24,7 +24,7 @@
 #import <SpringBoard/SBSystemGestureRecognizerDelegate-Protocol.h>
 #import <SpringBoard/UIGestureRecognizerDelegate-Protocol.h>
 
-@class BSSimpleAssertion, CCUIModularControlCenterOverlayViewController, CCUIStatusBarStyleSnapshot, FBDisplayLayoutElement, NSArray, NSHashTable, NSMutableArray, NSSet, NSString, PTSingleTestRecipe, SBAppStatusBarSettingsAssertion, SBAsynchronousRenderingAssertion, SBBarSwipeAffordanceViewController, SBControlCenterSystemAgent, SBControlCenterWindow, SBGrabberTongue, SBIndirectPanGestureRecognizer, UIApplicationSceneDeactivationAssertion, UIColor, UIPanGestureRecognizer, _UILegibilitySettings;
+@class BSSimpleAssertion, CCUIModularControlCenterOverlayViewController, CCUIStatusBarStyleSnapshot, FBDisplayLayoutElement, NSArray, NSHashTable, NSMutableArray, NSSet, NSString, PTSingleTestRecipe, SBAppStatusBarSettingsAssertion, SBAsynchronousRenderingAssertion, SBBarSwipeAffordanceViewController, SBControlCenterSystemAgent, SBControlCenterWindow, SBGrabberTongue, SBIndirectPanGestureRecognizer, SBWorkspaceKeyboardFocusController, UIApplicationSceneDeactivationAssertion, UIPanGestureRecognizer, _UILegibilitySettings;
 @protocol BSInvalidatable, SBFSensorActivityDataProvider, SBIdleTimerCoordinating, UICoordinateSpace;
 
 @interface SBControlCenterController : NSObject <CCUIModularControlCenterOverlayViewControllerDelegate, SBGrabberTongueDelegate, CSExternalBehaviorProviding, CSExternalPresentationProviding, CSExternalAppearanceProviding, UIGestureRecognizerDelegate, SBSystemGestureRecognizerDelegate, SBBarSwipeAffordanceObserver, SBBarSwipeAffordanceDelegate, SBFIdleTimerBehaviorProviding, CCUIHostStatusBarStyleProvider, SBReachabilityObserver, SBFSensorActivityObserver, SBIndirectPanGestureRecognizerOrientationProviding, SBHomeGrabberPointerClickDelegate, SBIdleTimerProviding, CSCoverSheetOverlaying>
@@ -39,6 +39,7 @@
     BSSimpleAssertion *_hideStatusBarAssertion;
     SBAppStatusBarSettingsAssertion *_statusBarAssertion;
     SBAsynchronousRenderingAssertion *_asynchronousRenderingAssertion;
+    SBWorkspaceKeyboardFocusController *_keyboardFocusController;
     SBGrabberTongue *_grabberTongue;
     UIPanGestureRecognizer *_statusBarPullGestureRecognizer;
     SBIndirectPanGestureRecognizer *_indirectStatusBarPullGestureRecognizer;
@@ -49,6 +50,7 @@
     id <BSInvalidatable> _idleTimerDisableAssertion;
     id <BSInvalidatable> _bannerSuppressionAssertion;
     id <BSInvalidatable> _deferOrientationUpdatesAssertion;
+    id <BSInvalidatable> _keyboardFocusLockAssertion;
     PTSingleTestRecipe *_presentModuleTestRecipe;
     PTSingleTestRecipe *_userInterfaceStyleTestRecipe;
 }
@@ -59,6 +61,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) PTSingleTestRecipe *userInterfaceStyleTestRecipe; // @synthesize userInterfaceStyleTestRecipe=_userInterfaceStyleTestRecipe;
 @property(readonly, nonatomic) PTSingleTestRecipe *presentModuleTestRecipe; // @synthesize presentModuleTestRecipe=_presentModuleTestRecipe;
+@property(retain, nonatomic) id <BSInvalidatable> keyboardFocusLockAssertion; // @synthesize keyboardFocusLockAssertion=_keyboardFocusLockAssertion;
 @property(retain, nonatomic) id <BSInvalidatable> deferOrientationUpdatesAssertion; // @synthesize deferOrientationUpdatesAssertion=_deferOrientationUpdatesAssertion;
 @property(retain, nonatomic) id <BSInvalidatable> bannerSuppressionAssertion; // @synthesize bannerSuppressionAssertion=_bannerSuppressionAssertion;
 @property(retain, nonatomic) id <BSInvalidatable> idleTimerDisableAssertion; // @synthesize idleTimerDisableAssertion=_idleTimerDisableAssertion;
@@ -70,6 +73,7 @@
 @property(retain, nonatomic) SBIndirectPanGestureRecognizer *indirectStatusBarPullGestureRecognizer; // @synthesize indirectStatusBarPullGestureRecognizer=_indirectStatusBarPullGestureRecognizer;
 @property(retain, nonatomic) UIPanGestureRecognizer *statusBarPullGestureRecognizer; // @synthesize statusBarPullGestureRecognizer=_statusBarPullGestureRecognizer;
 @property(retain, nonatomic) SBGrabberTongue *grabberTongue; // @synthesize grabberTongue=_grabberTongue;
+@property(retain, nonatomic) SBWorkspaceKeyboardFocusController *keyboardFocusController; // @synthesize keyboardFocusController=_keyboardFocusController;
 @property(retain, nonatomic) SBAsynchronousRenderingAssertion *asynchronousRenderingAssertion; // @synthesize asynchronousRenderingAssertion=_asynchronousRenderingAssertion;
 @property(retain, nonatomic) SBAppStatusBarSettingsAssertion *statusBarAssertion; // @synthesize statusBarAssertion=_statusBarAssertion;
 @property(retain, nonatomic) BSSimpleAssertion *hideStatusBarAssertion; // @synthesize hideStatusBarAssertion=_hideStatusBarAssertion;
@@ -97,10 +101,8 @@
 @property(readonly, nonatomic) long long scrollingStrategy;
 - (void)conformsToCSExternalBehaviorProviding;
 - (void)conformsToCSBehaviorProviding;
-@property(readonly, nonatomic) UIColor *backgroundColor;
 @property(readonly, nonatomic) _UILegibilitySettings *legibilitySettings;
 @property(readonly, copy, nonatomic) NSSet *components;
-@property(readonly, nonatomic) long long backgroundStyle;
 @property(readonly, copy, nonatomic) NSString *appearanceIdentifier;
 - (void)conformsToCSAppearanceProviding;
 @property(readonly, copy, nonatomic) NSArray *presentationRegions;
@@ -111,9 +113,11 @@
 - (_Bool)_shouldShowGrabberOnFirstSwipe;
 - (_Bool)_shouldAllowControlCenterGesture;
 - (_Bool)allowShowTransitionSystemGesture;
-- (_Bool)allowShowTransition;
+- (_Bool)canBePresented;
 - (void)_updateWindowLevel;
 - (double)_trailingStatusBarRegionWidth;
+- (_Bool)_isLocationXWithinTrailingStatusBarRegion:(double)arg1 regionPadding:(double)arg2;
+- (_Bool)_isLocationXWithinExtendedTrailingStatusBarRegion:(double)arg1;
 - (_Bool)_isLocationXWithinTrailingStatusBarRegion:(double)arg1;
 - (struct CGPoint)_locationOfTouchInActiveInterfaceOrientation:(id)arg1 gestureRecognizer:(id)arg2;
 - (struct CGPoint)_presentGestureVelocityInView;

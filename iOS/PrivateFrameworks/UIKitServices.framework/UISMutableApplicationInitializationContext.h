@@ -4,15 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FBSSceneIdentityToken, NSSet, UISDeviceContext, UISDisplayContext;
+@class FBSSceneIdentityToken, NSSet, UISCompatibilityContext, UISDeviceContext, UISDisplayContext;
 
 @interface UISMutableApplicationInitializationContext
 {
 }
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(nonatomic) _Bool supportAppSceneRequests; // @dynamic supportAppSceneRequests;
 @property(retain, nonatomic) FBSSceneIdentityToken *defaultSceneToken; // @dynamic defaultSceneToken;
 @property(retain, nonatomic) NSSet *persistedSceneIdentifiers; // @dynamic persistedSceneIdentifiers;
+@property(retain, nonatomic) UISCompatibilityContext *compatibilityContext; // @dynamic compatibilityContext;
 @property(retain, nonatomic) UISDeviceContext *deviceContext; // @dynamic deviceContext;
 @property(retain, nonatomic) UISDisplayContext *displayContext; // @dynamic displayContext;
 

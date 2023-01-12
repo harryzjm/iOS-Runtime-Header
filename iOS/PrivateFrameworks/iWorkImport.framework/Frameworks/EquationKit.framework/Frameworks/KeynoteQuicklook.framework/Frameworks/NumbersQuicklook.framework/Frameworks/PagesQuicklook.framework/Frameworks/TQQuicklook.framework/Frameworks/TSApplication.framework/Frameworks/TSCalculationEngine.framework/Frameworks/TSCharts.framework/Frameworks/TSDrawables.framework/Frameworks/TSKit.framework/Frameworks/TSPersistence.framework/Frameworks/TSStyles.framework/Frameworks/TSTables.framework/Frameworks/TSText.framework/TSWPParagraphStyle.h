@@ -47,9 +47,9 @@
 - (void)localizeForBidi:(_Bool)arg1;
 - (void)saveToArchiver:(id)arg1;
 - (id)fallbackFontColorWhenUnableToReadCharacterFillColor;
-- (void)saveToArchive:(struct ParagraphStyleArchive *)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)loadFromArchive:(const struct ParagraphStyleArchive *)arg1 unarchiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (unsigned long long)minimumReadVersion;
 - (id)initialListStyle;
 - (void)setInitialListStyle:(id)arg1;
@@ -68,6 +68,12 @@
 - (_Bool)p_contentTagIsBody;
 @property(readonly, nonatomic) _Bool allowAsBookmarkSuggestionStyle;
 @property(readonly, nonatomic) _Bool showInSuggestedBookmarksList;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

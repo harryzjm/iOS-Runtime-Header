@@ -15,13 +15,13 @@
 {
     struct TSUCellCoord _minCursorCellID;
     NSMutableArray *_iterators;
-    vector_38b190b0 _cursorCellIDs;
+    vector_7f5598a1 _cursorCellIDs;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *iterators; // @synthesize iterators=_iterators;
-@property(nonatomic) vector_38b190b0 cursorCellIDs; // @synthesize cursorCellIDs=_cursorCellIDs;
+@property(nonatomic) vector_7f5598a1 cursorCellIDs; // @synthesize cursorCellIDs=_cursorCellIDs;
 @property(nonatomic) struct TSUCellCoord minCursorCellID; // @synthesize minCursorCellID=_minCursorCellID;
 - (void)terminate;
 - (struct TSUCellCoord)advanceToCellID:(struct TSUCellCoord)arg1;

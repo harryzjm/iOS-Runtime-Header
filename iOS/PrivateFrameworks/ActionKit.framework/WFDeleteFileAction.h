@@ -8,7 +8,8 @@
 {
 }
 
-- (void)confirmDeletionAtLevel:(unsigned long long)arg1 withService:(id)arg2 input:(id)arg3;
+- (id)parameterDefinitions;
+- (void)confirmDeletionAtLevel:(unsigned long long)arg1 deleteImmediately:(_Bool)arg2 withService:(id)arg3 input:(id)arg4;
 - (void)runAsynchronouslyWithInput:(id)arg1 storageService:(id)arg2;
 
 @end

@@ -19,13 +19,12 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSLayoutConstraint *stackViewWidthConstraint; // @synthesize stackViewWidthConstraint=_stackViewWidthConstraint;
 @property(retain, nonatomic) VUIUpNextButtonProperties *properties; // @synthesize properties=_properties;
 - (id)largeContentTitle;
-- (void)_selectButtonAction:(id)arg1 eventType:(id)arg2;
 - (void)upNextStateChangedToRemoved;
 - (void)upNextStateChangedToAdded;
 - (void)setTintColor:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
-- (void)updateWithElement:(id)arg1;
-- (id)initWithLayout:(id)arg1 interfaceStyle:(long long)arg2;
+- (void)selectButtonAction:(id)arg1;
+- (id)initWithType:(unsigned long long)arg1 interfaceStyle:(unsigned long long)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

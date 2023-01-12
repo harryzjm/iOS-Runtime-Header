@@ -14,18 +14,20 @@
     PHFetchResult *_fetchResult;
     PHFetchResult *_curatedFetchResult;
     PHFetchResult *_keyAssetsFetchResult;
+    CDUnknownBlockType _curatedRefetchCondition;
     NSPredicate *_filterPredicate;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSPredicate *filterPredicate; // @synthesize filterPredicate=_filterPredicate;
+@property(readonly, nonatomic) CDUnknownBlockType curatedRefetchCondition; // @synthesize curatedRefetchCondition=_curatedRefetchCondition;
 @property(readonly, nonatomic) PHFetchResult *keyAssetsFetchResult; // @synthesize keyAssetsFetchResult=_keyAssetsFetchResult;
 @property(readonly, nonatomic) PHFetchResult *curatedFetchResult; // @synthesize curatedFetchResult=_curatedFetchResult;
 @property(readonly, nonatomic) _Bool fetchedWithReverseSortOrder; // @synthesize fetchedWithReverseSortOrder=_fetchedWithReverseSortOrder;
 @property(readonly, nonatomic) PHFetchResult *fetchResult; // @synthesize fetchResult=_fetchResult;
 - (id)description;
 - (id)resultTupleUpdatedWithChange:(id)arg1;
-- (id)initWithFetchResult:(id)arg1 fetchedWithReverseSortOrder:(_Bool)arg2 curatedFetchResult:(id)arg3 keyAssetsFetchResult:(id)arg4 filterPredicate:(id)arg5;
+- (id)initWithFetchResult:(id)arg1 fetchedWithReverseSortOrder:(_Bool)arg2 curatedFetchResult:(id)arg3 curatedRefetchCondition:(CDUnknownBlockType)arg4 keyAssetsFetchResult:(id)arg5 filterPredicate:(id)arg6;
 
 @end
 

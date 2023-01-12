@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *url;
     MISSING_TYPE *assets;
+    MISSING_TYPE *trashedAssets;
 }
 
 @end

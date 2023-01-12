@@ -6,69 +6,39 @@
 
 #import <objc/NSObject.h>
 
-#import <TextRecognition/CRConfidenceThresholdProviding-Protocol.h>
+@protocol CRTextFeatureOrdering, CRTextFeaturesFiltering, MTLDevice;
 
-@class NSArray, NSNumber, NSOrderedSet, NSString, NSURL;
-
-@interface CRRecognizerConfiguration : NSObject <CRConfidenceThresholdProviding>
+@interface CRRecognizerConfiguration : NSObject
 {
     _Bool _cpuOnly;
-    _Bool _decodeWithLM;
-    int _colorSpace;
-    float _precisionThreshold;
-    float _mediumConfidenceThreshold;
-    float _highConfidenceThreshold;
-    NSURL *_customModelURL;
-    long long _batchSize;
-    long long _maxConcurrentBatches;
-    NSArray *_inputWidths;
-    double _inputHeight;
-    double _angleThresholdForRotatedCrops;
+    _Bool _falsePositiveFilteringDisabled;
+    _Bool _optimizeGroupsForStability;
+    unsigned long long _revision;
     long long _numTopStringCandidates;
-    NSOrderedSet *_languages;
-    NSArray *_customWords;
-    NSNumber *_lexiconWeight;
-    NSNumber *_characterLMWeight;
-    NSNumber *_wordLMWeight;
-    unsigned long long _minTitleLength;
-    double _minTitleProb;
+    double _angleThresholdForRotatedCrops;
+    NSObject<MTLDevice> *_metalDevice;
+    id <CRTextFeatureOrdering> _cachedTextFeatureOrder;
+    id <CRTextFeaturesFiltering> _cachedTextFeatureFilter;
 }
 
 + (id)languageSetFromInputLanguages:(id)arg1 supportedLanguages:(id)arg2;
 + (id)supportedLanguagesForVersion:(long long)arg1;
 - (void).cxx_destruct;
-@property float highConfidenceThreshold; // @synthesize highConfidenceThreshold=_highConfidenceThreshold;
-@property float mediumConfidenceThreshold; // @synthesize mediumConfidenceThreshold=_mediumConfidenceThreshold;
-@property(readonly) double minTitleProb; // @synthesize minTitleProb=_minTitleProb;
-@property(readonly) unsigned long long minTitleLength; // @synthesize minTitleLength=_minTitleLength;
-@property(readonly) NSNumber *wordLMWeight; // @synthesize wordLMWeight=_wordLMWeight;
-@property(readonly) NSNumber *characterLMWeight; // @synthesize characterLMWeight=_characterLMWeight;
-@property(readonly) NSNumber *lexiconWeight; // @synthesize lexiconWeight=_lexiconWeight;
-@property(readonly) float precisionThreshold; // @synthesize precisionThreshold=_precisionThreshold;
-@property(readonly) NSArray *customWords; // @synthesize customWords=_customWords;
-@property(readonly) NSOrderedSet *languages; // @synthesize languages=_languages;
-@property(readonly) long long numTopStringCandidates; // @synthesize numTopStringCandidates=_numTopStringCandidates;
-@property(readonly) _Bool decodeWithLM; // @synthesize decodeWithLM=_decodeWithLM;
-@property(readonly) _Bool cpuOnly; // @synthesize cpuOnly=_cpuOnly;
+@property _Bool optimizeGroupsForStability; // @synthesize optimizeGroupsForStability=_optimizeGroupsForStability;
+@property(retain) id <CRTextFeaturesFiltering> cachedTextFeatureFilter; // @synthesize cachedTextFeatureFilter=_cachedTextFeatureFilter;
+@property(retain) id <CRTextFeatureOrdering> cachedTextFeatureOrder; // @synthesize cachedTextFeatureOrder=_cachedTextFeatureOrder;
+@property(readonly) NSObject<MTLDevice> *metalDevice; // @synthesize metalDevice=_metalDevice;
+@property(readonly) _Bool falsePositiveFilteringDisabled; // @synthesize falsePositiveFilteringDisabled=_falsePositiveFilteringDisabled;
 @property(readonly) double angleThresholdForRotatedCrops; // @synthesize angleThresholdForRotatedCrops=_angleThresholdForRotatedCrops;
-@property(readonly) double inputHeight; // @synthesize inputHeight=_inputHeight;
-@property(readonly) NSArray *inputWidths; // @synthesize inputWidths=_inputWidths;
-@property(readonly) long long maxConcurrentBatches; // @synthesize maxConcurrentBatches=_maxConcurrentBatches;
-@property(readonly) long long batchSize; // @synthesize batchSize=_batchSize;
-@property(readonly) NSURL *customModelURL; // @synthesize customModelURL=_customModelURL;
-@property(readonly) int colorSpace; // @synthesize colorSpace=_colorSpace;
-- (void)setConfidenceThresholdsForRevision:(unsigned long long)arg1;
-- (void)loadLanguageModelWeightsForLanguageIdentifier:(id)arg1 rev:(unsigned long long)arg2;
+@property(readonly) long long numTopStringCandidates; // @synthesize numTopStringCandidates=_numTopStringCandidates;
+@property(readonly) _Bool cpuOnly; // @synthesize cpuOnly=_cpuOnly;
+@property(readonly) unsigned long long revision; // @synthesize revision=_revision;
+@property(readonly) id <CRTextFeaturesFiltering> textFeatureFilter;
+@property(readonly) id <CRTextFeatureOrdering> textFeatureOrder;
+- (id)initV3DefaultConfigWithOptions:(id)arg1;
 - (id)initV2DefaultConfigWithOptions:(id)arg1;
-- (id)initV1DefaultConfig;
-- (_Bool)usesAppleNeuralEngine;
+- (id)initV1DefaultConfigWithOptions:(id)arg1;
 - (id)initWithImageReaderOptions:(id)arg1 error:(id *)arg2;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

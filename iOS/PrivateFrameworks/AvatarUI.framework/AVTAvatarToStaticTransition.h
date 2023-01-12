@@ -11,7 +11,6 @@
     id <AVTAvatarTransitionModel> _avatarTransitionModel;
 }
 
-+ (void)clearStaticStateForAvatar:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id <AVTAvatarTransitionModel> avatarTransitionModel; // @synthesize avatarTransitionModel=_avatarTransitionModel;
 - (void)performTransition;

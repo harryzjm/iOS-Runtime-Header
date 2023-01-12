@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
     long long _count;
     const unsigned short *_glyphs;
+    const double *_advanceWidths;
     const struct CGSize *_advances;
     const unsigned int *_props;
     const long long *_stringIndices;
@@ -31,9 +32,11 @@ __attribute__((visibility("hidden")))
 - (void)setProps:(unsigned int)arg1 atIndex:(long long)arg2;
 - (void)setOrigin:(struct CGPoint)arg1 atIndex:(long long)arg2;
 - (struct CGPoint)originAtIndex:(long long)arg1;
+- (void)resetOrigins:(CDStruct_912cb5d2)arg1;
 - (_Bool)implementsOrigins;
 - (void)setAttachmentCount:(long long)arg1 atIndex:(long long)arg2;
 - (long long)attachmentCountAtIndex:(long long)arg1;
+- (const struct CGSize *)allocatedAdvances;
 - (void *)refCon;
 - (id)copyWithRange:(CDStruct_912cb5d2)arg1;
 - (_Bool)isEqual:(id)arg1;

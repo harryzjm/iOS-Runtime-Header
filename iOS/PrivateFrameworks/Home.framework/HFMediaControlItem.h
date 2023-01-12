@@ -15,10 +15,14 @@
     id <HFMediaProfileContainer> _mediaProfileContainer;
     long long _mediaAccessoryItemType;
     HFMediaActionSetting *_mediaActionSetting;
+    NSString *_mediaRoutingIdentifier;
+    NSString *_deviceName;
 }
 
 + (Class)valueClass;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *deviceName; // @synthesize deviceName=_deviceName;
+@property(copy, nonatomic) NSString *mediaRoutingIdentifier; // @synthesize mediaRoutingIdentifier=_mediaRoutingIdentifier;
 @property(retain, nonatomic) HFMediaActionSetting *mediaActionSetting; // @synthesize mediaActionSetting=_mediaActionSetting;
 @property(readonly, nonatomic) long long mediaAccessoryItemType; // @synthesize mediaAccessoryItemType=_mediaAccessoryItemType;
 @property(readonly, nonatomic) id <HFMediaProfileContainer> mediaProfileContainer; // @synthesize mediaProfileContainer=_mediaProfileContainer;
@@ -34,6 +38,7 @@
 - (id)characteristicValuesForValue:(id)arg1;
 - (id)readValueAndPopulateStandardResults;
 - (id)copyWithCharacteristicOptions:(id)arg1 valueSource:(id)arg2;
+- (id)initWithMediaRoutingIdentifier:(id)arg1 deviceName:(id)arg2 mediaAccessoryItemType:(long long)arg3;
 - (id)initWithValueSource:(id)arg1 characteristicOptions:(id)arg2 displayResults:(id)arg3;
 - (id)initWithValueSource:(id)arg1 mediaProfileContainer:(id)arg2 mediaAccessoryItemType:(long long)arg3 displayResults:(id)arg4;
 

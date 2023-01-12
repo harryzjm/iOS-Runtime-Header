@@ -7,19 +7,17 @@
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
 
 @class NSString, PXMomentShareStatusPresentation;
-@protocol PXCMMFooterViewModelActionDelegate;
 
 @interface PXCMMFooterViewModel <PXChangeObserver>
 {
     PXMomentShareStatusPresentation *_momentShareStatusPresentation;
-    id <PXCMMFooterViewModelActionDelegate> _actionDelegate;
+    long long _mode;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) __weak id <PXCMMFooterViewModelActionDelegate> actionDelegate; // @synthesize actionDelegate=_actionDelegate;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)_updateAllProperties;
-- (id)initWithMomentShareStatusPresentation:(id)arg1;
+- (id)initWithMomentShareStatusPresentation:(id)arg1 mode:(long long)arg2;
 - (id)init;
 
 // Remaining properties

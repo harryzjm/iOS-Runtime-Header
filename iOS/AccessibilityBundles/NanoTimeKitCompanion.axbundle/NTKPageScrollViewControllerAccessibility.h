@@ -21,6 +21,7 @@
 - (id)_accessibilityLabelForPageView:(id)arg1;
 - (id)_accessibilityValueForPageView:(id)arg1;
 - (unsigned long long)_axPageIndexForPageView:(id)arg1;
+- (_Bool)_accessibilityIsPageViewVisible:(id)arg1;
 - (_Bool)_accessibilityShouldSwipeBetweenPages;
 - (id)_accessibilityTouchContainerLabel;
 - (void)_accessibilityLoadAccessibilityInformation;

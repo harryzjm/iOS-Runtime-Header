@@ -4,7 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class UIEvent;
+
 @protocol ICDocCamZoomablePageContentViewDelegate
+- (_Bool)isTouchingAnalyzableContentAtPoint:(struct CGPoint)arg1 withEvent:(UIEvent *)arg2;
 - (void)pageContentViewDidPencilDown;
 @end
 

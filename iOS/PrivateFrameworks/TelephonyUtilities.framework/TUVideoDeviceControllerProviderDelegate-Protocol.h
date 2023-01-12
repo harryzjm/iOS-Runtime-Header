@@ -10,6 +10,9 @@
 @protocol TUVideoDeviceControllerProvider;
 
 @protocol TUVideoDeviceControllerProviderDelegate <AVConferencePreviewClientDelegate>
+- (void)provider:(id <TUVideoDeviceControllerProvider>)arg1 cameraCinematicFramingEnabledDidChange:(_Bool)arg2;
+- (void)provider:(id <TUVideoDeviceControllerProvider>)arg1 cameraCinematicFramingAvailabilityDidChange:(_Bool)arg2;
+- (void)provider:(id <TUVideoDeviceControllerProvider>)arg1 cameraBlurEnabledDidChange:(_Bool)arg2;
 - (void)provider:(id <TUVideoDeviceControllerProvider>)arg1 cameraZoomAvailabilityDidChange:(_Bool)arg2;
 - (void)provider:(id <TUVideoDeviceControllerProvider>)arg1 didReceiveFirstPreviewFrameFromCameraUniqueID:(NSString *)arg2;
 - (void)provider:(id <TUVideoDeviceControllerProvider>)arg1 didReceiveErrorFromCameraUniqueID:(NSString *)arg2 error:(NSError *)arg3;
@@ -17,6 +20,7 @@
 - (void)provider:(id <TUVideoDeviceControllerProvider>)arg1 cameraDidBecomeAvailableForUniqueID:(NSString *)arg2;
 - (void)captureDevicesChangedForProvider:(id <TUVideoDeviceControllerProvider>)arg1;
 - (void)didStopPreviewForProvider:(id <TUVideoDeviceControllerProvider>)arg1;
+- (void)didPausePreviewForProvider:(id <TUVideoDeviceControllerProvider>)arg1;
 - (void)didStartPreviewForProvider:(id <TUVideoDeviceControllerProvider>)arg1;
 @end
 

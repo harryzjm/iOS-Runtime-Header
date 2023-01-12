@@ -41,7 +41,6 @@
 - (void)_scheduleThrottledApplicationRelaunchTimerIfNecessary;
 - (void)_launchNextQueuedApplicationThrottledForRelaunch;
 - (_Bool)_shouldAutoLaunchApplication:(id)arg1 forReason:(unsigned long long)arg2;
-- (void)_reallyDoAutoLaunchToBackground:(id)arg1;
 - (void)_autoLaunchIfNecessary:(id)arg1 forReason:(unsigned long long)arg2;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;

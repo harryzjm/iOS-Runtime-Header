@@ -4,19 +4,39 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class TIKeyboardCandidateSuggestion, UILabel;
+@class NSLayoutConstraint, TIKeyboardCandidate, UIImageView, UILabel, UILayoutGuide;
 
 @interface TUISuggestionCandidateCell
 {
-    TIKeyboardCandidateSuggestion *_candidate;
+    TIKeyboardCandidate *_candidate;
     UILabel *_textLabel;
+    UIImageView *_iconImageView;
+    UILayoutGuide *_paddedContainer;
+    UILayoutGuide *_centeredContainer;
+    NSLayoutConstraint *_paddingBetweenConstraint;
+    NSLayoutConstraint *_topPaddingConstraint;
+    NSLayoutConstraint *_leftPaddingConstraint;
+    NSLayoutConstraint *_bottomPaddingConstraint;
+    NSLayoutConstraint *_rightPaddingConstraint;
 }
 
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSLayoutConstraint *rightPaddingConstraint; // @synthesize rightPaddingConstraint=_rightPaddingConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *bottomPaddingConstraint; // @synthesize bottomPaddingConstraint=_bottomPaddingConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *leftPaddingConstraint; // @synthesize leftPaddingConstraint=_leftPaddingConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *topPaddingConstraint; // @synthesize topPaddingConstraint=_topPaddingConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *paddingBetweenConstraint; // @synthesize paddingBetweenConstraint=_paddingBetweenConstraint;
+@property(retain, nonatomic) UILayoutGuide *centeredContainer; // @synthesize centeredContainer=_centeredContainer;
+@property(retain, nonatomic) UILayoutGuide *paddedContainer; // @synthesize paddedContainer=_paddedContainer;
+@property(retain, nonatomic) UIImageView *iconImageView; // @synthesize iconImageView=_iconImageView;
 @property(retain, nonatomic) UILabel *textLabel; // @synthesize textLabel=_textLabel;
-@property(retain, nonatomic) TIKeyboardCandidateSuggestion *candidate; // @synthesize candidate=_candidate;
+@property(retain, nonatomic) TIKeyboardCandidate *candidate; // @synthesize candidate=_candidate;
 - (void)updateLabel;
+- (id)image;
+- (id)bodyText;
+- (id)headerText;
+- (id)textSuggestion;
 - (void)didMoveToWindow;
 - (void)layoutSubviews;
 - (void)setStyle:(id)arg1;

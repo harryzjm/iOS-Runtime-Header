@@ -48,6 +48,7 @@
 - (void)_deleteByWord;
 - (NSString *)_normalizedStringForRangeComparison:(NSString *)arg1;
 - (UITextRange *)_intersectionOfRange:(UITextRange *)arg1 andRange:(UITextRange *)arg2;
+- (_Bool)_range:(UITextRange *)arg1 isEqualToRange:(UITextRange *)arg2;
 - (_Bool)_range:(UITextRange *)arg1 intersectsRange:(UITextRange *)arg2;
 - (_Bool)_range:(UITextRange *)arg1 containsRange:(UITextRange *)arg2;
 - (UITextRange *)_rangeOfSmartSelectionIncludingRange:(UITextRange *)arg1;
@@ -93,6 +94,7 @@
 @property(readonly, nonatomic) UIView<UITextInputPrivate> *_textSelectingContainer;
 - (id <UIPointerInteractionDelegate>)_pointerInteractionDelegate;
 - (void)_setInternalGestureRecognizers;
+- (_Bool)_shouldShowEditMenu;
 - (_Bool)_shouldSuppressSelectionHandles;
 - (_Bool)_isInteractiveTextSelectionDisabled;
 - (struct CGRect)_lastRectForRange:(UITextRange *)arg1;

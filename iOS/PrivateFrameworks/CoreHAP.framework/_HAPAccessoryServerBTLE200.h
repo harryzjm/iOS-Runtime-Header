@@ -23,8 +23,8 @@
     _Bool _authenticated;
     unsigned char _featureFlags;
     HAPSecuritySession *_securitySession;
-    HAPBLEAccessoryCache *_accessoryCache;
     long long _connectionState;
+    HAPBLEAccessoryCache *_accessoryCache;
     CDUnknownBlockType _connectionCompletionHandler;
     HMFTimer *_connectionIdleTimer;
     _HAPBTLEDiscoveryContext *_discoveryContext;
@@ -55,10 +55,11 @@
 + (id)configurationRequestForService:(id)arg1 configRequestType:(unsigned char)arg2 error:(id *)arg3;
 + (_Bool)parseWriteResponse:(id)arg1 value:(id *)arg2 error:(id *)arg3;
 + (id)executeWriteRequestForCharacteristic:(id)arg1 options:(long long)arg2 error:(id *)arg3;
-+ (id)prepareWriteRequestForCharacteristic:(id)arg1 value:(id)arg2 authorizationData:(id)arg3 options:(long long)arg4 error:(id *)arg5;
-+ (id)writeRequestForCharacteristic:(id)arg1 value:(id)arg2 authorizationData:(id)arg3 options:(long long)arg4 error:(id *)arg5;
++ (id)prepareWriteRequestForCharacteristic:(id)arg1 value:(id)arg2 authorizationData:(id)arg3 contextData:(id)arg4 options:(long long)arg5 error:(id *)arg6;
++ (id)writeRequestForCharacteristic:(id)arg1 value:(id)arg2 authorizationData:(id)arg3 contextData:(id)arg4 options:(long long)arg5 error:(id *)arg6;
++ (id)extractNotificationContextFromBodyData:(id)arg1 error:(id *)arg2;
 + (id)extractSerializedRequestValueFromBodyData:(id)arg1 error:(id *)arg2;
-+ (_Bool)parseReadResponse:(id)arg1 value:(id *)arg2 error:(id *)arg3;
++ (_Bool)parseReadResponse:(id)arg1 value:(id *)arg2 notificationContext:(id *)arg3 error:(id *)arg4;
 + (id)readRequestForCharacteristic:(id)arg1 options:(long long)arg2 error:(id *)arg3;
 + (_Bool)isHAPDescriptor:(id)arg1;
 + (_Bool)isHAPService:(id)arg1;
@@ -93,9 +94,10 @@
 @property(retain, nonatomic) _HAPBTLEDiscoveryContext *discoveryContext; // @synthesize discoveryContext=_discoveryContext;
 @property(retain, nonatomic) HMFTimer *connectionIdleTimer; // @synthesize connectionIdleTimer=_connectionIdleTimer;
 @property(copy, nonatomic) CDUnknownBlockType connectionCompletionHandler; // @synthesize connectionCompletionHandler=_connectionCompletionHandler;
-@property(nonatomic) long long connectionState; // @synthesize connectionState=_connectionState;
 @property _Bool hasValidCache; // @synthesize hasValidCache=_hasValidCache;
 @property(retain) HAPBLEAccessoryCache *accessoryCache; // @synthesize accessoryCache=_accessoryCache;
+@property(nonatomic) long long connectionState; // @synthesize connectionState=_connectionState;
+- (void)disconnect;
 - (void)timerDidFire:(id)arg1;
 - (void)securitySession:(id)arg1 didCloseWithError:(id)arg2;
 - (void)securitySessionDidOpen:(id)arg1;
@@ -154,7 +156,7 @@
 - (void)disconnectWithCompletionHandler:(CDUnknownBlockType)arg1 disconnectionError:(id)arg2;
 - (void)disconnectWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_cancelConnectionWithError:(id)arg1;
-- (void)connectWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)connectWithRouteMode:(unsigned char)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)_decryptData:(id)arg1 error:(id *)arg2;
 - (id)_encryptDataAndGenerateAuthTag:(id)arg1 error:(id *)arg2;
 - (id)protocolInfoServiceSignatureCharacteristics;
@@ -213,12 +215,13 @@
 - (void)enableEvents:(_Bool)arg1 forCharacteristics:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3 queue:(id)arg4;
 - (void)markNotifyingCharacteristicUpdatedforCharacteristic:(id)arg1;
 - (void)_performTimedWriteExecuteForCharacteristic:(id)arg1 value:(id)arg2 options:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)_performTimedWritePrepareWithValue:(id)arg1 toCharacteristic:(id)arg2 authorizationData:(id)arg3 options:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)_performTimedWriteValue:(id)arg1 toCharacteristic:(id)arg2 authorizationData:(id)arg3 options:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)_performWriteValue:(id)arg1 toCharacteristic:(id)arg2 authorizationData:(id)arg3 options:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)_writeValue:(id)arg1 toCharacteristic:(id)arg2 authorizationData:(id)arg3 options:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)_performTimedWritePrepareWithValue:(id)arg1 toCharacteristic:(id)arg2 authorizationData:(id)arg3 contextData:(id)arg4 options:(long long)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)_performTimedWriteValue:(id)arg1 toCharacteristic:(id)arg2 authorizationData:(id)arg3 contextData:(id)arg4 options:(long long)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)_performWriteValue:(id)arg1 toCharacteristic:(id)arg2 authorizationData:(id)arg3 contextData:(id)arg4 options:(long long)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)_writeValue:(id)arg1 toCharacteristic:(id)arg2 authorizationData:(id)arg3 contextData:(id)arg4 options:(long long)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)writeCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_readValueForCharacteristic:(id)arg1 options:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_updatePropertiesFromCharacteristic:(id)arg1;
 - (void)_readCharacteristicValues:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)readCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)_parseCharacteristic:(id)arg1 error:(id *)arg2;
@@ -234,6 +237,7 @@
 - (id)_getServiceInstanceID:(id)arg1;
 - (id)_getCharacteristicInstanceID:(id)arg1 error:(id *)arg2;
 - (void)_readCharacteristicSignatures;
+- (void)_handleUpdateValueForCharacteristic:(id)arg1 error:(id)arg2;
 - (void)_handleReadDescriptorValue:(id)arg1 error:(id)arg2;
 - (void)_readDescriptorValue:(id)arg1;
 - (void)_handleReadCharacteristicValue:(id)arg1 error:(id)arg2;
@@ -256,6 +260,8 @@
 - (void)_retryDiscovery;
 - (_Bool)_cancelDiscoveryWithError:(id)arg1;
 - (void)_discoverWithType:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_readPendingCharacteritiscTypes:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)discoverAccessoriesAndReadCharacteristicTypes:(id)arg1;
 - (void)discoverAccessories;
 - (void)_removePairingOfAccessoryServerCancelledMidPairing;
 - (id)_characteristicForCBCharacteristic:(id)arg1;
@@ -269,7 +275,8 @@
 - (id)shortDescription;
 - (void)dealloc;
 - (void)_resetWithError:(id)arg1;
-- (id)initWithPeripheral:(id)arg1 name:(id)arg2 pairingUsername:(id)arg3 statusFlags:(id)arg4 stateNumber:(id)arg5 stateChanged:(_Bool)arg6 connectReason:(unsigned char)arg7 configNumber:(id)arg8 category:(id)arg9 setupHash:(id)arg10 connectionIdleTime:(unsigned char)arg11 browser:(id)arg12 keyStore:(id)arg13;
+- (void)handleAccessoriesListUpdate:(id)arg1;
+- (id)initWithPeripheral:(id)arg1 name:(id)arg2 pairingUsername:(id)arg3 statusFlags:(id)arg4 stateNumber:(id)arg5 stateChanged:(_Bool)arg6 connectReason:(unsigned char)arg7 configNumber:(id)arg8 category:(id)arg9 setupHash:(id)arg10 connectionIdleTime:(unsigned char)arg11 browser:(id)arg12 keyStore:(id)arg13 whbStableIdentifier:(id)arg14;
 
 // Remaining properties
 @property(readonly) unsigned long long hash;

@@ -7,14 +7,17 @@
 #import <PhotosUI/PXActionPerformerDelegate-Protocol.h>
 
 @class NSString, PXAssetActionPerformer;
+@protocol PXActionPerformerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface PUPXAssetActionPerformer <PXActionPerformerDelegate>
 {
     PXAssetActionPerformer *_underlyingActionPerformer;
+    id <PXActionPerformerDelegate> _forwardingDelegate;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) __weak id <PXActionPerformerDelegate> forwardingDelegate; // @synthesize forwardingDelegate=_forwardingDelegate;
 - (_Bool)actionPerformer:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)actionPerformer:(id)arg1 presentViewController:(id)arg2;
 - (void)actionPerformer:(id)arg1 didChangeState:(unsigned long long)arg2;

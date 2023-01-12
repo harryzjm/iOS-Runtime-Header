@@ -17,8 +17,8 @@
     UILabel *_label;
     UIView *_glyphContainer;
     LAUIPearlGlyphView *_glyph;
-    struct map<CALayer *__unsafe_unretained, CALayer *, std::__1::less<CALayer *__unsafe_unretained>, std::__1::allocator<std::__1::pair<CALayer *const __unsafe_unretained, CALayer *>>> _masks;
-    struct vector<UIView *, std::__1::allocator<UIView *>> _labelSnapshots;
+    struct map<CALayer *__unsafe_unretained, CALayer *, std::less<CALayer *__unsafe_unretained>, std::allocator<std::pair<CALayer *const __unsafe_unretained, CALayer *>>> _masks;
+    struct vector<UIView *, std::allocator<UIView *>> _labelSnapshots;
     UIColor *_backgroundColor;
     UIColor *_textColor;
     UIFont *_baseFont;

@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (Class)layerClass;
 @property(readonly, copy) NSString *description;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 

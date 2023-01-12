@@ -33,7 +33,7 @@
 - (void)start;
 - (void)addItemGroupContext:(id)arg1;
 - (void)cancel;
-- (id)initWithItemGroupSet:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)initWithItemGroupSet:(id)arg1 itemGroupSetCompletionBlock:(CDUnknownBlockType)arg2;
 
 @end
 

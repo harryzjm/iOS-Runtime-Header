@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <SpringBoardFoundation/SBFFocusIsolationView.h>
 
-@class MTMaterialView, UIImageView;
+@class MTMaterialView, UIImageView, UIView;
 @protocol SBFolderControllerBackgroundViewDelegate;
 
-@interface SBFolderControllerBackgroundView : UIView
+@interface SBFolderControllerBackgroundView : SBFFocusIsolationView
 {
     MTMaterialView *_blurView;
     UIImageView *_blurViewSnapshot;

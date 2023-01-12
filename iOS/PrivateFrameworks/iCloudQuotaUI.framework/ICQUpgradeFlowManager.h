@@ -11,7 +11,7 @@
 #import <iCloudQuotaUI/RemoteUIControllerDelegate-Protocol.h>
 #import <iCloudQuotaUI/UINavigationControllerDelegate-Protocol.h>
 
-@class AAUIRemoteUIController, AAUIServerUIHookHandler, ICQAlertController, ICQOffer, ICQUpgradeFlowOptions, ICQUpgradeOfferViewController, NSDictionary, NSString, UINavigationController;
+@class AAUIRemoteUIController, AAUIServerUIHookHandler, ICQAlertController, ICQOffer, ICQUpgradeFlowOptions, ICQUpgradeOfferViewController, NSData, NSDictionary, NSString, UINavigationController;
 @protocol ICQUpgradeFlowManagerDelegate;
 
 @interface ICQUpgradeFlowManager : NSObject <UINavigationControllerDelegate, ICQPageDelegate, RemoteUIControllerDelegate, ICQServerHookDelegate>
@@ -27,10 +27,12 @@
     ICQOffer *_offer;
     NSDictionary *_bindings;
     ICQUpgradeFlowOptions *_flowOptions;
+    NSData *_preloadedRemoteUIData;
     id <ICQUpgradeFlowManagerDelegate> _delegate;
     UINavigationController *_hostingNavigationController;
     ICQAlertController *_upgradeAlertController;
     AAUIRemoteUIController *_remoteUIController;
+    NSString *_closeURL;
 }
 
 + (_Bool)shouldSubclassShowForOffer:(id)arg1;
@@ -38,18 +40,26 @@
 + (void)addActiveFlowManager:(id)arg1;
 + (id)activeFlowManagers;
 + (Class)subclassForOfferType:(long long)arg1;
++ (_Bool)shouldShowForPremiumOffer:(id)arg1;
 + (_Bool)shouldShowForOffer:(id)arg1;
++ (void)addHeadersForRequest:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 + (void)needsToRunWithCompletion:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *closeURL; // @synthesize closeURL=_closeURL;
 @property(retain, nonatomic) AAUIRemoteUIController *remoteUIController; // @synthesize remoteUIController=_remoteUIController;
 @property(nonatomic) _Bool completedFamilySetup; // @synthesize completedFamilySetup=_completedFamilySetup;
 @property(retain, nonatomic) ICQAlertController *upgradeAlertController; // @synthesize upgradeAlertController=_upgradeAlertController;
 @property(retain, nonatomic) UINavigationController *hostingNavigationController; // @synthesize hostingNavigationController=_hostingNavigationController;
 @property(nonatomic) _Bool shouldNavigationControllerBeDismissed; // @synthesize shouldNavigationControllerBeDismissed=_shouldNavigationControllerBeDismissed;
 @property(nonatomic) __weak id <ICQUpgradeFlowManagerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(retain, nonatomic) NSData *preloadedRemoteUIData; // @synthesize preloadedRemoteUIData=_preloadedRemoteUIData;
 @property(copy, nonatomic) ICQUpgradeFlowOptions *flowOptions; // @synthesize flowOptions=_flowOptions;
 @property(retain, nonatomic) NSDictionary *bindings; // @synthesize bindings=_bindings;
 @property(readonly, nonatomic) ICQOffer *offer; // @synthesize offer=_offer;
+- (id)addParams:(id)arg1 toJourneyURL:(id)arg2;
+- (void)beginJourney;
+- (id)initWithJourneyId:(id)arg1;
+- (id)initWithJourneyId:(id)arg1 params:(id)arg2;
 - (void)_sendDelegateDidPresentViewController:(id)arg1;
 - (void)_sendDelegateComplete;
 - (void)_sendDelegateCancel;
@@ -65,6 +75,7 @@
 - (void)remoteUIController:(id)arg1 didReceiveObjectModel:(id)arg2 actionSignal:(unsigned long long *)arg3;
 - (void)remoteUIController:(id)arg1 shouldLoadRequest:(id)arg2 redirectResponse:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)sender:(id)arg1 action:(long long)arg2 parameters:(id)arg3;
+- (void)shouldNotSignalDelegateOnDismiss;
 - (unsigned long long)navigationControllerSupportedInterfaceOrientations:(id)arg1;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(_Bool)arg3;
 - (void)_clearBusyOfferViewController;
@@ -80,9 +91,14 @@
 - (id)_whitelistedInProcessClients;
 - (void)_openURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_setBusyOfferViewController:(id)arg1;
-- (void)presentRemoteVieWithData:(id)arg1 andURL:(id)arg2;
+- (void)presentRemoteViewWithData:(id)arg1 andURL:(id)arg2;
+- (void)_presentRemoteUIUsingViewController:(id)arg1 withData:(id)arg2;
+- (void)_presentRemoteUIUsingViewController:(id)arg1;
+- (void)_configurePresentingViewController:(id)arg1 preloadedRemoteUIData:(id)arg2;
 - (void)_configurePresentingViewController:(id)arg1;
 - (void)beginFlowWithPresentingViewController:(id)arg1;
+- (void)_beginRemoteFlow;
+- (void)_beginRemoteFlowWithURL:(id)arg1;
 - (void)_addAlertActionForAlertSpec:(id)arg1 buttonIndex:(long long)arg2;
 - (void)_tappedAlertLink:(id)arg1;
 - (id)initWithOffer:(id)arg1;

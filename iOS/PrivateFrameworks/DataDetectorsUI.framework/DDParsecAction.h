@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (void)dismissParsecCollection:(id)arg1;
+- (void)interactionDidFinishAndRequiresDismissal:(_Bool)arg1;
 - (id)createViewController;
 - (int)interactionType;
 - (id)localizedName;

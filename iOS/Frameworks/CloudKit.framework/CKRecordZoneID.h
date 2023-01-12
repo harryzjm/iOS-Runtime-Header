@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+#import <CloudKit/CKPropertiesDescription-Protocol.h>
 #import <CloudKit/CKSQLiteItem-Protocol.h>
 #import <CloudKit/CKXPCSuitableString-Protocol.h>
 #import <CloudKit/NSCopying-Protocol.h>
@@ -13,17 +14,20 @@
 
 @class NSString;
 
-@interface CKRecordZoneID : NSObject <CKXPCSuitableString, CKSQLiteItem, NSSecureCoding, NSCopying>
+@interface CKRecordZoneID : NSObject <CKXPCSuitableString, CKPropertiesDescription, CKSQLiteItem, NSSecureCoding, NSCopying>
 {
     NSString *_zoneName;
     NSString *_ownerName;
+    NSString *_anonymousCKUserID;
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)cachedRecordZoneIDWithName:(id)arg1 ownerName:(id)arg2;
++ (id)cachedRecordZoneIDWithName:(id)arg1 ownerName:(id)arg2 anonymousCKUserID:(id)arg3;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *anonymousCKUserID; // @synthesize anonymousCKUserID=_anonymousCKUserID;
 @property(readonly, copy, nonatomic) NSString *ownerName; // @synthesize ownerName=_ownerName;
 @property(readonly, copy, nonatomic) NSString *zoneName; // @synthesize zoneName=_zoneName;
+- (_Bool)isSystemRecordZoneID;
 - (_Bool)isDefaultRecordZoneID;
 - (long long)compareToRecordZoneID:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -31,15 +35,16 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)CKShortDescriptionRedact:(_Bool)arg1;
 - (id)ckShortDescription;
+- (id)redactedDescription;
 @property(readonly, copy) NSString *description;
-- (id)CKPropertiesDescription;
-- (id)CKPropertiesDescriptionWithProperties:(id)arg1;
-- (id)CKDescriptionPropertiesWithPublic:(_Bool)arg1 private:(_Bool)arg2 shouldExpand:(_Bool)arg3;
+- (void)CKDescribePropertiesUsing:(id)arg1;
 - (id)initWithSqliteRepresentation:(id)arg1;
 - (id)sqliteRepresentation;
 - (id)initWithZoneName:(id)arg1 ownerName:(id)arg2;
-- (id)_initWithZoneName:(id)arg1 ownerName:(id)arg2;
+- (id)initWithZoneName:(id)arg1 ownerName:(id)arg2 anonymousCKUserID:(id)arg3;
+- (id)_initWithZoneName:(id)arg1 ownerName:(id)arg2 anonymousCKUserID:(id)arg3;
 - (id)init;
 - (void)ck_bindInStatement:(id)arg1 atIndex:(unsigned long long)arg2;
 - (id)CKXPCSuitableString;

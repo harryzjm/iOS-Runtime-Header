@@ -9,19 +9,13 @@
     _Bool _showAlways;
     _Bool _showSlideshow;
     _Bool _forceMiroCompelling;
-    _Bool _fakeMiroViewController;
     double _aspectRatio;
     double _maximumHeightRelativeToScreenHeight;
     double _maximumAbsoluteHeight;
-    double _fakeMiroViewAspectRatio;
-    double _fakeMiroViewLoadingDuration;
 }
 
 + (id)sharedInstance;
 + (id)settingsControllerModule;
-@property(nonatomic) double fakeMiroViewLoadingDuration; // @synthesize fakeMiroViewLoadingDuration=_fakeMiroViewLoadingDuration;
-@property(nonatomic) double fakeMiroViewAspectRatio; // @synthesize fakeMiroViewAspectRatio=_fakeMiroViewAspectRatio;
-@property(nonatomic) _Bool fakeMiroViewController; // @synthesize fakeMiroViewController=_fakeMiroViewController;
 @property(nonatomic) _Bool forceMiroCompelling; // @synthesize forceMiroCompelling=_forceMiroCompelling;
 @property(nonatomic) _Bool showSlideshow; // @synthesize showSlideshow=_showSlideshow;
 @property(nonatomic) _Bool showAlways; // @synthesize showAlways=_showAlways;

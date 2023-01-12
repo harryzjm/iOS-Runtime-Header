@@ -10,7 +10,6 @@
 
 @class NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface CKDPRecordSaveRequestConflictLoserUpdate : PBCodable <NSCopying>
 {
     NSMutableArray *_conflictLoserEtags;

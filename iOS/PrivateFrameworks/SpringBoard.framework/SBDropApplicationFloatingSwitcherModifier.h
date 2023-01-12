@@ -13,11 +13,11 @@
 }
 
 - (void).cxx_destruct;
-- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
+- (struct SBSwitcherAsyncRenderingAttributes)asyncRenderingAttributesForAppLayout:(id)arg1;
 - (id)keyboardSuppressionMode;
 - (id)appLayoutsToResignActive;
 - (_Bool)shouldPerformCrossfadeForReduceMotion;
-- (double)opacityForIndex:(unsigned long long)arg1;
+- (double)opacityForLayoutRole:(long long)arg1 inAppLayout:(id)arg2 atIndex:(unsigned long long)arg3;
 - (id)visibleAppLayouts;
 - (id)transitionWillBegin;
 - (id)initWithTransitionID:(id)arg1 fromAppLayout:(id)arg2 toAppLayout:(id)arg3;

@@ -14,25 +14,28 @@
 
 @interface SBWidgetMetricsServer : NSObject <BSServiceConnectionListenerDelegate, SBSWidgetMetricsServiceServerInterface>
 {
-    id <SBSWidgetMetricsProviding> _metricsProvider;
     NSMutableArray *_connections;
     FBServiceClientAuthenticator *_authenticator;
     BSServiceConnectionListener *_listener;
     NSObject<OS_dispatch_queue> *_queue;
+    id <SBSWidgetMetricsProviding> _systemMetricsProvider;
+    id <SBSWidgetMetricsProviding> _lockScreenMetricsProvider;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) __weak id <SBSWidgetMetricsProviding> lockScreenMetricsProvider; // @synthesize lockScreenMetricsProvider=_lockScreenMetricsProvider;
+@property(readonly, nonatomic) __weak id <SBSWidgetMetricsProviding> systemMetricsProvider; // @synthesize systemMetricsProvider=_systemMetricsProvider;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly, nonatomic) BSServiceConnectionListener *listener; // @synthesize listener=_listener;
 @property(readonly, nonatomic) FBServiceClientAuthenticator *authenticator; // @synthesize authenticator=_authenticator;
 @property(readonly, copy, nonatomic) NSMutableArray *connections; // @synthesize connections=_connections;
-@property(readonly, nonatomic) __weak id <SBSWidgetMetricsProviding> metricsProvider; // @synthesize metricsProvider=_metricsProvider;
 - (id)previewMetricsSpecificationForDeviceContext:(id)arg1 displayContext:(id)arg2 bundleIdentifier:(id)arg3;
 - (id)previewMetricsSpecificationForBundleIdentifier:(id)arg1;
 - (id)systemMetricsForWidget:(id)arg1;
+- (id)_metricsProviderForWidget:(id)arg1;
 - (void)listener:(id)arg1 didReceiveConnection:(id)arg2 withContext:(id)arg3;
 - (void)dealloc;
-- (id)initWithMetricsProvider:(id)arg1;
+- (id)initWithSystemMetricsProvider:(id)arg1 lockScreenMetricsProvider:(id)arg2;
 - (id)init;
 
 // Remaining properties

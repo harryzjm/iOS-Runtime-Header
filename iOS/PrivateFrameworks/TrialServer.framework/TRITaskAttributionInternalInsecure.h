@@ -20,6 +20,7 @@
 }
 
 + (id)taskAttributionWithTeamIdentifier:(id)arg1 triCloudKitContainer:(int)arg2 applicationBundleIdentifier:(id)arg3 networkOptions:(id)arg4;
++ (id)taskAttributionFirstPartyWithNetworkOptions:(id)arg1;
 + (id)taskAttributionFromPersistedTask:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) TRIDownloadOptions *networkOptions; // @synthesize networkOptions=_networkOptions;

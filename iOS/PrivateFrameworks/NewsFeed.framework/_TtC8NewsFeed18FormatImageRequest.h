@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *traitCollection;
     MISSING_TYPE *assetHandles;
     MISSING_TYPE *assetHandle;
+    MISSING_TYPE *cacheIdentifier;
 }
 
 - (void).cxx_destruct;

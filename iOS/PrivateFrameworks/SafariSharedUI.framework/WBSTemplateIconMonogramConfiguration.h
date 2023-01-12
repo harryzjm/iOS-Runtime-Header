@@ -15,6 +15,7 @@
     long long _fontWeight;
     double _baselineOffset;
     UIColor *_backgroundColor;
+    UIColor *_foregroundColor;
     double _cornerRadius;
     struct CGSize _iconSize;
 }
@@ -23,12 +24,15 @@
 + (id)configurationWithIconSize:(struct CGSize)arg1 fontSize:(double)arg2 fontWeight:(long long)arg3 baselineOffset:(double)arg4 backgroundColor:(id)arg5 cornerRadius:(double)arg6;
 - (void).cxx_destruct;
 @property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
+@property(retain, nonatomic) UIColor *foregroundColor; // @synthesize foregroundColor=_foregroundColor;
 @property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(nonatomic) double baselineOffset; // @synthesize baselineOffset=_baselineOffset;
 @property(nonatomic) long long fontWeight; // @synthesize fontWeight=_fontWeight;
 @property(nonatomic) double fontSize; // @synthesize fontSize=_fontSize;
 @property(nonatomic) struct CGSize iconSize; // @synthesize iconSize=_iconSize;
 @property(nonatomic) _Bool skipMonogramGeneration; // @synthesize skipMonogramGeneration=_skipMonogramGeneration;
+- (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
 
 @end
 

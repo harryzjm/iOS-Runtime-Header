@@ -7,21 +7,18 @@
 #import <objc/NSObject.h>
 
 @class HMSetupAccessoryDescription;
-@protocol HMSetupRemoteService;
 
 @interface HFSetupPairingContext : NSObject
 {
     _Bool _isTrustedOrigin;
     HMSetupAccessoryDescription *_setupAccessoryDescription;
-    id <HMSetupRemoteService> _setupRemoteService;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool isTrustedOrigin; // @synthesize isTrustedOrigin=_isTrustedOrigin;
-@property(nonatomic) __weak id <HMSetupRemoteService> setupRemoteService; // @synthesize setupRemoteService=_setupRemoteService;
 @property(retain, nonatomic) HMSetupAccessoryDescription *setupAccessoryDescription; // @synthesize setupAccessoryDescription=_setupAccessoryDescription;
 - (id)init;
-- (id)initWithSetupAccessoryDescription:(id)arg1 setupRemoteService:(id)arg2 isTrustedOrigin:(_Bool)arg3;
+- (id)initWithSetupAccessoryDescription:(id)arg1 isTrustedOrigin:(_Bool)arg2;
 
 @end
 

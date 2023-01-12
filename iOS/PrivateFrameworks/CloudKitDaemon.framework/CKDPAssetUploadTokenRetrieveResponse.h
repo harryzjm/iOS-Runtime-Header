@@ -10,7 +10,6 @@
 
 @class NSData, NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface CKDPAssetUploadTokenRetrieveResponse : PBCodable <NSCopying>
 {
     NSData *_authPutResponse;

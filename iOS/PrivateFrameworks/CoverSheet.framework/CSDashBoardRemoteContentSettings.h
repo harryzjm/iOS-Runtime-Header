@@ -13,6 +13,7 @@
     _Bool _animatesDimming;
     _Bool _animatesUndimming;
     _Bool _undimsOnTap;
+    _Bool _autoExtendsIdleTimer;
     _Bool _usesLegacyDismissalLogic;
     long long _dateTimeStyleOverride;
     long long _backgroundStyleOverride;
@@ -45,6 +46,7 @@
 @property(nonatomic) double upperLuminanceValue; // @synthesize upperLuminanceValue=_upperLuminanceValue;
 @property(nonatomic) double lowerLuminanceValue; // @synthesize lowerLuminanceValue=_lowerLuminanceValue;
 @property(nonatomic) double bottomLuminanceValue; // @synthesize bottomLuminanceValue=_bottomLuminanceValue;
+@property(nonatomic) _Bool autoExtendsIdleTimer; // @synthesize autoExtendsIdleTimer=_autoExtendsIdleTimer;
 @property(nonatomic) _Bool undimsOnTap; // @synthesize undimsOnTap=_undimsOnTap;
 @property(nonatomic) double undimDuration; // @synthesize undimDuration=_undimDuration;
 @property(nonatomic) _Bool animatesUndimming; // @synthesize animatesUndimming=_animatesUndimming;

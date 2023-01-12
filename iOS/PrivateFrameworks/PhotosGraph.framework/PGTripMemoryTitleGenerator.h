@@ -4,11 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class PGGraphLocationNodeCollection;
+
 @interface PGTripMemoryTitleGenerator
 {
+    PGGraphLocationNodeCollection *_locationNodes;
     unsigned long long _type;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 - (id)_typeString;
 - (_Bool)_triggerDefaultTitleGenerationIfNil;
@@ -17,8 +21,9 @@
 - (id)_timeTitleForTrip;
 - (id)_locationTitle;
 - (void)_generateTitleAndSubtitleWithResult:(CDUnknownBlockType)arg1;
-- (id)initWithHighlightNode:(id)arg1;
-- (id)initWithMomentNodes:(id)arg1 type:(unsigned long long)arg2;
+- (id)initWithHighlightNode:(id)arg1 titleGenerationContext:(id)arg2;
+- (id)initWithMomentNodes:(id)arg1 locationNodes:(id)arg2 type:(unsigned long long)arg3 titleGenerationContext:(id)arg4;
+- (id)initWithMomentNodes:(id)arg1 type:(unsigned long long)arg2 titleGenerationContext:(id)arg3;
 
 @end
 

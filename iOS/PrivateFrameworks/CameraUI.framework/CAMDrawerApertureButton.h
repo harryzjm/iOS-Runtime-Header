@@ -10,7 +10,7 @@
 }
 
 @property(nonatomic, getter=isOn) _Bool on; // @synthesize on=_on;
-- (void)updateImage;
+- (_Bool)shouldUseActiveTintForCurrentState;
 - (id)imageNameForCurrentState;
 - (long long)controlType;
 

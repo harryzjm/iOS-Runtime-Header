@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKRecordID, NSDate, NSNumber, NSString, WFFileRepresentation, WFWorkflowIcon, WFWorkflowRecord;
+@class CKRecordID, NSArray, NSDate, NSNumber, NSString, WFFileRepresentation, WFWorkflowIcon, WFWorkflowRecord;
 
 @interface WFMutableGalleryWorkflow
 {
@@ -13,6 +13,9 @@
     NSString *shortDescription;
     NSString *longDescription;
     NSNumber *searchable;
+    long long minVersion;
+    NSArray *hiddenRegions;
+    NSArray *supportedIdioms;
     WFWorkflowRecord *workflowRecord;
     NSDate *createdAt;
     NSDate *modifiedAt;
@@ -32,6 +35,9 @@
 @property(retain, nonatomic) NSDate *modifiedAt; // @synthesize modifiedAt;
 @property(retain, nonatomic) NSDate *createdAt; // @synthesize createdAt;
 @property(retain, nonatomic) WFWorkflowRecord *workflowRecord; // @synthesize workflowRecord;
+@property(copy, nonatomic) NSArray *supportedIdioms; // @synthesize supportedIdioms;
+@property(copy, nonatomic) NSArray *hiddenRegions; // @synthesize hiddenRegions;
+@property(nonatomic) long long minVersion; // @synthesize minVersion;
 @property(retain, nonatomic) NSNumber *searchable; // @synthesize searchable;
 @property(copy, nonatomic) NSString *longDescription; // @synthesize longDescription;
 @property(copy, nonatomic) NSString *shortDescription; // @synthesize shortDescription;

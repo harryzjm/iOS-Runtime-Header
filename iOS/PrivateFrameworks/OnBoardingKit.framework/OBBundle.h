@@ -10,18 +10,23 @@
 
 @interface OBBundle : NSObject
 {
-    NSString *_identifier;
     NSBundle *_bundle;
+    _Bool _isPlaceholder;
+    NSString *_identifier;
     NSString *_bundleVersion;
 }
 
++ (id)bundleAtPath:(id)arg1 placeholderIdentifier:(id)arg2;
 + (id)bundleAtPath:(id)arg1;
 + (id)bundleWithIdentifier:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
+@property(nonatomic) _Bool isPlaceholder; // @synthesize isPlaceholder=_isPlaceholder;
 @property(readonly, nonatomic) NSBundle *bundle; // @synthesize bundle=_bundle;
+@property(readonly, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)privacyFlow;
+@property(readonly, nonatomic) NSBundle *underlyingBundle;
+- (id)initWithBundle:(id)arg1 placeholderIdentifier:(id)arg2;
 - (id)initWithBundle:(id)arg1;
 
 @end

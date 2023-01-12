@@ -8,7 +8,7 @@
 
 @interface TNPageCoordinateDictionary : NSObject
 {
-    struct map<TSUCellCoord, SFUtility::ObjcSharedPtr<NSObject>, std::__1::less<TSUCellCoord>, std::__1::allocator<std::__1::pair<const TSUCellCoord, SFUtility::ObjcSharedPtr<NSObject>>>> _pageCoordinateDictionary;
+    struct map<TSUCellCoord, SFUtility::ObjcSharedPtr<NSObject>, std::less<TSUCellCoord>, std::allocator<std::pair<const TSUCellCoord, SFUtility::ObjcSharedPtr<NSObject>>>> _pageCoordinateDictionary;
     struct _opaque_pthread_rwlock_t {
         long long __sig;
         char __opaque[192];

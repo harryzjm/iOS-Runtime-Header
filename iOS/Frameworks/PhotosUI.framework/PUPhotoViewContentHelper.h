@@ -36,6 +36,7 @@
     _Bool _flattensBadgeView;
     _Bool _avoidsPhotoDecoration;
     _Bool _animatingRoundedCorners;
+    _Bool _continuousCorners;
     _Bool _useOverlay;
     _Bool _highlighted;
     _Bool _livePhotoHidden;
@@ -122,6 +123,7 @@
 @property(retain, nonatomic) UIColor *overlayColor; // @synthesize overlayColor=_overlayColor;
 @property(nonatomic) _Bool useOverlay; // @synthesize useOverlay=_useOverlay;
 @property(readonly, nonatomic) unsigned long long cornersToRound; // @synthesize cornersToRound=_cornersToRound;
+@property(nonatomic) _Bool continuousCorners; // @synthesize continuousCorners=_continuousCorners;
 @property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property(nonatomic, getter=isAnimatingRoundedCorners) _Bool animatingRoundedCorners; // @synthesize animatingRoundedCorners=_animatingRoundedCorners;
 @property(nonatomic) _Bool avoidsPhotoDecoration; // @synthesize avoidsPhotoDecoration=_avoidsPhotoDecoration;
@@ -169,7 +171,7 @@
 - (void)_updateLivePhotoViewVisibility;
 - (void)stopPlayback;
 - (void)startPlaybackWithStyle:(long long)arg1;
-- (void)setCornerRadius:(double)arg1 cornersToRound:(unsigned long long)arg2 useOverlay:(_Bool)arg3 overlayColor:(id)arg4;
+- (void)setCornerRadius:(double)arg1 cornersToRound:(unsigned long long)arg2 useOverlay:(_Bool)arg3 overlayColor:(id)arg4 continuousCorners:(_Bool)arg5;
 - (void)setCornersToRound:(unsigned long long)arg1;
 @property(readonly, nonatomic) _Bool providesVisualFeedbackOnPress;
 @property(readonly, nonatomic) UIView *badgeContainerView;

@@ -9,7 +9,6 @@
 @class CKRecord, CKRecordID, NSError, NSString;
 @protocol OS_dispatch_source;
 
-__attribute__((visibility("hidden")))
 @interface CKDRecordFetchInfo : NSObject
 {
     _Bool _ignoreErrors;

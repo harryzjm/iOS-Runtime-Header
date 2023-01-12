@@ -12,8 +12,8 @@
 {
     NSDateInterval *_dateInterval;
     long long _activityCacheIndex;
-    vector_8ece868d _heartRateSamples;
-    vector_89c96404 _workouts;
+    struct vector<HDActivityCacheHeartRateStatisticsBuilderHeartRateSample, std::allocator<HDActivityCacheHeartRateStatisticsBuilderHeartRateSample>> _heartRateSamples;
+    struct vector<HDActivityCacheStatisticsBuilderWorkoutSample, std::allocator<HDActivityCacheStatisticsBuilderWorkoutSample>> _workouts;
     HKQuantity *_restingHeartRate;
     HKQuantity *_walkingAverageHeartRate;
     HKHeartRateSummaryStatistics *_allDayStatistics;
@@ -31,24 +31,9 @@
 - (void).cxx_destruct;
 - (void)reportDailyAnalyticsWithProfile:(id)arg1;
 - (void)setDateOfBirthComponents:(id)arg1;
-- (void)_updateMetricsForBreatheStatistics:(id)arg1;
-- (id)_sessionReadingsForBreatheStatistics:(id)arg1;
-- (void)addBreatheSessions:(const vector_b2eb559c *)arg1;
-- (void)_updateMetricsForWorkoutRecoveryStatistics:(id)arg1;
-- (id)_filteredRecoveryReadings:(id)arg1;
-- (id)_recoveryReadingsForWorkoutStatistics:(id)arg1;
-- (void)_updateMetricsForWorkoutStatistics:(id)arg1;
-- (id)_averageCalculatorForWorkoutStatistics:(id)arg1;
-- (void)_addHeartRateStatisticsForNewWorkouts:(const vector_89c96404 *)arg1;
-- (void)addWorkouts:(const vector_89c96404 *)arg1;
-- (void)_updateMetricsForSessionStatistics:(id)arg1;
-- (void)_addBeatsPerSecond:(double)arg1 time:(double)arg2 toSessionStatistics:(id)arg3;
-- (void)_addHeartRateSamples:(const vector_8ece868d *)arg1 toStatistics:(id)arg2;
-- (void)_addHeartRateSamplesToAllStatistics:(const vector_8ece868d *)arg1;
-- (void)addHeartRateSamples:(const vector_8ece868d *)arg1;
-- (id)heartRateDateInterval;
-- (id)walkingAverageHeartRate;
-- (id)calcRestingHeartRateWithMinReadings:(int)arg1 readingsCount:(int *)arg2 filteredReadingsCount:(int *)arg3;
+- (void)addBreatheSessions:(const void *)arg1;
+- (void)addWorkouts:(const void *)arg1;
+- (void)addHeartRateSamples:(const void *)arg1;
 @property(readonly, nonatomic) HKHeartRateSummary *heartRateSummary;
 - (id)initWithDateInterval:(id)arg1 activityCacheIndex:(long long)arg2;
 

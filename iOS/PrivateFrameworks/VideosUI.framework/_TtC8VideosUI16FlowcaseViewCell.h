@@ -24,8 +24,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)layoutSubviews;
-- (void)prepareForReuse;
+- (void)onImageDidLoad:(id)arg1;
+- (struct CGSize)vui_layoutSubviews:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
+- (void)vui_prepareForReuse;
 
 @end
 

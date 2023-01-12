@@ -23,11 +23,11 @@
     struct __CFRunLoopSource *_userNotificationRunLoopSource;
     NSString *_newModeForUserNotification;
     NSObject *_keyboardTagForUserNotification;
-    _Bool _loadingExtensions;
-    _Bool _needsUpdateExtensions;
     _Bool _suppressCurrentPublicInputMode;
     _Bool disableFloatingKeyboardFilter;
     _Bool _shouldRunContinuousDiscovery;
+    _Bool _disablesUpdateLastUsedInputModeTimer;
+    _Bool _lastInputModeSwitchTriggeredByASCIIToggle;
     UITextInputMode *_documentInputMode;
     NSArray *keyboardInputModes;
     NSArray *keyboardInputModeIdentifiers;
@@ -51,14 +51,16 @@
 
 + (id)ASCIICapableInputModeIdentifierForPreferredLanguages;
 + (id)inputModeIdentifierForPreferredLanguages:(id)arg1 passingTest:(CDUnknownBlockType)arg2;
++ (_Bool)dictationInputModeIsFunctional;
 + (id)disallowedDictationLanguagesForDeviceLanguage;
-+ (id)hardwareInputModeAutomaticHardwareLayout;
 + (id)sharedInputModeController;
 @property(retain, nonatomic) id extensionMatchingContext; // @synthesize extensionMatchingContext=_extensionMatchingContext;
 @property(retain, nonatomic) UIKeyboardInputMode *currentUsedInputMode; // @synthesize currentUsedInputMode=_currentUsedInputMode;
 @property(retain, nonatomic) UIKeyboardInputMode *nextInputModeToUse; // @synthesize nextInputModeToUse=_nextInputModeToUse;
 @property(retain) NSArray *userSelectableKeyboardInputModeIdentifiers; // @synthesize userSelectableKeyboardInputModeIdentifiers=_userSelectableKeyboardInputModeIdentifiers;
 @property(retain) NSArray *userSelectableKeyboardInputModes; // @synthesize userSelectableKeyboardInputModes=_userSelectableKeyboardInputModes;
+@property(nonatomic) _Bool lastInputModeSwitchTriggeredByASCIIToggle; // @synthesize lastInputModeSwitchTriggeredByASCIIToggle=_lastInputModeSwitchTriggeredByASCIIToggle;
+@property(nonatomic) _Bool disablesUpdateLastUsedInputModeTimer; // @synthesize disablesUpdateLastUsedInputModeTimer=_disablesUpdateLastUsedInputModeTimer;
 @property(nonatomic) id <UIKeyboardInputModeControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool shouldRunContinuousDiscovery; // @synthesize shouldRunContinuousDiscovery=_shouldRunContinuousDiscovery;
 @property(copy, nonatomic) NSArray *additionalTextInputLocales; // @synthesize additionalTextInputLocales=_additionalTextInputLocales;
@@ -77,7 +79,7 @@
 @property(retain) NSArray *keyboardInputModes; // @synthesize keyboardInputModes;
 @property(retain, nonatomic) UITextInputMode *documentInputMode; // @synthesize documentInputMode=_documentInputMode;
 - (id)supportedFullModesForHardwareKeyboard:(id)arg1 countryCode:(id)arg2 activeModes:(id)arg3 matchedMode:(id *)arg4;
-- (void)handleSpecificHardwareKeyboard;
+- (void)handleSpecificHardwareKeyboard:(id)arg1;
 - (void)getHardwareKeyboardLanguage:(id *)arg1 countryCode:(id *)arg2;
 - (void)releaseAddKeyboardNotification;
 - (void)didAcceptAddKeyboardInputMode;
@@ -92,6 +94,9 @@
 - (void)startDictationConnectionForFileAtURL:(id)arg1 forInputModeIdentifier:(id)arg2;
 - (void)performWithForcedExtensionInputModes:(CDUnknownBlockType)arg1;
 - (void)performWithoutExtensionInputModes:(CDUnknownBlockType)arg1;
+- (void)forceDictationReturnToKeyboardInputMode;
+- (void)stopDictationAndResignFirstResponder;
+- (void)switchToDictationInputModeWithOptions:(id)arg1;
 - (void)stopDictation;
 - (void)switchToDictationInputMode;
 - (void)switchToCurrentSystemInputMode;
@@ -121,7 +126,6 @@
 - (id)_allExtensionsFromMatchingExtensions:(id)arg1;
 - (void)_clearAllExtensionsIfNeeded;
 - (void)_clearAllExtensions;
-- (void)extensionsChanged;
 - (void)didEnterBackground:(id)arg1;
 - (void)keyboardsPreferencesChanged:(id)arg1;
 - (void)willEnterForeground:(id)arg1;
@@ -149,6 +153,7 @@
 - (void)setDictationSLSLanguagesEnabled:(id)arg1;
 @property(readonly, nonatomic) _Bool containsDictationSupportedInputMode;
 @property(readonly, nonatomic) _Bool containsEmojiInputMode;
+- (void)changePreferredEmojiSearchInputModeForInputDelegate:(id)arg1;
 - (void)updateEnabledDictationAndSLSLanguagesWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)updateEnabledDictationLanguages:(_Bool)arg1;
 - (_Bool)isDictationLanguageEnabled:(id)arg1;

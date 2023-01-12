@@ -12,10 +12,10 @@
 + (id)valueFromSerializedRepresentation:(id)arg1 variableProvider:(id)arg2 parameter:(id)arg3;
 + (Class)processingValueClass;
 - (id)valueItemClasses;
-- (id)stringInterpretedAsContactHandle:(id)arg1;
+- (id)stringInterpretedAsContactHandle:(id)arg1 allowsCustomHandles:(_Bool)arg2;
 - (_Bool)reinterpretsStringsAsContactHandlesFromVariable:(_Bool)arg1;
 - (void)processContentCollection:(id)arg1 context:(id)arg2 fromVariable:(_Bool)arg3 valueHandler:(CDUnknownBlockType)arg4;
-- (id)collectionByConvertingStringItemsToHandles:(id)arg1;
+- (id)collectionByConvertingStringItemsToHandles:(id)arg1 allowsCustomHandles:(_Bool)arg2;
 - (void)processWithContext:(id)arg1 userInputRequiredHandler:(CDUnknownBlockType)arg2 valueHandler:(CDUnknownBlockType)arg3;
 - (id)initWithValue:(id)arg1;
 

@@ -10,14 +10,16 @@
 #import <ReminderKit/NSSecureCoding-Protocol.h>
 #import <ReminderKit/REMExternalSyncMetadataWritableProviding-Protocol.h>
 #import <ReminderKit/REMObjectIDProviding-Protocol.h>
+#import <ReminderKit/REMObjectStorageSupportedVersionProviding-Protocol.h>
 
 @class NSData, NSSet, NSString, REMCRMergeableOrderedSet, REMObjectID, REMResolutionTokenMap;
 
-@interface REMAccountStorage : NSObject <NSCopying, NSSecureCoding, REMObjectIDProviding, REMExternalSyncMetadataWritableProviding>
+@interface REMAccountStorage : NSObject <NSCopying, NSSecureCoding, REMObjectIDProviding, REMExternalSyncMetadataWritableProviding, REMObjectStorageSupportedVersionProviding>
 {
     unsigned long long _storeGeneration;
     unsigned long long _copyGeneration;
     struct os_unfair_lock_s _lock;
+    _Bool _isAddingNonPrimaryCKAccountForTesting;
     _Bool _markedForRemoval;
     _Bool _listsDADisplayOrderChanged;
     _Bool _inactive;
@@ -31,13 +33,19 @@
     NSString *externalModificationTag;
     NSString *daSyncToken;
     NSString *daPushKey;
+    long long minimumSupportedVersion;
+    long long effectiveMinimumSupportedVersion;
     REMObjectID *_objectID;
     long long _type;
     NSString *_name;
     REMCRMergeableOrderedSet *_listIDsMergeableOrdering;
     NSSet *_listIDsToUndelete;
+    NSSet *_smartListIDsToUndelete;
     REMResolutionTokenMap *_resolutionTokenMap;
     NSData *_resolutionTokenMapData;
+    NSString *_personID;
+    NSData *_personIDSalt;
+    long long _persistenceCloudSchemaVersion;
     NSString *_daConstraintsDescriptionPath;
 }
 
@@ -51,25 +59,36 @@
 @property(nonatomic) _Bool daSupportsSharedCalendars; // @synthesize daSupportsSharedCalendars=_daSupportsSharedCalendars;
 @property(nonatomic) _Bool daAllowsCalendarAddDeleteModify; // @synthesize daAllowsCalendarAddDeleteModify=_daAllowsCalendarAddDeleteModify;
 @property(copy, nonatomic) NSString *daConstraintsDescriptionPath; // @synthesize daConstraintsDescriptionPath=_daConstraintsDescriptionPath;
+@property(nonatomic) long long persistenceCloudSchemaVersion; // @synthesize persistenceCloudSchemaVersion=_persistenceCloudSchemaVersion;
 @property(nonatomic) _Bool didFinishMigration; // @synthesize didFinishMigration=_didFinishMigration;
 @property(nonatomic) _Bool didChooseToMigrateLocally; // @synthesize didChooseToMigrateLocally=_didChooseToMigrateLocally;
 @property(nonatomic) _Bool didChooseToMigrate; // @synthesize didChooseToMigrate=_didChooseToMigrate;
 @property(nonatomic) _Bool inactive; // @synthesize inactive=_inactive;
+@property(copy, nonatomic) NSData *personIDSalt; // @synthesize personIDSalt=_personIDSalt;
+@property(copy, nonatomic) NSString *personID; // @synthesize personID=_personID;
 @property(retain, nonatomic) NSData *resolutionTokenMapData; // @synthesize resolutionTokenMapData=_resolutionTokenMapData;
 @property(retain, nonatomic) REMResolutionTokenMap *resolutionTokenMap; // @synthesize resolutionTokenMap=_resolutionTokenMap;
 @property(nonatomic) _Bool listsDADisplayOrderChanged; // @synthesize listsDADisplayOrderChanged=_listsDADisplayOrderChanged;
+@property(retain, nonatomic) NSSet *smartListIDsToUndelete; // @synthesize smartListIDsToUndelete=_smartListIDsToUndelete;
 @property(retain, nonatomic) NSSet *listIDsToUndelete; // @synthesize listIDsToUndelete=_listIDsToUndelete;
 @property(nonatomic) _Bool markedForRemoval; // @synthesize markedForRemoval=_markedForRemoval;
 @property(retain, nonatomic) REMCRMergeableOrderedSet *listIDsMergeableOrdering; // @synthesize listIDsMergeableOrdering=_listIDsMergeableOrdering;
 @property(retain, nonatomic) NSString *name; // @synthesize name=_name;
 @property(nonatomic) long long type; // @synthesize type=_type;
 @property(retain, nonatomic) REMObjectID *objectID; // @synthesize objectID=_objectID;
+- (void)setEffectiveMinimumSupportedVersion:(long long)arg1;
+@property(readonly, nonatomic) long long effectiveMinimumSupportedVersion;
+- (void)setMinimumSupportedVersion:(long long)arg1;
+@property(readonly, nonatomic) long long minimumSupportedVersion;
 @property(copy, nonatomic) NSString *daPushKey; // @synthesize daPushKey;
 @property(copy, nonatomic) NSString *daSyncToken; // @synthesize daSyncToken;
 @property(copy, nonatomic) NSString *externalModificationTag; // @synthesize externalModificationTag;
 @property(copy, nonatomic) NSString *externalIdentifier; // @synthesize externalIdentifier;
+- (void)_setIsAddingNonPrimaryCKAccountForTesting:(_Bool)arg1;
+- (_Bool)_isAddingNonPrimaryCKAccountForTesting;
 - (id)listIDsMergeableOrderingReplicaIDSource;
 - (id)cdKeyToStorageKeyMap;
+- (_Bool)isUnsupported;
 @property(readonly, nonatomic) REMObjectID *remObjectID;
 @property(readonly, nonatomic) NSString *displayName;
 - (unsigned long long)hash;
@@ -81,6 +100,7 @@
 - (id)debugDescription;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)optionalObjectID;
 - (id)initWithObjectID:(id)arg1 type:(long long)arg2 name:(id)arg3;
 - (id)initWithObjectID:(id)arg1 type:(long long)arg2 name:(id)arg3 listIDsMergeableOrdering:(id)arg4;
 

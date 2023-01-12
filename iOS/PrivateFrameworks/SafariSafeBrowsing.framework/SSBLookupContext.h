@@ -35,6 +35,7 @@
 - (void)_forceLoadRemoteConfigurationFromDiskWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_getServiceStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_getDatabaseStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_forceDeviceIdentificationTokenUpdateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_forceDatabaseUpdateWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 // Remaining properties

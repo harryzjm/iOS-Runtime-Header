@@ -8,6 +8,7 @@
 
 @class ICStoreRequestContext, NSURL;
 
+__attribute__((visibility("hidden")))
 @interface _MPCMiniSINFEndpointInfo : NSObject
 {
     NSURL *_endpointURL;

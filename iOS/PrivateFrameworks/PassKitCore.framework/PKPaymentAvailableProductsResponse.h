@@ -12,10 +12,8 @@
 }
 
 - (void).cxx_destruct;
-- (id)_generateProducts;
-@property(readonly, copy, nonatomic) NSArray *availableProducts;
+@property(readonly, nonatomic) NSArray *availableProducts; // @synthesize availableProducts=_availableProducts;
 - (_Bool)supportsSecureCoding;
-- (id)initWithData:(id)arg1;
 
 @end
 

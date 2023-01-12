@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthMenstrualCycles/HKRedactedDescription-Protocol.h>
 #import <HealthMenstrualCycles/NSCopying-Protocol.h>
 #import <HealthMenstrualCycles/NSSecureCoding-Protocol.h>
 
-@class NSNumber;
+@class NSNumber, NSString;
 
-@interface HKMCStatistics : NSObject <NSSecureCoding, NSCopying>
+@interface HKMCStatistics : NSObject <HKRedactedDescription, NSSecureCoding, NSCopying>
 {
     long long _numberOfCycles;
     NSNumber *_firstMenstruationStartDayIndex;
@@ -37,7 +38,7 @@
 @property(readonly, nonatomic) long long numberOfCycles; // @synthesize numberOfCycles=_numberOfCycles;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)redactedDescription;
+@property(readonly, copy) NSString *hk_redactedDescription;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;

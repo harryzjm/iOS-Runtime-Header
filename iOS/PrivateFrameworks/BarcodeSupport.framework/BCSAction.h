@@ -6,21 +6,26 @@
 
 #import <objc/NSObject.h>
 
+#import <BarcodeSupport/BCSAction-Protocol.h>
 #import <BarcodeSupport/BCSActionPrivate-Protocol.h>
 
-@class BCSActionPickerViewAssistant, CPSClipMetadataRequest, NSArray, NSDictionary, NSString, NSURL;
+@class BCSActionPickerViewAssistant, BCSDetectedCode, CPSClipMetadataRequest, NSArray, NSDictionary, NSString, NSURL, UIImage;
 @protocol BCSActionDelegate, BCSCodePayload, BCSParsedDataPrivate;
 
-__attribute__((visibility("hidden")))
-@interface BCSAction : NSObject <BCSActionPrivate>
+@interface BCSAction : NSObject <BCSActionPrivate, BCSAction>
 {
     BCSActionPickerViewAssistant *_actionPickerViewAssistant;
     _Bool isInvalidDataAction;
     _Bool isWiFiAction;
+    _Bool shouldRequireUserToPickTargetApp;
+    _Bool hasSensitiveURL;
+    _Bool isAMSAction;
     id <BCSActionDelegate> delegate;
     NSURL *urlThatCanBeOpened;
     NSArray *appLinks;
     CPSClipMetadataRequest *clipMetadataRequest;
+    BCSDetectedCode *_detectedCode;
+    NSString *_contentPreviewString;
     id <BCSParsedDataPrivate> _data;
     NSURL *_url;
     id <BCSCodePayload> _codePayload;
@@ -31,12 +36,27 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) id <BCSCodePayload> codePayload; // @synthesize codePayload=_codePayload;
 @property(readonly, nonatomic) NSURL *url; // @synthesize url=_url;
 @property(readonly, nonatomic) id <BCSParsedDataPrivate> data; // @synthesize data=_data;
+@property(readonly, nonatomic) NSString *contentPreviewString; // @synthesize contentPreviewString=_contentPreviewString;
+@property(retain, nonatomic) BCSDetectedCode *detectedCode; // @synthesize detectedCode=_detectedCode;
+@property(readonly, nonatomic) _Bool isAMSAction; // @synthesize isAMSAction;
+@property(readonly, nonatomic) _Bool hasSensitiveURL; // @synthesize hasSensitiveURL;
+@property(readonly, nonatomic) _Bool shouldRequireUserToPickTargetApp; // @synthesize shouldRequireUserToPickTargetApp;
 @property(retain, nonatomic) CPSClipMetadataRequest *clipMetadataRequest; // @synthesize clipMetadataRequest;
 @property(readonly, nonatomic) _Bool isWiFiAction; // @synthesize isWiFiAction;
 @property(readonly, nonatomic) _Bool isInvalidDataAction; // @synthesize isInvalidDataAction;
 @property(readonly, copy, nonatomic) NSArray *appLinks; // @synthesize appLinks;
 @property(readonly, nonatomic) NSURL *urlThatCanBeOpened; // @synthesize urlThatCanBeOpened;
 @property(nonatomic) __weak id <BCSActionDelegate> delegate; // @synthesize delegate;
+@property(readonly, nonatomic) long long payloadDataType;
+@property(readonly, nonatomic) NSString *dataTypeDisplayString;
+- (id)_fallbackDataTypeDisplayString;
+@property(readonly, nonatomic) UIImage *actionIcon;
+@property(readonly, nonatomic) unsigned long long menuElementsCount;
+@property(readonly, nonatomic) NSString *shortDescription;
+@property(readonly, nonatomic) CDUnknownBlockType menuProvider;
+@property(readonly, nonatomic) NSArray *menuElements;
+- (void)performActionWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)performActionWithCompletion:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) long long codeType;
 @property(readonly, copy, nonatomic) NSString *extraPreviewText;
 - (void)determineActionabilityWithCompletionHandler:(CDUnknownBlockType)arg1;

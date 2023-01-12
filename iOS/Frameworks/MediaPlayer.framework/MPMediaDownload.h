@@ -21,8 +21,8 @@
 + (unsigned long long)MPMediaDownloadPauseReasonForATAsset:(id)arg1;
 + (id)MPMediaDownloadsFromATAssets:(id)arg1;
 + (id)MPMediaDownloadsFromMPStoreDownloads:(id)arg1;
-@property long long storeSagaID; // @synthesize storeSagaID=_storeSagaID;
-@property long long libraryID; // @synthesize libraryID=_libraryID;
+@property(nonatomic) long long storeSagaID; // @synthesize storeSagaID=_storeSagaID;
+@property(nonatomic) long long libraryID; // @synthesize libraryID=_libraryID;
 @property(nonatomic) unsigned long long downloadPausedReason; // @synthesize downloadPausedReason=_downloadPausedReason;
 @property(nonatomic) double downloadProgress; // @synthesize downloadProgress=_downloadProgress;
 @property(nonatomic) long long downloadReason; // @synthesize downloadReason=_downloadReason;

@@ -10,91 +10,130 @@
 #import <PencilKit/PKPaletteContentViewInputAssistantDelegate-Protocol.h>
 #import <PencilKit/PKPaletteFloatingKeyboardControllerDelegate-Protocol.h>
 #import <PencilKit/PKPalettePopoverUpdating-Protocol.h>
+#import <PencilKit/PKPaletteToolPickerViewDataSource-Protocol.h>
 #import <PencilKit/PKPaletteToolPickerViewDelegate-Protocol.h>
 #import <PencilKit/PKPaletteToolPreviewDelegate-Protocol.h>
 #import <PencilKit/PKPaletteUndoRedoViewDelegate-Protocol.h>
 #import <PencilKit/PKPaletteViewStateSubject-Protocol.h>
 #import <PencilKit/PKTextInputWindowFirstResponderControllerDelegate-Protocol.h>
+#import <PencilKit/UIPencilInteractionDelegate-Protocol.h>
 
-@class MTMaterialView, NSArray, NSLayoutConstraint, NSString, NSUndoManager, PKInk, PKPaletteContentView, PKPaletteFloatingKeyboardController, PKPaletteInputAssistantButtonProvider, PKPaletteTapToRadarCommand, PKTextInputWindowFirstResponder, PKTextInputWindowFirstResponderController, UIPencilInteraction, UIView, UIWindowScene;
-@protocol PKPaletteTool, PKPaletteViewAnnotationDelegate;
+@class MTMaterialView, NSArray, NSLayoutConstraint, NSString, NSUndoManager, PKPaletteContentView, PKPaletteFloatingKeyboardController, PKPaletteInputAssistantButtonProvider, PKPaletteTapToRadarCommand, PKPaletteToolView, PKTextInputWindowFirstResponder, PKTextInputWindowFirstResponderController, PKTool, UIPencilInteraction, UIView, UIViewController, UIWindowScene;
+@protocol PKDrawingPaletteViewDelegate, PKPaletteViewAnnotationDelegate;
 
-@interface PKDrawingPaletteView <PKDrawingPaletteViewStateSubject, PKPaletteUndoRedoViewDelegate, PKPaletteToolPickerViewDelegate, PKPaletteColorPickerViewDelegate, PKPaletteAdditionalOptionsViewDelegate, PKPaletteToolPreviewDelegate, PKPalettePopoverUpdating, PKTextInputWindowFirstResponderControllerDelegate, PKPaletteFloatingKeyboardControllerDelegate, PKPaletteContentViewInputAssistantDelegate, PKPaletteViewStateSubject>
+@interface PKDrawingPaletteView <PKDrawingPaletteViewStateSubject, PKPaletteUndoRedoViewDelegate, PKPaletteToolPickerViewDelegate, PKPaletteColorPickerViewDelegate, PKPaletteAdditionalOptionsViewDelegate, PKPaletteToolPreviewDelegate, PKPalettePopoverUpdating, PKTextInputWindowFirstResponderControllerDelegate, PKPaletteFloatingKeyboardControllerDelegate, PKPaletteContentViewInputAssistantDelegate, PKPaletteToolPickerViewDataSource, UIPencilInteractionDelegate, PKPaletteViewStateSubject>
 {
     NSUndoManager *_undoManager;
     _Bool _fingerDrawsOptionEnabled;
-    _Bool _showsHandwritingTool;
+    _Bool _showsRuler;
+    _Bool _showsPlusButton;
     _Bool _pencilInteractionEnabledWhenNotVisible;
-    _Bool _isEditingOpacity;
-    _Bool _isEditingStrokeSelection;
-    _Bool _supportsOpacityEditing;
     _Bool _wantsClearBackgroundColorInCompactSize;
+    _Bool _wantsUndoRedoButtonsVisibleInCompactSize;
+    _Bool _wantsEllipsisButtonVisibleInCompactSize;
+    _Bool _wantsBottomLineDividerVisibleInCompactSize;
+    _Bool _useEqualSpacingLayoutInCompactSize;
+    _Bool _wantsMulticolorSwatchShadowInCompactSize;
+    _Bool _wantsUndoRedoButtonsShadowInCompactSize;
+    _Bool _isEditingOpacity;
+    _Bool _editingStrokeSelection;
+    _Bool _editingTextSelection;
     long long _colorUserInterfaceStyle;
-    NSString *_handwritingToolLocaleIdentifier;
+    NSArray *_tools;
+    unsigned long long _indexOfSelectedTool;
+    double _interItemToolsSpacingInCompactSize;
+    double _interItemUndoRedoButtonsSpacingInCompactSize;
     MTMaterialView *_backgroundView;
     PKPaletteContentView *_contentView;
     NSLayoutConstraint *_contentViewBottomConstraint;
-    NSLayoutConstraint *_contentViewWidthConstraint;
-    NSLayoutConstraint *_contentViewHeightConstraint;
-    UIView *_bottomThinSeparator;
+    NSLayoutConstraint *_compactContentViewHeightConstraint;
+    UIView *_bottomLineDividerView;
+    double _interItemUndoRedoButtonsSpacing;
     PKTextInputWindowFirstResponderController *_firstResponderController;
     PKPaletteFloatingKeyboardController *_floatingKeyboardController;
     PKPaletteInputAssistantButtonProvider *_inputAssistantButtonProvider;
     UIPencilInteraction *_pencilInteraction;
+    long long _contextEditingMode;
     PKPaletteTapToRadarCommand *_tapToRadarCommand;
     id <PKPaletteViewAnnotationDelegate> _annotationDelegate;
     UIView *_opacityEditingView;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool wantsClearBackgroundColorInCompactSize; // @synthesize wantsClearBackgroundColorInCompactSize=_wantsClearBackgroundColorInCompactSize;
+@property(nonatomic, getter=isEditingTextSelection) _Bool editingTextSelection; // @synthesize editingTextSelection=_editingTextSelection;
+@property(nonatomic, getter=isEditingStrokeSelection) _Bool editingStrokeSelection; // @synthesize editingStrokeSelection=_editingStrokeSelection;
 @property(readonly, nonatomic) UIView *opacityEditingView; // @synthesize opacityEditingView=_opacityEditingView;
-@property(nonatomic) _Bool supportsOpacityEditing; // @synthesize supportsOpacityEditing=_supportsOpacityEditing;
 @property(nonatomic) __weak id <PKPaletteViewAnnotationDelegate> annotationDelegate; // @synthesize annotationDelegate=_annotationDelegate;
 @property(retain, nonatomic) PKPaletteTapToRadarCommand *tapToRadarCommand; // @synthesize tapToRadarCommand=_tapToRadarCommand;
+@property(nonatomic) long long contextEditingMode; // @synthesize contextEditingMode=_contextEditingMode;
 @property(readonly, nonatomic) UIPencilInteraction *pencilInteraction; // @synthesize pencilInteraction=_pencilInteraction;
 @property(retain, nonatomic) PKPaletteInputAssistantButtonProvider *inputAssistantButtonProvider; // @synthesize inputAssistantButtonProvider=_inputAssistantButtonProvider;
 @property(retain, nonatomic) PKPaletteFloatingKeyboardController *floatingKeyboardController; // @synthesize floatingKeyboardController=_floatingKeyboardController;
 @property(retain, nonatomic) PKTextInputWindowFirstResponderController *firstResponderController; // @synthesize firstResponderController=_firstResponderController;
-@property(nonatomic) _Bool isEditingStrokeSelection; // @synthesize isEditingStrokeSelection=_isEditingStrokeSelection;
+@property(nonatomic) double interItemUndoRedoButtonsSpacing; // @synthesize interItemUndoRedoButtonsSpacing=_interItemUndoRedoButtonsSpacing;
 @property(nonatomic) _Bool isEditingOpacity; // @synthesize isEditingOpacity=_isEditingOpacity;
-@property(retain, nonatomic) UIView *bottomThinSeparator; // @synthesize bottomThinSeparator=_bottomThinSeparator;
-@property(retain, nonatomic) NSLayoutConstraint *contentViewHeightConstraint; // @synthesize contentViewHeightConstraint=_contentViewHeightConstraint;
-@property(retain, nonatomic) NSLayoutConstraint *contentViewWidthConstraint; // @synthesize contentViewWidthConstraint=_contentViewWidthConstraint;
+@property(retain, nonatomic) UIView *bottomLineDividerView; // @synthesize bottomLineDividerView=_bottomLineDividerView;
+@property(retain, nonatomic) NSLayoutConstraint *compactContentViewHeightConstraint; // @synthesize compactContentViewHeightConstraint=_compactContentViewHeightConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *contentViewBottomConstraint; // @synthesize contentViewBottomConstraint=_contentViewBottomConstraint;
 @property(retain, nonatomic) PKPaletteContentView *contentView; // @synthesize contentView=_contentView;
 @property(retain, nonatomic) MTMaterialView *backgroundView; // @synthesize backgroundView=_backgroundView;
+@property(nonatomic) _Bool wantsUndoRedoButtonsShadowInCompactSize; // @synthesize wantsUndoRedoButtonsShadowInCompactSize=_wantsUndoRedoButtonsShadowInCompactSize;
+@property(nonatomic) _Bool wantsMulticolorSwatchShadowInCompactSize; // @synthesize wantsMulticolorSwatchShadowInCompactSize=_wantsMulticolorSwatchShadowInCompactSize;
+@property(nonatomic) _Bool useEqualSpacingLayoutInCompactSize; // @synthesize useEqualSpacingLayoutInCompactSize=_useEqualSpacingLayoutInCompactSize;
+@property(nonatomic) _Bool wantsBottomLineDividerVisibleInCompactSize; // @synthesize wantsBottomLineDividerVisibleInCompactSize=_wantsBottomLineDividerVisibleInCompactSize;
+@property(nonatomic) _Bool wantsEllipsisButtonVisibleInCompactSize; // @synthesize wantsEllipsisButtonVisibleInCompactSize=_wantsEllipsisButtonVisibleInCompactSize;
+@property(nonatomic) _Bool wantsUndoRedoButtonsVisibleInCompactSize; // @synthesize wantsUndoRedoButtonsVisibleInCompactSize=_wantsUndoRedoButtonsVisibleInCompactSize;
+@property(nonatomic) _Bool wantsClearBackgroundColorInCompactSize; // @synthesize wantsClearBackgroundColorInCompactSize=_wantsClearBackgroundColorInCompactSize;
 @property(nonatomic, getter=isPencilInteractionEnabledWhenNotVisible) _Bool pencilInteractionEnabledWhenNotVisible; // @synthesize pencilInteractionEnabledWhenNotVisible=_pencilInteractionEnabledWhenNotVisible;
-@property(copy, nonatomic) NSString *handwritingToolLocaleIdentifier; // @synthesize handwritingToolLocaleIdentifier=_handwritingToolLocaleIdentifier;
-@property(nonatomic) _Bool showsHandwritingTool; // @synthesize showsHandwritingTool=_showsHandwritingTool;
+@property(nonatomic) double interItemUndoRedoButtonsSpacingInCompactSize; // @synthesize interItemUndoRedoButtonsSpacingInCompactSize=_interItemUndoRedoButtonsSpacingInCompactSize;
+@property(nonatomic) double interItemToolsSpacingInCompactSize; // @synthesize interItemToolsSpacingInCompactSize=_interItemToolsSpacingInCompactSize;
+@property(readonly, nonatomic) unsigned long long indexOfSelectedTool; // @synthesize indexOfSelectedTool=_indexOfSelectedTool;
+@property(copy, nonatomic) NSArray *tools; // @synthesize tools=_tools;
+@property(nonatomic) _Bool showsPlusButton; // @synthesize showsPlusButton=_showsPlusButton;
+@property(nonatomic) _Bool showsRuler; // @synthesize showsRuler=_showsRuler;
 @property(nonatomic, getter=isFingerDrawsOptionEnabled) _Bool fingerDrawsOptionEnabled; // @synthesize fingerDrawsOptionEnabled=_fingerDrawsOptionEnabled;
 @property(nonatomic) long long colorUserInterfaceStyle; // @synthesize colorUserInterfaceStyle=_colorUserInterfaceStyle;
+- (void)_toolViewStateDidChange:(id)arg1;
+- (id)_paletteToolViewFromTool:(id)arg1;
+- (id)toolPickerView:(id)arg1 viewForToolAtIndex:(long long)arg2;
+- (long long)numberOfToolsInToolPickerView:(id)arg1;
+@property(readonly, nonatomic) PKPaletteToolView *selectedToolView;
+@property(readonly, nonatomic) PKTool *selectedTool;
+- (_Bool)_canSelectToolAtIndex:(unsigned long long)arg1;
+- (void)_selectToolAtIndex:(unsigned long long)arg1 updateUI:(_Bool)arg2 notifyDelegate:(_Bool)arg3;
+- (void)selectToolAtIndex:(unsigned long long)arg1;
+- (_Bool)_canReplaceToolAtIndex:(unsigned long long)arg1 withTool:(id)arg2;
+- (void)_replaceToolAtIndex:(unsigned long long)arg1 withTool:(id)arg2;
+- (void)_setTools:(id)arg1 resetSelectedTool:(_Bool)arg2 updateUI:(_Bool)arg3 notifyDelegate:(_Bool)arg4;
+- (id)_currentFirstResponder;
 - (void)_updateHandwritingAssistantItemsFromResponder:(id)arg1;
 - (void)_updateHandwritingAssistantItems;
-- (void)_updateInputResponderControllerInputAssistantSupressionState;
+- (void)_updateKeyboardSceneDelegateInputAssistantSupressionState;
 - (id)responderForFloatingKeyboardController:(id)arg1;
-@property(readonly, nonatomic, getter=isHandwritingToolSelected) _Bool handwritingToolSelected;
+- (_Bool)isHandwritingToolSelected;
+- (_Bool)_hasToolWithIdentifier:(id)arg1;
+@property(readonly, nonatomic) _Bool hasHandwritingTool;
 @property(readonly, nonatomic) UIView *contextualEditingView;
-@property(nonatomic) long long contextEditingMode;
 - (struct CGRect)plusButtonFrame;
 - (void)dismissPalettePopoverWithCompletion:(CDUnknownBlockType)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)endOpacityEditing;
 - (void)startOpacityEditing;
-- (void)didChangePalettePosition;
 - (void)didEndAppearanceAnimation;
-- (void)willStartAppearanceAnimation;
+- (void)willStartAppearanceAnimation:(_Bool)arg1;
 - (void)configureForDockedAtEdge:(unsigned long long)arg1;
 - (void)configureForDockedAtCorner;
-- (void)pencilInteractionDidTap:(id)arg1;
-- (_Bool)_shouldHandlePencilInteractionWhenNotVisible;
 - (_Bool)_canHandlePencilInteraction;
+- (void)_performPencilPreferredActionShowColorPalette;
+- (void)_performPencilPreferredActionSwitchPrevious;
+- (void)_performPencilPreferredActionSwitchEraser;
+- (void)pencilInteractionDidTap:(id)arg1;
+- (id)keyboardSelectionMenuForContentView:(id)arg1;
 - (void)contentViewDidDismissInputAssistantView:(id)arg1;
 - (void)contentViewDidSelectInputAssistantReturnKeyItem:(id)arg1;
 - (void)contentViewDidSelectInputAssistantKeyboardItem:(id)arg1;
 - (void)_presentOrDismissFloatingKeyboard;
-@property(copy, nonatomic) NSArray *toolProperties;
-@property(copy, nonatomic) NSArray *toolIdentifiers;
+- (id)keyboardSelectionMenuForAdditionalOptionsView:(id)arg1;
 - (void)additionalOptionsViewDidPressTapToRadarButton:(id)arg1;
 - (void)additionalOptionsViewDidPressReturnKeyButton:(id)arg1;
 - (void)additionalOptionsViewDidPressKeyboardButton:(id)arg1;
@@ -108,9 +147,10 @@
 - (void)hostView:(id)arg1 willDockPaletteToPosition:(long long)arg2 prepareForExpansion:(_Bool)arg3;
 - (_Bool)colorPickerShouldDisplayColorSelection:(id)arg1;
 - (void)colorPickerDidChangeSelectedColor:(id)arg1 isFromExtendedColorPicker:(_Bool)arg2;
+- (double)toolPickerView:(id)arg1 widthForToolAtIndex:(long long)arg2 isCompactSize:(_Bool)arg3;
 - (void)toolPickerViewDidChangeTraitCollectionSizeClass:(id)arg1;
 - (void)toolPickerDidToggleRulerTool:(id)arg1;
-- (void)toolPickerDidChangeSelectedTool:(id)arg1;
+- (void)toolPicker:(id)arg1 didSelectTool:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)floatingKeyboardController:(id)arg1 didChangeKeyboardType:(long long)arg2;
 - (void)floatingKeyboardControllerWillHide:(id)arg1;
 - (void)floatingKeyboardControllerWillShow:(id)arg1;
@@ -123,12 +163,11 @@
 - (_Bool)_isPaletteContentViewHidden;
 - (void)_updateToolPreview;
 - (id)_selectedToolViewInToolPicker;
-@property(readonly, nonatomic) id <PKPaletteTool> selectedTool;
+- (id)_selectedColor;
 - (void)_updateColorPickerSelectedColor;
 - (void)setSelectedAnnotationType:(long long)arg1;
-- (void)_setToolPickerViewSelectedToolColor:(id)arg1 ignoreColorOpacity:(_Bool)arg2;
-- (void)_setSelectedColor:(id)arg1;
-@property(retain, nonatomic) PKInk *selectedToolInk;
+- (void)_setSelectedToolColor:(id)arg1 ignoreColorOpacity:(_Bool)arg2;
+@property(readonly, nonatomic, getter=isEllipsisButtonVisible) _Bool ellipsisButtonVisible;
 - (unsigned long long)paletteViewType;
 - (void)_changeWasDone:(id)arg1;
 - (void)_changeWasRedone:(id)arg1;
@@ -136,7 +175,6 @@
 - (void)_releaseUndoManager;
 - (void)setUndoManager:(id)arg1;
 - (id)undoManager;
-- (void)_updateUIForAnnotationSupportIfNeeded;
 @property(readonly, nonatomic) long long floatingKeyboardType;
 @property(readonly, nonatomic) _Bool enableKeyboardButtons;
 @property(readonly, nonatomic, getter=isVisible) _Bool visible;
@@ -146,9 +184,10 @@
 - (id)_clippingViewBackgroundColor;
 - (void)layoutSubviews;
 - (void)updatePopoverUI;
+- (double)_paletteWidthForHorizontalOrientation;
+- (double)_paletteHeightForVerticalOrientation;
 - (struct CGSize)paletteSizeForEdge:(unsigned long long)arg1;
 - (double)compactPaletteHeight;
-- (void)updateConstraints;
 - (_Bool)_isPaletteConsideredMinimized;
 - (_Bool)_shouldShowFingerDrawsOption;
 - (_Bool)_canShowFingerDrawsOption;
@@ -161,18 +200,20 @@
 - (void)_installPaletteContentViewInView:(id)arg1;
 - (double)dampingRatioForThrowingFromPosition:(long long)arg1 toPosition:(long long)arg2 withVelocity:(struct CGPoint)arg3;
 - (double)responseForThrowingFromPosition:(long long)arg1 toPosition:(long long)arg2 withVelocity:(struct CGPoint)arg3;
-- (void)setDelegate:(id)arg1;
 - (void)dealloc;
 - (void)safeAreaInsetsDidChange;
-- (void)selectPenTool;
 - (void)didChangePaletteScaleFactor;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithTools:(id)arg1 wantsEllipsisButtonVisibleInCompactSize:(_Bool)arg2;
+- (id)initWithTools:(id)arg1;
+- (id)init;
 
 // Remaining properties
 @property(readonly, nonatomic, getter=isAutoHideEnabled) _Bool autoHideEnabled;
 @property(readonly, copy) NSString *debugDescription;
+@property(nonatomic) __weak id <PKDrawingPaletteViewDelegate> delegate; // @dynamic delegate;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(retain, nonatomic) UIViewController *palettePopoverPresentingController;
 @property(readonly, nonatomic) double paletteScaleFactor;
 @property(readonly) Class superclass;
 

@@ -9,12 +9,14 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI19OfferListLockupCell
 {
+    MISSING_TYPE *enableHighlight;
     MISSING_TYPE *containerView;
 }
 
 - (void).cxx_destruct;
-- (void)layoutSubviews;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)vui_prepareForReuse;
+- (void)vui_setHighlighted:(_Bool)arg1;
+- (struct CGSize)vui_layoutSubviews:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

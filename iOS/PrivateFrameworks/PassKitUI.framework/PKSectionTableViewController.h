@@ -30,6 +30,8 @@
 - (void)updateSectionVisibilityAndReloadIfNecessaryForAllSections;
 - (void)updateSectionVisibilityAndReloadIfNecessaryForSections:(id)arg1;
 - (void)updateSectionVisibilityAndReloadIfNecessaryForSection:(unsigned long long)arg1;
+- (void)reloadRows:(id)arg1 inSection:(unsigned long long)arg2;
+- (void)reloadRow:(long long)arg1 inSection:(unsigned long long)arg2;
 - (void)reloadSection:(unsigned long long)arg1;
 - (void)reloadSections:(id)arg1;
 - (_Bool)reloadData;

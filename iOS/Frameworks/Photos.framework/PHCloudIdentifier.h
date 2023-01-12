@@ -6,29 +6,34 @@
 
 #import <objc/NSObject.h>
 
+#import <Photos/NSCopying-Protocol.h>
 #import <Photos/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface PHCloudIdentifier : NSObject <NSSecureCoding>
+@interface PHCloudIdentifier : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_localCloudIdentifier;
     NSString *_identifierCode;
+    NSString *_fingerPrint;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)_notFoundIdentifier;
 + (id)notFoundIdentifier;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *fingerPrint; // @synthesize fingerPrint=_fingerPrint;
 @property(readonly, nonatomic) NSString *identifierCode; // @synthesize identifierCode=_identifierCode;
 @property(readonly, nonatomic) NSString *localCloudIdentifier; // @synthesize localCloudIdentifier=_localCloudIdentifier;
 - (id)description;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, nonatomic) NSString *stringValue;
 - (id)initAsNotFoundIdentifier;
-- (id)initWithLocalCloudIdentifier:(id)arg1 identifierCode:(id)arg2;
+- (id)initWithLocalCloudIdentifier:(id)arg1 identifierCode:(id)arg2 fingerPrint:(id)arg3;
 - (id)initWithStringValue:(id)arg1;
 
 @end

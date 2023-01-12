@@ -8,28 +8,39 @@
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class NSHashTable, NSString;
-@protocol HMDXPCActivityInterfacing;
+@class NSDate, NSHashTable, NSString;
+@protocol HMDXPCActivityInterfacing, HMMLogEventSubmitting;
 
 @interface HMDLogEventDailyScheduler : HMFObject <HMFLogging>
 {
+    struct os_unfair_lock_s _lock;
+    CDUnknownBlockType _dateFactory;
+    NSDate *_lastRunTime;
     NSString *_xpcActivityIdentifier;
-    NSHashTable *_logEventDailyProviders;
+    NSHashTable *_mutableLogEventDailyProviders;
     id <HMDXPCActivityInterfacing> _xpcActivityInterface;
+    id <HMMLogEventSubmitting> _logEventSubmitter;
 }
 
 + (id)logCategory;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <HMMLogEventSubmitting> logEventSubmitter; // @synthesize logEventSubmitter=_logEventSubmitter;
 @property(retain, nonatomic) id <HMDXPCActivityInterfacing> xpcActivityInterface; // @synthesize xpcActivityInterface=_xpcActivityInterface;
-@property(retain, nonatomic) NSHashTable *logEventDailyProviders; // @synthesize logEventDailyProviders=_logEventDailyProviders;
+@property(retain, nonatomic) NSHashTable *mutableLogEventDailyProviders; // @synthesize mutableLogEventDailyProviders=_mutableLogEventDailyProviders;
 @property(readonly, nonatomic) NSString *xpcActivityIdentifier; // @synthesize xpcActivityIdentifier=_xpcActivityIdentifier;
+@property(retain, nonatomic) NSDate *lastRunTime; // @synthesize lastRunTime=_lastRunTime;
+@property(copy) CDUnknownBlockType dateFactory; // @synthesize dateFactory=_dateFactory;
+- (id)statusSummary;
+- (void)forceRunRegisteredBlocks;
+- (id)logEventDailyProviders;
 - (void)registerLogEventDailyProvider:(id)arg1;
+- (void)_runRegisteredBlocks;
 - (void)_runActivity:(id)arg1;
 - (void)_handleCheckInForActivity:(id)arg1;
 - (void)_registerActivity;
 - (id)_criteriaForActivity;
-- (id)initWithIdentifier:(id)arg1 xpcActivityInterface:(id)arg2;
+- (id)initWithIdentifier:(id)arg1 logEventSubmitter:(id)arg2 xpcActivityInterface:(id)arg3 dateFactory:(CDUnknownBlockType)arg4;
 - (id)init;
 
 // Remaining properties

@@ -9,8 +9,5 @@
 @interface NSDate (TRIUtils)
 + (_Bool)triIsDate:(id)arg1 equalToDate:(id)arg2;
 + (_Bool)triIsDate:(id)arg1 equalToDate:(id)arg2 withinInterval:(double)arg3;
-+ (id)triDateFromCloudKitTimestamp:(id)arg1;
-+ (id)triModifiedDateFromCloudKitResult:(id)arg1;
-- (id)triCloudKitTimestamp;
 @end
 

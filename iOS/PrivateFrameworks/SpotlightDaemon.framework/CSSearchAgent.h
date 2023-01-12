@@ -25,6 +25,7 @@
 - (void)startSimpleQuery:(id)arg1;
 - (void)cancelSimpleQuery:(id)arg1;
 - (void)startQuery:(id)arg1;
+- (void)_prepareQueryContext:(id)arg1 searchConnection:(id)arg2;
 - (void)preheat:(id)arg1;
 - (void)cancelQuery:(id)arg1;
 - (id)searchConnection:(id)arg1;

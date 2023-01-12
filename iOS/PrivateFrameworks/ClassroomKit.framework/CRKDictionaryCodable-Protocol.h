@@ -4,10 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary;
+#import <ClassroomKit/CRKDictionaryDecodable-Protocol.h>
+#import <ClassroomKit/CRKDictionaryEncodable-Protocol.h>
 
-@protocol CRKDictionaryCodable
-+ (id)instanceWithDictionary:(NSDictionary *)arg1;
-@property(readonly, copy, nonatomic) NSDictionary *dictionaryValue;
+@protocol CRKDictionaryCodable <CRKDictionaryEncodable, CRKDictionaryDecodable>
 @end
 

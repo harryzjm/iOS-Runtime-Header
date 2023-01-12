@@ -21,10 +21,19 @@
 @property(nonatomic) unsigned long long stackChangeReason; // @synthesize stackChangeReason=_stackChangeReason;
 @property(retain, nonatomic) id <SBLeafIconDataSource> lastUserSelectedDataSource; // @synthesize lastUserSelectedDataSource=_lastUserSelectedDataSource;
 - (_Bool)_hasDataSourceThatIgnoresAllOtherDataSources;
+- (void)updateLabel;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
+- (id)copyWithSuggestionSource:(long long)arg1;
 - (id)copyWithUniqueLeafIdentifier;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)addDataSourcesFromWidgetIcons:(id)arg1;
+- (void)addFirstSuggestedIconDataSource;
+- (void)addFirstSuggestedWidget;
+- (void)removeFirstSuggestedIconDataSource;
+- (void)removeFirstSuggestedWidget;
+@property(readonly, nonatomic) id <SBLeafIconDataSource> firstSuggestedIconDataSource;
+@property(readonly, nonatomic) SBHWidget *firstSuggestedWidget;
 - (_Bool)supportsStackConfiguration;
 - (_Bool)supportsConfiguration;
 - (_Bool)isWidgetStackIcon;
@@ -43,7 +52,9 @@
 - (id)initWithLeafIdentifier:(id)arg1 applicationBundleID:(id)arg2;
 - (id)initWithWidgets:(id)arg1;
 - (id)initWithWidget:(id)arg1;
-- (id)initWithUniqueLeafIdentifier;
+- (id)initWithWidgetExtensionIdentifiers:(id)arg1 widgetKinds:(id)arg2 widgetContainerBundleIdentifers:(id)arg3;
+- (id)initWithWidgetExtensionIdentifiers:(id)arg1 widgetKinds:(id)arg2;
+- (id)initWithCHSAvocadoDescriptors:(id)arg1 suggestionSource:(long long)arg2;
 - (id)initWithCHSAvocadoDescriptors:(id)arg1;
 - (id)initWithCHSAvocadoDescriptor:(id)arg1;
 

@@ -16,17 +16,22 @@
     AFAnalyticsEvent *_event;
     NSString *_streamUID;
     NSDate *_dateCreated;
+    NSString *_speechId;
+    NSString *_recordId;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *recordId; // @synthesize recordId=_recordId;
+@property(readonly, copy, nonatomic) NSString *speechId; // @synthesize speechId=_speechId;
 @property(readonly, copy, nonatomic) NSDate *dateCreated; // @synthesize dateCreated=_dateCreated;
 @property(readonly, copy, nonatomic) NSString *streamUID; // @synthesize streamUID=_streamUID;
 @property(readonly, copy, nonatomic) AFAnalyticsEvent *event; // @synthesize event=_event;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithEvent:(id)arg1 streamUID:(id)arg2 dateCreated:(id)arg3;
-- (void)siriCoreSQLiteRecord_enumerateStorageKeysAndValuesUsingBlock:(CDUnknownBlockType)arg1;
+- (id)initWithEvent:(id)arg1 streamUID:(id)arg2 dateCreated:(id)arg3 speechId:(id)arg4 recordId:(id)arg5;
+- (id)initWithEvent:(id)arg1 streamUID:(id)arg2 dateCreated:(id)arg3 speechId:(id)arg4;
+- (void)siriCoreSQLiteRecord_enumerateColumnNamesAndValuesUsingBlock:(CDUnknownBlockType)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

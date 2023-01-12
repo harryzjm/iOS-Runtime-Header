@@ -16,6 +16,8 @@
 - (id)_annotationTitle;
 @property(readonly, nonatomic) MKMapItemIdentifier *flyoverTourIdentifier;
 @property(readonly, nonatomic) MKMapItemIdentifier *identifier;
+- (unsigned long long)_mapkit_muid;
+- (_Bool)_mapkit_hasMUID;
 @property(retain, nonatomic) UIView *detailCalloutAccessoryView;
 @property(retain, nonatomic) UIView *rightCalloutAccessoryView;
 @property(retain, nonatomic) UIView *leftCalloutAccessoryView;

@@ -11,25 +11,25 @@
 
 @interface SGNamedEntityDissector <SGMailMessageProcessing, SGTextMessageProcessing>
 {
-    _PASLock *_lock;
-    _Bool _significanceCheckEnabled;
     int _linguisticDataNotificationToken;
+    _PASLock *_lock;
 }
 
++ (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_dissectMessage:(id)arg1 entity:(id)arg2 context:(id)arg3;
 - (void)dissectTextMessage:(id)arg1 entity:(id)arg2 context:(id)arg3;
 - (void)dissectMailMessage:(id)arg1 entity:(id)arg2 context:(id)arg3;
 - (id)entitiesInPlainText:(id)arg1 withEligibleRegions:(id)arg2 source:(id)arg3 cloudSync:(_Bool)arg4 algorithms:(id)arg5;
 - (id)_entitiesInPlainText:(id)arg1 withEligibleRegions:(id)arg2 dataDetections:(id)arg3 source:(id)arg4 cloudSync:(_Bool)arg5 algorithms:(id)arg6;
-- (void)_collectCustomTaggerResultsWithText:(id)arg1 eligibleRegions:(id)arg2 isMessagesSource:(_Bool)arg3 addNamedEntity:(CDUnknownBlockType)arg4;
-- (void)_collectNLPTaggerResultsWithText:(id)arg1 ddMatches:(id)arg2 eligibleRegions:(id)arg3 isMessagesSource:(_Bool)arg4 addNamedEntity:(CDUnknownBlockType)arg5;
 - (void)_harvestLocationFromEntity:(id)arg1 category:(unsigned long long)arg2 dynamicCategory:(id)arg3 enrichment:(id)arg4 algorithm:(unsigned short)arg5;
-- (id)_collectDataDetectorsWithText:(id)arg1 algorithms:(id)arg2 dataDetections:(id)arg3 isMessagesSource:(_Bool)arg4 lookupQids:(id)arg5 addNamedEntity:(CDUnknownBlockType)arg6;
+- (id)_collectDataDetectorsWithText:(id)arg1 algorithms:(id)arg2 dataDetections:(id)arg3 isMessagesSource:(_Bool)arg4 addNamedEntity:(CDUnknownBlockType)arg5;
+- (void)_collectAugmentedGazetteerWithText:(id)arg1 addNamedEntity:(CDUnknownBlockType)arg2 addTopic:(CDUnknownBlockType)arg3 addLocation:(CDUnknownBlockType)arg4;
 - (void)_registerForNotifications;
+- (void)_resetGazetteer;
 - (void)dealloc;
 - (id)init;
-- (id)initWithSignificanceCheckEnabled:(_Bool)arg1;
+- (id)initWithPurgeableGazetteer:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

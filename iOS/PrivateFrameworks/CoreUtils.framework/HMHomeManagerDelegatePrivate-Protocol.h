@@ -6,11 +6,14 @@
 
 #import <CoreUtils/HMHomeManagerDelegate-Protocol.h>
 
-@class HMHomeManager, NSArray;
+@class HMHomeManager, NSArray, NSString;
 
 @protocol HMHomeManagerDelegatePrivate <HMHomeManagerDelegate>
 
 @optional
+- (void)homeManagerDidRemoveCurrentAccessory:(HMHomeManager *)arg1;
+- (void)homeManagerDidUpdateAssistantIdentifiers:(HMHomeManager *)arg1;
+- (void)homeManager:(HMHomeManager *)arg1 didUpdateMultiUserStatus:(long long)arg2 reason:(NSString *)arg3;
 - (void)homeManagerDidEndBatchNotifications:(HMHomeManager *)arg1;
 - (void)homeManagerWillStartBatchNotifications:(HMHomeManager *)arg1;
 - (void)homeManager:(HMHomeManager *)arg1 residentProvisioningStatusChanged:(unsigned long long)arg2;

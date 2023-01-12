@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-__attribute__((visibility("hidden")))
 @interface CKDAccountStore : NSObject
 {
 }
 
-+ (id)personaAwarePrimaryAppleAccountFromAccounts:(id)arg1 defaultPrimaryAccount:(id)arg2;
++ (void)invalidatePrimaryAccountCache;
++ (id)sharedPrimaryAccount;
 + (id)sharedAccountStore;
 - (id)init;
 

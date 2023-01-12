@@ -10,7 +10,6 @@
 
 @interface _TtC16NewsSubscription34SubscriptionOffersViewModelFactory : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *learnMoreURL;
     MISSING_TYPE *learnMoreText;
     MISSING_TYPE *webAuthButtonTitle;
     MISSING_TYPE *subscribeButtonTextProvider;

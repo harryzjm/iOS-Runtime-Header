@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <FrontBoardServices/BSInvalidatable-Protocol.h>
 #import <FrontBoardServices/FBSApplicationInfoProvider-Protocol.h>
 #import <FrontBoardServices/LSApplicationWorkspaceObserverProtocol-Protocol.h>
 
 @class FBSApplicationLibraryConfiguration, LSApplicationWorkspace, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
-@protocol OS_dispatch_queue;
+@protocol BSInvalidatable, OS_dispatch_queue;
 
-@interface FBSApplicationLibrary : NSObject <LSApplicationWorkspaceObserverProtocol, FBSApplicationInfoProvider>
+@interface FBSApplicationLibrary : NSObject <LSApplicationWorkspaceObserverProtocol, BSInvalidatable, FBSApplicationInfoProvider>
 {
     FBSApplicationLibraryConfiguration *_configuration;
     LSApplicationWorkspace *_applicationWorkspace;
@@ -27,10 +28,13 @@
     NSMutableArray *_workQueue_pendingSynchronizationExecutionBlocks;
     NSObject<OS_dispatch_queue> *_callOutQueue;
     NSObject<OS_dispatch_queue> *_completionQueue;
-    _Bool _initializing;
+    struct os_unfair_lock_s _lock;
+    id <BSInvalidatable> _stateCaptureAssertion;
+    _Bool _lock_invalidated;
 }
 
 - (void).cxx_destruct;
+- (void)invalidate;
 - (id)applicationInfoForAuditToken:(id)arg1;
 - (id)applicationInfoForBundleIdentifier:(id)arg1;
 - (void)applicationsDidFailToUninstall:(id)arg1;
@@ -76,7 +80,6 @@
 - (void)_notifyForType:(long long)arg1 synchronously:(_Bool)arg2 withCastingBlock:(CDUnknownBlockType)arg3;
 - (id)_observeType:(long long)arg1 withBlock:(id)arg2;
 - (id)_workQueue_currentProcessProxyWithOutURL:(id *)arg1;
-- (void)_addCurrentProcess;
 - (void)_executeOrPendInstallSynchronizationBlock:(CDUnknownBlockType)arg1;
 - (void)synchronize:(CDUnknownBlockType)arg1;
 - (void)_reloadPlaceholdersNotificationFired;

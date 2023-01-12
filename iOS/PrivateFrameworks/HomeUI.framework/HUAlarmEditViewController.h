@@ -23,6 +23,7 @@
 {
     _Bool _isCustomVolumeSelected;
     _Bool _isPlayMediaSelected;
+    _Bool _accessorySupportsMusicAlarm;
     _Bool _isDatePickerWheelScrolled;
     id <HUAlarmEditViewControllerDelegate> _delegate;
     NSString *_loggedInAppleMusicAccountDSID;
@@ -51,6 +52,7 @@
 @property(retain, nonatomic) NSMutableDictionary *appleMusicSubcriptionResult; // @synthesize appleMusicSubcriptionResult=_appleMusicSubcriptionResult;
 @property(retain, nonatomic) id <HFMediaProfileContainer> mediaProfileContainer; // @synthesize mediaProfileContainer=_mediaProfileContainer;
 @property(retain, nonatomic) HFPlaybackArchive *hfPlaybackArchive; // @synthesize hfPlaybackArchive=_hfPlaybackArchive;
+@property(nonatomic) _Bool accessorySupportsMusicAlarm; // @synthesize accessorySupportsMusicAlarm=_accessorySupportsMusicAlarm;
 @property(nonatomic) _Bool isPlayMediaSelected; // @synthesize isPlayMediaSelected=_isPlayMediaSelected;
 @property(nonatomic) _Bool isCustomVolumeSelected; // @synthesize isCustomVolumeSelected=_isCustomVolumeSelected;
 @property(nonatomic) double selectedCustomVolumeLevel; // @synthesize selectedCustomVolumeLevel=_selectedCustomVolumeLevel;
@@ -70,6 +72,7 @@
 - (void)sliderValueTableViewCell:(id)arg1 didChangeValue:(double)arg2;
 - (void)switchCell:(id)arg1 didTurnOn:(_Bool)arg2;
 - (void)alarmEditSettingController:(id)arg1 didEditAlarm:(id)arg2;
+- (_Bool)_isMusicAlarmSupportedInAccessory;
 - (id)_configureSoundForMediaTypeAlarm:(id)arg1;
 - (void)_checkAndPrepareEditingAlarmForMediaTypeAlarm;
 - (void)_updateAppleMusicSubscriptionStatus;
@@ -105,6 +108,7 @@
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)viewDidUnload;
+- (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
 - (unsigned long long)supportedInterfaceOrientations;
@@ -114,7 +118,7 @@
 - (void)_didTap:(id)arg1;
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 - (void)dealloc;
-- (id)initWithAlarmItem:(id)arg1 mediaProfileContainer:(id)arg2;
+- (id)initWithAlarm:(id)arg1 mediaProfile:(id)arg2 mediaProfileContainer:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

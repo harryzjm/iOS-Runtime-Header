@@ -4,22 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
-
-@class MISSING_TYPE;
+@class MISSING_TYPE, UIViewController;
 
 __attribute__((visibility("hidden")))
-@interface _TtC5TeaUI25TabBarContainerController : UIViewController
+@interface _TtC5TeaUI25TabBarContainerController
 {
     MISSING_TYPE *rootViewController;
+    MISSING_TYPE *$__lazy_storage_$_intrinsicTabBar;
 }
 
 - (void).cxx_destruct;
-- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (id)initWithRootViewController:(id)arg1;
+- (id)initWithRootViewController:(id)arg1 navigationBarClass:(Class)arg2;
 @property(nonatomic, readonly) UIViewController *childViewControllerForHomeIndicatorAutoHidden;
 @property(nonatomic, readonly) UIViewController *childViewControllerForStatusBarStyle;
 @property(nonatomic, readonly) UIViewController *childViewControllerForStatusBarHidden;
-- (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;
 - (id)initWithCoder:(id)arg1;
 

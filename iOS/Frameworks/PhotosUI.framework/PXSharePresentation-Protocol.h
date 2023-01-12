@@ -6,10 +6,11 @@
 
 #import <PhotosUI/NSObject-Protocol.h>
 
-@class PXActivitySharingContext;
+@class NSArray, PXActivitySharingContext;
 @protocol PXActivitySharingController;
 
 @protocol PXSharePresentation <NSObject>
+- (NSArray *)defaultActivityTypeOrder;
 - (id <PXActivitySharingController>)createActivitySharingControllerWithContext:(PXActivitySharingContext *)arg1;
 @end
 

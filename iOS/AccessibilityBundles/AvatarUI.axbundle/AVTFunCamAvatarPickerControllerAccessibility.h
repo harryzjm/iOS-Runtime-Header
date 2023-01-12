@@ -13,6 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)viewDidLayoutSubviews;
+- (id)_axRecordForIndexPath:(id)arg1;
 - (id)_axLabelForIndexPath:(id)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_setAXFunCamAvatarCarousel:(id)arg1;

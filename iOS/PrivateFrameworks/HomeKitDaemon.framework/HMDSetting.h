@@ -9,9 +9,11 @@
 #import <HomeKitDaemon/HMDSettingBaseProtocol-Protocol.h>
 
 @class HMSettingValue, NSMutableArray, NSNumber, NSString, NSUUID;
+@protocol HMFLocking;
 
 @interface HMDSetting : NSObject <HMDSettingBaseProtocol>
 {
+    id <HMFLocking> _lock;
     _Bool _readOnly;
     NSUUID *_identifier;
     NSUUID *_parentIdentifier;
@@ -32,7 +34,6 @@
 @property(copy) NSNumber *type; // @synthesize type=_type;
 @property(getter=isReadOnly) _Bool readOnly; // @synthesize readOnly=_readOnly;
 @property(copy) NSString *keyPath; // @synthesize keyPath=_keyPath;
-@property(retain) NSMutableArray *constraints; // @synthesize constraints=_constraints;
 @property(readonly, copy) NSString *name; // @synthesize name=_name;
 @property(readonly, copy) NSUUID *parentIdentifier; // @synthesize parentIdentifier=_parentIdentifier;
 @property(readonly, copy) NSUUID *identifier; // @synthesize identifier=_identifier;
@@ -40,10 +41,11 @@
 - (id)initWithCoder:(id)arg1;
 - (id)constraintsByKeyPathWithCurrentKeyPath:(id)arg1;
 - (_Bool)wouldValueUpdate:(id)arg1;
-- (_Bool)isValidValue:(id)arg1;
+- (_Bool)isValidValue:(id)arg1 error:(id *)arg2;
 - (id)logIdentifier;
 - (_Bool)updateWithSettingValue:(id)arg1;
 - (void)addConstraint:(id)arg1;
+@property(retain) NSMutableArray *constraints; // @synthesize constraints=_constraints;
 @property(readonly, copy) id value;
 @property(readonly, copy) NSString *description;
 - (id)initWithIdentifier:(id)arg1 parentIdentifier:(id)arg2 name:(id)arg3 properties:(id)arg4 type:(id)arg5 value:(id)arg6 constraints:(id)arg7;

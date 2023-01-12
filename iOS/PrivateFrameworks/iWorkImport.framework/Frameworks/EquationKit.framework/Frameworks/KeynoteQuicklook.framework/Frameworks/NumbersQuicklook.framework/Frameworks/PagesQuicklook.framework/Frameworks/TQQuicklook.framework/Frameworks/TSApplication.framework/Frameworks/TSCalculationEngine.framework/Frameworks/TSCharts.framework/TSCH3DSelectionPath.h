@@ -6,14 +6,14 @@
 
 @interface TSCH3DSelectionPath
 {
-    Class mSceneObjectClass;
-    unsigned long long mStyleIndex;
+    Class _sceneObjectClass;
+    unsigned long long _styleIndex;
 }
 
 + (id)selectionPathWithClass:(Class)arg1 styleIndex:(unsigned long long)arg2 selectionPath:(id)arg3;
 + (id)selectionPathWithClass:(Class)arg1 styleIndex:(unsigned long long)arg2 type:(id)arg3 name:(id)arg4 arguments:(id)arg5;
-@property(readonly, nonatomic) unsigned long long styleIndex; // @synthesize styleIndex=mStyleIndex;
-@property(readonly, nonatomic) Class sceneObjectClass; // @synthesize sceneObjectClass=mSceneObjectClass;
+@property(readonly, nonatomic) unsigned long long styleIndex; // @synthesize styleIndex=_styleIndex;
+@property(readonly, nonatomic) Class sceneObjectClass; // @synthesize sceneObjectClass=_sceneObjectClass;
 - (id)initWithClass:(Class)arg1 styleIndex:(unsigned long long)arg2 type:(id)arg3 name:(id)arg4 arguments:(id)arg5;
 
 @end

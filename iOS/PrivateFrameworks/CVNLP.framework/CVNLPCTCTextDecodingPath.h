@@ -8,15 +8,16 @@
 
 @interface CVNLPCTCTextDecodingPath
 {
-    vector_12da65de _tokenString;
-    vector_12da65de _histWordTokenIDs;
+    vector_3b74075b _tokenString;
+    vector_3b74075b _histWordTokenIDs;
     unsigned long long _beginningCurrentWord;
-    struct vector<double, std::__1::allocator<double>> _cumulativeTokenLogProbabilities;
-    struct vector<double, std::__1::allocator<double>> _tokenBoundaryLogProbabilities;
-    struct vector<unsigned long, std::__1::allocator<unsigned long>> _tokenStringSegmentationPositions;
-    struct vector<unsigned long, std::__1::allocator<unsigned long>> _tokenMaxActivations;
-    struct vector<unsigned long, std::__1::allocator<unsigned long>> _tokenCommitCharacterLengths;
+    struct vector<double, std::allocator<double>> _cumulativeTokenLogProbabilities;
+    struct vector<double, std::allocator<double>> _tokenBoundaryLogProbabilities;
+    struct vector<unsigned long, std::allocator<unsigned long>> _tokenStringSegmentationPositions;
+    struct vector<unsigned long, std::allocator<unsigned long>> _tokenMaxActivations;
+    struct vector<unsigned long, std::allocator<unsigned long>> _tokenCommitCharacterLengths;
     _Bool _hasContext;
+    double _normalizedTotalLogProbability;
     _Bool _optimizingAlignment;
     double _blankLogProbability;
     double _nonBlankLogProbability;
@@ -45,7 +46,7 @@
 @property double historyLexiconLogProbability; // @synthesize historyLexiconLogProbability=_historyLexiconLogProbability;
 @property double nonBlankLogProbability; // @synthesize nonBlankLogProbability=_nonBlankLogProbability;
 @property double blankLogProbability; // @synthesize blankLogProbability=_blankLogProbability;
-- (float)_wordLanguageModelLogProbabilityForString:(id)arg1 originalWordRanges:(id)arg2 originalWordIDs:(vector_12da65de)arg3 wordRanges:(id)arg4 wordIDs:(vector_12da65de)arg5;
+- (float)_wordLanguageModelLogProbabilityForString:(id)arg1 originalWordRanges:(id)arg2 originalWordIDs:(vector_3b74075b)arg3 wordRanges:(id)arg4 wordIDs:(vector_3b74075b)arg5;
 - (void)_updateLexiconLogProbabilityForString:(id)arg1 stemmingFromPath:(id)arg2;
 - (void)_updateCharacterLanguageModelLogProbabilityForString:(id)arg1 stemmingFromPath:(id)arg2 normalizedCodepoint:(unsigned int)arg3;
 - (id)pathByExtendingWithString:(id)arg1 extendedPathString:(id)arg2 blankLogProb:(double)arg3 nonBlankLogProb:(double)arg4 timestep:(long long)arg5 commitAction:(long long)arg6 symbolLogProb:(double)arg7;
@@ -73,7 +74,7 @@
 - (void)setWordLanguageModelLogProbability:(double)arg1;
 - (void)setCharacterLanguageModelLogProbability:(double)arg1;
 - (void)dealloc;
-- (id)initWithLanguageResourceBundle:(id)arg1 scoringFunction:(CDUnknownBlockType)arg2 initialCharacterLMState:(struct CVNLPLanguageModelWithState *)arg3 characterTokenIDs:(vector_12da65de)arg4 wordTokenIDs:(vector_12da65de)arg5 optimizingAlignment:(_Bool)arg6 hasContext:(_Bool)arg7;
+- (id)initWithLanguageResourceBundle:(id)arg1 scoringFunction:(CDUnknownBlockType)arg2 initialCharacterLMState:(struct CVNLPLanguageModelWithState *)arg3 characterTokenIDs:(vector_3b74075b)arg4 wordTokenIDs:(vector_3b74075b)arg5 optimizingAlignment:(_Bool)arg6 hasContext:(_Bool)arg7;
 
 @end
 

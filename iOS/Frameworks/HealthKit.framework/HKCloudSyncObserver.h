@@ -29,6 +29,7 @@
 - (id)remoteInterface;
 - (id)exportedInterface;
 - (void)_clientQueue_didCompleteSyncWithStatus:(long long)arg1 error:(id)arg2;
+- (void)clientRemote_didFailToPopulateStatusWithError:(id)arg1;
 - (void)clientRemote_didUpdateObserverWithSyncStatus:(id)arg1;
 - (void)clientRemote_syncDidStart;
 - (void)startSyncIfRestoreNotCompleted;

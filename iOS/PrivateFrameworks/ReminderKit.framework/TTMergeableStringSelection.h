@@ -10,9 +10,10 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface TTMergeableStringSelection : NSObject <TTMergeableStringIDTracker>
 {
-    vector_0ee2fe7a _selectionRanges;
+    struct vector<std::pair<TopoID, TopoID>, std::allocator<std::pair<TopoID, TopoID>>> _selectionRanges;
     unsigned long long _selectionAffinity;
 }
 
@@ -21,14 +22,14 @@
 @property(nonatomic) unsigned long long selectionAffinity; // @synthesize selectionAffinity=_selectionAffinity;
 @property(readonly, copy) NSString *description;
 - (id)serialize;
-- (void)saveToArchive:(struct Selection *)arg1;
-- (id)initWithArchive:(const struct Selection *)arg1;
+- (void)saveToArchive:(void *)arg1;
+- (id)initWithArchive:(const void *)arg1;
 - (id)initWithData:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)hasTopoIDsThatCanChange;
 - (void)updateTopoIDRange:(struct TopoIDRange)arg1 toNewRangeID:(struct TopoIDRange)arg2;
-- (vector_0ee2fe7a *)selectionRanges;
+- (void *)selectionRanges;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

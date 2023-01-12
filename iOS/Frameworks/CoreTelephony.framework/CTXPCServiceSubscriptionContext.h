@@ -43,6 +43,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)context;
 - (_Bool)isEqual:(id)arg1;
+- (id)redactedDescription;
 - (id)description;
 - (id)initWithUUID:(id)arg1 andSlot:(long long)arg2;
 - (id)initWithUUID:(id)arg1;

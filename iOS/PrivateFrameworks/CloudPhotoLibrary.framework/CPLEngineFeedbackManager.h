@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class CPLEngineLibrary, NSArray, NSDate, NSMutableArray, NSURL;
+#import <CloudPhotoLibrary/CPLEngineComponent-Protocol.h>
+
+@class CPLEngineLibrary, NSArray, NSDate, NSMutableArray, NSString, NSURL;
 @protocol CPLEngineTransportSendFeedbackTask, OS_dispatch_queue;
 
-@interface CPLEngineFeedbackManager : NSObject
+@interface CPLEngineFeedbackManager : NSObject <CPLEngineComponent>
 {
     NSObject<OS_dispatch_queue> *_queue;
     id <CPLEngineTransportSendFeedbackTask> _sendTask;
@@ -20,11 +22,13 @@
     _Bool _opened;
     _Bool _closed;
     _Bool _deactivated;
+    NSString *_libraryIdentifier;
     CPLEngineLibrary *_engineLibrary;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) __weak CPLEngineLibrary *engineLibrary; // @synthesize engineLibrary=_engineLibrary;
+- (void)testKey:(id)arg1 value:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)reportMiscInformation:(id)arg1;
 - (void)reportSetting:(id)arg1 hasBeenSetToValue:(id)arg2;
 - (void)reportFetchChangesRewindToFeatureVersion:(unsigned long long)arg1;
@@ -44,6 +48,12 @@
 - (void)closeAndDeactivate:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)openWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithEngineLibrary:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

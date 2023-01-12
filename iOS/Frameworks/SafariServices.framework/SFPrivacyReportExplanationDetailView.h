@@ -11,7 +11,6 @@ __attribute__((visibility("hidden")))
 }
 
 @property(nonatomic) _Bool usesInsetStyle; // @synthesize usesInsetStyle=_usesInsetStyle;
-- (void)_updateFirstItemTitleTopSpacing;
 - (double)interItemSpacing;
 - (id)initWithFrame:(struct CGRect)arg1;
 

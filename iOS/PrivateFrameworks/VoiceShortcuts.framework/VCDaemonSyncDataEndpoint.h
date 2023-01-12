@@ -9,12 +9,11 @@
 #import <VoiceShortcuts/VCSyncDataEndpoint-Protocol.h>
 
 @class NSMutableSet, NSSet, NSString, VCDaemonXPCEventHandler;
-@protocol OS_dispatch_queue, VCDatabaseProvider;
+@protocol OS_dispatch_queue;
 
 @interface VCDaemonSyncDataEndpoint : NSObject <VCSyncDataEndpoint>
 {
     NSObject<OS_dispatch_queue> *_queue;
-    id <VCDatabaseProvider> _databaseProvider;
     VCDaemonXPCEventHandler *_eventHandler;
     NSMutableSet *_mutableSyncDataHandlers;
 }
@@ -22,10 +21,9 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableSet *mutableSyncDataHandlers; // @synthesize mutableSyncDataHandlers=_mutableSyncDataHandlers;
 @property(readonly, nonatomic) VCDaemonXPCEventHandler *eventHandler; // @synthesize eventHandler=_eventHandler;
-@property(readonly, nonatomic) id <VCDatabaseProvider> databaseProvider; // @synthesize databaseProvider=_databaseProvider;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly, nonatomic) NSSet *syncDataHandlers;
-- (id)initWithDatabaseProvider:(id)arg1 eventHandler:(id)arg2;
+- (id)initWithEventHandler:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

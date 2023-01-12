@@ -14,6 +14,8 @@
 + (id)timeUnits;
 + (void)preferredUnitsForActivityType:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 + (_Bool)isWheelchairUser;
++ (id)activityTypeForLocalizedActivityName:(id)arg1;
++ (id)allActivityTypesIncludingWheelchairWorkouts:(_Bool)arg1 includingSwimmingWorkouts:(_Bool)arg2;
 + (id)allActivityTypes;
 
 @end

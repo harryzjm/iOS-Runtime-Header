@@ -9,7 +9,7 @@
 #import <CloudPhotoLibrary/CPLAbstractObject-Protocol.h>
 #import <CloudPhotoLibrary/CPLStatusDelegate-Protocol.h>
 
-@class CPLConfiguration, CPLEngineFeedbackManager, CPLEngineScheduler, CPLEngineStore, CPLEngineSyncManager, CPLEngineSystemMonitor, CPLEngineTransport, CPLPlatformObject, CPLStatus, NSArray, NSDate, NSError, NSHashTable, NSMutableDictionary, NSString, NSURL;
+@class CPLConfiguration, CPLEngineFeedbackManager, CPLEngineScheduler, CPLEngineStore, CPLEngineSyncManager, CPLEngineSystemMonitor, CPLEngineTransport, CPLPlatformObject, CPLStatus, NSArray, NSCountedSet, NSDate, NSError, NSHashTable, NSMutableDictionary, NSString, NSURL;
 @protocol CPLEngineLibraryOwner, OS_dispatch_queue;
 
 @interface CPLEngineLibrary : NSObject <CPLStatusDelegate, CPLAbstractObject>
@@ -19,12 +19,16 @@
     NSObject<OS_dispatch_queue> *_closingQueue;
     NSMutableDictionary *_blocksToDispatchWhenLibraryAttaches;
     NSHashTable *_attachedObjects;
+    NSHashTable *_invalidAttachedObjects;
     NSError *_openingError;
     CPLStatus *_status;
     _Bool _closed;
     _Bool _totalAssetCountHasBeenCalculated;
     NSDate *_cachedLastQuarantineCountReportDate;
     unsigned long long _totalAssetCount;
+    NSCountedSet *_holdTestAssertions;
+    CDUnknownBlockType _pingRequestToPushAllChanges;
+    _Bool _isSystemLibrary;
     _Bool _libraryIsCorrupted;
     CPLPlatformObject *_platformObject;
     NSString *_currentClosingComponentName;
@@ -55,11 +59,13 @@
 @property(readonly, nonatomic) CPLEngineStore *store; // @synthesize store=_store;
 @property(nonatomic) __weak id <CPLEngineLibraryOwner> owner; // @synthesize owner=_owner;
 @property(readonly, nonatomic) unsigned long long libraryOptions; // @synthesize libraryOptions=_libraryOptions;
+@property(readonly, nonatomic) _Bool isSystemLibrary; // @synthesize isSystemLibrary=_isSystemLibrary;
 @property(readonly, copy, nonatomic) NSString *libraryIdentifier; // @synthesize libraryIdentifier=_libraryIdentifier;
 @property(readonly, copy, nonatomic) NSURL *cloudLibraryResourceStorageURL; // @synthesize cloudLibraryResourceStorageURL=_cloudLibraryResourceStorageURL;
 @property(readonly, copy, nonatomic) NSURL *cloudLibraryStateStorageURL; // @synthesize cloudLibraryStateStorageURL=_cloudLibraryStateStorageURL;
 @property(readonly, copy, nonatomic) NSURL *clientLibraryBaseURL; // @synthesize clientLibraryBaseURL=_clientLibraryBaseURL;
 @property(readonly, nonatomic) CPLPlatformObject *platformObject; // @synthesize platformObject=_platformObject;
+- (void)emergencyClose;
 - (void)performMaintenanceCleanupWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)forceBackupWithActivity:(id)arg1 forceClientPush:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)requestClientToPushAllChangesWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -81,11 +87,14 @@
 - (id)_performBlockWhenLibraryAttaches:(CDUnknownBlockType)arg1;
 - (void)_performPendingBlockForWhenLibraryAttaches;
 - (void)_performBlockWithLibrary:(_Bool)arg1 enumerateAttachedObjects:(CDUnknownBlockType)arg2;
+- (void)markAttachedObjectAsInvalid:(id)arg1;
 - (void)detachObject:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)attachObject:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)_libraryObject;
+- (id)redactedDescription;
 @property(readonly, copy) NSString *description;
 - (void)forceFetchAccountFlags;
+- (void)clientIsPushingChanges;
 - (void)startSyncSession;
 @property(nonatomic) _Bool iCloudLibraryExists;
 @property(nonatomic) _Bool iCloudLibraryHasBeenWiped;
@@ -100,6 +109,7 @@
 - (void)setConnectedToNetwork:(_Bool)arg1 cellularIsRestricted:(_Bool)arg2 inAirplaneMode:(_Bool)arg3;
 - (void)setHasCellularBudget:(_Bool)arg1 hasBatteryBudget:(_Bool)arg2 isConstrainedNetwork:(_Bool)arg3 isBudgetValid:(_Bool)arg4;
 @property(nonatomic) _Bool iCloudLibraryClientVersionTooOld;
+@property(nonatomic) _Bool containerHasBeenWiped;
 @property(copy, nonatomic) NSDate *exitDeleteTime;
 @property(nonatomic) _Bool isExceedingQuota;
 @property(nonatomic) _Bool hasChangesToProcess;
@@ -120,6 +130,9 @@
 - (void)reportLibraryCorrupted;
 - (void)statusDidChange:(id)arg1;
 - (id)initWithClientLibraryBaseURL:(id)arg1 cloudLibraryStateStorageURL:(id)arg2 cloudLibraryResourceStorageURL:(id)arg3 libraryIdentifier:(id)arg4 options:(unsigned long long)arg5;
+- (void)testKey:(id)arg1 value:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)_allComponentsIncludingPlatformObjects:(_Bool)arg1 respondingToSelector:(SEL)arg2;
+- (void)_testKey:(id)arg1 value:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)getStatusArrayForComponents:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_fillStatusArray:(id)arg1 forComponents:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)getStatusForComponents:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

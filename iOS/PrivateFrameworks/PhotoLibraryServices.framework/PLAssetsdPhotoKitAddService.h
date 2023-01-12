@@ -18,6 +18,8 @@
 - (void).cxx_destruct;
 - (void)commitRequest:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (_Bool)validatePhotosAccessScopeForChangesRequest:(id)arg1;
+- (id)clientDisplayName;
+- (id)clientBundleID;
 - (id)clientDescription;
 - (id)persistentStoreCoordinator;
 - (void)applyChangesRequest:(id)arg1 reply:(CDUnknownBlockType)arg2;

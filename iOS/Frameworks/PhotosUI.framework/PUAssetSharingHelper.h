@@ -17,10 +17,12 @@ __attribute__((visibility("hidden")))
     id <PXAssetsSharingHelperDelegate> _delegate;
 }
 
-+ (void)_ensureLocalAssets:(id)arg1 forReason:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)prepareAssets:(id)arg1 forActivityType:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)copyAssets:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <PXAssetsSharingHelperDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)ensureLocalAssetsForRendering:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)ensureLocalAssetsForSyndicationSave:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)ensureLocalAssetsForCloudPhotoSharing:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)copyAssets:(id)arg1;
 - (void)_presentViewController:(id)arg1;

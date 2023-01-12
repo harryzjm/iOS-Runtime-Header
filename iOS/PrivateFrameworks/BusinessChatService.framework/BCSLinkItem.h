@@ -24,8 +24,6 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) BCSLinkItemModel *model; // @synthesize model=_model;
 @property(readonly, nonatomic) id <BCSLocaleHelperProtocol> localeHelper; // @synthesize localeHelper=_localeHelper;
-@property(retain, nonatomic) BCSBusinessLinkContentItem *cachedContentItem; // @synthesize cachedContentItem=_cachedContentItem;
-@property(retain, nonatomic) NSString *cachedContentItemLanguage; // @synthesize cachedContentItemLanguage=_cachedContentItemLanguage;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
@@ -44,7 +42,6 @@
 @property(readonly, copy, nonatomic) NSString *bundleID;
 @property(readonly, copy, nonatomic) NSString *fullHash;
 @property(readonly, retain, nonatomic) NSURL *linkURL;
-- (id)_businessLinkContentItems;
 @property(readonly, nonatomic) BCSBusinessLinkContentItem *businessLinkContentItem;
 - (_Bool)matchesItemIdentifying:(id)arg1;
 - (long long)type;
@@ -52,6 +49,7 @@
 - (id)itemIdentifier;
 - (id)iconImageURLForSpecifier:(CDStruct_e44caa5b)arg1;
 - (id)heroImageURLForSpecifier:(CDStruct_e44caa5b)arg1;
+@property(copy, nonatomic) NSDictionary *debugInfo;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 - (id)initWithLinkItemModel:(id)arg1 expirationDate:(id)arg2 localeHelper:(id)arg3;

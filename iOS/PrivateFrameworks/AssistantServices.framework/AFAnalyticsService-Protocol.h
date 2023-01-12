@@ -6,16 +6,13 @@
 
 #import <AssistantServices/NSObject-Protocol.h>
 
-@class AFAnalyticsEvent, NSArray, NSString, NSUUID;
+@class NSArray, NSData, NSString, NSUUID;
 
 @protocol AFAnalyticsService <NSObject>
+- (oneway void)stageUEIEventData:(NSData *)arg1 timestamp:(unsigned long long)arg2;
 - (oneway void)logInstrumentationOfType:(NSString *)arg1 machAbsoluteTime:(unsigned long long)arg2 turnIdentifier:(NSUUID *)arg3;
 - (oneway void)endEventsGrouping;
 - (oneway void)beginEventsGrouping;
 - (oneway void)stageEvents:(NSArray *)arg1 completion:(void (^)(void))arg2;
-
-@optional
-- (oneway void)stageEvents:(NSArray *)arg1;
-- (oneway void)stageEvent:(AFAnalyticsEvent *)arg1;
 @end
 

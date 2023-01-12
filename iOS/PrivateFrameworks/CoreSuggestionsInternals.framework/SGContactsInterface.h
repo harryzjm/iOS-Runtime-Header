@@ -12,6 +12,7 @@
 
 + (_Bool)handleExistsInContactStoreForHandle:(id)arg1 withHandleType:(id)arg2;
 + (void)clearCache;
++ (_Bool)enumerateContactsMatchingEmailAddress:(id)arg1 withKeysToFetch:(id)arg2 usingContactStore:(id)arg3 error:(id *)arg4 usingBlock:(CDUnknownBlockType)arg5;
 + (_Bool)enumerateContactsMatchingName:(id)arg1 withKeysToFetch:(id)arg2 usingContactStore:(id)arg3 error:(id *)arg4 usingBlock:(CDUnknownBlockType)arg5;
 + (_Bool)enumerateContactsWithFetchRequest:(id)arg1 usingContactStore:(id)arg2 error:(id *)arg3 usingBlock:(CDUnknownBlockType)arg4;
 + (id)identifiersPredicateFromCacheForPredicate:(id)arg1 isCached:(_Bool *)arg2;

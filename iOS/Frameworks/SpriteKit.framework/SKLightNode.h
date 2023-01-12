@@ -8,7 +8,7 @@
 
 @interface SKLightNode
 {
-    struct SKCLightNode *_skcLightNode;
+    void *_skcLightNode;
 }
 
 + (id)debugHierarchyValueForPropertyWithName:(id)arg1 onObject:(id)arg2 outOptions:(id *)arg3 outError:(id *)arg4;
@@ -31,7 +31,7 @@
 - (id)init;
 - (void)commonInit;
 - (void)_didMakeBackingNode;
-- (struct SKCNode *)_makeBackingNode;
+- (void *)_makeBackingNode;
 
 @end
 

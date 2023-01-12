@@ -18,13 +18,6 @@ __attribute__((visibility("hidden")))
     long long _deletedSamples;
 }
 
-@property(nonatomic) _Bool hasProcessedWorkout; // @synthesize hasProcessedWorkout=_hasProcessedWorkout;
-@property(nonatomic) long long deletedSamples; // @synthesize deletedSamples=_deletedSamples;
-@property(nonatomic) long long createdSeries; // @synthesize createdSeries=_createdSeries;
-@property(nonatomic) long long processedWorkouts; // @synthesize processedWorkouts=_processedWorkouts;
-@property(nonatomic) long long condensedWorkouts; // @synthesize condensedWorkouts=_condensedWorkouts;
-@property(nonatomic) long long workoutsToRecondense; // @synthesize workoutsToRecondense=_workoutsToRecondense;
-@property(nonatomic) long long workoutsToCondense; // @synthesize workoutsToCondense=_workoutsToCondense;
 - (id)description;
 - (id)init;
 

@@ -11,17 +11,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)_urlForStyleSheetName:(id)arg1;
-+ (void)_registerIOStyleSheets;
-+ (void)_registerStylesheets;
-+ (void)_registerStyles;
 + (void)_registerElements;
 + (id)sharedInstance;
 - (id)_URLForResource:(id)arg1 inBundle:(id)arg2;
-- (id)_styleSheetURLForTemplate:(id)arg1;
 - (id)navigationControllerForTabIdentifier:(id)arg1;
-- (id)styleSheetURLForTemplate:(id)arg1;
-- (void)parseAppConfigurationForElement:(id)arg1;
 - (id)imageForResource:(id)arg1;
 - (id)URLForResource:(id)arg1;
 - (id)imageProxyForElement:(id)arg1 withLayout:(id)arg2;

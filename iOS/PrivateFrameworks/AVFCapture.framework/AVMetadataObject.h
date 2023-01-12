@@ -15,6 +15,8 @@
 
 + (id)derivedMetadataObjectFromMetadataObject:(id)arg1 withTransform:(struct CGAffineTransform)arg2 isVideoMirrored:(_Bool)arg3 rollAdjustment:(double)arg4;
 - (id)originalMetadataObject;
+- (unsigned long long)syntheticFocusMode;
+- (long long)groupID;
 - (id)input;
 @property(readonly) NSString *type;
 @property(readonly) struct CGRect bounds;
@@ -22,7 +24,7 @@
 @property(readonly) CDStruct_1b6d18a9 time;
 - (void)dealloc;
 - (id)initDerivedMetadataObjectFromMetadataObject:(id)arg1 withTransform:(struct CGAffineTransform)arg2 isVideoMirrored:(_Bool)arg3 rollAdjustment:(double)arg4;
-- (id)initWithType:(id)arg1 time:(CDStruct_1b6d18a9)arg2 duration:(CDStruct_1b6d18a9)arg3 bounds:(struct CGRect)arg4 originalMetadataObject:(id)arg5 sourceCaptureInput:(id)arg6;
+- (id)initWithType:(id)arg1 time:(CDStruct_1b6d18a9)arg2 duration:(CDStruct_1b6d18a9)arg3 bounds:(struct CGRect)arg4 optionalInfoDict:(id)arg5 originalMetadataObject:(id)arg6 sourceCaptureInput:(id)arg7;
 - (id)init;
 
 @end

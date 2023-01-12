@@ -15,11 +15,9 @@ __attribute__((visibility("hidden")))
 + (_Bool)requiresReminderAccess;
 + (_Bool)requiresEventAccess;
 - (void)CADObjectIsManaged:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)CADDatabaseDeleteObjectsWithObjectIDs:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)CADDatabaseInsertObjectsWithTempObjectIDs:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)CADObject:(id)arg1 setAttributes:(id)arg2 andRelations:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)CADObject:(id)arg1 getRelatedObjectsWithRelationName:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)CADObject:(id)arg1 getRelatedObjectWithRelationName:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)CADObject:(id)arg1 getSecurityScopedURLWrapperPropertyWithName:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)CADObject:(id)arg1 getDataPropertyWithName:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)CADObject:(id)arg1 getDatePropertyWithName:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)CADObject:(id)arg1 getNumberPropertyWithName:(id)arg2 reply:(CDUnknownBlockType)arg3;

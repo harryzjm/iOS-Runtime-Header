@@ -42,6 +42,7 @@
 - (unsigned long long)estimatedNumberOfGadgets;
 - (void)loadDataForGadgets;
 - (void)loadDataForPriority;
+- (id)initWithIdentifier:(id)arg1 contentGadgetProvider:(id)arg2 title:(id)arg3 horizontalCollectionGadgetClass:(Class)arg4;
 - (id)initWithContentGadgetProvider:(id)arg1 title:(id)arg2 horizontalCollectionGadgetClass:(Class)arg3;
 - (id)initWithContentGadgetProvider:(id)arg1 title:(id)arg2;
 - (id)initWithIdentifier:(id)arg1;

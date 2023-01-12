@@ -10,25 +10,31 @@ __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI23StackTemplateController
 {
     MISSING_TYPE *supportsTabBarChildControllerBehaviours;
-    MISSING_TYPE *enqueuedBannerViewModel;
+    MISSING_TYPE *supportsTabBarChildContentInsets;
     MISSING_TYPE *hasInAppBanner;
+    MISSING_TYPE *anchorIdToHighlight;
     MISSING_TYPE *showcasePercentageObserver;
     MISSING_TYPE *lastShowcasePercentage;
+    MISSING_TYPE *notificationCenter;
     MISSING_TYPE *statusBarStyle;
     MISSING_TYPE *navBarGradientView;
-    MISSING_TYPE *pagePaerformanceProvider;
+    MISSING_TYPE *statusBarGradientView;
+    MISSING_TYPE *pagePerformanceProvider;
 }
 
 - (void).cxx_destruct;
+- (void)vuiScrollViewDidScroll:(id)arg1;
 @property(nonatomic, readonly) long long preferredStatusBarUpdateAnimation;
 @property(nonatomic, readonly) long long preferredStatusBarStyle;
-- (void)didMoveToParentViewController:(id)arg1;
-- (void)viewDidLayoutSubviews;
-- (void)viewDidDisappear:(_Bool)arg1;
-- (void)viewDidAppear:(_Bool)arg1;
-- (void)viewWillDisappear:(_Bool)arg1;
-- (void)viewWillAppear:(_Bool)arg1;
-- (void)viewDidLoad;
+- (void)vui_didMoveToParentViewController:(id)arg1;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)vui_viewDidLayoutSubviews;
+- (void)vui_viewDidDisappear:(_Bool)arg1;
+- (void)vui_viewDidAppear:(_Bool)arg1;
+- (void)vui_viewWillDisappear:(_Bool)arg1;
+- (void)vui_viewWillAppear:(_Bool)arg1;
+- (void)vui_viewDidLoad;
 - (id)initWithCoder:(id)arg1;
 
 @end

@@ -21,6 +21,7 @@
     NSObject<OS_dispatch_semaphore> *_persistenceWait;
     NSObject<OS_dispatch_semaphore> *_streamWait;
     NSURL *_outputPath;
+    NSURL *_inputPersistencePath;
     TAAnalyticsManager *_analyticsManager;
 }
 
@@ -34,7 +35,7 @@
 - (void)streamDidStart:(id)arg1;
 - (void)streamDidStop:(id)arg1;
 - (_Bool)activityStream:(id)arg1 results:(id)arg2;
-- (id)initWithLogArchive:(id)arg1 outputPath:(id)arg2;
+- (id)initWithLogArchive:(id)arg1 outputPath:(id)arg2 inputPersistencePath:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

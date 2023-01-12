@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *$__lazy_storage_$_nextButton;
     MISSING_TYPE *$__lazy_storage_$_doneButton;
+    MISSING_TYPE *$__lazy_storage_$_cancelButton;
 }
 
 - (void).cxx_destruct;

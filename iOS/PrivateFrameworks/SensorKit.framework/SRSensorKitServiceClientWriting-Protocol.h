@@ -6,7 +6,9 @@
 
 #import <SensorKit/SRSensorKitServiceClientProtocol-Protocol.h>
 
+@class NSArray;
+
 @protocol SRSensorKitServiceClientWriting <SRSensorKitServiceClientProtocol>
-- (void)setMonitoring:(_Bool)arg1;
+- (void)setMonitoring:(_Bool)arg1 withRequestedConfigurations:(NSArray *)arg2;
 @end
 

@@ -22,6 +22,7 @@
     unsigned long long _generationCounter;
 }
 
++ (id)unconfigureQueue;
 - (void).cxx_destruct;
 @property(nonatomic, getter=isBrowsing) _Bool browsing; // @synthesize browsing=_browsing;
 @property(nonatomic) unsigned long long generationCounter; // @synthesize generationCounter=_generationCounter;

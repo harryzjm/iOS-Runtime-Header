@@ -6,14 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDate, PGManager, PGSuggestionNotificationProfile, PHPhotoLibrary;
+@class CLSCurationContext, NSArray, NSDate, PGManagerWorkingContext, PGSuggestionNotificationProfile, PHPhotoLibrary;
 @protocol OS_os_log;
 
 @interface PGSuggestionSession : NSObject
 {
     NSDate *_universalToday;
     unsigned char _profile;
-    PGManager *_graphManager;
+    PGManagerWorkingContext *_workingContext;
+    CLSCurationContext *_curationContext;
     NSObject<OS_os_log> *_loggingConnection;
     NSArray *_existingSuggestions;
     NSArray *_collidableMemories;
@@ -30,8 +31,8 @@
 @property(readonly, nonatomic) PGSuggestionNotificationProfile *notificationProfile; // @synthesize notificationProfile=_notificationProfile;
 @property(retain, nonatomic) NSArray *collidableMemories; // @synthesize collidableMemories=_collidableMemories;
 @property(retain, nonatomic) NSArray *existingSuggestions; // @synthesize existingSuggestions=_existingSuggestions;
-@property(readonly, nonatomic) NSObject<OS_os_log> *loggingConnection; // @synthesize loggingConnection=_loggingConnection;
-@property(readonly, nonatomic) PGManager *graphManager; // @synthesize graphManager=_graphManager;
+@property(readonly, nonatomic) CLSCurationContext *curationContext; // @synthesize curationContext=_curationContext;
+@property(readonly, nonatomic) PGManagerWorkingContext *workingContext; // @synthesize workingContext=_workingContext;
 @property(readonly, nonatomic) unsigned char profile; // @synthesize profile=_profile;
 - (id)existingSuggestionsWithState:(unsigned short)arg1 count:(unsigned long long)arg2;
 - (id)infosWithSuggestions:(id)arg1;
@@ -54,8 +55,9 @@
 - (unsigned long long)outstanderSuggestion:(id)arg1 collidesWithSuggestion:(id)arg2 relaxCollisionRules:(_Bool)arg3;
 - (unsigned long long)singleAssetSuggestion:(id)arg1 collidesWithSuggestion:(id)arg2;
 - (unsigned long long)reasonForSuggestion:(id)arg1 collidingWithSuggestion:(id)arg2 relaxCollisionRules:(_Bool)arg3;
+@property(readonly, nonatomic) NSObject<OS_os_log> *loggingConnection; // @synthesize loggingConnection=_loggingConnection;
 @property(readonly, nonatomic) PHPhotoLibrary *photoLibrary;
-- (id)initWithProfile:(unsigned char)arg1 graphManager:(id)arg2;
+- (id)initWithProfile:(unsigned char)arg1 workingContext:(id)arg2;
 
 @end
 

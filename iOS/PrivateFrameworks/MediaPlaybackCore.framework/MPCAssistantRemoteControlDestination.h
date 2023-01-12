@@ -19,7 +19,9 @@
     NSArray *_hashedOutputDeviceUIDs;
     NSArray *_outputGroups;
     NSString *_outputGroupID;
+    NSString *_originatingOutputDeviceUID;
     _Bool _singleGroup;
+    _Bool _originatingDeviceControl;
 }
 
 + (id)nowPlayingApplicationDestination;
@@ -28,7 +30,9 @@
 + (id)watchRadioApplicationDestination;
 + (id)systemMediaApplicationDestination;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool originatingDeviceControl; // @synthesize originatingDeviceControl=_originatingDeviceControl;
 @property(readonly, nonatomic) _Bool singleGroup; // @synthesize singleGroup=_singleGroup;
+@property(readonly, nonatomic) NSString *originatingOutputDeviceUID; // @synthesize originatingOutputDeviceUID=_originatingOutputDeviceUID;
 @property(readonly, nonatomic) NSString *outputGroupID; // @synthesize outputGroupID=_outputGroupID;
 @property(readonly, nonatomic) NSArray *outputGroups; // @synthesize outputGroups=_outputGroups;
 @property(readonly, nonatomic) NSArray *hashedOutputDeviceUIDs; // @synthesize hashedOutputDeviceUIDs=_hashedOutputDeviceUIDs;

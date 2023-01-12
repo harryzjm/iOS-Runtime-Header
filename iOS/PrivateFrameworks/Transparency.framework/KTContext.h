@@ -18,6 +18,8 @@
     KTLogClient *_logClient;
 }
 
++ (id)failedServerLoggableDatas:(id)arg1;
++ (_Bool)hasAccountMismatch:(id)arg1;
 + (id)validateEventName:(unsigned long long)arg1 application:(id)arg2;
 - (void).cxx_destruct;
 @property(retain) KTLogClient *logClient; // @synthesize logClient=_logClient;
@@ -36,15 +38,18 @@
 - (void)logFinishSuccessEvent:(id)arg1;
 - (void)logStartEvent:(id)arg1;
 - (id)initWithApplicationKeyStore:(id)arg1 dataStore:(id)arg2 logClient:(id)arg3 applicationID:(id)arg4;
+- (void)processSTHsFromPeers:(id)arg1 error:(id *)arg2;
+- (id)retrieveTLTSTH:(id *)arg1;
 - (void)failHeadDownload:(id)arg1 failure:(id)arg2 retry:(_Bool)arg3;
 - (void)failHeadDownloadRecord:(id)arg1 failure:(id)arg2 retry:(_Bool)arg3 error:(id *)arg4;
+- (void)reportFailedRevisions:(id)arg1 failure:(id)arg2 downloadType:(unsigned long long)arg3 application:(id)arg4;
 - (void)garbageCollectHeads:(id *)arg1;
 - (void)handlePendingHeadInclusionProofs:(id *)arg1;
 - (void)handlePendingConsistencyProofs:(id *)arg1;
 - (void)handleDownloadOfType:(unsigned long long)arg1 error:(id *)arg2;
 - (void)handleDownloadOfType:(unsigned long long)arg1 retry:(_Bool)arg2 error:(id *)arg3;
 - (void)handleHeadsWithUnverifiedSignature:(id *)arg1;
-- (void)failExpiredSTHs:(id *)arg1;
+- (void)failExpiredSTHsForType:(unsigned long long)arg1 error:(id *)arg2;
 - (id)createChainOfErrorsFromSTHFailures:(id)arg1 type:(unsigned long long)arg2;
 - (id)createErrorFromSTHFailure:(id)arg1 underlyingError:(id)arg2;
 - (unsigned long long)verifyConsistencyProofDownloadRecord:(id)arg1 error:(id *)arg2;
@@ -63,6 +68,7 @@
 - (unsigned long long)downloadTypeForValidateType:(unsigned long long)arg1;
 - (void)handlePendingQueryRequests:(id)arg1 error:(id *)arg2;
 - (void)handleKTRequestDownload:(id)arg1;
+- (void)handleKTRequest:(id)arg1 queryRequest:(id)arg2 queryResponse:(id)arg3 error:(id *)arg4;
 - (void)handleKTRequestDownload:(id)arg1 retry:(_Bool)arg2;
 - (_Bool)failExpiredRequest:(id)arg1 error:(id)arg2;
 - (id)createChainOfErrorsFromRequestFailures:(id)arg1;
@@ -73,6 +79,7 @@
 - (unsigned long long)validatePeer:(id)arg1 queryRequest:(id)arg2 queryResponse:(id)arg3 transparentData:(id *)arg4 error:(id *)arg5;
 - (unsigned long long)validateEnrollmentWithAnalytics:(id)arg1 transparentData:(id *)arg2 error:(id *)arg3;
 - (unsigned long long)validateSelfWithAnalytics:(id)arg1 transparentData:(id *)arg2 error:(id *)arg3;
+- (unsigned long long)validatePeerWithAnalytics:(id)arg1 transparentData:(id *)arg2 revalidate:(_Bool)arg3 error:(id *)arg4;
 - (unsigned long long)validatePeerWithAnalytics:(id)arg1 transparentData:(id *)arg2 error:(id *)arg3;
 - (unsigned long long)validateEnrollment:(id)arg1 transparentData:(id *)arg2 error:(id *)arg3;
 - (unsigned long long)validateSelf:(id)arg1 transparentData:(id *)arg2 error:(id *)arg3;
@@ -84,13 +91,15 @@
 - (unsigned long long)handleVerifyPeerResponse:(id)arg1 queryRequest:(id)arg2 request:(id)arg3 transparentData:(id *)arg4 error:(id *)arg5;
 - (_Bool)hasTooManyVRFRequests:(id)arg1;
 - (id)parseQueryRequestFromKTRequest:(id)arg1 error:(id *)arg2;
-- (id)analyticsForRequestValidation:(id)arg1 initialResult:(unsigned long long)arg2 result:(unsigned long long)arg3;
+- (id)analyticsForRequestValidation:(id)arg1 initialResult:(unsigned long long)arg2 result:(unsigned long long)arg3 failure:(id)arg4 transparentData:(id)arg5;
 - (unsigned long long)writeResult:(unsigned long long)arg1 request:(id)arg2 proof:(id)arg3 error:(id *)arg4;
 - (void)checkInclusionProofEpoch:(id)arg1;
 - (void)failSMTDownload:(id)arg1 failure:(id)arg2 retry:(_Bool)arg3;
 - (void)failSMTDownloadRecord:(id)arg1 failure:(id)arg2 retry:(_Bool)arg3 error:(id *)arg4;
+- (void)failSMTRequest:(id)arg1 failure:(id)arg2 retry:(_Bool)arg3 error:(id *)arg4;
 - (_Bool)verifySMTDownload:(id)arg1 error:(id *)arg2;
 - (void)verifySMTDownloadRecord:(id)arg1 error:(id *)arg2;
+- (void)verifySMTQueryResponse:(id)arg1 request:(id)arg2 error:(id *)arg3;
 - (void)handleSMTsWithUnverifiedSignature:(id *)arg1;
 - (void)handleURIsWithPendingSMTs:(id)arg1 error:(id *)arg2;
 - (void)handleSMTInclusionDownload:(id)arg1 request:(id)arg2;

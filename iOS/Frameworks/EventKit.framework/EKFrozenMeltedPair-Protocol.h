@@ -16,6 +16,7 @@
 @property(readonly, nonatomic) NSString *uniqueIdentifier;
 @property(readonly, nonatomic) _Bool isPartialObject;
 @property(readonly, nonatomic) _Bool isFrozen;
+- (void)reset;
 - (_Bool)isEqual:(id <EKFrozenMeltedPair>)arg1 ignoringProperties:(NSSet *)arg2;
 - (_Bool)isCompletelyEqual:(id <EKFrozenMeltedPair>)arg1;
 - (id)valueForKey:(NSString *)arg1;

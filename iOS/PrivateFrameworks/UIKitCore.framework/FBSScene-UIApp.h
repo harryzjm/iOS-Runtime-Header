@@ -12,6 +12,7 @@
 - (void)updateUIClientSettingsWithBlock:(CDUnknownBlockType)arg1;
 - (id)uiClientSettings;
 - (id)uiSettings;
+- (_Bool)uiAlwaysSupportsAllInterfaceOrientations;
 - (_Bool)uiCanReceiveDeviceOrientationEvents;
 @end
 

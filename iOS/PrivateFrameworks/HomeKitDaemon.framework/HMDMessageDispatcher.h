@@ -18,6 +18,7 @@
     HMDHomeManager *_homeManager;
 }
 
++ (id)logCategory;
 + (id)defaultDispatcher;
 + (id)destinationWithTarget:(id)arg1 userID:(id)arg2 destination:(id)arg3 multicast:(_Bool)arg4;
 - (void).cxx_destruct;

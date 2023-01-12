@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (void)setLastSyncEndDate:(id)arg1;
 - (void)setLastSyncStartDate:(id)arg1;
 - (void)setLastSyncError:(unsigned long long)arg1;
+- (id)constraintsName;
 - (id)lastSyncEndDate;
 - (id)lastSyncStartDate;
 - (unsigned long long)lastSyncError;

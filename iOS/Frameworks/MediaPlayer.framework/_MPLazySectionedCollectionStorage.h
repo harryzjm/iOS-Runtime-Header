@@ -11,13 +11,13 @@
 __attribute__((visibility("hidden")))
 @interface _MPLazySectionedCollectionStorage : NSObject
 {
-    struct vector<long, std::__1::allocator<long>> _cachedNumberOfItemsInSections;
+    struct vector<long, std::allocator<long>> _cachedNumberOfItemsInSections;
     long long _cachedNumberOfSections;
     _Bool _hasValidCachedNumberOfSections;
     NSCache *_itemsCache;
-    struct map<long, MPIdentifierSet *, std::__1::less<long>, std::__1::allocator<std::__1::pair<const long, MPIdentifierSet *>>> _itemIdentifierSetMap;
+    struct map<long, MPIdentifierSet *, std::less<long>, std::allocator<std::pair<const long, MPIdentifierSet *>>> _itemIdentifierSetMap;
     NSCache *_sectionsCache;
-    struct map<long, MPIdentifierSet *, std::__1::less<long>, std::__1::allocator<std::__1::pair<const long, MPIdentifierSet *>>> _sectionIdentifierSetMap;
+    struct map<long, MPIdentifierSet *, std::less<long>, std::allocator<std::pair<const long, MPIdentifierSet *>>> _sectionIdentifierSetMap;
 }
 
 - (id).cxx_construct;

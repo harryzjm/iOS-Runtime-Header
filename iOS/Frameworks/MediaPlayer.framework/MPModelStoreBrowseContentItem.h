@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MPModelAlbum, MPModelArtist, MPModelCurator, MPModelMediaClip, MPModelMovie, MPModelPlaylist, MPModelRadioStation, MPModelSocialPerson, MPModelSong, MPModelTVEpisode, MPModelTVSeason, MPModelTVShow, MPModelTVShowCreator, NSString;
+@class MPModelAlbum, MPModelArtist, MPModelCurator, MPModelMediaClip, MPModelMovie, MPModelPlaylist, MPModelRadioStation, MPModelRecordLabel, MPModelSocialPerson, MPModelSong, MPModelTVEpisode, MPModelTVSeason, MPModelTVShow, MPModelTVShowCreator, NSString;
 
 @interface MPModelStoreBrowseContentItem
 {
 }
 
 + (id)requiredStoreLibraryPersonalizationProperties;
++ (id)__recordLabel_KEY;
 + (id)__showCreator_KEY;
 + (id)__show_KEY;
 + (id)__season_KEY;
@@ -44,6 +45,7 @@
 @property(retain, nonatomic) MPModelMovie *movie; // @dynamic movie;
 @property(retain, nonatomic) MPModelPlaylist *playlist; // @dynamic playlist;
 @property(retain, nonatomic) MPModelRadioStation *radioStation; // @dynamic radioStation;
+@property(retain, nonatomic) MPModelRecordLabel *recordLabel; // @dynamic recordLabel;
 @property(retain, nonatomic) MPModelTVSeason *season; // @dynamic season;
 @property(retain, nonatomic) MPModelTVShow *show; // @dynamic show;
 @property(retain, nonatomic) MPModelTVShowCreator *showCreator; // @dynamic showCreator;

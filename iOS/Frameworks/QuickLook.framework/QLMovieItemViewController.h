@@ -7,7 +7,7 @@
 #import <QuickLook/AVEditBehaviorDelegate-Protocol.h>
 #import <QuickLook/AVPictureInPictureControllerDelegate-Protocol.h>
 
-@class AVEditBehavior, AVPlayerViewController, NSLayoutConstraint, NSString, PHPlaceholderView, QLMovieEdits, QLOverlayPlayButton, QLVideoScrubberView, UIScrollView, UIView;
+@class AVEditBehavior, AVPlayerViewController, NSLayoutConstraint, NSNumber, NSString, PHPlaceholderView, PXUIAssetBadgeView, QLMovieEdits, QLOverlayPlayButton, QLVideoScrubberView, UIScrollView, UIView;
 
 __attribute__((visibility("hidden")))
 @interface QLMovieItemViewController <AVPictureInPictureControllerDelegate, AVEditBehaviorDelegate>
@@ -27,6 +27,8 @@ __attribute__((visibility("hidden")))
     double _scrubberVerticalOffset;
     UIView *_playerViewContainer;
     UIScrollView *_playerViewControllerScrollView;
+    NSNumber *_assetIsHDR;
+    PXUIAssetBadgeView *_hdrBadgeView;
     AVEditBehavior *_editBehavior;
     QLMovieEdits *_edits;
     QLMovieEdits *_editsSinceLastSave;
@@ -39,6 +41,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) QLMovieEdits *edits; // @synthesize edits=_edits;
 @property(nonatomic) _Bool isEditing; // @synthesize isEditing=_isEditing;
 @property(retain, nonatomic) AVEditBehavior *editBehavior; // @synthesize editBehavior=_editBehavior;
+@property(retain, nonatomic) PXUIAssetBadgeView *hdrBadgeView; // @synthesize hdrBadgeView=_hdrBadgeView;
+@property(retain, nonatomic) NSNumber *assetIsHDR; // @synthesize assetIsHDR=_assetIsHDR;
 @property(nonatomic) __weak UIScrollView *playerViewControllerScrollView; // @synthesize playerViewControllerScrollView=_playerViewControllerScrollView;
 @property(retain, nonatomic) UIView *playerViewContainer; // @synthesize playerViewContainer=_playerViewContainer;
 @property(nonatomic) double scrubberVerticalOffset; // @synthesize scrubberVerticalOffset=_scrubberVerticalOffset;
@@ -48,6 +52,14 @@ __attribute__((visibility("hidden")))
 @property(retain) QLVideoScrubberView *scrubber; // @synthesize scrubber=_scrubber;
 @property(retain) QLOverlayPlayButton *playButton; // @synthesize playButton=_playButton;
 @property(retain, nonatomic) AVPlayerViewController *playerViewController; // @synthesize playerViewController=_playerViewController;
+- (void)_updateHDRBadgeViewVisibilityForFullscreenMode:(_Bool)arg1;
+- (void)_updateHDRBadgeViewVisibilityWithNewPlayingStatus:(long long)arg1;
+- (void)_hideHDRBadgeViewIfVisible;
+- (void)_hideHDRBadgeViewAfterDelayIfNeeded:(double)arg1;
+- (void)_displayHDRBadgeView:(id)arg1;
+- (void)_addHDRBadgeViewToHierarchyIfNeeded:(id)arg1;
+- (void)_showHDRBadgeView:(id)arg1;
+- (void)_showHDRBadgeViewIfNeeded;
 - (void)_updatePlaceHolderView;
 @property(readonly, nonatomic) PHPlaceholderView *airPlayPlaceholderView;
 - (void)handlePerformedKeyCommandIfNeeded:(id)arg1;
@@ -98,8 +110,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)canEnterFullScreen;
 - (id)timeLabelScrollView;
 - (id)accessoryView;
+- (void)previewBecameFullScreen:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)previewDidDisappear:(_Bool)arg1;
 - (void)previewDidAppear:(_Bool)arg1;
+- (void)previewWillAppear:(_Bool)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)dealloc;
 - (id)_metadataItemTitle;

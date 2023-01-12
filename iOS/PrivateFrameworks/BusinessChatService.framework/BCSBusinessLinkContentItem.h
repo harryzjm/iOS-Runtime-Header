@@ -16,13 +16,11 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) BCSBusinessLinkContentItemModel *businessLinkContentItemModel; // @synthesize businessLinkContentItemModel=_businessLinkContentItemModel;
 @property(readonly, copy, nonatomic) NSString *language;
 @property(readonly, copy, nonatomic) NSString *subtitle;
 @property(readonly, copy, nonatomic) NSString *title;
 @property(readonly, nonatomic, getter=isDefault) _Bool isDefault;
 @property(readonly, copy) NSString *description;
-- (id)initWithBusinessLinkContentItemModel:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

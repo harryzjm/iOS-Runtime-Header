@@ -29,7 +29,7 @@
 @property(nonatomic) long long visualStyle; // @synthesize visualStyle=_visualStyle;
 @property(readonly, nonatomic) long long materialRecipe; // @synthesize materialRecipe=_materialRecipe;
 - (void)_configureBackgroundMaterialViewIfNecessary;
-- (void)_configureMaterialView:(id *)arg1 ifNecessaryWithConfiguration:(long long)arg2 positioningAtIndex:(unsigned long long)arg3;
+- (void)_configureMaterialViewIfNecessary:(id *)arg1 positioningAtIndex:(unsigned long long)arg2;
 - (void)_configureGlyphViewIfNecessaryWithImage:(id)arg1;
 - (void)_updateGlyphViewVisualStyling;
 - (void)setVisualStylingProvider:(id)arg1 forCategory:(long long)arg2;

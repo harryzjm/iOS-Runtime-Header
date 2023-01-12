@@ -6,32 +6,47 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMDDeviceSetupTrackingInfoMutable-Protocol.h>
+#import <HomeKitDaemon/HMDDeviceSetupTrackingInfoProviding-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 
-@class HMDDeviceSetupSessionInternal, HMDHomeManager, HMFActivity, NSObject, NSString, NSUUID;
+@class HMDDeviceSetupSessionInternal, HMDHomeManager, HMFActivity, NSDate, NSError, NSObject, NSString, NSUUID;
 @protocol HMDDeviceSetupSessionDelegate, OS_dispatch_queue;
 
-@interface HMDDeviceSetupSession : HMFObject <HMFLogging, HMFMessageReceiver>
+@interface HMDDeviceSetupSession : HMFObject <HMFLogging, HMDDeviceSetupTrackingInfoMutable, HMFMessageReceiver, HMDDeviceSetupTrackingInfoProviding>
 {
     HMFActivity *_activity;
     _Bool _open;
+    NSUUID *_accessoryUUID;
+    NSDate *_startTime;
+    NSError *_sessionError;
+    NSDate *_endTime;
+    NSString *_category;
     id <HMDDeviceSetupSessionDelegate> _delegate;
     NSUUID *_identifier;
     HMDHomeManager *_homeManager;
     NSObject<OS_dispatch_queue> *_clientQueue;
     HMDDeviceSetupSessionInternal *_internal;
+    CDUnknownBlockType _dateFactory;
 }
 
 + (id)logCategory;
 + (_Bool)isRoleSupported:(long long)arg1;
 - (void).cxx_destruct;
+@property(readonly) CDUnknownBlockType dateFactory; // @synthesize dateFactory=_dateFactory;
 @property(nonatomic, getter=isOpen) _Bool open; // @synthesize open=_open;
 @property(readonly, nonatomic) HMDDeviceSetupSessionInternal *internal; // @synthesize internal=_internal;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property(readonly) __weak HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 @property(readonly, copy) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property __weak id <HMDDeviceSetupSessionDelegate> delegate; // @synthesize delegate=_delegate;
+@property(copy) NSString *category; // @synthesize category=_category;
+@property(copy) NSDate *endTime; // @synthesize endTime=_endTime;
+@property(copy) NSError *sessionError; // @synthesize sessionError=_sessionError;
+@property(copy) NSDate *startTime; // @synthesize startTime=_startTime;
+@property(copy) NSUUID *accessoryUUID; // @synthesize accessoryUUID=_accessoryUUID;
+- (id)setupTrackingInfo;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;
 - (id)logIdentifier;
@@ -46,6 +61,7 @@
 @property(readonly) long long role;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
+- (id)initWithIdentifier:(id)arg1 role:(long long)arg2 homeManager:(id)arg3 dateFactory:(CDUnknownBlockType)arg4;
 - (id)initWithIdentifier:(id)arg1 role:(long long)arg2 homeManager:(id)arg3;
 - (id)init;
 

@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SBTransientOverlayViewController;
+@class BSProcessHandle, SBTransientOverlayViewController;
 
 @interface SBMutableTransientOverlayPresentationRequest
 {
 }
 
+@property(retain, nonatomic) BSProcessHandle *originatingProcess; // @dynamic originatingProcess;
 @property(retain, nonatomic) SBTransientOverlayViewController *viewController; // @dynamic viewController;
 @property(nonatomic) _Bool shouldDismissSiri; // @dynamic shouldDismissSiri;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @dynamic completionHandler;

@@ -9,6 +9,7 @@
 @interface SiriTVActivationSource
 {
     NSString *_deviceIdentifier;
+    unsigned long long _remoteType;
     double _longPressInterval;
     SiriLongPressButtonContext *_context;
 }
@@ -17,6 +18,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) SiriLongPressButtonContext *context; // @synthesize context=_context;
 @property(nonatomic) double longPressInterval; // @synthesize longPressInterval=_longPressInterval;
+@property(nonatomic) unsigned long long remoteType; // @synthesize remoteType=_remoteType;
 @property(copy, nonatomic) NSString *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
 - (id)_deviceIdentifier;
 

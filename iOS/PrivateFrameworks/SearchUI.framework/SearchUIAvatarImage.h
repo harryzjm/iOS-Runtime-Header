@@ -21,7 +21,7 @@
 @property(copy, nonatomic) NSArray *contactIdentifiers; // @synthesize contactIdentifiers=_contactIdentifiers;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (void)loadImageWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)loadImageWithScale:(double)arg1 isDarkStyle:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setDefaultSizeIfNecessary;
 - (int)defaultCornerRoundingStyle;
 - (id)initWithContactImage:(id)arg1;

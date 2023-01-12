@@ -19,13 +19,13 @@
 + (id)sharedController;
 - (void).cxx_destruct;
 - (void)_handleSubscriptionFairPlayKeyStatusChangedDistributedNotification:(id)arg1;
-- (void)stopSubscriptionLeaseForAccountUniqueIdentifier:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)stopSubscriptionLeaseWithCompletion:(CDUnknownBlockType)arg1;
 - (void)generateSubscriptionLeaseRequestWithAccountUniqueID:(unsigned long long)arg1 transactionType:(unsigned int)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)generateSubscriptionBagRequestWithAccountUniqueIdentifier:(unsigned long long)arg1 transactionType:(unsigned int)arg2 machineIDData:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)importSubscriptionKeyBagData:(id)arg1 leaseInfoData:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)importSubscriptionKeyBagData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getKeyStatusListWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)getKeyStatusForAccountUniqueIdentifier:(unsigned long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (id)getKeyStatusForAccountUniqueIdentifier:(unsigned long long)arg1 error:(id *)arg2;
 - (id)_init;
 
 @end

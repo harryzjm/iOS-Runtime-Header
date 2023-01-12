@@ -16,12 +16,14 @@
 @class ICSelectorDelayer, NSArray, NSLayoutConstraint, NSString, NoteWKWebView, UIViewPrintFormatter, WebArchive;
 @protocol NoteHTMLEditorViewActionDelegate, NoteHTMLEditorViewDelegate, NoteHTMLEditorViewLayoutDelegate;
 
-@interface NoteHTMLEditorView : UIView <UIScrollViewDelegate, WKUIDelegatePrivate, _WKInputDelegate, WKNavigationDelegate, WKScriptMessageHandler, WKURLSchemeHandler>
+@interface NoteHTMLEditorView : UIView <WKUIDelegatePrivate, _WKInputDelegate, UIScrollViewDelegate, WKNavigationDelegate, WKScriptMessageHandler, WKURLSchemeHandler>
 {
     _Bool _hasAttachments;
     _Bool _editable;
     _Bool _editing;
     _Bool _updatingContent;
+    _Bool _setSelectionToEndAfterLoad;
+    _Bool _startEditingAfterLoad;
     unsigned short _listStyle;
     id <NoteHTMLEditorViewDelegate> _delegate;
     id <NoteHTMLEditorViewActionDelegate> _actionDelegate;
@@ -41,6 +43,8 @@
 
 + (id)baseHTMLString;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool startEditingAfterLoad; // @synthesize startEditingAfterLoad=_startEditingAfterLoad;
+@property(nonatomic) _Bool setSelectionToEndAfterLoad; // @synthesize setSelectionToEndAfterLoad=_setSelectionToEndAfterLoad;
 @property(nonatomic) _Bool updatingContent; // @synthesize updatingContent=_updatingContent;
 @property(retain, nonatomic) ICSelectorDelayer *updateContentDelayer; // @synthesize updateContentDelayer=_updateContentDelayer;
 @property(copy, nonatomic) NSArray *attachmentsToLoad; // @synthesize attachmentsToLoad=_attachmentsToLoad;
@@ -60,6 +64,7 @@
 @property(nonatomic) __weak id <NoteHTMLEditorViewLayoutDelegate> layoutDelegate; // @synthesize layoutDelegate=_layoutDelegate;
 @property(nonatomic) __weak id <NoteHTMLEditorViewActionDelegate> actionDelegate; // @synthesize actionDelegate=_actionDelegate;
 @property(nonatomic) __weak id <NoteHTMLEditorViewDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)updateDataOwnerForCopyAndPaste;
 - (id)contextMenuConfigurationForElement:(id)arg1 presentation:(id)arg2;
 - (void)webView:(id)arg1 stopURLSchemeTask:(id)arg2;
 - (void)webView:(id)arg1 startURLSchemeTask:(id)arg2;
@@ -77,6 +82,8 @@
 - (_Bool)_webView:(id)arg1 focusShouldStartInputSession:(id)arg2;
 - (void)menuControllerDidHide:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
+- (_Bool)canBecomeFocused;
 - (id)targetForAction:(SEL)arg1 withSender:(id)arg2;
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (_Bool)isFirstResponder;

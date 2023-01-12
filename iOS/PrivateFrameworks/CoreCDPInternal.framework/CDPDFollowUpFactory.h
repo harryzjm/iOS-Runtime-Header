@@ -13,6 +13,7 @@
 + (id)contextToIdentifierMap;
 - (_Bool)_supportsFaceID;
 - (_Bool)_isBiometricCapable;
+- (_Bool)_isManateeAvailable;
 - (_Bool)_isBiometricAuthEnrolled;
 - (id)_localizedStringForKey:(id)arg1;
 - (unsigned long long)secretType;
@@ -22,6 +23,10 @@
 - (id)_followUpForRecoveryKeyRepairWithContext:(id)arg1;
 - (id)_followUpActionForRepair;
 - (id)_followUpForRepairWithContext:(id)arg1;
+- (id)_confirmExistingSecretFollowUpAction;
+- (id)_followUpForConfirmExistingSecretWithContext:(id)arg1;
+- (id)_secureTermsFollowUpAction;
+- (id)_followUpForSecureTermsWithContext:(id)arg1;
 - (id)_offlineSecretChangeFollowUpAction;
 - (id)_followUpForOfflineSecretChangeWithContext:(id)arg1;
 - (id)followUpItemWithContext:(id)arg1;

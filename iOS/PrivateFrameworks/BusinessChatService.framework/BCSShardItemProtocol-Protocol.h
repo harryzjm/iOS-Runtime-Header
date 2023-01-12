@@ -5,13 +5,11 @@
 //
 
 #import <BusinessChatService/BCSExpiring-Protocol.h>
-#import <BusinessChatService/BCSShardItemIdentifying-Protocol.h>
+#import <BusinessChatService/BCSFilterShardItemIdentifying-Protocol.h>
 
 @class NSString;
-@protocol BCSItemIdentifying;
 
-@protocol BCSShardItemProtocol <BCSShardItemIdentifying, BCSExpiring>
-@property(readonly, nonatomic) NSString *bloomFilterString;
-- (_Bool)containsItemMatching:(id <BCSItemIdentifying>)arg1;
+@protocol BCSShardItemProtocol <BCSFilterShardItemIdentifying, BCSExpiring>
+@property(readonly, nonatomic) NSString *base64EncodedString;
 @end
 

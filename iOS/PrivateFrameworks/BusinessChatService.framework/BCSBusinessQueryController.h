@@ -10,7 +10,7 @@
 #import <BusinessChatService/BCSXPCDaemonProtocol-Protocol.h>
 
 @class NSString;
-@protocol BCSCacheClearing, BCSChatSuggestControllerProtocol, BCSConfigResolving, BCSEntitlementVerifying, BCSIconControllerProtocol, BCSIdentityServiceProtocol, BCSItemResolving, BCSMetricFactoryProtocol, BCSPrefetchTrigger, BCSQueryChopperProtocol, BCSShardResolving, OS_dispatch_queue;
+@protocol BCSCacheClearing, BCSChatSuggestControllerProtocol, BCSConfigCacheSkipping, BCSConfigCaching, BCSConfigResolving, BCSEntitlementVerifying, BCSHousekeeping, BCSIconControllerProtocol, BCSIdentityServiceProtocol, BCSItemResolving, BCSMetricFactoryProtocol, BCSPrefetchTrigger, BCSQueryChopperProtocol, BCSShardCacheQueryable, BCSShardCacheSkipping, BCSShardResolving, BCSURLPatternControllerProtocol, OS_dispatch_queue;
 
 @interface BCSBusinessQueryController : NSObject <BCSLinkQueryChopperDelegate, BCSXPCDaemonProtocol>
 {
@@ -24,45 +24,29 @@
     id <BCSItemResolving> _linkItemResolver;
     id <BCSConfigResolving> _linkConfigResolver;
     id <BCSShardResolving> _linkShardResolver;
-    id <BCSPrefetchTrigger> _prefetchBloomFilterAndConfigTrigger;
+    id <BCSPrefetchTrigger> _chatSuggestMegashardPrefetchTrigger;
+    id <BCSPrefetchTrigger> _businessLinksMegashardPrefetchTrigger;
     id <BCSPrefetchTrigger> _prefetchConfigTrigger;
     id <BCSEntitlementVerifying> _entitlementVerifier;
     id <BCSQueryChopperProtocol> _queryChopper;
     NSObject<OS_dispatch_queue> *_serialDispatchQueue;
     id <BCSMetricFactoryProtocol> _metricFactory;
+    id <BCSShardCacheQueryable> _shardCache;
+    id <BCSConfigCaching> _configCache;
+    id <BCSConfigCacheSkipping> _configCacheSkip;
+    id <BCSShardCacheSkipping> _shardCacheSkip;
+    id <BCSURLPatternControllerProtocol> _patternController;
+    id <BCSHousekeeping> _housekeeper;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) id <BCSMetricFactoryProtocol> metricFactory; // @synthesize metricFactory=_metricFactory;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *serialDispatchQueue; // @synthesize serialDispatchQueue=_serialDispatchQueue;
-@property(retain, nonatomic) id <BCSQueryChopperProtocol> queryChopper; // @synthesize queryChopper=_queryChopper;
-@property(retain, nonatomic) id <BCSEntitlementVerifying> entitlementVerifier; // @synthesize entitlementVerifier=_entitlementVerifier;
-@property(retain, nonatomic) id <BCSPrefetchTrigger> prefetchConfigTrigger; // @synthesize prefetchConfigTrigger=_prefetchConfigTrigger;
-@property(retain, nonatomic) id <BCSPrefetchTrigger> prefetchBloomFilterAndConfigTrigger; // @synthesize prefetchBloomFilterAndConfigTrigger=_prefetchBloomFilterAndConfigTrigger;
-@property(retain, nonatomic) id <BCSShardResolving> linkShardResolver; // @synthesize linkShardResolver=_linkShardResolver;
-@property(retain, nonatomic) id <BCSConfigResolving> linkConfigResolver; // @synthesize linkConfigResolver=_linkConfigResolver;
-@property(retain, nonatomic) id <BCSItemResolving> linkItemResolver; // @synthesize linkItemResolver=_linkItemResolver;
-@property(retain, nonatomic) id <BCSShardResolving> chatSuggestShardResolver; // @synthesize chatSuggestShardResolver=_chatSuggestShardResolver;
-@property(retain, nonatomic) id <BCSConfigResolving> chatSuggestConfigResolver; // @synthesize chatSuggestConfigResolver=_chatSuggestConfigResolver;
-@property(retain, nonatomic) id <BCSItemResolving> chatSuggestItemResolver; // @synthesize chatSuggestItemResolver=_chatSuggestItemResolver;
-@property(retain, nonatomic) id <BCSChatSuggestControllerProtocol> chatSuggestController; // @synthesize chatSuggestController=_chatSuggestController;
-@property(retain, nonatomic) id <BCSCacheClearing> cacheClearer; // @synthesize cacheClearer=_cacheClearer;
-@property(retain, nonatomic) id <BCSIconControllerProtocol> iconController; // @synthesize iconController=_iconController;
-@property(retain, nonatomic) id <BCSIdentityServiceProtocol> identityService; // @synthesize identityService=_identityService;
-- (id)_itemResolverForType:(long long)arg1;
-- (id)_shardResolverForType:(long long)arg1;
-- (id)_configResolverForType:(long long)arg1;
-- (long long)_shardStartIndexForItemIdentifier:(id)arg1 shardCount:(long long)arg2;
 - (void)_deleteInMemoryCache;
 - (void)clearCachesForLinkItemsAssociatedWithBundleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)clearExpiredCachesForType:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)clearCachesForType:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)prefetchConfigsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)prefetchBloomFilterAndConfigsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_itemWithIdentifier:(id)arg1 config:(id)arg2 forClientBundleID:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_shardForItemWithIdentifier:(id)arg1 configItem:(id)arg2 forClientBundleID:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_configForItemWithIdentifier:(id)arg1 forClientBundleID:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_itemWithIdentifier:(id)arg1 forClientBundleID:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_itemWithIdentifier:(id)arg1 forClientBundleID:(id)arg2 skipFilterCheck:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_isBusinessRegisteredWithItemIdentifier:(id)arg1 forClientBundleID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchLinkItemModelWithHash:(id)arg1 forClientBundleID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)isBusinessRegisteredForURL:(id)arg1 chopURL:(_Bool)arg2 forClientBundleID:(id)arg3 completion:(CDUnknownBlockType)arg4;
@@ -70,11 +54,10 @@
 - (void)fetchBusinessItemWithPhoneNumber:(id)arg1 forClientBundleID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchSquareIconDataForBusinessItem:(id)arg1 forClientBundleID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchIsBusinessPhoneNumber:(id)arg1 forClientBundleID:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)fetchBusinessItemWithBizID:(id)arg1 forClientBundleID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchBusinessItemWithDetailsForPhoneNumber:(id)arg1 forClientBundleID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)warmCacheIfNecessaryForPhoneNumbers:(id)arg1 forClientBundleID:(id)arg2;
-- (id)initWithPrefetchBloomFilterAndConfigTrigger:(id)arg1 prefetchConfigTrigger:(id)arg2 entitlementVerifier:(id)arg3 identityService:(id)arg4 chatSuggestController:(id)arg5 iconController:(id)arg6 cacheClearer:(id)arg7 chatSuggestConfigResolver:(id)arg8 linkConfigResolver:(id)arg9 chatSuggestShardResolver:(id)arg10 linkShardResolver:(id)arg11 chatSuggestItemResolver:(id)arg12 linkItemResolver:(id)arg13 queryChopper:(id)arg14 metricFactory:(id)arg15;
-- (id)initWithBloomFilterAndConfigPrefetcher:(id)arg1 configPrefetcher:(id)arg2 shardCache:(id)arg3 cacheManager:(id)arg4 chatSuggestRemoteFetcher:(id)arg5 businessLinkRemoteFetcher:(id)arg6 userDefaults:(id)arg7 metricFactory:(id)arg8;
+- (id)initWithChatSuggestMegashardPrefetchTrigger:(id)arg1 businessLinksMegashardPrefetchTrigger:(id)arg2 prefetchConfigTrigger:(id)arg3 entitlementVerifier:(id)arg4 identityService:(id)arg5 chatSuggestController:(id)arg6 iconController:(id)arg7 cacheClearer:(id)arg8 shardCache:(id)arg9 configCache:(id)arg10 configCacheSkip:(id)arg11 shardCacheSkip:(id)arg12 chatSuggestConfigResolver:(id)arg13 linkConfigResolver:(id)arg14 chatSuggestShardResolver:(id)arg15 linkShardResolver:(id)arg16 chatSuggestItemResolver:(id)arg17 linkItemResolver:(id)arg18 queryChopper:(id)arg19 patternController:(id)arg20 metricFactory:(id)arg21 housekeeper:(id)arg22;
+- (id)initWithConfigPrefetcher:(id)arg1 chatSuggestMegashardPrefetcher:(id)arg2 businesLinksMegashardPrefetcher:(id)arg3 shardCache:(id)arg4 cacheManager:(id)arg5 chatSuggestRemoteFetcher:(id)arg6 businessLinkRemoteFetcher:(id)arg7 userDefaults:(id)arg8 metricFactory:(id)arg9;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

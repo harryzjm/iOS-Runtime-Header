@@ -9,63 +9,91 @@
 #import <NetworkServiceProxy/NSCopying-Protocol.h>
 #import <NetworkServiceProxy/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate, NSDictionary, NSNumber, NSString, NSURLSession;
+@class NSArray, NSDate, NSDictionary, NSNumber, NSPPrivacyProxyConfiguration, NSString, NSURLSession;
 
 @interface NSPConfiguration : NSObject <NSSecureCoding, NSCopying>
 {
-    NSString *_waldoHost;
+    NSString *_configServerHost;
     _Bool _ignoreInvalidCerts;
     NSNumber *_version;
     NSNumber *_timestamp;
     NSNumber *_enabled;
+    NSString *_etag;
     NSDate *_resurrectionDate;
     NSArray *_appRules;
-    NSNumber *_waldoEnabled;
-    NSNumber *_waldoPort;
-    NSString *_waldoPath;
-    NSNumber *_waldoRequestTimeout;
+    NSNumber *_configServerEnabled;
+    NSNumber *_configServerPort;
+    NSString *_configServerPath;
+    NSNumber *_urlRequestTimeout;
     NSString *_waldoLeafOID;
     NSNumber *_waldoRevocationFailClosed;
-    NSURLSession *_waldoSession;
+    NSURLSession *_privacyProxyURLSession;
     NSDictionary *_edgeSets;
     NSNumber *_persistMetrics;
+    NSPPrivacyProxyConfiguration *_proxyConfiguration;
+    NSNumber *_userTier;
+    NSNumber *_proxyTrafficState;
+    NSDate *_configurationFetchDate;
+    NSNumber *_cloudSubscriptionCheckEnabled;
+    NSNumber *_geohashSharingEnabledStatus;
+    NSNumber *_proxyAccountType;
+    NSNumber *_userPreferredTier;
+    NSNumber *_trialConfigVersion;
     long long _diskVersion;
     NSPConfiguration *_defaults;
 }
 
++ (void)verifyConfigurationSignature:(id)arg1 configuration:(id)arg2 host:(id)arg3 validateCert:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
++ (_Bool)validateSignature:(id)arg1 publicKey:(struct __SecKey *)arg2 signedData:(id)arg3;
++ (_Bool)validatePrivacyProxyConfiguration:(id)arg1;
 + (_Bool)supportsSecureCoding;
 + (id)defaultConfiguration;
++ (id)proxyAccountTypeToString:(id)arg1;
++ (id)proxyTrafficStateToString:(id)arg1;
 - (void).cxx_destruct;
 @property(retain) NSPConfiguration *defaults; // @synthesize defaults=_defaults;
 @property(readonly) long long diskVersion; // @synthesize diskVersion=_diskVersion;
+@property(retain, nonatomic) NSNumber *trialConfigVersion; // @synthesize trialConfigVersion=_trialConfigVersion;
+@property(retain, nonatomic) NSNumber *userPreferredTier; // @synthesize userPreferredTier=_userPreferredTier;
+@property(retain, nonatomic) NSNumber *proxyAccountType; // @synthesize proxyAccountType=_proxyAccountType;
+@property(retain, nonatomic) NSNumber *geohashSharingEnabledStatus; // @synthesize geohashSharingEnabledStatus=_geohashSharingEnabledStatus;
+@property(copy) NSNumber *cloudSubscriptionCheckEnabled; // @synthesize cloudSubscriptionCheckEnabled=_cloudSubscriptionCheckEnabled;
+@property(copy) NSDate *configurationFetchDate; // @synthesize configurationFetchDate=_configurationFetchDate;
+@property(copy) NSNumber *proxyTrafficState; // @synthesize proxyTrafficState=_proxyTrafficState;
+@property(copy, nonatomic) NSNumber *userTier; // @synthesize userTier=_userTier;
+@property(copy) NSPPrivacyProxyConfiguration *proxyConfiguration; // @synthesize proxyConfiguration=_proxyConfiguration;
 @property(copy) NSNumber *persistMetrics; // @synthesize persistMetrics=_persistMetrics;
 @property(retain, nonatomic) NSDictionary *edgeSets; // @synthesize edgeSets=_edgeSets;
 @property _Bool ignoreInvalidCerts; // @synthesize ignoreInvalidCerts=_ignoreInvalidCerts;
-@property(retain, nonatomic) NSURLSession *waldoSession; // @synthesize waldoSession=_waldoSession;
+@property(retain, nonatomic) NSURLSession *privacyProxyURLSession; // @synthesize privacyProxyURLSession=_privacyProxyURLSession;
 @property(copy) NSNumber *waldoRevocationFailClosed; // @synthesize waldoRevocationFailClosed=_waldoRevocationFailClosed;
 @property(copy) NSString *waldoLeafOID; // @synthesize waldoLeafOID=_waldoLeafOID;
-@property(copy) NSNumber *waldoRequestTimeout; // @synthesize waldoRequestTimeout=_waldoRequestTimeout;
-@property(copy) NSString *waldoPath; // @synthesize waldoPath=_waldoPath;
-@property(copy) NSNumber *waldoPort; // @synthesize waldoPort=_waldoPort;
-@property(copy) NSNumber *waldoEnabled; // @synthesize waldoEnabled=_waldoEnabled;
+@property(copy) NSNumber *urlRequestTimeout; // @synthesize urlRequestTimeout=_urlRequestTimeout;
+@property(copy) NSString *configServerPath; // @synthesize configServerPath=_configServerPath;
+@property(copy) NSNumber *configServerPort; // @synthesize configServerPort=_configServerPort;
+@property(copy) NSNumber *configServerEnabled; // @synthesize configServerEnabled=_configServerEnabled;
 @property(copy) NSArray *appRules; // @synthesize appRules=_appRules;
 @property(copy) NSDate *resurrectionDate; // @synthesize resurrectionDate=_resurrectionDate;
+@property(copy) NSString *etag; // @synthesize etag=_etag;
 @property(copy) NSNumber *enabled; // @synthesize enabled=_enabled;
-@property(readonly) NSNumber *timestamp; // @synthesize timestamp=_timestamp;
-@property(readonly) NSNumber *version; // @synthesize version=_version;
+@property(copy) NSNumber *timestamp; // @synthesize timestamp=_timestamp;
+@property(retain) NSNumber *version; // @synthesize version=_version;
+- (id)initFromPreferences;
+- (_Bool)saveToPreferences;
 - (void)incrementSessionCountersOnFirstLaunch;
 - (_Bool)resetStaleEdgeSets;
-@property(copy) NSString *waldoHost;
+@property(copy) NSString *configServerHost;
 @property(readonly) _Bool isDead;
 - (id)getCurrentKeyBagForAppRule:(id)arg1;
 - (id)getEdgeSetForAppRule:(id)arg1;
 - (id)getEdgeSetForSigningIdentifier:(id)arg1;
-- (id)createWaldoURLWithDomain:(id)arg1 timestamp:(id)arg2;
+- (id)createConfigFetchURLWithDomain:(id)arg1 timestamp:(id)arg2;
 @property(readonly) NSDate *dayPassExpirationDate;
 - (void)teardown;
 - (_Bool)evaluateEnableRatios;
 @property(readonly) NSDate *earliestEnableCheckDate;
 - (void)setup;
+- (void)setupNSURLSession;
 - (void)updateNetworkAgents;
 - (id)copyAgentResultsForAppRule:(id)arg1;
 - (void)enumerateEdgeSetsWithBlock:(CDUnknownBlockType)arg1;
@@ -80,6 +108,9 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)loadBuiltinAppRulesFromDisk;
+- (id)description;
+- (id)diagnostics;
+- (id)descriptionWithIndent:(int)arg1 options:(unsigned long long)arg2;
 
 @end
 

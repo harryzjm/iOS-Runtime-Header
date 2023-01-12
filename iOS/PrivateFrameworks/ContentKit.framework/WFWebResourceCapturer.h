@@ -12,6 +12,7 @@
 
 + (void)getPrintFormatterForWebResource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)getPasteboardRepresentationForWebResource:(id)arg1 type:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)generatePDFForWebResource:(id)arg1 includeMargin:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end
 

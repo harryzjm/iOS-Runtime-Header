@@ -12,6 +12,7 @@
 
 + (id)distinctValuesForKeyPath:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)entityName;
+- (id)formattedCameraModel;
 - (id)payloadForChangedKeys:(id)arg1;
 - (id)payloadID;
 
@@ -22,10 +23,12 @@
 @property(retain, nonatomic) NSString *cameraMake; // @dynamic cameraMake;
 @property(retain, nonatomic) NSString *cameraModel; // @dynamic cameraModel;
 @property(retain, nonatomic) NSString *codec; // @dynamic codec;
+@property(retain, nonatomic) NSNumber *digitalZoomRatio; // @dynamic digitalZoomRatio;
 @property(retain, nonatomic) NSNumber *duration; // @dynamic duration;
 @property(retain, nonatomic) NSNumber *exposureBias; // @dynamic exposureBias;
 @property(retain, nonatomic) NSNumber *flashFired; // @dynamic flashFired;
 @property(retain, nonatomic) NSNumber *focalLength; // @dynamic focalLength;
+@property(retain, nonatomic) NSNumber *focalLengthIn35mm; // @dynamic focalLengthIn35mm;
 @property(retain, nonatomic) NSNumber *fps; // @dynamic fps;
 @property(retain, nonatomic) NSNumber *iso; // @dynamic iso;
 @property(retain, nonatomic) NSNumber *latitude; // @dynamic latitude;
@@ -34,6 +37,10 @@
 @property(retain, nonatomic) NSNumber *meteringMode; // @dynamic meteringMode;
 @property(retain, nonatomic) NSNumber *sampleRate; // @dynamic sampleRate;
 @property(retain, nonatomic) NSNumber *shutterSpeed; // @dynamic shutterSpeed;
+@property(retain, nonatomic) NSNumber *slushPreset; // @dynamic slushPreset;
+@property(retain, nonatomic) NSNumber *slushSceneBias; // @dynamic slushSceneBias;
+@property(retain, nonatomic) NSNumber *slushVersion; // @dynamic slushVersion;
+@property(retain, nonatomic) NSNumber *slushWarmthBias; // @dynamic slushWarmthBias;
 @property(retain, nonatomic) NSNumber *trackFormat; // @dynamic trackFormat;
 @property(retain, nonatomic) NSNumber *whiteBalance; // @dynamic whiteBalance;
 

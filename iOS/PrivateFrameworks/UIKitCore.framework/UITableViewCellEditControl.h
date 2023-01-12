@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIImageView, UITableViewCell;
+@class UIColor, UIImageView, UITableViewCell;
 
 __attribute__((visibility("hidden")))
 @interface UITableViewCellEditControl
@@ -18,9 +18,13 @@ __attribute__((visibility("hidden")))
     unsigned int _rotated:1;
     unsigned int _rotating:1;
     unsigned int _reserved:27;
+    UIColor *_accessoryTintColor;
+    UIColor *_accessoryBackgroundColor;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIColor *accessoryBackgroundColor; // @synthesize accessoryBackgroundColor=_accessoryBackgroundColor;
+@property(retain, nonatomic) UIColor *accessoryTintColor; // @synthesize accessoryTintColor=_accessoryTintColor;
 - (void)_createImageViewIfNeccessary;
 - (id)viewForLastBaselineLayout;
 - (id)viewForFirstBaselineLayout;

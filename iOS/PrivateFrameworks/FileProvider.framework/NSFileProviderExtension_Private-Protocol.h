@@ -12,16 +12,15 @@
 @protocol NSFileProviderExtension_Private <NSObject>
 
 @optional
-- (NSProgress *)performActionWithIdentifier:(NSString *)arg1 onItemsWithIdentifiers:(NSArray *)arg2 completionHandler:(void (^)(NSError *))arg3;
+- (void)waitForStabilizationWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)fetchTrashIdentifiersWithCompletionHandler:(void (^)(NSArray *, NSError *))arg1;
-- (void)materializedItemsDidChange;
 - (NSArray *)customPushTopics;
 - (void)preflightReparentItemWithIdentifier:(NSString *)arg1 toParentItemWithIdentifier:(NSString *)arg2 completionHandler:(void (^)(NSArray *))arg3;
 - (void)preflightTrashItemWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(NSArray *))arg2;
 - (void)attemptRecoveryFromError:(NSError *)arg1 optionIndex:(unsigned long long)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)handleEventsForBackgroundURLSession:(NSString *)arg1 completionHandler:(void (^)(void))arg2;
 - (NSProgress *)disconnectWithOptions:(unsigned long long)arg1 completionHandler:(void (^)(NSError *))arg2;
-- (void)changeItem:(id <NSFileProviderItem>)arg1 baseVersion:(NSFileProviderItemVersion *)arg2 changedFields:(unsigned long long)arg3 contents:(NSURL *)arg4 options:(unsigned long long)arg5 completionHandler:(void (^)(id <NSFileProviderItem>, NSError *))arg6;
+- (void)changeItem:(id <NSFileProviderItem>)arg1 baseVersion:(NSFileProviderItemVersion *)arg2 changedFields:(unsigned long long)arg3 contents:(NSURL *)arg4 options:(unsigned long long)arg5 completionHandler:(void (^)(id <NSFileProviderItem>, unsigned long long, _Bool, NSError *))arg6;
 - (void)evictItemWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(id <NSFileProviderItem>, NSError *))arg2;
 - (NSProgress *)fetchPublishingURLForItemIdentifier:(NSString *)arg1 completionHandler:(void (^)(NSURL *, NSError *))arg2;
 - (void)reparentItemWithIdentifier:(NSString *)arg1 toParentItemWithIdentifier:(NSString *)arg2 completionHandler:(void (^)(id <NSFileProviderItem>, NSError *))arg3;
@@ -32,6 +31,7 @@
 - (NSProgress *)_defaultApplicationContainerForBundleIdentifier:(NSString *)arg1 completionHandler:(void (^)(id <NSFileProviderItem>, NSError *))arg2;
 - (id <NSFileProviderItem>)_propertiesForItemAtURL:(NSURL *)arg1 error:(id *)arg2;
 - (void)acknowledgeUserVisibleRootLocationDidChangeToURL:(NSURL *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)movingItemAtURL:(NSURL *)arg1 requiresProvidingWithDestinationURL:(NSURL *)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
 - (void)startProvidingItemAtURL:(NSURL *)arg1 readingOptions:(unsigned long long)arg2 completionHandler:(void (^)(NSError *))arg3;
 @end
 

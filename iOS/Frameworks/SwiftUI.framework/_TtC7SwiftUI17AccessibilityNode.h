@@ -6,33 +6,41 @@
 
 #import <objc/NSObject.h>
 
+#import <SwiftUI/AXChart-Protocol.h>
 #import <SwiftUI/AXContainerDataSeries-Protocol.h>
+#import <SwiftUI/AXCustomContentProvider-Protocol.h>
 
-@class MISSING_TYPE, NSArray, NSAttributedString, NSString, UIBezierPath;
+@class AXChartDescriptor, MISSING_TYPE, NSArray, NSAttributedString, NSString, UIBezierPath;
 
 __attribute__((visibility("hidden")))
-@interface _TtC7SwiftUI17AccessibilityNode : NSObject <AXContainerDataSeries>
+@interface _TtC7SwiftUI17AccessibilityNode : NSObject <AXChart, AXCustomContentProvider, AXContainerDataSeries>
 {
     MISSING_TYPE *id;
     MISSING_TYPE *version;
     MISSING_TYPE *children;
+    MISSING_TYPE *bridgedChild;
     MISSING_TYPE *parent;
     MISSING_TYPE *viewRendererHost;
-    MISSING_TYPE *oldAttachmentForNotification;
     MISSING_TYPE *attachmentsStorage;
     MISSING_TYPE *cachedCombinedAttachment;
-    MISSING_TYPE *isEnabled;
-    MISSING_TYPE *needsUpdatePath;
-    MISSING_TYPE *needsGlobalFrameUpdate;
+    MISSING_TYPE *platformRotorStorage;
+    MISSING_TYPE *cachedIsPlaceholder;
     MISSING_TYPE *focusableAncestor;
     MISSING_TYPE *relationshipScope;
+    MISSING_TYPE *isCell;
 }
 
 - (void).cxx_destruct;
 - (id)init;
 - (void)dealloc;
+- (_Bool)_accessibilityIsChartElement;
+@property(nonatomic, retain) AXChartDescriptor *accessibilityChartDescriptor;
+@property(nonatomic, copy) NSArray *accessibilityCustomRotors;
+- (id)_accessibilityHeadingLevel;
+- (_Bool)_accessibilityScrollToVisible;
 - (_Bool)accessibilityScroll:(long long)arg1;
 @property(nonatomic, readonly) NSArray *_accessibilityUserDefinedLinkedUIElements;
+- (id)accessibilityURL;
 - (void)accessibilityElementDidLoseFocus;
 - (void)accessibilityElementDidBecomeFocused;
 - (_Bool)accessibilityPerformMagicTap;
@@ -42,13 +50,22 @@ __attribute__((visibility("hidden")))
 - (void)accessibilityDecrement;
 - (void)accessibilityIncrement;
 @property(nonatomic, retain) UIBezierPath *accessibilityPath;
+@property(nonatomic) _Bool accessibilityRespondsToUserInteraction;
+- (struct _NSRange)accessibilityRowRange;
 @property(nonatomic) long long accessibilityContainerType;
+@property(nonatomic) long long accessibilityNavigationStyle;
 @property(nonatomic) _Bool shouldGroupAccessibilityChildren;
 @property(nonatomic) _Bool accessibilityElementsHidden;
 @property(nonatomic) _Bool accessibilityViewIsModal;
 @property(nonatomic) struct CGPoint accessibilityActivationPoint;
+- (id)_accessibilityUserTestingVisibleAncestor;
+- (id)_accessibilityUserTestingParent;
+- (id)accessibilityContainer;
+- (id)_accessibilityUserTestingChildren;
+- (long long)accessibilityElementCount;
 @property(nonatomic, copy) NSArray *accessibilityElements;
 @property(nonatomic) struct CGRect accessibilityFrame;
+@property(nonatomic, copy) NSString *accessibilityTextualContext;
 @property(nonatomic, copy) NSString *accessibilityLanguage;
 @property(nonatomic, retain) NSAttributedString *accessibilityAttributedHint;
 @property(nonatomic, copy) NSString *accessibilityHint;
@@ -60,10 +77,15 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, copy) NSString *accessibilityLabel;
 @property(nonatomic) unsigned long long accessibilityTraits;
 @property(nonatomic) _Bool isAccessibilityElement;
+@property(nonatomic, copy) NSArray *accessibilityCustomContent;
+- (void)_accessibilityUpdateContainerElementReferencesIfNeededForNewElements:(id)arg1;
 @property(nonatomic, copy) NSString *accessibilityIdentifier;
-- (_Bool)_internal_handleCustomActionWithUiAction:(id)arg1;
 - (unsigned long long)_accessibilityAutomationType;
 - (id)_accessibilityRoleDescription;
+- (double)_accessibilityNumberValue;
+- (double)_accessibilityMaxValue;
+- (double)_accessibilityMinValue;
+- (long long)_accessibilityExpandedStatus;
 - (id)_accessibilityDataSeriesValueDescriptionForPosition:(double)arg1 axis:(long long)arg2;
 - (id)_accessibilityDataSeriesGridlinePositionsForAxis:(long long)arg1;
 - (id)_accessibilityDataSeriesMaximumValueForAxis:(long long)arg1;
@@ -77,6 +99,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_accessibilityDataSeriesSupportsSummarization;
 - (long long)_accessibilityDataSeriesType;
 - (id)_accessibilityDataSeriesName;
+- (id)_accessibilityMediaAnalysisElement;
 
 @end
 

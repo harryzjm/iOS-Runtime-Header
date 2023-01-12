@@ -49,6 +49,7 @@
     _Bool _allowPartialResults;
     _Bool _includeDistance;
     _Bool _includeHistoricTravelTime;
+    _Bool _includeEtaRouteIncidents;
     _Bool _includeRouteTrafficDetail;
     _Bool _includeShortTrafficSummary;
     _Bool _isFromAPI;
@@ -63,6 +64,7 @@
         unsigned int has_allowPartialResults:1;
         unsigned int has_includeDistance:1;
         unsigned int has_includeHistoricTravelTime:1;
+        unsigned int has_includeEtaRouteIncidents:1;
         unsigned int has_includeRouteTrafficDetail:1;
         unsigned int has_includeShortTrafficSummary:1;
         unsigned int has_isFromAPI:1;
@@ -121,7 +123,8 @@
 - (void)copyTo:(id)arg1;
 - (Class)responseClass;
 - (unsigned int)requestTypeCode;
-- (void)clearSensitiveFields;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
+- (void)clearSensitiveFields:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -145,6 +148,8 @@
 - (void)addServiceTag:(id)arg1;
 - (void)clearServiceTags;
 @property(retain, nonatomic) NSMutableArray *serviceTags;
+@property(nonatomic) _Bool hasIncludeEtaRouteIncidents;
+@property(nonatomic) _Bool includeEtaRouteIncidents;
 @property(retain, nonatomic) NSString *requestingAppId;
 @property(readonly, nonatomic) _Bool hasRequestingAppId;
 @property(retain, nonatomic) NSString *phoneticLocaleIdentifier;

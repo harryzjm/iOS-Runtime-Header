@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)readWithState:(id)arg1;
-+ (Class)chdChartTypeClassWithPlot:(struct XlChartPlot *)arg1;
++ (Class)chdChartTypeClassWithPlot:(void *)arg1;
 
 @end
 

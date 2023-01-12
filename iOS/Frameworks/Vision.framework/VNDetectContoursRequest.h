@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSArray, NSNumber;
+
 @interface VNDetectContoursRequest
 {
 }
@@ -14,10 +16,14 @@
 @property(nonatomic) unsigned long long maximumImageDimension;
 @property(nonatomic) _Bool detectDarkOnLight;
 @property(nonatomic) _Bool detectsDarkOnLight;
+@property(retain, nonatomic) NSNumber *contrastPivot;
 @property(nonatomic) float contrastAdjustment;
 - (_Bool)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 - (_Bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
 - (void)applyConfigurationOfRequest:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSArray *results; // @dynamic results;
 
 @end
 

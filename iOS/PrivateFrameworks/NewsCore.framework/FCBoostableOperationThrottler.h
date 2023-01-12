@@ -12,6 +12,7 @@
 
 @interface FCBoostableOperationThrottler : NSObject <FCOperationThrottler>
 {
+    _Bool _suspended;
     _Bool _workPending;
     struct os_unfair_lock_s _workPendingLock;
     unsigned long long _mergedData;
@@ -29,12 +30,14 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *serialWorkQueue; // @synthesize serialWorkQueue=_serialWorkQueue;
 @property(nonatomic) __weak id <FCBoostableOperationThrottlerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) unsigned long long mergedData; // @synthesize mergedData=_mergedData;
-@property _Bool suspended;
+@property _Bool suspended; // @synthesize suspended=_suspended;
 - (void)tickleWithCompletion:(CDUnknownBlockType)arg1;
 - (void)tickle;
+- (void)boostToQualityOfService:(long long)arg1;
 - (void)tickleWithQualityOfService:(long long)arg1 data:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)tickleWithQualityOfService:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)tickleWithQualityOfService:(long long)arg1;
+- (id)initWithDelegate:(id)arg1 queue:(id)arg2;
 - (id)initWithDelegate:(id)arg1;
 - (id)init;
 

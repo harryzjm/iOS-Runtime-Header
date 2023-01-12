@@ -9,7 +9,7 @@
 #import <NotesShared/ICCloudObject-Protocol.h>
 #import <NotesShared/ICLoggable-Protocol.h>
 
-@class CKRecord, CKShare, ICCloudState, NSData, NSMutableDictionary, NSString;
+@class CKRecord, CKShare, ICCloudState, ICMergeableDictionary, NSArray, NSData, NSMutableDictionary, NSSet, NSString, NSUUID, TTOrderedSetVersionedDocument;
 
 @interface ICCloudSyncingObject : NSManagedObject <ICCloudObject, ICLoggable>
 {
@@ -19,8 +19,14 @@
     CKRecord *_serverRecord;
     CKShare *_serverShare;
     CKRecord *_userSpecificServerRecord;
+    TTOrderedSetVersionedDocument *_activityEventsDocument;
+    id _persistedActivityEventsStorage;
+    id _checklistItemToActivityEventsStorage;
+    NSUUID *_currentReplicaID;
+    ICMergeableDictionary *_replicaIDToNotesVersion;
 }
 
++ (id)predicateForObjectsWithIdentifiers:(id)arg1;
 + (id)predicateForVisibleObjects;
 + (id)allPasswordProtectedObjectsInContext:(id)arg1;
 + (id)shareSystemFieldsTransformer;
@@ -40,12 +46,18 @@
 + (void)deleteTemporaryFilesForAsset:(id)arg1;
 + (void)deleteTemporaryAssetFilesForOperation:(id)arg1;
 + (id)temporaryAssetDirectoryURL;
++ (id)dataForAsset:(id)arg1;
++ (id)assetForTemporaryURL:(id)arg1;
 + (id)assetForData:(id)arg1;
 + (id)temporaryAssets;
 + (_Bool)supportsUserSpecificRecords;
++ (_Bool)supportsNotesVersionTracking;
++ (id)bundleIdentifiersWithReplicaID;
++ (_Bool)supportsActivityEvents;
 + (_Bool)needsToReFetchServerRecordValue:(id)arg1;
 + (id)keyPathsForValuesAffectingNeedsToBePushedToCloud;
-+ (id)allCloudObjectsInContext:(id)arg1;
++ (void)enumerateAllCloudObjectsInContext:(id)arg1 batchSize:(unsigned long long)arg2 saveAfterBatch:(_Bool)arg3 usingBlock:(CDUnknownBlockType)arg4;
++ (id)allCloudObjectIDsInContext:(id)arg1 passingTest:(CDUnknownBlockType)arg2;
 + (id)cloudObjectWithIdentifier:(id)arg1 context:(id)arg2;
 + (id)newPlaceholderObjectForRecordName:(id)arg1 accountID:(id)arg2 context:(id)arg3;
 + (id)newObjectWithIdentifier:(id)arg1 context:(id)arg2;
@@ -59,8 +71,12 @@
 + (id)objectWithRecordID:(id)arg1 accountID:(id)arg2 context:(id)arg3;
 + (id)keyPathsForValuesAffectingCloudAccount;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id checklistItemToActivityEventsStorage; // @synthesize checklistItemToActivityEventsStorage=_checklistItemToActivityEventsStorage;
+@property(retain, nonatomic) id persistedActivityEventsStorage; // @synthesize persistedActivityEventsStorage=_persistedActivityEventsStorage;
 @property(nonatomic, getter=isMergingUnappliedEncryptedRecord) _Bool mergingUnappliedEncryptedRecord; // @synthesize mergingUnappliedEncryptedRecord;
 @property(nonatomic) _Bool needsToLoadDecryptedValues; // @synthesize needsToLoadDecryptedValues=_needsToLoadDecryptedValues;
+- (void)redactAuthorAttributions;
+- (_Bool)trustsTimestampsFromReplicaID:(id)arg1;
 @property(readonly, nonatomic) _Bool isVisible;
 - (id)ic_loggingValues;
 - (id)ic_loggingIdentifier;
@@ -84,8 +100,8 @@
 - (_Bool)shouldFallBackToCheckAllCryptoKeys;
 - (id)parentEncryptableObject;
 - (id)cryptoPassphraseVerifier;
-- (void)setCryptoMasterKey:(id)arg1;
-- (id)cryptoMasterKey;
+- (void)setCryptoMainKey:(id)arg1;
+- (id)cryptoMainKey;
 - (void)saveEncryptedJSON;
 - (_Bool)isEncryptableKeyBinaryData:(id)arg1;
 - (void)setPrimitiveValue:(id)arg1 forEncryptableKey:(id)arg2;
@@ -110,6 +126,7 @@
 @property(retain, nonatomic) NSData *cryptoSalt; // @dynamic cryptoSalt;
 @property(retain, nonatomic) NSData *cryptoInitializationVector; // @dynamic cryptoInitializationVector;
 @property(retain, nonatomic) NSData *cryptoTag; // @dynamic cryptoTag;
+- (id)participantForUserID:(id)arg1;
 - (id)shareDescriptionForShareParticipants:(id)arg1;
 - (id)shareDescription;
 - (void)didAcceptShare:(id)arg1;
@@ -119,6 +136,7 @@
 @property(readonly, nonatomic) CKShare *serverShareCheckingParent;
 - (id)sharedOwnerName;
 - (_Bool)isSharedReadOnly;
+- (id)sharedRootObject;
 - (_Bool)isSharedRootObject;
 - (_Bool)isOwnedByCurrentUser;
 - (_Bool)canBeRootShareObject;
@@ -128,9 +146,12 @@
 - (void)updateChangeCountsForUnsavedParentReferences;
 - (void)updateParentReferenceIfNecessary;
 - (id)childCloudObjectsForMinimumSupportedVersionPropagation;
-- (id)childCloudObjects;
+@property(readonly, copy, nonatomic) NSArray *allChildCloudObjects;
+@property(readonly, copy, nonatomic) NSArray *childCloudObjects;
 - (id)parentCloudObjectForMinimumSupportedVersionPropagation;
+- (id)parentCloudObjectModificationDate;
 - (id)parentCloudObject;
+@property(readonly, copy, nonatomic) NSArray *ancestorCloudObjects;
 - (_Bool)supportsDeletionByTTL;
 @property(nonatomic) _Bool markedForDeletion; // @dynamic markedForDeletion;
 - (void)unmarkForDeletion;
@@ -144,17 +165,32 @@
 - (void)didFailToSaveUserSpecificRecord:(id)arg1 accountID:(id)arg2 error:(id)arg3;
 - (void)didSaveUserSpecificRecord:(id)arg1;
 - (void)mergeDataFromUserSpecificRecord:(id)arg1 accountID:(id)arg2;
-- (void)didFetchUserSpecificRecord:(id)arg1 accountID:(id)arg2;
+- (void)didFetchUserSpecificRecord:(id)arg1 accountID:(id)arg2 force:(_Bool)arg3;
 - (id)newlyCreatedUserSpecificRecord;
 - (id)userSpecificRecordID;
 - (id)userSpecificRecordType;
 - (_Bool)wantsUserSpecificRecord;
+- (void)willUpdateDeviceReplicaIDsToNotesVersion:(long long)arg1;
+- (_Bool)updateDeviceReplicaIDsToCurrentNotesVersionIfNeeded;
+- (unsigned long long)mergeReplicaIDToNotesVersion:(id)arg1;
+- (void)setNotesVersion:(id)arg1 forReplicaID:(id)arg2;
+- (id)notesVersionForReplicaID:(id)arg1;
+@property(readonly, nonatomic) ICMergeableDictionary *replicaIDToNotesVersion; // @synthesize replicaIDToNotesVersion=_replicaIDToNotesVersion;
+- (void)setCurrentReplicaID:(id)arg1;
+@property(readonly, copy, nonatomic) NSUUID *currentReplicaID; // @synthesize currentReplicaID=_currentReplicaID;
+@property(readonly, copy, nonatomic) NSSet *deviceReplicaIDs;
+- (_Bool)allowsImporting;
+- (_Bool)allowsExporting;
 - (void)requireMinimumSupportedVersionAndPropagateToChildObjects:(long long)arg1;
 - (void)resetToIntrinsicNotesVersionAndPropagateToChildObjects;
 - (void)unitTest_setMinimumSupportedNotesVersion:(long long)arg1;
 @property(readonly, nonatomic) _Bool shouldSyncMinimumSupportedNotesVersion;
 @property(readonly, nonatomic) long long intrinsicNotesVersion;
+- (unsigned long long)mergeActivityEventsDocument:(id)arg1;
+@property(readonly, nonatomic) TTOrderedSetVersionedDocument *activityEventsDocument; // @synthesize activityEventsDocument=_activityEventsDocument;
+@property(retain, nonatomic) NSData *activityEventsData; // @dynamic activityEventsData;
 - (void)objectWasFetchedButDoesNotExistInCloud;
+- (void)objectWasFetchedFromCloudWithRecord:(id)arg1 accountID:(id)arg2 force:(_Bool)arg3;
 - (void)objectWasFetchedFromCloudWithRecord:(id)arg1 accountID:(id)arg2;
 - (void)objectWasPushedToCloudWithOperation:(id)arg1 serverRecord:(id)arg2;
 - (void)objectFailedToBePushedToCloudWithOperation:(id)arg1 record:(id)arg2 error:(id)arg3;
@@ -163,16 +199,18 @@
 - (void)objectWasDeletedFromCloud;
 - (_Bool)needsToFetchAfterServerRecordChanged:(id)arg1;
 - (_Bool)hasSuccessfullyPushedLatestVersionToCloud;
-- (_Bool)needsToBePushedToCloud;
+@property(readonly, nonatomic) _Bool needsToBePushedToCloud;
 - (void)mergeCryptoTagAndInitializationVectorFromRecord:(id)arg1;
+- (void)mergeCryptoFieldsFromRecord:(id)arg1;
 - (void)mergeEncryptedDataFromRecord:(id)arg1;
 @property(readonly, nonatomic) _Bool canSyncPasswordProtectionFields;
+- (void)mergeDataFromRecord:(id)arg1 accountID:(id)arg2 force:(_Bool)arg3;
 - (void)mergeDataFromRecord:(id)arg1 accountID:(id)arg2;
 - (id)newlyCreatedRecordWithObfuscator:(id)arg1;
 - (id)newlyCreatedRecord;
 - (_Bool)isValidObject;
 - (_Bool)isInICloudAccount;
-- (_Bool)needsToBeDeletedFromCloud;
+@property(readonly, nonatomic) _Bool needsToBeDeletedFromCloud;
 - (id)recordType;
 - (long long)databaseScope;
 - (id)recordID;
@@ -190,6 +228,7 @@
 - (void)clearChangeCount;
 - (void)updateChangeCount;
 @property(nonatomic) _Bool needsToBeFetchedFromCloud; // @dynamic needsToBeFetchedFromCloud;
+- (void)assignToPersistentStore:(id)arg1;
 - (id)cloudAccount;
 - (_Bool)validateIdentifier:(inout id *)arg1 error:(out id *)arg2;
 - (void)willSave;
@@ -197,6 +236,7 @@
 - (void)awakeFromInsert;
 - (void)didTurnIntoFault;
 - (id)initWithEntity:(id)arg1 insertIntoManagedObjectContext:(id)arg2;
+- (void)addEmailAddressesAndPhoneNumbersToAttributeSet:(id)arg1;
 
 // Remaining properties
 @property(retain, nonatomic) ICCloudState *cloudState; // @dynamic cloudState;
@@ -208,6 +248,7 @@
 @property(nonatomic) _Bool needsToSaveUserSpecificRecord; // @dynamic needsToSaveUserSpecificRecord;
 @property(retain, nonatomic) NSString *passwordHint; // @dynamic passwordHint;
 @property(retain, nonatomic) NSString *primitiveZoneOwnerName; // @dynamic primitiveZoneOwnerName;
+@property(retain, nonatomic) NSData *replicaIDToNotesVersionData; // @dynamic replicaIDToNotesVersionData;
 @property(retain, nonatomic) NSData *serverRecordData; // @dynamic serverRecordData;
 @property(retain, nonatomic) NSData *serverShareData; // @dynamic serverShareData;
 @property(readonly) Class superclass;

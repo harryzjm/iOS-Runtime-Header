@@ -8,15 +8,17 @@
 
 #import <AdPlatformsCommon/NSSecureCoding-Protocol.h>
 
-@class APTapAction, NSError, NSString, NSURL, NSUUID;
+@class APTapAction, NSDictionary, NSError, NSString, NSURL, NSUUID;
 
 @interface APRepresentationData : NSObject <NSSecureCoding>
 {
     _Bool _skipEnabled;
     _Bool _unbranded;
+    _Bool _parentAppCheckEnabled;
     NSUUID *_identifier;
     NSString *_contentDataIdentifier;
     long long _placementType;
+    long long _desiredPosition;
     unsigned long long _privacyMarkerPosition;
     APTapAction *_tapAction;
     NSString *_adTag;
@@ -31,12 +33,37 @@
     NSString *_advertiserName;
     NSString *_campaignData;
     NSError *_error;
+    NSString *_adamID;
+    NSString *_metadata;
+    NSString *_journeyRelayAdGroupId;
+    NSString *_journeyRelayCampaignId;
+    NSDictionary *_installAttribution;
+    long long _rank;
+    long long _timeToDisplay;
+    NSUUID *_iAdID;
+    NSUUID *_impressionID;
+    NSString *_clientRequestID;
+    NSString *_storeFront;
+    NSString *_storeFrontLocale;
     CDStruct_8caa76fc _size;
 }
 
 + (id)mockRepresentationWithType:(long long)arg1 contentData:(id)arg2;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain) NSString *storeFrontLocale; // @synthesize storeFrontLocale=_storeFrontLocale;
+@property(retain) NSString *storeFront; // @synthesize storeFront=_storeFront;
+@property(retain) NSString *clientRequestID; // @synthesize clientRequestID=_clientRequestID;
+@property(retain) NSUUID *impressionID; // @synthesize impressionID=_impressionID;
+@property(retain) NSUUID *iAdID; // @synthesize iAdID=_iAdID;
+@property long long timeToDisplay; // @synthesize timeToDisplay=_timeToDisplay;
+@property long long rank; // @synthesize rank=_rank;
+@property(retain) NSDictionary *installAttribution; // @synthesize installAttribution=_installAttribution;
+@property _Bool parentAppCheckEnabled; // @synthesize parentAppCheckEnabled=_parentAppCheckEnabled;
+@property(retain) NSString *journeyRelayCampaignId; // @synthesize journeyRelayCampaignId=_journeyRelayCampaignId;
+@property(retain) NSString *journeyRelayAdGroupId; // @synthesize journeyRelayAdGroupId=_journeyRelayAdGroupId;
+@property(retain) NSString *metadata; // @synthesize metadata=_metadata;
+@property(retain) NSString *adamID; // @synthesize adamID=_adamID;
 @property(retain) NSError *error; // @synthesize error=_error;
 @property(retain) NSString *campaignData; // @synthesize campaignData=_campaignData;
 @property(retain) NSString *advertiserName; // @synthesize advertiserName=_advertiserName;
@@ -54,11 +81,13 @@
 @property(retain) APTapAction *tapAction; // @synthesize tapAction=_tapAction;
 @property CDStruct_8caa76fc size; // @synthesize size=_size;
 @property unsigned long long privacyMarkerPosition; // @synthesize privacyMarkerPosition=_privacyMarkerPosition;
+@property long long desiredPosition; // @synthesize desiredPosition=_desiredPosition;
 @property long long placementType; // @synthesize placementType=_placementType;
 @property(retain) NSString *contentDataIdentifier; // @synthesize contentDataIdentifier=_contentDataIdentifier;
 @property(readonly) NSUUID *identifier; // @synthesize identifier=_identifier;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (void)_correctNonNullableFields;
 - (id)init;
 
 @end

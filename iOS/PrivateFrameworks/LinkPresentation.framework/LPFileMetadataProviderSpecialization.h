@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     NSURL *_temporaryFileURL;
     LPImage *_originalImage;
     LPImage *_quickLookThumbnail;
+    LPImage *_smallQuickLookThumbnail;
     NSString *_MIMEType;
     NSString *_UTI;
     LPLinkMetadata *_metadata;
@@ -36,8 +37,10 @@ __attribute__((visibility("hidden")))
 - (void)cleanUpTemporaryFile;
 - (void)generateFallbackMetadataForUnreachableFile:(id)arg1;
 - (void)fetchMetadataForReachableFile:(id)arg1;
+- (_Bool)shouldUseQuickLookForFileType;
 - (void)fetchMetadataFromURL:(id)arg1;
 - (void)fetchIconAndThumbnailFromQuickLookForURL:(id)arg1;
+- (void)requestQuickLookThumbnailForURL:(id)arg1 size:(struct CGSize)arg2 badgeType:(unsigned long long)arg3 image:(id *)arg4;
 - (void)start;
 
 // Remaining properties

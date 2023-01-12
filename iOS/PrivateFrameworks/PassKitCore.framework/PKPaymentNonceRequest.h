@@ -12,11 +12,12 @@
     NSString *_merchantIdentifier;
 }
 
++ (id)nonceRequestWithBaseRequest:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool useLegacyGetAPI; // @synthesize useLegacyGetAPI=_useLegacyGetAPI;
 @property(copy, nonatomic) NSString *merchantIdentifier; // @synthesize merchantIdentifier=_merchantIdentifier;
 - (id)bodyDictionary;
-- (id)endpointName;
+- (id)endpointComponents;
 - (id)_legacyGetURLRequestWithServiceURL:(id)arg1 deviceIdentifier:(id)arg2 appleAccountInformation:(id)arg3;
 
 @end

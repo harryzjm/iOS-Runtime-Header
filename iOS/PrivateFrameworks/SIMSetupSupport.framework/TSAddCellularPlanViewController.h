@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <OnBoardingKit/OBWelcomeController.h>
-
 #import <SIMSetupSupport/TSSetupFlowItem-Protocol.h>
 #import <SIMSetupSupport/UINavigationControllerDelegate-Protocol.h>
 
 @class NSString;
 @protocol TSSIMSetupFlowDelegate;
 
-@interface TSAddCellularPlanViewController : OBWelcomeController <UINavigationControllerDelegate, TSSetupFlowItem>
+@interface TSAddCellularPlanViewController <UINavigationControllerDelegate, TSSetupFlowItem>
 {
     _Bool _allowDismiss;
     id <TSSIMSetupFlowDelegate> _delegate;

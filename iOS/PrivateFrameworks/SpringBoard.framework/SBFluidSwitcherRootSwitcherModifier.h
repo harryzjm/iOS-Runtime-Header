@@ -10,17 +10,25 @@
 }
 
 - (id)_reduceMotionModifier;
+- (id)_highlightModifierKeyForAppLayout:(id)arg1;
 - (id)_swipeToKillModifierKeyForAppLayout:(id)arg1;
+- (void)_updateTransientlyVisibleSlideOverTongueModifierWithEvent:(id)arg1;
 - (void)_updateLowEndHardwareModifier;
 - (void)_updateReduceMotionModifierWithReduceMotionChangedEvent:(id)arg1;
 - (void)_updateMultitaskingModifierWithEvent:(id)arg1;
+- (void)_updateFloorModifierWithProposedFloorModifier:(id)arg1;
+- (void)_updateFloorModifierWithGestureEvent:(id)arg1;
 - (void)_updateFloorModifierWithTransitionEvent:(id)arg1;
 - (void)verifyInternalIntegrityAfterHandlingEvent:(id)arg1;
+- (id)transientlyVisibleSlideOverTongueModifier;
 - (id)multitaskingModifier;
 - (id)floorModifier;
+- (id)shelfModifierForTransitionEvent:(id)arg1;
+- (id)transientlyVisibleSlideOverTongueModifierForEvent:(id)arg1;
 - (id)userScrollingModifierForScrollEvent:(id)arg1;
 - (id)lowEndHardwareModifier;
 - (id)removalModifierForRemovalEvent:(id)arg1;
+- (id)highlightModifierForHighlightEvent:(id)arg1;
 - (id)swipeToKillModifierForSwipeToKillEvent:(id)arg1;
 - (id)insertionModifierForInsertionEvent:(id)arg1;
 - (id)reduceMotionModifierForReduceMotionChangedEvent:(id)arg1;
@@ -28,16 +36,19 @@
 - (id)transitionModifierForMainTransitionEvent:(id)arg1;
 - (id)gestureModifierForGestureEvent:(id)arg1;
 - (id)multitaskingModifierForEvent:(id)arg1;
+- (id)floorModifierForGestureEvent:(id)arg1;
 - (id)floorModifierForTransitionEvent:(id)arg1;
+- (id)handleUpdateFocusedAppLayoutEvent:(id)arg1;
 - (id)handleScrollEvent:(id)arg1;
 - (id)handleRemovalEvent:(id)arg1;
 - (id)handleInsertionEvent:(id)arg1;
+- (id)handleHighlightEvent:(id)arg1;
 - (id)handleSwipeToKillEvent:(id)arg1;
 - (id)handleReduceMotionChangedEvent:(id)arg1;
-- (void)_handleTransitionEvent:(id)arg1;
-- (id)handleMainTransitionEvent:(id)arg1;
-- (id)handleInlineTransitionEvent:(id)arg1;
+- (id)handleTransitionEvent:(id)arg1;
 - (id)handleGestureEvent:(id)arg1;
+- (id)responseForProposedChildResponse:(id)arg1 childModifier:(id)arg2 event:(id)arg3;
+- (id)_handleEvent:(id)arg1;
 - (id)handleEvent:(id)arg1;
 - (void)_setup;
 - (void)didMoveToParentModifier:(id)arg1;

@@ -67,9 +67,9 @@
 - (id)initWithDocument:(id)arg1;
 - (id)init;
 @property(readonly, nonatomic) unsigned long long count;
-- (id)initWithCRCoder:(id)arg1 orderedSet:(const struct OrderedSet *)arg2;
+- (id)initWithCRCoder:(id)arg1 orderedSet:(const void *)arg2;
 - (id)initWithCRCoder:(id)arg1;
-- (void)encodeWithCRCoder:(id)arg1 orderedSet:(struct OrderedSet *)arg2;
+- (void)encodeWithCRCoder:(id)arg1 orderedSet:(void *)arg2;
 - (void)encodeWithCRCoder:(id)arg1;
 
 // Remaining properties

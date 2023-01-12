@@ -32,15 +32,17 @@
 @property(retain, nonatomic) EKRecurrenceRule *recurrenceRule; // @synthesize recurrenceRule=_recurrenceRule;
 - (void)setRecurrenceRuleFromRepeatType:(long long)arg1;
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
+- (void)tableView:(id)arg1 willDisplayFooterView:(id)arg2 forSection:(long long)arg3;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)_recurrenceCellForIndexPath:(id)arg1;
 - (void)_checkItemAtIndexPath:(id)arg1;
 - (void)viewDidLoad;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)resetBackgroundColor;
 - (void)loadView;
 - (id)initWithFrame:(struct CGRect)arg1 styleProvider:(id)arg2 calendarItem:(id)arg3;
 - (id)initWithFrame:(struct CGRect)arg1 styleProvider:(id)arg2;

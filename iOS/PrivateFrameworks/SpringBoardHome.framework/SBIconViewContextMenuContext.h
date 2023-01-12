@@ -16,12 +16,10 @@
     UIContextMenuInteraction *_contextMenuInteraction;
     SBIconView *_iconView;
     NSUUID *_identifier;
-    NSString *_presentedWidgetBundleIdentifier;
     struct CGPoint _location;
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSString *presentedWidgetBundleIdentifier; // @synthesize presentedWidgetBundleIdentifier=_presentedWidgetBundleIdentifier;
 @property(readonly, copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property(readonly, nonatomic) struct CGPoint location; // @synthesize location=_location;
 @property(readonly, nonatomic) __weak SBIconView *iconView; // @synthesize iconView=_iconView;

@@ -8,13 +8,13 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-@class CKCDPCodeServiceRequestAccountConfig, CKCDPCodeServiceRequestAssetAuthorizeGetRequestOptions, CKCDPCodeServiceRequestProtectedCloudComputeMetadata, CKCDPCodeServiceRequestRequestContext, NSData, NSMutableArray, NSString;
+@class CKCDPCodeServiceRequestAccountConfig, CKCDPCodeServiceRequestAssetAuthorizeGetRequestOptions, CKCDPCodeServiceRequestAttestationRequest, CKCDPCodeServiceRequestProtectedCloudComputeMetadata, CKCDPCodeServiceRequestRequestContext, CKCDPTrustedTargetCryptoMetadata, NSData, NSMutableArray, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKCDPCodeServiceRequest : PBRequest <NSCopying>
 {
     CKCDPCodeServiceRequestAccountConfig *_accountConfig;
     CKCDPCodeServiceRequestAssetAuthorizeGetRequestOptions *_assetAuthorizeGetRequestOptions;
+    CKCDPCodeServiceRequestAttestationRequest *_attestationRequest;
     NSMutableArray *_clientConfigs;
     NSString *_functionName;
     CKCDPCodeServiceRequestProtectedCloudComputeMetadata *_protectedCloudComputeMetadata;
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     int _serializationFormat;
     NSData *_serializedParameters;
     NSString *_serviceName;
+    CKCDPTrustedTargetCryptoMetadata *_trustedTargetCryptoMetadata;
     struct {
         unsigned int serializationFormat:1;
     } _has;
@@ -30,8 +31,10 @@ __attribute__((visibility("hidden")))
 
 + (Class)clientConfigType;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSData *routingToken; // @synthesize routingToken=_routingToken;
+@property(retain, nonatomic) CKCDPTrustedTargetCryptoMetadata *trustedTargetCryptoMetadata; // @synthesize trustedTargetCryptoMetadata=_trustedTargetCryptoMetadata;
 @property(retain, nonatomic) CKCDPCodeServiceRequestProtectedCloudComputeMetadata *protectedCloudComputeMetadata; // @synthesize protectedCloudComputeMetadata=_protectedCloudComputeMetadata;
+@property(retain, nonatomic) CKCDPCodeServiceRequestAttestationRequest *attestationRequest; // @synthesize attestationRequest=_attestationRequest;
+@property(retain, nonatomic) NSData *routingToken; // @synthesize routingToken=_routingToken;
 @property(retain, nonatomic) CKCDPCodeServiceRequestAssetAuthorizeGetRequestOptions *assetAuthorizeGetRequestOptions; // @synthesize assetAuthorizeGetRequestOptions=_assetAuthorizeGetRequestOptions;
 @property(retain, nonatomic) CKCDPCodeServiceRequestRequestContext *requestContext; // @synthesize requestContext=_requestContext;
 @property(retain, nonatomic) CKCDPCodeServiceRequestAccountConfig *accountConfig; // @synthesize accountConfig=_accountConfig;
@@ -48,8 +51,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasRoutingToken;
+@property(readonly, nonatomic) _Bool hasTrustedTargetCryptoMetadata;
 @property(readonly, nonatomic) _Bool hasProtectedCloudComputeMetadata;
+@property(readonly, nonatomic) _Bool hasAttestationRequest;
+@property(readonly, nonatomic) _Bool hasRoutingToken;
 @property(readonly, nonatomic) _Bool hasAssetAuthorizeGetRequestOptions;
 @property(readonly, nonatomic) _Bool hasRequestContext;
 @property(readonly, nonatomic) _Bool hasAccountConfig;

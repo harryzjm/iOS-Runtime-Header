@@ -4,14 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <coreroutine/RTDiagnosticProvider-Protocol.h>
+
+@class NSString;
 @protocol RTUserDefaults;
 
-@interface RTDefaultsManager
+@interface RTDefaultsManager <RTDiagnosticProvider>
 {
     id <RTUserDefaults> _userDefaults;
 }
 
 - (void).cxx_destruct;
+- (void)fetchDiagnosticLogsWithHandler:(CDUnknownBlockType)arg1;
 - (void)internalRemoveObserver:(id)arg1 name:(id)arg2;
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
 - (void)notifyUpdatedKeys:(id)arg1;
@@ -22,9 +26,15 @@
 - (void)addDomain:(id)arg1;
 - (void)registerDefault:(id)arg1 forKey:(id)arg2;
 - (void)registerDefaults:(id)arg1;
-- (void)shutdown;
+- (void)_shutdownWithHandler:(CDUnknownBlockType)arg1;
 - (id)initWithUserDefaults:(id)arg1 customDomain:(id)arg2;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

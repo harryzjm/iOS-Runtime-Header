@@ -6,14 +6,22 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthMenstrualCyclesDaemon/HDFeatureAvailabilityExtensionProvider-Protocol.h>
+#import <HealthMenstrualCyclesDaemon/HDHealthDaemonReadyObserver-Protocol.h>
+#import <HealthMenstrualCyclesDaemon/HDPostInstallUpdateTaskHandler-Protocol.h>
 #import <HealthMenstrualCyclesDaemon/HDProfileExtension-Protocol.h>
 
-@class HDMCAnalysisManager, HDMCAnalyticsManager, HDMCNotificationManager, HDProfile, HKMCSettingsManager, NSString;
+@class HDBackgroundFeatureDeliveryManager, HDFeatureAvailabilityManager, HDMCAnalysisManager, HDMCAnalysisScheduler, HDMCAnalyticsManager, HDMCNotificationManager, HDPrimaryProfile, HKCalendarCache, HKMCSettingsManager, NSString;
 
-@interface HDMCProfileExtension : NSObject <HDProfileExtension>
+@interface HDMCProfileExtension : NSObject <HDProfileExtension, HDFeatureAvailabilityExtensionProvider, HDHealthDaemonReadyObserver, HDPostInstallUpdateTaskHandler>
 {
     HDMCAnalyticsManager *_analyticsManager;
-    HDProfile *_profile;
+    HDFeatureAvailabilityManager *_featureAvailabilityManager;
+    HDFeatureAvailabilityManager *_heartRateFeatureAvailabilityManager;
+    HDBackgroundFeatureDeliveryManager *_heartRateBackgroundFeatureDeliveryManager;
+    HDMCAnalysisScheduler *_analysisScheduler;
+    HKCalendarCache *_calendarCache;
+    HDPrimaryProfile *_profile;
     HDMCAnalysisManager *_analysisManager;
     HDMCNotificationManager *_notificationManager;
     HKMCSettingsManager *_settingsManager;
@@ -22,8 +30,11 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) HKMCSettingsManager *settingsManager; // @synthesize settingsManager=_settingsManager;
 @property(readonly, nonatomic) HDMCNotificationManager *notificationManager; // @synthesize notificationManager=_notificationManager;
-@property(retain, nonatomic) HDMCAnalysisManager *analysisManager; // @synthesize analysisManager=_analysisManager;
-@property(readonly, nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
+@property(readonly, nonatomic) HDMCAnalysisManager *analysisManager; // @synthesize analysisManager=_analysisManager;
+@property(readonly, nonatomic) __weak HDPrimaryProfile *profile; // @synthesize profile=_profile;
+- (void)performPostInstallUpdateTaskForManager:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)daemonReady:(id)arg1;
+- (id)featureAvailabilityExtensionForFeatureIdentifier:(id)arg1;
 - (id)initWithProfile:(id)arg1;
 
 // Remaining properties

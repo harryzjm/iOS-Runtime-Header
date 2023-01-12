@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)emojiInternationalKeyOffset;
 - (double)emojiInternationalKeySize;
 - (struct CGPoint)emojiPopupTextOffset;
+- (long long)assetIdiom;
 
 @end
 

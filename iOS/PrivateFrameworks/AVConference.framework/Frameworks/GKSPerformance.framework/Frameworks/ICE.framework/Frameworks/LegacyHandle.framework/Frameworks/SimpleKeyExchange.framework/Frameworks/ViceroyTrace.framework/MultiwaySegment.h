@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
-@protocol SegmentStatsDelegate;
+@class NSDate, NSString, VCHistogram;
+@protocol OS_nw_activity, SegmentStatsDelegate;
 
 __attribute__((visibility("hidden")))
 @interface MultiwaySegment : NSObject
@@ -25,11 +25,29 @@ __attribute__((visibility("hidden")))
     unsigned int _totalPacketsSent;
     unsigned long long _totalBytesSent;
     unsigned long long _totalBytesReceived;
+    VCHistogram *_RTT;
+    VCHistogram *_PLR;
+    VCHistogram *_TBR;
     NSString *_segmentName;
     NSString *_previousSegmentName;
+    unsigned int _segmentStreamGroups;
+    unsigned int _previousSegmentStreamGroups;
+    _Bool _is5GHz;
+    _Bool _hasReported;
+    NSDate *_conversationTimeBase;
+    int _startDate;
     id <SegmentStatsDelegate> _delegate;
+    _Bool _useNwActivitySubmitMetrics;
+    NSObject<OS_nw_activity> *_nwActivity;
+    unsigned int _localSwitches;
+    _Bool _isNWActivityReportingEnabled;
 }
 
+@property unsigned int localSwitches; // @synthesize localSwitches=_localSwitches;
+@property(readonly) VCHistogram *TBR; // @synthesize TBR=_TBR;
+@property(readonly) VCHistogram *PLR; // @synthesize PLR=_PLR;
+@property(readonly) VCHistogram *RTT; // @synthesize RTT=_RTT;
+@property _Bool is5GHz; // @synthesize is5GHz=_is5GHz;
 @property unsigned long long totalBytesReceived; // @synthesize totalBytesReceived=_totalBytesReceived;
 @property unsigned long long totalBytesSent; // @synthesize totalBytesSent=_totalBytesSent;
 @property unsigned int totalPacketsSent; // @synthesize totalPacketsSent=_totalPacketsSent;
@@ -37,8 +55,12 @@ __attribute__((visibility("hidden")))
 @property unsigned int totalPacketsReceived; // @synthesize totalPacketsReceived=_totalPacketsReceived;
 @property int adjustedDuration; // @synthesize adjustedDuration=_adjustedDuration;
 @property int duration; // @synthesize duration=_duration;
+@property(readonly) unsigned int previousSegmentStreamGroups; // @synthesize previousSegmentStreamGroups=_previousSegmentStreamGroups;
+@property(readonly) unsigned int segmentStreamGroups; // @synthesize segmentStreamGroups=_segmentStreamGroups;
 @property(readonly) NSString *previousSegmentName; // @synthesize previousSegmentName=_previousSegmentName;
 @property(readonly) NSString *segmentName; // @synthesize segmentName=_segmentName;
+- (void)setNWActivityReportingEnabled:(_Bool)arg1;
+- (void)complete_and_release_nw_activity:(int)arg1;
 - (double)packetLossRate;
 - (double)averageRoundTripTime;
 - (void)processRoundTripTime:(unsigned int)arg1;
@@ -49,7 +71,7 @@ __attribute__((visibility("hidden")))
 - (void)setDelegate:(id)arg1;
 - (id)delegate;
 - (void)dealloc;
-- (id)initWithSegmentName:(id)arg1 previousSegmentName:(id)arg2 delegate:(id)arg3;
+- (id)initWithSegmentName:(id)arg1 previousSegmentName:(id)arg2 segmentStreamGroups:(unsigned int)arg3 previousSegmentStreamGroups:(unsigned int)arg4 nwActivity:(id)arg5 localSwitches:(unsigned int)arg6 conversationTimeBase:(id)arg7 delegate:(id)arg8;
 
 @end
 

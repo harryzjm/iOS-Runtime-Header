@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_alwaysGetsContexts;
 - (double)_adjustedWindowLevelFromLevel:(double)arg1;
 - (_Bool)_canActAsKeyWindowForScreen:(id)arg1;
-- (_Bool)_canBecomeKeyWindow;
+- (_Bool)canBecomeKeyWindow;
 - (void)_setFirstResponder:(id)arg1;
 - (_Bool)_isSettingFirstResponder;
 

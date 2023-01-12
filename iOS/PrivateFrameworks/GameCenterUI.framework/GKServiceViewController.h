@@ -21,6 +21,7 @@
 
 + (id)_remoteViewControllerInterface;
 + (id)_exportedInterface;
+- (void).cxx_destruct;
 @property(nonatomic) double statusBarHeight; // @synthesize statusBarHeight=_statusBarHeight;
 @property(nonatomic) int hostPID; // @synthesize hostPID=_hostPID;
 @property(nonatomic) _Bool alwaysShowDoneButton; // @synthesize alwaysShowDoneButton=_alwaysShowDoneButton;

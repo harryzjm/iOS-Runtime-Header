@@ -8,7 +8,5 @@
 
 @protocol CUIKSingleDayTimelineLayoutScreenUtils <NSObject>
 - (double)RoundToScreenScale:(double)arg1;
-- (double)RoundToScreenScaleForFloat:(double)arg1;
-- (struct CGRect)RoundRectToScreenScaleForRect:(struct CGRect)arg1;
 @end
 

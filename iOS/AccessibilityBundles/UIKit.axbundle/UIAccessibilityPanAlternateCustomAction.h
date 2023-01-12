@@ -11,7 +11,5 @@
     _Bool _isSecondAlternate;
 }
 
-@property(nonatomic) _Bool isSecondAlternate; // @synthesize isSecondAlternate=_isSecondAlternate;
-
 @end
 

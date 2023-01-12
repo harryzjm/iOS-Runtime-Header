@@ -7,7 +7,6 @@
 #import <UIKit/UIViewController.h>
 
 #import <NewsUI/NUArticleBarButtonItemManagerDelegate-Protocol.h>
-#import <NewsUI/NUInterstitialAdManagerDelegate-Protocol.h>
 #import <NewsUI/NULoadingDelegate-Protocol.h>
 #import <NewsUI/NUNavigationControl-Protocol.h>
 #import <NewsUI/NUPageViewControllerDataSource-Protocol.h>
@@ -15,17 +14,16 @@
 #import <NewsUI/UIPageViewControllerDataSource-Protocol.h>
 #import <NewsUI/UIPageViewControllerDelegate-Protocol.h>
 
-@class NSString, NUArticleBarButtonItemManager, NUArticleNavigationController, NUInterstitialAdManager, NUPageViewController;
+@class NSString, NUArticleBarButtonItemManager, NUArticleNavigationController, NUPageViewController;
 @protocol NUArticleContainerViewControllerDelegate, NUPaging, NUPagingFactory, NURouter;
 
-@interface NUArticleContainerViewController : UIViewController <UIPageViewControllerDelegate, UIPageViewControllerDataSource, NUPageViewControllerDelegate, NUPageViewControllerDataSource, NUArticleBarButtonItemManagerDelegate, NUInterstitialAdManagerDelegate, NUNavigationControl, NULoadingDelegate>
+@interface NUArticleContainerViewController : UIViewController <UIPageViewControllerDelegate, UIPageViewControllerDataSource, NUPageViewControllerDelegate, NUPageViewControllerDataSource, NUArticleBarButtonItemManagerDelegate, NUNavigationControl, NULoadingDelegate>
 {
     _Bool _linkPreviewing;
     id <NUArticleContainerViewControllerDelegate> _delegate;
     NUArticleNavigationController *_navigationController;
     NUPageViewController *_pageViewController;
     id <NUPagingFactory> _pagingFactory;
-    NUInterstitialAdManager *_interstitialAdManager;
     id <NUPaging> _paging;
     NUArticleBarButtonItemManager *_barButtonItemManager;
     id <NURouter> _router;
@@ -35,7 +33,6 @@
 @property(readonly, nonatomic) id <NURouter> router; // @synthesize router=_router;
 @property(readonly, nonatomic) NUArticleBarButtonItemManager *barButtonItemManager; // @synthesize barButtonItemManager=_barButtonItemManager;
 @property(retain, nonatomic) id <NUPaging> paging; // @synthesize paging=_paging;
-@property(readonly, nonatomic) NUInterstitialAdManager *interstitialAdManager; // @synthesize interstitialAdManager=_interstitialAdManager;
 @property(readonly, nonatomic) id <NUPagingFactory> pagingFactory; // @synthesize pagingFactory=_pagingFactory;
 @property(readonly, nonatomic) NUPageViewController *pageViewController; // @synthesize pageViewController=_pageViewController;
 @property(readonly, nonatomic) NUArticleNavigationController *navigationController; // @synthesize navigationController=_navigationController;
@@ -47,9 +44,6 @@
 - (void)loadingDidFinishWithError:(id)arg1;
 - (void)loadingWillStart;
 - (void)enableNavigation:(_Bool)arg1;
-- (id)interstitialAdManager:(id)arg1 pageAfterPage:(id)arg2;
-- (void)interstitialAdManager:(id)arg1 didUnloadInterstitialPage:(id)arg2;
-- (void)interstitialAdManager:(id)arg1 didLoadInterstitialPage:(id)arg2;
 - (void)articleBarButtonItemManagerDidLayoutBarButtonItems:(id)arg1;
 - (void)articleBarButtonItemManager:(id)arg1 performShareActionForBarButtonItem:(id)arg2;
 - (void)articleBarButtonItemManager:(id)arg1 performNextActionForBarButtonItem:(id)arg2;
@@ -63,7 +57,7 @@
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
-- (id)initWithPagingFactory:(id)arg1 interstitialAdManager:(id)arg2 router:(id)arg3;
+- (id)initWithPagingFactory:(id)arg1 router:(id)arg2;
 - (id)init;
 
 // Remaining properties

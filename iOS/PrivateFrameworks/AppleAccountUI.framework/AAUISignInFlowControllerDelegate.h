@@ -44,6 +44,7 @@
 - (void)signInOperationManager:(id)arg1 didSaveAccount:(id)arg2 error:(id)arg3;
 - (void)signInFlowController:(id)arg1 saveAccount:(id)arg2 withAllDataclassesEnabledIfPossibleWithCompletion:(CDUnknownBlockType)arg3;
 - (void)signInFlowController:(id)arg1 showAlertWithTitle:(id)arg2 message:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (_Bool)parentViewControllerPresentsErrorAlert;
 - (id)initWithPresentingViewController:(id)arg1;
 - (id)init;
 

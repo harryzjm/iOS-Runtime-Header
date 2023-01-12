@@ -10,7 +10,7 @@
 #import <FrontBoardServices/FBSWorkspaceScenesSource-Protocol.h>
 
 @class BSServiceConnection, BSServiceConnectionEndpoint, FBSSerialQueue, FBSWorkspace, NSHashTable, NSMutableArray, NSMutableDictionary, NSString;
-@protocol FBSWorkspaceDelegate, NSCopying, OS_dispatch_queue;
+@protocol BSServiceConnectionClient, FBSWorkspaceDelegate, NSCopying, OS_dispatch_queue;
 
 @interface FBSWorkspaceScenesClient : NSObject <FBSSceneUpdater, FBSWorkspaceScenesSource>
 {
@@ -18,7 +18,7 @@
     id <FBSWorkspaceDelegate> _workspaceDelegate;
     NSObject<OS_dispatch_queue> *_queue;
     FBSSerialQueue *_callOutQueue;
-    BSServiceConnection *_connection;
+    BSServiceConnection<BSServiceConnectionClient> *_connection;
     BSServiceConnectionEndpoint *_endpoint;
     NSMutableDictionary *_scenesByIdentifier;
     NSMutableDictionary *_clientSettingsByIdentifier;
@@ -26,6 +26,7 @@
     NSMutableArray *_pendedSendBlocks;
     struct os_unfair_lock_s _reportingLock;
     NSMutableDictionary *_reportingLock_scenesByIdentifier;
+    _Bool _activated;
 }
 
 + (id)serviceQuality;
@@ -33,6 +34,7 @@
 - (void)_queue_invalidateScene:(id)arg1 withTransitionContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_queue_updateScene:(id)arg1 withSettings:(id)arg2 diff:(id)arg3 transitionContext:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)_queue_connectedSceneWithIdentifier:(id)arg1;
+- (void)_queue_sendHandshake;
 - (id)_reportedSceneWithIdentifier:(id)arg1;
 - (void)_configureReceivedActions:(id)arg1 forScene:(id)arg2;
 - (id)_remoteTarget;
@@ -54,7 +56,7 @@
 - (id)sceneWithIdentifier:(id)arg1;
 @property(readonly, nonatomic) NSObject<NSCopying> *identifier;
 - (void)requestSceneWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)activate;
+- (void)queue_activate;
 - (id)initWithEndpoint:(id)arg1 queue:(id)arg2 calloutQueue:(id)arg3 workspace:(id)arg4;
 - (id)init;
 

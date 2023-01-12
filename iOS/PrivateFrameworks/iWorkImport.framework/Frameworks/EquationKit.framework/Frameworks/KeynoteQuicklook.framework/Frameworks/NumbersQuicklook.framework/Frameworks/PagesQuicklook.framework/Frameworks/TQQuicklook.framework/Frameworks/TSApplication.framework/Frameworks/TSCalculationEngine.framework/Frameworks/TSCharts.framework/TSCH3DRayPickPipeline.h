@@ -10,12 +10,13 @@
 
 @interface TSCH3DRayPickPipeline <TSCH3DSceneObjectDelegator>
 {
-    tvec2_84d5962d mPickPosition;
-    TSCH3DRayPickPipelineDelegate *mSceneObjectDelegate;
+    tvec2_84d5962d _pickPosition;
+    TSCH3DRayPickPipelineDelegate *_sceneObjectDelegate;
 }
 
-+ (id)pipelineWithScene:(id)arg1 position:(const tvec2_84d5962d *)arg2;
++ (id)pipelineWithScene:(id)arg1 position:(const void *)arg2;
 - (id).cxx_construct;
+- (void).cxx_destruct;
 - (id)makeDelegateWithSceneObject:(id)arg1 scene:(id)arg2;
 - (id)makeDelegateWithScene:(id)arg1;
 @property(readonly, nonatomic) TSCH3DPickedPoint *pickedPoint;
@@ -27,8 +28,7 @@
 - (id)p_unsortedPickedPoints;
 - (_Bool)run;
 - (void)rayPick:(id)arg1;
-- (void)dealloc;
-- (id)initWithScene:(id)arg1 position:(const tvec2_84d5962d *)arg2;
+- (id)initWithScene:(id)arg1 position:(const void *)arg2;
 - (Class)labelsMeshRendererClassForLabelsRenderer:(id)arg1;
 
 @end

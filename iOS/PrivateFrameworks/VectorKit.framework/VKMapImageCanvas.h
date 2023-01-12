@@ -13,20 +13,24 @@ __attribute__((visibility("hidden")))
 @interface VKMapImageCanvas <VKMapModelDelegate, MDSnapshotMap>
 {
     VKMapModel *_mapModel;
-    struct MapEngine *_mapEngine;
+    void *_mapEngine;
+    struct _retain_ptr<VKManifestTileGroupObserverProxy *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> _manifestTileGroupObserverProxy;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)mapModelDidUpdateMinMaxZoomLevel:(id)arg1;
 - (void)mapModelLabelsDidLayout:(id)arg1;
-- (void)mapModel:(id)arg1 labelMarkerDidChangeState:(const shared_ptr_2d33c5e4 *)arg2;
-- (void)mapModel:(id)arg1 selectedLabelMarkerWillDisappear:(const shared_ptr_2d33c5e4 *)arg2;
+- (void)mapModel:(id)arg1 labelMarkerDidChangeState:(const void *)arg2;
+- (void)mapModel:(id)arg1 selectedLabelMarkerWillDisappear:(const void *)arg2;
+- (void)tileGroupDidChange;
 - (void)cancelTileRequests;
 - (void)clearScene;
 - (void)setMapType:(int)arg1;
 - (void)resetCameraController;
-- (void)updateWithTimestamp:(double)arg1 withContext:(struct LayoutContext *)arg2;
+- (void)updateWithTimestamp:(double)arg1 withContext:(void *)arg2;
 - (void)dealloc;
-- (id)initWithMapEngine:(struct MapEngine *)arg1;
+- (id)initWithMapEngine:(void *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -4,31 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SpringBoardHome/SBLeafIcon.h>
+#import <SpringBoardHome/SBHApplicationIcon.h>
 
-@class SBApplication;
-
-@interface SBApplicationIcon : SBLeafIcon
+@interface SBApplicationIcon : SBHApplicationIcon
 {
-    SBApplication *_application;
 }
 
-+ (_Bool)canGenerateIconsInBackground;
-- (void).cxx_destruct;
-- (_Bool)isEqual:(id)arg1;
-- (id)iTunesCategoriesOrderedByRelevancy;
+- (id)applicationPlaceholder;
 - (id)application;
-- (_Bool)isApplicationIcon;
-- (void)_noteActiveDataSourceDidChangeAndReloadIcon:(_Bool)arg1;
-- (void)possibleUserTapDidCancel;
-- (void)possibleUserTapBeganWithAbsoluteTime:(unsigned long long)arg1 andContinuousTime:(unsigned long long)arg2;
-- (id)folderFallbackTitle;
-- (id)folderTitleOptions;
-- (void)setBadge:(id)arg1;
-- (id)automationID;
-- (id)tags;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithApplication:(id)arg1;
 
 @end
 

@@ -17,9 +17,9 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)visualString;
-- (_Bool)unionAdjacencySetFromSourceNodeIdentifiers:(id)arg1 toTargetNodeIdentifiers:(id)arg2 graphStore:(id)arg3 error:(id *)arg4;
-- (void)unionAdjacencyListFromSources:(id)arg1 toTargets:(id)arg2;
-- (void)unionAdjacencyListFromSource:(id)arg1 toTargets:(id)arg2;
+- (id)adjacencyByJoiningWithAdjacency:(id)arg1 graph:(id)arg2;
+- (id)adjacencyWithStartNodeIdentifiers:(id)arg1 graph:(id)arg2;
+- (void)unionAdjacencySetFromSourceNodeIdentifiers:(id)arg1 toTargetNodeIdentifiers:(id)arg2 graph:(id)arg3;
 - (id)inverse;
 - (id)initWithNodeFilter:(id)arg1;
 

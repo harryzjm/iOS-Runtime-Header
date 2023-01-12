@@ -16,7 +16,7 @@
 
 @interface CKSearchViewController <CKSearchResultsTitleHeaderCellDelegate, UIContextMenuInteractionDelegate, UICollectionViewDragDelegate, UISearchResultsUpdating, UICollectionViewDelegate, CKSearchControllerDelegate>
 {
-    _Bool _insetCollectionViewForMacToolbar;
+    _Bool _dismissingSearchController;
     _Bool _searchInProgress;
     _Bool _isInitialLoad;
     id <CKContainerSearchControllerDelegate> _delegate;
@@ -44,7 +44,7 @@
 @property(nonatomic) _Bool searchInProgress; // @synthesize searchInProgress=_searchInProgress;
 @property(copy, nonatomic) NSString *searchText; // @synthesize searchText=_searchText;
 @property(retain, nonatomic) NSArray *searchControllers; // @synthesize searchControllers=_searchControllers;
-@property(nonatomic) _Bool insetCollectionViewForMacToolbar; // @synthesize insetCollectionViewForMacToolbar=_insetCollectionViewForMacToolbar;
+@property(nonatomic) _Bool dismissingSearchController; // @synthesize dismissingSearchController=_dismissingSearchController;
 @property(nonatomic) unsigned long long mode; // @synthesize mode=_mode;
 @property(nonatomic) __weak id <CKContainerSearchControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)collectionView:(id)arg1 itemsForBeginningDragSession:(id)arg2 atIndexPath:(id)arg3;
@@ -53,6 +53,7 @@
 - (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (_Bool)_shouldHideShowAllButtonForController:(id)arg1;
 - (_Bool)_currentModeIsDetails;
 - (Class)_searchResultsHeaderClass;
 - (_Bool)_needsIndexing;
@@ -74,9 +75,12 @@
 - (void)findNext;
 - (void)searchEnded;
 - (void)cancelCurrentQuery;
+- (id)searchController:(id)arg1 cellForResult:(id)arg2;
 - (id)containerTraitCollectionForController:(id)arg1;
 - (double)containerWidthForController:(id)arg1;
+- (double)widthForDeterminingAvatarVisibility;
 - (struct UIEdgeInsets)parentMarginInsetsForSearchController:(id)arg1;
+- (_Bool)shouldInsetResultsForSearchController:(id)arg1;
 - (void)deleteMessageItem:(id)arg1;
 - (void)deleteTransferGUID:(id)arg1;
 - (void)searchController:(id)arg1 requestsItemDeletionAtIndexPath:(id)arg2;
@@ -87,7 +91,6 @@
 - (void)_searchImmediately;
 - (void)searchWithText:(id)arg1;
 - (void)updateSearchResultsForSearchController:(id)arg1;
-- (struct UIEdgeInsets)navigationBarInsetsWithoutPalette;
 - (id)scrollView;
 - (void)_searchResultHeaderButtonTapped:(id)arg1;
 - (void)searchResultsTitleCellShowAllButtonTapped:(id)arg1;
@@ -104,12 +107,11 @@
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewDidLayoutSubviews;
-- (void)viewWillLayoutSubviews;
-- (void)viewLayoutMarginsDidChange;
 - (void)_registerCells;
 - (void)loadView;
 - (void)dealloc;
 - (id)initWithSearchControllerClasses:(id)arg1;
+- (_Bool)__im_ff_isInterstellarEnabled;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -49,6 +49,7 @@
     long long _imageStyle;
     long long _tabBarSizing;
     UITabBarAppearance *_standardAppearance;
+    UITabBarAppearance *_scrollEdgeAppearance;
     unsigned long long _preferredFocusHeading;
     UIView *__expectedSuperviewFollowingAnimation;
     long long _displayStyle;
@@ -65,6 +66,7 @@
 @property(nonatomic, getter=_preferredFocusHeading, setter=_setPreferredFocusHeading:) unsigned long long preferredFocusHeading; // @synthesize preferredFocusHeading=_preferredFocusHeading;
 @property(nonatomic) __weak UITabBarItem *selectedItem; // @synthesize selectedItem=_selectedItem;
 @property(nonatomic) __weak id <UITabBarDelegate> delegate; // @synthesize delegate=_delegate;
+@property(copy, nonatomic) UITabBarAppearance *scrollEdgeAppearance; // @synthesize scrollEdgeAppearance=_scrollEdgeAppearance;
 @property(nonatomic, setter=_setScrollsItems:) _Bool _scrollsItems; // @synthesize _scrollsItems;
 @property(nonatomic, setter=_setTabBarSizing:) long long _tabBarSizing; // @synthesize _tabBarSizing;
 @property(nonatomic, setter=_setShowsHighlightedState:) _Bool _showsHighlightedState; // @synthesize _showsHighlightedState;
@@ -108,11 +110,15 @@
 @property(readonly, nonatomic, getter=_focusedTabBarItem) UITabBarItem *focusedTabBarItem;
 @property(nonatomic, getter=_pendingFocusAction, setter=_setPendingFocusAction:) _Bool pendingFocusAction;
 @property(nonatomic, getter=_focusedItemHighlightShouldBeVisible, setter=_setFocusedItemHightlightShouldBeVisible:) _Bool focusedItemHighlightShouldBeVisible;
+- (void)setAlpha:(double)arg1;
+- (void)setHidden:(_Bool)arg1;
 @property(nonatomic, getter=_isHiddenAwaitingFocus, setter=_setHiddenAwaitingFocus:) _Bool hiddenAwaitingFocus;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (_Bool)shouldUpdateFocusInContext:(id)arg1;
 - (_Bool)canBecomeFocused;
+- (_Bool)_isEligibleForFocusOcclusion;
 - (_Bool)_isEligibleForFocusInteraction;
+- (id)_systemDefaultFocusGroupIdentifier;
 @property(nonatomic, setter=_setImageStyle:) long long _imageStyle; // @synthesize _imageStyle;
 - (id)_dividerImageForLeftButtonState:(unsigned long long)arg1 rightButtonState:(unsigned long long)arg2;
 - (void)_setDividerImage:(id)arg1 forLeftButtonState:(unsigned long long)arg2 rightButtonState:(unsigned long long)arg3;
@@ -175,6 +181,8 @@
 - (_Bool)_subclassImplementsDrawRect;
 @property(nonatomic, setter=_setInterTabButtonSpacing:) double _interTabButtonSpacing;
 @property(nonatomic, setter=_setTabButtonWidth:) double _tabButtonWidth;
+@property(nonatomic, setter=_setBackgroundTransitionProgress:) double _backgroundTransitionProgress;
+- (void)_setBackgroundTransitionProgress:(double)arg1 forceUpdate:(_Bool)arg2;
 @property(retain, nonatomic, getter=_backdropViewLayerGroupName, setter=_setBackdropViewLayerGroupName:) NSString *backdropViewLayerGroupName;
 @property(copy, nonatomic, setter=_setBackdropGroupName:) NSString *_backdropGroupName;
 - (id)_effectiveUnselectedTabTintColorConsideringView:(id)arg1;

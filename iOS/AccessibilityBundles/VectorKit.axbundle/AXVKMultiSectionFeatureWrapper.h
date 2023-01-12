@@ -6,20 +6,23 @@
 
 #import <objc/NSObject.h>
 
+@class GEOMultiSectionFeature;
+
 @interface AXVKMultiSectionFeatureWrapper : NSObject
 {
-    CDStruct_66740237 *_feature;
+    GEOMultiSectionFeature *_feature;
     double _creationTime;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) double creationTime; // @synthesize creationTime=_creationTime;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
 - (id)featureName;
-@property(nonatomic) CDStruct_66740237 *feature;
+@property(nonatomic) GEOMultiSectionFeature *feature;
 - (void)dealloc;
-- (id)initWithFeature:(CDStruct_66740237 *)arg1;
+- (id)initWithFeature:(id)arg1;
 
 @end
 

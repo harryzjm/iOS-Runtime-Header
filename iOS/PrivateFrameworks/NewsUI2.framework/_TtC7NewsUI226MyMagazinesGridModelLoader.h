@@ -11,12 +11,14 @@
 @interface _TtC7NewsUI226MyMagazinesGridModelLoader : _TtCs12_SwiftObject
 {
     MISSING_TYPE *delegate;
-    MISSING_TYPE *identifier;
+    MISSING_TYPE *activity;
     MISSING_TYPE *store;
     MISSING_TYPE *issueService;
     MISSING_TYPE *issueModelFactory;
     MISSING_TYPE *tagService;
+    MISSING_TYPE *_sort;
     MISSING_TYPE *$__lazy_storage_$_lazyInitializingPromise;
+    MISSING_TYPE *lastKnownState;
 }
 
 @end

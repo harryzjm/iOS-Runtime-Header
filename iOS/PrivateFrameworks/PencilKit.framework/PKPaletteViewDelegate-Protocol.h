@@ -4,18 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PencilKit/PKPaletteViewPositionObserving-Protocol.h>
+#import <PencilKit/NSObject-Protocol.h>
 
-@class NSUndoManager, PKDrawingPaletteView, PKPaletteView, UIResponder;
+@class NSUndoManager, PKPaletteView;
 
-@protocol PKPaletteViewDelegate <PKPaletteViewPositionObserving>
-- (void)paletteViewDidToggleRuler:(PKDrawingPaletteView *)arg1;
-- (void)paletteViewSelectedToolInkDidChange:(PKDrawingPaletteView *)arg1;
-- (NSUndoManager *)paletteViewUndoManager:(PKPaletteView *)arg1;
+@protocol PKPaletteViewDelegate <NSObject>
 
 @optional
-- (_Bool)shouldHandlePencilInteractionWhenNotVisible:(PKDrawingPaletteView *)arg1;
-- (void)paletteViewFirstResponderDidUpdate:(PKDrawingPaletteView *)arg1;
-- (UIResponder *)paletteViewCurrentFirstResponder:(PKPaletteView *)arg1;
+- (void)paletteViewDidChangePosition:(PKPaletteView *)arg1;
+- (NSUndoManager *)paletteViewUndoManager:(PKPaletteView *)arg1;
 @end
 

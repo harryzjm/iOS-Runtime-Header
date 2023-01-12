@@ -6,10 +6,16 @@
 
 #import <MapKit/NSObject-Protocol.h>
 
-@class GEOCategorySearchResultSection, GEODirectionIntent, GEOMapRegion, GEOMapServiceTraits, GEORPCorrectedSearch, GEORPPlaceInfo, GEORelatedSearchSuggestion, GEOResolvedItem, NSArray, NSError, NSObject, NSString;
+@class GEOCategorySearchResultSection, GEODirectionIntent, GEOMapRegion, GEOMapServiceTraits, GEOPDPlaceSummaryLayoutMetadata, GEORPCorrectedSearch, GEORPPlaceInfo, GEORelatedSearchSuggestion, GEOResolvedItem, GEOResultRefinementGroup, GEOSearchAutoRedoThreshold, GEOSearchSectionList, NSArray, NSError, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @protocol MKMapServiceTicket <NSObject>
+@property(readonly, nonatomic) _Bool disableAdditionalViewportPadding;
+@property(readonly, nonatomic) GEOSearchSectionList *searchSectionList;
+@property(readonly, nonatomic) GEOResultRefinementGroup *resultRefinementGroup;
+@property(readonly, nonatomic) GEOPDPlaceSummaryLayoutMetadata *placeSummaryLayoutMetadata;
+@property(readonly, nonatomic) GEOSearchAutoRedoThreshold *searchAutoRedoThreshold;
+@property(readonly, nonatomic) NSArray *dotPlaces;
 @property(readonly, nonatomic) NSArray *publisherResults;
 @property(readonly, nonatomic) NSArray *collectionResults;
 @property(readonly, nonatomic) NSArray *relatedEntitySections;

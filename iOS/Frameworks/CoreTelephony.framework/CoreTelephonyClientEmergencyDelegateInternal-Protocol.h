@@ -11,7 +11,6 @@
 @protocol CoreTelephonyClientEmergencyDelegateInternal <NSObject>
 
 @optional
-- (void)normalEmergencyModeChanged:(CTXPCServiceSubscriptionContext *)arg1 mode:(CTEmergencyMode *)arg2;
 - (void)emergencyModeChanged:(CTXPCServiceSubscriptionContext *)arg1 mode:(CTEmergencyMode *)arg2;
 @end
 

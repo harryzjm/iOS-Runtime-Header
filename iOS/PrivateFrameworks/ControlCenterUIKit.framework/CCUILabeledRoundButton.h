@@ -6,13 +6,16 @@
 
 #import <UIKit/UIView.h>
 
-@class CCUICAPackageDescription, CCUIRoundButton, MTVisualStylingProvider, NSString, UIColor, UIImage, UILabel;
+#import <ControlCenterUIKit/MTVisualStylingRequiring-Protocol.h>
 
-@interface CCUILabeledRoundButton : UIView
+@class CCUICAPackageDescription, CCUIRoundButton, NSArray, NSMutableDictionary, NSString, UIColor, UIImage, UILabel;
+
+@interface CCUILabeledRoundButton : UIView <MTVisualStylingRequiring>
 {
-    MTVisualStylingProvider *_visualStylingProvider;
+    NSMutableDictionary *_categoriesToVisualStylingProviders;
     _Bool _labelsVisible;
     _Bool _useAlternateBackground;
+    _Bool _dynamicLayoutEnabled;
     NSString *_title;
     NSString *_subtitle;
     UIImage *_glyphImage;
@@ -21,6 +24,7 @@
     CCUIRoundButton *_buttonView;
     NSString *_contentSizeCategoryThreshold;
     UIColor *_highlightColor;
+    UIColor *_highlightTintColor;
     UILabel *_titleLabel;
     UILabel *_subtitleLabel;
 }
@@ -28,7 +32,9 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property(retain, nonatomic) UIColor *highlightTintColor; // @synthesize highlightTintColor=_highlightTintColor;
 @property(retain, nonatomic) UIColor *highlightColor; // @synthesize highlightColor=_highlightColor;
+@property(nonatomic, getter=isDynamicLayoutEnabled) _Bool dynamicLayoutEnabled; // @synthesize dynamicLayoutEnabled=_dynamicLayoutEnabled;
 @property(nonatomic) NSString *contentSizeCategoryThreshold; // @synthesize contentSizeCategoryThreshold=_contentSizeCategoryThreshold;
 @property(retain, nonatomic) CCUIRoundButton *buttonView; // @synthesize buttonView=_buttonView;
 @property(nonatomic) _Bool useAlternateBackground; // @synthesize useAlternateBackground=_useAlternateBackground;
@@ -38,12 +44,15 @@
 @property(retain, nonatomic) UIImage *glyphImage; // @synthesize glyphImage=_glyphImage;
 @property(copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
-- (void)_updateVisualStylingOfLabel:(id)arg1;
+- (void)_visualStylingProvider:(id)arg1 didChangeForCategory:(long long)arg2 outgoingVisualStylingProvider:(id)arg3;
 - (_Bool)_shouldUseLargeTextLayout;
 - (void)_updateFonts;
 - (void)_contentSizeCategoryDidChange;
 - (void)_layoutLabels;
 - (void)_setupLabelsBounds;
+- (void)setVisualStylingProvider:(id)arg1 forCategory:(long long)arg2;
+@property(readonly, copy, nonatomic) NSArray *requiredVisualStyleCategories;
+- (id)visualStylingProviderForCategory:(long long)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)buttonTapped:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
@@ -52,9 +61,17 @@
 - (void)layoutSubviews;
 - (id)initWithGlyphPackageDescription:(id)arg1 highlightColor:(id)arg2 useLightStyle:(_Bool)arg3;
 - (id)initWithGlyphPackageDescription:(id)arg1 highlightColor:(id)arg2;
+- (id)initWithGlyphImage:(id)arg1 highlightColor:(id)arg2 highlightTintColor:(id)arg3 useLightStyle:(_Bool)arg4;
+- (id)initWithGlyphImage:(id)arg1 highlightColor:(id)arg2 highlightTintColor:(id)arg3;
 - (id)initWithGlyphImage:(id)arg1 highlightColor:(id)arg2 useLightStyle:(_Bool)arg3;
 - (id)initWithGlyphImage:(id)arg1 highlightColor:(id)arg2;
 - (id)initWithHighlightColor:(id)arg1 useLightStyle:(_Bool)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

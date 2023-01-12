@@ -8,7 +8,7 @@
 
 @interface TSWPCTTypesetterCache : NSObject
 {
-    struct map<unsigned long, std::__1::shared_ptr<TSWPParagraphTypesetter>, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, std::__1::shared_ptr<TSWPParagraphTypesetter>>>> _typesetters;
+    struct map<unsigned long, std::shared_ptr<TSWPParagraphTypesetter>, std::less<unsigned long>, std::allocator<std::pair<const unsigned long, std::shared_ptr<TSWPParagraphTypesetter>>>> _typesetters;
 }
 
 - (id).cxx_construct;

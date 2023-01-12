@@ -12,10 +12,10 @@
 __attribute__((visibility("hidden")))
 @interface EBState : NSObject
 {
-    struct XlLinkTable *mXlLinkTable;
-    struct XlNameTable *mXlNameTable;
-    ChVector_cc6fdd32 *mSheetNames;
-    struct XlFormulaProcessor *mXlFormulaProcessor;
+    void *mXlLinkTable;
+    void *mXlNameTable;
+    void *mSheetNames;
+    void *mXlFormulaProcessor;
     EDWorkbook *mWorkbook;
     EDResources *mResources;
     id <TCCancelDelegate> mCancelDelegate;
@@ -28,10 +28,10 @@ __attribute__((visibility("hidden")))
 - (id)resources;
 - (void)setWorkbook:(id)arg1;
 - (id)workbook;
-- (struct XlFormulaProcessor *)xlFormulaProcessor;
-- (ChVector_cc6fdd32 *)sheetNames;
-- (struct XlNameTable *)xlNameTable;
-- (struct XlLinkTable *)xlLinkTable;
+- (void *)xlFormulaProcessor;
+- (void *)sheetNames;
+- (void *)xlNameTable;
+- (void *)xlLinkTable;
 - (void)dealloc;
 - (id)initWithCancelDelegate:(id)arg1;
 

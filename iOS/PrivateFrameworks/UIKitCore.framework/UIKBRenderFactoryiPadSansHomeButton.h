@@ -17,7 +17,9 @@ __attribute__((visibility("hidden")))
 - (double)dualStringKeyTopFontSize;
 - (struct CGPoint)dualStringKeyBottomTextOffset;
 - (double)dualStringKeyBottomFontSize;
+- (double)symbolImageControlKeyFontSize;
 - (double)controlKeyFontSize;
+- (struct CGPoint)symbolImageControlKeyOffset;
 - (struct CGPoint)iPadFudgeControlKeyOffset;
 - (_Bool)iPadSansHomeButtonLayout;
 

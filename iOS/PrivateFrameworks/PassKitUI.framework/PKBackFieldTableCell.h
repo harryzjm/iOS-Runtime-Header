@@ -4,24 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PKPassField, UITextView;
+#import <PassKitUI/UITextViewDelegate-Protocol.h>
 
-@interface PKBackFieldTableCell
+@class NSString, PKPassField, UITextView;
+
+@interface PKBackFieldTableCell <UITextViewDelegate>
 {
     PKPassField *_field;
     UITextView *_valueTextView;
     double _cachedWidth;
     double _computedHeight;
+    _Bool _useBridgeStyle;
     _Bool _showLinks;
 }
 
-+ (id)_linkTextAttributes;
 + (id)valueFont;
 + (id)titleFont;
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool showLinks; // @synthesize showLinks=_showLinks;
 @property(retain, nonatomic) PKPassField *field; // @synthesize field=_field;
+- (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
+- (id)_linkTextAttributes;
 - (void)_setupTextAttributes;
 - (struct CGRect)_textBounds;
 - (void)layoutSubviews;
@@ -29,7 +33,14 @@
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)_detectLinks;
 - (void)dealloc;
+- (id)initWithField:(id)arg1 showLinks:(_Bool)arg2 useBridgeStyle:(_Bool)arg3;
 - (id)initWithField:(id)arg1 showLinks:(_Bool)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

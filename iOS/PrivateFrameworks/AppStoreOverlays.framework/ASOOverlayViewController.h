@@ -9,7 +9,7 @@
 #import <AppStoreOverlays/ASORemoteContextProvider-Protocol.h>
 #import <AppStoreOverlays/ASORemoteViewControllerDelegate-Protocol.h>
 
-@class ASOHostContext, ASORemoteOverlay, ASORemoteViewController, NSObject, NSOperationQueue, NSString;
+@class ASOHostContext, ASOOverlayManager, ASORemoteOverlay, ASORemoteViewController, NSObject, NSOperationQueue, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -21,9 +21,11 @@ __attribute__((visibility("hidden")))
     ASORemoteOverlay *_currentOverlay;
     NSObject<OS_dispatch_queue> *_viewServiceQueue;
     NSOperationQueue *_presentationQueue;
+    ASOOverlayManager *_overlayManager;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) __weak ASOOverlayManager *overlayManager; // @synthesize overlayManager=_overlayManager;
 @property(retain, nonatomic) NSOperationQueue *presentationQueue; // @synthesize presentationQueue=_presentationQueue;
 @property(nonatomic) _Bool isViewServiceLoading; // @synthesize isViewServiceLoading=_isViewServiceLoading;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *viewServiceQueue; // @synthesize viewServiceQueue=_viewServiceQueue;

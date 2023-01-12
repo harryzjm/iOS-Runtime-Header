@@ -11,7 +11,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)activateViewController:(id)arg1 animate:(_Bool)arg2;
 - (void)cancelButtonPressed;
 - (_Bool)accessibilityPerformEscape;
 

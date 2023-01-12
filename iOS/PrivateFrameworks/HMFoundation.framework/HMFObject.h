@@ -15,6 +15,7 @@
 }
 
 + (id)shortDescription;
+- (id)redactedDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, copy) NSString *privateDescription;
 @property(readonly, copy) NSString *debugDescription;

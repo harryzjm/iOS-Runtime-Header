@@ -6,7 +6,7 @@
 
 #import <PhotosGraph/NSObject-Protocol.h>
 
-@class NSArray, NSSet, NSString, PGGraphPersonNode, PHAssetCollection;
+@class NSArray, NSSet, NSString, PGGraphMomentNodeCollection, PGGraphPersonNodeCollection, PHAssetCollection, PHPhotoLibrary;
 
 @protocol PGEventEnrichment <NSObject>
 @property(readonly) _Bool isAggregation;
@@ -14,11 +14,11 @@
 @property(readonly) _Bool isShortTrip;
 @property(readonly) _Bool isLongTrip;
 @property(readonly, nonatomic) NSString *uuid;
-- (PHAssetCollection *)fetchAssetCollection;
-- (PGGraphPersonNode *)anniversaryPersonNode;
-- (PGGraphPersonNode *)birthdayPersonNode;
-- (NSArray *)sortedMomentNodes;
-- (NSSet *)momentNodes;
+- (PHAssetCollection *)fetchAssetCollectionInPhotoLibrary:(PHPhotoLibrary *)arg1;
+- (PGGraphPersonNodeCollection *)anniversaryPersonNodes;
+- (PGGraphPersonNodeCollection *)birthdayPersonNodes;
+- (NSArray *)eventEnrichmentSortedMomentNodes;
+- (PGGraphMomentNodeCollection *)eventEnrichmentMomentNodes;
 - (NSSet *)reliableMeaningLabels;
 - (NSSet *)meaningLabels;
 @end

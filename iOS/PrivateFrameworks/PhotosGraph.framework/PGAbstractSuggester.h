@@ -17,10 +17,9 @@
 }
 
 + (id)suggestedPersonLocalIdentifiersFromSharingSuggestionResults:(id)arg1 forMomentNodes:(id)arg2 containsUnverifiedPersons:(_Bool *)arg3;
-+ (id)sharingSuggestionResultsForMomentNodes:(id)arg1;
++ (id)sharingSuggestionResultsForMomentNodes:(id)arg1 withWorkingContext:(id)arg2;
 + (id)internalPredicateForProcessedAssetsWithMinimumSceneAnalysisVersion:(unsigned long long)arg1;
-+ (_Bool)processedAssetIsValidForSuggesting:(id)arg1;
-+ (_Bool)assetIsValidForSuggesting:(id)arg1;
++ (_Bool)hasInterestingScenesWithAsset:(id)arg1;
 + (id)noVideoPredicate;
 + (id)suggestionSubtypes;
 + (id)suggestionTypes;
@@ -31,6 +30,10 @@
 @property(nonatomic) _Bool lastSuggestionWasColliding; // @synthesize lastSuggestionWasColliding=_lastSuggestionWasColliding;
 @property(nonatomic) __weak PGSuggestionSession *session; // @synthesize session=_session;
 - (id)reasonsForSuggestion:(id)arg1;
+- (id)defaultAssetFetchOptionsWithInternalPredicate:(id)arg1;
+- (_Bool)processedAssetIsValidForSuggesting:(id)arg1 allowGuestAsset:(_Bool)arg2;
+- (double)userFeedbackScoreWithAsset:(id)arg1;
+- (_Bool)assetIsValidForSuggesting:(id)arg1;
 - (_Bool)canGenerateSuggestionWithAsset:(id)arg1 onDate:(id)arg2;
 - (id)suggestionsWithOptions:(id)arg1 progress:(CDUnknownBlockType)arg2;
 - (id)initWithSession:(id)arg1;

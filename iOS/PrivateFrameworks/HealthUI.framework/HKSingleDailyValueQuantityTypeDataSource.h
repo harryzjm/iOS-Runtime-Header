@@ -8,6 +8,10 @@
 {
 }
 
+- (unsigned long long)calendarUnitForTimeScope:(long long)arg1 displayType:(id)arg2;
+- (id)statisticsIntervalForTimeScope:(long long)arg1 displayType:(id)arg2;
+- (_Bool)_matchesDailyValues:(id)arg1;
+- (id)_componentsForDailyValues;
 - (id)_quantityValueFromStatistics:(id)arg1 statisticsInterval:(id)arg2 date:(id)arg3;
 - (id)queriesForStartDate:(id)arg1 endDate:(id)arg2 statisticsInterval:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)queryDescription;

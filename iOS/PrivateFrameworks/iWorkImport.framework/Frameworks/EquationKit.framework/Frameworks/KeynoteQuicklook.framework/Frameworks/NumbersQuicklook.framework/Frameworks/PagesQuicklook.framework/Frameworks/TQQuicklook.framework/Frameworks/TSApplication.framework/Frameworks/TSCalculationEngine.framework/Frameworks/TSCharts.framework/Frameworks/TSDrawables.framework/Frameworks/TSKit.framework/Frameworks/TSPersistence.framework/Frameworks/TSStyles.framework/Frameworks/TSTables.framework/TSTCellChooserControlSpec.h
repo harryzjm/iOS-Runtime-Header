@@ -13,14 +13,14 @@
     TSTPopUpMenuModel *_popupModel;
 }
 
-+ (id)instanceWithArchive:(const struct CellSpecArchive *)arg1 unarchiver:(id)arg2;
++ (id)instanceWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 + (id)cellSpecFromTSKFormat:(id)arg1;
 + (id)popupCellSpec:(id)arg1 startWithFirstItem:(_Bool)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool startWithFirstItem; // @synthesize startWithFirstItem=_startWithFirstItem;
 @property(retain, nonatomic) TSTPopUpMenuModel *popupModel; // @synthesize popupModel=_popupModel;
-- (void)saveToArchive:(struct CellSpecArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct CellSpecArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (id)tskMultipleChoiceListFormat;
 - (_Bool)validateFormatAndValue:(id)arg1;
 - (id)valueForIndex:(unsigned long long)arg1;

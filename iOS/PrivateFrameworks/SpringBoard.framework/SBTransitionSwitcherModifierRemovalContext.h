@@ -8,13 +8,11 @@
 
 @interface SBTransitionSwitcherModifierRemovalContext : NSObject
 {
-    long long _actionType;
     long long _animationStyle;
 }
 
 @property(readonly, nonatomic) long long animationStyle; // @synthesize animationStyle=_animationStyle;
-@property(readonly, nonatomic) long long actionType; // @synthesize actionType=_actionType;
-- (id)initWithActionType:(long long)arg1 animationStyle:(long long)arg2;
+- (id)initWithAnimationStyle:(long long)arg1;
 
 @end
 

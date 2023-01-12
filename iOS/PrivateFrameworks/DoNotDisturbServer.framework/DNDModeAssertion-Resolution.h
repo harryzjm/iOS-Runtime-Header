@@ -13,10 +13,14 @@
 @interface DNDModeAssertion (Resolution) <DNDSModernAssertionSourceResolution>
 + (id)predicateForModeAssertionsTakenBeforeDate:(id)arg1;
 + (id)predicateForModeAssertionsWithLifetimeClass:(Class)arg1;
++ (id)predicateForModeAssertionsWithModeIdentifiersNotContainedIn:(id)arg1;
 + (id)predicateForModeAssertionsWithDeviceIdentifier:(id)arg1;
 + (id)predicateForModeAssertionsWithClientIdentifiers:(id)arg1;
 + (id)predicateForModeAssertionsWithUUIDs:(id)arg1;
 - (id)resolveWithExpectedRemoteDeviceIdentifier:(id)arg1 localDeviceIdentifier:(id)arg2 remoteDeviceIdentifier:(id)arg3;
+@property(readonly, nonatomic) _Bool isUserInitiated;
+@property(readonly, nonatomic) _Bool isClientScheduled;
+@property(readonly, nonatomic) _Bool isInternalScheduled;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

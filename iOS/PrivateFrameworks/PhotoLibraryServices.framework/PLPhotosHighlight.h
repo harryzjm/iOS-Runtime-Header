@@ -7,7 +7,7 @@
 #import <PhotoLibraryServices/PLPhotosHighlightData-Protocol.h>
 
 @class NSArray, NSDate, NSObject, NSSet, NSString, PLManagedAsset;
-@protocol NSCopying;
+@protocol NSCopying, PLMomentAssetData;
 
 @interface PLPhotosHighlight <PLPhotosHighlightData>
 {
@@ -29,10 +29,13 @@
 + (id)insertIntoPhotoLibrary:(id)arg1 withUUID:(id)arg2 title:(id)arg3;
 + (id)fetchRequest;
 + (id)_kindDescription:(unsigned short)arg1;
++ (id)defaultPropertiesToFetchForMomentList;
++ (id)allowedPropertiesForMomentList;
 + (id)baseSearchIndexPredicate;
 @property(readonly, nonatomic) _Bool isPromoted;
 @property(readonly, nonatomic) _Bool isRecent;
 @property(readonly, nonatomic) unsigned long long numberOfAssetsInExtended;
+@property(readonly, nonatomic) id <PLMomentAssetData> firstAsset;
 @property(readonly, retain, nonatomic) NSDate *localEndDate;
 @property(readonly, retain, nonatomic) NSDate *localStartDate;
 @property(retain, nonatomic) PLManagedAsset *keyAssetForKind;
@@ -45,6 +48,7 @@
 - (id)diagnosticInformation;
 - (_Bool)supportsDiagnosticInformation;
 - (void)bumpHighlightVersion;
+- (void)willSave;
 - (void)awakeFromInsert;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
@@ -59,11 +63,11 @@
 - (void)_appendPOIs:(id)arg1 withSynonyms:(id)arg2 toCollection:(id)arg3;
 - (void)_appendHolidays:(id)arg1 toCollection:(id)arg2;
 - (void)_appendMeanings:(id)arg1 withSynonyms:(id)arg2 toCollection:(id)arg3;
-- (void)_appendScenesWithIdentifiers:(id)arg1 toCollection:(id)arg2 sceneTaxonomyProxy:(id)arg3;
+- (void)_appendScenesWithIdentifiers:(id)arg1 toCollection:(id)arg2 sceneTaxonomy:(id)arg3;
 - (void)_appendDates:(id)arg1 withDateFormatter:(id)arg2 withSynonyms:(id)arg3 toCollection:(id)arg4;
 - (void)_appendSocialGroupIdentifiers:(id)arg1 toCollection:(id)arg2;
 - (void)_appendPersonsWithUUIDs:(id)arg1 toCollection:(id)arg2;
-- (void)getSearchIndexContentsForCollection:(id)arg1 fromDictionary:(id)arg2 withDateFormatter:(id)arg3 synonymsDictionaries:(id)arg4 sceneTaxonomyProxy:(id)arg5;
+- (void)getSearchIndexContentsForCollection:(id)arg1 fromDictionary:(id)arg2 withDateFormatter:(id)arg3 synonymsDictionaries:(id)arg4 sceneTaxonomy:(id)arg5;
 - (id)assetUUIDsForPreviewWithCount:(unsigned long long)arg1;
 - (id)bestAsset;
 - (int)searchAssetsCountForKind;
@@ -89,7 +93,6 @@
 @property(nonatomic) int extendedCount; // @dynamic extendedCount;
 @property(readonly) unsigned long long hash;
 @property(nonatomic) short highlightVersion; // @dynamic highlightVersion;
-@property(nonatomic) _Bool isCurated; // @dynamic isCurated;
 @property(retain, nonatomic) PLManagedAsset *keyAsset; // @dynamic keyAsset;
 @property(nonatomic) unsigned short kind; // @dynamic kind;
 @property(retain, nonatomic) NSSet *moments; // @dynamic moments;

@@ -6,13 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class NSAttributedString, NSURL;
+@class NSAttributedString, NSURL, RVItem;
 
 @interface DDContextMenuAction : NSObject
 {
     NSURL *_url;
     struct __DDResult *_result;
+    RVItem *_item;
+    RVItem *_originalItem;
     NSAttributedString *_menuTitle;
+    RVItem *_additionalLookupItem;
 }
 
 + (CDUnknownBlockType)previewViewProviderForResult:(struct __DDResult *)arg1 context:(id)arg2;
@@ -20,9 +23,11 @@
 + (void)performDefaultActionWithURL:(id)arg1 inView:(id)arg2 atLocation:(struct CGPoint)arg3 withMenuInteraction:(id)arg4 context:(id)arg5;
 + (void)performDefaultActionWithResult:(struct __DDResult *)arg1 inView:(id)arg2 atLocation:(struct CGPoint)arg3 withMenuInteraction:(id)arg4 context:(id)arg5;
 + (id)previewActionForResult:(struct __DDResult *)arg1 URL:(id)arg2 context:(id)arg3;
-+ (CDUnknownBlockType)previewViewProviderForPreviewAction:(id)arg1;
++ (id)buttonActionsForURL:(id)arg1 result:(struct __DDResult *)arg2 contact:(id)arg3 icsString:(id)arg4 context:(id)arg5 view:(id)arg6 identifier:(id)arg7 suggestedActions:(id)arg8 defaultAction:(id *)arg9;
++ (CDUnknownBlockType)previewViewProviderForPreviewAction:(id)arg1 context:(id)arg2;
 + (id)defaultActionWithURL:(id)arg1 context:(id)arg2;
 + (id)defaultActionWithResult:(struct __DDResult *)arg1 context:(id)arg2;
++ (id)contextMenuConfigurationWithRVItem:(id)arg1 inView:(id)arg2 context:(id)arg3 menuIdentifier:(id)arg4;
 + (id)contextMenuConfigurationWithURL:(id)arg1 inView:(id)arg2 context:(id)arg3 menuIdentifier:(id)arg4;
 + (id)contextMenuConfigurationWithResult:(struct __DDResult *)arg1 inView:(id)arg2 context:(id)arg3 menuIdentifier:(id)arg4;
 + (id)contextMenuConfigurationForURL:(id)arg1 identifier:(id)arg2 selectedText:(id)arg3 results:(id)arg4 inView:(id)arg5 context:(id)arg6 menuIdentifier:(id)arg7;
@@ -30,13 +35,16 @@
 + (id)updateContext:(id)arg1 withSourceRect:(struct CGRect)arg2;
 + (_Bool)validateContext:(id)arg1 silent:(_Bool)arg2;
 - (void).cxx_destruct;
-- (void)_updateMenuElementItems:(id)arg1 withActionClasses:(id)arg2 view:(id)arg3 result:(struct __DDResult *)arg4 URL:(id)arg5 context:(id)arg6;
-- (void)_updateMenuElementItems:(id)arg1 withActions:(id)arg2 view:(id)arg3;
+- (id)_updateMenuElementItems:(id)arg1 withActions:(id)arg2 view:(id)arg3 interactionDelegate:(id)arg4;
 - (void)dealloc;
 - (void)commonInitWithResult:(struct __DDResult *)arg1 URL:(id)arg2;
+- (id)initWithRVItem:(id)arg1;
 - (id)initWithResult:(struct __DDResult *)arg1 URL:(id)arg2;
 - (id)initAtIndex:(unsigned long long)arg1 inTextStorage:(id)arg2;
+- (id)contextMenuConfigurationWithIdentifier:(id)arg1 inView:(id)arg2 context:(id)arg3 defaultAction:(id *)arg4 menuProvider:(CDUnknownBlockType *)arg5;
 - (id)contextMenuConfigurationWithIdentifier:(id)arg1 inView:(id)arg2 context:(id)arg3;
+- (id)identificationStringForMenuElement:(id)arg1 useDefault:(_Bool)arg2;
+- (id)_rawContextMenuContentForView:(id)arg1 interactionDelegate:(id)arg2 context:(id)arg3 elements:(id)arg4 defaultAction:(id *)arg5;
 
 @end
 

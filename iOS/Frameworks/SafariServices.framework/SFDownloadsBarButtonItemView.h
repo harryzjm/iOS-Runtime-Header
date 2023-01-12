@@ -6,41 +6,48 @@
 
 #import <UIKit/UIButton.h>
 
-#import <SafariServices/CAStateControllerDelegate-Protocol.h>
 #import <SafariServices/SFDeferrableUpdateView-Protocol.h>
+#import <SafariServices/UIPointerInteractionDelegate-Protocol.h>
 
-@class CAStateController, UIBarButtonItem, UIProgressView;
+@class NSString, UIBarButtonItem, UIProgressView, _SFDownloadsIconView;
 
 __attribute__((visibility("hidden")))
-@interface SFDownloadsBarButtonItemView : UIButton <SFDeferrableUpdateView, CAStateControllerDelegate>
+@interface SFDownloadsBarButtonItemView : UIButton <UIPointerInteractionDelegate, SFDeferrableUpdateView>
 {
     UIProgressView *_progressView;
-    double _progress;
     CDStruct_4e0a34f2 deferrableUpdateViewState;
-    CAStateController *_stateController;
+    _SFDownloadsIconView *_iconView;
+    double _progress;
     UIBarButtonItem *_barButtonItem;
 }
 
 + (id)buttonWithBarButtonItem:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) __weak UIBarButtonItem *barButtonItem; // @synthesize barButtonItem=_barButtonItem;
-- (void)stateController:(id)arg1 transitionDidStop:(id)arg2 completed:(_Bool)arg3;
+@property(nonatomic) double progress; // @synthesize progress=_progress;
+- (void)pointerInteraction:(id)arg1 willExitRegion:(id)arg2 animator:(id)arg3;
+- (void)pointerInteraction:(id)arg1 willEnterRegion:(id)arg2 animator:(id)arg3;
 - (void)updateContents;
 - (CDStruct_4e0a34f2 *)deferrableUpdateViewState;
 - (void)layoutSubviews;
 - (void)_buttonPressed;
 - (void)pulse;
-- (void)setProgress:(double)arg1;
 - (void)didMoveToWindow;
 - (void)setEnabled:(_Bool)arg1;
-- (void)tintColorDidChange;
-- (void)_dynamicUserInterfaceTraitDidChange;
 - (struct CGSize)intrinsicContentSize;
+- (void)traitCollectionDidChange:(id)arg1;
 - (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (struct CGRect)_barButtonHitRect;
 - (struct CGRect)_selectedIndicatorBounds;
+- (void)_updateIcon;
 - (void)_installSubviews;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

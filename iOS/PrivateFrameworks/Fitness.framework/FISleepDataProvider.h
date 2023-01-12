@@ -8,35 +8,58 @@
 
 #import <Fitness/HKSPSleepStoreObserver-Protocol.h>
 
-@class FISleepUserDay, HKSPSleepStore, NSDate, NSString;
+@class FISleepUserDay, HKSPSleepStore, NSDate, NSString, NSUserDefaults;
 @protocol FISleepDataProviderDelegate;
 
 @interface FISleepDataProvider : NSObject <HKSPSleepStoreObserver>
 {
     HKSPSleepStore *_sleepStore;
     id <FISleepDataProviderDelegate> _delegate;
+    unsigned long long _currentSleepScheduleState;
+    NSUserDefaults *_userDefaults;
     struct os_unfair_lock_s _lock;
+    _Bool _isGoodMorningAlertNotificationEnabled;
+    _Bool _isUserAwake;
     FISleepUserDay *_sleepUserDay;
     NSDate *_lastGoodMorningDismissedDate;
+    NSDate *_lastAlarmWakeUpDate;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSDate *lastGoodMorningDismissedDate; // @synthesize lastGoodMorningDismissedDate=_lastGoodMorningDismissedDate;
+@property(nonatomic) _Bool isUserAwake; // @synthesize isUserAwake=_isUserAwake;
+@property(copy, nonatomic) NSDate *lastAlarmWakeUpDate; // @synthesize lastAlarmWakeUpDate=_lastAlarmWakeUpDate;
+@property(nonatomic) _Bool isGoodMorningAlertNotificationEnabled; // @synthesize isGoodMorningAlertNotificationEnabled=_isGoodMorningAlertNotificationEnabled;
+@property(copy, nonatomic) NSDate *lastGoodMorningDismissedDate; // @synthesize lastGoodMorningDismissedDate=_lastGoodMorningDismissedDate;
 @property(retain, nonatomic) FISleepUserDay *sleepUserDay; // @synthesize sleepUserDay=_sleepUserDay;
+- (void)_setUserDefaults:(id)arg1;
+- (void)sleepStore:(id)arg1 sleepScheduleModelDidChange:(id)arg2;
 - (void)sleepStore:(id)arg1 sleepEventRecordDidChange:(id)arg2;
 - (void)sleepStore:(id)arg1 sleepModeOnDidChange:(_Bool)arg2;
 - (void)sleepStore:(id)arg1 sleepScheduleStateDidChange:(unsigned long long)arg2;
 - (void)sleepStore:(id)arg1 sleepSettingsDidChange:(id)arg2;
 - (void)sleepStore:(id)arg1 sleepScheduleDidChange:(id)arg2;
-- (_Bool)isDate:(id)arg1 within24HoursOfDate:(id)arg2;
+- (_Bool)_isDate:(id)arg1 within24HoursOfDate:(id)arg2;
+- (void)_cacheSleepUserDay:(id)arg1;
+- (id)_fetchCachedSleepUserDay;
+- (void)_clearCurrentSleepScheduleState;
+- (void)_updateCurrentSleepScheduleState;
+- (id)_lastAlarmWakeUpDateFromRecord:(id)arg1;
+- (_Bool)_updateLastAlarmWakeUpDateIfNeeded:(id)arg1;
+- (void)_fetchLastAlarmWakeUpDate;
+- (_Bool)_updateGoodMorningAlertNotificationEnabledIfNeeded:(_Bool)arg1;
+- (void)_fetchGoodMorningAlertNotificationEnabled;
 - (_Bool)_updateLastGoodMorningDismissedDateIfNeeded:(id)arg1;
 - (void)_fetchLastGoodMorningDismissedDate;
+- (void)_setSleepUserDay:(id)arg1;
 - (void)_setSleepUserDayWithStartOfDay:(id)arg1 endOfDay:(id)arg2;
+- (void)_setEmptySleepUserDay:(id)arg1;
 - (void)_clearSleepUserDay;
 - (void)_updateSleepUserDayFromWindDownOrBedtime:(id)arg1 currentDate:(id)arg2;
 - (void)_updateSleepUserDayFromWakeUp:(id)arg1 currentDate:(id)arg2;
 - (void)_updateSleepUserDay;
+- (void)_initialLoadSleepUserDay;
 - (void)dealloc;
+- (void)activate;
 - (id)initWithSleepStore:(id)arg1 delegate:(id)arg2;
 
 // Remaining properties

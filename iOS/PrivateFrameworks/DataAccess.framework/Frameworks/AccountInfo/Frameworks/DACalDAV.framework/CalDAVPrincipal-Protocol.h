@@ -53,6 +53,11 @@
 - (id <CalDAVCalendar>)calendarOfType:(int)arg1 atURL:(NSURL *)arg2 withOptions:(NSDictionary *)arg3;
 
 @optional
+@property(nonatomic) _Bool needsDefaultAllDayAlarmUpdate;
+@property(nonatomic) _Bool needsDefaultTimedAlarmUpdate;
+@property(nonatomic) _Bool alarmsDirty;
+@property(retain, nonatomic) NSString *defaultAllDayAlarms;
+@property(retain, nonatomic) NSString *defaultTimedAlarms;
 - (NSString *)defaultTodoCalendarTitle;
 - (NSString *)defaultEventCalendarTitle;
 - (void)prepareCalendarsForSyncWithCompletionBlock:(void (^)(id <CalDAVPrincipal>))arg1;

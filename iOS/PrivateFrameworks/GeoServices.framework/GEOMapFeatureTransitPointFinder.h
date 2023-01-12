@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (id)_transitPointForFeature:(struct GEOTransitNodeFeature *)arg1;
+- (id)_transitPointForFeature:(void *)arg1;
 - (id)_geometryTileFinder;
 - (id)_tileFinder;
 - (id)findGeometryForTransitPoint:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

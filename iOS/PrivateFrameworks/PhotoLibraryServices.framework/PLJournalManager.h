@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSObject, NSPersistentHistoryToken, PLChangeHandlingNotificationObserver, PLPhotoLibrary;
+@class NSObject, NSPersistentHistoryToken, PLChangeHandlingNotificationObserver, PLLibraryServicesManager, PLPhotoLibrary;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
 @interface PLJournalManager
 {
-    PLPhotoLibrary *_photoLibrary;
+    PLLibraryServicesManager *_lsm;
     PLPhotoLibrary *_transientPhotoLibrary;
     PLChangeHandlingNotificationObserver *_changeHandlingNotificationObserver;
     NSObject<OS_dispatch_queue> *_queue;
@@ -19,7 +19,7 @@
     _Atomic _Bool _ignoreHistoryDuringSnapshot;
 }
 
-+ (id)entriesByPayloadClassIDFromHistoryToken:(id)arg1 currentHistoryToken:(id *)arg2 withManagedObjectContext:(id)arg3 payloadIDsToSkipInserts:(id)arg4 shouldStopBlock:(CDUnknownBlockType)arg5;
++ (id)entriesByPayloadClassIDFromHistoryToken:(id)arg1 currentHistoryToken:(id *)arg2 withManagedObjectContext:(id)arg3 payloadIDsToSkipInserts:(id)arg4 shouldStopBlock:(CDUnknownBlockType)arg5 error:(id *)arg6;
 + (id)existingObjectWithID:(id)arg1 managedObjectContext:(id)arg2;
 + (_Bool)existingJournalsCompatibleForRebuild:(id)arg1 error:(id *)arg2;
 + (_Bool)assetJournalExists:(id)arg1 error:(id *)arg2;
@@ -31,6 +31,7 @@
 - (id)assetsToImportFromAssetJournalInManagedObjectContext:(id)arg1 outOnDiskURLs:(id)arg2;
 - (void)_recreateNonAssetsInManagedObjectContext:(id)arg1 progress:(id)arg2;
 - (void)_recreateAssetsInManagedObjectContext:(id)arg1 options:(unsigned char)arg2 progress:(id)arg3;
+- (_Bool)_recreateResourcesForAsset:(id)arg1 withPayload:(id)arg2 resources:(id)arg3 recreateOptions:(unsigned char)arg4 storeOptions:(id)arg5 libraryID:(id)arg6 isCPLEnabled:(_Bool)arg7;
 - (void)recreateNonAssetsInManagedObjectContext:(id)arg1 progress:(id)arg2;
 - (void)recreateAssetsInManagedObjectContext:(id)arg1 options:(unsigned char)arg2 progress:(id)arg3;
 - (void)recreateAllObjectsInManagedObjectContext:(id)arg1 options:(unsigned char)arg2;
@@ -50,13 +51,14 @@
 - (void)_unregisterForChangeHandlingNotifications;
 - (void)_handleChangeHandlingNotificationWithTransaction:(id)arg1;
 - (void)_registerForChangeHandlingNotifications;
+- (void)_retrySnapshot;
 - (void)_start;
 - (void)_startAfterRebuild;
-- (void)notifyDidImportFileSystemAssets;
-- (void)notifyWillImportFileSystemAssets;
+- (void)notifyRebuildComplete;
+- (void)notifyWillRebuild;
 - (void)stop;
 - (void)start;
-- (id)initWithPhotoLibrary:(id)arg1;
+- (id)initWithLibrayServicesManager:(id)arg1;
 
 @end
 

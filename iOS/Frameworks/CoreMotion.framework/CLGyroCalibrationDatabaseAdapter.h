@@ -30,7 +30,7 @@
 - (_Bool)syncgetDoSync:(CDUnknownBlockType)arg1;
 - (void)doAsync:(CDUnknownBlockType)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)doAsync:(CDUnknownBlockType)arg1;
-- (struct CLGyroCalibrationDatabase *)adaptee;
+- (void *)adaptee;
 - (void)endService;
 - (void)beginService;
 - (id)init;

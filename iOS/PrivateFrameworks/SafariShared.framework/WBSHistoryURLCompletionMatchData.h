@@ -12,18 +12,22 @@
 
 @interface WBSHistoryURLCompletionMatchData : NSObject <WBSURLCompletionMatchData>
 {
-    RefPtr_ed2a6bdb _item;
+    RefPtr_4f332d87 _item;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool visitWasClientError;
+@property(readonly, nonatomic) long long visitCountScore;
 @property(readonly, nonatomic) long long visitCount;
 @property(readonly, nonatomic) _Bool lastVisitWasFailure;
 @property(readonly, nonatomic) double lastVisitedTimeInterval;
 @property(readonly, nonatomic) _Bool containsBookmark;
+- (long long)visitCountScoreForPageTitleAtTime;
+- (long long)visitCountScoreForURLStringAtIndex:(unsigned long long)arg1;
 - (float)topSitesScoreForPageTitleAtTime:(double)arg1;
 - (float)topSitesScoreForURLStringAtIndex:(unsigned long long)arg1 atTime:(double)arg2;
-- (_Bool)matchesAutocompleteTrigger:(id)arg1;
+- (_Bool)matchesAutocompleteTrigger:(id)arg1 isStrengthened:(_Bool)arg2;
 - (void)enumeratePageTitlesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateUserVisibleURLsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)pageTitleAtIndex:(unsigned long long)arg1;
@@ -33,7 +37,7 @@
 @property(readonly, nonatomic) NSString *originalURLString;
 @property(readonly, nonatomic) _Bool shouldPreload;
 - (id)matchDataByMergingWithMatchData:(id)arg1;
-- (id)initWithCompletionItem:(struct HistoryURLCompletionItem *)arg1;
+- (id)initWithCompletionItem:(void *)arg1;
 - (id)init;
 
 // Remaining properties

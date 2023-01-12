@@ -6,25 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, UINib;
+@class NSString, UICollectionView, UINib;
 
 @interface UICollectionViewCellRegistration : NSObject
 {
-    NSString *_reuseIdentifier;
     Class _cellClass;
     UINib *_cellNib;
     CDUnknownBlockType _configurationHandler;
+    UICollectionView *__collectionViewRequestingViewWhenCreated;
+    NSString *_reuseIdentifier;
 }
 
 + (id)registrationWithCellNib:(id)arg1 configurationHandler:(CDUnknownBlockType)arg2;
 + (id)registrationWithCellClass:(Class)arg1 configurationHandler:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *reuseIdentifier; // @synthesize reuseIdentifier=_reuseIdentifier;
+@property(readonly, nonatomic) __weak UICollectionView *_collectionViewRequestingViewWhenCreated; // @synthesize _collectionViewRequestingViewWhenCreated=__collectionViewRequestingViewWhenCreated;
 @property(readonly, nonatomic) CDUnknownBlockType configurationHandler; // @synthesize configurationHandler=_configurationHandler;
 @property(readonly, nonatomic) UINib *cellNib; // @synthesize cellNib=_cellNib;
 @property(readonly, nonatomic) Class cellClass; // @synthesize cellClass=_cellClass;
-- (_Bool)hasCellNib;
-- (_Bool)hasCellClass;
-- (id)reuseIdentifier;
+@property(readonly, nonatomic) _Bool hasCellNib;
+@property(readonly, nonatomic) _Bool hasCellClass;
 - (id)initWithCellClass:(Class)arg1 cellNib:(id)arg2 configurationHandler:(CDUnknownBlockType)arg3 reuseIdentifier:(id)arg4;
 
 @end

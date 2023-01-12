@@ -39,7 +39,7 @@
     unsigned long long _contactTestBitMask;
     _Bool _allowsResting;
     _Bool _isDefaultShape;
-    struct btRigidBody *_body;
+    void *_body;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -55,7 +55,7 @@
 - (void)_setOwner:(id)arg1;
 - (void)_removeOwner;
 - (void)_ownerWillDie;
-- (struct btRigidBody *)_createBody;
+- (void *)_createBody;
 - (id)copy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)moveToTransform:(struct SCNMatrix4)arg1;
@@ -101,7 +101,7 @@
 @property(nonatomic) double mass;
 @property(nonatomic) long long type;
 - (void)dealloc;
-- (struct btRigidBody *)_handle;
+- (void *)_handle;
 - (struct __C3DScene *)sceneRef;
 - (id)initWithType:(long long)arg1 shape:(id)arg2;
 

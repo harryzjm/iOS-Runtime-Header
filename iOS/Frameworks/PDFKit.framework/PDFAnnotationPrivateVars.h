@@ -29,6 +29,8 @@ __attribute__((visibility("hidden")))
     struct CGPDFForm *rolloverOffAppearance;
     struct CGPDFForm *downOffAppearance;
     _Bool saveAppearance;
+    struct os_unfair_lock_s cachedAppearancesLock;
+    NSMutableDictionary *cachedAppearances;
     _Bool isSelected;
     _Bool isHighlighted;
     NSIndexSet *quadPointsIndexSet;

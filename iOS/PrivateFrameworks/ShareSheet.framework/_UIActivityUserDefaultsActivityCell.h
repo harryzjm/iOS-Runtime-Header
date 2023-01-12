@@ -11,6 +11,7 @@
 @interface _UIActivityUserDefaultsActivityCell : UITableViewCell
 {
     NSLayoutConstraint *_titleLabelHeightAnchor;
+    _Bool _disabled;
     unsigned long long _sequence;
     UIImageView *_activityImageView;
     UILabel *_activityTitleLabel;
@@ -24,6 +25,7 @@
 
 + (id)bodyShortFont;
 - (void).cxx_destruct;
+@property(nonatomic, getter=isDisabled) _Bool disabled; // @synthesize disabled=_disabled;
 @property(retain, nonatomic) NSLayoutConstraint *labelLeadingConstraint; // @synthesize labelLeadingConstraint=_labelLeadingConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *imageViewLeadingConstraint; // @synthesize imageViewLeadingConstraint=_imageViewLeadingConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *imageViewWidthConstraint; // @synthesize imageViewWidthConstraint=_imageViewWidthConstraint;
@@ -33,6 +35,7 @@
 @property(retain, nonatomic) UILabel *activityTitleLabel; // @synthesize activityTitleLabel=_activityTitleLabel;
 @property(retain, nonatomic) UIImageView *activityImageView; // @synthesize activityImageView=_activityImageView;
 @property(nonatomic) unsigned long long sequence; // @synthesize sequence=_sequence;
+- (void)_updateImageDarkening;
 - (void)prepareForReuse;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 

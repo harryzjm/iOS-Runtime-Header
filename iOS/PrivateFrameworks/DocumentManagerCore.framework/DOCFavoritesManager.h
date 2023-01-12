@@ -10,6 +10,7 @@
 {
 }
 
++ (id)favoritesCollection;
 + (id)sharedManager;
 - (void)runInMainThread:(CDUnknownBlockType)arg1;
 - (void)favoriteItems:(id)arg1 ranks:(id)arg2 completion:(CDUnknownBlockType)arg3;

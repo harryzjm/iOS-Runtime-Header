@@ -41,6 +41,7 @@
 @property(retain, nonatomic, getter=_setupManager, setter=_setSetupManager:) SBSetupManager *setupManager; // @synthesize setupManager=_override_setupManager;
 @property(retain, nonatomic, getter=_profileConnection, setter=_setProfileConnection:) MCProfileConnection *profileConnection; // @synthesize profileConnection=_override_profileConnection;
 - (_Bool)_dictationInfoOnScreen;
+- (_Bool)_allowsCapabilityCoverSheetSpotlightWithExplanation:(id *)arg1;
 - (_Bool)_allowsCapabilityQuickNoteWithExplanation:(id *)arg1;
 - (_Bool)_allowsCapabilityLiftToWakeWithExplanation:(id *)arg1;
 - (_Bool)_allowsCapabilityTodayViewWithExplanation:(id *)arg1;

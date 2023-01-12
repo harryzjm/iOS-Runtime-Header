@@ -23,12 +23,16 @@
     long long _originalOrientation;
     unsigned long long _fullSizeJPEGSource;
     NSString *_originatingFingerprint;
+    NSString *_importedByBundleIdentifier;
+    NSString *_importedByDisplayName;
     NSString *_codec;
 }
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *codec; // @synthesize codec=_codec;
 @property(nonatomic) short videoFrameRate; // @synthesize videoFrameRate=_videoFrameRate;
+@property(copy, nonatomic) NSString *importedByDisplayName; // @synthesize importedByDisplayName=_importedByDisplayName;
+@property(copy, nonatomic) NSString *importedByBundleIdentifier; // @synthesize importedByBundleIdentifier=_importedByBundleIdentifier;
 @property(nonatomic) short importedBy; // @synthesize importedBy=_importedBy;
 @property(copy, nonatomic) NSString *originatingFingerprint; // @synthesize originatingFingerprint=_originatingFingerprint;
 @property(nonatomic) unsigned long long fullSizeJPEGSource; // @synthesize fullSizeJPEGSource=_fullSizeJPEGSource;

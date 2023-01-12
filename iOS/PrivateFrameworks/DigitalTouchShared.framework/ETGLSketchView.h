@@ -40,10 +40,10 @@
     ETPointFIFO *_secondaryPointFIFO;
     unsigned long long _vertexOffset;
     double _delayBetweenStrokes;
-    vector_c2d99b46 _vertexBatches;
-    vector_e654105b _controlBatches;
-    vector_06e666a8 _vertexBatchCount;
-    vector_06e666a8 _secondaryVertexBatchCount;
+    vector_848757e0 _vertexBatches;
+    vector_885e1103 _controlBatches;
+    vector_2056c7c2 _vertexBatchCount;
+    vector_2056c7c2 _secondaryVertexBatchCount;
 }
 
 + (Class)layerClass;
@@ -51,10 +51,10 @@
 - (void).cxx_destruct;
 @property(nonatomic) double delayBetweenStrokes; // @synthesize delayBetweenStrokes=_delayBetweenStrokes;
 @property(nonatomic) unsigned long long vertexOffset; // @synthesize vertexOffset=_vertexOffset;
-@property(nonatomic) vector_06e666a8 secondaryVertexBatchCount; // @synthesize secondaryVertexBatchCount=_secondaryVertexBatchCount;
-@property(nonatomic) vector_06e666a8 vertexBatchCount; // @synthesize vertexBatchCount=_vertexBatchCount;
-@property(nonatomic) vector_80ea899f controlBatches; // @synthesize controlBatches=_controlBatches;
-@property(nonatomic) vector_c2d99b46 vertexBatches; // @synthesize vertexBatches=_vertexBatches;
+@property(nonatomic) vector_2056c7c2 secondaryVertexBatchCount; // @synthesize secondaryVertexBatchCount=_secondaryVertexBatchCount;
+@property(nonatomic) vector_2056c7c2 vertexBatchCount; // @synthesize vertexBatchCount=_vertexBatchCount;
+@property(nonatomic) vector_825d63de controlBatches; // @synthesize controlBatches=_controlBatches;
+@property(nonatomic) vector_848757e0 vertexBatches; // @synthesize vertexBatches=_vertexBatches;
 @property(nonatomic) float unitSize; // @synthesize unitSize=_unitSize;
 @property(retain, nonatomic) ETPointFIFO *secondaryPointFIFO; // @synthesize secondaryPointFIFO=_secondaryPointFIFO;
 @property(retain, nonatomic) ETBoxcarFilterPointFIFO *secondarySmoothingFIFO; // @synthesize secondarySmoothingFIFO=_secondarySmoothingFIFO;

@@ -5,17 +5,19 @@
 //
 
 #import <AVKit/AVScrubberDelegate-Protocol.h>
+#import <AVKit/AVVolumeControlsControllerLayoutDelegate-Protocol.h>
 
-@class AVButton, AVLabel, AVLayoutView, AVPlaybackControlsRoutePickerView, AVScrubber, AVStyleSheet, AVTouchIgnoringView, NSArray, NSString, NSTimer, UILabel, UIView;
+@class AVButton, AVControlOverflowButton, AVLabel, AVLayoutView, AVPlaybackControlsRoutePickerView, AVScrubber, AVStyleSheet, AVTouchIgnoringView, NSArray, NSString, NSTimer, UILabel, UIView;
 @protocol AVTransportControlsViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface AVTransportControlsView <AVScrubberDelegate>
+@interface AVTransportControlsView <AVScrubberDelegate, AVVolumeControlsControllerLayoutDelegate>
 {
     _Bool _doubleRowLayoutEnabled;
     _Bool _showsLoadingIndicator;
     _Bool _showsLiveStreamingControls;
     _Bool _liveStreamingControlsIncludeScrubber;
+    _Bool _transportViewIncludesVolumeController;
     _Bool _collapsed;
     _Bool _included;
     _Bool _removed;
@@ -37,6 +39,8 @@ __attribute__((visibility("hidden")))
     AVButton *_startRightwardContentTransitionButton;
     AVPlaybackControlsRoutePickerView *_routePickerView;
     AVButton *_mediaSelectionButton;
+    AVControlOverflowButton *_controlOverflowButton;
+    AVButton *_playbackSpeedButton;
     NSArray *_customItems;
     UIView *_customContentTransitioningInfoPanel;
     AVLayoutView *_controlsLayoutView;
@@ -74,6 +78,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) AVLayoutView *controlsLayoutView; // @synthesize controlsLayoutView=_controlsLayoutView;
 @property(retain, nonatomic) UIView *customContentTransitioningInfoPanel; // @synthesize customContentTransitioningInfoPanel=_customContentTransitioningInfoPanel;
 @property(copy, nonatomic) NSArray *customItems; // @synthesize customItems=_customItems;
+@property(readonly, nonatomic) AVButton *playbackSpeedButton; // @synthesize playbackSpeedButton=_playbackSpeedButton;
+@property(readonly, nonatomic) AVControlOverflowButton *controlOverflowButton; // @synthesize controlOverflowButton=_controlOverflowButton;
 @property(readonly, nonatomic) AVButton *mediaSelectionButton; // @synthesize mediaSelectionButton=_mediaSelectionButton;
 @property(readonly, nonatomic) AVPlaybackControlsRoutePickerView *routePickerView; // @synthesize routePickerView=_routePickerView;
 @property(readonly, nonatomic) AVButton *startRightwardContentTransitionButton; // @synthesize startRightwardContentTransitionButton=_startRightwardContentTransitionButton;
@@ -85,6 +91,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) AVLabel *elapsedTimeLabel; // @synthesize elapsedTimeLabel=_elapsedTimeLabel;
 @property(readonly, nonatomic) AVScrubber *scrubber; // @synthesize scrubber=_scrubber;
 @property(readonly, nonatomic) double minimumRequiredWidth; // @synthesize minimumRequiredWidth=_minimumRequiredWidth;
+@property(nonatomic) _Bool transportViewIncludesVolumeController; // @synthesize transportViewIncludesVolumeController=_transportViewIncludesVolumeController;
 @property(nonatomic) _Bool liveStreamingControlsIncludeScrubber; // @synthesize liveStreamingControlsIncludeScrubber=_liveStreamingControlsIncludeScrubber;
 @property(nonatomic) _Bool showsLiveStreamingControls; // @synthesize showsLiveStreamingControls=_showsLiveStreamingControls;
 @property(nonatomic) _Bool showsLoadingIndicator; // @synthesize showsLoadingIndicator=_showsLoadingIndicator;
@@ -95,6 +102,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSArray *doubleRowViews;
 @property(readonly, nonatomic) NSArray *singleRowViews;
 - (void)_updateCustomContentTransitioningInfoPanelLayout;
+- (void)_updateVolumeControllerLayout;
 - (id)_scrubInstructionsAttributedText;
 - (void)_updateScrubInstructionsFrame;
 - (void)_updateScrubInstructionsLabelsText;
@@ -117,6 +125,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)intrinsicContentSize;
 - (double)layoutHeightThatFitsRowsStartingWithRow:(unsigned long long)arg1;
 - (void)reevaluateHiddenStateOfAllItems;
+- (float)volumeControlsControllerTransportBarHeight:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 styleSheet:(id)arg2;
 
 // Remaining properties

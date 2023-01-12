@@ -65,6 +65,8 @@
 - (void)removeAppLayouts:(id)arg1;
 - (void)remove:(id)arg1;
 - (void)replaceAppLayout:(id)arg1 withAppLayout:(id)arg2;
+- (void)addAppLayout:(id)arg1 afterAppLayout:(id)arg2;
+- (void)addAppLayout:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)addToFront:(id)arg1;
 - (id)_changeDescriptionForFilteringAppLayouts:(id)arg1 withDisplayItemTest:(CDUnknownBlockType)arg2;
 - (void)_setRecents:(id)arg1 notifyForChangeDescription:(id)arg2;

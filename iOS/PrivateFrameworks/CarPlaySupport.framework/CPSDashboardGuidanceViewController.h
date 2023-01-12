@@ -42,6 +42,7 @@
 - (void)_launchApp:(id)arg1;
 - (void)_setupFakeButtonIfNecessary;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)_setContentReady;
 - (void)_focusHighlightColorChanged:(id)arg1;
 - (void)_animateShortcutContainerViewIn;
 - (void)_animateShortcutContainerViewOut;

@@ -10,10 +10,11 @@
 #import <ReminderKit/NSSecureCoding-Protocol.h>
 #import <ReminderKit/REMExternalSyncMetadataWritableProviding-Protocol.h>
 #import <ReminderKit/REMObjectIDProviding-Protocol.h>
+#import <ReminderKit/REMObjectStorageSupportedVersionProviding-Protocol.h>
 
 @class NSArray, NSData, NSDate, NSDateComponents, NSSet, NSString, NSURL, REMCRMergeableStringDocument, REMContactRepresentation, REMDisplayDate, REMObjectID, REMResolutionTokenMap, REMUserActivity;
 
-@interface REMReminderStorage : NSObject <NSCopying, NSSecureCoding, REMObjectIDProviding, REMExternalSyncMetadataWritableProviding>
+@interface REMReminderStorage : NSObject <NSCopying, NSSecureCoding, REMObjectIDProviding, REMExternalSyncMetadataWritableProviding, REMObjectStorageSupportedVersionProviding>
 {
     _Bool _hasDeserializedTitleDocument;
     _Bool _hasDeserializedNotesDocument;
@@ -27,16 +28,20 @@
     NSString *externalModificationTag;
     NSString *daSyncToken;
     NSString *daPushKey;
+    long long minimumSupportedVersion;
+    long long effectiveMinimumSupportedVersion;
     REMObjectID *_accountID;
     REMObjectID *_objectID;
     REMObjectID *_listID;
     REMObjectID *_parentReminderID;
     NSData *_titleDocumentData;
     NSData *_notesDocumentData;
+    NSString *_primaryLocaleInferredFromLastUsedKeyboard;
     REMResolutionTokenMap *_resolutionTokenMap;
     NSData *_resolutionTokenMapData;
     NSDate *_completionDate;
     NSSet *_subtaskIDsToUndelete;
+    NSSet *_hashtagIDsToUndelete;
     unsigned long long _priority;
     NSDateComponents *_startDateComponents;
     NSDateComponents *_dueDateComponents;
@@ -57,6 +62,7 @@
     NSDate *_lastBannerPresentationDate;
     long long _flagged;
     NSSet *_assignments;
+    NSSet *_hashtags;
     REMDisplayDate *_displayDate;
 }
 
@@ -69,6 +75,7 @@
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) REMDisplayDate *displayDate; // @synthesize displayDate=_displayDate;
+@property(retain, nonatomic) NSSet *hashtags; // @synthesize hashtags=_hashtags;
 @property(retain, nonatomic) NSSet *assignments; // @synthesize assignments=_assignments;
 @property(nonatomic) long long flagged; // @synthesize flagged=_flagged;
 @property(copy, nonatomic) NSDate *lastBannerPresentationDate; // @synthesize lastBannerPresentationDate=_lastBannerPresentationDate;
@@ -90,17 +97,23 @@
 @property(copy, nonatomic) NSDateComponents *dueDateComponents; // @synthesize dueDateComponents=_dueDateComponents;
 @property(copy, nonatomic) NSDateComponents *startDateComponents; // @synthesize startDateComponents=_startDateComponents;
 @property(nonatomic) unsigned long long priority; // @synthesize priority=_priority;
+@property(retain, nonatomic) NSSet *hashtagIDsToUndelete; // @synthesize hashtagIDsToUndelete=_hashtagIDsToUndelete;
 @property(retain, nonatomic) NSSet *subtaskIDsToUndelete; // @synthesize subtaskIDsToUndelete=_subtaskIDsToUndelete;
 @property(copy, nonatomic) NSDate *completionDate; // @synthesize completionDate=_completionDate;
 @property(nonatomic, getter=isCompleted) _Bool completed; // @synthesize completed=_completed;
 @property(retain, nonatomic) NSData *resolutionTokenMapData; // @synthesize resolutionTokenMapData=_resolutionTokenMapData;
 @property(retain, nonatomic) REMResolutionTokenMap *resolutionTokenMap; // @synthesize resolutionTokenMap=_resolutionTokenMap;
+@property(retain, nonatomic) NSString *primaryLocaleInferredFromLastUsedKeyboard; // @synthesize primaryLocaleInferredFromLastUsedKeyboard=_primaryLocaleInferredFromLastUsedKeyboard;
 @property(retain, nonatomic) NSData *notesDocumentData; // @synthesize notesDocumentData=_notesDocumentData;
 @property(retain, nonatomic) NSData *titleDocumentData; // @synthesize titleDocumentData=_titleDocumentData;
 @property(retain, nonatomic) REMObjectID *parentReminderID; // @synthesize parentReminderID=_parentReminderID;
 @property(retain, nonatomic) REMObjectID *listID; // @synthesize listID=_listID;
 @property(retain, nonatomic) REMObjectID *objectID; // @synthesize objectID=_objectID;
 @property(retain, nonatomic) REMObjectID *accountID; // @synthesize accountID=_accountID;
+- (void)setEffectiveMinimumSupportedVersion:(long long)arg1;
+@property(readonly, nonatomic) long long effectiveMinimumSupportedVersion;
+- (void)setMinimumSupportedVersion:(long long)arg1;
+@property(readonly, nonatomic) long long minimumSupportedVersion;
 @property(copy, nonatomic) NSString *daPushKey; // @synthesize daPushKey;
 @property(copy, nonatomic) NSString *daSyncToken; // @synthesize daSyncToken;
 @property(copy, nonatomic) NSString *externalModificationTag; // @synthesize externalModificationTag;
@@ -111,6 +124,7 @@
 - (id)notesReplicaIDSource;
 - (id)titleReplicaIDSource;
 - (id)cdKeyToStorageKeyMap;
+- (_Bool)isUnsupported;
 @property(readonly, nonatomic) REMObjectID *remObjectID;
 @property(readonly, copy, nonatomic) NSString *legacyNotificationIdentifier;
 - (void)setNotesDocument:(id)arg1;
@@ -123,6 +137,7 @@
 - (id)datesDebugDescriptionInTimeZone:(id)arg1;
 - (id)debugDescription;
 - (id)description;
+- (id)optionalObjectID;
 - (id)initWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

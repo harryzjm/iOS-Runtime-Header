@@ -9,11 +9,13 @@
 @interface CLSInputLocationClue
 {
     CLSPlace *_place;
+    unsigned long long numberOfAssets;
 }
 
 + (id)cluesWithLocations:(id)arg1;
 + (id)clueWithLocation:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long numberOfAssets; // @synthesize numberOfAssets;
 - (_Bool)isEqualToClue:(id)arg1;
 - (void)_prepareWithProgressBlock:(CDUnknownBlockType)arg1;
 - (id)description;

@@ -63,6 +63,10 @@
 - (void)requestScannerTimerReset;
 - (void)_updateContent:(id)arg1 forDevice:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)updateContent:(id)arg1 forDevice:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_stopSuppressingDevice:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)stopSuppressingDevice:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_suppressDevice:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)suppressDevice:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_provideContent:(id)arg1 forDevice:(id)arg2 force:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)provideContent:(id)arg1 forDevice:(id)arg2 force:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_dismissContentForDevice:(id)arg1 completion:(CDUnknownBlockType)arg2;

@@ -10,6 +10,8 @@
 {
 }
 
++ (id)queryForSearch:(_Bool)arg1 withParameters:(id)arg2;
++ (id)mutableQueryForSearch:(_Bool)arg1 withParameters:(id)arg2;
 + (id)errorForStatus:(int)arg1;
 + (_Bool)shouldUseBiometry;
 + (void)setBiometryEnabledByDefault:(_Bool)arg1;

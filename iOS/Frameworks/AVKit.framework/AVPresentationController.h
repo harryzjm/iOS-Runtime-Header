@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)shouldPresentInFullscreen;
 - (_Bool)shouldRemovePresentersView;
 - (void)dealloc;
-- (id)initWithPresentedViewController:(id)arg1 presentingViewController:(id)arg2;
+- (id)initWithPresentedViewController:(id)arg1 presentingViewController:(id)arg2 withConfiguration:(id)arg3;
 
 @end
 

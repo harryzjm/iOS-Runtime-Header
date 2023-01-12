@@ -14,10 +14,6 @@
     double _estimatedCost;
 }
 
-@property(nonatomic) _Bool omit; // @synthesize omit=_omit;
-@property(nonatomic) _Bool unique; // @synthesize unique=_unique;
-@property(nonatomic) double estimatedCost; // @synthesize estimatedCost=_estimatedCost;
-@property(nonatomic) double estimatedRows; // @synthesize estimatedRows=_estimatedRows;
 - (id)initWithEstimatedRows:(double)arg1 estimatedCost:(double)arg2 unique:(_Bool)arg3 omit:(_Bool)arg4;
 
 @end

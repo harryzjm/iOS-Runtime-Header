@@ -7,7 +7,7 @@
 #import <Photos/PHInsertChangeRequest-Protocol.h>
 #import <Photos/PHUpdateChangeRequest-Protocol.h>
 
-@class NSData, NSDate, NSDictionary, NSManagedObjectID, NSString, PHMemoryFeature, PHObjectPlaceholder, PHRelationshipChangeRequestHelper;
+@class NSData, NSDate, NSDictionary, NSManagedObjectID, NSNumber, NSString, PHMemoryFeature, PHObjectPlaceholder, PHRelationshipChangeRequestHelper, PHUserFeedback;
 
 @interface PHMemoryChangeRequest <PHInsertChangeRequest, PHUpdateChangeRequest>
 {
@@ -15,15 +15,22 @@
     _Bool _incrementPlayCount;
     _Bool _incrementShareCount;
     _Bool _incrementViewCount;
+    _Bool _didUnsetUserFeedback;
+    _Bool _didSetUserCreated;
+    _Bool _userCreated;
     NSDictionary *_movieAssetState;
+    PHUserFeedback *_userFeedback;
+    NSNumber *_customMaximumNumberOfUserCuratedAssets;
     PHRelationshipChangeRequestHelper *_keyAssetHelper;
     PHRelationshipChangeRequestHelper *_representativeAssetsHelper;
     PHRelationshipChangeRequestHelper *_curatedAssetsHelper;
     PHRelationshipChangeRequestHelper *_extendedCuratedAssetsHelper;
     PHRelationshipChangeRequestHelper *_movieCuratedAssetsHelper;
+    PHRelationshipChangeRequestHelper *_userCuratedAssetsHelper;
 }
 
 + (id)changeRequestForRemotelyViewedMemoryWithLocalIdentifier:(id)arg1;
++ (void)unblockPersonsInMemoriesWithBlockedPersonFeature:(id)arg1;
 + (void)blockPerson:(id)arg1 withAsset:(id)arg2;
 + (void)blockPerson:(id)arg1;
 + (void)deleteMemories:(id)arg1;
@@ -35,16 +42,17 @@
 + (id)preferredAttributesForMemoryCreationFromPeople:(id)arg1 proposedAttributes:(id)arg2;
 + (id)preferredAttributesForMemoryCreationFromCollectionList:(id)arg1 proposedAttributes:(id)arg2;
 + (id)preferredAttributesForMemoryCreationFromAssetCollection:(id)arg1 proposedAttributes:(id)arg2;
-+ (id)creationRequestForMemoryWithTitle:(id)arg1 subtitle:(id)arg2 creationDate:(id)arg3 category:(unsigned long long)arg4 assets:(id)arg5 curatedAssets:(id)arg6 keyAsset:(id)arg7;
-+ (id)creationRequestForMemoryWithTitle:(id)arg1 subtitle:(id)arg2 creationDate:(id)arg3 category:(unsigned long long)arg4 representativeAssets:(id)arg5 curatedAssets:(id)arg6 keyAsset:(id)arg7;
++ (id)creationRequestForMemoryWithTitle:(id)arg1 subtitle:(id)arg2 creationDate:(id)arg3 category:(unsigned long long)arg4 subcategory:(unsigned long long)arg5 representativeAssetUUIDs:(id)arg6 curatedAssetUUIDs:(id)arg7 extendedCuratedAssetUUIDs:(id)arg8 keyAssetUUID:(id)arg9;
 + (id)creationRequestForMemoryWithTitle:(id)arg1 subtitle:(id)arg2 creationDate:(id)arg3 category:(unsigned long long)arg4 subcategory:(unsigned long long)arg5 representativeAssets:(id)arg6 curatedAssets:(id)arg7 extendedCuratedAssets:(id)arg8 keyAsset:(id)arg9;
-+ (id)creationRequestForMemoryWithTitle:(id)arg1 subtitle:(id)arg2 creationDate:(id)arg3 category:(unsigned long long)arg4 subcategory:(unsigned long long)arg5 representativeAssets:(id)arg6 curatedAssets:(id)arg7 keyAsset:(id)arg8;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) PHRelationshipChangeRequestHelper *userCuratedAssetsHelper; // @synthesize userCuratedAssetsHelper=_userCuratedAssetsHelper;
 @property(readonly, nonatomic) PHRelationshipChangeRequestHelper *movieCuratedAssetsHelper; // @synthesize movieCuratedAssetsHelper=_movieCuratedAssetsHelper;
 @property(readonly, nonatomic) PHRelationshipChangeRequestHelper *extendedCuratedAssetsHelper; // @synthesize extendedCuratedAssetsHelper=_extendedCuratedAssetsHelper;
 @property(readonly, nonatomic) PHRelationshipChangeRequestHelper *curatedAssetsHelper; // @synthesize curatedAssetsHelper=_curatedAssetsHelper;
 @property(readonly, nonatomic) PHRelationshipChangeRequestHelper *representativeAssetsHelper; // @synthesize representativeAssetsHelper=_representativeAssetsHelper;
 @property(readonly, nonatomic) PHRelationshipChangeRequestHelper *keyAssetHelper; // @synthesize keyAssetHelper=_keyAssetHelper;
+@property(retain, nonatomic) NSNumber *customMaximumNumberOfUserCuratedAssets; // @synthesize customMaximumNumberOfUserCuratedAssets=_customMaximumNumberOfUserCuratedAssets;
+@property(copy, nonatomic) PHUserFeedback *userFeedback; // @synthesize userFeedback=_userFeedback;
 @property(readonly, nonatomic) NSDictionary *movieAssetState; // @synthesize movieAssetState=_movieAssetState;
 @property(readonly, nonatomic) _Bool clientEntitledToMemoryMutation; // @synthesize clientEntitledToMemoryMutation=_clientEntitledToMemoryMutation;
 @property(readonly, copy) NSString *description;
@@ -52,7 +60,6 @@
 - (_Bool)allowMutationToManagedObject:(id)arg1 propertyKey:(id)arg2 error:(id *)arg3;
 - (id)createManagedObjectForInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
 - (_Bool)validateMutationsToManagedObject:(id)arg1 error:(id *)arg2;
-- (_Bool)validateForDeleteManagedObject:(id)arg1 error:(id *)arg2;
 - (_Bool)validateInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
 - (void)incrementViewCount;
 - (void)incrementShareCount;
@@ -61,7 +68,10 @@
 - (void)setQueryHintObjects:(id)arg1;
 - (void)setQueryHintObject:(id)arg1;
 - (void)setMovieStateData:(id)arg1 forAsset:(id)arg2;
+- (void)setUserCuratedAssets:(id)arg1;
 - (void)setMovieCuratedAssets:(id)arg1;
+- (void)setKeyAssetUUID:(id)arg1;
+- (void)setRepresentativeAssetUUIDs:(id)arg1 curatedAssetUUIDs:(id)arg2 extendedCuratedAssetUUIDs:(id)arg3 keyAssetUUID:(id)arg4;
 - (void)setKeyAsset:(id)arg1;
 - (void)setRepresentativeAssets:(id)arg1 curatedAssets:(id)arg2 extendedCuratedAssets:(id)arg3 keyAsset:(id)arg4;
 - (id)_mutableKeyAssetObjectIDsAndUUIDs;
@@ -69,13 +79,20 @@
 - (id)_mutableCuratedAssetObjectIDsAndUUIDs;
 - (id)_mutableRepresentativeAssetObjectIDsAndUUIDs;
 - (void)_prepareAssetIDsIfNeeded;
-@property(nonatomic) unsigned long long featuredState;
+@property(retain, nonatomic) NSString *storyTitleCategory;
+@property(nonatomic, getter=isUserCreated) _Bool userCreated; // @synthesize userCreated=_userCreated;
+@property(nonatomic) long long featuredState;
 @property(nonatomic) unsigned long long notificationState;
+@property(retain, nonatomic) NSDate *lastEnrichmentDate;
 @property(retain, nonatomic) NSDate *lastMoviePlayedDate;
 @property(retain, nonatomic) NSDate *lastViewedDate;
 @property(nonatomic) long long photosGraphVersion;
 @property(retain, nonatomic) NSData *photosGraphData;
 @property(retain, nonatomic) NSData *movieData;
+- (void)setStorySerializedTitleCategory:(long long)arg1;
+- (long long)storySerializedTitleCategory;
+@property(nonatomic) long long storyColorGradeKind;
+@property(retain, nonatomic) NSString *graphMemoryIdentifier;
 @property(retain, nonatomic) NSString *subtitle;
 @property(retain, nonatomic) NSString *title;
 @property(retain, nonatomic) NSDate *creationDate;
@@ -83,8 +100,7 @@
 - (void)setSubcategory:(unsigned long long)arg1;
 - (unsigned long long)subcategory;
 @property(nonatomic) unsigned long long category;
-@property(nonatomic, getter=isUserCreated) _Bool userCreated;
-@property(nonatomic, getter=isPending) _Bool pending;
+@property(nonatomic) unsigned short pendingState;
 @property(nonatomic, getter=isFavorite) _Bool favorite;
 @property(nonatomic, getter=isRejected) _Bool rejected;
 @property(readonly, nonatomic) NSString *managedEntityName;

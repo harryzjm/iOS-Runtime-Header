@@ -6,15 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <TeaSnappy/NFFrameworkAssembly-Protocol.h>
+#import <TeaSnappy/TFFrameworkAssembly-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface SNAssembly : NSObject <NFFrameworkAssembly>
+@interface SNAssembly : NSObject <TFFrameworkAssembly>
 {
     NSArray *_assemblies;
 }
 
++ (void)initialize;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSArray *assemblies; // @synthesize assemblies=_assemblies;
 - (id)init;

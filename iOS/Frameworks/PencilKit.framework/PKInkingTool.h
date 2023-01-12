@@ -10,8 +10,8 @@
 {
 }
 
-+ (unordered_map_573a5644 *)_weightToWidthMap;
-+ (void)_computeWeightToWidthMapFor:(id)arg1 in:(unordered_map_573a5644 *)arg2;
++ (void *)_weightToWidthMap;
++ (void)_computeWeightToWidthMapFor:(id)arg1 in:(void *)arg2;
 + (double)_calculateEdgeWidthForWeight:(double)arg1 type:(id)arg2;
 + (double)_calculateWidthForWeight:(double)arg1 type:(id)arg2;
 + (CDStruct_713d3c04)_contextForStroke:(id)arg1 weight:(double)arg2 type:(id)arg3;

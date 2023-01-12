@@ -7,12 +7,14 @@
 #import <objc/NSObject.h>
 
 @class AMSMediaToken, AMSMediaTokenServiceKeychainStore, AMSMediaTokenServiceUserDefaultsStore, NSString;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface AMSMediaTokenServiceStore : NSObject
 {
     NSString *_clientIdentifier;
     NSString *_keychainAccessGroup;
+    NSObject<OS_dispatch_queue> *_accessQueue;
     AMSMediaToken *_memoryMediaToken;
     AMSMediaTokenServiceKeychainStore *_keychainStore;
     AMSMediaTokenServiceUserDefaultsStore *_userDefaultsStore;
@@ -22,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) AMSMediaTokenServiceUserDefaultsStore *userDefaultsStore; // @synthesize userDefaultsStore=_userDefaultsStore;
 @property(retain, nonatomic) AMSMediaTokenServiceKeychainStore *keychainStore; // @synthesize keychainStore=_keychainStore;
 @property(retain, nonatomic) AMSMediaToken *memoryMediaToken; // @synthesize memoryMediaToken=_memoryMediaToken;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue=_accessQueue;
 @property(retain, nonatomic) NSString *keychainAccessGroup; // @synthesize keychainAccessGroup=_keychainAccessGroup;
 @property(readonly, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 - (void)_teardownKeychainNotifications;

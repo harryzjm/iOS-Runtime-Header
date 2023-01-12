@@ -12,7 +12,9 @@
 
 @protocol FCReadingHistoryItem <NSObject, NSCopying, NSMutableCopying>
 @property(readonly, nonatomic) CKRecord *asCKRecord;
+@property(readonly, nonatomic, getter=isPruningDisabled) _Bool pruningDisabled;
 @property(readonly, nonatomic) unsigned long long articleLikingStatus;
+@property(readonly, nonatomic) _Bool hasArticleCompletedReading;
 @property(readonly, nonatomic) _Bool hasArticleCompletedListening;
 @property(readonly, nonatomic) _Bool hasArticleBeenConsumed;
 @property(readonly, nonatomic) _Bool hasArticleBeenMarkedOffensive;

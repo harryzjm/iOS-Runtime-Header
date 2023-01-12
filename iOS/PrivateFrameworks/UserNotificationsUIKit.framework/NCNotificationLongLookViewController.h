@@ -16,7 +16,7 @@
 @class NCLongLookTransitioningDelegate, NSString, UIView;
 @protocol PLClickPresentationInteractionPresenting, PLExpandedPlatterDismissing;
 
-@interface NCNotificationLongLookViewController <NCNotificationLongLookViewDelegate, PLExpandedPlatterPresentationControllerDelegate, NCLongLookDefaultPresentationControllerDelegate, NCNotificationCustomContentDelegate, PLClickPresentationInteractionPresentable, PLExpandedPlatterPresentable, PLExpandedPlatterPresentationViewDelegate, PLExpandedPlatterDismissing>
+@interface NCNotificationLongLookViewController <NCNotificationLongLookViewDelegate, PLExpandedPlatterPresentationControllerDelegate, NCLongLookDefaultPresentationControllerDelegate, NCNotificationCustomContentDelegate, PLClickPresentationInteractionPresentable, PLExpandedPlatterDismissing, PLExpandedPlatterPresentationViewDelegate, PLExpandedPlatterPresentable>
 {
     NCLongLookTransitioningDelegate *_longLookTransitionDelegate;
     id _cancelTouchesToken;
@@ -61,6 +61,7 @@
 - (long long)viewControllerTransitionTypeForTransitionDelegate:(id)arg1;
 - (void)_handleNotificationTap:(id)arg1;
 - (void)_handleIconButton:(id)arg1;
+- (void)_dismissPresentedViewControllerAnimated:(_Bool)arg1;
 - (id)_extensionIdentifier;
 - (void)_setPreferredCustomContentSize:(struct CGSize)arg1;
 - (struct CGSize)_preferredCustomContentSizeForSize:(struct CGSize)arg1 parentContentContainerBounds:(struct CGRect)arg2;

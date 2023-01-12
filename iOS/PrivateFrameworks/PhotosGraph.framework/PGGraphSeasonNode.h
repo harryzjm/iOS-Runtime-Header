@@ -4,30 +4,38 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PhotosGraph/MAUniquelyIdentifiableNode-Protocol.h>
+#import <PhotosGraph/PGAssetCollectionFeature-Protocol.h>
 #import <PhotosGraph/PGGraphLocalizable-Protocol.h>
 #import <PhotosGraph/PGGraphSynonymSupport-Protocol.h>
 
-@class NSArray, NSString;
+@class MANodeFilter, NSArray, NSString, PGGraphSeasonNodeCollection;
 
-@interface PGGraphSeasonNode <PGGraphLocalizable, PGGraphSynonymSupport>
+@interface PGGraphSeasonNode <PGGraphLocalizable, PGGraphSynonymSupport, PGAssetCollectionFeature, MAUniquelyIdentifiableNode>
 {
     NSString *_name;
 }
 
++ (id)filterForSeasonName:(id)arg1;
++ (id)dateOfSeason;
 + (id)_localizationKeyForSeasonNode:(id)arg1;
++ (id)filter;
 - (void).cxx_destruct;
 @property(readonly) NSString *name; // @synthesize name=_name;
+@property(readonly, nonatomic) NSString *featureIdentifier;
+@property(readonly, nonatomic) unsigned long long featureType;
+@property(readonly, nonatomic) PGGraphSeasonNodeCollection *collection;
 @property(readonly, nonatomic) NSArray *localizedSynonyms;
 @property(readonly, nonatomic) NSString *localizedName;
-- (void)enumerateMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) MANodeFilter *uniquelyIdentifyingFilter;
 - (unsigned short)domain;
 - (id)label;
 @property(readonly, copy) NSString *description;
+- (id)propertyForKey:(id)arg1;
 - (id)propertyDictionary;
 - (_Bool)hasProperties:(id)arg1;
-- (void)setLocalProperties:(id)arg1;
-- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
-- (id)init;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3 properties:(id)arg4;
+- (id)initWithName:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

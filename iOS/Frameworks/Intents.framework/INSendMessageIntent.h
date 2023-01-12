@@ -5,10 +5,11 @@
 //
 
 #import <Intents/INSendMessageIntentExport-Protocol.h>
+#import <Intents/UNNotificationContentProviding-Protocol.h>
 
 @class INPerson, INSpeakableString, NSArray, NSString;
 
-@interface INSendMessageIntent <INSendMessageIntentExport>
+@interface INSendMessageIntent <UNNotificationContentProviding, INSendMessageIntentExport>
 {
 }
 
@@ -28,6 +29,7 @@
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
 - (id)_dictionaryRepresentation;
 - (id)_redactedDictionaryRepresentation;
+@property(copy, nonatomic) NSString *notificationThreadIdentifier;
 - (void)setAttachments:(id)arg1;
 @property(readonly, copy, nonatomic) NSArray *attachments;
 @property(nonatomic) long long effect;

@@ -30,33 +30,15 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
-+ (Class)levelType;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (id)levelAtIndex:(unsigned long long)arg1;
-- (unsigned long long)levelsCount;
-- (void)addLevel:(id)arg1;
-- (void)clearLevels;
-@property(retain, nonatomic) NSMutableArray *levels;
-@property(retain, nonatomic) GEOPDVenueBuilding *building;
-@property(readonly, nonatomic) _Bool hasBuilding;
-@property(retain, nonatomic) GEOPDVenueContainer *venueContainer;
-@property(readonly, nonatomic) _Bool hasVenueContainer;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSURL *locationURL; // @synthesize locationURL=_locationURL;
 @property(retain, nonatomic) CKLocationMediaObject *locationMediaObject; // @synthesize locationMediaObject=_locationMediaObject;
-- (id)pasteboardItems;
+- (id)dragItemProvider;
 - (_Bool)canCopy;
 - (struct CGSize)loadSizeThatFits:(struct CGSize)arg1 textAlignmentInsets:(out struct UIEdgeInsets *)arg2;
 - (Class)balloonViewClass;

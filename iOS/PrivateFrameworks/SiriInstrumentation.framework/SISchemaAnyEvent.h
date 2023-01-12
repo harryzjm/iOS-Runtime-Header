@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProtocolBuffer/PBCodable.h>
-
 @class NSData;
 
-@interface SISchemaAnyEvent : PBCodable
+@interface SISchemaAnyEvent
 {
     int _anyEventType;
     NSData *_payload;
@@ -31,6 +29,11 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 @property(nonatomic) _Bool hasAnyEventType;
+- (Class)topLevelUnionTypeClass;
+- (void)willProduceDictionaryRepresentation:(id)arg1;
+- (id)unwrap;
+- (id)initWithAnyEventType:(int)arg1 payload:(id)arg2;
+- (void)unwrapMessageWithCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

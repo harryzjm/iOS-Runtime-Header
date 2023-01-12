@@ -10,8 +10,9 @@
 
 @interface _TtC9Coherence15CRDecodeContext : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *references;
-    MISSING_TYPE *context;
+    MISSING_TYPE *decodingReferences;
+    MISSING_TYPE *capsuleReferences;
+    MISSING_TYPE *subcapsules;
 }
 
 @end

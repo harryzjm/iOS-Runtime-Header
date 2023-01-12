@@ -4,20 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MediaControls/MediaControlsVolumeSliderView.h>
+#import <ControlCenterUIKit/CCUIContinuousSliderView.h>
 
-@interface SBElasticSliderView : MediaControlsVolumeSliderView
+#import <SpringBoard/SBElasticGlyphView-Protocol.h>
+
+@class NSString, UIView;
+
+@interface SBElasticSliderView : CCUIContinuousSliderView <SBElasticGlyphView>
 {
+    UIView *_backgroundView;
     double _additiveGlyphScaleFactor;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) double additiveGlyphScaleFactor; // @synthesize additiveGlyphScaleFactor=_additiveGlyphScaleFactor;
-- (void)_updateGlyphScaleForAdditiveScaleOrAxisUpdate;
-- (struct CGPoint)glyphCenter;
-- (void)setAxis:(unsigned long long)arg1;
-- (id)createBackgroundView;
-- (void)stopGlyphAnimations;
+- (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)setContinuousSliderCornerRadius:(double)arg1;
+- (void)setAxis:(unsigned long long)arg1;
+- (struct CGPoint)glyphCenter;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

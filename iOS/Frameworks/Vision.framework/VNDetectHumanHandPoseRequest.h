@@ -12,10 +12,7 @@
 
 + (id)supportedJointsGroupNamesForRevision:(unsigned long long)arg1 error:(id *)arg2;
 + (id)supportedJointNamesForRevision:(unsigned long long)arg1 error:(id *)arg2;
-+ (id)supportedIdentifiedPointGroupKeysForRevision:(unsigned long long)arg1 error:(id *)arg2;
-+ (id)supportedIdentifiedPointKeysForRevision:(unsigned long long)arg1 error:(id *)arg2;
-+ (id)supportedRecognizedPointGroupKeysForRevision:(unsigned long long)arg1 error:(id *)arg2;
-+ (id)supportedRecognizedPointKeysForRevision:(unsigned long long)arg1 error:(id *)arg2;
++ (id)descriptionForPrivateRevision:(unsigned long long)arg1;
 + (Class)configurationClass;
 + (const CDStruct_7d93034e *)revisionAvailability;
 @property unsigned long long maximumHandCount;
@@ -28,6 +25,7 @@
 - (_Bool)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 - (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1 session:(id)arg2;
 - (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
+- (id)_applicableDetectorAndOptions:(id *)arg1 loadedInSession:(id)arg2 error:(id *)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSArray *results; // @dynamic results;

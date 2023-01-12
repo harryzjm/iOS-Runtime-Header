@@ -25,6 +25,7 @@
 @property(nonatomic) unsigned long long event; // @synthesize event=_event;
 @property(copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo;
 @property(nonatomic) unsigned long long commandDirection; // @synthesize commandDirection;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 
 // Remaining properties

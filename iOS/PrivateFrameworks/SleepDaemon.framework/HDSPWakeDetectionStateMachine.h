@@ -27,7 +27,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) HDSPWakeDetectionDetectingState *detectingState; // @synthesize detectingState=_detectingState;
 @property(readonly, nonatomic) HDSPWakeDetectionWaitingState *waitingState; // @synthesize waitingState=_waitingState;
 @property(readonly, nonatomic) HDSPWakeDetectionDisabledState *disabledState; // @synthesize disabledState=_disabledState;
-- (id)detectionWindowAfterDate:(id)arg1;
+- (id)upcomingStartDetectionDateAfterDate:(id)arg1;
+- (id)nextWakeUpAfterDate:(id)arg1;
+@property(readonly, nonatomic) _Bool inDetectionWindow;
+@property(readonly, nonatomic) _Bool isWatch;
 @property(readonly, nonatomic) _Bool sleepModeIsOff;
 @property(readonly, nonatomic) unsigned long long sleepScheduleState;
 @property(readonly, nonatomic) HKSPSleepScheduleModel *sleepScheduleModel;
@@ -38,9 +41,10 @@ __attribute__((visibility("hidden")))
 - (void)startWakeDetection;
 - (void)unscheduleWakeDetection;
 - (void)scheduleWakeDetection;
+- (void)earlyWakeUpWasNotifiedRemotely;
 - (void)wakeupEventDetected:(id)arg1;
 - (void)wakeDetectionEventDue;
-- (id)stateMachineLog;
+- (unsigned long long)loggingCategory;
 - (id)initWithIdentifier:(id)arg1 persistence:(id)arg2 delegate:(id)arg3 infoProvider:(id)arg4 currentDateProvider:(CDUnknownBlockType)arg5;
 
 // Remaining properties

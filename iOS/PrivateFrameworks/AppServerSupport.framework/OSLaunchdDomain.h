@@ -12,10 +12,17 @@
     unsigned long long _handle;
 }
 
++ (id)createDomainForRoleAccount:(unsigned int)arg1 sessionType:(id)arg2 options:(unsigned long long)arg3 error:(id *)arg4;
++ (unsigned int)_createDomainOptions2flags:(unsigned long long)arg1;
++ (id)domainForRoleAccountUser:(unsigned int)arg1;
 + (id)loginwindowDomain;
 + (id)domainForPid:(int)arg1;
 + (id)domainForUser:(unsigned int)arg1;
 + (id)currentDomain;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
+- (_Bool)initiateRemoval:(id *)arg1;
+- (_Bool)unpendLaunches:(id *)arg1;
 - (id)initWithType:(int)arg1 handle:(unsigned long long)arg2;
 
 @end

@@ -17,8 +17,8 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) double startTime; // @synthesize startTime=_startTime;
 @property(readonly, nonatomic) TSPData *movieData; // @synthesize movieData=_movieData;
-- (void)saveToMessage:(struct MovieSegmentArchive *)arg1 archiver:(id)arg2;
-- (id)initWithContext:(id)arg1 message:(const struct MovieSegmentArchive *)arg2 unarchiver:(id)arg3;
+- (void)saveToMessage:(void *)arg1 archiver:(id)arg2;
+- (id)initWithContext:(id)arg1 message:(const void *)arg2 unarchiver:(id)arg3;
 - (id)movieSegmentByAddingTimeOffset:(double)arg1;
 @property(readonly, nonatomic, getter=isEmptySegment) _Bool emptySegment;
 - (id)description;

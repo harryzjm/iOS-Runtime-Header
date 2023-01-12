@@ -7,17 +7,21 @@
 #import <objc/NSObject.h>
 
 @class CKOperationGroup, HDAssertion, HDCloudSyncCloudState, HDCloudSyncContext, HDCloudSyncOperationConfiguration, HDCloudSyncRepository, HDPowerAssertion, NSMutableArray, NSProgress, NSString, NSUUID;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface HDCloudSyncPipeline : NSObject
 {
     NSMutableArray *_stages;
     NSString *_shortPipelineIdentifier;
+    _Bool _cancelRequested;
+    NSObject<OS_dispatch_source> *_cloudKitOperationDelayTimer;
+    CDUnknownBlockType _delayTimerCompletionBlock;
     HDCloudSyncCloudState *_cloudState;
     long long _pipelineResult;
     NSString *_analyticsCloudKitIdentifier;
     HDPowerAssertion *_powerAssertion;
     _Bool _continueWhenSyncDisabled;
+    _Bool _ignoreCloudKitOperationDelay;
     long long _status;
     HDCloudSyncContext *_context;
     HDCloudSyncRepository *_repository;
@@ -31,10 +35,9 @@
 }
 
 + (id)operationGroupForContext:(id)arg1 syncCircleIdentifier:(id)arg2;
-+ (long long)_qualityOfServiceForContext:(id)arg1;
-+ (_Bool)_allowCellularForContext:(id)arg1;
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType pipelineCompletionHandler; // @synthesize pipelineCompletionHandler=_pipelineCompletionHandler;
+@property(nonatomic) _Bool ignoreCloudKitOperationDelay; // @synthesize ignoreCloudKitOperationDelay=_ignoreCloudKitOperationDelay;
 @property(nonatomic) _Bool continueWhenSyncDisabled; // @synthesize continueWhenSyncDisabled=_continueWhenSyncDisabled;
 @property(readonly, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
 @property(readonly, nonatomic) HDCloudSyncOperationConfiguration *operationConfiguration; // @synthesize operationConfiguration=_operationConfiguration;
@@ -45,12 +48,7 @@
 @property(readonly, nonatomic) HDCloudSyncRepository *repository; // @synthesize repository=_repository;
 @property(readonly, copy, nonatomic) HDCloudSyncContext *context; // @synthesize context=_context;
 @property(readonly, nonatomic) long long status; // @synthesize status=_status;
-- (void)_queue_runStagesWithTaskTree:(id)arg1;
-- (void)_queue_runStage:(id)arg1 taskTree:(id)arg2;
-- (void)_queue_reportFinalAnalyticsWithTaskTree:(id)arg1;
-- (void)_queue_computeStageTransferSizes;
-- (void)_queue_computeConfigurationWithTaskTree:(id)arg1;
-- (void)_powerAssertionDidTimeout;
+- (void)cancel;
 - (id)beginWithCompletion:(CDUnknownBlockType)arg1;
 - (id)beginWithTaskTree:(id)arg1;
 - (void)addStage:(id)arg1;

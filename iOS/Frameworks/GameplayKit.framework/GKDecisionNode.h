@@ -10,7 +10,7 @@
 
 @interface GKDecisionNode : NSObject
 {
-    struct GKCDecisionNode *_node;
+    void *_node;
     GKDecisionTree *_tree;
 }
 
@@ -25,7 +25,7 @@
 - (id)branches;
 - (id)description;
 - (void)dealloc;
-- (id)initWithNode:(struct GKCDecisionNode *)arg1 tree:(id)arg2;
+- (id)initWithNode:(void *)arg1 tree:(id)arg2;
 
 @end
 

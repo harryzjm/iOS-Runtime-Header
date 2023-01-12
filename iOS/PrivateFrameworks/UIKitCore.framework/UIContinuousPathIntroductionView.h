@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UILabel *landscapeTextBody; // @synthesize landscapeTextBody=_landscapeTextBody;
 @property(retain, nonatomic) UIView *textVideoContainer; // @synthesize textVideoContainer=_textVideoContainer;
 - (void)extraButtonTapAction;
+- (void)removeFromSuperview;
 - (long long)textBodyMaxLines;
 - (double)mediaLayoutWidthAdjustment;
 - (id)textBodyDescriptions;

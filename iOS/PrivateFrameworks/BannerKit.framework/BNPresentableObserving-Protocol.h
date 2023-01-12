@@ -14,6 +14,7 @@
 @optional
 - (void)userInteractionDidEndForBannerForPresentable:(id <BNPresentable>)arg1;
 - (void)userInteractionWillBeginForBannerForPresentable:(id <BNPresentable>)arg1;
+- (void)presentableWillNotAppearAsBanner:(id <BNPresentable>)arg1 withReason:(NSString *)arg2;
 - (void)presentableDidDisappearAsBanner:(id <BNPresentable>)arg1 withReason:(NSString *)arg2;
 - (void)presentableWillDisappearAsBanner:(id <BNPresentable>)arg1 withReason:(NSString *)arg2;
 - (void)presentableDidAppearAsBanner:(id <BNPresentable>)arg1;

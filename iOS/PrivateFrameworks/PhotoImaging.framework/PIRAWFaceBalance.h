@@ -18,6 +18,7 @@
 }
 
 + (struct CGColorSpace *)linearWideGamutColorSpace;
++ (struct CGColorSpace *)newLinearWideGamutColorSpace;
 + (id)faceBalanceKernels;
 - (void).cxx_destruct;
 @property(nonatomic) double inputWarmth; // @synthesize inputWarmth=_inputWarmth;

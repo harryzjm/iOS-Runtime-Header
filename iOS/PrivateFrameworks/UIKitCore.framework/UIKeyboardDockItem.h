@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *imageName; // @synthesize imageName=_imageName;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly, nonatomic) UIKeyboardDockItemButton *view;
+@property(nonatomic) _Bool active;
 @property(nonatomic) _Bool enabled;
 - (id)imageWithRenderConfig:(id)arg1;
 - (id)initWithImageName:(id)arg1 identifier:(id)arg2;

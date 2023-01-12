@@ -11,7 +11,13 @@
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType userInfoCreationBlock; // @synthesize userInfoCreationBlock=_userInfoCreationBlock;
-- (id)_combineBasalStatistics:(id)arg1 withTotalStatistics:(id)arg2 filterInterval:(id)arg3;
+- (id)chartPointsFromQueryData:(id)arg1 dataIsFromRemoteSource:(_Bool)arg2;
+- (CDUnknownBlockType)queryDataForStartDate:(id)arg1 endDate:(id)arg2 statisticsInterval:(id)arg3 healthStore:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (_Bool)supportsChartQueryDataGeneration;
+- (id)_chartPointsWithBasalInsulinValues:(id)arg1 withTotalInsulinValues:(id)arg2 filterInterval:(id)arg3 sourceTimeZone:(id)arg4;
+- (id)_dailyAverageInsulinValuesFromStatistics:(id)arg1 queryStartDate:(id)arg2 statisticsInterval:(id)arg3;
+- (id)_insulinValuesFromStatistics:(id)arg1;
+- (id)_insulinDataSourceQueryDataFromBasalStatisticsCollection:(id)arg1 totalStatisticsCollection:(id)arg2 queryStartDate:(id)arg3 statisticsInterval:(id)arg4;
 - (id)queriesForStartDate:(id)arg1 endDate:(id)arg2 statisticsInterval:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)queryDescription;
 

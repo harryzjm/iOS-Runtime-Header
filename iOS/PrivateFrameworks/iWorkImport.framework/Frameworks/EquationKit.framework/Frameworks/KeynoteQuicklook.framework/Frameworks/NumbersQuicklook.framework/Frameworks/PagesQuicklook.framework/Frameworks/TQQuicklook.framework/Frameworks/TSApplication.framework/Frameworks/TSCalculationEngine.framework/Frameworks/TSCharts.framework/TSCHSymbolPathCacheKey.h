@@ -12,10 +12,10 @@
 
 @interface TSCHSymbolPathCacheKey : NSObject <NSCopying>
 {
-    int mSymbolType;
-    double mSize;
-    TSDStroke *mStroke;
-    _Bool mForHitCheck;
+    int _symbolType;
+    double _size;
+    TSDStroke *_stroke;
+    _Bool _forHitCheck;
 }
 
 - (void).cxx_destruct;

@@ -20,10 +20,6 @@
 + (void)performBackgroundWork:(CDUnknownBlockType)arg1;
 + (id)createBackgroundQueue:(id)arg1;
 + (id)sharedBackgroundWorkloop;
-+ (void)performCalloutWithServiceClass:(unsigned int)arg1 block:(CDUnknownBlockType)arg2;
-+ (void)performCallout:(CDUnknownBlockType)arg1;
-+ (id)createCalloutQueue:(id)arg1;
-+ (id)sharedCalloutWorkloop;
 - (void).cxx_destruct;
 
 @end

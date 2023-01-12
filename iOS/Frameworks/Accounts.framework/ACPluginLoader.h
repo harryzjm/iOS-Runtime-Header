@@ -16,7 +16,6 @@
 + (void)_populatePluginBundles:(id)arg1 atSubpath:(id)arg2 inAppleInternal:(_Bool)arg3;
 + (id)_validatedBundleAtURL:(id)arg1;
 + (id)_accountsPluginDirectoryURL:(id)arg1 inAppleInternal:(_Bool)arg2;
-+ (_Bool)loadInternalPlugins;
 
 @end
 

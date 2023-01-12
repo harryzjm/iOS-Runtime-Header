@@ -25,6 +25,7 @@
     int _redirectCount;
     int _requestDataSize;
     int _responseDataSize;
+    _Bool _rnfTriggered;
     struct {
         unsigned int has_requestEnd:1;
         unsigned int has_requestStart:1;
@@ -32,6 +33,7 @@
         unsigned int has_redirectCount:1;
         unsigned int has_requestDataSize:1;
         unsigned int has_responseDataSize:1;
+        unsigned int has_rnfTriggered:1;
         unsigned int read_unknownFields:1;
         unsigned int read_serviceIpAddress:1;
         unsigned int read_transactionMetrics:1;
@@ -68,6 +70,8 @@
 @property(nonatomic) double requestEnd;
 @property(nonatomic) _Bool hasRequestStart;
 @property(nonatomic) double requestStart;
+@property(nonatomic) _Bool hasRnfTriggered;
+@property(nonatomic) _Bool rnfTriggered;
 @property(nonatomic) _Bool hasResponseDataSize;
 @property(nonatomic) int responseDataSize;
 @property(nonatomic) _Bool hasRequestDataSize;

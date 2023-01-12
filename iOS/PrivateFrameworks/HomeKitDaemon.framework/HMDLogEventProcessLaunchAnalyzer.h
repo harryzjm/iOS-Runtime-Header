@@ -4,35 +4,51 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitDaemon/HMDAggregationAnalysisEventContributing-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class NSDate, NSString;
-@protocol HMDLogEventProcessLaunchAnalyzerContext;
+@class HMDEventCountersManager, HMFTimer, NSDate, NSString;
+@protocol HMMLogEventSubmitting;
 
-@interface HMDLogEventProcessLaunchAnalyzer <HMFTimerDelegate>
+@interface HMDLogEventProcessLaunchAnalyzer <HMFTimerDelegate, HMDAggregationAnalysisEventContributing>
 {
-    _Bool _processLaunchInfoSubmitStatus;
+    long long _launchInfoSubmissionState;
     NSDate *_processLaunchTime;
+    NSDate *_processLastExitTime;
+    NSString *_processExitType;
+    NSString *_processExitReason;
+    unsigned long long _numUncommittedRecords;
+    unsigned long long _numUncommittedAndPushedRecords;
     NSString *_dataSyncStateAsString;
-    NSString *_jetsamReason;
-    long long _previousPID;
-    double _timeSincePreviousProcessLaunch;
-    double _timeSinceLaunchToDataSyncStateGood;
+    double _timeIntervalSincePreviousProcessLaunch;
+    unsigned long long _systemUptimeMillisecondsRecordedAtLaunch;
+    unsigned long long _millisecondsSinceLaunchToDataSyncStateGood;
+    _Bool _configurationLoaded;
+    HMDEventCountersManager *_eventCountersManager;
+    id <HMMLogEventSubmitting> _logEventSubmitter;
+    HMFTimer *_submitProcessLaunchInfoTimer;
     double _processRelaunchEventTimeIntervalThreshold;
 }
 
++ (id)managedEventCounterRequestGroups;
 - (void).cxx_destruct;
 @property(readonly) double processRelaunchEventTimeIntervalThreshold; // @synthesize processRelaunchEventTimeIntervalThreshold=_processRelaunchEventTimeIntervalThreshold;
+@property(readonly) HMFTimer *submitProcessLaunchInfoTimer; // @synthesize submitProcessLaunchInfoTimer=_submitProcessLaunchInfoTimer;
+@property(readonly) id <HMMLogEventSubmitting> logEventSubmitter; // @synthesize logEventSubmitter=_logEventSubmitter;
+@property(readonly) HMDEventCountersManager *eventCountersManager; // @synthesize eventCountersManager=_eventCountersManager;
+- (void)resetAggregationAnalysisContext;
+- (void)populateAggregationAnalysisLogEvent:(id)arg1;
 - (void)timerDidFire:(id)arg1;
-- (void)_readJetsamSnapshotEntryForHomed;
-- (void)_updateProcessLaunchInfoFromDisk;
-- (void)_handleDataSyncStateUpdateLogEvent:(id)arg1;
-- (void)_handleProcessLaunchLogEvent:(id)arg1;
-- (void)processLogEvent:(id)arg1;
-- (id)initWithSupportedEventTypes:(id)arg1 context:(id)arg2;
+- (void)submitProcessLaunchEventWithCurrentAnalysis;
+- (void)handleExitContextForHomed:(id)arg1;
+- (void)updateProcessLaunchInfoFromDisk;
+- (void)submitProcessLaunchInfoEventPendingConfiguration;
+- (void)handleDataSyncStateUpdateLogEvent:(id)arg1;
+- (void)handleProcessLaunchLogEvent:(id)arg1;
+- (void)didReceiveEventFromDispatcher:(id)arg1;
+- (id)initWithProcessLaunchInfoTimer:(id)arg1 eventCountersManager:(id)arg2 logEventSubmitter:(id)arg3;
 
 // Remaining properties
-@property(readonly) id <HMDLogEventProcessLaunchAnalyzerContext> context; // @dynamic context;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

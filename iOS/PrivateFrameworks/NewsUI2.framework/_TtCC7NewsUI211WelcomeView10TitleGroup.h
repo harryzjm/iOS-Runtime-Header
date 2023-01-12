@@ -8,6 +8,7 @@
 
 @class MISSING_TYPE;
 
+__attribute__((visibility("hidden")))
 @interface _TtCC7NewsUI211WelcomeView10TitleGroup : UIView
 {
     MISSING_TYPE *appIcon;

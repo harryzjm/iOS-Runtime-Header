@@ -9,6 +9,7 @@
 @class SBInteractiveScreenshotGestureManager, SSScreenCapturerPresentationOptions, SSScreenCapturerScreenshotOptionsCollection;
 
 @protocol SBInteractiveScreenshotGestureManagerDelegate <NSObject>
+- (_Bool)interactiveScreenshotGestureManagerShouldPreventGestureRecognition:(SBInteractiveScreenshotGestureManager *)arg1;
 - (void)interactiveScreenshotGestureManager:(SBInteractiveScreenshotGestureManager *)arg1 requestsScreenshotWithOptionsCollection:(SSScreenCapturerScreenshotOptionsCollection *)arg2 presentationOptions:(SSScreenCapturerPresentationOptions *)arg3;
 - (void)interactiveScreenshotGestureManager:(SBInteractiveScreenshotGestureManager *)arg1 requestsScreenshotPreheatWithPresentationOptions:(SSScreenCapturerPresentationOptions *)arg2;
 @end

@@ -12,10 +12,9 @@
 
 @interface NAArticleNavigationBarPaletteContent : UIView <TUBarPaletteContents>
 {
-    MISSING_TYPE *fadingBar;
     MISSING_TYPE *opaqueBar;
     MISSING_TYPE *horizontalScrollOffset;
-    MISSING_TYPE *audioButtonLocation;
+    MISSING_TYPE *bottomPaletteButtonLocation;
 }
 
 + (double)paletteHeight;
@@ -26,7 +25,6 @@
 - (id)setPaletteColorWithPrimaryColor:(id)arg1 secondaryColor:(id)arg2 primaryVisibilityFactor:(double)arg3;
 - (void)setBarColorFor:(id)arg1 primaryColor:(id)arg2 secondaryColor:(id)arg3 primaryVisibilityFactor:(double)arg4;
 - (void)setBarColor:(id)arg1;
-- (void)setHorizontalScrollOffset:(double)arg1 audioButtonLocation:(double)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

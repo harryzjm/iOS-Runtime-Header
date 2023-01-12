@@ -41,11 +41,14 @@
 - (id)labelFontForContentSizeCategory:(id)arg1 options:(unsigned long long)arg2;
 - (void)noteIcons:(id)arg1 didDropAtCoordinate:(struct SBIconCoordinate)arg2 inList:(id)arg3;
 @property(readonly, nonatomic) _Bool usesAlternateLayout;
+@property(readonly, nonatomic) long long primaryOrientationForGridCellLayoutClusterSize;
+@property(readonly, nonatomic) unsigned long long rotatedLayoutClusterGridSizeClass;
 @property(readonly, nonatomic) unsigned long long supportedIconGridSizeClasses;
 @property(readonly, nonatomic) struct SBHIconGridSizeClassSizes iconGridSizeClassSizes;
 - (struct UIEdgeInsets)layoutInsetsForOrientation:(long long)arg1;
 - (unsigned long long)numberOfRowsForOrientation:(long long)arg1;
 - (unsigned long long)numberOfColumnsForOrientation:(long long)arg1;
+- (double)editingAnimationStrengthForGridSizeClass:(unsigned long long)arg1;
 - (struct SBIconImageInfo)iconImageInfoForGridSizeClass:(unsigned long long)arg1;
 @property(readonly, nonatomic) struct SBIconImageInfo iconImageInfo;
 - (id)init;

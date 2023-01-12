@@ -10,6 +10,7 @@
 {
 }
 
++ (id)extension;
 + (id)telemetry;
 + (id)framework;
 

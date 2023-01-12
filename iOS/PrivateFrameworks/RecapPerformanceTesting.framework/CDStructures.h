@@ -25,3 +25,21 @@ struct CGSize {
     double height;
 };
 
+struct CGVector {
+    double dx;
+    double dy;
+};
+
+struct pair<CGPoint, CGPoint> {
+    struct CGPoint _field1;
+    struct CGPoint _field2;
+};
+
+#pragma mark Typedef'd Structures
+
+// Template types
+typedef struct pair<CGPoint, CGPoint> {
+    struct CGPoint _field1;
+    struct CGPoint _field2;
+} pair_bb682d61;
+

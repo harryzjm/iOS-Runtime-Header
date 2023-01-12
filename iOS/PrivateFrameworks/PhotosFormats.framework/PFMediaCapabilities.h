@@ -10,9 +10,13 @@
 
 @interface PFMediaCapabilities : NSObject
 {
+    NSDictionary *_outOfBandHints;
     NSDictionary *_capabilitiesInformation;
 }
 
++ (_Bool)currentDeviceIsEligibleForHDRPlayback;
++ (id)videoCodecTypesEligibleForBackwardsCompatibilityTranscoding;
++ (_Bool)videoCodecIsEligibleForBackwardsCompatibilityTranscoding:(unsigned int)arg1;
 + (unsigned int)currentDeviceHEVCCapabilities;
 + (id)stringForSupport:(long long)arg1;
 + (id)capabilitiesInformationForCurrentDeviceWithOptions:(id)arg1;
@@ -29,20 +33,21 @@
 + (long long)newFormatsConfiguration;
 - (void).cxx_destruct;
 @property(retain) NSDictionary *capabilitiesInformation; // @synthesize capabilitiesInformation=_capabilitiesInformation;
+@property(retain) NSDictionary *outOfBandHints; // @synthesize outOfBandHints=_outOfBandHints;
 - (id)description;
 - (long long)userDefaultsPeerAssetBundleSupportOverrideValue;
 - (long long)supportValueByApplyingUserDefaultsPeerAssetBundleSupportOverrideToValue:(long long)arg1 selector:(SEL)arg2;
 - (long long)userDefaultsPeerOverrideValue;
 - (long long)supportValueByApplyingUserDefaultsPeerOverrideToValue:(long long)arg1 selector:(SEL)arg2;
 - (id)opaqueRepresentation;
+- (_Bool)supportsHDR;
 - (_Bool)supportsTranscodeChoice;
-- (long long)hevcDecodingSupportForAVAsset:(id)arg1;
-- (long long)hevcDecodingSupportForFormatDescription:(struct opaqueCMFormatDescription *)arg1;
+- (long long)decodingSupportForAVAsset:(id)arg1;
+- (long long)decodingSupportForFormatDescription:(struct opaqueCMFormatDescription *)arg1;
 - (long long)supportForAdjustmentBaseResources;
 - (long long)supportForAssetBundleVersion:(id)arg1;
 - (long long)supportForLivePhotoVersion:(id)arg1;
 - (long long)supportForContainerTypeIdentifier:(id)arg1;
-- (long long)supportForCodec:(unsigned int)arg1;
 - (id)initWithOpaqueRepresentation:(id)arg1;
 
 @end

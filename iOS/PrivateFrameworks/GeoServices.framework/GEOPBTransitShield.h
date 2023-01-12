@@ -11,7 +11,6 @@
 
 @class NSString, PBDataReader, PBUnknownFields;
 
-__attribute__((visibility("hidden")))
 @interface GEOPBTransitShield : PBCodable <GEOTransitShieldDataSource, NSCopying>
 {
     PBDataReader *_reader;

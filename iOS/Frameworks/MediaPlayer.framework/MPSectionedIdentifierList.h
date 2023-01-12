@@ -6,20 +6,21 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlayer/MPExclusiveAccessible-Protocol.h>
+#import <MediaPlayer/NSObject-Protocol.h>
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
 #import <MediaPlayer/_MPSectionedIdentifierListEncodableNextEntriesProviding-Protocol.h>
 
 @class MPSectionedIdentifierListEntry, NSDictionary, NSMutableArray, NSMutableDictionary, NSSet, NSString;
 @protocol MPSectionedIdentifierListAnnotationDelegate, MPSectionedIdentifierListDelegate, OS_dispatch_queue;
 
-@interface MPSectionedIdentifierList : NSObject <_MPSectionedIdentifierListEncodableNextEntriesProviding, MPExclusiveAccessible, NSSecureCoding>
+@interface MPSectionedIdentifierList : NSObject <_MPSectionedIdentifierListEncodableNextEntriesProviding, NSSecureCoding, NSObject>
 {
     long long _itemCount;
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSMutableArray *_startEntries;
     MPSectionedIdentifierListEntry *_endEntry;
     NSMutableDictionary *_sectionHeadEntryMap;
+    NSMutableDictionary *_sectionTransactionCallouts;
     _Bool _automaticallyReversesNonDestructiveDataSourceEdits;
     NSString *_identifier;
     id <MPSectionedIdentifierListDelegate> _delegate;
@@ -33,6 +34,7 @@
 @property(nonatomic) _Bool automaticallyReversesNonDestructiveDataSourceEdits; // @synthesize automaticallyReversesNonDestructiveDataSourceEdits=_automaticallyReversesNonDestructiveDataSourceEdits;
 @property(nonatomic) __weak id <MPSectionedIdentifierListDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+- (void)_performDelegateCalloutForSection:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_reverseEnumeratorWillStartAtEnd:(id)arg1 withExclusiveAccessToken:(id)arg2;
 - (void)_enumerator:(id)arg1 didEncounterEntry:(id)arg2 withExclusiveAccessToken:(id)arg3;
 - (id)_endEntryWithExclusiveAccessToken:(id)arg1;
@@ -49,6 +51,8 @@
 - (id)_dataSourceMoveItem:(id)arg1 inSection:(id)arg2 afterEntry:(id)arg3 withExclusiveAccessToken:(id)arg4;
 - (id)_dataSourceInsertItems:(id)arg1 fromSection:(id)arg2 afterEntry:(id)arg3 withExclusiveAccessToken:(id)arg4;
 - (void)_addBranchToEntry:(id)arg1 entries:(id)arg2 withExclusiveAccessToken:(id)arg3;
+- (void)dataSourceEndTransactinForSection:(id)arg1;
+- (void)dataSourceBeginTransationForSection:(id)arg1;
 - (void)dataSourceUpdateSection:(id)arg1;
 - (void)dataSourceReloadItem:(id)arg1 inSection:(id)arg2;
 - (void)dataSourceRemoveItem:(id)arg1 fromSection:(id)arg2;
@@ -93,8 +97,7 @@
 - (void)dealloc;
 - (id)initWithIdentifier:(id)arg1;
 - (id)init;
-- (id)_debugDescriptionWithEnumerator:(id)arg1 lengths:(CDStruct_a734b2e2 *)arg2;
-- (id)debugDescriptionStartingAtItem:(id)arg1 inSection:(id)arg2;
+- (id)_debugDescriptionWithEnumerator:(id)arg1 lengths:(CDStruct_c0841ed3 *)arg2;
 @property(readonly, copy) NSString *debugDescription;
 - (id)encodableNextEntriesWithExclusiveAccessToken:(id)arg1;
 

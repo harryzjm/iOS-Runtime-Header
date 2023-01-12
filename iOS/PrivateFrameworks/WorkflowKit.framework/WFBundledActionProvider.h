@@ -16,8 +16,11 @@
 - (id)cacheURL;
 - (id)cacheDirectoryURL;
 - (id)currentVersion;
+- (id)createAllAvailableActionsForLocalization;
+- (id)createAllAvailableActionsIncludingMissingActions:(_Bool)arg1;
 - (id)createAllAvailableActions;
 - (void)createActionsForRequests:(id)arg1;
+- (id)createActionWithIdentifier:(id)arg1 definition:(id)arg2 serializedParameters:(id)arg3 fallbackToMissing:(_Bool)arg4 isForLocalization:(_Bool)arg5;
 - (id)availableActionIdentifiers;
 - (id)actionDefinitionsWithIdentifiers:(id)arg1;
 @property(readonly, nonatomic) NSSet *identifiersOfActionsDisabledOnWatch;

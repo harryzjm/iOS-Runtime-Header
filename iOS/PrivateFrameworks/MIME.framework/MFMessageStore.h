@@ -8,7 +8,7 @@
 
 #import <MIME/NSCopying-Protocol.h>
 
-@class MFMessageStoreObjectCache, NSMutableSet, NSString;
+@class MFMessageStoreObjectCache, NSMutableSet;
 
 @interface MFMessageStore : NSObject <NSCopying>
 {
@@ -47,7 +47,6 @@
 - (id)bodyForMessage:(id)arg1 fetchIfNotAvailable:(_Bool)arg2 updateFlags:(_Bool)arg3;
 - (id)_bodyForMessage:(id)arg1 fetchIfNotAvailable:(_Bool)arg2 updateFlags:(_Bool)arg3;
 - (_Bool)bodyFetchRequiresNetworkActivity;
-@property(copy, nonatomic) NSString *storagePath;
 - (id)_setOrGetBody:(id)arg1 forMessage:(id)arg2 updateFlags:(_Bool)arg3;
 - (id)_downloadHeadersForMessages:(id)arg1;
 - (id)headersForMessage:(id)arg1 fetchIfNotAvailable:(_Bool)arg2;

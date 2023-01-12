@@ -15,9 +15,11 @@
 + (id)descriptor;
 
 // Remaining properties
+@property(nonatomic) _Bool hasLastFetchWasSuccess; // @dynamic hasLastFetchWasSuccess;
 @property(nonatomic) _Bool hasLatestNotificationQueryLocalTime; // @dynamic hasLatestNotificationQueryLocalTime;
 @property(nonatomic) _Bool hasNamespaceCompatibilityVersion; // @dynamic hasNamespaceCompatibilityVersion;
 @property(nonatomic) _Bool hasNamespaceName; // @dynamic hasNamespaceName;
+@property(nonatomic) _Bool lastFetchWasSuccess; // @dynamic lastFetchWasSuccess;
 @property(retain, nonatomic) TRIPBTimestamp *latestNotificationQueryLocalTime; // @dynamic latestNotificationQueryLocalTime;
 @property(nonatomic) unsigned int namespaceCompatibilityVersion; // @dynamic namespaceCompatibilityVersion;
 @property(copy, nonatomic) NSString *namespaceName; // @dynamic namespaceName;

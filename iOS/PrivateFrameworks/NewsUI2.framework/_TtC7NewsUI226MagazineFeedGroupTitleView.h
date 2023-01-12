@@ -8,11 +8,13 @@
 
 @class MISSING_TYPE;
 
+__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI226MagazineFeedGroupTitleView : UIView
 {
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *titleContainerView;
     MISSING_TYPE *subtitleLabel;
+    MISSING_TYPE *moreActionsButton;
     MISSING_TYPE *debugFeedAction;
 }
 

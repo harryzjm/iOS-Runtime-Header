@@ -4,19 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NUColorSpace;
+@class NSDictionary, NUColorSpace, NURenderNode;
 
 @interface NUVideoPlaybackFrameRequest
 {
     NUColorSpace *_colorSpace;
     struct __CVBuffer *_destinationBuffer;
+    NURenderNode *_videoRenderPrepareNode;
     NSDictionary *_videoFrames;
+    NSDictionary *_videoMetadataSamples;
     CDStruct_1e2b2e48 _renderScale;
     CDStruct_1b6d18a9 _evaluationTime;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSDictionary *videoMetadataSamples; // @synthesize videoMetadataSamples=_videoMetadataSamples;
 @property(copy, nonatomic) NSDictionary *videoFrames; // @synthesize videoFrames=_videoFrames;
+@property(retain, nonatomic) NURenderNode *videoRenderPrepareNode; // @synthesize videoRenderPrepareNode=_videoRenderPrepareNode;
 @property(nonatomic) CDStruct_912cb5d2 renderScale; // @synthesize renderScale=_renderScale;
 @property(nonatomic) CDStruct_1b6d18a9 evaluationTime; // @synthesize evaluationTime=_evaluationTime;
 @property(retain, nonatomic) struct __CVBuffer *destinationBuffer; // @synthesize destinationBuffer=_destinationBuffer;

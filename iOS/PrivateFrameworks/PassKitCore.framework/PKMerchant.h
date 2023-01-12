@@ -88,9 +88,10 @@
 - (_Bool)isCloudArchivableDeviceDataEqual:(id)arg1;
 - (unsigned long long)itemType;
 - (id)primaryIdentifier;
-- (id)recordTypesAndNamesIncludingServerData:(_Bool)arg1;
-- (void)encodeServerAndDeviceDataWithCloudStoreCoder:(id)arg1;
-- (void)encodeWithCloudStoreCoder:(id)arg1;
+- (id)recordTypesAndNamesForCodingType:(unsigned long long)arg1;
+- (void)_encodeServerDataWithCloudStoreCoder:(id)arg1;
+- (void)_encodeDeviceDataWithCloudStoreCoder:(id)arg1;
+- (void)encodeWithCloudStoreCoder:(id)arg1 codingType:(unsigned long long)arg2;
 - (void)applyPropertiesFromCloudStoreRecord:(id)arg1;
 - (id)initWithCloudStoreCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

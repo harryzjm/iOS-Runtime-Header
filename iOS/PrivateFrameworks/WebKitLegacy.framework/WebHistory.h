@@ -35,7 +35,7 @@
 - (id)_data;
 - (id)allItems;
 - (id)_itemForURLString:(id)arg1;
-- (void)_addVisitedLinksToVisitedLinkStore:(struct WebVisitedLinkStore *)arg1;
+- (void)_addVisitedLinksToVisitedLinkStore:(void *)arg1;
 - (void)_visitedURL:(id)arg1 withTitle:(id)arg2 method:(id)arg3 wasFailure:(_Bool)arg4;
 
 @end

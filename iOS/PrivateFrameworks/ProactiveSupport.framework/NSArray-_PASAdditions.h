@@ -20,6 +20,7 @@
 - (id)_pas_proxySubarrayWithRange:(struct _NSRange)arg1;
 - (id)_pas_ensureImmutable;
 - (id)_pas_proxyComponentsJoinedByString:(id)arg1;
+- (id)_pas_componentsJoinedByString:(id)arg1;
 - (void)_pas_enumerateChunksOfSize:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)_pas_shuffledArrayUsingRng:(id)arg1;
 - (id)_pas_rightFoldWithInitialObject:(id)arg1 accumulate:(CDUnknownBlockType)arg2;

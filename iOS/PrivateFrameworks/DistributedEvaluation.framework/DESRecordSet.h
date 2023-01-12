@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <DistributedEvaluation/NSSecureCoding-Protocol.h>
+
 @class NSArray, NSDictionary;
 
-@interface DESRecordSet : NSObject
+@interface DESRecordSet : NSObject <NSSecureCoding>
 {
     CDUnknownBlockType _dataFetcher;
     NSDictionary *_nativeRecords;
@@ -17,18 +19,23 @@
     NSDictionary *_predicate;
 }
 
++ (_Bool)supportsSecureCoding;
++ (id)recordSetWithRecipeType:(id)arg1 nativeRecords:(id)arg2 coreDuetEventsUUIDs:(id)arg3 error:(id *)arg4;
 + (void)initialize;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSDictionary *predicate; // @synthesize predicate=_predicate;
 @property(readonly, copy, nonatomic) NSArray *coreDuetEvents; // @synthesize coreDuetEvents=_coreDuetEvents;
 @property(readonly, copy, nonatomic) NSDictionary *nativeRecordInfo; // @synthesize nativeRecordInfo=_nativeRecordInfo;
 @property(readonly, copy, nonatomic) NSDictionary *nativeRecords; // @synthesize nativeRecords=_nativeRecords;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)filteredRecordSetWithJSONPredicate:(id)arg1;
 - (id)_anyNativeRecordUUID;
 @property(readonly, nonatomic) unsigned long long count;
 - (id)nativeRecordDataForRecordUUID:(id)arg1 error:(id *)arg2;
 - (id)nativeRecordInfoForRecordUUID:(id)arg1;
-- (id)_initWithNativeRecords:(id)arg1 nativeRecordInfo:(id)arg2 coreDuetEvents:(id)arg3 predicate:(id)arg4 dataFetcher:(CDUnknownBlockType)arg5;
+- (id)initWithNativeRecords:(id)arg1 nativeRecordInfo:(id)arg2 coreDuetEvents:(id)arg3 predicate:(id)arg4 dataFetcher:(CDUnknownBlockType)arg5;
+- (id)initWithNativeRecords:(id)arg1 nativeRecordInfo:(id)arg2 coreDuetEvents:(id)arg3;
 
 @end
 

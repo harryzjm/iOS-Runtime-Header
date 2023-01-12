@@ -6,7 +6,7 @@
 
 #import <AVConference/VCControlChannelTransactionDelegate-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSObject, NSString;
+@class NSMutableDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -22,15 +22,16 @@ __attribute__((visibility("hidden")))
         char _field3[8176];
     } *_pidReceiveProc;
     NSMutableDictionary *_dialogs;
-    NSMutableArray *_activeParticipants;
-    _Bool _isCCReliableDataNotReceivedReported;
+    NSMutableDictionary *_activeParticipants;
     _Bool _isEncryptionEnabled;
     NSMutableDictionary *_cryptors;
     void *_currentSendMKI;
     void *_currentReceiveMKI;
     NSObject<OS_dispatch_queue> *_sequentialKeyMaterialQueue;
+    long long _transactionID;
 }
 
++ (id)allocPayoadDataFromVTPPacket:(struct VCBlockBuffer_t *)arg1 vpktFlags:(struct tagVPKTFLAG *)arg2 channelDataFormat:(struct tagVCIDSChannelDataFormat **)arg3;
 @property(readonly) _Bool isRunning; // @synthesize isRunning=_isRunning;
 @property(readonly) _Bool isEncryptionEnabled; // @synthesize isEncryptionEnabled=_isEncryptionEnabled;
 @property(readonly, nonatomic) NSMutableDictionary *dialogs; // @synthesize dialogs=_dialogs;
@@ -42,25 +43,28 @@ __attribute__((visibility("hidden")))
 - (void)deregisterPeriodicTask;
 - (void)registerPeriodicTask;
 - (void)periodicTask:(void *)arg1;
+@property(readonly, nonatomic) unsigned long long nextTransactionID;
+- (void)reportSignificantHandshakeDelaySymptomForParticipantID:(id)arg1;
+- (int)protocolVersionforParticipantID:(id)arg1;
 - (id)lastUsedMKIBytes;
 - (_Bool)isParticipantActive:(unsigned long long)arg1;
 - (void)addToReceivedStats:(int)arg1;
 - (void)addToSentStats:(int)arg1;
 - (void)setEncryptionWithEncryptionMaterial:(CDStruct_791df8ea *)arg1;
 - (void)addNewKeyMaterial:(id)arg1;
+- (void)updateTransactionIDWithKeyMaterial:(id)arg1;
 - (void)scheduleAfter:(unsigned int)arg1 block:(CDUnknownBlockType)arg2;
 - (void)removeAllActiveParticipants;
 - (void)removeActiveParticipant:(unsigned long long)arg1;
-- (void)addActiveParticipant:(unsigned long long)arg1;
-- (void)broadcastUnreliableMessage:(id)arg1;
-- (void)sendUnreliableMessage:(id)arg1 participantID:(unsigned long long)arg2;
-- (void)sendReliableMessage:(id)arg1 participantID:(unsigned long long)arg2;
-- (_Bool)sendReliableMessage:(id)arg1 participantID:(unsigned long long)arg2 timeout:(unsigned int)arg3 completion:(CDUnknownBlockType)arg4;
-- (_Bool)sendReliableMessageAndWait:(id)arg1 participantID:(unsigned long long)arg2 timeout:(id)arg3;
-- (_Bool)sendReliableMessageAndWait:(id)arg1 participantID:(unsigned long long)arg2;
-- (void)messageReceived:(id)arg1 participantInfo:(CDStruct_94aa5fb4 *)arg2;
-- (id)processEncryptedPayload:(id)arg1 isData:(_Bool)arg2 sequenceNumber:(id)arg3 MKIData:(id)arg4 participantID:(id)arg5;
-- (_Bool)decryptMessageWithMKI:(void *)arg1 message:(id)arg2 buffer:(char *)arg3 size:(unsigned int)arg4 sequenceNumber:(unsigned short)arg5;
+- (_Bool)addActiveParticipant:(unsigned long long)arg1 withConfiguration:(CDStruct_c24deb19 *)arg2;
+- (void)sendUnreliableMessage:(id)arg1 withTopic:(id)arg2 participantID:(unsigned long long)arg3;
+- (void)sendReliableMessage:(id)arg1 withTopic:(id)arg2 participantID:(unsigned long long)arg3;
+- (_Bool)sendReliableMessage:(id)arg1 withTopic:(id)arg2 participantID:(unsigned long long)arg3 timeout:(unsigned int)arg4 completion:(CDUnknownBlockType)arg5;
+- (_Bool)sendReliableMessageAndWait:(id)arg1 withTopic:(id)arg2 participantID:(unsigned long long)arg3 timeout:(id)arg4;
+- (id)copyDialogForParticipantID:(id)arg1;
+- (_Bool)sendReliableMessageAndWait:(id)arg1 withTopic:(id)arg2 participantID:(unsigned long long)arg3;
+- (void)messageReceived:(id)arg1 participantInfo:(struct tagVCIDSChannelDataFormat *)arg2;
+- (id)remoteParticipantIDFromChannelDataFormat:(struct tagVCIDSChannelDataFormat *)arg1;
 - (void)flushActiveMessages;
 - (void)stop;
 - (void)start;

@@ -17,15 +17,16 @@
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSMapTable *eventRoutes; // @synthesize eventRoutes=_eventRoutes;
-- (void)_sendCoreAnalyticsEvent:(id)arg1 eventPayload:(id)arg2;
 - (id)_buildCustomCoreAnalyticsPayloadForEvent:(id)arg1 withPropertiesToInclude:(id)arg2;
 - (void)_sendCoreAnalyticsEventWithCustomConfig:(id)arg1 eventRoute:(id)arg2;
+- (void)updateWithConfig:(id)arg1;
 - (void)processEvent:(id)arg1;
 - (id)initWithConfig:(id)arg1 cpAnalyticsInstance:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) _Bool disabled;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

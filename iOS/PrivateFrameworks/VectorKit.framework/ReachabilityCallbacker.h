@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface ReachabilityCallbacker : NSObject
 {
-    function_84aba934 _listener;
+    function_ffe40f9b _listener;
     NSObject<OS_dispatch_queue> *_queue;
     struct mutex _lock;
 }
@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (void)_reachabilityChanged:(id)arg1;
 - (void)clearListener;
 - (void)dealloc;
-- (id)initWithListener:(function_84aba934)arg1 queue:(id)arg2;
+- (id)initWithListener:(function_ffe40f9b)arg1 queue:(id)arg2;
 
 @end
 

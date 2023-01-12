@@ -14,7 +14,9 @@ __attribute__((visibility("hidden")))
 + (_Bool)hasClipServicesEntitlement;
 + (_Bool)isMobileNotes;
 + (_Bool)isMobileReminders;
++ (_Bool)isMessagesOrMessagesViewService;
 + (_Bool)isMessagesViewService;
++ (_Bool)isMessages;
 + (_Bool)isCNNMobile;
 
 @end

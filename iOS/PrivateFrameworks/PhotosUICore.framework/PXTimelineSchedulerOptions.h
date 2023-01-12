@@ -13,12 +13,20 @@
     double _timelineEntryDuration;
     double _bestContentEntryDuration;
     NSArray *_bestContentStartTimeHours;
+    unsigned long long _timelineForSize;
+    unsigned long long _timelineIndex;
+    unsigned long long _numberOfTimelines;
 }
 
++ (id)_sortTimelineSizesFromSet:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long numberOfTimelines; // @synthesize numberOfTimelines=_numberOfTimelines;
+@property(nonatomic) unsigned long long timelineIndex; // @synthesize timelineIndex=_timelineIndex;
+@property(nonatomic) unsigned long long timelineForSize; // @synthesize timelineForSize=_timelineForSize;
 @property(retain, nonatomic) NSArray *bestContentStartTimeHours; // @synthesize bestContentStartTimeHours=_bestContentStartTimeHours;
 @property(nonatomic) double bestContentEntryDuration; // @synthesize bestContentEntryDuration=_bestContentEntryDuration;
 @property(nonatomic) double timelineEntryDuration; // @synthesize timelineEntryDuration=_timelineEntryDuration;
+- (void)updateOptionsForTimelineSize:(unsigned long long)arg1 withTimelineSizes:(id)arg2;
 - (id)init;
 
 @end

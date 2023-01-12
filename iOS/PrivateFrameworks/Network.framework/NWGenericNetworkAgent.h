@@ -16,6 +16,7 @@
 }
 
 @property struct netagent *internalNetagent; // @synthesize internalNetagent=_internalNetagent;
+- (_Bool)supportsGroups;
 - (_Bool)supportsResolve;
 - (_Bool)requiresAssert;
 - (_Bool)supportsBrowse;

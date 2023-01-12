@@ -17,6 +17,7 @@
 - (void)wasAddedToWorkflow:(id)arg1;
 - (void)initializeParameters;
 - (_Bool)isParameterHidden:(id)arg1;
+- (id)workoutTypeParameter;
 - (id)goalParameter;
 - (unsigned long long)normalizedWorkoutActivityType:(unsigned long long)arg1;
 - (id)selectedAppNotSupportedError;
@@ -24,15 +25,18 @@
 - (id)workoutGoalUnitTypeNumberForUnitString:(id)arg1;
 - (id)location;
 - (id)goalUnitTypeFromValue:(id)arg1;
+- (id)kjGoalConvertedToJ:(id)arg1;
 - (id)kmGoalConvertedToM:(id)arg1;
+- (_Bool)isKjGoal:(id)arg1;
 - (_Bool)isKmGoal:(id)arg1;
 - (id)goalValueFromValue:(id)arg1;
 - (id)workoutNameForActivityType:(id)arg1;
 - (void)resolveSlot:(id)arg1 withProcessedValue:(id)arg2 parameter:(id)arg3 input:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)parameterForSlot:(id)arg1;
+- (id)icon;
+- (id)appResource;
 - (_Bool)skipsProcessingHiddenParameters;
 - (_Bool)allowsContinueInAppWhenRunningRemotely;
-- (_Bool)requiresRemoteExecution;
 
 @end
 

@@ -9,6 +9,7 @@
 @class ICMusicSubscriptionLeaseSession, ICStoreRequestContext, MPCModelGenericAVItemAssetLoadProperties, NSObject;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface MPCModelGenericAVItemSubscriptionAssetLoadOperation : MPAsyncOperation
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
@@ -29,6 +30,11 @@
 - (void)setCancellationHandler:(CDUnknownBlockType)arg1;
 - (CDUnknownBlockType)cancellationHandler;
 - (id)_handlePlaybackResponse:(id)arg1 withPlaybackCacheRequest:(id)arg2 error:(id *)arg3;
+- (id)_loadResultsFromLocalAssetCache;
+- (id)_loadResultsFromMiniSinf;
+- (id)_playbackAuthorizationTokenFromSOD;
+- (_Bool)_canRetrieveLoadResultsFromServerObjectDatabase;
+- (_Bool)_canRetrieveLoadResultsFromMiniSinf;
 - (void)execute;
 - (void)cancel;
 - (id)description;

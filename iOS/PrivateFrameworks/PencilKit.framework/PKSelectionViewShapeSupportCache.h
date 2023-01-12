@@ -16,9 +16,6 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) long long shapeType; // @synthesize shapeType=_shapeType;
-@property(retain, nonatomic) NSArray *originalStrokes; // @synthesize originalStrokes=_originalStrokes;
-@property(retain, nonatomic) NSArray *shapes; // @synthesize shapes=_shapes;
 
 @end
 

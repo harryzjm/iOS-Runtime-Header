@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <UIKitCore/NSCopying-Protocol.h>
+
 @class UIScene;
 
-@interface UISceneActivationRequestOptions : NSObject
+@interface UISceneActivationRequestOptions : NSObject <NSCopying>
 {
     _Bool _preserveLayout;
     _Bool __requestFullscreen;
@@ -21,6 +23,9 @@
 @property(nonatomic) _Bool preserveLayout; // @synthesize preserveLayout=_preserveLayout;
 @property(nonatomic) long long collectionJoinBehavior; // @synthesize collectionJoinBehavior=_collectionJoinBehavior;
 @property(retain, nonatomic) UIScene *requestingScene; // @synthesize requestingScene=_requestingScene;
+- (id)description;
+- (id)_descriptionProperties;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 @property(nonatomic) long long _collectionJoinBehavior;
 
 @end

@@ -4,27 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MetricsKit/MTEnvironmentDelegate-Protocol.h>
-
-@class NSString;
-
-@interface MTEnvironmentUIKitStoreDelegate <MTEnvironmentDelegate>
+@interface MTEnvironmentUIKitStoreDelegate
 {
 }
-
-- (id)_activeItunesAccount;
-- (id)_connectionType;
-- (id)userAgent;
-- (id)storeFrontHeader;
-- (id)dsId;
-- (id)cookies;
-- (id)connectionType;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

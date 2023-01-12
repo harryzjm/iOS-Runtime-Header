@@ -6,16 +6,25 @@
 
 #import <UIKit/UIView.h>
 
-@class CAGradientLayer;
+@class CAGradientLayer, UIColor;
 
 @interface PKProgressBar : UIView
 {
     CAGradientLayer *_fillLayer;
+    _Bool _roundEndCap;
     double _progress;
+    double _cornerRadius;
+    UIColor *_gradientStartColor;
+    UIColor *_gradientEndColor;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIColor *gradientEndColor; // @synthesize gradientEndColor=_gradientEndColor;
+@property(retain, nonatomic) UIColor *gradientStartColor; // @synthesize gradientStartColor=_gradientStartColor;
+@property(nonatomic) _Bool roundEndCap; // @synthesize roundEndCap=_roundEndCap;
+@property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property(nonatomic) double progress; // @synthesize progress=_progress;
+- (void)_updateLayerColors;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 

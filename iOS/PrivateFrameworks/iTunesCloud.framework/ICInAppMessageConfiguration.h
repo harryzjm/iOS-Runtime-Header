@@ -8,6 +8,7 @@
 
 @class NSDictionary, NSURL;
 
+__attribute__((visibility("hidden")))
 @interface ICInAppMessageConfiguration : NSObject
 {
     NSDictionary *_dictionary;

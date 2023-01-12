@@ -12,6 +12,7 @@
     MISSING_TYPE *isAnimating;
     MISSING_TYPE *backgroundViews;
     MISSING_TYPE *stackedItems;
+    MISSING_TYPE *contentViewBottomConstraint;
 }
 
 - (void).cxx_destruct;

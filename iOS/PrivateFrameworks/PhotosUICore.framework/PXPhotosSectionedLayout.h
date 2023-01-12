@@ -15,12 +15,12 @@
 
 @interface PXPhotosSectionedLayout <PXGSublayoutProvider, PXChangeObserver, PXGSublayoutFaultingDelegate, PXAssetSectionLayoutDelegate, PXPhotosSectionBodyLayoutProviderInvalidationDelegate>
 {
-    CDStruct_d97c9657 _updateFlags;
+    CDStruct_af00bf4e _updateFlags;
     _Bool _isUpdatingSublayouts;
     struct {
         _Bool floatingHeaderSnapshot;
     } _headerProviderRespondsTo;
-    unsigned long long _dataSourceIdentifierOfCachedSectionsWithSelectedItems;
+    long long _dataSourceIdentifierOfCachedSectionsWithSelectedItems;
     NSIndexSet *_cachedSectionsWithSelectedItems;
     long long _numberOfForcedSections;
     PXAssetsDataSource *_assetsDataSource;
@@ -47,6 +47,8 @@
 - (void)willRemoveSublayout:(id)arg1 atIndex:(long long)arg2 flags:(unsigned long long)arg3;
 - (void)didFaultInSublayout:(id)arg1 atIndex:(long long)arg2 fromEstimatedContentSize:(struct CGSize)arg3;
 - (long long)sublayoutIndexForObjectReference:(id)arg1 options:(unsigned long long)arg2 updatedObjectReference:(out id *)arg3;
+- (_Bool)allowsSublayoutUpdateCycleAssertions;
+- (_Bool)allowsDanglingUpdatesAssertions;
 - (void)_updateSublayoutsConfiguration;
 - (void)_invalidateSublayoutsConfiguration;
 - (void)_updateSublayoutGridConfiguratorForLayout:(id)arg1;

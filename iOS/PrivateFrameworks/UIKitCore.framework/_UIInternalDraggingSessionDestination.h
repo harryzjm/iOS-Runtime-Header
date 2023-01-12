@@ -8,8 +8,8 @@
 #import <UIKitCore/_UIDataTransferMonitorDelegate-Protocol.h>
 #import <UIKitCore/_UIDraggingInfo-Protocol.h>
 
-@class NSArray, NSMutableSet, NSPointerArray, NSProgress, NSString, PBItemCollection, UIDragEvent, UIView, UIWindow, UIWindowScene, _DUIPotentialDrop, _UIApplicationModalProgressController, _UIDataTransferMonitor, _UIDragSetDownAnimation, _UIDropSessionImpl, _UIInternalDraggingSessionSource;
-@protocol _UIDruidDestinationConnection;
+@class NSArray, NSMutableSet, NSPointerArray, NSProgress, NSString, PBItemCollection, UIDragEvent, UIWindow, UIWindowScene, _DUIPotentialDrop, _UIApplicationModalProgressController, _UIDataTransferMonitor, _UIDragSetDownAnimation, _UIDropSessionImpl, _UIInternalDraggingSessionSource;
+@protocol _UIDropInteractionOwning, _UIDruidDestinationConnection;
 
 __attribute__((visibility("hidden")))
 @interface _UIInternalDraggingSessionDestination <_UIDataTransferMonitorDelegate, NSProgressReporting, _UIDraggingInfo>
@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
     _Bool _isPolicyDriven;
     _Bool _dragInteractionDidEnd;
     NSMutableSet *_enteredDestinations;
-    UIView *_dropDestinationView;
+    id <_UIDropInteractionOwning> _dropDestinationOwner;
     UIWindowScene *_dropDestinationWindowScene;
     CDUnknownBlockType _dropPerformBlock;
     CDUnknownBlockType _dropCompletionBlock;
@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
     _Bool _drivenByPointer;
     _UIDropSessionImpl *_dropSession;
     UIWindow *_centroidWindow;
+    UIWindow *_weakCentroidWindow;
     NSArray *_dropItemProviders;
     long long _sourceDataOwner;
     NSArray *_internalItems;
@@ -57,6 +58,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSArray *internalItems; // @synthesize internalItems=_internalItems;
 @property(readonly, nonatomic) long long sourceDataOwner; // @synthesize sourceDataOwner=_sourceDataOwner;
 @property(readonly, nonatomic) NSArray *dropItemProviders; // @synthesize dropItemProviders=_dropItemProviders;
+@property(readonly, nonatomic) __weak UIWindow *weakCentroidWindow; // @synthesize weakCentroidWindow=_weakCentroidWindow;
 @property(readonly, nonatomic) UIWindow *centroidWindow; // @synthesize centroidWindow=_centroidWindow;
 @property(readonly, nonatomic) struct CGPoint centroid; // @synthesize centroid=_centroid;
 @property(readonly, nonatomic) _UIDropSessionImpl *dropSession; // @synthesize dropSession=_dropSession;
@@ -71,7 +73,7 @@ __attribute__((visibility("hidden")))
 - (void)takeVisibleDroppedItems:(id)arg1;
 @property(readonly, nonatomic) NSArray *preDropItemProviders;
 @property(readonly, nonatomic) unsigned long long sourceOperationMask;
-- (void)requestDropOnView:(id)arg1 withOperation:(unsigned long long)arg2 perform:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)requestDropOnOwner:(id)arg1 withOperation:(unsigned long long)arg2 perform:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)takePotentialDrop:(id)arg1;
 - (void)itemsBecameDirty:(id)arg1;
 - (void)enteredDestination:(id)arg1;

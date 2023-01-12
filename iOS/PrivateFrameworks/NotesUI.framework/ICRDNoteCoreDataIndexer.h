@@ -4,24 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ICFolderCustomNoteSortType, ICRDFolderCoreDataIndexer, ICRDNoteFolderSectionIdentifier, ICRDNoteSectionIdentifier, NSArray, NSFetchedResultsController, NSMutableDictionary, NSObject, NSOrderedSet, NoteCollectionObject;
+@class ICFolderCustomNoteSortType, ICQuery, ICRDFolderCoreDataIndexer, ICRDNoteFolderSectionIdentifier, ICRDNoteSectionIdentifier, ICSystemPaperCoreDataIndexer, ICTagCoreDataIndexer, NSArray, NSFetchedResultsController, NSMutableDictionary, NSMutableSet, NSObject, NSOrderedSet, NoteCollectionObject;
 @protocol ICNoteContainer, OS_dispatch_queue;
 
 @interface ICRDNoteCoreDataIndexer
 {
     _Bool _shouldIncludeOutlineParentItems;
     _Bool _shouldIncludeSubfolders;
+    _Bool _shouldIncludeTags;
+    _Bool _shouldIncludeSystemPaper;
+    ICRDFolderCoreDataIndexer *_folderIndexer;
     id <ICNoteContainer> _noteContainer;
     NoteCollectionObject *_noteCollection;
+    ICQuery *_noteQuery;
     unsigned long long _pinnedNotesSectionMinimumCount;
     ICFolderCustomNoteSortType *_sortType;
-    ICRDFolderCoreDataIndexer *_folderIndexer;
+    ICTagCoreDataIndexer *_tagIndexer;
+    ICSystemPaperCoreDataIndexer *_systemPaperIndexer;
     NSObject<OS_dispatch_queue> *_indexAccessQueue;
     NSFetchedResultsController *_modernPinnedNoteFetchedResultsController;
     NSFetchedResultsController *_modernNoteFetchedResultsController;
     NSFetchedResultsController *_legacyNoteFetchedResultsController;
     NSMutableDictionary *_sectionIdentifiersToManagedObjectIDs;
+    NSMutableSet *_modernAccountManagedObjectIDs;
     NSOrderedSet *_sectionIdentifiers;
+    ICRDNoteSectionIdentifier *_tagSectionIdentifier;
+    ICRDNoteSectionIdentifier *_systemPaperSectionIdentifier;
     ICRDNoteFolderSectionIdentifier *_folderSectionIdentifier;
     ICRDNoteSectionIdentifier *_pinnedNoteSectionIdentifier;
     ICRDNoteSectionIdentifier *_noteSectionIdentifier;
@@ -33,18 +41,26 @@
 @property(retain, nonatomic) ICRDNoteSectionIdentifier *noteSectionIdentifier; // @synthesize noteSectionIdentifier=_noteSectionIdentifier;
 @property(retain, nonatomic) ICRDNoteSectionIdentifier *pinnedNoteSectionIdentifier; // @synthesize pinnedNoteSectionIdentifier=_pinnedNoteSectionIdentifier;
 @property(retain, nonatomic) ICRDNoteFolderSectionIdentifier *folderSectionIdentifier; // @synthesize folderSectionIdentifier=_folderSectionIdentifier;
+@property(retain, nonatomic) ICRDNoteSectionIdentifier *systemPaperSectionIdentifier; // @synthesize systemPaperSectionIdentifier=_systemPaperSectionIdentifier;
+@property(retain, nonatomic) ICRDNoteSectionIdentifier *tagSectionIdentifier; // @synthesize tagSectionIdentifier=_tagSectionIdentifier;
 @property(retain, nonatomic) NSOrderedSet *sectionIdentifiers; // @synthesize sectionIdentifiers=_sectionIdentifiers;
+@property(retain, nonatomic) NSMutableSet *modernAccountManagedObjectIDs; // @synthesize modernAccountManagedObjectIDs=_modernAccountManagedObjectIDs;
 @property(retain, nonatomic) NSMutableDictionary *sectionIdentifiersToManagedObjectIDs; // @synthesize sectionIdentifiersToManagedObjectIDs=_sectionIdentifiersToManagedObjectIDs;
 @property(retain, nonatomic) NSFetchedResultsController *legacyNoteFetchedResultsController; // @synthesize legacyNoteFetchedResultsController=_legacyNoteFetchedResultsController;
 @property(retain, nonatomic) NSFetchedResultsController *modernNoteFetchedResultsController; // @synthesize modernNoteFetchedResultsController=_modernNoteFetchedResultsController;
 @property(retain, nonatomic) NSFetchedResultsController *modernPinnedNoteFetchedResultsController; // @synthesize modernPinnedNoteFetchedResultsController=_modernPinnedNoteFetchedResultsController;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *indexAccessQueue; // @synthesize indexAccessQueue=_indexAccessQueue;
-@property(retain, nonatomic) ICRDFolderCoreDataIndexer *folderIndexer; // @synthesize folderIndexer=_folderIndexer;
+@property(retain, nonatomic) ICSystemPaperCoreDataIndexer *systemPaperIndexer; // @synthesize systemPaperIndexer=_systemPaperIndexer;
+@property(retain, nonatomic) ICTagCoreDataIndexer *tagIndexer; // @synthesize tagIndexer=_tagIndexer;
+@property(nonatomic) _Bool shouldIncludeSystemPaper; // @synthesize shouldIncludeSystemPaper=_shouldIncludeSystemPaper;
+@property(nonatomic) _Bool shouldIncludeTags; // @synthesize shouldIncludeTags=_shouldIncludeTags;
 @property(nonatomic) _Bool shouldIncludeSubfolders; // @synthesize shouldIncludeSubfolders=_shouldIncludeSubfolders;
 @property(retain, nonatomic) ICFolderCustomNoteSortType *sortType; // @synthesize sortType=_sortType;
 @property(nonatomic) unsigned long long pinnedNotesSectionMinimumCount; // @synthesize pinnedNotesSectionMinimumCount=_pinnedNotesSectionMinimumCount;
+@property(retain, nonatomic) ICQuery *noteQuery; // @synthesize noteQuery=_noteQuery;
 @property(retain, nonatomic) NoteCollectionObject *noteCollection; // @synthesize noteCollection=_noteCollection;
 @property(retain, nonatomic) id <ICNoteContainer> noteContainer; // @synthesize noteContainer=_noteContainer;
+@property(retain, nonatomic) ICRDFolderCoreDataIndexer *folderIndexer; // @synthesize folderIndexer=_folderIndexer;
 - (_Bool)shouldIncludeOutlineParentItems;
 - (void)sortSection:(id)arg1;
 - (void)removeObjectIDs:(id)arg1 fromIndexInSection:(id)arg2;
@@ -58,7 +74,6 @@
 @property(readonly, nonatomic) _Bool sortsByPinned;
 - (id)expansionStateContext;
 - (void)deleteWithDecisionController:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)togglePinnedForNote:(id)arg1;
 - (void)deleteObjectWithIDFromIndex:(id)arg1 inSection:(id)arg2;
 - (id)nextRelevantItemIdentifierAfter:(id)arg1;
 - (id)firstRelevantItemIdentifier;
@@ -69,11 +84,14 @@
 - (void)indexObjectsInSection:(id)arg1 sectionIndex:(unsigned long long)arg2 fetchedResultsController:(id)arg3;
 - (id)activeFetchedResultsControllers;
 - (void)clearIndex;
+- (void)togglePinnedForNote:(id)arg1;
 @property(readonly, nonatomic) unsigned long long totalFolderCount;
 @property(readonly, nonatomic) unsigned long long totalNoteCount;
+@property(readonly, nonatomic) unsigned long long totalModernAccountCount;
 - (void)reloadData:(CDUnknownBlockType)arg1;
 - (void)setShouldIncludeOutlineParentItems:(_Bool)arg1;
-- (id)initWithNoteContainer:(id)arg1 noteCollection:(id)arg2 legacyManagedObjectContext:(id)arg3 modernManagedObjectContext:(id)arg4;
+- (id)initForSystemPaperWithModernObjectContext:(id)arg1;
+- (id)initWithNoteContainer:(id)arg1 noteCollection:(id)arg2 noteQuery:(id)arg3 legacyManagedObjectContext:(id)arg4 modernManagedObjectContext:(id)arg5;
 
 @end
 

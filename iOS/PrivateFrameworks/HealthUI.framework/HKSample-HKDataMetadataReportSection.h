@@ -11,6 +11,8 @@
 @class NSDictionary;
 
 @interface HKSample (HKDataMetadataReportSection) <HKDataMetadataObject>
++ (id)createWithCodableNotificationSample:(id)arg1;
++ (id)createWithCodableChartData:(id)arg1;
 - (id)detailedReportName;
 - (id)dataProviderValue;
 - (id)hk_additionalMetadataSectionsWithHealthStore:(id)arg1 displayTypeController:(id)arg2 unitController:(id)arg3 subsampleDelegate:(id)arg4;
@@ -21,6 +23,7 @@
 - (id)subSampleSectionTitle;
 - (id)subSamplePredicate;
 - (id)fixedAggregateValuesWithDisplayTypeController:(id)arg1 unitController:(id)arg2;
+- (id)codableSampleChartData;
 
 // Remaining properties
 @property(readonly, nonatomic) NSDictionary *metadata;

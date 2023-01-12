@@ -20,10 +20,16 @@
     long long _initatorStyle;
     NSString *_routingContextUID;
     NSString *_presentingAppBundleID;
+    double _preferredWidth;
+    NSString *_routeUID;
+    struct CGRect _sourceRect;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *routeUID; // @synthesize routeUID=_routeUID;
+@property(nonatomic) double preferredWidth; // @synthesize preferredWidth=_preferredWidth;
+@property(nonatomic) struct CGRect sourceRect; // @synthesize sourceRect=_sourceRect;
 @property(nonatomic) _Bool sortByIsVideoRoute; // @synthesize sortByIsVideoRoute=_sortByIsVideoRoute;
 @property(nonatomic) _Bool allowsNowPlayingApplicationLaunch; // @synthesize allowsNowPlayingApplicationLaunch=_allowsNowPlayingApplicationLaunch;
 @property(nonatomic) _Bool shouldPreventAutorotation; // @synthesize shouldPreventAutorotation=_shouldPreventAutorotation;

@@ -11,9 +11,7 @@
 + (id)_performSilentEnrollmentPaymentSessionWithContext:(id)arg1;
 + (id)_paymentServiceURLStringForMerchantURL:(id)arg1;
 + (id)performPaymentSessionEnrollmentWithBag:(id)arg1;
-+ (id)performPaymentSessionEnrollment;
 + (void)paymentSessionWithBag:(id)arg1 completion:(CDUnknownBlockType)arg2;
-+ (void)paymentSessionWithCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

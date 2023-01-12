@@ -6,11 +6,9 @@
 
 #import <PhotosUI/PXViewControllerEventTracker-Protocol.h>
 
-@class PUOneUpLivephotoVariationSuggestion;
 @protocol PUDisplayAsset;
 
 @protocol PUOneUpEventTracker <PXViewControllerEventTracker>
-- (void)logAppliedEffectSuggestion:(PUOneUpLivephotoVariationSuggestion *)arg1 toLivePhoto:(id <PUDisplayAsset>)arg2;
 - (void)logVitalityDidEndForLivePhoto:(id <PUDisplayAsset>)arg1;
 - (void)logUserDidPlayLivePhoto:(id <PUDisplayAsset>)arg1;
 - (void)logUserWillPlayLivePhoto:(id <PUDisplayAsset>)arg1;

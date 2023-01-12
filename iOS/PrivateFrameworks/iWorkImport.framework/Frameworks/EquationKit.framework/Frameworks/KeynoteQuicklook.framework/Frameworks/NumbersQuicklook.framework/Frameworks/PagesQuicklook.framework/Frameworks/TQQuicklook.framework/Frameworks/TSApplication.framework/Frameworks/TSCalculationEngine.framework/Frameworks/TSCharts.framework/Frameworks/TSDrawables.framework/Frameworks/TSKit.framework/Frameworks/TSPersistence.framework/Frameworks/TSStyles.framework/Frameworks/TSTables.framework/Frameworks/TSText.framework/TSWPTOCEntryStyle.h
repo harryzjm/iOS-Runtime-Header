@@ -14,10 +14,10 @@
 + (id)properties;
 - (id)parentStyleForFixingOrphanVariation;
 - (void)saveToArchiver:(id)arg1;
-- (void)saveToArchive:(struct TOCEntryStyleArchive *)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)p_saveTOCEntryStylePropertiesToArchive:(struct TOCEntryStylePropertiesArchive *)arg1 archiver:(id)arg2;
-- (void)p_loadTOCEntryParagraphStylePropertiesIntoPropertyMap:(id)arg1 fromArchive:(const struct TOCEntryStylePropertiesArchive *)arg2 unarchiver:(id)arg3;
+- (void)p_saveTOCEntryStylePropertiesToArchive:(void *)arg1 archiver:(id)arg2;
+- (void)p_loadTOCEntryParagraphStylePropertiesIntoPropertyMap:(id)arg1 fromArchive:(const void *)arg2 unarchiver:(id)arg3;
 - (id)presetKind;
 - (id)initWithContext:(id)arg1 name:(id)arg2 overridePropertyMap:(id)arg3 isVariation:(_Bool)arg4;
 - (id)initWithContext:(id)arg1 name:(id)arg2 basedOnParagraphStyle:(id)arg3;

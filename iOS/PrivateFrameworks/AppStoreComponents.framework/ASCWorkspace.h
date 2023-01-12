@@ -6,17 +6,36 @@
 
 #import <objc/NSObject.h>
 
+@class NSMutableDictionary, NSOperationQueue, NSRecursiveLock;
+
 __attribute__((visibility("hidden")))
 @interface ASCWorkspace : NSObject
 {
+    NSMutableDictionary *_pendingResults;
+    NSOperationQueue *_openApplicationOperationQueue;
+    NSRecursiveLock *_stateLock;
 }
 
 + (void)withSharedWorkspace:(id)arg1 perform:(CDUnknownBlockType)arg2;
 + (id)sharedWorkspace;
++ (id)log;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSRecursiveLock *stateLock; // @synthesize stateLock=_stateLock;
+@property(retain, nonatomic) NSOperationQueue *openApplicationOperationQueue; // @synthesize openApplicationOperationQueue=_openApplicationOperationQueue;
+@property(readonly) NSMutableDictionary *pendingResults; // @synthesize pendingResults=_pendingResults;
+- (id)popPendingResultForOperationName:(id)arg1;
+- (void)enqueueOpenApplicationOperation:(id)arg1 pendingResult:(id)arg2;
 - (id)openSensitiveURL:(id)arg1;
+- (id)openURL:(id)arg1 frontBoardOptions:(id)arg2;
 - (id)openURL:(id)arg1;
 @property(readonly, nonatomic, getter=isExtension) _Bool extension;
 - (id)_init;
+- (void)openResourceOperation:(id)arg1 didFailWithError:(id)arg2;
+- (void)openResourceOperationDidComplete:(id)arg1;
+- (id)openProductURL:(id)arg1;
+- (void)openApplicationWithBundleIdentifier:(id)arg1 configuration:(id)arg2 pendingResult:(id)arg3;
+- (void)openApplicationWithBundleIdentifier:(id)arg1 usingOpenResourceOperationWithPayloadURL:(id)arg2 options:(id)arg3 pendingResult:(id)arg4;
+- (id)openApplicationWithBundleIdentifier:(id)arg1 payloadURL:(id)arg2;
 
 @end
 

@@ -19,12 +19,10 @@ __attribute__((visibility("hidden")))
     id _delegate;
     id _sourceDelegate;
     id _sinkDelegate;
-    struct AudioStreamBasicDescription _clientFormat;
-    unsigned int _clientSamplesPerFrame;
+    struct tagVCAudioFrameFormat _clientFormat;
+    struct tagVCAudioFrameFormat _controllerFormat;
     _Bool _isMuted;
     _Bool _isGKVoiceChat;
-    struct AudioStreamBasicDescription _controllerFormat;
-    unsigned int _controllerSamplesPerFrame;
     _Bool _isControllerAudioFormatValid;
     _Bool _isControllerReset;
     struct _opaque_pthread_mutex_t _stateMutex;
@@ -33,27 +31,28 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _stopCompletionBlock;
     struct _VCAudioEndpointData _sourceData;
     struct _VCAudioEndpointData _sinkData;
+    unsigned int _audioType;
 }
 
-+ (id)controllerForDeviceRole:(int)arg1;
-@property(readonly, nonatomic) struct AudioStreamBasicDescription controllerFormat; // @synthesize controllerFormat=_controllerFormat;
++ (id)newControllerForDeviceRole:(int)arg1 forAudioType:(unsigned int)arg2 forDirection:(unsigned char)arg3;
 @property(readonly, nonatomic) unsigned int state; // @synthesize state=_state;
 @property(nonatomic) _Bool isGKVoiceChat; // @synthesize isGKVoiceChat=_isGKVoiceChat;
-@property(readonly, nonatomic) struct AudioStreamBasicDescription clientAudioFormat; // @synthesize clientAudioFormat=_clientFormat;
-@property(readonly, nonatomic) unsigned int samplesPerFrame; // @synthesize samplesPerFrame=_clientSamplesPerFrame;
+- (id)stop;
 - (void)stopWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)stopWithCompletionHandlerInternal:(CDUnknownBlockType)arg1;
+- (id)start;
 - (void)startWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)spatialAudioSourceIDChanged:(unsigned long long)arg1;
 - (void)didUpdateBasebandCodec:(const struct _VCRemoteCodecInfo *)arg1;
 - (void)didResume;
 - (void)didSuspend;
-- (void)controllerFormatChanged:(struct AudioStreamBasicDescription)arg1;
+- (void)controllerFormatChanged:(const struct tagVCAudioFrameFormat *)arg1;
 - (void)didStop:(_Bool)arg1 error:(id)arg2;
 - (void)didStart:(_Bool)arg1 error:(id)arg2;
-- (void)setClientFormat:(struct AudioStreamBasicDescription)arg1;
+- (void)setClientFormat:(const struct tagVCAudioFrameFormat *)arg1;
 - (void)releaseConverters;
+- (void)destroyBuffers;
 - (_Bool)createConverterForSource:(_Bool)arg1 error:(id *)arg2;
+@property(nonatomic) _Bool spatialAudioDisabled;
 @property(readonly, nonatomic) unsigned int pullAudioSamplesCount;
 @property(nonatomic) unsigned char direction;
 @property(nonatomic, getter=isMuted) _Bool muted; // @synthesize muted=_isMuted;
@@ -61,10 +60,13 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isInputMeteringEnabled) _Bool inputMeteringEnabled;
 - (void)setRemoteCodecType:(unsigned int)arg1 sampleRate:(double)arg2;
 - (void)setFarEndVersionInfo:(struct VoiceIOFarEndVersionInfo *)arg1;
+@property(readonly, nonatomic) const struct tagVCAudioFrameFormat *controllerFormat;
+@property(readonly, nonatomic) const struct tagVCAudioFrameFormat *clientFormat;
 - (id)delegate;
 - (void)forceCleanup;
 - (void)dealloc;
 - (_Bool)reconfigureWithOperatingMode:(int)arg1 deviceRole:(int)arg2 direction:(unsigned char)arg3 allowAudioRecording:(_Bool)arg4;
+- (void)setupClientFormatWithConfiguration:(struct _VCAudioIOInitConfiguration *)arg1;
 - (id)initWithConfiguration:(struct _VCAudioIOInitConfiguration *)arg1;
 
 // Remaining properties

@@ -11,7 +11,7 @@
 - (void)setValue:(_Bool)arg1;
 - (_Bool)getValue;
 - (id)initWithName:(id)arg1 value:(_Bool)arg2;
-- (id)initWithSharedPtr:(shared_ptr_695b9c0c *)arg1;
+- (id)initWithSharedPtr:(void *)arg1;
 - (id)init;
 
 @end

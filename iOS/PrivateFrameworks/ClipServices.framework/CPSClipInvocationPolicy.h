@@ -27,6 +27,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(readonly, nonatomic) _Bool canShowHeroImage;
+@property(readonly, nonatomic, getter=isIneligibleDueToContentRestriction) _Bool ineligibleDueToContentRestriction;
 @property(readonly, nonatomic, getter=isRecoverable) _Bool recoverable;
 - (id)localizedMessageForClipMetadata:(id)arg1;
 @property(readonly, nonatomic) NSString *localizedTitle;

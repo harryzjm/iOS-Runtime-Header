@@ -6,7 +6,7 @@
 
 #import <CameraUI/NSObject-Protocol.h>
 
-@class CAMDynamicShutterControl;
+@class CAMDynamicShutterControl, UIView;
 
 @protocol CAMDynamicShutterControlDelegate <NSObject>
 
@@ -16,6 +16,8 @@
 - (void)dynamicShutterControlDidPresentCounter:(CAMDynamicShutterControl *)arg1;
 - (void)dynamicShutterControlDidPressLockButton:(CAMDynamicShutterControl *)arg1;
 - (void)dynamicShutterControlDidStop:(CAMDynamicShutterControl *)arg1;
+- (void)dynamicShutterControl:(CAMDynamicShutterControl *)arg1 didChangeZoomScale:(double)arg2;
+- (void)dynamicShutterControlDidStartZoomGesture:(CAMDynamicShutterControl *)arg1;
 - (void)dynamicShutterControlDidStart:(CAMDynamicShutterControl *)arg1 withGesture:(long long)arg2;
 - (void)dynamicShutterControlDidStart:(CAMDynamicShutterControl *)arg1;
 - (void)dynamicShutterControlGesturesDidCancel:(CAMDynamicShutterControl *)arg1;
@@ -24,5 +26,6 @@
 - (void)dynamicShutterControlDidShortPress:(CAMDynamicShutterControl *)arg1;
 - (_Bool)dynamicShutterControlShouldBeginGesture:(CAMDynamicShutterControl *)arg1;
 - (_Bool)dynamicShutterControlCanStartOnTouchDown:(CAMDynamicShutterControl *)arg1;
+- (UIView *)dynamicShutterControlTopLevelSuperview:(CAMDynamicShutterControl *)arg1;
 @end
 

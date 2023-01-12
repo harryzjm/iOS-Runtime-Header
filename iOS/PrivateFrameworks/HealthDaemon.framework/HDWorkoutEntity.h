@@ -8,7 +8,7 @@
 {
 }
 
-+ (id)_codableCondensedWorkoutProperties;
++ (_Bool)workoutActivityType:(unsigned long long *)arg1 associatedWithRouteUUID:(id)arg2 transaction:(id)arg3 error:(id *)arg4;
 + (_Bool)enumerateCondensedWorkoutsWithPredicate:(id)arg1 profile:(id)arg2 error:(id *)arg3 handler:(CDUnknownBlockType)arg4;
 + (_Bool)copySampleAssociationsFromWorkout:(id)arg1 toWorkout:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 + (_Bool)isConcreteEntity;

@@ -38,7 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)_computeExpirationLabel:(id)arg1;
 - (void)invalidateTimer;
 - (void)dealloc;
-- (void)willMoveToWindow:(id)arg1;
+- (void)vui_willMoveToWindow:(id)arg1;
 
 @end
 

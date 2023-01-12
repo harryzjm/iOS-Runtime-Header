@@ -6,7 +6,7 @@
 
 #import <Foundation/NSUndoManager.h>
 
-@class NSError;
+@class NSError, NSMutableDictionary;
 @protocol CUIKCommitDelegate, CUIKDecisionDelegate;
 
 @interface CUIKUndoManager : NSUndoManager
@@ -15,9 +15,13 @@
     id <CUIKDecisionDelegate> _decisionDelegate;
     CDUnknownBlockType _editingManagerProvider;
     NSError *_lastError;
+    NSMutableDictionary *_undeletedObjectMap;
+    NSMutableDictionary *_specificIdentifierMap;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableDictionary *specificIdentifierMap; // @synthesize specificIdentifierMap=_specificIdentifierMap;
+@property(retain, nonatomic) NSMutableDictionary *undeletedObjectMap; // @synthesize undeletedObjectMap=_undeletedObjectMap;
 @property(retain) NSError *lastError; // @synthesize lastError=_lastError;
 @property(copy, nonatomic) CDUnknownBlockType editingManagerProvider; // @synthesize editingManagerProvider=_editingManagerProvider;
 @property(retain) id <CUIKDecisionDelegate> decisionDelegate; // @synthesize decisionDelegate=_decisionDelegate;

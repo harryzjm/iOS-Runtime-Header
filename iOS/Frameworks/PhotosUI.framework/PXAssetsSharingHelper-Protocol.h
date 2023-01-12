@@ -6,12 +6,15 @@
 
 #import <PhotosUI/NSObject-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSString;
 @protocol PXAssetsSharingHelperDelegate;
 
 @protocol PXAssetsSharingHelper <NSObject>
 + (void)copyAssets:(NSArray *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
++ (void)prepareAssets:(NSArray *)arg1 forActivityType:(NSString *)arg2 completion:(void (^)(id, NSError *))arg3;
 @property(nonatomic) __weak id <PXAssetsSharingHelperDelegate> delegate;
+- (void)ensureLocalAssetsForRendering:(NSArray *)arg1 completion:(void (^)(_Bool))arg2;
+- (void)ensureLocalAssetsForSyndicationSave:(NSArray *)arg1 completion:(void (^)(_Bool))arg2;
 - (void)ensureLocalAssetsForCloudPhotoSharing:(NSArray *)arg1 completion:(void (^)(_Bool))arg2;
 - (void)copyAssets:(NSArray *)arg1;
 @end

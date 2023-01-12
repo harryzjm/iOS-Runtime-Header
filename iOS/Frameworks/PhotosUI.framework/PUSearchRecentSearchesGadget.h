@@ -8,7 +8,7 @@
 
 #import <PhotosUI/PXGadget-Protocol.h>
 
-@class NSArray, NSLayoutConstraint, NSOrderedSet, NSString, PXGadgetSpec;
+@class NSArray, NSLayoutConstraint, NSString, PXGadgetSpec;
 @protocol PXGadgetDelegate;
 
 __attribute__((visibility("hidden")))
@@ -17,8 +17,7 @@ __attribute__((visibility("hidden")))
     PXGadgetSpec *_gadgetSpec;
     id <PXGadgetDelegate> _delegate;
     unsigned long long _accessoryButtonType;
-    NSArray *_recentSearchesNew;
-    NSOrderedSet *_recentSearches;
+    NSArray *_recentSearches;
     NSLayoutConstraint *_separatorRegularTrailingConstraint;
     NSLayoutConstraint *_separatorCompactWidthConstraint;
 }
@@ -26,8 +25,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSLayoutConstraint *separatorCompactWidthConstraint; // @synthesize separatorCompactWidthConstraint=_separatorCompactWidthConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *separatorRegularTrailingConstraint; // @synthesize separatorRegularTrailingConstraint=_separatorRegularTrailingConstraint;
-@property(copy, nonatomic) NSOrderedSet *recentSearches; // @synthesize recentSearches=_recentSearches;
-@property(copy, nonatomic) NSArray *recentSearchesNew; // @synthesize recentSearchesNew=_recentSearchesNew;
+@property(copy, nonatomic) NSArray *recentSearches; // @synthesize recentSearches=_recentSearches;
 @property(readonly, nonatomic) unsigned long long accessoryButtonType; // @synthesize accessoryButtonType=_accessoryButtonType;
 @property(nonatomic) __weak id <PXGadgetDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) PXGadgetSpec *gadgetSpec; // @synthesize gadgetSpec=_gadgetSpec;

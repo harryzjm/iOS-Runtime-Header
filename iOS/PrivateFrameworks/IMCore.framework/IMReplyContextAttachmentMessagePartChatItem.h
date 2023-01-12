@@ -21,8 +21,8 @@
 @property(retain, nonatomic) IMItem *_parentItem; // @synthesize _parentItem;
 - (_Bool)canDelete;
 - (_Bool)isReplyContextPreview;
-- (id)_initWithItem:(id)arg1 parentItem:(id)arg2 replyMessageGUID:(id)arg3 replyIsFromMe:(_Bool)arg4 text:(id)arg5 index:(long long)arg6 messagePartRange:(struct _NSRange)arg7 transferGUID:(id)arg8 parentChatIsSpam:(_Bool)arg9 visibleAssociatedMessageChatItems:(id)arg10;
-- (id)_initWithItem:(id)arg1 parentItem:(id)arg2 replyMessageGUID:(id)arg3 replyIsFromMe:(_Bool)arg4 text:(id)arg5 index:(long long)arg6 messagePartRange:(struct _NSRange)arg7 transferGUID:(id)arg8 parentChatIsSpam:(_Bool)arg9;
+- (id)_initWithItem:(id)arg1 parentItem:(id)arg2 replyMessageGUID:(id)arg3 replyIsFromMe:(_Bool)arg4 text:(id)arg5 index:(long long)arg6 messagePartRange:(struct _NSRange)arg7 transferGUID:(id)arg8 chatContext:(id)arg9 visibleAssociatedMessageChatItems:(id)arg10;
+- (id)_initWithItem:(id)arg1 parentItem:(id)arg2 replyMessageGUID:(id)arg3 replyIsFromMe:(_Bool)arg4 text:(id)arg5 index:(long long)arg6 messagePartRange:(struct _NSRange)arg7 transferGUID:(id)arg8 chatContext:(id)arg9;
 
 @end
 

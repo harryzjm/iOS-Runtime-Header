@@ -29,7 +29,7 @@
     _Bool _companionAvailable;
     NSError *_invalidationError;
     _Bool _tryToReconnect;
-    _Bool _appWasLaunchedForBackgroundSessionSeen;
+    _Bool _immediatelyReconnectAfterInterruption;
     int _notifyToken;
 }
 
@@ -48,6 +48,7 @@
 - (void)backgroundSessionDidFinishAppWake:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)backgroundSessionDidStartAppWake:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)backgroundAVAssetDownloadTask:(unsigned long long)arg1 didFinishDownloadForMediaSelectionPropertyList:(id)arg2;
+- (void)backgroundAVAssetDownloadTask:(unsigned long long)arg1 willDownloadVariants:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)backgroundAVAssetDownloadTask:(unsigned long long)arg1 willDownloadToURL:(id)arg2;
 - (void)backgroundAVAssetDownloadTask:(unsigned long long)arg1 didResolveMediaSelectionProperyList:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)backgroundAVAssetDownloadTask:(unsigned long long)arg1 didLoadTimeRange:(id)arg2 totalTimeRangesLoaded:(id)arg3 timeRangeExpectedToLoad:(id)arg4 forMediaSelectionPropertyList:(id)arg5;
@@ -78,7 +79,7 @@
 - (void)_onqueue_resetStorageWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_onqueue_flushWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)AVAggregateAssetDownloadTaskForURLAsset:(id)arg1 mediaSelections:(id)arg2 assetTitle:(id)arg3 assetArtworkData:(id)arg4 options:(id)arg5;
-- (id)AVAssetDownloadTaskForURLAsset:(id)arg1 assetTitle:(id)arg2 assetArtworkData:(id)arg3 options:(id)arg4;
+- (id)AVAssetDownloadTaskForURLAsset:(id)arg1 assetTitle:(id)arg2 assetArtworkData:(id)arg3 options:(id)arg4 downloadConfiguration:(id)arg5;
 - (id)AVAssetDownloadTaskForURLAsset:(id)arg1 destinationURL:(id)arg2 options:(id)arg3;
 - (id)_AVAssetDownloadTaskForURL:(id)arg1 destinationURL:(id)arg2 options:(id)arg3;
 - (id)webSocketTaskForURL:(id)arg1 protocols:(id)arg2;

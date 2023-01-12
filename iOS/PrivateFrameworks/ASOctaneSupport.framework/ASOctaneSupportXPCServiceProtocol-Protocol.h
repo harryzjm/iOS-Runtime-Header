@@ -6,9 +6,11 @@
 
 #import <ASOctaneSupport/NSObject-Protocol.h>
 
-@class NSString;
+@class NSData, NSString, NSUUID;
 
 @protocol ASOctaneSupportXPCServiceProtocol <NSObject>
+- (void)unregisterForEventWithIdentifier:(NSUUID *)arg1;
+- (void)registerForEventOfType:(long long)arg1 filterData:(NSData *)arg2 withReply:(void (^)(NSUUID *))arg3;
 - (void)setStringValue:(NSString *)arg1 forIdentifier:(unsigned long long)arg2 forBundleID:(NSString *)arg3 withReply:(void (^)(NSError *))arg4;
 - (void)getStringValueForIdentifier:(unsigned long long)arg1 forBundleID:(NSString *)arg2 withReply:(void (^)(NSString *))arg3;
 - (void)setIntegerValue:(long long)arg1 forIdentifier:(unsigned long long)arg2 forBundleID:(NSString *)arg3 withReply:(void (^)(NSError *))arg4;

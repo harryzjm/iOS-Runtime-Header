@@ -37,11 +37,9 @@
 - (void)setComputePipelineState:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)setBuffers:(const id *)arg1 offsets:(const unsigned long long *)arg2 withRange:(struct _NSRange)arg3;
 - (void)setBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
-- (void)setArgumentBuffer:(id)arg1 startOffset:(unsigned long long)arg2 arrayElement:(unsigned long long)arg3;
-- (void)setArgumentBuffer:(id)arg1 offset:(unsigned long long)arg2;
-- (void)setAccelerationStructure:(id)arg1 atIndex:(unsigned long long)arg2;
 - (id)newArgumentEncoderForBufferAtIndex:(unsigned long long)arg1;
 - (void)dealloc;
+- (void *)constantDataAtIndex:(unsigned long long)arg1;
 @property(copy) NSString *label;
 @property(readonly) unsigned long long encodedLength;
 @property(readonly) id <MTLDevice> device;
@@ -55,7 +53,9 @@
 @property(readonly) struct GTTraceContext *traceContext;
 - (void)touch;
 - (id)originalObject;
-- (void *)constantDataAtIndex:(unsigned long long)arg1;
+- (void)setAccelerationStructure:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)setArgumentBuffer:(id)arg1 startOffset:(unsigned long long)arg2 arrayElement:(unsigned long long)arg3;
+- (void)setArgumentBuffer:(id)arg1 offset:(unsigned long long)arg2;
 @property(readonly) id <MTLArgumentEncoder> baseObject;
 - (id)initWithBaseObject:(id)arg1 captureDevice:(id)arg2;
 

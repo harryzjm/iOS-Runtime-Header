@@ -12,13 +12,15 @@
     NSNumber *_exposureScore;
 }
 
++ (id)defaultOriginatingRequestClassNameForRequestRevision:(unsigned long long)arg1;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSNumber *exposureScore; // @synthesize exposureScore=_exposureScore;
 @property(retain, nonatomic) NSNumber *blurScore; // @synthesize blurScore=_blurScore;
+- (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)vn_cloneObject;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

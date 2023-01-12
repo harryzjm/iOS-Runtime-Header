@@ -9,11 +9,12 @@
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class NSArray, NSMutableArray, NSRecursiveLock, NSString;
+@class HMDHomeManager, NSArray, NSMutableArray, NSRecursiveLock, NSString;
 
 @interface HMDIdentityRegistry : HMFObject <HMFLogging, HMFDumpState>
 {
     NSMutableArray *_registeredIdentities;
+    HMDHomeManager *_homeManager;
     NSRecursiveLock *_lock;
 }
 
@@ -21,6 +22,7 @@
 + (id)sharedRegistry;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSRecursiveLock *lock; // @synthesize lock=_lock;
+@property __weak HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 - (id)dumpState;
 - (void)reset;
 - (void)deregisterIdentity:(id)arg1 object:(id)arg2;
@@ -29,6 +31,9 @@
 - (id)accountsForIdentity:(id)arg1;
 - (id)identitiesForAccount:(id)arg1;
 - (id)identitiesForDevice:(id)arg1;
+- (id)userForDevice:(id)arg1;
+- (id)_userForIdenity:(id)arg1;
+- (void)configureWithHomeManager:(id)arg1;
 - (id)identityForIdentifier:(id)arg1;
 @property(readonly) NSArray *registeredIdentities;
 - (id)attributeDescriptions;

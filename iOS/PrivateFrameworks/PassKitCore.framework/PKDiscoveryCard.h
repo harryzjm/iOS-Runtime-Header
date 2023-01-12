@@ -8,10 +8,11 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSString, PKColor, PKDiscoveryCallToAction, PKDiscoveryMedia;
+@class NSString, PKColor, PKDiscoveryCallToAction, PKDiscoveryItem, PKDiscoveryMedia;
 
 @interface PKDiscoveryCard : NSObject <NSSecureCoding>
 {
+    NSString *_itemIdentifier;
     NSString *_headingKey;
     NSString *_titleKey;
     NSString *_inlineDescriptionKey;
@@ -22,10 +23,12 @@
     NSString *_heading;
     NSString *_title;
     NSString *_inlineDescription;
+    PKDiscoveryItem *_item;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) __weak PKDiscoveryItem *item; // @synthesize item=_item;
 @property(readonly, nonatomic) NSString *inlineDescription; // @synthesize inlineDescription=_inlineDescription;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
 @property(retain, nonatomic) NSString *heading; // @synthesize heading=_heading;

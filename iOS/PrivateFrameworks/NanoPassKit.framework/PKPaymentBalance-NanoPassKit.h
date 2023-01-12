@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PassKit/PKPaymentBalance.h>
+#import <PassKitCore/PKPaymentBalance.h>
 
 @interface PKPaymentBalance (NanoPassKit)
 + (id)NPK_paymentBalanceWithAppletBalance:(id)arg1;

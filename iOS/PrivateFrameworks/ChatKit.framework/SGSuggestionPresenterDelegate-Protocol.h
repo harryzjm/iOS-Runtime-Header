@@ -19,5 +19,6 @@
 - (void)suggestionPresenter:(SGSuggestionPresenter *)arg1 willDismissViewController:(UIViewController *)arg2;
 - (void)suggestionPresenter:(SGSuggestionPresenter *)arg1 didPresentViewController:(UIViewController *)arg2;
 - (void)suggestionPresenter:(SGSuggestionPresenter *)arg1 willPresentViewController:(UIViewController *)arg2;
+- (void)reloadSuggestionsFromSearchableItems;
 @end
 

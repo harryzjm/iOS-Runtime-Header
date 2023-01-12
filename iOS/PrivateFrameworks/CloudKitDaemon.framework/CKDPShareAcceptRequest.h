@@ -10,7 +10,6 @@
 
 @class CKDPProtectionInfo, CKDPShareIdentifier, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDPShareAcceptRequest : PBRequest <NSCopying>
 {
     NSString *_etag;

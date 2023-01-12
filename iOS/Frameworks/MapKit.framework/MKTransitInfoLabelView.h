@@ -18,6 +18,7 @@
     long long _shieldSize;
     NSArray *_labelItems;
     double _spaceBetweenShields;
+    double _maxShieldHeight;
     MKArtworkDataSourceCache *_artworkCache;
 }
 
@@ -26,9 +27,11 @@
 + (id)stringAttributesForFont:(id)arg1 lineBreakMode:(long long)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) MKArtworkDataSourceCache *artworkCache; // @synthesize artworkCache=_artworkCache;
+@property(nonatomic) double maxShieldHeight; // @synthesize maxShieldHeight=_maxShieldHeight;
 @property(nonatomic) double spaceBetweenShields; // @synthesize spaceBetweenShields=_spaceBetweenShields;
 @property(copy, nonatomic) NSArray *labelItems; // @synthesize labelItems=_labelItems;
 @property(nonatomic) long long shieldSize; // @synthesize shieldSize=_shieldSize;
+@property(nonatomic) long long iconSize; // @synthesize iconSize=_iconSize;
 - (void)_contentSizeCategoryDidChange;
 - (void)_setFont:(id)arg1 custom:(_Bool)arg2;
 - (void)setFont:(id)arg1;
@@ -37,7 +40,6 @@
 - (id)_imageForLabelItem:(id)arg1;
 - (id)_stringAttributes;
 - (void)setSpaceBetweenIcons:(double)arg1;
-- (void)setIconSize:(long long)arg1;
 - (id)_generateText;
 - (void)_setupLabelInfo;
 - (void)setMaxWidth:(double)arg1 textForTruncationGenerator:(CDUnknownBlockType)arg2;

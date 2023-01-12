@@ -9,7 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (_Bool)runOnNetwork:(struct net *)arg1;
+- (_Bool)runOnNetwork:(void *)arg1;
 
 @end
 

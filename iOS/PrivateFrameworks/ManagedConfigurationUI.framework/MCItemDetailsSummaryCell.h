@@ -8,7 +8,6 @@
 
 @class NSArray;
 
-__attribute__((visibility("hidden")))
 @interface MCItemDetailsSummaryCell : UITableViewCell
 {
     NSArray *_detailViews;

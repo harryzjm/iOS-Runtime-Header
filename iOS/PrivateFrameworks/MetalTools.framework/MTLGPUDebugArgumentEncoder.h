@@ -6,19 +6,21 @@
 
 @interface MTLGPUDebugArgumentEncoder
 {
-    const struct GPUDebugArgumentEncoderLayout *_layout;
+    const void *_layout;
 }
 
 - (id)newArgumentEncoderForBufferAtIndex:(unsigned long long)arg1;
 - (void)setIndirectCommandBuffers:(const id *)arg1 withRange:(struct _NSRange)arg2;
 - (void)setIndirectCommandBuffer:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)setComputePipelineStates:(const id *)arg1 withRange:(struct _NSRange)arg2;
+- (void)setComputePipelineState:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)setRenderPipelineStates:(const id *)arg1 withRange:(struct _NSRange)arg2;
 - (void)setRenderPipelineState:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)setBuffers:(const id *)arg1 offsets:(const unsigned long long *)arg2 withRange:(struct _NSRange)arg3;
 - (void)setBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setArgumentBuffer:(id)arg1 startOffset:(unsigned long long)arg2 arrayElement:(unsigned long long)arg3;
 - (void)setArgumentBuffer:(id)arg1 offset:(unsigned long long)arg2;
-- (id)initWithArgumentEncoder:(id)arg1 layout:(const struct GPUDebugArgumentEncoderLayout *)arg2 device:(id)arg3;
+- (id)initWithArgumentEncoder:(id)arg1 layout:(const void *)arg2 device:(id)arg3;
 
 @end
 

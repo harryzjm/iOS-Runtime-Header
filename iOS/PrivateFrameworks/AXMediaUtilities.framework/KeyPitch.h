@@ -10,12 +10,14 @@
 {
     double _frequency;
     double _timeOffsetMS;
+    double _volume;
 }
 
+@property(nonatomic) double volume; // @synthesize volume=_volume;
 @property(nonatomic) double timeOffsetMS; // @synthesize timeOffsetMS=_timeOffsetMS;
 @property(nonatomic) double frequency; // @synthesize frequency=_frequency;
 - (id)description;
-- (id)initWithFrequency:(double)arg1 timeOffset:(double)arg2;
+- (id)initWithFrequency:(double)arg1 volume:(double)arg2 timeOffset:(double)arg3;
 
 @end
 

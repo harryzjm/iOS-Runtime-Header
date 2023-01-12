@@ -25,10 +25,12 @@
 @property(readonly) id <HMDCameraBulletinBoard> bulletinBoard; // @synthesize bulletinBoard=_bulletinBoard;
 - (id)_firstAvailableHeroFrameURLForSignificantEvents:(id)arg1 cameraProfile:(id)arg2;
 - (id)_writeHeroFrameData:(id)arg1;
-- (void)_postNotificationForSignificantEvents:(id)arg1 cameraProfile:(id)arg2 heroFrameURL:(id)arg3;
-- (void)_postNotificationForClipSignificantEvent:(id)arg1 cameraProfile:(id)arg2 canFetchHeroFrame:(_Bool)arg3;
+- (void)_insertClipSignificantEventBulletin:(id)arg1;
+- (void)removeCachedHeroFrameImages;
+- (void)removeEventNotificationsForCameraProfile:(id)arg1;
 - (void)removeEventNotificationForClipWithUUID:(id)arg1;
-- (void)postNotificationForClipSignificantEvent:(id)arg1 cameraProfile:(id)arg2;
+- (void)postNotificationForBulletin:(id)arg1 significantEvent:(id)arg2;
+- (id)bulletinForClipSignificantEvent:(id)arg1 cameraProfile:(id)arg2;
 - (void)postNotificationForSignificantEvent:(id)arg1 heroFrameData:(id)arg2 cameraProfile:(id)arg3;
 - (id)initWithBulletinBoard:(id)arg1 workQueue:(id)arg2 fileManager:(id)arg3;
 - (id)initWithBulletinBoard:(id)arg1 workQueue:(id)arg2;

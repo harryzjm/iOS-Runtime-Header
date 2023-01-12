@@ -12,7 +12,6 @@
 }
 
 - (void).cxx_destruct;
-- (unsigned long long)priority;
 - (unsigned long long)type;
 @property(readonly, nonatomic) MRNowPlayingState *state;
 - (id)initWithUnderlyingCodableMessage:(id)arg1 error:(id)arg2;

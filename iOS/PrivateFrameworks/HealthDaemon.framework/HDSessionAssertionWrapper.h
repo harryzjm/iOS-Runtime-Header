@@ -16,8 +16,6 @@
 
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) CDUnknownBlockType createAndTakeBlock; // @synthesize createAndTakeBlock=_createAndTakeBlock;
-- (void)_releaseAssertion;
-- (void)_takeAssertion;
 @property(readonly, nonatomic) _Bool taken;
 - (void)dealloc;
 - (id)initWithCreateAndTakeBlock:(CDUnknownBlockType)arg1;

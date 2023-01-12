@@ -14,7 +14,9 @@
 {
     GEORPScorecard *_scorecard;
     int _action;
-    CDStruct_6f2d9b33 _flags;
+    struct {
+        unsigned int has_action:1;
+    } _flags;
 }
 
 + (_Bool)isValid:(id)arg1;

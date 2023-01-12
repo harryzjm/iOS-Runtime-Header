@@ -15,11 +15,13 @@ __attribute__((visibility("hidden")))
     _UITextServiceSession *_learnSession;
     _UITextServiceSession *_shareSession;
     _UITextServiceSession *_lookupSession;
+    _UITextServiceSession *_translateSession;
     _UITextServicesResponderProxy *_responderProxy;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) _UITextServicesResponderProxy *responderProxy; // @synthesize responderProxy=_responderProxy;
+- (void)_translate:(id)arg1;
 - (void)_define:(id)arg1;
 - (void)_addShortcut:(id)arg1;
 - (void)_removeShortcutController;

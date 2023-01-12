@@ -20,7 +20,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _CDClientContext *contextStore; // @synthesize contextStore=_contextStore;
 @property(readonly, nonatomic) id <_DKKnowledgeSaving> knowledgeStore; // @synthesize knowledgeStore=_knowledgeStore;
-- (void)saveKnowledgeEvent:(id)arg1 error:(id *)arg2;
+- (_Bool)saveKnowledgeEvent:(id)arg1 error:(id *)arg2;
 - (id)removeObjectsMatchingPredicate:(id)arg1 fromArrayAtKeyPath:(id)arg2;
 - (_Bool)addContextValue:(id)arg1 toArrayAtKeyPath:(id)arg2;
 - (id)init;

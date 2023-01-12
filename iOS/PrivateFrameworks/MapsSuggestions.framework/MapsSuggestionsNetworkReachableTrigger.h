@@ -4,19 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapsSuggestions/MapsSuggestionsRunCondition-Protocol.h>
+#import <MapsSuggestions/MapsSuggestionsCondition-Protocol.h>
 
 @class NSString;
 
-@interface MapsSuggestionsNetworkReachableTrigger <MapsSuggestionsRunCondition>
+@interface MapsSuggestionsNetworkReachableTrigger <MapsSuggestionsCondition>
 {
 }
 
 - (id)objectForJSON;
+- (_Bool)isTrue;
 - (void)didRemoveLastObserver;
 - (void)didAddFirstObserver;
 - (void)_reachabilityChanged;
-- (_Bool)shouldRun;
 - (id)init;
 
 // Remaining properties

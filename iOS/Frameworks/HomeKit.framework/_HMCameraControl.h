@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKit/HMFLogging-Protocol.h>
 #import <HomeKit/HMFMessageReceiver-Protocol.h>
 
 @class HMFUnfairLock, HMHome, HMService, NSString, NSUUID, _HMCameraProfile, _HMContext;
 @protocol OS_dispatch_queue;
 
-@interface _HMCameraControl : NSObject <HMFMessageReceiver>
+@interface _HMCameraControl : NSObject <HMFLogging, HMFMessageReceiver>
 {
     HMFUnfairLock *_lock;
     _HMContext *_context;
@@ -21,6 +22,7 @@
     HMHome *_home;
 }
 
++ (id)logCategory;
 - (void).cxx_destruct;
 @property(nonatomic) __weak HMHome *home; // @synthesize home=_home;
 @property(readonly, copy, nonatomic) NSUUID *profileUniqueIdentifier; // @synthesize profileUniqueIdentifier=_profileUniqueIdentifier;
@@ -30,6 +32,7 @@
 - (void)_registerNotificationHandlers;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;
+- (id)logIdentifier;
 - (void)__configureWithContext:(id)arg1 home:(id)arg2;
 - (id)initWithCameraProfile:(id)arg1 service:(id)arg2 profileUniqueIdentifier:(id)arg3;
 

@@ -8,18 +8,19 @@
 
 #import <EmbeddedAcousticRecognition/NSXMLParserDelegate-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSMutableString, NSString, NSXMLParser;
+@class NSMutableDictionary, NSMutableSet, NSMutableString, NSString, NSXMLParser;
 
 @interface _EARPlsParser : NSObject <NSXMLParserDelegate>
 {
-    NSXMLParser *parser;
-    NSMutableDictionary *lexeme;
-    NSMutableString *elementValue;
-    NSMutableArray *_lexemes;
+    NSString *_currentGrapheme;
+    NSMutableSet *_currentPhonemes;
+    NSXMLParser *_parser;
+    NSMutableString *_elementValue;
+    NSMutableDictionary *_lexemes;
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSMutableArray *lexemes; // @synthesize lexemes=_lexemes;
+@property(readonly, nonatomic) NSMutableDictionary *lexemes; // @synthesize lexemes=_lexemes;
 - (void)parser:(id)arg1 foundCharacters:(id)arg2;
 - (void)parser:(id)arg1 didEndElement:(id)arg2 namespaceURI:(id)arg3 qualifiedName:(id)arg4;
 - (void)parser:(id)arg1 didStartElement:(id)arg2 namespaceURI:(id)arg3 qualifiedName:(id)arg4 attributes:(id)arg5;

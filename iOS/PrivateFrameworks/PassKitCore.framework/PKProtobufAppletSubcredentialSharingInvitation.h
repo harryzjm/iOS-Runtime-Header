@@ -22,14 +22,17 @@
     NSString *_partnerIdentifier;
     NSString *_recipientName;
     NSData *_sharingSessionIdentifier;
+    unsigned int _supportedRadioTechnologies;
     unsigned int _version;
     struct {
         unsigned int deviceType:1;
         unsigned int entitlement:1;
+        unsigned int supportedRadioTechnologies:1;
     } _has;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned int supportedRadioTechnologies; // @synthesize supportedRadioTechnologies=_supportedRadioTechnologies;
 @property(retain, nonatomic) NSString *deviceModel; // @synthesize deviceModel=_deviceModel;
 @property(retain, nonatomic) NSString *issuer; // @synthesize issuer=_issuer;
 @property(nonatomic) unsigned int entitlement; // @synthesize entitlement=_entitlement;
@@ -49,6 +52,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasSupportedRadioTechnologies;
 @property(readonly, nonatomic) _Bool hasDeviceModel;
 @property(readonly, nonatomic) _Bool hasIssuer;
 - (int)StringAsDeviceType:(id)arg1;

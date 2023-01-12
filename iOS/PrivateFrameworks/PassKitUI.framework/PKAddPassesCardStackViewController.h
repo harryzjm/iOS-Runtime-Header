@@ -13,12 +13,13 @@
 #import <PassKitUI/PKPaymentSetupViewControllerDelegate-Protocol.h>
 #import <PassKitUI/UIScrollViewDelegate-Protocol.h>
 
-@class NSArray, NSString, PKGroupsController, PKPassGroupStackView;
+@class NSArray, NSString, PKGroupsController, PKPassGroupStackView, PKPassesXPCContainer;
 @protocol PKAddPassesCardStackViewControllerDelegate;
 
 @interface PKAddPassesCardStackViewController : UIViewController <PKGroupsControllerDelegate, PKPassGroupStackViewDelegate, PKPassGroupStackViewDatasource, PKPaymentSetupViewControllerDelegate, PKPassPersonalizationViewControllerDelegate, UIScrollViewDelegate>
 {
     NSArray *_passes;
+    PKPassesXPCContainer *_passesContainer;
     NSArray *_passDataArray;
     PKGroupsController *_groupsController;
     PKPassGroupStackView *_passGroupStackView;
@@ -35,6 +36,7 @@
 - (void)_nextButtonPressedForPersonalization:(id)arg1;
 - (void)_addButtonPressed:(id)arg1;
 - (void)_cancelButtonPressed:(id)arg1;
+- (void)_addPassesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)resetBrightness;
 - (void)evaluateBrightness;
 - (void)viewControllerDidTerminateSetupFlow:(id)arg1;
@@ -59,7 +61,7 @@
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)dealloc;
-- (id)initWithPasses:(id)arg1 passDataArray:(id)arg2 presentationSource:(unsigned long long)arg3;
+- (id)initWithPasses:(id)arg1 orPassesContainer:(id)arg2 fromPresentationSource:(unsigned long long)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

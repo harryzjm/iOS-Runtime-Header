@@ -9,6 +9,5 @@
 @interface UIImage (SensorKitUI)
 + (id)skui_bulletImage;
 + (id)skui_imageNamed:(id)arg1 bundle:(id)arg2 imageDescriptor:(id)arg3;
-+ (id)skui_appIcon:(id)arg1 imageDescriptor:(id)arg2;
 @end
 

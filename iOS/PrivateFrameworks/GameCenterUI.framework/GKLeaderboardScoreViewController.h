@@ -7,14 +7,15 @@
 #import <GameCenterUI/GKLeaderboardScoreDelegate-Protocol.h>
 #import <GameCenterUI/UIScrollViewDelegate-Protocol.h>
 
-@class CAGradientLayer, GKLeaderboard, GKLeaderboardEntry, GKLeaderboardMetadataView, GKLeaderboardScoreDataSource, GKNoContentView, GKTimeScopeButton, NSLayoutConstraint, NSString, UIButton, UICollectionView, UILabel, UIScrollView, UISegmentedControl, UIStackView, UIView;
+@class CAGradientLayer, GKLeaderboard, GKLeaderboardEntry, GKLeaderboardMetadataView, GKLeaderboardScoreDataSource, GKNoContentView, GKTimeScopeButton, GKUnfocusableButton, NSLayoutConstraint, NSString, UICollectionView, UICollectionViewCell, UILabel, UIScrollView, UISegmentedControl, UIStackView, UIView;
 
 @interface GKLeaderboardScoreViewController <GKLeaderboardScoreDelegate, UIScrollViewDelegate>
 {
     _Bool _shouldAutoRefreshHighlights;
+    _Bool _shouldPreferFocusToPlayerScopeControl;
     UICollectionView *_collectionView;
     UIStackView *_highlightView;
-    UIButton *_scrollToTopButton;
+    GKUnfocusableButton *_scrollToTopButton;
     UIView *_collectionContainer;
     UIView *_timeScopeContainer;
     UILabel *_titleLabel;
@@ -44,15 +45,16 @@
     GKLeaderboardEntry *_playerAboveEntry;
     GKLeaderboardEntry *_playerBelowEntry;
     long long _totalEntries;
+    double _startTime;
+    UICollectionViewCell *_preferredFocusCell;
 }
 
 + (void)setRestrictToFriendsOnly:(_Bool)arg1;
 + (_Bool)restrictToFriendsOnly;
-+ (void)setInitialPlayerScope:(long long)arg1;
-+ (long long)initialPlayerScope;
-+ (void)setInitialTimeScope:(long long)arg1;
-+ (long long)initialTimeScope;
 - (void).cxx_destruct;
+@property(nonatomic) __weak UICollectionViewCell *preferredFocusCell; // @synthesize preferredFocusCell=_preferredFocusCell;
+@property(nonatomic) _Bool shouldPreferFocusToPlayerScopeControl; // @synthesize shouldPreferFocusToPlayerScopeControl=_shouldPreferFocusToPlayerScopeControl;
+@property(nonatomic) double startTime; // @synthesize startTime=_startTime;
 @property(nonatomic) _Bool shouldAutoRefreshHighlights; // @synthesize shouldAutoRefreshHighlights=_shouldAutoRefreshHighlights;
 @property(nonatomic) long long totalEntries; // @synthesize totalEntries=_totalEntries;
 @property(retain, nonatomic) GKLeaderboardEntry *playerBelowEntry; // @synthesize playerBelowEntry=_playerBelowEntry;
@@ -83,7 +85,7 @@
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) UIView *timeScopeContainer; // @synthesize timeScopeContainer=_timeScopeContainer;
 @property(retain, nonatomic) UIView *collectionContainer; // @synthesize collectionContainer=_collectionContainer;
-@property(retain, nonatomic) UIButton *scrollToTopButton; // @synthesize scrollToTopButton=_scrollToTopButton;
+@property(retain, nonatomic) GKUnfocusableButton *scrollToTopButton; // @synthesize scrollToTopButton=_scrollToTopButton;
 @property(retain, nonatomic) UIStackView *highlightView; // @synthesize highlightView=_highlightView;
 @property(retain, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 - (void)enableDisableCollectionViewScrolling;
@@ -110,7 +112,9 @@
 - (void)scrollToTopPressed:(id)arg1;
 - (void)setPlayerScope:(long long)arg1 restrictToFriendsOnly:(_Bool)arg2;
 - (void)playerScopeChanged:(id)arg1;
+- (void)configureFocusGuidesForPortraitNavigationBar;
 - (void)updatePlayerScopeLayoutForSize:(struct CGSize)arg1;
+- (void)configurePlayerScopeFocusGuide;
 - (void)addPlayerScopeControl;
 - (void)setupNoContentView:(id)arg1 withError:(id)arg2;
 - (void)hideNoContentPlaceholder;
@@ -122,11 +126,17 @@
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLayoutSubviews;
+- (void)setupVisualEffect;
+- (id)contentScrollView;
+- (id)preferredFocusEnvironments;
+- (void)backButtonPressed:(id)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)dealloc;
 - (void)setupFadeGradient;
 - (id)timeRemainingFromDate:(id)arg1 toDate:(id)arg2;
 - (void)viewDidLoad;
+@property(nonatomic) long long initialPlayerScope; // @dynamic initialPlayerScope;
+@property(nonatomic) long long initialTimeScope; // @dynamic initialTimeScope;
 - (id)formattedNumber:(id)arg1;
 - (void)updateHighlights;
 - (_Bool)updateHighlightsPersonalView;
@@ -139,8 +149,6 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
-@property(nonatomic) long long initialPlayerScope; // @dynamic initialPlayerScope;
-@property(nonatomic) long long initialTimeScope; // @dynamic initialTimeScope;
 @property(nonatomic) _Bool restrictToFriendsOnly; // @dynamic restrictToFriendsOnly;
 @property(readonly) Class superclass;
 

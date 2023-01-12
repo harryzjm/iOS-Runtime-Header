@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSMutableArray, NSString;
+@class NSMutableArray, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface VNFaceAnalyzerCompoundRequestConfiguration
 {
-    NSDictionary *_detectorConfigurationOptions;
+    NSMutableDictionary *_detectorConfigurationOptions;
     NSMutableArray *_originalRequests;
     NSString *_detectorType;
 }
@@ -17,7 +17,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *detectorType; // @synthesize detectorType=_detectorType;
 @property(readonly, nonatomic) NSMutableArray *originalRequests; // @synthesize originalRequests=_originalRequests;
-@property(copy, nonatomic) NSDictionary *detectorConfigurationOptions; // @synthesize detectorConfigurationOptions=_detectorConfigurationOptions;
+- (id)detectorConfigurationOptions;
+- (void)setDetectorConfigurationOptions:(id)arg1;
 - (void)setResolvedRevision:(unsigned long long)arg1;
 - (void)setDetectorConfigurationOption:(id)arg1 value:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;

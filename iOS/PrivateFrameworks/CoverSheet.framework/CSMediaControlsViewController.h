@@ -5,30 +5,33 @@
 //
 
 #import <CoverSheet/CSAdjunctItemHosting-Protocol.h>
-#import <CoverSheet/MRPlatterViewControllerDelegate-Protocol.h>
+#import <CoverSheet/MRUCoverSheetViewControllerDelegate-Protocol.h>
 
-@class MRPlatterViewController, NSArray, NSString;
+@class MRUCoverSheetViewController, NSArray, NSString;
 
-@interface CSMediaControlsViewController <MRPlatterViewControllerDelegate, CSAdjunctItemHosting>
+@interface CSMediaControlsViewController <MRUCoverSheetViewControllerDelegate, CSAdjunctItemHosting>
 {
-    MRPlatterViewController *_platterViewController;
+    MRUCoverSheetViewController *_mediaRemoteViewController;
+    long long _mediaRemoteLayout;
     struct CGSize _containerSize;
 }
 
 + (Class)viewClass;
 - (void).cxx_destruct;
 - (struct CGRect)_suggestedFrameForMediaControls;
+- (void)_updatePreferredContentSize;
 - (void)_updatePersistentUpdatesEnabled:(_Bool)arg1;
 - (void)_layoutMediaControls;
+- (double)_preferredMediaRemoteHeight;
 - (void)setVisualStylingProvider:(id)arg1 forCategory:(long long)arg2;
 @property(readonly, copy, nonatomic) NSArray *requiredVisualStyleCategories;
 - (id)visualStylingProviderForCategory:(long long)arg1;
 - (void)setContainerSize:(struct CGSize)arg1;
-- (void)platterViewController:(id)arg1 didReceiveInteractionEvent:(id)arg2;
+- (void)coverSheetViewController:(id)arg1 willChangeToLayout:(long long)arg2 animations:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)coverSheetViewController:(id)arg1 didReceiveInteractionEvent:(id)arg2;
 - (_Bool)handleEvent:(id)arg1;
 - (long long)presentationPriority;
 - (long long)presentationType;
-- (struct CGSize)preferredContentSize;
 - (_Bool)shouldAutomaticallyForwardAppearanceMethods;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidDisappear:(_Bool)arg1;
@@ -36,6 +39,7 @@
 - (id)init;
 
 // Remaining properties
+@property(nonatomic) double containerCornerRadius;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

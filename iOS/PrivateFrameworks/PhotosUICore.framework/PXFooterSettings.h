@@ -7,7 +7,6 @@
 @interface PXFooterSettings
 {
     _Bool _shouldAlternateTitleWithGridCycle;
-    _Bool _simulateCPLDisabled;
     _Bool _simulateImportantInformation;
     _Bool _simulateAnimatedIconMode;
     _Bool _showFilterView;
@@ -26,7 +25,6 @@
 @property(nonatomic) long long simulatedAnimatedIconMode; // @synthesize simulatedAnimatedIconMode=_simulatedAnimatedIconMode;
 @property(nonatomic) _Bool simulateAnimatedIconMode; // @synthesize simulateAnimatedIconMode=_simulateAnimatedIconMode;
 @property(nonatomic) _Bool simulateImportantInformation; // @synthesize simulateImportantInformation=_simulateImportantInformation;
-@property(nonatomic) _Bool simulateCPLDisabled; // @synthesize simulateCPLDisabled=_simulateCPLDisabled;
 @property(nonatomic) float minimumDisplayedProgress; // @synthesize minimumDisplayedProgress=_minimumDisplayedProgress;
 @property(nonatomic) double animationDelay; // @synthesize animationDelay=_animationDelay;
 @property(nonatomic) double alternateTitleCyclingInterval; // @synthesize alternateTitleCyclingInterval=_alternateTitleCyclingInterval;

@@ -8,12 +8,13 @@
 
 #import <SiriVOX/SVXServiceCommandHandling-Protocol.h>
 
-@class NSString, SVXSessionManager;
+@class NSString, SVXModule, SVXSessionManager;
 
 __attribute__((visibility("hidden")))
 @interface _SVXServiceCommandHandlerPlayVoiceMail : NSObject <SVXServiceCommandHandling>
 {
     SVXSessionManager *_sessionManager;
+    SVXModule *_module;
     NSString *_identifier;
 }
 
@@ -24,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (double)_audioPlaybackDuration:(id)arg1;
 - (void)handleCommand:(id)arg1 withContext:(id)arg2 taskTracker:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (_Bool)isCommandUUFR:(id)arg1;
-- (id)initWithSessionManager:(id)arg1;
+- (id)initWithSessionManager:(id)arg1 module:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

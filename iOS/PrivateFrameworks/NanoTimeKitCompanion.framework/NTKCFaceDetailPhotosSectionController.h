@@ -47,6 +47,7 @@
 - (void)faceDidChange;
 @property(readonly, nonatomic) unsigned long long contentType;
 - (_Bool)canAddFace;
+- (Class)actionRowCellClass;
 - (id)initWithTableViewController:(id)arg1 face:(id)arg2 inGallery:(_Bool)arg3 editOptionCollection:(id)arg4 faceView:(id)arg5 externalAssets:(id)arg6;
 
 // Remaining properties

@@ -9,16 +9,24 @@
 #import <SoundAnalysis/SNAnalyzerCreating-Protocol.h>
 #import <SoundAnalysis/SNRequest-Protocol.h>
 
-@class MLModel, NSString;
+@class MLModel, NSArray, NSString, SNTimeDurationConstraint;
 
 @interface SNClassifySoundRequest : NSObject <SNAnalyzerCreating, SNRequest>
 {
     MLModel *_model;
     double _overlapFactor;
+    SNTimeDurationConstraint *_windowDurationConstraint;
+    NSArray *_knownClassifications;
+    NSString *_classifierIdentifier;
+    CDStruct_1b6d18a9 _windowDuration;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)knownClassificationsForClassifierIdentifier:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
+@property(retain) NSString *classifierIdentifier; // @synthesize classifierIdentifier=_classifierIdentifier;
+@property(readonly, copy) NSArray *knownClassifications; // @synthesize knownClassifications=_knownClassifications;
+@property(readonly) SNTimeDurationConstraint *windowDurationConstraint; // @synthesize windowDurationConstraint=_windowDurationConstraint;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(readonly) unsigned long long hash;
@@ -26,7 +34,9 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)createAnalyzerWithError:(id *)arg1;
+@property CDStruct_1b6d18a9 windowDuration; // @synthesize windowDuration=_windowDuration;
 @property double overlapFactor; // @synthesize overlapFactor=_overlapFactor;
+- (id)initWithClassifierIdentifier:(id)arg1 error:(id *)arg2;
 - (id)initWithMLModel:(id)arg1 error:(id *)arg2;
 
 // Remaining properties

@@ -22,11 +22,11 @@
 @property(retain, nonatomic) WFSuggestionsWorkflowRunnerClient *workflowRunnerClient; // @synthesize workflowRunnerClient=_workflowRunnerClient;
 @property(nonatomic) __weak id <ATXActionSearchResultExecutionDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) SFSearchResult *searchResult; // @synthesize searchResult=_searchResult;
-- (void)workflowRunnerClient:(id)arg1 didFinishRunningWorkflowWithError:(id)arg2 cancelled:(_Bool)arg3;
+- (void)workflowRunnerClient:(id)arg1 didFinishRunningWorkflowWithOutput:(id)arg2 error:(id)arg3 cancelled:(_Bool)arg4;
 - (void)workflowRunnerClient:(id)arg1 didStartRunningWorkflowWithProgress:(id)arg2;
 - (_Bool)_delegateDoesRespond;
 - (_Bool)_shouldTellDelegateToClearActionOnDismissal:(long long)arg1;
-- (void)_spawnShortcutExecutionWithShortcut:(id)arg1;
+- (void)_spawnShortcutExecutionWithShortcut:(id)arg1 executionContext:(long long)arg2;
 - (void)executeShortcut;
 
 // Remaining properties

@@ -32,6 +32,7 @@
     NSMutableDictionary *_phoneNumberInfoCache;
 }
 
++ (_Bool)isRTTCallHoldSupportedForContext:(id)arg1;
 + (id)relayPhoneNumberForContext:(id)arg1;
 + (_Bool)relayIsSupportedForContext:(id)arg1;
 + (_Bool)shouldUseRTTForContext:(id)arg1;
@@ -71,9 +72,12 @@
 - (void)_processiCloudAccountForRTT;
 - (void)iCloudAccountDidChange:(id)arg1;
 - (void)iCloudRTTRelayDidChange:(id)arg1;
+- (void)didChangeRelayCallingAvailability;
+- (void)didChangeRelayCallingCapabilities;
 - (void)didChangeOutgoingRelayCallerID;
 - (void)listenForCloudRelayChanges;
 - (_Bool)currentProcessHandlesCloudRelay;
+- (_Bool)isRTTCallHoldSupportedForContext:(id)arg1;
 - (id)relayNumberForContext:(id)arg1;
 - (_Bool)isTTYSupportedForContext:(id)arg1;
 - (_Bool)isTTYOverIMSSupportedForContext:(id)arg1;
@@ -81,13 +85,14 @@
 - (id)getCarrierValueForKey:(id)arg1 andContext:(id)arg2;
 - (void)reloadDefaultVoiceContext;
 - (_Bool)reloadRelayPhoneNumbers;
+- (id)contextForCall:(id)arg1;
 - (id)subscriptionContexts;
 - (id)activeContexts;
-- (void)simLessSubscriptionsDidChange;
 - (void)activeSubscriptionsDidChange;
 - (void)subscriptionInfoDidChange;
 - (void)carrierSettingsDidChange;
 - (void)purgePhoneNumberInfoCache;
+- (_Bool)answerRTTCallAsMutedForCall:(id)arg1;
 - (id)labelFromUUID:(id)arg1;
 - (id)phoneNumberFromUUID:(id)arg1;
 - (id)contactPathForCall:(id)arg1;

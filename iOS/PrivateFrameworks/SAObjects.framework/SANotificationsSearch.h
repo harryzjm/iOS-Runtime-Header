@@ -16,6 +16,7 @@
 @property(copy, nonatomic) NSNumber *supportsSpokenNotifications;
 @property(copy, nonatomic) NSString *sourceAppId;
 @property(copy, nonatomic) NSString *priority;
+@property(copy, nonatomic) NSNumber *isOnDeviceSearch;
 @property(copy, nonatomic) NSString *afterNotificationId;
 - (id)encodedClassName;
 - (id)groupIdentifier;

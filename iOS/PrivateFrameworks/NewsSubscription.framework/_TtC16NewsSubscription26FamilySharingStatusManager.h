@@ -15,6 +15,8 @@
     MISSING_TYPE *lazyStore;
     MISSING_TYPE *familyStatusStoreKey;
     MISSING_TYPE *familyEigibilityProvider;
+    MISSING_TYPE *deduper;
+    MISSING_TYPE *dedeuperToken;
 }
 
 @end

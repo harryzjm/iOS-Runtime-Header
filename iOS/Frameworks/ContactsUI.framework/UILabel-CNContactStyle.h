@@ -11,6 +11,7 @@
 @class NSDictionary, NSString;
 
 @interface UILabel (CNContactStyle) <ABText>
+- (void)_cnui_applyContactStylePlaceholder;
 - (void)_cnui_applyContactStyle;
 @property(copy, nonatomic) NSDictionary *ab_textAttributes;
 @property(copy, nonatomic) NSString *ab_text;

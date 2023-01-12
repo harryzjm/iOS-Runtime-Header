@@ -13,7 +13,6 @@
 
 @interface TSPObjectSerializationEncoder : NSObject <TSPEncoder>
 {
-    _Bool _alwaysDefragmentData;
     NSError *_error;
     _Bool _isFinished;
     NSObject<OS_dispatch_queue> *_accessQueue;
@@ -29,7 +28,6 @@
 - (id)newMetadataComponentWriteChannel;
 - (void)appendData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)finishEncodingWithCompletion:(CDUnknownBlockType)arg1;
-- (id)initWithAlwaysDefragmentData:(_Bool)arg1;
 - (id)init;
 
 // Remaining properties

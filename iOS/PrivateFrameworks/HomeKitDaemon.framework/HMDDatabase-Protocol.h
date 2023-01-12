@@ -10,9 +10,9 @@
 @protocol HMBLocalZoneDelegate><HMBCloudZoneDelegate, HMDDatabaseDelegate;
 
 @protocol HMDDatabase <NSObject>
++ (void)registerQueries;
 @property(readonly) HMBLocalDatabase *localDatabase;
 @property(readonly) HMBCloudDatabase *cloudDatabase;
-- (NAFuture *)declineInvitation:(HMBShareInvitation *)arg1;
 - (NAFuture *)acceptInvitation:(HMBShareInvitation *)arg1;
 - (NAFuture *)removeLocalAndCloudDataForLocalZone:(HMBLocalZone *)arg1;
 - (NAFuture *)removeSharedZonesWithName:(NSString *)arg1;

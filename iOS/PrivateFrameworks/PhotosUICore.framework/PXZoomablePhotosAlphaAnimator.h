@@ -8,7 +8,7 @@
 
 @interface PXZoomablePhotosAlphaAnimator
 {
-    CDStruct_d97c9657 _updateFlags;
+    CDStruct_af00bf4e _updateFlags;
     PXDisplayLink *_displayLink;
     double _lastTickTime;
     double _currentDirection;

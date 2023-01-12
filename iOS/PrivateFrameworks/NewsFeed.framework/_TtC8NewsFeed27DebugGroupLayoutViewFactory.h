@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import <objc/NSObject.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC8NewsFeed27DebugGroupLayoutViewFactory : _TtCs12_SwiftObject
+__attribute__((visibility("hidden")))
+@interface _TtC8NewsFeed27DebugGroupLayoutViewFactory : NSObject
 {
     MISSING_TYPE *colorPaletteProvider;
+    MISSING_TYPE *cellSelectionRenderer;
     MISSING_TYPE *imageHeadlineViewRenderer;
     MISSING_TYPE *featuredHeadlineViewRenderer;
     MISSING_TYPE *featuredIssueHeadlineViewRenderer;
@@ -26,6 +28,9 @@
     MISSING_TYPE *audioTrackViewRenderer;
     MISSING_TYPE *audioDailyBriefingViewRenderer;
 }
+
+- (void).cxx_destruct;
+- (id)init;
 
 @end
 

@@ -21,8 +21,10 @@
 }
 
 + (id)createTempTableContainingRowsFromQuery:(id)arg1 descriptiveTableName:(id)arg2 txnWitness:(id)arg3 bind:(CDUnknownBlockType)arg4;
++ (id)createTempViewContainingRowsFromQuery:(id)arg1 descriptiveTableName:(id)arg2 txnWitness:(id)arg3;
 + (id)tableNameForTable:(unsigned char)arg1;
 + (void)dropTableWithName:(id)arg1 txnWitness:(id)arg2;
++ (void)dropViewWithName:(id)arg1 txnWitness:(id)arg2;
 + (id)nonMigratingToolsInstanceWithParentDirectory:(id)arg1;
 + (id)nonMigratingToolsInstance;
 + (id)sharedInstance;
@@ -38,12 +40,12 @@
 - (_Bool)_handleCorruption;
 - (_Bool)_removeCorruptionMarker;
 - (_Bool)_isCorruptionMarkerPresent;
+- (_Bool)vacuumDatabaseWithShouldContinueBlock:(CDUnknownBlockType)arg1;
 - (_Bool)optimizeDatabaseWithShouldContinueBlock:(CDUnknownBlockType)arg1;
 - (id)_allTables;
 - (id)checkWithError:(id *)arg1;
-- (id)sourceStatsWithMedianRefCountNeeded:(_Bool)arg1;
-- (id)sourceStatsForTableWithName:(id)arg1 medianRefCountNeeded:(_Bool)arg2 txnWitness:(id)arg3;
-- (id)sourceStatsWithMedianRefCountNeeded:(_Bool)arg1 table:(id)arg2 txnWitness:(id)arg3;
+- (id)sourceStats:(unsigned long long)arg1;
+- (id)sourceStats:(unsigned long long)arg1 forTableWithName:(id)arg2 txnWitness:(id)arg3;
 - (id)stats;
 - (id)parentDirectory;
 - (_Bool)isInMemory;

@@ -38,6 +38,7 @@
 - (id)_existingSavedData;
 - (void)_prepareEmptyStore;
 - (void)_loadDataIfNecessary;
+- (id)initWithBackingStoreURL:(id)arg1 fileResourceValues:(id)arg2;
 - (id)initWithBackingStoreURL:(id)arg1;
 
 @end

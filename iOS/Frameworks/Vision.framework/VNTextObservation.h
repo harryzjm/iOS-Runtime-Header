@@ -19,7 +19,7 @@
 @property(copy, nonatomic) NSArray *characterBoxes;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)vn_cloneObject;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

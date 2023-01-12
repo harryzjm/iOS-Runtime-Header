@@ -10,10 +10,6 @@ __attribute__((visibility("hidden")))
 @interface _UIImageCUIVectorImageContent
 {
     CUINamedVectorImage *_vectorImage;
-    struct {
-        unsigned int isPDF:1;
-        unsigned int isSVG:1;
-    } coreFlags;
 }
 
 - (void).cxx_destruct;
@@ -25,12 +21,12 @@ __attribute__((visibility("hidden")))
 - (_Bool)isCGSVGDocument;
 - (struct CGPDFPage *)CGPDFPage;
 - (_Bool)isCGPDFPage;
-- (struct CGImage *)_CGImageWithSize:(struct CGSize)arg1 scale:(double)arg2;
+- (struct CGImage *)_provideCGImageWithSize:(struct CGSize)arg1 scale:(double)arg2;
 - (void)_drawWithoutEffectInRect:(struct CGRect)arg1 context:(struct CGContext *)arg2;
 - (void)_prepareforDrawingInRect:(struct CGRect)arg1 context:(struct CGContext *)arg2;
 - (id)contentWithCGImage:(struct CGImage *)arg1;
 - (_Bool)_canProvideCGImageDirectly;
-- (_Bool)canProvideFullResCGImage;
+- (_Bool)canScaleImageToTargetResolution;
 - (id)initWithScale:(double)arg1;
 - (id)initWithCGImage:(struct CGImage *)arg1 CUIVectorImage:(id)arg2 scale:(double)arg3;
 

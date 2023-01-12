@@ -9,6 +9,8 @@
 #import <SafariServices/NSCopying-Protocol.h>
 #import <SafariServices/NSSecureCoding-Protocol.h>
 
+@class SFSafariViewControllerActivityButton;
+
 @interface SFSafariViewControllerConfiguration : NSObject <NSSecureCoding, NSCopying>
 {
     _Bool _ephemeral;
@@ -16,9 +18,12 @@
     _Bool _entersReaderIfAvailable;
     _Bool _barCollapsingEnabled;
     long long _redirectNotificationBehavior;
+    SFSafariViewControllerActivityButton *_activityButton;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(copy, nonatomic) SFSafariViewControllerActivityButton *activityButton; // @synthesize activityButton=_activityButton;
 @property(nonatomic) _Bool barCollapsingEnabled; // @synthesize barCollapsingEnabled=_barCollapsingEnabled;
 @property(nonatomic) _Bool entersReaderIfAvailable; // @synthesize entersReaderIfAvailable=_entersReaderIfAvailable;
 @property(nonatomic) long long _redirectNotificationBehavior; // @synthesize _redirectNotificationBehavior;

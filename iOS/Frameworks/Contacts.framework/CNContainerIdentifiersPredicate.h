@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSArray *identifiers; // @synthesize identifiers=_identifiers;
 - (id)cn_persistenceFilterRequest;
-- (id)cn_coreDataPredicate;
 - (id)cn_topLevelFilter;
 - (id)initWithIdentifiers:(id)arg1;
 

@@ -9,18 +9,29 @@
 #import <MediaFoundation/MFPlaybackStackController-Protocol.h>
 #import <MediaFoundation/MFQueueManagement-Protocol.h>
 
-@class AVPlayerViewController, MISSING_TYPE, NSArray, NSDictionary, NSNumber;
-@protocol MFPlaybackStackControllerDelegate, MFPlayerItem, MFQueuePlayerItem;
+@class AVPlayerViewController, MISSING_TYPE, NSArray, NSDictionary, NSNumber, NSString;
+@protocol MFPlaybackStackControllerDelegate, MFQueuePlayerItem;
 
 @interface MFPlaybackStackControllerImplementation : NSObject <MFPlaybackStackController, MFQueueManagement>
 {
     MISSING_TYPE *delegate;
+    MISSING_TYPE *signpostSubscription;
     MISSING_TYPE *internalStack;
 }
 
++ (id)errorDomain;
 - (void).cxx_destruct;
 - (id)init;
-- (_Bool)setAudioSessionActive:(_Bool)arg1 withOptions:(unsigned long long)arg2 error:(id *)arg3;
+- (void)setRelativeVolume:(float)arg1;
+- (void)setSpatializationFormat:(long long)arg1;
+- (void)setupForManagedSessionWithAudioSession:(id)arg1;
+- (void)setupForShared;
+- (void)setupForSolo;
+@property(nonatomic, readonly) _Bool isModeManagedSession;
+@property(nonatomic, readonly) _Bool isModeShared;
+@property(nonatomic, readonly) _Bool isModeSolo;
+@property(nonatomic, readonly) NSString *modeDescription;
+- (void)activateAudioSessionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateAudioSessionWithConfiguration:(id)arg1;
 @property(nonatomic, readonly) NSDictionary *stateDictionary;
 @property(nonatomic, readonly) AVPlayerViewController *videoViewController;
@@ -33,25 +44,28 @@
 - (void)endScanningWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)beginScanningWithDirection:(long long)arg1 identifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setRate:(float)arg1 identifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)pauseForLeasePreventionWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)pauseWithFadeOut:(double)arg1 identifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)pauseWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)playWithRate:(float)arg1 identifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setQueueWithInitialItem:(id)arg1 andPlay:(_Bool)arg2 identifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)reset;
+- (void)reloadCurrentItemWithReason:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)clearPlaybackQueue;
 - (void)reloadItemsKeepingCurrentItem:(_Bool)arg1;
 - (void)restoreQueue:(CDUnknownBlockType)arg1;
 @property(nonatomic, readonly) id <MFQueuePlayerItem> currentQueueItem;
 @property(nonatomic, readonly) NSArray *nextItems;
-@property(nonatomic, readonly) id <MFPlayerItem> currentItem;
+@property(nonatomic, readonly) id <MFQueuePlayerItem> currentItem;
 @property(nonatomic, readonly) NSNumber *targetTime;
 @property(nonatomic, readonly) float targetRate;
+@property(nonatomic, readonly) float effectiveRate;
 @property(nonatomic, readonly) float rate;
 @property(nonatomic, readonly) double currentTime;
 @property(nonatomic, readonly) long long currentItemTransition;
 @property(nonatomic, readonly) long long interruptedState;
 @property(nonatomic, readonly) long long currentState;
-- (id)initWithQueueController:(id)arg1 assetLoader:(id)arg2 errorController:(id)arg3 externalPlaybackController:(id)arg4 leaseController:(id)arg5 queue:(id)arg6;
+- (id)initWithPlayerID:(id)arg1 queueController:(id)arg2 assetLoader:(id)arg3 errorController:(id)arg4 externalPlaybackController:(id)arg5 leaseController:(id)arg6 queue:(id)arg7;
 @property(nonatomic) __weak id <MFPlaybackStackControllerDelegate> delegate; // @synthesize delegate;
 @property(nonatomic) long long maximumPlayerQueueLength;
 

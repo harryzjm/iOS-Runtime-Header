@@ -16,7 +16,7 @@
 - (id)accessibilityElements;
 - (id)accessibilityLabel;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (id)initWithFrame:(struct CGRect)arg1 andGlobe:(_Bool)arg2 shouldRasterize:(_Bool)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 andGlobe:(_Bool)arg2 shouldRasterize:(_Bool)arg3 allowsAntialiasing:(_Bool)arg4;
 
 @end
 

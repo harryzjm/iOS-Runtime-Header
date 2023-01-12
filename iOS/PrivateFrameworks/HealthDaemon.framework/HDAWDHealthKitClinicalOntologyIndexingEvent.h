@@ -15,7 +15,9 @@
     unsigned long long _timestamp;
     NSString *_failingAction;
     NSString *_failingKeyPath;
-    CDStruct_b5306035 _has;
+    struct {
+        unsigned int timestamp:1;
+    } _has;
 }
 
 - (void).cxx_destruct;

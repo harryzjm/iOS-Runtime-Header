@@ -11,11 +11,13 @@
 @interface CSBatteryChargingInfo : NSObject
 {
     _Bool _chargingWithInternalWirelessAccessory;
-    BCBatteryDevice *_batteryDevice;
+    BCBatteryDevice *_internalBatteryDevice;
+    BCBatteryDevice *_externalBatteryDevice;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) BCBatteryDevice *batteryDevice; // @synthesize batteryDevice=_batteryDevice;
+@property(retain, nonatomic) BCBatteryDevice *externalBatteryDevice; // @synthesize externalBatteryDevice=_externalBatteryDevice;
+@property(retain, nonatomic) BCBatteryDevice *internalBatteryDevice; // @synthesize internalBatteryDevice=_internalBatteryDevice;
 @property(nonatomic, getter=isChargingWithInternalWirelessAccessory) _Bool chargingWithInternalWirelessAccessory; // @synthesize chargingWithInternalWirelessAccessory=_chargingWithInternalWirelessAccessory;
 
 @end

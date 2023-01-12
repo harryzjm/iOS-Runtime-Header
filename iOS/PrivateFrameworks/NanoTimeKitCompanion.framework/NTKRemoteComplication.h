@@ -14,8 +14,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)_remoteStocksComplicationForDevice:(id)arg1;
-+ (id)remoteStocksComplicationDescriptorForDevice:(id)arg1;
++ (id)_remoteStocksComplicationWithIdentifier:(id)arg1 forDevice:(id)arg2;
++ (id)_remoteStocksComplicationDescriptorWithIdentifier:(id)arg1 forDevice:(id)arg2;
 + (id)_allComplicationConfigurationsWithType:(unsigned long long)arg1;
 + (id)complicationWithClientIdentifier:(id)arg1 appBundleIdentifier:(id)arg2 complicationDescriptor:(id)arg3;
 - (void).cxx_destruct;

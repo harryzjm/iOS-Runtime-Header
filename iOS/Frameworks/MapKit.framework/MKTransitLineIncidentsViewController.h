@@ -10,7 +10,6 @@
 @class MKTransitItemIncidentsController, MKTransitItemReferenceDateUpdater, NSDate, NSString;
 @protocol GEOTransitLineItem, MKTransitLineIncidentsViewControllerDelegate;
 
-__attribute__((visibility("hidden")))
 @interface MKTransitLineIncidentsViewController <MKTransitItemReferenceDateUpdaterDelegate, MKStackingViewControllerPreferredSizeUse>
 {
     MKTransitItemIncidentsController *_incidentsController;

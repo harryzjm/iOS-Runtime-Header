@@ -34,10 +34,10 @@ __attribute__((visibility("hidden")))
 - (CDUnknownBlockType)annotationCoordinateTest;
 - (CDUnknownBlockType)annotationRectTest;
 - (Box_3d7e3c2c)_expandedBoundingRect;
-- (_Bool)containsGroundPoint:(const Matrix_6e1d3589 *)arg1;
-- (_Bool)rejectsRect:(const Box_3d7e3c2c *)arg1;
+- (_Bool)containsGroundPoint:(const void *)arg1;
+- (_Bool)rejectsRect:(const void *)arg1;
 - (void)computeFromCamera:(id)arg1;
-@property(readonly, nonatomic) Matrix_6e1d3589 *cornerGroundPoints;
+@property(readonly, nonatomic) void *cornerGroundPoints;
 
 @end
 

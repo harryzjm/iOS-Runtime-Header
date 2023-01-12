@@ -16,6 +16,7 @@
 
 + (id)syncEntityDependenciesForSyncProtocolVersion:(int)arg1;
 + (void)didReceiveValuesForKeys:(id)arg1 profile:(id)arg2;
++ (void)didReceiveValuesForDomainNames:(id)arg1 profile:(id)arg2;
 + (long long)receiveSyncObjects:(id)arg1 syncStore:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 + (id)decodeSyncObjectWithData:(id)arg1;
 + (long long)nextSyncAnchorWithSession:(id)arg1 startSyncAnchor:(long long)arg2 profile:(id)arg3 error:(id *)arg4;

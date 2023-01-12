@@ -7,20 +7,21 @@
 #import <UIKit/UIViewController.h>
 
 #import <UserNotificationsUIKit/NCNotificationCustomContentDelegate-Protocol.h>
+#import <UserNotificationsUIKit/NCNotificationRequestInlineActionsProviderDelegate-Protocol.h>
 #import <UserNotificationsUIKit/PLContentSizeCategoryAdjusting-Protocol.h>
 #import <UserNotificationsUIKit/PLExpandedPlatterPresentationControllerDelegate-Protocol.h>
 
 @class NCNotificationRequest, NCNotificationViewControllerView, NSHashTable, NSString, UIPanGestureRecognizer, UIView;
-@protocol NCAuxiliaryOptionsProviding, NCNotificationCustomContent, NCNotificationCustomContentProviding, NCNotificationStaticContentProviding, NCNotificationViewControllerDelegate, PLContentSizeManaging, PLPlatter><NCNotificationStaticContentAccepting, UIViewControllerTransitionCoordinator;
+@protocol NCAuxiliaryOptionsProviding, NCNotificationCustomContent, NCNotificationCustomContentProviding, NCNotificationStaticContentProviding, NCNotificationViewControllerDelegate, PLContentSizeManaging, PLPlatter><NCNotificationStaticContentAccepting><PLContentSizeCategoryAdjusting, UIViewControllerTransitionCoordinator;
 
-@interface NCNotificationViewController : UIViewController <NCNotificationCustomContentDelegate, PLExpandedPlatterPresentationControllerDelegate, PLContentSizeCategoryAdjusting>
+@interface NCNotificationViewController : UIViewController <NCNotificationRequestInlineActionsProviderDelegate, NCNotificationCustomContentDelegate, PLExpandedPlatterPresentationControllerDelegate, PLContentSizeCategoryAdjusting>
 {
     _Bool _didQueryCanPan;
     _Bool _canPan;
     long long _ncTransitionAnimationState;
     NSHashTable *_observers;
     UIView<PLContentSizeManaging> *_contentSizeManagingView;
-    UIView<PLPlatter><NCNotificationStaticContentAccepting> *_lookView;
+    UIView<PLPlatter><NCNotificationStaticContentAccepting><PLContentSizeCategoryAdjusting> *_lookView;
     _Bool _revealAdditionalContentOnPresentation;
     _Bool _customContentHomeAffordanceVisible;
     _Bool _notificationContentViewHidden;
@@ -39,11 +40,10 @@
     UIView *_associatedView;
     CDUnknownBlockType _pendingPresentationTransitionDidEndBlock;
     UIViewController<NCNotificationCustomContent> *_customContentProvidingViewController;
-    CDUnknownBlockType _dismissalCompletion;
 }
 
++ (double)prominentIconDimension;
 - (void).cxx_destruct;
-@property(copy, nonatomic, getter=_dismissalCompletion, setter=_setDismissalCompletion:) CDUnknownBlockType dismissalCompletion; // @synthesize dismissalCompletion=_dismissalCompletion;
 @property(nonatomic, getter=_shouldRestorePresentingShortLookOnDismiss, setter=_setShouldRestorePresentingShortLookOnDismiss:) _Bool shouldRestorePresentingShortLookOnDismiss; // @synthesize shouldRestorePresentingShortLookOnDismiss=_shouldRestorePresentingShortLookOnDismiss;
 @property(retain, nonatomic, getter=_customContentProvidingViewController, setter=_setCustomContentProvidingViewController:) UIViewController<NCNotificationCustomContent> *customContentProvidingViewController; // @synthesize customContentProvidingViewController=_customContentProvidingViewController;
 @property(copy, nonatomic, getter=_pendingPresentationTransitionDidEndBlock, setter=_setPendingPresentationTransitionDidEndBlock:) CDUnknownBlockType pendingPresentationTransitionDidEndBlock; // @synthesize pendingPresentationTransitionDidEndBlock=_pendingPresentationTransitionDidEndBlock;
@@ -121,6 +121,9 @@
 - (id)_lookView;
 - (id)_lookViewIfLoaded;
 - (id)_lookViewLoadingIfNecessary:(_Bool)arg1;
+- (_Bool)shouldCommitToExpandedPlatterPresentationWithFeedback;
+- (id)presentedExpandedPlatterViewController;
+- (id)containerViewForExpandedContent;
 @property(readonly, nonatomic, getter=isCoalescedNotificationBundle) _Bool coalescedNotificationBundle;
 - (long long)materialRecipe;
 - (_Bool)shouldRestorePresentingShortLookOnDismiss;
@@ -129,10 +132,12 @@
 - (_Bool)restoreInputViews;
 - (void)preserveInputViews;
 - (_Bool)isContentExtensionVisible:(id)arg1;
-- (_Bool)dismissPresentedViewControllerAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_dismissPresentedViewControllerAnimated:(_Bool)arg1;
+- (_Bool)dismissPresentedViewControllerAnimated:(_Bool)arg1;
 - (void)updateContent;
 - (void)setHasUpdatedContent;
 - (_Bool)didReceiveNotificationRequest:(id)arg1;
+- (_Bool)didForwardNotificationRequestToCustomContent:(id)arg1;
 - (void)_notifyObserversWithBlock:(CDUnknownBlockType)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
@@ -150,7 +155,6 @@
 - (id)initWithNotificationRequest:(id)arg1;
 - (id)initWithNotificationRequest:(id)arg1 revealingAdditionalContentOnPresentation:(_Bool)arg2;
 - (id)_initWithNotificationRequest:(id)arg1 revealingAdditionalContentOnPresentation:(_Bool)arg2;
-- (_Bool)dismissPresentedViewControllerAndClearNotification:(_Bool)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentLongLookAnimated:(_Bool)arg1 trigger:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic, getter=_presentedLongLookViewController) NCNotificationViewController *presentedLongLookViewController;
 @property(readonly, nonatomic, getter=isLookStyleLongLook) _Bool lookStyleLongLook;

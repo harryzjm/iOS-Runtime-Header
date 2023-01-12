@@ -13,6 +13,8 @@
 + (void)dissociateBundleIdentifier:(id)arg1 fromPersonaWithIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (void)associateBundleIdentifier:(id)arg1 withPersonaWithIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)appStoreAccountIdentifierForPersonaWithIdentifier:(id)arg1;
++ (id)enterprisePersonaDisplayName;
++ (id)enterprisePersonaIdentifier;
 + (id)currentPersonaIdentifier;
 + (id)performBlockUnderPersonaWithIdentifier:(id)arg1 block:(CDUnknownBlockType)arg2;
 + (void)removeEnterprisePersonaWithCompletionHandler:(CDUnknownBlockType)arg1;

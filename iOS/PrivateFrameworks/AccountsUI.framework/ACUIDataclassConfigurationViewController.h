@@ -22,7 +22,9 @@
     _Bool _shouldShowDeleteAccountButton;
     _Bool _shouldEnableDeleteAccountButton;
     _Bool _shouldEnableAccountSummaryCell;
+    _Bool _shouldEnableDataclassSwitches;
     _Bool _isMailSetupForced;
+    _Bool _isAccountModificationDisabled;
     NSArray *_preEnabledDataclasses;
     ACAccount *_account;
     PSSpecifier *_dataclassGroupSpecifier;
@@ -31,8 +33,10 @@
 
 + (_Bool)shouldPresentAsModalSheet;
 - (void).cxx_destruct;
+@property _Bool isAccountModificationDisabled; // @synthesize isAccountModificationDisabled=_isAccountModificationDisabled;
 @property(copy, nonatomic) CDUnknownBlockType configurationCompletion; // @synthesize configurationCompletion=_configurationCompletion;
 @property(nonatomic) _Bool isMailSetupForced; // @synthesize isMailSetupForced=_isMailSetupForced;
+@property(nonatomic) _Bool shouldEnableDataclassSwitches; // @synthesize shouldEnableDataclassSwitches=_shouldEnableDataclassSwitches;
 @property(nonatomic) _Bool shouldEnableAccountSummaryCell; // @synthesize shouldEnableAccountSummaryCell=_shouldEnableAccountSummaryCell;
 @property(nonatomic) _Bool shouldEnableDeleteAccountButton; // @synthesize shouldEnableDeleteAccountButton=_shouldEnableDeleteAccountButton;
 @property(nonatomic) _Bool shouldShowDeleteAccountButton; // @synthesize shouldShowDeleteAccountButton=_shouldShowDeleteAccountButton;
@@ -69,7 +73,6 @@
 - (_Bool)shouldAutomaticallyTryEnablingDataclassDuringSetup:(id)arg1;
 - (void)_enableAllProvisionedDataclassesWithoutRequringUserInteraction;
 - (void)dataclassSwitchStateDidChange:(id)arg1 withSpecifier:(id)arg2;
-- (id)_setupSpinnerTimerForSpecifier:(id)arg1;
 - (id)dataclassSwitchStateForSpecifier:(id)arg1;
 - (void)reloadDynamicSpecifiersWithAnimation:(_Bool)arg1;
 - (id)otherSpecifiers;

@@ -22,10 +22,10 @@
 + (_Bool)_allowVideoAccessForAsset:(id)arg1 options:(id)arg2;
 + (unsigned long long)_nextManagerID;
 + (id)defaultManager;
-+ (void)buildExportSessionFromVideoURL:(id)arg1 infoDictionary:(id)arg2 exportPreset:(id)arg3 completion:(CDUnknownBlockType)arg4;
-+ (void)buildAVAssetFromVideoURL:(id)arg1 infoDictionary:(id)arg2 completion:(CDUnknownBlockType)arg3;
-+ (void)buildAVPlayerItemFromVideoURL:(id)arg1 infoDictionary:(id)arg2 completion:(CDUnknownBlockType)arg3;
-+ (id)_videoAVObjectBuilderFromVideoURL:(id)arg1 info:(id)arg2 playbackOnly:(_Bool)arg3;
++ (void)buildExportSessionFromVideoURL:(id)arg1 infoDictionary:(id)arg2 options:(id)arg3 exportPreset:(id)arg4 completion:(CDUnknownBlockType)arg5;
++ (void)buildAVAssetFromVideoURL:(id)arg1 infoDictionary:(id)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
++ (void)buildAVPlayerItemFromVideoURL:(id)arg1 infoDictionary:(id)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
++ (id)_videoAVObjectBuilderFromVideoURL:(id)arg1 info:(id)arg2 options:(id)arg3 playbackOnly:(_Bool)arg4;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long managerID; // @synthesize managerID=_managerID;
 @property(readonly, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
@@ -55,7 +55,6 @@
 @property(readonly) unsigned long long hash;
 - (_Bool)_canStreamVideoForAsset:(id)arg1;
 - (void)_runBlockOnAppropriateResultQueueOrSynchronouslyWithRequest:(id)arg1 options:(id)arg2 block:(CDUnknownBlockType)arg3;
-- (void)_handleActivityForMediaContext:(id)arg1;
 - (id)init;
 - (int)requestImagePropertiesForAsset:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (int)_requestImagePropertiesFromFileForAsset:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;

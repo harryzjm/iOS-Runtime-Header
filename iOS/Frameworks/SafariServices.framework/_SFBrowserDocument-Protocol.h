@@ -11,6 +11,8 @@
 
 @protocol _SFBrowserDocument <NSObject>
 @property(readonly, nonatomic) WBSTranslationContext *translationContext;
+@property(readonly, nonatomic) unsigned long long mediaStateIcon;
+@property(readonly, nonatomic) _Bool canChangeSearchFieldPosition;
 @property(readonly, nonatomic) _Bool canHideToolbar;
 @property(readonly, nonatomic) _Bool wasLoadedWithContentBlockersEnabled;
 @property(readonly, nonatomic) NSURL *URLForPerSitePreferences;
@@ -18,6 +20,7 @@
 @property(readonly, nonatomic) _SFReloadOptionsController *reloadOptionsController;
 @property(readonly, nonatomic) _SFWebView *activeWebView;
 @property(readonly, nonatomic) _SFWebView *webView;
+- (void)toggleMediaStateMuted;
 - (void)perSiteSettingsUIPresentSettings;
 - (void)reloadEnablingContentBlockers:(_Bool)arg1;
 

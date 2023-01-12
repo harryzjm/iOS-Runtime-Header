@@ -14,11 +14,15 @@
 + (id)_editScreenAction:(id)arg1;
 + (id)_roomSettingsAction:(id)arg1 delegate:(id)arg2;
 + (id)_homeSettingsAction:(id)arg1 incomingInvitationsCount:(unsigned long long)arg2 delegate:(id)arg3;
++ (id)_addHomeActionWithDelegate:(id)arg1;
++ (id)_addPeopleAction:(id)arg1 delegate:(id)arg2;
++ (id)_addRoomAction:(id)arg1 delegate:(id)arg2;
++ (id)_addAutomationAction:(id)arg1 delegate:(id)arg2;
 + (id)_addSceneAction:(id)arg1 delegate:(id)arg2;
-+ (id)_addAccessoryAction:(id)arg1 delegate:(id)arg2;
++ (id)_addAccessoryAction:(id)arg1 room:(id)arg2 delegate:(id)arg3;
 + (id)_homeActionWithHome:(id)arg1 selected:(_Bool)arg2 currentLocation:(_Bool)arg3 delegate:(id)arg4;
 + (id)_roomActionWithRoom:(id)arg1 selected:(_Bool)arg2 delegate:(id)arg3;
-+ (id)createAddMenuForHome:(id)arg1 delegate:(id)arg2;
++ (id)createAddMenuForHome:(id)arg1 room:(id)arg2 delegate:(id)arg3;
 + (id)createSettingsMenuForHome:(id)arg1 room:(id)arg2 incomingInvitationsCount:(unsigned long long)arg3 allowEditing:(_Bool)arg4 delegate:(id)arg5;
 + (id)createHomeMenuForHomes:(id)arg1 currentlySelectedHome:(id)arg2 currentLocationHome:(id)arg3 delegate:(id)arg4;
 + (id)createRoomMenuForHome:(id)arg1 currentRoom:(id)arg2 delegate:(id)arg3;

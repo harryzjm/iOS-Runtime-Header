@@ -5,13 +5,6 @@
 //
 
 @interface (null) (ConversationKit)
-- (id)audioRouteMenuForInCallControlsViewController:(id)arg1;
-- (void)resetEffectsState;
-- (void)didCreateTableViewForInCallControlsViewController:(id)arg1;
-- (void)inCallControlsViewController:(id)arg1 didTap:(long long)arg2;
-- (void)inCallControlsDragController:(id)arg1 didEndDragAt:(long long)arg2;
-- (void)inCallControlsDragController:(id)arg1 didStartDragTo:(long long)arg2;
-- (void)inCallControlsDragController:(id)arg1 willStartDragFrom:(long long)arg2;
-- (long long)inCallControlsDragControllerShortestState:(id)arg1;
+@property(nonatomic) _Bool expanded;
 @end
 

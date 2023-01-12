@@ -12,7 +12,7 @@
 
 + (id)_participantRoleSortPriority;
 + (id)_participantStatusSortPriority;
-+ (id)sortedHumanAttendeesForEvent:(id)arg1 includeResources:(_Bool)arg2;
++ (id)sortedHumanAttendeesForEvent:(id)arg1 includeResources:(_Bool)arg2 includeMe:(_Bool)arg3;
 + (id)sortedHumanAttendeesToDisplayForEvent:(id)arg1 options:(unsigned long long)arg2;
 
 @end

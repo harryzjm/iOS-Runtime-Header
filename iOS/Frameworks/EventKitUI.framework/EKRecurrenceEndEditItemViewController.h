@@ -8,7 +8,7 @@
 #import <EventKitUI/UITableViewDataSource-Protocol.h>
 #import <EventKitUI/UITableViewDelegate-Protocol.h>
 
-@class NSDate, NSString, PreferencesValueCell, UIDatePicker, UITableView, UITableViewCell;
+@class NSArray, NSDate, NSString, PreferencesValueCell, UIDatePicker, UITableView, UITableViewCell;
 
 @interface EKRecurrenceEndEditItemViewController <UITableViewDataSource, UITableViewDelegate, EKCellShortener>
 {
@@ -20,6 +20,7 @@
     UITableView *_table;
     UIDatePicker *_datePicker;
     UITableViewCell *_datePickerCell;
+    NSArray *_datePickerConstraints;
     NSDate *_repeatEndDate;
     NSDate *_bestInitialDate;
 }
@@ -49,6 +50,7 @@
 - (void)_localeChanged;
 - (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(_Bool)arg2;
 - (void)viewDidLoad;
+- (void)resetBackgroundColor;
 - (void)dealloc;
 - (void)loadView;
 - (id)initWithFrame:(struct CGRect)arg1 styleProvider:(id)arg2;

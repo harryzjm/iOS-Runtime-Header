@@ -9,6 +9,10 @@
 @class UIFont;
 
 @protocol MKFontManager <NSObject>
+@property(readonly, nonatomic) UIFont *largeTitleHeaderFont;
+@property(readonly, nonatomic) UIFont *semiboldButtonCellFont;
+@property(readonly, nonatomic) UIFont *textBlurbFont;
+@property(readonly, nonatomic) UIFont *boldSectionHeaderFont;
 @property(readonly, nonatomic) UIFont *ratingCallToActionHeaderLabelFont;
 @property(readonly, nonatomic) UIFont *ratingCallToActionLabelFont;
 @property(readonly, nonatomic) UIFont *ratingCallToActionGlyphFont;

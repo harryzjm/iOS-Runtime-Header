@@ -29,6 +29,7 @@
 - (_Bool)requiresEncryption;
 - (unsigned long long)costForScope:(id)arg1;
 - (id)identifierForScope:(id)arg1;
+- (id)persistentDataHashForScope:(id)arg1;
 - (id)persistentIdentifierForScope:(id)arg1;
 - (id)volatileIdentifierForScope:(id)arg1;
 - (id)initWithAvatarRecord:(id)arg1 includeAvatarData:(_Bool)arg2 environment:(id)arg3;

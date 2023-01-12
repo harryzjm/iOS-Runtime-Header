@@ -25,6 +25,9 @@
 - (void)_createClientConnection;
 - (id)_getRemoteServiceProxyObject;
 - (void)didTTSVolumeChangeForReason:(unsigned long long)arg1;
+- (void)setPermanentVolumeOffsetWithDirection:(_Bool)arg1;
+- (void)setSmartSiriVolumeDirection:(_Bool)arg1;
+- (void)setSmartSiriVolumePercentage:(float)arg1;
 - (id)getVolumeForTTSType:(unsigned long long)arg1 withContext:(id)arg2;
 - (void)dealloc;
 - (id)init;

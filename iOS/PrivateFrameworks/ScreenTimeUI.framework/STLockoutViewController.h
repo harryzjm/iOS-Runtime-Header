@@ -34,6 +34,7 @@
     STLockoutPolicyController *_policyController;
     NSString *_applicationName;
     NSDictionary *_contactNameByHandle;
+    NSString *_blockedContactsHandle;
     STHourglassView *_hourglassView;
     UIImageView *_communicationLimitView;
     UILabel *_titleLabel;
@@ -42,6 +43,7 @@
     UIButton *_okButton;
     long long _okButtonAction;
     CDUnknownBlockType _addContactHandler;
+    CDUnknownBlockType _addBlockedContactHandler;
     id <STLockoutViewControllerDelegate> _viewControllerDelegate;
 }
 
@@ -62,6 +64,7 @@
 + (id)lockoutViewControllerWithCategoryIdentifier:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <STLockoutViewControllerDelegate> viewControllerDelegate; // @synthesize viewControllerDelegate=_viewControllerDelegate;
+@property(copy) CDUnknownBlockType addBlockedContactHandler; // @synthesize addBlockedContactHandler=_addBlockedContactHandler;
 @property(copy) CDUnknownBlockType addContactHandler; // @synthesize addContactHandler=_addContactHandler;
 @property long long okButtonAction; // @synthesize okButtonAction=_okButtonAction;
 @property(readonly, nonatomic) _Bool didFinishDismissing; // @synthesize didFinishDismissing=_didFinishDismissing;
@@ -72,6 +75,7 @@
 @property __weak UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property __weak UIImageView *communicationLimitView; // @synthesize communicationLimitView=_communicationLimitView;
 @property __weak STHourglassView *hourglassView; // @synthesize hourglassView=_hourglassView;
+@property(copy) NSString *blockedContactsHandle; // @synthesize blockedContactsHandle=_blockedContactsHandle;
 @property(readonly, copy) NSDictionary *contactNameByHandle; // @synthesize contactNameByHandle=_contactNameByHandle;
 @property(readonly) NSString *applicationName; // @synthesize applicationName=_applicationName;
 @property(retain, nonatomic) STLockoutPolicyController *policyController; // @synthesize policyController=_policyController;
@@ -119,6 +123,7 @@
 - (void)_changeMainButtonToEnterScreenTimePasscode;
 - (void)_changeMainButtonToIgnoreLimit;
 - (void)_changeMainButtonToAskForMore;
+- (void)_updateMainButtonWithTitle:(id)arg1 action:(SEL)arg2;
 - (void)_updateMainButtonVisibility;
 - (void)_updateOKButtonVisibility;
 - (void)_changeMessageToInitial;

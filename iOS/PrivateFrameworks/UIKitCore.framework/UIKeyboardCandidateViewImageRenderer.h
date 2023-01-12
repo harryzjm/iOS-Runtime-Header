@@ -19,6 +19,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSCache *imageCache; // @synthesize imageCache=_imageCache;
 @property(nonatomic) __weak UIView *viewForTraitCollection; // @synthesize viewForTraitCollection=_viewForTraitCollection;
+- (id)drawGradientImage:(struct CGRect)arg1 startPoint:(struct CGPoint)arg2 endPoint:(struct CGPoint)arg3 applyScale:(_Bool)arg4;
+- (id)edgeMaskImageForRightSide:(_Bool)arg1;
 - (id)extensionMaskImage;
 - (id)handwritingCellBackgroundImageForDarkKeyboard:(_Bool)arg1 highlighted:(_Bool)arg2;
 - (id)pocketShadowImageForDarkKeyboard:(_Bool)arg1 fadesToBottom:(_Bool)arg2 drawShadow:(_Bool)arg3 topPadding:(double)arg4 bottomPadding:(double)arg5 height:(double)arg6;

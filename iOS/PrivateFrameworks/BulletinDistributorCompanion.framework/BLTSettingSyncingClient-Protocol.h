@@ -6,10 +6,11 @@
 
 #import <BulletinDistributorCompanion/BLTSettingSyncing-Protocol.h>
 
-@class NSDate, NSString;
+@class BLTPBSectionInfo, NSDate, NSSet, NSString;
 
 @protocol BLTSettingSyncingClient <BLTSettingSyncing>
 - (void)transportUpdateRemoteGlobalSpokenSettingEnabled:(_Bool)arg1 date:(NSDate *)arg2;
 - (void)setNotificationsLevel:(unsigned long long)arg1 sectionID:(NSString *)arg2 mirror:(_Bool)arg3 fromRemote:(_Bool)arg4;
+- (void)setSectionInfo:(BLTPBSectionInfo *)arg1 keypaths:(NSSet *)arg2 completion:(void (^)(void))arg3;
 @end
 

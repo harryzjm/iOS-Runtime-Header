@@ -6,7 +6,7 @@
 
 #import <MediaPlayer/MPButton.h>
 
-@class MPCPlayerCommandRequest;
+@class MPCPlayerCommandRequest, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MediaControlsTransportButton : MPButton
@@ -17,10 +17,12 @@ __attribute__((visibility("hidden")))
     MPCPlayerCommandRequest *_holdBeginCommandRequest;
     MPCPlayerCommandRequest *_holdEndCommandRequest;
     double _cursorScale;
+    NSString *_identifier;
 }
 
 + (_Bool)_cursorInteractionEnabled;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(nonatomic) double cursorScale; // @synthesize cursorScale=_cursorScale;
 @property(readonly, nonatomic, getter=isPerformingHighlightAnimation) _Bool performingHighlightAnimation; // @synthesize performingHighlightAnimation=_performingHighlightAnimation;
 @property(nonatomic) _Bool shouldPresentActionSheet; // @synthesize shouldPresentActionSheet=_shouldPresentActionSheet;

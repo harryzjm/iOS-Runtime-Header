@@ -11,5 +11,6 @@
 @property(readonly, nonatomic) NSString *extractionOsBuild;
 @property(readonly, nonatomic) double initialScore;
 @property(readonly, nonatomic) PPSource *source;
+- (NSString *)identifier;
 @end
 

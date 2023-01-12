@@ -17,6 +17,7 @@
     _Bool _updatingDataSourcePayload;
     _Bool _backwardsCompatibleVersion;
     _Bool _isSOS;
+    _Bool _useStandalone;
     _Bool _NicknameRequested;
     _Bool _shouldSendMeCard;
     unsigned int _error;
@@ -41,6 +42,10 @@
     NSString *_locale;
     NSString *_threadIdentifier;
     IMMessageItem *_threadOriginator;
+    NSArray *_syndicationRanges;
+    NSArray *_syncedSyndicationRanges;
+    NSAttributedString *_translatedText;
+    NSString *_detectedLanguage;
     NSString *_retryToParticipant;
     NSString *_notificationIDSTokenURI;
     NSString *_suggestedAuthorName;
@@ -58,13 +63,18 @@
 @property(copy, nonatomic) NSString *suggestedAuthorName; // @synthesize suggestedAuthorName=_suggestedAuthorName;
 @property(nonatomic) _Bool shouldSendMeCard; // @synthesize shouldSendMeCard=_shouldSendMeCard;
 @property(nonatomic) _Bool NicknameRequested; // @synthesize NicknameRequested=_NicknameRequested;
+@property(nonatomic) _Bool useStandalone; // @synthesize useStandalone=_useStandalone;
 @property(nonatomic) _Bool isSOS; // @synthesize isSOS=_isSOS;
 @property(nonatomic) _Bool backwardsCompatibleVersion; // @synthesize backwardsCompatibleVersion=_backwardsCompatibleVersion;
 @property(nonatomic, getter=isUpdatingDataSourcePayload) _Bool updatingDataSourcePayload; // @synthesize updatingDataSourcePayload=_updatingDataSourcePayload;
 @property(retain, nonatomic) NSString *notificationIDSTokenURI; // @synthesize notificationIDSTokenURI=_notificationIDSTokenURI;
 @property(retain, nonatomic) NSString *retryToParticipant; // @synthesize retryToParticipant=_retryToParticipant;
 @property(nonatomic) _Bool isBeingRetried; // @synthesize isBeingRetried=_isBeingRetried;
+@property(retain, nonatomic) NSString *detectedLanguage; // @synthesize detectedLanguage=_detectedLanguage;
+@property(retain, nonatomic) NSAttributedString *translatedText; // @synthesize translatedText=_translatedText;
 @property(nonatomic) _Bool blockingRichLinks; // @synthesize blockingRichLinks=_blockingRichLinks;
+@property(copy, nonatomic) NSArray *syncedSyndicationRanges; // @synthesize syncedSyndicationRanges=_syncedSyndicationRanges;
+@property(copy, nonatomic) NSArray *syndicationRanges; // @synthesize syndicationRanges=_syndicationRanges;
 @property(retain, nonatomic) IMMessageItem *threadOriginator; // @synthesize threadOriginator=_threadOriginator;
 @property(copy, nonatomic) NSString *threadIdentifier; // @synthesize threadIdentifier=_threadIdentifier;
 @property(retain, nonatomic) NSString *locale; // @synthesize locale=_locale;
@@ -82,7 +92,7 @@
 @property(nonatomic) long long replaceID; // @synthesize replaceID=_replaceID;
 @property(retain, nonatomic) NSData *bodyData; // @synthesize bodyData=_bodyData;
 @property(nonatomic) unsigned long long flags; // @synthesize flags=_flags;
-@property(retain, nonatomic) NSArray *fileTransferGUIDs; // @synthesize fileTransferGUIDs=_fileTransferGUIDs;
+- (id)fileTransferGUIDs;
 @property(nonatomic) unsigned int errorCode; // @synthesize errorCode=_error;
 @property(retain, nonatomic) NSString *plainBody; // @synthesize plainBody=_plainBody;
 @property(retain, nonatomic) NSString *subject; // @synthesize subject=_subject;
@@ -101,6 +111,12 @@
 - (void)_generateBodyDataIfNeeded;
 - (void)adjustIsEmptyFlag;
 - (void)_updateFlags:(unsigned long long)arg1;
+- (void)setFileTransferGUIDs:(id)arg1;
+- (unsigned long long)getCMMAssetOffset;
+- (void)setCMMAssetOffset:(unsigned long long)arg1;
+- (void)setCMMState:(unsigned long long)arg1;
+- (unsigned long long)getCMMState;
+- (void)setCMMStateToRegisteredAndAssetOffsetTo:(unsigned long long)arg1;
 - (void)setWasDataDetected:(_Bool)arg1;
 @property(readonly, nonatomic) _Bool wasDataDetected;
 @property(nonatomic) _Bool hasDataDetectorResults;
@@ -114,6 +130,10 @@
 @property(readonly, nonatomic) _Bool isLocatingMessage;
 @property(readonly, nonatomic) _Bool isTypingMessage;
 @property(readonly, nonatomic) _Bool isPrepared;
+@property(readonly, nonatomic) _Bool isSystemMessage;
+@property(readonly, nonatomic) _Bool isAutoReply;
+@property(readonly, nonatomic) _Bool didNotifyRecipient;
+@property(readonly, nonatomic) _Bool wasDeliveredQuietly;
 @property(readonly, nonatomic) _Bool isDelivered;
 - (_Bool)isFromMe;
 @property(readonly, nonatomic) _Bool isPlayed;
@@ -121,12 +141,13 @@
 @property(readonly, nonatomic) _Bool isAudioMessage;
 @property(readonly, nonatomic) _Bool isRead;
 @property(readonly, nonatomic) _Bool isEmpty;
+@property(readonly, nonatomic) _Bool isUnfinished;
 @property(readonly, nonatomic) _Bool isFinished;
 @property(readonly, nonatomic) _Bool isAlert;
 - (id)sender;
 - (void)dealloc;
-- (id)initWithSenderInfo:(id)arg1 time:(id)arg2 timeRead:(id)arg3 timeDelivered:(id)arg4 timePlayed:(id)arg5 subject:(id)arg6 body:(id)arg7 bodyData:(id)arg8 attributes:(id)arg9 fileTransferGUIDs:(id)arg10 flags:(unsigned long long)arg11 guid:(id)arg12 messageID:(long long)arg13 account:(id)arg14 accountID:(id)arg15 service:(id)arg16 handle:(id)arg17 roomName:(id)arg18 unformattedID:(id)arg19 countryCode:(id)arg20 expireState:(long long)arg21 balloonBundleID:(id)arg22 payloadData:(id)arg23 expressiveSendStyleID:(id)arg24 timeExpressiveSendPlayed:(id)arg25 bizIntent:(id)arg26 locale:(id)arg27 errorType:(unsigned int)arg28 type:(long long)arg29 threadIdentifier:(id)arg30;
-- (id)initWithSenderInfo:(id)arg1 time:(id)arg2 timeRead:(id)arg3 timeDelivered:(id)arg4 timePlayed:(id)arg5 subject:(id)arg6 body:(id)arg7 bodyData:(id)arg8 attributes:(id)arg9 fileTransferGUIDs:(id)arg10 flags:(unsigned long long)arg11 guid:(id)arg12 messageID:(long long)arg13 account:(id)arg14 accountID:(id)arg15 service:(id)arg16 handle:(id)arg17 roomName:(id)arg18 unformattedID:(id)arg19 countryCode:(id)arg20 expireState:(long long)arg21 balloonBundleID:(id)arg22 payloadData:(id)arg23 expressiveSendStyleID:(id)arg24 timeExpressiveSendPlayed:(id)arg25 bizIntent:(id)arg26 locale:(id)arg27 errorType:(unsigned int)arg28 threadIdentifier:(id)arg29;
+- (id)initWithSenderInfo:(id)arg1 time:(id)arg2 timeRead:(id)arg3 timeDelivered:(id)arg4 timePlayed:(id)arg5 subject:(id)arg6 body:(id)arg7 bodyData:(id)arg8 attributes:(id)arg9 fileTransferGUIDs:(id)arg10 flags:(unsigned long long)arg11 guid:(id)arg12 messageID:(long long)arg13 account:(id)arg14 accountID:(id)arg15 service:(id)arg16 handle:(id)arg17 roomName:(id)arg18 unformattedID:(id)arg19 countryCode:(id)arg20 expireState:(long long)arg21 balloonBundleID:(id)arg22 payloadData:(id)arg23 expressiveSendStyleID:(id)arg24 timeExpressiveSendPlayed:(id)arg25 bizIntent:(id)arg26 locale:(id)arg27 errorType:(unsigned int)arg28 type:(long long)arg29 threadIdentifier:(id)arg30 syndicationRanges:(id)arg31 syncedSyndicationRanges:(id)arg32;
+- (id)initWithSenderInfo:(id)arg1 time:(id)arg2 timeRead:(id)arg3 timeDelivered:(id)arg4 timePlayed:(id)arg5 subject:(id)arg6 body:(id)arg7 bodyData:(id)arg8 attributes:(id)arg9 fileTransferGUIDs:(id)arg10 flags:(unsigned long long)arg11 guid:(id)arg12 messageID:(long long)arg13 account:(id)arg14 accountID:(id)arg15 service:(id)arg16 handle:(id)arg17 roomName:(id)arg18 unformattedID:(id)arg19 countryCode:(id)arg20 expireState:(long long)arg21 balloonBundleID:(id)arg22 payloadData:(id)arg23 expressiveSendStyleID:(id)arg24 timeExpressiveSendPlayed:(id)arg25 bizIntent:(id)arg26 locale:(id)arg27 errorType:(unsigned int)arg28 threadIdentifier:(id)arg29 syndicationRanges:(id)arg30 syncedSyndicationRanges:(id)arg31;
 - (id)initWithSenderInfo:(id)arg1 time:(id)arg2 guid:(id)arg3 messageID:(long long)arg4 account:(id)arg5 accountID:(id)arg6 service:(id)arg7 handle:(id)arg8 roomName:(id)arg9 unformattedID:(id)arg10 countryCode:(id)arg11;
 - (id)initWithSender:(id)arg1 time:(id)arg2 guid:(id)arg3 type:(long long)arg4;
 - (id)initWithSender:(id)arg1 time:(id)arg2 body:(id)arg3 attributes:(id)arg4 fileTransferGUIDs:(id)arg5 flags:(unsigned long long)arg6 error:(id)arg7 guid:(id)arg8 type:(long long)arg9 threadIdentifier:(id)arg10;
@@ -142,6 +163,7 @@
 - (id)copyForBackwardsCompatibility;
 - (id)copyWithFlags:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly, copy, nonatomic) NSArray *messageParts;
 - (unsigned long long)powerLogMessageType;
 
 @end

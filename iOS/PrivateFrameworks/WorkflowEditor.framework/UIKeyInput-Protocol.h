@@ -9,8 +9,8 @@
 @class NSString;
 
 @protocol UIKeyInput <UITextInputTraits>
-@property(readonly, nonatomic) _Bool hasText;
 - (void)deleteBackward;
 - (void)insertText:(NSString *)arg1;
+@property(nonatomic, readonly) _Bool hasText;
 @end
 

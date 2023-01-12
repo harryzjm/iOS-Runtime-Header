@@ -5,30 +5,31 @@
 //
 
 #import <AssistantUI/AFUISiriSessionDelegate-Protocol.h>
-#import <AssistantUI/AFUISpeechSynthesisDelegate-Protocol.h>
 #import <AssistantUI/NSObject-Protocol.h>
 #import <AssistantUI/SiriUIPresentationRemoteControlling-Protocol.h>
 
-@class NSDictionary, NSNumber, NSString, NSValue, PBCodable, SASRequestOptions;
-@protocol AFUISiriSession, AFUISpeechSynthesis;
+@class NSDictionary, NSNumber, NSString, NSValue, PBCodable, SASRequestOptions, SAUIDelayedActionCommand;
+@protocol AFUISiriSession;
 
-@protocol AFUIViewControllerServing <NSObject, AFUISiriSessionDelegate, AFUISpeechSynthesisDelegate, SiriUIPresentationRemoteControlling>
+@protocol AFUIViewControllerServing <NSObject, AFUISiriSessionDelegate, SiriUIPresentationRemoteControlling>
+- (void)hostApplicationDidSuccessfullyHandleCommandsInDelayedActionCommand:(SAUIDelayedActionCommand *)arg1;
+- (void)hostApplicationPresentationStateUpdatedFromPresentationState:(long long)arg1 toPresentationState:(long long)arg2;
 - (void)siriWillBeginTearDownForDismissalReason:(unsigned long long)arg1;
 - (void)setBottomContentInset:(double)arg1;
 - (void)hasContentAtPoint:(NSValue *)arg1 completion:(void (^)(_Bool))arg2;
 - (void)setWaitingForTelephonyToStart:(_Bool)arg1;
+- (void)hostApplicationRequestsScreenshotWithCompletion:(void (^)(_Bool))arg1;
+- (void)hostApplicationRequestsEmitInstrumentationEvent:(PBCodable *)arg1 atTime:(unsigned long long)arg2;
 - (void)hostApplicationRequestsEmitInstrumentationEvent:(PBCodable *)arg1;
 - (void)hostApplicationRequestsEmitUIStateTransitionForSiriDismissalWithReason:(int)arg1;
 - (void)hostApplicationDidBecomeActive;
 - (void)hostApplicationWillEnterForeground;
 - (void)hostApplicationWillResignActive;
-- (void)didReceiveDismissalAction:(_Bool)arg1 delayForTTS:(_Bool)arg2 withDismissalReason:(unsigned long long)arg3 completion:(void (^)(void))arg4;
-- (void)didReceiveDismissalAction:(_Bool)arg1 delayForTTS:(_Bool)arg2 completion:(void (^)(void))arg3;
-- (void)didReceiveShortTapAction;
+- (void)didReceiveShortTapActionWIthRequestOptions:(SASRequestOptions *)arg1;
 - (void)didReceiveBugButtonLongPress;
 - (void)didReceiveReportBugAction;
 - (void)didReceiveHelpAction;
-- (void)setSpeechSynthesis:(id <AFUISpeechSynthesis>)arg1;
+- (void)didReceiveOrbViewTapToCancelRequest;
 - (void)setSession:(id <AFUISiriSession>)arg1;
 - (void)siriKeyboardViewDidChange:(CDStruct_a82615c4 *)arg1;
 - (void)startRequestForText:(NSString *)arg1;

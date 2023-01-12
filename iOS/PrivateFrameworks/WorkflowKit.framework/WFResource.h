@@ -42,6 +42,7 @@
 - (void)refreshAvailability;
 - (id)_availabilityError;
 - (_Bool)_isAvailable;
+- (void)refreshAvailabilityIfNeeded;
 @property(readonly, nonatomic) NSError *availabilityError; // @synthesize availabilityError=_availabilityError;
 @property(readonly, nonatomic, getter=isAvailable) _Bool available; // @synthesize available=_available;
 @property(readonly, copy, nonatomic) NSDictionary *eventDictionary;

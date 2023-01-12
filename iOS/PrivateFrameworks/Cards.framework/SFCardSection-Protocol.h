@@ -7,9 +7,18 @@
 #import <Cards/NSObject-Protocol.h>
 #import <Cards/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, SFCard, SFColor, SFUserReportRequest;
+@class NSArray, NSString, SFCard, SFColor, SFCommand, SFUserReportRequest;
 
 @protocol SFCardSection <NSSecureCoding, NSObject>
+@property(readonly) NSArray *cardsFromButtons;
+@property(readonly) NSArray *cardsFromEmbeddedSections;
+@property(readonly) NSArray *embeddedCards;
+@property(retain, nonatomic) NSString *previewButtonItemsTitle;
+@property(retain, nonatomic) NSString *cardSectionDetail;
+@property(retain, nonatomic) NSString *commandDetail;
+@property(copy, nonatomic) NSArray *previewButtonItems;
+@property(retain, nonatomic) SFCommand *previewCommand;
+@property(retain, nonatomic) SFCommand *command;
 @property(retain, nonatomic) SFUserReportRequest *userReportRequest;
 @property(retain, nonatomic) SFColor *backgroundColor;
 @property(copy, nonatomic) NSString *resultIdentifier;

@@ -20,19 +20,11 @@
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool relatednessCalculated; // @synthesize relatednessCalculated=_relatednessCalculated;
-@property(nonatomic) unsigned long long containsBButNotA; // @synthesize containsBButNotA=_containsBButNotA;
-@property(nonatomic) unsigned long long containsAAndB; // @synthesize containsAAndB=_containsAAndB;
-@property(nonatomic) unsigned long long containsAButNotB; // @synthesize containsAButNotB=_containsAButNotB;
 @property(retain, nonatomic) FCTopicalNode *b; // @synthesize b=_b;
 @property(retain, nonatomic) FCTopicalNode *a; // @synthesize a=_a;
 - (id)description;
-@property(readonly, nonatomic) unsigned long long totalObservations;
-- (unsigned long long)independentCountForNode:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-@property(readonly, nonatomic, getter=isValid) _Bool valid;
-- (void)calculateRelatedness;
-- (id)initWithNode:(id)arg1 andNode:(id)arg2;
 
 @end
 

@@ -13,7 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface WebKitFullScreenListener : NSObject <WebKitFullScreenListener>
 {
-    struct RefPtr<WebCore::Element, WTF::DumbPtrTraits<WebCore::Element>> _element;
+    struct RefPtr<WebCore::Element, WTF::RawPtrTraits<WebCore::Element>, WTF::DefaultRefDerefTraits<WebCore::Element>> _element;
 }
 
 - (id).cxx_construct;
@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (void)webkitWillExitFullScreen;
 - (void)webkitDidEnterFullScreen;
 - (void)webkitWillEnterFullScreen;
-- (id)initWithElement:(struct Element *)arg1;
+- (id)initWithElement:(void *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -8,6 +8,7 @@
 
 @class NSArray, NSData, NSString;
 
+__attribute__((visibility("hidden")))
 @interface GSStagingPrefix : NSObject
 {
     unsigned char _volumeUUID[16];

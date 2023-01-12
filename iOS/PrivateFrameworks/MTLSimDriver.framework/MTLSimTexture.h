@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _tailSizeInBytes;
     _Bool isCompressed;
     _Bool _isDrawable;
+    _Bool _shareable;
     unsigned long long rotation;
     unsigned long long iosurfacePlane;
     unsigned long long _uniqueIdentifier;
@@ -57,6 +58,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long tailSizeInBytes; // @synthesize tailSizeInBytes=_tailSizeInBytes;
 @property(readonly) unsigned long long firstMipmapInTail; // @synthesize firstMipmapInTail=_firstMipmapInTail;
 @property(readonly) unsigned long long usage; // @synthesize usage=_usage;
+@property(readonly, getter=isShareable) _Bool shareable; // @synthesize shareable=_shareable;
 @property(readonly, getter=isFramebufferOnly) _Bool framebufferOnly; // @synthesize framebufferOnly=_framebufferOnly;
 @property(readonly) _Bool allowGPUOptimizedContents; // @synthesize allowGPUOptimizedContents=_allowGPUOptimizedContents;
 @property(readonly) id <MTLResource> rootResource; // @synthesize rootResource;
@@ -100,6 +102,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned int textureRef;
 - (void)dealloc;
 - (id)initWithTexture:(id)arg1 device:(id)arg2;
+- (id)initWithDescriptor:(id)arg1 decompressedPixelFormat:(unsigned long long)arg2 iosurface:(struct __IOSurface *)arg3 plane:(unsigned long long)arg4 textureRef:(unsigned int)arg5 heap:(id)arg6 device:(id)arg7 shareable:(_Bool)arg8;
 - (id)initWithDescriptor:(id)arg1 decompressedPixelFormat:(unsigned long long)arg2 iosurface:(struct __IOSurface *)arg3 plane:(unsigned long long)arg4 textureRef:(unsigned int)arg5 heap:(id)arg6 device:(id)arg7;
 - (id)initWithBuffer:(id)arg1 offset:(unsigned long long)arg2 bytesPerRow:(unsigned long long)arg3 descriptor:(id)arg4 textureRef:(unsigned int)arg5;
 - (id)initWithTexture:(id)arg1 pixelFormat:(unsigned long long)arg2 decompressedPixelFormat:(unsigned long long)arg3 textureRef:(unsigned int)arg4 isInternalTextureView:(_Bool)arg5;
@@ -116,6 +119,8 @@ __attribute__((visibility("hidden")))
 // Remaining properties
 @property(readonly) unsigned long long allocatedSize;
 @property(readonly) unsigned long long allocationID;
+@property(readonly, nonatomic) unsigned long long compressionFootprint;
+@property(readonly) long long compressionType;
 @property(readonly) unsigned long long cpuCacheMode;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) id <MTLDevice> device;

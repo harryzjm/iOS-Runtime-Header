@@ -14,7 +14,6 @@
 - (id)initWithAttributedName:(id)arg1 itemSearchBlock:(CDUnknownBlockType)arg2;
 - (id)initWithName:(id)arg1 itemSearchBlock:(CDUnknownBlockType)arg2;
 - (id)initWithSystemType:(long long)arg1 itemSearchBlock:(CDUnknownBlockType)arg2;
-- (void)_accessibilityApplyAttributes;
 
 @end
 

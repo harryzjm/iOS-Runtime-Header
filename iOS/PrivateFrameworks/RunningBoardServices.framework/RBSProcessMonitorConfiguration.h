@@ -10,11 +10,12 @@
 #import <RunningBoardServices/RBSProcessMonitorConfiguring-Protocol.h>
 #import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
-@class NSArray, NSHashTable, NSString, RBSProcessStateDescriptor;
+@class NSArray, NSString, RBSProcessHandle, RBSProcessStateDescriptor;
 
 @interface RBSProcessMonitorConfiguration : NSObject <RBSProcessMonitorConfiguring, NSCopying, RBSXPCSecureCoding>
 {
-    NSHashTable *_matchedHandles;
+    RBSProcessHandle *_lastMatch;
+    struct os_unfair_lock_s _lock;
     NSString *_desc;
     int _clientPid;
     unsigned int _serviceClass;
@@ -28,13 +29,6 @@
 
 + (_Bool)supportsRBSXPCSecureCoding;
 - (void).cxx_destruct;
-@property(copy, nonatomic) CDUnknownBlockType preventLaunchUpdateHandler; // @synthesize preventLaunchUpdateHandler=_preventLaunchUpdateHandler;
-@property(copy, nonatomic) CDUnknownBlockType updateHandler; // @synthesize updateHandler=_updateHandler;
-@property(nonatomic) unsigned long long events; // @synthesize events=_events;
-@property(nonatomic) unsigned int serviceClass; // @synthesize serviceClass=_serviceClass;
-@property(copy, nonatomic) RBSProcessStateDescriptor *stateDescriptor; // @synthesize stateDescriptor=_stateDescriptor;
-@property(copy, nonatomic) NSArray *predicates; // @synthesize predicates=_predicates;
-@property(readonly, nonatomic) int clientPid; // @synthesize clientPid=_clientPid;
 @property(readonly, nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
 - (id)initWithRBSXPCCoder:(id)arg1;
 - (void)encodeWithRBSXPCCoder:(id)arg1;
@@ -43,9 +37,13 @@
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
-- (id)matchedProcesses;
 - (_Bool)matchesProcess:(id)arg1;
 - (void)setPreventLaunchUpdateHandle:(CDUnknownBlockType)arg1;
+@property(copy, nonatomic) CDUnknownBlockType updateHandler; // @synthesize updateHandler=_updateHandler;
+@property(nonatomic) unsigned long long events; // @synthesize events=_events;
+@property(nonatomic) unsigned int serviceClass; // @synthesize serviceClass=_serviceClass;
+@property(copy, nonatomic) RBSProcessStateDescriptor *stateDescriptor; // @synthesize stateDescriptor=_stateDescriptor;
+@property(copy, nonatomic) NSArray *predicates; // @synthesize predicates=_predicates;
 - (id)init;
 
 // Remaining properties

@@ -7,20 +7,19 @@
 #import <objc/NSObject.h>
 
 #import <MapsSupport/GEONavigationListenerDelegate-Protocol.h>
-#import <MapsSupport/MNNavigationServiceObserver-Protocol.h>
 
 @class GEONavigationGuidanceState, GEONavigationListener, GEOSharedNavState, NSString;
 @protocol MSPNavigationListenerDelegate, OS_os_transaction;
 
 __attribute__((visibility("hidden")))
-@interface MSPNavigationListener : NSObject <GEONavigationListenerDelegate, MNNavigationServiceObserver>
+@interface MSPNavigationListener : NSObject <GEONavigationListenerDelegate>
 {
-    GEONavigationListener *_outOfNavListener;
+    GEONavigationListener *_navigationListener;
     GEONavigationGuidanceState *_guidanceState;
     NSObject<OS_os_transaction> *_transaction;
     GEOSharedNavState *_state;
+    _Bool _postedStateIsReady;
     NSString *_navigationSessionIdentifier;
-    _Bool _transitioningToNavigationState;
     id <MSPNavigationListenerDelegate> _delegate;
     GEOSharedNavState *_currentState;
 }
@@ -28,28 +27,31 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) GEOSharedNavState *currentState; // @synthesize currentState=_currentState;
 @property(nonatomic) __weak id <MSPNavigationListenerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)navigationService:(id)arg1 didArriveAtWaypoint:(id)arg2 endOfLegIndex:(unsigned long long)arg3;
-- (void)navigationService:(id)arg1 didUpdateTraffic:(id)arg2;
-- (void)navigationService:(id)arg1 didReroute:(id)arg2;
-- (void)navigationService:(id)arg1 didUpdateMatchedLocation:(id)arg2;
-- (void)navigationService:(id)arg1 didUpdateDisplayETA:(id)arg2 remainingDistance:(id)arg3;
-- (void)navigationService:(id)arg1 didChangeFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
-- (void)navigationService:(id)arg1 willChangeFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
-- (void)navigationService:(id)arg1 didFailWithError:(id)arg2;
+- (void)_performDelegateNotificationBlockIfReady:(CDUnknownBlockType)arg1;
+- (int)_analyticsPipelineTransportModeForGEOTransportType:(int)arg1;
+- (void)navigationListener:(id)arg1 didArriveAtWaypoint:(id)arg2 endOfLegIndex:(unsigned long long)arg3;
+- (void)navigationListener:(id)arg1 didUpdateTrafficForCurrentRoute:(id)arg2;
+- (void)navigationListener:(id)arg1 didUpdateRoute:(id)arg2;
+- (void)navigationListener:(id)arg1 didUpdateLocation:(id)arg2;
+- (void)navigationListener:(id)arg1 didUpdatePositionFromDestination:(CDStruct_c3b9c2ee)arg2;
+- (void)navigationListener:(id)arg1 didUpdateRouteSummary:(id)arg2;
 - (void)navigationListener:(id)arg1 didUpdateGuidanceState:(id)arg2;
 - (void)navigationListener:(id)arg1 didChangeNavigationState:(unsigned long long)arg2 transportType:(int)arg3;
-- (void)_updateNavigationServiceForCurrentState;
+- (void)_updateTransaction;
 - (int)_referenceFrameForDestination:(id)arg1;
-- (void)_updateETA:(id)arg1 remainingDistance:(id)arg2;
+- (void)_updateETAWithArrival:(CDStruct_c3b9c2ee)arg1;
+- (_Bool)_updateDestinationIfNeeded:(id)arg1;
 - (void)_updateLocation:(id)arg1;
 - (void)_updateTraffic:(id)arg1;
 - (void)_updateRoute:(id)arg1;
+- (int)_currentTransportType;
 @property(readonly, nonatomic) _Bool isCompatibleTransportType;
 @property(readonly, nonatomic) _Bool isCompatibleNavigationType;
 @property(readonly, nonatomic) _Bool isInNavigatingState;
 - (void)dealloc;
 @property(readonly, copy, nonatomic) NSString *navigationSessionIdentifier;
-- (void)_initState;
+- (void)_checkStateIsReady;
+- (void)_initPendingStateIfNeeded;
 - (id)init;
 
 // Remaining properties

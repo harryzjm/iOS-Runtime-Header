@@ -4,26 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface VNDetectTextRectanglesRequest
 {
 }
 
 + (Class)configurationClass;
-+ (void)recordDefaultOptionsInDictionary:(id)arg1;
 + (void)initialize;
 - (_Bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
 - (void)applyConfigurationOfRequest:(id)arg1;
 - (_Bool)_detectTextWithRequestPerformingContext:(id)arg1 requestRevision:(unsigned long long)arg2 error:(id *)arg3;
+- (id)_futharkRecognitionLanguage;
 - (_Bool)_detectCreditCardTextWithRequestPerformingContext:(id)arg1 requestRevision:(unsigned long long)arg2 error:(id *)arg3;
 @property(nonatomic) _Bool minimizeFalseDetections;
 @property(nonatomic) _Bool detectDiacritics;
 @property(nonatomic) _Bool reportCharacterBoxes;
 @property(nonatomic) unsigned long long minimumCharacterPixelHeight;
+@property(copy, nonatomic) NSString *additionalCharacters;
 @property(copy, nonatomic) NSString *textRecognition;
 @property(nonatomic) unsigned long long algorithm;
 - (_Bool)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSArray *results; // @dynamic results;
 
 @end
 

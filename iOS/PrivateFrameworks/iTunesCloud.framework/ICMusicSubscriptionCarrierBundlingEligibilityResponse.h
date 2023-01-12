@@ -8,6 +8,7 @@
 
 @class NSError, NSString, NSURL;
 
+__attribute__((visibility("hidden")))
 @interface ICMusicSubscriptionCarrierBundlingEligibilityResponse : NSObject
 {
     _Bool _familySubscription;

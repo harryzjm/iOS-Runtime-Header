@@ -21,6 +21,7 @@
 @property(retain, nonatomic) RTDuetKnowledgeStore *knowledgeStore; // @synthesize knowledgeStore=_knowledgeStore;
 @property(retain, nonatomic) _DKEventStream *eventStream; // @synthesize eventStream=_eventStream;
 @property(readonly, nonatomic) long long streamType; // @synthesize streamType=_streamType;
+- (id)description;
 - (id)_convertDuetEvent:(id)arg1;
 - (void)enumerateEventsWithinDateInterval:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)purge;

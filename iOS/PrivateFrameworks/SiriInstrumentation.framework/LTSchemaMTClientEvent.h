@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProtocolBuffer/PBCodable.h>
-
 @class LTSchemaASRSpeechTranslationEvent, LTSchemaBatchTranslationEvent, LTSchemaDisambiguationSpeechTranslationEvent, LTSchemaLIDSpeechTranslationEvent, LTSchemaMTSpeechTranslationEvent, LTSchemaSafariFeedbackEvent, LTSchemaSpeechTranslationEvent, LTSchemaTTSSpeechTranslationEvent, NSData;
 
-@interface LTSchemaMTClientEvent : PBCodable
+@interface LTSchemaMTClientEvent
 {
     LTSchemaSafariFeedbackEvent *_safariFeedbackEvent;
     LTSchemaBatchTranslationEvent *_batchTranslationEvent;
@@ -55,6 +53,7 @@
 @property(retain, nonatomic) LTSchemaSpeechTranslationEvent *speechTranslationEvent; // @synthesize speechTranslationEvent=_speechTranslationEvent;
 @property(retain, nonatomic) LTSchemaBatchTranslationEvent *batchTranslationEvent; // @synthesize batchTranslationEvent=_batchTranslationEvent;
 @property(retain, nonatomic) LTSchemaSafariFeedbackEvent *safariFeedbackEvent; // @synthesize safariFeedbackEvent=_safariFeedbackEvent;
+- (id)qualifiedMessageName;
 - (int)getAnyEventType;
 
 @end

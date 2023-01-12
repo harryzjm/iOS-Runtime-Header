@@ -85,6 +85,8 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
+- (void)clearSensitiveFields:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -172,6 +174,7 @@
 - (id)initWithData:(id)arg1;
 - (id)init;
 - (id)instanceCompatibleWithProtocolVersion:(unsigned long long)arg1;
+- (_Bool)needsWaypointRemoval:(unsigned long long)arg1;
 - (_Bool)needsStepsRewrite;
 - (id)stepWithID:(unsigned long long)arg1;
 - (unsigned long long)stepIndexWithID:(unsigned long long)arg1;

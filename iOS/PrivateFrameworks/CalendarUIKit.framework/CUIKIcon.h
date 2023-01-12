@@ -15,11 +15,9 @@
     NSCalendar *_calendar;
     long long _format;
     id <CUIKIconGenerator> _iconGenerator;
-    ISIcon *_isIcon;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) ISIcon *isIcon; // @synthesize isIcon=_isIcon;
 @property(readonly, nonatomic) id <CUIKIconGenerator> iconGenerator; // @synthesize iconGenerator=_iconGenerator;
 @property(readonly, nonatomic) long long format; // @synthesize format=_format;
 @property(readonly, copy, nonatomic) NSCalendar *calendar; // @synthesize calendar=_calendar;
@@ -29,7 +27,7 @@
 - (void)getImageForImageDescriptor:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)imageForImageDescriptor:(id)arg1;
 - (void)prepareImagesForImageDescriptors:(id)arg1;
-- (id)initWithDateComponents:(id)arg1 calendar:(id)arg2 format:(long long)arg3;
+- (id)initWithDateComponents:(id)arg1 calendar:(id)arg2 format:(long long)arg3 forceNoTextEffects:(_Bool)arg4;
 - (id)initWithDate:(id)arg1 calendar:(id)arg2 format:(long long)arg3;
 
 @end

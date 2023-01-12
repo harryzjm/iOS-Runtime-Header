@@ -8,22 +8,25 @@
 
 #import <TelephonyUtilities/IDSBatchIDQueryControllerDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSString;
+@class NSString, TULocked;
 @protocol OS_dispatch_queue, TUIDSBatchIDQueryController, TUIDSIDQueryController;
 
 @interface TUIDSLookupManager : NSObject <IDSBatchIDQueryControllerDelegate>
 {
     NSObject<OS_dispatch_queue> *_queue;
     id <TUIDSIDQueryController> _queryController;
-    NSMutableDictionary *_idsFaceTimeVideoStatuses;
-    NSMutableDictionary *_idsFaceTimeAudioStatuses;
-    NSMutableDictionary *_idsFaceTimeMultiwayStatuses;
+    TULocked *_idsFaceTimeVideoStatuses;
+    TULocked *_idsFaceTimeAudioStatuses;
+    TULocked *_idsFaceTimeMultiwayStatuses;
+    TULocked *_idsModernStatuses;
+    TULocked *_idsWebCapableStatuses;
     id <TUIDSBatchIDQueryController> _batchQuerySearchVideoController;
     id <TUIDSBatchIDQueryController> _batchQuerySearchAudioController;
     id <TUIDSBatchIDQueryController> _batchQuerySearchMultiwayController;
     CDUnknownBlockType _batchQueryControllerCreationBlock;
 }
 
++ (long long)idsServiceAvailabilityForDestination:(id)arg1 usingCache:(id)arg2;
 + (_Bool)isAnyDestinationAvailableInDestinations:(id)arg1 usingCache:(id)arg2;
 + (id)sharedManager;
 - (void).cxx_destruct;
@@ -31,14 +34,30 @@
 @property(retain, nonatomic) id <TUIDSBatchIDQueryController> batchQuerySearchMultiwayController; // @synthesize batchQuerySearchMultiwayController=_batchQuerySearchMultiwayController;
 @property(retain, nonatomic) id <TUIDSBatchIDQueryController> batchQuerySearchAudioController; // @synthesize batchQuerySearchAudioController=_batchQuerySearchAudioController;
 @property(retain, nonatomic) id <TUIDSBatchIDQueryController> batchQuerySearchVideoController; // @synthesize batchQuerySearchVideoController=_batchQuerySearchVideoController;
-@property(readonly, nonatomic) NSMutableDictionary *idsFaceTimeMultiwayStatuses; // @synthesize idsFaceTimeMultiwayStatuses=_idsFaceTimeMultiwayStatuses;
-@property(readonly, nonatomic) NSMutableDictionary *idsFaceTimeAudioStatuses; // @synthesize idsFaceTimeAudioStatuses=_idsFaceTimeAudioStatuses;
-@property(readonly, nonatomic) NSMutableDictionary *idsFaceTimeVideoStatuses; // @synthesize idsFaceTimeVideoStatuses=_idsFaceTimeVideoStatuses;
+@property(readonly, nonatomic) TULocked *idsWebCapableStatuses; // @synthesize idsWebCapableStatuses=_idsWebCapableStatuses;
+@property(readonly, nonatomic) TULocked *idsModernStatuses; // @synthesize idsModernStatuses=_idsModernStatuses;
+@property(readonly, nonatomic) TULocked *idsFaceTimeMultiwayStatuses; // @synthesize idsFaceTimeMultiwayStatuses=_idsFaceTimeMultiwayStatuses;
+@property(readonly, nonatomic) TULocked *idsFaceTimeAudioStatuses; // @synthesize idsFaceTimeAudioStatuses=_idsFaceTimeAudioStatuses;
+@property(readonly, nonatomic) TULocked *idsFaceTimeVideoStatuses; // @synthesize idsFaceTimeVideoStatuses=_idsFaceTimeVideoStatuses;
 @property(readonly, nonatomic) id <TUIDSIDQueryController> queryController; // @synthesize queryController=_queryController;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+- (void)queryHasEndpointWithCapabilities:(id)arg1 forMultiwayDestinations:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (void)queryHasWebOnlyEndpointsForDestinations:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)filteredDestinationForMultiway:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)handleIDSQueryResultWithDestinationStatus:(id)arg1 onService:(id)arg2;
 - (void)batchQueryController:(id)arg1 updatedDestinationsStatus:(id)arg2 onService:(id)arg3 error:(id)arg4;
+- (void)postStatusChangedNotification;
+- (void)beginCachedQueryWithDestinations:(id)arg1 onService:(id)arg2;
+- (void)beginCachedQueryWithDestinations:(id)arg1;
+- (void)beginBatchQueryWithDestinations:(id)arg1;
+- (void)beginQueryWithDestination:(id)arg1 onService:(id)arg2;
 - (void)beginQueryWithDestinations:(id)arg1;
 - (void)cancelQueries;
+- (_Bool)isWebCapableFaceTimeAvailableForDestination:(id)arg1;
+- (_Bool)isModernFaceTimeAvailableForDestination:(id)arg1;
+- (long long)faceTimeMultiwayAvailabilityForDestination:(id)arg1;
+- (long long)faceTimeVideoAvailabilityForDestination:(id)arg1;
+- (long long)faceTimeAudioAvailabilityForDestination:(id)arg1;
 - (_Bool)isFaceTimeMultiwayAvailableForAnyDestinationInDestinations:(id)arg1;
 - (_Bool)isFaceTimeAudioAvailableForAnyDestinationInDestinations:(id)arg1;
 - (_Bool)isFaceTimeVideoAvailableForAnyDestinationInDestinations:(id)arg1;

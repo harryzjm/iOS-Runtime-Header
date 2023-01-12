@@ -32,25 +32,25 @@
 - (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)updateWithDictionary:(id)arg1;
 - (id)__INCodableDescriptionDefaultUnitKey;
-- (id)__INIntentResponseCodableDescriptionDefaultUnitKey;
-- (id)__INTypeCodableDescriptionDefaultUnitKey;
 - (id)__INCodableDescriptionDefaultValueKey;
-- (id)__INIntentResponseCodableDescriptionDefaultValueKey;
-- (id)__INTypeCodableDescriptionDefaultValueKey;
 - (id)__INCodableDescriptionMaximumUnitKey;
-- (id)__INIntentResponseCodableDescriptionMaximumUnitKey;
-- (id)__INTypeCodableDescriptionMaximumUnitKey;
 - (id)__INCodableDescriptionMaximumValueKey;
-- (id)__INIntentResponseCodableDescriptionMaximumValueKey;
-- (id)__INTypeCodableDescriptionMaximumValueKey;
 - (id)__INCodableDescriptionMinimumUnitKey;
-- (id)__INIntentResponseCodableDescriptionMinimumUnitKey;
-- (id)__INTypeCodableDescriptionMinimumUnitKey;
 - (id)__INCodableDescriptionMinimumValueKey;
-- (id)__INIntentResponseCodableDescriptionMinimumValueKey;
-- (id)__INTypeCodableDescriptionMinimumValueKey;
 - (id)__INCodableDescriptionUnitKey;
+- (id)__INIntentResponseCodableDescriptionDefaultUnitKey;
+- (id)__INIntentResponseCodableDescriptionDefaultValueKey;
+- (id)__INIntentResponseCodableDescriptionMaximumUnitKey;
+- (id)__INIntentResponseCodableDescriptionMaximumValueKey;
+- (id)__INIntentResponseCodableDescriptionMinimumUnitKey;
+- (id)__INIntentResponseCodableDescriptionMinimumValueKey;
 - (id)__INIntentResponseCodableDescriptionUnitKey;
+- (id)__INTypeCodableDescriptionDefaultUnitKey;
+- (id)__INTypeCodableDescriptionDefaultValueKey;
+- (id)__INTypeCodableDescriptionMaximumUnitKey;
+- (id)__INTypeCodableDescriptionMaximumValueKey;
+- (id)__INTypeCodableDescriptionMinimumUnitKey;
+- (id)__INTypeCodableDescriptionMinimumValueKey;
 - (id)__INTypeCodableDescriptionUnitKey;
 
 // Remaining properties

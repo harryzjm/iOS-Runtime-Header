@@ -6,38 +6,44 @@
 
 #import <objc/NSObject.h>
 
-@class NSCache, NSDate;
+@class NSCache, NSDate, NSMutableSet;
+@protocol OS_os_log;
 
 @interface PNRResourceManager : NSObject
 {
     NSDate *_lastCatalogLoadTime;
     unsigned int _catalogLoadRetryMultiplier;
     NSCache *_fileDataCache;
+    unsigned long long _stateCaptureHandle;
+    NSObject<OS_os_log> *_log;
+    NSMutableSet *_downloadsInflight;
+    struct os_unfair_lock_s _downloadsInflightLock;
 }
 
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (void)catalogLoadThen:(CDUnknownBlockType)arg1;
+- (struct os_state_data_s *)_stateCaptureWithHints:(struct os_state_hints_s *)arg1;
 - (void)_catalogDownloadFinishedWithResult:(long long)arg1;
 - (void)_updateCatalog;
 - (void)_updateCatalogAfterDelay:(double)arg1;
 - (void)_setLastCatalogLoadTime:(id)arg1;
 - (id)_lastCatalogLoadTime;
-- (id)_URLForInstalledResourceOfType:(id)arg1;
-- (id)_localFileURLForMAQuery:(id)arg1 queryResult:(long long)arg2;
+- (void)_URLForInstalledResourceOfType:(id)arg1 logId:(id)arg2 resultBlock:(CDUnknownBlockType)arg3;
 - (id)_assetQueryForPNRResource:(id)arg1;
-- (id)_readAndCacheDataFrom:(id)arg1 forAssetName:(id)arg2 zeroCacheCost:(_Bool)arg3;
-- (id)_checkCacheForAssetName:(id)arg1;
-- (id)openPNRSFileForPrefix:(id)arg1;
-- (id)openPNRFileForPrefix:(id)arg1;
-- (id)openNANPFile;
-- (id)openCountryCodeFile;
-- (id)openLatestAssetWithBasename:(id)arg1 maType:(id)arg2;
+- (id)_readAndCacheDataFrom:(id)arg1 forAssetName:(id)arg2 zeroCacheCost:(_Bool)arg3 logId:(id)arg4;
+- (id)_checkCacheForAssetName:(id)arg1 logId:(id)arg2;
+- (void)openPNRSFileForPrefix:(id)arg1 logId:(id)arg2 withResult:(CDUnknownBlockType)arg3;
+- (void)openPNRFileForPrefix:(id)arg1 logId:(id)arg2 withResult:(CDUnknownBlockType)arg3;
+- (void)openNANPFileUsingLogId:(id)arg1 withResultBlock:(CDUnknownBlockType)arg2;
+- (void)openCountryCodeFileUsingLogId:(id)arg1 withResult:(CDUnknownBlockType)arg2;
+- (void)_openLatestAssetWithBasename:(id)arg1 maType:(id)arg2 logId:(id)arg3 resultBlock:(CDUnknownBlockType)arg4;
 - (_Bool)_lookupString:(id)arg1 inTrieMemory:(void *)arg2 value:(unsigned int *)arg3;
-- (id)lookupStringForPhoneNumber:(id)arg1 inCC:(id)arg2 countryCodeOfDevice:(id)arg3;
-- (id)_bestStringForInCountryPhoneNumber:(id)arg1 phoneNumberCC:(id)arg2 countryOfDevice:(id)arg3 countryTrieData:(id)arg4 countryStrings:(id)arg5;
-- (id)lookupISOCountryCodeFromNANPNumber:(id)arg1;
-- (id)lookupCCForPhoneNumber:(id)arg1;
+- (void)lookupStringForPhoneNumber:(id)arg1 inCC:(id)arg2 countryCodeOfDevice:(id)arg3 logId:(id)arg4 withResult:(CDUnknownBlockType)arg5;
+- (void)_bestStringForInCountryPhoneNumber:(id)arg1 phoneNumberCC:(id)arg2 countryOfDevice:(id)arg3 countryTrieData:(id)arg4 countryStrings:(id)arg5 logId:(id)arg6 resultBlock:(CDUnknownBlockType)arg7;
+- (void)lookupISOCountryCodeFromNANPNumber:(id)arg1 logId:(id)arg2 withResult:(CDUnknownBlockType)arg3;
+- (void)lookupCCForPhoneNumber:(id)arg1 logId:(id)arg2 withResult:(CDUnknownBlockType)arg3;
+- (void)dealloc;
 - (id)init;
 
 @end

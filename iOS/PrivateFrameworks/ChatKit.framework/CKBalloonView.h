@@ -71,6 +71,11 @@
 @property(nonatomic) _Bool hasTail; // @synthesize hasTail=_hasTail;
 @property(nonatomic) BOOL orientation; // @synthesize orientation=_orientation;
 @property(nonatomic) __weak id <CKBalloonViewDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)performTranscriptRevealAnimation:(CDUnknownBlockType)arg1;
+- (void)performTranscriptHideAnimation:(CDUnknownBlockType)arg1;
+- (void)performTranscriptRemovalAnimation:(CDUnknownBlockType)arg1;
+- (void)performTranscriptReloadAnimation:(CDUnknownBlockType)arg1;
+- (void)performTranscriptInsertionAnimation:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic, getter=isSelected) _Bool selected;
 - (void)setSelected:(_Bool)arg1 withSelectionState:(id)arg2;
 - (void)updateRasterizationForInvisibleInkEffect;
@@ -94,6 +99,7 @@
 - (void)addFilter:(id)arg1;
 - (void)setHasOverlay:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setHasOverlay:(_Bool)arg1 autoDismiss:(_Bool)arg2;
+- (id)createOverlayImageView;
 - (void)addOverlaySubview:(id)arg1;
 - (void)_dismissOverlay;
 - (id)overlayImage;

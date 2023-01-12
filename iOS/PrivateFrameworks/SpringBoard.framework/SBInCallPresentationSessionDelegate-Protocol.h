@@ -6,9 +6,12 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class NSString, SBInCallBannerPresentableViewController, SBInCallPresentationSession;
+@class NSString, SBInCallBannerPresentableViewController, SBInCallPresentationSession, SBWorkspaceEntity;
+@protocol BSInvalidatable;
 
 @protocol SBInCallPresentationSessionDelegate <NSObject>
+- (_Bool)inCallClientPresentationSession:(SBInCallPresentationSession *)arg1 canRestoreToPreviousEntity:(SBWorkspaceEntity *)arg2;
+- (id <BSInvalidatable>)inCallClientPresentationSession:(SBInCallPresentationSession *)arg1 acquireHideSharePlayContentFromClonedDisplaysAssertionForReason:(NSString *)arg2;
 - (void)inCallClientPresentationSession:(SBInCallPresentationSession *)arg1 callConnectedStatusChangedForPresentableViewController:(SBInCallBannerPresentableViewController *)arg2;
 - (long long)inCallClientPresentationSessionInterfaceOrientationForTransientOverlayPresentation:(SBInCallPresentationSession *)arg1;
 - (long long)inCallClientPresentationSessionInterfaceOrientationForBannerPresentation:(SBInCallPresentationSession *)arg1;

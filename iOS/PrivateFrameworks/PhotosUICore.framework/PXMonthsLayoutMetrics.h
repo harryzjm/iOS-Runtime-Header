@@ -6,6 +6,7 @@
 
 @interface PXMonthsLayoutMetrics
 {
+    _Bool _displaceTopLeadingCardTitle;
     long long _sizeClass;
     long long _orientation;
     double _interitemSpacing;
@@ -15,6 +16,7 @@
     struct UIEdgeInsets _chapterHeaderPadding;
 }
 
+@property(nonatomic) _Bool displaceTopLeadingCardTitle; // @synthesize displaceTopLeadingCardTitle=_displaceTopLeadingCardTitle;
 @property(nonatomic) struct UIEdgeInsets chapterHeaderPadding; // @synthesize chapterHeaderPadding=_chapterHeaderPadding;
 @property(nonatomic) double chapterHeaderHeight; // @synthesize chapterHeaderHeight=_chapterHeaderHeight;
 @property(nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;

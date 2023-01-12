@@ -8,13 +8,13 @@
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
 #import <PhotosUICore/PXCuratedLibraryAssetsDataSourceManagerDelegate-Protocol.h>
 #import <PhotosUICore/PXMutablePhotosLibraryViewModel-Protocol.h>
+#import <PhotosUICore/PXSectionedSelectionManagerSnapshotValidator-Protocol.h>
 #import <PhotosUICore/PXSettingsKeyObserver-Protocol.h>
-#import <PhotosUICore/PXUIKeyCommandNamespace-Protocol.h>
 
-@class NSArray, NSHashTable, NSMutableSet, NSNumber, NSObject, NSSet, NSString, PXAssetActionManager, PXAssetCollectionActionManager, PXAssetsDataSource, PXCPLUIStatusProvider, PXCuratedLibraryActionManager, PXCuratedLibraryAnalysisStatus, PXCuratedLibraryAssetCollectionSkimmingInfo, PXCuratedLibraryAssetsDataSourceManager, PXCuratedLibraryLayoutSpecManager, PXCuratedLibraryStyleGuide, PXScrollViewSpeedometer, PXSectionedSelectionManager, PXSelectionSnapshot, PXUpdater, PXZoomablePhotosViewModel;
-@protocol NSObject, PXCuratedLibraryViewModelPresenter, PXFilterState;
+@class NSArray, NSHashTable, NSMutableSet, NSNumber, NSSet, NSString, PXAssetActionManager, PXAssetCollectionActionManager, PXAssetReference, PXAssetsDataSource, PXCPLUIStatusProvider, PXContentFilterState, PXCuratedLibraryActionManager, PXCuratedLibraryAnalysisStatus, PXCuratedLibraryAssetCollectionSkimmingInfo, PXCuratedLibraryAssetsDataSourceManager, PXCuratedLibraryLayoutSpecManager, PXCuratedLibraryStyleGuide, PXScrollViewSpeedometer, PXSectionedSelectionManager, PXSelectionSnapshot, PXUpdater, PXZoomablePhotosViewModel;
+@protocol NSObject, PXCuratedLibraryViewModelPresenter;
 
-@interface PXCuratedLibraryViewModel <PXUIKeyCommandNamespace, PXMutablePhotosLibraryViewModel, PXCuratedLibraryAssetsDataSourceManagerDelegate, PXChangeObserver, PXAssetsDataSourceManagerObserver, PXSettingsKeyObserver>
+@interface PXCuratedLibraryViewModel <PXMutablePhotosLibraryViewModel, PXCuratedLibraryAssetsDataSourceManagerDelegate, PXSectionedSelectionManagerSnapshotValidator, PXChangeObserver, PXAssetsDataSourceManagerObserver, PXSettingsKeyObserver>
 {
     NSHashTable *_presenters;
     NSHashTable *_views;
@@ -54,8 +54,8 @@
     unsigned long long _libraryState;
     NSString *_selectModeCaption;
     long long _zoomLevel;
-    NSObject<PXFilterState> *_currentFilterState;
-    NSObject<PXFilterState> *_allPhotosFilterState;
+    PXContentFilterState *_currentContentFilterState;
+    PXContentFilterState *_allPhotosContentFilterState;
     PXCuratedLibraryAnalysisStatus *_analysisStatus;
     Class _cplActionManagerClass;
     NSNumber *_userWantsAspectFitContent;
@@ -81,8 +81,8 @@
 @property(readonly, nonatomic) Class cplActionManagerClass; // @synthesize cplActionManagerClass=_cplActionManagerClass;
 @property(readonly, nonatomic) PXCuratedLibraryAnalysisStatus *analysisStatus; // @synthesize analysisStatus=_analysisStatus;
 @property(readonly, nonatomic) CDStruct_15189878 selectedAssetsTypedCount; // @synthesize selectedAssetsTypedCount=_selectedAssetsTypedCount;
-@property(readonly, nonatomic) NSObject<PXFilterState> *allPhotosFilterState; // @synthesize allPhotosFilterState=_allPhotosFilterState;
-@property(readonly, nonatomic) NSObject<PXFilterState> *currentFilterState; // @synthesize currentFilterState=_currentFilterState;
+@property(readonly, nonatomic) PXContentFilterState *allPhotosContentFilterState; // @synthesize allPhotosContentFilterState=_allPhotosContentFilterState;
+@property(readonly, nonatomic) PXContentFilterState *currentContentFilterState; // @synthesize currentContentFilterState=_currentContentFilterState;
 @property(readonly, nonatomic) long long zoomLevel; // @synthesize zoomLevel=_zoomLevel;
 @property(readonly, nonatomic) NSString *selectModeCaption; // @synthesize selectModeCaption=_selectModeCaption;
 @property(readonly, nonatomic) unsigned long long libraryState; // @synthesize libraryState=_libraryState;
@@ -117,6 +117,8 @@
 - (void)_handleSelectionManagerChange:(unsigned long long)arg1;
 - (void)_handleIsSelectingChange;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
+- (_Bool)selectionManagerShouldAvoidEmptySelection:(id)arg1;
+- (id)selectionManager:(id)arg1 validateSnapshot:(id)arg2;
 - (long long)curatedLibraryAssetsDataSourceManager:(id)arg1 transitionTypeFromZoomLevel:(long long)arg2 toZoomLevel:(long long)arg3;
 - (id)curatedLibraryAssetsDataSourceManager:(id)arg1 dominantAssetCollectionReferenceForZoomLevel:(long long)arg2;
 - (void)curatedLibraryAssetsDataSourceManager:(id)arg1 didTransitionFromZoomLevel:(long long)arg2 toZoomLevel:(long long)arg3;
@@ -145,8 +147,8 @@
 - (void)_updateSelectModeCaption;
 - (void)_invalidateSelectModeCaption;
 - (void)setSelectedAssetsTypedCount:(CDStruct_15189878)arg1;
-- (void)_updateCurrentFilterState;
-- (void)_invalidateCurrentFilterState;
+- (void)_updateCurrentContentFilterState;
+- (void)_invalidateCurrentContentFilterState;
 - (void)_updateLibraryState;
 - (void)_invalidateLibraryState;
 - (void)_updateAssetsDataSourceManager;
@@ -172,8 +174,9 @@
 - (void)toggleSelectionForIndexPath:(struct PXSimpleIndexPath)arg1 updateCursorIndexPath:(_Bool)arg2;
 - (void)toggleSelectionForIndexPath:(struct PXSimpleIndexPath)arg1;
 @property(readonly, nonatomic) PXSelectionSnapshot *selectionSnapshot;
-- (void)setAllPhotosFilterState:(id)arg1;
-- (void)setCurrentFilterState:(id)arg1;
+- (void)setAllPhotosContentFilterState:(id)arg1;
+- (void)setCurrentContentFilterState:(id)arg1;
+@property(readonly, nonatomic) _Bool isFilteringContent;
 - (void)setZoomLevel:(long long)arg1;
 - (void)removeView:(id)arg1;
 - (void)addView:(id)arg1;
@@ -184,6 +187,7 @@
 - (void)addPresenter:(id)arg1;
 @property(readonly, nonatomic) NSArray *presenters;
 - (void)setSelectModeCaption:(id)arg1;
+@property(readonly, nonatomic) PXAssetReference *singleSelectedAssetReference;
 - (void)setDraggedAssetReferences:(id)arg1;
 - (void)setSkimmingInfo:(id)arg1;
 - (void)setLibraryState:(unsigned long long)arg1;
@@ -202,18 +206,6 @@
 - (id)initWithAssetsDataSourceManagerConfiguration:(id)arg1 zoomLevel:(long long)arg2 mediaProvider:(id)arg3 specManager:(id)arg4 styleGuide:(id)arg5;
 - (id)initWithPhotoLibrary:(id)arg1 zoomLevel:(long long)arg2 mediaProvider:(id)arg3 specManager:(id)arg4 styleGuide:(id)arg5;
 - (id)init;
-- (_Bool)_performSelectionKeyCommand:(id)arg1 withDelegate:(id)arg2;
-- (void)_performAssetActionType:(id)arg1;
-- (void)_performActionForActionIdentifier:(id)arg1;
-- (void)_performNavigateToZoomLevel:(long long)arg1;
-- (_Bool)performKeyCommand:(id)arg1 keyCommandDelegate:(id)arg2 directionalSelectionDelegate:(id)arg3;
-@property(readonly, nonatomic) NSString *namespaceIdentifier;
-- (void)_addSelectionShortcutsIntoArray:(id)arg1 usingDelegate:(id)arg2;
-- (void)_addEnterOneUpShortcutIntoArray:(id)arg1;
-- (void)_addAssetActionShortcutsIntoArray:(id)arg1;
-- (void)_addActionShortcutsIntoArray:(id)arg1;
-- (void)_addZoomLevelShortcutsIntoArray:(id)arg1;
-- (id)uiKeyCommandsUsingDelegate:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

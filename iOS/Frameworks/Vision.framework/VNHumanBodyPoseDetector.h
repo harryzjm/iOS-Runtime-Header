@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (Class)recognizedPointsObservationClass;
+- (id)vcpPoseRequestSetupOptionsForDetectorOptions:(id)arg1 error:(id *)arg2;
 - (_Bool)completeInitializationForSession:(id)arg1 error:(id *)arg2;
 
 @end

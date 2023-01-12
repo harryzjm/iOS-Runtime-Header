@@ -6,58 +6,82 @@
 
 #import <objc/NSObject.h>
 
-@class PGMemoryController;
+#import <PhotosGraph/PGMemoryEnrichmentProtocol-Protocol.h>
+#import <PhotosGraph/PGMemoryGeneratorProtocol-Protocol.h>
 
-@interface PGMemoryGenerator : NSObject
+@class NSString, PGGraphLocationHelper, PGMemoryController, PGMemoryCurationSession, PGMemoryMomentNodesWithBlockedFeatureCache, PGMemoryProcessedScenesAndFacesCache;
+@protocol OS_os_log;
+
+@interface PGMemoryGenerator : NSObject <PGMemoryGeneratorProtocol, PGMemoryEnrichmentProtocol>
 {
     _Bool _isDebug;
-    unsigned long long _duration;
     PGMemoryController *_controller;
+    NSObject<OS_os_log> *_loggingConnection;
+    PGMemoryCurationSession *_memoryCurationSession;
+    PGMemoryProcessedScenesAndFacesCache *_processedScenesAndFacesCache;
+    PGMemoryMomentNodesWithBlockedFeatureCache *_momentNodesWithBlockedFeatureCache;
+    PGGraphLocationHelper *_locationHelper;
 }
 
-+ (id)fetchedAssetsFromFetchResult:(id)arg1 prefetchOptions:(unsigned long long)arg2;
 + (long long)titleDateMatchingTypeForMemoryCategory:(unsigned long long)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) PGGraphLocationHelper *locationHelper; // @synthesize locationHelper=_locationHelper;
+@property(readonly, nonatomic) NSObject<OS_os_log> *loggingConnection; // @synthesize loggingConnection=_loggingConnection;
 @property _Bool isDebug; // @synthesize isDebug=_isDebug;
 @property(readonly) __weak PGMemoryController *controller; // @synthesize controller=_controller;
-@property unsigned long long duration; // @synthesize duration=_duration;
-- (id)createMemoryWithPotentialMemory:(id)arg1;
-@property(readonly) _Bool canFallbackToDejunkAndDedupeForShowMore;
+- (id)titleGeneratorForTriggeredMemory:(id)arg1 withKeyAsset:(id)arg2 curatedAssets:(id)arg3 extendedCuratedAssets:(id)arg4 titleGenerationContext:(id)arg5 inGraph:(id)arg6;
+- (id)extendedCurationOptionsWithRequiredAssetUUIDs:(id)arg1 triggeredMemory:(id)arg2;
+- (id)curationOptionsWithRequiredAssetUUIDs:(id)arg1 eligibleAssetUUIDs:(id)arg2 triggeredMemory:(id)arg3;
+- (id)keyAssetCurationOptionsWithTriggeredMemory:(id)arg1 inGraph:(id)arg2;
+- (id)uuidsOfRequiredAssetsWithKeyAsset:(id)arg1 triggeredMemory:(id)arg2 inGraph:(id)arg3 progressReporter:(id)arg4;
+- (id)relevantKeyCurationFeederForTriggeredMemory:(id)arg1 inGraph:(id)arg2 allowGuestAsset:(_Bool)arg3 progressReporter:(id)arg4;
+- (id)relevantCurationFeederForTriggeredMemory:(id)arg1 relevantFeeder:(id)arg2 inGraph:(id)arg3 allowGuestAsset:(_Bool)arg4 progressReporter:(id)arg5;
+- (id)relevantFeederForTriggeredMemory:(id)arg1 inGraph:(id)arg2 allowGuestAsset:(_Bool)arg3 progressReporter:(id)arg4;
+- (id)generateAllPotentialMemoriesWithGraph:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
+- (id)relevantKeyCurationFeederForPotentialMemory:(id)arg1 inGraph:(id)arg2;
+- (id)relevantCurationFeederForPotentialMemory:(id)arg1 inGraph:(id)arg2;
+- (id)relevantFeederForPotentialMemory:(id)arg1 inGraph:(id)arg2;
+- (id)extendedCurationOptionsWithRequiredAssetUUIDs:(id)arg1 potentialMemory:(id)arg2;
+- (id)curationOptionsWithRequiredAssetUUIDs:(id)arg1 potentialMemory:(id)arg2;
+- (id)keyAssetCurationOptionsWithPotentialMemory:(id)arg1 inGraph:(id)arg2;
+- (_Bool)semanticalDedupingEnabledForExtendedCuration;
+- (unsigned long long)durationForExtendedCuration;
+- (_Bool)semanticalDedupingEnabledForCuration;
+- (unsigned long long)durationForCuration;
+- (id)defaultTitleGeneratorWithMomentNodes:(id)arg1 keyAsset:(id)arg2 curatedAssets:(id)arg3 extendedCuratedAssets:(id)arg4 category:(unsigned long long)arg5 creationDate:(id)arg6 titleGenerationContext:(id)arg7;
+- (id)createMemoryWithPotentialMemory:(id)arg1 andGraph:(id)arg2;
 - (void)addLocalIdentifiersFromAssets:(id)arg1 to:(id)arg2;
 - (id)localIdentifiersFromAssets:(id)arg1;
-- (id)assetCollectionWithAssetLocalIdentifiers:(id)arg1;
 - (id)_additionalInfoKeywordsForPotentialMemory:(id)arg1;
 - (id)_createMemoryDebugWithPotentialMemory:(id)arg1;
 - (unsigned long long)_numberOfIndependentMomentNodesInMomentNodes:(id)arg1;
-- (void)_enumerateBestScoringPotentialMemoriesInPotentialMemories:(id)arg1 attemptUpgradesBeforeSorting:(_Bool)arg2 usingBlock:(CDUnknownBlockType)arg3;
-- (_Bool)canProceedAfterAttemptingUpgradesForPotentialMemory:(id)arg1;
-- (_Bool)canProceedAfterAttemptingMeaningfulEventUpgradeForPotentialMemory:(id)arg1 didUpgradeToWeekend:(_Bool)arg2 upgradedToMeaningfulEvent:(_Bool *)arg3;
-- (_Bool)canProceedAfterAttemptingWeekendUpgradeForPotentialMemory:(id)arg1 upgradedToWeekend:(_Bool *)arg2;
-- (_Bool)_eventIsAcceptableForUpgrade:(id)arg1;
+- (void)_enumerateBestScoringPotentialMemoriesInPotentialMemories:(id)arg1 withGraph:(id)arg2 attemptUpgradesBeforeSorting:(_Bool)arg3 usingBlock:(CDUnknownBlockType)arg4;
+- (_Bool)canProceedAfterAttemptingUpgradesForPotentialMemory:(id)arg1 withGraph:(id)arg2;
+- (_Bool)canProceedAfterAttemptingMeaningfulEventUpgradeForPotentialMemory:(id)arg1 withGraph:(id)arg2 didUpgradeToWeekend:(_Bool)arg3 upgradedToMeaningfulEvent:(_Bool *)arg4;
+- (_Bool)canProceedAfterAttemptingWeekendUpgradeForPotentialMemory:(id)arg1 withGraph:(id)arg2 upgradedToWeekend:(_Bool *)arg3;
+- (_Bool)_event:(id)arg1 isAcceptableForUpgradeWithGraph:(id)arg2;
 - (void)_generateDefaultTitleAndSubtitleForMemory:(id)arg1 withPotentialMemory:(id)arg2;
-- (void)setDefaultValuesIfNeededOnNewMemory:(id)arg1 withPotentialMemory:(id)arg2;
-- (_Bool)_computeMissingCurationsInMemory:(id)arg1 fromFeeder:(id)arg2 keyAssetCriteria:(id)arg3 useMemoryGeneratorDefaultTricks:(_Bool)arg4;
-- (_Bool)computeMissingCurationsInMemory:(id)arg1 fromFeeder:(id)arg2 keyAssetCriteria:(id)arg3;
-- (_Bool)computeMissingCurationsInMemory:(id)arg1 fromAssetCollection:(id)arg2 keyAssetCriteria:(id)arg3;
-- (id)extendedCuratedAssetsFromFeeder:(id)arg1 withCuratedAssets:(id)arg2;
-- (id)extendedCuratedAssetsFromAssetCollection:(id)arg1 withCuratedAssets:(id)arg2;
-- (id)extendedCurationOptionsWithCuratedAssets:(id)arg1;
-- (id)curationOptionsWithKeyAsset:(id)arg1;
-- (id)keyAssetCurationOptions;
-- (_Bool)movieDedupingEnabledForExtendedCuration;
-- (_Bool)semanticalDedupingEnabledForExtendedCuration;
-- (unsigned long long)durationForExtendedCuration;
-- (_Bool)movieDedupingEnabledForCuration;
-- (_Bool)semanticalDedupingEnabledForCuration;
-- (unsigned long long)durationForCuration;
+- (void)setDefaultValuesIfNeededOnNewMemory:(id)arg1 withPotentialMemory:(id)arg2 graph:(id)arg3;
+- (void)computeCurationForMemory:(id)arg1 withPotentialMemory:(id)arg2 graph:(id)arg3;
 - (id)_generateMemoryForDryTesting;
 - (id)generateMemories:(unsigned long long)arg1;
 - (id)generateAllMemories;
 - (id)generateMemory;
 - (id)_potentialMemoriesForDryTesting;
-- (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
-- (void)_enumeratePotentialMemoriesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2 andGraph:(id)arg3;
+- (void)_enumeratePotentialMemoriesWithGraph:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+@property(readonly, nonatomic) PGMemoryMomentNodesWithBlockedFeatureCache *momentNodesWithBlockedFeatureCache; // @synthesize momentNodesWithBlockedFeatureCache=_momentNodesWithBlockedFeatureCache;
+@property(readonly, nonatomic) PGMemoryProcessedScenesAndFacesCache *processedScenesAndFacesCache; // @synthesize processedScenesAndFacesCache=_processedScenesAndFacesCache;
+@property(readonly, nonatomic) PGMemoryCurationSession *memoryCurationSession; // @synthesize memoryCurationSession=_memoryCurationSession;
 - (id)initWithController:(id)arg1;
+- (id)initWithMemoryGenerationContext:(id)arg1;
+- (id)initWithMemoryCurationSession:(id)arg1 loggingConnection:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

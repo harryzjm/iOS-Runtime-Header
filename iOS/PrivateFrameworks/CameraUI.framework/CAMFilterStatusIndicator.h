@@ -10,8 +10,11 @@
 }
 
 @property(nonatomic, getter=isOn) _Bool on; // @synthesize on=_on;
-- (id)imageForCurrentState;
+- (id)imageNameForAXHUD;
+- (_Bool)shouldUseHierarchicalSymbol;
+- (_Bool)shouldUseActiveTintForCurrentState;
 - (_Bool)shouldUseOutline;
+- (id)imageNameForCurrentState;
 
 @end
 

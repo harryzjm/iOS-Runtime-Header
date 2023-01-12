@@ -49,12 +49,16 @@
 - (_Bool)isAllowedInFreehandDrawings;
 @property(readonly, nonatomic) _Bool supportsShrinkTextToFit;
 @property(readonly, nonatomic) _Bool supportsTextInset;
+- (_Bool)supportsHyperlinks;
 - (_Bool)shouldBeIgnoredWhenCopying;
 @property(readonly, nonatomic) _Bool isFreehandDrawingSpacerShape;
 - (_Bool)canCopyData;
 - (_Bool)needsDownload;
 @property(readonly, nonatomic) TSDShapeStyle *shapeStyle;
 - (Class)styleClass;
+- (id)p_nameFromPathSource;
+- (id)p_shapeLibraryUserDefinedName;
+- (id)typeName;
 - (_Bool)allowsTitle;
 - (_Bool)allowsCaption;
 - (Class)repClass;
@@ -64,9 +68,10 @@
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 style:(id)arg3 pathSource:(id)arg4;
 - (void)p_correctNearZeroWidthLines;
 - (void)p_correctLineSegmentGeometry;
-- (void)saveToArchive:(struct ShapeArchive *)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
-- (void)loadFromArchive:(const struct ShapeArchive *)arg1 unarchiver:(id)arg2;
+- (void)p_recoverFromMissingStyleDuringUnarchivingIfNeededFromVersion:(unsigned long long)arg1;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 
 // Remaining properties

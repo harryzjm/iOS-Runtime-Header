@@ -18,6 +18,7 @@
     NSObject<OS_dispatch_queue> *_queue;
     _Bool _loadingSnapshot;
     id <CNScheduler> _mainThreadScheduler;
+    _Bool _shouldRevalidateFilterOnStoreChange;
     _Bool _fetchUnified;
     _Bool _meContactNeedsUpdate;
     CNContactFormatter *contactFormatter;
@@ -39,6 +40,7 @@
 @property(nonatomic) _Bool fetchUnified; // @synthesize fetchUnified=_fetchUnified;
 @property(retain, nonatomic) NSArray *keysToFetch; // @synthesize keysToFetch=_keysToFetch;
 @property(retain, nonatomic) CNManagedConfiguration *managedConfiguration; // @synthesize managedConfiguration=_managedConfiguration;
+@property(nonatomic) _Bool shouldRevalidateFilterOnStoreChange; // @synthesize shouldRevalidateFilterOnStoreChange=_shouldRevalidateFilterOnStoreChange;
 @property(retain, nonatomic) CNContactStore *store; // @synthesize store=_store;
 @property(copy, nonatomic) CNContactStoreFilter *filter; // @synthesize filter=_filter;
 @property(nonatomic) __weak id <CNContactDataSourceDelegate> delegate; // @synthesize delegate;
@@ -59,6 +61,7 @@
 @property(readonly, nonatomic) _Bool canReload;
 - (void)contactStoreMeContactDidChange:(id)arg1;
 - (void)contactStoreDidChange:(id)arg1;
+- (void)validateFilter;
 - (_Bool)setMeContact:(id)arg1 error:(id *)arg2;
 - (id)preferredForNameMeContactIdentifier;
 - (id)preferredForNameMeContactWithKeysToFetch:(id)arg1;

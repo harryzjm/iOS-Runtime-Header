@@ -13,23 +13,29 @@
 #import <SoundAnalysis/SNResult-Protocol.h>
 #import <SoundAnalysis/SNTimeRangeProviding-Protocol.h>
 #import <SoundAnalysis/SNTimeRangeProvidingWritable-Protocol.h>
+#import <SoundAnalysis/SRSampling-Protocol.h>
 
 @class NSString;
 
-@interface SNDetectionResult : NSObject <NSCopying, NSSecureCoding, SNTimeRangeProvidingWritable, SNConfidenceProvidingWritable, SNResult, SNTimeRangeProviding, SNConfidenceProviding>
+@interface SNDetectionResult : NSObject <NSCopying, NSSecureCoding, SRSampling, SNTimeRangeProvidingWritable, SNConfidenceProvidingWritable, SNResult, SNTimeRangeProviding, SNConfidenceProviding>
 {
     _Bool _detected;
     double _confidence;
     NSString *_identifier;
+    NSString *_detectorIdentifier;
     CDStruct_e83c9415 _timeRange;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *detectorIdentifier; // @synthesize detectorIdentifier=_detectorIdentifier;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(nonatomic) _Bool detected; // @synthesize detected=_detected;
 @property(nonatomic) double confidence; // @synthesize confidence=_confidence;
 @property(nonatomic) CDStruct_e83c9415 timeRange; // @synthesize timeRange=_timeRange;
+- (id)initWithBinarySampleRepresentation:(id)arg1 metadata:(id)arg2 timestamp:(double)arg3;
+- (id)binarySampleRepresentation;
+- (id)initWithBinarySampleRepresentation:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(readonly) unsigned long long hash;

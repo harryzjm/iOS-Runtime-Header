@@ -7,12 +7,13 @@
 #import <WorkflowUI/HUServiceGridViewControllerDelegate-Protocol.h>
 #import <WorkflowUI/NSObject-Protocol.h>
 
-@class HFTriggerBuilder, UIViewController;
+@class HFTriggerBuilder, NSError, UIViewController;
 
 @protocol HUTriggerEditorDelegate <NSObject, HUServiceGridViewControllerDelegate>
 - (void)triggerEditor:(UIViewController *)arg1 didFinishWithTriggerBuilder:(HFTriggerBuilder *)arg2;
 
 @optional
+- (void)triggerEditor:(UIViewController *)arg1 didCommitTriggerBuilder:(HFTriggerBuilder *)arg2 withError:(NSError *)arg3;
 - (_Bool)triggerEditor:(UIViewController *)arg1 shouldCommitTriggerBuilder:(HFTriggerBuilder *)arg2;
 @end
 

@@ -7,17 +7,20 @@
 #import <objc/NSObject.h>
 
 @class GEOPDModuleLayoutEntry, NSArray, NSString;
+@protocol GEOModuleConfigurationProvider;
 
 @interface GEOModuleLayoutEntry : NSObject
 {
     GEOPDModuleLayoutEntry *_moduleLayoutEntry;
+    id <GEOModuleConfigurationProvider> _moduleConfigProvider;
 }
 
 + (id)moduleLayoutEntryFromArray:(id)arg1;
 - (void).cxx_destruct;
+- (id)description;
 @property(readonly, nonatomic) NSArray *modules;
 @property(readonly, nonatomic) NSString *debugName;
-- (id)initWithModuleLayoutEntry:(id)arg1;
+- (id)initWithModuleLayoutEntry:(id)arg1 moduleConfigProvider:(id)arg2;
 
 @end
 

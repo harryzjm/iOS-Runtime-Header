@@ -6,35 +6,72 @@
 
 #import <objc/NSObject.h>
 
+@class NSDictionary;
+
 @interface IMFeatureFlags : NSObject
 {
 }
 
 + (id)sharedInstance;
+- (_Bool)isCKScreenshotTestFeatureFlagMember:(id)arg1 withDomain:(id)arg2;
+@property(readonly, nonatomic) NSDictionary *CKScreenshotTestFeatureFlagMembers;
+- (_Bool)CKScreenshotTestFeatureFlagValue;
+@property(readonly, nonatomic) _Bool threeAttachmentStackEnabled;
+@property(readonly, nonatomic) _Bool improvedPriorityInversionFixEnabled;
+@property(readonly, nonatomic) _Bool systemImageAdoptionEnabled;
+- (_Bool)psEnabled;
+@property(readonly, nonatomic) _Bool messagesNotificationFilteringUIEnabled;
+@property(readonly, nonatomic) _Bool uiConsistencyEnabled;
+@property(readonly, nonatomic) _Bool newSuggestionsBannerEnabled;
+@property(readonly, nonatomic) _Bool newInboxViewEnabled;
+@property(readonly, nonatomic) _Bool threeColumnLayoutEnabled;
+- (_Bool)photoAnalysisInSpotlightEnabled;
+- (_Bool)hubbleCMMProcessingEnabled;
+- (_Bool)hubbleUIEnabled;
+- (_Bool)hubbleTranscriptEnabled;
+- (_Bool)modernAppPresentationEnabled;
+@property(readonly, nonatomic) _Bool micInlineReplyBackfillEnabled;
+@property(readonly, nonatomic) _Bool micGroupPhotoEnabled;
+@property(readonly, nonatomic) _Bool chatCacheEnabled;
 @property(readonly, nonatomic) _Bool fullTranscriptLoggingEnabled;
 @property(readonly, nonatomic) _Bool messageSyncP2Enabled;
 @property(readonly, nonatomic) _Bool macApplicationMetricsGatheringEnabled;
 @property(readonly, nonatomic) _Bool macToolbarEnabled;
 @property(readonly, nonatomic) _Bool mentionsKeyboardSuggestionsEnabled;
+- (_Bool)isUnknownGroupSendersEnabled;
 @property(readonly, nonatomic) _Bool mentionsEnabled;
+@property(readonly, nonatomic) _Bool sendSMSAutoReplyDuringUnavailability;
+@property(readonly, nonatomic) _Bool notificationCommunicationContextEnabled;
+@property(readonly, nonatomic) _Bool showKettleAvailability;
+@property(readonly, nonatomic) _Bool showAllInstalledMessageApps;
 @property(readonly, nonatomic) _Bool avatarViewAllowsStaleRendering;
 @property(readonly, nonatomic) _Bool conversationPinningTouchdownDimEnabled;
 @property(readonly, nonatomic) _Bool conversationPinningMultiDragEnabled;
 @property(readonly, nonatomic) _Bool conversationPinningUsesLastNameForDuplicatesEnabled;
-@property(readonly, nonatomic) _Bool conversationPinningSyncEnabled;
-@property(readonly, nonatomic) _Bool conversationPinningOnboardingEnabled;
-@property(readonly, nonatomic) _Bool conversationPinningEnabled;
-@property(readonly, nonatomic) _Bool newConversationListEnabled;
+@property(readonly, nonatomic) _Bool animatedImagesBlastDoorEnabled;
+@property(readonly, nonatomic) _Bool smsMmsBlastDoorEnabled;
+- (_Bool)isPassKitBlastDoorEnabled;
+- (_Bool)isAudioPreviewBlastDoorEnabled;
 - (_Bool)isImagePreviewBlastDoorEnabled;
+- (_Bool)isBlastDoorAttachmentPreviewEnabled;
 - (_Bool)isGreenfieldBlastDoorEnabled;
 - (_Bool)isGreenfieldEnabled;
 - (_Bool)fixIMDPersistenceAgentPriorityInversion;
 - (_Bool)fixIMTranscoderAgentPriorityInversion;
+@property(readonly, nonatomic) _Bool businessGreeting;
+@property(readonly, nonatomic) _Bool businessBrandedNewCompose;
 - (_Bool)messageAppFreezerEnabled;
 - (_Bool)fixImagentPriorityInversion;
 - (_Bool)loadAllChatsProgressivelyEnabled;
-- (_Bool)groupPhotoEnabled;
+@property(readonly, nonatomic) _Bool simSwitcherEnabled;
+@property(readonly, nonatomic) _Bool isExpanseEnabled;
+- (_Bool)isInterstellarEnabled;
+@property(readonly, nonatomic) _Bool translationEnabled;
+- (_Bool)allCallOptionsInNavBarButtonEnabled;
 - (_Bool)messagesBlastdoorEnabled;
+@property(readonly, nonatomic) _Bool supplementalLexiconMentionsEnabled;
+@property(readonly, nonatomic) _Bool simPickerForMFMessageComposeViewEnabled;
+@property(readonly, nonatomic) _Bool smsfilterForBrazilEnabled;
 - (_Bool)manuallyAckMessagesEnabled;
 - (_Bool)certifiedDeliveryEnabled;
 

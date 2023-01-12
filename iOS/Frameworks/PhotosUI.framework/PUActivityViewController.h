@@ -13,12 +13,11 @@
 #import <PhotosUI/PXForcedDismissableViewController-Protocol.h>
 #import <PhotosUI/UIActivityViewControllerObjectManipulationDelegate-Protocol.h>
 
-@class NSArray, NSOrderedSet, NSString, PLProgressView, PUActivityItemSourceController, PUActivityProgressController, PUActivitySharingController, PUActivitySharingViewModel, PUSharingHeaderController, PXCPLStatusProvider, UIView;
+@class NSArray, NSOrderedSet, NSString, PHPerson, PLProgressView, PUActivityItemSourceController, PUActivityProgressController, PUActivitySharingController, PUActivitySharingViewModel, PUSharingHeaderController, PXCPLStatusProvider, UIView;
 @protocol PUActivityViewControllerDelegate, PXDisplayAsset, UIActivityItemLinkPresentationSource;
 
 @interface PUActivityViewController : UIActivityViewController <PXForcedDismissableViewController, PXChangeObserver, PUActivityItemSourceControllerDelegate, UIActivityViewControllerObjectManipulationDelegate, PUSharingHeaderDataProvider, PXActivityViewController>
 {
-    struct __CFString *_aggregateKey;
     PLProgressView *_remakerProgressView;
     UIView *_topBorderView;
     PUActivityItemSourceController *_itemSourceController;
@@ -44,6 +43,7 @@
     PUActivitySharingViewModel *_sharingViewModel;
     NSArray *_photosActivities;
     id <PUActivityViewControllerDelegate> _delegate;
+    const struct __CFString *_aggregateKey;
     CDUnknownBlockType _readyToInteractHandler;
     CDUnknownBlockType _ppt_readyToInteractHandler;
     PUActivitySharingController *_activitySharingController;
@@ -56,6 +56,8 @@
 + (_Bool)cmmThresholdIsMetForAssetItems:(id)arg1;
 + (id)new;
 + (_Bool)needsConfidentialityCheckForActivityType:(id)arg1;
++ (id)externalApplicationExcludedPhotosActivityTypes;
++ (id)excludedPhotosActivityTypesForPresentationSource:(unsigned long long)arg1;
 + (id)photosApplicationActivities;
 + (id)actionSheetPhotosApplicationActivities;
 + (id)defaultActivityTypeOrder;
@@ -89,8 +91,10 @@
 - (void)_cancel;
 - (void)_prepareActivity:(id)arg1;
 - (void)_presentCMMSuggestionAlertForActivity:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)_presentUnsavedSyndicatedAssetsAlertIfNeededForActivity:(id)arg1 forcePreparationAsMomentShareLink:(_Bool)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (id)_syndicationAssetSavingHelperWithAssets:(id)arg1;
 - (void)_adjustPreparationOptionsIfNeededForActivity:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (void)_presentAlertIfNeededForActivity:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)_presentAirPlayAlertIfNeededForActivity:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)_performActivity:(id)arg1;
 - (_Bool)_shouldPresentAirplayAlertForActivity:(id)arg1;
 - (id)_titleForActivity:(id)arg1;
@@ -104,6 +108,7 @@
 @property(readonly, nonatomic) NSString *localizedTitle;
 @property(readonly, nonatomic) long long sourceOrigin;
 @property(readonly, copy, nonatomic) NSOrderedSet *orderedSelectedAssets;
+@property(readonly, nonatomic) PHPerson *person;
 @property(readonly, copy, nonatomic) id <PXDisplayAsset> keyAsset;
 - (void)_sharingStyleDidChangeToExpanded:(id)arg1;
 @property(readonly, nonatomic) struct PXAssetMediaTypeCount assetTypeCount;
@@ -132,7 +137,8 @@
 - (void)_showRemakerProgressView:(id)arg1 forMail:(_Bool)arg2 withCancelationHandler:(CDUnknownBlockType)arg3;
 - (void)_handleUserCancelWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_sendCPAnalyticsAssetExportPreparationEventWithActivityType:(id)arg1 didComplete:(_Bool)arg2 error:(id)arg3;
-- (void)_sendCPAnalyticsShareEventWithActivityType:(id)arg1 didComplete:(_Bool)arg2;
+- (void)_sendCPAnalyticsShareEventForMultipleSelectionShare;
+- (void)_sendCPAnalyticsShareEventWithActivityType:(id)arg1 category:(long long)arg2 didComplete:(_Bool)arg3;
 - (id)_generateAnalyticsPayloadForSharingEventsToActivityType:(id)arg1;
 - (void)_activity:(id)arg1 category:(long long)arg2 didComplete:(_Bool)arg3;
 - (void)_updateTopBorderView;

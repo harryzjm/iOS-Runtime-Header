@@ -8,11 +8,14 @@
 
 #import <ReminderKit/REMConflictResolving-Protocol.h>
 #import <ReminderKit/REMExternalSyncMetadataWritableProviding-Protocol.h>
+#import <ReminderKit/REMPersonIDProviding-Protocol.h>
 #import <ReminderKit/REMSaveRequestTrackedValue-Protocol.h>
+#import <ReminderKit/REMSupportedVersionProviding-Protocol.h>
+#import <ReminderKit/REMSupportedVersionUpdating-Protocol.h>
 
 @class NSData, NSSet, NSString, REMAccountCapabilities, REMAccountGroupContextChangeItem, REMAccountStorage, REMCRMergeableOrderedSet, REMChangedKeysObserver, REMObjectID, REMResolutionTokenMap, REMSaveRequest;
 
-@interface REMAccountChangeItem : NSObject <REMConflictResolving, REMSaveRequestTrackedValue, REMExternalSyncMetadataWritableProviding>
+@interface REMAccountChangeItem : NSObject <REMConflictResolving, REMPersonIDProviding, REMSaveRequestTrackedValue, REMExternalSyncMetadataWritableProviding, REMSupportedVersionProviding, REMSupportedVersionUpdating>
 {
     REMSaveRequest *_saveRequest;
     REMAccountStorage *_storage;
@@ -27,17 +30,26 @@
 @property(readonly, nonatomic) REMSaveRequest *saveRequest; // @synthesize saveRequest=_saveRequest;
 - (void)_editListIDsOrderingUsingBlock:(CDUnknownBlockType)arg1;
 - (void)_lowLevelApplyUndoToOrdering:(id)arg1;
-- (void)_lowLevelAddListChangeItemToOrdering:(id)arg1 atIndexOfSibling:(id)arg2 isAfter:(_Bool)arg3 withParentListChangeItem:(id)arg4;
-- (void)_reassignListChangeItem:(id)arg1 withParentListChangeItem:(id)arg2;
-- (void)insertListChangeItem:(id)arg1 adjacentToListChangeItem:(id)arg2 isAfter:(_Bool)arg3 withParentListChangeItem:(id)arg4;
-- (id)lowLevelRemoveListIDFromOrdering:(id)arg1;
-- (void)lowLevelAddListIDToOrdering:(id)arg1 withParentListChangeItem:(id)arg2;
-- (id)listChangeItemsByOrderingListChangeItems:(id)arg1;
+- (void)_lowLevelAddMergeableOrderingNodeToOrdering:(id)arg1 atIndexOfSibling:(id)arg2 isAfter:(_Bool)arg3 withParentMergeableOrderingNode:(id)arg4;
+- (void)_reassignMergeableOrderingNode:(id)arg1 withParentListChangeItem:(id)arg2;
+- (void)insertMergeableOrderingNode:(id)arg1 adjacentToMergeableOrderingNode:(id)arg2 isAfter:(_Bool)arg3 withParentMergeableOrderingNode:(id)arg4;
+- (void)test_lowLevelEditOrderingByMovingListObjectID:(id)arg1 toTarget:(unsigned long long)arg2;
+- (id)lowLevelRemoveMergeableOrderingNodeIDFromOrdering:(id)arg1;
+- (void)lowLevelAddMergeableOrderingNodeIDToOrdering:(id)arg1 withParentMergeableOrderingNode:(id)arg2;
+- (id)mergeableOrderingNodesByOrderingMergeableOrderingNodes:(id)arg1;
 - (void)removeFromStore;
+- (void)undeleteSmartListWithID:(id)arg1 usingUndo:(id)arg2;
 - (void)undeleteListWithID:(id)arg1 usingUndo:(id)arg2;
+- (void)insertMergeableOrderingNode:(id)arg1 afterMergeableOrderingNode:(id)arg2;
+- (void)insertMergeableOrderingNode:(id)arg1 beforeMergeableOrderingNode:(id)arg2;
+- (void)addMergeableOrderingNode:(id)arg1;
+- (void)insertSmartListChangeItem:(id)arg1 afterSmartListChangeItem:(id)arg2;
+- (void)insertSmartListChangeItem:(id)arg1 beforeSmartListChangeItem:(id)arg2;
+- (void)addSmartListChangeItem:(id)arg1;
 - (void)insertListChangeItem:(id)arg1 afterListChangeItem:(id)arg2;
 - (void)insertListChangeItem:(id)arg1 beforeListChangeItem:(id)arg2;
 - (void)addListChangeItem:(id)arg1;
+- (_Bool)isUnsupported;
 - (id)changedKeys;
 - (id)resolutionTokenKeyForChangedKey:(id)arg1;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
@@ -64,6 +76,7 @@
 @property(nonatomic) _Bool didChooseToMigrateLocally; // @dynamic didChooseToMigrateLocally;
 @property(nonatomic) _Bool didFinishMigration; // @dynamic didFinishMigration;
 @property(retain, nonatomic) NSString *displayName; // @dynamic displayName;
+@property(readonly, nonatomic) long long effectiveMinimumSupportedVersion; // @dynamic effectiveMinimumSupportedVersion;
 @property(copy, nonatomic) NSString *externalIdentifier; // @dynamic externalIdentifier;
 @property(copy, nonatomic) NSString *externalModificationTag; // @dynamic externalModificationTag;
 @property(readonly) unsigned long long hash;
@@ -72,11 +85,16 @@
 @property(retain, nonatomic) NSSet *listIDsToUndelete; // @dynamic listIDsToUndelete;
 @property(nonatomic) _Bool listsDADisplayOrderChanged; // @dynamic listsDADisplayOrderChanged;
 @property(nonatomic) _Bool markedForRemoval; // @dynamic markedForRemoval;
+@property(readonly, nonatomic) long long minimumSupportedVersion; // @dynamic minimumSupportedVersion;
 @property(retain, nonatomic) NSString *name; // @dynamic name;
 @property(retain, nonatomic) REMObjectID *objectID; // @dynamic objectID;
+@property(nonatomic) long long persistenceCloudSchemaVersion; // @dynamic persistenceCloudSchemaVersion;
+@property(copy, nonatomic) NSString *personID; // @dynamic personID;
+@property(copy, nonatomic) NSData *personIDSalt; // @dynamic personIDSalt;
 @property(readonly, nonatomic) REMObjectID *remObjectID; // @dynamic remObjectID;
 @property(retain, nonatomic) REMResolutionTokenMap *resolutionTokenMap; // @dynamic resolutionTokenMap;
 @property(retain, nonatomic) NSData *resolutionTokenMapData; // @dynamic resolutionTokenMapData;
+@property(retain, nonatomic) NSSet *smartListIDsToUndelete; // @dynamic smartListIDsToUndelete;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) long long type; // @dynamic type;
 

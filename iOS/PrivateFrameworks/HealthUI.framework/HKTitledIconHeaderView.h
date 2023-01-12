@@ -10,7 +10,9 @@
 
 @interface HKTitledIconHeaderView : UIView
 {
+    NSString *_titleTextStyle;
     _Bool _centersSubtitle;
+    _Bool _prefersLargeTitle;
     NSString *_title;
     NSString *_subtitle;
     UIImage *_iconImage;
@@ -23,6 +25,7 @@
 @property(retain, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) UIImageView *iconImageView; // @synthesize iconImageView=_iconImageView;
+@property(nonatomic) _Bool prefersLargeTitle; // @synthesize prefersLargeTitle=_prefersLargeTitle;
 @property(nonatomic) _Bool centersSubtitle; // @synthesize centersSubtitle=_centersSubtitle;
 @property(retain, nonatomic) UIImage *iconImage; // @synthesize iconImage=_iconImage;
 @property(copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;

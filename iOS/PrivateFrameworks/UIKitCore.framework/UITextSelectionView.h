@@ -35,6 +35,8 @@ __attribute__((visibility("hidden")))
     unsigned long long _activeGrabberSuppressionAssertions;
     CAKeyframeAnimation *_caretBlinkAnimation;
     id _floatingCaretBlinkAssertion;
+    unsigned long long _viewDidCommitNotification;
+    unsigned long long _viewDidStopNotification;
     _Bool m_forceRangeView;
     _Bool m_isInstalledInSelectionContainerView;
     _Bool _isIndirectFloatingCaret;
@@ -76,6 +78,7 @@ __attribute__((visibility("hidden")))
 - (void)animateCaret:(id)arg1 toPosition:(struct CGPoint)arg2 withSize:(struct CGSize)arg3;
 - (void)updateFloatingCursorAtPoint:(struct CGPoint)arg1 velocity:(struct CGPoint)arg2;
 - (void)updateFloatingCursorAtPoint:(struct CGPoint)arg1;
+- (struct CGPoint)floatingCursorPositionForPoint:(struct CGPoint)arg1 lineSnapping:(_Bool)arg2;
 - (struct CGPoint)floatingCursorPositionForPoint:(struct CGPoint)arg1;
 - (void)beginFloatingCursorAtPoint:(struct CGPoint)arg1;
 - (_Bool)_shouldUseIndirectFloatingCaret;
@@ -139,6 +142,7 @@ __attribute__((visibility("hidden")))
 - (id)_actingParentViewForGestureRecognizers;
 - (void)installIfNecessary;
 - (id)_customSelectionContainerView;
+- (_Bool)_viewUsesAsynchronousProtocol;
 - (void)clearRangeAnimated:(_Bool)arg1;
 - (void)removeFromSuperview;
 - (void)textSelectionViewActivated:(id)arg1;
@@ -153,6 +157,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)affectedByScrollerNotification:(id)arg1;
 - (void)selectionDidScroll:(id)arg1;
 - (void)selectionWillScroll:(id)arg1;
+- (void)_unregisterForViewAnimationNotificationsIfNecessary;
+- (void)_registerForViewAnimationNotificationsIfNecessary;
+- (void)_updateViewAnimateNotificationObservationIfNecessary;
 - (void)viewAnimate:(id)arg1;
 - (void)inputModeDidChange:(id)arg1;
 - (void)windowDidResignOrBecomeKey;
@@ -163,6 +170,8 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (_Bool)isValid;
 - (void)invalidate;
+- (void)didMoveToSuperview;
+- (void)willMoveToSuperview;
 - (void)validateWithInteractionAssistant:(id)arg1;
 - (id)initWithInteractionAssistant:(id)arg1;
 

@@ -16,7 +16,11 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *extensionService;
     MISSING_TYPE *descriptorService;
     MISSING_TYPE *stateCaptureService;
-    MISSING_TYPE *keybagMonitor;
+    MISSING_TYPE *configurationService;
+    MISSING_TYPE *timelineCacheManager;
+    MISSING_TYPE *placeholderCacheManager;
+    MISSING_TYPE *snapshotCacheManager;
+    MISSING_TYPE *keybagStateProvider;
     MISSING_TYPE *subscriptions;
     MISSING_TYPE *connectionListener;
     MISSING_TYPE *clientConnections;

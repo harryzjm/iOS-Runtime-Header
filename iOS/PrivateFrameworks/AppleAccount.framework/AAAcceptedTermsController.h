@@ -10,8 +10,8 @@
 {
 }
 
-- (id)_buildSecureBackupTermsInfo:(id)arg1;
-- (void)_secureBackupSaveTermsAcceptance:(id)arg1;
+- (void)_repairTermsBackup:(id)arg1 forAccount:(id)arg2;
+- (void)fetchTermsAcceptanceForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)saveTermsAcceptance:(id)arg1 forAccount:(id)arg2;
 
 @end

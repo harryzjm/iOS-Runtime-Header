@@ -46,8 +46,8 @@
 @property(retain, nonatomic) AVCaptureDeviceFormat *currentVideoDeviceFormat; // @synthesize currentVideoDeviceFormat=_currentVideoDeviceFormat;
 @property(retain, nonatomic) AVCaptureDevice *currentVideoDevice; // @synthesize currentVideoDevice=_currentVideoDevice;
 @property(retain, nonatomic) AVCaptureSession *currentCaptureSession; // @synthesize currentCaptureSession=_currentCaptureSession;
-- (id)metadataOutputForMode:(long long)arg1;
-- (id)outputsForMode:(long long)arg1 shouldUseThumbnailOutputForFilters:(_Bool)arg2;
+- (id)_metadataOutputForMode:(long long)arg1;
+- (id)outputsForGraphConfiguration:(id)arg1;
 - (id)primaryOutputForMode:(long long)arg1;
 - (id)audioDeviceInput;
 - (id)videoDeviceForMode:(long long)arg1 desiredDevice:(long long)arg2 videoConfiguration:(long long)arg3 resolvedDevice:(long long *)arg4;

@@ -124,6 +124,8 @@
 - (_Bool)shouldUsePlatterInset;
 - (_Bool)isPlacementForTopBezelComplication;
 - (void)_applyColorScheme:(id)arg1;
+- (void)applyTransitionFraction:(double)arg1 fromFaceColorPalette:(id)arg2 toFaceColorPalette:(id)arg3 units:(unsigned long long)arg4 brightenedUnits:(unsigned long long)arg5;
+- (void)applyFaceColorPalette:(id)arg1 units:(unsigned long long)arg2;
 - (void)applyTransitionFraction:(double)arg1 fromFaceColor:(unsigned long long)arg2 toFaceColor:(unsigned long long)arg3 units:(unsigned long long)arg4 brightenedUnits:(unsigned long long)arg5;
 - (void)applyFaceColor:(unsigned long long)arg1 units:(unsigned long long)arg2;
 - (void)_updateForegroundImageAlpha;

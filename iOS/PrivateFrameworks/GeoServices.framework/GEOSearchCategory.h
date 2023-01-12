@@ -36,6 +36,8 @@
 @property(readonly, nonatomic) NSString *popularTokenString;
 @property(readonly, nonatomic) NSString *shortDisplayString;
 @property(readonly, nonatomic) NSString *displayString;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithAutocompleteEntry:(id)arg1;

@@ -8,6 +8,7 @@
 
 @interface NSMutableString (CNOrderedDictionary)
 - (unsigned long long)_cn_replaceStrings:(id)arg1;
+- (void)_cn_replaceOccurrencesOfString:(id)arg1 withString:(id)arg2;
 - (void)_cn_deleteCharactersInSet:(id)arg1 options:(unsigned long long)arg2;
 - (void)_cn_deleteCharactersInSet:(id)arg1;
 - (void)_cn_trimTrailingWhitespace;

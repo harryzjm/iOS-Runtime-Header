@@ -21,14 +21,16 @@
 @property(retain, nonatomic) NSCache *cachedBackgroundImages; // @synthesize cachedBackgroundImages=_cachedBackgroundImages;
 - (id)imageNamed:(id)arg1;
 - (id)_fetchAndCacheBackgroundImageWithName:(id)arg1;
+- (id)_image:(struct CGImage *)arg1 croppedToAspectRatio:(struct CGSize)arg2 scale:(double)arg3;
 - (struct CGSize)thumbnailImageSizeForImageType:(unsigned long long)arg1 usingTraitCollection:(id)arg2 includeScale:(_Bool)arg3;
 - (double)thumbnailTopMarginForImageType:(unsigned long long)arg1 usingTraitCollection:(id)arg2;
 - (id)backgroundImageNameForType:(unsigned long long)arg1 usingTraitCollection:(id)arg2;
+- (id)_thumbnailShadowForType:(unsigned long long)arg1 usingTraitCollection:(id)arg2;
 - (struct CGSize)backgroundImageSizeForPopoverAnnotation;
 - (struct CGSize)backgroundImageSizeForType:(unsigned long long)arg1 usingTraitCollection:(id)arg2;
 - (id)annotationPlaceHolderImageUsingTraitCollection:(id)arg1;
 - (id)createAlbumPlaceHolderImageUsingTraitCollection:(id)arg1;
-- (id)createPopoverImageForGeotaggable:(id)arg1 withImage:(struct CGImage *)arg2 imageType:(unsigned long long)arg3 usingTraitCollection:(id)arg4;
+- (id)createPopoverImageForGeotaggable:(id)arg1 withImage:(struct CGImage *)arg2 imageType:(unsigned long long)arg3 imageOptions:(unsigned long long)arg4 usingTraitCollection:(id)arg5;
 - (id)init;
 
 @end

@@ -13,6 +13,7 @@
 
 @interface ASDRepairOptions : NSObject <NSCopying, NSSecureCoding>
 {
+    _Bool _isBackground;
     _Bool _forceRevoke;
     _Bool _forceUpsell;
     int _fairplayStatus;
@@ -29,6 +30,7 @@
 @property(nonatomic) _Bool forceUpsell; // @synthesize forceUpsell=_forceUpsell;
 @property(nonatomic) _Bool forceRevoke; // @synthesize forceRevoke=_forceRevoke;
 @property(copy, nonatomic) NSDictionary *relaunchOptions; // @synthesize relaunchOptions=_relaunchOptions;
+@property(nonatomic) _Bool isBackground; // @synthesize isBackground=_isBackground;
 @property(nonatomic) int fairplayStatus; // @synthesize fairplayStatus=_fairplayStatus;
 @property(nonatomic) unsigned long long exitReason; // @synthesize exitReason=_exitReason;
 @property(readonly, nonatomic) long long claimStyle; // @synthesize claimStyle=_claimStyle;

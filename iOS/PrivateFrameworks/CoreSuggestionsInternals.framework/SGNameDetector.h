@@ -16,6 +16,7 @@
     SGNameMappingTransformer *_transformer;
 }
 
++ (id)_fetchContactNamesToLimit:(unsigned long long)arg1 withPPContactStore:(id)arg2;
 + (id)_fetchContactNamesToLimit:(unsigned long long)arg1;
 + (id)_contactNames;
 - (void).cxx_destruct;

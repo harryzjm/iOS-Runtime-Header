@@ -8,14 +8,17 @@
 
 #import <BulletinDistributorCompanion/NSCopying-Protocol.h>
 
-@class BLTPBSectionInfo;
+@class BLTPBSectionInfo, NSMutableArray;
 
 @interface BLTPBSetSectionInfoRequest : PBRequest <NSCopying>
 {
+    NSMutableArray *_keypaths;
     BLTPBSectionInfo *_sectionInfo;
 }
 
++ (Class)keypathsType;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *keypaths; // @synthesize keypaths=_keypaths;
 @property(retain, nonatomic) BLTPBSectionInfo *sectionInfo; // @synthesize sectionInfo=_sectionInfo;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
@@ -26,6 +29,10 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)keypathsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)keypathsCount;
+- (void)addKeypaths:(id)arg1;
+- (void)clearKeypaths;
 @property(readonly, nonatomic) _Bool hasSectionInfo;
 
 @end

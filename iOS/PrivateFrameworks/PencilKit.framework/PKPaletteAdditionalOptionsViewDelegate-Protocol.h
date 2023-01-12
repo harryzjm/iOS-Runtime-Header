@@ -6,9 +6,10 @@
 
 #import <PencilKit/NSObject-Protocol.h>
 
-@class PKPaletteAdditionalOptionsView;
+@class PKPaletteAdditionalOptionsView, UIMenu;
 
 @protocol PKPaletteAdditionalOptionsViewDelegate <NSObject>
+- (UIMenu *)keyboardSelectionMenuForAdditionalOptionsView:(PKPaletteAdditionalOptionsView *)arg1;
 - (void)additionalOptionsViewDidPressTapToRadarButton:(PKPaletteAdditionalOptionsView *)arg1;
 - (void)additionalOptionsViewDidPressReturnKeyButton:(PKPaletteAdditionalOptionsView *)arg1;
 - (void)additionalOptionsViewDidPressKeyboardButton:(PKPaletteAdditionalOptionsView *)arg1;

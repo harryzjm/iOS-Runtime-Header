@@ -12,7 +12,7 @@
 }
 
 - (void).cxx_destruct;
-- (id)writeData:(id)arg1 toPackageWriter:(id)arg2 infoMessage:(struct DataInfo *)arg3 preferredFilename:(id)arg4 error:(id *)arg5;
+- (id)writeData:(id)arg1 toPackageWriter:(id)arg2 infoMessage:(void *)arg3 preferredFilename:(id)arg4 shouldRemoveData:(_Bool)arg5 error:(id *)arg6;
 - (_Bool)readOnly;
 - (void)performReadWithAccessor:(CDUnknownBlockType)arg1;
 - (id)initWithURL:(id)arg1;

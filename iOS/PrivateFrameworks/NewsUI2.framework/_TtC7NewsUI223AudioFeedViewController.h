@@ -8,6 +8,7 @@
 
 @class MISSING_TYPE;
 
+__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI223AudioFeedViewController : UIViewController
 {
     MISSING_TYPE *styler;
@@ -20,6 +21,7 @@
     MISSING_TYPE *audioTabVisibilitySignal;
     MISSING_TYPE *readingHistory;
     MISSING_TYPE *commandCenter;
+    MISSING_TYPE *newsActivityManager;
 }
 
 - (void).cxx_destruct;

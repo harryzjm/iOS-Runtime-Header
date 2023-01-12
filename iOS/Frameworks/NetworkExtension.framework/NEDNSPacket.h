@@ -28,6 +28,7 @@
     unsigned long long _endOfQueriesOffset;
 }
 
++ (id)createDataWithQuery:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly) unsigned long long endOfQueriesOffset; // @synthesize endOfQueriesOffset=_endOfQueriesOffset;
 @property(readonly) unsigned short flags; // @synthesize flags=_flags;

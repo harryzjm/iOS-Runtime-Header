@@ -19,6 +19,7 @@
 + (unsigned long long)_ekShareeAccessLevelFromCalShareeAccessLevel:(int)arg1;
 + (int)_calShareeStatusFromEKShareeStatus:(unsigned long long)arg1;
 + (unsigned long long)_ekShareeStatusFromCalShareeStatus:(int)arg1;
++ (id)shareeWithUUID:(id)arg1 name:(id)arg2 emailAddress:(id)arg3 phoneNumber:(id)arg4;
 + (id)_urlForEmailAddress:(id)arg1 andPhoneNumber:(id)arg2;
 + (id)shareeWithName:(id)arg1 emailAddress:(id)arg2 phoneNumber:(id)arg3 externalID:(id)arg4;
 + (id)shareeWithName:(id)arg1 url:(id)arg2;

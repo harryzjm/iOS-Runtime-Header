@@ -6,7 +6,10 @@
 
 #import <ClassroomKit/NSObject-Protocol.h>
 
+@class NSString;
+
 @protocol CRKSettingsUIVisibilityProvider <NSObject>
+@property(readonly, copy, nonatomic) NSString *paneStatus;
 @property(readonly) _Bool settingsUIVisible;
 
 @optional

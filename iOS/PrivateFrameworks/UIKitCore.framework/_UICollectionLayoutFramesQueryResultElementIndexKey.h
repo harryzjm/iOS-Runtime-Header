@@ -17,12 +17,10 @@ __attribute__((visibility("hidden")))
     long long _index;
 }
 
-+ (id)elementIndexKeyForElement:(id)arg1 index:(long long)arg2;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithElement:(id)arg1 index:(long long)arg2;
 
 @end
 

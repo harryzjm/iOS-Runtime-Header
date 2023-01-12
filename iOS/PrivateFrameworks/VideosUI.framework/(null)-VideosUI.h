@@ -4,13 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface (null) (VideosUI)
-- (void)collectionView:(id)arg1 willEndContextMenuInteractionWithConfiguration:(id)arg2 animator:(id)arg3;
-- (void)collectionView:(id)arg1 willPerformPreviewActionForMenuWithConfiguration:(id)arg2 animator:(id)arg3;
-- (id)collectionView:(id)arg1 contextMenuConfigurationForItemAtIndexPath:(id)arg2 point:(struct CGPoint)arg3;
-- (void)scrollViewDidScroll:(id)arg1;
-- (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
-- (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
-- (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
+#import <VideosUI/VUICollectionViewCellUpdater-Protocol.h>
+
+@interface (null) (VideosUI) <VUICollectionViewCellUpdater>
+- (void)vuiCollectionView:(id)arg1 didSelectItemAt:(id)arg2;
+- (void)vuiCollectionView:(id)arg1 willDisplaySupplementaryView:(id)arg2 forElementKind:(id)arg3 at:(id)arg4;
+- (void)vuiCollectionView:(id)arg1 didEndDisplaying:(id)arg2 for:(id)arg3;
+- (void)vuiCollectionView:(id)arg1 willDisplay:(id)arg2 for:(id)arg3;
+- (void)vuiCollectionView:(id)arg1 willEndContextMenuInteraction:(id)arg2 animator:(id)arg3;
+- (void)vuiCollectionView:(id)arg1 willPerformPreviewActionForMenuWith:(id)arg2 animator:(id)arg3;
+- (id)vuiCollectionView:(id)arg1 contextMenuConfigurationForItemAt:(id)arg2 point:(struct CGPoint)arg3;
+- (id)vuiCollectionView:(id)arg1 previewForDismissingContextMenuWithConfiguration:(id)arg2;
+- (id)vuiCollectionView:(id)arg1 previewForHighlightingContextMenuWithConfiguration:(id)arg2;
+- (void)vuiScrollViewDidScroll:(id)arg1;
+- (void)vuiScrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(struct CGPoint *)arg3;
+- (void)vuiScrollViewDidEndDragging:(id)arg1 willDecelerate:(_Bool)arg2;
+- (void)vuiScrollViewDidEndDecelerating:(id)arg1;
+- (void)vuiScrollViewDidEndScrollingAnimation:(id)arg1;
+- (_Bool)shouldRubberbandElementWithCategory:(unsigned long long)arg1 in:(id)arg2 at:(id)arg3;
+- (void)vui_collectionViewCellUpdater:(id)arg1 reloadCell:(id)arg2;
 @end
 

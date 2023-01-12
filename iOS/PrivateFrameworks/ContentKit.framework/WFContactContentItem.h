@@ -12,7 +12,6 @@
 {
 }
 
-+ (id)defaultSourceForRepresentation:(id)arg1;
 + (id)countDescription;
 + (id)pluralTypeDescription;
 + (id)typeDescription;
@@ -22,13 +21,16 @@
 + (_Bool)supportedTypeMustBeDeterminedByInstance:(id)arg1;
 + (void)runQuery:(id)arg1 withItems:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (_Bool)hasLibrary;
++ (id)stringConversionBehavior;
 + (id)propertyBuilders;
 + (id)cachedContactGroups;
+- (id)defaultSourceForRepresentation:(id)arg1;
 - (id)generateFileRepresentationForType:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)generateObjectRepresentationsForClass:(Class)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)unnamedObjectRepresentationsFromLabeledValues:(id)arg1;
 - (id)objectRepresentationsFromLabeledValues:(id)arg1;
 - (_Bool)canGenerateRepresentationForType:(id)arg1;
+- (id)changeTransaction;
 @property(readonly, nonatomic) WFContact *contact;
 - (_Bool)getListThumbnail:(CDUnknownBlockType)arg1 forSize:(struct CGSize)arg2;
 - (_Bool)getListSubtitle:(CDUnknownBlockType)arg1;

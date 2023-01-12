@@ -6,7 +6,7 @@
 
 #import <TouchML/JSExport-Protocol.h>
 
-@class NSString, TMLInsets, TMLRect, UIColor, UIImage;
+@class NSString, TMLInsets, TMLRect, UIColor, UIImage, UIImageConfiguration;
 
 @protocol UIImageJSExports <JSExport>
 @property(readonly, nonatomic) id CGImageRef;
@@ -20,9 +20,11 @@
 @property(readonly, nonatomic) double height;
 @property(readonly, nonatomic) double aspectRatio;
 @property(readonly, nonatomic) TMLRect *bounds;
+- (UIImage *)withConfiguration:(UIImageConfiguration *)arg1;
 - (UIImage *)cropImageToRect:(struct CGRect)arg1;
 - (UIImage *)resizableImage:(TMLInsets *)arg1:(long long)arg2;
 - (UIColor *)colorPattern;
+- (UIImage *)withTintColor:(UIColor *)arg1;
 - (UIImage *)withRenderingMode:(long long)arg1;
 @end
 

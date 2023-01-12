@@ -10,6 +10,7 @@
 {
     MISSING_TYPE *hkTypes;
     MISSING_TYPE *contentKinds;
+    MISSING_TYPE *presentation;
 }
 
 - (void).cxx_destruct;

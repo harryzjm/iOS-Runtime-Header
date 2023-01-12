@@ -13,7 +13,6 @@
 }
 
 - (void).cxx_destruct;
-- (void)registerSubscriptionsWithIdentifer:(id)arg1 database:(id)arg2;
 - (void)main;
 - (id)initWithConfiguration:(id)arg1 cloudState:(id)arg2 container:(id)arg3 subscriptions:(id)arg4;
 - (id)initWithConfiguration:(id)arg1 cloudState:(id)arg2;

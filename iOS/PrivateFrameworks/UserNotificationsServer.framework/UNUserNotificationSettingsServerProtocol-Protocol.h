@@ -9,6 +9,7 @@
 @class NSSet, NSString, UNNotificationSettings, UNNotificationSystemSettings;
 
 @protocol UNUserNotificationSettingsServerProtocol <NSObject>
+- (void)resetScheduledDeliverySetting;
 - (void)setNotificationSystemSettings:(UNNotificationSystemSettings *)arg1;
 - (void)getNotificationSystemSettingsWithCompletionHandler:(void (^)(UNNotificationSystemSettings *))arg1;
 - (void)replaceNotificationTopicSettings:(UNNotificationSettings *)arg1 forNotificationSourceIdentifier:(NSString *)arg2 topicIdentifier:(NSString *)arg3;

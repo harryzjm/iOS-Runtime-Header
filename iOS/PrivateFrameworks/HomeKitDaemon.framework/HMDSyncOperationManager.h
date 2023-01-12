@@ -10,7 +10,7 @@
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
 @class HMDSyncOperation, HMDSyncOperationQueue, HMFExponentialBackoffTimer, NSArray, NSMutableArray, NSMutableDictionary, NSObject, NSString;
-@protocol HMDSyncOperationManagerDataSource, OS_dispatch_queue;
+@protocol HMDSyncOperationManagerDataSource, OS_dispatch_queue, OS_os_log;
 
 @interface HMDSyncOperationManager : HMFObject <HMFLogging, HMFTimerDelegate>
 {
@@ -23,6 +23,7 @@
     NSMutableArray *_cloudPostFetchOperations;
     NSMutableDictionary *_cloudZonePushOperationQueuesMap;
     NSMutableDictionary *_cloudZoneFetchOperationQueuesMap;
+    NSObject<OS_os_log> *_logger;
     _Bool _pauseQueue;
     _Bool _syncLoopDialogDisplayed;
     HMDSyncOperationQueue *_cloudPushOperations;

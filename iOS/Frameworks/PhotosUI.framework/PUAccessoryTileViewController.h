@@ -18,6 +18,8 @@ __attribute__((visibility("hidden")))
     struct {
         _Bool respondsToViewHostingGestureRecognizers;
         _Bool respondsToWillHideToolbarWhenShowingAccessoryView;
+        _Bool respondsToWillHideNavigationBarWhenShowingAccessoryView;
+        _Bool respondsToShouldUseSquareImageWhenShowingAccessoryView;
     } _delegateFlags;
     struct {
         _Bool contentViewController;
@@ -57,11 +59,16 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) PUAssetReference *assetReference; // @synthesize assetReference=_assetReference;
 @property(retain, nonatomic) PUAssetViewModel *assetViewModel; // @synthesize assetViewModel=_assetViewModel;
 @property(nonatomic) __weak id <PUAccessoryTileViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)_updateAssetViewModelForAnimating;
+- (void)didChangeAnimating;
+- (void)didChangeVisibleRect;
+- (_Bool)wantsVisibleRectChanges;
 - (void)_keyboardWillHide:(id)arg1;
 - (void)_keyboardWillShow:(id)arg1;
 - (void)accessoryContentViewController:(id)arg1 editorHeightDidChange:(double)arg2;
 - (void)accessoryContentViewControllerContentBoundsDidChange:(id)arg1;
 - (id)accessoryContentViewControllerViewHostingGestureRecognizers:(id)arg1;
+- (_Bool)_isPhoneAndLandscape;
 - (void)_updateMasterContentOffsetIfNeeded;
 - (void)_invalidateMasterContentOffset;
 - (void)_updateContentBoundsIfNeeded;

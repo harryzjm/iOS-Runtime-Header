@@ -27,6 +27,7 @@
 @property(copy, nonatomic) NSSet *activeSensorActivityAttributions; // @synthesize activeSensorActivityAttributions=_activeSensorActivityAttributions;
 - (void)_notifyObserversOfActivityChange;
 - (void)_updateStateForActiveAttributions:(id)arg1;
+- (id)_sensorActivityAttributionsForActivityAttributions:(id)arg1 sensor:(long long)arg2;
 - (void)_handleMediaDomainData:(id)arg1;
 @property(readonly, copy, nonatomic) SBSensorActivityAttribution *mostRecentSensorActivityAttribution;
 - (void)removeObserver:(id)arg1;

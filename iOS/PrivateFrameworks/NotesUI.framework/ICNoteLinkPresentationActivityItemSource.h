@@ -9,13 +9,13 @@
 
 @interface ICNoteLinkPresentationActivityItemSource
 {
-    id <ICSearchIndexableNote> _note;
     UIImage *_thumbnailImage;
+    id <ICSearchIndexableNote> _note;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) UIImage *thumbnailImage; // @synthesize thumbnailImage=_thumbnailImage;
 @property(retain) id <ICSearchIndexableNote> note; // @synthesize note=_note;
+@property(copy, nonatomic) UIImage *thumbnailImage; // @synthesize thumbnailImage=_thumbnailImage;
 - (id)iconImage;
 - (id)detail;
 - (id)title;

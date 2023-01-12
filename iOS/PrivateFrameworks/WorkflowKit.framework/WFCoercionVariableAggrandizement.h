@@ -8,6 +8,8 @@
 {
 }
 
+- (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
 - (void)applyToContentCollection:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)processedContentClasses:(id)arg1;
 - (id)coercionItemClasses;

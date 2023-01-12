@@ -12,7 +12,7 @@
 {
 }
 
-+ (void)indexItem:(id)arg1 withChat:(id)arg2 isReindexing:(_Bool)arg3 metadataToUpdate:(id)arg4;
++ (void)indexItem:(id)arg1 withChat:(id)arg2 isReindexing:(_Bool)arg3 metadataToUpdate:(id)arg4 timingProfiler:(id)arg5;
 + (_Bool)cancelIndexingForItem:(id)arg1;
 
 // Remaining properties

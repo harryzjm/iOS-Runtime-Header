@@ -8,6 +8,7 @@
 {
 }
 
++ (id)triggerModeStringDescription:(long long)arg1;
 + (id)sharedInstance;
 - (long long)getTriggerMode;
 - (void)setTriggerMode:(long long)arg1;

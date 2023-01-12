@@ -50,8 +50,11 @@
 - (void)addRecipients:(id)arg1;
 - (id)recipients;
 - (void)_reloadCurrentRecipientData;
-- (struct CGRect)_detailsPopoverFrame;
 - (void)_updateToFieldFrame;
+- (struct CGRect)innermostToolbarItemFrame;
+- (struct CGRect)faceTimeJoinCallToolbarItemFrame;
+- (struct CGRect)faceTimeStartOrLaunchCallToolbarItemFrame;
+- (struct CGRect)detailsToolbarItemFrame;
 - (void)refreshRecipients;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;

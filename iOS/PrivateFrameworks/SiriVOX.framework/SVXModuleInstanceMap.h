@@ -8,7 +8,7 @@
 
 #import <SiriVOX/SVXModuleInstanceProviding-Protocol.h>
 
-@class NSDictionary, NSString, SVXClientServiceServer, SVXDeviceSetupManager, SVXNowPlayingObserver, SVXServiceCommandHandler, SVXSessionManager, SVXSpeechSynthesizer, SVXSystemObserver;
+@class NSDictionary, NSString, SVXClientServiceServer, SVXDeviceSetupManager, SVXServiceCommandHandler, SVXSessionManager, SVXSpeechSynthesizer, SVXSystemObserver;
 
 __attribute__((visibility("hidden")))
 @interface SVXModuleInstanceMap : NSObject <SVXModuleInstanceProviding>
@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) SVXServiceCommandHandler *serviceCommandHandler;
 @property(readonly, nonatomic) SVXClientServiceServer *clientServiceServer;
 @property(readonly, nonatomic) SVXDeviceSetupManager *deviceSetupManager;
-@property(readonly, nonatomic) SVXNowPlayingObserver *nowPlayingObserver;
 - (id)moduleInstanceWithIdentifier:(id)arg1;
 - (id)initWithDictionaryRepresentation:(id)arg1;
 

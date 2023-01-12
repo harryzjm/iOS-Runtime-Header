@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <OnBoardingKit/OBWelcomeController.h>
-
 #import <SIMSetupSupport/TSSetupFlowItem-Protocol.h>
 
 @class NSString;
 @protocol TSSIMSetupFlowDelegate;
 
-@interface TSUserConsentViewController : OBWelcomeController <TSSetupFlowItem>
+@interface TSUserConsentViewController <TSSetupFlowItem>
 {
     unsigned long long _consentType;
     unsigned long long _userConsentResponse;

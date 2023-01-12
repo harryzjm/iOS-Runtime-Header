@@ -8,37 +8,25 @@
 
 @interface CRCoderArchiver
 {
-    struct vector<CRDT::Document_DocObject *, std::__1::allocator<CRDT::Document_DocObject *>> currentDocObjectEncodingStack;
+    struct vector<CRDT::Document_DocObject *, std::allocator<CRDT::Document_DocObject *>> currentDocObjectEncodingStack;
     NSMutableOrderedSet *_uuidSet;
     NSMutableOrderedSet *_keySet;
     NSMutableOrderedSet *_encodedObjects;
-    struct Document {
-        CDUnknownFunctionPointerType *;
-        basic_string_7c0a1c0b;
-        unsigned int [1];
-        int;
-        struct VectorTimestamp *;
-        struct VectorTimestamp *;
-        struct RepeatedPtrField<CRDT::Document_DocObject>;
-        struct RepeatedPtrField<std::__1::basic_string<char>>;
-        struct RepeatedPtrField<std::__1::basic_string<char>>;
-        struct RepeatedPtrField<std::__1::basic_string<char>>;
-        struct VectorTimestamp *;
-    } *_currentDocument;
+    void *_currentDocument;
 }
 
 + (id)encodedDataWithDocument:(id)arg1;
 + (void)initialize;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(nonatomic) struct Document *currentDocument; // @synthesize currentDocument=_currentDocument;
+@property(nonatomic) void *currentDocument; // @synthesize currentDocument=_currentDocument;
 @property(retain, nonatomic) NSMutableOrderedSet *encodedObjects; // @synthesize encodedObjects=_encodedObjects;
 @property(retain, nonatomic) NSMutableOrderedSet *keySet; // @synthesize keySet=_keySet;
 @property(retain, nonatomic) NSMutableOrderedSet *uuidSet; // @synthesize uuidSet=_uuidSet;
 - (int)indexForKey:(id)arg1;
-- (struct Document_DocObject *)currentDocumentObjectForEncoding;
-- (struct Document_CustomObject *)currentCustomObjectForEncoding;
-- (struct ObjectID *)mutableObjectIDForKey:(id)arg1;
+- (void *)currentDocumentObjectForEncoding;
+- (void *)currentCustomObjectForEncoding;
+- (void *)mutableObjectIDForKey:(id)arg1;
 - (unsigned long long)encodeUUIDIndexFromUUID:(id)arg1;
 - (void)encodeUInt64:(unsigned long long)arg1 forKey:(id)arg2;
 - (void)encodeUInt32:(unsigned int)arg1 forKey:(id)arg2;
@@ -47,7 +35,8 @@
 - (void)encodeDouble:(double)arg1 forKey:(id)arg2;
 - (void)encodeUUID:(id)arg1 forKey:(id)arg2;
 - (void)encodeString:(id)arg1 forKey:(id)arg2;
-- (void)encodeObject:(id)arg1 forObjectID:(struct ObjectID *)arg2;
+- (void)encodeData:(id)arg1 forKey:(id)arg2;
+- (void)encodeObject:(id)arg1 forObjectID:(void *)arg2;
 - (void)encodeObject:(id)arg1 forKey:(id)arg2;
 - (void)setTypeIndexForCurrentCustomObjectIfNecessary:(id)arg1;
 - (id)encodeDocument:(id)arg1;

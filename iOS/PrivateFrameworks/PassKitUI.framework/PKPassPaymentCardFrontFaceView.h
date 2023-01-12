@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PKBackdropView, PKBarcodeStickerView, UIButton, UIImageView, UILabel, UIView;
+@class NSMutableArray, PKBackdropView, PKBarcodeStickerView, UIButton, UIImageView, UILabel, UIView;
 
 @interface PKPassPaymentCardFrontFaceView
 {
@@ -13,6 +13,8 @@
     PKBackdropView *_backdropView;
     PKBarcodeStickerView *_topBarcodeView;
     PKBarcodeStickerView *_bottomBarcodeView;
+    NSMutableArray *_oldTopBarcodeViews;
+    NSMutableArray *_oldBottomBarcodeViews;
     UIButton *_fullScreenButton;
     UIImageView *_compactBankLogoView;
 }
@@ -20,6 +22,7 @@
 - (void).cxx_destruct;
 - (struct CGSize)_barcodeSize;
 - (double)_barcodePadding;
+- (void)setDynamicBarcodeData:(id)arg1;
 - (void)setViewExpanded:(_Bool)arg1;
 - (void)_handleAccountChanged:(id)arg1;
 - (void)_updateBalanceWithAccount:(id)arg1;
@@ -29,6 +32,7 @@
 - (void)traitCollectionDidChange:(id)arg1;
 - (struct CGSize)contentSize;
 - (void)setShowsLiveBalance:(_Bool)arg1;
+- (void)createBodyContentViews;
 - (void)createHeaderContentViews;
 - (_Bool)showsShare;
 - (id)_filterAuxiliaryField:(id)arg1;
@@ -36,6 +40,7 @@
 - (id)templateForLayoutMode:(long long)arg1;
 - (id)templateForHeaderBucket;
 - (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

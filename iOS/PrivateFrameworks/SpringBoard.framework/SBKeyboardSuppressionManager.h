@@ -17,6 +17,7 @@
 - (void).cxx_destruct;
 - (id)description;
 - (void)_setKeyboardSuppressed:(_Bool)arg1 forReason:(id)arg2 withPredicate:(CDUnknownBlockType)arg3;
+- (id)acquireKeyboardSuppressionAssertionWithReason:(id)arg1 predicate:(CDUnknownBlockType)arg2;
 - (void)stopSuppressingKeyboardWithReason:(id)arg1;
 - (void)startSuppressingKeyboardWithReason:(id)arg1 predicate:(CDUnknownBlockType)arg2;
 - (id)init;

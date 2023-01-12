@@ -15,10 +15,11 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic) unsigned long long symbolicLocation; // @synthesize symbolicLocation=_symbolicLocation;
+@property(readonly, nonatomic) unsigned long long symbolicLocation; // @synthesize symbolicLocation=_symbolicLocation;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithSymbolicLocation:(unsigned long long)arg1;
 - (id)init;
 
 @end

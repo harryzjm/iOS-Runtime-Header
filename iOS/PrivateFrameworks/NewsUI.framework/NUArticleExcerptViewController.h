@@ -12,12 +12,13 @@
 #import <NewsUI/WKNavigationDelegate-Protocol.h>
 
 @class NSString, NUArticleExcerptTraits, NUArticleExcerptView, UIScrollView;
-@protocol FCContentContext, FCHeadlineProviding, NULoadingDelegate;
+@protocol FCContentContext, FCHeadlineProviding, NULoadingDelegate, NUWebViewControllerFactoryType;
 
 @interface NUArticleExcerptViewController : UIViewController <UIScrollViewDelegate, WKNavigationDelegate, NULoadable, NUBarCompressible>
 {
     id <NULoadingDelegate> _loadingDelegate;
     id <FCHeadlineProviding> _headline;
+    id <NUWebViewControllerFactoryType> _webViewControllerFactory;
     id <FCContentContext> _contentContext;
     NUArticleExcerptTraits *_traits;
     NUArticleExcerptView *_excerptView;
@@ -29,8 +30,10 @@
 @property(readonly, nonatomic) NUArticleExcerptView *excerptView; // @synthesize excerptView=_excerptView;
 @property(retain, nonatomic) NUArticleExcerptTraits *traits; // @synthesize traits=_traits;
 @property(readonly, nonatomic) id <FCContentContext> contentContext; // @synthesize contentContext=_contentContext;
+@property(readonly, nonatomic) id <NUWebViewControllerFactoryType> webViewControllerFactory; // @synthesize webViewControllerFactory=_webViewControllerFactory;
 @property(readonly, nonatomic) id <FCHeadlineProviding> headline; // @synthesize headline=_headline;
 @property(nonatomic) __weak id <NULoadingDelegate> loadingDelegate; // @synthesize loadingDelegate=_loadingDelegate;
+- (void)presentFailedOpenSafariViewWithURL:(id)arg1;
 - (void)openSafariViewWithURL:(id)arg1;
 - (void)handleReadMoreTapped;
 - (void)loadExcerptFromHeadline:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -45,7 +48,7 @@
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
-- (id)initWithHeadline:(id)arg1 contentContext:(id)arg2 traits:(id)arg3;
+- (id)initWithHeadline:(id)arg1 webViewControllerFactory:(id)arg2 contentContext:(id)arg3 traits:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

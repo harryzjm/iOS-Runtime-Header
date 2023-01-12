@@ -9,8 +9,8 @@
 #import <SpringBoard/BSDescriptionProviding-Protocol.h>
 #import <SpringBoard/SBHardwareButtonServiceObserver-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, SBHomeGestureParticipant;
-@protocol BSInvalidatable;
+@class NSArray, NSMutableArray, NSString, SBHardwareButtonService, SBHomeGestureParticipant;
+@protocol BSInvalidatable, SBHomeGestureArbiterObserver;
 
 @interface SBHomeGestureArbiter : NSObject <BSDescriptionProviding, SBHardwareButtonServiceObserver>
 {
@@ -19,9 +19,13 @@
     NSArray *_owningParticipants;
     SBHomeGestureParticipant *_hardwareButtonServiceParticipant;
     id <BSInvalidatable> _hardwareButtonObserverAssertion;
+    SBHardwareButtonService *_hardwareButtonService;
+    id <SBHomeGestureArbiterObserver> _observer;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <SBHomeGestureArbiterObserver> observer; // @synthesize observer=_observer;
+@property(nonatomic) __weak SBHardwareButtonService *hardwareButtonService; // @synthesize hardwareButtonService=_hardwareButtonService;
 @property(retain, nonatomic) id <BSInvalidatable> hardwareButtonObserverAssertion; // @synthesize hardwareButtonObserverAssertion=_hardwareButtonObserverAssertion;
 @property(retain, nonatomic) SBHomeGestureParticipant *hardwareButtonServiceParticipant; // @synthesize hardwareButtonServiceParticipant=_hardwareButtonServiceParticipant;
 @property(retain, nonatomic, getter=_owningParticipants, setter=_setOwningParticipants:) NSArray *owningParticipants; // @synthesize owningParticipants=_owningParticipants;
@@ -37,9 +41,11 @@
 - (void)_updateOwningParticipants;
 - (void)_unregisterParticipant:(id)arg1;
 - (void)_registerParticipant:(id)arg1;
+- (id)currentParticipants;
 - (id)participantWithIdentifier:(long long)arg1 delegate:(id)arg2;
 - (void)dealloc;
 - (id)init;
+- (id)initWithHardwareButtonService:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

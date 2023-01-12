@@ -13,10 +13,8 @@
 
 @interface DevicePINPane <UIKeyInput, UITextInputTraits, PSPINEntryViewDelegate>
 {
-    UITransitionView *_transitionView;
     _Bool _transitioning;
     UIView<PINEntryView> *_pinView;
-    UIKeyboard *_keypad;
     _Bool _keypadActive;
     long long _autocapitalizationType;
     long long _autocorrectionType;
@@ -27,6 +25,8 @@
     _Bool _simplePIN;
     _Bool _numericKeyboard;
     DevicePINKeypadContainerView *_keypadContainerView;
+    UITransitionView *_transitionView;
+    UIKeyboard *_keypad;
     unsigned int _PINLength;
     CDUnknownBlockType _passcodeOptionsHandler;
     NSString *_passcodeOptionsTitle;

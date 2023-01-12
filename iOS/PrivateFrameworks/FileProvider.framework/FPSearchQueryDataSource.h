@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)dataSource:(id)arg1 wasInvalidatedWithError:(id)arg2;
 - (void)dataSource:(id)arg1 receivedUpdatedItems:(id)arg2 deletedItems:(id)arg3 hasMoreChanges:(_Bool)arg4;
 - (void)dataSource:(id)arg1 replaceContentsWithItems:(id)arg2 hasMoreChanges:(_Bool)arg3;
+@property(readonly) unsigned long long lastForcedUpdate;
 @property(readonly, nonatomic) _Bool hasMoreIncoming;
 - (void)enumerationMightHaveResumed;
 - (void)invalidate;

@@ -10,6 +10,8 @@
 {
 }
 
++ (void)reportCalibratedPressureCollection:(id)arg1;
++ (void)reportReferencePressureCollection:(id)arg1;
 + (void)reportBatchLocationCollection:(id)arg1;
 + (void)reportRealtimeLocationCollection:(id)arg1;
 + (void)_fuzzProbes:(id)arg1;

@@ -6,27 +6,24 @@
 
 #import <UIKit/UITableViewCell.h>
 
-#import <WorkflowEditor/CKComponentHostingViewDelegate-Protocol.h>
-#import <WorkflowEditor/CKComponentProvider-Protocol.h>
 #import <WorkflowEditor/WFParameterEventObserver-Protocol.h>
 
-@class CKComponentHostingView, NSString, UIViewController, WFParameterEditorModel;
+@class NSString, UIViewController, WFParameterEditorModel, WFParameterHostingView;
 @protocol WFParameterEditorHostingCellDelegate;
 
-@interface WFParameterEditorHostingCell : UITableViewCell <CKComponentProvider, CKComponentHostingViewDelegate, WFParameterEventObserver>
+@interface WFParameterEditorHostingCell : UITableViewCell <WFParameterEventObserver>
 {
     id <WFParameterEditorHostingCellDelegate> _delegate;
     UIViewController *_containingViewController;
     WFParameterEditorModel *_model;
-    CKComponentHostingView *_hostingView;
+    WFParameterHostingView *_modernHostingView;
     double _lastWidth;
 }
 
-+ (id)componentForModel:(id)arg1 context:(id)arg2;
 - (void).cxx_destruct;
 @property(nonatomic) double lastWidth; // @synthesize lastWidth=_lastWidth;
-@property(nonatomic) __weak CKComponentHostingView *hostingView; // @synthesize hostingView=_hostingView;
-@property(retain, nonatomic) WFParameterEditorModel *model; // @synthesize model=_model;
+@property(retain, nonatomic) WFParameterHostingView *modernHostingView; // @synthesize modernHostingView=_modernHostingView;
+@property(readonly, nonatomic) WFParameterEditorModel *model; // @synthesize model=_model;
 @property(nonatomic) __weak UIViewController *containingViewController; // @synthesize containingViewController=_containingViewController;
 @property(nonatomic) __weak id <WFParameterEditorHostingCellDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)parameterAttributesDidChange:(id)arg1;
@@ -35,6 +32,7 @@
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)updatedParameterState:(id)arg1;
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
+- (void)reconfigureModernView;
 - (void)updateModel:(id)arg1;
 - (void)updateContext;
 - (void)layoutSubviews;

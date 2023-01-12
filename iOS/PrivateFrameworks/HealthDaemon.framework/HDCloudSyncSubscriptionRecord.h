@@ -14,8 +14,8 @@
 + (id)recordWithCKRecord:(id)arg1 error:(id *)arg2;
 + (_Bool)isSubscriptionRecord:(id)arg1;
 + (id)recordIDsWithZoneID:(id)arg1;
+- (id)printDescription;
 - (id)description;
-- (id)storeRecordID;
 
 @end
 

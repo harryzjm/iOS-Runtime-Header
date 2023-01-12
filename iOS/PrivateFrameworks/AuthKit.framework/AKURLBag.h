@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSSet, NSString, NSURL;
+@class NSArray, NSDictionary, NSSet, NSString, NSURL;
 @protocol AKURLBagDictionaryProvider;
 
 @interface AKURLBag : NSObject
@@ -44,6 +44,7 @@
 @property(readonly, nonatomic, getter=IsInlineFlowSupportedConfig) _Bool inlineFlowSupportedConfig;
 @property(readonly, nonatomic) unsigned long long IDMSEnvironment;
 @property(readonly, nonatomic) NSString *APSEnvironment;
+@property(readonly, nonatomic) NSDictionary *custodianCodeConfiguration;
 @property(readonly, nonatomic) NSURL *createChildAccountURL;
 @property(readonly, nonatomic) NSURL *appleIDAuthorizeHTMLResponseURL;
 @property(readonly, nonatomic) NSSet *appleIDAuthorizationURLs;
@@ -82,6 +83,7 @@
 @property(readonly, nonatomic) NSURL *upgradeEligibilityCheckURL;
 @property(readonly, nonatomic) NSURL *syncAnisetteURL;
 @property(readonly, nonatomic) NSURL *endProvisioningURL;
+@property(readonly, nonatomic) NSURL *privateEmailManageURL;
 @property(readonly, nonatomic) NSURL *startProvisioningURL;
 @property(readonly, nonatomic) NSURL *basicAuthURL;
 - (id)initWithAltDSID:(id)arg1;

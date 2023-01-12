@@ -17,6 +17,7 @@
 - (id)makeViewControllerForRecord:(id)arg1 usingProfile:(id)arg2;
 - (id)makeSettingsViewControllerUsing:(id)arg1;
 - (id)makeOnboadingTileViewControllerUsing:(id)arg1;
+- (id)makeAccountDetailViewControllerForAccount:(id)arg1 profile:(id)arg2;
 
 @end
 

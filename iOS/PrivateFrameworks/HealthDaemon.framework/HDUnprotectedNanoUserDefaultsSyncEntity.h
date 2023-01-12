@@ -12,7 +12,6 @@
 {
 }
 
-+ (id)_didReceiveKeysAndValuesNotificationName;
 + (id)syncEntityIdentifier;
 + (long long)category;
 + (_Bool)supportsSpeculativeNanoSyncChanges;

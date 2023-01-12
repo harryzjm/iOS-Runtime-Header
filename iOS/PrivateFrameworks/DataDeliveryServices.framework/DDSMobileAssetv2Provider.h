@@ -37,6 +37,7 @@
 - (void)removeOldAssetsForAssertions:(id)arg1;
 - (void)removeAssetsForAssertions:(id)arg1;
 - (void)updateCatalogForAssetTypes:(id)arg1 discretionaryDownload:(_Bool)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (id)downloadOptionsForCatalogWithType:(id)arg1 discretionaryDownload:(_Bool)arg2;
 - (id)downloadOptionsForPolicy:(id)arg1 discretionaryDownload:(_Bool)arg2;
 - (void)beginDownloadForAssets:(id)arg1 withPolicy:(id)arg2 discretionaryDownload:(_Bool)arg3 error:(id *)arg4 handler:(CDUnknownBlockType)arg5;
 - (void)beginDownloadForAssertion:(id)arg1 discretionaryDownload:(_Bool)arg2 handler:(CDUnknownBlockType)arg3;

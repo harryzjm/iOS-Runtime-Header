@@ -6,13 +6,13 @@
 
 #import <AvatarUI/NSObject-Protocol.h>
 
-@class AVTStickerSheetController, UIScrollView;
-@protocol AVTAvatarRecord;
+@class AVTUIStickerItem, UIScrollView;
+@protocol AVTAvatarRecord, AVTStickerSheetController;
 
 @protocol AVTStickerSheetControllerDelegate <NSObject>
-- (void)stickerSheetController:(AVTStickerSheetController *)arg1 didFinishRenderingStickersForRecord:(id <AVTAvatarRecord>)arg2;
-- (void)stickerSheetController:(AVTStickerSheetController *)arg1 didInteractWithStickerAtIndex:(long long)arg2 byPeeling:(_Bool)arg3;
-- (void)stickerSheetController:(AVTStickerSheetController *)arg1 scrollView:(UIScrollView *)arg2 willEndDraggingWithTargetContentOffset:(inout struct CGPoint *)arg3;
-- (void)stickerSheetController:(AVTStickerSheetController *)arg1 didScrollToContentOffset:(struct CGPoint)arg2;
+- (void)stickerSheetController:(id <AVTStickerSheetController>)arg1 didFinishRenderingStickersForRecord:(id <AVTAvatarRecord>)arg2;
+- (void)stickerSheetController:(id <AVTStickerSheetController>)arg1 didInteractWithStickerItem:(AVTUIStickerItem *)arg2 atIndex:(long long)arg3 byPeeling:(_Bool)arg4;
+- (void)stickerSheetController:(id <AVTStickerSheetController>)arg1 scrollView:(UIScrollView *)arg2 willEndDraggingWithTargetContentOffset:(inout struct CGPoint *)arg3;
+- (void)stickerSheetController:(id <AVTStickerSheetController>)arg1 didScrollToContentOffset:(struct CGPoint)arg2;
 @end
 

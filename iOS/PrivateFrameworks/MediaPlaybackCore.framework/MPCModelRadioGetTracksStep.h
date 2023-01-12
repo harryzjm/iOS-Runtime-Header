@@ -8,6 +8,7 @@
 
 @class ICPlayActivityController, ICRadioGetTracksRequest, ICRadioGetTracksResponse, ICUserIdentityProperties, NSError;
 
+__attribute__((visibility("hidden")))
 @interface MPCModelRadioGetTracksStep : NSObject
 {
     NSError *_error;

@@ -8,7 +8,6 @@
 
 @class NSArray, NSString;
 
-__attribute__((visibility("hidden")))
 @interface MCUIAppSigner : NSObject
 {
     _Bool _appsRequireTrust;
@@ -40,9 +39,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *identity; // @synthesize identity=_identity;
 @property(retain, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 - (_Bool)isTrusted;
-- (void)removeApplications:(id)arg1;
 - (void)removeApplication:(id)arg1;
-- (void)addApplication:(id)arg1;
 - (_Bool)_isTrustRequiredForBundleIDs:(id)arg1 outNotVerifiedAppCount:(long long *)arg2 outExpiringSoonAppCount:(long long *)arg3;
 - (void)refreshApplications;
 - (id)_displayNameFromIdentity:(id)arg1 hasFreeDev:(_Bool)arg2 hasUPP:(_Bool)arg3;

@@ -6,9 +6,11 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class UIScenePresentationContext;
+@class NSString, UIScenePresentationContext, UIView;
 
 @protocol _UISceneLayerHostContainerViewDataSource <NSObject>
 - (UIScenePresentationContext *)presentationContextForSceneLayerHostContainerView;
+- (UIView *)backgroundView;
+- (NSString *)identifier;
 @end
 

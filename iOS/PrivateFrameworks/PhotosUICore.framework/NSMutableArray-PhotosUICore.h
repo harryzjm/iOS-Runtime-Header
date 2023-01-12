@@ -7,6 +7,9 @@
 #import <Foundation/NSMutableArray.h>
 
 @interface NSMutableArray (PhotosUICore)
+- (void)px_addObject:(id)arg1 removingFirstObjectIfNeededToKeepMaximumCount:(long long)arg2;
+- (void)px_addObjectIfNotNil:(id)arg1;
+- (void)px_insertObjects:(id)arg1 atIndex:(long long)arg2;
 - (id)px_popFirstPassingTest:(CDUnknownBlockType)arg1;
 - (id)px_popRange:(struct _NSRange)arg1;
 - (id)px_popLast;

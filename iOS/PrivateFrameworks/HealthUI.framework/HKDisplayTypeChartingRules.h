@@ -17,6 +17,7 @@
     NSDictionary *_perUnitDecimalPrecision;
     _Bool _shouldHideAverageLine;
     _Bool _shouldDisplayUnitForAxisLabels;
+    _Bool _shouldShowInitialLollipop;
     _Bool _shouldConnectSamplesWithLines;
     _Bool _shouldRoundYAxisDuringExpansion;
     long long _defaultChartStyle;
@@ -30,6 +31,7 @@
 @property(nonatomic) long long preferredTimeScope; // @synthesize preferredTimeScope=_preferredTimeScope;
 @property(nonatomic) _Bool shouldConnectSamplesWithLines; // @synthesize shouldConnectSamplesWithLines=_shouldConnectSamplesWithLines;
 @property(retain, nonatomic) id <HKInteractiveChartsAxisScalingRule> axisScalingRule; // @synthesize axisScalingRule=_axisScalingRule;
+@property(nonatomic) _Bool shouldShowInitialLollipop; // @synthesize shouldShowInitialLollipop=_shouldShowInitialLollipop;
 @property(nonatomic) _Bool shouldDisplayUnitForAxisLabels; // @synthesize shouldDisplayUnitForAxisLabels=_shouldDisplayUnitForAxisLabels;
 @property(nonatomic) _Bool shouldHideAverageLine; // @synthesize shouldHideAverageLine=_shouldHideAverageLine;
 @property(readonly, nonatomic) long long defaultChartStyle; // @synthesize defaultChartStyle=_defaultChartStyle;

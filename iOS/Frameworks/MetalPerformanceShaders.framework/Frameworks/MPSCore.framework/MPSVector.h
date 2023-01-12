@@ -10,7 +10,7 @@
 
 @interface MPSVector : NSObject
 {
-    struct MPSDevice *_device;
+    void *_device;
     unsigned long long _length;
     unsigned long long _vectors;
     unsigned long long _vectorBytes;
@@ -33,7 +33,7 @@
 - (id)initWithBuffer:(id)arg1 offset:(unsigned long long)arg2 descriptor:(id)arg3;
 - (id)initWithBuffer:(id)arg1 descriptor:(id)arg2;
 - (id)initWithBuffer:(id)arg1 length:(unsigned long long)arg2 dataType:(unsigned int)arg3;
-- (id)initPrivateWithDescriptor:(id)arg1 device:(struct MPSDevice *)arg2;
+- (id)initPrivateWithDescriptor:(id)arg1 device:(void *)arg2;
 - (id)init;
 @property(readonly, retain, nonatomic) id <MTLDevice> device;
 

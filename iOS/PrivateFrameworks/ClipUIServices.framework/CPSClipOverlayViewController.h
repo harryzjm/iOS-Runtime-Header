@@ -8,7 +8,7 @@
 
 #import <ClipUIServices/CPSSessionProxyDelegate-Protocol.h>
 
-@class CPSAppAttributionBanner, CPSAppClipRecord, CPSBannerContainerView, CPSClipLoadingView, CPSClipMetadata, CPSSessionProxy, CPSWebClip, NSString, NSTimer;
+@class CPSAppAttributionBanner, CPSAppClipRecord, CPSBannerContainerView, CPSClipLoadingView, CPSClipMetadata, CPSPromise, CPSSessionProxy, CPSWebClip, NSString, NSTimer;
 
 @interface CPSClipOverlayViewController : UIViewController <CPSSessionProxyDelegate>
 {
@@ -26,13 +26,16 @@
     _Bool _showingDemoProgress;
     double _initialAppearanceTime;
     CPSWebClip *_webClip;
+    CPSPromise *_clipUpdatePromise;
     NSString *_webClipID;
+    NSString *_referrerBundleID;
     long long _appAttributionBannerPolicy;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) long long appAttributionBannerPolicy; // @synthesize appAttributionBannerPolicy=_appAttributionBannerPolicy;
 @property(nonatomic) _Bool usesMockData; // @synthesize usesMockData=_usesMockData;
+@property(copy, nonatomic) NSString *referrerBundleID; // @synthesize referrerBundleID=_referrerBundleID;
 @property(copy, nonatomic) NSString *webClipID; // @synthesize webClipID=_webClipID;
 - (void)setDisplayedOverPlaceholder:(_Bool)arg1 animated:(_Bool)arg2;
 - (id)initWithAppClipBundleID:(id)arg1 webClipID:(id)arg2;
@@ -56,6 +59,7 @@
 - (void)_loadClipMetadataUsingPlaceholderWebClipID;
 - (void)_setClipRecord:(id)arg1;
 - (void)_loadClipRecordUsingBundleID;
+- (void)setClipNeedsUpdateToLatestVersion;
 - (void)setSceneActivationState:(long long)arg1 animated:(_Bool)arg2;
 - (void)setDisplayedOverPlaceholder:(_Bool)arg1 usingClipMetadata:(id)arg2 animated:(_Bool)arg3;
 - (void)setDisplayedOverPlaceholder:(_Bool)arg1 forWebClipID:(id)arg2 animated:(_Bool)arg3;

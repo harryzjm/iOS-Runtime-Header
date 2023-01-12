@@ -6,12 +6,11 @@
 
 #import <TextRecognition/NSObject-Protocol.h>
 
-@class CRImage, CRRecognizerConfiguration, NSArray, NSObject;
+@class CRImage, CRNeuralRecognizerConfiguration, NSArray, NSObject;
 @protocol CRTextRecognizerModelInputProvider;
 
 @protocol CRRecognizerFeatureProviding <NSObject>
-- (NSArray *)pruneAndSortRecognizedTextFeatures:(NSArray *)arg1;
 - (void)enumerateInputsForImage:(CRImage *)arg1 textFeatures:(NSArray *)arg2 usingBlock:(void (^)(NSArray *, double))arg3;
-- (id)initWithConfiguration:(CRRecognizerConfiguration *)arg1 inputProvider:(NSObject<CRTextRecognizerModelInputProvider> *)arg2 error:(id *)arg3;
+- (id)initWithConfiguration:(CRNeuralRecognizerConfiguration *)arg1 inputProvider:(NSObject<CRTextRecognizerModelInputProvider> *)arg2 error:(id *)arg3;
 @end
 

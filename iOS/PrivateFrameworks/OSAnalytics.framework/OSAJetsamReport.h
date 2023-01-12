@@ -21,6 +21,7 @@
     unsigned long long _event_code;
     _Bool _aleFlag;
     NSSet *_visibilityEndowmentState;
+    NSSet *_audioAssertionState;
 }
 
 + (long long)_daysSince1970;
@@ -34,12 +35,14 @@
 - (void)_getSnapshotWithFlags:(unsigned int)arg1;
 - (void)acquireJetsamData;
 - (void)acquireJetsamDataWithFlags:(unsigned int)arg1;
+- (void)instrumentEvents:(_Bool)arg1;
+- (_Bool)saveWithOptions:(id)arg1;
 - (id)additionalIPSMetadata;
 - (id)reportNamePrefix;
 - (id)appleCareDetails;
 - (id)problemType;
 - (void)dealloc;
-- (id)initWithIncidentID:(id)arg1 visibliltyEndowmentState:(id)arg2;
+- (id)initWithIncidentID:(id)arg1 visibilityEndowmentState:(id)arg2 audioAssertionState:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

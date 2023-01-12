@@ -11,7 +11,7 @@
 
 @interface IPARectArray : NSObject <NSCopying, NSMutableCopying>
 {
-    struct RectArray *_imp;
+    void *_imp;
 }
 
 + (id)rectArrayWithRect:(struct CGRect)arg1;

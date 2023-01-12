@@ -17,7 +17,6 @@
     NSString *_deliveryInfoVersion;
 }
 
-+ (id)classSet;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *deliveryInfoVersion; // @synthesize deliveryInfoVersion=_deliveryInfoVersion;

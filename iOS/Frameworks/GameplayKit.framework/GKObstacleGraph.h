@@ -9,7 +9,7 @@
 @interface GKObstacleGraph
 {
     NSMutableArray *_sourceObstacles;
-    struct GKCObstacleGraph *_cObstacleGraph;
+    void *_cObstacleGraph;
     Class _nodeClass;
 }
 
@@ -36,8 +36,8 @@
 @property(readonly, nonatomic) float bufferRadius;
 - (id)mutObstacles;
 @property(readonly, nonatomic) NSArray *obstacles;
-- (struct GKCObstacleGraph *)cObstacleGraph;
-- (struct GKCGraph *)makeCGraph;
+- (void *)cObstacleGraph;
+- (void *)makeCGraph;
 
 @end
 

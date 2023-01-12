@@ -6,7 +6,7 @@
 
 #import <MediaPlaybackCore/MPCResponseMediaRemoteControllerChaining-Protocol.h>
 
-@class MPMiddlewareChain, MPModelGenericObject, MPPropertySet, NSArray, NSIndexPath, NSString, UIView;
+@class MPCPlayerAudioFormat, MPCPlayerAudioRoute, MPMiddlewareChain, MPModelGenericObject, MPPropertySet, NSArray, NSIndexPath, NSString, UIView;
 @protocol MPCVideoOutput, MPCVideoView;
 
 @protocol MPCPlayerResponseBuilder <MPCResponseMediaRemoteControllerChaining>
@@ -19,6 +19,13 @@
 - (_Bool)playerCommandSupported:(_Bool)arg1 command:(unsigned int)arg2 chain:(MPMiddlewareChain *)arg3;
 - (NSArray *)playerItemCurrentLanguageOptions:(NSArray *)arg1 atIndexPath:(NSIndexPath *)arg2 chain:(MPMiddlewareChain *)arg3;
 - (NSArray *)playerItemLanguageOptionGroups:(NSArray *)arg1 atIndexPath:(NSIndexPath *)arg2 chain:(MPMiddlewareChain *)arg3;
+- (NSArray *)alternateAudioFormats:(NSArray *)arg1 chain:(MPMiddlewareChain *)arg2;
+- (MPCPlayerAudioRoute *)audioRoute:(MPCPlayerAudioRoute *)arg1 chain:(MPMiddlewareChain *)arg2;
+- (unsigned long long)audioFormatPreference:(unsigned long long)arg1 chain:(MPMiddlewareChain *)arg2;
+- (long long)activeAudioFormatJustification:(long long)arg1 chain:(MPMiddlewareChain *)arg2;
+- (MPCPlayerAudioFormat *)activeAudioFormat:(MPCPlayerAudioFormat *)arg1 chain:(MPMiddlewareChain *)arg2;
+- (MPCPlayerAudioFormat *)preferredAudioFormat:(MPCPlayerAudioFormat *)arg1 chain:(MPMiddlewareChain *)arg2;
+- (_Bool)playerIsSharedListeningSession:(_Bool)arg1 chain:(MPMiddlewareChain *)arg2;
 - (_Bool)sectionIsAutoPlaySection:(_Bool)arg1 atIndex:(long long)arg2 chain:(MPMiddlewareChain *)arg3;
 - (long long)playerGlobalItemCount:(long long)arg1 chain:(MPMiddlewareChain *)arg2;
 - (long long)playerPlayingItemGlobalIndex:(long long)arg1 chain:(MPMiddlewareChain *)arg2;
@@ -31,6 +38,7 @@
 - (CDStruct_fce57115)playerItemDuration:(CDStruct_fce57115)arg1 atIndexPath:(NSIndexPath *)arg2 chain:(MPMiddlewareChain *)arg3;
 - (unsigned long long)playerNumberOfItems:(unsigned long long)arg1 inSection:(unsigned long long)arg2 chain:(MPMiddlewareChain *)arg3;
 - (unsigned long long)playerNumberOfSections:(unsigned long long)arg1 chain:(MPMiddlewareChain *)arg2;
+- (long long)playerExplicitContentState:(long long)arg1 chain:(MPMiddlewareChain *)arg2;
 - (long long)playerUpNextItemCount:(long long)arg1 chain:(MPMiddlewareChain *)arg2;
 - (long long)playerLastChangeDirection:(long long)arg1 chain:(MPMiddlewareChain *)arg2;
 - (long long)playerQueueEndAction:(long long)arg1 chain:(MPMiddlewareChain *)arg2;

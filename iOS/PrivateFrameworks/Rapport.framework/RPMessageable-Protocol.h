@@ -8,6 +8,7 @@
 @protocol OS_dispatch_queue;
 
 @protocol RPMessageable
+@property(retain, nonatomic) NSString *serviceType;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue;
 - (void)sendRequestID:(NSString *)arg1 request:(NSDictionary *)arg2 destinationID:(NSString *)arg3 options:(NSDictionary *)arg4 responseHandler:(void (^)(NSDictionary *, NSDictionary *, NSError *))arg5;
 - (void)sendRequestID:(NSString *)arg1 request:(NSDictionary *)arg2 options:(NSDictionary *)arg3 responseHandler:(void (^)(NSDictionary *, NSDictionary *, NSError *))arg4;

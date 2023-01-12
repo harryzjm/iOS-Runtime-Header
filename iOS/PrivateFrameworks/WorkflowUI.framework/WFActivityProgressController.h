@@ -20,6 +20,7 @@
 - (void)dismissWithCompletion:(CDUnknownBlockType)arg1;
 - (void)presentFrom:(id)arg1 cancellationHandler:(CDUnknownBlockType)arg2;
 - (id)initWithTitle:(id)arg1;
+@property(nonatomic) unsigned long long state;
 
 @end
 

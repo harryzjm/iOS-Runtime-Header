@@ -28,7 +28,7 @@
 @property(nonatomic) __weak id <HUPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
 - (void)_updateRightBarButtons;
 - (id)finishPresentation:(id)arg1 animated:(_Bool)arg2;
-- (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
+- (void)itemManagerDidUpdate:(id)arg1;
 - (id)detailsViewControllerForPresentationCoordinator:(id)arg1 item:(id)arg2;
 - (_Bool)hasDetailsActionForPresentationCoordinator:(id)arg1 item:(id)arg2;
 - (id)layoutOptionsForSection:(long long)arg1;

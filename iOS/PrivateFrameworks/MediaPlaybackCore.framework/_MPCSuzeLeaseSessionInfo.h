@@ -8,6 +8,7 @@
 
 @class ICSuzeLeaseSession, MPCSuzeLeaseSession;
 
+__attribute__((visibility("hidden")))
 @interface _MPCSuzeLeaseSessionInfo : NSObject
 {
     _Bool _shouldStopWhenFinished;

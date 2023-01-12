@@ -9,7 +9,7 @@
 #import <GeoServices/NSSecureCoding-Protocol.h>
 
 @class GEOGuidanceEvent, GEOJunction, GEOJunctionView, GEONameInfo, NSArray, NSData, NSMutableArray, NSString, NSUUID;
-@protocol GEOTransitArtworkDataSource;
+@protocol GEOServerFormattedString, GEOTransitArtworkDataSource;
 
 @interface GEOComposedGuidanceEvent : NSObject <NSSecureCoding>
 {
@@ -25,7 +25,7 @@
     NSString *_roadName;
     double _distance;
     GEOJunction *_maneuverJunction;
-    int _maneuverArrow;
+    int _maneuverType;
     int _drivingSide;
     CDStruct_3f2a7a20 _startValidRouteCoordinate;
     CDStruct_3f2a7a20 _endValidRouteCoordinate;
@@ -33,7 +33,6 @@
     double _startValidDistance;
     double _endValidDistance;
     double _distanceForStrings;
-    double _referencePointDistance;
     unsigned long long _source;
     unsigned long long _sourceIndex;
     unsigned long long _enrouteNoticeIndex;
@@ -46,7 +45,6 @@
 @property(nonatomic) unsigned long long sourceIndex; // @synthesize sourceIndex=_sourceIndex;
 @property(nonatomic) unsigned long long source; // @synthesize source=_source;
 @property(readonly, nonatomic) double distanceForStrings; // @synthesize distanceForStrings=_distanceForStrings;
-@property(readonly, nonatomic) double referencePointDistance; // @synthesize referencePointDistance=_referencePointDistance;
 @property(readonly, nonatomic) double endValidDistance; // @synthesize endValidDistance=_endValidDistance;
 @property(readonly, nonatomic) double startValidDistance; // @synthesize startValidDistance=_startValidDistance;
 @property(readonly, nonatomic) CDStruct_3f2a7a20 coordinateForDistanceStrings; // @synthesize coordinateForDistanceStrings=_coordinateForDistanceStrings;
@@ -60,7 +58,7 @@
 @property(readonly, nonatomic) id <GEOTransitArtworkDataSource> artworkOverride; // @synthesize artworkOverride=_artworkOverride;
 @property(readonly, nonatomic) GEOJunction *maneuverJunction; // @synthesize maneuverJunction=_maneuverJunction;
 @property(readonly, nonatomic) int drivingSide; // @synthesize drivingSide=_drivingSide;
-@property(readonly, nonatomic) int maneuverArrow; // @synthesize maneuverArrow=_maneuverArrow;
+@property(readonly, nonatomic) int maneuverType; // @synthesize maneuverType=_maneuverType;
 @property(readonly, nonatomic) unsigned long long legIndex; // @synthesize legIndex=_legIndex;
 @property(readonly, nonatomic) unsigned long long stepIndex; // @synthesize stepIndex=_stepIndex;
 @property(readonly, nonatomic) NSUUID *uniqueID; // @synthesize uniqueID=_uniqueID;
@@ -76,12 +74,16 @@
 - (double)endDistanceForSpeed:(double)arg1;
 - (double)startDistanceForSpeed:(double)arg1;
 - (_Bool)isValidForSpeed:(double)arg1;
+@property(readonly, nonatomic) int arType;
+@property(readonly, nonatomic) NSString *arArrowLabel;
+@property(readonly, nonatomic) id <GEOServerFormattedString> arInstruction;
 @property(readonly, nonatomic) unsigned long long numChainedAnnouncements;
 @property(readonly, nonatomic) _Bool isLaneGuidanceForManeuver;
 @property(readonly, nonatomic) int composedGuidanceEventType;
 @property(readonly, nonatomic) NSArray *laneInstructions;
 @property(readonly, nonatomic) NSArray *laneTitles;
 @property(readonly, nonatomic) NSArray *lanes;
+@property(readonly, nonatomic) _Bool isImportant;
 @property(readonly, nonatomic) _Bool isSticky;
 @property(readonly, nonatomic) _Bool hasHaptics;
 @property(readonly, nonatomic) double repetitionInterval;
@@ -92,6 +94,7 @@
 @property(readonly, nonatomic) NSArray *signDetails;
 @property(readonly, nonatomic) NSArray *signTitles;
 @property(readonly, nonatomic) unsigned long long stackRanking;
+@property(readonly, nonatomic) _Bool hasArGuidance;
 @property(readonly, nonatomic) _Bool hasJunctionView;
 @property(readonly, nonatomic) _Bool hasSpokenGuidance;
 @property(readonly, nonatomic) _Bool hasSignGuidance;

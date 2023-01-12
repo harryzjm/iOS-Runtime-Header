@@ -30,7 +30,7 @@
 - (struct CGRect)p_cacheErasableBounds;
 - (void)p_cacheDimensions;
 - (id)description;
-- (_Bool)appendOpticalAlignToSpec:(struct Spec *)arg1 offset:(struct CGPoint)arg2;
+- (_Bool)appendOpticalAlignToSpec:(void *)arg1 offset:(struct CGPoint)arg2;
 - (void)renderIntoContext:(struct CGContext *)arg1 offset:(struct CGPoint)arg2;
 - (struct CGRect)erasableBounds;
 @property(readonly, nonatomic) double width;

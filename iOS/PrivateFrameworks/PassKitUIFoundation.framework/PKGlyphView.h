@@ -89,7 +89,7 @@
 - (void)_updatePhoneWiggleIfNecessary;
 - (void)_updatePhoneLayoutWithTransitionIndex:(unsigned long long)arg1 animated:(_Bool)arg2;
 - (void)_performTransitionWithTransitionIndex:(unsigned long long)arg1 animated:(_Bool)arg2;
-- (void)_finishTransitionForIndex:(unsigned long long)arg1;
+- (void)_finishTransitionForIndex:(unsigned long long)arg1 cancelled:(_Bool)arg2;
 - (void)_executeTransitionCompletionHandlers:(_Bool)arg1;
 - (void)setState:(long long)arg1 animated:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setState:(long long)arg1;

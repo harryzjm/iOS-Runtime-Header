@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSNumber, NSSet, NSString;
+@class NSDate, NSNumber, NSSet, NSString;
 
 @interface GKGameSummaryInternal
 {
     _Bool _isArcade;
     NSString *_bundleID;
     NSNumber *_adamID;
+    NSDate *_playedAt;
     NSSet *_compatiblePlatforms;
 }
 
@@ -18,6 +19,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) _Bool isArcade; // @synthesize isArcade=_isArcade;
 @property(retain, nonatomic) NSSet *compatiblePlatforms; // @synthesize compatiblePlatforms=_compatiblePlatforms;
+@property(retain, nonatomic) NSDate *playedAt; // @synthesize playedAt=_playedAt;
 @property(retain, nonatomic) NSNumber *adamID; // @synthesize adamID=_adamID;
 @property(retain, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 - (id)description;

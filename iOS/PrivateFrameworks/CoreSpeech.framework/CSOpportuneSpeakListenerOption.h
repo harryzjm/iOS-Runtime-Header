@@ -11,9 +11,11 @@
 @interface CSOpportuneSpeakListenerOption : NSObject
 {
     NSString *_deviceId;
+    unsigned long long _opportuneSpeakListeningType;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long opportuneSpeakListeningType; // @synthesize opportuneSpeakListeningType=_opportuneSpeakListeningType;
 @property(retain, nonatomic) NSString *deviceId; // @synthesize deviceId=_deviceId;
 
 @end

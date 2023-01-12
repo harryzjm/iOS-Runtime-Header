@@ -8,7 +8,6 @@
 
 @class CKRecordID, NSData, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDWrappingContext : NSObject
 {
     CKRecordID *_recordID;

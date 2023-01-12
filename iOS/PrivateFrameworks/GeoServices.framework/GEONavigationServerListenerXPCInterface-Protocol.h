@@ -6,7 +6,7 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class NSData, NSString;
+@class GEOComposedRoute, GEOComposedRouteTraffic, GEOComposedWaypoint, GEOLocation, NSData, NSString;
 
 @protocol GEONavigationServerListenerXPCInterface <NSObject>
 - (void)currentRoadNameUpdated:(NSString *)arg1;
@@ -21,6 +21,10 @@
 - (void)routeSummaryUpdatedWithGuidanceStateData:(NSData *)arg1;
 - (void)routeSummaryUpdatedWithTransitSummaryData:(NSData *)arg1;
 - (void)routeSummaryUpdatedWithNavigationRouteSummaryData:(NSData *)arg1;
+- (void)didArriveAtWaypoint:(GEOComposedWaypoint *)arg1 endOfLegIndex:(unsigned long long)arg2;
+- (void)didUpdateTrafficForCurrentRoute:(GEOComposedRouteTraffic *)arg1;
+- (void)didUpdateRoute:(GEOComposedRoute *)arg1;
+- (void)didUpdateLocation:(GEOLocation *)arg1;
 - (void)navigationStateChanged:(unsigned long long)arg1 transportType:(int)arg2;
 @end
 

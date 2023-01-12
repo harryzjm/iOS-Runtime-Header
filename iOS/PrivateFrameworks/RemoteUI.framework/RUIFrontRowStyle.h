@@ -9,6 +9,7 @@
 }
 
 - (void)applyToObjectModel:(id)arg1;
+- (long long)tableViewStyle;
 - (id)init;
 
 @end

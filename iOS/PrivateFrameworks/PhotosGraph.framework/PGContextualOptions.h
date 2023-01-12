@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSDateComponents, PGManager;
+@class NSArray, NSDate, NSDateComponents;
 
 @interface PGContextualOptions : NSObject
 {
-    PGManager *_manager;
+    NSArray *_contextualRules;
     NSDate *_localToday;
     NSDateComponents *_localTodayComponents;
 }
@@ -19,7 +19,7 @@
 @property(retain, nonatomic) NSDateComponents *localTodayComponents; // @synthesize localTodayComponents=_localTodayComponents;
 @property(retain, nonatomic) NSDate *localToday; // @synthesize localToday=_localToday;
 - (id)availableContextualRules;
-- (id)initWithManager:(id)arg1 options:(id)arg2;
+- (id)initWithGraph:(id)arg1 photoLibrary:(id)arg2 curationManager:(id)arg3 options:(id)arg4 loggingConnection:(id)arg5;
 
 @end
 

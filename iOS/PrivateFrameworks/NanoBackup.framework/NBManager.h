@@ -23,6 +23,7 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
 - (id)deleteBackup:(id)arg1;
 - (void)deleteBackup:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)createManualBackupWithCompletion:(CDUnknownBlockType)arg1;
 - (void)createBackupForPairingID:(id)arg1 synchronousCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)createBackupForPairingID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)createBackupForDevice:(id)arg1 synchronousCompletionHandler:(CDUnknownBlockType)arg2;

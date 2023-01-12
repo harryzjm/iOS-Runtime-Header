@@ -20,9 +20,6 @@
 - (void)setContentOffset:(struct CGPoint)arg1 animated:(_Bool)arg2;
 - (_Bool)_scrollsToMakeFirstResponderVisible;
 - (_Bool)cancelTouchTracking;
-- (void)handlePan:(id)arg1;
-- (_Bool)_gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
-- (void)_gestureRecognizerFailed:(id)arg1;
 
 // Remaining properties
 @property(nonatomic) __weak id <SBIconScrollViewDelegate> delegate; // @dynamic delegate;

@@ -17,6 +17,8 @@
 + (id)dvt_dictionaryWithTuples:(id)arg1;
 + (id)dvt_strictDictionaryWithKeysAndObjects:(id)arg1;
 + (id)dvt_dictionaryWithKeysAndValues:(id)arg1;
+- (id)dvt_invertedDictionaryOfKeysGroupedByValueUsingMutableDictionaryClass:(Class)arg1;
+- (id)dvt_invertedDictionaryOfKeysGroupedByValue;
 - (id)dvt_dictionaryByApplyingBlock:(CDUnknownBlockType)arg1;
 - (_Bool)dvt_areAnyEntriesPassingTest:(CDUnknownBlockType)arg1;
 - (_Bool)dvt_areAllEntriesPassingTest:(CDUnknownBlockType)arg1;
@@ -29,6 +31,9 @@
 - (_Bool)dvt_boolForKey:(id)arg1 defaultValue:(_Bool)arg2;
 - (id)dvt_stringForKey:(id)arg1 defaultValue:(id)arg2;
 - (long long)dvt_integerForKey:(id)arg1 defaultValue:(long long)arg2;
+- (_Bool)dvt_containsObject:(id)arg1 inSetForKey:(id)arg2 inDictionaryForKey:(id)arg3;
+- (_Bool)dvt_containsObject:(id)arg1 inSetForKey:(id)arg2;
+- (id)dvt_objectForKey:(id)arg1 inDictionaryForKey:(id)arg2;
 - (id)dvt_numberOrNilForKey:(id)arg1;
 - (id)dvt_dateOrNilForKey:(id)arg1;
 - (id)dvt_arrayOrNilForKey:(id)arg1;
@@ -41,6 +46,8 @@
 - (id)dvt_dictionaryBySettingObject:(id)arg1 forKey:(id)arg2;
 - (id)dvt_dictionaryByRemovingObjectsForKeys:(id)arg1;
 - (id)dvt_dictionaryByRemovingObjectForKey:(id)arg1;
+- (id)dvt_dictionaryByExpandingKeysAndValuesWithMacroExpansionScope:(id)arg1;
+- (id)dvt_dictionaryByExpandingValuesWithMacroExpansionScope:(id)arg1;
 - (id)dvt_decodePlistArrayForKey:(id)arg1 objectsOfClass:(Class)arg2 error:(id *)arg3;
 - (id)dvt_decodePlistObjectForKey:(id)arg1 ofClass:(Class)arg2 error:(id *)arg3;
 - (id)dvt_plistDictionaryForKey:(id)arg1 error:(id *)arg2;

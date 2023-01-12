@@ -8,6 +8,8 @@
 {
 }
 
+- (id)minSupportedFormatVersion;
+- (id)maxSupportedFormatVersion;
 - (_Bool)shouldDownloadAsset:(id)arg1 withInstalledAssets:(id)arg2;
 - (id)launchActivityIdentifier;
 - (id)assetType;

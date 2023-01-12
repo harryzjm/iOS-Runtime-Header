@@ -6,9 +6,9 @@
 
 #import <TestFlightCore/NSObject-Protocol.h>
 
-@class NSString;
+@class NSURL;
 
 @protocol TFBetaAppLaunchDataProvider <NSObject>
-- (void)loadLaunchScreenForIdentifier:(NSString *)arg1 withCompletionHandler:(void (^)(TFLaunchScreen *, NSError *))arg2;
+- (void)loadLaunchScreenForBundleWithURL:(NSURL *)arg1 withCompletionHandler:(void (^)(TFLaunchScreen *, NSError *))arg2;
 @end
 

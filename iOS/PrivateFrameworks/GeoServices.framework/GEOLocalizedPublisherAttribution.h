@@ -25,11 +25,13 @@
     unsigned int _logoCenteredColorizedIdentifier;
     unsigned int _logoCenteredIdentifier;
     unsigned int _logoIdentifier;
+    unsigned int _logoWithoutPaddingIdentifier;
     struct {
         unsigned int has_iconIdentifier:1;
         unsigned int has_logoCenteredColorizedIdentifier:1;
         unsigned int has_logoCenteredIdentifier:1;
         unsigned int has_logoIdentifier:1;
+        unsigned int has_logoWithoutPaddingIdentifier:1;
         unsigned int read_displayName:1;
         unsigned int read_language:1;
         unsigned int read_subtitle:1;
@@ -54,6 +56,8 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasLogoWithoutPaddingIdentifier;
+@property(nonatomic) unsigned int logoWithoutPaddingIdentifier;
 @property(nonatomic) _Bool hasLogoCenteredColorizedIdentifier;
 @property(nonatomic) unsigned int logoCenteredColorizedIdentifier;
 @property(retain, nonatomic) NSString *themeColorDarkMode;

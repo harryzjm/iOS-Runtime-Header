@@ -14,6 +14,7 @@
 {
     PKHeroCardExplainationHeaderView *_heroCardView;
     _Bool _isPassExpress;
+    unsigned long long _radioTechnologyType;
     PKSubcredentialInvitationFlowControllerContext *_provisioningContext;
     id <PKSubcredentialInvitationFlowControllerProtocol> _flowController;
 }

@@ -16,17 +16,20 @@
 
 // Remaining properties
 @property(nonatomic) int cloudKitContainer; // @dynamic cloudKitContainer;
+@property(retain, nonatomic) TRIPBTimestamp *deploymentDate; // @dynamic deploymentDate;
+@property(nonatomic) int deploymentEnvironment; // @dynamic deploymentEnvironment;
 @property(nonatomic) int deploymentId; // @dynamic deploymentId;
 @property(copy, nonatomic) NSData *encodedExperimentDefinition; // @dynamic encodedExperimentDefinition;
 @property(copy, nonatomic) NSString *encodedExperimentDefinitionSignature; // @dynamic encodedExperimentDefinitionSignature;
 @property(copy, nonatomic) NSString *experimentId; // @dynamic experimentId;
 @property(nonatomic) _Bool hasCloudKitContainer; // @dynamic hasCloudKitContainer;
+@property(nonatomic) _Bool hasDeploymentDate; // @dynamic hasDeploymentDate;
+@property(nonatomic) _Bool hasDeploymentEnvironment; // @dynamic hasDeploymentEnvironment;
 @property(nonatomic) _Bool hasDeploymentId; // @dynamic hasDeploymentId;
 @property(nonatomic) _Bool hasEncodedExperimentDefinition; // @dynamic hasEncodedExperimentDefinition;
 @property(nonatomic) _Bool hasEncodedExperimentDefinitionSignature; // @dynamic hasEncodedExperimentDefinitionSignature;
 @property(nonatomic) _Bool hasExperimentId; // @dynamic hasExperimentId;
 @property(nonatomic) _Bool hasInternalBuildOnly; // @dynamic hasInternalBuildOnly;
-@property(nonatomic) _Bool hasModifiedDate; // @dynamic hasModifiedDate;
 @property(nonatomic) _Bool hasPriority; // @dynamic hasPriority;
 @property(nonatomic) _Bool hasProjectId; // @dynamic hasProjectId;
 @property(nonatomic) _Bool hasPublicCertificate; // @dynamic hasPublicCertificate;
@@ -34,7 +37,6 @@
 @property(nonatomic) _Bool hasTeamId; // @dynamic hasTeamId;
 @property(nonatomic) _Bool hasType; // @dynamic hasType;
 @property(nonatomic) _Bool internalBuildOnly; // @dynamic internalBuildOnly;
-@property(retain, nonatomic) TRIPBTimestamp *modifiedDate; // @dynamic modifiedDate;
 @property(retain, nonatomic) TRIPBUInt32Array *namespaceCompatibilityVersionsArray; // @dynamic namespaceCompatibilityVersionsArray;
 @property(readonly, nonatomic) unsigned long long namespaceCompatibilityVersionsArray_Count; // @dynamic namespaceCompatibilityVersionsArray_Count;
 @property(retain, nonatomic) NSMutableArray *namespacesArray; // @dynamic namespacesArray;

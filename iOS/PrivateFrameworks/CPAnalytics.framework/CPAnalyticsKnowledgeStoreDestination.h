@@ -22,12 +22,14 @@
 @property(readonly, nonatomic) NSMutableArray *matchers; // @synthesize matchers=_matchers;
 - (void)_addCoreDuetDatasetSample:(id)arg1 toDataset:(id)arg2;
 - (id)_datasetSampleFromEvent:(id)arg1 andMatcher:(id)arg2;
+- (void)updateWithConfig:(id)arg1;
 - (void)processEvent:(id)arg1;
 - (id)initWithConfig:(id)arg1 cpAnalyticsInstance:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) _Bool disabled;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

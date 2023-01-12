@@ -34,7 +34,7 @@
     _Bool _writeLastMaintenanceDateOnNextWrite;
     WBSPeriodicActivityScheduler *_maintenanceScheduler;
     NSObject<OS_dispatch_source> *_sendDeltaToServiceTimer;
-    struct unique_ptr<SafariShared::SuddenTerminationDisabler, std::__1::default_delete<SafariShared::SuddenTerminationDisabler>> _suddenTerminationDisabler;
+    struct unique_ptr<SafariShared::SuddenTerminationDisabler, std::default_delete<SafariShared::SuddenTerminationDisabler>> _suddenTerminationDisabler;
     NSMutableSet *_pendingAddsOrUpdates;
     id <WBSHistoryStoreDelegate> _delegate;
     double _historyAgeLimit;
@@ -111,6 +111,7 @@
 - (void)itemsWereModified:(id)arg1 byUserInitiatedAction:(_Bool)arg2;
 - (void)itemsWereAdded:(id)arg1 byUserInitiatedAction:(_Bool)arg2;
 - (void)removePastHistoryVisitsForItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getHighLevelHTTPFamilyDomainsVisitedAfterDate:(id)arg1 beforeDate:(id)arg2 onlyFromThisDevice:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)checkIfLocalVisitExistsInAnyOfItems:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)getVisitsCreatedAfterDate:(id)arg1 beforeDate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)enumerateSubsequentVisitsInRedirectChainOnDatabaseQueue:(id)arg1 items:(id)arg2 enumerationBlock:(CDUnknownBlockType)arg3;

@@ -6,21 +6,20 @@
 
 #import <objc/NSObject.h>
 
-#import <PhotoLibraryServices/PLBackgroundJobCameraWatcherDelegate-Protocol.h>
+#import <PhotoLibraryServices/PFCameraViewfinderSessionWatcherDelegate-Protocol.h>
 #import <PhotoLibraryServices/PLBackgroundJobLibraryCoordinatorDelegate-Protocol.h>
-#import <PhotoLibraryServices/PLForegroundMonitorDelegate-Protocol.h>
 
-@class NSDictionary, NSString, PFCoalescer, PLBackgroundJobCameraWatcher, PLBackgroundJobLibraryCoordinator, PLForegroundMonitor;
-@protocol OS_dispatch_queue, OS_dispatch_source, OS_xpc_object, PLBackgroundJobServiceDelegate;
+@class NSDictionary, NSPointerArray, NSString, PFCameraViewfinderSessionWatcher, PFCoalescer, PLBackgroundJobLibraryCoordinator, PLBackgroundJobStatusCenter;
+@protocol OS_dispatch_queue, OS_dispatch_source, OS_xpc_object;
 
-@interface PLBackgroundJobService : NSObject <PLBackgroundJobLibraryCoordinatorDelegate, PLForegroundMonitorDelegate, PLBackgroundJobCameraWatcherDelegate>
+@interface PLBackgroundJobService : NSObject <PFCameraViewfinderSessionWatcherDelegate, PLBackgroundJobLibraryCoordinatorDelegate>
 {
     NSObject<OS_xpc_object> *_xpcActivity;
     unsigned long long _state;
+    PLBackgroundJobStatusCenter *_statusCenter;
     PLBackgroundJobLibraryCoordinator *_libraryCoordinator;
     PFCoalescer *_registrationCoalescer;
-    PLForegroundMonitor *_foregroundMonitor;
-    PLBackgroundJobCameraWatcher *_cameraWatcher;
+    PFCameraViewfinderSessionWatcher *_cameraWatcher;
     double _registrationCoalescerPushBackTimeInterval;
     NSDictionary *_libraryInvalidationCompletionHandlerByLibraryURL;
     NSDictionary *_bundlesToProcessByPriority;
@@ -31,47 +30,55 @@
     _Bool _deferringService;
     _Bool _simulateXpcActivityDeferring;
     _Bool _cameraForeground;
-    id <PLBackgroundJobServiceDelegate> _delegate;
+    NSPointerArray *_observers;
 }
 
-+ (id)_activityIdentifierForPriority:(unsigned long long)arg1;
-+ (id)_criteriaForActivityPriority:(unsigned long long)arg1;
++ (void)_removeAllBundlesFromUserDefaultsWithoutLocking;
++ (_Bool)_activityIdentifier:(id)arg1 matchesPriority:(long long)arg2;
++ (id)_activityIdentifierForPriority:(long long)arg1;
++ (id)_criteriaForActivityPriority:(long long)arg1;
++ (_Bool)_stateIsInPausedState:(unsigned long long)arg1;
++ (_Bool)_stateIsInRunningState:(unsigned long long)arg1;
++ (_Bool)_stateIsReadyToRun:(unsigned long long)arg1;
++ (_Bool)_stateIsReadyForRegistration:(unsigned long long)arg1;
++ (_Bool)verifyStateTransitionFromState:(unsigned long long)arg1 toState:(unsigned long long)arg2;
 - (void).cxx_destruct;
-@property(nonatomic) __weak id <PLBackgroundJobServiceDelegate> delegate; // @synthesize delegate=_delegate;
+@property(retain, nonatomic) NSPointerArray *observers; // @synthesize observers=_observers;
 - (void)cameraWatcherDidChangeState:(id)arg1;
-- (void)foregroundMonitor:(id)arg1 changedStateToForeground:(_Bool)arg2 forBundleIdentifier:(id)arg3;
 - (void)libraryCoordinatorFinishedJobsOnAllSubmittedBundles;
-- (void)libraryCoordinatorFinishedJobsOnSubmittedBundle:(id)arg1 priority:(unsigned long long)arg2;
+- (void)libraryCoordinatorFinishedJobsOnSubmittedBundle:(id)arg1 priority:(long long)arg2;
 - (id)_getBundleRecordsFromProcessingSetForAllPriorites;
-- (id)_getBundleRecordsFromProcessingSetForPriority:(unsigned long long)arg1;
+- (id)_getBundleRecordsFromProcessingSetForPriority:(long long)arg1;
 - (void)_removeAllBundlesFromProcessingSet;
-- (void)_removeBundleRecordFromProcessingSet:(id)arg1 priority:(unsigned long long)arg2;
-- (void)_appendBundleRecordsToProcessingSet:(id)arg1 priority:(unsigned long long)arg2;
+- (void)_removeBundleRecordFromProcessingSet:(id)arg1 priority:(long long)arg2;
+- (void)_appendBundleRecordsToProcessingSet:(id)arg1 priority:(long long)arg2;
 - (void)_loadBundleRecordsDictionaryFromUserDefaults;
 - (void)_persistBundleRecordsDictionaryToUserDefaults;
 - (id)_bundlesToProcessByPriorityAsPathStrings;
+- (id)_getBundlePathsToProcess;
 - (void)_updateCameraForegroundState:(_Bool)arg1;
 - (void)_stopRunningBackgroundJobs;
-- (void)_startRunningBackgroundJobsWithPriority:(unsigned long long)arg1;
+- (void)_startRunningBackgroundJobsWithPriorityAlreadyLocked:(long long)arg1;
+- (void)_startRunningBackgroundJobsWithPriority:(long long)arg1;
 - (void)_stopPollingForActivityStatus;
 - (void)_stopRunningBackgroundJobsAndTearDownXPCDeferTimers;
 - (void)_startPollingForActivityStatus;
 - (void)_unregisterActivityIfNeededShouldConsiderDeferring:(_Bool)arg1;
-- (void)_registerActivityWithPriority:(unsigned long long)arg1;
+- (void)_unregisterActivityIfNeededShouldConsiderDeferring_enqueue:(_Bool)arg1;
+- (void)_registerActivityWithPriority:(long long)arg1;
 - (void)_registerActivityIfNecessaryOnBundles:(id)arg1;
-- (_Bool)_serviceReadyForRegistration;
 - (void)_registerActivityWithoutCoalescingIfNecessaryOnBundle:(id)arg1;
-- (void)registerActivityIfNecessaryOnBundle:(id)arg1;
+- (void)signalBackgroundProcessingNeededOnBundle:(id)arg1;
 - (void)signalBackgroundProcessingNeededOnLibrary:(id)arg1;
-- (void)_verifyStateTransitionFromState:(unsigned long long)arg1 toState:(unsigned long long)arg2;
 - (void)_setServiceStateAlreadyLocked:(unsigned long long)arg1;
 - (void)_setServiceState:(unsigned long long)arg1;
 - (unsigned long long)_getServiceStateAlreadyLocked;
 - (unsigned long long)_getServiceState;
+@property(readonly) NSDictionary *statusCenterDump;
 - (void)invalidateLibraryBundle:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_shutdown;
 - (void)_simulateXPCShouldDefer;
-- (id)_getBundlePathsToProcess;
+- (id)initWithLibraryCoordinator:(id)arg1 statusCenter:(id)arg2;
 - (id)initWithLibraryCoordinator:(id)arg1;
 - (id)init;
 

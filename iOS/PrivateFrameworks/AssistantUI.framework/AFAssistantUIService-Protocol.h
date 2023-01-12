@@ -33,7 +33,9 @@
 - (void)assistantConnection:(AFConnection *)arg1 didFinishAcousticIDRequestWithSuccess:(_Bool)arg2;
 - (void)assistantConnectionDidDetectMusic:(AFConnection *)arg1;
 - (void)assistantConnectionWillStartAcousticIDRequest:(AFConnection *)arg1;
+- (void)assistantConnectionAudioSessionDidEndInterruption:(AFConnection *)arg1 shouldResume:(_Bool)arg2 userInfo:(NSDictionary *)arg3;
 - (void)assistantConnectionAudioSessionDidEndInterruption:(AFConnection *)arg1 shouldResume:(_Bool)arg2;
+- (void)assistantConnectionAudioSessionDidBeginInterruption:(AFConnection *)arg1 userInfo:(NSDictionary *)arg2;
 - (void)assistantConnectionAudioSessionDidBeginInterruption:(AFConnection *)arg1;
 - (void)assistantConnection:(AFConnection *)arg1 didChangeAudioSessionID:(unsigned int)arg2;
 - (void)assistantConnection:(AFConnection *)arg1 shouldSpeak:(_Bool)arg2;

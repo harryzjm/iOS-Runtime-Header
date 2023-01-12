@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVFoundation/AVAudioPCMBuffer.h>
+#import <AVFAudio/AVAudioPCMBuffer.h>
 
 #import <VoiceMemos/NSCoding-Protocol.h>
 #import <VoiceMemos/NSSecureCoding-Protocol.h>

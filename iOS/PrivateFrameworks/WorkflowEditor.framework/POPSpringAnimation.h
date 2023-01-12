@@ -16,8 +16,8 @@
 - (void)_updatedDynamicsMass;
 - (void)_updatedDynamicsFriction;
 - (void)_updatedDynamicsTension;
-- (void)setSolver:(SpringSolver_fe820e75 *)arg1;
-- (SpringSolver_fe820e75 *)solver;
+- (void)setSolver:(void *)arg1;
+- (void *)solver;
 @property(nonatomic) double springBounciness;
 @property(nonatomic) double springSpeed;
 @property(nonatomic) double dynamicsMass;

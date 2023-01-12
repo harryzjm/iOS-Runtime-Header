@@ -6,12 +6,14 @@
 
 #import <CoreHAP/NSObject-Protocol.h>
 
-@protocol HAPAccessoryReachabilityDelegate;
+@protocol HAPAccessoryReachabilityDelegate, HAPAccessoryReachabilityProfile;
 
 @protocol HAPAccessoryReachabilityClient <NSObject>
+@property(copy, nonatomic) id <HAPAccessoryReachabilityProfile> profile;
 @property(nonatomic) __weak id <HAPAccessoryReachabilityDelegate> delegate;
 - (void)kick;
 - (void)confirm;
+- (_Bool)isRunning;
 - (void)stopWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)startWithCompletionHandler:(void (^)(NSError *))arg1;
 @end

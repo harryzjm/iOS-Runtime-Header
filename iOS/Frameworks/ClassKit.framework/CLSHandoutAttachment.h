@@ -7,7 +7,7 @@
 #import <ClassKit/CLSCollaborationStateRepresentable-Protocol.h>
 #import <ClassKit/CLSRelationable-Protocol.h>
 
-@class CLSHandout, NSArray, NSDate, NSString, NSURL;
+@class CLSHandout, CLSSurvey, NSArray, NSDate, NSString, NSURL;
 
 @interface CLSHandoutAttachment <CLSRelationable, CLSCollaborationStateRepresentable>
 {
@@ -21,6 +21,7 @@
     NSString *_contentStoreIdentifier;
     NSString *_contextSummary;
     NSString *_contextCustomTypeName;
+    _Bool _contextSourceIsCatalog;
     int _completionStatus;
     long long _displayOrder;
     long long _contextType;
@@ -44,6 +45,7 @@
 @property(nonatomic) int permissionType;
 @property(nonatomic) int shareType;
 @property(nonatomic) long long contextType;
+@property(nonatomic) _Bool contextSourceIsCatalog;
 @property(copy, nonatomic) NSString *contextCustomTypeName;
 @property(copy, nonatomic) NSString *contextSummary;
 @property(copy, nonatomic) NSString *contentStoreIdentifier;
@@ -52,7 +54,11 @@
 @property(copy, nonatomic) NSArray *contextPath;
 @property(copy, nonatomic) NSURL *URL;
 @property(copy, nonatomic) NSString *title;
+- (void)removeSurvey:(id)arg1;
+- (void)addSurvey:(id)arg1;
+@property(readonly, copy, nonatomic) CLSSurvey *survey;
 @property(readonly, nonatomic) NSArray *collaborationStates;
+- (id)assetForPerson:(id)arg1;
 - (void)removeAsset:(id)arg1;
 - (void)addAsset:(id)arg1;
 @property(readonly, nonatomic) NSArray *assets;

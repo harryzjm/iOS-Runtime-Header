@@ -37,8 +37,8 @@
 - (id)_appendArguments:(id)arg1 toFormatString:(id)arg2;
 - (_Bool)_resolveRequiredInputForArgument:(id)arg1;
 - (id)_titleWithResolvedArguments:(id)arg1;
-- (id)titleWithMomentNodes:(id)arg1 features:(id)arg2;
-- (id)titleWithMomentNodes:(id)arg1;
+- (id)titleWithMomentNodes:(id)arg1 features:(id)arg2 argumentEvaluationContext:(id)arg3;
+- (id)titleWithMomentNodes:(id)arg1 argumentEvaluationContext:(id)arg2;
 - (id)initWithFormat:(id)arg1 titleCategory:(long long)arg2;
 
 @end

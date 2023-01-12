@@ -28,6 +28,7 @@
 + (id)challengeForInternalRepresentation:(id)arg1;
 + (id)stringForState:(long long)arg1;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain) GKChallengeInternal *internal; // @synthesize internal=_internal;
 - (void)loadDetailsWithCompletionHandler:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) _Bool detailsLoaded;
@@ -52,7 +53,6 @@
 - (id)initWithInternalRepresentation:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (void)dealloc;
 
 // Remaining properties
 @property(readonly, copy, nonatomic) NSString *bundleID; // @dynamic bundleID;

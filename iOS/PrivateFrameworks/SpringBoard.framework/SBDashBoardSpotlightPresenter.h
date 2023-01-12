@@ -22,9 +22,11 @@
     unsigned long long _spotlightMultiplexingLevel;
     unsigned long long _remoteSearchViewPresentationSource;
     long long _homeGestureParticipantIdentifier;
+    long long _zStackParticipantIdentifier;
 }
 
 - (void).cxx_destruct;
+- (long long)zStackParticipantIdentifierForSpotlightViewController:(id)arg1;
 - (long long)homeGestureParticipantIdentifierForSpotlightViewController:(id)arg1;
 - (unsigned long long)remoteSearchViewPresentationSourceForSpotlightViewController:(id)arg1;
 - (unsigned long long)spotlightMultiplexingLevelForSpotlightViewController:(id)arg1;
@@ -35,7 +37,7 @@
 - (void)dismissSpotlight;
 - (void)launchSpotlightForSourceViewController:(id)arg1 interactive:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)launchSpotlightForSourceViewController:(id)arg1 interactive:(_Bool)arg2;
-- (id)initWithPresenterViewController:(id)arg1 spotlightMultiplexingLevel:(unsigned long long)arg2 remoteSearchViewPresentationSource:(unsigned long long)arg3 homeGestureParticipantIdentifier:(long long)arg4;
+- (id)initWithPresenterViewController:(id)arg1 spotlightMultiplexingLevel:(unsigned long long)arg2 remoteSearchViewPresentationSource:(unsigned long long)arg3 homeGestureParticipantIdentifier:(long long)arg4 zStackParticipantIdentifier:(long long)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

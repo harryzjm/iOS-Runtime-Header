@@ -11,8 +11,13 @@
 @interface _TtC13TeaFoundation18StartupTaskManager : _TtCs12_SwiftObject
 {
     MISSING_TYPE *tasksByGroup;
-    MISSING_TYPE *promisesByGroup;
-    MISSING_TYPE *state;
+    MISSING_TYPE *deferredTasksByGroup;
+    MISSING_TYPE *willFinishLaunchingPromisesByGroup;
+    MISSING_TYPE *didFinishLaunchingPromisesByGroup;
+    MISSING_TYPE *afterLaunchingPromisesByGroup;
+    MISSING_TYPE *willFinishLaunchingState;
+    MISSING_TYPE *didFinishLaunchingState;
+    MISSING_TYPE *afterLaunchingState;
 }
 
 @end

@@ -11,14 +11,19 @@
 
 @interface NIConfiguration : NSObject <NSCopying, NSSecureCoding>
 {
+    unsigned long long _suspensionPolicy;
+    unsigned long long _enabledGestures;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)new;
-- (_Bool)isEqualToConfiguration:(id)arg1;
+@property unsigned long long enabledGestures; // @synthesize enabledGestures=_enabledGestures;
+@property unsigned long long suspensionPolicy; // @synthesize suspensionPolicy=_suspensionPolicy;
+- (id)descriptionInternal;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (_Bool)hasEqualEnabledGestures:(id)arg1;
 - (id)initWithConfiguration:(id)arg1;
 - (id)initInternal;
 - (id)init;

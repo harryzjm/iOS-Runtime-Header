@@ -7,6 +7,7 @@
 #import <SAObjects/SASCancelSpeech.h>
 
 @interface SASCancelSpeech (SiriCoreSessionObject)
+- (_Bool)siriCore_supportedByRemoteLimitedSession;
 - (_Bool)siriCore_isRestartable;
 @end
 

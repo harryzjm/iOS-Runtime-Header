@@ -14,7 +14,7 @@
 + (id)supplementaryViewKindPrefix;
 - (void).cxx_destruct;
 @property(retain, nonatomic) CKAcknowledgmentBalloonView *balloonView; // @synthesize balloonView=_balloonView;
-- (void)configureForChatItem:(id)arg1;
+- (void)configureForChatItem:(id)arg1 context:(id)arg2;
 - (void)prepareForReuse;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;

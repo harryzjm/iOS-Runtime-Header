@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *curve; // @synthesize curve=_curve;
-- (id)initWithHapticCommand:(const struct HapticCommand *)arg1;
+- (id)initWithHapticCommand:(const void *)arg1;
 
 @end
 

@@ -30,15 +30,15 @@
 
 + (double)defaultCellHeight;
 - (void).cxx_destruct;
-@property(retain, nonatomic) UIActivityIndicatorView *spinner; // @synthesize spinner=_spinner;
-@property(nonatomic) _Bool cloudIconHidden;
+@property(retain) UIActivityIndicatorView *spinner; // @synthesize spinner=_spinner;
+@property _Bool cloudIconHidden;
 - (void)setEnabled:(_Bool)arg1;
-@property(nonatomic) long long size;
-@property(retain, nonatomic) NSString *sizeString;
-@property(nonatomic) _Bool infoHidden;
-@property(retain, nonatomic) NSString *info;
-@property(retain, nonatomic) NSString *title;
-@property(retain, nonatomic) UIImage *icon;
+@property long long size;
+@property(retain) NSString *sizeString;
+@property _Bool infoHidden;
+@property(retain) NSString *info;
+@property(retain) NSString *title;
+@property(retain) UIImage *icon;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateConstraints;
 - (void)createLargeFontConstraints;

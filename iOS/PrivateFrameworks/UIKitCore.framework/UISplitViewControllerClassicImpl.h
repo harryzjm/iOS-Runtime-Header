@@ -107,6 +107,8 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic, setter=_setDisplayModeButtonItemTitle:) NSString *_displayModeButtonItemTitle; // @synthesize _displayModeButtonItemTitle;
 @property(nonatomic) _Bool presentsWithGesture; // @synthesize presentsWithGesture=_presentsWithGesture;
 @property(nonatomic) __weak id <UISplitViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (id)_nextVisibleViewControllerForResponderAfterChildViewController:(id)arg1;
+- (id)_deepestActionResponder;
 - (double)_supplementaryDividerPosition;
 - (double)_primaryDividerPosition;
 - (_Bool)_isAnimating;
@@ -145,6 +147,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_hasPreferredInterfaceOrientationForPresentation;
 - (unsigned long long)supportedInterfaceOrientations;
 - (_Bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;
+- (long long)preferredCenterStatusBarStyle;
 - (long long)preferredTrailingStatusBarStyle;
 - (long long)preferredLeadingStatusBarStyle;
 - (id)childViewControllerForStatusBarStyle;

@@ -7,12 +7,15 @@
 #import <PencilKit/PKPaletteHandwritingTool-Protocol.h>
 
 @class NSString;
-@protocol PKPaletteErasingTool, PKPaletteInkingTool;
+@protocol PKPaletteErasingTool, PKPaletteHandwritingTool, PKPaletteInkingTool;
 
 @interface PKPaletteConcreteHandwritingTool <PKPaletteHandwritingTool>
 {
+    NSString *_localeIdentifier;
 }
 
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *localeIdentifier; // @synthesize localeIdentifier=_localeIdentifier;
 - (_Bool)isHandwritingTool;
 @property(readonly, nonatomic) NSString *toolIdentifier;
 
@@ -20,6 +23,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) id <PKPaletteErasingTool> erasingTool;
+@property(readonly, nonatomic) id <PKPaletteHandwritingTool> handwritingTool;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) id <PKPaletteInkingTool> inkingTool;
 @property(readonly) Class superclass;

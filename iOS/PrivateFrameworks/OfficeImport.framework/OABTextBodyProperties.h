@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (void)writeTextBodyProperties:(id)arg1 toShapeBase:(struct EshShapeBase *)arg2 state:(id)arg3;
++ (void)writeTextBodyProperties:(id)arg1 toShapeBase:(void *)arg2 state:(id)arg3;
 + (void)setIsAnchorCenter:(int)arg1 textBodyProperties:(id)arg2;
 + (void)setTextAnchor:(int)arg1 textBodyProperties:(id)arg2;
 + (void)setWrap:(int)arg1 textBodyProperties:(id)arg2;

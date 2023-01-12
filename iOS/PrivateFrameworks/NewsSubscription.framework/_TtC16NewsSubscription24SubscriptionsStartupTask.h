@@ -11,9 +11,18 @@
 @interface _TtC16NewsSubscription24SubscriptionsStartupTask : _TtCs12_SwiftObject
 {
     MISSING_TYPE *group;
+    MISSING_TYPE *executionPhase;
     MISSING_TYPE *manageSubscriptionsURLProvider;
     MISSING_TYPE *bundlePurchasePrewarmer;
     MISSING_TYPE *familySharingStatusManager;
+    MISSING_TYPE *purchaseManager;
+    MISSING_TYPE *subscriptionFeatureAvailability;
+    MISSING_TYPE *subscriptionStatusChecker;
+    MISSING_TYPE *subscriptionStatusCheckBlocker;
+    MISSING_TYPE *offerManager;
+    MISSING_TYPE *bundleArticleSoftPaywallMeter;
+    MISSING_TYPE *sceneStateManager;
+    MISSING_TYPE *inAppMessageCoordinator;
 }
 
 @end

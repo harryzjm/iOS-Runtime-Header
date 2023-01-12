@@ -11,11 +11,12 @@ __attribute__((visibility("hidden")))
 {
     NakedPtr_895bc996 m_page;
     ObjectIdentifier_8136369e m_pageID;
-    id m_parent;
+    struct RetainPtr<id> m_parent;
     _Bool m_hasMainFramePlugin;
 }
 
 - (id).cxx_construct;
+- (void).cxx_destruct;
 - (id)accessibilityFocusedUIElement;
 - (void)setRemoteParent:(id)arg1;
 - (void)setHasMainFramePlugin:(_Bool)arg1;

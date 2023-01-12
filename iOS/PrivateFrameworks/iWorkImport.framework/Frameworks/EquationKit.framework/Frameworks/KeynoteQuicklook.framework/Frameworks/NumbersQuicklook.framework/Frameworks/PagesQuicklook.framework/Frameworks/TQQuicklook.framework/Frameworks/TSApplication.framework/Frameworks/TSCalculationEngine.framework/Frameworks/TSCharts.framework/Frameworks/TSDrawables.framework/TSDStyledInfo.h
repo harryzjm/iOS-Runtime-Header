@@ -7,15 +7,15 @@
 #import <TSDrawables/TSDStyleOwning-Protocol.h>
 #import <TSDrawables/TSSStyleClient-Protocol.h>
 
-@class NSString, TSDReflection, TSDShadow, TSDStroke, TSSStyle;
+@class NSArray, NSSet, NSString, TSDReflection, TSDShadow, TSDStroke, TSSStyle;
 
 @interface TSDStyledInfo <TSDStyleOwning, TSSStyleClient>
 {
 }
 
 - (void)replaceReferencedStylesUsingBlock:(CDUnknownBlockType)arg1;
-- (id)referencedStyles;
-- (id)styleIdentifierTemplateForNewPreset;
+@property(readonly, nonatomic) NSSet *referencedStyles;
+@property(readonly, nonatomic) NSString *styleIdentifierTemplateForNewPreset;
 - (id)propertyMapForNewPreset;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 - (void)i_setValue:(id)arg1 forProperty:(int)arg2;
@@ -29,11 +29,7 @@
 @property(copy, nonatomic) TSDStroke *stroke;
 @property(readonly, nonatomic) _Bool supportsStyleInspecting;
 @property(readonly, nonatomic) _Bool pathIsOpen;
-- (id)commandForPasteStyleWithContext:(id)arg1 pasteboardStyles:(id)arg2 tailLineEndInfo:(int)arg3;
-- (id)commandForPasteStyleWithContext:(id)arg1 pasteboardStyles:(id)arg2;
-- (id)stylesForCopyStyle;
-- (unsigned short)stylePropertyId;
-- (id)stylePropertyName;
+@property(readonly, nonatomic) NSArray *stylesForCopyStyle;
 @property(retain, nonatomic) TSSStyle *style;
 @property(readonly, nonatomic) Class styleClass;
 - (_Bool)isSelectable;

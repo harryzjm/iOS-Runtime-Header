@@ -4,21 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <coreroutine/_TtP8MapsSync25MapsSyncDataQueryDelegate_-Protocol.h>
+@class RTMapServiceManager;
 
-@class NSMutableDictionary, RTMapServiceManager;
-
-@interface RTMapsSupportManager <_TtP8MapsSync25MapsSyncDataQueryDelegate_>
+@interface RTMapsSupportManager
 {
-    NSMutableDictionary *_queryMap;
     RTMapServiceManager *_mapServiceManager;
 }
 
++ (_Bool)prepareQuery:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) RTMapServiceManager *mapServiceManager; // @synthesize mapServiceManager=_mapServiceManager;
-@property(retain, nonatomic) NSMutableDictionary *queryMap; // @synthesize queryMap=_queryMap;
-- (void)queryContentsDidChangeWithQuery:(id)arg1;
-- (long long)_queryTypeForQuery:(id)arg1;
+- (void)_fetchReviewedPlacesWithOptions:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_fetchReviewedPlacesWrapperWithOptions:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_fetchHistoryEntryRoutesWithOptions:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_fetchHistoryEntryPlaceDisplaysWithOptions:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_fetchPinnedPlacesWithHandler:(CDUnknownBlockType)arg1;
@@ -26,6 +23,7 @@
 - (void)_clearParkedCarBulletin;
 - (void)_showParkedCarReplacementBulletinForEvent:(id)arg1 replacingEvent:(id)arg2;
 - (void)_showParkedCarBulletinForEvent:(id)arg1;
+- (void)fetchReviewedPlacesWithOptions:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)fetchHistoryEntryRoutesWithOptions:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)fetchHistoryEntryPlaceDisplaysWithOptions:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)fetchPinnedPlacesWithHandler:(CDUnknownBlockType)arg1;
@@ -33,8 +31,7 @@
 - (void)clearParkedCarBulletin;
 - (void)showParkedCarReplacementBulletinForEvent:(id)arg1 replacingEvent:(id)arg2;
 - (void)showParkedCarBulletinForEvent:(id)arg1;
-- (void)_createQueries;
-- (void)_setup;
+- (void)_shutdownWithHandler:(CDUnknownBlockType)arg1;
 - (id)initWithMapServiceManager:(id)arg1;
 - (id)init;
 

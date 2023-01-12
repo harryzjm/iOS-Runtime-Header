@@ -6,32 +6,27 @@
 
 #import <HMFoundation/HMFObject.h>
 
-#import <HomeKitDaemon/HMDLogEventObserver-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
+#import <HomeKitDaemon/HMMLogEventObserver-Protocol.h>
 
-@class NSDictionary, NSObject, NSString;
-@protocol OS_dispatch_queue;
+@class HMDMetricsManager, NSDictionary, NSString;
 
-@interface HMDCoreAnalyticsLogObserver : HMFObject <HMDLogEventObserver, HMFLogging>
+@interface HMDCoreAnalyticsLogObserver : HMFObject <HMFLogging, HMMLogEventObserver>
 {
-    NSObject<OS_dispatch_queue> *_clientQueue;
+    HMDMetricsManager *_metricsManager;
     NSDictionary *_homeConfigurationCommonDimensions;
 }
 
 + (id)logCategory;
-+ (id)sharedObserver;
-+ (_Bool)isSupportedEvent:(id)arg1;
-+ (id)supportedEventTypes;
++ (void)initialize;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *homeConfigurationCommonDimensions; // @synthesize homeConfigurationCommonDimensions=_homeConfigurationCommonDimensions;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
-- (void)didReceiveEventFromDispatcher:(id)arg1 withLogContext:(id)arg2;
-- (id)updateHomeConfigurationCommonDimensions;
-- (void)addHomeConfigurationCommonDimensionsToEventDictionary:(id)arg1;
-- (void)stop;
-- (void)start;
-- (id)init;
-- (_Bool)shouldSubmitEvent:(id)arg1;
+@property(readonly, nonatomic) HMDMetricsManager *metricsManager; // @synthesize metricsManager=_metricsManager;
+- (id)dictionaryFromEvent:(id)arg1;
+- (void)didReceiveEventFromDispatcher:(id)arg1;
+- (void)addEventDurationInMillisecondsToEventDictionary:(id)arg1 logEvent:(id)arg2;
+- (void)addHistogrammedCommonConfigurationDimensionsToEventDictionary:(id)arg1;
+- (id)initWithMetricsManager:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

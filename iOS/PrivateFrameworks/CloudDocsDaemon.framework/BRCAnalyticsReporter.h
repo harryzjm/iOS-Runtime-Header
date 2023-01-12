@@ -7,9 +7,8 @@
 #import <objc/NSObject.h>
 
 @class BRCAccountSession, BRCItemGlobalID, BRCMetricEndpoint, BRCSyncHealthReport, NSData, NSMutableDictionary, NSNumber;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
-__attribute__((visibility("hidden")))
 @interface BRCAnalyticsReporter : NSObject
 {
     BRCAccountSession *_session;
@@ -23,8 +22,12 @@ __attribute__((visibility("hidden")))
     NSNumber *_currentTelemetryToken;
     NSData *_lastSentTelemetryEvents;
     BOOL _syncTelemetryState;
+    NSObject<OS_dispatch_source> *_syncConsistencyDeferralTimer;
+    NSObject<OS_dispatch_source> *_syncConsistencyCancellationTimer;
 }
 
++ (_Bool)isTelemetryReportingEnabled;
++ (void)cancelSyncConsistencyReportWithMountPath:(id)arg1 queue:(id)arg2;
 - (void).cxx_destruct;
 - (void)didApplyItemInsideSharedItemID:(id)arg1;
 - (void)deleteMissingErrorThrottles;
@@ -47,9 +50,14 @@ __attribute__((visibility("hidden")))
 - (void)_forgetEventMetrics:(id)arg1;
 - (void)forgetEventMetric:(id)arg1;
 - (void)submitEventMetric:(id)arg1;
-- (void)_reportSyncUpBackoffRatio;
+- (void)_reportSyncUpBackoffInfo;
+- (void)_checkSyncConsistencyWithActivity:(id)arg1;
+- (_Bool)_shouldDeferForExistingSnapshot;
+- (_Bool)_resumePausedTreeConsistencyCheckOperationWithActivity:(id)arg1;
+- (void)_setupSyncConsistencyCancellationTimerWithActivity:(id)arg1 session:(id)arg2;
+- (void)_setupSyncConsistencyDeferralTimerWithActivity:(id)arg1;
 - (void)_gatherAppTelemetryEventsWithActivity:(id)arg1;
-- (void)_handleApplySchedulerTimeoutWithActivity:(id)arg1;
+- (void)_handleApplySchedulerTimeoutWithActivity:(id)arg1 telemetryEventType:(int)arg2;
 - (void)_waitForApplySchedulerToBeIdleWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithSession:(id)arg1;
 

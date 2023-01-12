@@ -10,7 +10,6 @@
 
 @class CKDPRecord, CKDPShareMetadata, CKDPZone, NSMutableArray, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDPRecordResolveTokenResponse : PBCodable <NSCopying>
 {
     NSString *_container;

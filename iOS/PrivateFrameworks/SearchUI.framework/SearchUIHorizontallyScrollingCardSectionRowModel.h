@@ -9,14 +9,18 @@
 @interface SearchUIHorizontallyScrollingCardSectionRowModel
 {
     NSArray *_cardSectionRowModels;
+    long long _numberOfRows;
 }
 
 - (void).cxx_destruct;
+@property(readonly) long long numberOfRows; // @synthesize numberOfRows=_numberOfRows;
 @property(retain) NSArray *cardSectionRowModels; // @synthesize cardSectionRowModels=_cardSectionRowModels;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)hasLeadingImage;
 - (id)reuseIdentifier;
 - (id)cardSection;
 - (Class)cellViewClass;
+- (id)initWithResult:(id)arg1 cardSection:(id)arg2 queryId:(unsigned long long)arg3;
 - (id)initWithResults:(id)arg1;
 
 @end

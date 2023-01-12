@@ -4,20 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitDaemon/HMDAggregationAnalysisEventContributing-Protocol.h>
+
 @class HMDEventCountersManager;
 
-@interface HMDLogEventReachabilityEventsAnalyzer
+@interface HMDLogEventReachabilityEventsAnalyzer <HMDAggregationAnalysisEventContributing>
 {
     HMDEventCountersManager *_eventCountersManager;
 }
 
++ (id)managedEventCounterRequestGroups;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) HMDEventCountersManager *eventCountersManager; // @synthesize eventCountersManager=_eventCountersManager;
+- (void)resetAggregationAnalysisContext;
+- (void)populateAggregationAnalysisLogEvent:(id)arg1;
 - (void)_handleCameraRecordingReachabilityLogEvent:(id)arg1;
 - (void)_handleRemoteDeviceReachabilityChangedLogEvent:(id)arg1;
-- (void)processLogEvent:(id)arg1;
-- (id)initWithSupportedEventTypes:(id)arg1 context:(id)arg2 eventCountersManager:(id)arg3;
-- (id)initWithSupportedEventTypes:(id)arg1 context:(id)arg2;
+- (void)_handleReachabiltiyAddRemoveEvent:(id)arg1;
+- (void)didReceiveEventFromDispatcher:(id)arg1;
+- (id)initWithEventCountersManager:(id)arg1;
 
 @end
 

@@ -6,9 +6,10 @@
 
 #import <AssistantServices/NSObject-Protocol.h>
 
-@class AFMyriadPerceptualAudioHash;
+@class AFMyriadGoodnessScoreOverrideState, AFMyriadPerceptualAudioHash;
 
 @protocol AFMyriadContextMutating <NSObject>
+- (void)setOverrideState:(AFMyriadGoodnessScoreOverrideState *)arg1;
 - (void)setPerceptualAudioHash:(AFMyriadPerceptualAudioHash *)arg1;
 - (void)setTimestamp:(unsigned long long)arg1;
 @end

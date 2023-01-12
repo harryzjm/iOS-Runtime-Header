@@ -23,10 +23,6 @@
 - (void)visitUpdateContactEvent:(id)arg1;
 - (void)visitAddContactEvent:(id)arg1;
 - (void)visitDropEverythingEvent:(id)arg1;
-- (id)records;
-- (_Bool)truncated;
-- (id)_nameRecordWithContactIdentifier:(id)arg1 changeType:(unsigned char)arg2;
-- (id)initWithStore:(id)arg1 keysToFetch:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

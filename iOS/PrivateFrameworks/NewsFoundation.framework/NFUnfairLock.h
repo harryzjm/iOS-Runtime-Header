@@ -14,8 +14,6 @@
     unsigned int _unfairLockOptions;
 }
 
-@property(nonatomic) unsigned int unfairLockOptions; // @synthesize unfairLockOptions=_unfairLockOptions;
-@property(nonatomic) struct os_unfair_lock_s unfairLock; // @synthesize unfairLock=_unfairLock;
 - (void)unlock;
 - (void)lock;
 - (void)performWithLockSync:(CDUnknownBlockType)arg1;

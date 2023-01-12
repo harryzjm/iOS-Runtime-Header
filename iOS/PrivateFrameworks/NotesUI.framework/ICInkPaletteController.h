@@ -10,16 +10,15 @@
 #import <NotesUI/PKToolPickerObserverPrivate-Protocol.h>
 #import <NotesUI/PKToolPickerPrivateDelegate-Protocol.h>
 
-@class NSString, PKTool, PKToolPicker, UIResponder, UIView;
+@class ICInkToolPickerResponder, NSString, PKTool, PKToolPicker, UIView;
 @protocol ICInkPaletteControllerDelegate;
 
 @interface ICInkPaletteController : NSObject <PKToolPickerObserver, PKToolPickerObserverPrivate, PKToolPickerPrivateDelegate>
 {
-    _Bool _isAnimatingShowingInkPalette;
-    _Bool _isAnimatingHidingInkPalette;
-    _Bool _didSetUpToolPicker;
+    _Bool _isSystemPaperUI;
+    _Bool _wantsToolPickerVisible;
     UIView *_parentView;
-    UIResponder *_responder;
+    ICInkToolPickerResponder *_responder;
     id <ICInkPaletteControllerDelegate> _delegate;
     PKToolPicker *_toolPicker;
     PKTool *_storedSelectedTool;
@@ -29,20 +28,18 @@
 
 + (id)sharedToolPickerForWindow:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool wantsToolPickerVisible; // @synthesize wantsToolPickerVisible=_wantsToolPickerVisible;
+@property(nonatomic) _Bool isSystemPaperUI; // @synthesize isSystemPaperUI=_isSystemPaperUI;
 @property(nonatomic) long long storedColorUserInterfaceStyle; // @synthesize storedColorUserInterfaceStyle=_storedColorUserInterfaceStyle;
 @property(nonatomic) long long palettePosition; // @synthesize palettePosition=_palettePosition;
 @property(retain, nonatomic) PKTool *storedSelectedTool; // @synthesize storedSelectedTool=_storedSelectedTool;
-@property(nonatomic) __weak PKToolPicker *toolPicker; // @synthesize toolPicker=_toolPicker;
-@property(nonatomic) _Bool didSetUpToolPicker; // @synthesize didSetUpToolPicker=_didSetUpToolPicker;
+@property(retain, nonatomic) PKToolPicker *toolPicker; // @synthesize toolPicker=_toolPicker;
 @property(nonatomic) __weak id <ICInkPaletteControllerDelegate> delegate; // @synthesize delegate=_delegate;
-@property(nonatomic) __weak UIResponder *responder; // @synthesize responder=_responder;
+@property(nonatomic) __weak ICInkToolPickerResponder *responder; // @synthesize responder=_responder;
 @property(nonatomic) __weak UIView *parentView; // @synthesize parentView=_parentView;
-@property(nonatomic) _Bool isAnimatingHidingInkPalette; // @synthesize isAnimatingHidingInkPalette=_isAnimatingHidingInkPalette;
-@property(nonatomic) _Bool isAnimatingShowingInkPalette; // @synthesize isAnimatingShowingInkPalette=_isAnimatingShowingInkPalette;
 - (void)_toolPicker:(id)arg1 shouldSetVisible:(_Bool)arg2;
 - (id)_colorPickerPopoverPresentationSourceView:(id)arg1;
 - (struct CGRect)_colorPickerPopoverPresentationSourceRect:(id)arg1;
-- (long long)icasPalettePositionFromPKPalettePosition:(long long)arg1;
 - (void)_toolPickerDidChangePosition:(id)arg1;
 - (void)_toolPicker:(id)arg1 didChangeColor:(id)arg2;
 - (void)toolPickerFramesObscuredDidChange:(id)arg1;
@@ -54,14 +51,12 @@
 @property(copy, nonatomic) PKTool *selectedTool;
 - (void)updateTraitCollection:(id)arg1;
 - (void)hideInkPaletteAnimated:(_Bool)arg1;
-- (void)hideInkPalette;
 - (void)showInkPaletteAnimated:(_Bool)arg1;
 - (void)showInkPalette:(_Bool)arg1 animated:(_Bool)arg2;
 - (_Bool)isInkPaletteShowing;
 @property(readonly, nonatomic, getter=isHandwritingToolSelected) _Bool handwritingToolSelected;
-- (void)createInkPaletteIfNecessary;
 - (void)dealloc;
-- (id)initWithParentView:(id)arg1 responder:(id)arg2 delegate:(id)arg3;
+- (id)initWithParentView:(id)arg1 responder:(id)arg2 delegate:(id)arg3 isSystemPaperUI:(_Bool)arg4;
 - (id)init;
 
 // Remaining properties

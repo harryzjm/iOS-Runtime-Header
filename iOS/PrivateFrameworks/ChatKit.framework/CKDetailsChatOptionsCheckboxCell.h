@@ -18,7 +18,9 @@ __attribute__((visibility("hidden")))
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UISwitch *controlSwitch; // @synthesize controlSwitch=_controlSwitch;
+- (void)prepareForReuse;
 - (void)layoutSubviews;
+- (void)_configureNewControlSwitch;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 

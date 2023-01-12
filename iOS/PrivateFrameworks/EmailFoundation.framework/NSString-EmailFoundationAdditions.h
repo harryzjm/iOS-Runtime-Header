@@ -12,6 +12,7 @@
 @class EFSQLBinding, NSData;
 
 @interface NSString (EmailFoundationAdditions) <EFSQLBindable, EFSQLValueExpressable>
++ (id)ef_emptyStringIfNil:(id)arg1;
 + (id)ef_stringByIsolatingDirectionalityForString:(id)arg1;
 + (id)ef_UUID;
 - (id)ef_pathByReplacingRelativePathWithFolderName:(id)arg1;
@@ -20,7 +21,7 @@
 @property(readonly) _Bool ef_conformsToRFC822UTType;
 @property(readonly) _Bool ef_conformsToIWorkUTType;
 @property(readonly) _Bool ef_conformsToMarkupUTType;
-- (_Bool)ef_conformsToUTType:(struct __CFString *)arg1;
+- (id)ef_stringByEscapingForMessageBody;
 - (id)ef_stringByEscapingForXML;
 - (_Bool)ef_isUnsignedIntegerString;
 - (_Bool)ef_isWebAddress;

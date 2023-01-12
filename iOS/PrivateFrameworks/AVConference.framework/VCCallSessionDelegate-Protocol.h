@@ -8,11 +8,11 @@
 
 @protocol VCCallSessionDelegate
 - (void)session:(VCCallSession *)arg1 didReceiveMomentsRequest:(NSDictionary *)arg2;
-- (void)session:(VCCallSession *)arg1 setMomentsCapabilities:(int)arg2 imageType:(int)arg3 videoCodec:(int)arg4;
+- (void)session:(VCCallSession *)arg1 setMomentsCapabilities:(unsigned int)arg2 imageType:(int)arg3 videoCodec:(int)arg4;
 - (struct AudioStreamBasicDescription)audioIOFormat;
 - (void)session:(VCCallSession *)arg1 setRemoteBasebandCodecType:(unsigned int)arg2 sampleRate:(double)arg3;
 - (void)session:(VCCallSession *)arg1 stopAudioWithCompletionHandler:(void (^)(_Bool, NSError *))arg2;
-- (void)session:(VCCallSession *)arg1 startAudioWithFarEndVersionInfo:(struct VoiceIOFarEndVersionInfo *)arg2 internalFormat:(struct AudioStreamBasicDescription)arg3 internalSamplesPerFrame:(unsigned int)arg4 completionHandler:(void (^)(_Bool, NSError *))arg5;
+- (void)session:(VCCallSession *)arg1 startAudioWithFarEndVersionInfo:(struct VoiceIOFarEndVersionInfo *)arg2 internalFrameFormat:(const struct tagVCAudioFrameFormat *)arg3 completionHandler:(void (^)(_Bool, NSError *))arg4;
 - (void)didReceiveCaptions:(VCCaptionsTranscription *)arg1 remoteClient:(unsigned int)arg2;
 - (_Bool)session:(VCCallSession *)arg1 stopVideoReceive:(id *)arg2 isPausing:(_Bool)arg3;
 - (_Bool)stopVideoSend:(_Bool)arg1 error:(id *)arg2;
@@ -24,7 +24,7 @@
 - (void)didChangeLocalVariablesForSession:(VCCallSession *)arg1;
 - (void)session:(VCCallSession *)arg1 didReceiveData:(NSData *)arg2 messageType:(unsigned int)arg3 withCallID:(unsigned int)arg4;
 - (void)session:(VCCallSession *)arg1 didReceiveARPLData:(NSData *)arg2 fromCallID:(unsigned int)arg3;
-- (void)session:(VCCallSession *)arg1 changeVideoRulesToCaptureRule:(VCVideoRule *)arg2 encodeRule:(VCVideoRule *)arg3 featuresListString:(NSString *)arg4;
+- (void)session:(VCCallSession *)arg1 changeVideoRulesToCaptureRule:(VCVideoRule *)arg2 encodeRule:(VCVideoRule *)arg3 featureListString:(NSString *)arg4;
 - (void)session:(VCCallSession *)arg1 connectionDidChangeWithLocalInterfaceType:(NSString *)arg2 remoteInterfaceType:(NSString *)arg3 callID:(unsigned int)arg4;
 - (void)session:(VCCallSession *)arg1 localIPChange:(NSData *)arg2 withCallID:(unsigned int)arg3;
 - (void)session:(VCCallSession *)arg1 didChangeVideoRule:(VCVideoRule *)arg2;

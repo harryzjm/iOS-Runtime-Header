@@ -51,7 +51,7 @@ __attribute__((visibility("hidden")))
 - (id)_atrialFibrillationClassificationsWithActiveAlgorithmVersion:(long long)arg1;
 - (id)electrocardiogramPredicateForType:(long long)arg1;
 - (void)updateController:(id)arg1 didReceiveHighFrequencyUpdateForType:(id)arg2;
-- (void)updateController:(id)arg1 didReceiveUpdateForType:(id)arg2 samplesAdded:(id)arg3 objectsRemoved:(id)arg4;
+- (void)updateController:(id)arg1 didReceiveUpdateForType:(id)arg2 samplesAdded:(id)arg3 objectsRemoved:(id)arg4 recoveringFromError:(_Bool)arg5;
 - (id)displayStringCountForType:(long long)arg1;
 - (long long)countForType:(long long)arg1;
 - (void)stop;

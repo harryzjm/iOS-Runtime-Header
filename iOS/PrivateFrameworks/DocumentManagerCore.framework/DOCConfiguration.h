@@ -9,12 +9,13 @@
 #import <DocumentManagerCore/NSCopying-Protocol.h>
 #import <DocumentManagerCore/NSSecureCoding-Protocol.h>
 
-@class DOCConcreteLocation, NSArray, NSString;
+@class DOCConcreteLocation, NSArray, NSDictionary, NSString;
 
 @interface DOCConfiguration : NSObject <NSCopying, NSSecureCoding>
 {
     _Bool _shouldIgnoreInteractionMode;
     _Bool _inProcess;
+    _Bool _shouldConvert;
     _Bool _forPickingDocuments;
     _Bool _forPickingFolders;
     _Bool _supportsRemovableFileProviders;
@@ -37,8 +38,9 @@
     _Bool _useExpandedSourceList;
     DOCConcreteLocation *_defaultLocation;
     unsigned long long _interactionMode;
-    NSArray *_excludedDocumentTypes;
-    NSArray *_recentDocumentsTypes;
+    NSDictionary *_allowedConversions;
+    NSArray *_excludedDocumentContentTypes;
+    NSArray *_recentDocumentsContentTypes;
     NSArray *_urls;
     NSString *_hostIdentifier;
     NSString *_hostBundleTitle;
@@ -51,16 +53,19 @@
     NSString *_sceneIdentifier;
     NSArray *_forbiddenActionIdentifiers;
     double _thumbnailFetchingTimeOut;
-    NSArray *_documentTypes;
+    NSArray *_documentContentTypes;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)configurationForFolderPicking;
 + (id)configurationForExportingDocumentsToURLs:(id)arg1 mode:(unsigned long long)arg2;
++ (id)pickableContentTypesFromAllowedConversions:(id)arg1;
++ (id)configurationForImportingDocumentsWithConversionRules:(id)arg1;
++ (id)configurationForImportingDocumentContentTypes:(id)arg1 mode:(unsigned long long)arg2;
 + (id)configurationForImportingDocumentsWithContentTypes:(id)arg1 mode:(unsigned long long)arg2;
 + (id)configurationForOpeningDocumentsOfApplicationWithBundleIdentifier:(id)arg1;
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSArray *documentTypes; // @synthesize documentTypes=_documentTypes;
+@property(copy, nonatomic) NSArray *documentContentTypes; // @synthesize documentContentTypes=_documentContentTypes;
 @property double thumbnailFetchingTimeOut; // @synthesize thumbnailFetchingTimeOut=_thumbnailFetchingTimeOut;
 @property(copy) NSArray *forbiddenActionIdentifiers; // @synthesize forbiddenActionIdentifiers=_forbiddenActionIdentifiers;
 @property(copy, nonatomic) NSString *sceneIdentifier; // @synthesize sceneIdentifier=_sceneIdentifier;
@@ -93,15 +98,17 @@
 @property(copy, nonatomic) NSString *hostBundleTitle; // @synthesize hostBundleTitle=_hostBundleTitle;
 @property(copy, nonatomic) NSString *hostIdentifier; // @synthesize hostIdentifier=_hostIdentifier;
 @property(retain) NSArray *urls; // @synthesize urls=_urls;
-@property(copy, nonatomic) NSArray *recentDocumentsTypes; // @synthesize recentDocumentsTypes=_recentDocumentsTypes;
-@property(copy, nonatomic) NSArray *excludedDocumentTypes; // @synthesize excludedDocumentTypes=_excludedDocumentTypes;
+@property(copy, nonatomic) NSArray *recentDocumentsContentTypes; // @synthesize recentDocumentsContentTypes=_recentDocumentsContentTypes;
+@property(copy, nonatomic) NSArray *excludedDocumentContentTypes; // @synthesize excludedDocumentContentTypes=_excludedDocumentContentTypes;
+@property(nonatomic) _Bool shouldConvert; // @synthesize shouldConvert=_shouldConvert;
+@property(copy, nonatomic) NSDictionary *allowedConversions; // @synthesize allowedConversions=_allowedConversions;
 @property _Bool inProcess; // @synthesize inProcess=_inProcess;
 @property _Bool shouldIgnoreInteractionMode; // @synthesize shouldIgnoreInteractionMode=_shouldIgnoreInteractionMode;
 @property unsigned long long interactionMode; // @synthesize interactionMode=_interactionMode;
 @property(retain) DOCConcreteLocation *defaultLocation; // @synthesize defaultLocation=_defaultLocation;
 - (unsigned long long)interactionModeForPreparing;
-@property(readonly) _Bool canLongPressInitiateSidebarReordering;
 @property(readonly) _Bool isPopoverOrWidget;
+@property(readonly) _Bool forBrowsingInApp;
 @property(readonly) _Bool isWidget;
 @property(readonly) _Bool isPopover;
 @property(readonly) _Bool isFilesApp;

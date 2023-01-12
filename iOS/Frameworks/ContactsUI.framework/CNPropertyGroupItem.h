@@ -51,6 +51,7 @@
 - (void)saveChangesImmediately:(_Bool)arg1;
 - (void)rejectSuggestion;
 - (void)confirmSuggestion;
+- (id)labeledValueToCurateFromSuggestion;
 - (void)_removeSuggestion;
 @property(readonly, nonatomic, getter=isSuggested) _Bool suggested;
 @property(readonly, nonatomic) _Bool modified;

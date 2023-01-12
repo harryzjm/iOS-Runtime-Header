@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_tryRetain;
 - (oneway void)release;
 - (id)retain;
+- (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (Class)classForCoder;

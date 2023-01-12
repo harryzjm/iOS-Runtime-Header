@@ -13,13 +13,13 @@
 @interface PXDataSection : NSObject <NSFastEnumeration>
 {
     id <NSObject><NSCopying> _outlineObject;
-    unsigned long long _identifier;
+    long long _identifier;
     id _content;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id content; // @synthesize content=_content;
-@property(readonly, nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
+@property(readonly, nonatomic) long long identifier; // @synthesize identifier=_identifier;
 @property(readonly, nonatomic) id <NSObject><NSCopying> outlineObject; // @synthesize outlineObject=_outlineObject;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (id)description;

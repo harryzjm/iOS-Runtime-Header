@@ -10,16 +10,16 @@
 
 @interface TSCHSelection : TSKSelection
 {
-    TSCHChartDrawableInfo *mInfo;
-    NSArray *mPaths;
+    TSCHChartDrawableInfo *_info;
+    NSArray *_paths;
 }
 
 + (Class)archivedSelectionClass;
 + (id)selectionWithChartInfo:(id)arg1 paths:(id)arg2;
 + (id)emptySelectionWithChartInfo:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSArray *paths; // @synthesize paths=mPaths;
-@property(readonly, retain, nonatomic) TSCHChartDrawableInfo *chartInfo; // @synthesize chartInfo=mInfo;
+@property(readonly, copy, nonatomic) NSArray *paths; // @synthesize paths=_paths;
+@property(readonly, retain, nonatomic) TSCHChartDrawableInfo *chartInfo; // @synthesize chartInfo=_info;
 @property(readonly, copy, nonatomic) NSSet *pathTypes;
 @property(readonly, copy, nonatomic) TSCHSelectionPathType *pathType;
 @property(readonly, copy, nonatomic) TSCHSelectionPath *firstPath;
@@ -27,8 +27,8 @@
 - (id)selectionByRemovingPathsFromArray:(id)arg1;
 - (id)selectionByAddingPathsFromArray:(id)arg1;
 @property(readonly, nonatomic) unsigned long long pathCount;
-- (void)saveToArchive:(struct ChartSelectionArchive *)arg1 archiver:(id)arg2;
-- (id)initFromArchive:(const struct ChartSelectionArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)description;

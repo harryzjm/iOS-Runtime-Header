@@ -28,6 +28,7 @@
 - (id)getInputModesForKey:(id)arg1;
 - (id)getDurableValueForKey:(id)arg1;
 - (id)getAllValuesForKey:(id)arg1 forInputMode:(id)arg2 fromDate:(id)arg3 toDate:(id)arg4;
+- (id)getDailyAndWeeklyValuesForKeyPrefix:(id)arg1 forInputMode:(id)arg2 weeklyKeySuffixes:(id)arg3 endDate:(id)arg4;
 - (id)getAllValuesForKeyPrefix:(id)arg1 forInputMode:(id)arg2 sinceDate:(id)arg3;
 - (id)getAllValuesForKey:(id)arg1 forInputMode:(id)arg2 sinceDate:(id)arg3;
 - (_Bool)updateDurableValue:(id)arg1 forKey:(id)arg2 forDate:(id)arg3;

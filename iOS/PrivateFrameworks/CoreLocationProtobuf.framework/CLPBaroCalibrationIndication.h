@@ -10,14 +10,22 @@
 
 @interface CLPBaroCalibrationIndication : PBCodable <NSCopying>
 {
+    double _outdoorConfidence;
+    int _mapMatchRoadType;
     _Bool _isCalibratedBarometricAlt;
     _Bool _isMapMatched;
+    _Bool _isOutdoorContext;
     struct {
+        unsigned int outdoorConfidence:1;
+        unsigned int mapMatchRoadType:1;
         unsigned int isCalibratedBarometricAlt:1;
         unsigned int isMapMatched:1;
+        unsigned int isOutdoorContext:1;
     } _has;
 }
 
+@property(nonatomic) double outdoorConfidence; // @synthesize outdoorConfidence=_outdoorConfidence;
+@property(nonatomic) _Bool isOutdoorContext; // @synthesize isOutdoorContext=_isOutdoorContext;
 @property(nonatomic) _Bool isMapMatched; // @synthesize isMapMatched=_isMapMatched;
 @property(nonatomic) _Bool isCalibratedBarometricAlt; // @synthesize isCalibratedBarometricAlt=_isCalibratedBarometricAlt;
 - (void)mergeFrom:(id)arg1;
@@ -29,6 +37,12 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsMapMatchRoadType:(id)arg1;
+- (id)mapMatchRoadTypeAsString:(int)arg1;
+@property(nonatomic) _Bool hasMapMatchRoadType;
+@property(nonatomic) int mapMatchRoadType; // @synthesize mapMatchRoadType=_mapMatchRoadType;
+@property(nonatomic) _Bool hasOutdoorConfidence;
+@property(nonatomic) _Bool hasIsOutdoorContext;
 @property(nonatomic) _Bool hasIsMapMatched;
 @property(nonatomic) _Bool hasIsCalibratedBarometricAlt;
 

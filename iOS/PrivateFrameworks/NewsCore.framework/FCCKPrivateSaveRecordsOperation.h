@@ -8,6 +8,7 @@
 
 @interface FCCKPrivateSaveRecordsOperation
 {
+    _Bool _canBypassEncryptionRequirement;
     NSArray *_recordsToSave;
     long long _savePolicy;
     CDUnknownBlockType _saveRecordsCompletionBlock;
@@ -17,6 +18,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *resultSavedRecords; // @synthesize resultSavedRecords=_resultSavedRecords;
 @property(copy, nonatomic) CDUnknownBlockType saveRecordsCompletionBlock; // @synthesize saveRecordsCompletionBlock=_saveRecordsCompletionBlock;
+@property(nonatomic) _Bool canBypassEncryptionRequirement; // @synthesize canBypassEncryptionRequirement=_canBypassEncryptionRequirement;
 @property(nonatomic) long long savePolicy; // @synthesize savePolicy=_savePolicy;
 @property(copy, nonatomic) NSArray *recordsToSave; // @synthesize recordsToSave=_recordsToSave;
 - (void)operationWillFinishWithError:(id)arg1;

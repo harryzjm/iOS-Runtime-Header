@@ -10,8 +10,11 @@
 
 @interface _TtC8NewsFeed35FeedLayoutAttributesFactoryProvider : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *categoryViewLayoutAttributesFactory;
     MISSING_TYPE *issueCoverViewLayoutAttributesFactory;
     MISSING_TYPE *bannerAdLayoutAttributesFactory;
+    MISSING_TYPE *articleThumbnailViewLayoutAttributesFactory;
+    MISSING_TYPE *engagementBannerViewLayoutAttributesFactory;
 }
 
 @end

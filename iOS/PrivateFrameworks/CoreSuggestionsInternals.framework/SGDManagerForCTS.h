@@ -6,54 +6,47 @@
 
 #import <objc/NSObject.h>
 
-@class PETEventTracker2, SGServiceContext, SGSqlEntityStore;
-@protocol OS_dispatch_queue, OS_dispatch_semaphore, OS_dispatch_source, SGXPCActivityManagerProtocol;
+@class SGServiceContext, SGSqlEntityStore;
+@protocol SGXPCActivityManagerProtocol;
 
 @interface SGDManagerForCTS : NSObject
 {
     SGSqlEntityStore *_harvestStore;
     SGServiceContext *_context;
-    NSObject<OS_dispatch_queue> *_harvestQueue;
-    NSObject<OS_dispatch_queue> *_frontfillQueue;
-    NSObject<OS_dispatch_source> *_frontfillSource;
-    NSObject<OS_dispatch_semaphore> *_frontfillSemaphoreForTesting;
     struct SGDSuggestManagerCTSCriteriaState _ctsCriteriaState;
     struct _opaque_pthread_mutex_t _geocodeLock;
     struct _opaque_pthread_mutex_t _verificationLock;
     double _lastFrontfillFinishTime;
-    PETEventTracker2 *_pet2tracker;
     id <SGXPCActivityManagerProtocol> _xpcActivityManager;
-    NSObject<OS_dispatch_source> *_adjustActivitySource;
 }
 
 + (void)_logCallInteractions:(id)arg1;
 + (id)defaultInstance;
 + (id)sharedSingletonInstance;
 - (void).cxx_destruct;
-- (void)waitUntilFrontfillFinishedForTesting;
-- (void)resumeFrontfillForTesting;
-- (void)suspendFrontfillForTesting;
-- (void)resetLastFrontfillFinishTimeForTesting;
 - (void)waitForXpcActivityQueue;
 - (void)dealloc;
-- (void)_doFrontfillHarvestOnFrontfillQueue;
-- (void)triggerFrontfillHarvest;
-- (_Bool)_attemptToProcessSearchableItemWithoutDissection:(id)arg1;
+- (void)_performPhoneQREngagementDataSync:(id)arg1;
+- (void)_registerForPhoneQREngagementDataSync;
+- (_Bool)_shouldDissectContentWithUniqueIdentifier:(id)arg1 domainIdentifier:(id)arg2 bundleIdentifier:(id)arg3 headers:(id)arg4 accountIdentifier:(id)arg5;
 - (_Bool)hasAlreadyHarvestedSearchableItem:(id)arg1;
 - (_Bool)processSearchableItemForTesting:(id)arg1;
 - (_Bool)processSearchableItem:(id)arg1 pipeline:(id)arg2 context:(id)arg3;
-- (void)drainDefaultQueueWithStructuredEventsCandidatesPriorityOption;
-- (void)drainDefaultQueueCompletely;
-- (_Bool)drainHarvestQueue:(id)arg1 priorityOption:(unsigned char)arg2 continuingWhile:(CDUnknownBlockType)arg3;
-- (void)_doAdjustCriteriaForCTS;
-- (void)adjustCriteriaForCTS;
+- (_Bool)_processMessage:(id)arg1 pipeline:(id)arg2 context:(id)arg3 harvestMetrics:(id)arg4;
+- (_Bool)processMailMessage:(id)arg1 headers:(id)arg2 pipeline:(id)arg3 context:(id)arg4 harvestMetrics:(id)arg5;
+- (_Bool)processTextMessage:(id)arg1 pipeline:(id)arg2 context:(id)arg3 harvestMetrics:(id)arg4;
+- (_Bool)processSearchableItem:(id)arg1 pipeline:(id)arg2 context:(id)arg3 harvestMetrics:(id)arg4;
+- (void)_performHarvestedURLMetricUploadAcitivity:(id)arg1;
+- (void)_registerHarvestedURLMetricUploadActivity;
+- (void)_performMailIntelligenceTasksActivity:(id)arg1 overrideVerificationStatus:(id)arg2;
+- (void)_registerMailIntelligenceTasksActivity;
 - (void)_performProcessPendingVerificationActivity:(id)arg1 overrideVerificationStatus:(id)arg2;
 - (void)_registerProcessPendingVerificationActivity;
 - (void)_performProcessPendingGeocodesActivity:(id)arg1;
 - (void)_registerProcessPendingGeocodesActivity;
 - (void)performContactDetailCacheRebuildActivity:(id)arg1;
 - (void)_registerForContactDetailCacheRebuildActivity;
-- (void)_performSendRTCActivity;
+- (void)_performSendRTCActivity:(id)arg1;
 - (void)_registerForCTSSendRTCActivity;
 - (void)_performIdentityAnalysisActivity:(id)arg1;
 - (void)_registerForCTSIdentityAnalysisActivity;
@@ -61,12 +54,11 @@
 - (void)_registerForCTSVacuumActivity;
 - (void)_performTrimActivity:(id)arg1;
 - (void)_registerForCTSTrimActivity;
-- (void)_performHarvestActivity:(id)arg1 callback:(CDUnknownBlockType)arg2;
-- (void)_registerForCTSHarvestActivity;
 - (void)_performCollectWeeklyStats:(id)arg1;
 - (void)_registerForCollectWeeklyStats;
 - (void)_performMobileAssetMetadataDownloadActivity:(id)arg1;
 - (void)_registerMobileAssetMetadataDownloadActivity;
+- (id)serviceContext;
 - (void)registerForCTS;
 - (id)initWithHarvestStore:(id)arg1 xpcActivityManager:(id)arg2;
 

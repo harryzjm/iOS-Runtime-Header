@@ -12,14 +12,18 @@
 
 @interface SBPBAppLayout : PBCodable <NSCopying>
 {
+    int _centerConfiguration;
     int _environment;
     int _layoutConfiguration;
     SBPBDisplayItem *_primaryDisplayItem;
     SBPBDisplayItem *_secondaryDisplayItem;
     int _secondaryDisplayItemRole;
+    SBPBDisplayItem *_tertiaryDisplayItem;
+    int _tertiaryDisplayItemRole;
     _Bool _hidden;
     struct {
         unsigned int secondaryDisplayItemRole:1;
+        unsigned int tertiaryDisplayItemRole:1;
     } _has;
 }
 

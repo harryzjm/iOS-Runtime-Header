@@ -32,6 +32,9 @@
 - (_Bool)hasItemToDownload;
 - (void)_writeDict:(id)arg1 withFilename:(id)arg2;
 - (id)_readPListWithFilename:(id)arg1;
+- (void)clearWipeCPLOnOpen;
+- (void)setWipeCPLOnOpen;
+- (_Bool)isWipeCPLOnOpen;
 - (void)forceSoftResetSync;
 - (_Bool)isForceSoftResetSync;
 - (_Bool)isUserPause;

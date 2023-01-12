@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC5TeaUI21PreviewViewController : UIViewController
 {
     MISSING_TYPE *previewedViewController;

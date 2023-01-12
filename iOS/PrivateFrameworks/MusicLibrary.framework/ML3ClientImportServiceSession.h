@@ -10,7 +10,7 @@
 
 @interface ML3ClientImportServiceSession : NSObject
 {
-    struct ML3ImportSession *_importSession;
+    void *_importSession;
     ML3DatabaseConnection *_databaseConnection;
     ML3MusicLibrary *_library;
     ML3ClientImportSessionConfiguration *_configuration;

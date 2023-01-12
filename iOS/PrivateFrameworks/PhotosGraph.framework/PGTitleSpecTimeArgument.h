@@ -16,8 +16,8 @@
 - (id)_birthdayTitleWithMomentNodes:(id)arg1;
 - (id)_anniversaryTitleWithMomentNodes:(id)arg1;
 - (id)_yearsAgoTitle;
-- (id)_resolvedStringWithMomentNodes:(id)arg1 features:(id)arg2;
-- (id)_resolvedStringWithMomentNodes:(id)arg1;
+- (id)_resolvedStringWithMomentNodes:(id)arg1 features:(id)arg2 argumentEvaluationContext:(id)arg3;
+- (id)_resolvedStringWithMomentNodes:(id)arg1 argumentEvaluationContext:(id)arg2;
 - (id)initWithTimeType:(unsigned long long)arg1;
 
 @end

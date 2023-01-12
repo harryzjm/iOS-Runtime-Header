@@ -11,8 +11,10 @@
 @interface GEOLogMsgStateDeviceSettings : PBCodable <NSCopying>
 {
     _Bool _deviceDarkMode;
+    _Bool _supportsAdvancedMap;
     struct {
         unsigned int has_deviceDarkMode:1;
+        unsigned int has_supportsAdvancedMap:1;
     } _flags;
 }
 
@@ -30,6 +32,8 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasSupportsAdvancedMap;
+@property(nonatomic) _Bool supportsAdvancedMap;
 @property(nonatomic) _Bool hasDeviceDarkMode;
 @property(nonatomic) _Bool deviceDarkMode;
 

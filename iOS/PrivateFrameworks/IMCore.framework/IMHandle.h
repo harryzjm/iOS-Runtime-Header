@@ -8,7 +8,7 @@
 
 #import <IMCore/NSSecureCoding-Protocol.h>
 
-@class CNContact, IMAccount, IMServiceImpl, MKMapItem, NSArray, NSAttributedString, NSData, NSDate, NSDictionary, NSMutableArray, NSNumber, NSSet, NSString;
+@class CNContact, IMAccount, IMBrand, IMBrandManager, IMServiceImpl, NSArray, NSAttributedString, NSData, NSDate, NSDictionary, NSMutableArray, NSNumber, NSSet, NSString;
 
 @interface IMHandle : NSObject <NSSecureCoding>
 {
@@ -70,15 +70,16 @@
     _Bool _hasCheckedForSuggestions;
     NSString *_personCentricID;
     NSString *_guid;
-    MKMapItem *_mapItem;
-    NSData *_mapItemImageData;
-    NSData *_mapItemBannerImageData;
+    IMBrand *_brand;
+    NSData *_brandSquareLogoImageData;
+    NSData *_brandWideLogoImageData;
     CNContact *_cnContact;
+    IMBrandManager *_brandManager;
     NSString *_suggestedName;
     NSString *_cachedDisplayNameWithAbbreviation;
+    NSString *_cachedName;
 }
 
-+ (id)imageManager;
 + (id)filterIMHandlesForBestAccountSiblings:(id)arg1;
 + (id)filterIMHandlesForAccountSiblings:(id)arg1 onAccount:(id)arg2;
 + (id)bestIMHandleInArray:(id)arg1;
@@ -95,14 +96,16 @@
 + (void)bestHandlesForCNContacts:(id)arg1 useExtendedAsyncLookup:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)bestHandlesForCNContacts:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *cachedName; // @synthesize cachedName=_cachedName;
 @property(retain, nonatomic) NSString *cachedDisplayNameWithAbbreviation; // @synthesize cachedDisplayNameWithAbbreviation=_cachedDisplayNameWithAbbreviation;
 @property(nonatomic) _Bool hasCheckedForSuggestions; // @synthesize hasCheckedForSuggestions=_hasCheckedForSuggestions;
 @property(copy, nonatomic) NSString *suggestedName; // @synthesize suggestedName=_suggestedName;
+@property(retain, nonatomic) IMBrandManager *brandManager; // @synthesize brandManager=_brandManager;
 @property(nonatomic) long long IDStatus; // @synthesize IDStatus=_IDStatus;
 @property(retain, nonatomic) CNContact *cnContact; // @synthesize cnContact=_cnContact;
-@property(retain, nonatomic) NSData *mapItemBannerImageData; // @synthesize mapItemBannerImageData=_mapItemBannerImageData;
-@property(retain, nonatomic) NSData *mapItemImageData; // @synthesize mapItemImageData=_mapItemImageData;
-@property(retain, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
+@property(retain, nonatomic) NSData *brandWideLogoImageData; // @synthesize brandWideLogoImageData=_brandWideLogoImageData;
+@property(retain, nonatomic) NSData *brandSquareLogoImageData; // @synthesize brandSquareLogoImageData=_brandSquareLogoImageData;
+@property(retain, nonatomic) IMBrand *brand; // @synthesize brand=_brand;
 @property(readonly, retain, nonatomic) NSString *guid; // @synthesize guid=_guid;
 @property(retain, nonatomic) NSDictionary *otherServiceIDs; // @synthesize otherServiceIDs=_otherServiceIDs;
 @property(readonly, retain, nonatomic) NSData *pictureData; // @synthesize pictureData=_pictureData;
@@ -121,13 +124,9 @@
 @property(readonly, nonatomic) unsigned long long previousStatus; // @synthesize previousStatus=_prevStatus;
 @property(readonly, retain, nonatomic) NSDictionary *extraProperties; // @synthesize extraProperties=_extraProps;
 @property(readonly, retain, nonatomic) NSString *originalID; // @synthesize originalID=_uncanonicalID;
-- (void)_mapItemBannerImageDataFetchedWithResultData:(id)arg1 error:(id)arg2;
-- (void)_fetchMapItemBannerImageDataForMapItem:(id)arg1;
-- (void)_mapItemImageDataFetchedWithResultData:(id)arg1 error:(id)arg2;
-- (void)_fetchMapItemImageDataForMapItem:(id)arg1;
 - (void)_postOnScreenChangedNotificationForProperty:(id)arg1;
-- (void)_mapItemFetchedWithMapItems:(id)arg1 error:(id)arg2;
-- (void)_fetchBusinessInfo;
+- (void)_fetchedBrand:(id)arg1;
+- (void)_fetchBrandInfo;
 - (void)sendNotificationABPersonChanged;
 - (id)description;
 - (void)setCustomPictureData:(id)arg1 key:(id)arg2;
@@ -135,8 +134,6 @@
 - (id)customPictureData;
 - (void)customPictureDataChanged:(id)arg1 key:(id)arg2;
 - (void)_imPersonPictureChanged:(id)arg1;
-- (void)_sendCommand:(id)arg1 properties:(id)arg2;
-- (void)_sendAutomationData:(id)arg1 properties:(id)arg2;
 @property(readonly, nonatomic) _Bool hasMultiwayAudio;
 @property(readonly, nonatomic) _Bool hasAudio;
 @property(readonly, nonatomic) _Bool hasMultiwayVideo;
@@ -169,6 +166,12 @@
 - (long long)compareLastNames:(id)arg1;
 - (long long)compareFirstNames:(id)arg1;
 - (id)_nameForComparisonPreferFirst:(_Bool)arg1;
+- (void)autoInviteToViewAvailabilityIfNeededFromHandleID:(id)arg1;
+- (_Bool)isInvitedToViewMyFocusStatusFromHandleID:(id)arg1;
+- (void)endObservingAvailability;
+- (void)beginObservingAvailability;
+@property(readonly, nonatomic) NSDate *availabilityStatusPublishedDate;
+@property(readonly, nonatomic) long long availability;
 @property(readonly, nonatomic) double timeSinceStatusChanged;
 @property(readonly, nonatomic) double timeSinceWentOffline;
 - (void)setStatus:(unsigned long long)arg1 message:(id)arg2 richMessage:(id)arg3;
@@ -217,6 +220,7 @@
 - (void)_updateOriginalID:(id)arg1;
 - (struct __CFPhoneNumber *)phoneNumberRef;
 - (void)_createPhoneNumberRefIfNeeded;
+@property(readonly, nonatomic) _Bool matchesLoginHandleForAnyAccount;
 @property(readonly, nonatomic) _Bool isLoginIMHandle;
 @property(readonly, nonatomic) _Bool isLoginIMHandleForAnyAccount;
 @property(readonly, nonatomic) _Bool isBuddy;
@@ -230,7 +234,6 @@
 @property(readonly, nonatomic) _Bool isSystemUser;
 @property(readonly, nonatomic) _Bool canBeAdded;
 - (void)updateCNContact:(id)arg1;
-- (id)_fallbackCNContactWithAllKeys;
 - (id)cnContactWithKeys:(id)arg1;
 - (void)setEmails:(id)arg1;
 - (void)setEmail:(id)arg1;
@@ -304,8 +307,6 @@
 - (void)beginNotificationQueue;
 - (_Bool)shouldQueueNotifications;
 - (id)publicAPIPropertiesDictionary;
-- (void)_sendRemoteLogDumpRequest;
-- (void)_sendRemoteLogDumpRequest:(id)arg1;
 - (id)fmfSiblingHandles;
 - (id)fmfHandle;
 

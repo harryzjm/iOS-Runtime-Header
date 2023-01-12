@@ -8,11 +8,12 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class PBUnknownFields;
+@class NSString, PBUnknownFields;
 
 @interface GEOLocalTime : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
+    NSString *_humanReadable;
     unsigned long long _timeRoundedToHour;
     float _timezoneOffsetFromGmtInHours;
     struct {
@@ -23,6 +24,8 @@
 
 + (_Bool)isValid:(id)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *humanReadable;
+@property(readonly, nonatomic) _Bool hasHumanReadable;
 - (void)clearUnknownFields:(_Bool)arg1;
 @property(readonly, nonatomic) PBUnknownFields *unknownFields;
 - (void)mergeFrom:(id)arg1;

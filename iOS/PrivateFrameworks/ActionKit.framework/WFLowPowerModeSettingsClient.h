@@ -6,19 +6,15 @@
 
 #import <ActionKit/WFBooleanStateSetting-Protocol.h>
 
-@class NSString, _CDBatterySaver;
+@class NSString;
 
 @interface WFLowPowerModeSettingsClient <WFBooleanStateSetting>
 {
-    _CDBatterySaver *_batterySaver;
 }
 
 + (void)createClientWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void).cxx_destruct;
-@property(readonly, nonatomic) _CDBatterySaver *batterySaver; // @synthesize batterySaver=_batterySaver;
 - (void)setState:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getStateWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)initWithBatterySaver:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -11,17 +11,13 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (_Bool)accessibilityScrollDownPage;
 - (_Bool)accessibilityScrollDownPageSupported;
 - (_Bool)accessibilityScrollUpPage;
 - (_Bool)accessibilityScrollUpPageSupported;
 - (_Bool)_accessibilityIsScrollAncestor;
 - (_Bool)accessibilityScrollToVisibleWithChild:(id)arg1;
-- (void)_axApplyTranslation:(struct CGPoint)arg1 forDetentIndex:(long long)arg2 panController:(id)arg3;
-- (struct CGPoint)_axTranslationForDetentIndex:(long long)arg1 currentDetentIndex:(unsigned long long)arg2 detents:(id)arg3;
-- (unsigned long long)_axCurrentDetentIndexForPanController:(id)arg1;
-- (id)_axDetentsForPanController:(id)arg1;
-- (id)_axPanController;
 - (_Bool)accessibilityViewIsModal;
 
 @end

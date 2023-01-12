@@ -11,10 +11,10 @@
 @interface TSTHeaderNameSubset : NSObject
 {
     TSTHeaderNameMgr *_hnm;
-    UUIDData_5fbc143e _limitedToTableUID;
+    struct TSKUIDStruct _limitedToTableUID;
     _Bool _includesPrefixes;
-    struct unordered_map<NSString *, TSCECellRefSet, std::__1::hash<NSString *>, std::__1::equal_to<NSString *>, std::__1::allocator<std::__1::pair<NSString *const, TSCECellRefSet>>> _stringsInHeaderCells;
-    struct unordered_map<NSString *, TSCECellRefSet, std::__1::hash<NSString *>, std::__1::equal_to<NSString *>, std::__1::allocator<std::__1::pair<NSString *const, TSCECellRefSet>>> _prefixStringsInHeaderCells;
+    struct unordered_map<NSString *, TSCECellRefSet, std::hash<NSString *>, std::equal_to<NSString *>, std::allocator<std::pair<NSString *const, TSCECellRefSet>>> _stringsInHeaderCells;
+    struct unordered_map<NSString *, TSCECellRefSet, std::hash<NSString *>, std::equal_to<NSString *>, std::allocator<std::pair<NSString *const, TSCECellRefSet>>> _prefixStringsInHeaderCells;
     NSString *_originalFullReferenceString;
 }
 
@@ -22,12 +22,12 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *originalFullReferenceString; // @synthesize originalFullReferenceString=_originalFullReferenceString;
 @property(nonatomic) _Bool includesPrefixes; // @synthesize includesPrefixes=_includesPrefixes;
-@property(readonly, nonatomic) UUIDData_5fbc143e limitedToTableUID; // @synthesize limitedToTableUID=_limitedToTableUID;
+@property(readonly, nonatomic) struct TSKUIDStruct limitedToTableUID; // @synthesize limitedToTableUID=_limitedToTableUID;
 - (id)description;
 - (struct TSCECellRefSet)headerCellsMatchingPrefix:(id)arg1;
 - (struct TSCECellRefSet)headerCellsExactlyMatching:(id)arg1;
-- (void)loadSubsetWithExactMatches:(const unordered_map_a445e975 *)arg1 prefixMatches:(const unordered_map_a445e975 *)arg2;
-- (id)initWithHeaderNameMgr:(id)arg1 limitToTableUID:(const UUIDData_5fbc143e *)arg2;
+- (void)loadSubsetWithExactMatches:(const void *)arg1 prefixMatches:(const void *)arg2;
+- (id)initWithHeaderNameMgr:(id)arg1 limitToTableUID:(const struct TSKUIDStruct *)arg2;
 
 @end
 

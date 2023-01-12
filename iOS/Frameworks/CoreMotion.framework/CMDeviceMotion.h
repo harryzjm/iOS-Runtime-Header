@@ -13,6 +13,8 @@
 
 + (_Bool)supportsSecureCoding;
 @property(readonly, nonatomic) long long sensorLocation;
+@property(readonly, nonatomic) _Bool usingVisionCorrections;
+@property(readonly, nonatomic) _Bool fusedWithVision;
 @property(readonly, nonatomic) double headingAccuracy;
 @property(readonly, nonatomic) double heading;
 @property(readonly, nonatomic) _Bool doingBiasEstimation;
@@ -29,7 +31,7 @@
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDeviceMotion:(CDStruct_69e6d857)arg1 internal:(CDStruct_37a3040a)arg2 timestamp:(double)arg3;
+- (id)initWithDeviceMotion:(CDStruct_227c825c)arg1 internal:(CDStruct_37a3040a)arg2 timestamp:(double)arg3;
 
 @end
 

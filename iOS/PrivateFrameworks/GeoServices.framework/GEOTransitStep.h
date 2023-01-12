@@ -9,7 +9,7 @@
 #import <GeoServices/GEOCompanionCompatibility-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOInstructionSet, GEOLatLng, GEOTransitArrivalInfo, GEOTransitBaseFare, GEOTransitScheduleInfo, GEOTransitSurcharge, GEOTransitVehiclePositionInfo, NSData, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
+@class GEOAdvisoriesInfo, GEOInstructionSet, GEOLatLng, GEOTransitArrivalInfo, GEOTransitBaseFare, GEOTransitBoardingInfo, GEOTransitScheduleInfo, GEOTransitSurcharge, GEOTransitVehiclePositionInfo, NSData, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 @protocol GEOTransitVehicleEntries;
 
 @interface GEOTransitStep : PBCodable <GEOCompanionCompatibility, NSCopying>
@@ -18,11 +18,15 @@
     PBUnknownFields *_unknownFields;
     CDStruct_9f2792e4 _routeDetailsPrimaryArtworkIndexs;
     CDStruct_9f2792e4 _steppingArtworkIndexs;
+    GEOAdvisoriesInfo *_advisoriesInfo;
     GEOTransitArrivalInfo *_arrivalInfo;
+    NSMutableArray *_badges;
     GEOTransitBaseFare *_baseFare;
+    GEOTransitBoardingInfo *_boardingInfo;
     NSMutableArray *_enterExitInfos;
     GEOInstructionSet *_instructions;
     GEOLatLng *_location;
+    NSMutableArray *_regionAlerts;
     GEOTransitScheduleInfo *_scheduleInfo;
     GEOTransitSurcharge *_surcharge;
     NSMutableArray *_transferInfos;
@@ -66,11 +70,15 @@
         unsigned int read_unknownFields:1;
         unsigned int read_routeDetailsPrimaryArtworkIndexs:1;
         unsigned int read_steppingArtworkIndexs:1;
+        unsigned int read_advisoriesInfo:1;
         unsigned int read_arrivalInfo:1;
+        unsigned int read_badges:1;
         unsigned int read_baseFare:1;
+        unsigned int read_boardingInfo:1;
         unsigned int read_enterExitInfos:1;
         unsigned int read_instructions:1;
         unsigned int read_location:1;
+        unsigned int read_regionAlerts:1;
         unsigned int read_scheduleInfo:1;
         unsigned int read_surcharge:1;
         unsigned int read_transferInfos:1;
@@ -82,6 +90,8 @@
 }
 
 + (_Bool)isValid:(id)arg1;
++ (Class)regionAlertType;
++ (Class)badgeType;
 + (Class)transferInfoType;
 + (Class)enterExitInfoType;
 + (Class)vehicleInfoType;
@@ -93,6 +103,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -101,6 +112,18 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 @property(readonly, copy) NSString *description;
+- (id)regionAlertAtIndex:(unsigned long long)arg1;
+- (unsigned long long)regionAlertsCount;
+- (void)addRegionAlert:(id)arg1;
+- (void)clearRegionAlerts;
+@property(retain, nonatomic) NSMutableArray *regionAlerts;
+- (id)badgeAtIndex:(unsigned long long)arg1;
+- (unsigned long long)badgesCount;
+- (void)addBadge:(id)arg1;
+- (void)clearBadges;
+@property(retain, nonatomic) NSMutableArray *badges;
+@property(retain, nonatomic) GEOTransitBoardingInfo *boardingInfo;
+@property(readonly, nonatomic) _Bool hasBoardingInfo;
 @property(retain, nonatomic) GEOTransitScheduleInfo *scheduleInfo;
 @property(readonly, nonatomic) _Bool hasScheduleInfo;
 @property(retain, nonatomic) GEOTransitVehiclePositionInfo *vehiclePositionInfo;
@@ -111,6 +134,8 @@
 @property(readonly, nonatomic) _Bool hasSurcharge;
 @property(retain, nonatomic) GEOTransitBaseFare *baseFare;
 @property(readonly, nonatomic) _Bool hasBaseFare;
+@property(retain, nonatomic) GEOAdvisoriesInfo *advisoriesInfo;
+@property(readonly, nonatomic) _Bool hasAdvisoriesInfo;
 @property(nonatomic) _Bool hasListTransitIncidentMessageIndex;
 @property(nonatomic) unsigned int listTransitIncidentMessageIndex;
 @property(nonatomic) _Bool hasSteppingTransitIncidentMessageIndex;

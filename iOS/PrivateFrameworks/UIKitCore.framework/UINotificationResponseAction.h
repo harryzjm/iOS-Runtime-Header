@@ -4,26 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <BaseBoard/BSAction.h>
+#import <UIKitServices/UISNotificationResponseAction.h>
 
-@class UNNotificationResponse;
-
-@interface UINotificationResponseAction : BSAction
+@interface UINotificationResponseAction : UISNotificationResponseAction
 {
-    UNNotificationResponse *_response;
 }
-
-- (void).cxx_destruct;
-@property(readonly, retain, nonatomic) UNNotificationResponse *response; // @synthesize response=_response;
-- (id)valueDescriptionForFlag:(long long)arg1 object:(id)arg2 ofSetting:(unsigned long long)arg3;
-- (id)keyDescriptionForSetting:(unsigned long long)arg1;
-- (id)initWithXPCDictionary:(id)arg1;
-- (long long)UIActionType;
-- (id)_trigger;
-@property(readonly, nonatomic) _Bool isDefaultAction;
-@property(readonly, nonatomic) _Bool isRemote;
-@property(readonly, nonatomic) _Bool isLocal;
-- (id)initWithResponse:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 
 @end
 

@@ -15,7 +15,9 @@ __attribute__((visibility("hidden")))
 - (int)interactionType;
 - (id)dialRequest;
 - (id)callProvider;
+- (id)subtitle;
 - (id)localizedName;
+- (id)initWithURL:(id)arg1 result:(struct __DDResult *)arg2 context:(id)arg3;
 
 @end
 

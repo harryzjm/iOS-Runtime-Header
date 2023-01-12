@@ -28,38 +28,15 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
-+ (Class)assetLocationType;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
-- (void)clearSensitiveFields;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (int)StringAsAdditionalPlaceTypes:(id)arg1;
-- (id)additionalPlaceTypesAsString:(int)arg1;
-- (void)setAdditionalPlaceTypes:(int *)arg1 count:(unsigned long long)arg2;
-- (int)additionalPlaceTypeAtIndex:(unsigned long long)arg1;
-- (void)addAdditionalPlaceType:(int)arg1;
-- (void)clearAdditionalPlaceTypes;
-@property(readonly, nonatomic) int *additionalPlaceTypes;
-@property(readonly, nonatomic) unsigned long long additionalPlaceTypesCount;
-- (id)assetLocationAtIndex:(unsigned long long)arg1;
-- (unsigned long long)assetLocationsCount;
-- (void)addAssetLocation:(id)arg1;
-- (void)clearAssetLocations;
-@property(retain, nonatomic) NSMutableArray *assetLocations;
 - (void)dealloc;
 - (id)initWithData:(id)arg1;
 - (id)init;

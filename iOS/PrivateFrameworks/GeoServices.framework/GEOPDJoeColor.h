@@ -23,7 +23,9 @@ __attribute__((visibility("hidden")))
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
+    _Bool _curated;
     struct {
+        unsigned int has_curated:1;
         unsigned int read_unknownFields:1;
         unsigned int read_backgroundColor:1;
         unsigned int read_primaryTextColor:1;
@@ -34,33 +36,15 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(retain, nonatomic) NSString *quaternaryTextColor;
-@property(readonly, nonatomic) _Bool hasQuaternaryTextColor;
-@property(retain, nonatomic) NSString *tertiaryTextColor;
-@property(readonly, nonatomic) _Bool hasTertiaryTextColor;
-@property(retain, nonatomic) NSString *secondaryTextColor;
-@property(readonly, nonatomic) _Bool hasSecondaryTextColor;
-@property(retain, nonatomic) NSString *primaryTextColor;
-@property(readonly, nonatomic) _Bool hasPrimaryTextColor;
-@property(retain, nonatomic) NSString *backgroundColor;
-@property(readonly, nonatomic) _Bool hasBackgroundColor;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

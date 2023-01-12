@@ -6,24 +6,19 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <VideosUI/VUISwiftImpressionsElement-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI22CarouselViewController : UIViewController <VUISwiftImpressionsElement>
+@interface _TtC8VideosUI22CarouselViewController : UIViewController
 {
     MISSING_TYPE *viewImpressioner;
     MISSING_TYPE *headerViewModel;
-    MISSING_TYPE *viewElement;
-    MISSING_TYPE *viewModel;
+    MISSING_TYPE *collectionViewModel;
     MISSING_TYPE *$__lazy_storage_$_visibleCellViewModels;
     MISSING_TYPE *$__lazy_storage_$_carouselViewContainer;
-    MISSING_TYPE *items;
+    MISSING_TYPE *dataModelItems;
     MISSING_TYPE *lastViewWidth;
     MISSING_TYPE *centeredItemIndex;
-    MISSING_TYPE *impressionsTracker;
-    MISSING_TYPE *impressionsCalculator;
     MISSING_TYPE *selfVisibilityMonitor;
     MISSING_TYPE *$__lazy_storage_$_cellVisibilityMonitor;
 }
@@ -35,11 +30,9 @@ __attribute__((visibility("hidden")))
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewDidLayoutSubviews;
-- (void)didMoveToParentViewController:(id)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
-- (void)viewDidLoad;
 - (void)loadView;
 
 @end

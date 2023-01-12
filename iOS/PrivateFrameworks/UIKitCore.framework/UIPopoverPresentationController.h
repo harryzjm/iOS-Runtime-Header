@@ -7,7 +7,7 @@
 #import <UIKitCore/UIGestureRecognizerDelegatePrivate-Protocol.h>
 #import <UIKitCore/_UIPopoverDimmingViewDelegate-Protocol.h>
 
-@class NSArray, NSString, UIBarButtonItem, UIColor, UIDimmingView, UIPanGestureRecognizer, UIView, UIViewController, _UICutoutShadowView, _UIPopoverDimmingView, _UIPopoverLayoutInfo, _UIPopoverView;
+@class NSArray, NSString, UIBarButtonItem, UIColor, UIDimmingView, UIPanGestureRecognizer, UISheetPresentationController, UIView, UIViewController, _UICutoutShadowView, _UIPopoverDimmingView, _UIPopoverLayoutInfo, _UIPopoverView;
 @protocol UIPopoverPresentationControllerDelegate;
 
 @interface UIPopoverPresentationController <_UIPopoverDimmingViewDelegate, UIGestureRecognizerDelegatePrivate>
@@ -26,7 +26,7 @@
     _UIPopoverLayoutInfo *_preferredLayoutInfo;
     Class _popoverBackgroundViewClass;
     struct CGSize _popoverContentSize;
-    struct CGRect _embeddedTargetRect;
+    struct CGRect _lastSourceRectInContainerView;
     long long _popoverControllerStyle;
     _Bool _ignoresKeyboardNotifications;
     _Bool _canOverlapSourceViewRect;
@@ -74,6 +74,7 @@
     _Bool __allowsSourceViewInDifferentWindowThanInitialPresentationViewController;
     _Bool _shouldPreserveFirstResponder;
     _Bool _adaptivityEnabled;
+    UISheetPresentationController *_adaptiveSheetPresentationController;
     unsigned long long _permittedArrowDirections;
     unsigned long long _popoverArrowDirection;
     UIView *_sourceOverlayView;
@@ -120,6 +121,7 @@
 @property(nonatomic) _Bool dismissesOnRotation; // @synthesize dismissesOnRotation=_dismissesOnRotation;
 @property(retain, nonatomic) UIDimmingView *dimmingView; // @synthesize dimmingView=_dimmingView;
 - (void)_handlePan:(id)arg1;
+- (id)_createVisualStyleForProvider:(id)arg1;
 - (void)_closeScene;
 - (void)_convertToSceneFromPresentingViewController:(id)arg1;
 - (_Bool)_shouldConvertToScene;
@@ -172,7 +174,10 @@
 - (_Bool)_fallbackShouldDismiss;
 - (void)_stopWatchingForNotifications;
 - (void)set_ignoreBarButtonItemSiblings:(_Bool)arg1;
+- (_Bool)_handlesKeyboardAvoidance;
 @property(nonatomic, setter=_setIgnoresKeyboardNotifications:) _Bool _ignoresKeyboardNotifications; // @dynamic _ignoresKeyboardNotifications;
+- (id)_adaptiveFormSheetPresentationController;
+@property(readonly, nonatomic) UISheetPresentationController *adaptiveSheetPresentationController; // @synthesize adaptiveSheetPresentationController=_adaptiveSheetPresentationController;
 - (void)_stopWatchingForScrollViewNotifications;
 - (void)_startWatchingForScrollViewNotifications;
 - (void)_scrollViewDidEndDragging:(id)arg1;
@@ -189,6 +194,7 @@
 - (void)_setGesturesEnabled:(_Bool)arg1;
 - (_Bool)popoverDimmingViewDidReceiveDismissalInteraction:(id)arg1;
 - (_Bool)popoverDimmingViewShouldAllowInteraction:(id)arg1;
+- (_Bool)_allowsFocusBehindDimmingView;
 - (_Bool)dimmingViewWasTapped:(id)arg1 withDismissCompletion:(CDUnknownBlockType)arg2;
 - (_Bool)_popoverIsDismissingBecauseDimmingViewWasTapped;
 - (void)_dismissPopoverAnimated:(_Bool)arg1 stateOnly:(_Bool)arg2 notifyDelegate:(_Bool)arg3;
@@ -197,6 +203,8 @@
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)_setContentViewController:(id)arg1 backgroundStyle:(long long)arg2 animated:(_Bool)arg3;
 @property(nonatomic, setter=_setPopoverBackgroundStyle:) long long _popoverBackgroundStyle;
+- (void)_setLowerWindowDismissalGestureViews:(id)arg1;
+- (id)_lowerWindowDismissalGestureViews;
 - (void)setArrowBackgroundColor:(id)arg1;
 - (id)arrowBackgroundColor;
 - (_Bool)_manuallyHandlesContentViewControllerAppearanceCalls;

@@ -12,20 +12,35 @@
 {
 }
 
++ (id)analyticsIdentifier;
 + (id)identifier;
 + (id)logObject;
 + (id)logCategoryName;
 + (id)imageWithName:(id)arg1;
++ (id)_localizedStringForKey:(id)arg1 table:(id)arg2 suffix:(id)arg3 comment:(id)arg4;
 + (id)localizedStringForKey:(id)arg1 table:(id)arg2 comment:(id)arg3;
++ (id)localizedStringForKey:(id)arg1 tableSuffix:(id)arg2 comment:(id)arg3;
 + (id)localizedStringForKey:(id)arg1 comment:(id)arg2;
 - (_Bool)isHardwareSpecific;
+- (id)prideFacesForDevice:(id)arg1;
 - (id)heroFacesForDevice:(id)arg1;
 @property(readonly, nonatomic) NSString *galleryDescriptionText;
 @property(readonly, nonatomic) NSString *galleryTitle;
+- (id)galleryDefaultPigmentOptionsForDevice:(id)arg1;
 - (id)galleryFacesForDevice:(id)arg1;
 - (id)defaultFaceForDevice:(id)arg1;
+- (id)legacyFaceStyle;
 @property(readonly, nonatomic) Class faceViewClass;
 @property(readonly, nonatomic) Class faceClass;
+- (void)argon_cleanupNotificationAssets;
+- (void)argon_generateNotificationContentWithCompletion:(CDUnknownBlockType)arg1;
+- (id)heroLegacyDefaultFacesForDevice:(id)arg1;
+- (id)heroGloryBDefaultFacesForDevice:(id)arg1;
+- (id)heroGloryEDefaultFacesForDevice:(id)arg1;
+- (id)heroGloryFDefaultFacesForDevice:(id)arg1;
+- (id)heroGraceDefaultFacesForDevice:(id)arg1;
+- (id)heroSpring2020DefaultFacesForDevice:(id)arg1;
+- (id)heroPride2020DefaultFacesForDevice:(id)arg1;
 
 @end
 

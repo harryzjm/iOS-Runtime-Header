@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CPLResource, NSData, NSMutableArray, NSString;
+@class CPLPlaceholderRecord, CPLResource, NSData, NSMutableArray, NSString;
 @protocol CPLEngineTransportResourcesDownloadTask;
 
 @interface CPLEngineResourceDownloadTask
@@ -14,6 +14,7 @@
     unsigned long long _preemptingCount;
     _Bool _cancelledByEngine;
     CPLResource *_cloudResource;
+    CPLPlaceholderRecord *_cloudRecord;
     NSData *_transportScope;
     unsigned long long _taskIdentifierForQueue;
     NSString *_clientBundleID;
@@ -40,13 +41,15 @@
 @property(retain, nonatomic) NSString *clientBundleID; // @synthesize clientBundleID=_clientBundleID;
 @property(nonatomic) unsigned long long taskIdentifierForQueue; // @synthesize taskIdentifierForQueue=_taskIdentifierForQueue;
 @property(retain, nonatomic) NSData *transportScope; // @synthesize transportScope=_transportScope;
-@property(retain, nonatomic) CPLResource *cloudResource; // @synthesize cloudResource=_cloudResource;
+@property(readonly, nonatomic) CPLPlaceholderRecord *cloudRecord; // @synthesize cloudRecord=_cloudRecord;
+@property(readonly, nonatomic) CPLResource *cloudResource; // @synthesize cloudResource=_cloudResource;
 - (void)noteTaskHasBeenPreempted;
 - (void)noteActiveQueuesStatusAtEnqueingTime:(id)arg1;
 - (void)noteStateDidProgress:(unsigned long long)arg1;
 @property(readonly, nonatomic) _Bool willGenerateReport;
 - (void)cancelTask;
 - (void)launch;
+- (void)associateCloudResource:(id)arg1 ofRecord:(id)arg2;
 - (id)initWithResource:(id)arg1 taskIdentifier:(id)arg2 launchHandler:(CDUnknownBlockType)arg3 cancelHandler:(CDUnknownBlockType)arg4 didStartHandler:(CDUnknownBlockType)arg5 progressHandler:(CDUnknownBlockType)arg6 completionHandler:(CDUnknownBlockType)arg7;
 
 @end

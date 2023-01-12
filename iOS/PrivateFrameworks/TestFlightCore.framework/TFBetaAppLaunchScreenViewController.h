@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
 - (id)_fadeTransition;
 - (void)_animateLaunchScreenViewWithUpdateBlock:(CDUnknownBlockType)arg1 transition:(id)arg2;
 - (void)dismissAnimated:(_Bool)arg1;
-- (void)showHowToWithTitle:(id)arg1 subtitle:(id)arg2 imageIdentifier:(id)arg3 primaryButtonTitle:(id)arg4 primaryButtonEvent:(unsigned long long)arg5 secondaryButtonTitle:(id)arg6 secondaryButtonEvent:(unsigned long long)arg7 animated:(_Bool)arg8;
+- (void)showHowToWithTitle:(id)arg1 subtitle:(id)arg2 screenshotImageDict:(id)arg3 primaryButtonTitle:(id)arg4 primaryButtonEvent:(unsigned long long)arg5 secondaryButtonTitle:(id)arg6 secondaryButtonEvent:(unsigned long long)arg7 animated:(_Bool)arg8;
 - (void)showTestNotesWithTitle:(id)arg1 lockup:(id)arg2 testNotesTitle:(id)arg3 testNotesText:(id)arg4 primaryButtonTitle:(id)arg5 primaryButtonEvent:(unsigned long long)arg6 animated:(_Bool)arg7 fetchingOnImageFetcher:(id)arg8;
 - (void)showLoadingAnimated:(_Bool)arg1;
 - (void)_updateForContainmentInHostEnvironment:(id)arg1;

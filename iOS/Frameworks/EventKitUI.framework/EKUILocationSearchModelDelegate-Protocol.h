@@ -7,6 +7,7 @@
 @class EKCalendarItem, EKStructuredLocation, EKUIConferenceRoom, EKUILocationSearchModel, NSError;
 
 @protocol EKUILocationSearchModelDelegate
+- (void)virtualConferenceSearchUpdated:(EKUILocationSearchModel *)arg1;
 - (void)eventsSearchUpdated:(EKUILocationSearchModel *)arg1;
 - (void)frequentsSearchUpdated:(EKUILocationSearchModel *)arg1;
 - (void)conferenceRoomSearchUpdated:(EKUILocationSearchModel *)arg1;

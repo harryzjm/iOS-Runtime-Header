@@ -19,11 +19,9 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)keyEnumerator;
-- (id)arrayForFlatDictionaryArrayDataKey:(CDStruct_38ec6540 *)arg1;
 - (id)objectForKey:(id)arg1;
 - (unsigned long long)count;
 - (void)dealloc;
-- (_Bool)_ensureFlatDictionaryIsInitialized;
 - (id)initWithObjects:(const id *)arg1 forKeys:(const id *)arg2 count:(unsigned long long)arg3;
 - (id)initLazilyWithFlatDictionaryBacking:(void *)arg1 exportedKeySpec:(void *)arg2 deallocatorBlock:(CDUnknownBlockType)arg3;
 - (id)initWithFlatDictionary:(struct OpaqueFigFlatDictionary *)arg1 keySpec:(struct OpaqueFigFlatDictionaryKeySpec *)arg2;

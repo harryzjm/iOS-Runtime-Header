@@ -9,7 +9,6 @@
 @class BRCAccountSession, BRCThrottleBase, BRCTransferStream, BRCUserDefaults, CKContainer, CKContainerID, NSDate, NSHashTable, NSMutableSet, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-__attribute__((visibility("hidden")))
 @interface BRCSyncContext : NSObject
 {
     CKContainer *_ckContainer;
@@ -38,7 +37,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)transferContextForServerZone:(id)arg1 appLibrary:(id)arg2;
-+ (id)contextIdentifierForMangledID:(id)arg1;
++ (id)transferContextIdentifierForMangledID:(id)arg1;
++ (id)metadataContextIdentifierForMangledID:(id)arg1;
 + (id)_contextIdentifierForMangledID:(id)arg1 metadata:(_Bool)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool isShared; // @synthesize isShared=_isShared;

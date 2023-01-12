@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Notes/ICBaseSearchIndexerDataSource.h>
+#import <NotesSupport/ICBaseSearchIndexerDataSource.h>
 
 @interface ICModernSearchIndexerDataSource : ICBaseSearchIndexerDataSource
 {
@@ -12,7 +12,12 @@
 
 - (id)addNotesFromSubtree:(id)arg1;
 - (_Bool)isFolderWithServerShareChanged:(id)arg1;
-- (id)searchableItemForObject:(id)arg1;
+- (id)additionalItemsForObject:(id)arg1;
+- (id)additionalUniqueIdentifiersToDeleteForObject:(id)arg1;
+- (id)synapseItemsForObject:(id)arg1;
+- (_Bool)isPaperKitOrSynapseAttachment:(id)arg1;
+- (id)searchableItemResultForObject:(id)arg1;
+- (id)searchableItemForSynapseContentItem:(id)arg1 note:(id)arg2 attachment:(id)arg3;
 - (void)contextWillSave:(id)arg1;
 - (id)allIndexableObjectIDsInReversedReindexingOrderWithContext:(id)arg1;
 - (id)newManagedObjectContext;

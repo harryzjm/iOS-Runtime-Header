@@ -23,16 +23,14 @@
     _Bool _isItalicized;
     _Bool _isUnderlined;
     UIResponder *_firstResponder;
-    UIResponder *_actionResponder;
 }
 
-+ (id)traitsForEditingInteractionWithFirstResponder:(id)arg1 actionResponder:(id)arg2 keyMaskFlags:(unsigned long long)arg3;
++ (id)traitsForEditingInteractionWithFirstResponder:(id)arg1 canRespondBlock:(CDUnknownBlockType)arg2 keyMaskFlags:(unsigned long long)arg3;
 + (id)traitsWithResponder:(id)arg1 keyMaskFlags:(unsigned long long)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool isUnderlined; // @synthesize isUnderlined=_isUnderlined;
 @property(readonly, nonatomic) _Bool isItalicized; // @synthesize isItalicized=_isItalicized;
 @property(readonly, nonatomic) _Bool isBold; // @synthesize isBold=_isBold;
-@property(readonly, nonatomic) __weak UIResponder *actionResponder; // @synthesize actionResponder=_actionResponder;
 @property(readonly, nonatomic) __weak UIResponder *firstResponder; // @synthesize firstResponder=_firstResponder;
 @property(readonly, nonatomic) _Bool canMoveCursorRight; // @synthesize canMoveCursorRight=_canMoveCursorRight;
 @property(readonly, nonatomic) _Bool canMoveCursorLeft; // @synthesize canMoveCursorLeft=_canMoveCursorLeft;
@@ -43,7 +41,7 @@
 @property(readonly, nonatomic) _Bool canToggleUnderline; // @synthesize canToggleUnderline=_canToggleUnderline;
 @property(readonly, nonatomic) _Bool canToggleItalics; // @synthesize canToggleItalics=_canToggleItalics;
 @property(readonly, nonatomic) _Bool canToggleBoldface; // @synthesize canToggleBoldface=_canToggleBoldface;
-- (id)initWithResponder:(id)arg1 actionResponder:(id)arg2 keyMaskFlags:(unsigned long long)arg3 sender:(id)arg4;
+- (id)initWithResponder:(id)arg1 canRespondBlock:(CDUnknownBlockType)arg2 keyMaskFlags:(unsigned long long)arg3 sender:(id)arg4;
 
 @end
 

@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSDate *selectedEndDate;
 @property(readonly, nonatomic) NSDate *selectedStartDate;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)loadView;
 - (id)initWithEvent:(id)arg1;
 

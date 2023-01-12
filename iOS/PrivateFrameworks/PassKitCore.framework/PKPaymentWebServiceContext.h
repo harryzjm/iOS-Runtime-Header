@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDate, NSDictionary, NSMutableDictionary, NSObject, NSString, NSURL, PKPaymentWebServiceConfiguration, PKPaymentWebServiceRegion;
-@protocol OS_dispatch_queue;
+@class NSArray, NSDate, NSDictionary, NSMutableDictionary, NSString, NSURL, PKPaymentWebServiceConfiguration, PKPaymentWebServiceRegion;
 
 @interface PKPaymentWebServiceContext
 {
     struct os_unfair_lock_s _lock_context;
     NSMutableDictionary *_verificationRequestsByPassUniqueID;
     NSDictionary *_regions;
-    NSObject<OS_dispatch_queue> *_queue;
     struct os_unfair_lock_s _cacheLock;
     NSMutableDictionary *_featureSupportedLanguageCache;
     _Bool _devSigned;
@@ -67,8 +65,14 @@
 - (id)_regionWithPeerPaymentServiceURL;
 @property(readonly, nonatomic) _Bool hasPeerPaymentAccount;
 @property(readonly, nonatomic) NSURL *peerPaymentServiceURL;
-@property(readonly) __weak NSDictionary *TSMURLStringByPushTopic;
+- (id)accountServicePushTopics;
+- (id)applyServicePushTopics;
+- (id)notificationPushTopics;
+- (id)TSMURLStringByPushTopic;
 - (id)TSMPushTopics;
+- (void)atomicallyUpdateEveryRegion:(CDUnknownBlockType)arg1;
+- (void)atomicallyUpdateRegionWithIdentifier:(id)arg1 updateBlock:(CDUnknownBlockType)arg2;
+- (void)atomicallyUpdatePrimaryRegion:(CDUnknownBlockType)arg1;
 @property(readonly) __weak PKPaymentWebServiceRegion *primaryRegion;
 - (id)regionForIdentifier:(id)arg1;
 - (void)removeVerificationRequestRecordForUniqueID:(id)arg1;

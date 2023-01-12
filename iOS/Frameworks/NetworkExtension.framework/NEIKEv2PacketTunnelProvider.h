@@ -29,6 +29,7 @@
     NSObject<OS_dispatch_semaphore> *_getSocketSemaphore;
     NEIKEv2MOBIKE *_mobikeHandle;
     CDUnknownBlockType _startTunnelCompletionHandler;
+    CDUnknownBlockType _stopTunnelCompletionHandler;
     CDUnknownBlockType _dnsResolverCompletionHandler;
     long long _tunnelKind;
     NWPath *_path;
@@ -56,6 +57,7 @@
 @property long long tunnelKind; // @synthesize tunnelKind=_tunnelKind;
 @property _Bool dispose; // @synthesize dispose=_dispose;
 @property(copy) CDUnknownBlockType dnsResolverCompletionHandler; // @synthesize dnsResolverCompletionHandler=_dnsResolverCompletionHandler;
+@property(copy) CDUnknownBlockType stopTunnelCompletionHandler; // @synthesize stopTunnelCompletionHandler=_stopTunnelCompletionHandler;
 @property(copy) CDUnknownBlockType startTunnelCompletionHandler; // @synthesize startTunnelCompletionHandler=_startTunnelCompletionHandler;
 @property(retain) NEIKEv2MOBIKE *mobikeHandle; // @synthesize mobikeHandle=_mobikeHandle;
 @property(retain) NSObject<OS_dispatch_semaphore> *getSocketSemaphore; // @synthesize getSocketSemaphore=_getSocketSemaphore;

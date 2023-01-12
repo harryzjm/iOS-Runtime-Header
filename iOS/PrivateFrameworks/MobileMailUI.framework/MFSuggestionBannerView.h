@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, SGBanner;
+@class NSArray, UIView;
+@protocol SGBannerProtocol;
 
 @interface MFSuggestionBannerView
 {
-    SGBanner *_banner;
+    UIView<SGBannerProtocol> *_banner;
     NSArray *_bannerConstraints;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *bannerConstraints; // @synthesize bannerConstraints=_bannerConstraints;
-@property(retain, nonatomic) SGBanner *banner; // @synthesize banner=_banner;
+@property(retain, nonatomic) UIView<SGBannerProtocol> *banner; // @synthesize banner=_banner;
 - (void)setSeparatorDrawsFlushWithTrailingEdge:(_Bool)arg1;
 - (void)setSeparatorDrawsFlushWithLeadingEdge:(_Bool)arg1;
 - (void)updateConstraints;

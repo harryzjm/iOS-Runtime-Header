@@ -10,6 +10,18 @@
 {
 }
 
++ (id)tripleClickOptionsForAccessibilityShortcutControlCenterModuleIncludingGuidedAccess:(_Bool)arg1;
++ (_Bool)_shouldShowFeatureInShortcutsControlCenterModule:(int)arg1 includeGuidedAccess:(_Bool)arg2;
++ (id)_availableFeatures;
++ (void)toggleTripleClickOption:(int)arg1;
++ (void)toggleFullKeyboardAccess;
++ (void)toggleGuidedAccessFromControlCenter;
++ (void)_toggleAssistiveTouch;
++ (void)_toggleZoomOffMainThread;
++ (void)toggleColorFilter;
++ (void)_toggleSmartInvertColorsOffMainThread;
++ (void)_promptToDisableBrightnessFilters:(CDUnknownBlockType)arg1 data:(id)arg2;
++ (void)_toggleVoiceOver;
 + (_Bool)valueForTripleClickOption:(int)arg1;
 + (id)titleForTripleClickOption:(int)arg1;
 

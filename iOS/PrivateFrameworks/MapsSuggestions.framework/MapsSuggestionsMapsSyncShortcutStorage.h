@@ -10,7 +10,7 @@
 #import <MapsSuggestions/_TtP8MapsSync25MapsSyncDataQueryDelegate_-Protocol.h>
 #import <MapsSuggestions/_TtP8MapsSync30MapsSyncDataQueryMergeDelegate_-Protocol.h>
 
-@class NSArray, NSLock, NSString, _TtC8MapsSync25MapsSyncFavoriteItemQuery;
+@class NSArray, NSLock, NSString, _TtC8MapsSync25MapsSyncFavoriteItemQuery, geo_isolater;
 @protocol OS_dispatch_queue;
 
 @interface MapsSuggestionsMapsSyncShortcutStorage : NSObject <_TtP8MapsSync25MapsSyncDataQueryDelegate_, _TtP8MapsSync30MapsSyncDataQueryMergeDelegate_, MapsSuggestionsShortcutStorage>
@@ -20,6 +20,7 @@
     NSLock *_lock;
     _Bool _willNotify;
     _Bool _editing;
+    geo_isolater *_queryIsolator;
     _Bool _hasAttemptedLoadingContents;
     _TtC8MapsSync25MapsSyncFavoriteItemQuery *_query;
     NSObject<OS_dispatch_queue> *_callbackQueue;
@@ -28,7 +29,6 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property(nonatomic) _Bool hasAttemptedLoadingContents; // @synthesize hasAttemptedLoadingContents=_hasAttemptedLoadingContents;
-@property(retain, nonatomic) _TtC8MapsSync25MapsSyncFavoriteItemQuery *query; // @synthesize query=_query;
 - (id)mergeDuplicateObjectsWithQuery:(id)arg1 duplicates:(id)arg2;
 - (void)queryContentsDidChangeWithQuery:(id)arg1;
 - (_Bool)moveShortcutToFront:(id)arg1 handler:(CDUnknownBlockType)arg2;
@@ -38,6 +38,7 @@
 - (_Bool)moveShortcut:(id)arg1 toIndex:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (_Bool)removeShortcuts:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (_Bool)addOrUpdateShortcuts:(id)arg1 handler:(CDUnknownBlockType)arg2;
+@property(readonly, nonatomic) _TtC8MapsSync25MapsSyncFavoriteItemQuery *query; // @synthesize query=_query;
 - (_Bool)loadAllShortcutsWithHandler:(CDUnknownBlockType)arg1;
 - (void)setChangeHandler:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSString *uniqueName;

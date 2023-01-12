@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, PHPhotoLibrary;
+@class NSArray, NSDictionary, NSMutableArray, PHPhotoLibrary, PHUserFeedbackCalculator;
 
 @interface PXTimelineDataSource : NSObject
 {
@@ -17,19 +17,13 @@
     NSMutableArray *_memoryCandidates;
     NSMutableArray *_featuredPhotoCandidates;
     NSMutableArray *_filteredContent;
-    NSMutableDictionary *_keyAssetByFilteredContentLocalIdentifier;
-    NSMutableArray *_cropFilteredContent;
-    NSMutableDictionary *_keyAssetByCropFilteredContentLocalIdentifier;
-    NSMutableDictionary *_suggestedCropByCropFilteredContentLocalIdentifier;
+    PHUserFeedbackCalculator *_userFeedbackCalculator;
     struct CGSize _widgetSize;
 }
 
 + (_Bool)_momentIsLocationTypeAtWork:(id)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableDictionary *suggestedCropByCropFilteredContentLocalIdentifier; // @synthesize suggestedCropByCropFilteredContentLocalIdentifier=_suggestedCropByCropFilteredContentLocalIdentifier;
-@property(retain, nonatomic) NSMutableDictionary *keyAssetByCropFilteredContentLocalIdentifier; // @synthesize keyAssetByCropFilteredContentLocalIdentifier=_keyAssetByCropFilteredContentLocalIdentifier;
-@property(retain, nonatomic) NSMutableArray *cropFilteredContent; // @synthesize cropFilteredContent=_cropFilteredContent;
-@property(retain, nonatomic) NSMutableDictionary *keyAssetByFilteredContentLocalIdentifier; // @synthesize keyAssetByFilteredContentLocalIdentifier=_keyAssetByFilteredContentLocalIdentifier;
+@property(retain, nonatomic) PHUserFeedbackCalculator *userFeedbackCalculator; // @synthesize userFeedbackCalculator=_userFeedbackCalculator;
 @property(retain, nonatomic) NSMutableArray *filteredContent; // @synthesize filteredContent=_filteredContent;
 @property(retain, nonatomic) NSMutableArray *featuredPhotoCandidates; // @synthesize featuredPhotoCandidates=_featuredPhotoCandidates;
 @property(retain, nonatomic) NSMutableArray *memoryCandidates; // @synthesize memoryCandidates=_memoryCandidates;
@@ -39,14 +33,19 @@
 @property(readonly, nonatomic) NSDictionary *keyAssetByFeaturedPhotoLocalIdentifier; // @synthesize keyAssetByFeaturedPhotoLocalIdentifier=_keyAssetByFeaturedPhotoLocalIdentifier;
 @property(readonly, nonatomic) NSDictionary *keyAssetByMemoryLocalIdentifier; // @synthesize keyAssetByMemoryLocalIdentifier=_keyAssetByMemoryLocalIdentifier;
 - (id)_gatedCropSpecBySuggestionLocalIdentiferFromSuggestions:(id)arg1;
+- (_Bool)_isAcceptableUserFeedbackForAssetCollection:(id)arg1 personUUIDs:(id)arg2 asset:(id)arg3;
 - (id)_fetchMomentByAssetUUIDForAssets:(id)arg1;
 - (id)_gatedKeyAssetBySuggestionLocalIdentifierWithSuggestions:(id)arg1;
 - (id)_gatedKeyAssetByMemoryLocalIdentifierWithMemories:(id)arg1;
-- (id)_keyAssetFetchOptions;
+- (id)keyAssetFetchOptions;
+- (id)_fetchFallbackSuggestionsAndSetFeatured;
 - (id)_fetchFallbackMemoriesAndSetFeatured;
-- (id)_fetchCurrentlyFeaturedSuggestions;
-- (id)_fetchMemoriesWithFeaturedState:(unsigned long long)arg1;
+- (id)_fetchSuggestionsWithFeaturedState:(unsigned short)arg1 fetchLimit:(unsigned long long)arg2;
+- (id)_fetchSuggestionsWithFeaturedState:(unsigned short)arg1;
+- (id)_fetchMemoriesWithFeaturedState:(long long)arg1 fetchLimit:(unsigned long long)arg2;
+- (id)_fetchMemoriesWithFeaturedState:(long long)arg1;
 - (id)_defaultSortDescriptors;
+- (void)_initializeFeaturedCandidatesWithMemoryResult:(id)arg1 suggestionResult:(id)arg2;
 @property(readonly, nonatomic) NSArray *featuredPhotos;
 @property(readonly, nonatomic) NSArray *memories;
 - (id)initWithPhotoLibrary:(id)arg1 forWidgetSize:(struct CGSize)arg2;

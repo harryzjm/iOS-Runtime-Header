@@ -19,6 +19,7 @@
     long long _shuffleType;
     long long _repeatType;
     long long _queueEndAction;
+    NSString *_playActivityQueueGroupingID;
     NSString *_playActivityFeatureName;
     NSData *_playActivityRecommendationData;
     MPMusicPlayerQueueDescriptor *_queueDescriptor;
@@ -40,10 +41,12 @@
 @property(copy, nonatomic) MPMusicPlayerQueueDescriptor *queueDescriptor; // @synthesize queueDescriptor=_queueDescriptor;
 @property(copy, nonatomic) NSData *playActivityRecommendationData; // @synthesize playActivityRecommendationData=_playActivityRecommendationData;
 @property(copy, nonatomic) NSString *playActivityFeatureName; // @synthesize playActivityFeatureName=_playActivityFeatureName;
+@property(copy, nonatomic) NSString *playActivityQueueGroupingID; // @synthesize playActivityQueueGroupingID=_playActivityQueueGroupingID;
 @property(nonatomic) long long queueEndAction; // @synthesize queueEndAction=_queueEndAction;
 @property(nonatomic) long long repeatType; // @synthesize repeatType=_repeatType;
 @property(nonatomic) long long shuffleType; // @synthesize shuffleType=_shuffleType;
 @property(nonatomic) long long actionAfterQueueLoad; // @synthesize actionAfterQueueLoad=_actionAfterQueueLoad;
+- (_Bool)isCompatibleWithReplacementContext:(id)arg1 incompatibleReason:(id *)arg2;
 - (void)clearStartItem;
 @property(readonly, nonatomic, getter=isSupported) _Bool supported;
 @property(readonly, nonatomic) _Bool containsRestorableContent;

@@ -24,9 +24,11 @@
     double minimumDurationForEndpointer;
     double startWaitTime;
     id <CSEndpointAnalyzerImplDelegate> implDelegate;
+    NSString *mhId;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *mhId; // @synthesize mhId;
 @property(nonatomic) __weak id <CSEndpointAnalyzerImplDelegate> implDelegate; // @synthesize implDelegate;
 @property(nonatomic) double startWaitTime; // @synthesize startWaitTime;
 @property(nonatomic) double minimumDurationForEndpointer; // @synthesize minimumDurationForEndpointer;
@@ -39,7 +41,7 @@
 @property(nonatomic) double automaticEndpointingSuspensionEndTime; // @synthesize automaticEndpointingSuspensionEndTime;
 @property(nonatomic) unsigned long long activeChannel; // @synthesize activeChannel;
 - (double)trailingSilenceDurationAtEndpoint;
-- (void)resetForNewRequestWithSampleRate:(unsigned long long)arg1 recordContext:(id)arg2 recordSettings:(id)arg3;
+- (void)resetForNewRequestWithSampleRate:(unsigned long long)arg1 recordContext:(id)arg2;
 - (void)stopEndpointer;
 - (void)recordingStoppedForReason:(long long)arg1;
 - (void)processAudioSamplesAsynchronously:(id)arg1;

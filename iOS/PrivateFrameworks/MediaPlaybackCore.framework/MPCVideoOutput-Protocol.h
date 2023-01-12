@@ -6,17 +6,20 @@
 
 #import <MediaPlaybackCore/NSObject-Protocol.h>
 
-@class AVPlayerViewController, NSString, UIView, UIViewController;
+@class NSString, UIView, UIViewController;
 @protocol MPCVideoOutputDelegate;
 
 @protocol MPCVideoOutput <NSObject>
+@property(nonatomic) _Bool allowsPictureInPicturePlayback;
+@property(readonly, nonatomic, getter=isPictureInPictureActive) _Bool pictureInPictureActive;
 @property(readonly, nonatomic, getter=isReadyForDisplay) _Bool readyForDisplay;
 @property(readonly, nonatomic) struct CGRect videoBounds;
 @property(copy, nonatomic) NSString *videoGravity;
+@property(readonly, nonatomic) struct CGSize presentationSize;
 @property(nonatomic) _Bool showsPlaybackControls;
-@property(readonly, nonatomic) AVPlayerViewController *avPlayerViewController;
 @property(readonly, nonatomic) UIViewController *playerViewController;
 @property(nonatomic) __weak id <MPCVideoOutputDelegate> videoOutputDelegate;
+- (void)stopPictureInPicture;
 - (void)exitFullScreenWithCompletion:(void (^)(void))arg1;
 - (void)enterFullScreenWithCompletion:(void (^)(void))arg1;
 - (void)showFullScreenPresentationFromView:(UIView *)arg1 completion:(void (^)(void))arg2;

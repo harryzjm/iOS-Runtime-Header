@@ -12,6 +12,7 @@
 
 @protocol PLPhotosHighlightData <PLMomentRefreshable, PLHighlightItem>
 + (NSArray *)sortByTimeSortDescriptors;
+@property(readonly, nonatomic) id <PLMomentAssetData> firstAsset;
 @property(retain, nonatomic) NSSet *dayGroupSummaryAssets;
 @property(retain, nonatomic) NSSet *dayGroupExtendedAssets;
 @property(retain, nonatomic) NSSet *dayGroupAssets;
@@ -33,7 +34,6 @@
 @property(nonatomic) unsigned short kind;
 @property(nonatomic) unsigned short type;
 @property(nonatomic) double promotionScore;
-@property(nonatomic) _Bool isCurated;
 @property(nonatomic) int endTimeZoneOffset;
 @property(nonatomic) int startTimeZoneOffset;
 @property(readonly, retain, nonatomic) NSDate *localEndDate;

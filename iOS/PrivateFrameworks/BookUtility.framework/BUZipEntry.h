@@ -14,6 +14,7 @@
     unsigned short _nameLength;
     unsigned short _extraFieldsLength;
     unsigned int _CRC;
+    unsigned int _externalFileAttributes;
     NSString *_name;
     NSDate *_lastModificationDate;
     unsigned long long _size;
@@ -24,6 +25,7 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned int externalFileAttributes; // @synthesize externalFileAttributes=_externalFileAttributes;
 @property(nonatomic) unsigned long long fileHeaderLength; // @synthesize fileHeaderLength=_fileHeaderLength;
 @property(nonatomic) unsigned short extraFieldsLength; // @synthesize extraFieldsLength=_extraFieldsLength;
 @property(nonatomic) unsigned short nameLength; // @synthesize nameLength=_nameLength;
@@ -35,13 +37,18 @@
 @property(nonatomic) unsigned long long size; // @synthesize size=_size;
 @property(copy, nonatomic) NSDate *lastModificationDate; // @synthesize lastModificationDate=_lastModificationDate;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property(readonly, nonatomic, getter=isSymLink) _Bool symLink;
 - (id)description;
+- (void)_beginStreamingWriteForArchive:(id)arg1 forDestinationURL:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (_Bool)extractFromArchive:(id)arg1 destinationURL:(id)arg2 error:(id *)arg3;
+- (id)_extractFromArchiveData:(id)arg1 destinationURL:(id)arg2 allowEntriesOutsideRoot:(_Bool)arg3 error:(id *)arg4;
 - (id)extractFromArchive:(id)arg1;
 - (struct _xmlDoc *)xmlDocumentFromArchive:(id)arg1;
 - (id)plistFromArchive:(id)arg1;
 - (id)dataFromArchive:(id)arg1;
 - (id)stringFromArchive:(id)arg1;
 - (id)_dataFromArchive:(id)arg1 error:(id *)arg2;
+- (id)usableName;
 
 @end
 

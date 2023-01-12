@@ -14,8 +14,8 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (id)rects;
-@property(readonly, nonatomic) const struct ElementContext *elementContext;
-- (id)initWithElementContext:(const struct ElementContext *)arg1;
+@property(readonly, nonatomic) const void *elementContext;
+- (id)initWithElementContext:(const void *)arg1;
 
 @end
 

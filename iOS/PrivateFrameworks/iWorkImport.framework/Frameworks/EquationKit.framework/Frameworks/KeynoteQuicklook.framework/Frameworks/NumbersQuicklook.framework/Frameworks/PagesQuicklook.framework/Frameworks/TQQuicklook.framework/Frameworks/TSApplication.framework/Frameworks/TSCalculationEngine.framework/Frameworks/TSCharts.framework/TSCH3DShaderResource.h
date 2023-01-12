@@ -8,16 +8,16 @@
 
 @interface TSCH3DShaderResource
 {
-    TSCH3DShaderProgram *mProgram;
+    TSCH3DShaderProgram *_program;
 }
 
 + (pair_10e2d813)stringsFromBuffer:(id)arg1;
+- (void).cxx_destruct;
 - (id)get;
 @property(readonly, nonatomic) TSCH3DShaderProgram *program;
 - (void)appendShaderResourceString:(IteratorRange_617e5e79)arg1 toDataBuffer:(id)arg2;
 - (IteratorRange_617e5e79)resourceStringOfString:(id)arg1;
 @property(readonly, nonatomic) TSCH3DVersion *version;
-- (void)dealloc;
 - (id)initWithCaching:(int)arg1 version:(id)arg2;
 - (id)initWithCaching:(int)arg1;
 

@@ -12,12 +12,15 @@
 {
 }
 
+- (id)initWithCoder:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 displayString:(id)arg2 pronunciationHint:(id)arg3;
 
 // Remaining properties
-@property(copy, nonatomic) NSNumber *isDolbyAtmos; // @dynamic isDolbyAtmos;
-@property(copy, nonatomic) NSNumber *isDolbyVision; // @dynamic isDolbyVision;
-@property(copy, nonatomic) NSNumber *isFree; // @dynamic isFree;
-@property(copy, nonatomic) NSNumber *isHdr; // @dynamic isHdr;
-@property(copy, nonatomic) NSNumber *isUhd; // @dynamic isUhd;
+@property(nonatomic, retain) NSNumber *isDolbyAtmos; // @dynamic isDolbyAtmos;
+@property(nonatomic, retain) NSNumber *isDolbyVision; // @dynamic isDolbyVision;
+@property(nonatomic, retain) NSNumber *isFree; // @dynamic isFree;
+@property(nonatomic, retain) NSNumber *isHdr; // @dynamic isHdr;
+@property(nonatomic, retain) NSNumber *isUhd; // @dynamic isUhd;
+
 @end
 

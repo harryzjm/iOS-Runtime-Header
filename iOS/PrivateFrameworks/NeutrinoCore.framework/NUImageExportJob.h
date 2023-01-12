@@ -14,6 +14,8 @@
 - (void).cxx_destruct;
 - (void)cleanUp;
 - (_Bool)render:(out id *)arg1;
+- (struct CGImage *)copyCGImageWithIOSurface:(id)arg1 fromRect:(struct CGRect)arg2 colorSpace:(id)arg3 error:(out id *)arg4;
+- (id)getOriginalAuxImagesFromNodeGraph:(out id *)arg1;
 - (_Bool)wantsOutputImage;
 - (_Bool)wantsOutputGeometry;
 - (id)result;

@@ -26,6 +26,7 @@
 - (void).cxx_destruct;
 @property(readonly) UIView *fromView; // @synthesize fromView=_fromView;
 @property(nonatomic) __weak id delegate; // @synthesize delegate=_delegate;
+- (_Bool)_prefersFocusContainment;
 @property(nonatomic) _Bool usesRoundedCorners;
 - (void)_navigationTransitionDidStop;
 - (void)_cleanupTransition;

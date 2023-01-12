@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MediaPlaybackCore/MPCPlaybackEngineEventPayloadValue-Protocol.h>
+#import <MediaPlaybackCore/NSObject-Protocol.h>
 
 @protocol MPCPlaybackEngineEventPayloadJSONValue;
 
-@protocol MPCPlaybackEngineEventPayloadValueJSONConvertible <MPCPlaybackEngineEventPayloadValue>
+@protocol MPCPlaybackEngineEventPayloadValueJSONConvertible <NSObject>
 + (id)payloadValueFromJSONValue:(id <MPCPlaybackEngineEventPayloadJSONValue>)arg1;
 - (id <MPCPlaybackEngineEventPayloadJSONValue>)mpc_jsonValue;
 @end

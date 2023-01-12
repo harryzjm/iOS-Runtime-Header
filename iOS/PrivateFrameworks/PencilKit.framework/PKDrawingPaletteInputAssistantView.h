@@ -6,13 +6,13 @@
 
 #import <UIKit/UIView.h>
 
-#import <PencilKit/PKEdgeLocatable-Protocol.h>
 #import <PencilKit/PKPaletteButtonIntrinsicContentSizeObserver-Protocol.h>
+#import <PencilKit/PKPaletteEdgeLocating-Protocol.h>
 #import <PencilKit/PKPaletteViewSizeScaling-Protocol.h>
 
-@class NSArray, NSHashTable, NSString, PKPaletteButton, PKPaletteButtonGroupView, UIStackView;
+@class NSArray, NSHashTable, NSString, PKPaletteButton, PKPaletteButtonGroupView, PKPaletteKeyboardButton, UIStackView;
 
-@interface PKDrawingPaletteInputAssistantView : UIView <PKPaletteButtonIntrinsicContentSizeObserver, PKEdgeLocatable, PKPaletteViewSizeScaling>
+@interface PKDrawingPaletteInputAssistantView : UIView <PKPaletteButtonIntrinsicContentSizeObserver, PKPaletteEdgeLocating, PKPaletteViewSizeScaling>
 {
     _Bool _useCompactLayout;
     _Bool _shouldShowKeyboardButton;
@@ -21,7 +21,7 @@
     unsigned long long _edgeLocation;
     double _scalingFactor;
     NSArray *_buttons;
-    PKPaletteButton *_keyboardButton;
+    PKPaletteKeyboardButton *_keyboardButton;
     PKPaletteButton *_returnKeyButton;
     UIStackView *_contentStackView;
     PKPaletteButtonGroupView *_topOrTrailingGroupView;
@@ -35,7 +35,7 @@
 @property(retain, nonatomic) PKPaletteButtonGroupView *topOrTrailingGroupView; // @synthesize topOrTrailingGroupView=_topOrTrailingGroupView;
 @property(retain, nonatomic) UIStackView *contentStackView; // @synthesize contentStackView=_contentStackView;
 @property(retain, nonatomic) PKPaletteButton *returnKeyButton; // @synthesize returnKeyButton=_returnKeyButton;
-@property(retain, nonatomic) PKPaletteButton *keyboardButton; // @synthesize keyboardButton=_keyboardButton;
+@property(retain, nonatomic) PKPaletteKeyboardButton *keyboardButton; // @synthesize keyboardButton=_keyboardButton;
 @property(nonatomic) _Bool enableKeyboardButtons; // @synthesize enableKeyboardButtons=_enableKeyboardButtons;
 @property(nonatomic) _Bool shouldShowReturnKeyButton; // @synthesize shouldShowReturnKeyButton=_shouldShowReturnKeyButton;
 @property(nonatomic) _Bool shouldShowKeyboardButton; // @synthesize shouldShowKeyboardButton=_shouldShowKeyboardButton;

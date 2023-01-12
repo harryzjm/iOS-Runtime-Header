@@ -26,6 +26,9 @@
 @property(copy, nonatomic) _UIStackedImageConfiguration *config; // @synthesize config=_config;
 @property(retain, nonatomic) NSObject<UINamedLayerStack> *constructedStackImage; // @synthesize constructedStackImage=_constructedStackImage;
 @property(retain, nonatomic) UIImage *stackImage; // @synthesize stackImage=_stackImage;
+- (void)_updateFocusedFrameGuideConstraintsIfApplicable;
+- (id)_focusedFrameGuideCreateIfNecessary:(_Bool)arg1;
+- (id)_focusedFrameGuide;
 - (void)overlayView:(id)arg1 didChangeClipsToBounds:(_Bool)arg2;
 - (id)_preferredConfigurationForFocusAnimation:(long long)arg1 inContext:(id)arg2;
 - (_Bool)_applyKeyPathsAndRelativeValues:(id)arg1 forMotionEffect:(id)arg2;
@@ -39,6 +42,8 @@
 @property(nonatomic, getter=isStackFocused) _Bool stackFocused;
 - (void)_updateContainerLayerImages;
 - (id)_imageContainerLayer;
+- (void)setBounds:(struct CGRect)arg1;
+- (void)setFrame:(struct CGRect)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 

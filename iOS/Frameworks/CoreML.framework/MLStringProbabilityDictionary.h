@@ -6,13 +6,13 @@
 
 @interface MLStringProbabilityDictionary
 {
-    map_f36cdd6d _mapStrLabelToIndex;
+    map_3cdfdc0a _mapStrLabelToIndex;
 }
 
 + (id)probabilityDictionaryForStringLabels:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(nonatomic) map_f36cdd6d mapStrLabelToIndex; // @synthesize mapStrLabelToIndex=_mapStrLabelToIndex;
+@property(nonatomic) map_3cdfdc0a mapStrLabelToIndex; // @synthesize mapStrLabelToIndex=_mapStrLabelToIndex;
 - (id)copy;
 - (id)keyEnumerator;
 - (void)removeObjectForKey:(id)arg1;

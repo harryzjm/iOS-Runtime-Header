@@ -9,7 +9,7 @@
 #import <SPOwner/SPBLEStateMonitorDelegate-Protocol.h>
 #import <SPOwner/SPMonitorsWrapperDelegate-Protocol.h>
 
-@class FMXPCServiceDescription, FMXPCSession, FMXPCTimer, NSString, SPBLEStateMonitor, SPMonitorsWrapper;
+@class FMXPCServiceDescription, FMXPCSession, FMXPCTimer, NSData, NSDate, NSDictionary, NSString, NSUUID, SPBLEStateMonitor, SPMonitorsWrapper;
 @protocol OS_dispatch_queue, OS_dispatch_source, SPBeaconManagerXPCProtocol;
 
 @interface SPBeaconManager : NSObject <SPMonitorsWrapperDelegate, SPBLEStateMonitorDelegate>
@@ -18,13 +18,11 @@
     _Bool _forceBeaconingOff;
     unsigned char _currentStatus;
     _Bool _initialStateChangeSent;
-    CDUnknownBlockType _stateChangedBlock;
+    _Bool _beaconFromNVRAM;
+    _Bool _alreadyPoisonedLocalBeacon;
     CDUnknownBlockType _stateChangedBlockWithCompletion;
-    CDUnknownBlockType _statusChangedBlock;
     CDUnknownBlockType _statusChangedBlockWithCompletion;
-    CDUnknownBlockType _beaconingKeyChangedBlock;
     CDUnknownBlockType _beaconingKeyChangedBlockWithCompletion;
-    CDUnknownBlockType _nearbyTokensChangedBlock;
     CDUnknownBlockType _nearbyTokensChangedBlockWithCompletion;
     FMXPCServiceDescription *_serviceDescription;
     FMXPCSession *_session;
@@ -36,11 +34,25 @@
     SPMonitorsWrapper *_monitorWrapper;
     SPBLEStateMonitor *_bleMonitor;
     long long _cachedLocalBeaconManagerState;
+    NSUUID *_selfBeaconingUUID;
+    unsigned long long _selfBeaconingIndex;
+    NSDate *_selfBeaconingPairDate;
+    NSData *_selfBeaconingDerivedSharedSecretKey;
+    NSData *_selfBeaconingPublicKey;
+    NSDictionary *_selfBeaconingConfigurations;
 }
 
 + (id)scheduleDateInterval:(id)arg1;
 + (void)afterFirstUnlock:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool alreadyPoisonedLocalBeacon; // @synthesize alreadyPoisonedLocalBeacon=_alreadyPoisonedLocalBeacon;
+@property(copy, nonatomic) NSDictionary *selfBeaconingConfigurations; // @synthesize selfBeaconingConfigurations=_selfBeaconingConfigurations;
+@property(copy, nonatomic) NSData *selfBeaconingPublicKey; // @synthesize selfBeaconingPublicKey=_selfBeaconingPublicKey;
+@property(copy, nonatomic) NSData *selfBeaconingDerivedSharedSecretKey; // @synthesize selfBeaconingDerivedSharedSecretKey=_selfBeaconingDerivedSharedSecretKey;
+@property(copy, nonatomic) NSDate *selfBeaconingPairDate; // @synthesize selfBeaconingPairDate=_selfBeaconingPairDate;
+@property(nonatomic) unsigned long long selfBeaconingIndex; // @synthesize selfBeaconingIndex=_selfBeaconingIndex;
+@property(copy, nonatomic) NSUUID *selfBeaconingUUID; // @synthesize selfBeaconingUUID=_selfBeaconingUUID;
+@property(nonatomic) _Bool beaconFromNVRAM; // @synthesize beaconFromNVRAM=_beaconFromNVRAM;
 @property(nonatomic) _Bool initialStateChangeSent; // @synthesize initialStateChangeSent=_initialStateChangeSent;
 @property(nonatomic) long long cachedLocalBeaconManagerState; // @synthesize cachedLocalBeaconManagerState=_cachedLocalBeaconManagerState;
 @property(nonatomic) unsigned char currentStatus; // @synthesize currentStatus=_currentStatus;
@@ -56,22 +68,45 @@
 @property(retain, nonatomic) FMXPCSession *session; // @synthesize session=_session;
 @property(retain, nonatomic) FMXPCServiceDescription *serviceDescription; // @synthesize serviceDescription=_serviceDescription;
 @property(copy, nonatomic) CDUnknownBlockType nearbyTokensChangedBlockWithCompletion; // @synthesize nearbyTokensChangedBlockWithCompletion=_nearbyTokensChangedBlockWithCompletion;
-@property(copy, nonatomic) CDUnknownBlockType nearbyTokensChangedBlock; // @synthesize nearbyTokensChangedBlock=_nearbyTokensChangedBlock;
 @property(copy, nonatomic) CDUnknownBlockType beaconingKeyChangedBlockWithCompletion; // @synthesize beaconingKeyChangedBlockWithCompletion=_beaconingKeyChangedBlockWithCompletion;
-@property(copy, nonatomic) CDUnknownBlockType beaconingKeyChangedBlock; // @synthesize beaconingKeyChangedBlock=_beaconingKeyChangedBlock;
 @property(copy, nonatomic) CDUnknownBlockType statusChangedBlockWithCompletion; // @synthesize statusChangedBlockWithCompletion=_statusChangedBlockWithCompletion;
-@property(copy, nonatomic) CDUnknownBlockType statusChangedBlock; // @synthesize statusChangedBlock=_statusChangedBlock;
 @property(copy, nonatomic) CDUnknownBlockType stateChangedBlockWithCompletion; // @synthesize stateChangedBlockWithCompletion=_stateChangedBlockWithCompletion;
-@property(copy, nonatomic) CDUnknownBlockType stateChangedBlock; // @synthesize stateChangedBlock=_stateChangedBlock;
 - (void)bleMonitor:(id)arg1 didChangeState:(unsigned long long)arg2;
 - (void)stateDidChange:(_Bool)arg1 powerState:(unsigned long long)arg2;
 - (_Bool)isBeaconing;
+- (void)setSuppressLPEMBeaconing:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setUserHasAcknowledgedFindMy:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)userHasAcknowledgeFindMyWithCompletion:(CDUnknownBlockType)arg1;
+- (void)isLPEMModeSupported:(CDUnknownBlockType)arg1;
+- (void)refreshBeaconingState;
+- (void)repairDataStore:(CDUnknownBlockType)arg1;
+- (void)fetchKeyMapFileDescriptorForBeacon:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)createKeyReconcilerWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchFirmwareVersionForBeacon:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchUserStatsForBeacon:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)connectedToBeacon:(id)arg1 withIndex:(unsigned long long)arg2;
+- (void)connectedToBeacon:(id)arg1 withIndex:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)connectionTokensForBeaconUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setCurrentWildKeyIndex:(long long)arg1 forBeacon:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setWildKeyBase:(unsigned long long)arg1 interval:(unsigned long long)arg2 fallback:(unsigned long long)arg3 forBeacon:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)setKeyRollInterval:(unsigned long long)arg1 forBeacon:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setAlignmentUncertainty:(double)arg1 atIndex:(unsigned long long)arg2 date:(id)arg3 forBeacon:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)allBeaconingKeysForUUID:(id)arg1 dateInterval:(id)arg2 forceGenerate:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)connectionTokensForBeaconUUID:(id)arg1 criteria:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)connectionTokensForBeaconUUID:(id)arg1 dateInterval:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)updateBeacon:(id)arg1 updates:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setRole:(long long)arg1 forBeacon:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)roleCategoriesWithCompletion:(CDUnknownBlockType)arg1;
+- (void)allDuriansWithCompletion:(CDUnknownBlockType)arg1;
+- (void)postedLocalNotifyWhenFoundNotificationForUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)beaconingKeysForUUID:(id)arg1 dateInterval:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)unacceptedBeaconsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)allBeaconsOfType:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)allBeaconsOfType:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)allBeaconsOfTypes:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)allBeaconsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)notificationBeaconForSubscriptionId:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)beaconForUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)updateObfuscatedIdentifierWithCompletion:(CDUnknownBlockType)arg1;
 - (void)notifyNearbyTokensChangedBlockWithCompletion:(CDUnknownBlockType)arg1;
 - (void)notifyBeaconingKeysChangedBlockWithCompletion:(CDUnknownBlockType)arg1;
 - (void)periodicActionWithCompletion:(CDUnknownBlockType)arg1;
@@ -87,9 +122,16 @@
 - (void)beaconsChanged:(id)arg1;
 - (void)beaconingStateChangedNotification:(id)arg1;
 - (void)start;
+- (void)updateStateFromNVRAM;
+- (void)localActivationLockInfoChanged;
+- (id)rawNVRAMData;
 - (id)remoteInterface;
 - (void)dealloc;
 - (id)init;
+- (id)generateOfflineAdvertisingKeysForReason:(long long)arg1 now:(id)arg2;
+- (void)generateBeaconingKeysOfType:(long long)arg1 now:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (id)dateIntervalForIndex:(unsigned long long)arg1 baseDate:(id)arg2;
+- (unsigned long long)bucketWithBaseTime:(id)arg1 date:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

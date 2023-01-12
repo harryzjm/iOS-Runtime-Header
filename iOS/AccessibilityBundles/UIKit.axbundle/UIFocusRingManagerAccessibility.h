@@ -14,6 +14,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_focusRingPathForItem:(id)arg1 inView:(id)arg2;
+- (_Bool)_focusItemWantsFocusRing:(id)arg1 forClient:(id)arg2;
 
 @end
 

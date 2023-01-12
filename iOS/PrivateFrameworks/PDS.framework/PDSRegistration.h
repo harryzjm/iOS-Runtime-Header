@@ -28,6 +28,7 @@
 - (_Bool)isEqualToRegistration:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)initWithTopic:(id)arg1 pushEnvironment:(BOOL)arg2;
 - (id)initWithTopic:(id)arg1 qualifier:(id)arg2 pushEnvironment:(BOOL)arg3;
 
 @end

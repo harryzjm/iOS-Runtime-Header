@@ -15,7 +15,6 @@
 - (struct _NSRange)accessibilityRowRange;
 - (_Bool)_accessibilityRetainsFocusOnScreenChange;
 - (unsigned long long)accessibilityTraits;
-- (_Bool)_axIsSelected:(id)arg1;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (id)accessibilityValue;

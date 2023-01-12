@@ -6,11 +6,12 @@
 
 #import <CoreTelephony/NSObject-Protocol.h>
 
-@class CTServiceDescriptor, CTXPCServiceSubscriptionContext, NSNumber, NSString;
+@class CTServiceDescriptor, CTSimDeactivationInfo, CTXPCServiceSubscriptionContext, NSNumber, NSString;
 
 @protocol CoreTelephonyClientSubscriberDelegateInternal <NSObject>
 
 @optional
+- (void)didDetectSimDeactivation:(CTXPCServiceSubscriptionContext *)arg1 info:(CTSimDeactivationInfo *)arg2;
 - (void)prlVersionDidChange:(CTXPCServiceSubscriptionContext *)arg1 version:(NSNumber *)arg2;
 - (void)userDefaultVoiceSlotDidChange:(CTXPCServiceSubscriptionContext *)arg1;
 - (void)subscriberCountryCodeDidChange:(CTXPCServiceSubscriptionContext *)arg1;

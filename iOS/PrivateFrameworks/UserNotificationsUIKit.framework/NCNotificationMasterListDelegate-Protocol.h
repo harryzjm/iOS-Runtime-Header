@@ -9,13 +9,14 @@
 @class NCNotificationMasterList, NCNotificationRequest, NSArray, UIScrollView;
 
 @protocol NCNotificationMasterListDelegate <NCNotificationListComponentDelegate>
+- (void)notificationMasterListRequestsPresentingNotificationDigestOnboardingPlatter:(NCNotificationMasterList *)arg1;
 - (_Bool)notificationMasterList:(NCNotificationMasterList *)arg1 shouldFilterNotificationRequest:(NCNotificationRequest *)arg2;
-- (_Bool)notificationMasterList:(NCNotificationMasterList *)arg1 shouldDelayDeliveryOfNotificationRequest:(NCNotificationRequest *)arg2;
 - (void)notificationMasterList:(NCNotificationMasterList *)arg1 scrollViewWillEndDragging:(UIScrollView *)arg2 withVelocity:(struct CGPoint)arg3 targetContentOffset:(inout struct CGPoint *)arg4;
 - (void)notificationMasterList:(NCNotificationMasterList *)arg1 scrollViewDidScroll:(UIScrollView *)arg2;
 - (void)notificationMasterList:(NCNotificationMasterList *)arg1 scrollViewWillBeginDragging:(UIScrollView *)arg2;
 - (void)notificationMasterList:(NCNotificationMasterList *)arg1 requestsClearingFromIncomingSectionNotificationRequests:(NSArray *)arg2;
 - (void)notificationMasterListDidScrollToRevealNotificationHistory:(NCNotificationMasterList *)arg1;
 - (_Bool)notificationMasterListShouldAllowNotificationHistoryReveal:(NCNotificationMasterList *)arg1;
+- (Class)notificationMasterListNotificationViewControllerClass:(NCNotificationMasterList *)arg1;
 @end
 

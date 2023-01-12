@@ -14,12 +14,10 @@
     CDUnknownBlockType _transactionConfigurator;
     CDUnknownBlockType _completionBlock;
     _Bool _shouldPreventEmergencyNotificationBannerDismissal;
-    _Bool _shouldPreventAutoPiP;
     id <SBBannerUnfurlSourceContextProviding> _bannerUnfurlSourceContextProvider;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool shouldPreventAutoPiP; // @synthesize shouldPreventAutoPiP=_shouldPreventAutoPiP;
 @property(copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property(copy, nonatomic) CDUnknownBlockType transactionConfigurator; // @synthesize transactionConfigurator=_transactionConfigurator;
 @property(copy, nonatomic) CDUnknownBlockType transactionProvider; // @synthesize transactionProvider=_transactionProvider;

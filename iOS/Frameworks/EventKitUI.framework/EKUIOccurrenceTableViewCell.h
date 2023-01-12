@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ColorBarView, ColoredBackgroundView, EKCalendarDate, EKUIOccurrenceTableViewCellLabel, NSArray, NSDate, NSDictionary, NSLayoutConstraint, NSMutableArray, NSObject, NSString, UIColor, UIImageView, UIVisualEffect;
+@class ColorBarView, ColoredBackgroundView, EKCalendarDate, EKUIOccurrenceTableViewCellLabel, NSArray, NSAttributedString, NSDate, NSDictionary, NSLayoutConstraint, NSMutableArray, NSObject, NSString, UIColor, UIImageView, UIVisualEffect;
 @protocol OS_dispatch_source;
 
 @interface EKUIOccurrenceTableViewCell
@@ -17,7 +17,6 @@
     EKUIOccurrenceTableViewCellLabel *_bottomTimeLabel;
     EKUIOccurrenceTableViewCellLabel *_countdownLabel;
     ColorBarView *_colorBarView;
-    ColorBarView *_travelTimeColorBarView;
     ColoredBackgroundView *_coloredBackgroundView;
     UIImageView *_angleStripeBackgroundView;
     UIImageView *_accessoryImageView;
@@ -38,7 +37,6 @@
     NSLayoutConstraint *_primaryTextBaseline_to_secondaryTextBaseline_Constraint;
     NSLayoutConstraint *_travelTextBaseline_to_primaryTextBaseLine_Constraint;
     NSLayoutConstraint *_horizontalDividerBarBottom_to_colorBarTop_Constraint;
-    NSLayoutConstraint *_contentTop_to_colorBarTop_Constraint;
     NSLayoutConstraint *_timeTextWidthConstraint;
     NSLayoutConstraint *_timeTextHorizontalPositioningConstraint;
     NSLayoutConstraint *_colorBarHorizontalPositioningConstraint;
@@ -48,7 +46,7 @@
     NSDate *_eventStartDateIncludingTravelTime;
     EKCalendarDate *_eventEndDate;
     NSString *_eventTitle;
-    NSString *_eventLocation;
+    NSAttributedString *_eventLocation;
     NSString *_topTimeString;
     NSString *_bottomTimeString;
     NSString *_countdownLabelString;
@@ -144,7 +142,7 @@
 - (void)_updateNumberOfLinesForLabel:(id)arg1 isRightAlignedInStandardLayout:(_Bool)arg2;
 - (void)_updateColoredBackgroundViewColor;
 - (void)updateAngleBackgroundColor;
-- (void)_updateColorBarColor;
+- (void)_updateColorBarView;
 - (id)_setUpLargeTextConstraints;
 - (id)_setUpStandardConstraints;
 - (void)_setUpConstraints;
@@ -185,7 +183,6 @@
 - (id)primaryStrikethroughTextColor;
 - (id)topTimeColor;
 - (id)primaryTextColor;
-- (id)prefixTextColor;
 - (id)invitationPrimaryTextColor;
 - (id)coloredBackgroundViewFilter;
 - (id)coloredBackgroundViewFilterColor;

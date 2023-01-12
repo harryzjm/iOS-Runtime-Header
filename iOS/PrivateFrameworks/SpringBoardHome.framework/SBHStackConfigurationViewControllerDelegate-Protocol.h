@@ -6,14 +6,17 @@
 
 #import <SpringBoardHome/NSObject-Protocol.h>
 
-@class SBHStackConfiguration, SBHStackConfigurationViewController, SBHWidgetConfigurationInteraction;
-@protocol SBHIconViewConfigurationInteraction, SBLeafIconDataSource;
+@class NSString, SBHStackConfiguration, SBHStackConfigurationViewController, SBIcon, SBIconView, SBWidgetIcon, UIView;
+@protocol SBIconDragPreview, UIDropSession;
 
 @protocol SBHStackConfigurationViewControllerDelegate <NSObject>
-- (void)stackConfigurationViewControllerViewDidDisappear:(SBHStackConfigurationViewController *)arg1;
-- (void)stackConfigurationViewControllerWantsToDismiss:(SBHStackConfigurationViewController *)arg1;
+- (UIView<SBIconDragPreview> *)stackConfigurationViewController:(SBHStackConfigurationViewController *)arg1 dragPreviewForIconView:(SBIconView *)arg2;
+- (void)stackConfigurationViewControllerRequestsDismissal:(SBHStackConfigurationViewController *)arg1;
+- (void)stackConfigurationViewControllerWillAnimateWidgetInsertion:(SBHStackConfigurationViewController *)arg1;
+- (void)stackConfigurationViewControllerRequestsPresentAddWidgetSheet:(SBHStackConfigurationViewController *)arg1;
+- (void)stackConfigurationViewController:(SBHStackConfigurationViewController *)arg1 didRemoveSuggestedWidgetIcon:(SBWidgetIcon *)arg2;
+- (void)stackConfigurationViewController:(SBHStackConfigurationViewController *)arg1 isConsumingDropSession:(id <UIDropSession>)arg2;
+- (SBIcon *)stackConfigurationViewController:(SBHStackConfigurationViewController *)arg1 draggedIconForIdentifier:(NSString *)arg2;
 - (void)stackConfigurationViewController:(SBHStackConfigurationViewController *)arg1 didCommitStackConfiguration:(SBHStackConfiguration *)arg2;
-- (void)stackConfigurationViewController:(SBHStackConfigurationViewController *)arg1 didCommitWidgetConfigurationInteraction:(id <SBHIconViewConfigurationInteraction>)arg2;
-- (SBHWidgetConfigurationInteraction *)stackConfigurationViewController:(SBHStackConfigurationViewController *)arg1 widgetConfigurationInteractionForDataSource:(id <SBLeafIconDataSource>)arg2;
 @end
 

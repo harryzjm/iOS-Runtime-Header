@@ -52,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isFreeProfileValidated;
 - (_Bool)isUPPValidated;
 - (_Bool)isProfileValidated;
+- (id)signerIdentity;
 - (id)signerOrganization;
 - (id)localizedUsageDescriptionForFeature:(unsigned long long)arg1 preferredLocalizations:(id)arg2;
 - (id)localizedUsageDescriptionForFeature:(unsigned long long)arg1;
@@ -62,12 +63,14 @@ __attribute__((visibility("hidden")))
 - (id)dataContainerURL;
 - (id)entitlements;
 - (id)serviceRecords;
+- (_Bool)wasBuiltWithThreadSanitizer;
 - (unsigned int)platform;
 - (id)SDKVersion;
 - (id)machOUUIDs;
 - (BOOL)developerType;
 - (id)executableURL;
 - (id)URL;
+- (id)teamIdentifier;
 - (id)applicationIdentifier;
 - (id)bundleIdentifier;
 @property(readonly, nonatomic) LSBundleRecord *_realRecord; // @synthesize _realRecord;

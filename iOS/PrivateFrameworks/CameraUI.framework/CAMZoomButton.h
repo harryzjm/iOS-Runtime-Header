@@ -6,7 +6,7 @@
 
 #import <UIKit/UIControl.h>
 
-@class CAMZoomFactorLabel, NSString, UIImageView, UIView;
+@class CAMZoomFactorLabel, UIImageView, UIView;
 @protocol CAMZoomButtonDelegate;
 
 @interface CAMZoomButton : UIControl
@@ -20,7 +20,6 @@
     long long _zoomSymbol;
     long long _accessoryState;
     long long _orientation;
-    NSString *_contentSizeCategory;
     UIView *__contentContainerView;
     CAMZoomFactorLabel *__zoomFactorLabel;
     UIImageView *__zoomSymbolView;
@@ -37,6 +36,7 @@
 + (_Bool)_shouldUseLargeButtonSizeForContentSize:(id)arg1;
 + (id)textForZoomFactor:(double)arg1 showZoomFactorSymbol:(_Bool)arg2 useLeadingZero:(_Bool)arg3;
 + (id)textForZoomFactor:(double)arg1 showZoomFactorSymbol:(_Bool)arg2;
++ (id)zoomFactorFormatter;
 + (_Bool)_useOutline;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIImageView *_accessoryImageView; // @synthesize _accessoryImageView=__accessoryImageView;
@@ -46,7 +46,6 @@
 @property(readonly, nonatomic) UIImageView *_zoomSymbolView; // @synthesize _zoomSymbolView=__zoomSymbolView;
 @property(readonly, nonatomic) CAMZoomFactorLabel *_zoomFactorLabel; // @synthesize _zoomFactorLabel=__zoomFactorLabel;
 @property(readonly, nonatomic) UIView *_contentContainerView; // @synthesize _contentContainerView=__contentContainerView;
-@property(copy, nonatomic) NSString *contentSizeCategory; // @synthesize contentSizeCategory=_contentSizeCategory;
 @property(nonatomic) _Bool abbreviateAndEnlargeText; // @synthesize abbreviateAndEnlargeText=_abbreviateAndEnlargeText;
 @property(nonatomic, setter=_setHighlightingTransform:) struct CGAffineTransform highlightingTransform; // @synthesize highlightingTransform=_highlightingTransform;
 @property(nonatomic, getter=isOverPlatter) _Bool overPlatter; // @synthesize overPlatter=_overPlatter;
@@ -73,11 +72,13 @@
 - (void)setHighlighted:(_Bool)arg1;
 - (void)tintColorDidChange;
 - (void)layoutSubviews;
+- (void)traitCollectionDidChange:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (void)setShouldHideBackground:(_Bool)arg1 animationDuration:(double)arg2;
 - (void)_updateAccessoryBackgroundView;
 - (void)_updateAccessoryAlphas;
+@property(readonly, nonatomic) struct CGRect accessoryFrame;
 - (void)setAccessoryState:(long long)arg1 animated:(_Bool)arg2;
 - (id)_imageForZoomSymbol:(long long)arg1;
 - (void)_createZoomSymbolViewIfNecessary;

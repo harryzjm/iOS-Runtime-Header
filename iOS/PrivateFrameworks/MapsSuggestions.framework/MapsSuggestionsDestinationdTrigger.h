@@ -8,7 +8,7 @@
 
 @interface MapsSuggestionsDestinationdTrigger
 {
-    struct unique_ptr<MSg::NotificationReceiver, std::__1::default_delete<MSg::NotificationReceiver>> _notificationReceiver;
+    struct unique_ptr<MSg::NotificationReceiver, std::default_delete<MSg::NotificationReceiver>> _notificationReceiver;
     NSSet *_ignoredPeerIdentifiers;
 }
 
@@ -16,8 +16,8 @@
 - (void).cxx_destruct;
 - (void)didRemoveLastObserver;
 - (void)didAddFirstObserver;
-- (id)initWithName:(id)arg1 queue:(id)arg2;
 - (void)addIgnoredClientProcess:(id)arg1;
+- (id)initWithName:(id)arg1;
 - (id)init;
 
 @end

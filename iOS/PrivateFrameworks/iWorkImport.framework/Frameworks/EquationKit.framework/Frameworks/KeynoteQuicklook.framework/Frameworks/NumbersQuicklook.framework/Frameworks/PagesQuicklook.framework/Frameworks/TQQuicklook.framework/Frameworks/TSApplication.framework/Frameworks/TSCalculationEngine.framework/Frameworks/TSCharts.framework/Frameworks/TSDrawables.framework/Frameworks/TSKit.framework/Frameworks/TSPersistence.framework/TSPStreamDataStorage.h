@@ -17,10 +17,11 @@
 
 - (_Bool)isInPackage:(id)arg1;
 @property(readonly, nonatomic) _Bool readOnly;
+@property(readonly, nonatomic) unsigned long long reservedLength;
 @property(readonly, nonatomic) unsigned long long encodedLength;
 @property(readonly, nonatomic) unsigned long long length;
-- (id)writeData:(id)arg1 toPackageWriter:(id)arg2 infoMessage:(struct DataInfo *)arg3 preferredFilename:(id)arg4 error:(id *)arg5;
-- (_Bool)archiveInfoMessage:(struct DataInfo *)arg1 archiver:(id)arg2 packageWriter:(id)arg3;
+- (id)writeData:(id)arg1 toPackageWriter:(id)arg2 infoMessage:(void *)arg3 preferredFilename:(id)arg4 shouldRemoveData:(_Bool)arg5 error:(id *)arg6;
+- (_Bool)archiveInfoMessage:(void *)arg1 archiver:(id)arg2 packageWriter:(id)arg3;
 - (id)filenameForPreferredFilename:(id)arg1;
 @property(readonly, nonatomic) _Bool isMissingData;
 @property(readonly, nonatomic) _Bool isReadable;
@@ -32,19 +33,27 @@
 - (id)NSDataWithOptions:(unsigned long long)arg1;
 - (struct CGImageSource *)newCGImageSource;
 - (struct CGDataProvider *)newCGDataProvider;
+- (id)newDataCopyInputStreamProviderWithDocumentURL:(id)arg1 encryptionInfo:(id)arg2 error:(id *)arg3;
+- (id)newDataCopyReadChannelProviderWithDocumentURL:(id)arg1 encryptionInfo:(id)arg2 error:(id *)arg3;
+- (id)newDataCopyURLProviderWithDocumentURL:(id)arg1 encryptionInfo:(id)arg2 error:(id *)arg3;
 - (void)performIOChannelReadWithAccessor:(CDUnknownBlockType)arg1;
 
 // Remaining properties
 @property(readonly, nonatomic) unsigned int CRC;
+@property(readonly, nonatomic) _Bool canDownload;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, nonatomic) id <TSPCryptoInfo> decryptionInfo;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) TSUColor *fallbackColor;
-@property(nonatomic) _Bool gilligan_isRemote;
+@property(readonly, nonatomic) unsigned long long fileFormatVersion;
+@property(readonly, nonatomic) unsigned long long firstUnmaterializedIndex;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool isLengthPrecise;
+@property(nonatomic) _Bool isUnmaterializedDueToPartiallyDownloadedDocument;
 @property(readonly, nonatomic) _Bool needsDownload;
 @property(readonly, nonatomic) struct CGSize pixelSize;
 @property(readonly) Class superclass;
+@property(nonatomic) long long uploadStatus;
 
 @end
 

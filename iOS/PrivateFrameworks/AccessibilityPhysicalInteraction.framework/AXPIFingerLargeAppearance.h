@@ -8,7 +8,6 @@
 {
 }
 
-- (double)fingerOuterRadius;
 - (double)fingerInnerRadius;
 - (double)strokeOutlineWidth;
 - (double)strokeWidth;

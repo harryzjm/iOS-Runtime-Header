@@ -14,6 +14,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) __weak SBHLibraryCategory *category; // @synthesize category=_category;
 - (_Bool)isAdditionalItemsIndicatorIcon;
+- (Class)iconImageViewClassForLocation:(id)arg1;
 - (id)initWithCategory:(id)arg1;
 
 @end

@@ -18,6 +18,7 @@
 - (id)_ISOFrames;
 - (id)_ANSIFrames;
 - (struct CGRect)_frameForKeyCode:(unsigned long long)arg1;
+- (void)addExactString:(id)arg1 forKeyCode:(unsigned long long)arg2;
 - (void)addString:(id)arg1 forKeyCode:(unsigned long long)arg2;
 - (_Bool)isEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

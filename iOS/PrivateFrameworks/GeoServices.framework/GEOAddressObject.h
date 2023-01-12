@@ -32,6 +32,7 @@
 @property(readonly, nonatomic) int knownAccuracy;
 @property(readonly, nonatomic) _Bool hasKnownAccuracy;
 - (id)titlesForMapRect:(CDStruct_90e2a262)arg1;
+- (id)locationAddress;
 - (id)venueShortAddress;
 - (id)venueLevel;
 - (id)venueLabel;
@@ -39,6 +40,7 @@
 - (id)parkingDisplayName;
 - (id)weatherLocationName;
 - (id)weatherDisplayName;
+- (id)countryName;
 - (id)cityDisplayNameWithFallback:(_Bool)arg1;
 - (id)shortAddress;
 - (id)fullAddressNoCurrentCountryWithMultiline:(_Bool)arg1;

@@ -18,7 +18,6 @@
     EKDayOccurrenceStringGenerator *_stringGenerator;
 }
 
-+ (id)_color:(id)arg1 darkenedToPercentage:(double)arg2 withFinalAlpha:(double)arg3;
 + (id)sharedProvider;
 + (id)backgroundImageCache;
 - (void).cxx_destruct;

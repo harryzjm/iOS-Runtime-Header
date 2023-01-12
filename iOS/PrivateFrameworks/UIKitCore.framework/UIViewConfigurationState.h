@@ -20,6 +20,7 @@
         unsigned int isHighlighted:1;
         unsigned int isSelected:1;
         unsigned int isFocused:1;
+        unsigned int isPinned:1;
     } _stateFlags;
     UITraitCollection *_traitCollection;
 }
@@ -27,6 +28,7 @@
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
+- (void)_configureWithViewConfigurationState:(unsigned long long)arg1;
 @property(readonly, nonatomic) unsigned long long _viewConfigurationState;
 - (void)_setSwiftBridgingCustomState:(id)arg1 forKey:(id)arg2;
 - (id)_customStatesForSwiftBridging;
@@ -34,6 +36,8 @@
 - (id)objectForKeyedSubscript:(id)arg1;
 - (void)setCustomState:(id)arg1 forKey:(id)arg2;
 - (id)customStateForKey:(id)arg1;
+@property(nonatomic, setter=_setShowingCompactContextMenu:) _Bool _showingCompactContextMenu;
+@property(nonatomic, getter=isPinned) _Bool pinned;
 @property(nonatomic, getter=isFocused) _Bool focused;
 @property(nonatomic, getter=isSelected) _Bool selected;
 @property(nonatomic, getter=isHighlighted) _Bool highlighted;

@@ -21,6 +21,8 @@
     id <PLXPCPhotoLibraryStorePolicy> _xpcStorePolicy;
 }
 
++ (_Bool)currentModelVersionMatchesLibrarySchemaVersionWithPathManager:(id)arg1 error:(id *)arg2;
++ (int)librarySchemaVersionWithPathManager:(id)arg1 error:(id *)arg2;
 + (_Bool)shouldTrackIndexUse;
 + (void)_getPersistentStoreURL:(id *)arg1 options:(id *)arg2 forDatabasePath:(id)arg3 enableOrderKeyNotifications:(_Bool)arg4;
 + (void)getPersistentStoreURL:(id *)arg1 options:(id *)arg2 forDatabasePath:(id)arg3;
@@ -36,6 +38,7 @@
 @property(retain) id <PLXPCPhotoLibraryStorePolicy> xpcStorePolicy; // @synthesize xpcStorePolicy=_xpcStorePolicy;
 @property(readonly) NSURL *libraryURL; // @synthesize libraryURL=_libraryURL;
 - (_Bool)_configurePersistentStoreCoordinator:(id)arg1 overrideCurrentModelVersionInStore:(_Bool)arg2 error:(id *)arg3;
+- (_Bool)_configureXPCPersistentStoreCoordinator:(id)arg1 error:(id *)arg2;
 - (_Bool)shouldUseXPCPhotoLibraryStore;
 - (long long)configureSharedPersistentStoreCoordinatorAndMigrateOrRebuildIfNecessaryWithModelMigrator:(id)arg1 migrationPolicy:(unsigned int)arg2 error:(id *)arg3;
 - (void)removeSharedPersistentStoreCoordinator;

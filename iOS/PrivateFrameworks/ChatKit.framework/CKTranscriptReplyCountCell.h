@@ -22,7 +22,7 @@
 - (void)performRemoval:(CDUnknownBlockType)arg1;
 - (void)performReload:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)performInsertion:(CDUnknownBlockType)arg1;
-- (void)configureForChatItem:(id)arg1;
+- (void)configureForChatItem:(id)arg1 context:(id)arg2;
 
 @end
 

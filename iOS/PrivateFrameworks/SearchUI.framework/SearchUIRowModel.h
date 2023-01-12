@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <SearchUI/NSCopying-Protocol.h>
+
 @class NSArray, NSString, NSURL, SFCard, SFCardSection, SFSearchResult;
 
-@interface SearchUIRowModel : NSObject
+@interface SearchUIRowModel : NSObject <NSCopying>
 {
     _Bool _isTappable;
     _Bool _isDraggable;
@@ -16,11 +18,11 @@
     _Bool _hasLeadingImage;
     _Bool _prefersNoSeparatorAbove;
     NSArray *_results;
-    SFSearchResult *_identifyingResult;
     SFCardSection *_cardSection;
     NSArray *_punchouts;
     NSArray *_contactIdentifiers;
     Class _cellViewClass;
+    Class _collectionViewCellClass;
     SFCard *_nextCard;
     unsigned long long _queryId;
     NSString *_dragTitle;
@@ -28,9 +30,11 @@
     NSString *_dragText;
     NSURL *_dragURL;
     NSString *_dragAppBundleID;
+    SFSearchResult *_identifyingResult;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) SFSearchResult *identifyingResult; // @synthesize identifyingResult=_identifyingResult;
 @property(readonly, nonatomic) _Bool prefersNoSeparatorAbove; // @synthesize prefersNoSeparatorAbove=_prefersNoSeparatorAbove;
 @property(readonly, nonatomic) _Bool hasLeadingImage; // @synthesize hasLeadingImage=_hasLeadingImage;
 @property(readonly, nonatomic) _Bool supportsCustomUserReportRequestAfforance; // @synthesize supportsCustomUserReportRequestAfforance=_supportsCustomUserReportRequestAfforance;
@@ -40,18 +44,26 @@
 @property(readonly, nonatomic) NSString *dragSubtitle; // @synthesize dragSubtitle=_dragSubtitle;
 @property(readonly, nonatomic) NSString *dragTitle; // @synthesize dragTitle=_dragTitle;
 @property(readonly, nonatomic) _Bool isDraggable; // @synthesize isDraggable=_isDraggable;
-@property(readonly, nonatomic) unsigned long long queryId; // @synthesize queryId=_queryId;
+@property(nonatomic) unsigned long long queryId; // @synthesize queryId=_queryId;
 @property(readonly, nonatomic) _Bool isTappable; // @synthesize isTappable=_isTappable;
 @property(readonly, nonatomic) SFCard *nextCard; // @synthesize nextCard=_nextCard;
+@property(readonly, nonatomic) Class collectionViewCellClass; // @synthesize collectionViewCellClass=_collectionViewCellClass;
 @property(readonly, nonatomic) Class cellViewClass; // @synthesize cellViewClass=_cellViewClass;
 @property(readonly, nonatomic) NSArray *contactIdentifiers; // @synthesize contactIdentifiers=_contactIdentifiers;
 @property(readonly, nonatomic) NSArray *punchouts; // @synthesize punchouts=_punchouts;
 @property(retain, nonatomic) SFCardSection *cardSection; // @synthesize cardSection=_cardSection;
-@property(retain, nonatomic) SFSearchResult *identifyingResult; // @synthesize identifyingResult=_identifyingResult;
 @property(retain, nonatomic) NSArray *results; // @synthesize results=_results;
+@property(readonly, nonatomic) NSString *fileProviderIdentifier;
+@property(readonly, nonatomic) NSString *displayTitle;
+@property(readonly, nonatomic) NSString *coreSpotlightIdentifier;
+@property(readonly, nonatomic) NSString *applicationBundleIdentifier;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)requestAppClipObjects;
+- (_Bool)isEqualToModel:(id)arg1;
 @property(readonly, nonatomic) NSString *accessibilityIdentifier;
 @property(readonly, nonatomic) _Bool isQuerySuggestion;
 @property(readonly, nonatomic) NSString *reuseIdentifier;
+@property(readonly, nonatomic) _Bool isFocusable;
 @property(readonly, nonatomic) _Bool fillsBackgroundWithContent;
 @property(readonly, nonatomic) int separatorStyle;
 - (id)initWithResults:(id)arg1 cardSection:(id)arg2 queryId:(unsigned long long)arg3;

@@ -12,6 +12,21 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct CGPoint {
+    double x;
+    double y;
+};
+
+struct CGRect {
+    struct CGPoint origin;
+    struct CGSize size;
+};
+
+struct CGSize {
+    double width;
+    double height;
+};
+
 struct GTTraceContext {
     struct _opaque_pthread_mutex_t _field1;
     struct GTTraceStore *_field2;
@@ -23,6 +38,28 @@ struct GTTraceContext {
     char _field8[4];
     struct GTTraceStream *_field9;
     struct GTTraceStoreList _field10[16];
+};
+
+struct GTTraceEncoder {
+    struct GTTraceContext *_field1;
+    struct GTTraceStream *_field2;
+    struct GTTraceFunc *_field3;
+    unsigned long long _field4;
+    unsigned long long _field5;
+    unsigned char _field6;
+    unsigned char _field7;
+    unsigned char _field8;
+    char _field9[5];
+};
+
+struct GTTraceFunc {
+    unsigned long long _field1;
+    unsigned int _field2;
+    unsigned char _field3;
+    unsigned char _field4;
+    unsigned char _field5;
+    unsigned char _field6;
+    char _field7[48];
 };
 
 struct GTTraceMemPool;
@@ -67,17 +104,9 @@ struct VMBuffer {
     unsigned long long _field6;
 };
 
-struct _IntKeyedDictionaryPrivate {
-    struct unordered_map<long long, id<NSObject>, std::__1::hash<long long>, std::__1::equal_to<long long>, std::__1::allocator<std::__1::pair<const long long, id<NSObject>>>> _field1;
-};
-
 struct _NSRange {
     unsigned long long location;
     unsigned long long length;
-};
-
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, id<NSObject>>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, id<NSObject>>, void *>*> *_field1;
 };
 
 struct _opaque_pthread_mutex_t {
@@ -98,13 +127,13 @@ struct apr_hash_t;
 struct apr_pool_t;
 
 struct atomic<int> {
-    struct __cxx_atomic_impl<int, std::__1::__cxx_atomic_base_impl<int>> {
+    struct __cxx_atomic_impl<int, std::__cxx_atomic_base_impl<int>> {
         _Atomic int __a_value;
     } __a_;
 };
 
 struct atomic<unsigned int> {
-    struct __cxx_atomic_impl<unsigned int, std::__1::__cxx_atomic_base_impl<unsigned int>> {
+    struct __cxx_atomic_impl<unsigned int, std::__cxx_atomic_base_impl<unsigned int>> {
         _Atomic unsigned int __a_value;
     } __a_;
 };
@@ -132,41 +161,8 @@ struct iovec {
     unsigned long long iov_len;
 };
 
-struct sm_region_header {
-    struct atomic<unsigned int> _field1;
-    struct atomic<unsigned int> _field2;
-    struct atomic<unsigned int> _field3;
-    struct atomic<unsigned int> _field4;
-    struct atomic<unsigned int> _field5;
-    struct atomic<unsigned int> _field6;
-    unsigned int _field7;
-    unsigned int _field8;
-};
-
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, id<NSObject>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, id<NSObject>>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, id<NSObject>>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, id<NSObject>>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, id<NSObject>>, void *>*> **_field1;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, id<NSObject>>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, id<NSObject>>, void *>*>*>> {
-                unsigned long long _field1;
-            } _field1;
-        } _field2;
-    } _field1;
-};
-
-struct unordered_map<long long, id<NSObject>, std::__1::hash<long long>, std::__1::equal_to<long long>, std::__1::allocator<std::__1::pair<const long long, id<NSObject>>>> {
-    struct __hash_table<std::__1::__hash_value_type<long long, id<NSObject>>, std::__1::__unordered_map_hasher<long long, std::__1::__hash_value_type<long long, id<NSObject>>, std::__1::hash<long long>, true>, std::__1::__unordered_map_equal<long long, std::__1::__hash_value_type<long long, id<NSObject>>, std::__1::equal_to<long long>, true>, std::__1::allocator<std::__1::__hash_value_type<long long, id<NSObject>>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, id<NSObject>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, id<NSObject>>, void *>*>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, id<NSObject>>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<long long, id<NSObject>>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, id<NSObject>>, void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<long long, std::__1::__hash_value_type<long long, id<NSObject>>, std::__1::hash<long long>, true>> {
-            unsigned long long _field1;
-        } _field3;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<long long, std::__1::__hash_value_type<long long, id<NSObject>>, std::__1::equal_to<long long>, true>> {
-            float _field1;
-        } _field4;
-    } _field1;
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
 };
 
 #pragma mark Typedef'd Structures
@@ -240,8 +236,9 @@ typedef struct {
     unsigned int _field59;
     unsigned int _field60;
     unsigned int _field61;
-    unsigned long long _field62;
-} CDStruct_4a42450c;
+    unsigned int _field62;
+    unsigned long long _field63;
+} CDStruct_1825b841;
 
 typedef struct {
     unsigned int _field1;
@@ -304,6 +301,13 @@ typedef struct {
     double _field5;
     double _field6;
 } CDStruct_8727d297;
+
+typedef struct {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+} CDStruct_d2b197d1;
 
 typedef struct {
     float _field1;

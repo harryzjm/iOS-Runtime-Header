@@ -14,6 +14,7 @@
 {
 }
 
+- (_Bool)doesMatchInfo:(id)arg1 matchProperties:(id)arg2;
 - (id)resultsForSearchString:(id)arg1 terms:(id)arg2 properties:(id)arg3 contactStore:(id)arg4 error:(id *)arg5;
 - (id)keysToFetchForProperties:(id)arg1;
 - (id)contactsForPredicate:(id)arg1 properties:(id)arg2 contactStore:(id)arg3 error:(id *)arg4;

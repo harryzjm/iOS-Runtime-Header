@@ -6,20 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class HDSimpleGraphDatabase;
-
 @interface HDSimpleGraphObject : NSObject
 {
-    HDSimpleGraphDatabase *_database;
     long long _rowID;
 }
 
-- (void).cxx_destruct;
 @property(readonly, nonatomic) long long rowID; // @synthesize rowID=_rowID;
-@property(readonly, nonatomic) __weak HDSimpleGraphDatabase *database; // @synthesize database=_database;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithDatabase:(id)arg1 rowID:(long long)arg2;
+- (id)description;
+- (id)initWithRowID:(long long)arg1;
 - (id)init;
 
 @end

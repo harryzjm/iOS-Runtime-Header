@@ -55,7 +55,7 @@ __attribute__((visibility("hidden")))
 - (void)setPhotoPickerMediaTypes:(id)arg1;
 - (_Bool)pu_wantsNavigationBarVisible;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
-- (void)cropOverlayFileResizingSelected:(id)arg1;
+- (id)cropOverlayFileSizeMenuActions:(id)arg1;
 - (int)cropOverlayMode;
 - (_Bool)isDisplayedInPhotoPicker;
 - (_Bool)uiipc_useTelephonyUI;

@@ -9,9 +9,12 @@
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
+@class NSString;
+
 @interface HKQueryAnchor : NSObject <NSSecureCoding, NSCopying>
 {
     long long _rowid;
+    NSString *_clientToken;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -19,6 +22,8 @@
 + (id)_anchorWithRowid:(long long)arg1;
 + (id)latestAnchor;
 + (id)anchorFromValue:(unsigned long long)arg1;
+- (void).cxx_destruct;
+@property(copy, nonatomic, getter=_clientToken, setter=_setClientToken:) NSString *clientToken; // @synthesize clientToken=_clientToken;
 @property(nonatomic, getter=_rowid, setter=_setRowid:) long long rowid; // @synthesize rowid=_rowid;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;

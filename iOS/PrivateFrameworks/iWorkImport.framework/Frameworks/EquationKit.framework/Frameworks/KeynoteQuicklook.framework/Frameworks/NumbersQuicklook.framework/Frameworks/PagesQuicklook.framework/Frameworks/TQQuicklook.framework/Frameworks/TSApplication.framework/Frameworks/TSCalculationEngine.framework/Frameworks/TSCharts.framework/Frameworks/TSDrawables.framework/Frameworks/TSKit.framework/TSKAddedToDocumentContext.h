@@ -28,7 +28,6 @@
 + (id)dragMoveContext;
 + (id)pastingMatchStyleContext;
 + (id)pastingContext;
-+ (id)importingMasterTemplateContextWithImporterID:(id)arg1;
 + (id)importingContextWithImporterID:(id)arg1;
 + (id)unarchivingContext;
 + (id)defaultContext;
@@ -54,7 +53,6 @@
 - (_Bool)wasDragMoved;
 - (_Bool)wasDragOperation;
 - (_Bool)wasPasted;
-- (_Bool)wasImportedFromMasterTemplate;
 - (_Bool)wasImported;
 - (id)importerID;
 - (_Bool)wasUnarchived;

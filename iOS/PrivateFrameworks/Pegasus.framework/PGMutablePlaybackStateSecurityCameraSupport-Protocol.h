@@ -7,6 +7,7 @@
 #import <Pegasus/NSObject-Protocol.h>
 
 @protocol PGMutablePlaybackStateSecurityCameraSupport <NSObject>
+@property(nonatomic) _Bool disablesLayerCloning;
 @property(nonatomic) _Bool cameraHasMicrophone;
 @end
 

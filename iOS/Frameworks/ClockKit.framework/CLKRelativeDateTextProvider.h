@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDate, NSDateComponents, NSDateComponentsFormatter, NSString;
+@class NSDate, NSDateComponents, NSDateComponentsFormatter, NSRelativeDateTimeFormatter, NSString;
 
 @interface CLKRelativeDateTextProvider
 {
     NSDateComponentsFormatter *_formatter;
+    NSRelativeDateTimeFormatter *_relativeDateTimeFormatter;
     NSDateComponents *_sessionComponents;
     unsigned long long _sessionVisibleUnits;
     NSString *_sessionCacheKey;
@@ -30,7 +31,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
-+ (_Bool)_configureFormatter:(id)arg1 fallbackIndex:(unsigned long long)arg2 style:(long long)arg3;
++ (_Bool)_configureRelativeFormatter:(id)arg1 fallbackIndex:(unsigned long long)arg2 style:(long long)arg3;
++ (_Bool)_configureComponentsFormatter:(id)arg1 fallbackIndex:(unsigned long long)arg2 style:(long long)arg3;
 + (id)textProviderWithDate:(id)arg1 relativeToDate:(id)arg2 style:(long long)arg3 units:(unsigned long long)arg4;
 + (id)textProviderWithDate:(id)arg1 style:(long long)arg2 units:(unsigned long long)arg3;
 - (void).cxx_destruct;

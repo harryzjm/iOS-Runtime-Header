@@ -11,7 +11,7 @@
 + (Class)responseClass;
 - (CDUnknownBlockType)_completionHandlerWithActionCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)executeLocallyWithIntentDeliverer:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)executeRemotelyWithVendorRemote:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (_Bool)executeRemotelyWithVendorRemote:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

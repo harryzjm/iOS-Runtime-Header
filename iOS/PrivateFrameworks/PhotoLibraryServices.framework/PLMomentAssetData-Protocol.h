@@ -20,6 +20,7 @@
 @property(readonly, nonatomic) _Bool isPhoto;
 @property(nonatomic) double curationScore;
 @property(nonatomic) _Bool favorite;
+@property(readonly, nonatomic) unsigned char shareState;
 @property(nonatomic) id <PLPhotosHighlightData> yearHighlightBeingKeyAsset;
 @property(nonatomic) id <PLPhotosHighlightData> monthHighlightBeingFirstAsset;
 @property(nonatomic) id <PLPhotosHighlightData> monthHighlightBeingKeyAsset;

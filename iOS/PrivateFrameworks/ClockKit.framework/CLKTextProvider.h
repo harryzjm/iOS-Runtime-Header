@@ -32,7 +32,7 @@
     long long _timeTravelUpdateFrequency;
 }
 
-+ (id)textProviderWithJSONObjectRepresentation:(id)arg1;
++ (id)providerWithJSONObjectRepresentation:(id)arg1;
 + (_Bool)supportsSecureCoding;
 + (id)new;
 + (id)textProviderWithFormat:(id)arg1 arguments:(char *)arg2;

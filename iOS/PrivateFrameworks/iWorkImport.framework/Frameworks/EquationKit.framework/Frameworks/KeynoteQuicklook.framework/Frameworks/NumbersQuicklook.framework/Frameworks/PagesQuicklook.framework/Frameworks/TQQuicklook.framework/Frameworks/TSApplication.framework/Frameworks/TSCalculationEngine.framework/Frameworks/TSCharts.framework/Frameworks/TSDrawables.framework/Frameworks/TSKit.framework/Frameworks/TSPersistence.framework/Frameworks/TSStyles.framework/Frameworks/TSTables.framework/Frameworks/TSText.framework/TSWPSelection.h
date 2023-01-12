@@ -43,8 +43,9 @@
 @property(readonly, nonatomic) struct _NSRange rawRange; // @synthesize rawRange=_range;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) _Bool isAtEndOfLine;
-- (void)saveToArchive:(struct SelectionArchive *)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (_Bool)intersectsRange:(struct _NSRange)arg1;
+- (_Bool)containsCharacterAtIndex:(unsigned long long)arg1 withOptions:(unsigned long long)arg2;
 - (_Bool)containsCharacterAtIndex:(unsigned long long)arg1;
 - (unsigned long long)visualRangeCount;
 - (void)setHeadCharIndex:(unsigned long long)arg1 tailCharIndex:(unsigned long long)arg2;
@@ -66,6 +67,7 @@
 - (id)copyWithNewType:(int)arg1 range:(struct _NSRange)arg2;
 - (id)copyWithNewType:(int)arg1 smartFieldRange:(struct _NSRange)arg2;
 - (_Bool)isEquivalentForInsertionStyle:(id)arg1;
+@property(readonly, nonatomic) _Bool allowsKeyCommandCaching;
 @property(readonly, nonatomic) _Bool isEmpty;
 @property(readonly, nonatomic) _Bool isValid;
 @property(readonly, nonatomic) _Bool isInsertionPoint;
@@ -76,7 +78,7 @@
 - (_Bool)p_isEqual:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithArchive:(const struct SelectionArchive *)arg1;
+- (id)initWithArchive:(const void *)arg1;
 - (id)initWithRange:(struct _NSRange)arg1;
 - (id)initWithType:(int)arg1 range:(struct _NSRange)arg2 styleInsertionBehavior:(int)arg3 caretAffinity:(int)arg4;
 - (id)initWithType:(int)arg1 range:(struct _NSRange)arg2 styleInsertionBehavior:(int)arg3 caretAffinity:(int)arg4 smartFieldRange:(struct _NSRange)arg5 leadingEdge:(_Bool)arg6 storage:(id)arg7;

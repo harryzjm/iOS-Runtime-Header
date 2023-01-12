@@ -19,12 +19,12 @@
     unsigned long long __strawSize;
     NSMutableIndexSet *__cornerIndexSet;
     NSMutableIndexSet *__directionChangeCornerIndexes;
-    vector_1dba4e4e __resampledDrawingPointMap;
+    vector_9d2b1d4b __resampledDrawingPointMap;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) vector_1dba4e4e _resampledDrawingPointMap; // @synthesize _resampledDrawingPointMap=__resampledDrawingPointMap;
+@property(readonly, nonatomic) vector_9d2b1d4b _resampledDrawingPointMap; // @synthesize _resampledDrawingPointMap=__resampledDrawingPointMap;
 @property(readonly, copy, nonatomic) NSMutableIndexSet *_directionChangeCornerIndexes; // @synthesize _directionChangeCornerIndexes=__directionChangeCornerIndexes;
 @property(readonly, copy, nonatomic) NSMutableIndexSet *_cornerIndexSet; // @synthesize _cornerIndexSet=__cornerIndexSet;
 @property(readonly, nonatomic) unsigned long long _strawSize; // @synthesize _strawSize=__strawSize;
@@ -44,7 +44,7 @@
 - (double)_pathDistance:(id)arg1 p1:(long long)arg2 p2:(long long)arg3;
 - (double)_distance:(id)arg1 p1:(long long)arg2 p2:(long long)arg3;
 - (double)_resamplingDistance:(id)arg1;
-- (id)_resampleDrawing:(id)arg1 outputPointMap:(vector_1dba4e4e *)arg2;
+- (id)_resampleDrawing:(id)arg1 outputPointMap:(void *)arg2;
 - (void)_detectCorners;
 - (unsigned long long)_detectDirectionalChanges;
 - (id)directionChangeCornerIndexes;

@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
     _Bool _canHideDoneAndCancelButtons;
     _Bool _timeImplicitlySet;
     _Bool _isTextEditing;
+    _Bool _pendingVideoConference;
     id <EKCalendarItemEditorDelegate> _editorDelegate;
     EKEventStore *_store;
     EKCalendarItem *_calendarItem;
@@ -56,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) EKChangeSet *originalChangeSet; // @synthesize originalChangeSet=_originalChangeSet;
 @property(retain, nonatomic) _UIAccessDeniedView *accessDeniedView; // @synthesize accessDeniedView=_accessDeniedView;
+@property(nonatomic) _Bool pendingVideoConference; // @synthesize pendingVideoConference=_pendingVideoConference;
 @property(nonatomic) _Bool isTextEditing; // @synthesize isTextEditing=_isTextEditing;
 @property(nonatomic) _Bool timeImplicitlySet; // @synthesize timeImplicitlySet=_timeImplicitlySet;
 @property(readonly) EKCalendarItemEditItem *currentEditItem; // @synthesize currentEditItem=_currentEditItem;
@@ -68,8 +70,10 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) EKEventStore *store; // @synthesize store=_store;
 @property(nonatomic) __weak id <EKCalendarItemEditorDelegate> editorDelegate; // @synthesize editorDelegate=_editorDelegate;
 - (_Bool)canBecomeFirstResponder;
-- (void)_performCloseKeyCommand;
-- (void)_setUpKeyCommands;
+- (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
+- (void)handleSaveKeyCommand;
+- (void)handleCloseKeyCommand;
+- (_Bool)canPerformSaveKeyCommand;
 - (void)_presentDetachSheetForEvent:(id)arg1 saveAttachments:(_Bool)arg2 withContinueBlock:(CDUnknownBlockType)arg3;
 - (void)_presentAttachmentRecurrenceSheetForEvent:(id)arg1 withContinueBlock:(CDUnknownBlockType)arg2;
 - (id)_viewForSheet;
@@ -82,8 +86,10 @@ __attribute__((visibility("hidden")))
 - (void)tableViewDidFinishReload:(id)arg1;
 - (void)tableViewDidStartReload:(id)arg1;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
+- (void)tableView:(id)arg1 willDisplayFooterView:(id)arg2 forSection:(long long)arg3;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
+- (void)tableView:(id)arg1 willDisplayHeaderView:(id)arg2 forSection:(long long)arg3;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
@@ -95,6 +101,8 @@ __attribute__((visibility("hidden")))
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)_editItemAtIndexPath:(id)arg1 firstRowIndex:(long long *)arg2;
+- (void)editItemWantsFirstResponderResigned:(id)arg1;
+- (void)editItem:(id)arg1 wantsViewControllerPresented:(id)arg2;
 - (id)cellWithReuseIdentifier:(id)arg1 forEditItem:(id)arg2;
 - (id)defaultAlertTitleForEditItem:(id)arg1;
 - (void)editItemRequiresPopoverSizeUpdate:(id)arg1;
@@ -132,7 +140,8 @@ __attribute__((visibility("hidden")))
 - (void)_keyboardWillHide;
 - (void)_pinKeyboard:(_Bool)arg1;
 - (struct CGSize)preferredContentSize;
-- (void)reloadTableViewSectionsForDates:(_Bool)arg1 invitees:(_Bool)arg2 location:(_Bool)arg3;
+- (void)reloadTableViewSectionsForDates:(_Bool)arg1 invitees:(_Bool)arg2 location:(_Bool)arg3 alarm:(_Bool)arg4;
+- (void)refreshURL;
 - (void)refreshLocation;
 - (void)refreshInvitees;
 - (void)refreshStartAndEndDates;
@@ -175,6 +184,8 @@ __attribute__((visibility("hidden")))
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)resetBackgroundColor;
 - (void)loadView;
 - (long long)firstTableRowForEditItem:(id)arg1;
 - (unsigned long long)tableSectionForEditItem:(id)arg1;

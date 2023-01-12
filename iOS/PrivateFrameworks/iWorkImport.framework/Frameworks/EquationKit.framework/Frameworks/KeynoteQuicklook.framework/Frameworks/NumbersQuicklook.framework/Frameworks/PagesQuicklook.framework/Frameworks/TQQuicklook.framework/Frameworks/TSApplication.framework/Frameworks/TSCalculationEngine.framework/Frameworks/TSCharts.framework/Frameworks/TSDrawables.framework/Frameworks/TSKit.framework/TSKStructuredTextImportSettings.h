@@ -26,7 +26,7 @@
     unsigned long long _sourceEncoding;
 }
 
-+ (id)settingsFromArchive:(const struct StructuredTextImportSettings *)arg1;
++ (id)settingsFromArchive:(const void *)arg1;
 + (id)keyPathsForValuesAffectingIsValid;
 + (id)settingsWithType:(long long)arg1;
 + (id)settings;
@@ -43,8 +43,8 @@
 @property(copy, nonatomic) NSSet *decimalSeparators; // @synthesize decimalSeparators=_decimalSeparators;
 @property(nonatomic) unsigned long long startingRow; // @synthesize startingRow=_startingRow;
 @property(nonatomic) long long type; // @synthesize type=_type;
-- (void)encodeToArchive:(struct StructuredTextImportSettings *)arg1;
-- (id)initFromArchive:(const struct StructuredTextImportSettings *)arg1;
+- (void)encodeToArchive:(void *)arg1;
+- (id)initFromArchive:(const void *)arg1;
 - (id)errorString;
 - (_Bool)isValid;
 @property(readonly, nonatomic) _Bool hasAnyAutomaticSettings;

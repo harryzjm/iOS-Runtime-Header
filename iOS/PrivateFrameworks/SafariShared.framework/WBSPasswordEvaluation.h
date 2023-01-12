@@ -21,8 +21,8 @@
 @property(readonly, copy, nonatomic) NSArray *patternMatches; // @synthesize patternMatches=_patternMatches;
 @property(readonly, copy, nonatomic) NSString *password; // @synthesize password=_password;
 - (id)compactDescriptionWithPasswordColumnWidth:(unsigned long long)arg1 includePatternMatches:(_Bool)arg2;
-@property(readonly, nonatomic) NSString *userFeedbackString;
-- (id)_passwordFeedbackString;
+- (id)userFeedbackStringWithPasswordVisibility:(unsigned long long)arg1;
+- (id)_passwordFeedbackStringWithPasswordVisibility:(unsigned long long)arg1;
 - (_Bool)_shouldShowUserFeedbackStringsForWordListPatternMatch:(id)arg1;
 - (id)_bestPatternMatchOfType:(unsigned long long)arg1;
 @property(readonly, nonatomic) WBSPasswordPatternMatch *bestPatternMatchForUserFeedback;
@@ -31,6 +31,8 @@
 @property(readonly, nonatomic) _Bool userShouldBeShownActiveWarning;
 @property(readonly, nonatomic) _Bool userShouldBeShownPassiveWarning;
 @property(readonly, nonatomic) unsigned long long strength;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
 - (id)initWithEvaluationType:(long long)arg1 password:(id)arg2 patternMatches:(id)arg3 guessesRequired:(double)arg4;
 
 @end

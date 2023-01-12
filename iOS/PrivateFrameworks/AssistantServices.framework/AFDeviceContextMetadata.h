@@ -9,7 +9,7 @@
 #import <AssistantServices/NSCopying-Protocol.h>
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate, NSMutableDictionary, NSString;
+@class AFDeviceContextHistoryConfiguration, NSArray, NSDate, NSMutableDictionary, NSString;
 
 @interface AFDeviceContextMetadata : NSObject <NSCopying, NSSecureCoding>
 {
@@ -18,10 +18,12 @@
     NSDate *_deliveryDate;
     NSDate *_expirationDate;
     NSArray *_redactedKeyPaths;
+    AFDeviceContextHistoryConfiguration *_historyConfiguration;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) AFDeviceContextHistoryConfiguration *historyConfiguration; // @synthesize historyConfiguration=_historyConfiguration;
 @property(readonly, nonatomic) NSArray *redactedKeyPaths; // @synthesize redactedKeyPaths=_redactedKeyPaths;
 @property(readonly, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property(readonly, nonatomic) NSDate *deliveryDate; // @synthesize deliveryDate=_deliveryDate;
@@ -31,10 +33,11 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
+- (id)description;
 - (_Bool)isExpiredByDate:(id)arg1;
 - (id)backingStore;
 - (id)initWithBackingStore:(id)arg1;
-- (id)initWithType:(id)arg1 deliveryDate:(id)arg2 expirationDate:(id)arg3 redactedKeyPaths:(id)arg4;
+- (id)initWithType:(id)arg1 deliveryDate:(id)arg2 expirationDate:(id)arg3 redactedKeyPaths:(id)arg4 historyConfiguration:(id)arg5;
 
 @end
 

@@ -10,6 +10,8 @@
 
 @protocol _INPBIntentMetadata <NSObject>
 + (Class)parameterImagesType;
+@property(nonatomic) _Bool hasVersioningHash;
+@property(nonatomic) unsigned long long versioningHash;
 @property(readonly, nonatomic) _Bool hasUserUtterance;
 @property(retain, nonatomic) _INPBString *userUtterance;
 @property(nonatomic) _Bool hasUserConfirmationRequired;
@@ -22,6 +24,8 @@
 @property(nonatomic) _Bool showsWhenRun;
 @property(readonly, nonatomic) unsigned long long shortcutAvailabilitiesCount;
 @property(readonly, nonatomic) int *shortcutAvailabilities;
+@property(readonly, nonatomic) _Bool hasPreferredAudioOutputRouteId;
+@property(copy, nonatomic) NSString *preferredAudioOutputRouteId;
 @property(readonly, nonatomic) unsigned long long parameterImagesCount;
 @property(copy, nonatomic) NSArray *parameterImages;
 @property(readonly, nonatomic) _Bool hasOriginatingDeviceRapportMediaSystemId;
@@ -30,6 +34,10 @@
 @property(copy, nonatomic) NSString *originatingDeviceRapportEffectiveId;
 @property(readonly, nonatomic) _Bool hasOriginatingDeviceIdsIdentifier;
 @property(copy, nonatomic) NSString *originatingDeviceIdsIdentifier;
+@property(nonatomic) _Bool hasMsLimitReached;
+@property(nonatomic) _Bool msLimitReached;
+@property(readonly, nonatomic) _Bool hasMediaRouteId;
+@property(copy, nonatomic) NSString *mediaRouteId;
 @property(nonatomic) _Bool hasIsPrimaryDisplayDisabled;
 @property(nonatomic) _Bool isPrimaryDisplayDisabled;
 @property(nonatomic) _Bool hasIsOwnedByCurrentUser;
@@ -42,6 +50,10 @@
 @property(nonatomic) int idiom;
 @property(readonly, nonatomic) unsigned long long forceNeedsValueForParametersCount;
 @property(copy, nonatomic) NSArray *forceNeedsValueForParameters;
+@property(nonatomic) _Bool hasEndpointMediaPlaybackEnabled;
+@property(nonatomic) _Bool endpointMediaPlaybackEnabled;
+@property(readonly, nonatomic) _Bool hasEndpointId;
+@property(copy, nonatomic) NSString *endpointId;
 @property(nonatomic) _Bool hasConfirmed;
 @property(nonatomic) _Bool confirmed;
 @property(nonatomic) _Bool hasBackgroundLaunch;

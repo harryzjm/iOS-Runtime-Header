@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDateFormatter, NSHashTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSProgress, NSString, NSURL, PHImportOptions, PHPhotoLibrary;
+@class NSDateFormatter, NSHashTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSProgress, NSString, NSURL, PFTimeZoneLookup, PHImportOptions, PHPhotoLibrary;
 @protocol OS_dispatch_queue;
 
 @interface PHImportSource
@@ -54,9 +54,11 @@
     long long _assetLoadOrder;
     NSString *_prefix;
     NSMutableDictionary *_pairedSidecarsByImportIdentifier;
+    PFTimeZoneLookup *_timeZoneLookup;
 }
 
 - (void).cxx_destruct;
+@property(readonly) PFTimeZoneLookup *timeZoneLookup; // @synthesize timeZoneLookup=_timeZoneLookup;
 @property(retain, nonatomic) NSMutableDictionary *pairedSidecarsByImportIdentifier; // @synthesize pairedSidecarsByImportIdentifier=_pairedSidecarsByImportIdentifier;
 @property(retain, nonatomic) NSString *prefix; // @synthesize prefix=_prefix;
 @property(nonatomic) long long assetLoadOrder; // @synthesize assetLoadOrder=_assetLoadOrder;
@@ -89,7 +91,7 @@
 @property(nonatomic) unsigned long long completedItems; // @synthesize completedItems=_completedItems;
 @property(nonatomic) unsigned long long nextItemIndex; // @synthesize nextItemIndex=_nextItemIndex;
 @property(nonatomic) unsigned long long currentItemIndex; // @synthesize currentItemIndex=_currentItemIndex;
-@property(retain, nonatomic) PHPhotoLibrary *library; // @synthesize library=_library;
+@property(readonly, nonatomic) PHPhotoLibrary *library; // @synthesize library=_library;
 @property(copy, nonatomic) NSURL *autolaunchApplicationURL; // @synthesize autolaunchApplicationURL=_autolaunchApplicationURL;
 @property(nonatomic) unsigned char sourceAccessState; // @synthesize sourceAccessState=_sourceAccessState;
 @property(readonly, nonatomic) _Bool canAutolaunch; // @synthesize canAutolaunch=_canAutolaunch;
@@ -126,7 +128,9 @@
 - (void)endBatch;
 - (id)assetsByProcessingItem:(id)arg1;
 - (void)processNextItems;
+- (void)beginProcessingWithCompletion:(CDUnknownBlockType)arg1;
 - (void)beginWork;
+- (_Bool)containsSupportedMediaWithImportExceptions:(id *)arg1;
 - (void)dispatchAssetDataRequestAsync:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)stopAssetLoading;
 - (void)resumeAssetLoading;
@@ -135,12 +139,14 @@
 - (id)loadAssetsForLibrary:(id)arg1 allowDuplicates:(_Bool)arg2 order:(long long)arg3 batchInterval:(double)arg4 atEnd:(CDUnknownBlockType)arg5;
 - (id)loadAssetsForLibrary:(id)arg1 allowDuplicates:(_Bool)arg2 order:(long long)arg3 batchSize:(unsigned long long)arg4 atEnd:(CDUnknownBlockType)arg5;
 - (id)loadAssetsForLibrary:(id)arg1 allowDuplicates:(_Bool)arg2 order:(long long)arg3 atEnd:(CDUnknownBlockType)arg4;
+@property(readonly, nonatomic) _Bool isOptimizedCPLStorage;
 @property(readonly) _Bool canReference;
 @property(readonly, nonatomic) _Bool canDeleteContent;
 - (id)requestDeleteAssetsForRecords:(id)arg1;
 - (void)eject;
 @property(readonly, nonatomic) NSString *volumePath;
 @property(readonly, nonatomic) _Bool isAvailable;
+@property(readonly, nonatomic) _Bool isLibrary;
 @property(readonly, nonatomic) _Bool isConnectedDevice;
 @property(readonly, nonatomic) _Bool canEject;
 @property(readonly, nonatomic) _Bool isAppleDevice;

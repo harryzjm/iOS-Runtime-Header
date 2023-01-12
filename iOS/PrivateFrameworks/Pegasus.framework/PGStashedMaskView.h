@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)layoutSubviews;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)_setContinuousCornerRadius:(double)arg1;
+- (double)_continuousCornerRadius;
 - (struct CGRect)_mainBodyBounds;
 @property(readonly, nonatomic) struct CGRect tabViewBounds;
 - (void)setTabHidden:(_Bool)arg1 left:(_Bool)arg2;

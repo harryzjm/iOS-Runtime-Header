@@ -8,16 +8,22 @@
 
 #import <PhotosGraph/PGGraphIngestProcessor-Protocol.h>
 
-@class NSString;
+@class NSString, PGGraphBuilder;
 
 @interface PGGraphIngestMeaningfulEventsProcessor : NSObject <PGGraphIngestProcessor>
 {
+    PGGraphBuilder *_graphBuilder;
 }
 
+- (void).cxx_destruct;
+- (id)_meaningCriteriasDictionaryByMeaningLabel;
+- (void)_updateMeaningsOfMomentNode:(id)arg1 graph:(id)arg2 withValidMeaningLabels:(id)arg3 legacyLabels:(id)arg4;
 - (void)updateMeaningsOfMomentNode:(id)arg1 graph:(id)arg2 affectedMeaningLabels:(id)arg3 withMatchedResults:(id)arg4;
 - (void)processMeaningfulEventsWithMomentNodes:(id)arg1 graph:(id)arg2 requiredMeaningfulEventCriteriaByIdentifier:(id)arg3 progressBlock:(CDUnknownBlockType)arg4;
+- (void)_processMeaningfulEventsWithMomentNodes:(id)arg1 graph:(id)arg2 meaningCriteriaEvaluatorsByMeaningLabel:(id)arg3 legacyLabels:(id)arg4 progressBlock:(CDUnknownBlockType)arg5;
 - (void)runWithGraphUpdate:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (_Bool)shouldRunWithGraphUpdate:(id)arg1;
+- (void)setGraphBuilder:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

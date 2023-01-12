@@ -15,8 +15,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (void)determineCapabilitiesWithServiceInfo:(id)arg1 initInfo:(CDStruct_8de101df *)arg2;
-+ (void)populateInitInfo:(CDStruct_8de101df *)arg1 forLogicalDevice:(id)arg2;
++ (void)determineCapabilitiesWithServiceInfo:(id)arg1 initInfo:(CDStruct_fc41fe5e *)arg2;
++ (void)populateInitInfo:(CDStruct_fc41fe5e *)arg1 forLogicalDevice:(id)arg2;
 + (id)logicalDevice:(id)arg1 makeControllerPhysicalInputProfileWithIdentifier:(id)arg2;
 + (id)logicalDeviceControllerProductCategory:(id)arg1;
 + (void)physicalDevice:(id)arg1 setIndicatedPlayerIndex:(long long)arg2;

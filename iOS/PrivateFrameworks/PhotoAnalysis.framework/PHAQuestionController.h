@@ -24,6 +24,7 @@
 @property(retain, nonatomic) PGTrialSession *trialSession; // @synthesize trialSession=_trialSession;
 @property(readonly, nonatomic) NSObject<OS_os_log> *loggingConnection; // @synthesize loggingConnection=_loggingConnection;
 @property(retain, nonatomic) PGManager *graphManager; // @synthesize graphManager=_graphManager;
+- (unsigned long long)numberOfSyndicationAssetsQuestionsToGenerate;
 - (void)removeCurrentKVSData;
 - (id)currentQuestionsKVSData;
 - (void)_handleKVSQuestionsUpdateIfNeededWithProgressBlock:(CDUnknownBlockType)arg1;

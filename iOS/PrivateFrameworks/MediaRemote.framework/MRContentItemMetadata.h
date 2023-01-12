@@ -8,7 +8,7 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSDictionary, NSString, NSURL, _MRContentItemMetadataProtobuf;
+@class MRContentItemMetadataAudioFormat, MRContentItemMetadataAudioRoute, NSArray, NSData, NSDate, NSDictionary, NSString, NSURL, _MRContentItemMetadataProtobuf;
 
 @interface MRContentItemMetadata : NSObject <NSCopying>
 {
@@ -30,6 +30,8 @@
     _Bool _hasLiked;
     _Bool _inWishList;
     _Bool _hasInWishList;
+    _Bool _advertisement;
+    _Bool _hasAdvertisement;
     _Bool _steerable;
     _Bool _hasSteerable;
     _Bool _loading;
@@ -75,6 +77,11 @@
     _Bool _hasITunesStoreArtistIdentifier;
     _Bool _hasITunesStoreAlbumIdentifier;
     _Bool _hasLegacyUniqueIdentifier;
+    _Bool _hasSongTraits;
+    _Bool _hasAlbumTraits;
+    _Bool _hasPlaylistTraits;
+    _Bool _hasActiveFormatJustification;
+    _Bool _hasFormatTierPreference;
     float _playbackProgress;
     float _playbackRate;
     float _defaultPlaybackRate;
@@ -142,9 +149,32 @@
     NSURL *_artworkFileURL;
     NSArray *_artworkURLTemplates;
     NSString *_albumYear;
+    unsigned long long _songTraits;
+    unsigned long long _albumTraits;
+    unsigned long long _playlistTraits;
+    MRContentItemMetadataAudioFormat *_preferredFormat;
+    MRContentItemMetadataAudioFormat *_activeFormat;
+    long long _activeFormatJustification;
+    unsigned long long _formatTierPreference;
+    MRContentItemMetadataAudioRoute *_audioRoute;
+    NSArray *_alternativeFormats;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *alternativeFormats; // @synthesize alternativeFormats=_alternativeFormats;
+@property(copy, nonatomic) MRContentItemMetadataAudioRoute *audioRoute; // @synthesize audioRoute=_audioRoute;
+@property(nonatomic) _Bool hasFormatTierPreference; // @synthesize hasFormatTierPreference=_hasFormatTierPreference;
+@property(nonatomic) unsigned long long formatTierPreference; // @synthesize formatTierPreference=_formatTierPreference;
+@property(nonatomic) _Bool hasActiveFormatJustification; // @synthesize hasActiveFormatJustification=_hasActiveFormatJustification;
+@property(nonatomic) long long activeFormatJustification; // @synthesize activeFormatJustification=_activeFormatJustification;
+@property(copy, nonatomic) MRContentItemMetadataAudioFormat *activeFormat; // @synthesize activeFormat=_activeFormat;
+@property(copy, nonatomic) MRContentItemMetadataAudioFormat *preferredFormat; // @synthesize preferredFormat=_preferredFormat;
+@property(nonatomic) _Bool hasPlaylistTraits; // @synthesize hasPlaylistTraits=_hasPlaylistTraits;
+@property(nonatomic) unsigned long long playlistTraits; // @synthesize playlistTraits=_playlistTraits;
+@property(nonatomic) _Bool hasAlbumTraits; // @synthesize hasAlbumTraits=_hasAlbumTraits;
+@property(nonatomic) unsigned long long albumTraits; // @synthesize albumTraits=_albumTraits;
+@property(nonatomic) _Bool hasSongTraits; // @synthesize hasSongTraits=_hasSongTraits;
+@property(nonatomic) unsigned long long songTraits; // @synthesize songTraits=_songTraits;
 @property(copy, nonatomic) NSString *albumYear; // @synthesize albumYear=_albumYear;
 @property(copy, nonatomic) NSArray *artworkURLTemplates; // @synthesize artworkURLTemplates=_artworkURLTemplates;
 @property(copy, nonatomic) NSURL *artworkFileURL; // @synthesize artworkFileURL=_artworkFileURL;
@@ -257,6 +287,8 @@
 @property(nonatomic, getter=isLoading) _Bool loading; // @synthesize loading=_loading;
 @property(nonatomic) _Bool hasSteerable; // @synthesize hasSteerable=_hasSteerable;
 @property(nonatomic, getter=isSteerable) _Bool steerable; // @synthesize steerable=_steerable;
+@property(nonatomic) _Bool hasAdvertisement; // @synthesize hasAdvertisement=_hasAdvertisement;
+@property(nonatomic, getter=isAdvertisement) _Bool advertisement; // @synthesize advertisement=_advertisement;
 @property(nonatomic) _Bool hasInWishList; // @synthesize hasInWishList=_hasInWishList;
 @property(nonatomic, getter=isInWishList) _Bool inWishList; // @synthesize inWishList=_inWishList;
 @property(nonatomic) _Bool hasLiked; // @synthesize hasLiked=_hasLiked;
@@ -283,6 +315,8 @@
 - (_Bool)isEqual:(id)arg1;
 - (void)setArtworkDataHeightDeprecated:(long long)arg1;
 - (void)setArtworkDataWidthDeprecated:(long long)arg1;
+@property(readonly, copy, nonatomic) NSString *localizedTitle;
+@property(readonly, nonatomic) _Bool hasLoadingPlaceholderTitle;
 @property(readonly, nonatomic) double calculatedPlaybackPosition;
 @property(readonly, copy, nonatomic) NSData *data;
 @property(readonly, nonatomic) _MRContentItemMetadataProtobuf *protobuf;

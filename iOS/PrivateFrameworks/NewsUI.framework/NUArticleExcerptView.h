@@ -8,7 +8,7 @@
 
 #import <NewsUI/UIScrollViewDelegate-Protocol.h>
 
-@class NFMultiDelegate, NSString, NUArticleExcerptReadMoreButton, NUArticleExcerptTraits, UIImageView, UILabel, UIScrollView, WKWebView;
+@class NSString, NUArticleExcerptReadMoreButton, NUArticleExcerptTraits, TFMultiDelegate, UIImageView, UILabel, UIScrollView, WKWebView;
 @protocol UIScrollViewDelegate;
 
 @interface NUArticleExcerptView : UIView <UIScrollViewDelegate>
@@ -23,12 +23,12 @@
     UIImageView *_headlineImageView;
     UIView *_hairlineSeparatorView;
     UIView *_contentView;
-    NFMultiDelegate *_multiDelegate;
+    TFMultiDelegate *_multiDelegate;
 }
 
 + (id)webViewConfiguration;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NFMultiDelegate *multiDelegate; // @synthesize multiDelegate=_multiDelegate;
+@property(readonly, nonatomic) TFMultiDelegate *multiDelegate; // @synthesize multiDelegate=_multiDelegate;
 @property(readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property(readonly, nonatomic) UIView *hairlineSeparatorView; // @synthesize hairlineSeparatorView=_hairlineSeparatorView;
 @property(readonly, nonatomic) UIImageView *headlineImageView; // @synthesize headlineImageView=_headlineImageView;

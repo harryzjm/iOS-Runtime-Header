@@ -11,6 +11,7 @@
 @protocol SBHSearchBarDelegate <NSObject>
 
 @optional
+- (void)searchBarDidInvalidateIntrinsicContentSize:(SBHSearchBar *)arg1;
 - (void)searchBarCancelButtonClicked:(SBHSearchBar *)arg1;
 - (_Bool)searchBarShouldReturn:(SBHSearchBar *)arg1;
 - (_Bool)searchBar:(SBHSearchBar *)arg1 shouldChangeTextInRange:(struct _NSRange)arg2 replacementText:(NSString *)arg3;

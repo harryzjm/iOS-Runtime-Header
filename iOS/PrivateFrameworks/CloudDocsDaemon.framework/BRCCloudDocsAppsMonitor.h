@@ -11,7 +11,6 @@
 @class NSMutableDictionary, NSMutableSet, NSString, br_pacer;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface BRCCloudDocsAppsMonitor : NSObject <BRCAppListMonitorDelegate>
 {
     NSMutableDictionary *_cloudDocsAppLibrariesByAppID;

@@ -15,9 +15,11 @@
 - (void)activityObservingApplicationWindowDidBecomeForeground;
 - (void)activityObservingApplicationWindowWillBecomeForeground;
 - (void)activityObservingApplicationWillTerminate;
+- (void)activityObservingApplicationWillResignActiveWithSceneID:(NSString *)arg1;
 - (void)activityObservingApplicationWillEnterForeground;
+- (void)activityObservingApplicationDidEnterBackgroundWithSceneID:(NSString *)arg1;
 - (void)activityObservingApplicationDidEnterBackground;
-- (void)activityObservingApplicationDidBecomeActiveWithURL:(NSURL *)arg1 sourceApplication:(NSString *)arg2;
+- (void)activityObservingApplicationDidBecomeActiveWithURL:(NSURL *)arg1 sourceApplication:(NSString *)arg2 sceneID:(NSString *)arg3;
 - (void)activityObservingApplicationDidBecomeActive;
 - (void)activityObservingApplicationDidFinishLaunching;
 @end

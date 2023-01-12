@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ICStoreHLSAssetInfo, ICStorePlatformMetadata, NSArray, NSDate, NSDictionary;
+@class ICStoreHLSAssetInfo, ICStorePlatformMetadata, NSArray, NSDate, NSDictionary, NSString;
 
 @interface ICRadioStationTrack : NSObject
 {
@@ -20,6 +20,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) ICRadioStationTrack *parentTrack; // @synthesize parentTrack=_parentTrack;
 @property(readonly, copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
+@property(readonly, copy, nonatomic) NSString *playbackAuthorizationToken;
 - (id)_hlsAssetFromAssetDictionary:(id)arg1;
 @property(readonly, nonatomic) long long trackType;
 @property(readonly, copy, nonatomic) ICStorePlatformMetadata *storePlatformMetadata;

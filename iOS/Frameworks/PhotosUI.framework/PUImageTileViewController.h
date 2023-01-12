@@ -5,15 +5,17 @@
 //
 
 #import <PhotosUI/PUAssetViewModelChangeObserver-Protocol.h>
+#import <PhotosUI/PUBrowsingViewModelChangeObserver-Protocol.h>
 #import <PhotosUI/PUImageRequesterObserver-Protocol.h>
 
-@class CALayer, NSData, NSDate, NSString, NSURL, PUAssetViewModel, PUImageRequester, PUMediaProvider, PXImageLayerModulator, PXImageModulationManager, UIColor, UIImage, UIImageView;
+@class CALayer, NSData, NSDate, NSString, NSURL, PUAssetViewModel, PUBrowsingViewModel, PUImageRequester, PUMediaProvider, PXImageLayerModulator, PXImageModulationManager, UIColor, UIImage, UIImageView;
 @protocol PLTileableLayer, PUDisplayAsset;
 
 __attribute__((visibility("hidden")))
-@interface PUImageTileViewController <PUImageRequesterObserver, PUAssetViewModelChangeObserver>
+@interface PUImageTileViewController <PUImageRequesterObserver, PUBrowsingViewModelChangeObserver, PUAssetViewModelChangeObserver>
 {
     _Bool _animatesImageAppearance;
+    _Bool _preserveImageDuringReload;
     _Bool _shouldUseFullsizeImageData;
     _Bool _imageIsFullQuality;
     _Bool __needsUpdateImage;
@@ -26,6 +28,9 @@ __attribute__((visibility("hidden")))
     _Bool __isDisplayingFullQualityImage;
     _Bool _shouldUsePenultimateVersionForNextImageUpdate;
     _Bool _canUseFullsizeTiledLayer;
+    _Bool _requiresFullQualityImage;
+    float _gainMapValue;
+    PUBrowsingViewModel *_browsingViewModel;
     PUAssetViewModel *_assetViewModel;
     id <PUDisplayAsset> _asset;
     PUMediaProvider *_mediaProvider;
@@ -41,6 +46,7 @@ __attribute__((visibility("hidden")))
     PUImageRequester *__imageRequester;
     PXImageLayerModulator *_imageLayerModulator;
     UIImage *_image;
+    struct CGImage *_gainMapImage;
     struct CGSize __targetSize;
     struct CGSize __fullsizeImageUntransformedSize;
     struct CGSize __fullsizeImageSize;
@@ -48,9 +54,12 @@ __attribute__((visibility("hidden")))
 
 + (id)_supportedZoomImageFormats;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) float gainMapValue; // @synthesize gainMapValue=_gainMapValue;
+@property(readonly, nonatomic) struct CGImage *gainMapImage; // @synthesize gainMapImage=_gainMapImage;
 @property(readonly, nonatomic) UIImage *image; // @synthesize image=_image;
 @property(retain, nonatomic) PXImageLayerModulator *imageLayerModulator; // @synthesize imageLayerModulator=_imageLayerModulator;
 @property(retain, nonatomic, setter=_setImageRequester:) PUImageRequester *_imageRequester; // @synthesize _imageRequester=__imageRequester;
+@property(nonatomic) _Bool requiresFullQualityImage; // @synthesize requiresFullQualityImage=_requiresFullQualityImage;
 @property(nonatomic) _Bool canUseFullsizeTiledLayer; // @synthesize canUseFullsizeTiledLayer=_canUseFullsizeTiledLayer;
 @property(nonatomic, setter=_setShouldUsePenultimateVersionForNextImageUpdate:) _Bool shouldUsePenultimateVersionForNextImageUpdate; // @synthesize shouldUsePenultimateVersionForNextImageUpdate=_shouldUsePenultimateVersionForNextImageUpdate;
 @property(retain, nonatomic, setter=_setAssetLoadingStartDate:) NSDate *_assetLoadingStartDate; // @synthesize _assetLoadingStartDate=__assetLoadingStartDate;
@@ -74,11 +83,14 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool imageIsFullQuality; // @synthesize imageIsFullQuality=_imageIsFullQuality;
 @property(copy, nonatomic) UIColor *placeholderColor; // @synthesize placeholderColor=_placeholderColor;
 @property(nonatomic) _Bool shouldUseFullsizeImageData; // @synthesize shouldUseFullsizeImageData=_shouldUseFullsizeImageData;
+@property(nonatomic) _Bool preserveImageDuringReload; // @synthesize preserveImageDuringReload=_preserveImageDuringReload;
 @property(nonatomic) _Bool animatesImageAppearance; // @synthesize animatesImageAppearance=_animatesImageAppearance;
 @property(retain, nonatomic) PXImageModulationManager *imageModulationManager; // @synthesize imageModulationManager=_imageModulationManager;
 @property(retain, nonatomic) PUMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property(retain, nonatomic) id <PUDisplayAsset> asset; // @synthesize asset=_asset;
 @property(retain, nonatomic) PUAssetViewModel *assetViewModel; // @synthesize assetViewModel=_assetViewModel;
+@property(retain, nonatomic) PUBrowsingViewModel *browsingViewModel; // @synthesize browsingViewModel=_browsingViewModel;
+- (void)_handleBrowsingViewModel:(id)arg1 didChange:(id)arg2;
 - (void)_handleAssetViewModel:(id)arg1 didChange:(id)arg2;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
 - (void)_cancelAllImageRequests;
@@ -107,13 +119,14 @@ __attribute__((visibility("hidden")))
 - (void)_invalidate;
 - (void)_updateIfNeeded;
 - (_Bool)_needsUpdate;
-- (_Bool)shouldAvoidInPlaceSnapshottedFadeOut;
-- (void)assetContentDidChange;
 - (void)assetDidChange;
-- (void)mediaProviderDidChange;
+- (_Bool)shouldAvoidInPlaceSnapshottedFadeOut;
 - (void)assetViewModelDidChange;
 - (void)_handleShouldReloadAssetMediaNotification:(id)arg1;
 - (void)setPreloadedImage:(id)arg1;
+- (void)setGainMapValue:(float)arg1;
+- (void)setGainMapImage:(struct CGImage *)arg1;
+@property(readonly, nonatomic) _Bool gainMapImageIsAvailable;
 - (void)_setImage:(id)arg1 isFullQuality:(_Bool)arg2;
 - (void)setEdgeAntialiasingEnabled:(_Bool)arg1;
 - (void)didChangeVisibleRect;

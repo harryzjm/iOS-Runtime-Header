@@ -12,12 +12,12 @@
 {
 }
 
-+ (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
 + (Class)configurationClass;
 - (_Bool)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 @property(nonatomic) float faceBoundingBoxExpansionRatio;
 - (void)_determineFacesToProcessFrom:(id)arg1 outputFacesThatNeedNoProcessing:(id)arg2 outputFacesThatNeedAlignment:(id)arg3 outputfacesThatNeedSegments:(id)arg4;
 - (_Bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
+- (_Bool)resultsAreAssignedWithOriginatingRequestSpecifier;
 - (long long)dependencyProcessingOrdinality;
 - (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1 session:(id)arg2;
 - (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
@@ -27,6 +27,7 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(copy, nonatomic) NSArray *inputFaceObservations;
+@property(readonly, copy) NSArray *results; // @dynamic results;
 @property(readonly) Class superclass;
 
 @end

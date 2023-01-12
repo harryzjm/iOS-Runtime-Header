@@ -9,7 +9,7 @@
 #import <CoverSheet/SBUICoronaAnimationControllerParticipant-Protocol.h>
 #import <CoverSheet/SBUISpotlightInitiating-Protocol.h>
 
-@class CSAppearance, CSBehavior, CSLayoutStrategy, CSPresentation, CSTodayContentViewController, CSTodayViewController, NSArray, NSSet, NSString, SBViewControllerTransitionContext, UIColor, _UILegibilitySettings;
+@class CSAppearance, CSBehavior, CSLayoutStrategy, CSPresentation, CSTodayContentViewController, CSTodayViewController, NSArray, NSSet, NSString, SBViewControllerTransitionContext, _UILegibilitySettings;
 @protocol CSCoverSheetViewControllerProtocol, CSCoverSheetViewPresenting, UICoordinateSpace;
 
 @interface CSTodayPageViewController <CSTodayViewControllerDelegate, SBUICoronaAnimationControllerParticipant, CSPageViewControllerProtocol, SBUISpotlightInitiating>
@@ -55,8 +55,6 @@
 @property(readonly, copy, nonatomic) CSBehavior *activeBehavior;
 @property(readonly, copy, nonatomic) NSString *appearanceIdentifier;
 @property(readonly, nonatomic) _Bool authenticated;
-@property(readonly, nonatomic) UIColor *backgroundColor;
-@property(readonly, nonatomic) long long backgroundStyle;
 @property(readonly, copy, nonatomic) NSSet *components;
 @property(readonly, copy, nonatomic) NSString *coverSheetIdentifier;
 @property(nonatomic) __weak id <CSCoverSheetViewControllerProtocol> coverSheetViewController;
@@ -74,6 +72,8 @@
 @property(readonly, nonatomic) long long participantState;
 @property(readonly, nonatomic) long long presentationAltitude;
 @property(readonly, nonatomic) __weak id <UICoordinateSpace> presentationCoordinateSpace;
+@property(readonly, nonatomic) unsigned int presentationFrameRateRangeReason;
+@property(readonly, nonatomic) struct CAFrameRateRange presentationPreferredFrameRateRange;
 @property(readonly, nonatomic) long long presentationPriority;
 @property(readonly, copy, nonatomic) NSArray *presentationRegions;
 @property(readonly, nonatomic) long long presentationStyle;

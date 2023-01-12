@@ -13,9 +13,12 @@
 
 @interface _WKDownload : NSObject <WKObject, NSCopying>
 {
-    struct ObjectStorage<WebKit::DownloadProxy> _download;
+    struct RetainPtr<WKDownload> _download;
 }
 
++ (id)downloadWithDownload:(id)arg1;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(readonly) struct Object *_apiObject;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) WKFrameInfo *originatingFrame;
@@ -26,7 +29,7 @@
 @property(readonly, nonatomic) NSURLRequest *request;
 - (void)publishProgressAtURL:(id)arg1;
 - (void)cancel;
-- (void)dealloc;
+- (id)initWithDownload2:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

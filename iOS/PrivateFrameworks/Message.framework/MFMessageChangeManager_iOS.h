@@ -26,6 +26,7 @@
 - (id)messagesForRemoteIDs:(id)arg1 mailboxURL:(id)arg2;
 - (id)messageForDatabaseID:(long long)arg1;
 - (id)addLabels:(id)arg1 removeLabels:(id)arg2 toMessagesInDatabase:(id)arg3;
+- (void)applyVIPStatus:(_Bool)arg1 toMessagesInDatabase:(id)arg2;
 - (id)applyFlagChange:(id)arg1 toMessagesInDatabase:(id)arg2;
 - (void)resetStatusCountsForMailboxWithURL:(id)arg1;
 - (void)messageWasAppended:(id)arg1;

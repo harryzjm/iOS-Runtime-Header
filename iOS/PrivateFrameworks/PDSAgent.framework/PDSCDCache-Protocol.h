@@ -9,10 +9,12 @@
 @class NSArray, NSSet, NSString, PDSEntry, PDSUser;
 
 @protocol PDSCDCache <NSObject>
+- (void)deleteCache;
 - (_Bool)updateAllEntriesWithState:(unsigned char)arg1 toState:(unsigned char)arg2 withError:(id *)arg3;
 - (_Bool)updateEntryState:(unsigned char)arg1 forUser:(PDSUser *)arg2 clientID:(NSString *)arg3 withError:(id *)arg4;
 - (_Bool)updateEntryState:(unsigned char)arg1 forUser:(PDSUser *)arg2 withError:(id *)arg3;
 - (_Bool)storeEntries:(NSSet *)arg1 transitionBlock:(_Bool (^)(unsigned char, unsigned char))arg2 deleteEntries:(NSSet *)arg3 withError:(id *)arg4;
+- (_Bool)deleteEntriesForUser:(PDSUser *)arg1 withState:(unsigned char)arg2 withError:(id *)arg3;
 - (_Bool)deleteEntry:(PDSEntry *)arg1 withError:(id *)arg2;
 - (_Bool)storeEntry:(PDSEntry *)arg1 transitionBlock:(_Bool (^)(unsigned char, unsigned char))arg2 withError:(id *)arg3;
 - (_Bool)storeEntry:(PDSEntry *)arg1 withError:(id *)arg2;

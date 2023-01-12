@@ -18,7 +18,7 @@
 - (void).cxx_destruct;
 - (_Bool)isValid:(id *)arg1;
 - (void)assert:(_Bool)arg1 error:(id)arg2;
-- (void)assert:(_Bool)arg1 format:(id)arg2;
+- (void)assert:(_Bool)arg1 code:(long long)arg2 format:(id)arg3;
 - (void)validateOption:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)initWithOptions:(unsigned long long)arg1;
 

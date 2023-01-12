@@ -6,9 +6,13 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKConversation, CKSearchController, IMMessageItem, NSArray, NSIndexPath, NSString, UIAlertController, UITraitCollection, UIViewController;
+@class CKConversation, CKSearchController, CKSpotlightQueryResult, IMMessageItem, NSArray, NSIndexPath, NSString, UIAlertController, UICollectionViewCell, UITraitCollection, UIViewController;
+@protocol CKSearchResultCell;
 
 @protocol CKSearchControllerDelegate <NSObject>
+- (UICollectionViewCell<CKSearchResultCell> *)searchController:(CKSearchController *)arg1 cellForResult:(CKSpotlightQueryResult *)arg2;
+- (_Bool)shouldInsetResultsForSearchController:(CKSearchController *)arg1;
+- (double)widthForDeterminingAvatarVisibility;
 - (void)deleteMessageItem:(IMMessageItem *)arg1;
 - (void)deleteTransferGUID:(NSString *)arg1;
 - (void)searchController:(CKSearchController *)arg1 requestsItemDeletionAtIndexPath:(NSIndexPath *)arg2;

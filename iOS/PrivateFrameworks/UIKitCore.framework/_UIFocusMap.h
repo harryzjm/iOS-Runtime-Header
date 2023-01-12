@@ -15,10 +15,11 @@ __attribute__((visibility("hidden")))
     _Bool _minimumSearchAreaIsEmpty;
     _Bool _trackingSearchInfo;
     _Bool _needsSearchInfo;
-    _UIFocusGroupMap *_focusGroupMap;
+    _Bool _ignoresRootContainerClippingRect;
     UIFocusSystem *_focusSystem;
     id <_UIFocusRegionContainer> _rootContainer;
     id <UICoordinateSpace> _coordinateSpace;
+    _UIFocusGroupMap *_focusGroupMap;
     _UIFocusSearchInfo *_searchInfo;
     _UIFocusMapSearchInfo *_defaultItemSearchInfo;
     _UIFocusMapSearchInfo *_focusMovementSearchInfo;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=_defaultItemSearchContext) _UIFocusMapSearchInfo *defaultItemSearchInfo; // @synthesize defaultItemSearchInfo=_defaultItemSearchInfo;
 @property(nonatomic) struct CGRect minimumSearchArea; // @synthesize minimumSearchArea=_minimumSearchArea;
 @property(readonly, nonatomic) _UIFocusSearchInfo *searchInfo; // @synthesize searchInfo=_searchInfo;
+@property(readonly, nonatomic) _UIFocusGroupMap *focusGroupMap; // @synthesize focusGroupMap=_focusGroupMap;
 @property(readonly, nonatomic) __weak id <UICoordinateSpace> coordinateSpace; // @synthesize coordinateSpace=_coordinateSpace;
 @property(readonly, nonatomic) __weak id <_UIFocusRegionContainer> rootContainer; // @synthesize rootContainer=_rootContainer;
 @property(readonly, nonatomic) __weak UIFocusSystem *focusSystem; // @synthesize focusSystem=_focusSystem;
@@ -39,13 +41,13 @@ __attribute__((visibility("hidden")))
 - (void)_beginTrackingDefaultItemSearchInfoIfNecessary;
 - (id)_stopTrackingSearches;
 - (void)_beginTrackingSearches;
-- (id)_linearlySortedFocusItemsForItems:(id)arg1 grouping:(_Bool)arg2;
+- (_Bool)verifyFocusabilityForItem:(id)arg1;
+- (id)_linearlySortedFocusItemsForItems:(id)arg1 groupFilter:(long long)arg2 itemStandInMap:(id)arg3;
 - (id)_findAllDefaultFocusableRegionsWithSnapshotter:(id)arg1;
-- (id)_closestFocusableItemToPoint:(struct CGPoint)arg1 inRect:(struct CGRect)arg2 excludingItems:(id)arg3;
+- (id)_closestFocusableItemToPoint:(struct CGPoint)arg1 inRect:(struct CGRect)arg2 excludingItems:(id)arg3 distanceMeasuringUnitPoint:(struct CGPoint)arg4;
 - (id)_allDefaultFocusableRegionsInContainer:(id)arg1 intersectingRegion:(id)arg2;
 - (id)_nextFocusedItemForLinearFocusMovementRequest:(id)arg1 startingFromRegion:(id)arg2 inRegions:(id)arg3;
 - (unsigned long long)_adjustedIndexPreventingScrollingForLinearMovementFromIndex:(unsigned long long)arg1 toProposedIndex:(unsigned long long)arg2 inItems:(id)arg3 groupBoundaries:(id)arg4 linearHeading:(unsigned long long)arg5;
-- (id)_groupBoundariesForItems:(id)arg1;
 - (id)_nextFocusedItemForNonLinearFocusMovementRequest:(id)arg1 startingFromRegion:(id)arg2 inRegions:(id)arg3;
 - (id)_nextFocusedItemForFocusMovementRequest:(id)arg1 startingFromRegion:(id)arg2 inRegions:(id)arg3;
 - (id)_nextFocusedItemForFocusMovementRequest:(id)arg1 inRegions:(id)arg2;
@@ -54,11 +56,8 @@ __attribute__((visibility("hidden")))
 - (id)_defaultFocusItemInEnvironment:(id)arg1 limitScopeUsingFocusPreferences:(_Bool)arg2;
 - (id)_tests_defaultFocusItemInEnvironment:(id)arg1;
 - (id)_allFocusableItemsInEnvironment:(id)arg1;
-- (id)_focusGroupMap;
 - (id)_defaultMapSnapshotter;
-- (id)initWithFocusSystem:(id)arg1 rootContainer:(id)arg2 coordinateSpace:(id)arg3 searchInfo:(id)arg4;
-- (id)initWithFocusSystem:(id)arg1 rootContainer:(id)arg2 searchInfo:(id)arg3;
-- (id)initWithFocusSystem:(id)arg1 rootContainer:(id)arg2 coordinateSpace:(id)arg3;
+- (id)initWithFocusSystem:(id)arg1 rootContainer:(id)arg2 coordinateSpace:(id)arg3 searchInfo:(id)arg4 ignoresRootContainerClippingRect:(_Bool)arg5;
 - (id)initWithFocusSystem:(id)arg1 rootContainer:(id)arg2;
 - (id)init;
 

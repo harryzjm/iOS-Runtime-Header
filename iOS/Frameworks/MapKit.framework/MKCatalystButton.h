@@ -20,6 +20,7 @@
     NSAttributedString *_subTitle;
 }
 
++ (struct CGColor *)extraShadowLayerBackgroundColorWithDarkMode:(_Bool)arg1 isbuttonEnabled:(_Bool)arg2;
 + (id)titleFont;
 + (id)catalystButton;
 - (void).cxx_destruct;
@@ -38,6 +39,7 @@
 - (void)setPrimaryTitle:(id)arg1;
 - (void)setEnabled:(_Bool)arg1;
 - (void)setHighlighted:(_Bool)arg1;
+- (void)applyBorder:(_Bool)arg1;
 - (void)buttonSelected:(id)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)intrinsicContentSize;

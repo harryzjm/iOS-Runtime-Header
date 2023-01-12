@@ -15,7 +15,6 @@
 }
 
 - (void).cxx_destruct;
-- (double)_offsetYForCenterZoom;
 - (_Bool)_isIndexCenterZoomAppLayout:(unsigned long long)arg1;
 - (_Bool)isSwitcherWindowUserInteractionEnabled;
 - (_Bool)isSwitcherWindowVisible;
@@ -26,7 +25,7 @@
 - (long long)wallpaperStyle;
 - (_Bool)isWallpaperRequiredForSwitcher;
 - (long long)homeScreenBackdropBlurType;
-- (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
+- (struct UIRectCornerRadii)cornerRadiiForIndex:(unsigned long long)arg1;
 - (id)_opacitySettings;
 - (id)_layoutSettings;
 - (id)animationAttributesForLayoutElement:(id)arg1;

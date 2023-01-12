@@ -6,19 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <Silex/SXBannerAdComponent-Protocol.h>
+#import <Silex/SXAdComponent-Protocol.h>
 #import <Silex/SXInsertableComponent-Protocol.h>
 
 @class NSString, SXComponentAnimation, SXComponentClassification, SXComponentConditions, SXJSONArray, SXJSONDictionary, UIColor;
 @protocol SXComponentAnchor;
 
-@interface SXInsertedAdComponent : NSObject <SXInsertableComponent, SXBannerAdComponent>
+@interface SXInsertedAdComponent : NSObject <SXInsertableComponent, SXAdComponent>
 {
     _Bool _hidden;
     NSString *_identifier;
     SXComponentAnimation *_animation;
     SXJSONArray *_behaviors;
-    unsigned long long _bannerType;
     unsigned long long _adType;
     NSString *_placementIdentifier;
     NSString *_style;
@@ -41,7 +40,6 @@
 @property(readonly, nonatomic) NSString *style; // @synthesize style=_style;
 @property(readonly, nonatomic) NSString *placementIdentifier; // @synthesize placementIdentifier=_placementIdentifier;
 @property(readonly, nonatomic) unsigned long long adType; // @synthesize adType=_adType;
-@property(readonly, nonatomic) unsigned long long bannerType; // @synthesize bannerType=_bannerType;
 @property(readonly, nonatomic) SXJSONArray *behaviors; // @synthesize behaviors=_behaviors;
 @property(readonly, nonatomic) SXComponentAnimation *animation; // @synthesize animation=_animation;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;

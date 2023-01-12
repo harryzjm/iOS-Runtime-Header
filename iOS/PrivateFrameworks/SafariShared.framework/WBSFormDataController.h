@@ -48,6 +48,7 @@
 + (id)continuingFieldsInFormControls:(id)arg1 startingAtIndex:(unsigned long long)arg2 textFieldsOnly:(_Bool)arg3 ignorePositioning:(_Bool)arg4;
 + (id)stringWithAddressBookValue:(id)arg1 key:(id)arg2;
 + (id)specifierForControl:(id)arg1;
++ (_Bool)shouldDisplayHideMyEmailForControl:(id)arg1;
 + (_Bool)shouldDisplayOneTimeCodeForControl:(id)arg1 inForm:(id)arg2;
 + (_Bool)formContainsDateFields:(id)arg1 matchingAddressBookMatch:(id)arg2;
 + (id)allSynonymsForMatch:(id)arg1;
@@ -97,6 +98,7 @@
 - (void)_setLastUsedUsername:(id)arg1 andProtectionSpace:(id)arg2 forDomain:(id)arg3;
 - (id)_lastUsedUsernameForDomain:(id)arg1 protectionSpace:(id *)arg2;
 - (id)annotationsFromCredential:(id)arg1 forLoginOrChangePasswordForm:(id)arg2;
+- (id)valuesForFormWithMetadata:(id)arg1 hideMyEmailRecord:(id)arg2;
 - (id)credentialMatchesForForm:(id)arg1 atURL:(id)arg2 potentialMatches:(id *)arg3;
 - (id)valuesForContactFormWithMetadata:(id)arg1 matches:(id *)arg2 multiRoundAutoFillManager:(id)arg3 existingMatches:(id)arg4 shouldUseExistingMatchesToFillFocusedField:(_Bool)arg5 contact:(id)arg6;
 - (id)valuesForContactFormWithMetadata:(id)arg1 matches:(id *)arg2 multiRoundAutoFillManager:(id)arg3 existingMatches:(id)arg4 contact:(id)arg5;

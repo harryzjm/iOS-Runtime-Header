@@ -48,6 +48,7 @@
 - (void)_checkPredicate:(id)arg1;
 - (id)predicateForCompletedRemindersWithCompletionDateStarting:(id)arg1 ending:(id)arg2 calendars:(id)arg3;
 - (id)predicateForIncompleteRemindersWithDueDateStarting:(id)arg1 ending:(id)arg2 calendars:(id)arg3;
+- (id)predicateForCalendarStoreForRemindersInCalendars:(id)arg1;
 - (id)predicateForRemindersInCalendars:(id)arg1;
 - (void)reset;
 - (id)_moveRemindersToNewLists:(id)arg1 error:(id *)arg2;
@@ -63,6 +64,7 @@
 - (id)backingReminderWithIdentifier:(id)arg1;
 - (id)remindersWithExternalIdentifier:(id)arg1;
 - (id)reminderWithIdentifier:(id)arg1;
+- (id)reminderWithUniqueId:(id)arg1;
 - (id)defaultCalendarForNewReminders;
 - (_Bool)removeCalendar:(id)arg1 error:(id *)arg2;
 - (_Bool)saveCalendar:(id)arg1 error:(id *)arg2;

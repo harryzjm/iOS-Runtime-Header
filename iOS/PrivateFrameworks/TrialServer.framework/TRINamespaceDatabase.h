@@ -15,13 +15,13 @@
 
 - (void).cxx_destruct;
 - (_Bool)hasUnfetchedNamespaceForTeamId:(id)arg1;
-- (unsigned long long)setFetched:(_Bool)arg1 forDynamicNamespaceName:(id)arg2;
+- (CDStruct_69d7cc99)setFetched:(_Bool)arg1 forDynamicNamespaceName:(id)arg2;
 - (_Bool)enumerateAppContainerIdsForContainer:(int)arg1 block:(CDUnknownBlockType)arg2;
 - (_Bool)enumerateDynamicNamespaceRecordsForContainer:(int)arg1 teamId:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (_Bool)enumerateDynamicNamespaceRecordsWithBlock:(CDUnknownBlockType)arg1;
 - (id)dynamicNamespaceRecordWithNamespaceName:(id)arg1;
 - (_Bool)_enumerateDynamicNamespaceRecordsWithWhereClause:(id)arg1 bind:(CDUnknownBlockType)arg2 block:(CDUnknownBlockType)arg3;
-- (unsigned long long)removeDynamicNamespaceRecordWithNamespaceName:(id)arg1;
+- (CDStruct_69d7cc99)removeDynamicNamespaceRecordWithNamespaceName:(id)arg1;
 - (_Bool)addOrUpdateDynamicNamespaceWithName:(id)arg1 compatibilityVersion:(unsigned int)arg2 defaultsFileURL:(id)arg3 teamId:(id)arg4 appContainerId:(id)arg5 appContainerType:(long long)arg6 cloudKitContainer:(int)arg7;
 - (struct _PASDBTransactionCompletion_)writeTransactionWithFailableBlock:(CDUnknownBlockType)arg1;
 - (struct _PASDBTransactionCompletion_)readTransactionWithFailableBlock:(CDUnknownBlockType)arg1;

@@ -6,10 +6,10 @@
 
 #import <DoNotDisturbServer/NSObject-Protocol.h>
 
-@class NSDictionary;
+@class DNDSBackingStoreDictionaryContext, NSDictionary;
 
 @protocol DNDSBackingStoreRecord <NSObject>
-+ (id)newWithDictionaryRepresentation:(NSDictionary *)arg1;
-- (NSDictionary *)dictionaryRepresentation;
++ (id)newWithDictionaryRepresentation:(NSDictionary *)arg1 context:(DNDSBackingStoreDictionaryContext *)arg2;
+- (NSDictionary *)dictionaryRepresentationWithContext:(DNDSBackingStoreDictionaryContext *)arg1;
 @end
 

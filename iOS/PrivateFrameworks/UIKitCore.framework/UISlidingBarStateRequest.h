@@ -18,15 +18,11 @@
     double _supplementaryWidth;
     double _supplementaryOffscreenWidth;
     double _rubberBandInset;
-    long long _mainPositioning;
-    double _detachedMainXOffset;
     double _mainWidth;
 }
 
 @property(nonatomic) _Bool userInitiated; // @synthesize userInitiated=_userInitiated;
 @property(nonatomic) double mainWidth; // @synthesize mainWidth=_mainWidth;
-@property(nonatomic) double detachedMainXOffset; // @synthesize detachedMainXOffset=_detachedMainXOffset;
-@property(nonatomic) long long mainPositioning; // @synthesize mainPositioning=_mainPositioning;
 @property(nonatomic) double rubberBandInset; // @synthesize rubberBandInset=_rubberBandInset;
 @property(nonatomic) double supplementaryOffscreenWidth; // @synthesize supplementaryOffscreenWidth=_supplementaryOffscreenWidth;
 @property(nonatomic) double supplementaryWidth; // @synthesize supplementaryWidth=_supplementaryWidth;

@@ -8,11 +8,9 @@
 
 @interface MRGameControllerMessage
 {
-    unsigned long long _priority;
 }
 
 - (_Bool)shouldLog;
-- (unsigned long long)priority;
 - (unsigned long long)type;
 @property(readonly, nonatomic) unsigned long long controllerID;
 @property(readonly, nonatomic) _MRGameControllerMessageProtobuf *event;

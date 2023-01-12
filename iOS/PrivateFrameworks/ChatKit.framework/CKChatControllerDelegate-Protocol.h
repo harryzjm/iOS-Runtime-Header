@@ -14,7 +14,6 @@
 - (void)chatController:(CKChatController *)arg1 forwardComposition:(CKComposition *)arg2;
 
 @optional
-- (void)chatControllerWillDisplayDetailsPopover:(CKChatController *)arg1;
 - (void)keyCommandToggleDetails;
 - (_Bool)isDetailsNavigationControllerDetached;
 - (void)dismissAndReopenDetailsNavigationController;

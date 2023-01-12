@@ -7,7 +7,7 @@
 #import <TSUtility/TSUUUIDPath.h>
 
 @interface TSUUUIDPath (TSPArchivingInternal)
-- (void)saveToMessage:(struct UUIDPath *)arg1;
-- (id)initWithMessage:(const struct UUIDPath *)arg1;
+- (void)saveToMessage:(void *)arg1;
+- (id)initWithMessage:(const void *)arg1;
 @end
 

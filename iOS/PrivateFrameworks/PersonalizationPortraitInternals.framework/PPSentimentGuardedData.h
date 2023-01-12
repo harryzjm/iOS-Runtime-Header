@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NLTokenizer, NSString, _PASCFBurstTrie;
+@class NSString, _PASCFBurstTrie, _PASLazyPurgeableResult;
 
 @interface PPSentimentGuardedData : NSObject
 {
     _PASCFBurstTrie *_tokenWeightTrie;
-    NLTokenizer *_tokenizer;
+    _PASLazyPurgeableResult *_tokenizer;
     NSString *_abGroupIdentifier;
 }
 

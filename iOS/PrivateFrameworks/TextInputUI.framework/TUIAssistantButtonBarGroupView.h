@@ -6,10 +6,12 @@
 
 #import <UIKitCore/UIView.h>
 
-@class NSArray, NSMutableArray, UIBarButtonItemGroup, _UIButtonBarButtonVisualProvider;
+#import <TextInputUI/_UIBarButtonItemViewOwner-Protocol.h>
+
+@class NSArray, NSMutableArray, NSString, UIBarButtonItemGroup, _UIButtonBarButtonVisualProvider;
 @protocol TUIButtonBarViewProvider;
 
-@interface TUIAssistantButtonBarGroupView : UIView
+@interface TUIAssistantButtonBarGroupView : UIView <_UIBarButtonItemViewOwner>
 {
     NSMutableArray *_visibleButtons;
     _Bool _collapsed;
@@ -31,6 +33,7 @@
 - (void)_itemCustomViewDidChange:(id)arg1 fromView:(id)arg2;
 - (void)_itemDidChangeEnabledState:(id)arg1;
 - (void)_itemDidChangeSelectionState:(id)arg1;
+- (void)_updateViewForBarButtonItem:(id)arg1;
 - (void)layoutSubviews;
 - (id)_buttonBarItemViewForBarButtonItem:(id)arg1;
 @property(readonly, nonatomic) NSArray *visibleButtons;
@@ -44,6 +47,12 @@
 @property(nonatomic, getter=isCollapsed) _Bool collapsed;
 - (_Bool)_canBeCollapsed;
 - (id)initWithBarButtonItemGroup:(id)arg1 visualProvider:(id)arg2 buttonProvider:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -12,8 +12,10 @@
     struct CGRect _metadataRectOfInterest;
     int _faceTrackingMaxFaces;
     _Bool _faceTrackingUsesFaceRecognition;
+    _Bool _faceTrackingPlusEnabled;
 }
 
+@property(nonatomic) _Bool faceTrackingPlusEnabled; // @synthesize faceTrackingPlusEnabled=_faceTrackingPlusEnabled;
 @property(nonatomic) _Bool faceTrackingUsesFaceRecognition; // @synthesize faceTrackingUsesFaceRecognition=_faceTrackingUsesFaceRecognition;
 @property(nonatomic) int faceTrackingMaxFaces; // @synthesize faceTrackingMaxFaces=_faceTrackingMaxFaces;
 @property(nonatomic) struct CGRect metadataRectOfInterest; // @synthesize metadataRectOfInterest=_metadataRectOfInterest;

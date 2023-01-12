@@ -14,6 +14,8 @@
 {
 }
 
+- (id)smartPromptWithContentDescription:(id)arg1 contentDestination:(id)arg2 workflowName:(id)arg3;
+- (void)getContentDestinationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)session:(id)arg1 didDisconnectWithError:(id)arg2;
 - (void)finishRunningSSHScriptWithError:(id)arg1;
 - (void)authenticateAndRunAsynchronouslyWithInput:(id)arg1 session:(id)arg2;

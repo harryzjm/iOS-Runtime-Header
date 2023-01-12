@@ -76,6 +76,8 @@
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(_Bool)arg2;
 - (void)scrollViewWillBeginDragging:(id)arg1;
+- (void)reindexNextViewControllers;
+- (void)reindexPreviousViewControllers;
 - (void)reindexViewControllers;
 - (void)addViewController:(id)arg1 fromScroll:(_Bool)arg2;
 - (void)removeViewController:(id)arg1;
@@ -91,6 +93,8 @@
 - (struct CGRect)calculateScrollViewFrameFromViewBounds:(struct CGRect)arg1;
 @property(nonatomic) _Bool pagingEnabled;
 @property(readonly, nonatomic) struct CGSize pageSize;
+- (void)didReceiveBlueprintDidEndItemDraggingEvent;
+- (void)didReceiveBlueprintDidBeginItemDraggingEvent;
 - (void)performWhenIdle:(CDUnknownBlockType)arg1;
 - (void)viewLayoutMarginsDidChange;
 - (void)viewDidDisappear:(_Bool)arg1;

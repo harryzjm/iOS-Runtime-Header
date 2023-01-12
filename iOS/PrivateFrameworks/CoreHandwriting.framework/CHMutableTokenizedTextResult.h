@@ -13,7 +13,7 @@
 + (id)refineAlternativeTokens:(id)arg1 historyTokenIDs:(id)arg2 languageModel:(void *)arg3;
 @property(nonatomic) long long changeableTokenColumnCount; // @dynamic changeableTokenColumnCount;
 @property(nonatomic) long long precedingLineBreaks; // @dynamic precedingLineBreaks;
-- (void)filterCandidatesWithOutOfPattern:(_Bool)arg1 duplicateTokenIDs:(_Bool)arg2 shouldKeepOriginalSpelling:(_Bool)arg3;
+- (void)filterCandidatesWithOutOfPattern:(_Bool)arg1 duplicateTokenIDs:(_Bool)arg2 keepOutOfLexiconAlternatives:(_Bool)arg3 keepAlternativeLengths:(_Bool)arg4 keepSubstrings:(_Bool)arg5 shouldKeepOriginalSpelling:(_Bool)arg6;
 - (void)trimTokensToTranscriptionPathCount:(long long)arg1;
 - (void)adjustColumns;
 - (id)_columnStrokeSetsFromTokenRows:(id)arg1;

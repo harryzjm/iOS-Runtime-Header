@@ -16,6 +16,7 @@
 - (id)_assetManager;
 - (void)_setupAssetManagerWithApplicationBundleURL:(id)arg1;
 @property(retain, nonatomic) UIView *badgeView;
+@property(readonly, nonatomic) _Bool sbh_isShortcutDeleteOrRemove;
 @property(readonly, nonatomic) _Bool sbh_isDestructive;
 @property(readonly, nonatomic) _Bool sbh_isShortcutSpringBoardOnly;
 @property(readonly, nonatomic) unsigned long long sbh_shortcutSection;

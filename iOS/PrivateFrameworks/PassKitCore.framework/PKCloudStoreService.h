@@ -17,6 +17,7 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (CDUnknownBlockType)errorHandlerForMethod:(SEL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)_remoteObjectProxyWithSemaphore:(id)arg1;
 - (id)_remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
@@ -26,12 +27,8 @@
 - (void)checkTLKsMissingWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setupCloudDatabaseForContainerName:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)cloudStoreStatusForContainer:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)noteAccountDeleted;
-- (void)noteCloudSyncPassesSwitchChanged;
-- (void)sendShareInvitationForRecipientHandle:(id)arg1 zoneName:(id)arg2 containerName:(id)arg3 qualityOfService:(long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)shareForZoneName:(id)arg1 containerName:(id)arg2 qualityOfService:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)declineInvitationForRecipientHandle:(id)arg1 zoneName:(id)arg2 containerName:(id)arg3 qualityOfService:(long long)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)acceptShareInvitation:(id)arg1 qualityOfService:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchAndStoreRecordsForTransactionSourceIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)simulateCloudStorePushForContainerIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)populateEvents:(id)arg1 forAccountIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -42,10 +39,12 @@
 - (void)recreateZone:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)itemOfItemType:(unsigned long long)arg1 recordName:(id)arg2 qualityOfService:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)itemOfItemType:(unsigned long long)arg1 recordName:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)cloudStoreRecordArrayWithConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)itemOfItemTypeFromAllZones:(unsigned long long)arg1 recordName:(id)arg2 qualityOfService:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)allItemsOfItemType:(unsigned long long)arg1 storeLocally:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeRecordWithRecordName:(id)arg1 zoneName:(id)arg2 containerName:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)updateCloudStoreWithLocalItems:(id)arg1 recordSpecificKeys:(id)arg2 includeServerData:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)removeAllItems:(unsigned long long)arg1 inZoneName:(id)arg2 containerName:(id)arg3 storeLocally:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)updateCloudStoreWithLocalItemsWithConfigurations:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 
 // Remaining properties

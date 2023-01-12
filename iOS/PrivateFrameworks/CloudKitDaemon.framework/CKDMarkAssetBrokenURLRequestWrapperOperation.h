@@ -6,7 +6,6 @@
 
 @class CKDMarkAssetBrokenURLRequest;
 
-__attribute__((visibility("hidden")))
 @interface CKDMarkAssetBrokenURLRequestWrapperOperation
 {
     CKDMarkAssetBrokenURLRequest *_urlRequest;

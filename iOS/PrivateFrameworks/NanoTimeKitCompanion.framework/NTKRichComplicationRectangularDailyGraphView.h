@@ -39,7 +39,7 @@
 - (double)_lineStrokeWidthGivenRect:(struct CGRect)arg1;
 - (void)_drawVerticalHourLines:(struct CGContext *)arg1 rect:(struct CGRect)arg2 bottomLabelPadding:(double)arg3;
 - (id)_datesForGraphInTimezone:(id)arg1;
-- (double)_calculateGraphXBasedOnRect:(struct CGRect)arg1 constants:(CDStruct_05cddbcc)arg2;
+- (double)_calculateGraphXBasedOnRect:(struct CGRect)arg1 constants:(CDStruct_a6477b43)arg2;
 - (void)_addSubviews;
 - (void)_addConstraints;
 - (void)resetToNoDataState:(id)arg1;

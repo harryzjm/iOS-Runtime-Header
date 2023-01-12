@@ -49,7 +49,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <AVTransitionControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_startObservingAnimatorProgress;
 - (void)_fireDidBeginHandlerIfNeeded;
-- (void)transitionWillComplete:(id)arg1 success:(_Bool)arg2;
+- (void)transitionWillComplete:(id)arg1 success:(_Bool)arg2 continueBlock:(CDUnknownBlockType)arg3;
 - (id)transitionPresentedViewBackgroundColor:(id)arg1;
 - (id)transitionBackgroundViewBackgroundColor:(id)arg1;
 - (id)interactionControllerForDismissal:(id)arg1;

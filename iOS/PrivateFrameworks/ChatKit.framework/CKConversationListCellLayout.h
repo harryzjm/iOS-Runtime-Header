@@ -9,38 +9,48 @@
 @interface CKConversationListCellLayout : NSObject
 {
     _Bool _shouldShowChevron;
+    _Bool _shouldShowAvatarView;
     _Bool _invalid;
     double _tableViewWidth;
     double _summaryLabelCapFrameYOrigin;
     double _trailingLayoutMarginSize;
     double _contentViewWidth;
+    double _widthForDeterminingAvatarVisibility;
     double _lastUsedDisplayScale;
     double _cellHeight;
-    struct CGRect _summaryFrame;
+    struct CGRect _summaryFrameIfMuted;
+    struct CGRect _summaryFrameIfNotMuted;
     struct CGRect _dateFrame;
     struct CGRect _senderFrame;
     struct CGRect _chevronFrame;
+    struct CGRect _muteIconFrame;
     struct CGRect _unreadFrame;
+    struct CGRect _avatarFrame;
 }
 
 + (id)sharedInstance;
 @property(nonatomic) double cellHeight; // @synthesize cellHeight=_cellHeight;
 @property(nonatomic) double lastUsedDisplayScale; // @synthesize lastUsedDisplayScale=_lastUsedDisplayScale;
+@property(nonatomic) double widthForDeterminingAvatarVisibility; // @synthesize widthForDeterminingAvatarVisibility=_widthForDeterminingAvatarVisibility;
 @property(nonatomic) double contentViewWidth; // @synthesize contentViewWidth=_contentViewWidth;
 @property(nonatomic) _Bool invalid; // @synthesize invalid=_invalid;
 @property(nonatomic) double trailingLayoutMarginSize; // @synthesize trailingLayoutMarginSize=_trailingLayoutMarginSize;
 @property(nonatomic) double summaryLabelCapFrameYOrigin; // @synthesize summaryLabelCapFrameYOrigin=_summaryLabelCapFrameYOrigin;
+@property(nonatomic) struct CGRect avatarFrame; // @synthesize avatarFrame=_avatarFrame;
 @property(nonatomic) struct CGRect unreadFrame; // @synthesize unreadFrame=_unreadFrame;
+@property(nonatomic) struct CGRect muteIconFrame; // @synthesize muteIconFrame=_muteIconFrame;
 @property(nonatomic) struct CGRect chevronFrame; // @synthesize chevronFrame=_chevronFrame;
 @property(nonatomic) struct CGRect senderFrame; // @synthesize senderFrame=_senderFrame;
 @property(nonatomic) struct CGRect dateFrame; // @synthesize dateFrame=_dateFrame;
-@property(nonatomic) struct CGRect summaryFrame; // @synthesize summaryFrame=_summaryFrame;
+@property(nonatomic) struct CGRect summaryFrameIfNotMuted; // @synthesize summaryFrameIfNotMuted=_summaryFrameIfNotMuted;
+@property(nonatomic) struct CGRect summaryFrameIfMuted; // @synthesize summaryFrameIfMuted=_summaryFrameIfMuted;
+@property(nonatomic) _Bool shouldShowAvatarView; // @synthesize shouldShowAvatarView=_shouldShowAvatarView;
 @property(nonatomic) _Bool shouldShowChevron; // @synthesize shouldShowChevron=_shouldShowChevron;
 @property(nonatomic) double tableViewWidth; // @synthesize tableViewWidth=_tableViewWidth;
 - (double)cellHeightForDisplayScale:(double)arg1;
 - (void)invalidate;
-- (void)markAsValidForContentViewWidth:(double)arg1;
-- (_Bool)isValidForContentViewWidth:(double)arg1;
+- (void)markAsValidForContentViewWidth:(double)arg1 widthForDeterminingAvatarVisibility:(double)arg2;
+- (_Bool)isValidForContentViewWidth:(double)arg1 widthForDeterminingAvatarVisibility:(double)arg2;
 - (id)init;
 
 @end

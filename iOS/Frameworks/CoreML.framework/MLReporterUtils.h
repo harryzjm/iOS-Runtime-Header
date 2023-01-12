@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (_Bool)archiveModelDetails:(const map_5554a4ce *)arg1 withName:(const basic_string_90719d97 *)arg2 toArchive:(struct _MLModelOutputArchiver *)arg3 error:(id *)arg4;
++ (_Bool)archiveModelDetails:(const void *)arg1 withName:(const void *)arg2 toArchive:(void *)arg3 error:(id *)arg4;
 + (id)hashFileAt:(id)arg1 error:(id *)arg2;
 
 @end

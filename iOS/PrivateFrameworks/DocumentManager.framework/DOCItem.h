@@ -8,13 +8,13 @@
 
 #import <DocumentManager/NSSecureCoding-Protocol.h>
 
-@class FPItem, FPSandboxingURLWrapper, NSString, NSURL;
+@class FPItem, FPSandboxingURLWrapper, NSString, NSURL, UTType;
 
 @interface DOCItem : NSObject <NSSecureCoding>
 {
     FPSandboxingURLWrapper *_wrapper;
     _Bool _needsToBeImported;
-    NSString *_contentType;
+    UTType *_contentType;
     NSURL *_fileURL;
     NSString *_bookmarkableString;
     FPItem *_fileProviderItem;
@@ -30,15 +30,16 @@
 @property(retain) FPItem *fileProviderItem; // @synthesize fileProviderItem=_fileProviderItem;
 @property(retain) NSString *bookmarkableString; // @synthesize bookmarkableString=_bookmarkableString;
 @property(copy, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
-@property(copy, nonatomic) NSString *contentType; // @synthesize contentType=_contentType;
+@property(copy, nonatomic) UTType *contentType; // @synthesize contentType=_contentType;
 - (void)setNeedsToBeImported:(_Bool)arg1;
 - (_Bool)needsToBeImported;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)fileURLForUploading;
 - (id)coordinatedFileURL;
 - (void)copyURLToInbox:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)convertAndCopyURLToInbox:(id)arg1 ofType:(id)arg2 conversionRules:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)prepareForMode:(unsigned long long)arg1 usingBookmark:(_Bool)arg2 shouldConvert:(_Bool)arg3 conversionRules:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (void)prepareForMode:(unsigned long long)arg1 usingBookmark:(_Bool)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (id)initWithURL:(id)arg1 fileProviderItem:(id)arg2;
 - (id)initWithBookmarkableString:(id)arg1 fileProviderItem:(id)arg2;

@@ -15,6 +15,9 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *facedAssetLocalIdentifiers; // @synthesize facedAssetLocalIdentifiers=_facedAssetLocalIdentifiers;
 @property(readonly, nonatomic) NSSet *personNodes; // @synthesize personNodes=_personNodes;
+- (id)memoryFeatureNodesInGraph:(id)arg1;
+- (unsigned long long)memoryCategorySubcategory;
+- (unsigned long long)memoryCategory;
 - (id)initWithMomentNodes:(id)arg1 personNodes:(id)arg2;
 
 @end

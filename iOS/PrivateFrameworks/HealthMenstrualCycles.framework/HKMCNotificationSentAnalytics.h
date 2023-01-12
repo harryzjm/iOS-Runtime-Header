@@ -11,6 +11,7 @@
 }
 
 + (void)submitMetricForCategory:(id)arg1;
++ (void)submitMetricForCategory:(id)arg1 numberOfDaysShiftedForFertileWindow:(long long)arg2 numberOfDaysBeforePredictionEnd:(long long)arg3;
 + (_Bool)_isAllowed;
 + (_Bool)_isMetricEnabled;
 + (_Bool)shouldSubmit;

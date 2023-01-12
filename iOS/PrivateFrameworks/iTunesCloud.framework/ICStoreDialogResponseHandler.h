@@ -16,6 +16,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void)_handleFamilyPermissionButtonAction:(id)arg1 usingRequestContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_handleGotoButtonAction:(id)arg1 usingRequestContext:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)_handleBuyButtonAction:(id)arg1 usingRequestContext:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)_handleAuthenticationStoreDialogResponse:(id)arg1 usingRequestContext:(id)arg2 withDialogTimeout:(double)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;

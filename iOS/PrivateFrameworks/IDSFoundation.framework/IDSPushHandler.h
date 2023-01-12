@@ -23,6 +23,7 @@
 @property(nonatomic) _Bool shouldWaitToSetTopics; // @synthesize shouldWaitToSetTopics=_shouldWaitToSetTopics;
 - (void)connection:(id)arg1 didChangeConnectedStatus:(_Bool)arg2;
 - (void)connection:(id)arg1 didReceiveIncomingMessage:(id)arg2;
+- (void)writePushPayloadToDiskIfEnabled:(id)arg1 topic:(id)arg2;
 - (void)configureAsMacNotificationCenterObserver:(id)arg1;
 - (void)configureAsMacNotificationCenterObserver:(id)arg1 withPushToWakeTopics:(id)arg2;
 - (struct __SecIdentity *)copyPushIdentity;

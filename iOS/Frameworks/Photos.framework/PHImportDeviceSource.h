@@ -57,6 +57,7 @@
 - (void)deviceDidBecomeReady:(id)arg1;
 - (void)didRemoveDevice:(id)arg1;
 - (void)deviceDidBecomeReadyWithCompleteContentCatalog:(id)arg1;
+- (_Bool)containsSupportedMedia:(id *)arg1;
 - (_Bool)canReference;
 - (_Bool)isAvailable;
 - (void)eject;
@@ -64,10 +65,12 @@
 - (id)volumePath;
 - (_Bool)isConnectedDevice;
 - (_Bool)canAutolaunch;
+- (_Bool)isOptimizedCPLStorage;
 - (_Bool)canDeleteContent;
 - (_Bool)isAppleDevice;
 - (struct CGImage *)icon;
 - (id)path;
+- (_Bool)isCamera;
 - (id)productKind;
 - (id)name;
 - (id)cameraFilesForAssets:(id)arg1;
@@ -75,7 +78,7 @@
 - (id)assetsByProcessingItem:(id)arg1;
 - (void)removeAssetForCameraFile:(id)arg1;
 - (id)importAssetForCameraFile:(id)arg1 create:(_Bool)arg2;
-- (void)beginWork;
+- (void)beginProcessingWithCompletion:(CDUnknownBlockType)arg1;
 - (void)cameraDevice:(id)arg1 setAccessState:(unsigned char)arg2;
 - (void)fetchMetadataForRequest:(id)arg1 importAsset:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)sendNextMetadataRequest;

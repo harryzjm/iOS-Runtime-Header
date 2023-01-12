@@ -16,6 +16,7 @@
     _Bool _seekToBeginningAtEnd;
     _Bool _preventsSleepDuringVideoPlayback;
     _Bool _allowsExternalPlayback;
+    _Bool _shouldDisableAutomaticPixelBufferUpdates;
     _Bool _shouldFadeVolumeChange;
     float _volume;
     long long _desiredPlayState;
@@ -33,6 +34,7 @@
 @property(readonly, nonatomic) unsigned long long audioSessionCategoryOptions; // @synthesize audioSessionCategoryOptions=_audioSessionCategoryOptions;
 @property(readonly, copy, nonatomic) NSString *audioSessionCategory; // @synthesize audioSessionCategory=_audioSessionCategory;
 @property(nonatomic) void *presenter; // @synthesize presenter=_presenter;
+@property(nonatomic) _Bool shouldDisableAutomaticPixelBufferUpdates; // @synthesize shouldDisableAutomaticPixelBufferUpdates=_shouldDisableAutomaticPixelBufferUpdates;
 @property(readonly, nonatomic) unsigned long long audioSessionRouteSharingPolicy; // @synthesize audioSessionRouteSharingPolicy=_audioSessionRouteSharingPolicy;
 @property(readonly, nonatomic) NSString *audioSessionMode; // @synthesize audioSessionMode=_audioSessionMode;
 @property(nonatomic) _Bool allowsExternalPlayback; // @synthesize allowsExternalPlayback=_allowsExternalPlayback;

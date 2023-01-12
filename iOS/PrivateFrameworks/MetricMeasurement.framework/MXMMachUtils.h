@@ -12,6 +12,7 @@
 
 + (id)_processNameWithBundleIdentifier:(id)arg1;
 + (unsigned long long)_absoluteTimeWithNanoseconds:(double)arg1;
++ (double)_nanosecondsWithContinuousTime:(unsigned long long)arg1;
 + (double)_nanosecondsWithAbsoluteTime:(unsigned long long)arg1;
 + (struct mach_timebase_info *)_timebase;
 

@@ -11,7 +11,7 @@
 @protocol OABFillPropertiesManager <OABColorPropertiesManager>
 - (NSString *)fillBlipName;
 - (unsigned int)fillBlipID;
-- (const struct EshTablePropVal<EshGradientStop> *)fillGradientColors;
+- (const void *)fillGradientColors;
 - (int)fillFocusBottom;
 - (int)fillFocusRight;
 - (int)fillFocusTop;

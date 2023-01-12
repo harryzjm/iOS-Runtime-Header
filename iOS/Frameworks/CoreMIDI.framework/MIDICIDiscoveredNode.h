@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <CoreMIDI/NSSecureCoding-Protocol.h>
+
 @class MIDICIDeviceInfo, NSNumber;
 
-@interface MIDICIDiscoveredNode : NSObject
+@interface MIDICIDiscoveredNode : NSObject <NSSecureCoding>
 {
     unsigned int _destination;
     MIDICIDeviceInfo *_deviceInfo;
@@ -18,13 +20,17 @@
 }
 
 + (id)description;
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool supportsProperties; // @synthesize supportsProperties=_supportsProperties;
 @property(readonly, nonatomic) _Bool supportsProfiles; // @synthesize supportsProfiles=_supportsProfiles;
 @property(readonly, nonatomic) MIDICIDeviceInfo *deviceInfo; // @synthesize deviceInfo=_deviceInfo;
 @property(readonly, nonatomic) unsigned int destination; // @synthesize destination=_destination;
+- (_Bool)isEqual:(id)arg1;
 @property(readonly, nonatomic) NSNumber *maximumSysExSize;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithDestination:(unsigned int)arg1 deviceID:(struct MIDICIDeviceIdentification)arg2 profilesSupported:(_Bool)arg3 propertiesSupported:(_Bool)arg4 maxSysExSize:(unsigned int)arg5;
 - (id)init;
 

@@ -10,7 +10,9 @@
 
 @interface _TtC15MediaFoundationP33_8E60203C4A0D8D08719FEC3D39F6597C26UserEventCompletionMonitor : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *delegate;
     MISSING_TYPE *monitoredUserEvent;
+    MISSING_TYPE *monitoredUserEventOverride;
     MISSING_TYPE *timer;
     MISSING_TYPE *timeout;
     MISSING_TYPE *reporter;

@@ -6,11 +6,11 @@
 
 @interface CKStaticLayoutComponent
 {
-    vector_24047093 _children;
+    struct vector<CKStaticLayoutComponentChild, std::allocator<CKStaticLayoutComponentChild>> _children;
 }
 
-+ (id)newWithChildren:(const vector_24047093 *)arg1;
-+ (id)newWithView:(const struct CKComponentViewConfiguration *)arg1 size:(const struct CKComponentSize *)arg2 children:(const vector_24047093 *)arg3;
++ (id)newWithChildren:(const void *)arg1;
++ (id)newWithView:(const void *)arg1 size:(const struct CKComponentSize *)arg2 children:(const void *)arg3;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (struct CKComponentLayout)computeLayoutThatFits:(struct CKSizeRange)arg1;

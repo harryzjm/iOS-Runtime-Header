@@ -6,9 +6,6 @@
 
 #import <Foundation/NSURL.h>
 
-@class NSDictionary;
-
 @interface NSURL (Fragments)
-@property(readonly, copy, nonatomic) NSDictionary *fragments;
 @end
 

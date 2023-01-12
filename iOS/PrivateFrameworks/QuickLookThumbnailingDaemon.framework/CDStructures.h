@@ -36,10 +36,6 @@ struct fsid {
     int val[2];
 };
 
-struct os_activity_scope_state_s {
-    unsigned long long opaque[2];
-};
-
 struct statfs {
     unsigned int f_bsize;
     int f_iosize;

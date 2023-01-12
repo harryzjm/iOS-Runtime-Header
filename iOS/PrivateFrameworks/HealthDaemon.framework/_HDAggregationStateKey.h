@@ -17,10 +17,7 @@ __attribute__((visibility("hidden")))
     HKDevice *_device;
 }
 
-+ (id)keyForCollector:(id)arg1 device:(id)arg2 aggregator:(id)arg3;
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) HKDevice *device; // @synthesize device=_device;
-@property(readonly, copy, nonatomic) NSString *collectorIdentifier; // @synthesize collectorIdentifier=_collectorIdentifier;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

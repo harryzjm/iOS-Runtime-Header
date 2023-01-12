@@ -12,10 +12,6 @@
 + (id)setup;
 + (id)_singletonAlloc;
 - (void)setupPipeline:(id)arg1 fromCamera:(id)arg2;
-- (id)autorelease;
-- (oneway void)release;
-- (unsigned long long)retainCount;
-- (id)retain;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

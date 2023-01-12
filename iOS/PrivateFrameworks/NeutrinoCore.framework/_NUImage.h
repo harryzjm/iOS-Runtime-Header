@@ -25,7 +25,7 @@
     NURegion *_validRegion;
     NSPointerArray *_tiles;
     id <NUStorageFactory> _tileFactory;
-    struct vector<unsigned char, std::__1::allocator<unsigned char>> _accessCount;
+    struct vector<unsigned char, std::allocator<unsigned char>> _accessCount;
 }
 
 - (id).cxx_construct;

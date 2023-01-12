@@ -11,5 +11,7 @@
 @protocol PKTransactionAuthenticationPasscodeViewControllerDelegate <NSObject>
 - (void)passcodeViewController:(PKTransactionAuthenticationPasscodeViewController *)arg1 didGenerateEncryptedPasscode:(PKEncryptedDataObject *)arg2;
 - (void)passcodeViewControllerDidCancel:(PKTransactionAuthenticationPasscodeViewController *)arg1;
+- (void)passcodeViewControllerDidEndSessionExchange:(PKTransactionAuthenticationPasscodeViewController *)arg1;
+- (void)passcodeViewController:(PKTransactionAuthenticationPasscodeViewController *)arg1 requestSessionExchangeTokenWithHandler:(void (^)(NSData *))arg2;
 @end
 

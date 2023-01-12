@@ -33,6 +33,7 @@
 - (id)defaultButtonTitle;
 - (void)show;
 - (id)title;
+- (void)dealloc;
 - (id)initWithButtonTitle:(id)arg1 handles:(id)arg2 dialAction:(CDUnknownBlockType)arg3;
 - (id)initWithJoinRequest:(id)arg1 dialAction:(CDUnknownBlockType)arg2;
 - (id)initWithDialRequest:(id)arg1 dialAction:(CDUnknownBlockType)arg2;

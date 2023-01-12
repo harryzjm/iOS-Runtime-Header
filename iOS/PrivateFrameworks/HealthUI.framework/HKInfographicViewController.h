@@ -12,6 +12,7 @@
 
 @interface HKInfographicViewController : UIViewController <UITableViewDataSource>
 {
+    long long _tableViewStyle;
     UITableView *_tableView;
     NSArray *_items;
 }
@@ -19,11 +20,15 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *items; // @synthesize items=_items;
 @property(retain, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
+- (void)_updateTableViewTopPadding;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;
+- (id)initWithItems:(id)arg1 tableViewStyle:(long long)arg2;
 - (id)initWithItems:(id)arg1;
+- (id)initWithContentItems:(id)arg1;
 - (id)initWithTextItems:(id)arg1;
 
 // Remaining properties

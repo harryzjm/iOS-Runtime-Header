@@ -8,6 +8,7 @@
 
 @class ICUserIdentityProperties, ICUserIdentityStore, NSArray, NSMapTable, NSMutableArray, NSMutableDictionary;
 
+__attribute__((visibility("hidden")))
 @interface _ICUserCredentialProviderRequestSession : NSObject
 {
     ICUserIdentityProperties *_activeICloudAccountProperties;

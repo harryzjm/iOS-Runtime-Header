@@ -10,7 +10,6 @@
 
 @class PBUnknownFields;
 
-__attribute__((visibility("hidden")))
 @interface GEOPDParsecRankingFeatures : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;

@@ -8,7 +8,6 @@
 
 @class BRCDeadlineScheduler, BRCFairScheduler, NSDate, NSMutableDictionary, NSString, brc_task_tracker;
 
-__attribute__((visibility("hidden")))
 @interface BRCFSDownloader <BRCModule>
 {
     brc_task_tracker *_tracker;
@@ -22,6 +21,8 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) BRCDeadlineScheduler *downloadsDeadlineScheduler; // @synthesize downloadsDeadlineScheduler=_downloadsDeadlineScheduler;
+- (unsigned int)recoverAndReportMissingJobs;
+- (void)_clearDownloadErrorForDocument:(id)arg1;
 - (void)_reportDownloadErrorForDocument:(id)arg1 error:(id)arg2;
 - (void)transferStreamOfSyncContext:(id)arg1 didBecomeReadyWithMaxRecordsCount:(unsigned long long)arg2 sizeHint:(unsigned long long)arg3 priority:(long long)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (void)_transferStreamOfSyncContext:(id)arg1 didBecomeReadyWithMaxRecordsCount:(unsigned long long)arg2 sizeHint:(unsigned long long)arg3 priority:(long long)arg4;

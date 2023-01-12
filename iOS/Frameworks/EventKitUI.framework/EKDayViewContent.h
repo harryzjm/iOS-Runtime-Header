@@ -82,8 +82,6 @@
 @property(readonly, nonatomic) EKCalendarDate *endDate; // @synthesize endDate=_endDate;
 @property(copy, nonatomic) EKCalendarDate *startDate; // @synthesize startDate=_startDate;
 - (double)RoundToScreenScale:(double)arg1;
-- (double)RoundToScreenScaleForFloat:(double)arg1;
-- (struct CGRect)RoundRectToScreenScaleForRect:(struct CGRect)arg1;
 - (void)_tapRecognized:(id)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (_Bool)_getBottomPinRegion:(double *)arg1 dayIndex:(unsigned long long *)arg2 forPoint:(struct CGPoint)arg3;

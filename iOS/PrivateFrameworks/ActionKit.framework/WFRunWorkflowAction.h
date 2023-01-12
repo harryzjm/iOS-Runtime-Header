@@ -7,31 +7,40 @@
 #import <WorkflowKit/WFAction.h>
 
 #import <ActionKit/WFWorkflowControllerDelegate-Protocol.h>
+#import <ActionKit/WFWorkflowRunnerClientDelegate-Protocol.h>
 
-@class NSString, WFWorkflowController;
+@class NSProgress, NSString, WFWorkflowController, WFWorkflowRunnerClient;
 
-@interface WFRunWorkflowAction : WFAction <WFWorkflowControllerDelegate>
+@interface WFRunWorkflowAction : WFAction <WFWorkflowRunnerClientDelegate, WFWorkflowControllerDelegate>
 {
+    WFWorkflowRunnerClient *_workflowRunnerClient;
     WFWorkflowController *_workflowController;
+    NSProgress *_workflowRunningProgress;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSProgress *workflowRunningProgress; // @synthesize workflowRunningProgress=_workflowRunningProgress;
 @property(nonatomic) __weak WFWorkflowController *workflowController; // @synthesize workflowController=_workflowController;
-- (id)targetContentAttribution;
-- (id)workflowController:(id)arg1 userInterfaceForAction:(id)arg2;
+@property(retain, nonatomic) WFWorkflowRunnerClient *workflowRunnerClient; // @synthesize workflowRunnerClient=_workflowRunnerClient;
+- (id)smartPromptWithContentDescription:(id)arg1 contentDestination:(id)arg2 workflowName:(id)arg3;
+- (id)userInterfaceForWorkflowController:(id)arg1;
 - (_Bool)workflowController:(id)arg1 handleUnsupportedEnvironmentForAction:(id)arg2 currentState:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (_Bool)workflowController:(id)arg1 handleUnsupportedUserInterfaceForAction:(id)arg2 currentState:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)workflowController:(id)arg1 parameterInputProviderForAction:(id)arg2;
 - (void)workflowController:(id)arg1 didFinishRunningWithError:(id)arg2 cancelled:(_Bool)arg3;
 - (void)workflowController:(id)arg1 prepareToRunAction:(id)arg2 withInput:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)getHandoffWorkflowControllerState:(CDUnknownBlockType)arg1;
+- (void)setHandoffWorkflowControllerState:(id)arg1;
+- (id)getWorkflowWithError:(id *)arg1;
+- (void)workflowRunnerClient:(id)arg1 didFinishRunningWorkflowWithOutput:(id)arg2 error:(id)arg3 cancelled:(_Bool)arg4;
+- (void)workflowRunnerClient:(id)arg1 didStartRunningWorkflowWithProgress:(id)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)dealloc;
+- (id)contentDestinationWithError:(id *)arg1;
 - (void)finishRunningWithError:(id)arg1;
 - (void)cancel;
 - (void)stop;
 - (void)runAsynchronouslyWithInput:(id)arg1;
-- (void)getHandoffWorkflowControllerState:(CDUnknownBlockType)arg1;
-- (void)setHandoffWorkflowControllerState:(id)arg1;
-- (id)getWorkflowWithError:(id *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

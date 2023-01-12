@@ -11,5 +11,8 @@
 @protocol HFItemUpdating <NSObject>
 - (NSSet *)childItemsForItem:(HFItem *)arg1;
 - (NAFuture *)performItemUpdateRequest:(HFItemUpdateRequest *)arg1;
+
+@optional
+- (_Bool)itemIsBeingDisplayed:(HFItem *)arg1;
 @end
 

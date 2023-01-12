@@ -6,15 +6,19 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
+@class PXPeopleBootstrapContext;
 @protocol PXPeopleFlowViewControllerActionDelegate;
 
 @protocol PXPeopleFlowViewController <NSObject>
-@property(retain, nonatomic) id context;
+@property(readonly, nonatomic) _Bool wantsCancelButton;
+@property(readonly, nonatomic) PXPeopleBootstrapContext *bootstrapContext;
 
 @optional
 @property(nonatomic) __weak id <PXPeopleFlowViewControllerActionDelegate> actionDelegate;
 @property(readonly, nonatomic) struct CGSize preferredSize;
+@property(readonly, nonatomic) _Bool controlsAdvancementInternally;
 - (void)willTransitionToPreviousInFlow;
+- (void)willTransitionIn;
 - (void)willTransitionToNextInFlow;
 @end
 

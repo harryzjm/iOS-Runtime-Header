@@ -9,7 +9,7 @@
 }
 
 - (id)_potentialMemoriesForDryTesting;
-- (void)_enumeratePotentialMemoriesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)_enumeratePotentialMemoriesWithGraph:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)highlyInterestingMomentNodesInGraph:(id)arg1 withProgress:(CDUnknownBlockType)arg2;
 
 @end

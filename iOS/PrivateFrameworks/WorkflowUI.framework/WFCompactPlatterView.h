@@ -23,6 +23,7 @@
     NSString *_attributionTitle;
     WFImage *_attributionIcon;
     NSString *_primaryText;
+    long long _primaryTextAlignment;
     NSString *_secondaryText;
     UIInterfaceActionGroup *_actionGroup;
     UIView *_contentView;
@@ -65,6 +66,7 @@
 @property(nonatomic) _Bool arrangeActionsVertically; // @synthesize arrangeActionsVertically=_arrangeActionsVertically;
 @property(retain, nonatomic) UIInterfaceActionGroup *actionGroup; // @synthesize actionGroup=_actionGroup;
 @property(copy, nonatomic) NSString *secondaryText; // @synthesize secondaryText=_secondaryText;
+@property(nonatomic) long long primaryTextAlignment; // @synthesize primaryTextAlignment=_primaryTextAlignment;
 @property(copy, nonatomic) NSString *primaryText; // @synthesize primaryText=_primaryText;
 @property(copy, nonatomic) WFImage *attributionIcon; // @synthesize attributionIcon=_attributionIcon;
 @property(copy, nonatomic) NSString *attributionTitle; // @synthesize attributionTitle=_attributionTitle;

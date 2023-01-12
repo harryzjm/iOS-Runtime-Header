@@ -11,7 +11,7 @@
 @interface _EARTextNormalization : NSObject
 {
     _EARTokenizer *_tokenizer;
-    struct unique_ptr<quasar::Munger, std::__1::default_delete<quasar::Munger>> _munger;
+    struct unique_ptr<quasar::Munger, std::default_delete<quasar::Munger>> _munger;
 }
 
 - (id).cxx_construct;

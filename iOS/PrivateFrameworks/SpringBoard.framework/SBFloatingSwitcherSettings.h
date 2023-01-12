@@ -6,7 +6,7 @@
 
 #import <PrototypeTools/PTSettings.h>
 
-@class MTLumaDodgePillSettings;
+@class MTLumaDodgePillSettings, SBFFluidBehaviorSettings;
 
 @interface SBFloatingSwitcherSettings : PTSettings
 {
@@ -28,6 +28,12 @@
     double _titleOpacityFadeDistance;
     double _overshootPullbackDelayOffscreen;
     double _overshootPullbackDelayOnscreen;
+    double _rightEdgePeekDelay;
+    double _rightEdgePeekTimeout;
+    SBFFluidBehaviorSettings *_tongueContainerPositionAnimationSettings;
+    SBFFluidBehaviorSettings *_tongueContainerTransformAnimationSettings;
+    SBFFluidBehaviorSettings *_tongueCollapsedToExpandedAnimationSettings;
+    SBFFluidBehaviorSettings *_tongueExpandedToCollapsedAnimationSettings;
     MTLumaDodgePillSettings *_homeAffordanceSettings;
 }
 
@@ -35,6 +41,12 @@
 - (void).cxx_destruct;
 @property _Bool showFloats; // @synthesize showFloats=_showFloats;
 @property(retain) MTLumaDodgePillSettings *homeAffordanceSettings; // @synthesize homeAffordanceSettings=_homeAffordanceSettings;
+@property(retain) SBFFluidBehaviorSettings *tongueExpandedToCollapsedAnimationSettings; // @synthesize tongueExpandedToCollapsedAnimationSettings=_tongueExpandedToCollapsedAnimationSettings;
+@property(retain) SBFFluidBehaviorSettings *tongueCollapsedToExpandedAnimationSettings; // @synthesize tongueCollapsedToExpandedAnimationSettings=_tongueCollapsedToExpandedAnimationSettings;
+@property(retain) SBFFluidBehaviorSettings *tongueContainerTransformAnimationSettings; // @synthesize tongueContainerTransformAnimationSettings=_tongueContainerTransformAnimationSettings;
+@property(retain) SBFFluidBehaviorSettings *tongueContainerPositionAnimationSettings; // @synthesize tongueContainerPositionAnimationSettings=_tongueContainerPositionAnimationSettings;
+@property double rightEdgePeekTimeout; // @synthesize rightEdgePeekTimeout=_rightEdgePeekTimeout;
+@property double rightEdgePeekDelay; // @synthesize rightEdgePeekDelay=_rightEdgePeekDelay;
 @property double overshootPullbackDelayOnscreen; // @synthesize overshootPullbackDelayOnscreen=_overshootPullbackDelayOnscreen;
 @property double overshootPullbackDelayOffscreen; // @synthesize overshootPullbackDelayOffscreen=_overshootPullbackDelayOffscreen;
 @property double titleOpacityFadeDistance; // @synthesize titleOpacityFadeDistance=_titleOpacityFadeDistance;

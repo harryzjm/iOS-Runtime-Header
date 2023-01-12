@@ -15,15 +15,17 @@
 
 @interface FBSSceneIdentityToken : NSObject <BSXPCSecureCoding, BSXPCCoding, NSSecureCoding, NSCopying>
 {
-    BSServiceConnectionEndpoint *_endpoint;
-    NSString *_identifier;
     NSString *_stringRepresentation;
+    NSString *_identifier;
+    NSString *_workspaceIdentifier;
+    BSServiceConnectionEndpoint *_endpoint;
 }
 
 + (_Bool)supportsSecureCoding;
 + (_Bool)supportsBSXPCSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) BSServiceConnectionEndpoint *endpoint; // @synthesize endpoint=_endpoint;
+@property(readonly, copy, nonatomic) NSString *workspaceIdentifier; // @synthesize workspaceIdentifier=_workspaceIdentifier;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly, copy, nonatomic) NSString *stringRepresentation; // @synthesize stringRepresentation=_stringRepresentation;
 - (id)initWithCoder:(id)arg1;
@@ -37,7 +39,7 @@
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
-- (id)initWithIdentifier:(id)arg1 endpoint:(id)arg2;
+- (id)initWithIdentifier:(id)arg1 workspaceID:(id)arg2 endpoint:(id)arg3;
 - (id)init;
 
 // Remaining properties

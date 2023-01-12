@@ -46,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (id)presentationController:(id)arg1 viewControllerForAdaptivePresentationStyle:(long long)arg2;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1;
 - (void)setDelegate:(id)arg1;
+- (id)_createVisualStyleForProvider:(id)arg1;
 - (void)_presentedAlertControllerDidAdapt;
 - (void)_updateConstraintsIfNecessary;
 - (void)_prepareConstraintsIfNecessary;

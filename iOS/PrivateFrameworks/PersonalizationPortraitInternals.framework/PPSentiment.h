@@ -19,9 +19,7 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (float)sentimentScoreForText:(id)arg1;
-- (float)_idxToFloat:(unsigned long long)arg1;
 - (id)init;
-- (_Bool)_loadAssetData;
 
 @end
 

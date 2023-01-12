@@ -71,6 +71,7 @@
 - (_Bool)_sectionHasContent:(id)arg1;
 - (id)_sectionSupportingNoContentElements;
 - (void)_loadNewRelevanceEngine:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (id)predictedElementsForSectionAtIndex:(unsigned long long)arg1 atDate:(id)arg2 limit:(long long)arg3;
 - (id)predictedContentForSectionAtIndex:(unsigned long long)arg1 atDate:(id)arg2 limit:(long long)arg3;
 - (void)resignCurrent;
 - (void)makeCurrent;

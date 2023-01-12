@@ -34,35 +34,15 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(retain, nonatomic) NSString *timeZome;
-@property(readonly, nonatomic) _Bool hasTimeZome;
-@property(retain, nonatomic) NSString *countryCode;
-@property(readonly, nonatomic) _Bool hasCountryCode;
-@property(retain, nonatomic) GEOLatLng *location;
-@property(readonly, nonatomic) _Bool hasLocation;
-@property(retain, nonatomic) NSString *ipAddress;
-@property(readonly, nonatomic) _Bool hasIpAddress;
-- (int)StringAsStatus:(id)arg1;
-- (id)statusAsString:(int)arg1;
-@property(nonatomic) _Bool hasStatus;
-@property(nonatomic) int status;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

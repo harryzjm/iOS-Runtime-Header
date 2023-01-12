@@ -25,6 +25,7 @@
     _Bool _companionLink;
     _Bool _expensive;
     _Bool _constrained;
+    _Bool _wired;
 }
 
 + (id)interfaceAddress:(struct ifaddrs *)arg1 eflags:(unsigned long long)arg2 v6flags:(int)arg3 iftype:(int)arg4;
@@ -33,6 +34,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) _Bool constrained; // @synthesize constrained=_constrained;
 @property(readonly, nonatomic) _Bool expensive; // @synthesize expensive=_expensive;
+@property(readonly, getter=isWired) _Bool wired; // @synthesize wired=_wired;
 @property(readonly, getter=isCompanionLink) _Bool companionLink; // @synthesize companionLink=_companionLink;
 @property(readonly, getter=isTemporaryIPv6) _Bool temporary; // @synthesize temporary=_temporary;
 @property(readonly) NSData *bssid; // @synthesize bssid=_bssid;

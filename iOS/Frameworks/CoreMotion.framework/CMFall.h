@@ -11,6 +11,7 @@
 }
 
 + (_Bool)areStatsAvailable;
+- (void)setHgalCaptureMode:(unsigned char)arg1;
 - (void)simulateEvent:(unsigned long long)arg1;
 - (void)sendStatsDataToUrl:(id)arg1 onCompletion:(CDUnknownBlockType)arg2;
 - (id)sendStatsDataToUrl:(id)arg1;

@@ -10,17 +10,17 @@
 {
 }
 
-+ (int)dimensionForUnit:(int)arg1;
-+ (struct TSUDecimal)convert:(const struct TSUDecimal *)arg1 fromUnit:(CDStruct_1ef3fb1f)arg2 toUnit:(CDStruct_1ef3fb1f)arg3;
-+ (_Bool)unitIsMetric:(int)arg1;
-+ (CDStruct_1ef3fb1f)prefixedUnitForString:(id)arg1;
-+ (int)binaryUnitPrefixForChars:(unsigned short)arg1:(unsigned short)arg2;
-+ (int)unitPrefixForCharacter:(unsigned short)arg1;
-+ (double)multiplierForUnitPrefix:(int)arg1;
-+ (int)unitForString:(id)arg1;
-+ (int)canonicalUnitForDimension:(int)arg1;
-+ (id)currencyCodeForUnit:(int)arg1;
-+ (int)unitForCurrencyCode:(id)arg1;
++ (unsigned char)dimensionForUnit:(unsigned short)arg1;
++ (struct TSUDecimal)convert:(const struct TSUDecimal *)arg1 fromUnit:(CDStruct_615b4e23)arg2 toUnit:(CDStruct_615b4e23)arg3;
++ (_Bool)unitIsMetric:(unsigned short)arg1;
++ (CDStruct_615b4e23)prefixedUnitForString:(id)arg1;
++ (unsigned char)binaryUnitPrefixForChars:(unsigned short)arg1:(unsigned short)arg2;
++ (unsigned char)unitPrefixForCharacter:(unsigned short)arg1;
++ (double)multiplierForUnitPrefix:(unsigned char)arg1;
++ (unsigned short)unitForString:(id)arg1;
++ (unsigned short)canonicalUnitForDimension:(unsigned char)arg1;
++ (id)currencyCodeForUnit:(unsigned short)arg1;
++ (unsigned short)unitForCurrencyCode:(id)arg1;
 + (void)initialize;
 
 @end

@@ -6,7 +6,7 @@
 
 #import <CoverSheet/SBUIOptionalLegibility-Protocol.h>
 
-@class NSString, SBUILegibilityLabel, UIImageView, UIStatusBar, UIView, _UILegibilitySettings;
+@class NSString, SBLockScreenDefaults, SBUILegibilityLabel, UIImageView, UIStatusBar, UIView, _UILegibilitySettings;
 
 @interface CSTeachableMomentsContainerView <SBUIOptionalLegibility>
 {
@@ -18,6 +18,7 @@
     UIView *_callToActionLabelPositionPlaceholderView;
     UIStatusBar *_statusBarToFollow;
     UIView *_controlCenterGrabberEffectContainerView;
+    SBLockScreenDefaults *_lockScreenDefaults;
     UIView *_controlCenterTutorsContainerView;
     UIView *_controlCenterGrabberContainerView;
     UIView *_controlCenterGlyphContainerView;
@@ -33,6 +34,7 @@
 @property(retain, nonatomic) UIView *controlCenterGlyphContainerView; // @synthesize controlCenterGlyphContainerView=_controlCenterGlyphContainerView;
 @property(retain, nonatomic) UIView *controlCenterGrabberContainerView; // @synthesize controlCenterGrabberContainerView=_controlCenterGrabberContainerView;
 @property(retain, nonatomic) UIView *controlCenterTutorsContainerView; // @synthesize controlCenterTutorsContainerView=_controlCenterTutorsContainerView;
+@property(retain, nonatomic) SBLockScreenDefaults *lockScreenDefaults; // @synthesize lockScreenDefaults=_lockScreenDefaults;
 @property(retain, nonatomic) UIView *controlCenterGrabberEffectContainerView; // @synthesize controlCenterGrabberEffectContainerView=_controlCenterGrabberEffectContainerView;
 @property(nonatomic) __weak UIStatusBar *statusBarToFollow; // @synthesize statusBarToFollow=_statusBarToFollow;
 @property(retain, nonatomic) UIView *callToActionLabelPositionPlaceholderView; // @synthesize callToActionLabelPositionPlaceholderView=_callToActionLabelPositionPlaceholderView;

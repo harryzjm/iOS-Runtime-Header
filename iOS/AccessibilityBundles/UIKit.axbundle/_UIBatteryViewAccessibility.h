@@ -15,7 +15,6 @@
 - (_Bool)accessibilityActivate;
 - (_Bool)_accessibilitySupportsActivateAction;
 - (unsigned long long)accessibilityTraits;
-- (_Bool)_axInStatusBar;
 - (id)accessibilityValue;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;

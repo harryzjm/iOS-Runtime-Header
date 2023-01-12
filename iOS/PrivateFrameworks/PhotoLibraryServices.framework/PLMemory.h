@@ -7,10 +7,11 @@
 #import <PhotoLibraryServices/PLCloudDeletable-Protocol.h>
 #import <PhotoLibraryServices/PLFileSystemMetadataPersistence-Protocol.h>
 #import <PhotoLibraryServices/PLSearchableAssetCollection-Protocol.h>
+#import <PhotoLibraryServices/PLUserFeedbackSupporting-Protocol.h>
 
 @class NSData, NSDate, NSDictionary, NSSet, NSString, PLManagedAsset;
 
-@interface PLMemory <PLSearchableAssetCollection, PLCloudDeletable, PLFileSystemMetadataPersistence>
+@interface PLMemory <PLSearchableAssetCollection, PLCloudDeletable, PLFileSystemMetadataPersistence, PLUserFeedbackSupporting>
 {
     _Bool _needsPersistenceUpdate;
 }
@@ -22,11 +23,12 @@
 + (id)memoriesWithUUIDs:(id)arg1 inPhotoLibrary:(id)arg2;
 + (id)memoryWithUUID:(id)arg1 inPhotoLibrary:(id)arg2;
 + (id)memoriesToPrefetchForWidgetInManagedObjectContext:(id)arg1;
-+ (id)memoriesToPrefetchInPhotoLibrary:(id)arg1;
-+ (_Bool)_shouldPrefetchMemoryMovieCuratedAssetsInPhotoLibrary:(id)arg1;
++ (id)memoriesToPrefetchInPhotoLibrary:(id)arg1 prefetchConfiguration:(id)arg2;
++ (_Bool)_shouldPrefetchMemoryMovieCuratedAssetsInPhotoLibrary:(id)arg1 prefetchConfiguration:(id)arg2;
 + (id)memoriesToUploadInPhotoLibrary:(id)arg1 limit:(long long)arg2;
 + (id)cloudUUIDKeyForDeletion;
 + (long long)cloudDeletionTypeForTombstone:(id)arg1;
++ (_Bool)isUserCreatedMemoryWithUserActionOptions:(unsigned short)arg1;
 + (id)entityName;
 + (id)insertIntoPhotoLibrary:(id)arg1 withUUID:(id)arg2 title:(id)arg3 subtitle:(id)arg4 creationDate:(id)arg5;
 + (_Bool)indexTitleForMemoryCategory:(unsigned long long)arg1;
@@ -40,9 +42,13 @@
 - (id)cplFullRecord;
 @property(retain, nonatomic) PLManagedAsset *keyAsset; // @dynamic keyAsset;
 - (id)calculateKeyAsset;
+- (void)calculateSyndicatedContentState;
 - (void)updateWithCPLMemoryChange:(id)arg1 inPhotoLibrary:(id)arg2;
+- (void)_cacheMemoryPropertiesForUIPerformanceWithPhotosGraphData:(id)arg1;
 @property(readonly, copy) NSString *cloudUUIDForDeletion;
 @property(readonly) long long cloudDeletionType;
+- (void)_updateUserFeedbackSetByUserState;
+- (_Bool)isUserCreatedMemory;
 - (void)prepareForDeletion;
 - (void)didSave;
 - (void)delete;
@@ -74,17 +80,19 @@
 @property(readonly, copy) NSString *description;
 @property(retain, nonatomic) NSSet *extendedCuratedAssets; // @dynamic extendedCuratedAssets;
 @property(nonatomic) _Bool favorite; // @dynamic favorite;
-@property(nonatomic) unsigned short featuredState; // @dynamic featuredState;
+@property(nonatomic) short featuredState; // @dynamic featuredState;
+@property(retain, nonatomic) NSString *graphMemoryIdentifier; // @dynamic graphMemoryIdentifier;
 @property(readonly) unsigned long long hash;
+@property(retain, nonatomic) NSDate *lastEnrichmentDate; // @dynamic lastEnrichmentDate;
 @property(retain, nonatomic) NSDate *lastMoviePlayedDate; // @dynamic lastMoviePlayedDate;
 @property(retain, nonatomic) NSDate *lastViewedDate; // @dynamic lastViewedDate;
 @property(retain, nonatomic) NSDictionary *movieAssetState; // @dynamic movieAssetState;
 @property(retain, nonatomic) NSSet *movieCuratedAssets; // @dynamic movieCuratedAssets;
 @property(retain, nonatomic) NSData *movieData; // @dynamic movieData;
 @property(nonatomic) short notificationState; // @dynamic notificationState;
-@property(nonatomic) _Bool pending; // @dynamic pending;
 @property(nonatomic) long long pendingPlayCount; // @dynamic pendingPlayCount;
 @property(nonatomic) long long pendingShareCount; // @dynamic pendingShareCount;
+@property(nonatomic) unsigned short pendingState; // @dynamic pendingState;
 @property(nonatomic) long long pendingViewCount; // @dynamic pendingViewCount;
 @property(retain, nonatomic) NSData *photosGraphData; // @dynamic photosGraphData;
 @property(nonatomic) long long photosGraphVersion; // @dynamic photosGraphVersion;
@@ -93,11 +101,16 @@
 @property(retain, nonatomic) NSSet *representativeAssets; // @dynamic representativeAssets;
 @property(nonatomic) double score; // @dynamic score;
 @property(nonatomic) long long shareCount; // @dynamic shareCount;
+@property(nonatomic) short storyColorGradeKind; // @dynamic storyColorGradeKind;
+@property(nonatomic) short storySerializedTitleCategory; // @dynamic storySerializedTitleCategory;
 @property(nonatomic) short subcategory; // @dynamic subcategory;
 @property(retain, nonatomic) NSString *subtitle; // @dynamic subtitle;
 @property(readonly) Class superclass;
+@property(nonatomic) unsigned short syndicatedContentState; // @dynamic syndicatedContentState;
 @property(retain, nonatomic) NSString *title; // @dynamic title;
-@property(nonatomic) _Bool userCreated; // @dynamic userCreated;
+@property(nonatomic) unsigned short userActionOptions; // @dynamic userActionOptions;
+@property(retain, nonatomic) NSSet *userCuratedAssets; // @dynamic userCuratedAssets;
+@property(retain, nonatomic) NSSet *userFeedbacks; // @dynamic userFeedbacks;
 @property(retain, nonatomic) NSString *uuid; // @dynamic uuid;
 @property(nonatomic) long long viewCount; // @dynamic viewCount;
 

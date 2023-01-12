@@ -16,6 +16,7 @@
 @interface SXMosaicGalleryComponentView <SXMosaicGalleryLayouterDataSource, SXFullscreenCanvasShowable, SXImageViewDelegate, SXFullscreenCaptionDataSource, SXViewportChangeListener>
 {
     _Bool _loadedAtleastOneImage;
+    _Bool _layoutRequired;
     id <SXGalleryItemImageViewFactory> _imageViewFactory;
     SXFullscreenCanvasController *_fullScreenCanvasController;
     UIView *_galleryView;
@@ -27,6 +28,7 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic, getter=isLayoutRequired) _Bool layoutRequired; // @synthesize layoutRequired=_layoutRequired;
 @property(retain, nonatomic) NSMutableSet *exposedGalleryItems; // @synthesize exposedGalleryItems=_exposedGalleryItems;
 @property(retain, nonatomic) SXMosaicGalleryLayouter *galleryLayouter; // @synthesize galleryLayouter=_galleryLayouter;
 @property(nonatomic) _Bool loadedAtleastOneImage; // @synthesize loadedAtleastOneImage=_loadedAtleastOneImage;

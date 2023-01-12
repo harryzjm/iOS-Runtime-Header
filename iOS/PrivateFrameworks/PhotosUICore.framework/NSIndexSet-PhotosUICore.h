@@ -13,7 +13,10 @@
 @property(readonly, nonatomic) struct _NSRange px_coveringRange;
 - (id)px_indexSetAdjustedForInsertions:(id)arg1;
 - (id)px_indexSetAdjustedForDeletions:(id)arg1;
+- (void)px_enumerateMap:(CDUnknownBlockType)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (id)px_map:(CDUnknownBlockType)arg1;
 - (id)px_intersectionWithIndexSet:(id)arg1;
+- (_Bool)px_intersectsWithIndexSet:(id)arg1;
 @property(readonly, nonatomic) NSString *px_shortDescription;
 - (id)px_indexesInRange:(struct _NSRange)arg1;
 @end

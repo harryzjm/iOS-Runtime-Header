@@ -17,10 +17,12 @@
     WFContact *_contact;
     WFPhoneNumber *_phoneNumber;
     WFEmailAddress *_emailAddress;
+    NSString *_customHandle;
 }
 
 + (id)processingValueClasses;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *customHandle; // @synthesize customHandle=_customHandle;
 @property(readonly, nonatomic) WFEmailAddress *emailAddress; // @synthesize emailAddress=_emailAddress;
 @property(readonly, nonatomic) WFPhoneNumber *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
 @property(readonly, nonatomic) WFContact *contact; // @synthesize contact=_contact;
@@ -35,6 +37,7 @@
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 @property(readonly, copy) NSString *description;
+- (id)initWithCustomHandle:(id)arg1;
 - (id)initWithEmailAddress:(id)arg1;
 - (id)initWithPhoneNumber:(id)arg1;
 - (id)initWithContact:(id)arg1;

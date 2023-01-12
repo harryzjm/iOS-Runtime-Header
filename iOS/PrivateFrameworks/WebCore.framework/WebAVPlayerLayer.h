@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface WebAVPlayerLayer : CALayer
 {
-    struct RefPtr<WebCore::VideoFullscreenInterfaceAVKit, WTF::DumbPtrTraits<WebCore::VideoFullscreenInterfaceAVKit>> _fullscreenInterface;
+    struct RefPtr<WebCore::VideoFullscreenInterfaceAVKit, WTF::RawPtrTraits<WebCore::VideoFullscreenInterfaceAVKit>, WTF::DefaultRefDerefTraits<WebCore::VideoFullscreenInterfaceAVKit>> _fullscreenInterface;
     struct RetainPtr<WebAVPlayerController> _avPlayerController;
     struct RetainPtr<CALayer> _videoSublayer;
     struct FloatRect _videoSublayerFrame;
@@ -34,9 +34,10 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *videoGravity;
 - (void)resolveBounds;
 - (void)layoutSublayers;
+- (struct FloatRect)calculateTargetVideoFrame;
 @property(retain, nonatomic) CALayer *videoSublayer;
 @property(retain, nonatomic) AVPlayerController *playerController;
-@property(nonatomic) struct VideoFullscreenInterfaceAVKit *fullscreenInterface;
+@property(nonatomic) void *fullscreenInterface;
 - (void)dealloc;
 - (id)init;
 

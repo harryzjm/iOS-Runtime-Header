@@ -5,12 +5,12 @@
 //
 
 @class NSString, NoteHTMLEditorView, UIPasteboard;
-@protocol _NSReaderDelegate;
+@protocol ICReaderDelegate;
 
 @protocol NoteHTMLEditorViewActionDelegate
 - (void)insertImageInNoteHTMLEditorView:(NoteHTMLEditorView *)arg1;
 - (_Bool)noteHTMLEditorViewShouldPaste:(NoteHTMLEditorView *)arg1;
-- (id <_NSReaderDelegate>)readerDelegateInNoteHTMLEditorView:(NoteHTMLEditorView *)arg1;
+- (id <ICReaderDelegate>)readerDelegateInNoteHTMLEditorView:(NoteHTMLEditorView *)arg1;
 - (void)noteHTMLEditorView:(NoteHTMLEditorView *)arg1 showShareSheetForAttachment:(NSString *)arg2 atPoint:(struct CGPoint)arg3;
 - (_Bool)noteHTMLEditorView:(NoteHTMLEditorView *)arg1 acceptContentsFromPasteboard:(UIPasteboard *)arg2;
 - (_Bool)canInsertImagesInNoteHTMLEditorView:(NoteHTMLEditorView *)arg1;

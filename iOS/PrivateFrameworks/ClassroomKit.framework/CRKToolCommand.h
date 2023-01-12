@@ -8,7 +8,7 @@
 
 #import <ClassroomKit/CATTaskClientDelegate-Protocol.h>
 
-@class CATOperation, CATOperationQueue, CATTaskClient, NSString;
+@class CATOperation, CATOperationQueue, CATTaskClient, CRKClassroomInstallation, NSString;
 @protocol CRKToolCommandDelegate, OS_dispatch_source;
 
 @interface CRKToolCommand : NSObject <CATTaskClientDelegate>
@@ -22,6 +22,7 @@
     _Bool _useDMFRequest;
     id <CRKToolCommandDelegate> _delegate;
     NSString *_sessionIdentifier;
+    CRKClassroomInstallation *_targetClassroomInstallation;
 }
 
 + (_Bool)handlesProgress;
@@ -35,6 +36,7 @@
 + (_Bool)supportsVerboseOutput;
 + (_Bool)supportsJSON;
 - (void).cxx_destruct;
+@property(retain, nonatomic) CRKClassroomInstallation *targetClassroomInstallation; // @synthesize targetClassroomInstallation=_targetClassroomInstallation;
 @property(copy, nonatomic) NSString *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
 @property(nonatomic) __weak id <CRKToolCommandDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic, getter=shouldUseDMFRequest) _Bool useDMFRequest; // @synthesize useDMFRequest=_useDMFRequest;

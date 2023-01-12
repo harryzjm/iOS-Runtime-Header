@@ -11,16 +11,23 @@
 @interface VSPreferencesInterface : NSObject
 {
     NSUserDefaults *_defaults;
+    struct _opaque_pthread_mutex_t _lock;
 }
 
++ (id)dictionaryRepresentationOfVoices:(id)arg1;
 + (id)defaultInstance;
 - (void).cxx_destruct;
+@property(nonatomic) struct _opaque_pthread_mutex_t lock; // @synthesize lock=_lock;
 @property(retain, nonatomic) NSUserDefaults *defaults; // @synthesize defaults=_defaults;
 @property(readonly, nonatomic) NSString *deviceUUID;
 @property(retain, nonatomic) NSDate *lastTTSRequestDate;
-- (id)autoDownloadedVoicesForClientID:(id)arg1;
-- (void)setAutoDownloadedVoices:(id)arg1 withClientID:(id)arg2;
+@property(nonatomic) _Bool OOBNeedsToBeMeasured;
+@property(retain, nonatomic) NSDate *OOBTriggeredDate;
+- (void)removeSubscriptionsForAccessory:(id)arg1;
+- (void)setSubscribedVoices:(id)arg1 forClientID:(id)arg2 accessoryID:(id)arg3;
+- (id)subscribedVoicesForClientID:(id)arg1 accessoryID:(id)arg2;
 - (void)migrateDefaults;
+- (void)dealloc;
 - (id)initWithSuiteName:(id)arg1;
 
 @end

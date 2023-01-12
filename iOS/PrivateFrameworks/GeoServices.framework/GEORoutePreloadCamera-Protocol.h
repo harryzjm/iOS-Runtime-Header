@@ -6,9 +6,10 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class GEOComposedRoute, GEOTileKeyList, NSDictionary;
+@class GEOComposedRoute, GEOTileKeyList, NSDictionary, NSMutableDictionary;
 
 @protocol GEORoutePreloadCamera <NSObject>
-- (void)implicateTilesForCoordinate:(CDStruct_c3b9c2ee)arg1 route:(GEOComposedRoute *)arg2 nearestRoutePointIdx:(double)arg3 stepNearManeuever:(_Bool)arg4 into:(GEOTileKeyList *)arg5 stepSize:(double)arg6 maneuverSize:(double)arg7 tileSetStyles:(NSDictionary *)arg8;
+- (GEOTileKeyList *)implicateAssetMetadataTilesForCoordinate:(CDStruct_c3b9c2ee)arg1 size:(double)arg2;
+- (void)implicateTilesForCoordinate:(CDStruct_c3b9c2ee)arg1 route:(GEOComposedRoute *)arg2 nearestRoutePointIdx:(double)arg3 stepNearManeuever:(_Bool)arg4 into:(NSMutableDictionary *)arg5 stepSize:(double)arg6 maneuverSize:(double)arg7 tileSetStyles:(NSDictionary *)arg8;
 @end
 

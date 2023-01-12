@@ -12,6 +12,7 @@
 
 + (long long)blueDotStateForDuration:(double)arg1 elapsedTime:(double)arg2 hasBeenPlayed:(_Bool)arg3 playCount:(unsigned long long)arg4 respectPlayCount:(_Bool)arg5;
 + (long long)blueDotStateForDuration:(double)arg1 elapsedTime:(double)arg2 hasBeenPlayed:(_Bool)arg3 playCount:(unsigned long long)arg4;
++ (double)suggestedBookmarkTimeForElapsedTime:(double)arg1 duration:(double)arg2 playedThreshold:(id)arg3;
 + (double)suggestedBookmarkTimeForElapsedTime:(double)arg1 duration:(double)arg2;
 + (double)playedThresholdTimeForDuration:(double)arg1;
 

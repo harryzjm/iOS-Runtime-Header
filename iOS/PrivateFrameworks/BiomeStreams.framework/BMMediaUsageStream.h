@@ -7,11 +7,10 @@
 #import <objc/NSObject.h>
 
 #import <BiomeStreams/BMSourceStream-Protocol.h>
-#import <BiomeStreams/BMStream-Protocol.h>
 
 @class NSString;
 
-@interface BMMediaUsageStream : NSObject <BMStream, BMSourceStream>
+@interface BMMediaUsageStream : NSObject <BMSourceStream>
 {
 }
 

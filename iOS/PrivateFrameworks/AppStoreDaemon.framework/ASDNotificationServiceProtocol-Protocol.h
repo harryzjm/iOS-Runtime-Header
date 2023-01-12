@@ -7,6 +7,7 @@
 @class AMSAuthenticateRequest, AMSDialogRequest, AMSEngagementRequest, NSArray;
 
 @protocol ASDNotificationServiceProtocol
+- (void)isDialogObserverAvailableWithReplyHandler:(void (^)(_Bool))arg1;
 - (void)deliverProgress:(NSArray *)arg1;
 - (void)deliverNotifications:(NSArray *)arg1;
 - (void)deliverEngagementRequest:(AMSEngagementRequest *)arg1 withResultHandler:(void (^)(AMSEngagementResult *, NSError *))arg2;

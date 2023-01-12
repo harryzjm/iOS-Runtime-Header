@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, NSOperationQueue, NSProgress;
+@class NSArray, NSMutableArray, NSOperationQueue, NSProgress, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface BRTransfersStatusManager : NSObject
@@ -19,9 +19,11 @@
     unsigned long long _shouldHideGlobalDownloadProgressCount;
     NSObject<OS_dispatch_source> *_timerToDisplayGlobalProgress;
     NSObject<OS_dispatch_queue> *_queue;
+    NSString *_personaIdentifier;
 }
 
 + (id)defaultManager;
++ (void)initialize;
 - (void).cxx_destruct;
 - (void)_progressSubscription;
 - (void)_setGlobalProgress:(id)arg1 forIvar:(id *)arg2;
@@ -35,7 +37,7 @@
 - (void)downloadAndObserveItemAtURL:(id)arg1 handler:(CDUnknownBlockType)arg2;
 @property(readonly, copy) NSArray *transfers; // @synthesize transfers=_transfers;
 - (void)dealloc;
-- (id)init;
+- (id)initWithPersonaIdentifier:(id)arg1;
 
 @end
 

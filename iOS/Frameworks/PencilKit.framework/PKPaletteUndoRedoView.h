@@ -6,23 +6,24 @@
 
 #import <UIKit/UIView.h>
 
-#import <PencilKit/PKEdgeLocatable-Protocol.h>
+#import <PencilKit/PKPaletteEdgeLocating-Protocol.h>
 #import <PencilKit/PKPaletteViewSizeScaling-Protocol.h>
 
 @class NSLayoutConstraint, NSString, PKPaletteButton, UIStackView;
 @protocol PKPaletteUndoRedoViewDelegate;
 
-@interface PKPaletteUndoRedoView : UIView <PKEdgeLocatable, PKPaletteViewSizeScaling>
+@interface PKPaletteUndoRedoView : UIView <PKPaletteEdgeLocating, PKPaletteViewSizeScaling>
 {
     _Bool _undoEnabled;
     _Bool _redoEnabled;
     unsigned long long _edgeLocation;
     double _scalingFactor;
     id <PKPaletteUndoRedoViewDelegate> _delegate;
-    UIView *_contentView;
-    UIStackView *_stackView;
     PKPaletteButton *_undoButton;
     PKPaletteButton *_redoButton;
+    double _interItemSpacing;
+    UIView *_contentView;
+    UIStackView *_stackView;
     NSLayoutConstraint *_undoButtonWidthConstraint;
     NSLayoutConstraint *_undoButtonHeightConstraint;
     NSLayoutConstraint *_redoButtonWidthConstraint;
@@ -34,19 +35,22 @@
 @property(retain, nonatomic) NSLayoutConstraint *redoButtonWidthConstraint; // @synthesize redoButtonWidthConstraint=_redoButtonWidthConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *undoButtonHeightConstraint; // @synthesize undoButtonHeightConstraint=_undoButtonHeightConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *undoButtonWidthConstraint; // @synthesize undoButtonWidthConstraint=_undoButtonWidthConstraint;
-@property(retain, nonatomic) PKPaletteButton *redoButton; // @synthesize redoButton=_redoButton;
-@property(retain, nonatomic) PKPaletteButton *undoButton; // @synthesize undoButton=_undoButton;
 @property(retain, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
 @property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
+@property(nonatomic) double interItemSpacing; // @synthesize interItemSpacing=_interItemSpacing;
 @property(nonatomic, getter=isRedoEnabled) _Bool redoEnabled; // @synthesize redoEnabled=_redoEnabled;
 @property(nonatomic, getter=isUndoEnabled) _Bool undoEnabled; // @synthesize undoEnabled=_undoEnabled;
+@property(retain, nonatomic) PKPaletteButton *redoButton; // @synthesize redoButton=_redoButton;
+@property(retain, nonatomic) PKPaletteButton *undoButton; // @synthesize undoButton=_undoButton;
 @property(nonatomic) __weak id <PKPaletteUndoRedoViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) double scalingFactor; // @synthesize scalingFactor=_scalingFactor;
 @property(nonatomic) unsigned long long edgeLocation; // @synthesize edgeLocation=_edgeLocation;
+- (void)updateUI;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (void)handleRedo:(id)arg1;
 - (void)handleUndo:(id)arg1;
+- (void)_updateUI;
 - (void)updateConstraints;
 - (struct CGSize)_buttonSize;
 - (void)installRedoButton;

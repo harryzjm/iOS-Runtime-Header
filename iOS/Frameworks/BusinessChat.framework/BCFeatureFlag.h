@@ -10,7 +10,7 @@
 {
 }
 
-+ (_Bool)isFeatureEnabledForMessageType:(long long)arg1;
++ (_Bool)isFeatureEnabledForFeature:(long long)arg1;
 
 @end
 

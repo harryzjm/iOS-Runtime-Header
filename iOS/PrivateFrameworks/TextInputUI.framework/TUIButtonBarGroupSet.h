@@ -13,9 +13,15 @@
     NSArray *_leadingButtonGroups;
     NSArray *_trailingButtonGroups;
     NSArray *_unifiedButtonGroups;
+    NSArray *_leadingSeparators;
+    NSArray *_trailingSeparators;
+    NSArray *_unifiedSeparators;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *unifiedSeparators; // @synthesize unifiedSeparators=_unifiedSeparators;
+@property(retain, nonatomic) NSArray *trailingSeparators; // @synthesize trailingSeparators=_trailingSeparators;
+@property(retain, nonatomic) NSArray *leadingSeparators; // @synthesize leadingSeparators=_leadingSeparators;
 @property(retain, nonatomic) NSArray *unifiedButtonGroups; // @synthesize unifiedButtonGroups=_unifiedButtonGroups;
 @property(retain, nonatomic) NSArray *trailingButtonGroups; // @synthesize trailingButtonGroups=_trailingButtonGroups;
 @property(retain, nonatomic) NSArray *leadingButtonGroups; // @synthesize leadingButtonGroups=_leadingButtonGroups;

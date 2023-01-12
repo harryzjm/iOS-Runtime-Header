@@ -4,7 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeAI/HMFLogging-Protocol.h>
 #import <HomeAI/HMIVideoAssetWriterDelegate-Protocol.h>
 #import <HomeAI/HMIVideoCommandBufferDelegate-Protocol.h>
 #import <HomeAI/HMIVideoDecoderDelegate-Protocol.h>
@@ -14,75 +13,138 @@
 #import <HomeAI/HMIVideoFrameSelectorDelegate-Protocol.h>
 #import <HomeAI/HMIVideoPackageAnalyzerDelegate-Protocol.h>
 
-@class HMIVideoAnalyzerScheduler, HMIVideoAssetWriter, HMIVideoCommandBuffer, HMIVideoDecoder, HMIVideoEncoder, HMIVideoEventBuffer, HMIVideoFrameAnalyzer, HMIVideoFrameSampler, HMIVideoFrameSelector, HMIVideoPackageAnalyzer, HMIVideoTimeline, NSData, NSObject, NSString;
+@class HMIVideoAssetWriter, HMIVideoCommandBuffer, HMIVideoDecoder, HMIVideoEncoder, HMIVideoEventBuffer, HMIVideoFrameAnalyzer, HMIVideoFrameSampler, HMIVideoFrameSelector, HMIVideoPackageAnalyzer, HMIVideoTemporalEventFilter, HMIVideoTimeline, NSData, NSDate, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface HMIVideoAnalyzerServer <HMFLogging, HMIVideoCommandBufferDelegate, HMIVideoDecoderDelegate, HMIVideoEncoderDelegate, HMIVideoFrameSelectorDelegate, HMIVideoFrameAnalyzerDelegate, HMIVideoAssetWriterDelegate, HMIVideoFrameSamplerDelegate, HMIVideoPackageAnalyzerDelegate>
+@interface HMIVideoAnalyzerServer <HMIVideoCommandBufferDelegate, HMIVideoDecoderDelegate, HMIVideoEncoderDelegate, HMIVideoFrameSelectorDelegate, HMIVideoFrameAnalyzerDelegate, HMIVideoAssetWriterDelegate, HMIVideoFrameSamplerDelegate, HMIVideoPackageAnalyzerDelegate>
 {
+    long long _numDecodedSamples;
+    long long _numDidAnalyzeFrames;
+    long long _numDidAnalyzePackages;
+    long long _numDidAnalyzeFragments;
+    long long _numDidCreateTimelapseFragments;
+    _Bool _monitored;
+    _Bool _encode;
+    _Bool _hasFailed;
+    _Bool _cancelled;
+    double _analysisFPS;
+    NSObject<OS_dispatch_queue> *_inputQueue;
     NSObject<OS_dispatch_queue> *_workQueue;
+    NSObject<OS_dispatch_queue> *_encoderQueue;
+    const struct opaqueCMFormatDescription *_inputVideoFormat;
+    const struct opaqueCMFormatDescription *_inputAudioFormat;
+    const struct opaqueCMFormatDescription *_timelapseOutputVideoFormat;
     HMIVideoCommandBuffer *_commandBuffer;
     HMIVideoDecoder *_decoder;
     HMIVideoFrameSampler *_frameThumbnailSampler;
-    _Bool _encode;
+    HMIVideoFrameSampler *_frameTimelapseSampler;
     HMIVideoEncoder *_encoder;
+    HMIVideoEncoder *_timelapseEncoder;
     HMIVideoFrameSelector *_frameSelector;
     HMIVideoFrameAnalyzer *_frameAnalyzer;
     HMIVideoAssetWriter *_assetWriter;
-    CDStruct_1b6d18a9 _currentPTS;
-    CDStruct_1b6d18a9 _currentDTS;
-    HMIVideoEventBuffer *_frameAnalyzerResultBuffer;
+    HMIVideoAssetWriter *_timelapseAssetWriter;
+    HMIVideoEventBuffer *_frameAnalyzerFrameResultBuffer;
+    HMIVideoEventBuffer *_packageAnalyzerFrameResultBuffer;
     HMIVideoEventBuffer *_thumbnailBuffer;
     NSData *_initializationSegment;
+    NSData *_timelapseInitializationSegment;
     HMIVideoEventBuffer *_dynamicConfigurationBuffer;
     HMIVideoPackageAnalyzer *_packageAnalyzer;
-    _Bool _failed;
-    _Bool _cancelled;
-    HMIVideoAnalyzerScheduler *_scheduler;
+    HMIVideoTemporalEventFilter *_temporalEventFilter;
     HMIVideoTimeline *_timeline;
-    double _analysisFPS;
-    long long _numDecodedSamples;
-    long long _numDidAnalyzeFrames;
-    long long _numDidAnalyzeFragments;
-    _Bool _monitored;
+    NSDate *_startDate;
+    NSDate *_lastFragmentRecievedDate;
+    CDStruct_1b6d18a9 _currentPTS;
+    CDStruct_1b6d18a9 _currentDTS;
 }
 
-+ (id)logCategory;
 - (void).cxx_destruct;
+@property(getter=isCancelled) _Bool cancelled; // @synthesize cancelled=_cancelled;
+@property _Bool hasFailed; // @synthesize hasFailed=_hasFailed;
+@property(retain) NSDate *lastFragmentRecievedDate; // @synthesize lastFragmentRecievedDate=_lastFragmentRecievedDate;
+@property(readonly) NSDate *startDate; // @synthesize startDate=_startDate;
+@property(readonly) HMIVideoTimeline *timeline; // @synthesize timeline=_timeline;
+@property(readonly) HMIVideoTemporalEventFilter *temporalEventFilter; // @synthesize temporalEventFilter=_temporalEventFilter;
+@property(readonly) HMIVideoPackageAnalyzer *packageAnalyzer; // @synthesize packageAnalyzer=_packageAnalyzer;
+@property(readonly) HMIVideoEventBuffer *dynamicConfigurationBuffer; // @synthesize dynamicConfigurationBuffer=_dynamicConfigurationBuffer;
+@property(retain) NSData *timelapseInitializationSegment; // @synthesize timelapseInitializationSegment=_timelapseInitializationSegment;
+@property(retain) NSData *initializationSegment; // @synthesize initializationSegment=_initializationSegment;
+@property(readonly) HMIVideoEventBuffer *thumbnailBuffer; // @synthesize thumbnailBuffer=_thumbnailBuffer;
+@property(readonly) HMIVideoEventBuffer *packageAnalyzerFrameResultBuffer; // @synthesize packageAnalyzerFrameResultBuffer=_packageAnalyzerFrameResultBuffer;
+@property(readonly) HMIVideoEventBuffer *frameAnalyzerFrameResultBuffer; // @synthesize frameAnalyzerFrameResultBuffer=_frameAnalyzerFrameResultBuffer;
+@property CDStruct_1b6d18a9 currentDTS; // @synthesize currentDTS=_currentDTS;
+@property CDStruct_1b6d18a9 currentPTS; // @synthesize currentPTS=_currentPTS;
+@property(retain) HMIVideoAssetWriter *timelapseAssetWriter; // @synthesize timelapseAssetWriter=_timelapseAssetWriter;
+@property(retain) HMIVideoAssetWriter *assetWriter; // @synthesize assetWriter=_assetWriter;
+@property(readonly) HMIVideoFrameAnalyzer *frameAnalyzer; // @synthesize frameAnalyzer=_frameAnalyzer;
+@property(readonly) HMIVideoFrameSelector *frameSelector; // @synthesize frameSelector=_frameSelector;
+@property(retain) HMIVideoEncoder *timelapseEncoder; // @synthesize timelapseEncoder=_timelapseEncoder;
+@property(retain) HMIVideoEncoder *encoder; // @synthesize encoder=_encoder;
+@property(readonly) HMIVideoFrameSampler *frameTimelapseSampler; // @synthesize frameTimelapseSampler=_frameTimelapseSampler;
+@property(readonly) HMIVideoFrameSampler *frameThumbnailSampler; // @synthesize frameThumbnailSampler=_frameThumbnailSampler;
+@property(readonly) HMIVideoDecoder *decoder; // @synthesize decoder=_decoder;
+@property(readonly) HMIVideoCommandBuffer *commandBuffer; // @synthesize commandBuffer=_commandBuffer;
+@property const struct opaqueCMFormatDescription *timelapseOutputVideoFormat; // @synthesize timelapseOutputVideoFormat=_timelapseOutputVideoFormat;
+@property const struct opaqueCMFormatDescription *inputAudioFormat; // @synthesize inputAudioFormat=_inputAudioFormat;
+@property const struct opaqueCMFormatDescription *inputVideoFormat; // @synthesize inputVideoFormat=_inputVideoFormat;
+@property(readonly) NSObject<OS_dispatch_queue> *encoderQueue; // @synthesize encoderQueue=_encoderQueue;
+@property(readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+@property(readonly) NSObject<OS_dispatch_queue> *inputQueue; // @synthesize inputQueue=_inputQueue;
+- (double)analysisFPS;
+- (void)setEncode:(_Bool)arg1;
+- (_Bool)encode;
 - (void)setMonitored:(_Bool)arg1;
 - (_Bool)monitored;
 - (unsigned long long)status;
 - (void)setAnalysisFPS:(double)arg1;
 - (double)delay;
-- (id)stateDescription;
+@property(readonly) double timeSinceLastFragmentWasReceived;
+@property(readonly) double timeSinceAnalyzerStarted;
+- (id)state;
 - (void)_produceResult:(SEL)arg1 withArguments:(id)arg2;
+- (void)_notifyDelegateDidProduceAnalysisStateUpdate:(id)arg1;
 - (void)_notifyDelegateDidFailWithError:(id)arg1;
-- (void)_notifyDelegateDidAnalyzeFrame:(id)arg1;
-- (void)_notifyDelegateDidAnalyzeFragment:(id)arg1;
-- (void)assetWriter:(id)arg1 didFailWithError:(id)arg2;
-- (void)assetWriter:(id)arg1 didOutputSeparableSegment:(id)arg2 timeRange:(CDStruct_e83c9415)arg3;
-- (void)assetWriter:(id)arg1 didOutputInitializationSegment:(id)arg2;
-- (void)frameSampler:(id)arg1 didSampleFrame:(struct opaqueCMSampleBuffer *)arg2;
-- (void)frameAnalyzer:(id)arg1 didAnalyzeFrame:(id)arg2 error:(id)arg3;
-- (void)frameSelector:(id)arg1 didSelectFrame:(struct opaqueCMSampleBuffer *)arg2 detections:(id)arg3;
-- (void)_handleDecodedSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
+- (void)_notifyDelegateDidCreateTimelapseFragment:(id)arg1;
+- (void)_notifyDelegateDidAnalyzeFrameWithResult:(id)arg1;
+- (void)_notifyDelegateDidAnalyzeFragmentWithResult:(id)arg1;
 - (void)encoder:(id)arg1 didFailWithError:(id)arg2;
-- (void)encoder:(id)arg1 didEncodeSampleBuffer:(struct opaqueCMSampleBuffer *)arg2;
 - (void)decoder:(id)arg1 didFailWithError:(id)arg2;
+- (void)assetWriter:(id)arg1 didFailWithError:(id)arg2;
+- (void)assetWriter:(id)arg1 didOutputSeparableSegment:(id)arg2 segmentReport:(id)arg3;
+- (void)assetWriter:(id)arg1 didOutputInitializationSegment:(id)arg2;
+- (void)packageAnalyzer:(id)arg1 didDetectPackagesWithResult:(id)arg2 error:(id)arg3;
+- (void)frameSampler:(id)arg1 didSampleFrame:(struct opaqueCMSampleBuffer *)arg2;
+- (void)frameAnalyzer:(id)arg1 didProduceAnalysisStateUpdate:(id)arg2;
+- (void)frameAnalyzer:(id)arg1 didAnalyzeFrame:(id)arg2 error:(id)arg3;
+- (id)_filterFrameResult:(id)arg1 dynamicConfiguration:(id)arg2 motionDetections:(id)arg3;
+- (void)frameSelector:(id)arg1 didDetectMotion:(id)arg2 inFrame:(struct opaqueCMSampleBuffer *)arg3;
+- (void)frameSelector:(id)arg1 didSelectFrame:(struct opaqueCMSampleBuffer *)arg2 motionDetections:(id)arg3 motionScore:(double)arg4;
+- (void)_handleDecodedSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
+- (void)encoder:(id)arg1 didEncodeSampleBuffer:(struct opaqueCMSampleBuffer *)arg2;
 - (void)decoder:(id)arg1 didDecodeSampleBuffer:(struct opaqueCMSampleBuffer *)arg2;
-- (void)bufferWillFinish:(id)arg1;
+- (void)_ensureTimelapseEncoder;
+- (void)_ensureEncoder;
+- (void)_ensureDecoderForFragment:(id)arg1;
 - (void)bufferWillFlush:(id)arg1;
 - (void)buffer:(id)arg1 willHandleSampleBuffer:(struct opaqueCMSampleBuffer *)arg2;
+- (void)_configureTimelapseEncoder;
+- (void)_configureEncoder;
+- (void)_configureTimelapseAssetWriter;
+- (void)_configureAssetWriter;
+- (void)dealloc;
+- (void)_prepareForTimelapseOutputVideoFormat:(const struct opaqueCMFormatDescription *)arg1;
+- (void)_prepareForInputVideoFormat:(const struct opaqueCMFormatDescription *)arg1 audioFormat:(const struct opaqueCMFormatDescription *)arg2;
+- (void)_saveFragmentDataToDisk:(id)arg1 diskBufferSize:(unsigned long long)arg2;
 - (void)cancel;
-- (void)finish;
+- (void)finishWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)flushAsync;
 - (void)flush;
 - (void)handleSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (void)handleAssetData:(id)arg1 withOptions:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_ensureAssetWriterForFragment:(id)arg1;
 - (void)handleMessageWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)dynamicConfigurationForTime:(CDStruct_1b6d18a9)arg1;
-- (void)_ensureEncoderForSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
 - (id)initWithConfiguration:(id)arg1 identifier:(id)arg2;
 
 // Remaining properties

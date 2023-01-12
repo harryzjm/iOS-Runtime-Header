@@ -11,7 +11,7 @@
 @interface _TtC13SleepHealthUIP33_3908BEF921CD76B2D67B4136649A566B11RingGrabber : CAReplicatorLayer
 {
     MISSING_TYPE *texture;
-    MISSING_TYPE *isFrozen;
+    MISSING_TYPE *isHalted;
     MISSING_TYPE *activeAngleOffset;
     MISSING_TYPE *configuration;
     MISSING_TYPE *tickInterval;

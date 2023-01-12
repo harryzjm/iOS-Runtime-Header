@@ -6,7 +6,6 @@
 
 @class CKRecordZoneID, NSArray, NSMutableDictionary;
 
-__attribute__((visibility("hidden")))
 @interface CKDModifySubscriptionsURLRequest
 {
     CKRecordZoneID *_zoneID;
@@ -26,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)generateRequestOperations;
 - (id)requestOperationClasses;
+- (_Bool)requiresCKAnonymousUserIDs;
 - (id)initWithOperation:(id)arg1 subscriptionsToSave:(id)arg2 subscriptionIDsToDelete:(id)arg3;
 
 @end

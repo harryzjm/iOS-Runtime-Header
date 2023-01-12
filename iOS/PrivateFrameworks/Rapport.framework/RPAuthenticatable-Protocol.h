@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSObject, NSString;
+@class NSArray, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @protocol RPAuthenticatable
@@ -17,7 +17,9 @@
 @property(copy, nonatomic) NSString *password;
 @property(nonatomic) unsigned int pairVerifyFlags;
 @property(nonatomic) unsigned int pairSetupFlags;
+@property(retain, nonatomic) NSArray *pairSetupACL;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue;
+@property(retain, nonatomic) NSArray *allowedMACAddresses;
 - (void)tryPassword:(NSString *)arg1;
 @end
 

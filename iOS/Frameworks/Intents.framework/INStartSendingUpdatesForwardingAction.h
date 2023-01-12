@@ -22,7 +22,7 @@
 @property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property(readonly, nonatomic) id <INIntentResponseObserver> observer; // @synthesize observer=_observer;
 - (void)executeLocallyWithIntentDeliverer:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)executeRemotelyWithVendorRemote:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (_Bool)executeRemotelyWithVendorRemote:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithXPCDictionary:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithIntent:(id)arg1 endpoint:(id)arg2 observer:(id)arg3;

@@ -9,6 +9,8 @@
 @class FBSDisplayConfigurationRequest, FBSDisplayMode, NSArray, NSData, NSDictionary, NSString;
 
 @protocol UIApplicationSceneClientSettings <NSObject>
+@property(readonly, nonatomic) long long playbackControlsState;
+@property(readonly, nonatomic) unsigned long long _debugValidationOrientationMask;
 @property(readonly, nonatomic) NSArray *multitaskingDragExclusionRects;
 @property(readonly, nonatomic) long long preferredPointerLockStatus;
 @property(readonly, nonatomic) struct CGRect screenFocusedFrame;

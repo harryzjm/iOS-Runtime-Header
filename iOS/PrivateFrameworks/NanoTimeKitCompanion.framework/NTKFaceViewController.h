@@ -9,14 +9,13 @@
 #import <NanoTimeKitCompanion/CLKSensitiveUIStateObserver-Protocol.h>
 #import <NanoTimeKitCompanion/NTKClockHardwareInput-Protocol.h>
 #import <NanoTimeKitCompanion/NTKClockIconZoomAnimator-Protocol.h>
-#import <NanoTimeKitCompanion/NTKComplicationPickerViewDataSource-Protocol.h>
 #import <NanoTimeKitCompanion/NTKFaceObserver-Protocol.h>
 #import <NanoTimeKitCompanion/NTKFaceViewDelegate-Protocol.h>
 
-@class NSCache, NSDate, NSMutableDictionary, NSObject, NSString, NTKComplicationController, NTKComplicationDisplayWrapperView, NTKDelayedBlock, NTKFace, NTKFaceEditView, NTKFaceView, NTKTritiumAnimationController, NTKTritiumViewController, UIView;
+@class NSCache, NSDate, NSMutableDictionary, NSObject, NSString, NTKComplicationController, NTKComplicationDisplayWrapperView, NTKDelayedBlock, NTKEditOption, NTKFace, NTKFaceEditColorPickerConfiguration, NTKFaceEditView, NTKFaceView, NTKTritiumAnimationController, NTKTritiumController;
 @protocol NTKClockStatusBarViewController, NTKFaceViewControllerDelegate, NTKFaceViewControllerStatusBarDelegate, OS_dispatch_source;
 
-@interface NTKFaceViewController : UIViewController <NTKComplicationPickerViewDataSource, CLKSensitiveUIStateObserver, NTKClockIconZoomAnimator, NTKClockHardwareInput, NTKFaceViewDelegate, NTKFaceObserver>
+@interface NTKFaceViewController : UIViewController <CLKSensitiveUIStateObserver, NTKClockIconZoomAnimator, NTKClockHardwareInput, NTKFaceViewDelegate, NTKFaceObserver>
 {
     struct os_unfair_lock_s _normalComplicationControllersLock;
     NSMutableDictionary *_normalComplicationControllers;
@@ -35,10 +34,8 @@
     unsigned long long _delayedAnimationValue;
     _Bool _deviceLocked;
     _Bool _sensitiveUIHidden;
-    UIView *_zoomingIconCircleView;
-    UIView *_zoomingIconTimeView;
-    UIView *_zoomingContainerView;
-    double _zoomingDiagonalLength;
+    double _zoomingMinDiameter;
+    double _zoomingMaxDiameter;
     NSDate *_scrubDate;
     NSObject<OS_dispatch_source> *_time_travel_update_timer;
     NTKComplicationDisplayWrapperView *_pptComplicationDisplay;
@@ -49,7 +46,10 @@
     _Bool _hasRemovedUnadornedSnapshot;
     NSString *_lastTappedSlotIdentifier;
     struct CGRect _faceLaunchRect;
+    NTKFaceEditColorPickerConfiguration *_colorPickerConfig;
+    NTKEditOption *_tombstoneColor;
     _Bool _isOrbDisabled;
+    struct CGRect _editingFromFaceContainerFrame;
     _Bool _shouldShowSnapshot;
     _Bool _supressesNonSnapshotUI;
     _Bool _shouldUseSampleTemplate;
@@ -57,6 +57,7 @@
     _Bool _showContentForUnadornedSnapshot;
     _Bool _ignoreSnapshotImages;
     _Bool _showsLockedUI;
+    _Bool _exitingEditing;
     id <NTKFaceViewControllerDelegate> _delegate;
     id <NTKFaceViewControllerStatusBarDelegate> _statusBarDelegate;
     long long _dataMode;
@@ -65,19 +66,20 @@
     NTKFace *_face;
     NTKFaceView *_faceView;
     NTKTritiumAnimationController *_tritiumAnimationController;
-    NTKTritiumViewController *_tritiumViewController;
+    NTKTritiumController *_tritiumController;
 }
 
 + (id)_controllerForComplication:(id)arg1 face:(id)arg2 slot:(id)arg3;
 + (id)_createNormalDisplayForComplicationController:(id)arg1 slot:(id)arg2 face:(id)arg3 faceView:(id)arg4;
 + (void)initialize;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NTKTritiumViewController *tritiumViewController; // @synthesize tritiumViewController=_tritiumViewController;
+@property(readonly, nonatomic) NTKTritiumController *tritiumController; // @synthesize tritiumController=_tritiumController;
 @property(readonly, nonatomic) NTKTritiumAnimationController *tritiumAnimationController; // @synthesize tritiumAnimationController=_tritiumAnimationController;
 @property(readonly, nonatomic) NTKFaceView *faceView; // @synthesize faceView=_faceView;
 @property(readonly, nonatomic) NTKFace *face; // @synthesize face=_face;
 @property(retain, nonatomic) UIViewController<NTKClockStatusBarViewController> *statusBarViewController; // @synthesize statusBarViewController=_statusBarViewController;
 @property(readonly, nonatomic) _Bool isOrbDisabled; // @synthesize isOrbDisabled=_isOrbDisabled;
+@property(nonatomic) _Bool exitingEditing; // @synthesize exitingEditing=_exitingEditing;
 @property(nonatomic) _Bool showsLockedUI; // @synthesize showsLockedUI=_showsLockedUI;
 @property(nonatomic) _Bool ignoreSnapshotImages; // @synthesize ignoreSnapshotImages=_ignoreSnapshotImages;
 @property(nonatomic) _Bool showContentForUnadornedSnapshot; // @synthesize showContentForUnadornedSnapshot=_showContentForUnadornedSnapshot;
@@ -98,6 +100,8 @@
 - (void)_clearLastTappedComplication;
 - (struct CGRect)launchRectForComplicationApplicationIdentifier:(id)arg1;
 - (void)_configureBackgroundFillAlpha:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
+- (void)_validateIfCurrentSelectedColorStillExists;
+- (void)_faceColorEditOptionsChanged;
 - (id)_selectedVisibleSlotForEditMode:(long long)arg1;
 - (id)_newNormalDisplayForComplicationController:(id)arg1 slot:(id)arg2;
 - (void)_updateInteractivityOfComplicationDisplays;
@@ -113,27 +117,18 @@
 - (void)_showStatusBarAfterWake;
 - (id)currentOrderedClockComplicationCounts;
 - (void)performComplicationBackgroundDataRefresh;
-- (void)handleScreenBlanked;
 - (void)handleOrdinaryScreenWake;
 - (void)handleWristRaiseScreenWake;
 - (void)performWristRaiseAnimation;
 - (void)prepareWristRaiseAnimation;
 - (_Bool)_handlePhysicalButton:(unsigned long long)arg1 event:(unsigned long long)arg2;
 - (_Bool)_wheelChangedWithEvent:(id)arg1;
-- (void)_simplifiedCleanupAfterZoom;
-- (void)_simplifiedSetZoomFraction:(double)arg1 iconDiameter:(double)arg2;
-- (void)_defaultCleanupAfterZoom;
-- (void)_defaultSetZoomFraction:(double)arg1 iconDiameter:(double)arg2;
-- (void)_defaultPrepareToZoomWithIconView:(id)arg1 minDiameter:(double)arg2 maxDiameter:(double)arg3;
 - (void)cleanupAfterZoom;
 - (void)setZoomFraction:(double)arg1 iconDiameter:(double)arg2;
 - (void)prepareToZoomWithIconView:(id)arg1 minDiameter:(double)arg2 maxDiameter:(double)arg3;
 - (void)face:(id)arg1 didChangeOptionsForEditMode:(long long)arg2;
 - (void)faceResourceDirectoryDidChange:(id)arg1;
 - (void)faceConfigurationDidChange:(id)arg1;
-- (id)customEditOptionContainerViewForComplicationPickerView:(id)arg1;
-- (id)complicationPickerView:(id)arg1 layoutRuleForComplicationDisplay:(id)arg2;
-- (void)complicationPickerView:(id)arg1 getDisplay:(id *)arg2 controller:(id *)arg3 forComplication:(id)arg4;
 - (id)PPTDescriptionForComplication:(id)arg1;
 - (void)PPTCleanupLastComplication;
 - (void)PPTCreateComplication:(id)arg1 forSlot:(id)arg2 synchronously:(_Bool)arg3;
@@ -141,6 +136,7 @@
 - (id)PPTUniqueComplicationsToSlotForCurrentFace;
 - (void)faceViewDidUpdateCustomData:(id)arg1 forKey:(id)arg2;
 - (id)faceViewDidRequestCustomDataForKey:(id)arg1;
+- (id)faceViewWantsFaceColorPalette;
 - (id)faceViewAllVisibleComplicationsForCurrentConfiguration;
 - (id)faceViewComplicationSlotsHiddenByEditOption:(id)arg1;
 - (id)faceViewEditOptionThatHidesAllComplications;
@@ -170,9 +166,9 @@
 - (_Bool)becomeFirstResponder;
 - (_Bool)canBecomeFirstResponder;
 - (_Bool)canStopEditing;
-- (void)hideFaceEditingUIAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)hideFaceEditingUIAnimated:(_Bool)arg1;
-- (void)showEditingUIAnimated:(_Bool)arg1;
+- (void)hideFaceEditingUIAnimated:(_Bool)arg1 destination:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)hideFaceEditingUIAnimated:(_Bool)arg1 destination:(unsigned long long)arg2;
+- (void)showEditingUIAnimated:(_Bool)arg1 fromZoomLevel:(unsigned long long)arg2;
 - (_Bool)dailySnapshotShowsComplication:(id)arg1 forSlot:(id)arg2;
 - (void)_applyConfigurationWithDuration:(double)arg1;
 - (void)_setDataMode:(long long)arg1 becomeLiveOnUnfreeze:(_Bool)arg2;
@@ -199,8 +195,7 @@
 - (void)freeze;
 - (id)removeStatusBarViewController;
 - (_Bool)_shouldHideFaceUI;
-- (void)faceConfigurationsDidChangeInTritiumViewController:(id)arg1;
-- (void)invalidateFramesInTritiumViewController:(id)arg1 withReason:(id)arg2;
+- (id)tritium_complicationControllerForSlot:(id)arg1;
 - (void)statusBarDidChange;
 - (void)loadView;
 - (void)dealloc;

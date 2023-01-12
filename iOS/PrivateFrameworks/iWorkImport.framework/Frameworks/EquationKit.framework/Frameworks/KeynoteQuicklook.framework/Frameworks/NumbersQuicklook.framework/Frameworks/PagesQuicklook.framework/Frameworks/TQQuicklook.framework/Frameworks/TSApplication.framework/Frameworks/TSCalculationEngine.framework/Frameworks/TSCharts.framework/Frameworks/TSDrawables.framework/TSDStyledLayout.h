@@ -19,6 +19,8 @@
 - (struct CGRect)reflectionFrameForSubRect:(struct CGRect)arg1;
 - (struct CGRect)reflectionFrame;
 - (struct CGRect)i_baseFrame;
+@property(readonly, nonatomic) struct CGRect fullReflectionFrame;
+- (struct CGRect)fullReflectionBoundsForRect:(struct CGRect)arg1;
 - (struct CGRect)reflectionBoundsForRect:(struct CGRect)arg1;
 - (struct CGRect)shadowedNaturalBoundsWithoutOffset;
 - (struct CGRect)alignmentFrameInRoot;

@@ -8,14 +8,14 @@
 
 #import <TipsCore/TPSEventsProviderDelegate-Protocol.h>
 
-@class NSString, TPSContentStatusEventsProvider, TPSDuetEventsProvider, TPSPortraitEventsProvider;
+@class NSString, TPSBiomeEventsProvider, TPSContentStatusEventsProvider, TPSDuetEventsProvider;
 @protocol TPSDEventsProviderManagerDelegate;
 
 @interface TPSEventsProviderManager : NSObject <TPSEventsProviderDelegate>
 {
     TPSDuetEventsProvider *_duetEventsProvider;
-    TPSPortraitEventsProvider *_portraitEventsProvider;
     TPSContentStatusEventsProvider *_contentStatusEventsProvider;
+    TPSBiomeEventsProvider *_biomeEventsProvider;
     id <TPSDEventsProviderManagerDelegate> _delegate;
 }
 

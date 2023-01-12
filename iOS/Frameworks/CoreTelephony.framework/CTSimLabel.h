@@ -13,19 +13,22 @@
 
 @interface CTSimLabel : NSObject <NSCopying, NSSecureCoding>
 {
+    _Bool _didSetup;
     NSString *_unique_id;
     NSString *_text;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool didSetup; // @synthesize didSetup=_didSetup;
 @property(retain, nonatomic) NSString *text; // @synthesize text=_text;
 @property(retain, nonatomic) NSString *unique_id; // @synthesize unique_id=_unique_id;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
-- (id)initWithId:(id)arg1 andText:(id)arg2;
+- (_Bool)isEqual:(id)arg1;
+- (id)initWithId:(id)arg1 andText:(id)arg2 andDidSetup:(_Bool)arg3;
 
 @end
 

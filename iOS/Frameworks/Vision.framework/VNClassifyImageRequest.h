@@ -14,7 +14,8 @@
 
 + (const CDStruct_7d93034e *)revisionAvailability;
 + (id)knownClassificationsForRevision:(unsigned long long)arg1 error:(id *)arg2;
-+ (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
++ (id)descriptionForPrivateRevision:(unsigned long long)arg1;
++ (id)supportedPrivateRevisions;
 + (Class)configurationClass;
 @property(readonly) NSArray *supportedImageSizeSet;
 @property(nonatomic) unsigned long long imageCropAndScaleOption;
@@ -23,20 +24,23 @@
 @property(readonly, copy, nonatomic) VNClassificationCustomHierarchy *customHierarchy;
 @property(nonatomic) unsigned long long maximumHierarchicalObservations;
 @property(nonatomic) unsigned long long maximumLeafObservations;
+- (id)supportedIdentifiersAndReturnError:(id *)arg1;
 - (CDUnknownBlockType)resultsSortingComparator;
 - (_Bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
 - (void)applyConfigurationOfRequest:(id)arg1;
 - (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
-- (void)setRevision:(unsigned long long)arg1;
+- (void)resolvedRevisionDidChangeFromRevision:(unsigned long long)arg1;
 - (_Bool)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 - (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1 session:(id)arg2;
 @property(readonly, copy) NSString *description;
 - (void)_setCustomHierarchy:(id)arg1;
 - (id)_applicableDetectorAndOptions:(id *)arg1 loadedInSession:(id)arg2 error:(id *)arg3;
+- (id)_applicableDetectorTypeForRevision:(unsigned long long)arg1 error:(id *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
+@property(readonly, copy) NSArray *results; // @dynamic results;
 @property(readonly) Class superclass;
 
 @end

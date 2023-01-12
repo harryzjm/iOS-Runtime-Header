@@ -4,12 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class UISceneAsynchronousRenderingOptions;
+
 __attribute__((visibility("hidden")))
 @interface _UIContextLayerHostView
 {
 }
 
 + (Class)layerClass;
+@property(copy, nonatomic) UISceneAsynchronousRenderingOptions *asynchronousRenderingOptions;
 @property(nonatomic) unsigned long long renderingMode;
 - (id)layer;
 - (id)initWithSceneLayer:(id)arg1;

@@ -8,15 +8,15 @@
 
 @interface TSCH3DTransformGeometryRenderProcessor
 {
-    TSCH3DDataBuffer *mBuffer;
+    TSCH3DDataBuffer *_buffer;
 }
 
 + (id)processorWithOriginal:(id)arg1;
-@property(readonly, nonatomic) TSCH3DDataBuffer *buffer; // @synthesize buffer=mBuffer;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) TSCH3DDataBuffer *buffer; // @synthesize buffer=_buffer;
 - (void)setOriginal:(id)arg1;
 - (id)matrix;
 - (void)geometry:(id)arg1;
-- (void)dealloc;
 - (id)init;
 - (id)initWithOriginal:(id)arg1;
 

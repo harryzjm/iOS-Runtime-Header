@@ -15,7 +15,7 @@
 @property(readonly, nonatomic) _Bool supportsAspectRatioToggle;
 - (long long)numberOfZoomStepsWithDataSource:(id)arg1;
 - (void)_configureGridLayout:(id)arg1 inSectionLayout:(id)arg2;
-- (double)_interItemSpacingForLayout:(id)arg1 forSpec:(id)arg2;
+- (struct CGSize)_interItemSpacingForLayout:(id)arg1 forSpec:(id)arg2;
 - (_Bool)_layoutIsAspectFit:(id)arg1 forSpec:(id)arg2;
 - (_Bool)_layoutHasIndividualItems:(id)arg1 forSpec:(id)arg2;
 - (struct CGSize)estimatedSizeOfSectionForAssetCollection:(id)arg1 isCurated:(_Bool)arg2 numberOfAssets:(long long)arg3 referenceSize:(struct CGSize)arg4;

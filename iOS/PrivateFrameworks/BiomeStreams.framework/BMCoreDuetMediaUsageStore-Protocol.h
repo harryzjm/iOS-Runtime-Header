@@ -7,7 +7,7 @@
 @class NSArray, NSPredicate, _CDContextualKeyPath, _DKEvent;
 
 @protocol BMCoreDuetMediaUsageStore
-- (void)saveKnowledgeEvent:(_DKEvent *)arg1 error:(id *)arg2;
+- (_Bool)saveKnowledgeEvent:(_DKEvent *)arg1 error:(id *)arg2;
 - (NSArray *)removeObjectsMatchingPredicate:(NSPredicate *)arg1 fromArrayAtKeyPath:(_CDContextualKeyPath *)arg2;
 - (_Bool)addContextValue:(id)arg1 toArrayAtKeyPath:(_CDContextualKeyPath *)arg2;
 @end

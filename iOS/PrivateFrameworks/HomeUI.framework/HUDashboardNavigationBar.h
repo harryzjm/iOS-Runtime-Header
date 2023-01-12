@@ -6,44 +6,34 @@
 
 #import <UIKit/UINavigationBar.h>
 
-#import <HomeUI/HUDashboardNavigationButtonDelegate-Protocol.h>
 #import <HomeUI/HUDashboardNavigationHost-Protocol.h>
 #import <HomeUI/HUDashboardNavigationTitleViewDelegate-Protocol.h>
 
-@class HFWallpaperSlice, HUDashboardNavigationTitleView, HUNavigationBarLayoutOptions, HUWallpaperView, NSArray, NSString;
+@class HUDashboardNavigationTitleView, HUNavigationBarLayoutOptions, NSArray, NSString;
 
-@interface HUDashboardNavigationBar : UINavigationBar <HUDashboardNavigationButtonDelegate, HUDashboardNavigationTitleViewDelegate, HUDashboardNavigationHost>
+@interface HUDashboardNavigationBar : UINavigationBar <HUDashboardNavigationTitleViewDelegate, HUDashboardNavigationHost>
 {
     _Bool _isBackgroundVisible;
     NSArray *_leftDashboardNavigationButtons;
     NSArray *_rightDashboardNavigationButtons;
-    HFWallpaperSlice *_blurredWallpaperSlice;
     HUNavigationBarLayoutOptions *_layoutOptions;
-    HUWallpaperView *_containingWallpaperView;
     HUDashboardNavigationTitleView *_titleView;
-    double _buttonBlurAlpha;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) double buttonBlurAlpha; // @synthesize buttonBlurAlpha=_buttonBlurAlpha;
 @property(retain, nonatomic) HUDashboardNavigationTitleView *titleView; // @synthesize titleView=_titleView;
 @property(nonatomic) _Bool isBackgroundVisible; // @synthesize isBackgroundVisible=_isBackgroundVisible;
-@property(nonatomic) __weak HUWallpaperView *containingWallpaperView; // @synthesize containingWallpaperView=_containingWallpaperView;
 @property(copy, nonatomic) HUNavigationBarLayoutOptions *layoutOptions; // @synthesize layoutOptions=_layoutOptions;
-@property(retain, nonatomic) HFWallpaperSlice *blurredWallpaperSlice; // @synthesize blurredWallpaperSlice=_blurredWallpaperSlice;
 @property(retain, nonatomic) NSArray *rightDashboardNavigationButtons; // @synthesize rightDashboardNavigationButtons=_rightDashboardNavigationButtons;
 @property(retain, nonatomic) NSArray *leftDashboardNavigationButtons; // @synthesize leftDashboardNavigationButtons=_leftDashboardNavigationButtons;
 - (void)largeTitleHeightDidChange:(double)arg1;
 - (void)_updateLayoutMargins;
 - (void)_updateTintColorForBarButtons:(id)arg1;
 - (void)_updateTintColor;
-- (id)_configuredBarButtonItemForDashboardNavigationButton:(id)arg1;
 - (void)_updateRightBarButtonItemsForTopItem;
 - (void)_updateLeftBarButtonItemsForTopItem;
 - (void)_updateAllBarButtonItemsForTopItem;
-- (struct CGRect)normalizedWallpaperRectForDashboardNavigationButton:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)layoutSubviews;
 - (void)setItems:(id)arg1 animated:(_Bool)arg2;
 - (id)popNavigationItemAnimated:(_Bool)arg1;
 - (void)pushNavigationItem:(id)arg1 animated:(_Bool)arg2;

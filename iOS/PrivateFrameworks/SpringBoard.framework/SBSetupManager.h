@@ -29,6 +29,7 @@
 - (void)_toggleSetupForMigrationNeeded:(_Bool)arg1 forReason:(id)arg2;
 - (_Bool)_setSetupRequiredReason:(unsigned long long)arg1;
 - (_Bool)_isInSetupMode;
+- (void)noteAuthenticationSucceededWithPasscode:(id)arg1;
 @property(nonatomic, getter=isDeferringDeviceOrientationUpdates) _Bool deferringDeviceOrientationUpdates;
 - (void)postLaunchCompleteNotificationForSetup;
 - (_Bool)setupHasFinishedRestoringFromBackup;

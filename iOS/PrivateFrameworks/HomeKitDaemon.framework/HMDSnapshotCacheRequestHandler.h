@@ -16,21 +16,19 @@
 @interface HMDSnapshotCacheRequestHandler : HMFObject <HMFLogging, HMFTimerDelegate, HMDSnapshotRequestHandlerProtocol>
 {
     NSObject<OS_dispatch_queue> *_workQueue;
-    NSString *_logString;
     NSMutableDictionary *_snapshotCacheMap;
+    NSString *_logIdentifier;
 }
 
 + (id)logCategory;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSMutableDictionary *snapshotCacheMap; // @synthesize snapshotCacheMap=_snapshotCacheMap;
-@property(readonly, nonatomic) NSString *logString; // @synthesize logString=_logString;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+@property(readonly, nonatomic) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
+- (_Bool)isSnapshotPresentForCharacteristicEventUUID:(id)arg1;
 - (void)requestSnapshot:(id)arg1 streamingTierType:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)timerDidFire:(id)arg1;
-- (void)setSnapshotFileToCache:(id)arg1 proactiveSessionID:(id)arg2;
+- (void)setSnapshotFileToCache:(id)arg1 snapshotCharacteristicEventUUID:(id)arg2;
 - (void)removeSnapshotFileToCache:(id)arg1 error:(id)arg2;
 - (void)addSnapshotFileToCache:(id)arg1;
-- (id)logIdentifier;
 - (id)initWithWorkQueue:(id)arg1 logID:(id)arg2;
 
 // Remaining properties

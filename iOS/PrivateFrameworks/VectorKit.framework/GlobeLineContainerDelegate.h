@@ -13,11 +13,11 @@
 __attribute__((visibility("hidden")))
 @interface GlobeLineContainerDelegate : NSObject <VKGlobeLineContainerDelegate>
 {
-    struct RealisticRenderer *_renderer;
+    void *_renderer;
 }
 
 - (void)lineContainerNeedsDisplay:(id)arg1;
-- (id)initWithRenderer:(struct RealisticRenderer *)arg1;
+- (id)initWithRenderer:(void *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

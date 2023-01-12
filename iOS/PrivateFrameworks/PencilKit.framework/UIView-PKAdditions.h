@@ -9,6 +9,8 @@
 @protocol PKScribbleInteractionDelegate;
 
 @interface UIView (PKAdditions)
+- (id)pk_autoFadeOutShapePointLayer;
+- (id)pk_autoFadeOutShapeRectLayer;
 - (struct CGRect)PK_convertRect:(struct CGRect)arg1 fromCoordinateSpace:(id)arg2;
 - (struct CGRect)PK_convertRect:(struct CGRect)arg1 toCoordinateSpace:(id)arg2;
 - (struct CGPoint)PK_convertPoint:(struct CGPoint)arg1 fromCoordinateSpace:(id)arg2;

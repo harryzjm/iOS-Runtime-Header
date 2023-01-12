@@ -9,6 +9,7 @@
 @interface _TtC8VideosUI13OverlayLayout
 {
     MISSING_TYPE *type;
+    MISSING_TYPE *sizeStyle;
     MISSING_TYPE *titleLayout;
     MISSING_TYPE *textBadgeLayout;
     MISSING_TYPE *progressLayout;

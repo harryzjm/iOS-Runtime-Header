@@ -6,11 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class MISSING_TYPE, NSData, NSString;
+@class MISSING_TYPE, NSData, NSString, USKNode, USKProperty, USKScene;
 
 @interface USKData : NSObject
 {
     struct VtValue _value;
+    USKNode *_nodeOwner;
+    USKScene *_sceneOwner;
+    USKProperty *_propertyOwner;
     NSString *_type;
     unsigned long long _arraySize;
 }
@@ -128,6 +131,9 @@
 - (id)stringValue;
 - (id)tokenValue;
 @property(readonly, retain, nonatomic) NSData *dataNoCopy;
+- (id)initWithVtValue:(struct VtValue)arg1 typeName:(struct TfToken)arg2 withPropertyOwner:(id)arg3;
+- (id)initWithVtValue:(struct VtValue)arg1 typeName:(struct TfToken)arg2 withSceneOwner:(id)arg3;
+- (id)initWithVtValue:(struct VtValue)arg1 typeName:(struct TfToken)arg2 withNodeOwner:(id)arg3;
 - (id)initWithVtValue:(struct VtValue)arg1 typeName:(struct TfToken)arg2;
 - (struct VtValue)value;
 

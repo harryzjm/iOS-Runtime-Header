@@ -14,5 +14,6 @@
 - (id)crk_stringByRemovingSuffix:(id)arg1;
 - (id)crk_stringByRemovingPrefix:(id)arg1;
 - (id)crk_sha1Hash;
+@property(readonly, copy, nonatomic) NSString *crk_stringBySanitizingFileName;
 @end
 

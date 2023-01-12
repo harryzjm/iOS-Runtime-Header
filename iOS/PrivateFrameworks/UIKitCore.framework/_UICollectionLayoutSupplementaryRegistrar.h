@@ -8,7 +8,7 @@
 
 #import <UIKitCore/_UICollectionLayoutSupplementaryEnrolling-Protocol.h>
 
-@class NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSSet, NSString;
+@class NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _UICollectionLayoutSupplementaryRegistrar : NSObject <_UICollectionLayoutSupplementaryEnrolling>
@@ -20,20 +20,10 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableDictionary *kindEnrollmentsDict; // @synthesize kindEnrollmentsDict=_kindEnrollmentsDict;
-@property(retain, nonatomic) NSMutableDictionary *enrollmentsDict; // @synthesize enrollmentsDict=_enrollmentsDict;
-@property(retain, nonatomic) NSMutableSet *uncommittedEnrollmentIdentifiers; // @synthesize uncommittedEnrollmentIdentifiers=_uncommittedEnrollmentIdentifiers;
-@property(retain, nonatomic) NSMutableOrderedSet *enrollmentIdentifiers; // @synthesize enrollmentIdentifiers=_enrollmentIdentifiers;
-- (void)_removeEnrollmentWithIdentifier:(id)arg1;
-- (void)_addEnrollmentToKindDict:(id)arg1;
 - (void)pruneUncommitedEnrollments;
 - (void)commitEnrollment:(id)arg1;
-- (void)unenrollAllAfterEnrollment:(id)arg1;
-- (void)unenrollAllAfterAndIncludingEnrollment:(id)arg1;
 - (long long)kindIndexForEnrollmentIdentifier:(id)arg1;
 - (long long)countForKind:(id)arg1;
-@property(readonly, nonatomic) long long count;
-@property(readonly, nonatomic) NSSet *kinds;
 - (id)enrollSupplementaryForKind:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (id)init;

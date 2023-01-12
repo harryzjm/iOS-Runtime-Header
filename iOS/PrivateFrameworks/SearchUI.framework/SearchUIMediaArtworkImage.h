@@ -21,7 +21,7 @@
 @property(retain) NSString *persistentID; // @synthesize persistentID=_persistentID;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (void)loadImageWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)loadImageWithScale:(double)arg1 isDarkStyle:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (Class)classForCoder;
 - (id)initWithSpotlightIdentifier:(id)arg1;
 - (id)initWithSFImage:(id)arg1;

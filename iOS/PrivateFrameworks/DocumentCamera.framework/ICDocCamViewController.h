@@ -33,6 +33,7 @@
     _Bool _deviceHasFlash;
     _Bool _hideUserPrompt;
     _Bool _adjustingFocus;
+    _Bool _segmentMeanComputed;
     _Bool _rectangleDetectionEnabled;
     _Bool _registrationEnabled;
     _Bool _debugRectanglesEnabled;
@@ -60,6 +61,11 @@
     float _rectangleMinimumConfidence;
     float _rectangleMinimumVisualConfidence;
     float _rectangleStabilityStdDev;
+    float _segmentMinimumVisualConfidence;
+    float _segmentMinimumVisualConfidence60Frames;
+    float _segmentMinimumVisualConfidenceFinalScan;
+    float _segmentStabilityStdDev;
+    float _segmentationFudgeFactor;
     ICDocCamThumbnailContainerView *_thumbnailContainerView;
     ICDocCamThumbnailCollectionViewController *_thumbnailViewController;
     long long _setupResult;
@@ -186,6 +192,10 @@
     AVCaptureConnection *_videoConnection;
     UIButton *_recordButton;
     struct CGSize _viewBoundsSize;
+    struct CGPoint _segmentTopLeft;
+    struct CGPoint _segmentTopRight;
+    struct CGPoint _segmentBottomLeft;
+    struct CGPoint _segmentBottomRight;
     struct CGSize _streamingImageSize;
     struct CGRect _zoomTargetCustomImageFrame;
 }
@@ -270,6 +280,16 @@
 @property _Bool debugRectanglesEnabled; // @synthesize debugRectanglesEnabled=_debugRectanglesEnabled;
 @property _Bool registrationEnabled; // @synthesize registrationEnabled=_registrationEnabled;
 @property _Bool rectangleDetectionEnabled; // @synthesize rectangleDetectionEnabled=_rectangleDetectionEnabled;
+@property _Bool segmentMeanComputed; // @synthesize segmentMeanComputed=_segmentMeanComputed;
+@property struct CGPoint segmentBottomRight; // @synthesize segmentBottomRight=_segmentBottomRight;
+@property struct CGPoint segmentBottomLeft; // @synthesize segmentBottomLeft=_segmentBottomLeft;
+@property struct CGPoint segmentTopRight; // @synthesize segmentTopRight=_segmentTopRight;
+@property struct CGPoint segmentTopLeft; // @synthesize segmentTopLeft=_segmentTopLeft;
+@property float segmentationFudgeFactor; // @synthesize segmentationFudgeFactor=_segmentationFudgeFactor;
+@property float segmentStabilityStdDev; // @synthesize segmentStabilityStdDev=_segmentStabilityStdDev;
+@property float segmentMinimumVisualConfidenceFinalScan; // @synthesize segmentMinimumVisualConfidenceFinalScan=_segmentMinimumVisualConfidenceFinalScan;
+@property float segmentMinimumVisualConfidence60Frames; // @synthesize segmentMinimumVisualConfidence60Frames=_segmentMinimumVisualConfidence60Frames;
+@property float segmentMinimumVisualConfidence; // @synthesize segmentMinimumVisualConfidence=_segmentMinimumVisualConfidence;
 @property float rectangleStabilityStdDev; // @synthesize rectangleStabilityStdDev=_rectangleStabilityStdDev;
 @property long long rectangleMaximumNumber; // @synthesize rectangleMaximumNumber=_rectangleMaximumNumber;
 @property float rectangleMinimumVisualConfidence; // @synthesize rectangleMinimumVisualConfidence=_rectangleMinimumVisualConfidence;
@@ -402,6 +422,7 @@
 - (void)thumbnailViewDidTap:(id)arg1;
 - (void)prepareForDismissal;
 - (void)focusWithMode:(long long)arg1 exposeWithMode:(long long)arg2 atDevicePoint:(struct CGPoint)arg3 monitorSubjectAreaChange:(_Bool)arg4;
+- (void)logAlgoChoice;
 - (void)analyzerCallbackWithDictionaryResults:(id)arg1;
 - (void)clearQueue;
 - (void)clearRectangles;
@@ -488,6 +509,7 @@
 - (void)updateConstraintsForIPhone;
 - (void)updateConstraintsForIPad;
 - (void)updateAllConstraints;
+@property(readonly) _Bool useDocumentSegmentation;
 - (void)setupThumbnailViewControllerIfNecessary;
 - (void)preWarmFilters;
 - (void)setUpUserDefaults;

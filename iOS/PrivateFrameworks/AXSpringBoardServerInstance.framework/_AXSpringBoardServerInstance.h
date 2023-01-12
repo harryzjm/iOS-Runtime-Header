@@ -35,6 +35,9 @@
 @property(retain, nonatomic) _AXAssertionServer *assertionServer; // @synthesize assertionServer=_assertionServer;
 @property(nonatomic) __weak id <AXSpringBoardServerInstanceDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)_getSplashImageForApp:(id)arg1;
+- (id)_toggleTorch:(id)arg1;
+- (id)_cancelSiriDismissalForAssistiveTouch:(id)arg1;
+- (id)_connectedDevicesHaveAssistiveTouchCustomActions:(id)arg1;
 - (id)_connectedDevicesRequireAssistiveTouch:(id)arg1;
 - (id)_activateSOSMode:(id)arg1;
 - (id)_canSetDockIconActivationMode:(id)arg1;
@@ -59,9 +62,11 @@
 - (id)_areSystemGesturesDisabledByAccessibility:(id)arg1;
 - (id)_areSystemGesturesDisabledNatively:(id)arg1;
 - (id)_isSyncingRestoringResettingOrUpdating:(id)arg1;
+- (id)_isLockScreenVisible:(id)arg1;
 - (id)_isPasscodeLockVisible:(id)arg1;
 - (id)_isShowingNonSystemApp:(id)arg1;
 - (id)_isDockVisible:(id)arg1;
+- (id)_isShelfSwitcherVisible:(id)arg1;
 - (id)_isAppSwitcherVisible:(id)arg1;
 - (id)_isShowingHomescreen:(id)arg1;
 - (id)_isSiriVisible:(id)arg1;
@@ -78,6 +83,9 @@
 - (id)_isMediaPlaying:(id)arg1;
 - (id)_isPointInAXInspector:(id)arg1;
 - (id)_handleIsInspectorMinimized:(id)arg1;
+- (id)_visibleTripleClickItems:(id)arg1;
+- (id)_handleLaunchVoiceOverImageExplorerViewService:(id)arg1;
+- (id)_handleLaunchVoiceOverQuickSettingsViewService:(id)arg1;
 - (id)_handleIsMagnifierVisible:(id)arg1;
 - (id)_handleLaunchMagnifierApp:(id)arg1;
 - (id)_handleReactivateInCallService:(id)arg1;
@@ -106,6 +114,7 @@
 - (id)_isRingerMuted:(id)arg1;
 - (id)_isSideSwitchUsedForOrientation:(id)arg1;
 - (id)_setOrientationLocked:(id)arg1;
+- (id)_setOrientation:(id)arg1;
 - (id)_isOrientationLocked:(id)arg1;
 - (id)_volumeLevel:(id)arg1;
 - (id)_isSystemSleeping:(id)arg1;
@@ -113,13 +122,17 @@
 - (id)_actionHandling:(id)arg1;
 - (id)_getActiveInterfaceOrientation:(id)arg1;
 - (id)_openVoiceControl:(id)arg1;
+- (id)_isLongLookNotificationVisible:(id)arg1;
 - (id)_isNotificationCenterVisible:(id)arg1;
 - (id)_toggleNotificationCenter:(id)arg1;
 - (id)_dismissSiri:(id)arg1;
 - (id)_rebootDevice:(id)arg1;
 - (id)_unlockDevice:(id)arg1;
 - (id)_wakeUpDeviceIfNecessary:(id)arg1;
+- (id)_toggleQuickNote:(id)arg1;
+- (id)_toggleAppLibrary:(id)arg1;
 - (id)_simulateEdgePressHaptics:(id)arg1;
+- (id)_dismissShelfSwitcher:(id)arg1;
 - (id)_dismissAppSwitcher:(id)arg1;
 - (id)_openAppSwitcher:(id)arg1;
 - (id)_takeScreenshot:(id)arg1;
@@ -129,7 +142,6 @@
 - (id)_hasActiveEndpointCall:(id)arg1;
 - (id)_hasActiveCall:(id)arg1;
 - (id)_isMakingEmergencyCall:(id)arg1;
-- (id)_screenLocked:(id)arg1;
 - (id)_isShowingRemoteView:(id)arg1;
 - (id)_hideRemoteView:(id)arg1;
 - (id)_showRemoteView:(id)arg1;

@@ -6,7 +6,6 @@
 
 @class NSArray, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKFunctionExpressionValidator
 {
     NSString *_functionName;
@@ -14,11 +13,8 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSArray *argumentValidators; // @synthesize argumentValidators=_argumentValidators;
-@property(retain, nonatomic) NSString *functionName; // @synthesize functionName=_functionName;
 - (id)CKPropertiesDescription;
 - (_Bool)validate:(id)arg1 error:(id *)arg2;
-- (id)initWithFunctionName:(id)arg1 validators:(id)arg2;
 
 @end
 

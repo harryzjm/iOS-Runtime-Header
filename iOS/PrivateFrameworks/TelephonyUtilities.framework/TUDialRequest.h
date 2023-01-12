@@ -61,7 +61,7 @@
 + (id)contactStore;
 + (int)originatingUITypeForString:(id)arg1;
 + (id)stringForOriginatingUIType:(int)arg1;
-+ (id)providerForIntentPreferredCallProvider:(long long)arg1 callCapability:(long long)arg2 providerManager:(id)arg3;
++ (id)providerForIntentPreferredCallProvider:(long long)arg1 recentCallProviderId:(id)arg2 callCapability:(long long)arg3 providerManager:(id)arg4;
 + (long long)ttyTypeForIntentTTYType:(long long)arg1;
 + (long long)intentTTYTypeForTTYType:(long long)arg1;
 + (long long)dialRequestTypeForIntentDestinationType:(long long)arg1;

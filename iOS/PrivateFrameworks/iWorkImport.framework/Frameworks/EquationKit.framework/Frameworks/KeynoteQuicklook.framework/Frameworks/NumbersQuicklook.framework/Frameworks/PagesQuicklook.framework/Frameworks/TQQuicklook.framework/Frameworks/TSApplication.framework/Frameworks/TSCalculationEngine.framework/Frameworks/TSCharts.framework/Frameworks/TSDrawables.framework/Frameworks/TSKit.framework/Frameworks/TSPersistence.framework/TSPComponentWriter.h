@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSHashTable, NSIndexSet, NSMapTable, NSMutableIndexSet, NSMutableSet, NSSet, NSString, TSPArchiverManager, TSPComponent, TSPMutableComponentObjectUUIDMap, TSPObject, TSPObjectReferenceMap, TSPReferenceOrderedSet;
+@class NSHashTable, NSIndexSet, NSMapTable, NSMutableIndexSet, NSMutableSet, NSSet, NSString, TSPArchiverManager, TSPComponent, TSPMutableComponentDataReferenceMap, TSPMutableComponentObjectUUIDMap, TSPObject, TSPObjectReferenceMap, TSPReferenceOrderedSet;
 @protocol OS_dispatch_group, OS_dispatch_queue, OS_dispatch_semaphore, TSPComponentWriteChannel, TSPComponentWriterDelegate;
 
 @interface TSPComponentWriter : NSObject
@@ -23,7 +23,8 @@
     TSPReferenceOrderedSet *_archivedObjects;
     NSMapTable *_archivedObjectsDictionary;
     TSPMutableComponentObjectUUIDMap *_componentObjectUUIDMap;
-    struct vector<TSP::ObjectStackEntry, std::__1::allocator<TSP::ObjectStackEntry>> _objectStack;
+    TSPMutableComponentDataReferenceMap *_componentDataReferenceMap;
+    struct vector<TSP::ObjectStackEntry, std::allocator<TSP::ObjectStackEntry>> _objectStack;
     NSObject<OS_dispatch_group> *_writeGroup;
     NSObject<OS_dispatch_queue> *_writeQueue;
     TSPReferenceOrderedSet *_weakReferences;
@@ -62,7 +63,7 @@
 - (_Bool)isObjectExternalBecauseOfExplicitComponentOwnership:(id)arg1 archiverOrNil:(id)arg2 claimingComponentOrNil:(id)arg3 hasArchiverAccessLock:(_Bool)arg4 explicitComponentRootObject:(id *)arg5 claimingComponent:(id *)arg6 isOwnedByDifferentPackage:(_Bool *)arg7;
 - (_Bool)isObjectExternal:(id)arg1 archiverOrNil:(id)arg2 parentObject:(id)arg3 hasArchiverAccessLock:(_Bool)arg4 claimingComponent:(id *)arg5 isOwnedByDifferentPackage:(_Bool *)arg6 isAmbiguousOwnership:(_Bool *)arg7;
 - (_Bool)canSkipArchivingStronglyReferencedObject:(id)arg1 fromComponentRootObject:(id)arg2;
-- (void)writeArchiver:(id)arg1;
+- (void)writeArchiver:(id)arg1 forObjectIdentifier:(long long)arg2;
 - (void)writeObject:(id)arg1 archiver:(id)arg2 parentObject:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)writeWithArchiverAccessLockForObjects:(id)arg1 parentObject:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)acquireArchiverAccessLockAndWriteObjects:(id)arg1 parentObject:(id)arg2 completion:(CDUnknownBlockType)arg3;

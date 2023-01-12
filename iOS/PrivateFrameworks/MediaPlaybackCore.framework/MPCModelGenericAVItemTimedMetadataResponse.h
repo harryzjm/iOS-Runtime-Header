@@ -8,9 +8,12 @@
 
 @class MPCModelGenericAVItemTimedMetadataStreamFields, MPSectionedCollection, NSData;
 
+__attribute__((visibility("hidden")))
 @interface MPCModelGenericAVItemTimedMetadataResponse : MPModelResponse
 {
     MPModelResponse *_personalizationResponse;
+    _Bool _firstResponse;
+    _Bool _finalResponse;
     NSData *_adamIDData;
     MPCModelGenericAVItemTimedMetadataStreamFields *_streamFields;
     MPSectionedCollection *_unpersonalizedContentDescriptors;
@@ -20,9 +23,11 @@
 @property(copy, nonatomic) MPSectionedCollection *unpersonalizedContentDescriptors; // @synthesize unpersonalizedContentDescriptors=_unpersonalizedContentDescriptors;
 @property(retain, nonatomic) MPCModelGenericAVItemTimedMetadataStreamFields *streamFields; // @synthesize streamFields=_streamFields;
 @property(copy, nonatomic) NSData *adamIDData; // @synthesize adamIDData=_adamIDData;
+@property(nonatomic, getter=isFinalResponse) _Bool finalResponse; // @synthesize finalResponse=_finalResponse;
+@property(nonatomic, getter=isFirstResponse) _Bool firstResponse; // @synthesize firstResponse=_firstResponse;
 - (void)_personalizationResponseDidInvalidateNotification:(id)arg1;
 - (void)dealloc;
-- (id)initWithRequest:(id)arg1 personalizationResponse:(id)arg2;
+- (id)initWithRequest:(id)arg1 personalizationResponse:(id)arg2 firstResponse:(_Bool)arg3 finalResponse:(_Bool)arg4;
 
 @end
 

@@ -10,7 +10,6 @@
 
 @class CKDPIdentifier, CKDPRecordZoneIdentifier, CKDPSubscriptionNotification, NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface CKDPSubscription : PBCodable <NSCopying>
 {
     struct {

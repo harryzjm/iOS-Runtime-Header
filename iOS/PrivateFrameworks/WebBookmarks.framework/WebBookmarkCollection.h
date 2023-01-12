@@ -9,28 +9,28 @@
 #import <WebBookmarks/WBBookmarkProvider-Protocol.h>
 #import <WebBookmarks/WBDatabaseLockAcquisitorDelegate-Protocol.h>
 
-@class NSString, SafariFetcherServerProxy, WBDatabaseLockAcquisitor, WebBookmark, WebBookmarkTitleWordTokenizer;
+@class NSString, SafariFetcherServerProxy, WBCollectionConfiguration, WBDatabaseLockAcquisitor, WebBookmark, WebBookmarkTitleWordTokenizer;
 
 @interface WebBookmarkCollection : NSObject <WBDatabaseLockAcquisitorDelegate, WBBookmarkProvider>
 {
     struct sqlite3 *_db;
+    WBCollectionConfiguration *_configuration;
     struct __CFLocale *_locale;
     WebBookmarkTitleWordTokenizer *_wordTokenizer;
     WebBookmark *_rootBookmark;
     int _favoritesFolderIdentifier;
     _Bool _dirty;
     SafariFetcherServerProxy *_safariFetcherServerProxy;
-    _Bool _readonly;
-    _Bool _skipExternalNotifications;
     _Bool _setupFinished;
     long long _mergeMode;
     WBDatabaseLockAcquisitor *_databaseLockAcquisitor;
     long long _lastObservedLocalMigrationState;
 }
 
-+ (void)_resetDeviceIdentifierForCloudKit;
-+ (id)_deviceIdentifierForCloudKitGenerateIfNeeded:(_Bool)arg1;
-+ (id)_deviceIdentifierForCloudKit;
++ (void)_resetDeviceIdentifierForCloudKitWithCollectionType:(long long)arg1;
++ (id)_deviceIdentifierForCloudKitWithCollectionType:(long long)arg1 generateIfNeeded:(_Bool)arg2;
++ (id)_deviceIdentifierForCloudKitWithCollectionType:(long long)arg1;
++ (id)_cloudKitSyncMetadataFileNameWithCollectionType:(long long)arg1;
 + (id)bookmarkImagesDirectoryPath;
 + (id)_syncLockFileName;
 + (id)_uniqueExternalUUID;
@@ -38,12 +38,12 @@
 + (unsigned long long)readingListArchivesDiskUsage;
 + (id)safariDirectoryPath;
 + (id)readingListArchivesDirectoryPath;
-+ (id)_safariInMemoryChangesFilePath;
-+ (id)_safariPreferencesDomain;
-+ (id)_safariContainerPath;
-+ (id)_currentProcessContainerPath;
++ (id)inMemoryChangesFileURL;
++ (id)databasePathForConfiguration:(id)arg1;
 + (_Bool)_removeCorruptedBookmarksDatabaseAtPath:(id)arg1;
-+ (_Bool)_bookmarkCollectionSyncAllowed;
++ (id)_defaultDatabaseFileNameForCollectionType:(long long)arg1;
++ (id)inMemoryChangeSet;
++ (_Bool)isSyncAllowed;
 + (id)_syncFlags;
 + (void)_postBookmarksChangedSyncNotificationOnSyncQueue;
 + (void)unholdLockSync:(const void *)arg1;
@@ -56,6 +56,7 @@
 + (_Bool)_isLockedSync;
 + (_Bool)isLockedSync;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) WBCollectionConfiguration *configuration; // @synthesize configuration=_configuration;
 - (void)test_restoreMissingSpecialBookmarks;
 - (void)_test_preventPeriodicallyApplyingInMemoryChangesToDatabase;
 - (id)_syncableBookmarksIDsInFolderWithBookmarkID:(int)arg1;
@@ -81,17 +82,24 @@
 - (_Bool)deduplicateBookmarksWithRootFolder:(int)arg1 depth:(unsigned long long)arg2;
 - (_Bool)deduplicateBookmarks;
 - (void)_enumerateContentsOfBookmarkFolder:(int)arg1 includingSubfolders:(_Bool)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (void)replaceBookmarksInMemory:(id)arg1 inFolderWithID:(int)arg2;
+- (void)reorderBookmarkInMemory:(id)arg1 afterBookmark:(id)arg2;
+- (void)moveBookmarkInMemory:(id)arg1 toFolderWithID:(int)arg2;
 - (void)modifyBookmarkInMemory:(id)arg1;
 - (void)addBookmarkInMemory:(id)arg1 toFolderWithID:(int)arg2;
 - (void)_deleteBookmarkInMemory:(id)arg1;
 - (void)deleteBookmarksInMemory:(id)arg1 inFolder:(int)arg2;
 - (void)deleteBookmarkInMemory:(id)arg1;
 - (void)databaseLockAcquisitor:(id)arg1 acquiredLock:(_Bool)arg2;
-- (_Bool)_applyInMemoryChangesToDatabasePostChangeNotification:(_Bool)arg1;
+- (id)_applyInMemoryChanges:(id)arg1 postChangeNotification:(_Bool)arg2;
+- (void)_applyInMemoryChange:(id)arg1 fromChangeSet:(id)arg2 updatedBookmarks:(id)arg3;
+- (void)_applyInMemoryBookmarkChange:(id)arg1 fromChangeSet:(id)arg2 updatedBookmarks:(id)arg3;
+- (id)applyInMemoryChanges:(id)arg1;
 - (_Bool)applyInMemoryChangesToDatabase;
 - (void)persistChangesWithCompletion:(CDUnknownBlockType)arg1;
 - (_Bool)hasInMemoryChanges;
 - (id)_inMemoryChangeSet;
+- (void)_createInMemoryChangeSet;
 - (void)_setupInMemoryChangeSet;
 - (_Bool)_trackChangesInMemoryIfDatabaseWriteIsNotAllowed;
 - (long long)_mergeMode;
@@ -118,12 +126,14 @@
 - (void)_postBookmarksFolderContentsDidChangeNotification:(int)arg1;
 - (void)_postBookmarksDidReloadNotificationAndStartReadingListFetcherIfChangesWereMade;
 - (void)_postBookmarksDidReloadNotification;
+- (_Bool)bookmarkIsFrequentlyVisitedSite:(id)arg1;
 - (_Bool)clearFrequentlyVisitedSitesFolder;
 - (id)frequentlyVisitedSitesFolderBookmarkID;
 - (id)frequentlyVisitedSitesList;
 - (id)frequentlyVisitedSitesFolderCreatingIfNeeded:(_Bool)arg1 postChangeNotification:(_Bool)arg2;
 - (id)frequentlyVisitedSitesFolderCreatingIfNeeded:(_Bool)arg1;
 - (id)frequentlyVisitedSitesFolder;
+- (_Bool)bookmarkIsInFavoritesFolder:(id)arg1;
 - (_Bool)bookmarkIsFavoritesFolder:(id)arg1;
 - (id)favoritesFolderList;
 - (id)favoritesFolder;
@@ -183,6 +193,7 @@
 - (_Bool)_clearSyncKeysUnderBookmarkID:(int)arg1 isFolder:(_Bool)arg2;
 - (_Bool)_clearAllTombstones;
 - (_Bool)_insertTombstoneWithServerID:(id)arg1 syncData:(id)arg2;
+- (_Bool)_isTombstoneWithServerID:(id)arg1;
 - (_Bool)_moveBookmark:(id)arg1 toFolderWithID:(int)arg2 detectCycles:(_Bool)arg3;
 - (int)_intFromExecutingSQL:(id)arg1;
 - (int)_executeSQLWithCString:(const char *)arg1;
@@ -201,6 +212,9 @@
 - (_Bool)_migrateToCurrentSchema;
 - (void)_rerunMigrationsIfNecessary;
 - (_Bool)migrateReadingListIconsFromDatabaseToBookmarkImagesDirectory;
+- (void)_migrateSchemaVersion42ToVersion43;
+- (void)_migrateSchemaVersion41ToVersion42;
+- (void)_migrateSchemaVersion39Or40ToVersion41;
 - (void)_migrateSchemaVersion38ToVersion39;
 - (void)_migrateSchemaVersion37ToVersion38;
 - (void)_migrateSchemaVersion36ToVersion37;
@@ -237,6 +251,7 @@
 - (void)_clearAndCreateBookmarksTables;
 - (void)_clearAndCreateBookmarksTitleWordTable;
 - (void)_createSchema;
+- (void)_createFreshDatabase;
 - (long long)_userVersion;
 - (id)_mergeCandidateBookmarkWithTitle:(id)arg1 address:(id)arg2 parent:(int)arg3 mergeMode:(long long)arg4;
 - (id)_mergeCandidateFolderWithTitle:(id)arg1 parent:(int)arg2 mergeMode:(long long)arg3;
@@ -269,6 +284,10 @@
 - (id)bookmarksMatchingString:(id)arg1;
 - (struct sqlite3_stmt *)_prefixSearch:(id)arg1 usingColumns:(const char *)arg2 maxCount:(unsigned int)arg3;
 - (_Bool)fixCachedNumberOfChildrenIfNeeded;
+- (_Bool)_updateBookmarks:(id)arg1 inFolderWithID:(int)arg2;
+- (_Bool)updateBookmarks:(id)arg1 inFolderWithID:(int)arg2 secureDelete:(_Bool)arg3;
+- (_Bool)_saveAndMoveBookmarks:(id)arg1 toFolderID:(int)arg2;
+- (_Bool)_saveAndMoveBookmark:(id)arg1 toFolderID:(int)arg2;
 - (void)saveAndMoveBookmark:(id)arg1 toFolderID:(int)arg2;
 - (void)saveIconWithData:(id)arg1 urlString:(id)arg2 forBookmark:(id)arg3;
 - (void)deleteArchiveForReadingListBookmarkWithID:(int)arg1;
@@ -276,11 +295,16 @@
 - (void)saveArchiveForReadingListBookmarkWithID:(int)arg1;
 - (_Bool)reorderList:(id)arg1 moveBookmarkAtIndex:(unsigned int)arg2 toIndex:(unsigned int)arg3;
 - (_Bool)reorderBookmark:(id)arg1 toIndex:(unsigned int)arg2;
+- (_Bool)_reorderBookmark:(id)arg1 toIndex:(unsigned int)arg2;
+- (_Bool)_reorderBookmark:(id)arg1 afterBookmark:(id)arg2;
 - (_Bool)_moveBookmark:(id)arg1 toIndex:(unsigned int)arg2;
+- (_Bool)moveBookmark:(id)arg1 toIndex:(unsigned int)arg2;
 - (_Bool)moveBookmark:(id)arg1 toFolderWithID:(int)arg2;
+- (_Bool)_moveBookmark:(id)arg1 toFolderWithID:(int)arg2;
 - (_Bool)deleteBookmark:(id)arg1;
 - (_Bool)_deleteBookmark:(id)arg1 postChangeNotification:(_Bool)arg2 forApplyingInMemoryChanges:(_Bool)arg3;
 - (_Bool)deleteBookmarks:(id)arg1 postChangeNotification:(_Bool)arg2;
+- (_Bool)_deleteBookmarks:(id)arg1 leaveTombstone:(_Bool)arg2;
 - (void)_deleteIconForBookmark:(id)arg1;
 - (_Bool)deleteBookmark:(id)arg1 postChangeNotification:(_Bool)arg2;
 - (_Bool)_saveBookmark:(id)arg1 startReadingListFetcher:(_Bool)arg2 forApplyingInMemoryChanges:(_Bool)arg3;
@@ -301,7 +325,7 @@
 - (id)readingListWithUnreadOnly:(_Bool)arg1;
 - (id)bookmarksBarList;
 - (id)rootList;
-- (id)listWithID:(int)arg1 skipOffset:(unsigned int)arg2 includeHidden:(_Bool)arg3 filteredUsingString:(id)arg4;
+- (id)listWithID:(int)arg1 skipOffset:(unsigned int)arg2 includeHidden:(_Bool)arg3 includeDescendantsAsChildren:(_Bool)arg4 filteredUsingString:(id)arg5;
 - (id)listWithID:(int)arg1 skipOffset:(unsigned int)arg2 includeHidden:(_Bool)arg3;
 - (id)listWithID:(int)arg1 skipOffset:(unsigned int)arg2;
 - (id)listWithSpecialID:(int)arg1;
@@ -319,10 +343,13 @@
 - (id)validBookmarkUUIDsFromUUIDs:(id)arg1;
 - (id)bookmarkWithUUID:(id)arg1;
 - (id)bookmarkWithID:(int)arg1;
+- (_Bool)performDatabaseUpdatesWithTransaction:(CDUnknownBlockType)arg1 secureDelete:(_Bool)arg2;
+- (_Bool)_isDatabaseWriteAllowed;
 - (unsigned long long)purge:(unsigned long long)arg1;
 - (unsigned long long)purgeableSpace;
 - (id)purgeableReadingListItems;
 - (void)localeSettingsChanged;
+- (_Bool)truncateWAL;
 - (_Bool)vacuum;
 - (_Bool)markWebContentFilterAllowsAllReadingListItems;
 - (_Bool)updateReadingListWebFilterStatusForUnsetItemsOnly:(_Bool)arg1;
@@ -334,14 +361,13 @@
 - (_Bool)_primaryCollection;
 - (id)initWithPath:(id)arg1 migratingBookmarksPlist:(id)arg2 syncAnchorPlist:(id)arg3;
 - (_Bool)_setupWithPath:(id)arg1 migratingBookmarksPlist:(id)arg2 syncAnchorPlist:(id)arg3 checkIntegrity:(_Bool)arg4;
-- (id)initWithPath:(id)arg1 migratingBookmarksPlist:(id)arg2 syncAnchorPlist:(id)arg3 checkIntegrity:(_Bool)arg4 readonlyCollection:(_Bool)arg5 skipExternalNotifications:(_Bool)arg6;
+- (id)initWithConfiguration:(id)arg1 checkIntegrity:(_Bool)arg2;
+- (id)initWithConfiguration:(id)arg1;
 - (_Bool)_checkDatabaseIntegrity;
 - (_Bool)_verifyAllTablesExist:(int *)arg1;
+- (void)_enableAutoVacuum;
+- (void)_enableForeignKeys;
 - (_Bool)_openDatabaseAtPath:(id)arg1 checkIntegrity:(_Bool)arg2 error:(id *)arg3;
-- (id)initSafariBookmarkCollectionCheckingIntegrity:(_Bool)arg1 readonlyCollection:(_Bool)arg2 skipExternalNotifications:(_Bool)arg3;
-- (id)initSafariBookmarkCollectionCheckingIntegrity:(_Bool)arg1 skipExternalNotifications:(_Bool)arg2;
-- (id)initSafariBookmarkCollectionCheckingIntegrity:(_Bool)arg1;
-- (id)initReadonlySafariBookmarkCollection;
 - (_Bool)_setupWithPath:(id)arg1 checkIntegrity:(_Bool)arg2;
 @property(readonly, nonatomic) long long _cloudKitLocalMigrationState;
 - (_Bool)containsOnlyStockBookmarks;

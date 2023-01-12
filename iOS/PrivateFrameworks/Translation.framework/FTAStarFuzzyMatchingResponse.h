@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_8b72087a)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_8b72087a)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSArray *results;
 @property(readonly, nonatomic) unsigned int expanded_path;
 @property(readonly, nonatomic) unsigned int latency;

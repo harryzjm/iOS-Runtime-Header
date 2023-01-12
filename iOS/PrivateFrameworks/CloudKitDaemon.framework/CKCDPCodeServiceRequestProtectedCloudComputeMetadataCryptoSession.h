@@ -10,7 +10,6 @@
 
 @class NSData;
 
-__attribute__((visibility("hidden")))
 @interface CKCDPCodeServiceRequestProtectedCloudComputeMetadataCryptoSession : PBCodable <NSCopying>
 {
     NSData *_wrappedInvocationKey;

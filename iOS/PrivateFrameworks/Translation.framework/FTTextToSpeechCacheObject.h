@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_00a5d9ba)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_00a5d9ba)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSArray *word_timing_info;
 - (void)audio:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSData *audio;

@@ -15,6 +15,7 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) REMList *list; // @synthesize list=_list;
+- (id)fetchCustomSmartListsWithError:(id *)arg1;
 - (id)fetchListsWithError:(id *)arg1;
 - (id)initWithList:(id)arg1;
 

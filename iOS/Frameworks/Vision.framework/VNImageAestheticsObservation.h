@@ -31,6 +31,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)defaultOriginatingRequestClassNameForRequestRevision:(unsigned long long)arg1;
 + (id)allScorePropertyNames;
 @property(readonly, nonatomic) float lowKeyLightingScore; // @synthesize lowKeyLightingScore=_lowKeyLightingScore;
 @property(readonly, nonatomic) float pleasantCameraTiltScore; // @synthesize pleasantCameraTiltScore=_pleasantCameraTiltScore;
@@ -57,10 +58,10 @@
 - (id)description;
 - (id)_scoresDictionary;
 @property(readonly, nonatomic) float wellChosenSubjectScore;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)vn_cloneObject;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithRequestRevision:(unsigned long long)arg1 overallAestheticScore:(float)arg2 wellFramedSubjectScore:(float)arg3 wellChosenBackgroundScore:(float)arg4 tastefullyBlurredScore:(float)arg5 sharplyFocusedSubjectScore:(float)arg6 wellTimedShotScore:(float)arg7 pleasantLightingScore:(float)arg8 pleasantReflectionsScore:(float)arg9 harmoniousColorScore:(float)arg10 livelyColorScore:(float)arg11 pleasantSymmetryScore:(float)arg12 pleasantPatternScore:(float)arg13 immersivenessScore:(float)arg14 pleasantPerspectiveScore:(float)arg15 pleasantPostProcessingScore:(float)arg16 noiseScore:(float)arg17 failureScore:(float)arg18 pleasantCompositionScore:(float)arg19 interestingSubjectScore:(float)arg20 intrusiveObjectPresenceScore:(float)arg21 pleasantCameraTiltScore:(float)arg22 lowKeyLightingScore:(float)arg23;
+- (id)initWithOriginatingRequestSpecifier:(id)arg1 overallAestheticScore:(float)arg2 wellFramedSubjectScore:(float)arg3 wellChosenBackgroundScore:(float)arg4 tastefullyBlurredScore:(float)arg5 sharplyFocusedSubjectScore:(float)arg6 wellTimedShotScore:(float)arg7 pleasantLightingScore:(float)arg8 pleasantReflectionsScore:(float)arg9 harmoniousColorScore:(float)arg10 livelyColorScore:(float)arg11 pleasantSymmetryScore:(float)arg12 pleasantPatternScore:(float)arg13 immersivenessScore:(float)arg14 pleasantPerspectiveScore:(float)arg15 pleasantPostProcessingScore:(float)arg16 noiseScore:(float)arg17 failureScore:(float)arg18 pleasantCompositionScore:(float)arg19 interestingSubjectScore:(float)arg20 intrusiveObjectPresenceScore:(float)arg21 pleasantCameraTiltScore:(float)arg22 lowKeyLightingScore:(float)arg23;
 
 @end
 

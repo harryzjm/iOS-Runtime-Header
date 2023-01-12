@@ -10,7 +10,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFCardSectionValue-Protocol.h>
 
-@class NSData, NSDictionary, NSString, SFActivityIndicatorCardSection, SFAppLinkCardSection, SFAttributionFooterCardSection, SFAudioPlaybackCardSection, SFButtonCardSection, SFCompactRowCardSection, SFDescriptionCardSection, SFDetailedRowCardSection, SFFlightCardSection, SFHorizontalButtonCardSection, SFHorizontalScrollCardSection, SFImagesCardSection, SFKeyValueDataCardSection, SFMapCardSection, SFMapPlaceCardSection, SFMapsDetailedRowCardSection, SFMediaInfoCardSection, SFMediaPlayerCardSection, SFMediaRemoteControlCardSection, SFMessageCardSection, SFMetaInfoCardSection, SFNowPlayingCardSection, SFProductCardSection, SFRichTitleCardSection, SFRowCardSection, SFScoreboardCardSection, SFSectionHeaderCardSection, SFSelectableGridCardSection, SFSocialMediaPostCardSection, SFStockChartCardSection, SFSuggestionCardSection, SFTableHeaderRowCardSection, SFTableRowCardSection, SFTextColumnsCardSection, SFTitleCardSection, SFTrackListCardSection, SFVerticalLayoutCardSection, SFWatchListCardSection, SFWebCardSection, SFWorldMapCardSection;
+@class NSData, NSDictionary, NSString, SFActivityIndicatorCardSection, SFAppLinkCardSection, SFAttributionFooterCardSection, SFAudioPlaybackCardSection, SFButtonCardSection, SFCollectionCardSection, SFColorBarCardSection, SFCombinedCardSection, SFCompactRowCardSection, SFDescriptionCardSection, SFDetailedRowCardSection, SFFindMyCardSection, SFFlightCardSection, SFGridCardSection, SFHeroCardSection, SFHorizontalButtonCardSection, SFHorizontalScrollCardSection, SFImagesCardSection, SFInfoCardSection, SFKeyValueDataCardSection, SFLinkPresentationCardSection, SFListenToCardSection, SFMapCardSection, SFMapPlaceCardSection, SFMapsDetailedRowCardSection, SFMediaInfoCardSection, SFMediaPlayerCardSection, SFMediaRemoteControlCardSection, SFMessageCardSection, SFMetaInfoCardSection, SFMiniCardSection, SFNewsCardSection, SFNowPlayingCardSection, SFPersonHeaderCardSection, SFProductCardSection, SFResponseWrapperCardSection, SFRichTitleCardSection, SFRowCardSection, SFScoreboardCardSection, SFSectionHeaderCardSection, SFSelectableGridCardSection, SFSocialMediaPostCardSection, SFSplitCardSection, SFStockChartCardSection, SFStrokeAnimationCardSection, SFSuggestionCardSection, SFTableHeaderRowCardSection, SFTableRowCardSection, SFTextColumnsCardSection, SFTitleCardSection, SFTrackListCardSection, SFVerticalLayoutCardSection, SFWatchListCardSection, SFWatchNowCardSection, SFWebCardSection, SFWorldMapCardSection;
 
 @interface SFCardSectionValue : NSObject <SFCardSectionValue, NSSecureCoding, NSCopying>
 {
@@ -54,10 +54,42 @@
     SFCompactRowCardSection *_compactRowCardSection;
     SFWorldMapCardSection *_worldMapCardSection;
     SFAttributionFooterCardSection *_attributionFooterCardSection;
+    SFGridCardSection *_gridCardSection;
+    SFPersonHeaderCardSection *_personHeaderCardSection;
+    SFColorBarCardSection *_colorBarCardSection;
+    SFSplitCardSection *_splitCardSection;
+    SFLinkPresentationCardSection *_linkPresentationCardSection;
+    SFFindMyCardSection *_findMyCardSection;
+    SFHeroCardSection *_heroCardSection;
+    SFNewsCardSection *_newsCardSection;
+    SFMiniCardSection *_miniCardSection;
+    SFInfoCardSection *_infoCardSection;
+    SFCollectionCardSection *_collectionCardSection;
+    SFCombinedCardSection *_combinedCardSection;
+    SFResponseWrapperCardSection *_responseWrapperCardSection;
+    SFListenToCardSection *_listenToCardSection;
+    SFWatchNowCardSection *_watchNowCardSection;
+    SFStrokeAnimationCardSection *_strokeAnimationCardSection;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) SFStrokeAnimationCardSection *strokeAnimationCardSection; // @synthesize strokeAnimationCardSection=_strokeAnimationCardSection;
+@property(retain, nonatomic) SFWatchNowCardSection *watchNowCardSection; // @synthesize watchNowCardSection=_watchNowCardSection;
+@property(retain, nonatomic) SFListenToCardSection *listenToCardSection; // @synthesize listenToCardSection=_listenToCardSection;
+@property(retain, nonatomic) SFResponseWrapperCardSection *responseWrapperCardSection; // @synthesize responseWrapperCardSection=_responseWrapperCardSection;
+@property(retain, nonatomic) SFCombinedCardSection *combinedCardSection; // @synthesize combinedCardSection=_combinedCardSection;
+@property(retain, nonatomic) SFCollectionCardSection *collectionCardSection; // @synthesize collectionCardSection=_collectionCardSection;
+@property(retain, nonatomic) SFInfoCardSection *infoCardSection; // @synthesize infoCardSection=_infoCardSection;
+@property(retain, nonatomic) SFMiniCardSection *miniCardSection; // @synthesize miniCardSection=_miniCardSection;
+@property(retain, nonatomic) SFNewsCardSection *newsCardSection; // @synthesize newsCardSection=_newsCardSection;
+@property(retain, nonatomic) SFHeroCardSection *heroCardSection; // @synthesize heroCardSection=_heroCardSection;
+@property(retain, nonatomic) SFFindMyCardSection *findMyCardSection; // @synthesize findMyCardSection=_findMyCardSection;
+@property(retain, nonatomic) SFLinkPresentationCardSection *linkPresentationCardSection; // @synthesize linkPresentationCardSection=_linkPresentationCardSection;
+@property(retain, nonatomic) SFSplitCardSection *splitCardSection; // @synthesize splitCardSection=_splitCardSection;
+@property(retain, nonatomic) SFColorBarCardSection *colorBarCardSection; // @synthesize colorBarCardSection=_colorBarCardSection;
+@property(retain, nonatomic) SFPersonHeaderCardSection *personHeaderCardSection; // @synthesize personHeaderCardSection=_personHeaderCardSection;
+@property(retain, nonatomic) SFGridCardSection *gridCardSection; // @synthesize gridCardSection=_gridCardSection;
 @property(retain, nonatomic) SFAttributionFooterCardSection *attributionFooterCardSection; // @synthesize attributionFooterCardSection=_attributionFooterCardSection;
 @property(retain, nonatomic) SFWorldMapCardSection *worldMapCardSection; // @synthesize worldMapCardSection=_worldMapCardSection;
 @property(retain, nonatomic) SFCompactRowCardSection *compactRowCardSection; // @synthesize compactRowCardSection=_compactRowCardSection;

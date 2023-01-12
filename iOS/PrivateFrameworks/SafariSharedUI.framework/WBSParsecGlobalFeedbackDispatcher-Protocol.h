@@ -12,16 +12,7 @@
 - (void)sendCrowdsourcedAutoFillFeedback:(NSDictionary *)arg1 forQueryID:(long long)arg2;
 
 @optional
-- (void)sendSmartSearchFieldClickedFeedbackWithReaderAvailable:(_Bool)arg1;
-- (void)sendWindowMiniaturizeByMouseFeedback;
-- (void)sendWindowMiniaturizeByKeyboardFeedback;
-- (void)sendWindowCloseByMouseFeedback;
-- (void)sendWindowCloseByKeyboardFeedback;
-- (void)sendNewTabFeedback;
-- (void)sendNewWindowFeedback;
-- (void)sendAppLostFocusFeedback;
-- (void)sendAppQuitFeedback;
-- (void)sendAppLaunchFeedback;
+- (void)sendNewTabFeedback:(_Bool)arg1;
 - (void)sendMapsPlaceCardEngagementFeedbackOfType:(int)arg1 forQueryID:(long long)arg2;
 @end
 

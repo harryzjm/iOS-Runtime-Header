@@ -24,19 +24,28 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) PKPaymentWebService *paymentWebService; // @synthesize paymentWebService=_paymentWebService;
 @property(nonatomic) __weak id <PKPaymentDataProviderDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)didUpdateFamilyMembers:(id)arg1;
+- (void)featureApplicationRemoved:(id)arg1;
+- (void)featureApplicationChanged:(id)arg1;
+- (void)featureApplicationAdded:(id)arg1;
 - (void)transactionWithIdentifier:(id)arg1 didDownloadTransactionReceipt:(id)arg2;
+- (void)credential:(id)arg1 forPaymentApplication:(id)arg2 didUpdateRangingSuspensionReasons:(unsigned long long)arg3;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateCredential:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateBalanceReminder:(id)arg2 forBalanceWithIdentifier:(id)arg3;
+- (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceivePlanUpdate:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveBalanceUpdate:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithTransitPassProperties:(id)arg2;
 - (void)transactionSourceIdentifier:(id)arg1 didRemoveTransactionWithIdentifier:(id)arg2;
 - (void)transactionSourceIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didEnableTransactionService:(_Bool)arg2;
+- (void)passWithUniqueIdentifier:(id)arg1 didUpdateTiles:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveMessage:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didEnableMessageService:(_Bool)arg2;
 - (void)didUpdateDefaultPaymentPassWithUniqueIdentifier:(id)arg1;
+- (void)tilesForPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)dataElementsForCredentialIdentifier:(id)arg1 partition:(id)arg2 elementIdentifiers:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)featureApplicationsForAccountIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)photosForFamilyMembersWithDSIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)familyMembersWithCompletion:(CDUnknownBlockType)arg1;
 - (_Bool)supportsAddingPaymentPasses;
@@ -53,6 +62,7 @@
 - (void)commutePlanReminderForCommutePlan:(id)arg1 pass:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)setBalanceReminder:(id)arg1 forBalance:(id)arg2 pass:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)balanceReminderThresholdForBalance:(id)arg1 pass:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)plansForPaymentPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)balancesForPaymentPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)deletePaymentTransactionWithIdentifier:(id)arg1;
 - (void)mapsMerchantsWithCompletion:(CDUnknownBlockType)arg1;
@@ -104,6 +114,7 @@
 - (void)removeDelegate:(id)arg1;
 - (void)addDelegate:(id)arg1;
 - (long long)apiVersion;
+@property(readonly, nonatomic) PKPaymentWebService *paymentWebService; // @synthesize paymentWebService=_paymentWebService;
 - (void)dealloc;
 - (id)initWithPaymentService:(id)arg1 secureElement:(id)arg2;
 - (id)init;

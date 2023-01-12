@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class MISSING_TYPE, _TtC15ConversationKit33ParticipantViewLabelContainerView;
+@class MISSING_TYPE, UIButton, _TtC15ConversationKit33ParticipantViewLabelContainerView;
 
 @interface _TtC15ConversationKit23ParticipantMonogramView : UIView
 {
@@ -15,19 +15,24 @@
     MISSING_TYPE *glowClippingView;
     MISSING_TYPE *glowView;
     MISSING_TYPE *audioVisualizationView;
+    MISSING_TYPE *ringButton;
     MISSING_TYPE *titleLabelContainer;
     MISSING_TYPE *subtitleLabelContainer;
     MISSING_TYPE *isInRoster;
     MISSING_TYPE *customCornerRadius;
+    MISSING_TYPE *delegate;
+    MISSING_TYPE *participantMonogramViewLayout;
 }
 
 - (void).cxx_destruct;
+- (void)didTapRingButton;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;
 @property(nonatomic, readonly) _TtC15ConversationKit33ParticipantViewLabelContainerView *subtitleLabelContainer; // @synthesize subtitleLabelContainer;
 @property(nonatomic, readonly) _TtC15ConversationKit33ParticipantViewLabelContainerView *titleLabelContainer; // @synthesize titleLabelContainer;
+@property(nonatomic, retain) UIButton *ringButton; // @synthesize ringButton;
 
 @end
 

@@ -6,32 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@class SearchUICommandEnvironment, SearchUIRowModel;
+@class SFCommand, SearchUICommandEnvironment, SearchUIRowModel;
 
 @interface SearchUICommand : NSObject
 {
     SearchUICommandEnvironment *_commandEnvironment;
     SearchUIRowModel *_rowModel;
+    SFCommand *_command;
 }
 
 + (id)mainRowModelForRowModel:(id)arg1;
 + (_Bool)supportsRowModel:(id)arg1 environment:(id)arg2;
 + (id)peekCommandForRowModel:(id)arg1 environment:(id)arg2;
++ (id)tapCommandForRowModel:(id)arg1 command:(id)arg2 environment:(id)arg3;
 + (id)tapCommandForRowModel:(id)arg1 environment:(id)arg2;
++ (id)commandForRowModel:(id)arg1 environment:(id)arg2;
 + (Class)supportedCommandClassForClasses:(id)arg1 rowModel:(id)arg2 environment:(id)arg3;
 - (void).cxx_destruct;
+@property(retain, nonatomic) SFCommand *command; // @synthesize command=_command;
 @property(retain, nonatomic) SearchUIRowModel *rowModel; // @synthesize rowModel=_rowModel;
 @property(retain, nonatomic) SearchUICommandEnvironment *commandEnvironment; // @synthesize commandEnvironment=_commandEnvironment;
 - (_Bool)defaultApplicationExistsAndSupportsOpenInPlaceForFileURL:(id)arg1 performOpenIfSo:(_Bool)arg2;
 - (unsigned long long)destination;
 - (id)resultEngagementFeedback;
 - (id)cardSectionEngagementFeedback;
-- (void)sendViewControllerFeedback;
 - (void)sendResultFeedback;
 - (void)sendCardFeedback;
-- (id)storeViewController;
-- (id)generateCardViewControllerForPeek:(_Bool)arg1;
-- (id)initWithRowModel:(id)arg1 environment:(id)arg2;
+- (id)storeViewControllerWithIdentifier:(id)arg1;
+- (id)generateCardViewControllerForPeek:(_Bool)arg1 withCard:(id)arg2;
+- (id)initWithRowModel:(id)arg1 command:(id)arg2 environment:(id)arg3;
 
 @end
 

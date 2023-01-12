@@ -9,7 +9,7 @@
 #import <WiFiPeerToPeer/NSCopying-Protocol.h>
 #import <WiFiPeerToPeer/NSSecureCoding-Protocol.h>
 
-@class NSString, WiFiAwarePublishDatapathConfiguration, WiFiAwarePublishServiceSpecificInfo;
+@class NSString, WiFiAwareFastDiscoveryConfiguration, WiFiAwareInternetSharingConfiguration, WiFiAwarePublishDatapathConfiguration, WiFiAwarePublishServiceSpecificInfo;
 
 @interface WiFiAwarePublishConfiguration : NSObject <NSSecureCoding, NSCopying>
 {
@@ -19,10 +19,14 @@
     WiFiAwarePublishServiceSpecificInfo *_serviceSpecificInfo;
     long long _authenticationType;
     WiFiAwarePublishDatapathConfiguration *_datapathConfiguration;
+    WiFiAwareFastDiscoveryConfiguration *_fastDiscoveryConfiguration;
+    WiFiAwareInternetSharingConfiguration *_internetSharingConfiguration;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) WiFiAwareInternetSharingConfiguration *internetSharingConfiguration; // @synthesize internetSharingConfiguration=_internetSharingConfiguration;
+@property(copy, nonatomic) WiFiAwareFastDiscoveryConfiguration *fastDiscoveryConfiguration; // @synthesize fastDiscoveryConfiguration=_fastDiscoveryConfiguration;
 @property(copy, nonatomic) WiFiAwarePublishDatapathConfiguration *datapathConfiguration; // @synthesize datapathConfiguration=_datapathConfiguration;
 @property(nonatomic) long long authenticationType; // @synthesize authenticationType=_authenticationType;
 @property(nonatomic) _Bool jumboServiceDiscoveryMessages; // @synthesize jumboServiceDiscoveryMessages=_jumboServiceDiscoveryMessages;
@@ -32,6 +36,8 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
+- (_Bool)internetSharingConfigurationEqual:(id)arg1;
+- (_Bool)fastDiscoveryConfigurationEqual:(id)arg1;
 - (_Bool)datapathConfigurationEqual:(id)arg1;
 - (_Bool)serviceSpecificInfoEqual:(id)arg1;
 - (id)initWithServiceName:(id)arg1;

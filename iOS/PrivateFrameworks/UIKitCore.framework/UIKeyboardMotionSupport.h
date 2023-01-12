@@ -21,6 +21,9 @@ __attribute__((visibility("hidden")))
 
 + (id)supportForUIScene:(id)arg1;
 + (id)supportForScreen:(id)arg1;
+- (_Bool)generateSplitNotificationForNewPlacement:(id)arg1;
+- (void)translateToPlacement:(id)arg1 animated:(_Bool)arg2;
+- (void)translateToPlacement:(id)arg1 quietly:(_Bool)arg2 animated:(_Bool)arg3;
 @property(nonatomic) id <UISplitKeyboardSource> masterController;
 - (void)_updatedController;
 - (void)_connectController:(id)arg1;

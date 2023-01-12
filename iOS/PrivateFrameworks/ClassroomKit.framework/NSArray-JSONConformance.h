@@ -18,6 +18,9 @@
 - (_Bool)crk_isSortedByComparator:(CDUnknownBlockType)arg1;
 - (id)crk_arrayByRemovingObjectsInArray:(id)arg1;
 - (id)crk_arrayByRemovingObject:(id)arg1;
+- (_Bool)crk_containsObjectMatchingPredicate:(CDUnknownBlockType)arg1;
+- (id)crk_mapToSetUsingBlock:(CDUnknownBlockType)arg1;
+- (id)crk_flatMapUsingBlock:(CDUnknownBlockType)arg1;
 - (id)crk_mapUsingBlock:(CDUnknownBlockType)arg1;
 - (id)crk_filterUsingBlock:(CDUnknownBlockType)arg1;
 - (id)crk_firstMatching:(CDUnknownBlockType)arg1;

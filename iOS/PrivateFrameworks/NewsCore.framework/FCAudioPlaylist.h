@@ -20,7 +20,6 @@
 + (id)commandsToMergeLocalDataToCloud:(id)arg1;
 + (long long)commandQueueUrgency;
 + (id)commandStoreFileName;
-+ (id)localStoreMigrator;
 + (unsigned long long)localStoreVersion;
 + (id)localStoreFilename;
 + (id)backingRecordIDs;
@@ -29,12 +28,6 @@
 + (_Bool)requiresBatchedSync;
 + (_Bool)requiresPushNotificationSupport;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) FCMTWriterLock *itemsLock; // @synthesize itemsLock=_itemsLock;
-@property(retain, nonatomic) NSOrderedSet *orderedArticleIDs; // @synthesize orderedArticleIDs=_orderedArticleIDs;
-@property(retain, nonatomic) NSMutableDictionary *itemsByID; // @synthesize itemsByID=_itemsByID;
-- (id)_itemWithArticleID:(id)arg1;
-- (void)_regenerateOrderedArticleIDs;
-- (void)_modifyWithInsertedOrChangedItems:(id)arg1 removedArticleIDs:(id)arg2;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (void)ensureSyncedWithCompletion:(CDUnknownBlockType)arg1;
@@ -47,6 +40,7 @@
 - (id)allKnownRecordNamesWithinRecordZoneWithID:(id)arg1;
 - (void)handleSyncWithChangedRecords:(id)arg1 deletedRecordNames:(id)arg2;
 - (void)loadLocalCachesFromStore;
+- (id)localStoreMigrator;
 - (id)initWithContext:(id)arg1 pushNotificationCenter:(id)arg2 storeDirectory:(id)arg3;
 
 @end

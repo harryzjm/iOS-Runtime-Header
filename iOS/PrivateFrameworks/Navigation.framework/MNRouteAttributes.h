@@ -10,7 +10,7 @@
 #import <Navigation/NSSecureCoding-Protocol.h>
 #import <Navigation/VGVirtualGarageObserver-Protocol.h>
 
-@class NSArray, NSError, VGVehicle, VGVirtualGarage;
+@class NSArray, NSError, VGVehicle, VGVirtualGarage, geo_isolater;
 
 @interface MNRouteAttributes : GEORouteAttributes <VGVirtualGarageObserver, NSSecureCoding, NSCopying>
 {
@@ -21,6 +21,7 @@
     VGVehicle *_vehicle;
     NSError *_vgError;
     VGVirtualGarage *_garage;
+    geo_isolater *_vehicleIsolator;
     _Bool _hasResolvedRules;
     NSArray *_lprRules;
     NSError *_lprError;
@@ -38,11 +39,13 @@
 - (void)_loadRulesIfNecessary:(id)arg1 result:(CDUnknownBlockType)arg2;
 - (void)_resolveSelectedVehicle:(id)arg1 completion:(CDUnknownBlockType)arg2;
 @property(nonatomic) _Bool hasResolvedVehicle;
+- (id)vehicle;
 - (void)dealloc;
 - (id)initWithAttributes:(id)arg1 latLngs:(id)arg2;
 - (id)initWithAttributes:(id)arg1 waypoints:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (void)_commonInit;
 - (id)initWithCoder:(id)arg1;
 - (id)init;
 

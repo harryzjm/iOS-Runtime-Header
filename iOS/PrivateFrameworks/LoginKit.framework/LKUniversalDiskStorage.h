@@ -28,8 +28,10 @@
 - (void)_refreshStorageCacheIfNeeded;
 - (void)clearAllKeyValueStorage:(CDUnknownBlockType)arg1;
 - (void)clearKeys:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (_Bool)clearKeys:(id)arg1;
 - (id)retrieveValueForKey:(id)arg1;
 - (void)saveKeyValuePairs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (_Bool)saveKeyValuePairs:(id)arg1 error:(id *)arg2;
 - (id)init;
 
 @end

@@ -37,6 +37,8 @@
 - (_Bool)haveValidPersonaContextForPersonaUniqueString:(id)arg1;
 - (_Bool)haveValidPersonaContextForIDString:(id)arg1;
 - (id)listAllPersonaWithAttributes;
+- (unsigned long long)personaGenerationIdentifierWithError:(id *)arg1;
+- (id)listAllPersonaAttributesWithError:(id *)arg1;
 - (void)fetchMultiPersonaBundleIdentifierWithcompletionHandler:(CDUnknownBlockType)arg1;
 - (void)fetchBundleIdentifierForType:(int)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchBundleIdentifierForPersonaWithPersonaUniqueString:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -56,6 +58,7 @@
 - (void)deleteUserPersonaWithType:(int)arg1 passcodeData:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)deleteUserPersonaWithPersonaUniqueString:(id)arg1 passcodeData:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)deleteUserPersonaWithIDString:(id)arg1 passcodeData:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)createUserPersona:(id)arg1 passcodeData:(id)arg2 passcodeDataType:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)createUserPersona:(id)arg1 passcodeData:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 @property(readonly, copy, nonatomic) UMUserPersona *currentPersona;
 - (void)userInteractionIsEnabled;
@@ -83,6 +86,7 @@
 - (void)currentUserSwitchContextHasBeenUsed;
 - (id)currentUserSwitchContext;
 - (_Bool)userExists:(id)arg1;
+- (id)allUsersUnfiltered;
 - (id)allUsers;
 - (void)userListDidUpdate;
 - (void)_allUsersDidChange;
@@ -92,6 +96,7 @@
 @property(readonly, nonatomic) unsigned long long userQuotaSize;
 @property(readonly, nonatomic) unsigned long long maxNumberOfUsers;
 @property(readonly, nonatomic) _Bool isLoginSession;
+@property(readonly, nonatomic) _Bool isSharedIPad;
 @property(readonly, nonatomic) _Bool isMultiUser;
 - (id)init;
 

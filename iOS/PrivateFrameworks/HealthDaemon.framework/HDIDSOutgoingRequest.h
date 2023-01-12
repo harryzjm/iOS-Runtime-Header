@@ -8,7 +8,7 @@
 
 #import <HealthDaemon/HDNanoSyncDescription-Protocol.h>
 
-@class HDIDSMessageCenter, HDIDSParticipant, NSData, NSDictionary, NSString;
+@class HDIDSMessageCenter, HDIDSParticipant, NSData, NSDictionary, NSString, PBCodable;
 
 @interface HDIDSOutgoingRequest : NSObject <HDNanoSyncDescription>
 {
@@ -24,17 +24,15 @@
     double _responseTimeout;
     NSDictionary *_persistentUserInfo;
     HDIDSMessageCenter *_messageCenter;
-    id _pbRequest;
+    PBCodable *_pbRequest;
 }
 
 + (id)requestWithMessageID:(unsigned short)arg1 participant:(id)arg2;
-+ (id)_requestWithMessageID:(unsigned short)arg1 message:(id)arg2 syncStore:(id)arg3;
 + (id)speculativeChangeRequestWithChangeSet:(id)arg1 syncStore:(id)arg2;
 + (id)changeRequestWithChangeSet:(id)arg1 status:(id)arg2 syncStore:(id)arg3;
 + (id)activationRequestWithRestore:(id)arg1 syncStore:(id)arg2;
 - (void).cxx_destruct;
-@property(retain, nonatomic) id pbRequest; // @synthesize pbRequest=_pbRequest;
-@property(nonatomic) __weak HDIDSMessageCenter *messageCenter; // @synthesize messageCenter=_messageCenter;
+@property(retain, nonatomic) PBCodable *pbRequest; // @synthesize pbRequest=_pbRequest;
 @property(nonatomic) _Bool forceLocalDelivery; // @synthesize forceLocalDelivery=_forceLocalDelivery;
 @property(nonatomic) _Bool queueOnly1; // @synthesize queueOnly1=_queueOnly1;
 @property(nonatomic) _Bool doNotCompress; // @synthesize doNotCompress=_doNotCompress;
@@ -42,7 +40,7 @@
 @property(nonatomic) double responseTimeout; // @synthesize responseTimeout=_responseTimeout;
 @property(nonatomic) double sendTimeout; // @synthesize sendTimeout=_sendTimeout;
 @property(nonatomic) unsigned long long priority; // @synthesize priority=_priority;
-@property(copy, nonatomic) NSString *idsIdentifier; // @synthesize idsIdentifier=_idsIdentifier;
+@property(readonly, copy, nonatomic) NSString *idsIdentifier;
 @property(retain, nonatomic) NSData *data; // @synthesize data=_data;
 @property(readonly, nonatomic) HDIDSParticipant *toParticipant; // @synthesize toParticipant=_toParticipant;
 @property(readonly, nonatomic) unsigned short messageID; // @synthesize messageID=_messageID;

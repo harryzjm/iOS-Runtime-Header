@@ -7,33 +7,42 @@
 #import <objc/NSObject.h>
 
 #import <HomeKitDaemon/HMDDataStreamSocketPrivate-Protocol.h>
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 
 @class HMDDataStreamStreamProtocol, HMFUnfairLock, NSMutableArray, NSString;
 @protocol HMDDataStreamSocketDelegate, OS_dispatch_queue;
 
-@interface HMDDataStreamSocket : NSObject <HMDDataStreamSocketPrivate>
+@interface HMDDataStreamSocket : NSObject <HMFLogging, HMDDataStreamSocketPrivate>
 {
+    _Bool _closing;
     _Bool _closed;
     NSString *_applicationProtocolName;
     id <HMDDataStreamSocketDelegate> _delegate;
+    unsigned long long _trafficClass;
     HMDDataStreamStreamProtocol *_streamProtocol;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMFUnfairLock *_lock;
     NSMutableArray *_pendingReads;
 }
 
++ (id)logCategory;
 - (void).cxx_destruct;
 @property(readonly) NSMutableArray *pendingReads; // @synthesize pendingReads=_pendingReads;
 @property(nonatomic, getter=isClosed) _Bool closed; // @synthesize closed=_closed;
+@property(nonatomic, getter=isClosing) _Bool closing; // @synthesize closing=_closing;
 @property(readonly) HMFUnfairLock *lock; // @synthesize lock=_lock;
 @property(readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(readonly) __weak HMDDataStreamStreamProtocol *streamProtocol; // @synthesize streamProtocol=_streamProtocol;
 @property(readonly) NSString *applicationProtocolName; // @synthesize applicationProtocolName=_applicationProtocolName;
+- (void)closeInitiated;
 - (void)handleIncomingData:(id)arg1;
 - (void)closeWithError:(id)arg1;
 - (id)readData;
+- (void)_writeData:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)writeData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)writeData:(id)arg1 error:(id *)arg2;
 - (void)close;
+@property unsigned long long trafficClass; // @synthesize trafficClass=_trafficClass;
 @property __weak id <HMDDataStreamSocketDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)initWithStreamProtocol:(id)arg1 applicationProtocolName:(id)arg2 workQueue:(id)arg3;
 

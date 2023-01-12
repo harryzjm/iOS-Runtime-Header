@@ -15,7 +15,7 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) __weak _UIDragSnappingFeedbackGenerator *feedbackGenerator; // @synthesize feedbackGenerator=_feedbackGenerator;
+@property(retain, nonatomic) _UIDragSnappingFeedbackGenerator *feedbackGenerator; // @synthesize feedbackGenerator=_feedbackGenerator;
 @property(nonatomic) long long activeDragSessions; // @synthesize activeDragSessions=_activeDragSessions;
 - (void)objectSnapped;
 - (void)draggedObjectLanded;
@@ -31,6 +31,7 @@
 - (void)draggingItemSnapped;
 - (void)draggingPositionUpdated;
 - (void)draggingStarted;
+- (id)init;
 - (id)initWithCollectionView:(id)arg1;
 
 @end

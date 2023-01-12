@@ -17,10 +17,6 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) long long contentType; // @synthesize contentType=_contentType;
-@property(nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
-@property(copy, nonatomic) NSArray *strokes; // @synthesize strokes=_strokes;
-@property(retain, nonatomic) CHStrokeGroupQueryItem *strokeGroupItem; // @synthesize strokeGroupItem=_strokeGroupItem;
 
 @end
 

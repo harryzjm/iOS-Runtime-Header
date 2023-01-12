@@ -18,6 +18,7 @@
 
 + (id)viewControllerWithRestorationIdentifierPath:(id)arg1 coder:(id)arg2;
 + (_Bool)_shouldForwardViewWillTransitionToSize;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *deferredTransitions; // @synthesize deferredTransitions=_deferredTransitions;
 - (void)pushViewController:(id)arg1 animated:(_Bool)arg2;
 - (id)popToRootViewControllerAnimated:(_Bool)arg1;
@@ -35,7 +36,6 @@
 - (_Bool)hasEmbeddedPopoverNavigationStack;
 - (_Bool)shouldAutorotate;
 - (unsigned long long)supportedInterfaceOrientations;
-- (void)dealloc;
 - (void)setupGKNavigationController;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithRootViewController:(id)arg1;

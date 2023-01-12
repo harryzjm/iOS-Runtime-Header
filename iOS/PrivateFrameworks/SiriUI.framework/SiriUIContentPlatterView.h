@@ -41,6 +41,7 @@
 - (id)contentPlatterScrollView;
 - (void)_updateContentFullyScrolled;
 - (_Bool)shouldAllowSimultaneousGestureRecognizersForScrollView:(id)arg1;
+- (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(_Bool)arg2;
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 @property(nonatomic) double darkenIntensity;

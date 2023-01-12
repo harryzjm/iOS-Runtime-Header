@@ -55,6 +55,7 @@
 - (_Bool)_isFullscreen;
 - (_Bool)_canActAsKeyWindowForScreen:(id)arg1;
 - (_Bool)_shouldTextEffectsWindowBeHostedForView:(id)arg1;
+- (_Bool)_isRemoteKeyboardWindow;
 - (_Bool)_isTextEffectsWindow;
 - (_Bool)_canAffectStatusBarAppearance;
 - (_Bool)_extendsScreenSceneLifetime;
@@ -91,6 +92,8 @@
 - (id)_inputWindowController;
 - (void)handleStatusBarChangeFromHeight:(double)arg1 toHeight:(double)arg2;
 - (void)becomeKeyWindow;
+@property(readonly, nonatomic) double keyboardWidthForCurrentDevice;
+@property(readonly, nonatomic) struct CGSize keyboardScreenReferenceSize;
 - (struct CGRect)convertRect:(struct CGRect)arg1 fromView:(id)arg2;
 - (struct CGRect)convertRect:(struct CGRect)arg1 toView:(id)arg2;
 - (struct CGRect)convertRect:(struct CGRect)arg1 toWindow:(id)arg2;

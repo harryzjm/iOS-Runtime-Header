@@ -6,7 +6,7 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSArray, NSString, _INPBMediaItemValue, _INPBPrivateMediaIntentData;
+@class NSArray, NSString, _INPBMediaItemValue, _INPBPrivateMediaIntentData, _INPBString;
 
 @protocol _INPBPrivatePlayMediaIntentData <NSObject>
 + (Class)audioSearchResultsType;
@@ -40,6 +40,8 @@
 @property(nonatomic) _Bool appSelectionEnabled;
 @property(nonatomic) _Bool hasAppInferred;
 @property(nonatomic) _Bool appInferred;
+@property(readonly, nonatomic) _Bool hasAlternativeProviderBundleIdentifier;
+@property(retain, nonatomic) _INPBString *alternativeProviderBundleIdentifier;
 - (NSString *)internalSignalAtIndex:(unsigned long long)arg1;
 - (void)addInternalSignal:(NSString *)arg1;
 - (void)clearInternalSignals;

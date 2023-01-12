@@ -31,7 +31,9 @@ __attribute__((visibility("hidden")))
 + (id)visualIdentityEditorTextFont;
 + (id)visualIdentityPickerHeaderPlaceholderFont;
 + (id)visualIdentityPickerHeaderTitleFont;
++ (id)groupHeaderActionButtonWrappedFont;
 + (id)groupHeaderActionButtonFont;
++ (id)groupHeaderSubTitleFont;
 + (id)groupHeaderWrappedTitleFont;
 + (id)groupHeaderTitleFont;
 + (id)contactCardPhotoPickerActionButtonFont;

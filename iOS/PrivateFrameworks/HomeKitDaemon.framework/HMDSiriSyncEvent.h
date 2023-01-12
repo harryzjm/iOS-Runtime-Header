@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitMetrics/HMMLogEvent.h>
+
 #import <HomeKitDaemon/HMDAWDLogEvent-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface HMDSiriSyncEvent <HMDAWDLogEvent>
+@interface HMDSiriSyncEvent : HMMLogEvent <HMDAWDLogEvent>
 {
     unsigned long long _duration;
     NSArray *_notificationReasons;
@@ -18,8 +20,6 @@
 }
 
 + (id)syncRequestWithDuration:(unsigned long long)arg1 serverConfigurationVersion:(unsigned long long)arg2 configurationVersion:(unsigned long long)arg3 lastSyncedConfigurationVersion:(unsigned long long)arg4 notificationReasons:(id)arg5;
-+ (id)uuid;
-+ (void)initialize;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long serverConfigurationVersion; // @synthesize serverConfigurationVersion=_serverConfigurationVersion;
 @property(readonly, nonatomic) unsigned long long configurationVersion; // @synthesize configurationVersion=_configurationVersion;

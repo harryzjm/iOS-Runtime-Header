@@ -13,6 +13,7 @@
 + (id)createActivityWithTitle:(id)arg1 actionType:(id)arg2 actionSystemImageName:(id)arg3;
 + (_Bool)canPerformOnAssetCollectionReference:(id)arg1 withInputs:(id)arg2;
 - (void)performBackgroundTask;
+- (void)performUserInteractionTask;
 
 @end
 

@@ -9,7 +9,7 @@
 }
 
 - (_Bool)doesComposeText;
-- (struct TIInputManager *)createInputManager;
+- (void *)createInputManager;
 
 @end
 

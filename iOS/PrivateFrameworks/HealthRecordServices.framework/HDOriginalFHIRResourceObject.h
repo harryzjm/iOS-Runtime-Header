@@ -14,6 +14,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)resourceObjectWithStaticIdentifier:(id)arg1 data:(id)arg2 sourceURL:(id)arg3 FHIRVersion:(id)arg4 receivedDate:(id)arg5 firstSeenDate:(id)arg6 extractionHints:(unsigned long long)arg7 originVersion:(CDStruct_f6aba300)arg8 originBuild:(id)arg9 country:(id)arg10 error:(id *)arg11;
 + (id)resourceObjectWithData:(id)arg1 sourceURL:(id)arg2 FHIRVersion:(id)arg3 receivedDate:(id)arg4 firstSeenDate:(id)arg5 extractionHints:(unsigned long long)arg6 originVersion:(CDStruct_f6aba300)arg7 originBuild:(id)arg8 country:(id)arg9 error:(id *)arg10;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *country; // @synthesize country=_country;

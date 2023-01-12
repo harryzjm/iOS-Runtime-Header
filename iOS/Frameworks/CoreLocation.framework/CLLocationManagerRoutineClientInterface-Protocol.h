@@ -9,6 +9,7 @@
 @class NSArray;
 
 @protocol CLLocationManagerRoutineClientInterface <NSObject>
+- (void)didUpdateLocations:(NSArray *)arg1 withReply:(void (^)(void))arg2;
 - (void)didUpdateLocations:(NSArray *)arg1;
 @end
 

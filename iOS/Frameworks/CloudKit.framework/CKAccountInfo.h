@@ -20,15 +20,11 @@
 
 + (_Bool)supportsSecureCoding;
 + (void)invalidateCachedAccountInfo;
-+ (id)cachedAccountInfoForSetupInfoHash:(id)arg1;
-+ (void)setCachedAccountInfoByContainerSetupHash:(id)arg1;
-+ (id)cachedAccountInfoByContainerSetupHash;
 @property(nonatomic) _Bool isFromCache; // @synthesize isFromCache=_isFromCache;
 @property(nonatomic) _Bool hasValidCredentials; // @synthesize hasValidCredentials=_hasValidCredentials;
 @property(nonatomic) long long deviceToDeviceEncryptionAvailability; // @synthesize deviceToDeviceEncryptionAvailability=_deviceToDeviceEncryptionAvailability;
 @property(nonatomic) long long accountPartition; // @synthesize accountPartition=_accountPartition;
 @property(nonatomic) long long accountStatus; // @synthesize accountStatus=_accountStatus;
-@property long long validationCounter; // @synthesize validationCounter=_validationCounter;
 @property(nonatomic) _Bool supportsDeviceToDeviceEncryption;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -37,7 +33,6 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;
-- (void)setAsCachedAccountInfoForSetupInfoHash:(id)arg1;
 
 @end
 

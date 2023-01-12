@@ -20,6 +20,23 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)hyperparametersForMappingId:(id)arg1;
+- (double)maxEmailHarvestingEligiblityInterval;
+- (_Bool)skipInsignificantEmailExtractions;
+- (unsigned int)socialHighlightTopKCount;
+- (unsigned int)socialHighlightMaxNumHighlights;
+- (double)socialHighlightMetricReportingInterval;
+- (double)socialHighlightFeedbackDeletionInterval;
+- (double)socialHighlightCacheTimeoutInterval;
+- (double)socialHighlightRankedStorageMaxAge;
+- (double)socialHighlightDecayInterval;
+- (unsigned int)maxItemsInFeatureDictionary;
+- (_Bool)useCachedPortraitScores;
+- (_Bool)useRawNEExtractionScores;
+- (_Bool)storeNewExtractions;
+- (double)scoreThreshold;
+- (unsigned int)maxNEExtractions;
+- (unsigned int)maxRelevantHighlightContacts;
+- (unsigned long long)sentenceEmbeddingVersion;
 - (unsigned int)queryTimeOtherToMinutes;
 - (int)queryTimeNextFromMinutes;
 - (unsigned int)queryTimeNextToMinutes;
@@ -61,9 +78,7 @@
 - (double)locationDecayHalfLifeSeconds;
 - (double)namedEntityDecayHalfLifeSeconds;
 - (double)topicDecayHalfLifeSeconds;
-- (int)portraitAnalyticsGeohashLength;
 - (int)portraitAnalyticsMaximumNumberOfRecords;
-- (double)portraitAnalyticsTopicsSamplingRate;
 - (int)feedbackSessionLogsGeohashLength;
 - (float)feedbackSessionLogsExtractionsSamplingRate;
 - (id)feedbackSessionLogsSamplingRateOverrides;
@@ -73,8 +88,11 @@
 - (float)scoreThresholdForNamedEntity;
 - (_Bool)safariDataDetectorsEnabledForHighMemoryDevices;
 - (_Bool)safariDonationTitleExtractionEnabled;
-- (_Bool)highLevelTopicExtractionEnabled;
 - (id)topicCalibrationTrie;
+- (double)sportsMetricsSamplingRate;
+- (id)sportsMetricsEventName;
+- (int)sportsMetricsNumberOfLeaguesLogged;
+- (int)sportsMetricsNumberOfTeamsLogged;
 - (id)portraitMusicDataCollectionAMPBundleIds;
 - (_Bool)portraitMusicDataCollectionCollectNonAMPNowPlaying;
 - (int)portraitMusicDataCollectionMaximumRecordsPerType;
@@ -87,7 +105,6 @@
 - (id)_algorithmsToDelete:(id)arg1 bundleId:(id)arg2 customRules:(id)arg3;
 - (id)_algorithmsForNode:(id)arg1 bundleId:(id)arg2 customRules:(id)arg3;
 - (id)differentiallyPrivateEntityLogLevels;
-- (id)dynamicEntityCategories;
 - (float)topicsMultiplierForBundleId:(id)arg1 algorithm:(unsigned long long)arg2;
 - (double)nonReaderTextWeight;
 - (double)halfValuePosition;
@@ -102,12 +119,17 @@
 - (void)_loadNamedEntitiesConfigParams;
 - (void)_loadQuickTypeConfigParamsWithGuardedData:(id)arg1;
 - (void)_loadQuickTypeConfigParams;
+- (void)_loadSocialHighlightConfigParamsWithGuardedData:(id)arg1;
+- (void)_loadSocialHighlightConfigParams;
+- (void)_loadUniversalSearchConfigParamsWithGuardedData:(id)arg1;
+- (void)_loadUniversalSearchConfigParams;
 - (void)_loadContactsConfigParamsWithGuardedData:(id)arg1;
 - (void)_loadContactsConfigParams;
 - (void)_loadLocationsConfigParamsWithGuardedData:(id)arg1;
 - (void)_loadLocationsConfigParams;
 - (void)_loadGlobalConfigParamsWithGuardedData:(id)arg1;
 - (void)_loadGlobalConfigParams;
+- (id)trialWrapperReloadingIfNeeded;
 - (id)initWithTrialWrapper:(id)arg1;
 
 @end

@@ -6,6 +6,7 @@
 
 @class AXDispatchTimer;
 
+__attribute__((visibility("hidden")))
 @interface AXSSPunctuationGroupCloudKitHelper
 {
     AXDispatchTimer *_changeCoalescer;

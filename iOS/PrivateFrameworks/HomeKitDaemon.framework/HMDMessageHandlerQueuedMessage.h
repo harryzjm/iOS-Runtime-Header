@@ -29,6 +29,8 @@
 - (void)timerDidFire:(id)arg1;
 @property(readonly, copy) NSString *name;
 @property(readonly, copy) NSUUID *identifier;
+- (void)suspendTimer;
+- (void)resumeTimer;
 - (id)initWithMessage:(id)arg1 timeInterval:(double)arg2;
 - (id)initWithMessage:(id)arg1;
 

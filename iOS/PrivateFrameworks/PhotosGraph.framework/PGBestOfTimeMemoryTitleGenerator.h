@@ -21,8 +21,8 @@
 - (id)_bestOfYearTitle;
 - (id)_bestOfPastTimeTitle;
 - (void)_generateTitleAndSubtitleWithResult:(CDUnknownBlockType)arg1;
-- (id)initWithYear:(long long)arg1;
-- (id)initWithStartDate:(id)arg1 endDate:(id)arg2;
+- (id)initWithYear:(long long)arg1 titleGenerationContext:(id)arg2;
+- (id)initWithStartDate:(id)arg1 endDate:(id)arg2 titleGenerationContext:(id)arg3;
 
 @end
 

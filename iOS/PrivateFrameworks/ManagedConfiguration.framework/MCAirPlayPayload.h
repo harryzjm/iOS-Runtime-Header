@@ -8,7 +8,7 @@
 
 @interface MCAirPlayPayload
 {
-    NSArray *_whitelistDestinations;
+    NSArray *_allowListDestinations;
     NSArray *_destinationsWithPasswords;
     NSArray *_titlesAndDescriptions;
 }
@@ -19,7 +19,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *titlesAndDescriptions; // @synthesize titlesAndDescriptions=_titlesAndDescriptions;
 @property(retain, nonatomic) NSArray *destinationsWithPasswords; // @synthesize destinationsWithPasswords=_destinationsWithPasswords;
-@property(retain, nonatomic) NSArray *whitelistDestinations; // @synthesize whitelistDestinations=_whitelistDestinations;
+@property(retain, nonatomic) NSArray *allowListDestinations; // @synthesize allowListDestinations=_allowListDestinations;
 - (id)verboseDescription;
 - (id)payloadDescriptionKeyValueSections;
 - (id)subtitle2Description;

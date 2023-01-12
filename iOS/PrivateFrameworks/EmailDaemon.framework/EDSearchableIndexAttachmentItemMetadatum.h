@@ -13,6 +13,7 @@
 @interface EDSearchableIndexAttachmentItemMetadatum : NSObject <EDSearchableIndexAttachmentItemMetadatumBuilder>
 {
     NSURL *_attachmentFileURL;
+    NSString *_name;
     NSString *_domainIdentifier;
     NSString *_accountIdentifier;
     NSArray *_mailboxIdentifiers;
@@ -30,6 +31,7 @@
 @property(copy, nonatomic) NSArray *mailboxIdentifiers; // @synthesize mailboxIdentifiers=_mailboxIdentifiers;
 @property(copy, nonatomic) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
 @property(copy, nonatomic) NSString *domainIdentifier; // @synthesize domainIdentifier=_domainIdentifier;
+@property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, nonatomic) NSURL *attachmentFileURL; // @synthesize attachmentFileURL=_attachmentFileURL;
 @property(readonly, nonatomic) _Bool canReadAttachmentFile;
 - (id)initWithAttachmentFileURL:(id)arg1 builder:(CDUnknownBlockType)arg2;

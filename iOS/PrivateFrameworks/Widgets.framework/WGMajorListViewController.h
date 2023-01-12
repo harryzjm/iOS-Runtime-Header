@@ -51,6 +51,7 @@
 @property(readonly, nonatomic) _Bool shouldAnimateLastTwoViewsAsOne;
 @property(readonly, copy, nonatomic) NSArray *extraViews;
 @property(readonly, copy, nonatomic) NSArray *extraViewsContainers;
+@property(readonly, nonatomic) _Bool hasWidget;
 - (void)enumerateWidgetWrapperViewsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)_insertHeaderView;
 - (_Bool)_canShowWhileLocked;

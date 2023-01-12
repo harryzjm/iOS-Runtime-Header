@@ -21,6 +21,7 @@
     NSString *_name;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, nonatomic) unsigned long long bufferIndex; // @synthesize bufferIndex=_bufferIndex;
 @property(readonly, nonatomic) MTLRenderPipelineReflection *pipelineReflectionObject; // @synthesize pipelineReflectionObject=_pipelineReflectionObject;

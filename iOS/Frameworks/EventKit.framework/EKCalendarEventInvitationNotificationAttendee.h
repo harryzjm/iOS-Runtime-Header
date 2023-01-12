@@ -23,6 +23,7 @@
     NSString *_emailAddress;
     NSString *_phoneNumber;
     NSURL *_URL;
+    long long _participantType;
     long long _participantStatus;
     NSString *_comment;
     NSDate *_proposedStartDate;
@@ -34,6 +35,7 @@
 @property(readonly, nonatomic) NSDate *proposedStartDate; // @synthesize proposedStartDate=_proposedStartDate;
 @property(readonly, nonatomic) NSString *comment; // @synthesize comment=_comment;
 @property(readonly, nonatomic) long long participantStatus; // @synthesize participantStatus=_participantStatus;
+@property(readonly, nonatomic) long long participantType; // @synthesize participantType=_participantType;
 @property(readonly, nonatomic) _Bool proposedStartDateChanged; // @synthesize proposedStartDateChanged=_proposedStartDateChanged;
 @property(readonly, nonatomic) _Bool commentChanged; // @synthesize commentChanged=_commentChanged;
 @property(readonly, nonatomic) _Bool statusChanged; // @synthesize statusChanged=_statusChanged;

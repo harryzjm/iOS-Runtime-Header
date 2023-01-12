@@ -4,21 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class _UIUCBKBSelectionBackground;
+@class UIColor, _UIUCBKBSelectionBackground;
+@protocol _UIButtonBarAppearanceDelegate;
 
 __attribute__((visibility("hidden")))
 @interface _UIUCBGroupBarButtonVisualProviderIOS
 {
     _UIUCBKBSelectionBackground *_selectionBackgroundView;
+    id <_UIButtonBarAppearanceDelegate> _appearanceDelegate;
     _Bool _lightKeyboard;
+    UIColor *_tintColor;
 }
 
 + (id)darkKeyboardProvider;
 + (id)lightKeyboardProvider;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool lightKeyboard; // @synthesize lightKeyboard=_lightKeyboard;
+- (void)setTintColor:(id)arg1;
+- (id)tintColor;
+- (struct CGPoint)menuAnchorPoint;
+- (_Bool)shouldLift;
 - (void)configureButton:(id)arg1 withAppearanceDelegate:(id)arg2 fromBarItem:(id)arg3;
 - (void)updateButton:(id)arg1 toUseButtonShapes:(_Bool)arg2;
+- (id)imageSymbolConfiguration;
 - (void)updateButton:(id)arg1 forSelectedState:(_Bool)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;

@@ -8,6 +8,7 @@
 {
 }
 
++ (id)filter;
 - (unsigned short)domain;
 
 @end

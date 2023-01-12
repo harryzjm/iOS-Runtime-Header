@@ -7,15 +7,18 @@
 #import <objc/NSObject.h>
 
 @class NSMutableDictionary;
+@protocol OS_dispatch_queue;
 
 @interface NEAppInfoCache : NSObject
 {
     CDUnknownBlockType _customLookupHandler;
     NSMutableDictionary *_cachedSourceAppInfo;
+    NSObject<OS_dispatch_queue> *_cacheQueue;
 }
 
 + (id)sharedAppInfoCache;
 - (void).cxx_destruct;
+@property(readonly) NSObject<OS_dispatch_queue> *cacheQueue; // @synthesize cacheQueue=_cacheQueue;
 @property(retain) NSMutableDictionary *cachedSourceAppInfo; // @synthesize cachedSourceAppInfo=_cachedSourceAppInfo;
 @property(copy, nonatomic) CDUnknownBlockType customLookupHandler; // @synthesize customLookupHandler=_customLookupHandler;
 - (id)bundleIDWithoutTeamID:(id)arg1;

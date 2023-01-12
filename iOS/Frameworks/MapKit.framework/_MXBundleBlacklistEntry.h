@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 + (id)blacklistEntriesFromDefaultsValue:(id)arg1;
 - (void).cxx_destruct;
 - (_Bool)isExtensionAllowed:(id)arg1;
-- (_Bool)isBundleProxyAllowed:(id)arg1;
+- (_Bool)isBundleRecordAllowed:(id)arg1;
 - (_Bool)_isVersionValueAllowed:(id)arg1;
 - (id)initWithBundleIdentifier:(id)arg1 minimumDisallowedVersion:(id)arg2 maximumDisallowedVersion:(id)arg3;
 

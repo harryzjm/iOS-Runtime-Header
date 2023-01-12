@@ -6,24 +6,41 @@
 
 #import <objc/NSObject.h>
 
-@class NSLocale;
+@class NSDictionary, NSLocale;
 
 @interface CHRecognizerConfiguration : NSObject
 {
     unsigned long long _language;
     unsigned long long _script;
+    NSDictionary *_decoderWeightsOverride;
     _Bool _enableCachingIfAvailable;
     _Bool _enableGen2ModelIfAvailable;
     _Bool _enableGen2CharacterLMIfAvailable;
     int _mode;
     int _contentType;
     int _autoCapitalizationMode;
+    int _autoCorrectionMode;
     NSLocale *_locale;
 }
 
++ (_Bool)shouldRefinePrefixQueryMatchesForLocale:(id)arg1;
++ (_Bool)shouldInsertSpaceBetweenPreviousChar:(id)arg1 andNextChar:(id)arg2 inLocale:(id)arg3;
++ (_Bool)shouldRemoveSpaceBetweenPreviousChar:(id)arg1 andNextChar:(id)arg2 inLocale:(id)arg3;
++ (long long)drawingStrokeLimitForLocale:(id)arg1;
++ (id)modelNameEPFIGS;
++ (id)modelNameJapanese;
++ (id)modelNameChinese;
++ (_Bool)shouldAdjustGroupingHeuristicsForVeryComplexCharacters:(id)arg1;
++ (_Bool)shouldAdjustGroupingForLocale:(id)arg1;
 + (id)spellCheckingLocaleForRecognitionLocale:(id)arg1 string:(id)arg2;
++ (_Bool)shouldPerformStrictCandidateFiltering:(id)arg1;
++ (_Bool)shouldSwapTopTwoResults:(id)arg1 locales:(id)arg2;
++ (_Bool)shouldUseFullWidthSpaceBasedOnContextForLocale:(id)arg1;
 + (_Bool)shouldApplyLatinSpacingForLocale:(id)arg1;
 + (struct CGSize)defaultMinimumDrawingSize;
++ (void *)loadLanguageModelFromOptions:(id)arg1 fallbackLocale:(id)arg2;
++ (id)recognitionEngineCachingKeyForRecognitionLocale:(id)arg1;
++ (id)effectiveTextInputRecognitionLocales:(id)arg1 allowFallbackSecondaryLocale:(_Bool)arg2;
 + (id)forcedGen2ModelLocaleForLocale:(id)arg1;
 + (_Bool)isLocaleSupported:(id)arg1 withMode:(int)arg2;
 + (_Bool)isLanguageSupported:(unsigned long long)arg1 withMode:(int)arg2;
@@ -34,12 +51,14 @@
 + (int)validateRecognitionMode:(int)arg1;
 + (id)_stringForRecognitionScript:(unsigned long long)arg1;
 + (id)_stringForRecognitionLanguage:(unsigned long long)arg1;
++ (id)stringForAutoCorrectionMode:(int)arg1;
 + (id)stringForAutoCapitalizationMode:(int)arg1;
 + (id)stringForRecognitionContentType:(int)arg1;
 + (id)stringForRecognitionMode:(int)arg1;
 @property(readonly, nonatomic) _Bool enableGen2CharacterLMIfAvailable; // @synthesize enableGen2CharacterLMIfAvailable=_enableGen2CharacterLMIfAvailable;
 @property(readonly, nonatomic) _Bool enableGen2ModelIfAvailable; // @synthesize enableGen2ModelIfAvailable=_enableGen2ModelIfAvailable;
 @property(readonly, nonatomic) _Bool enableCachingIfAvailable; // @synthesize enableCachingIfAvailable=_enableCachingIfAvailable;
+@property(readonly, nonatomic) int autoCorrectionMode; // @synthesize autoCorrectionMode=_autoCorrectionMode;
 @property(readonly, nonatomic) int autoCapitalizationMode; // @synthesize autoCapitalizationMode=_autoCapitalizationMode;
 @property(readonly, nonatomic) int contentType; // @synthesize contentType=_contentType;
 @property(readonly, copy, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
@@ -50,20 +69,22 @@
 - (long long)maxRecognitionResultDefaultCount;
 - (struct CHNeuralNetwork *)newFreeFormEngine;
 - (id)newCTCTextDecoderWithStaticLexicon:(struct _LXLexicon *)arg1 customLexicon:(struct _LXLexicon *)arg2 wordLanguageModel:(void *)arg3;
-- (id)newPostProcessorWithStaticLexicon:(struct _LXLexicon *)arg1 customLexicon:(struct _LXLexicon *)arg2 phraseLexicon:(struct _LXLexicon *)arg3 customPhraseLexicon:(struct _LXLexicon *)arg4 recognizer:(id)arg5 textReplacements:(id)arg6 postProcessingFST:(id)arg7 languageModel:(void *)arg8;
+- (id)newOVSCleanupPostProcessorWithRecognizer:(id)arg1;
+- (id)newPostProcessorWithStaticLexicon:(struct _LXLexicon *)arg1 customLexicon:(struct _LXLexicon *)arg2 phraseLexicon:(struct _LXLexicon *)arg3 customPhraseLexicon:(struct _LXLexicon *)arg4 characterLM:(id)arg5 recognizer:(id)arg6 textReplacements:(id)arg7 postProcessingFST:(id)arg8 languageModel:(void *)arg9 mecabra:(struct __Mecabra *)arg10;
 - (id)newCTCRecognitionModel;
 - (unsigned long long)effectiveEngineLanguage;
 - (id)newCutpointModel;
 - (id)newStrokeTransitionModel;
 - (struct CHNeuralNetwork *)newRecognitionEngine;
 - (struct VariantMap *)newTransliterationVariantMap;
-- (struct Network *)newRadicalClusterFST;
-- (struct Network *)newGrammarFST;
+- (void *)newRadicalClusterFST;
+- (void *)newGrammarFST;
 - (id)newPostProcessingFST;
 - (id)newPatternFST;
 - (struct _CFBurstTrie *)newOVSTrie;
-- (void *)newCharacterLanguageModelAndMap:(map_c92806bd *)arg1;
+- (void *)newCharacterLanguageModelAndMap:(void *)arg1 force:(_Bool)arg2;
 - (id)newSpellChecker;
+- (void *)newLanguageModelForRecognizer:(id)arg1 async:(_Bool)arg2 synchronizationQueue:(id)arg3;
 - (void *)newLanguageModel;
 - (void *)newCJKStaticLexicon;
 - (const struct _LXLexicon *)newPhraseLexicon:(id *)arg1;
@@ -73,9 +94,12 @@
 - (_Bool)shouldForwardMecabraOTAAssetsUpdate;
 - (int)mecabraInputMethodType;
 - (unsigned int)requiredInappropriateFilteringFlags;
+- (_Bool)shouldConvertKanaInPostProcessing;
+- (_Bool)shouldRemoveSpacesFromHashtagsAndMentions;
 - (_Bool)shouldMergeNoPrecedingWhiteSpaceColumns;
 - (_Bool)shouldIdentifyChangeableColumns;
 - (_Bool)shouldApplySemanticTokenization;
+- (_Bool)shouldAddAlternativeWidthCandidates;
 - (_Bool)shouldTransliterateHalfWidthPunctuations;
 - (_Bool)shouldTreatAllSmallStrokesAsPunctuation;
 - (_Bool)shouldDetectRomanPunctuation;
@@ -84,7 +108,7 @@
 - (_Bool)shouldKeepDuplicateTokenIDs;
 - (_Bool)shouldKeepOutOfPatternCandidates;
 - (_Bool)shouldMarkMultiWordOVS;
-- (_Bool)shouldPromoteChineseCommonCharacters;
+- (_Bool)shouldPromoteCJKCommonCharacters;
 - (_Bool)shouldTransformCharacterProbabilitiesIntoLogScores;
 - (_Bool)shouldReplaceInvalidTokenIDs;
 - (_Bool)shouldUseTokenPrecedingSpaces;
@@ -96,7 +120,12 @@
 - (_Bool)shouldApplyCharacterLMRescoring;
 - (_Bool)shouldApplyLMSorting;
 - (_Bool)shouldApplyLMRescoring;
+- (_Bool)shouldAutoCorrect;
+- (_Bool)shouldRemoveSpacesFromStrongURLs;
 - (_Bool)shouldAutoCapitalize;
+- (_Bool)shouldTransliterateFrenchLigatures;
+- (_Bool)shouldTransliterateConfusableCharacters;
+- (_Bool)shouldFilterLowProbabilityTranscriptionPaths;
 - (_Bool)shouldRelaxFinalCandidatesThresholding;
 - (_Bool)shouldApplyCandidatesThresholding;
 - (_Bool)shouldPenalizeLetterInsertion;
@@ -108,7 +137,9 @@
 - (_Bool)shouldPerformGlobalBestSearchWithSmallLattice;
 - (_Bool)shouldPerformGlobalBestSearch;
 - (_Bool)shouldPenalizePrefixes;
+- (double)decodingWordLMLowerBoundLogProbability;
 - (double)characterLMLowerBoundLogProbability;
+- (double)decodingLexiconLowerBoundLogProbability;
 - (double)decodingLexiconWeight;
 - (double)decodingWordLMWeight;
 - (double)decodingCharacterLMWeight;
@@ -119,6 +150,7 @@
 - (_Bool)shouldApplyLexicalPenalty;
 - (_Bool)shouldExpandLexiconInNetwork;
 - (_Bool)shouldComposeLexiconWithNetwork;
+- (_Bool)shouldLoadCJKLexicons;
 @property(readonly, nonatomic) int contentTypeForNoSpaceRecognition;
 - (_Bool)shouldPerformNoSpaceRecognition;
 - (_Bool)shouldPerformRegularSpaceRecognition;
@@ -132,9 +164,10 @@
 - (_Bool)hasSameResourcesAsConfiguration:(id)arg1;
 - (id)configurationKey;
 - (_Bool)isEqualToRecognizerConfiguration:(id)arg1;
+- (_Bool)isTextMode;
 - (id)description;
 - (void)dealloc;
-- (id)initWithMode:(int)arg1 locale:(id)arg2 contentType:(int)arg3 autoCapitalizationMode:(int)arg4 enableCachingIfAvailable:(_Bool)arg5 enableGen2ModelIfAvailable:(_Bool)arg6 enableGen2CharacterLMIfAvailable:(_Bool)arg7;
+- (id)initWithMode:(int)arg1 locale:(id)arg2 contentType:(int)arg3 autoCapitalizationMode:(int)arg4 autoCorrectionMode:(int)arg5 enableCachingIfAvailable:(_Bool)arg6 enableGen2ModelIfAvailable:(_Bool)arg7 enableGen2CharacterLMIfAvailable:(_Bool)arg8;
 
 @end
 

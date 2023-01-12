@@ -8,6 +8,7 @@
 
 @class MPSectionedCollection;
 
+__attribute__((visibility("hidden")))
 @interface MPCModelRadioGetTracksResponse : NSObject
 {
     long long _tracklistAction;

@@ -6,13 +6,12 @@
 
 #import <HomeKitDaemon/AVCPacketRelayDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDCameraRemoteStreamSenderProtocol-Protocol.h>
-#import <HomeKitDaemon/IDSServiceDelegate-Protocol.h>
 #import <HomeKitDaemon/IDSSessionDelegate-Protocol.h>
 
 @class AVCPacketRelay, HMDCameraNetworkConfig, HMDDevice, HMFOSTransaction, NSNumber, NSObject, NSString;
 @protocol HMDCameraIDSSessionInitiatorDelegate, OS_dispatch_queue;
 
-@interface HMDCameraIDSSessionInitiator <AVCPacketRelayDelegate, IDSServiceDelegate, IDSSessionDelegate, HMDCameraRemoteStreamSenderProtocol>
+@interface HMDCameraIDSSessionInitiator <AVCPacketRelayDelegate, IDSSessionDelegate, HMDCameraRemoteStreamSenderProtocol>
 {
     id <HMDCameraIDSSessionInitiatorDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
@@ -24,15 +23,15 @@
 
 + (id)logCategory;
 - (void).cxx_destruct;
-@property(retain, nonatomic) HMFOSTransaction *packetRelayTransaction; // @synthesize packetRelayTransaction=_packetRelayTransaction;
-@property(retain, nonatomic) AVCPacketRelay *packetRelay; // @synthesize packetRelay=_packetRelay;
+@property(retain) HMFOSTransaction *packetRelayTransaction; // @synthesize packetRelayTransaction=_packetRelayTransaction;
+@property(retain) AVCPacketRelay *packetRelay; // @synthesize packetRelay=_packetRelay;
 @property(readonly, nonatomic) HMDCameraNetworkConfig *localNetworkConfig; // @synthesize localNetworkConfig=_localNetworkConfig;
 @property(readonly, nonatomic) HMDDevice *device; // @synthesize device=_device;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
-@property(readonly, nonatomic) __weak id <HMDCameraIDSSessionInitiatorDelegate> delegate; // @synthesize delegate=_delegate;
+@property __weak id <HMDCameraIDSSessionInitiatorDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)logIdentifier;
-- (void)_callSessionEnded:(id)arg1;
-- (void)_callSessionStarted:(id)arg1;
+- (void)_callSessionEndedWithError:(id)arg1;
+- (void)_callSessionStarted;
 - (void)sessionEnded:(id)arg1 withReason:(unsigned int)arg2 error:(id)arg3;
 - (void)sessionStarted:(id)arg1;
 - (void)session:(id)arg1 receivedInvitationCancelFromID:(id)arg2;

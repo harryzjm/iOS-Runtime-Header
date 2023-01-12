@@ -11,7 +11,6 @@
 - (void)ping:(void (^)(NSError *))arg1;
 - (void)getDescriptorsForDomain:(long long)arg1 completion:(void (^)(CTServiceDescriptorContainer *, NSError *))arg2;
 - (void)getDualSimCapability:(void (^)(long long, NSError *))arg1;
-- (void)getSimLessContexts:(void (^)(CTXPCSimLessContexts *, NSError *))arg1;
 - (void)getActiveContexts:(void (^)(CTXPCContexts *, NSError *))arg1;
 - (void)getSubscriptionInfo:(void (^)(CTXPCServiceSubscriptionInfo *, NSError *))arg1;
 @end

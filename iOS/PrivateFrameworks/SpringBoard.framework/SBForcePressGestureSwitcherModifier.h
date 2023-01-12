@@ -25,7 +25,7 @@
 - (void)_beginAnimatingMultitaskingPropertyWithMode:(long long)arg1 settings:(id)arg2;
 - (double)initialPanThreshold;
 - (double)_switcherCardScale;
-- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
+- (struct SBSwitcherAsyncRenderingAttributes)asyncRenderingAttributesForAppLayout:(id)arg1;
 - (id)keyboardSuppressionMode;
 - (id)appLayoutsToResignActive;
 - (id)appLayoutsToCacheSnapshots;
@@ -42,16 +42,16 @@
 - (double)wallpaperScale;
 - (double)homeScreenScale;
 - (double)homeScreenAlpha;
-- (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
-- (double)darkeningAlphaForIndex:(unsigned long long)arg1;
-- (double)opacityForIndex:(unsigned long long)arg1;
+- (struct UIRectCornerRadii)cornerRadiiForIndex:(unsigned long long)arg1;
+- (double)dimmingAlphaForLayoutRole:(long long)arg1 inAppLayout:(id)arg2;
+- (double)opacityForLayoutRole:(long long)arg1 inAppLayout:(id)arg2 atIndex:(unsigned long long)arg3;
 - (id)_scaleSettings;
 - (id)_layoutSettings;
 - (id)animationAttributesForLayoutElement:(id)arg1;
 - (id)visibleAppLayouts;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
 - (id)handleGestureEvent:(id)arg1;
-- (id)handleMainTransitionEvent:(id)arg1;
+- (id)handleTransitionEvent:(id)arg1;
 - (void)didMoveToParentModifier:(id)arg1;
 - (id)initWithGestureID:(id)arg1 selectedAppLayout:(id)arg2 effectiveStartingEnvironmentMode:(long long)arg3 multitaskingModifier:(id)arg4;
 

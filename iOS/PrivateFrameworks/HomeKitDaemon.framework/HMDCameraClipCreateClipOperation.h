@@ -10,18 +10,20 @@
 {
     double _targetFragmentDuration;
     NSDate *_clipStartDate;
+    long long _quality;
     HMCameraClipEncryptionManager *_encryptionManager;
 }
 
 + (id)logCategory;
 - (void).cxx_destruct;
 @property(readonly) HMCameraClipEncryptionManager *encryptionManager; // @synthesize encryptionManager=_encryptionManager;
+@property(readonly) long long quality; // @synthesize quality=_quality;
 @property(readonly, copy) NSDate *clipStartDate; // @synthesize clipStartDate=_clipStartDate;
 @property(readonly) double targetFragmentDuration; // @synthesize targetFragmentDuration=_targetFragmentDuration;
 - (id)attributeDescriptions;
-- (id)modelsToUpdate;
-- (id)initWithClipModelID:(id)arg1 localZone:(id)arg2 significantEvent:(id)arg3 homePresenceByPairingIdentity:(id)arg4 targetFragmentDuration:(double)arg5 clipStartDate:(id)arg6 encryptionManager:(id)arg7 dataSource:(id)arg8;
-- (id)initWithClipModelID:(id)arg1 localZone:(id)arg2 significantEvent:(id)arg3 homePresenceByPairingIdentity:(id)arg4 targetFragmentDuration:(double)arg5 clipStartDate:(id)arg6 encryptionManager:(id)arg7;
+- (id)modelsToAdd;
+- (id)initWithClipModelID:(id)arg1 localZone:(id)arg2 targetFragmentDuration:(double)arg3 clipStartDate:(id)arg4 quality:(long long)arg5 encryptionManager:(id)arg6 dataSource:(id)arg7;
+- (id)initWithClipModelID:(id)arg1 localZone:(id)arg2 targetFragmentDuration:(double)arg3 clipStartDate:(id)arg4 quality:(long long)arg5 encryptionManager:(id)arg6;
 
 @end
 

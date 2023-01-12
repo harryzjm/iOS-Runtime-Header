@@ -17,14 +17,12 @@
     MISSING_TYPE *statefulStoreUI;
     MISSING_TYPE *descriptorService;
     MISSING_TYPE *configurationService;
-    MISSING_TYPE *persistentSubscriptions;
-    MISSING_TYPE *environmentSubscriptions;
-    MISSING_TYPE *descriptors;
-    MISSING_TYPE *reloadFailedTimer;
     MISSING_TYPE *logger;
-    MISSING_TYPE *hasDescriptors;
-    MISSING_TYPE *hasMetrics;
-    MISSING_TYPE *lock;
+    MISSING_TYPE *_queue;
+    MISSING_TYPE *_queue_persistentSubscriptions;
+    MISSING_TYPE *_queue_environmentSubscriptions;
+    MISSING_TYPE *_queue_descriptors;
+    MISSING_TYPE *_queue_waitingOnEventsToPrecache;
 }
 
 @end

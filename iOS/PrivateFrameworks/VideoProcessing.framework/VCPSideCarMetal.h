@@ -30,9 +30,9 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (future_82df37ac)createEncodePacket:(struct __CVBuffer *)arg1 forRegion:(CDStruct_4c83c94d)arg2 instance:(unsigned int)arg3 sequenceNumber:(unsigned int)arg4 frameIndex:(unsigned int)arg5 pts:(CDStruct_1b6d18a9)arg6 duration:(CDStruct_1b6d18a9)arg7 frameProperties:(struct __CFDictionary *)arg8;
-- (int)copyFromFrame:(struct __CVBuffer *)arg1 toTile:(struct __CVBuffer *)arg2 origin:(CDStruct_14f26992)arg3 size:(CDStruct_14f26992)arg4 withFence:(future_da72c1f3 *)arg5;
-- (future_d02553ad)temporalTransitionScore:(struct __CVBuffer *)arg1 previousFrame:(struct __CVBuffer *)arg2 forRegion:(CDStruct_4c83c94d)arg3;
+- (future_5546453e)createEncodePacket:(struct __CVBuffer *)arg1 forRegion:(CDStruct_4c83c94d)arg2 instance:(unsigned int)arg3 sequenceNumber:(unsigned int)arg4 frameIndex:(unsigned int)arg5 pts:(CDStruct_198678f7)arg6 duration:(CDStruct_198678f7)arg7 frameProperties:(struct __CFDictionary *)arg8;
+- (int)copyFromFrame:(struct __CVBuffer *)arg1 toTile:(struct __CVBuffer *)arg2 origin:(CDStruct_14f26992)arg3 size:(CDStruct_14f26992)arg4 withFence:(void *)arg5;
+- (future_1676b93f)temporalTransitionScore:(struct __CVBuffer *)arg1 previousFrame:(struct __CVBuffer *)arg2 forRegion:(CDStruct_4c83c94d)arg3;
 - (id)rgbaUintTextureForChroma:(struct __CVBuffer *)arg1 withAttributes:(id)arg2;
 - (id)rgbaUintTextureForLuma:(struct __CVBuffer *)arg1 withAttributes:(id)arg2;
 - (id)rgbaUnormTextureForLuma:(struct __CVBuffer *)arg1 withAttributes:(id)arg2;

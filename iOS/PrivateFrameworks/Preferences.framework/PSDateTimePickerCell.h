@@ -4,17 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIDatePicker;
+@class UIDatePicker, UILabel;
 
 @interface PSDateTimePickerCell
 {
     UIDatePicker *_datePicker;
+    UILabel *_titleLabel;
 }
 
 + (double)preferredHeight;
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)datePicker;
+- (void)setTitle:(id)arg1;
 - (void)timeZoneChanged:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 specifier:(id)arg3;
 

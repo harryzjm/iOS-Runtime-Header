@@ -9,7 +9,6 @@
 @class HMIVideoCommandBuffer;
 
 @protocol HMIVideoCommandBufferDelegate <NSObject>
-- (void)bufferWillFinish:(HMIVideoCommandBuffer *)arg1;
 - (void)bufferWillFlush:(HMIVideoCommandBuffer *)arg1;
 - (void)buffer:(HMIVideoCommandBuffer *)arg1 willHandleSampleBuffer:(struct opaqueCMSampleBuffer *)arg2;
 @end

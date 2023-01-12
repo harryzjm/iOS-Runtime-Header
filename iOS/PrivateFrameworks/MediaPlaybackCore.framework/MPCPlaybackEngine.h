@@ -8,8 +8,8 @@
 
 #import <MediaPlaybackCore/MPCExplicitContentAuthorizationDelegate-Protocol.h>
 
-@class MPCAudioSpectrumAnalyzer, MPCPlaybackEngineEventStream, MPCPlaybackIntent, MPCPlayerPath, MPProtocolProxy, NSString, NSXPCListenerEndpoint, UIView, _MPCFairPlayPerformanceController, _MPCLeaseManager, _MPCMediaRemotePublisher, _MPCMusicPlayerControllerServer, _MPCPlaybackAccountManager, _MPCPlaybackEngineSessionManager, _MPCReportingController;
-@protocol MPCPlaybackEngineDelegate, MPCPlaybackEngineEventObserving, MPCPlaybackEngineImplementation, MPCVideoOutput;
+@class MPCAudioSpectrumAnalyzer, MPCPlaybackEngineEventStream, MPCPlaybackIntent, MPCPlayerPath, MPProtocolProxy, NSString, NSXPCListenerEndpoint, _MPCFairPlayPerformanceController, _MPCLeaseManager, _MPCMediaRemotePublisher, _MPCMusicPlayerControllerServer, _MPCPlaybackAccountManager, _MPCPlaybackEngineSessionManager, _MPCReportingController;
+@protocol MPCPlaybackEngineDelegate, MPCPlaybackEngineEventObserving, MPCPlaybackEngineImplementation, MPCPlaybackEngineInitializationParameters, MPCVideoOutput;
 
 @interface MPCPlaybackEngine : NSObject <MPCExplicitContentAuthorizationDelegate>
 {
@@ -21,7 +21,6 @@
     _Bool _needsUISnapshot;
     _Bool _systemMusicApplication;
     _Bool _audioAnalyzerEnabled;
-    id <MPCVideoOutput> _videoOutput;
     NSString *_playerID;
     id <MPCPlaybackEngineDelegate> _delegate;
     MPCPlaybackIntent *_fallbackPlaybackIntent;
@@ -34,6 +33,8 @@
     _MPCLeaseManager *_leaseManager;
     _MPCPlaybackAccountManager *_accountManager;
     _MPCFairPlayPerformanceController *_fairPlayPerformanceController;
+    id <MPCVideoOutput> _videoOutput;
+    id <MPCPlaybackEngineInitializationParameters> _initializationParameters;
     NSString *_audioSessionCategory;
     unsigned long long _audioSessionOptions;
     MPCAudioSpectrumAnalyzer *_audioAnalyzer;
@@ -42,6 +43,7 @@
 
 + (_Bool)requiresMainThread;
 + (void)preheatPlayback;
++ (_Bool)usesNewPlaybackImplementation;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) MPCPlaybackEngineEventStream *eventStream; // @synthesize eventStream=_eventStream;
 @property(readonly, nonatomic) MPCAudioSpectrumAnalyzer *audioAnalyzer; // @synthesize audioAnalyzer=_audioAnalyzer;
@@ -49,6 +51,8 @@
 @property(nonatomic) unsigned long long audioSessionOptions; // @synthesize audioSessionOptions=_audioSessionOptions;
 @property(copy, nonatomic) NSString *audioSessionCategory; // @synthesize audioSessionCategory=_audioSessionCategory;
 @property(nonatomic, getter=isSystemMusicApplication) _Bool systemMusicApplication; // @synthesize systemMusicApplication=_systemMusicApplication;
+@property(readonly, nonatomic) id <MPCPlaybackEngineInitializationParameters> initializationParameters; // @synthesize initializationParameters=_initializationParameters;
+@property(readonly, nonatomic) id <MPCVideoOutput> videoOutput; // @synthesize videoOutput=_videoOutput;
 @property(readonly, nonatomic) _MPCFairPlayPerformanceController *fairPlayPerformanceController; // @synthesize fairPlayPerformanceController=_fairPlayPerformanceController;
 @property(readonly, nonatomic) _MPCPlaybackAccountManager *accountManager; // @synthesize accountManager=_accountManager;
 @property(readonly, nonatomic) _MPCLeaseManager *leaseManager; // @synthesize leaseManager=_leaseManager;
@@ -74,8 +78,6 @@
 - (void)_detectCrashLoopForSessionIdentifier:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_screenBrightnessDidChangeNotification:(id)arg1;
 - (void)schedulePlaybackStatePreservation;
-@property(readonly, nonatomic) id <MPCVideoOutput> videoOutput; // @synthesize videoOutput=_videoOutput;
-@property(readonly, nonatomic) UIView *videoView;
 @property(readonly, nonatomic) NSXPCListenerEndpoint *serverEndpoint;
 @property(readonly, nonatomic) MPCPlayerPath *playerPath;
 - (void)reportUserSeekFromTime:(double)arg1 toTime:(double)arg2;
@@ -85,6 +87,7 @@
 - (void)restoreStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)becomeActive;
 - (void)start;
+- (id)initWithParameters:(id)arg1;
 - (id)initWithPlayerID:(id)arg1;
 
 // Remaining properties

@@ -15,10 +15,9 @@ __attribute__((visibility("hidden")))
 + (Class)recognizedPointsObservationClass;
 + (id)configurationOptionKeysForDetectorKey;
 - (void).cxx_destruct;
-- (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
+- (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4 progressHandler:(CDUnknownBlockType)arg5;
 - (id)vcpPoseRequestRuntimeOptionsForDetectorOptions:(id)arg1 error:(id *)arg2;
 - (id)vcpPoseRequestSetupOptionsForDetectorOptions:(id)arg1 error:(id *)arg2;
-- (_Bool)supportsProcessingDevice:(id)arg1;
 
 @end
 

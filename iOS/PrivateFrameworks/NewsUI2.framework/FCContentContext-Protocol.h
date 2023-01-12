@@ -7,22 +7,22 @@
 #import <NewsUI2/FCCacheFlushing-Protocol.h>
 #import <NewsUI2/NSObject-Protocol.h>
 
-@class FCArticleController, FCAssetManager, FCFlintResourceManager, FCJSONRecordSourceSchema, FCNetworkBehaviorMonitor, FCTagController, NSArray, NSString, NSURL;
-@protocol FCAVAssetPrewarming, FCBackgroundTaskable, FCCoreConfigurationManager, FCCoreConfigurationManager><FCNewsAppConfigurationManager, FCJSONRecordSourceType, FCJSONRecordTreeSourceType, FCMagazinesConfigurationManager, FCNewsAppConfigurationManager, FCPPTContext, FCWebArchiveSource;
+@class FCArticleController, FCAssetManager, FCContentManifest, FCFlintResourceManager, FCInterestToken, FCJSONRecordSourceSchema, FCNetworkBehaviorMonitor, FCTagController, NSArray, NSString, NSURL;
+@protocol FCAVAssetPrewarming, FCBackgroundTaskable, FCCacheFlushing, FCCoreConfigurationManager, FCCoreConfigurationManager><FCNewsAppConfigurationManager, FCFeedDatabaseProtocol, FCJSONRecordSourceType, FCJSONRecordTreeSourceType, FCMagazinesConfigurationManager, FCNewsAppConfigurationManager, FCPPTContext;
 
 @protocol FCContentContext <NSObject, FCCacheFlushing>
+- (void)enableFlushingWithFlushingThreshold:(unsigned long long)arg1 exceptForFlusher:(id <FCCacheFlushing>)arg2;
+- (FCInterestToken *)interestTokenForContentManifest:(FCContentManifest *)arg1;
 - (id <FCJSONRecordTreeSourceType>)recordTreeSourceWithRecordSources:(NSArray *)arg1;
 - (id <FCJSONRecordSourceType>)recordSourceWithSchema:(FCJSONRecordSourceSchema *)arg1;
 @property(nonatomic, readonly) NSString *contentEnvironmentToken;
 - (void)ppt_prewarmFeedDatabase;
 - (void)ppt_overrideFeedEndpoint:(long long)arg1;
+@property(nonatomic, readonly) id <FCFeedDatabaseProtocol> feedDatabase;
 @property(nonatomic, readonly) id <FCPPTContext> pptContext;
-@property(nonatomic, readonly) long long preferredMediaQuality;
 @property(nonatomic, readonly) id <FCBackgroundTaskable> backgroundTaskable;
-@property(nonatomic, readonly) NSURL *webArchiveCacheDirectoryURL;
 @property(nonatomic, readonly) NSURL *assetCacheDirectoryURL;
 @property(nonatomic, readonly) NSString *contentDirectory;
-@property(nonatomic, retain) id <FCWebArchiveSource> webArchiveSource;
 @property(nonatomic, readonly) FCNetworkBehaviorMonitor *networkBehaviorMonitor;
 @property(nonatomic, readonly) FCFlintResourceManager *flintResourceManager;
 @property(nonatomic, readonly) FCTagController *tagController;

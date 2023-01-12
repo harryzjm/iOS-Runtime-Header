@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class IKAppContext, UINavigationController;
+@class UINavigationController, VUIAppContext;
 
 @interface VUIGDPRPresentationManager : NSObject
 {
     UINavigationController *_navigationController;
-    IKAppContext *_appContext;
+    VUIAppContext *_appContext;
 }
 
 + (id)_sharedInstance;
@@ -20,13 +20,15 @@
 + (void)showOfflineGDPRWelcomeScreen;
 + (_Bool)showGDPRWelcomeScreen:(id)arg1;
 - (void).cxx_destruct;
-@property(nonatomic) __weak IKAppContext *appContext; // @synthesize appContext=_appContext;
+@property(nonatomic) __weak VUIAppContext *appContext; // @synthesize appContext=_appContext;
 @property(retain, nonatomic) UINavigationController *navigationController; // @synthesize navigationController=_navigationController;
 - (void)_handleOfflineContinueButton;
 - (void)_handleContinueButton;
+- (id)_currentWindowRootViewController;
 - (void)_dismissAllModalsIfPresent:(id)arg1;
 - (void)_showIOSWelcomeControllerWithAppContext:(id)arg1 offline:(_Bool)arg2;
 - (_Bool)isShowing;
+- (void)accept:(id)arg1;
 
 @end
 

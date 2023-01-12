@@ -21,6 +21,8 @@
 - (void).cxx_destruct;
 - (void)clearPrefetchState;
 - (id)statusForDebug:(_Bool)arg1;
+- (void)handleCPLConfigurationChange;
+- (void)handleCPLStatusChange;
 - (void)handleOptimizeModeChange;
 - (void)stop;
 - (void)updateCacheDeletePurgeableAmount;

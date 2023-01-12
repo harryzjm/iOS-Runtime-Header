@@ -9,6 +9,9 @@
 @interface NSString (LPExtras)
 + (void)_lp_reverseEnumerateComponents:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)_lp_userVisibleHost;
+- (id)_lp_stringByTrimmingWhitespace;
+- (id)_lp_stringByDeletingUsernameAndPassword;
+- (id)_lp_stringByDeletingTrailingSlash;
 - (id)_lp_hostByStrippingTopLevelDomain;
 - (id)_lp_stringForcingLeftToRightDirection;
 - (_Bool)_lp_hasCaseInsensitivePrefix:(id)arg1;

@@ -43,6 +43,7 @@
 @property(readonly, nonatomic) double topMarginAboveHeadlineDate; // @synthesize topMarginAboveHeadlineDate=_topMarginAboveHeadlineDate;
 @property(readonly, nonatomic) double topMarginAboveHeadlineTitle; // @synthesize topMarginAboveHeadlineTitle=_topMarginAboveHeadlineTitle;
 @property(readonly, nonatomic) double hairlineSeparatorHeight; // @synthesize hairlineSeparatorHeight=_hairlineSeparatorHeight;
+- (double)contentMarginForDeviceTrait:(id)arg1 delta:(double)arg2;
 @property(readonly, nonatomic) double bottomMargin;
 @property(readonly, nonatomic) double minTopMaginAboveReadMoreButton;
 @property(readonly, nonatomic) double contentMargin;

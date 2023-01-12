@@ -11,6 +11,6 @@
 
 @protocol _GEODirectionsRequesterServerProxy <NSObject>
 - (void)cancelRequest:(GEODirectionsRequest *)arg1;
-- (void)startRequest:(GEODirectionsRequest *)arg1 auditToken:(GEOApplicationAuditToken *)arg2 isDoomRequest:(_Bool)arg3 requestPriority:(NSNumber *)arg4 callbackQueue:(NSObject<OS_dispatch_queue> *)arg5 finished:(void (^)(GEODirectionsResponse *))arg6 networkActivity:(void (^)(_Bool))arg7 error:(void (^)(NSError *, GEODirectionsError *))arg8;
+- (void)startRequest:(GEODirectionsRequest *)arg1 auditToken:(GEOApplicationAuditToken *)arg2 useBackgroundURL:(_Bool)arg3 requestPriority:(NSNumber *)arg4 callbackQueue:(NSObject<OS_dispatch_queue> *)arg5 finished:(void (^)(GEODirectionsResponse *))arg6 networkActivity:(void (^)(_Bool))arg7 error:(void (^)(NSError *, GEODirectionsError *))arg8;
 @end
 

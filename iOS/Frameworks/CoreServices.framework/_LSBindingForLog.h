@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)redactedDescription;
 - (id)description;
-- (id)initWithState:(const struct State *)arg1 binding:(const struct LSBinding *)arg2;
+- (id)initWithState:(const void *)arg1 binding:(const struct LSBinding *)arg2;
 
 @end
 

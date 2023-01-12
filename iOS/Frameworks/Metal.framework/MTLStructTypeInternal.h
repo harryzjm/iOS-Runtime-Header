@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary;
+@class NSArray, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MTLStructTypeInternal
@@ -13,8 +13,10 @@ __attribute__((visibility("hidden")))
     NSDictionary *_dictionary;
     NSArray *_members;
     _Bool _isIndirectArgumentBuffer;
+    NSString *_typeName;
 }
 
+@property(readonly) NSString *typeName; // @synthesize typeName=_typeName;
 @property _Bool isIndirectArgumentBuffer; // @synthesize isIndirectArgumentBuffer=_isIndirectArgumentBuffer;
 - (unsigned long long)dataType;
 - (_Bool)isStructLayoutThreadSafeWith:(id)arg1;
@@ -25,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (id)memberByName:(id)arg1;
 - (void)setMembers:(id *)arg1 count:(unsigned long long)arg2;
 - (id)init;
+- (id)initWithMembers:(id *)arg1 count:(unsigned long long)arg2 typeName:(id)arg3;
 - (id)initWithMembers:(id *)arg1 count:(unsigned long long)arg2;
 
 @end

@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     UIBarButtonItem *_shareItem;
     UIBarButtonItem *_tabExposeItem;
     UIBarButtonItem *_openInSafariItem;
+    UIBarButtonItem *_customActivityItem;
 }
 
 - (void).cxx_destruct;
@@ -38,6 +39,11 @@ __attribute__((visibility("hidden")))
 - (id)_UIBarButtonItemsForArrangedBarItems:(id)arg1;
 - (id)_effectiveArrangedBarItems;
 - (_Bool)_arrangedBarItemsNeedUpdate;
+- (void)pulseBarItem:(long long)arg1;
+- (void)setProgress:(double)arg1 forBarItem:(long long)arg2;
+- (void)setMenuProvider:(CDUnknownBlockType)arg1 forBarItem:(long long)arg2;
+- (void)setBarItem:(long long)arg1 selected:(_Bool)arg2;
+- (void)updateBarAnimated:(_Bool)arg1;
 - (id)popoverSourceInfoForItem:(long long)arg1;
 - (id)UIBarButtonItemForItem:(long long)arg1;
 - (_Bool)containsBarItem:(long long)arg1;
@@ -46,15 +52,18 @@ __attribute__((visibility("hidden")))
 - (void)setBarItem:(long long)arg1 enabled:(_Bool)arg2;
 - (void)pulseDownloadsItem;
 - (void)setDownloadsItemProgress:(double)arg1;
-- (void)setBookmarksItemSelected:(_Bool)arg1;
+- (void)setCustomActivityImage:(id)arg1 accessibilityLabel:(id)arg2;
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (id)_newBarButtonItemForSFBarItem:(long long)arg1;
 - (id)initWithBar:(id)arg1 barManager:(id)arg2 layout:(long long)arg3 persona:(unsigned long long)arg4;
 
 // Remaining properties
+@property(nonatomic) long long contentMode;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(nonatomic) unsigned long long pageFormatItemState;
+@property(nonatomic) long long state;
 @property(readonly) Class superclass;
 
 @end

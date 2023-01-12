@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *data;
     MISSING_TYPE *dataAllocated;
+    MISSING_TYPE *extraDatas;
     MISSING_TYPE *snapshotStackDepth;
     MISSING_TYPE *snapshotStack;
 }

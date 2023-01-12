@@ -13,6 +13,7 @@
 - (void)setTableCellYOffset:(float)arg1;
 - (id)dataForKey:(id)arg1;
 - (void)setData:(id)arg1 forKey:(id)arg2;
+- (_Bool)_accessibilityViewIsVisible;
 - (id)_accessibilityProxyView;
 @property(nonatomic) __weak id accessibilityDelegate; // @dynamic accessibilityDelegate;
 

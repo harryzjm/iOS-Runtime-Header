@@ -18,7 +18,7 @@
     NSArray *_changedItems;
 }
 
-+ (void)makeArrayIndexMovesIncremental:(CDStruct_4bcfbbae *)arg1 count:(unsigned long long)arg2;
++ (void)makeArrayIndexMovesIncremental:(CDStruct_b4d0f0d1 *)arg1 count:(unsigned long long)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool needsReload; // @synthesize needsReload=_needsReload;
 @property(readonly, nonatomic) _Bool hasContentChanges; // @synthesize hasContentChanges=_hasContentChanges;

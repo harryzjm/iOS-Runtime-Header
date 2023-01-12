@@ -42,7 +42,7 @@
 + (_Bool)calDAVRemindersForAll;
 + (_Bool)cookiesEnabled;
 + (_Bool)_shouldForceCookies:(_Bool *)arg1;
-+ (id)whitelistedEASProtocols;
++ (id)allowlistedEASProtocols;
 + (double)defaultDAVProbeTimeout;
 + (double)defaultEASTaskTimeoutOutWasFound:(_Bool *)arg1;
 + (_Bool)ignoreBadLDAPCerts;

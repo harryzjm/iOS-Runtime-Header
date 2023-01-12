@@ -47,6 +47,8 @@
 - (void)_handleLocalAuthenticationPolicyEvaluatedWithContext:(id)arg1 error:(id)arg2;
 - (void)event:(long long)arg1 params:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)invalidateLocalAuthenticationContexts;
+- (void)beginLocalAuthenticationWithAccessControl:(struct __SecAccessControl *)arg1 operation:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)beginLocalAuthenticationWithPolicy:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)beginLocalAuthenticationWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithCallbackQueue:(id)arg1;
 

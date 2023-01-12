@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ADInstallAttributionData, ADOdmlResponse, NSDictionary, NSString;
+@class ADInstallAttributionData, NSDictionary, NSString;
 
 @interface ADResponseData : NSObject
 {
@@ -19,11 +19,9 @@
     NSString *_clientRequestID;
     NSDictionary *_format;
     ADInstallAttributionData *_installAttribution;
-    ADOdmlResponse *_odmlResponse;
 }
 
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) ADOdmlResponse *odmlResponse; // @synthesize odmlResponse=_odmlResponse;
 @property(readonly, copy, nonatomic) ADInstallAttributionData *installAttribution; // @synthesize installAttribution=_installAttribution;
 @property(readonly, copy, nonatomic) NSDictionary *format; // @synthesize format=_format;
 @property(readonly, copy, nonatomic) NSString *clientRequestID; // @synthesize clientRequestID=_clientRequestID;

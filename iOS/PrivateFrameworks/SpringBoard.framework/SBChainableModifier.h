@@ -34,11 +34,12 @@
 + (id)contextSelectors;
 + (id)querySelectors;
 + (void)_initalizeIMPCaching;
++ (_Bool)modifierUnderTest:(id)arg1 containsChildModifierKindOfClass:(Class)arg2;
 + (id)baseClassForQueryProtocol;
 + (id)newEventResponse;
 + (id)queryProtocol;
 + (id)contextProtocol;
-+ (void)verifyModifierImplementsAllMethodsOfProtocol:(id)arg1;
++ (void)verifyModifierImplements:(_Bool)arg1 methodsOfProtocol:(id)arg2;
 + (void)initialize;
 + (Class)makeDynamicSubclassWithDescriptor:(id)arg1 implementation:(id)arg2 forSelector:(SEL)arg3 ofProtocol:(id)arg4;
 - (void).cxx_destruct;
@@ -77,6 +78,7 @@
 - (void)_addChildModifier:(id)arg1 atLevel:(long long)arg2 key:(id)arg3 queryResponse:(unsigned long long)arg4 contextResponse:(unsigned long long)arg5;
 - (void)addChildModifier:(id)arg1 atLevel:(long long)arg2 key:(id)arg3;
 - (void)addChildModifier:(id)arg1;
+- (id)debugPotentialChildModifiers;
 - (void)enumerateChildModifiersWithBlock:(CDUnknownBlockType)arg1;
 - (_Bool)containsChildModifier:(id)arg1;
 - (unsigned long long)childModifierCount;

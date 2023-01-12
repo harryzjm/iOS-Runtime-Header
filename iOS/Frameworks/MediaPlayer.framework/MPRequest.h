@@ -6,14 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlayer/MPRequestCancellationToken-Protocol.h>
 #import <MediaPlayer/NSCopying-Protocol.h>
-#import <MediaPlayer/_MPStateDumpPropertyListTransformable-Protocol.h>
+#import <MediaPlayer/NSObject-Protocol.h>
 
 @class NSArray, NSError, NSOperationQueue, NSString;
 @protocol OS_dispatch_queue;
 
-@interface MPRequest : NSObject <MPRequestCancellationToken, _MPStateDumpPropertyListTransformable, NSCopying>
+@interface MPRequest : NSObject <NSCopying, NSObject>
 {
     NSString *_label;
     long long _qualityOfService;

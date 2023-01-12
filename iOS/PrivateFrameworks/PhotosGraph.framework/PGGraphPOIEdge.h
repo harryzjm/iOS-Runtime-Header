@@ -11,18 +11,20 @@
     float _weight;
 }
 
++ (id)propertiesWithPOIIsImproved:(_Bool)arg1;
++ (id)filterSpecial;
++ (id)filterImproved;
 + (id)filter;
 @property(readonly, nonatomic) _Bool poiIsSpecial; // @synthesize poiIsSpecial=_poiIsSpecial;
-@property(nonatomic) _Bool poiIsImproved; // @synthesize poiIsImproved=_poiIsImproved;
-@property(nonatomic) float weight; // @synthesize weight=_weight;
+@property(readonly, nonatomic) _Bool poiIsImproved; // @synthesize poiIsImproved=_poiIsImproved;
+- (float)weight;
 - (unsigned short)domain;
 - (id)label;
 - (id)edgeDescription;
 - (id)propertyDictionary;
 - (_Bool)hasProperties:(id)arg1;
-- (void)setLocalProperties:(id)arg1;
-- (id)initWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5;
-- (id)initFromMomentNode:(id)arg1 toPOINode:(id)arg2 weight:(float)arg3;
+- (id)initWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5 properties:(id)arg6;
+- (id)initFromMomentNode:(id)arg1 toPOINode:(id)arg2 weight:(float)arg3 poiIsImproved:(_Bool)arg4 poiIsSpecial:(_Bool)arg5;
 
 @end
 

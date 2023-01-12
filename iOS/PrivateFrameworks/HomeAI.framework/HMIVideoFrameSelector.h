@@ -19,19 +19,22 @@
     CDStruct_1b6d18a9 _expirationInterval;
     struct opaqueCMSampleBuffer *_reference;
     id <HMIVideoFrameSelectorDelegate> _delegate;
+    unsigned long long _maxCandidates;
 }
 
 + (id)logCategory;
 - (void).cxx_destruct;
+@property(readonly) unsigned long long maxCandidates; // @synthesize maxCandidates=_maxCandidates;
 @property __weak id <HMIVideoFrameSelectorDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)setSampleRate:(double)arg1;
 - (void)dealloc;
 - (void)flush;
 - (void)_drainCandidatesThatExpiredBefore:(CDStruct_1b6d18a9)arg1;
 - (void)_handleReference:(struct opaqueCMSampleBuffer *)arg1 target:(struct opaqueCMSampleBuffer *)arg2;
+- (void)_synthesizeMotionDetectionWithTarget:(struct opaqueCMSampleBuffer *)arg1;
 - (void)_ensureDetectorForPixelBuffer:(struct __CVBuffer *)arg1;
 - (void)handleSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
-- (id)init;
+- (id)initWithConfiguration:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -8,22 +8,22 @@
 
 @interface TSCH3DRayPickRenderProcessor
 {
-    TSCH3DDataBuffer *mBuffer;
-    NSMutableArray *mPickedPoints;
-    tvec2_84d5962d mPosition;
-    float mSlack;
-    TSCH3DRayPickPipelineDelegate *mSceneObjectDelegate;
+    TSCH3DDataBuffer *_buffer;
+    NSMutableArray *_pickedPoints;
+    tvec2_84d5962d _position;
+    float _slack;
+    TSCH3DRayPickPipelineDelegate *_sceneObjectDelegate;
 }
 
 - (id).cxx_construct;
-@property(retain, nonatomic) TSCH3DRayPickPipelineDelegate *sceneObjectDelegate; // @synthesize sceneObjectDelegate=mSceneObjectDelegate;
-@property(nonatomic) float slack; // @synthesize slack=mSlack;
-@property(nonatomic) tvec2_84d5962d position; // @synthesize position=mPosition;
+- (void).cxx_destruct;
+@property(retain, nonatomic) TSCH3DRayPickPipelineDelegate *sceneObjectDelegate; // @synthesize sceneObjectDelegate=_sceneObjectDelegate;
+@property(nonatomic) float slack; // @synthesize slack=_slack;
+@property(nonatomic) tvec2_84d5962d position; // @synthesize position=_position;
 @property(readonly, nonatomic) NSArray *pickedPoints;
 - (void)submit:(id)arg1;
 - (void)geometry:(id)arg1;
 - (id)matrix;
-- (void)dealloc;
 - (id)init;
 
 @end

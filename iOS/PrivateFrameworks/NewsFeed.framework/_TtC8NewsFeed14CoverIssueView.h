@@ -14,10 +14,14 @@
     MISSING_TYPE *followButton;
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *issueCoverView;
+    MISSING_TYPE *secondaryIssueCoverView;
     MISSING_TYPE *accessoryLabel;
     MISSING_TYPE *downloadProgressBar;
     MISSING_TYPE *cloudIcon;
+    MISSING_TYPE *selectionImageView;
+    MISSING_TYPE *onEditSelection;
     MISSING_TYPE *debugButton;
+    MISSING_TYPE *isEditSelected;
     MISSING_TYPE *downloadButtonDataProvider;
     MISSING_TYPE *downloadStateDisposable;
     MISSING_TYPE *downloadProgressDisposable;

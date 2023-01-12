@@ -10,13 +10,13 @@
 
 @interface GEOAlmanac : NSObject
 {
+    CDStruct_2c43369c _location;
+    double _altitude;
     GEOAlmanacRiseTransitSet *_previousRiseTransitSet;
     GEOAlmanacRiseTransitSet *_currentRiseTransitSet;
     GEOAlmanacRiseTransitSet *_nextRiseTransitSet;
-    struct set<CAARiseTransitSetDetails2, _CAARiseTransitSetDetails2IsLessThan, std::__1::allocator<CAARiseTransitSetDetails2>> _riseTransitSetEvents;
 }
 
-- (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)description;
 - (_Bool)isDayLightForDate:(id)arg1;

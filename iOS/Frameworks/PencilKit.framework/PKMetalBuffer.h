@@ -19,11 +19,9 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) id <MTLBuffer> metalBuffer; // @synthesize metalBuffer=_metalBuffer;
 - (_Bool)isPurged;
 - (void)unlock;
 - (_Bool)lock;
-- (id)initWithDevice:(id)arg1 length:(unsigned long long)arg2 bytes:(const void *)arg3 options:(unsigned long long)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

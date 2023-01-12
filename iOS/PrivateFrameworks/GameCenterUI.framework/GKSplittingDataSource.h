@@ -12,6 +12,7 @@
     NSMutableDictionary *_sectionToSectionInfo;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *sectionToSectionInfo; // @synthesize sectionToSectionInfo=_sectionToSectionInfo;
 @property(retain, nonatomic) GKBasicCollectionViewDataSource *underlyingDataSource; // @synthesize underlyingDataSource=_underlyingDataSource;
 - (id)indexPathsForItem:(id)arg1;
@@ -36,7 +37,6 @@
 - (void)configureDataSource;
 @property(readonly, nonatomic) long long sectionCount;
 - (id)_gkDescriptionWithChildren:(long long)arg1;
-- (void)dealloc;
 - (id)init;
 
 @end

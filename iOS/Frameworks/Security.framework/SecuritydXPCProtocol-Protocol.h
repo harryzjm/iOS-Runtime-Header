@@ -10,6 +10,7 @@
 @protocol SecuritydXPCCallbackProtocol;
 
 @protocol SecuritydXPCProtocol <NSObject>
+- (void)secItemPersistKeychainWritesAtHighPerformanceCost:(void (^)(int, NSError *))arg1;
 - (void)secItemDeleteForAppClipApplicationIdentifier:(NSString *)arg1 completion:(void (^)(int))arg2;
 - (void)secItemVerifyBackupIntegrity:(_Bool)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)secKeychainDeleteMultiuser:(NSData *)arg1 complete:(void (^)(_Bool, NSError *))arg2;

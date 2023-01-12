@@ -24,12 +24,12 @@
 @property(readonly, nonatomic) struct CGSize size;
 @property(readonly, nonatomic) double timeOffset;
 @property(readonly, nonatomic) struct CGPoint location;
-- (struct PKStrokePathPointsPrivate *)_strokeDataPointsPrivate;
+- (void *)_strokeDataPointsPrivate;
 - (struct PKCompressedStrokePoint)_compressedPoint;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithSlice:(struct PKStrokePathPointsPrivate *)arg1 index:(long long)arg2;
+- (id)initWithSlice:(void *)arg1 index:(long long)arg2;
 - (id)initWithLocation:(struct CGPoint)arg1 timeOffset:(double)arg2 size:(struct CGSize)arg3 opacity:(double)arg4 force:(double)arg5 azimuth:(double)arg6 altitude:(double)arg7;
 
 @end

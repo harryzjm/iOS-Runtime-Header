@@ -6,14 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <SpringBoard/BKSTerminationAssertionObserver-Protocol.h>
 #import <SpringBoard/SBApplicationLifecycleObserver-Protocol.h>
 #import <SpringBoard/SBApplicationRestrictionDataSource-Protocol.h>
 #import <SpringBoard/XBApplicationProviding-Protocol.h>
 
-@class FBSApplicationLibrary, NSMutableDictionary, NSSet, NSString, SBApplicationInfo, SBApplicationLibraryObserver, SBApplicationRestrictionController, SBReverseCountedSemaphore, SBSplashBoardController;
+@class FBSApplicationLibrary, NSMutableDictionary, NSSet, NSString, RBSProcessMonitor, SBApplicationInfo, SBApplicationLibraryObserver, SBApplicationRestrictionController, SBReverseCountedSemaphore, SBSplashBoardController;
 
-@interface SBApplicationController : NSObject <SBApplicationRestrictionDataSource, BKSTerminationAssertionObserver, XBApplicationProviding, SBApplicationLifecycleObserver>
+@interface SBApplicationController : NSObject <SBApplicationRestrictionDataSource, XBApplicationProviding, SBApplicationLifecycleObserver>
 {
     NSMutableDictionary *_applicationsByBundleIdentifer;
     struct os_unfair_lock_s _applicationsLock;
@@ -25,6 +24,8 @@
     SBApplicationInfo *_systemAppInfo;
     SBSplashBoardController *_splashBoardController;
     SBReverseCountedSemaphore *_uninstallationReverseSemaphore;
+    NSSet *_preventLaunchBundleIDs;
+    RBSProcessMonitor *_processMonitor;
 }
 
 + (void)_setClearAllLegacySnapshotsWhenLoaded:(_Bool)arg1;
@@ -33,7 +34,6 @@
 + (id)sharedInstance;
 + (id)_sharedInstanceCreateIfNecessary:(_Bool)arg1;
 - (void).cxx_destruct;
-- (void)noteTerminationAssertionEfficacyChangedTo:(unsigned long long)arg1 forBundleIdentifier:(id)arg2;
 - (id)bundleIdentifiersWithVisibilityOverrideHidden;
 - (void)applicationRestrictionsMayHaveChanged;
 - (void)applicationVisibilityMayHaveChanged;
@@ -58,12 +58,12 @@
 - (id)_appLibraryObserver;
 - (id)_appLibrary;
 - (id)_splashBoardController;
+- (id)recentlyUsedBundleIDs;
 - (id)_allApplicationsFilteredBySystem:(_Bool)arg1;
 - (id)allInstalledApplications;
 - (id)splashBoardSystemApplications;
 - (id)allSplashBoardApplications;
 - (id)restrictionController;
-- (id)spotlightApplication;
 - (id)notesApplication;
 - (id)testFlightApplication;
 - (id)loginApplication;

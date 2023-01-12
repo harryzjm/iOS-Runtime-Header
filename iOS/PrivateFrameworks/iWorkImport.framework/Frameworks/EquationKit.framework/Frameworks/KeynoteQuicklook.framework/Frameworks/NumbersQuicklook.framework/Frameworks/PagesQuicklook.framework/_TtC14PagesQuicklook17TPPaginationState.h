@@ -48,6 +48,7 @@
 @property(nonatomic, readonly) TPSectionHint *sectionHint;
 @property(nonatomic, readonly) TPSection *section;
 @property(nonatomic, readonly) unsigned long long lastLaidOutDocumentPageIndex;
+@property(nonatomic, readonly) unsigned long long pageHintCount;
 @property(nonatomic) unsigned long long pageIndex;
 @property(nonatomic) unsigned long long sectionIndex;
 @property(nonatomic, copy) NSArray *sectionHints;

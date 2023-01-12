@@ -12,6 +12,10 @@
 }
 
 - (void).cxx_destruct;
+- (id)cachePath:(id *)arg1;
+- (id)topicCacheSandboxExtensionToken:(id *)arg1;
+- (_Bool)computeAndCacheTopicScores:(id *)arg1;
+- (void)registerUniversalSearchSpotlightFeedback:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setClientIdentifier:(id)arg1;
 - (id)clientIdentifier;
 - (void)registerFeedback:(id)arg1 completion:(CDUnknownBlockType)arg2;

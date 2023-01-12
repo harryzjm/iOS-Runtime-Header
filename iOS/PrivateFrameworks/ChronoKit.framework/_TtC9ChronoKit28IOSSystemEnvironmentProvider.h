@@ -8,7 +8,8 @@
 
 @interface _TtC9ChronoKit28IOSSystemEnvironmentProvider
 {
-    MISSING_TYPE *notificationSubscriptions;
+    MISSING_TYPE *keybagStateProvider;
+    MISSING_TYPE *subscriptions;
     MISSING_TYPE *colorSchemeObserver;
 }
 

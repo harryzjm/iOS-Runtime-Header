@@ -6,11 +6,11 @@
 
 #import <HealthUI/NSObject-Protocol.h>
 
-@class HKDisplayType, HKDisplayTypeContextItem, HKInteractiveChartViewController, HKSampleType, NSDateInterval;
+@class HKDisplayType, HKDisplayTypeContextItem, HKInteractiveChartOverlayViewController, HKInteractiveChartViewController, HKSampleType, NSDateInterval;
 
 @protocol HKOverlayContext <NSObject>
 - (HKDisplayTypeContextItem *)contextItemForLastUpdate;
-- (void)updateContextItemForDateInterval:(NSDateInterval *)arg1 timeScope:(long long)arg2 completion:(void (^)(_Bool, NSError *))arg3;
+- (void)updateContextItemForDateInterval:(NSDateInterval *)arg1 overlayController:(HKInteractiveChartOverlayViewController *)arg2 timeScope:(long long)arg3 completion:(void (^)(_Bool, NSError *))arg4;
 - (HKDisplayType *)overlayDisplayTypeForTimeScope:(long long)arg1;
 - (HKSampleType *)sampleTypeForDateRangeUpdates;
 
@@ -20,5 +20,6 @@
 - (void)invalidateContextItem;
 - (void)overlayStateDidChange:(_Bool)arg1 contextItem:(HKDisplayTypeContextItem *)arg2 chartController:(HKInteractiveChartViewController *)arg3;
 - (void)overlayStateWillChange:(_Bool)arg1 contextItem:(HKDisplayTypeContextItem *)arg2 chartController:(HKInteractiveChartViewController *)arg3;
+- (_Bool)canSelectOverlayContextItem:(HKDisplayTypeContextItem *)arg1 isDeselecting:(_Bool)arg2 timeScope:(long long)arg3 chartController:(HKInteractiveChartViewController *)arg4;
 @end
 

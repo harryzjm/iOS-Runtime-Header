@@ -8,6 +8,7 @@
 
 @class ICRadioPlaybackHistory, ICRadioPlaybackHistoryStore, ICStoreRequestContext, MPCModelGenericAVItemUserIdentityPropertySet, MPModelRadioStation, MPSectionedCollection, _MPCModelRadioPlaybackQueueStationTracksCollection;
 
+__attribute__((visibility("hidden")))
 @interface MPCModelRadioPlaybackQueue : NSObject
 {
     ICRadioPlaybackHistoryStore *_playbackHistoryStore;

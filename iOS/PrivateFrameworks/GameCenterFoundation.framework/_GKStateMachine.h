@@ -28,7 +28,6 @@
 - (_Bool)_setCurrentState:(id)arg1;
 @property(retain) NSString *currentState; // @synthesize currentState=_currentState;
 - (_Bool)applyState:(id)arg1;
-- (void)dealloc;
 - (id)init;
 
 @end

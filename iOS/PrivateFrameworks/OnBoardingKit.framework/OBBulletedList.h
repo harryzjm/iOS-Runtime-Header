@@ -30,6 +30,7 @@
 - (void)addBulletedListItem:(id)arg1;
 - (void)addItemWithDescription:(id)arg1 image:(id)arg2;
 - (void)addItemWithTitle:(id)arg1 description:(id)arg2 image:(id)arg3;
+- (void)addItemWithTitle:(id)arg1 description:(id)arg2 image:(id)arg3 tintColor:(id)arg4;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

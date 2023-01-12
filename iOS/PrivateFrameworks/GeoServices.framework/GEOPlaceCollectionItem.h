@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEOMapItemIdentifier, GEOPDPlaceCollectionItem, NSArray, NSString, NSURL;
+@class GEOMapItemIdentifier, GEOPDPlaceCollectionItem, GEOQuickLink, NSArray, NSString, NSURL;
 
 @interface GEOPlaceCollectionItem : NSObject
 {
@@ -14,10 +14,14 @@
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool disableAppClipFallback;
+@property(readonly, nonatomic) GEOQuickLink *appClip;
+@property(readonly, nonatomic) NSString *reviewText;
 @property(readonly, nonatomic) NSURL *reviewUrl;
 @property(readonly, nonatomic) _Bool supportsPhotoFallback;
 @property(readonly, nonatomic) NSArray *photos;
 @property(readonly, nonatomic) GEOMapItemIdentifier *itemIdentifier;
+@property(readonly, nonatomic) NSString *itemHTMLDescription;
 @property(readonly, nonatomic) NSString *itemDescription;
 - (id)description;
 - (id)initWithPlaceCollectionItem:(id)arg1;

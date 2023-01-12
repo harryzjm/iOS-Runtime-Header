@@ -7,6 +7,10 @@
 @class NSURL;
 
 @protocol BRDiskCheckerServiceProtocol
-- (void)checkRecursiveChildItemCountFromURL:(NSURL *)arg1 withReply:(void (^)(NSNumber *, NSError *))arg2;
+- (oneway void)cancelTreeConsistencyCheck;
+- (void)resumeTreeConsistencyCheckWithReply:(void (^)(NSError *))arg1;
+- (oneway void)pauseTreeConsistencyCheck;
+- (void)checkTreeConsistencyWithDatabaseURL:(NSURL *)arg1 snapshotMountURL:(NSURL *)arg2 fileChecksumRatePerThousand:(unsigned int)arg3 packageChecksumRatePerThousand:(unsigned int)arg4 maxEventsCount:(unsigned int)arg5 reply:(void (^)(NSArray *, NSArray *, NSError *))arg6;
+- (void)checkRecursiveChildItemCountFromURL:(NSURL *)arg1 qualityOfService:(long long)arg2 reply:(void (^)(NSNumber *, NSError *))arg3;
 @end
 

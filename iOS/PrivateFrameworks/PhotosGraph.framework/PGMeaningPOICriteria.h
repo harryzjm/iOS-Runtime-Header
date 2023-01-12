@@ -27,10 +27,11 @@
 @property(nonatomic) unsigned long long minimumNumberOfPOIs; // @synthesize minimumNumberOfPOIs=_minimumNumberOfPOIs;
 @property(retain, nonatomic) NSArray *negativePOIs; // @synthesize negativePOIs=_negativePOIs;
 @property(retain, nonatomic) NSArray *positivePOIs; // @synthesize positivePOIs=_positivePOIs;
-- (_Bool)_parkIsLargerThanMaximumDiameterForMomentNode:(id)arg1;
+- (_Bool)_parkIsLargerThanMaximumDiameterWithAreaNodes:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (_Bool)isValid;
-- (_Bool)passesForMomentNode:(id)arg1;
+- (_Bool)passesForAssets:(id)arg1;
+- (_Bool)passesForMomentNode:(id)arg1 momentNodeCache:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

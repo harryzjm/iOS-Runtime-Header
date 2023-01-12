@@ -42,6 +42,7 @@
 - (void)willDismissFormSheetView;
 - (void)didDismissPopupView;
 - (void)willDismissPopupView;
+- (void)logSettingsPath;
 - (id)aggregateDictionaryPath;
 - (id)rootController;
 - (void)setRootController:(id)arg1;

@@ -8,6 +8,7 @@
 
 @class MPNowPlayingContentItem, NSDate, NSString, UIImage;
 
+__attribute__((visibility("hidden")))
 @interface _MPCPlaybackSessionArchive : MSVSegmentedCodingPackage
 {
     MPNowPlayingContentItem *_contentItem;

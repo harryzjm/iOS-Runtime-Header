@@ -16,6 +16,7 @@
 
 @interface AVTAvatarActionsViewController : UIViewController <AVTAvatarActionsControllerDelegate, UINavigationControllerDelegate, AVTToolBarDelegate, AVTUIControllerPresentationDelegate>
 {
+    _Bool _shouldHideUserInfoView;
     _Bool _isAnimating;
     _Bool _allowFacetracking;
     id <AVTAvatarActionsViewControllerDelegate> _delegate;
@@ -47,6 +48,7 @@
 @property(retain, nonatomic) AVTToolBar *toolbar; // @synthesize toolbar=_toolbar;
 @property(retain, nonatomic) AVTImageTransitioningContainerView *avatarContainer; // @synthesize avatarContainer=_avatarContainer;
 @property(retain, nonatomic) UIStackView *buttonsView; // @synthesize buttonsView=_buttonsView;
+@property(nonatomic) _Bool shouldHideUserInfoView; // @synthesize shouldHideUserInfoView=_shouldHideUserInfoView;
 @property(retain, nonatomic) id <AVTAvatarActionsViewControllerLayout> currentLayout; // @synthesize currentLayout=_currentLayout;
 @property(nonatomic) __weak id <AVTAvatarActionsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)controllerPresentationWillObstructView:(id)arg1;

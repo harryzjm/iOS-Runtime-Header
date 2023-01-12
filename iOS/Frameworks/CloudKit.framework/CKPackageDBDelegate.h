@@ -8,7 +8,6 @@
 
 #import <CloudKit/CKSQLiteDelegate-Protocol.h>
 
-__attribute__((visibility("hidden")))
 @interface CKPackageDBDelegate : NSObject <CKSQLiteDelegate>
 {
 }

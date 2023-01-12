@@ -16,6 +16,7 @@
 - (void)dataStream:(id <HMDDataStreamProtocolDelegate>)arg1 didReceiveEvent:(NSString *)arg2 header:(NSDictionary *)arg3 payload:(NSDictionary *)arg4;
 - (void)dataStream:(id <HMDDataStreamProtocolDelegate>)arg1 didFailWithError:(NSError *)arg2;
 - (void)dataStreamDidClose:(id <HMDDataStreamProtocolDelegate>)arg1;
+- (void)dataStreamInitiatedClose:(id <HMDDataStreamProtocolDelegate>)arg1;
 - (void)dataStreamDidOpen:(id <HMDDataStreamProtocolDelegate>)arg1;
 @end
 

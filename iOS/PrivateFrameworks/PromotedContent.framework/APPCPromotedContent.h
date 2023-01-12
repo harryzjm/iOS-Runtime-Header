@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class MISSING_TYPE, NSArray, NSDate, NSDictionary, NSError, NSString, NSURL, NSUUID;
-@protocol APPCDiagnosticMetricsHelping, APPCJourneyMetricsHelping, APPCMediaMetricsHelping, APPCPromotableContentRepresentation, APPCPromotableContext;
+@class APInstallAttribution, MISSING_TYPE, NSArray, NSDate, NSDictionary, NSError, NSString, NSURL, NSUUID;
+@protocol APPCCarouselMetricsHelping><APPCJourneyMetricsHelping, APPCDiagnosticMetricsHelping, APPCMediaMetricsHelping, APPCPromotableContentRepresentation, APPCPromotableContext;
 
 @interface APPCPromotedContent : NSObject
 {
-    MISSING_TYPE *metricsHelper;
     MISSING_TYPE *diagnosticMetricHelper;
+    MISSING_TYPE *metricsHelper;
     MISSING_TYPE *identifier;
     MISSING_TYPE *journeyIdentifier;
     MISSING_TYPE *context;
@@ -23,6 +23,7 @@
     MISSING_TYPE *brandName;
     MISSING_TYPE *campaignText;
     MISSING_TYPE *representations;
+    MISSING_TYPE *installAttribution;
     MISSING_TYPE *bestRepresentation;
     MISSING_TYPE *error;
     MISSING_TYPE *placeholder;
@@ -30,16 +31,19 @@
     MISSING_TYPE *serverUnfilledReason;
     MISSING_TYPE *mediaMetricHelper;
     MISSING_TYPE *attachedToView;
+    MISSING_TYPE *vended;
     MISSING_TYPE *discarded;
     MISSING_TYPE *consumed;
     MISSING_TYPE *unfilledReasonDelegate;
     MISSING_TYPE *overriddenAdType;
     MISSING_TYPE *discardReason;
     MISSING_TYPE *primitiveCreator;
+    MISSING_TYPE *placement;
 }
 
 - (void).cxx_destruct;
 - (id)init;
+- (void)replaceMetricsHelperWithNewMetricsHelper:(id)arg1;
 @property(nonatomic, readonly) NSDictionary *transparencyDetailsDictionary;
 @property(nonatomic, readonly) _Bool available;
 @property(nonatomic, readonly) NSUUID *contextIdentifier;
@@ -48,6 +52,7 @@
 @property(nonatomic, readonly) _Bool isOutstreamVideoAd;
 @property(nonatomic) _Bool consumed; // @synthesize consumed;
 @property(nonatomic) _Bool discarded; // @synthesize discarded;
+@property(nonatomic) _Bool vended; // @synthesize vended;
 @property(nonatomic) _Bool attachedToView; // @synthesize attachedToView;
 @property(nonatomic, retain) id <APPCMediaMetricsHelping> mediaMetricHelper; // @synthesize mediaMetricHelper;
 @property(nonatomic) long long serverUnfilledReason; // @synthesize serverUnfilledReason;
@@ -55,6 +60,7 @@
 @property(nonatomic, readonly) _Bool placeholder; // @synthesize placeholder;
 @property(nonatomic, retain) NSError *error; // @synthesize error;
 @property(nonatomic, retain) id <APPCPromotableContentRepresentation> bestRepresentation; // @synthesize bestRepresentation;
+@property(nonatomic, retain) APInstallAttribution *installAttribution; // @synthesize installAttribution;
 @property(nonatomic, copy) NSArray *representations;
 @property(nonatomic, copy) NSString *campaignText;
 @property(nonatomic, copy) NSString *brandName;
@@ -65,8 +71,8 @@
 @property(nonatomic) __weak id <APPCPromotableContext> context; // @synthesize context;
 @property(nonatomic, copy) NSString *journeyIdentifier;
 @property(nonatomic, copy) NSString *identifier;
+@property(nonatomic, retain) id <APPCCarouselMetricsHelping><APPCJourneyMetricsHelping> metricsHelper; // @synthesize metricsHelper;
 @property(nonatomic, readonly) id <APPCDiagnosticMetricsHelping> diagnosticMetricHelper; // @synthesize diagnosticMetricHelper;
-@property(nonatomic, readonly) id <APPCJourneyMetricsHelping> metricsHelper; // @synthesize metricsHelper;
 
 @end
 

@@ -8,34 +8,39 @@
 
 #import <SettingsCellularUI/CoreTelephonyClientCapabilitiesDelegate-Protocol.h>
 
-@class CoreTelephonyClient, NSMutableDictionary, NSString;
+@class CTCapability, CoreTelephonyClient, Logger, NSString, PSSimStatusCache;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface PSUICoreTelephonyCapabilitiesCache : NSObject <CoreTelephonyClientCapabilitiesDelegate>
 {
     NSObject<OS_dispatch_queue> *_queue;
+    Logger *_logger;
     CoreTelephonyClient *_client;
-    NSMutableDictionary *_volteCapabilityDict;
-    NSMutableDictionary *_volteCapabilityInfoDict;
-    NSMutableDictionary *_volteEnabledDict;
+    PSSimStatusCache *_simStatusCache;
+    CTCapability *_volteCapability;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-@property(retain) NSMutableDictionary *volteEnabledDict; // @synthesize volteEnabledDict=_volteEnabledDict;
-@property(copy) NSMutableDictionary *volteCapabilityInfoDict; // @synthesize volteCapabilityInfoDict=_volteCapabilityInfoDict;
-@property(retain) NSMutableDictionary *volteCapabilityDict; // @synthesize volteCapabilityDict=_volteCapabilityDict;
+@property(retain) CTCapability *volteCapability; // @synthesize volteCapability=_volteCapability;
+@property(retain, nonatomic) PSSimStatusCache *simStatusCache; // @synthesize simStatusCache=_simStatusCache;
 @property(retain, nonatomic) CoreTelephonyClient *client; // @synthesize client=_client;
+- (id)getLogger;
+- (void)clearCache;
 - (void)context:(id)arg1 capabilitiesChanged:(id)arg2;
-- (_Bool)singleSimCanSetCapabilityVoLTE;
+- (_Bool)fetchDeviceAndPlan5GSupport:(id)arg1;
 - (void)setCapabilityVoLTE:(id)arg1 enabled:(_Bool)arg2;
 - (_Bool)capabilityEnabledVoLTE:(id)arg1;
-- (void)fetchCapabilityEnabledVoLTE;
 - (_Bool)isVoLTEStillProvisioningForContext:(id)arg1;
 - (_Bool)cannotChangeVoLTESettingCallCarrier:(id)arg1;
 - (_Bool)canSetCapabilityVoLTE:(id)arg1;
-- (void)fetchCanSetCapabilityVoLTE;
+- (void)setCapabilityEnabledForContext:(id)arg1 cache:(id)arg2 enabled:(_Bool)arg3;
+- (_Bool)capabilityEnabledForContext:(id)arg1 cache:(id)arg2;
+- (void)fetchCapabilityEnabledWithCache:(id)arg1;
+- (_Bool)getCapabilityInfo:(id)arg1 forContext:(id)arg2 cache:(id)arg3;
+- (_Bool)canSetCapabilityForContext:(id)arg1 cache:(id)arg2;
+- (void)fetchCanSetCapabilityWithCache:(id)arg1;
 - (void)willEnterForeground;
 - (id)init;
 - (id)initPrivate;

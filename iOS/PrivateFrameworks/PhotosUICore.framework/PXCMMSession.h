@@ -8,7 +8,7 @@
 
 #import <PhotosUICore/PXTapToRadar-Protocol.h>
 
-@class NSDictionary, NSSet, NSString, PXAssetsDataSourceManager, PXCMMActionManager, PXCMMPeopleSuggestionsDataSourceManager, PXCMMPeopleSuggestionsMediaProvider, PXCMMSendBackSuggestionSource, PXCMMViewModel, PXMomentShareStatus, PXUIMediaProvider;
+@class NSDictionary, NSSet, NSString, PXAssetsDataSourceManager, PXCMMActionManager, PXCMMSendBackSuggestionSource, PXCMMViewModel, PXMomentShareStatus, PXPeopleSuggestionsDataSourceManager, PXUIMediaProvider;
 @protocol PXAssetImportStatusManager;
 
 @interface PXCMMSession : NSObject <PXTapToRadar>
@@ -18,9 +18,8 @@
     _Bool _ppt_scrollComposeRecipientsView;
     PXAssetsDataSourceManager *_dataSourceManager;
     PXUIMediaProvider *_mediaProvider;
-    PXCMMPeopleSuggestionsDataSourceManager *_peopleSuggestionsPreviewDataSourceManager;
-    PXCMMPeopleSuggestionsDataSourceManager *_peopleSuggestionsDataSourceManager;
-    PXCMMPeopleSuggestionsMediaProvider *_peopleSuggestionsMediaProvider;
+    PXPeopleSuggestionsDataSourceManager *_peopleSuggestionsPreviewDataSourceManager;
+    PXPeopleSuggestionsDataSourceManager *_peopleSuggestionsDataSourceManager;
     PXCMMSendBackSuggestionSource *_sendBackSuggestionSource;
     PXCMMActionManager *_actionManager;
     unsigned long long _activityType;
@@ -46,9 +45,8 @@
 @property(readonly, nonatomic) unsigned long long activityType; // @synthesize activityType=_activityType;
 @property(readonly, nonatomic) PXCMMActionManager *actionManager; // @synthesize actionManager=_actionManager;
 @property(readonly, nonatomic) PXCMMSendBackSuggestionSource *sendBackSuggestionSource; // @synthesize sendBackSuggestionSource=_sendBackSuggestionSource;
-@property(readonly, nonatomic) PXCMMPeopleSuggestionsMediaProvider *peopleSuggestionsMediaProvider; // @synthesize peopleSuggestionsMediaProvider=_peopleSuggestionsMediaProvider;
-@property(readonly, nonatomic) PXCMMPeopleSuggestionsDataSourceManager *peopleSuggestionsDataSourceManager; // @synthesize peopleSuggestionsDataSourceManager=_peopleSuggestionsDataSourceManager;
-@property(readonly, nonatomic) PXCMMPeopleSuggestionsDataSourceManager *peopleSuggestionsPreviewDataSourceManager; // @synthesize peopleSuggestionsPreviewDataSourceManager=_peopleSuggestionsPreviewDataSourceManager;
+@property(readonly, nonatomic) PXPeopleSuggestionsDataSourceManager *peopleSuggestionsDataSourceManager; // @synthesize peopleSuggestionsDataSourceManager=_peopleSuggestionsDataSourceManager;
+@property(readonly, nonatomic) PXPeopleSuggestionsDataSourceManager *peopleSuggestionsPreviewDataSourceManager; // @synthesize peopleSuggestionsPreviewDataSourceManager=_peopleSuggestionsPreviewDataSourceManager;
 @property(readonly, nonatomic) PXUIMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property(readonly, nonatomic) PXAssetsDataSourceManager *dataSourceManager; // @synthesize dataSourceManager=_dataSourceManager;
 @property(readonly, nonatomic) id <PXAssetImportStatusManager> importStatusManager;

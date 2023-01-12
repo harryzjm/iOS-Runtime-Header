@@ -9,13 +9,14 @@
 #import <GeoServices/GEOCompanionCompatibility-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPBTransitRoutingIncidentMessage, GEOTransitEngineDebugData, GEOTransitRouteDisplayStrings, NSData, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
+@class GEOAdvisoriesInfo, GEOPBTransitRoutingIncidentMessage, GEOTransitEngineDebugData, GEOTransitRouteDisplayStrings, NSData, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOTransitSuggestedRoute : PBCodable <GEOCompanionCompatibility, NSCopying>
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _routeBadges;
+    GEOAdvisoriesInfo *_advisoriesInfo;
     GEOTransitRouteDisplayStrings *_displayStrings;
     GEOTransitEngineDebugData *_engineDebugData;
     NSData *_routeHandle;
@@ -42,6 +43,7 @@
         unsigned int has_supportsRouteUpdates:1;
         unsigned int read_unknownFields:1;
         unsigned int read_routeBadges:1;
+        unsigned int read_advisoriesInfo:1;
         unsigned int read_displayStrings:1;
         unsigned int read_engineDebugData:1;
         unsigned int read_routeHandle:1;
@@ -67,6 +69,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -108,6 +111,8 @@
 - (void)addRoutePlanningArtwork:(id)arg1;
 - (void)clearRoutePlanningArtworks;
 @property(retain, nonatomic) NSMutableArray *routePlanningArtworks;
+@property(retain, nonatomic) GEOAdvisoriesInfo *advisoriesInfo;
+@property(readonly, nonatomic) _Bool hasAdvisoriesInfo;
 @property(retain, nonatomic) GEOPBTransitRoutingIncidentMessage *transitIncidentMessage;
 @property(readonly, nonatomic) _Bool hasTransitIncidentMessage;
 @property(nonatomic) _Bool hasRank;

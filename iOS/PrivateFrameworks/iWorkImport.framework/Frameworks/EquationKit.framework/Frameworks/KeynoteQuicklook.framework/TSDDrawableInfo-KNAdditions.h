@@ -11,6 +11,7 @@
 @interface TSDDrawableInfo (KNAdditions)
 + (void)load;
 @property(readonly, nonatomic) _Bool remainsInDocumentWhenDeletedFromChildInfos;
+@property(readonly, nonatomic) _Bool canBeDefinedAsLiveVideoPlaceholder;
 @property(readonly, nonatomic) _Bool canBeDefinedAsMediaPlaceholder;
 @property(readonly, nonatomic) _Bool canBeDefinedAsTextPlaceholder;
 @property(readonly, nonatomic) _Bool isRightToLeft;

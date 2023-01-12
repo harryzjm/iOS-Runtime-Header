@@ -6,22 +6,26 @@
 
 #import <objc/NSObject.h>
 
-#import <AppPredictionClient/BMSourceStream-Protocol.h>
-#import <AppPredictionClient/BMStream-Protocol.h>
+@class BMStoreConfig, _PASLock;
 
-@class BMStoreStream, NSString;
-
-@interface ATXBiomeUIStream : NSObject <BMStream, BMSourceStream>
+@interface ATXBiomeUIStream : NSObject
 {
-    BMStoreStream *_inner;
+    BMStoreConfig *_storeConfig;
+    _PASLock *_lock;
 }
 
 - (void).cxx_destruct;
-- (id)source;
+- (id)_innerStreamForConsumerSubType:(unsigned char)arg1;
+- (id)_validUIStreamConsumerSubTypes;
+- (id)_innerStreamForStreamId:(id)arg1;
+- (id)_streamIdForConsumerSubType:(unsigned char)arg1;
+- (void)donateUIEvent:(id)arg1;
+- (id)deprecatedPublisherFromStartTime:(double)arg1;
+- (id)publisherFromStartTime:(double)arg1 consumerSubType:(unsigned char)arg2;
 - (id)publisherFromStartTime:(double)arg1;
+- (id)streamIdentifiers;
 - (id)initWithStoreConfig:(id)arg1;
 - (id)init;
-@property(readonly, nonatomic) NSString *identifier;
 
 @end
 

@@ -14,6 +14,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)identifierWithStaticIdentifier:(id)arg1 JSONObject:(id)arg2 error:(id *)arg3;
 + (id)identifierDetectedInJSONObject:(id)arg1 error:(id *)arg2;
 + (id)resourceObjectWithJSONObject:(id)arg1 sourceURL:(id)arg2 FHIRVersion:(id)arg3 receivedDate:(id)arg4 extractionHints:(unsigned long long)arg5 error:(id *)arg6;
 + (id)resourceObjectWithJSONObject:(id)arg1 serverBaseURL:(id)arg2 FHIRVersion:(id)arg3 receivedDate:(id)arg4 error:(id *)arg5;

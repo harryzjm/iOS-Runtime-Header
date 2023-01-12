@@ -39,6 +39,8 @@
 - (unsigned long long)countOfAssetChanges;
 - (_Bool)hasRecordWithScopedIdentifier:(id)arg1;
 - (_Bool)deleteRecordsForScopeIndex:(long long)arg1 maxCount:(long long)arg2 deletedCount:(long long *)arg3 error:(id *)arg4;
+- (_Bool)shouldKeepDeleteChange:(id)arg1 forRecordWithScopedIdentifier:(id)arg2;
+- (id)cachedRecordWithScopedIdentifier:(id)arg1;
 - (unsigned long long)scopeType;
 - (id)initWithEngineStore:(id)arg1 name:(id)arg2;
 

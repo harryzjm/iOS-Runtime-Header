@@ -4,22 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIButton;
+@class UIAction, UIButton;
 
 @interface PKPaymentSetupBuiltInPrimaryAccountNumberFieldCell
 {
-    _Bool _showsCameraCaptureButton;
     UIButton *_cameraCaptureButton;
+    _Bool _showsCameraCaptureButton;
+    UIAction *_cameraCaptureTapAction;
 }
 
 - (void).cxx_destruct;
-@property(readonly, retain, nonatomic) UIButton *cameraCaptureButton; // @synthesize cameraCaptureButton=_cameraCaptureButton;
+@property(retain, nonatomic) UIAction *cameraCaptureTapAction; // @synthesize cameraCaptureTapAction=_cameraCaptureTapAction;
 @property(nonatomic) _Bool showsCameraCaptureButton; // @synthesize showsCameraCaptureButton=_showsCameraCaptureButton;
 - (_Bool)textFieldShouldClear:(id)arg1;
 - (_Bool)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (void)setEnabled:(_Bool)arg1;
 - (void)setPaymentSetupField:(id)arg1;
-- (void)dealloc;
 - (id)init;
 
 @end

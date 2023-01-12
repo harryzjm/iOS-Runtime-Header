@@ -13,7 +13,6 @@
 @class NSData, NSString;
 @protocol NSSecureCoding;
 
-__attribute__((visibility("hidden")))
 @interface CKDPCSData : NSObject <PQLValuable, NSSecureCoding, NSCopying>
 {
     struct _OpaquePCSShareProtection *_pcs;

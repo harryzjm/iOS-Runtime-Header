@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *hostView;
 }
 
++ (_Bool)_wantsViewBasedPositioning;
 - (void).cxx_destruct;
 @property(nonatomic, readonly) struct UIEdgeInsets safeAreaInsets;
 - (void)prepareForReuse;

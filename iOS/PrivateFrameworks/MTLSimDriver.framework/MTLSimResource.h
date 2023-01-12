@@ -29,12 +29,14 @@ __attribute__((visibility("hidden")))
     _Bool _isAliasable;
     int responsibleProcess;
     unsigned long long allocatedSize;
+    unsigned long long allocationID;
     unsigned long long protectionOptions;
 }
 
 @property int responsibleProcess; // @synthesize responsibleProcess;
 @property(readonly) unsigned long long protectionOptions; // @synthesize protectionOptions;
 @property(readonly) unsigned int serializerResourceRef; // @synthesize serializerResourceRef=_resourceRef;
+@property(readonly) unsigned long long allocationID; // @synthesize allocationID;
 @property(readonly) unsigned long long allocatedSize; // @synthesize allocatedSize;
 @property(readonly) unsigned long long cpuCacheMode; // @synthesize cpuCacheMode=_cpuCacheMode;
 @property(readonly) unsigned long long heapOffset;
@@ -61,7 +63,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithResourceRef:(unsigned int)arg1 options:(unsigned long long)arg2 device:(id)arg3 heap:(id)arg4;
 
 // Remaining properties
-@property(readonly) unsigned long long allocationID;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

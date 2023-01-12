@@ -30,9 +30,10 @@
 - (void)encodeWithCoder:(id)arg1;
 - (void)_buildOptionTypeMapping;
 - (void)_buildSlotToItemIdAndBundleIdMapping;
-- (_Bool)_canShareTemplate:(id)arg1 slot:(id)arg2;
+- (_Bool)canShareTemplate:(id)arg1 slot:(id)arg2;
 - (void)_buildSlotToSampleTemplateMapping;
 - (_Bool)_shouldIncludeMetadataForSlot:(id)arg1;
+- (unsigned long long)faceForSharingComplicationOptionsCount;
 @property(readonly, nonatomic) NTKFace *faceForSharing;
 - (id)sortedComplicationSharingOptions;
 - (id)slotToBundleIdMapping;

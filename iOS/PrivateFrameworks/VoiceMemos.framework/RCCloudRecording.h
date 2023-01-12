@@ -20,11 +20,11 @@
 + (id)favoritePredicate;
 + (id)musicMemoPredicate;
 + (id)watchOSPredicate;
++ (id)clearTransientFlagsBatchUpdateRequest;
 + (id)cacheDeletedOnWatchPredicate;
 + (id)playablePredicate;
 + (_Bool)setPurgeable:(_Bool)arg1 recordingURL:(id)arg2 error:(id *)arg3;
 + (_Bool)isRecordingPurgeable:(id)arg1;
-+ (void)initialize;
 + (id)searchableItemIdentifierForSavedRecordingURI:(id)arg1;
 + (id)savedRecordingURIForSearchableItemIdentifier:(id)arg1;
 - (void).cxx_destruct;
@@ -64,7 +64,7 @@
 @property(nonatomic) double duration; // @dynamic duration;
 @property(copy, nonatomic) NSDate *evictionDate; // @dynamic evictionDate;
 @property(copy, nonatomic) NSString *path; // @dynamic path;
-- (_Bool)synchronizeRecordingMetadata:(id *)arg1;
+- (void)synchronizeRecordingMetadata;
 - (_Bool)validateForUpdate:(id *)arg1;
 - (_Bool)validateForInsert:(id *)arg1;
 - (void)willSave;

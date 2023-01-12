@@ -6,25 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSOperationQueue;
+@class NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 @interface BUUserAccountMonitor : NSObject
 {
     struct os_unfair_lock_s _observersLock;
-    CDUnknownBlockType _notificationHandlerBlock;
     NSObject<OS_dispatch_queue> *_notifyQueue;
     NSMutableDictionary *_notifyBlocks;
     NSMutableDictionary *_observerHashTables;
     NSMutableDictionary *_accountIdentifiers;
-    NSMutableDictionary *_notificationTokens;
-    NSOperationQueue *_notificationHandlerQueue;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSOperationQueue *notificationHandlerQueue; // @synthesize notificationHandlerQueue=_notificationHandlerQueue;
-@property(retain, nonatomic) NSMutableDictionary *notificationTokens; // @synthesize notificationTokens=_notificationTokens;
 @property(retain, nonatomic) NSMutableDictionary *accountIdentifiers; // @synthesize accountIdentifiers=_accountIdentifiers;
 @property(retain, nonatomic) NSMutableDictionary *observerHashTables; // @synthesize observerHashTables=_observerHashTables;
 @property(retain, nonatomic) NSMutableDictionary *notifyBlocks; // @synthesize notifyBlocks=_notifyBlocks;
@@ -32,7 +27,16 @@
 - (unsigned long long)_singleAccountTypeForNotification:(id)arg1;
 - (void)nq_updateiCloudAccountIdentifierAndNotifyObservers;
 - (void)nq_updateiTunesAccountIdentifierAndNotifyObservers;
-@property(readonly, nonatomic) CDUnknownBlockType notificationHandlerBlock; // @synthesize notificationHandlerBlock=_notificationHandlerBlock;
+- (void)nq_updateAccountIdentifierAndNotifyObserversForAccountType:(unsigned long long)arg1;
+- (void)nq_teardownNotificationForAccountType:(unsigned long long)arg1;
+- (void)nq_setupNotificationForAccountType:(unsigned long long)arg1 currentAccountIdentifier:(id)arg2;
+- (void)_didReceiveNotification:(id)arg1;
+- (void)_unregisterNotificationForAccountType:(unsigned long long)arg1;
+- (void)_registerNotificationForAccountType:(unsigned long long)arg1;
+- (long long)_observerCountForAccountType:(unsigned long long)arg1;
+- (id)_observersForAccountType:(unsigned long long)arg1;
+- (long long)_removeObserver:(id)arg1 forAccountType:(unsigned long long)arg2;
+- (long long)_addObserver:(id)arg1 forAccountType:(unsigned long long)arg2;
 - (void)removeObserver:(id)arg1 accountTypes:(unsigned long long)arg2;
 - (void)addObserver:(id)arg1 accountTypes:(unsigned long long)arg2;
 - (id)init;

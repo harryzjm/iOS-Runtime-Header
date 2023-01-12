@@ -6,12 +6,13 @@
 
 #import <ControlCenterUIKit/CCUISliderModuleBackgroundViewController.h>
 
+#import <MediaControls/MRNowPlayingAudioFormatControllerDelegate-Protocol.h>
 #import <MediaControls/MediaControlsVolumeControllerObserver-Protocol.h>
 #import <MediaControls/UIGestureRecognizerDelegate-Protocol.h>
 
-@class MediaControlsBluetoothListeningModeButton, MediaControlsExpandableButton, MediaControlsRouteView, MediaControlsVolumeController, NSString, NSTimer;
+@class MRNowPlayingAudioFormatController, MRUVolumeNowPlayingView, MediaControlsBluetoothListeningModeButton, MediaControlsExpandableButton, MediaControlsRouteView, MediaControlsVolumeController, NSString, NSTimer;
 
-@interface MediaControlsVolumeBackgroundViewController : CCUISliderModuleBackgroundViewController <UIGestureRecognizerDelegate, MediaControlsVolumeControllerObserver>
+@interface MediaControlsVolumeBackgroundViewController : CCUISliderModuleBackgroundViewController <UIGestureRecognizerDelegate, MediaControlsVolumeControllerObserver, MRNowPlayingAudioFormatControllerDelegate>
 {
     MediaControlsVolumeController *_volumeController;
     MediaControlsRouteView *_primaryRouteView;
@@ -19,6 +20,8 @@
     MediaControlsBluetoothListeningModeButton *_primaryBluetoothListeningModeButton;
     MediaControlsBluetoothListeningModeButton *_secondaryBluetoothListeningModeButton;
     MediaControlsExpandableButton *_spatialExpandableButton;
+    MRNowPlayingAudioFormatController *_audioFormatController;
+    MRUVolumeNowPlayingView *_nowPlayingView;
     NSTimer *_primaryUpdateTimer;
     NSTimer *_secondaryUpdateTimer;
 }
@@ -26,6 +29,8 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSTimer *secondaryUpdateTimer; // @synthesize secondaryUpdateTimer=_secondaryUpdateTimer;
 @property(retain, nonatomic) NSTimer *primaryUpdateTimer; // @synthesize primaryUpdateTimer=_primaryUpdateTimer;
+@property(retain, nonatomic) MRUVolumeNowPlayingView *nowPlayingView; // @synthesize nowPlayingView=_nowPlayingView;
+@property(retain, nonatomic) MRNowPlayingAudioFormatController *audioFormatController; // @synthesize audioFormatController=_audioFormatController;
 @property(retain, nonatomic) MediaControlsExpandableButton *spatialExpandableButton; // @synthesize spatialExpandableButton=_spatialExpandableButton;
 @property(retain, nonatomic) MediaControlsBluetoothListeningModeButton *secondaryBluetoothListeningModeButton; // @synthesize secondaryBluetoothListeningModeButton=_secondaryBluetoothListeningModeButton;
 @property(retain, nonatomic) MediaControlsBluetoothListeningModeButton *primaryBluetoothListeningModeButton; // @synthesize primaryBluetoothListeningModeButton=_primaryBluetoothListeningModeButton;
@@ -34,8 +39,11 @@
 @property(retain, nonatomic) MediaControlsVolumeController *volumeController; // @synthesize volumeController=_volumeController;
 - (void)_springAnimate:(CDUnknownBlockType)arg1;
 - (void)_performLayoutWithAnimation:(CDUnknownBlockType)arg1;
+- (void)updateNowPlayingAudioFormat;
+- (void)updateNowPlayingIcon;
 - (void)_updateVisibility;
 - (void)_updateButtonAxis;
+- (id)listeningModeErrorMessageForOutputDevice:(id)arg1;
 - (void)_updateButton:(id)arg1 routeType:(long long)arg2;
 - (void)_configureOptionsButton:(id)arg1 forRouteType:(long long)arg2;
 - (void)_configureSecondaryOptionsButtonIfNeeded;
@@ -48,11 +56,13 @@
 - (void)didTapSecondaryBluetoothListeningModeButton:(id)arg1;
 - (void)primaryBluetoothListeningModeButtonDidChangeValue:(id)arg1;
 - (void)didTapPrimaryBluetoothListeningModeButton:(id)arg1;
-- (void)_configureSpacialButtonIfNeeded;
-- (void)spatialExpandableButtonDidChangeValue:(id)arg1;
-- (void)mediaControlsVolumeController:(id)arg1 didChangeHeadTrackedSpatialAudioEnabled:(_Bool)arg2;
+- (void)updateSpatialAudioModeButton;
+- (void)spatialAudioButtonDidChangeValue:(id)arg1;
+- (void)nowPlayingAudioFormatController:(id)arg1 didChangeAudioFormatContentInfo:(id)arg2;
+- (void)nowPlayingAudioFormatController:(id)arg1 didChangeBundleID:(id)arg2 displayName:(id)arg3;
 - (void)mediaControlsVolumeController:(id)arg1 didChangeVolumeAvailable:(_Bool)arg2 effectiveVolume:(float)arg3 forRoute:(long long)arg4;
 - (void)mediaControlsVolumeController:(id)arg1 didUpdateSplitRoute:(_Bool)arg2;
+- (struct CGRect)effectiveContentFrameForContainerFrame:(struct CGRect)arg1;
 - (double)_horizontalPadding;
 - (double)_verticalPadding;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;

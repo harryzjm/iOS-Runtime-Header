@@ -19,6 +19,7 @@
     NSDictionary *_neutralMemojiPresetsIdentifierPerCategory;
     NSDictionary *_presetPickersDefinitions;
     NSDictionary *_colorPickersDefinitions;
+    NSDictionary *_multicolorPickersDefinitions;
 }
 
 + (id)localizedString:(id)arg1;
@@ -29,6 +30,7 @@
 + (id)dataFromAvatarKit;
 + (id)errorWithDescription:(id)arg1 underlyingError:(id)arg2;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSDictionary *multicolorPickersDefinitions; // @synthesize multicolorPickersDefinitions=_multicolorPickersDefinitions;
 @property(retain, nonatomic) NSDictionary *colorPickersDefinitions; // @synthesize colorPickersDefinitions=_colorPickersDefinitions;
 @property(retain, nonatomic) NSDictionary *presetPickersDefinitions; // @synthesize presetPickersDefinitions=_presetPickersDefinitions;
 @property(retain, nonatomic) NSDictionary *neutralMemojiPresetsIdentifierPerCategory; // @synthesize neutralMemojiPresetsIdentifierPerCategory=_neutralMemojiPresetsIdentifierPerCategory;
@@ -47,13 +49,19 @@
 - (id)coreModelPresetsForCategory:(long long)arg1;
 - (id)neutralMemojiPresetIdentifierForCategory:(long long)arg1;
 - (_Bool)validateForColorPicker:(id)arg1 colorPaletteCategory:(id)arg2 error:(id *)arg3;
+- (_Bool)validateForMulticolorPicker:(id)arg1 subpickers:(id)arg2 error:(id *)arg3;
 - (_Bool)validateForCategoryWithEnumValue:(id)arg1 pickers:(id)arg2;
+- (id)multicolorAuxiliaryPickerForDictionary:(id)arg1 error:(id *)arg2;
+- (id)localizedSubtitlesForSubtitles:(id)arg1 subpickerCount:(long long)arg2;
+- (id)coreModelMulticolorPickerForDictionary:(id)arg1 groupPickerCategory:(long long)arg2 defaultOptions:(id)arg3 parsedPickerKeys:(id)arg4 error:(id *)arg5;
 - (id)coreModelColorsRowForColorPickerDictionary:(id)arg1 settingDestination:(long long)arg2 inCategory:(long long)arg3 defaultOptions:(id)arg4;
 - (id)pairingFromDictionary:(id)arg1;
+- (id)coreModelCategoryFromCategoryDictionary:(id)arg1 parsedPickerKeys:(id)arg2;
 - (id)coreModelCategoryFromCategoryDictionary:(id)arg1;
 - (id)symbolNamesFromGroupDictionary:(id)arg1;
 - (id)coreModelGroupFromGroupDictionary:(id)arg1;
-- (id)parseCoreModelFromGroupsDefinitions:(id)arg1;
+- (id)parseCoreModelFromGroupsDefinitions:(id)arg1 colorDefaultsDefinitions:(id)arg2;
+- (void)initalizeColorCacheIfNeeded;
 - (id)decodePropertyListObjects:(id)arg1;
 - (void)parseWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithPlistData:(id)arg1 forPlatform:(unsigned long long)arg2 logger:(id)arg3;

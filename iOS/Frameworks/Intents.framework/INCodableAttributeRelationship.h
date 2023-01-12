@@ -40,16 +40,16 @@
 - (id)initWithCodableAttribute:(id)arg1;
 - (_Bool)compareValue:(id)arg1;
 - (id)__INCodableDescriptionParentNameKey;
-- (id)__INIntentResponseCodableDescriptionParentNameKey;
-- (id)__INTypeCodableDescriptionParentNameKey;
 - (id)__INCodableDescriptionPredicateNameKey;
-- (id)__INIntentResponseCodableDescriptionPredicateNameKey;
-- (id)__INTypeCodableDescriptionPredicateNameKey;
 - (id)__INCodableDescriptionPredicateValueKey;
-- (id)__INIntentResponseCodableDescriptionPredicateValueKey;
-- (id)__INTypeCodableDescriptionPredicateValueKey;
 - (id)__INCodableDescriptionPredicateValuesKey;
+- (id)__INIntentResponseCodableDescriptionParentNameKey;
+- (id)__INIntentResponseCodableDescriptionPredicateNameKey;
+- (id)__INIntentResponseCodableDescriptionPredicateValueKey;
 - (id)__INIntentResponseCodableDescriptionPredicateValuesKey;
+- (id)__INTypeCodableDescriptionParentNameKey;
+- (id)__INTypeCodableDescriptionPredicateNameKey;
+- (id)__INTypeCodableDescriptionPredicateValueKey;
 - (id)__INTypeCodableDescriptionPredicateValuesKey;
 
 // Remaining properties

@@ -47,6 +47,7 @@
 - (void)cardSectionViewWillAppearForCardSection:(id)arg1 withAppearanceFeedback:(id)arg2;
 - (void)userDidReportFeedback:(id)arg1 fromCardSection:(id)arg2;
 - (void)userDidEngageCardSection:(id)arg1 withEngagementFeedback:(id)arg2;
+- (void)cardSectionView:(id)arg1 willProcessEngagementFeedback:(id)arg2;
 - (void)cardSectionViewDidSelectPreferredPunchoutIndex:(long long)arg1;
 - (void)willDismissViewController:(id)arg1;
 - (void)presentViewController:(id)arg1;

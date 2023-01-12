@@ -9,27 +9,30 @@
 #import <HealthMenstrualCyclesDaemon/HDMCAnalysisManagerObserver-Protocol.h>
 #import <HealthMenstrualCyclesDaemon/HKMCSettingsManagerObserver-Protocol.h>
 
-@class HDMCAnalysisManager, HDProfile, HDRestorableAlarm, HKMCAnalysis, HKMCSettingsManager, NSString;
+@class HDKeyValueDomain, HDMCAnalysisManager, HDPrimaryProfile, HDRestorableAlarm, HKMCAnalysis, HKMCSettingsManager, NSDate, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HDMCNotificationManager : NSObject <HDMCAnalysisManagerObserver, HKMCSettingsManagerObserver>
 {
-    HDProfile *_profile;
+    HDPrimaryProfile *_profile;
     HDMCAnalysisManager *_analysisManager;
     HKMCSettingsManager *_settingsManager;
     NSObject<OS_dispatch_queue> *_queue;
-    _Bool _observingAnalysisUpdates;
+    HDKeyValueDomain *_keyValueDomain;
     HKMCAnalysis *_lastAnalysis;
+    NSDate *_currentDateOverride;
     HDRestorableAlarm *_scheduler;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) HDRestorableAlarm *scheduler; // @synthesize scheduler=_scheduler;
-- (void)_queue_removeAllScheduledNotifications;
+- (void)_queue_removeAllScheduledNotificationsIfNotEnabled;
 - (void)_queue_rescheduleNotificationsForAnalysis:(id)arg1;
 - (void)_queue_alarm:(id)arg1 didReceiveDueEvents:(id)arg2;
 - (void)settingsManagerDidUpdateNotificationSettings:(id)arg1;
 - (void)analysisManager:(id)arg1 didUpdateAnalysis:(id)arg2;
+- (id)_currentDate;
+- (void)_setCurrentDate:(id)arg1;
 - (id)scheduledNotificationsWithError:(id *)arg1;
 - (void)invalidate;
 - (void)start;

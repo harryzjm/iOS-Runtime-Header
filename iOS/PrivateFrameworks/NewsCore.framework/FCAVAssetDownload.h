@@ -20,13 +20,9 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSMutableArray *completionHandlers; // @synthesize completionHandlers=_completionHandlers;
-@property(readonly, nonatomic) id <FCOperationCanceling><FCOperationIdentifying> underlyingOperation; // @synthesize underlyingOperation=_underlyingOperation;
-@property(readonly, copy, nonatomic) NSString *assetID; // @synthesize assetID=_assetID;
-- (id)longOperationDescription;
-- (id)shortOperationDescription;
+@property(readonly, nonatomic) NSString *longOperationDescription;
+@property(readonly, nonatomic) NSString *shortOperationDescription;
 - (void)cancel;
-- (id)initWithAssetID:(id)arg1 underlyingOperation:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

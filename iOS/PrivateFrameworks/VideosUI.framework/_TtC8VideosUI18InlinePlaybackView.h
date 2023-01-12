@@ -4,25 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
-
-@class MISSING_TYPE;
+@class MISSING_TYPE, UIView;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI18InlinePlaybackView : UIView
+@interface _TtC8VideosUI18InlinePlaybackView
 {
     MISSING_TYPE *imageView;
     MISSING_TYPE *playbackView;
-    MISSING_TYPE *isPlaybackViewEnabled;
     MISSING_TYPE *cornerRadius;
     MISSING_TYPE *focusSizeIncrease;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic, readonly) UIView *accessibilityPlaybackView;
+@property(nonatomic, readonly) UIView *accessibilityImageView;
+- (struct CGSize)vui_layoutSubviews:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)layoutSubviews;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

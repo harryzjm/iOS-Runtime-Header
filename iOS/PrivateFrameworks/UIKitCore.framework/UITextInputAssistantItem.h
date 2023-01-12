@@ -36,6 +36,7 @@
 - (id)description;
 @property(readonly, nonatomic, getter=_requiresPredictionDisabled) _Bool requiresPredictionDisabled;
 @property(readonly, nonatomic, getter=_hasItemsToDisplay) _Bool hasItemsToDisplay;
+@property(readonly, nonatomic, getter=_isSystemItem) _Bool systemItem;
 - (void)dealloc;
 - (id)init;
 

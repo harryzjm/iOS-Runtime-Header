@@ -9,7 +9,6 @@
 @class CKRecord, NSError;
 @protocol OS_dispatch_group;
 
-__attribute__((visibility("hidden")))
 @interface CKRecordDecryptInfo : NSObject
 {
     CKRecord *_record;

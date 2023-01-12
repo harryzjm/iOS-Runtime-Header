@@ -9,13 +9,14 @@
 #import <AuthKitUI/AKBasicLoginControllerDelegate-Protocol.h>
 #import <AuthKitUI/AKInAppAuthenticationUIProvider-Protocol.h>
 
-@class AKAppleIDAuthenticationInAppContext, AKBasicLoginAlertController, AKBasicLoginViewController, AKInAppAuthenticationRemoteUIDelegate, NSString, RemoteUIController, UINavigationController;
+@class AKAppleIDAuthenticationInAppContext, AKBasicLoginAlertController, AKBasicLoginViewController, AKInAppAuthenticationRemoteUIDelegate, NSString, RemoteUIController, RemoteUIControllerPreferences, UINavigationController;
 
 @interface AKInAppAuthenticationRemoteUIProvider : NSObject <AKBasicLoginControllerDelegate, AKInAppAuthenticationUIProvider>
 {
     AKBasicLoginAlertController *_basicLoginAlertController;
     AKBasicLoginViewController *_basicLoginViewController;
     UINavigationController *_navController;
+    RemoteUIControllerPreferences *_ruiPreferences;
     AKInAppAuthenticationRemoteUIDelegate *_remoteUIControllerDelegate;
     AKAppleIDAuthenticationInAppContext *_context;
     RemoteUIController *_remoteUIController;
@@ -25,10 +26,12 @@
 @property(retain, nonatomic) RemoteUIController *remoteUIController; // @synthesize remoteUIController=_remoteUIController;
 @property(nonatomic) __weak AKAppleIDAuthenticationInAppContext *context; // @synthesize context=_context;
 @property(readonly, nonatomic) AKInAppAuthenticationRemoteUIDelegate *remoteUIControllerDelegate; // @synthesize remoteUIControllerDelegate=_remoteUIControllerDelegate;
+@property(retain, nonatomic) RemoteUIControllerPreferences *ruiPreferences; // @synthesize ruiPreferences=_ruiPreferences;
 - (void)presentLoginAlertUIAsViewWithError:(id)arg1 title:(id)arg2 message:(id)arg3 waitForInteraction:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)presentBasicLoginUIAsViewWithCompletion:(CDUnknownBlockType)arg1;
 - (void)presentLoginAlertWithError:(id)arg1 title:(id)arg2 message:(id)arg3 waitForInteraction:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)presentBasicLoginUIAsAlertWithCompletion:(CDUnknownBlockType)arg1;
+- (_Bool)_shouldUsePasswordDelegate;
 - (void)_updateReason;
 - (id)_secondFactorActionsForAlert:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_startAnimating;

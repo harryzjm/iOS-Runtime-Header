@@ -10,6 +10,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface FCCKPOperation : PBCodable <NSCopying>
 {
     NSString *_operationUUID;
@@ -23,24 +24,14 @@
     } _has;
 }
 
-@property(nonatomic) _Bool last; // @synthesize last=_last;
-@property(nonatomic) _Bool synchronousMode; // @synthesize synchronousMode=_synchronousMode;
-@property(retain, nonatomic) NSString *operationUUID; // @synthesize operationUUID=_operationUUID;
-- (void)mergeFrom:(id)arg1;
+- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasLast;
-@property(nonatomic) _Bool hasSynchronousMode;
-@property(nonatomic) _Bool hasType;
-@property(nonatomic) int type; // @synthesize type=_type;
-@property(readonly, nonatomic) _Bool hasOperationUUID;
-- (void)dealloc;
 
 @end
 

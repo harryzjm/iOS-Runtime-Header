@@ -8,35 +8,36 @@
 
 #import <Vision/NSCopying-Protocol.h>
 #import <Vision/NSSecureCoding-Protocol.h>
+#import <Vision/VNOriginatingRequestSpecifierProviding-Protocol.h>
 #import <Vision/VNRequestRevisionProviding-Protocol.h>
 #import <Vision/VNSerializing-Protocol.h>
 #import <Vision/VNSerializingInternal-Protocol.h>
 
-@class NSData, NSDictionary, NSString;
+@class NSData, NSDictionary, NSString, VNRequestSpecifier;
 
-@interface VNEspressoModelImageprint : NSObject <VNSerializingInternal, NSSecureCoding, NSCopying, VNSerializing, VNRequestRevisionProviding>
+@interface VNEspressoModelImageprint : NSObject <VNSerializingInternal, VNOriginatingRequestSpecifierProviding, NSSecureCoding, NSCopying, VNSerializing, VNRequestRevisionProviding>
 {
-    NSDictionary *_labelsAndConfidence;
-    unsigned long long _requestRevision;
+    VNRequestSpecifier *_originatingRequestSpecifier;
     unsigned long long _elementType;
     NSData *_descriptorData;
     unsigned long long _elementCount;
     unsigned long long _lengthInBytes;
     unsigned long long _confidenceScoreType;
     NSString *_version;
-    long long _distanceMode;
 }
 
++ (_Bool)shouldIgnoreLagecyLabelsAndConfidenceForHeaderSerializationVersion:(unsigned int)arg1;
++ (_Bool)shouldAssumeOriginatingRequestClassForHeaderSerializationVersion:(unsigned int)arg1;
 + (_Bool)supportsSecureCoding;
-+ (unsigned long long)confidenceTypeForRevision:(unsigned long long)arg1;
++ (id)originatingRequestSpecifierForRequestRevision:(unsigned long long)arg1 error:(id *)arg2;
++ (id)defaultOriginatingRequestClassNameForRequestRevision:(unsigned long long)arg1;
++ (unsigned long long)confidenceTypeForOriginatingRequestSpecifier:(id)arg1;
 - (void).cxx_destruct;
-@property long long distanceMode; // @synthesize distanceMode=_distanceMode;
-@property(copy) NSString *version; // @synthesize version=_version;
+@property(readonly) NSString *version; // @synthesize version=_version;
 @property(readonly, nonatomic) unsigned long long confidenceScoreType; // @synthesize confidenceScoreType=_confidenceScoreType;
-@property(copy) NSDictionary *labelsAndConfidence; // @synthesize labelsAndConfidence=_labelsAndConfidence;
-@property unsigned long long lengthInBytes; // @synthesize lengthInBytes=_lengthInBytes;
-@property unsigned long long elementCount; // @synthesize elementCount=_elementCount;
-@property(retain) NSData *descriptorData; // @synthesize descriptorData=_descriptorData;
+@property(readonly) unsigned long long lengthInBytes; // @synthesize lengthInBytes=_lengthInBytes;
+@property(readonly) unsigned long long elementCount; // @synthesize elementCount=_elementCount;
+@property(readonly) NSData *descriptorData; // @synthesize descriptorData=_descriptorData;
 - (id)computeDistance:(id)arg1 withDistanceFunction:(unsigned long long)arg2 error:(id *)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)hasEquivalentDescriptorToImageprint:(id)arg1;
@@ -52,8 +53,12 @@
 - (id)initWithCoder:(id)arg1 forCodingVersion:(unsigned int)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)_initWithClassKeyMappedCoder:(id)arg1;
+@property(readonly, copy) NSDictionary *labelsAndConfidence;
 @property(readonly, nonatomic) unsigned long long requestRevision;
+@property(readonly) VNRequestSpecifier *originatingRequestSpecifier;
 @property(readonly) unsigned long long elementType;
+- (id)initWithData:(const void *)arg1 elementCount:(unsigned long long)arg2 elementType:(unsigned long long)arg3 lengthInBytes:(unsigned long long)arg4 originatingRequestSpecifier:(id)arg5;
+- (id)initWithData:(const void *)arg1 elementCount:(unsigned long long)arg2 elementType:(unsigned long long)arg3 lengthInBytes:(unsigned long long)arg4 requestRevision:(unsigned long long)arg5;
 - (id)initWithData:(const void *)arg1 elementCount:(unsigned long long)arg2 elementType:(unsigned long long)arg3 lengthInBytes:(unsigned long long)arg4 labelsAndConfidence:(id)arg5 requestRevision:(unsigned long long)arg6;
 
 @end

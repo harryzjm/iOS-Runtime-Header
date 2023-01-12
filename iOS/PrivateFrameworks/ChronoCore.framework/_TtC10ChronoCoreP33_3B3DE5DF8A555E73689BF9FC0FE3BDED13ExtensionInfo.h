@@ -18,9 +18,11 @@
     MISSING_TYPE *grace;
     MISSING_TYPE *activeAssertionCount;
     MISSING_TYPE *monitorAssertionCount;
+    MISSING_TYPE *refreshVisibility;
     MISSING_TYPE *allowLocationForVisibility;
     MISSING_TYPE *allowLocationForActivity;
     MISSING_TYPE *monitorAssertion;
+    MISSING_TYPE *reloadForSignificantLocationChange;
     MISSING_TYPE *ext;
 }
 

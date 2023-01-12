@@ -8,14 +8,17 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOVLFFailureDetails, GEOVLFGravityVector, GEOVLFLocalizationAlgorithmDetails, GEOVLFSuccessDetails, GEOVLFTileDetails, PBDataReader;
+@class GEOVLFFailureDetails, GEOVLFGravityVector, GEOVLFLocalizationAlgorithmDetails, GEOVLFLocation, GEOVLFSuccessDetails, GEOVLFTileDetails, PBDataReader;
 
 @interface GEOVLFLocalizationDetails : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
+    struct GEOVLFPositionContextClassification _positionContextClassification;
     GEOVLFLocalizationAlgorithmDetails *_algorithmDetails;
+    double _exposureTargetOffset;
     GEOVLFFailureDetails *_failureDetails;
     GEOVLFGravityVector *_gravityVector;
+    GEOVLFLocation *_location;
     GEOVLFSuccessDetails *_successDetails;
     GEOVLFTileDetails *_tileDetails;
     unsigned int _readerMarkPos;
@@ -24,11 +27,14 @@
     unsigned int _relativeTimestampMs;
     unsigned int _runTimeMs;
     struct {
+        unsigned int has_positionContextClassification:1;
+        unsigned int has_exposureTargetOffset:1;
         unsigned int has_relativeTimestampMs:1;
         unsigned int has_runTimeMs:1;
         unsigned int read_algorithmDetails:1;
         unsigned int read_failureDetails:1;
         unsigned int read_gravityVector:1;
+        unsigned int read_location:1;
         unsigned int read_successDetails:1;
         unsigned int read_tileDetails:1;
         unsigned int wrote_anyField:1;
@@ -42,6 +48,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -50,6 +57,12 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasPositionContextClassification;
+@property(nonatomic) struct GEOVLFPositionContextClassification positionContextClassification;
+@property(nonatomic) _Bool hasExposureTargetOffset;
+@property(nonatomic) double exposureTargetOffset;
+@property(retain, nonatomic) GEOVLFLocation *location;
+@property(readonly, nonatomic) _Bool hasLocation;
 @property(retain, nonatomic) GEOVLFGravityVector *gravityVector;
 @property(readonly, nonatomic) _Bool hasGravityVector;
 @property(retain, nonatomic) GEOVLFFailureDetails *failureDetails;

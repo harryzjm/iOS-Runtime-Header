@@ -17,12 +17,16 @@
     UIViewController *_contentViewController;
 }
 
++ (id)_traitsArbiterOrientationActuationRole;
++ (_Bool)_traitsArbiterOrientationActuationEnabled;
++ (_Bool)sb_autorotates;
 + (_Bool)layoutContentViewControllerWithConstraints;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool passesTouchesThrough; // @synthesize passesTouchesThrough=_passesTouchesThrough;
 @property(retain, nonatomic, setter=setContentViewController:) UIViewController *contentViewController; // @synthesize contentViewController=_contentViewController;
 @property(readonly, copy, nonatomic) NSString *debugName; // @synthesize debugName=_debugName;
 - (_Bool)isActive;
+- (void)_updateSupportedInterfaceOrientationsForTraitArbiterActuationIfNeeded;
 - (unsigned long long)effectiveRootViewControllerSupportedInterfaceOrientations;
 - (void)_updateInterfaceOrientationToCurrentActiveInterfaceOrientationWithDuration:(double)arg1;
 - (void)activeInterfaceOrientationDidChangeToOrientation:(long long)arg1 willAnimateWithDuration:(double)arg2 fromOrientation:(long long)arg3;
@@ -39,7 +43,9 @@
 - (void)setHidden:(_Bool)arg1;
 - (_Bool)_canBecomeKeyWindow;
 - (void)setRootViewController:(id)arg1;
-- (id)initWithDebugName:(id)arg1;
+- (id)rootViewController;
+- (id)initWithScreen:(id)arg1 scene:(id)arg2 rootViewController:(id)arg3 layoutStrategy:(id)arg4 role:(id)arg5 debugName:(id)arg6;
+- (id)initWithRole:(id)arg1 debugName:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

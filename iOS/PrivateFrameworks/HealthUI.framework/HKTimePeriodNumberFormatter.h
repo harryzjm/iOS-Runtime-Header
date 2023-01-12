@@ -13,11 +13,14 @@
 @interface HKTimePeriodNumberFormatter : NSObject <HKNumberFormatter>
 {
     _Bool _shouldRoundToHours;
+    _Bool _shouldShowDays;
 }
 
+@property(nonatomic) _Bool shouldShowDays; // @synthesize shouldShowDays=_shouldShowDays;
 @property(nonatomic) _Bool shouldRoundToHours; // @synthesize shouldRoundToHours=_shouldRoundToHours;
 - (id)stringFromNumber:(id)arg1 displayType:(id)arg2 unitController:(id)arg3;
 - (_Bool)returnsUnitWithValueForDisplay;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

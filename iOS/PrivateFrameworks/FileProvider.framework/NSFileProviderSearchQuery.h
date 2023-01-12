@@ -19,6 +19,7 @@
     NSString *_keyboardLanguage;
     NSString *_providerDomainID;
     NSSet *_cachedExtensions;
+    NSSet *_allowedUTTypes;
     unsigned long long _trashedItemsMembership;
     NSString *_filename;
     NSSet *_allowedContentTypes;

@@ -19,9 +19,9 @@
 @interface CSSmartSiriVolume : NSObject <CSMediaPlayingMonitorDelegate, CSAudioStreamProvidingDelegate, CSSiriEnabledMonitorDelegate, CSAudioServerCrashMonitorDelegate, CSSiriClientBehaviorMonitorDelegate, CSSmartSiriVolumeProcessor>
 {
     NSObject<OS_dispatch_queue> *_queue;
-    struct unique_ptr<SmartSiriVolume, std::__1::default_delete<SmartSiriVolume>> _smartSiriVolumeNoiseLevel;
-    struct unique_ptr<SmartSiriVolume, std::__1::default_delete<SmartSiriVolume>> _smartSiriVolumeLKFS;
-    struct vector<float, std::__1::allocator<float>> _floatBuffer;
+    struct unique_ptr<SmartSiriVolume, std::default_delete<SmartSiriVolume>> _smartSiriVolumeNoiseLevel;
+    struct unique_ptr<SmartSiriVolume, std::default_delete<SmartSiriVolume>> _smartSiriVolumeLKFS;
+    struct vector<float, std::allocator<float>> _floatBuffer;
     NSUserDefaults *_defaults;
     CSSmartSiriVolumeEnablePolicy *_ssvEnablePolicy;
     unsigned long long _startAnalyzeSampleCount;
@@ -74,6 +74,9 @@
 @property(nonatomic) long long listenPollingTimerCount; // @synthesize listenPollingTimerCount=_listenPollingTimerCount;
 @property(retain, nonatomic) NSObject<OS_dispatch_source> *listenPollingTimer; // @synthesize listenPollingTimer=_listenPollingTimer;
 @property(retain, nonatomic) CSAudioStream *audioStream; // @synthesize audioStream=_audioStream;
+- (void)setPermanentVolumeOffsetWithDirection:(_Bool)arg1;
+- (void)setSmartSiriVolumeDirection:(_Bool)arg1;
+- (void)setSmartSiriVolumePercentage:(float)arg1;
 - (id)getVolumeForTTSType:(unsigned long long)arg1 withOverrideMediaVolume:(id)arg2 WithRequestTime:(unsigned long long)arg3;
 - (float)_getUserOffsetFromMusicVolumeDB:(float)arg1;
 - (float)_getMusicVolumeDBCSSSVDeviceDefault:(float)arg1;
@@ -85,7 +88,7 @@
 - (void)_resetStartAnalyzeTime;
 - (float *)_getFloatBufferData:(id)arg1;
 - (void)siriClientBehaviorMonitor:(id)arg1 didStopStream:(id)arg2 withEventUUID:(id)arg3;
-- (void)siriClientBehaviorMonitor:(id)arg1 willStopStream:(id)arg2;
+- (void)siriClientBehaviorMonitor:(id)arg1 willStopStream:(id)arg2 reason:(unsigned long long)arg3;
 - (void)siriClientBehaviorMonitor:(id)arg1 didStartStreamWithContext:(id)arg2 successfully:(_Bool)arg3 option:(id)arg4 withEventUUID:(id)arg5;
 - (void)siriClientBehaviorMonitor:(id)arg1 willStartStreamWithContext:(id)arg2 option:(id)arg3;
 - (void)CSAudioServerCrashMonitorDidReceiveServerRestart:(id)arg1;

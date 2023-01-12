@@ -6,29 +6,23 @@
 
 #import <objc/NSObject.h>
 
-#import <SiriVOX/AFMyriadEmergencyDelegate-Protocol.h>
 #import <SiriVOX/SVXServiceCommandHandling-Protocol.h>
 
-@class AFMyriadEmergencyManager, NSString;
-@protocol OS_dispatch_queue, OS_dispatch_semaphore;
+@class NSString, SVXSessionManager;
 
 __attribute__((visibility("hidden")))
-@interface SVXServiceCommandHandlerClientCoordinationPhoneCall : NSObject <AFMyriadEmergencyDelegate, SVXServiceCommandHandling>
+@interface SVXServiceCommandHandlerClientCoordinationPhoneCall : NSObject <SVXServiceCommandHandling>
 {
-    NSObject<OS_dispatch_queue> *_queue;
-    AFMyriadEmergencyManager *_emergencyManager;
-    NSObject<OS_dispatch_semaphore> *_waitForResult;
-    _Bool _wasHandled;
+    SVXSessionManager *_sessionManager;
     NSString *_identifier;
 }
 
 + (Class)supportedCommandClass;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void)emergencyCall:(id)arg1 wasHandled:(_Bool)arg2;
 - (void)handleCommand:(id)arg1 withContext:(id)arg2 taskTracker:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (_Bool)isCommandUUFR:(id)arg1;
-- (id)init;
+- (id)initWithSessionManager:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -9,13 +9,13 @@
 __attribute__((visibility("hidden")))
 @interface LegacyTileLayer : CALayer
 {
-    struct LegacyTileGrid *_tileGrid;
+    void *_tileGrid;
     unsigned int _paintCount;
     _Bool _isRenderingInContext;
 }
 
 @property(readonly, nonatomic) _Bool isRenderingInContext; // @synthesize isRenderingInContext=_isRenderingInContext;
-@property(nonatomic) struct LegacyTileGrid *tileGrid; // @synthesize tileGrid=_tileGrid;
+@property(nonatomic) void *tileGrid; // @synthesize tileGrid=_tileGrid;
 @property(nonatomic) unsigned int paintCount; // @synthesize paintCount=_paintCount;
 - (id)actionForKey:(id)arg1;
 - (void)drawInContext:(struct CGContext *)arg1;

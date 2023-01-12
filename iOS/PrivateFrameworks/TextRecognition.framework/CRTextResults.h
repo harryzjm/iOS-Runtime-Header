@@ -16,15 +16,19 @@
     CRTextRecognizerResults *_recognizerResults;
     NSArray *_textFeatures;
     CRTextFeature *_titleTextFeature;
+    long long _filteredOutFeatureCount;
 }
 
++ (id)linesFromTextFeatures:(id)arg1;
 - (void).cxx_destruct;
+@property long long filteredOutFeatureCount; // @synthesize filteredOutFeatureCount=_filteredOutFeatureCount;
 @property(retain, nonatomic) CRTextFeature *titleTextFeature; // @synthesize titleTextFeature=_titleTextFeature;
 @property(retain, nonatomic) NSArray *textFeatures; // @synthesize textFeatures=_textFeatures;
 @property(retain, nonatomic) CRTextRecognizerResults *recognizerResults; // @synthesize recognizerResults=_recognizerResults;
 @property(retain, nonatomic) CRTextDetectorResults *detectorResults; // @synthesize detectorResults=_detectorResults;
 @property(retain, nonatomic) NSDate *endTime; // @synthesize endTime=_endTime;
 @property(retain, nonatomic) NSDate *startTime; // @synthesize startTime=_startTime;
+@property(readonly) NSArray *lineFeatures;
 
 @end
 

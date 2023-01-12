@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ACAccountStore, NSArray, NSDictionary, NSMutableDictionary, NSMutableSet;
+@class ACAccountStore, NSDictionary, NSMutableDictionary, NSMutableSet;
 @protocol OS_dispatch_queue;
 
 @interface AXHASettings : NSObject
@@ -15,14 +15,15 @@
     int _contentProtectionNotifyToken;
     _Bool _finishediCloudSetup;
     struct os_unfair_lock_s _syncLock;
-    NSMutableDictionary *_soundDetectionSnoozeDictionary;
+    _Bool _anyGizmoLiveHeadphoneLevelEnabled;
+    _Bool _gizmoLiveHeadphoneLevelEnabled;
+    _Bool _gizmoLiveHeadphoneLevelNPEnabled;
     NSMutableSet *_registeredNotifications;
     NSMutableSet *_synchronizePreferences;
     NSMutableDictionary *_updateBlocks;
     NSObject<OS_dispatch_queue> *_icloudInitializationQueue;
 }
 
-+ (id)stringForSoundDetectionState:(int)arg1;
 + (id)sharedInstance;
 + (void)initialize;
 - (void).cxx_destruct;
@@ -30,21 +31,13 @@
 @property(retain, nonatomic) NSMutableDictionary *updateBlocks; // @synthesize updateBlocks=_updateBlocks;
 @property(retain, nonatomic) NSMutableSet *synchronizePreferences; // @synthesize synchronizePreferences=_synchronizePreferences;
 @property(retain, nonatomic) NSMutableSet *registeredNotifications; // @synthesize registeredNotifications=_registeredNotifications;
-@property(retain, nonatomic) NSMutableDictionary *soundDetectionSnoozeDictionary; // @synthesize soundDetectionSnoozeDictionary=_soundDetectionSnoozeDictionary;
-- (void)setSupportedSoundDetectionTypes:(id)arg1;
-@property(readonly, nonatomic) NSArray *supportedSoundDetectionTypes;
-- (void)addSnoozeDateToSnoozeDictionary:(id)arg1 forKey:(id)arg2;
-- (void)removeAllSoundDetectionTypes;
-- (void)removeSoundDetectionType:(id)arg1;
-- (void)addSoundDetectionType:(id)arg1;
-@property(retain, nonatomic) NSArray *enabledSoundDetectionTypes;
-@property(nonatomic) int soundDetectionState;
-@property(readonly, nonatomic) _Bool soundDetectionEnabled;
-@property(nonatomic) _Bool ultronIsRunning;
-@property(nonatomic) _Bool ultronSupportEnabled;
-- (_Bool)isDeviceIDOnCloudBlacklist:(id)arg1;
-- (void)removeDeviceIDFromCloudBlacklist:(id)arg1;
-- (void)addDeviceIDToCloudBlacklist:(id)arg1;
+@property(nonatomic) _Bool gizmoLiveHeadphoneLevelNPEnabled; // @synthesize gizmoLiveHeadphoneLevelNPEnabled=_gizmoLiveHeadphoneLevelNPEnabled;
+@property(nonatomic) _Bool gizmoLiveHeadphoneLevelEnabled; // @synthesize gizmoLiveHeadphoneLevelEnabled=_gizmoLiveHeadphoneLevelEnabled;
+@property(nonatomic) _Bool anyGizmoLiveHeadphoneLevelEnabled; // @synthesize anyGizmoLiveHeadphoneLevelEnabled=_anyGizmoLiveHeadphoneLevelEnabled;
+@property(nonatomic) _Bool liveHeadphoneLevelEnabled;
+- (_Bool)isDeviceIDOnCloudDenylist:(id)arg1;
+- (void)removeDeviceIDFromCloudDenylist:(id)arg1;
+- (void)addDeviceIDToCloudDenylist:(id)arg1;
 @property(nonatomic) unsigned long long usedHearingFeatures;
 @property(nonatomic) long long complicationPreferredDisplayMode;
 @property(nonatomic) _Bool shouldStreamSystemSounds;
@@ -58,12 +51,14 @@
 @property(nonatomic) _Bool allowHearingAidControlOnLockScreen;
 @property(nonatomic) _Bool independentHearingAidSettings;
 @property(retain, nonatomic) NSDictionary *knownPeripheralUUIDs;
+@property(nonatomic) _Bool clearPartialPairing;
 @property(retain, nonatomic) NSDictionary *pairedHearingAids;
 - (id)deviceIDForPairingInformation:(id)arg1;
 - (id)_valueForPreferenceKey:(id)arg1;
 - (void)_synchronizeIfNecessary:(id)arg1;
 - (void)_setValue:(id)arg1 forPreferenceKey:(id)arg2;
 - (struct __CFString *)domainNameForPreferenceKey:(id)arg1;
+- (void)updateStreamingPreference;
 - (void)_updateTripleClickOptionsForPairedAids:(id)arg1;
 - (void)registerUpdateBlock:(CDUnknownBlockType)arg1 forRetrieveSelector:(SEL)arg2 withListener:(id)arg3;
 - (void)_registerForNotification:(id)arg1;

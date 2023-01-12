@@ -26,6 +26,7 @@
 + (id)_finalizedSortDescriptorFromSortDescriptor:(id)arg1 mediaEntityKind:(id)arg2;
 + (id)_finalizedSortDescriptorsFromSortDescriptors:(id)arg1 mediaEntityKind:(id)arg2;
 + (id)_addedToDateSortDescriptor;
++ (id)_fractionalEpisodeNumberSortDescriptor;
 + (id)_episodeNumberSortDescriptor;
 + (id)_showTitleSortDescriptor;
 + (id)_seasonNumberSortDescriptor;

@@ -10,7 +10,7 @@
 #import <AccessibilityUtilities/NSCopying-Protocol.h>
 #import <AccessibilityUtilities/NSSecureCoding-Protocol.h>
 
-@class AXEventAccelerometerInfoRepresentation, AXEventData, AXEventGameControllerInfoRepresentation, AXEventHandInfoRepresentation, AXEventIOSMACPointerInfoRepresentation, AXEventKeyInfoRepresentation, AXEventPointerInfoRepresentation, NSData, NSString;
+@class AXEventAccelerometerInfoRepresentation, AXEventData, AXEventGameControllerInfoRepresentation, AXEventHandInfoRepresentation, AXEventIOSMACPointerInfoRepresentation, AXEventKeyInfoRepresentation, AXEventPointerInfoRepresentation, NSData, NSDictionary, NSString;
 
 @interface AXEventRepresentation : NSObject <AXEventRepresentationDescription, NSSecureCoding, NSCopying>
 {
@@ -47,6 +47,7 @@
     long long _generationCount;
     struct __IOHIDEvent *_creatorHIDEvent;
     struct __IOHIDServiceClient *_creatorHIDServiceClient;
+    NSDictionary *_auxiliaryData;
     AXEventData *_accessibilityData;
     void *_window;
     NSData *_data;
@@ -54,20 +55,25 @@
     struct CGPoint _windowLocation;
 }
 
++ (_Bool)_HIDEventIsAccessibilityEvent:(struct __IOHIDEvent *)arg1;
++ (id)accessibilityEventRepresentationWithSender:(long long)arg1 usagePage:(long long)arg2 usage:(long long)arg3 modifierFlags:(long long)arg4 eventValue1:(float)arg5 eventValue2:(float)arg6;
++ (id)accessibilityEventRepresentationWithSender:(long long)arg1 usagePage:(long long)arg2 usage:(long long)arg3 modifierFlags:(long long)arg4;
++ (id)accessibilityEventRepresentationWithSender:(long long)arg1 usagePage:(long long)arg2 usage:(long long)arg3;
 + (id)touchRepresentationWithHandType:(unsigned int)arg1 location:(struct CGPoint)arg2;
 + (id)gestureRepresentationWithHandType:(unsigned int)arg1 locations:(id)arg2;
 + (id)iosmacPointerRepresentationWithTypeWithPointerInfo:(id)arg1;
 + (id)buttonRepresentationWithType:(unsigned int)arg1;
 + (id)keyRepresentationWithType:(unsigned int)arg1;
 + (id)accelerometerRepresentation:(id)arg1;
-+ (id)representationWithEventRecord:(CDStruct_7f3c0925 *)arg1;
 + (id)representationWithHIDEvent:(struct __IOHIDEvent *)arg1 serviceClient:(struct __IOHIDServiceClient *)arg2 hidStreamIdentifier:(id)arg3 clientID:(id)arg4 taskPort:(unsigned int)arg5;
 + (id)representationWithHIDEvent:(struct __IOHIDEvent *)arg1 hidStreamIdentifier:(id)arg2 clientID:(id)arg3 taskPort:(unsigned int)arg4;
 + (id)representationWithHIDEvent:(struct __IOHIDEvent *)arg1 serviceClient:(struct __IOHIDServiceClient *)arg2 hidStreamIdentifier:(id)arg3;
 + (id)representationWithHIDEvent:(struct __IOHIDEvent *)arg1 hidStreamIdentifier:(id)arg2;
 + (id)representationWithLocation:(struct CGPoint)arg1 windowLocation:(struct CGPoint)arg2 handInfo:(id)arg3;
++ (id)_vendorDefinedAccessibilityEvent:(struct __IOHIDEvent *)arg1;
 + (id)_motionGestureTapEvent:(struct __IOHIDEvent *)arg1 serviceClient:(struct __IOHIDServiceClient *)arg2 hidStreamIdentifier:(id)arg3 clientID:(id)arg4 taskPort:(unsigned int)arg5;
 + (id)_pointerControllerEvent:(struct __IOHIDEvent *)arg1 hidStreamIdentifier:(id)arg2;
++ (id)_gameKeyboardControllerEvent:(struct __IOHIDEvent *)arg1;
 + (id)_gameControllerEvent:(struct __IOHIDEvent *)arg1;
 + (id)_wheelEvent:(struct __IOHIDEvent *)arg1;
 + (id)_keyboardButtonEvent:(struct __IOHIDEvent *)arg1;
@@ -81,6 +87,7 @@
 @property(retain, nonatomic) NSData *data; // @synthesize data=_data;
 @property(nonatomic) void *window; // @synthesize window=_window;
 @property(retain, nonatomic) AXEventData *accessibilityData; // @synthesize accessibilityData=_accessibilityData;
+@property(retain, nonatomic) NSDictionary *auxiliaryData; // @synthesize auxiliaryData=_auxiliaryData;
 @property(nonatomic, getter=isSystemDrag) _Bool systemDrag; // @synthesize systemDrag=_systemDrag;
 @property(nonatomic, getter=isRedirectEvent) _Bool redirectEvent; // @synthesize redirectEvent=_redirectEvent;
 @property(retain, nonatomic) struct __IOHIDServiceClient *creatorHIDServiceClient; // @synthesize creatorHIDServiceClient=_creatorHIDServiceClient;
@@ -138,8 +145,6 @@
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (struct __GSEvent *)newGSEventRef;
-- (CDStruct_7f3c0925 *)newEventRecord;
 - (struct __IOHIDEvent *)_newHandHIDEventRef;
 - (struct __IOHIDEvent *)_newIOSMACPointerRef;
 - (id)denormalizedEventRepresentation:(_Bool)arg1 descale:(_Bool)arg2;
@@ -147,6 +152,7 @@
 - (void)modifyPoints:(CDUnknownBlockType)arg1;
 - (id)fakeTouchScaleEventRepresentation:(_Bool)arg1;
 - (id)normalizedEventRepresentation:(_Bool)arg1 scale:(_Bool)arg2;
+- (struct __IOHIDEvent *)_newAccessibilityHIDEventRef;
 - (struct __IOHIDEvent *)_newButtonHIDEventRefWithType:(unsigned int)arg1;
 - (struct __IOHIDEvent *)_newKeyboardHIDEventRef;
 - (struct __IOHIDEvent *)_newAccelerometerHIDEventRef;

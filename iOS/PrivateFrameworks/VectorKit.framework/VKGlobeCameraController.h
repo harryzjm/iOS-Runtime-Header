@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface VKGlobeCameraController <VKGesturingCameraController>
 {
-    struct GlobeView *_globeView;
+    void *_globeView;
     struct CameraManager _cameraManager;
     double _currentDoublePanPitch;
     _Bool _isPitching;
@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool tourShouldResumeWhenDoneGesturing; // @synthesize tourShouldResumeWhenDoneGesturing=_tourShouldResumeWhenDoneGesturing;
-@property(nonatomic) struct GlobeView *globeView; // @synthesize globeView=_globeView;
+@property(nonatomic) void *globeView; // @synthesize globeView=_globeView;
 - (void)animateToRestriction:(id)arg1 duration:(double)arg2 timingFunction:(CDUnknownBlockType)arg3;
 - (void)setRegionRestriction:(id)arg1 duration:(double)arg2 timingFunction:(CDUnknownBlockType)arg3;
 - (void)animateRegionWithDuration:(double)arg1 timingFunction:(CDUnknownBlockType)arg2 cursor:(Matrix_443f5d51)arg3 stepHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
@@ -58,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (double)greatCircleMidPointLatitude:(double)arg1 fromLongitude:(double)arg2 toLongitude:(double)arg3;
 - (double)earthRadiusAt:(double)arg1;
 - (double)geocAngleBetween:(CDStruct_c3b9c2ee)arg1 andCoordinate:(CDStruct_c3b9c2ee)arg2;
+- (id)mapRegionIgnoringEdgeInsets;
 - (id)mapRegion;
 - (void)setYaw:(double)arg1 animated:(_Bool)arg2;
 - (double)presentationYaw;
@@ -103,12 +104,10 @@ __attribute__((visibility("hidden")))
 - (void)zoom:(double)arg1 withFocusPoint:(struct CGPoint)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)pitch:(struct CGPoint)arg1 translation:(double)arg2;
 - (void)rotate:(double)arg1 atScreenPoint:(struct CGPoint)arg2;
-- (void)_updateGlobeFromCamera;
+- (void)setCamera:(shared_ptr_46708168)arg1;
 - (long long)tileSize;
-- (_Bool)restoreViewportFromInfo:(id)arg1;
-- (id)viewportInfo;
 - (void)dealloc;
-- (id)initWithTaskContext:(shared_ptr_e963992e)arg1 mapDataAccess:(struct MapDataAccess *)arg2 animationRunner:(struct AnimationRunner *)arg3 runLoopController:(struct RunLoopController *)arg4 cameraDelegate:(id)arg5;
+- (id)initWithTaskContext:(shared_ptr_e963992e)arg1 mapDataAccess:(void *)arg2 animationRunner:(struct AnimationRunner *)arg3 runLoopController:(struct RunLoopController *)arg4 cameraDelegate:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -12,19 +12,21 @@
 @interface RWIProtocolConfiguration : NSObject
 {
     struct AugmentableInspectorController *_controller;
-    id <RWIProtocolCSSDomainHandler> _cssHandler;
-    RWIProtocolCSSDomainEventDispatcher *_cssEventDispatcher;
-    RWIProtocolConsoleDomainEventDispatcher *_consoleEventDispatcher;
-    id <RWIProtocolDOMDomainHandler> _domHandler;
-    RWIProtocolDOMDomainEventDispatcher *_domEventDispatcher;
-    id <RWIProtocolDOMStorageDomainHandler> _domStorageHandler;
-    RWIProtocolDOMStorageDomainEventDispatcher *_domStorageEventDispatcher;
-    id <RWIProtocolNetworkDomainHandler> _networkHandler;
-    RWIProtocolNetworkDomainEventDispatcher *_networkEventDispatcher;
-    id <RWIProtocolPageDomainHandler> _pageHandler;
-    RWIProtocolPageDomainEventDispatcher *_pageEventDispatcher;
+    struct RetainPtr<id<RWIProtocolCSSDomainHandler>> _cssHandler;
+    struct RetainPtr<RWIProtocolCSSDomainEventDispatcher> _cssEventDispatcher;
+    struct RetainPtr<RWIProtocolConsoleDomainEventDispatcher> _consoleEventDispatcher;
+    struct RetainPtr<id<RWIProtocolDOMDomainHandler>> _domHandler;
+    struct RetainPtr<RWIProtocolDOMDomainEventDispatcher> _domEventDispatcher;
+    struct RetainPtr<id<RWIProtocolDOMStorageDomainHandler>> _domStorageHandler;
+    struct RetainPtr<RWIProtocolDOMStorageDomainEventDispatcher> _domStorageEventDispatcher;
+    struct RetainPtr<id<RWIProtocolNetworkDomainHandler>> _networkHandler;
+    struct RetainPtr<RWIProtocolNetworkDomainEventDispatcher> _networkEventDispatcher;
+    struct RetainPtr<id<RWIProtocolPageDomainHandler>> _pageHandler;
+    struct RetainPtr<RWIProtocolPageDomainEventDispatcher> _pageEventDispatcher;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) RWIProtocolPageDomainEventDispatcher *pageEventDispatcher;
 @property(retain, nonatomic, setter=setPageHandler:) id <RWIProtocolPageDomainHandler> pageHandler;
 @property(readonly, nonatomic) RWIProtocolNetworkDomainEventDispatcher *networkEventDispatcher;
@@ -36,7 +38,6 @@
 @property(readonly, nonatomic) RWIProtocolConsoleDomainEventDispatcher *consoleEventDispatcher;
 @property(readonly, nonatomic) RWIProtocolCSSDomainEventDispatcher *cssEventDispatcher;
 @property(retain, nonatomic, setter=setCSSHandler:) id <RWIProtocolCSSDomainHandler> cssHandler;
-- (void)dealloc;
 - (id)initWithController:(struct AugmentableInspectorController *)arg1;
 
 @end

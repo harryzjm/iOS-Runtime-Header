@@ -7,6 +7,8 @@
 #import <Contacts/NSObject-Protocol.h>
 
 @protocol CNRegulatoryLogger <NSObject>
+- (void)logContactPickerAccessEvent;
+- (void)logContactsDataAccessEvent;
 - (void)readAndTransmittingContactsData;
 - (void)modifyingContactsData;
 - (void)readingContactsData;

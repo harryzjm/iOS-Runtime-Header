@@ -34,12 +34,14 @@ __attribute__((visibility("hidden")))
 @property(retain) STScreenTimeUsageGroupSpecifierProvider *screenTimeProvider; // @synthesize screenTimeProvider=_screenTimeProvider;
 @property(retain) STSegmentedControlGroupSpecifierProvider *segmentedControlProvider; // @synthesize segmentedControlProvider=_segmentedControlProvider;
 @property(retain) STTestGroupSpecifierProvider *testProvider; // @synthesize testProvider=_testProvider;
+- (void)_reportCoreAnalyticsEventWithUser:(id)arg1 currentDate:(id)arg2 calendar:(id)arg3;
 @property(getter=isDatePickerHidden) _Bool datePickerHidden;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)_rightDatePickerBarButtonTapped:(id)arg1;
 - (void)_leftDatePickerBarButtonTapped:(id)arg1;
 - (void)_setSelectedDeviceIdentifier:(id)arg1;
-- (void)_showDeviceSelectionAlertController:(id)arg1;
+- (id)_getUIActionForDevice:(id)arg1 deviceIndentifier:(id)arg2 weakSelf:(id)arg3;
+- (id)_getDevicesDropDownMenu;
 - (void)_setSelectedUsageReportType:(unsigned long long)arg1;
 - (void)_selectedUsageReportDidChangeFrom:(id)arg1 to:(id)arg2;
 - (void)_devicesDidChangeFrom:(id)arg1 to:(id)arg2;

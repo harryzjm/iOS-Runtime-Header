@@ -25,10 +25,10 @@
 - (long long)_idForFirstPartyWithHighLevelDomain:(id)arg1;
 - (long long)_idForThirdPartyWithHighLevelDomain:(id)arg1;
 - (long long)_schemaVersion;
-- (void)_createDatabaseSchemaIfNeeded;
-- (void)_configureDatabase;
-- (void)_openDatabase;
-- (void)_openDatabaseIfNeeded;
+- (_Bool)_createDatabaseSchemaIfNeeded;
+- (_Bool)_tryOpenDatabase:(id *)arg1;
+- (void)_deleteDatabase;
+- (_Bool)_openDatabaseIfNeeded;
 - (void)_closeDatabaseOnDatabaseQueue;
 - (void)closeDatabase;
 - (void)clearStatisticsForDomains:(id)arg1;

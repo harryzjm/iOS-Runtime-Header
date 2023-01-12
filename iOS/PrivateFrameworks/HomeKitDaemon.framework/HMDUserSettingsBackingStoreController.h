@@ -14,8 +14,8 @@
 #import <HomeKitDaemon/HMDSettingsBackingStoreController-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMBCloudZone, HMBLocalZone, HMDCloudShareMessenger, HMDCloudShareParticipantsManager, HMDLogEventDispatcher, NSString, NSUUID;
-@protocol HMDAssistantAccessControlModelUpdateReceiver, HMDDatabase, HMDMediaContentProfileAccessControlModelUpdateReceiver, HMDSettingTransactionReceiverProtocol, HMDUserSettingsBackingStoreControllerDelegate, OS_dispatch_queue, OS_os_log;
+@class HMBCloudZone, HMBLocalZone, HMDCloudShareMessenger, HMDCloudShareParticipantsManager, NSString, NSUUID;
+@protocol HMDAssistantAccessControlModelUpdateReceiver, HMDDatabase, HMDMediaContentProfileAccessControlModelUpdateReceiver, HMDSettingTransactionReceiverProtocol, HMDUserSettingsBackingStoreControllerDelegate, HMMLogEventSubmitting, OS_dispatch_queue, OS_os_log;
 
 @interface HMDUserSettingsBackingStoreController : NSObject <HMBLocalZoneModelObserver, HMFLogging, HMDCloudShareParticipantsManagerDataSource, HMDCloudShareParticipantsManagerDelegate, HMDCloudShareMessengerDelegate, HMDDatabaseDelegate, HMDSettingsBackingStoreController>
 {
@@ -26,7 +26,7 @@
     NSObject<OS_dispatch_queue> *_workQueue;
     NSString *_zoneName;
     id <HMDDatabase> _database;
-    HMDLogEventDispatcher *_logEventDispatcher;
+    id <HMMLogEventSubmitting> _logEventSubmitter;
     HMDCloudShareMessenger *_shareMessenger;
     HMDCloudShareParticipantsManager *_participantsManager;
     HMBCloudZone *_cloudZone;
@@ -49,7 +49,7 @@
 @property(retain) HMBCloudZone *cloudZone; // @synthesize cloudZone=_cloudZone;
 @property(retain) HMDCloudShareParticipantsManager *participantsManager; // @synthesize participantsManager=_participantsManager;
 @property(readonly) HMDCloudShareMessenger *shareMessenger; // @synthesize shareMessenger=_shareMessenger;
-@property(readonly) HMDLogEventDispatcher *logEventDispatcher; // @synthesize logEventDispatcher=_logEventDispatcher;
+@property(readonly) id <HMMLogEventSubmitting> logEventSubmitter; // @synthesize logEventSubmitter=_logEventSubmitter;
 @property(readonly) id <HMDDatabase> database; // @synthesize database=_database;
 @property(readonly, copy) NSString *zoneName; // @synthesize zoneName=_zoneName;
 @property(readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
@@ -93,6 +93,7 @@
 - (id)loadPrivateUserDataModelWithError:(id *)arg1;
 - (void)start;
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2 zoneName:(id)arg3 database:(id)arg4 home:(id)arg5 shareMessenger:(id)arg6;
+- (long long)runStateForMetric;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

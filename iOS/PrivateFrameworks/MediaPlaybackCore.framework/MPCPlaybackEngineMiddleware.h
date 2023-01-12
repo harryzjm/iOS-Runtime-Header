@@ -8,11 +8,11 @@
 
 #import <MediaPlaybackCore/MPCPlayerResponseBuilder-Protocol.h>
 #import <MediaPlaybackCore/MPMiddleware-Protocol.h>
-#import <MediaPlaybackCore/_MPCStateDumpPropertyListTransformable-Protocol.h>
 
 @class MPCPlaybackEngine, NSArray, NSString;
 
-@interface MPCPlaybackEngineMiddleware : NSObject <MPCPlayerResponseBuilder, _MPCStateDumpPropertyListTransformable, MPMiddleware>
+__attribute__((visibility("hidden")))
+@interface MPCPlaybackEngineMiddleware : NSObject <MPCPlayerResponseBuilder, MPMiddleware>
 {
     NSArray *_invalidationObservers;
     MPCPlaybackEngine *_playbackEngine;

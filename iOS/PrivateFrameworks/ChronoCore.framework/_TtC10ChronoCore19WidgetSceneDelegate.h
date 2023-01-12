@@ -8,23 +8,28 @@
 
 #import <ChronoCore/CHUISAvocadoWindowSceneDelegate-Protocol.h>
 
-@class MISSING_TYPE;
+@class MISSING_TYPE, NSString, UIWindow;
 
 __attribute__((visibility("hidden")))
 @interface _TtC10ChronoCore19WidgetSceneDelegate : UIResponder <CHUISAvocadoWindowSceneDelegate>
 {
     MISSING_TYPE *timelineService;
+    MISSING_TYPE *window;
     MISSING_TYPE *connection;
-    MISSING_TYPE *foreground;
-    MISSING_TYPE *isEffectivelyVisible;
+    MISSING_TYPE *foregroundScene;
+    MISSING_TYPE *hasBeenVisiblySettledForCurrentVisibilitySession;
+    MISSING_TYPE *effectiveVisibility;
     MISSING_TYPE *timelineReloadedNotificationCancellable;
     MISSING_TYPE *evaluateStaleTimelineContentTimer;
+    MISSING_TYPE *layerSnapshotter;
     MISSING_TYPE *extensionSubscriptions;
-    MISSING_TYPE *snapshotSubscription;
+    MISSING_TYPE *foregroundSceneContentLimiter;
 }
 
 - (void).cxx_destruct;
 - (id)init;
+@property(nonatomic, readonly) NSString *description;
+- (void)applicationDidReceiveMemoryWarning;
 - (void)sceneDidDisconnect:(id)arg1;
 - (void)sceneDidEnterBackground:(id)arg1;
 - (void)sceneWillEnterForeground:(id)arg1;
@@ -32,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)sceneDidBecomeActive:(id)arg1;
 - (void)scene:(id)arg1 willConnectToSession:(id)arg2 options:(id)arg3;
 - (void)dealloc;
+@property(nonatomic, retain) UIWindow *window; // @synthesize window;
 
 @end
 

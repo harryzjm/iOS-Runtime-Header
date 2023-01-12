@@ -9,12 +9,12 @@
 #import <WebKit/NSCopying-Protocol.h>
 #import <WebKit/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, WKPreferences, WKProcessPool, WKUserContentController, WKWebView, WKWebViewContentProviderRegistry, WKWebpagePreferences, WKWebsiteDataStore, _WKApplicationManifest, _WKVisitedLinkStore, _WKWebsiteDataStore;
+@class NSArray, NSSet, NSString, WKPreferences, WKProcessPool, WKUserContentController, WKWebView, WKWebViewContentProviderRegistry, WKWebpagePreferences, WKWebsiteDataStore, _WKApplicationManifest, _WKVisitedLinkStore, _WKWebsiteDataStore;
 @protocol _UIClickInteractionDriving;
 
 @interface WKWebViewConfiguration : NSObject <NSSecureCoding, NSCopying>
 {
-    struct RefPtr<API::PageConfiguration, WTF::DumbPtrTraits<API::PageConfiguration>> _pageConfiguration;
+    struct RefPtr<API::PageConfiguration, WTF::RawPtrTraits<API::PageConfiguration>, WTF::DefaultRefDerefTraits<API::PageConfiguration>> _pageConfiguration;
     struct LazyInitialized<WTF::RetainPtr<WKProcessPool>> _processPool;
     struct LazyInitialized<WTF::RetainPtr<WKPreferences>> _preferences;
     struct LazyInitialized<WTF::RetainPtr<WKUserContentController>> _userContentController;
@@ -24,7 +24,7 @@
     struct WeakObjCPtr<WKWebView> _relatedWebView;
     struct WeakObjCPtr<WKWebView> _alternateWebViewForNavigationGestures;
     struct RetainPtr<NSString> _groupIdentifier;
-    struct Optional<WTF::RetainPtr<NSString>> _applicationNameForUserAgent;
+    struct optional<WTF::RetainPtr<NSString>> _applicationNameForUserAgent;
     double _incrementalRenderingSuppressionTimeout;
     _Bool _respectsImageOrientation;
     _Bool _printsBackgrounds;
@@ -57,12 +57,15 @@
     _Bool _incompleteImageBorderEnabled;
     _Bool _shouldDeferAsynchronousScriptsUntilAfterDocumentLoad;
     _Bool _drawsBackground;
-    _Bool _editableImagesEnabled;
     _Bool _undoManagerAPIEnabled;
+    _Bool _appHighlightsEnabled;
+    double _sampledPageTopColorMaxDifference;
+    double _sampledPageTopColorMinHeight;
     struct RetainPtr<NSString> _mediaContentTypesRequiringHardwareSupport;
     struct RetainPtr<NSArray<NSString *>> _additionalSupportedImageTypes;
     _Bool _suppressesIncrementalRendering;
     _Bool _allowsAirPlayForMediaPlayback;
+    _Bool _limitsNavigationsToAppBoundDomains;
     _Bool _allowsPictureInPictureMediaPlayback;
     _Bool _ignoresViewportScaleLimits;
     unsigned long long _mediaTypesRequiringUserActionForPlayback;
@@ -78,11 +81,11 @@
 @property(nonatomic) _Bool allowsPictureInPictureMediaPlayback; // @synthesize allowsPictureInPictureMediaPlayback=_allowsPictureInPictureMediaPlayback;
 @property(nonatomic) long long selectionGranularity; // @synthesize selectionGranularity=_selectionGranularity;
 @property(nonatomic) _Bool allowsInlineMediaPlayback; // @synthesize allowsInlineMediaPlayback=_allowsInlineMediaPlayback;
+@property(nonatomic) _Bool limitsNavigationsToAppBoundDomains; // @synthesize limitsNavigationsToAppBoundDomains=_limitsNavigationsToAppBoundDomains;
 @property(nonatomic) unsigned long long mediaTypesRequiringUserActionForPlayback; // @synthesize mediaTypesRequiringUserActionForPlayback=_mediaTypesRequiringUserActionForPlayback;
 @property(nonatomic) _Bool allowsAirPlayForMediaPlayback; // @synthesize allowsAirPlayForMediaPlayback=_allowsAirPlayForMediaPlayback;
 @property(nonatomic) _Bool suppressesIncrementalRendering; // @synthesize suppressesIncrementalRendering=_suppressesIncrementalRendering;
-@property(nonatomic) _Bool limitsNavigationsToAppBoundDomains;
-- (Ref_1d7364d1)copyPageConfiguration;
+- (Ref_2324e752)copyPageConfiguration;
 @property(nonatomic, setter=_setContentProviderRegistry:) WKWebViewContentProviderRegistry *_contentProviderRegistry;
 @property(retain, nonatomic, setter=_setWebsiteDataStore:) _WKWebsiteDataStore *_websiteDataStore;
 - (id)urlSchemeHandlerForURLScheme:(id)arg1;
@@ -92,6 +95,7 @@
 @property(readonly, nonatomic) NSString *_applicationNameForDesktopUserAgent;
 @property(copy, nonatomic) WKWebpagePreferences *defaultWebpagePreferences;
 @property(retain, nonatomic) WKWebsiteDataStore *websiteDataStore;
+@property(nonatomic) _Bool upgradeKnownHostsToHTTPS;
 @property(retain, nonatomic) WKUserContentController *userContentController;
 @property(retain, nonatomic) WKPreferences *preferences;
 @property(retain, nonatomic) WKProcessPool *processPool;
@@ -100,12 +104,14 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)description;
 - (id)init;
+@property(nonatomic, setter=_setAttributedBundleIdentifier:) NSString *_attributedBundleIdentifier;
+@property(nonatomic, setter=_setSampledPageTopColorMinHeight:) double _sampledPageTopColorMinHeight;
+@property(nonatomic, setter=_setSampledPageTopColorMaxDifference:) double _sampledPageTopColorMaxDifference;
 @property(nonatomic, setter=_setProcessDisplayName:) NSString *_processDisplayName;
 @property(nonatomic, setter=_setShouldRelaxThirdPartyCookieBlocking:) _Bool _shouldRelaxThirdPartyCookieBlocking;
-@property(nonatomic, setter=_setIgnoresAppBoundDomains:) _Bool _ignoresAppBoundDomains;
-@property(nonatomic, setter=_setWebViewCategory:) unsigned long long _webViewCategory;
+@property(nonatomic, setter=_setAppHighlightsEnabled:) _Bool _appHighlightsEnabled;
 @property(nonatomic, setter=_setUndoManagerAPIEnabled:) _Bool _undoManagerAPIEnabled;
-@property(nonatomic, setter=_setEditableImagesEnabled:) _Bool _editableImagesEnabled;
+@property(nonatomic, setter=_setMediaCaptureEnabled:) _Bool _mediaCaptureEnabled;
 @property(nonatomic, setter=_setAllowMediaContentTypesRequiringHardwareSupportAsFallback:) _Bool _allowMediaContentTypesRequiringHardwareSupportAsFallback;
 @property(nonatomic, setter=_setLegacyEncryptedMediaAPIEnabled:) _Bool _legacyEncryptedMediaAPIEnabled;
 @property(copy, nonatomic, setter=_setAdditionalSupportedImageTypes:) NSArray *_additionalSupportedImageTypes;
@@ -124,6 +130,7 @@
 @property(nonatomic, setter=_setCrossOriginAccessControlCheckEnabled:) _Bool _crossOriginAccessControlCheckEnabled;
 @property(nonatomic, setter=_setDeferrableUserScriptsShouldWaitUntilNotification:) _Bool _deferrableUserScriptsShouldWaitUntilNotification;
 @property(nonatomic, setter=_setLoadsSubresources:) _Bool _loadsSubresources;
+@property(copy, nonatomic, setter=_setAllowedNetworkHosts:) NSSet *_allowedNetworkHosts;
 @property(nonatomic, setter=_setLoadsFromNetwork:) _Bool _loadsFromNetwork;
 @property(copy, nonatomic, setter=_setCORSDisablingPatterns:) NSArray *_corsDisablingPatterns;
 @property(readonly, nonatomic) WKWebsiteDataStore *_websiteDataStoreIfExists;
@@ -134,12 +141,13 @@
 @property(nonatomic, setter=_setAttachmentElementEnabled:) _Bool _attachmentElementEnabled;
 @property(nonatomic, setter=_setMediaDataLoadsAutomatically:) _Bool _mediaDataLoadsAutomatically;
 @property(nonatomic, setter=_setInvisibleAutoplayNotPermitted:) _Bool _invisibleAutoplayNotPermitted;
+@property(nonatomic, setter=_setIgnoresAppBoundDomains:) _Bool _ignoresAppBoundDomains;
+@property(nonatomic, setter=_setAppInitiatedOverrideValueForTesting:) unsigned long long _appInitiatedOverrideValueForTesting;
 @property(nonatomic, setter=_setClickInteractionDriverForTesting:) id <_UIClickInteractionDriving> _clickInteractionDriverForTesting;
 @property(nonatomic, setter=_setCanShowWhileLocked:) _Bool _canShowWhileLocked;
 @property(nonatomic, setter=_setShouldDecidePolicyBeforeLoadingQuickLookPreview:) _Bool _shouldDecidePolicyBeforeLoadingQuickLookPreview;
 @property(nonatomic, setter=_setSystemPreviewEnabled:) _Bool _systemPreviewEnabled;
 @property(nonatomic, setter=_setLongPressActionsEnabled:) _Bool _longPressActionsEnabled;
-@property(nonatomic, setter=_setTextInteractionGesturesEnabled:) _Bool _textInteractionGesturesEnabled;
 @property(nonatomic, setter=_setDragLiftDelay:) unsigned long long _dragLiftDelay;
 @property(nonatomic, setter=_setAllowsInlineMediaPlaybackAfterFullscreen:) _Bool _allowsInlineMediaPlaybackAfterFullscreen;
 @property(nonatomic, setter=_setInlineMediaPlaybackRequiresPlaysInlineAttribute:) _Bool _inlineMediaPlaybackRequiresPlaysInlineAttribute;
@@ -159,6 +167,7 @@
 @property(nonatomic) _Bool requiresUserActionForMediaPlayback;
 @property(nonatomic) _Bool mediaPlaybackRequiresUserAction;
 @property(nonatomic) _Bool mediaPlaybackAllowsAirPlay;
+@property(nonatomic, setter=_setTextInteractionGesturesEnabled:) _Bool _textInteractionGesturesEnabled;
 - (void)_setVisitedLinkProvider:(id)arg1;
 - (id)_visitedLinkProvider;
 

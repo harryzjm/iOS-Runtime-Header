@@ -4,11 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MISSING_TYPE;
-
 @interface _TtC9Coherence31CRDataStorePartialDecodeContext
 {
-    MISSING_TYPE *resolver;
 }
 
 @end

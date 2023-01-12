@@ -13,10 +13,14 @@
     NSArray *_results;
     unsigned long long _triggerEvent;
     SFSearchResult *_goTakeoverResult;
+    NSArray *_uniqueIdsOfVisibleButtons;
+    NSArray *_uniqueIdentifiersOfVisibleCardSections;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *uniqueIdentifiersOfVisibleCardSections; // @synthesize uniqueIdentifiersOfVisibleCardSections=_uniqueIdentifiersOfVisibleCardSections;
+@property(retain, nonatomic) NSArray *uniqueIdsOfVisibleButtons; // @synthesize uniqueIdsOfVisibleButtons=_uniqueIdsOfVisibleButtons;
 @property(retain, nonatomic) SFSearchResult *goTakeoverResult; // @synthesize goTakeoverResult=_goTakeoverResult;
 @property(nonatomic) unsigned long long triggerEvent; // @synthesize triggerEvent=_triggerEvent;
 @property(copy, nonatomic) NSArray *results; // @synthesize results=_results;
@@ -25,6 +29,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithResults:(id)arg1 triggerEvent:(unsigned long long)arg2;
+- (id)initWithResults:(id)arg1 triggerEvent:(unsigned long long)arg2 visibleButtons:(id)arg3 visibleCardSections:(id)arg4;
 
 @end
 

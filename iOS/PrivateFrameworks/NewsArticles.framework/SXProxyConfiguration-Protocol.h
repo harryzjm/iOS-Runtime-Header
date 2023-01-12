@@ -10,5 +10,6 @@
 
 @protocol SXProxyConfiguration <NSObject>
 @property(nonatomic, readonly) NSString *proxyAutoConfigScript;
+@property(nonatomic, readonly) NSString *proxyHost;
 @end
 

@@ -10,6 +10,9 @@
 {
 }
 
+- (_Bool)handlePresentationOfNotification:(id)arg1 fromNotificationCenter:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)handleUserNotificationResponse:(id)arg1 fromNotificationCenter:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (id)userNotificationCategories;
 - (id)galleryViewController;
 - (id)facesViewController;
 

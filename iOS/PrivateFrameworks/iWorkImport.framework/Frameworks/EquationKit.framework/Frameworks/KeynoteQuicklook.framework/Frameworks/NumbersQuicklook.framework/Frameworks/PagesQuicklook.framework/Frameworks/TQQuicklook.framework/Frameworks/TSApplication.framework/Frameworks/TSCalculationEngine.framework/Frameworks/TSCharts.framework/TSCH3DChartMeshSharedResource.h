@@ -8,14 +8,14 @@
 
 @interface TSCH3DChartMeshSharedResource
 {
-    TSCH3DDataBuffer *mMesh;
+    TSCH3DDataBuffer *_mesh;
 }
 
-@property(retain, nonatomic) TSCH3DDataBuffer *mesh; // @synthesize mesh=mMesh;
+- (void).cxx_destruct;
+@property(retain, nonatomic) TSCH3DDataBuffer *mesh; // @synthesize mesh=_mesh;
 - (void)flushMemory;
 - (id)get;
 - (void)setChildRegenerated:(_Bool)arg1;
-- (void)dealloc;
 
 @end
 

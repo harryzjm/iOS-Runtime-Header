@@ -22,12 +22,12 @@
 @property(readonly, nonatomic) long long accountDSID; // @synthesize accountDSID=_accountDSID;
 @property(readonly, copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 - (id)initWithMessageUserInfo:(id)arg1;
-@property(readonly, copy, nonatomic) NSArray *sagaUpdatedSubscribedPlaylistIDs;
-@property(readonly, nonatomic) long long sagaServerRevision;
-@property(readonly, copy, nonatomic) NSArray *jaliscoChangedMediaTypes;
-@property(readonly, nonatomic) long long jaliscoServerRevision;
 @property(readonly, nonatomic) long long moduleIdentifier;
 @property(readonly, copy, nonatomic) NSString *clientIdentifier;
+@property(readonly, copy, nonatomic) NSArray *jaliscoChangedMediaTypes;
+@property(readonly, nonatomic) long long jaliscoServerRevision;
+@property(readonly, copy, nonatomic) NSArray *sagaUpdatedSubscribedPlaylistIDs;
+@property(readonly, nonatomic) long long sagaServerRevision;
 
 @end
 

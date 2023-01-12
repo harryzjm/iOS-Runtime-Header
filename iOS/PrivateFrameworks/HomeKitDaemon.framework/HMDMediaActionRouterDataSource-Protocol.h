@@ -6,12 +6,12 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMDDevice, HMDHome, HMDLogEventDispatcher, HMDMediaProfile, HMFMessageDispatcher, NSArray, NSObject, NSUUID;
-@protocol OS_dispatch_queue;
+@class HMDDevice, HMDHome, HMDMediaProfile, HMFMessageDispatcher, NSArray, NSObject, NSUUID;
+@protocol HMMLogEventSubmitting, OS_dispatch_queue;
 
 @protocol HMDMediaActionRouterDataSource <NSObject>
 @property(readonly) __weak HMDHome *home;
-@property(readonly, nonatomic) HMDLogEventDispatcher *logEventDispatcher;
+@property(readonly, nonatomic) id <HMMLogEventSubmitting> logEventSubmitter;
 @property(readonly, nonatomic) HMFMessageDispatcher *msgDispatcher;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue;
 @property(readonly, nonatomic) NSUUID *uuid;

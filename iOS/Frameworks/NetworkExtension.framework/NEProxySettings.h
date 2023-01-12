@@ -60,6 +60,7 @@
 @property _Bool HTTPSEnabled; // @synthesize HTTPSEnabled=_HTTPSEnabled;
 @property _Bool HTTPEnabled; // @synthesize HTTPEnabled=_HTTPEnabled;
 @property _Bool autoProxyConfigurationEnabled; // @synthesize autoProxyConfigurationEnabled=_autoProxyConfigurationEnabled;
+@property(readonly, nonatomic) _Bool useForAllDomains;
 @property(readonly) _Bool enabled;
 @property(copy) NEProxyServer *HTTPSServer;
 @property(copy) NEProxyServer *HTTPServer;

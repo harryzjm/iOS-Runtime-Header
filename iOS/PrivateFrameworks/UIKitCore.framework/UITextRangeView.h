@@ -7,7 +7,7 @@
 #import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
 #import <UIKitCore/UITextRangeAdjustmentInteractionDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, UIPointerInteraction, UIResponder, UISelectionGrabber, UITextRangeAdjustmentInteraction, UITextSelectionView, UITouch, UIView;
+@class NSArray, NSMutableArray, NSString, UIPointerInteraction, UIResponder, UISelectionGrabber, UISelectionGrabberCustomPath, UITextRangeAdjustmentInteraction, UITextSelectionView, UITouch, UIView;
 @protocol UITextInput;
 
 __attribute__((visibility("hidden")))
@@ -38,6 +38,8 @@ __attribute__((visibility("hidden")))
     _Bool m_shouldStayVisible;
     _Bool _baseIsStart;
     UITextRangeAdjustmentInteraction *_adjustmentInteraction;
+    UISelectionGrabberCustomPath *_startCustomPath;
+    UISelectionGrabberCustomPath *_endCustomPath;
     struct CGPoint m_basePoint;
     struct CGPoint m_extentPoint;
     struct CGPoint m_initialExtentPoint;
@@ -45,6 +47,8 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UISelectionGrabberCustomPath *endCustomPath; // @synthesize endCustomPath=_endCustomPath;
+@property(retain, nonatomic) UISelectionGrabberCustomPath *startCustomPath; // @synthesize startCustomPath=_startCustomPath;
 @property(retain, nonatomic) UITextRangeAdjustmentInteraction *adjustmentInteraction; // @synthesize adjustmentInteraction=_adjustmentInteraction;
 @property(readonly, nonatomic) struct CGPoint activeTouchPoint; // @synthesize activeTouchPoint=_activeTouchPoint;
 @property(nonatomic) _Bool baseIsStart; // @synthesize baseIsStart=_baseIsStart;
@@ -110,6 +114,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UITextSelectionView *selectionView;
 @property(nonatomic) int mode; // @synthesize mode=m_mode;
 - (void)updateAfterEffectiveModeChange;
+- (id)containerCoordinateSpaceForTextRangeAdjustmentInteraction:(id)arg1;
+- (struct CGRect)caretRectForTextRangeAdjustmentInteraction:(id)arg1;
 - (void)textRangeAdjustmentInteractionWasCancelled:(id)arg1;
 - (void)textRangeAdjustmentInteraction:(id)arg1 didEndAtPoint:(struct CGPoint)arg2;
 - (void)textRangeAdjustmentInteraction:(id)arg1 selectionMoved:(struct CGPoint)arg2 withTouchPoint:(struct CGPoint)arg3;

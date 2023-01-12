@@ -8,7 +8,8 @@
 
 @interface _TtC8FMIPCore16FMIPNotifyAction
 {
-    MISSING_TYPE *whenLocationFound;
+    MISSING_TYPE *type;
+    MISSING_TYPE *enabled;
 }
 
 @end

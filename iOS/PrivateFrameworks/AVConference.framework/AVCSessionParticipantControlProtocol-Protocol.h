@@ -11,8 +11,10 @@
 @protocol AVCSessionParticipantControlProtocol <NSObject>
 @property(readonly, nonatomic) NSData *frequencyLevels;
 @property(nonatomic) float volume;
+@property(nonatomic, getter=isOneToOneEnabled) _Bool oneToOneEnabled;
 @property(nonatomic, getter=isVideoPaused) _Bool videoPaused;
 @property(nonatomic, getter=isAudioPaused) _Bool audioPaused;
+@property(nonatomic, getter=isScreenEnabled) _Bool screenEnabled;
 @property(nonatomic, getter=isVideoEnabled) _Bool videoEnabled;
 @property(nonatomic, getter=isAudioEnabled) _Bool audioEnabled;
 @property(nonatomic, getter=isAudioMuted) _Bool audioMuted;

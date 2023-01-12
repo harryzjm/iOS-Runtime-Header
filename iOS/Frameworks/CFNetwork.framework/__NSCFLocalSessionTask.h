@@ -23,7 +23,7 @@
     CDUnknownBlockType _async_initialization;
     NSObject<OS_dispatch_source> *_resourceTimeout;
     struct os_unfair_lock_s _connKeyLock;
-    struct HTTPConnectionCacheKey *_connKey;
+    void *_connKey;
     double _startTimeoutTime;
     NSObject<OS_dispatch_source> *_startTimeoutTimer;
     NSObject<OS_dispatch_source> *_payloadTransmissionTimer;
@@ -59,7 +59,6 @@
 - (void)connection:(id)arg1 request:(id)arg2 needsNewBodyStreamCallback:(CDUnknownBlockType)arg3;
 - (void)connection:(id)arg1 didFinishLoadingWithError:(id)arg2;
 - (void)connectionWillFinishLoading:(id)arg1;
-- (void)connection:(id)arg1 didFinishCollectingMetrics:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)connection:(id)arg1 willCacheResponse:(id)arg2 responseCallback:(CDUnknownBlockType)arg3;
 - (void)connection:(id)arg1 didReceiveResponse:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)connection:(id)arg1 wasRedirected:(id)arg2 newRequest:(id)arg3 responseCallback:(CDUnknownBlockType)arg4;
@@ -67,7 +66,7 @@
 - (void)_didSendMetrics;
 - (_Bool)_needSendingMetrics;
 - (void)startResourceTimer;
-- (void)_setConnectionCacheKey:(struct HTTPConnectionCacheKey *)arg1;
+- (void)_setConnectionCacheKey:(void *)arg1;
 - (void)set_TLSMaximumSupportedProtocolVersion:(unsigned short)arg1;
 - (void)set_TLSMinimumSupportedProtocolVersion:(unsigned short)arg1;
 - (id)resourceTimeoutError;
@@ -76,6 +75,7 @@
 - (void)_askForConnectedSocketLater;
 - (void)cancel_with_error:(id)arg1;
 - (void)_onSessionQueue_disavow;
+- (void)didReceiveInformationalResponse:(id)arg1;
 - (void)_onqueue_expectedProgressTargetChanged;
 - (void)_onqueue_adjustBytesPerSecondLimit:(long long)arg1;
 - (void)_onqueue_adjustPriorityHint:(float)arg1 incremental:(_Bool)arg2;
@@ -95,7 +95,6 @@
 - (void)_onqueue_didReceiveDispatchData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_onqueue_didFinishWithError:(id)arg1;
 - (void)_task_onqueue_didFinish;
-- (void)_onqueue_didFinishCollectingMetrics:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_onqueue_willCacheResponse:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_onqueue_didReceiveChallenge:(id)arg1 request:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)_onqueue_didReceiveResponse:(id)arg1 redirectRequest:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;

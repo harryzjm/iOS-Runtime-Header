@@ -22,6 +22,7 @@
     _Bool _contentViewHitTestingDisabled;
     _Bool _backgroundHidden;
     _Bool _showingMoreContent;
+    _Bool _editingIcons;
     NSString *_materialGroupNameBase;
     WGWidgetHostingViewController *_widgetHost;
     WGWidgetListItemViewController *_listItem;
@@ -34,6 +35,7 @@
 
 + (double)contentBaselineToBoundsBottomWithWidth:(double)arg1;
 - (void).cxx_destruct;
+@property(nonatomic, getter=isEditingIcons) _Bool editingIcons; // @synthesize editingIcons=_editingIcons;
 @property(nonatomic, getter=isShowingMoreContent) _Bool showingMoreContent; // @synthesize showingMoreContent=_showingMoreContent;
 @property(nonatomic) long long buttonMode; // @synthesize buttonMode=_buttonMode;
 @property(nonatomic) double topMarginForLayout; // @synthesize topMarginForLayout=_topMarginForLayout;
@@ -46,6 +48,7 @@
 @property(nonatomic) __weak WGWidgetHostingViewController *widgetHost; // @synthesize widgetHost=_widgetHost;
 @property(copy, nonatomic) NSString *materialGroupNameBase; // @synthesize materialGroupNameBase=_materialGroupNameBase;
 @property(nonatomic) _Bool adjustsFontForContentSizeCategory; // @synthesize adjustsFontForContentSizeCategory=_adjustsFontForContentSizeCategory;
+- (_Bool)canBecomeFocused;
 - (void)iconDidInvalidate:(id)arg1;
 - (void)_updateUtilityButtonForMoreContentState:(_Bool)arg1;
 - (void)_handleAddWidget:(id)arg1;

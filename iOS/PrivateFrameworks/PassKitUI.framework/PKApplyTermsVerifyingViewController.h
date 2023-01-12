@@ -18,6 +18,7 @@
 }
 
 - (void).cxx_destruct;
+- (id)analyticsPageTag;
 - (void)_terminateSetupFlow;
 - (void)_showActivationSpinner:(_Bool)arg1;
 - (void)_processTerms;

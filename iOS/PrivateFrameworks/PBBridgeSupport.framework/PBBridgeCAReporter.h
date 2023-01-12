@@ -10,6 +10,14 @@
 {
 }
 
++ (void)recordTinkerGuardianAcceptedDiagsAndUsage:(_Bool)arg1;
++ (void)recordTransitionedDynamicHelpViewFromType:(long long)arg1 toType:(long long)arg2;
++ (void)recordPasscodeChallenge:(long long)arg1;
++ (void)recordPasscodeCreatedWithType:(long long)arg1 wasChallenged:(_Bool)arg2;
++ (void)recordUserAwarenessNotificationDuringSetupUserEngaged;
++ (void)recordUserAwarenessNotificationDuringSetup;
++ (void)recordAllWatchesDetailButtonVisit:(_Bool)arg1;
++ (void)recordSetupAppInstallChoice:(_Bool)arg1;
 + (void)recordEndOfLifePhoneAlertUserResponse:(_Bool)arg1;
 + (void)recordEndOfLifePhoneAlertPresented:(_Bool)arg1;
 + (void)recordAlreadyPairedAlertFiredAndWatchRecovered:(double)arg1;

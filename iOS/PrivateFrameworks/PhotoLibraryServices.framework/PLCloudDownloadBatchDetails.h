@@ -15,13 +15,11 @@
     long long _numberOfPhotos;
     long long _numberOfVideos;
     NSArray *_cmmUUIDsToNotify;
-    NSArray *_flippedPlaceholderAssetUUIDs;
     NSSet *_confirmedResourceIDs;
 }
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSSet *confirmedResourceIDs; // @synthesize confirmedResourceIDs=_confirmedResourceIDs;
-@property(copy, nonatomic) NSArray *flippedPlaceholderAssetUUIDs; // @synthesize flippedPlaceholderAssetUUIDs=_flippedPlaceholderAssetUUIDs;
 @property(copy, nonatomic) NSArray *cmmUUIDsToNotify; // @synthesize cmmUUIDsToNotify=_cmmUUIDsToNotify;
 @property(nonatomic) long long numberOfVideos; // @synthesize numberOfVideos=_numberOfVideos;
 @property(nonatomic) long long numberOfPhotos; // @synthesize numberOfPhotos=_numberOfPhotos;

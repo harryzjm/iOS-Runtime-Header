@@ -16,13 +16,19 @@
     struct CGSize _size;
 }
 
-+ (id)defaultSubheadlineFont;
-+ (id)defaultHeadlineFont;
-+ (id)defaultFootnote;
-+ (id)defaultItalicLabelFont;
-+ (id)defaultBoldLabelFont;
-+ (id)defaultLabelFont;
++ (id)systemFontOfSize:(double)arg1 weight:(double)arg2;
++ (id)preferredFontForTextStyle:(id)arg1 symoblicTraits:(unsigned int)arg2 languageCode:(id)arg3;
++ (id)preferredFontForTextStyle:(id)arg1 languageCode:(id)arg2;
++ (id)preferredFontForTextStyle:(id)arg1;
++ (id)subheadlineFont;
++ (id)headlineFont;
++ (id)footnoteFont;
++ (id)bodyFont;
++ (id)italicTextFont;
++ (id)boldTextFont;
++ (id)defaultTextLabelFont;
 + (id)titleLabelFont;
++ (id)language;
 + (id)secondaryBackgroundColor;
 + (id)secondaryLabelColor;
 + (id)defaultBackgroundColor;
@@ -30,12 +36,14 @@
 + (double)introOutroTitleTopPadding;
 + (double)buttonHeight;
 + (double)displayMultiplier;
++ (_Bool)isMacUI;
 + (_Bool)isPhoneUI;
 - (void).cxx_destruct;
 @property(nonatomic) double sizeToScreenRatio; // @synthesize sizeToScreenRatio=_sizeToScreenRatio;
 @property(retain, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 @property(nonatomic) struct CGSize size; // @synthesize size=_size;
 @property(nonatomic) unsigned long long mediaSizeType; // @synthesize mediaSizeType=_mediaSizeType;
+- (struct CGSize)sizeWithSizes:(id)arg1 mediaSizeType:(unsigned long long)arg2;
 - (double)heightToWidthRatioFromSizes:(id)arg1 mediaSizeType:(unsigned long long)arg2 defaultValue:(double)arg3;
 - (double)nativeSizeForValue:(double)arg1;
 - (double)displayMultiplierWithValue:(double)arg1;

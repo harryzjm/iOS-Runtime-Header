@@ -8,7 +8,7 @@
 
 @interface TSCHChartStackedPercentValueAxis
 {
-    TSCHChartAxisAnalysis *mInProgressAnalysisForErrorBarData;
+    TSCHChartAxisAnalysis *_inProgressAnalysisForErrorBarData;
 }
 
 - (void).cxx_destruct;

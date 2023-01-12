@@ -12,19 +12,18 @@
 
 @interface AVTAvatarAttributeEditorSectionSupplementalPicker : NSObject <AVTAvatarAttributeEditorSectionSupplementalPicker>
 {
-    _Bool _alwaysPresentAlert;
     NSString *_localizedTitle;
     NSArray *_choices;
 }
 
++ (id)pickerForMulticolorPicker:(id)arg1 isMultipleSelected:(_Bool)arg2 switchToSingleColorAvatarUpdater:(CDUnknownBlockType)arg3 switchToMultipleColorAvatarUpdater:(CDUnknownBlockType)arg4;
 + (id)pickerForPairableModelCategory:(id)arg1 isPaired:(_Bool)arg2 avatarUpdaterOnPair:(CDUnknownBlockType)arg3;
 + (id)pickerFromEditorSection:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) _Bool alwaysPresentAlert; // @synthesize alwaysPresentAlert=_alwaysPresentAlert;
 @property(readonly, copy, nonatomic) NSArray *choices; // @synthesize choices=_choices;
 @property(readonly, copy, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
 - (id)copyWithLocalizedTitle:(id)arg1;
-- (id)initWithLocalizedTitle:(id)arg1 choices:(id)arg2 alwaysPresentAlert:(_Bool)arg3;
+- (id)initWithLocalizedTitle:(id)arg1 choices:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

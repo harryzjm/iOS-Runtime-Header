@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_012fa2a8)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_012fa2a8)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) long long speech_packet_count;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithFlatbuffData:(id)arg1 root:(const struct ResetServerEndpointer *)arg2 verify:(_Bool)arg3;

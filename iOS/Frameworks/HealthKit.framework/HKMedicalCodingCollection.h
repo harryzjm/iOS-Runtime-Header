@@ -7,29 +7,33 @@
 #import <objc/NSObject.h>
 
 #import <HealthKit/NSCopying-Protocol.h>
+#import <HealthKit/NSFastEnumeration-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSSet;
+@class NSArray, NSDictionary, NSOrderedSet, NSSet;
 
-@interface HKMedicalCodingCollection : NSObject <NSSecureCoding, NSCopying>
+@interface HKMedicalCodingCollection : NSObject <NSSecureCoding, NSCopying, NSFastEnumeration>
 {
-    NSArray *_codings;
+    NSOrderedSet *_codingsOrderedSet;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)collectionWithCoding:(id)arg1;
 + (id)collectionWithCodings:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSArray *codings; // @synthesize codings=_codings;
+- (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
+@property(readonly, nonatomic) long long count;
+@property(readonly, copy, nonatomic) NSSet *codingsSet;
+@property(readonly, copy, nonatomic) NSArray *codings;
 @property(readonly, copy, nonatomic) NSDictionary *codingsBySystem;
 - (id)codingsForCodingSystem:(id)arg1;
-@property(readonly, copy, nonatomic) NSSet *uniqueCodings;
 - (id)description;
+- (id)collectionByAddingCodings:(id)arg1;
 - (id)initWithCodings:(id)arg1;
 - (id)init;
 

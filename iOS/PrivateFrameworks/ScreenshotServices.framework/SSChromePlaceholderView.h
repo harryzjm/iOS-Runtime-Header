@@ -8,7 +8,7 @@
 
 #import <ScreenshotServices/UINavigationBarDelegate-Protocol.h>
 
-@class NSArray, NSString, SSVellumOpacityControl, UIBarButtonItem, UINavigationBar, UINavigationItem;
+@class NSArray, NSString, SSVellumOpacityControl, UIBarButtonItem, UINavigationBar, UINavigationItem, VKImageAnalysisBarButtonItem, VKSelectableBarButtonItem;
 
 @interface SSChromePlaceholderView : UIView <UINavigationBarDelegate>
 {
@@ -26,6 +26,8 @@
     UINavigationBar *_topBarBackground;
     UIView *_topBarSeparatorLine;
     NSArray *_barItems;
+    VKSelectableBarButtonItem *_annotationEnabledButton;
+    VKImageAnalysisBarButtonItem *_aaBarButtonItem;
     double _contentAlpha;
 }
 

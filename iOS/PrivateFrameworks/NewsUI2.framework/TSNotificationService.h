@@ -10,6 +10,7 @@
 
 @class MISSING_TYPE;
 
+__attribute__((visibility("hidden")))
 @interface TSNotificationService : NSObject <UNUserNotificationCenterDelegate>
 {
     MISSING_TYPE *options;

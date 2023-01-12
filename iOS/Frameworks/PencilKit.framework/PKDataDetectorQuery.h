@@ -4,29 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PencilKit/CHQueryDelegate-Protocol.h>
-
-@class CHDataDetectorQuery, NSString;
-
-@interface PKDataDetectorQuery <CHQueryDelegate>
+@interface PKDataDetectorQuery
 {
-    CHDataDetectorQuery *_dataDetectorQuery;
 }
 
-- (void).cxx_destruct;
-@property(retain, nonatomic) CHDataDetectorQuery *dataDetectorQuery; // @synthesize dataDetectorQuery=_dataDetectorQuery;
 - (void)queryDidUpdateResult:(id)arg1;
-- (void)dealloc;
-- (void)teardown;
-- (void)pause;
-- (void)start;
 - (id)initWithRecognitionSessionManager:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

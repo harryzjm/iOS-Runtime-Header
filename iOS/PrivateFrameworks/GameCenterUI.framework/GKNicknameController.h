@@ -22,9 +22,11 @@
     id <GKNicknameControllerDelegate> _delegate;
     GKReachability *_reachability;
     NSArray *_suggestedNicknames;
+    NSString *_defaultNickname;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *defaultNickname; // @synthesize defaultNickname=_defaultNickname;
 @property(retain, nonatomic) NSArray *suggestedNicknames; // @synthesize suggestedNicknames=_suggestedNicknames;
 @property(retain, nonatomic) GKReachability *reachability; // @synthesize reachability=_reachability;
 @property __weak id <GKNicknameControllerDelegate> delegate; // @synthesize delegate=_delegate;

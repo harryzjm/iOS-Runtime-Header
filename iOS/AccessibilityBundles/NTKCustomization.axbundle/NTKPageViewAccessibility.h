@@ -22,7 +22,9 @@
 - (id)accessibilityHint;
 - (id)accessibilityValue;
 - (id)accessibilityLabel;
+- (_Bool)_accessibilityFKAShouldProcessChildren;
 - (_Bool)isAccessibilityElement;
+- (id)accessibilityPath;
 
 @end
 

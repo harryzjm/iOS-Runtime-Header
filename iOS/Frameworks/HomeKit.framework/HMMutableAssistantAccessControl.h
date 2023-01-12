@@ -17,6 +17,7 @@
 @property _Bool allowUnauthenticatedRequests;
 - (void)setOptions:(unsigned long long)arg1;
 - (unsigned long long)options;
+@property(getter=areActivityNotificationsEnabledForPersonalRequests) _Bool activityNotificationsEnabledForPersonalRequests;
 @property(getter=isEnabled) _Bool enabled;
 
 @end

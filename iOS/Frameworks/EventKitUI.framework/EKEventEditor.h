@@ -6,13 +6,12 @@
 
 #import <EventKitUI/EKEventAutocompleteResultsEditItemDelegate-Protocol.h>
 
-@class EKCalendarItemAlarmEditItem, EKCalendarItemCalendarEditItem, EKCalendarItemLocationInlineEditItem, EKCalendarItemTitleInlineEditItem, EKEvent, EKEventAttachmentsEditItem, EKEventAttendeesEditItem, EKEventAutocompleteResultsEditItem, EKEventDateEditItem, EKEventURLAndNotesInlineEditItem, EKUIAutocompleteSearchResult, EKUIAutocompleteTracker, NSString, NSTimer, UIColor;
-@protocol EKUIAutocompletePendingSearchProtocol;
+@class EKAutocompleteSearchResult, EKCalendarItemAlarmEditItem, EKCalendarItemCalendarEditItem, EKCalendarItemLocationInlineEditItem, EKCalendarItemTitleInlineEditItem, EKEvent, EKEventAttachmentsEditItem, EKEventAttendeesEditItem, EKEventAutocompleteResultsEditItem, EKEventDateEditItem, EKEventURLAndNotesInlineEditItem, EKUIAutocompleteTracker, NSString, NSTimer, UIColor;
+@protocol EKAutocompletePendingSearchProtocol;
 
 @interface EKEventEditor <EKEventAutocompleteResultsEditItemDelegate>
 {
     EKEventDateEditItem *_dateItem;
-    EKEventAttendeesEditItem *_attendeesEditItem;
     EKEventAutocompleteResultsEditItem *_autocompleteEditItem;
     EKCalendarItemTitleInlineEditItem *_titleInlineEditItem;
     EKCalendarItemLocationInlineEditItem *_locationInlineEditItem;
@@ -20,18 +19,19 @@
     EKCalendarItemAlarmEditItem *_alarmEditItem;
     EKEventURLAndNotesInlineEditItem *_notesEditItem;
     EKEventAttachmentsEditItem *_attachmentsEditItem;
+    EKEventAttendeesEditItem *_attendeesEditItem;
     _Bool _shouldAutocomplete;
-    id <EKUIAutocompletePendingSearchProtocol> _pendingSearch;
+    id <EKAutocompletePendingSearchProtocol> _pendingSearch;
     NSTimer *_autocompleteTimer;
     NSString *_autocompleteSearchString;
     _Bool _isTransitioning;
     _Bool _autocompleteResultsVisible;
     unsigned long long _focusOnAppearanceTarget;
     _Bool _selectOnFocus;
-    EKUIAutocompleteSearchResult *_selectedAutocompleteResult;
+    EKAutocompleteSearchResult *_selectedAutocompleteResult;
     unsigned long long _selectedAutocompleteResultIndex;
-    EKUIAutocompleteSearchResult *_zeroKeywordResult;
-    EKUIAutocompleteSearchResult *_naturalLanguageResult;
+    EKAutocompleteSearchResult *_zeroKeywordResult;
+    EKAutocompleteSearchResult *_naturalLanguageResult;
     _Bool _hasShownZeroKeywordResult;
     _Bool _hasShownNaturalLanguageResult;
     EKUIAutocompleteTracker *_autocompleteTracker;
@@ -61,6 +61,7 @@
 - (void)_scheduleAutocompleteSearchWithString:(id)arg1;
 - (void)_hideAndCancelAutocompleteResults;
 - (void)_showAutocompleteResults;
+- (void)editItem:(id)arg1 didSaveFromDetailViewController:(_Bool)arg2;
 - (void)editItemDidStartEditing:(id)arg1;
 - (void)editItemTextChanged:(id)arg1;
 - (void)_setEventTitleForTestingAutocomplete:(id)arg1;
@@ -85,7 +86,8 @@
 - (id)_orderedEditItems;
 - (id)_editItems;
 - (id)_calendarItemIndexSet;
-- (void)reloadTableViewSectionsForDates:(_Bool)arg1 invitees:(_Bool)arg2 location:(_Bool)arg3;
+- (void)reloadTableViewSectionsForDates:(_Bool)arg1 invitees:(_Bool)arg2 location:(_Bool)arg3 alarm:(_Bool)arg4;
+- (void)refreshURL;
 - (void)refreshLocation;
 - (void)refreshInvitees;
 - (void)refreshStartAndEndDates;

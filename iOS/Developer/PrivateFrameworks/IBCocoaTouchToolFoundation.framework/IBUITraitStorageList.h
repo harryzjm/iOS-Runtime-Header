@@ -8,17 +8,17 @@
 
 #import <IBCocoaTouchToolFoundation/IBBinaryArchiving-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableSet, NSSet, NSString;
+@class NSArray, NSMutableArray, NSMutableOrderedSet, NSOrderedSet, NSString;
 
 @interface IBUITraitStorageList : NSObject <IBBinaryArchiving>
 {
     NSMutableArray *_traitStorages;
-    NSMutableSet *_descendantObjectIDs;
+    NSMutableOrderedSet *_descendantObjectIDs;
     NSString *_topLevelObjectID;
 }
 
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSSet *descendantObjectIDs; // @synthesize descendantObjectIDs=_descendantObjectIDs;
+@property(readonly, copy, nonatomic) NSOrderedSet *descendantObjectIDs; // @synthesize descendantObjectIDs=_descendantObjectIDs;
 @property(readonly, copy, nonatomic) NSArray *traitStorages; // @synthesize traitStorages=_traitStorages;
 @property(readonly, copy, nonatomic) NSString *topLevelObjectID; // @synthesize topLevelObjectID=_topLevelObjectID;
 @property(readonly, copy) NSString *description;

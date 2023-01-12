@@ -6,9 +6,11 @@
 
 #import <VideosUI/JSExport-Protocol.h>
 
-@class NSDictionary, NSNumber, NSString;
+@class NSArray, NSDictionary, NSNumber, NSString;
 
 @protocol VUIJSNotificationCenter <JSExport>
+- (void)clearBadgeData;
+- (NSArray *)badgeData;
 - (void)setBadgeString:(NSString *)arg1;
 - (void)setBadgeNumber:(NSNumber *)arg1;
 - (void)post:(NSString *)arg1:(NSString *)arg2:(NSString *)arg3:(NSDictionary *)arg4;

@@ -16,6 +16,7 @@
 {
 }
 
++ (_Bool)_subclassesMustBeExplicitlyMentionedWhenDecoded;
 + (_Bool)supportsSecureCoding;
 + (id)weakToWeakObjectsMapTable;
 + (id)strongToWeakObjectsMapTable;

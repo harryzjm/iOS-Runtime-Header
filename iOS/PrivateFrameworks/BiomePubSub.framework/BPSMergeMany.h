@@ -11,11 +11,14 @@
     NSArray *_publishers;
 }
 
++ (id)publisherWithPublisher:(id)arg1 upstreams:(id)arg2 bookmarkState:(id)arg3;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *publishers; // @synthesize publishers=_publishers;
 - (void)subscribe:(id)arg1;
 - (id)initWithPublishers:(id)arg1;
 - (id)init;
+- (_Bool)canStoreInternalStateInBookmark;
+- (id)bookmarkableUpstreams;
 
 @end
 

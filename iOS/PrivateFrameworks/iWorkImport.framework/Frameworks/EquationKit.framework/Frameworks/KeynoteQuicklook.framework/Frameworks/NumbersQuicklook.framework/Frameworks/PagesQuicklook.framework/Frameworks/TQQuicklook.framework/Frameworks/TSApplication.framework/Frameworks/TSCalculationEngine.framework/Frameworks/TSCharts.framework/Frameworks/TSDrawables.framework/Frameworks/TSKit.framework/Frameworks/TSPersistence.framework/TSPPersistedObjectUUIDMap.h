@@ -7,24 +7,38 @@
 #import <objc/NSObject.h>
 
 #import <TSPersistence/NSCopying-Protocol.h>
+#import <TSPersistence/TSPObjectInDocumentContaining-Protocol.h>
 
-@interface TSPPersistedObjectUUIDMap : NSObject <NSCopying>
+@class NSMutableIndexSet, NSString;
+
+@interface TSPPersistedObjectUUIDMap : NSObject <NSCopying, TSPObjectInDocumentContaining>
 {
-    struct unordered_map<NSUUID *, TSP::ObjectLocation, TSP::NSUUIDHash, TSP::NSUUIDEqualTo, std::__1::allocator<std::__1::pair<NSUUID *const, TSP::ObjectLocation>>> *_map;
+    void *_map;
+    NSMutableIndexSet *_objectIdentifiers;
 }
 
+- (void).cxx_destruct;
 - (void)enumerateEntriesUsingBlock:(CDUnknownBlockType)arg1;
+- (_Bool)isAnyObjectIdentifierInDocument:(id)arg1;
+- (_Bool)isObjectIdentifierInDocument:(long long)arg1;
 @property(readonly, nonatomic) unsigned long long count;
+- (void)didUpdateObjectIdentifierDuringRead:(long long)arg1 UUID:(id)arg2 componentIdentifier:(long long)arg3 originalObjectIdentifier:(long long)arg4 originalUUID:(id)arg5 delegate:(id)arg6;
 - (void)didUpdateObjectIdentifierDuringRead:(long long)arg1 forUUID:(id)arg2 componentIdentifier:(long long)arg3 originalObjectIdentifier:(long long)arg4 delegate:(id)arg5;
 - (void)didUpdateUUIDDuringRead:(id)arg1 forComponentIdentifier:(long long)arg2 objectIdentifier:(long long)arg3 originalUUID:(id)arg4 isDuplicatedUUID:(_Bool)arg5 delegate:(id)arg6;
-- (struct ObjectLocation)objectLocationForUUID:(id)arg1;
-- (_Bool)setObjectLocation:(struct ObjectLocation)arg1 forUUID:(id)arg2 objectReferenceMapOrNil:(id)arg3 delegate:(id)arg4;
+- (struct TSPObjectLocation)objectLocationForUUID:(id)arg1;
+- (_Bool)setObjectLocation:(struct TSPObjectLocation)arg1 forUUID:(id)arg2 objectReferenceMap:(id)arg3 delegate:(id)arg4;
 - (id)descriptionForComponentIdentifier:(long long)arg1 objectIdentifier:(long long)arg2 delegate:(id)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)init;
 - (id)initWithPersistedObjectUUIDMap:(id)arg1;
-- (id)initWithComponentsDictionary:(id)arg1 isLoadingDocument:(_Bool)arg2 objectReferenceMapOrNil:(id)arg3 delegate:(id)arg4;
+- (id)initWithComponentObjectUUIDMapDictionary:(id)arg1 objectUUIDCount:(unsigned long long)arg2 isLoadingDocument:(_Bool)arg3 objectReferenceMap:(id)arg4 delegate:(id)arg5;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

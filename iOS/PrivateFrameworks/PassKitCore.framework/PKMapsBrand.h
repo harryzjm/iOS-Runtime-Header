@@ -9,7 +9,7 @@
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 #import <PassKitCore/PKCloudStoreCoding-Protocol.h>
 
-@class MKWalletMerchantStylingInfo, NSString, NSURL;
+@class MKWalletMerchantStylingInfo, NSDate, NSString, NSURL;
 
 @interface PKMapsBrand : NSObject <NSSecureCoding, PKCloudStoreCoding>
 {
@@ -25,12 +25,15 @@
     NSURL *_heroImageURL;
     NSString *_heroImageAttributionName;
     NSURL *_businessChatURL;
+    NSDate *_lastProcessedDate;
 }
 
 + (id)recordNamePrefix;
-+ (void)deleteFromCloudStoreRecord:(id)arg1;
++ (void)_deleteDeviceDataFromCloudStoreRecord:(id)arg1;
++ (void)deleteFromCloudStoreRecord:(id)arg1 codingType:(unsigned long long)arg2;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSDate *lastProcessedDate; // @synthesize lastProcessedDate=_lastProcessedDate;
 @property(copy, nonatomic) NSURL *businessChatURL; // @synthesize businessChatURL=_businessChatURL;
 @property(copy, nonatomic) NSString *heroImageAttributionName; // @synthesize heroImageAttributionName=_heroImageAttributionName;
 @property(retain, nonatomic) NSURL *heroImageURL; // @synthesize heroImageURL=_heroImageURL;
@@ -53,9 +56,9 @@
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)itemType;
 - (id)primaryIdentifier;
-- (id)recordTypesAndNamesIncludingServerData:(_Bool)arg1;
-- (void)encodeServerAndDeviceDataWithCloudStoreCoder:(id)arg1;
-- (void)encodeWithCloudStoreCoder:(id)arg1;
+- (id)recordTypesAndNamesForCodingType:(unsigned long long)arg1;
+- (void)_encodeDeviceDataForCloudStoreCoder:(id)arg1;
+- (void)encodeWithCloudStoreCoder:(id)arg1 codingType:(unsigned long long)arg2;
 - (void)applyPropertiesFromCloudStoreRecord:(id)arg1;
 - (id)initWithCloudStoreCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

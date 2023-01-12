@@ -7,6 +7,8 @@
 #import <TSUtility/TSULocale.h>
 
 @interface TSULocale (TSCELocalization)
+- (id)localizedLabelForShowAsType:(unsigned char)arg1;
+- (id)localizedShortLabelForAggType:(unsigned char)arg1;
 - (id)localizedLabelForAggType:(unsigned char)arg1;
 - (id)allLocalizedFunctions;
 - (id)localizedCategoryArray;
@@ -28,7 +30,7 @@
 - (_Bool)localizedStringIsFalse:(id)arg1;
 - (id)localizedTrueString;
 - (_Bool)localizedStringIsTrue:(id)arg1;
-- (id)localizedTypeStringForArgumentType:(int)arg1;
+- (id)localizedTypeStringForArgumentType:(BOOL)arg1;
 - (id)supportedFunctions;
 - (id)functionNameForLocalizedString:(id)arg1;
 - (id)functionLocalizationDictionary;

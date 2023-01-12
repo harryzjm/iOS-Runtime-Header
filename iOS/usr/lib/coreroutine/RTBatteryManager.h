@@ -27,7 +27,7 @@
 - (void)internalRemoveObserver:(id)arg1 name:(id)arg2;
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
 - (void)_unregisterForNotifications;
-- (void)_shutdown;
+- (void)_shutdownWithHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)initWithQueue:(id)arg1 notificationHelper:(id)arg2;
 - (id)initWithQueue:(id)arg1;

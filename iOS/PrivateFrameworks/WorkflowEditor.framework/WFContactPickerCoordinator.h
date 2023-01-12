@@ -25,6 +25,7 @@
 @property(nonatomic) __weak UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 @property(retain, nonatomic) WFAlertPresentationSource *presentationSource; // @synthesize presentationSource=_presentationSource;
 @property(copy, nonatomic) NSSet *supportedPersonProperties; // @synthesize supportedPersonProperties=_supportedPersonProperties;
+- (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (void)presentationControllerDidDismiss:(id)arg1;
 - (void)contactPicker:(id)arg1 didSelectContactProperty:(id)arg2;
 - (void)contactPicker:(id)arg1 didSelectContact:(id)arg2;

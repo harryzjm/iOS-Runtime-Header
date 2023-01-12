@@ -35,14 +35,15 @@
     _Bool _clsIsInterestingReframe;
     NSString *_clsIdentifier;
     CLLocation *_clsLocation;
-    NSArray *_clsPeopleNames;
+    NSArray *_clsPersonLocalIdentifiers;
+    NSArray *_clsConsolidatedPersonLocalIdentifiers;
     long long _clsViewCount;
     long long _clsPlayCount;
     long long _clsShareCount;
     double _clsContentScore;
     NSSet *_clsSceneClassifications;
     VNSceneprint *_clsSceneprint;
-    NSArray *_clsUnprefetchedPeopleNames;
+    NSArray *_clsUnprefetchedPersonLocalIdentifiers;
     double _clsSharpnessScore;
     double _clsExposureScore;
     double _clsAestheticScore;
@@ -52,12 +53,16 @@
     double _clsAutoplaySuggestionScore;
     double _clsDuration;
     double _clsSquareCropScore;
+    NSArray *_clsPetLocalIdentifiers;
+    NSArray *_clsPersonAndPetLocalIdentifiers;
 }
 
 + (id)itemWithUniversalDate:(id)arg1 sceneClassifications:(id)arg2;
 + (id)itemWithPeopleNames:(id)arg1 universalDate:(id)arg2 coordinate:(struct CLLocationCoordinate2D)arg3;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool clsIsInterestingReframe; // @synthesize clsIsInterestingReframe=_clsIsInterestingReframe;
+@property(readonly, nonatomic) NSArray *clsPersonAndPetLocalIdentifiers; // @synthesize clsPersonAndPetLocalIdentifiers=_clsPersonAndPetLocalIdentifiers;
+@property(readonly, nonatomic) NSArray *clsPetLocalIdentifiers; // @synthesize clsPetLocalIdentifiers=_clsPetLocalIdentifiers;
 @property(readonly, nonatomic) double clsSquareCropScore; // @synthesize clsSquareCropScore=_clsSquareCropScore;
 @property(readonly, nonatomic) _Bool clsIsLongExposure; // @synthesize clsIsLongExposure=_clsIsLongExposure;
 @property(readonly, nonatomic) _Bool clsIsLoopOrBounce; // @synthesize clsIsLoopOrBounce=_clsIsLoopOrBounce;
@@ -68,7 +73,7 @@
 @property(retain, nonatomic) NSDate *cls_universalDate; // @synthesize cls_universalDate=_cls_universalDate;
 @property(readonly) _Bool clsHasInterestingScenes; // @synthesize clsHasInterestingScenes=_clsHasInterestingScenes;
 @property(readonly) _Bool clsHasPoorResolution; // @synthesize clsHasPoorResolution=_clsHasPoorResolution;
-@property(readonly) _Bool clsAvoidIfPossibleForKeyItem; // @synthesize clsAvoidIfPossibleForKeyItem=_clsAvoidIfPossibleForKeyItem;
+@property(nonatomic) _Bool clsAvoidIfPossibleForKeyItem; // @synthesize clsAvoidIfPossibleForKeyItem=_clsAvoidIfPossibleForKeyItem;
 @property(readonly) _Bool clsIsInhabited; // @synthesize clsIsInhabited=_clsIsInhabited;
 @property(readonly, nonatomic) double clsFaceScore; // @synthesize clsFaceScore=_clsFaceScore;
 @property(readonly, nonatomic) _Bool clsIsAestheticallyPrettyGood; // @synthesize clsIsAestheticallyPrettyGood=_clsIsAestheticallyPrettyGood;
@@ -82,7 +87,7 @@
 @property(readonly, nonatomic) _Bool clsIsInterestingPanorama; // @synthesize clsIsInterestingPanorama=_clsIsAnInterestingPanorama;
 @property(readonly, nonatomic) _Bool clsIsInterestingLivePhoto; // @synthesize clsIsInterestingLivePhoto=_clsIsAnInterestingPhoto;
 @property(readonly, nonatomic) _Bool clsIsInterestingVideo; // @synthesize clsIsInterestingVideo=_clsIsAnInterestingVideo;
-@property(readonly, nonatomic) NSArray *clsUnprefetchedPeopleNames; // @synthesize clsUnprefetchedPeopleNames=_clsUnprefetchedPeopleNames;
+@property(readonly, nonatomic) NSArray *clsUnprefetchedPersonLocalIdentifiers; // @synthesize clsUnprefetchedPersonLocalIdentifiers=_clsUnprefetchedPersonLocalIdentifiers;
 @property(readonly, nonatomic) VNSceneprint *clsSceneprint; // @synthesize clsSceneprint=_clsSceneprint;
 @property(copy, nonatomic) NSSet *clsSceneClassifications; // @synthesize clsSceneClassifications=_clsSceneClassifications;
 @property(nonatomic) double clsContentScore; // @synthesize clsContentScore=_clsContentScore;
@@ -94,18 +99,19 @@
 @property(readonly, nonatomic) long long clsShareCount; // @synthesize clsShareCount=_clsShareCount;
 @property(readonly, nonatomic) long long clsPlayCount; // @synthesize clsPlayCount=_clsPlayCount;
 @property(readonly, nonatomic) long long clsViewCount; // @synthesize clsViewCount=_clsViewCount;
-@property(retain, nonatomic) NSArray *clsPeopleNames; // @synthesize clsPeopleNames=_clsPeopleNames;
+@property(readonly, nonatomic) NSArray *clsConsolidatedPersonLocalIdentifiers; // @synthesize clsConsolidatedPersonLocalIdentifiers=_clsConsolidatedPersonLocalIdentifiers;
+@property(retain, nonatomic) NSArray *clsPersonLocalIdentifiers; // @synthesize clsPersonLocalIdentifiers=_clsPersonLocalIdentifiers;
 @property(retain, nonatomic) CLLocation *clsLocation; // @synthesize clsLocation=_clsLocation;
 @property(readonly, nonatomic) NSString *clsIdentifier; // @synthesize clsIdentifier=_clsIdentifier;
 @property(readonly, nonatomic) double pl_gpsHorizontalAccuracy;
 @property(readonly, nonatomic) NSString *pl_uuid;
 @property(readonly, nonatomic) struct CLLocationCoordinate2D pl_coordinate;
 @property(readonly, nonatomic) NSDate *pl_date;
+- (_Bool)clsAvoidIfPossibleAsKeyItemForMemories:(_Bool)arg1 allowGuestAsset:(_Bool)arg2;
 - (double)scoreInContext:(id)arg1;
 @property(readonly, nonatomic) NSDateComponents *cls_localDateComponents;
 @property(readonly, nonatomic) NSDate *cls_localDate;
 @property(readonly, nonatomic) unsigned long long clsPeopleCount;
-@property(readonly, nonatomic) NSArray *peopleNames;
 @property(readonly, nonatomic) CLLocation *location;
 - (id)init;
 

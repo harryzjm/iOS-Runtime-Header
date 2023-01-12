@@ -8,19 +8,21 @@
 
 #import <AvatarUI/AVTAvatarTransitionModel-Protocol.h>
 
-@class AVTImageTransitioningContainerView, AVTView, NSString, UIImage, UIView;
+@class AVTImageTransitioningContainerView, AVTStickerConfiguration, AVTView, NSString, UIImage, UIView;
 @protocol AVTAvatarRecord;
 
 @interface AVTAvatarListCell : UICollectionViewCell <AVTAvatarTransitionModel>
 {
     AVTView *_avtView;
     id <AVTAvatarRecord> _avatar;
+    AVTStickerConfiguration *_configuration;
     AVTImageTransitioningContainerView *_containerView;
 }
 
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) AVTImageTransitioningContainerView *containerView; // @synthesize containerView=_containerView;
+@property(retain, nonatomic) AVTStickerConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(retain, nonatomic) id <AVTAvatarRecord> avatar; // @synthesize avatar=_avatar;
 @property(retain, nonatomic) AVTView *avtView; // @synthesize avtView=_avtView;
 - (id)liveView;

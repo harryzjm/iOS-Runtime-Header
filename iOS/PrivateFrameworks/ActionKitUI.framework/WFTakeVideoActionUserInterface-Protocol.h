@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ActionKitUI/WFRemoteUserInterface-Protocol.h>
+#import <ActionKitUI/WFActionRemoteUserInterface-Protocol.h>
 
 @class NSString;
 
-@protocol WFTakeVideoActionUserInterface <WFRemoteUserInterface>
+@protocol WFTakeVideoActionUserInterface <WFActionRemoteUserInterface>
 - (void)showWithQuality:(NSString *)arg1 device:(NSString *)arg2 startImmediately:(_Bool)arg3 completionHandler:(void (^)(WFFileRepresentation *, NSError *))arg4;
 @end
 

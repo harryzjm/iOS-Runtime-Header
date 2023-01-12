@@ -14,10 +14,10 @@
 @property(nonatomic) double gradientAngle; // @synthesize gradientAngle=mAngle;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1;
-- (void)p_paintPath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2 naturalBounds:(struct CGRect)arg3;
+- (void)p_paintPath:(const struct CGPath *)arg1 inContext:(struct CGContext *)arg2 naturalBounds:(struct CGRect)arg3;
 - (struct CGAffineTransform)p_shadingTransformForBounds:(struct CGRect)arg1;
-- (void)paintPath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
-- (void)paintPath:(struct CGPath *)arg1 naturalBounds:(struct CGRect)arg2 inContext:(struct CGContext *)arg3 isPDF:(_Bool)arg4;
+- (void)paintPath:(const struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
+- (void)paintPath:(const struct CGPath *)arg1 naturalBounds:(struct CGRect)arg2 inContext:(struct CGContext *)arg3 isPDF:(_Bool)arg4;
 - (void)paintRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
 - (void)paintRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2 atAngle:(double)arg3;
 - (struct CGPoint)endPointForPath:(id)arg1 andBounds:(struct CGRect)arg2;
@@ -31,8 +31,8 @@
 - (id)description;
 - (id)initWithStartColor:(id)arg1 endColor:(id)arg2 type:(unsigned long long)arg3 angle:(double)arg4;
 - (id)initWithGradientStops:(id)arg1 type:(unsigned long long)arg2 opacity:(double)arg3 angle:(double)arg4;
-- (void)saveToArchive:(struct FillArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct FillArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 @end
 

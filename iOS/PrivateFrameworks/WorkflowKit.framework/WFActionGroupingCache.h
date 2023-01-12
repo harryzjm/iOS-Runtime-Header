@@ -6,19 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class NSDictionary, NSMutableDictionary;
 
 @interface WFActionGroupingCache : NSObject
 {
-    NSMutableDictionary *_actionsByGroupingIdentifier;
+    NSMutableDictionary *_contents;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSMutableDictionary *actionsByGroupingIdentifier; // @synthesize actionsByGroupingIdentifier=_actionsByGroupingIdentifier;
+@property(readonly, nonatomic) NSMutableDictionary *contents; // @synthesize contents=_contents;
 - (id)actionsForGroupingIdentifier:(id)arg1;
 - (void)sortActionsForGroupingIdentifier:(id)arg1 withWorkflowActions:(id)arg2;
 - (void)removeAction:(id)arg1;
 - (void)addAction:(id)arg1 sortingWithWorkflowActions:(id)arg2;
+@property(readonly, nonatomic) NSDictionary *actionsByGroupingIdentifier;
 - (id)init;
 
 @end

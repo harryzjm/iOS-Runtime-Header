@@ -10,21 +10,21 @@
 
 @interface TSTTableSortRule : NSObject <NSCopying>
 {
-    struct TSUModelColumnIndex _baseColumnIndex;
+    struct TSUModelColumnOrRowIndex _baseIndex;
     int _direction;
 }
 
-+ (id)ruleWithBaseColumnIndex:(struct TSUModelColumnIndex)arg1 direction:(int)arg2;
++ (id)ruleWithBaseIndex:(struct TSUModelColumnOrRowIndex)arg1 direction:(int)arg2;
 @property(readonly, nonatomic) int direction; // @synthesize direction=_direction;
-@property(readonly, nonatomic) struct TSUModelColumnIndex baseColumnIndex; // @synthesize baseColumnIndex=_baseColumnIndex;
-- (id)initFromArchive:(const struct TableSortOrderArchive_SortRuleArchive *)arg1;
-- (void)encodeToArchive:(struct TableSortOrderArchive_SortRuleArchive *)arg1;
+@property(readonly, nonatomic) struct TSUModelColumnOrRowIndex baseIndex; // @synthesize baseIndex=_baseIndex;
+- (id)initFromArchive:(const void *)arg1;
+- (void)encodeToArchive:(void *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)ruleByChangingDirectionTo:(int)arg1;
-- (id)ruleByChangingBaseColumnIndexTo:(struct TSUModelColumnIndex)arg1;
-- (id)initWithBaseColumnIndex:(struct TSUModelColumnIndex)arg1 direction:(int)arg2;
+- (id)ruleByChangingBaseIndexTo:(struct TSUModelColumnOrRowIndex)arg1;
+- (id)initWithBaseIndex:(struct TSUModelColumnOrRowIndex)arg1 direction:(int)arg2;
 
 @end
 

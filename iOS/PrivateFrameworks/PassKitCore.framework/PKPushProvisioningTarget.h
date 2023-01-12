@@ -13,6 +13,7 @@
 
 @interface PKPushProvisioningTarget : NSObject <NSSecureCoding, NSCopying>
 {
+    _Bool _requiresSimultaneousRequestRouting;
     long long _appleIdentifierType;
     NSString *_appleIdentifier;
     NSString *_policyIdentifier;
@@ -21,18 +22,27 @@
     NSString *_sharingInstanceIdentifier;
     NSDate *_creationDate;
     NSString *_nonce;
+    NSString *_accountHash;
+    NSString *_templateIdentifier;
+    NSString *_relyingPartyIdentifier;
+    unsigned long long _targetDevice;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long targetDevice; // @synthesize targetDevice=_targetDevice;
+@property(readonly, nonatomic) _Bool requiresSimultaneousRequestRouting; // @synthesize requiresSimultaneousRequestRouting=_requiresSimultaneousRequestRouting;
+@property(readonly, nonatomic) NSString *relyingPartyIdentifier; // @synthesize relyingPartyIdentifier=_relyingPartyIdentifier;
+@property(readonly, nonatomic) NSString *templateIdentifier; // @synthesize templateIdentifier=_templateIdentifier;
+@property(readonly, nonatomic) NSString *accountHash; // @synthesize accountHash=_accountHash;
 @property(readonly, copy, nonatomic) NSString *nonce; // @synthesize nonce=_nonce;
 @property(readonly, copy, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property(readonly, copy, nonatomic) NSString *sharingInstanceIdentifier; // @synthesize sharingInstanceIdentifier=_sharingInstanceIdentifier;
 @property(readonly, copy, nonatomic) NSString *cardConfigurationIdentifier; // @synthesize cardConfigurationIdentifier=_cardConfigurationIdentifier;
 @property(readonly, copy, nonatomic) NSString *provisioningCredentialIdentifier; // @synthesize provisioningCredentialIdentifier=_provisioningCredentialIdentifier;
 @property(readonly, copy, nonatomic) NSString *policyIdentifier; // @synthesize policyIdentifier=_policyIdentifier;
-@property(readonly, copy, nonatomic) NSString *appleIdentifier; // @synthesize appleIdentifier=_appleIdentifier;
-@property(readonly, nonatomic) long long appleIdentifierType; // @synthesize appleIdentifierType=_appleIdentifierType;
+@property(copy, nonatomic) NSString *appleIdentifier; // @synthesize appleIdentifier=_appleIdentifier;
+@property(nonatomic) long long appleIdentifierType; // @synthesize appleIdentifierType=_appleIdentifierType;
 - (id)jsonRepresentation;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -40,6 +50,7 @@
 - (unsigned long long)hash;
 - (_Bool)isEqualToProvisioningTarget:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
+- (id)initWithAppleIdentifier:(id)arg1 appleIdentifierType:(long long)arg2 pushProvisioningPolicyIdentifier:(id)arg3 provisioningCredentialIdentifier:(id)arg4 cardConfigurationIdentifier:(id)arg5 sharingInstanceIdentifier:(id)arg6 nonce:(id)arg7 accountHash:(id)arg8 templateIdentifier:(id)arg9 relyingPartyIdentifier:(id)arg10 requiresSimultaneousRequestRouting:(_Bool)arg11 targetDevice:(unsigned long long)arg12;
 - (id)initWithAppleIdentifier:(id)arg1 appleIdentifierType:(long long)arg2 pushProvisioningPolicyIdentifier:(id)arg3 provisioningCredentialIdentifier:(id)arg4 cardConfigurationIdentifier:(id)arg5 sharingInstanceIdentifier:(id)arg6 nonce:(id)arg7;
 
 @end

@@ -10,15 +10,18 @@
 #import <SleepHealth/_HKXPCExportable-Protocol.h>
 
 @class HKHealthStore, HKTaskServerProxyProvider, NSString;
+@protocol NAScheduler;
 
 @interface HKSleepHealthStore : NSObject <HKSleepHealthStoreInterface, _HKXPCExportable>
 {
     HKTaskServerProxyProvider *_proxyProvider;
     HKHealthStore *_healthStore;
+    id <NAScheduler> _scheduler;
 }
 
 + (id)taskIdentifier;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <NAScheduler> scheduler; // @synthesize scheduler=_scheduler;
 @property(readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 - (void)connectionInvalidated;
 - (id)remoteInterface;

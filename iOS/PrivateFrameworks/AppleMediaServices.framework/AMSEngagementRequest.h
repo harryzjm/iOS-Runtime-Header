@@ -17,12 +17,14 @@
     NSDictionary *_clientData;
     NSString *_logKey;
     NSDictionary *_metricsOverlay;
+    long long _presentationStyle;
     NSURL *_URL;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSURL *URL; // @synthesize URL=_URL;
+@property(nonatomic) long long presentationStyle; // @synthesize presentationStyle=_presentationStyle;
 @property(retain, nonatomic) NSDictionary *metricsOverlay; // @synthesize metricsOverlay=_metricsOverlay;
 @property(nonatomic) _Bool failOnDismiss; // @synthesize failOnDismiss=_failOnDismiss;
 @property(retain, nonatomic) NSString *logKey; // @synthesize logKey=_logKey;

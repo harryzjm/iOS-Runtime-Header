@@ -28,7 +28,6 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) PHRelationshipChangeRequestHelper *keyAssetHelper; // @synthesize keyAssetHelper=_keyAssetHelper;
 @property(readonly, nonatomic) PHRelationshipChangeRequestHelper *assetsHelper; // @synthesize assetsHelper=_assetsHelper;
-- (_Bool)validateMutationsToManagedObject:(id)arg1 error:(id *)arg2;
 - (_Bool)applyMutationsToManagedObject:(id)arg1 photoLibrary:(id)arg2 error:(id *)arg3;
 - (_Bool)allowMutationToManagedObject:(id)arg1 propertyKey:(id)arg2 error:(id *)arg3;
 - (_Bool)validateInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;

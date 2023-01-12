@@ -8,7 +8,7 @@
 
 #import <AssistantServices/AFNetworkAvailabilityObserver-Protocol.h>
 
-@class AFAnalyticsEvent, AFAudioPowerUpdater, AFCallSiteInfo, AFSpeechRequestOptions, NSArray, NSMutableData, NSSet, NSString, NSXPCConnection;
+@class AFAnalyticsEvent, AFAnalyticsTurnBasedInstrumentationContext, AFAudioPowerUpdater, AFCallSiteInfo, AFInstanceContext, AFSpeechRequestOptions, NSArray, NSMutableData, NSSet, NSString, NSXPCConnection;
 @protocol AFDictationDelegate, OS_dispatch_group, OS_dispatch_queue, OS_dispatch_source;
 
 @interface AFDictationConnection : NSObject <AFNetworkAvailabilityObserver>
@@ -37,7 +37,10 @@
     NSString *_requestIdString;
     NSArray *_previouslyRecognizedPhrases;
     NSString *_onDeviceDictationUIInteractionIdentifier;
+    AFInstanceContext *_instanceContext;
     AFAnalyticsEvent *_preheatEvent;
+    AFAnalyticsTurnBasedInstrumentationContext *_intstrumentationContext;
+    _Bool _isDetectingUtterances;
     NSObject<OS_dispatch_queue> *_delegateQueue;
 }
 
@@ -57,6 +60,7 @@
 - (id)_dequeueAudioWithLength:(unsigned long long)arg1;
 - (void)_sendDataIfNeeded;
 - (void)requestOfflineDictationSupportForLanguage:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)requestOfflineAssistantSupportForLanguage:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)endSession;
 - (float)peakPower;
 - (float)averagePower;
@@ -83,6 +87,7 @@
 - (void)_willCompleteDictation;
 - (void)_willFailDictationWithError:(id)arg1;
 - (void)_willCancelDictation;
+- (void)_LogUEIRequestCategorization:(int)arg1;
 - (void)_logRequestCompetionStatusWithEventType:(long long)arg1 error:(id)arg2;
 - (void)_willStartDictationWithLanguageCode:(id)arg1 options:(id)arg2 speechOptions:(id)arg3 machAbsoluteTime:(unsigned long long)arg4;
 - (void)cancelAvailabilityMonitoring;
@@ -91,6 +96,7 @@
 - (void)_availabilityChanged;
 - (_Bool)forcedOfflineDictationIsAvailableForLanguage:(id)arg1 synchronous:(_Bool)arg2;
 - (_Bool)forcedOfflineDictationIsAvailableForLanguage:(id)arg1;
+- (_Bool)dictationIsAvailableForLanguage:(id)arg1 synchronous:(_Bool)arg2;
 - (_Bool)dictationIsAvailableForLanguage:(id)arg1;
 - (void)_stopInputAudioPowerUpdates;
 - (void)_startInputAudioPowerUpdatesWithXPCWrapper:(id)arg1;
@@ -130,6 +136,7 @@
 - (void)_checkAndSetIsCapturingSpeech:(_Bool)arg1;
 - (void)dealloc;
 - (id)init;
+- (id)initWithInstanceContext:(id)arg1;
 - (void)sendEngagementFeedback:(long long)arg1 voiceQueryIdentifier:(id)arg2;
 - (void)startDictationWithSpeechFileAtURL:(id)arg1 isNarrowBand:(_Bool)arg2 options:(id)arg3 forLanguage:(id)arg4;
 - (void)startDictationWithSpeechFileAtURL:(id)arg1 options:(id)arg2 forLanguage:(id)arg3;

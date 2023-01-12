@@ -6,7 +6,7 @@
 
 #import <Foundation/NSOperation.h>
 
-@class NSArray, NSMutableDictionary, NSNumber, NSObject, NSString, SSBag, SSVPlatformContext;
+@class NSArray, NSMutableDictionary, NSNumber, NSObject, NSString, NSURL, SSBag, SSVPlatformContext;
 @protocol OS_dispatch_queue;
 
 @interface SSVPlatformRequestOperation : NSOperation
@@ -27,11 +27,15 @@
     NSString *_userAgent;
     _Bool _shouldSuppressCookies;
     _Bool _shouldSuppressUserInfo;
+    NSURL *_mainDocumentURL;
+    unsigned long long _attribution;
     SSBag *_bag;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) SSBag *bag; // @synthesize bag=_bag;
+@property unsigned long long attribution; // @synthesize attribution=_attribution;
+@property(copy) NSURL *mainDocumentURL; // @synthesize mainDocumentURL=_mainDocumentURL;
 @property _Bool shouldSuppressUserInfo; // @synthesize shouldSuppressUserInfo=_shouldSuppressUserInfo;
 @property _Bool shouldSuppressCookies; // @synthesize shouldSuppressCookies=_shouldSuppressCookies;
 - (id)_URLBagContext;

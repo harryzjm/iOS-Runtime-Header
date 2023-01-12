@@ -16,15 +16,17 @@
     double _cardTopPadding;
     double _cardBottomPadding;
     double _cardBackingHeight;
-    _Bool _useCompactLayout;
     UIImageView *_cardImageView;
+    unsigned long long _size;
+    unsigned long long _padding;
 }
 
 + (struct CGSize)recommendedCardImageSize;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool useCompactLayout; // @synthesize useCompactLayout=_useCompactLayout;
+@property(nonatomic) unsigned long long padding; // @synthesize padding=_padding;
+@property(nonatomic) unsigned long long size; // @synthesize size=_size;
 @property(readonly, nonatomic) UIImageView *cardImageView; // @synthesize cardImageView=_cardImageView;
-- (void)updateCardValuesForCompactLayout:(_Bool)arg1;
+- (void)updateCardSizeValues;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
 @property(retain, nonatomic) UIImage *cardImage;

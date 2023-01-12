@@ -18,10 +18,13 @@
     double _beamLength;
     unsigned long long _materialUsage;
     long long __type;
+    struct CGPoint _pinnedPoint;
     struct CGPoint _inherentConstrainedSlip;
     struct CGRect _rect;
 }
 
++ (id)_shapeWithSymbol:(id)arg1 pointSize:(double)arg2;
++ (id)_elasticRectShapePinnedAtPoint:(struct CGPoint)arg1;
 + (id)_linkPointerShape;
 + (id)beamWithPreferredLength:(double)arg1 axis:(unsigned long long)arg2;
 + (id)shapeWithRoundedRect:(struct CGRect)arg1 cornerRadius:(double)arg2;
@@ -34,6 +37,7 @@
 @property(nonatomic) struct CGPoint inherentConstrainedSlip; // @synthesize inherentConstrainedSlip=_inherentConstrainedSlip;
 @property(nonatomic) double defaultCornerRadius; // @synthesize defaultCornerRadius=_defaultCornerRadius;
 @property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
+@property(nonatomic) struct CGPoint pinnedPoint; // @synthesize pinnedPoint=_pinnedPoint;
 @property(nonatomic) struct CGRect rect; // @synthesize rect=_rect;
 @property(copy, nonatomic) UIBezierPath *path; // @synthesize path=_path;
 - (id)description;
@@ -42,6 +46,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) NSString *cornerCurve;
 @property(readonly, nonatomic) double effectiveCornerRadius;
+@property(readonly, nonatomic) _Bool isElastic;
 @property(readonly, nonatomic) _Bool isCircle;
 @property(readonly, nonatomic) _Bool isEmpty;
 @property(readonly, nonatomic) struct CGSize size;

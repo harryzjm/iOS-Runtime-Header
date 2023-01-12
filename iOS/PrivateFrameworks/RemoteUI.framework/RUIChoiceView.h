@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class NSLayoutConstraint, RUIChoiceViewElement, RUIElement, RUIModernHeaderView, RUISubHeaderElement, UIButton, UIScrollView, UIVisualEffectView;
 @protocol RUIHeader;
@@ -23,6 +23,7 @@
     RUIChoiceViewElement *_target;
     RUIElement *_header;
     RUISubHeaderElement *_subHeader;
+    RUIElement *_helpLinkElement;
 }
 
 - (void).cxx_destruct;
@@ -30,6 +31,7 @@
 @property(readonly, nonatomic) UIButton *smallChoice; // @synthesize smallChoice=_smallChoice;
 @property(readonly, nonatomic) UIButton *bigChoice; // @synthesize bigChoice=_bigChoice;
 @property(nonatomic) _Bool usesTwoButtonLayout; // @synthesize usesTwoButtonLayout=_usesTwoButtonLayout;
+@property(retain, nonatomic) RUIElement *helpLinkElement; // @synthesize helpLinkElement=_helpLinkElement;
 @property(retain, nonatomic) RUISubHeaderElement *subHeader; // @synthesize subHeader=_subHeader;
 @property(retain, nonatomic) RUIElement *header; // @synthesize header=_header;
 @property(nonatomic) __weak RUIChoiceViewElement *target; // @synthesize target=_target;
@@ -44,6 +46,7 @@
 - (void)setSecondChoiceTitle:(id)arg1 withColor:(id)arg2;
 - (void)setFirstChoiceTitle:(id)arg1 withColor:(id)arg2;
 @property(readonly, nonatomic) UIView<RUIHeader> *headerView;
+@property(readonly, nonatomic) UIScrollView *scrollView;
 - (void)_setupTrayConstraints;
 - (id)init;
 

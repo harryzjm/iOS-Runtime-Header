@@ -30,7 +30,7 @@
 - (id)objectForKeyedSubscript:(id)arg1;
 - (id)objectForKey:(id)arg1;
 - (id)mutableAccessingCopy;
-- (id)objectWithPropertySets:(id)arg1;
+- (id)newObjectWithPropertySets:(id)arg1;
 - (id)initWithPLManagedObject:(id)arg1 photoLibrary:(id)arg2;
 
 // Remaining properties

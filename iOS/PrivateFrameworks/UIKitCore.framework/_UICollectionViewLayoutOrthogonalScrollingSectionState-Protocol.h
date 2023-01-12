@@ -7,6 +7,7 @@
 #import <UIKitCore/NSObject-Protocol.h>
 
 @protocol _UICollectionViewLayoutOrthogonalScrollingSectionState <NSObject>
+@property(readonly, nonatomic) struct NSDirectionalEdgeInsets environmentInsets;
 @property(readonly, nonatomic) struct NSDirectionalEdgeInsets contentInsets;
 @property(readonly, nonatomic) struct CGSize contentSize;
 @property(readonly, nonatomic) struct CGRect layoutFrame;

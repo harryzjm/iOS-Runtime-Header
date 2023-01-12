@@ -39,11 +39,14 @@
     unsigned long long _linkType;
 }
 
++ (long long)_currentDeviceAuthenticationMode;
 + (long long)currentDeviceAuthenticationMode;
++ (long long)currentDeviceAuthenticationModeForAuthContext:(id)arg1;
 + (id)deviceSpecificLocalizedStringWithKey:(id)arg1;
 + (id)_buildNumber;
 + (id)_osVersion;
 + (id)_osName;
++ (id)_systemVersionDictionary;
 + (id)_hardwareModel;
 + (id)deviceWithSerializedData:(id)arg1;
 + (id)systemContainerCacheURL;
@@ -66,6 +69,7 @@
 @property(readonly) _Bool isUnlocked;
 @property(copy, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 @property(readonly) NSString *serialNumber;
+@property(readonly) NSString *internationalMobileEquipmentIdentity2;
 @property(readonly) NSString *internationalMobileEquipmentIdentity;
 @property(readonly) NSString *userFullName;
 @property(readonly) NSString *localUserUUID;

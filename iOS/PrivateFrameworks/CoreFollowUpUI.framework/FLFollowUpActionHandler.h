@@ -22,10 +22,11 @@
 @property(copy, nonatomic) CDUnknownBlockType extensionRequestedViewControllerPresentation; // @synthesize extensionRequestedViewControllerPresentation=_extensionRequestedViewControllerPresentation;
 - (void)dealloc;
 @property(readonly, copy) NSString *description;
-- (void)extensionDidFinishWithError:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)extensionDidFinishWithError:(id)arg1 userInfo:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)extensionDidFinishWithError:(id)arg1;
 - (void)extensionDidFinish;
-- (void)extensionDidFinishWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)extensionDidFinishWithUserInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)handleExtensionBasedAction:(id)arg1 completionWithUserInfo:(CDUnknownBlockType)arg2;
 - (void)handleExtensionBasedAction:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_extensionLoader;
 

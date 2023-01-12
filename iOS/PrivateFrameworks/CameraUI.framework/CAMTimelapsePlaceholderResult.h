@@ -31,6 +31,7 @@
 @property(readonly, copy, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property(readonly, nonatomic) unsigned short sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
 @property(readonly, copy, nonatomic) NSString *assetUUID; // @synthesize assetUUID=_assetUUID;
+@property(readonly, nonatomic, getter=isTransientAssetTemporaryPlaceholder) _Bool transientAssetTemporaryPlaceholder;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 irisStillDisplayTime;
 @property(readonly, nonatomic) NSURL *irisVideoPersistenceURL;
 @property(readonly, nonatomic, getter=isExpectingPairedVideo) _Bool expectingPairedVideo;

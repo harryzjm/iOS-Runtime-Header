@@ -55,7 +55,6 @@
 @property(readonly, getter=isCurrentDevice) _Bool currentDevice;
 @property(readonly, copy) NSString *name;
 @property(readonly, copy) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
-- (void)dealloc;
 - (void)_unconfigure;
 - (void)_unconfigureContext;
 - (void)__configureWithContext:(id)arg1 home:(id)arg2;

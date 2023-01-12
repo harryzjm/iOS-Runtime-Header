@@ -19,6 +19,8 @@
 - (void)forwardMessage:(NSDictionary *)arg1 toItemAtIndex:(unsigned long long)arg2 withUUID:(NSUUID *)arg3 completionHandler:(void (^)(NSDictionary *, NSError *))arg4;
 - (void)currentPreviewItemViewControllerHasUnsavedEdits:(_Bool)arg1;
 - (void)setCanChangeCurrentPage:(_Bool)arg1;
+- (void)updateStateRestorationWithUserInfo:(NSDictionary *)arg1;
+- (void)getStateRestorationUserInfo:(void (^)(NSDictionary *))arg1;
 - (void)triggerQuickLookDismissal;
 - (void)showShareSheetWithPopoverTracker:(id <QLRemotePopoverTracker>)arg1 customSharedURL:(NSURL *)arg2 dismissCompletion:(void (^)(void))arg3;
 - (void)showShareSheet;

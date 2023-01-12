@@ -10,6 +10,7 @@
 
 @interface NAArticleNavigationBarMessageContainer : UIView
 {
+    MISSING_TYPE *textForArticleMessage;
     MISSING_TYPE *defaultView;
     MISSING_TYPE *messageLabel;
     MISSING_TYPE *clipView;

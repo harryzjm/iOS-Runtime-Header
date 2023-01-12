@@ -13,6 +13,8 @@
     WBSPersistentPropertyListStore *_store;
 }
 
++ (_Bool)_readAndValidatePersistentIdentifierCanaryWithPersistentIdentifier:(id)arg1 expectedValue:(id)arg2;
++ (id)_createPersistentIdentifierCanary;
 - (void).cxx_destruct;
 - (void)saveAndCloseStoreSynchronously;
 - (void)saveStoreSynchronously;

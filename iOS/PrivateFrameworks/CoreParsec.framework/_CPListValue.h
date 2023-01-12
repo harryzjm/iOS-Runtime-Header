@@ -7,22 +7,17 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <CoreParsec/NSSecureCoding-Protocol.h>
-#import <CoreParsec/_CPFeedbackJSONObject-Protocol.h>
 #import <CoreParsec/_CPListValue-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString;
+@class NSArray, NSData, NSString;
 
-@interface _CPListValue : PBCodable <_CPFeedbackJSONObject, _CPListValue, NSSecureCoding>
+@interface _CPListValue : PBCodable <_CPListValue, NSSecureCoding>
 {
     NSArray *_values;
 }
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *values; // @synthesize values=_values;
-- (id)initWithDictionary:(id)arg1;
-- (id)initWithJSON:(id)arg1;
-@property(readonly, nonatomic) NSData *jsonData;
-@property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
@@ -31,12 +26,12 @@
 - (unsigned long long)valuesCount;
 - (void)addValues:(id)arg1;
 - (void)clearValues;
-@property(readonly, nonatomic) id feedbackJSON;
 - (id)initWithFacade:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) NSData *jsonData; // @dynamic jsonData;
 @property(readonly) Class superclass;
 
 @end

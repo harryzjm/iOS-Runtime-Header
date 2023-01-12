@@ -9,19 +9,18 @@
 @interface PXNavigationListActionItem
 {
     NSString *_glyphImageName;
-    NSString *_actionIdentifier;
     long long _style;
+    NSString *_actionType;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *actionType; // @synthesize actionType=_actionType;
 - (long long)style;
-@property(readonly, nonatomic) NSString *actionIdentifier; // @synthesize actionIdentifier=_actionIdentifier;
 - (id)glyphImageName;
 - (id)representedObject;
 - (unsigned long long)hash;
 - (_Bool)isEqualToNavigationListItem:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)titleForActionIdentifier:(id)arg1;
 - (id)initWithActionType:(id)arg1;
 
 @end

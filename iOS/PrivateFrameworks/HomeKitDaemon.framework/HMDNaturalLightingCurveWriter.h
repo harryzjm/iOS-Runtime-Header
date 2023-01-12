@@ -47,7 +47,7 @@
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;
 - (void)writeForNaturalLightingEnabledWithReason:(id)arg1;
-- (void)synchronizeCurveToAccessory;
+- (void)synchronizeCurveWithActiveTransitionContext:(id)arg1;
 - (void)writeWithNaturalLightingEnabled:(_Bool)arg1 reason:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)handleCurrentDevicePrimaryResidentChangedWithReason:(id)arg1;
 - (void)handlePrimaryResidentUpdateNotification:(id)arg1;

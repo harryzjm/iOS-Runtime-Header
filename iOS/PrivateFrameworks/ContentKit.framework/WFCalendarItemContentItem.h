@@ -28,7 +28,9 @@
 - (void)generateObjectRepresentations:(CDUnknownBlockType)arg1 options:(id)arg2 forClass:(Class)arg3;
 @property(readonly, nonatomic) NSString *location;
 @property(readonly, nonatomic) EKCalendarItem *calendarItem;
-- (id)copyWithName:(id)arg1 zone:(struct _NSZone *)arg2;
+- (id)attachments;
+- (void)copyStateToItem:(id)arg1;
+- (id)changeTransaction;
 
 @end
 

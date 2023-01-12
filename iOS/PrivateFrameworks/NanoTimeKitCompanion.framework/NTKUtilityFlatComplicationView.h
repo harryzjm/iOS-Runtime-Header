@@ -12,13 +12,13 @@
 
 @interface NTKUtilityFlatComplicationView <CLKMonochromeFilterProvider, CLKMonochromeComplicationView>
 {
-    UIView<NTKComplicationImageView> *_imageView;
-    NTKColoringLabel *_label;
     NTKCurvedColoringLabel *_curvedLabel;
     UIImageView *_curvedHighlightView;
     NTKColoringLabel *_activeLabel;
     id <CLKMonochromeFilterProvider> _filterProvider;
     id <NTKUtilityFlatComplicationViewDelegate> _delegate;
+    UIView<NTKComplicationImageView> *_imageView;
+    NTKColoringLabel *_label;
     double _textWidthInRadians;
 }
 
@@ -26,6 +26,8 @@
 + (_Bool)handlesComplicationTemplate:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) double textWidthInRadians; // @synthesize textWidthInRadians=_textWidthInRadians;
+@property(retain, nonatomic) NTKColoringLabel *label; // @synthesize label=_label;
+@property(retain, nonatomic) UIView<NTKComplicationImageView> *imageView; // @synthesize imageView=_imageView;
 @property(nonatomic) __weak id <NTKUtilityFlatComplicationViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak id <CLKMonochromeFilterProvider> filterProvider; // @synthesize filterProvider=_filterProvider;
 - (id)colorForView:(id)arg1 accented:(_Bool)arg2;

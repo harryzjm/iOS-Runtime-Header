@@ -10,7 +10,6 @@
 
 @class NSData;
 
-__attribute__((visibility("hidden")))
 @interface CKDPCodeFunctionInvokeRequestAttestationRequest : PBRequest <NSCopying>
 {
     NSData *_entropy;

@@ -6,19 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@interface HAMenstrualAlgorithmsDayStreamProcessor : NSObject
+#import <HealthAlgorithms/HAMenstrualAlgorithmsPhaseIngestion-Protocol.h>
+
+@interface HAMenstrualAlgorithmsDayStreamProcessor : NSObject <HAMenstrualAlgorithmsPhaseIngestion>
 {
-    struct unique_ptr<Nightingale::ngt_DayStreamProcessor, std::__1::default_delete<Nightingale::ngt_DayStreamProcessor>> _dayStreamProcessor;
+    struct unique_ptr<Nightingale::ngt_DayStreamProcessor, std::default_delete<Nightingale::ngt_DayStreamProcessor>> _dayStreamProcessor;
     struct optional<unsigned int> _julianDayOfLastInput;
+    struct unique_ptr<HealthAlgorithms::PhaseCondenser, std::default_delete<HealthAlgorithms::PhaseCondenser>> _phaseCondenser;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)analyzeWithMostRecentMenstrualFlowJulianDayUpdated:(unsigned int)arg1;
 - (id)analyze;
+- (void)sendCoreAnalyticsEvent:(id)arg1;
+- (_Bool)shouldSendCoreAnalytics;
+- (void)endPhase:(unsigned char)arg1 onJulianDay:(unsigned int)arg2;
+- (void)beginPhase:(unsigned char)arg1 onJulianDay:(unsigned int)arg2;
 - (void)appendDay:(id)arg1;
 - (id)initWithConfig:(id)arg1;
-- (id)init;
 
 @end
 

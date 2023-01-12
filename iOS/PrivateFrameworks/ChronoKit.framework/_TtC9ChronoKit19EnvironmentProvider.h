@@ -10,9 +10,9 @@
 
 @interface _TtC9ChronoKit19EnvironmentProvider : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *__environmentValues;
-    MISSING_TYPE *environmentDidChangePublisher;
-    MISSING_TYPE *lock;
+    MISSING_TYPE *_environmentDidChangePublisher;
+    MISSING_TYPE *_lock;
+    MISSING_TYPE *_lock_environmentValues;
 }
 
 @end

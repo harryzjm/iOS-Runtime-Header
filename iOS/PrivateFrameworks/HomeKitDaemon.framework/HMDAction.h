@@ -38,12 +38,13 @@
 @property(readonly, copy, nonatomic) NSUUID *modelParentIdentifier;
 @property(readonly, copy, nonatomic) NSUUID *modelIdentifier;
 @property(readonly) Class modelClass;
+@property(readonly) _Bool isUnsecuringAction;
 - (_Bool)isAssociatedWithAccessory:(id)arg1;
 @property(readonly, copy) NSArray *associatedAccessories;
 @property(readonly) unsigned long long entitlementsForNotification;
 @property(readonly) _Bool requiresDeviceUnlock;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
-- (void)executeWithSource:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)executeWithSource:(unsigned long long)arg1 clientName:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property(readonly, nonatomic) NSString *stateDump;
 @property(readonly) unsigned long long type;

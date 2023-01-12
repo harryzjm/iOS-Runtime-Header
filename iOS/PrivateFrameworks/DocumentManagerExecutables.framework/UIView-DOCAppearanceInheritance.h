@@ -12,6 +12,7 @@
 
 @interface UIView (DOCAppearanceInheritance) <DOCAppearanceCustomization>
 + (void)load;
+- (id)_owningViewController;
 - (void)effectiveAppearanceDidChange:(id)arg1;
 @property(readonly) DOCAppearance *effectiveAppearance;
 - (id)_appearance;

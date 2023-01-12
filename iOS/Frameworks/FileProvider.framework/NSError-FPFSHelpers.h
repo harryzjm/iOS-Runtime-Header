@@ -6,13 +6,49 @@
 
 #import <Foundation/NSError.h>
 
-@class NSURL;
+@class NSObject, NSURL;
 
 @interface NSError (FPFSHelpers)
 + (id)fp_errorForCollisionWithURL:(id)arg1;
 + (id)fileProviderErrorForNonExistentItemWithIdentifier:(id)arg1;
-+ (id)fileProviderErrorForOutOfDateItem:(id)arg1;
++ (id)fileProviderErrorForRejectedDeletionOfItem:(id)arg1;
 + (id)fileProviderErrorForCollisionWithItem:(id)arg1;
++ (id)fp_translocatedError:(id)arg1;
++ (id)fp_invalidArgumentError:(id)arg1;
++ (id)_fp_errorWithPOSIXCode:(int)arg1 itemURL:(id)arg2 debugDescription:(id)arg3 format:(id)arg4 arguments:(char *)arg5;
++ (id)fp_errorWithPOSIXCode:(int)arg1 itemURL:(id)arg2 debugDescription:(id)arg3;
++ (id)fp_errorWithPOSIXCode:(int)arg1 description:(id)arg2;
++ (id)fp_errorWithPOSIXCode:(int)arg1;
++ (void)fp_initLocalizationStrings;
 @property(readonly, nonatomic) NSURL *fp_collidingURL;
+- (id)fp_prettyDescription:(unsigned long long)arg1;
+@property(readonly, nonatomic) NSObject *fp_prettyDescription;
+- (id)fp_userInfoFPItem;
+- (id)fp_userInfoItem;
+- (id)fp_userInfoValueForKey:(id)arg1;
+- (id)fp_annotatedErrorWithOperationItem:(id)arg1;
+- (id)fp_recoverableErrorWithBlock:(CDUnknownBlockType)arg1 fpProviderDomainId:(id)arg2 operationService:(id)arg3;
+- (id)fp_annotatedErrorWithRecoveryAttempter:(id)arg1 fpProviderDomainId:(id)arg2;
+- (id)fp_annotatedErrorWithItem:(id)arg1 variant:(id)arg2;
+- (id)fp_annotatedErrorWithURL:(id)arg1 variant:(id)arg2;
+- (id)fp_annotatedErrorWithName:(id)arg1;
+- (id)fp_annotatedErrorWithName:(id)arg1 path:(id)arg2 variant:(id)arg3;
+- (id)fp_annotatedErrorWithItems:(id)arg1 variant:(id)arg2;
+@property(readonly, nonatomic) _Bool fp_isNotPermittedError;
+@property(readonly, nonatomic) _Bool fp_isFeatureUnsupportedError;
+@property(readonly, nonatomic) _Bool fp_isSyncAnchorExpiredError;
+@property(readonly, nonatomic) NSError *fp_unwrappedInternalError;
+- (id)fp_unwrappedErrorForDomains:(id)arg1;
+@property(readonly, nonatomic) _Bool fp_isRemoteCrashError;
+- (_Bool)fp_isWarning;
+- (id)fp_asWarning;
+- (_Bool)fp_isGenericPreflightError;
+- (id)fp_genericPreflightError;
+- (id)fp_internalErrorForVendorErrorWithCallerDescription:(id)arg1 itemCreationBlock:(CDUnknownBlockType)arg2;
+- (id)fp_strippedError;
+- (_Bool)fp_isPOSIXErrorCode:(int)arg1;
+- (_Bool)fp_isCocoaErrorCode:(long long)arg1;
+- (_Bool)fp_isFileProviderInternalError:(long long)arg1;
+- (_Bool)fp_isFileProviderError:(long long)arg1;
 @end
 

@@ -15,6 +15,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)customAttributes;
+@property(retain, nonatomic) NSNumber *inputSharpness; // @synthesize inputSharpness;
+@property(retain, nonatomic) NSNumber *inputNoiseLevel; // @synthesize inputNoiseLevel;
+@property(retain, nonatomic) CIImage *inputImage; // @synthesize inputImage;
 - (id)outputImage;
 - (id)_CINoiseReduction;
 

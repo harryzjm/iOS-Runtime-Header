@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface GKAutomatchPlayerInternal
 {
     long long _automatchPosition;
@@ -11,6 +13,7 @@
 
 + (_Bool)supportsSecureCoding;
 @property(nonatomic) long long automatchPosition; // @synthesize automatchPosition=_automatchPosition;
+@property(readonly, nonatomic) NSString *automatchPositionDisplayString;
 - (_Bool)isAutomatchPlayer;
 - (id)alias;
 - (id)teamPlayerID;

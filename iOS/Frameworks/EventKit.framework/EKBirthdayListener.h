@@ -16,6 +16,7 @@
     CalLimitingQueue *_updateQueue;
     NSObject<OS_dispatch_queue> *_updateJobQueue;
     _Bool _needsReset;
+    _Bool _shutdown;
 }
 
 + (_Bool)areBirthdaysEnabled;
@@ -37,6 +38,7 @@
 - (void)addBirthdayCalendars;
 - (id)eventStore;
 - (void)checkForFailures;
+- (void)stop;
 - (id)initSingleton;
 
 @end

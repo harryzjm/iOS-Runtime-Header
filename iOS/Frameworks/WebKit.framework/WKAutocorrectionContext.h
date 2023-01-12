@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)autocorrectionContextWithWebContext:(const struct WebAutocorrectionContext *)arg1;
++ (id)autocorrectionContextWithWebContext:(const void *)arg1;
 + (id)emptyAutocorrectionContext;
 
 @end

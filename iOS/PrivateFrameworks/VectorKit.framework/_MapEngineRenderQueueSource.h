@@ -13,12 +13,12 @@
 __attribute__((visibility("hidden")))
 @interface _MapEngineRenderQueueSource : NSObject <GGLRenderQueueSource>
 {
-    struct MapEngine *_mapEngine;
+    void *_mapEngine;
 }
 
-- (struct RenderQueue *)renderQueueForTimestamp:(double)arg1;
+- (void *)renderQueueForTimestamp:(double)arg1;
 - (_Bool)isDelayedRenderQueueConsumptionSupported;
-- (id)initWithEngine:(struct MapEngine *)arg1;
+- (id)initWithEngine:(void *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

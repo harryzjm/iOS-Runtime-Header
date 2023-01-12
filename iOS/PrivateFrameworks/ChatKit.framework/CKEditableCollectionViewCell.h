@@ -33,6 +33,7 @@
 - (void)setSelected:(_Bool)arg1;
 - (void)layoutSubviews;
 - (id)description;
+- (_Bool)__im_ff_systemImageAdoptionEnabled;
 
 @end
 

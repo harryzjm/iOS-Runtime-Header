@@ -10,6 +10,7 @@
 
 @class ICPBDGSFinishDelegationRequest, ICPBDGSStartDelegationRequest;
 
+__attribute__((visibility("hidden")))
 @interface ICPBDGSRequest : PBRequest <NSCopying>
 {
     ICPBDGSFinishDelegationRequest *_finishDelegationRequest;
@@ -21,10 +22,6 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) ICPBDGSFinishDelegationRequest *finishDelegationRequest; // @synthesize finishDelegationRequest=_finishDelegationRequest;
-@property(retain, nonatomic) ICPBDGSStartDelegationRequest *startDelegationRequest; // @synthesize startDelegationRequest=_startDelegationRequest;
-@property(nonatomic) unsigned int uniqueID; // @synthesize uniqueID=_uniqueID;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -32,9 +29,6 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasFinishDelegationRequest;
-@property(readonly, nonatomic) _Bool hasStartDelegationRequest;
-@property(nonatomic) _Bool hasUniqueID;
 
 @end
 

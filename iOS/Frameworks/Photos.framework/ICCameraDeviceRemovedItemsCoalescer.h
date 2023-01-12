@@ -13,15 +13,15 @@
 {
     NSObject<OS_dispatch_source> *_timer;
     NSDate *_lastNotify;
-    NSMutableArray *_items;
     PHImportDeviceSource *_source;
+    NSMutableArray *_items;
     NSObject<OS_dispatch_queue> *_queue;
     CDUnknownBlockType _block;
 }
 
 - (void).cxx_destruct;
 - (void)coalesceItems:(id)arg1;
-- (id)initWithDevice:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (id)initWithSource:(id)arg1 block:(CDUnknownBlockType)arg2;
 
 @end
 

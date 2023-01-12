@@ -15,6 +15,7 @@
 @interface SBAppClipOverlayViewController : SBFTouchPassThroughViewController <SBAppClipOverlayCoordinatorParticipant, SBAppClipOverlayViewDelegate, BSInvalidatable>
 {
     _Bool _displayedOverPlaceholder;
+    _Bool _needsUpdate;
     NSString *_bundleIdentifier;
     NSString *_sceneIdentifier;
     NSString *_webClipIdentifier;
@@ -24,6 +25,7 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool needsUpdate; // @synthesize needsUpdate=_needsUpdate;
 @property(nonatomic) long long sceneActivationState; // @synthesize sceneActivationState=_sceneActivationState;
 @property(nonatomic) _Bool displayedOverPlaceholder; // @synthesize displayedOverPlaceholder=_displayedOverPlaceholder;
 @property(retain, nonatomic) CPSClipOverlayViewController *overlayViewController; // @synthesize overlayViewController=_overlayViewController;
@@ -42,6 +44,7 @@
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
 - (id)view;
+- (void)setNeedsUpdate;
 - (void)setSceneActivationState:(long long)arg1 animated:(_Bool)arg2;
 - (void)setDisplayedOverPlaceholder:(_Bool)arg1 animated:(_Bool)arg2;
 - (id)initWithCoder:(id)arg1;

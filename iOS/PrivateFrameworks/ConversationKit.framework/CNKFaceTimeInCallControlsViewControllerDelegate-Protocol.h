@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CNContact, CNKFaceTimeInCallControlsViewController, UIMenu;
+@class CNContact, CNKFaceTimeInCallControlsViewController, TURoute, UIImage, UIMenu, UIView;
 
 @protocol CNKFaceTimeInCallControlsViewControllerDelegate
-- (UIMenu *)audioRouteMenuForInCallControlsViewController:(CNKFaceTimeInCallControlsViewController *)arg1;
+- (UIImage *)audioRouteGlyphFor:(TURoute *)arg1 buttonStyle:(long long)arg2;
+- (UIMenu *)audioRouteMenu;
 - (void)resetEffectsState;
-- (void)didCreateTableViewForInCallControlsViewController:(CNKFaceTimeInCallControlsViewController *)arg1;
-- (void)inCallControlsViewController:(CNKFaceTimeInCallControlsViewController *)arg1 didTap:(long long)arg2;
+- (void)didCreateCollectionViewForInCallControlsViewController:(CNKFaceTimeInCallControlsViewController *)arg1;
+- (void)inCallControlsViewController:(CNKFaceTimeInCallControlsViewController *)arg1 didTap:(long long)arg2 from:(UIView *)arg3;
+@property(nonatomic, readonly) _Bool isPresentingEffectsBrowser;
 
 @optional
 - (void)inCallControlsViewController:(CNKFaceTimeInCallControlsViewController *)arg1 didAdd:(CNContact *)arg2;

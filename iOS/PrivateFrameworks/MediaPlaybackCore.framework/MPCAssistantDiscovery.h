@@ -9,8 +9,10 @@
 @interface MPCAssistantDiscovery : NSObject
 {
     void *_reconSession;
+    _Bool _waitForCompleteClusters;
 }
 
+@property(nonatomic) _Bool waitForCompleteClusters; // @synthesize waitForCompleteClusters=_waitForCompleteClusters;
 - (void)_discoverAirplayDevices:(CDUnknownBlockType)arg1;
 - (void)stopDiscovery;
 - (void)discoverRemoteControlEndpointsMatchingUIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -18,6 +20,7 @@
 - (void)discoverAirplayDevicesMatchingLogicalDeviceIDs:(id)arg1 expectedCount:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)discoverAirplayDevicesMatchingGroupID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
+- (id)init;
 
 @end
 

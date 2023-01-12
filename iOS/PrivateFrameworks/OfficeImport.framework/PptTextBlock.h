@@ -13,22 +13,22 @@ __attribute__((visibility("hidden")))
 {
     struct PptTextHeaderAtom *mTextHeader;
     NSMutableString *mText;
-    struct PptTextBlockStylingAtom *mStyleText;
-    struct PptTextBlockSpecialInfoAtom *mSpecialInfo;
+    void *mStyleText;
+    void *mSpecialInfo;
     NSMutableArray *mMetaCharacterFields;
     NSMutableArray *mBookmarks;
     NSMutableArray *mHyperlinks;
-    struct PptTextRulerAtom *mTextRuler;
+    void *mTextRuler;
 }
 
 - (void).cxx_destruct;
-- (struct PptSpecialInfoRun *)specialInfoRunAtIndex:(int)arg1;
+- (void *)specialInfoRunAtIndex:(int)arg1;
 - (int)specialInfoRunCount;
 - (struct PptCharRun *)characterRunAtIndex:(int)arg1;
 - (int)characterRunCount;
-- (struct PptParaRun *)paragraphRunAtIndex:(int)arg1;
+- (void *)paragraphRunAtIndex:(int)arg1;
 - (int)paragraphRunCount;
-- (struct PptTextRulerAtom *)textRuler;
+- (void *)textRuler;
 - (id)bookmarks;
 - (id)hyperlinks;
 - (id)metaCharacterFields;

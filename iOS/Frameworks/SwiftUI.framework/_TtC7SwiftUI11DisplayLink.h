@@ -4,16 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import <objc/NSObject.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC7SwiftUI11DisplayLink : _TtCs12_SwiftObject
+__attribute__((visibility("hidden")))
+@interface _TtC7SwiftUI11DisplayLink : NSObject
 {
     MISSING_TYPE *host;
     MISSING_TYPE *link;
+    MISSING_TYPE *nextUpdate;
+    MISSING_TYPE *currentUpdate;
+    MISSING_TYPE *interval;
+    MISSING_TYPE *reasons;
+    MISSING_TYPE *currentThread;
+    MISSING_TYPE *nextThread;
 }
 
++ (void)asyncThreadWithArg:(id)arg1;
+- (void).cxx_destruct;
+- (id)init;
 - (void)displayLinkTimer:(id)arg1;
 
 @end

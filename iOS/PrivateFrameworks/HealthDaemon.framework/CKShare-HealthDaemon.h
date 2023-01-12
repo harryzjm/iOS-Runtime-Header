@@ -7,6 +7,7 @@
 #import <CloudKit/CKShare.h>
 
 @interface CKShare (HealthDaemon)
++ (id)hd_shareWithSystemData:(id)arg1 error:(id *)arg2;
 - (_Bool)hd_isCKShare;
 @end
 

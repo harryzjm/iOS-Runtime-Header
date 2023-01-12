@@ -13,6 +13,7 @@
 
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *deleteID; // @synthesize deleteID=_deleteID;
+- (id)initWithItemID:(id)arg1;
 - (id)initWithDeleteID:(id)arg1 caller:(id)arg2 isContinueWatching:(_Bool)arg3;
 
 @end

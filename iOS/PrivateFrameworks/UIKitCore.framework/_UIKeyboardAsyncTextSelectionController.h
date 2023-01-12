@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 - (void)endFloatingCursor;
 - (void)updateFloatingCursorAtPoint:(struct CGPoint)arg1;
 - (void)beginFloatingCursorAtPoint:(struct CGPoint)arg1;
+- (void)modifySelectionWithExtentPoint:(struct CGPoint)arg1 executionContext:(id)arg2;
 - (void)updateSelectionWithExtentAtBoundary:(long long)arg1 inDirection:(long long)arg2 executionContext:(id)arg3;
 - (void)updateSelectionWithExtentPoint:(struct CGPoint)arg1 withBoundary:(long long)arg2 executionContext:(id)arg3;
 - (void)updateSelectionWithExtentPoint:(struct CGPoint)arg1 executionContext:(id)arg2;

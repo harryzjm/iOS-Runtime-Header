@@ -18,10 +18,6 @@
 - (void)injectCommonShaderInto:(id)arg1 context:(id)arg2;
 - (void)addVariables:(id)arg1;
 - (id)variableAlphaBlendValue;
-- (id)autorelease;
-- (oneway void)release;
-- (unsigned long long)retainCount;
-- (id)retain;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

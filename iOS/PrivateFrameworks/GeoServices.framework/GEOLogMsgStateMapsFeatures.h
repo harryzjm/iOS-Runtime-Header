@@ -18,6 +18,7 @@
     int _submittedRatingsCount;
     _Bool _homeFavoriteSet;
     _Bool _schoolFavoriteSet;
+    _Bool _transitFavoriteSet;
     _Bool _workFavoriteSet;
     struct {
         unsigned int has_favoritesCount:1;
@@ -28,6 +29,7 @@
         unsigned int has_submittedRatingsCount:1;
         unsigned int has_homeFavoriteSet:1;
         unsigned int has_schoolFavoriteSet:1;
+        unsigned int has_transitFavoriteSet:1;
         unsigned int has_workFavoriteSet:1;
     } _flags;
 }
@@ -46,6 +48,8 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasTransitFavoriteSet;
+@property(nonatomic) _Bool transitFavoriteSet;
 @property(nonatomic) _Bool hasSubmittedPhotosCount;
 @property(nonatomic) int submittedPhotosCount;
 @property(nonatomic) _Bool hasSubmittedRatingsCount;

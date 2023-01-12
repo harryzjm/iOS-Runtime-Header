@@ -16,13 +16,13 @@
     unsigned long long _encryptedSize;
 }
 
-+ (void)assetToPb:(id)arg1 asset:(id)arg2 assetPb:(struct Asset *)arg3;
-+ (id)assetFromPb:(const struct Asset *)arg1;
++ (void)assetToPb:(id)arg1 asset:(id)arg2 assetPb:(void *)arg3;
++ (id)assetFromPb:(const void *)arg1;
 + (unsigned long long)downloadTypeFromPb:(int)arg1;
 + (int)downloadTypeToPb:(unsigned long long)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long encryptedSize; // @synthesize encryptedSize=_encryptedSize;
-@property(nonatomic) unsigned long long downloadType; // @synthesize downloadType=_downloadType;
+@property unsigned long long downloadType; // @synthesize downloadType=_downloadType;
 @property(retain, nonatomic) NSData *encryptedVersion; // @synthesize encryptedVersion=_encryptedVersion;
 @property(retain, nonatomic) NSData *version; // @synthesize version=_version;
 

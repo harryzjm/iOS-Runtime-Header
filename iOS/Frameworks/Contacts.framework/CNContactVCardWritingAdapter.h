@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 + (id)adapterWithContact:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly) NSArray *unknownProperties;
+@property(readonly) NSData *memojiMetadata;
 @property(readonly) NSData *imageHash;
 @property(readonly) NSString *imageType;
 @property(readonly) NSString *preferredApplePersonaIdentifier;

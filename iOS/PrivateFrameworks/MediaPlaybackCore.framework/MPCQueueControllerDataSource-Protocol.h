@@ -6,13 +6,15 @@
 
 #import <MediaPlaybackCore/MPShuffleableSectionedIdentifierListDataSource-Protocol.h>
 
-@class MPAVItem, MPCQueueControllerDataSourceLoadRequest, MPIdentifierSet, MPPlaceholderAVItem, MPPlaybackContext, NSString;
+@class MPAVItem, MPCQueueControllerDataSourceLoadRequest, MPIdentifierSet, MPModelPlayEvent, MPPlaceholderAVItem, MPPlaybackContext, NSString;
 
 @protocol MPCQueueControllerDataSource <MPShuffleableSectionedIdentifierListDataSource>
 @property(readonly, nonatomic) _Bool containsTransportableContent;
 @property(readonly, nonatomic) _Bool containsLiveStream;
 - (_Bool)supportsAutoPlayForItem:(NSString *)arg1 inSection:(NSString *)arg2;
 - (MPAVItem *)itemForItem:(NSString *)arg1 inSection:(NSString *)arg2;
+- (MPIdentifierSet *)identifiersForItem:(NSString *)arg1 inSection:(NSString *)arg2;
+- (MPModelPlayEvent *)modelPlayEventForItem:(NSString *)arg1 inSection:(NSString *)arg2;
 - (void)loadPlaybackContext:(MPPlaybackContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 
 @optional

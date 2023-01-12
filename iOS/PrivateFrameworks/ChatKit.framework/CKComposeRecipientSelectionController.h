@@ -14,10 +14,12 @@
     _Bool _contactPreferredContextSelected;
     UIView *_pillContainerView;
     CDUnknownBlockType _sendBlock;
+    UIView *_pillBackgroundContainerView;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool contactPreferredContextSelected; // @synthesize contactPreferredContextSelected=_contactPreferredContextSelected;
+@property(retain, nonatomic) UIView *pillBackgroundContainerView; // @synthesize pillBackgroundContainerView=_pillBackgroundContainerView;
 @property(copy, nonatomic) CDUnknownBlockType sendBlock; // @synthesize sendBlock=_sendBlock;
 @property(retain, nonatomic) UIView *pillContainerView; // @synthesize pillContainerView=_pillContainerView;
 - (_Bool)textFieldShouldReturn:(id)arg1;

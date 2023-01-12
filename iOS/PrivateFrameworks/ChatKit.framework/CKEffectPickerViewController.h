@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)setCloseButtonYPosition:(double)arg1;
 - (void)handleTouchMoved:(struct CGPoint)arg1;
 - (void)handleTouchUp:(struct CGPoint)arg1;
+- (void)setShowingInStandAloneWindow:(_Bool)arg1;
 - (void)updateColor:(BOOL)arg1;
 - (void)updateHintTransition:(double)arg1;
 - (void)presentPicker;

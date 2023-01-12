@@ -19,11 +19,14 @@
     NSString *_appVersion;
     NSString *_osVersion;
     NSString *_countryCode;
+    NSString *_formatVersion;
 }
 
++ (id)defaultDeviceInfoWithAppVersion:(id)arg1 formatVersion:(id)arg2;
 + (id)defaultDeviceInfoWithAppVersion:(id)arg1;
 + (id)defaultDeviceInfo;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *formatVersion; // @synthesize formatVersion=_formatVersion;
 @property(readonly, copy, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
 @property(readonly, copy, nonatomic) NSString *osVersion; // @synthesize osVersion=_osVersion;
 @property(readonly, copy, nonatomic) NSString *appVersion; // @synthesize appVersion=_appVersion;
@@ -35,6 +38,7 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)initWithPreferredLanguages:(id)arg1 deviceType:(id)arg2 utcOffset:(long long)arg3 dstOffset:(long long)arg4 appVersion:(id)arg5 osVersion:(id)arg6 countryCode:(id)arg7 formatVersion:(id)arg8;
 - (id)initWithPreferredLanguages:(id)arg1 deviceType:(id)arg2 utcOffset:(long long)arg3 dstOffset:(long long)arg4 appVersion:(id)arg5 osVersion:(id)arg6 countryCode:(id)arg7;
 - (id)initWithPreferredLanguages:(id)arg1 deviceType:(id)arg2 utcOffset:(long long)arg3 dstOffset:(long long)arg4 appVersion:(id)arg5 osVersion:(id)arg6;
 

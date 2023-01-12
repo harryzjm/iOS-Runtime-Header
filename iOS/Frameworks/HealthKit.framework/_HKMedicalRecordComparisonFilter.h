@@ -14,6 +14,7 @@
 + (id)allowedDataTypeClassesForKeyPath:(id)arg1;
 + (_Bool)isSupportedKeyPath:(id)arg1;
 - (_Bool)_acceptsRecordWithState:(unsigned long long)arg1;
+- (_Bool)_acceptsRecordWithManuallyEnteredIdentifier:(unsigned long long)arg1;
 - (_Bool)_acceptsRecordWithDate:(id)arg1;
 - (_Bool)acceptsDataObject:(id)arg1;
 

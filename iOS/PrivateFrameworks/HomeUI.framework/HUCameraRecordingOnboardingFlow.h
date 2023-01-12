@@ -21,6 +21,7 @@
     HFUserItem *_userItem;
 }
 
++ (id)needsOnboardingForHome:(id)arg1 options:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) HFUserItem *userItem; // @synthesize userItem=_userItem;
 @property(nonatomic) _Bool shouldAbortAllOnboarding; // @synthesize shouldAbortAllOnboarding=_shouldAbortAllOnboarding;

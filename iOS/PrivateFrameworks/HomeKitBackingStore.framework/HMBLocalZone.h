@@ -8,7 +8,7 @@
 
 #import <HomeKitBackingStore/HMFLogging-Protocol.h>
 
-@class HMBLocalDatabase, HMBLocalSQLContext, HMBModelContainer, HMFUnfairLock, NAFuture, NSHashTable, NSMutableDictionary, NSString;
+@class HMBLocalDatabase, HMBLocalSQLContext, HMBLocalZoneConfiguration, HMBModelContainer, HMFUnfairLock, NAFuture, NSHashTable, NSMutableDictionary, NSString;
 @protocol HMBLocalZoneDelegate, HMBLocalZoneID, HMBMirrorProtocol;
 
 @interface HMBLocalZone : HMFObject <HMFLogging>
@@ -16,6 +16,7 @@
     _Bool _hasStartedUp;
     HMBLocalDatabase *_localDatabase;
     HMBModelContainer *_modelContainer;
+    HMBLocalZoneConfiguration *_configuration;
     id <HMBLocalZoneID> _zoneID;
     id <HMBMirrorProtocol> _mirror;
     id <HMBLocalZoneDelegate> _delegate;
@@ -44,18 +45,20 @@
 @property(nonatomic) __weak id <HMBLocalZoneDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) id <HMBMirrorProtocol> mirror; // @synthesize mirror=_mirror;
 @property(readonly, nonatomic) id <HMBLocalZoneID> zoneID; // @synthesize zoneID=_zoneID;
+@property(readonly, nonatomic) HMBLocalZoneConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(readonly, nonatomic) HMBModelContainer *modelContainer; // @synthesize modelContainer=_modelContainer;
 @property(nonatomic) __weak HMBLocalDatabase *localDatabase; // @synthesize localDatabase=_localDatabase;
 @property(readonly, copy) NSString *description;
 - (id)logIdentifier;
 - (_Bool)shouldLogPrivateInformation;
 - (id)shutdown;
-- (id)removeOrphanedModelsOfTypes:(id)arg1 options:(id)arg2;
 - (id)removeAllModelsOfTypes:(id)arg1 options:(id)arg2;
 - (id)removeModelsAndDescendantModelsWithIDs:(id)arg1 depth:(unsigned long long)arg2 options:(id)arg3;
+- (id)removeModelsWithParentModelID:(id)arg1 options:(id)arg2;
 - (id)removeModelIDs:(id)arg1 options:(id)arg2;
 - (id)updateModels:(id)arg1 options:(id)arg2;
 - (id)addModels:(id)arg1 options:(id)arg2;
+- (id)createModels:(id)arg1 options:(id)arg2;
 - (id)updateModels:(id)arg1 andRemoveModelIDs:(id)arg2 options:(id)arg3;
 - (id)addModels:(id)arg1 andRemoveModelIDs:(id)arg2 options:(id)arg3;
 - (id)flush;
@@ -72,7 +75,7 @@
 - (void)addObserver:(id)arg1 forModelWithID:(id)arg2;
 - (void)addObserverForAllModels:(id)arg1;
 - (void)dealloc;
-- (id)initWithLocalDatabase:(id)arg1 zoneID:(id)arg2 zoneRow:(unsigned long long)arg3 delegate:(id)arg4 modelContainer:(id)arg5 mirror:(id)arg6;
+- (id)initWithLocalDatabase:(id)arg1 zoneID:(id)arg2 zoneRow:(unsigned long long)arg3 configuration:(id)arg4 mirror:(id)arg5;
 - (id)triggerProcessForBlockRow:(unsigned long long)arg1;
 - (void)queueIncompleteProcesses;
 - (id)observersForModelWithID:(id)arg1;
@@ -101,7 +104,7 @@
 - (id)fetchReadyBlocksWithType:(unsigned long long)arg1 error:(id *)arg2;
 - (_Bool)_insertDeletionItemsForModelsAndDescendantModelsWithBlockRow:(unsigned long long)arg1 context:(id)arg2 type:(unsigned long long)arg3 modelIDs:(id)arg4 currentDepth:(unsigned long long)arg5 maximumDepth:(unsigned long long)arg6 options:(id)arg7 error:(id *)arg8;
 - (unsigned long long)insertBlockToRemoveModelsAndDescendantModelsWithType:(unsigned long long)arg1 modelIDs:(id)arg2 depth:(unsigned long long)arg3 options:(id)arg4 error:(id *)arg5;
-- (unsigned long long)insertBlockToRemoveOrphanedModelsWithType:(unsigned long long)arg1 modelTypes:(id)arg2 options:(id)arg3 error:(id *)arg4;
+- (unsigned long long)insertBlockToRemoveChildModelsWithType:(unsigned long long)arg1 parentModelID:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (unsigned long long)insertBlockToRemoveAllModelsWithType:(unsigned long long)arg1 modelTypes:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (unsigned long long)insertBlockWithType:(unsigned long long)arg1 options:(id)arg2 items:(id)arg3 error:(id *)arg4;
 - (id)createInputBlockWithType:(unsigned long long)arg1 error:(id *)arg2;
@@ -110,6 +113,12 @@
 - (id)update:(id)arg1;
 - (id)update:(id)arg1 remove:(id)arg2;
 - (id)objectFromData:(id)arg1 encoding:(unsigned long long)arg2 storageLocation:(unsigned long long)arg3 recordRowID:(unsigned long long)arg4 error:(id *)arg5;
+- (id)fetchModelsOfType:(Class)arg1 error:(id *)arg2;
+- (id)fetchAllModelsWithError:(id *)arg1;
+- (id)fetchModelsWithParentModelID:(id)arg1 error:(id *)arg2;
+- (id)fetchModelsWithParentModelID:(id)arg1 ofType:(Class)arg2 error:(id *)arg3;
+- (id)fetchModelWithModelID:(id)arg1 ofType:(Class)arg2 error:(id *)arg3;
+- (id)fetchModelWithModelID:(id)arg1 error:(id *)arg2;
 - (_Bool)removeAllRecordsWithError:(id *)arg1;
 - (id)setExternalID:(id)arg1 externalData:(id)arg2 forRecordRow:(unsigned long long)arg3;
 - (id)queryAllRowRecordsReturning:(unsigned long long)arg1;
@@ -118,12 +127,6 @@
 - (id)fetchRecordRowWithModelID:(id)arg1 returning:(unsigned long long)arg2 error:(id *)arg3;
 - (id)fetchModelWithModelID:(id)arg1 recordRow:(unsigned long long *)arg2 error:(id *)arg3;
 - (id)fetchModelWithRecordRow:(unsigned long long)arg1 error:(id *)arg2;
-- (id)fetchModelsOfType:(Class)arg1 error:(id *)arg2;
-- (id)fetchAllModelsWithError:(id *)arg1;
-- (id)fetchModelsWithParentModelID:(id)arg1 error:(id *)arg2;
-- (id)fetchModelsWithParentModelID:(id)arg1 ofType:(Class)arg2 error:(id *)arg3;
-- (id)fetchModelWithModelID:(id)arg1 ofType:(Class)arg2 error:(id *)arg3;
-- (id)fetchModelWithModelID:(id)arg1 error:(id *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

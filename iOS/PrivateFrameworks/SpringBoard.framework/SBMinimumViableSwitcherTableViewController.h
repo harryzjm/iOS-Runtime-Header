@@ -17,17 +17,18 @@
     SBApplicationSceneView *_temporaryAppView;
     SBApplicationSceneView *_temporarySideAppView;
     SBBestAppSuggestion *_bestAppSuggestion;
-    _Bool _liveContentRasterizationDisabled;
+    _Bool _asyncRenderingDisabled;
     id <SBSwitcherContentViewControllerDataSource> _dataSource;
     long long _contentOrientation;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic, getter=isLiveContentRasterizationDisabled) _Bool liveContentRasterizationDisabled; // @synthesize liveContentRasterizationDisabled=_liveContentRasterizationDisabled;
+@property(nonatomic, getter=isAsyncRenderingDisabled) _Bool asyncRenderingDisabled; // @synthesize asyncRenderingDisabled=_asyncRenderingDisabled;
 @property(nonatomic) long long contentOrientation; // @synthesize contentOrientation=_contentOrientation;
 @property(retain, nonatomic) SBBestAppSuggestion *bestAppSuggestion; // @synthesize bestAppSuggestion=_bestAppSuggestion;
 @property(nonatomic) __weak id <SBSwitcherContentViewControllerDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property(nonatomic) __weak id <SBSwitcherContentViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (id)_statusBarStyleRequestForDefaultStyle;
 - (id)tableView:(id)arg1 titleForDeleteConfirmationButtonForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;
 - (_Bool)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;
@@ -36,14 +37,16 @@
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)viewDidLoad;
+- (id)trailingStatusBarStyleRequest;
+- (id)leadingStatusBarStyleRequest;
+- (void)tapReceivedForGrabberTongueAtEdge:(unsigned long long)arg1;
+- (void)clickReceivedForHomeGrabberView:(id)arg1;
 - (void)noteAppLayoutsDidChange;
-- (void)performAnimatedRemovalOfAppLayout:(id)arg1 forReason:(long long)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)noteModelDidMutateForRemovalOfAppLayout:(id)arg1 forReason:(long long)arg2 animated:(_Bool)arg3;
-- (void)prepareAnimatedRemovalOfAppLayout:(id)arg1 forReason:(long long)arg2;
-- (_Bool)shouldAnimateRemovalOfAppLayout:(id)arg1 forReason:(long long)arg2;
+- (void)removeLayoutRole:(long long)arg1 inSpace:(id)arg2 mutationBlock:(CDUnknownBlockType)arg3 reason:(long long)arg4;
 - (_Bool)handleHeadsetButtonPress:(_Bool)arg1;
 - (_Bool)handleVolumeDownButtonPress;
 - (_Bool)handleVolumeUpButtonPress;
+- (_Bool)handleVoiceCommandButtonPress;
 - (_Bool)handleLockButtonPress;
 - (_Bool)handleHomeButtonLongPress;
 - (_Bool)handleHomeButtonDoublePress;
@@ -53,6 +56,8 @@
 - (void)prepareAnimatedInsertionOfAppLayouts:(id)arg1 atIndexes:(id)arg2;
 - (_Bool)shouldAnimateInsertionOfAppLayouts:(id)arg1 atIndexes:(id)arg2;
 - (id)iconForAppLayout:(id)arg1;
+- (void)performKeyboardShortcutAction:(long long)arg1;
+- (_Bool)canPerformKeyboardShortcutAction:(long long)arg1 forBundleIdentifier:(id)arg2;
 - (void)noteKeyboardFocusDidChangeToSceneID:(id)arg1;
 @property(nonatomic, getter=isShowingModifierTimeline) _Bool showModifierTimeline;
 - (void)handleGestureDidEnd:(id)arg1;
@@ -61,7 +66,7 @@
 - (id)animationControllerForTransitionRequest:(id)arg1;
 @property(readonly, copy, nonatomic) BSAnimationSettings *defaultTransitionAnimationSettings;
 @property(readonly, nonatomic) _Bool canInterruptActiveTransition;
-- (void)performTransitionWithContext:(id)arg1 animated:(_Bool)arg2 alongsideAnimationHandler:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)performTransitionWithContext:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_appLayouts;
 - (void)respondToInAppStatusBarRequestedHiddenUpdateAnimated:(_Bool)arg1;
 - (_Bool)isStatusBarHiddenForAppLayout:(id)arg1;
@@ -75,7 +80,11 @@
 - (double)minimumHomeScreenScale;
 - (double)switcherCardScale;
 - (double)snapshotScaleForSceneHandle:(id)arg1;
+- (struct CGRect)applicationSceneSettingsFrameForInterfaceOrientation:(long long)arg1 centerConfiguration:(long long)arg2;
 - (void)acquiredViewController:(id)arg1 forTransientOverlayAppLayout:(id)arg2;
+- (long long)switcherPreferredInterfaceOrientation;
+- (unsigned long long)_debugSwitcherPostModernRotationSupportedSupportedInterfaceOrientations;
+- (unsigned long long)switcherSupportedInterfaceOrientations;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

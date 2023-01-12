@@ -17,6 +17,7 @@
 @property(nonatomic) __weak id <NTKRichComplicationRectangularBaseViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_transitToHighlightState:(_Bool)arg1 fraction:(double)arg2;
 - (id)_createAndAddColoringLabelWithFontSize:(double)arg1 weight:(double)arg2 usesTextProviderTintColoring:(_Bool)arg3;
+- (double)contentMargin;
 - (id)initWithFamily:(long long)arg1;
 - (id)init;
 

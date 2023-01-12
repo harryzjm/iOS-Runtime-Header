@@ -10,17 +10,18 @@
 #import <MTLCapture/MTLSharedEvent-Protocol.h>
 
 @class CaptureMTLDevice, NSString;
-@protocol MTLDevice, MTLSharedEvent;
+@protocol MTLDevice, MTLSharedEvent, MTLSharedEventSPI;
 
 @interface CaptureMTLSharedEvent : NSObject <MTLSharedEvent, CaptureMTLObject>
 {
     CaptureMTLDevice *_captureDevice;
-    id <MTLSharedEvent> _baseObject;
+    id <MTLSharedEventSPI> _baseObject;
     struct GTTraceContext *_traceContext;
     struct GTTraceStream *_traceStream;
 }
 
 - (void).cxx_destruct;
+- (_Bool)waitUntilSignaledValue:(unsigned long long)arg1 timeoutMS:(unsigned long long)arg2;
 - (void)dealloc;
 @property unsigned long long signaledValue;
 @property(copy) NSString *label;

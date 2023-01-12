@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HKQueryAnchor;
+@class HKQueryAnchor, NSArray;
 
 __attribute__((visibility("hidden")))
 @interface _HKAnchoredObjectQueryServerConfiguration
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     HKQueryAnchor *_anchor;
     unsigned long long _limit;
     double _collectionInterval;
+    NSArray *_queryDescriptors;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool includeContributorInformation; // @synthesize includeContributorInformation=_includeContributorInformation;
 @property(nonatomic) _Bool includeAutomaticTimeZones; // @synthesize includeAutomaticTimeZones=_includeAutomaticTimeZones;
 @property(nonatomic) _Bool includeDeletedObjects; // @synthesize includeDeletedObjects=_includeDeletedObjects;
+@property(copy, nonatomic) NSArray *queryDescriptors; // @synthesize queryDescriptors=_queryDescriptors;
 @property(nonatomic) double collectionInterval; // @synthesize collectionInterval=_collectionInterval;
 @property(nonatomic) unsigned long long limit; // @synthesize limit=_limit;
 @property(copy, nonatomic) HKQueryAnchor *anchor; // @synthesize anchor=_anchor;

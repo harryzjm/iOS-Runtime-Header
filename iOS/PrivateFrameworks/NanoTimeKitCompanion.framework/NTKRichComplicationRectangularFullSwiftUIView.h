@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class _TtC19ComplicationDisplay23ComplicationHostingView;
+@class CDComplicationHostingView;
 
 @interface NTKRichComplicationRectangularFullSwiftUIView
 {
-    _TtC19ComplicationDisplay23ComplicationHostingView *_swiftUIView;
+    CDComplicationHostingView *_swiftUIView;
 }
 
 + (_Bool)handlesComplicationTemplate:(id)arg1;

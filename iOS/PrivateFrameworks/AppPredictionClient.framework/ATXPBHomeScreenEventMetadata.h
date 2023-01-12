@@ -8,18 +8,22 @@
 
 #import <AppPredictionClient/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class ATXPBCGRectWrapper, NSMutableArray, NSString;
 
 @interface ATXPBHomeScreenEventMetadata : PBCodable <NSCopying>
 {
     unsigned long long _pageIndex;
+    NSString *_engagedUrl;
     NSMutableArray *_stackIds;
+    ATXPBCGRectWrapper *_visibleRect;
     NSMutableArray *_widgetIdentifiables;
     NSMutableArray *_widgetInStackIdentifiables;
+    _Bool _isStalenessRotation;
     _Bool _isSuggestionInAddWidgetSheet;
     _Bool _isWidgetInTodayView;
     struct {
         unsigned int pageIndex:1;
+        unsigned int isStalenessRotation:1;
         unsigned int isSuggestionInAddWidgetSheet:1;
         unsigned int isWidgetInTodayView:1;
     } _has;
@@ -29,6 +33,9 @@
 + (Class)widgetIdentifiablesType;
 + (Class)stackIdsType;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isStalenessRotation; // @synthesize isStalenessRotation=_isStalenessRotation;
+@property(retain, nonatomic) NSString *engagedUrl; // @synthesize engagedUrl=_engagedUrl;
+@property(retain, nonatomic) ATXPBCGRectWrapper *visibleRect; // @synthesize visibleRect=_visibleRect;
 @property(nonatomic) _Bool isWidgetInTodayView; // @synthesize isWidgetInTodayView=_isWidgetInTodayView;
 @property(nonatomic) _Bool isSuggestionInAddWidgetSheet; // @synthesize isSuggestionInAddWidgetSheet=_isSuggestionInAddWidgetSheet;
 @property(retain, nonatomic) NSMutableArray *widgetInStackIdentifiables; // @synthesize widgetInStackIdentifiables=_widgetInStackIdentifiables;
@@ -44,6 +51,9 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasIsStalenessRotation;
+@property(readonly, nonatomic) _Bool hasEngagedUrl;
+@property(readonly, nonatomic) _Bool hasVisibleRect;
 @property(nonatomic) _Bool hasIsWidgetInTodayView;
 @property(nonatomic) _Bool hasIsSuggestionInAddWidgetSheet;
 - (id)widgetInStackIdentifiablesAtIndex:(unsigned long long)arg1;

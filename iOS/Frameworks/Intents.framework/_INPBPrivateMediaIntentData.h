@@ -10,7 +10,7 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBPrivateMediaIntentData-Protocol.h>
 
-@class NSString, _INPBAppIdentifier, _INPBSpeakerIDInfo, _INPBString, _INPBWholeHouseAudioMetadata;
+@class NSString, _INPBAppIdentifier, _INPBHomeAutomationEntityProvider, _INPBSpeakerIDInfo, _INPBString, _INPBWholeHouseAudioMetadata;
 
 @interface _INPBPrivateMediaIntentData : PBCodable <_INPBPrivateMediaIntentData, NSSecureCoding, NSCopying>
 {
@@ -31,6 +31,7 @@
     int _nlConfidenceLevel;
     float _nlConfidenceScore;
     _INPBString *_fallbackUsername;
+    _INPBHomeAutomationEntityProvider *_homeAutomationEntityProvider;
     _INPBAppIdentifier *_proxiedThirdPartyAppInfo;
     _INPBString *_resolvedSharedUserID;
     _INPBSpeakerIDInfo *_speakerIDInfo;
@@ -48,6 +49,7 @@
 @property(nonatomic) int nlConfidenceLevel; // @synthesize nlConfidenceLevel=_nlConfidenceLevel;
 @property(nonatomic) _Bool isAppCorrection; // @synthesize isAppCorrection=_isAppCorrection;
 @property(nonatomic) _Bool isAppAttributionRequired; // @synthesize isAppAttributionRequired=_isAppAttributionRequired;
+@property(retain, nonatomic) _INPBHomeAutomationEntityProvider *homeAutomationEntityProvider; // @synthesize homeAutomationEntityProvider=_homeAutomationEntityProvider;
 @property(retain, nonatomic) _INPBString *fallbackUsername; // @synthesize fallbackUsername=_fallbackUsername;
 @property(nonatomic) float asrConfidenceScore; // @synthesize asrConfidenceScore=_asrConfidenceScore;
 @property(nonatomic) int asrConfidenceLevel; // @synthesize asrConfidenceLevel=_asrConfidenceLevel;
@@ -70,6 +72,7 @@
 @property(nonatomic) _Bool hasNlConfidenceLevel;
 @property(nonatomic) _Bool hasIsAppCorrection;
 @property(nonatomic) _Bool hasIsAppAttributionRequired;
+@property(readonly, nonatomic) _Bool hasHomeAutomationEntityProvider;
 @property(readonly, nonatomic) _Bool hasFallbackUsername;
 @property(nonatomic) _Bool hasAsrConfidenceScore;
 - (int)StringAsAsrConfidenceLevel:(id)arg1;

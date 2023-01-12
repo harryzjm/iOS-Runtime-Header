@@ -16,7 +16,6 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSData *pushToken; // @synthesize pushToken=_pushToken;
 @property(readonly, nonatomic) NSString *alias; // @synthesize alias=_alias;
-- (id)groupID;
 - (id)destinationURIs;
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;

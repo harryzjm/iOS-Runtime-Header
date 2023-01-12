@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HDCloudSyncCodableStore, HDCloudSyncSequenceRecord, NSArray, NSString, NSUUID;
+@class HDCloudSyncCodableStore, HDCloudSyncSequenceRecord, HDCloudSyncShardPredicate, NSArray, NSString, NSUUID;
 
 @interface HDCloudSyncStoreRecord
 {
@@ -14,22 +14,24 @@
     HDCloudSyncSequenceRecord *_tombstoneSequenceRecord;
 }
 
++ (id)fieldsForUnprotectedSerialization;
 + (id)recordType;
 + (_Bool)requiresUnderlyingMessage;
 + (id)recordWithCKRecord:(id)arg1 error:(id *)arg2;
 + (_Bool)hasFutureSchema:(id)arg1;
 + (_Bool)isStoreRecordID:(id)arg1;
 + (_Bool)isStoreRecord:(id)arg1;
-+ (id)recordIDInSyncCircle:(id)arg1 ownerIdentifier:(id)arg2 storeIdentifier:(id)arg3 zoneID:(id)arg4;
 + (id)recordIDWithIndividualZoneID:(id)arg1;
 + (id)recordIDForOwnerIdentifier:(id)arg1 storeIdentifier:(id)arg2 zoneID:(id)arg3;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) HDCloudSyncSequenceRecord *tombstoneSequenceRecord; // @synthesize tombstoneSequenceRecord=_tombstoneSequenceRecord;
+- (id)printDescription;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (long long)compare:(id)arg1;
 - (id)serializeUnderlyingMessage;
+@property(copy, nonatomic) HDCloudSyncShardPredicate *shardPredicate;
 @property(nonatomic) int requiredProtocolVersion;
 @property(nonatomic) int supportedProtocolVersion;
 @property(nonatomic) int deviceMode;
@@ -50,7 +52,6 @@
 - (id)addNewTombstoneSequenceHeaderRecordWithIncludedIdentifiers:(id)arg1;
 - (id)addNewSequenceHeaderRecordWithSyncAnchorMap:(id)arg1 includedIdentifiers:(id)arg2;
 - (id)clearTombstoneSequenceHeaderRecord;
-- (id)_clearSequenceHeaderRecord:(id)arg1;
 - (id)clearPendingSequenceHeaderRecord;
 - (id)pendingSequenceHeaderRecord;
 - (id)activeSequenceHeaderRecord;
@@ -60,8 +61,6 @@
 - (id)currentSequenceHeaderRecord;
 @property(readonly, copy, nonatomic) NSArray *orderedSequenceRecords;
 @property(readonly, nonatomic) HDCloudSyncSequenceRecord *sequenceRecord;
-- (id)initWithCKRecord:(id)arg1 schemaVersion:(long long)arg2 underlyingStore:(id)arg3;
-- (id)initWithOwnerIdentifier:(id)arg1 storeIdentifier:(id)arg2 pendingOwner:(id)arg3 active:(_Bool)arg4 record:(id)arg5 schemaVersion:(long long)arg6;
 - (id)initInSyncCircle:(id)arg1 ownerIdentifier:(id)arg2 storeIdentifier:(id)arg3 zoneID:(id)arg4;
 - (id)initInSyncCircle:(id)arg1 ownerIdentifier:(id)arg2 storeIdentifier:(id)arg3 unified:(_Bool)arg4;
 - (id)initWithCKRecord:(id)arg1 schemaVersion:(long long)arg2;

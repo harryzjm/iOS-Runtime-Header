@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _TtC12GameCenterUI22PlayerProfilePresenter : NSObject
 {
     MISSING_TYPE *playerId;
+    MISSING_TYPE *profileType;
     MISSING_TYPE *objectGraph;
     MISSING_TYPE *requiredDataPresenter;
     MISSING_TYPE *authenticationPresenter;
@@ -34,12 +35,14 @@ __attribute__((visibility("hidden")))
 - (void)signIntoGameCenter;
 - (void)setAllowsNearByMultiplayerInvites:(_Bool)arg1;
 - (void)updateSnapshot;
+- (void)onForeGroundUpdate;
 @property(nonatomic) _Bool isUpdating; // @synthesize isUpdating;
 @property(nonatomic, retain) _TtC12GameCenterUI17NicknamePresenter *nicknamePresenter; // @synthesize nicknamePresenter;
 @property(nonatomic, readonly) _TtC12GameCenterUI34LocalPlayerAuthenticationPresenter *authenticationPresenter; // @synthesize authenticationPresenter;
 @property(nonatomic, readonly) _Bool isSignedIn;
 @property(nonatomic, readonly) NSString *title;
-- (id)initWithPlayerId:(id)arg1;
+@property(nonatomic, readonly) _Bool wantsHiddenTitle;
+@property(nonatomic, readonly) _Bool wantsHiddenNavigationBar;
 
 @end
 

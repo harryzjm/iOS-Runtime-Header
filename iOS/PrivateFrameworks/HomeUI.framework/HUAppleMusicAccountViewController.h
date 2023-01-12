@@ -8,11 +8,12 @@
 #import <HomeUI/HUAppleMusicAccountModuleControllerDelegate-Protocol.h>
 #import <HomeUI/UITextViewDelegate-Protocol.h>
 
-@class HUAppleMusicAccountModuleController, NADeallocationSentinel, NAFuture, NSString, UIAlertController;
+@class HUAppleMusicAccountModuleController, HUPrimaryUserSettingsItemModuleController, NADeallocationSentinel, NAFuture, NSString, UIAlertController;
 
 @interface HUAppleMusicAccountViewController <HUAppleMusicAccountModuleControllerDelegate, UITextViewDelegate, HUAccessorySettingsDetailsViewControllerProtocol>
 {
     HUAppleMusicAccountModuleController *_appleMusicAccountModuleController;
+    HUPrimaryUserSettingsItemModuleController *_primaryUserModuleController;
     NAFuture *_accountArbitrationFuture;
     NADeallocationSentinel *_appleMusicLoadingViewControllerDeallocationSentinel;
     UIAlertController *_appleMusicLoadingViewController;
@@ -22,6 +23,7 @@
 @property(retain, nonatomic) UIAlertController *appleMusicLoadingViewController; // @synthesize appleMusicLoadingViewController=_appleMusicLoadingViewController;
 @property(retain, nonatomic) NADeallocationSentinel *appleMusicLoadingViewControllerDeallocationSentinel; // @synthesize appleMusicLoadingViewControllerDeallocationSentinel=_appleMusicLoadingViewControllerDeallocationSentinel;
 @property(retain, nonatomic) NAFuture *accountArbitrationFuture; // @synthesize accountArbitrationFuture=_accountArbitrationFuture;
+@property(retain, nonatomic) HUPrimaryUserSettingsItemModuleController *primaryUserModuleController; // @synthesize primaryUserModuleController=_primaryUserModuleController;
 @property(retain, nonatomic) HUAppleMusicAccountModuleController *appleMusicAccountModuleController; // @synthesize appleMusicAccountModuleController=_appleMusicAccountModuleController;
 - (void)presentViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)_accessorySupportsMultiUser;
@@ -31,11 +33,15 @@
 - (void)appleMusicModuleControllerPresentSignInFlow:(id)arg1;
 - (void)appleMusicModuleControllerDidUpdateAuthenticationState:(id)arg1;
 - (void)appleMusicModuleController:(id)arg1 willPresentContext:(id)arg2 account:(id)arg3;
+- (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (id)itemModuleControllers;
 - (void)viewDidLoad;
+- (id)buildItemModuleControllerForModule:(id)arg1;
+- (id)initWithAccessorySettingItem:(id)arg1 module:(id)arg2;
 - (id)initWithAccessoryGroupItem:(id)arg1;
+- (id)initWithHFItem:(id)arg1 mediaProfileContainer:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     struct {
         _Bool didUpdateHighlightProgress;
         _Bool shouldDelayGesture;
+        _Bool shouldBeDelayedByGesture;
     } _delegateImplements;
     unsigned long long _behavior;
     _Bool _cancelsTouchesInView;
@@ -59,13 +60,14 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool hasExceededAllowableMovement;
 @property(readonly, nonatomic) double touchDuration;
 @property(readonly, nonatomic) double maximumEffectProgress;
+@property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) _Bool clicksUpAutomaticallyAfterTimeout;
 @property(nonatomic) double allowableMovement;
 - (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
+@property(nonatomic) unsigned long long driverStyle;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

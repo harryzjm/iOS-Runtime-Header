@@ -6,25 +6,31 @@
 
 #import <Preferences/PSListController.h>
 
-#import <ScreenTimeSettingsUI/STUIDateTimePickerCellDelegate-Protocol.h>
+#import <ScreenTimeSettingsUI/PSDateTimePickerCellDelegate-Protocol.h>
 
-@class NSArray, NSString, PSSpecifier, STDeviceBedtime, STUIUser;
+@class NSArray, NSObject, NSTimer, PSSpecifier, STDeviceBedtime, STUIUser;
 @protocol STDeviceBedtimeListControllerDelegate, STRootViewModelCoordinator;
 
 __attribute__((visibility("hidden")))
-@interface STDeviceBedtimeListController : PSListController <STUIDateTimePickerCellDelegate>
+@interface STDeviceBedtimeListController : PSListController <PSDateTimePickerCellDelegate>
 {
     _Bool _canAskForMoreTime;
+    _Bool _isEditingSimple;
     id <STDeviceBedtimeListControllerDelegate> _delegate;
-    id <STRootViewModelCoordinator> _coordinator;
+    NSObject<STRootViewModelCoordinator> *_coordinator;
     STDeviceBedtime *_bedtime;
     STUIUser *_affectedUser;
     NSArray *_orderedWeekdayIndexes;
     NSArray *_orderedLocalizedWeekdayNames;
     PSSpecifier *_deviceBedtimeSpecifier;
+    PSSpecifier *_downTimeGroupSpecifier;
+    PSSpecifier *_scheduledSwitchSpecifier;
+    PSSpecifier *_scheduleSwitchGroupSpecifier;
+    PSSpecifier *_scheduleTypeGroupSpecifier;
     PSSpecifier *_informativeTextGroupSpecifier;
     PSSpecifier *_everyDaySpecifier;
     PSSpecifier *_customizeDaysSpecifier;
+    PSSpecifier *_timeGroupSpecifier;
     PSSpecifier *_startTimeSpecifier;
     PSSpecifier *_endTimeSpecifier;
     PSSpecifier *_startTimePickerSpecifier;
@@ -33,9 +39,11 @@ __attribute__((visibility("hidden")))
     PSSpecifier *_selectedTimeSpecifier;
     PSSpecifier *_atBedtimeGroupSpecifier;
     PSSpecifier *_atBedtimeSpecifier;
+    NSTimer *_downtimeScheduleRefreshTimer;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSTimer *downtimeScheduleRefreshTimer; // @synthesize downtimeScheduleRefreshTimer=_downtimeScheduleRefreshTimer;
 @property(retain, nonatomic) PSSpecifier *atBedtimeSpecifier; // @synthesize atBedtimeSpecifier=_atBedtimeSpecifier;
 @property(retain, nonatomic) PSSpecifier *atBedtimeGroupSpecifier; // @synthesize atBedtimeGroupSpecifier=_atBedtimeGroupSpecifier;
 @property(retain, nonatomic) PSSpecifier *selectedTimeSpecifier; // @synthesize selectedTimeSpecifier=_selectedTimeSpecifier;
@@ -44,16 +52,22 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) PSSpecifier *startTimePickerSpecifier; // @synthesize startTimePickerSpecifier=_startTimePickerSpecifier;
 @property(retain, nonatomic) PSSpecifier *endTimeSpecifier; // @synthesize endTimeSpecifier=_endTimeSpecifier;
 @property(retain, nonatomic) PSSpecifier *startTimeSpecifier; // @synthesize startTimeSpecifier=_startTimeSpecifier;
+@property(retain, nonatomic) PSSpecifier *timeGroupSpecifier; // @synthesize timeGroupSpecifier=_timeGroupSpecifier;
+@property(nonatomic) _Bool isEditingSimple; // @synthesize isEditingSimple=_isEditingSimple;
 @property(retain) PSSpecifier *customizeDaysSpecifier; // @synthesize customizeDaysSpecifier=_customizeDaysSpecifier;
 @property(retain) PSSpecifier *everyDaySpecifier; // @synthesize everyDaySpecifier=_everyDaySpecifier;
 @property(retain, nonatomic) PSSpecifier *informativeTextGroupSpecifier; // @synthesize informativeTextGroupSpecifier=_informativeTextGroupSpecifier;
+@property(retain, nonatomic) PSSpecifier *scheduleTypeGroupSpecifier; // @synthesize scheduleTypeGroupSpecifier=_scheduleTypeGroupSpecifier;
+@property(retain, nonatomic) PSSpecifier *scheduleSwitchGroupSpecifier; // @synthesize scheduleSwitchGroupSpecifier=_scheduleSwitchGroupSpecifier;
+@property(retain, nonatomic) PSSpecifier *scheduledSwitchSpecifier; // @synthesize scheduledSwitchSpecifier=_scheduledSwitchSpecifier;
+@property(retain, nonatomic) PSSpecifier *downTimeGroupSpecifier; // @synthesize downTimeGroupSpecifier=_downTimeGroupSpecifier;
 @property(retain, nonatomic) PSSpecifier *deviceBedtimeSpecifier; // @synthesize deviceBedtimeSpecifier=_deviceBedtimeSpecifier;
 @property(readonly) NSArray *orderedLocalizedWeekdayNames; // @synthesize orderedLocalizedWeekdayNames=_orderedLocalizedWeekdayNames;
 @property(readonly) NSArray *orderedWeekdayIndexes; // @synthesize orderedWeekdayIndexes=_orderedWeekdayIndexes;
 @property(nonatomic) _Bool canAskForMoreTime; // @synthesize canAskForMoreTime=_canAskForMoreTime;
 @property(retain, nonatomic) STUIUser *affectedUser; // @synthesize affectedUser=_affectedUser;
 @property(copy, nonatomic) STDeviceBedtime *bedtime; // @synthesize bedtime=_bedtime;
-@property(retain, nonatomic) id <STRootViewModelCoordinator> coordinator; // @synthesize coordinator=_coordinator;
+@property(retain, nonatomic) NSObject<STRootViewModelCoordinator> *coordinator; // @synthesize coordinator=_coordinator;
 @property(nonatomic) __weak id <STDeviceBedtimeListControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)datePickerForSpecifier:(id)arg1;
 - (void)datePickerChanged:(id)arg1;
@@ -68,21 +82,25 @@ __attribute__((visibility("hidden")))
 - (id)_simpleEndTime:(id)arg1;
 - (id)_simpleStartTime:(id)arg1;
 - (void)_showOrHidePickerSpecifierForSpecifier:(id)arg1;
+- (void)_actuallyToggleDowntimeEnabled;
+- (void)_toggleDowntimeEnabled;
+- (id)_createDefaultCustomScheduleFromSimpleSchedule:(id)arg1;
 - (id)deviceBedtimeEnabled:(id)arg1;
 - (void)setDeviceBedtimeEnabled:(id)arg1 specifier:(id)arg2;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)dealloc;
 - (void)_didEndEditingDailySchedule:(id)arg1;
+- (void)_renderDeviceBedtimeSpecifierWithBedtime:(id)arg1;
+- (id)_deviceBedtimeSpecifierWithBedtime:(id)arg1 downtimeGroupSpecifier:(id)arg2;
 - (id)specifiers;
 - (void)_didFinishEditingBedtime;
 - (void)willResignActive;
+- (void)viewWillAppear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (_Bool)canBeShownFromSuspendedState;
+- (void)scheduleDowntimeRefreshIfNeeded;
+- (void)scheduleDowntimeRefreshAndReloadSpecifiers;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

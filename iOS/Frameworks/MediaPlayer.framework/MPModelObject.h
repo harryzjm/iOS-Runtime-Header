@@ -7,12 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <MediaPlayer/NSCopying-Protocol.h>
+#import <MediaPlayer/NSObject-Protocol.h>
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
-#import <MediaPlayer/_MPStateDumpPropertyListTransformable-Protocol.h>
 
 @class MPIdentifierSet, NSMutableDictionary, NSString;
 
-@interface MPModelObject : NSObject <_MPStateDumpPropertyListTransformable, NSCopying, NSSecureCoding>
+@interface MPModelObject : NSObject <NSCopying, NSSecureCoding, NSObject>
 {
     MPIdentifierSet *_originalIdentifierSet;
     NSMutableDictionary *_storage;
@@ -34,6 +34,7 @@
 + (id)requiredLibraryRemovalProperties;
 + (_Bool)supportsKeepLocalStatusObservation;
 + (id)requiredKeepLocalStatusObservationProperties;
++ (long long)genericObjectType;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) MPIdentifierSet *identifiers; // @synthesize identifiers=_identifiers;
 - (id)_sanitizedStorage;
@@ -57,7 +58,6 @@
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
 - (id)valueForUndefinedKey:(id)arg1;
 @property(readonly, nonatomic) NSString *humanDescription;
-@property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 - (id)initWithIdentifiers:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (id)initWithIdentifiers:(id)arg1;
@@ -68,6 +68,7 @@
 - (id)newKeepLocalStatusObserverConfiguration;
 
 // Remaining properties
+@property(readonly, copy) NSString *debugDescription;
 @property(readonly) Class superclass;
 
 @end

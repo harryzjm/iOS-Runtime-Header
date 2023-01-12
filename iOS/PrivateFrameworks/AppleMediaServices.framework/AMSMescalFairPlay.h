@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (id)primingSignatureForData:(id)arg1 error:(id *)arg2;
 - (id)exchangeData:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
-- (id)initWithMescalType:(long long)arg1;
+- (id)initWithMescalType:(long long)arg1 error:(id *)arg2;
 
 @end
 

@@ -16,30 +16,33 @@
 
 @interface CBServer : NSObject <CBPeripheralManagerDelegate, CBActivatable, CBLabelable, CBStateReporting>
 {
+    _Bool _activateCalled;
     CDUnknownBlockType _activateCompletion;
     NSMutableSet *_connections;
     _Bool _invalidateCalled;
-    unsigned short _listenPSM;
-    unsigned short _listeningPSM;
     CBPeripheralManager *_peripheralManager;
     struct LogCategory *_ucat;
+    unsigned short _bleListenPSM;
+    unsigned short _bleListeningPSM;
+    long long _bluetoothState;
+    CDUnknownBlockType _bluetoothStateChangedHandler;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     CDUnknownBlockType _invalidationHandler;
     NSString *_label;
-    long long _bluetoothState;
-    CDUnknownBlockType _bluetoothStateChangedHandler;
     CDUnknownBlockType _acceptHandler;
-    NSString *_serviceType;
+    CDUnknownBlockType _configChangedHandler;
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
+@property(copy, nonatomic) CDUnknownBlockType configChangedHandler; // @synthesize configChangedHandler=_configChangedHandler;
+@property(readonly, nonatomic) unsigned short bleListeningPSM; // @synthesize bleListeningPSM=_bleListeningPSM;
+@property(nonatomic) unsigned short bleListenPSM; // @synthesize bleListenPSM=_bleListenPSM;
 @property(copy, nonatomic) CDUnknownBlockType acceptHandler; // @synthesize acceptHandler=_acceptHandler;
-@property(copy, nonatomic) CDUnknownBlockType bluetoothStateChangedHandler; // @synthesize bluetoothStateChangedHandler=_bluetoothStateChangedHandler;
-@property(readonly, nonatomic) long long bluetoothState; // @synthesize bluetoothState=_bluetoothState;
 @property(copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property(copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
+@property(copy, nonatomic) CDUnknownBlockType bluetoothStateChangedHandler; // @synthesize bluetoothStateChangedHandler=_bluetoothStateChangedHandler;
+@property(readonly, nonatomic) long long bluetoothState; // @synthesize bluetoothState=_bluetoothState;
 - (void)_handleConnectionInvalidated:(id)arg1;
 - (void)peripheralManager:(id)arg1 didOpenL2CAPChannel:(id)arg2 error:(id)arg3;
 - (void)peripheralManager:(id)arg1 didUnpublishL2CAPChannel:(unsigned short)arg2 error:(id)arg3;
@@ -50,12 +53,12 @@
 - (void)invalidate;
 - (void)_activateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;
+@property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

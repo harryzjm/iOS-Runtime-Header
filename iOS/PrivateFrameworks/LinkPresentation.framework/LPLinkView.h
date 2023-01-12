@@ -7,16 +7,16 @@
 #import <UIKit/UIView.h>
 
 #import <LinkPresentation/CAAnimationDelegate-Protocol.h>
-#import <LinkPresentation/LPComponentViewDelegate-Protocol.h>
+#import <LinkPresentation/LPComponentViewHost-Protocol.h>
 #import <LinkPresentation/LPTapToLoadViewDelegate-Protocol.h>
 #import <LinkPresentation/LPThemeClient-Protocol.h>
 #import <LinkPresentation/UIContextMenuInteractionDelegate-Protocol.h>
 #import <LinkPresentation/UIGestureRecognizerDelegate-Protocol.h>
 
-@class LPAnimationMaskView, LPCaptionBarPresentationProperties, LPCaptionButtonPresentationProperties, LPImage, LPImagePresentationProperties, LPInlineMediaPlaybackInformation, LPLinkMetadata, LPLinkViewComponents, LPTheme, LPVideo, NSArray, NSHashTable, NSMutableArray, NSString, NSURL, UIColor, UIContextMenuInteraction;
-@protocol LPLinkViewDelegate;
+@class LPARAsset, LPAnimationMaskView, LPCaptionBarPresentationProperties, LPCaptionButtonPresentationProperties, LPImage, LPImagePresentationProperties, LPInlineMediaPlaybackInformation, LPLinkMetadata, LPLinkViewComponents, LPTheme, LPVideo, NSArray, NSHashTable, NSMutableArray, NSRegularExpression, NSString, NSURL, UIColor, UIContextMenuInteraction;
+@protocol LPLinkViewDelegate, UIContextMenuInteractionDelegate;
 
-@interface LPLinkView : UIView <UIContextMenuInteractionDelegate, UIGestureRecognizerDelegate, CAAnimationDelegate, LPComponentViewDelegate, LPTapToLoadViewDelegate, LPThemeClient>
+@interface LPLinkView : UIView <UIContextMenuInteractionDelegate, UIGestureRecognizerDelegate, CAAnimationDelegate, LPComponentViewHost, LPTapToLoadViewDelegate, LPThemeClient>
 {
     unsigned int _loggingID;
     NSHashTable *_pendingMetadataProviders;
@@ -24,6 +24,8 @@
     NSArray *_multipleMetadata;
     NSArray *_multipleURLs;
     LPTheme *_theme;
+    _Bool _hasOverrideCornerRadius;
+    double _overrideCornerRadius;
     NSMutableArray *_tapGestureRecognizers;
     NSMutableArray *_highlightGestureRecognizers;
     UIView *_captionHighlightView;
@@ -34,13 +36,20 @@
     LPCaptionBarPresentationProperties *_mediaTopCaptionBar;
     LPCaptionBarPresentationProperties *_mediaBottomCaptionBar;
     LPCaptionButtonPresentationProperties *_captionButton;
+    LPImage *_backgroundImage;
+    LPImagePresentationProperties *_backgroundImageProperties;
     NSString *_quotedText;
+    LPARAsset *_arAsset;
+    LPImagePresentationProperties *_arAssetProperties;
     LPImage *_image;
     LPImagePresentationProperties *_imageProperties;
     NSArray *_alternateImages;
     LPVideo *_video;
     UIColor *_backgroundColor;
+    UIColor *_presentationOverrideBackgroundColor;
     UIColor *_overrideBackgroundColor;
+    UIColor *_overrideActionButtonColor;
+    _Bool _backgroundColorIsClear;
     LPInlineMediaPlaybackInformation *_inlinePlaybackInformation;
     double _minimumHeight;
     NSString *_domainNameForIndicator;
@@ -48,6 +57,7 @@
     LPLinkViewComponents *_componentsForSizing;
     UIView *_contentView;
     UIView *_animationView;
+    unsigned long long _effectiveSizeClass;
     LPAnimationMaskView *_animationMaskView;
     UIContextMenuInteraction *_contextMenuInteraction;
     _Bool _hasEverBuilt;
@@ -73,10 +83,18 @@
     _Bool _allowsTapToLoad;
     _Bool _forceFlexibleWidth;
     _Bool _applyCornerRadius;
+    _Bool _allowsOpeningSensitiveURLs;
+    _Bool _highlightedForAttribution;
+    _Bool _inComposeContext;
+    _Bool __disableLinkFollowing;
+    _Bool __useLowMemoryImageFilters;
     long long _animationOrigin;
     NSURL *_overrideURL;
     unsigned long long _preferredSizeClass;
     NSString *_sourceBundleIdentifier;
+    NSRegularExpression *_emphasizedTextExpression;
+    NSArray *_contactsForAttribution;
+    LPImage *_lastResortIcon;
     id <LPLinkViewDelegate> _delegate;
     NSURL *_URL;
     struct UIEdgeInsets _textSafeAreaInset;
@@ -84,9 +102,19 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic, setter=_setUseLowMemoryImageFilters:) _Bool _useLowMemoryImageFilters; // @synthesize _useLowMemoryImageFilters=__useLowMemoryImageFilters;
+@property(nonatomic, setter=_setDisableLinkFollowing:) _Bool _disableLinkFollowing; // @synthesize _disableLinkFollowing=__disableLinkFollowing;
 @property(retain, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property(nonatomic) struct UIEdgeInsets contentInset; // @synthesize contentInset=_contentInset;
 @property(nonatomic) __weak id <LPLinkViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic, setter=_setInComposeContext:) _Bool _inComposeContext; // @synthesize _inComposeContext;
+@property(retain, nonatomic, setter=_setLastResortIcon:) LPImage *_lastResortIcon; // @synthesize _lastResortIcon;
+@property(nonatomic, getter=_isHighlightedForAttribution, setter=_setHighlightedForAttribution:) _Bool _highlightedForAttribution; // @synthesize _highlightedForAttribution;
+@property(retain, nonatomic, setter=_setContactsForAttribution:) NSArray *_contactsForAttribution; // @synthesize _contactsForAttribution;
+@property(nonatomic, setter=_setAllowsOpeningSensitiveURLs:) _Bool _allowsOpeningSensitiveURLs; // @synthesize _allowsOpeningSensitiveURLs;
+@property(retain, nonatomic, setter=_setOverrideActionButtonColor:) UIColor *_overrideActionButtonColor; // @synthesize _overrideActionButtonColor;
+@property(retain, nonatomic, setter=_setOverrideBackgroundColor:) UIColor *_overrideBackgroundColor; // @synthesize _overrideBackgroundColor;
+@property(copy, nonatomic, setter=_setEmphasizedTextExpression:) NSRegularExpression *_emphasizedTextExpression; // @synthesize _emphasizedTextExpression;
 @property(retain, nonatomic, setter=_setSourceBundleIdentifier:) NSString *_sourceBundleIdentifier; // @synthesize _sourceBundleIdentifier;
 @property(nonatomic, setter=_setPreferredSizeClass:) unsigned long long _preferredSizeClass; // @synthesize _preferredSizeClass;
 @property(retain, nonatomic, setter=_setOverrideURL:) NSURL *_overrideURL; // @synthesize _overrideURL;
@@ -103,11 +131,13 @@
 @property(nonatomic, setter=_setDisableTapGesture:) _Bool _disableTapGesture; // @synthesize _disableTapGesture;
 @property(nonatomic, setter=_setNeedsMessagesTranscriptPushCounterAnimation:) _Bool _needsMessagesTranscriptPushCounterAnimation; // @synthesize _needsMessagesTranscriptPushCounterAnimation;
 @property(nonatomic, setter=_setDisableAnimations:) _Bool _disableAnimations; // @synthesize _disableAnimations;
+@property(readonly, nonatomic) id <UIContextMenuInteractionDelegate> _contextMenuInteractionDelegate;
 - (void)contextMenuInteraction:(id)arg1 willDisplayMenuForConfiguration:(id)arg2 animator:(id)arg3;
 - (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (void)_uninstallPreviewGestureRecognizer;
 - (void)_installPreviewGestureRecognizer;
 - (void)_openURLAllowingSensitiveSchemes:(_Bool)arg1 allowingAssociatedApplications:(_Bool)arg2;
+- (void)_openURL;
 - (_Bool)_isUsingAppClipPresentation;
 - (void)tapToLoadViewWasTapped:(id)arg1;
 - (void)_captionBarButtonPressed:(id)arg1;
@@ -132,10 +162,26 @@
 - (void)_uninstallHighlightGestureRecognizers;
 - (void)_installTapGestureRecognizers;
 - (void)_installHighlightGestureRecognizers;
+- (_Bool)allowsBadgingIconEdgeForComponentView:(id)arg1;
+- (_Bool)allowsVibrancyForComponentView:(id)arg1;
+- (long long)rendererStyleForComponentView:(id)arg1;
+- (id)layoutExclusionsForView:(id)arg1;
+- (void)componentViewDidChangeMediaState:(id)arg1;
+- (void)_animateWithDuration:(double)arg1 animations:(CDUnknownBlockType)arg2;
+- (id)_primaryMediaView;
+- (void)_resetMediaPlayback;
+- (_Bool)_hasMediaToPlay;
+- (_Bool)_isPlayingMedia;
+- (void)_pauseMedia;
+- (void)_playMedia;
+- (id)_playable;
 @property(readonly, nonatomic) struct CGRect _primaryCaptionBarFrame;
 - (struct CGSize)_layoutLinkViewForSize:(struct CGSize)arg1 applyingLayout:(_Bool)arg2;
+- (id)componentView:(id)arg1 playerForAudio:(id)arg2;
 - (long long)componentView:(id)arg1 allowedImageFilterForFilter:(long long)arg2;
 - (void)componentViewDidChangeIntrinsicContentSize:(id)arg1;
+- (id)_createContactsBadgeView;
+- (id)_createBackgroundImageView;
 - (id)_createDomainNameIndicator;
 - (id)_createQuotedTextView;
 - (id)_createMediaView;
@@ -157,8 +203,10 @@
 - (void)animationDidStop:(id)arg1 finished:(_Bool)arg2;
 - (void)animateOutAndRemoveViews;
 - (unsigned long long)_edgesPropagatingSafeAreaInsetsToDescendants;
+- (void)traitCollectionDidChange:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)intrinsicContentSize;
+@property(nonatomic, setter=_setStrictlyRespectsSizeClassHeightConstraints:) _Bool _strictlyRespectsSizeClassHeightConstraints;
 - (void)layoutSubviews;
 @property(readonly, nonatomic) long long _style;
 - (void)_setPresentationProperties:(id)arg1;
@@ -166,6 +214,7 @@
 - (void)_updateMetadataIsComplete;
 - (void)_invalidatePresentationProperties;
 - (void)_setAction:(CDUnknownBlockType)arg1 withText:(id)arg2;
+- (void)_setAction:(CDUnknownBlockType)arg1 withText:(id)arg2 buttonType:(long long)arg3;
 - (void)set_preferredSizeClass:(unsigned long long)arg1;
 - (void)_setMultipleMetadata:(id)arg1;
 - (void)_setMetadata:(id)arg1 isFinal:(_Bool)arg2;
@@ -173,18 +222,22 @@
 - (void)_setMetadataInternal:(id)arg1;
 - (void)themeParametersDidChange;
 - (void)_setupView;
-- (void)_fetchMetadata;
-- (id)_fetchMetadataForURL:(id)arg1 withSubresources:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_fetchMetadataForRequest:(id)arg1;
+- (id)_fetchMetadataForRequest:(id)arg1 withSubresources:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_configureWithoutLoadingMetadataFromURLs:(id)arg1;
 - (_Bool)_shouldClipAnimationView;
+@property(nonatomic, setter=_setCornerRadius:) double _cornerRadius;
 - (_Bool)_shouldApplyCornerRadius;
 - (void)_commonInitWithURL:(id)arg1;
+- (id)_initWithSynapseContentItem:(id)arg1;
 - (id)initWithPresentationProperties:(id)arg1 URL:(id)arg2;
 - (id)initWithPresentationProperties:(id)arg1;
 - (id)initWithURL:(id)arg1;
 - (id)_initWithMultipleMetadata:(id)arg1;
 - (id)initWithMetadata:(id)arg1;
+- (id)_initWithMetadataLoadedFromRequests:(id)arg1;
 - (id)_initWithMetadataLoadedFromURLs:(id)arg1;
+- (id)initWithMetadataLoadedFromRequest:(id)arg1;
 - (id)initWithMetadataLoadedFromURL:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

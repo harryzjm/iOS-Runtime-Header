@@ -8,12 +8,11 @@
 
 #import <KeynoteQuicklook/KNCanvasDelegate-Protocol.h>
 #import <KeynoteQuicklook/TSDConnectedInfoReplacing-Protocol.h>
-#import <KeynoteQuicklook/TSDMetalRenderer-Protocol.h>
 
 @class KNAnimatedSlideModel, KNAnimationDelayedCallbacks, KNPlaybackSession, KNSlide, KNSlideNode, NSArray, NSIndexSet, NSLock, NSMapTable, NSMutableArray, NSMutableSet, NSSet, NSString, TSDCanvas;
 @protocol OS_os_log, TSDCanvasProxyDelegate;
 
-@interface KNAnimatedSlideView : NSObject <KNCanvasDelegate, TSDConnectedInfoReplacing, TSDMetalRenderer>
+@interface KNAnimatedSlideView : NSObject <KNCanvasDelegate, TSDConnectedInfoReplacing>
 {
     unsigned long long _animationsActive;
     unsigned long long _animationsStarted;
@@ -29,10 +28,8 @@
     _Bool _isSlideBuildable;
     _Bool _shouldStopAnimations;
     _Bool _isInDelayBeforeActiveBuild;
-    _Bool _sInDelayBeforeActiveTransition;
     _Bool _isSerialized;
     _Bool _transitionHasFinishedCallbackPending;
-    _Bool _wasMetalLayerActiveWhenPaused;
     id _eventStartCallbackTarget;
     SEL _eventStartCallbackSelector;
     id _eventAnimationActiveCallbackTarget;
@@ -64,7 +61,6 @@
     NSLock *_canvasLock;
 }
 
-+ (id)keyPathsForValuesAffectingActiveMovieHosts;
 + (void)registerUserDefaults;
 + (void)initialize;
 - (void).cxx_destruct;
@@ -84,14 +80,10 @@
 @property(nonatomic) unsigned long long currentEventIndex; // @synthesize currentEventIndex=_currentEventIndex;
 @property(readonly, nonatomic) unsigned long long slideNumber; // @synthesize slideNumber=_slideNumber;
 @property(retain, nonatomic) TSDCanvas *canvas; // @synthesize canvas=_canvas;
-- (void)evictInactiveRenderers;
-- (void)renderWithContext:(id)arg1;
-- (_Bool)hasNewRenderingForTimingInfo:(CDStruct_39925896)arg1;
 - (void)clearActiveAnimatedBuilds;
 - (void)removeActiveAnimatedBuild:(id)arg1;
 - (void)addActiveAnimatedBuild:(id)arg1;
 - (void)serializeTextures;
-- (void)prepareAsLiveTextureSource;
 - (void)prepareAnimations;
 - (void)waitUntilAsyncRenderingIsCompleteShouldCancel:(_Bool)arg1;
 - (void)renderTextures;
@@ -110,12 +102,6 @@
 - (void)p_addAmbientBuildRenderer:(id)arg1;
 @property(readonly, nonatomic) NSSet *movieRenderers;
 - (struct CGRect)boundingRectOnCanvasForInfo:(id)arg1;
-- (id)movieControllerForInfo:(id)arg1;
-@property(readonly) _Bool isPlayingMoviesWithMovieControllers;
-@property(readonly) NSArray *movieControllers;
-- (id)mediaControllerForInfo:(id)arg1;
-@property(readonly) NSArray *mediaControllers;
-@property(readonly, nonatomic) NSSet *activeMovieHosts;
 - (void)p_animateBuild:(id)arg1;
 - (void)p_animateBuild:(id)arg1 afterDelay:(double)arg2;
 - (void)p_performAnimationWithTarget:(id)arg1 selector:(SEL)arg2 object:(id)arg3 delay:(double)arg4 performAsynchronously:(_Bool)arg5;
@@ -136,10 +122,8 @@
 - (void)triggerNextEventIgnoringDelay:(_Bool)arg1;
 - (void)triggerNextEvent;
 - (_Bool)playAutomaticEvents;
-- (void)p_setupSlideMetalRendererShouldReset:(_Bool)arg1;
 - (void)renderIntoContext:(struct CGContext *)arg1 eventIndex:(unsigned long long)arg2 ignoreBuildVisibility:(_Bool)arg3;
 - (void)p_renderSlideContentWithCALayers;
-- (void)p_renderSlideContentWithMetal;
 - (void)p_renderCurrentEvent;
 - (void)renderCurrentEvent;
 - (void)didBecomeCurrent;
@@ -180,7 +164,7 @@
 - (void)registerForEventAnimationActiveCallback:(SEL)arg1 target:(id)arg2;
 - (void)registerForEventStartCallback:(SEL)arg1 target:(id)arg2;
 - (id)infoToConnectToForConnectionLineConnectedToInfo:(id)arg1;
-- (_Bool)isInfoAKeynoteMasterObject:(id)arg1;
+- (_Bool)isInfoAKeynoteTemplateObject:(id)arg1;
 - (_Bool)isRenderingForKPF;
 - (_Bool)isCanvasDrawingIntoPDF:(id)arg1;
 - (_Bool)shouldShowInstructionalTextForLayout:(id)arg1;

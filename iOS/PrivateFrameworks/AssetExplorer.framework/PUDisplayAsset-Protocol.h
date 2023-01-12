@@ -42,8 +42,11 @@
 - (unsigned long long)isContentEqualTo:(id <PUDisplayAsset>)arg1;
 
 @optional
+@property(readonly, nonatomic) _Bool hasSyndicationInformation;
+@property(readonly, nonatomic) _Bool isGuestAsset;
 @property(readonly, nonatomic) unsigned short deferredProcessingNeeded;
 @property(readonly, nonatomic) _Bool needsDeferredProcessing;
 @property(readonly, nonatomic) CDStruct_198678f7 videoKeyFrameSourceTime;
+- (unsigned long long)contentChangeFromDisplayAsset:(id <PUDisplayAsset>)arg1;
 @end
 

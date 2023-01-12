@@ -6,13 +6,15 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthDaemon/HDDeletedObjectIterator-Protocol.h>
 #import <HealthDaemon/HDSampleIterator-Protocol.h>
 
-@class HDProfile, HDSampleQueryDescription, HKSample, HKSortedQueryAnchor, NSArray, NSError, NSSet, NSString;
+@class HDProfile, HDQueryDescriptor, HKDeletedObject, HKSample, HKSortedQueryAnchor, NSArray, NSError, NSSet, NSString;
 
-@interface HDSortedSampleIterator : NSObject <HDSampleIterator>
+@interface HDSortedSampleIterator : NSObject <HDSampleIterator, HDDeletedObjectIterator>
 {
-    HDSampleQueryDescription *_sampleQueryDescription;
+    HDQueryDescriptor *_queryDescriptor;
+    _Bool _includeDeletedObjects;
     NSArray *_sortDescriptors;
     HKSortedQueryAnchor *_anchor;
     long long _bufferSize;
@@ -20,8 +22,11 @@
     HDProfile *_profile;
     NSError *_lastError;
     _Bool _isComplete;
-    struct vector<std::__1::tuple<long long, HKSample *>, std::__1::allocator<std::__1::tuple<long long, HKSample *>>> _buffer;
-    struct tuple<long long, HKSample *> _current;
+    struct vector<std::tuple<long long, HKSample *>, std::allocator<std::tuple<long long, HKSample *>>> _sampleBuffer;
+    struct vector<std::tuple<long long, HKDeletedObject *>, std::allocator<std::tuple<long long, HKDeletedObject *>>> _deletedObjectsBuffer;
+    struct tuple<long long, HKSample *> _currentSample;
+    struct tuple<long long, HKDeletedObject *> _currentDeletedObject;
+    id _currentHead;
 }
 
 - (id).cxx_construct;
@@ -31,11 +36,11 @@
 @property(readonly) unsigned long long hash;
 @property(readonly, copy, nonatomic) HKSortedQueryAnchor *nextAnchor;
 @property(readonly, nonatomic) long long objectID;
+@property(readonly, nonatomic) HKDeletedObject *deletedObject;
 @property(readonly, nonatomic) HKSample *sample;
 - (id)object;
-- (_Bool)_queryForNextPageIfNecessaryWithError:(id *)arg1;
 - (_Bool)advanceWithError:(id *)arg1;
-- (id)initWithSampleQueryDescription:(id)arg1 sortDescriptors:(id)arg2 anchor:(id)arg3 bufferSize:(long long)arg4 profile:(id)arg5;
+- (id)initWithQueryDescriptor:(id)arg1 includeDeletedObjects:(_Bool)arg2 sortDescriptors:(id)arg3 anchor:(id)arg4 bufferSize:(long long)arg5 profile:(id)arg6;
 - (id)init;
 
 // Remaining properties

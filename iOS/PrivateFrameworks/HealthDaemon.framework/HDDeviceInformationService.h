@@ -29,17 +29,10 @@
 @property(retain, nonatomic) NSMutableDictionary *propertyValues; // @synthesize propertyValues=_propertyValues;
 @property(retain, nonatomic) NSMutableDictionary *characteristics; // @synthesize characteristics=_characteristics;
 @property(nonatomic) _Bool fetchLimitedCharacteristics; // @synthesize fetchLimitedCharacteristics=_fetchLimitedCharacteristics;
-- (id)_propertyValueForCharacteristic:(id)arg1;
-- (void)_queue_peripheral:(id)arg1 didUpdateValueForCharacteristic:(id)arg2 error:(id)arg3;
 - (void)peripheral:(id)arg1 didUpdateValueForCharacteristic:(id)arg2 updateTime:(id)arg3 error:(id)arg4;
-- (void)_queue_peripheral:(id)arg1 didDiscoverCharacteristic:(id)arg2;
 - (void)peripheral:(id)arg1 didDiscoverCharacteristic:(id)arg2;
-- (void)_queue_readProperty:(id)arg1;
 - (void)readProperty:(id)arg1;
-- (void)_startDeviceInformationLoadingTimeoutTimer;
-- (void)_queue_setDeviceInformationHasBeenLoaded;
 - (void)performWhenDeviceInformationHasBeenLoaded:(CDUnknownBlockType)arg1;
-- (id)_propertyValueForPropertyName:(id)arg1;
 @property(readonly) NSString *softwareRevision;
 @property(readonly) NSString *firmwareRevision;
 @property(readonly) NSString *hardwareRevision;

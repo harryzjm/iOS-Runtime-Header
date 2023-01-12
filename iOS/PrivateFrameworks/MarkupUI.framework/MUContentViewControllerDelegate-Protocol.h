@@ -6,7 +6,7 @@
 
 #import <MarkupUI/NSObject-Protocol.h>
 
-@class AKController, MUContentViewController, MUPDFContentViewController, NSArray, NSURL, NSUndoManager, UIView, UIViewController;
+@class AKController, MUContentViewController, MUPDFContentViewController, NSArray, NSString, NSURL, NSUndoManager, PDFPage, UIView, UIViewController;
 
 @protocol MUContentViewControllerDelegate <NSObject>
 - (NSArray *)annotationControllerOfContentViewController:(MUContentViewController *)arg1 willSetToolbarItems:(NSArray *)arg2;
@@ -15,6 +15,8 @@
 - (NSUndoManager *)undoManagerForContentViewController:(MUContentViewController *)arg1;
 
 @optional
+@property(readonly, copy, nonatomic) NSString *originalImageDescription;
+- (NSArray *)getMenuElementsForPage:(PDFPage *)arg1;
 - (struct CGSize)adjustedSourceImageSize;
 - (UIViewController *)popoverPresentingViewControllerForAnnotationController:(AKController *)arg1;
 - (void)controllerWillDismissSignatureManagerView:(AKController *)arg1;

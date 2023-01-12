@@ -10,13 +10,16 @@
 
 @interface PETConfig : NSObject
 {
-    NSDictionary *_config;
     unsigned long long _version;
     NSDictionary *_messageGroups;
+    NSDictionary *_configDictionary;
 }
 
 - (void).cxx_destruct;
+@property(readonly) NSDictionary *configDictionary; // @synthesize configDictionary=_configDictionary;
 @property(readonly) unsigned long long version; // @synthesize version=_version;
+- (_Bool)isChinaEnabledForMessageName:(id)arg1 messageGroup:(id)arg2;
+- (_Bool)isTVOSEnabledForMessageName:(id)arg1 messageGroup:(id)arg2;
 - (_Bool)isAggregatedForMessageName:(id)arg1;
 - (unsigned long long)sigFigsForMessageName:(id)arg1;
 - (id)bucketsForMessageName:(id)arg1;
@@ -29,7 +32,6 @@
 - (id)_groupConfigForMessageName:(id)arg1;
 - (id)_configForMessageName:(id)arg1;
 - (id)groupForMessageName:(id)arg1;
-- (void)_enumerateMessageConfigsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateGroupConfigsWithBlock:(CDUnknownBlockType)arg1;
 - (unsigned long long)samplingLimitForMessageGroup:(id)arg1;
 - (id)initWithDictionary:(id)arg1;

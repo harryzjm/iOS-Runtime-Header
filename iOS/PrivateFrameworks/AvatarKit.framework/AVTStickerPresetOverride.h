@@ -20,8 +20,7 @@
 @property(readonly, nonatomic) NSArray *unlessIdentifiers; // @synthesize unlessIdentifiers=_unlessIdentifiers;
 @property(readonly, copy, nonatomic) NSString *presetIdentifier; // @synthesize presetIdentifier=_presetIdentifier;
 @property(readonly, nonatomic) long long category; // @synthesize category=_category;
-- (id)overridenPresetForAvatar:(id)arg1;
-- (void)applyToAvatar:(id)arg1;
+- (void)applyToAvatar:(id)arg1 reversionContext:(id)arg2;
 - (id)initWithCategory:(long long)arg1 presetIdentifier:(id)arg2 unless:(id)arg3;
 
 @end

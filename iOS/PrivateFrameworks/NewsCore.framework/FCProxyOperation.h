@@ -14,9 +14,7 @@
 + (id)proxyForOperation:(id)arg1;
 + (void)initialize;
 - (void).cxx_destruct;
-@property(retain, nonatomic) FCOperation *underlyingOperation; // @synthesize underlyingOperation=_underlyingOperation;
-- (void)_revisitQualityOfService;
-- (void)_revisitRelativePriority;
+- (void)setPurpose:(id)arg1;
 - (void)setQualityOfService:(long long)arg1;
 - (void)setRelativePriority:(long long)arg1;
 - (unsigned long long)propertiesInheritedByChildOperations;

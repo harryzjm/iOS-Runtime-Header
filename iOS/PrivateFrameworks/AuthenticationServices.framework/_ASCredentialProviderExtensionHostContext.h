@@ -12,6 +12,7 @@
 @class NSString;
 @protocol _ASCredentialProviderExtensionHostContextDelegate;
 
+__attribute__((visibility("hidden")))
 @interface _ASCredentialProviderExtensionHostContext : NSExtensionContext <_ASCredentialProviderExtensionHostContextProtocol, _ASExtensionHostContext>
 {
     id <_ASCredentialProviderExtensionHostContextDelegate> _delegate;

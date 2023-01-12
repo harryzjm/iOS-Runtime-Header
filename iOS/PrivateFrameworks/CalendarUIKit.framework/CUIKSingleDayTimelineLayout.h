@@ -47,7 +47,6 @@
 - (void)_popOccurrencesInPartition:(id)arg1 endingBeforeTime:(double)arg2;
 - (void)_calculateVerticalFrameAspectsForOccurrence:(id)arg1;
 - (_Bool)isRightToLeftLayout;
-- (unsigned long long)_enumerationOptions;
 - (void)applyLayoutToOccurrences;
 - (id)initWithOccurrences:(id)arg1 startOfDay:(id)arg2 endOfDay:(id)arg3 geometryDelegate:(id)arg4 screenUtilsDelegate:(id)arg5 calendar:(id)arg6;
 

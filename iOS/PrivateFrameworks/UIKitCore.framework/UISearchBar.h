@@ -12,7 +12,7 @@
 #import <UIKitCore/_UINavigationBarAugmentedTitleView-Protocol.h>
 #import <UIKitCore/_UISearchBarVisualProvidingDelegate-Protocol.h>
 
-@class NSArray, NSIndexSet, NSString, UIButton, UIColor, UIImage, UIInputContextHistory, UISearchBarTextField, UISearchController, UISearchTextField, UITapGestureRecognizer, UITextInputAssistantItem, UITextInputPasswordRules, UITextInputTraits, UIView, _UINavigationControllerPalette;
+@class NSArray, NSIndexSet, NSString, UIButton, UIColor, UIImage, UIInputContextHistory, UIKeyCommand, UISearchBarTextField, UISearchController, UISearchTextField, UITapGestureRecognizer, UITextInputAssistantItem, UITextInputPasswordRules, UITextInputTraits, UITextRange, UIView, _UINavigationControllerPalette, _UISupplementalLexicon;
 @protocol UISearchBarDelegate, UISearchBarDelegate><UISearchBarDelegate_Private, _UISearchBarSearchContainerLayoutCustomizationDelegate, _UISearchBarVisualProviding;
 
 @interface UISearchBar <_UISearchBarVisualProvidingDelegate, UIScribbleInteractionDelegate, UITextInputTraits_Private, _UIBarPositioningInternal, _UINavigationBarAugmentedTitleView, UIBarPositioning, UITextInputTraits>
@@ -22,6 +22,7 @@
     UITextInputTraits *_textInputTraits;
     _Bool _didAddScribbleInteraction;
     _Bool _forceLegacyVisual;
+    UIKeyCommand *_cancelKeyCommand;
     _Bool __supportsDynamicType;
     _Bool __forceCenteredPlaceholderLayout;
     _Bool __transplanting;
@@ -66,6 +67,7 @@
 @property(nonatomic) unsigned long long searchBarStyle;
 - (void)_setBackgroundLayoutNeedsUpdate;
 - (_Bool)_containedInNavigationPalette;
+- (void)setCenter:(struct CGPoint)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (id)_animatedAppearanceBarButtonItem;
@@ -95,6 +97,8 @@
 - (void)setBackgroundImage:(id)arg1 forBarMetrics:(long long)arg2;
 @property(retain, nonatomic) UIColor *barTintColor;
 @property(retain, nonatomic) UIColor *tintColor; // @dynamic tintColor;
+- (id)focusGroupIdentifier;
+- (void)setFocusGroupIdentifier:(id)arg1;
 - (void)_setDisableFocus:(_Bool)arg1;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)preferredFocusedView;
@@ -144,6 +148,7 @@
 - (void)_cancelTransitionToSearchLayoutState:(long long)arg1;
 - (void)_completeTransitionToSearchLayoutState:(long long)arg1;
 - (void)_animateTransitionToSearchLayoutState:(long long)arg1;
+- (void)_freezeForAnimatedTransitionToSearchLayoutState:(long long)arg1;
 - (void)_prepareForTransitionToSearchLayoutState:(long long)arg1;
 - (void)_driveTransitionToSearchLayoutState:(long long)arg1;
 - (id)_traitCollectionOverridesForNavigationBarTraitCollection:(id)arg1;
@@ -221,6 +226,7 @@
 @property(readonly, nonatomic) _Bool _effectivelySupportsDynamicType;
 @property(readonly, nonatomic, getter=_searchBarTextField) UISearchBarTextField *searchBarTextField;
 - (id)searchField;
+- (id)keyCommands;
 - (id)_cancelButtonText;
 - (void)set_cancelButtonText:(id)arg1;
 - (id)_cancelButton;
@@ -231,6 +237,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (void)_populateArchivedSubviews:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+@property(nonatomic, setter=_setAdditionalPaddingForSearchFieldAtLeadingEdge:) double _additionalPaddingForSearchFieldAtLeadingEdge;
 @property(nonatomic, setter=_setAdditionalPaddingForCancelButtonAtLeadingEdge:) double _additionalPaddingForCancelButtonAtLeadingEdge;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)init;
@@ -267,6 +274,7 @@
 - (void)_searchFieldTokensChanged;
 - (void)_searchFieldSelectionChanged;
 - (void)_searchFieldEditingChanged;
+- (void)_searchFieldTextChanged:(_Bool)arg1;
 - (void)_searchFieldReturnPressed;
 - (void)_searchFieldEndEditing;
 - (void)_searchFieldBeginEditing;
@@ -318,6 +326,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(nonatomic) _Bool deferBecomingResponder;
 @property(nonatomic, getter=isDevicePasscodeEntry) _Bool devicePasscodeEntry;
+@property(nonatomic) _Bool disableHandwritingKeyboard;
 @property(nonatomic) _Bool disableInputBars;
 @property(nonatomic) _Bool disablePrediction;
 @property(nonatomic) _Bool displaySecureEditsUsingPlainText;
@@ -344,13 +353,18 @@
 @property(nonatomic) _Bool loadKeyboardsForSiriLanguage;
 @property(copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property(nonatomic) _Bool preferOnlineDictation;
+@property(nonatomic) long long preferredKeyboardStyle;
 @property(copy, nonatomic) NSString *recentInputIdentifier;
 @property(copy, nonatomic) NSString *responseContext;
 @property(nonatomic) _Bool returnKeyGoesToNextResponder;
 @property(nonatomic) long long returnKeyType; // @dynamic returnKeyType;
 @property(nonatomic, getter=isSecureTextEntry) _Bool secureTextEntry; // @dynamic secureTextEntry;
 @property(retain, nonatomic) UIColor *selectionBarColor;
+@property(retain, nonatomic) UIColor *selectionBorderColor;
+@property(nonatomic) double selectionBorderWidth;
+@property(nonatomic) double selectionCornerRadius;
 @property(retain, nonatomic) UIImage *selectionDragDotImage;
+@property(nonatomic) struct UIEdgeInsets selectionEdgeInsets;
 @property(retain, nonatomic) UIColor *selectionHighlightColor;
 @property(nonatomic) int shortcutConversionType;
 @property(nonatomic) _Bool showDictationButton;
@@ -359,9 +373,12 @@
 @property(nonatomic) long long smartQuotesType; // @dynamic smartQuotesType;
 @property(nonatomic) long long spellCheckingType; // @dynamic spellCheckingType;
 @property(readonly) Class superclass;
+@property(retain, nonatomic) _UISupplementalLexicon *supplementalLexicon;
+@property(retain, nonatomic) UIImage *supplementalLexiconAmbiguousItemIcon;
 @property(nonatomic) _Bool suppressReturnKeyStyling;
 @property(copy, nonatomic) NSString *textContentType; // @dynamic textContentType;
 @property(nonatomic) int textLoupeVisibility;
+@property(readonly, nonatomic) UITextRange *textRangeForServicesInteraction;
 @property(nonatomic) long long textScriptType;
 @property(nonatomic) int textSelectionBehavior;
 @property(nonatomic) id textSuggestionDelegate;

@@ -28,6 +28,7 @@
 - (_Bool)isPresentingNotificationInLongLook;
 - (_Bool)isNotificationContentExtensionVisible:(id)arg1;
 - (void)notificationsLoadedForSectionIdentifier:(id)arg1;
+- (void)updateNotificationSystemSettings:(id)arg1 previousSystemSettings:(id)arg2;
 - (void)updateNotificationSectionSettings:(id)arg1 previousSectionSettings:(id)arg2;
 - (void)withdrawNotificationRequest:(id)arg1;
 - (void)updateNotificationRequest:(id)arg1;

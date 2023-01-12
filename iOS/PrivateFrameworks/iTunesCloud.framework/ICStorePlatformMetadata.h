@@ -19,6 +19,7 @@
 @property(readonly, copy, nonatomic) NSDictionary *metadataDictionary; // @synthesize metadataDictionary=_metadataDictionary;
 @property(readonly, copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 - (id)_storePlatformReleaseDateFormatter;
+@property(readonly, copy, nonatomic) NSArray *audioTraits;
 @property(readonly, copy, nonatomic) NSArray *artworkInfos;
 @property(readonly, copy, nonatomic) NSString *workName;
 @property(readonly, nonatomic) long long trackCount;

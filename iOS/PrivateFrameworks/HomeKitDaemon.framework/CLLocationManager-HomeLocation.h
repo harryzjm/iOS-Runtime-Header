@@ -12,15 +12,9 @@
 @protocol HMDCLLocationManagerDelegate;
 
 @interface CLLocationManager (HomeLocation) <HMDCLLocationManager>
-+ (id)hmdRegionStateAsString:(int)arg1;
-+ (int)convertToHMDRegionState:(long long)arg1;
-+ (id)hmdLocationAuthorizationAsString:(int)arg1;
-+ (int)convertToHMDLocationAuthorization:(int)arg1;
-+ (id)regionDescription:(id)arg1;
-+ (id)referenceFrameDescription:(int)arg1;
-+ (id)regionStateDescription:(long long)arg1;
-+ (id)locationAuthorizationDescription:(int)arg1;
-+ (_Bool)convertAuthStatusToBool:(int)arg1;
++ (long long)hm_hmdRegionStateFromCLRegionState:(long long)arg1;
++ (long long)hm_hmdLocationAuthorizationFromCLAuthorizationStatus:(int)arg1;
++ (_Bool)hm_isLocationAllowedForAuthorizationStatus:(int)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

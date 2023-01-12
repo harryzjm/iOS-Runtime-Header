@@ -16,6 +16,7 @@
     struct Queue _queue;
     MapsSuggestionsRoutine *_routine;
     NSArray *_routineLocations;
+    NSArray *_routineVisits;
 }
 
 - (id).cxx_construct;

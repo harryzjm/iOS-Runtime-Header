@@ -8,7 +8,9 @@
 {
 }
 
-+ (_Bool)readIsClassifier:(struct IArchive *)arg1;
++ (id)containerFromCompiledArchive:(void *)arg1 modelVersionInfo:(id)arg2 compilerVersionInfo:(id)arg3 configuration:(id)arg4 error:(id *)arg5;
++ (void)extractOptionalDefaultValueParams:(const void *)arg1 container:(id)arg2;
++ (_Bool)extractAndValidateShapesInProgram:(const void *)arg1 container:(id)arg2 error:(id *)arg3;
 
 @end
 

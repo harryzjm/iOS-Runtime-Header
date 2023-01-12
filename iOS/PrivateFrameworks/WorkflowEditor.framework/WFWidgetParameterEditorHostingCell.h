@@ -17,7 +17,6 @@
     UIColor *_overridingBackgroundColor;
 }
 
-+ (id)componentForModel:(id)arg1 context:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIColor *overridingBackgroundColor; // @synthesize overridingBackgroundColor=_overridingBackgroundColor;
 @property(retain, nonatomic) WFComponentNavigationContextImpl *navigationContext; // @synthesize navigationContext=_navigationContext;
@@ -27,7 +26,7 @@
 @property(retain, nonatomic) MTVisualStylingProvider *strokeProvider; // @synthesize strokeProvider=_strokeProvider;
 @property(retain, nonatomic) UIColor *cardBackgroundColor; // @synthesize cardBackgroundColor=_cardBackgroundColor;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)updateContext;
+- (void)reconfigureModernView;
 - (void)setContainingViewController:(id)arg1;
 - (void)applyStylingWithStrokeProvider:(id)arg1 fillProvider:(id)arg2 cardBackgroundColor:(id)arg3;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;

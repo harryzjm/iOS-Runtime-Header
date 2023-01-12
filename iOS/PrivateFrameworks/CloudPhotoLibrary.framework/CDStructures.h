@@ -40,7 +40,24 @@ typedef struct {
     unsigned long long _field4[5];
 } CDStruct_70511ce9;
 
+typedef struct {
+    long long value;
+    int timescale;
+    unsigned int flags;
+    long long epoch;
+} CDStruct_1b6d18a9;
+
+typedef struct {
+    CDStruct_1b6d18a9 start;
+    CDStruct_1b6d18a9 duration;
+} CDStruct_e83c9415;
+
 // Ambiguous groups
+typedef struct {
+    unsigned int feature:1;
+    unsigned int type:1;
+} CDStruct_35f57793;
+
 typedef struct {
     unsigned int version:1;
 } CDStruct_f20694ce;

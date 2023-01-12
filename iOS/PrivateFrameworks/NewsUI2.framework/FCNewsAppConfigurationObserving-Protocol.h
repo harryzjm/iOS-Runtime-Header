@@ -11,6 +11,7 @@
 @protocol FCNewsAppConfigurationObserving <NSObject>
 
 @optional
+- (void)configurationManagerPaywallConfigDidChange:(id <FCNewsAppConfigurationManager>)arg1;
 - (void)configurationManagerSignificantAppConfigChange:(id <FCNewsAppConfigurationManager>)arg1;
 - (void)configurationManager:(id <FCNewsAppConfigurationManager>)arg1 appConfigurationDidChange:(id <FCNewsAppConfiguration>)arg2;
 @end

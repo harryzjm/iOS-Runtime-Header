@@ -21,6 +21,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSXPCListener *listener; // @synthesize listener=_listener;
 @property(retain, nonatomic) NSMutableArray *clientConnections; // @synthesize clientConnections=_clientConnections;
+- (void)simulateAnalytics:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)logFaultWithCompletion:(CDUnknownBlockType)arg1;
 - (void)removeSectionID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)overriddenSettingsWithCompletion:(CDUnknownBlockType)arg1;

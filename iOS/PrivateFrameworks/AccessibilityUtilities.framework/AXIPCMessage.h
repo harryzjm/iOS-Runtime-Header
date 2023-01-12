@@ -12,15 +12,19 @@
 
 @interface AXIPCMessage : NSObject <NSSecureCoding>
 {
+    _Bool _processedMessage;
     int _key;
     unsigned int _clientPort;
     NSDictionary *_payload;
+    unsigned long long _uniqueID;
     CDStruct_4c969caf _auditToken;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)archivedMessageFromData:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool processedMessage; // @synthesize processedMessage=_processedMessage;
+@property(nonatomic) unsigned long long uniqueID; // @synthesize uniqueID=_uniqueID;
 @property(nonatomic) CDStruct_4c969caf auditToken; // @synthesize auditToken=_auditToken;
 @property(nonatomic) unsigned int clientPort; // @synthesize clientPort=_clientPort;
 @property(copy, nonatomic) NSDictionary *payload; // @synthesize payload=_payload;

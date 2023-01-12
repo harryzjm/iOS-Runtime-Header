@@ -9,15 +9,17 @@
 #import <IMTranscoding/IMGifFileWriter-Protocol.h>
 
 @class NSString;
-@protocol OS_xpc_object;
+@protocol OS_dispatch_queue, OS_xpc_object;
 
 @interface IMTranscodeController : NSObject <IMGifFileWriter>
 {
     NSObject<OS_xpc_object> *_connection;
+    NSObject<OS_dispatch_queue> *_connectionQueue;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *connectionQueue; // @synthesize connectionQueue=_connectionQueue;
 - (void)_decodeiMessageAppPayload:(id)arg1 bundleID:(id)arg2 retries:(unsigned long long)arg3 completionBlock:(CDUnknownBlockType)arg4 blockUntilReply:(_Bool)arg5;
 - (void)decodeiMessageAppPayload:(id)arg1 bundleID:(id)arg2 completionBlock:(CDUnknownBlockType)arg3 blockUntilReply:(_Bool)arg4;
 - (_Bool)copyGifFileFromSourcePath:(id)arg1 toDestinationPath:(id)arg2 error:(id *)arg3;
@@ -25,8 +27,12 @@
 - (void)sizePreview:(id)arg1 constraints:(struct IMPreviewConstraints)arg2 retries:(unsigned long long)arg3 completionBlock:(CDUnknownBlockType)arg4 blockUntilReply:(_Bool)arg5;
 - (void)sizePreview:(id)arg1 constraints:(struct IMPreviewConstraints)arg2 completionBlock:(CDUnknownBlockType)arg3 blockUntilReply:(_Bool)arg4;
 - (void)sizePreview:(id)arg1 constraints:(struct IMPreviewConstraints)arg2 completionBlock:(CDUnknownBlockType)arg3;
-- (void)_generatePreview:(id)arg1 previewURL:(id)arg2 constraints:(struct IMPreviewConstraints)arg3 retries:(unsigned long long)arg4 completionBlock:(CDUnknownBlockType)arg5 blockUntilReply:(_Bool)arg6;
+- (void)_generateMetadata:(id)arg1 metadataURL:(id)arg2 constraints:(struct IMPreviewConstraints)arg3 retries:(unsigned long long)arg4 completionBlock:(CDUnknownBlockType)arg5 blockUntilReply:(_Bool)arg6;
+- (void)generateMetadata:(id)arg1 metadataURL:(id)arg2 constraints:(struct IMPreviewConstraints)arg3 completionBlock:(CDUnknownBlockType)arg4 blockUntilReply:(_Bool)arg5;
+- (void)generateMetadata:(id)arg1 metadataURL:(id)arg2 constraints:(struct IMPreviewConstraints)arg3 completionBlock:(CDUnknownBlockType)arg4;
+- (void)_generatePreview:(id)arg1 previewURL:(id)arg2 constraints:(struct IMPreviewConstraints)arg3 retries:(unsigned long long)arg4 balloonBundleID:(id)arg5 completionBlock:(CDUnknownBlockType)arg6 blockUntilReply:(_Bool)arg7;
 - (void)generatePreview:(id)arg1 previewURL:(id)arg2 constraints:(struct IMPreviewConstraints)arg3 completionBlock:(CDUnknownBlockType)arg4 blockUntilReply:(_Bool)arg5;
+- (void)generatePreview:(id)arg1 previewURL:(id)arg2 constraints:(struct IMPreviewConstraints)arg3 balloonBundleID:(id)arg4 completionBlock:(CDUnknownBlockType)arg5 blockUntilReply:(_Bool)arg6;
 - (void)generatePreview:(id)arg1 previewURL:(id)arg2 constraints:(struct IMPreviewConstraints)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)generateSnapshotForMessageGUID:(id)arg1 payloadURL:(id)arg2 balloonBundleID:(id)arg3 isFromMe:(_Bool)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (void)transcodeLocalTransferPayloadData:(id)arg1 balloonBundleID:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;

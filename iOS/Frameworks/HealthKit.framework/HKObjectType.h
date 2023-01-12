@@ -19,11 +19,16 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)handwashingEventType;
++ (id)lowCardioFitnessEventType;
 + (id)sleepScheduleType;
 + (id)sleepDurationGoalType;
++ (id)pregnancyType;
++ (id)lactationType;
++ (id)contraceptiveType;
 + (id)menstrualFlowType;
 + (id)activityMoveModeChangeType;
-+ (id)audioExposureEventType;
++ (id)headphoneAudioExposureEventType;
++ (id)environmentalAudioExposureEventType;
 + (id)fitnessFriendWorkoutType;
 + (id)fitnessFriendAchievementType;
 + (id)fitnessFriendActivitySnapshotType;
@@ -72,6 +77,7 @@
 + (id)allergyRecordTypeForIdentifier:(id)arg1;
 + (id)accountOwnerTypeForIdentifier:(id)arg1;
 + (id)objectTypeForWorkoutMetric:(unsigned long long)arg1;
++ (id)signedClinicalDataRecordTypeForIdentifier:(id)arg1;
 + (id)procedureRecordTypeForIdentifier:(id)arg1;
 + (id)diagnosticTestResultTypeForIdentifier:(id)arg1;
 + (id)conditionRecordTypeForIdentifier:(id)arg1;
@@ -84,12 +90,14 @@
 + (_Bool)_allowAuthorizationForSharingWithTypes:(id)arg1 entitlements:(id)arg2 disallowedTypes:(id)arg3;
 + (id)clinicalTypeForIdentifier:(id)arg1;
 + (id)vaccinationRecordTypeForIdentifier:(id)arg1;
++ (id)verifiableClinicalRecordTypeForIdentifier:(id)arg1;
 + (id)medicationRecordTypeForIdentifier:(id)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) HKObjectType *parentType; // @synthesize parentType=_parentType;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)_predicateForSDKVersion:(unsigned int)arg1;
+- (_Bool)_requiresPerObjectAuthorization;
 - (_Bool)_requiresAuthorization;
 @property(readonly, nonatomic) _Bool supportsExport;
 @property(readonly, nonatomic) _Bool isClinicalType;
@@ -108,6 +116,8 @@
 - (id)hk_localizedNameForLocale:(id)arg1;
 - (id)hk_localizedName;
 - (id)_hk_localizedNameKey;
+@property(readonly, nonatomic) _Bool readingAuthorizationAllowed;
+@property(readonly, nonatomic) _Bool sharingAuthorizationAllowed;
 
 @end
 

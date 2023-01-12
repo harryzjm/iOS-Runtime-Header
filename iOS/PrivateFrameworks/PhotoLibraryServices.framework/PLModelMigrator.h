@@ -6,20 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSFileManager, PLCoreAnalyticsEventManager, PLDeviceRestoreMigrationPostProcessingSupport, PLDeviceRestoreMigrationSupport, PLLazyObject, PLPhotoLibrary, PLPhotoLibraryPathManager, PLXPCTransaction;
+#import <PhotoLibraryServices/NSProgressReporting-Protocol.h>
+
+@class NSDictionary, NSFileManager, NSProgress, NSString, PLCoreAnalyticsEventManager, PLDeviceRestoreMigrationPostProcessingSupport, PLDeviceRestoreMigrationSupport, PLLazyObject, PLPhotoLibraryPathManager, PLThumbnailManager, PLXPCTransaction;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
-@interface PLModelMigrator : NSObject
+@interface PLModelMigrator : NSObject <NSProgressReporting>
 {
     double _startTime;
     PLXPCTransaction *_transaction;
     NSDictionary *_syncedPropertiesByUUID;
     PLPhotoLibraryPathManager *_pathManager;
-    PLPhotoLibrary *_photoLibrary;
-    PLLazyObject *_lazyThumbnailManager;
+    PLThumbnailManager *_thumbnailManager;
     PLLazyObject *_lazyCoreAnalysticsEventManager;
     PLLazyObject *_lazyDeviceRestoreMigrationSupport;
     PLLazyObject *_lazyDeviceRestoreMigrationPostProcessingSupport;
+    PLLazyObject *_lazyMigrationLogger;
     _Bool _didCreateSqliteErrorFileForLightweightMigration;
     _Bool _isPostProcessingLightWeightMigration;
     NSObject<OS_dispatch_queue> *_fileSystemLoadQueue;
@@ -29,11 +31,9 @@
     struct os_unfair_lock_s _lightweightMigrationLock;
     NSDictionary *_options;
     NSFileManager *_fileManager;
+    NSProgress *_progress;
 }
 
-+ (_Bool)_rollbackSQLTransactionAndCloseDB:(struct sqlite3 *)arg1;
-+ (_Bool)_commitSQLTransactionAndCloseDB:(struct sqlite3 *)arg1;
-+ (struct sqlite3 *)_openSQLTransactionWithDBPath:(const char *)arg1;
 + (id)schemaIncompatibilityDetailsForStoreMetadata:(id)arg1 model:(id)arg2;
 + (_Bool)shouldImportAssetsFromDCIMSubDirectoryAtURL:(id)arg1 assetsKind:(int *)arg2;
 + (id)extractPathToAssetUUIDRecoveryMappingFromDatabasePath:(id)arg1;
@@ -41,17 +41,27 @@
 + (_Bool)_readBooleanFlagWithKey:(id)arg1 fromMetadataWithMOC:(id)arg2 pathManager:(id)arg3;
 + (id)_readNumberWithKey:(id)arg1 fromMetadataWithMOC:(id)arg2 pathManager:(id)arg3 error:(id *)arg4;
 + (_Bool)waitForDataMigratorToExit;
-+ (_Bool)resetThumbnailIndexesAndInitiateRebuildRequestIfSuccessfulForThumbnailManager:(id)arg1;
++ (_Bool)shouldPromptUserForLibrarySchemaMismatch;
++ (_Bool)markAssetsWithThumbsForTableRebuildInContext:(id)arg1;
++ (_Bool)resetThumbnailIndexesAndInitiateThumbnailRebuildRequestIfSuccessfulForForThumbnailManager:(id)arg1 deferHintChanges:(_Bool)arg2 inContext:(id)arg3;
 + (int)currentModelVersion;
++ (_Bool)performFaceAnalysisResetWithResetLevel:(long long)arg1 pathManager:(id)arg2 context:(id)arg3;
 + (_Bool)enumerateObjectsWithIncrementalSaveDefaultBatchSizeFetchRequest:(id)arg1 managedObjectContext:(id)arg2 count:(unsigned long long *)arg3 error:(id *)arg4 block:(CDUnknownBlockType)arg5;
-+ (_Bool)executeBatchDeleteWithEntityName:(id)arg1 predicate:(id)arg2 managedObjectContext:(id)arg3;
++ (_Bool)executeBatchUpdateWithEntityName:(id)arg1 predicate:(id)arg2 propertiesToUpdate:(id)arg3 managedObjectContext:(id)arg4 error:(id *)arg5;
++ (_Bool)executeBatchDeleteWithEntityName:(id)arg1 predicate:(id)arg2 managedObjectContext:(id)arg3 error:(id *)arg4;
 - (void).cxx_destruct;
+@property(retain) NSProgress *progress; // @synthesize progress=_progress;
 @property(nonatomic) struct os_unfair_lock_s lightweightMigrationLock; // @synthesize lightweightMigrationLock=_lightweightMigrationLock;
 @property(nonatomic) struct os_unfair_lock_s storeMetadataLock; // @synthesize storeMetadataLock=_storeMetadataLock;
 @property(nonatomic) struct os_unfair_lock_s containedObjectsLock; // @synthesize containedObjectsLock=_containedObjectsLock;
 @property(retain, nonatomic) NSFileManager *fileManager; // @synthesize fileManager=_fileManager;
 @property(copy) NSDictionary *options; // @synthesize options=_options;
 @property(readonly, nonatomic) PLPhotoLibraryPathManager *pathManager; // @synthesize pathManager=_pathManager;
+- (_Bool)_migrateResourceUTIAndCodecInStagedStore:(id)arg1;
+- (_Bool)_discardUnusedCustomRenderedValuesInStore:(id)arg1;
+- (_Bool)_deleteLocalVideoKeyFrameResourcesForNonVideosInStore:(id)arg1 deferHintChanges:(_Bool)arg2;
+- (_Bool)_deleteEmptyFolderWithProjectRootCloudGUIDOfWrongKindInStore:(id)arg1;
+- (_Bool)_repairDuplicateSingletonFetchingAlbumsInStore:(id)arg1;
 - (_Bool)_resetLimitedLibraryFilterDataInStore:(id)arg1;
 - (_Bool)_unQuarantineAssetsIfPossibleInStore:(id)arg1;
 - (void)_convertImplicitDownloadAndKeepOriginalsEnabledToExplicit;
@@ -65,14 +75,13 @@
 - (_Bool)_removeDuplicatedCloudSharedComments:(id)arg1;
 - (_Bool)_refactorLargeVideoRecipeResourcesInStore:(id)arg1;
 - (_Bool)_repairCTMOriginalVideosWithoutAdjustmentsInStore:(id)arg1;
-- (_Bool)_addLocalVideoKeyFrameResourceInStore:(id)arg1;
+- (_Bool)_addLocalVideoKeyFrameResourceInStore:(id)arg1 deferHintChanges:(_Bool)arg2;
 - (_Bool)_addRAWPackedBadgeAttributeForAllRAWAssetsInStore:(id)arg1;
 - (_Bool)_persistResourceTypeAttributeOnAlternateImageResourcesInStore:(id)arg1;
 - (_Bool)_repairCTMOriginalVideosWithSOCAvailableBitInStore:(id)arg1;
 - (_Bool)_removeResourceModelManualIdentityConstraintInStore:(id)arg1;
 - (_Bool)_removeAllLocalVideoKeyFrameResourcesRevert14037InStore:(id)arg1;
 - (_Bool)_copyAssetDescriptionToAccessibilityDescription:(id)arg1;
-- (_Bool)_markAssetsForFaceProcessingByMediaAnalysisWithStore:(id)arg1;
 - (_Bool)_clearAvalancheUUIDOnCloudSharedAssetsWithStore:(id)arg1;
 - (_Bool)_repairReframedAssetsWithoutSOCAvailableBitWithStore:(id)arg1;
 - (_Bool)_migrateMetadataAndMigrationHistoryWithStore:(id)arg1;
@@ -93,7 +102,6 @@
 - (_Bool)_removeAllSharedAssetDCIMFilesInStore:(id)arg1;
 - (_Bool)_removeCloudSharedFileAtPath:(id)arg1 withFileManager:(id)arg2 error:(id *)arg3;
 - (_Bool)relocateOriginalUBFPaths:(id)arg1;
-- (_Bool)_removeContactMatchingDictionaryOnTombstonedPeople:(id)arg1;
 - (_Bool)_cleanupLegacyFiles;
 - (_Bool)_relocateCPLMarkerFiles;
 - (_Bool)_verifyAndFixBrokenLocalAvailabilityForResourceWithFileIDsInStore:(id)arg1;
@@ -101,13 +109,14 @@
 - (_Bool)_requestAvailabilityChangeForAssetsMissing1kResourcesInStore:(id)arg1;
 - (_Bool)_regenerateReferenceKeyDataInStore:(id)arg1;
 - (_Bool)_fixupResourceTypeUnknownInStore:(id)arg1;
-- (_Bool)_migrateVersionSpecific1kResourcesInStore:(id)arg1;
+- (_Bool)_migrateVersionSpecific1kResourcesInStore:(id)arg1 deferHintChanges:(_Bool)arg2;
 - (_Bool)_renumberLocalAvailabilityAndLocalAvailabilityTargetsInStore:(id)arg1;
 - (_Bool)migratePurgeableResources;
+- (_Bool)_migrateVideoKeyFrameTimeValuesInStagedStore:(id)arg1;
 - (_Bool)_emptyResourceTablesInStagedStore:(id)arg1;
 - (_Bool)_invalidateReverseGeocodingDataInStore:(id)arg1;
 - (_Bool)_fixLocationValuesInStore:(id)arg1;
-- (_Bool)_regenerateSharedStreamsDataStoreKeysDataInStore:(id)arg1;
+- (_Bool)_regenerateSharedStreamsDataStoreKeysDataInStore:(id)arg1 deferHintChanges:(_Bool)arg2;
 - (_Bool)_fixUTIForRDMigrationInStore:(id)arg1;
 - (_Bool)_fixSidecarUTIsAndDataStoreSubtype:(id)arg1;
 - (_Bool)_removeUnneededAnalysisStateTableEntries:(id)arg1;
@@ -125,7 +134,6 @@
 - (_Bool)_filterSceneClassificationsInStore:(id)arg1;
 - (_Bool)_ensureAllUserVerifiedPersonsHaveFaceCropsInStore:(id)arg1;
 - (_Bool)_removeUntrackedPersonMetadataInStore:(id)arg1;
-- (_Bool)_ungroupDuplicateGroupedAssetsInStore:(id)arg1;
 - (_Bool)_populateCloudVerifiedTypeOnPersonsInStore:(id)arg1;
 - (_Bool)_populateCloudNameSourceOnFacesInStore:(id)arg1;
 - (_Bool)_markMigrationVerifiedTypePersonsInStore:(id)arg1;
@@ -141,7 +149,6 @@
 - (_Bool)_fixNilCloudMasterGUID:(id)arg1;
 - (_Bool)_fixAssetMasterResources:(id)arg1;
 - (_Bool)_repushAssetsWithAnyUserConfirmedFaceInStore:(id)arg1;
-- (_Bool)_repushAssetsWithNewGroupingPropertiesInStore:(id)arg1;
 - (_Bool)_repushAssetsMatchingPredicate:(id)arg1 inStore:(id)arg2 withMaster:(_Bool)arg3;
 - (id)_predicateForInconsistentHeifAssets;
 - (void)_fixIncorrectHeifMetadataForAsset:(id)arg1;
@@ -157,16 +164,12 @@
 - (_Bool)_removeUntrackedCloudResourceImageDerivativesInStore:(id)arg1;
 - (_Bool)_fixCustomKeyAssetForAlbum:(id)arg1;
 - (_Bool)_fixupCroppedUnadjustedAssets:(id)arg1;
-- (_Bool)_fixupLocalResourcesStates:(id)arg1;
-- (void)_resetLocalResourcesStateForAssetsWithContext:(id)arg1 usingPredicate:(id)arg2;
 - (_Bool)_trimInvalidAlbumAssetsMappingRecords;
 - (_Bool)_fixRejectedKeyFace:(id)arg1;
 - (_Bool)_fixMergedPeopleThatShouldBeVerified:(id)arg1;
 - (_Bool)_refreshTriggerValues:(id)arg1;
 - (_Bool)_setUserTypeOnKeyFace:(id)arg1;
 - (_Bool)_recoverSingleBurstPhotos:(id)arg1;
-- (void)_repairRootFolderFixedOrderKeysInStore:(id)arg1;
-- (_Bool)_repairSingletonObjectsInDatabaseUsingContext:(id)arg1 error:(id *)arg2;
 - (void)_repairMetadataAndSingletonsForMigrationType:(long long)arg1 forceRebuildReason:(id)arg2 journalRebuildRequired:(_Bool)arg3;
 - (void)_failed_recordCurrentVersionMetadata;
 - (void)_failed_repairSingletonObjectsWithRepairError:(id)arg1;
@@ -195,7 +198,6 @@
 - (void)_failed_repairSingletonObjectsWithInvalidFileTypeLibraryDirectory;
 - (void)_failed_repairSingletonObjectsWithMissingLibraryDirectory;
 - (void)repairSingletonObjectsInDatabase;
-- (_Bool)_repairSingletonObjectsInDatabaseForOfflineStore:(id)arg1;
 - (_Bool)_deletePhotoCloudSharingMetadataInManagedObjectContext:(id)arg1 error:(id *)arg2;
 - (_Bool)_deletePhotoStreamAssetReferencesInStore:(id)arg1;
 - (_Bool)_deleteCloudSharedAndSynced:(_Bool)arg1 assetReferencesInStore:(id)arg2;
@@ -221,10 +223,8 @@
 - (_Bool)_removingDuplicatedCloudAssetGuid:(id)arg1;
 - (_Bool)_convertNameSourceFromBoolToIntForDeferredRebuildFaceInStore:(id)arg1;
 - (_Bool)_populateUserKeyFacePickSourceForPersonInStore:(id)arg1;
-- (_Bool)_populateGroupingStateOnAllGroupedAssetsInStore:(id)arg1;
 - (_Bool)_populateAdjustmentTimestampsOnAssets:(id)arg1;
 - (_Bool)_migrateCloudResourcesRelationshipsInStagedStore:(id)arg1;
-- (_Bool)_supportForUserSmartQuery:(id)arg1;
 - (_Bool)_revalidateImportSessionDates:(id)arg1;
 - (_Bool)_setImportedByInPLCloudMaster:(id)arg1;
 - (_Bool)_persistImportSessionAlbumType:(id)arg1;
@@ -269,9 +269,6 @@
 - (_Bool)_fixKeywordsInStagedStore:(id)arg1;
 - (_Bool)_fixFaceAlgorithmVersion:(id)arg1;
 - (_Bool)_fixAlbumAndFolderSortAscending:(id)arg1;
-- (void)_resetICPLPrompt;
-- (void)_setLastWelcomedDBVersion;
-- (void)_shouldRepromptUserIfNeeded;
 - (void)_handleCreateOptionsUsingContext:(id)arg1;
 - (_Bool)_deleteOrphanedUnverifiedPeople:(id)arg1;
 - (_Bool)_processDeletesForUUIDs:(id)arg1;
@@ -345,36 +342,30 @@
 - (_Bool)_fixupBrokenBurstPicksInStore:(id)arg1;
 - (_Bool)_populateDurationAndHDRTypeFromAdditionalAssetAttributesInStagedStore:(id)arg1;
 - (_Bool)_migrateTransformableUUIDsToStringsInStore:(id)arg1;
-- (void)_printMigrationSummaryInStore:(id)arg1;
-- (void)_printCountsForEntityName:(id)arg1 groupByProperties:(id)arg2 inManagedObjectContext:(id)arg3;
 - (_Bool)isPostProcessingLightweightMigration;
-- (_Bool)processWelterweightMigrationStageOnStore:(id)arg1 fromVersion:(int)arg2 toVersion:(int)arg3 migrationContext:(id)arg4;
-- (void)postProcessFixesAfterOTARestoreForCompleteAsset:(id)arg1 fixAddedDate:(_Bool)arg2;
+- (_Bool)processWelterweightMigrationStageOnStore:(id)arg1 migrationUUID:(id)arg2 fromVersion:(int)arg3 toVersion:(int)arg4 migrationContext:(id)arg5 progress:(id)arg6 progressUnitCount:(unsigned long long)arg7;
+- (void)postProcessFixesAfterOTARestoreForCompleteAsset:(id)arg1 fixAddedDate:(_Bool)arg2 shouldGenerateThumbnails:(_Bool)arg3;
 - (_Bool)_shouldTriggerLightweightMigrationFailureForInternalTesting;
-- (_Bool)postProcessMigratedStore:(id)arg1 fromVersion:(int)arg2;
+- (_Bool)postProcessMigratedStore:(id)arg1 migrationUUID:(id)arg2 fromVersion:(int)arg3 progress:(id)arg4 progressUnitCount:(unsigned long long)arg5;
 - (_Bool)validateModelEntityNames:(out id *)arg1;
 - (void)_setIsPostProcessingLightWeightMigration:(_Bool)arg1;
 - (long long)attemptLightweightMigrationFromVersion:(id)arg1 onStore:(id)arg2 withMetadata:(id)arg3 orStoreURL:(id)arg4 options:(id)arg5 coordinator:(id)arg6 migrationPolicy:(unsigned int)arg7 error:(id *)arg8;
-- (id)_stagedManagedObjectModelURLWithStageVersion:(id)arg1;
-- (id)_managedObjectModelForLightweightMigrationStageWithURL:(id)arg1;
-- (id)_nextRequiredStagedMigrationVersionAfterVersion:(id)arg1;
-- (id)_stagedVersions;
-- (id)_importFileSystemImportAssets:(id)arg1 forceUpdate:(_Bool)arg2 progress:(id)arg3;
+- (id)_importFileSystemImportAssets:(id)arg1 intoLibrary:(id)arg2 forceUpdate:(_Bool)arg3 progress:(id)arg4;
 - (void)_prepareForImportDeleteCorruptAssetsWithImporter:(id)arg1 context:(id)arg2;
 - (id)_syncedPropertiesForAssetUUID:(id)arg1;
 - (void)_applySyncedProperties:(id)arg1 toAsset:(id)arg2;
 - (id)_newSyncedPropertiesByAssetUUIDs:(_Bool)arg1;
 - (id)_dateWithiTunesTimeInterval:(double)arg1;
 - (void)_importAfterCrash:(id)arg1 dictionariesByPhotoStreamID:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
-- (void)_importAllDCIMAssets:(id)arg1 progressFraction:(id)arg2;
-- (void)_rebuildAssetsFromJournal:(id)arg1 progressFraction:(id)arg2;
-- (_Bool)_createManualIndexesDropBeforeCreate:(_Bool)arg1;
-- (id)_orderedAssetsToImportCameraRollOnly:(_Bool)arg1;
+- (void)_importAllDCIMAssetsInLibrary:(id)arg1 progress:(id)arg2 progressFraction:(id)arg3 rebuildComplete:(_Bool)arg4;
+- (void)_rebuildAssetsFromJournal:(id)arg1 inLibrary:(id)arg2 progress:(id)arg3 progressFraction:(id)arg4;
+- (id)_orderedAssetsToImportInLibrary:(id)arg1 cameraRollOnly:(_Bool)arg2;
+- (id)_orderedAssetsToImportInLibrary:(id)arg1;
 - (void)resumePhotoStreams;
 - (void)pausePhotoStreams;
-- (void)forceImportFileSystemDataIntoDatabase;
+- (void)forceImportFileSystemDataIntoDatabaseWithPhotoLibrary:(id)arg1;
 - (void)dontImportFileSystemDataIntoDatabaseWithPhotoLibrary:(id)arg1;
-- (void)_repairPotentialModelCorruption;
+- (void)_repairPotentialModelCorruptionInLibrary:(id)arg1;
 - (void)cleanupModelForDataMigrationForRestoreType:(long long)arg1;
 - (void)handleGreenChanges:(id)arg1;
 - (void)_migratePersonContactInfo;
@@ -388,7 +379,7 @@
 - (id)generatePathToAssetUUIDRecoveryMapping;
 - (void)archiveAssetUUIDForPathPlist:(id)arg1;
 - (id)archivedAssetUUIDForURL:(id)arg1;
-- (_Bool)isPhotoLibraryDatabaseReadyForOpen;
+- (_Bool)isPhotoLibraryDatabaseReadyForOpen:(id *)arg1;
 - (_Bool)updateCompletedMigrationStateWithError:(id *)arg1;
 - (long long)legacyMigrationState;
 - (void)importAfterCrash:(id)arg1 dictionariesByPhotoStreamID:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
@@ -399,25 +390,23 @@
 - (void)loadFileSystemAssetsNotifyLeave;
 - (void)loadFileSystemAssetsNotifyEnter;
 - (_Bool)_recordCurrentVersionMetadataInPersistentStore:(id)arg1 migrationType:(long long)arg2 forceRebuildReason:(id)arg3 sourceModelVersion:(id)arg4 updateLegacyMigrationState:(_Bool)arg5 journalRebuildRequred:(_Bool)arg6;
-- (long long)createNewDatabaseWithMigrationType:(long long)arg1 forceRebuildReason:(id)arg2 error:(id *)arg3;
-- (void)_performRebuildPreventionSafetyCheckForInternalBuilds;
-- (void)_fatal_cannotProceedRebuildPreventionSafetyCheckTriggered;
+- (long long)createNewDatabaseWithMigrationType:(long long)arg1 forceRebuildReason:(id)arg2 coordinator:(id)arg3 error:(id *)arg4;
+- (long long)promptUserIfNeededForRebuildReason:(id)arg1 migrationError:(id)arg2;
 - (_Bool)_createPhotoDataDirectoryIfNecessary;
 - (void)_writeToPhotoDataDirectoryFailedWithNoPermission:(id)arg1;
 - (void)_createPhotoDataDirectoryFailedWithNoPermission:(id)arg1;
 - (_Bool)shouldCreateDatabase;
 - (long long)migrateOrCreateDatabaseIfNecessaryWithPersistentContainer:(id)arg1 migrationPolicy:(unsigned int)arg2 error:(id *)arg3;
 - (long long)checkForceRebuildIndicatorFile;
-- (_Bool)debug_resetThumbnailsAndInitiateRebuildRequest;
+- (_Bool)debug_resetThumbnailsAndInitiateRebuildRequestInStore:(id)arg1;
 - (_Bool)_removeEvents:(id)arg1;
 - (_Bool)_forceSoftResetSync;
 - (_Bool)_disableICloudPhoto;
 - (_Bool)_verifyCloudAssetsLocalAvailability:(id)arg1;
 - (id)managedObjectContextForMigrationInStore:(id)arg1 name:(const char *)arg2 concurrencyType:(unsigned long long)arg3;
 - (id)managedObjectContextForMigrationWithName:(const char *)arg1 persistentStoreCoordinator:(id)arg2 concurrencyType:(unsigned long long)arg3;
-- (_Bool)_fixIncorrectThumbnailTables;
-- (_Bool)_resetThumbnailsAndInitiateRebuildRequestIfNeeded:(_Bool)arg1;
-- (_Bool)postProcessThumbnailsOnlyIfVersionMismatchOrMissing:(_Bool *)arg1;
+- (_Bool)_fixIncorrectThumbnailTablesInStore:(id)arg1 deferHintChanges:(_Bool)arg2;
+- (_Bool)postProcessThumbnailsOnlyIfVersionMismatchOrMissing:(_Bool *)arg1 coordinator:(id)arg2;
 - (unsigned long long)_assetCountForContext:(id)arg1;
 - (unsigned long long)_assetCountForLibrary:(id)arg1;
 - (unsigned long long)_assetCountForStore:(id)arg1;
@@ -426,11 +415,12 @@
 - (void)_validateCurrentModelVersionFailedWithMismatchedVersion:(long long)arg1;
 - (void)_validateCurrentModelVersionFailedWithNoVersionFromServer;
 @property(readonly, getter=isCloudPhotoLibraryEnabled) _Bool cloudPhotoLibraryEnabled;
-@property(readonly, nonatomic) __weak PLPhotoLibrary *photoLibrary;
+- (id)newShortLivedLibraryWithName:(const char *)arg1;
+- (id)migrationLogger;
 @property(readonly, nonatomic) PLDeviceRestoreMigrationPostProcessingSupport *postProcessingToken;
 - (id)newDeviceRestoreMigrationSupport;
 @property(readonly) PLDeviceRestoreMigrationSupport *deviceRestoreMigrationSupport;
-- (id)thumbnailManager;
+- (id)_migrationThumbnailManagerWithStore:(id)arg1;
 @property(readonly) PLCoreAnalyticsEventManager *analyticsEventManager;
 - (id)initWithPathManager:(id)arg1;
 - (_Bool)reconsiderAllowedForAnalysisOnAssetsMarkedNotAllowedInStore:(id)arg1;
@@ -445,18 +435,21 @@
 - (_Bool)deleteAnalysisStatesInStore:(id)arg1 forWorkerType:(short)arg2;
 - (_Bool)deleteAllAssetAnalysisStatesInStore:(id)arg1;
 - (_Bool)_markAllProcessedAnalysisStatesDirtyForWorkerType:(short)arg1 withStartingWorkerFlags:(int)arg2 inStore:(id)arg3;
-- (_Bool)_executeBatchUpdateWithEntityName:(id)arg1 predicate:(id)arg2 propertiesToUpdate:(id)arg3 managedObjectContext:(id)arg4;
 - (_Bool)resetFaceQualityInStore:(id)arg1;
 - (_Bool)faceQualityResetRequiredForPreviousStoreVersion:(unsigned long long)arg1;
 - (_Bool)resetManualOrderForNonFavoritePeopleInStore:(id)arg1;
 - (_Bool)resetManualOrderForNonFavoritePeopleInManagedObjectContext:(id)arg1;
-- (_Bool)performFaceAnalysisResetMigrationStepWithResetLevel:(long long)arg1 store:(id)arg2;
 - (_Bool)resetGraphPersonsInStore:(id)arg1;
 - (_Bool)markAllSceneAnalysisStatesDirtyAndClearDistanceIdentitiesInStoreAndClearSceneprints:(id)arg1;
-- (long long)faceMigrationResetLevelRequiredForPreviousStoreVersion:(unsigned long long)arg1;
 - (_Bool)graphPersonResetRequiredForPreviousStoreVersion:(unsigned long long)arg1;
 - (_Bool)sceneStepRequiredForPreviousStoreVersion:(unsigned long long)arg1;
 - (void)filesystemImportResultsUpdateKeywordWithImportedAssets:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

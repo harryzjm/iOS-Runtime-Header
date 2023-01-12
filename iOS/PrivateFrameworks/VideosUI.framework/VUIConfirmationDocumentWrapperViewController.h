@@ -4,21 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
-
 #import <VideosUI/UIGestureRecognizerDelegate-Protocol.h>
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VUIConfirmationDocumentWrapperViewController : UIViewController <UIGestureRecognizerDelegate>
+@interface VUIConfirmationDocumentWrapperViewController <UIGestureRecognizerDelegate>
 {
 }
 
-- (void)viewDidLayoutSubviews;
+- (void)vui_viewDidLayoutSubviews;
 - (void)tapped;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
-- (void)loadView;
+- (void)vui_loadView;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

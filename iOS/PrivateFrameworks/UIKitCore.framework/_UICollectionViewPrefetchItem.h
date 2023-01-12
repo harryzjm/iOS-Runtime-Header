@@ -11,17 +11,18 @@
 __attribute__((visibility("hidden")))
 @interface _UICollectionViewPrefetchItem : NSObject
 {
-    _Bool _hasPrefetchedData;
+    struct {
+        unsigned int needsLayoutAttributesUpdate:1;
+        unsigned int needsPreferredAttributesUpdate:1;
+        unsigned int needsReconfigure:1;
+    } _flags;
     UICollectionViewLayoutAttributes *_attributes;
     UICollectionReusableView *_view;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) UICollectionReusableView *view; // @synthesize view=_view;
-@property(nonatomic) _Bool hasPrefetchedData; // @synthesize hasPrefetchedData=_hasPrefetchedData;
-@property(retain, nonatomic) UICollectionViewLayoutAttributes *attributes; // @synthesize attributes=_attributes;
 - (id)description;
-- (id)initWithAttributes:(id)arg1;
 
 @end
 

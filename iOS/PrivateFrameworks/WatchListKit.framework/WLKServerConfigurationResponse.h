@@ -7,42 +7,49 @@
 #import <objc/NSObject.h>
 
 #import <WatchListKit/NSCopying-Protocol.h>
-#import <WatchListKit/NSSecureCoding-Protocol.h>
+#import <WatchListKit/WLKCoding-Protocol.h>
 
-@class NSDate, NSDictionary, NSNumber, NSString, NSURL;
+@class NSDate, NSDictionary, NSNumber, NSString;
 
-@interface WLKServerConfigurationResponse : NSObject <NSSecureCoding, NSCopying>
+@interface WLKServerConfigurationResponse : NSObject <WLKCoding, NSCopying>
 {
     NSDictionary *_responseDictionary;
     NSDate *_expirationDate;
     unsigned long long _environmentHash;
-    NSDictionary *_endpointsDictionary;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSDictionary *endpointsDictionary; // @synthesize endpointsDictionary=_endpointsDictionary;
 @property(readonly, nonatomic) unsigned long long environmentHash; // @synthesize environmentHash=_environmentHash;
 @property(readonly, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property(readonly, nonatomic) NSDictionary *responseDictionary; // @synthesize responseDictionary=_responseDictionary;
+- (id)_expirationDateFromResponse:(id)arg1;
+- (id)_routes;
+- (id)_requiredRequestKVPMap;
+- (id)_VPPAInfo;
+- (id)_applicationProperties;
+- (id)_userProperties;
+- (id)_utskProperties;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)utsc;
 - (_Bool)isValidIgnoringExpiration;
 - (_Bool)isValid;
 - (id)dictionaryRepresentation;
-@property(readonly, copy, nonatomic) NSNumber *vppaSessionDurationInMillis;
+- (id)serverRouteNamed:(id)arg1;
+- (id)requiredRequestKeyValuePairsForType:(id)arg1;
+- (id)utsc;
 @property(readonly, nonatomic, getter=isActiveUser) _Bool activeUser;
 @property(readonly, nonatomic) NSDictionary *features;
 @property(readonly, copy, nonatomic) NSString *utsk;
-@property(readonly, nonatomic) NSURL *playActivityURL;
 @property(readonly, nonatomic) long long vppaStatus;
+@property(readonly, copy, nonatomic) NSNumber *vppaSessionDurationInMillis;
 @property(readonly, nonatomic) NSString *vppaStatusString;
 @property(readonly, nonatomic) NSDictionary *requiredRequestKeyValuePairsDictionary;
+- (id)configurationResponseByReplacingUTSK:(id)arg1;
 - (id)initWithServerResponseDictionary:(id)arg1 expirationDate:(id)arg2 environmentHash:(unsigned long long)arg3;
 - (id)initWithDictionary:(id)arg1;
 

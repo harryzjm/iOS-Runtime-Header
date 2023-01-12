@@ -8,6 +8,7 @@
 
 @interface NSDictionary (PKPlistTypeSafety)
 - (id)PKSetContaining:(Class)arg1 forKey:(id)arg2;
+- (id)PKCurrencyAmountForKey:(id)arg1;
 - (id)PKSetForKey:(id)arg1;
 - (id)PKArrayContaining:(Class)arg1 forKey:(id)arg2;
 - (id)PKArrayForKey:(id)arg1;

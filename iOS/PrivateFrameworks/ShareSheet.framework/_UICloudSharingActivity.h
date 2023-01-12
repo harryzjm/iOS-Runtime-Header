@@ -14,12 +14,14 @@
     NSString *_activityTitle;
     UIViewController *_activityViewController;
     _Bool _initialSharing;
+    _Bool _activityItemIsFolder;
     UIImage *_activityImage;
 }
 
 + (long long)activityCategory;
 + (unsigned long long)_xpcAttributes;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool activityItemIsFolder; // @synthesize activityItemIsFolder=_activityItemIsFolder;
 @property(nonatomic) _Bool initialSharing; // @synthesize initialSharing=_initialSharing;
 @property(retain, nonatomic) UIImage *activityImage; // @synthesize activityImage=_activityImage;
 @property(retain, nonatomic) NSString *activityTitle; // @synthesize activityTitle=_activityTitle;
@@ -28,7 +30,7 @@
 - (void)_cloudShareControllerDidDismiss:(id)arg1;
 - (void)performActivity;
 - (void)prepareWithActivityItems:(id)arg1;
-- (_Bool)_isURLEligibleForSharing:(id)arg1 isInitial:(_Bool *)arg2;
+- (_Bool)_isURLEligibleForSharing:(id)arg1 isInitial:(_Bool *)arg2 isFolder:(_Bool *)arg3;
 - (_Bool)canPerformWithActivityItems:(id)arg1;
 - (_Bool)eligibleTypeForActivity:(id)arg1;
 - (void)_setupForSharingInfo;

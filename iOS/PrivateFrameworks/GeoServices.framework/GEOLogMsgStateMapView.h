@@ -13,11 +13,21 @@
 @interface GEOLogMsgStateMapView : PBCodable <NSCopying>
 {
     GEOMapRegion *_mapRegion;
+    double _pitch;
+    double _styleZoomLevel;
     double _zoomLevel;
     int _mapType;
+    int _viewMode;
+    _Bool _isAdvancedMap;
+    _Bool _isGlobeProjection;
     struct {
+        unsigned int has_pitch:1;
+        unsigned int has_styleZoomLevel:1;
         unsigned int has_zoomLevel:1;
         unsigned int has_mapType:1;
+        unsigned int has_viewMode:1;
+        unsigned int has_isAdvancedMap:1;
+        unsigned int has_isGlobeProjection:1;
     } _flags;
 }
 
@@ -28,6 +38,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -36,6 +47,18 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsViewMode:(id)arg1;
+- (id)viewModeAsString:(int)arg1;
+@property(nonatomic) _Bool hasViewMode;
+@property(nonatomic) int viewMode;
+@property(nonatomic) _Bool hasIsGlobeProjection;
+@property(nonatomic) _Bool isGlobeProjection;
+@property(nonatomic) _Bool hasIsAdvancedMap;
+@property(nonatomic) _Bool isAdvancedMap;
+@property(nonatomic) _Bool hasPitch;
+@property(nonatomic) double pitch;
+@property(nonatomic) _Bool hasStyleZoomLevel;
+@property(nonatomic) double styleZoomLevel;
 - (int)StringAsMapType:(id)arg1;
 - (id)mapTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasMapType;

@@ -6,13 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@protocol AVOutputDeviceCommunicationChannelImpl;
+@protocol AVOutputDeviceCommunicationChannelDelegate, AVOutputDeviceCommunicationChannelImpl;
 
 @interface AVOutputDeviceCommunicationChannel : NSObject
 {
     id <AVOutputDeviceCommunicationChannelImpl> _impl;
+    id <AVOutputDeviceCommunicationChannelDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
+- (void)communicationChannelImplDidClose:(id)arg1;
+- (void)communicationChannelImpl:(id)arg1 didReceiveData:(id)arg2;
+@property __weak id <AVOutputDeviceCommunicationChannelDelegate> delegate;
 - (void)close;
 - (void)sendData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;

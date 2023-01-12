@@ -13,6 +13,7 @@
     GEOMapItemAttribution *_geoAttribution;
 }
 
++ (id)attributionFromEncyclopedicInfo:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *appAdamID;
 @property(readonly, nonatomic) _Bool requiresAttributionInCallout;
@@ -22,6 +23,7 @@
 @property(readonly, nonatomic) _Bool shouldOpenInAppStore;
 @property(readonly, nonatomic) NSArray *attributionApps;
 @property(readonly, nonatomic) NSArray *attributionURLs;
+@property(readonly, nonatomic) NSString *captionDisplayName;
 @property(readonly, nonatomic) NSString *providerName;
 @property(readonly, nonatomic) NSString *providerID;
 - (id)initWithGEOMapItemAttribution:(id)arg1;

@@ -8,7 +8,7 @@
 
 #import <ClockKit/NSXPCListenerDelegate-Protocol.h>
 
-@class BKSApplicationStateMonitor, NSDictionary, NSLock, NSMutableDictionary, NSMutableSet, NSString;
+@class NSDictionary, NSLock, NSMutableDictionary, NSMutableSet, NSString;
 
 @interface CLKComplicationClientManager : NSObject <NSXPCListenerDelegate>
 {
@@ -22,7 +22,6 @@
     NSLock *_clientPIDsLock;
     unsigned long long _nextWaitForClientTokenValue;
     NSLock *_nextWaitForClientTokenValueLock;
-    BKSApplicationStateMonitor *_applicationStateMonitor;
     CDUnknownBlockType _clientRegistrationHandler;
     CDUnknownBlockType _clientUnregistrationHandler;
 }
@@ -31,7 +30,6 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType clientUnregistrationHandler; // @synthesize clientUnregistrationHandler=_clientUnregistrationHandler;
 @property(copy, nonatomic) CDUnknownBlockType clientRegistrationHandler; // @synthesize clientRegistrationHandler=_clientRegistrationHandler;
-- (void)_handleApplicationStateChange:(id)arg1;
 - (void)_removeClient:(id)arg1;
 - (void)_addClient:(id)arg1;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;

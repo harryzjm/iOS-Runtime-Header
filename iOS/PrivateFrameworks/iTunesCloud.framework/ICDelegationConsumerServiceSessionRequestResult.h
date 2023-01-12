@@ -8,6 +8,7 @@
 
 @class ICDelegateToken, NSError, NSString;
 
+__attribute__((visibility("hidden")))
 @interface ICDelegationConsumerServiceSessionRequestResult : NSObject
 {
     ICDelegateToken *_delegateToken;

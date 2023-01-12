@@ -25,24 +25,8 @@
 
 + (id)executorWithCommand:(id)arg1 workQueue:(id)arg2 messageDispatcher:(id)arg3;
 - (void).cxx_destruct;
-@property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
-@property(retain, nonatomic) HMFTimer *executionTimer; // @synthesize executionTimer=_executionTimer;
-@property(retain, nonatomic) NSString *clientValidity; // @synthesize clientValidity=_clientValidity;
-@property(retain, nonatomic) NSMutableDictionary *pendingCommands; // @synthesize pendingCommands=_pendingCommands;
-@property(retain, nonatomic) NSMutableArray *actionResults; // @synthesize actionResults=_actionResults;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
-@property(retain, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
-@property(retain, nonatomic) HMDAssistantCommand *initialCommand; // @synthesize initialCommand=_initialCommand;
-- (void)_startExecutionTimer;
 - (void)timerDidFire:(id)arg1;
-- (void)_sendResponse:(id)arg1;
-- (void)_reportFailure;
-- (void)_reportResults:(id)arg1;
-- (void)_accumulateActionResultsFromResponse:(id)arg1 command:(id)arg2;
-- (void)_executeCommand:(id)arg1;
-- (_Bool)_isValid;
 - (id)_command;
-- (_Bool)_initialCommandIsMultipleActions;
 - (void)performWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithCommand:(id)arg1 workQueue:(id)arg2 messageDispatcher:(id)arg3;
 

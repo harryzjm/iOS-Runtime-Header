@@ -28,7 +28,7 @@
 }
 
 - (void).cxx_destruct;
-- (id)_commutePlanBalanceIdentifier;
+- (id)_commutePlanBalanceIdentifiers;
 - (void)performActionViewControllerDidPerformAction:(id)arg1;
 - (void)performActionViewControllerDidCancel:(id)arg1;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
@@ -51,6 +51,7 @@
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)_reloadBalance;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithTransitPassProperties:(id)arg2;
+- (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceivePlanUpdate:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveBalanceUpdate:(id)arg2;
 - (id)initWithCommutePlan:(id)arg1 associatedAction:(id)arg2 forPass:(id)arg3 paymentDataProvider:(id)arg4 webService:(id)arg5 style:(long long)arg6;
 

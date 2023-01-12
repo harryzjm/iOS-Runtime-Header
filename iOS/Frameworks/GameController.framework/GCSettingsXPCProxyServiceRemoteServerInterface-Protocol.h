@@ -7,6 +7,7 @@
 @protocol GCSettingsXPCProxyRemoteClientEndpointInterface;
 
 @protocol GCSettingsXPCProxyServiceRemoteServerInterface
+- (void)checkEmulatedControllerEnabledWithReply:(void (^)(NSNumber *))arg1;
 - (void)settingsXPCProxyServiceClientEndpointConnect:(id <GCSettingsXPCProxyRemoteClientEndpointInterface>)arg1 reply:(void (^)(id <GCSettingsXPCProxyRemoteServerEndpointInterface>, NSError *))arg2;
 @end
 

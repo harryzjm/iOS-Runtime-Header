@@ -22,6 +22,7 @@
 - (void).cxx_destruct;
 @property(nonatomic, getter=isLayoutMarginsRelativeArrangement) _Bool layoutMarginsRelativeArrangement; // @synthesize layoutMarginsRelativeArrangement=_layoutMarginsRelativeArrangement;
 - (double)_proportionalFillLengthForOrderedArrangement:(id)arg1 relevantParentAxis:(long long)arg2;
+- (_Bool)_ola_isCandidateForMultilineTextWidthDisambiguationWhenArranged;
 - (_Bool)_recordBaselineLoweringInfo;
 - (void)_vendedBaselineViewDidMoveForFirst:(_Bool)arg1;
 - (void)_vendedBaselineViewParametersDidChange;

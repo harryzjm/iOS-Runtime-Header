@@ -8,7 +8,6 @@
 
 @class MCBook, NSArray, NSDate, NSString;
 
-__attribute__((visibility("hidden")))
 @interface MCPayloadInfo : NSObject
 {
     _Bool _showIcon;

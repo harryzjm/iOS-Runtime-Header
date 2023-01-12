@@ -20,7 +20,7 @@
 @property(nonatomic) _Bool isAboveSpeedThreshold; // @synthesize isAboveSpeedThreshold=_isAboveSpeedThreshold;
 @property(readonly, nonatomic) unsigned int speedThreshold; // @synthesize speedThreshold=_speedThreshold;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
-- (void)populateDebugNode:(struct DebugTreeNode *)arg1;
+- (void)populateDebugNode:(void *)arg1;
 - (_Bool)isSpeedLimitCamera;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

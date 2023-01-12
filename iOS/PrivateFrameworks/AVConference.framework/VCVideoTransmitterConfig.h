@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVCStatisticsCollector, NSDictionary, NSMutableDictionary, VCRateControlMediaController;
+@class AVCStatisticsCollector, NSDictionary, NSMutableDictionary, NSString, VCRateControlMediaController;
 
 __attribute__((visibility("hidden")))
 @interface VCVideoTransmitterConfig : NSObject
@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _customWidth;
     unsigned long long _customHeight;
     int _mode;
+    int _captureSource;
     AVCStatisticsCollector *_statisticsCollector;
     struct tagVCVideoTransmitterStreamConfig *_streamConfigs;
     int _streamCount;
@@ -39,13 +40,29 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_customFeatureListStrings;
     VCRateControlMediaController *_mediaController;
     void *_mediaControlInfoGenerator;
+    unsigned int _rtpTimestampRate;
+    NSString *_profileLevel;
+    unsigned int _parameterSets;
+    _Bool _temporalScalingEnabled;
+    struct tagVCCryptor *_sframeCryptor;
     _Bool _reinitEncoderOnFrameSizeChangeEnabled;
     _Bool _isIPv6;
+    _Bool _isFecGeneratorEnabled;
+    _Bool _fecHeaderV1Enabled;
+    _Bool _useInBandFec;
     unsigned int _qualityIndex;
     unsigned long long _remoteIDSParticipantID;
 }
 
+@property(nonatomic) _Bool useInBandFec; // @synthesize useInBandFec=_useInBandFec;
 @property(nonatomic) unsigned long long remoteIDSParticipantID; // @synthesize remoteIDSParticipantID=_remoteIDSParticipantID;
+@property(nonatomic) _Bool fecHeaderV1Enabled; // @synthesize fecHeaderV1Enabled=_fecHeaderV1Enabled;
+@property(nonatomic) _Bool isFecGeneratorEnabled; // @synthesize isFecGeneratorEnabled=_isFecGeneratorEnabled;
+@property(nonatomic) struct tagVCCryptor *sframeCryptor; // @synthesize sframeCryptor=_sframeCryptor;
+@property(nonatomic) _Bool temporalScalingEnabled; // @synthesize temporalScalingEnabled=_temporalScalingEnabled;
+@property(nonatomic) unsigned int parameterSets; // @synthesize parameterSets=_parameterSets;
+@property(retain, nonatomic) NSString *profileLevel; // @synthesize profileLevel=_profileLevel;
+@property(nonatomic) unsigned int rtpTimestampRate; // @synthesize rtpTimestampRate=_rtpTimestampRate;
 @property(nonatomic) unsigned int qualityIndex; // @synthesize qualityIndex=_qualityIndex;
 @property(nonatomic) _Bool isIPv6; // @synthesize isIPv6=_isIPv6;
 @property(nonatomic) void *mediaControlInfoGenerator; // @synthesize mediaControlInfoGenerator=_mediaControlInfoGenerator;
@@ -58,6 +75,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) int streamCount; // @synthesize streamCount=_streamCount;
 @property(readonly, nonatomic) struct tagVCVideoTransmitterStreamConfig *streamConfigs; // @synthesize streamConfigs=_streamConfigs;
 @property(retain, nonatomic) AVCStatisticsCollector *statisticsCollector; // @synthesize statisticsCollector=_statisticsCollector;
+@property(nonatomic) int captureSource; // @synthesize captureSource=_captureSource;
 @property(nonatomic) int mode; // @synthesize mode=_mode;
 @property(nonatomic) unsigned long long customHeight; // @synthesize customHeight=_customHeight;
 @property(nonatomic) unsigned long long customWidth; // @synthesize customWidth=_customWidth;

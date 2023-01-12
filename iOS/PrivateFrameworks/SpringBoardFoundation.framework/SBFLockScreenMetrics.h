@@ -42,6 +42,7 @@
 + (double)pinKeypadEntryFieldOffsetForSubtitle;
 + (id)pinKeypadStatusSubtitleViewTitleFont;
 + (id)pinKeypadStatusTitleViewTitleFont;
++ (double)pinAlphanumericEntryFieldBottomYDistanceFromKeyboard;
 + (double)pinLongNumericEntryFieldBottomYDistanceFromNumberPadTopButton;
 + (double)pinFixedDigitEntryFieldBottomYDistanceFromNumberPadTopButton:(_Bool)arg1;
 + (double)pinNumberPadBaseOffsetFromTopOfScreen:(_Bool)arg1;

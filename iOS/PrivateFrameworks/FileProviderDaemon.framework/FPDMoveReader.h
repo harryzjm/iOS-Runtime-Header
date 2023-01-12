@@ -49,6 +49,7 @@
 - (void)_run;
 - (void)_enqueueAtomsForRoot:(id)arg1;
 - (_Bool)_shouldUseDiskWriterToPerformMoveForItem:(id)arg1;
+- (_Bool)_isSinglePkgCopyForRoot:(id)arg1;
 - (_Bool)_isSingleMoveForRoot:(id)arg1;
 - (void)_bailOutOfRoot:(id)arg1;
 - (_Bool)_enqueueItem:(id)arg1 forRoot:(id)arg2 atomically:(_Bool)arg3 useDiskWriter:(_Bool)arg4;
@@ -56,9 +57,9 @@
 - (id)_getTargetFolderFor:(id)arg1 root:(id)arg2 error:(id *)arg3;
 - (_Bool)_shouldCheckFileSystemBitsForRoot:(id)arg1 targetFolderURL:(id)arg2;
 - (_Bool)_shouldCheckSpaceForRoot:(id)arg1 targetFolderURL:(id)arg2;
-- (long long)_filesizeBitsSupportAtPath:(id)arg1;
-- (_Bool)_isSpaceAvailableForWrite:(long long)arg1 atTargetPath:(id)arg2;
-- (void)_progressComputationPreflight;
+- (long long)_fileSizeBitsSupportAtPath:(id)arg1;
+- (void)_getSpaceForWriteSize:(long long)arg1 atTargetPath:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_progressComputationPreflight:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_finishWithError:(id)arg1;
 - (_Bool)_isCancelled;
 - (void)start;

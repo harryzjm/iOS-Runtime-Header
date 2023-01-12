@@ -6,10 +6,10 @@
 
 #import <AVConference/NSObject-Protocol.h>
 
-@class NSString;
+@class AVCRateController, NSString;
 
 @protocol AVCRateControllerDelegate <NSObject>
-- (void)rateController:(void *)arg1 targetBitrateDidChange:(unsigned int)arg2 rateChangeCounter:(unsigned int)arg3;
+- (void)rateController:(AVCRateController *)arg1 targetBitrateDidChange:(unsigned int)arg2 rateChangeCounter:(unsigned int)arg3;
 
 @optional
 - (int)learntBitrateForSegment:(NSString *)arg1 defaultValue:(int)arg2;

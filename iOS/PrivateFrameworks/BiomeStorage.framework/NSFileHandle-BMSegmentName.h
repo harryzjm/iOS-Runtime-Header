@@ -9,7 +9,7 @@
 @class NSString;
 
 @interface NSFileHandle (BMSegmentName)
-@property(readonly, nonatomic) NSString *segmentName;
-@property(readonly, nonatomic) NSString *pathname;
+@property(readonly, nonatomic) NSString *bmSegmentName;
+@property(readonly, nonatomic) NSString *bmPathname;
 @end
 

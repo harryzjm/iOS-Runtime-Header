@@ -18,11 +18,5 @@
 - (id)vui_hlsPlaylistURL;
 - (id)vui_launchPlaybackURL;
 - (id)vui_rentalAdamIDString;
-- (id)videos_fpsKeyServerURL;
-- (id)videos_fpsCertificateURL;
-- (id)videos_rentalAdamIDString;
-- (id)videos_resumeTime;
-- (id)videos_persistentID;
-- (_Bool)videos_disableLocalAsset;
 @end
 

@@ -12,18 +12,21 @@
 {
     _Bool _usesCompactWidth;
     _Bool _useCompactDisplay;
+    _Bool _forcePressViewIsEntireEnclosingCell;
     SFContactImage *_contactImage;
 }
 
 + (id)avatarSettings;
 + (void)clearAvatarSettings;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool forcePressViewIsEntireEnclosingCell; // @synthesize forcePressViewIsEntireEnclosingCell=_forcePressViewIsEntireEnclosingCell;
 @property(nonatomic) _Bool useCompactDisplay; // @synthesize useCompactDisplay=_useCompactDisplay;
 @property(retain, nonatomic) SFContactImage *contactImage; // @synthesize contactImage=_contactImage;
 @property(nonatomic) _Bool usesCompactWidth; // @synthesize usesCompactWidth=_usesCompactWidth;
+- (id)forcePressView;
 - (void)layoutSubviews;
 - (void)updateWithRowModel:(id)arg1;
-- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)setContactImage:(id)arg1 useCompactDisplay:(_Bool)arg2;
 - (void)tlk_updateForAppearance:(id)arg1;
 - (void)didMoveToWindow;

@@ -65,6 +65,7 @@
 - (void)_handleSettingHighResolutionContent:(_Bool)arg1 forRootController:(id)arg2 content:(id)arg3;
 - (void)_switchModeForHighResolutionContent:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_updateSecondDisplayModeWithCurrentContent;
+- (_Bool)_shouldUpdateSecondDisplayModeWithCurrentContent;
 - (void)_updateScreenContentWithShouldTryToFindAvailableScreen:(_Bool)arg1;
 - (void)_cacheDisplayedContentIfNeededForUnregisteringProvider:(id)arg1;
 - (id)_currentContent;

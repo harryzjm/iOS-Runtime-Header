@@ -6,8 +6,10 @@
 
 #import <objc/NSObject.h>
 
+#import <CoreUI/NSCopying-Protocol.h>
+
 __attribute__((visibility("hidden")))
-@interface CUINamedRenditionInfo : NSObject
+@interface CUINamedRenditionInfo : NSObject <NSCopying>
 {
     void *_bitmap;
     const struct _renditionkeyfmt *_keyFormat;
@@ -30,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToNamedRenditionInfo:(id)arg1;
 - (id)archivedData;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)initWithKeyFormat:(const struct _renditionkeyfmt *)arg1;
 - (id)initWithData:(id)arg1 andKeyFormat:(const struct _renditionkeyfmt *)arg2;

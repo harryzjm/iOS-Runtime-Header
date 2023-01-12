@@ -6,18 +6,20 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <NewsUI/NUArticleViewControllerDelegate-Protocol.h>
 #import <NewsUI/NUBarCompressible-Protocol.h>
 #import <NewsUI/NULoadingDelegate-Protocol.h>
 #import <NewsUI/NUPageable-Protocol.h>
 #import <NewsUI/SXAnalyticsReporting-Protocol.h>
 
-@class FCArticle, FCIssue, FCObservable, NFMultiDelegate, NSHashTable, NSString, NUArticleContext, UIResponder, UIScrollView, UIView;
-@protocol NUAnalyticsReporting, NUArticleContentSizeManager, NUArticleViewControllerFactory, NUErrorMessageFactory, NULoadingDelegate, NULoadingViewProviding, NUSettings;
+@class FCArticle, FCIssue, FCObservable, NSHashTable, NSString, NUArticleContext, TFMultiDelegate, UIResponder, UIScrollView, UIView;
+@protocol NUAnalyticsReporting, NUArticleContentSizeManager, NUArticleHostViewControllerDelegate, NUArticleViewControllerFactory, NUErrorMessageFactory, NULoadingDelegate, NULoadingViewProviding, NUSettings;
 
-@interface NUArticleHostViewController : UIViewController <NULoadingDelegate, SXAnalyticsReporting, NUPageable, NUBarCompressible>
+@interface NUArticleHostViewController : UIViewController <NUArticleViewControllerDelegate, NULoadingDelegate, SXAnalyticsReporting, NUPageable, NUBarCompressible>
 {
     NSString *_pageIdentifier;
     id <NULoadingDelegate> _loadingDelegate;
+    id <NUArticleHostViewControllerDelegate> _delegate;
     FCObservable *_articleViewStyler;
     NUArticleContext *_articleContext;
     UIResponder *_responder;
@@ -27,7 +29,7 @@
     id <NUSettings> _settings;
     UIViewController *_contentTypeViewController;
     UIView<NULoadingViewProviding> *_loadingView;
-    NFMultiDelegate *_multiLoadingDelegate;
+    TFMultiDelegate *_multiLoadingDelegate;
     id <NUErrorMessageFactory> _errorMessageFactory;
     id <NUAnalyticsReporting> _analyticsReporting;
     id <NUArticleContentSizeManager> _contentSizeManager;
@@ -37,7 +39,7 @@
 @property(readonly, nonatomic) id <NUArticleContentSizeManager> contentSizeManager; // @synthesize contentSizeManager=_contentSizeManager;
 @property(readonly, nonatomic) id <NUAnalyticsReporting> analyticsReporting; // @synthesize analyticsReporting=_analyticsReporting;
 @property(readonly, nonatomic) id <NUErrorMessageFactory> errorMessageFactory; // @synthesize errorMessageFactory=_errorMessageFactory;
-@property(readonly, nonatomic) NFMultiDelegate *multiLoadingDelegate; // @synthesize multiLoadingDelegate=_multiLoadingDelegate;
+@property(readonly, nonatomic) TFMultiDelegate *multiLoadingDelegate; // @synthesize multiLoadingDelegate=_multiLoadingDelegate;
 @property(retain, nonatomic) UIView<NULoadingViewProviding> *loadingView; // @synthesize loadingView=_loadingView;
 @property(retain, nonatomic) UIViewController *contentTypeViewController; // @synthesize contentTypeViewController=_contentTypeViewController;
 @property(readonly, copy, nonatomic) id <NUSettings> settings; // @synthesize settings=_settings;
@@ -47,11 +49,13 @@
 @property(retain, nonatomic) UIResponder *responder; // @synthesize responder=_responder;
 @property(retain, nonatomic) NUArticleContext *articleContext; // @synthesize articleContext=_articleContext;
 @property(readonly, nonatomic) FCObservable *articleViewStyler; // @synthesize articleViewStyler=_articleViewStyler;
+@property(nonatomic) __weak id <NUArticleHostViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak id <NULoadingDelegate> loadingDelegate; // @synthesize loadingDelegate=_loadingDelegate;
 @property(readonly, copy, nonatomic) NSString *pageIdentifier; // @synthesize pageIdentifier=_pageIdentifier;
 - (id)loadingTextForArticle:(id)arg1;
 - (void)loadArticleAndEmbedArticleViewController;
 - (void)reportEvent:(id)arg1;
+- (void)articleViewController:(id)arg1 didScrollToPosition:(id)arg2;
 @property(readonly, nonatomic) UIScrollView *scrollView;
 - (void)loadingDidUpdateProgress:(double)arg1;
 - (void)loadingDidFinishWithError:(id)arg1;

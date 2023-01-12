@@ -5,13 +5,15 @@
 //
 
 #import <MetalTools/MTLComputePipelineState-Protocol.h>
+#import <MetalTools/MTLPipelineStateWithProgramAddressTable-Protocol.h>
 
 @class MTLDebugInstrumentationData, NSArray;
 @protocol MTLFunction, MTLFunctionPointerHandleSPI;
 
-@protocol MTLComputePipelineStateSPI <MTLComputePipelineState>
+@protocol MTLComputePipelineStateSPI <MTLComputePipelineState, MTLPipelineStateWithProgramAddressTable>
 @property(readonly, retain, nonatomic) MTLDebugInstrumentationData *debugInstrumentationData;
 @property(readonly) unsigned long long uniqueIdentifier;
+@property(readonly, nonatomic) unsigned long long allocatedSize;
 @property(readonly) unsigned long long staticThreadgroupMemoryLength;
 @property(readonly) long long textureWriteRoundingMode;
 - (NSArray *)functionPointerHandlesWithFunctions:(NSArray *)arg1 range:(struct _NSRange)arg2;

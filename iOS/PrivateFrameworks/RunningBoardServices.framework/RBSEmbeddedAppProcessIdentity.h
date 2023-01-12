@@ -23,9 +23,8 @@ __attribute__((visibility("hidden")))
 - (void)encodeWithRBSXPCCoder:(id)arg1;
 - (id)debugDescription;
 - (_Bool)_matchesIdentity:(id)arg1;
-- (id)copyWithEuid:(unsigned int)arg1;
-- (id)_initEmbeddedAppWithBundleID:(id)arg1 euid:(unsigned int)arg2 platform:(int)arg3 jobLabel:(id)arg4;
-- (id)_initEmbeddedAppWithBundleID:(id)arg1 euid:(unsigned int)arg2 platform:(int)arg3;
+- (_Bool)isEqual:(id)arg1;
+- (id)copyWithAuid:(unsigned int)arg1;
 
 @end
 

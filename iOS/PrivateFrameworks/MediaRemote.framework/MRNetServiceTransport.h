@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool requiresCustomPairing;
 - (void)reset;
 - (_Bool)getInputStream:(id *)arg1 outputStream:(id *)arg2 userInfo:(id)arg3;
+- (id)createConnectionWithUserInfo:(id)arg1;
 - (id)error;
 - (void)setShouldUseSystemAuthenticationPrompt:(_Bool)arg1;
 - (_Bool)shouldUseSystemAuthenticationPrompt;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (id)deviceInfo;
 - (void)updateDeviceInfoWithTXTRecord:(id)arg1;
 - (id)description;
+- (void)dealloc;
 - (id)initWithNetService:(id)arg1;
 
 @end

@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)focusGroupIdentifier;
 - (id)_accessibilityScannerGroupElements;
 - (_Bool)accessibilityRespondsToUserInteraction;
 - (_Bool)_accessibilityIsScannerGroup;

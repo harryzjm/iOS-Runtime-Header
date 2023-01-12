@@ -8,18 +8,12 @@
 #import <UIKitCore/UIViewControllerTransitioningDelegate-Protocol.h>
 
 @class NSString, _SFPasswordViewController;
-@protocol BSInvalidatable;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardHiddenViewController <UIViewControllerTransitioningDelegate, UIInputViewControllerNeedSceneSize>
 {
     _SFPasswordViewController *_autofillVC;
     _Bool _presentedAutofill;
-    _Bool _focusWasDeferredBeforeDeactivation;
-    _Bool _isFocusDeferred;
-    unsigned int _deferredContextID;
-    NSString *_deferredDisplayUUID;
-    id <BSInvalidatable> _eventFocusDeferralToken;
     _Bool _processingSceneDidChange;
 }
 
@@ -32,11 +26,6 @@ __attribute__((visibility("hidden")))
 - (void)presentAutofillVCWithAnimation:(_Bool)arg1;
 - (void)presentSelfWithAnimation:(_Bool)arg1;
 - (_Bool)shouldPresentAsPopover;
-- (void)_willChangeToFirstResponder:(id)arg1;
-- (void)_setDeferred:(_Bool)arg1 forDisplayUUID:(id)arg2;
-- (id)_deferredTargetForClientContext:(unsigned int)arg1;
-- (void)_applicationWillDeactivate:(id)arg1;
-- (void)_applicationDidBecomeActive:(id)arg1;
 - (void)_deviceWillLock:(id)arg1;
 - (void)passwordViewControllerDidFinish:(id)arg1;
 - (void)_localAuthenticationUIDismissed;

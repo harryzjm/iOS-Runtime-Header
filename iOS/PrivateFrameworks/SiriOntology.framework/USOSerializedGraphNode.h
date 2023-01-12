@@ -8,7 +8,7 @@
 
 #import <SiriOntology/NSSecureCoding-Protocol.h>
 
-@class NSNumber, NSString;
+@class NSArray, NSNumber, NSString;
 
 @interface USOSerializedGraphNode : NSObject <NSSecureCoding>
 {
@@ -18,12 +18,14 @@
     NSString *_stringPayload;
     NSString *_entityLabel;
     NSString *_verbLabel;
+    NSArray *_normalizedStringPayloads;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(retain) NSString *verbLabel; // @synthesize verbLabel=_verbLabel;
-@property(retain) NSString *entityLabel; // @synthesize entityLabel=_entityLabel;
+@property(retain, nonatomic) NSArray *normalizedStringPayloads; // @synthesize normalizedStringPayloads=_normalizedStringPayloads;
+@property(retain, nonatomic) NSString *verbLabel; // @synthesize verbLabel=_verbLabel;
+@property(retain, nonatomic) NSString *entityLabel; // @synthesize entityLabel=_entityLabel;
 @property(retain, nonatomic) NSString *stringPayload; // @synthesize stringPayload=_stringPayload;
 @property(retain, nonatomic) NSNumber *integerPayload; // @synthesize integerPayload=_integerPayload;
 @property(retain, nonatomic) NSNumber *usoVerbId; // @synthesize usoVerbId=_usoVerbId;

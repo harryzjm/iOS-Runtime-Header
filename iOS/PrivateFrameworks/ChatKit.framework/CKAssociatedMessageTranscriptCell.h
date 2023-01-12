@@ -11,6 +11,7 @@
 {
     id <CKAssociatedMessageTranscriptCellDelegate> _delegate;
     UIView *_associatedItemView;
+    double _parentRotationOffset;
     double _cumulativeAssociatedOffset;
     struct CGSize _size;
     struct CGSize _parentSize;
@@ -19,6 +20,7 @@
 
 - (void).cxx_destruct;
 @property(nonatomic) double cumulativeAssociatedOffset; // @synthesize cumulativeAssociatedOffset=_cumulativeAssociatedOffset;
+@property(nonatomic) double parentRotationOffset; // @synthesize parentRotationOffset=_parentRotationOffset;
 @property(nonatomic) struct CGSize parentSize; // @synthesize parentSize=_parentSize;
 @property(nonatomic) struct CGSize size; // @synthesize size=_size;
 @property(nonatomic) struct IMAssociatedMessageGeometryDescriptor geometryDescriptor; // @synthesize geometryDescriptor=_geometryDescriptor;
@@ -34,7 +36,7 @@
 - (_Bool)failureButtonAdjustsContentAlignmentRect;
 - (_Bool)hidesCheckmark;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (void)configureForChatItem:(id)arg1;
+- (void)configureForChatItem:(id)arg1 context:(id)arg2;
 
 @end
 

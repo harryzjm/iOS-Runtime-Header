@@ -39,6 +39,7 @@
 - (void)_positionView:(id)arg1 forIcon:(id)arg2;
 - (void)iconList:(id)arg1 didReplaceIcon:(id)arg2 withIcon:(id)arg3;
 - (void)iconList:(id)arg1 didAddIcon:(id)arg2;
+- (struct CGPoint)iconListView:(id)arg1 centerForIconCoordinate:(struct SBIconCoordinate)arg2 metrics:(id)arg3 proposedCenter:(struct CGPoint)arg4;
 - (struct CGPoint)iconListView:(id)arg1 originForIconCoordinate:(struct SBIconCoordinate)arg2 metrics:(id)arg3 proposedOrigin:(struct CGPoint)arg4;
 - (double)_iconZoomDelay;
 - (void)_performAnimationToFraction:(double)arg1 withCentralAnimationSettings:(id)arg2 delay:(double)arg3 alreadyAnimating:(_Bool)arg4 sharedCompletion:(CDUnknownBlockType)arg5;

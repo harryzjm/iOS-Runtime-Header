@@ -9,19 +9,20 @@
 #import <VoiceShortcuts/HMHomeManagerDelegate-Protocol.h>
 
 @class HMHomeManager, NSString, WFDatabase;
-@protocol VCDatabaseProvider;
+@protocol WFDatabaseProvider;
 
 @interface VCVoiceShortcutManager : NSObject <HMHomeManagerDelegate>
 {
     _Bool _addingDefaultShortcuts;
     HMHomeManager *_homeManager;
-    id <VCDatabaseProvider> _databaseProvider;
+    id <WFDatabaseProvider> _databaseProvider;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool addingDefaultShortcuts; // @synthesize addingDefaultShortcuts=_addingDefaultShortcuts;
-@property(readonly, nonatomic) id <VCDatabaseProvider> databaseProvider; // @synthesize databaseProvider=_databaseProvider;
-- (void)createShortcutWithRecordData:(id)arg1 name:(id)arg2 accessSpecifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
+@property(readonly, nonatomic) id <WFDatabaseProvider> databaseProvider; // @synthesize databaseProvider=_databaseProvider;
+- (void)logHomescreenFastPathRunEventForShortcutWithWebClip:(id)arg1;
+- (void)createShortcutWithRecordData:(id)arg1 name:(id)arg2 shortcutSource:(id)arg3 accessSpecifier:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)requestDataMigrationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)requestShortcutsSpotlightFullReindex;
 - (void)deleteSleepWorkflowWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -36,7 +37,7 @@
 - (void)addDefaultShortcutsWithAccessSpecifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getDefaultShortcutEligibilityWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getValueForDescriptor:(id)arg1 resultClass:(Class)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)getResultsForWorkflowQuery:(id)arg1 resultClass:(Class)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)getResultsForQuery:(id)arg1 resultClass:(Class)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)updateLSDatabaseAnchors;
 - (_Bool)lsDatabaseChangedSinceLastCheck;
 - (void)deleteSuggestionsFromApps:(id)arg1;
@@ -44,7 +45,7 @@
 - (void)getShortcutSuggestionsForAllAppsWithLimit:(unsigned long long)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getShortcutSuggestionsForAppWithBundleIdentifier:(id)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setShortcutSuggestions:(id)arg1 forAppWithBundleIdentifier:(id)arg2 accessSpecifier:(id)arg3;
-- (void)drawGlyphs:(id)arg1 withBackgroundColorValues:(id)arg2 intoContext:(id)arg3;
+- (void)drawGlyphs:(id)arg1 withBackgroundColorValues:(id)arg2 padding:(double)arg3 intoContext:(id)arg4;
 @property(readonly, nonatomic) HMHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 - (_Bool)isPhraseUsable:(id)arg1 inDatabase:(id)arg2 error:(id *)arg3;
 - (_Bool)phraseHasHomeKitConflict:(id)arg1;

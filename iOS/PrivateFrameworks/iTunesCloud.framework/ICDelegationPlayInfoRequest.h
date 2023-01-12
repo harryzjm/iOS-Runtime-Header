@@ -10,6 +10,7 @@
 
 @class NSArray, NSData, NSMutableDictionary, NSString;
 
+__attribute__((visibility("hidden")))
 @interface ICDelegationPlayInfoRequest : NSObject <NSCopying>
 {
     NSString *_playerDeviceGUID;

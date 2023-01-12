@@ -26,6 +26,7 @@
 @property(readonly, nonatomic) NSMutableDictionary *alarmStatesByAlarmID; // @synthesize alarmStatesByAlarmID=_alarmStatesByAlarmID;
 @property(readonly, nonatomic) id <MTAlarmStorage> alarmStorage; // @synthesize alarmStorage=_alarmStorage;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
+- (void)writeAlarmEventToBiome:(id)arg1 ofType:(unsigned long long)arg2;
 - (id)metadataForAlarm:(id)arg1;
 - (void)_queue_writeAlarmToKnowledgeStore:(id)arg1 category:(id)arg2;
 - (void)writeAlarmToKnowledgeStore:(id)arg1 alarmEvent:(unsigned long long)arg2;

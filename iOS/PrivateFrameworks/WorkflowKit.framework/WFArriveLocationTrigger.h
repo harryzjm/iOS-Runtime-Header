@@ -8,6 +8,8 @@
 {
 }
 
++ (long long)triggerBacking;
++ (id)displayGlyph;
 + (id)localizedDisplayExplanation;
 + (id)localizedDisplayName;
 - (id)localizedPastTenseDescription;

@@ -28,7 +28,7 @@
 @property(readonly, nonatomic) HKSPStateMachineState *currentState; // @synthesize currentState=_currentState;
 @property(readonly, copy) NSString *description;
 - (id)stateMachineName;
-- (id)stateMachineLog;
+- (unsigned long long)loggingCategory;
 - (void)notifyDelegateWithBlock:(CDUnknownBlockType)arg1;
 - (void)updateState;
 - (_Bool)enterState:(id)arg1 context:(id)arg2;

@@ -19,6 +19,7 @@
 - (_Bool)isSupported:(unsigned long long)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithLastSupportedMessageType:(unsigned long long)arg1;
+- (id)initWithAllSupportedMessages;
 
 @end
 

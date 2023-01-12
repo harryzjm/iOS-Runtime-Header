@@ -9,7 +9,7 @@
 @interface SKCropNode
 {
     SKNode *_mask;
-    struct SKCCropNode *_skcCropNode;
+    void *_skcCropNode;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -23,7 +23,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)_didMakeBackingNode;
-- (struct SKCNode *)_makeBackingNode;
+- (void *)_makeBackingNode;
 
 @end
 

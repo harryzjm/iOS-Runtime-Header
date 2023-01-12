@@ -13,7 +13,7 @@
 
 - (void).cxx_destruct;
 @property(retain) TSWPColumn *textColumn; // @synthesize textColumn=_textColumn;
-- (id)initWithStateOfTagger:(id)arg1 textColumn:(id)arg2;
+- (id)initWithStateOfTagger:(id)arg1 textColumn:(id)arg2 limitSelection:(id)arg3;
 
 @end
 

@@ -4,14 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class PGGraphLocationCityNodeCollection;
+
 @interface PGGraphLocationCityNode
 {
 }
 
++ (id)countyOfCity;
++ (id)stateOfCity;
++ (id)countryOfCity;
++ (id)momentInCity;
++ (id)addressOfCity;
 + (id)filter;
+- (unsigned long long)featureType;
+@property(readonly, nonatomic) PGGraphLocationCityNodeCollection *collection;
+- (Class)collectionClass;
 - (id)label;
-- (id)initWithLabel:(id)arg1;
-- (id)init;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3 properties:(id)arg4;
 
 @end
 

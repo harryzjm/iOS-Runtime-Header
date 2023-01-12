@@ -13,10 +13,12 @@
 @interface SFURLImage <SFURLImage, NSSecureCoding, NSCopying>
 {
     NSURL *_urlValue;
+    NSURL *_darkUrlValue;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSURL *darkUrlValue; // @synthesize darkUrlValue=_darkUrlValue;
 @property(copy, nonatomic) NSURL *urlValue; // @synthesize urlValue=_urlValue;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
@@ -30,6 +32,7 @@
 - (id)initWithProtobuf:(id)arg1;
 
 // Remaining properties
+@property(copy, nonatomic) NSString *accessibilityLabel;
 @property(copy, nonatomic) NSString *contentType;
 @property(nonatomic) double cornerRadius;
 @property(nonatomic) int cornerRoundingStyle;

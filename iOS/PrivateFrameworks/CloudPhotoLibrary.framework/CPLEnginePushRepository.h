@@ -47,12 +47,15 @@
 - (_Bool)discardChangeWithScopedIdentifier:(id)arg1 error:(id *)arg2;
 - (_Bool)hasSomeChangeWithScopedIdentifier:(id)arg1;
 - (_Bool)reinjectChange:(id)arg1 dequeueOrder:(long long)arg2 overwrittenRecord:(_Bool *)arg3 error:(id *)arg4;
-- (id)_propertiesForChange:(id)arg1;
 - (_Bool)storeChange:(id)arg1 uploadIdentifier:(id)arg2 error:(id *)arg3;
 - (_Bool)hasChangesWithScopeFilter:(id)arg1;
 - (_Bool)hasChangesInScopeWithIdentifier:(id)arg1;
 - (unsigned long long)countOfChangesInScopeWithIdentifier:(id)arg1;
 - (_Bool)deleteRecordsForScopeIndex:(long long)arg1 maxCount:(long long)arg2 deletedCount:(long long *)arg3 error:(id *)arg4;
+- (void)notePushRepositoryStoredSomeChanges;
+- (id)_outgoingResources;
+@property(readonly, nonatomic) _Bool shouldManageExtractedBatch;
+@property(readonly, nonatomic) _Bool shouldManageOutgoingResources;
 - (unsigned long long)scopeType;
 - (id)initWithEngineStore:(id)arg1 name:(id)arg2;
 

@@ -4,13 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class PXGShader, PXGUniform;
+
 @interface PXGEdgeStretchEffect
 {
+    PXGShader *_shader;
+    PXGUniform *_sampleRect;
 }
 
-- (int)shaderFlags;
-- (unsigned short)type;
-- (id)initWithMetadataStore:(id)arg1;
+- (void).cxx_destruct;
+- (id)shader;
+@property(nonatomic) struct CGRect sampleRect;
+- (id)initWithEntityManager:(id)arg1;
 
 @end
 

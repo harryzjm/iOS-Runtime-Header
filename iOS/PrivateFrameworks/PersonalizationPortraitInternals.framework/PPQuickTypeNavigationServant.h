@@ -30,15 +30,8 @@
 - (void)navigationListener:(id)arg1 didUpdateGuidanceState:(id)arg2;
 - (void)navigationListener:(id)arg1 didUpdateCurrentRoadName:(id)arg2;
 - (void)navigationListener:(id)arg1 didUpdateRouteSummary:(id)arg2;
-- (void)_makeNavRequests;
-- (void)_stopListeningToNavigationUpdate;
-- (_Bool)_waitForSummary;
-- (_Bool)_waitForStreet;
-- (_Bool)_waitForState;
 - (id)quickTypeItemsWithQuery:(id)arg1 limit:(unsigned long long)arg2 explanationSet:(id)arg3;
 - (void)dealloc;
-- (void)_warmUpFormatters;
-- (void)_initializeNavigationListener;
 - (id)init;
 
 // Remaining properties

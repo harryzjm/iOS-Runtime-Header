@@ -15,9 +15,11 @@
     double _appLaunchTimestamp;
     double _totalInviteReceivedTimestamp;
     double _messageInviteProcessingTimestamp;
+    double _currentRealtimeMatchPersistenceTimestamp;
 }
 
 + (id)reporter;
+@property(nonatomic) double currentRealtimeMatchPersistenceTimestamp; // @synthesize currentRealtimeMatchPersistenceTimestamp=_currentRealtimeMatchPersistenceTimestamp;
 @property(nonatomic) double messageInviteProcessingTimestamp; // @synthesize messageInviteProcessingTimestamp=_messageInviteProcessingTimestamp;
 @property(nonatomic) double totalInviteReceivedTimestamp; // @synthesize totalInviteReceivedTimestamp=_totalInviteReceivedTimestamp;
 @property(nonatomic) double appLaunchTimestamp; // @synthesize appLaunchTimestamp=_appLaunchTimestamp;
@@ -25,7 +27,12 @@
 @property(nonatomic) double connectingDevicesTimestamp; // @synthesize connectingDevicesTimestamp=_connectingDevicesTimestamp;
 @property(nonatomic) double inviteeUILaunchTimestamp; // @synthesize inviteeUILaunchTimestamp=_inviteeUILaunchTimestamp;
 @property(nonatomic) double authenticateResponseTimestamp; // @synthesize authenticateResponseTimestamp=_authenticateResponseTimestamp;
-- (void)reportDurationForEventType:(id)arg1 withStartTimestamp:(double)arg2;
+- (void)reportPlayerAuthenticationFailure:(id)arg1;
+- (void)reportDurationForEvent:(id)arg1 eventType:(id)arg2 withStartTimestamp:(double)arg3;
+- (void)reportOnboardingEventForType:(id)arg1 withStartTimestamp:(double)arg2;
+- (void)reportScreenTimeEventForType:(id)arg1 withStartTimestamp:(double)arg2;
+- (void)reportCurrentRealtimeMatchPersistenceDuration;
+- (void)recordCurrentRealtimeMatchPersistenceTimestamp;
 - (void)reportTotalInviteReceivedDuration;
 - (void)reportAppLaunchDuration;
 - (void)recordAppLaunchAndTotalTimestamp;
@@ -40,11 +47,15 @@
 - (void)reportAuthenticateResponseDuration;
 - (void)recordAuthenticateResponseTimestamp;
 - (void)reportTournamentAnalyticsWithDomain:(id)arg1 type:(id)arg2 tournamentType:(id)arg3 replayCount:(id)arg4 friendCount:(id)arg5 tournamentID:(id)arg6 bundleID:(id)arg7 inviteeCount:(id)arg8;
-- (_Bool)isTimeSpanValid:(double)arg1;
+- (_Bool)isTimeSpanValid:(double)arg1 maxDuration:(double)arg2;
+- (void)reportEvent:(id)arg1 reportable:(id)arg2;
+- (void)reportEvent:(id)arg1 target:(id)arg2 keyPath:(id)arg3;
 - (void)reportEvent:(id)arg1 type:(id)arg2 scoreRank:(id)arg3;
-- (void)reportEvent:(id)arg1 type:(id)arg2 count:(id)arg3;
+- (void)reportEvent:(id)arg1 type:(id)arg2 inboxFriendRequestCount:(long long)arg3;
+- (void)reportEvent:(id)arg1 type:(id)arg2 count:(long long)arg3;
 - (void)reportEvent:(id)arg1 type:(id)arg2 friendsPlayedThisGame:(id)arg3;
 - (void)reportEvent:(id)arg1 type:(id)arg2 payload:(id)arg3;
+- (void)reportEvent:(id)arg1 type:(id)arg2 adamID:(id)arg3;
 - (void)reportEvent:(id)arg1 type:(id)arg2 bundleID:(id)arg3;
 - (void)reportEvent:(id)arg1 type:(id)arg2 startTime:(id)arg3;
 - (void)reportEvent:(id)arg1 type:(id)arg2;

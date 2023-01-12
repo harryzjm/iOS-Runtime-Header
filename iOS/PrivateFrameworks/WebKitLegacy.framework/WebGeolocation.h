@@ -15,7 +15,7 @@
 
 - (void)dealloc;
 - (void)setIsAllowed:(_Bool)arg1;
-- (id)_initWithWebCoreGeolocation:(struct Geolocation *)arg1;
+- (id)_initWithWebCoreGeolocation:(void *)arg1;
 
 @end
 

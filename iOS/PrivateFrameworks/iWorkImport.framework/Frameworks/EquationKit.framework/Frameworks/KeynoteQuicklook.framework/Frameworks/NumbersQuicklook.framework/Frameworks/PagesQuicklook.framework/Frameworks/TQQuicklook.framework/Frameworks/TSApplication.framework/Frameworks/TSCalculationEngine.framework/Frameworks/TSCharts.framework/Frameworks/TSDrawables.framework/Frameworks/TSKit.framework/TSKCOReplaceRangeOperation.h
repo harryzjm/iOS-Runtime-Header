@@ -8,7 +8,7 @@
 
 @interface TSKCOReplaceRangeOperation <TSKCORangeOperation>
 {
-    vector_b5e32e34 _rangeVector;
+    struct vector<_NSRange, std::allocator<_NSRange>> _rangeVector;
     _Bool _preserveLowerPriorityLocation;
     unsigned long long _insertLength;
 }
@@ -17,17 +17,17 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool preserveLowerPriorityLocation; // @synthesize preserveLowerPriorityLocation=_preserveLowerPriorityLocation;
 @property(readonly, nonatomic) unsigned long long insertLength; // @synthesize insertLength=_insertLength;
-- (void)saveToArchiver:(id)arg1 message:(struct Operation *)arg2;
-- (id)initWithUnarchiver:(id)arg1 message:(const struct Operation *)arg2;
+- (void)saveToArchiver:(id)arg1 message:(void *)arg2;
+- (id)initWithUnarchiver:(id)arg1 message:(const void *)arg2;
 - (shared_ptr_f167ad79)newTransformableOperation;
 - (id)toString;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-@property(readonly, nonatomic) const vector_b5e32e34 *rangeVector;
+@property(readonly, nonatomic) const void *rangeVector;
 - (id)operationWithNewNoop:(_Bool)arg1;
-- (id)initWithAddress:(const vector_4dc5f307 *)arg1 rangeVector:(const vector_b5e32e34 *)arg2 insertLength:(unsigned long long)arg3;
-- (id)initWithAddress:(const vector_4dc5f307 *)arg1 rangeVector:(const vector_b5e32e34 *)arg2 insertLength:(unsigned long long)arg3 noop:(_Bool)arg4;
-- (id)initWithAddress:(const vector_4dc5f307 *)arg1 rangeVector:(const vector_b5e32e34 *)arg2 insertLength:(unsigned long long)arg3 preserveLowerPriorityLocation:(_Bool)arg4 noop:(_Bool)arg5;
+- (id)initWithAddress:(const void *)arg1 rangeVector:(const void *)arg2 insertLength:(unsigned long long)arg3;
+- (id)initWithAddress:(const void *)arg1 rangeVector:(const void *)arg2 insertLength:(unsigned long long)arg3 noop:(_Bool)arg4;
+- (id)initWithAddress:(const void *)arg1 rangeVector:(const void *)arg2 insertLength:(unsigned long long)arg3 preserveLowerPriorityLocation:(_Bool)arg4 noop:(_Bool)arg5;
 
 @end
 

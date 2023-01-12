@@ -36,6 +36,7 @@
     struct UIEdgeInsets _margin;
     struct UIEdgeInsets _padding;
     struct UIEdgeInsets _focusMargin;
+    struct CGAffineTransform _focusTransform;
 }
 
 + (id)layoutWithLayout:(id)arg1 element:(id)arg2;
@@ -44,6 +45,7 @@
 @property(copy, nonatomic) NSString *group; // @synthesize group=_group;
 @property(copy, nonatomic) NSString *progressStyle; // @synthesize progressStyle=_progressStyle;
 @property(nonatomic) double interitemSpacing; // @synthesize interitemSpacing=_interitemSpacing;
+@property(nonatomic) struct CGAffineTransform focusTransform; // @synthesize focusTransform=_focusTransform;
 @property(copy, nonatomic) NSString *highlightStyle; // @synthesize highlightStyle=_highlightStyle;
 @property(nonatomic) _Bool centerGrowth; // @synthesize centerGrowth=_centerGrowth;
 @property(nonatomic) _Bool acceptsFocus; // @synthesize acceptsFocus=_acceptsFocus;
@@ -67,6 +69,7 @@
 @property(retain, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 @property(nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
 @property(nonatomic) struct UIEdgeInsets margin; // @synthesize margin=_margin;
+- (id)init;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (CDUnknownBlockType)tv_layoutPropertyGetterForStyle:(id)arg1;
 - (CDUnknownBlockType)tv_layoutPropertySetterForStyle:(id)arg1;

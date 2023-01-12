@@ -5,22 +5,26 @@
 //
 
 #import <PhotosUICore/CPLStatusDelegate-Protocol.h>
-#import <PhotosUICore/PXAssetCountObserverDelegate-Protocol.h>
 #import <PhotosUICore/PXCPLStatusProvider-Protocol.h>
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
+#import <PhotosUICore/PXFetchResultCountObserverDelegate-Protocol.h>
 
-@class CPLStatus, NSObject, NSString, PHPhotoLibrary, PLPhotoLibrary, PXAssetCountObserver, PXCPLStatus, PXCPLSyncActivity, PXCloudQuotaOfferProvider;
+@class CPLStatus, NSObject, NSProgress, NSString, PHPhotoLibrary, PLPhotoLibrary, PXCPLStatus, PXCPLSyncActivity, PXCloudQuotaOfferProvider, PXCloudQuotaPremiumOfferProvider, PXFetchResultCountObserver;
 @protocol OS_dispatch_queue;
 
-@interface PXCPLStatusProvider <CPLStatusDelegate, PXAssetCountObserverDelegate, PXChangeObserver, PXCPLStatusProvider>
+@interface PXCPLStatusProvider <CPLStatusDelegate, PXFetchResultCountObserverDelegate, PXChangeObserver, PXCPLStatusProvider>
 {
     PXCPLStatus *_status;
     NSObject<OS_dispatch_queue> *_serialUpdateQueue;
     CPLStatus *_cplStatus;
     PXCPLSyncActivity *_syncActivity;
-    PXAssetCountObserver *_numberOfReferencedItemsObserver;
+    unsigned long long _syncProgressState;
+    id _syncProgressSubscriber;
+    NSProgress *_syncProgress;
+    PXFetchResultCountObserver *_numberOfReferencedItemsObserver;
     unsigned long long _numberOfReferencedItems;
     PXCloudQuotaOfferProvider *_offerProvider;
+    PXCloudQuotaPremiumOfferProvider *_premiumOfferProvider;
     _Bool _hasCloudQuotaOffer;
     _Bool _cloudQuotaOfferHasAssetCounts;
     PHPhotoLibrary *_ph_photoLibrary;
@@ -34,12 +38,12 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) PXCPLStatus *status; // @synthesize status=_status;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
-- (void)assetCountObserver:(id)arg1 didChangeNumberOfAssets:(long long)arg2;
+- (void)fetchResultCountObserver:(id)arg1 didChangeFetchResultCount:(long long)arg2;
 - (void)statusDidChange:(id)arg1;
-- (void)_powerStateDidChange:(id)arg1;
 - (void)_scheduleUpdateForType:(unsigned long long)arg1;
 - (void)_schedulePendingUpdates;
 - (void)_performUpdate;
+- (double)nextOverrideResumeTimeInterval;
 - (id)_updateStatus:(id)arg1 requestedTypes:(unsigned long long)arg2;
 - (void)_setStatus:(id)arg1 producedForUpdateType:(unsigned long long)arg2;
 - (id)init;

@@ -10,6 +10,13 @@
 {
 }
 
++ (void)debugRenderLayoutRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2 withColor:(id)arg3 alpha:(double)arg4 fillRect:(_Bool)arg5;
++ (struct CGPoint)outerEndOfSpokeWithUnitCircleOffsetAngleInDegrees:(double)arg1 chartBodySize:(struct CGSize)arg2 chartInfo:(id)arg3;
++ (struct CGAffineTransform)spokeTransformWithUnitCircleOffsetAngleInDegrees:(double)arg1 chartBodySize:(struct CGSize)arg2 chartInfo:(id)arg3;
++ (struct CGPath *)newRegularPolygonPathWithEdges:(unsigned long long)arg1 origin:(struct CGPoint)arg2 size:(struct CGSize)arg3 rotation:(double)arg4;
++ (struct CGPath *)newPolarAxisShapePathWithRect:(struct CGRect)arg1 unitSpaceValue:(double)arg2 numberOfValues:(unsigned long long)arg3 elliptical:(_Bool)arg4 rotation:(double)arg5;
++ (struct CGPath *)p_regularPolygonOrLinePathWithEdges:(unsigned long long)arg1 sourceRect:(struct CGRect)arg2;
++ (_Bool)strokeEnabledForRenderingForAxis:(id)arg1 chart:(id)arg2;
 + (struct CGSize)maxSizeWithCount:(unsigned long long)arg1 initialSize:(struct CGSize)arg2 sizeGeneratorBlock:(CDUnknownBlockType)arg3;
 + (struct CGColor *)subSelectionKnobStrokeColor;
 + (struct CGColor *)subSelectionKnobFillColor;
@@ -37,7 +44,6 @@
 + (struct CGPath *)newUnitPathForSymbol:(int)arg1 symbolSize:(double)arg2 stroke:(id)arg3;
 + (_Bool)centerPointForSeries:(id)arg1 groupIndex:(unsigned long long)arg2 frame:(struct CGRect)arg3 point:(struct CGPoint *)arg4 nullsUseIntercept:(_Bool)arg5;
 + (_Bool)centerPointForSeries:(id)arg1 groupIndex:(unsigned long long)arg2 frame:(struct CGRect)arg3 point:(struct CGPoint *)arg4;
-+ (void)drawNullFillSwatchInContext:(struct CGContext *)arg1 frame:(struct CGRect)arg2;
 + (void)drawImageFill:(id)arg1 inContext:(struct CGContext *)arg2 path:(struct CGPath *)arg3 withinBounds:(struct CGRect)arg4;
 + (void)drawFill:(id)arg1 inContext:(struct CGContext *)arg2 path:(struct CGPath *)arg3;
 + (void)drawFill:(id)arg1 inContext:(struct CGContext *)arg2 frame:(struct CGRect)arg3;

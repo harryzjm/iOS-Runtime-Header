@@ -8,7 +8,7 @@
 
 @interface _EAREndpointer : NSObject
 {
-    struct unique_ptr<quasar::HybridEndpointer, std::__1::default_delete<quasar::HybridEndpointer>> _endpointer;
+    struct unique_ptr<quasar::HybridEndpointer, std::default_delete<quasar::HybridEndpointer>> _endpointer;
 }
 
 + (void)initialize;

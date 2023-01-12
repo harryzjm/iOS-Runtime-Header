@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class MPAVRoute, NSMutableSet, NSString, UIColor, UIFont, UILabel;
+@class BSUIEmojiLabelView, MPAVRoute, NSMutableSet, NSString, UIColor, UIFont, UILabel;
 
 @interface MPRouteLabel : UIView
 {
@@ -26,7 +26,7 @@
     NSString *_text;
     long long _truncationMode;
     MPAVRoute *_route;
-    UILabel *_titleLabel;
+    BSUIEmojiLabelView *_contentView;
     UIColor *_textColor;
     UIFont *_font;
     long long _textAlignment;
@@ -36,7 +36,7 @@
 @property(nonatomic) long long textAlignment; // @synthesize textAlignment=_textAlignment;
 @property(retain, nonatomic) UIFont *font; // @synthesize font=_font;
 @property(retain, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
-@property(readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property(retain, nonatomic) BSUIEmojiLabelView *contentView; // @synthesize contentView=_contentView;
 @property(retain, nonatomic) MPAVRoute *route; // @synthesize route=_route;
 @property(nonatomic) _Bool displayAsSiriSuggestion; // @synthesize displayAsSiriSuggestion=_displayAsSiriSuggestion;
 @property(nonatomic) _Bool forcesUppercaseText; // @synthesize forcesUppercaseText=_forcesUppercaseText;
@@ -64,6 +64,7 @@
 - (struct CGSize)intrinsicContentSize;
 @property(nonatomic, setter=_setTextColorFollowsTintColor:) _Bool _textColorFollowsTintColor;
 @property(readonly, nonatomic) double _baselineOffsetFromBottom;
+@property(readonly, nonatomic) UILabel *titleLabel;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 

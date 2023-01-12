@@ -8,6 +8,7 @@
 @protocol OS_xpc_object;
 
 @protocol SWCXPCServer
+- (void)setAdditionalServiceDetailsForApplicationIdentifiers:(NSSet *)arg1 usingContentsOfDictionary:(NSDictionary *)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
 - (void)setDeveloperModeEnabled:(_Bool)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
 - (void)getDeveloperModeEnabledWithCompletionHandler:(void (^)(NSNumber *, NSError *))arg1;
 - (void)getTrackingDomains:(NSSet *)arg1 completionHandler:(void (^)(NSDictionary *))arg2;

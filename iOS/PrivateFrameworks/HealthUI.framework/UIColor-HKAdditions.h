@@ -66,6 +66,12 @@
 + (id)hk_activityCardGrayColor;
 + (id)hk_activityCardGradientBottomColor;
 + (id)hk_activityCardGradientTopColor;
++ (id)hk_populationChartTextColor;
++ (id)hk_populationChartLevelBackgroundColor;
++ (id)hk_populationChartSeriesColor;
++ (id)hk_chartOverlayPillDarkColor;
++ (id)hk_chartOverlayPillLightColor;
++ (id)hk_stackedBarSeriesUnselectedColor;
 + (id)hk_chartPointLabelBackgroundColor;
 + (id)hk_chartOverlayBackgroundColor;
 + (id)hk_chartLollipopStickColor;
@@ -117,6 +123,8 @@
 + (id)hk_activityKeyColor;
 + (id)hk_heartKeyColor;
 + (id)hk_vitalsKeyColor;
++ (id)hk_alertHeaderForegroundColor;
++ (id)hk_alertHeaderBackgroundColor;
 + (id)hk_appInteractionDisabledColor;
 + (id)hk_appErrorColor;
 + (id)hk_appKeyColor;

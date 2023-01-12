@@ -8,19 +8,24 @@
 
 #import <HomeKitDaemon/HMDBackingStoreModelBackedObjectProtocol-Protocol.h>
 #import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HMDDeviceCapabilitiesModel, NSString, NSUUID;
 
-@interface HMDDeviceCapabilities : HMFObject <HMDBackingStoreObjectProtocol, HMDBackingStoreModelBackedObjectProtocol, NSCopying, NSSecureCoding>
+@interface HMDDeviceCapabilities : HMFObject <HMDBackingStoreObjectProtocol, HMDBackingStoreModelBackedObjectProtocol, HMFLogging, NSCopying, NSSecureCoding>
 {
+    struct os_unfair_lock_s _lock;
     HMDDeviceCapabilitiesModel *_objectModel;
 }
 
 + (id)deviceCapabilitiesModelIdentifierWithParentIdentifier:(id)arg1;
 + (_Bool)supportsSecureCoding;
 + (unsigned long long)supportedPairingCapabilities;
++ (_Bool)supportsAudioDestinationCreation;
++ (_Bool)supportsAudioDestinationControllerCreation;
++ (id)logCategory;
 + (id)deviceCapabilities;
 + (_Bool)supportsStereoPairingV2;
 + (_Bool)supportsStereoPairingV1;
@@ -30,12 +35,15 @@
 + (_Bool)supportsBackboard;
 + (_Bool)supportsSyncingToSharedUsers;
 + (_Bool)supportsAddingAccessory;
++ (_Bool)supportsBidirectionalAudioForCameraStreaming;
 + (_Bool)supportsReceivingRemoteCameraStream;
 + (_Bool)supportsDismissUserNotificationAndDialog;
 + (_Bool)supportsUserNotifications;
 + (_Bool)supportsCameraSnapshotRequestViaRelay;
 + (_Bool)supportsTargetControllerAutoConfigure;
 + (_Bool)supportsRemoteAccess;
++ (_Bool)requiresHomePodPairing;
++ (_Bool)isHomePodMini;
 + (_Bool)isAppleMediaAccessory;
 + (_Bool)supportsCustomerReset;
 + (_Bool)supportsDeviceLock;
@@ -44,7 +52,6 @@
 + (_Bool)supportsHomeApp;
 + (_Bool)supportsLocalization;
 - (void).cxx_destruct;
-@property(retain, nonatomic) HMDDeviceCapabilitiesModel *objectModel; // @synthesize objectModel=_objectModel;
 - (id)modelBackedObjects;
 - (id)backingStoreObjectsWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
@@ -56,13 +63,28 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly, nonatomic) _Bool supportsCHIP;
+@property(readonly, nonatomic) _Bool supportsCameraPackageDetection;
+@property(readonly, nonatomic) _Bool supportsLockNotificationContext;
+@property(readonly, nonatomic) _Bool supportsWakeOnLAN;
+@property(readonly, nonatomic) _Bool supportsThreadBorderRouter;
+@property(readonly) _Bool supportsPreferredMediaUser;
 @property(readonly) _Bool supportsThirdPartyMusic;
+@property(readonly) _Bool supportsHomeHub;
+@property(readonly) _Bool supportsSiriEndpointSetup;
 @property(readonly) _Bool supportsDoorbellChime;
+@property(readonly, nonatomic) _Bool supportsAnnounce;
 @property(readonly, nonatomic) _Bool supportsCameraRecordingReachabilityNotifications;
 @property(readonly, nonatomic) _Bool supportsIDSActivityMonitorPresence;
+@property(readonly, nonatomic) _Bool supportsAccessCodes;
+@property(readonly, nonatomic) _Bool supportsWalletKey;
 @property(readonly, nonatomic) _Bool supportsNaturalLighting;
 @property(readonly, nonatomic) _Bool supportsFaceClassification;
+@property(readonly, nonatomic) _Bool supportsCoordinationDoorbellChime;
+@property(readonly, nonatomic) _Bool supportsMusicAlarm;
 @property(readonly, nonatomic) _Bool supportsCameraActivityZones;
+@property(readonly, nonatomic) _Bool supportsResidentFirmwareUpdate;
+@property(readonly, nonatomic) _Bool supportsFirmwareUpdate;
 @property(readonly, nonatomic) _Bool supportsCameraSignificantEventNotifications;
 @property(readonly, nonatomic) _Bool supportsMediaActions;
 @property(readonly, nonatomic) _Bool supportsShortcutActions;
@@ -83,9 +105,12 @@
 @property(readonly, nonatomic) _Bool supportsDeviceSetup;
 @property(readonly, nonatomic) _Bool supportsKeychainSync;
 - (id)attributeDescriptions;
+- (id)shortDescription;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (id)initWithObjectModel:(id)arg1;
+- (id)initWithProductInfo:(id)arg1 homekitVersion:(id)arg2 overrideInfo:(id)arg3 mobileGestaltClient:(id)arg4;
+- (id)initWithProductInfo:(id)arg1 homekitVersion:(id)arg2 overrideInfo:(id)arg3;
 - (id)initWithProductInfo:(id)arg1 homekitVersion:(id)arg2;
 - (id)initWithProductInfo:(id)arg1;
 - (id)init;

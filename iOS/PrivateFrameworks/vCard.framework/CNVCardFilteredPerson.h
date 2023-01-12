@@ -22,6 +22,7 @@
 @property(readonly, nonatomic) CNVCardFilteredPersonScope *scope; // @synthesize scope=_scope;
 @property(readonly, nonatomic) id <CNVCardPerson> person; // @synthesize person=_person;
 @property(readonly) NSArray *unknownProperties;
+@property(readonly) NSData *memojiMetadata;
 @property(readonly) NSData *imageHash;
 @property(readonly) NSString *imageType;
 @property(readonly) int downtimeWhitelistAuthorization;

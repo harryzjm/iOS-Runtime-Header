@@ -9,22 +9,29 @@
 #import <VectorKit/VKCustomFeatureDataSourceObserver-Protocol.h>
 
 @class NSString;
+@protocol VKCustomFeatureDataSource;
 
 __attribute__((visibility("hidden")))
 @interface VKCustomFeatureDataSourceObserverThunk : NSObject <VKCustomFeatureDataSourceObserver>
 {
-    struct LabelCustomFeatureProvider *_observer;
-    struct _retain_ptr<id<VKCustomFeatureDataSource>, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> _dataSource;
+    void *_observer;
+    struct _retain_ptr<id<VKCustomFeatureDataSource>, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> {
+        CDUnknownFunctionPointerType *_vptr$_retain_ptr;
+        id <VKCustomFeatureDataSource> _obj;
+        struct _retain_objc _retain;
+        struct _release_objc _release;
+    } _dataSource;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)dataSource:(id)arg1 didChangeSceneID:(unsigned char)arg2;
 - (void)dataSource:(id)arg1 didChangeSceneState:(unsigned char)arg2;
+- (void)globalFeaturesDidChangeForDataSource:(id)arg1;
 - (void)dataSource:(id)arg1 featuresDidChangeForRect:(CDStruct_02837cd9)arg2;
 - (void)clearObserver;
 - (void)dealloc;
-- (id)initWithDataSource:(id)arg1 observer:(struct LabelCustomFeatureProvider *)arg2;
+- (id)initWithDataSource:(id)arg1 observer:(void *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -8,10 +8,13 @@
 
 #import <WorkflowEditor/UIContentConfiguration-Protocol.h>
 
-@class NSString, UIColor, UIFont, UIImage;
+@class NSString, UIColor, UIFont, UIImage, UIViewController, WFIcon;
+@protocol WFParameterValuePickerTableViewCellDelegate;
 
 @interface WFParameterValuePickerTableViewCellConfiguration : NSObject <UIContentConfiguration>
 {
+    _Bool _containedInState;
+    _Bool _usesToggleForSelection;
     _Bool _forceImageScaling;
     NSString *_text;
     NSString *_secondaryText;
@@ -20,15 +23,23 @@
     UIFont *_textFont;
     UIFont *_secondaryTextFont;
     UIImage *_image;
+    WFIcon *_icon;
     double _cornerRadius;
+    UIViewController *_parentViewController;
+    id <WFParameterValuePickerTableViewCellDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <WFParameterValuePickerTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak UIViewController *parentViewController; // @synthesize parentViewController=_parentViewController;
 @property(nonatomic) _Bool forceImageScaling; // @synthesize forceImageScaling=_forceImageScaling;
 @property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
+@property(retain, nonatomic) WFIcon *icon; // @synthesize icon=_icon;
 @property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
 @property(retain, nonatomic) UIFont *secondaryTextFont; // @synthesize secondaryTextFont=_secondaryTextFont;
 @property(retain, nonatomic) UIFont *textFont; // @synthesize textFont=_textFont;
+@property(nonatomic) _Bool usesToggleForSelection; // @synthesize usesToggleForSelection=_usesToggleForSelection;
+@property(nonatomic, getter=isContainedInState) _Bool containedInState; // @synthesize containedInState=_containedInState;
 @property(copy, nonatomic) UIColor *secondaryTextColor; // @synthesize secondaryTextColor=_secondaryTextColor;
 @property(copy, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
 @property(copy, nonatomic) NSString *secondaryText; // @synthesize secondaryText=_secondaryText;

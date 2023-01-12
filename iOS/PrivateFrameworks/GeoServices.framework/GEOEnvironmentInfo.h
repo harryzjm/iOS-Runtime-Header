@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEOResourceManifestDownload, NSData, NSDictionary, NSError, NSString;
+@class GEOResourceManifestDownload, NSData, NSDictionary, NSError, NSProgress, NSString;
 
 @interface GEOEnvironmentInfo : NSObject
 {
@@ -18,9 +18,11 @@
     NSData *_manifestData;
     NSError *_lastLoadingError;
     NSDictionary *_originalDictionaryRepresentation;
+    NSProgress *_activationProgress;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSProgress *activationProgress; // @synthesize activationProgress=_activationProgress;
 @property(readonly, nonatomic) NSError *lastLoadingError; // @synthesize lastLoadingError=_lastLoadingError;
 @property(readonly, nonatomic) long long state; // @synthesize state=_state;
 @property(readonly, nonatomic) NSString *actualName; // @synthesize actualName=_actualName;
@@ -36,6 +38,7 @@
 @property(readonly, nonatomic) GEOResourceManifestDownload *resourceManifest;
 - (_Bool)isActive;
 - (void)makeActive;
+- (void)_performActivation;
 - (id)urlDictionary;
 - (id)initWithName:(id)arg1 displayName:(id)arg2 dictionaryRepresentation:(id)arg3;
 

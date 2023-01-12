@@ -4,43 +4,56 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PhotosGraph/PGAssetCollectionFeature-Protocol.h>
 #import <PhotosGraph/PGGraphLocalizable-Protocol.h>
 #import <PhotosGraph/PGGraphSynonymSupport-Protocol.h>
 
-@class NSArray, NSString, PVSceneTaxonomyNode;
+@class NSArray, NSString, PFSceneTaxonomyNode, PGGraphSceneNodeCollection;
 
-@interface PGGraphSceneNode <PGGraphLocalizable, PGGraphSynonymSupport>
+@interface PGGraphSceneNode <PGGraphLocalizable, PGGraphSynonymSupport, PGAssetCollectionFeature>
 {
-    unsigned int level:8;
+    unsigned int _level:8;
     NSString *_label;
-    unsigned long long _level;
-    PVSceneTaxonomyNode *_sceneTaxonomyNode;
+    PFSceneTaxonomyNode *_sceneTaxonomyNode;
 }
 
++ (id)momentOfSceneWithDominantSceneAssets;
++ (id)momentOfSceneWithSearchConfidenceAssets;
++ (id)momentOfSceneWithHighConfidenceAssets;
++ (id)momentOfReliableScene;
++ (id)momentOfScene;
 + (id)suggestionWhitelistedScenes;
 + (_Bool)isSceneSuitableForSuggestionsWithIdentifier:(unsigned int)arg1 confidence:(double)arg2;
 + (_Bool)isSceneSuitableForSuggestionsWithLabel:(id)arg1;
++ (id)filterForSceneNames:(id)arg1;
++ (id)filterForSceneName:(id)arg1;
 + (id)filter;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long level; // @synthesize level=_level;
 - (id)label;
-- (void)enumerateMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) NSString *featureIdentifier;
+@property(readonly, nonatomic) unsigned long long featureType;
+- (void)enumerateMomentEdgesAndNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)momentNodes;
 @property(readonly, nonatomic) NSArray *localizedSynonyms;
 @property(readonly, nonatomic) NSString *localizedName;
+@property(readonly, nonatomic) unsigned long long numberOfDominantSceneAssets;
+@property(readonly, nonatomic) unsigned long long numberOfSearchConfidenceAssets;
 @property(readonly, nonatomic) unsigned long long numberOfHighConfidenceAssets;
 @property(readonly, nonatomic) unsigned long long numberOfAssets;
-@property(readonly, nonatomic) PVSceneTaxonomyNode *sceneTaxonomyNode; // @synthesize sceneTaxonomyNode=_sceneTaxonomyNode;
+@property(readonly, nonatomic) PFSceneTaxonomyNode *sceneTaxonomyNode; // @synthesize sceneTaxonomyNode=_sceneTaxonomyNode;
 @property(readonly, nonatomic) _Bool isSuitableForSuggestions;
 @property(readonly, nonatomic) _Bool isIndexed;
 @property(readonly, nonatomic) unsigned int sceneIdentifier;
+@property(readonly, nonatomic) PGGraphSceneNodeCollection *collection;
 - (unsigned short)domain;
+@property(readonly, nonatomic) NSString *sceneName;
 @property(readonly, copy) NSString *description;
 - (id)propertyDictionary;
 - (_Bool)hasProperties:(id)arg1;
-- (void)setLocalProperties:(id)arg1;
-- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
-- (id)initWithLabel:(id)arg1;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3 properties:(id)arg4;
+- (id)initWithSceneName:(id)arg1 level:(unsigned long long)arg2;
+- (id)initWithLabel:(id)arg1 level:(unsigned long long)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

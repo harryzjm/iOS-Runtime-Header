@@ -19,7 +19,7 @@
     unsigned long long _inputNumParameters;
 }
 
-+ (id)classifierWithEspressoModelFile:(id)arg1 intercept:(_Bool)arg2;
++ (id)classifierWithEspressoModelFile:(id)arg1;
 + (unsigned long long)getNumParametersFromShape:(unsigned long long [10])arg1 rank:(unsigned long long)arg2;
 + (id)makeStringForShape:(unsigned long long [10])arg1;
 - (id)predict:(id)arg1;

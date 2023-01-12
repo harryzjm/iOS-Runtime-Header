@@ -22,7 +22,7 @@
 @property(nonatomic) _Bool predictedRecordRouteIsZLL; // @synthesize predictedRecordRouteIsZLL=_predictedRecordRouteIsZLL;
 @property(nonatomic, getter=_preparationStartTime, setter=_setPreparationStartTime:) double preparationStartTime; // @synthesize preparationStartTime=_preparationStartTime;
 @property(nonatomic) __weak id <SASHeaterDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)_updatePredictedRouteIsZLL;
+- (void)updatePredictedRouteIsZLL;
 - (void)_suggestPreheat;
 - (void)_cancelPreparation;
 - (void)cancelPreparation;

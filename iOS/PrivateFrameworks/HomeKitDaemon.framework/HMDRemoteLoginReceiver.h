@@ -17,6 +17,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) HMDRemoteLoginReceiverSession *loginSession; // @synthesize loginSession=_loginSession;
 - (void)didCompleteAuthentication:(id)arg1 response:(id)arg2;
+- (void)_handleACAccountDidChangeNotification:(id)arg1;
 - (void)_callCompletion:(id)arg1;
 - (void)_auditLoggedInAccountFor:(id)arg1;
 - (void)auditLoggedInAccountFor:(id)arg1;
@@ -26,6 +27,7 @@
 - (void)_handleProxyAuthenticationRequest:(id)arg1;
 - (void)_handleProxyDeviceRequest:(id)arg1;
 - (void)_handleCompanionAuthenticationRequest:(id)arg1;
+- (void)registerForNotifications;
 - (void)registerForMessages;
 - (void)configureWithWorkQueue:(id)arg1 messageDispatcher:(id)arg2;
 

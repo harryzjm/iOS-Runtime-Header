@@ -15,6 +15,12 @@
 + (id)ic_lightAttachmentBackground;
 + (id)ic_attachmentBackground;
 + (id)ic_imageFromColor:(id)arg1 size:(struct CGSize)arg2;
++ (id)ICUnknownInlineAttachmentTextColor;
++ (id)ICMentionUnconfirmedColor;
++ (id)ICMentionAllColor;
++ (id)ICHashtagColor;
++ (id)ICHashtagUnconfirmedColor;
++ (id)ICLearnMoreLinkColor;
 + (id)ICLearnMoreButtonPressedColor;
 + (id)ICLearnMoreButtonUnpressedColor;
 + (id)ICFindInNoteHighlightColor;
@@ -23,6 +29,7 @@
 + (id)ICGrayTodoButtonHighlightColor;
 + (id)ICGrayTodoButtonColor;
 + (id)ICSystemTintColor;
++ (id)ICSelectedAttachmentBrickHighlightColor;
 + (id)ICTintColor;
 + (id)ICGridBackgroundColor;
 + (id)ICLightBackgroundColor;
@@ -54,10 +61,12 @@
 + (id)icaxHueNameForValue:(double)arg1;
 + (id)ic_notesDefaultTextColor;
 + (id)ic_notesAppYellowColor;
+- (id)ic_colorBlendedWithColor:(id)arg1 fraction:(double)arg2;
+- (id)ic_colorBlendedWithColor:(id)arg1;
 @property(readonly, nonatomic) _Bool ic_isWhite;
 @property(readonly, nonatomic) _Bool ic_isBlack;
-- (id)ic_colorString;
-@property(readonly, nonatomic) UIColor *ic_resolvedColor;
+@property(readonly, copy, nonatomic) NSString *ic_colorString;
+@property(readonly, copy, nonatomic) UIColor *ic_resolvedColor;
 - (id)_icaxLightnessSaturationHueFormatString;
 - (id)_icaxSaturationHueFormatString;
 - (id)_icaxLightnessHueFormatString;
@@ -71,5 +80,8 @@
 - (double)icaxSaturation;
 - (double)icaxHue;
 @property(retain, nonatomic, setter=_icaxSetCachedApproximateColorDescription:) NSString *_icaxCachedApproximateColorDescription;
+
+// Remaining properties
+@property(readonly, nonatomic) double alphaComponent;
 @end
 

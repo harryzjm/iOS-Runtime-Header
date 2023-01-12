@@ -19,15 +19,22 @@
     int _intentType;
     NSString *_intentVerb;
     NSData *_interaction;
+    int _interactionDirection;
+    NSString *_itemID;
     NSString *_sourceId;
+    _Bool _donatedBySiri;
     struct {
         unsigned int absoluteTimestamp:1;
         unsigned int intentHandlingStatus:1;
         unsigned int intentType:1;
+        unsigned int interactionDirection:1;
+        unsigned int donatedBySiri:1;
     } _has;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool donatedBySiri; // @synthesize donatedBySiri=_donatedBySiri;
+@property(retain, nonatomic) NSString *itemID; // @synthesize itemID=_itemID;
 @property(retain, nonatomic) NSData *interaction; // @synthesize interaction=_interaction;
 @property(retain, nonatomic) NSString *intentVerb; // @synthesize intentVerb=_intentVerb;
 @property(retain, nonatomic) NSString *intentClass; // @synthesize intentClass=_intentClass;
@@ -43,6 +50,12 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsInteractionDirection:(id)arg1;
+- (id)interactionDirectionAsString:(int)arg1;
+@property(nonatomic) _Bool hasInteractionDirection;
+@property(nonatomic) int interactionDirection; // @synthesize interactionDirection=_interactionDirection;
+@property(nonatomic) _Bool hasDonatedBySiri;
+@property(readonly, nonatomic) _Bool hasItemID;
 @property(readonly, nonatomic) _Bool hasInteraction;
 - (int)StringAsIntentHandlingStatus:(id)arg1;
 - (id)intentHandlingStatusAsString:(int)arg1;

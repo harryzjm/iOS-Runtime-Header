@@ -6,36 +6,33 @@
 
 #import <NanoTimeKitCompanion/CLKMonochromeComplicationView-Protocol.h>
 
-@class CALayer, NSString, UIColor;
+@class NSString, NTKAnalogHandConfiguration, UIColor;
 @protocol CLKMonochromeFilterProvider;
 
 @interface NTKWorldClockRichComplicationHandsBaseView <CLKMonochromeComplicationView>
 {
     struct {
-        struct CGPoint minuteHandAnchorPoint;
-        struct CGPoint hourHandAnchorPoint;
         double pegDotDiameter;
-        NSString *hourHandImageName;
-        NSString *hourShadowImageName;
-        NSString *minuteHandImageName;
-        NSString *minuteShadowImageName;
+        NTKAnalogHandConfiguration *hourHandConfig;
+        NTKAnalogHandConfiguration *minuteHandConfig;
     } _layoutConstants;
-    CALayer *_pegDot;
     id <CLKMonochromeFilterProvider> _filterProvider;
     UIColor *_pegDotColor;
 }
 
++ (_Bool)showsSecondHand;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIColor *pegDotColor; // @synthesize pegDotColor=_pegDotColor;
 @property(nonatomic) __weak id <CLKMonochromeFilterProvider> filterProvider; // @synthesize filterProvider=_filterProvider;
 - (void)updateMonochromeColor;
 - (void)transitionToMonochromeWithFraction:(double)arg1;
-- (void)layoutSubviews;
+- (void)layoutHandViews;
 - (double)_timeAnimationFramesPerSecondForDevice:(id)arg1;
 - (long long)displayedHour;
 - (id)createSecondHandView;
-- (id)createMinuteHandView;
-- (id)createHourHandView;
+- (id)secondHandConfiguration;
+- (id)minuteHandConfiguration;
+- (id)hourHandConfiguration;
 - (long long)complicationFamily;
 - (id)initForDevice:(id)arg1;
 

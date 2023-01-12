@@ -12,8 +12,19 @@
 @class NSString, NSUUID;
 
 @interface HMSoftwareUpdate (HFAdditions) <HFStateDumpBuildable, HFHomeKitObject>
++ (id)hf_hashWithAccessory:(id)arg1;
++ (CDUnknownBlockType)hf_sortComparator;
 + (id)hf_stringFromUpdateState:(long long)arg1;
+- (_Bool)hf_isHomePodUpdate;
 - (_Bool)hf_shouldShowSoftwareUpdateInfo;
+- (_Bool)hf_possessesNecessaryDocumentation;
+- (_Bool)hf_isInstalled;
+- (_Bool)hf_isInstalling;
+- (_Bool)hf_isDownloading;
+- (_Bool)hf_isInProgress;
+- (_Bool)hf_isReadyToInstall;
+- (id)hf_stringFromState;
+- (id)hf_fetchNeedsAttentionReasons;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 
 // Remaining properties

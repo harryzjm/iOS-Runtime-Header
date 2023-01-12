@@ -24,10 +24,10 @@
 @property(nonatomic) __weak HKLollipopController *lollipopController; // @synthesize lollipopController=_lollipopController;
 @property(nonatomic) __weak HKScalarGraphViewController *graphViewController; // @synthesize graphViewController=_graphViewController;
 @property(retain, nonatomic) NSArray *graphSeries; // @synthesize graphSeries=_graphSeries;
-- (void)_alignYAxesForSeries:(id)arg1;
+- (void)graphViewExternalSelectionEnd:(id)arg1;
 - (void)graphViewDidTapYAxis:(id)arg1;
 - (void)graphView:(id)arg1 didUpdateLegendViewsWithTopLegendFrame:(struct CGRect)arg2;
-- (void)graphView:(id)arg1 didUpdateSeries:(id)arg2 newDataArrived:(_Bool)arg3;
+- (void)graphView:(id)arg1 didUpdateSeries:(id)arg2 newDataArrived:(_Bool)arg3 changeContext:(long long)arg4;
 - (void)graphView:(id)arg1 didUpdateYAxisWidth:(double)arg2 toWidth:(double)arg3;
 - (void)graphViewSizeChanged:(id)arg1;
 - (void)graphView:(id)arg1 didFinishUserScrollingToValueRange:(id)arg2;
@@ -36,6 +36,7 @@
 - (void)graphViewDidEndSelection:(id)arg1;
 - (void)graphView:(id)arg1 didUpdateSelectedPoint:(id)arg2;
 - (void)graphViewDidBeginSelection:(id)arg1;
+- (_Bool)graphViewPointSelectionDifferentiatesSeriesGroups:(id)arg1;
 - (id)seriesSelectionLineColorForGraphView:(id)arg1;
 - (id)graphView:(id)arg1 graphSeriesForZoom:(long long)arg2 stackOffset:(long long)arg3;
 - (long long)stackCountForGraphView:(id)arg1;

@@ -8,7 +8,6 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDTapToRadarRequest : NSObject
 {
     NSString *_message;

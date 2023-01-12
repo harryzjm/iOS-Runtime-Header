@@ -17,13 +17,33 @@
     CNContactStore *_contactStore;
 }
 
++ (id)defaultCorrelationsSessionFileForContactPriors;
++ (id)contactPriorSuggestionsForText:(id)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 @property(retain, nonatomic) _CDInteractionStore *interactionStore; // @synthesize interactionStore=_interactionStore;
 - (id)contactKeysToFetch;
-- (id)contactSuggestionsWithMaxSuggestions:(long long)arg1 contactKeysTofetch:(id)arg2 interactionDomains:(id)arg3 referenceDate:(id)arg4 appleUsersOnly:(_Bool)arg5;
+- (id)getDefaultContactPriorForContactId:(id)arg1 withModelName:(id)arg2 withModelVersion:(id)arg3;
+- (float)decayForReferenceDate:(id)arg1 relativeTo:(id)arg2 withTimeConstant:(double)arg3;
+- (void)writeArchive:(id)arg1;
+- (float)sigmoid:(float)arg1;
+- (void)peopleWidgetFeedbackWithContactIdentifier:(id)arg1;
+- (void)peopleWidgetFeedbackWithContactHandle:(id)arg1;
+- (id)contactSuggestionsForPeopleWidgetWithMaxSuggestions:(long long)arg1 excludeContactsWithIdentifiers:(id)arg2;
+- (id)contactPriorsForContactIdentifiers:(id)arg1;
+- (id)computeContactPriorsForContactIdentifiers:(id)arg1;
+- (id)computeContactPriorsForContactIdentifiers:(id)arg1 withTimeConstant:(long long)arg2 withInteractionMechanisms:(id)arg3 asOf:(id)arg4 overLookbackOf:(long long)arg5;
+- (id)contactSuggestionsWithMaxSuggestions:(long long)arg1 interactionDomains:(id)arg2 referenceDate:(id)arg3 appleUsersOnly:(_Bool)arg4 includeGroups:(_Bool)arg5;
+- (id)contactAndGroupSuggestionsWithMaxSuggestions:(long long)arg1 lookBackDays:(long long)arg2 interactions:(id)arg3;
+- (void)gameCenterSuggestionConsumedWithGroupIdentifier:(id)arg1;
+- (void)gameCenterSuggestionConsumedWithContactHandle:(id)arg1;
+- (id)gameCenterSuggestionsWithMaxSuggestions:(long long)arg1 interactionDomains:(id)arg2 appleUsersOnly:(_Bool)arg3;
+- (id)contactSuggestionsWithMaxSuggestions:(long long)arg1 excludeContactsByIdentifiers:(id)arg2 lookBackDays:(long long)arg3 interactions:(id)arg4 modeAvocado:(_Bool)arg5 interactionHistoryCap:(long long)arg6;
+- (id)contactsWithMaxSuggestions:(long long)arg1 contactKeysTofetch:(id)arg2 interactionDomains:(id)arg3 referenceDate:(id)arg4 appleUsersOnly:(_Bool)arg5;
 - (id)contactSuggestionsWithMaxSuggestions:(long long)arg1 contactKeysTofetch:(id)arg2 interactionDomains:(id)arg3 appleUsersOnly:(_Bool)arg4;
+- (id)contactSuggestionsWithMaxSuggestions:(long long)arg1 interactionDomains:(id)arg2 appleUsersOnly:(_Bool)arg3;
 - (id)contactSuggestionsWithMaxSuggestions:(long long)arg1 excludeContactsByIdentifiers:(id)arg2 lookBackDays:(long long)arg3 interactions:(id)arg4 modeAvocado:(_Bool)arg5;
+- (id)contactSuggestionsWithMaxSuggestions:(long long)arg1 excludeContactsByIdentifiers:(id)arg2 interactionHistoryCap:(long long)arg3;
 - (id)contactSuggestionsWithMaxSuggestions:(long long)arg1 excludeContactsByIdentifiers:(id)arg2;
 - (id)contactSuggestionsWithMaxSuggestions:(long long)arg1 excludeContactsWithIdentifiers:(id)arg2;
 - (void)dealloc;

@@ -26,6 +26,9 @@
 - (void)_installTestEndedHandler:(CDUnknownBlockType)arg1;
 - (void)_handleTestEnded;
 - (void)_prepareForTestStartup:(id)arg1;
+- (void)installNotificationObserverForNotificationName:(id)arg1 forOneNotification:(_Bool)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (void)installNotificationObserverForNotificationName:(id)arg1 notificationCenter:(id)arg2 forOneNotification:(_Bool)arg3 usingBlock:(CDUnknownBlockType)arg4;
+- (void)setupKeyboardAnimationSubTestsForTestName:(id)arg1;
 - (void)markUserLaunchInitiationTime;
 - (id)init;
 

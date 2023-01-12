@@ -17,12 +17,14 @@
     long long _version;
     NSDate *_completionDate;
     NSString *_countryCode;
+    long long _countryCodeProvenance;
     NSUUID *_UUID;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
+@property(readonly, nonatomic) long long countryCodeProvenance; // @synthesize countryCodeProvenance=_countryCodeProvenance;
 @property(readonly, copy, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
 @property(readonly, copy, nonatomic) NSDate *completionDate; // @synthesize completionDate=_completionDate;
 @property(readonly, nonatomic) long long version; // @synthesize version=_version;
@@ -30,9 +32,10 @@
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (_Bool)isEqual:(id)arg1;
-- (id)initWithFeatureIdentifier:(id)arg1 version:(long long)arg2 completionDate:(id)arg3 countryCode:(id)arg4;
-- (id)initWithFeatureIdentifier:(id)arg1 version:(long long)arg2 completionDate:(id)arg3 countryCode:(id)arg4 UUID:(id)arg5;
+- (id)initWithFeatureIdentifier:(id)arg1 version:(long long)arg2 completionDate:(id)arg3 countryCode:(id)arg4 countryCodeProvenance:(long long)arg5;
+- (id)initWithFeatureIdentifier:(id)arg1 version:(long long)arg2 completionDate:(id)arg3 countryCode:(id)arg4 countryCodeProvenance:(long long)arg5 UUID:(id)arg6;
 
 @end
 

@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class BSTimer, NSDate;
+@class BSAbsoluteMachTimer, NSDate;
 @protocol BSWatchdogDelegate, BSWatchdogProviding, OS_dispatch_queue;
 
 @interface BSWatchdog : NSObject
 {
-    BSTimer *_timer;
+    BSAbsoluteMachTimer *_timer;
     CDUnknownBlockType _completion;
     _Bool _invalidated;
     _Bool _completed;

@@ -11,6 +11,8 @@
 @interface PLDataClustering : NSObject
 {
     CDUnknownBlockType _distanceBlock;
+    CDUnknownBlockType _clusterConsolidationBlock;
+    CDUnknownBlockType _clusterKeyElementBlock;
     NSArray *_numericValueKeypaths;
 }
 
@@ -19,10 +21,14 @@
 + (id)clustering;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *numericValueKeypaths; // @synthesize numericValueKeypaths=_numericValueKeypaths;
+@property(copy, nonatomic) CDUnknownBlockType clusterKeyElementBlock; // @synthesize clusterKeyElementBlock=_clusterKeyElementBlock;
+@property(copy, nonatomic) CDUnknownBlockType clusterConsolidationBlock; // @synthesize clusterConsolidationBlock=_clusterConsolidationBlock;
 @property(readonly, copy, nonatomic) CDUnknownBlockType distanceBlock; // @synthesize distanceBlock=_distanceBlock;
 - (id)performWithDataset:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (id)initWithNumericValueKeypaths:(id)arg1;
 - (id)initWithDistanceBlock:(CDUnknownBlockType)arg1;
+- (void)freeDistancesFlatMatrix:(double *)arg1;
+- (double *)createDistancesFlatMatrixForDataset:(id)arg1;
 - (void)freeDistancesMatrix:(double **)arg1 forDataset:(id)arg2;
 - (double **)createDistancesMatrixForDataset:(id)arg1;
 

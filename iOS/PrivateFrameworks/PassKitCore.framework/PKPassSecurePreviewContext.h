@@ -11,8 +11,8 @@
 @interface PKPassSecurePreviewContext : NSObject
 {
     struct CGImage *_image;
+    struct CGImage *_backgroundImage;
     NSString *_backgroundColor;
-    NSString *_footerColor;
     NSString *_primaryText;
     NSString *_primaryColor;
     NSString *_secondaryText;
@@ -21,17 +21,22 @@
     NSString *_tertiaryColor;
 }
 
++ (id)createMessagesPreviewForPassesFileURL:(id)arg1 withOutputDirectory:(id)arg2;
++ (id)createMessagesPreviewForPassFileURL:(id)arg1 withOutputDirectory:(id)arg2;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSString *tertiaryColor; // @synthesize tertiaryColor=_tertiaryColor;
-@property(readonly, nonatomic) NSString *tertiaryText; // @synthesize tertiaryText=_tertiaryText;
-@property(readonly, nonatomic) NSString *secondaryColor; // @synthesize secondaryColor=_secondaryColor;
-@property(readonly, nonatomic) NSString *secondaryText; // @synthesize secondaryText=_secondaryText;
-@property(readonly, nonatomic) NSString *primaryColor; // @synthesize primaryColor=_primaryColor;
-@property(readonly, nonatomic) NSString *primaryText; // @synthesize primaryText=_primaryText;
-@property(readonly, nonatomic) NSString *footerColor; // @synthesize footerColor=_footerColor;
-@property(readonly, nonatomic) NSString *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property(copy, nonatomic) NSString *tertiaryColor; // @synthesize tertiaryColor=_tertiaryColor;
+@property(copy, nonatomic) NSString *tertiaryText; // @synthesize tertiaryText=_tertiaryText;
+@property(copy, nonatomic) NSString *secondaryColor; // @synthesize secondaryColor=_secondaryColor;
+@property(copy, nonatomic) NSString *secondaryText; // @synthesize secondaryText=_secondaryText;
+@property(copy, nonatomic) NSString *primaryColor; // @synthesize primaryColor=_primaryColor;
+@property(copy, nonatomic) NSString *primaryText; // @synthesize primaryText=_primaryText;
+@property(copy, nonatomic) NSString *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property(readonly, nonatomic) struct CGImage *backgroundImage; // @synthesize backgroundImage=_backgroundImage;
 @property(readonly, nonatomic) struct CGImage *image; // @synthesize image=_image;
+- (void)setBackgroundImage:(struct CGImage *)arg1;
+- (void)setImage:(struct CGImage *)arg1;
 - (void)dealloc;
+- (id)_initWithBackgroundColor:(id)arg1 primaryColor:(id)arg2 secondaryColor:(id)arg3 tertiaryColor:(id)arg4;
 - (id)init;
 
 @end

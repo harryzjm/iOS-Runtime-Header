@@ -32,31 +32,15 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(retain, nonatomic) NSString *itunesUrl;
-@property(readonly, nonatomic) _Bool hasItunesUrl;
-@property(retain, nonatomic) NSString *itunesId;
-@property(readonly, nonatomic) _Bool hasItunesId;
-@property(retain, nonatomic) NSString *performerId;
-@property(readonly, nonatomic) _Bool hasPerformerId;
-@property(retain, nonatomic) GEOLocalizedString *name;
-@property(readonly, nonatomic) _Bool hasName;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

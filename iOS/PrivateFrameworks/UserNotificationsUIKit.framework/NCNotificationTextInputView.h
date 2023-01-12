@@ -9,13 +9,14 @@
 #import <UserNotificationsUIKit/UIScribbleInteractionDelegate-Protocol.h>
 #import <UserNotificationsUIKit/UITextViewDelegate-Protocol.h>
 
-@class NCNotificationAction, NSString, UIButton, UIScribbleInteraction, UIStackView, UITextView;
+@class NCNotificationAction, NSString, UIButton, UIInputContextHistory, UIScribbleInteraction, UIStackView, UITextView;
 @protocol NCNotificationTextInputViewDelegate;
 
 @interface NCNotificationTextInputView : UIView <UITextViewDelegate, UIScribbleInteractionDelegate>
 {
     id <NCNotificationTextInputViewDelegate> _delegate;
     NCNotificationAction *_action;
+    UIInputContextHistory *_inputContextHistory;
     UIStackView *_horizontalStack;
     UITextView *_textView;
     UIButton *_button;
@@ -27,6 +28,7 @@
 @property(retain, nonatomic) UIButton *button; // @synthesize button=_button;
 @property(retain, nonatomic) UITextView *textView; // @synthesize textView=_textView;
 @property(retain, nonatomic) UIStackView *horizontalStack; // @synthesize horizontalStack=_horizontalStack;
+@property(retain, nonatomic) UIInputContextHistory *inputContextHistory; // @synthesize inputContextHistory=_inputContextHistory;
 @property(retain, nonatomic) NCNotificationAction *action; // @synthesize action=_action;
 @property(nonatomic) __weak id <NCNotificationTextInputViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_updateForTextChange;

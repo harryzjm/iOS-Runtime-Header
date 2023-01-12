@@ -8,7 +8,7 @@
 
 #import <NewsCore/FCAVAssetKeyCacheType-Protocol.h>
 
-@class FCKeyValueStore, NFUnfairLock, NSString, NSURL;
+@class FCKeyValueStore, NFUnfairLock, NSData, NSString, NSURL;
 
 @interface FCAVPersistentAssetKeyCache : NSObject <FCAVAssetKeyCacheType>
 {
@@ -19,19 +19,14 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSURL *certificateFileURL; // @synthesize certificateFileURL=_certificateFileURL;
-@property(readonly, nonatomic) FCKeyValueStore *keyStore; // @synthesize keyStore=_keyStore;
-@property(readonly, nonatomic) NFUnfairLock *initializationLock; // @synthesize initializationLock=_initializationLock;
-@property(readonly, copy, nonatomic) NSString *cacheDirectory; // @synthesize cacheDirectory=_cacheDirectory;
-- (void)_initStore;
-- (void)_prepareForUse;
+- (void)importAVAssetKey:(id)arg1;
 - (void)clearKeyServerCertificate;
 - (void)saveKeyServerCertificate:(id)arg1;
-- (id)keyServerCertificate;
+@property(readonly, copy, nonatomic) NSData *keyServerCertificate;
 - (void)removeAllAssetKeys;
 - (void)saveAssetKeyData:(id)arg1 creationDate:(id)arg2 expirationDate:(id)arg3 forURI:(id)arg4;
+- (id)interestTokenForKeyURIs:(id)arg1;
 - (id)assetKeyForURI:(id)arg1;
-- (id)initWithCacheDirectory:(id)arg1;
 
 @end
 

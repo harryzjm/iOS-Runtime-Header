@@ -8,7 +8,7 @@
 
 #import <PhotosGraph/NSCopying-Protocol.h>
 
-@class CLLocation, NSSet, PHAsset;
+@class CLLocation, NSSet, PGCurationCriteria, PHAsset;
 
 @interface PGKeyAssetCurationOptions : NSObject <NSCopying>
 {
@@ -19,15 +19,24 @@
     _Bool _useContextualCurationOnly;
     _Bool _prefilterAssetsWithFaces;
     _Bool _promoteAutoplayableItems;
+    _Bool _isForMemories;
+    _Bool _allowGuestAsset;
+    _Bool _wantsGoodSquareCropScore;
     CLLocation *_referenceLocation;
-    NSSet *_referencePersonUUIDs;
+    unsigned long long _minimumNumberOfReferencePersons;
+    NSSet *_referencePersonLocalIdentifiers;
     unsigned long long _precision;
     double _prefilterAssetsWithFacesThreshold;
     PHAsset *_referenceAsset;
+    PGCurationCriteria *_curationCriteria;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) PGCurationCriteria *curationCriteria; // @synthesize curationCriteria=_curationCriteria;
 @property(readonly, nonatomic) PHAsset *referenceAsset; // @synthesize referenceAsset=_referenceAsset;
+@property(nonatomic) _Bool wantsGoodSquareCropScore; // @synthesize wantsGoodSquareCropScore=_wantsGoodSquareCropScore;
+@property(nonatomic) _Bool allowGuestAsset; // @synthesize allowGuestAsset=_allowGuestAsset;
+@property(nonatomic) _Bool isForMemories; // @synthesize isForMemories=_isForMemories;
 @property(nonatomic) _Bool promoteAutoplayableItems; // @synthesize promoteAutoplayableItems=_promoteAutoplayableItems;
 @property(nonatomic) double prefilterAssetsWithFacesThreshold; // @synthesize prefilterAssetsWithFacesThreshold=_prefilterAssetsWithFacesThreshold;
 @property(nonatomic) _Bool prefilterAssetsWithFaces; // @synthesize prefilterAssetsWithFaces=_prefilterAssetsWithFaces;
@@ -37,7 +46,8 @@
 @property(nonatomic) _Bool complete; // @synthesize complete=_complete;
 @property(nonatomic) unsigned long long precision; // @synthesize precision=_precision;
 @property(nonatomic) _Bool focusOnPeople; // @synthesize focusOnPeople=_focusOnPeople;
-@property(retain, nonatomic) NSSet *referencePersonUUIDs; // @synthesize referencePersonUUIDs=_referencePersonUUIDs;
+@property(retain, nonatomic) NSSet *referencePersonLocalIdentifiers; // @synthesize referencePersonLocalIdentifiers=_referencePersonLocalIdentifiers;
+@property(nonatomic) unsigned long long minimumNumberOfReferencePersons; // @synthesize minimumNumberOfReferencePersons=_minimumNumberOfReferencePersons;
 @property(retain, nonatomic) CLLocation *referenceLocation; // @synthesize referenceLocation=_referenceLocation;
 - (id)dictionaryRepresentation;
 - (id)copyWithZone:(struct _NSZone *)arg1;

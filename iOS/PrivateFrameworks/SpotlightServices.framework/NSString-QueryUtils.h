@@ -8,6 +8,7 @@
 
 @interface NSString (QueryUtils)
 - (id)escapedStringForSearchQuery;
+- (id)escapedStringForSearchQuery;
 - (id)queryOptionsForSearchQueryWithPrimaryLanguage:(id)arg1;
 @end
 

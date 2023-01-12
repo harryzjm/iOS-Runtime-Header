@@ -8,9 +8,9 @@
 
 @interface GTSharedMemoryTransport_capture
 {
-    struct sm_region_header *_outgoingShmem;
-    struct sm_region_header *_incomingShmem;
-    struct sm_region_header *_masterSMRegion;
+    void *_outgoingShmem;
+    void *_incomingShmem;
+    void *_masterSMRegion;
     void *_outgoingBuffer;
     void *_incomingBuffer;
     GTBaseStreamTransport_capture *_relayTransport;
@@ -22,6 +22,8 @@
     NSMutableArray *_bufferedMessages;
     char _sendName[64];
     char _receiveName[64];
+    unsigned long long _sm_region_size_small;
+    unsigned long long _sm_region_size_large;
 }
 
 @property(readonly, nonatomic) _Bool deferred; // @synthesize deferred=_deferred;

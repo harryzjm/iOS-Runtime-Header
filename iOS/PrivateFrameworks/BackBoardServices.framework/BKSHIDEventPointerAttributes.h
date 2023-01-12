@@ -11,12 +11,10 @@
     unsigned char _pointerEdgeMask;
     unsigned short _pointerState;
     NSArray *_hitTestContexts;
-    double _unacceleratedRelativePositionX;
-    double _unacceleratedRelativePositionY;
-    double _acceleratedRelativePositionX;
-    double _acceleratedRelativePositionY;
     long long _activeModifiers;
     long long _fingerDownCount;
+    struct CGPoint _unacceleratedRelativePosition;
+    struct CGPoint _acceleratedRelativePosition;
 }
 
 + (id)protobufSchema;
@@ -24,13 +22,15 @@
 @property(nonatomic) unsigned char pointerEdgeMask; // @synthesize pointerEdgeMask=_pointerEdgeMask;
 @property(nonatomic) long long fingerDownCount; // @synthesize fingerDownCount=_fingerDownCount;
 @property(nonatomic) long long activeModifiers; // @synthesize activeModifiers=_activeModifiers;
-@property(nonatomic) double acceleratedRelativePositionY; // @synthesize acceleratedRelativePositionY=_acceleratedRelativePositionY;
-@property(nonatomic) double acceleratedRelativePositionX; // @synthesize acceleratedRelativePositionX=_acceleratedRelativePositionX;
-@property(nonatomic) double unacceleratedRelativePositionY; // @synthesize unacceleratedRelativePositionY=_unacceleratedRelativePositionY;
-@property(nonatomic) double unacceleratedRelativePositionX; // @synthesize unacceleratedRelativePositionX=_unacceleratedRelativePositionX;
+@property(nonatomic) struct CGPoint acceleratedRelativePosition; // @synthesize acceleratedRelativePosition=_acceleratedRelativePosition;
+@property(nonatomic) struct CGPoint unacceleratedRelativePosition; // @synthesize unacceleratedRelativePosition=_unacceleratedRelativePosition;
 @property(copy, nonatomic) NSArray *hitTestContexts; // @synthesize hitTestContexts=_hitTestContexts;
 @property(nonatomic) unsigned short pointerState; // @synthesize pointerState=_pointerState;
 - (void)appendDescriptionToFormatter:(id)arg1;
+@property(nonatomic) double acceleratedRelativePositionY; // @dynamic acceleratedRelativePositionY;
+@property(nonatomic) double acceleratedRelativePositionX; // @dynamic acceleratedRelativePositionX;
+@property(nonatomic) double unacceleratedRelativePositionY; // @dynamic unacceleratedRelativePositionY;
+@property(nonatomic) double unacceleratedRelativePositionX; // @dynamic unacceleratedRelativePositionX;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 

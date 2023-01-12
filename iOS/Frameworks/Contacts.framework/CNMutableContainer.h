@@ -10,6 +10,9 @@
 {
 }
 
+- (id)freezeWithSelfAsSnapshot;
+- (id)freeze;
+- (void)adoptValuesFromAndSetSnapshot:(id)arg1;
 @property(copy, nonatomic) CNContainer *snapshot; // @dynamic snapshot;
 @property(copy, nonatomic) NSDate *lastSyncDate;
 - (void)setGuardianRestricted:(_Bool)arg1 shouldPushChangeToServer:(_Bool)arg2;

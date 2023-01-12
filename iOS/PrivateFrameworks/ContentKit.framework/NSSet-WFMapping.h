@@ -7,6 +7,7 @@
 #import <Foundation/NSSet.h>
 
 @interface NSSet (WFMapping)
++ (id)wf_classSetFromArray:(id)arg1;
 - (id)mapAndFilterObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)mapObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)setByRemovingObject:(id)arg1;

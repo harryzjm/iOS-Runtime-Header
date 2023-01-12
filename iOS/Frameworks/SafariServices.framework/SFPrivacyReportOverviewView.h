@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool usesInsetStyle; // @synthesize usesInsetStyle=_usesInsetStyle;
+- (_Bool)itemViewIsLineBreak:(id)arg1;
 - (_Bool)itemViewCanUseCompactWidth:(id)arg1;
 - (double)interItemSpacing;
 - (id)initWithPrivacyReportDataProvider:(id)arg1;

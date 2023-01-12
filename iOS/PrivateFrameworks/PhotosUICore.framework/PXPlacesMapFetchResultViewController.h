@@ -12,14 +12,16 @@
 #import <PhotosUICore/PXPlacesMapFetchResultControllerAccess-Protocol.h>
 
 @class NSString, PHAsset, PXPhotoKitAssetsDataSourceManager, PXPlacesMapFetchResultController, UIBarButtonItem;
-@protocol PXPlacesAssetsSelectionDelegate, PXPlacesGeotaggable, PXPlacesMapBarButtonsDelegate, PXPlacesMapGeotaggableInfoDelegate;
+@protocol PXPlacesAssetsSelectionDelegate, PXPlacesGeotaggable, PXPlacesMapBarButtonsDelegate, PXPlacesMapGeotaggableInfoDelegate, PXPlacesMapLocationEditDelegate;
 
 @interface PXPlacesMapFetchResultViewController : UIViewController <PXPlacesMapControllerChangeDelegate, PXPlacesMapControllerSelectionDelegate, PXOneUpPresentationDelegate, PXPlacesMapFetchResultControllerAccess>
 {
     _Bool _showNavigationBar;
+    _Bool _canEditLocation;
     _Bool _autoRefocusOnDataChange;
     id <PXPlacesAssetsSelectionDelegate> _assetSelectionDelegate;
     id <PXPlacesMapBarButtonsDelegate> _barButtonsDelegate;
+    id <PXPlacesMapLocationEditDelegate> _editLocationDelegate;
     UIViewController *_pxOneUpPresentationViewController;
     unsigned long long _style;
     PXPlacesMapFetchResultController *_mapFetchResultsController;
@@ -36,14 +38,17 @@
 @property(retain) PHAsset<PXPlacesGeotaggable> *selectedGeotaggable; // @synthesize selectedGeotaggable=_selectedGeotaggable;
 @property(retain, nonatomic) PXPlacesMapFetchResultController *mapFetchResultsController; // @synthesize mapFetchResultsController=_mapFetchResultsController;
 @property _Bool autoRefocusOnDataChange; // @synthesize autoRefocusOnDataChange=_autoRefocusOnDataChange;
+@property _Bool canEditLocation; // @synthesize canEditLocation=_canEditLocation;
 @property(nonatomic) _Bool showNavigationBar; // @synthesize showNavigationBar=_showNavigationBar;
 @property(nonatomic) unsigned long long style; // @synthesize style=_style;
 @property(nonatomic) __weak UIViewController *pxOneUpPresentationViewController; // @synthesize pxOneUpPresentationViewController=_pxOneUpPresentationViewController;
+@property(nonatomic) __weak id <PXPlacesMapLocationEditDelegate> editLocationDelegate; // @synthesize editLocationDelegate=_editLocationDelegate;
 @property(nonatomic) __weak id <PXPlacesMapBarButtonsDelegate> barButtonsDelegate; // @synthesize barButtonsDelegate=_barButtonsDelegate;
 @property(nonatomic) __weak id <PXPlacesAssetsSelectionDelegate> assetSelectionDelegate; // @synthesize assetSelectionDelegate=_assetSelectionDelegate;
 - (void)ppt_performPlacesZoomTest:(id)arg1 iterations:(long long)arg2 delay:(double)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)ppt_performPlacesScrollTest:(id)arg1 iterations:(long long)arg2 screenDelta:(long long)arg3 delay:(double)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)didEnterForeground:(id)arg1;
+- (_Bool)pu_shouldOptOutFromChromelessBars;
 - (id)oneUpPresentationInitialAssetReference:(id)arg1;
 - (long long)oneUpPresentationOrigin:(id)arg1;
 - (id)oneUpPresentationMediaProvider:(id)arg1;
@@ -60,10 +65,10 @@
 - (void)tapCountToolbarButton:(id)arg1;
 - (void)tapFilterAssetsBtn:(id)arg1;
 - (void)_reloadContentModeDisplay:(unsigned long long)arg1;
-- (void)_placeBarButtonItems:(id)arg1;
+- (void)_placeToolbarItems:(id)arg1;
+- (void)_placeNavigationBarItems:(id)arg1;
+- (void)_editDidPress;
 - (void)reloadStyle;
-- (void)viewDidDisappear:(_Bool)arg1;
-- (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)loadView;
 - (void)dealloc;

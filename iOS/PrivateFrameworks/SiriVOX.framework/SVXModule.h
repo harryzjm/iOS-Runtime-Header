@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class AFAnalytics, AFInstanceContext, AFPreferences, NSString;
 @protocol SVXPerforming;
 
 __attribute__((visibility("hidden")))
@@ -15,16 +15,22 @@ __attribute__((visibility("hidden")))
     _Bool _isActive;
     NSString *_identifier;
     Class _instanceClass;
+    AFInstanceContext *_instanceContext;
+    AFPreferences *_preferences;
+    AFAnalytics *_analytics;
     id <SVXPerforming> _performer;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool isActive; // @synthesize isActive=_isActive;
 @property(readonly, nonatomic) id <SVXPerforming> performer; // @synthesize performer=_performer;
+@property(readonly, nonatomic) AFAnalytics *analytics; // @synthesize analytics=_analytics;
+@property(readonly, nonatomic) AFPreferences *preferences; // @synthesize preferences=_preferences;
+@property(readonly, nonatomic) AFInstanceContext *instanceContext; // @synthesize instanceContext=_instanceContext;
 @property(readonly, nonatomic) Class instanceClass; // @synthesize instanceClass=_instanceClass;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)description;
-- (id)initWithIdentifier:(id)arg1 instanceClass:(Class)arg2 performer:(id)arg3;
+- (id)initWithIdentifier:(id)arg1 instanceClass:(Class)arg2 instanceContext:(id)arg3 preferences:(id)arg4 analytics:(id)arg5 performer:(id)arg6;
 
 @end
 

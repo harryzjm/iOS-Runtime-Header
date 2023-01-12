@@ -13,14 +13,21 @@
 @interface PXSearchResultAssetCell : UICollectionViewCell <PXSearchResultThumbnailCell>
 {
     UIImageView *_thumbnailImageView;
+    UIImageView *_syndicatedAssetBadge;
+    UIImageView *_backgroundGradientView;
 }
 
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIImageView *backgroundGradientView; // @synthesize backgroundGradientView=_backgroundGradientView;
+@property(retain, nonatomic) UIImageView *syndicatedAssetBadge; // @synthesize syndicatedAssetBadge=_syndicatedAssetBadge;
 @property(readonly, nonatomic) UIImageView *thumbnailImageView; // @synthesize thumbnailImageView=_thumbnailImageView;
 - (struct CGSize)thumbnailImageViewPixelSize;
 - (void)setThumbnailImage:(id)arg1;
+- (id)focusEffect;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)prepareForReuse;
+- (void)shouldDisplayUnsavedSyndicatedAssetBadge:(_Bool)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

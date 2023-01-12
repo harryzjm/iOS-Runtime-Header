@@ -10,8 +10,8 @@
 #import <MTLCapture/MTLIntersectionFunctionTable-Protocol.h>
 #import <MTLCapture/MTLResourceSPI-Protocol.h>
 
-@class NSString;
-@protocol MTLBuffer, MTLComputePipelineState, MTLDevice, MTLHeap, MTLIntersectionFunctionTable, MTLIntersectionFunctionTableSPI><MTLResourceSPI;
+@class NSMutableArray, NSString;
+@protocol MTLBuffer, MTLComputePipelineState, MTLDevice, MTLHeap, MTLIntersectionFunctionTable, MTLIntersectionFunctionTableSPI><MTLResourceSPI, MTLRenderPipelineState;
 
 @interface CaptureMTLIntersectionFunctionTable : NSObject <MTLIntersectionFunctionTable, MTLResourceSPI, CaptureMTLObject>
 {
@@ -20,18 +20,16 @@
     id <MTLBuffer> _captureBuffer;
     id <MTLHeap> _captureHeap;
     id <MTLComputePipelineState> _captureComputePipelineState;
+    id <MTLRenderPipelineState> _captureRenderPipelineState;
+    NSMutableArray *_functions;
+    NSMutableArray *_buffers;
     struct GTTraceContext *_traceContext;
     struct GTTraceStream *_traceStream;
 }
 
 - (void).cxx_destruct;
 - (void)waitUntilComplete;
-- (void)setVisibleFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
 - (unsigned long long)setPurgeableState:(unsigned long long)arg1;
-- (void)setFunctions:(const id *)arg1 withRange:(struct _NSRange)arg2;
-- (void)setFunction:(id)arg1 atIndex:(unsigned long long)arg2;
-- (void)setBuffers:(const id *)arg1 offsets:(const unsigned long long *)arg2 withRange:(struct _NSRange)arg3;
-- (void)setBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)makeAliasable;
 - (_Bool)isPurgeable;
 - (_Bool)isComplete;
@@ -69,11 +67,17 @@
 - (void)touch;
 - (id)originalObject;
 - (void)setVisibleFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setVisibleFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setOpaqueTriangleIntersectionFunctionWithSignature:(unsigned long long)arg1 withRange:(struct _NSRange)arg2;
+- (void)setOpaqueTriangleIntersectionFunctionWithSignature:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
+- (void)setFunctions:(const id *)arg1 withRange:(struct _NSRange)arg2;
+- (void)setFunction:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)setBuffers:(const id *)arg1 offsets:(const unsigned long long *)arg2 withRange:(struct _NSRange)arg3;
+- (void)setBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 @property(readonly) id <MTLIntersectionFunctionTable> baseObject;
-- (id)initWithBaseObject:(id)arg1 captureComputePipelineState:(id)arg2;
-- (id)initWithBaseObject:(id)arg1 captureHeap:(id)arg2;
-- (id)initWithBaseObject:(id)arg1 captureBuffer:(id)arg2;
-- (id)initWithBaseObject:(id)arg1 captureDevice:(id)arg2;
+- (id)initWithBaseObject:(id)arg1 captureRenderPipelineState:(id)arg2 descriptor:(id)arg3;
+- (id)initWithBaseObject:(id)arg1 captureComputePipelineState:(id)arg2 descriptor:(id)arg3;
+- (id)initWithBaseObject:(id)arg1 captureDevice:(id)arg2 descriptor:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

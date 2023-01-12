@@ -28,6 +28,7 @@
 @property(readonly, nonatomic) id <GEOTransitRoutingIncidentMessage> steppingIncidentMessage; // @synthesize steppingIncidentMessage=_steppingIncidentMessage;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)description;
 - (_Bool)isArrivalStep;
 - (double)distance;
 - (id)transitStep;

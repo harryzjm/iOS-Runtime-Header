@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOABAssignmentResponse, GEORPCurrentEnvironmentManifestURLs, GEORPMapLocation, GEORPNavigationSettings, GEORPSearchCommonContext, GEORPSourceInfo, NSMutableArray, PBDataReader, PBUnknownFields;
+@class GEOABAssignmentResponse, GEORPCurrentEnvironmentManifestURLs, GEORPMapLocation, GEORPNavigationSettings, GEORPSearchCommonContext, GEORPSourceInfo, GEORPUserPath, NSMutableArray, PBDataReader, PBUnknownFields;
 
 @interface GEORPFeedbackCommonContext : PBCodable <NSCopying>
 {
@@ -17,6 +17,7 @@
     CDStruct_95bda58d _userPaths;
     NSMutableArray *_auxiliaryControls;
     double _clientCreatedAt;
+    GEORPUserPath *_combinedUserPath;
     GEOABAssignmentResponse *_currentAbAssignmentResponse;
     GEORPCurrentEnvironmentManifestURLs *_currentEnvironmentManifestUrls;
     GEORPMapLocation *_mapLocation;
@@ -30,14 +31,17 @@
     struct os_unfair_lock_s _readerLock;
     int _deviceGmtOffset;
     int _pinType;
+    _Bool _isSprMap;
     struct {
         unsigned int has_clientCreatedAt:1;
         unsigned int has_originatingAuxiliaryControlIndex:1;
         unsigned int has_deviceGmtOffset:1;
         unsigned int has_pinType:1;
+        unsigned int has_isSprMap:1;
         unsigned int read_unknownFields:1;
         unsigned int read_userPaths:1;
         unsigned int read_auxiliaryControls:1;
+        unsigned int read_combinedUserPath:1;
         unsigned int read_currentAbAssignmentResponse:1;
         unsigned int read_currentEnvironmentManifestUrls:1;
         unsigned int read_mapLocation:1;
@@ -60,6 +64,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -68,6 +73,10 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) GEORPUserPath *combinedUserPath;
+@property(readonly, nonatomic) _Bool hasCombinedUserPath;
+@property(nonatomic) _Bool hasIsSprMap;
+@property(nonatomic) _Bool isSprMap;
 @property(retain, nonatomic) GEOABAssignmentResponse *currentAbAssignmentResponse;
 @property(readonly, nonatomic) _Bool hasCurrentAbAssignmentResponse;
 @property(retain, nonatomic) GEORPSearchCommonContext *searchCommon;

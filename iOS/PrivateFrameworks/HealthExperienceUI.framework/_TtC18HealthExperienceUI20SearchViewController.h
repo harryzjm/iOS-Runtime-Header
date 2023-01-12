@@ -14,14 +14,15 @@
     MISSING_TYPE *$__lazy_storage_$_spotlightSearch;
     MISSING_TYPE *$__lazy_storage_$_searchHandler;
     MISSING_TYPE *$__lazy_storage_$_searchResultsCompletionHandler;
+    MISSING_TYPE *healthStore;
     MISSING_TYPE *$__lazy_storage_$_searchController;
     MISSING_TYPE *searchState;
 }
 
 - (void).cxx_destruct;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithCollectionViewLayout:(id)arg1;
 - (void)viewDidLoad;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

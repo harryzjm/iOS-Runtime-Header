@@ -8,19 +8,24 @@
 
 @interface SPSearchAppEntity
 {
-    NSString *_appName;
+    NSString *_tokenText;
+    NSString *_queryString;
+    NSString *_bundleIdentifier;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(retain) NSString *appName; // @synthesize appName=_appName;
+@property(readonly) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+- (id)spotlightQueryString;
+- (id)tokenText;
 - (id)queryString;
 - (void)appendToQuery:(id)arg1 key:(id)arg2 value:(id)arg3 additions:(id)arg4;
-- (id)tokenText;
-- (_Bool)isPeopleSearch;
+- (_Bool)isScopedSearch;
+- (_Bool)isAppEntitySearch;
+- (void)updateSearchString:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithBundleIdentifier:(id)arg1 appName:(id)arg2;
+- (id)initWithBundleIdentifier:(id)arg1 appName:(id)arg2 fromSuggestion:(_Bool)arg3;
 
 @end
 

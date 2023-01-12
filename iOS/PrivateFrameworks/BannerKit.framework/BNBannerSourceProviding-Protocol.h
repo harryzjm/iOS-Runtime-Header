@@ -7,7 +7,7 @@
 #import <BannerKit/BNSuspendable-Protocol.h>
 #import <BannerKit/BSInvalidatable-Protocol.h>
 
-@class BNBannerSourceLayoutDescription, NSDictionary, NSString;
+@class BNBannerSourceLayoutDescription, NSArray, NSDictionary, NSString;
 @protocol BNBannerSourceDelegate, BNPresentable;
 
 @protocol BNBannerSourceProviding <BSInvalidatable, BNSuspendable>
@@ -15,9 +15,12 @@
 @property(nonatomic) __weak id <BNBannerSourceDelegate> delegate;
 @property(readonly, copy, nonatomic) NSString *requesterIdentifier;
 @property(readonly, nonatomic) long long destination;
-- (_Bool)revokeAllPresentablesWithReason:(NSString *)arg1 userInfo:(NSDictionary *)arg2 error:(out id *)arg3;
-- (_Bool)revokePresentableWithRequestIdentifier:(NSString *)arg1 animated:(_Bool)arg2 reason:(NSString *)arg3 userInfo:(NSDictionary *)arg4 error:(out id *)arg5;
+- (NSArray *)revokeAllPresentablesWithReason:(NSString *)arg1 userInfo:(NSDictionary *)arg2 error:(out id *)arg3;
+- (NSArray *)revokePresentableWithRequestIdentifier:(NSString *)arg1 reason:(NSString *)arg2 animated:(_Bool)arg3 userInfo:(NSDictionary *)arg4 error:(out id *)arg5;
 - (_Bool)postPresentable:(id <BNPresentable>)arg1 options:(unsigned long long)arg2 userInfo:(NSDictionary *)arg3 error:(out id *)arg4;
 - (BNBannerSourceLayoutDescription *)layoutDescriptionWithError:(out id *)arg1;
+
+@optional
+- (_Bool)revokePresentableWithRequestIdentifier:(NSString *)arg1 animated:(_Bool)arg2 reason:(NSString *)arg3 userInfo:(NSDictionary *)arg4 error:(out id *)arg5;
 @end
 

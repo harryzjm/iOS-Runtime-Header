@@ -21,6 +21,7 @@
 @property(copy, nonatomic) CDUnknownBlockType animationDelayHandler; // @synthesize animationDelayHandler=_animationDelayHandler;
 - (id)_basicAnimationForView:(id)arg1 withKeyPath:(id)arg2;
 - (id)_springAnimationForView:(id)arg1 withKeyPath:(id)arg2;
+- (id)highFrameRateSpringAnimationForView:(id)arg1 withKeyPath:(id)arg2 reason:(unsigned short)arg3;
 - (id)springAnimationForView:(id)arg1 withKeyPath:(id)arg2;
 
 // Remaining properties

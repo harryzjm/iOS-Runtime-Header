@@ -10,23 +10,23 @@
 
 @interface TSCH3DGenericAxisLabelPositioner : NSObject <TSCH3DAxisLabelPositioner>
 {
-    tvec2_84d5962d mRange;
-    unsigned long long mAxis;
-    float mOffset;
-    unsigned int mAlignment;
+    tvec2_84d5962d _range;
+    unsigned long long _axis;
+    float _offset;
+    unsigned int _alignment;
 }
 
-+ (id)verticalWithRange:(tvec2_84d5962d *)arg1 offset:(float)arg2;
-+ (id)horizontalWithRange:(tvec2_84d5962d *)arg1 offset:(float)arg2;
-+ (id)verticalWithRange:(tvec2_84d5962d *)arg1;
-+ (id)horizontalWithRange:(tvec2_84d5962d *)arg1;
++ (id)verticalWithRange:(void *)arg1 offset:(float)arg2;
++ (id)horizontalWithRange:(void *)arg1 offset:(float)arg2;
++ (id)verticalWithRange:(void *)arg1;
++ (id)horizontalWithRange:(void *)arg1;
 + (id)vertical;
 + (id)horizontal;
 - (id).cxx_construct;
 - (float)labelGapForCount:(unsigned long long)arg1;
-- (tvec3_17f03ce0)positionForValue:(double)arg1 count:(unsigned long long)arg2 chartDirection:(const tvec3_17f03ce0 *)arg3;
-- (unsigned int)alignmentForChartDirection:(const tvec3_17f03ce0 *)arg1;
-- (id)initWithAxis:(long long)arg1 alignment:(unsigned int)arg2 offset:(float)arg3 range:(tvec2_84d5962d *)arg4;
+- (tvec3_17f03ce0)positionForValue:(double)arg1 count:(unsigned long long)arg2 chartDirection:(const void *)arg3;
+- (unsigned int)alignmentForChartDirection:(const void *)arg1;
+- (id)initWithAxis:(long long)arg1 alignment:(unsigned int)arg2 offset:(float)arg3 range:(void *)arg4;
 - (_Bool)isHorizontal;
 - (_Bool)hasOffset;
 - (id)init;

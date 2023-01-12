@@ -5,11 +5,12 @@
 //
 
 #import <HomeUI/HUAccessoryViewCellProtocol-Protocol.h>
+#import <HomeUI/HUIconRenouncing-Protocol.h>
 
-@class HFItem, HUGridServiceCellLayoutOptions, HUGridServiceCellTextView, HUIconView, HUVisualEffectContainerView, NSString, UIActivityIndicatorView, UIColor, UILabel, UIView, UIVisualEffectView;
+@class HFItem, HUGridServiceCellLayoutOptions, HUGridServiceCellTextView, HUIconView, HUVisualEffectContainerView, NSString, UIActivityIndicatorView, UIColor, UIImageView, UILabel, UIView, UIVisualEffectView;
 @protocol NACancelable;
 
-@interface HUGridServiceCell <HUAccessoryViewCellProtocol>
+@interface HUGridServiceCell <HUAccessoryViewCellProtocol, HUIconRenouncing>
 {
     _Bool _shouldColorDescription;
     _Bool _shouldShowLoadingState;
@@ -22,6 +23,7 @@
     UIColor *_defaultNameTextColor;
     UIColor *_defaultDescriptionColor;
     HUIconView *_iconView;
+    UIImageView *_supplementaryImageView;
     HUGridServiceCellTextView *_serviceTextView;
     UILabel *_coloredDescriptionLabel;
     UIVisualEffectView *_descriptionLabelEffectView;
@@ -30,11 +32,13 @@
     UIView *_overrideAccessoryView;
     UIActivityIndicatorView *_activityIndicator;
     HUVisualEffectContainerView *_exclamationView;
+    HUVisualEffectContainerView *_firmwareUpdateView;
 }
 
 + (id)_iconTintColor;
 + (Class)layoutOptionsClass;
 - (void).cxx_destruct;
+@property(retain, nonatomic) HUVisualEffectContainerView *firmwareUpdateView; // @synthesize firmwareUpdateView=_firmwareUpdateView;
 @property(retain, nonatomic) HUVisualEffectContainerView *exclamationView; // @synthesize exclamationView=_exclamationView;
 @property(retain, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
 @property(retain, nonatomic) UIView *overrideAccessoryView; // @synthesize overrideAccessoryView=_overrideAccessoryView;
@@ -46,6 +50,7 @@
 @property(retain, nonatomic) UIVisualEffectView *descriptionLabelEffectView; // @synthesize descriptionLabelEffectView=_descriptionLabelEffectView;
 @property(retain, nonatomic) UILabel *coloredDescriptionLabel; // @synthesize coloredDescriptionLabel=_coloredDescriptionLabel;
 @property(retain, nonatomic) HUGridServiceCellTextView *serviceTextView; // @synthesize serviceTextView=_serviceTextView;
+@property(retain, nonatomic) UIImageView *supplementaryImageView; // @synthesize supplementaryImageView=_supplementaryImageView;
 @property(retain, nonatomic) HUIconView *iconView; // @synthesize iconView=_iconView;
 @property(nonatomic) _Bool shouldShowRoomName; // @synthesize shouldShowRoomName=_shouldShowRoomName;
 @property(nonatomic) _Bool shouldShowLoadingState; // @synthesize shouldShowLoadingState=_shouldShowLoadingState;
@@ -55,6 +60,10 @@
 @property(retain, nonatomic) UIView *accessoryView; // @synthesize accessoryView=_accessoryView;
 @property(retain, nonatomic) HFItem *serviceItem; // @synthesize serviceItem=_serviceItem;
 - (void)dragStateDidChange:(long long)arg1;
+- (void)_createFirmwareUpdateViewIfNecessary;
+- (id)_backgroundColorForSupplementaryIcon;
+- (long long)_symbolScaleForCurrentEnvironment;
+- (void)_updateSupplementaryImageViewIfNecessary;
 - (void)_updateExclamationViewColor;
 - (void)_createExclamationViewIfNecessary;
 - (void)_updateAccessoryView;
@@ -66,6 +75,8 @@
 - (void)displayStyleDidChange;
 - (void)layoutOptionsDidChange;
 - (void)_updateIconAnimated:(_Bool)arg1;
+- (void)reclaimIconIfPossible;
+- (void)renounceIcon;
 - (void)updateUIWithAnimation:(_Bool)arg1;
 - (void)setItem:(id)arg1;
 - (id)item;

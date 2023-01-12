@@ -7,20 +7,13 @@
 #import <objc/NSObject.h>
 
 @class NSDictionary;
-@protocol OS_dispatch_queue;
 
 @interface MCCloudConfiguration : NSObject
 {
-    NSObject<OS_dispatch_queue> *_memberQueue;
-    NSDictionary *_memberQueueDetails;
-    NSDictionary *_memberQueueSetAsideDetails;
 }
 
 + (id)sharedConfiguration;
-- (void).cxx_destruct;
-@property(retain, nonatomic) NSDictionary *memberQueueSetAsideDetails; // @synthesize memberQueueSetAsideDetails=_memberQueueSetAsideDetails;
-@property(retain, nonatomic) NSDictionary *memberQueueDetails; // @synthesize memberQueueDetails=_memberQueueDetails;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *memberQueue; // @synthesize memberQueue=_memberQueue;
+- (int)_MDMUserModeToMCUserMode:(int)arg1;
 - (id)skipSetupKeys;
 - (id)tvProviderUserToken;
 - (id)provisionalEnrollmentExpirationDate;
@@ -40,7 +33,6 @@
 @property(copy, nonatomic) NSDictionary *setAsideDetails;
 @property(copy, nonatomic) NSDictionary *details;
 - (void)refreshDetailsFromDisk;
-- (id)init;
 
 @end
 

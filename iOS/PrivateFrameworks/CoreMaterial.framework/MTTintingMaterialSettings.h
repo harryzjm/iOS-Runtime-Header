@@ -15,9 +15,13 @@
     NSDictionary *_tintColorDescription;
     struct CGColor *_tintColor;
     double _tintAlpha;
+    NSString *_tintColorName;
+    long long _tintColorUIStyle;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) long long tintColorUIStyle; // @synthesize tintColorUIStyle=_tintColorUIStyle;
+@property(readonly, copy, nonatomic) NSString *tintColorName; // @synthesize tintColorName=_tintColorName;
 @property(readonly, nonatomic) double tintAlpha; // @synthesize tintAlpha=_tintAlpha;
 @property(readonly, nonatomic) struct CGColor *tintColor; // @synthesize tintColor=_tintColor;
 @property(readonly, copy, nonatomic) NSDictionary *tintColorDescription; // @synthesize tintColorDescription=_tintColorDescription;

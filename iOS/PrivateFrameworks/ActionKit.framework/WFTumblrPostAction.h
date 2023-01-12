@@ -8,16 +8,17 @@
 
 #import <ActionKit/WFDynamicEnumerationDataSource-Protocol.h>
 
-@class NSString, TMAPIClient, WFAppInstalledResource;
+@class NSString, TMAPIClient;
 
 @interface WFTumblrPostAction : WFAction <WFDynamicEnumerationDataSource>
 {
     TMAPIClient *_client;
-    WFAppInstalledResource *_appInstalledResource;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) WFAppInstalledResource *appInstalledResource; // @synthesize appInstalledResource=_appInstalledResource;
+- (id)generatedResourceNodes;
+- (id)smartPromptWithContentDescription:(id)arg1 contentDestination:(id)arg2 workflowName:(id)arg3;
+- (id)contentDestinationWithError:(id *)arg1;
 - (id)inputContentClasses;
 - (_Bool)inputsMultipleItems;
 - (id)enumeration:(id)arg1 localizedLabelForPossibleState:(id)arg2;

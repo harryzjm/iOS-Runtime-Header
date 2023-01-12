@@ -9,7 +9,7 @@
 #import <HealthUI/HKChartCachePriorityDelegate-Protocol.h>
 #import <HealthUI/HKGraphSeriesDataSourceDelegate-Protocol.h>
 
-@class HKAxis, HKGraphSeriesDataSource, HKPropertyAnimationApplier, HKValueRange, NSArray, NSMutableDictionary, NSString, NSUUID, UIColor, UIView;
+@class HKAxis, HKGraphSeriesDataSource, HKValueRange, NSArray, NSMutableDictionary, NSString, NSUUID, UIColor, UIView;
 @protocol HKAxisAccessoryViewDelegate, HKGraphSeriesAxisAnnotation, HKGraphSeriesAxisScalingRule, HKSeriesDelegate;
 
 @interface HKGraphSeries : NSObject <HKGraphSeriesDataSourceDelegate, HKChartCachePriorityDelegate>
@@ -19,12 +19,10 @@
     NSMutableDictionary *_cachedCoordinateListsByBlockPath;
     NSMutableDictionary *_cachedDataBlocksByBlockPath;
     HKValueRange *_closestXCoordinateRange;
-    HKPropertyAnimationApplier *_animationApplier;
     HKValueRange *_visibleValueRange;
     _Bool _allowsSelection;
     _Bool _adjustYAxisForLabels;
-    _Bool _animatingDuringAutoscale;
-    _Bool _primarySeriesForAutoscale;
+    _Bool _isCriticalForAutoscale;
     _Bool _wantsRoundingDuringYRangeExpansion;
     HKGraphSeriesDataSource *_dataSource;
     NSArray *_titleLegendEntries;
@@ -35,7 +33,7 @@
     double _alpha;
     double _offscreenIndicatorAlpha;
     NSUUID *_UUID;
-    id _context;
+    id _seriesDataSourceContext;
     HKAxis *_yAxis;
     id <HKGraphSeriesAxisScalingRule> _axisScalingRule;
     UIView *_cachedYAxisAccessoryView;
@@ -48,11 +46,10 @@
 @property(retain, nonatomic) UIColor *offScreenIndicatorColor; // @synthesize offScreenIndicatorColor=_offScreenIndicatorColor;
 @property(retain, nonatomic) UIView *cachedYAxisAccessoryView; // @synthesize cachedYAxisAccessoryView=_cachedYAxisAccessoryView;
 @property(retain, nonatomic) id <HKGraphSeriesAxisScalingRule> axisScalingRule; // @synthesize axisScalingRule=_axisScalingRule;
-@property(copy, nonatomic) HKAxis *yAxis; // @synthesize yAxis=_yAxis;
+@property(retain, nonatomic) HKAxis *yAxis; // @synthesize yAxis=_yAxis;
 @property(nonatomic) _Bool wantsRoundingDuringYRangeExpansion; // @synthesize wantsRoundingDuringYRangeExpansion=_wantsRoundingDuringYRangeExpansion;
-@property(nonatomic) _Bool primarySeriesForAutoscale; // @synthesize primarySeriesForAutoscale=_primarySeriesForAutoscale;
-@property(readonly, nonatomic) _Bool animatingDuringAutoscale; // @synthesize animatingDuringAutoscale=_animatingDuringAutoscale;
-@property(retain, nonatomic) id context; // @synthesize context=_context;
+@property(nonatomic) _Bool isCriticalForAutoscale; // @synthesize isCriticalForAutoscale=_isCriticalForAutoscale;
+@property(retain, nonatomic) id seriesDataSourceContext; // @synthesize seriesDataSourceContext=_seriesDataSourceContext;
 @property(nonatomic) _Bool adjustYAxisForLabels; // @synthesize adjustYAxisForLabels=_adjustYAxisForLabels;
 @property(nonatomic) _Bool allowsSelection; // @synthesize allowsSelection=_allowsSelection;
 @property(readonly, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
@@ -65,7 +62,6 @@
 @property(retain, nonatomic) NSArray *titleLegendEntries; // @synthesize titleLegendEntries=_titleLegendEntries;
 @property(retain, nonatomic) HKGraphSeriesDataSource *dataSource; // @synthesize dataSource=_dataSource;
 - (struct CGRect)backgroundRectFromStringRect:(struct CGRect)arg1 forFont:(id)arg2;
-- (void)drawRoundedRect:(struct CGRect)arg1 color:(id)arg2 context:(struct CGContext *)arg3;
 - (struct CGRect)adjustRect:(struct CGRect)arg1 forFont:(id)arg2;
 - (_Bool)untransformedChartPointsForTimeScope:(long long)arg1 range:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)findVisibleBlockCoordinatesForChartRect:(struct CGRect)arg1 xAxis:(id)arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint)arg4 xAxisTransform:(struct CGAffineTransform)arg5;
@@ -116,11 +112,9 @@
 - (struct UIEdgeInsets)virtualMarginInsets;
 - (id)_clipYAxisValueRangeIfNecessary:(id)arg1;
 - (id)valueRangeForYAxisWithXAxisRange:(id)arg1 dateZoom:(long long)arg2 chartRect:(struct CGRect)arg3;
+- (_Bool)hasAnyDataLoadedInXAxisRange:(id)arg1 dateZoom:(long long)arg2 chartRect:(struct CGRect)arg3;
 - (id)_expandYRange:(id)arg1 withXRange:(id)arg2 dateZoom:(long long)arg3 chartRect:(struct CGRect)arg4;
-- (void)cancelInFlightAutoscale;
-- (void)autoscaleYAxisWithYAxisRange:(id)arg1 chartRect:(struct CGRect)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)autoscaleYAxisWithValueRange:(id)arg1 yAxisRange:(id)arg2 xAxis:(id)arg3 dateZoom:(long long)arg4 chartRect:(struct CGRect)arg5 animated:(_Bool)arg6 completion:(CDUnknownBlockType)arg7;
-- (void)autoscaleYAxisIfNecessaryWithValueRange:(id)arg1 yAxisRange:(id)arg2 xAxis:(id)arg3 dateZoom:(long long)arg4 chartRect:(struct CGRect)arg5;
+- (void)updateForAutoscale:(id)arg1;
 - (_Bool)shouldInvertAxis;
 - (id)visibleValueRange;
 - (void)dealloc;

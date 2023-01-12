@@ -7,6 +7,7 @@
 @class HMDAccessorySettingsController, HMDBackingStoreModelObject, HMDRemoteDeviceMessageDestination, NSArray, NSString, NSUUID;
 
 @protocol HMDAccessorySettingsControllerDelegate
+- (void)languagesChangedForAccessorySettingsController:(HMDAccessorySettingsController *)arg1;
 - (HMDBackingStoreModelObject *)assistantAccessControlModelWithRemovedAccessoriesForAccessorySettingsController:(HMDAccessorySettingsController *)arg1;
 - (_Bool)isMultiUserEnabledForAccessorySettingsController:(HMDAccessorySettingsController *)arg1;
 - (NSArray *)supportedMultiUserLanguageCodesForAccessorySettingsController:(HMDAccessorySettingsController *)arg1;

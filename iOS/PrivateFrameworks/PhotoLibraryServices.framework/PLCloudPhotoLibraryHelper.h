@@ -10,6 +10,8 @@
 {
 }
 
++ (void)setShouldRepushAssetsWithImportedByBundleIdentifier:(_Bool)arg1;
++ (_Bool)shouldRepushAssetsWithImportedByBundleIdentifier;
 + (void)setShouldHandleOptimizeModeChange:(_Bool)arg1;
 + (_Bool)shouldHandleOptimizeModeChange;
 + (void)setShouldClearPurgeableResourcesOnce:(_Bool)arg1;

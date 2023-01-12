@@ -8,7 +8,7 @@
 
 #import <PassKitUI/PKDashboardItemPresenter-Protocol.h>
 
-@class NSString, PKMapsSnapshotManager, PKObjectDownloader, PKPaymentService, PKPeerPaymentContactResolver, UICollectionViewCell, UIColor, UIImage, UIVisualEffect;
+@class NSString, PKContactAvatarManager, PKContactResolver, PKMapsSnapshotManager, PKObjectDownloader, PKPaymentService, UICollectionViewCell, UIColor, UIImage, UIVisualEffect;
 
 @interface PKTransactionHistoryHeaderPresenter : NSObject <PKDashboardItemPresenter>
 {
@@ -18,10 +18,10 @@
     UIImage *_logoImage;
     UIImage *_logoBackgroundImage;
     UIImage *_heroImage;
-    UIImage *_mapsPlaceholderImage;
     _Bool _hasNetworkAccess;
     PKMapsSnapshotManager *_snapshotManager;
-    PKPeerPaymentContactResolver *_contactResolver;
+    PKContactResolver *_contactResolver;
+    PKContactAvatarManager *_avatarManager;
     UIVisualEffect *_overlayEffect;
     UIColor *_shadowColor;
 }
@@ -29,11 +29,12 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIColor *shadowColor; // @synthesize shadowColor=_shadowColor;
 @property(retain, nonatomic) UIVisualEffect *overlayEffect; // @synthesize overlayEffect=_overlayEffect;
-@property(retain, nonatomic) PKPeerPaymentContactResolver *contactResolver; // @synthesize contactResolver=_contactResolver;
+@property(retain, nonatomic) PKContactAvatarManager *avatarManager; // @synthesize avatarManager=_avatarManager;
+@property(retain, nonatomic) PKContactResolver *contactResolver; // @synthesize contactResolver=_contactResolver;
 @property(retain, nonatomic) PKMapsSnapshotManager *snapshotManager; // @synthesize snapshotManager=_snapshotManager;
 - (void)_downloadLogoForItem:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (id)mapsPlaceholderImage;
 - (void)_configureCategoryHeaderCell:(id)arg1 forItem:(id)arg2 isUpdate:(_Bool)arg3;
+- (void)_configureCell:(id)arg1 withRegion:(id)arg2 isUpdate:(_Bool)arg3;
 - (void)_configureTransactionTypeHeaderCell:(id)arg1 forItem:(id)arg2;
 - (id)_transactionTypeHeaderCellForItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
 - (id)_transactionGroupHeaderCellForItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;

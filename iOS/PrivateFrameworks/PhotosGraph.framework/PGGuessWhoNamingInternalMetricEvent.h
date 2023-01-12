@@ -4,17 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+@class NSDictionary, PGManager;
 
-#import <PhotosGraph/PLMetricEvent-Protocol.h>
-
-@class NSDictionary, NSString, PGGraph;
-
-@interface PGGuessWhoNamingInternalMetricEvent : NSObject <PLMetricEvent>
+@interface PGGuessWhoNamingInternalMetricEvent
 {
-    NSString *_identifier;
+    PGManager *_manager;
     NSDictionary *_payload;
-    PGGraph *_graph;
     double _precisionContactSuggestionTop1;
     double _precisionContactSuggestionTop2;
     double _precisionContactSuggestionTop3;
@@ -124,21 +119,14 @@
 @property(nonatomic) double precisionContactSuggestionTop3; // @synthesize precisionContactSuggestionTop3=_precisionContactSuggestionTop3;
 @property(nonatomic) double precisionContactSuggestionTop2; // @synthesize precisionContactSuggestionTop2=_precisionContactSuggestionTop2;
 @property(nonatomic) double precisionContactSuggestionTop1; // @synthesize precisionContactSuggestionTop1=_precisionContactSuggestionTop1;
-@property(retain, nonatomic) PGGraph *graph; // @synthesize graph=_graph;
-@property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property(readonly, copy) NSString *description;
 - (double)_precisionFromTruePositivesCount:(unsigned long long)arg1 falsePositivesCount:(unsigned long long)arg2;
 - (id)_peopleIdentitiesSignals;
 - (void)_incrementSignalEvaluationForSignal:(unsigned long long)arg1 suggestionEdge:(id)arg2 isCorrect:(_Bool)arg3;
 - (void)_incrementSignalRegistrationForSignal:(unsigned long long)arg1 suggestionEdge:(id)arg2;
 - (void)gatherMetricsWithProgressBlock:(CDUnknownBlockType)arg1;
-@property(readonly, nonatomic) NSDictionary *payload; // @synthesize payload=_payload;
+- (id)payload;
+- (id)identifier;
 - (id)initWithGraphManager:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

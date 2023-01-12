@@ -6,13 +6,19 @@
 
 #import <Intents/INIntentResponse.h>
 
+@class MISSING_TYPE;
+
 @interface AddToWatchListIntentResponse : INIntentResponse
 {
-    long long _code;
+    MISSING_TYPE *code;
 }
 
-@property(nonatomic) long long code; // @synthesize code=_code;
+- (id)initWithPropertiesByName:(id)arg1;
+- (id)initWithBackingStore:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithCode:(long long)arg1 userActivity:(id)arg2;
+@property(nonatomic) long long code; // @synthesize code;
 
 @end
 

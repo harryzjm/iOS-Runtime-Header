@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSURLSession, TransparencyLogSessionDelegate;
+@class NSURLSession, TransparencyAuthentication, TransparencyLogSessionDelegate;
 @protocol OS_dispatch_workloop;
 
 @interface TransparencyLogSession : NSObject
 {
     unsigned long long _fetchCount;
     TransparencyLogSessionDelegate *_delegate;
+    TransparencyAuthentication *_auth;
     NSURLSession *_backgroundSession;
     NSURLSession *_foregroundSession;
     NSObject<OS_dispatch_workloop> *_callbackWorkloop;
@@ -26,6 +27,7 @@
 @property(retain) NSObject<OS_dispatch_workloop> *callbackWorkloop; // @synthesize callbackWorkloop=_callbackWorkloop;
 @property(retain) NSURLSession *foregroundSession; // @synthesize foregroundSession=_foregroundSession;
 @property(retain) NSURLSession *backgroundSession; // @synthesize backgroundSession=_backgroundSession;
+@property(retain) TransparencyAuthentication *auth; // @synthesize auth=_auth;
 @property(retain) TransparencyLogSessionDelegate *delegate; // @synthesize delegate=_delegate;
 @property unsigned long long fetchCount; // @synthesize fetchCount=_fetchCount;
 - (void)cancelDownloadId:(id)arg1;

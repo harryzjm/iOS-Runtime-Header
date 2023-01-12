@@ -7,22 +7,21 @@
 #import <UIKit/UIViewController.h>
 
 #import <VideosUI/UICollectionViewDelegate-Protocol.h>
-#import <VideosUI/VUICollectionViewDelegate-Protocol.h>
 #import <VideosUI/VUIDownloadDataSourceDelegate-Protocol.h>
+#import <VideosUI/VUILegacyCollectionViewDelegate-Protocol.h>
 
-@class NSDictionary, NSMutableArray, NSString, UIAlertController, UIBarButtonItem, UICollectionViewDiffableDataSource, VUICollectionView, VUIDownloadCollectionViewCell, VUIDownloadDataSource, VUIViewControllerContentPresenter;
+@class NSDictionary, NSMutableArray, NSString, UIAlertController, UIBarButtonItem, UICollectionViewDiffableDataSource, VUIDownloadCollectionViewCell, VUIDownloadDataSource, VUILegacyCollectionView, VUIViewControllerContentPresenter;
 
 __attribute__((visibility("hidden")))
-@interface VUIDownloadCollectionViewController : UIViewController <UICollectionViewDelegate, VUIDownloadDataSourceDelegate, VUICollectionViewDelegate>
+@interface VUIDownloadCollectionViewController : UIViewController <UICollectionViewDelegate, VUIDownloadDataSourceDelegate, VUILegacyCollectionViewDelegate>
 {
+    double _lastAppearWidth;
     _Bool _requiresRelayout;
     _Bool _isEditing;
     _Bool _isSelectingAll;
-    long long _gridStyle;
-    long long _gridType;
     VUIDownloadDataSource *_downloadDataSource;
     VUIViewControllerContentPresenter *_contentPresenter;
-    VUICollectionView *_collectionView;
+    VUILegacyCollectionView *_collectionView;
     UIAlertController *_alertController;
     UICollectionViewDiffableDataSource *_diffableDataSource;
     VUIDownloadCollectionViewCell *_sizingCell;
@@ -34,9 +33,13 @@ __attribute__((visibility("hidden")))
     NSDictionary *_identifierToDownloadEntityDictionary;
     NSMutableArray *_assetControllersToRemove;
     double _cellWidth;
+    long long _gridStyle;
+    long long _gridType;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long gridType; // @synthesize gridType=_gridType;
+@property(nonatomic) long long gridStyle; // @synthesize gridStyle=_gridStyle;
 @property(nonatomic) _Bool isSelectingAll; // @synthesize isSelectingAll=_isSelectingAll;
 @property(nonatomic) _Bool isEditing; // @synthesize isEditing=_isEditing;
 @property(nonatomic) _Bool requiresRelayout; // @synthesize requiresRelayout=_requiresRelayout;
@@ -51,11 +54,10 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) VUIDownloadCollectionViewCell *sizingCell; // @synthesize sizingCell=_sizingCell;
 @property(retain, nonatomic) UICollectionViewDiffableDataSource *diffableDataSource; // @synthesize diffableDataSource=_diffableDataSource;
 @property(retain, nonatomic) UIAlertController *alertController; // @synthesize alertController=_alertController;
-@property(retain, nonatomic) VUICollectionView *collectionView; // @synthesize collectionView=_collectionView;
+@property(retain, nonatomic) VUILegacyCollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property(retain, nonatomic) VUIViewControllerContentPresenter *contentPresenter; // @synthesize contentPresenter=_contentPresenter;
 @property(retain, nonatomic) VUIDownloadDataSource *downloadDataSource; // @synthesize downloadDataSource=_downloadDataSource;
-@property(nonatomic) long long gridType; // @synthesize gridType=_gridType;
-@property(nonatomic) long long gridStyle; // @synthesize gridStyle=_gridStyle;
+- (void)_updateNavigationBarPadding;
 - (void)_updateSelectAllBarButtonItemIfNecessary;
 - (void)_updateAllVisibleCellsForEditingMode;
 - (void)_deleteMediaEntitiesInDownloadEntities:(id)arg1;

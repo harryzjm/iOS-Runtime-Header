@@ -21,6 +21,7 @@
 @property(retain, nonatomic) NSArray *bbox; // @synthesize bbox=_bbox;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly, nonatomic) NSArray *regionIds; // @synthesize regionIds=_regionIds;
+@property(readonly, nonatomic) NSString *areaID;
 @property(readonly, nonatomic) double maxLon;
 @property(readonly, nonatomic) double minLon;
 @property(readonly, nonatomic) double maxLat;

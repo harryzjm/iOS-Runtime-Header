@@ -18,17 +18,21 @@
     NSString *_systemIconImageName;
     id _target;
     SEL _action;
+    SEL _menuAction;
     _PXPhotosBarButtonSpecManager *_specManager;
     PXPhotosViewModel *_viewModel;
     PXCuratedLibraryOverlayButton *_button;
     PXUpdater *_updater;
+    id _changeDeliveryHandle;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) id changeDeliveryHandle; // @synthesize changeDeliveryHandle=_changeDeliveryHandle;
 @property(readonly, nonatomic) PXUpdater *updater; // @synthesize updater=_updater;
 @property(readonly, nonatomic) PXCuratedLibraryOverlayButton *button; // @synthesize button=_button;
 @property(readonly, nonatomic) PXPhotosViewModel *viewModel; // @synthesize viewModel=_viewModel;
 @property(readonly, nonatomic) _PXPhotosBarButtonSpecManager *specManager; // @synthesize specManager=_specManager;
+@property(readonly, nonatomic) SEL menuAction; // @synthesize menuAction=_menuAction;
 @property(readonly, nonatomic) SEL action; // @synthesize action=_action;
 @property(readonly, nonatomic) __weak id target; // @synthesize target=_target;
 @property(readonly, nonatomic) NSString *systemIconImageName; // @synthesize systemIconImageName=_systemIconImageName;
@@ -38,11 +42,17 @@
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)_updateButtons;
 - (void)_invalidateButtons;
+- (void)_resumeChangeDeliveryIfPossible;
+- (void)_pauseChangeDelivery;
+- (void)_handleWillDismissMenu;
+- (void)_handleWillDisplayMenu;
+- (void)_handleMenuAction;
 - (void)_handleAction;
 - (id)_createButtonConfiguration;
 - (void)tintColorDidChange;
 - (void)layoutSubviews;
-- (id)initWithTitle:(id)arg1 orSystemItem:(long long)arg2 orSystemIconName:(id)arg3 target:(id)arg4 action:(SEL)arg5 specManager:(id)arg6 viewModel:(id)arg7;
+- (void)dealloc;
+- (id)initWithTitle:(id)arg1 orSystemItem:(long long)arg2 orSystemIconName:(id)arg3 target:(id)arg4 action:(SEL)arg5 menuAction:(SEL)arg6 specManager:(id)arg7 viewModel:(id)arg8;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

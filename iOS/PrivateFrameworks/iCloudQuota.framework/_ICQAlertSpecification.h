@@ -22,6 +22,8 @@
     NSMutableDictionary *_linkForButtonIndex;
 }
 
++ (id)alertSpecificationDictionarySampleForLevel:(long long)arg1;
++ (id)alertSpecificationSampleForLevel:(long long)arg1;
 - (void).cxx_destruct;
 @property(retain) NSMutableDictionary *linkForButtonIndex; // @synthesize linkForButtonIndex=_linkForButtonIndex;
 @property(nonatomic) long long defaultButtonIndex; // @synthesize defaultButtonIndex=_defaultButtonIndex;

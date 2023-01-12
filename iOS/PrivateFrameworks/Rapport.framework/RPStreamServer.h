@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue, RPMessageable;
 
 @interface RPStreamServer : NSObject
@@ -17,18 +17,22 @@
     id _selfRef;
     NSMutableDictionary *_streamSessions;
     unsigned int _streamFlags;
+    int _streamQoS;
     CDUnknownBlockType _invalidationHandler;
     id <RPMessageable> _messenger;
+    NSString *_serviceType;
     CDUnknownBlockType _streamAcceptHandler;
     CDUnknownBlockType _streamPrepareHandlerEx;
     CDUnknownBlockType _streamPrepareHandler;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) int streamQoS; // @synthesize streamQoS=_streamQoS;
 @property(copy, nonatomic) CDUnknownBlockType streamPrepareHandler; // @synthesize streamPrepareHandler=_streamPrepareHandler;
 @property(copy, nonatomic) CDUnknownBlockType streamPrepareHandlerEx; // @synthesize streamPrepareHandlerEx=_streamPrepareHandlerEx;
 @property(nonatomic) unsigned int streamFlags; // @synthesize streamFlags=_streamFlags;
 @property(copy, nonatomic) CDUnknownBlockType streamAcceptHandler; // @synthesize streamAcceptHandler=_streamAcceptHandler;
+@property(copy, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
 @property(retain, nonatomic) id <RPMessageable> messenger; // @synthesize messenger=_messenger;
 @property(copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 - (void)_handleStopRequest:(id)arg1 options:(id)arg2 responseHandler:(CDUnknownBlockType)arg3;

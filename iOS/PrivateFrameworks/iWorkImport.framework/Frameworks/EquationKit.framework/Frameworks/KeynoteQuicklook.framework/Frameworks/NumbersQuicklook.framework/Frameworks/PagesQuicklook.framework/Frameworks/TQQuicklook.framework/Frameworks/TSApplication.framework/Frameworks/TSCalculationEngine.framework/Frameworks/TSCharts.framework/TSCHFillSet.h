@@ -10,18 +10,18 @@
 
 @interface TSCHFillSet : NSObject
 {
-    NSString *mIdentifier;
-    NSString *mPListPath;
-    NSDictionary *mPListProperties;
-    TSUImage *mSwatchImage;
-    NSMutableArray *mSeriesSwatchImages;
-    struct CGRect *mSeriesSwatchImageRects;
+    NSString *_identifier;
+    NSString *_PListPath;
+    NSDictionary *_PListProperties;
+    TSUImage *_swatchImage;
+    NSMutableArray *_seriesSwatchImages;
+    struct CGRect *_seriesSwatchImageRects;
 }
 
 + (struct CGSize)defaultSwatchSize;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSString *plistPath; // @synthesize plistPath=mPListPath;
-@property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=mIdentifier;
+@property(readonly, nonatomic) NSString *plistPath; // @synthesize plistPath=_PListPath;
+@property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)seriesStylesForSeriesTypes:(id)arg1 context:(id)arg2;
 - (id)propertyMutationTuplesForPreviewOnChart:(id)arg1;
 - (void)p_createSeriesSwatchImagesWithSeriesCount:(unsigned long long)arg1 swatchSize:(struct CGSize)arg2;

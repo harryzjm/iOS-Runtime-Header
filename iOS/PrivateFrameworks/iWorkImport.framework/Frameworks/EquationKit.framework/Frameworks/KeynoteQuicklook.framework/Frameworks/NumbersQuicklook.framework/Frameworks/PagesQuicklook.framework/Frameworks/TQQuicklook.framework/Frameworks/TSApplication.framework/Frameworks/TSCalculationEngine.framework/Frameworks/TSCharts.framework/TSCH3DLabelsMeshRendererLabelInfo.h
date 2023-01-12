@@ -21,15 +21,15 @@
 }
 
 - (id).cxx_construct;
-@property(readonly, retain, nonatomic) TSCH3DExternalLabelAttribute *externalAttribute; // @synthesize externalAttribute=_externalAttribute;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) TSCH3DExternalLabelAttribute *externalAttribute; // @synthesize externalAttribute=_externalAttribute;
 @property(readonly, nonatomic) tvec2_84d5962d alignmentOffset; // @synthesize alignmentOffset=_alignmentOffset;
 @property(readonly, nonatomic) tvec2_84d5962d offset; // @synthesize offset=_offset;
 @property(readonly, nonatomic) float rotation; // @synthesize rotation=_rotation;
 @property(readonly, nonatomic) tvec3_17f03ce0 scale; // @synthesize scale=_scale;
 @property(readonly, nonatomic) tvec3_17f03ce0 translation; // @synthesize translation=_translation;
 @property(readonly, nonatomic) tvec3_17f03ce0 position; // @synthesize position=_position;
-@property(readonly, nonatomic) TSCH3DLabelsRenderer *renderer; // @synthesize renderer=_renderer;
-- (void)dealloc;
+@property(readonly, nonatomic) __weak TSCH3DLabelsRenderer *renderer; // @synthesize renderer=_renderer;
 - (id)initWithRenderer:(id)arg1 position:(tvec3_17f03ce0)arg2 translation:(tvec3_17f03ce0)arg3 scale:(tvec3_17f03ce0)arg4 rotation:(float)arg5 offset:(tvec2_84d5962d)arg6 alignmentOffset:(tvec2_84d5962d)arg7 externalAttribute:(id)arg8;
 
 @end

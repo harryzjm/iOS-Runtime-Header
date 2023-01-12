@@ -20,7 +20,6 @@
 @property(retain, nonatomic) CKContainer *container; // @synthesize container=_container;
 @property(retain, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
 - (id)fetchKeyResponseFromServerForKeyID:(id)arg1 signedKeyRequest:(id)arg2 error:(id *)arg3;
-- (void)invokeRPC:(id)arg1 request:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (id)initWithTeamIdentifier:(id)arg1;
 
 @end

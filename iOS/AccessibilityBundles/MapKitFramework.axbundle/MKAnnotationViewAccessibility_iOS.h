@@ -12,6 +12,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)accessibilityLocality;
+- (id)accessibilityValue;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (_Bool)isAccessibilityElement;
 - (unsigned long long)accessibilityTraits;

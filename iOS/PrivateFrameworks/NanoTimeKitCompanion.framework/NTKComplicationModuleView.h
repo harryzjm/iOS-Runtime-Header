@@ -16,12 +16,11 @@
     id <NTKComplicationDisplayObserver> displayObserver;
 }
 
-+ (id)_extraLargeStopwatchImageProvider;
-+ (id)_modularSmallStopwatchImageProvider;
-+ (id)_extraLargeTimerImageProvider;
-+ (id)_modularSmallTimerImageProvider;
++ (id)_extraLargeStopwatchImageProviderForDevice:(id)arg1;
++ (id)_modularSmallStopwatchImageProviderForDevice:(id)arg1;
 + (id)_extraLargeAlarmImageProvider;
 + (id)_modularSmallAlarmImageProvider;
++ (id)_imageProviderForImageSymbolName:(id)arg1 imageAssetNamePrefix:(id)arg2;
 + (id)largeModuleViewForComplicationType:(unsigned long long)arg1;
 + (id)smallModuleViewForComplicationType:(unsigned long long)arg1;
 - (void).cxx_destruct;

@@ -13,7 +13,7 @@
 - (double)sageMaxDepthRatio;
 - (double)maxDepthRatio;
 - (Class)stageClass;
-- (id)initialSceneWithChartInfo:(id)arg1 layoutSettings:(CDStruct_b1c75024)arg2;
+- (id)initialSceneWithChartInfo:(id)arg1 layoutSettings:(CDStruct_c48db077)arg2;
 - (id)valueLabelPositioner;
 - (id)categoryLabelPositioner;
 - (int)labelOrientation;
@@ -30,7 +30,7 @@
 - (id)defaultDataFileName;
 - (Class)presetImagerClass;
 - (Class)valueAxisClassForID:(id)arg1 scale:(long long)arg2;
-- (void)p_initializeAxisIDs;
+- (id)initWithChartType:(id)arg1;
 - (int)deprecated3DShadowSpecificProperty;
 - (int)deprecated3DBevelEdgesSpecificProperty;
 

@@ -6,19 +6,20 @@
 
 #import <SpringBoard/FBApplicationProcessLaunchTransactionObserver-Protocol.h>
 
-@class NSMapTable, NSMutableSet, NSString;
+@class NSError, NSMapTable, NSMutableSet, NSString;
 
 @interface SBSuspendedWorkspaceTransaction <FBApplicationProcessLaunchTransactionObserver>
 {
     NSMapTable *_launchTransactionToSceneEntityMap;
     NSMutableSet *_outstandingProcessLaunchTransactions;
     NSMutableSet *_incompleteProcessLaunchTransactions;
-    _Bool _anyLaunchFailed;
+    NSError *_anyLaunchError;
 }
 
 - (void).cxx_destruct;
 - (void)transaction:(id)arg1 willLaunchProcess:(id)arg2;
 - (void)_didComplete;
+- (void)_addSceneEntityToAppRecency:(id)arg1;
 - (void)_childTransactionDidComplete:(id)arg1;
 - (void)_begin;
 - (void)_sendActivationResultWithError:(id)arg1;

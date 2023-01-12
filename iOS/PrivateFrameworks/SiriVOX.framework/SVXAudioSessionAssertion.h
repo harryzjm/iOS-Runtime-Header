@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class AFSafetyBlock, NSString;
 @protocol SVXTaskTracking;
 
 __attribute__((visibility("hidden")))
 @interface SVXAudioSessionAssertion : NSObject
 {
+    AFSafetyBlock *_relinquishHandler;
     unsigned int _audioSessionID;
     NSString *_reason;
     id <SVXTaskTracking> _taskTracker;
@@ -22,7 +23,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property(readonly, nonatomic) unsigned int audioSessionID; // @synthesize audioSessionID=_audioSessionID;
 - (void)relinquish;
-- (id)initWithReason:(id)arg1 audioSessionID:(unsigned int)arg2 taskTracker:(id)arg3;
+- (id)initWithReason:(id)arg1 audioSessionID:(unsigned int)arg2 taskTracker:(id)arg3 relinquishHandler:(CDUnknownBlockType)arg4;
 - (void)dealloc;
 - (id)description;
 

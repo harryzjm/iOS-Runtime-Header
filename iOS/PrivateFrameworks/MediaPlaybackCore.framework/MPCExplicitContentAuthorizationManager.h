@@ -9,6 +9,7 @@
 @class ICAgeVerificationState, NSError;
 @protocol MPCExplicitContentAuthorizationDelegate;
 
+__attribute__((visibility("hidden")))
 @interface MPCExplicitContentAuthorizationManager : NSObject
 {
     id <MPCExplicitContentAuthorizationDelegate> _delegate;

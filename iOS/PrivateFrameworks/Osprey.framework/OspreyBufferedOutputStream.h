@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)close;
 - (id)streamError;
+- (_Bool)hasBufferedData;
 - (long long)write:(const char *)arg1 maxLength:(unsigned long long)arg2;
 - (_Bool)hasSpaceAvailable;
 - (id)initWithBufferSize:(unsigned long long)arg1 underlyingOutputStream:(id)arg2 queue:(id)arg3;

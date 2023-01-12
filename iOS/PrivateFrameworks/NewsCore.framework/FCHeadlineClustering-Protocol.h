@@ -7,9 +7,9 @@
 #import <NewsCore/NSObject-Protocol.h>
 
 @class FCClusteredHeadlines, FCHeadlineClusteringRules, FCSubscribedTags, NSArray, NSSet;
-@protocol FCFeedPersonalizing, FCTranslationProvider;
+@protocol FCFavoritesPersonalizer, FCFeedPersonalizing, FCTranslationProvider;
 
 @protocol FCHeadlineClustering <NSObject>
-- (FCClusteredHeadlines *)clusterHeadlinesByTopic:(NSArray *)arg1 subscribedTags:(FCSubscribedTags *)arg2 personalizer:(id <FCFeedPersonalizing>)arg3 rules:(FCHeadlineClusteringRules *)arg4 translationProvider:(id <FCTranslationProvider>)arg5 unpaidHeadlineIDs:(NSSet *)arg6;
+- (FCClusteredHeadlines *)clusterHeadlinesByTopic:(NSArray *)arg1 subscribedTags:(FCSubscribedTags *)arg2 favoritesPersonalizer:(id <FCFavoritesPersonalizer>)arg3 personalizer:(id <FCFeedPersonalizing>)arg4 rules:(FCHeadlineClusteringRules *)arg5 translationProvider:(id <FCTranslationProvider>)arg6 unpaidHeadlineIDs:(NSSet *)arg7;
 @end
 

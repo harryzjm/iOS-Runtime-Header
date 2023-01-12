@@ -21,7 +21,7 @@
 - (void)playIncomingMessageSoundAndHapticForMessage:(id)arg1 messageIsForCurrentTranscript:(_Bool)arg2;
 - (_Bool)allowedByScreenTimeToPlayReceiveSoundForChat:(id)arg1;
 - (_Bool)_shouldPlayTapbackSound;
-- (_Bool)shouldPlayDefaultSendSoundForMessageInCurrentTranscript:(id)arg1;
+- (_Bool)playTapbackReceivedSoundForMessageInCurrentTranscript:(id)arg1;
 - (void)playSendSoundForMessage:(id)arg1;
 - (void)stopPlayingAlert;
 

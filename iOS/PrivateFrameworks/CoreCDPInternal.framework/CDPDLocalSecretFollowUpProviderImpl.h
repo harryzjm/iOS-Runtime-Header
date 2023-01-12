@@ -14,6 +14,8 @@
 {
 }
 
+- (void)deleteConfirmExistingSecretFollowUp;
+- (void)postConfirmExistingSecretFollowUp;
 - (void)deleteLocalSecretChangeFollowUp;
 - (void)postLocalSecretChangeFollowUp;
 - (void)postRepairFollowUp;

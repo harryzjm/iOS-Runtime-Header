@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVContentKeyRequestInternal, NSData, NSDictionary, NSError;
+@class AVContentKey, AVContentKeyRequestInternal, AVContentKeySpecifier, NSData, NSDictionary, NSError;
 
 @interface AVContentKeyRequest : NSObject
 {
@@ -19,7 +19,7 @@
 + (void)_validateHLSEncryptionMethod:(id)arg1;
 + (void)_validateProtocolVersionList:(id)arg1;
 + (id)_mergePreloadingRequestOptions:(id)arg1 withCreateKeyRequestOptions:(id)arg2;
-+ (int)_prepareCryptor:(struct OpaqueFigCPECryptor *)arg1 forRenewal:(_Bool)arg2 andReturnKeyRequestID:(unsigned long long *)arg3;
++ (_Bool)_prepareCryptor:(struct OpaqueFigCPECryptor *)arg1 forRenewal:(_Bool)arg2 andReturnKeyRequestID:(unsigned long long *)arg3 isInchargeOfKeyRequest:(_Bool *)arg4 error:(id *)arg5;
 - (void)_finishLoadingCustomURLRequestWithError:(id)arg1;
 - (void)_finishLoadingCustomURLRequestWithResponseData:(id)arg1 renewalDate:(id)arg2;
 - (void)_sendResponseInfoToCustomURLHandlerWithRenewalDate:(id)arg1;
@@ -29,20 +29,23 @@
 - (void)renewExpiringContentKeyResponseData;
 - (void)processContentKeyResponseError:(id)arg1;
 - (void)processContentKeyResponse:(id)arg1;
-- (void)processContentKeyResponseData:(id)arg1 renewalDate:(id)arg2;
+- (_Bool)processContentKeyResponseData:(id)arg1 renewalDate:(id)arg2 error:(id *)arg3;
 - (void)processContentKeyResponseData:(id)arg1;
 - (void)makeStreamingContentKeyRequestDataForApp:(id)arg1 contentIdentifier:(id)arg2 options:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)contentKeyRequestDataForApp:(id)arg1 contentIdentifier:(id)arg2 options:(id)arg3 error:(id *)arg4;
-- (struct OpaqueFigCPECryptor *)_setCryptorWithFormatDescription:(struct opaqueCMFormatDescription *)arg1 error:(id *)arg2;
+- (_Bool)ensureCryptorWithFormatDescription:(struct opaqueCMFormatDescription *)arg1 error:(id *)arg2;
 - (void)_handleKeyResponseSuccess;
 - (void)_handleKeyResponseError:(id)arg1;
 - (id)_getRetryReasonForError:(int)arg1;
+- (id)session;
 - (struct OpaqueFigCPECryptor *)figCryptor;
+@property(readonly) AVContentKey *contentKey;
+@property(readonly) AVContentKeySpecifier *contentKeySpecifier;
 @property(readonly) _Bool canProvidePersistableContentKey;
 - (void)_setError:(id)arg1;
 @property(readonly) NSError *error;
 - (_Bool)renewsExpiringResponseData;
-- (int)_prepareForKeyRenewal;
+- (_Bool)_prepareForKeyRenewalReturningError:(id *)arg1;
 - (void)_clearContext;
 - (void)_setStatus:(long long)arg1;
 @property(readonly, copy) NSDictionary *options;
@@ -54,8 +57,8 @@
 - (void)dealloc;
 - (id)initWithContentKeySession:(id)arg1 reportGroup:(id)arg2 customURLHandler:(struct OpaqueFigCustomURLHandler *)arg3 identifier:(id)arg4 requestInfo:(struct __CFDictionary *)arg5 requestID:(unsigned long long)arg6 providesPersistableKey:(_Bool)arg7 isRenewalRequest:(_Bool)arg8;
 - (void)_copyAndStoreCryptorUUID;
-- (id)initWithContentKeySession:(id)arg1 reportGroup:(id)arg2 identifier:(id)arg3 initializationData:(id)arg4 preloadingRequestOptions:(id)arg5 providesPersistableKey:(_Bool)arg6;
-- (int)_extractAndStoreKeyIDFromInitializationData:(id)arg1;
+- (id)initWithContentKeySession:(id)arg1 reportGroup:(id)arg2 identifier:(id)arg3 contentIdentifier:(id)arg4 keyIDFromInitializationData:(id)arg5 initializationData:(id)arg6 preloadingRequestOptions:(id)arg7 providesPersistableKey:(_Bool)arg8;
+- (long long)externalContentProtectionStatus;
 - (_Bool)willOutputBeObscuredDueToInsufficientExternalProtectionForDisplays:(id)arg1;
 - (_Bool)setReportGroup:(id)arg1;
 

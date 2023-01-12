@@ -32,9 +32,9 @@
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)compiledVersionForSpecification:(struct _MLModelSpecification *)arg1 options:(id)arg2 error:(id *)arg3;
-+ (id)compileSpecification:(struct _MLModelSpecification *)arg1 toArchive:(struct _MLModelOutputArchiver *)arg2 options:(id)arg3 error:(id *)arg4;
-+ (id)loadModelFromCompiledArchive:(struct _MLModelInputArchiver *)arg1 modelVersionInfo:(id)arg2 compilerVersionInfo:(id)arg3 configuration:(id)arg4 error:(id *)arg5;
++ (id)compiledVersionForSpecification:(void *)arg1 options:(id)arg2 error:(id *)arg3;
++ (id)compileSpecification:(void *)arg1 toArchive:(void *)arg2 options:(id)arg3 error:(id *)arg4;
++ (id)loadModelFromCompiledArchive:(void *)arg1 modelVersionInfo:(id)arg2 compilerVersionInfo:(id)arg3 configuration:(id)arg4 error:(id *)arg5;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *nearestDistancesFeatureName; // @synthesize nearestDistancesFeatureName=_nearestDistancesFeatureName;
 @property(retain, nonatomic) NSString *nearestLabelsFeatureName; // @synthesize nearestLabelsFeatureName=_nearestLabelsFeatureName;
@@ -61,12 +61,12 @@
 - (void)updateModelWithData:(id)arg1;
 - (void)setUpdateProgressHandlers:(id)arg1 dispatchQueue:(id)arg2;
 - (id)predictionFromFeatures:(id)arg1 options:(id)arg2 error:(id *)arg3;
-- (void)extractNearestNeighborLabels:(id *)arg1 distances:(id *)arg2 from:(vector_392775c5)arg3;
+- (void)extractNearestNeighborLabels:(id *)arg1 distances:(id *)arg2 from:(vector_7105b4ee)arg3;
 - (id)packageOutputWithPredictedLabel:(id)arg1 classProbabilities:(id)arg2 nearestLabels:(id)arg3 nearestDistances:(id)arg4;
 - (id)inputMultiArray:(id)arg1 error:(id *)arg2;
-- (void)computeClassProbabilities:(id *)arg1 from:(vector_392775c5 *)arg2;
-- (vector_392775c5)computeKClosestLabels:(id)arg1;
-- (id)initWithDescription:(id)arg1 configuration:(id)arg2 parameters:(id)arg3 dataPoints:(vector_7584168e *)arg4 labels:(id)arg5 error:(id *)arg6;
+- (void)computeClassProbabilities:(id *)arg1 from:(void *)arg2;
+- (vector_7105b4ee)computeKClosestLabels:(id)arg1;
+- (id)initWithDescription:(id)arg1 configuration:(id)arg2 parameters:(id)arg3 dataPoints:(void *)arg4 labels:(id)arg5 error:(id *)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

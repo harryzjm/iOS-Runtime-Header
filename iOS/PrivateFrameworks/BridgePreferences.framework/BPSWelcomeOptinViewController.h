@@ -8,7 +8,7 @@
 
 #import <BridgePreferences/BPSBuddyController-Protocol.h>
 
-@class BPSWatchView, NSString, NSUserActivity, OBHeaderAccessoryButton, OBTrayButton;
+@class BPSIllustratedWatchView, BPSWatchView, NSLayoutConstraint, NSString, NSUserActivity, OBHeaderAccessoryButton, OBTrayButton;
 @protocol BPSBuddyControllerDelegate;
 
 @interface BPSWelcomeOptinViewController : OBWelcomeController <BPSBuddyController>
@@ -21,11 +21,13 @@
     _Bool _hasDetailText;
     unsigned long long _style;
     BPSWatchView *_watchView;
+    BPSIllustratedWatchView *_illustratedWatchView;
     id <BPSBuddyControllerDelegate> _delegate;
     OBTrayButton *_suggestedChoiceButton;
     OBTrayButton *_alternateChoiceButton;
     OBTrayButton *_okayButton;
     OBHeaderAccessoryButton *_learnMoreButton;
+    NSLayoutConstraint *_watchViewBottomConstraint;
     NSUserActivity *_tapToRadarActivity;
 }
 
@@ -36,12 +38,14 @@
 @property(nonatomic) _Bool showOkayButton; // @synthesize showOkayButton=_showOkayButton;
 @property(nonatomic) _Bool showAlternateButton; // @synthesize showAlternateButton=_showAlternateButton;
 @property(nonatomic) _Bool showSuggestedButton; // @synthesize showSuggestedButton=_showSuggestedButton;
+@property(retain, nonatomic) NSLayoutConstraint *watchViewBottomConstraint; // @synthesize watchViewBottomConstraint=_watchViewBottomConstraint;
 @property(retain, nonatomic) OBHeaderAccessoryButton *learnMoreButton; // @synthesize learnMoreButton=_learnMoreButton;
 @property(retain, nonatomic) OBTrayButton *okayButton; // @synthesize okayButton=_okayButton;
 @property(retain, nonatomic) OBTrayButton *alternateChoiceButton; // @synthesize alternateChoiceButton=_alternateChoiceButton;
 @property(retain, nonatomic) OBTrayButton *suggestedChoiceButton; // @synthesize suggestedChoiceButton=_suggestedChoiceButton;
 @property(nonatomic) _Bool isDisplayingInSkippedMiniFlow; // @synthesize isDisplayingInSkippedMiniFlow=_isDisplayingInSkippedMiniFlow;
 @property(nonatomic) __weak id <BPSBuddyControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(retain, nonatomic) BPSIllustratedWatchView *illustratedWatchView; // @synthesize illustratedWatchView=_illustratedWatchView;
 @property(retain, nonatomic) BPSWatchView *watchView; // @synthesize watchView=_watchView;
 @property(nonatomic) unsigned long long style; // @synthesize style=_style;
 - (_Bool)wantsOkayPillButton;

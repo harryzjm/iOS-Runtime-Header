@@ -10,7 +10,7 @@
 {
 }
 
-+ (id)invalidInfoPlistErrorWithMissingKey:(id)arg1;
++ (id)invalidInfoPlistErrorWithMissingKey:(id)arg1 code:(long long)arg2;
 + (id)authorizationError;
 + (id)authorizationErrorWithStatus:(long long)arg1;
 + (id)invalidEntitlementError;

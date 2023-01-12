@@ -6,17 +6,17 @@
 
 #import <TSPersistence/TSPObject.h>
 
-@class TSPDocumentRevision;
+@class TSKViewStateRoot, TSPDocumentRevision;
 
 @interface TSKViewState : TSPObject
 {
-    TSPObject *_viewStateRoot;
+    TSKViewStateRoot *_viewStateRoot;
     TSPDocumentRevision *_documentRevision;
 }
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) TSPDocumentRevision *documentRevision; // @synthesize documentRevision=_documentRevision;
-@property(retain, nonatomic) TSPObject *viewStateRoot; // @synthesize viewStateRoot=_viewStateRoot;
+@property(retain, nonatomic) TSKViewStateRoot *viewStateRoot; // @synthesize viewStateRoot=_viewStateRoot;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)packageLocator;

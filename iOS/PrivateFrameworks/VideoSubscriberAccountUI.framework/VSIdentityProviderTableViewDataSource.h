@@ -17,6 +17,8 @@ __attribute__((visibility("hidden")))
     UITableView *_tableView;
     NSArray *_identityProviders;
     unsigned long long _additionalProvidersMode;
+    NSString *_requestedStorefrontCountryCode;
+    NSArray *_tvProviderSupportedStorefronts;
     NSArray *_sections;
     NSDictionary *_destinationsBySectionIndexTitle;
 }
@@ -24,6 +26,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSDictionary *destinationsBySectionIndexTitle; // @synthesize destinationsBySectionIndexTitle=_destinationsBySectionIndexTitle;
 @property(copy, nonatomic) NSArray *sections; // @synthesize sections=_sections;
+@property(copy, nonatomic) NSArray *tvProviderSupportedStorefronts; // @synthesize tvProviderSupportedStorefronts=_tvProviderSupportedStorefronts;
+@property(nonatomic) NSString *requestedStorefrontCountryCode; // @synthesize requestedStorefrontCountryCode=_requestedStorefrontCountryCode;
 @property(nonatomic) unsigned long long additionalProvidersMode; // @synthesize additionalProvidersMode=_additionalProvidersMode;
 @property(copy, nonatomic) NSArray *identityProviders; // @synthesize identityProviders=_identityProviders;
 @property(retain, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
@@ -34,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)sectionIndexTitlesForTableView:(id)arg1;
 - (id)tableView:(id)arg1 indexPathForSectionIndexTitle:(id)arg2 atIndex:(long long)arg3;
+- (void)setNumberOfLinesForCell:(id)arg1 atIndexPath:(id)arg2;
 - (void)_scrollToTableHeaderView;
 - (id)_textColorForRowAtIndexPath:(id)arg1;
 - (long long)_textAlignmentForRowAtIndexPath:(id)arg1;
@@ -41,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (long long)_cellStyleForRowAtIndexPath:(id)arg1;
 - (id)_cellReuseIdentifierForRowAtIndexPath:(id)arg1;
 - (id)_additionalProvidersRowTitle;
+- (id)storefrontAtIndexPath:(id)arg1;
 - (id)identityProviderForRowAtIndexPath:(id)arg1;
 - (unsigned long long)_minimumProviderCountForIndexes;
 - (id)init;

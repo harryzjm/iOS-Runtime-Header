@@ -12,16 +12,14 @@
 
 @interface HKActiveWatchRemoteFeatureAvailabilityDataSource : NSObject <HKRemoteFeatureAvailabilityDataSource>
 {
-    NSString *_electrocardiogramOnboardingCountryCode;
-    NSString *_atrialFibrillationDetectionOnboardingCountryCode;
+    NSString *_onboardingCountryCode;
     NRPairedDeviceRegistry *_pairedDeviceRegistry;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NRPairedDeviceRegistry *pairedDeviceRegistry; // @synthesize pairedDeviceRegistry=_pairedDeviceRegistry;
-@property(copy, nonatomic) NSString *atrialFibrillationDetectionOnboardingCountryCode; // @synthesize atrialFibrillationDetectionOnboardingCountryCode=_atrialFibrillationDetectionOnboardingCountryCode;
-@property(copy, nonatomic) NSString *electrocardiogramOnboardingCountryCode; // @synthesize electrocardiogramOnboardingCountryCode=_electrocardiogramOnboardingCountryCode;
-- (CDStruct_f6aba300)_operatingSystemVersionForWatchOSVersion:(unsigned int)arg1;
+@property(copy, nonatomic) NSString *onboardingCountryCode; // @synthesize onboardingCountryCode=_onboardingCountryCode;
+- (CDStruct_f6aba300)_operatingSystemVersionForOSVersion:(unsigned int)arg1;
 - (CDStruct_f6aba300)watchElectrocardiogramVersion;
 - (CDStruct_f6aba300)watchAtrialFibrillationDetectionVersion;
 - (id)watchCompanionDevicePlatform;
@@ -31,6 +29,8 @@
 - (id)watchModelNumber;
 - (id)watchRegion;
 - (CDStruct_f6aba300)watchOSVersion;
+- (id)iOSBuildVersion;
+- (CDStruct_f6aba300)iOSVersion;
 - (id)_activeWatch;
 - (id)init;
 

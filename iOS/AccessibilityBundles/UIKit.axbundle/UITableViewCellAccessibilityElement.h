@@ -17,9 +17,7 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool usingRealTableViewCell; // @synthesize usingRealTableViewCell=_usingRealTableViewCell;
 @property(retain, nonatomic) UITableViewCell *tableViewCell; // @synthesize tableViewCell=_tableViewCell;
-@property(retain, nonatomic) NSIndexPath *indexPath; // @synthesize indexPath=_indexPath;
 - (id)_accessibilityCapturedImages;
 - (id)accessibilityDropPointDescriptors;
 - (id)accessibilityDragSourceDescriptors;
@@ -60,7 +58,6 @@
 - (struct _NSRange)_accessibilitySelectedTextRange;
 - (void)_accessibilitySetSelectedTextRange:(struct _NSRange)arg1;
 - (_Bool)accessibilityScrollToVisibleWithChild:(id)arg1;
-- (_Bool)_accessibilityIsOutsideParentBounds;
 - (id)_accessibilityUserTestingProxyView;
 - (id)_accessibilityUserTestingVisibleAncestor;
 - (_Bool)_accessibilityUserTestingIsPreferredButton;
@@ -80,6 +77,7 @@
 - (id)_accessibilityLineNumberAndColumnForPoint:(struct CGPoint)arg1;
 - (id)_accessibilityDataDetectorScheme:(struct CGPoint)arg1;
 - (_Bool)_accessibilitySupportsActivateAction;
+- (id)automationCustomProperties;
 - (_Bool)accessibilityActivate;
 - (struct CGPoint)_accessibilityMaxScrubberPosition;
 - (struct CGPoint)_accessibilityMinScrubberPosition;
@@ -114,8 +112,8 @@
 - (double)_accessibilityAllowedGeometryOverlap;
 - (long long)_accessibilityCompareElement:(id)arg1 toElement:(id)arg2;
 - (_Bool)shouldGroupAccessibilityChildren;
+- (_Bool)_accessibilityElementServesAsHeadingLandmark;
 - (long long)_accessibilityUserTestingChildrenCount;
-@property(readonly, nonatomic) UITableViewCell *existingTableViewCell;
 - (_Bool)_accessibilityBackingElementIsValid;
 - (id)_accessibilityProxyView;
 @property(readonly, nonatomic) UITableViewCell *realTableViewCell; // @dynamic realTableViewCell;

@@ -22,6 +22,8 @@
 @property(retain, nonatomic) CKMovieMediaObject *mediaObject; // @synthesize mediaObject=_mediaObject;
 - (void)cleanupPlayerIfNeeded;
 - (void)videoDidReachEnd:(id)arg1;
+- (id)createAVAssetAndValidateCodec;
+- (_Bool)isCodecTypeAllowed:(unsigned int)arg1;
 - (void)tapGestureRecognized:(id)arg1;
 - (void)prepareForDisplay;
 - (void)prepareForReuse;

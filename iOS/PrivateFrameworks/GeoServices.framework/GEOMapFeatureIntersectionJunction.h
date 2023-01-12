@@ -7,11 +7,13 @@
 __attribute__((visibility("hidden")))
 @interface GEOMapFeatureIntersectionJunction
 {
-    CDStruct_3b01f0aa *_connectivityJunction;
+    struct GeoCodecsConnectivityJunction *_connectivityJunction;
 }
 
-- (CDStruct_3b01f0aa *)connectivityJunction;
-- (id)initWithConnectivityJunction:(CDStruct_3b01f0aa *)arg1 tile:(id)arg2;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
+- (struct GeoCodecsConnectivityJunction *)connectivityJunction;
+- (id)initWithConnectivityJunction:(struct GeoCodecsConnectivityJunction *)arg1 tile:(id)arg2;
 
 @end
 

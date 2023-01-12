@@ -16,6 +16,7 @@
     PBUnknownFields *_unknownFields;
     GEOClickableAdvisory *_clickableAdvisory;
     GEOAdvisoryNotice *_evAdvisory;
+    NSMutableArray *_genericAdvisorys;
     NSMutableArray *_incidentAdvisorys;
     NSMutableArray *_noticeAdvisorys;
     GEOAdvisoryNotice *_tollAdvisory;
@@ -26,6 +27,7 @@
         unsigned int read_unknownFields:1;
         unsigned int read_clickableAdvisory:1;
         unsigned int read_evAdvisory:1;
+        unsigned int read_genericAdvisorys:1;
         unsigned int read_incidentAdvisorys:1;
         unsigned int read_noticeAdvisorys:1;
         unsigned int read_tollAdvisory:1;
@@ -34,6 +36,7 @@
 }
 
 + (_Bool)isValid:(id)arg1;
++ (Class)genericAdvisoryType;
 + (Class)incidentAdvisoryType;
 + (Class)noticeAdvisoryType;
 - (void).cxx_destruct;
@@ -52,6 +55,11 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)genericAdvisoryAtIndex:(unsigned long long)arg1;
+- (unsigned long long)genericAdvisorysCount;
+- (void)addGenericAdvisory:(id)arg1;
+- (void)clearGenericAdvisorys;
+@property(retain, nonatomic) NSMutableArray *genericAdvisorys;
 - (id)incidentAdvisoryAtIndex:(unsigned long long)arg1;
 - (unsigned long long)incidentAdvisorysCount;
 - (void)addIncidentAdvisory:(id)arg1;

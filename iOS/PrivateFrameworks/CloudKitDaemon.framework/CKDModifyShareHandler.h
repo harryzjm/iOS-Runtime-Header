@@ -6,7 +6,6 @@
 
 @class CKRecordID, CKShare;
 
-__attribute__((visibility("hidden")))
 @interface CKDModifyShareHandler
 {
     _Bool _haveAddedOwnerToShare;
@@ -23,11 +22,13 @@ __attribute__((visibility("hidden")))
 - (void)clearProtectionDataForRecord;
 - (id)_removePublicKey:(id)arg1 fromInvitedPCS:(struct _OpaquePCSShareProtection *)arg2;
 - (id)_ensurePrivateParticipant:(id)arg1 isInInvitedSharePCS:(struct _OpaquePCSShareProtection *)arg2;
+- (unsigned long long)invitedPCSPermissionForParticipant:(id)arg1;
 - (struct _PCSPublicIdentityData *)createPublicIdentityFromPublicKeyForParticipant:(id)arg1 error:(id *)arg2;
 - (_Bool)_addedPrivateParticipantNeedsAManateeInvitation:(id)arg1;
 - (id)_publicKeyForParticipant:(id)arg1 error:(id *)arg2;
 - (id)_removePrivateParticipant:(id)arg1 fromInvitedSharePCS:(struct _OpaquePCSShareProtection *)arg2;
 - (_Bool)_removePrivateParticipantsFromInvitedPCS:(struct _OpaquePCSShareProtection *)arg1 error:(id *)arg2;
+- (_Bool)_modifyRoleForParticipant:(id)arg1 invitedPCS:(struct _OpaquePCSShareProtection *)arg2 shareeIdentities:(id)arg3 error:(id *)arg4;
 - (void)_setupParticipantsProtectionInfos;
 - (void)_addPublicKeyToSelfParticipant;
 - (_Bool)_cleanPublicPCSforShareWithError:(id *)arg1;

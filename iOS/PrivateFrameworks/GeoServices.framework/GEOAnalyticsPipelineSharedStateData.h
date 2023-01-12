@@ -4,20 +4,99 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class geo_isolater;
+@class NSObject, geo_isolater;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface GEOAnalyticsPipelineSharedStateData
 {
     geo_isolater *_placeIso;
     geo_isolater *_mapViewIso;
+    geo_isolater *_mapSettingsIso;
+    geo_isolater *_mapUIShownIso;
+    geo_isolater *_userProfileIso;
+    geo_isolater *_mapFeaturesIso;
+    geo_isolater *_mapUserSettingsIso;
+    geo_isolater *_routingSettingsIso;
+    NSObject<OS_dispatch_queue> *_taskQueue;
+    NSObject<OS_dispatch_source> *_periodicSettingsTimer;
 }
 
 + (id)sharedData;
 - (void).cxx_destruct;
+- (void)setMapViewViewMode:(int)arg1;
+- (_Bool)isMacHandoff;
+- (_Bool)isWatchHandoff;
+- (_Bool)isIPhoneHandoff;
+- (_Bool)isIPadHandoff;
+- (_Bool)_isHandoffFromDeviceType:(id)arg1;
+- (_Bool)_isHandoff;
+- (void)setMeCardHomeCountry:(id)arg1 andHomeLocation:(id)arg2;
+- (void)setCurrentMetro:(id)arg1;
+- (id)_metroForLatLng:(id)arg1 inCountry:(id)arg2 filterWithAllowList:(_Bool)arg3;
+- (id)bestCurrentMetro;
+- (id)bestUserHomeCountry;
+- (id)bestUserHomeMetro;
+- (_Bool)_hasActualFallbackMetro;
+- (_Bool)_hasActualUserHomeCountry;
+- (_Bool)_hasActualUserHomeMetro;
+- (id)stateRoutingSettings;
+- (id)stateMapsUserSettings;
+- (id)stateMapsFeatures;
+- (id)stateMapUIShown;
+- (id)stateMapSettings;
+- (void)periodicSettingsHandler;
+- (void)performRoutingSettingsStateOperation:(CDUnknownBlockType)arg1;
+- (void)performMapUserSettingsStateOperation:(CDUnknownBlockType)arg1;
+- (void)performMapFeaturesStateOperation:(CDUnknownBlockType)arg1;
+- (void)setHasMapSettingsEBike:(_Bool)arg1;
+- (void)setMapSettingsEBike:(_Bool)arg1;
+- (void)setHasMapSettingsLocationPrecisionType:(_Bool)arg1;
+- (void)setMapSettingsLocationPrecisionType:(int)arg1;
+- (void)setHasMapSettingsAvoidBusyRoads:(_Bool)arg1;
+- (void)setMapSettingsAvoidBusyRoads:(_Bool)arg1;
+- (void)setHasMapSettingsAvoidStairs:(_Bool)arg1;
+- (void)setMapSettingsAvoidStairs:(_Bool)arg1;
+- (void)setHasMapSettingsAvoidHills:(_Bool)arg1;
+- (void)setMapSettingsAvoidHills:(_Bool)arg1;
+- (void)setHasMapSettingsTrafficEnabled:(_Bool)arg1;
+- (void)setMapSettingsTrafficEnabled:(_Bool)arg1;
+- (void)setHasMapSettingsSpeedLimitEnabled:(_Bool)arg1;
+- (void)setMapSettingsSpeedLimitEnabled:(_Bool)arg1;
+- (void)setHasMapSettingsPauseSpokenAudioEnabled:(_Bool)arg1;
+- (void)setMapSettingsPauseSpokenAudioEnabled:(_Bool)arg1;
+- (void)setHasMapSettingsLabelEnabled:(_Bool)arg1;
+- (void)setMapSettingsLabelEnabled:(_Bool)arg1;
+- (void)setHasMapSettingsHeadingEnabled:(_Bool)arg1;
+- (void)setMapSettingsHeadingEnabled:(_Bool)arg1;
+- (void)setHasMapSettingsFindMyCarEnabled:(_Bool)arg1;
+- (void)setMapSettingsFindMyCarEnabled:(_Bool)arg1;
+- (void)setHasMapSettingsAvoidTolls:(_Bool)arg1;
+- (void)setMapSettingsAvoidTolls:(_Bool)arg1;
+- (void)setHasMapSettingsAvoidHighways:(_Bool)arg1;
+- (void)setMapSettingsAvoidHighways:(_Bool)arg1;
+- (void)setHasMapSettingsTransportMode:(_Bool)arg1;
+- (void)setMapSettingsTransportMode:(int)arg1;
+- (void)setHasMapSettingsNavVolume:(_Bool)arg1;
+- (void)setMapSettingsNavVolume:(int)arg1;
+- (void)setNavVoiceGuidanceLevel:(int)arg1 forTransportMode:(int)arg2;
+- (void)performMapSettingsStateOperation:(CDUnknownBlockType)arg1;
+- (void)setHasMapUiShownActiveNavMode:(_Bool)arg1;
+- (void)setMapUiShownActiveNavMode:(int)arg1;
+- (void)setHasMapUiShownWeatherShown:(_Bool)arg1;
+- (void)setMapUiShownWeatherShown:(_Bool)arg1;
+- (void)setHasMapUiShownAqiShown:(_Bool)arg1;
+- (void)setMapUiShownAqiShown:(_Bool)arg1;
+- (void)performMapUIShownStateOperation:(CDUnknownBlockType)arg1;
+- (void)setUserProfileAvailableActions:(id)arg1;
+- (void)setUserProfileUserIsLoggedIntoICloud:(_Bool)arg1;
+- (void)_performUserProfileStateOperation:(CDUnknownBlockType)arg1;
 - (int)layoutStyleAsGEOLayoutStyle;
 - (int)layoutInfoAsGEOLayoutInfo;
 - (int)locationPrecisionTypeAsGEOSettingsLocationType;
+- (int)activeNavModeAsGEOTransportType;
 - (int)transportModeAsGEOTransportMode;
+- (int)_geoTransportModeForAPTransportMode:(int)arg1;
+- (int)_geoVoiceGuidanceLevelFromAPVoiceGuidanceLevel:(int)arg1;
 - (int)navVoiceVolumeAsGEONavVoiceVolume;
 - (_Bool)hasMapLaunchData;
 - (_Bool)hasMapRestoreData;
@@ -37,6 +116,9 @@
 - (void)performPlaceCardStateUpdate:(CDUnknownBlockType)arg1;
 - (void)performMapViewStateUpdate:(CDUnknownBlockType)arg1;
 - (void)_performSyncStateUpdateWithIsolator:(id)arg1 updateBlock:(CDUnknownBlockType)arg2;
+- (void)_handleTaskTimer;
+- (void)_stopTaskTimer;
+- (void)_resetTaskTimer;
 - (id)init;
 
 @end

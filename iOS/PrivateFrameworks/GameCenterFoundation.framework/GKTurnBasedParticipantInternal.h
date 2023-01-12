@@ -20,6 +20,7 @@
 }
 
 + (id)secureCodedPropertyKeys;
+- (void).cxx_destruct;
 @property(retain, nonatomic) GKPlayerInternal *player; // @synthesize player=_player;
 @property(nonatomic) unsigned char slot; // @synthesize slot=_slot;
 @property(nonatomic) unsigned int matchOutcome; // @synthesize matchOutcome=_matchOutcome;
@@ -34,7 +35,6 @@
 - (id)serverRepresentation;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (void)dealloc;
 @property(readonly, nonatomic) NSString *playerID;
 
 @end

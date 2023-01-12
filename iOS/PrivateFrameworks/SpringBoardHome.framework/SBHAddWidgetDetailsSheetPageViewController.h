@@ -9,12 +9,12 @@
 #import <SpringBoardHome/SBHWidgetWrapperViewControllerDelegate-Protocol.h>
 
 @class NSString, SBHWidgetWrapperViewController, UILayoutGuide, UIView;
-@protocol SBHWidgetDragHandlerPassing, SBHWidgetDragHandling;
+@protocol SBHAddWidgetDetailsSheetPageViewControllerDelegate, SBHWidgetDragHandling;
 
 @interface SBHAddWidgetDetailsSheetPageViewController : UIViewController <SBHWidgetWrapperViewControllerDelegate>
 {
     SBHWidgetWrapperViewController *_widgetWrapperViewController;
-    id <SBHWidgetDragHandlerPassing> _delegate;
+    id <SBHAddWidgetDetailsSheetPageViewControllerDelegate> _delegate;
     UIView *_referenceView;
     double _scale;
     UILayoutGuide *_layoutGuide;
@@ -24,8 +24,10 @@
 @property(retain, nonatomic) UILayoutGuide *layoutGuide; // @synthesize layoutGuide=_layoutGuide;
 @property(nonatomic) double scale; // @synthesize scale=_scale;
 @property(retain, nonatomic) UIView *referenceView; // @synthesize referenceView=_referenceView;
-@property(nonatomic) __weak id <SBHWidgetDragHandlerPassing> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak id <SBHAddWidgetDetailsSheetPageViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) SBHWidgetWrapperViewController *widgetWrapperViewController; // @synthesize widgetWrapperViewController=_widgetWrapperViewController;
+- (void)configureBackgroundView:(id)arg1 matchingMaterialBeneathWrapperViewController:(id)arg2;
+- (id)backgroundViewMatchingMaterialBeneathWrapperViewController:(id)arg1;
 @property(readonly, nonatomic) __weak id <SBHWidgetDragHandling> widgetDragHandler;
 - (void)_resumeLayer:(id)arg1;
 - (void)_pauseLayer:(id)arg1;

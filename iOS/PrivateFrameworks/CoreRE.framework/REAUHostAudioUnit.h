@@ -6,7 +6,8 @@
 
 #import <AudioToolbox/AUAudioUnit.h>
 
-@class AUAudioUnitBus, AUAudioUnitBusArray, AVAudioFormat;
+@class AUAudioUnitBus, AUAudioUnitBusArray, AVAudioFormat, NSObject;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface REAUHostAudioUnit : AUAudioUnit
@@ -19,6 +20,7 @@ __attribute__((visibility("hidden")))
     struct atomic<bool> _running;
     _Bool _prepared;
     _Bool _shouldPrepareTargetOnAllocate;
+    struct atomic<bool> _hasTriggeredPrepareCallbackOnce;
     struct mutex _targetPreparationMutex;
     double _currentHostingSampleRate;
     unsigned int _currentHostingMaxFramesToRender;
@@ -29,6 +31,8 @@ __attribute__((visibility("hidden")))
     struct shared_ptr<AudioStreamRecordingManager::StreamWriter> _recordingStreamWriter;
     unsigned int _desiredLayoutTag;
     AUAudioUnit *_target;
+    NSObject<OS_dispatch_queue> *_callbackQueue;
+    CDUnknownBlockType _didPrepareAudioUnit;
     CDUnknownBlockType _pullInputOverride;
     AVAudioFormat *_inputFormat;
 }
@@ -37,6 +41,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) AVAudioFormat *inputFormat; // @synthesize inputFormat=_inputFormat;
 @property(copy, nonatomic) CDUnknownBlockType pullInputOverride; // @synthesize pullInputOverride=_pullInputOverride;
+@property(copy, nonatomic) CDUnknownBlockType didPrepareAudioUnit; // @synthesize didPrepareAudioUnit=_didPrepareAudioUnit;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property(retain, nonatomic) AUAudioUnit *target; // @synthesize target=_target;
 @property(nonatomic) unsigned int desiredLayoutTag; // @synthesize desiredLayoutTag=_desiredLayoutTag;
 - (id)outputBusses;

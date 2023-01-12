@@ -6,10 +6,11 @@
 
 #import <CoreServices/NSObject-Protocol.h>
 
-@class NSDictionary, NSString, NSURL;
+@class NSDictionary;
+@protocol LSMIInstallCall, LSMIUninstallCall;
 
 @protocol LSInstallationServiceProtocol <NSObject>
-- (void)uninstallApplication:(NSString *)arg1 withOptions:(NSDictionary *)arg2 uninstallType:(unsigned long long)arg3 reply:(void (^)(NSArray *, NSError *))arg4;
-- (void)installApplication:(NSString *)arg1 atURL:(NSURL *)arg2 withOptions:(NSDictionary *)arg3 installType:(unsigned long long)arg4 reply:(void (^)(NSArray *, NSError *))arg5;
+- (void)performUninstallCall:(id <LSMIUninstallCall>)arg1 withOptions:(NSDictionary *)arg2 uninstallType:(unsigned long long)arg3 reply:(void (^)(NSArray *, NSError *))arg4;
+- (void)performInstallCall:(id <LSMIInstallCall>)arg1 withOptions:(NSDictionary *)arg2 installType:(unsigned long long)arg3 reply:(void (^)(NSArray *, LSRecordPromise *, NSError *))arg4;
 @end
 

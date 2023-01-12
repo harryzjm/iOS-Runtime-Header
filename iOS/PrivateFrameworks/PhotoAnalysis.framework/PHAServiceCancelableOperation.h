@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSInvocation;
-@protocol OS_dispatch_group;
+@protocol OS_dispatch_group, PHAServiceOperationListener;
 
 @interface PHAServiceCancelableOperation : NSObject
 {
@@ -16,22 +16,24 @@
     _Bool _cancelRequested;
     CDUnknownBlockType _cancellationBlock;
     NSObject<OS_dispatch_group> *_completionGroup;
+    id <PHAServiceOperationListener> _delegate;
 }
 
 + (id)operationNotFoundError:(long long)arg1;
-+ (id)currentOperation;
 - (void).cxx_destruct;
+@property __weak id <PHAServiceOperationListener> delegate; // @synthesize delegate=_delegate;
+@property(readonly) NSInvocation *invocation; // @synthesize invocation=_invocation;
+- (void)waitForCompletion;
 - (id)description;
 - (id)operationCanceledError:(_Bool)arg1;
 - (void)enqueueOnQueue:(id)arg1;
 - (void)_startWork;
-- (_Bool)isCancelled;
+- (void)runOperation;
+@property(readonly) _Bool isCancelled;
 - (_Bool)cancel;
 - (void)setCancellationBlock:(CDUnknownBlockType)arg1;
-- (long long)operationId;
+@property(readonly) long long operationId;
 - (void)addCompletionBlock:(CDUnknownBlockType)arg1;
-- (void)endAsyncWork;
-- (void)beginAsyncWork;
 - (id)initWithOperationId:(long long)arg1 invocation:(id)arg2;
 
 @end

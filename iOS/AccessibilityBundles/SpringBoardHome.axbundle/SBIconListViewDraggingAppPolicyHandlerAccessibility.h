@@ -16,8 +16,6 @@
 - (void)dropInteraction:(id)arg1 sessionDidEnd:(id)arg2;
 - (id)_accessibilityFindIconIntersectingDraggedIconForDropSession:(id)arg1;
 - (void)_updateDragPauseForDropSession:(id)arg1;
-- (void)_accessibilitySetLastAnnouncedIcon:(id)arg1;
-- (id)_accessibilityGetLastAnnouncedIcon;
 - (void)_accessibilityIconMovedToPosition;
 - (void)_dragPauseTimerFired:(id)arg1;
 - (id)_axCurrentIconListView;

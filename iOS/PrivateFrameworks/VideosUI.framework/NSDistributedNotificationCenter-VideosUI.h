@@ -8,7 +8,6 @@
 
 @interface NSDistributedNotificationCenter (VideosUI)
 + (_Bool)vui_wasSentByDifferentProcess:(id)arg1;
-+ (id)vui_defaultCenter;
 - (void)vui_postNotificationName:(id)arg1 object:(id)arg2 userInfo:(id)arg3;
 @end
 

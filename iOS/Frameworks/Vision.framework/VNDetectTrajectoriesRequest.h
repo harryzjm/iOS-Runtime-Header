@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, VNTrajectoryProcessor;
+@class NSArray, VNTrajectoryProcessor, VNTrajectoryRequestState;
 
 @interface VNDetectTrajectoriesRequest
 {
     VNTrajectoryProcessor *_trajectoryProcessor;
+    VNTrajectoryRequestState *_state;
     float _objectMaximumNormalizedRadius;
 }
 
@@ -23,6 +24,7 @@
 - (id)newDefaultRequestInstance;
 @property(nonatomic) float maximumObjectSize;
 @property(nonatomic) float minimumObjectSize;
+@property(nonatomic) CDStruct_1b6d18a9 targetFrameTime;
 - (void)setobjectMaximumNormalizedRadius:(float)arg1;
 @property(nonatomic) float objectMinimumNormalizedRadius;
 @property(readonly) long long trajectoryLength;

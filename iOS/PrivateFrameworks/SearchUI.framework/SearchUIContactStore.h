@@ -6,13 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class CNContactStore, NSCache;
+#import <SearchUI/SearchUIBatchedCachePrewarmer-Protocol.h>
+
+@class CNContactStore, NSCache, NSString;
 @protocol OS_dispatch_queue;
 
-@interface SearchUIContactStore : NSObject
+@interface SearchUIContactStore : NSObject <SearchUIBatchedCachePrewarmer>
 {
-    CNContactStore *_contactStore;
     NSCache *_contactCache;
+    CNContactStore *_contactStore;
     NSObject<OS_dispatch_queue> *_contactFetchingQueue;
 }
 
@@ -23,15 +25,24 @@
 + (id)sharedStore;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *contactFetchingQueue; // @synthesize contactFetchingQueue=_contactFetchingQueue;
-@property(retain, nonatomic) NSCache *contactCache; // @synthesize contactCache=_contactCache;
 @property(retain, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
+@property(retain, nonatomic) NSCache *contactCache; // @synthesize contactCache=_contactCache;
 - (id)contactsForIdentifiers:(id)arg1 withKeys:(id)arg2;
+- (id)batchingItemsForRowModel:(id)arg1;
+- (void)prewarmCacheForBatchedItems:(id)arg1;
 - (id)contactForIdentifier:(id)arg1;
+- (void)fetchContactsForIdentifiers:(id)arg1 withKeyDescriptors:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)fetchContactsForIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchContactForIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)cachedContactsForIdentifiers:(id)arg1;
+- (id)cachedContactsForIdentifiers:(id)arg1 withKeyDescriptors:(id)arg2;
 - (id)cachedContactForIdentifier:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

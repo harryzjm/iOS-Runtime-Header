@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSData, NSString;
+@class NSArray, NSBundle, NSData, NSString;
 @protocol OS_dispatch_queue;
 
 @interface CUSystemMonitor : NSObject
@@ -22,6 +22,8 @@
     CDUnknownBlockType _clamshellModeChangedHandler;
     CDUnknownBlockType _consoleUserChangedHandler;
     CDUnknownBlockType _familyUpdatedHandler;
+    NSBundle *_locationVisitsBundle;
+    CDUnknownBlockType _locationVisitsChangedHandler;
     CDUnknownBlockType _manateeChangedHandler;
     CDUnknownBlockType _meDeviceChangedHandler;
     CDUnknownBlockType _netFlagsChangedHandler;
@@ -59,6 +61,8 @@
 @property(copy) CDUnknownBlockType netFlagsChangedHandler; // @synthesize netFlagsChangedHandler=_netFlagsChangedHandler;
 @property(copy) CDUnknownBlockType meDeviceChangedHandler; // @synthesize meDeviceChangedHandler=_meDeviceChangedHandler;
 @property(copy) CDUnknownBlockType manateeChangedHandler; // @synthesize manateeChangedHandler=_manateeChangedHandler;
+@property(copy) CDUnknownBlockType locationVisitsChangedHandler; // @synthesize locationVisitsChangedHandler=_locationVisitsChangedHandler;
+@property(retain) NSBundle *locationVisitsBundle; // @synthesize locationVisitsBundle=_locationVisitsBundle;
 @property(copy) CDUnknownBlockType familyUpdatedHandler; // @synthesize familyUpdatedHandler=_familyUpdatedHandler;
 @property(copy) CDUnknownBlockType consoleUserChangedHandler; // @synthesize consoleUserChangedHandler=_consoleUserChangedHandler;
 @property(copy) CDUnknownBlockType clamshellModeChangedHandler; // @synthesize clamshellModeChangedHandler=_clamshellModeChangedHandler;
@@ -83,7 +87,7 @@
 @property(readonly, copy) NSString *regionRoutineCountry;
 @property(readonly, copy) NSString *regionMobileCountryCode;
 @property(readonly, copy) NSString *regionISOCountryCode;
-@property(readonly, copy, nonatomic) NSString *primaryNetworkSignature;
+@property(readonly, copy) NSString *primaryNetworkSignature;
 @property(readonly, nonatomic) CDUnion_fab80606 primaryIPv6Addr;
 @property(readonly, nonatomic) CDUnion_fab80606 primaryIPv4Addr;
 @property(readonly) _Bool primaryAppleIDIsHSA2;
@@ -96,12 +100,17 @@
 @property(readonly, copy) NSString *meDeviceIDSDeviceID;
 @property(readonly, copy) NSString *meDeviceFMFDeviceID;
 @property(readonly) _Bool manateeAvailable;
+@property(readonly) unsigned int locationVisitsFlags;
 @property(readonly, copy) NSArray *familyMembers;
 @property(readonly, copy) NSString *consoleUserName;
 @property(readonly) unsigned int consoleUserID;
 @property(readonly) int connectedCallCount;
 @property(readonly) _Bool clamshellMode;
 @property(readonly) unsigned int callFlags;
+@property(readonly) int callCountOutgoingUnconnected;
+@property(readonly) int callCountOutgoingConnected;
+@property(readonly) int callCountIncomingUnconnected;
+@property(readonly) int callCountIncomingConnected;
 @property(readonly, copy) NSData *bluetoothAddressData;
 @property(readonly) CDStruct_83abfce7 bluetoothAddress48;
 @property(readonly) int activeCallCount;

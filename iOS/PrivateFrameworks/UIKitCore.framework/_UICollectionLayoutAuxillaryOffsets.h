@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (void)_offsetWithOffsets:(id)arg1 applyingBase:(_Bool)arg2;
 - (_Bool)containsIndex:(long long)arg1 forElementKind:(id)arg2;
 - (_Bool)overlapsOffsets:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
@@ -26,17 +25,11 @@ __attribute__((visibility("hidden")))
 - (long long)offsetForElementKind:(id)arg1;
 - (id)indexesForElementKind:(id)arg1;
 - (struct _NSRange)rangeForElementKind:(id)arg1;
-- (void)incrementCountForElementKind:(id)arg1;
-- (void)incrementCountsFromOffsets:(id)arg1;
-- (void)addIndexes:(id)arg1 forElementKind:(id)arg2;
-- (void)setIndexes:(id)arg1 forElementKind:(id)arg2;
-- (void)setRange:(struct _NSRange)arg1 forElementKind:(id)arg2;
 - (id)offsetsByRebasingOnOffsets:(id)arg1;
 - (id)offsetsByApplyingOffsets:(id)arg1;
 @property(readonly, nonatomic) NSSet *elementKinds;
 @property(readonly, copy) NSString *description;
 - (id)init;
-- (id)initWithOffsets:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

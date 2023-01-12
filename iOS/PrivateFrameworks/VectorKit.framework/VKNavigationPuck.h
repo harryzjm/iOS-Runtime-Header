@@ -19,7 +19,7 @@
     _Bool _stale;
     VKTimedAnimation *_puckStyleAnimation;
     struct AnimationRunner *_animationRunner;
-    struct NavigationPuck *_navigationPuck;
+    void *_navigationPuck;
     _Bool _animatingAccuracy;
     double _presentationAccuracy;
 }
@@ -29,7 +29,7 @@
 @property(nonatomic) _Bool animatingToCoordinate; // @synthesize animatingToCoordinate=_animatingToCoordinate;
 @property(nonatomic) _Bool stale; // @synthesize stale=_stale;
 @property(retain, nonatomic) id <VKAnnotation> annotation; // @synthesize annotation=_annotation;
-- (struct NavigationPuck *)puck;
+- (void *)puck;
 @property(nonatomic) _Bool enabled;
 @property(nonatomic) _Bool tracking; // @synthesize tracking=_tracking;
 @property(nonatomic) CDStruct_c3b9c2ee presentationCoordinate;

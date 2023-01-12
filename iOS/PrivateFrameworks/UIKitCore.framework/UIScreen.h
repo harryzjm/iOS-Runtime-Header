@@ -15,7 +15,7 @@
 #import <UIKitCore/_UIFocusRegionContainer-Protocol.h>
 #import <UIKitCore/_UITraitEnvironmentInternal-Protocol.h>
 
-@class CARSessionStatus, FBSDisplayConfiguration, NSArray, NSDictionary, NSString, UIFocusSystem, UISDisplayContext, UIScreenMode, UISoftwareDimmingWindow, UITraitCollection, UIView, UIWindow, _UIDragManager, _UIInteractiveHighlightEnvironment, _UIScreenBoundingPathUtilities, _UIScreenFixedCoordinateSpace;
+@class BKSHIDEventDisplay, CARSessionStatus, FBSDisplayConfiguration, NSArray, NSDictionary, NSString, UIFocusSystem, UISDisplayContext, UIScreenMode, UISoftwareDimmingWindow, UITraitCollection, UIView, UIWindow, _UIDragManager, _UIInteractiveHighlightEnvironment, _UIScreenBoundingPathUtilities, _UIScreenFixedCoordinateSpace;
 @protocol UICoordinateSpace, UIFocusEnvironment, UIFocusItem, UIFocusItemContainer, _UIDisplayInfoProviding, _UIFocusRegionContainer;
 
 @interface UIScreen : NSObject <_UIFallbackEnvironment, UICoordinateSpace, _UITraitEnvironmentInternal, _UIFocusEnvironmentInternal, _UIFocusRegionContainer, UIFocusItemContainer, _UIFocusEnvironmentPrivate, UITraitEnvironment>
@@ -30,9 +30,11 @@
     NSDictionary *_capabilities;
     NSArray *_availableDisplayModes;
     double _pointsPerInch;
+    double _nativePointsPerMillimeter;
     _UIScreenFixedCoordinateSpace *_fixedCoordinateSpace;
     id <_UIDisplayInfoProviding> _displayInfoProvider;
     FBSDisplayConfiguration *__displayConfiguration;
+    BKSHIDEventDisplay *__eventDisplay;
     long long _lastUpdatedCanvasUserInterfaceStyle;
     struct {
         unsigned int bitsPerComponent:4;
@@ -88,7 +90,7 @@
 + (void)_FBSDisplayDidPossiblyConnect:(id)arg1;
 + (void)_prepareScreensForAppResume;
 + (id)_screenWithIntegerDisplayID:(unsigned int)arg1;
-+ (id)_screenWithDisplayID:(id)arg1;
++ (id)_screenWithEventDisplay:(id)arg1;
 + (id)_screenWithDisplayName:(id)arg1;
 + (id)_screenWithFBSDisplayIdentity:(id)arg1;
 + (id)_carScreen;
@@ -172,6 +174,7 @@
 - (_Bool)_isUserInterfaceLimited:(unsigned long long)arg1;
 - (long long)_workspaceCapableScreenType;
 - (_Bool)_isWorkspaceCapable;
+- (id)_eventDisplay;
 - (id)_displayID;
 - (id)fbsDisplay;
 - (void)_setExternalDeviceShouldInputText:(_Bool)arg1;
@@ -209,12 +212,17 @@
 - (void)_disconnectScreen;
 - (void)_connectScreen;
 - (_Bool)_isValidInterfaceOrientation:(long long)arg1;
+- (double)_nativePointsPerMillimeter;
 - (double)_pointsPerInch;
+- (void)_ensureComputedMainScreenDPI;
 - (long long)gamut;
 - (double)_maximumSupportedScale;
 - (void)_setScale:(double)arg1;
 - (double)_scale;
 @property(readonly, nonatomic) double scale; // @synthesize scale=_scale;
+- (double)_extendedDynamicRangeReferenceHeadroom;
+- (double)_extendedDynamicRangePotentialHeadroom;
+- (double)_extendedDynamicRangeCurrentHeadroom;
 - (id)displayLinkWithTarget:(id)arg1 selector:(SEL)arg2;
 - (void)_prepareForWindow;
 - (_Bool)_expectsSecureRendering;
@@ -254,6 +262,7 @@
 - (struct CGRect)_interfaceOrientedMainSceneBounds;
 - (struct UIEdgeInsets)_peripheryInsets;
 - (struct UIEdgeInsets)_displayPeripheryInsets;
+- (id)_exclusionArea;
 - (id)_displayInfoProvider;
 - (struct CGRect)_mainSceneBoundsForInterfaceOrientation:(long long)arg1;
 - (struct CGRect)_boundsForInterfaceOrientation:(long long)arg1;
@@ -278,6 +287,7 @@
 - (id)displayIdentity;
 @property(retain, nonatomic) FBSDisplayConfiguration *displayConfiguration;
 - (void)_updateAvailableDisplayModes;
+- (void)_capturedStateUpdated:(_Bool)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)dealloc;
 - (void)_invalidate;
@@ -293,6 +303,7 @@
 @property(nonatomic) _Bool areChildrenFocused;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, nonatomic, getter=_isEligibleForFocusInteraction) _Bool eligibleForFocusInteraction;
+@property(readonly, nonatomic, getter=_isEligibleForFocusOcclusion) _Bool eligibleForFocusOcclusion;
 @property(readonly, copy, nonatomic) NSString *focusGroupIdentifier;
 @property(readonly) unsigned long long hash;
 @property(readonly, copy, nonatomic, getter=_linearFocusMovementSequences) NSArray *linearFocusMovementSequences;

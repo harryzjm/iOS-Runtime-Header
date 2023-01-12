@@ -19,6 +19,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)cachedMetricsRecalculatingIfNecessary;
 @property(readonly, nonatomic) double defaultSubjectEntryViewHeight; // @synthesize defaultSubjectEntryViewHeight=_defaultSubjectEntryViewHeight;
 @property(readonly, nonatomic) double defaultEntryViewHeight; // @synthesize defaultEntryViewHeight=_defaultEntryViewHeight;
 @property(readonly, nonatomic) double defaultSubjectEntryContentViewHeight; // @synthesize defaultSubjectEntryContentViewHeight=_defaultSubjectEntryContentViewHeight;

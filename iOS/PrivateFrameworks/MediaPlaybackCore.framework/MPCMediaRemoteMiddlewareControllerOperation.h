@@ -11,6 +11,7 @@
 
 @class MPCFuture, MPCMediaRemoteController, MPCMediaRemoteMiddleware, MPCPlayerPath, NSArray, NSError, NSMapTable, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPCMediaRemoteMiddlewareControllerOperation : MPAsyncOperation <MPCMediaRemoteMiddlewareControllerProviding, MPMiddlewareAutomaticDependencyOperation>
 {
     NSMapTable *_inputOperations;

@@ -11,15 +11,15 @@
 __attribute__((visibility("hidden")))
 @interface WebDisplayLinkHandler : NSObject
 {
-    struct DisplayRefreshMonitorIOS *m_monitor;
+    void *m_monitor;
     CADisplayLink *m_displayLink;
 }
 
 - (void)invalidate;
+- (void)setPaused:(_Bool)arg1;
 - (void)handleDisplayLink:(id)arg1;
-- (void)setPreferredFramesPerSecond:(long long)arg1;
 - (void)dealloc;
-- (id)initWithMonitor:(struct DisplayRefreshMonitorIOS *)arg1;
+- (id)initWithMonitor:(void *)arg1;
 
 @end
 

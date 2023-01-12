@@ -10,10 +10,15 @@
 {
 }
 
++ (id)_axStringForPresetCategory:(long long)arg1;
++ (_Bool)_shouldSkipPresetCategory:(long long)arg1;
++ (id)customContentForMemoji:(id)arg1;
++ (id)customContentForAvatarWithRecord:(id)arg1;
 + (id)descriptionForMemoji:(id)arg1;
 + (id)descriptionForAnimoji:(id)arg1;
 + (id)descriptionForAvatarWithRecord:(id)arg1 includeVideoPrefix:(_Bool)arg2;
 + (void)performValidations;
++ (_Bool)avatarFrameworksArePresent;
 
 @end
 

@@ -19,7 +19,6 @@
 + (id)checkedImage;
 + (id)spacerImage;
 - (void).cxx_destruct;
-- (id)accessibilityTableViewCellText;
 - (void)_updateCheckMarkIcon;
 - (void)refreshCellContentsWithSpecifier:(id)arg1;
 - (void)layoutSubviews;

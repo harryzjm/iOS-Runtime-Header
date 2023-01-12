@@ -27,8 +27,8 @@
     MCNearbyServiceAdvertiser *_advertiser;
     NSMutableArray *_availableDevices;
     NSMutableDictionary *_deviceTypesByPeerID;
-    MCPeerID *_slave;
-    MCPeerID *_master;
+    MCPeerID *_receiver;
+    MCPeerID *_forwarder;
     unsigned long long _switchEventIndex;
     NSTimer *_dummyPacketTimer;
     unsigned long long _numberOfBurstPacketsRemaining;
@@ -40,8 +40,8 @@
 @property(nonatomic) unsigned long long numberOfBurstPacketsRemaining; // @synthesize numberOfBurstPacketsRemaining=_numberOfBurstPacketsRemaining;
 @property(retain, nonatomic) NSTimer *dummyPacketTimer; // @synthesize dummyPacketTimer=_dummyPacketTimer;
 @property(nonatomic) unsigned long long switchEventIndex; // @synthesize switchEventIndex=_switchEventIndex;
-@property(retain, nonatomic) MCPeerID *master; // @synthesize master=_master;
-@property(retain, nonatomic) MCPeerID *slave; // @synthesize slave=_slave;
+@property(retain, nonatomic) MCPeerID *forwarder; // @synthesize forwarder=_forwarder;
+@property(retain, nonatomic) MCPeerID *receiver; // @synthesize receiver=_receiver;
 @property(retain, nonatomic) NSMutableDictionary *deviceTypesByPeerID; // @synthesize deviceTypesByPeerID=_deviceTypesByPeerID;
 @property(retain, nonatomic) NSMutableArray *availableDevices; // @synthesize availableDevices=_availableDevices;
 @property(retain, nonatomic) MCNearbyServiceAdvertiser *advertiser; // @synthesize advertiser=_advertiser;
@@ -73,9 +73,9 @@
 - (void)service:(id)arg1 devicesChanged:(id)arg2;
 - (void)service:(id)arg1 account:(id)arg2 incomingMessage:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)_sendDummyPacket;
-- (void)performSysdiagnoseOnSlave;
+- (void)performSysdiagnoseOnReceiver;
 - (void)forwardSwitchEvent:(id)arg1;
-- (void)_sendDataToSlave:(id)arg1;
+- (void)_sendDataToReceiver:(id)arg1;
 - (id)_messageForSwitchEvent:(id)arg1 index:(unsigned long long)arg2;
 - (void)selectSearchResult:(id)arg1 settings:(id)arg2;
 - (id)_messageForSelection:(_Bool)arg1 settings:(id)arg2;
@@ -83,7 +83,7 @@
 @property(readonly, nonatomic) NSArray *searchResults;
 - (void)stop;
 - (void)_advertise;
-- (void)_handleTimeoutAsPotentialSlave;
+- (void)_handleTimeoutAsPotentialReceiver;
 - (void)_cancelAdvertising;
 - (void)search;
 @property(readonly, nonatomic) _Bool canSearch;

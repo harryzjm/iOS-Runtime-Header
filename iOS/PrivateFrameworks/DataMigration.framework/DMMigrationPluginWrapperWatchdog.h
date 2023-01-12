@@ -19,7 +19,7 @@
     unsigned long long _fireCount;
 }
 
-+ (id)_messageStringWithPluginBundleIdentifier:(id)arg1 minutes:(long long)arg2 backupDeviceUUID:(id)arg3;
++ (id)_messageStringWithPluginBundleIdentifier:(id)arg1 durationDescription:(id)arg2 backupDeviceUUID:(id)arg3;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long fireCount; // @synthesize fireCount=_fireCount;
 @property(retain, nonatomic) DMTimer *timer; // @synthesize timer=_timer;

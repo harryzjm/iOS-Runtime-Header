@@ -17,19 +17,23 @@
     NSArray *_smallDefaultStack;
     NSArray *_mediumDefaultStack;
     NSArray *_largeDefaultStack;
+    NSArray *_extraLargeDefaultStack;
     unsigned long long _suggestedSize;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long suggestedSize; // @synthesize suggestedSize=_suggestedSize;
+@property(copy, nonatomic) NSArray *extraLargeDefaultStack; // @synthesize extraLargeDefaultStack=_extraLargeDefaultStack;
 @property(copy, nonatomic) NSArray *largeDefaultStack; // @synthesize largeDefaultStack=_largeDefaultStack;
 @property(copy, nonatomic) NSArray *mediumDefaultStack; // @synthesize mediumDefaultStack=_mediumDefaultStack;
 @property(copy, nonatomic) NSArray *smallDefaultStack; // @synthesize smallDefaultStack=_smallDefaultStack;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
+- (id)compactDescription;
 @property(readonly, copy) NSString *description;
 - (id)dictionaryRepresentation;
+- (id)_JSONCompatible:(id)arg1 compact:(_Bool)arg2;
 - (id)_JSONCompatible:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

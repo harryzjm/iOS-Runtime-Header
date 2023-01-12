@@ -8,7 +8,7 @@
 
 @interface TSTMergeListWrapper : NSObject
 {
-    vector_e87daf7b _mergeList;
+    vector_fad096c6 _mergeList;
 }
 
 - (id).cxx_construct;
@@ -19,7 +19,7 @@
 - (void)addRange:(struct TSUCellRect)arg1;
 @property(readonly) _Bool isEmpty;
 @property(readonly) unsigned long long count;
-- (id)initWithMergeList:(const vector_e87daf7b *)arg1;
+- (id)initWithMergeList:(const void *)arg1;
 
 @end
 

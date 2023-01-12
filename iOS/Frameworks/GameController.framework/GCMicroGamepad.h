@@ -45,7 +45,6 @@
 - (void)microControllerWithDigitizerX:(float)arg1 digitizerY:(float)arg2 timestamp:(unsigned long long)arg3 touchDown:(_Bool)arg4;
 - (id)productCategory;
 - (_Bool)supportsDpadTaps;
-@property(nonatomic) long long deviceType;
 
 // Remaining properties
 @property(readonly, nonatomic) __weak GCController *controller; // @dynamic controller;

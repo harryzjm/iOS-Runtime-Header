@@ -7,7 +7,7 @@
 #import <UIKitCore/UISplittableInputView-Protocol.h>
 #import <UIKitCore/_UIRemoteKeyboardInputViewPlaceholder-Protocol.h>
 
-@class NSString, UIView;
+@class NSString, UIView, UIWindowScene;
 
 __attribute__((visibility("hidden")))
 @interface _UIRemoteKeyboardPlaceholderView <UISplittableInputView, _UIRemoteKeyboardInputViewPlaceholder>
@@ -15,15 +15,18 @@ __attribute__((visibility("hidden")))
     UIView *_mirroredView;
     struct CGSize _fixedSize;
     CDUnknownBlockType _sizeBlock;
+    UIWindowScene *_sceneForHeight;
+    _Bool _isLocalMinimumHeight;
     UIView *_fallbackView;
     UIView *_associatedView;
 }
 
-+ (id)placeholderWithSizer:(CDUnknownBlockType)arg1;
++ (id)placeholderWithWidthSizer:(CDUnknownBlockType)arg1 heightWithScene:(id)arg2;
 + (id)placeholderWithWidth:(double)arg1 height:(double)arg2;
 + (id)placeholderForView:(id)arg1;
 @property(retain, nonatomic) UIView *associatedView; // @synthesize associatedView=_associatedView;
 @property(retain, nonatomic) UIView *fallbackView; // @synthesize fallbackView=_fallbackView;
+@property(readonly, nonatomic) _Bool isLocalMinimumHeightPlaceholder;
 - (void)_isPlaceholderViewSelector;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, copy) NSString *description;

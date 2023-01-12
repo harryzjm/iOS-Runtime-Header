@@ -11,7 +11,6 @@
 }
 
 + (id)_uiVoiceLanguage;
-+ (id)systemDefaultVoiceLanguageWithSource:(long long *)arg1;
 + (id)systemDefaultVoiceLanguage;
 
 @end

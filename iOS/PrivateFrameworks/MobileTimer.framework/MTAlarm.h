@@ -15,7 +15,7 @@
 #import <MobileTimer/NSMutableCopying-Protocol.h>
 #import <MobileTimer/NSSecureCoding-Protocol.h>
 
-@class MTIntentAlarm, MTSound, NSDate, NSNumber, NSString, NSURL, NSUUID;
+@class MTIntentAlarm, MTSound, NSDate, NSDictionary, NSNumber, NSString, NSURL, NSUUID;
 
 @interface MTAlarm : NSObject <MTScheduleable, MTDictionarySerializable, MTSerializable, BSDescriptionProviding, NAEquatable, NSSecureCoding, NSCopying, NSMutableCopying>
 {
@@ -53,6 +53,7 @@
     NSDate *_keepOffUntilDate;
     unsigned long long _onboardingVersion;
     CDUnknownBlockType _currentDateProvider;
+    NSDictionary *_siriContext;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -77,6 +78,7 @@
 + (id)propertiesAffectingBedtime;
 + (id)propertiesAffectingWaketime;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSDictionary *siriContext; // @synthesize siriContext=_siriContext;
 @property(copy, nonatomic) CDUnknownBlockType currentDateProvider; // @synthesize currentDateProvider=_currentDateProvider;
 @property(nonatomic) unsigned long long onboardingVersion; // @synthesize onboardingVersion=_onboardingVersion;
 @property(copy, nonatomic) NSDate *keepOffUntilDate; // @synthesize keepOffUntilDate=_keepOffUntilDate;
@@ -154,6 +156,7 @@
 @property(readonly, nonatomic) NSString *displayTitle;
 - (void)setFiring:(_Bool)arg1;
 @property(readonly, nonatomic, getter=isFiring) _Bool firing;
+- (void)resetSnoozeFireDate;
 - (_Bool)isBedtimeSnoozed;
 @property(readonly, nonatomic, getter=isSnoozed) _Bool snoozed;
 @property(readonly, nonatomic) _Bool repeats;

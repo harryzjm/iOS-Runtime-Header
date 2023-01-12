@@ -42,6 +42,11 @@
 - (void)_businessChatButtonTapped;
 - (void)doneButtonTapped;
 - (void)viewDidLayoutSubviews;
+- (void)setupDetailTextView;
+- (void)setupBusinessChatButton;
+- (void)setupSubtitleLabel;
+- (void)setupTitleLabel;
+- (void)setupViewAndScrollView;
 - (void)loadView;
 - (id)initWithContext:(long long)arg1;
 

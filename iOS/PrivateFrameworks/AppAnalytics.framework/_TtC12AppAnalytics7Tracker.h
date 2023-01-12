@@ -14,6 +14,7 @@
     MISSING_TYPE *identifier;
     MISSING_TYPE *delegate;
     MISSING_TYPE *accessQueue;
+    MISSING_TYPE *accessGroup;
     MISSING_TYPE *eventMirrorStore;
     MISSING_TYPE *timers;
     MISSING_TYPE *restartTimers;
@@ -23,6 +24,8 @@
     MISSING_TYPE *currentActionEntries;
     MISSING_TYPE *previousActionSequence;
     MISSING_TYPE *willSubmitObservers;
+    MISSING_TYPE *gracefulEventCreation;
+    MISSING_TYPE *privacyValidationProvider;
 }
 
 @end

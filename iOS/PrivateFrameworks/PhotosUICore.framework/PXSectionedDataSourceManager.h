@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PhotosUICore/PXMutableSectionedDataSourceManager-Protocol.h>
+
 @class NSMutableArray, PXSectionedChangeDetailsRepository, PXSectionedDataSource;
 
-@interface PXSectionedDataSourceManager
+@interface PXSectionedDataSourceManager <PXMutableSectionedDataSourceManager>
 {
     NSMutableArray *_waitingConditions;
     PXSectionedDataSource *_dataSource;
@@ -15,6 +17,8 @@
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) PXSectionedChangeDetailsRepository *changeHistory; // @synthesize changeHistory=_changeHistory;
+- (void)resumeChangeDeliveryAndBackgroundLoading:(id)arg1;
+- (id)pauseChangeDeliveryWithTimeout:(double)arg1 identifier:(id)arg2;
 @property(readonly, nonatomic) PXSectionedDataSource *dataSource;
 - (id)createInitialDataSource;
 - (id)queryObserversInterestingObjectReferences;

@@ -8,6 +8,7 @@
 
 @class MISSING_TYPE;
 
+__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI219SubscriptionService : NSObject
 {
     MISSING_TYPE *observers;

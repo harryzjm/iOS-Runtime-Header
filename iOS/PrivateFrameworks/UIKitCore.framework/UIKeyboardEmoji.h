@@ -14,6 +14,7 @@
     unsigned long long _variantMask;
 }
 
++ (_Bool)shouldHighlightEmoji:(id)arg1;
 + (id)emojiWithString:(id)arg1 withVariantMask:(unsigned long long)arg2;
 - (void).cxx_destruct;
 @property unsigned long long variantMask; // @synthesize variantMask=_variantMask;

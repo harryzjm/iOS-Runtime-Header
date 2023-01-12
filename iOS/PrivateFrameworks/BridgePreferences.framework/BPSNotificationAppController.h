@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Preferences/PSListController.h>
-
 @class BBSectionInfo, NPSDomainAccessor, NSMutableArray, NSMutableDictionary, NSString, PSSpecifier;
 
-@interface BPSNotificationAppController : PSListController
+@interface BPSNotificationAppController
 {
     _Bool _mirrorSettings;
     NSString *_bundleIdentifier;
@@ -58,6 +56,7 @@
 - (void)mirrorSettingsChanged:(_Bool)arg1;
 - (_Bool)watchHasCapabilitySendToNotificationCenter;
 - (_Bool)_suppressSendToNotificationCenterOption;
+- (_Bool)suppressNotificationCoalescingOptions;
 - (_Bool)suppressSendToNotificationCenterOption;
 - (_Bool)suppressAllMirrorSpecifiers;
 - (_Bool)suppressAlertSpecifiers;
@@ -65,6 +64,7 @@
 - (id)applicationBundleIdentifier;
 - (id)localizedPaneTitle;
 - (void)removeSendToNotificationCenterOption;
+- (void)removeNotificationCoalescingOptions;
 - (void)removeAlertOptions;
 - (void)removeMirrorOptions;
 - (void)updateSubsections;

@@ -30,6 +30,7 @@
 @property(readonly, nonatomic) PXExtendedTraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 @property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 @property(nonatomic) _Bool shouldShowNavigationListOnIpad; // @synthesize shouldShowNavigationListOnIpad=_shouldShowNavigationListOnIpad;
+- (void)_resetGadgets;
 - (_Bool)_shouldHiddenAlbumBeVisible;
 - (void)_initializeDataSourceManagerIfNeeded;
 @property(readonly, nonatomic) _Bool shouldShowNavigationListForDeviceAndLayoutClass;

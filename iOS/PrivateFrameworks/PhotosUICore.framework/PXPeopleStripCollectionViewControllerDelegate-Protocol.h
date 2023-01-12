@@ -9,7 +9,7 @@
 @class NSIndexPath, PXPeopleStripCollectionViewController;
 
 @protocol PXPeopleStripCollectionViewControllerDelegate <NSObject>
-- (void)memberTappedAtIndexPath:(NSIndexPath *)arg1 forPeopleStripController:(PXPeopleStripCollectionViewController *)arg2;
+- (void)memberTappedAtIndexPath:(NSIndexPath *)arg1 atPoint:(struct CGPoint)arg2 forPeopleStripController:(PXPeopleStripCollectionViewController *)arg3;
 - (struct UIEdgeInsets)sectionInset;
 - (double)minimumInteritemSpacing;
 - (double)minimumLineSpacing;

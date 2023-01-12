@@ -68,10 +68,11 @@
 - (void)setTextView:(id)arg1;
 - (id)textView;
 - (struct CGPoint)textContainerOrigin;
+- (_Bool)_hasLayoutManager:(id)arg1;
 - (void)replaceLayoutManager:(id)arg1;
 @property(nonatomic) NSLayoutManager *layoutManager;
 - (void)setTextLayoutManager:(id)arg1;
-- (id)textLayoutManager;
+@property(readonly, nonatomic) __weak NSTextLayoutManager *textLayoutManager;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)dealloc;

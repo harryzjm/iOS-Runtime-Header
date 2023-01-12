@@ -6,13 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class MISSING_TYPE, NSString;
 
 @interface _TtC12NewsArticles18ProxyConfiguration : NSObject
 {
+    MISSING_TYPE *embedProxyConfiguration;
 }
 
+- (void).cxx_destruct;
 - (id)init;
+@property(nonatomic, readonly) NSString *proxyHost;
 @property(nonatomic, readonly) NSString *proxyAutoConfigScript;
 
 @end

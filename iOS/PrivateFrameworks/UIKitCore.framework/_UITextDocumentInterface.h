@@ -10,7 +10,6 @@
 @class NSString, NSUUID, TIDocumentState, TIKeyboardOutput, TITextInputTraits, UITextInputMode, UITextInputPasswordRules, _UIInputViewControllerOutput, _UIInputViewControllerState;
 @protocol _UITextDocumentInterfaceDelegate;
 
-__attribute__((visibility("hidden")))
 @interface _UITextDocumentInterface <UITextDocumentProxy, UITextDocumentProxy_Private>
 {
     id <_UITextDocumentInterfaceDelegate> _delegate;

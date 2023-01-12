@@ -11,11 +11,13 @@
 #import <ContactsUI/CNUIObjectViewControllerDelegate-Protocol.h>
 
 @class CNContactInlineActionsViewController, CNGroupIdentity, CNGroupIdentityInlineActionsViewConfiguration, NSString;
+@protocol CNGroupIdentityInlineActionsViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface CNGroupIdentityInlineActionsViewController : UIViewController <CNContactInlineActionsViewControllerDelegate_Internal, CNUIObjectViewControllerDelegate, CNGroupIdentityActionItemDelegate>
 {
     CNGroupIdentity *_group;
+    id <CNGroupIdentityInlineActionsViewControllerDelegate> _delegate;
     CNContactInlineActionsViewController *_inlineActionsViewController;
     CNGroupIdentityInlineActionsViewConfiguration *_configuration;
 }
@@ -24,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) CNGroupIdentityInlineActionsViewConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(retain, nonatomic) CNContactInlineActionsViewController *inlineActionsViewController; // @synthesize inlineActionsViewController=_inlineActionsViewController;
+@property(nonatomic) __weak id <CNGroupIdentityInlineActionsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) CNGroupIdentity *group; // @synthesize group=_group;
 - (void)groupIdentityActionItem:(id)arg1 didUpdateOverrideEnabledState:(_Bool)arg2;
 - (void)groupIdentityActionItem:(id)arg1 didUpdateActionBlock:(CDUnknownBlockType)arg2;
@@ -35,9 +38,12 @@ __attribute__((visibility("hidden")))
 - (_Bool)contactInlineActionsViewController:(id)arg1 shouldPresentDisambiguationUIForActionOfType:(id)arg2;
 - (_Bool)contactInlineActionsViewController:(id)arg1 canPerformGroupActionOfType:(id)arg2;
 - (void)contactInlineActionsViewController:(id)arg1 didSelectActionOfType:(id)arg2;
+- (void)contactInlineActionsViewController:(id)arg1 willPresentDisambiguationUIForActionType:(id)arg2;
+- (void)contactInlineActionsViewController:(id)arg1 didPerformActionOfType:(id)arg2 fromDisambiguation:(_Bool)arg3;
 - (double)actionsViewHeightThatFits:(struct CGSize)arg1;
 - (void)setupActionsView;
 @property(readonly, nonatomic) long long style;
+- (_Bool)shouldOverrideEnabledStateForActionItem:(id)arg1;
 - (void)updateActionsViewForUpdatedActionItem:(id)arg1;
 - (id)actionsView;
 - (id)actionsContainerView;

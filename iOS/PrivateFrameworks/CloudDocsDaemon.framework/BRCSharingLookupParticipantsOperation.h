@@ -8,7 +8,6 @@
 
 @class NSArray, NSMutableArray, NSString;
 
-__attribute__((visibility("hidden")))
 @interface BRCSharingLookupParticipantsOperation <BRCOperationSubclass>
 {
     NSArray *_userIdentities;

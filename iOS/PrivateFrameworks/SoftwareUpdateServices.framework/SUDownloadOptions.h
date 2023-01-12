@@ -14,18 +14,22 @@
 {
     _Bool _downloadOnly;
     _Bool _autoDownload;
+    _Bool _allowUnrestrictedCellularDownload;
     int _downloadFeeAgreementStatus;
     int _termsAndConditionsAgreementStatus;
-    SUDescriptor *_downloadDescriptor;
+    SUDescriptor *_descriptor;
     int _activeDownloadPolicyType;
     NSObject<OS_dispatch_queue> *_stateQueue;
+    SUDescriptor *_downloadDescriptor;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(retain, nonatomic) SUDescriptor *downloadDescriptor; // @synthesize downloadDescriptor=_downloadDescriptor;
+@property(readonly, retain, nonatomic) SUDescriptor *descriptor; // @synthesize descriptor=_descriptor;
 @property(nonatomic) int termsAndConditionsAgreementStatus; // @synthesize termsAndConditionsAgreementStatus=_termsAndConditionsAgreementStatus;
 @property(nonatomic) int downloadFeeAgreementStatus; // @synthesize downloadFeeAgreementStatus=_downloadFeeAgreementStatus;
+@property(nonatomic) _Bool allowUnrestrictedCellularDownload; // @synthesize allowUnrestrictedCellularDownload=_allowUnrestrictedCellularDownload;
 @property(nonatomic, getter=isAutoDownload) _Bool autoDownload; // @synthesize autoDownload=_autoDownload;
 @property(nonatomic, getter=isDownloadOnly) _Bool downloadOnly; // @synthesize downloadOnly=_downloadOnly;
 - (id)description;
@@ -40,6 +44,7 @@
 @property(readonly, nonatomic, getter=isEnabledForExpensiveNetwork) _Bool enabledForExpensiveNetwork;
 - (_Bool)allowExpensiveNetwork;
 - (_Bool)allowCellular;
+- (_Bool)allowsUnrestrictedCellularDownload;
 @property(retain, nonatomic) id <SUDownloadPolicy> activeDownloadPolicy;
 @property(nonatomic) int activeDownloadPolicyType;
 - (id)initWithMetadata:(id)arg1 andDescriptor:(id)arg2;

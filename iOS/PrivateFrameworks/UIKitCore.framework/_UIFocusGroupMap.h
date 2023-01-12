@@ -6,22 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@class NSMapTable, _UIFocusGroup;
+#import <UIKitCore/NSCopying-Protocol.h>
+
+@class NSArray, NSMapTable, _UIFocusGroup;
+@protocol UICoordinateSpace;
 
 __attribute__((visibility("hidden")))
-@interface _UIFocusGroupMap : NSObject
+@interface _UIFocusGroupMap : NSObject <NSCopying>
 {
     NSMapTable *_environmentToGroupMap;
     NSMapTable *_identifierToGroupMap;
     NSMapTable *_identifierToPrimaryItemMap;
     _UIFocusGroup *_nullGroup;
+    NSMapTable *_standInItemsMap;
+    NSArray *_focusGroups;
+    id <UICoordinateSpace> _coordinateSpace;
 }
 
 - (void).cxx_destruct;
-- (id)primaryFocusItemForGroup:(id)arg1;
-- (id)focusGroupForEnvironment:(id)arg1;
-- (id)_focusGroupForIdentifier:(id)arg1 withParent:(id)arg2 groupRootEnvironment:(id)arg3;
-- (id)init;
+@property(readonly, nonatomic) id <UICoordinateSpace> coordinateSpace; // @synthesize coordinateSpace=_coordinateSpace;
+- (id)visualDescription;
+- (id)description;
+- (id)focusGroupForItem:(id)arg1;
+@property(readonly, nonatomic) NSArray *focusItems;
+@property(readonly, nonatomic) NSArray *focusGroups; // @synthesize focusGroups=_focusGroups;
+- (id)_indexEnvironment:(id)arg1;
+- (void)_indexItems:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithItems:(id)arg1 standInItemsMap:(id)arg2 coordinateSpace:(id)arg3;
+- (id)initWithItems:(id)arg1 coordinateSpace:(id)arg2;
 
 @end
 

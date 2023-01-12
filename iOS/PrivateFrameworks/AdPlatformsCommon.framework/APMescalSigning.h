@@ -6,13 +6,20 @@
 
 #import <objc/NSObject.h>
 
+@class APMescalSigningRequestor;
+
 @interface APMescalSigning : NSObject
 {
+    APMescalSigningRequestor *_requesterObject;
 }
 
-+ (void)signatureForData:(id)arg1 waitTime:(double)arg2 completion:(CDUnknownBlockType)arg3;
-+ (id)signatureForData:(id)arg1;
-+ (void)signatureForData:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) APMescalSigningRequestor *requesterObject; // @synthesize requesterObject=_requesterObject;
+- (void)dealloc;
+- (void)signatureForData:(id)arg1 waitTime:(double)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)signatureForData:(id)arg1;
+- (void)signatureForData:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)init;
 
 @end
 

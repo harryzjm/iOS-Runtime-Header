@@ -105,6 +105,7 @@
 - (id)childAccountsWithAccountTypeIdentifier:(id)arg1;
 @property(readonly, nonatomic) NSArray *childAccounts;
 @property(readonly, nonatomic) __weak ACAccount *displayAccount;
+- (void)_resetParentAccount:(id)arg1;
 @property(retain, nonatomic) ACAccount *parentAccount;
 @property(readonly, nonatomic) NSString *parentAccountIdentifier;
 @property(retain, nonatomic) ACAccountType *accountType;

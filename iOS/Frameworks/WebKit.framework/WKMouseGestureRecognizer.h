@@ -12,9 +12,9 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<UIEvent> _currentHoverEvent;
     struct RetainPtr<UITouch> _currentTouch;
     _Bool _touching;
-    unique_ptr_f5c9497a _lastEvent;
-    Optional_f704b8f6 _lastLocation;
-    struct Optional<long> _pressedButtonMask;
+    unique_ptr_8861e41c _lastEvent;
+    optional_dc4c3092 _lastLocation;
+    struct optional<long> _pressedButtonMask;
 }
 
 - (id).cxx_construct;
@@ -28,13 +28,12 @@ __attribute__((visibility("hidden")))
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
-- (unique_ptr_f5c9497a)createMouseEventWithType:(int)arg1;
-- (_Bool)_shouldReceivePress:(id)arg1;
-- (_Bool)_shouldReceiveTouch:(id)arg1 forEvent:(id)arg2 recognizerView:(id)arg3;
+- (unique_ptr_8861e41c)createMouseEventWithType:(int)arg1 wasCancelled:(_Bool)arg2;
 - (void)reset;
 - (id)mouseTouch;
-- (Optional_f704b8f6)lastMouseLocation;
-- (struct NativeWebMouseEvent *)lastMouseEvent;
+- (optional_dc4c3092)lastMouseLocation;
+- (void *)lastMouseEvent;
+- (_Bool)_shouldReceiveTouch:(id)arg1 forEvent:(id)arg2 recognizerView:(id)arg3;
 - (void)setEnabled:(_Bool)arg1;
 
 @end

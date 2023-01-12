@@ -6,15 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <PhotoLibraryServices/PLPhotoBakedThumbnailsDelegate-Protocol.h>
-
 @class PLIndicatorFileCoordinator, PLLibraryServicesManager, PLSimpleDCIMDirectory;
 @protocol OS_dispatch_queue, OS_os_transaction;
 
-@interface PLImageWriter : NSObject <PLPhotoBakedThumbnailsDelegate>
+@interface PLImageWriter : NSObject
 {
     int _unfinishedJobsRequiringIndicatorCount;
-    _Bool _databaseIsCorrupt;
     NSObject<OS_dispatch_queue> *_jobQueue;
     struct os_unfair_recursive_lock_s _jobCountLock;
     struct os_unfair_lock_s _transactionLock;
@@ -26,20 +23,22 @@
 }
 
 + (void)setAdjustmentsForNewVideo:(id)arg1 mainFileMetadata:(id)arg2 withAdjustmentsDictionary:(id)arg3 cameraAdjustments:(id)arg4 renderedContentPath:(id)arg5 renderedPosterFramePreviewPath:(id)arg6 finalAssetSize:(struct CGSize)arg7;
-+ (void)decorateThumbnailInRect:(struct CGRect)arg1 size:(struct CGSize)arg2 duration:(id)arg3 inContext:(struct CGContext *)arg4 format:(id)arg5;
-+ (void)decorateThumbnail:(id)arg1 inContext:(struct CGContext *)arg2;
 + (_Bool)_hasPrimaryAssetAndAdjustmentsFilesWithType:(short)arg1 inIncomingFilenames:(id)arg2 forAssetUUID:(id)arg3;
 + (id)_assetUUIDFromIncomingFilename:(id)arg1;
 + (id)_pathsByAssetUUIDFromIncomingCrashRecoveryPaths:(id)arg1;
 + (_Bool)setAdjustmentsForNewPhoto:(id)arg1 mainFileMetadata:(id)arg2 cameraAdjustmentData:(id)arg3 adjustmentDataPath:(id)arg4 filteredImagePath:(id)arg5 cameraMetadata:(id)arg6 finalAssetSize:(struct CGSize)arg7 isSubstandardRender:(_Bool)arg8;
-+ (id)_assetAdjustmentsFromCameraAdjustmentData:(id)arg1 cameraMetadata:(id)arg2 exportProperties:(id)arg3 assetType:(short)arg4;
++ (id)_assetAdjustmentsFromCameraAdjustmentData:(id)arg1 cameraMetadata:(id)arg2 exportProperties:(id)arg3 assetType:(short)arg4 applySemanticEnhance:(_Bool)arg5;
 + (id)assetAdjustmentsFromCameraAdjustmentData:(id)arg1 exportProperties:(id)arg2;
-+ (id)assetAdjustmentsFromCameraAdjustmentData:(id)arg1 cameraMetadata:(id)arg2 exportProperties:(id)arg3;
-+ (id)_assetAdjustmentsFromCameraAdjustments:(id)arg1 cameraMetadata:(id)arg2 exportProperties:(id)arg3 assetType:(short)arg4;
++ (id)assetAdjustmentsFromCameraAdjustmentData:(id)arg1 cameraMetadata:(id)arg2 exportProperties:(id)arg3 applySemanticEnhance:(_Bool)arg4;
++ (id)_assetAdjustmentsFromCameraAdjustments:(id)arg1 cameraMetadata:(id)arg2 exportProperties:(id)arg3 assetType:(short)arg4 applySemanticEnhance:(_Bool)arg5;
 + (id)assetAdjustmentsFromCameraAdjustments:(id)arg1 cameraMetadata:(id)arg2 exportProperties:(id)arg3;
++ (id)assetAdjustmentsFromCameraAdjustments:(id)arg1 cameraMetadata:(id)arg2 exportProperties:(id)arg3 applySemanticEnhance:(_Bool)arg4;
 + (id)_assetAdjustmentsFromCameraAdjustmentsFileAtPath:(id)arg1 exportProperties:(id)arg2 cameraMetadata:(id)arg3;
 + (id)assetAdjustmentsFromCameraFilters:(id)arg1 portraitMetadata:(id)arg2 exportProperties:(id)arg3 cameraMetadata:(id)arg4;
 + (id)assetAdjustmentsFromCompositionController:(id)arg1 exportProperties:(id)arg2;
++ (_Bool)semanticEnhanceSceneIsValid:(long long)arg1;
++ (id)cameraMetadataURLForPrimaryAssetURL:(id)arg1 photoLibrary:(id)arg2;
++ (id)semanticEnhancePreviewDestinationURLForPrimaryAssetURL:(id)arg1;
 + (id)finalizedAssetURLForDeferredPhotoPreviewURL:(id)arg1 extension:(id)arg2;
 + (_Bool)isDeferredPhotoPreviewURL:(id)arg1;
 + (id)deferredPhotoPreviewDestinationURLForPrimaryAssetURL:(id)arg1;
@@ -57,14 +56,13 @@
 - (void)_processVideoJob:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)_transferVideoFromIncomingPath:(id)arg1 toDestinationPath:(id)arg2 shouldRemoveIncoming:(_Bool *)arg3 error:(id *)arg4;
 - (_Bool)_transferSpatialOverCaptureVideoFromIncomingPath:(id)arg1 forBaseDestinationPath:(id)arg2 shouldRemoveIncoming:(_Bool *)arg3;
-- (void)decorateThumbnail:(id)arg1 inContext:(struct CGContext *)arg2;
-- (void)_decorateThumbnail:(id)arg1;
 - (void)_processXPCDaemonJob:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_processDaemonJob:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_processCrashRecoveryJob:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_photoIrisPairingDidSucceed:(_Bool)arg1 fileIndicatorPath:(id)arg2 photoAsset:(id)arg3 photoLibrary:(id)arg4;
 - (void)_handlePhotoIrisCrashRecoveryForPhotoIndicatorFiles:(id)arg1;
-- (void)_handleCameraAdjustments:(id)arg1 fullsizeRenders:(id)arg2;
+- (_Bool)_writeOutCameraMetadata:(id)arg1 destinationURL:(id)arg2 error:(id *)arg3;
+- (void)_handleCameraAdjustments:(id)arg1 fullsizeRenders:(id)arg2 largeThumbnails:(id)arg3;
 - (void)_handlePhotoIrisCrashRecoveryForVideos:(id)arg1;
 - (id)_fetchPhotoAssetForUUID:(id)arg1 moc:(id)arg2;
 - (void)_handleCameraMetadataCrashRecovery:(id)arg1;
@@ -74,7 +72,6 @@
 - (void)processSyncSaveJob:(id)arg1 library:(id)arg2 albumMap:(id)arg3;
 - (void)_resetSyncedAssetsDCIMDirectory;
 - (id)iTunesSyncedAssetsDCIMDirectory;
-- (_Bool)_isHeifUTI:(struct __CFString *)arg1;
 - (void)_processSavePhotoStreamImageToCameraRollJob:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_processReenqueueAssetUUIDsToPhotoStreamJob:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_enablePhotoStreamJob:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -83,10 +80,10 @@
 - (void)_processAutodeleteEmptyAlbumJob:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_processAvalanchesValidationJob:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_processAvalancheJob:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_processBatchImageJob:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)_processLimitedLibraryAdditionIfNeededWithAssetUUID:(id)arg1 clientBundleIdentifier:(id)arg2 library:(id)arg3;
+- (void)_processBatchImageJob:(id)arg1 inLibrary:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)_processLimitedLibraryAdditionIfNeededWithAssetUUID:(id)arg1 clientBundleIdentifier:(id)arg2 clientAuthorization:(id)arg3 library:(id)arg4;
 - (void)_removeInProgressExtendedAttributesForFileAtURL:(id)arg1;
-- (void)_processImageJob:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_processImageJob:(id)arg1 inLibrary:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_linkDiagnosticFileWithSourcePath:(id)arg1 forPhotoDestinationURL:(id)arg2;
 - (id)_pathForFilteredPreviewWithBaseName:(id)arg1 imageData:(id)arg2 orImage:(id)arg3;
 - (void)_removeTransientKeys:(id)arg1;

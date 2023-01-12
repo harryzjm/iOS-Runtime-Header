@@ -21,6 +21,7 @@
 
 + (id)secureCodedPropertyKeys;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool valueSet; // @synthesize valueSet=_valueSet;
 @property(nonatomic) unsigned int rank; // @synthesize rank=_rank;
 @property(nonatomic) unsigned long long context; // @synthesize context=_context;
@@ -35,7 +36,6 @@
 - (id)serverRepresentation;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
-- (void)dealloc;
 @property(retain, nonatomic) NSString *groupCategory;
 @property(retain, nonatomic) NSString *category;
 @property(readonly, nonatomic) NSString *playerID;

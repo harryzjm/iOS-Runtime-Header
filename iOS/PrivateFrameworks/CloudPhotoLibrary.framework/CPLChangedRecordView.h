@@ -17,7 +17,9 @@
 @property(readonly, nonatomic) CPLRecordView *baseRecordView; // @synthesize baseRecordView=_baseRecordView;
 - (id)redactedDescription;
 - (id)description;
+- (id)recordChangeData;
 - (id)changeForType:(unsigned long long)arg1;
+- (id)placeholderRecord;
 - (id)synthesizedRecord;
 - (id)scopedIdentifier;
 - (id)initWithChange:(id)arg1 overRecordView:(id)arg2;

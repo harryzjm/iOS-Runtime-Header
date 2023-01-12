@@ -23,6 +23,8 @@
 - (id)notesForGUIDs:(id)arg1;
 - (id)notesForIntegerIds:(id)arg1;
 - (id)notesForServerIds:(id)arg1;
+- (id)cacheKey;
+- (id)titleForTableViewCell;
 - (id)noteVisibilityTestingForSearchingAccount;
 
 // Remaining properties

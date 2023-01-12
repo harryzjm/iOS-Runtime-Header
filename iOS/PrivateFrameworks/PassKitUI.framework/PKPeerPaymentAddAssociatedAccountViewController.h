@@ -6,13 +6,14 @@
 
 #import <PassKitUI/PKPeerPaymentSetupFlowControllerDataSource-Protocol.h>
 
-@class NSString, PKFamilyMember, PKPeerPaymentAccount, PKPeerPaymentSetupFlowController, PKPeerPaymentSetupFlowControllerAssociatedAccountConfiguration, PKPeerPaymentWebService, PKWatchDeviceImageOverlayView;
+@class NSString, PKFamilyMember, PKFamilyMemberCollection, PKPeerPaymentAccount, PKPeerPaymentSetupFlowController, PKPeerPaymentSetupFlowControllerAssociatedAccountConfiguration, PKPeerPaymentWebService, PKWatchDeviceImageOverlayView;
 
 @interface PKPeerPaymentAddAssociatedAccountViewController <PKPeerPaymentSetupFlowControllerDataSource>
 {
     unsigned long long _operations;
+    long long _setupType;
     PKFamilyMember *_familyMember;
-    PKFamilyMember *_viewer;
+    PKFamilyMemberCollection *_familyCollection;
     PKPeerPaymentWebService *_webService;
     PKPeerPaymentSetupFlowController *_peerPaymentSetupFlowController;
     PKPeerPaymentAccount *_peerPaymentAccount;
@@ -31,7 +32,7 @@
 - (_Bool)shouldPushTerms;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
-- (id)initWithFamilyMember:(id)arg1 viewer:(id)arg2 webService:(id)arg3 delegate:(id)arg4 context:(long long)arg5;
+- (id)initWithFamilyMember:(id)arg1 familyCollection:(id)arg2 webService:(id)arg3 passLibraryDataProvider:(id)arg4 delegate:(id)arg5 context:(long long)arg6 setupType:(long long)arg7;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

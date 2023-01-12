@@ -9,16 +9,20 @@
 #import <ClassroomKit/CRKTransportProviding-Protocol.h>
 
 @class NSString;
-@protocol CRKTransportProviding;
+@protocol CRKFeatureDataStoreProtocol, CRKTransportProviding;
 
 @interface CRKFailIfMacAndUnenrolledStudentdTransportProvider : NSObject <CRKTransportProviding>
 {
-    id <CRKTransportProviding> mBaseTransportProvider;
+    id <CRKTransportProviding> _underlyingTransportProvider;
+    id <CRKFeatureDataStoreProtocol> _featureDataStore;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <CRKFeatureDataStoreProtocol> featureDataStore; // @synthesize featureDataStore=_featureDataStore;
+@property(readonly, nonatomic) id <CRKTransportProviding> underlyingTransportProvider; // @synthesize underlyingTransportProvider=_underlyingTransportProvider;
 - (void)fetchTransportWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithTransportProvider:(id)arg1;
+- (id)initWithTransportProvider:(id)arg1 featureDataStore:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

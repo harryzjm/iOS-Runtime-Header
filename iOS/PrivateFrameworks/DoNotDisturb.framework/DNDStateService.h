@@ -24,14 +24,12 @@
 + (void)initialize;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
-- (void)_handleLostXPCConnection;
 - (_Bool)_queue_registerForStateUpdatesIfRequired;
 - (void)remoteService:(id)arg1 didReceiveDoNotDisturbStateUpdate:(id)arg2;
-- (void)didReceiveConnectionInvalidatedEventForRemoteService:(id)arg1;
-- (void)didReceiveConnectionInterruptedEventForRemoteService:(id)arg1;
 - (void)removeStateUpdateListener:(id)arg1;
 - (void)addStateUpdateListener:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)queryCurrentStateWithError:(id *)arg1;
+- (void)queryCurrentStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)_initWithClientIdentifier:(id)arg1;
 - (_Bool)removeStateUpdateListener:(id)arg1 error:(id *)arg2;
 - (_Bool)addStateUpdateListener:(id)arg1 error:(id *)arg2;

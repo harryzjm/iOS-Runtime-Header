@@ -6,7 +6,7 @@
 
 #import <SiriKitRuntime/NSObject-Protocol.h>
 
-@class AFPeerInfo, NSBundle, NSSet, NSString, NSURL, SABaseCommand;
+@class AFEndpointInfo, AFInstanceInfo, AFPeerInfo, AFSpeechInfo, NSBundle, NSSet, NSString, NSURL, SABaseCommand;
 
 @protocol AFServiceHelper <NSObject>
 - (void)prepareForAudioHandoffFailedWithCompletion:(void (^)(void))arg1;
@@ -22,6 +22,10 @@
 - (_Bool)openSensitiveURL:(NSURL *)arg1;
 
 @optional
+- (void)isDeviceWatchAuthenticatedWithCompletion:(void (^)(_Bool))arg1;
+- (AFSpeechInfo *)speechInfo;
+- (AFInstanceInfo *)instanceInfo;
+- (AFEndpointInfo *)endpointInfo;
 - (void)fetchContextsForKeys:(NSSet *)arg1 includesNearbyDevices:(_Bool)arg2 completion:(void (^)(NSArray *))arg3;
 @end
 

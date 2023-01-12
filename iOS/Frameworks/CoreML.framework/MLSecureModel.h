@@ -7,7 +7,7 @@
 #import <CoreML/MLModeling-Protocol.h>
 #import <CoreML/NSSecureCoding-Protocol.h>
 
-@class MLModelDescription, MLModelInterface, MLModelMetadata, NSObject, NSXPCConnection;
+@class MLModelDescription, MLModelMetadata, MLPredictionEvent, NSObject, NSXPCConnection;
 @protocol CoreMLModelSecurityProtocol;
 
 @interface MLSecureModel <MLModeling, NSSecureCoding>
@@ -34,9 +34,9 @@
 - (id)predictionFromFeatures:(id)arg1 options:(id)arg2 error:(id *)arg3;
 
 // Remaining properties
-@property(readonly) MLModelInterface *interface;
 @property(readonly) MLModelMetadata *metadata;
 @property(retain, nonatomic) MLModelDescription *modelDescription;
+@property(retain, nonatomic) MLPredictionEvent *predictionEvent;
 
 @end
 

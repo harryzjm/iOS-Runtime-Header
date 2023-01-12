@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <CoreHAP/NSCopying-Protocol.h>
 #import <CoreHAP/NSObject-Protocol.h>
 
 @class HAPCharacteristic;
 
-@protocol HAPAccessoryReachabilityProfile <NSObject>
+@protocol HAPAccessoryReachabilityProfile <NSObject, NSCopying>
 @property(readonly, nonatomic) HAPCharacteristic *pollCharacteristic;
 @property(readonly, nonatomic) HAPCharacteristic *sleepIntervalCharacteristic;
-@property(nonatomic) double activityInterval;
 @property(nonatomic) double sleepInterval;
 @end
 

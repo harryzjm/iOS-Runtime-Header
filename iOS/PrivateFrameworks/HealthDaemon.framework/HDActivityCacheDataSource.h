@@ -14,7 +14,7 @@
 
 @interface HDActivityCacheDataSource : NSObject <HDActivityCacheStatisticsBuilderSourceOrderDelegate, HDDataObserver>
 {
-    vector_7eaa0458 _previousWatchActivationLogEntryVector;
+    struct vector<HDActivityCacheStatisticsBuilderSample, std::allocator<HDActivityCacheStatisticsBuilderSample>> _previousWatchActivationLogEntryVector;
     _Bool _previousWatchActivationLogEntryIsSet;
     long long _quantitySampleAnchor;
     long long _nonQuantitySampleAnchor;
@@ -28,9 +28,9 @@
     NSSet *_observedQuantityTypes;
     _HKDelayedOperation *_updateOperation;
     _HKDelayedOperation *_rebuildOperation;
-    struct unordered_map<long long, bool, std::__1::hash<long long>, std::__1::equal_to<long long>, std::__1::allocator<std::__1::pair<const long long, bool>>> _isWatchSourceCache;
-    struct unordered_map<long long, bool, std::__1::hash<long long>, std::__1::equal_to<long long>, std::__1::allocator<std::__1::pair<const long long, bool>>> _isConnectedGymSourceCache;
-    struct unordered_map<long long, bool, std::__1::hash<long long>, std::__1::equal_to<long long>, std::__1::allocator<std::__1::pair<const long long, bool>>> _isConnectedGymDeviceCache;
+    struct unordered_map<long long, bool, std::hash<long long>, std::equal_to<long long>, std::allocator<std::pair<const long long, bool>>> _isWatchSourceCache;
+    struct unordered_map<long long, bool, std::hash<long long>, std::equal_to<long long>, std::allocator<std::pair<const long long, bool>>> _isConnectedGymSourceCache;
+    struct unordered_map<long long, bool, std::hash<long long>, std::equal_to<long long>, std::allocator<std::pair<const long long, bool>>> _isConnectedGymDeviceCache;
     NSObject<OS_dispatch_queue> *_queue;
     HDProfile *_profile;
     HDActivityCacheStatisticsBuilder *_targetDayStatisticsBuilder;
@@ -61,33 +61,10 @@
 - (void)reportTargetDayHeartRateAnalytics;
 - (void)_samplesAddedToWorkoutNotification:(id)arg1;
 - (id)activityCacheStatisticsBuilder:(id)arg1 sourceOrderForObjectType:(id)arg2;
-- (long long)_isConnectedGymDeviceForDeviceIdentifier:(long long)arg1 error:(id *)arg2;
-- (long long)_isConnectedGymSourceForSourceIdentifier:(long long)arg1 error:(id *)arg2;
-- (long long)_isWatchSourceForSourceIdentifier:(long long)arg1 error:(id *)arg2;
-- (_Bool)_primeQuantitySamplesWithError:(id *)arg1 count:(long long *)arg2;
-- (id)_quantitySamplesQueryStringWithQuantityTypes:(id)arg1;
-- (id)_parameterStringWithCount:(long long)arg1;
-- (_Bool)_primeNonQuantitySamplesWithError:(id *)arg1 count:(long long *)arg2;
-- (id)_nonQuantitySamplesQueryStringWithSampleTypes:(id)arg1;
-- (_Bool)_quantitySampleIsValidWithTypeCode:(long long)arg1 workoutSourceIdentifier:(long long)arg2 isWatchSource:(_Bool)arg3;
-- (_Bool)_typeIsValidFromCompanionWithoutWorkout:(long long)arg1;
-- (_Bool)_quantityTypeRequiresWatchSource:(long long)arg1;
-- (_Bool)_nonQuantitySampleRequiresWatchSource:(long long)arg1;
-- (void)_resetPreviousWatchActivationLogEntries;
-- (void)_resetStatisticsBuilders;
-- (void)_resetEverything;
 - (void)resumeUpdates;
 - (void)pauseUpdates;
-- (void)_deregisterForSamplesAdded;
-- (void)_registerForSamplesAdded;
 - (void)samplesOfTypesWereRemoved:(id)arg1 anchor:(id)arg2;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
-- (_Bool)_primePreviousActivationLogEntryWithError:(id *)arg1;
-- (_Bool)_readyToPrimeActivationLogEntries;
-- (_Bool)_updateStatisticsBuildersWithError:(id *)arg1;
-- (_Bool)_readyToPrimeStatisticsBuilders;
-- (id)_overallDateInterval;
-- (_Bool)_dateIntervalsAreSet;
 - (_Bool)updateWithError:(id *)arg1;
 - (void)invalidate;
 - (void)dealloc;

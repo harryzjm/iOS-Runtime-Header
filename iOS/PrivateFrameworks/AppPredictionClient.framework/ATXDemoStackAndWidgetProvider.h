@@ -10,6 +10,7 @@
 {
 }
 
++ (_Bool)_shouldShowStackInGallery;
 + (id)_widgetFromDictionary:(id)arg1 descriptors:(id)arg2;
 + (id)_widgetArrayForPrefixKey:(id)arg1 countKey:(id)arg2 defaults:(id)arg3 descriptors:(id)arg4;
 + (id)demoStackAndWidgets;

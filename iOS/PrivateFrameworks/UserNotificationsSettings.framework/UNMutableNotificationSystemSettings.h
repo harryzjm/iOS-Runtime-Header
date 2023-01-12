@@ -4,12 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSArray;
+
 @interface UNMutableNotificationSystemSettings
 {
 }
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(nonatomic) long long spokenNotificationSetting; // @dynamic spokenNotificationSetting;
+@property(nonatomic) long long scheduledDeliveryShowNextSummarySetting; // @dynamic scheduledDeliveryShowNextSummarySetting;
+@property(copy, nonatomic) NSArray *scheduledDeliveryTimes; // @dynamic scheduledDeliveryTimes;
+@property(nonatomic) long long scheduledDeliverySetting; // @dynamic scheduledDeliverySetting;
+@property(nonatomic) long long announcementCarPlaySetting; // @dynamic announcementCarPlaySetting;
+@property(nonatomic) long long announcementHeadphonesSetting; // @dynamic announcementHeadphonesSetting;
 @property(nonatomic) long long announcementSetting; // @dynamic announcementSetting;
 @property(nonatomic) long long showPreviewsSetting; // @dynamic showPreviewsSetting;
 

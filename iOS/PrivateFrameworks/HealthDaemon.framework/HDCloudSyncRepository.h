@@ -6,41 +6,41 @@
 
 #import <objc/NSObject.h>
 
-@class CKContainer, HDProfile, NSArray, NSMutableArray, NSSet, NSString;
-@protocol OS_dispatch_queue;
+@class CKContainer, HDProfile, NSArray, NSSet, NSString;
 
 @interface HDCloudSyncRepository : NSObject
 {
-    struct os_unfair_lock_s _lock;
-    NSObject<OS_dispatch_queue> *_queue;
-    long long _pullOperationFailureCount;
-    NSMutableArray *_ownerIdentifierFetchCompletionBlocks;
     _Bool _shouldPushToUnifiedZone;
+    _Bool _shouldPullIntoProfilesWithNoOwner;
     HDProfile *_profile;
     CKContainer *_primaryCKContainer;
     NSArray *_secondaryCKContainers;
     NSSet *_allCKContainers;
     unsigned long long _repositorySettings;
     NSString *_syncCircleIdentifier;
+    NSString *_userRecordName;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool shouldPullIntoProfilesWithNoOwner; // @synthesize shouldPullIntoProfilesWithNoOwner=_shouldPullIntoProfilesWithNoOwner;
 @property(readonly, nonatomic) _Bool shouldPushToUnifiedZone; // @synthesize shouldPushToUnifiedZone=_shouldPushToUnifiedZone;
+@property(readonly, copy, nonatomic) NSString *userRecordName; // @synthesize userRecordName=_userRecordName;
 @property(readonly, copy, nonatomic) NSString *syncCircleIdentifier; // @synthesize syncCircleIdentifier=_syncCircleIdentifier;
 @property(nonatomic) unsigned long long repositorySettings; // @synthesize repositorySettings=_repositorySettings;
 @property(readonly, nonatomic) NSSet *allCKContainers; // @synthesize allCKContainers=_allCKContainers;
 @property(readonly, nonatomic) NSArray *secondaryCKContainers; // @synthesize secondaryCKContainers=_secondaryCKContainers;
 @property(readonly, nonatomic) CKContainer *primaryCKContainer; // @synthesize primaryCKContainer=_primaryCKContainer;
 @property(readonly, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
-- (void)_queue_generateRestoreEventSyncCompleteWithPullCompleteDate:(id)arg1;
 - (id)description;
-- (void)_disableCloudSyncWithCompletion:(CDUnknownBlockType)arg1;
-- (id)ownerIdentifierForContainer:(id)arg1 error:(id *)arg2;
+- (id)cachedOwnerIdentifierForContainer:(id)arg1;
+- (void)cacheAllOwnerIdentifiersWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchOwnerIdentifierForContainer:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)containerForContainerIdentifier:(id)arg1;
+- (void)unitTest_setShouldPullIntoProfilesWithNoOwner:(_Bool)arg1;
 - (void)unitTest_setShouldPushToUnifiedZone:(_Bool)arg1;
 @property(readonly, nonatomic) int deviceMode;
 - (void)dealloc;
-- (id)initWithProfile:(id)arg1 syncCircleIdentifier:(id)arg2 primaryCKContainer:(id)arg3 secondaryCKContainers:(id)arg4;
+- (id)initWithProfile:(id)arg1 syncCircleIdentifier:(id)arg2 primaryCKContainer:(id)arg3 secondaryCKContainers:(id)arg4 userRecordName:(id)arg5;
 - (id)init;
 
 @end

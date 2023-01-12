@@ -9,7 +9,7 @@
 #import <HealthDaemon/HDDecoding-Protocol.h>
 #import <HealthDaemon/NSCopying-Protocol.h>
 
-@class HDCodableMedicalCoding, HDCodableMedicalCodingList, HDCodableMedicalRecord, HDCodableMedicationDosageList, NSData, NSString;
+@class HDCodableMedicalCoding, HDCodableMedicalCodingList, HDCodableMedicalCodingListList, HDCodableMedicalRecord, HDCodableMedicationDosageList, NSData, NSString;
 
 @interface HDCodableMedicationOrder : PBCodable <HDDecoding, NSCopying>
 {
@@ -18,11 +18,12 @@
     NSData *_earliestDosageDate;
     NSData *_endedDate;
     HDCodableMedicalRecord *_medicalRecord;
-    HDCodableMedicalCodingList *_medicationCodings;
+    HDCodableMedicalCodingList *_medicationCodingCollection;
     NSString *_prescriber;
-    HDCodableMedicalCodingList *_reasonCodings;
-    HDCodableMedicalCodingList *_reasonEndedCodings;
+    HDCodableMedicalCodingListList *_reasonCodingCollections;
+    HDCodableMedicalCodingList *_reasonEndedCodingCollection;
     HDCodableMedicalCoding *_statusCoding;
+    HDCodableMedicalCodingList *_statusReasonCodingCollection;
     NSData *_writtenDate;
     struct {
         unsigned int numberOfFills:1;
@@ -30,8 +31,9 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) HDCodableMedicalCodingList *reasonEndedCodings; // @synthesize reasonEndedCodings=_reasonEndedCodings;
-@property(retain, nonatomic) HDCodableMedicalCodingList *reasonCodings; // @synthesize reasonCodings=_reasonCodings;
+@property(retain, nonatomic) HDCodableMedicalCodingList *statusReasonCodingCollection; // @synthesize statusReasonCodingCollection=_statusReasonCodingCollection;
+@property(retain, nonatomic) HDCodableMedicalCodingList *reasonEndedCodingCollection; // @synthesize reasonEndedCodingCollection=_reasonEndedCodingCollection;
+@property(retain, nonatomic) HDCodableMedicalCodingListList *reasonCodingCollections; // @synthesize reasonCodingCollections=_reasonCodingCollections;
 @property(retain, nonatomic) HDCodableMedicalCoding *statusCoding; // @synthesize statusCoding=_statusCoding;
 @property(retain, nonatomic) NSData *endedDate; // @synthesize endedDate=_endedDate;
 @property(retain, nonatomic) NSData *writtenDate; // @synthesize writtenDate=_writtenDate;
@@ -39,7 +41,7 @@
 @property(retain, nonatomic) HDCodableMedicationDosageList *dosages; // @synthesize dosages=_dosages;
 @property(nonatomic) long long numberOfFills; // @synthesize numberOfFills=_numberOfFills;
 @property(retain, nonatomic) NSString *prescriber; // @synthesize prescriber=_prescriber;
-@property(retain, nonatomic) HDCodableMedicalCodingList *medicationCodings; // @synthesize medicationCodings=_medicationCodings;
+@property(retain, nonatomic) HDCodableMedicalCodingList *medicationCodingCollection; // @synthesize medicationCodingCollection=_medicationCodingCollection;
 @property(retain, nonatomic) HDCodableMedicalRecord *medicalRecord; // @synthesize medicalRecord=_medicalRecord;
 - (void)mergeFrom:(id)arg1;
 @property(readonly) unsigned long long hash;
@@ -50,8 +52,9 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 @property(readonly, copy) NSString *description;
-@property(readonly, nonatomic) _Bool hasReasonEndedCodings;
-@property(readonly, nonatomic) _Bool hasReasonCodings;
+@property(readonly, nonatomic) _Bool hasStatusReasonCodingCollection;
+@property(readonly, nonatomic) _Bool hasReasonEndedCodingCollection;
+@property(readonly, nonatomic) _Bool hasReasonCodingCollections;
 @property(readonly, nonatomic) _Bool hasStatusCoding;
 @property(readonly, nonatomic) _Bool hasEndedDate;
 @property(readonly, nonatomic) _Bool hasWrittenDate;
@@ -59,7 +62,7 @@
 @property(readonly, nonatomic) _Bool hasDosages;
 @property(nonatomic) _Bool hasNumberOfFills;
 @property(readonly, nonatomic) _Bool hasPrescriber;
-@property(readonly, nonatomic) _Bool hasMedicationCodings;
+@property(readonly, nonatomic) _Bool hasMedicationCodingCollection;
 @property(readonly, nonatomic) _Bool hasMedicalRecord;
 - (_Bool)applyToObject:(id)arg1 error:(out id *)arg2;
 - (_Bool)applyToObject:(id)arg1;

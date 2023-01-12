@@ -23,6 +23,7 @@
 @property(readonly, nonatomic) double rollAngle; // @synthesize rollAngle=_rollAngle;
 @property(readonly, nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
 @property(readonly, copy, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
+@property(readonly, nonatomic) unsigned long long syntheticFocusMode;
 - (id)burstMetadataRepresentation;
 @property(readonly, nonatomic) AVMetadataObject *underlyingMetadataObject;
 @property(readonly, copy, nonatomic) NSString *metadataType;

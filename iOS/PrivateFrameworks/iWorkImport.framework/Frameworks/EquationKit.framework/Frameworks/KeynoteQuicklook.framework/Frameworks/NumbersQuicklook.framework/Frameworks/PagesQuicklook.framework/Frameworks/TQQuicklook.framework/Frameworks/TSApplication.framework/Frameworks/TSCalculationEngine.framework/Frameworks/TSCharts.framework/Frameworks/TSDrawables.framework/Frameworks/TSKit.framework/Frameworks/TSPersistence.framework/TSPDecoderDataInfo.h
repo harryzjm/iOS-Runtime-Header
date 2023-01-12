@@ -18,17 +18,19 @@
     NSString *_documentResourceLocator;
     TSPDataMetadata *_dataMetadata;
     long long _identifier;
+    unsigned long long _length;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long length; // @synthesize length=_length;
 @property(readonly, nonatomic) long long identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) TSPDataMetadata *dataMetadata; // @synthesize dataMetadata=_dataMetadata;
 @property(readonly, nonatomic) NSString *documentResourceLocator; // @synthesize documentResourceLocator=_documentResourceLocator;
 @property(readonly, nonatomic) NSString *externalFilePath; // @synthesize externalFilePath=_externalFilePath;
 @property(readonly, nonatomic) NSString *preferredFilename; // @synthesize preferredFilename=_preferredFilename;
 @property(readonly, nonatomic) TSPDigest *digest; // @synthesize digest=_digest;
-- (id)initWithMessage:(const struct DataInfo *)arg1;
-- (id)initWithIdentifier:(long long)arg1 digest:(id)arg2 preferredFilename:(id)arg3 documentResourceLocator:(id)arg4 externalFilePath:(id)arg5;
+- (id)initWithMessage:(const void *)arg1;
+- (id)initWithIdentifier:(long long)arg1 digest:(id)arg2 length:(unsigned long long)arg3 preferredFilename:(id)arg4 documentResourceLocator:(id)arg5 externalFilePath:(id)arg6;
 - (id)init;
 
 // Remaining properties

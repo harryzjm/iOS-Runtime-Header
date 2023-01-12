@@ -21,6 +21,7 @@
 @property(nonatomic) __weak id <SBWallpaperServerDelegate> delegate; // @synthesize delegate=_delegate;
 - (_Bool)_xpcObjectIsDictionary:(id)arg1;
 - (_Bool)_clientPermittedToModifyWallpaper:(id)arg1;
+- (void)_handleAcquireActiveWallpaperSceneAssertionMessage:(id)arg1 fromClient:(id)arg2;
 - (void)_handleRestoreDefaultWallpaperMessage:(id)arg1 fromClient:(id)arg2;
 - (void)_handleSetGradientMessage:(id)arg1 fromClient:(id)arg2;
 - (void)_handleSetColorMessage:(id)arg1 fromClient:(id)arg2;

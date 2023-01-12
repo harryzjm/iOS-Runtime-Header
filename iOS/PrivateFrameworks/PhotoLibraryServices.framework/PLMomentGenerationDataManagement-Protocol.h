@@ -7,7 +7,7 @@
 #import <PhotoLibraryServices/NSObject-Protocol.h>
 
 @class NSArray, NSDate, NSDateInterval, NSDictionary, NSObject, NSPredicate, NSSet, NSString, PLLocationOfInterestVisit, PLXPCTransaction;
-@protocol NSCopying, PLMomentAnalysisTransaction, PLMomentAssetData, PLMomentData, PLMomentListData, PLPhotosHighlightData;
+@protocol NSCopying, PLMomentAnalysisTransaction, PLMomentAssetData, PLMomentData, PLPhotosHighlightData;
 
 @protocol PLMomentGenerationDataManagement <NSObject>
 @property(readonly, nonatomic) NSDictionary *generationOptions;
@@ -42,11 +42,8 @@
 - (_Bool)hasChanges;
 - (id <PLPhotosHighlightData>)insertNewPhotosHighlight;
 - (id <PLMomentData>)insertNewMoment;
-- (id <PLMomentListData>)insertNewMomentListForGranularityLevel:(short)arg1;
 - (Class)momentAssetDataClass;
 - (Class)momentDataClass;
-- (Class)momentListDataClassForGranularityLevel:(short)arg1;
-- (_Bool)deleteAllMomentListsWithError:(id *)arg1;
 - (_Bool)deleteAllHighlightsWithError:(id *)arg1;
 - (_Bool)deleteAllMomentsWithError:(id *)arg1;
 - (NSArray *)allEmptyPhotosHighlightsOfKind:(unsigned short)arg1 error:(id *)arg2;
@@ -62,8 +59,6 @@
 - (NSArray *)allAssetsToBeIncludedInMomentsWithError:(id *)arg1;
 - (NSArray *)momentsIntersectingDateInterval:(NSDateInterval *)arg1;
 - (NSArray *)orphanedAssetIDsWithError:(id *)arg1;
-- (NSArray *)allMomentLists;
-- (NSArray *)allMomentListsForLevel:(short)arg1;
 - (NSArray *)allMomentsWithInvalidReverseLocationData;
 - (NSArray *)allInvalidMomentIDsWithError:(id *)arg1;
 - (NSArray *)allMomentIDsWithError:(id *)arg1;
@@ -71,13 +66,10 @@
 - (NSArray *)momentsWithLocationTypeUnprocessedWithError:(id *)arg1;
 - (NSArray *)allInvalidMomentsWithError:(id *)arg1;
 - (NSArray *)allMomentsWithError:(id *)arg1;
-- (id <PLMomentListData>)monthMomentListForMonth:(long long)arg1 year:(long long)arg2;
-- (id <PLMomentListData>)yearMomentListForYear:(long long)arg1;
 - (NSArray *)momentsBetweenDate:(NSDate *)arg1 andDate:(NSDate *)arg2 sorted:(_Bool)arg3;
 - (NSArray *)momentsSinceDate:(NSDate *)arg1;
 - (NSArray *)momentsForAssetsWithUniqueIDs:(NSArray *)arg1 error:(id *)arg2;
 - (NSArray *)momentsWithUniqueIDs:(NSArray *)arg1 error:(id *)arg2;
-- (id <PLMomentListData>)momentListWithUniqueID:(NSObject<NSCopying> *)arg1 forLevel:(short)arg2 error:(id *)arg3;
 - (void)enumerateAssetsWithIDs:(NSArray *)arg1 usingBlock:(void (^)(id <PLMomentAssetData>, unsigned long long, _Bool *))arg2;
 - (id <PLMomentData>)momentWithUniqueID:(NSObject<NSCopying> *)arg1 error:(id *)arg2;
 - (NSArray *)assetsWithUniqueIDs:(NSArray *)arg1 error:(id *)arg2;

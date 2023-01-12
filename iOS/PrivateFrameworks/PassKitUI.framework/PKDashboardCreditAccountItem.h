@@ -8,15 +8,19 @@
 
 #import <PassKitUI/PKDashboardItem-Protocol.h>
 
-@class NSArray, NSString, PKAccount, PKSpendingSummary, PKSpendingSummaryFetcher, PKTransactionSource;
+@class NSArray, NSString, PKAccount, PKAccountUserCollection, PKContactAvatarManager, PKFamilyMemberCollection, PKSpendingSummary, PKSpendingSummaryFetcher, PKTransactionSourceCollection;
 
 @interface PKDashboardCreditAccountItem : NSObject <PKDashboardItem>
 {
     PKAccount *_account;
-    PKTransactionSource *_transactionSource;
+    PKAccountUserCollection *_accountUserCollection;
+    PKTransactionSourceCollection *_transactionSourceCollection;
+    PKFamilyMemberCollection *_familyCollection;
+    PKContactAvatarManager *_avatarManager;
     unsigned long long _type;
     NSArray *_weeks;
     NSArray *_months;
+    NSArray *_years;
     PKSpendingSummary *_summary;
     PKSpendingSummaryFetcher *_summaryFetcher;
     NSArray *_mostRecentTransactions;
@@ -29,12 +33,16 @@
 @property(retain, nonatomic) NSArray *mostRecentTransactions; // @synthesize mostRecentTransactions=_mostRecentTransactions;
 @property(retain, nonatomic) PKSpendingSummaryFetcher *summaryFetcher; // @synthesize summaryFetcher=_summaryFetcher;
 @property(retain, nonatomic) PKSpendingSummary *summary; // @synthesize summary=_summary;
+@property(retain, nonatomic) NSArray *years; // @synthesize years=_years;
 @property(retain, nonatomic) NSArray *months; // @synthesize months=_months;
 @property(retain, nonatomic) NSArray *weeks; // @synthesize weeks=_weeks;
 @property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
-@property(retain, nonatomic) PKTransactionSource *transactionSource; // @synthesize transactionSource=_transactionSource;
+@property(retain, nonatomic) PKContactAvatarManager *avatarManager; // @synthesize avatarManager=_avatarManager;
+@property(retain, nonatomic) PKFamilyMemberCollection *familyCollection; // @synthesize familyCollection=_familyCollection;
+@property(retain, nonatomic) PKTransactionSourceCollection *transactionSourceCollection; // @synthesize transactionSourceCollection=_transactionSourceCollection;
+@property(readonly, nonatomic) PKAccountUserCollection *accountUserCollection; // @synthesize accountUserCollection=_accountUserCollection;
 @property(readonly, nonatomic) PKAccount *account; // @synthesize account=_account;
-- (id)initWithAccount:(id)arg1 transactionSource:(id)arg2 type:(unsigned long long)arg3;
+- (id)initWithAccount:(id)arg1 accountUserCollection:(id)arg2 transactionSourceCollection:(id)arg3 familyCollection:(id)arg4 avatarManager:(id)arg5 type:(unsigned long long)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

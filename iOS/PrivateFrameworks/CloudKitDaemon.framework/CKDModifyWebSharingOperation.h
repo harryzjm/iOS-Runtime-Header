@@ -7,7 +7,6 @@
 @class NSArray, NSMutableDictionary, NSMutableSet;
 @protocol CKModifyWebSharingOperationCallbacks;
 
-__attribute__((visibility("hidden")))
 @interface CKDModifyWebSharingOperation
 {
     int _numSaveAttempts;
@@ -40,7 +39,7 @@ __attribute__((visibility("hidden")))
 - (id)nameForState:(unsigned long long)arg1;
 - (_Bool)makeStateTransition;
 - (id)activityCreate;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 // Remaining properties
 @property(retain, nonatomic) id <CKModifyWebSharingOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;

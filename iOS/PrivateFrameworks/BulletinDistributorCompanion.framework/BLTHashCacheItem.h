@@ -11,6 +11,7 @@
 @interface BLTHashCacheItem : NSObject
 {
     NSData *_MD5;
+    struct os_unfair_lock_s _lock;
     NSString *_identifier;
     NSData *_data;
     NSURL *_url;

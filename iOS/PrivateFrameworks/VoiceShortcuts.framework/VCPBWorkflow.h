@@ -37,11 +37,15 @@
         unsigned int iconGlyph:1;
         unsigned int remoteQuarantineStatus:1;
     } _has;
+    _Bool _hasSmartPromptPerWorkflowStateData;
+    NSData *_smartPromptPerWorkflowStateData;
 }
 
 + (Class)inputClassesType;
 + (Class)workflowTypesType;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSData *smartPromptPerWorkflowStateData; // @synthesize smartPromptPerWorkflowStateData=_smartPromptPerWorkflowStateData;
+@property(readonly, nonatomic) _Bool hasSmartPromptPerWorkflowStateData; // @synthesize hasSmartPromptPerWorkflowStateData=_hasSmartPromptPerWorkflowStateData;
 @property(retain, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(retain, nonatomic) NSData *accessResourcePerWorkflowStateData; // @synthesize accessResourcePerWorkflowStateData=_accessResourcePerWorkflowStateData;
 @property(retain, nonatomic) NSString *lastMigratedClientVersion; // @synthesize lastMigratedClientVersion=_lastMigratedClientVersion;

@@ -88,6 +88,7 @@
 - (long long)pickerView:(id)arg1 numberOfRowsInComponent:(long long)arg2;
 - (long long)numberOfComponentsInPickerView:(id)arg1;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
+- (void)tableView:(id)arg1 willDisplayFooterView:(id)arg2 forSection:(long long)arg3;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
@@ -99,6 +100,8 @@
 - (void)_createChoosersAndControls;
 - (struct CGSize)calculatePreferredContentSize;
 - (struct CGSize)preferredContentSize;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)resetBackgroundColor;
 - (void)loadView;
 - (id)initWithStartDate:(id)arg1 timeZone:(id)arg2 clearBackground:(_Bool)arg3;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

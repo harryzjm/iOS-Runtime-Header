@@ -6,14 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <RecapPerformanceTesting/RPTBlockBasedScrollTestParameters-Protocol.h>
-#import <RecapPerformanceTesting/RPTScrollTestParameters-Protocol.h>
+#import <RecapPerformanceTesting/RPTTestParameters-Protocol.h>
+#import <RecapPerformanceTesting/_RPTCoordinateSpaces-Protocol.h>
 
-@class NSNumber, NSString, RCPSyntheticEventStream;
+@class NSNumber, NSString, RPTCoordinateSpaceConverter;
 
-@interface RPTDirectionalSwipeTestParameters : NSObject <RPTScrollTestParameters, RPTBlockBasedScrollTestParameters>
+@interface RPTDirectionalSwipeTestParameters : NSObject <_RPTCoordinateSpaces, RPTTestParameters>
 {
     _Bool _shouldFlick;
+    RPTCoordinateSpaceConverter *conversion;
     NSString *_testName;
     long long _direction;
     long long _swipeCount;
@@ -30,16 +31,18 @@
 @property(nonatomic) long long direction; // @synthesize direction=_direction;
 @property(nonatomic) struct CGRect scrollingBounds; // @synthesize scrollingBounds=_scrollingBounds;
 @property(copy, nonatomic) NSString *testName; // @synthesize testName=_testName;
+@property(retain, nonatomic) RPTCoordinateSpaceConverter *conversion; // @synthesize conversion;
 - (void)scrollWithComposer:(id)arg1 fromPoint:(struct CGPoint)arg2 toPoint:(struct CGPoint)arg3 speedFactor:(id)arg4;
-@property(readonly, nonatomic) RCPSyntheticEventStream *eventStream;
 @property(readonly, copy, nonatomic) CDUnknownBlockType composerBlock;
 - (id)initWithTestName:(id)arg1 scrollingBounds:(struct CGRect)arg2 swipeCount:(long long)arg3 direction:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)initWithTestName:(id)arg1 scrollView:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)prepareWithComposer:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool managesTestStartAndEnd;
 @property(readonly) Class superclass;
 
 @end

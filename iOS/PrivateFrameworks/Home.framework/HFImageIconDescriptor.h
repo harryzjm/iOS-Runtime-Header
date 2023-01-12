@@ -22,7 +22,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool isSystemImage; // @synthesize isSystemImage=_isSystemImage;
 @property(nonatomic) _Bool isDemoModeDescriptor; // @synthesize isDemoModeDescriptor=_isDemoModeDescriptor;
-@property(readonly, nonatomic) UIImageSymbolConfiguration *imageSymbolConfiguration; // @synthesize imageSymbolConfiguration=_imageSymbolConfiguration;
+@property(retain, nonatomic) UIImageSymbolConfiguration *imageSymbolConfiguration; // @synthesize imageSymbolConfiguration=_imageSymbolConfiguration;
 @property(readonly, nonatomic) NSString *imageIdentifier; // @synthesize imageIdentifier=_imageIdentifier;
 @property(readonly, nonatomic) _Bool shouldForceLTR; // @synthesize shouldForceLTR=_shouldForceLTR;
 - (long long)compare:(id)arg1;

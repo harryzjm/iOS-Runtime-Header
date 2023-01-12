@@ -10,8 +10,7 @@
 
 @interface _TtC7VFXCore13RenderBuckets : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *opaqueDrawList;
-    MISSING_TYPE *materialTransparentBuckets;
+    MISSING_TYPE *drawList;
     MISSING_TYPE *renderContext;
 }
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEOComposedGuidanceEvent, MNGuidanceEventManager, NSMutableArray;
+@class GEOComposedGuidanceEvent, NSArray, NSMutableArray;
 
 @interface MNAnnouncementPlanEvent : NSObject
 {
@@ -14,24 +14,24 @@
     GEOComposedGuidanceEvent *_event;
     unsigned long long _variantIndex;
     double _triggerDistance;
-    MNGuidanceEventManager *_manager;
     double _distance;
     double _speed;
+    NSArray *_durations;
     NSMutableArray *_announcementDurations;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *announcementDurations; // @synthesize announcementDurations=_announcementDurations;
+@property(retain, nonatomic) NSArray *durations; // @synthesize durations=_durations;
 @property(nonatomic) double speed; // @synthesize speed=_speed;
 @property(nonatomic) double distance; // @synthesize distance=_distance;
-@property(nonatomic) __weak MNGuidanceEventManager *manager; // @synthesize manager=_manager;
 @property(nonatomic) double triggerDistance; // @synthesize triggerDistance=_triggerDistance;
 @property(nonatomic) unsigned long long variantIndex; // @synthesize variantIndex=_variantIndex;
 @property(nonatomic) _Bool includeInPlan; // @synthesize includeInPlan=_includeInPlan;
 @property(retain, nonatomic) GEOComposedGuidanceEvent *event; // @synthesize event=_event;
 @property(readonly, nonatomic) double completionDistance;
 - (id)description;
-- (id)initWithEvent:(id)arg1 distance:(double)arg2 speed:(double)arg3 manager:(id)arg4;
+- (id)initWithEvent:(id)arg1 distance:(double)arg2 speed:(double)arg3 durations:(id)arg4;
 
 @end
 

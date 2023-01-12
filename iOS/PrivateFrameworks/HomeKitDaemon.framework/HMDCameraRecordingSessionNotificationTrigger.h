@@ -14,6 +14,7 @@
 
 @interface HMDCameraRecordingSessionNotificationTrigger : HMFObject <HMDCharacteristicsAvailabilityListenerDelegate, HMFLogging>
 {
+    NSString *_logIdentifier;
     id <HMDCameraRecordingSessionNotificationTriggerDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMDHAPAccessory *_cameraAccessory;
@@ -32,8 +33,8 @@
 @property(readonly) __weak HMDHAPAccessory *cameraAccessory; // @synthesize cameraAccessory=_cameraAccessory;
 @property(readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property __weak id <HMDCameraRecordingSessionNotificationTriggerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, copy) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
 - (void)listener:(id)arg1 didUpdateAvailableCharacteristics:(id)arg2;
-- (id)logIdentifier;
 - (void)handleCharacteristicsValueUpdated:(id)arg1;
 - (void)handleAccessoryConnected:(id)arg1;
 - (void)_handleObservedCharacteristicsValueUpdate:(id)arg1;

@@ -46,7 +46,7 @@
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 @property(readonly, copy) NSString *description;
-- (void)_runCompletionHandlerForWake:(_Bool)arg1;
+- (void)_runCompletionHandlerForWake:(_Bool)arg1 reason:(id)arg2;
 - (void)_handleAnimationCompletionIfNecessaryForWaking:(_Bool)arg1;
 - (void)sleepForSource:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)sleepForSource:(long long)arg1 target:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -55,6 +55,7 @@
 - (void)_setLastBacklightChangeSource:(long long)arg1;
 - (void)_cleanupAnimationWhenInterruptingWaking:(_Bool)arg1;
 - (void)_startWakeIfNecessary;
+- (void)_startWakeFromUnblankNotification;
 - (void)prepareToWakeForSource:(long long)arg1 timeAlpha:(double)arg2 statusBarAlpha:(double)arg3 target:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_setInteractionEventsIgnored:(_Bool)arg1;
 - (_Bool)interruptSleepAnimationIfNeeded;

@@ -16,11 +16,6 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) CDUnknownBlockType streamingCallback; // @synthesize streamingCallback=_streamingCallback;
-@property(readonly, nonatomic) NSData *data; // @synthesize data=_data;
-@property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
-- (id)initWithName:(id)arg1 data:(id)arg2 streamingCallback:(CDUnknownBlockType)arg3;
-- (id)initWithName:(id)arg1 data:(id)arg2;
 
 @end
 

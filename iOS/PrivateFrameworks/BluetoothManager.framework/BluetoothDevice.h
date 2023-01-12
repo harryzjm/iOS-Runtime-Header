@@ -17,6 +17,10 @@
     unsigned int _connectingServiceMask;
 }
 
+- (int)getHexDeviceAddress:(CDStruct_5cfa2073 *)arg1;
+- (id)gyroInformation;
+- (_Bool)setUserSelectedDeviceType:(int)arg1;
+- (int)getUserSelectedDeviceType;
 - (unsigned char)getSpatialAudioPlatformSupport;
 - (int)getBehaviorForHIDDevice;
 - (int)getLowSecurityStatus;
@@ -42,11 +46,18 @@
 - (id)getServiceSetting:(unsigned int)arg1 key:(id)arg2;
 - (_Bool)isServiceSupported:(unsigned int)arg1;
 - (_Bool)isAccessory;
+- (unsigned int)getAACPCapabilityInteger:(int)arg1;
 - (id)getAACPCapabilityBits;
 - (_Bool)getAACPCapabilityBit:(int)arg1;
 - (id)accessoryInfo;
 - (_Bool)pairedDeviceNameUpdated;
 - (int)accessorySettingFeatureBitMask;
+- (_Bool)setAutoAnswerMode:(int)arg1;
+- (int)autoAnswerMode;
+- (_Bool)setChimeVolume:(unsigned int)arg1;
+- (unsigned int)chimeVolume;
+- (_Bool)setCrownRotationDirection:(int)arg1;
+- (int)crownRotationDirection;
 - (_Bool)setClickHoldMode:(int)arg1 rightMode:(int)arg2;
 - (unsigned int)clickHoldMode:(int *)arg1 rightAction:(int *)arg2;
 - (_Bool)setDoubleClickMode:(int)arg1;
@@ -69,8 +80,15 @@
 - (_Bool)inEarStatusPrimary:(int *)arg1 secondary:(int *)arg2;
 - (unsigned char)smartRouteMode;
 - (_Bool)setSmartRouteMode:(unsigned char)arg1;
+- (unsigned char)spatialAudioMode;
+- (_Bool)setSpatialAudioMode:(unsigned char)arg1;
+- (_Bool)spatialAudioActive;
+- (_Bool)spatialAudioAllowed;
+- (_Bool)setSpatialAudioAllowed:(_Bool)arg1;
 - (_Bool)setInEarDetectEnabled:(_Bool)arg1;
 - (_Bool)inEarDetectEnabled;
+- (_Bool)setIsHidden:(_Bool)arg1;
+- (_Bool)batteryStatus:(CDStruct_de0e5961 *)arg1;
 - (int)batteryLevel;
 - (_Bool)supportsBatteryLevel;
 - (unsigned long long)connectedServicesCount;

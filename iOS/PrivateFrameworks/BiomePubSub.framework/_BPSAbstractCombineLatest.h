@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <BiomePubSub/BMBookmarkableSubscription-Protocol.h>
+
 @class NSMutableArray;
 @protocol BPSSubscriber;
 
-@interface _BPSAbstractCombineLatest
+@interface _BPSAbstractCombineLatest <BMBookmarkableSubscription>
 {
     struct os_unfair_lock_s _lock;
-    struct os_unfair_lock_s _downstreamLock;
+    struct os_unfair_recursive_lock_s _downstreamLock;
     _Bool _recursion;
     _Bool _finished;
     _Bool _errored;

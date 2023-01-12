@@ -49,19 +49,23 @@
     _Bool _shouldDisableInteractiveScreenshotGesture;
     _Bool _shouldDisableSiri;
     _Bool _shouldPendAlertItems;
-    int _preferredStatusBarStyleOverridesToCancel;
+    _Bool _attachedToWindowedAccessory;
     id <SBRemoteTransientOverlayHostViewControllerDelegate> _delegate;
     id <SBIdleTimerCoordinating> _idleTimerCoordinator;
     long long _preferredLockedGestureDismissalStyle;
     long long _preferredUnlockedGestureDismissalStyle;
     long long _preferredBackgroundStyle;
     NSNumber *_preferredSceneDeactivationReasonValue;
+    unsigned long long _preferredStatusBarStyleOverridesToCancel;
     _UILegibilitySettings *_preferredStatusBarLegibilitySettings;
+    struct CGRect _windowedAccessoryCutoutFrameInScreen;
 }
 
 + (id)serviceViewControllerInterface;
 + (id)exportedInterface;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) struct CGRect windowedAccessoryCutoutFrameInScreen; // @synthesize windowedAccessoryCutoutFrameInScreen=_windowedAccessoryCutoutFrameInScreen;
+@property(readonly, nonatomic, getter=isAttachedToWindowedAccessory) _Bool attachedToWindowedAccessory; // @synthesize attachedToWindowedAccessory=_attachedToWindowedAccessory;
 @property(readonly, nonatomic) _Bool shouldPendAlertItems; // @synthesize shouldPendAlertItems=_shouldPendAlertItems;
 @property(readonly, nonatomic) _Bool shouldDisableSiri; // @synthesize shouldDisableSiri=_shouldDisableSiri;
 @property(readonly, nonatomic) _Bool shouldDisableInteractiveScreenshotGesture; // @synthesize shouldDisableInteractiveScreenshotGesture=_shouldDisableInteractiveScreenshotGesture;
@@ -75,7 +79,7 @@
 @property(nonatomic) _Bool allowsCustomPresentationDismissalAnimations; // @synthesize allowsCustomPresentationDismissalAnimations=_allowsCustomPresentationDismissalAnimations;
 @property(readonly, nonatomic) _Bool shouldDisableOrientationUpdates; // @synthesize shouldDisableOrientationUpdates=_shouldDisableOrientationUpdates;
 @property(readonly, copy, nonatomic) _UILegibilitySettings *preferredStatusBarLegibilitySettings; // @synthesize preferredStatusBarLegibilitySettings=_preferredStatusBarLegibilitySettings;
-@property(readonly, nonatomic) int preferredStatusBarStyleOverridesToCancel; // @synthesize preferredStatusBarStyleOverridesToCancel=_preferredStatusBarStyleOverridesToCancel;
+@property(readonly, nonatomic) unsigned long long preferredStatusBarStyleOverridesToCancel; // @synthesize preferredStatusBarStyleOverridesToCancel=_preferredStatusBarStyleOverridesToCancel;
 @property(readonly, copy, nonatomic) NSNumber *preferredSceneDeactivationReasonValue; // @synthesize preferredSceneDeactivationReasonValue=_preferredSceneDeactivationReasonValue;
 @property(readonly, nonatomic) long long preferredBackgroundStyle; // @synthesize preferredBackgroundStyle=_preferredBackgroundStyle;
 @property(readonly, nonatomic) long long preferredUnlockedGestureDismissalStyle; // @synthesize preferredUnlockedGestureDismissalStyle=_preferredUnlockedGestureDismissalStyle;
@@ -87,6 +91,7 @@
 @property(readonly, nonatomic) _Bool allowsStackingOverlayContentAbove; // @synthesize allowsStackingOverlayContentAbove=_allowsStackingOverlayContentAbove;
 @property(nonatomic, getter=isActivatingForSiri) _Bool activatingForSiri; // @synthesize activatingForSiri=_activatingForSiri;
 @property(nonatomic) __weak id <SBRemoteTransientOverlayHostViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)didTransitionToAttachedToWindowedAccessory:(_Bool)arg1 windowedAccessoryCutoutFrameInScreen:(struct CGRect)arg2;
 - (void)_updatePreferredGestureDismissalStyles;
 - (void)_updatePreferredBackgroundStyleWithAnimationSettings:(id)arg1;
 - (void)_updateContentOpaqueProperty;
@@ -127,8 +132,8 @@
 - (void)setStatusBarHidden:(_Bool)arg1 withDuration:(double)arg2;
 - (void)setDesiredAutoLockDuration:(double)arg1;
 - (void)setIdleTimerDisabled:(_Bool)arg1 forReason:(id)arg2;
-- (void)setStyleOverridesToCancel:(int)arg1 animationSettings:(id)arg2;
-- (void)setDesiredStatusBarStyleOverrides:(int)arg1;
+- (void)setStyleOverridesToCancel:(unsigned long long)arg1 animationSettings:(id)arg2;
+- (void)setDesiredStatusBarStyleOverrides:(unsigned long long)arg1;
 - (void)setSwipeDismissalStyle:(long long)arg1;
 - (void)setDismissalAnimationStyle:(long long)arg1;
 - (void)setAllowsAlertStacking:(_Bool)arg1;
@@ -157,6 +162,7 @@
 - (_Bool)handleHomeButtonLongPress;
 - (_Bool)handleHomeButtonDoublePress;
 - (_Bool)handleHeadsetButtonPress:(_Bool)arg1;
+- (_Bool)handleVoiceCommandButtonPress;
 - (_Bool)handleLockButtonPress;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;

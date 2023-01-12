@@ -15,13 +15,15 @@
     TPSSize *_regular;
 }
 
-+ (id)classSet;
++ (id)na_identity;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(retain, nonatomic) TPSSize *regular; // @synthesize regular=_regular;
-@property(retain, nonatomic) TPSSize *compact; // @synthesize compact=_compact;
+@property(copy, nonatomic) TPSSize *regular; // @synthesize regular=_regular;
+@property(copy, nonatomic) TPSSize *compact; // @synthesize compact=_compact;
 - (id)description;
 - (double)heightToWidthRatioForViewMode:(long long)arg1;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

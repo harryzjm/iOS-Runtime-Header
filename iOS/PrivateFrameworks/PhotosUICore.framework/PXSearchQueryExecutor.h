@@ -39,7 +39,7 @@
 - (void)executeSearchQuery:(id)arg1;
 @property(copy, nonatomic) PXSearchQuery *currentSearchQuery; // @synthesize currentSearchQuery=_currentSearchQuery;
 - (void)_setupSearchResultsProcessor;
-- (void)_requestSceneAncestryInformationForPhotoLibrary:(id)arg1;
+- (void)_requestSceneAncestryInformation;
 - (id)initWithSearchIndexManager:(id)arg1 requestSceneAncestryInformation:(_Bool)arg2 resultsHandler:(CDUnknownBlockType)arg3;
 - (id)init;
 

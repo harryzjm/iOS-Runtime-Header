@@ -25,7 +25,6 @@
 @property(readonly, nonatomic) struct CGPoint maxPoint; // @synthesize maxPoint=_maxPoint;
 @property(readonly, nonatomic) struct CGPoint minPoint; // @synthesize minPoint=_minPoint;
 - (id)_applyTransformToSegments:(id)arg1 transform:(struct CGAffineTransform)arg2;
-- (id)_segmentsFromChartPoint:(id)arg1 forX:(double)arg2 minY:(double)arg3 maxY:(double)arg4 zeroCountForGap:(long long)arg5;
 @property(readonly, copy) NSString *description;
 - (id)_quickDate:(id)arg1;
 @property(readonly, nonatomic) double endXValue;

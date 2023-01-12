@@ -7,7 +7,6 @@
 @class NSDictionary, NSMutableArray, NSObject;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface CKDDecryptRecordsOperation
 {
     _Bool _forcePCSDecrypt;
@@ -50,10 +49,10 @@ __attribute__((visibility("hidden")))
 - (void)_clearProtectionDataForRecordInfo:(id)arg1;
 - (_Bool)operationShouldBeFlowControlled;
 - (_Bool)shouldCheckAppVersion;
-- (void)_recordInfoWasDecrypted:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_recordInfoWasDecrypted:(id)arg1 nextSteps:(CDUnknownBlockType)arg2;
 - (void)decryptRecord:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)activityCreate;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 @end
 

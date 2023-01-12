@@ -14,9 +14,7 @@
 {
     long long _type;
     NSData *_identifier;
-    struct {
-        unsigned int type:1;
-    } _has;
+    CDStruct_f953fb60 _has;
 }
 
 - (void).cxx_destruct;

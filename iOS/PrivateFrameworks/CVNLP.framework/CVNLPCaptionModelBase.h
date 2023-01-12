@@ -4,25 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+@class CVNLPCaptionRuntimeParameters;
 
-@class CVNLPCaptionPerformance, CVNLPCaptionRuntimeParameters;
-
-@interface CVNLPCaptionModelBase : NSObject
+@interface CVNLPCaptionModelBase
 {
-    CVNLPCaptionPerformance *_perfResults;
     CVNLPCaptionRuntimeParameters *_runTimeParams;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) CVNLPCaptionRuntimeParameters *runTimeParams; // @synthesize runTimeParams=_runTimeParams;
-@property(readonly, nonatomic) CVNLPCaptionPerformance *perfResults; // @synthesize perfResults=_perfResults;
-- (id)performanceResults;
-- (void)_copy_data_to_blob_repeated:(id)arg1 to:(CDStruct_0a65202a)arg2;
-- (void)_copy_data_to_blob:(float *)arg1 to:(CDStruct_0a65202a)arg2;
-- (void)_copy_data_from_blob:(CDStruct_0a65202a)arg1 toPtr:(float *)arg2;
-- (void)_copy_data_from_blob:(CDStruct_0a65202a)arg1 to:(vector_f9ed6fc8 *)arg2;
-- (unsigned long long)_blob_size:(CDStruct_0a65202a)arg1;
 - (id)initWithOptions:(id)arg1 runTimeParams:(id)arg2;
 
 @end

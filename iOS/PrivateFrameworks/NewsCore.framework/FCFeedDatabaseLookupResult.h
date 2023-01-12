@@ -20,15 +20,7 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) id insertionToken; // @synthesize insertionToken=_insertionToken;
-@property(nonatomic) unsigned long long ckToOrder; // @synthesize ckToOrder=_ckToOrder;
-@property(nonatomic) unsigned long long ckFromOrder; // @synthesize ckFromOrder=_ckFromOrder;
-@property(copy, nonatomic) NSData *ckFromCursor; // @synthesize ckFromCursor=_ckFromCursor;
-@property(nonatomic) _Bool exhaustedRange; // @synthesize exhaustedRange=_exhaustedRange;
-@property(copy, nonatomic) FCFeedRange *feedRange; // @synthesize feedRange=_feedRange;
-@property(copy, nonatomic) NSArray *feedItems; // @synthesize feedItems=_feedItems;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasCKCursor;
 
 @end
 

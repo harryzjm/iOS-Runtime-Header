@@ -12,6 +12,9 @@
 
 @interface NSDictionary (AFSecurityDigestibleChunksProvider) <AFSecurityDigestibleChunksProviding>
 - (void)af_enumerateDigestibleChunksWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (id)_af_lenient:(_Bool)arg1 map:(CDUnknownBlockType)arg2;
+- (id)af_lenientMappedDictionary:(CDUnknownBlockType)arg1;
+- (id)af_mappedDictionary:(CDUnknownBlockType)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -4,20 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class BCSBusinessItem, NSString;
 
 @interface DDTelephoneNumberAction
 {
     NSString *_phoneNumber;
     NSString *_body;
+    BCSBusinessItem *bizItem;
 }
 
 - (void).cxx_destruct;
+@property(retain) BCSBusinessItem *bizItem; // @synthesize bizItem;
 - (id)contactAndLabelForPhoneNumber:(id *)arg1;
 - (id)labelToUseForEmail:(id)arg1 ofContact:(id)arg2;
 - (id)labelToUseForPhoneNumber:(id)arg1 ofContact:(id)arg2;
 - (id)contactsMatchingPhoneNumber:(id)arg1 inContactStore:(id)arg2;
-- (id)icon;
+- (id)compactTitle;
+- (id)iconName;
 - (id)initWithURL:(id)arg1 result:(struct __DDResult *)arg2 context:(id)arg3;
 
 @end

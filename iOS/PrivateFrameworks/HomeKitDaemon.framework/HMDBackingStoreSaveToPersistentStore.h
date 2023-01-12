@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSOperation.h>
-
 @class HMDHomeManager, NSString;
 
-@interface HMDBackingStoreSaveToPersistentStore : NSOperation
+@interface HMDBackingStoreSaveToPersistentStore
 {
     _Bool _incrementGeneration;
     HMDHomeManager *_homeManager;
@@ -19,7 +17,7 @@
 @property(readonly, nonatomic) _Bool incrementGeneration; // @synthesize incrementGeneration=_incrementGeneration;
 @property(readonly, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property(readonly, nonatomic) HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
-- (void)main;
+- (id)mainReturningError;
 - (id)initWithHomeManager:(id)arg1 reason:(id)arg2 incrementGeneration:(_Bool)arg3;
 
 @end

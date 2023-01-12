@@ -9,11 +9,11 @@
 #import <VoiceShortcuts/WFWorkflowRunCoordinatorObserver-Protocol.h>
 
 @class NSString, WFConfiguredTrigger, WFWorkflowRunCoordinator, WFWorkflowRunEvent, WFWorkflowRunningContext;
-@protocol VCDatabaseProvider, VCTriggerEventRunnerDelegate;
+@protocol VCTriggerEventRunnerDelegate, WFDatabaseProvider;
 
 @interface VCTriggerEventRunner : NSObject <WFWorkflowRunCoordinatorObserver>
 {
-    id <VCDatabaseProvider> _databaseProvider;
+    id <WFDatabaseProvider> _databaseProvider;
     id <VCTriggerEventRunnerDelegate> _delegate;
     WFWorkflowRunEvent *_inProgressRunEvent;
     WFConfiguredTrigger *_inProgressTrigger;
@@ -27,7 +27,7 @@
 @property(retain, nonatomic) WFConfiguredTrigger *inProgressTrigger; // @synthesize inProgressTrigger=_inProgressTrigger;
 @property(retain, nonatomic) WFWorkflowRunEvent *inProgressRunEvent; // @synthesize inProgressRunEvent=_inProgressRunEvent;
 @property(readonly, nonatomic) id <VCTriggerEventRunnerDelegate> delegate; // @synthesize delegate=_delegate;
-@property(readonly, nonatomic) id <VCDatabaseProvider> databaseProvider; // @synthesize databaseProvider=_databaseProvider;
+@property(readonly, nonatomic) id <WFDatabaseProvider> databaseProvider; // @synthesize databaseProvider=_databaseProvider;
 - (void)logPowerLogEventForConfiguredTrigger:(id)arg1 workflowReference:(id)arg2;
 - (void)runCoordinator:(id)arg1 didFinishRunningWorkflowWithError:(id)arg2 runningContext:(id)arg3 cancelled:(_Bool)arg4;
 - (_Bool)isRunningWorkflowWithIdentifier:(id)arg1;

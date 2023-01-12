@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)audioController:(id)arg1 mediaObjectDidFinishPlaying:(id)arg2;
 - (void)audioControllerPlayingDidChange:(id)arg1;
 @property(readonly, nonatomic) _Bool isPlaying;
+- (void)stop;
 - (void)pause;
 - (void)play;
 - (void)updateProgress;
@@ -56,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (void)handlePlayPauseDelete:(id)arg1;
 - (void)updatePlayPauseDeleteButton;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (_Bool)__im_ff_systemImageAdoptionEnabled;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

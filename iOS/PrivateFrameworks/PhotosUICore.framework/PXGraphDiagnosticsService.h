@@ -8,6 +8,7 @@
 {
 }
 
++ (id)viewControllerForDetailsOfAsset:(id)arg1;
 - (id)settingsViewController;
 - (_Bool)canProvideSettingsViewController;
 - (id)contextualViewController;

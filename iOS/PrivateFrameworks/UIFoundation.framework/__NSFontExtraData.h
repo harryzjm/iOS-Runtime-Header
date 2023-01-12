@@ -21,6 +21,8 @@
     double _maximumPointSizeAfterScaling;
 }
 
+- (unsigned long long)hash;
+- (_Bool)isEqualToExtraData:(id)arg1;
 - (void)dealloc;
 
 @end

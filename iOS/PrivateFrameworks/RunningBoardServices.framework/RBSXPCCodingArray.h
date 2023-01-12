@@ -20,8 +20,6 @@
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
-- (unsigned long long)count;
-- (id)initWithArray:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

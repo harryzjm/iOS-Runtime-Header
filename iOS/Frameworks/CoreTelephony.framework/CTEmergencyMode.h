@@ -13,11 +13,15 @@
 {
     _Bool _enabled;
     _Bool _isEmergencyText;
+    _Bool _isEmergencySetup;
     long long _type;
+    long long _state;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)convertFromEmergencyMode:(const struct EmergencyMode *)arg1;
+@property(nonatomic) long long state; // @synthesize state=_state;
+@property(nonatomic) _Bool isEmergencySetup; // @synthesize isEmergencySetup=_isEmergencySetup;
 @property(nonatomic) _Bool isEmergencyText; // @synthesize isEmergencyText=_isEmergencyText;
 @property(nonatomic) long long type; // @synthesize type=_type;
 @property(nonatomic) _Bool enabled; // @synthesize enabled=_enabled;
@@ -29,6 +33,8 @@
 - (id)description;
 - (id)init;
 - (id)initWithEnabled:(_Bool)arg1 type:(long long)arg2 isEmergencyText:(_Bool)arg3;
+- (id)initWithEnabled:(_Bool)arg1 type:(long long)arg2 isEmergencyText:(_Bool)arg3 isEmergencySetup:(_Bool)arg4;
+- (id)initWithEnabled:(_Bool)arg1 type:(long long)arg2 isEmergencyText:(_Bool)arg3 isEmergencySetup:(_Bool)arg4 state:(long long)arg5;
 
 @end
 

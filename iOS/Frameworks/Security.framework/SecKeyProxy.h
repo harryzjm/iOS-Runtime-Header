@@ -15,6 +15,9 @@
     id _key;
     NSData *_certificate;
     NSXPCListener *_listener;
+    _Atomic long long _clientCount;
+    CDUnknownBlockType _clientConnectionHandler;
+    CDUnknownBlockType _clientDisconnectionHandler;
 }
 
 + (struct __SecIdentity *)createIdentityFromEndpoint:(id)arg1 error:(id *)arg2;
@@ -22,6 +25,8 @@
 + (struct __SecKey *)createItemFromEndpoint:(id)arg1 certificate:(id *)arg2 error:(id *)arg3;
 + (id)targetForKey:(struct __SecKey *)arg1 error:(struct __CFError **)arg2;
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType clientDisconnectionHandler; // @synthesize clientDisconnectionHandler=_clientDisconnectionHandler;
+@property(copy, nonatomic) CDUnknownBlockType clientConnectionHandler; // @synthesize clientConnectionHandler=_clientConnectionHandler;
 @property(readonly, nonatomic) NSXPCListenerEndpoint *endpoint;
 - (void)dealloc;
 - (void)invalidate;

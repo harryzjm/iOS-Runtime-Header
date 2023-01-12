@@ -7,6 +7,7 @@
 #import <UIKit/UIViewController.h>
 
 @interface UIViewController (VSAdditions)
+- (void)vs_checkUserInterfaceStyleForViewModel:(id)arg1;
 - (id)vs_addFocusGuideFromView:(id)arg1 toViews:(id)arg2 withDirection:(unsigned long long)arg3;
 - (void)vs_endIgnoringInteraction;
 - (void)vs_beginIgnoringInteraction;

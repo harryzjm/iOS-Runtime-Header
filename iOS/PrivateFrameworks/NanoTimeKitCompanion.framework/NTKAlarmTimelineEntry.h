@@ -4,23 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDate, NSString;
+@class CLKDevice, NSDate, NSString;
 
 @interface NTKAlarmTimelineEntry
 {
+    CLKDevice *_device;
     unsigned long long _entryType;
     NSString *_alarmLabel;
     NSDate *_fireDate;
     NSDate *_snoozeDate;
 }
 
-+ (id)companionModel;
++ (id)companionModelWithDevice:(id)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *snoozeDate; // @synthesize snoozeDate=_snoozeDate;
 @property(retain, nonatomic) NSDate *fireDate; // @synthesize fireDate=_fireDate;
 @property(retain, nonatomic) NSString *alarmLabel; // @synthesize alarmLabel=_alarmLabel;
 @property(nonatomic) unsigned long long entryType; // @synthesize entryType=_entryType;
 - (id)description;
+- (_Bool)_pairedDeviceSupportsComplicationSymbols;
 - (id)_largeUtilityInactiveImageProvider;
 - (id)_extraLargeAlarmInactiveImageProvider;
 - (id)_modularSmallAlarmInactiveImageProvider;
@@ -43,6 +45,7 @@
 - (id)_newLargeModularTemplate;
 - (id)_newSmallModularTemplate;
 - (id)templateForComplicationFamily:(long long)arg1;
+- (id)initWithDevice:(id)arg1;
 
 @end
 

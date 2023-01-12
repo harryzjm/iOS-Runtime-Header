@@ -9,10 +9,12 @@
 @interface SiriTVLongPressButtonContext
 {
     NSString *_activeDeviceBluetoothIdentifier;
+    unsigned long long _remoteType;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long remoteType; // @synthesize remoteType=_remoteType;
 @property(copy, nonatomic) NSString *activeDeviceBluetoothIdentifier; // @synthesize activeDeviceBluetoothIdentifier=_activeDeviceBluetoothIdentifier;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

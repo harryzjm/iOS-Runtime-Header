@@ -16,17 +16,19 @@
     NSString *_publicationURL;
     NSString *_publicationId;
     DEFilter *_filter;
+    NSString *_backgroundId;
     NSData *_latestVersion;
     NSData *_promotedVersion;
 }
 
-+ (void)stateToPb:(id)arg1 statePb:(struct State *)arg2;
-+ (id)stateFromPb:(const struct State *)arg1;
++ (void)stateToPb:(id)arg1 statePb:(void *)arg2;
++ (id)stateFromPb:(const void *)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSData *promotedVersion; // @synthesize promotedVersion=_promotedVersion;
 @property(retain, nonatomic) NSData *latestVersion; // @synthesize latestVersion=_latestVersion;
+@property(retain, nonatomic) NSString *backgroundId; // @synthesize backgroundId=_backgroundId;
 @property(retain, nonatomic) DEFilter *filter; // @synthesize filter=_filter;
-@property(nonatomic) _Bool disabled; // @synthesize disabled=_disabled;
+@property _Bool disabled; // @synthesize disabled=_disabled;
 @property(retain, nonatomic) NSString *publicationId; // @synthesize publicationId=_publicationId;
 @property(retain, nonatomic) NSString *publicationURL; // @synthesize publicationURL=_publicationURL;
 @property(retain, nonatomic) NSData *syncedVersion; // @synthesize syncedVersion=_syncedVersion;

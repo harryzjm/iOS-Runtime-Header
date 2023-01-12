@@ -6,22 +6,22 @@
 
 @interface TSCH3DVectorN3DDataBuffer
 {
-    struct DataBuffer3DDimension mDimension;
-    vector_aab22ae2 mContainer;
+    struct DataBuffer3DDimension _dimension;
+    struct vector<unsigned char, std::allocator<unsigned char>> _container;
 }
 
-+ (id)bufferWithCapacity3DDimension:(const struct DataBuffer3DDimension *)arg1;
++ (id)bufferWithCapacity3DDimension:(const void *)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)fillCapacity;
 - (const void *)data;
-@property(readonly, nonatomic) vector_aab22ae2 *container;
+@property(readonly, nonatomic) void *container;
 - (unsigned long long)componentByteSize;
 - (int)componentType;
 - (unsigned long long)components;
 - (unsigned long long)count;
 - (tvec3_c2818ced)size;
-- (id)initWithCapacity3DDimension:(const struct DataBuffer3DDimension *)arg1;
+- (id)initWithCapacity3DDimension:(const void *)arg1;
 
 @end
 

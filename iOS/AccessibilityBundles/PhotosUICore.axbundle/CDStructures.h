@@ -26,7 +26,7 @@ struct CGSize {
 };
 
 struct PXSimpleIndexPath {
-    unsigned long long dataSourceIdentifier;
+    long long dataSourceIdentifier;
     long long section;
     long long item;
     long long subitem;

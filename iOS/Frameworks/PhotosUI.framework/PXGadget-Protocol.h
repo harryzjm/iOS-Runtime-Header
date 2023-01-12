@@ -6,7 +6,7 @@
 
 #import <PhotosUI/NSObject-Protocol.h>
 
-@class NSArray, NSObject, NSString, PXGadgetSpec, UICollectionViewCell, UIViewController;
+@class NSArray, NSObject, NSString, PXGadgetSpec, UICollectionViewCell, UIMenu, UIPreviewParameters, UIView, UIViewController;
 @protocol PXAnonymousView, PXAnonymousViewController, PXGadgetDelegate, UICoordinateSpace;
 
 @protocol PXGadget <NSObject>
@@ -24,8 +24,12 @@
 @property(readonly, nonatomic) NSString *accessoryButtonTitle;
 @property(readonly, nonatomic) unsigned long long accessoryButtonType;
 @property(readonly, nonatomic) NSString *localizedTitle;
+- (void)commitPreviewView:(UIView *)arg1;
+- (void)didDismissPreviewWithPreviewView:(UIView *)arg1 committing:(_Bool)arg2;
 - (void)commitPreviewViewController:(UIViewController *)arg1;
 - (void)didDismissPreviewViewController:(UIViewController *)arg1 committing:(_Bool)arg2;
+- (UIMenu *)contextMenuWithSuggestedActions:(NSArray *)arg1;
+- (UIPreviewParameters *)previewParametersForTargetPreviewView:(UIView *)arg1;
 - (NSObject<PXAnonymousViewController> *)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(NSObject<PXAnonymousView> *)arg2;
 - (NSObject<PXAnonymousView> *)targetPreviewViewForLocation:(struct CGPoint)arg1 inCoordinateSpace:(id <UICoordinateSpace>)arg2;
 - (NSObject<PXAnonymousViewController> *)contentViewController;

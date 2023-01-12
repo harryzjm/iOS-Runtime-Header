@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <CoreSpeechFoundation/CSPolicy.h>
+
 @class NSObject;
 @protocol OS_dispatch_queue;
 
-@interface CSSmartSiriVolumeEnablePolicy
+@interface CSSmartSiriVolumeEnablePolicy : CSPolicy
 {
     NSObject<OS_dispatch_queue> *_queue;
 }

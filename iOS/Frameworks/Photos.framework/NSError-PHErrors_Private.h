@@ -10,6 +10,7 @@
 + (id)ph_genericEntitlementError;
 + (id)ph_genericErrorWithUnderlyingError:(id)arg1 localizedDescription:(id)arg2;
 + (id)ph_genericErrorWithLocalizedDescription:(id)arg1;
++ (id)ph_errorWithCode:(long long)arg1 localizedDescription:(id)arg2;
 + (id)_ph_genericErrorWithUnderlyingError:(id)arg1 localizedDescription:(id)arg2;
 + (id)ph_errorWithDomain:(id)arg1 code:(long long)arg2 userInfo:(id)arg3;
 @end

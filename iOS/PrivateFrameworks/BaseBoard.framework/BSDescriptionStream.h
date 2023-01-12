@@ -65,7 +65,9 @@
 - (void)appendCustomFormatWithName:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)appendDictionary:(id)arg1 withName:(id)arg2 itemBlock:(CDUnknownBlockType)arg3;
 - (void)appendCollection:(id)arg1 withName:(id)arg2 itemBlock:(CDUnknownBlockType)arg3;
+- (void)appendBodySectionWithName:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)appendBodySectionWithOpenDelimiter:(id)arg1 closeDelimiter:(id)arg2 block:(CDUnknownBlockType)arg3;
+- (void)appendBodySectionWithName:(id)arg1 openDelimiter:(id)arg2 closeDelimiter:(id)arg3 block:(CDUnknownBlockType)arg4;
 - (void)sameLine:(CDUnknownBlockType)arg1;
 - (id)description;
 - (id)init;

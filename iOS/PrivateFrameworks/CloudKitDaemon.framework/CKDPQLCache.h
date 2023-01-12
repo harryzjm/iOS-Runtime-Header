@@ -9,11 +9,10 @@
 @class NSArray, NSHashTable, NSString, PQLConnection;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface CKDPQLCache : NSObject
 {
     PQLConnection *_pdb;
-    NSHashTable *_contexts;
+    NSHashTable *_containers;
     NSObject<OS_dispatch_queue> *_dbQueue;
     unsigned long long _openHandles;
 }
@@ -21,7 +20,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long openHandles; // @synthesize openHandles=_openHandles;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *dbQueue; // @synthesize dbQueue=_dbQueue;
-@property(readonly, nonatomic) NSHashTable *contexts; // @synthesize contexts=_contexts;
+@property(readonly, nonatomic) NSHashTable *containers; // @synthesize containers=_containers;
 @property(readonly, nonatomic) PQLConnection *database; // @synthesize database=_pdb;
 - (id)infoToUpgradeFromVersion:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *createInitialTablesSQL;
@@ -40,7 +39,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_setupCacheWithError:(id *)arg1;
 - (_Bool)_truncateAndReconnectToDatabaseWithError:(id *)arg1;
 - (_Bool)_setupConnectionWithError:(id *)arg1;
-- (id)initWithClientContext:(id)arg1;
+- (id)initWithContainer:(id)arg1;
 
 @end
 

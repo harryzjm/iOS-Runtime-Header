@@ -8,13 +8,19 @@
 
 @interface _CLPolygonalRegion
 {
+    _Bool _allowMonitoringWhileNearby;
+    int _geoReferenceFrame;
+    NSArray *_vertices;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(readonly, nonatomic) _Bool allowMonitoringWhileNearby; // @synthesize allowMonitoringWhileNearby=_allowMonitoringWhileNearby;
+@property int geoReferenceFrame; // @synthesize geoReferenceFrame=_geoReferenceFrame;
+@property(readonly, copy, nonatomic) NSArray *vertices; // @synthesize vertices=_vertices;
 - (id)description;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-@property(readonly, copy, nonatomic) NSArray *vertices;
 - (void)dealloc;
 - (id)initNearbyAllowedWithVertices:(id)arg1 identifier:(id)arg2;
 - (id)initWithVertices:(id)arg1 identifier:(id)arg2;

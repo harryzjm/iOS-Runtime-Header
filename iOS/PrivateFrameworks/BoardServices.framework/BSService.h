@@ -6,16 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class BSServiceDomain, BSServiceSpecification, BSZeroingWeakReference, NSMutableArray, NSMutableDictionary;
+@class BSServiceDomainSpecification, BSServiceSpecification, BSZeroingWeakReference, NSMutableArray, NSMutableDictionary;
 
 @interface BSService : NSObject
 {
-    BSServiceDomain *_domain;
     BSServiceSpecification *_specification;
+    BSServiceDomainSpecification *_domainSpecification;
     struct os_unfair_lock_s _lock;
     BSZeroingWeakReference *_lock_globalListener;
     NSMutableDictionary *_lock_instanceToListener;
     NSMutableArray *_lock_pendedConnections;
+    _Bool _lock_invalidated;
 }
 
 - (void).cxx_destruct;

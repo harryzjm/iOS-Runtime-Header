@@ -9,8 +9,6 @@
 @interface _TtC15MediaFoundation26MediaServicesResumingState
 {
     MISSING_TYPE *event;
-    MISSING_TYPE *jumpToTimeTarget;
-    MISSING_TYPE *jumpToTimeMetadata;
 }
 
 @end

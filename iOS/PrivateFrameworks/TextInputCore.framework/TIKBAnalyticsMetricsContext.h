@@ -11,6 +11,9 @@
 @interface TIKBAnalyticsMetricsContext : TIAnalyticsMetricsContext
 {
     unsigned char _keyboardType;
+    NSString *_inputVariant;
+    NSString *_secondaryLanguage;
+    NSString *_secondaryRegion;
     NSString *_layoutName;
     long long _userInterfaceIdiom;
     NSDictionary *_testingParameters;
@@ -26,13 +29,16 @@
 @property(readonly, nonatomic) long long userInterfaceIdiom; // @synthesize userInterfaceIdiom=_userInterfaceIdiom;
 @property(readonly, nonatomic) unsigned char keyboardType; // @synthesize keyboardType=_keyboardType;
 @property(readonly, nonatomic) NSString *layoutName; // @synthesize layoutName=_layoutName;
+@property(readonly, nonatomic) NSString *secondaryRegion; // @synthesize secondaryRegion=_secondaryRegion;
+@property(readonly, nonatomic) NSString *secondaryLanguage; // @synthesize secondaryLanguage=_secondaryLanguage;
+@property(readonly, nonatomic) NSString *inputVariant; // @synthesize inputVariant=_inputVariant;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithKeyboardState:(id)arg1 testingParameters:(id)arg2;
-- (id)initWithKeyboardState:(id)arg1;
+- (id)initWithKeyboardState:(id)arg1 activeInputModes:(id)arg2 testingParameters:(id)arg3;
+- (id)initWithInputLanguage:(id)arg1 inputRegion:(id)arg2 inputVariant:(id)arg3 secondaryLanguage:(id)arg4 secondaryRegion:(id)arg5 layoutName:(id)arg6 keyboardType:(unsigned char)arg7 userInterfaceIdiom:(long long)arg8 testingParameters:(id)arg9;
 - (id)initWithInputLanguage:(id)arg1 inputRegion:(id)arg2 layoutName:(id)arg3 keyboardType:(unsigned char)arg4 userInterfaceIdiom:(long long)arg5 testingParameters:(id)arg6;
 - (id)initWithInputLanguage:(id)arg1 inputRegion:(id)arg2 layoutName:(id)arg3 keyboardType:(unsigned char)arg4 userInterfaceIdiom:(long long)arg5;
 

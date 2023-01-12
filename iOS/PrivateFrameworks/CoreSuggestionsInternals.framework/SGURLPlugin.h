@@ -7,11 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <CoreSuggestionsInternals/FIAPPlugin-Protocol.h>
+#import <CoreSuggestionsInternals/HVRemindersConsumer-Protocol.h>
 
-@class NSString, SGURLDissector;
+@class NSString, SGSqlEntityStore, SGURLDissector;
 
-@interface SGURLPlugin : NSObject <FIAPPlugin>
+@interface SGURLPlugin : NSObject <FIAPPlugin, HVRemindersConsumer>
 {
+    SGSqlEntityStore *_entityStore;
     SGURLDissector *_urlDissector;
 }
 
@@ -20,12 +22,19 @@
 - (void)deleteSpotlightReferencesWithBundleIdentifier:(id)arg1 domainIdentifiers:(id)arg2;
 - (void)deleteSpotlightReferencesWithBundleIdentifier:(id)arg1 uniqueIdentifiers:(id)arg2;
 - (void)purgeSpotlightReferencesWithBundleIdentifier:(id)arg1 uniqueIdentifiers:(id)arg2;
+- (_Bool)_shouldProcessSearchableItem:(id)arg1;
+- (id)_urlContainerFromText:(id)arg1 documentDate:(id)arg2 documentTitle:(id)arg3 handle:(id)arg4 isOutgoingDocument:(_Bool)arg5 uniqueIdentifier:(id)arg6 domainIdentifier:(id)arg7 bundleIdentifier:(id)arg8;
 - (id)extractURLsFromTextPropertiesOfItem:(id)arg1 handle:(id)arg2;
 - (id)extractURLsFromAttributesOfItem:(id)arg1 handle:(id)arg2;
-- (_Bool)_shouldProcessSearchableItem:(id)arg1;
 - (id)processSearchableItem:(id)arg1;
-- (id)setup;
 @property(readonly, nonatomic) NSString *identifier;
+- (id)deleteDataDerivedFromContentMatchingRequest:(id)arg1;
+- (id)_consumeContentParts:(id)arg1 title:(id)arg2 fromHandle:(id)arg3 documentDate:(id)arg4 isOutgoingDocument:(_Bool)arg5 uniqueIdentifier:(id)arg6 domainIdentifier:(id)arg7 bundleIdentifier:(id)arg8 context:(id)arg9;
+- (id)consumeRemindersContentWithContext:(id)arg1;
+- (id)consumerName;
+- (id)setup;
+- (id)initWithEntityStore:(id)arg1;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

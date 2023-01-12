@@ -18,17 +18,17 @@
 
 + (long long)conflictDetectionType;
 - (void).cxx_destruct;
-@property(retain) SBKSyncTransaction *transaction; // @synthesize transaction=_transaction;
-@property unsigned long long itemCount; // @synthesize itemCount=_itemCount;
-@property(readonly) unsigned long long responseItemCount; // @synthesize responseItemCount=_responseItemCount;
-@property _Bool loadsRemoteItemCount; // @synthesize loadsRemoteItemCount=_loadsRemoteItemCount;
+@property(retain, nonatomic) SBKSyncTransaction *transaction; // @synthesize transaction=_transaction;
+@property(nonatomic) unsigned long long itemCount; // @synthesize itemCount=_itemCount;
+@property(readonly, nonatomic) unsigned long long responseItemCount; // @synthesize responseItemCount=_responseItemCount;
+@property(nonatomic) _Bool loadsRemoteItemCount; // @synthesize loadsRemoteItemCount=_loadsRemoteItemCount;
 - (void)runWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
-@property(copy) NSString *responseDomainVersion; // @dynamic responseDomainVersion;
+@property(copy, nonatomic) NSString *responseDomainVersion; // @dynamic responseDomainVersion;
 @property(readonly) Class superclass;
 
 @end

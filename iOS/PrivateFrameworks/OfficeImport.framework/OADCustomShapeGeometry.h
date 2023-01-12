@@ -9,8 +9,8 @@
 __attribute__((visibility("hidden")))
 @interface OADCustomShapeGeometry
 {
-    CsRect_0aefebc6 *mGeometryCoordSpace;
-    CsPoint_c846a6ec *mLimo;
+    void *mGeometryCoordSpace;
+    void *mLimo;
     NSMutableArray *mFormulas;
     NSMutableArray *mTextBodyRects;
     NSMutableArray *mPaths;

@@ -29,10 +29,10 @@
 - (void)performWristRaiseAnimation;
 - (void)cancelWristRaiseAnimation;
 - (void)prepareWristRaiseAnimation;
-- (void)cleanupAfterZoom;
-- (void)prepareToZoom;
+- (void)_configureTimeLabelsFont;
 - (void)setBottomColor:(id)arg1;
 - (void)setTopColor:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1 forDevice:(id)arg2;
 

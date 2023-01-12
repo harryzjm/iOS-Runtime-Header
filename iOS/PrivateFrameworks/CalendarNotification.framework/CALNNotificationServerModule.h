@@ -9,7 +9,7 @@
 #import <CalendarNotification/CADModule-Protocol.h>
 
 @class CALNCalendarAppBadgeUpdater, CALNInboxNotificationMonitor, CALNNotificationIconCache, CALNNotificationServer, CALNNotificationSourceRefresher, CALNNotificationStorageWrapper, CALNTriggeredEventNotificationSource, EKEphemeralCacheEventStoreProvider, EKEventStore, NSArray, NSString;
-@protocol CALNNotificationIconProvider><CALNCalendarIconIdentifierProvider;
+@protocol CALNNotificationIconProvider><CALNCalendarIconIdentifierProvider><CalIconProvider;
 
 @interface CALNNotificationServerModule : NSObject <CADModule>
 {
@@ -22,7 +22,7 @@
     CALNNotificationStorageWrapper *_calendarStorageWrapper;
     CALNTriggeredEventNotificationSource *_triggeredEventNotificationSource;
     CALNNotificationIconCache *_iconCache;
-    id <CALNNotificationIconProvider><CALNCalendarIconIdentifierProvider> _iconProvider;
+    id <CALNNotificationIconProvider><CALNCalendarIconIdentifierProvider><CalIconProvider> _iconProvider;
     NSArray *_modules;
 }
 
@@ -43,7 +43,7 @@
 + (id)_notificationStoragePathWithName:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *modules; // @synthesize modules=_modules;
-@property(readonly, nonatomic) id <CALNNotificationIconProvider><CALNCalendarIconIdentifierProvider> iconProvider; // @synthesize iconProvider=_iconProvider;
+@property(readonly, nonatomic) id <CALNNotificationIconProvider><CALNCalendarIconIdentifierProvider><CalIconProvider> iconProvider; // @synthesize iconProvider=_iconProvider;
 @property(readonly, nonatomic) CALNNotificationIconCache *iconCache; // @synthesize iconCache=_iconCache;
 @property(readonly, nonatomic) CALNTriggeredEventNotificationSource *triggeredEventNotificationSource; // @synthesize triggeredEventNotificationSource=_triggeredEventNotificationSource;
 @property(readonly, nonatomic) CALNNotificationStorageWrapper *calendarStorageWrapper; // @synthesize calendarStorageWrapper=_calendarStorageWrapper;

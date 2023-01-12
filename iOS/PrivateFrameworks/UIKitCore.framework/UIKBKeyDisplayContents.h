@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     _Bool _force1xImages;
     _Bool _stringKeycapOverImage;
     _Bool _flipImageHorizontally;
+    _Bool _forceImageKeycap;
     NSString *_displayString;
     NSString *_displayStringImage;
     NSArray *_secondaryDisplayStrings;
@@ -23,9 +24,12 @@ __attribute__((visibility("hidden")))
     NSArray *_highlightedVariantsList;
     long long _displayPathType;
     UIKBKeyDisplayContents *_fallbackContents;
+    NSString *_bundlePathOverride;
 }
 
 + (id)displayContents;
+@property(nonatomic) _Bool forceImageKeycap; // @synthesize forceImageKeycap=_forceImageKeycap;
+@property(retain, nonatomic) NSString *bundlePathOverride; // @synthesize bundlePathOverride=_bundlePathOverride;
 @property(nonatomic) _Bool flipImageHorizontally; // @synthesize flipImageHorizontally=_flipImageHorizontally;
 @property(nonatomic) _Bool stringKeycapOverImage; // @synthesize stringKeycapOverImage=_stringKeycapOverImage;
 @property(retain, nonatomic) UIKBKeyDisplayContents *fallbackContents; // @synthesize fallbackContents=_fallbackContents;

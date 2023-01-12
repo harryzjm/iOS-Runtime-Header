@@ -39,6 +39,8 @@
     NSNumber *_RSSI;
     long long _state;
     NSArray *_services;
+    NSString *_remoteControllerId;
+    NSString *_stableIdentifier;
     NSHashTable *_l2capChannels;
     NSString *_BDAddress;
 }
@@ -48,6 +50,8 @@
 @property(readonly) _Bool visibleInSettings; // @synthesize visibleInSettings=_visibleInSettings;
 @property(retain) NSString *BDAddress; // @synthesize BDAddress=_BDAddress;
 @property(readonly, retain, nonatomic) NSHashTable *l2capChannels; // @synthesize l2capChannels=_l2capChannels;
+@property(retain) NSString *stableIdentifier; // @synthesize stableIdentifier=_stableIdentifier;
+@property(retain) NSString *remoteControllerId; // @synthesize remoteControllerId=_remoteControllerId;
 @property unsigned int writesPending; // @synthesize writesPending=_writesPending;
 @property unsigned short appearance; // @synthesize appearance=_appearance;
 @property _Bool ancsAuthorized; // @synthesize ancsAuthorized=_ancsAuthorized;
@@ -80,6 +84,7 @@
 - (void)removeAllL2CAPChannels;
 - (id)l2capChannelForPeer:(id)arg1 withPsm:(unsigned short)arg2;
 - (void)openL2CAPChannel:(unsigned short)arg1 options:(id)arg2;
+- (void)openL2CAPChannel:(unsigned short)arg1 priority:(long long)arg2;
 - (void)openL2CAPChannel:(unsigned short)arg1;
 - (void)setHighPriorityStream:(_Bool)arg1 duration:(id)arg2;
 - (void)getTimeSyncData;

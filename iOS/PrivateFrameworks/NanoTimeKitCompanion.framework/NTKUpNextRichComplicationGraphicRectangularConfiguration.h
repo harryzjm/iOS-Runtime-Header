@@ -8,7 +8,5 @@
 {
 }
 
-- (id)_newPickerView;
-
 @end
 

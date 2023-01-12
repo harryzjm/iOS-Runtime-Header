@@ -9,12 +9,12 @@
 #import <ProactiveExperiments/PREResponsesMetricsProtocol-Protocol.h>
 
 @class NSString, PETEventTracker2;
-@protocol PREResponsesTrialProtocol;
+@protocol PREExperimentResolverProtocol;
 
 @interface PREResponsesMetricsPET : NSObject <PREResponsesMetricsProtocol>
 {
     PETEventTracker2 *_tracker;
-    NSObject<PREResponsesTrialProtocol> *_trial;
+    id <PREExperimentResolverProtocol> _resolver;
     _Bool _isApricotDevice;
     NSString *_processName;
 }
@@ -22,11 +22,13 @@
 - (void).cxx_destruct;
 - (id)tracker;
 - (_Bool)isApricotDevice;
+- (void)registerResponseViewed:(id)arg1;
 - (void)registerResponseTapped:(id)arg1;
 - (id)_responseListFromGeneratedEvent:(id)arg1;
 - (void)registerResponsesGenerated:(id)arg1;
-- (id)initWithTracker:(id)arg1 trial:(id)arg2;
-- (id)initWithTrial:(id)arg1;
+- (id)initWithTracker:(id)arg1 experimentResolver:(id)arg2;
+- (id)initWithExperimentResolver:(id)arg1;
+- (id)init;
 
 @end
 

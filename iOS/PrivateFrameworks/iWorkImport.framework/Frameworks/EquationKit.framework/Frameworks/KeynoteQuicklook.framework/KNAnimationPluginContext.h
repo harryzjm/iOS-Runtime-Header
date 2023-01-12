@@ -26,6 +26,7 @@
     double _duration;
     double _percent;
     KNAnimatedBuild *_animatedBuild;
+    NSDictionary *_buildAttributes;
     NSDictionary *_transitionAttributes;
     NSArray *_magicMoveMatches;
     TSDGLState *_GLState;
@@ -52,6 +53,7 @@
 @property(nonatomic) _Bool isPreview; // @synthesize isPreview=_isPreview;
 @property(nonatomic) __weak NSArray *magicMoveMatches; // @synthesize magicMoveMatches=_magicMoveMatches;
 @property(nonatomic) __weak NSDictionary *transitionAttributes; // @synthesize transitionAttributes=_transitionAttributes;
+@property(nonatomic) __weak NSDictionary *buildAttributes; // @synthesize buildAttributes=_buildAttributes;
 @property(nonatomic) __weak KNAnimatedBuild *animatedBuild; // @synthesize animatedBuild=_animatedBuild;
 @property(nonatomic) struct CGRect boundingRect; // @synthesize boundingRect=_boundingRect;
 @property(nonatomic) struct CGRect boundingRectOnCanvas; // @synthesize boundingRectOnCanvas=_boundingRectOnCanvas;

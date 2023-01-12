@@ -16,9 +16,11 @@
     NSString *_localeIdentifier;
     NSObject<OS_dispatch_semaphore> *_resourceCountSemaphore;
     NSMutableSet *_subscribers;
+    long long _resourceType;
 }
 
 - (void).cxx_destruct;
+@property long long resourceType; // @synthesize resourceType=_resourceType;
 @property(retain) NSMutableSet *subscribers; // @synthesize subscribers=_subscribers;
 @property(retain) NSObject<OS_dispatch_semaphore> *resourceCountSemaphore; // @synthesize resourceCountSemaphore=_resourceCountSemaphore;
 @property(retain) NSString *localeIdentifier; // @synthesize localeIdentifier=_localeIdentifier;
@@ -30,7 +32,7 @@
 - (void)addSubscriber:(id)arg1;
 - (void)pushResource:(id)arg1;
 - (id)popResource;
-- (id)initWithLocaleIdentifier:(id)arg1;
+- (id)initWithLocaleIdentifier:(id)arg1 resourceType:(long long)arg2;
 
 @end
 

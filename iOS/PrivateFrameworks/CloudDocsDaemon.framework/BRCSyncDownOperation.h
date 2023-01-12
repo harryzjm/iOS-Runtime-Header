@@ -8,7 +8,6 @@
 
 @class BRCServerZone, NSString;
 
-__attribute__((visibility("hidden")))
 @interface BRCSyncDownOperation <BRCOperationSubclass>
 {
     BRCServerZone *_serverZone;

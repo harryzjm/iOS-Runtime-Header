@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+#import <CoreSpeech/CSAcousticSLResultProviding-Protocol.h>
 #import <CoreSpeech/CSAudioAlertProviding-Protocol.h>
 #import <CoreSpeech/CSAudioMeterProviding-Protocol.h>
 #import <CoreSpeech/CSAudioMetricProviding-Protocol.h>
@@ -17,9 +18,9 @@
 #import <CoreSpeech/CSTriggerInfoProviding-Protocol.h>
 
 @class CSAudioStream, NSHashTable, NSMutableSet, NSString;
-@protocol CSAudioAlertProvidingDelegate, CSAudioSessionProvidingDelegate, CSAudioStreamProvidingDelegate, CSXPCClientDelegate, OS_xpc_object;
+@protocol CSAudioAlertProvidingDelegate, CSAudioSessionProvidingDelegate, CSAudioStreamProvidingDelegate, CSXPCClientDelegate, OS_dispatch_queue, OS_xpc_object;
 
-@interface CSXPCClient : NSObject <CSAudioSessionProviding, CSFallbackAudioSessionReleaseProviding, CSAudioStreamProviding, CSAudioAlertProviding, CSAudioSessionInfoProviding, CSAudioMeterProviding, CSAudioMetricProviding, CSAudioTimeConversionProviding, CSTriggerInfoProviding>
+@interface CSXPCClient : NSObject <CSAudioSessionProviding, CSFallbackAudioSessionReleaseProviding, CSAudioStreamProviding, CSAudioAlertProviding, CSAudioSessionInfoProviding, CSAudioMeterProviding, CSAudioMetricProviding, CSAudioTimeConversionProviding, CSTriggerInfoProviding, CSAcousticSLResultProviding>
 {
     id <CSAudioSessionProvidingDelegate> _audioSessionProvidingDelegate;
     id <CSAudioStreamProvidingDelegate> _audioStreamProvidingDelegate;
@@ -27,6 +28,7 @@
     id <CSXPCClientDelegate> _delegate;
     NSString *_UUID;
     NSObject<OS_xpc_object> *_xpcConnection;
+    NSObject<OS_dispatch_queue> *_xpcReplyQueue;
     CSAudioStream *_audioStream;
     NSMutableSet *_activationAssertions;
     NSHashTable *_audioSessionInfoObservers;
@@ -42,6 +44,7 @@
 @property(retain, nonatomic) NSHashTable *audioSessionInfoObservers; // @synthesize audioSessionInfoObservers=_audioSessionInfoObservers;
 @property(retain, nonatomic) NSMutableSet *activationAssertions; // @synthesize activationAssertions=_activationAssertions;
 @property(retain, nonatomic) CSAudioStream *audioStream; // @synthesize audioStream=_audioStream;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *xpcReplyQueue; // @synthesize xpcReplyQueue=_xpcReplyQueue;
 @property(retain, nonatomic) NSObject<OS_xpc_object> *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 @property(readonly, nonatomic) NSString *UUID; // @synthesize UUID=_UUID;
 @property(nonatomic) __weak id <CSXPCClientDelegate> delegate; // @synthesize delegate=_delegate;
@@ -78,22 +81,27 @@
 - (_Bool)fallbackDeactivateAudioSession:(unsigned long long)arg1 error:(id *)arg2;
 - (unsigned long long)sampleCountFromHostTime:(unsigned long long)arg1;
 - (unsigned long long)hostTimeFromSampleCount:(unsigned long long)arg1;
-- (unsigned int)audioSessionID;
+- (unsigned int)audioSessionIdForDeviceId:(id)arg1;
 - (void)unregisterObserver:(id)arg1;
 - (void)registerObserver:(id)arg1;
+- (void)setAnnounceCallsEnabled:(_Bool)arg1 withStreamHandleID:(unsigned long long)arg2;
 - (_Bool)isRecording;
 - (void)cancelAudioStreamHold:(id)arg1;
 - (id)holdAudioStreamWithDescription:(id)arg1 timeout:(double)arg2;
 - (void)saveRecordingBufferToEndFrom:(unsigned long long)arg1 toURL:(id)arg2;
 - (void)saveRecordingBufferFrom:(unsigned long long)arg1 to:(unsigned long long)arg2 toURL:(id)arg3;
+- (id)audioChunkToEndFrom:(unsigned long long)arg1 channelIdx:(unsigned long long)arg2;
 - (id)audioChunkToEndFrom:(unsigned long long)arg1;
+- (id)audioChunkFrom:(unsigned long long)arg1 to:(unsigned long long)arg2 channelIdx:(unsigned long long)arg3;
 - (id)audioChunkFrom:(unsigned long long)arg1 to:(unsigned long long)arg2;
 - (id)playbackRoute;
 - (_Bool)isNarrowBand;
 - (id)recordSettings;
+- (id)audioDeviceInfo;
 - (id)recordDeviceInfo;
 - (id)recordRoute;
 - (void)triggerInfoForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)acousticSLResultForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)stopAudioStream:(id)arg1 option:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)startAudioStream:(id)arg1 option:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)prepareAudioStream:(id)arg1 request:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -112,6 +120,7 @@
 - (_Bool)playAlertSoundForType:(long long)arg1;
 - (_Bool)setAlertSoundFromURL:(id)arg1 forType:(long long)arg2;
 - (void)setAudioAlertDelegate:(id)arg1;
+- (void)reportsDynamicActivityAttribute:(unsigned long long)arg1 bundleId:(id)arg2;
 - (void)setAudioSessionDelegate:(id)arg1;
 - (void)enableMiniDucking:(_Bool)arg1;
 - (void)enableSmartRoutingConsideration:(_Bool)arg1;

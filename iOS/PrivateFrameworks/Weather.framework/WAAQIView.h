@@ -74,11 +74,14 @@
 - (void)setupForLayoutCompactScaleViewTwoLinesPlatterView:(_Bool)arg1;
 - (void)setupForLayoutCompactScaleViewOneLinePlatterView:(_Bool)arg1;
 - (void)setupForLayoutTemporarilyUnavailable;
+- (_Bool)shouldInsertGlyphImage:(id)arg1;
 - (void)prepareForReuse;
 - (struct CGRect)rtlAdjustFrame:(struct CGRect)arg1 inBounds:(struct CGRect)arg2;
 - (struct CGRect)adjustedFrame:(struct CGRect)arg1 basedOnFont:(id)arg2 desiredBaseline:(double)arg3;
-- (id)sourceForScale:(id)arg1 countryCode:(id)arg2;
-- (id)scaleFromScaleIdentifier:(id)arg1 countryCode:(id)arg2;
+- (id)currentScaleCategoryLabelForCity:(id)arg1;
+- (id)drawableScaleForCity:(id)arg1;
+- (id)metadataLabelForCity:(id)arg1;
+- (id)scaleDisplayNameForCity:(id)arg1;
 - (double)contentMarginFromTop;
 - (void)handleTapGesture:(id)arg1;
 - (void)updateWithCity:(id)arg1 layoutMode:(unsigned long long)arg2;

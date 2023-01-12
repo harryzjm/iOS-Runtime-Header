@@ -10,6 +10,7 @@
 {
 }
 
+- (id)copyWithZone:(struct _NSZone *)arg1;
 @property(nonatomic) double inflection; // @dynamic inflection;
 @property(nonatomic) double fraction; // @dynamic fraction;
 @property(copy, nonatomic) TSUColor *color; // @dynamic color;

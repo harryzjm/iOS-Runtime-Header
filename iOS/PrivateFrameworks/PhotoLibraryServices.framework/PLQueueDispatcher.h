@@ -10,7 +10,7 @@
 
 @interface PLQueueDispatcher : NSObject
 {
-    NSObject<OS_dispatch_queue> *_uiQueue;
+    NSObject<OS_dispatch_queue> *_userInitiatedQueue;
     NSObject<OS_dispatch_queue> *_utilityQueue;
     NSObject<OS_dispatch_queue> *_backgroundQueue;
     NSObject<OS_dispatch_queue> *_sharedUtilityQueue;
@@ -19,14 +19,20 @@
 }
 
 + (id)sharedQueueDispatcher;
++ (id)debugDescriptionOfEnqueuedBlocksOnQueue:(id)arg1;
++ (void)reportBlockDequeuedOnQueue:(id)arg1;
++ (void)reportBlockEnqueued:(CDUnknownBlockType)arg1 onQueue:(id)arg2 forLibrary:(id)arg3;
++ (void)configureListTrackingForDispatchQueue:(id)arg1;
 - (void).cxx_destruct;
+- (id)debugDescription;
 - (id)sharedBackgroundQueue;
 - (id)sharedUtilityQueue;
-- (void)async:(CDUnknownBlockType)arg1;
-- (void)sync:(CDUnknownBlockType)arg1;
+- (void)async:(CDUnknownBlockType)arg1 identifyingBlock:(CDUnknownBlockType)arg2 library:(id)arg3;
+- (void)sync:(CDUnknownBlockType)arg1 identifyingBlock:(CDUnknownBlockType)arg2 library:(id)arg3;
 - (id)queueForCurrentQoS;
 - (void)_handleUnexpectedQoSClass:(unsigned int)arg1;
 - (id)init;
+- (id)_queuesTrackingBlocks;
 
 @end
 

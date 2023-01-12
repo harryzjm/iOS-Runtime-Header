@@ -89,7 +89,8 @@
 @property(readonly, nonatomic) id <GEOServerFormattedString> countStopsFormattedString;
 @property(readonly, nonatomic) long long departureBarFormatStyle;
 @property(readonly, nonatomic) id <GEOServerFormattedString> departureBarFormattedString;
-- (void)_transit_prepareForDeepMergeFrom:(id)arg1;
+- (void)_transit_mergeFrom:(id)arg1;
+- (_Bool)_transit_hasAnyFieldSet;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

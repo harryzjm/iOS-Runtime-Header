@@ -15,6 +15,7 @@
 @property(retain, nonatomic) NTKRichComplicationImageView *imageView; // @synthesize imageView=_imageView;
 - (void)updateMonochromeColor;
 - (void)transitionToMonochromeWithFraction:(double)arg1;
+- (long long)tritiumUpdateMode;
 - (void)setPaused:(_Bool)arg1;
 - (id)gaugeProviderFromTemplate:(id)arg1;
 - (id)innerView;

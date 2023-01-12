@@ -99,6 +99,7 @@
 - (id)_displayStringForAlertDates:(id)arg1;
 - (id)debugDescription;
 - (id)description;
+- (id)init;
 
 @end
 

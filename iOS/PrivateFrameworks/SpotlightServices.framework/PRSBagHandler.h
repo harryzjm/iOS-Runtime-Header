@@ -29,7 +29,7 @@
     double _searchRenderTimeout;
     double _suggestionsRenderTimeout;
     SSPlistDataReader *_cep_server_values;
-    NSSet *_appBlacklist;
+    NSSet *_appBlocklist;
     NSArray *_enabledDomains;
     NSArray *_anonymousMetadataUndesiredBundleIDs;
     NSString *_fteLocString;
@@ -67,7 +67,7 @@
 @property(nonatomic) _Bool collectAnonymousData; // @synthesize collectAnonymousData=_collectAnonymousData;
 @property(nonatomic) _Bool disableAsTypedSuggestion; // @synthesize disableAsTypedSuggestion=_disableAsTypedSuggestion;
 @property(retain, nonatomic) NSArray *enabledDomains; // @synthesize enabledDomains=_enabledDomains;
-@property(retain, nonatomic) NSSet *appBlacklist; // @synthesize appBlacklist=_appBlacklist;
+@property(retain, nonatomic) NSSet *appBlocklist; // @synthesize appBlocklist=_appBlocklist;
 @property(retain) SSPlistDataReader *cep_server_values; // @synthesize cep_server_values=_cep_server_values;
 @property double suggestionsRenderTimeout; // @synthesize suggestionsRenderTimeout=_suggestionsRenderTimeout;
 @property double searchRenderTimeout; // @synthesize searchRenderTimeout=_searchRenderTimeout;

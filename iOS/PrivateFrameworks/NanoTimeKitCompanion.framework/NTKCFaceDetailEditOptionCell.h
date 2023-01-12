@@ -12,7 +12,6 @@
 
 @interface NTKCFaceDetailEditOptionCell <UICollectionViewDelegate, UICollectionViewDataSource>
 {
-    struct CGRect _swatchFrame;
     double _outlineOutset;
     double _outlinePadding;
     long long _selectedIndex;
@@ -25,10 +24,13 @@
     UICollectionView *_collectionView;
     UICollectionViewFlowLayout *_layout;
     UILabel *_optionsDescription;
+    struct CGRect _swatchFrame;
 }
 
++ (double)insetSpacingForStyle:(long long)arg1;
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) struct CGRect swatchFrame; // @synthesize swatchFrame=_swatchFrame;
 @property(retain, nonatomic) UILabel *optionsDescription; // @synthesize optionsDescription=_optionsDescription;
 @property(retain, nonatomic) UICollectionViewFlowLayout *layout; // @synthesize layout=_layout;
 @property(retain, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
@@ -49,14 +51,19 @@
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
+- (long long)_swatchImageContentMode;
 - (id)_imageForIndexPath:(id)arg1;
+- (void)_setupCell:(id)arg1;
 - (id)_dequeueCellForIndexPath:(id)arg1;
 - (double)_spacing;
 - (void)layoutSubviews;
 - (_Bool)collectionChanged:(id)arg1 withSelectedOptions:(id)arg2;
 - (void)reloadVisibleCells;
 - (double)rowHeight;
+- (_Bool)_isReloadCollectionRequired:(id)arg1 selectedOptions:(id)arg2;
 - (void)_setupFromCollection;
+- (id)_indexPathForEditOptionIndex:(long long)arg1;
+- (long long)_editOptionIndexForIndexPath:(id)arg1;
 - (id)initWithCollection:(id)arg1 forFaceView:(id)arg2 face:(id)arg3;
 
 // Remaining properties

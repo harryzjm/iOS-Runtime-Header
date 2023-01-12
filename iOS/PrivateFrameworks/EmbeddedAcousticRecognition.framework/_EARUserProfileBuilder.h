@@ -6,22 +6,32 @@
 
 #import <objc/NSObject.h>
 
+@class _EARPeopleSuggesterConfig;
+
 @interface _EARUserProfileBuilder : NSObject
 {
-    struct map<std::__1::basic_string<char>, std::__1::vector<std::__1::vector<quasar::LmeDataFactoryBase::Word, std::__1::allocator<quasar::LmeDataFactoryBase::Word>>, std::__1::allocator<std::__1::vector<quasar::LmeDataFactoryBase::Word, std::__1::allocator<quasar::LmeDataFactoryBase::Word>>>>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::vector<std::__1::vector<quasar::LmeDataFactoryBase::Word, std::__1::allocator<quasar::LmeDataFactoryBase::Word>>, std::__1::allocator<std::__1::vector<quasar::LmeDataFactoryBase::Word, std::__1::allocator<quasar::LmeDataFactoryBase::Word>>>>>>> _userData;
+    struct map<std::string, std::vector<std::vector<quasar::LmeDataFactoryBase::Word>>, std::less<std::string>, std::allocator<std::pair<const std::string, std::vector<std::vector<quasar::LmeDataFactoryBase::Word>>>>> _userData;
     struct shared_ptr<quasar::LmeDataFactory> _dataFactory;
-    struct unique_ptr<sdapi::SdapiTokenizer, std::__1::default_delete<sdapi::SdapiTokenizer>> _tokenizer;
-    struct unique_ptr<quasar::G2P, std::__1::default_delete<quasar::G2P>> _g2p;
-    struct shared_ptr<quasar::PronCache<std::__1::basic_string<char>, std::__1::vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>> _pronCache;
+    struct unique_ptr<sdapi::SdapiTokenizer, std::default_delete<sdapi::SdapiTokenizer>> _tokenizer;
+    struct unique_ptr<quasar::G2P, std::default_delete<quasar::G2P>> _g2p;
+    struct shared_ptr<quasar::PronCache<std::string, std::vector<std::string>>> _pronCache;
     struct BasicTextSanitizer _sanitizer;
-    struct unique_ptr<quasar::PersonalizationRecipe, std::__1::default_delete<quasar::PersonalizationRecipe>> _personalizationRecipe;
-    struct unique_ptr<quasar::LmeData, std::__1::default_delete<quasar::LmeData>> _quasarLmeData;
+    struct unique_ptr<quasar::PersonalizationRecipe, std::default_delete<quasar::PersonalizationRecipe>> _personalizationRecipe;
+    struct unique_ptr<quasar::LmeData, std::default_delete<quasar::LmeData>> _quasarLmeData;
+    struct unique_ptr<quasar::WordPronCache, std::default_delete<quasar::WordPronCache>> _outPronCache;
+    int _outPronCacheHits;
+    int _outPronCacheMisses;
+    int _wordsRejected;
+    int _wordsAccepted;
+    struct unordered_map<std::string, int, std::hash<std::string>, std::equal_to<std::string>, std::allocator<std::pair<const std::string, int>>> _quasarTemplate2Count;
 }
 
 + (_Bool)isEasyToRecognizeWord:(id)arg1 forLocale:(id)arg2;
 + (void)initialize;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _EARPeopleSuggesterConfig *peopleSuggesterConfig;
+- (void)createInlineLmeUserDataForContextStrings:(id)arg1;
 - (void)signalEndOfUserData;
 - (id)sanitizedStringWithString:(id)arg1;
 - (id)pronunciationsForOrthography:(id)arg1;

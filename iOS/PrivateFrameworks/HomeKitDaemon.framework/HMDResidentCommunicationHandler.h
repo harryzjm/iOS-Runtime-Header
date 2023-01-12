@@ -15,6 +15,7 @@
 @interface HMDResidentCommunicationHandler : HMFObject <HMFLogging, HMFTimerDelegate>
 {
     _Bool _ownerUser;
+    int _numOutstandingReadRequests;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSMapTable *_deviceMapping;
     NSMutableArray *_pendingReadRequests;
@@ -30,6 +31,7 @@
 + (id)createResponseSubset:(id)arg1 overallError:(id)arg2 readRequest:(id)arg3 error:(id *)arg4;
 + (void)_processResponseForMultireadRequest:(id)arg1 overallError:(id)arg2 response:(id)arg3;
 - (void).cxx_destruct;
+@property(nonatomic) int numOutstandingReadRequests; // @synthesize numOutstandingReadRequests=_numOutstandingReadRequests;
 @property(readonly, nonatomic) __weak HMDMessageDispatcher *remoteDispatcher; // @synthesize remoteDispatcher=_remoteDispatcher;
 @property(readonly, nonatomic, getter=isOwnerUser) _Bool ownerUser; // @synthesize ownerUser=_ownerUser;
 @property(readonly, nonatomic) NSUUID *homeUUID; // @synthesize homeUUID=_homeUUID;
@@ -38,6 +40,7 @@
 @property(readonly, nonatomic) NSMutableArray *pendingReadRequests; // @synthesize pendingReadRequests=_pendingReadRequests;
 @property(retain, nonatomic) NSMapTable *deviceMapping; // @synthesize deviceMapping=_deviceMapping;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+- (id)logIdentifier;
 - (void)_processResponse:(id)arg1 overallError:(id)arg2 messageIdentifier:(id)arg3;
 - (void)_sendMultipleCharacteristicRead;
 - (void)timerDidFire:(id)arg1;

@@ -16,13 +16,13 @@
 }
 
 + (_Bool)requiresConstraintBasedLayout;
+- (void).cxx_destruct;
 @property(retain, nonatomic) GKHairlineView *underlineView; // @synthesize underlineView=_underlineView;
 @property(nonatomic) SEL touchedShowcaseCellAction; // @synthesize touchedShowcaseCellAction=_touchedShowcaseCellAction;
 @property(retain, nonatomic) UICollectionViewCell *cell; // @synthesize cell=_cell;
 - (struct CGRect)alignmentRectForText;
 - (void)prepareForReuse;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

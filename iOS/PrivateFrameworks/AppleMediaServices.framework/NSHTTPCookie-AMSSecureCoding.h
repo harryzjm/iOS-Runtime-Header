@@ -13,7 +13,12 @@
 
 @interface NSHTTPCookie (AMSSecureCoding) <NSSecureCoding, AMSHashable>
 + (_Bool)supportsSecureCoding;
++ (id)classesForPropertyCoding;
 + (id)ams_cookieByMarkingCookieAsDeleted:(id)arg1;
++ (id)ams_propertiesForCookies:(id)arg1;
++ (id)ams_dataByArchivingPropertiesOfCookies:(id)arg1 error:(id *)arg2;
++ (id)ams_cookiesForProperties:(id)arg1;
++ (id)ams_cookiesByUnarchivingPropertyData:(id)arg1 error:(id *)arg2;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 @property(readonly, nonatomic) NSString *hashedDescription;

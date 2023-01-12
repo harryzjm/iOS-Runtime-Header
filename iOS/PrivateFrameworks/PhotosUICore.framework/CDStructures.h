@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MISSING_TYPE;
+@class MISSING_TYPE, NSObject;
 
 #pragma mark Blocks
 
@@ -48,6 +48,7 @@ struct PHAssetResourceTableDataSpecification {
     int dataWidth;
     int dataHeight;
     int imageDataOffset;
+    long long kind;
 };
 
 struct PXAlphaLayer {
@@ -102,6 +103,7 @@ struct PXFloatRange {
 struct PXGDecorationSpriteInfo {
     long long _field1;
     double _field2;
+    long long _field3;
 };
 
 struct PXGImageRequest {
@@ -123,6 +125,11 @@ struct PXGadgetUpdateFlags {
     _Bool loadRemaingGadgetsAfterViewAppeared;
 };
 
+struct PXIntSize_st {
+    unsigned long long _field1;
+    unsigned long long _field2;
+};
+
 struct PXMagazineOrigin {
     long long _field1;
     long long _field2;
@@ -140,9 +147,10 @@ struct PXMagazineSize {
 
 struct PXMediaProviderThumbnailDataFormat {
     unsigned long long _field1;
-    unsigned short _field2;
+    struct __CFString *_field2;
     unsigned short _field3;
-    _Bool _field4;
+    unsigned short _field4;
+    _Bool _field5;
 };
 
 struct PXMediaProviderThumbnailDataSpec {
@@ -152,6 +160,8 @@ struct PXMediaProviderThumbnailDataSpec {
     unsigned short _field4;
     unsigned short _field5;
     unsigned short _field6;
+    unsigned short _field7;
+    unsigned short _field8;
 };
 
 struct PXMemoryFontsSpecIdentifier {
@@ -181,7 +191,7 @@ struct PXProtectedTileState {
 };
 
 struct PXSimpleIndexPath {
-    unsigned long long dataSourceIdentifier;
+    long long dataSourceIdentifier;
     long long section;
     long long item;
     long long subitem;
@@ -305,6 +315,16 @@ struct _PXLayoutGeometry {
     struct CGSize _field8;
 };
 
+struct _PXStoryAutoEditCropScore {
+    float _field1;
+    float _field2;
+};
+
+struct _PXStoryAutoEditCropScoreInfo {
+    struct _PXStoryAutoEditCropScore _field1;
+    struct _PXStoryAutoEditCropScore _field2;
+};
+
 struct _PXValueAnimationSpec {
     long long type;
     double duration;
@@ -315,107 +335,204 @@ struct _PXValueAnimationSpec {
     double initialVelocity;
 };
 
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, void *>*> *__next_;
-};
+struct __CFString;
 
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, PXGRequestDetails>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, PXGRequestDetails>, void *>*> *__next_;
-};
-
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, unsigned int>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, unsigned int>, void *>*> *__next_;
+struct atomic_flag {
+    _Atomic _Bool _Value;
 };
 
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, void *>*> **__value_;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, void *>*>*>> {
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<PXTileIdentifier, unsigned long>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<PXTileIdentifier, unsigned long>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<PXTileIdentifier, unsigned long>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<PXTileIdentifier, unsigned long>, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<PXTileIdentifier, unsigned long>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<PXTileIdentifier, unsigned long>, void *>*>*>> {
                 unsigned long long __value_;
             } __data_;
         } __value_;
     } __ptr_;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, PXGRequestDetails>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, PXGRequestDetails>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, PXGRequestDetails>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, PXGRequestDetails>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, PXGRequestDetails>, void *>*> **__value_;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, PXGRequestDetails>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, PXGRequestDetails>, void *>*>*>> {
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<int, PXGRequestDetails>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<int, PXGRequestDetails>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<int, PXGRequestDetails>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<int, PXGRequestDetails>, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<int, PXGRequestDetails>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<int, PXGRequestDetails>, void *>*>*>> {
                 unsigned long long __value_;
             } __data_;
         } __value_;
     } __ptr_;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, unsigned int>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, unsigned int>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, unsigned int>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, unsigned int>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, unsigned int>, void *>*> **__value_;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, unsigned int>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, unsigned int>, void *>*>*>> {
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<int, unsigned int>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<int, unsigned int>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<int, unsigned int>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<int, unsigned int>, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<int, unsigned int>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<int, unsigned int>, void *>*>*>> {
                 unsigned long long __value_;
             } __data_;
         } __value_;
     } __ptr_;
 };
 
-struct unordered_map<PXTileIdentifier, unsigned long, std::__1::hash<PXTileIdentifier>, std::__1::equal_to<PXTileIdentifier>, std::__1::allocator<std::__1::pair<const PXTileIdentifier, unsigned long>>> {
-    struct __hash_table<std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, std::__1::__unordered_map_hasher<PXTileIdentifier, std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, std::__1::hash<PXTileIdentifier>, true>, std::__1::__unordered_map_equal<PXTileIdentifier, std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, std::__1::equal_to<PXTileIdentifier>, true>, std::__1::allocator<std::__1::__hash_value_type<PXTileIdentifier, unsigned long>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, void *>*> __value_;
+struct unordered_map<PXTileIdentifier, unsigned long, std::hash<PXTileIdentifier>, std::equal_to<PXTileIdentifier>, std::allocator<std::pair<const PXTileIdentifier, unsigned long>>> {
+    struct __hash_table<std::__hash_value_type<PXTileIdentifier, unsigned long>, std::__unordered_map_hasher<PXTileIdentifier, std::__hash_value_type<PXTileIdentifier, unsigned long>, std::hash<PXTileIdentifier>, std::equal_to<PXTileIdentifier>, true>, std::__unordered_map_equal<PXTileIdentifier, std::__hash_value_type<PXTileIdentifier, unsigned long>, std::equal_to<PXTileIdentifier>, std::hash<PXTileIdentifier>, true>, std::allocator<std::__hash_value_type<PXTileIdentifier, unsigned long>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<PXTileIdentifier, unsigned long>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<PXTileIdentifier, unsigned long>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<PXTileIdentifier, unsigned long>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<PXTileIdentifier, unsigned long>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<PXTileIdentifier, unsigned long>, void *>*> {
+                void *__next_;
+            } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<PXTileIdentifier, std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, std::__1::hash<PXTileIdentifier>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<PXTileIdentifier, std::__hash_value_type<PXTileIdentifier, unsigned long>, std::hash<PXTileIdentifier>, std::equal_to<PXTileIdentifier>, true>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<PXTileIdentifier, std::__1::__hash_value_type<PXTileIdentifier, unsigned long>, std::__1::equal_to<PXTileIdentifier>, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<PXTileIdentifier, std::__hash_value_type<PXTileIdentifier, unsigned long>, std::equal_to<PXTileIdentifier>, std::hash<PXTileIdentifier>, true>> {
             float __value_;
         } __p3_;
     } __table_;
 };
 
-struct unordered_map<int, PXGRequestDetails, std::__1::hash<int>, std::__1::equal_to<int>, std::__1::allocator<std::__1::pair<const int, PXGRequestDetails>>> {
-    struct __hash_table<std::__1::__hash_value_type<int, PXGRequestDetails>, std::__1::__unordered_map_hasher<int, std::__1::__hash_value_type<int, PXGRequestDetails>, std::__1::hash<int>, true>, std::__1::__unordered_map_equal<int, std::__1::__hash_value_type<int, PXGRequestDetails>, std::__1::equal_to<int>, true>, std::__1::allocator<std::__1::__hash_value_type<int, PXGRequestDetails>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, PXGRequestDetails>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, PXGRequestDetails>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, PXGRequestDetails>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<int, PXGRequestDetails>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, PXGRequestDetails>, void *>*> __value_;
+struct unordered_map<int, PXGRequestDetails, std::hash<int>, std::equal_to<int>, std::allocator<std::pair<const int, PXGRequestDetails>>> {
+    struct __hash_table<std::__hash_value_type<int, PXGRequestDetails>, std::__unordered_map_hasher<int, std::__hash_value_type<int, PXGRequestDetails>, std::hash<int>, std::equal_to<int>, true>, std::__unordered_map_equal<int, std::__hash_value_type<int, PXGRequestDetails>, std::equal_to<int>, std::hash<int>, true>, std::allocator<std::__hash_value_type<int, PXGRequestDetails>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<int, PXGRequestDetails>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<int, PXGRequestDetails>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<int, PXGRequestDetails>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<int, PXGRequestDetails>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<int, PXGRequestDetails>, void *>*> {
+                void *__next_;
+            } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<int, std::__1::__hash_value_type<int, PXGRequestDetails>, std::__1::hash<int>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<int, std::__hash_value_type<int, PXGRequestDetails>, std::hash<int>, std::equal_to<int>, true>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<int, std::__1::__hash_value_type<int, PXGRequestDetails>, std::__1::equal_to<int>, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<int, std::__hash_value_type<int, PXGRequestDetails>, std::equal_to<int>, std::hash<int>, true>> {
             float __value_;
         } __p3_;
     } __table_;
 };
 
-struct unordered_map<int, unsigned int, std::__1::hash<int>, std::__1::equal_to<int>, std::__1::allocator<std::__1::pair<const int, unsigned int>>> {
-    struct __hash_table<std::__1::__hash_value_type<int, unsigned int>, std::__1::__unordered_map_hasher<int, std::__1::__hash_value_type<int, unsigned int>, std::__1::hash<int>, true>, std::__1::__unordered_map_equal<int, std::__1::__hash_value_type<int, unsigned int>, std::__1::equal_to<int>, true>, std::__1::allocator<std::__1::__hash_value_type<int, unsigned int>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, unsigned int>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, unsigned int>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, unsigned int>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<int, unsigned int>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, unsigned int>, void *>*> __value_;
+struct unordered_map<int, unsigned int, std::hash<int>, std::equal_to<int>, std::allocator<std::pair<const int, unsigned int>>> {
+    struct __hash_table<std::__hash_value_type<int, unsigned int>, std::__unordered_map_hasher<int, std::__hash_value_type<int, unsigned int>, std::hash<int>, std::equal_to<int>, true>, std::__unordered_map_equal<int, std::__hash_value_type<int, unsigned int>, std::equal_to<int>, std::hash<int>, true>, std::allocator<std::__hash_value_type<int, unsigned int>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<int, unsigned int>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<int, unsigned int>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<int, unsigned int>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<int, unsigned int>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<int, unsigned int>, void *>*> {
+                void *__next_;
+            } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<int, std::__1::__hash_value_type<int, unsigned int>, std::__1::hash<int>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<int, std::__hash_value_type<int, unsigned int>, std::hash<int>, std::equal_to<int>, true>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<int, std::__1::__hash_value_type<int, unsigned int>, std::__1::equal_to<int>, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<int, std::__hash_value_type<int, unsigned int>, std::equal_to<int>, std::hash<int>, true>> {
             float __value_;
         } __p3_;
     } __table_;
 };
+
+struct vector<(anonymous namespace)::_PXStoryAutoEditCropScoreInfo, std::allocator<(anonymous namespace)::_PXStoryAutoEditCropScoreInfo>> {
+    struct _PXStoryAutoEditCropScoreInfo *__begin_;
+    struct _PXStoryAutoEditCropScoreInfo *__end_;
+    struct __compressed_pair<(anonymous namespace)::_PXStoryAutoEditCropScoreInfo *, std::allocator<(anonymous namespace)::_PXStoryAutoEditCropScoreInfo>> {
+        struct _PXStoryAutoEditCropScoreInfo *__value_;
+    } __end_cap_;
+};
+
+struct vector<PFStoryDurationInfo, std::allocator<PFStoryDurationInfo>> {
+    CDStruct_183601bc *__begin_;
+    CDStruct_183601bc *__end_;
+    struct __compressed_pair<PFStoryDurationInfo *, std::allocator<PFStoryDurationInfo>> {
+        CDStruct_183601bc *__value_;
+    } __end_cap_;
+};
+
+struct vector<PXStoryAutoEditComposabilityScores, std::allocator<PXStoryAutoEditComposabilityScores>> {
+    CDStruct_183601bc *__begin_;
+    CDStruct_183601bc *__end_;
+    struct __compressed_pair<PXStoryAutoEditComposabilityScores *, std::allocator<PXStoryAutoEditComposabilityScores>> {
+        CDStruct_183601bc *__value_;
+    } __end_cap_;
+};
+
+#if 0
+// Names with conflicting types:
+typedef struct {
+    CDStruct_14d5dc5e viewMatrix;
+    CDStruct_14d5dc5e projectionMatrix;
+    CDStruct_14d5dc5e billboardMatrix;
+    MISSING_TYPE *renderOrigin;
+} PXGCameraConfiguration_f6f8b209;
+
+typedef struct {
+    CDStruct_14d5dc5e _field1;
+    CDStruct_14d5dc5e _field2;
+    CDStruct_14d5dc5e _field3;
+} PXGCameraConfiguration_474424ad;
+
+#endif
 
 #pragma mark Typedef'd Structures
+
+typedef struct {
+    id _field1;
+} CDStruct_183fa7cb;
+
+typedef struct {
+    unsigned char _field1;
+    unsigned char _field2;
+    unsigned char _field3;
+    unsigned char _field4;
+} CDStruct_a06f635e;
+
+typedef struct {
+    unsigned char _field1;
+} CDStruct_6b48f683;
+
+typedef struct {
+    unsigned int fragmentTextureCoordinateOpcodes;
+    unsigned int fragmentColorOpcodes;
+    unsigned int fragmentAlphaOpcodes;
+} CDStruct_b796b1f4;
+
+typedef struct {
+    unsigned int _field1;
+    double _field2;
+    double _field3;
+} CDStruct_5eb12be8;
+
+typedef struct {
+    unsigned int _field1;
+} CDStruct_6238c8e0;
+
+typedef struct {
+    unsigned long long type;
+    _Bool isConstrained;
+    _Bool isExpensive;
+} CDStruct_857573eb;
+
+typedef struct {
+    unsigned long long croppingOptions;
+    _Bool preferStillKeySegment;
+} CDStruct_aa11df03;
 
 typedef struct {
     unsigned long long needsUpdate;
     unsigned long long updated;
     _Bool isPerformingUpdate;
-} CDStruct_d97c9657;
+    _Bool willPerformUpdate;
+} CDStruct_af00bf4e;
+
+typedef struct {
+    unsigned long long _field1;
+    unsigned long long _field2;
+    unsigned long long _field3;
+    unsigned long long _field4;
+    unsigned long long _field5;
+    unsigned long long _field6;
+    unsigned long long _field7;
+    unsigned long long _field8;
+    unsigned long long _field9;
+    unsigned long long _field10;
+} CDStruct_dd9362d3;
 
 typedef struct {
     unsigned long long _field1;
@@ -435,15 +552,9 @@ typedef struct {
 } CDStruct_aa0b146f;
 
 typedef struct {
-    unsigned long long _field1;
-    unsigned long long _field2;
-} CDStruct_4bcfbbae;
-
-typedef struct {
-    unsigned long long pixelFormat;
-    unsigned short width;
-    unsigned short height;
-} CDStruct_1b544862;
+    unsigned long long direction;
+    unsigned long long relativeMotion;
+} CDStruct_b4d0f0d1;
 
 typedef struct {
     unsigned long long _field1;
@@ -456,6 +567,10 @@ typedef struct {
     unsigned long long count;
     long long type;
 } CDStruct_15189878;
+
+typedef struct {
+    unsigned long long direction;
+} CDStruct_66ab5b12;
 
 typedef struct {
     MISSING_TYPE *columns[4];
@@ -473,6 +588,11 @@ typedef struct {
     void *_field1;
     void *_field2;
 } CDStruct_df88f589;
+
+typedef struct {
+    double previousDuration;
+    unsigned long long currentStartTime;
+} CDStruct_2e59876b;
 
 typedef struct {
     double minValue;
@@ -499,23 +619,14 @@ typedef struct {
 } CDStruct_05cddbcc;
 
 typedef struct {
-    double x;
-    double y;
-    float z;
-} CDStruct_719d24f9;
+    double _field1;
+    double _field2;
+    float _field3;
+} CDStruct_91033b2a;
 
 typedef struct {
-    float _field1;
-    float _field2;
-    float _field3;
-    float _field4;
-    float _field5;
-    float _field6;
-    float _field7;
-    float _field8;
-    unsigned int _field9;
-    unsigned short _field10;
-} CDStruct_8a1a641f;
+    double initialVelocity;
+} CDStruct_7f83cd13;
 
 typedef struct {
     float topLeft;
@@ -531,11 +642,23 @@ typedef struct {
 } CDStruct_869f9c67;
 
 typedef struct {
+    float _field1;
+    float _field2;
+} CDStruct_b2fbf00d;
+
+typedef struct {
+    int _field1;
+    unsigned int _field2;
+} CDStruct_f1d50d6b;
+
+typedef struct {
     int _field1;
     unsigned long long _field2;
     id _field3;
     id _field4;
-} CDStruct_39b4dbd3;
+    id _field5;
+    _Bool _field6;
+} CDStruct_4d1c17ad;
 
 typedef struct {
     int _field1;
@@ -547,20 +670,29 @@ typedef struct {
 } CDStruct_9d1ebe49;
 
 typedef struct {
-    int _field1;
-    int _field2;
-    int _field3;
-    unsigned short _field4;
-    void *_field5;
-    unsigned int _field6;
-    void *_field7;
-    unsigned int _field8;
-    unsigned int _field9;
-} CDStruct_875be80f;
+    long long moduleType;
+    _Bool isStart;
+    _Bool isBreak;
+} CDStruct_3ac0dd7e;
 
 typedef struct {
-    int _field1;
-} CDStruct_fcaf9308;
+    long long numberOfClips;
+    _Bool clipFramesExtendToBounds;
+    long long mainDividerAxis;
+    double mainDividerSplitRatio;
+    long long numberOfAssets;
+} CDStruct_99303aee;
+
+typedef struct {
+    long long _field1;
+    unsigned long long _field2[5];
+} CDStruct_777fda0b;
+
+typedef struct {
+    long long firstSegmentIdentifier;
+    double secondSegmentMixFactor;
+    long long secondSegmentIdentifier;
+} CDStruct_982265da;
 
 typedef struct {
     long long _field1;
@@ -568,10 +700,18 @@ typedef struct {
 } CDStruct_7f320dbc;
 
 typedef struct {
+    long long mode;
+    float volume;
+    double JCutLength;
+    double LCutLength;
+    double fadeIn;
+    double fadeOut;
+} CDStruct_195f2361;
+
+typedef struct {
     long long _field1;
     float _field2;
-    float _field3;
-} CDStruct_4f961314;
+} CDStruct_fd7332cd;
 
 typedef struct {
     long long value;
@@ -579,6 +719,15 @@ typedef struct {
     unsigned int flags;
     long long epoch;
 } CDStruct_1b6d18a9;
+
+typedef struct {
+    long long axis;
+    long long decelerationRate;
+    _Bool pagingEnabled;
+    double pagingOrigin;
+    double pageOffset;
+    _Bool allowingFlickAcrossMultiplePages;
+} CDStruct_f69270d1;
 
 typedef struct {
     long long _field1;
@@ -608,20 +757,17 @@ typedef struct {
     long long layoutOrientation;
 } CDStruct_e6148bb0;
 
-typedef struct {
-    long long zoomLevel;
-    long long scrollRegime;
-} CDStruct_0c606d9b;
-
 typedef struct CDStruct_183601bc;
 
 typedef struct {
     id _field1;
-    struct _NSRange _field2;
-    float _field3;
-    int _field4;
-    unsigned char _field5;
-} CDStruct_dcc83465;
+    id _field2;
+    struct _NSRange _field3;
+    float _field4;
+    int _field5;
+    unsigned char _field6;
+    _Bool _field7;
+} CDStruct_6e34cc2d;
 
 typedef struct {
     _Bool _field1;
@@ -633,13 +779,52 @@ typedef struct {
     CDStruct_183601bc *_field2;
     CDStruct_183601bc *_field3;
     CDStruct_183601bc *_field4;
-} CDStruct_92550dd7;
+    CDStruct_183601bc *_field5;
+} CDStruct_d5f63e8f;
+
+typedef struct {
+    unsigned long long pixelFormat;
+    struct __CFString *colorSpaceName;
+    unsigned short width;
+    unsigned short height;
+} CDStruct_6c943d2a;
 
 typedef struct {
     CDStruct_183601bc *_field1;
     CDStruct_183601bc *_field2;
     CDStruct_183601bc *_field3;
-} CDStruct_a6175b54;
+    CDStruct_183601bc *_field4;
+} CDStruct_d23a385d;
+
+typedef struct {
+    char orderOutTransition;
+    unsigned char options;
+    CDStruct_1b6d18a9 duration;
+    union {
+        char panDirection;
+        char scaleDirection;
+        char rotateDirection;
+        char wipeKind;
+    } ;
+    union {
+        double scaleRelativeFactor;
+        double rotateAngleInDegrees;
+        char wipeFirstAssetDirection;
+    } ;
+} CDStruct_08b93379;
+
+typedef struct {
+    double _field1;
+    double _field2;
+    struct CGPoint _field3;
+} CDStruct_d1ca95b4;
+
+typedef struct {
+    long long curve;
+    union {
+        double linearFraction;
+    } ;
+} CDStruct_6f12f40c;
 
 typedef struct {
     long long _field1;
@@ -654,6 +839,20 @@ typedef struct {
 } CDStruct_14c8b8c5;
 
 typedef struct {
+    CDStruct_6238c8e0 _field1;
+    int _field2;
+    int _field3;
+    int _field4;
+    unsigned short _field5;
+    void *_field6;
+    unsigned int _field7;
+    void *_field8;
+    unsigned int _field9;
+    unsigned int _field10;
+    unsigned char _field11;
+} CDStruct_92e0aee2;
+
+typedef struct {
     CDStruct_14d5dc5e viewMatrix;
     CDStruct_14d5dc5e projectionMatrix;
     CDStruct_14d5dc5e viewProjectionMatrix;
@@ -662,13 +861,32 @@ typedef struct {
 } CDStruct_b1513b2e;
 
 typedef struct {
-    CDStruct_719d24f9 center;
+    struct {
+        double x;
+        double y;
+        double z;
+    } center;
     MISSING_TYPE *size;
-} CDStruct_dfa1459f;
+} CDStruct_d1b913ca;
 
 typedef struct {
-    CDStruct_719d24f9 _field1;
-    CDStruct_719d24f9 _field2;
+    CDStruct_efe6456d top;
+    CDStruct_efe6456d left;
+    CDStruct_efe6456d bottom;
+    CDStruct_efe6456d right;
+} CDStruct_e307eb02;
+
+typedef struct {
+    struct {
+        double _field1;
+        double _field2;
+        double _field3;
+    } _field1;
+} CDStruct_4f725fed;
+
+typedef struct {
+    CDStruct_91033b2a _field1;
+    CDStruct_91033b2a _field2;
     CDStruct_869f9c67 _field3;
     CDStruct_869f9c67 _field4;
     CDStruct_869f9c67 _field5;
@@ -685,13 +903,25 @@ typedef struct {
     CDStruct_869f9c67 _field16;
     CDStruct_869f9c67 _field17;
     CDStruct_869f9c67 _field18;
-    unsigned short _field19;
-    unsigned char _field20;
-} CDStruct_866a3d3a;
+    CDStruct_869f9c67 _field19;
+    CDStruct_869f9c67 _field20;
+    CDStruct_869f9c67 _field21;
+    CDStruct_869f9c67 _field22;
+    CDStruct_869f9c67 _field23;
+    unsigned short _field24;
+    unsigned char _field25;
+} CDStruct_067bb244;
 
 typedef struct {
-    CDStruct_719d24f9 _field1;
-} CDStruct_3ab912e1;
+    CDStruct_1b6d18a9 _field1;
+    long long _field2;
+} CDStruct_14e04ed5;
+
+typedef struct {
+    CDStruct_1b6d18a9 minimumDuration;
+    CDStruct_1b6d18a9 preferredDuration;
+    CDStruct_1b6d18a9 maximumDuration;
+} CDStruct_c8943d03;
 
 typedef struct {
     CDStruct_1b6d18a9 start;
@@ -699,9 +929,13 @@ typedef struct {
 } CDStruct_e83c9415;
 
 typedef struct {
-    struct CGAffineTransform _field1;
-    double _field2;
-} CDStruct_3fe57b01;
+    struct CGAffineTransform affineTransform;
+    double tz;
+} CDStruct_c1f6e9bb;
+
+typedef struct {
+    struct CGAffineTransform t;
+} CDStruct_597fa96d;
 
 typedef struct {
     struct CGPoint normalizedScaleCenter;
@@ -733,6 +967,41 @@ typedef struct {
 } CDStruct_7c4e768e;
 
 typedef struct {
+    struct CGPoint initialLocation;
+    struct CGPoint location;
+    struct CGPoint velocity;
+    NSObject *coordinateSpace;
+    double initialTimestamp;
+    double lastTimestamp;
+} CDStruct_14916c44;
+
+typedef struct {
+    struct CGPoint center;
+    struct CGSize size;
+    double zPos;
+    double rotationAngle;
+    double alpha;
+    double overlayAlpha;
+    double tapbackScale;
+    double aspectMixFactor;
+} CDStruct_e6e97baa;
+
+typedef struct {
+    struct CGSize viewportSize;
+    double dividerWidth;
+    double singleAssetAspectRatio;
+} CDStruct_0b735c3a;
+
+typedef struct {
+    struct CGSize _field1;
+    struct CGSize _field2;
+    struct CGSize _field3;
+    _Bool _field4;
+    unsigned long long _field5;
+    struct CGPoint _field6;
+} CDStruct_341496a7;
+
+typedef struct {
     struct CLLocationCoordinate2D _field1;
     struct {
         double _field1;
@@ -751,20 +1020,48 @@ typedef struct {
     unsigned int _field1;
     double _field2;
     double _field3;
-    CDStruct_3ab912e1 _field4;
-} CDStruct_87acf924;
+    CDStruct_4f725fed _field4;
+} CDStruct_3d721e10;
+
+typedef struct {
+    double _field1;
+    struct CGRect _field2;
+} CDStruct_fe8c0406;
+
+typedef struct {
+    long long style;
+    union {
+        CDStruct_b4d0f0d1 pan;
+        CDStruct_66ab5b12 scale;
+        CDStruct_66ab5b12 rotate;
+    } settings;
+} CDStruct_b8e7e30c;
 
 typedef struct {
     long long scrollRegime;
     _Bool isAnimatingScroll;
     _Bool isScrubbing;
     _Bool isAnimatingContent;
-    unsigned long long zoomBehavior;
+    unsigned long long contentChangeTrend;
     _Bool isViewBoundsChanging;
     _Bool isInitialLoad;
     _Bool isVisible;
     struct CGRect targetRect;
-} CDStruct_a02a4563;
+} CDStruct_da8e67cd;
+
+typedef struct {
+    long long kind;
+    double duration;
+    union {
+        CDStruct_b4d0f0d1 pan;
+        CDStruct_66ab5b12 scale;
+        CDStruct_66ab5b12 rotate;
+        struct {
+            char kind;
+            char firstAssetDirection;
+        } wipe;
+    } settings;
+} CDStruct_618113c1;
 
 typedef struct {
     long long _field1;
@@ -783,6 +1080,48 @@ typedef struct {
     struct UIEdgeInsets _field5;
     _Bool _field6;
 } CDStruct_46c45068;
+
+typedef struct {
+    long long identifier;
+    CDStruct_99303aee compositionInfo;
+    CDStruct_08b93379 transitionInfo;
+    CDStruct_c8943d03 durationInfo;
+} CDStruct_700d4edc;
+
+typedef struct {
+    long long kind;
+    CDStruct_c8943d03 specificDurationInfo;
+} CDStruct_5d4c7ed3;
+
+typedef struct {
+    long long segmentIdentifier;
+    CDStruct_e83c9415 allowedTimeRange;
+    CDStruct_1b6d18a9 originalDuration;
+    CDStruct_1b6d18a9 adjustedDuration;
+    long long cueRank;
+    long long cueVersion;
+    CDStruct_1b6d18a9 cueTime;
+    double startTime;
+    CDStruct_1b6d18a9 startTimeIntoSegment;
+    long long timelineVersion;
+} CDStruct_eeb7dc5b;
+
+typedef struct {
+    CDStruct_e307eb02 sourceInsets;
+    CDStruct_e307eb02 targetInsets;
+    CDStruct_1b6d18a9 duration;
+} CDStruct_db17f41a;
+
+typedef struct {
+    CDStruct_597fa96d sourceContentsRect;
+    CDStruct_597fa96d targetContentsRect;
+    CDStruct_1b6d18a9 duration;
+} CDStruct_24e54195;
+
+typedef struct {
+    CDStruct_597fa96d s;
+    CDStruct_597fa96d t;
+} CDStruct_f7388bc9;
 
 typedef struct {
     struct CGRect layoutRect;
@@ -804,30 +1143,83 @@ typedef struct {
 } CDStruct_fd7a954a;
 
 typedef struct {
+    struct CGRect _field1;
+    CDStruct_e307eb02 _field2;
+    struct CGPoint _field3;
+    struct CGSize _field4;
+} CDStruct_e7a99259;
+
+typedef struct {
     struct CGSize _field1;
-    unsigned short _field2;
-    struct CGSize _field3;
-    struct CGPoint _field4;
-    CDStruct_3fe57b01 _field5;
-    double _field6;
-} CDStruct_ff9a7497;
+    double _field2;
+    unsigned short _field3;
+    struct CGSize _field4;
+    struct {
+        double _field1;
+        double _field2;
+        double _field3;
+    } _field5;
+    CDStruct_c1f6e9bb _field6;
+    double _field7;
+} CDStruct_7dd43651;
+
+typedef struct {
+    struct CGSize size;
+    struct CGRect preferredCropRect;
+    struct CGRect acceptableCropRect;
+    struct CGRect faceAreaRect;
+    struct CGRect bestPlaybackRect;
+} CDStruct_4cef5b45;
 
 typedef struct {
     float _field1;
     CDStruct_2bd92d94 _field2;
     float _field3;
-    unsigned short _field4;
-    unsigned short _field5;
-    unsigned char _field6;
-} CDStruct_506f5052;
+    float _field4;
+    float _field5;
+    float _field6;
+    unsigned short _field7;
+    unsigned char _field8;
+} CDStruct_76b550e2;
 
 typedef struct {
-    CDStruct_3ab912e1 _field1;
-    CDStruct_506f5052 _field2;
+    long long identifier;
+    long long resourceKind;
+    struct CGSize clipSize;
+    unsigned long long options;
+    CDStruct_c8943d03 durationInfo;
+    long long playbackStyle;
+    CDStruct_4cef5b45 assetContentInfo;
+    struct UIEdgeInsets safeAreaInsets;
+    CDStruct_db17f41a clippingAnimationInfo;
+    CDStruct_24e54195 kenBurnsAnimationInfo;
+    CDStruct_08b93379 transitionInfo;
+    CDStruct_195f2361 audioInfo;
+} CDStruct_5e045380;
+
+typedef struct {
+    CDStruct_4f725fed _field1;
+    CDStruct_76b550e2 _field2;
     CDStruct_9d1ebe49 _field3;
-} CDStruct_c691429e;
+} CDStruct_a4810174;
 
 // Ambiguous groups
+typedef struct {
+    _Bool _field1;
+    _Bool _field2;
+    _Bool _field3;
+    _Bool _field4;
+    _Bool _field5;
+    _Bool _field6;
+} CDStruct_157d85a6;
+
+typedef struct {
+    _Bool _field1;
+    _Bool _field2;
+    _Bool _field3;
+    _Bool _field4;
+} CDStruct_8024420c;
+
 typedef struct {
     _Bool respondsToPlayerStatusChangedForPlayerWrapper;
     _Bool respondsToTimeChanged;
@@ -840,4 +1232,26 @@ typedef struct {
 typedef struct {
     _Bool selectedIndexPaths;
 } CDStruct_0794f076;
+
+typedef struct {
+    double _field1;
+    double _field2;
+    double _field3;
+} CDStruct_39925896;
+
+typedef struct {
+    double preRotationInset;
+    double rotationAngle;
+    double postRotationInset;
+} CDStruct_efe6456d;
+
+typedef struct {
+    long long _field1;
+    long long _field2;
+} CDStruct_912cb5d2;
+
+typedef struct {
+    long long fromSegmentIdentifier;
+    long long toSegmentIdentifier;
+} CDStruct_b1a1f14e;
 

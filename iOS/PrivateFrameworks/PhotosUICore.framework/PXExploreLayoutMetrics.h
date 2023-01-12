@@ -17,10 +17,12 @@
     double _interitemSpacing;
     long long _largeHeroDensity;
     CDUnknownBlockType _acceptableLargeHeroPredicate;
+    double _buildingBlockAspectRatio;
     struct UIEdgeInsets _safeAreaInsets;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) double buildingBlockAspectRatio; // @synthesize buildingBlockAspectRatio=_buildingBlockAspectRatio;
 @property(nonatomic) _Bool allowSpecialPanoHeaders; // @synthesize allowSpecialPanoHeaders=_allowSpecialPanoHeaders;
 @property(nonatomic) _Bool allowHeaders; // @synthesize allowHeaders=_allowHeaders;
 @property(copy, nonatomic) CDUnknownBlockType acceptableLargeHeroPredicate; // @synthesize acceptableLargeHeroPredicate=_acceptableLargeHeroPredicate;

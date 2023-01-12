@@ -9,11 +9,12 @@
 @class UIViewController;
 
 @protocol TSSIMSetupDelegate <NSObject>
-- (void)simSetupFlowCompleted;
 
 @optional
 - (void)receivedResponse;
 - (void)waitForResponse:(UIViewController *)arg1;
 - (long long)userConsentResponse;
+- (void)simSetupFlowCompleted:(unsigned long long)arg1;
+- (void)simSetupFlowCompleted;
 @end
 

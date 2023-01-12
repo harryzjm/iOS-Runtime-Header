@@ -23,5 +23,6 @@
 - (void)cardViewWillAppearForCard:(id <CRCard>)arg1 withAppearanceFeedback:(id <CRCardViewAppearanceFeedback>)arg2;
 - (void)userDidReportFeedback:(id <CRUserReportRequestFeedback>)arg1 fromCardSection:(id <CRCardSection>)arg2;
 - (void)userDidEngageCardSection:(id <CRCardSection>)arg1 withEngagementFeedback:(id <CRCardSectionEngagementFeedback>)arg2;
+- (void)cardSectionView:(id <CRCardSection>)arg1 willProcessEngagementFeedback:(id <CRCardSectionEngagementFeedback>)arg2;
 @end
 

@@ -8,17 +8,23 @@
 
 #import <HealthUI/HKChartCacheDataSource-Protocol.h>
 
-@class HKDisplayType, HKHealthStore, NSString;
+@class HKDisplayType, HKHealthStore, NSCalendar, NSString;
 
 @interface HKHealthQueryChartCacheDataSource : NSObject <HKChartCacheDataSource>
 {
     HKHealthStore *_healthStore;
     HKDisplayType *_displayType;
+    NSCalendar *_calendarOverride;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSCalendar *calendarOverride; // @synthesize calendarOverride=_calendarOverride;
 @property(readonly, nonatomic) HKDisplayType *displayType; // @synthesize displayType=_displayType;
+- (id)codableQueryDataWithType:(int)arg1 startDate:(id)arg2 endDate:(id)arg3 statisticsInterval:(id)arg4 queryDataObject:(id)arg5;
 - (id)_buildDescriptionFromStartDate:(id)arg1 endDate:(id)arg2 statisticsInterval:(id)arg3;
+- (id)chartPointsFromQueryData:(id)arg1 dataIsFromRemoteSource:(_Bool)arg2;
+- (CDUnknownBlockType)queryDataForStartDate:(id)arg1 endDate:(id)arg2 statisticsInterval:(id)arg3 healthStore:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (_Bool)supportsChartQueryDataGeneration;
 - (id)queriesForStartDate:(id)arg1 endDate:(id)arg2 statisticsInterval:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)queryDescription;
 - (id)statisticsIntervalForTimeScope:(long long)arg1 displayType:(id)arg2;

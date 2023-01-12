@@ -43,6 +43,7 @@
 - (void)_destroyMadridRegistrationView;
 - (void)_createMadridRegistrationViewIfNecessary;
 - (void)_showMadridRegistrationViewIfNecessary;
+- (void)windowSceneDidBecomeVisible:(id)arg1;
 - (void)__showMadridRegistrationViewIfNecessary;
 - (void)_handleDaemonDisconnected:(id)arg1;
 - (void)_handleDaemonConnected:(id)arg1;
@@ -53,7 +54,7 @@
 - (_Bool)_restoreState:(id)arg1;
 - (id)validIntentDictionaryWithURLParameters:(id)arg1;
 - (_Bool)hasBusinessRecipientWithRecipientIDs:(id)arg1;
-- (void)loadConversationWithMessageGUID:(id)arg1;
+- (void)loadConversationWithMessageGUID:(id)arg1 withInlineReplyOverlay:(_Bool)arg2;
 - (void)_setMessageFilterModeBy:(id)arg1;
 - (void)openSMSURL:(id)arg1;
 - (void)openSURFURL:(id)arg1;

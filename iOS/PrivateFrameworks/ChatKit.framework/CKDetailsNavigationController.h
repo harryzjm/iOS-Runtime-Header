@@ -10,6 +10,7 @@
 }
 
 @property(nonatomic) _Bool isDetached; // @synthesize isDetached=_isDetached;
+- (_Bool)isModalInPresentation;
 
 @end
 

@@ -16,9 +16,6 @@
 - (id <UIViewSpringAnimationBehaviorDescribing>)folderView:(SBFolderView *)arg1 iconListView:(SBIconListView *)arg2 customSpringAnimationBehaviorForDroppingItem:(UIDragItem *)arg3;
 - (void)folderView:(SBFolderView *)arg1 iconListView:(SBIconListView *)arg2 springLoadedInteractionForIconDragDidCompleteOnIconView:(SBIconView *)arg3;
 - (_Bool)folderView:(SBFolderView *)arg1 iconListView:(SBIconListView *)arg2 shouldAllowSpringLoadedInteractionForIconDropSession:(id <UIDropSession>)arg3 onIconView:(SBIconView *)arg4;
-- (void)folderView:(SBFolderView *)arg1 iconListView:(SBIconListView *)arg2 iconDragItem:(UIDragItem *)arg3 willAnimateDropWithAnimator:(id <UIDragAnimating>)arg4;
-- (UITargetedDragPreview *)folderView:(SBFolderView *)arg1 iconListView:(SBIconListView *)arg2 previewForDroppingIconDragItem:(UIDragItem *)arg3 proposedPreview:(UITargetedDragPreview *)arg4;
-- (void)folderView:(SBFolderView *)arg1 iconListView:(SBIconListView *)arg2 willUseIconView:(SBIconView *)arg3 forDroppingIconDragItem:(UIDragItem *)arg4;
 - (void)folderView:(SBFolderView *)arg1 iconListView:(SBIconListView *)arg2 performIconDrop:(id <UIDropSession>)arg3;
 - (void)folderView:(SBFolderView *)arg1 iconListView:(SBIconListView *)arg2 iconDropSessionDidExit:(id <UIDropSession>)arg3;
 - (void)folderView:(SBFolderView *)arg1 iconListView:(SBIconListView *)arg2 iconDropSession:(id <UIDropSession>)arg3 didPauseAtLocation:(struct CGPoint)arg4;
@@ -47,5 +44,9 @@
 - (UIColor *)folderView:(SBFolderView *)arg1 accessibilityTintColorForRect:(struct CGRect)arg2;
 - (struct UIEdgeInsets)contentOverlayInsetsFromParentIfAvailableForFolderView:(SBFolderView *)arg1;
 - (double)minimumHomeScreenScaleForFolderView:(SBFolderView *)arg1;
+- (void)folderView:(SBFolderView *)arg1 iconListView:(SBIconListView *)arg2 iconDragItem:(UIDragItem *)arg3 willAnimateDropWithAnimator:(id <UIDragAnimating>)arg4;
+- (UITargetedDragPreview *)folderView:(SBFolderView *)arg1 iconListView:(SBIconListView *)arg2 previewForDroppingIconDragItem:(UIDragItem *)arg3 proposedPreview:(UITargetedDragPreview *)arg4;
+- (void)folderView:(SBFolderView *)arg1 iconListView:(SBIconListView *)arg2 willUseIconView:(SBIconView *)arg3 forDroppingIconDragItem:(UIDragItem *)arg4;
+- (SBIconView *)folderView:(SBFolderView *)arg1 iconListView:(SBIconListView *)arg2 iconViewForDroppingIconDragItem:(UIDragItem *)arg3 proposedIconView:(SBIconView *)arg4;
 @end
 

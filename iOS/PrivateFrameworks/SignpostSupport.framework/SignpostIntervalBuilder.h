@@ -13,9 +13,6 @@
 {
     _Bool _buildAnimationCompositeIntervalTimelines;
     _Bool _compositeIntervalIsInFlight;
-    _Bool _foundMacOSSpecificData;
-    _Bool _foundIPhoneOSSpecificData;
-    _Bool _foundCAWSInMemoryData;
     NSMutableDictionary *_systemwideDictionary;
     NSMutableDictionary *_processwideDictionary;
     NSMutableDictionary *_threadwideDictionary;
@@ -26,15 +23,12 @@
     SignpostCAInstrumentationProcessor *_caInstrumentationProcessor;
 }
 
-+ (id)_framerateCalculationWhitelist;
++ (id)_framerateCalculationAllowlist;
 + (_Bool)_filterPassesRequiredSCForFramerate:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) SignpostCAInstrumentationProcessor *caInstrumentationProcessor; // @synthesize caInstrumentationProcessor=_caInstrumentationProcessor;
 @property(nonatomic) unsigned long long previousMCT; // @synthesize previousMCT=_previousMCT;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *syncQueue; // @synthesize syncQueue=_syncQueue;
-@property(nonatomic) _Bool foundCAWSInMemoryData; // @synthesize foundCAWSInMemoryData=_foundCAWSInMemoryData;
-@property(nonatomic) _Bool foundIPhoneOSSpecificData; // @synthesize foundIPhoneOSSpecificData=_foundIPhoneOSSpecificData;
-@property(nonatomic) _Bool foundMacOSSpecificData; // @synthesize foundMacOSSpecificData=_foundMacOSSpecificData;
 @property(nonatomic) _Bool compositeIntervalIsInFlight; // @synthesize compositeIntervalIsInFlight=_compositeIntervalIsInFlight;
 @property(nonatomic) unsigned long long totalCompositeIntervalCount; // @synthesize totalCompositeIntervalCount=_totalCompositeIntervalCount;
 @property(retain, nonatomic) NSMapTable *outstandingAnimationState; // @synthesize outstandingAnimationState=_outstandingAnimationState;
@@ -47,8 +41,6 @@
 - (id)_animationWithBegin:(id)arg1 endEvent:(id)arg2;
 - (void)_cleanupStateForBeginEvent:(id)arg1;
 - (_Bool)_handleCommonSpecialIntervals:(id)arg1;
-- (_Bool)_handleIPhoneOsSpecialEvents:(id)arg1;
-- (_Bool)_handleIPhoneOsSpecialIntervals:(id)arg1;
 - (_Bool)_handleMacOsSpecialIntervals:(id)arg1;
 - (void)_processCompositeInterval:(id)arg1;
 - (void)processEmittedEvent:(id)arg1;

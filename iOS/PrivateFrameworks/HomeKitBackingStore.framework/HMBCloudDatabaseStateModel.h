@@ -4,15 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKDatabase, HMBCloudID, NSData, NSDate, NSSet;
+@class CKDatabase, HMBCloudID, NAFuture, NSData, NSDate, NSSet;
 
 @interface HMBCloudDatabaseStateModel
 {
     CKDatabase *_database;
+    NAFuture *_queuedCloudPullFuture;
 }
 
 + (id)hmbProperties;
 - (void).cxx_destruct;
+@property(retain) NAFuture *queuedCloudPullFuture; // @synthesize queuedCloudPullFuture=_queuedCloudPullFuture;
 @property(nonatomic) __weak CKDatabase *database; // @synthesize database=_database;
 @property(copy, nonatomic) NSSet *subscriptions;
 - (id)initWithModelID:(id)arg1 parentModelID:(id)arg2;

@@ -23,6 +23,9 @@
 - (id)serialize;
 - (id)_asPersistedTask;
 - (id)runUsingContext:(id)arg1 withTaskQueue:(id)arg2;
+- (_Bool)_removePromotionsUsingPaths:(id)arg1;
+- (_Bool)_activeRolloutIsCompatible:(id)arg1 upgradeNCVs:(id)arg2 downloadNCVs:(id)arg3;
+- (_Bool)_validateRolloutNamespaceNCVs:(id)arg1 downloadNCVs:(id)arg2 rolloutDatabase:(id)arg3;
 - (_Bool)_validateDynamicNamespaceRolloutsWithDatabase:(id)arg1 usingPaths:(id)arg2;
 - (_Bool)_validateExperimentDescriptorsWithNamespaceCompatibilityVersions:(id)arg1 database:(id)arg2;
 - (_Bool)_validateRolloutDescriptorsWithNamespaceCompatibilityVersions:(id)arg1 usingPaths:(id)arg2;

@@ -26,6 +26,7 @@
 @property(nonatomic) __weak UIWindowScene *windowSceneForMapWidgetScene; // @synthesize windowSceneForMapWidgetScene=_windowSceneForMapWidgetScene;
 @property(nonatomic) __weak UIWindowScene *windowSceneForTemplateApplicationScene; // @synthesize windowSceneForTemplateApplicationScene=_windowSceneForTemplateApplicationScene;
 - (void)_sceneDidEnterBackground:(id)arg1;
+- (void)_sceneActivated:(id)arg1;
 - (void)_sceneWillEnterForeground:(id)arg1;
 - (void)_notifyObserversForeground:(_Bool)arg1;
 @property(readonly, nonatomic) _Bool templateApplicationSceneIsActive;

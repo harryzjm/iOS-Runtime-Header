@@ -15,6 +15,7 @@
 + (id)sampleUpNextConfiguration;
 + (id)defaultUpNextConfiguration;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(nonatomic) _Bool disableAutomaticContentManagement; // @dynamic disableAutomaticContentManagement;
 @property(nonatomic) _Bool ignoresInstalledApplications; // @dynamic ignoresInstalledApplications;
 @property(retain, nonatomic) id <RERelevanceEngineMetricsRecorder> metricsRecorder; // @dynamic metricsRecorder;
 @property(nonatomic) _Bool allowsDiagnosticExtension; // @dynamic allowsDiagnosticExtension;

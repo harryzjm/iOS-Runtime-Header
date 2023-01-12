@@ -26,7 +26,7 @@
 - (unsigned long long)hash;
 - (id)initWithLocation:(id)arg1 endLocation:(id)arg2;
 - (id)initWithRange:(struct _NSRange)arg1;
-- (id)description;
+- (id)debugDescription;
 
 // Remaining properties
 @property(readonly) NSCountableTextLocation *endLocation; // @dynamic endLocation;

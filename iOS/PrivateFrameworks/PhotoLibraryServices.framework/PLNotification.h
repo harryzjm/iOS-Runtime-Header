@@ -49,11 +49,13 @@
     NSDate *_expirationDate;
     NSDate *_notificationDeliveryDate;
     NSData *_thumbnailImageData;
+    NSString *_photoLibraryURLString;
 }
 
 + (id)_UNCategoryFromNotificationType:(long long)arg1;
 + (id)requestIdentifierByNotificationType:(long long)arg1 keyObjectUUID:(id)arg2 photosBatchID:(id)arg3;
 - (void).cxx_destruct;
+@property(readonly) NSString *photoLibraryURLString; // @synthesize photoLibraryURLString=_photoLibraryURLString;
 @property(readonly) NSString *commentText; // @synthesize commentText=_commentText;
 @property(readonly) NSString *photosBatchID; // @synthesize photosBatchID=_photosBatchID;
 @property(readonly) _Bool offerToReportAsJunk; // @synthesize offerToReportAsJunk=_offerToReportAsJunk;
@@ -91,7 +93,7 @@
 - (id)initCMMInvitationReadyToViewWithMomentShare:(id)arg1;
 - (id)initCMMInvitationWithMomentShare:(id)arg1;
 - (id)initWithSuggestedCMMUUID:(id)arg1 keyAssetUUID:(id)arg2 notificationTitle:(id)arg3 notificationSubtitle:(id)arg4;
-- (id)initWithInterestingMemoryNotificationWithMemoryUUID:(id)arg1 keyAssetUUID:(id)arg2 notificationTitle:(id)arg3 notificationSubtitle:(id)arg4;
+- (id)initWithInterestingMemoryNotificationWithMemoryUUID:(id)arg1 keyAssetUUID:(id)arg2 notificationTitle:(id)arg3 notificationSubtitle:(id)arg4 photoLibraryURLString:(id)arg5;
 - (id)_initWithLikesCount:(long long)arg1 commentDate:(id)arg2 firstCommentGUID:(id)arg3 toAssetWithUUID:(id)arg4 photosBatchID:(id)arg5 mainAssetIsMine:(_Bool)arg6 mainAssetIsVideo:(_Bool)arg7 inAlbumWithTitle:(id)arg8 albumUUID:(id)arg9 albumCloudGUID:(id)arg10 assetUUIDs:(id)arg11 placeholderAssetUUIDs:(id)arg12 lowResThumbAssetUUIDs:(id)arg13 senderNames:(id)arg14 forMultipleAsset:(_Bool)arg15 allMultipleAssetIsMine:(_Bool)arg16 isMixedType:(_Bool)arg17;
 - (id)_initWithCommentsCount:(long long)arg1 commentDate:(id)arg2 firstCommentGUID:(id)arg3 toAssetWithUUID:(id)arg4 photosBatchID:(id)arg5 mainAssetIsMine:(_Bool)arg6 mainAssetIsVideo:(_Bool)arg7 inAlbumWithTitle:(id)arg8 albumUUID:(id)arg9 albumCloudGUID:(id)arg10 assetUUIDs:(id)arg11 placeholderAssetUUIDs:(id)arg12 lowResThumbAssetUUIDs:(id)arg13;
 - (id)initWithLikeAdded:(id)arg1;

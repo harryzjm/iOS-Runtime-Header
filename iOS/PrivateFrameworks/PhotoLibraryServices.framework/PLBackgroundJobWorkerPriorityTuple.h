@@ -11,14 +11,16 @@
 @interface PLBackgroundJobWorkerPriorityTuple : NSObject
 {
     PLBackgroundJobWorker *_worker;
-    unsigned long long _priority;
+    long long _priority;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) unsigned long long priority; // @synthesize priority=_priority;
+@property(readonly, nonatomic) long long priority; // @synthesize priority=_priority;
 @property(readonly, nonatomic) PLBackgroundJobWorker *worker; // @synthesize worker=_worker;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
 - (id)description;
-- (id)initWithWorker:(id)arg1 priority:(unsigned long long)arg2;
+- (id)initWithWorker:(id)arg1 priority:(long long)arg2;
 
 @end
 

@@ -6,6 +6,8 @@
 
 #import <CloudKit/CKRecord.h>
 
+@protocol CKRecordKeyValueSetting;
+
 @interface CKRecord (SafariCoreExtras)
 - (id)safari_referenceForKey:(id)arg1;
 - (id)safari_encryptedDataForKey:(id)arg1;
@@ -15,5 +17,7 @@
 - (id)safari_numberForKey:(id)arg1;
 - (id)safari_stringForKey:(id)arg1;
 - (_Bool)safari_boolForKey:(id)arg1;
+@property(readonly, copy, nonatomic) id <CKRecordKeyValueSetting> safari_encryptedValues;
+@property(readonly, nonatomic) _Bool safari_hasAtLeastOneChangedField;
 @end
 

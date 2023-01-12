@@ -14,12 +14,14 @@
     MISSING_TYPE *processorManager;
     MISSING_TYPE *appSessionProvider;
     MISSING_TYPE *accessQueue;
-    MISSING_TYPE *suspendCount;
+    MISSING_TYPE *accessGroup;
+    MISSING_TYPE *sessionGroupManager;
     MISSING_TYPE *state;
     MISSING_TYPE *dataStacks;
     MISSING_TYPE *observers;
     MISSING_TYPE *options;
     MISSING_TYPE *flushProcessor;
+    MISSING_TYPE *timestampJitter;
 }
 
 - (void)flushWithCallbackQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;

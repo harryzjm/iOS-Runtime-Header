@@ -6,7 +6,6 @@
 
 @class NSArray, NSMutableDictionary, NSSet;
 
-__attribute__((visibility("hidden")))
 @interface CKDRecordResolveTokenURLRequest
 {
     _Bool _shouldFetchRootRecord;
@@ -25,6 +24,10 @@ __attribute__((visibility("hidden")))
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)generateRequestOperations;
+- (_Bool)requiresCKAnonymousUserIDs;
+- (_Bool)sendRequestAnonymously;
+- (long long)databaseScope;
+- (id)sourceApplicationSecondaryIdentifier;
 - (id)applicationBundleIdentifierForNetworkAttribution;
 - (id)applicationBundleIdentifierForContainerAccess;
 - (id)requestOperationClasses;

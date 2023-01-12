@@ -6,7 +6,6 @@
 
 #import <Preferences/PSListItemsController.h>
 
-__attribute__((visibility("hidden")))
 @interface MCCertificatePickerController : PSListItemsController
 {
 }

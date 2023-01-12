@@ -4,16 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HKDateIntervalCache, NSArray;
+@class HKDateIntervalCache, NSArray, NSCalendar;
 
 @interface HKDateAxis
 {
     HKDateIntervalCache *_intervalCache;
     NSArray *_cachedAxisLabels;
     long long _dayScopeType;
+    NSCalendar *_currentCalendar;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSCalendar *currentCalendar; // @synthesize currentCalendar=_currentCalendar;
 @property(nonatomic) long long dayScopeType; // @synthesize dayScopeType=_dayScopeType;
 - (void)_clearCachedAxisLabels;
 - (void)_updateIntervalCacheWithModelRange:(id)arg1 zoomScale:(double)arg2;
@@ -31,7 +33,7 @@
 - (void)_setRangeForDateRange:(id)arg1;
 - (id)stringForDate:(id)arg1 zoom:(long long)arg2 labelType:(long long)arg3;
 - (id)_formattedStringForDate:(id)arg1 zoom:(long long)arg2;
-- (id)init;
+- (id)initWithCurrentCalendar:(id)arg1;
 
 @end
 

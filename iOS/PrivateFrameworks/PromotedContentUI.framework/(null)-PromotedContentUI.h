@@ -4,7 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface (null) (PromotedContentUI)
+#import <PromotedContentUI/WKScriptMessageHandler-Protocol.h>
+
+@interface (null) (PromotedContentUI) <WKScriptMessageHandler>
+- (void)userContentController:(id)arg1 didReceiveScriptMessage:(id)arg2;
 - (void)webProcessVideoAdJSODidCallExitFullScreenTapped:(float)arg1 volume:(float)arg2;
 - (void)webProcessVideoAdJSODidCallFullScreenTapped:(float)arg1 volume:(float)arg2;
 - (void)webProcessVideoAdJSODidCallSkipAdTapped:(float)arg1 volume:(float)arg2;

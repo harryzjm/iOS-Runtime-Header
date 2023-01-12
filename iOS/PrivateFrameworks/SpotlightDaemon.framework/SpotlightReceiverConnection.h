@@ -59,6 +59,7 @@
 - (void)deleteFromBundle:(id)arg1 contentType:(id)arg2 identifiers:(id)arg3;
 - (void)deleteFromBundle:(id)arg1 encodedIdentifiers:(id)arg2;
 - (void)indexFromBundle:(id)arg1 protectionClass:(id)arg2 items:(id)arg3 itemsContent:(id)arg4;
+- (void)dictionary:(id)arg1 setDecoderData:(id)arg2 forKey:(const char *)arg3 sizeKey:(const char *)arg4;
 - (void)runOnSenderQueue:(CDUnknownBlockType)arg1;
 - (void)receiverRequestComplete;
 - (void)receiverRequestStart;
@@ -70,7 +71,9 @@
 - (_Bool)_wantsContentType:(id)arg1;
 - (_Bool)_wantsBundleID:(id)arg1;
 - (id)initWithServiceName:(id)arg1 clientID:(long long)arg2 wantsText:(_Bool)arg3 wantsHTML:(_Bool)arg4;
+- (id)initWithServiceName:(id)arg1 clientID:(long long)arg2 wantsText:(_Bool)arg3 wantsHTML:(_Bool)arg4 errorHandler:(CDUnknownBlockType)arg5;
 - (void)startSetup;
+- (void)startSetup:(CDUnknownBlockType)arg1;
 - (void)handleError:(id)arg1;
 - (void)setupComplete:(_Bool)arg1;
 - (void)invalidationHandler;

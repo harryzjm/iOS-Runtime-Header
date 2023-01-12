@@ -7,7 +7,6 @@
 @class NSDictionary, NSMutableArray, NSMutableDictionary;
 @protocol CKFetchShareParticipantKeyOperationCallbacks;
 
-__attribute__((visibility("hidden")))
 @interface CKDFetchShareParticipantKeyOperation
 {
     _Bool _hasAttemptedShareUpdate;
@@ -36,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (id)activityCreate;
 - (id)nameForState:(unsigned long long)arg1;
 - (_Bool)makeStateTransition;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 // Remaining properties
 @property(retain, nonatomic) id <CKFetchShareParticipantKeyOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;

@@ -6,17 +6,19 @@
 
 #import <UIKit/UIActivity.h>
 
-@class UIViewController;
+@class NSDictionary, UIViewController;
 
 @interface FAInviteInPersonActivity : UIActivity
 {
     UIViewController *_presentingViewController;
+    NSDictionary *_response;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSDictionary *response; // @synthesize response=_response;
 @property(nonatomic) __weak UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 - (void)_handleRUIDismiss:(id)arg1;
-- (void)_notifyCompletionWithSuccess:(_Bool)arg1;
+- (void)_notifyCompletionWithSuccess:(_Bool)arg1 userInfo:(id)arg2;
 - (void)performActivity;
 - (long long)activityCategory;
 - (id)activityImage;

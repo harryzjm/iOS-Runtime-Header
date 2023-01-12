@@ -10,7 +10,7 @@
 #import <UIKitCore/UIInteraction_Internal-Protocol.h>
 #import <UIKitCore/_UIPointerInteractionDriverSink-Protocol.h>
 
-@class NSMutableDictionary, NSString, UIPointerRegion, UIView;
+@class NSString, UIPointerRegion, UIView;
 @protocol UIPointerInteractionDelegate, _UIPointerInteractionDriver;
 
 @interface UIPointerInteraction : NSObject <_UIPointerInteractionDriverSink, UIInteraction_Internal, UIInteraction>
@@ -32,8 +32,8 @@
     UIPointerRegion *_defaultRegion;
     id <UIPointerInteractionDelegate> _delegate;
     id <_UIPointerInteractionDriver> _driver;
-    NSMutableDictionary *_contentEffects;
     UIPointerRegion *_currentRegion;
+    UIPointerRegion *_mostRecentRegion;
     long long _currentModifiers;
 }
 
@@ -42,8 +42,8 @@
 @property(nonatomic, getter=_pausesPointerUpdatesWhilePanning, setter=_setPausesPointerUpdatesWhilePanning:) _Bool pausesPointerUpdatesWhilePanning; // @synthesize pausesPointerUpdatesWhilePanning=_pausesPointerUpdatesWhilePanning;
 @property(nonatomic) _Bool _delegateProvidesRegionsAsynchronously; // @synthesize _delegateProvidesRegionsAsynchronously=__delegateProvidesRegionsAsynchronously;
 @property(nonatomic) long long currentModifiers; // @synthesize currentModifiers=_currentModifiers;
+@property(copy, nonatomic) UIPointerRegion *mostRecentRegion; // @synthesize mostRecentRegion=_mostRecentRegion;
 @property(copy, nonatomic) UIPointerRegion *currentRegion; // @synthesize currentRegion=_currentRegion;
-@property(readonly, nonatomic) NSMutableDictionary *contentEffects; // @synthesize contentEffects=_contentEffects;
 @property(retain, nonatomic) id <_UIPointerInteractionDriver> driver; // @synthesize driver=_driver;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 @property(readonly, nonatomic) __weak id <UIPointerInteractionDelegate> delegate; // @synthesize delegate=_delegate;
@@ -53,8 +53,6 @@
 - (void)_queryDelegateForRegionWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2 forceSynchronous:(_Bool)arg3;
 - (_Bool)_regionContainsCurrentHoverLocation:(id)arg1;
 - (id)_pointerRegionAtPoint:(struct CGPoint)arg1 modifiers:(long long)arg2;
-- (id)_attemptToCommandeerEffectForStyle:(id)arg1 region:(id)arg2;
-- (id)_newContentEffectForStyle:(id)arg1 region:(id)arg2;
 - (void)_applyPointerStyle:(id)arg1 forRegion:(id)arg2 animator:(id)arg3;
 - (void)_updatePointerStyleForRegion:(id)arg1 modifiers:(long long)arg2 animator:(id)arg3;
 - (id)_notifyDelegate_willExitRegion:(id)arg1;
@@ -65,8 +63,7 @@
 - (void)_handlePresentationNotification:(id)arg1;
 - (void)_pointerDidEnterRegion:(id)arg1 modifiers:(long long)arg2;
 - (void)_updateCurrentRegionIfNecessary:(id)arg1 modifiers:(long long)arg2 reason:(long long)arg3;
-- (void)_cursorDidHide;
-- (void)_cursorDidExit;
+- (void)_pointerDidExit;
 - (void)_configureHoverGestureRecognizer:(id)arg1 forView:(id)arg2;
 - (void)_updatePointerWithPoint:(struct CGPoint)arg1 modifiers:(long long)arg2 buttonMask:(long long)arg3 forReason:(long long)arg4;
 @property(readonly, nonatomic) UIPointerRegion *defaultRegion; // @synthesize defaultRegion=_defaultRegion;

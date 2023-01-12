@@ -6,10 +6,10 @@
 
 #import <HomeUI/NSObject-Protocol.h>
 
-@class HUAddPeopleViewController, NSArray;
+@class HUAddPeopleViewController, NSArray, UIViewController;
 
 @protocol HUAddPeopleViewControllerDelegate <NSObject>
-- (void)addPeopleViewControllerDidCancel:(HUAddPeopleViewController *)arg1;
+- (void)addPeopleViewControllerDidCancel:(UIViewController *)arg1;
 
 @optional
 - (void)addPeopleViewController:(HUAddPeopleViewController *)arg1 didSendInvitations:(NSArray *)arg2;

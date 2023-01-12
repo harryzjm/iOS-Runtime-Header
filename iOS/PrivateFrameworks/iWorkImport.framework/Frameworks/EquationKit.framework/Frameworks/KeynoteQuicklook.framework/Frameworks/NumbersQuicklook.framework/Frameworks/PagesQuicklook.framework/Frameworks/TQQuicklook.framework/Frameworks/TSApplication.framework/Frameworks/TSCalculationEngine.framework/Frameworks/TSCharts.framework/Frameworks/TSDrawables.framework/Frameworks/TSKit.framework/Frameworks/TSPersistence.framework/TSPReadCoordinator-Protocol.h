@@ -6,7 +6,7 @@
 
 #import <TSPersistence/NSObject-Protocol.h>
 
-@class NSObject, TSPComponent;
+@class NSObject, TSPComponent, TSPDocumentLoadValidationPolicy;
 @protocol OS_dispatch_queue;
 
 @protocol TSPReadCoordinator <NSObject>
@@ -16,7 +16,7 @@
 - (_Bool)endReading;
 
 @optional
-@property(readonly, nonatomic) long long archiveValidationMode;
-- (void)validateArchiveWithCompletion:(void (^)(NSError *))arg1;
+@property(readonly, nonatomic) TSPDocumentLoadValidationPolicy *documentLoadValidationPolicy;
+- (void)validateDocumentWithOptions:(unsigned long long)arg1 timing:(long long)arg2 completion:(void (^)(_Bool, NSArray *, NSError *))arg3;
 @end
 

@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIColor;
+#import <NanoTimeKitCompanion/NTKPigmentEditOptionConvertible-Protocol.h>
 
-@interface NTKCharacterColorEditOption
+@class NSString, UIColor;
+
+@interface NTKCharacterColorEditOption <NTKPigmentEditOptionConvertible>
 {
 }
 
-+ (id)_localizedNameForValue:(unsigned long long)arg1 forDevice:(id)arg2;
++ (id)legacyOptionWithPigmentEditOption:(id)arg1 forDevice:(id)arg2;
 + (id)_snapshotKeyForValue:(unsigned long long)arg1 forDevice:(id)arg2;
 + (id)optionByValidatingValueOfInvalidOption:(id)arg1;
 + (unsigned long long)indexOfOption:(id)arg1 forCharacter:(unsigned long long)arg2 forDevice:(id)arg3;
@@ -18,11 +20,20 @@
 + (unsigned long long)numberOfOptionsForCharacter:(unsigned long long)arg1 forDevice:(id)arg2;
 + (id)optionWithOption:(id)arg1 forCharacter:(unsigned long long)arg2 forDevice:(id)arg3;
 + (id)optionWithFaceColor:(unsigned long long)arg1 forDevice:(id)arg2;
+- (id)pigmentEditOption;
+- (long long)swatchStyle;
 @property(readonly, nonatomic) double desaturation;
 @property(readonly, nonatomic) UIColor *colorValue;
 @property(readonly, nonatomic) unsigned long long color;
+- (id)localizedName;
 - (id)_valueToFaceBundleStringDict;
-- (long long)swatchStyle;
+- (_Bool)isValidOption;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

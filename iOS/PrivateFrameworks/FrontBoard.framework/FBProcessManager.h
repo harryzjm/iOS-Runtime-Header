@@ -8,14 +8,16 @@
 
 #import <FrontBoard/FBProcessDelegate-Protocol.h>
 
-@class BKSHIDEventDeferringToken, FBApplicationProcess, FBProcess, NSHashTable, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSString, RBSProcessMonitor;
+@class BKSHIDEventDeferringToken, FBApplicationProcess, FBProcess, NSHashTable, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSString, RBSAssertion, RBSProcessMonitor;
 @protocol FBProcessManagerKeyboardFocusDelegate, FBProcessWatchdogProviding, OS_dispatch_queue;
 
 @interface FBProcessManager : NSObject <FBProcessDelegate>
 {
     FBProcess *_currentProcess;
     NSObject<OS_dispatch_queue> *_callOutQueue;
+    RBSProcessMonitor *_processMonitor;
     struct os_unfair_lock_s _bootstrapLock;
+    NSMutableSet *_bootstrap_addedProcesses;
     NSMutableSet *_bootstrap_pendingProcesses;
     id <FBProcessWatchdogProviding> _noDirectAccess_defaultWatchdogPolicy;
     struct os_unfair_lock_s _lock;
@@ -29,8 +31,7 @@
     FBProcess *_lock_preferredForegroundAppProcess;
     BKSHIDEventDeferringToken *_lock_preferredForegroundToken;
     id <FBProcessManagerKeyboardFocusDelegate> _lock_keyboardFocusDelegate;
-    RBSProcessMonitor *_lock_monitor;
-    NSMutableSet *_lock_monitorPredicates;
+    RBSAssertion *_lock_assertion;
     _Bool _lock_initializationComplete;
 }
 
@@ -43,11 +44,13 @@
 - (void)_notifyObserversUsingBlock:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_removeProcess:(id)arg1;
 - (void)_bootstrap_addProcess:(id)arg1;
-- (id)_bootstrapProcessWithHandle:(id)arg1;
-- (id)_bootstrapProcessWithIdentity:(id)arg1 executionContext:(id)arg2;
+- (void)_bootstrap_consumeLock_addProcess:(id)arg1 synchronously:(_Bool)arg2;
+- (id)_bootstrapProcessWithHandle:(id)arg1 synchronously:(_Bool)arg2 error:(out id *)arg3;
+- (id)_bootstrapProcessWithExecutionContext:(id)arg1 synchronously:(_Bool)arg2 error:(out id *)arg3;
 - (id)_reallyRegisterProcessForHandle:(id)arg1;
 - (void)_lock_removeForegroundRunningProcess:(id)arg1;
 - (void)_lock_addForegroundRunningProcess:(id)arg1;
+- (void)noteProcessAssertionStateDidChange:(id)arg1;
 - (void)noteProcess:(id)arg1 didUpdateState:(id)arg2;
 - (void)noteProcessDidExit:(id)arg1;
 - (id)watchdogPolicyForProcess:(id)arg1 eventContext:(id)arg2;
@@ -57,7 +60,9 @@
 - (id)registerProcessForAuditToken:(CDStruct_6ad76789)arg1;
 - (void)setKeyboardFocusDelegate:(id)arg1;
 - (id)keyboardFocusDelegate;
-- (id)_createProcessWithExecutionContext:(id)arg1;
+- (id)_createProcessFutureForProcessHandle:(id)arg1 error:(out id *)arg2;
+- (id)_createProcessFutureWithExecutionContext:(id)arg1 error:(out id *)arg2;
+- (id)_createProcessWithExecutionContext:(id)arg1 error:(out id *)arg2;
 - (void)_setPreferredForegroundApplicationProcess:(id)arg1 deferringToken:(id)arg2;
 - (id)applicationProcessesForBundleIdentifier:(id)arg1;
 - (id)processesForBundleIdentifier:(id)arg1;

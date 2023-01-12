@@ -14,6 +14,7 @@
 @interface HMBCloudDatabaseConfiguration : HMFObject <NSCopying, NSMutableCopying>
 {
     _Bool _manateeContainer;
+    _Bool _registerForDBNotifications;
     CKContainerID *_containerID;
     NSString *_sourceApplicationBundleIdentifier;
     CKOperationConfiguration *_defaultOperationConfiguration;
@@ -22,6 +23,7 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) HMFScheduler *apsRegistrationScheduler; // @synthesize apsRegistrationScheduler=_apsRegistrationScheduler;
+@property(nonatomic) _Bool registerForDBNotifications; // @synthesize registerForDBNotifications=_registerForDBNotifications;
 @property(copy) CKOperationConfiguration *defaultOperationConfiguration; // @synthesize defaultOperationConfiguration=_defaultOperationConfiguration;
 @property(getter=isManateeContainer) _Bool manateeContainer; // @synthesize manateeContainer=_manateeContainer;
 @property(copy) NSString *sourceApplicationBundleIdentifier; // @synthesize sourceApplicationBundleIdentifier=_sourceApplicationBundleIdentifier;

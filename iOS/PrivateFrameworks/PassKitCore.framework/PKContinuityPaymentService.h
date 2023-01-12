@@ -45,7 +45,6 @@
 - (void)sendPaymentHostUpdate:(id)arg1 forRemotePaymentRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)sendRemotePaymentRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updatePaymentDevices;
-- (void)noteAccountDeleted;
 - (id)_synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)_remoteObjectProxyWithSemaphore:(id)arg1;
 - (id)_remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;

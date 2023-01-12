@@ -8,37 +8,68 @@
 
 #import <Foundation/NSCopying-Protocol.h>
 #import <Foundation/NSMutableCopying-Protocol.h>
+#import <Foundation/NSSecureCoding-Protocol.h>
 #import <Foundation/_NSAttributedStringGrammarInflecting-Protocol.h>
 
-@class NSString;
+@class NSData, NSMorphologyCustomPronoun, NSString;
 
-@interface _NSAttributedStringGrammarInflection : NSObject <_NSAttributedStringGrammarInflecting, NSCopying, NSMutableCopying>
+@interface _NSAttributedStringGrammarInflection : NSObject <_NSAttributedStringGrammarInflecting, NSCopying, NSMutableCopying, NSSecureCoding>
 {
     long long _number;
+    NSMorphologyCustomPronoun *_englishCustomPronoun;
     long long _context;
     long long _gender;
     long long _grammaticalCase;
     long long _person;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)_inflectionToMatchWordWithToken:(id)arg1 wordGrammar:(id)arg2;
++ (_Bool)_isSimulatingThirdPartyProcess;
++ (_Bool)_isSimulatingLockedDevice;
++ (id)_thirdPartyPreferencesDomain;
++ (id)_protectedPreferencesDomain;
++ (void)_usePreferencesDomainForFirstParty:(id)arg1 thirdParty:(id)arg2 simulateLockedDevice:(_Bool)arg3 simulateThirdPartyProcess:(_Bool)arg4 withinBlock:(CDUnknownBlockType)arg5;
++ (void)_setThirdPartyApplicationsCanAccessUserInflection:(_Bool)arg1;
++ (_Bool)_thirdPartyApplicationsCanAccessUserInflection;
++ (void)_removeGlobalUserInflectionObserver:(id)arg1 context:(void *)arg2;
++ (void)_addGlobalUserInflectionObserver:(id)arg1 options:(unsigned long long)arg2 context:(void *)arg3;
++ (id)_currentGlobalUserInflection;
++ (id)userInflection;
++ (_Bool)canSelectUserInflection;
++ (_Bool)_canSelectUserInflectionWithPreferredLanguages:(id)arg1;
++ (_Bool)canSelectCustomInflection;
++ (id)presetInflections;
+@property(copy, nonatomic) NSMorphologyCustomPronoun *englishCustomPronoun; // @synthesize englishCustomPronoun=_englishCustomPronoun;
 @property long long person; // @synthesize person=_person;
 @property long long number; // @synthesize number=_number;
 @property long long grammaticalCase; // @synthesize grammaticalCase=_grammaticalCase;
 @property long long gender; // @synthesize gender=_gender;
 @property long long context; // @synthesize context=_context;
+@property(readonly, copy) NSString *description;
+- (id)initWithInflectionRule:(id)arg1;
+@property(readonly, nonatomic, getter=isIdentity) _Bool identity;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)init;
 - (void)_editByAddingWordAttributes:(CDStruct_be0ff5be)arg1 overrideIfAlreadySet:(_Bool)arg2;
-- (void)_editByApplyingPluralityRulesForNumber:(id)arg1 inLanguage:(id)arg2;
-- (id)_initWithMarkupDictionary:(id)arg1;
+- (void)_editByApplyingPluralityRulesForNumbers:(id)arg1 inLanguages:(id)arg2;
+- (id)_markupDictionary;
+- (id)_initWithMarkdownDictionary:(id)arg1;
+@property(readonly) NSData *externalRepresentation;
+- (id)initWithExternalRepresentation:(id)arg1 error:(id *)arg2;
+- (void)_useInsteadOfUserInflectionInBlock:(CDUnknownBlockType)arg1;
+- (void)_setAsGlobalUserInflection;
+@property(readonly) NSString *localizedShortDescription;
+- (id)_initWithGender:(long long)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) Class superclass;
 
 @end

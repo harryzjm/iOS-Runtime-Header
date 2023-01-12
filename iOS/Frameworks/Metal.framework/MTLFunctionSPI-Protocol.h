@@ -6,10 +6,15 @@
 
 #import <Metal/MTLFunction-Protocol.h>
 
-@class MTLFunctionReflection, MTLType, NSArray, NSData, NSString;
-@protocol MTLArgumentEncoder, MTLFunction, MTLPipelineLibrary;
+@class MTLDebugInstrumentationData, MTLFunctionReflection, MTLType, NSArray, NSData, NSString;
+@protocol MTLArgumentEncoder, MTLFunction, MTLFunctionHandle, MTLPipelineLibrary;
 
 @protocol MTLFunctionSPI <MTLFunction>
+@property(copy, nonatomic) NSArray *relocations;
+@property(readonly, nonatomic) id <MTLFunctionHandle> functionHandle;
+@property(readonly, nonatomic) MTLDebugInstrumentationData *debugInstrumentationData;
+@property(readonly) NSArray *importedLibraries;
+@property(readonly) NSArray *importedSymbols;
 @property(readonly) NSArray *arguments;
 @property(readonly) MTLType *returnType;
 @property(readonly) unsigned long long renderTargetArrayIndexType;

@@ -6,10 +6,10 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class PKPaymentPass;
+@class PKPaymentPass, UIViewController;
 
 @protocol PKPaymentPassTableCellDelegate <NSObject>
-- (void)verifyButtonPressedForPaymentPass:(PKPaymentPass *)arg1;
+- (void)requestPresentationOfViewController:(UIViewController *)arg1 animated:(_Bool)arg2;
 - (void)addButtonPressedForPaymentPass:(PKPaymentPass *)arg1;
 @end
 

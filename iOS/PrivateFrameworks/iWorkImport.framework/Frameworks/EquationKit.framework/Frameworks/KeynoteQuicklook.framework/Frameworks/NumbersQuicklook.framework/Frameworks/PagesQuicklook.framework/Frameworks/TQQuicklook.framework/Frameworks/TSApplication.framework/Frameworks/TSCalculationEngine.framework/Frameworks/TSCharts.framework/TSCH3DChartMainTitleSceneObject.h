@@ -10,6 +10,7 @@
 
 + (id)paragraphStyleForTitleFontForInfo:(id)arg1;
 + (unsigned long long)styleIndexForInfo:(id)arg1;
++ (_Bool)supportsStyleProvidingSource;
 - (_Bool)isAnnotated;
 - (struct LabelTransform)labelTransformForPositioner:(id)arg1;
 - (id)textForInfo:(id)arg1;

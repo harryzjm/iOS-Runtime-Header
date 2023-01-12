@@ -22,11 +22,13 @@
 - (void)presentErrorAlert;
 - (void)termsAccepted:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)termsShown;
+- (void)reportAnalyticsForTermsLink:(id)arg1;
 - (void)pdfTermsDataWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)htmlTermsDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)initalTermsDataWithCompletion:(CDUnknownBlockType)arg1;
 - (id)displayTitle;
 - (void)viewWillDisappear:(_Bool)arg1;
+- (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)dealloc;
 - (id)initWithController:(id)arg1 setupDelegate:(id)arg2 context:(long long)arg3 termsIdentifier:(id)arg4;

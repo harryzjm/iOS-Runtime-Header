@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType placeholdersCreationBlock; // @synthesize placeholdersCreationBlock=_placeholdersCreationBlock;
+- (id)createPlaceholderWithName:(id)arg1 contentType:(id)arg2 contentAccessDate:(id)arg3 underParent:(id)arg4 inProviderDomainID:(id)arg5;
 - (id)createPlaceholderWithName:(id)arg1 typeIdentifier:(id)arg2 contentAccessDate:(id)arg3 underParent:(id)arg4 inProviderDomainID:(id)arg5;
 - (id)createPlaceholderWithName:(id)arg1 isFolder:(_Bool)arg2 contentAccessDate:(id)arg3 underParent:(id)arg4 inProviderDomainID:(id)arg5;
 - (id)createArchivePlaceholderForItem:(id)arg1 underParent:(id)arg2 inProviderDomainID:(id)arg3;
@@ -43,6 +44,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSArray *deletedIDs;
 @property(readonly, nonatomic) NSDictionary *stitchedItemsByParentID;
 @property(readonly, nonatomic) NSDictionary *stitchedFieldsAndItemsByItemIDs;
+- (_Bool)cleanStitchedItemForItemID:(id)arg1;
 @property(readonly, nonatomic) NSArray *placeholderReplacementsIDs;
 @property(readonly, nonatomic) NSArray *placeholderItems;
 - (void)dealloc;

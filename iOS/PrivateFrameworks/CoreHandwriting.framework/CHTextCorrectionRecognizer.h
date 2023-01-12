@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class CHCornerDetector, CHRecognizer, NSLocale;
+@class CHCornerDetector, CHRecognizer, NSArray;
 @protocol CHRecognizing;
 
 @interface CHTextCorrectionRecognizer : NSObject
 {
     _Bool _isRemoteRecognition;
-    NSLocale *_locale;
+    NSArray *_locales;
     id <CHRecognizing> __textRecognizer;
     CHRecognizer *__shapeRecognizer;
     CHCornerDetector *__cornerDetector;
@@ -26,7 +26,7 @@
 @property(readonly, nonatomic) CHRecognizer *_shapeRecognizer; // @synthesize _shapeRecognizer=__shapeRecognizer;
 @property(readonly, nonatomic) id <CHRecognizing> _textRecognizer; // @synthesize _textRecognizer=__textRecognizer;
 @property(readonly, nonatomic) _Bool isRemoteRecognition; // @synthesize isRemoteRecognition=_isRemoteRecognition;
-@property(readonly, retain, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
+@property(readonly, copy, nonatomic) NSArray *locales; // @synthesize locales=_locales;
 - (id)_textAfterStringForTargetContentInfo:(id)arg1 insertionRange:(struct _NSRange)arg2;
 - (id)_textBeforeStringForTargetContentInfo:(id)arg1 insertionRange:(struct _NSRange)arg2;
 - (long long)_precedingSpaceBehaviorFromTargetContentInfo:(id)arg1 drawingBounds:(struct CGRect)arg2 localTypedContextBounds:(struct CGRect)arg3 insertionRange:(struct _NSRange)arg4 lastCharacterBefore:(id)arg5;
@@ -38,7 +38,7 @@
 - (id)_editingGestureResultForDrawing:(id)arg1 originalDrawing:(id)arg2 lastStroke:(id)arg3 targetContentInfo:(id)arg4 previousResult:(id)arg5;
 - (id)textCorrectionResultForDrawing:(id)arg1 targetContentInfo:(id)arg2 originalDrawing:(id)arg3 lastStroke:(id)arg4 localTypedContextBounds:(struct CGRect)arg5 normalizedDrawingScaleFactor:(double)arg6 previousCorrectionResult:(id)arg7;
 - (void)dealloc;
-- (id)initWithLocale:(id)arg1 remoteRecognition:(_Bool)arg2 priority:(long long)arg3;
+- (id)initWithLocales:(id)arg1 remoteRecognition:(_Bool)arg2 priority:(long long)arg3;
 
 @end
 

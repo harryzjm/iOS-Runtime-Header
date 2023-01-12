@@ -21,6 +21,7 @@
     GEOPBTransitArtwork *_alternateArtwork;
     GEOPBTransitArtwork *_artwork;
     GEOPBTransitLineDisplayHints *_displayHints;
+    GEOPBTransitArtwork *_headerArtwork;
     NSString *_lineColor;
     GEOPBTransitArtwork *_modeArtwork;
     unsigned long long _muid;
@@ -48,6 +49,7 @@
         unsigned int read_alternateArtwork:1;
         unsigned int read_artwork:1;
         unsigned int read_displayHints:1;
+        unsigned int read_headerArtwork:1;
         unsigned int read_lineColor:1;
         unsigned int read_modeArtwork:1;
         unsigned int read_nameDisplayString:1;
@@ -105,6 +107,8 @@
 @property(nonatomic) int guidanceSnappingType;
 @property(nonatomic) _Bool hasMuid;
 @property(nonatomic) unsigned long long muid;
+@property(retain, nonatomic) GEOPBTransitArtwork *headerArtwork;
+@property(readonly, nonatomic) _Bool hasHeaderArtwork;
 @property(retain, nonatomic) GEOPBTransitArtwork *alternateArtwork;
 @property(readonly, nonatomic) _Bool hasAlternateArtwork;
 @property(retain, nonatomic) GEOPBTransitArtwork *modeArtwork;

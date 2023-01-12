@@ -9,7 +9,7 @@
 #import <Translation/FTSpeechTranslationResponseDelegate-Protocol.h>
 #import <Translation/_LTSpeechCompressorDelegate-Protocol.h>
 
-@class FTSpeechTranslationStreamingContext, NSMutableArray, NSMutableDictionary, NSString, _LTLanguageDetectionResult, _LTSpeechCompressor, _LTTextToSpeechCache, _LTTranslationContext;
+@class FTSpeechTranslationStreamingContext, NSError, NSMutableArray, NSMutableDictionary, NSString, _LTLanguageDetectionResult, _LTSpeechCompressor, _LTTextToSpeechCache, _LTTranslationContext;
 @protocol OS_dispatch_queue, OS_dispatch_source, _LTSpeechTranslationDelegate;
 
 __attribute__((visibility("hidden")))
@@ -17,7 +17,17 @@ __attribute__((visibility("hidden")))
 {
     FTSpeechTranslationStreamingContext *_streamContext;
     _LTTranslationContext *_context;
-    _Bool _didEndpointSpeech;
+    _Bool _sentAudio;
+    _Bool _sentEndAudio;
+    _Bool _endpointedSpeech;
+    _Bool _didReceiveAudioLimitExceededResponse;
+    _Bool _didReceivePartialRecognitionResponse;
+    _Bool _didReceiveFinalRecognitionResponse;
+    _Bool _didReceiveTranslationResponse;
+    _Bool _didReceiveTTSResponse;
+    _Bool _didReceiveFinalBlazarResponse;
+    _Bool _didTimeout;
+    NSError *_error;
     _LTLanguageDetectionResult *_lidResult;
     NSMutableDictionary *_finalASRResults;
     NSMutableArray *_mtResults;
@@ -67,10 +77,11 @@ __attribute__((visibility("hidden")))
 - (void)initCommon;
 - (id)initWithService:(id)arg1 context:(id)arg2 text:(id)arg3 delegate:(id)arg4;
 - (id)initWithService:(id)arg1 context:(id)arg2 delegate:(id)arg3;
+@property(readonly, copy) NSString *description;
+- (void)sendAnalyticsEvent;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

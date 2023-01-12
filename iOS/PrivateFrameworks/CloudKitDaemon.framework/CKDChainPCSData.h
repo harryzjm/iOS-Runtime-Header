@@ -8,7 +8,6 @@
 
 @class CKEncryptedData;
 
-__attribute__((visibility("hidden")))
 @interface CKDChainPCSData <NSSecureCoding>
 {
     CKEncryptedData *_encryptedChainPCSPrivateKey;

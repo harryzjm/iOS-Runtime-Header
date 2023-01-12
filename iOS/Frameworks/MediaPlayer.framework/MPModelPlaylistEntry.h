@@ -24,6 +24,7 @@
 + (id)requiredLibraryRemovalProperties;
 + (_Bool)supportsKeepLocalStatusObservation;
 + (id)requiredKeepLocalStatusObservationProperties;
++ (long long)genericObjectType;
 + (id)requiredStoreLibraryPersonalizationProperties;
 - (long long)type;
 - (id)anyObject;

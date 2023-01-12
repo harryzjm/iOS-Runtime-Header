@@ -11,6 +11,7 @@
 @interface SGQuickResponse : NSObject
 {
     _Bool _isCustomResponse;
+    _Bool _isConfident;
     NSString *_text;
     NSString *_lang;
     unsigned long long _replyTextId;
@@ -22,6 +23,7 @@
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool isConfident; // @synthesize isConfident=_isConfident;
 @property(readonly, nonatomic) NSDictionary *proactiveTrigger; // @synthesize proactiveTrigger=_proactiveTrigger;
 @property(readonly, nonatomic) _Bool isCustomResponse; // @synthesize isCustomResponse=_isCustomResponse;
 @property(readonly, nonatomic) unsigned long long categoryId; // @synthesize categoryId=_categoryId;
@@ -31,10 +33,11 @@
 @property(readonly, nonatomic) unsigned long long replyTextId; // @synthesize replyTextId=_replyTextId;
 @property(readonly, copy, nonatomic) NSString *lang; // @synthesize lang=_lang;
 @property(readonly, copy, nonatomic) NSString *text; // @synthesize text=_text;
+- (void)setIsConfident:(_Bool)arg1;
 - (id)description;
-- (id)initWithText:(id)arg1 lang:(id)arg2 replyTextId:(unsigned long long)arg3 styleGroupId:(unsigned long long)arg4 semanticClassId:(unsigned long long)arg5 modelId:(unsigned long long)arg6 categoryId:(unsigned long long)arg7 isCustomResponse:(_Bool)arg8 proactiveTrigger:(id)arg9;
-- (id)initWithProactiveTrigger:(id)arg1;
-- (id)initWithText:(id)arg1 lang:(id)arg2 replyTextId:(unsigned long long)arg3 styleGroupId:(unsigned long long)arg4 semanticClassId:(unsigned long long)arg5 modelId:(unsigned long long)arg6 categoryId:(unsigned long long)arg7 isCustomResponse:(_Bool)arg8;
+- (id)initWithText:(id)arg1 lang:(id)arg2 replyTextId:(unsigned long long)arg3 styleGroupId:(unsigned long long)arg4 semanticClassId:(unsigned long long)arg5 modelId:(unsigned long long)arg6 categoryId:(unsigned long long)arg7 isCustomResponse:(_Bool)arg8 isConfident:(_Bool)arg9 proactiveTrigger:(id)arg10;
+- (id)initWithProactiveTrigger:(id)arg1 isConfident:(_Bool)arg2;
+- (id)initWithText:(id)arg1 lang:(id)arg2 replyTextId:(unsigned long long)arg3 styleGroupId:(unsigned long long)arg4 semanticClassId:(unsigned long long)arg5 modelId:(unsigned long long)arg6 categoryId:(unsigned long long)arg7 isCustomResponse:(_Bool)arg8 isConfident:(_Bool)arg9;
 
 @end
 

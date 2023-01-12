@@ -15,17 +15,20 @@
     NSMutableArray *_danglingPlanItems;
     NSString *_iccid;
     UIBarButtonItem *_cancelButton;
+    _Bool _inBuddy;
     NSMutableArray *_currentItemsForIMessage;
 }
 
 + (void)needsToRun:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
+@property _Bool inBuddy; // @synthesize inBuddy=_inBuddy;
 @property(retain) NSMutableArray *currentItemsForIMessage; // @synthesize currentItemsForIMessage=_currentItemsForIMessage;
 - (void)setDefaultNavigationItems:(id)arg1;
 - (void)viewControllerDidComplete:(id)arg1;
 - (id)nextViewControllerFrom:(id)arg1;
 - (id)firstViewController;
 - (id)initWithIccid:(id)arg1 showAddPlan:(_Bool)arg2 allowDismiss:(_Bool)arg3;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

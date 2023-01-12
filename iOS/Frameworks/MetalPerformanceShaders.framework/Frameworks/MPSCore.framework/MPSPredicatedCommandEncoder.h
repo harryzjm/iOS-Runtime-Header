@@ -15,14 +15,14 @@
 {
     MPSCommandBuffer *_owningMPSCommandBuffer;
     id <MTLComputeCommandEncoder> _originalCommandEncoder;
-    struct MPSDevice *_mpsDevice;
+    void *_mpsDevice;
     id <MTLComputePipelineState> _userBoundPipelineState;
     struct UserBufferBindingData_s _userBinding1;
     struct UserBufferBindingData_s _userBinding2;
     struct UserBufferBindingData_s _userBinding3;
 }
 
-+ (id)predicatedEncoderWithMPSCommandBuffer:(id)arg1 commandEncoder:(id)arg2 mpsDevice:(struct MPSDevice *)arg3;
++ (id)predicatedEncoderWithMPSCommandBuffer:(id)arg1 commandEncoder:(id)arg2 mpsDevice:(void *)arg3;
 @property(readonly, nonatomic) id <MTLComputeCommandEncoder> computeCommandEncoder; // @synthesize computeCommandEncoder=_originalCommandEncoder;
 - (_Bool)respondsToSelector:(SEL)arg1;
 - (id)forwardingTargetForSelector:(SEL)arg1;
@@ -34,7 +34,7 @@
 - (void)dispatchThreadgroups:(CDStruct_14f26992)arg1 threadsPerThreadgroup:(CDStruct_14f26992)arg2;
 - (void)dispatchThreads:(CDStruct_14f26992)arg1 threadsPerThreadgroup:(CDStruct_14f26992)arg2;
 - (void)dealloc;
-- (id)initWithMPSCommandBuffer:(id)arg1 commandEncoder:(id)arg2 mpsDevice:(struct MPSDevice *)arg3;
+- (id)initWithMPSCommandBuffer:(id)arg1 commandEncoder:(id)arg2 mpsDevice:(void *)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

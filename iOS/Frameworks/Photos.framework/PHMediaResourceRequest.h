@@ -12,6 +12,8 @@
 @interface PHMediaResourceRequest <PHAssetResourceRequestDelegate>
 {
     _Bool _networkAccessAllowed;
+    long long _downloadIntent;
+    long long _downloadPriority;
     _Bool _synchronous;
     PHAssetResourceRequest *_internalRequest;
     NSMutableData *_compositeData;
@@ -28,9 +30,9 @@
 @property(copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
 @property(nonatomic) __weak id <PHMediaRequestDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)assetResourceRequest:(id)arg1 didFinishWithError:(id)arg2;
-- (void)assetResourceRequest:(id)arg1 didFindFileURL:(id)arg2;
 - (void)_finishWithError:(id)arg1;
 - (void)_receiveAssetResourceDataPart:(id)arg1;
+- (void)_handleDidFindFileURL:(id)arg1;
 - (void)_reportProgress:(double)arg1;
 - (void)handleAvailabilityChangeForResource:(id)arg1 url:(id)arg2 info:(id)arg3 error:(id)arg4;
 @property(readonly, copy) NSString *description;
@@ -38,7 +40,7 @@
 - (void)startRequest;
 - (_Bool)isSynchronous;
 @property(readonly, nonatomic) long long resourceType;
-- (id)initWithRequestID:(int)arg1 requestIndex:(unsigned long long)arg2 contextType:(long long)arg3 managerID:(unsigned long long)arg4 asset:(id)arg5 assetResource:(id)arg6 networkAccessAllowed:(_Bool)arg7 wantsURLOnly:(_Bool)arg8 synchronous:(_Bool)arg9 delegate:(id)arg10;
+- (id)initWithRequestID:(int)arg1 requestIndex:(unsigned long long)arg2 contextType:(long long)arg3 managerID:(unsigned long long)arg4 asset:(id)arg5 assetResource:(id)arg6 networkAccessAllowed:(_Bool)arg7 downloadIntent:(long long)arg8 downloadPriority:(long long)arg9 wantsURLOnly:(_Bool)arg10 synchronous:(_Bool)arg11 delegate:(id)arg12;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

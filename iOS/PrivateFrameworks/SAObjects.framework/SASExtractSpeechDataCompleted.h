@@ -6,7 +6,7 @@
 
 #import <SAObjects/SAAceSerializable-Protocol.h>
 
-@class NSString;
+@class NSData, NSString;
 
 @interface SASExtractSpeechDataCompleted <SAAceSerializable>
 {
@@ -16,6 +16,7 @@
 + (id)extractSpeechDataCompleted;
 - (_Bool)requiresResponse;
 @property(copy, nonatomic) NSString *speechDataUrl;
+@property(copy, nonatomic) NSData *speechData;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

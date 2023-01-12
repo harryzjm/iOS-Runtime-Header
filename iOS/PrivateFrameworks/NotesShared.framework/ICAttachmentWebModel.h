@@ -14,6 +14,7 @@
 @property(copy) CDUnknownBlockType pendingFetchCompletionHandler; // @synthesize pendingFetchCompletionHandler=_pendingFetchCompletionHandler;
 - (_Bool)canConvertToHTMLForSharing;
 - (id)attributesForSharingHTMLWithTagName:(id *)arg1 textContent:(id *)arg2;
+- (id)searchableTextContent;
 - (_Bool)showThumbnailInNoteList;
 - (_Bool)hasPreviews;
 

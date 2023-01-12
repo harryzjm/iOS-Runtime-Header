@@ -12,6 +12,8 @@
 
 + (_Bool)dumpComposition:(id)arg1 withName:(id)arg2;
 + (_Bool)dumpComposition:(id)arg1 toURL:(id)arg2 error:(out id *)arg3;
++ (_Bool)canRetainDolbyMetadata:(id)arg1;
++ (_Bool)isHDRComposition:(id)arg1;
 
 @end
 

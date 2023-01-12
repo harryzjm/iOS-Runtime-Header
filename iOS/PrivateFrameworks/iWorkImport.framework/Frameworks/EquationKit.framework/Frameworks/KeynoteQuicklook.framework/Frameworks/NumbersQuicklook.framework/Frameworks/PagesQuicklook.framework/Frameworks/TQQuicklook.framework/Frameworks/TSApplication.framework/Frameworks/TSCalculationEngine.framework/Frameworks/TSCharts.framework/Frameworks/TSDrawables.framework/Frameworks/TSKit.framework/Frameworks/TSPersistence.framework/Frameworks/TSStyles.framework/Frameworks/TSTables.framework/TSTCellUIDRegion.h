@@ -8,23 +8,23 @@
 
 @interface TSTCellUIDRegion : TSKSosBase
 {
-    vector_793e6c56 _cellUIDRangeList;
+    vector_87ea8040 _cellUIDRangeList;
 }
 
 + (id)cellUIDRegionFromRegion:(id)arg1 inTableModel:(id)arg2;
 + (id)cellUIDRegionFromRegion:(id)arg1 inTable:(id)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)saveToMessage:(struct CellUIDRegionArchive *)arg1;
-- (id)initFromMessage:(const struct CellUIDRegionArchive *)arg1;
-- (vector_793e6c56)subRangesOfCellCount:(unsigned long long)arg1;
+- (void)saveToMessage:(void *)arg1;
+- (id)initFromMessage:(const void *)arg1;
+- (vector_87ea8040)subRangesOfCellCount:(unsigned long long)arg1;
 - (void)enumerateCellUIDUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateCellUIDRangesUsingBlock:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) _Bool isEmpty;
 @property(readonly, nonatomic) unsigned long long cellCount;
 - (id)pruneAgainstTable:(id)arg1;
 - (id)cellRegionFromTable:(id)arg1;
-- (id)initWithCellUIDRangeVector:(const vector_793e6c56 *)arg1;
+- (id)initWithCellUIDRangeVector:(const void *)arg1;
 
 @end
 

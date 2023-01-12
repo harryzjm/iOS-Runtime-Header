@@ -8,16 +8,18 @@
 
 #import <HomeKitDaemon/HMDAccessorySettingsBackingStoreTransactionReceiverDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDAccessorySettingsMessageController-Protocol.h>
+#import <HomeKitDaemon/HMDLanguageValueListSettingDataProvider-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDAccessorySettingGroup, HMFTimer, NSArray, NSMapTable, NSMutableArray, NSMutableSet, NSObject, NSString, NSUUID;
-@protocol HMDAccessorySettingsControllerDataSource, HMDAccessorySettingsControllerDelegate, HMDAccessorySettingsControllerDependencyFactory, HMDAccessorySettingsMessageHandler, HMDBackingStoreObjectProtocol, OS_dispatch_queue;
+@class HMDAccessorySettingGroup, HMFTimer, NSArray, NSMapTable, NSMutableArray, NSMutableSet, NSObject, NSOperationQueue, NSString, NSUUID;
+@protocol HMDAccessorySettingsControllerDataSource, HMDAccessorySettingsControllerDelegate, HMDAccessorySettingsControllerDependencyFactory, HMDAccessorySettingsMessageHandler, HMDBackingStoreObjectProtocol, HMMLogEventSubmitting, OS_dispatch_queue, OS_os_log;
 
-@interface HMDAccessorySettingsController : HMFObject <HMFLogging, HMFTimerDelegate, HMDAccessorySettingsBackingStoreTransactionReceiverDelegate, HMDAccessorySettingsMessageController, NSSecureCoding>
+@interface HMDAccessorySettingsController : HMFObject <HMDLanguageValueListSettingDataProvider, HMFLogging, HMFTimerDelegate, HMDAccessorySettingsBackingStoreTransactionReceiverDelegate, HMDAccessorySettingsMessageController, NSSecureCoding>
 {
     struct os_unfair_lock_s _lock;
+    NSObject<OS_os_log> *_logger;
     _Bool _isSettingOwner;
     _Bool _isMigrationOwner;
     _Bool _didInitiateSettingsCreationForOlderSoftwareCounterpart;
@@ -37,13 +39,19 @@
     HMFTimer *_fixupSettingsTimer;
     HMFTimer *_auditSettingsTimer;
     NSMutableSet *_constraintItemsMarkedForRemoval;
+    NSOperationQueue *_constraintModifyOperationQueue;
+    HMFTimer *_languageChangeDebounceTimer;
     id <HMDAccessorySettingsMessageHandler> _messageHandler;
+    id <HMMLogEventSubmitting> _logEventSubmitter;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)logCategory;
 - (void).cxx_destruct;
+@property(readonly) id <HMMLogEventSubmitting> logEventSubmitter; // @synthesize logEventSubmitter=_logEventSubmitter;
 @property(readonly) id <HMDAccessorySettingsMessageHandler> messageHandler; // @synthesize messageHandler=_messageHandler;
+@property(retain, nonatomic) HMFTimer *languageChangeDebounceTimer; // @synthesize languageChangeDebounceTimer=_languageChangeDebounceTimer;
+@property(retain, nonatomic) NSOperationQueue *constraintModifyOperationQueue; // @synthesize constraintModifyOperationQueue=_constraintModifyOperationQueue;
 @property(nonatomic) _Bool didInitiateSettingsCreationForOlderSoftwareCounterpart; // @synthesize didInitiateSettingsCreationForOlderSoftwareCounterpart=_didInitiateSettingsCreationForOlderSoftwareCounterpart;
 @property(retain, nonatomic) NSMutableSet *constraintItemsMarkedForRemoval; // @synthesize constraintItemsMarkedForRemoval=_constraintItemsMarkedForRemoval;
 @property(retain) HMFTimer *auditSettingsTimer; // @synthesize auditSettingsTimer=_auditSettingsTimer;
@@ -80,6 +88,7 @@
 - (void)_didAddSetting:(id)arg1;
 - (void)_didRemoveGroup:(id)arg1;
 - (void)_didAddGroup:(id)arg1;
+- (void)handleLanguageChangeTimerFired;
 - (void)handleRemovedSettingConstraintModel:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handleUpdatedSettingConstraintModel:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handleRemovedSettingModel:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -115,8 +124,7 @@
 - (void)_scheduleAuditWithReason:(unsigned long long)arg1;
 - (void)settingsHierarchyDidChange;
 - (id)_keyPathsForSettings;
-- (void)setRootGroup:(id)arg1;
-@property(readonly) HMDAccessorySettingGroup *rootGroup; // @synthesize rootGroup=_rootGroup;
+@property(retain) HMDAccessorySettingGroup *rootGroup; // @synthesize rootGroup=_rootGroup;
 @property(retain) NSMapTable *settingsMap; // @synthesize settingsMap=_settingsMap;
 @property(retain) NSMapTable *groupsMap; // @synthesize groupsMap=_groupsMap;
 - (_Bool)hasDependants;
@@ -124,8 +132,9 @@
 @property _Bool isSettingOwner; // @synthesize isSettingOwner=_isSettingOwner;
 @property(readonly, copy) NSString *description;
 - (id)logIdentifier;
-- (id)initWithQueue:(id)arg1 delegate:(id)arg2 dataSource:(id)arg3 parentUUID:(id)arg4 codingKey:(id)arg5;
-- (id)initWithQueue:(id)arg1 delegate:(id)arg2 dataSource:(id)arg3 parentUUID:(id)arg4 codingKey:(id)arg5 settingOwner:(_Bool)arg6 migrationOwner:(_Bool)arg7 factory:(id)arg8;
+- (id)initWithQueue:(id)arg1 delegate:(id)arg2 dataSource:(id)arg3 parentUUID:(id)arg4 codingKey:(id)arg5 logEventSubmitter:(id)arg6;
+- (id)initWithQueue:(id)arg1 delegate:(id)arg2 dataSource:(id)arg3 parentUUID:(id)arg4 codingKey:(id)arg5 logEventSubmitter:(id)arg6 settingOwner:(_Bool)arg7 migrationOwner:(_Bool)arg8 factory:(id)arg9;
+- (id)languageValueList;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -16,9 +16,7 @@
 }
 
 - (void).cxx_destruct;
-@property __weak NSCache *enumerationCache; // @synthesize enumerationCache=_enumerationCache;
-@property(readonly) unsigned long long count; // @synthesize count=_count;
-@property(readonly) const unsigned int *storage; // @synthesize storage=_storage;
+@property(nonatomic) __weak NSCache *enumerationCache; // @synthesize enumerationCache=_enumerationCache;
 - (id)init;
 - (id)initWithStorage:(const unsigned int *)arg1 count:(unsigned long long)arg2;
 

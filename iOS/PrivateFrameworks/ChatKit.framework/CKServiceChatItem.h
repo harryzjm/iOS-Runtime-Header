@@ -8,7 +8,9 @@
 {
 }
 
+- (id)_serviceName;
 - (id)loadTranscriptText;
+- (unsigned long long)layoutType;
 
 @end
 

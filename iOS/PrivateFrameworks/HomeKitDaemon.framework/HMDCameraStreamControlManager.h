@@ -32,21 +32,20 @@
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(retain, nonatomic) NSNumber *slotIdentifier; // @synthesize slotIdentifier=_slotIdentifier;
 @property(readonly, nonatomic) HMDService *streamManagementService; // @synthesize streamManagementService=_streamManagementService;
-@property(readonly, nonatomic) __weak HMDAccessory *accessory; // @synthesize accessory=_accessory;
+@property __weak HMDAccessory *accessory; // @synthesize accessory=_accessory;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
-@property(readonly, nonatomic) __weak id <HMDCameraStreamControlManagerDelegate> delegate; // @synthesize delegate=_delegate;
+@property __weak id <HMDCameraStreamControlManagerDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)logIdentifier;
-- (void)_callStreamStopped:(id)arg1;
+- (void)_callStreamStoppedWithError:(id)arg1;
 - (void)_callStreamReconfigured;
 - (void)_callStreamFirstFrameReceived:(unsigned long long)arg1 aspectRatio:(id)arg2 slotIdentifier:(id)arg3;
 - (void)_callStreamStarted;
 - (void)_callStreamRemoteConnectionSetup;
 - (void)_callStreamNegotiated:(id)arg1;
-- (void)_reportError:(id)arg1;
 - (id)managerProtocol;
 - (void)_reportInternalErrorCode:(long long)arg1;
 - (void)_reportErrorCode:(long long)arg1;
-- (void)_cleanUpStreamSession:(id)arg1;
+- (void)_cleanUpStreamSessionWithError:(id)arg1;
 - (id)initWithSessionID:(id)arg1 workQueue:(id)arg2 streamSnapshotHandler:(id)arg3 delegate:(id)arg4 delegateQueue:(id)arg5 accessory:(id)arg6 streamManagementService:(id)arg7 isLocal:(_Bool)arg8;
 
 // Remaining properties

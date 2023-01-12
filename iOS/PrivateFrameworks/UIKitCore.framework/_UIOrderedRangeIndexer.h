@@ -6,8 +6,6 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
-
 __attribute__((visibility("hidden")))
 @interface _UIOrderedRangeIndexer : NSObject
 {
@@ -16,13 +14,6 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) struct _NSRange containingRange;
-@property(readonly, nonatomic) long long numberOfRanges;
-- (struct _NSRange)rangeAtIndex:(long long)arg1;
-- (long long)indexOfRangeContainingLocation:(long long)arg1;
-- (struct _NSRange)rangeContainingLocation:(long long)arg1;
-- (void)appendRange:(struct _NSRange)arg1;
-@property(readonly, nonatomic) NSArray *orderedRanges;
 - (id)description;
 - (id)init;
 

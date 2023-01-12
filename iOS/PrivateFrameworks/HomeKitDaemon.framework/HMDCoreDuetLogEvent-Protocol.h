@@ -6,9 +6,11 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSDate;
 
 @protocol HMDCoreDuetLogEvent <NSObject>
+@property(readonly, copy) NSDate *endDate;
+@property(readonly, copy) NSDate *startDate;
 @property(readonly, copy) NSArray *eventDataToLog;
 @property(readonly) unsigned long long duetEventType;
 @end

@@ -21,6 +21,7 @@
 @property(readonly, nonatomic) __weak NSString *commenterLastName;
 @property(readonly, nonatomic) __weak NSString *commenterFirstName;
 @property(readonly, nonatomic) __weak NSString *commenterEmail;
+- (void)performDelete;
 - (_Bool)canBeDeletedByUser;
 - (id)commenterDisplayName;
 - (_Bool)isInterestingForAlbumsSorting;

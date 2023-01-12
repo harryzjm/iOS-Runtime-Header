@@ -7,16 +7,22 @@
 #import <UIKit/UIAction.h>
 
 @interface UIAction (IC)
++ (id)ic_centerWindowActionWithObjectIDURL:(id)arg1;
 + (id)ic_exportArchiveActionWithHandler:(CDUnknownBlockType)arg1;
 + (id)ic_importArchiveActionWithHandler:(CDUnknownBlockType)arg1;
++ (id)ic_editSmartFolderActionWithHandler:(CDUnknownBlockType)arg1;
 + (id)ic_renameActionWithHandler:(CDUnknownBlockType)arg1;
 + (id)ic_deleteActionWithHandler:(CDUnknownBlockType)arg1;
 + (id)ic_moveActionWithHandler:(CDUnknownBlockType)arg1;
 + (id)ic_sendActionWithHandler:(CDUnknownBlockType)arg1;
++ (id)ic_showActivityStreamActionWithCloudSyncingObject:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 + (id)ic_collaborateActionWithCloudSyncingObject:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 + (id)ic_lockNoteActionLocked:(_Bool)arg1 withHandler:(CDUnknownBlockType)arg2;
 + (id)ic_pinNoteActionPinned:(_Bool)arg1 withHandler:(CDUnknownBlockType)arg2;
++ (id)ic_actionWithTitle:(id)arg1 handler:(CDUnknownBlockType)arg2;
 + (id)ic_actionWithTitle:(id)arg1 imageName:(id)arg2 handler:(CDUnknownBlockType)arg3;
 + (id)ic_actionWithTitle:(id)arg1 imageName:(id)arg2 attributes:(unsigned long long)arg3 handler:(CDUnknownBlockType)arg4;
++ (id)ic_actionWithTitle:(id)arg1 subtitle:(id)arg2 imageName:(id)arg3 handler:(CDUnknownBlockType)arg4;
++ (id)ic_actionWithTitle:(id)arg1 subtitle:(id)arg2 imageName:(id)arg3 attributes:(unsigned long long)arg4 handler:(CDUnknownBlockType)arg5;
 @end
 

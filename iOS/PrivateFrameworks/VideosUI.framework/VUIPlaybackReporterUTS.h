@@ -12,7 +12,7 @@
     VUIPostPlayConfig *_postPlayConfig;
 }
 
-+ (void)_cachePlaybackResumeTime:(id)arg1 resumeTime:(id)arg2;
++ (void)_cachePlaybackResumeTime:(id)arg1 absoluteResumeTime:(id)arg2 featureRelativeResumeTime:(id)arg3;
 + (_Bool)_shouldCacheResumeTimeForMediaType:(id)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;

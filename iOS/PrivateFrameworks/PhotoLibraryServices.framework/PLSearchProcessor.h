@@ -14,7 +14,6 @@
 }
 
 + (id)searchProcessorLog;
-+ (id)_scoreByCategoryMask;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) PSIDatabase *searchIndex; // @synthesize searchIndex=_searchIndex;
 - (_Bool)_shouldOmitSectionForCategoryMask:(unsigned long long)arg1;
@@ -27,6 +26,7 @@
 - (id)_numberOfAssetsSortDescriptors;
 - (id)_dateSortDescriptors;
 - (id)_alphabeticalSortDescriptors;
+- (double)_scoreForSearchIndexCategory:(unsigned long long)arg1;
 - (id)completionSuggestionsForQuery:(id)arg1 withSearchSections:(id)arg2 numberOfSuggestions:(unsigned long long)arg3;
 - (id)updatedSearchSections:(id)arg1 withTopCollectionResults:(id)arg2;
 - (id)searchResultSectionsForQuery:(id)arg1 withAssetResults:(id)arg2 collectionResults:(id)arg3 combineAssetSections:(_Bool)arg4;

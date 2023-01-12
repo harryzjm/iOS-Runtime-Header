@@ -20,18 +20,20 @@
     double _IOBufferDuration;
     struct OpaqueAudioConverter *_clientToRemoteConverter;
     struct OpaqueAudioConverter *_remoteToClientConverter;
-    VCAudioRelayIO *_remoteIO;
-    VCAudioRelayIO *_clientIO;
+    struct tagVCAudioRelayIOInfo _remoteIOInfo;
+    struct tagVCAudioRelayIOInfo _clientIOInfo;
     struct _opaque_pthread_mutex_t _relayLock;
-    struct _opaque_pthread_mutex_t _clientIOLock;
-    struct _opaque_pthread_mutex_t _remoteIOLock;
     NSObject<OS_dispatch_source> *_periodicHealthPrintDispatchSource;
     unsigned int _blocksRelayedCount;
     float _clientUplinkPowerMovingAverage;
     float _clientDownlinkPowerMovingAverage;
     struct _VCRemoteCodecInfo _remoteCodecInfo;
+    VCAudioRelayIO *_remoteIO;
+    VCAudioRelayIO *_clientIO;
 }
 
+@property(copy, nonatomic) VCAudioRelayIO *clientIO; // @synthesize clientIO=_clientIO;
+@property(copy, nonatomic) VCAudioRelayIO *remoteIO; // @synthesize remoteIO=_remoteIO;
 @property(readonly) float clientUplinkPowerMovingAverage; // @synthesize clientUplinkPowerMovingAverage=_clientUplinkPowerMovingAverage;
 @property(readonly) float clientDownlinkPowerMovingAverage; // @synthesize clientDownlinkPowerMovingAverage=_clientDownlinkPowerMovingAverage;
 @property(readonly) unsigned int blocksRelayedCount; // @synthesize blocksRelayedCount=_blocksRelayedCount;
@@ -40,8 +42,6 @@
 @property(readonly) struct OpaqueAudioConverter *remoteToClientConverter; // @synthesize remoteToClientConverter=_remoteToClientConverter;
 @property(readonly) double IOBufferDuration; // @synthesize IOBufferDuration=_IOBufferDuration;
 @property(readonly) _Bool isRelayRunning; // @synthesize isRelayRunning=_isRelayRunning;
-@property(copy, nonatomic) VCAudioRelayIO *clientIO; // @synthesize clientIO=_clientIO;
-@property(copy, nonatomic) VCAudioRelayIO *remoteIO; // @synthesize remoteIO=_remoteIO;
 - (void)didUpdateBasebandCodec:(const struct _VCRemoteCodecInfo *)arg1;
 - (void)relayCallback;
 - (void)relayProcessSamples;
@@ -56,16 +56,18 @@
 - (_Bool)createAudioConvertersWithError:(id *)arg1;
 - (void)stopRelayThread;
 - (_Bool)startRelayThreadWithError:(id *)arg1;
-- (_Bool)canSetPropertyWithError:(id *)arg1;
 - (void)stopRemoteIO;
 - (void)stopClientIO;
-- (_Bool)stopRelayIO:(id)arg1;
 - (_Bool)startRemoteIO;
 - (_Bool)startClientIO;
-- (_Bool)startRelayIO:(id)arg1 name:(id)arg2 recordingsName:(id)arg3;
+- (void)stopRelayIO:(struct tagVCAudioRelayIOInfo *)arg1 otherRelayIO:(struct tagVCAudioRelayIOInfo *)arg2;
+- (void)internalStopRelayThread;
+- (_Bool)startRelayIO:(struct tagVCAudioRelayIOInfo *)arg1 otherRelayIO:(struct tagVCAudioRelayIOInfo *)arg2;
+- (_Bool)canSetPropertyWithError:(id *)arg1;
 - (_Bool)setClientIO:(id)arg1 withError:(id *)arg2;
 - (_Bool)setRemoteIO:(id)arg1 withError:(id *)arg2;
 - (void)updateRemoteCodecInfo:(const struct _VCRemoteCodecInfo *)arg1;
+- (double)ioBufferDurationWithFirstIO:(id)arg1 secondIO:(id)arg2;
 - (_Bool)setIOBufferDuration:(double)arg1 withError:(id *)arg2;
 - (void)unlock;
 - (void)lock;

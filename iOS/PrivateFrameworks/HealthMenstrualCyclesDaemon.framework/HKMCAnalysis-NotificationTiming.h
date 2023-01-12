@@ -9,7 +9,8 @@
 @class HDMCNotification;
 
 @interface HKMCAnalysis (NotificationTiming)
-- (_Bool)isEarliestNotificationScheduledOnOrAfterDate:(id)arg1;
+- (_Bool)isEarliestNotificationScheduledAfterDate:(id)arg1 gregorianCalendar:(id)arg2;
+- (id)hdmc_fertileWindowDidUpdateDueToSensorDataNotificationForNotificationFireDate:(id)arg1 lastFiredDate:(id)arg2 fertileWindowNotificationTimeOfDay:(id)arg3;
 @property(readonly, copy, nonatomic) HDMCNotification *hdmc_beforeFertileWindowStartNotification;
 @property(readonly, copy, nonatomic) HDMCNotification *hdmc_afterPeriodEndNotification;
 @property(readonly, copy, nonatomic) HDMCNotification *hdmc_afterPeriodStartNotification;

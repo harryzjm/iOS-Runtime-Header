@@ -33,7 +33,6 @@
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)description;
-- (id)_initWithContributorType:(long long)arg1 persistentID:(id)arg2 uuid:(id)arg3;
 
 @end
 

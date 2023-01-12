@@ -6,38 +6,46 @@
 
 #import <objc/NSObject.h>
 
-@class NSDateFormatter, NSMutableDictionary, NSString;
+#import <CloudKit/CKSQLiteDB-Protocol.h>
+#import <CloudKit/CKSQLiteDBConveniences-Protocol.h>
+
+@class NSError, NSString;
 @protocol CKSQLiteDelegate;
 
-@interface CKSQLite : NSObject
+@interface CKSQLite : NSObject <CKSQLiteDB, CKSQLiteDBConveniences>
 {
+    struct os_unfair_lock_s _operationLock;
+    _Atomic unsigned long long _operationThread;
+    CDUnknownBlockType _errorHandlerBlock;
+    _Bool _cancelled;
+    NSError *_error;
+    long long _errorResponse;
+    NSError *_invalidationError;
+    _Bool _needsMarkCorrupt;
+    _Bool _needsRemove;
     _Bool _hasMigrated;
     _Bool _shouldVacuum;
     _Bool _traced;
-    _Bool _corrupt;
+    _Bool _invalid;
     int _userVersion;
     NSString *_path;
     NSString *_schema;
     NSString *_schemaVersion;
     NSString *_objectClassPrefix;
     long long _synchronousMode;
+    CDUnknownBlockType _invalidationHandler;
     id <CKSQLiteDelegate> _delegate;
     struct sqlite3 *_db;
     unsigned long long _openCount;
-    NSMutableDictionary *_statementsBySQL;
-    NSDateFormatter *_dateFormatter;
-    NSMutableDictionary *_unitTestOverrides;
 }
 
 + (id)equalityClauseAndBindingsForDict:(id)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableDictionary *unitTestOverrides; // @synthesize unitTestOverrides=_unitTestOverrides;
-@property(retain, nonatomic) NSDateFormatter *dateFormatter; // @synthesize dateFormatter=_dateFormatter;
-@property(readonly, nonatomic) NSMutableDictionary *statementsBySQL; // @synthesize statementsBySQL=_statementsBySQL;
-@property(nonatomic) _Bool corrupt; // @synthesize corrupt=_corrupt;
 @property(nonatomic) unsigned long long openCount; // @synthesize openCount=_openCount;
 @property(nonatomic) struct sqlite3 *db; // @synthesize db=_db;
 @property(retain, nonatomic) id <CKSQLiteDelegate> delegate; // @synthesize delegate=_delegate;
+@property(copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
+@property _Bool invalid; // @synthesize invalid=_invalid;
 @property(nonatomic) _Bool traced; // @synthesize traced=_traced;
 @property(nonatomic) _Bool shouldVacuum; // @synthesize shouldVacuum=_shouldVacuum;
 @property(readonly, nonatomic) _Bool hasMigrated; // @synthesize hasMigrated=_hasMigrated;
@@ -53,27 +61,29 @@
 - (id)_boxedPropertyDictionary:(id)arg1 forObjCClass:(id)arg2;
 - (void)updateAllObjectsOfClass:(Class)arg1 set:(id)arg2 where:(id)arg3 bindings:(id)arg4;
 - (id)selectObjectOfClass:(Class)arg1 where:(id)arg2 bindings:(id)arg3;
-- (id)selectAllObjectsOfClass:(Class)arg1 where:(id)arg2 bindings:(id)arg3;
 - (void)selectAllObjectsOfClass:(Class)arg1 where:(id)arg2 bindings:(id)arg3 orderBy:(id)arg4 limit:(id)arg5 block:(CDUnknownBlockType)arg6;
-- (id)selectAllObjectsOfClass:(Class)arg1 where:(id)arg2 bindings:(id)arg3 limit:(id)arg4;
+- (id)selectAllObjectsOfClass:(Class)arg1 where:(id)arg2 bindings:(id)arg3;
 - (id)selectAllObjectsOfClass:(Class)arg1;
+- (id)selectAllObjectsOfClass:(Class)arg1 where:(id)arg2 bindings:(id)arg3 limit:(id)arg4;
 - (int)deleteAllObjectsOfClass:(Class)arg1 where:(id)arg2 bindings:(id)arg3;
 - (_Bool)deleteExactObject:(id)arg1;
 - (long long)insertOrReplaceObject:(id)arg1;
 - (id)_tableNameForClass:(Class)arg1;
-- (void)deleteFrom:(id)arg1 where:(id)arg2 bindings:(id)arg3;
 - (void)deleteFrom:(id)arg1 matchingValues:(id)arg2;
+- (void)deleteFrom:(id)arg1 where:(id)arg2 bindings:(id)arg3;
 - (long long)upsertInto:(id)arg1 values:(id)arg2 onConflict:(id)arg3 doUpdate:(id)arg4 where:(id)arg5;
 - (long long)insertOrReplaceInto:(id)arg1 values:(id)arg2;
-- (unsigned long long)selectCountFrom:(id)arg1 where:(id)arg2 bindings:(id)arg3;
-- (id)selectAllFrom:(id)arg1 where:(id)arg2 bindings:(id)arg3;
+- (long long)selectCountFrom:(id)arg1 where:(id)arg2 bindings:(id)arg3;
 - (void)update:(id)arg1 set:(id)arg2 where:(id)arg3 bindings:(id)arg4 limit:(id)arg5;
+- (id)selectAllFrom:(id)arg1 where:(id)arg2 bindings:(id)arg3;
 - (id)selectFrom:(id)arg1 where:(id)arg2 bindings:(id)arg3 limit:(id)arg4;
-- (void)selectFrom:(id)arg1 where:(id)arg2 bindings:(id)arg3 orderBy:(id)arg4 limit:(id)arg5 block:(CDUnknownBlockType)arg6;
-- (void)select:(id)arg1 from:(id)arg2 where:(id)arg3 bindings:(id)arg4 orderBy:(id)arg5 limit:(id)arg6 block:(CDUnknownBlockType)arg7;
 - (id)select:(id)arg1 from:(id)arg2 where:(id)arg3 bindings:(id)arg4 orderBy:(id)arg5;
 - (id)select:(id)arg1 from:(id)arg2 where:(id)arg3 bindings:(id)arg4;
 - (id)select:(id)arg1 from:(id)arg2;
+- (id)select:(id)arg1 from:(id)arg2 where:(id)arg3 bindings:(id)arg4 orderBy:(id)arg5 limit:(id)arg6;
+- (void)selectFrom:(id)arg1 where:(id)arg2 bindings:(id)arg3 orderBy:(id)arg4 limit:(id)arg5 block:(CDUnknownBlockType)arg6;
+- (void)select:(id)arg1 from:(id)arg2 where:(id)arg3 bindings:(id)arg4 orderBy:(id)arg5 limit:(id)arg6 block:(CDUnknownBlockType)arg7;
+- (void)select:(id)arg1 from:(id)arg2 where:(id)arg3 bindings:(id)arg4 orderBy:(id)arg5 limit:(id)arg6 offset:(id)arg7 block:(CDUnknownBlockType)arg8;
 - (id)columnNamesForTable:(id)arg1;
 - (id)creationDate;
 - (void)removePropertyForKey:(id)arg1;
@@ -81,28 +91,33 @@
 - (id)datePropertyForKey:(id)arg1;
 - (void)setProperty:(id)arg1 forKey:(id)arg2;
 - (id)propertyForKey:(id)arg1;
-- (void)dropAllTables;
+- (void)_dropAllTables;
 - (id)allTableNames;
-- (void)removeAllStatements;
-- (id)statementForSQL:(id)arg1;
+- (void)usingStatementForSQL:(id)arg1 performBlock:(CDUnknownBlockType)arg2;
 - (void)executeSQL:(id)arg1 arguments:(char *)arg2;
 - (void)executeSQL:(id)arg1;
 - (int)changes;
 - (long long)lastInsertRowID;
-- (void)raise:(id)arg1;
-- (void)vacuum;
-- (void)analyze;
-- (void)rollback;
-- (void)end;
-- (void)begin;
-- (void)remove;
+- (_Bool)remove;
 - (void)close;
-- (void)open;
+- (void)_forceClosed_unlocked;
+- (void)_forceClosed_locked;
 - (_Bool)openWithError:(id *)arg1;
+- (id)_prepareDatabase;
+- (id)handleDatabaseError:(id)arg1;
+- (id)handleDatabaseError:(id)arg1 args:(char *)arg2;
+- (id)handleError:(id)arg1;
+- (id)performDatabaseOperation:(CDUnknownBlockType)arg1;
+- (id)performDatabaseOperation:(CDUnknownBlockType)arg1 withErrorHandler:(CDUnknownBlockType)arg2;
+- (void)_recursiveOperationLock:(CDUnknownBlockType)arg1;
+- (id)_performDatabaseOperation_locked:(CDUnknownBlockType)arg1 withErrorHandler:(CDUnknownBlockType)arg2;
+@property(readonly, nonatomic) _Bool isCorrupt;
+- (void)markCorrupt;
 - (void)_periodicVacuum;
+- (void)vacuum;
 @property(readonly, nonatomic) _Bool isOpen;
-- (id)_createSchemaHash;
-- (id)_synchronousModeString;
+- (id)sqlErrorWithMessage:(id)arg1;
+- (void)assertInOperation:(SEL)arg1;
 - (void)dealloc;
 - (id)initWithPath:(id)arg1 schema:(id)arg2;
 

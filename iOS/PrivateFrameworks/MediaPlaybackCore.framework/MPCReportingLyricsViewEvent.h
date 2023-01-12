@@ -18,6 +18,7 @@
     long long _displayedCharacterCount;
     NSString *_language;
     NSString *_featureName;
+    NSString *_queueGroupingID;
     NSData *_recommendationData;
     long long _sourceType;
 }
@@ -25,6 +26,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) long long sourceType; // @synthesize sourceType=_sourceType;
 @property(copy, nonatomic) NSData *recommendationData; // @synthesize recommendationData=_recommendationData;
+@property(copy, nonatomic) NSString *queueGroupingID; // @synthesize queueGroupingID=_queueGroupingID;
 @property(copy, nonatomic) NSString *featureName; // @synthesize featureName=_featureName;
 @property(copy, nonatomic) NSString *language; // @synthesize language=_language;
 @property(nonatomic) long long displayedCharacterCount; // @synthesize displayedCharacterCount=_displayedCharacterCount;

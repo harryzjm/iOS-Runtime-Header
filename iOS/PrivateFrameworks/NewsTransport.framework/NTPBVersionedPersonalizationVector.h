@@ -12,11 +12,15 @@
 
 @interface NTPBVersionedPersonalizationVector : PBCodable <NSCopying>
 {
+    NSData *_bundleSubscribedVector;
+    NSString *_bundleSubscribedVectorVersion;
     NSData *_personalizationVector;
     NSString *_version;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *bundleSubscribedVectorVersion; // @synthesize bundleSubscribedVectorVersion=_bundleSubscribedVectorVersion;
+@property(retain, nonatomic) NSData *bundleSubscribedVector; // @synthesize bundleSubscribedVector=_bundleSubscribedVector;
 @property(retain, nonatomic) NSString *version; // @synthesize version=_version;
 @property(retain, nonatomic) NSData *personalizationVector; // @synthesize personalizationVector=_personalizationVector;
 - (void)mergeFrom:(id)arg1;
@@ -27,6 +31,8 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasBundleSubscribedVectorVersion;
+@property(readonly, nonatomic) _Bool hasBundleSubscribedVector;
 @property(readonly, nonatomic) _Bool hasVersion;
 @property(readonly, nonatomic) _Bool hasPersonalizationVector;
 

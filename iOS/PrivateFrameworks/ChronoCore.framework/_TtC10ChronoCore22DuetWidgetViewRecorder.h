@@ -11,6 +11,7 @@
 @interface _TtC10ChronoCore22DuetWidgetViewRecorder : _TtCs12_SwiftObject
 {
     MISSING_TYPE *maxTimeElapsedBeforeFlush;
+    MISSING_TYPE *maxTimeElapsedBeforeFlushLeeway;
     MISSING_TYPE *viewProvider;
     MISSING_TYPE *entries;
     MISSING_TYPE *timer;

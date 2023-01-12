@@ -9,7 +9,6 @@
 }
 
 + (id)serviceType;
-- (id)_formatStringTypeComponent;
 - (id)multipleUnknownServicesFormatString;
 - (id)oneUnknownServiceFormatString;
 - (id)multipleClosedServicesFormatString;

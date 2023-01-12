@@ -21,8 +21,6 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) CKMetric *MMCSMetrics; // @synthesize MMCSMetrics=_MMCSMetrics;
 @property(copy, nonatomic) CKMetric *cloudKitMetrics; // @synthesize cloudKitMetrics=_cloudKitMetrics;
-- (id)dictionaryRepresentation;
-- (void)unionMetrics:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)CKPropertiesDescription;

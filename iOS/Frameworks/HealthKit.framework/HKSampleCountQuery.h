@@ -11,14 +11,12 @@
 @interface HKSampleCountQuery <HKSampleCountQueryClientInterface>
 {
     CDUnknownBlockType _resultsHandler;
-    NSSet *_sampleQueryDescriptions;
 }
 
 + (void)configureClientInterface:(id)arg1;
 + (id)clientInterfaceProtocol;
 + (Class)configurationClass;
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSSet *sampleQueryDescriptions; // @synthesize sampleQueryDescriptions=_sampleQueryDescriptions;
 - (void)queue_queryDidDeactivate:(id)arg1;
 - (void)queue_validate;
 - (void)queue_populateConfiguration:(id)arg1;
@@ -27,7 +25,7 @@
 @property(readonly, copy, nonatomic) NSSet *sampleTypes;
 - (id)initWithSampleType:(id)arg1 predicate:(id)arg2 resultsHandler:(CDUnknownBlockType)arg3;
 - (id)initWithSampleTypes:(id)arg1 predicate:(id)arg2 resultsHandler:(CDUnknownBlockType)arg3;
-- (id)initWithSampleQueryDescriptions:(id)arg1 resultsHandler:(CDUnknownBlockType)arg2;
+- (id)initWithQueryDescriptors:(id)arg1 resultsHandler:(CDUnknownBlockType)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -32,73 +32,65 @@ struct CGVector {
 
 struct GreedyClusterer;
 
-struct ImageDescriptorBufferFloat32 {
-    CDUnknownFunctionPointerType *_field1;
-    struct vector<long long, std::__1::allocator<long long>> _field2;
-    struct map<long long, int, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, int>>> _field3;
-    void *_field4;
-    unsigned long long _field5;
-    unsigned long long _field6;
-    unsigned long long _field7;
-    _Bool _field8;
-    unsigned long long _field9;
-    int _field10;
-    float *_field11;
+struct HMIVideoEncoderDataRate {
+    long long _field1;
+    long long _field2;
 };
 
-struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
-    struct __tree_node_base<void *> *_field1;
+struct Mat;
+
+struct _NSRange {
+    unsigned long long location;
+    unsigned long long length;
 };
 
-struct map<long long, int, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, int>>> {
-    struct __tree<std::__1::__value_type<long long, int>, std::__1::__map_value_compare<long long, std::__1::__value_type<long long, int>, std::__1::less<long long>, true>, std::__1::allocator<std::__1::__value_type<long long, int>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<long long, int>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<long long, std::__1::__value_type<long long, int>, std::__1::less<long long>, true>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
 };
-
-struct pair<long long, long long>;
 
 struct shared_ptr<homeai::clustering::GreedyClusterer> {
     struct GreedyClusterer *__ptr_;
     struct __shared_weak_count *__cntrl_;
 };
 
-struct vector<float, std::__1::allocator<float>> {
+struct vector<cv::Mat, std::allocator<cv::Mat>> {
+    struct Mat *_field1;
+    struct Mat *_field2;
+    struct __compressed_pair<cv::Mat *, std::allocator<cv::Mat>> {
+        struct Mat *_field1;
+    } _field3;
+};
+
+struct vector<cv::Point_<float>, std::allocator<cv::Point_<float>>> {
+    void *_field1;
+    void *_field2;
+    struct __compressed_pair<cv::Point_<float>*, std::allocator<cv::Point_<float>>> {
+        void *_field1;
+    } _field3;
+};
+
+struct vector<float, std::allocator<float>> {
     float *__begin_;
     float *__end_;
-    struct __compressed_pair<float *, std::__1::allocator<float>> {
+    struct __compressed_pair<float *, std::allocator<float>> {
         float *__value_;
     } __end_cap_;
 };
 
-struct vector<long long, std::__1::allocator<long long>> {
-    long long *_field1;
-    long long *_field2;
-    struct __compressed_pair<long long *, std::__1::allocator<long long>> {
-        long long *_field1;
-    } _field3;
-};
-
-struct vector<std::__1::pair<long long, long long>, std::__1::allocator<std::__1::pair<long long, long long>>> {
-    struct pair<long long, long long> *_field1;
-    struct pair<long long, long long> *_field2;
-    struct __compressed_pair<std::__1::pair<long long, long long>*, std::__1::allocator<std::__1::pair<long long, long long>>> {
-        struct pair<long long, long long> *_field1;
+struct vector<unsigned char, std::allocator<unsigned char>> {
+    char *_field1;
+    char *_field2;
+    struct __compressed_pair<unsigned char *, std::allocator<unsigned char>> {
+        char *_field1;
     } _field3;
 };
 
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    int width;
-    int height;
-} CDStruct_79c71658;
+    int _field1;
+    int _field2;
+} CDStruct_1ef3fb1f;
 
 typedef struct {
     long long value;
@@ -113,11 +105,35 @@ typedef struct {
 } CDStruct_e83c9415;
 
 // Template types
-typedef struct vector<std::__1::pair<long long, long long>, std::__1::allocator<std::__1::pair<long long, long long>>> {
-    struct pair<long long, long long> *_field1;
-    struct pair<long long, long long> *_field2;
-    struct __compressed_pair<std::__1::pair<long long, long long>*, std::__1::allocator<std::__1::pair<long long, long long>>> {
-        struct pair<long long, long long> *_field1;
+typedef struct vector<cv::Mat, std::allocator<cv::Mat>> {
+    struct Mat *_field1;
+    struct Mat *_field2;
+    struct __compressed_pair<cv::Mat *, std::allocator<cv::Mat>> {
+        struct Mat *_field1;
     } _field3;
-} vector_22dfb71c;
+} vector_a9771444;
+
+typedef struct vector<cv::Point_<float>, std::allocator<cv::Point_<float>>> {
+    void *_field1;
+    void *_field2;
+    struct __compressed_pair<cv::Point_<float>*, std::allocator<cv::Point_<float>>> {
+        void *_field1;
+    } _field3;
+} vector_3e5b63dd;
+
+typedef struct vector<float, std::allocator<float>> {
+    float *__begin_;
+    float *__end_;
+    struct __compressed_pair<float *, std::allocator<float>> {
+        float *__value_;
+    } __end_cap_;
+} vector_8ca568ff;
+
+typedef struct vector<unsigned char, std::allocator<unsigned char>> {
+    char *_field1;
+    char *_field2;
+    struct __compressed_pair<unsigned char *, std::allocator<unsigned char>> {
+        char *_field1;
+    } _field3;
+} vector_5af41bf5;
 

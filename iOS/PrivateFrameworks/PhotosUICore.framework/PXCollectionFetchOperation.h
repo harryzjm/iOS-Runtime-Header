@@ -6,7 +6,7 @@
 
 #import <Foundation/NSOperation.h>
 
-@class NSPredicate, PHCollection, PHFetchOptions, PHFetchResult;
+@class PHCollection, PHFetchOptions, PHFetchResult;
 @protocol PXCollectionFetchOperationDelegate;
 
 @interface PXCollectionFetchOperation : NSOperation
@@ -15,12 +15,10 @@
     PHFetchOptions *_fetchOptions;
     PHCollection *_collection;
     PHFetchResult *_outputFetchResult;
-    NSPredicate *_assetsFilterPredicate;
 }
 
 + (id)fetchOperationWithCollection:(id)arg1 delegate:(id)arg2;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSPredicate *assetsFilterPredicate; // @synthesize assetsFilterPredicate=_assetsFilterPredicate;
 @property(retain, nonatomic) PHFetchResult *outputFetchResult; // @synthesize outputFetchResult=_outputFetchResult;
 @property(readonly, nonatomic) PHCollection *collection; // @synthesize collection=_collection;
 @property(retain, nonatomic) PHFetchOptions *fetchOptions; // @synthesize fetchOptions=_fetchOptions;
@@ -29,7 +27,7 @@
 - (void)handleBegin;
 - (void)main;
 - (id)init;
-- (id)initWithCollection:(id)arg1 assetsFilterPredicate:(id)arg2;
+- (id)initWithCollection:(id)arg1;
 
 @end
 

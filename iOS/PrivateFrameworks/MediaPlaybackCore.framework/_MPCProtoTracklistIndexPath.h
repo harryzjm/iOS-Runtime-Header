@@ -8,6 +8,7 @@
 
 #import <MediaPlaybackCore/NSCopying-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface _MPCProtoTracklistIndexPath : PBCodable <NSCopying>
 {
     long long _containerIndex;
@@ -18,9 +19,6 @@
     } _has;
 }
 
-@property(nonatomic) long long itemIndex; // @synthesize itemIndex=_itemIndex;
-@property(nonatomic) long long containerIndex; // @synthesize containerIndex=_containerIndex;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -28,8 +26,6 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasItemIndex;
-@property(nonatomic) _Bool hasContainerIndex;
 
 @end
 

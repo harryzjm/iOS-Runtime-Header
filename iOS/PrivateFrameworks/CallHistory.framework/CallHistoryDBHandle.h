@@ -4,26 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CallDBManager, NSManagedObjectContext, NSString;
+@class CallDBManager, NSManagedObjectContext;
 
 @interface CallHistoryDBHandle
 {
     NSManagedObjectContext *fCallRecordContext;
     NSManagedObjectContext *fCallDBPropertiesContext;
     CallDBManager *callDBManager;
-    NSString *objectId;
     id _observerCallRecordRef;
     id _observerCallDBPropRef;
     id _moveCallRecordsFromTempStoreRef;
     id _dataStoreAddedRef;
+    long long _callsDidChangeDarwinNotificationCount;
 }
 
 + (id)createForServer;
 + (id)createForClient;
 + (id)createWithDBManager:(id)arg1;
++ (id)objectId;
 - (void).cxx_destruct;
+@property(nonatomic) long long callsDidChangeDarwinNotificationCount; // @synthesize callsDidChangeDarwinNotificationCount=_callsDidChangeDarwinNotificationCount;
 @property(readonly, nonatomic) CallDBManager *callDBManager; // @synthesize callDBManager;
-@property(readonly, nonatomic) NSString *objectId; // @synthesize objectId;
 - (void)dealloc;
 - (_Bool)resetAllTimers;
 - (void)resetTimers;

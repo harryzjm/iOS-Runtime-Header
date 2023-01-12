@@ -14,10 +14,6 @@
 - (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
 - (id)createDisplayItemForIdentifier:(id)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (void)_accessibilitySetHasRequestedForceUpdate:(_Bool)arg1;
-- (_Bool)_accessibilityHasRequestedForceUpdate;
-- (void)_axApplyLabelToBackground;
-- (id)_axBackgroundActivityLabelKeysByType;
 
 @end
 

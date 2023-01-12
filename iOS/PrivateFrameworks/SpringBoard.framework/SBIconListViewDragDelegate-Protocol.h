@@ -16,6 +16,7 @@
 - (void)iconListView:(SBIconListView *)arg1 iconDragItem:(UIDragItem *)arg2 willAnimateDropWithAnimator:(id <UIDragAnimating>)arg3;
 - (UITargetedDragPreview *)iconListView:(SBIconListView *)arg1 previewForDroppingIconDragItem:(UIDragItem *)arg2 proposedPreview:(UITargetedDragPreview *)arg3;
 - (void)iconListView:(SBIconListView *)arg1 willUseIconView:(SBIconView *)arg2 forDroppingIconDragItem:(UIDragItem *)arg3;
+- (SBIconView *)iconListView:(SBIconListView *)arg1 iconViewForDroppingIconDragItem:(UIDragItem *)arg2 proposedIconView:(SBIconView *)arg3;
 - (void)iconListView:(SBIconListView *)arg1 performIconDrop:(id <UIDropSession>)arg2;
 - (void)iconListView:(SBIconListView *)arg1 iconDropSessionDidExit:(id <UIDropSession>)arg2;
 - (void)iconListView:(SBIconListView *)arg1 iconDropSession:(id <UIDropSession>)arg2 didPauseAtLocation:(struct CGPoint)arg3;

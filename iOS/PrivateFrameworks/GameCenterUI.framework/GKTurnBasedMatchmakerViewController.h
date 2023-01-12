@@ -20,10 +20,12 @@
     GKTurnBasedMatchmakerHostViewController *_remoteViewController;
     GKMatchRequest *_matchRequest;
     UIAlertController *_alertController;
+    long long _matchmakingMode;
 }
 
 + (_Bool)_preventsAppearanceProxyCustomization;
 - (void).cxx_destruct;
+@property(nonatomic) long long matchmakingMode; // @synthesize matchmakingMode=_matchmakingMode;
 @property(nonatomic) _Bool showExistingMatches; // @synthesize showExistingMatches=_showExistingMatches;
 @property(retain, nonatomic) UIAlertController *alertController; // @synthesize alertController=_alertController;
 @property(retain, nonatomic) GKMatchRequest *matchRequest; // @synthesize matchRequest=_matchRequest;

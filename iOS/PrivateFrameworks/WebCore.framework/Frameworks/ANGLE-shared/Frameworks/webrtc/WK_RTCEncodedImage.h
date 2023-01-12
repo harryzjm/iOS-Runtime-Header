@@ -28,9 +28,9 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool completeFrame; // @synthesize completeFrame=_completeFrame;
 @property(nonatomic) unsigned long long contentType; // @synthesize contentType=_contentType;
 @property(retain, nonatomic) NSNumber *qp; // @synthesize qp=_qp;
-@property(nonatomic) _Bool completeFrame; // @synthesize completeFrame=_completeFrame;
 @property(nonatomic) long long rotation; // @synthesize rotation=_rotation;
 @property(nonatomic) unsigned long long frameType; // @synthesize frameType=_frameType;
 @property(nonatomic) long long encodeFinishMs; // @synthesize encodeFinishMs=_encodeFinishMs;
@@ -43,7 +43,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) int encodedWidth; // @synthesize encodedWidth=_encodedWidth;
 @property(retain, nonatomic) NSData *buffer; // @synthesize buffer=_buffer;
 - (struct EncodedImage)nativeEncodedImage;
-- (id)initWithNativeEncodedImage:(const struct EncodedImage *)arg1;
+- (id)initWithNativeEncodedImage:(const void *)arg1;
 - (void)setEncodedData:(scoped_refptr_05c3cd2c)arg1;
 - (scoped_refptr_05c3cd2c)encodedData;
 

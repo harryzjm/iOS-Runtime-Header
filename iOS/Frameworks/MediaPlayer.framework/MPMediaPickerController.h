@@ -18,15 +18,10 @@
     id <MPMediaPickerRemoteViewLoader> _loader;
 }
 
-+ (void)load;
 + (void)preheatMediaPicker;
 - (void).cxx_destruct;
 @property(retain, nonatomic) id <MPMediaPickerRemoteViewLoader> loader; // @synthesize loader=_loader;
 @property(nonatomic) __weak id <MPMediaPickerControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (long long)_keynote_preferredInterfaceOrientationForPresentation;
-- (unsigned long long)_keynote_supportedInterfaceOrientations;
-- (long long)_mediaPickerController_preferredInterfaceOrientationForPresentation;
-- (unsigned long long)_mediaPickerController_supportedInterfaceOrientations;
 - (void)_checkLibraryAuthorization;
 - (void)_synchronizeSettings;
 - (void)_resetRemoteViewController;

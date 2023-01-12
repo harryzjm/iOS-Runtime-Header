@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 @interface LAUIAuthenticationCore : NSObject <LAUIDelegate, LAUIAuthentication>
 {
     _Bool _doneMatching;
+    _Bool _doneWatch;
     _Bool _applicationActive;
     _Bool _keyWindow;
     _Bool _uiActive;

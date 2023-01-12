@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class AVWeakReference;
+@class AVWeakReference, NSString;
 
 __attribute__((visibility("hidden")))
 @interface AVMediaSelectionGroupInternal : NSObject
 {
     AVWeakReference *weakReference;
+    NSString *currentBundleIdentifier;
 }
 
 @end

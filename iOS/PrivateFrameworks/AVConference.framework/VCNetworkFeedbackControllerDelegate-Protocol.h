@@ -7,6 +7,7 @@
 @class VCRecommendedNetworkSettings;
 
 @protocol VCNetworkFeedbackControllerDelegate
+- (void)preWarmStateChanged:(_Bool)arg1;
 - (void)reportingIntervalChanged:(double)arg1;
 - (void)recommendedSettingsChanged:(VCRecommendedNetworkSettings *)arg1;
 @end

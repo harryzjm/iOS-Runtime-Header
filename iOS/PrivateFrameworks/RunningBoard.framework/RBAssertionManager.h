@@ -10,8 +10,8 @@
 #import <RunningBoard/RBAssertionManaging-Protocol.h>
 #import <RunningBoard/RBStateCapturing-Protocol.h>
 
-@class NSCountedSet, NSMutableDictionary, NSMutableSet, NSString, RBAssertionCollection, RBAssertionManagerEventQueue, RBAssertionStateResolver, RBProcessIndex, RBProcessMap, RBSystemState;
-@protocol OS_dispatch_queue, RBAssertionDescriptorValidating, RBAssertionManagerDelegate, RBAssertionOriginatorPidPersisting, RBBundlePropertiesManaging, RBDomainAttributeManaging, RBEntitlementManaging, RBJetsamBandProviding, RBStateCaptureManaging;
+@class NSCountedSet, NSMapTable, NSMutableDictionary, NSMutableSet, NSString, RBAssertionCollection, RBAssertionManagerEventQueue, RBAssertionStateResolver, RBProcessIndex, RBProcessMap, RBSystemState;
+@protocol OS_dispatch_queue, RBAssertionDescriptorValidating, RBAssertionManagerDelegate, RBAssertionOriginatorPidPersisting, RBBundlePropertiesManaging, RBDaemonContextProviding, RBTimeProviding;
 
 @interface RBAssertionManager : NSObject <RBAssertionManagerQueueDelegate, RBAssertionManaging, RBStateCapturing>
 {
@@ -20,21 +20,20 @@
     struct os_unfair_lock_s _lock;
     id <RBAssertionManagerDelegate> _delegate;
     RBAssertionCollection *_assertions;
+    NSMutableDictionary *_pluginHoldsForAssertions;
     RBProcessIndex *_processIndex;
     RBProcessMap *_stateMap;
     NSMutableDictionary *_relativeStartTimesByTargetIdentity;
     NSMutableDictionary *_originatorExitTimesByIdentifier;
-    double _creationTime;
     NSMutableDictionary *_originatorToInFlightOperationsCountMap;
     NSCountedSet *_inFlightAssertionTargets;
+    NSMutableSet *_inFlightTerminations;
     struct os_unfair_lock_s _inFlightOperationsLock;
     id <RBBundlePropertiesManaging> _bundlePropertiesManager;
     id <RBAssertionDescriptorValidating> _descriptorValidator;
-    id <RBDomainAttributeManaging> _domainAttributeManager;
-    id <RBEntitlementManaging> _entitlementManager;
-    id <RBJetsamBandProviding> _jetsamBandProvider;
     id <RBAssertionOriginatorPidPersisting> _originatorPidStore;
-    id <RBStateCaptureManaging> _stateCaptureManager;
+    id <RBTimeProviding> _timeProvider;
+    id <RBDaemonContextProviding> _daemonContext;
     unsigned long long _maxOperationsInFlight;
     unsigned long long _maxAssertionsPerOriginator;
     RBAssertionStateResolver *_stateResolver;
@@ -42,11 +41,15 @@
     NSMutableSet *_assertionTargets;
     NSMutableSet *_acquiringAssertionIdentifiers;
     NSMutableSet *_invalidAssertions;
+    NSMapTable *_savedEndowments;
     RBSystemState *_systemState;
 }
 
 + (id)sharedWorkloop;
 - (void).cxx_destruct;
+- (id)savedEndowmentsForProcess:(id)arg1;
+- (id)_lock_savedEndowmentsForProcess:(id)arg1;
+- (_Bool)addSavedEndowment:(id)arg1 forProcess:(id)arg2;
 - (_Bool)_lock_batchContextInvalidatesSynchronously:(id)arg1;
 - (unsigned long long)_lock_resolvePreliminaryStatesForNonExistingProcessesWithAssertions:(id)arg1 completionPolicy:(unsigned long long)arg2;
 - (void)_acquireAssertions:(id)arg1 invalidateIdentifiers:(id)arg2 forOriginatorProcess:(id)arg3 completionPolicy:(unsigned long long)arg4 acquisitionErrorsByIndex:(id)arg5 completeStage:(CDUnknownBlockType)arg6;
@@ -60,7 +63,7 @@
 - (id)_lock_createAssertionForDescriptor:(id)arg1 originatorState:(id)arg2 acquisitionContext:(id)arg3 error:(id *)arg4;
 - (id)_lock_createAssertionWithAcquisitionContext:(id)arg1 attributeContext:(id)arg2 concreteTarget:(id)arg3 targetIdentity:(id)arg4 originator:(id)arg5 error:(out id *)arg6;
 - (_Bool)_lock_originatorHasExited:(id)arg1;
-- (id)_lock_assertionCreationAttributeContextForTargetIdentity:(id)arg1;
+- (id)_lock_assertionCreationAttributeContextForTargetIdentity:(id)arg1 originator:(id)arg2;
 - (_Bool)_lock_validateDescriptor:(id)arg1 originatorProcess:(id)arg2 originatorState:(id)arg3 concreteTarget:(id)arg4 targetProcess:(id)arg5 targetIdentity:(id)arg6 targetIdentifier:(id)arg7 targetState:(id)arg8 acquisitionContext:(id)arg9 error:(out id *)arg10;
 - (void)_invalidateAssertionsWithContext:(id)arg1;
 - (void)_acquireUnderlyingAssertionForProcess:(id)arg1;
@@ -95,7 +98,7 @@
 - (void)_removeInvalidAssertions;
 - (void)_lock_enqueueAssertionsForRemoval:(id)arg1;
 - (_Bool)_decreaseInFlightOperationsForOriginator:(id)arg1;
-- (_Bool)_increaseInFlightOperationsForOriginator:(id)arg1;
+- (_Bool)_increaseInFlightOperationsForOriginator:(id)arg1 andSuspendIfNeeded:(id)arg2;
 - (void)_decreaseInFlightOperationsForTargetIdentities:(id)arg1;
 - (void)_increaseInFlightOperationsForTargetIdentities:(id)arg1;
 - (id)_concreteTargetForTarget:(id)arg1 allowAbstractTarget:(_Bool)arg2;
@@ -108,19 +111,21 @@
 - (void)eventQueue:(id)arg1 handleWarningEventForAssertion:(id)arg2;
 - (void)eventQueue:(id)arg1 handleAssertionsExpirationWarningEventForProcessIdentity:(id)arg2 expirationTime:(double)arg3;
 - (id)targetEntitlementsForDomain:(id)arg1 andName:(id)arg2;
+- (id)restrictionsForDomain:(id)arg1 andName:(id)arg2;
 - (id)additionalRestrictionsForDomain:(id)arg1 andName:(id)arg2;
-- (_Bool)areTargetPropertiesValid:(id)arg1 forAttributeWithDomain:(id)arg2 andName:(id)arg3;
+- (_Bool)areTargetPropertiesValidForContext:(id)arg1 forAttributeWithDomain:(id)arg2 andName:(id)arg3;
 - (id)allEntitlements;
 - (_Bool)containsAttributeWithDomain:(id)arg1 andName:(id)arg2;
 - (id)endowmentNamespaceForDomain:(id)arg1 andName:(id)arg2;
 - (id)originatorEntitlementsForDomain:(id)arg1 andName:(id)arg2;
-- (id)attributesForDomain:(id)arg1 andName:(id)arg2 targetProperties:(id)arg3 withError:(id *)arg4;
+- (id)attributesForDomain:(id)arg1 andName:(id)arg2 context:(id)arg3 withError:(id *)arg4;
 - (void)revalidateAssertionsForProcessIdentities:(id)arg1;
 - (id)processForIdentity:(id)arg1;
 - (id)stateForIdentity:(id)arg1;
 - (void)processDidTerminate:(id)arg1;
 - (_Bool)isProcessForeground:(id)arg1;
 - (void)processDidLaunch:(id)arg1;
+- (id)popPluginHoldForAssertion:(id)arg1;
 - (_Bool)hasAssertionWithIdentifier:(id)arg1;
 - (id)assertionsForOriginator:(id)arg1;
 - (id)limitationsForInstance:(id)arg1;
@@ -132,7 +137,7 @@
 - (void)acquireAssertionWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)commitBatchWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 @property(readonly, copy) NSString *debugDescription;
-- (id)initWithDelegate:(id)arg1 domainAttributeManager:(id)arg2 bundlePropertiesManager:(id)arg3 originatorPidStore:(id)arg4 assertionDescriptorValidator:(id)arg5 entitlementManager:(id)arg6 jetsamBandProvider:(id)arg7 stateCaptureManager:(id)arg8 maxOperationsInFlight:(unsigned long long)arg9 maxAssertionsPerOriginator:(unsigned long long)arg10;
+- (id)initWithDelegate:(id)arg1 bundlePropertiesManager:(id)arg2 originatorPidStore:(id)arg3 assertionDescriptorValidator:(id)arg4 timeProvider:(id)arg5 daemonContext:(id)arg6 maxOperationsInFlight:(unsigned long long)arg7 maxAssertionsPerOriginator:(unsigned long long)arg8;
 - (id)init;
 @property(readonly, copy, nonatomic) RBSystemState *systemState; // @synthesize systemState=_systemState;
 

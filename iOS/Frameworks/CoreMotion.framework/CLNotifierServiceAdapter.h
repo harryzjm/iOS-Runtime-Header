@@ -12,7 +12,7 @@
 
 @interface CLNotifierServiceAdapter : CLIntersiloService <CLNotifierServiceProtocol>
 {
-    struct map<unsigned long, int, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, int>>> _clients;
+    struct map<unsigned long, int, std::less<unsigned long>, std::allocator<std::pair<const unsigned long, int>>> _clients;
     struct CLNotifierBase *_notifier;
 }
 

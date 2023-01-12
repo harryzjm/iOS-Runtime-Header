@@ -11,10 +11,8 @@
 @interface MTLResourceList : NSObject
 {
     struct {
-        unsigned short buckets[64];
-        unsigned int numEntries;
-        unsigned int capacity;
-        struct MTLResourceListEntry *entries;
+        int chunkEntryCapacity;
+        struct MTLResourceListChunk currentChunk;
         MTLResourceListPool *pool;
         struct {
             MTLResourceList *tqe_next;

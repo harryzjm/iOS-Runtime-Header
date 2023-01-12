@@ -6,27 +6,20 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-@class NSString, TPKContent, TPKContentView, UIView;
+@class MISSING_TYPE, TPKContentView;
 
 @interface TPKTipContentCollectionViewCell : UICollectionViewCell
 {
-    TPKContent *_content;
-    TPKContentView *_tipContentView;
-    NSString *_systemLayoutSizeCacheKey;
-    UIView *_containerView;
-    struct CGSize _systemLayoutSizeCacheSize;
+    MISSING_TYPE *tipView;
 }
 
-+ (id)reuseIdentifier;
 - (void).cxx_destruct;
-@property(retain, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
-@property(retain, nonatomic) NSString *systemLayoutSizeCacheKey; // @synthesize systemLayoutSizeCacheKey=_systemLayoutSizeCacheKey;
-@property(nonatomic) struct CGSize systemLayoutSizeCacheSize; // @synthesize systemLayoutSizeCacheSize=_systemLayoutSizeCacheSize;
-@property(retain, nonatomic) TPKContentView *tipContentView; // @synthesize tipContentView=_tipContentView;
-@property(retain, nonatomic) TPKContent *content; // @synthesize content=_content;
-- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (void)setContent:(id)arg1 contentController:(id)arg2;
 - (void)prepareForReuse;
+@property(nonatomic, readonly) TPKContentView *tipContentView;
+@property(nonatomic, retain) TPKContentView *tipView; // @synthesize tipView;
 
 @end
 

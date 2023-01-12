@@ -67,6 +67,7 @@ __attribute__((visibility("hidden")))
 - (void)layoutSubviews;
 - (double)_desiredButtonsWidth;
 - (void)updateConstraints;
+- (_Bool)_wantsPriorityOverFocusUpdates;
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (id)keyCommands;
 - (_Bool)becomeFirstResponder;

@@ -12,13 +12,15 @@
 {
 }
 
+- (id)initWithCoder:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 displayString:(id)arg2 pronunciationHint:(id)arg3;
 @property(nonatomic, readonly) NSString *description;
 
 // Remaining properties
-@property(copy, nonatomic) NSNumber *isActive; // @dynamic isActive;
-@property(copy, nonatomic) NSString *languageIdentifier; // @dynamic languageIdentifier;
-@property(copy, nonatomic) NSString *languageTag; // @dynamic languageTag;
-@property(copy, nonatomic) NSString *name; // @dynamic name;
+@property(nonatomic, retain) NSNumber *isActive; // @dynamic isActive;
+@property(nonatomic, copy) NSString *languageIdentifier; // @dynamic languageIdentifier;
+@property(nonatomic, copy) NSString *languageTag; // @dynamic languageTag;
+@property(nonatomic, copy) NSString *name; // @dynamic name;
 
 @end
 

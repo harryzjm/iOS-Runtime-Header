@@ -12,17 +12,20 @@
     CAMViewfinderViewController *_viewfinderViewController;
     long long _desiredDevicePosition;
     long long _startingCaptureMode;
+    double _testExtensionSeconds;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) double testExtensionSeconds; // @synthesize testExtensionSeconds=_testExtensionSeconds;
 @property(readonly, nonatomic, getter=isTestingAnimation) _Bool testingAnimation; // @synthesize testingAnimation=_testingAnimation;
 @property(readonly, nonatomic) long long startingCaptureMode; // @synthesize startingCaptureMode=_startingCaptureMode;
 @property(readonly, nonatomic) long long desiredDevicePosition; // @synthesize desiredDevicePosition=_desiredDevicePosition;
 @property(readonly, nonatomic) CAMViewfinderViewController *viewfinderViewController; // @synthesize viewfinderViewController=_viewfinderViewController;
 - (void)ensureCaptureDevicePosition:(long long)arg1 mode:(long long)arg2 thenPerform:(CDUnknownBlockType)arg3;
+- (void)_internalStopTesting;
 - (void)handleDidOpenViewfinderForReason:(long long)arg1;
 - (void)startTesting;
-- (id)initWithTestName:(id)arg1 viewfinderViewController:(id)arg2 devicePosition:(long long)arg3 testingAnimation:(_Bool)arg4 startingCaptureMode:(long long)arg5;
+- (id)initWithTestName:(id)arg1 viewfinderViewController:(id)arg2 devicePosition:(long long)arg3 testingAnimation:(_Bool)arg4 startingCaptureMode:(long long)arg5 testExtensionSeconds:(double)arg6;
 
 @end
 

@@ -20,7 +20,7 @@
 - (struct _NSRange)insertedRange;
 - (long long)delta;
 - (unsigned long long)targetCharIndex;
-- (void)performWithStorage:(id)arg1 delta:(long long)arg2 actionBuilder:(struct TSWPStorageActionBuilder *)arg3 withFlags:(unsigned int)arg4 replaceBlock:(CDUnknownBlockType)arg5;
+- (void)performWithStorage:(id)arg1 delta:(long long)arg2 actionBuilder:(void *)arg3 withFlags:(unsigned int)arg4 replaceBlock:(CDUnknownBlockType)arg5;
 - (id)initWithRange:(struct _NSRange)arg1 changeSession:(id)arg2;
 
 // Remaining properties

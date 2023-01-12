@@ -11,6 +11,7 @@
 }
 
 + (_Bool)_isInvalidPath:(id)arg1;
++ (id)_resolvedTempDirectory;
 + (_Bool)supportsSecureCoding;
 - (Class)classForCoder;
 - (id)initWithCoder:(id)arg1;

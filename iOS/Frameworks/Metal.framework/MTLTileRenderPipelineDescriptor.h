@@ -8,15 +8,21 @@
 
 #import <Metal/NSCopying-Protocol.h>
 
-@class MTLPipelineBufferDescriptorArray, MTLTileRenderPipelineColorAttachmentDescriptorArray, NSArray, NSString;
+@class MTLLinkedFunctions, MTLPipelineBufferDescriptorArray, MTLTileRenderPipelineColorAttachmentDescriptorArray, NSArray, NSString;
 @protocol MTLFunction;
 
 @interface MTLTileRenderPipelineDescriptor : NSObject <NSCopying>
 {
+    _Bool _supportAddingBinaryFunctions;
+    NSArray *_preloadedLibraries;
+    unsigned long long _maxCallStackDepth;
 }
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)alloc;
+@property(nonatomic) unsigned long long maxCallStackDepth; // @synthesize maxCallStackDepth=_maxCallStackDepth;
+@property(nonatomic) _Bool supportAddingBinaryFunctions; // @synthesize supportAddingBinaryFunctions=_supportAddingBinaryFunctions;
+@property(copy, nonatomic) NSArray *preloadedLibraries; // @synthesize preloadedLibraries=_preloadedLibraries;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)reset;
 
@@ -24,6 +30,7 @@
 @property(copy, nonatomic) NSArray *binaryArchives; // @dynamic binaryArchives;
 @property(readonly) MTLTileRenderPipelineColorAttachmentDescriptorArray *colorAttachments; // @dynamic colorAttachments;
 @property(copy, nonatomic) NSString *label; // @dynamic label;
+@property(copy, nonatomic) MTLLinkedFunctions *linkedFunctions; // @dynamic linkedFunctions;
 @property(nonatomic) unsigned long long maxTotalThreadsPerThreadgroup; // @dynamic maxTotalThreadsPerThreadgroup;
 @property(nonatomic) unsigned long long rasterSampleCount; // @dynamic rasterSampleCount;
 @property(nonatomic) _Bool threadgroupSizeMatchesTileSize; // @dynamic threadgroupSizeMatchesTileSize;

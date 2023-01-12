@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary, NSMapTable;
+@class FCFeedItemHeadlinesOperationProperties, NSArray, NSDictionary, NSMapTable;
 @protocol FCContentContext, FCCoreConfiguration, FCFeedPersonalizing;
 
 @interface FCFeedItemHeadlinesOperation
@@ -14,7 +14,6 @@
     id <FCContentContext> _context;
     NSArray *_feedItems;
     id <FCFeedPersonalizing> _personalizer;
-    NSMapTable *_feedItemScoreProfiles;
     long long _feedPersonalizationConfigurationSet;
     CDUnknownBlockType _rapidUpdateRefreshTest;
     NSDictionary *_feedContextByFeedID;
@@ -22,11 +21,11 @@
     CDUnknownBlockType _headlinesCompletionHandler;
     CDUnknownBlockType _headlinesMapCompletionHandler;
     NSArray *_resultHeadlines;
-    NSMapTable *_resultHeadlinesByFeedItem;
+    FCFeedItemHeadlinesOperationProperties *_properties;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMapTable *resultHeadlinesByFeedItem; // @synthesize resultHeadlinesByFeedItem=_resultHeadlinesByFeedItem;
+@property(retain, nonatomic) FCFeedItemHeadlinesOperationProperties *properties; // @synthesize properties=_properties;
 @property(retain, nonatomic) NSArray *resultHeadlines; // @synthesize resultHeadlines=_resultHeadlines;
 @property(copy, nonatomic) CDUnknownBlockType headlinesMapCompletionHandler; // @synthesize headlinesMapCompletionHandler=_headlinesMapCompletionHandler;
 @property(copy, nonatomic) CDUnknownBlockType headlinesCompletionHandler; // @synthesize headlinesCompletionHandler=_headlinesCompletionHandler;
@@ -35,7 +34,6 @@
 @property(copy, nonatomic) CDUnknownBlockType rapidUpdateRefreshTest; // @synthesize rapidUpdateRefreshTest=_rapidUpdateRefreshTest;
 @property(nonatomic) _Bool shouldFilterHeadlinesWithoutSourceChannels; // @synthesize shouldFilterHeadlinesWithoutSourceChannels=_shouldFilterHeadlinesWithoutSourceChannels;
 @property(nonatomic) long long feedPersonalizationConfigurationSet; // @synthesize feedPersonalizationConfigurationSet=_feedPersonalizationConfigurationSet;
-@property(copy, nonatomic) NSMapTable *feedItemScoreProfiles; // @synthesize feedItemScoreProfiles=_feedItemScoreProfiles;
 @property(retain, nonatomic) id <FCFeedPersonalizing> personalizer; // @synthesize personalizer=_personalizer;
 @property(copy, nonatomic) NSArray *feedItems; // @synthesize feedItems=_feedItems;
 @property(retain, nonatomic) id <FCContentContext> context; // @synthesize context=_context;
@@ -44,6 +42,7 @@
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
 - (_Bool)validateOperation;
+@property(copy, nonatomic) NSMapTable *feedItemScoreProfiles;
 - (id)init;
 
 @end

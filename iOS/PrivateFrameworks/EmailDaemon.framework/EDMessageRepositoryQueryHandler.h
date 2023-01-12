@@ -39,7 +39,7 @@
 - (void)requestSummaryForMessageObjectID:(id)arg1;
 @property(readonly, copy, nonatomic) NSSet *mailboxes; // @synthesize mailboxes=_mailboxes;
 - (void)cancel;
-- (void)start;
+- (_Bool)start;
 - (void)tearDown;
 - (void)test_tearDown;
 - (void)dealloc;

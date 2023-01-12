@@ -14,7 +14,6 @@
 {
 }
 
-- (_Bool)_shouldCheckCredential:(id)arg1;
 - (id)savedPasswordsForPersistentIdentifiers:(id)arg1;
 @property(readonly, nonatomic) NSArray *credentials;
 

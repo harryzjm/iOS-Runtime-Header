@@ -23,8 +23,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <SFAirDropViewServiceHostProtocol> airDropHost; // @synthesize airDropHost=_airDropHost;
 - (void)airDropViewServiceDidRequestDismissal;
 - (void)airDropViewServiceRequestingSharedItemsWithDataRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)airDropViewServiceDidSuccessfullyCompleteTransfer;
-- (void)airDropViewServiceDidSuccessfullyStartTransfer;
+- (void)airDropViewServiceDidFinishTransferWithSuccess:(_Bool)arg1;
+- (void)airDropViewServiceDidStartTransfer;
 - (id)airDropExtensionService;
 
 // Remaining properties

@@ -9,15 +9,15 @@
 @interface ETTaskState : NSObject
 {
     shared_ptr_d082c67d _networkPointer;
-    unordered_map_74b681bc _blobs;
+    unordered_map_d1ad3d59 _blobs;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property shared_ptr_d082c67d networkPointer; // @synthesize networkPointer=_networkPointer;
-@property unordered_map_74b681bc blobs; // @synthesize blobs=_blobs;
+@property unordered_map_d1ad3d59 blobs; // @synthesize blobs=_blobs;
 - (id)initWithNetwork:(shared_ptr_d082c67d)arg1;
-- (id)initWithBlobMap:(unordered_map_74b681bc *)arg1;
+- (id)initWithBlobMap:(void *)arg1;
 
 @end
 

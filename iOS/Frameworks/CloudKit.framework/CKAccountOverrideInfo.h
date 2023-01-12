@@ -6,16 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <CloudKit/CKSQLiteItem-Protocol.h>
 #import <CloudKit/NSCopying-Protocol.h>
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
 @class NSDictionary, NSString;
 
-@interface CKAccountOverrideInfo : NSObject <NSCopying, NSSecureCoding>
+@interface CKAccountOverrideInfo : NSObject <CKSQLiteItem, NSCopying, NSSecureCoding>
 {
-    _Bool _isUnitTestingAccount;
-    _Bool _accountWantsPushRegistration;
-    _Bool _accountWantsFlowControl;
     NSString *_accountID;
     NSString *_email;
     NSString *_password;
@@ -25,26 +23,32 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)liveAccount;
++ (id)anonymousAccount;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSDictionary *overridesByDataclass; // @synthesize overridesByDataclass=_overridesByDataclass;
 @property(copy, nonatomic) NSDictionary *accountPropertyOverrides; // @synthesize accountPropertyOverrides=_accountPropertyOverrides;
-@property(nonatomic) _Bool accountWantsFlowControl; // @synthesize accountWantsFlowControl=_accountWantsFlowControl;
-@property(nonatomic) _Bool accountWantsPushRegistration; // @synthesize accountWantsPushRegistration=_accountWantsPushRegistration;
-@property(nonatomic) _Bool isUnitTestingAccount; // @synthesize isUnitTestingAccount=_isUnitTestingAccount;
 @property(copy, nonatomic) NSString *secondEmail; // @synthesize secondEmail=_secondEmail;
 @property(readonly, nonatomic) NSString *password; // @synthesize password=_password;
 @property(readonly, nonatomic) NSString *email; // @synthesize email=_email;
 @property(copy, nonatomic) NSString *accountID; // @synthesize accountID=_accountID;
+- (id)initWithSqliteRepresentation:(id)arg1;
+- (id)sqliteRepresentation;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)description;
+@property(readonly, copy, nonatomic) NSString *uniqueID;
+@property(readonly, copy) NSString *description;
 - (id)CKPropertiesDescription;
-- (id)initAnonymousAccount;
+- (id)_initWithEmail:(id)arg1 password:(id)arg2;
 - (id)initWithEmail:(id)arg1 password:(id)arg2;
 - (id)initWithAccountID:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

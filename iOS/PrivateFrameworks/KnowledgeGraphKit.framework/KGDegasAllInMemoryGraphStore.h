@@ -13,30 +13,23 @@
     NSURL *_url;
 }
 
-+ (_Bool)setMarkerForDiskRepresentationAtURL:(id)arg1;
-+ (_Bool)hasMarkerForDiskRepresentationAtURL:(id)arg1;
-+ (void)deleteMarkerForDiskRepresentationAtURL:(id)arg1;
-+ (id)_markerFilePathForPersistentStoreFileURL:(id)arg1;
 + (_Bool)migrateFromURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 + (_Bool)destroyAtURL:(id)arg1 error:(id *)arg2;
 + (_Bool)copyFromURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 + (id)persistentStoreFileExtension;
 - (void).cxx_destruct;
 - (id)url;
-- (unsigned long long)addEdgeWithLabels:(id)arg1 weight:(float)arg2 properties:(id)arg3 sourceNodeIdentifier:(unsigned long long)arg4 targetNodeIdentifier:(unsigned long long)arg5 error:(id *)arg6;
-- (unsigned long long)addNodeWithLabels:(id)arg1 weight:(float)arg2 properties:(id)arg3 error:(id *)arg4;
+- (_Bool)addEdges:(id)arg1 error:(id *)arg2;
+- (_Bool)addNodes:(id)arg1 error:(id *)arg2;
 - (_Bool)updateEdgeForIdentifier:(unsigned long long)arg1 withProperties:(id)arg2 error:(id *)arg3;
 - (_Bool)updateEdgeForIdentifier:(unsigned long long)arg1 withWeight:(float)arg2 error:(id *)arg3;
 - (_Bool)updateNodeForIdentifier:(unsigned long long)arg1 withProperties:(id)arg2 error:(id *)arg3;
 - (_Bool)updateNodeForIdentifier:(unsigned long long)arg1 withWeight:(float)arg2 error:(id *)arg3;
 - (void)enumerateModelEdgesWithBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateModelNodesWithBlock:(CDUnknownBlockType)arg1;
+- (void)rollbackTransaction;
 - (void)commitTransaction;
 - (void)beginTransaction;
-- (_Bool)hasMarker;
-- (void)setMarker;
-- (void)deleteMarker;
-- (id)_markerFilePath;
 - (_Bool)copyToURL:(id)arg1 error:(id *)arg2;
 - (id)graphIdentifier;
 - (void)setGraphVersion:(unsigned long long)arg1;

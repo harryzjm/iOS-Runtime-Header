@@ -50,7 +50,7 @@
 - (void)peerPaymentActionController:(id)arg1 hasChangedState:(unsigned long long)arg2;
 - (void)viewWillLayoutSubviews;
 - (void)loadView;
-- (id)initWithPaymentPass:(id)arg1 webService:(id)arg2 context:(long long)arg3;
+- (id)initWithPaymentPass:(id)arg1 webService:(id)arg2 passLibraryDataProvider:(id)arg3 context:(long long)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

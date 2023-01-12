@@ -10,9 +10,13 @@
 
 @interface _TtC7SwiftUI11FocusBridge : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *flags;
     MISSING_TYPE *host;
+    MISSING_TYPE *currentFocusStore;
+    MISSING_TYPE *currentEnvironment;
     MISSING_TYPE *_focusedItem;
-    MISSING_TYPE *needsFocusedItemUpdate;
+    MISSING_TYPE *parentFocusBridge;
+    MISSING_TYPE *requestedFocusItem;
     MISSING_TYPE *defaultFocusNamespace;
 }
 

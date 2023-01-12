@@ -8,6 +8,7 @@
 
 @class AVURLAsset;
 
+__attribute__((visibility("hidden")))
 @interface _MPCURLAssetDownloadCompletionObserver : NSObject
 {
     AVURLAsset *_asset;

@@ -14,6 +14,7 @@
     MISSING_TYPE *eventType;
     MISSING_TYPE *eventData;
     MISSING_TYPE *createdAt;
+    MISSING_TYPE *_content;
 }
 
 @end

@@ -20,11 +20,10 @@
 @property(readonly, nonatomic) double preferredExpandedContentWidth;
 - (void)controlCenterDidDismiss;
 - (void)controlCenterWillPresent;
-- (void)willResignActive;
-- (void)willBecomeActive;
 - (void)displayWillTurnOff;
 - (void)dismissPresentedContentAnimated:(_Bool)arg1 completion:(void (^)(void))arg2;
 - (_Bool)canDismissPresentedContent;
+- (struct CCUIModuleLayoutSize)moduleLayoutSizeForOrientation:(long long)arg1;
 - (void)didTransitionToExpandedContentMode:(_Bool)arg1;
 - (void)willTransitionToExpandedContentMode:(_Bool)arg1;
 - (_Bool)shouldExpandModuleOnTouch:(UITouch *)arg1;

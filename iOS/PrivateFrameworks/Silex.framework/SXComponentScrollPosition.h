@@ -14,6 +14,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (_Bool)jsonDictionaryRepresentationIsValid:(id)arg1 exactly:(_Bool)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) double canvasWidth; // @synthesize canvasWidth=_canvasWidth;
 @property(readonly, nonatomic) double relativePageOffset; // @synthesize relativePageOffset=_relativePageOffset;
@@ -21,7 +22,6 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)initWithDictionaryRepresentation:(id)arg1 exactly:(_Bool)arg2;
-- (_Bool)jsonDictionaryRepresentationIsValid:(id)arg1 exactly:(_Bool)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithComponentIdentifier:(id)arg1 canvasWidth:(double)arg2 relativePageOffset:(double)arg3;
 

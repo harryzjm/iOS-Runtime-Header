@@ -17,6 +17,7 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)allMessageDestinations;
++ (id)allMessageTargets;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSUUID *target; // @synthesize target=_target;
 - (void)encodeWithCoder:(id)arg1;

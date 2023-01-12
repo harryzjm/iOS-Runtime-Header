@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProtocolBuffer/PBCodable.h>
-
 @class NSData;
 
-@interface SISchemaLocation : PBCodable
+@interface SISchemaLocation
 {
     float _latitude;
     float _longitude;

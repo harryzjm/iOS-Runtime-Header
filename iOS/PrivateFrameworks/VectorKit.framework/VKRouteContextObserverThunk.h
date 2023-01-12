@@ -8,20 +8,25 @@
 
 #import <VectorKit/VKRouteContextObserver-Protocol.h>
 
-@class NSString;
+@class NSString, VKRouteContext;
 
 __attribute__((visibility("hidden")))
 @interface VKRouteContextObserverThunk : NSObject <VKRouteContextObserver>
 {
-    struct LabelTransitSupport *_transitSupport;
-    struct _retain_ptr<VKRouteContext *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> _routeContext;
+    void *_transitSupport;
+    struct _retain_ptr<VKRouteContext *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> {
+        CDUnknownFunctionPointerType *_vptr$_retain_ptr;
+        VKRouteContext *_obj;
+        struct _retain_objc _retain;
+        struct _release_objc _release;
+    } _routeContext;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)routeContextStateDidChange:(id)arg1;
 - (void)dealloc;
-- (id)initWithRouteContext:(id)arg1 transitSupport:(struct LabelTransitSupport *)arg2;
+- (id)initWithRouteContext:(id)arg1 transitSupport:(void *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

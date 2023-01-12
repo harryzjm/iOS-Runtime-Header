@@ -10,11 +10,11 @@
 
 @interface TSCHDeprecatedChartGridForUpgrade : TSPObject
 {
-    TSCHChartGrid *mGrid;
+    TSCHChartGrid *_grid;
 }
 
 - (void).cxx_destruct;
-@property(readonly, retain, nonatomic) TSCHChartGrid *grid; // @synthesize grid=mGrid;
+@property(readonly, retain, nonatomic) TSCHChartGrid *grid; // @synthesize grid=_grid;
 - (void)loadFromUnarchiver:(id)arg1;
 
 @end

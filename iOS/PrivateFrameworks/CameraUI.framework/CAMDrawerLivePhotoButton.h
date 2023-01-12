@@ -10,6 +10,7 @@
 }
 
 @property(nonatomic) long long livePhotoMode; // @synthesize livePhotoMode=_livePhotoMode;
+- (id)imageNameForAXHUD;
 - (_Bool)shouldUseActiveTintForCurrentState;
 - (_Bool)shouldShowSlashForCurrentState;
 - (_Bool)shouldUseSlash;

@@ -21,6 +21,7 @@
 - (void)_updateStateForTransitionWithContext:(id)arg1;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidEndWithTransitionContext:(id)arg2;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidBeginWithTransitionContext:(id)arg2;
+- (long long)_environmentModeForLayoutState:(id)arg1;
 - (id)_layoutCoordinator;
 - (void)dealloc;
 - (id)initWithReason:(long long)arg1 identifier:(id)arg2 invalidationBlock:(CDUnknownBlockType)arg3;

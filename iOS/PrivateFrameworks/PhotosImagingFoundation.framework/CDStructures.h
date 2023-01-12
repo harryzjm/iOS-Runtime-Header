@@ -50,53 +50,9 @@ struct Quad2d {
     struct Vector2d V3;
 };
 
-struct Rect;
-
-struct RectArray {
-    struct Rect *_field1;
-    struct Rect *_field2;
-    struct __compressed_pair<PA::Rect *, std::__1::allocator<PA::Rect>> {
-        struct Rect *_field1;
-    } _field3;
-};
-
-struct Region {
-    struct unordered_set<PA::RegionRect, PA::RectHash, PA::RectEqualTo, std::__1::allocator<PA::RegionRect>> _field1;
-};
-
 struct Vector2d {
     double X;
     double Y;
-};
-
-struct __hash_node_base<std::__1::__hash_node<PA::RegionRect, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<PA::RegionRect, void *>*> *_field1;
-};
-
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<PA::RegionRect, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<PA::RegionRect, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<PA::RegionRect, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<PA::RegionRect, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<PA::RegionRect, void *>*> **_field1;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<PA::RegionRect, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<PA::RegionRect, void *>*>*>> {
-                unsigned long long _field1;
-            } _field1;
-        } _field2;
-    } _field1;
-};
-
-struct unordered_set<PA::RegionRect, PA::RectHash, PA::RectEqualTo, std::__1::allocator<PA::RegionRect>> {
-    struct __hash_table<PA::RegionRect, PA::RectHash, PA::RectEqualTo, std::__1::allocator<PA::RegionRect>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<PA::RegionRect, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<PA::RegionRect, void *>*>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<PA::RegionRect, void *>*>, std::__1::allocator<std::__1::__hash_node<PA::RegionRect, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<PA::RegionRect, void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, PA::RectHash> {
-            unsigned long long _field1;
-        } _field3;
-        struct __compressed_pair<float, PA::RectEqualTo> {
-            float _field1;
-        } _field4;
-    } _field1;
 };
 
 #pragma mark Typedef'd Structures

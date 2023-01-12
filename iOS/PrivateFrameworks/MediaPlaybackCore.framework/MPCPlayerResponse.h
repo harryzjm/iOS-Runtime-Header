@@ -6,13 +6,15 @@
 
 #import <MediaPlayer/MPResponse.h>
 
-@class MPCMediaRemoteController, MPCPlayerPath, MPCPlayerResponseTracklist, UIView;
+@class MPCMediaRemoteController, MPCPlayerPath, MPCPlayerResponseTracklist, NSArray, UIView;
 @protocol MPCPlayerResponseBuilder, MPCVideoOutput, MPCVideoView;
 
 @interface MPCPlayerResponse : MPResponse
 {
+    _Bool _sharedListeningSession;
     MPCPlayerResponseTracklist *_tracklist;
     long long _state;
+    NSArray *_participants;
     MPCMediaRemoteController *_controller;
     MPCPlayerPath *_playerPath;
     UIView<MPCVideoView> *_videoView;
@@ -25,10 +27,15 @@
 @property(retain, nonatomic) UIView<MPCVideoView> *videoView; // @synthesize videoView=_videoView;
 @property(retain, nonatomic) MPCPlayerPath *playerPath; // @synthesize playerPath=_playerPath;
 @property(readonly, nonatomic) MPCMediaRemoteController *controller; // @synthesize controller=_controller;
+@property(readonly, nonatomic, getter=isSharedListeningSession) _Bool sharedListeningSession; // @synthesize sharedListeningSession=_sharedListeningSession;
+@property(readonly, nonatomic) NSArray *participants; // @synthesize participants=_participants;
 @property(readonly, nonatomic) long long state; // @synthesize state=_state;
 @property(readonly, nonatomic) MPCPlayerResponseTracklist *tracklist; // @synthesize tracklist=_tracklist;
 - (id)_commandRequestForMediaRemoteCommand:(unsigned int)arg1;
 - (id)_stateDumpObject;
+- (id)leaveSession;
+- (id)createSharedSessionWithIdentity:(id)arg1 intentHandler:(CDUnknownBlockType)arg2;
+- (id)createSharedSessionWithIntentHandler:(CDUnknownBlockType)arg1;
 - (id)stop;
 - (id)play;
 - (id)pause;

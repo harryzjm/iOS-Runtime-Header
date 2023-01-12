@@ -8,13 +8,12 @@
 
 #import <NewsCore/FCKeyValueStoreCoding-Protocol.h>
 
-@class NSString, NSURL;
+@class NSString;
 
 @interface NTPBAVAsset (KVS) <FCKeyValueStoreCoding>
 + (id)readValueFromKeyValuePair:(id)arg1;
 + (int)keyValuePairType;
 - (void)writeToKeyValuePair:(id)arg1;
-@property(readonly, nonatomic) NSURL *resolvedCacheURL;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

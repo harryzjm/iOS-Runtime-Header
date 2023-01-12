@@ -10,6 +10,7 @@
 
 @protocol TUCallContainer <NSObject>
 @property(readonly, copy, nonatomic) NSArray *callGroupsOnDefaultPairedDevice;
+@property(readonly, copy, nonatomic) NSArray *currentAudioAndVideoCallGroups;
 @property(readonly, copy, nonatomic) NSArray *currentCallGroups;
 @property(readonly, nonatomic) _Bool anyCallIsEndpointOnCurrentDevice;
 @property(readonly, nonatomic) _Bool anyCallIsHostedOnCurrentDevice;

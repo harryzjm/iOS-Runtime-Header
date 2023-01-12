@@ -22,6 +22,7 @@
     int _hostPid;
     unsigned long long _lsSpawnFlags;
     NSArray *_lsBinpref;
+    NSArray *_lsBinprefSubtype;
     NSString *_bundleIdentifier;
     NSDictionary *_extensionOverlay;
     NSUUID *_oneShotUUID;
@@ -75,6 +76,7 @@
 @property(nonatomic) int hostPid; // @synthesize hostPid=_hostPid;
 @property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(nonatomic) unsigned int lsPersona; // @synthesize lsPersona=_lsPersona;
+@property(copy, nonatomic) NSArray *lsBinprefSubtype; // @synthesize lsBinprefSubtype=_lsBinprefSubtype;
 @property(copy, nonatomic) NSArray *lsBinpref; // @synthesize lsBinpref=_lsBinpref;
 @property(nonatomic) unsigned short lsUMask; // @synthesize lsUMask=_lsUMask;
 @property(nonatomic) unsigned long long lsSpawnFlags; // @synthesize lsSpawnFlags=_lsSpawnFlags;

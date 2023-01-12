@@ -6,8 +6,13 @@
 
 #import <Foundation/NSBundle.h>
 
+@class NSString;
+
 @interface NSBundle (SafariSharedExtras)
 + (id)safari_safariSharedBundle;
-- (_Bool)safari_primaryLocalizationIsEnglish;
+@property(readonly, nonatomic) NSString *safari_shortVersion;
+@property(readonly, nonatomic) NSString *safari_localizedShortVersion;
+@property(readonly, nonatomic) NSString *safari_localizedDisplayName;
+@property(readonly, nonatomic) NSString *safari_displayName;
 @end
 

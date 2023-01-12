@@ -6,21 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class CMMotionManager, NSHashTable;
+@class CMDeviceMotion, CMMotionManager, NSHashTable;
 
 @interface PKMotionManager : NSObject
 {
-    CMMotionManager *_motion;
+    CMMotionManager *_motionManager;
     NSHashTable *_clients;
+    _Bool _monitoring;
+    CMDeviceMotion *_motion;
 }
 
 + (id)sharedManager;
 - (void).cxx_destruct;
-- (_Bool)isClientRegistered:(id)arg1;
+@property(readonly, nonatomic) CMDeviceMotion *motion; // @synthesize motion=_motion;
+@property(readonly, nonatomic, getter=isMonitoring) _Bool monitoring; // @synthesize monitoring=_monitoring;
 - (void)unregisterClient:(id)arg1;
 - (void)registerClient:(id)arg1;
 - (void)updateWithMotion:(id)arg1;
 - (void)dealloc;
+- (id)_init;
 - (id)init;
 
 @end

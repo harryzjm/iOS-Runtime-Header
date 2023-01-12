@@ -8,9 +8,10 @@
 
 @interface SBHShadowedWidgetView : UIView
 {
+    _Bool _supportsShadowViewFrameProviding;
     _Bool _perspectiveEnabled;
-    UIView *_contentView;
     UIView *_shadowView;
+    UIView *_contentView;
     double _cornerRadius;
     struct CGAffineTransform _contentTransform;
     struct CGAffineTransform _shadowSupplementalTransform;
@@ -22,9 +23,11 @@
 @property(nonatomic) struct CGAffineTransform contentTransform; // @synthesize contentTransform=_contentTransform;
 @property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property(nonatomic, getter=isPerspectiveEnabled) _Bool perspectiveEnabled; // @synthesize perspectiveEnabled=_perspectiveEnabled;
-@property(retain, nonatomic) UIView *shadowView; // @synthesize shadowView=_shadowView;
 @property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
+@property(retain, nonatomic) UIView *shadowView; // @synthesize shadowView=_shadowView;
 - (void)_updateZPositions;
+- (void)_layoutShadowView;
+- (void)_updateShadowView;
 - (void)layoutSubviews;
 - (id)initWithContentView:(id)arg1 shadowView:(id)arg2 perspectiveEnabled:(_Bool)arg3;
 

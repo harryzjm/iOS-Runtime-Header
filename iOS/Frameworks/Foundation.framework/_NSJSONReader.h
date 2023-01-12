@@ -6,22 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSError;
-
 __attribute__((visibility("hidden")))
 @interface _NSJSONReader : NSObject
 {
-    id input;
-    int kind;
-    NSError *error;
 }
 
 + (_Bool)validForJSON:(id)arg1 depth:(unsigned long long)arg2 allowFragments:(_Bool)arg3;
-- (id)parseStream:(id)arg1 options:(unsigned long long)arg2;
-- (id)parseData:(id)arg1 options:(unsigned long long)arg2;
-- (id)error;
-- (void)dealloc;
-- (id)init;
+- (id)parseStream:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
+- (id)parseData:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 
 @end
 

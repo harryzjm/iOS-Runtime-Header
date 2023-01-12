@@ -12,6 +12,7 @@
 }
 
 - (void).cxx_destruct;
+- (struct CGSize)contentViewSizeForWidth:(double)arg1;
 - (id)_font;
 - (struct CGSize)_performLayoutInWidth:(double)arg1 updateSubviewFrames:(_Bool)arg2;
 - (void)layoutSubviews;

@@ -24,6 +24,8 @@
 - (_Bool)isEqualToFamilyMember:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
+- (id)contactIncludingImage:(_Bool)arg1;
+- (id)contactsIncludingImage:(_Bool)arg1;
 @property(readonly, nonatomic) CNContact *contact;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -42,11 +44,13 @@
 - (id)_dateWithEpochString:(id)arg1;
 @property(readonly, copy, nonatomic) NSDate *invitationDate;
 @property(readonly, copy, nonatomic) NSDate *joinedDate;
+@property(readonly, copy, nonatomic) NSString *memberPhoneNumbers;
 @property(readonly, copy, nonatomic) NSNumber *memberSortOrder;
 @property(readonly, nonatomic) long long memberType;
 @property(readonly, copy, nonatomic) NSString *memberTypeString;
 @property(readonly, copy, nonatomic) NSString *memberTypeDisplayString;
 @property(readonly, nonatomic) unsigned long long age;
+@property(readonly, copy, nonatomic) NSString *fullName;
 @property(readonly, copy, nonatomic) NSString *lastName;
 @property(readonly, copy, nonatomic) NSString *firstName;
 @property(readonly, copy, nonatomic) NSString *altDSID;

@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOAutomobileOptions, GEOCyclingOptions, GEOLocation, GEOMapRegion, GEOPDVenueIdentifier, GEOTraitsTransitScheduleFilter, GEOTransitOptions, GEOWalkingOptions, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
+@class GEOAutomobileOptions, GEOCyclingOptions, GEOLocation, GEOMapRegion, GEOPDResultRefinementQuery, GEOPDVenueIdentifier, GEOPDViewportInfo, GEOTraitsTransitScheduleFilter, GEOTransitOptions, GEOWalkingOptions, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOMapServiceTraits : PBCodable <NSCopying>
 {
@@ -16,9 +16,12 @@
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _engineTypes;
     CDStruct_95bda58d _knownClientResolvedTypes;
+    CDStruct_95bda58d _knownRefinementTypes;
     CDStruct_95bda58d _supportedAutocompleteListTypes;
     CDStruct_95bda58d _supportedAutocompleteResultCellTypes;
     CDStruct_95bda58d _supportedChildActions;
+    CDStruct_95bda58d _supportedPlaceSummaryFormatTypes;
+    CDStruct_95bda58d _supportedSearchTierTypes;
     CDStruct_95bda58d _transportTypes;
     struct GEOSessionID _sessionId;
     NSString *_analyticsAppIdentifier;
@@ -30,6 +33,7 @@
     NSString *_carHeadunitModel;
     double _carHeadunitPixelHeight;
     double _carHeadunitPixelWidth;
+    NSString *_currentLocaleCurrencySymbol;
     GEOCyclingOptions *_cyclingOptions;
     GEOLocation *_deviceLocation;
     NSMutableArray *_deviceDisplayLanguages;
@@ -38,10 +42,13 @@
     NSString *_displayRegion;
     NSMutableArray *_evChargingPorts;
     NSMutableArray *_historicalLocations;
+    double _isTourist;
     GEOMapRegion *_mapRegion;
     double _mapZoomLevel;
     NSMutableArray *_photoSizes;
+    GEOPDViewportInfo *_previousSearchViewport;
     NSString *_providerID;
+    GEOPDResultRefinementQuery *_resultRefinementQuery;
     NSMutableArray *_reviewUserPhotoSizes;
     double _sessionRelativeTimestamp;
     GEOTransitOptions *_transitOptions;
@@ -52,6 +59,7 @@
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
+    unsigned int _auxiliaryTierNumResults;
     int _carHeadunitConnectionType;
     int _carHeadunitInteractionModel;
     int _deviceBatteryState;
@@ -59,10 +67,14 @@
     unsigned int _httpRequestPriority;
     int _mode;
     int _navigationTransportType;
+    unsigned int _photoAlbumCount;
     unsigned int _photosCount;
+    unsigned int _placeSummaryRevision;
     unsigned int _ratingsCount;
+    unsigned int _relatedPlaceItemCount;
     int _requestPurpose;
     unsigned int _reviewUserPhotosCount;
+    int _searchRequestType;
     unsigned int _sequenceNumber;
     int _source;
     unsigned int _timeSinceMapEnteredForeground;
@@ -72,11 +84,12 @@
     _Bool _deviceDarkMode;
     _Bool _deviceInVehicle;
     _Bool _isAPICall;
-    _Bool _isRedoSearch;
     _Bool _isRefund;
     _Bool _isSettlement;
     _Bool _isWidgetRequest;
     _Bool _navigating;
+    _Bool _supportAutocompleteGuideResults;
+    _Bool _supportAutocompletePublisherResults;
     _Bool _supportAutocompleteRapAffordance;
     _Bool _supportChildItems;
     _Bool _supportClientRankingFeatureMetadata;
@@ -91,8 +104,10 @@
         unsigned int has_sessionId:1;
         unsigned int has_carHeadunitPixelHeight:1;
         unsigned int has_carHeadunitPixelWidth:1;
+        unsigned int has_isTourist:1;
         unsigned int has_mapZoomLevel:1;
         unsigned int has_sessionRelativeTimestamp:1;
+        unsigned int has_auxiliaryTierNumResults:1;
         unsigned int has_carHeadunitConnectionType:1;
         unsigned int has_carHeadunitInteractionModel:1;
         unsigned int has_deviceBatteryState:1;
@@ -100,10 +115,14 @@
         unsigned int has_httpRequestPriority:1;
         unsigned int has_mode:1;
         unsigned int has_navigationTransportType:1;
+        unsigned int has_photoAlbumCount:1;
         unsigned int has_photosCount:1;
+        unsigned int has_placeSummaryRevision:1;
         unsigned int has_ratingsCount:1;
+        unsigned int has_relatedPlaceItemCount:1;
         unsigned int has_requestPurpose:1;
         unsigned int has_reviewUserPhotosCount:1;
+        unsigned int has_searchRequestType:1;
         unsigned int has_sequenceNumber:1;
         unsigned int has_source:1;
         unsigned int has_timeSinceMapEnteredForeground:1;
@@ -113,11 +132,12 @@
         unsigned int has_deviceDarkMode:1;
         unsigned int has_deviceInVehicle:1;
         unsigned int has_isAPICall:1;
-        unsigned int has_isRedoSearch:1;
         unsigned int has_isRefund:1;
         unsigned int has_isSettlement:1;
         unsigned int has_isWidgetRequest:1;
         unsigned int has_navigating:1;
+        unsigned int has_supportAutocompleteGuideResults:1;
+        unsigned int has_supportAutocompletePublisherResults:1;
         unsigned int has_supportAutocompleteRapAffordance:1;
         unsigned int has_supportChildItems:1;
         unsigned int has_supportClientRankingFeatureMetadata:1;
@@ -131,9 +151,12 @@
         unsigned int read_unknownFields:1;
         unsigned int read_engineTypes:1;
         unsigned int read_knownClientResolvedTypes:1;
+        unsigned int read_knownRefinementTypes:1;
         unsigned int read_supportedAutocompleteListTypes:1;
         unsigned int read_supportedAutocompleteResultCellTypes:1;
         unsigned int read_supportedChildActions:1;
+        unsigned int read_supportedPlaceSummaryFormatTypes:1;
+        unsigned int read_supportedSearchTierTypes:1;
         unsigned int read_transportTypes:1;
         unsigned int read_analyticsAppIdentifier:1;
         unsigned int read_appIdentifier:1;
@@ -142,6 +165,7 @@
         unsigned int read_automobileOptions:1;
         unsigned int read_carHeadunitManufacturer:1;
         unsigned int read_carHeadunitModel:1;
+        unsigned int read_currentLocaleCurrencySymbol:1;
         unsigned int read_cyclingOptions:1;
         unsigned int read_deviceLocation:1;
         unsigned int read_deviceDisplayLanguages:1;
@@ -152,7 +176,9 @@
         unsigned int read_historicalLocations:1;
         unsigned int read_mapRegion:1;
         unsigned int read_photoSizes:1;
+        unsigned int read_previousSearchViewport:1;
         unsigned int read_providerID:1;
+        unsigned int read_resultRefinementQuery:1;
         unsigned int read_reviewUserPhotoSizes:1;
         unsigned int read_transitOptions:1;
         unsigned int read_transitScheduleFilter:1;
@@ -177,7 +203,8 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
-- (void)clearSensitiveFields;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
+- (void)clearSensitiveFields:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -186,6 +213,54 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsSupportedPlaceSummaryFormatTypes:(id)arg1;
+- (id)supportedPlaceSummaryFormatTypesAsString:(int)arg1;
+- (void)setSupportedPlaceSummaryFormatTypes:(int *)arg1 count:(unsigned long long)arg2;
+- (int)supportedPlaceSummaryFormatTypeAtIndex:(unsigned long long)arg1;
+- (void)addSupportedPlaceSummaryFormatType:(int)arg1;
+- (void)clearSupportedPlaceSummaryFormatTypes;
+@property(readonly, nonatomic) int *supportedPlaceSummaryFormatTypes;
+@property(readonly, nonatomic) unsigned long long supportedPlaceSummaryFormatTypesCount;
+@property(retain, nonatomic) NSString *currentLocaleCurrencySymbol;
+@property(readonly, nonatomic) _Bool hasCurrentLocaleCurrencySymbol;
+- (int)StringAsSearchRequestType:(id)arg1;
+- (id)searchRequestTypeAsString:(int)arg1;
+@property(nonatomic) _Bool hasSearchRequestType;
+@property(nonatomic) int searchRequestType;
+@property(nonatomic) _Bool hasRelatedPlaceItemCount;
+@property(nonatomic) unsigned int relatedPlaceItemCount;
+@property(retain, nonatomic) GEOPDResultRefinementQuery *resultRefinementQuery;
+@property(readonly, nonatomic) _Bool hasResultRefinementQuery;
+@property(nonatomic) _Bool hasPhotoAlbumCount;
+@property(nonatomic) unsigned int photoAlbumCount;
+@property(retain, nonatomic) GEOPDViewportInfo *previousSearchViewport;
+@property(readonly, nonatomic) _Bool hasPreviousSearchViewport;
+@property(nonatomic) _Bool hasSupportAutocompleteGuideResults;
+@property(nonatomic) _Bool supportAutocompleteGuideResults;
+@property(nonatomic) _Bool hasSupportAutocompletePublisherResults;
+@property(nonatomic) _Bool supportAutocompletePublisherResults;
+- (int)StringAsKnownRefinementTypes:(id)arg1;
+- (id)knownRefinementTypesAsString:(int)arg1;
+- (void)setKnownRefinementTypes:(int *)arg1 count:(unsigned long long)arg2;
+- (int)knownRefinementTypeAtIndex:(unsigned long long)arg1;
+- (void)addKnownRefinementType:(int)arg1;
+- (void)clearKnownRefinementTypes;
+@property(readonly, nonatomic) int *knownRefinementTypes;
+@property(readonly, nonatomic) unsigned long long knownRefinementTypesCount;
+@property(nonatomic) _Bool hasIsTourist;
+@property(nonatomic) double isTourist;
+@property(nonatomic) _Bool hasPlaceSummaryRevision;
+@property(nonatomic) unsigned int placeSummaryRevision;
+@property(nonatomic) _Bool hasAuxiliaryTierNumResults;
+@property(nonatomic) unsigned int auxiliaryTierNumResults;
+- (int)StringAsSupportedSearchTierTypes:(id)arg1;
+- (id)supportedSearchTierTypesAsString:(int)arg1;
+- (void)setSupportedSearchTierTypes:(int *)arg1 count:(unsigned long long)arg2;
+- (int)supportedSearchTierTypeAtIndex:(unsigned long long)arg1;
+- (void)addSupportedSearchTierType:(int)arg1;
+- (void)clearSupportedSearchTierTypes;
+@property(readonly, nonatomic) int *supportedSearchTierTypes;
+@property(readonly, nonatomic) unsigned long long supportedSearchTierTypesCount;
 @property(nonatomic) _Bool hasIsWidgetRequest;
 @property(nonatomic) _Bool isWidgetRequest;
 - (id)evChargingPortAtIndex:(unsigned long long)arg1;
@@ -298,8 +373,6 @@
 - (void)addHistoricalLocations:(id)arg1;
 - (void)clearHistoricalLocations;
 @property(retain, nonatomic) NSMutableArray *historicalLocations;
-@property(nonatomic) _Bool hasIsRedoSearch;
-@property(nonatomic) _Bool isRedoSearch;
 @property(nonatomic) _Bool hasNavigating;
 @property(nonatomic) _Bool navigating;
 - (int)StringAsCarHeadunitConnectionType:(id)arg1;

@@ -22,6 +22,7 @@
 @property(readonly, nonatomic) id <SNTestCase> testCase; // @synthesize testCase=_testCase;
 @property(readonly, nonatomic) _Bool waitForCommitToFinish;
 @property(readonly, nonatomic) long long orientation;
+- (void)runTestWithContext:(id)arg1 testName:(id)arg2 testCoordinator:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)runTestWithContext:(id)arg1 testCoordinator:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setupWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithTestCase:(id)arg1 testSuite:(id)arg2;

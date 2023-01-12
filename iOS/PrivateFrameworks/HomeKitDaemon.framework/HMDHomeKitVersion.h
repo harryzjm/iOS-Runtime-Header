@@ -6,14 +6,25 @@
 
 #import <HMFoundation/HMFVersion.h>
 
+#import <HomeKitDaemon/HMBModelObjectCoder-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@interface HMDHomeKitVersion : HMFVersion <NSCopying, NSSecureCoding>
+@class NSString;
+
+@interface HMDHomeKitVersion : HMFVersion <HMBModelObjectCoder, NSCopying, NSSecureCoding>
 {
 }
 
 + (id)version;
++ (id)hmbDecodeData:(id)arg1 fromStorageLocation:(unsigned long long)arg2 error:(id *)arg3;
+- (id)hmbEncodeForStorageLocation:(unsigned long long)arg1 error:(id *)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

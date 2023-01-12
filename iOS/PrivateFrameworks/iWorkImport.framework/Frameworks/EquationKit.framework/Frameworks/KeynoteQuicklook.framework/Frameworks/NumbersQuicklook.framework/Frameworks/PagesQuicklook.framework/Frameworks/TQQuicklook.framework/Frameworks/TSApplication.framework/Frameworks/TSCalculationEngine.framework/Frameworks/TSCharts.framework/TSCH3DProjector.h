@@ -8,18 +8,18 @@
 
 @interface TSCH3DProjector : NSObject
 {
-    tmat4x4_3074befe mProjection;
-    tmat4x4_3074befe mTransform;
-    tmat4x4_3074befe mCombined;
+    tmat4x4_3074befe _projection;
+    tmat4x4_3074befe _transform;
+    tmat4x4_3074befe _combined;
 }
 
-+ (id)projectorWithProjection:(const tmat4x4_3074befe *)arg1 transform:(const tmat4x4_3074befe *)arg2;
++ (id)projectorWithProjection:(const void *)arg1 transform:(const void *)arg2;
 - (id).cxx_construct;
-@property(readonly, nonatomic) const tmat4x4_3074befe *combined; // @synthesize combined=mCombined;
-@property(readonly, nonatomic) const tmat4x4_3074befe *transform; // @synthesize transform=mTransform;
-@property(readonly, nonatomic) const tmat4x4_3074befe *projection; // @synthesize projection=mProjection;
-- (line_190fbfc7)objectSpaceLineFromPoint:(const tvec2_84d5962d *)arg1;
-- (id)initWithProjection:(const tmat4x4_3074befe *)arg1 transform:(const tmat4x4_3074befe *)arg2;
+@property(readonly, nonatomic) const void *combined; // @synthesize combined=_combined;
+@property(readonly, nonatomic) const void *transform; // @synthesize transform=_transform;
+@property(readonly, nonatomic) const void *projection; // @synthesize projection=_projection;
+- (line_e1962432)objectSpaceLineFromPoint:(const void *)arg1;
+- (id)initWithProjection:(const void *)arg1 transform:(const void *)arg2;
 
 @end
 

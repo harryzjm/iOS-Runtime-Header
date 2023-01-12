@@ -10,7 +10,6 @@
 
 @class GEOABConfigValue, NSString, PBDataReader, PBUnknownFields;
 
-__attribute__((visibility("hidden")))
 @interface GEOABConfigKeyValuePair : PBCodable <NSCopying>
 {
     PBDataReader *_reader;

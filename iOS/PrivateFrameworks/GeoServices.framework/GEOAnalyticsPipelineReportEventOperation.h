@@ -9,14 +9,13 @@
 __attribute__((visibility("hidden")))
 @interface GEOAnalyticsPipelineReportEventOperation
 {
-    int _logMsgType;
-    int _handlingPolicyId;
+    unsigned long long _uploadBatchId;
     NSData *_logMsg;
 }
 
 - (void).cxx_destruct;
 - (void)main;
-- (id)initWithType:(int)arg1 handlingPolicyId:(int)arg2 logMsg:(id)arg3 remoteProxy:(id)arg4 runQueue:(id)arg5 completionQueue:(id)arg6 completionBlock:(CDUnknownBlockType)arg7;
+- (id)initWithLogMsg:(id)arg1 uploadBatchId:(unsigned long long)arg2 remoteProxy:(id)arg3 runQueue:(id)arg4 completionQueue:(id)arg5 completionBlock:(CDUnknownBlockType)arg6;
 
 @end
 

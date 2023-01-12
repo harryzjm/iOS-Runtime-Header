@@ -6,7 +6,7 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class CNAvatarView, CNContact, HMIncomingHomeInvitation, HUPillButton, UIActivityIndicatorView, UILabel, UIView;
+@class CNAvatarView, CNContact, HMIncomingHomeInvitation, UIActivityIndicatorView, UIButton, UILabel, UIView;
 @protocol HUIncomingInvitationTableViewCellDelegate;
 
 @interface HUIncomingInvitationTableViewCell : UITableViewCell
@@ -19,16 +19,16 @@
     UIView *_containerView;
     UILabel *_homeNameLabel;
     UILabel *_infoLabel;
-    HUPillButton *_declineButton;
-    HUPillButton *_acceptButton;
+    UIButton *_declineButton;
+    UIButton *_acceptButton;
     UIActivityIndicatorView *_spinner;
 }
 
 + (id)_formatDate:(id)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIActivityIndicatorView *spinner; // @synthesize spinner=_spinner;
-@property(retain, nonatomic) HUPillButton *acceptButton; // @synthesize acceptButton=_acceptButton;
-@property(retain, nonatomic) HUPillButton *declineButton; // @synthesize declineButton=_declineButton;
+@property(retain, nonatomic) UIButton *acceptButton; // @synthesize acceptButton=_acceptButton;
+@property(retain, nonatomic) UIButton *declineButton; // @synthesize declineButton=_declineButton;
 @property(retain, nonatomic) UILabel *infoLabel; // @synthesize infoLabel=_infoLabel;
 @property(retain, nonatomic) UILabel *homeNameLabel; // @synthesize homeNameLabel=_homeNameLabel;
 @property(retain, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;

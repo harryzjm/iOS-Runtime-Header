@@ -6,29 +6,41 @@
 
 #import <objc/NSObject.h>
 
-@class CARSessionStatus;
+#import <CarPlay/CARSessionObserving-Protocol.h>
+
+@class CARSessionStatus, CPSTemplateEnvironment, NSString;
 @protocol CPSessionConfigurationDelegate;
 
-@interface CPSessionConfiguration : NSObject
+@interface CPSessionConfiguration : NSObject <CARSessionObserving>
 {
     unsigned long long _limitedUserInterfaces;
     unsigned long long _contentStyle;
     id <CPSessionConfigurationDelegate> _delegate;
     CARSessionStatus *_currentStatus;
+    CPSTemplateEnvironment *_templateEnvironment;
 }
 
-+ (unsigned long long)convertLimitableUserInterfaces:(unsigned long long)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) __weak CPSTemplateEnvironment *templateEnvironment; // @synthesize templateEnvironment=_templateEnvironment;
 @property(retain, nonatomic) CARSessionStatus *currentStatus; // @synthesize currentStatus=_currentStatus;
 @property(nonatomic) __weak id <CPSessionConfigurationDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) unsigned long long contentStyle; // @synthesize contentStyle=_contentStyle;
 @property(nonatomic) unsigned long long limitedUserInterfaces; // @synthesize limitedUserInterfaces=_limitedUserInterfaces;
 - (void)_nightModeDidChange:(id)arg1;
 - (void)_updateNightMode;
+- (unsigned long long)convertLimitableUserInterfaces:(unsigned long long)arg1;
 - (void)_limitedUIDidChange:(id)arg1;
 - (void)_updateLimitedUIStatus;
+- (void)sessionDidConnect:(id)arg1;
 - (void)dealloc;
+- (id)initWithDelegate:(id)arg1 templateEnvironment:(id)arg2;
 - (id)initWithDelegate:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -13,7 +13,10 @@
     MISSING_TYPE *controller;
     MISSING_TYPE *resolver;
     MISSING_TYPE *tracker;
+    MISSING_TYPE *contextBuilder;
     MISSING_TYPE *navigator;
+    MISSING_TYPE *magazineMoreActionsFactory;
+    MISSING_TYPE *magazineGridModelLoader;
 }
 
 @end

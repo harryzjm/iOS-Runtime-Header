@@ -6,16 +6,14 @@
 
 @interface PXPhotoPickerSettings
 {
-    _Bool _useLibraryPresentation;
-    _Bool _useGadgetsAlbumsTab;
+    _Bool _applyChromelessEverywhere;
     _Bool _hideSearchBarWhenScrolling;
 }
 
 + (id)sharedInstance;
 + (id)settingsControllerModule;
 @property(nonatomic) _Bool hideSearchBarWhenScrolling; // @synthesize hideSearchBarWhenScrolling=_hideSearchBarWhenScrolling;
-@property(nonatomic) _Bool useGadgetsAlbumsTab; // @synthesize useGadgetsAlbumsTab=_useGadgetsAlbumsTab;
-@property(nonatomic) _Bool useLibraryPresentation; // @synthesize useLibraryPresentation=_useLibraryPresentation;
+@property(nonatomic) _Bool applyChromelessEverywhere; // @synthesize applyChromelessEverywhere=_applyChromelessEverywhere;
 - (void)setDefaultValues;
 - (id)parentSettings;
 

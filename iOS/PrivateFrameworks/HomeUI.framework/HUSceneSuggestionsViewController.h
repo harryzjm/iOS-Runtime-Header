@@ -16,6 +16,7 @@
     HUSceneSuggestionsItemManager *_suggestionsItemManager;
 }
 
++ (id)computeNumberOfSuggestionsInHome:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) __weak HUSceneSuggestionsItemManager *suggestionsItemManager; // @synthesize suggestionsItemManager=_suggestionsItemManager;
 @property(nonatomic) __weak id <HUSceneEditorDelegate> sceneEditorDelegate; // @synthesize sceneEditorDelegate=_sceneEditorDelegate;

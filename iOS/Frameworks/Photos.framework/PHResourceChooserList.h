@@ -30,6 +30,9 @@
 
 - (void).cxx_destruct;
 - (id)init;
+- (void)continueEnumeratingWithSourceOptions:(unsigned long long)arg1;
+- (void)moveFirst;
+- (_Bool)reversed;
 
 @end
 

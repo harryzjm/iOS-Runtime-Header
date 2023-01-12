@@ -9,6 +9,9 @@
 @class NSArray, NSString;
 
 @protocol SRTCCStore <NSObject>
+- (_Bool)checkAccessForService:(NSString *)arg1 auditToken:(CDStruct_6ad76789)arg2;
+- (void)requestAccessForService:(NSString *)arg1 completion:(void (^)(unsigned char))arg2;
+- (long long)preflightAuthorizationStatusForService:(NSString *)arg1;
 - (_Bool)setValue:(_Bool)arg1 forService:(NSString *)arg2 bundleId:(NSString *)arg3;
 - (_Bool)resetService:(NSString *)arg1 forBundleId:(NSString *)arg2;
 - (_Bool)resetService:(NSString *)arg1;

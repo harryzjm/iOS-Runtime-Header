@@ -35,6 +35,7 @@
 - (id)initWithLocation:(id)arg1 date:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)cleanup;
 - (void)handleCancellation;
+- (void)handleError:(id)arg1 forResponseIdentifier:(id)arg2;
 - (void)handleResponse:(id)arg1;
 - (void)startWithService:(id)arg1;
 - (id)description;

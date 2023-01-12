@@ -7,7 +7,6 @@
 @class CKShareMetadata, NSData, NSString;
 @protocol CKInitiateParticipantVettingOperationCallbacks;
 
-__attribute__((visibility("hidden")))
 @interface CKDInitiateParticipantVettingOperation
 {
     CDUnknownBlockType _participantVettingProgressBlock;
@@ -31,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (id)_encryptedKeyDataWithShareMetadata:(id)arg1 error:(id *)arg2;
 - (void)_handleVettingInitiationProgress:(id)arg1;
 - (id)activityCreate;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 // Remaining properties
 @property(retain, nonatomic) id <CKInitiateParticipantVettingOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;

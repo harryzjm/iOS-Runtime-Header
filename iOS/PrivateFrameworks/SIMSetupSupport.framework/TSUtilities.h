@@ -10,6 +10,8 @@
 {
 }
 
++ (unsigned long long)odaPlans:(id)arg1;
++ (unsigned long long)transferablePlans:(id)arg1;
 + (id)textColorForRemotePlan:(_Bool)arg1;
 + (id)backgroundColorForRemotePlan:(_Bool)arg1;
 + (id)_findPPRItem:(id)arg1;

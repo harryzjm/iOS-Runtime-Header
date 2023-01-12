@@ -7,21 +7,18 @@
 #import <objc/NSObject.h>
 
 #import <DataDeliveryServices/DDSAssetQueryResultCaching-Protocol.h>
-#import <DataDeliveryServices/NSCacheDelegate-Protocol.h>
+#import <DataDeliveryServices/DDSCacheDelegate-Protocol.h>
 
-@class NSCache, NSString;
-@protocol OS_dispatch_queue;
+@class DDSCache, NSString;
 
-@interface DDSAssetQueryResultCache : NSObject <NSCacheDelegate, DDSAssetQueryResultCaching>
+@interface DDSAssetQueryResultCache : NSObject <DDSCacheDelegate, DDSAssetQueryResultCaching>
 {
-    NSCache *_assetsByQueryCache;
-    NSObject<OS_dispatch_queue> *_queue;
+    DDSCache *_cache;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property(retain, nonatomic) NSCache *assetsByQueryCache; // @synthesize assetsByQueryCache=_assetsByQueryCache;
-- (void)cache:(id)arg1 willEvictObject:(id)arg2;
+@property(readonly, nonatomic) DDSCache *cache; // @synthesize cache=_cache;
+- (void)cache:(id)arg1 willEvictObjects:(id)arg2;
 - (void)clearCache;
 - (void)cacheAssets:(id)arg1 forQuery:(id)arg2;
 - (id)cachedAssetsForQuery:(id)arg1;

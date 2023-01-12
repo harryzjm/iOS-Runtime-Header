@@ -9,8 +9,7 @@
 #import <PhotoLibraryServices/NSCopying-Protocol.h>
 #import <PhotoLibraryServices/PLResourceIdentity-Protocol.h>
 
-@class NSDate, NSNumber, NSString, NSURL;
-@protocol PLCodecIdentity, PLUniformTypeIdentifierIdentity;
+@class NSDate, NSNumber, NSString, NSURL, PLUniformTypeIdentifier;
 
 @interface PLValidatedExternalResource : NSObject <PLResourceIdentity, NSCopying>
 {
@@ -22,8 +21,8 @@
     int _qualitySortValue;
     long long _unorientedWidth;
     long long _unorientedHeight;
-    id <PLCodecIdentity> _codecID;
-    id <PLUniformTypeIdentifierIdentity> _uniformTypeIdentifierID;
+    NSString *_codecFourCharCode;
+    PLUniformTypeIdentifier *_uniformTypeIdentifier;
     long long _dataLength;
     NSNumber *_sidecarIndex;
     NSURL *_fileURL;
@@ -31,6 +30,7 @@
     long long _ptpTrashedState;
 }
 
++ (id)resourceWithExternalResource:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) long long ptpTrashedState; // @synthesize ptpTrashedState=_ptpTrashedState;
 @property(retain, nonatomic) NSDate *trashedDate; // @synthesize trashedDate=_trashedDate;
@@ -39,8 +39,8 @@
 @property(retain, nonatomic) NSNumber *sidecarIndex; // @synthesize sidecarIndex=_sidecarIndex;
 @property(nonatomic) long long dataLength; // @synthesize dataLength=_dataLength;
 @property(nonatomic) int qualitySortValue; // @synthesize qualitySortValue=_qualitySortValue;
-@property(retain, nonatomic) id <PLUniformTypeIdentifierIdentity> uniformTypeIdentifierID; // @synthesize uniformTypeIdentifierID=_uniformTypeIdentifierID;
-@property(retain, nonatomic) id <PLCodecIdentity> codecID; // @synthesize codecID=_codecID;
+@property(retain, nonatomic) PLUniformTypeIdentifier *uniformTypeIdentifier; // @synthesize uniformTypeIdentifier=_uniformTypeIdentifier;
+@property(retain, nonatomic) NSString *codecFourCharCode; // @synthesize codecFourCharCode=_codecFourCharCode;
 @property(nonatomic) long long unorientedHeight; // @synthesize unorientedHeight=_unorientedHeight;
 @property(nonatomic) long long unorientedWidth; // @synthesize unorientedWidth=_unorientedWidth;
 @property(nonatomic) unsigned int orientation; // @synthesize orientation=_orientation;
@@ -51,7 +51,7 @@
 - (void)persistResourceTypeToFileURL;
 - (_Bool)isEqualToValidatedExternalResource:(id)arg1;
 - (void)setTrashedStateFromURL;
-- (void)setQualitySortValueBasedOnAssetWidth:(long long)arg1 height:(long long)arg2 isNativeColorSpace:(_Bool)arg3 isLosslessEncoding:(_Bool)arg4 isCuratedPreview:(_Bool)arg5;
+- (void)setQualitySortValueBasedOnAssetWidth:(long long)arg1 height:(long long)arg2 isNativeColorSpace:(_Bool)arg3 isLosslessEncoding:(_Bool)arg4;
 - (unsigned long long)cplTypeWithAssetID:(id)arg1;
 - (_Bool)isPlayableVideo;
 - (_Bool)isDefaultOrientation;

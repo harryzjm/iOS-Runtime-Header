@@ -4,36 +4,39 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PlatterKit/PLTitledPlatterView.h>
+#import <UIKit/UIView.h>
 
+#import <UserNotificationsUIKit/MTMaterialGrouping-Protocol.h>
 #import <UserNotificationsUIKit/NCAuxiliaryOptionsSupporting-Protocol.h>
 #import <UserNotificationsUIKit/NCNotificationStaticContentAccepting-Protocol.h>
+#import <UserNotificationsUIKit/PLContentSizeCategoryAdjusting-Protocol.h>
+#import <UserNotificationsUIKit/PLPlatter-Protocol.h>
 
-@class BSUIFontProvider, NCAuxiliaryOptionsView, NCNotificationContentView, NCNotificationGrabberView, NSArray, NSDate, NSString, NSTimeZone, UIButton, UIImage, UIView;
+@class BSUIFontProvider, MTMaterialView, MTVisualStylingProvider, NCAuxiliaryOptionsView, NSArray, NSAttributedString, NSDate, NSString, NSTimeZone, PLPlatterView, UIImage, UIImageConfiguration;
+@protocol NCNotificationContentDisplaying;
 
-@interface NCNotificationShortLookView : PLTitledPlatterView <NCNotificationStaticContentAccepting, NCAuxiliaryOptionsSupporting>
+@interface NCNotificationShortLookView : UIView <PLPlatter, NCNotificationStaticContentAccepting, NCAuxiliaryOptionsSupporting, PLContentSizeCategoryAdjusting, MTMaterialGrouping>
 {
+    PLPlatterView *_platterView;
     BSUIFontProvider *_fontProvider;
-    NCNotificationContentView *_notificationContentView;
-    NCNotificationGrabberView *_grabberView;
+    UIView<NCNotificationContentDisplaying> *_notificationContentView;
     NCAuxiliaryOptionsView *_auxiliaryOptionsView;
-    _Bool _notificationContentViewHidden;
     _Bool _banner;
-    _Bool _grabberVisible;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic, getter=_isGrabberVisible, setter=_setGrabberVisible:) _Bool grabberVisible; // @synthesize grabberVisible=_grabberVisible;
 @property(nonatomic, getter=_isBanner, setter=_setBanner:) _Bool banner; // @synthesize banner=_banner;
-@property(nonatomic, getter=isNotificationContentViewHidden) _Bool notificationContentViewHidden; // @synthesize notificationContentViewHidden=_notificationContentViewHidden;
-- (void)_layoutGrabber;
+- (void)_setFontProvider:(id)arg1;
+- (id)_fontProvider;
 - (void)_layoutAuxiliaryOptionsView;
 - (void)_layoutNotificationContentView;
 - (void)_configureAuxiliaryOptionsViewIfNecessary;
+- (id)_notificationContentView;
 - (void)_configureNotificationContentViewIfNecessary;
-- (void)_configureCustomContentView;
-- (void)_configureHeaderContentView;
+- (id)_newNotificationContentView;
+- (void)_configurePlatterViewIfNeccesary;
 - (struct CGSize)_sizeThatFitsContentWithSize:(struct CGSize)arg1 withAuxiliaryOptionsViewVisible:(_Bool)arg2;
+@property(copy, nonatomic) NSString *materialGroupNameBase;
 - (_Bool)adjustForContentSizeCategoryChange;
 @property(nonatomic) _Bool adjustsFontForContentSizeCategory;
 @property(nonatomic) _Bool auxiliaryOptionsVisible;
@@ -45,34 +48,49 @@
 @property(nonatomic) unsigned long long maximumNumberOfPrimaryLargeTextLines;
 @property(nonatomic) unsigned long long maximumNumberOfPrimaryTextLines;
 @property(retain, nonatomic) UIView *accessoryView;
-@property(retain, nonatomic) UIImage *thumbnail;
+@property(nonatomic) long long dateFormatStyle;
+@property(copy, nonatomic) NSTimeZone *timeZone;
+@property(nonatomic, getter=isDateAllDay) _Bool dateAllDay;
+@property(copy, nonatomic) NSDate *date;
+@property(copy, nonatomic) UIImage *thumbnail;
+@property(copy, nonatomic) UIImage *subordinateIcon;
+@property(copy, nonatomic) UIView *prominentIconView;
+@property(copy, nonatomic) UIImage *prominentIcon;
+@property(copy, nonatomic) NSString *footerText;
 @property(copy, nonatomic) NSString *summaryText;
-@property(retain, nonatomic) NSArray *interfaceActions;
+@property(retain, nonatomic) MTVisualStylingProvider *importantTextVisualStylingProvider;
+@property(readonly, copy, nonatomic) UIImageConfiguration *importantTextImageConfiguration;
+@property(copy, nonatomic) NSAttributedString *importantAttributedText;
+@property(copy, nonatomic) NSString *importantText;
 @property(copy, nonatomic) NSString *secondaryText;
 @property(copy, nonatomic) NSString *primarySubtitleText;
 @property(copy, nonatomic) NSString *primaryText;
-- (void)setBackgroundView:(id)arg1;
 - (struct CGSize)sizeThatFitsContentWithSize:(struct CGSize)arg1;
+- (struct CGSize)contentSizeForSize:(struct CGSize)arg1;
+@property(nonatomic, getter=isBackgroundBlurred) _Bool backgroundBlurred;
+@property(nonatomic) _Bool hasShadow;
+@property(readonly, nonatomic) UIView *customContentView;
+- (void)_setCornerRadius:(double)arg1;
+- (double)_cornerRadius;
+- (void)_setContinuousCornerRadius:(double)arg1;
+- (double)_continuousCornerRadius;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (id)_newNotificationContentView;
-@property(readonly, nonatomic, getter=_notificationContentView) NCNotificationContentView *notificationContentView;
-@property(retain, nonatomic, getter=_fontProvider, setter=_setFontProvider:) BSUIFontProvider *fontProvider;
+@property(readonly, nonatomic, getter=isTruncatingSecondaryText) _Bool truncatingSecondaryText;
+@property(nonatomic, getter=isHighlighted) _Bool highlighted;
+@property(readonly, nonatomic) MTMaterialView *backgroundMaterialView;
+@property(nonatomic, getter=isNotificationContentViewHidden) _Bool notificationContentViewHidden;
+@property(copy, nonatomic) NSString *title;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties
-@property(copy, nonatomic) NSDate *date;
-@property(nonatomic, getter=isDateAllDay) _Bool dateAllDay;
-@property(nonatomic) long long dateFormatStyle;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
-@property(readonly, nonatomic) NSArray *iconButtons;
-@property(copy, nonatomic) NSArray *icons;
+@property(retain, nonatomic) NSArray *interfaceActions;
+@property(copy, nonatomic) NSArray *menuActions;
 @property(copy, nonatomic) NSString *preferredContentSizeCategory;
 @property(readonly) Class superclass;
-@property(copy, nonatomic) NSTimeZone *timeZone;
-@property(copy, nonatomic) NSString *title;
-@property(readonly, nonatomic) UIButton *utilityButton;
 
 @end
 

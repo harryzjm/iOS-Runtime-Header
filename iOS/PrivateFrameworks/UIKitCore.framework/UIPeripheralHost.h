@@ -183,7 +183,6 @@
 - (id)contentView;
 - (id)transitioningView;
 - (id)viewForTransitionScreenSnapshot;
-- (void)syncToExistingAnimations;
 - (void)postDidHideNotificationForGeometry:(struct UIPeripheralAnimationGeometry)arg1;
 - (void)postWillHideNotificationForGeometry:(struct UIPeripheralAnimationGeometry)arg1 duration:(double)arg2;
 - (id)userInfoFromGeometry:(struct UIPeripheralAnimationGeometry)arg1 duration:(double)arg2 forWill:(_Bool)arg3 forShow:(_Bool)arg4;
@@ -294,6 +293,7 @@
 - (_Bool)pinningPreventsInputViews:(id)arg1;
 - (id)containerTextEffectsWindowAboveStatusBar;
 - (id)containerTextEffectsWindow;
+- (_Bool)hasDelayedTasksForKey:(id)arg1;
 - (void)flushDelayedTasksForKey:(id)arg1;
 - (void)flushDelayedTasks;
 - (void)queueDelayedTask:(CDUnknownBlockType)arg1 forKey:(id)arg2;

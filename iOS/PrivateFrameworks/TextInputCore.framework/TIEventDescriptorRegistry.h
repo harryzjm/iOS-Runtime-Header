@@ -6,26 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSMutableDictionary;
+@class NSDictionary, NSLock, NSMutableDictionary;
 
 @interface TIEventDescriptorRegistry : NSObject
 {
-    _Bool _loaded;
     NSMutableDictionary *_eventDescriptors;
     NSMutableDictionary *_eventSpecs;
+    NSLock *_lock;
+    _Bool _loaded;
     NSDictionary *_config;
 }
 
 + (id)registryWithDescriptors:(id)arg1 andSpecs:(id)arg2;
 + (id)registryWithConfig:(id)arg1;
++ (id)registry;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool loaded; // @synthesize loaded=_loaded;
-@property(readonly, nonatomic) NSDictionary *config; // @synthesize config=_config;
-@property(readonly, nonatomic) NSMutableDictionary *eventSpecs; // @synthesize eventSpecs=_eventSpecs;
-@property(readonly, nonatomic) NSMutableDictionary *eventDescriptors; // @synthesize eventDescriptors=_eventDescriptors;
+@property(retain, nonatomic) NSDictionary *config; // @synthesize config=_config;
 - (id)valueFromError:(id)arg1 forKey:(id)arg2;
 - (id)contextFromError:(id)arg1;
-- (void)loadEventDescriptors;
+- (void)_loadEventDescriptors;
+- (void)loadEventDescriptorsIfNecessary;
+@property(readonly, nonatomic) NSDictionary *eventSpecs;
+@property(readonly, nonatomic) NSDictionary *eventDescriptors;
 - (id)eventSpecWithName:(id)arg1;
 - (id)eventDescriptorWithName:(id)arg1;
 - (id)allEventDescriptors;

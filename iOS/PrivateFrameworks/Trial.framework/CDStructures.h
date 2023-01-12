@@ -14,12 +14,11 @@ struct atomic_flag {
     _Atomic _Bool _Value;
 };
 
-struct mach_timebase_info {
-    unsigned int numer;
-    unsigned int denom;
-};
-
 #pragma mark Typedef'd Structures
+
+typedef struct {
+    unsigned char _field1;
+} CDStruct_6b48f683;
 
 typedef struct {
     unsigned int _field1[8];

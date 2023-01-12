@@ -20,6 +20,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) __weak NSObject<CKConversationListCollectionViewCellDelegate> *delegate; // @synthesize delegate=_delegate;
 - (void)selectedDeleteButtonForConversation:(id)arg1 inCell:(id)arg2;
+- (double)widthForDeterminingAvatarVisibility;
+- (void)updateContentsForConversation:(id)arg1;
 - (void)updateFontSize;
 - (void)didHoverOverCell:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

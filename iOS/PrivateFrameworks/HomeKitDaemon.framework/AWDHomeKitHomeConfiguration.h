@@ -19,6 +19,8 @@
     NSMutableArray *_hapServicesListCertifieds;
     NSMutableArray *_hapServicesLists;
     int _homeCreationCohortWeek;
+    unsigned int _homeCreationMonth;
+    unsigned int _homeCreationYear;
     NSMutableArray *_homeKitMultiUserSettings;
     unsigned int _homepodSynchLatency;
     int _networkProtectionStatus;
@@ -34,7 +36,9 @@
     unsigned int _numAdmins;
     unsigned int _numAppleAudioAccessories;
     unsigned int _numAppleMediaAccessories;
+    unsigned int _numAppleTV4K2ndGenAccessories;
     unsigned int _numAppleTVAccessories;
+    unsigned int _numBSPs;
     unsigned int _numBridgedAccessories;
     unsigned int _numBridgedTargetControllers;
     unsigned int _numCameraAccessories;
@@ -57,6 +61,7 @@
     unsigned int _numHAPIPAccessoriesSupportJet;
     unsigned int _numHAPNoeAccessoriesSupportJet;
     unsigned int _numHAPSpeakerServiceAccessories;
+    unsigned int _numHomePods;
     unsigned int _numLightProfilesWithNaturalLightingEnabled;
     unsigned int _numLightProfilesWithNaturalLightingSupported;
     unsigned int _numLightProfilesWithNaturalLightingUsed;
@@ -71,6 +76,10 @@
     unsigned int _numNoeRoutCap;
     unsigned int _numNoeSleepCap;
     unsigned int _numNotCertifiedAccessories;
+    unsigned int _numOfNonAcceptedParticipantsWithKnownCapability;
+    unsigned int _numOfParticipantsHaveAccepted;
+    unsigned int _numOfParticipantsHaveCloudShareIDAndHaveAccepted;
+    unsigned int _numOfParticipantsHaveCloudShareIDButNotAccepted;
     int _numPoe2Count;
     int _numPoeCount;
     unsigned int _numPrimaryHAPSpeakerServiceAccessories;
@@ -86,6 +95,7 @@
     unsigned int _numTriggers;
     unsigned int _numUsers;
     unsigned int _numWholeHouseAudioAccessories;
+    unsigned int _numWoLAccessories;
     unsigned int _numZones;
     NSMutableArray *_primaryHAPServicesListCertifieds;
     NSMutableArray *_primaryHAPServicesLists;
@@ -99,6 +109,8 @@
         unsigned int enabledResidentsDeviceCapabilities:1;
         unsigned int firstHAPAccessoryAddedCohortWeek:1;
         unsigned int homeCreationCohortWeek:1;
+        unsigned int homeCreationMonth:1;
+        unsigned int homeCreationYear:1;
         unsigned int homepodSynchLatency:1;
         unsigned int networkProtectionStatus:1;
         unsigned int numAccessories:1;
@@ -113,7 +125,9 @@
         unsigned int numAdmins:1;
         unsigned int numAppleAudioAccessories:1;
         unsigned int numAppleMediaAccessories:1;
+        unsigned int numAppleTV4K2ndGenAccessories:1;
         unsigned int numAppleTVAccessories:1;
+        unsigned int numBSPs:1;
         unsigned int numBridgedAccessories:1;
         unsigned int numBridgedTargetControllers:1;
         unsigned int numCameraAccessories:1;
@@ -136,6 +150,7 @@
         unsigned int numHAPIPAccessoriesSupportJet:1;
         unsigned int numHAPNoeAccessoriesSupportJet:1;
         unsigned int numHAPSpeakerServiceAccessories:1;
+        unsigned int numHomePods:1;
         unsigned int numLightProfilesWithNaturalLightingEnabled:1;
         unsigned int numLightProfilesWithNaturalLightingSupported:1;
         unsigned int numLightProfilesWithNaturalLightingUsed:1;
@@ -150,6 +165,10 @@
         unsigned int numNoeRoutCap:1;
         unsigned int numNoeSleepCap:1;
         unsigned int numNotCertifiedAccessories:1;
+        unsigned int numOfNonAcceptedParticipantsWithKnownCapability:1;
+        unsigned int numOfParticipantsHaveAccepted:1;
+        unsigned int numOfParticipantsHaveCloudShareIDAndHaveAccepted:1;
+        unsigned int numOfParticipantsHaveCloudShareIDButNotAccepted:1;
         unsigned int numPoe2Count:1;
         unsigned int numPoeCount:1;
         unsigned int numPrimaryHAPSpeakerServiceAccessories:1;
@@ -165,6 +184,7 @@
         unsigned int numTriggers:1;
         unsigned int numUsers:1;
         unsigned int numWholeHouseAudioAccessories:1;
+        unsigned int numWoLAccessories:1;
         unsigned int numZones:1;
         unsigned int autoThirdPartyJetEnable:1;
         unsigned int isOwner:1;
@@ -181,6 +201,14 @@
 + (Class)homeKitMultiUserSettingsType;
 + (Class)eventTriggersType;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned int numAppleTV4K2ndGenAccessories; // @synthesize numAppleTV4K2ndGenAccessories=_numAppleTV4K2ndGenAccessories;
+@property(nonatomic) unsigned int numOfNonAcceptedParticipantsWithKnownCapability; // @synthesize numOfNonAcceptedParticipantsWithKnownCapability=_numOfNonAcceptedParticipantsWithKnownCapability;
+@property(nonatomic) unsigned int numOfParticipantsHaveCloudShareIDButNotAccepted; // @synthesize numOfParticipantsHaveCloudShareIDButNotAccepted=_numOfParticipantsHaveCloudShareIDButNotAccepted;
+@property(nonatomic) unsigned int numOfParticipantsHaveCloudShareIDAndHaveAccepted; // @synthesize numOfParticipantsHaveCloudShareIDAndHaveAccepted=_numOfParticipantsHaveCloudShareIDAndHaveAccepted;
+@property(nonatomic) unsigned int numOfParticipantsHaveAccepted; // @synthesize numOfParticipantsHaveAccepted=_numOfParticipantsHaveAccepted;
+@property(nonatomic) unsigned int numWoLAccessories; // @synthesize numWoLAccessories=_numWoLAccessories;
+@property(nonatomic) unsigned int numBSPs; // @synthesize numBSPs=_numBSPs;
+@property(nonatomic) unsigned int numHomePods; // @synthesize numHomePods=_numHomePods;
 @property(nonatomic) unsigned int homepodSynchLatency; // @synthesize homepodSynchLatency=_homepodSynchLatency;
 @property(nonatomic) unsigned int numMoe2Accessories; // @synthesize numMoe2Accessories=_numMoe2Accessories;
 @property(nonatomic) unsigned int numMoe1Accessories; // @synthesize numMoe1Accessories=_numMoe1Accessories;
@@ -215,6 +243,8 @@
 @property(retain, nonatomic) NSMutableArray *hapServicesListCertifieds; // @synthesize hapServicesListCertifieds=_hapServicesListCertifieds;
 @property(retain, nonatomic) NSMutableArray *primaryHAPServicesLists; // @synthesize primaryHAPServicesLists=_primaryHAPServicesLists;
 @property(retain, nonatomic) NSMutableArray *hapServicesLists; // @synthesize hapServicesLists=_hapServicesLists;
+@property(nonatomic) unsigned int homeCreationYear; // @synthesize homeCreationYear=_homeCreationYear;
+@property(nonatomic) unsigned int homeCreationMonth; // @synthesize homeCreationMonth=_homeCreationMonth;
 @property(nonatomic) unsigned int numCameraAccessoriesSupportRecording; // @synthesize numCameraAccessoriesSupportRecording=_numCameraAccessoriesSupportRecording;
 @property(nonatomic) unsigned int numHAPBatteryServiceAccessories; // @synthesize numHAPBatteryServiceAccessories=_numHAPBatteryServiceAccessories;
 @property(nonatomic) unsigned int numHAPBTAccessories; // @synthesize numHAPBTAccessories=_numHAPBTAccessories;
@@ -270,6 +300,14 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasNumAppleTV4K2ndGenAccessories;
+@property(nonatomic) _Bool hasNumOfNonAcceptedParticipantsWithKnownCapability;
+@property(nonatomic) _Bool hasNumOfParticipantsHaveCloudShareIDButNotAccepted;
+@property(nonatomic) _Bool hasNumOfParticipantsHaveCloudShareIDAndHaveAccepted;
+@property(nonatomic) _Bool hasNumOfParticipantsHaveAccepted;
+@property(nonatomic) _Bool hasNumWoLAccessories;
+@property(nonatomic) _Bool hasNumBSPs;
+@property(nonatomic) _Bool hasNumHomePods;
 @property(nonatomic) _Bool hasHomepodSynchLatency;
 @property(nonatomic) _Bool hasNumMoe2Accessories;
 @property(nonatomic) _Bool hasNumMoe1Accessories;
@@ -320,6 +358,8 @@
 - (unsigned long long)hapServicesListsCount;
 - (void)addHapServicesList:(id)arg1;
 - (void)clearHapServicesLists;
+@property(nonatomic) _Bool hasHomeCreationYear;
+@property(nonatomic) _Bool hasHomeCreationMonth;
 @property(nonatomic) _Bool hasNumCameraAccessoriesSupportRecording;
 @property(nonatomic) _Bool hasNumHAPBatteryServiceAccessories;
 @property(nonatomic) _Bool hasNumHAPBTAccessories;

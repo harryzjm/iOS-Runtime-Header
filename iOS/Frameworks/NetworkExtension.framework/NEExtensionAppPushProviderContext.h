@@ -21,6 +21,7 @@
 - (void)setProviderConfiguration:(id)arg1;
 - (void)stopWithReason:(int)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)startConnectionWithProviderConfig:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (_Bool)isStartMethodOverridden:(id)arg1;
 - (void)dealloc;
 - (id)extensionPoint;
 

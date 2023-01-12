@@ -13,7 +13,9 @@
 
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
+- (id)_startedLocalConnectionWithLanguageCode:(id)arg1 delegate:(id)arg2 taskHint:(long long)arg3 requestIdentifier:(id)arg4;
 - (id)_startedConnectionWithLanguageCode:(id)arg1 delegate:(id)arg2 taskHint:(long long)arg3 requestIdentifier:(id)arg4;
+- (void)_handlePreRecordedAudioWithAsset:(id)arg1 audioTracks:(id)arg2 narrowband:(_Bool)arg3 addSpeechDataBlock:(CDUnknownBlockType)arg4 stopSpeechBlock:(CDUnknownBlockType)arg5 cancelSpeechWithErrorBlock:(CDUnknownBlockType)arg6;
 - (id)initWithURL:(id)arg1;
 - (id)init;
 

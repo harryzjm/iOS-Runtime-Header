@@ -35,7 +35,7 @@
 - (void)updateRegionWithIdentifier:(id)arg1 localizedName:(id)arg2 boundingRegion:(CDStruct_2b0c6e0b)arg3 mapsIdentifier:(unsigned long long)arg4 providerIdentifier:(int)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)cancelQueryWithIdentifier:(id)arg1;
 - (void)searchWithQuery:(id)arg1;
-- (_Bool)hasSearchableContent;
+- (_Bool)hasSearchableContentForQuery:(id)arg1;
 - (_Bool)canProvideFullResults;
 - (id)_remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (CDUnknownBlockType)errorHandlerForMethod:(SEL)arg1 completion:(CDUnknownBlockType)arg2;

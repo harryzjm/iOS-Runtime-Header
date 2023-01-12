@@ -19,7 +19,7 @@
 - (void).cxx_destruct;
 - (void)detachFromParentViewController;
 - (void)attachToParentViewController:(id)arg1;
-- (void)configureViewWithParameter:(id)arg1 state:(id)arg2 editable:(_Bool)arg3 processing:(_Bool)arg4 shouldFocus:(_Bool)arg5 variableProvider:(id)arg6 variableUIDelegate:(id)arg7 updateBlock:(CDUnknownBlockType)arg8;
+- (void)configureViewWithParameter:(id)arg1 state:(id)arg2 editable:(_Bool)arg3 processing:(_Bool)arg4 shouldFocus:(_Bool)arg5 variableProvider:(id)arg6 widgetFamily:(long long)arg7 fillProvider:(id)arg8 overridingCellBackgroundColor:(id)arg9 updateBlock:(CDUnknownBlockType)arg10;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

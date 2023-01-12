@@ -9,6 +9,7 @@
 @interface PKAccountWebServiceAccountTransactionAnswerRequest
 {
     NSString *_accountIdentifier;
+    NSString *_accountUserAltDSID;
     NSURL *_baseURL;
     NSString *_transactionIdentifier;
     NSDictionary *_answers;
@@ -18,6 +19,7 @@
 @property(copy, nonatomic) NSDictionary *answers; // @synthesize answers=_answers;
 @property(copy, nonatomic) NSString *transactionIdentifier; // @synthesize transactionIdentifier=_transactionIdentifier;
 @property(copy, nonatomic) NSURL *baseURL; // @synthesize baseURL=_baseURL;
+@property(copy, nonatomic) NSString *accountUserAltDSID; // @synthesize accountUserAltDSID=_accountUserAltDSID;
 @property(copy, nonatomic) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
 - (id)_urlRequestWithAppleAccountInformation:(id)arg1;
 

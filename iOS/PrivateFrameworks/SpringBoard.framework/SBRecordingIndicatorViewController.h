@@ -6,7 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
-@class CAContext, CALayer, UIColor, UIView, UIViewPropertyAnimator;
+@class CAContext, CALayer, SBRecordingIndicatorView, UIColor, UIViewPropertyAnimator;
 
 @interface SBRecordingIndicatorViewController : UIViewController
 {
@@ -23,7 +23,7 @@
     CALayer *_rootLayer;
     CALayer *_contentLayer;
     _Bool _isStatusBarPortal;
-    UIView *_indicatorView;
+    SBRecordingIndicatorView *_indicatorView;
     UIColor *_indicatorColor;
     unsigned long long _indicatorAnimationState;
     long long _activeInterfaceOrientation;
@@ -34,12 +34,15 @@
 @property(nonatomic, getter=activeInterfaceOrientation) long long activeInterfaceOrientation; // @synthesize activeInterfaceOrientation=_activeInterfaceOrientation;
 @property(readonly, nonatomic) unsigned long long indicatorAnimationState; // @synthesize indicatorAnimationState=_indicatorAnimationState;
 @property(retain, nonatomic, getter=indicatorColor) UIColor *indicatorColor; // @synthesize indicatorColor=_indicatorColor;
-@property(readonly, nonatomic, getter=indicatorView) UIView *indicatorView; // @synthesize indicatorView=_indicatorView;
+@property(readonly, nonatomic, getter=indicatorView) SBRecordingIndicatorView *indicatorView; // @synthesize indicatorView=_indicatorView;
+- (long long)_overrideWindowActiveInterfaceOrientation;
 - (unsigned long long)supportedInterfaceOrientations;
 - (_Bool)_canShowWhileLocked;
 - (void)_stopAllAnimations;
-- (void)animateIndicatorVisibleFastFade:(_Bool)arg1;
-- (void)animateIndicatorVisible:(_Bool)arg1;
+- (void)updateIndicatorVisibilityWithFastFadeAnimation:(_Bool)arg1;
+- (void)updateIndicatorVisibility:(_Bool)arg1 skipFadeOutAnimation:(_Bool)arg2;
+- (void)updateIndicatorVisibility:(_Bool)arg1;
+- (void)updateIndicatorShape:(unsigned long long)arg1;
 - (void)_updateIndicatorViewSize:(double)arg1 alpha:(double)arg2;
 - (void)_updateIndicatorLayerSize:(double)arg1 opacity:(double)arg2;
 - (void)_updateIndicatorLayerWithBounds:(struct CGRect)arg1 andCenter:(struct CGPoint)arg2;

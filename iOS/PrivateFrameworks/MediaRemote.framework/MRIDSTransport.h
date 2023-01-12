@@ -4,31 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class IDSService, MRAVOutputDevice, MRIDSInputStream, MRIDSOutputStream;
+@class MRAVOutputDevice, MRDeviceInfo, MRIDSTransportConnection, NSError, NSString;
 
 @interface MRIDSTransport
 {
-    IDSService *_service;
-    MRIDSInputStream *_inputStream;
-    MRIDSOutputStream *_outputStream;
-    long long _type;
     MRAVOutputDevice *_outputDevice;
+    MRIDSTransportConnection *_connection;
+    _Bool _shouldUseSystemAuthenticationPrompt;
+    MRDeviceInfo *_deviceInfo;
+    NSError *_error;
+    NSString *_sessionUID;
 }
 
 - (void).cxx_destruct;
-- (void)_handleDeviceDisconnected:(id)arg1;
-- (void)reset;
-- (_Bool)getInputStream:(id *)arg1 outputStream:(id *)arg2 userInfo:(id)arg3;
-- (id)error;
+@property(retain, nonatomic) NSString *sessionUID; // @synthesize sessionUID=_sessionUID;
+- (id)deviceInfo;
 - (void)setShouldUseSystemAuthenticationPrompt:(_Bool)arg1;
 - (_Bool)shouldUseSystemAuthenticationPrompt;
+- (void)_handleDeviceDisconnected:(id)arg1;
+- (void)_handleDeviceConnected:(id)arg1;
+- (id)_generateSessionUID;
+- (void)_synchronized_setSessionUID:(id)arg1;
+- (void)reset;
+- (id)createConnectionWithUserInfo:(id)arg1;
+- (id)error;
 - (id)uid;
 - (long long)port;
 - (id)hostname;
 - (id)name;
-- (id)deviceInfo;
-- (id)initWithType:(long long)arg1 outputDevice:(id)arg2;
-- (id)initWithType:(long long)arg1;
+- (id)initWithOutputDevice:(id)arg1;
 
 @end
 

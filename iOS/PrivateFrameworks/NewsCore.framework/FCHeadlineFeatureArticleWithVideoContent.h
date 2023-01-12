@@ -9,7 +9,6 @@
 }
 
 + (id)articleWithVideoContentFeature;
-- (id)fr_description;
 - (id)init;
 
 @end

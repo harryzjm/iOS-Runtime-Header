@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSHashTable, RBSAssertion, RBSProcessMonitor, RBSProcessPredicate, RBSTerminateContext;
+@class NSHashTable, NSMutableSet, RBSAssertion, RBSProcessMonitor, RBSProcessPredicate, RBSTerminateContext;
 @protocol RBSServiceLocalProtocol;
 
 @interface RBSTerminationAssertion : NSObject
@@ -19,6 +19,9 @@
     id <RBSServiceLocalProtocol> _service;
     unsigned long long _state;
     _Bool _processExists;
+    NSMutableSet *_runningHandles;
+    _Bool _deathMonitorsSetUp;
+    _Bool _observersHaveBeenNotified;
     NSHashTable *_observers;
 }
 

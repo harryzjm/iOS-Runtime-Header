@@ -6,13 +6,14 @@
 
 #import <HomeKit/NSObject-Protocol.h>
 
-@class HMAccessorySettingConstraint, _HMAccessorySetting;
+@class HMAccessorySettingConstraint, NSString, _HMAccessorySetting;
 
 @protocol _HMAccesorySettingDelegate <NSObject>
 - (void)_settingDidUpdateValue:(_HMAccessorySetting *)arg1;
 - (void)_settingWillUpdateValue:(_HMAccessorySetting *)arg1;
 
 @optional
+- (NSString *)keyPathForSetting:(_HMAccessorySetting *)arg1;
 - (void)_setting:(_HMAccessorySetting *)arg1 didRemoveConstraint:(HMAccessorySettingConstraint *)arg2;
 - (void)_setting:(_HMAccessorySetting *)arg1 didAddConstraint:(HMAccessorySettingConstraint *)arg2;
 @end

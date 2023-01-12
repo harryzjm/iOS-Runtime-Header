@@ -6,13 +6,8 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-@class MISSING_TYPE;
-
 @interface _TtC7VFXCore14DebugVFXSystem : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *showWindowShortcutKeycode;
-    MISSING_TYPE *isMenuItemEnabled;
-    MISSING_TYPE *isMenuItemBoundToEnabled;
 }
 
 @end

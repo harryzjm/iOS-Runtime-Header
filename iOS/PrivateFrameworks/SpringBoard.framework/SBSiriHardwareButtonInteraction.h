@@ -20,6 +20,7 @@
 }
 
 + (_Bool)dismissSiriTransientOverlayOnSinglePressUp:(long long)arg1;
++ (id)hardwareButtonInteractionForVoiceCommandButton;
 + (id)hardwareButtonInteractionForLockButton;
 + (id)hardwareButtonInteractionForHomeButton;
 - (void).cxx_destruct;

@@ -15,7 +15,7 @@
 - (void).cxx_destruct;
 - (unsigned long long)sizeOfDataTypes:(id)arg1;
 @property(readonly, nonatomic) unsigned long long totalSize;
-- (id)initWithSize:(const struct Size *)arg1;
+- (id)initWithSize:(const void *)arg1;
 
 @end
 

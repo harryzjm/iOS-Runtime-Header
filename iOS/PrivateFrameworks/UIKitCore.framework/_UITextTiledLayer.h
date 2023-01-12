@@ -8,15 +8,13 @@
 
 #import <UIKitCore/CALayerDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, NSTimer, UIBezierPath;
+@class NSArray, NSMutableArray, NSString, UIBezierPath;
 @protocol _UITextTiledLayerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface _UITextTiledLayer : CALayer <CALayerDelegate>
 {
     NSMutableArray *_visibleTiles;
-    NSMutableArray *_unusedTiles;
-    NSTimer *_unusedTilesCleanupTimer;
     struct CGSize _tileSize;
     CALayer *_viewportLayer;
     double _viewportLayerExtraWidthFactor;
@@ -38,7 +36,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double maxTileHeight; // @synthesize maxTileHeight=_maxTileHeight;
 - (void)resumeTiling;
 - (void)suspendTiling;
-- (void)dealloc;
 - (void)layoutSublayers;
 - (void)_updateTilingViewportWindow:(id)arg1;
 - (id)_prepareNonTiledGhostLayersForVisibleBounds:(struct CGRect)arg1 inBounds:(struct CGRect)arg2;

@@ -6,31 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableDictionary, NSMutableOrderedSet;
-@protocol OS_dispatch_queue;
+@class NSArray, NSMutableArray, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface _UICollectionViewPrefetchingContext : NSObject
 {
     NSArray *_remainingIndexPaths;
-    NSMutableOrderedSet *_items;
+    NSMutableArray *_items;
     NSMutableDictionary *_itemsDict;
-    NSObject<OS_dispatch_queue> *_dataAccessQueue;
+    struct CGRect _prefetchRect;
 }
 
-+ (id)prefetchingContextWithItems:(id)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *dataAccessQueue; // @synthesize dataAccessQueue=_dataAccessQueue;
-@property(retain, nonatomic) NSMutableDictionary *itemsDict; // @synthesize itemsDict=_itemsDict;
-@property(retain, nonatomic) NSMutableOrderedSet *items; // @synthesize items=_items;
-@property(retain, nonatomic) NSArray *remainingIndexPaths; // @synthesize remainingIndexPaths=_remainingIndexPaths;
-- (id)_items;
-- (void)_invalidateRemainingIndexPaths;
-- (id)popNextItem;
-- (id)peekNextItem;
-- (_Bool)hasRemainingItems;
-- (void)prefetchCompleteForItemAtIndexPath:(id)arg1;
-- (id)initWithPrefetchItems:(id)arg1;
 
 @end
 

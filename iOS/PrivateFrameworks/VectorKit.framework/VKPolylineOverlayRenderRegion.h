@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface VKPolylineOverlayRenderRegion : NSObject
 {
-    set_8caf8a88 _routeLineDatas;
+    struct set<std::shared_ptr<md::RouteLineData>, std::less<std::shared_ptr<md::RouteLineData>>, std::allocator<std::shared_ptr<md::RouteLineData>>> _routeLineDatas;
     Box_3d7e3c2c _visibleRect;
     struct MultiRectRegion _snappingRegion;
 }
@@ -17,10 +17,10 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) Box_3d7e3c2c visibleRect; // @synthesize visibleRect=_visibleRect;
-@property(readonly, nonatomic) const set_8caf8a88 *routeLineDatas; // @synthesize routeLineDatas=_routeLineDatas;
+@property(readonly, nonatomic) const void *routeLineDatas; // @synthesize routeLineDatas=_routeLineDatas;
 - (_Bool)isEquivalentToNewRegion:(id)arg1;
-- (const struct MultiRectRegion *)snappingRegion;
-- (id)initForVisibleRect:(const Box_3d7e3c2c *)arg1 snappingRegion:(const struct MultiRectRegion *)arg2 routeLineDatas:(const set_8caf8a88 *)arg3;
+- (const void *)snappingRegion;
+- (id)initForVisibleRect:(const void *)arg1 snappingRegion:(const void *)arg2 routeLineDatas:(const void *)arg3;
 
 @end
 

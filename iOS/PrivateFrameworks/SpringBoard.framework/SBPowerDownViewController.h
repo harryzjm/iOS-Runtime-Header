@@ -4,20 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <SpringBoard/SBPasscodeEntryTransientOverlayViewControllerDelegate-Protocol.h>
 #import <SpringBoard/SBPowerDownViewDelegate-Protocol.h>
 
-@class NSString, SBPowerDownView;
-@protocol SBPowerDownViewControllerDelegate;
+@class NSString, SBFUserAuthenticationController, SBPasscodeEntryTransientOverlayViewController, SBPowerDownView, SPBeaconManager;
+@protocol SBFLockOutStatusProvider, SBPowerDownViewControllerDelegate;
 
-@interface SBPowerDownViewController <SBPowerDownViewDelegate>
+@interface SBPowerDownViewController <SBPowerDownViewDelegate, SBPasscodeEntryTransientOverlayViewControllerDelegate>
 {
     unsigned long long _aggdStartTime;
     _Bool _canAlterScreenBrightness;
     SBPowerDownView *_powerDownView;
+    _Bool _userWantsFindMySuppressed;
     id <SBPowerDownViewControllerDelegate> _delegate;
+    SPBeaconManager *_beaconManager;
+    SBPasscodeEntryTransientOverlayViewController *_passcodeEntryTransientOverlayViewController;
+    SBFUserAuthenticationController *_userAuthController;
+    id <SBFLockOutStatusProvider> _lockOutController;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <SBFLockOutStatusProvider> lockOutController; // @synthesize lockOutController=_lockOutController;
+@property(nonatomic) _Bool userWantsFindMySuppressed; // @synthesize userWantsFindMySuppressed=_userWantsFindMySuppressed;
+@property(retain, nonatomic) SBFUserAuthenticationController *userAuthController; // @synthesize userAuthController=_userAuthController;
+@property(retain, nonatomic) SBPasscodeEntryTransientOverlayViewController *passcodeEntryTransientOverlayViewController; // @synthesize passcodeEntryTransientOverlayViewController=_passcodeEntryTransientOverlayViewController;
+@property(retain, nonatomic) SPBeaconManager *beaconManager; // @synthesize beaconManager=_beaconManager;
 @property(nonatomic) __weak id <SBPowerDownViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_resetScreenBrightness;
 - (void)_endTimeTrackingIncludingReportWithKey:(id)arg1;
@@ -38,6 +49,15 @@
 - (void)powerDownViewDidCompleteSlide:(id)arg1;
 - (void)powerDownViewDidCancelSlide:(id)arg1;
 - (void)powerDownViewDidBeginSlide:(id)arg1;
+- (id)passcodeEntryTransientOverlayViewControllerStatusSubtitleText;
+- (id)passcodeEntryTransientOverlayViewControllerStatusText;
+- (void)passcodeEntryTransientOverlayViewControllerRequestsDismissal:(id)arg1;
+- (_Bool)passcodeEntryTransientOverlayViewController:(id)arg1 authenticatePasscode:(id)arg2;
+- (void)_setPasscodeVisible:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)didTapTemporarilyDisableFindMy;
+- (void)userAcknowledgedFindMyInfo;
+- (void)showPowerDownFindMyAlert;
+- (void)showPowerDownFindMyAlertWithProceed:(CDUnknownBlockType)arg1 cancelCompletion:(CDUnknownBlockType)arg2;
 - (void)powerDownViewAnimateOutCompleted:(id)arg1;
 - (void)powerDownViewWillAnimateOut:(id)arg1;
 - (void)powerDownViewWillAnimateIn:(id)arg1;

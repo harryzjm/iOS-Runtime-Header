@@ -16,7 +16,7 @@
 + (id)_newConnection;
 - (void).cxx_destruct;
 @property(readonly) NSXPCConnection *connection; // @synthesize connection=_connection;
-- (id)passcodeCollectedFromUserWithError:(id *)arg1;
+- (void)collectPasscodeFromUserWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (_Bool)applyUpdatedConfiguration:(id)arg1 error:(id *)arg2;
 - (id)currentConfigurationForUser:(id)arg1 error:(id *)arg2;
 - (void)dealloc;

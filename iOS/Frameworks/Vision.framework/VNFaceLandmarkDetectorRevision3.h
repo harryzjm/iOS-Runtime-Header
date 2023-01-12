@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 + (id)espressoModelFileNameForConfigurationOptions:(id)arg1;
 + (void)recordDefaultConfigurationOptionsInDictionary:(id)arg1;
 + (unsigned char)landmarkDetectorDNNVersion;
-- (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
+- (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4 progressHandler:(CDUnknownBlockType)arg5;
 - (struct CGRect)normalizedFaceBBoxForLandmarks:(id)arg1;
 
 @end

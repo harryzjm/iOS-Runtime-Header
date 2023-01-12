@@ -18,8 +18,8 @@
 - (void).cxx_destruct;
 - (id)queue;
 - (_Bool)isQueueCurrent;
-- (void)assertQueueIsNotCurrent;
-- (void)assertQueueIsCurrent;
+- (_Bool)assertQueueIsNotCurrent;
+- (_Bool)assertQueueIsCurrent;
 - (void)performBlock:(CDUnknownBlockType)arg1 waitUntilDone:(_Bool)arg2;
 - (void)performBlock:(CDUnknownBlockType)arg1;
 - (id)initWithQueue:(id)arg1;

@@ -22,12 +22,24 @@ struct CLAssertionInternal {
     struct CLConnectionClient *_field2;
 };
 
+struct CLCallbackAssertionInternal {
+    id _field1;
+    CDUnknownBlockType _field2;
+    struct CLConnectionClient *_field3;
+};
+
 struct CLConnectionClient;
+
+struct CLConnectionMessage;
+
+struct CLGnssDisablementAssertionInternal;
 
 struct CLLocationCoordinate2D {
     double latitude;
     double longitude;
 };
+
+struct CLRegulatoryConfigInternal;
 
 struct _CLLocationManagerStateTrackerState {
     double distanceFilter;
@@ -60,11 +72,57 @@ struct _CLLocationManagerStateTrackerState {
     _Bool isAuthorizedForWidgetUpdates;
 };
 
+struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
+    struct __compressed_pair<std::basic_string<char>::__rep, std::allocator<char>> {
+        struct __rep {
+            union {
+                struct __long {
+                    char *_field1;
+                    unsigned long long _field2;
+                    unsigned long long _field3;
+                } _field1;
+                struct __short {
+                    char _field1[23];
+                    struct {
+                        unsigned char _field1;
+                    } _field2;
+                } _field2;
+                struct __raw {
+                    unsigned long long _field1[3];
+                } _field3;
+            } _field1;
+        } _field1;
+    } _field1;
+};
+
 struct os_state_hints_s {
     unsigned int _field1;
     char *_field2;
     unsigned int _field3;
     unsigned int _field4;
+};
+
+struct shared_ptr<CLConnectionMessage> {
+    struct CLConnectionMessage *_field1;
+    struct __shared_weak_count *_field2;
+};
+
+struct unique_ptr<CLConnectionClient, std::default_delete<CLConnectionClient>> {
+    struct __compressed_pair<CLConnectionClient *, std::default_delete<CLConnectionClient>> {
+        struct CLConnectionClient *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<CLGnssDisablementAssertionInternal, std::default_delete<CLGnssDisablementAssertionInternal>> {
+    struct __compressed_pair<CLGnssDisablementAssertionInternal *, std::default_delete<CLGnssDisablementAssertionInternal>> {
+        struct CLGnssDisablementAssertionInternal *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<CLRegulatoryConfigInternal, std::default_delete<CLRegulatoryConfigInternal>> {
+    struct __compressed_pair<CLRegulatoryConfigInternal *, std::default_delete<CLRegulatoryConfigInternal>> {
+        struct CLRegulatoryConfigInternal *__value_;
+    } __ptr_;
 };
 
 #pragma mark Typedef'd Structures
@@ -88,6 +146,10 @@ typedef struct {
 typedef struct {
     float v[6][6];
 } CDStruct_2972252c;
+
+typedef struct {
+    unsigned int _field1[8];
+} CDStruct_6ad76789;
 
 typedef struct {
     double x;
@@ -166,16 +228,24 @@ typedef struct {
     double _field28;
     double _field29;
     double _field30;
-    _Bool _field31;
+    double _field31;
+    double _field32;
+    _Bool _field33;
+    _Bool _field34;
     struct {
         double _field1;
         double _field2;
-    } _field32;
-    double _field33;
-    int _field34;
-    double _field35;
+    } _field35;
     double _field36;
-} CDStruct_9ef4a103;
+    int _field37;
+    double _field38;
+    double _field39;
+    double _field40;
+    double _field41;
+    int _field42;
+    double _field43;
+    double _field44;
+} CDStruct_d25f1cbc;
 
 typedef struct {
     int padding1;
@@ -201,40 +271,49 @@ typedef struct {
     int referenceFrame;
     int rawReferenceFrame;
     int signalEnvironmentType;
-} CDStruct_0f4838e9;
+    double ellipsoidalAltitude;
+    _Bool fromSimulationController;
+} CDStruct_2fb123db;
 
 typedef struct {
-    char identifier[512];
-    char onBehalfOfIdentifier[512];
-    int type;
-    _Bool notifyOnEntry;
-    _Bool notifyOnExit;
-    _Bool conservativeEntry;
-    _Bool emergency;
+    char _field1[512];
+    char _field2[512];
+    char _field3[512];
+    int _field4;
+    _Bool _field5;
+    _Bool _field6;
+    _Bool _field7;
+    _Bool _field8;
     union {
         struct {
-            char proximityUUID[512];
-            unsigned short major;
-            unsigned short minor;
-            int definitionMask;
-            _Bool notifyEntryStateOnDisplay;
-        } beaconAttributes;
+            char _field1[512];
+            unsigned short _field2;
+            unsigned short _field3;
+            int _field4;
+            _Bool _field5;
+        } _field1;
         struct {
-            CDStruct_2c43369c center;
-            double radius;
-            double desiredAccuracy;
-            int referenceFrame;
-            _Bool allowMonitoringWhileNearby;
-            _Bool lowPower;
-        } circularAttributes;
+            struct {
+                double _field1;
+                double _field2;
+            } _field1;
+            double _field2;
+            double _field3;
+            int _field4;
+            _Bool _field5;
+            _Bool _field6;
+        } _field2;
         struct {
-            CDStruct_2c43369c vertices[101];
-            int verticesCount;
-            int referenceFrame;
-            _Bool allowMonitoringWhileNearby;
-        } polygonalAttributes;
-    } ;
-} CDStruct_739493b2;
+            struct {
+                double _field1;
+                double _field2;
+            } _field1[101];
+            int _field2;
+            int _field3;
+            _Bool _field4;
+        } _field3;
+    } _field9;
+} CDStruct_9fcfe784;
 
 // Ambiguous groups
 typedef struct {
@@ -261,4 +340,32 @@ typedef struct {
     double latitude;
     double longitude;
 } CDStruct_2c43369c;
+
+typedef struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
+    struct __compressed_pair<std::basic_string<char>::__rep, std::allocator<char>> {
+        struct __rep {
+            union {
+                struct __long {
+                    char *_field1;
+                    unsigned long long _field2;
+                    unsigned long long _field3;
+                } _field1;
+                struct __short {
+                    char _field1[23];
+                    struct {
+                        unsigned char _field1;
+                    } _field2;
+                } _field2;
+                struct __raw {
+                    unsigned long long _field1[3];
+                } _field3;
+            } _field1;
+        } _field1;
+    } _field1;
+} basic_string_05660eb3;
+
+typedef struct shared_ptr<CLConnectionMessage> {
+    struct CLConnectionMessage *_field1;
+    struct __shared_weak_count *_field2;
+} shared_ptr_bdcc6d0f;
 

@@ -19,6 +19,7 @@
 + (id)outputTypes;
 + (id)ownedTypes;
 + (_Bool)isAvailableOnPlatform:(long long)arg1;
++ (id)stringConversionBehavior;
 + (id)propertyBuilders;
 - (_Bool)getListThumbnail:(CDUnknownBlockType)arg1 forSize:(struct CGSize)arg2;
 - (_Bool)getListAltText:(CDUnknownBlockType)arg1;

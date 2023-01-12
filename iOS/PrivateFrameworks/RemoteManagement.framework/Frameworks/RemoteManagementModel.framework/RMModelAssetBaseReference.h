@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSNumber, NSString;
+@class NSNumber, NSString;
 
 @interface RMModelAssetBaseReference
 {
@@ -12,14 +12,12 @@
     NSString *_payloadContentType;
     NSNumber *_payloadSize;
     NSString *_payloadHashSHA256;
-    NSArray *_payloadCertificatePinningIdentifiers;
 }
 
 + (id)buildRequiredOnlyWithDataURL:(id)arg1 contentType:(id)arg2 size:(id)arg3 hashSHA256:(id)arg4;
-+ (id)buildWithDataURL:(id)arg1 contentType:(id)arg2 size:(id)arg3 hashSHA256:(id)arg4 certificatePinningIdentifiers:(id)arg5;
++ (id)buildWithDataURL:(id)arg1 contentType:(id)arg2 size:(id)arg3 hashSHA256:(id)arg4;
 + (id)allowedPayloadKeys;
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSArray *payloadCertificatePinningIdentifiers; // @synthesize payloadCertificatePinningIdentifiers=_payloadCertificatePinningIdentifiers;
 @property(copy, nonatomic) NSString *payloadHashSHA256; // @synthesize payloadHashSHA256=_payloadHashSHA256;
 @property(copy, nonatomic) NSNumber *payloadSize; // @synthesize payloadSize=_payloadSize;
 @property(copy, nonatomic) NSString *payloadContentType; // @synthesize payloadContentType=_payloadContentType;

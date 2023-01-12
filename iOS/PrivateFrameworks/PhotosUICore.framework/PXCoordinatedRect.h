@@ -20,6 +20,7 @@
 @property(readonly, nonatomic) struct CGRect rect; // @synthesize rect=_rect;
 @property(readonly, nonatomic) NSObject<UICoordinateSpace> *coordinateSpace; // @synthesize coordinateSpace=_coordinateSpace;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)copyWithRect:(struct CGRect)arg1 inCoordinateSpace:(id)arg2;
 - (struct CGRect)rectInCoordinateSpace:(id)arg1;
 - (id)initWithRect:(struct CGRect)arg1 inCoordinateSpace:(id)arg2;
 - (id)init;

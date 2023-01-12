@@ -4,6 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeUI/HFHomeObserver-Protocol.h>
 #import <HomeUI/HUAboutResidentDeviceViewControllerDelegate-Protocol.h>
 #import <HomeUI/HUColoredButtonCellDelegate-Protocol.h>
 #import <HomeUI/HUTriggerEditorDelegate-Protocol.h>
@@ -11,7 +12,7 @@
 
 @class HUDashboardNavigationButton, HUGridLayoutOptions, HUTriggerListItemManager, NSString;
 
-@interface HUTriggerListViewController <HUAboutResidentDeviceViewControllerDelegate, HUTriggerEditorDelegate, HUColoredButtonCellDelegate, HUTriggerListSubheadlineCellDelegate>
+@interface HUTriggerListViewController <HUAboutResidentDeviceViewControllerDelegate, HUTriggerEditorDelegate, HUColoredButtonCellDelegate, HUTriggerListSubheadlineCellDelegate, HFHomeObserver>
 {
     _Bool _isTransitioningSizes;
     HUDashboardNavigationButton *_navigationAddButton;
@@ -25,17 +26,26 @@
 @property(nonatomic) _Bool isTransitioningSizes; // @synthesize isTransitioningSizes=_isTransitioningSizes;
 @property(nonatomic) unsigned long long editorPresentationMode; // @synthesize editorPresentationMode=_editorPresentationMode;
 @property(readonly, nonatomic) HUTriggerListItemManager *triggerItemManager; // @synthesize triggerItemManager=_triggerItemManager;
-@property(readonly, nonatomic) HUDashboardNavigationButton *navigationAddButton; // @synthesize navigationAddButton=_navigationAddButton;
-- (void)_updateRightBarButtons;
+@property(retain, nonatomic) HUDashboardNavigationButton *navigationAddButton; // @synthesize navigationAddButton=_navigationAddButton;
+- (id)_deleteItem:(id)arg1;
+- (void)_updateNavigationItems;
+- (void)_invalidateNavigationAddButtonMenu;
+- (void)home:(id)arg1 didUpdateNameForRoom:(id)arg2;
+- (void)home:(id)arg1 didRemoveRoom:(id)arg2;
+- (void)home:(id)arg1 didAddRoom:(id)arg2;
+- (void)home:(id)arg1 didRemoveAccessory:(id)arg2;
+- (void)home:(id)arg1 didRemoveResidentDevice:(id)arg2;
+- (void)home:(id)arg1 didAddResidentDevice:(id)arg2;
+- (void)home:(id)arg1 didAddAccessory:(id)arg2;
+- (void)homeDidUpdateName:(id)arg1;
 - (void)learnMoreLinkTapped:(id)arg1;
 - (void)aboutResidentDeviceViewControllerDidFinish:(id)arg1;
 - (void)triggerEditor:(id)arg1 didFinishWithTriggerBuilder:(id)arg2;
-- (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;
+- (id)trailingSwipeActionsForItem:(id)arg1;
 - (_Bool)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (_Bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (void)coloredButtonCellPressed:(id)arg1;
-- (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
 - (_Bool)shouldHideSeparatorsForCell:(id)arg1 indexPath:(id)arg2;
 - (_Bool)shouldHideFooterBelowSection:(long long)arg1;
@@ -45,9 +55,11 @@
 - (unsigned long long)automaticDisablingReasonsForItem:(id)arg1;
 - (void)_showSummaryForTriggerItem:(id)arg1;
 - (void)_addTrigger:(id)arg1;
+- (id)dashboardNavigator;
 - (void)showAddTriggerView;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewWillLayoutSubviews;
+- (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (id)init;

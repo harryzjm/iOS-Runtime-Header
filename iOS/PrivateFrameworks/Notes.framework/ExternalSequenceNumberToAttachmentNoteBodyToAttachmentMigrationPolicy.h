@@ -6,6 +6,7 @@
 
 #import <CoreData/NSEntityMigrationPolicy.h>
 
+__attribute__((visibility("hidden")))
 @interface ExternalSequenceNumberToAttachmentNoteBodyToAttachmentMigrationPolicy : NSEntityMigrationPolicy
 {
 }

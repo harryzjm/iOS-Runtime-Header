@@ -28,11 +28,16 @@
 - (id)communicationChannelDelegate;
 - (void)setCommunicationChannelDelegate:(id)arg1;
 - (void)openCommunicationChannelWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_openPerCommunicationChannelDelegateChannelWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)setCurrentBluetoothListeningMode:(id)arg1 error:(id *)arg2;
 - (void)setCurrentBluetoothListeningMode:(id)arg1;
 - (id)currentBluetoothListeningMode;
 - (id)availableBluetoothListeningModes;
 - (_Bool)isHeadTrackedSpatialAudioActive;
+- (_Bool)setHeadTrackedSpatialAudioMode:(id)arg1 error:(id *)arg2;
+- (id)headTrackedSpatialAudioMode;
+- (_Bool)setAllowsHeadTrackedSpatialAudio:(_Bool)arg1 error:(id *)arg2;
+- (_Bool)allowsHeadTrackedSpatialAudio;
 - (_Bool)supportsHeadTrackedSpatialAudio;
 - (long long)HAPConformance;
 - (_Bool)supportsBluetoothSharing;
@@ -75,6 +80,7 @@
 - (float)batteryLevel;
 - (_Bool)hasBatteryLevel;
 - (id)clusterID;
+- (_Bool)producesLowFidelityAudio;
 - (_Bool)isClusterLeader;
 - (id)clusteredDeviceDescriptions;
 - (id)identifyingMACAddress;

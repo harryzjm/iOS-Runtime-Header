@@ -15,12 +15,14 @@
     NSNumber *_height;
 }
 
-+ (id)classSet;
++ (id)na_identity;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSNumber *height; // @synthesize height=_height;
-@property(retain, nonatomic) NSNumber *width; // @synthesize width=_width;
+@property(copy, nonatomic) NSNumber *height; // @synthesize height=_height;
+@property(copy, nonatomic) NSNumber *width; // @synthesize width=_width;
 - (id)description;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

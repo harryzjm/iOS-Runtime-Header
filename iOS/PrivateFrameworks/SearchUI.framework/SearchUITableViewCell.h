@@ -25,7 +25,7 @@
 }
 
 + (double)distanceToTopOfAppIconsForMultiResultCell;
-+ (_Bool)canCellExpandWithResults:(id)arg1 forView:(id)arg2;
++ (_Bool)canCellExpandWithResults:(id)arg1;
 + (id)reuseIdentifierForResult:(id)arg1;
 + (id)cellViewForRowModel:(id)arg1 feedbackDelegate:(id)arg2;
 - (void).cxx_destruct;

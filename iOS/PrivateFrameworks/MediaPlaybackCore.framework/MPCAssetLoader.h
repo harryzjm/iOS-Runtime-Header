@@ -11,6 +11,7 @@
 @class MPCPlayerItemConfigurator, NSOperationQueue;
 @protocol MPCAssetLoaderDelegate;
 
+__attribute__((visibility("hidden")))
 @interface MPCAssetLoader : NSObject <MFAssetLoading>
 {
     id <MPCAssetLoaderDelegate> _delegate;

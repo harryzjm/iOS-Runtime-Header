@@ -6,25 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableSet, TSCH3DShaderVariable;
+@class TSCH3DShaderVariable;
 
 @interface TSCH3DShaderVariableLinkage : NSObject
 {
-    TSCH3DShaderVariable *mVariable;
-    struct TSCH3DShaderType mLinked;
-    struct TSCH3DShaderVariableScopes mScope;
-    struct TSCH3DShaderVariableScopes mDeclaredScope;
-    _Bool mIsUsed;
-    NSMutableSet *mDependees;
+    TSCH3DShaderVariable *_variable;
+    struct TSCH3DShaderType _linked;
+    struct TSCH3DShaderVariableScopes _scope;
+    struct TSCH3DShaderVariableScopes _declaredScope;
+    _Bool _isUsed;
 }
 
 + (id)linkageWithVariable:(id)arg1;
 - (id).cxx_construct;
-@property(nonatomic) _Bool isUsed; // @synthesize isUsed=mIsUsed;
-@property(readonly, nonatomic) struct TSCH3DShaderVariableScopes declaredScope; // @synthesize declaredScope=mDeclaredScope;
-@property(readonly, nonatomic) struct TSCH3DShaderVariableScopes scope; // @synthesize scope=mScope;
-@property(readonly, nonatomic) struct TSCH3DShaderType linked; // @synthesize linked=mLinked;
-@property(readonly, nonatomic) TSCH3DShaderVariable *variable; // @synthesize variable=mVariable;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool isUsed; // @synthesize isUsed=_isUsed;
+@property(readonly, nonatomic) struct TSCH3DShaderVariableScopes declaredScope; // @synthesize declaredScope=_declaredScope;
+@property(readonly, nonatomic) struct TSCH3DShaderVariableScopes scope; // @synthesize scope=_scope;
+@property(readonly, nonatomic) struct TSCH3DShaderType linked; // @synthesize linked=_linked;
+@property(readonly, nonatomic) TSCH3DShaderVariable *variable; // @synthesize variable=_variable;
 - (void)addDeclaredShader:(struct TSCH3DShaderType)arg1 scope:(struct TSCH3DShaderVariableScopeType)arg2;
 - (id)nameForShader:(struct TSCH3DShaderType)arg1 scope:(struct TSCH3DShaderVariableScopeType)arg2;
 - (id)globalNameForShader:(struct TSCH3DShaderType)arg1 scope:(struct TSCH3DShaderVariableScopeType)arg2;
@@ -62,13 +62,11 @@
 @property(readonly, nonatomic) _Bool hasAttribute;
 @property(readonly, nonatomic) _Bool isUniform;
 @property(readonly, nonatomic) _Bool isSpecial;
-@property(readonly, nonatomic) NSMutableSet *dependees;
 @property(readonly, nonatomic) struct TSCH3DShaderType shaderType;
 - (id)variableDeclarationInShader:(struct TSCH3DShaderType)arg1 scope:(struct TSCH3DShaderVariableScopeType)arg2 isMetal:(_Bool)arg3;
 - (_Bool)declaredInShader:(struct TSCH3DShaderType)arg1 scope:(struct TSCH3DShaderVariableScopeType)arg2;
 - (id)variableQualifiersWithStorageQualifier:(id)arg1 isMetal:(_Bool)arg2;
 - (id)description;
-- (void)dealloc;
 - (id)initWithVariable:(id)arg1;
 
 @end

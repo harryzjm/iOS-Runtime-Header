@@ -9,18 +9,22 @@
 #import <MessageUI/MFMailComposeRemoteViewControllerDelegate-Protocol.h>
 #import <MessageUI/MFMailCompositionAdditionalDonating-Protocol.h>
 #import <MessageUI/MFMailCompositionShareSheetRecipients-Protocol.h>
+#import <MessageUI/MSDOpenComposeProtocolDelegate-Protocol.h>
+#import <MessageUI/NSXPCListenerDelegate-Protocol.h>
 
-@class MFMailComposePlaceholderViewController, MFMailComposeRemoteViewController, NSArray, NSError, NSMutableArray, NSMutableDictionary, NSString, _UIAsyncInvocation;
+@class MFMailComposePlaceholderViewController, MFMailComposeRemoteViewController, MFMailComposeViewController, MFMailCompositionValues, NSArray, NSError, NSMutableArray, NSString, NSXPCListener, _UIAsyncInvocation;
 @protocol MFMailComposeViewControllerDelegate;
 
-@interface MFMailComposeInternalViewController : UIViewController <MFMailComposeRemoteViewControllerDelegate, MFMailCompositionAdditionalDonating, MFMailCompositionShareSheetRecipients>
+@interface MFMailComposeInternalViewController : UIViewController <MSDOpenComposeProtocolDelegate, NSXPCListenerDelegate, MFMailComposeRemoteViewControllerDelegate, MFMailCompositionAdditionalDonating, MFMailCompositionShareSheetRecipients>
 {
+    NSXPCListener *_listener;
+    MFMailComposeViewController *_composeViewController;
     MFMailComposePlaceholderViewController *_placeholderViewController;
     MFMailComposeRemoteViewController *_serviceViewController;
     _UIAsyncInvocation *_cancellationInvocation;
     unsigned long long _defaultContentVariationIndex;
     NSMutableArray *_contentVariations;
-    NSMutableDictionary *_compositionValues;
+    MFMailCompositionValues *_compositionValues;
     NSMutableArray *_attachments;
     NSString *_placeholderSubject;
     long long _composeResult;
@@ -34,15 +38,21 @@
     unsigned int _didAppear:1;
     unsigned int _didFinish:1;
     unsigned int _delegateRespondsToBodyFinishedLoadingWithResult:1;
+    CDUnknownBlockType _sceneDismissal;
     id <MFMailComposeViewControllerDelegate> _mailComposeDelegate;
 }
 
++ (_Bool)_canSendMailInNewScene;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <MFMailComposeViewControllerDelegate> mailComposeDelegate; // @synthesize mailComposeDelegate=_mailComposeDelegate;
 - (id)remoteViewController;
 - (void)autosaveWithHandler:(CDUnknownBlockType)arg1;
 - (void)requestFramesForAttachmentsWithIdentifiers:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
-- (void)_setCompositionValue:(id)arg1 forKey:(id)arg2;
+- (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
+- (void)composeFinishedWithResult:(long long)arg1;
+- (void)composeShouldSendMail:(id)arg1 toRecipients:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_presentComposeInNewWindowFromComposeViewController:(id)arg1 completion:(CDUnknownBlockType)arg2 dissmisal:(CDUnknownBlockType)arg3;
+- (void)_presentComposeInNewWindowFromComposeViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)finalizeCompositionValues;
 - (id)addAttachmentItemProvider:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3;
 - (id)addAttachmentData:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3;
@@ -94,6 +104,12 @@
 - (_Bool)automaticallyForwardAppearanceAndRotationMethodsToChildViewControllers;
 - (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

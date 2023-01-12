@@ -6,16 +6,16 @@
 
 #import <UIKit/UIView.h>
 
-@protocol LPComponentViewDelegate;
+@protocol LPComponentViewHost;
 
 __attribute__((visibility("hidden")))
 @interface LPComponentView : UIView
 {
-    id <LPComponentViewDelegate> _delegate;
+    id <LPComponentViewHost> _host;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) __weak id <LPComponentViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) __weak id <LPComponentViewHost> host; // @synthesize host=_host;
 - (_Bool)shouldAllowHighlightToRecognizeSimultaneouslyWithGesture:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)componentViewDidMoveToWindow;
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (void)didMoveToWindow;
 - (void)layoutSubviews;
 - (_Bool)isFlipped;
+- (id)initWithHost:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

@@ -17,7 +17,7 @@
 - (id)_meaningLabelForTitle;
 - (id)_title;
 - (void)_generateTitleAndSubtitleWithResult:(CDUnknownBlockType)arg1;
-- (id)initWithCollection:(id)arg1 meaningLabel:(id)arg2 meaningIsReliable:(_Bool)arg3;
+- (id)initWithCollection:(id)arg1 meaningLabel:(id)arg2 meaningIsReliable:(_Bool)arg3 titleGenerationContext:(id)arg4;
 
 @end
 

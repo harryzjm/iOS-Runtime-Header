@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface WKOneShotDisplayLinkHandler : NSObject
 {
-    struct RemoteLayerTreeDrawingAreaProxy *_drawingAreaProxy;
+    void *_drawingAreaProxy;
     CADisplayLink *_displayLink;
 }
 
@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (void)displayLinkFired:(id)arg1;
 - (void)setPreferredFramesPerSecond:(long long)arg1;
 - (void)dealloc;
-- (id)initWithDrawingAreaProxy:(struct RemoteLayerTreeDrawingAreaProxy *)arg1;
+- (id)initWithDrawingAreaProxy:(void *)arg1;
 
 @end
 

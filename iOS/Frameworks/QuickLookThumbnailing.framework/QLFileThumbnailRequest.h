@@ -6,26 +6,32 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSURL;
+@class NSDictionary, NSString, NSURL;
 
 @interface QLFileThumbnailRequest : NSObject
 {
+    int _iconFlavor;
+    int _interpolationQuality;
     double _scale;
     NSURL *_fileURL;
     unsigned long long _badgeType;
     NSDictionary *_generationData;
+    NSString *_contentType;
     struct CGSize _maximumSize;
     struct CGSize _minimumSize;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) int interpolationQuality; // @synthesize interpolationQuality=_interpolationQuality;
+@property int iconFlavor; // @synthesize iconFlavor=_iconFlavor;
+@property(copy, nonatomic) NSString *contentType; // @synthesize contentType=_contentType;
 @property(retain, nonatomic) NSDictionary *generationData; // @synthesize generationData=_generationData;
 @property(nonatomic) unsigned long long badgeType; // @synthesize badgeType=_badgeType;
 @property(copy, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 @property(nonatomic) double scale; // @synthesize scale=_scale;
 @property(nonatomic) struct CGSize minimumSize; // @synthesize minimumSize=_minimumSize;
 @property(nonatomic) struct CGSize maximumSize; // @synthesize maximumSize=_maximumSize;
-- (id)initWithMaximumSize:(struct CGSize)arg1 minimumSize:(double)arg2 scale:(double)arg3 badgeType:(unsigned long long)arg4 fileURL:(id)arg5 generationData:(id)arg6;
+- (id)initWithMaximumSize:(struct CGSize)arg1 minimumSize:(double)arg2 scale:(double)arg3 badgeType:(unsigned long long)arg4 iconFlavor:(int)arg5 contentType:(id)arg6 fileURL:(id)arg7 generationData:(id)arg8 interpolationQuality:(int)arg9;
 
 @end
 

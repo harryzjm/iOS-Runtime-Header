@@ -10,9 +10,11 @@
 
 @interface _TtC16NewsSubscription29BundleArticleSoftPaywallMeter : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *articlesSoftPaywallCount;
+    MISSING_TYPE *articlesWithNoSoftPaywallCount;
+    MISSING_TYPE *articlesWithPaywallCount;
     MISSING_TYPE *articlesWithNoPaywallCount;
     MISSING_TYPE *minimumArticlesBeforeArticleSoftPaywall;
+    MISSING_TYPE *maximumArticlesWithSoftPaywallPerSession;
 }
 
 @end

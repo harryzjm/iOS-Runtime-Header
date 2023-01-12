@@ -14,12 +14,15 @@
     double _strictMaximumDistance;
     double _normalMaximumDistance;
     double _fuzzyMaximumDistance;
+    unsigned long long _faceProcessingVersion;
 }
 
+@property(nonatomic) unsigned long long faceProcessingVersion; // @synthesize faceProcessingVersion=_faceProcessingVersion;
 @property(nonatomic) _Bool shouldRelaxThreshold; // @synthesize shouldRelaxThreshold=_shouldRelaxThreshold;
 @property(nonatomic) double fuzzyMaximumDistance; // @synthesize fuzzyMaximumDistance=_fuzzyMaximumDistance;
 @property(nonatomic) double normalMaximumDistance; // @synthesize normalMaximumDistance=_normalMaximumDistance;
 @property(nonatomic) double strictMaximumDistance; // @synthesize strictMaximumDistance=_strictMaximumDistance;
+@property(readonly, nonatomic) _Bool shouldAdjustThresholdOnAgeType;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 

@@ -14,6 +14,7 @@
     MISSING_TYPE *destination;
     MISSING_TYPE *protectionLevel;
     MISSING_TYPE *intermediates;
+    MISSING_TYPE *providedDescription;
 }
 
 @end

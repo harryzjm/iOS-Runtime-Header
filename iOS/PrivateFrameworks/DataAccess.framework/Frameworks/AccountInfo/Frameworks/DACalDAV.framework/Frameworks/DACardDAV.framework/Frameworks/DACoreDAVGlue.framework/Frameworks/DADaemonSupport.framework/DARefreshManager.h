@@ -59,7 +59,6 @@
 - (void)_suspendTopicsForDelegate:(id)arg1;
 - (_Bool)_wrapperIsSuspended:(id)arg1;
 - (void)_pushRegistrationForDelegateFailed:(id)arg1;
-- (int)_overriddenPCStyleForWrapper:(id)arg1;
 - (int)_currentTruePCStyleForDelegate:(id)arg1;
 - (void)_registerAPSTopics;
 - (void)_registerAPSTopicsForDelegates:(id)arg1 withConnection:(id)arg2;

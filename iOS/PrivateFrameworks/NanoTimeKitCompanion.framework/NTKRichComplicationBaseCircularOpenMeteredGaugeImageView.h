@@ -23,6 +23,9 @@
 - (void)transitionToMonochromeWithFraction:(double)arg1;
 - (void)_editingDidEnd;
 - (void)_enumerateLabelsWithBlock:(CDUnknownBlockType)arg1;
+- (CDStruct_7660b417)_layoutConstraintsWithDevice:(id)arg1 family:(long long)arg2;
+- (double)_smallLabelFontWeight;
+- (long long)tritiumUpdateMode;
 - (void)setPaused:(_Bool)arg1;
 - (void)layoutSubviews;
 - (id)initWithFamily:(long long)arg1;

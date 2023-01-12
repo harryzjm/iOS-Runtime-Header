@@ -6,18 +6,13 @@
 
 #import <Contacts/CNiOSContactPredicate-Protocol.h>
 
-@class CNSocialProfile, NSString;
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface CNiOSABSocialProfileContactPredicate <CNiOSContactPredicate>
 {
-    CNSocialProfile *_socialProfile;
 }
 
-+ (_Bool)supportsSecureCoding;
-- (void).cxx_destruct;
-@property(copy, nonatomic) CNSocialProfile *socialProfile; // @synthesize socialProfile=_socialProfile;
-@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (id)cn_cursorForEncodedPeopleFromAddressBook:(void *)arg1 fetchRequest:(id)arg2 environment:(id)arg3 error:(id *)arg4;
@@ -26,12 +21,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)cn_supportsEncodedFetching;
 - (_Bool)cn_supportsNativeBatchFetch;
 - (_Bool)cn_supportsNativeSorting;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithSocialProfile:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

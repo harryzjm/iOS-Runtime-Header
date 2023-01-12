@@ -15,6 +15,7 @@
 {
     MISSING_TYPE *config;
     MISSING_TYPE *presentationAnchor;
+    MISSING_TYPE *button;
 }
 
 - (void).cxx_destruct;

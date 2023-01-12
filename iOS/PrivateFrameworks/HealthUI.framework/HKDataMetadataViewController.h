@@ -8,7 +8,7 @@
 #import <HealthUI/HKDataMetadataSubsampleDelegate-Protocol.h>
 
 @class HKDataMetadataWorkoutRouteSection, HKLocationFetcher, HKLocationReadings, HKSample, NSArray, NSMutableArray;
-@protocol HKDataMetadataViewControllerDelegate;
+@protocol HKDataMetadataDeviceSectionRegulatedFeatureInfoProvider, HKDataMetadataViewControllerDelegate;
 
 @interface HKDataMetadataViewController <HKDataMetadataSubsampleDelegate, HKDataMetadataReportAccessDelegate>
 {
@@ -18,11 +18,13 @@
     NSMutableArray *_sections;
     HKLocationFetcher *_locationFetcher;
     HKLocationReadings *_locationReadings;
+    id <HKDataMetadataDeviceSectionRegulatedFeatureInfoProvider> _regulatedFeatureInfoProvider;
     HKDataMetadataWorkoutRouteSection *_workoutRouteSection;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) HKDataMetadataWorkoutRouteSection *workoutRouteSection; // @synthesize workoutRouteSection=_workoutRouteSection;
+@property(retain, nonatomic) id <HKDataMetadataDeviceSectionRegulatedFeatureInfoProvider> regulatedFeatureInfoProvider; // @synthesize regulatedFeatureInfoProvider=_regulatedFeatureInfoProvider;
 @property(retain, nonatomic) HKLocationReadings *locationReadings; // @synthesize locationReadings=_locationReadings;
 @property(retain, nonatomic) HKLocationFetcher *locationFetcher; // @synthesize locationFetcher=_locationFetcher;
 @property(retain, nonatomic) NSMutableArray *sections; // @synthesize sections=_sections;
@@ -54,6 +56,7 @@
 - (void)viewDidLoad;
 - (void)_localeOrDisplayTypeChange:(id)arg1;
 - (void)dealloc;
+- (id)initWithSample:(id)arg1 usingInsetStyling:(_Bool)arg2 profileName:(id)arg3 regulatedFeatureInfoProvider:(id)arg4 delegate:(id)arg5;
 - (id)initWithSample:(id)arg1 usingInsetStyling:(_Bool)arg2 profileName:(id)arg3 delegate:(id)arg4;
 
 @end

@@ -18,6 +18,7 @@
     CDStruct_9f2792e4 _trafficColorOffsets;
     CDStruct_9f2792e4 _trafficColors;
     NSMutableArray *_chargingStations;
+    NSMutableArray *_routingPathLegs;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
@@ -27,11 +28,13 @@
         unsigned int read_trafficColorOffsets:1;
         unsigned int read_trafficColors:1;
         unsigned int read_chargingStations:1;
+        unsigned int read_routingPathLegs:1;
         unsigned int wrote_anyField:1;
     } _flags;
 }
 
 + (_Bool)isValid:(id)arg1;
++ (Class)routingPathLegType;
 + (Class)chargingStationsType;
 - (void).cxx_destruct;
 - (void)clearUnknownFields:(_Bool)arg1;
@@ -49,6 +52,11 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)routingPathLegAtIndex:(unsigned long long)arg1;
+- (unsigned long long)routingPathLegsCount;
+- (void)addRoutingPathLeg:(id)arg1;
+- (void)clearRoutingPathLegs;
+@property(retain, nonatomic) NSMutableArray *routingPathLegs;
 - (id)chargingStationsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)chargingStationsCount;
 - (void)addChargingStations:(id)arg1;

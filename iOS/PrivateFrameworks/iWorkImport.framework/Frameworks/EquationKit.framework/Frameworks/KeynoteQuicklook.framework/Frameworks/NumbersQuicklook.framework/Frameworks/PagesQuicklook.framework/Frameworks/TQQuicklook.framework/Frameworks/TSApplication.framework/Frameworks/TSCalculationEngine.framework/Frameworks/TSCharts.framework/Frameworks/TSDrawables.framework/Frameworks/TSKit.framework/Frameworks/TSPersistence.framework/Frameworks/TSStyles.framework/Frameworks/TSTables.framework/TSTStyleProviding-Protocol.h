@@ -7,6 +7,9 @@
 @class TSTCellStyle, TSTTableStyle, TSWPParagraphStyle, TSWPShapeStyle;
 
 @protocol TSTStyleProviding
+@property(retain, nonatomic) TSTCellStyle *pivotHeaderColumnSummaryCellStyle;
+@property(retain, nonatomic) TSTCellStyle *pivotBodySummaryColumnCellStyle;
+@property(retain, nonatomic) TSTCellStyle *pivotBodySummaryRowCellStyle;
 @property(retain, nonatomic) TSWPShapeStyle *tableNameShapeStyle;
 @property(retain, nonatomic) TSWPParagraphStyle *tableNameStyle;
 @property(retain, nonatomic) TSWPParagraphStyle *labelLevel5TextStyle;

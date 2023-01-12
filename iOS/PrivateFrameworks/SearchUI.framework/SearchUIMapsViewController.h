@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapKit/_MKPlaceViewController.h>
+#import <MapsUI/MUPlaceViewController.h>
 
-#import <SearchUI/_MKPlaceViewControllerFeedbackDelegate-Protocol.h>
+#import <SearchUI/MUPlaceViewControllerFeedbackDelegate-Protocol.h>
 
 @class NSString;
 @protocol SFFeedbackListener;
 
-@interface SearchUIMapsViewController : _MKPlaceViewController <_MKPlaceViewControllerFeedbackDelegate>
+@interface SearchUIMapsViewController : MUPlaceViewController <MUPlaceViewControllerFeedbackDelegate>
 {
     id <SFFeedbackListener> _feedbackListener;
     unsigned long long _queryId;
@@ -21,7 +21,7 @@
 @property(readonly) unsigned long long queryId; // @synthesize queryId=_queryId;
 @property __weak id <SFFeedbackListener> feedbackListener; // @synthesize feedbackListener=_feedbackListener;
 - (void)placeViewController:(id)arg1 shouldLogFeedbackOfType:(int)arg2;
-- (id)initWithMapsData:(id)arg1 feedbackListener:(id)arg2 queryId:(unsigned long long)arg3;
+- (id)initWithMapsData:(id)arg1 searchAlongTheRoute:(_Bool)arg2 feedbackListener:(id)arg3 queryId:(unsigned long long)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

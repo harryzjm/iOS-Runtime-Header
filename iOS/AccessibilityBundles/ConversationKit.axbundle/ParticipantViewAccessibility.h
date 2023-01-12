@@ -11,14 +11,16 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityMultiwayViewController;
 - (id)_accessibilityVideoOverlayView;
 - (id)_accessibilityVideoView;
 - (id)_accessibilityMonogramView;
 - (id)_axConstraintsController;
 - (_Bool)_accessibilityIsLocalParticipantExpanded;
 - (id)_accessibilityUserTestingChildren;
+- (_Bool)_axHandleKickMemberAction;
 - (_Bool)_axHandleTakeLivePhotoAction;
-- (_Bool)_axHandleDoubleTap;
+- (_Bool)_axHandleSingleTap;
 - (id)accessibilityCustomActions;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;

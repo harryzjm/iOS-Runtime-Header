@@ -13,6 +13,7 @@
     MISSING_TYPE *identifier;
     MISSING_TYPE *version;
     MISSING_TYPE *isInternal;
+    MISSING_TYPE *isDevelopmentExtension;
     MISSING_TYPE *pluginUUID;
     MISSING_TYPE *cacheGUID;
     MISSING_TYPE *sequenceNumber;
@@ -27,8 +28,13 @@
     MISSING_TYPE *wantsLocation;
     MISSING_TYPE *availableLocalizations;
     MISSING_TYPE *allowsMixedLocalizations;
+    MISSING_TYPE *entitlements;
     MISSING_TYPE *requestedDataProtection;
+    MISSING_TYPE *nominatedContainingBundleIdentifiers;
     MISSING_TYPE *nsExtension;
+    MISSING_TYPE *_preferredLanguageChangeLock;
+    MISSING_TYPE *_preferredLanguageChangeUpdateInitial;
+    MISSING_TYPE *_preferredLanguageChangeUpdateRequired;
 }
 
 @end

@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)setTitle:(id)arg1;
 - (void)setImage:(id)arg1;
 - (void)layoutSubviews;
+- (_Bool)canBecomeFirstResponder;
 - (void)setSelected:(_Bool)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

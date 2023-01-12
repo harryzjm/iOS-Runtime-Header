@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *familySharingLandingPageLauncher;
     MISSING_TYPE *offerManager;
     MISSING_TYPE *presenter;
+    MISSING_TYPE *urlHandler;
 }
 
 - (void).cxx_destruct;

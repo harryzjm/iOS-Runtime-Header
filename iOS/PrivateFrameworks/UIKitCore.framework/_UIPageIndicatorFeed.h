@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray;
+@class NSArray, NSMutableArray, UIPageControl;
 @protocol _UIPageIndicatorFeedDelegate;
 
 __attribute__((visibility("hidden")))
 @interface _UIPageIndicatorFeed : NSObject
 {
+    UIPageControl *_pageControl;
     id <_UIPageIndicatorFeedDelegate> _delegate;
     NSMutableArray *_activeQueue;
     NSMutableArray *_reuseQueue;
@@ -23,15 +24,17 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <_UIPageIndicatorFeedDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)indicatorForPage:(long long)arg1 forSizeOnly:(_Bool)arg2;
 - (struct CGSize)indicatorSizeForCustomImage:(id)arg1;
+- (id)activeIndicatorForPage:(long long)arg1;
 - (id)indicatorForPage:(long long)arg1;
 - (struct CGSize)indicatorSizeForPage:(long long)arg1;
 - (void)prepareIndicatorsFrom:(long long)arg1 to:(long long)arg2;
+- (_Bool)_isPageWithinActiveBounds:(long long)arg1;
 - (void)reloadIndicatorImageForPage:(long long)arg1;
 - (void)reloadIndicatorImages;
 - (void)invalidateIndicators;
 - (void)updateReuseQueue;
 @property(readonly, nonatomic) NSArray *indicators;
-- (id)init;
+- (id)initWithPageControl:(id)arg1;
 
 @end
 

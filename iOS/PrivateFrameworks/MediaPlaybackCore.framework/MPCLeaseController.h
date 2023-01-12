@@ -10,6 +10,7 @@
 
 @class MPCMediaFoundationTranslator, _MPCLeaseManager;
 
+__attribute__((visibility("hidden")))
 @interface MPCLeaseController : NSObject <MFLeaseControlling>
 {
     MPCMediaFoundationTranslator *_translator;

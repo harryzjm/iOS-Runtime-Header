@@ -17,12 +17,12 @@ __attribute__((visibility("hidden")))
 {
     BRCAccountSession *_session;
     BRCSyncContext *_syncContext;
-    long long _nextFire;
-    NSMutableDictionary *_inFlightOpByID;
     BRCDeadlineSource *_schedulingSource;
+    long long _minSignalTime;
+    NSMutableDictionary *_inFlightOpByID;
     NSObject<OS_dispatch_workloop> *_transferWorkloop;
-    unsigned long long _inFlightSize;
     NSObject<OS_dispatch_group> *_transferBatchRequestWaiter;
+    unsigned long long _inFlightSize;
     _Bool _isWaitingForTransferBatch;
     _Bool _hasReachedCap;
     _Atomic int _multipleItemsInteractiveSchedulingCount;

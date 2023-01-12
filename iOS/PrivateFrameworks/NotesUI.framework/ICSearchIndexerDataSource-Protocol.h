@@ -21,7 +21,7 @@
 - (void)searchIndexerWillIndexObjectIDs:(NSArray *)arg1;
 - (id <ICSearchIndexable>)objectForManagedObjectIDURI:(NSString *)arg1 context:(NSManagedObjectContext *)arg2;
 - (id <ICSearchIndexable>)objectForSearchableItem:(CSSearchableItem *)arg1 context:(NSManagedObjectContext *)arg2;
-- (long long)decisionOnObjectID:(NSManagedObjectID *)arg1 searchableItemToIndex:(id *)arg2 objectIDURIToDelete:(id *)arg3 context:(NSManagedObjectContext *)arg4;
+- (long long)decisionOnObjectID:(NSManagedObjectID *)arg1 searchableItemToIndex:(id *)arg2 additionalItemsToIndex:(id *)arg3 objectIDURIToDelete:(id *)arg4 additionalUniqueIdentifiersToDelete:(id *)arg5 context:(NSManagedObjectContext *)arg6;
 - (NSArray *)allIndexableObjectIDsInReversedReindexingOrderWithContext:(NSManagedObjectContext *)arg1;
 - (NSArray *)objectIDsNeedingProcessing;
 - (NSArray *)indexableObjectIDsWithURIs:(NSArray *)arg1 context:(NSManagedObjectContext *)arg2;

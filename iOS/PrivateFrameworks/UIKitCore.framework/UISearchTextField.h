@@ -25,6 +25,7 @@
         unsigned int allowsCopyingTokens:1;
         unsigned int allowsDeletingTokens:1;
         unsigned int alwaysHidesMagnifyingGlassForAccessibilityContentSizeCategory:1;
+        unsigned int needsDelayedSearchControllerPresentation:1;
     } _searchBarTextFieldFlags;
     NSHashTable *_knownTokenLayoutViews;
     _UISearchBarTextFieldTokenCounter *_tokenCounter;
@@ -39,7 +40,6 @@
 
 + (Class)_textPasteItemClass;
 + (_Bool)_wantsFadedEdges;
-+ (Class)_canvasViewClass;
 + (Class)_fieldEditorClass;
 - (void).cxx_destruct;
 @property(nonatomic, setter=_setAlwaysShowsClearButtonWhenEmpty:) _Bool _alwaysShowsClearButtonWhenEmpty; // @synthesize _alwaysShowsClearButtonWhenEmpty=__alwaysShowsClearButtonWhenEmpty;
@@ -91,6 +91,9 @@
 - (void)insertToken:(id)arg1 atIndex:(long long)arg2;
 @property(copy, nonatomic) NSArray *tokens;
 - (id)_newAttributedStringWithToken:(id)arg1;
+- (void)didLayoutTextAttachmentView:(id)arg1 inFragmentRect:(struct CGRect)arg2;
+- (void)didRemoveTextAttachmentViews:(id)arg1;
+- (void)didAddTextAttachmentViews:(id)arg1;
 @property(nonatomic, setter=_setAlwaysHidesMagnifyingGlassForAccessibilityContentSizeCategory:) _Bool _alwaysHidesMagnifyingGlassForAccessibilityContentSizeCategory;
 - (void)_didSetFont:(id)arg1;
 - (void)_updateDefaultLeftViewForFont:(id)arg1;
@@ -110,6 +113,11 @@
 - (_Bool)_delegateShouldScrollToVisibleWhenBecomingFirstResponder;
 - (_Bool)_delegateShouldEndEditing;
 - (_Bool)_delegateShouldBeginEditing;
+- (void)_resetNeedsDelayedSearchControllerPresentation;
+@property(readonly, nonatomic) _Bool _needsDelayedSearchControllerPresentation;
+- (long long)_systemDefaultFocusGroupPriority;
+- (_Bool)_shouldForwardMovementToFocusEngine:(long long)arg1;
+- (_Bool)_allowsChangingFirstResponderForFocusUpdateWithContext:(id)arg1;
 - (_Bool)canBecomeFirstResponder;
 - (_Bool)canResignFirstResponder;
 - (_Bool)resignFirstResponder;
@@ -132,7 +140,6 @@
 - (void)_updateBackgroundView:(id)arg1 withStyle:(unsigned long long)arg2 filter:(id)arg3;
 - (struct CGRect)placeholderRectForBounds:(struct CGRect)arg1;
 - (id)_placeholderColor;
-- (Class)_systemBackgroundViewClass;
 - (Class)_placeholderLabelClass;
 - (void)tintColorDidChange;
 - (long long)_suffixLabelTextAlignment;
@@ -157,8 +164,9 @@
 - (struct CGRect)textRectForBounds:(struct CGRect)arg1;
 - (struct CGRect)_adjustedTextOrEditingRect:(struct CGRect)arg1 forBounds:(struct CGRect)arg2;
 - (void)_updateHelpMessageOverrideWithMessage:(id)arg1;
-- (_Bool)_displaysHelpMessageLabel;
+- (_Bool)_shouldIgnoreBaseWritingDirectionChanges;
 - (_Bool)_shouldResignOnEditingDidEndOnExit;
+- (Class)_canvasViewClass;
 - (_Bool)_hasContent;
 @property(retain, nonatomic, setter=_setSearchTextOffetValue:) NSValue *_searchTextOffsetValue;
 - (id)_offsetValueForIcon:(long long)arg1;
@@ -173,7 +181,7 @@
 - (struct CGSize)intrinsicContentSize;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)_initWithFrame:(struct CGRect)arg1 textLayoutManagerEnabled:(_Bool)arg2;
 - (void)setDelegate:(id)arg1;
 
 // Remaining properties

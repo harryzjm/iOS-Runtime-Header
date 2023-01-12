@@ -6,14 +6,14 @@
 
 @interface TSCH3DPieBevelEdgeNormalDirectionMapper
 {
-    long long mTopMeshOffset;
-    long long mAngleSteps;
-    long long mRadiusSteps;
-    long long mAngleLimit;
-    long long mRadiusLimit;
+    long long _topMeshOffset;
+    long long _angleSteps;
+    long long _radiusSteps;
+    long long _angleLimit;
+    long long _radiusLimit;
 }
 
-- (void)mapFromVertexArray:(const tvec3_17f03ce0 *)arg1 normalArray:(const tvec3_17f03ce0 *)arg2 normalMatrix:(const tmat3x3_b39cd897 *)arg3 numVertices:(long long)arg4 destination:(vector_aab22ae2 *)arg5;
+- (void)mapFromVertexArray:(const void *)arg1 normalArray:(const void *)arg2 normalMatrix:(const void *)arg3 numVertices:(long long)arg4 destination:(void *)arg5;
 - (id)initWithTopMeshOffset:(long long)arg1 angleSteps:(long long)arg2 radiusSteps:(long long)arg3 angleLimit:(long long)arg4 radiusLimit:(long long)arg5;
 
 @end

@@ -9,7 +9,7 @@
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSDecimalNumber, NSString;
+@class NSDate, NSDecimalNumber, NSString, PKFeatureApplicationOfferDetailsInfo;
 
 @interface PKFeatureApplicationOfferDetails : NSObject <NSSecureCoding, NSCopying>
 {
@@ -18,12 +18,16 @@
     NSDecimalNumber *_creditLimit;
     NSDecimalNumber *_annualFee;
     NSDecimalNumber *_aprForPurchase;
+    NSDecimalNumber *_balance;
     NSString *_currencyCode;
+    PKFeatureApplicationOfferDetailsInfo *_detailsInfo;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) PKFeatureApplicationOfferDetailsInfo *detailsInfo; // @synthesize detailsInfo=_detailsInfo;
 @property(copy, nonatomic) NSString *currencyCode; // @synthesize currencyCode=_currencyCode;
+@property(copy, nonatomic) NSDecimalNumber *balance; // @synthesize balance=_balance;
 @property(copy, nonatomic) NSDecimalNumber *aprForPurchase; // @synthesize aprForPurchase=_aprForPurchase;
 @property(copy, nonatomic) NSDecimalNumber *annualFee; // @synthesize annualFee=_annualFee;
 @property(copy, nonatomic) NSDecimalNumber *creditLimit; // @synthesize creditLimit=_creditLimit;

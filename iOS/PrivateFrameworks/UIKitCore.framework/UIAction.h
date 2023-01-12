@@ -5,12 +5,14 @@
 //
 
 #import <UIKitCore/_UIMenuLeaf-Protocol.h>
+#import <UIKitCore/_UIMenuStateObserverableLeaf-Protocol.h>
 
-@class NSString, UIImage;
+@class NSPointerArray, NSString, UIImage;
 
-@interface UIAction <_UIMenuLeaf>
+@interface UIAction <_UIMenuLeaf, _UIMenuStateObserverableLeaf>
 {
     _Bool _requiresAuthenticatedInput;
+    NSPointerArray *stateObservers;
     NSString *_discoverabilityTitle;
     NSString *_identifier;
     unsigned long long _attributes;
@@ -22,6 +24,11 @@
 + (_Bool)supportsSecureCoding;
 + (id)actionWithHandler:(CDUnknownBlockType)arg1;
 + (id)actionWithTitle:(id)arg1 image:(id)arg2 identifier:(id)arg3 handler:(CDUnknownBlockType)arg4;
++ (id)captureTextFromCameraActionForResponder:(id)arg1 identifier:(id)arg2;
++ (id)_textFromCameraImage;
++ (id)_textFromCameraImageName;
++ (id)_textFromCameraTitleForResponder:(id)arg1;
++ (id)_textFromCameraTitle;
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
 @property(readonly, nonatomic) id sender; // @synthesize sender=_sender;
@@ -29,7 +36,11 @@
 @property(nonatomic) unsigned long long attributes; // @synthesize attributes=_attributes;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(copy, nonatomic) NSString *discoverabilityTitle; // @synthesize discoverabilityTitle=_discoverabilityTitle;
+@property(retain, nonatomic, getter=_getStateObservers, setter=_setStateObservers:) NSPointerArray *stateObservers; // @synthesize stateObservers;
 @property(readonly, nonatomic) _Bool requiresAuthenticatedInput; // @synthesize requiresAuthenticatedInput=_requiresAuthenticatedInput;
+- (void)_setState:(long long)arg1 notifyingObservers:(_Bool)arg2;
+- (void)_removeStateObserver:(id)arg1;
+- (void)_addStateObserver:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)_validatedLeafWithAlternate:(id)arg1 target:(id)arg2 validation:(id)arg3;
@@ -46,6 +57,7 @@
 - (_Bool)_acceptBoolMenuVisit:(CDUnknownBlockType)arg1 commandVisit:(CDUnknownBlockType)arg2 actionVisit:(CDUnknownBlockType)arg3;
 - (void)_acceptMenuVisit:(CDUnknownBlockType)arg1 commandVisit:(CDUnknownBlockType)arg2 actionVisit:(CDUnknownBlockType)arg3 deferredElementVisit:(CDUnknownBlockType)arg4;
 @property(copy, nonatomic) UIImage *image; // @dynamic image;
+- (void)setSubtitle:(id)arg1;
 @property(copy, nonatomic) NSString *title; // @dynamic title;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
@@ -53,6 +65,7 @@
 - (id)initWithAction:(id)arg1;
 - (id)initWithTitle:(id)arg1 image:(id)arg2 identifier:(id)arg3 discoverabilityTitle:(id)arg4 attributes:(unsigned long long)arg5 state:(long long)arg6 handler:(CDUnknownBlockType)arg7;
 - (id)initWithCoder:(id)arg1;
+@property(readonly, nonatomic) _Bool keepsMenuPresented;
 - (_Bool)isLeaf;
 - (id)_spiRepresentation;
 

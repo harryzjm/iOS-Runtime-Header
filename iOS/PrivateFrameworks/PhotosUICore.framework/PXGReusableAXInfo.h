@@ -10,7 +10,7 @@
 #import <PhotosUICore/PXReusableObject-Protocol.h>
 #import <PhotosUICore/UIFocusItem-Protocol.h>
 
-@class NSArray, NSString, PXGBasicAXGroup, UIView;
+@class NSArray, NSString, PXGBasicAXGroup, UIFocusEffect, UIView;
 @protocol PXAnonymousView, PXDisplayAsset, UIFocusEnvironment, UIFocusItemContainer;
 
 @interface PXGReusableAXInfo : NSObject <UIFocusItem, PXGAXInfo, PXReusableObject>
@@ -19,10 +19,12 @@
     _Bool _allowDecorations;
     unsigned int _spriteIndex;
     PXGBasicAXGroup *_axContainingGroup;
+    long long _focusRingType;
     long long _alternateUIVisibility;
     NSArray *_axDecorations;
     long long _axContentKind;
-    CDStruct_dfa1459f _spriteGeometry;
+    CDStruct_2bd92d94 _spriteStyleCornerRadius;
+    CDStruct_d1b913ca _spriteGeometry;
 }
 
 + (Class)_viewClassInLayout:(id)arg1 atSpriteIndex:(unsigned int)arg2;
@@ -36,7 +38,9 @@
 @property(retain, nonatomic) NSArray *axDecorations; // @synthesize axDecorations=_axDecorations;
 @property(nonatomic) _Bool allowDecorations; // @synthesize allowDecorations=_allowDecorations;
 @property(nonatomic) long long alternateUIVisibility; // @synthesize alternateUIVisibility=_alternateUIVisibility;
-@property(nonatomic) CDStruct_3ab912e1 spriteGeometry; // @synthesize spriteGeometry=_spriteGeometry;
+@property(nonatomic) long long focusRingType; // @synthesize focusRingType=_focusRingType;
+@property(nonatomic) CDStruct_2bd92d94 spriteStyleCornerRadius; // @synthesize spriteStyleCornerRadius=_spriteStyleCornerRadius;
+@property(nonatomic) CDStruct_4f725fed spriteGeometry; // @synthesize spriteGeometry=_spriteGeometry;
 @property(nonatomic) unsigned int spriteIndex; // @synthesize spriteIndex=_spriteIndex;
 @property(nonatomic) __weak PXGBasicAXGroup *axContainingGroup; // @synthesize axContainingGroup=_axContainingGroup;
 @property(readonly, copy) NSString *description;
@@ -56,6 +60,7 @@
 @property(readonly, nonatomic) _Bool axIsSelected;
 @property(readonly, nonatomic) struct CGRect axFrame;
 - (id)init;
+@property(readonly, copy, nonatomic) UIFocusEffect *focusEffect;
 @property(readonly, nonatomic) struct CGRect frame;
 @property(readonly, nonatomic) _Bool canBecomeFocused;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
@@ -69,7 +74,9 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy, nonatomic) NSString *focusGroupIdentifier;
+@property(readonly, nonatomic) long long focusGroupPriority;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool isTransparentFocusItem;
 @property(readonly, nonatomic) __weak UIView *preferredFocusedView;
 @property(readonly) Class superclass;
 

@@ -6,15 +6,22 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-@class NSLayoutConstraint, NSString, UIImageView, UILabel, UIStackView, UIView;
+#import <SpringBoardHome/SBHAddWidgetSheetAppCollectionViewCellConfigurable-Protocol.h>
 
-@interface SBHAddWidgetSheetAppCollectionViewCell : UICollectionViewCell
+@class MTVisualStylingProvider, NSLayoutConstraint, NSString, UIImageView, UILabel, UIStackView, UIView;
+
+@interface SBHAddWidgetSheetAppCollectionViewCell : UICollectionViewCell <SBHAddWidgetSheetAppCollectionViewCellConfigurable>
 {
-    _Bool _shouldUseTableViewStyle;
+    _Bool _isFocused;
     _Bool _separatorVisible;
     _Bool _separatorAlignedToLabels;
+    _Bool _imageViewRequiresVisualStyling;
+    _Bool _textLabelHasVisualStyling;
+    _Bool _imageViewHasVisualStyling;
+    unsigned long long _addWidgetSheetStyle;
     UILabel *_textLabel;
     UIImageView *_imageView;
+    MTVisualStylingProvider *_visualStylingProvider;
     UILabel *_detailTextLabel;
     UIStackView *_horizontalStackView;
     UIStackView *_verticalStackView;
@@ -31,6 +38,8 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool imageViewHasVisualStyling; // @synthesize imageViewHasVisualStyling=_imageViewHasVisualStyling;
+@property(nonatomic) _Bool textLabelHasVisualStyling; // @synthesize textLabelHasVisualStyling=_textLabelHasVisualStyling;
 @property(retain, nonatomic) NSLayoutConstraint *separatorLeadingConstraint; // @synthesize separatorLeadingConstraint=_separatorLeadingConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *bottomConstraint; // @synthesize bottomConstraint=_bottomConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *topConstraint; // @synthesize topConstraint=_topConstraint;
@@ -42,18 +51,34 @@
 @property(retain, nonatomic) UIStackView *verticalStackView; // @synthesize verticalStackView=_verticalStackView;
 @property(retain, nonatomic) UIStackView *horizontalStackView; // @synthesize horizontalStackView=_horizontalStackView;
 @property(retain, nonatomic) UILabel *detailTextLabel; // @synthesize detailTextLabel=_detailTextLabel;
+@property(nonatomic) __weak MTVisualStylingProvider *visualStylingProvider; // @synthesize visualStylingProvider=_visualStylingProvider;
+@property(nonatomic) _Bool imageViewRequiresVisualStyling; // @synthesize imageViewRequiresVisualStyling=_imageViewRequiresVisualStyling;
 @property(retain, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property(retain, nonatomic) UILabel *textLabel; // @synthesize textLabel=_textLabel;
 @property(nonatomic) struct SBIconImageInfo iconImageInfo; // @synthesize iconImageInfo=_iconImageInfo;
 @property(nonatomic) struct NSDirectionalEdgeInsets contentInsets; // @synthesize contentInsets=_contentInsets;
 @property(nonatomic, getter=isSeparatorAlignedToLabels) _Bool separatorAlignedToLabels; // @synthesize separatorAlignedToLabels=_separatorAlignedToLabels;
 @property(nonatomic, getter=isSeparatorVisible) _Bool separatorVisible; // @synthesize separatorVisible=_separatorVisible;
-@property(nonatomic) _Bool shouldUseTableViewStyle; // @synthesize shouldUseTableViewStyle=_shouldUseTableViewStyle;
+@property(nonatomic) unsigned long long addWidgetSheetStyle; // @synthesize addWidgetSheetStyle=_addWidgetSheetStyle;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)_contentSizeCategoryDidChange:(id)arg1;
+- (unsigned long long)_textLabelNumberOfLines;
+- (id)_detailTextLabelFont;
+- (id)_textLabelFont;
+- (long long)_uiHIFontStyle;
+- (void)setAddWidgetSheetAppCollectionViewCellIconImage:(id)arg1;
+- (void)setAddWidgetSheetAppCollectionViewCellTitle:(id)arg1;
+- (void)_updateVisualStylingForImageView;
+- (void)_updateVisualStylingForTextLabel;
+- (void)_updateAppearanceForFocus;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 @property(nonatomic) double contentHorizontalSpacing;
 @property(copy, nonatomic) NSString *detailText;
 - (void)_updateSeparatorLeadingConstraint;
 - (void)_updateTableViewStyle;
 - (void)prepareForReuse;
+- (void)setHighlighted:(_Bool)arg1;
+- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

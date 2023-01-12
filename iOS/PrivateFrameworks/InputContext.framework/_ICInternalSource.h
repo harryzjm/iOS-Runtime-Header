@@ -16,6 +16,7 @@
 }
 
 - (void).cxx_destruct;
+- (void)propogateMetrics:(id)arg1 data:(id)arg2;
 - (void)provideFeedbackForString:(id)arg1 type:(unsigned char)arg2 style:(unsigned char)arg3;
 - (_Bool)doesSupportTriggerSourceType:(unsigned char)arg1;
 - (void)hibernate;

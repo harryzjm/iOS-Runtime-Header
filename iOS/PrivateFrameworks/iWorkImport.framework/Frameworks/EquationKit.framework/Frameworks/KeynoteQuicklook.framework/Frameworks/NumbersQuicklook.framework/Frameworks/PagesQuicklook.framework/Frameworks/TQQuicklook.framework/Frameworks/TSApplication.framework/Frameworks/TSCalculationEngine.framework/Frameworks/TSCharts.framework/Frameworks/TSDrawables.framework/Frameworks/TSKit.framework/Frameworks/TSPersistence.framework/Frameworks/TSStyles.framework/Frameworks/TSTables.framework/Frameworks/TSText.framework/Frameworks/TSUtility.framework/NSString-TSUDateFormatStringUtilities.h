@@ -71,6 +71,7 @@
 - (id)tsu_stringWithPathRelativeTo:(id)arg1;
 - (id)tsu_substringWithComposedCharacterSequencesToFileSystemLength:(unsigned long long)arg1;
 - (id)tsu_substringWithComposedCharacterSequencesTruncatedToLength:(unsigned long long)arg1;
+- (id)tsu_stringWithTrimmedWhitespace;
 - (id)tsu_stringWithRealpath;
 - (_Bool)tsu_isChildOfPath:(id)arg1;
 - (_Bool)tsu_isDescendantOfPath:(id)arg1;
@@ -110,7 +111,7 @@
 - (unsigned short)tsu_spaceCharacterInCustomNumberFormatSpaceToken;
 - (unsigned short)tsu_scaleCharacterInCustomNumberFormatScaleToken;
 - (id)tsu_formatStringFromCustomNumberFormatScaleToken;
-- (int)tsu_fractionAccuracyFromCustomNumberFormatFractionToken;
+- (BOOL)tsu_fractionAccuracyFromCustomNumberFormatFractionToken;
 - (id)tsu_currencyCodeFromCustomNumberFormatCurrencyToken;
 - (id)tsu_digitPlaceholderStringInDigitToken;
 - (unsigned long long)tsu_numberOfDigitsInCustomNumberFormatDecimalToken;

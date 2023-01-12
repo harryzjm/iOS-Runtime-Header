@@ -26,24 +26,9 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableDictionary *codableObjectCollectionsByProvenance; // @synthesize codableObjectCollectionsByProvenance=_codableObjectCollectionsByProvenance;
-@property(retain, nonatomic) NSMutableDictionary *contributorByReferenceCache; // @synthesize contributorByReferenceCache=_contributorByReferenceCache;
-@property(retain, nonatomic) NSMutableDictionary *deviceByPersistentIDCache; // @synthesize deviceByPersistentIDCache=_deviceByPersistentIDCache;
-@property(retain, nonatomic) NSMutableDictionary *sourceRevisionsDictionaryBySourceCache; // @synthesize sourceRevisionsDictionaryBySourceCache=_sourceRevisionsDictionaryBySourceCache;
-@property(retain, nonatomic) NSMutableDictionary *sourceRevisionByDataProvenanceIDCache; // @synthesize sourceRevisionByDataProvenanceIDCache=_sourceRevisionByDataProvenanceIDCache;
-@property(retain, nonatomic) NSMutableDictionary *sourceByPersistentIDCache; // @synthesize sourceByPersistentIDCache=_sourceByPersistentIDCache;
-@property(retain, nonatomic) NSMutableDictionary *deviceUUIDBytesByID; // @synthesize deviceUUIDBytesByID=_deviceUUIDBytesByID;
-@property(retain, nonatomic) NSMutableDictionary *codableSourcesByID; // @synthesize codableSourcesByID=_codableSourcesByID;
-@property(retain, nonatomic) NSMutableDictionary *provenanceByID; // @synthesize provenanceByID=_provenanceByID;
-@property(retain, nonatomic) HDEntityEncoder *sourceEncoder; // @synthesize sourceEncoder=_sourceEncoder;
-@property(retain, nonatomic) HDDatabaseTransaction *transaction; // @synthesize transaction=_transaction;
-@property(retain, nonatomic) HDDataProvenanceManager *provenanceManager; // @synthesize provenanceManager=_provenanceManager;
-@property(retain, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
-- (id)_provenanceWithSyncableContributor:(id)arg1 error:(id *)arg2;
 - (id)contributorForReference:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 - (id)deviceForPersistentID:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 - (id)sourceRevisionForProvenanceID:(id)arg1 dataProvenance:(id)arg2 profile:(id)arg3 error:(id *)arg4;
-- (id)_sourceForPersistentID:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 - (id)allCodableObjectCollections;
 - (void)clearCodableObjectCollections;
 - (id)codableObjectCollectionForProvenance:(id)arg1;

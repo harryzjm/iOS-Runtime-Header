@@ -22,10 +22,12 @@
     NSString *_firstName;
     NSString *_lastName;
     NSString *_primaryEmailAddress;
+    NSString *_authorizationHeader;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *authorizationHeader; // @synthesize authorizationHeader=_authorizationHeader;
 @property(copy, nonatomic) NSString *primaryEmailAddress; // @synthesize primaryEmailAddress=_primaryEmailAddress;
 @property(copy, nonatomic) NSString *lastName; // @synthesize lastName=_lastName;
 @property(copy, nonatomic) NSString *firstName; // @synthesize firstName=_firstName;
@@ -36,8 +38,8 @@
 @property(copy, nonatomic) NSString *aidaToken; // @synthesize aidaToken=_aidaToken;
 @property(copy, nonatomic) NSString *aidaAlternateDSID; // @synthesize aidaAlternateDSID=_aidaAlternateDSID;
 - (_Bool)aidaAccountAvailable;
+- (id)altDsidAppleAccountHash;
 - (id)primaryAppleAccountHash;
-- (id)authorizationHeader;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

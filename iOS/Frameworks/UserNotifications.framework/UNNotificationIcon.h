@@ -9,31 +9,30 @@
 #import <UserNotifications/NSCopying-Protocol.h>
 #import <UserNotifications/NSSecureCoding-Protocol.h>
 
-@class NSString;
-
 @interface UNNotificationIcon : NSObject <NSCopying, NSSecureCoding>
 {
-    NSString *_applicationIdentifier;
-    NSString *_name;
-    NSString *_path;
+    id _iconInfo;
+    long long _iconInfoType;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)iconForSystemImageNamed:(id)arg1;
 + (id)iconForApplicationIdentifier:(id)arg1;
 + (id)iconAtPath:(id)arg1;
 + (id)iconNamed:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSString *path; // @synthesize path=_path;
-@property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property(readonly, copy, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
+- (id)systemImageName;
+- (id)path;
+- (id)name;
+- (id)applicationIdentifier;
 - (id)init;
-- (id)_initWithName:(id)arg1 path:(id)arg2 applicationIdentifier:(id)arg3;
+- (id)_initWithIconInfo:(id)arg1 type:(long long)arg2;
 
 @end
 

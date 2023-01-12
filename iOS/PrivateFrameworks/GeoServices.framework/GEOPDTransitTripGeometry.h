@@ -28,36 +28,16 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
-+ (Class)tripLinkType;
 + (id)transitTripGeometryForPlaceData:(id)arg1;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (void)setTripStepIndexs:(unsigned int *)arg1 count:(unsigned long long)arg2;
-- (unsigned int)tripStepIndexAtIndex:(unsigned long long)arg1;
-- (void)addTripStepIndex:(unsigned int)arg1;
-- (void)clearTripStepIndexs;
-@property(readonly, nonatomic) unsigned int *tripStepIndexs;
-@property(readonly, nonatomic) unsigned long long tripStepIndexsCount;
-- (id)tripLinkAtIndex:(unsigned long long)arg1;
-- (unsigned long long)tripLinksCount;
-- (void)addTripLink:(id)arg1;
-- (void)clearTripLinks;
-@property(retain, nonatomic) NSMutableArray *tripLinks;
 - (void)dealloc;
 - (id)initWithData:(id)arg1;
 - (id)init;

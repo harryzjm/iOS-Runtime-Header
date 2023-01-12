@@ -25,6 +25,7 @@
     PUTileViewAnimator *_animator;
     _Bool _generatesPlaceholderImage;
     _Bool _useContentAspectRatio;
+    _Bool _preserveThumbnailsDuringReload;
     AVAsset *_asset;
     AVVideoComposition *_videoComposition;
     UIImage *_placeholderImage;
@@ -43,6 +44,7 @@
 @property(retain, nonatomic, setter=_setDataSource:) PUFilmstripDataSource *_dataSource; // @synthesize _dataSource=__dataSource;
 @property(retain, nonatomic, setter=_setMediaProvider:) PUFilmstripMediaProvider *_mediaProvider; // @synthesize _mediaProvider=__mediaProvider;
 @property(readonly, nonatomic) PUTilingView *_tilingView; // @synthesize _tilingView=__tilingView;
+@property(nonatomic) _Bool preserveThumbnailsDuringReload; // @synthesize preserveThumbnailsDuringReload=_preserveThumbnailsDuringReload;
 @property(nonatomic) _Bool useContentAspectRatio; // @synthesize useContentAspectRatio=_useContentAspectRatio;
 @property(copy, nonatomic) NSArray *indicatorInfos; // @synthesize indicatorInfos=_indicatorInfos;
 @property(nonatomic) struct CGRect visibleRect; // @synthesize visibleRect=_visibleRect;

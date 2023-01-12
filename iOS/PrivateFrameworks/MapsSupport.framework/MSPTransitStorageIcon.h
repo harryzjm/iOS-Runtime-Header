@@ -9,7 +9,7 @@
 #import <MapsSupport/GEOTransitIconDataSource-Protocol.h>
 #import <MapsSupport/NSCopying-Protocol.h>
 
-@class NSString, PBUnknownFields;
+@class GEOStyleAttributes, NSString, PBUnknownFields;
 
 @interface MSPTransitStorageIcon : PBCodable <GEOTransitIconDataSource, NSCopying>
 {
@@ -55,6 +55,7 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, nonatomic) GEOStyleAttributes *styleAttributes;
 @property(readonly) Class superclass;
 
 @end

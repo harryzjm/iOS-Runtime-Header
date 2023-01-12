@@ -22,6 +22,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property __weak id <DDParsecHostVCInterface> hostSideDelegate; // @synthesize hostSideDelegate=_hostSideDelegate;
 - (_Bool)_canShowWhileLocked;
+- (void)remoteVCIsReady;
+- (void)performClientQueryWithServerAccessPermitted:(_Bool)arg1 localSearchPermitted:(_Bool)arg2;
 - (void)openTrailerPunchout:(id)arg1;
 - (void)getStatusBarHidden:(CDUnknownBlockType)arg1;
 - (void)openParsecURL:(id)arg1;

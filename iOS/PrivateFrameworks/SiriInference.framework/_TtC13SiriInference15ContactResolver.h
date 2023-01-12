@@ -10,9 +10,9 @@
 
 @interface _TtC13SiriInference15ContactResolver : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *lock;
     MISSING_TYPE *runTimeData;
-    MISSING_TYPE *_cache;
+    MISSING_TYPE *cacheOverride;
+    MISSING_TYPE *$__lazy_storage_$_forcePromptingStrategy;
 }
 
 @end

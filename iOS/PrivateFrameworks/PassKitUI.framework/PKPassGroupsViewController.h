@@ -9,8 +9,10 @@
 #import <PassKitUI/PKAccountServiceAccountResolutionControllerDelegate-Protocol.h>
 #import <PassKitUI/PKDiscoveryArticleViewControllerPresenter-Protocol.h>
 #import <PassKitUI/PKDiscoveryDataSourceDelegate-Protocol.h>
+#import <PassKitUI/PKExpiredPassesViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKForegroundActiveArbiterObserver-Protocol.h>
 #import <PassKitUI/PKGroupsControllerDelegate-Protocol.h>
+#import <PassKitUI/PKInboxDataSourceDelegate-Protocol.h>
 #import <PassKitUI/PKPGSVFooterViewDelegate-Protocol.h>
 #import <PassKitUI/PKPGSVSectionHeaderViewDelegate-Protocol.h>
 #import <PassKitUI/PKPGSVSectionSubheaderDelegate-Protocol.h>
@@ -25,10 +27,10 @@
 #import <PassKitUI/UIScrollViewDelegate-Protocol.h>
 #import <PassKitUI/_PKUIKVisibilityBackdropViewDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, NSTimer, PKAccountServiceAccountResolutionController, PKDiscoveryDataSource, PKDiscoveryGalleryView, PKGroupsController, PKPassGroupStackView, PKPaymentService, PKPeerPaymentAccountResolutionController, PKPeerPaymentAssociatedAccountsController, PKPeerPaymentService, _PKUIKVisibilityBackdropView;
+@class NSArray, NSMutableArray, NSString, NSTimer, PKAccountServiceAccountResolutionController, PKContactAvatarManager, PKDiscoveryDataSource, PKDiscoveryGalleryView, PKGroupsController, PKInboxDataSource, PKPassGroupStackView, PKPaymentService, PKPeerPaymentAccountResolutionController, PKPeerPaymentAssociatedAccountsController, PKPeerPaymentService, _PKUIKVisibilityBackdropView;
 @protocol PKPassLibraryDataProvider;
 
-@interface PKPassGroupsViewController : UIViewController <PKGroupsControllerDelegate, PKPassGroupStackViewDatasource, PKPassGroupStackViewDelegate, UIScrollViewDelegate, PKForegroundActiveArbiterObserver, PKPaymentServiceDelegate, PKPaymentSetupDelegate, PKPerformActionViewControllerDelegate, PKPeerPaymentAccountResolutionControllerDelegate, PKAccountServiceAccountResolutionControllerDelegate, PKDiscoveryDataSourceDelegate, PKSubcredentialProvisioningFlowControllerDelegate, _PKUIKVisibilityBackdropViewDelegate, PKPGSVFooterViewDelegate, PKPGSVSectionSubheaderDelegate, PKPGSVSectionHeaderViewDelegate, PKPassPersonalizationViewControllerDelegate, PKDiscoveryArticleViewControllerPresenter>
+@interface PKPassGroupsViewController : UIViewController <PKGroupsControllerDelegate, PKPassGroupStackViewDatasource, PKPassGroupStackViewDelegate, PKExpiredPassesViewControllerDelegate, UIScrollViewDelegate, PKForegroundActiveArbiterObserver, PKPaymentServiceDelegate, PKPaymentSetupDelegate, PKPerformActionViewControllerDelegate, PKPeerPaymentAccountResolutionControllerDelegate, PKAccountServiceAccountResolutionControllerDelegate, PKDiscoveryDataSourceDelegate, PKSubcredentialProvisioningFlowControllerDelegate, _PKUIKVisibilityBackdropViewDelegate, PKPGSVFooterViewDelegate, PKPGSVSectionSubheaderDelegate, PKPGSVSectionHeaderViewDelegate, PKInboxDataSourceDelegate, PKPassPersonalizationViewControllerDelegate, PKDiscoveryArticleViewControllerPresenter>
 {
     long long _invalidationStatus;
     PKPassGroupStackView *_groupStackView;
@@ -55,8 +57,10 @@
     PKPeerPaymentService *_peerPaymentService;
     PKPeerPaymentAccountResolutionController *_peerPaymentAccountResolutionController;
     PKPeerPaymentAssociatedAccountsController *_associatedAccountsController;
+    PKInboxDataSource *_inboxDataSource;
     PKAccountServiceAccountResolutionController *_accountServiceAccountResolutionController;
     PKDiscoveryDataSource *_discoveryDataSource;
+    PKContactAvatarManager *_avatarManager;
     _Bool _inField;
     _Bool _passesAreOutdated;
     _Bool _handleFieldDetection;
@@ -83,10 +87,14 @@
 @property(readonly, nonatomic) PKGroupsController *groupsController; // @synthesize groupsController=_groupsController;
 @property(readonly, nonatomic) long long style; // @synthesize style=_style;
 - (long long)visibilityBackdropView:(id)arg1 preferredStyleForTraitCollection:(id)arg2;
+- (unsigned long long)inboxBadgeCountForSectionHeaderView:(id)arg1;
+- (_Bool)inboxVisibleForSectionheaderView:(id)arg1;
+- (void)presentInvitationsForHeaderView:(id)arg1;
 - (void)presentPassDetailsForHeaderView:(id)arg1;
 - (id)passForSectionHeaderView:(id)arg1;
 - (void)transitionToViewController:(id)arg1;
 - (void)shouldUpdateSectionSubheaderView:(id)arg1;
+- (void)inboxDataSourceDidUpdateInboxMessages:(id)arg1;
 - (void)discoveryDataSource:(id)arg1 didUpdateArticleLayouts:(id)arg2;
 - (void)paymentSetupDidFinish:(id)arg1;
 - (void)userCanceledPairingWithSubcredentialProvisioningFlowController:(id)arg1;
@@ -119,6 +127,7 @@
 - (id)_paymentSetupNavigationControllerForProvisioningController:(id)arg1;
 - (void)presentPaymentSetupController;
 - (void)_presentAddPassesControllerWithPasses:(id)arg1;
+- (void)dismissVerificationPageForPassWithDeviceAccountID:(id)arg1;
 - (id)_passPendingActivationToPresent;
 - (id)_peerPaymentAccountResolutionController;
 - (void)dismissDiscoveryArticleViewController:(id)arg1 afterActionCompleted:(_Bool)arg2 withRelevantPassUniqueIdenitifer:(id)arg3;
@@ -137,16 +146,18 @@
 - (void)peerPaymentAccountResolutionController:(id)arg1 requestsPresentViewController:(id)arg2 animated:(_Bool)arg3;
 - (void)presentPeerPaymentPassAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentShareableCredentialWithEncryptedProvisioningTargetsHexEncodedString:(id)arg1 passThumbnailImageData:(id)arg2 animated:(_Bool)arg3;
-- (void)presentSubcredentialPairingFlowWithConfig:(id)arg1 flowType:(long long)arg2 animated:(_Bool)arg3;
-- (_Bool)presentSubcredentialPairingFlowIfPossibleWithIssuer:(id)arg1 password:(id)arg2 animated:(_Bool)arg3;
+- (void)_presentSubcredentialPairingFlowWithConfig:(id)arg1 flowType:(long long)arg2 animated:(_Bool)arg3;
+- (_Bool)presentSubcredentialPairingFlowIfPossibleWithConfig:(id)arg1 animated:(_Bool)arg2;
 - (void)presentSubcredentialInvitationWithIdentifier:(id)arg1 remoteDeviceInvitationIdentifier:(id)arg2 animated:(_Bool)arg3;
 - (void)presentDiscoveryArticleForItemWithIdentifier:(id)arg1 referrerIdentifier:(id)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)_cardTemplateInformationForArticleLayouts:(id)arg1;
 - (void)presentDailyCashForPassUniqueIdentifier:(id)arg1 dateComponents:(id)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)showStatementForIdentifier:(id)arg1 passUniqueIdentifier:(id)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)presentBalanceDetailsForPassUniqueIdentifier:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)presentSpendingSummaryForPassUniqueIdentifier:(id)arg1 type:(unsigned long long)arg2 unit:(unsigned long long)arg3 animated:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)presentSpendingSummaryForPassUniqueIdentifier:(id)arg1 type:(unsigned long long)arg2 categorization:(unsigned long long)arg3 unit:(unsigned long long)arg4 animated:(_Bool)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)presentAccountServicePaymentWithReferenceIdentifier:(id)arg1 forPassWithUniqueID:(id)arg2;
 - (void)presentPassDetailsAssociatedWithVirtualCardID:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)presentPassWithAssociatedAccountIdentifier:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentCreditPassAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentActionViewControllerWithUniqueID:(id)arg1 actionType:(unsigned long long)arg2;
 - (void)presentAccountServiceSchedulePayment:(id)arg1;
@@ -158,12 +169,18 @@
 - (void)_presentTransactionDetailsForTransaction:(id)arg1 transactionSourceType:(unsigned long long)arg2;
 - (void)presentTransactionDetailsForTransactionWithServiceIdentifier:(id)arg1 transactionSourceIdentifier:(id)arg2;
 - (void)presentTransactionDetailsForTransactionWithIdentifier:(id)arg1;
+- (void)presentAppStorePageForItemWithIdentifier:(id)arg1;
+- (void)presentInvitationWithIdentifier:(id)arg1 forAccountWithIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)presentCreateAccountUserInvitationWithCompletion:(CDUnknownBlockType)arg1;
+- (void)presentInvitationsInboxAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentInstallmentPlanWithIdentifier:(id)arg1 forAccountIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentInstallmentPlansForFeature:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentSearchWithCompletion:(CDUnknownBlockType)arg1;
-- (void)presentPassWithUniqueID:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_setupItemForExpressUpgradeMarket:(id)arg1 hideDisableAction:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)presentExpressUpgradeDetailForPassUniqueID:(id)arg1 marketIdentifier:(id)arg2 hideDisableAction:(unsigned long long)arg3 animated:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)presentPassWithUniqueID:(id)arg1 context:(id)arg2 animated:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_setupItemForExpressUpgradeWithAsset:(id)arg1 hideDisableAction:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)presentExpressUpgradeDetailForPassUniqueID:(id)arg1 assetIdentifier:(id)arg2 hideDisableAction:(unsigned long long)arg3 animated:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)presentISO18013DetailsForPassUniqueIdentifier:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)presentPassDetailsWithUniqueID:(id)arg1 animated:(_Bool)arg2 action:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)presentPassDetailsWithUniqueID:(id)arg1 animated:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)presentPassWithUniqueID:(id)arg1 animated:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setTableModalPresentationEnabled:(_Bool)arg1 animated:(_Bool)arg2;
@@ -184,7 +201,8 @@
 - (void)presentPassWithUpdateUserNotificationIdentifier:(id)arg1;
 - (void)presentDefaultPaymentPassInPaymentPresentationFromButton:(_Bool)arg1 withAnimated:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)forcePaymentPresentationFromButton:(_Bool)arg1;
-- (void)_presentGroupWithIndex:(unsigned long long)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_presentGroupWithIndex:(unsigned long long)arg1 context:(id)arg2 animated:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)presentedPass;
 @property(readonly, nonatomic) _Bool presentingPass;
 - (void)paymentDeviceDidExitField;
 - (void)paymentDeviceDidEnterFieldWithProperties:(id)arg1;
@@ -227,11 +245,13 @@
 - (_Bool)groupStackView:(id)arg1 requiresHeaderForPassType:(unsigned long long)arg2;
 - (_Bool)groupStackViewShouldShowHeaderViews:(id)arg1;
 - (id)featuredGroup;
+- (id)itemIdentifierForFrontmostDiscoveryCard;
 - (_Bool)hasDiscoveryContent;
 - (unsigned long long)indexOfSeparationGroup;
 - (unsigned long long)indexOfGroup:(id)arg1;
 - (unsigned long long)numberOfGroups;
 - (id)groupAtIndex:(unsigned long long)arg1;
+- (void)finishedEditingExpiredPass;
 - (void)encodeRestorableStateWithCoder:(id)arg1;
 - (void)decodeRestorableStateWithCoder:(id)arg1;
 - (void)viewWillLayoutSubviews;

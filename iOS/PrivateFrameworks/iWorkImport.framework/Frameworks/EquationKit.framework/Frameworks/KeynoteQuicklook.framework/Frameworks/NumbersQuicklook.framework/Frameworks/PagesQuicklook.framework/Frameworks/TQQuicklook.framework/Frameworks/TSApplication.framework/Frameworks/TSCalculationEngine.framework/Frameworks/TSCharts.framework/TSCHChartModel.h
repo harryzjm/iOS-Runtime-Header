@@ -8,37 +8,40 @@
 
 #import <TSCharts/NSCopying-Protocol.h>
 #import <TSCharts/TSCHNotifyOnModify-Protocol.h>
-#import <TSCharts/TSCHUnretainedParent-Protocol.h>
 #import <TSCharts/TSDMixing-Protocol.h>
 
 @class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, TSCHChartGrid, TSCHChartInfo;
 
-@interface TSCHChartModel : NSObject <TSCHNotifyOnModify, TSCHUnretainedParent, TSDMixing, NSCopying>
+@interface TSCHChartModel : NSObject <TSCHNotifyOnModify, TSDMixing, NSCopying>
 {
-    TSCHChartInfo *mInfo;
-    TSCHChartGrid *mGrid;
-    int mScatterFormat;
-    unsigned long long mMultiDataSetIndex;
-    _Bool mIsTransient;
-    NSMutableArray *mSeriesList;
-    NSMutableArray *mAxisList;
-    NSMutableDictionary *mRefLinesMap;
-    unsigned long long mNumberOfSeriesForCalculatingBarWidth;
-    _Bool mModelInvalid;
-    NSMutableDictionary *mSeriesDimensionsByGridIndex;
-    NSMutableDictionary *mGridIndexesBySeriesDimension;
-    NSDictionary *mAxisIDToDataFormatterPersistableStyleObjectsMap;
-    NSDictionary *mSeriesIndexToDataFormatterPersistableStyleObjectsMap;
-    _Bool mDisableCachingMediatorData;
-    int mCachedChartMediatorGridDirection;
-    NSMutableDictionary *mModelManagedCaches;
+    TSCHChartInfo *_chartInfo;
+    TSCHChartGrid *_grid;
+    int _scatterFormat;
+    NSMutableArray *_seriesList;
+    NSMutableArray *_axisList;
+    NSDictionary *_referenceLinesMap;
+    unsigned long long _multiDataSetIndex;
+    _Bool _modelInvalid;
+    _Bool _isTransient;
+    NSDictionary *_axisIDToDataFormatterPersistableStyleObjectsMap;
+    NSDictionary *_seriesIndexToDataFormatterPersistableStyleObjectsMap;
+    _Bool _disableCachingMediatorData;
+    int _cachedChartMediatorGridDirection;
+    NSMutableDictionary *_modelManagedCaches;
+    unsigned long long _numberOfSeriesForCalculatingBarWidth;
+    NSMutableDictionary *_seriesDimensionsByGridIndex;
+    NSMutableDictionary *_gridIndexesBySeriesDimension;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) _Bool isTransient; // @synthesize isTransient=mIsTransient;
-@property(nonatomic) int scatterFormat; // @synthesize scatterFormat=mScatterFormat;
-@property(retain, nonatomic) TSCHChartGrid *grid; // @synthesize grid=mGrid;
-@property(nonatomic) __weak TSCHChartInfo *chartInfo; // @synthesize chartInfo=mInfo;
+@property(retain, nonatomic) NSMutableDictionary *gridIndexesBySeriesDimension; // @synthesize gridIndexesBySeriesDimension=_gridIndexesBySeriesDimension;
+@property(retain, nonatomic) NSMutableDictionary *seriesDimensionsByGridIndex; // @synthesize seriesDimensionsByGridIndex=_seriesDimensionsByGridIndex;
+@property(readonly, nonatomic) _Bool isTransient; // @synthesize isTransient=_isTransient;
+@property(nonatomic) int scatterFormat; // @synthesize scatterFormat=_scatterFormat;
+@property(retain, nonatomic) TSCHChartGrid *grid; // @synthesize grid=_grid;
+@property(nonatomic) __weak TSCHChartInfo *chartInfo; // @synthesize chartInfo=_chartInfo;
+- (id)addAxisOfClass:(Class)arg1 forIDForPresetImport:(id)arg2;
+- (id)addSeriesAtIndexForPresetImport:(unsigned long long)arg1;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 - (_Bool)isEquivalentForCrossDocumentPasteMasterComparison:(id)arg1;
@@ -62,11 +65,12 @@
 - (unsigned long long)categoryForMultiDataSetCategoryIndex:(unsigned long long)arg1;
 - (id)dataSetNameForMultiDataModel;
 - (unsigned long long)p_multiDataSetCategoryIndexForCategory:(unsigned long long)arg1;
+- (void)setNameForSeries:(unsigned long long)arg1 toName:(id)arg2;
 - (id)nameForSeries:(unsigned long long)arg1;
 @property(readonly, nonatomic) unsigned long long analyticsDataSize;
 - (unsigned long long)numberOfGroupsInSeriesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)numberOfGroupsInSeries:(id)arg1;
-- (unsigned long long)numberOfGroupsInAllSeries;
+@property(readonly, nonatomic) unsigned long long numberOfGroupsInAllSeries;
 - (unsigned long long)p_numberOfGroupsInSeries:(id)arg1;
 - (id)allGroupsIndexSetForSeries:(id)arg1;
 @property(readonly, nonatomic) unsigned long long numberOfValues;
@@ -74,23 +78,24 @@
 @property(readonly, nonatomic) unsigned long long numberOfChunkableMultiDataSets;
 @property(readonly, nonatomic) unsigned long long numberOfMultiDataSetCategories;
 - (unsigned long long)numberOfGridValues;
+- (id)seriesForHiddenDataExportAtIndex:(unsigned long long)arg1;
 - (id)seriesAtIndex:(unsigned long long)arg1;
-@property(readonly, nonatomic) unsigned long long numberOfSeriesForCalculatingBarWidth;
+@property(readonly, nonatomic) unsigned long long numberOfSeriesForCalculatingBarWidth; // @synthesize numberOfSeriesForCalculatingBarWidth=_numberOfSeriesForCalculatingBarWidth;
 @property(readonly, nonatomic) unsigned long long maxNumberOfReferenceLines; // @dynamic maxNumberOfReferenceLines;
 @property(readonly, nonatomic) unsigned long long numberOfSeries;
 - (id)noSyncSeriesList;
-@property(readonly, copy, nonatomic) NSDictionary *referenceLinesMap;
+@property(readonly, copy, nonatomic) NSDictionary *referenceLinesMap; // @synthesize referenceLinesMap=_referenceLinesMap;
 - (int)cachedChartMediatorGridDirection;
 - (id)cachedDataFormatterPersistableStyleObjectAtSeriesIndex:(unsigned long long)arg1;
 - (id)cachedDataFormatterPersistableStyleObjectForID:(id)arg1;
 - (void)disableCachingMediatorDataDuringBlock:(CDUnknownBlockType)arg1;
 - (void)setShouldCacheMediatorData:(_Bool)arg1;
-@property(readonly, copy, nonatomic) NSArray *seriesList;
+@property(readonly, copy, nonatomic) NSArray *seriesList; // @synthesize seriesList=_seriesList;
 - (id)axisForID:(id)arg1;
 @property(readonly, copy, nonatomic) NSArray *categoryAxisList;
 @property(readonly, copy, nonatomic) NSArray *valueAxisList;
 - (id)noSyncAxisList;
-@property(readonly, copy, nonatomic) NSArray *axisList;
+@property(readonly, copy, nonatomic) NSArray *axisList; // @synthesize axisList=_axisList;
 - (void)validateIfNeededWithSeriesNonStyleMigration:(_Bool)arg1;
 - (void)validateIfNeeded;
 - (void)invalidateModel;
@@ -107,34 +112,33 @@
 - (_Bool)p_disableCachingMediatorData;
 - (void)p_postSynchronizeAxisList;
 - (void)p_synchronizeSeriesListWithSeriesNonStyleMigration:(_Bool)arg1;
-- (void)p_synchronizeSeriesList;
 - (void)p_synchronizeAxisList;
 - (void)p_synchronizeAxis:(id)arg1 class:(Class)arg2 axisID:(id)arg3 axisIndex:(unsigned long long)arg4 styleIndex:(unsigned long long)arg5 usedAxes:(id)arg6 unusedAxes:(id)arg7;
 - (id)p_axisForID:(id)arg1;
 - (unsigned long long)defaultOrdinalForAxisType:(int)arg1 seriesIndex:(unsigned long long)arg2;
 - (void)updateTransientModelFromInfoModel;
-@property(nonatomic) unsigned long long multiDataSetIndex;
-- (unsigned long long)p_archivedMultiDataSetIndex;
+@property(nonatomic) unsigned long long multiDataSetIndex; // @synthesize multiDataSetIndex=_multiDataSetIndex;
+- (unsigned long long)archivedMultiDataSetIndex;
 - (unsigned long long)p_lastMultiDataSetIndex;
 - (void)enumerateMultiDataModelsUsingBlock:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) _Bool isMultiData;
 - (void)willModify;
 @property(readonly, nonatomic) id syncRoot;
-- (void)clearParent;
+@property(nonatomic) __weak TSCHChartInfo *chart;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)init;
+- (id)initForPresetImportWithChartInfo:(id)arg1;
 - (id)initWithChartInfo:(id)arg1 dataSetIndex:(unsigned long long)arg2;
 - (id)initWithChartInfo:(id)arg1;
-- (void)loadFromPreUFFArchive:(const struct ChartModelArchive *)arg1 unarchiver:(id)arg2 contextForUpgradeOnly:(id)arg3;
+- (void)loadFromPreUFFArchive:(const void *)arg1 unarchiver:(id)arg2 contextForUpgradeOnly:(id)arg3;
 - (id)pieSeriesModelCacheForSeries:(unsigned long long)arg1;
 - (id)barModelCacheForSeries:(unsigned long long)arg1;
 - (id)lineAreaModelCacheForSeries:(unsigned long long)arg1;
-- (id)legendModelCache;
+- (id)legendModelCacheForStyleProvidingSource:(id)arg1;
 - (void)clearTextEditingSelectionPath;
 - (void)setTextEditingSelectionPath:(id)arg1 string:(id)arg2;
-- (void)saveToUnityArchive:(struct ChartArchive *)arg1 forCopy:(_Bool)arg2;
-- (void)loadFromUnityArchive:(const struct ChartArchive *)arg1 unarchiver:(id)arg2 contextForUpgradeOnly:(id)arg3 chartInfo:(id)arg4;
+- (void)saveToUnityArchive:(void *)arg1 forCopy:(_Bool)arg2;
+- (void)loadFromUnityArchive:(const void *)arg1 unarchiver:(id)arg2 contextForUpgradeOnly:(id)arg3 chartInfo:(id)arg4;
 
 @end
 

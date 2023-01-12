@@ -4,30 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <WorkflowKit/WFAppInstalledResourceDelegate-Protocol.h>
 #import <WorkflowKit/WFIntentExecutorDelegate-Protocol.h>
 #import <WorkflowKit/WFStandaloneShortcutAction-Protocol.h>
 
-@class INCExtensionConnection, INIntent, INIntentDescription, INStringLocalizer, NSArray, NSString, WFIntentExecutor;
+@class INCExtensionConnection, INIntent, INIntentDescription, INIntentDescriptor, INStringLocalizer, NSArray, NSString, WFAppInstalledResource, WFIntentExecutor;
 
-@interface WFHandleIntentAction <WFIntentExecutorDelegate, WFStandaloneShortcutAction>
+@interface WFHandleIntentAction <WFAppInstalledResourceDelegate, WFIntentExecutorDelegate, WFStandaloneShortcutAction>
 {
+    INIntentDescriptor *_intentDescriptor;
+    WFAppInstalledResource *_appResource;
     INIntent *_runningIntent;
     INStringLocalizer *_stringLocalizer;
     NSString *_localizedName;
     WFIntentExecutor *_executor;
-    INCExtensionConnection *_connection;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) INCExtensionConnection *connection; // @synthesize connection=_connection;
 @property(retain, nonatomic) WFIntentExecutor *executor; // @synthesize executor=_executor;
 @property(copy, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property(readonly, nonatomic) INStringLocalizer *stringLocalizer; // @synthesize stringLocalizer=_stringLocalizer;
 @property(readonly, copy, nonatomic) INIntent *runningIntent; // @synthesize runningIntent=_runningIntent;
+- (void)setAppResource:(id)arg1;
 - (_Bool)attemptRecoveryFromError:(id)arg1 optionIndex:(unsigned long long)arg2;
 - (void)intentExecutor:(id)arg1 showConfirmationForSlot:(id)arg2 item:(id)arg3 intent:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)intentExecutor:(id)arg1 showConfirmationForInteraction:(id)arg2 confirmationRequired:(_Bool)arg3 authenticationRequired:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)intentExecutorRequestsContinueInApp:(id)arg1;
+- (id)rootCauseErrorFromError:(id)arg1;
 - (void)handleExecutorError:(id)arg1;
 - (void)getErrorFromExtensionError:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)errorThatLaunchesApp:(id)arg1;
@@ -46,11 +49,21 @@
 - (void)showInteractionIfNeeded:(id)arg1 inUserInterface:(id)arg2 requiringConfirmation:(_Bool)arg3 requiringAuthentication:(_Bool)arg4 executionStage:(long long)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (_Bool)allowsContinueInAppWhenRunningRemotely;
 - (_Bool)requiresRemoteExecution;
+- (id)contentDestinationWithError:(id *)arg1;
+- (void)appInstalledResource:(id)arg1 didUpdateAppDescriptor:(id)arg2;
+- (_Bool)intentDescriptorIsSyncedFromOtherDevices;
+- (id)appResource;
+- (void)updateAppDescriptorInDatabaseWithSelectedApp:(id)arg1;
+- (void)updateAppDescriptorWithSelectedApp:(id)arg1;
+@property(retain, nonatomic) INIntentDescriptor *intentDescriptor; // @synthesize intentDescriptor=_intentDescriptor;
+- (id)appDescriptor;
 - (void)getOutputFromIntentResponse:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)launchAppInBackground:(_Bool)arg1;
 - (void)finishRunningByContinuingInApp;
 - (_Bool)shouldOpenAppThroughSiriForIntent:(id)arg1 intentResponse:(id)arg2;
 - (void)populateIntent:(id)arg1 withInput:(id)arg2 processedParameters:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)executorWithIntent:(id)arg1 groupIdentifier:(id)arg2;
+- (_Bool)shouldForceHandleInSiri:(id)arg1;
 - (_Bool)intentIsHandledBySiri:(id)arg1;
 - (_Bool)skipSiriExecution;
 - (_Bool)runInProcess;
@@ -61,8 +74,11 @@
 - (_Bool)isWorkflowInDatabase;
 - (void)accessBundleContentWithBlock:(CDUnknownBlockType)arg1;
 - (id)parameterForSlot:(id)arg1;
+- (void)generateStandaloneShortcutRepresentation:(CDUnknownBlockType)arg1;
 - (void)generateShortcutRepresentation:(CDUnknownBlockType)arg1;
-- (id)generatedAccessResource;
+- (id)accessResourcesToBeAuthorizedImplicitlyForUpdatedParameterState:(id)arg1 forParameter:(id)arg2;
+- (id)generatedAccessResourceNode;
+- (id)generatedResourceNodes;
 - (id)createResourceManager;
 @property(readonly, nonatomic) NSArray *slots;
 @property(readonly, nonatomic) INIntentDescription *intentDescription;
@@ -78,7 +94,9 @@
 - (id)showsWhenRunIfApplicable;
 - (_Bool)requiresShowsWhenRun;
 - (void)wasAddedToWorkflowByUser:(id)arg1;
+- (id)appForDisplay;
 - (_Bool)skipsProcessingHiddenParameters;
+@property(readonly, nonatomic) INCExtensionConnection *connection;
 - (void)cancel;
 - (void)finishRunningWithError:(id)arg1;
 - (void)runAsynchronouslyWithInput:(id)arg1;

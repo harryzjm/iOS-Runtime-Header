@@ -14,10 +14,12 @@
 @property(readonly, nonatomic) CLSAssetFaceInformationSummary *clsFaceInformationSummary;
 - (short)clsInterestingAudioClassifications;
 - (_Bool)clsIsTragicFailure;
+- (_Bool)clsIsGuestAsset;
 - (NSSet *)clsSceneClassifications;
 - (unsigned long long)clsVideoFaceCount;
 - (double)clsActivityScore;
 - (double)clsVideoScore;
+- (long long)playbackStyle;
 - (PHAssetCurationProperties *)curationProperties;
 - (PHAssetMediaAnalysisProperties *)mediaAnalysisProperties;
 - (PHAssetAestheticProperties *)aestheticProperties;
@@ -29,6 +31,7 @@
 - (_Bool)isSubtype:(unsigned long long)arg1;
 - (_Bool)isIncludedInCloudFeeds;
 - (_Bool)hasAdjustments;
+- (_Bool)isHEICSequence;
 - (_Bool)isPSD;
 - (_Bool)isPNG;
 - (_Bool)isPDF;

@@ -16,7 +16,6 @@
     _Bool _floatingBackgroundEnabled;
     _Bool _continuousRecognition;
     _Bool _outOfProcessRecognition;
-    _Bool _enableInAllApps;
     _Bool _enableOnRemoteViews;
     _Bool _enableViewControllerSupport;
     _Bool _enableReserveSpace;
@@ -24,7 +23,6 @@
     _Bool _UCBPaletteEnabled;
     _Bool _alwaysIncludeReturnKeyAndInputAssistantItems;
     _Bool _hideDefaultReturnKeyWhenSpecialReturnKeyIsPresent;
-    _Bool _chineseSupportEnabled;
     _Bool _lineBreakVerticalBarGestureEnabled;
     _Bool _lineBreakVerticalBarUpToDelete;
     _Bool _autoLineBreakEnabled;
@@ -36,7 +34,6 @@
     _Bool _useSlidingCanvas;
     _Bool _slidingCanvasDebugBorder;
     _Bool _useSingleComponentCanvas;
-    _Bool _alwaysAllowInSpringBoard;
     _Bool _useTransformStrokesAnimation;
     _Bool _forceUserTextInputSettingEnabled;
     double _textInputViewHitTestSlackHorizontal;
@@ -54,7 +51,6 @@
     long long _incrementalCommitWordsBack;
     double _continuousRecognitionWritingInterval;
     double _recognitionCoalescingDelay;
-    NSString *_recognitionLocaleIdentifier;
     double _debugRecognitionRequestArtificialDelay;
     double _debugElementFinderArtificialDelay;
     double _debugFirstResponderArtificialDelay;
@@ -77,16 +73,12 @@
     double _strongCursorMaximumYDistance;
     double _slidingCanvasWidth;
     double _slidingCanvasHeight;
-    NSArray *__inputModesForTesting;
 }
 
 + (long long)featureLevel;
 + (id)sharedSettings;
-- (void).cxx_destruct;
-@property(retain, nonatomic) NSArray *_inputModesForTesting; // @synthesize _inputModesForTesting=__inputModesForTesting;
 @property(nonatomic) _Bool forceUserTextInputSettingEnabled; // @synthesize forceUserTextInputSettingEnabled=_forceUserTextInputSettingEnabled;
 @property(nonatomic) _Bool useTransformStrokesAnimation; // @synthesize useTransformStrokesAnimation=_useTransformStrokesAnimation;
-@property(nonatomic) _Bool alwaysAllowInSpringBoard; // @synthesize alwaysAllowInSpringBoard=_alwaysAllowInSpringBoard;
 @property(nonatomic) _Bool useSingleComponentCanvas; // @synthesize useSingleComponentCanvas=_useSingleComponentCanvas;
 @property(nonatomic) double slidingCanvasHeight; // @synthesize slidingCanvasHeight=_slidingCanvasHeight;
 @property(nonatomic) double slidingCanvasWidth; // @synthesize slidingCanvasWidth=_slidingCanvasWidth;
@@ -117,7 +109,6 @@
 @property(nonatomic) double drawingGestureTapDetectionDistanceThreshold; // @synthesize drawingGestureTapDetectionDistanceThreshold=_drawingGestureTapDetectionDistanceThreshold;
 @property(nonatomic) double drawingGestureMinimumScrollDistanceThreshold; // @synthesize drawingGestureMinimumScrollDistanceThreshold=_drawingGestureMinimumScrollDistanceThreshold;
 @property(nonatomic) double drawingGestureMinimumPanDistanceThreshold; // @synthesize drawingGestureMinimumPanDistanceThreshold=_drawingGestureMinimumPanDistanceThreshold;
-@property(nonatomic) _Bool chineseSupportEnabled; // @synthesize chineseSupportEnabled=_chineseSupportEnabled;
 @property(nonatomic) _Bool hideDefaultReturnKeyWhenSpecialReturnKeyIsPresent; // @synthesize hideDefaultReturnKeyWhenSpecialReturnKeyIsPresent=_hideDefaultReturnKeyWhenSpecialReturnKeyIsPresent;
 @property(nonatomic) _Bool alwaysIncludeReturnKeyAndInputAssistantItems; // @synthesize alwaysIncludeReturnKeyAndInputAssistantItems=_alwaysIncludeReturnKeyAndInputAssistantItems;
 @property(nonatomic) _Bool UCBPaletteEnabled; // @synthesize UCBPaletteEnabled=_UCBPaletteEnabled;
@@ -125,12 +116,10 @@
 @property(nonatomic) _Bool enableReserveSpace; // @synthesize enableReserveSpace=_enableReserveSpace;
 @property(nonatomic) _Bool enableViewControllerSupport; // @synthesize enableViewControllerSupport=_enableViewControllerSupport;
 @property(nonatomic) _Bool enableOnRemoteViews; // @synthesize enableOnRemoteViews=_enableOnRemoteViews;
-@property(nonatomic) _Bool enableInAllApps; // @synthesize enableInAllApps=_enableInAllApps;
 @property(nonatomic) double debugFirstResponderArtificialDelay; // @synthesize debugFirstResponderArtificialDelay=_debugFirstResponderArtificialDelay;
 @property(nonatomic) double debugElementFinderArtificialDelay; // @synthesize debugElementFinderArtificialDelay=_debugElementFinderArtificialDelay;
 @property(nonatomic) double debugRecognitionRequestArtificialDelay; // @synthesize debugRecognitionRequestArtificialDelay=_debugRecognitionRequestArtificialDelay;
 @property(nonatomic) _Bool outOfProcessRecognition; // @synthesize outOfProcessRecognition=_outOfProcessRecognition;
-@property(copy, nonatomic) NSString *recognitionLocaleIdentifier; // @synthesize recognitionLocaleIdentifier=_recognitionLocaleIdentifier;
 @property(nonatomic) double recognitionCoalescingDelay; // @synthesize recognitionCoalescingDelay=_recognitionCoalescingDelay;
 @property(nonatomic) double continuousRecognitionWritingInterval; // @synthesize continuousRecognitionWritingInterval=_continuousRecognitionWritingInterval;
 @property(nonatomic) _Bool continuousRecognition; // @synthesize continuousRecognition=_continuousRecognition;
@@ -154,24 +143,23 @@
 - (void)_scheduledSaveSettingsTriggered;
 - (void)_scheduleSavingSettingsSoon;
 - (void)_loadDefaultValues;
-- (id)_currentSupportedLocale;
-- (id)defaultRecognitionLocaleIdentifierFromAvailableIdentifiers:(id)arg1;
+@property(readonly, copy, nonatomic) NSArray *recognitionLocaleIdentifiers;
+@property(readonly, copy, nonatomic) NSString *recognitionLocaleIdentifier;
 @property(readonly, nonatomic) _Bool supportedKeyboardLocaleExists;
 - (id)availableRecognitionLocaleIdentifiers;
-- (id)_enabledLanguagesFromSettingsChineseSupported:(_Bool)arg1;
-- (id)_remappedBaseLanguage:(id)arg1;
 - (void)resetToDefaultValues;
 - (void)saveSettingsToUserDefaults;
 - (void)loadSettingsFromUserDefaults;
 - (void)loadSettingsFromDictionary:(id)arg1;
 - (id)settingsDictionaryRepresentation;
+- (_Bool)_isFeatureAvailableAndEnabled;
+@property(readonly, nonatomic) _Bool isScribbleActive;
 - (void)setValue:(id)arg1 forKey:(id)arg2;
 - (_Bool)_shouldSaveSettings;
+- (void)_notifyRecognitionLocaleIdentifierDidChange;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)dealloc;
 - (id)init;
-- (void)_performOperations:(CDUnknownBlockType)arg1 withActiveInputModes:(id)arg2;
-- (void)_performOperations:(CDUnknownBlockType)arg1 withActiveInputModeIdentifiers:(id)arg2;
 
 @end
 

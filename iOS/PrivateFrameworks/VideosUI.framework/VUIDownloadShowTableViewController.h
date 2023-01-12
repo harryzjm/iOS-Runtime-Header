@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) VUIDownloadShowTableHeaderView *sizingHeader; // @synthesize sizingHeader=_sizingHeader;
 @property(retain, nonatomic) VUIMediaEntitiesDataSource *seasonsDataSource; // @synthesize seasonsDataSource=_seasonsDataSource;
 @property(retain, nonatomic) VUIDownloadShowDataSource *downloadDataSource; // @synthesize downloadDataSource=_downloadDataSource;
+- (void)_updateNavigationBarPadding;
 - (_Bool)_mediaItemShouldShowRenewOption:(id)arg1;
 - (void)_didPressGetMoreEpisodes:(id)arg1;
 - (_Bool)_episodeHasAllCanonicalIDs:(id)arg1;
@@ -45,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (id)_configureDeleteAlertControllerForIndexPath:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_cancelPressed;
 - (void)_editToggled;
+- (id)_headerTitleForEpisodeMediaItem:(id)arg1;
 - (void)downloadCellDidRequestCancelDownload:(id)arg1;
 - (id)tableView:(id)arg1 trailingSwipeActionsConfigurationForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didEndEditingRowAtIndexPath:(id)arg2;
@@ -60,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewDidAppear:(_Bool)arg1;
+- (void)viewWillLayoutSubviews;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
 - (id)initWithDataSource:(id)arg1 seasonsDataSource:(id)arg2;

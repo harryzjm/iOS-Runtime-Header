@@ -38,6 +38,7 @@
 - (_Bool)hasSingleColumnLayout;
 - (void)updateUseAccessibilityLayout;
 - (id)_createButtonForTitle:(id)arg1 image:(id)arg2;
+- (_Bool)hasEnabledWidgets;
 - (void)traitCollectionDidChange:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)_determineWidgetContentWithAvailableWidgets;

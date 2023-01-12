@@ -9,7 +9,7 @@
 #import <HomeKitDaemon/AFServiceCommand-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDAssistantCommandHelper, HMDAssistantGather, HMDHome, HMDHomeManager, NSArray, NSObject, NSString, NSUUID;
+@class HMDAssistantCommandHelper, HMDAssistantGather, HMDHome, HMDHomeManager, NSArray, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HMDAssistantCommand : SAHACommand <AFServiceCommand, HMFLogging>
@@ -21,9 +21,9 @@
     NSArray *_homeKitObjects;
     long long _numberOfHomes;
     NSString *_primaryHomeName;
-    NSUUID *_primaryHomeUUID;
+    NSString *_primaryHomeAssistantIdentifier;
     NSString *_currentHomeName;
-    NSUUID *_currentHomeUUID;
+    NSString *_currentHomeAssistantIdentifier;
     HMDAssistantCommandHelper *_assistantCommandHelper;
     HMDHome *_home;
     unsigned long long _startTime;
@@ -36,9 +36,9 @@
 @property(retain, nonatomic) HMDHome *home; // @synthesize home=_home;
 @property(nonatomic) _Bool completionHandlerCalled; // @synthesize completionHandlerCalled=_completionHandlerCalled;
 @property(retain, nonatomic) HMDAssistantCommandHelper *assistantCommandHelper; // @synthesize assistantCommandHelper=_assistantCommandHelper;
-@property(retain, nonatomic) NSUUID *currentHomeUUID; // @synthesize currentHomeUUID=_currentHomeUUID;
+@property(retain, nonatomic) NSString *currentHomeAssistantIdentifier; // @synthesize currentHomeAssistantIdentifier=_currentHomeAssistantIdentifier;
 @property(retain, nonatomic) NSString *currentHomeName; // @synthesize currentHomeName=_currentHomeName;
-@property(retain, nonatomic) NSUUID *primaryHomeUUID; // @synthesize primaryHomeUUID=_primaryHomeUUID;
+@property(retain, nonatomic) NSString *primaryHomeAssistantIdentifier; // @synthesize primaryHomeAssistantIdentifier=_primaryHomeAssistantIdentifier;
 @property(retain, nonatomic) NSString *primaryHomeName; // @synthesize primaryHomeName=_primaryHomeName;
 @property(nonatomic) long long numberOfHomes; // @synthesize numberOfHomes=_numberOfHomes;
 @property(retain, nonatomic) NSArray *homeKitObjects; // @synthesize homeKitObjects=_homeKitObjects;
@@ -86,7 +86,8 @@
 - (id)filterObjects:(id)arg1 forCharacteristics:(id)arg2;
 - (id)filterObjects:(id)arg1 forCharacteristicTypes:(id)arg2;
 - (id)objectsWithSearchFilter:(id)arg1 inHome:(id)arg2 serviceTypeIsATV:(_Bool)arg3 overrideServiceTypeIfNeeded:(id *)arg4;
-- (id)getoverridingHomeUUIDFromName:(id)arg1;
+- (id)_homeWithSearchFilter:(id)arg1;
+- (id)_evaluateHomeOptionallyMatchingHomeName:(id)arg1;
 - (id)filteredObjectsFromObjects:(id)arg1 byCharacteristicType:(id)arg2;
 - (id)filteredObjectsFromObjects:(id)arg1 byAttribute:(id)arg2 forActionType:(id)arg3;
 - (id)filteredObjectsFromObjects:(id)arg1 forGroup:(id)arg2;

@@ -10,6 +10,7 @@
 
 @interface NSUserActivity (CSSearchableItemAttributeSet)
 + (_Bool)_registerAsProxyForApplication:(int)arg1 options:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
++ (_Bool)_currentUserActivityProxiesWithOptions:(id)arg1 matching:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 @property(copy) CSSearchableItemAttributeSet *contentAttributeSet; // @dynamic contentAttributeSet;
 - (void)_sendToCoreSpotlightIndexer;
 - (void)_updateForwardToCoreSpotlightIndexer:(BOOL)arg1;
@@ -31,5 +32,10 @@
 @property(readonly, copy) NSDate *_madeCurrentEndDate;
 @property(readonly, copy) NSDate *_madeCurrentDate;
 @property(readonly, copy) NSUUID *_originalUniqueIdentifier;
+- (id)_createUserActivityDataWithSaving:(_Bool)arg1 options:(id)arg2 error:(id *)arg3;
+- (id)_createUserActivityStringsWithSaving:(_Bool)arg1 options:(id)arg2 string:(id *)arg3 optionalString:(id *)arg4 data:(id *)arg5 error:(id *)arg6;
+- (void)_forceSave;
+- (_Bool)doSaveUserActivityWithTimeout:(double)arg1 isCurrent:(_Bool)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)_supportsSynchronizeActivityWithTimeout;
 @end
 

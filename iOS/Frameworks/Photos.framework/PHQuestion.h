@@ -40,6 +40,7 @@
 @property(readonly, nonatomic) unsigned short state; // @synthesize state=_state;
 @property(readonly, nonatomic) unsigned short type; // @synthesize type=_type;
 @property(readonly, nonatomic) NSString *entityIdentifier; // @synthesize entityIdentifier=_entityIdentifier;
+- (id)description;
 - (Class)changeRequestClass;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
 

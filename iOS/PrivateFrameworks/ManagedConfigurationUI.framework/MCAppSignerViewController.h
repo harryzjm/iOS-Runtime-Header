@@ -7,7 +7,6 @@
 @class MCUIAppSigner, NSObject;
 @protocol OS_dispatch_group;
 
-__attribute__((visibility("hidden")))
 @interface MCAppSignerViewController
 {
     _Bool _isNetworkReachable;
@@ -25,7 +24,6 @@ __attribute__((visibility("hidden")))
 - (void)_presentTrustAlert;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
@@ -34,13 +32,13 @@ __attribute__((visibility("hidden")))
 - (_Bool)_isAppRemovalAllowed;
 - (_Bool)_isShowingTrustUntrustRowAllowed;
 - (void)removeAppSignerApps;
-- (void)verifyApps;
-- (void)trustAppSigner;
 - (void)_trustActionGroupVerifyAppsAndTrustSigner:(_Bool)arg1;
-- (void)refreshAppSigner;
+- (void)_verifyApps;
+- (void)_trustAppSigner;
 - (void)networkReachabilityChanged:(id)arg1;
-- (void)effectiveSettingsChanged:(id)arg1;
-- (void)appSignerApplicationsChanged:(id)arg1;
+- (void)_appSignerWasRemoved;
+- (void)_appSignerWasAddedOnlineRequired:(_Bool)arg1;
+- (void)_appSignersUpdated:(id)arg1;
 - (void)dealloc;
 - (void)_setup;
 - (id)initWithStyle:(long long)arg1;

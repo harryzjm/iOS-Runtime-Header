@@ -19,11 +19,11 @@
 @property(nonatomic) double drawingWidth; // @synthesize drawingWidth=_drawingWidth;
 @property(nonatomic) _Bool _wantsFullyRenderedNotification; // @synthesize _wantsFullyRenderedNotification=__wantsFullyRenderedNotification;
 @property(nonatomic) __weak PKCanvasView *canvasView; // @synthesize canvasView=_canvasView;
-- (double)drawingScale;
+- (struct CGAffineTransform)drawingTransform;
 - (_Bool)disableTileAnimations;
 - (void)fullyRendered;
 - (_Bool)wantsFullyRendered;
-- (void)drawingDidChange;
+- (void)drawingDidChangeVisibleStrokes:(_Bool)arg1;
 
 @end
 

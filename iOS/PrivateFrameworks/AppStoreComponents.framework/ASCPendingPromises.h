@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)enumerateBinaryPromises:(CDUnknownBlockType)arg1 andPromises:(CDUnknownBlockType)arg2;
 - (void)addPromise:(id)arg1;
 - (_Bool)containsPromise:(id)arg1;
+@property(readonly, nonatomic) _Bool hasPromises;
 - (void)addBinaryPromise:(id)arg1;
 - (_Bool)containsBinaryPromise:(id)arg1;
 @property(readonly, nonatomic) NSMutableArray *promises;

@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_db6a2642)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_db6a2642)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSString *text;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithFlatbuffData:(id)arg1 root:(const struct TTSNormalizedText *)arg2 verify:(_Bool)arg3;

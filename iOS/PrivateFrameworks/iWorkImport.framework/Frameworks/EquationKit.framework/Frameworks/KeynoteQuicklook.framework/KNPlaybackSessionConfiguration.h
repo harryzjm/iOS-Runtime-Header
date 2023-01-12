@@ -15,8 +15,8 @@
 + (_Bool)canEnableMetal;
 + (_Bool)isColorSpaceWideGamut:(struct CGColorSpace *)arg1;
 + (id)configurationWithOffscreenCGContextBoundsSize:(struct CGSize)arg1;
-+ (id)configurationWithLayerHost:(id)arg1 screenEnvironment:(id)arg2 renderingMode:(long long)arg3;
-- (id)configurationWithUpdatedLayerScreenEnvironment:(id)arg1;
++ (id)configurationWithLayerHost:(id)arg1 renderingMode:(long long)arg2;
+- (id)configurationWithUpdatedLayerScreenEnvironment;
 @property(readonly, nonatomic) id <KNPlaybackLayerHost> layerHost;
 @property(readonly, nonatomic) _Bool isSceneRenderingEnabled;
 @property(readonly, nonatomic) _Bool isMetalEnabled;

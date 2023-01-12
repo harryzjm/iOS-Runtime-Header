@@ -17,9 +17,11 @@ __attribute__((visibility("hidden")))
 - (double)dualStringKeyTopFontSize;
 - (struct CGPoint)dualStringKeyBottomTextOffset;
 - (double)dualStringKeyBottomFontSize;
+- (double)symbolImageControlKeyFontSize;
 - (double)stringKeyFontSize;
 - (double)keyCornerRadius;
 - (double)controlKeyFontSize;
+- (struct CGPoint)symbolImageControlKeyOffset;
 - (struct CGPoint)iPadFudgeControlKeyOffset;
 
 @end

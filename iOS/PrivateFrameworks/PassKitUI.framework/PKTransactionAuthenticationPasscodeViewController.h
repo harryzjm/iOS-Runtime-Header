@@ -8,7 +8,7 @@
 
 #import <PassKitUI/PKRemoteTransactionAuthenticationPasscodeViewControllerDelegate-Protocol.h>
 
-@class NSString, PKRemoteTransactionAuthenticationPasscodeViewController, _UIAsyncInvocation;
+@class NSData, NSString, PKRemoteTransactionAuthenticationPasscodeViewController, _UIAsyncInvocation;
 @protocol PKTransactionAuthenticationPasscodeViewControllerDelegate;
 
 @interface PKTransactionAuthenticationPasscodeViewController : UIViewController <PKRemoteTransactionAuthenticationPasscodeViewControllerDelegate>
@@ -19,6 +19,7 @@
     struct os_unfair_lock_s _delegateLock;
     NSString *_passUniqueIdentifier;
     NSString *_transactionIdentifier;
+    NSData *_archivedAnalyticsSessionToken;
 }
 
 + (_Bool)_shouldForwardViewWillTransitionToSize;
@@ -28,6 +29,8 @@
 - (void)_setRemoteVC:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)passcodeViewControllerDidGenerateEncryptedPasscode:(id)arg1;
 - (void)passcodeViewControllerDidCancel;
+- (void)passcodeViewControllerDidEndSessionExchange;
+- (void)passcodeViewControllerRequestSessionExchangeTokenWithHandler:(CDUnknownBlockType)arg1;
 @property(nonatomic) __weak id <PKTransactionAuthenticationPasscodeViewControllerDelegate> delegate;
 - (void)resetWithTransactionAuthenticationFailure:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)viewWillLayoutSubviews;
@@ -39,7 +42,7 @@
 - (_Bool)shouldAutorotate;
 - (_Bool)_canShowWhileLocked;
 - (void)dealloc;
-- (id)initWithPassUniqueIdentifier:(id)arg1 transactionIdentifier:(id)arg2;
+- (id)initWithPassUniqueIdentifier:(id)arg1 transactionIdentifier:(id)arg2 archivedAnalyticsSessionToken:(id)arg3;
 - (id)init;
 
 // Remaining properties

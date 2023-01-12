@@ -20,6 +20,7 @@
 - (void)customElementStateChangedWithNodeId:(int)arg1 customElementState:(long long)arg2;
 - (void)shadowRootPoppedWithHostId:(int)arg1 rootId:(int)arg2;
 - (void)shadowRootPushedWithHostId:(int)arg1 root:(id)arg2;
+- (void)willDestroyDOMNodeWithNodeId:(int)arg1;
 - (void)childNodeRemovedWithParentNodeId:(int)arg1 nodeId:(int)arg2;
 - (void)childNodeInsertedWithParentNodeId:(int)arg1 previousNodeId:(int)arg2 node:(id)arg3;
 - (void)childNodeCountUpdatedWithNodeId:(int)arg1 childNodeCount:(int)arg2;

@@ -10,7 +10,6 @@
 
 @class GEOPDPoiIconCategoryFilter, PBDataReader, PBUnknownFields;
 
-__attribute__((visibility("hidden")))
 @interface GEOPDAutocompleteFilter : PBCodable <NSCopying>
 {
     PBDataReader *_reader;

@@ -6,13 +6,13 @@
 
 @interface TSPKnownFieldRepeatedStringValue
 {
-    struct RepeatedField<std::__1::basic_string<char>> _values;
+    struct RepeatedField<std::string> _values;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)mergeToMessage:(struct Message *)arg1 reflection:(const struct Reflection *)arg2;
-- (id)initWithFieldDescriptor:(const struct FieldDescriptor *)arg1 fieldInfo:(const struct FieldInfo *)arg2 message:(const struct Message *)arg3 reflection:(const struct Reflection *)arg4;
+- (id)initWithFieldDescriptor:(const void *)arg1 fieldInfo:(const void *)arg2 message:(const struct Message *)arg3 reflection:(const struct Reflection *)arg4;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSSet;
+@class NSArray, NSDictionary, NSMutableArray, NSSet;
 
 @interface TSWPFontList : NSObject
 {
@@ -15,24 +15,29 @@
     NSSet *_downloadedFonts;
     NSDictionary *_knownFontFamilyFaces;
     NSArray *_recentFontNames;
+    NSMutableArray *_cachedAvailableFamilyFonts;
 }
 
 + (id)excludedFamilyNames;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(retain) NSMutableArray *cachedAvailableFamilyFonts; // @synthesize cachedAvailableFamilyFonts=_cachedAvailableFamilyFonts;
 @property(retain) NSArray *recentFontNames; // @synthesize recentFontNames=_recentFontNames;
 @property(retain) NSDictionary *knownFontFamilyFaces; // @synthesize knownFontFamilyFaces=_knownFontFamilyFaces;
 @property(retain) NSSet *downloadedFonts; // @synthesize downloadedFonts=_downloadedFonts;
 @property(copy, nonatomic) CDUnknownBlockType fontPropertyResolver; // @synthesize fontPropertyResolver=_fontPropertyResolver;
 @property(retain) NSDictionary *knownFonts; // @synthesize knownFonts=_knownFonts;
 - (void)saveRecentFontNames:(id)arg1;
-@property(readonly) NSArray *recentFonts;
+@property(readonly) NSArray *recentBaseFonts;
+- (id)description;
 - (void)registerRecentFont:(id)arg1;
 - (id)fontForStyles:(id)arg1;
+- (id)baseFontWithDescriptor:(id)arg1;
 - (id)fontsForAvailableFamilies;
 - (id)fontFromStyle:(id)arg1;
 - (id)sortedFontsInStylesheet:(id)arg1;
 - (void)dropFontsWithPSNamesInSet:(id)arg1;
+- (id)cacheKeyForFontDescriptor:(id)arg1;
 - (id)cacheKeyForFontWithPostScriptName:(id)arg1 atSize:(double)arg2 bold:(_Bool)arg3 italic:(_Bool)arg4;
 - (id)fontForKey:(id)arg1;
 - (void)cacheFont:(id)arg1 withKey:(id)arg2;
@@ -52,6 +57,8 @@
 - (id)availableFontFamilies;
 - (id)familyNameFromFontDescriptor:(struct __CTFontDescriptor *)arg1;
 - (id)sortedFontFamilies;
+- (id)availableFontDescriptorsForAllFamilies;
+- (id)familiesForFontsInCollection:(struct __CTFontCollection *)arg1;
 - (void)loadRecentFonts;
 - (id)init;
 

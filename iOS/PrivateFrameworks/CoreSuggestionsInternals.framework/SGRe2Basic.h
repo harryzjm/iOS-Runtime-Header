@@ -9,7 +9,7 @@
 @interface SGRe2Basic
 {
     NSData *_patternData;
-    struct RE2 *_pattern;
+    void *_pattern;
     _Bool _isTrivial;
 }
 

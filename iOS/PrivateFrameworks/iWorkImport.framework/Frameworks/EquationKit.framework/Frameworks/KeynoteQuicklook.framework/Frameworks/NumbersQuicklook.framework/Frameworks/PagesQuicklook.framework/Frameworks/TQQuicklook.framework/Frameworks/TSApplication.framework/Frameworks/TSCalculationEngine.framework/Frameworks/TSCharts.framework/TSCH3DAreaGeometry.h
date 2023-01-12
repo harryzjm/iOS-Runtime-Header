@@ -6,22 +6,22 @@
 
 @interface TSCH3DAreaGeometry
 {
-    vector_7200ab52 mTopLine;
-    vector_7200ab52 mBottomLine;
-    float mMinZ;
-    float mMaxZ;
-    float mZeroValue;
-    unsigned int mCapOffset;
-    int mCapCount;
-    _Bool mStacked;
+    struct vector<glm::detail::tvec3<float>, std::allocator<glm::detail::tvec3<float>>> _topLine;
+    struct vector<glm::detail::tvec3<float>, std::allocator<glm::detail::tvec3<float>>> _bottomLine;
+    float _minZ;
+    float _maxZ;
+    float _zeroValue;
+    unsigned int _capOffset;
+    int _capCount;
+    _Bool _stacked;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool stacked; // @synthesize stacked=mStacked;
-@property(nonatomic) float zeroValue; // @synthesize zeroValue=mZeroValue;
-@property(nonatomic) float maxZ; // @synthesize maxZ=mMaxZ;
-@property(nonatomic) float minZ; // @synthesize minZ=mMinZ;
+@property(nonatomic) _Bool stacked; // @synthesize stacked=_stacked;
+@property(nonatomic) float zeroValue; // @synthesize zeroValue=_zeroValue;
+@property(nonatomic) float maxZ; // @synthesize maxZ=_maxZ;
+@property(nonatomic) float minZ; // @synthesize minZ=_minZ;
 - (id)elementsBoundsPositions;
 - (id)selectionKnobPositions;
 - (void)generateArrays;
@@ -29,9 +29,9 @@
 - (unsigned int)capCount;
 - (unsigned int)capOffset;
 - (int)geometryCount;
-- (const vector_7200ab52 *)bottomLine;
-- (const vector_7200ab52 *)topLine;
-- (void)setTopLine:(const vector_7200ab52 *)arg1 bottomLine:(const vector_7200ab52 *)arg2 zeroValue:(float)arg3;
+- (const void *)bottomLine;
+- (const void *)topLine;
+- (void)setTopLine:(const void *)arg1 bottomLine:(const void *)arg2 zeroValue:(float)arg3;
 - (id)init;
 
 @end

@@ -45,9 +45,6 @@
 @property(nonatomic) _Bool disableStudyLogPowerButtonLogging; // @dynamic disableStudyLogPowerButtonLogging;
 @property(nonatomic) _Bool disableStudyLogVolumeKeyLogging; // @dynamic disableStudyLogVolumeKeyLogging;
 @property(nonatomic, getter=isDitheringEnabled) _Bool ditheringEnabled; // @dynamic ditheringEnabled;
-@property(nonatomic) _Bool fenceArbiterDisabled; // @dynamic fenceArbiterDisabled;
-@property(nonatomic) _Bool fenceArbiterSkipPreFenceSynchronize; // @dynamic fenceArbiterSkipPreFenceSynchronize;
-@property(nonatomic) float fenceArbiterTimeoutInterval; // @dynamic fenceArbiterTimeoutInterval;
 @property(nonatomic) _Bool forceCloneMirroring; // @dynamic forceCloneMirroring;
 @property(nonatomic) __weak NSString *forceMirroredOrientation; // @dynamic forceMirroredOrientation;
 @property(retain, nonatomic) NSData *globalMouseDevicePreferences; // @dynamic globalMouseDevicePreferences;

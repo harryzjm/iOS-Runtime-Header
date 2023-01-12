@@ -14,5 +14,10 @@
 + (NSString *)keyPathFromPrimaryObject;
 + (NSString *)entityName;
 + (NSArray *)propertiesToFetch;
+
+@optional
++ (NSArray *)propertiesToSortBy;
++ (_Bool)inverseIsToMany;
++ (NSArray *)additionalPropertiesToFetchOnPrimaryObject;
 @end
 

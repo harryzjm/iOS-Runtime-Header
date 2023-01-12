@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MNLocation, MNTrafficIncidentAlert, NSTimer;
+@class MNLocation, MNTrafficIncidentAlert, NSString, NSTimer;
 @protocol MNTrafficIncidentAlertUpdaterDelegate;
 
 __attribute__((visibility("hidden")))
@@ -19,17 +19,20 @@ __attribute__((visibility("hidden")))
     _Bool _isSpeakingAlert;
     int _trafficIncidentStatus;
     NSTimer *_alertRetryTimer;
+    NSString *_previousBannerID;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <MNTrafficIncidentAlertUpdaterDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_alertRetryTimerFired:(id)arg1;
 - (void)_activateAlertForLocation:(id)arg1;
+- (void)_updatePreviousDisplayedBannerForRequest:(id)arg1;
+- (void)_updateRerouteProposalStatusForRequest:(id)arg1;
 - (void)_updateAlertDistanceAndETA:(id)arg1;
 - (void)_removeActiveAlert;
 - (void)clearAlerts;
 - (void)updateForAlertFromResponse:(id)arg1;
-- (void)updateRerouteProposalStatusForRequest:(id)arg1;
+- (void)updatePreviousIncidentResultForRequest:(id)arg1;
 - (void)updateForReroute:(id)arg1;
 - (void)updateForLocation:(id)arg1;
 - (void)dealloc;

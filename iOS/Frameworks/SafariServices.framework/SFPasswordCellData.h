@@ -14,15 +14,19 @@ __attribute__((visibility("hidden")))
     _Bool _savedPasswordIsOnlySavedPasswordForHighLevelDomain;
     WBSSavedPassword *_savedPassword;
     WBSPasswordWarning *_warning;
+    NSString *_searchPattern;
 }
 
-+ (id)passwordCellDataWithSavedPassword:(id)arg1 warning:(id)arg2 savedPasswordIsOnlySavedPasswordForHighLevelDomain:(_Bool)arg3;
++ (id)passwordCellDataWithSavedPassword:(id)arg1 warning:(id)arg2 searchPattern:(id)arg3 savedPasswordIsOnlySavedPasswordForHighLevelDomain:(_Bool)arg4;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool savedPasswordIsOnlySavedPasswordForHighLevelDomain; // @synthesize savedPasswordIsOnlySavedPasswordForHighLevelDomain=_savedPasswordIsOnlySavedPasswordForHighLevelDomain;
+@property(readonly, copy, nonatomic) NSString *searchPattern; // @synthesize searchPattern=_searchPattern;
 @property(readonly, nonatomic) WBSPasswordWarning *warning; // @synthesize warning=_warning;
 @property(readonly, nonatomic) WBSSavedPassword *savedPassword; // @synthesize savedPassword=_savedPassword;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *highLevelDomain;
-- (id)initWithSavedPassword:(id)arg1 warning:(id)arg2 savedPasswordIsOnlySavedPasswordForHighLevelDomain:(_Bool)arg3;
+- (id)initWithSavedPassword:(id)arg1 warning:(id)arg2 searchPattern:(id)arg3 savedPasswordIsOnlySavedPasswordForHighLevelDomain:(_Bool)arg4;
 
 @end
 

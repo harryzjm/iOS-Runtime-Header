@@ -4,32 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PhotosGraph/PGAssetCollectionFeature-Protocol.h>
 #import <PhotosGraph/PGGraphLocationCoordinates-Protocol.h>
 #import <PhotosGraph/PGGraphLocationNaming-Protocol.h>
 #import <PhotosGraph/PGGraphLocationOrArea-Protocol.h>
 
-@class NSString;
+@class NSString, PGGraphLocationNodeCollection;
+@protocol PGGraphLocationOrAreaNodeCollection;
 
-@interface PGGraphLocationNode <PGGraphLocationOrArea, PGGraphLocationNaming, PGGraphLocationCoordinates>
+@interface PGGraphLocationNode <PGGraphLocationOrArea, PGGraphLocationNaming, PGGraphLocationCoordinates, PGAssetCollectionFeature>
 {
-    PGGraphLocationNode *_densestCloseLocationNode;
     struct CLLocationCoordinate2D _centroidCoordinate;
 }
 
-- (void).cxx_destruct;
++ (id)addressOfLocation;
++ (id)childLocationOfLocation;
++ (id)parentLocationOfLocation;
++ (id)filter;
 @property(nonatomic) struct CLLocationCoordinate2D centroidCoordinate; // @synthesize centroidCoordinate=_centroidCoordinate;
-- (id)deepParentLocationNodes;
+@property(readonly, nonatomic) NSString *featureIdentifier;
+@property(readonly, nonatomic) unsigned long long featureType;
 - (struct CLLocationCoordinate2D)coordinate;
 - (id)associatedNodesForRemoval;
 - (id)keywordDescription;
-- (id)addressNodes;
-- (void)enumerateChildLocationNodesWithLabel:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (id)childLocationNodesWithLabel:(id)arg1;
-- (id)parentLocationNodeWithLabel:(id)arg1;
-- (id)anyAddressNode;
 - (unsigned long long)locationMask;
 @property(readonly) NSString *fullname;
-@property(readonly) __weak PGGraphLocationNode *densestCloseLocationNode; // @synthesize densestCloseLocationNode=_densestCloseLocationNode;
+@property(readonly, nonatomic) id <PGGraphLocationOrAreaNodeCollection> locationOrAreaNodeCollection;
+@property(readonly, nonatomic) PGGraphLocationNodeCollection *locationNodeCollection;
+- (Class)collectionClass;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

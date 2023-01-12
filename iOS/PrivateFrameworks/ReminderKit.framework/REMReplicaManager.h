@@ -56,8 +56,8 @@
 - (id)l_checkoutReplicaUUIDForClient:(id)arg1;
 - (id)checkoutReplicaUUIDForClient:(id)arg1;
 - (void)performLocked:(CDUnknownBlockType)arg1;
-- (void)encodeIntoArchive:(struct ReplicaManager *)arg1;
-- (id)initWithArchive:(const struct ReplicaManager *)arg1 error:(id *)arg2;
+- (void)encodeIntoArchive:(void *)arg1;
+- (id)initWithArchive:(const void *)arg1 error:(id *)arg2;
 - (id)init;
 - (void)commonInit;
 

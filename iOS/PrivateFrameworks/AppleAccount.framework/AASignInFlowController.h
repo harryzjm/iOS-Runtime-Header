@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class ACAccountStore, CDPContext, CUMessageSession;
+@class ACAccountStore, CDPContext, CUMessageSession, NSDictionary;
 @protocol AASignInFlowControllerDelegate, CDPStateUIProvider;
 
 @interface AASignInFlowController : NSObject
 {
     ACAccountStore *_accountStore;
     CDPContext *_cdpContextForAccount;
+    NSDictionary *_authResults;
     _Bool _pendingSignIn;
     _Bool _existingAccount;
     _Bool _shouldAutomaticallySaveSignInResults;
@@ -53,7 +54,9 @@
 - (void)_backgroundSaveAccount:(id)arg1 withDataclassEnablement:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_saveAccount:(id)arg1 withAllDataclassesEnabledIfPossibleWithCompletion:(CDUnknownBlockType)arg2;
 - (void)_enableFindMyIfPossibleWithAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_validateCDPStateForAccount:(id)arg1 withCDPContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_enrollCDPStateForAccount:(id)arg1 withCDPContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_addKeysAndEnrollCDPStateForAccount:(id)arg1 withCDPContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_validateAndEnrollCDPStateForAccount:(id)arg1 withCDPContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_verifyLoginResponseForiCloudAccount:(id)arg1 withSuccess:(_Bool)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_registerAndVerifyLoginForiCloudAccount:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_updateAppleAccountIfNecessary:(id)arg1 withAltDSID:(id)arg2 rawPassword:(id)arg3;

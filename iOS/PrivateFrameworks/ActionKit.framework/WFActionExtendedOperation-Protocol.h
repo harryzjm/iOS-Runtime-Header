@@ -8,6 +8,6 @@
 
 @protocol WFActionExtendedOperation <NSObject>
 - (void)cancel;
-- (void)addCompletionHandlerIfRunning:(void (^)(void))arg1;
+- (void)addCompletionHandlerIfRunning:(void (^)(NSError *))arg1;
 @end
 

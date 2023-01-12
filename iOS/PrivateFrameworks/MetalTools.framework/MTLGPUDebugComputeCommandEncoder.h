@@ -6,7 +6,7 @@
 
 #import <MetalTools/MTLGPUDebugCommandEncoder-Protocol.h>
 
-@class MTLGPUDebugComputePipelineState, NSString;
+@class MTLGPUDebugCommandBuffer, MTLGPUDebugComputePipelineState, NSString;
 
 @interface MTLGPUDebugComputeCommandEncoder <MTLGPUDebugCommandEncoder>
 {
@@ -14,12 +14,14 @@
     struct Options *_options;
     struct MTLGPUDebugStageBufferHandles _handles;
     struct MTLGPUDebugThreadgroupLengths _threadgroup;
-    struct MTLGPUDebugBufferArgumentData _buffers;
     struct GPUDebugEventUUIDPacket _dispatchID;
     MTLGPUDebugComputePipelineState *_currentPipeline;
+    struct MTLGPUDebugBufferSubAlloc _reportBuffer;
 }
 
 - (id).cxx_construct;
+- (void)executeCommandsInBuffer:(id)arg1 indirectBuffer:(id)arg2 indirectBufferOffset:(unsigned long long)arg3;
+- (void)executeCommandsInBuffer:(id)arg1 withRange:(struct _NSRange)arg2;
 - (void)endEncoding;
 - (void)setComputePipelineState:(id)arg1;
 - (void)useResources:(const id *)arg1 count:(unsigned long long)arg2 usage:(unsigned long long)arg3;
@@ -29,15 +31,28 @@
 - (void)dispatchThreadgroups:(CDStruct_14f26992)arg1 threadsPerThreadgroup:(CDStruct_14f26992)arg2;
 - (void)dispatchThreadsWithIndirectBuffer:(id)arg1 indirectBufferOffset:(unsigned long long)arg2;
 - (void)dispatchThreads:(CDStruct_14f26992)arg1 threadsPerThreadgroup:(CDStruct_14f26992)arg2;
+- (void)setIntersectionFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setIntersectionFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setVisibleFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setVisibleFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setAccelerationStructures:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setAccelerationStructure:(id)arg1 atBufferIndex:(unsigned long long)arg2;
 - (void)setBytes:(const void *)arg1 length:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setBuffers:(const id *)arg1 offsets:(const unsigned long long *)arg2 withRange:(struct _NSRange)arg3;
 - (void)setBufferOffset:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (void)setBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
+- (void)setComputePipelineStateBuffers:(id)arg1;
 - (void)flushBindings;
+- (void)setKernelReportBuffer:(id)arg1 offset:(unsigned long long)arg2;
+- (id)temporaryBufferWithLength:(unsigned long long)arg1;
+- (id)temporaryBufferWithBytes:(const void *)arg1 length:(unsigned long long)arg2;
 @property(readonly) unsigned int encoderID;
+- (id)initWithComputeCommandEncoder:(id)arg1 commandBuffer:(id)arg2 descriptor:(id)arg3 encoderID:(unsigned int)arg4;
 - (id)initWithComputeCommandEncoder:(id)arg1 parent:(id)arg2 encoderID:(unsigned int)arg3;
+- (void)_initBufferArgumentData:(id)arg1;
 
 // Remaining properties
+@property(readonly) MTLGPUDebugCommandBuffer *commandBuffer; // @dynamic commandBuffer;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

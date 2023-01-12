@@ -7,27 +7,32 @@
 #import <objc/NSObject.h>
 
 #import <BackBoardServices/BSDescriptionStreamable-Protocol.h>
+#import <BackBoardServices/BSProtobufSerializable-Protocol.h>
 #import <BackBoardServices/NSCopying-Protocol.h>
 #import <BackBoardServices/NSMutableCopying-Protocol.h>
 #import <BackBoardServices/NSSecureCoding-Protocol.h>
 
 @class NSSet, NSString;
 
-@interface BKSTouchAuthenticationSpecification : NSObject <NSCopying, NSMutableCopying, NSSecureCoding, BSDescriptionStreamable>
+@interface BKSTouchAuthenticationSpecification : NSObject <NSCopying, NSMutableCopying, NSSecureCoding, BSDescriptionStreamable, BSProtobufSerializable>
 {
     NSSet *_displays;
     unsigned int _slotID;
     unsigned long long _authenticationMessageContext;
+    unsigned long long _hitTestInformationMask;
 }
 
++ (id)protobufSchema;
 + (_Bool)supportsSecureCoding;
 + (id)new;
 + (id)buildSpecification:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long hitTestInformationMask; // @synthesize hitTestInformationMask=_hitTestInformationMask;
 @property(readonly, nonatomic) unsigned long long authenticationMessageContext; // @synthesize authenticationMessageContext=_authenticationMessageContext;
 @property(readonly, nonatomic) unsigned int slotID; // @synthesize slotID=_slotID;
 @property(readonly, copy, nonatomic) NSSet *displays; // @synthesize displays=_displays;
 - (void)appendDescriptionToFormatter:(id)arg1;
+- (id)initForProtobufDecoding;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;

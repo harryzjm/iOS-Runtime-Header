@@ -75,6 +75,11 @@ struct MIDIPacketList {
 
 struct _AXEventDataStorage {
     long long eventSenderIdentifier;
+    long long page;
+    long long usage;
+    long long modifierFlags;
+    float eventValue1;
+    float eventValue2;
 };
 
 struct _NSRange {
@@ -122,34 +127,4 @@ typedef struct {
     unsigned int _field7;
     void *_field8;
 } CDStruct_723b0d29;
-
-typedef struct {
-    int _field1;
-    int _field2;
-    struct CGPoint _field3;
-    struct CGPoint _field4;
-    unsigned int _field5;
-    unsigned long long _field6;
-    void *_field7;
-    int _field8;
-    int _field9;
-    unsigned int _field10;
-    unsigned char _field11[0];
-} CDStruct_7f3c0925;
-
-typedef struct {
-    int _field1;
-    unsigned short _field2;
-    unsigned short _field3;
-    float _field4;
-    float _field5;
-    float _field6;
-    float _field7;
-    float _field8;
-    float _field9;
-    unsigned char _field10;
-    unsigned char _field11;
-    unsigned char _field12;
-    CDStruct_723b0d29 _field13[0];
-} CDStruct_f2c5c900;
 

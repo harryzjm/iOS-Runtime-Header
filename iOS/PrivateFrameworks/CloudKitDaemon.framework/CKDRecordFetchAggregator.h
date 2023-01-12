@@ -7,7 +7,6 @@
 @class CKDFetchRecordsOperation, CKDRecordCache, NSDictionary, NSMutableDictionary, NSObject, NSSet;
 @protocol OS_dispatch_group, OS_dispatch_queue, OS_dispatch_source;
 
-__attribute__((visibility("hidden")))
 @interface CKDRecordFetchAggregator
 {
     CKDRecordCache *_recordCache;
@@ -65,9 +64,9 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)CKPropertiesDescription;
 - (void)dealloc;
-@property(readonly, nonatomic) CKDRecordCache *recordCache;
+- (id)recordCache:(id *)arg1;
 - (id)activityCreate;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 @end
 

@@ -8,10 +8,11 @@
 
 @interface TSCH3DChartMeshResource
 {
-    TSCH3DChartMeshSharedChildResource *mShared;
+    TSCH3DChartMeshSharedChildResource *_shared;
 }
 
 + (id)resourceWithSharedResource:(id)arg1;
+- (void).cxx_destruct;
 - (unsigned long long)uniqueIdentifier;
 - (void)flushMemory;
 - (id)get;
@@ -19,7 +20,6 @@
 - (int)caching;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (void)dealloc;
 - (id)initWithSharedResource:(id)arg1;
 
 @end

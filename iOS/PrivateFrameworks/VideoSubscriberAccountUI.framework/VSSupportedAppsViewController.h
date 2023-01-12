@@ -6,13 +6,13 @@
 
 #import <UIKit/UIViewController.h>
 
-@class NSArray, NSOperationQueue, VSAuditToken, VSOptional;
+@class NSArray, NSOperationQueue, VSOptional;
 @protocol VSSupportedAppsViewControllerDelegate;
 
 @interface VSSupportedAppsViewController : UIViewController
 {
     VSOptional *_identityProvider;
-    VSAuditToken *_auditToken;
+    NSArray *_supportedApps;
     id <VSSupportedAppsViewControllerDelegate> _delegate;
     NSOperationQueue *_privateQueue;
     NSArray *_apps;
@@ -22,11 +22,11 @@
 @property(copy, nonatomic) NSArray *apps; // @synthesize apps=_apps;
 @property(retain, nonatomic) NSOperationQueue *privateQueue; // @synthesize privateQueue=_privateQueue;
 @property(nonatomic) __weak id <VSSupportedAppsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-@property(copy, nonatomic) VSAuditToken *auditToken; // @synthesize auditToken=_auditToken;
+@property(retain, nonatomic) NSArray *supportedApps; // @synthesize supportedApps=_supportedApps;
 @property(retain, nonatomic) VSOptional *identityProvider; // @synthesize identityProvider=_identityProvider;
 - (void)viewDidLoad;
-- (void)beginLoadingApps;
-- (void)_finishLoadingApps:(id)arg1;
+- (void)beginLoadingImages;
+- (void)_displayApps;
 - (void)_presentError:(id)arg1;
 - (void)_doneButtonPresed:(id)arg1;
 - (void)_didFinish;

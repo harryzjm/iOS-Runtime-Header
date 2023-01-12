@@ -4,16 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PhotosUICore/PXMemoryForYouDataSourceManager-Protocol.h>
 #import <PhotosUICore/PXPhotoLibraryUIChangeObserver-Protocol.h>
 
-@class NSString, PHFetchOptions, PHFetchResult, PHPhotoLibrary, PXMemoriesFeedDataSource;
+@class NSDate, NSString, PHFetchOptions, PHFetchResult, PHPhotoLibrary, PXDiscoveryFeedDataSourceManager, PXMemoriesFeedDataSource;
 
-@interface PXMemoriesFeedDataSourceManagerBase <PXPhotoLibraryUIChangeObserver>
+@interface PXMemoriesFeedDataSourceManagerBase <PXPhotoLibraryUIChangeObserver, PXMemoryForYouDataSourceManager>
 {
-    PHPhotoLibrary *_photoLibrary;
     _Bool _memoryGenerationHasStarted;
     _Bool __generatingAdditionalEntries;
+    PHPhotoLibrary *_photoLibrary;
     PHFetchOptions *_baseFetchOptions;
+    PXDiscoveryFeedDataSourceManager *_discoveryDataSourceManager;
     PHFetchResult *_memoriesFetchResult;
     unsigned long long _firstUngroupedMemoryIndex;
 }
@@ -22,12 +24,13 @@
 + (id)generateEntriesFromMemories:(id)arg1 startingFromIndex:(unsigned long long)arg2 maximumNumberOfEntries:(unsigned long long)arg3 finalMemoryIndex:(out unsigned long long *)arg4;
 + (id)_updatedFetchResultsForMemoriesForDatasource:(id)arg1 changeDetails:(id)arg2 changeInstance:(id)arg3;
 + (id)baseFetchOptions;
-+ (id)mostRecentCreationDate;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long firstUngroupedMemoryIndex; // @synthesize firstUngroupedMemoryIndex=_firstUngroupedMemoryIndex;
 @property(retain, nonatomic) PHFetchResult *memoriesFetchResult; // @synthesize memoriesFetchResult=_memoriesFetchResult;
+@property(retain, nonatomic) PXDiscoveryFeedDataSourceManager *discoveryDataSourceManager; // @synthesize discoveryDataSourceManager=_discoveryDataSourceManager;
 @property(nonatomic, getter=_isGeneratingAdditionalEntries, setter=_setGeneratingAdditionalEntries:) _Bool _generatingAdditionalEntries; // @synthesize _generatingAdditionalEntries=__generatingAdditionalEntries;
 @property(readonly, nonatomic) PHFetchOptions *baseFetchOptions; // @synthesize baseFetchOptions=_baseFetchOptions;
+@property(readonly, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 - (void)updateCurrentMemoriesNonPendingAndNotificationStatus;
 - (void)_clearPendingNotificationForMemory:(id)arg1;
 - (void)handleChangedKeyAssetsForMemories:(id)arg1;
@@ -36,8 +39,10 @@
 - (void)reloadMemories:(_Bool)arg1;
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1 withPreparedInfo:(id)arg2;
 - (id)prepareForPhotoLibraryChange:(id)arg1;
-- (void)pauseLibraryUpdates;
-- (void)resumeLibraryUpdates;
+- (void)startObservingChanges;
+- (void)resumeChangeDeliveryAndBackgroundLoading:(id)arg1;
+- (id)pauseChangeDeliveryWithTimeout:(double)arg1 identifier:(id)arg2;
+- (void)loadMoreContentWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)generateAdditionalEntriesIfPossible;
 - (void)startGeneratingMemories;
 - (void)resetMemoriesFetchResult;
@@ -46,6 +51,7 @@
 - (id)createInitialDataSource;
 - (id)initWithPhotoLibrary:(id)arg1;
 - (id)init;
+@property(readonly, nonatomic) NSDate *mostRecentCreationDate;
 
 // Remaining properties
 @property(readonly, nonatomic) PXMemoriesFeedDataSource *dataSource; // @dynamic dataSource;

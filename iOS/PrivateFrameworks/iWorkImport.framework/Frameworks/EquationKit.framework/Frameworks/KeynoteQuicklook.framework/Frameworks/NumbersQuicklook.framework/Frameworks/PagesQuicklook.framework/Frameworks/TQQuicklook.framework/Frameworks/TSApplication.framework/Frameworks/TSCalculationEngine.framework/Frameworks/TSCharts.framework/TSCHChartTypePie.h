@@ -8,6 +8,8 @@
 {
 }
 
+- (id)name;
+- (id)localizedToolTipDescriptionForShadow;
 - (long long)userInterfaceTag;
 - (double)defaultLabelExplosionValue;
 - (Class)chartLayoutItemClass;

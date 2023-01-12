@@ -28,7 +28,6 @@
 - (Class)dataObjectClass;
 - (id)canonicalUnit;
 - (long long)aggregationStyle;
-- (id)_initWithUnderlyingSampleType:(id)arg1 aggregationStyle:(long long)arg2 canonicalUnit:(id)arg3;
 
 @end
 

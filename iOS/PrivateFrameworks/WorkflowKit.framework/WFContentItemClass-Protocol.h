@@ -4,10 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary, NSOrderedSet, NSString, WFCoercionOptions, WFContentAttributionSet, WFFileRepresentation, WFFileType, WFObjectRepresentation, WFObjectType, WFRepresentation, WFType;
+@class NSArray, NSDictionary, NSOrderedSet, NSString, NSUUID, WFCoercionOptions, WFContentAttributionSet, WFContentItem, WFFileRepresentation, WFFileType, WFObjectRepresentation, WFObjectType, WFRepresentation, WFType;
 
 @protocol WFContentItemClass
-+ (WFContentAttributionSet *)defaultSourceForRepresentation:(WFRepresentation *)arg1;
 + (NSString *)countDescription;
 + (NSString *)localizedPluralFilterDescription;
 + (NSString *)pluralFilterDescription;
@@ -20,20 +19,24 @@
 + (NSArray *)contentCategories;
 + (NSOrderedSet *)outputTypes;
 + (NSOrderedSet *)ownedTypes;
+- (WFContentAttributionSet *)defaultSourceForRepresentation:(WFRepresentation *)arg1;
 
 @optional
 + (NSArray *)filterRepresentationsForAllowedContent:(NSArray *)arg1;
 + (NSArray *)propertyBuilders;
 + (_Bool)supportedTypeMustBeDeterminedByInstance:(WFType *)arg1;
-+ (id)itemWithSerializedItem:(NSDictionary *)arg1 forType:(WFFileType *)arg2 named:(NSString *)arg3 attributionSet:(WFContentAttributionSet *)arg4;
++ (id)itemWithSerializedItem:(NSDictionary *)arg1 forType:(WFFileType *)arg2 named:(NSString *)arg3 attributionSet:(WFContentAttributionSet *)arg4 cachingIdentifier:(NSUUID *)arg5;
 + (NSOrderedSet *)ownedPasteboardTypes;
+- (void)copyStateToItem:(WFContentItem *)arg1;
 - (_Bool)cachesSupportedTypes;
 - (_Bool)canGenerateRepresentationForType:(WFType *)arg1;
 - (WFObjectType *)preferredObjectType;
 - (WFFileType *)preferredFileType;
+- (_Bool)hasStringOutput;
 - (_Bool)includesFileRepresentationInSerializedItem;
 - (void)getFileRepresentationsForSerialization:(void (^)(NSArray *, NSError *))arg1;
 - (NSDictionary *)additionalRepresentationsForSerialization;
+- (NSDictionary *)metadataForSerialization;
 - (void)getPreferredFileSize:(void (^)(long long))arg1;
 - (void)getPreferredFileExtension:(void (^)(NSString *))arg1;
 - (void)generateFileRepresentations:(void (^)(NSArray *, NSError *))arg1 options:(WFCoercionOptions *)arg2 forType:(WFFileType *)arg3;

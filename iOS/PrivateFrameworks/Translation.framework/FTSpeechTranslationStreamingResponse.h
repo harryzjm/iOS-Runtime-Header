@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_3523418e)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_3523418e)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) FTSpeechTranslationServerEndpointFeatures *contentAsFTSpeechTranslationServerEndpointFeatures;
 @property(readonly, nonatomic) FTClientSetupInfo *contentAsFTClientSetupInfo;
 @property(readonly, nonatomic) FTServerEndpointFeatures *contentAsFTServerEndpointFeatures;

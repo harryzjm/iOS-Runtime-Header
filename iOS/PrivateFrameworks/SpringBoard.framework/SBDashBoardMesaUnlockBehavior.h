@@ -43,6 +43,7 @@
 - (void)lockButtonDown;
 - (void)significantUserInteractionDidOccur;
 - (void)screenOff;
+- (void)screenOn;
 - (void)menuButtonUp;
 - (void)menuButtonDown;
 - (id)initWithMesaSettings:(id)arg1 andUnlockTrigger:(id)arg2;

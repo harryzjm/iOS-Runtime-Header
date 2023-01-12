@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSString, TRIExperimentIdentifiers, TRIRolloutIdentifiers;
 
 @protocol PREResponsesTrialProtocol
-@property(readonly) NSString *treatmentId;
-@property(readonly) NSString *experimentId;
-@property(readonly) NSString *lexiconFilePath;
-@property(readonly) NSString *espressoBinFilePath;
-@property(readonly) NSString *inferenceModelConfigPath;
-@property(readonly) NSString *inferenceModelFilePath;
-@property(readonly) NSString *inferenceModelName;
+@property(readonly, nonatomic) _Bool isMLModelEnabled;
+@property(readonly, nonatomic) TRIExperimentIdentifiers *experimentIdentifiers;
+@property(readonly, nonatomic) TRIRolloutIdentifiers *rolloutIdentifiers;
+@property(readonly, nonatomic) NSString *espressoBinFilePath;
+@property(readonly, nonatomic) NSString *inferenceModelConfigPath;
+@property(readonly, nonatomic) NSString *inferenceModelFilePath;
+@property(readonly, nonatomic) NSString *inferenceModelDescription;
+@property(readonly, nonatomic) NSString *treatmentName;
 @end
 

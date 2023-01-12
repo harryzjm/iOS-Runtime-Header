@@ -28,6 +28,7 @@
 @property(readonly, nonatomic) long long transitionAnimation; // @synthesize transitionAnimation=_transitionAnimation;
 @property(readonly, copy, nonatomic) NSString *location; // @synthesize location=_location;
 @property(readonly, nonatomic) struct SBIconCoordinate coordinate; // @synthesize coordinate=_coordinate;
+- (void)_configureViewIfNecessary:(id)arg1 forShowingSnapshotWhenDeactivated:(_Bool)arg2;
 - (void)concludeTransition;
 - (void)performTransition;
 - (void)prepareToTransition;

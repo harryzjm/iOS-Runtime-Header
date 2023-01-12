@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIButton, UIImageView, UITableViewCell;
+@class UIButton, UIColor, UIImageView, UITableViewCell;
 
 __attribute__((visibility("hidden")))
 @interface UITableViewCellDetailDisclosureView
@@ -12,11 +12,14 @@ __attribute__((visibility("hidden")))
     UIButton *_accessoryButton;
     UIImageView *_disclosureView;
     UITableViewCell *_cell;
+    UIColor *_accessoryTintColor;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIColor *accessoryTintColor; // @synthesize accessoryTintColor=_accessoryTintColor;
 @property(readonly, nonatomic) UIButton *accessoryButton; // @synthesize accessoryButton=_accessoryButton;
 - (void)_dynamicUserInterfaceTraitDidChange;
+- (void)_updateDisclosureChevronImage;
 - (void)removeTarget:(id)arg1 action:(SEL)arg2 forControlEvents:(unsigned long long)arg3;
 - (void)addTarget:(id)arg1 action:(SEL)arg2 forControlEvents:(unsigned long long)arg3;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

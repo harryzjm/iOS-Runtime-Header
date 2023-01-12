@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <StoreBookkeeper/NSCopying-Protocol.h>
-#import <StoreBookkeeper/SBKKeyValuePayloadPair-Protocol.h>
+#import <StoreBookkeeper/NSObject-Protocol.h>
+#import <StoreBookkeeper/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface SBKUniversalPlaybackPositionMetadata : NSObject <SBKKeyValuePayloadPair, NSCopying>
+@interface SBKUniversalPlaybackPositionMetadata : NSObject <NSCopying, NSObject, NSSecureCoding>
 {
     _Bool _hasBeenPlayed;
     NSString *_itemIdentifier;
@@ -30,17 +31,17 @@
 + (_Bool)supportsSecureCoding;
 + (id)pairWithKVSKey:(id)arg1 kvsPayload:(id)arg2;
 - (void).cxx_destruct;
-@property unsigned long long playCount; // @synthesize playCount=_playCount;
-@property _Bool hasBeenPlayed; // @synthesize hasBeenPlayed=_hasBeenPlayed;
-@property double bookmarkTime; // @synthesize bookmarkTime=_bookmarkTime;
-@property(copy) NSString *itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
+@property(nonatomic) unsigned long long playCount; // @synthesize playCount=_playCount;
+@property(nonatomic) _Bool hasBeenPlayed; // @synthesize hasBeenPlayed=_hasBeenPlayed;
+@property(nonatomic) double bookmarkTime; // @synthesize bookmarkTime=_bookmarkTime;
+@property(copy, nonatomic) NSString *itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
 - (id)kvsValueDescription;
 - (id)kvsPayload;
 - (id)kvsKey;
 - (id)keyValueStorePayload;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
-@property double timestamp; // @synthesize timestamp=_timestamp;
+@property(nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, copy) NSString *description;
 - (void)encodeWithCoder:(id)arg1;

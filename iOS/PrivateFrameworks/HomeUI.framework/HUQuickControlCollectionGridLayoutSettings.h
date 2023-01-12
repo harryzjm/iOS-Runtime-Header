@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSAttributedString, NSString;
 
 @interface HUQuickControlCollectionGridLayoutSettings : NSObject
 {
     unsigned long long _sectionNumber;
     NSString *_sectionIdentifier;
     NSString *_sectionHeader;
+    NSAttributedString *_sectionAttributedHeader;
     unsigned long long _numberOfItems;
     unsigned long long _numberOfRows;
     unsigned long long _numberOfColumns;
@@ -36,6 +37,7 @@
 @property(nonatomic) unsigned long long numberOfColumns; // @synthesize numberOfColumns=_numberOfColumns;
 @property(nonatomic) unsigned long long numberOfRows; // @synthesize numberOfRows=_numberOfRows;
 @property(nonatomic) unsigned long long numberOfItems; // @synthesize numberOfItems=_numberOfItems;
+@property(retain, nonatomic) NSAttributedString *sectionAttributedHeader; // @synthesize sectionAttributedHeader=_sectionAttributedHeader;
 @property(retain, nonatomic) NSString *sectionHeader; // @synthesize sectionHeader=_sectionHeader;
 @property(retain, nonatomic) NSString *sectionIdentifier; // @synthesize sectionIdentifier=_sectionIdentifier;
 @property(nonatomic) unsigned long long sectionNumber; // @synthesize sectionNumber=_sectionNumber;

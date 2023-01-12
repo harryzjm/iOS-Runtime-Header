@@ -6,12 +6,13 @@
 
 #import <HomeKit/HMAccessorySettingsContainer-Protocol.h>
 #import <HomeKit/HMMediaObject-Protocol.h>
+#import <HomeKit/HMSleepWakeStateProvider-Protocol.h>
 #import <HomeKit/_HMMediaProfileDelegate-Protocol.h>
 
 @class HMAccessorySettings, HMHome, HMMediaSession, NSString;
 @protocol HMMediaProfileDelegate;
 
-@interface HMMediaProfile <_HMMediaProfileDelegate, HMMediaObject, HMAccessorySettingsContainer>
+@interface HMMediaProfile <_HMMediaProfileDelegate, HMMediaObject, HMAccessorySettingsContainer, HMSleepWakeStateProvider>
 {
     NSString *_routeUID;
     unsigned long long _capability;
@@ -22,6 +23,7 @@
 @property __weak id <HMMediaProfileDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)refreshStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (_Bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
+- (void)fetchAccessorySleepWakeStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)mediaProfile:(id)arg1 didUpdateMediaSession:(id)arg2;
 @property(readonly) __weak HMHome *containerHome;
 - (void)setCapability:(unsigned long long)arg1;

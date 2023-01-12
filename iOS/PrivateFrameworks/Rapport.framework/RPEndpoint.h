@@ -8,7 +8,7 @@
 
 #import <Rapport/NSSecureCoding-Protocol.h>
 
-@class CUBonjourDevice, IDSDevice, NSArray, NSDictionary, NSString, SFDevice;
+@class CUBonjourDevice, IDSDevice, NSArray, NSDate, NSDictionary, NSString, SFDevice;
 
 @interface RPEndpoint : NSObject <NSSecureCoding>
 {
@@ -17,6 +17,7 @@
     CUBonjourDevice *_bonjourDevice;
     unsigned int _hotspotInfo;
     NSString *_identifier;
+    NSString *_idsCorrelationIdentifier;
     NSString *_idsDeviceIdentifier;
     int _linkType;
     NSString *_mediaRemoteIdentifier;
@@ -26,9 +27,14 @@
     NSArray *_serviceTypes;
     unsigned long long _statusFlags;
     NSString *_sourceVersion;
+    NSString *_verifiedIdentity;
+    NSDictionary *_verifiedAcl;
     _Bool _present;
+    int _activityLevel;
     int _proximity;
-    NSString *_homeKitUserIdentifier;
+    NSDate *_activityLevelTimeStamp;
+    NSArray *_homeKitUserIdentifiers;
+    NSString *_ipAddress;
     NSDictionary *_serviceInfo;
     NSString *_serviceType;
     IDSDevice *_idsDevice;
@@ -37,11 +43,13 @@
 + (_Bool)supportsSecureCoding;
 + (id)nullEndpoint;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSDictionary *verifiedAcl; // @synthesize verifiedAcl=_verifiedAcl;
 @property(nonatomic) _Bool present; // @synthesize present=_present;
 @property(nonatomic) int linkType; // @synthesize linkType=_linkType;
 @property(retain, nonatomic) IDSDevice *idsDevice; // @synthesize idsDevice=_idsDevice;
 @property(retain, nonatomic) CUBonjourDevice *bonjourDevice; // @synthesize bonjourDevice=_bonjourDevice;
 @property(retain, nonatomic) SFDevice *bleDevice; // @synthesize bleDevice=_bleDevice;
+@property(copy, nonatomic) NSString *verifiedIdentity; // @synthesize verifiedIdentity=_verifiedIdentity;
 @property(copy, nonatomic) NSString *sourceVersion; // @synthesize sourceVersion=_sourceVersion;
 @property(nonatomic) unsigned long long statusFlags; // @synthesize statusFlags=_statusFlags;
 @property(copy, nonatomic) NSArray *serviceTypes; // @synthesize serviceTypes=_serviceTypes;
@@ -52,11 +60,16 @@
 @property(copy, nonatomic) NSString *model; // @synthesize model=_model;
 @property(copy, nonatomic) NSString *mediaRouteIdentifier; // @synthesize mediaRouteIdentifier=_mediaRouteIdentifier;
 @property(copy, nonatomic) NSString *mediaRemoteIdentifier; // @synthesize mediaRemoteIdentifier=_mediaRemoteIdentifier;
+@property(copy, nonatomic) NSString *ipAddress; // @synthesize ipAddress=_ipAddress;
 @property(copy, nonatomic) NSString *idsDeviceIdentifier; // @synthesize idsDeviceIdentifier=_idsDeviceIdentifier;
+@property(copy, nonatomic) NSString *idsCorrelationIdentifier; // @synthesize idsCorrelationIdentifier=_idsCorrelationIdentifier;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly, nonatomic) unsigned int hotspotInfo; // @synthesize hotspotInfo=_hotspotInfo;
-@property(readonly, copy, nonatomic) NSString *homeKitUserIdentifier; // @synthesize homeKitUserIdentifier=_homeKitUserIdentifier;
+@property(copy, nonatomic) NSArray *homeKitUserIdentifiers; // @synthesize homeKitUserIdentifiers=_homeKitUserIdentifiers;
+@property(readonly, copy, nonatomic) NSDate *activityLevelTimeStamp; // @synthesize activityLevelTimeStamp=_activityLevelTimeStamp;
+@property(readonly, nonatomic) int activityLevel; // @synthesize activityLevel=_activityLevel;
 @property(copy, nonatomic) NSString *accountID; // @synthesize accountID=_accountID;
+- (_Bool)isEqualToDevice:(id)arg1;
 - (_Bool)removeSFDevice:(id)arg1;
 - (unsigned int)updateWithSFDevice:(id)arg1;
 - (unsigned int)removeIDSDevice;

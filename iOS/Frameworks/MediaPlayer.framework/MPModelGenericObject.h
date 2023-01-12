@@ -4,16 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MPModelAlbum, MPModelArtist, MPModelComposer, MPModelCurator, MPModelGenre, MPModelMediaClip, MPModelMovie, MPModelPlaylist, MPModelPlaylistEntry, MPModelPodcast, MPModelPodcastEpisode, MPModelRadioStation, MPModelSocialPerson, MPModelSong, MPModelTVEpisode, MPModelTVSeason, MPModelTVShow;
+@class MPModelAlbum, MPModelArtist, MPModelComposer, MPModelCurator, MPModelGenre, MPModelGroup, MPModelMediaClip, MPModelMovie, MPModelPlaylist, MPModelPlaylistEntry, MPModelPodcast, MPModelPodcastEpisode, MPModelRadioStation, MPModelRadioStationEvent, MPModelRecordLabel, MPModelSocialPerson, MPModelSong, MPModelTVEpisode, MPModelTVSeason, MPModelTVShow;
 
 @interface MPModelGenericObject
 {
 }
 
++ (id)__group_KEY;
++ (id)__recordLabel_KEY;
 + (id)__socialPerson_KEY;
 + (id)__curator_KEY;
 + (id)__genre_KEY;
 + (id)__composer_KEY;
++ (id)__radioStationEvent_KEY;
 + (id)__radioStation_KEY;
 + (id)__podcastEpisode_KEY;
 + (id)__podcast_KEY;
@@ -51,6 +54,7 @@
 @property(retain, nonatomic) MPModelComposer *composer; // @dynamic composer;
 @property(retain, nonatomic) MPModelCurator *curator; // @dynamic curator;
 @property(retain, nonatomic) MPModelGenre *genre; // @dynamic genre;
+@property(retain, nonatomic) MPModelGroup *group; // @dynamic group;
 @property(retain, nonatomic) MPModelMediaClip *mediaClip; // @dynamic mediaClip;
 @property(retain, nonatomic) MPModelMovie *movie; // @dynamic movie;
 @property(retain, nonatomic) MPModelPlaylist *playlist; // @dynamic playlist;
@@ -58,6 +62,8 @@
 @property(retain, nonatomic) MPModelPodcast *podcast; // @dynamic podcast;
 @property(retain, nonatomic) MPModelPodcastEpisode *podcastEpisode; // @dynamic podcastEpisode;
 @property(retain, nonatomic) MPModelRadioStation *radioStation; // @dynamic radioStation;
+@property(readonly, nonatomic) MPModelRadioStationEvent *radioStationEvent; // @dynamic radioStationEvent;
+@property(retain, nonatomic) MPModelRecordLabel *recordLabel; // @dynamic recordLabel;
 @property(retain, nonatomic) MPModelTVSeason *season; // @dynamic season;
 @property(retain, nonatomic) MPModelTVShow *show; // @dynamic show;
 @property(retain, nonatomic) MPModelSocialPerson *socialPerson; // @dynamic socialPerson;

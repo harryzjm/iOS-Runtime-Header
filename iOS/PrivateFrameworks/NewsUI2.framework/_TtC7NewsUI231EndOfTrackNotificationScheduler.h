@@ -8,6 +8,7 @@
 
 @class MISSING_TYPE;
 
+__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI231EndOfTrackNotificationScheduler : NSObject
 {
     MISSING_TYPE *notificationService;

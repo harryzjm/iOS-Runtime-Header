@@ -10,7 +10,7 @@
 #import <TelephonyUtilities/TUSearchModuleProtocol-Protocol.h>
 
 @class CNAutocompleteStore, NSString, TUAutocompleteResultPartitioner, TUSearchController, TUSearchResults;
-@protocol CNCancelable, OS_dispatch_queue;
+@protocol CNAutocompleteCancelable, OS_dispatch_queue;
 
 @interface TUContactsAutocompleteSearchModule : NSObject <CNAutocompleteFetchDelegate, TUSearchModuleProtocol>
 {
@@ -18,7 +18,7 @@
     _Bool _cancelled;
     TUSearchController *_searchController;
     CNAutocompleteStore *_autocompleteStore;
-    id <CNCancelable> _fetchRequest;
+    id <CNAutocompleteCancelable> _fetchRequest;
     TUAutocompleteResultPartitioner *_autocompleteResultPartitioner;
     NSObject<OS_dispatch_queue> *_queue;
     CDUnknownBlockType _completion;
@@ -30,7 +30,7 @@
 @property(copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) TUAutocompleteResultPartitioner *autocompleteResultPartitioner; // @synthesize autocompleteResultPartitioner=_autocompleteResultPartitioner;
-@property(retain, nonatomic) id <CNCancelable> fetchRequest; // @synthesize fetchRequest=_fetchRequest;
+@property(retain, nonatomic) id <CNAutocompleteCancelable> fetchRequest; // @synthesize fetchRequest=_fetchRequest;
 @property(retain, nonatomic) CNAutocompleteStore *autocompleteStore; // @synthesize autocompleteStore=_autocompleteStore;
 @property __weak TUSearchController *searchController; // @synthesize searchController=_searchController;
 - (void)autocompleteFetchDidFinish:(id)arg1;

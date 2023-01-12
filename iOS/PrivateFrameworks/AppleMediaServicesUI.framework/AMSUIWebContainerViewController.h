@@ -8,7 +8,7 @@
 #import <AppleMediaServicesUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
 #import <AppleMediaServicesUI/UIViewControllerTransitioningDelegate-Protocol.h>
 
-@class AMSUIWebAppearance, AMSUIWebClientContext, AMSUIWebNavigationBarModel, NSDictionary, NSString, UIViewController;
+@class AMSUIWebAppearance, AMSUIWebClientContext, AMSUIWebNavigationBarModel, NSDictionary, NSString, UINavigationItem, UIViewController;
 @protocol AMSUIWebPagePresenter, AMSUIWebPresentationDelegate;
 
 __attribute__((visibility("hidden")))
@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     AMSUIWebContainerViewController<AMSUIWebPresentationDelegate> *_pushPresentationDelegate;
     AMSUIWebClientContext *_context;
     UIViewController *_hiddenViewController;
+    UINavigationItem *_lastNavigationItem;
     long long _lastNavigationStyle;
     AMSUIWebNavigationBarModel *_navigationBarModel;
     struct CGPoint _scrollPosition;
@@ -37,10 +38,11 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGPoint scrollPosition; // @synthesize scrollPosition=_scrollPosition;
 @property(retain, nonatomic) AMSUIWebNavigationBarModel *navigationBarModel; // @synthesize navigationBarModel=_navigationBarModel;
 @property(nonatomic) long long lastNavigationStyle; // @synthesize lastNavigationStyle=_lastNavigationStyle;
+@property(nonatomic) __weak UINavigationItem *lastNavigationItem; // @synthesize lastNavigationItem=_lastNavigationItem;
 @property(retain, nonatomic) UIViewController *hiddenViewController; // @synthesize hiddenViewController=_hiddenViewController;
 @property(nonatomic) _Bool hasAppeared; // @synthesize hasAppeared=_hasAppeared;
 @property(nonatomic) _Bool dismissCalled; // @synthesize dismissCalled=_dismissCalled;
-@property(retain, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
+@property(nonatomic) __weak AMSUIWebClientContext *context; // @synthesize context=_context;
 @property(nonatomic) _Bool shouldSkipInitialRefresh; // @synthesize shouldSkipInitialRefresh=_shouldSkipInitialRefresh;
 @property(nonatomic) __weak AMSUIWebContainerViewController<AMSUIWebPresentationDelegate> *pushPresentationDelegate; // @synthesize pushPresentationDelegate=_pushPresentationDelegate;
 @property(retain, nonatomic) NSDictionary *pageInfo; // @synthesize pageInfo=_pageInfo;
@@ -52,20 +54,28 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned long long activePresentationType; // @synthesize activePresentationType=_activePresentationType;
 - (void)_setupNavBarAnimated:(_Bool)arg1;
 - (void)_scrollTo:(struct CGPoint)arg1 webView:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)_rightButtonModel;
+- (void)_refreshForInitialAppear;
+- (void)_prepareToMoveWebViewToVC:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_postEvent:(id)arg1;
-- (void)_handleSelectedNavigationButton:(id)arg1;
+- (id)_makeCustomNavigationBarAppearanceWithModel:(id)arg1;
+- (id)_leftButtonModel;
+- (void)_handleRightNavigationButton:(id)arg1;
 - (void)_handlePushDismissal;
-- (void)_determineActivePresentationType;
-- (void)_cacheScrollViewPositionFor:(id)arg1;
-- (id)_barButtonItemFromModel:(id)arg1;
+- (void)_handleLeftNavigationButton:(id)arg1;
+- (unsigned long long)_determineActivePresentationType;
+- (id)_buttonModelForConditionalButtons:(id)arg1;
+- (id)_barButtonItemForButtonModel:(id)arg1;
+- (id)_barButtonItemForAppViewModel:(id)arg1;
 - (void)_applyAppearance;
-- (void)_adjustWebViewForReplaceWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_adjustWebViewScrollFor:(id)arg1 completion:(CDUnknownBlockType)arg2;
 @property(retain, nonatomic) UIViewController<AMSUIWebPagePresenter> *containedViewController; // @synthesize containedViewController=_containedViewController;
 - (void)presentationControllerDidDismiss:(id)arg1;
 - (void)didDismissController:(id)arg1;
 - (void)replaceContentWithViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)handleModalDismissal;
-- (void)applyModel:(id)arg1;
+- (void)cacheScrollViewPositionFor:(id)arg1;
+- (void)applyNavigationModel:(id)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidDisappear:(_Bool)arg1;

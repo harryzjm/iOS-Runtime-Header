@@ -6,32 +6,44 @@
 
 #import <UIKit/UIView.h>
 
-@class CNAvatarView, CNContact, UILabel, UIViewController;
+@class CNAvatarView, CNContact, UIImageView, UILabel, UIViewController;
+@protocol EKUILabeledAvatarViewDelegate;
 
 @interface EKUILabeledAvatarView : UIView
 {
     _Bool _loadContactsAsynchronously;
+    id <EKUILabeledAvatarViewDelegate> _delegate;
+    unsigned long long _badgeType;
+    unsigned long long _selectionState;
     UILabel *_label;
     UIViewController *_viewController;
     CNAvatarView *_avatar;
+    UIImageView *_badge;
+    UIView *_pressedAccentOverlay;
     unsigned long long _labelPlacement;
     unsigned long long _options;
 }
 
 + (id)sortedAvatarListFromParticipants:(id)arg1;
-+ (id)contactForAddress:(id)arg1 fullName:(id)arg2 firstName:(id)arg3 lastName:(id)arg4;
-+ (id)contactForContact:(id)arg1;
-+ (id)contactForPhoneNumber:(id)arg1 fullName:(id)arg2 firstName:(id)arg3 lastName:(id)arg4;
-+ (id)contactForEmailAddress:(id)arg1 fullName:(id)arg2 firstName:(id)arg3 lastName:(id)arg4;
 + (id)_createAvatarView;
 + (id)contactKeysToFetch;
 - (void).cxx_destruct;
 @property unsigned long long options; // @synthesize options=_options;
 @property unsigned long long labelPlacement; // @synthesize labelPlacement=_labelPlacement;
+@property(retain) UIView *pressedAccentOverlay; // @synthesize pressedAccentOverlay=_pressedAccentOverlay;
+@property(retain) UIImageView *badge; // @synthesize badge=_badge;
 @property(retain) CNAvatarView *avatar; // @synthesize avatar=_avatar;
 @property(nonatomic) _Bool loadContactsAsynchronously; // @synthesize loadContactsAsynchronously=_loadContactsAsynchronously;
 @property __weak UIViewController *viewController; // @synthesize viewController=_viewController;
 @property(retain) UILabel *label; // @synthesize label=_label;
+@property(nonatomic) unsigned long long selectionState; // @synthesize selectionState=_selectionState;
+@property(nonatomic) unsigned long long badgeType; // @synthesize badgeType=_badgeType;
+@property(nonatomic) __weak id <EKUILabeledAvatarViewDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)didLongPress;
+- (void)didTap;
+- (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
+- (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
+- (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)updateAvatarViewWithAddress:(id)arg1 fullName:(id)arg2 firstName:(id)arg3 lastName:(id)arg4;
 - (void)updateWithContacts:(id)arg1;
 - (void)updateWithParticipant:(id)arg1;
@@ -39,10 +51,8 @@
 - (void)updateLabel;
 @property(retain) CNContact *contact;
 - (void)setup;
-- (void)didTap;
-- (void)setUpTap;
-- (id)initWithEmail:(id)arg1 fullName:(id)arg2 firstName:(id)arg3 lastName:(id)arg4 placement:(unsigned long long)arg5 options:(unsigned long long)arg6;
 - (id)initWithContact:(id)arg1 placement:(unsigned long long)arg2 options:(unsigned long long)arg3;
+- (id)initWithEmail:(id)arg1 fullName:(id)arg2 firstName:(id)arg3 lastName:(id)arg4 placement:(unsigned long long)arg5 options:(unsigned long long)arg6;
 - (id)initWithIdentity:(id)arg1 placement:(unsigned long long)arg2 options:(unsigned long long)arg3;
 - (id)initWithPlacement:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (id)init;

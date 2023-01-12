@@ -17,13 +17,14 @@
 - (void)loadPlayerContactForAvatarControllerWithImageSize:(long long)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)mutableContactFromDisplayNameComponentsWithHandler:(CDUnknownBlockType)arg1;
 - (void)clearInMemoryCachedAvatars;
-- (void)_playerAvatarWithSize:(long long)arg1 useUIImage:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_playerAvatarWithSize:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)playerAvatarImageWithSize:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)playerAvatarDataWithSize:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)monogramImageWithPhotoSize:(long long)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)renderMonogramImageWithPhotoSize:(long long)arg1 monogramString:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)avatarImageRenderer;
 - (id)renderingScopeForPhotoSize:(long long)arg1;
+- (id)renderingScopeForPhotoSize:(long long)arg1 colorIndex:(long long)arg2;
 - (id)placeholderImageWithPhotoSize:(long long)arg1;
 - (void)stringForMonogramWithHandler:(CDUnknownBlockType)arg1;
 - (void)displayNameComponentsWithHandler:(CDUnknownBlockType)arg1;

@@ -13,6 +13,7 @@
 @interface CPUIImageRowCellConfiguration : NSObject <CPUIImageRowCellConfigurationProtocol>
 {
     _Bool _showActivityIndicator;
+    _Bool _enabled;
     NSString *_title;
     CDUnknownBlockType _selectGridItemBlock;
     CDUnknownBlockType _selectTitleBlock;
@@ -20,10 +21,13 @@
     NSArray *_artworkCatalogs;
 }
 
++ (id)configurationWithText:(id)arg1 artworkCatalogs:(id)arg2 selectGridItemBlock:(CDUnknownBlockType)arg3 selectTitleBlock:(CDUnknownBlockType)arg4 showActivityIndicator:(_Bool)arg5 enabled:(_Bool)arg6;
 + (id)configurationWithText:(id)arg1 artworkCatalogs:(id)arg2 selectGridItemBlock:(CDUnknownBlockType)arg3 selectTitleBlock:(CDUnknownBlockType)arg4 showActivityIndicator:(_Bool)arg5;
 + (id)configurationWithText:(id)arg1 artworkCatalogs:(id)arg2 selectGridItemBlock:(CDUnknownBlockType)arg3 selectTitleBlock:(CDUnknownBlockType)arg4;
++ (id)configurationWithText:(id)arg1 images:(id)arg2 selectGridItemBlock:(CDUnknownBlockType)arg3 selectTitleBlock:(CDUnknownBlockType)arg4 showActivityIndicator:(_Bool)arg5 enabled:(_Bool)arg6;
 + (id)configurationWithText:(id)arg1 images:(id)arg2 selectGridItemBlock:(CDUnknownBlockType)arg3 selectTitleBlock:(CDUnknownBlockType)arg4 showActivityIndicator:(_Bool)arg5;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool enabled; // @synthesize enabled=_enabled;
 @property(nonatomic) _Bool showActivityIndicator; // @synthesize showActivityIndicator=_showActivityIndicator;
 @property(retain, nonatomic) NSArray *artworkCatalogs; // @synthesize artworkCatalogs=_artworkCatalogs;
 @property(retain, nonatomic) NSArray *images; // @synthesize images=_images;

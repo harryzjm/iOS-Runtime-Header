@@ -16,6 +16,7 @@
 @property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property(nonatomic) long long orientation; // @synthesize orientation=_orientation;
 - (void)layoutSubviews;
+- (id)preferredFocusEnvironments;
 - (id)initWithOrientation:(long long)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

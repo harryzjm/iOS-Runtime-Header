@@ -14,8 +14,8 @@
 {
 }
 
+- (_Bool)settingsViewControllerWantsToKnowIfNewShortcutFlow:(id)arg1;
 - (void)settingsViewControllerWantsWorkflowReload:(id)arg1;
-- (void)settingsViewControllerDidFinish:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

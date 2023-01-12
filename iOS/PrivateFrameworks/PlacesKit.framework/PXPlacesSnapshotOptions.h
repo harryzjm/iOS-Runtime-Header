@@ -13,19 +13,25 @@
 {
     _Bool _shouldSkipPlaceholder;
     _Bool _showsPointLabels;
+    _Bool _shouldRenderThumbnailForNoLocation;
     PKExtendedTraitCollection *_extendedTraitCollection;
     id <PXPlacesMapGeotaggableInfoDelegate> _geotaggableInformationDelegate;
     NSObject<OS_dispatch_queue> *_queue;
     NSString *_cacheDirectoryPath;
     double _visibleDistance;
     unsigned long long _snapshotMapType;
+    unsigned long long _popoverImageType;
     struct CGSize _viewSize;
+    struct UIEdgeInsets _additionalInsets;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) struct UIEdgeInsets additionalInsets; // @synthesize additionalInsets=_additionalInsets;
+@property(nonatomic) _Bool shouldRenderThumbnailForNoLocation; // @synthesize shouldRenderThumbnailForNoLocation=_shouldRenderThumbnailForNoLocation;
 @property(nonatomic) _Bool showsPointLabels; // @synthesize showsPointLabels=_showsPointLabels;
 @property(nonatomic) _Bool shouldSkipPlaceholder; // @synthesize shouldSkipPlaceholder=_shouldSkipPlaceholder;
 @property(nonatomic) struct CGSize viewSize; // @synthesize viewSize=_viewSize;
+@property(nonatomic) unsigned long long popoverImageType; // @synthesize popoverImageType=_popoverImageType;
 @property(nonatomic) unsigned long long snapshotMapType; // @synthesize snapshotMapType=_snapshotMapType;
 @property(nonatomic) double visibleDistance; // @synthesize visibleDistance=_visibleDistance;
 @property(retain, nonatomic) NSString *cacheDirectoryPath; // @synthesize cacheDirectoryPath=_cacheDirectoryPath;

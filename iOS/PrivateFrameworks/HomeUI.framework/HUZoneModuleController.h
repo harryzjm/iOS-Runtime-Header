@@ -6,37 +6,38 @@
 
 #import <HomeUI/UITextFieldDelegate-Protocol.h>
 
-@class HFZoneModule, HMRoom, HUEditableTextCell, HUTitleValueCell, NSString;
+@class HFZoneModule, HMRoom, HUEditableTextCollectionListCell, NSString, UICollectionViewListCell, UITextField;
 
 @interface HUZoneModuleController <UITextFieldDelegate>
 {
     HMRoom *_room;
-    HUTitleValueCell *_currentZoneItemCell;
-    HUEditableTextCell *_createNewZoneCell;
+    UICollectionViewListCell *_currentZoneItemCell;
+    HUEditableTextCollectionListCell *_createNewZoneCell;
+    UITextField *_editingTextField;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) __weak HUEditableTextCell *createNewZoneCell; // @synthesize createNewZoneCell=_createNewZoneCell;
-@property(nonatomic) __weak HUTitleValueCell *currentZoneItemCell; // @synthesize currentZoneItemCell=_currentZoneItemCell;
+@property(nonatomic) __weak UITextField *editingTextField; // @synthesize editingTextField=_editingTextField;
+@property(nonatomic) __weak HUEditableTextCollectionListCell *createNewZoneCell; // @synthesize createNewZoneCell=_createNewZoneCell;
+@property(nonatomic) __weak UICollectionViewListCell *currentZoneItemCell; // @synthesize currentZoneItemCell=_currentZoneItemCell;
 @property(retain, nonatomic) HMRoom *room; // @synthesize room=_room;
+- (void)textFieldDidEndEditing:(id)arg1;
 - (_Bool)textFieldShouldEndEditing:(id)arg1;
 - (_Bool)textFieldShouldReturn:(id)arg1;
 - (void)textFieldDidBeginEditing:(id)arg1;
 - (id)finishZoneNameEditing;
 - (id)_createNewZoneWithName:(id)arg1;
 - (_Bool)_validateNewZoneName:(id)arg1;
-- (void)_configureCurrentZonesItem:(id)arg1 forCell:(id)arg2 animated:(_Bool)arg3;
-- (void)_configureZoneBuilderItem:(id)arg1 forCell:(id)arg2 animated:(_Bool)arg3;
-- (void)_configureZoneItem:(id)arg1 forCell:(id)arg2 animated:(_Bool)arg3;
-- (void)_configureCreateNewZoneItem:(id)arg1 forCell:(id)arg2 animated:(_Bool)arg3;
+- (void)_configureCurrentZonesItem:(id)arg1 forCell:(id)arg2;
+- (void)_configureZoneBuilderItem:(id)arg1 forCell:(id)arg2;
+- (void)_configureZoneItem:(id)arg1 forCell:(id)arg2;
+- (void)_configureCreateNewZoneItem:(id)arg1 forCell:(id)arg2;
 - (void)_updateCreateNewZoneCellText:(_Bool)arg1;
 - (id)_didSelectZoneBuilderItem:(id)arg1;
 - (id)_didSelectZoneItem:(id)arg1;
-- (void)accessoryButtonTappedForItem:(id)arg1;
 - (unsigned long long)didSelectItem:(id)arg1;
-- (_Bool)canSelectItem:(id)arg1;
-- (void)updateCell:(id)arg1 forItem:(id)arg2 animated:(_Bool)arg3;
-- (Class)cellClassForItem:(id)arg1;
+- (void)configureCell:(id)arg1 forItem:(id)arg2;
+- (Class)collectionCellClassForItem:(id)arg1;
 - (id)initWithModule:(id)arg1 room:(id)arg2;
 
 // Remaining properties

@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)_performWithSharedAccessForDataProviderEntityClass:(Class)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_performWithExclusiveAccessForDataProviderEntityClass:(Class)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_clearSomeGlobalEntityTemporaryReferences;
-- (map_2a6257c2 *)_entityMapForDataProviderEntityClass:(Class)arg1;
+- (void *)_entityMapForDataProviderEntityClass:(Class)arg1;
 - (id)_entityWithIdentifier:(long long)arg1 mediaEntityType:(long long)arg2 collectionGroupingType:(long long)arg3 loadEntityBlock:(CDUnknownBlockType)arg4;
 - (void)removeEntityWithIdentifier:(long long)arg1 dataProviderEntityClass:(Class)arg2;
 - (void)updatePropertyValuesInEntityWithIdentifier:(long long)arg1 dataProviderEntityClass:(Class)arg2 deleted:(_Bool)arg3;

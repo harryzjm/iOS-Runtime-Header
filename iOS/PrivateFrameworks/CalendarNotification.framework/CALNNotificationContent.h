@@ -31,10 +31,12 @@
     NSString *_threadIdentifier;
     NSString *_summaryArgument;
     unsigned long long _summaryArgumentCount;
+    unsigned long long _interruptionLevel;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long interruptionLevel; // @synthesize interruptionLevel=_interruptionLevel;
 @property(readonly, nonatomic) unsigned long long summaryArgumentCount; // @synthesize summaryArgumentCount=_summaryArgumentCount;
 @property(readonly, copy, nonatomic) NSString *summaryArgument; // @synthesize summaryArgument=_summaryArgument;
 @property(readonly, copy, nonatomic) NSString *threadIdentifier; // @synthesize threadIdentifier=_threadIdentifier;
@@ -61,7 +63,7 @@
 - (_Bool)isEqualToContent:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
-- (id)_initWithTitle:(id)arg1 subtitle:(id)arg2 body:(id)arg3 categoryIdentifier:(id)arg4 sectionIdentifier:(id)arg5 date:(id)arg6 expirationDate:(id)arg7 defaultActionURL:(id)arg8 iconIdentifier:(id)arg9 shouldHideTime:(_Bool)arg10 shouldSuppressSyncDismissalWhenRemoved:(_Bool)arg11 peopleIdentifiers:(id)arg12 sound:(id)arg13 userInfo:(id)arg14 threadIdentifier:(id)arg15 summaryArgument:(id)arg16 summaryArgumentCount:(unsigned long long)arg17;
+- (id)_initWithTitle:(id)arg1 subtitle:(id)arg2 body:(id)arg3 categoryIdentifier:(id)arg4 sectionIdentifier:(id)arg5 date:(id)arg6 expirationDate:(id)arg7 defaultActionURL:(id)arg8 iconIdentifier:(id)arg9 shouldHideTime:(_Bool)arg10 shouldSuppressSyncDismissalWhenRemoved:(_Bool)arg11 peopleIdentifiers:(id)arg12 sound:(id)arg13 userInfo:(id)arg14 threadIdentifier:(id)arg15 summaryArgument:(id)arg16 summaryArgumentCount:(unsigned long long)arg17 interruptionLevel:(unsigned long long)arg18;
 
 @end
 

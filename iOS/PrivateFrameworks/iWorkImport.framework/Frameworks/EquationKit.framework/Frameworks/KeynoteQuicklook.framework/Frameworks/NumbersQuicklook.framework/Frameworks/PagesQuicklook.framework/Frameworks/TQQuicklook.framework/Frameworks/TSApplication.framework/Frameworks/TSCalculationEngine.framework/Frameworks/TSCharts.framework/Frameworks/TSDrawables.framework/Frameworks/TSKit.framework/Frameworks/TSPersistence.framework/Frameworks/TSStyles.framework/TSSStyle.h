@@ -9,14 +9,14 @@
 #import <TSStyles/NSCopying-Protocol.h>
 #import <TSStyles/TSKModel-Protocol.h>
 #import <TSStyles/TSKTransformableObject-Protocol.h>
-#import <TSStyles/TSSPropertySource-Protocol.h>
+#import <TSStyles/TSSMutablePropertySource-Protocol.h>
 #import <TSStyles/TSSPropertyValueValidator-Protocol.h>
 #import <TSStyles/TSSStyleClient-Protocol.h>
 #import <TSStyles/TSSStyleObject-Protocol.h>
 
-@class NSString, TSSPropertyMap, TSSStylesheet, TSURetainedPointerSet;
+@class NSSet, NSString, TSSPropertyMap, TSSPropertySet, TSSStylesheet, TSURetainedPointerSet;
 
-@interface TSSStyle : TSPObject <NSCopying, TSSPropertyValueValidator, TSSStyleObject, TSSPropertySource, TSSStyleClient, TSKModel, TSKTransformableObject>
+@interface TSSStyle : TSPObject <NSCopying, TSSPropertyValueValidator, TSSStyleObject, TSSMutablePropertySource, TSSStyleClient, TSKModel, TSKTransformableObject>
 {
     TSSPropertyMap *mOverridePropertyMap;
     TSSStylesheet *mStylesheet;
@@ -52,7 +52,7 @@
 - (id)parentStyleForFixingOrphanVariation;
 - (void)setObjectUUID:(id)arg1;
 - (void)replaceReferencedStylesUsingBlock:(CDUnknownBlockType)arg1;
-- (id)referencedStyles;
+@property(readonly, nonatomic) NSSet *referencedStyles;
 - (id)propertyMapThatNeedsToBeTransformedWithTransformedObjects:(id)arg1;
 - (id)boxedValueForProperty:(int)arg1 oldBoxedValue:(id)arg2 transformedByTransform:(struct CGAffineTransform)arg3;
 - (_Bool)transformsFontSizes;
@@ -91,16 +91,16 @@
 - (id)fullPropertyMap;
 - (id)copyPropertyMap;
 - (id)propertyMapIgnoringStyle:(id)arg1;
-- (id)propertyMap;
+@property(readonly, nonatomic) TSSPropertyMap *propertyMap;
 - (double)overrideCGFloatValueForProperty:(int)arg1;
 - (double)overrideDoubleValueForProperty:(int)arg1;
 - (float)overrideFloatValueForProperty:(int)arg1;
 - (int)overrideIntValueForProperty:(int)arg1;
 - (id)overrideValueForProperty:(int)arg1;
 - (id)boxedOverrideValueForProperty:(int)arg1;
-- (unsigned long long)overrideCount;
-- (id)overriddenProperties;
-- (_Bool)overridesAnyProperty;
+@property(readonly, nonatomic) unsigned long long overrideCount;
+@property(readonly, nonatomic) TSSPropertySet *overriddenProperties;
+@property(readonly, nonatomic) _Bool overridesAnyProperty;
 - (_Bool)overridesProperty:(int)arg1;
 - (_Bool)containsProperty:(int)arg1;
 @property(readonly, nonatomic) NSString *contentTag;
@@ -115,7 +115,9 @@
 - (void)setFloatValue:(float)arg1 forProperty:(int)arg2;
 - (void)setIntValue:(int)arg1 forProperty:(int)arg2;
 - (void)setValue:(id)arg1 forProperty:(int)arg2;
+- (void)setObject:(id)arg1 forProperty:(int)arg2;
 - (void)setBoxedValue:(id)arg1 forProperty:(int)arg2;
+- (void)setBoxedObject:(id)arg1 forProperty:(int)arg2;
 - (id)valuesForProperties:(id)arg1;
 - (double)CGFloatValueForProperty:(int)arg1;
 - (double)doubleValueForProperty:(int)arg1;
@@ -142,8 +144,8 @@
 - (void)setStyleIdentifier:(id)arg1;
 @property(readonly, nonatomic) NSString *styleIdentifier;
 @property(copy, nonatomic) NSString *name;
-- (void)saveToArchive:(struct StyleArchive *)arg1 archiver:(id)arg2;
-- (void)loadFromArchive:(const struct StyleArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (_Bool)allowsImplicitComponentOwnership;
 - (id)componentRootObject;
 

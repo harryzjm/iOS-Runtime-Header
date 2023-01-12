@@ -11,7 +11,7 @@
 @interface _TtC7NewsUI233SavedFeedBlueprintModifierFactory : _TtCs12_SwiftObject
 {
     MISSING_TYPE *headlineModelFactory;
-    MISSING_TYPE *feedContextFactory;
+    MISSING_TYPE *sectionFactory;
 }
 
 @end

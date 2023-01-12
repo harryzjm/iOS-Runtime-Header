@@ -15,6 +15,7 @@
 
 + (id)wrapLevel:(id)arg1;
 - (void).cxx_destruct;
+- (id)description;
 - (id)directoryValue;
 - (id)fileValue;
 - (id)binaryValue;

@@ -25,13 +25,13 @@
 @property(readonly, nonatomic) NSMutableDictionary *_parentalControls; // @synthesize _parentalControls;
 @property(readonly, nonatomic) _Bool active; // @synthesize active=_active;
 @property(nonatomic) _Bool shouldPostNotifications; // @synthesize shouldPostNotifications=_shouldPostNotifications;
-- (_Bool)accountHasWhitelist:(id)arg1;
+- (_Bool)accountHasAllowlist:(id)arg1;
 - (_Bool)accountIsEnabled:(id)arg1;
 - (_Bool)okToConnectAccount:(id)arg1;
-- (_Bool)forceWhitelistForAccount:(id)arg1;
-- (id)whitelistForAccount:(id)arg1;
-- (_Bool)forceWhitelistForService:(id)arg1;
-- (id)whitelistForService:(id)arg1;
+- (_Bool)forceAllowlistForAccount:(id)arg1;
+- (id)allowlistForAccount:(id)arg1;
+- (_Bool)forceAllowlistForService:(id)arg1;
+- (id)allowlistForService:(id)arg1;
 - (_Bool)disableAccount:(id)arg1;
 - (_Bool)disableService:(id)arg1;
 @property(readonly, nonatomic) _Bool forceChatLogging;

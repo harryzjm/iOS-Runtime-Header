@@ -15,14 +15,13 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *localDate; // @synthesize localDate=_localDate;
 - (id)_potentialMemoriesForDryTesting;
-- (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
+- (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2 andGraph:(id)arg3;
 - (id)_createMemoryDebugWithPotentialMemory:(id)arg1;
 - (id)generateMemories:(unsigned long long)arg1;
-- (void)_computePotentialMemories;
-- (id)_computePotentialMemoriesForSubcategory:(unsigned long long)arg1 withLocalStartDate:(id)arg2 localEndDate:(id)arg3;
-- (id)_computePotentialMemoriesForPersonNodes:(id)arg1;
-- (id)_peopleSeenInPreviousWeekButNotInPreviousThreeMonthsWithLocalDate:(id)arg1;
-- (id)initWithController:(id)arg1;
+- (void)_computePotentialMemoriesWithGraph:(id)arg1;
+- (id)_computePotentialMemoriesForSubcategory:(unsigned long long)arg1 withGraph:(id)arg2 localStartDate:(id)arg3 localEndDate:(id)arg4;
+- (id)_computePotentialMemoriesForPersonNodes:(id)arg1 inGraph:(id)arg2;
+- (id)_peopleSeenInPreviousWeekButNotInPreviousThreeMonthsWithGraph:(id)arg1 localDate:(id)arg2;
 
 @end
 

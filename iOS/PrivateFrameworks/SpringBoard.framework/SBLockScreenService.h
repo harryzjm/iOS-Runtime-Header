@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <SpringBoard/BSServiceConnectionListenerDelegate-Protocol.h>
+#import <SpringBoard/SBPasscodeEntryTransientOverlayViewControllerDelegate-Protocol.h>
 #import <SpringBoard/SBSLockScreenServiceServerInterface-Protocol.h>
 
-@class BSServiceConnectionListener, FBServiceClientAuthenticator, NSMutableSet, NSString, SBFAuthenticationAssertion, SBLockScreenManager, SBMainWorkspace, SBRemoteTransientOverlaySessionManager, SBSpuriousScreenUndimmingAssertion;
-@protocol SBFAuthenticationAssertionProviding;
+@class BSServiceConnectionListener, FBServiceClientAuthenticator, NSMutableSet, NSString, SBFAuthenticationAssertion, SBFUserAuthenticationController, SBLockScreenManager, SBMainWorkspace, SBPasscodeEntryTransientOverlayViewController, SBRemoteTransientOverlaySessionManager, SBSpuriousScreenUndimmingAssertion;
+@protocol SBFAuthenticationAssertionProviding, SBFLockOutStatusProvider;
 
-@interface SBLockScreenService : NSObject <BSServiceConnectionListenerDelegate, SBSLockScreenServiceServerInterface>
+@interface SBLockScreenService : NSObject <BSServiceConnectionListenerDelegate, SBSLockScreenServiceServerInterface, SBPasscodeEntryTransientOverlayViewControllerDelegate>
 {
     SBLockScreenManager *_lockScreenManager;
     SBMainWorkspace *_mainWorkspace;
@@ -25,14 +26,30 @@
     SBFAuthenticationAssertion *_preventPasscodeLockAssertion;
     NSMutableSet *_connectionsPreventingSpuriousScreenUndim;
     SBSpuriousScreenUndimmingAssertion *_preventSpuriousScreenUndimAssertion;
+    NSString *_passcodeTitle;
+    NSString *_passcodeSubtitle;
+    CDUnknownBlockType _passcodeCheckCompletion;
+    SBPasscodeEntryTransientOverlayViewController *_passcodeEntryTransientOverlayViewController;
+    SBFUserAuthenticationController *_userAuthController;
+    id <SBFLockOutStatusProvider> _lockOutController;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <SBFLockOutStatusProvider> lockOutController; // @synthesize lockOutController=_lockOutController;
+@property(retain, nonatomic) SBFUserAuthenticationController *userAuthController; // @synthesize userAuthController=_userAuthController;
+@property(retain, nonatomic) SBPasscodeEntryTransientOverlayViewController *passcodeEntryTransientOverlayViewController; // @synthesize passcodeEntryTransientOverlayViewController=_passcodeEntryTransientOverlayViewController;
 - (oneway void)setPreventSpuriousScreenUndim:(id)arg1;
 - (oneway void)setPreventPasscodeLock:(id)arg1;
+- (oneway void)requestPasscodeCheckUIWithOptions:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (oneway void)requestPasscodeUnlockUIWithOptions:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (oneway void)launchEmergencyDialerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)listener:(id)arg1 didReceiveConnection:(id)arg2 withContext:(id)arg3;
+- (id)passcodeEntryTransientOverlayViewControllerStatusSubtitleText;
+- (id)passcodeEntryTransientOverlayViewControllerStatusText;
+- (void)passcodeEntryTransientOverlayViewControllerRequestsDismissal:(id)arg1;
+- (_Bool)passcodeEntryTransientOverlayViewController:(id)arg1 authenticatePasscode:(id)arg2;
+- (void)_setPasscodeVisible:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)requestPasscodeCheckUIForClient:(id)arg1 options:(id)arg2 description:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)requestPasscodeUnlockUIForClient:(id)arg1 options:(id)arg2 description:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (id)initWithLockScreenManager:(id)arg1 workspace:(id)arg2 authenticationAssertionProvider:(id)arg3 remoteTransientOverlaySessionManager:(id)arg4;
 

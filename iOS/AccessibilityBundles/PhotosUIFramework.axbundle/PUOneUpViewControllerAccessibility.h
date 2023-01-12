@@ -11,9 +11,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)_axExecuteBlockOnTileViewControllers:(CDUnknownBlockType)arg1;
 - (void)_axApplyCustomActionsToTileControllers;
+- (_Bool)accessibilityPerformMagicTap;
 - (_Bool)accessibilityPerformEscape;
 - (_Bool)accessibilityScroll:(long long)arg1;
 - (void)_axShowAccessory;

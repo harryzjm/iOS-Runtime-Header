@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak MKAnnotationView *annotationView; // @synthesize annotationView=_annotationView;
+@property(readonly, nonatomic) struct CGSize collisionSize;
 @property(readonly, nonatomic) struct VKEdgeInsets annotationTrackingEdgeInsets;
 @property(retain, nonatomic) GEORouteMatch *routeMatch;
 @property(nonatomic) _Bool tracking;

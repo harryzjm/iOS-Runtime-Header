@@ -20,11 +20,12 @@
 - (void)markRangeRefAsDirty:(const struct TSCERangeRef *)arg1;
 - (void)markCellRefAsDirty:(const struct TSCECellRef *)arg1;
 - (void)resetFormulaAt:(const struct TSCECellRef *)arg1;
-- (void)removeAllFormulasFromOwner:(const UUIDData_5fbc143e *)arg1;
-- (void)removeFormulasAt:(const struct TSCECellRefSet *)arg1;
-- (void)removeFormulaAt:(const struct TSUCellCoord *)arg1 inOwner:(const UUIDData_5fbc143e *)arg2;
-- (void)replaceFormula:(id)arg1 atCellCoord:(const struct TSUCellCoord *)arg2 inOwner:(const UUIDData_5fbc143e *)arg3 replaceOptions:(struct TSCEReplaceFormulaOptions)arg4;
-- (void)replaceFormula:(id)arg1 atCellCoord:(const struct TSUCellCoord *)arg2 inOwner:(const UUIDData_5fbc143e *)arg3;
+- (void)removeAllFormulasFromOwner:(const struct TSKUIDStruct *)arg1;
+- (void)removeFormulasAt:(const void *)arg1;
+- (void)removeFormulaAt:(const struct TSUCellCoord *)arg1 inOwner:(const struct TSKUIDStruct *)arg2;
+- (void)replaceFormulaAt:(const struct TSUCellCoord *)arg1 inOwner:(const struct TSKUIDStruct *)arg2 precedents:(id)arg3 replaceOptions:(const struct TSCEReplaceFormulaOptions *)arg4;
+- (void)replaceFormula:(id)arg1 atCellCoord:(const struct TSUCellCoord *)arg2 inOwner:(const struct TSKUIDStruct *)arg3 replaceOptions:(struct TSCEReplaceFormulaOptions)arg4;
+- (void)replaceFormula:(id)arg1 atCellCoord:(const struct TSUCellCoord *)arg2 inOwner:(const struct TSKUIDStruct *)arg3;
 @property(readonly, nonatomic) TSCECalculationEngine *calcEngine;
 - (id)initWithCalcEngine:(id)arg1;
 

@@ -11,7 +11,7 @@
 @class NSString;
 
 @interface WFWorkflowDescriptor (WorkflowReferenceConvertible) <WFWorkflowReferenceConvertible>
-+ (void)getObjectsFromReferences:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)getObjectsFromReferences:(id)arg1 databaseProvider:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

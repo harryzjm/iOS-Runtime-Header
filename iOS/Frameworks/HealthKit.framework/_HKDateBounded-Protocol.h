@@ -4,12 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSObject-Protocol.h>
 
 @class NSDate;
 
-@protocol _HKDateBounded <NSObject, NSCopying>
+@protocol _HKDateBounded <NSObject>
 - (NSDate *)endDate;
 - (NSDate *)startDate;
 @end

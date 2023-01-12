@@ -10,12 +10,13 @@
 
 @interface TSCH3DSceneRenderCacheObject : NSObject
 {
-    _Bool mCachingEnabled;
-    NSMutableArray *mDynamicResources;
-    NSMutableArray *mChildCacheObjects;
+    _Bool _cachingEnabled;
+    NSMutableArray *_dynamicResources;
+    NSMutableArray *_childCacheObjects;
 }
 
 + (id)cacheObject;
+- (void).cxx_destruct;
 - (id)childCacheObjectAtIndex:(unsigned long long)arg1;
 - (id)resourceAtIndex:(unsigned long long)arg1 created:(_Bool *)arg2 ifAbsent:(CDUnknownBlockType)arg3;
 - (id)resourceAtIndex:(unsigned long long)arg1;
@@ -25,7 +26,6 @@
 - (int)p_resourceUpdateFlag;
 - (void)allocateDynamicResourcesIntoArray:(id)arg1;
 - (void)flushCache;
-- (void)dealloc;
 - (id)init;
 
 @end

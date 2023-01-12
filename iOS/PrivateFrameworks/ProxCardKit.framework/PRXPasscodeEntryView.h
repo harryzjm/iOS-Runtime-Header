@@ -9,22 +9,27 @@
 #import <ProxCardKit/UIKeyInput-Protocol.h>
 
 @class NSArray, NSMutableString, NSString, UITextInputPasswordRules;
+@protocol PRXPasscodeEntryViewDelegate;
 
 @interface PRXPasscodeEntryView : UIControl <UIKeyInput>
 {
     NSMutableString *_text;
     NSArray *_wells;
+    _Bool _useMonospacedFont;
     long long _numberOfDigits;
     long long _keyboardType;
+    id <PRXPasscodeEntryViewDelegate> _delegate;
 }
 
-+ (id)fontForNumberOfDigits:(long long)arg1;
++ (id)fontForNumberOfDigits:(long long)arg1 useMonospacedFont:(_Bool)arg2;
 + (struct CGSize)preferredSizeForNumberOfDigits:(long long)arg1;
 + (double)wellCornerRadiusForNumberOfDigits:(long long)arg1;
 + (double)interWellSpacingForNumberOfDigits:(long long)arg1;
 + (struct CGSize)wellSizeForNumberOfDigits:(long long)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <PRXPasscodeEntryViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) long long keyboardType; // @synthesize keyboardType=_keyboardType;
+@property(readonly, nonatomic) _Bool useMonospacedFont; // @synthesize useMonospacedFont=_useMonospacedFont;
 @property(readonly, nonatomic) long long numberOfDigits; // @synthesize numberOfDigits=_numberOfDigits;
 @property(nonatomic) long long autocapitalizationType;
 @property(nonatomic) long long spellCheckingType;
@@ -41,7 +46,7 @@
 - (void)_dynamicUserInterfaceTraitDidChange;
 - (void)tintColorDidChange;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithNumberOfDigits:(long long)arg1;
+- (id)initWithNumberOfDigits:(long long)arg1 useMonospacedFont:(_Bool)arg2 delegate:(id)arg3;
 
 // Remaining properties
 @property(nonatomic) long long autocorrectionType;

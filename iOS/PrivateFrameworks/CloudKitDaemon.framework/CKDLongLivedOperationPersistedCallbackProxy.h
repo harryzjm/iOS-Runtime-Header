@@ -8,23 +8,24 @@
 
 #import <CloudKitDaemon/CKOperationCallbacks-Protocol.h>
 
-@class NSString, Protocol;
+@class CKDOperationInfoCache, NSString, Protocol;
 
-__attribute__((visibility("hidden")))
 @interface CKDLongLivedOperationPersistedCallbackProxy : NSObject <CKOperationCallbacks>
 {
     NSString *_operationID;
     Protocol *_callbackProtocol;
     SEL _completionSelector;
+    CKDOperationInfoCache *_operationInfoCache;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) CKDOperationInfoCache *operationInfoCache; // @synthesize operationInfoCache=_operationInfoCache;
 @property(nonatomic) SEL completionSelector; // @synthesize completionSelector=_completionSelector;
 @property(retain, nonatomic) Protocol *callbackProtocol; // @synthesize callbackProtocol=_callbackProtocol;
 @property(copy, nonatomic) NSString *operationID; // @synthesize operationID=_operationID;
 - (void)forwardInvocation:(id)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;
-- (id)initWithOperationID:(id)arg1 callbackProtocol:(id)arg2 completionSelector:(SEL)arg3;
+- (id)initWithOperationID:(id)arg1 callbackProtocol:(id)arg2 completionSelector:(SEL)arg3 operationInfoCache:(id)arg4;
 
 @end
 

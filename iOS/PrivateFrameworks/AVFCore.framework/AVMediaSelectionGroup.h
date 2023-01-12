@@ -21,6 +21,8 @@
 + (id)mediaSelectionOptionsFromArray:(id)arg1 withLocale:(id)arg2;
 + (id)playableMediaSelectionOptionsFromArray:(id)arg1;
 + (id)mediaSelectionGroupWithAsset:(id)arg1 dictionary:(id)arg2;
+- (void)setCurrentBundleIdentifier:(id)arg1;
+- (id)currentBundleIdentifier;
 - (id)mediaSelectionOptionWithPropertyList:(id)arg1;
 - (id)_optionWithID:(id)arg1 displaysNonForcedSubtitles:(_Bool)arg2;
 @property(readonly, nonatomic) AVMediaSelectionOption *defaultOption;

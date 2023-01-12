@@ -39,6 +39,7 @@
 - (void)scheduleInRunLoop:(id)arg1 forMode:(id)arg2;
 - (void)cancel;
 - (void)start;
+- (void)_managerFailedToStartInTime;
 - (void)dealloc;
 - (void)_invalidate;
 - (void)invokeForDelegate:(CDUnknownBlockType)arg1;

@@ -6,13 +6,17 @@
 
 #import <CoreData/NSManagedObject.h>
 
+#import <ParsecModel/NSFetchRequestResult-Protocol.h>
+
 @class NSDate;
 
-@interface PARSpotlightPropensity : NSManagedObject
+@interface PARSpotlightPropensity : NSManagedObject <NSFetchRequestResult>
 {
 }
 
-+ (id)fetchRequest;
+- (void).cxx_destruct;
+- (void).cxx_construct;
+- (id)initWithEntity:(id)arg1 insertIntoManagedObjectContext:(id)arg2;
 
 // Remaining properties
 @property(nonatomic) short appLaunch; // @dynamic appLaunch;
@@ -32,7 +36,7 @@
 @property(nonatomic) short querySuggestion; // @dynamic querySuggestion;
 @property(nonatomic) short siriSuggestions; // @dynamic siriSuggestions;
 @property(nonatomic) short thirdPartyInAppContent; // @dynamic thirdPartyInAppContent;
-@property(copy, nonatomic) NSDate *timestamp; // @dynamic timestamp;
+@property(nonatomic, copy) NSDate *timestamp; // @dynamic timestamp;
 @property(nonatomic) short webSuggestions; // @dynamic webSuggestions;
 
 @end

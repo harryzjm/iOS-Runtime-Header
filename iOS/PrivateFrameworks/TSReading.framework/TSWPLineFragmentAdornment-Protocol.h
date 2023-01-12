@@ -8,6 +8,6 @@
 
 @protocol TSWPLineFragmentAdornment <NSObject>
 @property(readonly, nonatomic) _Bool isBackground;
-- (void)drawAdornmentForFragment:(const struct TSWPLineFragment *)arg1 inContext:(struct CGContext *)arg2 withFlags:(unsigned int)arg3 state:(const struct TSWPDrawingState *)arg4 bounds:(struct CGRect)arg5;
+- (void)drawAdornmentForFragment:(const void *)arg1 inContext:(struct CGContext *)arg2 withFlags:(unsigned int)arg3 state:(const void *)arg4 bounds:(struct CGRect)arg5;
 @end
 

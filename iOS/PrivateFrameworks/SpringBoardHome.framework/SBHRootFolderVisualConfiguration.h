@@ -13,6 +13,7 @@
 
 @interface SBHRootFolderVisualConfiguration : NSObject <NSCopying, BSDescriptionProviding>
 {
+    struct SBRootFolderViewPageManagementLayoutMetrics _pageManagement1x1LayoutMetrics;
     struct SBRootFolderViewPageManagementLayoutMetrics _pageManagement2x1LayoutMetrics;
     struct SBRootFolderViewPageManagementLayoutMetrics _pageManagement2x2LayoutMetrics;
     struct SBRootFolderViewPageManagementLayoutMetrics _pageManagement3x2LayoutMetrics;
@@ -25,20 +26,22 @@
     double _dockBackgroundViewCornerRadius;
     struct CGSize _pageControlFrameInset;
     struct CGSize _pageControlCustomPadding;
+    struct CGSize _pageManagementFocusModeOptionsButtonSize;
     struct UIOffset _editModeButtonLayoutOffset;
     struct CGSize _editModeButtonSize;
     struct UIEdgeInsets _dockBackgroundViewInsets;
     struct UIEdgeInsets _dockListViewInsets;
-    struct UIEdgeInsets _editModeButtonContentEdgeInsets;
+    struct NSDirectionalEdgeInsets _editModeButtonContentEdgeInsets;
 }
 
 @property(nonatomic) struct CGSize editModeButtonSize; // @synthesize editModeButtonSize=_editModeButtonSize;
 @property(nonatomic) struct UIOffset editModeButtonLayoutOffset; // @synthesize editModeButtonLayoutOffset=_editModeButtonLayoutOffset;
-@property(nonatomic) struct UIEdgeInsets editModeButtonContentEdgeInsets; // @synthesize editModeButtonContentEdgeInsets=_editModeButtonContentEdgeInsets;
+@property(nonatomic) struct NSDirectionalEdgeInsets editModeButtonContentEdgeInsets; // @synthesize editModeButtonContentEdgeInsets=_editModeButtonContentEdgeInsets;
 @property(nonatomic) struct UIEdgeInsets dockListViewInsets; // @synthesize dockListViewInsets=_dockListViewInsets;
 @property(nonatomic) struct UIEdgeInsets dockBackgroundViewInsets; // @synthesize dockBackgroundViewInsets=_dockBackgroundViewInsets;
 @property(nonatomic) double dockBackgroundViewCornerRadius; // @synthesize dockBackgroundViewCornerRadius=_dockBackgroundViewCornerRadius;
 @property(nonatomic) double dockViewHeight; // @synthesize dockViewHeight=_dockViewHeight;
+@property(nonatomic) struct CGSize pageManagementFocusModeOptionsButtonSize; // @synthesize pageManagementFocusModeOptionsButtonSize=_pageManagementFocusModeOptionsButtonSize;
 @property(nonatomic) double pageManagementPageCheckboxDiameter; // @synthesize pageManagementPageCheckboxDiameter=_pageManagementPageCheckboxDiameter;
 @property(nonatomic) double pageManagementPageCheckboxVerticalMargin; // @synthesize pageManagementPageCheckboxVerticalMargin=_pageManagementPageCheckboxVerticalMargin;
 @property(nonatomic) struct CGSize pageControlCustomPadding; // @synthesize pageControlCustomPadding=_pageControlCustomPadding;

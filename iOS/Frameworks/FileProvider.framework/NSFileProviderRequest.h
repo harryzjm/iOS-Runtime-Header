@@ -8,20 +8,27 @@
 
 #import <FileProvider/NSSecureCoding-Protocol.h>
 
-@class NSURL, NSUUID;
+@class NSFileProviderDomainVersion, NSURL, NSUUID;
 
 @interface NSFileProviderRequest : NSObject <NSSecureCoding>
 {
-    NSUUID *_requestingApplicationIdentifier;
-    NSUUID *_requestIdentifier;
     NSURL *_requestingExecutable;
+    NSFileProviderDomainVersion *_domainVersion;
+    NSUUID *_requestingApplicationIdentifier;
 }
 
++ (id)requestFromTheSystem;
++ (id)_dsIdentifier;
++ (id)_finderIdentifier;
++ (id)_fpdIdentifier;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSURL *requestingExecutable; // @synthesize requestingExecutable=_requestingExecutable;
-@property(retain, nonatomic) NSUUID *requestIdentifier; // @synthesize requestIdentifier=_requestIdentifier;
 @property(retain, nonatomic) NSUUID *requestingApplicationIdentifier; // @synthesize requestingApplicationIdentifier=_requestingApplicationIdentifier;
+@property(retain, nonatomic) NSFileProviderDomainVersion *domainVersion; // @synthesize domainVersion=_domainVersion;
+@property(copy, nonatomic) NSURL *requestingExecutable; // @synthesize requestingExecutable=_requestingExecutable;
+- (id)init;
+@property(readonly, nonatomic) _Bool isFileViewerRequest;
+@property(readonly, nonatomic) _Bool isSystemRequest;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

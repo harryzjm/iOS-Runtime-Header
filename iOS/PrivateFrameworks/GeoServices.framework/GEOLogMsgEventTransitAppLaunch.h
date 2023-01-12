@@ -20,7 +20,13 @@
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
-    CDStruct_2aceabc6 _flags;
+    struct {
+        unsigned int has_timestamp:1;
+        unsigned int read_bundleIdentifier:1;
+        unsigned int read_destination:1;
+        unsigned int read_source:1;
+        unsigned int wrote_anyField:1;
+    } _flags;
 }
 
 + (_Bool)isValid:(id)arg1;
@@ -30,6 +36,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;

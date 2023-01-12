@@ -4,13 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSArray;
+
 __attribute__((visibility("hidden")))
 @interface _HKObserverQueryServerConfiguration
 {
     _Bool _observeUnfrozenSeries;
+    NSArray *_queryDescriptors;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *queryDescriptors; // @synthesize queryDescriptors=_queryDescriptors;
 @property(nonatomic) _Bool observeUnfrozenSeries; // @synthesize observeUnfrozenSeries=_observeUnfrozenSeries;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

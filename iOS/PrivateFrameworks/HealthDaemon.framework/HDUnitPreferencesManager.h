@@ -6,37 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class HDProfile, HKObserverSet, NSArray, NSMutableDictionary;
-@protocol OS_dispatch_queue;
+@class HDProfile, HKObserverSet, NSArray;
 
 @interface HDUnitPreferencesManager : NSObject
 {
     HDProfile *_profile;
     NSArray *_versionedUnitPreferences;
-    NSMutableDictionary *_defaultPreferredUnits;
     HKObserverSet *_observers;
-    NSObject<OS_dispatch_queue> *_resourceQueue;
+    struct os_unfair_lock_s _lock;
 }
 
 - (void).cxx_destruct;
-- (void)_unitPreferencesDidChange;
 - (void)_localeDidChange:(id)arg1;
-- (id)_unitFromValueString:(id)arg1 quantityType:(id)arg2;
-- (id)_quantityTypeFromKeyString:(id)arg1;
-- (id)_unitPreferencesDictionaryFromKeyValueDictionary:(id)arg1;
-- (id)_stringFromQuantityType:(id)arg1;
-- (void)_persistUnitPreferenceForType:(id)arg1 unitPreferencesVersionToUnit:(id)arg2;
-- (id)_queue_defaultUnitForType:(id)arg1 version:(long long)arg2;
-- (id)_queue_unitForType:(id)arg1 versionedUnitPreferences:(id)arg2 version:(long long)arg3;
-- (id)_queue_generateUnitPreferencesWithDomain:(id)arg1 error:(id *)arg2;
-- (id)_queue_generateVersionedUnitPreferencesWithError:(id *)arg1;
-- (id)domainForVersion:(long long)arg1;
-- (id)_queue_versionedUnitPreferenceDictionaryWithError:(id *)arg1;
-- (_Bool)_queue_doesVersionedUnitPreferences:(id)arg1 containPreferenceForType:(id)arg2;
-- (void)_queue_updateUnitPreferenceCacheWithUnitPreferencesVersionToUnit:(id)arg1 type:(id)arg2;
-- (_Bool)_queue_removePreferredUnitForType:(id)arg1 error:(id *)arg2;
-- (void)_queue_setUnit:(id)arg1 forType:(id)arg2;
-- (void)_queue_notifyObserversWithUnitPreferences;
 - (void)removeUnitPreferenceObserver:(id)arg1;
 - (void)addUnitPreferenceObserver:(id)arg1 queue:(id)arg2;
 - (void)unitTesting_resetUnits;
@@ -44,7 +25,6 @@
 - (void)setPreferredUnitToDefaultIfNotSetForType:(id)arg1;
 - (_Bool)removePreferredUnitForType:(id)arg1 error:(id *)arg2;
 - (_Bool)setPreferredUnit:(id)arg1 forType:(id)arg2 error:(id *)arg3;
-- (id)_authorizationStatusesForTypes:(id)arg1 authorizationServer:(id)arg2 error:(id *)arg3;
 - (id)unitPreferencesDictionaryForTypes:(id)arg1 version:(long long)arg2 authorizationServer:(id)arg3 error:(id *)arg4;
 - (void)dealloc;
 - (id)initWithProfile:(id)arg1;

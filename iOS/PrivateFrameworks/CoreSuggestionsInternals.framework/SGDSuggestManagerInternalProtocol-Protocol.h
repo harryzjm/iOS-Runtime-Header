@@ -17,7 +17,6 @@
 - (void)sleepWithCompletion:(void (^)(SGXPCResponse *))arg1;
 - (void)daemonExitWithCompletion:(void (^)(SGXPCResponse *))arg1;
 - (void)removeAllStoredPseudoContactsWithCompletion:(void (^)(SGXPCResponse *))arg1;
-- (void)drainQueueCompletelyWithCompletion:(void (^)(SGXPCResponse *))arg1;
 - (void)spotlightReimportFromIdentifier:(NSString *)arg1 forPersonHandle:(NSString *)arg2 startDate:(NSDate *)arg3 endDate:(NSDate *)arg4 completion:(void (^)(SGXPCResponse *))arg5;
 - (void)addInteractions:(NSArray *)arg1 bundleId:(NSString *)arg2 completion:(void (^)(SGXPCResponse *))arg3;
 - (void)addSearchableItems:(NSArray *)arg1 completion:(void (^)(SGXPCResponse *))arg2;
@@ -26,6 +25,7 @@
 - (void)clearCachesFully:(_Bool)arg1 withCompletion:(void (^)(SGXPCResponse *))arg2;
 - (void)suggestionsFromRFC822Data:(NSData *)arg1 source:(NSString *)arg2 options:(unsigned long long)arg3 withCompletion:(void (^)(SGXPCResponse1 *))arg4;
 - (void)realtimeSuggestionsFromURL:(NSURL *)arg1 title:(NSString *)arg2 HTMLPayload:(NSString *)arg3 extractionDate:(NSDate *)arg4 withCompletion:(void (^)(SGXPCResponse1 *))arg5;
+- (void)rebuildNamesForDetailCache:(void (^)(SGXPCResponse *))arg1;
 - (void)resetConfirmationAndRejectionHistory:(void (^)(SGXPCResponse *))arg1;
 - (void)sendRTCLogsWithCompletion:(void (^)(SGXPCResponse1 *))arg1;
 - (void)eventFromRecordId:(SGRecordId *)arg1 withCompletion:(void (^)(SGXPCResponse1 *))arg2;

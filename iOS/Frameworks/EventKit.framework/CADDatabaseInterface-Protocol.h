@@ -4,21 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CADObjectID, NSArray;
+@class CADObjectID, NSArray, NSDictionary;
 
 @protocol CADDatabaseInterface
+- (void)CADDatabaseMigrateSubscribedCalendar:(CADObjectID *)arg1 toSource:(CADObjectID *)arg2 reply:(void (^)(int, CADObjectID *))arg3;
 - (void)CADDatabaseLastConfirmedSplashScreenVersion:(void (^)(int, unsigned long long))arg1;
 - (void)CADDatabaseCanModifyCalendarDatabase:(void (^)(int, _Bool))arg1;
 - (void)CADDatabaseRollbackWithReply:(void (^)(int))arg1;
-- (void)CADDatabaseCommitWithReply:(void (^)(int, _Bool, NSDictionary *))arg1;
-- (void)CADDatabaseSaveWithReply:(void (^)(int))arg1;
+- (void)CADDatabaseInsert:(NSArray *)arg1 delete:(NSArray *)arg2 update:(NSDictionary *)arg3 andCommit:(void (^)(int, NSDictionary *))arg4;
 - (void)CADDatabaseRebuildOccurrenceCacheWithReply:(void (^)(int))arg1;
 - (void)CADDatabaseSetShowsDeclinedEvents:(_Bool)arg1 reply:(void (^)(int))arg2;
-- (void)CADDatabaseExportICSDataForCalendar:(CADObjectID *)arg1 options:(long long)arg2 reply:(void (^)(int, NSData *))arg3;
+- (void)CADDatabaseExportICSDataForCalendar:(CADObjectID *)arg1 options:(unsigned long long)arg2 reply:(void (^)(int, NSData *))arg3;
 - (void)CADDatabaseExportICSDataForCalendarItems:(NSArray *)arg1 options:(unsigned long long)arg2 reply:(void (^)(int, NSData *))arg3;
 - (void)CADDatabaseImportEvents:(NSArray *)arg1 fromICSData:(NSArray *)arg2 intoCalendarsWithIDs:(NSArray *)arg3 optionsMask:(unsigned long long)arg4 batchSize:(int)arg5 reply:(void (^)(int, NSArray *))arg6;
 - (void)CADDatabaseGetNextAssignableColorWithReply:(void (^)(int, NSString *))arg1;
-- (void)CADDatabaseGetChangedEntityIDsSinceTimestamp:(double)arg1 reply:(void (^)(int, _Bool, NSArray *, double))arg2;
+- (void)CADDatabaseGetChangedEntityIDsSinceTimestamp:(double)arg1 reply:(void (^)(int, NSData *, unsigned long long))arg2;
 - (void)CADDatabaseGetChangesSinceSequenceNumber:(int)arg1 reply:(void (^)(int, NSDictionary *))arg2;
 - (void)CADDatabaseGetSequenceNumber:(void (^)(int, int))arg1;
 - (void)CADDatabaseMarkIndividualChangesConsumed:(NSArray *)arg1 reply:(void (^)(int))arg2;

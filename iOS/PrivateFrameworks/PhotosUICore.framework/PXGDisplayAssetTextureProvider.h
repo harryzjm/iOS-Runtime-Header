@@ -6,14 +6,15 @@
 
 #import <PhotosUICore/PXGImageRequestPerformer-Protocol.h>
 
-@class CIContext, NSArray, NSMapTable, NSMutableDictionary, NSMutableIndexSet, NSObject, NSString, PXGAssetImageCache, PXGImageRequestQueue, PXGThumbnailRequestQueue, PXMediaProvider;
+@class CIContext, NSArray, NSMutableDictionary, NSMutableIndexSet, NSObject, NSString, PXGAssetImageCache, PXGImageRequestQueue, PXGThumbnailRequestQueue, PXMediaProvider;
 @protocol OS_dispatch_queue, PXGDisplayAssetPixelBufferSourcesProvider;
 
 @interface PXGDisplayAssetTextureProvider <PXGImageRequestPerformer>
 {
+    NSObject<OS_dispatch_queue> *_drawingQueue;
     NSObject<OS_dispatch_queue> *_videoSessionsRequestQueue;
     PXGThumbnailRequestQueue *_requestQueue_thumbnailRequestQueue;
-    NSMapTable *_workQueue_videoSessionsByAsset;
+    NSMutableDictionary *_workQueue_textureStreamingSessionsMap;
     NSMutableIndexSet *_workQueue_textureRequestIDsWithDeliveredVideoFrames;
     PXGThumbnailRequestQueue *_workQueue_thumbnailRequestQueue;
     PXGImageRequestQueue *_workQueue_imageRequestQueue;
@@ -42,18 +43,20 @@
 - (void).cxx_destruct;
 @property(nonatomic) _Bool videoRequestsAllowed; // @synthesize videoRequestsAllowed=_videoRequestsAllowed;
 @property double displayLinkLastTargetTimestamp; // @synthesize displayLinkLastTargetTimestamp=_displayLinkLastTargetTimestamp;
-@property(retain, nonatomic) id <PXGDisplayAssetPixelBufferSourcesProvider> pixelBufferSourcesProvider; // @synthesize pixelBufferSourcesProvider=_pixelBufferSourcesProvider;
+@property(readonly, nonatomic) id <PXGDisplayAssetPixelBufferSourcesProvider> pixelBufferSourcesProvider; // @synthesize pixelBufferSourcesProvider=_pixelBufferSourcesProvider;
 @property(readonly, nonatomic) PXMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 - (void)_workQueue_cancelTextureRequests:(id)arg1;
 - (void)_cancelationQueue_cancelImageRequests:(id)arg1;
 - (void)cancelTextureRequests:(id)arg1;
 - (struct __CVBuffer *)_workQueue_renderCrossfadeIfNeededWithPixelBuffer:(struct __CVBuffer *)arg1 forVideoSession:(id)arg2 textureRequestID:(id)arg3;
-- (void)_workQueue_provideVideoFrameForVideoSession:(id)arg1;
-- (void)_handlePixelBufferChangedForVideoSession:(id)arg1;
-- (void)_workQueue_startRequestingVideoTexturesForDisplayAsset:(id)arg1 pixelBufferSource:(id)arg2 textureRequestID:(int)arg3;
-- (void)_workQueue_requestVideoTexturesForSpriteAtIndex:(unsigned int)arg1 spriteReference:(id)arg2 displayAsset:(id)arg3 textureRequestID:(int)arg4;
-- (void)_workQueue_provideCGImage:(struct CGImage *)arg1 orientation:(unsigned int)arg2 forRequestID:(int)arg3;
-- (void)_workQueue_handleCGImageResult:(struct CGImage *)arg1 orientation:(unsigned int)arg2 info:(id)arg3 shouldCache:(_Bool)arg4 textureRequestID:(int)arg5;
+- (void)_workQueue_cleanupTextureStreamingSession:(id)arg1 textureRequestIDs:(id)arg2;
+- (void)_workQueue_didDeliverVideoContentForRequstID:(int)arg1;
+- (void)_workQueue_provideVideoFrameForTextureStreamingSession:(id)arg1;
+- (void)_handlePixelBufferChangedForTextureStreamingSession:(id)arg1;
+- (void)_workQueue_startRequestingVideoTexturesForDisplayAsset:(id)arg1 presentationController:(id)arg2 pixelBufferSource:(id)arg3 adjustment:(id)arg4 textureRequestID:(int)arg5;
+- (void)_workQueue_requestVideoTexturesForSpriteAtIndex:(unsigned int)arg1 spriteReference:(id)arg2 displayAsset:(id)arg3 presentationController:(id)arg4 adjustment:(id)arg5 presentationType:(int)arg6 textureRequestID:(int)arg7;
+- (void)_workQueue_provideCGImage:(struct CGImage *)arg1 options:(CDStruct_183fa7cb)arg2 isDegraded:(_Bool)arg3 forRequestID:(int)arg4;
+- (void)_workQueue_handleCGImageResult:(struct CGImage *)arg1 orientation:(unsigned int)arg2 info:(id)arg3 targetSize:(struct CGSize)arg4 adjustment:(id)arg5 shouldCache:(_Bool)arg6 textureRequestID:(int)arg7;
 - (void)_workQueue_handleResult:(struct CGImage *)arg1 orientation:(long long)arg2 info:(id)arg3 targetSize:(struct CGSize)arg4 screenScale:(double)arg5 mediaRequest:(id)arg6 textureRequestID:(int)arg7;
 - (void)_workQueue_performDeferredImageRequest:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4 resultHandler:(CDUnknownBlockType)arg5 textureRequestID:(int)arg6;
 - (void)_workQueue_performRequestForDisplayAsset:(id)arg1 textureRequestID:(int)arg2 sharedState:(id)arg3;
@@ -66,18 +69,19 @@
 - (void)_processThumbnailRequestsOnRequestQueue:(_Bool)arg1;
 @property(readonly, nonatomic) struct CGImage *placeholderImage;
 - (void)didFinishRequestingTextures;
-- (void)_requestQueue_requestTexturesForSpritesInRange:(struct _PXGSpriteIndexRange)arg1 observer:(id)arg2 textureRequestIDs:(struct _NSRange)arg3 displayAssetFetchResult:(id)arg4 presentationStyles:(unsigned long long)arg5 targetSize:(struct CGSize)arg6 screenScale:(double)arg7;
+- (void)_requestQueue_requestTexturesForSpritesInRange:(struct _PXGSpriteIndexRange)arg1 observer:(id)arg2 textureRequestIDs:(struct _NSRange)arg3 displayAssetFetchResult:(id)arg4 presentationStyles:(unsigned long long)arg5 targetSize:(struct CGSize)arg6 screenScale:(double)arg7 adjustment:(id)arg8 intent:(unsigned long long)arg9;
 - (_Bool)_imageSizeSatisfiedByThumbnail:(struct CGSize)arg1;
-- (struct _NSRange)requestTexturesForSpritesInRange:(struct _PXGSpriteIndexRange)arg1 geometries:(CDStruct_3ab912e1 *)arg2 styles:(CDStruct_506f5052 *)arg3 infos:(CDStruct_9d1ebe49 *)arg4 inLayout:(id)arg5;
+- (struct _NSRange)requestTexturesForSpritesInRange:(struct _PXGSpriteIndexRange)arg1 geometries:(CDStruct_4f725fed *)arg2 styles:(CDStruct_76b550e2 *)arg3 infos:(CDStruct_9d1ebe49 *)arg4 inLayout:(id)arg5;
 - (void)_updateMediumRequestShortSideLimit;
 - (void)releaseCachedResources;
 - (void)lowMemoryModeDidChange;
-- (void)interactionStateDidChange:(CDStruct_a02a4563)arg1;
+- (void)_workQueue_updateTextureStreamingVisibility:(_Bool)arg1;
+- (void)interactionStateDidChange:(CDStruct_da8e67cd)arg1;
 - (void)registerImageDataSpecs:(id)arg1;
-- (id)_requestOptionsForUseCase:(unsigned long long)arg1 forDrawing:(_Bool)arg2;
+- (id)_requestOptionsForUseCase:(unsigned long long)arg1 forDrawing:(_Bool)arg2 intent:(unsigned long long)arg3;
 - (void)_setupRequestOptions;
 - (void)dealloc;
-- (id)initWithMediaProvider:(id)arg1;
+- (id)initWithMediaProvider:(id)arg1 pixelBufferSourcesProvider:(id)arg2;
 - (id)init;
 
 // Remaining properties

@@ -7,6 +7,8 @@
 #import <SleepDaemon/HKSPStateMachineDelegate-Protocol.h>
 
 @protocol HDSPSleepLockScreenStateMachineDelegate <HKSPStateMachineDelegate>
+- (void)unscheduleLockScreenStateChange;
+- (void)scheduleLockScreenStateChange;
 - (void)sleepLockScreenStateDidChange:(long long)arg1 previousState:(long long)arg2;
 @end
 

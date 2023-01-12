@@ -33,8 +33,9 @@
 - (_Bool)containsPasses;
 - (void)handleUserPassDelete:(id)arg1;
 - (id)copyCatalogGroup;
-- (void)updateWithCatalogGroup:(id)arg1 passes:(id)arg2 notify:(_Bool)arg3;
+- (void)updateWithCatalogGroup:(id)arg1 passes:(id)arg2 expiredSectionPasses:(id)arg3 notify:(_Bool)arg4;
 - (id)initWithCatalogGroup:(id)arg1 passes:(id)arg2;
+- (id)init;
 - (unsigned long long)indexForPassUniqueID:(id)arg1;
 - (void)movePass:(id)arg1 toIndex:(unsigned long long)arg2;
 - (id)passes;

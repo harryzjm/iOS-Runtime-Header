@@ -17,5 +17,8 @@
 - (void)sectionHeaderViewDidReceiveClearAllAction:(NCNotificationListSectionHeaderView *)arg1;
 - (void)sectionHeaderView:(NCNotificationListSectionHeaderView *)arg1 didReceiveClearActionForSectionIdentifier:(NSString *)arg2;
 - (void)sectionHeaderViewDidTransitionToClearState:(NCNotificationListSectionHeaderView *)arg1;
+
+@optional
+- (void)sectionHeaderViewDidRequestCollapsing:(NCNotificationListSectionHeaderView *)arg1;
 @end
 

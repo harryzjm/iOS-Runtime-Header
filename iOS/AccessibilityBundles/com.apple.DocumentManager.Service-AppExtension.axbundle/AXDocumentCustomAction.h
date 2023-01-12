@@ -6,15 +6,15 @@
 
 #import <UIKit/UIAccessibilityCustomAction.h>
 
-@class UIMenuItem;
+@class UIAction;
 
 @interface AXDocumentCustomAction : UIAccessibilityCustomAction
 {
-    UIMenuItem *_menuItem;
+    UIAction *_action;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) UIMenuItem *menuItem; // @synthesize menuItem=_menuItem;
+@property(retain, nonatomic) UIAction *action; // @synthesize action=_action;
 
 @end
 

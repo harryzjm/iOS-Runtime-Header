@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HDDatabaseTransaction, NSLock, NSProgress, NSURL;
+@class HDDatabaseTransaction, NSLock, NSNumber, NSProgress, NSString, NSURL;
 @protocol HDDatabaseJournalDelegate, HDJournalChapter;
 
 @interface HDDatabaseJournal : NSObject
@@ -20,34 +20,24 @@
     long long _journalStatus;
     _Bool _interrupted;
     _Bool _invalidated;
-    Class _lastInsertedEntryClass;
+    NSString *_lastInsertedEntryClassName;
+    long long _serializedDataEnumerationThreshold;
     long long _type;
     id <HDDatabaseJournalDelegate> _delegate;
+    NSNumber *_maximumJournalBytes;
     NSURL *_URL;
     NSLock *_journalLock;
     id <HDJournalChapter> _currentJournalChapter;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) id <HDJournalChapter> currentJournalChapter; // @synthesize currentJournalChapter=_currentJournalChapter;
-@property(retain, nonatomic) NSLock *journalLock; // @synthesize journalLock=_journalLock;
-@property(copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
+@property(copy) NSNumber *maximumJournalBytes; // @synthesize maximumJournalBytes=_maximumJournalBytes;
 @property(nonatomic) __weak id <HDDatabaseJournalDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
-- (_Bool)_isJournalDatabaseFeatureEnabled;
+- (void)_unitTesting_setSerializedDataEnumerationThreshold:(long long)arg1;
 - (void)_unitTesting_setJournalStatusRequiresMerge;
 - (id)_unitTesting_directoryURL;
 - (void)_unitTesting_closeCurrentJournalChapter;
-- (_Bool)_performPostJournalMergeWithVersion:(unsigned int)arg1 profile:(id)arg2 transaction:(id)arg3 error:(id *)arg4;
-- (void)_mergeJournalEntries:(id)arg1 profile:(id)arg2;
-- (void)_waitIfInterrupted;
-- (_Bool)_appendData:(id)arg1 entryClass:(Class)arg2 error:(id *)arg3;
-- (_Bool)_createNextJournalChapterWithError:(id *)arg1;
-- (void)_executeAtomically:(CDUnknownBlockType)arg1;
-- (id)_mergeTransactionContextWithContext:(id)arg1;
-- (_Bool)_setActiveTransactionAndReturnInterrupted:(id)arg1;
-- (unsigned int)_mergeJournalChapter:(id)arg1 profile:(id)arg2 accessibilityAssertion:(id)arg3;
-- (_Bool)_processJournalChaptersWithProfile:(id)arg1;
 - (unsigned long long)sizeOnDisk;
 - (long long)journalChapterCount;
 - (void)invalidate;

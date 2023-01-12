@@ -14,6 +14,7 @@
     struct UIEdgeInsets _collectionLayoutInsets;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) struct UIEdgeInsets collectionLayoutInsets; // @synthesize collectionLayoutInsets=_collectionLayoutInsets;
 @property(retain, nonatomic) NSArray *localAchievements; // @synthesize localAchievements=_localAchievements;
 @property(retain, nonatomic) NSArray *achievements; // @synthesize achievements=_achievements;
@@ -31,7 +32,6 @@
 - (long long)itemCount;
 - (void)loadDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setupCollectionView:(id)arg1;
-- (void)dealloc;
 - (id)initWithGameRecord:(id)arg1;
 
 @end

@@ -26,9 +26,10 @@
     PKAssertion *_notificationSuppressionAssertion;
     NSObject<OS_dispatch_group> *_fieldPropertiesLookupGroup;
     long long _presentationSource;
+    long long _standAloneTransactionType;
     unsigned long long _presentationStartTime;
     _Bool _backlightActive;
-    _Bool _deviceUILocked;
+    _Bool _isLockScreenPresented;
     _Bool _processHomeButtonEvents;
     _Bool _brightnessRampingAllowed;
     _Bool _appearedOnce;
@@ -39,7 +40,7 @@
 
 + (_Bool)_isSecureForRemoteViewService;
 + (_Bool)_shouldForwardViewWillTransitionToSize;
-+ (id)groupsControllerWithSource:(long long)arg1;
++ (id)groupsControllerWithSource:(long long)arg1 isLockScreenPresented:(_Bool)arg2;
 - (void).cxx_destruct;
 - (void)openApplication:(id)arg1;
 - (void)_contactlessInterfaceSessionFinishTransaction:(id)arg1;
@@ -53,6 +54,7 @@
 - (void)_presentPassAnimated:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_insertGroupController;
 - (void)_setupGroupController;
+- (_Bool)_isInGroup;
 - (void)handleButtonActions:(id)arg1;
 - (void)configureWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)didInvalidateForRemoteAlert;

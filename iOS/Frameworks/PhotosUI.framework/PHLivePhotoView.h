@@ -9,12 +9,13 @@
 #import <PhotosUI/ISChangeObserver-Protocol.h>
 #import <PhotosUI/PXLivePhotoView-Protocol.h>
 
-@class ISLivePhotoPlayer, ISLivePhotoUIView, ISPlayerItem, NSString, PHLivePhoto, UIGestureRecognizer;
+@class ISLivePhotoPlayer, ISLivePhotoUIView, ISPlayerItem, NSNumber, NSString, PHLivePhoto, UIGestureRecognizer;
 @protocol PHLivePhotoViewDelegate;
 
 @interface PHLivePhotoView : UIView <PXLivePhotoView, ISChangeObserver>
 {
     struct {
+        _Bool respondsToCanBeginPlayback;
         _Bool respondsToWillBeginPlaybackWithStyle;
         _Bool respondsToDidEndPlayback;
     } _delegateFlags;
@@ -34,16 +35,19 @@
     id <PHLivePhotoViewDelegate> _delegate;
     PHLivePhoto *_livePhoto;
     ISPlayerItem *__playerItem;
+    long long _videoFilterUpdateCounter;
     long long _targetReadiness;
     UIView *_photoView;
     ISLivePhotoUIView *_playerView;
     ISLivePhotoPlayer *_player;
+    NSNumber *_overrideSRLCompensationAmount;
     struct CGPoint _scaleAnchorOffset;
     CDStruct_e83c9415 _trimmedTimeRange;
 }
 
 + (id)livePhotoBadgeImageWithOptions:(unsigned long long)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSNumber *overrideSRLCompensationAmount; // @synthesize overrideSRLCompensationAmount=_overrideSRLCompensationAmount;
 @property(nonatomic) CDStruct_e83c9415 trimmedTimeRange; // @synthesize trimmedTimeRange=_trimmedTimeRange;
 @property(nonatomic) _Bool showsStatusBorder; // @synthesize showsStatusBorder=_showsStatusBorder;
 @property(retain, nonatomic) ISLivePhotoPlayer *player; // @synthesize player=_player;
@@ -52,6 +56,7 @@
 @property(retain, nonatomic) UIView *photoView; // @synthesize photoView=_photoView;
 @property(nonatomic) _Bool shouldApplyTargetReadiness; // @synthesize shouldApplyTargetReadiness=_shouldApplyTargetReadiness;
 @property(nonatomic) long long targetReadiness; // @synthesize targetReadiness=_targetReadiness;
+@property(nonatomic) long long videoFilterUpdateCounter; // @synthesize videoFilterUpdateCounter=_videoFilterUpdateCounter;
 @property(nonatomic, setter=_setScrubbing:) _Bool scrubbing; // @synthesize scrubbing=_scrubbing;
 @property(nonatomic, setter=_setPlaybackRequested:) _Bool _playbackRequested; // @synthesize _playbackRequested=__playbackRequested;
 @property(nonatomic, setter=_setPlayingVitality:) _Bool _playingVitality; // @synthesize _playingVitality=__playingVitality;
@@ -61,6 +66,8 @@
 @property(nonatomic) __weak id <PHLivePhotoViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)_handlePlayerItemStatusChanged;
+- (void)_applySRLCompensationAmount:(id)arg1 updateCount:(long long)arg2;
+- (void)_updateVideoFilter;
 - (void)_updatePlayerTargetReadiness;
 - (void)_playerDidBeginHinting;
 - (void)_updateCurrentPlaybackStyleAndSeeking;

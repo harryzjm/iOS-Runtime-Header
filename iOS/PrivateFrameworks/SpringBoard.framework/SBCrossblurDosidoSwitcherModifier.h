@@ -14,8 +14,6 @@
 }
 
 - (void).cxx_destruct;
-- (_Bool)_isToAppLayoutAtIndex:(unsigned long long)arg1;
-- (_Bool)_isFromAppLayoutAtIndex:(unsigned long long)arg1;
 - (id)appLayoutsToCacheSnapshots;
 - (id)topMostLayoutElements;
 - (_Bool)isSwitcherWindowUserInteractionEnabled;
@@ -24,18 +22,18 @@
 - (long long)wallpaperStyle;
 - (_Bool)isWallpaperRequiredForSwitcher;
 - (long long)homeScreenBackdropBlurType;
-- (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
-- (double)opacityForIndex:(unsigned long long)arg1;
+- (double)opacityForLayoutRole:(long long)arg1 inAppLayout:(id)arg2 atIndex:(unsigned long long)arg3;
 - (id)_opacitySettings;
 - (id)_layoutSettings;
 - (id)animationAttributesForLayoutElement:(id)arg1;
 - (id)visibleAppLayouts;
+- (double)scaleForLayoutRole:(long long)arg1 inAppLayout:(id)arg2;
 - (double)scaleForIndex:(unsigned long long)arg1;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
 - (id)transitionDidEnd;
 - (id)transitionWillUpdate;
 - (id)transitionWillBegin;
-- (_Bool)shouldRasterizeLiveContentUntilDelay:(inout double *)arg1;
+- (_Bool)shouldAsyncRenderUntilDelay:(inout double *)arg1;
 - (id)initWithTransitionID:(id)arg1 fromAppLayout:(id)arg2 toAppLayout:(id)arg3 direction:(unsigned long long)arg4;
 
 @end

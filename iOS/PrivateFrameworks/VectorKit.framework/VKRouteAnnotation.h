@@ -13,7 +13,7 @@
 }
 
 @property(readonly, nonatomic, getter=_originalStyleAttributes) GEOStyleAttributes *originalStyleAttributes; // @synthesize originalStyleAttributes=_originalStyleAttributes;
-- (void)populateDebugNode:(struct DebugTreeNode *)arg1;
+- (void)populateDebugNode:(void *)arg1;
 - (void)dealloc;
 @property(readonly, nonatomic) GEOMiniCard *infoCard;
 - (id)initWithRouteAnnotation:(id)arg1 onRoute:(id)arg2;

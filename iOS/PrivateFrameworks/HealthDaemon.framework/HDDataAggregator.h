@@ -8,7 +8,7 @@
 
 #import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
 
-@class HDDataAggregatorConfiguration, HDDataCollectionManager, HKObjectType, NSLock, NSMapTable, NSString;
+@class HDDataAggregatorConfiguration, HDDataCollectionManager, HKObjectType, NSDate, NSLock, NSMapTable, NSString;
 
 @interface HDDataAggregator : NSObject <HDHealthDaemonReadyObserver>
 {
@@ -17,6 +17,7 @@
     HDDataAggregatorConfiguration *_lock_configuration;
     _Atomic _Bool _hasStartedCollectors;
     _Bool _lock_canStartCollectors;
+    NSDate *_unitTest_lastObliterationDate;
     HDDataCollectionManager *_dataCollectionManager;
 }
 
@@ -28,9 +29,8 @@
 - (void)recomputeCollectorConfiguration;
 @property(readonly, copy, nonatomic) HKObjectType *objectType;
 - (void)dataCollector:(id)arg1 didCollectSensorData:(id)arg2 device:(id)arg3;
-- (id)_keyValueDomain;
-- (void)_startCollector:(id)arg1;
-- (void)_considerStartingCollectors;
+- (void)unitTest_setLastObliterationDate:(id)arg1;
+- (_Bool)doesDatumPredateDatabaseObliteration:(id)arg1;
 - (_Bool)didPersistObjects:(id)arg1 lastDatum:(id)arg2 collector:(id)arg3 error:(id *)arg4;
 - (_Bool)persistForCollector:(id)arg1 usedDatums:(id)arg2 source:(id)arg3 device:(id)arg4 error:(id *)arg5 persistenceHandler:(CDUnknownBlockType)arg6;
 - (_Bool)persistObjects:(id)arg1 usedDatums:(id)arg2 collector:(id)arg3 source:(id)arg4 device:(id)arg5 resolveAssociations:(_Bool)arg6 error:(id *)arg7;

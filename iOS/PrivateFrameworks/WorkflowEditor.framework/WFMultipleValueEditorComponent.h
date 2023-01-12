@@ -4,12 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MTVisualStylingProvider, NSSet, NSString, UIColor, WFMultipleValueParameterState, WFParameter;
+@class MTVisualStylingProvider, NSSet, UIColor, WFMultipleValueParameterState, WFParameter;
 @protocol WFComponentNavigationContext, WFVariableProvider, WFVariableUIDelegate;
 
 @interface WFMultipleValueEditorComponent
 {
-    _Bool _standaloneVariablesAsContentItems;
     _Bool _variablesDisabled;
     _Bool _editable;
     WFParameter *_parameter;
@@ -18,7 +17,7 @@
     id <WFVariableUIDelegate> _variableUIDelegate;
     id <WFComponentNavigationContext> _navigationContext;
     NSSet *_allowedVariableTypes;
-    NSString *_widgetSizeClass;
+    long long _widgetFamily;
     long long _maximumItemsNumber;
     CDUnknownBlockType _updateBlock;
     MTVisualStylingProvider *_fillProvider;
@@ -27,7 +26,7 @@
     CKTypedComponentAction_9dede3e0 _confirmationAction;
 }
 
-+ (id)newWithParameter:(id)arg1 state:(id)arg2 editable:(_Bool)arg3 widgetSizeClass:(id)arg4 variableProvider:(id)arg5 variableUIDelegate:(id)arg6 navigationContext:(id)arg7 variablesDisabled:(_Bool)arg8 allowedVariableTypes:(id)arg9 standaloneVariablesAsContentItems:(_Bool)arg10 updateBlock:(CDUnknownBlockType)arg11 confirmationAction:(CKTypedComponentAction_9dede3e0)arg12 additionalBottomMargin:(double)arg13 fillProvider:(id)arg14 overridingBackgroundColor:(id)arg15 size:(const struct CKComponentSize *)arg16;
++ (id)newWithParameter:(id)arg1 state:(id)arg2 editable:(_Bool)arg3 widgetFamily:(long long)arg4 variableProvider:(id)arg5 variableUIDelegate:(id)arg6 navigationContext:(id)arg7 variablesDisabled:(_Bool)arg8 allowedVariableTypes:(id)arg9 updateBlock:(CDUnknownBlockType)arg10 confirmationAction:(CKTypedComponentAction_9dede3e0)arg11 additionalBottomMargin:(double)arg12 fillProvider:(id)arg13 overridingBackgroundColor:(id)arg14 size:(const struct CKComponentSize *)arg15;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) double additionalBottomMargin; // @synthesize additionalBottomMargin=_additionalBottomMargin;
@@ -36,10 +35,9 @@
 @property(readonly, nonatomic) CKTypedComponentAction_9dede3e0 confirmationAction; // @synthesize confirmationAction=_confirmationAction;
 @property(readonly, nonatomic) CDUnknownBlockType updateBlock; // @synthesize updateBlock=_updateBlock;
 @property(readonly, nonatomic) long long maximumItemsNumber; // @synthesize maximumItemsNumber=_maximumItemsNumber;
-@property(readonly, copy, nonatomic) NSString *widgetSizeClass; // @synthesize widgetSizeClass=_widgetSizeClass;
+@property(readonly, nonatomic) long long widgetFamily; // @synthesize widgetFamily=_widgetFamily;
 @property(readonly, nonatomic) _Bool editable; // @synthesize editable=_editable;
 @property(readonly, nonatomic) _Bool variablesDisabled; // @synthesize variablesDisabled=_variablesDisabled;
-@property(readonly, nonatomic) _Bool standaloneVariablesAsContentItems; // @synthesize standaloneVariablesAsContentItems=_standaloneVariablesAsContentItems;
 @property(readonly, copy, nonatomic) NSSet *allowedVariableTypes; // @synthesize allowedVariableTypes=_allowedVariableTypes;
 @property(readonly, nonatomic) __weak id <WFComponentNavigationContext> navigationContext; // @synthesize navigationContext=_navigationContext;
 @property(readonly, nonatomic) __weak id <WFVariableUIDelegate> variableUIDelegate; // @synthesize variableUIDelegate=_variableUIDelegate;

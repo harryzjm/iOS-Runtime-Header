@@ -6,9 +6,10 @@
 
 #import <CameraUI/NSObject-Protocol.h>
 
-@protocol CAMStorageControllerDelegate <NSObject>
+@class CAMStorageController;
 
-@optional
+@protocol CAMStorageControllerDelegate <NSObject>
+- (void)storageControllerDidChangePurgingState:(CAMStorageController *)arg1;
 - (void)availableDiskSpaceChanged;
 @end
 

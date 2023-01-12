@@ -9,26 +9,32 @@
 #import <NanoTimeKitCompanion/NTKComplicationCollectionObserver-Protocol.h>
 #import <NanoTimeKitCompanion/NTKRemoteComplicationProvider-Protocol.h>
 
-@class CLKDevice, NSDictionary, NSMutableDictionary, NSString, NTKComplicationCollection;
+@class CLKDevice, NSDictionary, NSString, NTKComplicationCollection;
 @protocol OS_dispatch_queue;
 
 @interface NTKCompanionRemoteComplicationManager : NSObject <NTKComplicationCollectionObserver, NTKRemoteComplicationProvider>
 {
     _Bool _loaded;
+    struct os_unfair_lock_s _remoteComplicationsLock;
+    struct os_unfair_lock_s _installedComplicationsLock;
+    struct os_unfair_lock_s _syncedComplicationsLock;
+    CLKDevice *_device;
     NTKComplicationCollection *_remoteComplications;
     NSDictionary *_installedComplications;
-    NSMutableDictionary *_syncedComplications;
-    CLKDevice *_device;
+    NSDictionary *_syncedComplications;
     NSObject<OS_dispatch_queue> *_serialQueue;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
-@property(retain, nonatomic) CLKDevice *device; // @synthesize device=_device;
-@property(retain, nonatomic) NSMutableDictionary *syncedComplications; // @synthesize syncedComplications=_syncedComplications;
+@property(readonly, nonatomic) struct os_unfair_lock_s syncedComplicationsLock; // @synthesize syncedComplicationsLock=_syncedComplicationsLock;
+@property(retain, nonatomic) NSDictionary *syncedComplications; // @synthesize syncedComplications=_syncedComplications;
+@property(readonly, nonatomic) struct os_unfair_lock_s installedComplicationsLock; // @synthesize installedComplicationsLock=_installedComplicationsLock;
 @property(retain, nonatomic) NSDictionary *installedComplications; // @synthesize installedComplications=_installedComplications;
+@property(readonly, nonatomic) struct os_unfair_lock_s remoteComplicationsLock; // @synthesize remoteComplicationsLock=_remoteComplicationsLock;
 @property(retain, nonatomic) NTKComplicationCollection *remoteComplications; // @synthesize remoteComplications=_remoteComplications;
+@property(retain, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property(nonatomic) _Bool loaded; // @synthesize loaded=_loaded;
 - (void)complicationCollection:(id)arg1 didRemoveSampleTemplatesForClient:(id)arg2;
 - (void)complicationCollection:(id)arg1 didUpdateComplicationDescriptorsForClient:(id)arg2;

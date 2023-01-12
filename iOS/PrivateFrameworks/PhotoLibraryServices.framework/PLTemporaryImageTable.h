@@ -15,7 +15,7 @@
     unsigned long long _nextTableEntryIndex;
     NSMutableArray *_itemIndexToThumbEntryMapping;
     NSString *_imageTablePath;
-    unsigned short _imageFormat;
+    unsigned short _imageFormatID;
 }
 
 - (void).cxx_destruct;
@@ -29,6 +29,8 @@
 - (void)setImage:(id)arg1 forItemAtIndex:(unsigned long long)arg2;
 - (id)initWithWithPath:(id)arg1 imageFormat:(unsigned short)arg2;
 - (void)_positional_setThumbnailsWithIdentifier:(id)arg1 thumbnailIndex:(unsigned long long)arg2 image:(id)arg3 assetUUID:(id)arg4;
+- (_Bool)_writeBGRAThumbnailDataForImage:(id)arg1 intoTable:(id)arg2 atIndex:(unsigned long long)arg3;
+- (_Bool)_writeCompressedThumbnailDataForImage:(id)arg1 intoTable:(id)arg2 atIndex:(unsigned long long)arg3;
 
 @end
 

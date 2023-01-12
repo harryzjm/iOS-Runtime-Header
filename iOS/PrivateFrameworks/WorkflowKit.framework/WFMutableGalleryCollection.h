@@ -12,17 +12,21 @@
     NSString *name;
     NSString *collectionDescription;
     NSArray *workflows;
+    long long minVersion;
     NSDate *modifiedAt;
     NSString *language;
     CKRecordID *base;
     NSString *persistentIdentifier;
+    NSArray *supportedIdioms;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *supportedIdioms; // @synthesize supportedIdioms;
 @property(copy, nonatomic) NSString *persistentIdentifier; // @synthesize persistentIdentifier;
 @property(retain, nonatomic) CKRecordID *base; // @synthesize base;
 @property(copy, nonatomic) NSString *language; // @synthesize language;
 @property(retain, nonatomic) NSDate *modifiedAt; // @synthesize modifiedAt;
+@property(nonatomic) long long minVersion; // @synthesize minVersion;
 @property(copy, nonatomic) NSArray *workflows; // @synthesize workflows;
 @property(copy, nonatomic) NSString *collectionDescription; // @synthesize collectionDescription;
 @property(copy, nonatomic) NSString *name; // @synthesize name;

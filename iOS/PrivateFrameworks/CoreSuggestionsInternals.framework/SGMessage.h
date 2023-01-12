@@ -10,15 +10,16 @@
 #import <CoreSuggestionsInternals/NSSecureCoding-Protocol.h>
 #import <CoreSuggestionsInternals/SGSpotlightIdentifiers-Protocol.h>
 
-@class CSPerson, NSArray, NSDate, NSString, SGCachedResult;
+@class CSPerson, NSArray, NSDate, NSString, SGHarvestQueueMetrics, _PASCachedResult;
 
 @interface SGMessage : NSObject <NSSecureCoding, NSCopying, SGSpotlightIdentifiers>
 {
-    SGCachedResult *_isInhumanSenderCached;
-    SGCachedResult *_isInhumanContentCached;
-    SGCachedResult *_taggedCharacterRangesCached;
-    SGCachedResult *_messageSubjectDetectedDataCached;
-    SGCachedResult *_dataDetectorMatchesWithSignatureForContentCached;
+    _PASCachedResult *_isInhumanSenderCached;
+    _PASCachedResult *_isInhumanContentCached;
+    _PASCachedResult *_taggedCharacterRangesCached;
+    _PASCachedResult *_messageSubjectDetectedDataCached;
+    _PASCachedResult *_dataDetectorMatchesWithSignatureForContentCached;
+    _PASCachedResult *_textContentLanguageIdentifierCached;
     _Bool _isSent;
     _Bool _isStoredEncrypted;
     NSString *_subject;
@@ -31,12 +32,17 @@
     NSArray *_attachments;
     NSArray *_accountHandles;
     NSString *_accountType;
+    SGHarvestQueueMetrics *_harvestMetrics;
+    NSString *_contentProtection;
 }
 
++ (id)preferredLanguages;
 + (id)fromDictionary:(id)arg1;
 + (_Bool)supportsSecureCoding;
 + (id)messageWithSearchableItem:(id)arg1;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *contentProtection; // @synthesize contentProtection=_contentProtection;
+@property(retain, nonatomic) SGHarvestQueueMetrics *harvestMetrics; // @synthesize harvestMetrics=_harvestMetrics;
 @property(nonatomic) _Bool isStoredEncrypted; // @synthesize isStoredEncrypted=_isStoredEncrypted;
 @property(copy, nonatomic) NSString *accountType; // @synthesize accountType=_accountType;
 @property(nonatomic) _Bool isSent; // @synthesize isSent=_isSent;
@@ -49,9 +55,11 @@
 @property(copy, nonatomic) NSString *source; // @synthesize source=_source;
 @property(copy, nonatomic) NSString *textContent; // @synthesize textContent=_textContent;
 @property(copy, nonatomic) NSString *subject; // @synthesize subject=_subject;
+- (void)setAttachments:(id)arg1;
 - (id)spotlightUniqueIdentifier;
 - (id)spotlightDomainIdentifier;
 - (id)spotlightBundleIdentifier;
+@property(readonly, nonatomic) long long contentLength;
 @property(readonly, nonatomic) struct _NSRange detectedDataSignatureRange;
 @property(readonly, nonatomic) NSArray *plainTextDetectedData;
 - (id)dataDetectorMatchesWithSignature;
@@ -61,12 +69,15 @@
 @property(readonly, nonatomic) _Bool isInhumanContent;
 - (_Bool)isInhumanContentNoncached;
 @property(readonly, nonatomic) _Bool isInhumanSender;
+@property(readonly, nonatomic) NSString *textContentLanguageIdentifier;
 - (id)asDictionary;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqualToMessage:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
+- (id)initWithMessageDictionary:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithMessagesContentEvent:(id)arg1 contentProtection:(id)arg2;
+- (id)initWithMailContentEvent:(id)arg1 contentProtection:(id)arg2;
 - (id)initWithSearchableItem:(id)arg1;
 - (id)initForBuilding;
 - (id)init;

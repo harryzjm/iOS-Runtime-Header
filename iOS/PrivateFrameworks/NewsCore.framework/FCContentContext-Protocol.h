@@ -7,19 +7,17 @@
 #import <NewsCore/FCCacheFlushing-Protocol.h>
 #import <NewsCore/NSObject-Protocol.h>
 
-@class FCArticleController, FCAssetManager, FCFlintResourceManager, FCJSONRecordSourceSchema, FCNetworkBehaviorMonitor, FCTagController, NSArray, NSString, NSURL;
-@protocol FCAVAssetPrewarming, FCBackgroundTaskable, FCContentContextInternal, FCCoreConfigurationManager, FCCoreConfigurationManager><FCNewsAppConfigurationManager, FCJSONRecordSourceType, FCJSONRecordTreeSourceType, FCMagazinesConfigurationManager, FCNewsAppConfigurationManager, FCPPTContext, FCWebArchiveSource;
+@class FCArticleController, FCAssetManager, FCContentManifest, FCFlintResourceManager, FCInterestToken, FCJSONRecordSourceSchema, FCNetworkBehaviorMonitor, FCTagController, NSArray, NSString, NSURL;
+@protocol FCAVAssetPrewarming, FCBackgroundTaskable, FCCacheFlushing, FCContentContextInternal, FCCoreConfigurationManager, FCCoreConfigurationManager><FCNewsAppConfigurationManager, FCFeedDatabaseProtocol, FCJSONRecordSourceType, FCJSONRecordTreeSourceType, FCMagazinesConfigurationManager, FCNewsAppConfigurationManager, FCPPTContext;
 
 @protocol FCContentContext <NSObject, FCCacheFlushing>
 @property(readonly, copy, nonatomic) NSString *contentEnvironmentToken;
+@property(readonly, nonatomic) id <FCFeedDatabaseProtocol> feedDatabase;
 @property(readonly, nonatomic) id <FCPPTContext> pptContext;
-@property(readonly, nonatomic) long long preferredMediaQuality;
 @property(readonly, nonatomic) __weak id <FCBackgroundTaskable> backgroundTaskable;
 @property(readonly, nonatomic) id <FCContentContextInternal> internalContentContext;
-@property(readonly, nonatomic) NSURL *webArchiveCacheDirectoryURL;
 @property(readonly, nonatomic) NSURL *assetCacheDirectoryURL;
 @property(readonly, copy, nonatomic) NSString *contentDirectory;
-@property(retain, nonatomic) id <FCWebArchiveSource> webArchiveSource;
 @property(readonly, nonatomic) FCNetworkBehaviorMonitor *networkBehaviorMonitor;
 @property(readonly, nonatomic) FCFlintResourceManager *flintResourceManager;
 @property(readonly, nonatomic) FCTagController *tagController;
@@ -30,6 +28,8 @@
 @property(readonly, nonatomic) id <FCCoreConfigurationManager> configurationManager;
 @property(readonly, copy, nonatomic) NSString *supportedContentStoreFrontID;
 @property(readonly, copy, nonatomic) NSString *contentStoreFrontID;
+- (void)enableFlushingWithFlushingThreshold:(unsigned long long)arg1 exceptForFlusher:(id <FCCacheFlushing>)arg2;
+- (FCInterestToken *)interestTokenForContentManifest:(FCContentManifest *)arg1;
 - (id <FCJSONRecordTreeSourceType>)recordTreeSourceWithRecordSources:(NSArray *)arg1;
 - (id <FCJSONRecordSourceType>)recordSourceWithSchema:(FCJSONRecordSourceSchema *)arg1;
 - (void)ppt_prewarmFeedDatabase;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableSet;
+@class NSMutableSet, NSSet;
 @protocol OS_dispatch_queue;
 
 @interface TSUMutableWarningSet : NSObject
@@ -20,6 +20,7 @@
 - (id)warningsOfKind:(long long)arg1;
 - (id)popAllWarningsIfContainsWarningPassingTest:(CDUnknownBlockType)arg1;
 - (id)popAllWarnings;
+@property(readonly, nonatomic) NSSet *allWarnings;
 - (_Bool)containsWarningPassingTest:(CDUnknownBlockType)arg1;
 - (id)warningsPassingTest:(CDUnknownBlockType)arg1;
 - (void)addWarning:(id)arg1;

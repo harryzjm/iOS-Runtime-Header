@@ -20,13 +20,16 @@
 - (void)_readFromFileWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)fetchDefaultStacksJSONWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)_JSONCompatible:(id)arg1;
-- (id)_createDefaultsDictionary:(id)arg1 defaultTodayStack:(id)arg2 defaultWidgetsSmall:(id)arg3 defaultWidgetsMedium:(id)arg4 defaultWidgetsLarge:(id)arg5 shouldSuggestSmartStackInGallery:(_Bool)arg6;
-- (void)_fetchSmartStackOfVariant:(unsigned long long)arg1 localObserver:(int)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)_doesBiomeAppLaunchDataGoBackAtLeast20Days;
+- (id)_generateOnboardingStacks;
+- (void)_logFetchedOnboardingStack:(id)arg1;
+- (id)fetchWidgetDiscoverabilityStacks;
+- (void)_fetchSmartStackOfVariant:(unsigned long long)arg1 localObserver:(int)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)fetchSmartStackOfVariant:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchSmartStackOfVariant:(unsigned long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (void)fetchSmartStackWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)fetchSuggestedGalleryItemsOfGridSize:(unsigned long long)arg1 widgetFamilyMask:(unsigned long long)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)fetchDefaultStacksOfGridSize:(unsigned long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (void)fetchDefaultStacksWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)writeDefaultStack:(id)arg1 defaultTodayPageStack:(id)arg2 defaultWidgetsSmall:(id)arg3 defaultWidgetsMedium:(id)arg4 defaultWidgetsLarge:(id)arg5 shouldSuggestSmartStackInGallery:(_Bool)arg6 withCompletionHandler:(CDUnknownBlockType)arg7;
+- (void)writeHomeScreenUpdate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithPath:(id)arg1;
 - (id)init;
 

@@ -18,8 +18,18 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+- (_Bool)supportsSharePlayHandoff;
+- (id)airPlayGroupID;
+- (_Bool)producesLowFidelityAudio;
+- (id)currentBluetoothListeningMode;
+- (id)availableBluetoothListeningModes;
+- (_Bool)supportsRapportRemoteControlTransport;
+- (unsigned long long)configuredClusterSize;
+- (id)primaryID;
+- (unsigned int)clusterType;
 - (id)clusterComposition;
 - (_Bool)isUsingJSONProtocol;
+- (_Bool)supportsMultiplayer;
 - (_Bool)supportsHAP;
 - (id)bluetoothID;
 - (unsigned int)volumeCapabilities;
@@ -33,6 +43,7 @@
 - (_Bool)hasBatteryLevel;
 - (float)batteryLevel;
 - (id)modelSpecificInfo;
+- (long long)hostDeviceClass;
 - (unsigned int)deviceSubtype;
 - (unsigned int)deviceType;
 - (_Bool)isDeviceGroupable;

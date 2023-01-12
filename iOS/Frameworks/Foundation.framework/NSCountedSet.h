@@ -29,6 +29,7 @@
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)removeAllObjects;
 - (void)removeObject:(id)arg1;
 - (void)addObject:(id)arg1;
 - (id)objectEnumerator;

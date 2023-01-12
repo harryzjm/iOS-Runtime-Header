@@ -6,37 +6,38 @@
 
 #import <objc/NSObject.h>
 
-@class AVTMaterial, AVTMemoji, NSArray, NSString;
+@class AVTMaterial, NSArray, NSString;
 
 @interface AVTComponent : NSObject
 {
     long long _type;
     NSArray *_assets;
     _Bool _mirrored;
-    AVTMemoji *_memoji;
     AVTMaterial *_materials[3];
+    float _morphVariantIntensity;
+    float _bodyPoseVariantIntensity;
+    float _textureAssetPresence;
     NSString *_morphVariant;
     NSString *_imageVariant;
     NSString *_materialVariant;
-    double _morphVariantIntensity;
-    double _textureAssetPresence;
+    NSString *_bodyPoseVariant;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) double textureAssetPresence; // @synthesize textureAssetPresence=_textureAssetPresence;
-@property(readonly, nonatomic) double morphVariantIntensity; // @synthesize morphVariantIntensity=_morphVariantIntensity;
+@property(readonly, nonatomic) float textureAssetPresence; // @synthesize textureAssetPresence=_textureAssetPresence;
+@property(readonly, nonatomic) float bodyPoseVariantIntensity; // @synthesize bodyPoseVariantIntensity=_bodyPoseVariantIntensity;
+@property(readonly, nonatomic) float morphVariantIntensity; // @synthesize morphVariantIntensity=_morphVariantIntensity;
+@property(readonly, nonatomic) NSString *bodyPoseVariant; // @synthesize bodyPoseVariant=_bodyPoseVariant;
 @property(readonly, nonatomic) NSString *materialVariant; // @synthesize materialVariant=_materialVariant;
 @property(readonly, nonatomic) NSString *imageVariant; // @synthesize imageVariant=_imageVariant;
 @property(readonly, nonatomic) NSString *morphVariant; // @synthesize morphVariant=_morphVariant;
 @property(readonly, nonatomic) _Bool mirrored; // @synthesize mirrored=_mirrored;
 @property(readonly) NSArray *assets; // @synthesize assets=_assets;
 - (id)description;
-- (id)initWithType:(long long)arg1 assets:(id)arg2 morphVariant:(id)arg3 imageVariant:(id)arg4 materialVariant:(id)arg5 morphVariantIntensity:(double)arg6 textureAssetPresence:(double)arg7 mirrored:(_Bool)arg8;
+- (id)initWithType:(long long)arg1 assets:(id)arg2 morphVariant:(id)arg3 imageVariant:(id)arg4 materialVariant:(id)arg5 bodyPoseVariant:(id)arg6 morphVariantIntensity:(float)arg7 bodyPoseVariantIntensity:(float)arg8 textureAssetPresence:(float)arg9 mirrored:(_Bool)arg10;
 - (id)materialAtIndex:(unsigned long long)arg1;
 - (void)setMaterial:(id)arg1 atIndex:(unsigned long long)arg2;
 @property(readonly) long long type;
-- (void)setMemoji:(id)arg1;
-- (id)memoji;
 
 @end
 

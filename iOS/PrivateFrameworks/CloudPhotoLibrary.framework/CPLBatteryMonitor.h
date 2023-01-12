@@ -11,8 +11,11 @@
 }
 
 + (id)powerStatusPlist;
++ (double)batteryLevel;
 + (id)powerStatus;
 + (void)startMonitoringPowerEvents;
++ (id)delegate;
++ (void)setDelegate:(id)arg1;
 
 @end
 

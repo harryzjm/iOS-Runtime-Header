@@ -23,6 +23,7 @@
     NSArray *_searchTerms;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *searchTerms; // @synthesize searchTerms=_searchTerms;
 @property(nonatomic) _Bool breakSearchInputTextIntoMultipleTerms; // @synthesize breakSearchInputTextIntoMultipleTerms=_breakSearchInputTextIntoMultipleTerms;
 @property(copy, nonatomic) NSString *searchText; // @synthesize searchText=_searchText;
@@ -30,7 +31,7 @@
 @property(nonatomic) NSString *analyticsEvent; // @synthesize analyticsEvent=_analyticsEvent;
 @property(nonatomic) _Bool useStandardHeaders; // @synthesize useStandardHeaders=_useStandardHeaders;
 @property(nonatomic) _Bool onDarkBackground; // @synthesize onDarkBackground=_onDarkBackground;
-@property(nonatomic) UIViewController *presentationViewController; // @synthesize presentationViewController=_presentationViewController;
+@property(nonatomic) __weak UIViewController *presentationViewController; // @synthesize presentationViewController=_presentationViewController;
 - (_Bool)isValidAnalytics;
 - (void)collectionView:(id)arg1 didDeselectItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
@@ -56,7 +57,6 @@
 @property(readonly, nonatomic) long long itemCount; // @dynamic itemCount;
 - (void)loadDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setupCollectionView:(id)arg1;
-- (void)dealloc;
 - (id)init;
 
 // Remaining properties

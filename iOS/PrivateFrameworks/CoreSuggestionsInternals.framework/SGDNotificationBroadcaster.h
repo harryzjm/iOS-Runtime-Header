@@ -11,6 +11,7 @@
 }
 
 + (unsigned long long)notificationCount;
++ (void)emitURLChanged;
 + (void)emitReminderUpdated:(id)arg1;
 + (void)emitReminderDeleted:(id)arg1;
 + (void)emitEventUpdated:(id)arg1;

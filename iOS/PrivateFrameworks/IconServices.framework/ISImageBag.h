@@ -4,38 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-#import <IconServices/ISScalableCompositorResource-Protocol.h>
-
-@class NSArray, NSMutableDictionary, NSString;
+#import <IconFoundation/IFImageBag.h>
 
 __attribute__((visibility("hidden")))
-@interface ISImageBag : NSObject <ISScalableCompositorResource>
+@interface ISImageBag : IFImageBag
 {
-    struct os_unfair_lock_s _lock;
-    NSMutableDictionary *_imagesByScale;
 }
-
-+ (id)imageBagWithResourcesNamed:(id)arg1 directory:(id)arg2;
-+ (id)imageBagWithResourcesNamed:(id)arg1 fromBundle:(id)arg2 subdirectory:(id)arg3;
-+ (id)imageBagWithResourcesNamed:(id)arg1 fromBundle:(id)arg2;
-+ (id)imageBagWithResourcesNames:(id)arg1 fromBundle:(id)arg2;
-- (void).cxx_destruct;
-@property struct os_unfair_lock_s lock; // @synthesize lock=_lock;
-@property(retain) NSMutableDictionary *imagesByScale; // @synthesize imagesByScale=_imagesByScale;
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSArray *images; // @dynamic images;
-- (void)insertImage:(id)arg1;
-- (id)imageForSize:(struct CGSize)arg1 scale:(double)arg2;
-- (id)imagesForScale:(double)arg1;
-- (id)initWithImages:(id)arg1;
-- (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

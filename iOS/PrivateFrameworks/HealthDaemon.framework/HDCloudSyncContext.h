@@ -8,7 +8,7 @@
 
 #import <HealthDaemon/NSCopying-Protocol.h>
 
-@class HDPeriodicActivity, NSString, NSUUID;
+@class HDPeriodicActivity, NSDate, NSString, NSUUID;
 
 @interface HDCloudSyncContext : NSObject <NSCopying>
 {
@@ -18,9 +18,11 @@
     unsigned long long _options;
     long long _reason;
     HDPeriodicActivity *_periodicActivity;
+    NSDate *_unitTest_syncDateOverride;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSDate *unitTest_syncDateOverride; // @synthesize unitTest_syncDateOverride=_unitTest_syncDateOverride;
 @property(readonly, nonatomic) HDPeriodicActivity *periodicActivity; // @synthesize periodicActivity=_periodicActivity;
 @property(readonly, nonatomic) long long reason; // @synthesize reason=_reason;
 @property(readonly, nonatomic) unsigned long long options; // @synthesize options=_options;

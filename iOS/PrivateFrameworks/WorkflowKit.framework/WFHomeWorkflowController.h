@@ -21,7 +21,7 @@
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property(readonly, nonatomic) WFHomeWorkflow *workflow; // @synthesize workflow=_workflow;
 @property(readonly, nonatomic) WFOutOfProcessWorkflowController *workflowController; // @synthesize workflowController=_workflowController;
-- (void)outOfProcessWorkflowController:(id)arg1 didFinishWithError:(id)arg2 cancelled:(_Bool)arg3 reference:(id)arg4 dialogAttribution:(id)arg5;
+- (void)outOfProcessWorkflowController:(id)arg1 didFinishWithResult:(id)arg2 reference:(id)arg3 dialogAttributions:(id)arg4;
 @property(readonly, nonatomic, getter=isRunning) _Bool running;
 - (void)cancel;
 - (void)startWithCompletionHandler:(CDUnknownBlockType)arg1;

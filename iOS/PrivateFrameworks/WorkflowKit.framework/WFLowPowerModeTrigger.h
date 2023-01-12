@@ -10,7 +10,15 @@
     _Bool _onDisable;
 }
 
++ (id)yellowBatteryHierarchicalColors;
 + (_Bool)supportsSecureCoding;
++ (id)offLabel;
++ (id)onLabel;
++ (id)offIcon;
++ (id)onIcon;
++ (long long)triggerBacking;
++ (id)displayGlyphHierarchicalColors;
++ (id)displayGlyphName;
 + (id)localizedDisplayExplanation;
 + (id)localizedDisplayName;
 + (_Bool)isSupportedOnThisDevice;

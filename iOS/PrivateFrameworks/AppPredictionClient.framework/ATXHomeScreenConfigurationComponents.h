@@ -20,6 +20,7 @@
 @property(readonly, nonatomic) NSArray *stacks; // @synthesize stacks=_stacks;
 @property(readonly, nonatomic) NSArray *stackedWidgets; // @synthesize stackedWidgets=_stackedWidgets;
 @property(readonly, nonatomic) NSArray *pinnedWidgets; // @synthesize pinnedWidgets=_pinnedWidgets;
+- (_Bool)containsWidgetWithBundleId:(id)arg1 kind:(id)arg2 size:(unsigned long long)arg3;
 - (id)stackForStackedWidget:(id)arg1;
 - (id)initWithConfigurations:(id)arg1;
 - (id)init;

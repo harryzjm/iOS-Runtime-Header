@@ -6,30 +6,20 @@
 
 #import <Home/HFItem.h>
 
-#import <HomeUI/HFHomeKitItemProtocol-Protocol.h>
+@class NSSet;
 
-@class HMSoftwareUpdate, NSString;
-@protocol HFHomeKitObject;
-
-@interface HUSoftwareUpdateInfoItem : HFItem <HFHomeKitItemProtocol>
+@interface HUSoftwareUpdateInfoItem : HFItem
 {
-    HMSoftwareUpdate *_softwareUpdate;
-    NSString *_publisher;
+    NSSet *_accessories;
 }
 
++ (id)_iconDescriptorForAccessories:(id)arg1;
++ (id)_dateFormatter;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSString *publisher; // @synthesize publisher=_publisher;
-@property(readonly, nonatomic) HMSoftwareUpdate *softwareUpdate; // @synthesize softwareUpdate=_softwareUpdate;
+@property(readonly, nonatomic) NSSet *accessories; // @synthesize accessories=_accessories;
 - (id)_subclass_updateWithOptions:(id)arg1;
-@property(readonly, nonatomic) id <HFHomeKitObject> homeKitObject;
-- (id)initWithSoftwareUpdate:(id)arg1 publisher:(id)arg2;
+- (id)initWithAccessories:(id)arg1;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

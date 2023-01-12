@@ -20,6 +20,7 @@
     _Bool _usesAnonymousConnection;
 }
 
++ (_Bool)_registersWithNotifyd;
 @property(nonatomic, getter=usesAnonymousConnection) _Bool usesAnonymousConnection; // @synthesize usesAnonymousConnection=_usesAnonymousConnection;
 - (id)_copyEndpoint;
 - (id)_clients;

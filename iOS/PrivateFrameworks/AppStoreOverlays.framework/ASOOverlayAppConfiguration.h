@@ -23,6 +23,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)additionalValueForKey:(id)arg1;
 - (void)setAdditionalValue:(id)arg1 forKey:(id)arg2;
+@property(copy, nonatomic) NSString *productVariantID;
+@property(retain, nonatomic) NSString *latestReleaseID;
 @property(nonatomic) _Bool userDismissable;
 @property(nonatomic) _Bool userDismissible;
 @property(nonatomic) long long position;

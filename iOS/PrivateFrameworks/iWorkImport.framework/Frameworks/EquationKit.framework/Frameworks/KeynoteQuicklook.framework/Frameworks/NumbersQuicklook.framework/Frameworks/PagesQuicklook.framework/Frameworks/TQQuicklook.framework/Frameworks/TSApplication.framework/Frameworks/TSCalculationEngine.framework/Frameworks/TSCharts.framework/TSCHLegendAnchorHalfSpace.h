@@ -8,11 +8,11 @@
 
 @interface TSCHLegendAnchorHalfSpace : NSObject
 {
-    struct TSCHLegendAnchorLine mLine;
+    struct TSCHLegendAnchorLine _line;
 }
 
 + (id)halfSpaceWithLine:(struct TSCHLegendAnchorLine)arg1;
-@property(readonly, nonatomic) struct TSCHLegendAnchorLine line; // @synthesize line=mLine;
+@property(readonly, nonatomic) struct TSCHLegendAnchorLine line; // @synthesize line=_line;
 - (id)description;
 - (id)initWithLine:(struct TSCHLegendAnchorLine)arg1;
 

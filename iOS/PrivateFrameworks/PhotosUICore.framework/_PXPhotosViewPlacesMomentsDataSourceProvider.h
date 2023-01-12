@@ -8,18 +8,19 @@
 
 #import <PhotosUICore/PXPhotosDataSourceProvider-Protocol.h>
 
-@class NSString;
+@class NSString, PHPhotoLibrary;
 @protocol NSFastEnumeration;
 
 @interface _PXPhotosViewPlacesMomentsDataSourceProvider : NSObject <PXPhotosDataSourceProvider>
 {
     id <NSFastEnumeration> _assets;
+    PHPhotoLibrary *_photoLibrary;
 }
 
 - (void).cxx_destruct;
 - (id)loadInitialPhotosDataSourceForDataSourceManager:(id)arg1;
 - (id)createInitialPhotosDataSourceForDataSourceManager:(id)arg1;
-- (id)initWithAllowedAssets:(id)arg1;
+- (id)initWithAllowedAssets:(id)arg1 photoLibrary:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -8,7 +8,7 @@
 
 #import <HealthUI/HKInteractiveChartAnnotationViewDataSource-Protocol.h>
 
-@class HKActivitySummary, HKDisplayTypeController, HKUnitPreferenceController, NSString, _HKWheelchairUseCharacteristicCache;
+@class HKActivityRingView, HKActivitySummary, HKDateCache, HKDisplayTypeController, HKUnitPreferenceController, NSString, UIView, _HKWheelchairUseCharacteristicCache;
 
 @interface HKActivitySummaryAnnotationViewDataSource : NSObject <HKInteractiveChartAnnotationViewDataSource>
 {
@@ -18,10 +18,18 @@
     HKDisplayTypeController *_displayTypeController;
     HKUnitPreferenceController *_unitController;
     _HKWheelchairUseCharacteristicCache *_wheelchairUseCharacteristicCache;
+    HKDateCache *_dateCache;
+    UIView *_ringContainer;
+    HKActivityRingView *_ringView;
+    long long _firstWeekday;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) long long firstWeekday; // @synthesize firstWeekday=_firstWeekday;
+@property(retain, nonatomic) HKActivityRingView *ringView; // @synthesize ringView=_ringView;
+@property(retain, nonatomic) UIView *ringContainer; // @synthesize ringContainer=_ringContainer;
 @property(nonatomic) _Bool currentValueViewContext; // @synthesize currentValueViewContext=_currentValueViewContext;
+@property(retain, nonatomic) HKDateCache *dateCache; // @synthesize dateCache=_dateCache;
 @property(retain, nonatomic) _HKWheelchairUseCharacteristicCache *wheelchairUseCharacteristicCache; // @synthesize wheelchairUseCharacteristicCache=_wheelchairUseCharacteristicCache;
 @property(retain, nonatomic) HKUnitPreferenceController *unitController; // @synthesize unitController=_unitController;
 @property(retain, nonatomic) HKDisplayTypeController *displayTypeController; // @synthesize displayTypeController=_displayTypeController;
@@ -31,6 +39,8 @@
 - (id)descriptionsForActivitySummary;
 - (id)_bodyColor;
 - (id)_columnViewWithTitle:(id)arg1 titleColor:(id)arg2 body:(id)arg3 bodyColor:(id)arg4 alignment:(long long)arg5;
+- (id)_weekContainingDateComponents:(id)arg1 calendar:(id)arg2 timeScope:(long long)arg3;
+- (id)_dateTextForDateComponents:(id)arg1 calendar:(id)arg2 timeScope:(long long)arg3;
 - (id)_dateColumnWithDateComponents:(id)arg1 calendar:(id)arg2 orientation:(long long)arg3;
 - (id)_ringColumn;
 - (id)_valueUnitAttributedStringWithValueString:(id)arg1 unitString:(id)arg2;
@@ -59,7 +69,7 @@
 - (long long)numberOfValuesForAnnotationView:(id)arg1;
 - (id)leftMarginViewWithOrientation:(long long)arg1;
 - (id)dateViewWithOrientation:(long long)arg1;
-- (id)initWithDisplayTypeController:(id)arg1 unitController:(id)arg2 wheelchairUseCharacteristicCache:(id)arg3 currentValueViewContext:(_Bool)arg4;
+- (id)initWithDisplayTypeController:(id)arg1 unitController:(id)arg2 wheelchairUseCharacteristicCache:(id)arg3 dateCache:(id)arg4 currentValueViewContext:(_Bool)arg5 firstWeekday:(long long)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

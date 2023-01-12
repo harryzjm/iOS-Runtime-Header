@@ -6,17 +6,26 @@
 
 #import <UIKit/UIView.h>
 
+@class SFBannerTheme, _SFOverlayProvider;
+
 @interface _SFPinnableBanner : UIView
 {
     _Bool _pinnedToTop;
     _Bool _initiallyBehindNavigationBar;
+    SFBannerTheme *_theme;
+    _SFOverlayProvider *_overlayProvider;
 }
 
 + (double)pinAnimationDelay;
 + (double)unpinAnimationDelay;
 + (double)unpinAnimationDuration;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _SFOverlayProvider *overlayProvider; // @synthesize overlayProvider=_overlayProvider;
+@property(retain, nonatomic) SFBannerTheme *theme; // @synthesize theme=_theme;
 @property(nonatomic, getter=isInitiallyBehindNavigationBar) _Bool initiallyBehindNavigationBar; // @synthesize initiallyBehindNavigationBar=_initiallyBehindNavigationBar;
 @property(nonatomic, getter=isPinnedToTop) _Bool pinnedToTop; // @synthesize pinnedToTop=_pinnedToTop;
+- (void)themeDidChange;
+- (void)setTheme:(id)arg1 animated:(_Bool)arg2;
 - (void)invalidateBannerLayout;
 - (void)contentSizeCategoryDidChange;
 

@@ -9,15 +9,14 @@
 #import <CloudKitDaemon/CKDPCSTestOverrideProvider-Protocol.h>
 #import <CloudKitDaemon/CKDProtocolTranslatorIdentityDelegate-Protocol.h>
 
-@class CKContainerID, CKDAccount, CKDPCSIdentityManager, NSData, NSDate, NSMutableDictionary, NSMutableSet, NSString;
+@class CKContainerID, CKDAccount, CKDLogicalDeviceContext, CKDPCSIdentityManager, NSData, NSDate, NSMutableDictionary, NSMutableSet, NSString;
 @protocol CKDContainerScopedUserIDProvider, OS_dispatch_queue, OS_dispatch_source;
 
-__attribute__((visibility("hidden")))
 @interface CKDPCSManager : NSObject <CKDPCSTestOverrideProvider, CKDProtocolTranslatorIdentityDelegate>
 {
-    _Bool _isSiloed;
     _Bool _forceEnableReadOnlyManatee;
     _Bool _useZoneWidePCS;
+    CKDLogicalDeviceContext *_deviceContext;
     CKDAccount *_account;
     id <CKDContainerScopedUserIDProvider> _containerScopedUserIDProvider;
     CKContainerID *_containerID;
@@ -56,10 +55,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned long long mmcsEncryptionSupport; // @synthesize mmcsEncryptionSupport=_mmcsEncryptionSupport;
 @property(readonly, nonatomic) _Bool forceEnableReadOnlyManatee; // @synthesize forceEnableReadOnlyManatee=_forceEnableReadOnlyManatee;
 @property(readonly, nonatomic) NSString *responsibleBundleID; // @synthesize responsibleBundleID=_responsibleBundleID;
-@property(readonly, nonatomic) _Bool isSiloed; // @synthesize isSiloed=_isSiloed;
 @property(readonly, nonatomic) CKContainerID *containerID; // @synthesize containerID=_containerID;
 @property(readonly, nonatomic) __weak id <CKDContainerScopedUserIDProvider> containerScopedUserIDProvider; // @synthesize containerScopedUserIDProvider=_containerScopedUserIDProvider;
 @property(retain) CKDAccount *account; // @synthesize account=_account;
+@property(readonly, nonatomic) CKDLogicalDeviceContext *deviceContext; // @synthesize deviceContext=_deviceContext;
 - (id)_pcsTestOverrideForKey:(id)arg1;
 - (_Bool)_checkPCSTestOverrideForKey:(id)arg1;
 - (_Bool)_checkAndClearPCSTestOverrideForKey:(id)arg1;
@@ -93,7 +92,7 @@ __attribute__((visibility("hidden")))
 - (id)removePublicIdentity:(struct _PCSPublicIdentityData *)arg1 fromSharePCS:(struct _OpaquePCSShareProtection *)arg2;
 - (id)addSharingIdentity:(struct _PCSIdentityData *)arg1 toSharePCS:(struct _OpaquePCSShareProtection *)arg2 permission:(unsigned long long)arg3;
 - (id)addIdentityBackToPCS:(struct _OpaquePCSShareProtection *)arg1;
-- (id)addPublicIdentity:(struct _PCSPublicIdentityData *)arg1 toSharePCS:(struct _OpaquePCSShareProtection *)arg2 permission:(unsigned long long)arg3;
+- (id)addPublicIdentity:(struct _PCSPublicIdentityData *)arg1 toSharePCS:(struct _OpaquePCSShareProtection *)arg2 permission:(unsigned int)arg3;
 - (id)etagFromSharePCS:(struct _OpaquePCSShareProtection *)arg1 error:(id *)arg2;
 - (id)createNewSharePCSDataForShareWithID:(id)arg1 withPublicSharingKey:(id)arg2 addDebugIdentity:(_Bool)arg3 error:(id *)arg4;
 - (struct _PCSPublicIdentityData *)copyPublicAuthorshipIdentityFromPCS:(struct _OpaquePCSShareProtection *)arg1;
@@ -115,7 +114,7 @@ __attribute__((visibility("hidden")))
 - (struct _OpaquePCSShareProtection *)createChainPCSWithError:(id *)arg1;
 - (struct _OpaquePCSShareProtection *)createSharePublicPCSWithIdentity:(struct _PCSIdentityData *)arg1 error:(id *)arg2;
 - (struct _OpaquePCSShareProtection *)createSharePCSOfType:(unsigned long long)arg1 forPCSServiceType:(unsigned long long)arg2 error:(id *)arg3;
-- (struct _OpaquePCSShareProtection *)_addPublicIdentityForService:(unsigned long long)arg1 toSharePCS:(struct _OpaquePCSShareProtection *)arg2 withError:(id *)arg3;
+- (_Bool)_addPublicIdentityForService:(unsigned long long)arg1 toSharePCS:(struct _OpaquePCSShareProtection *)arg2 withError:(id *)arg3;
 - (void)setOwnerIdentity:(struct _PCSPublicIdentityData *)arg1 onPCS:(struct _OpaquePCSShareProtection *)arg2;
 - (struct _OpaquePCSShareProtection *)createEmptySharePCSOfType:(unsigned long long)arg1 error:(id *)arg2;
 - (struct _OpaquePCSShareProtection *)createEmptySignedSharePCSOfType:(unsigned long long)arg1 forPCSServiceType:(unsigned long long)arg2 withError:(id *)arg3;
@@ -138,12 +137,12 @@ __attribute__((visibility("hidden")))
 - (id)removePrivateKeysForKeyIDs:(id)arg1 fromPCS:(struct _OpaquePCSShareProtection *)arg2;
 - (void)markUndecryptablePCS:(id)arg1;
 - (_Bool)isPreviouslyUndecryptablePCS:(id)arg1;
-- (id)updateZoneIdentityForPCS:(struct _OpaquePCSShareProtection *)arg1 usingZonePCS:(struct _OpaquePCSShareProtection *)arg2 bypassWhitelistedContainers:(_Bool)arg3;
-- (id)rollMasterKeyForRecordPCS:(struct _OpaquePCSShareProtection *)arg1 bypassWhitelistedContainers:(_Bool)arg2;
+- (id)updateZoneIdentityForPCS:(struct _OpaquePCSShareProtection *)arg1 usingZonePCS:(struct _OpaquePCSShareProtection *)arg2 bypassAllowlistedContainers:(_Bool)arg3;
+- (id)rollMasterKeyForRecordPCS:(struct _OpaquePCSShareProtection *)arg1 bypassAllowlistedContainers:(_Bool)arg2;
 - (id)rollMasterKeyForRecordPCS:(struct _OpaquePCSShareProtection *)arg1;
 - (id)updateServiceIdentityOnZonePCS:(struct _OpaquePCSShareProtection *)arg1;
 - (_Bool)zonePCSNeedsUpdate:(struct _OpaquePCSShareProtection *)arg1;
-- (_Bool)zonePCSNeedsKeyRolled:(struct _OpaquePCSShareProtection *)arg1 bypassWhitelistedContainers:(_Bool)arg2;
+- (_Bool)zonePCSNeedsKeyRolled:(struct _OpaquePCSShareProtection *)arg1 bypassAllowlistedContainers:(_Bool)arg2;
 - (_Bool)zonePCSNeedsKeyRolled:(struct _OpaquePCSShareProtection *)arg1;
 - (id)repairZonePCSData:(id)arg1 error:(id *)arg2;
 - (id)etagFromZonePCS:(struct _OpaquePCSShareProtection *)arg1 error:(id *)arg2;
@@ -154,9 +153,15 @@ __attribute__((visibility("hidden")))
 - (_Bool)availableIdentityForService:(unsigned long long)arg1 error:(id *)arg2;
 - (void)createIngestedPPPCSDataFromInvitationData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)createZonePCSFromData:(id)arg1 usingServiceIdentityWithType:(unsigned long long)arg2 zonePCSModificationDate:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)_createPCSFromData:(id)arg1 ofType:(unsigned long long)arg2 usingPCSServiceType:(unsigned long long)arg3 withSyncKeyRegistryRetry:(_Bool)arg4 zonePCSModificationDate:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)_createPCSFromData:(id)arg1 ofType:(unsigned long long)arg2 usingPCSServiceType:(unsigned long long)arg3 tryDecryptingWithOtherServices:(_Bool)arg4 withSyncKeyRegistryRetry:(_Bool)arg5 zonePCSModificationDate:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (_Bool)_checkUnitTestOverridesForDecryptionFailuresWithState:(_Bool)arg1 shouldRetry:(_Bool *)arg2 error:(id *)arg3;
-- (void)_locked_createPCSFromData:(id)arg1 ofType:(unsigned long long)arg2 usingPCSServiceType:(unsigned long long)arg3 withSyncKeyRegistryRetry:(_Bool)arg4 zonePCSModificationDate:(id)arg5 keySyncAnalytics:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
+- (void)_locked_createPCSFromData:(id)arg1 ofType:(unsigned long long)arg2 usingPCSServiceType:(unsigned long long)arg3 tryDecryptingWithOtherServices:(_Bool)arg4 withSyncKeyRegistryRetry:(_Bool)arg5 zonePCSModificationDate:(id)arg6 keySyncAnalytics:(id)arg7 completionHandler:(CDUnknownBlockType)arg8;
+- (id)createSignatureWithIdentity:(struct _PCSIdentityData *)arg1 dataToBeSigned:(id)arg2 error:(id *)arg3;
+- (id)generateAnonymousCKUserIDForCurrentUserInShare:(id)arg1 containerID:(id)arg2 acceptA2AShareUsingVersionOneAnonymousIdentifier:(_Bool)arg3;
+- (id)generateOctopusAnonymousUserID;
+- (id)getCurrentIdentityExportedPrivateKey;
+- (_Bool)findSelfParticipantOnShareMetadata:(id)arg1 invitationToken:(id)arg2;
+- (id)getAllPublicKeysForExportedData:(id)arg1 error:(id *)arg2;
 - (id)dataFromZonePCS:(struct _OpaquePCSShareProtection *)arg1 error:(id *)arg2;
 - (struct _OpaquePCSShareProtection *)createZonePCSWithError:(id *)arg1;
 - (void)createZonePCSWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -183,9 +188,9 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)publicKeyVersionForServiceType:(unsigned long long)arg1;
 - (struct _PCSIdentityData *)debugSharingIdentity;
 - (id)_pcsObjectKindForCKDPCSBlobType:(unsigned long long)arg1;
-- (_Bool)_isWhitelistedKeyRollingContainerID:(id)arg1;
+- (_Bool)_isAllowlistedKeyRollingContainerID:(id)arg1;
 - (void)dealloc;
-- (id)initWithAccount:(id)arg1 containerScopedUserIDProvider:(id)arg2 serviceName:(id)arg3 appContainerTuple:(id)arg4;
+- (id)initWithContainer:(id)arg1;
 - (void)updateAccount:(id)arg1 clearPCSCacheHandler:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) unsigned long long serviceTypeForSharing;
 

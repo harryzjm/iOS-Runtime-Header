@@ -12,6 +12,7 @@
 }
 
 + (id)videoCompositionInstruction;
+@property(copy, nonatomic) NSArray *requiredSourceSampleDataTrackIDs;
 @property(nonatomic) _Bool enablePostProcessing;
 @property(copy, nonatomic) NSArray *layerInstructions;
 @property(retain, nonatomic) struct CGColor *backgroundColor;

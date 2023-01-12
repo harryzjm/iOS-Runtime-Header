@@ -38,7 +38,7 @@
 @property(retain) HMSoftwareUpdate *availableUpdate; // @synthesize availableUpdate=_availableUpdate;
 @property(readonly, getter=isControllable) _Bool controllable;
 @property __weak HMAccessory *accessory; // @synthesize accessory=_accessory;
-- (void)configureWithContext:(id)arg1;
+- (void)configureWithContext:(id)arg1 accessory:(id)arg2;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (id)initWithAccessory:(id)arg1;

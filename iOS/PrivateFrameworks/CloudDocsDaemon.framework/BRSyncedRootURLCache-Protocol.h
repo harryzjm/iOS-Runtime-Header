@@ -6,9 +6,10 @@
 
 #import <CloudDocsDaemon/NSObject-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSString;
 
 @protocol BRSyncedRootURLCache <NSObject>
 @property(readonly, nonatomic) NSArray *syncedRootURLs;
+- (id)initWithPersona:(NSString *)arg1;
 @end
 

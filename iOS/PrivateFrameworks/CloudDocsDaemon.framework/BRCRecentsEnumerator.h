@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
 
 + (void)dropRecentsForSession:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)dropLegacyCoreSpotlightIndexIfNeededWithCompletionHandler:(CDUnknownBlockType)arg1;
-+ (id)fileProviderManager;
 - (void).cxx_destruct;
 - (void)dealloc;
 @property(readonly, nonatomic) _Bool isCancelled;

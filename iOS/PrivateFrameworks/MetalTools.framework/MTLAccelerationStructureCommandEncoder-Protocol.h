@@ -18,6 +18,7 @@
 - (void)waitForFence:(id <MTLFence>)arg1;
 - (void)updateFence:(id <MTLFence>)arg1;
 - (void)copyAndCompactAccelerationStructure:(id <MTLAccelerationStructure>)arg1 toAccelerationStructure:(id <MTLAccelerationStructure>)arg2;
+- (void)writeCompactedAccelerationStructureSize:(id <MTLAccelerationStructure>)arg1 toBuffer:(id <MTLBuffer>)arg2 offset:(unsigned long long)arg3 sizeDataType:(unsigned long long)arg4;
 - (void)writeCompactedAccelerationStructureSize:(id <MTLAccelerationStructure>)arg1 toBuffer:(id <MTLBuffer>)arg2 offset:(unsigned long long)arg3;
 - (void)copyAccelerationStructure:(id <MTLAccelerationStructure>)arg1 toAccelerationStructure:(id <MTLAccelerationStructure>)arg2;
 - (void)refitAccelerationStructure:(id <MTLAccelerationStructure>)arg1 descriptor:(MTLAccelerationStructureDescriptor *)arg2 destination:(id <MTLAccelerationStructure>)arg3 scratchBuffer:(id <MTLBuffer>)arg4 scratchBufferOffset:(unsigned long long)arg5;

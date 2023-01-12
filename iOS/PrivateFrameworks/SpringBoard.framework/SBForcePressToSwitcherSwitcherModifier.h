@@ -27,7 +27,7 @@
 - (_Bool)isContentStatusBarVisibleForIndex:(unsigned long long)arg1;
 - (double)containerStatusBarAnimationDuration;
 - (_Bool)isContainerStatusBarVisible;
-- (double)opacityForIndex:(unsigned long long)arg1;
+- (double)opacityForLayoutRole:(long long)arg1 inAppLayout:(id)arg2 atIndex:(unsigned long long)arg3;
 - (id)_layoutSettings;
 - (id)animationAttributesForLayoutElement:(id)arg1;
 - (id)visibleAppLayouts;

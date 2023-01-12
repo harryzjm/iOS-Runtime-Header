@@ -6,8 +6,14 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC7VFXCore25PointCacheGeneratorSystem : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *loadPointCache;
+    MISSING_TYPE *updatePointCache;
+    MISSING_TYPE *uploadPointCacheToGPU;
+    MISSING_TYPE *uploadREMeshPointCacheToGPU;
 }
 
 @end

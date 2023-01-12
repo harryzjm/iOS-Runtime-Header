@@ -18,6 +18,7 @@
 - (void).cxx_destruct;
 - (void)setIsRestrictionList:(_Bool)arg1;
 - (_Bool)isRestrictionList;
+- (id)identifierForValue:(id)arg1;
 - (id)specifiers;
 - (id)itemsFromDataSource;
 - (id)itemsFromParent;

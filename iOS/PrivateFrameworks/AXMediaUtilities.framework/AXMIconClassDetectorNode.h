@@ -4,17 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class iconclassification__generated__;
+@class NSString, iconclassification;
 
 @interface AXMIconClassDetectorNode
 {
+    _Bool _writeDebugImage;
+    NSString *_loggingName;
 }
 
 + (id)title;
 + (_Bool)isSupported;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *loggingName; // @synthesize loggingName=_loggingName;
+@property(nonatomic) _Bool writeDebugImage; // @synthesize writeDebugImage=_writeDebugImage;
 - (id)_localizedClassForClass:(id)arg1;
 - (void)evaluate:(id)arg1 metrics:(id)arg2;
+- (id)classLabelForIdx:(unsigned long long)arg1;
 - (unsigned long long)maxSupportedFormatVersion;
 - (unsigned long long)minSupportedFormatVersion;
 - (id)modelResourceNames;
@@ -22,7 +28,7 @@
 - (id)mlModelClasses;
 
 // Remaining properties
-@property(readonly, nonatomic) iconclassification__generated__ *mlModel; // @dynamic mlModel;
+@property(readonly, nonatomic) iconclassification *mlModel; // @dynamic mlModel;
 
 @end
 

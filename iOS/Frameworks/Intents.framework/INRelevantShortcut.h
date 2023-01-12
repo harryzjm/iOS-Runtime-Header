@@ -17,6 +17,7 @@
 {
     NSArray *_relevanceProviders;
     INDefaultCardTemplate *_watchTemplate;
+    NSString *_widgetKind;
     long long _shortcutRole;
     INShortcut *_shortcut;
 }
@@ -25,11 +26,13 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) INShortcut *shortcut; // @synthesize shortcut=_shortcut;
 @property(nonatomic) long long shortcutRole; // @synthesize shortcutRole=_shortcutRole;
+@property(copy, nonatomic) NSString *widgetKind; // @synthesize widgetKind=_widgetKind;
 @property(copy, nonatomic) INDefaultCardTemplate *watchTemplate; // @synthesize watchTemplate=_watchTemplate;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(copy, nonatomic) NSArray *relevanceProviders; // @synthesize relevanceProviders=_relevanceProviders;
 - (id)initWithShortcut:(id)arg1;
+- (id)init;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (long long)_compareSubProducerOne:(id)arg1 subProducerTwo:(id)arg2;
 @property(readonly) INImage *_keyImage;

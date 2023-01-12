@@ -9,22 +9,26 @@
 #import <HomeUI/NSCopying-Protocol.h>
 
 @class HFItem, HMHome, HUQuickControlPresentationItemManager, NSSet, UIViewController;
-@protocol NSCopying;
+@protocol HUDetailsPresentationDelegateHost, NSCopying;
 
 @interface HUQuickControlPresentationContext : NSObject <NSCopying>
 {
     _Bool _didAuthenticate;
     _Bool _prefersSystemTransitions;
+    _Bool _shouldIncludeRoomNameInHeaderTitle;
     unsigned long long _colorStyle;
     HFItem<NSCopying> *_item;
     NSSet *_controlItems;
     HUQuickControlPresentationItemManager *_itemManager;
     HMHome *_home;
     UIViewController *_sourceViewController;
+    UIViewController<HUDetailsPresentationDelegateHost> *_detailsViewController;
     struct CGRect _sourceRect;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIViewController<HUDetailsPresentationDelegateHost> *detailsViewController; // @synthesize detailsViewController=_detailsViewController;
+@property(nonatomic) _Bool shouldIncludeRoomNameInHeaderTitle; // @synthesize shouldIncludeRoomNameInHeaderTitle=_shouldIncludeRoomNameInHeaderTitle;
 @property(nonatomic) _Bool prefersSystemTransitions; // @synthesize prefersSystemTransitions=_prefersSystemTransitions;
 @property(nonatomic) _Bool didAuthenticate; // @synthesize didAuthenticate=_didAuthenticate;
 @property(nonatomic) __weak UIViewController *sourceViewController; // @synthesize sourceViewController=_sourceViewController;

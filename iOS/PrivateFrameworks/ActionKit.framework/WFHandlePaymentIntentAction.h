@@ -14,6 +14,7 @@
 }
 
 - (void).cxx_destruct;
+- (id)iconImage;
 - (id)icon;
 - (id)errorFromHandleResponse:(id)arg1 intent:(id)arg2;
 - (id)errorFromConfirmResponse:(id)arg1 intent:(id)arg2;
@@ -26,8 +27,9 @@
 - (id)credentialsUnverifiedError;
 - (id)noRecipientAccountError:(_Bool)arg1;
 - (id)localizedKeyParameterDisplayName;
-- (id)localizedPaymentServiceName;
-- (id)localizedDisplayableAppNameForBundleIdentifier:(id)arg1;
+- (id)customImageForBundleIdentifier:(id)arg1;
+- (id)customAppNameForBundleIdentifier:(id)arg1;
+- (_Bool)selectedPaymentServiceIsApplePay;
 - (id)errorFromResolutionResult:(id)arg1 forSlot:(id)arg2 onIntent:(id)arg3;
 - (void)resolveSlot:(id)arg1 withProcessedValue:(id)arg2 parameter:(id)arg3 input:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)minimumSupportedClientVersion;

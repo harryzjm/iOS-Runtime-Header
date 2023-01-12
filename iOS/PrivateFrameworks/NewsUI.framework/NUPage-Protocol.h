@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <NewsUI/NUAdContextProvider-Protocol.h>
 #import <NewsUI/NUPageNextActionable-Protocol.h>
 #import <NewsUI/NUPageStyling-Protocol.h>
 
 @class NSString, UIViewController;
 @protocol NUPageable;
 
-@protocol NUPage <NUPageStyling, NUPageNextActionable, NUAdContextProvider>
+@protocol NUPage <NUPageStyling, NUPageNextActionable>
 @property(readonly, nonatomic) _Bool allowNeighboringAdvertising;
 @property(readonly, copy, nonatomic) NSString *identifier;
 - (void)activityProvider:(void (^)(id <NUActivityProvider>))arg1;

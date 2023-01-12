@@ -9,7 +9,7 @@
 #import <TrackingAvoidance/TATrackingAvoidanceServiceObserver-Protocol.h>
 #import <TrackingAvoidance/TATrackingAvoidanceServiceProtocol-Protocol.h>
 
-@class NSHashTable, NSString, NSUUID, TAAnalyticsManager, TAPersistenceManager, TASettings, TATrackingAvoidanceService, TATrackingAvoidanceServiceStateContext;
+@class NSHashTable, NSString, NSUUID, RTRoutineManager, TAAnalyticsManager, TAPersistenceManager, TASettings, TATrackingAvoidanceService, TATrackingAvoidanceServiceStateContext;
 @protocol OS_dispatch_queue;
 
 @interface TATrackingAvoidanceServiceManager : NSObject <TATrackingAvoidanceServiceObserver, TATrackingAvoidanceServiceProtocol>
@@ -25,10 +25,12 @@
     unsigned long long _persistenceManagerLastSaveTime;
     NSUUID *_sessionID;
     TAAnalyticsManager *_analyticsManager;
+    RTRoutineManager *_routineManager;
 }
 
 + (id)managerStateToString:(unsigned long long)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) RTRoutineManager *routineManager; // @synthesize routineManager=_routineManager;
 @property(retain, nonatomic) TAAnalyticsManager *analyticsManager; // @synthesize analyticsManager=_analyticsManager;
 @property(retain, nonatomic) NSUUID *sessionID; // @synthesize sessionID=_sessionID;
 @property(nonatomic) unsigned long long persistenceManagerLastSaveTime; // @synthesize persistenceManagerLastSaveTime=_persistenceManagerLastSaveTime;
@@ -57,6 +59,7 @@
 - (void)notifyObserversOfStateChangeFrom:(unsigned long long)arg1 to:(unsigned long long)arg2;
 - (void)_unregisterForAvengerScanner;
 - (void)_registerForAvengerScanner;
+- (void)_fetchAndIngestLastVisit;
 - (void)_unregisterForTATrackingAvoidanceService;
 - (void)_registerForTATrackingAvoidanceServiceWithSettings:(id)arg1;
 - (void)_changeSession;
@@ -65,6 +68,8 @@
 - (_Bool)_shouldTerminateService;
 - (_Bool)_shouldSuspendAvengerScanner;
 - (void)onUpdatedSettings:(id)arg1;
+- (void)_onUserLocationInsideKorea:(_Bool)arg1;
+- (void)_onHasKoreaCountryCode:(_Bool)arg1;
 - (void)_onLocationAndPrivacyReset:(_Bool)arg1;
 - (void)_onDeviceUnlockedSinceBoot:(_Bool)arg1;
 - (void)_onAllowSimulatedEvents:(_Bool)arg1;

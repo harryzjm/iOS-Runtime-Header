@@ -9,6 +9,9 @@
 @class ACAccount, NSString;
 
 @protocol EDAccount <ECMailAccount>
+@property(readonly, copy, nonatomic) NSString *username;
+@property(copy, nonatomic) NSString *displayName;
+@property(readonly, nonatomic) _Bool isActive;
 @property(readonly, nonatomic) _Bool primaryiCloudAccount;
 @property(readonly, copy, nonatomic) NSString *statisticsKind;
 @property(readonly, nonatomic) ACAccount *systemAccount;
@@ -16,8 +19,5 @@
 - (void)savePersistentAccount;
 - (_Bool)hasPasswordCredential;
 - (_Bool)canAuthenticateWithCurrentCredentials;
-- (NSString *)username;
-- (NSString *)hostname;
-- (NSString *)displayName;
 @end
 

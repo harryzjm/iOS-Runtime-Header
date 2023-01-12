@@ -24,6 +24,7 @@
 + (long long)gamePlatformFromServerPushString:(id)arg1;
 + (long long)gamePlatformFromServerGameDescriptorString:(id)arg1;
 + (id)gameDescriptorWithBundleID:(id)arg1 bundleVersion:(id)arg2 shortBundleVersion:(id)arg3 adamID:(id)arg4;
+- (void).cxx_destruct;
 @property(nonatomic) long long platform; // @synthesize platform=_platform;
 @property(copy, nonatomic) NSString *shortBundleVersion; // @synthesize shortBundleVersion=_shortBundleVersion;
 @property(retain, nonatomic) NSNumber *externalVersion; // @synthesize externalVersion=_externalVersion;
@@ -32,7 +33,6 @@
 @property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 - (id)description;
 - (id)dictionaryForRequest;
-- (void)dealloc;
 - (id)initWithPushDictionary:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 

@@ -25,6 +25,9 @@
 - (_Bool)shouldCoalesceItems;
 - (_Bool)restrictionEnabled;
 @property(readonly, copy) NSString *description;
+- (id)_expirationOrInformativeText;
+- (id)subtitleText;
+- (id)footerText;
 - (void)addItem:(id)arg1;
 - (id)items;
 - (id)initWithIdentifier:(id)arg1;

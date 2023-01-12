@@ -22,11 +22,11 @@
 - (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)updateWithDictionary:(id)arg1;
 - (id)__INCodableDescriptionKey;
-- (id)__INIntentResponseCodableDescriptionKey;
-- (id)__INTypeCodableDescriptionKey;
 - (id)__INCodableDescriptionDefaultValueKey;
-- (id)__INTypeCodableDescriptionDefaultValueKey;
+- (id)__INIntentResponseCodableDescriptionKey;
 - (id)__INIntentResponseCodableDescriptionDefaultValueKey;
+- (id)__INTypeCodableDescriptionKey;
+- (id)__INTypeCodableDescriptionDefaultValueKey;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

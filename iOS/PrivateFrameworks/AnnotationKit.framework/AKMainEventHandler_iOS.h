@@ -28,7 +28,7 @@
 @property(retain) UITapGestureRecognizer *tapRecognizer; // @synthesize tapRecognizer=_tapRecognizer;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)applyToAllSelectedAnnotationsRotateEvent:(id)arg1 orRecognizer:(id)arg2;
-- (_Bool)interactionShouldBegin:(id)arg1 atPoint:(struct CGPoint)arg2 forGestureRecognizer:(id)arg3;
+- (_Bool)selectionInteractionShouldBegin:(id)arg1 atPoint:(struct CGPoint)arg2 forEvent:(id)arg3 orGestureRecognizer:(id)arg4;
 - (_Bool)_shouldAllowTapAtLocationInWindow:(struct CGPoint)arg1;
 - (_Bool)_doubleTapRecognizerCanBeginAtPoint:(struct CGPoint)arg1;
 - (_Bool)_tapRecognizerCanBeginAtPoint:(struct CGPoint)arg1;

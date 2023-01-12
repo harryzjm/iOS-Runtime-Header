@@ -56,7 +56,7 @@
 - (id)applicationsAvailableForOpeningWithStyle:(unsigned char)arg1 limit:(unsigned long long)arg2 XPCConnection:(id)arg3 error:(id *)arg4;
 - (id)applicationsOrClaimBindings:(_Bool)arg1 availableForOpeningWithStyle:(unsigned char)arg2 handlerRank:(id)arg3 limit:(unsigned long long)arg4 XPCConnection:(id)arg5 error:(id *)arg6;
 - (id)_boundIconInfo;
-- (optional_4acbcc83)_bindingEvaluatorWithAuditToken:(const CDStruct_4c969caf *)arg1;
+- (optional_effd12a0)_bindingEvaluatorWithAuditToken:(const CDStruct_4c969caf *)arg1;
 
 @end
 

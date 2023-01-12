@@ -15,6 +15,7 @@
     HBXUnitSupport *_unitSupport;
 }
 
++ (void)resetSharedInstances;
 + (id)sharedInstanceForHealthStore:(id)arg1;
 + (id)sharedInstance;
 + (id)factories;
@@ -25,7 +26,7 @@
 @property(retain, nonatomic) HKHealthChartFactory *chartFactory; // @synthesize chartFactory=_chartFactory;
 - (id)unitStringForType:(id)arg1;
 - (void)fetchUserDefaultForKey:(id)arg1 withCallback:(CDUnknownBlockType)arg2;
-- (id)localizedUnitDisplayNameForDisplayType:(id)arg1;
+- (id)localizedUnitDisplayNameForDisplayType:(id)arg1 nameContext:(long long)arg2;
 - (void)updatePreferredUnit:(id)arg1 forType:(id)arg2;
 - (id)preferredUnitForType:(id)arg1;
 - (id)localizedPreferredUnitDisplayNameForType:(id)arg1 nameContext:(long long)arg2;
@@ -38,10 +39,8 @@
 - (id)createElectrocardiogramDataMetadataViewControllerWithElectrocardiogram:(id)arg1 dataProvider:(id)arg2;
 - (id)createElectrocardiogramListDataProvider;
 - (id)createUnitPreferencesController:(id)arg1;
-- (id)createDetailViewControllerForType:(id)arg1 displayDate:(id)arg2;
-- (id)createDetailViewControllerForType:(id)arg1;
-- (id)createActivityChartForActivityMoveMode:(long long)arg1 displayDate:(id)arg2;
-- (id)createActivityChart:(id)arg1;
+- (id)createClinicalDocumentOverviewViewController;
+- (id)createActivityChartForActivityMoveMode:(long long)arg1 displayDate:(id)arg2 chartSharableModel:(id)arg3;
 - (id)createInteractiveChartForType:(id)arg1 preferredOverlay:(long long)arg2 displayDateInterval:(id)arg3;
 - (id)createInteractiveChartForType:(id)arg1 preferredOverlay:(long long)arg2 displayDate:(id)arg3;
 - (id)createChartForTypeIdentifier:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 minimumSize:(struct CGSize)arg4 disableXAxis:(_Bool)arg5;

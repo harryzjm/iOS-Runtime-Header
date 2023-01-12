@@ -25,7 +25,7 @@
 - (void)_addSample:(id)arg1 toBuilders:(id)arg2 atDayIndex:(long long)arg3;
 - (void)_closeBuilders:(id)arg1 withIndexes:(id)arg2 handler:(CDUnknownBlockType)arg3 stop:(_Bool *)arg4;
 - (_Bool)enumerateWithError:(id *)arg1 handler:(CDUnknownBlockType)arg2;
-- (id)initWithProfile:(id)arg1 calendarCache:(id)arg2 dayIndexRange:(CDStruct_ef5fcbe6)arg3 ascending:(_Bool)arg4;
+- (id)initWithProfile:(id)arg1 calendarCache:(id)arg2 dayIndexRange:(CDStruct_ef5fcbe6)arg3 ascending:(_Bool)arg4 includeFactors:(_Bool)arg5;
 
 @end
 

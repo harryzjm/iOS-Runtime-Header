@@ -8,7 +8,7 @@
 
 #import <NewsCore/FCM3U8ParserDelegate-Protocol.h>
 
-@class FCHLSPlaylistState, NSArray, NSDictionary, NSMutableSet, NSSet, NSString;
+@class FCHLSPlaylistState, NSArray, NSDictionary, NSMutableSet, NSString;
 
 @interface FCHLSPlaylist : NSObject <FCM3U8ParserDelegate>
 {
@@ -22,29 +22,12 @@
     NSArray *_requestedBitrates;
 }
 
-+ (id)playlistParsingURL:(id)arg1 error:(id *)arg2;
-+ (id)playlistParsingData:(id)arg1 error:(id *)arg2;
-+ (id)_playlistUsingParser:(id)arg1 error:(id *)arg2;
-+ (_Bool)_rewritePlaylistWithParser:(id)arg1 toURL:(id)arg2 requestedBitrates:(id)arg3 error:(id *)arg4;
-+ (_Bool)rewritePlaylistURL:(id)arg1 toURL:(id)arg2 requestedBitrates:(id)arg3 error:(id *)arg4;
-+ (_Bool)rewritePlaylistData:(id)arg1 toURL:(id)arg2 requestedBitrates:(id)arg3 error:(id *)arg4;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSArray *requestedBitrates; // @synthesize requestedBitrates=_requestedBitrates;
-@property(retain, nonatomic) NSMutableSet *uniqueKeys; // @synthesize uniqueKeys=_uniqueKeys;
-@property(retain, nonatomic) FCHLSPlaylistState *state; // @synthesize state=_state;
-@property(retain, nonatomic) NSDictionary *sessionData; // @synthesize sessionData=_sessionData;
-@property(retain, nonatomic) NSArray *segments; // @synthesize segments=_segments;
-@property(nonatomic) _Bool independentSegments; // @synthesize independentSegments=_independentSegments;
-@property(retain, nonatomic) NSArray *streamInfs; // @synthesize streamInfs=_streamInfs;
-@property(retain, nonatomic) NSArray *groups; // @synthesize groups=_groups;
 - (_Bool)parserShouldCollectLine:(id)arg1;
 - (void)parser:(id)arg1 lineIsTag:(id)arg2 value:(id)arg3 attributeList:(id)arg4;
 - (void)parser:(id)arg1 lineIsURL:(id)arg2;
 - (void)parser:(id)arg1 lineIsComment:(id)arg2;
-- (_Bool)_parseUsingParser:(id)arg1 error:(id *)arg2;
-@property(readonly, nonatomic) NSSet *keys;
 @property(readonly, copy) NSString *description;
-- (id)initWithRequestedBitrates:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

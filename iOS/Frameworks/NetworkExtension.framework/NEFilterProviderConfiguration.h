@@ -17,6 +17,7 @@
     _Bool _filterBrowsers;
     _Bool _filterSockets;
     _Bool _filterPackets;
+    _Bool _preserveExistingConnections;
     _Bool _controlProviderInitialized;
     NSDictionary *_vendorConfiguration;
     NSString *_serverAddress;
@@ -39,6 +40,7 @@
 @property(copy) NSString *packetProviderDesignatedRequirement; // @synthesize packetProviderDesignatedRequirement=_packetProviderDesignatedRequirement;
 @property(copy) NSString *dataProviderDesignatedRequirement; // @synthesize dataProviderDesignatedRequirement=_dataProviderDesignatedRequirement;
 @property(copy) NSString *pluginType; // @synthesize pluginType=_pluginType;
+@property _Bool preserveExistingConnections; // @synthesize preserveExistingConnections=_preserveExistingConnections;
 @property(copy) NSString *filterPacketProviderBundleIdentifier; // @synthesize filterPacketProviderBundleIdentifier=_filterPacketProviderBundleIdentifier;
 @property(copy) NSString *filterDataProviderBundleIdentifier; // @synthesize filterDataProviderBundleIdentifier=_filterDataProviderBundleIdentifier;
 @property(copy) NSData *identityReference; // @synthesize identityReference=_identityReference;

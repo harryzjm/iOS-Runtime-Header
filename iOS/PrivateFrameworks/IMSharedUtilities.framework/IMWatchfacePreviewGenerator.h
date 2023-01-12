@@ -11,7 +11,7 @@
 {
 }
 
-+ (id)generateAndPersistPreviewFromSourceURL:(id)arg1 withPreviewConstraints:(struct IMPreviewConstraints)arg2 outSize:(struct CGSize *)arg3 error:(id *)arg4;
++ (id)generateAndPersistPreviewFromSourceURL:(id)arg1 balloonBundleID:(id)arg2 withPreviewConstraints:(struct IMPreviewConstraints)arg3 outSize:(struct CGSize *)arg4 error:(id *)arg5;
 + (_Bool)writesToDisk;
 + (id)UTITypes;
 + (_Bool)_isAvailable;

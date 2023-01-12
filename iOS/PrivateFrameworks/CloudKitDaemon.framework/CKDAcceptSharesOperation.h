@@ -7,7 +7,6 @@
 @class NSMutableArray, NSMutableDictionary;
 @protocol CKAcceptSharesOperationCallbacks;
 
-__attribute__((visibility("hidden")))
 @interface CKDAcceptSharesOperation
 {
     CDUnknownBlockType _acceptCompletionBlock;
@@ -16,9 +15,13 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_acceptedShareURLsToFetch;
     NSMutableDictionary *_shareMetadatasToAcceptByURL;
     unsigned long long _numShareAcceptAttempts;
+    NSMutableDictionary *_anonymousShareTuplesAcceptAttempted;
+    NSMutableArray *_anonymousShareTuplesAccepted;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *anonymousShareTuplesAccepted; // @synthesize anonymousShareTuplesAccepted=_anonymousShareTuplesAccepted;
+@property(retain, nonatomic) NSMutableDictionary *anonymousShareTuplesAcceptAttempted; // @synthesize anonymousShareTuplesAcceptAttempted=_anonymousShareTuplesAcceptAttempted;
 @property(nonatomic) unsigned long long numShareAcceptAttempts; // @synthesize numShareAcceptAttempts=_numShareAcceptAttempts;
 @property(retain, nonatomic) NSMutableDictionary *shareMetadatasToAcceptByURL; // @synthesize shareMetadatasToAcceptByURL=_shareMetadatasToAcceptByURL;
 @property(retain, nonatomic) NSMutableArray *acceptedShareURLsToFetch; // @synthesize acceptedShareURLsToFetch=_acceptedShareURLsToFetch;
@@ -27,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType acceptCompletionBlock; // @synthesize acceptCompletionBlock=_acceptCompletionBlock;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)main;
+- (void)_processAnonymousShares;
 - (void)_fetchMetadataForShares;
 - (void)_prepareShareMetadata;
 - (_Bool)_callingParticipantOONForShareMetadata:(id)arg1;
@@ -43,7 +47,7 @@ __attribute__((visibility("hidden")))
 - (id)nameForState:(unsigned long long)arg1;
 - (_Bool)makeStateTransition;
 - (id)activityCreate;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 // Remaining properties
 @property(retain, nonatomic) id <CKAcceptSharesOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;

@@ -13,16 +13,16 @@ __attribute__((visibility("hidden")))
 {
     _Bool _transient;
     Class _relationshipModelClass;
-    struct ModelPropertyBase *_foreignPropertyBase;
+    void *_foreignPropertyBase;
     CDUnknownBlockType _validRelationshipHandler;
-    shared_ptr_217a6612 _relationshipValidationProperties;
+    shared_ptr_a9db792c _relationshipValidationProperties;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType validRelationshipHandler; // @synthesize validRelationshipHandler=_validRelationshipHandler;
-@property(nonatomic) shared_ptr_217a6612 relationshipValidationProperties; // @synthesize relationshipValidationProperties=_relationshipValidationProperties;
-@property(nonatomic) struct ModelPropertyBase *foreignPropertyBase; // @synthesize foreignPropertyBase=_foreignPropertyBase;
+@property(nonatomic) shared_ptr_a9db792c relationshipValidationProperties; // @synthesize relationshipValidationProperties=_relationshipValidationProperties;
+@property(nonatomic) void *foreignPropertyBase; // @synthesize foreignPropertyBase=_foreignPropertyBase;
 @property(nonatomic) _Bool transient; // @synthesize transient=_transient;
 @property(nonatomic) Class relationshipModelClass; // @synthesize relationshipModelClass=_relationshipModelClass;
 @property(readonly, nonatomic) MPMediaLibraryEntityTranslator *entityTranslator;

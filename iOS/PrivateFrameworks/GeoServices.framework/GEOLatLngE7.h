@@ -18,6 +18,8 @@
 }
 
 + (_Bool)isValid:(id)arg1;
++ (int)toE7Coordinate:(double)arg1;
++ (double)fromE7Coordinate:(int)arg1;
 - (void).cxx_destruct;
 - (void)clearUnknownFields:(_Bool)arg1;
 @property(readonly, nonatomic) PBUnknownFields *unknownFields;

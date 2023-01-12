@@ -6,11 +6,10 @@
 
 #import <ChatKit/CKSearchResultCell-Protocol.h>
 
-@class CKSpotlightQueryResult, NSString, UIImageView, UILabel, UIVisualEffectView;
+@class CKSpotlightQueryResult, NSString, UILabel, UIVisualEffectView;
 
 @interface CKLocationSearchResultCell <CKSearchResultCell>
 {
-    UIImageView *_imageView;
     UILabel *_placeLabel;
     UIVisualEffectView *_blurEffectView;
     CKSpotlightQueryResult *_result;
@@ -26,13 +25,13 @@
 @property(retain, nonatomic) CKSpotlightQueryResult *result; // @synthesize result=_result;
 @property(retain, nonatomic) UIVisualEffectView *blurEffectView; // @synthesize blurEffectView=_blurEffectView;
 @property(retain, nonatomic) UILabel *placeLabel; // @synthesize placeLabel=_placeLabel;
-@property(retain, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property(nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)_thumbnailGenerated:(id)arg1;
 - (void)_configurePlaceLabelWithResult:(id)arg1 searchText:(id)arg2;
 - (void)refreshForSearchTextIfNeeded:(id)arg1;
 - (void)configureWithQueryResult:(id)arg1 searchText:(id)arg2 mode:(unsigned long long)arg3;
+@property(readonly, copy, nonatomic) NSString *resultIdentifier;
 - (void)dealloc;
 - (void)prepareForReuse;
 - (void)layoutSubviews;

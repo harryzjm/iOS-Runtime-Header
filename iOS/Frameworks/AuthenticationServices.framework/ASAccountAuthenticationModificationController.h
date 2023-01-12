@@ -34,7 +34,6 @@
 - (void)_failRequestWithError:(id)arg1;
 - (void)_invalidate;
 - (void)_performUpgradePasswordToStrongPasswordRequest:(id)arg1;
-- (void)_failStrongPasswordUpgradeRequestWithKeychainSyncErrorMessage;
 - (void)_showUpgradeToStrongPasswordPromptForRequest:(id)arg1;
 - (void)_performReplacePasswordWithSignInWithAppleRequest:(id)arg1;
 - (void)_requestRemoteViewController:(CDUnknownBlockType)arg1;

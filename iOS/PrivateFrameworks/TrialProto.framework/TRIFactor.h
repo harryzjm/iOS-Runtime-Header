@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSMutableArray, NSString;
 
 @interface TRIFactor
 {
@@ -17,12 +17,16 @@
 - (id)typeString;
 
 // Remaining properties
+@property(copy, nonatomic) NSString *alias; // @dynamic alias;
+@property(nonatomic) _Bool hasAlias; // @dynamic hasAlias;
 @property(nonatomic) _Bool hasId_p; // @dynamic hasId_p;
 @property(nonatomic) _Bool hasName; // @dynamic hasName;
 @property(nonatomic) _Bool hasNamespaceId; // @dynamic hasNamespaceId;
 @property(nonatomic) _Bool hasNamespaceName; // @dynamic hasNamespaceName;
 @property(nonatomic) _Bool hasType; // @dynamic hasType;
 @property(copy, nonatomic) NSString *id_p; // @dynamic id_p;
+@property(retain, nonatomic) NSMutableArray *metadataKeysArray; // @dynamic metadataKeysArray;
+@property(readonly, nonatomic) unsigned long long metadataKeysArray_Count; // @dynamic metadataKeysArray_Count;
 @property(copy, nonatomic) NSString *name; // @dynamic name;
 @property(nonatomic) int namespaceId; // @dynamic namespaceId;
 @property(copy, nonatomic) NSString *namespaceName; // @dynamic namespaceName;

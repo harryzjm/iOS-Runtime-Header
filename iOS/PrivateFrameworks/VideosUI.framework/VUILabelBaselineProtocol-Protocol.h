@@ -10,7 +10,7 @@
 @protocol VUILabelBaselineProtocol;
 
 @protocol VUILabelBaselineProtocol <NSObject>
-- (double)baselineOffsetFromBottom;
+- (double)vui_baselineOffsetFromBottom;
 - (double)topMarginToLabel:(UIView<VUILabelBaselineProtocol> *)arg1 withBaselineMargin:(double)arg2;
 @end
 

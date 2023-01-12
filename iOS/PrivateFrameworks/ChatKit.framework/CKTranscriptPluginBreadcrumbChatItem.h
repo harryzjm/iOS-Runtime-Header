@@ -8,6 +8,7 @@
 
 @interface CKTranscriptPluginBreadcrumbChatItem
 {
+    UIImage *_iconImage;
     CKTranscriptPluginChatItem *_previousPluginChatItem;
 }
 
@@ -17,12 +18,12 @@
 - (_Bool)_wantsIconImage;
 - (_Bool)_wantsCenteredOrientation;
 @property(readonly, nonatomic) double iconWidthPlusPadding;
-@property(readonly, nonatomic) UIImage *iconImage;
+@property(readonly, nonatomic) UIImage *iconImage; // @synthesize iconImage=_iconImage;
 - (Class)cellClass;
 - (struct CGSize)loadSizeThatFits:(struct CGSize)arg1 textAlignmentInsets:(out struct UIEdgeInsets *)arg2;
 - (id)loadTranscriptText;
 - (BOOL)transcriptOrientation;
-- (id)layoutGroupSpacingForEnvironment:(id)arg1 supplementaryItems:(id)arg2;
+- (id)layoutItemSpacingWithEnvironment:(id)arg1 datasourceItemIndex:(long long)arg2 allDatasourceItems:(id)arg3 supplementryItems:(id)arg4;
 - (unsigned long long)layoutType;
 
 // Remaining properties

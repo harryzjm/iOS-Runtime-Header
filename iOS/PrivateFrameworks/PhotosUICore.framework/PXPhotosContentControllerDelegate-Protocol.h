@@ -11,9 +11,11 @@
 
 @protocol PXPhotosContentControllerDelegate <NSObject>
 - (NSObject<PXAnonymousViewController> *)presentingViewControllerForContentController:(PXPhotosContentController *)arg1;
-- (void)needsUpdateForContentController:(PXPhotosContentController *)arg1;
 - (_Bool)photosContentController:(PXPhotosContentController *)arg1 pushViewController:(NSObject<PXAnonymousViewController> *)arg2;
 - (void)dismissPresentedViewControllerForContentController:(PXPhotosContentController *)arg1;
-- (void)photosContentController:(PXPhotosContentController *)arg1 presentViewController:(NSObject<PXAnonymousViewController> *)arg2;
+- (_Bool)photosContentController:(PXPhotosContentController *)arg1 presentViewController:(NSObject<PXAnonymousViewController> *)arg2;
+
+@optional
+- (void)needsUpdateForContentController:(PXPhotosContentController *)arg1;
 @end
 

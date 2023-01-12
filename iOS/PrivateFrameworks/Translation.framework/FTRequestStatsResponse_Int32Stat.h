@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_e9f07b25)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_e9f07b25)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) int value;
 @property(readonly, nonatomic) NSString *name;
 - (id)copyWithZone:(struct _NSZone *)arg1;

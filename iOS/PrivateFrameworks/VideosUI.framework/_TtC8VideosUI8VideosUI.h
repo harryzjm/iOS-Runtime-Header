@@ -10,6 +10,7 @@
 {
 }
 
++ (void)initializeGroupActivities;
 + (void)initializeJSContext:(id)arg1;
 + (void)initializeUIFactory;
 - (id)init;

@@ -25,6 +25,9 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) _PASBundleIdResolver *bundleIdResolver; // @synthesize bundleIdResolver=_bundleIdResolver;
 @property(copy, nonatomic) NSString *clientProcessName; // @synthesize clientProcessName=_clientProcessName;
+- (void)topicCacheSandboxExtensionToken:(CDUnknownBlockType)arg1;
+- (void)cachePath:(CDUnknownBlockType)arg1;
+- (void)registerUniversalSearchSpotlightFeedback:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)registerFeedback:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)unmapMappedTopicIdentifier:(id)arg1 mappingIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)scoresForTopicMapping:(id)arg1 query:(id)arg2 queryId:(unsigned long long)arg3;

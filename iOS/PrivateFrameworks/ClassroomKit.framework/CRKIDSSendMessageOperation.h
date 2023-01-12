@@ -6,15 +6,17 @@
 
 #import <DeviceManagement/CATOperation.h>
 
-@class NSDate, NSDictionary, NSString;
-@protocol CRKIDSListener, CRKIDSLocalPrimitives;
+@class CRKIDSMessageOptions, NSDate, NSDictionary, NSString;
+@protocol CRKCancelable><CRKResumable, CRKIDSLocalPrimitives;
 
 @interface CRKIDSSendMessageOperation : CATOperation
 {
     id <CRKIDSLocalPrimitives> _IDSLocalPrimitives;
     NSDictionary *_message;
     NSString *_destinationAddress;
-    id <CRKIDSListener> _messageSendListener;
+    NSString *_sourceAppleID;
+    CRKIDSMessageOptions *_options;
+    id <CRKCancelable><CRKResumable> _messageSendSubscription;
     NSString *_messageSendIdentifier;
     NSDate *_initialSendDate;
 }
@@ -22,7 +24,9 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *initialSendDate; // @synthesize initialSendDate=_initialSendDate;
 @property(copy, nonatomic) NSString *messageSendIdentifier; // @synthesize messageSendIdentifier=_messageSendIdentifier;
-@property(retain, nonatomic) id <CRKIDSListener> messageSendListener; // @synthesize messageSendListener=_messageSendListener;
+@property(retain, nonatomic) id <CRKCancelable><CRKResumable> messageSendSubscription; // @synthesize messageSendSubscription=_messageSendSubscription;
+@property(readonly, nonatomic) CRKIDSMessageOptions *options; // @synthesize options=_options;
+@property(readonly, copy, nonatomic) NSString *sourceAppleID; // @synthesize sourceAppleID=_sourceAppleID;
 @property(readonly, copy, nonatomic) NSString *destinationAddress; // @synthesize destinationAddress=_destinationAddress;
 @property(readonly, copy, nonatomic) NSDictionary *message; // @synthesize message=_message;
 @property(readonly, nonatomic) id <CRKIDSLocalPrimitives> IDSLocalPrimitives; // @synthesize IDSLocalPrimitives=_IDSLocalPrimitives;
@@ -30,7 +34,7 @@
 - (void)main;
 - (void)cancel;
 - (_Bool)isAsynchronous;
-- (id)initWithIDSLocalPrimitives:(id)arg1 message:(id)arg2 destinationAddress:(id)arg3;
+- (id)initWithIDSLocalPrimitives:(id)arg1 message:(id)arg2 destinationAddress:(id)arg3 sourceAppleID:(id)arg4 options:(id)arg5;
 
 @end
 

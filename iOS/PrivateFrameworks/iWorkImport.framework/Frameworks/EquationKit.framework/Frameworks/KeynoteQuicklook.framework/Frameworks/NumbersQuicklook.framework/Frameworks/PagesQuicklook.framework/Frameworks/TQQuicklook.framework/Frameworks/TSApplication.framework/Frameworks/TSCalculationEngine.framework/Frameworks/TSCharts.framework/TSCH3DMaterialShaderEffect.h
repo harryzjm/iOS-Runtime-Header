@@ -8,20 +8,20 @@
 
 @interface TSCH3DMaterialShaderEffect
 {
-    TSCH3DTexturePool *mPool;
-    TSCH3DTexturesMaterial *mMaterial;
-    TSCH3DMaterialShaderVariables *mVariables;
+    TSCH3DTexturePool *_pool;
+    TSCH3DTexturesMaterial *_material;
+    TSCH3DMaterialShaderVariables *_variables;
 }
 
 + (id)effectWithPool:(id)arg1 material:(id)arg2 variables:(id)arg3;
 + (id)stateSharingID;
+- (void).cxx_destruct;
 - (void)affectStates:(id)arg1;
 - (void)uploadData:(id)arg1 effectsStates:(id)arg2;
 - (void)updateState:(id)arg1 effectsStates:(id)arg2;
 - (void)addVariables:(id)arg1;
 - (id)stateSharingID;
 - (_Bool)isEqual:(id)arg1;
-- (void)dealloc;
 - (id)initWithPool:(id)arg1 material:(id)arg2 variables:(id)arg3;
 
 @end

@@ -23,7 +23,7 @@
 @property(retain, nonatomic) WFCompactThumbnailViewController *thumbnailViewController; // @synthesize thumbnailViewController=_thumbnailViewController;
 @property(nonatomic) __weak UIActivityIndicatorView *indicatorView; // @synthesize indicatorView=_indicatorView;
 @property(nonatomic) __weak id <WFCompactContentPreviewViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-@property(retain, nonatomic) WFContentItem *contentItem; // @synthesize contentItem=_contentItem;
+@property(readonly, nonatomic) WFContentItem *contentItem; // @synthesize contentItem=_contentItem;
 - (_Bool)_canShowWhileLocked;
 - (void)thumbnailViewControllerDidInvalidateSize:(id)arg1;
 - (void)_getTypeSpecificThumbnailViewControllerForContentItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -31,6 +31,7 @@
 - (void)getThumbnailViewControllerForContentItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) _Bool contentAllowsScrolling;
 @property(readonly, nonatomic) UIView *sourceViewForQuickLook;
+- (void)setContentItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)invalidateContentSize;
 - (double)contentHeightForWidth:(double)arg1;
 - (void)viewDidLayoutSubviews;

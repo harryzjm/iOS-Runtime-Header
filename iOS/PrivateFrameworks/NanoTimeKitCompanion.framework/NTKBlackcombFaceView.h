@@ -6,53 +6,42 @@
 
 #import <NanoTimeKitCompanion/CLKMonochromeFilterProvider-Protocol.h>
 
-@class NSString, NTKBlackcombBackgroundView, NTKBlackcombDialColorPalette, NTKFullscreenSubdialComplicationFactory, UIImageView, UIView;
+@class NSString, NTKBlackcombBackgroundView, NTKBlackcombColorPalette, NTKFullscreenSubdialComplicationFactory, NTKInterpolatedColorPalette, UIView;
 
 @interface NTKBlackcombFaceView <CLKMonochromeFilterProvider>
 {
     NTKFullscreenSubdialComplicationFactory *_complicationFactory;
-    unsigned long long _faceColor;
-    NTKBlackcombDialColorPalette *_dialColorPalette;
     UIView *_backgroundContainerView;
     NTKBlackcombBackgroundView *_backgroundView;
-    UIImageView *_editingNotchBackgroundView;
+    NTKBlackcombColorPalette *_blackcombPalette;
+    NTKInterpolatedColorPalette *_dialColorStyleTransitionPalette;
 }
 
-+ (id)_swatchImageForColorOption:(id)arg1 forDevice:(id)arg2;
 - (void).cxx_destruct;
 - (id)_renderBackgroundViewSwatchImageForBlackcombDialColor:(unsigned long long)arg1;
 - (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
-- (void)applyToForegroundZoomFraction:(double)arg1 faceScale:(double)arg2;
-- (_Bool)_wantsConstantSpeedZoom;
 - (void)layoutSubviews;
 - (void)_prepareForStatusChange:(_Bool)arg1;
 - (double)_verticalPaddingForStatusBar;
-- (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
 - (long long)_keylineStyleForComplicationSlot:(id)arg1;
 - (id)_keylineViewForComplicationSlot:(id)arg1;
-- (id)_customEditOptionContainerViewForSlot:(id)arg1;
-- (id)_pickerMaskForSlot:(id)arg1;
 - (long long)_complicationPickerStyleForSlot:(id)arg1;
 - (_Bool)_isComplicationSlotInsideDial:(id)arg1;
 - (long long)_legacyLayoutOverrideforComplicationType:(unsigned long long)arg1 slot:(id)arg2;
 - (void)_configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
 - (void)_loadLayoutRules;
-- (id)_platterTextColorForEditMode:(long long)arg1 color:(unsigned long long)arg2;
+- (id)_platterTextColorForEditMode:(long long)arg1 color:(id)arg2;
 - (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyRubberBandingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
-- (_Bool)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
-- (unsigned long long)_keylineLabelAlignmentForCustomEditMode:(long long)arg1 slot:(id)arg2;
-- (struct CGRect)_legacyUnscaledKeylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
-- (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (void)_updateHandsColors;
-- (id)_secondHandColorFor:(unsigned long long)arg1;
-- (void)_applyComplicationTransitionFraction:(double)arg1 fromBlackcombDialColor:(unsigned long long)arg2 toBlackcombDialColor:(unsigned long long)arg3;
-- (void)_applyTransitionFraction:(double)arg1 fromBlackcombDialColor:(unsigned long long)arg2 toBlackcombDialColor:(unsigned long long)arg3;
-- (void)_applyTransitionFraction:(double)arg1 fromColor:(unsigned long long)arg2 toColor:(unsigned long long)arg3;
+- (id)_secondHandColor;
+- (void)_applyComplicationTransitionFraction:(double)arg1 fromColorPalette:(id)arg2 toColorPalette:(id)arg3;
+- (void)_applyTransitionFraction:(double)arg1 fromColorPalette:(id)arg2 toColorPalette:(id)arg3 force:(_Bool)arg4;
+- (void)_applyTransitionFraction:(double)arg1 fromColorPalette:(id)arg2 toColorPalette:(id)arg3;
 - (void)_forceUpdateColors;
-- (void)setBlackcombDialColor:(unsigned long long)arg1;
-- (void)setFaceColor:(unsigned long long)arg1;
+- (void)updateBlackcombDialColorStyle:(unsigned long long)arg1;
+- (void)updateWithColorPalette:(id)arg1;
 - (void)_applyTransitionFraction:(double)arg1 fromOption:(id)arg2 toOption:(id)arg3 forCustomEditMode:(long long)arg4 slot:(id)arg5;
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
@@ -70,6 +59,7 @@
 - (void)_removeBackgroundView;
 - (void)_setupBackgroundView;
 - (void)_configureTimeView:(id)arg1;
+- (id)createFaceColorPalette;
 - (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
 
 // Remaining properties

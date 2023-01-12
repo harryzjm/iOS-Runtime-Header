@@ -8,16 +8,16 @@
 
 @interface TSPKnownFieldVersionRequirementsMap : NSObject
 {
-    struct unique_ptr<std::__1::unordered_map<const TSP::FieldPath, TSP::FieldInfoRuleAttributesForVersionRequirements, TSP::FieldPathHash, TSP::FieldPathEqualTo, std::__1::allocator<std::__1::pair<const TSP::FieldPath, TSP::FieldInfoRuleAttributesForVersionRequirements>>>, std::__1::default_delete<std::__1::unordered_map<const TSP::FieldPath, TSP::FieldInfoRuleAttributesForVersionRequirements, TSP::FieldPathHash, TSP::FieldPathEqualTo, std::__1::allocator<std::__1::pair<const TSP::FieldPath, TSP::FieldInfoRuleAttributesForVersionRequirements>>>>> _map;
+    struct unique_ptr<std::unordered_map<const TSP::FieldPath, TSP::FieldInfoRuleAttributesForVersionRequirements, TSP::FieldPathHash, TSP::FieldPathEqualTo>, std::default_delete<std::unordered_map<const TSP::FieldPath, TSP::FieldInfoRuleAttributesForVersionRequirements, TSP::FieldPathHash, TSP::FieldPathEqualTo>>> _map;
 }
 
-+ (unordered_map_caa2f3b1 *)updateMap:(unordered_map_caa2f3b1 *)arg1 message:(const struct Message *)arg2 byAddingRulesFromKnownFieldRuleProvider:(id)arg3;
++ (void *)updateMap:(void *)arg1 message:(const struct Message *)arg2 byAddingRulesFromKnownFieldRuleProvider:(id)arg3;
 + (id)newKnownFieldVersionRequirementsMapForMessage:(const struct Message *)arg1 knownFieldRuleProvider:(id)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)saveToArchiver:(id)arg1;
 - (void)addRulesFromKnownFieldRuleProvider:(id)arg1;
-- (id)initWithMap:(unordered_map_caa2f3b1 *)arg1;
+- (id)initWithMap:(void *)arg1;
 - (id)init;
 
 @end

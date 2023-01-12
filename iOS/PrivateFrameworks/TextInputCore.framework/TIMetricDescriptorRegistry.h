@@ -6,27 +6,31 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSMutableDictionary, NSMutableSet;
+@class NSDictionary, NSLock, NSMutableDictionary, NSMutableSet, NSSet;
 
 @interface TIMetricDescriptorRegistry : NSObject
 {
-    _Bool _loaded;
-    NSDictionary *_config;
     NSMutableDictionary *_metricDescriptors;
     NSMutableSet *_invalidMetricNames;
+    NSLock *_lock;
+    _Bool _loaded;
+    NSDictionary *_config;
 }
 
 + (id)registryWithDescriptors:(id)arg1 andInvalidMetricNames:(id)arg2;
 + (id)registryWithConfig:(id)arg1;
++ (id)registry;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool loaded; // @synthesize loaded=_loaded;
-@property(readonly, nonatomic) NSMutableSet *invalidMetricNames; // @synthesize invalidMetricNames=_invalidMetricNames;
-@property(readonly, nonatomic) NSMutableDictionary *metricDescriptors; // @synthesize metricDescriptors=_metricDescriptors;
-@property(readonly, nonatomic) NSDictionary *config; // @synthesize config=_config;
+@property(retain, nonatomic) NSDictionary *config; // @synthesize config=_config;
 - (id)valueFromError:(id)arg1 forKey:(id)arg2;
 - (id)contextFromError:(id)arg1;
-- (void)loadMetricDescriptors;
+- (void)_loadMetricDescriptors;
+- (void)loadMetricDescriptorsIfNecessary;
+@property(readonly, nonatomic) NSSet *invalidMetricNames;
+@property(readonly, nonatomic) NSDictionary *metricDescriptors;
 - (id)metricDescriptorWithName:(id)arg1;
+- (id)allMetricDescriptors;
 - (id)initWithDescriptors:(id)arg1 andInvalidMetricNames:(id)arg2;
 - (id)initWithConfig:(id)arg1;
 

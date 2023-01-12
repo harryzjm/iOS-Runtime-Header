@@ -9,6 +9,7 @@
 @interface SBHomeGestureRootFloatingSwitcherModifier
 {
     SBSwitcherModifier *_multitaskingModifier;
+    long long _floatingConfiguration;
 }
 
 - (void).cxx_destruct;
@@ -16,7 +17,7 @@
 - (id)transitionChildModifierForMainTransitionEvent:(id)arg1 activeGestureModifier:(id)arg2;
 - (id)gestureChildModifierForGestureEvent:(id)arg1 activeTransitionModifier:(id)arg2;
 - (long long)gestureType;
-- (id)initWithMultitaskingModifier:(id)arg1;
+- (id)initWithMultitaskingModifier:(id)arg1 floatingConfiguration:(long long)arg2;
 
 @end
 

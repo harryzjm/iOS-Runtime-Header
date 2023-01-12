@@ -29,6 +29,7 @@
 @property(readonly, nonatomic) double expectedTravelTime; // @synthesize expectedTravelTime=_expectedTravelTime;
 @property(readonly, nonatomic) MKMapItem *destination; // @synthesize destination=_destination;
 @property(readonly, nonatomic) MKMapItem *source; // @synthesize source=_source;
+- (id)description;
 - (unsigned long long)_transportType:(int)arg1;
 - (id)initWithSource:(id)arg1 destination:(id)arg2 expectedTravelTime:(double)arg3 distance:(double)arg4 sortedETAs:(id)arg5;
 

@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSSecureCoding-Protocol.h>
 
-@class NSDictionary;
+@class NSDate, NSDictionary, NSString;
 
 @interface GEORequestCounterLogInfo : NSObject <NSSecureCoding>
 {
@@ -19,15 +19,21 @@
 + (id)counterLogInfoWithDictionary:(id)arg1;
 - (void).cxx_destruct;
 - (id)description;
-- (id)_formattedCSVString;
-- (id)_formattedString;
-- (void)encodeWithCoder:(id)arg1;
-@property(readonly, nonatomic) double oldestTimestamp;
+- (void)_appendFormattedCSVStringTo:(id)arg1;
+- (void)_appendFormattedStringTo:(id)arg1;
+@property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(readonly, nonatomic) unsigned long long usedInterfaceTypes;
+@property(readonly, nonatomic) NSDate *end;
+@property(readonly, nonatomic) NSDate *start;
+@property(readonly, nonatomic) unsigned long long recvBytes;
+@property(readonly, nonatomic) unsigned long long xmitBytes;
+@property(readonly, nonatomic) NSString *resultString;
+@property(readonly, nonatomic) unsigned char result;
+@property(readonly, nonatomic) NSString *requestTypeString;
 @property(readonly, nonatomic) CDStruct_d1a7ebee requestType;
-- (unsigned long long)recvBytes;
-- (unsigned long long)xmitBytes;
-- (long long)compare:(id)arg1;
+@property(readonly, nonatomic) NSString *appID;
 - (_Bool)isEqual:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 

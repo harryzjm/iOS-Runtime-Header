@@ -8,5 +8,6 @@
 
 @interface ACAccountStore (CLSAdditions)
 + (_Bool)cls_hasEligibleAccount;
++ (void)cls_getEligibleAccount:(id *)arg1 isDataSeparated:(_Bool *)arg2 personaUniqueIdentifier:(id *)arg3;
 @end
 

@@ -6,17 +6,22 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class AKSignature, UIImageView;
+@class AKSignature, UIImageView, UILabel;
 
 @interface AKSignatureTableViewCell : UITableViewCell
 {
     AKSignature *_signature;
     UIImageView *_signatureImageView;
+    UILabel *_signatureLabel;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UILabel *signatureLabel; // @synthesize signatureLabel=_signatureLabel;
 @property(retain, nonatomic) UIImageView *signatureImageView; // @synthesize signatureImageView=_signatureImageView;
 @property(retain, nonatomic) AKSignature *signature; // @synthesize signature=_signature;
+- (id)accessibilityValue;
+- (id)accessibilityLabel;
+- (void)_setLabelFromSignature;
 - (void)_setImageFromSignature;
 - (void)layoutSubviews;
 - (void)_commonInit;

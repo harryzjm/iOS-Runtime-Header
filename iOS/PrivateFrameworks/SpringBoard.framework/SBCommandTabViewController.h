@@ -40,6 +40,7 @@
 + (_Bool)canActivateWithRecentDisplayItems:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <SBCommandTabViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)_configureGridLayoutConfiguration:(id)arg1;
 - (void)_updateForUserInterfaceStyle;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)_handleTapDismissGesture:(id)arg1;
@@ -49,7 +50,7 @@
 - (unsigned long long)indexOfDisplayItem:(id)arg1;
 - (void)_updateIconSelectionPositionAndLabelText;
 - (void)_moveSelectionSquareToIconAtIndex:(unsigned long long)arg1;
-- (_Bool)iconViewDisplaysBadges:(id)arg1;
+- (_Bool)iconViewDisplaysAccessories:(id)arg1;
 - (_Bool)iconViewCanBeginDrags:(id)arg1;
 - (void)iconTapped:(id)arg1;
 - (void)icon:(id)arg1 touchEnded:(_Bool)arg2;

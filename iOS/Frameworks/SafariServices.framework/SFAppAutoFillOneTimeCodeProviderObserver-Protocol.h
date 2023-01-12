@@ -6,9 +6,12 @@
 
 #import <SafariServices/NSObject-Protocol.h>
 
-@class SFAppAutoFillOneTimeCodeProvider;
+@class SFAppAutoFillOneTimeCodeProvider, SFAutoFillOneTimeCode;
 
 @protocol SFAppAutoFillOneTimeCodeProviderObserver <NSObject>
 - (void)oneTimeCodeProviderReceivedCode:(SFAppAutoFillOneTimeCodeProvider *)arg1;
+
+@optional
+- (void)oneTimeCodeProvider:(SFAppAutoFillOneTimeCodeProvider *)arg1 didUpdateOneTimeCode:(SFAutoFillOneTimeCode *)arg2;
 @end
 

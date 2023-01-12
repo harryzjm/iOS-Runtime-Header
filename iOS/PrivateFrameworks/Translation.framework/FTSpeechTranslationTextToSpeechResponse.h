@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_4a213448)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_4a213448)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) FTTextToSpeechResponse *text_to_speech_response;
 @property(readonly, nonatomic) NSString *target_locale;
 @property(readonly, nonatomic) NSString *request_id;

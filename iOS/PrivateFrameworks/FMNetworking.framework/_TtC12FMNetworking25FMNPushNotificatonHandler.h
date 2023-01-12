@@ -11,6 +11,7 @@
 @interface _TtC12FMNetworking25FMNPushNotificatonHandler : NSObject
 {
     MISSING_TYPE *topic;
+    MISSING_TYPE *namedDelegatePort;
     MISSING_TYPE *apsQueue;
     MISSING_TYPE *pendingTopicTokenFutures;
     MISSING_TYPE *topicAPSToken;

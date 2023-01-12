@@ -25,7 +25,7 @@
 @property(nonatomic) struct _NSRange dataSourceRange; // @synthesize dataSourceRange=_dataSourceRange;
 @property(nonatomic) __weak id <PXForYouMemoriesViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_scrollMemoryReferenceToVisible:(id)arg1 animated:(_Bool)arg2;
-- (_Bool)prepareToNavigateToDetailsForMemoryUUID:(id)arg1;
+- (_Bool)tryToNavigateToDetailsOfMemoryWithUUID:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic) long long userInterfaceFeature;
 - (id)createNewLayoutGenerator;
 - (void)scrollViewControllerWillEndScrolling:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;

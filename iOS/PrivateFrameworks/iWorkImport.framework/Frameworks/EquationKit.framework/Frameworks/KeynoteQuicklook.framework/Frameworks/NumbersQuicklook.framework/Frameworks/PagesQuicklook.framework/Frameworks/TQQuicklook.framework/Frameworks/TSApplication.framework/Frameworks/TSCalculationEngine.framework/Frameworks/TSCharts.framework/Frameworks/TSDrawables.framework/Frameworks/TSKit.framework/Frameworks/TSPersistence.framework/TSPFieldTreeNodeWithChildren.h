@@ -6,7 +6,7 @@
 
 @interface TSPFieldTreeNodeWithChildren
 {
-    struct map<int, TSPFieldTreeNode *, std::__1::less<int>, std::__1::allocator<std::__1::pair<const int, TSPFieldTreeNode *>>> _children;
+    struct map<int, TSPFieldTreeNode *, std::less<int>, std::allocator<std::pair<const int, TSPFieldTreeNode *>>> _children;
 }
 
 - (id).cxx_construct;

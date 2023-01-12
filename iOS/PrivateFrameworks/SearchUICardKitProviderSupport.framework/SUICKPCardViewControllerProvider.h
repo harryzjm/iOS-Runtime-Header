@@ -29,6 +29,7 @@
 - (void)cardSectionViewDidAppearForCardSection:(id)arg1 withAppearanceFeedback:(id)arg2;
 - (void)cardSectionViewWillAppearForCardSection:(id)arg1 withAppearanceFeedback:(id)arg2;
 - (void)userDidEngageCardSection:(id)arg1 withEngagementFeedback:(id)arg2;
+- (void)cardSectionView:(id)arg1 willProcessEngagementFeedback:(id)arg2;
 - (struct CGSize)boundingSizeForCardSectionViewController:(id)arg1;
 - (long long)preferredPunchoutIndexForCardSectionViewController:(id)arg1;
 - (void)cardSectionViewController:(id)arg1 didSelectPreferredPunchoutIndex:(long long)arg2;

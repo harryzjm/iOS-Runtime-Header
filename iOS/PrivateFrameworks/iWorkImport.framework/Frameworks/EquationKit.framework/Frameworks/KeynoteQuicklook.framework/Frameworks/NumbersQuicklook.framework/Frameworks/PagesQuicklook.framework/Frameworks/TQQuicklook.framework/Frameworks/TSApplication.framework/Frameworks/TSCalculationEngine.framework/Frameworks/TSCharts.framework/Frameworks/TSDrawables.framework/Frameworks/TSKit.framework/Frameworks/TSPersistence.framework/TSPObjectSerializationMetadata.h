@@ -17,7 +17,7 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *dataReferences; // @synthesize dataReferences=_dataReferences;
 - (long long)tsp_identifier;
-- (struct ObjectSerializationMetadata *)message;
+- (void *)message;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)dataMetadataForDataIdentifier:(long long)arg1;

@@ -8,13 +8,18 @@
 
 #import <BusinessChatService/BCSIconControllerProtocol-Protocol.h>
 
-@class NSString;
+@class BCSIconRemoteFetch, NSString;
 
+__attribute__((visibility("hidden")))
 @interface BCSIconController : NSObject <BCSIconControllerProtocol>
 {
+    BCSIconRemoteFetch *_iconRemoteFetch;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) BCSIconRemoteFetch *iconRemoteFetch; // @synthesize iconRemoteFetch=_iconRemoteFetch;
 - (void)fetchSquareIconDataForBusinessItem:(id)arg1 forClientBundleID:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

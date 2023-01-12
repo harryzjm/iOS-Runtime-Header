@@ -22,6 +22,7 @@
 - (id)fc_indexesOfObjectsInOrderedSet:(id)arg1;
 - (id)fc_diffAgainstOrderedSet:(id)arg1;
 - (id)fc_diffAgainstOrderedSet:(id)arg1 withEqualityTest:(CDUnknownBlockType)arg2 identityValueProvider:(CDUnknownBlockType)arg3;
+- (id)fc_objectInSortedOrderedCollectionWithFeature:(id)arg1 usingFeatureProvider:(CDUnknownBlockType)arg2 comparator:(CDUnknownBlockType)arg3;
 - (id)fc_diffAgainstSortedOrderedCollection:(id)arg1 usingComparator:(CDUnknownBlockType)arg2;
 - (_Bool)fc_isSortedUsingComparator:(CDUnknownBlockType)arg1;
 - (void)fc_enumerateObjectsPairwiseUsingBlock:(CDUnknownBlockType)arg1;

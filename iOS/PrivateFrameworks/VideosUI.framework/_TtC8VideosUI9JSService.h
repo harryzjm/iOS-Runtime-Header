@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ITMLKit/IKJSObject.h>
-
 #import <VideosUI/_TtP8VideosUI18JSServiceInterface_-Protocol.h>
 
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI9JSService : IKJSObject <_TtP8VideosUI18JSServiceInterface_>
+@interface _TtC8VideosUI9JSService <_TtP8VideosUI18JSServiceInterface_>
 {
 }
 

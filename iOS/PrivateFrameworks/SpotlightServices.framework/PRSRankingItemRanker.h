@@ -6,22 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class NSMapTable, NSString, PRSQueryRankingConfiguration;
+@class NSArray, NSMapTable, NSString, PRSQueryRankingConfiguration;
 
 @interface PRSRankingItemRanker : NSObject
 {
     PRSQueryRankingConfiguration *_rankingConfiguration;
+    NSArray *_rankCategories;
+    _Bool _isNLSearch;
     _Bool _isInternalDevice;
     _Bool _policyDisabled;
     _Bool _isCancelled;
     _Bool _isCJK;
     _Bool _hasPolicyMultipleTermsPhraseMatch;
+    _Bool _hasPolicySingleTermPhraseMatch;
     _Bool _hasParsecPolicyPhraseMatch;
     _Bool _exact;
     _Bool _isContentWord;
     _Bool _isAltNamePrefixMatchOnlyTopHitExcludedQuery;
     _Bool _isSpellCorrectPrefixMatchOnlyTopHitExcludedQuery;
     _Bool _containsEnglishAlphabetInQuery;
+    _Bool _isPeopleSearch;
     float _lastIsSpaceFeature;
     NSString *_keyboardLanguage;
     NSString *_searchString;
@@ -30,6 +34,7 @@
     double _experimentalWeight1;
     double _experimentalWeight2;
     NSString *_meContactIdentifier;
+    NSString *_clientBundle;
     double _currentTime;
     unsigned long long _queryTermCount;
     unsigned long long _queryTermLength;
@@ -45,14 +50,14 @@
 + (_Bool)isBlendingScoreDemoted:(float)arg1;
 + (struct _LanguageModel *)languageModel;
 + (unsigned long long)spellCorrectedAppMinQueryLen;
-+ (_Bool)isK;
-+ (_Bool)isJ;
++ (_Bool)isKeywordsHidingEnabled;
 + (_Bool)isCJK;
 + (void)clearState;
 + (id)sortedUniqueBundleFeatureValuesFromBundleFeatures:(id)arg1;
 + (void)initialize;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long queryKind; // @synthesize queryKind=_queryKind;
+@property(nonatomic) _Bool isPeopleSearch; // @synthesize isPeopleSearch=_isPeopleSearch;
 @property(nonatomic) _Bool containsEnglishAlphabetInQuery; // @synthesize containsEnglishAlphabetInQuery=_containsEnglishAlphabetInQuery;
 @property(nonatomic) _Bool isSpellCorrectPrefixMatchOnlyTopHitExcludedQuery; // @synthesize isSpellCorrectPrefixMatchOnlyTopHitExcludedQuery=_isSpellCorrectPrefixMatchOnlyTopHitExcludedQuery;
 @property(nonatomic) _Bool isAltNamePrefixMatchOnlyTopHitExcludedQuery; // @synthesize isAltNamePrefixMatchOnlyTopHitExcludedQuery=_isAltNamePrefixMatchOnlyTopHitExcludedQuery;
@@ -61,12 +66,14 @@
 @property(nonatomic) _Bool isContentWord; // @synthesize isContentWord=_isContentWord;
 @property(nonatomic) _Bool exact; // @synthesize exact=_exact;
 @property(nonatomic) _Bool hasParsecPolicyPhraseMatch; // @synthesize hasParsecPolicyPhraseMatch=_hasParsecPolicyPhraseMatch;
+@property(nonatomic) _Bool hasPolicySingleTermPhraseMatch; // @synthesize hasPolicySingleTermPhraseMatch=_hasPolicySingleTermPhraseMatch;
 @property(nonatomic) _Bool hasPolicyMultipleTermsPhraseMatch; // @synthesize hasPolicyMultipleTermsPhraseMatch=_hasPolicyMultipleTermsPhraseMatch;
 @property(nonatomic) double currentTime; // @synthesize currentTime=_currentTime;
 @property _Bool isCJK; // @synthesize isCJK=_isCJK;
 @property _Bool isCancelled; // @synthesize isCancelled=_isCancelled;
 @property(nonatomic) float lastIsSpaceFeature; // @synthesize lastIsSpaceFeature=_lastIsSpaceFeature;
 @property(nonatomic) _Bool policyDisabled; // @synthesize policyDisabled=_policyDisabled;
+@property(retain, nonatomic) NSString *clientBundle; // @synthesize clientBundle=_clientBundle;
 @property(retain, nonatomic) NSString *meContactIdentifier; // @synthesize meContactIdentifier=_meContactIdentifier;
 @property(nonatomic) double experimentalWeight2; // @synthesize experimentalWeight2=_experimentalWeight2;
 @property(nonatomic) double experimentalWeight1; // @synthesize experimentalWeight1=_experimentalWeight1;
@@ -98,9 +105,11 @@
 - (void)updateResultSetContext:(struct _resultset_computation_ctx *)arg1 andUniqueScores:(id)arg2 withResultSetItems:(id)arg3;
 - (void)deactivate;
 - (void)activate;
-- (id)rankingConfigurationWithMeContact:(id)arg1 emailAddresses:(id)arg2 phoneFavorites:(id)arg3 vipList:(id)arg4 clientBundle:(id)arg5 isScopedSearch:(_Bool)arg6 spotlightQuery:(id)arg7 userQuery:(id)arg8 queryKind:(unsigned long long)arg9 isPeopleSearch:(_Bool)arg10 keyboardLanguage:(id)arg11;
+- (id)rankingConfigurationWithMeContact:(id)arg1 emailAddresses:(id)arg2 phoneFavorites:(id)arg3 vipList:(id)arg4 clientBundle:(id)arg5 isScopedSearch:(_Bool)arg6 spotlightQuery:(id)arg7 userQuery:(id)arg8 tokenString:(id)arg9 queryKind:(unsigned long long)arg10 isPeopleSearch:(_Bool)arg11 keyboardLanguage:(id)arg12;
 - (id)rankingConfigurationWithMeContact:(id)arg1 emailAddresses:(id)arg2 phoneFavorites:(id)arg3 vipList:(id)arg4 clientBundle:(id)arg5 isScopedSearch:(_Bool)arg6 spotlightQuery:(id)arg7 keyboardLanguage:(id)arg8;
 - (id)rankingConfiguration;
+@property(retain, nonatomic) NSArray *rankCategories;
+@property(nonatomic) _Bool isNLSearch;
 - (id)userQuery;
 - (void)dealloc;
 - (void)cancel;

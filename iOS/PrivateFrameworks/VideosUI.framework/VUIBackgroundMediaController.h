@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
-
-@class AVPlayerViewController, NSDate, NSString, NSTimer, TVImageProxy, TVPPlayer, TVPPlaylist, TVPStateMachine, TVPVideoView, VUIMediaInfo, _TVImageView;
+@class AVPlayerViewController, NSDate, NSString, NSTimer, TVPPlayer, TVPPlaylist, TVPStateMachine, TVPVideoView, UIViewController, VUIImageProxy, VUIImageView, VUIMediaInfo;
 
 __attribute__((visibility("hidden")))
-@interface VUIBackgroundMediaController : UIViewController
+@interface VUIBackgroundMediaController
 {
     _Bool _foreground;
     _Bool _playbackEnabled;
@@ -32,16 +30,19 @@ __attribute__((visibility("hidden")))
     VUIMediaInfo *_mediaInfo;
     unsigned long long _state;
     NSString *_name;
-    TVImageProxy *_currentImageProxy;
-    _TVImageView *_proxyImageView;
-    _TVImageView *_alphaProxyImageView;
-    TVImageProxy *_alphaImageProxy;
+    unsigned long long _playbackStopDelayReasons;
+    double _playbackStopDelay;
+    unsigned long long _videoSwappingAnimationType;
+    VUIImageProxy *_currentImageProxy;
+    VUIImageView *_proxyImageView;
+    VUIImageView *_alphaProxyImageView;
+    VUIImageProxy *_alphaImageProxy;
     UIViewController *_playbackContainerController;
     NSDate *_playbackLoadingStartDate;
     NSTimer *_playbackLoadingTimer;
     TVPStateMachine *_stateMachine;
     TVPPlaylist *_pendingPlaylist;
-    TVImageProxy *_pendingImageProxy;
+    VUIImageProxy *_pendingImageProxy;
     unsigned long long _imageAnimationOptions;
     double _imageAnimationDuration;
     double _imageTransitionInterval;
@@ -71,16 +72,19 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double imageAnimationDuration; // @synthesize imageAnimationDuration=_imageAnimationDuration;
 @property(nonatomic) unsigned long long imageAnimationOptions; // @synthesize imageAnimationOptions=_imageAnimationOptions;
 @property(nonatomic, getter=isPlayerReadyToBePlayed) _Bool playerReadyToBePlayed; // @synthesize playerReadyToBePlayed=_playerReadyToBePlayed;
-@property(retain, nonatomic) TVImageProxy *pendingImageProxy; // @synthesize pendingImageProxy=_pendingImageProxy;
+@property(retain, nonatomic) VUIImageProxy *pendingImageProxy; // @synthesize pendingImageProxy=_pendingImageProxy;
 @property(retain, nonatomic) TVPPlaylist *pendingPlaylist; // @synthesize pendingPlaylist=_pendingPlaylist;
 @property(retain, nonatomic) TVPStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
 @property(nonatomic) __weak NSTimer *playbackLoadingTimer; // @synthesize playbackLoadingTimer=_playbackLoadingTimer;
 @property(retain, nonatomic) NSDate *playbackLoadingStartDate; // @synthesize playbackLoadingStartDate=_playbackLoadingStartDate;
 @property(retain, nonatomic) UIViewController *playbackContainerController; // @synthesize playbackContainerController=_playbackContainerController;
-@property(retain, nonatomic) TVImageProxy *alphaImageProxy; // @synthesize alphaImageProxy=_alphaImageProxy;
-@property(retain, nonatomic) _TVImageView *alphaProxyImageView; // @synthesize alphaProxyImageView=_alphaProxyImageView;
-@property(retain, nonatomic) _TVImageView *proxyImageView; // @synthesize proxyImageView=_proxyImageView;
-@property(retain, nonatomic) TVImageProxy *currentImageProxy; // @synthesize currentImageProxy=_currentImageProxy;
+@property(retain, nonatomic) VUIImageProxy *alphaImageProxy; // @synthesize alphaImageProxy=_alphaImageProxy;
+@property(retain, nonatomic) VUIImageView *alphaProxyImageView; // @synthesize alphaProxyImageView=_alphaProxyImageView;
+@property(retain, nonatomic) VUIImageView *proxyImageView; // @synthesize proxyImageView=_proxyImageView;
+@property(retain, nonatomic) VUIImageProxy *currentImageProxy; // @synthesize currentImageProxy=_currentImageProxy;
+@property(nonatomic) unsigned long long videoSwappingAnimationType; // @synthesize videoSwappingAnimationType=_videoSwappingAnimationType;
+@property(nonatomic) double playbackStopDelay; // @synthesize playbackStopDelay=_playbackStopDelay;
+@property(nonatomic) unsigned long long playbackStopDelayReasons; // @synthesize playbackStopDelayReasons=_playbackStopDelayReasons;
 @property(nonatomic, getter=shouldStopWhenAnotherMediaControllerStarts) _Bool stopWhenAnotherMediaControllerStarts; // @synthesize stopWhenAnotherMediaControllerStarts=_stopWhenAnotherMediaControllerStarts;
 @property(nonatomic) _Bool mutePlaybackInBackground; // @synthesize mutePlaybackInBackground=_mutePlaybackInBackground;
 @property(nonatomic) _Bool popWhenPlayerStops; // @synthesize popWhenPlayerStops=_popWhenPlayerStops;
@@ -96,6 +100,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) TVPPlayer *player; // @synthesize player=_player;
 - (void)_registerStateMachineHandlers;
 - (void)_stateDidChangeFromState:(id)arg1 toState:(id)arg2 onEvent:(id)arg3 context:(id)arg4 userInfo:(id)arg5;
+- (void)_didPlayMediaItemToEnd:(id)arg1;
+- (void)_recordBgAutoPlayMediaEvent;
 - (void)_updateAVPlayerViewControllerWithAVPlayerForPlayer:(id)arg1;
 - (void)_removePlaybackViewController;
 - (void)_addPlaybackViewControllerForPlayback:(_Bool)arg1;
@@ -107,7 +113,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=isBackgrounded) _Bool backgrounded;
 - (void)_updatePlayerMuteStateForBackgroundPlaybackWithReason:(id)arg1;
 - (void)_mediaControllerStartedPlayback:(id)arg1;
-- (void)_playbackDidPlayToEndNotification:(id)arg1;
+- (void)_playbackErrorDidOccur:(id)arg1;
 - (void)_playbackStateChanged:(id)arg1;
 - (void)_delayLoadImage:(id)arg1;
 - (void)_addAlphaProxyImageViewIfNeeded;
@@ -140,10 +146,11 @@ __attribute__((visibility("hidden")))
 - (void)pause;
 - (void)play;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (_Bool)shouldUpdateFocusInContext:(id)arg1;
-- (void)viewDidLayoutSubviews;
-- (void)viewWillDisappear:(_Bool)arg1;
-- (void)viewDidLoad;
+- (void)updateFrames;
+- (void)vui_viewDidLayoutSubviews;
+- (void)_handleViewWillDisappear;
+- (void)vui_viewWillDisappear:(_Bool)arg1;
+- (void)vui_viewDidLoad;
 - (void)dealloc;
 - (id)initWithName:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

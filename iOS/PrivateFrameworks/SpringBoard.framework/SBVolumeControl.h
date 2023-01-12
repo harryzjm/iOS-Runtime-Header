@@ -8,15 +8,16 @@
 
 #import <SpringBoard/PTSettingsKeyObserver-Protocol.h>
 #import <SpringBoard/SBAVSystemControllerCacheObserver-Protocol.h>
-#import <SpringBoard/SBVolumeHUDViewControllerDelegate-Protocol.h>
+#import <SpringBoard/SBElasticHUDViewControllerDelegate-Protocol.h>
+#import <SpringBoard/SBElasticVolumeDataSource-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableSet, NSString, SBAVSystemControllerCache, SBConferenceManager, SBHUDController, SBRingerControl, SBTelephonyManager, SBVolumeHUDSettings;
+@class NSArray, NSMutableArray, NSMutableSet, NSString, SBAVSystemControllerCache, SBConferenceManager, SBElasticHUDSettings, SBHUDController, SBRingerControl, SBTelephonyManager;
 @protocol OS_dispatch_queue;
 
-@interface SBVolumeControl : NSObject <SBVolumeHUDViewControllerDelegate, PTSettingsKeyObserver, SBAVSystemControllerCacheObserver>
+@interface SBVolumeControl : NSObject <SBElasticHUDViewControllerDelegate, SBElasticVolumeDataSource, PTSettingsKeyObserver, SBAVSystemControllerCacheObserver>
 {
     SBHUDController *_hudController;
-    SBVolumeHUDSettings *_volumeHUDSettings;
+    SBElasticHUDSettings *_volumeHUDSettings;
     SBRingerControl *_ringerControl;
     SBTelephonyManager *_telephonyManager;
     SBConferenceManager *_conferenceManager;
@@ -45,6 +46,7 @@
     NSString *_lastDisplayedCategory;
 }
 
++ (_Bool)_isVolumeManagedForCategory:(id)arg1;
 + (_Bool)_isVolumeChangeAllowedForState:(id)arg1 error:(out id *)arg2;
 + (id)sharedInstance;
 - (void).cxx_destruct;
@@ -55,7 +57,12 @@
 - (void)cache:(id)arg1 didUpdateActiveAudioRoutingWithRoute:(id)arg2 routeAttributes:(id)arg3 activeOutputDevices:(id)arg4;
 - (void)_updateEUVolumeSettings;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
-- (void)volumeHUDViewControllerRequestsDismissal:(id)arg1;
+- (void)elasticHUDViewControllerRequestsDismissal:(id)arg1;
+- (_Bool)elasticVolumeViewControllerShouldShowVolumeWarningForCurrentVolumeValue:(id)arg1;
+- (id)elasticVolumeViewControllerActiveAudioRouteTypes:(id)arg1;
+- (id)elasticVolumeViewControllerActiveAudioCategory:(id)arg1;
+- (_Bool)elasticValueViewController:(id)arg1 updateCurrentValue:(float)arg2;
+- (float)elasticValueViewControllerCurrentValue:(id)arg1;
 - (void)_dispatchAVSystemControllerSync:(CDUnknownBlockType)arg1;
 - (void)_dispatchAVSystemControllerAsync:(CDUnknownBlockType)arg1;
 - (id)avSystemControllerDispatchQueue;
@@ -65,6 +72,7 @@
 - (long long)_audioRouteTypeForTelephonyDeviceType:(long long)arg1;
 - (long long)_audioRouteTypeForActiveAudioRoute:(id)arg1 withAttributes:(id)arg2;
 - (long long)_audioRouteTypeForOutputDevice:(id)arg1;
+- (id)_audioRouteTypesForClusteredOutputDevices:(id)arg1;
 - (_Bool)_outputDevicesRepresentWirelessSplitterGroup:(id)arg1;
 - (void)_updateAudioRoutesIfNecessary:(_Bool)arg1 forRoute:(id)arg2 withAttributes:(id)arg3 andOutputDevices:(id)arg4;
 - (_Bool)_isVolumeHUDVisibleOrFading;

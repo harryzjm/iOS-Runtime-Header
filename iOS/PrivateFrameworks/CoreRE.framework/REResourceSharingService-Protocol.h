@@ -6,9 +6,11 @@
 
 #import <CoreRE/NSObject-Protocol.h>
 
-@class NSString;
+@class NSString, REResourceRequestOptions;
 
 @protocol REResourceSharingService <NSObject>
+- (void)unsubscribeFromResourceAtAssetPath:(NSString *)arg1;
+- (void)setSubscriptionOptions:(REResourceRequestOptions *)arg1 forResourceAtAssetPath:(NSString *)arg2;
 - (void)fetchResourceAtAssetPath:(NSString *)arg1 withReply:(void (^)(RESharedResourcePayload *, NSError *))arg2;
 @end
 

@@ -12,18 +12,29 @@
 
 + (id)userInterfaceXPCInterface;
 + (id)userInterfaceProtocol;
+- (_Bool)isPhotoOrVideo:(id)arg1;
+- (_Bool)shouldForceHandleInSiri:(id)arg1;
+- (id)smartPromptWithContentDescription:(id)arg1 contentDestination:(id)arg2 workflowName:(id)arg3;
+- (id)contentDestinationWithError:(id *)arg1;
 - (id)serializedParametersForDonatedIntent:(id)arg1 allowDroppingUnconfigurableValues:(_Bool)arg2;
+- (id)actionForAppIdentifier:(id)arg1;
+- (void)selectedAppDidChange;
+- (void)initializeParameters;
+- (id)recipientsParameter;
 - (id)accessResourcesToBeAuthorizedImplicitlyForUpdatedParameterState:(id)arg1 forParameter:(id)arg2;
 - (void)handleWatchResponse:(id)arg1;
 - (void)runWithRemoteUserInterface:(id)arg1 input:(id)arg2;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 - (void)getContentFromInput:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getAttachmentFromInput:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getRecipients:(CDUnknownBlockType)arg1;
 - (void)resolveSlot:(id)arg1 withProcessedValue:(id)arg2 parameter:(id)arg3 input:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)localizedKeyParameterDisplayName;
 - (id)minimumSupportedClientVersion;
 - (_Bool)skipsProcessingHiddenParameters;
 - (_Bool)opensInApp;
+- (_Bool)isMessagesAppSelected;
+- (id)generatedAccessResourceNode;
 
 @end
 

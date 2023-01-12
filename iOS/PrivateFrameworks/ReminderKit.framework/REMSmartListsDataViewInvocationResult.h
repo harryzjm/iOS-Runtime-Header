@@ -6,21 +6,26 @@
 
 #import <ReminderKit/NSSecureCoding-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSDictionary;
 
 @interface REMSmartListsDataViewInvocationResult <NSSecureCoding>
 {
     NSArray *_smartListStorages;
+    NSDictionary *_accountStorages;
+    NSDictionary *_parentListStorages;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSDictionary *parentListStorages; // @synthesize parentListStorages=_parentListStorages;
+@property(readonly, nonatomic) NSDictionary *accountStorages; // @synthesize accountStorages=_accountStorages;
 @property(readonly, nonatomic) NSArray *smartListStorages; // @synthesize smartListStorages=_smartListStorages;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithSmartListStorages:(id)arg1 accountStorages:(id)arg2 parentListStorages:(id)arg3;
 - (id)initWithSmartListStorages:(id)arg1;
 
 @end

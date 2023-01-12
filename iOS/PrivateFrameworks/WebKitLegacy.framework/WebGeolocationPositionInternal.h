@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (id).cxx_construct;
-- (id)initWithCoreGeolocationPosition:(struct GeolocationPositionData *)arg1;
+- (id)initWithCoreGeolocationPosition:(void *)arg1;
 
 @end
 

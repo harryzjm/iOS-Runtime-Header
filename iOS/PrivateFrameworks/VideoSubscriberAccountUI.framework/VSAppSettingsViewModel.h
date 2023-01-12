@@ -12,6 +12,8 @@
 
 @interface VSAppSettingsViewModel : NSObject <LSApplicationWorkspaceObserverProtocol>
 {
+    _Bool _forceDSIDlessInstall;
+    _Bool _decided;
     int _registrationToken;
     NSString *_adamID;
     NSString *_bundleID;
@@ -39,11 +41,13 @@
 @property(nonatomic) int registrationToken; // @synthesize registrationToken=_registrationToken;
 @property(retain, nonatomic) LSApplicationWorkspace *workspace; // @synthesize workspace=_workspace;
 @property(retain, nonatomic) VSPrivacyFacade *privacyFacade; // @synthesize privacyFacade=_privacyFacade;
+@property(readonly, nonatomic, getter=isDecided) _Bool decided; // @synthesize decided=_decided;
 @property(nonatomic) long long privacyState; // @synthesize privacyState=_privacyState;
 @property(nonatomic) long long installState; // @synthesize installState=_installState;
 @property(readonly, copy, nonatomic) NSString *storeName; // @synthesize storeName=_storeName;
 @property(copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property(retain, nonatomic) UIImage *icon; // @synthesize icon=_icon;
+@property(nonatomic) _Bool forceDSIDlessInstall; // @synthesize forceDSIDlessInstall=_forceDSIDlessInstall;
 @property(readonly, copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property(readonly, copy, nonatomic) NSString *adamID; // @synthesize adamID=_adamID;
 - (id)appIconURLForSize:(struct CGSize)arg1;

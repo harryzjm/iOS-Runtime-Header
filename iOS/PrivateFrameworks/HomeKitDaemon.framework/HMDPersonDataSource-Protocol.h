@@ -6,7 +6,7 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class NAFuture, NSData, NSDictionary, NSSet, NSUUID;
+@class NAFuture, NSData, NSSet, NSUUID;
 @protocol HMDPersonManagerSettings;
 
 @protocol HMDPersonDataSource <NSObject>
@@ -14,7 +14,6 @@
 @property(readonly, getter=isCurrentDeviceAvailableResident) _Bool currentDeviceAvailableResident;
 @property(readonly, getter=isDataAvailable) _Bool dataAvailable;
 - (void)handleFaceMisclassificationForFaceCropData:(NSData *)arg1 personUUID:(NSUUID *)arg2;
-- (NAFuture *)updateSettingsUsingMessagePayload:(NSDictionary *)arg1;
 - (NAFuture *)removeFaceprintsWithUUIDs:(NSSet *)arg1;
 - (NAFuture *)removeFaceCropsWithUUIDs:(NSSet *)arg1;
 - (NAFuture *)removePersonsWithUUIDs:(NSSet *)arg1;

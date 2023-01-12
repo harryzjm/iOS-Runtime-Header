@@ -8,5 +8,6 @@
 
 @interface NSMutableString (PhotosUICore)
 - (_Bool)px_removeSuffix:(id)arg1;
+- (_Bool)px_removePrefix:(id)arg1;
 @end
 

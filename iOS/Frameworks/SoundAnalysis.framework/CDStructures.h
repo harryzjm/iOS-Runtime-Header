@@ -31,8 +31,6 @@ struct AudioQueueBuffer {
     unsigned int _field7;
 };
 
-struct AudioRingBuffer;
-
 struct AudioStreamBasicDescription {
     double mSampleRate;
     unsigned int mFormatID;
@@ -73,75 +71,39 @@ struct AudioUnitParameterInfo {
     unsigned int _field9;
 };
 
-struct Box {
-    CDUnknownFunctionPointerType *_field1;
-    struct Graph *_field2;
-    struct IsoGroup *_field3;
-    struct Subset *_field4;
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field5;
-    long long _field6;
-    struct vector<DSPGraph::InputPort, std::__1::allocator<DSPGraph::InputPort>> _field7;
-    struct vector<DSPGraph::OutputPort, std::__1::allocator<DSPGraph::OutputPort>> _field8;
-    struct unordered_set<DSPGraph::Box *, std::__1::hash<DSPGraph::Box *>, std::__1::equal_to<DSPGraph::Box *>, std::__1::allocator<DSPGraph::Box *>> _field9;
-    struct vector<DSPGraph::ParameterTap, std::__1::allocator<DSPGraph::ParameterTap>> _field10;
-    struct vector<DSPGraph::PropertyTap, std::__1::allocator<DSPGraph::PropertyTap>> _field11;
-    struct vector<std::__1::unique_ptr<DSPGraph::FileRecorder, std::__1::default_delete<DSPGraph::FileRecorder>>, std::__1::allocator<std::__1::unique_ptr<DSPGraph::FileRecorder, std::__1::default_delete<DSPGraph::FileRecorder>>>> _field12;
-    struct vector<std::__1::unique_ptr<DSPGraph::FileInjector, std::__1::default_delete<DSPGraph::FileInjector>>, std::__1::allocator<std::__1::unique_ptr<DSPGraph::FileInjector, std::__1::default_delete<DSPGraph::FileInjector>>>> _field13;
-    struct mutex _field14;
-    struct vector<std::__1::unique_ptr<DSPGraph::Analyzer, std::__1::default_delete<DSPGraph::Analyzer>>, std::__1::allocator<std::__1::unique_ptr<DSPGraph::Analyzer, std::__1::default_delete<DSPGraph::Analyzer>>>> _field15;
-    struct Set<DSPGraph::Analyzer *> _field16;
-    struct map<std::__1::pair<unsigned int, int>, long long, std::__1::less<std::__1::pair<unsigned int, int>>, std::__1::allocator<std::__1::pair<const std::__1::pair<unsigned int, int>, long long>>> _field17;
-    struct function<void (double)> _field18;
-    struct function<void (DSPGraph::Box *, int)> _field19;
-    struct function<void (DSPGraph::Box *, int)> _field20;
-    _Bool _field21;
-    _Bool _field22;
-    _Bool _field23;
-    _Bool _field24;
-    long long _field25;
-};
+struct Box;
 
 struct CABufferList;
 
 struct FormatAndBlockSize {
     struct AudioStreamBasicDescription mFormat;
-    int mBlockSize;
+    unsigned int mBlockSize;
 };
 
 struct Graph;
 
-struct InputPort;
-
 struct Interpreter;
-
-struct IsoGroup;
-
-struct Member;
-
-struct OutputPort;
-
-struct ParameterTap;
 
 struct ProcessingNode;
 
 struct ProcessingTree {
     shared_ptr_f6ac7592 mGraph;
-    struct list<SoundAnalysis::ProcessingContext, std::__1::allocator<SoundAnalysis::ProcessingContext>> mProcessingContexts;
-    struct list<SoundAnalysis::FormatMatchingNode, std::__1::allocator<SoundAnalysis::FormatMatchingNode>> mFormatMatchingNodes;
-    struct list<SoundAnalysis::SharedProcessingNode, std::__1::allocator<SoundAnalysis::SharedProcessingNode>> mSharedProcessingNodes;
-    struct list<SoundAnalysis::AnalyzerNode, std::__1::allocator<SoundAnalysis::AnalyzerNode>> mAnalyzerNodes;
+    struct list<SoundAnalysis::ProcessingContext, std::allocator<SoundAnalysis::ProcessingContext>> mProcessingContexts;
+    struct list<SoundAnalysis::FormatMatchingNode, std::allocator<SoundAnalysis::FormatMatchingNode>> mFormatMatchingNodes;
+    struct list<SoundAnalysis::SharedProcessingNode, std::allocator<SoundAnalysis::SharedProcessingNode>> mSharedProcessingNodes;
+    struct list<SoundAnalysis::AnalyzerNode, std::allocator<SoundAnalysis::AnalyzerNode>> mAnalyzerNodes;
     struct RootNode mRootNode;
-    int mMaxFramesPerSlice;
-    struct function<void (std::__1::shared_ptr<DSPGraph::Graph>, unsigned long)> mWillInitializeCallback;
-    int mCurrentInputSampleTime;
+    unsigned int mMaxFramesPerSlice;
+    struct function<void (std::shared_ptr<DSPGraph::Graph>, unsigned long)> mWillInitializeCallback;
+    long long mCurrentInputSampleTime;
 };
 
-struct PropertyTap;
+struct RingBuffer;
 
 struct RootNode {
     CDUnknownFunctionPointerType *_vptr$ProcessingNode;
     struct ProcessingNode *mUpstreamNode;
-    struct list<SoundAnalysis::ProcessingNode *, std::__1::allocator<SoundAnalysis::ProcessingNode *>> mDownstreamNodes;
+    struct list<SoundAnalysis::ProcessingNode *, std::allocator<SoundAnalysis::ProcessingNode *>> mDownstreamNodes;
     struct Box *mProcessingBox;
     struct FormatAndBlockSize mUpstreamFormat;
     struct FormatAndBlockSize mDownstreamFormat;
@@ -159,141 +121,92 @@ struct SMPTETime {
     short _field9;
 };
 
-struct Set<DSPGraph::Analyzer *> {
-    struct Member *_field1;
+struct SNLogMelParameters {
+    float sampleRate;
+    unsigned int numMelBands;
+    float minFrequency;
+    float maxFrequency;
+    int melType;
+    unsigned int hopLength;
+    unsigned int windowLength;
+    unsigned int windowOffset;
+    unsigned int fftLength;
+    int fftOffset;
+    int normalizationStrategy;
+};
+
+struct _NSRange {
+    unsigned long long _field1;
     unsigned long long _field2;
 };
 
-struct Subset;
-
 struct __CFString;
 
-struct __hash_node_base<std::__1::__hash_node<DSPGraph::Box *, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<DSPGraph::Box *, void *>*> *_field1;
-};
-
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>, void *>*> *_field1;
-};
-
-struct __list_node_base<SoundAnalysis::AnalyzerNode, void *> {
-    struct __list_node_base<SoundAnalysis::AnalyzerNode, void *> *__prev_;
-    struct __list_node_base<SoundAnalysis::AnalyzerNode, void *> *__next_;
-};
-
-struct __list_node_base<SoundAnalysis::FormatMatchingNode, void *> {
-    struct __list_node_base<SoundAnalysis::FormatMatchingNode, void *> *__prev_;
-    struct __list_node_base<SoundAnalysis::FormatMatchingNode, void *> *__next_;
-};
-
-struct __list_node_base<SoundAnalysis::ProcessingContext, void *> {
-    struct __list_node_base<SoundAnalysis::ProcessingContext, void *> *__prev_;
-    struct __list_node_base<SoundAnalysis::ProcessingContext, void *> *__next_;
-};
-
-struct __list_node_base<SoundAnalysis::ProcessingNode *, void *> {
-    struct __list_node_base<SoundAnalysis::ProcessingNode *, void *> *__prev_;
-    struct __list_node_base<SoundAnalysis::ProcessingNode *, void *> *__next_;
-};
-
-struct __list_node_base<SoundAnalysis::SharedProcessingNode, void *> {
-    struct __list_node_base<SoundAnalysis::SharedProcessingNode, void *> *__prev_;
-    struct __list_node_base<SoundAnalysis::SharedProcessingNode, void *> *__next_;
-};
-
-struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
-    struct __tree_node_base<void *> *_field1;
-};
-
-struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
-    struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__rep, std::__1::allocator<char>> {
-        struct __rep {
-            union {
-                struct __long {
-                    char *_field1;
-                    unsigned long long _field2;
-                    unsigned long long _field3;
-                } _field1;
-                struct __short {
-                    char _field1[23];
-                    struct {
-                        unsigned char _field1;
-                    } _field2;
-                } _field2;
-                struct __raw {
-                    unsigned long long _field1[3];
-                } _field3;
-            } _field1;
-        } _field1;
-    } _field1;
-};
-
-struct function<void (DSPGraph::Box *, int)> {
-    struct __value_func<void (DSPGraph::Box *, int)> {
-        struct type _field1;
-        struct __base<void (DSPGraph::Box *, int)> *_field2;
-    } _field1;
-};
-
-struct function<void (double)> {
-    struct __value_func<void (double)> {
-        struct type _field1;
-        struct __base<void (double)> *_field2;
-    } _field1;
-};
-
-struct function<void (std::__1::shared_ptr<DSPGraph::Graph>, unsigned long)> {
-    struct __value_func<void (std::__1::shared_ptr<DSPGraph::Graph>, unsigned long)> {
+struct function<void (std::shared_ptr<DSPGraph::Graph>, unsigned long)> {
+    struct __value_func<void (std::shared_ptr<DSPGraph::Graph>, unsigned long)> {
         struct type __buf_;
-        struct __base<void (std::__1::shared_ptr<DSPGraph::Graph>, unsigned long)> *__f_;
+        void *__f_;
     } __f_;
 };
 
-struct list<SoundAnalysis::AnalyzerNode, std::__1::allocator<SoundAnalysis::AnalyzerNode>> {
-    struct __list_node_base<SoundAnalysis::AnalyzerNode, void *> __end_;
-    struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<SoundAnalysis::AnalyzerNode, void *>>> {
+struct list<SoundAnalysis::AnalyzerNode, std::allocator<SoundAnalysis::AnalyzerNode>> {
+    struct __list_node_base<SoundAnalysis::AnalyzerNode, void *> {
+        void *__prev_;
+        void *__next_;
+    } __end_;
+    struct __compressed_pair<unsigned long, std::allocator<std::__list_node<SoundAnalysis::AnalyzerNode, void *>>> {
         unsigned long long __value_;
     } __size_alloc_;
 };
 
-struct list<SoundAnalysis::FormatMatchingNode, std::__1::allocator<SoundAnalysis::FormatMatchingNode>> {
-    struct __list_node_base<SoundAnalysis::FormatMatchingNode, void *> __end_;
-    struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<SoundAnalysis::FormatMatchingNode, void *>>> {
+struct list<SoundAnalysis::FormatMatchingNode, std::allocator<SoundAnalysis::FormatMatchingNode>> {
+    struct __list_node_base<SoundAnalysis::FormatMatchingNode, void *> {
+        void *__prev_;
+        void *__next_;
+    } __end_;
+    struct __compressed_pair<unsigned long, std::allocator<std::__list_node<SoundAnalysis::FormatMatchingNode, void *>>> {
         unsigned long long __value_;
     } __size_alloc_;
 };
 
-struct list<SoundAnalysis::ProcessingContext, std::__1::allocator<SoundAnalysis::ProcessingContext>> {
-    struct __list_node_base<SoundAnalysis::ProcessingContext, void *> __end_;
-    struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<SoundAnalysis::ProcessingContext, void *>>> {
+struct list<SoundAnalysis::MD5Hash, std::allocator<SoundAnalysis::MD5Hash>> {
+    struct __list_node_base<SoundAnalysis::MD5Hash, void *> {
+        void *__prev_;
+        void *__next_;
+    } __end_;
+    struct __compressed_pair<unsigned long, std::allocator<std::__list_node<SoundAnalysis::MD5Hash, void *>>> {
         unsigned long long __value_;
     } __size_alloc_;
 };
 
-struct list<SoundAnalysis::ProcessingNode *, std::__1::allocator<SoundAnalysis::ProcessingNode *>> {
-    struct __list_node_base<SoundAnalysis::ProcessingNode *, void *> __end_;
-    struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<SoundAnalysis::ProcessingNode *, void *>>> {
+struct list<SoundAnalysis::ProcessingContext, std::allocator<SoundAnalysis::ProcessingContext>> {
+    struct __list_node_base<SoundAnalysis::ProcessingContext, void *> {
+        void *__prev_;
+        void *__next_;
+    } __end_;
+    struct __compressed_pair<unsigned long, std::allocator<std::__list_node<SoundAnalysis::ProcessingContext, void *>>> {
         unsigned long long __value_;
     } __size_alloc_;
 };
 
-struct list<SoundAnalysis::SharedProcessingNode, std::__1::allocator<SoundAnalysis::SharedProcessingNode>> {
-    struct __list_node_base<SoundAnalysis::SharedProcessingNode, void *> __end_;
-    struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<SoundAnalysis::SharedProcessingNode, void *>>> {
+struct list<SoundAnalysis::ProcessingNode *, std::allocator<SoundAnalysis::ProcessingNode *>> {
+    struct __list_node_base<SoundAnalysis::ProcessingNode *, void *> {
+        void *__prev_;
+        void *__next_;
+    } __end_;
+    struct __compressed_pair<unsigned long, std::allocator<std::__list_node<SoundAnalysis::ProcessingNode *, void *>>> {
         unsigned long long __value_;
     } __size_alloc_;
 };
 
-struct map<std::__1::pair<unsigned int, int>, long long, std::__1::less<std::__1::pair<unsigned int, int>>, std::__1::allocator<std::__1::pair<const std::__1::pair<unsigned int, int>, long long>>> {
-    struct __tree<std::__1::__value_type<std::__1::pair<unsigned int, int>, long long>, std::__1::__map_value_compare<std::__1::pair<unsigned int, int>, std::__1::__value_type<std::__1::pair<unsigned int, int>, long long>, std::__1::less<std::__1::pair<unsigned int, int>>, true>, std::__1::allocator<std::__1::__value_type<std::__1::pair<unsigned int, int>, long long>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<std::__1::pair<unsigned int, int>, long long>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<std::__1::pair<unsigned int, int>, std::__1::__value_type<std::__1::pair<unsigned int, int>, long long>, std::__1::less<std::__1::pair<unsigned int, int>>, true>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
+struct list<SoundAnalysis::SharedProcessingNode, std::allocator<SoundAnalysis::SharedProcessingNode>> {
+    struct __list_node_base<SoundAnalysis::SharedProcessingNode, void *> {
+        void *__prev_;
+        void *__next_;
+    } __end_;
+    struct __compressed_pair<unsigned long, std::allocator<std::__list_node<SoundAnalysis::SharedProcessingNode, void *>>> {
+        unsigned long long __value_;
+    } __size_alloc_;
 };
 
 struct mutex {
@@ -312,157 +225,99 @@ struct type {
     unsigned char __lx[24];
 };
 
-struct unique_ptr<AudioRingBuffer, std::__1::default_delete<AudioRingBuffer>> {
-    struct __compressed_pair<AudioRingBuffer *, std::__1::default_delete<AudioRingBuffer>> {
-        struct AudioRingBuffer *__value_;
+struct unique_ptr<AT::RingBuffer, std::default_delete<AT::RingBuffer>> {
+    struct __compressed_pair<AT::RingBuffer *, std::default_delete<AT::RingBuffer>> {
+        struct RingBuffer *__value_;
     } __ptr_;
 };
 
-struct unique_ptr<CABufferList, std::__1::default_delete<CABufferList>> {
-    struct __compressed_pair<CABufferList *, std::__1::default_delete<CABufferList>> {
+struct unique_ptr<CABufferList, std::default_delete<CABufferList>> {
+    struct __compressed_pair<CABufferList *, std::default_delete<CABufferList>> {
         struct CABufferList *__value_;
     } __ptr_;
 };
 
-struct unique_ptr<DSPGraph::Analyzer, std::__1::default_delete<DSPGraph::Analyzer>>;
-
-struct unique_ptr<DSPGraph::FileInjector, std::__1::default_delete<DSPGraph::FileInjector>>;
-
-struct unique_ptr<DSPGraph::FileRecorder, std::__1::default_delete<DSPGraph::FileRecorder>>;
-
-struct unique_ptr<DSPGraph::Graph, std::__1::default_delete<DSPGraph::Graph>> {
-    struct __compressed_pair<DSPGraph::Graph *, std::__1::default_delete<DSPGraph::Graph>> {
+struct unique_ptr<DSPGraph::Graph, std::default_delete<DSPGraph::Graph>> {
+    struct __compressed_pair<DSPGraph::Graph *, std::default_delete<DSPGraph::Graph>> {
         struct Graph *__value_;
     } __ptr_;
 };
 
-struct unique_ptr<DSPGraph::Interpreter, std::__1::default_delete<DSPGraph::Interpreter>> {
-    struct __compressed_pair<DSPGraph::Interpreter *, std::__1::default_delete<DSPGraph::Interpreter>> {
+struct unique_ptr<DSPGraph::Interpreter, std::default_delete<DSPGraph::Interpreter>> {
+    struct __compressed_pair<DSPGraph::Interpreter *, std::default_delete<DSPGraph::Interpreter>> {
         struct Interpreter *__value_;
     } __ptr_;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<DSPGraph::Box *, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<DSPGraph::Box *, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<DSPGraph::Box *, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<DSPGraph::Box *, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<DSPGraph::Box *, void *>*> **_field1;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<DSPGraph::Box *, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<DSPGraph::Box *, void *>*>*>> {
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<SoundAnalysis::MD5Hash, id<MLFeatureProvider>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<SoundAnalysis::MD5Hash, id<MLFeatureProvider>>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<SoundAnalysis::MD5Hash, id<MLFeatureProvider>>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<SoundAnalysis::MD5Hash, id<MLFeatureProvider>>, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<SoundAnalysis::MD5Hash, id<MLFeatureProvider>>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<SoundAnalysis::MD5Hash, id<MLFeatureProvider>>, void *>*>*>> {
+                unsigned long long __value_;
+            } __data_;
+        } __value_;
+    } __ptr_;
+};
+
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::string>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::string>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::string>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::string>, void *>*>*>>> {
+        void **_field1;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::string>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::string>, void *>*>*>> {
                 unsigned long long _field1;
             } _field1;
         } _field2;
     } _field1;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>, void *>*> **_field1;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>, void *>*>*>> {
-                unsigned long long _field1;
+struct unordered_map<SoundAnalysis::MD5Hash, id<MLFeatureProvider>, std::hash<SoundAnalysis::MD5Hash>, std::equal_to<SoundAnalysis::MD5Hash>, std::allocator<std::pair<const SoundAnalysis::MD5Hash, id<MLFeatureProvider>>>> {
+    struct __hash_table<std::__hash_value_type<SoundAnalysis::MD5Hash, id<MLFeatureProvider>>, std::__unordered_map_hasher<SoundAnalysis::MD5Hash, std::__hash_value_type<SoundAnalysis::MD5Hash, id<MLFeatureProvider>>, std::hash<SoundAnalysis::MD5Hash>, std::equal_to<SoundAnalysis::MD5Hash>, true>, std::__unordered_map_equal<SoundAnalysis::MD5Hash, std::__hash_value_type<SoundAnalysis::MD5Hash, id<MLFeatureProvider>>, std::equal_to<SoundAnalysis::MD5Hash>, std::hash<SoundAnalysis::MD5Hash>, true>, std::allocator<std::__hash_value_type<SoundAnalysis::MD5Hash, id<MLFeatureProvider>>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<SoundAnalysis::MD5Hash, id<MLFeatureProvider>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<SoundAnalysis::MD5Hash, id<MLFeatureProvider>>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<SoundAnalysis::MD5Hash, id<MLFeatureProvider>>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<SoundAnalysis::MD5Hash, id<MLFeatureProvider>>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<SoundAnalysis::MD5Hash, id<MLFeatureProvider>>, void *>*> {
+                void *__next_;
+            } __value_;
+        } __p1_;
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<SoundAnalysis::MD5Hash, std::__hash_value_type<SoundAnalysis::MD5Hash, id<MLFeatureProvider>>, std::hash<SoundAnalysis::MD5Hash>, std::equal_to<SoundAnalysis::MD5Hash>, true>> {
+            unsigned long long __value_;
+        } __p2_;
+        struct __compressed_pair<float, std::__unordered_map_equal<SoundAnalysis::MD5Hash, std::__hash_value_type<SoundAnalysis::MD5Hash, id<MLFeatureProvider>>, std::equal_to<SoundAnalysis::MD5Hash>, std::hash<SoundAnalysis::MD5Hash>, true>> {
+            float __value_;
+        } __p3_;
+    } __table_;
+};
+
+struct unordered_map<std::string, std::string, std::hash<std::string>, std::equal_to<std::string>, std::allocator<std::pair<const std::string, std::string>>> {
+    struct __hash_table<std::__hash_value_type<std::string, std::string>, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, std::string>, std::hash<std::string>, std::equal_to<std::string>, true>, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, std::string>, std::equal_to<std::string>, std::hash<std::string>, true>, std::allocator<std::__hash_value_type<std::string, std::string>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::string>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::string>, void *>*>*>>> _field1;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::string>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<std::string, std::string>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::string>, void *>*> {
+                void *_field1;
             } _field1;
         } _field2;
-    } _field1;
-};
-
-struct unordered_map<std::__1::basic_string<char>, std::__1::basic_string<char>, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::basic_string<char>>>> {
-    struct __hash_table<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>, std::__1::__unordered_map_hasher<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>, std::__1::hash<std::__1::basic_string<char>>, true>, std::__1::__unordered_map_equal<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, true>, std::__1::allocator<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>, void *>*>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>, void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>, std::__1::hash<std::__1::basic_string<char>>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, std::string>, std::hash<std::string>, std::equal_to<std::string>, true>> {
             unsigned long long _field1;
         } _field3;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, std::string>, std::equal_to<std::string>, std::hash<std::string>, true>> {
             float _field1;
         } _field4;
     } _field1;
 };
 
-struct unordered_set<DSPGraph::Box *, std::__1::hash<DSPGraph::Box *>, std::__1::equal_to<DSPGraph::Box *>, std::__1::allocator<DSPGraph::Box *>> {
-    struct __hash_table<DSPGraph::Box *, std::__1::hash<DSPGraph::Box *>, std::__1::equal_to<DSPGraph::Box *>, std::__1::allocator<DSPGraph::Box *>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<DSPGraph::Box *, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<DSPGraph::Box *, void *>*>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<DSPGraph::Box *, void *>*>, std::__1::allocator<std::__1::__hash_node<DSPGraph::Box *, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<DSPGraph::Box *, void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::hash<DSPGraph::Box *>> {
-            unsigned long long _field1;
-        } _field3;
-        struct __compressed_pair<float, std::__1::equal_to<DSPGraph::Box *>> {
-            float _field1;
-        } _field4;
-    } _field1;
-};
-
-struct vector<DSPGraph::InputPort, std::__1::allocator<DSPGraph::InputPort>> {
-    struct InputPort *_field1;
-    struct InputPort *_field2;
-    struct __compressed_pair<DSPGraph::InputPort *, std::__1::allocator<DSPGraph::InputPort>> {
-        struct InputPort *_field1;
-    } _field3;
-};
-
-struct vector<DSPGraph::OutputPort, std::__1::allocator<DSPGraph::OutputPort>> {
-    struct OutputPort *_field1;
-    struct OutputPort *_field2;
-    struct __compressed_pair<DSPGraph::OutputPort *, std::__1::allocator<DSPGraph::OutputPort>> {
-        struct OutputPort *_field1;
-    } _field3;
-};
-
-struct vector<DSPGraph::ParameterTap, std::__1::allocator<DSPGraph::ParameterTap>> {
-    struct ParameterTap *_field1;
-    struct ParameterTap *_field2;
-    struct __compressed_pair<DSPGraph::ParameterTap *, std::__1::allocator<DSPGraph::ParameterTap>> {
-        struct ParameterTap *_field1;
-    } _field3;
-};
-
-struct vector<DSPGraph::PropertyTap, std::__1::allocator<DSPGraph::PropertyTap>> {
-    struct PropertyTap *_field1;
-    struct PropertyTap *_field2;
-    struct __compressed_pair<DSPGraph::PropertyTap *, std::__1::allocator<DSPGraph::PropertyTap>> {
-        struct PropertyTap *_field1;
-    } _field3;
-};
-
-struct vector<float, std::__1::allocator<float>> {
+struct vector<float, std::allocator<float>> {
     float *__begin_;
     float *__end_;
-    struct __compressed_pair<float *, std::__1::allocator<float>> {
+    struct __compressed_pair<float *, std::allocator<float>> {
         float *__value_;
     } __end_cap_;
 };
 
-struct vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>> {
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> *_field1;
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> *_field2;
-    struct __compressed_pair<std::__1::basic_string<char>*, std::__1::allocator<std::__1::basic_string<char>>> {
-        struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> *_field1;
-    } _field3;
-};
-
-struct vector<std::__1::unique_ptr<DSPGraph::Analyzer, std::__1::default_delete<DSPGraph::Analyzer>>, std::__1::allocator<std::__1::unique_ptr<DSPGraph::Analyzer, std::__1::default_delete<DSPGraph::Analyzer>>>> {
-    struct unique_ptr<DSPGraph::Analyzer, std::__1::default_delete<DSPGraph::Analyzer>> *_field1;
-    struct unique_ptr<DSPGraph::Analyzer, std::__1::default_delete<DSPGraph::Analyzer>> *_field2;
-    struct __compressed_pair<std::__1::unique_ptr<DSPGraph::Analyzer, std::__1::default_delete<DSPGraph::Analyzer>>*, std::__1::allocator<std::__1::unique_ptr<DSPGraph::Analyzer, std::__1::default_delete<DSPGraph::Analyzer>>>> {
-        struct unique_ptr<DSPGraph::Analyzer, std::__1::default_delete<DSPGraph::Analyzer>> *_field1;
-    } _field3;
-};
-
-struct vector<std::__1::unique_ptr<DSPGraph::FileInjector, std::__1::default_delete<DSPGraph::FileInjector>>, std::__1::allocator<std::__1::unique_ptr<DSPGraph::FileInjector, std::__1::default_delete<DSPGraph::FileInjector>>>> {
-    struct unique_ptr<DSPGraph::FileInjector, std::__1::default_delete<DSPGraph::FileInjector>> *_field1;
-    struct unique_ptr<DSPGraph::FileInjector, std::__1::default_delete<DSPGraph::FileInjector>> *_field2;
-    struct __compressed_pair<std::__1::unique_ptr<DSPGraph::FileInjector, std::__1::default_delete<DSPGraph::FileInjector>>*, std::__1::allocator<std::__1::unique_ptr<DSPGraph::FileInjector, std::__1::default_delete<DSPGraph::FileInjector>>>> {
-        struct unique_ptr<DSPGraph::FileInjector, std::__1::default_delete<DSPGraph::FileInjector>> *_field1;
-    } _field3;
-};
-
-struct vector<std::__1::unique_ptr<DSPGraph::FileRecorder, std::__1::default_delete<DSPGraph::FileRecorder>>, std::__1::allocator<std::__1::unique_ptr<DSPGraph::FileRecorder, std::__1::default_delete<DSPGraph::FileRecorder>>>> {
-    struct unique_ptr<DSPGraph::FileRecorder, std::__1::default_delete<DSPGraph::FileRecorder>> *_field1;
-    struct unique_ptr<DSPGraph::FileRecorder, std::__1::default_delete<DSPGraph::FileRecorder>> *_field2;
-    struct __compressed_pair<std::__1::unique_ptr<DSPGraph::FileRecorder, std::__1::default_delete<DSPGraph::FileRecorder>>*, std::__1::allocator<std::__1::unique_ptr<DSPGraph::FileRecorder, std::__1::default_delete<DSPGraph::FileRecorder>>>> {
-        struct unique_ptr<DSPGraph::FileRecorder, std::__1::default_delete<DSPGraph::FileRecorder>> *_field1;
+struct vector<std::string, std::allocator<std::string>> {
+    void *_field1;
+    void *_field2;
+    struct __compressed_pair<std::string *, std::allocator<std::string>> {
+        void *_field1;
     } _field3;
 };
 
@@ -486,32 +341,34 @@ typedef struct shared_ptr<DSPGraph::Graph> {
     struct __shared_weak_count *__cntrl_;
 } shared_ptr_f6ac7592;
 
-typedef struct unique_ptr<DSPGraph::Graph, std::__1::default_delete<DSPGraph::Graph>> {
-    struct __compressed_pair<DSPGraph::Graph *, std::__1::default_delete<DSPGraph::Graph>> {
+typedef struct unique_ptr<DSPGraph::Graph, std::default_delete<DSPGraph::Graph>> {
+    struct __compressed_pair<DSPGraph::Graph *, std::default_delete<DSPGraph::Graph>> {
         struct Graph *__value_;
     } __ptr_;
-} unique_ptr_7f3c0f79;
+} unique_ptr_a0b8f5a3;
 
-typedef struct unordered_map<std::__1::basic_string<char>, std::__1::basic_string<char>, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::basic_string<char>>>> {
-    struct __hash_table<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>, std::__1::__unordered_map_hasher<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>, std::__1::hash<std::__1::basic_string<char>>, true>, std::__1::__unordered_map_equal<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, true>, std::__1::allocator<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>, void *>*>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>, void *>*> _field1;
+typedef struct unordered_map<std::string, std::string, std::hash<std::string>, std::equal_to<std::string>, std::allocator<std::pair<const std::string, std::string>>> {
+    struct __hash_table<std::__hash_value_type<std::string, std::string>, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, std::string>, std::hash<std::string>, std::equal_to<std::string>, true>, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, std::string>, std::equal_to<std::string>, std::hash<std::string>, true>, std::allocator<std::__hash_value_type<std::string, std::string>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::string>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::string>, void *>*>*>>> _field1;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::string>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<std::string, std::string>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::string>, void *>*> {
+                void *_field1;
+            } _field1;
         } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>, std::__1::hash<std::__1::basic_string<char>>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, std::string>, std::hash<std::string>, std::equal_to<std::string>, true>> {
             unsigned long long _field1;
         } _field3;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, std::string>, std::equal_to<std::string>, std::hash<std::string>, true>> {
             float _field1;
         } _field4;
     } _field1;
-} unordered_map_0ace0ab1;
+} unordered_map_048dd119;
 
-typedef struct vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>> {
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> *_field1;
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> *_field2;
-    struct __compressed_pair<std::__1::basic_string<char>*, std::__1::allocator<std::__1::basic_string<char>>> {
-        struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> *_field1;
+typedef struct vector<std::string, std::allocator<std::string>> {
+    void *_field1;
+    void *_field2;
+    struct __compressed_pair<std::string *, std::allocator<std::string>> {
+        void *_field1;
     } _field3;
-} vector_9492931a;
+} vector_74824a0a;
 

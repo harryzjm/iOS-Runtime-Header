@@ -13,6 +13,7 @@
 + (id)descriptor;
 
 // Remaining properties
+@property(nonatomic) int earliestVersion; // @dynamic earliestVersion;
 @property(nonatomic) _Bool hasVrfPublicKey; // @dynamic hasVrfPublicKey;
 @property(copy, nonatomic) NSData *publicKeyBytes; // @dynamic publicKeyBytes;
 @property(retain, nonatomic) VRFPublicKey *vrfPublicKey; // @dynamic vrfPublicKey;

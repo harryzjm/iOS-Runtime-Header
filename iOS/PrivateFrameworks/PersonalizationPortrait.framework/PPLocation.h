@@ -21,6 +21,7 @@
 }
 
 + (id)clusterIdentifierFromPlacemark:(id)arg1;
++ (unsigned short)categoryForDescription:(id)arg1;
 + (id)describeCategory:(unsigned short)arg1;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -34,6 +35,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)customizedDescription;
 - (_Bool)isEqualToLocation:(id)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

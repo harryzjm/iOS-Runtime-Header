@@ -12,6 +12,7 @@
 {
     _Bool _useSiteAutoDiscovery;
     _Bool _includeManagedAppsInBundleIdACL;
+    _Bool _includeKerberosAppsInBundleIdACL;
     _Bool _isDefaultRealm;
     _Bool _allowPasswordChange;
     _Bool _allowAutomaticLogin;
@@ -20,6 +21,7 @@
     _Bool _syncLocalPassword;
     _Bool _monitorCredentialsCache;
     _Bool _delayUserSetup;
+    _Bool _requireTLSForLDAP;
     NSString *_cacheName;
     NSString *_principalName;
     NSString *_siteCode;
@@ -36,9 +38,16 @@
     NSString *_helpText;
     NSString *_customUsernameLabel;
     NSNumber *_replicationTime;
+    long long _credentialUseMode;
+    NSString *_password;
+    NSArray *_preferredKDCs;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *preferredKDCs; // @synthesize preferredKDCs=_preferredKDCs;
+@property(retain, nonatomic) NSString *password; // @synthesize password=_password;
+@property _Bool requireTLSForLDAP; // @synthesize requireTLSForLDAP=_requireTLSForLDAP;
+@property(nonatomic) long long credentialUseMode; // @synthesize credentialUseMode=_credentialUseMode;
 @property _Bool delayUserSetup; // @synthesize delayUserSetup=_delayUserSetup;
 @property _Bool monitorCredentialsCache; // @synthesize monitorCredentialsCache=_monitorCredentialsCache;
 @property _Bool syncLocalPassword; // @synthesize syncLocalPassword=_syncLocalPassword;
@@ -58,6 +67,7 @@
 @property(nonatomic) _Bool allowPasswordChange; // @synthesize allowPasswordChange=_allowPasswordChange;
 @property(nonatomic) _Bool isDefaultRealm; // @synthesize isDefaultRealm=_isDefaultRealm;
 @property(retain, nonatomic) NSDictionary *domainRealmMapping; // @synthesize domainRealmMapping=_domainRealmMapping;
+@property(nonatomic) _Bool includeKerberosAppsInBundleIdACL; // @synthesize includeKerberosAppsInBundleIdACL=_includeKerberosAppsInBundleIdACL;
 @property(nonatomic) _Bool includeManagedAppsInBundleIdACL; // @synthesize includeManagedAppsInBundleIdACL=_includeManagedAppsInBundleIdACL;
 @property(retain, nonatomic) NSArray *credentialBundleIdACL; // @synthesize credentialBundleIdACL=_credentialBundleIdACL;
 @property(nonatomic) _Bool useSiteAutoDiscovery; // @synthesize useSiteAutoDiscovery=_useSiteAutoDiscovery;
@@ -66,7 +76,6 @@
 @property(retain, nonatomic) NSString *principalName; // @synthesize principalName=_principalName;
 @property(retain, nonatomic) NSString *cacheName; // @synthesize cacheName=_cacheName;
 - (id)initWithDictionary:(id)arg1;
-- (id)initAndPopulateExtensionData;
 
 @end
 

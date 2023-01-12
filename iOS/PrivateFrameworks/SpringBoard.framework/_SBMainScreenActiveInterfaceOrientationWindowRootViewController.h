@@ -6,13 +6,18 @@
 
 #import <SpringBoardFoundation/SBFTouchPassThroughViewController.h>
 
+@class UIViewController;
+
 @interface _SBMainScreenActiveInterfaceOrientationWindowRootViewController : SBFTouchPassThroughViewController
 {
     unsigned long long _supportedInterfaceOrientations;
+    UIViewController *_contentViewController;
 }
 
-@property(nonatomic) unsigned long long supportedInterfaceOrientations; // @synthesize supportedInterfaceOrientations=_supportedInterfaceOrientations;
+- (void).cxx_destruct;
+@property(nonatomic) __weak UIViewController *contentViewController; // @synthesize contentViewController=_contentViewController;
 - (_Bool)_canShowWhileLocked;
+@property(nonatomic) unsigned long long supportedInterfaceOrientations; // @synthesize supportedInterfaceOrientations=_supportedInterfaceOrientations;
 - (id)_viewControllerForSupportedInterfaceOrientationsWithDismissCheck:(_Bool)arg1;
 - (_Bool)shouldAutorotate;
 

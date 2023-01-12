@@ -19,8 +19,6 @@
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) CDUnknownBlockType priorityHandler; // @synthesize priorityHandler=_priorityHandler;
-@property(copy, nonatomic) CDUnknownBlockType cancelHandler; // @synthesize cancelHandler=_cancelHandler;
 @property(nonatomic) long long relativePriority; // @synthesize relativePriority=_relativePriority;
 - (void)cancel;
 

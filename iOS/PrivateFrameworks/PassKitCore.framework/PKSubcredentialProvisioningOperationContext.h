@@ -17,12 +17,16 @@
     PKAppletSubcredential *_addedCredential;
     PKAppletSubcredentialEncryptedRequest *_registrationData;
     NSData *_trackingAttestation;
+    NSData *_ephemeralPublicKey;
+    NSData *_encryptedData;
     PKAppletSubcredentialSharingInvitation *_sentInvitation;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool hasAcceptedInvitation; // @synthesize hasAcceptedInvitation=_hasAcceptedInvitation;
 @property(retain, nonatomic) PKAppletSubcredentialSharingInvitation *sentInvitation; // @synthesize sentInvitation=_sentInvitation;
+@property(retain, nonatomic) NSData *encryptedData; // @synthesize encryptedData=_encryptedData;
+@property(retain, nonatomic) NSData *ephemeralPublicKey; // @synthesize ephemeralPublicKey=_ephemeralPublicKey;
 @property(retain, nonatomic) NSData *trackingAttestation; // @synthesize trackingAttestation=_trackingAttestation;
 @property(retain, nonatomic) PKAppletSubcredentialEncryptedRequest *registrationData; // @synthesize registrationData=_registrationData;
 @property(retain, nonatomic) PKAppletSubcredential *addedCredential; // @synthesize addedCredential=_addedCredential;

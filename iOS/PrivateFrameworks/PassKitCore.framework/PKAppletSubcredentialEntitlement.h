@@ -29,6 +29,7 @@
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)description;
+@property(readonly, nonatomic) long long type;
 - (id)defaultLongDescription;
 - (id)defaultDescription;
 - (id)localizedDescriptionWithPass:(id)arg1;

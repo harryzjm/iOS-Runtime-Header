@@ -30,9 +30,13 @@
     UIImageView *_contactsIconView;
     UIButton *_cancelButton;
     id <CKBannerUpdatesViewDelegate> _updatesDelegate;
+    UIView *_bottomSeparatorView;
+    UIView *_topSeparatorView;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIView *topSeparatorView; // @synthesize topSeparatorView=_topSeparatorView;
+@property(retain, nonatomic) UIView *bottomSeparatorView; // @synthesize bottomSeparatorView=_bottomSeparatorView;
 @property(nonatomic) id <CKBannerUpdatesViewDelegate> updatesDelegate; // @synthesize updatesDelegate=_updatesDelegate;
 @property(retain, nonatomic) UIButton *cancelButton; // @synthesize cancelButton=_cancelButton;
 @property(retain, nonatomic) UIImageView *contactsIconView; // @synthesize contactsIconView=_contactsIconView;
@@ -54,6 +58,7 @@
 - (void)_updateSubtitleLabel;
 - (void)_updateTitleLabel;
 - (void)_updateAvatarView;
+- (void)addSeparators;
 - (void)setupViews;
 - (double)maxLabelWidthForSize:(struct CGSize)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

@@ -4,15 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-@class GEODefaultsDBDict, GEOSQLiteDB, _GEOConfigDBOperationQueue, geo_isolater;
+@class GEOSQLiteDB, _GEOConfigDBOperationQueue;
 
 __attribute__((visibility("hidden")))
-@interface _GEOConfigDB : NSObject
+@interface _GEOConfigDB
 {
-    GEODefaultsDBDict *_cache;
-    geo_isolater *_isolator;
     _Atomic long long _lastId;
     GEOSQLiteDB *_db;
     _GEOConfigDBOperationQueue *_operationQueue;
@@ -28,7 +24,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _GEOConfigDBOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
 @property(readonly, nonatomic) GEOSQLiteDB *db; // @synthesize db=_db;
 - (long long)nextId;
-- (void)withCache:(CDUnknownBlockType)arg1;
 - (id)init:(id)arg1 cache:(id)arg2 operationQueue:(id)arg3 clearFunction:(CDUnknownFunctionPointerType)arg4 setFunction:(CDUnknownFunctionPointerType)arg5 addFunction:(CDUnknownFunctionPointerType)arg6 tableName:(id)arg7;
 
 @end

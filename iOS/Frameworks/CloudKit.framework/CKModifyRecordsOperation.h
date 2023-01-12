@@ -17,6 +17,8 @@
     _Bool _markAsParticipantNeedsNewInvitationToken;
     CDUnknownBlockType _perRecordProgressBlock;
     CDUnknownBlockType _perRecordCompletionBlock;
+    CDUnknownBlockType _perRecordSaveBlock;
+    CDUnknownBlockType _perRecordDeleteBlock;
     CDUnknownBlockType _modifyRecordsCompletionBlock;
     CDUnknownBlockType _recordsInFlightBlock;
     NSArray *_recordsToSave;
@@ -76,6 +78,8 @@
 - (id)activityCreate;
 @property(copy, nonatomic) CDUnknownBlockType recordsInFlightBlock; // @synthesize recordsInFlightBlock=_recordsInFlightBlock;
 @property(copy, nonatomic) CDUnknownBlockType modifyRecordsCompletionBlock; // @synthesize modifyRecordsCompletionBlock=_modifyRecordsCompletionBlock;
+@property(copy, nonatomic) CDUnknownBlockType perRecordDeleteBlock; // @synthesize perRecordDeleteBlock=_perRecordDeleteBlock;
+@property(copy, nonatomic) CDUnknownBlockType perRecordSaveBlock; // @synthesize perRecordSaveBlock=_perRecordSaveBlock;
 @property(copy, nonatomic) CDUnknownBlockType perRecordCompletionBlock; // @synthesize perRecordCompletionBlock=_perRecordCompletionBlock;
 @property(copy, nonatomic) CDUnknownBlockType perRecordProgressBlock; // @synthesize perRecordProgressBlock=_perRecordProgressBlock;
 - (id)initWithRecordsToSave:(id)arg1 recordIDsToDelete:(id)arg2;

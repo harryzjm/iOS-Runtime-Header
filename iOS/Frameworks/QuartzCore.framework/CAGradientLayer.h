@@ -23,7 +23,7 @@
 - (unsigned int)_renderLayerPropertyAnimationFlags:(unsigned int)arg1;
 - (_Bool)_renderLayerDefinesProperty:(unsigned int)arg1;
 - (void)_colorSpaceDidChange;
-- (struct Layer *)_copyRenderLayer:(struct Transaction *)arg1 layerFlags:(unsigned int)arg2 commitFlags:(unsigned int *)arg3;
+- (void *)_copyRenderLayer:(void *)arg1 layerFlags:(unsigned int)arg2 commitFlags:(unsigned int *)arg3;
 - (void)_renderBackgroundInContext:(struct CGContext *)arg1;
 - (id)implicitAnimationForKeyPath:(id)arg1;
 - (void)didChangeValueForKey:(id)arg1;

@@ -8,7 +8,6 @@
 
 @interface HKMedicationRecord (Displayable)
 - (id)titleDisplayStringForDetailViewController;
-- (long long)recordCategoryType;
 - (id)meaningfulDateTitle;
 - (id)codings;
 - (id)title;

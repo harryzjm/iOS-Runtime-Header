@@ -20,6 +20,7 @@
     AMSProcessInfo *_clientInfo;
     NSString *_clientVersion;
     NSString *_logKey;
+    NSString *_offerHints;
     NSString *_placement;
     NSString *_serviceType;
 }
@@ -33,6 +34,7 @@
 @property(nonatomic) _Bool includeMediaAssets; // @synthesize includeMediaAssets=_includeMediaAssets;
 @property(readonly, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
 @property(readonly, nonatomic) NSString *placement; // @synthesize placement=_placement;
+@property(retain, nonatomic) NSString *offerHints; // @synthesize offerHints=_offerHints;
 @property(retain, nonatomic) NSString *logKey; // @synthesize logKey=_logKey;
 @property(nonatomic) _Bool hydrateRelatedContent; // @synthesize hydrateRelatedContent=_hydrateRelatedContent;
 @property(readonly, nonatomic) NSString *clientVersion; // @synthesize clientVersion=_clientVersion;

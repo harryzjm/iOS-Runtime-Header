@@ -12,10 +12,12 @@
     _Bool _networkAccessAllowed;
     id <PLResourceIdentity> _resourceIdentity;
     long long _downloadIntent;
+    long long _downloadPriority;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) long long downloadPriority; // @synthesize downloadPriority=_downloadPriority;
 @property(nonatomic) long long downloadIntent; // @synthesize downloadIntent=_downloadIntent;
 @property(nonatomic, getter=isNetworkAccessAllowed) _Bool networkAccessAllowed; // @synthesize networkAccessAllowed=_networkAccessAllowed;
 @property(nonatomic, getter=isTransient) _Bool transient; // @synthesize transient=_transient;

@@ -17,7 +17,12 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) UILabel *descriptionLabel; // @synthesize descriptionLabel=_descriptionLabel;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)_contentSizeCategoryDidChange:(id)arg1;
+- (id)_descriptionLabelFont;
+- (id)_titleLabelFont;
 - (void)_createConstraints;
+- (void)dealloc;
 - (id)initWithTitle:(id)arg1 subtitle:(id)arg2;
 
 @end

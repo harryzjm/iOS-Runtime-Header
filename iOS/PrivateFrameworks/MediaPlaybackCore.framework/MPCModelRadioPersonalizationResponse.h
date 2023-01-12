@@ -8,6 +8,7 @@
 
 @class MPSectionedCollection, MPStoreLibraryPersonalizationResponse;
 
+__attribute__((visibility("hidden")))
 @interface MPCModelRadioPersonalizationResponse : MPModelResponse
 {
     MPStoreLibraryPersonalizationResponse *_personalizationResponse;

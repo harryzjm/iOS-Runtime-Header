@@ -6,19 +6,24 @@
 
 #import <coreroutine/RTEnumerableStore-Protocol.h>
 
-@class NSString, RTDistanceCalculator, RTPersistenceExpirationEnforcer;
+@class NSString, RTDistanceCalculator, RTPersistenceExpirationEnforcer, RTPersistenceMirroringManager;
 
 @interface RTLearnedLocationStore <RTEnumerableStore>
 {
     RTPersistenceExpirationEnforcer *_expirationEnforcer;
     RTDistanceCalculator *_distanceCalculator;
+    RTPersistenceMirroringManager *_mirroringManager;
 }
 
 + (id)filterLocationsOfInterests:(id)arg1;
 + (id)filterPlaces:(id)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) RTPersistenceMirroringManager *mirroringManager; // @synthesize mirroringManager=_mirroringManager;
 @property(retain, nonatomic) RTDistanceCalculator *distanceCalculator; // @synthesize distanceCalculator=_distanceCalculator;
 @property(retain, nonatomic) RTPersistenceExpirationEnforcer *expirationEnforcer; // @synthesize expirationEnforcer=_expirationEnforcer;
+- (id)predicateForVisitsWithinDistance:(double)arg1 location:(id)arg2;
+- (id)predicateForCompleteVisits;
+- (id)predicateForVisitsFromEntryDate:(id)arg1 exitDate:(id)arg2;
 - (id)predicateForObjectsNotFromCurrentDevice;
 - (id)predicateForObjectsFromCurrentDevice;
 - (void)_associatePlacesToVisits:(id)arg1 handler:(CDUnknownBlockType)arg2;
@@ -76,6 +81,8 @@
 - (void)_removePlace:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (_Bool)_processDeletionRequestWithFetchRequest:(id)arg1 context:(id)arg2 error:(id *)arg3;
 - (id)groupCloudManagedObjectsByDeviceIdentifier:(id)arg1;
+- (void)_fetchVisitsWithIncompletePlacesForCurrentDeviceWithHandler:(CDUnknownBlockType)arg1;
+- (void)fetchVisitsWithIncompletePlacesForCurrentDeviceWithHandler:(CDUnknownBlockType)arg1;
 - (void)_fetchVisitsWithoutPlacesForCurrentDeviceWithHandler:(CDUnknownBlockType)arg1;
 - (void)fetchVisitsWithoutPlacesForCurrentDeviceWithHandler:(CDUnknownBlockType)arg1;
 - (void)fetchMetricsWithHandler:(CDUnknownBlockType)arg1;
@@ -84,12 +91,10 @@
 - (void)_fetchLocationOfInterestTransitionsBetweenStartDate:(id)arg1 endDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)fetchLocationsOfInterestWithVisitsWithinDistance:(double)arg1 location:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)_fetchLocationsOfInterestWithVisitsWithinDistance:(double)arg1 location:(id)arg2 handler:(CDUnknownBlockType)arg3;
-- (void)_fetchMapItemsWithMapItem:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)fetchLocationOfInterestWithPlace:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_fetchLocationOfInterestWithPlace:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)fetchLocationOfInterestWithMapItem:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_fetchLocationOfInterestWithMapItem:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)_fetchLocationOfInterestWithMapItemIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)fetchLocationOfInterestWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_fetchLocationOfInterestWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)fetchLocationOfInterestVisitedLastWithHandler:(CDUnknownBlockType)arg1;
@@ -128,6 +133,7 @@
 - (void)_fetchVisitsToPlace:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)fetchVisitsWithPredicate:(id)arg1 ascending:(_Bool)arg2 dateInterval:(id)arg3 limit:(id)arg4 handler:(CDUnknownBlockType)arg5;
 - (void)fetchVisitsWithPredicate:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)fetchVisitsWithDevice:(id)arg1 dateInterval:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)fetchVisitsWithHandler:(CDUnknownBlockType)arg1;
 - (void)_fetchVisitsWithPredicate:(id)arg1 ascending:(_Bool)arg2 limit:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)fetchVisitsPredating:(id)arg1 handler:(CDUnknownBlockType)arg2;
@@ -152,6 +158,8 @@
 - (void)fetchPlacesWithPredicate:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)fetchPlacesWithHandler:(CDUnknownBlockType)arg1;
 - (void)_fetchPlacesWithPredicate:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_fetchDevicesNotFromCurrentDeviceWithHandler:(CDUnknownBlockType)arg1;
+- (void)fetchDevicesNotFromCurrentDeviceWithHandler:(CDUnknownBlockType)arg1;
 - (void)updateVisits:(id)arg1 place:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)_updateVisits:(id)arg1 place:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)updateTransitionWithIdentifier:(id)arg1 motionActivityType:(unsigned long long)arg2 handler:(CDUnknownBlockType)arg3;
@@ -183,7 +191,7 @@
 - (void)_storeVisits:(id)arg1 place:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)storeLocationsOfInterest:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)storePlaces:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (id)initWithDistanceCalculator:(id)arg1 expirationEnforcer:(id)arg2 persistenceManager:(id)arg3;
+- (id)initWithDistanceCalculator:(id)arg1 expirationEnforcer:(id)arg2 mirroringManager:(id)arg3;
 - (id)init;
 - (void)submitMetricsOnExtendingLifetimeOfObjectsWithIdentifiers:(id)arg1 context:(id)arg2;
 

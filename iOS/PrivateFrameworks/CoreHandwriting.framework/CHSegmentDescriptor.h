@@ -27,7 +27,7 @@
 + (void)_resassignSpaceProbabilitiesFromDelayedSegments:(id)arg1 toSegments:(id)arg2;
 + (void)_computeLocalContextForSegments:(id)arg1 withContextSizeRadius:(long long)arg2;
 + (void)computeRelatedSegments:(id)arg1 withDelayedSegments:(id)arg2;
-+ (id)generateSegmentsFromDrawing:(id)arg1 withSegmentationPoints:(id)arg2 buildingContextBoundsWithRadius:(long long)arg3 spaceProbabilities:(const vector_8f06c10f *)arg4 charBoundaryProbabilities:(const vector_8f06c10f *)arg5 extractDelayedStrokeIDs:(const set_54c7c768 *)arg6 extractedDelayedSegments:(id *)arg7;
++ (id)generateSegmentsFromDrawing:(id)arg1 withSegmentationPoints:(id)arg2 buildingContextBoundsWithRadius:(long long)arg3 spaceProbabilities:(const void *)arg4 charBoundaryProbabilities:(const void *)arg5 extractDelayedStrokeIDs:(const void *)arg6 extractedDelayedSegments:(id *)arg7;
 + (id)generateSegmentsFromDrawing:(id)arg1;
 @property(nonatomic) double trailingCharBoundaryProbability; // @synthesize trailingCharBoundaryProbability=_trailingCharBoundaryProbability;
 @property(nonatomic) double trailingSpaceProbability; // @synthesize trailingSpaceProbability=_trailingSpaceProbability;

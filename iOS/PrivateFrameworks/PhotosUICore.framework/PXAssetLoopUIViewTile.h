@@ -37,6 +37,7 @@
 @property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property(retain, nonatomic) PXImageRequester *imageRequester; // @synthesize imageRequester=_imageRequester;
 - (void)dealloc;
+- (void)_updateDesiredDynamicRange;
 - (void)_reloadVideoSessionIfNecessary;
 - (void)_updateVideoSession;
 - (void)_updateImageRequester;

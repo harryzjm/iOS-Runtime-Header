@@ -13,7 +13,7 @@
 
 @interface PKStrokeRenderMask : NSObject <NSCopying>
 {
-    vector_acef39cc _maskPaths;
+    struct vector<std::vector<ClipperLib::IntPoint>, std::allocator<std::vector<ClipperLib::IntPoint>>> _maskPaths;
     PKStroke *_stroke;
     id <PKStrokeRenderCache> _renderCache;
 }
@@ -23,8 +23,8 @@
 @property(readonly, nonatomic) id <PKStrokeRenderCache> renderCache; // @synthesize renderCache=_renderCache;
 @property(readonly, nonatomic) PKStroke *stroke; // @synthesize stroke=_stroke;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (const vector_acef39cc *)maskPaths;
-- (id)initWithStroke:(id)arg1 renderCache:(id)arg2 maskPaths:(const vector_acef39cc *)arg3;
+- (const void *)maskPaths;
+- (id)initWithStroke:(id)arg1 renderCache:(id)arg2 maskPaths:(const void *)arg3;
 
 @end
 

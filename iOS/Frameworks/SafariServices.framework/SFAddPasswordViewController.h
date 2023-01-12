@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     SFEditableTableViewCell *_websiteCell;
     SFEditableTableViewCell *_userCell;
     SFEditableTableViewCell *_passwordCell;
+    NSString *_suggestedDomain;
     id <SFAddPasswordViewControllerDelegate> _delegate;
 }
 
@@ -29,11 +30,16 @@ __attribute__((visibility("hidden")))
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (_Bool)textFieldShouldReturn:(id)arg1;
 - (void)_savePasswordAndDismiss;
+- (void)_updateTextInputSuggestionsForPasswordField;
+- (void)_updateTextInputSuggestionsForUserNameField;
+- (void)_updateTextSuggestionsForTextField:(id)arg1;
+- (void)textFieldDidBeginEditing:(id)arg1;
 - (void)_textFieldChanged:(id)arg1;
 - (void)_doneBarButtonItemTapped:(id)arg1;
 - (void)_cancelBarButtonItemTapped:(id)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
+- (id)initWithSuggestedDomain:(id)arg1;
 - (id)init;
 
 // Remaining properties

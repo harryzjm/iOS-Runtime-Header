@@ -40,6 +40,7 @@
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly, nonatomic) unsigned int contextID;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

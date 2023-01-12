@@ -10,12 +10,17 @@
 @class CKModifyRecordsOperation, CKRecord, CKRecordID, ICObfuscator, NSArray, NSError, NSManagedObjectContext, NSManagedObjectID, NSString;
 
 @protocol ICCloudObject <NSObject, ICHasDatabaseScope>
-+ (NSArray *)allCloudObjectsInContext:(NSManagedObjectContext *)arg1;
++ (void)enumerateAllCloudObjectsInContext:(NSManagedObjectContext *)arg1 batchSize:(unsigned long long)arg2 saveAfterBatch:(_Bool)arg3 usingBlock:(void (^)(id <ICCloudObject>, _Bool *))arg4;
++ (NSArray *)allCloudObjectIDsInContext:(NSManagedObjectContext *)arg1 passingTest:(_Bool (^)(id <ICCloudObject>, _Bool *))arg2;
 + (id)newPlaceholderObjectForRecordName:(NSString *)arg1 accountID:(NSString *)arg2 context:(NSManagedObjectContext *)arg3;
 + (id)newCloudObjectForRecord:(CKRecord *)arg1 accountID:(NSString *)arg2 context:(NSManagedObjectContext *)arg3;
 + (id)existingCloudObjectForRecordID:(CKRecordID *)arg1 accountID:(NSString *)arg2 context:(NSManagedObjectContext *)arg3;
+@property(readonly, nonatomic) _Bool needsToBeFetchedFromCloud;
+@property(readonly, nonatomic) _Bool needsToBePushedToCloud;
+@property(readonly, nonatomic) _Bool needsToBeDeletedFromCloud;
 - (NSManagedObjectID *)objectID;
 - (void)objectWasFetchedButDoesNotExistInCloud;
+- (void)objectWasFetchedFromCloudWithRecord:(CKRecord *)arg1 accountID:(NSString *)arg2 force:(_Bool)arg3;
 - (void)objectWasFetchedFromCloudWithRecord:(CKRecord *)arg1 accountID:(NSString *)arg2;
 - (void)objectFailedToBePushedToCloudWithOperation:(CKModifyRecordsOperation *)arg1 record:(CKRecord *)arg2 error:(NSError *)arg3;
 - (void)objectWasPushedToCloudWithOperation:(CKModifyRecordsOperation *)arg1 serverRecord:(CKRecord *)arg2;
@@ -29,17 +34,15 @@
 - (NSString *)className;
 - (NSArray *)objectsToBeDeletedBeforeThisObject;
 - (void)deleteFromLocalDatabase;
-- (_Bool)needsToBeFetchedFromCloud;
-- (_Bool)needsToBePushedToCloud;
-- (_Bool)needsToBeDeletedFromCloud;
 - (void)didDeleteUserSpecificRecordID:(CKRecordID *)arg1;
 - (void)didFailToSaveUserSpecificRecord:(CKRecord *)arg1 accountID:(NSString *)arg2 error:(NSError *)arg3;
 - (void)didSaveUserSpecificRecord:(CKRecord *)arg1;
-- (void)didFetchUserSpecificRecord:(CKRecord *)arg1 accountID:(NSString *)arg2;
+- (void)didFetchUserSpecificRecord:(CKRecord *)arg1 accountID:(NSString *)arg2 force:(_Bool)arg3;
 - (CKRecord *)newlyCreatedUserSpecificRecord;
 - (CKRecordID *)userSpecificRecordID;
 - (_Bool)wantsUserSpecificRecord;
 - (_Bool)needsToSaveUserSpecificRecord;
+- (void)mergeDataFromRecord:(CKRecord *)arg1 accountID:(NSString *)arg2 force:(_Bool)arg3;
 - (void)mergeDataFromRecord:(CKRecord *)arg1 accountID:(NSString *)arg2;
 - (CKRecord *)newlyCreatedRecordWithObfuscator:(ICObfuscator *)arg1;
 - (CKRecord *)newlyCreatedRecord;

@@ -17,9 +17,11 @@
 + (_Bool)validateClient:(id)arg1 error:(id *)arg2;
 - (id)remoteInterface;
 - (id)exportedInterface;
+- (void)remote_validateRecalibrateEstimatesRequestRecord:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_fetchAuthorizationStatusesForSampleUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_fetchAuthorizationStatusesForDocumentType:(id)arg1 sourceBundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)remote_fetchSourcesRequestingAuthorizationForTypes:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)remote_fetchAuthorizationContextForPromptSession:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_fetchAuthorizationRecordsForType:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_fetchAuthorizationRecordsForSourceBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 

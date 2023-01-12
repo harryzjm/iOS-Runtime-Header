@@ -7,13 +7,14 @@
 #import <objc/NSObject.h>
 
 #import <CloudKit/CKContainerAssignment-Protocol.h>
+#import <CloudKit/CKPropertiesDescription-Protocol.h>
 #import <CloudKit/NSCopying-Protocol.h>
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
 @class CKContainerID, CKEncryptedData, CKEncryptedRecordValueStore, CKRecordID, CKRecordValueStore, CKReference, NSArray, NSData, NSDate, NSDictionary, NSSet, NSString, NSURL;
 @protocol CKRecordKeyValueSetting;
 
-@interface CKRecord : NSObject <CKContainerAssignment, NSSecureCoding, NSCopying>
+@interface CKRecord : NSObject <CKPropertiesDescription, CKContainerAssignment, NSSecureCoding, NSCopying>
 {
     _Bool _serializeProtectionData;
     _Bool _hasUpdatedShare;
@@ -43,6 +44,7 @@
     NSArray *_allPCSKeyIDs;
     CKReference *_previousShare;
     CKReference *_previousParent;
+    struct _PCSIdentityData *_signingPCSIdentity;
     CKEncryptedData *_chainPrivateKey;
     CKEncryptedData *_mutableEncryptedPSK;
     NSData *_chainProtectionInfo;
@@ -97,6 +99,7 @@
 @property(retain, nonatomic) NSData *chainProtectionInfo; // @synthesize chainProtectionInfo=_chainProtectionInfo;
 @property(retain, nonatomic) CKEncryptedData *mutableEncryptedPSK; // @synthesize mutableEncryptedPSK=_mutableEncryptedPSK;
 @property(retain, nonatomic) CKEncryptedData *chainPrivateKey; // @synthesize chainPrivateKey=_chainPrivateKey;
+@property(nonatomic) struct _PCSIdentityData *signingPCSIdentity; // @synthesize signingPCSIdentity=_signingPCSIdentity;
 @property(nonatomic) _Bool hasUpdatedParent; // @synthesize hasUpdatedParent=_hasUpdatedParent;
 @property(retain, nonatomic) CKReference *previousParent; // @synthesize previousParent=_previousParent;
 @property(nonatomic) _Bool hasUpdatedShare; // @synthesize hasUpdatedShare=_hasUpdatedShare;
@@ -137,10 +140,8 @@
 @property(readonly, nonatomic) _Bool hasPropertiesRequiringDecryption;
 @property(readonly, nonatomic) _Bool hasModifiedPropertiesRequiringEncryption;
 @property(readonly, nonatomic) _Bool hasPropertiesRequiringEncryption;
-- (_Bool)_valueIsUsingCKEncryptedData:(id)arg1;
 @property(readonly, nonatomic) _Bool containsPackageValues;
 @property(readonly, nonatomic) _Bool containsAssetValues;
-- (_Bool)_checkProperties:(_Bool)arg1 encryptedStore:(_Bool)arg2 withValueCheckBlock:(CDUnknownBlockType)arg3;
 - (id)allTokens;
 - (id)_allStrings;
 - (id)allValues;
@@ -149,8 +150,6 @@
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
 - (void)setObjectNoValidate:(id)arg1 forKey:(id)arg2;
-- (void)_validateRecordType:(id)arg1;
-- (void)_validateRecordName:(id)arg1;
 - (void)setNilValueForKey:(id)arg1;
 - (id)valueForKey:(id)arg1;
 - (id)objectForKey:(id)arg1;
@@ -160,21 +159,20 @@
 - (id)changedKeys;
 @property(readonly, copy, nonatomic) id <CKRecordKeyValueSetting> valuesByKey;
 @property(readonly, copy, nonatomic) id <CKRecordKeyValueSetting> encryptedValuesByKey;
+- (id)encryptedValues;
 @property(copy, nonatomic) NSSet *changedKeysSet;
 @property(readonly, copy, nonatomic) NSDictionary *originalValues;
 @property(readonly, copy, nonatomic) NSDictionary *values;
 @property(readonly, nonatomic) _Bool hasChainPCS;
 @property(readonly, nonatomic) unsigned long long size;
-- (unsigned long long)_sizeOfRecordValue:(id)arg1 forKey:(id)arg2;
-- (unsigned long long)_sizeOfRecordID:(id)arg1;
-- (id)description;
-- (id)CKDescriptionPropertiesWithPublic:(_Bool)arg1 private:(_Bool)arg2 shouldExpand:(_Bool)arg3;
-- (id)debugDescription;
+- (id)redactedDescription;
+@property(readonly, copy) NSString *description;
+- (void)CKDescribePropertiesUsing:(id)arg1;
+@property(readonly, copy) NSString *debugDescription;
 - (_Bool)canHostServerURLInfo;
 @property(readonly, copy, nonatomic) NSURL *URL;
 @property(readonly, copy, nonatomic) NSURL *uncachedURL;
 @property(readonly, copy, nonatomic) NSString *shortToken;
-- (id)decryptFullToken:(id)arg1;
 @property(readonly, nonatomic) NSData *encryptedFullTokenData;
 @property(readonly, nonatomic) NSData *shortSharingTokenHashData;
 - (id)shortSharingToken;
@@ -184,6 +182,7 @@
 @property(readonly, copy, nonatomic) NSData *encryptedPublicSharingKey;
 @property(copy, nonatomic) NSData *mutableEncryptedPublicSharingKeyData;
 @property(copy, nonatomic) CKEncryptedData *mutableEncryptedPublicSharingKey;
+- (void)dealloc;
 - (void)setRecordType:(id)arg1;
 - (id)copyWithOriginalValues;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -193,6 +192,10 @@
 - (id)_initSkippingValidationWithRecordType:(id)arg1 recordID:(id)arg2;
 - (id)init;
 - (id)initWithRecordTransport:(id)arg1;
+
+// Remaining properties
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

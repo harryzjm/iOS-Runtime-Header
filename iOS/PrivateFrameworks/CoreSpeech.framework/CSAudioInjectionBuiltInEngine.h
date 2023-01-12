@@ -21,9 +21,11 @@
     NSMutableArray *_hostTimeBuffer;
     NSUUID *_uuid;
     CSAudioInjectionDevice *_connectedDevice;
+    unsigned long long _voiceTriggerSampleCount;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long voiceTriggerSampleCount; // @synthesize voiceTriggerSampleCount=_voiceTriggerSampleCount;
 @property(nonatomic) _Bool isForwarding; // @synthesize isForwarding=_isForwarding;
 @property(nonatomic) __weak CSAudioInjectionDevice *connectedDevice; // @synthesize connectedDevice=_connectedDevice;
 @property(nonatomic) _Bool voiceTriggerEnabled; // @synthesize voiceTriggerEnabled=_voiceTriggerEnabled;
@@ -40,6 +42,7 @@
 - (void)audioEngineDidStartRecord:(id)arg1 audioStreamHandleId:(unsigned long long)arg2 successfully:(_Bool)arg3 error:(id)arg4;
 - (void)stopAudioStream;
 - (void)startAudioStreamWithOption:(id)arg1;
+- (long long)getBestSampleCountWithOption:(id)arg1;
 - (_Bool)isRecording;
 - (_Bool)injectAudio:(id)arg1 withScaleFactor:(float)arg2 playbackStarted:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (_Bool)injectAudio:(id)arg1;

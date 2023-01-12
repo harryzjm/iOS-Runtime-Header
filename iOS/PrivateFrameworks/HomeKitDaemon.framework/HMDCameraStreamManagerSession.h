@@ -6,30 +6,41 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HMDCameraStreamSessionID, HMFMessage, HMFTimer, NSNumber, NSString;
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
+
+@class HMDCameraStreamSessionID, HMDProcessInfo, HMFMessage, HMFTimer, NSNumber, NSString;
 @protocol HMDCameraStreamControlManagerProtocol;
 
-@interface HMDCameraStreamManagerSession : HMFObject
+@interface HMDCameraStreamManagerSession : HMFObject <HMFLogging>
 {
-    id <HMDCameraStreamControlManagerProtocol> _streamControlManager;
     HMDCameraStreamSessionID *_sessionID;
     NSString *_destinationID;
+    HMDProcessInfo *_streamClientProcessInfo;
+    id <HMDCameraStreamControlManagerProtocol> _streamControlManager;
     HMFTimer *_streamSetupTimer;
-    NSString *_streamShowingAppIdentifier;
     NSNumber *_slotIdentifier;
     HMFMessage *_currentMessage;
 }
 
++ (id)logCategory;
 - (void).cxx_destruct;
-@property(retain, nonatomic) HMFMessage *currentMessage; // @synthesize currentMessage=_currentMessage;
-@property(retain, nonatomic) NSNumber *slotIdentifier; // @synthesize slotIdentifier=_slotIdentifier;
-@property(readonly, nonatomic) NSString *streamShowingAppIdentifier; // @synthesize streamShowingAppIdentifier=_streamShowingAppIdentifier;
-@property(readonly, nonatomic) HMFTimer *streamSetupTimer; // @synthesize streamSetupTimer=_streamSetupTimer;
-@property(readonly, nonatomic) NSString *destinationID; // @synthesize destinationID=_destinationID;
-@property(readonly, nonatomic) HMDCameraStreamSessionID *sessionID; // @synthesize sessionID=_sessionID;
-@property(readonly, nonatomic) id <HMDCameraStreamControlManagerProtocol> streamControlManager; // @synthesize streamControlManager=_streamControlManager;
-- (id)initWithSessionID:(id)arg1 destinationID:(id)arg2 streamShowingAppIdentifier:(id)arg3 controlManager:(id)arg4 setupWaitPeriod:(double)arg5 error:(id *)arg6;
-- (id)initWithSessionID:(id)arg1 destinationID:(id)arg2 streamShowingAppIdentifier:(id)arg3 controlManager:(id)arg4 setupWaitPeriod:(double)arg5 timerFactory:(CDUnknownBlockType)arg6 error:(id *)arg7;
+@property(retain) HMFMessage *currentMessage; // @synthesize currentMessage=_currentMessage;
+@property(copy) NSNumber *slotIdentifier; // @synthesize slotIdentifier=_slotIdentifier;
+@property(readonly) HMFTimer *streamSetupTimer; // @synthesize streamSetupTimer=_streamSetupTimer;
+@property(readonly) id <HMDCameraStreamControlManagerProtocol> streamControlManager; // @synthesize streamControlManager=_streamControlManager;
+@property(readonly) HMDProcessInfo *streamClientProcessInfo; // @synthesize streamClientProcessInfo=_streamClientProcessInfo;
+@property(readonly, copy) NSString *destinationID; // @synthesize destinationID=_destinationID;
+@property(readonly) HMDCameraStreamSessionID *sessionID; // @synthesize sessionID=_sessionID;
+- (id)logIdentifier;
+- (_Bool)canStartWithError:(id *)arg1;
+- (id)initWithSessionID:(id)arg1 destinationID:(id)arg2 streamClientProcessInfo:(id)arg3 streamControlManager:(id)arg4 streamSetupTimer:(id)arg5;
+- (id)initWithSessionID:(id)arg1 destinationID:(id)arg2 streamClientProcessInfo:(id)arg3 streamControlManager:(id)arg4 setupWaitPeriod:(double)arg5;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

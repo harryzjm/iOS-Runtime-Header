@@ -6,7 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <EventKitUI/EKEventDetailNotesCellDelegate-Protocol.h>
+#import <EventKitUI/EKEventDetailTextCellDelegate-Protocol.h>
 #import <EventKitUI/EKEventTitleDetailItemDelegate-Protocol.h>
 #import <EventKitUI/EKUIEventStatusButtonsViewDelegate-Protocol.h>
 #import <EventKitUI/EKUIManagedViewController-Protocol.h>
@@ -15,10 +15,10 @@
 #import <EventKitUI/UITableViewDataSource-Protocol.h>
 #import <EventKitUI/UITableViewDelegate-Protocol.h>
 
-@class EKCustomTitleView, EKEvent, EKEventDetailItem, EKEventEditViewController, EKEventTitleDetailItem, EKUIEventStatusButtonsView, EKUIInviteesViewMessageSendingManager, EKUIRecurrenceAlertController, NSArray, NSDictionary, NSMutableDictionary, NSString, SingleToolbarItemContainerView, UIScrollView, UITableView, UIView, _UIAccessDeniedView;
+@class EKCustomTitleView, EKEvent, EKEventDetailItem, EKEventEditViewController, EKEventTitleDetailItem, EKUIEmailCompositionManager, EKUIEventStatusButtonsView, EKUIRecurrenceAlertController, NSArray, NSDictionary, NSMutableDictionary, NSString, SingleToolbarItemContainerView, UIScrollView, UITableView, UIView, _UIAccessDeniedView;
 @protocol EKEventViewDelegate;
 
-@interface EKEventViewController : UIViewController <EKEventTitleDetailItemDelegate, EKUIEventStatusButtonsViewDelegate, EKEventDetailNotesCellDelegate, UIAlertViewDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, EKUIManagedViewController>
+@interface EKEventViewController : UIViewController <EKEventTitleDetailItemDelegate, EKUIEventStatusButtonsViewDelegate, EKEventDetailTextCellDelegate, UIAlertViewDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, EKUIManagedViewController>
 {
     NSArray *_items;
     EKEvent *_event;
@@ -58,6 +58,7 @@
     NSArray *_headerConstraints;
     NSArray *_tableViewTopConstraints;
     UIView *_blankFooterView;
+    double _lastFooterLayoutWidth;
     _Bool _showingBlankFooterView;
     UIViewController *_presentationSourceViewController;
     NSMutableDictionary *_cellHeights;
@@ -73,13 +74,13 @@
     _Bool _showsOutOfDateMessage;
     _Bool _showsDelegatorMessage;
     _Bool _showsDelegateMessage;
-    _Bool _showsConferenceItem;
+    _Bool _showsDetectedConferenceItem;
     _Bool _noninteractivePlatterMode;
     _Bool _isLargeDayView;
     int _editorShowTransition;
     int _editorHideTransition;
     id <EKEventViewDelegate> _delegate;
-    EKUIInviteesViewMessageSendingManager *_messageSendingManager;
+    EKUIEmailCompositionManager *_messageSendingManager;
     NSDictionary *_context;
     struct UIEdgeInsets _layoutMargins;
 }
@@ -95,7 +96,7 @@
 @property(nonatomic) int editorShowTransition; // @synthesize editorShowTransition=_editorShowTransition;
 @property(nonatomic) _Bool isLargeDayView; // @synthesize isLargeDayView=_isLargeDayView;
 @property(nonatomic) _Bool noninteractivePlatterMode; // @synthesize noninteractivePlatterMode=_noninteractivePlatterMode;
-@property(nonatomic) _Bool showsConferenceItem; // @synthesize showsConferenceItem=_showsConferenceItem;
+@property(nonatomic) _Bool showsDetectedConferenceItem; // @synthesize showsDetectedConferenceItem=_showsDetectedConferenceItem;
 @property(nonatomic) _Bool showsDelegateMessage; // @synthesize showsDelegateMessage=_showsDelegateMessage;
 @property(nonatomic) _Bool showsDelegatorMessage; // @synthesize showsDelegatorMessage=_showsDelegatorMessage;
 @property(nonatomic) _Bool showsOutOfDateMessage; // @synthesize showsOutOfDateMessage=_showsOutOfDateMessage;
@@ -106,13 +107,14 @@
 @property(nonatomic) _Bool showsAddToCalendarForICSPreview; // @synthesize showsAddToCalendarForICSPreview=_showsAddToCalendarForICSPreview;
 @property(nonatomic) _Bool allowsInviteResponses; // @synthesize allowsInviteResponses=_allowsInviteResponses;
 @property(nonatomic, getter=isICSPreview) _Bool ICSPreview; // @synthesize ICSPreview=_ICSPreview;
-@property(retain, nonatomic) EKUIInviteesViewMessageSendingManager *messageSendingManager; // @synthesize messageSendingManager=_messageSendingManager;
+@property(retain, nonatomic) EKUIEmailCompositionManager *messageSendingManager; // @synthesize messageSendingManager=_messageSendingManager;
 @property _Bool viewIsVisible; // @synthesize viewIsVisible=_viewIsVisible;
 @property(nonatomic) _Bool allowsEditing; // @synthesize allowsEditing=_allowsEditing;
 @property(nonatomic) __weak id <EKEventViewDelegate> delegate; // @synthesize delegate=_delegate;
+- (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (_Bool)canBecomeFirstResponder;
 - (void)_performEditKeyCommand;
-- (void)_setUpkeyCommands;
+- (_Bool)_canPerformEditKeyCommand;
 - (void)editButtonPressed;
 - (_Bool)_shouldShowInlineButtonFromDelegate;
 - (_Bool)shouldShowEditButtonInline;
@@ -126,10 +128,12 @@
 - (void)_clearCustomTitle;
 - (void)updateTitleWithScrollView:(id)arg1 animation:(_Bool)arg2;
 - (void)scrollViewDidScroll:(id)arg1;
+- (void)tableView:(id)arg1 willDisplayHeaderView:(id)arg2 forSection:(long long)arg3;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didUnhighlightRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didHighlightRowAtIndexPath:(id)arg2;
+- (_Bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
@@ -137,7 +141,8 @@
 - (void)viewDidLayoutSubviews;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
-- (id)_sectionsForTableView:(id)arg1;
+- (id)_itemAtIndexPath:(id)arg1 section:(id *)arg2 subitemIndex:(unsigned long long *)arg3;
+- (id)_sectionAtIndex:(long long)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)traitCollectionDidChange:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
@@ -154,6 +159,7 @@
 - (void)_updateResponseVisibility;
 - (void)_deleteSuggestionTapped:(id)arg1;
 - (void)_addToCalendarClicked:(id)arg1;
+- (void)_unsubscribeClicked:(id)arg1;
 - (void)_deleteClicked:(id)arg1;
 - (void)_saveStatus:(long long)arg1 sourceViewForPopover:(id)arg2;
 - (void)_joinMeeting;
@@ -169,17 +175,21 @@
 - (void)_prepareEventForEdit;
 - (void)eventEditViewController:(id)arg1 didCompleteWithAction:(long long)arg2;
 - (void)_dismissEditor:(_Bool)arg1 deleted:(_Bool)arg2;
+- (void)eventItem:(id)arg1 wantsViewControllerPresented:(id)arg2;
 - (id)viewControllerForEventItem:(id)arg1;
 - (void)eventItemDidEndEditing:(id)arg1;
 - (void)eventDetailItemWantsRefresh:(id)arg1;
+- (void)eventItemDidCommit:(id)arg1;
 - (void)eventItemDidSave:(id)arg1;
 - (void)eventItemDidStartEditing:(id)arg1;
 - (void)eventDetailItemWantsRefeshForHeightChange;
+- (void)eventDetailItemAccessoryButtonTapped:(id)arg1;
 - (CDUnknownBlockType)_detachSheetHandler;
 - (void)_presentDetachSheetFromView:(id)arg1;
 - (void)_presentDetachSheetFromBarButtonItem:(id)arg1;
 @property(nonatomic) __weak UIViewController *presentationSourceViewController;
 - (void)viewLayoutMarginsDidChange;
+- (double)tableViewSectionContentWidth;
 - (struct CGSize)preferredContentSize;
 - (void)_performDelete:(long long)arg1;
 - (void)_presentValidationAlert:(id)arg1;
@@ -210,7 +220,7 @@
 - (void)_keyboardWasShown:(id)arg1;
 - (void)_localeChanged;
 - (void)_storeChanged:(id)arg1;
-- (void)_refreshEventAndReload;
+- (_Bool)_refreshEventAndReload;
 - (void)_setObservesKeyboardNotifications:(_Bool)arg1;
 @property(readonly, nonatomic) UIViewController *eventDetailsViewController;
 @property(readonly, nonatomic) UIScrollView *eventDetailsScrollView;
@@ -252,6 +262,7 @@
 - (id)viewTitle;
 - (id)_indexPathForAttendeesDetailItem;
 - (id)_indexPathForSection:(int)arg1;
+- (void)resetBackgroundColor;
 - (void)loadView;
 - (id)tableView;
 - (void)dealloc;

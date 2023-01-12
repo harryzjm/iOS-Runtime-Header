@@ -42,6 +42,8 @@
 @property int responsibleProcess;
 @property(readonly) unsigned long long resourceOptions;
 @property(readonly, nonatomic) unsigned long long resourceIndex;
+@property(nonatomic) unsigned long long parentGPUSize;
+@property(nonatomic) unsigned long long parentGPUAddress;
 @property(readonly) unsigned long long length;
 @property(copy) NSString *label;
 @property(readonly) struct __IOSurface *iosurface;

@@ -30,12 +30,17 @@
 @property(retain) NSUUID *registeredUUID; // @synthesize registeredUUID=_registeredUUID;
 @property(retain) NSObject<NWNetworkAgent> *networkAgent; // @synthesize networkAgent=_networkAgent;
 @property Class networkAgentClass; // @synthesize networkAgentClass=_networkAgentClass;
+@property(readonly, nonatomic) unsigned int tokenCount;
 @property(nonatomic) unsigned long long useCount;
 - (_Bool)assignResolvedEndpoints:(id)arg1 toClient:(id)arg2;
 - (_Bool)assignDiscoveredEndpoints:(id)arg1 toClient:(id)arg2;
 - (_Bool)assignNexusData:(id)arg1 toClient:(id)arg2;
 - (_Bool)removeNetworkAgentFromInterfaceNamed:(id)arg1;
 - (_Bool)addNetworkAgentToInterfaceNamed:(id)arg1;
+- (_Bool)setLowWaterMark:(unsigned int)arg1;
+- (_Bool)resetError;
+- (_Bool)flushTokens;
+- (_Bool)addToken:(id)arg1;
 - (_Bool)unregisterNetworkAgent;
 - (_Bool)updateNetworkAgent:(id)arg1;
 - (_Bool)setRegisteredNetworkAgent:(id)arg1 fileDescriptor:(int)arg2;

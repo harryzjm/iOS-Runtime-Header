@@ -10,6 +10,7 @@
 - (void)configureWithContext:(SBSRemoteAlertConfigurationContext *)arg1 completion:(void (^)(void))arg2;
 
 @optional
+- (void)didTransitionToAttachedToWindowedAccessory:(_Bool)arg1 windowedAccessoryCutoutFrameInScreen:(struct CGRect)arg2;
 - (void)didInvalidateForRemoteAlert;
 - (void)setUserInfo:(NSDictionary *)arg1;
 - (void)prepareForActivationWithContext:(SBSRemoteAlertActivationContext *)arg1 completion:(void (^)(void))arg2;

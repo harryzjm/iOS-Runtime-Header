@@ -16,10 +16,7 @@
 + (_Bool)supportsSecureCoding;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSArray *pseudoRandomDoubles; // @synthesize pseudoRandomDoubles=_pseudoRandomDoubles;
-- (double)_pseudoRandomDoubleFromCurrentTime:(double)arg1 mean:(double)arg2 stdDev:(double)arg3;
 - (id)_pseudoRandomDoubles;
-- (id)_createPseudoRandomDoubles;
 - (double)computeStatisticalTimeFromCurrentTime:(double)arg1 mean:(double)arg2 stdDev:(double)arg3;
 - (double)computeNoiseFromTime:(double)arg1 stdDev:(double)arg2;
 - (double)pseudoRandomDoubleFromTime:(double)arg1;

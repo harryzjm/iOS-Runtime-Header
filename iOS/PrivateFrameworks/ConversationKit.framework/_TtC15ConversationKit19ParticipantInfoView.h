@@ -14,8 +14,11 @@
     MISSING_TYPE *nameLabel;
     MISSING_TYPE *shutterButton;
     MISSING_TYPE *expandButton;
-    MISSING_TYPE *isSmall;
+    MISSING_TYPE *audioMuteButton;
+    MISSING_TYPE *toggleVideoButton;
     MISSING_TYPE *isExpanded;
+    MISSING_TYPE *isMuted;
+    MISSING_TYPE *videoDisabled;
     MISSING_TYPE *customCornerRadius;
     MISSING_TYPE *isMomentsAvailable;
     MISSING_TYPE *recordingLocalVideo;
@@ -24,6 +27,12 @@
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)buttonTouchCancelledWithSender:(id)arg1;
+- (void)buttonTouchDownWithSender:(id)arg1;
+- (void)didTapToggleVideoButton;
+- (void)toggleVideoTouchUpWithSender:(id)arg1;
+- (void)didTapAudioMuteButton;
+- (void)toggleAudioTouchUpWithSender:(id)arg1;
 - (void)didTapShutterButton;
 - (void)didTapExpandButton;
 - (void)layoutSubviews;

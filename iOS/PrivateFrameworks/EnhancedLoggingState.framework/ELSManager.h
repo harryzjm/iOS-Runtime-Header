@@ -34,6 +34,8 @@
 - (void)flushWithCompletion:(CDUnknownBlockType)arg1;
 - (void)flush;
 - (void)finishWithCompletion:(CDUnknownBlockType)arg1;
+- (void)finishWithFailureBlock:(CDUnknownBlockType)arg1;
+- (void)finishWithFailure;
 - (void)finish;
 - (void)transactionWithBlock:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)transactionWithBlock:(CDUnknownBlockType)arg1;

@@ -30,11 +30,11 @@ __attribute__((visibility("hidden")))
 - (_Bool)isNativeLibraryData:(id)arg1;
 - (_Bool)isJavaPlugIn;
 - (_Bool)isQuickTimePlugIn;
-- (id)MIMETypeForExtension:(const struct String *)arg1;
-- (_Bool)supportsMIMEType:(const struct String *)arg1;
-- (_Bool)supportsExtension:(const struct String *)arg1;
-- (const struct PluginInfo *)pluginInfo;
-- (const struct String *)path;
+- (id)MIMETypeForExtension:(const void *)arg1;
+- (_Bool)supportsMIMEType:(const void *)arg1;
+- (_Bool)supportsExtension:(const void *)arg1;
+- (const void *)pluginInfo;
+- (const void *)path;
 - (void)dealloc;
 - (_Bool)load;
 - (_Bool)getPluginInfoFromPLists;

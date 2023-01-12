@@ -13,13 +13,15 @@
     ICClientInfo *_clientInfo;
     unsigned long long _options;
     AMSMediaTokenService *_mediaTokenService;
+    long long _clientType;
 }
 
 + (void)_invalidateCachedDeveloperTokenForClientInfo:(id)arg1 requester:(id)arg2 usingMediaTokenService:(id)arg3;
-+ (id)_createMediaTokenServiceForClientInfo:(id)arg1 requester:(id)arg2;
-+ (void)invalidateCachedDeveloperTokenForClientInfo:(id)arg1 requester:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (id)_createMediaTokenServiceForClientInfo:(id)arg1 clientType:(long long)arg2 requester:(id)arg3;
++ (void)invalidateCachedDeveloperTokenForClientInfo:(id)arg1 clientType:(long long)arg2 requester:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) long long clientType; // @synthesize clientType=_clientType;
 - (void)_didFetchMediaToken:(id)arg1 withError:(id)arg2;
 - (void)execute;
 - (void)encodeWithCoder:(id)arg1;

@@ -27,6 +27,7 @@
 }
 
 + (Class)recordsType;
++ (id)options;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *activeTreatments; // @synthesize activeTreatments=_activeTreatments;
 @property(retain, nonatomic) NSMutableArray *records; // @synthesize records=_records;

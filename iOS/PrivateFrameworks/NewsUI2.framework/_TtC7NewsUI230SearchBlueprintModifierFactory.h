@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *headlineFactory;
     MISSING_TYPE *tagService;
+    MISSING_TYPE *sectionFactory;
 }
 
 @end

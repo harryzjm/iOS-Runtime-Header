@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class ICUserIdentity, ML3MusicLibrary, MPMediaLibraryArtwork, NSNumber, NSString;
+#import <MediaPlayer/MPArtworkTokenParametersRepresenting-Protocol.h>
+
+@class ICUserIdentity, ML3MusicLibrary, MPMediaLibrary, MPMediaLibraryArtwork, NSNumber, NSString;
 @protocol OS_dispatch_queue;
 
-@interface MPMediaLibraryArtworkRequest : NSObject
+@interface MPMediaLibraryArtworkRequest : NSObject <MPArtworkTokenParametersRepresenting>
 {
     NSObject<OS_dispatch_queue> *_accessSerialQueue;
     unsigned long long _mediaType;
@@ -22,19 +24,23 @@
     unsigned long long _libraryID;
     long long _artworkType;
     MPMediaLibraryArtwork *_libraryArtwork;
-    ML3MusicLibrary *_library;
+    MPMediaLibrary *_library;
     ICUserIdentity *_userIdentity;
 }
 
++ (id)artworkTokenWithParameters:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) ICUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
+@property(readonly, nonatomic) MPMediaLibrary *library; // @synthesize library=_library;
 - (void)_onQueue_updateTokens;
+- (id)_onQueue_musicLibrary;
 - (void)promoteFetchableArtworkTokenIfNeeded;
 - (void)clearFailedFetchableToken;
-- (id)description;
+- (id)artworkTokenParameters;
+@property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
-- (unsigned long long)hash;
-@property(readonly, nonatomic) ML3MusicLibrary *library; // @synthesize library=_library;
+@property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) ML3MusicLibrary *musicLibrary;
 @property(readonly, nonatomic) long long artworkType; // @synthesize artworkType=_artworkType;
 @property(readonly, nonatomic) unsigned long long libraryID; // @synthesize libraryID=_libraryID;
 @property(readonly, nonatomic) long long entityType; // @synthesize entityType=_entityType;
@@ -45,10 +51,12 @@
 @property(copy, nonatomic) NSString *fetchableArtworkToken; // @synthesize fetchableArtworkToken=_fetchableArtworkToken;
 @property(copy, nonatomic) NSString *availableArtworkToken; // @synthesize availableArtworkToken=_availableArtworkToken;
 @property(readonly, nonatomic) unsigned long long mediaType;
-- (id)initWithML3Library:(id)arg1 identifier:(unsigned long long)arg2 entityType:(long long)arg3 artworkType:(long long)arg4;
-- (id)initWithIdentifier:(unsigned long long)arg1 entityType:(long long)arg2 artworkType:(long long)arg3;
 - (id)initWithLibrary:(id)arg1 identifier:(unsigned long long)arg2 entityType:(long long)arg3 artworkType:(long long)arg4 mediaType:(unsigned long long)arg5;
 - (id)initWithLibrary:(id)arg1 identifier:(unsigned long long)arg2 entityType:(long long)arg3 artworkType:(long long)arg4;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

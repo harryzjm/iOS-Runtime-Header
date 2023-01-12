@@ -53,6 +53,7 @@
 - (id)userInfo;
 - (_Bool)firingIsImminent;
 - (_Bool)isValid;
+- (void)_invalidateAllowAsync:(_Bool)arg1;
 - (void)invalidate;
 - (void)_scheduleTimer;
 - (void)scheduleInQueue:(id)arg1;

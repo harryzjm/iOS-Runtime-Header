@@ -11,8 +11,11 @@
 
 @interface MTLDebugFunctionHandle <MTLFunctionHandle>
 {
+    unsigned long long _stage;
 }
 
+@property(readonly) unsigned long long stage; // @synthesize stage=_stage;
+- (id)initWithBaseObject:(id)arg1 parent:(id)arg2 function:(id)arg3 stage:(unsigned long long)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
@@ -22,5 +25,6 @@
 @property(readonly) unsigned long long hash;
 @property(readonly) NSString *name;
 @property(readonly) Class superclass;
+
 @end
 

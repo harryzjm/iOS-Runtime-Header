@@ -8,10 +8,11 @@
 
 #import <UserNotifications/NSCopying-Protocol.h>
 #import <UserNotifications/NSSecureCoding-Protocol.h>
+#import <UserNotifications/UNNotificationSecurityScopeProviding-Protocol.h>
 
 @class NSString, UNNotificationContent, UNNotificationTrigger;
 
-@interface UNNotificationRequest : NSObject <NSCopying, NSSecureCoding>
+@interface UNNotificationRequest : NSObject <UNNotificationSecurityScopeProviding, NSCopying, NSSecureCoding>
 {
     UNNotificationContent *_content;
     UNNotificationTrigger *_trigger;
@@ -28,13 +29,22 @@
 @property(nonatomic) unsigned long long destinations; // @synthesize destinations=_destinations;
 @property(readonly, copy, nonatomic) UNNotificationTrigger *trigger; // @synthesize trigger=_trigger;
 @property(readonly, copy, nonatomic) UNNotificationContent *content; // @synthesize content=_content;
+- (unsigned long long)_notificationDestinationsForInterruptionLevel:(unsigned long long)arg1 inputDestinations:(unsigned long long)arg2;
+- (void)leaveSecurityScope;
+- (void)enterSecurityScope;
+- (void)removeSecurityScope;
+- (void)addSecurityScope:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (id)_initWithIdentifier:(id)arg1 content:(id)arg2 trigger:(id)arg3 destinations:(unsigned long long)arg4;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

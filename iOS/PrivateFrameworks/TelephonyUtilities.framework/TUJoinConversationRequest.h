@@ -10,7 +10,7 @@
 #import <TelephonyUtilities/NSSecureCoding-Protocol.h>
 #import <TelephonyUtilities/TUFilteredRequest-Protocol.h>
 
-@class NSSet, NSString, NSURL, NSUUID, TUHandle;
+@class NSDictionary, NSSet, NSString, NSURL, NSUUID, TUConversationActivity, TUConversationLink, TUConversationProvider, TUHandle;
 
 @interface TUJoinConversationRequest : NSObject <TUFilteredRequest, NSCopying, NSSecureCoding>
 {
@@ -19,54 +19,91 @@
     _Bool _wantsStagingArea;
     _Bool _showUIPrompt;
     _Bool _uplinkMuted;
+    _Bool _video;
+    _Bool _sendLetMeInRequest;
+    _Bool _joiningConversationWithLink;
     NSSet *_remoteMembers;
+    NSSet *_otherInvitedHandles;
     NSUUID *_UUID;
+    TUConversationLink *_conversationLink;
+    TUConversationActivity *_activity;
+    TUConversationProvider *_provider;
     TUHandle *_callerID;
     NSUUID *_messagesGroupUUID;
     NSString *_messagesGroupName;
+    NSSet *_invitationPreferences;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)sanitizedMembersFromMembers:(id)arg1;
++ (id)providerFromURLComponents:(id)arg1;
++ (id)invitationPreferencesFromURLComponents:(id)arg1;
++ (_Bool)joiningConversationWithLinkFromURLComponents:(id)arg1;
++ (_Bool)sendLetMeInRequestFromURLComponents:(id)arg1;
 + (_Bool)showUIPromptFromURLComponents:(id)arg1;
 + (id)messagesGroupNameFromURLComponents:(id)arg1;
 + (id)messagesGroupUUIDFromURLComponents:(id)arg1;
 + (id)callerIDFromURLComponents:(id)arg1;
++ (id)conversationLinkFromURLComponents:(id)arg1;
 + (_Bool)wantsStagingAreaFromURLComponents:(id)arg1;
 + (_Bool)shouldSuppressInCallUIFromURLComponents:(id)arg1;
++ (_Bool)videoFromURLComponents:(id)arg1;
 + (_Bool)videoEnabledFromURLComponents:(id)arg1;
++ (id)otherInvitedHandlesFromURLComponents:(id)arg1;
 + (id)remoteMembersFromURLComponents:(id)arg1;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSSet *invitationPreferences; // @synthesize invitationPreferences=_invitationPreferences;
+@property(nonatomic, getter=isJoiningConversationWithLink) _Bool joiningConversationWithLink; // @synthesize joiningConversationWithLink=_joiningConversationWithLink;
+@property(nonatomic) _Bool sendLetMeInRequest; // @synthesize sendLetMeInRequest=_sendLetMeInRequest;
+@property(nonatomic, getter=isVideo) _Bool video; // @synthesize video=_video;
 @property(nonatomic, getter=isUplinkMuted) _Bool uplinkMuted; // @synthesize uplinkMuted=_uplinkMuted;
 @property(nonatomic) _Bool showUIPrompt; // @synthesize showUIPrompt=_showUIPrompt;
 @property(copy, nonatomic) NSString *messagesGroupName; // @synthesize messagesGroupName=_messagesGroupName;
 @property(copy, nonatomic) NSUUID *messagesGroupUUID; // @synthesize messagesGroupUUID=_messagesGroupUUID;
 @property(retain, nonatomic) TUHandle *callerID; // @synthesize callerID=_callerID;
+@property(retain, nonatomic) TUConversationProvider *provider; // @synthesize provider=_provider;
+@property(nonatomic) TUConversationActivity *activity; // @synthesize activity=_activity;
+@property(copy, nonatomic) TUConversationLink *conversationLink; // @synthesize conversationLink=_conversationLink;
 @property(nonatomic) _Bool wantsStagingArea; // @synthesize wantsStagingArea=_wantsStagingArea;
 @property(nonatomic) _Bool shouldSuppressInCallUI; // @synthesize shouldSuppressInCallUI=_shouldSuppressInCallUI;
 @property(nonatomic, getter=isVideoEnabled) _Bool videoEnabled; // @synthesize videoEnabled=_videoEnabled;
 @property(retain, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
+@property(readonly, copy, nonatomic) NSSet *otherInvitedHandles; // @synthesize otherInvitedHandles=_otherInvitedHandles;
 @property(readonly, copy, nonatomic) NSSet *remoteMembers; // @synthesize remoteMembers=_remoteMembers;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)userActivityUsingStartCallIntents;
+- (id)conversationMembersForIntent:(id)arg1;
+- (id)providerQueryItem;
+- (id)invitationPreferencesQueryItem;
+- (id)joiningConversationWithLinkQueryItem;
+- (id)sendLetMeInRequestQueryItem;
 - (id)showUIPromptQueryItem;
 - (id)messagesGroupNameQueryItem;
 - (id)messagesGroupUUIDQueryItem;
 - (id)callerIDQueryItem;
+- (id)conversationLinkQueryItem;
 - (id)wantsStagingAreaQueryItem;
 - (id)shouldSuppressInCallUIQueryItem;
+- (id)videoQueryItem;
 - (id)videoEnabledQueryItem;
+- (id)otherInvitedHandlesQueryItem;
 - (id)remoteMembersQueryItem;
 - (id)queryItems;
+@property(readonly, copy, nonatomic) NSDictionary *notificationStylesByHandleType;
 @property(readonly, nonatomic) NSURL *URL;
 - (id)contactNamesByHandleWithContactsDataSource:(id)arg1;
 - (id)handles;
 - (id)bundleIdentifier;
 @property(readonly, copy) NSString *description;
+- (id)initWithUserActivity:(id)arg1;
 - (id)initWithGroupUUID:(id)arg1 localParticipantHandle:(id)arg2 remoteParticipantHandles:(id)arg3;
 - (id)initWithURL:(id)arg1;
+- (id)initWithConversationLink:(id)arg1 otherInvitedHandles:(id)arg2 remoteMembers:(id)arg3 sendLetMeInRequest:(_Bool)arg4;
+- (id)initWithConversationLink:(id)arg1 otherInvitedHandles:(id)arg2 sendLetMeInRequest:(_Bool)arg3;
 - (id)initWithConversation:(id)arg1;
+- (id)initWithRemoteMembers:(id)arg1 otherInvitedHandles:(id)arg2;
 - (id)initWithRemoteMembers:(id)arg1;
 
 // Remaining properties

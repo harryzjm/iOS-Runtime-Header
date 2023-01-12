@@ -12,7 +12,7 @@
 #import <NanoTimeKitCompanion/UICollectionViewDelegateFlowLayout-Protocol.h>
 #import <NanoTimeKitCompanion/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableSet, NSOrderedSet, NSSet, NSString, NSTimer, NTKDigitalTimeLabelStyle, NTKUpNextCollectionView, NTKUpNextCollectionViewFlowLayout, NTKUtilityComplicationFactory, REUIRelevanceEngineController, REUpNextScheduler, UICollectionViewDiffableDataSource, UIImage, UITapGestureRecognizer, UIView;
+@class NSArray, NSDiffableDataSourceSnapshot, NSMutableSet, NSOrderedSet, NSSet, NSString, NSTimer, NTKDigitalTimeLabelStyle, NTKUpNextCollectionView, NTKUpNextCollectionViewFlowLayout, NTKUtilityComplicationFactory, REUIRelevanceEngineController, REUpNextScheduler, UICollectionViewDiffableDataSource, UIImage, UITapGestureRecognizer, UIView;
 
 @interface NTKUpNextFaceView <REUIRelevanceEngineControllerDelegate, REElementActionDelegate, REUIElementIntentActionDelegate, CLKSensitiveUIStateObserver, CLKMonochromeFilterProvider, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate>
 {
@@ -59,31 +59,25 @@
     struct CGPoint _secondaryOffsetForModeTransition;
     _Bool _scrollingStoppedTransition;
     long long _previousDataMode;
-    unsigned long long _faceColor;
     _Bool _engineInitiallyLoaded;
-    NSMutableArray *_snapshotCallbacks;
+    NSDiffableDataSourceSnapshot *_snapshotSnapshot;
 }
 
-+ (id)_swatchImageForColorOption:(id)arg1 forDevice:(id)arg2;
-+ (id)_swatchColorForColorOption:(id)arg1 forDevice:(id)arg2;
 + (id)_reuseIdentifierForContent:(id)arg1;
 + (double)suggestedCellHeightForDevice:(id)arg1;
 - (void).cxx_destruct;
+- (id)_swatchImageForColorOption:(id)arg1 size:(struct CGSize)arg2;
 - (void)_deviceOrientationInvertedDidChangeNotification:(id)arg1;
 - (void)_updateCrownInvertedSetting;
 - (id)_digitalTimeLabelStyleFromViewMode:(long long)arg1 faceBounds:(struct CGRect)arg2;
 - (unsigned long long)_timeLabelOptions;
-- (void)_applyFraction:(double)arg1 fromFaceColor:(unsigned long long)arg2 toFaceColor:(unsigned long long)arg3 onCell:(id)arg4;
+- (void)_applyTransitionWithFraction:(double)arg1 interpolatedPalette:(id)arg2 onCell:(id)arg3;
 - (void)_cleanupAfterEditing;
 - (void)_prepareForEditing;
 - (void)_applyTransitionFraction:(double)arg1 fromOption:(id)arg2 toOption:(id)arg3 forCustomEditMode:(long long)arg4 slot:(id)arg5;
 - (void)_setSiriBlurColor;
-- (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
 - (void)_applyRubberBandingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
-- (_Bool)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
-- (unsigned long long)_keylineLabelAlignmentForCustomEditMode:(long long)arg1 slot:(id)arg2;
-- (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (id)intentActionWantsViewToBlurForAlert:(id)arg1;
 - (id)intentActionWantsBackgroundToBlurForAlert:(id)arg1;
 - (id)intentActionWantsBackgroundImageForAlert:(id)arg1;
@@ -125,13 +119,14 @@
 - (void)_cleanupAfterTransitionComplicationSlot:(id)arg1 selectedComplication:(id)arg2;
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_finalizeForSnapshotting:(CDUnknownBlockType)arg1;
+- (void)_prepareForSnapshotting;
+- (void)_loadSnapshotContent:(CDUnknownBlockType)arg1;
 - (void)_performWristRaiseAnimation;
 - (void)_prepareWristRaiseAnimation;
 - (void)_handleOrdinaryScreenWake;
 - (_Bool)presentedViewControllerShouldBecomeFirstResponder:(id)arg1;
 - (void)_handleWristRaiseScreenWake;
 - (void)_applyDataMode;
-- (_Bool)_usesCustomZoom;
 - (_Bool)_supportsTimeScrubbing;
 - (_Bool)_wantsStatusBarHidden;
 - (void)_loadLayoutRules;
@@ -156,11 +151,10 @@
 - (long long)_numberOfItemsInCollectionViewSection:(long long)arg1;
 - (long long)_numberOfSectionsInCollectionView;
 - (void)_configureVisibleCell:(id)arg1;
-- (id)_configureSupplementaryViewForSupplementaryElementOfKind:(id)arg1 withElement:(id)arg2 inCollectionView:(id)arg3;
+- (id)_configureSupplementaryViewForSupplementaryElementOfKind:(id)arg1 atIndexPath:(id)arg2 inCollectionView:(id)arg3;
 - (id)_configureCellForItemWithElement:(id)arg1 atIndexPath:(id)arg2 inCollectionView:(id)arg3;
 - (void)_logContent:(id)arg1 withIdentifier:(id)arg2;
 - (void)_logDataSourceSnapshot:(id)arg1 withName:(id)arg2;
-- (void)_removeUnmanagedCollectionViewCells;
 - (void)_reloadCollectionViewData;
 - (void)_configureCollectionViewDataSource;
 - (_Bool)_dismissPresentedViewControllerIfNecessary:(_Bool)arg1;
@@ -172,6 +166,7 @@
 - (void)_availableDataSourcesDidChange;
 - (void)_replaceDataSourceElement:(id)arg1 withReloadedREElement:(id)arg2;
 - (void)updateCollectionViewSnapshotAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)_snapshotHasChangesToVisibleItems:(id)arg1;
 - (void)_applyCollectionViewSnapshot:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)collectionViewDeferralStateChanged;
 - (void)performScrollTestNamed:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -187,8 +182,8 @@
 - (void)_configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
 - (id)_detachedComplicationDisplays;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)layoutSubviews;
-- (void)_handleEngineChangeNotification;
 - (void)_loadEngineController;
 - (void)screenDidTurnOffAnimated:(_Bool)arg1;
 - (void)screenWillTurnOnAnimated:(_Bool)arg1;

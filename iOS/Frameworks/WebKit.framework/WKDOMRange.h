@@ -10,7 +10,7 @@
 
 @interface WKDOMRange : NSObject
 {
-    struct RefPtr<WebCore::Range, WTF::DumbPtrTraits<WebCore::Range>> _impl;
+    struct RefPtr<WebCore::Range, WTF::RawPtrTraits<WebCore::Range>, WTF::DefaultRefDerefTraits<WebCore::Range>> _impl;
 }
 
 - (id).cxx_construct;
@@ -30,7 +30,7 @@
 - (void)setStart:(id)arg1 offset:(int)arg2;
 - (void)dealloc;
 - (id)initWithDocument:(id)arg1;
-- (id)_initWithImpl:(struct Range *)arg1;
+- (id)_initWithImpl:(void *)arg1;
 - (struct OpaqueWKBundleRangeHandle *)_copyBundleRangeHandleRef;
 
 @end

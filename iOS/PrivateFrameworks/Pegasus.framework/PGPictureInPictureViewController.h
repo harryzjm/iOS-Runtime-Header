@@ -8,21 +8,24 @@
 
 #import <Pegasus/PGCommandHandler-Protocol.h>
 #import <Pegasus/PGPlaybackStateDiffConsumer-Protocol.h>
+#import <Pegasus/PTSettingsKeyPathObserver-Protocol.h>
+#import <Pegasus/UIPointerInteractionDelegate-Protocol.h>
 
-@class MTShadowView, NSString, NSUUID, PGControlsContainerView, PGControlsViewModel, PGHostedWindowHostingHandle, PGLayerHostView, PGPictureInPictureApplication, PGPortalView, PGStashView, PGStashedMaskView, UITapGestureRecognizer, UIView;
+@class NSArray, NSString, NSUUID, PGControlsContainerView, PGControlsViewModel, PGHostedWindowHostingHandle, PGLayerHostView, PGMobilePIPSettings, PGPictureInPictureApplication, PGPictureInPictureViewControllerBackgroundView, PGPictureInPictureViewControllerClippingView, PGPortalView, PGStashView, PGStashedMaskView, UIPointerInteraction, UITapGestureRecognizer, UIView;
 @protocol PGPictureInPictureAnalyticsDelegate, PGPictureInPictureViewControllerContentContainer, PGPictureInPictureViewControllerDelegate;
 
-@interface PGPictureInPictureViewController : UIViewController <PGCommandHandler, PGPlaybackStateDiffConsumer>
+@interface PGPictureInPictureViewController : UIViewController <UIPointerInteractionDelegate, PGCommandHandler, PTSettingsKeyPathObserver, PGPlaybackStateDiffConsumer>
 {
     PGHostedWindowHostingHandle *_hostedWindowHostingHandle;
-    UIView *_backgroundView;
+    PGPictureInPictureViewControllerBackgroundView *_backgroundView;
     UIView *_containerView;
     PGLayerHostView *_contentView;
+    PGPictureInPictureViewControllerClippingView *_contentClippingView;
     PGControlsContainerView *_controlsContainerView;
     PGControlsViewModel *_viewModel;
-    MTShadowView *_shadowView;
+    UIView *_shadowView;
+    UIView *_tabShadowView;
     PGStashView *_stashView;
-    MTShadowView *_tabShadowView;
     PGStashedMaskView *_stashMaskView;
     PGPortalView *_leftSideContentPortalView;
     PGPortalView *_rightSideContentPortalView;
@@ -32,9 +35,13 @@
     _Bool _isSuspended;
     _Bool _stashTabHidden;
     _Bool _stashTabShownLeft;
+    _Bool _isShowingChrome;
+    _Bool _portalsWereActive;
+    _Bool _portalsWereActiveLeft;
+    _Bool _isMicroPIP;
+    id _stashTabSpringBehavior;
     unsigned long long _inFlightStashTabAnimationIdentifier;
     unsigned long long _inFlightStashProgressAnimationIdentifier;
-    long long _stashState;
     UITapGestureRecognizer *_stashedTapGestureRecognizer;
     struct CGSize _preferredContentSize;
     id <PGPictureInPictureViewControllerContentContainer> _contentContainer;
@@ -51,29 +58,62 @@
         unsigned int handleDoubleTapGesture:1;
         unsigned int performRotateAnimationWithRotation:1;
     } _contentContainerRespondsTo;
+    PGMobilePIPSettings *_settings;
     _Bool _canStartShowingChrome;
+    _Bool _stashed;
+    _Bool _prefersStashTabSuppressed;
+    _Bool _prefersHiddenFromClonedDisplay;
+    double _currentContentCornerRadius;
     PGPictureInPictureApplication *_application;
+    NSString *_sourceSceneSessionPersistentIdentifier;
+    PGPictureInPictureViewController *_tetheredViewController;
+    PGPictureInPictureViewController *_tetheringViewController;
+    long long _tetheringMode;
+    NSArray *_menuItems;
+    UIPointerInteraction *_pointerInteraction;
     CDUnknownBlockType _waitForUIFinalizationCompletionBlock;
     long long _controlsStyle;
+    PGHostedWindowHostingHandle *_microPIPHostedWindowHostingHandle;
     struct CGSize _minimumStashTabSize;
+    struct CGSize _microPIPSize;
 }
 
 + (void)animateViewWithAnimationType:(long long)arg1 initialSpringVelocity:(double)arg2 animations:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
-+ (double)contentViewCornerRadius;
++ (void)tetherViewController:(id)arg1 toViewController:(id)arg2 mode:(long long)arg3;
++ (double)defaultContentCornerRadius;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <PGPictureInPictureViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(retain, nonatomic) PGHostedWindowHostingHandle *microPIPHostedWindowHostingHandle; // @synthesize microPIPHostedWindowHostingHandle=_microPIPHostedWindowHostingHandle;
+@property(nonatomic) struct CGSize microPIPSize; // @synthesize microPIPSize=_microPIPSize;
 @property(readonly, nonatomic) long long controlsStyle; // @synthesize controlsStyle=_controlsStyle;
 @property(copy, nonatomic) CDUnknownBlockType waitForUIFinalizationCompletionBlock; // @synthesize waitForUIFinalizationCompletionBlock=_waitForUIFinalizationCompletionBlock;
-@property(nonatomic) long long stashState; // @synthesize stashState=_stashState;
+@property(nonatomic) __weak UIPointerInteraction *pointerInteraction; // @synthesize pointerInteraction=_pointerInteraction;
+@property(readonly, nonatomic) _Bool prefersHiddenFromClonedDisplay; // @synthesize prefersHiddenFromClonedDisplay=_prefersHiddenFromClonedDisplay;
+@property(copy, nonatomic) NSArray *menuItems; // @synthesize menuItems=_menuItems;
+@property(nonatomic) _Bool prefersStashTabSuppressed; // @synthesize prefersStashTabSuppressed=_prefersStashTabSuppressed;
+@property(nonatomic) _Bool stashed; // @synthesize stashed=_stashed;
 @property(nonatomic) struct CGSize minimumStashTabSize; // @synthesize minimumStashTabSize=_minimumStashTabSize;
 @property(nonatomic, getter=isInteractivelyResizing) _Bool interactivelyResizing; // @synthesize interactivelyResizing=_interactivelyResizing;
+@property(readonly, nonatomic) long long tetheringMode; // @synthesize tetheringMode=_tetheringMode;
+@property(readonly, nonatomic) __weak PGPictureInPictureViewController *tetheringViewController; // @synthesize tetheringViewController=_tetheringViewController;
+@property(readonly, nonatomic) __weak PGPictureInPictureViewController *tetheredViewController; // @synthesize tetheredViewController=_tetheredViewController;
 @property(nonatomic) _Bool canStartShowingChrome; // @synthesize canStartShowingChrome=_canStartShowingChrome;
 @property(nonatomic) __weak id <PGPictureInPictureViewControllerContentContainer> contentContainer; // @synthesize contentContainer=_contentContainer;
+@property(readonly, nonatomic) NSString *sourceSceneSessionPersistentIdentifier; // @synthesize sourceSceneSessionPersistentIdentifier=_sourceSceneSessionPersistentIdentifier;
 @property(readonly, nonatomic) __weak PGPictureInPictureApplication *application; // @synthesize application=_application;
+@property(nonatomic) double currentContentCornerRadius; // @synthesize currentContentCornerRadius=_currentContentCornerRadius;
+- (void)_insertContentContainerViewIfNeeded;
 - (void)_updatePrefersIdleTimerDisabled;
+- (void)_addMaskViewSubviewIfNeeded;
+- (void)_loadTabShadowViewIfNeeded;
+- (void)settings:(id)arg1 changedValueForKeyPath:(id)arg2;
+- (void)_updatePointerEffect;
+- (void)_applyShadowSettingsToView:(id)arg1;
+- (id)_newShadowView;
 - (void)_loadShadowViewIfNeeded;
 - (void)updatePlaybackStateWithDiff:(id)arg1;
 - (void)handleCommand:(id)arg1;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (void)_handleTapWhileStashedGestureRecognizer:(id)arg1;
 - (void)setContentViewHidden:(_Bool)arg1;
 @property(nonatomic, getter=isInterrupted) _Bool interrupted;
@@ -88,12 +128,13 @@
 - (void)_performStartAnimationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)performStartAnimated:(_Bool)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)prepareStartAnimationWithInitialInterfaceOrientation:(long long)arg1 initialLayerFrame:(struct CGRect)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (long long)preferredInterfaceOrientationForPresentation;
+- (_Bool)shouldAutorotate;
 - (void)setPreferredContentSize:(struct CGSize)arg1;
 - (struct CGSize)preferredContentSize;
 @property(readonly, nonatomic) double preferredMinimumWidth;
 @property(readonly, nonatomic) UIView *contentContainerView;
 - (void)_resetStashTabViewsIfPossible;
-- (void)_addMaskViewSubviewIfNeeded;
 - (void)_updateContentCornerRadiusForMaskActive:(_Bool)arg1;
 - (void)_setStashMaskActive:(_Bool)arg1;
 - (void)_setPortalActive:(_Bool)arg1 left:(_Bool)arg2;
@@ -104,13 +145,21 @@
 - (void)loadView;
 - (void)setShowsPictureInPictureUnavailableIndicator:(_Bool)arg1;
 - (_Bool)showsPictureInPictureUnavailableIndicator;
+- (void)_updateStashTabStateWithBehavior:(id)arg1;
 - (void)setStashTabHidden:(_Bool)arg1 left:(_Bool)arg2 withSpringBehavior:(id)arg3;
 @property(readonly, nonatomic) _Bool isStashTabHidden;
+@property(readonly, nonatomic) _Bool wantsStashTabSuppression;
 - (void)setStashProgress:(double)arg1;
 - (void)hostedWindowSizeChangeEnded;
 - (void)hostedWindowSizeChangeBegan;
 - (void)updateHostedWindowSize:(struct CGSize)arg1;
+- (void)_updateCornerRadii;
+- (void)setContentCornerRadius:(double)arg1 animated:(_Bool)arg2;
 - (void)showChrome:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)_noteTetheringDidUpdate;
+- (void)setTetheringViewController:(id)arg1 mode:(long long)arg2;
+- (void)setTetheredViewController:(id)arg1 mode:(long long)arg2;
+- (void)flashControls;
 @property(readonly, nonatomic) PGControlsViewModel *viewModel;
 @property(readonly, nonatomic) _Bool prefersIdleTimerDisabled;
 - (void)deactivateAnalyticsSessionIfNeeded;
@@ -118,10 +167,11 @@
 - (void)notePictureInPictureStartedAutomatically:(_Bool)arg1;
 - (void)setAnalyticsDelegate:(id)arg1 analyticsSourceUUID:(id)arg2;
 @property(retain, nonatomic) PGHostedWindowHostingHandle *hostedWindowHostingHandle;
+@property(readonly, nonatomic) long long contentType;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (id)initWithApplication:(id)arg1 controlsStyle:(long long)arg2;
+- (id)initWithApplication:(id)arg1 sourceSceneSessionPersistentIdentifier:(id)arg2 controlsStyle:(long long)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

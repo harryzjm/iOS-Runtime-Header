@@ -15,6 +15,8 @@
 @property(retain, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
 - (_Bool)shouldDeselectPreviousSelection;
 - (id)setupViewController;
+- (void)openApplication:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)openUserActivity:(id)arg1 withApplicationBundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)showViewController:(id)arg1;
 - (void)presentViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)requestAuthIfNecessaryAndPresentViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
@@ -25,6 +27,7 @@
 - (id)cardSectionEngagementFeedback;
 - (_Bool)prefersModalPresentation;
 - (void)performCommandWithCompletion:(CDUnknownBlockType)arg1;
+- (void)sendCommandFeedback;
 - (void)sendAllFeedback;
 
 @end

@@ -12,7 +12,8 @@
 {
     NSString *_featureIdentifier;
     NSString *_userDefaultsDomain;
-    NSString *_userDefaultsKey;
+    NSString *_userDefaultsFeatureEnabledKey;
+    NSString *_userDefaultsDisabledOverrideKey;
     unsigned long long _options;
     NSArray *_samplesTypesToDelete;
 }
@@ -20,13 +21,15 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *samplesTypesToDelete; // @synthesize samplesTypesToDelete=_samplesTypesToDelete;
 @property(nonatomic) unsigned long long options; // @synthesize options=_options;
-@property(copy, nonatomic) NSString *userDefaultsKey; // @synthesize userDefaultsKey=_userDefaultsKey;
+@property(copy, nonatomic) NSString *userDefaultsDisabledOverrideKey; // @synthesize userDefaultsDisabledOverrideKey=_userDefaultsDisabledOverrideKey;
+@property(copy, nonatomic) NSString *userDefaultsFeatureEnabledKey; // @synthesize userDefaultsFeatureEnabledKey=_userDefaultsFeatureEnabledKey;
 @property(copy, nonatomic) NSString *userDefaultsDomain; // @synthesize userDefaultsDomain=_userDefaultsDomain;
 @property(copy, nonatomic) NSString *featureIdentifier; // @synthesize featureIdentifier=_featureIdentifier;
+- (_Bool)showDisabledOverride;
 - (_Bool)requireReboot;
 - (_Bool)syncToWatch;
 - (_Bool)showFeatureEnable;
-- (id)initWithFeatureIdentifier:(id)arg1 userDefaultsDomain:(id)arg2 userDefaultsKey:(id)arg3 options:(unsigned long long)arg4 samplesTypesToDelete:(id)arg5;
+- (id)initWithFeatureIdentifier:(id)arg1 userDefaultsDomain:(id)arg2 userDefaultsFeatureEnabledKey:(id)arg3 userDefaultsDisabledOverrideKey:(id)arg4 options:(unsigned long long)arg5 samplesTypesToDelete:(id)arg6;
 
 @end
 

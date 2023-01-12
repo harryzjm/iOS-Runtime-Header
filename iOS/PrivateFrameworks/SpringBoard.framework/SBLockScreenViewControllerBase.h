@@ -25,12 +25,13 @@
 #import <SpringBoard/SBLockScreenPasscodeViewPresenting-Protocol.h>
 #import <SpringBoard/SBLockScreenPluginPresenting-Protocol.h>
 #import <SpringBoard/SBLockScreenProximityBehaviorProviding-Protocol.h>
+#import <SpringBoard/SBLockScreenSpotlightPresenting-Protocol.h>
 #import <SpringBoard/SBLockScreenStatusBarTransitioning-Protocol.h>
 
 @class NSString, SBFLockScreenActionContext, SBFLockScreenWakeAnimator, UIVisualEffectView;
 @protocol SBBiometricUnlockBehaviorDelegate, SBIdleTimerCoordinating;
 
-@interface SBLockScreenViewControllerBase : UIViewController <SBApplicationHosting, SBAutoUnlockRule, SBBiometricUnlockBehavior, SBButtonEventsHandler, SBCoverSheetSlidingViewControllerContentViewController, SBIdleTimerProviding, SBLockScreenBacklightControlling, SBLockScreenBehaviorSuppressing, SBLockScreenBlockedStateObserving, SBLockScreenButtonObserving, SBLockScreenCallHandling, SBLockScreenContentStateProviding, SBLockScreenCustomActionStoring, SBLockScreenIdleTimerControlling, SBLockScreenLockingAndUnlocking, SBLockScreenMediaControlsPresenting, SBLockScreenPasscodeViewPresenting, SBLockScreenPluginPresenting, SBLockScreenProximityBehaviorProviding, SBLockScreenStatusBarTransitioning>
+@interface SBLockScreenViewControllerBase : UIViewController <SBApplicationHosting, SBAutoUnlockRule, SBBiometricUnlockBehavior, SBButtonEventsHandler, SBCoverSheetSlidingViewControllerContentViewController, SBIdleTimerProviding, SBLockScreenBacklightControlling, SBLockScreenBehaviorSuppressing, SBLockScreenBlockedStateObserving, SBLockScreenButtonObserving, SBLockScreenCallHandling, SBLockScreenContentStateProviding, SBLockScreenCustomActionStoring, SBLockScreenIdleTimerControlling, SBLockScreenLockingAndUnlocking, SBLockScreenMediaControlsPresenting, SBLockScreenPasscodeViewPresenting, SBLockScreenPluginPresenting, SBLockScreenProximityBehaviorProviding, SBLockScreenStatusBarTransitioning, SBLockScreenSpotlightPresenting>
 {
     SBFLockScreenActionContext *_customLockScreenActionContext;
     _Bool _authenticated;
@@ -50,6 +51,9 @@
 @property(nonatomic) __weak id <SBIdleTimerCoordinating> idleTimerCoordinator; // @synthesize idleTimerCoordinator=_idleTimerCoordinator;
 @property(readonly, nonatomic) _Bool expectsFaceContact; // @synthesize expectsFaceContact=_expectsFaceContact;
 @property(nonatomic, getter=isAuthenticated) _Bool authenticated; // @synthesize authenticated=_authenticated;
+- (void)updateScaleViewWithScale:(double)arg1;
+- (void)presentOrDismissCoverSheetSpotlightAnimated:(_Bool)arg1;
+- (_Bool)shouldPresentOrDismissCoverSheetSpotlight;
 - (void)handleBiometricEvent:(unsigned long long)arg1;
 - (_Bool)shouldAutoUnlockForSource:(int)arg1;
 - (_Bool)shouldUnlockUIOnKeyDownEvent;
@@ -76,6 +80,7 @@
 - (_Bool)handleHeadsetButtonPress:(_Bool)arg1;
 - (_Bool)handleVolumeDownButtonPress;
 - (_Bool)handleVolumeUpButtonPress;
+- (_Bool)handleVoiceCommandButtonPress;
 - (_Bool)handleLockButtonPress;
 - (_Bool)handleHomeButtonLongPress;
 - (_Bool)handleHomeButtonDoublePress;

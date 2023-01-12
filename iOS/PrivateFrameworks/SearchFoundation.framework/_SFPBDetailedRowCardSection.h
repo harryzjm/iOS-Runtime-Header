@@ -19,6 +19,7 @@
     _Bool _preventThumbnailImageScaling;
     _Bool _isSecondaryTitleDetached;
     _Bool _shouldUseCompactDisplay;
+    _Bool _buttonItemsAreTrailing;
     int _separatorStyle;
     NSArray *_punchoutOptions;
     NSString *_punchoutPickerTitle;
@@ -36,9 +37,14 @@
     _SFPBFormattedText *_trailingBottomText;
     _SFPBActionItem *_action;
     _SFPBButton *_button;
+    NSArray *_buttonItems;
+    _SFPBImage *_trailingThumbnail;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool buttonItemsAreTrailing; // @synthesize buttonItemsAreTrailing=_buttonItemsAreTrailing;
+@property(retain, nonatomic) _SFPBImage *trailingThumbnail; // @synthesize trailingThumbnail=_trailingThumbnail;
+@property(copy, nonatomic) NSArray *buttonItems; // @synthesize buttonItems=_buttonItems;
 @property(nonatomic) _Bool shouldUseCompactDisplay; // @synthesize shouldUseCompactDisplay=_shouldUseCompactDisplay;
 @property(retain, nonatomic) _SFPBButton *button; // @synthesize button=_button;
 @property(retain, nonatomic) _SFPBActionItem *action; // @synthesize action=_action;
@@ -70,6 +76,10 @@
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
+- (id)buttonItemsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)buttonItemsCount;
+- (void)addButtonItems:(id)arg1;
+- (void)clearButtonItems;
 - (id)descriptionsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)descriptionsCount;
 - (void)addDescriptions:(id)arg1;

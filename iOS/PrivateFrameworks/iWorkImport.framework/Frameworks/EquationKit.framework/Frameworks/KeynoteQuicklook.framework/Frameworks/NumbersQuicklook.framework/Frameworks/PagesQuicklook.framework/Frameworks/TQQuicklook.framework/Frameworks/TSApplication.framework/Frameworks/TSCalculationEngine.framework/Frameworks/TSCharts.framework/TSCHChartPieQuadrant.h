@@ -10,15 +10,15 @@
 
 @interface TSCHChartPieQuadrant : NSObject
 {
-    NSArray *mWedgeLayoutInfos;
-    unsigned long long mHorizontalHalfDisk;
-    unsigned long long mVerticalHalfDisk;
+    NSArray *_wedgeLayoutInfos;
+    unsigned long long _horizontalHalfDisk;
+    unsigned long long _verticalHalfDisk;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) unsigned long long verticalHalfDisk; // @synthesize verticalHalfDisk=mVerticalHalfDisk;
-@property(readonly, nonatomic) unsigned long long horizontalHalfDisk; // @synthesize horizontalHalfDisk=mHorizontalHalfDisk;
-@property(readonly, copy, nonatomic) NSArray *wedgeLayoutInfos; // @synthesize wedgeLayoutInfos=mWedgeLayoutInfos;
+@property(readonly, nonatomic) unsigned long long verticalHalfDisk; // @synthesize verticalHalfDisk=_verticalHalfDisk;
+@property(readonly, nonatomic) unsigned long long horizontalHalfDisk; // @synthesize horizontalHalfDisk=_horizontalHalfDisk;
+@property(readonly, copy, nonatomic) NSArray *wedgeLayoutInfos; // @synthesize wedgeLayoutInfos=_wedgeLayoutInfos;
 - (id)initWithWedgeLayoutInfos:(id)arg1 horizontalHalfDisk:(unsigned long long)arg2 verticalHalfDisk:(unsigned long long)arg3;
 
 @end

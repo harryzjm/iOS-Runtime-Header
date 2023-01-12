@@ -7,9 +7,13 @@
 @interface CADEventEntityWrapper
 {
     double _occurrenceDate;
+    _Bool _isDropoffEvent;
+    _Bool _isPickupEvent;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(nonatomic) _Bool isPickupEvent; // @synthesize isPickupEvent=_isPickupEvent;
+@property(nonatomic) _Bool isDropoffEvent; // @synthesize isDropoffEvent=_isDropoffEvent;
 - (id)occurrenceDate;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

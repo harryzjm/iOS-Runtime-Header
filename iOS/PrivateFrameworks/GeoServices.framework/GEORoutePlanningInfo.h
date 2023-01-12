@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOAdvisoriesInfo, GEOFormattedString, GEORouteInformation, PBDataReader, PBUnknownFields;
+@class GEOAdvisoriesInfo, GEOFormattedString, GEOPBTransitArtwork, GEORouteInformation, PBDataReader, PBUnknownFields;
 
 @interface GEORoutePlanningInfo : PBCodable <NSCopying>
 {
@@ -16,6 +16,7 @@
     PBUnknownFields *_unknownFields;
     GEOAdvisoriesInfo *_advisoriesInfo;
     GEOFormattedString *_infrastructureDescription;
+    GEOPBTransitArtwork *_labelArtwork;
     GEOFormattedString *_labelDetailText;
     GEORouteInformation *_routePlanningDescription;
     GEOFormattedString *_trafficDescriptionText;
@@ -26,6 +27,7 @@
         unsigned int read_unknownFields:1;
         unsigned int read_advisoriesInfo:1;
         unsigned int read_infrastructureDescription:1;
+        unsigned int read_labelArtwork:1;
         unsigned int read_labelDetailText:1;
         unsigned int read_routePlanningDescription:1;
         unsigned int read_trafficDescriptionText:1;
@@ -56,6 +58,8 @@
 @property(readonly, nonatomic) _Bool hasAdvisoriesInfo;
 @property(retain, nonatomic) GEOFormattedString *infrastructureDescription;
 @property(readonly, nonatomic) _Bool hasInfrastructureDescription;
+@property(retain, nonatomic) GEOPBTransitArtwork *labelArtwork;
+@property(readonly, nonatomic) _Bool hasLabelArtwork;
 @property(retain, nonatomic) GEOFormattedString *labelDetailText;
 @property(readonly, nonatomic) _Bool hasLabelDetailText;
 @property(retain, nonatomic) GEORouteInformation *routePlanningDescription;

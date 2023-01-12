@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKMediaObject, NSString, UIItemProvider, UITraitCollection;
+@class CKMediaObject, NSItemProvider, NSString, NSURL, UITraitCollection;
 
 @interface CKAttachmentMessagePartChatItem
 {
-    UIItemProvider *_dragItemProvider;
+    NSItemProvider *_dragItemProvider;
+    NSURL *_momentShareURL;
     UITraitCollection *_transcriptTraitCollection;
     CKMediaObject *_mediaObject;
 }
@@ -16,24 +17,27 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) CKMediaObject *mediaObject; // @synthesize mediaObject=_mediaObject;
 - (id)transcriptTraitCollection;
+@property(readonly, copy, nonatomic) NSURL *momentShareURL;
+@property(readonly, nonatomic) unsigned long long layoutGroupStyle;
 @property(readonly, copy, nonatomic) NSString *transferGUID;
 - (id)dragItemProvider;
-- (id)fileURLForAttachment;
 - (id)rtfDocumentItemsWithFormatString:(id)arg1 selectedTextRange:(struct _NSRange)arg2;
-- (id)pasteboardItems;
+- (id)fileURLForAttachment;
 - (_Bool)shouldCacheSize;
 - (unsigned long long)balloonCorners;
 - (Class)balloonViewClass;
 - (void)setTranscriptTraitCollection:(id)arg1;
 - (_Bool)stickersSnapToPoint;
+- (_Bool)canQuickSave;
 - (_Bool)canExport;
 - (_Bool)canForward;
 - (_Bool)canCopy;
 - (struct CGSize)_transcoderGeneratedSizeFittingSize:(struct CGSize)arg1 sizeExists:(_Bool *)arg2;
+- (Class)cellClass;
 - (struct CGSize)loadSizeThatFits:(struct CGSize)arg1 textAlignmentInsets:(out struct UIEdgeInsets *)arg2;
 - (id)initWithIMChatItem:(id)arg1 maxWidth:(double)arg2;
 - (id)description;
-- (id)composition;
+- (id)compositionWithContext:(id)arg1;
 
 @end
 

@@ -17,8 +17,8 @@
 - (id)assetDescription;
 - (id)keywordTitles;
 - (id)title;
-- (id)exifTimeZone;
-- (id)exifImageDate;
+- (id)timeZone;
+- (id)creationDate;
 - (id)initWithAssetBundleAtURL:(id)arg1 withImportSource:(id)arg2;
 
 @end

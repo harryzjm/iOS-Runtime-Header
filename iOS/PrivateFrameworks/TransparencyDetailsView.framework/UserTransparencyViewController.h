@@ -50,7 +50,6 @@
 - (void)_showErrorMessage:(id)arg1;
 - (void)errorDelegate;
 - (void)presentViewDelegate;
-- (void)viewDidLayoutSubviews;
 - (void)requestUserTransparencyDetailsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_commonInit;
 - (id)initWithUserTransparencyDetails:(id)arg1;

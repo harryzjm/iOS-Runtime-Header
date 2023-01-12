@@ -6,25 +6,36 @@
 
 #import <Home/HFItemManager.h>
 
-@class HFStaticItem, HMAccessory, NSMutableArray;
+@class HFAccessoryDiagnosticsControlItem, HFItem, HFStaticItem, HMAccessory, NSMutableArray;
 
 @interface HUAccessoryDiagnosticsItemManager : HFItemManager
 {
-    HFStaticItem *_generateLogsButtonItem;
+    HFStaticItem *_fetchManufacturerSnapshotButtonItem;
+    HFStaticItem *_fetchADKSnapshotButtonItem;
     HFStaticItem *_logCollectionFailedItem;
+    HFItem *_enableVerboseLoggingItem;
+    HFItem *_enableAudioClipLoggingItem;
     HMAccessory *_sourceAccessory;
     NSMutableArray *_downloadedLogs;
+    HFAccessoryDiagnosticsControlItem *_diagnosticsModesItem;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) HFAccessoryDiagnosticsControlItem *diagnosticsModesItem; // @synthesize diagnosticsModesItem=_diagnosticsModesItem;
 @property(retain, nonatomic) NSMutableArray *downloadedLogs; // @synthesize downloadedLogs=_downloadedLogs;
 @property(readonly, nonatomic) HMAccessory *sourceAccessory; // @synthesize sourceAccessory=_sourceAccessory;
+@property(readonly, nonatomic) HFItem *enableAudioClipLoggingItem; // @synthesize enableAudioClipLoggingItem=_enableAudioClipLoggingItem;
+@property(readonly, nonatomic) HFItem *enableVerboseLoggingItem; // @synthesize enableVerboseLoggingItem=_enableVerboseLoggingItem;
 @property(readonly, nonatomic) HFStaticItem *logCollectionFailedItem; // @synthesize logCollectionFailedItem=_logCollectionFailedItem;
-@property(readonly, nonatomic) HFStaticItem *generateLogsButtonItem; // @synthesize generateLogsButtonItem=_generateLogsButtonItem;
+@property(readonly, nonatomic) HFStaticItem *fetchADKSnapshotButtonItem; // @synthesize fetchADKSnapshotButtonItem=_fetchADKSnapshotButtonItem;
+@property(readonly, nonatomic) HFStaticItem *fetchManufacturerSnapshotButtonItem; // @synthesize fetchManufacturerSnapshotButtonItem=_fetchManufacturerSnapshotButtonItem;
+- (void)setAudioClipLoggingEnabled:(_Bool)arg1;
+- (void)setVerboseLoggingEnabled:(_Bool)arg1;
+- (void)_setLoggingOption:(long long)arg1 enable:(_Bool)arg2;
 - (id)availableLogs;
 - (void)recordDownloadedLog:(id)arg1;
 - (void)_loadDownloadedLogs;
-- (void)beginDiagnosticCollection;
+- (void)beginDiagnosticCollection:(id)arg1;
 @property(nonatomic) _Bool collectionFailed;
 @property(nonatomic) _Bool collectionInProgress;
 - (void)didChangeNotification:(id)arg1;

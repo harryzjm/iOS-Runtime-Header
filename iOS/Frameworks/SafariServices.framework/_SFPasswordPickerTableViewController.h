@@ -4,10 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSIndexPath, NSMutableArray, _SFPasswordPickerTableConfiguration;
+#import <SafariServices/SFAddPasswordViewControllerDelegate-Protocol.h>
+#import <SafariServices/_SFTableLinkableFooterViewDelegate-Protocol.h>
+
+@class NSIndexPath, NSMutableArray, NSString, SFPasswordPickerConfiguration, UIBarButtonItem;
 @protocol _SFPasswordPickerTableViewControllerDelegate;
 
-@interface _SFPasswordPickerTableViewController
+@interface _SFPasswordPickerTableViewController <SFAddPasswordViewControllerDelegate, _SFTableLinkableFooterViewDelegate>
 {
     NSMutableArray *_savedPasswordsMatchingHintStrings;
     NSMutableArray *_savedPasswords;
@@ -15,15 +18,17 @@
     long long _sectionForPasswordsMatchingHintStrings;
     long long _sectionForAllPasswords;
     NSIndexPath *_indexPathOfRowShowingDetailView;
+    UIBarButtonItem *_addNavigationBarItem;
     id <_SFPasswordPickerTableViewControllerDelegate> _delegate;
-    _SFPasswordPickerTableConfiguration *_configuration;
+    SFPasswordPickerConfiguration *_configuration;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) _SFPasswordPickerTableConfiguration *configuration; // @synthesize configuration=_configuration;
+@property(readonly, nonatomic) SFPasswordPickerConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(nonatomic) __weak id <_SFPasswordPickerTableViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)_passwordForIndexPath:(id)arg1;
 - (void)_updateSections;
+- (_Bool)_shouldShowPasswordsMatchingHintStringsSection;
 - (void)_updateMatchingPasswords;
 - (void)searchPatternDidUpdate;
 - (void)_deletePasswordAtIndexPath:(id)arg1;
@@ -31,12 +36,19 @@
 - (_Bool)tableView:(id)arg1 canPerformAction:(SEL)arg2 forRowAtIndexPath:(id)arg3 withSender:(id)arg4;
 - (_Bool)tableView:(id)arg1 shouldShowMenuForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 accessoryButtonTappedForRowWithIndexPath:(id)arg2;
+- (void)linkableFooterViewDidInteractWithLink:(id)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
+- (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (long long)_rowTypeForIndexPath:(id)arg1;
+- (void)addPasswordViewControllerDidFinish:(id)arg1 withSavedPassword:(id)arg2;
+- (void)_presentAddPasswordViewController;
+- (void)_addNavigationBarItemTapped:(id)arg1;
+- (void)_didPickSavedPassword:(id)arg1;
 - (void)_passwordStoreDidChange;
 - (void)_reloadSavedPasswords;
 - (void)handleContextMenuDeleteForIndexPath:(id)arg1;
@@ -47,6 +59,12 @@
 - (void)viewDidLoad;
 - (void)dealloc;
 - (id)initWithConfiguration:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

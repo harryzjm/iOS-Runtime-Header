@@ -10,7 +10,7 @@
 }
 
 + (id)curvedShadowWithOffset:(double)arg1 angle:(double)arg2 radius:(double)arg3 curve:(double)arg4 opacity:(double)arg5 color:(id)arg6 enabled:(_Bool)arg7;
-+ (id)instanceWithArchive:(const struct ShadowArchive *)arg1 unarchiver:(id)arg2;
++ (id)instanceWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 @property(readonly, nonatomic) double curve; // @synthesize curve=mCurve;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
@@ -30,9 +30,10 @@
 - (unsigned long long)shadowType;
 - (double)clampOffset:(double)arg1;
 - (id)description;
+- (void)i_setCurve:(double)arg1;
 - (id)initWithOffset:(double)arg1 angle:(double)arg2 radius:(double)arg3 curve:(double)arg4 opacity:(double)arg5 color:(id)arg6 enabled:(_Bool)arg7;
-- (void)saveToArchive:(struct ShadowArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct ShadowArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 @end
 

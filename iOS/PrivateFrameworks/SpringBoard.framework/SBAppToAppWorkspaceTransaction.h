@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSObject, SBAutoPiPWorkspaceTransaction, SBUIAnimationController;
+@class NSObject, SBAutoPIPWorkspaceTransaction, SBUIAnimationController;
 @protocol OS_dispatch_group;
 
 @interface SBAppToAppWorkspaceTransaction
 {
-    SBAutoPiPWorkspaceTransaction *_autoPiPTransaction;
+    SBAutoPIPWorkspaceTransaction *_autoPIPTransaction;
     SBUIAnimationController *_animation;
     unsigned long long _autoPIPTransitionOrder;
     NSObject<OS_dispatch_group> *_pipDuringSwitchTransitionTasksGroup;

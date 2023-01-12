@@ -16,11 +16,15 @@ __attribute__((visibility("hidden")))
 @interface SFBrowserRemoteViewController : _UIRemoteViewController <MPVolumeDisplaying, SFRemoteViewControllerProtocol>
 {
     _Bool _isInFullScreen;
+    _Bool _hasBeenDisplayedAtLeastOnce;
+    _Bool _shouldDetermineVisibilityOnNextLayout;
+    _Bool _didLoadWebView;
     id <SFBrowserRemoteViewControllerDelegate> _delegate;
 }
 
 + (id)exportedInterface;
 + (id)serviceViewControllerInterface;
++ (_Bool)shouldPropagateAppearanceCustomizations;
 + (id)requestViewControllerWithConnectionHandler:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <SFBrowserRemoteViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -43,9 +47,12 @@ __attribute__((visibility("hidden")))
 - (void)setRemoteSwipeGestureEnabled:(_Bool)arg1;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
 - (void)willDismissServiceViewController;
+- (void)_determineVisibilityIfNeeded;
 - (void)didLoadWebView;
 - (void)didMoveToParentViewController:(id)arg1;
 - (void)willMoveToParentViewController:(id)arg1;
+- (void)viewDidLayoutSubviews;
+- (void)viewWillAppear:(_Bool)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

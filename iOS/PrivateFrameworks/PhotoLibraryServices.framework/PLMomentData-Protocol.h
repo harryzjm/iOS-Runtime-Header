@@ -4,24 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PhotoLibraryServices/PLMomentProtocol-Protocol.h>
+#import <PhotoLibraryServices/PLMomentProcessingProtocol-Protocol.h>
 #import <PhotoLibraryServices/PLMomentRefreshable-Protocol.h>
 
 @class CLLocation, NSArray, NSDate, NSObject, NSSet, NSString;
-@protocol NSCopying, PLMomentAssetData, PLMomentListData, PLPhotosHighlightData;
+@protocol NSCopying, PLMomentAssetData, PLPhotosHighlightData;
 
-@protocol PLMomentData <PLMomentRefreshable, PLMomentProtocol>
+@protocol PLMomentData <PLMomentRefreshable, PLMomentProcessingProtocol>
 + (NSArray *)sortByTimeSortDescriptors;
 @property(retain, nonatomic) NSString *uuid;
 @property(nonatomic) int cachedVideosCount;
 @property(nonatomic) int cachedPhotosCount;
 @property(nonatomic) int cachedCount;
-@property(retain, nonatomic) id <PLMomentListData> megaMomentList;
-@property(retain, nonatomic) id <PLMomentListData> yearMomentList;
 @property(readonly, nonatomic) id <PLPhotosHighlightData> highlight;
 @property(readonly, retain, nonatomic) NSArray *batchedAssets;
 @property(retain, nonatomic) NSSet *assets;
 @property(nonatomic) float aggregationScore;
+@property(nonatomic) short originatorState;
 @property(nonatomic) double gpsHorizontalAccuracy;
 @property(nonatomic) unsigned short processedLocation;
 @property(retain, nonatomic) CLLocation *approximateLocation;

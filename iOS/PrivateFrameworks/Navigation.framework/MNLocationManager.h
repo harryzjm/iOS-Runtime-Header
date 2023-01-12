@@ -9,7 +9,7 @@
 #import <Navigation/GEOResourceManifestTileGroupObserver-Protocol.h>
 #import <Navigation/MNLocationProviderDelegate-Protocol.h>
 
-@class CLHeading, CLInUseAssertion, GEOLocationShifter, MNLocation, NSBundle, NSDate, NSError, NSHashTable, NSLock, NSString;
+@class CLHeading, CLInUseAssertion, GEOLocationShifter, MNLocation, NSBundle, NSDate, NSHashTable, NSLock, NSString;
 @protocol MNLocationProvider, MNLocationRecorder;
 
 @interface MNLocationManager : NSObject <GEOResourceManifestTileGroupObserver, MNLocationProviderDelegate>
@@ -27,22 +27,13 @@
     NSLock *_lastLocationLock;
     MNLocation *_lastLocation;
     GEOLocationShifter *_locationShifter;
-    double _lastLocationUpdateTime;
-    double _lastLocationReportTime;
-    double _locationUpdateStartTime;
     double _expectedGpsUpdateInterval;
     CLInUseAssertion *_locationAssertion;
     CLHeading *_heading;
     NSDate *_lastUpdatedHeadingDate;
-    _Bool _hasCustomDesiredAccuracy;
     _Bool _trackingLocation;
-    _Bool _logStartStopLocationUpdates;
-    _Bool _isLastLocationStale;
-    _Bool _lastLocationPushed;
-    _Bool _useCourseForHeading;
     _Bool _trackingHeading;
     CDUnknownBlockType _locationCorrector;
-    NSError *_locationError;
 }
 
 + (id)sharedLocationManager;
@@ -50,11 +41,12 @@
 @property(retain, nonatomic) id <MNLocationProvider> locationProvider; // @synthesize locationProvider=_locationProvider;
 @property(readonly, nonatomic) unsigned long long locationProviderType; // @synthesize locationProviderType=_locationProviderType;
 @property(retain, nonatomic) id <MNLocationRecorder> locationRecorder; // @synthesize locationRecorder=_locationRecorder;
-@property(readonly, nonatomic) NSError *locationError; // @synthesize locationError=_locationError;
-@property(readonly, nonatomic) _Bool isLastLocationStale; // @synthesize isLastLocationStale=_isLastLocationStale;
 @property(readonly, nonatomic) CLHeading *heading; // @synthesize heading=_heading;
 @property(copy, nonatomic) CDUnknownBlockType locationCorrector; // @synthesize locationCorrector=_locationCorrector;
 - (void)resourceManifestManager:(id)arg1 didChangeActiveTileGroup:(id)arg2 fromOldTileGroup:(id)arg3;
+- (void)locationProvider:(id)arg1 monitoringDidFailForRegion:(id)arg2 withError:(id)arg3;
+- (void)locationProvider:(id)arg1 didExitRegion:(id)arg2;
+- (void)locationProvider:(id)arg1 didEnterRegion:(id)arg2;
 - (void)locationProvider:(id)arg1 didUpdateVehicleHeading:(double)arg2 timestamp:(id)arg3;
 - (void)locationProvider:(id)arg1 didUpdateVehicleSpeed:(double)arg2 timestamp:(id)arg3;
 - (void)locationProviderDidResumeLocationUpdates:(id)arg1;
@@ -65,29 +57,23 @@
 - (void)locationProvider:(id)arg1 didUpdateHeading:(id)arg2;
 - (void)locationProvider:(id)arg1 didReceiveError:(id)arg2;
 - (void)locationProvider:(id)arg1 didUpdateLocation:(id)arg2;
-- (_Bool)isLocationServicesRestricted;
-- (_Bool)isLocationServicesDenied;
-- (_Bool)isLocationServicesAuthorizationNeeded;
-- (_Bool)isLocationServicesAvailable;
-- (_Bool)isLocationServicesApproved;
-- (_Bool)isLocationServicesPossiblyAvailable:(id *)arg1;
-- (_Bool)isLocationServicesPossiblyAvailable;
 - (void)_reportLocationStatus:(SEL)arg1;
 - (void)_reportLocationReset;
 - (void)_reportLocationFailureWithError:(id)arg1;
 - (void)_reportLocationSuccess;
-- (void)_updateForNewLocation:(id)arg1 rawLocation:(id)arg2;
-- (void)_startLocationUpdateWithObserver:(id)arg1 desiredAccuracy:(double)arg2;
+- (void)_updateForNewShiftedLocation:(id)arg1 rawLocation:(id)arg2;
+- (void)_shiftLocationIfNecessary:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_setTrackingHeading:(_Bool)arg1;
 - (void)_setTrackingLocation:(_Bool)arg1;
 - (void)_reset;
+- (void)stopMonitoringForRegion:(id)arg1;
+- (void)startMonitoringForRegion:(id)arg1;
 - (void)removeLocationAccessForAll;
 - (void)removeLocationAccessFor:(id)arg1;
 - (void)requestLocationAccessFor:(id)arg1;
 - (_Bool)_hasLocationAssertion;
 - (void)_clearLocationAssertion;
 - (void)_createLocationAssertion;
-- (void)_setLastLocationReceivedFromMaps:(id)arg1;
 - (void)pushLocation:(id)arg1;
 - (void)stopHeadingUpdateWithObserver:(id)arg1;
 - (void)startHeadingUpdateWithObserver:(id)arg1;
@@ -96,19 +82,15 @@
 - (void)useSimulationLocationProvider:(id)arg1;
 - (void)useTraceLocationProvider:(id)arg1;
 - (void)useHybridLocationProvider;
-- (void)useLeechedLocationProvider;
 - (void)useGPSLocationProviderWithCLParameters:(id)arg1;
 - (void)stop;
 - (void)setLocationProviderType:(unsigned long long)arg1;
 - (void)removeLocationListener:(id)arg1;
 - (void)addLocationListener:(id)arg1;
 @property(nonatomic) int headingOrientation;
-@property(nonatomic) double distanceFilter;
-@property(nonatomic) double desiredAccuracy;
 @property(readonly, nonatomic) double timeScale;
 @property(readonly, nonatomic) double expectedGpsUpdateInterval;
 @property(readonly, nonatomic) _Bool coarseModeEnabled;
-@property(readonly, nonatomic) _Bool hasLocation;
 - (void)setLastLocation:(id)arg1;
 @property(readonly, nonatomic) MNLocation *lastLocation;
 @property(readonly, nonatomic) _Bool isHeadingServicesAvailable;

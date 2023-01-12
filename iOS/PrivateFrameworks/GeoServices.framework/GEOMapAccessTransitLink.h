@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 @interface GEOMapAccessTransitLink <GEOMapTransitLink>
 {
     shared_ptr_24ebf3c0 _transitEdge;
-    struct vector<GEOLocationCoordinate2D, std::__1::allocator<GEOLocationCoordinate2D>> _coords;
+    struct vector<GEOLocationCoordinate2D, std::allocator<GEOLocationCoordinate2D>> _coords;
     id <GEOMapTransitStop> _stopFrom;
     id <GEOMapTransitStop> _stopTo;
 }

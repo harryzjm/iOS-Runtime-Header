@@ -13,18 +13,18 @@
 @interface MPModelLibraryDefaultSectionedCollectionDataSource : NSObject <MPLazySectionedCollectionDataSource>
 {
     MPMediaLibraryEntityTranslationContext *_entityTranslationContext;
-    vector_bbba3654 _allowedItemPersistentIDs;
-    struct map<long long, unsigned long, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, unsigned long>>> _allowedItemPersistentIDToItemQueryResultsIndexMap;
+    vector_1ee95920 _allowedItemPersistentIDs;
+    struct map<long long, unsigned long, std::less<long long>, std::allocator<std::pair<const long long, unsigned long>>> _allowedItemPersistentIDToItemQueryResultsIndexMap;
     MPModelLibraryRequest *_request;
     NSDictionary *_indexPathToContainerUniqueIDMap;
-    shared_ptr_8b9a1f72 _itemIdentifierQueryResults;
+    shared_ptr_0bd2c8ea _itemIdentifierQueryResults;
     shared_ptr_274c5e8b _itemQueryResults;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) shared_ptr_274c5e8b itemQueryResults; // @synthesize itemQueryResults=_itemQueryResults;
-@property(readonly, nonatomic) shared_ptr_8b9a1f72 itemIdentifierQueryResults; // @synthesize itemIdentifierQueryResults=_itemIdentifierQueryResults;
+@property(readonly, nonatomic) shared_ptr_0bd2c8ea itemIdentifierQueryResults; // @synthesize itemIdentifierQueryResults=_itemIdentifierQueryResults;
 @property(retain, nonatomic) NSDictionary *indexPathToContainerUniqueIDMap; // @synthesize indexPathToContainerUniqueIDMap=_indexPathToContainerUniqueIDMap;
 @property(readonly, nonatomic) MPModelLibraryRequest *request; // @synthesize request=_request;
 - (id)_buildIndexPathToContainerUniqueIDMapFromItemQueryResults:(shared_ptr_274c5e8b)arg1;
@@ -43,7 +43,7 @@
 - (unsigned long long)numberOfItemsInSection:(unsigned long long)arg1;
 - (id)sectionAtIndex:(unsigned long long)arg1;
 - (unsigned long long)numberOfSections;
-- (id)initWithRequest:(id)arg1 itemQueryResults:(shared_ptr_274c5e8b)arg2 itemIdentifierQueryResults:(shared_ptr_8b9a1f72)arg3;
+- (id)initWithRequest:(id)arg1 itemQueryResults:(shared_ptr_274c5e8b)arg2 itemIdentifierQueryResults:(shared_ptr_0bd2c8ea)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

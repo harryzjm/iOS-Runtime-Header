@@ -6,16 +6,18 @@
 
 #import <AppSupportUI/NUIContainerStackView.h>
 
+#import <SpotlightUIInternal/TLKImageViewDelegate-Protocol.h>
+
 @class NSString, SFCardSection, SFSearchResult, SPUICompletion, SPUICompletionStringModel, SPUIMaskedLabelsStackView, SearchUIImageView, UIColor, UIFont;
 
-@interface SPUICompletionStringView : NUIContainerStackView
+@interface SPUICompletionStringView : NUIContainerStackView <TLKImageViewDelegate>
 {
     _Bool _focusIsOnFirstResult;
     SPUICompletionStringModel *_searchFieldModel;
     UIColor *_selectionHighlightColor;
+    SFSearchResult *_result;
     SearchUIImageView *_imageView;
     SPUIMaskedLabelsStackView *_labelsStackView;
-    SFSearchResult *_result;
     SFCardSection *_cardSection;
     SPUICompletion *_completion;
 }
@@ -23,9 +25,9 @@
 - (void).cxx_destruct;
 @property(retain) SPUICompletion *completion; // @synthesize completion=_completion;
 @property(retain) SFCardSection *cardSection; // @synthesize cardSection=_cardSection;
-@property(retain) SFSearchResult *result; // @synthesize result=_result;
 @property(retain) SPUIMaskedLabelsStackView *labelsStackView; // @synthesize labelsStackView=_labelsStackView;
 @property(retain) SearchUIImageView *imageView; // @synthesize imageView=_imageView;
+@property(retain) SFSearchResult *result; // @synthesize result=_result;
 @property _Bool focusIsOnFirstResult; // @synthesize focusIsOnFirstResult=_focusIsOnFirstResult;
 @property(retain, nonatomic) UIColor *selectionHighlightColor; // @synthesize selectionHighlightColor=_selectionHighlightColor;
 @property(retain, nonatomic) SPUICompletionStringModel *searchFieldModel; // @synthesize searchFieldModel=_searchFieldModel;
@@ -36,6 +38,8 @@
 - (void)updateLayoutMargins;
 @property(readonly) _Bool completionResultIsPotentiallyPunchout;
 @property(readonly) NSString *copyableString;
+- (void)didFailToLoadImage;
+- (void)didUpdateWithImage:(id)arg1;
 - (void)updateFields;
 - (void)updateWithResult:(id)arg1 cardSection:(id)arg2 focusIsOnFirstResult:(_Bool)arg3;
 @property(retain, nonatomic) UIFont *fontForCompletionLabel;
@@ -44,6 +48,12 @@
 - (id)bridgeLabel;
 - (id)extensionLabel;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <SAObjects/SABackgroundContextObject-Protocol.h>
 
-@class NSData, NSString;
+@class NSArray, NSData, NSString;
 
 @interface SALocalSearchRoute <SABackgroundContextObject>
 {
@@ -20,6 +20,9 @@
 @property(copy, nonatomic) NSData *originalWaypointRoute;
 @property(copy, nonatomic) NSData *evChargingMetadata;
 @property(copy, nonatomic) NSData *etaFilter;
+@property(copy, nonatomic) NSData *routeTrafficIncident;
+@property(copy, nonatomic) NSArray *routeIncidents;
+@property(copy, nonatomic) NSArray *routeIncidentOffsets;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

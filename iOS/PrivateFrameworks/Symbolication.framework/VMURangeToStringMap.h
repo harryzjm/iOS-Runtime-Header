@@ -19,9 +19,11 @@
 }
 
 + (void)initialize;
-+ (void)_claimUnarchivingOfClass:(id)arg1;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)enumerateHexAddressesInStrings:(CDUnknownBlockType)arg1;
+- (void)enumerateRanges:(CDUnknownBlockType)arg1;
+- (void)resymbolicateStringsWithSymbolicator:(struct _CSTypeRef)arg1;
 - (id)stringForIndex:(unsigned int)arg1;
 - (struct _VMURange)rangeForString:(id)arg1 startingAtAddress:(unsigned long long)arg2;
 - (struct _VMURange)rangeContainingAddress:(unsigned long long)arg1;

@@ -15,8 +15,6 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) __weak id delegate; // @synthesize delegate=_delegate;
-@property(retain, nonatomic) UIView *view; // @synthesize view=_view;
 - (struct CGPoint)_accessibilityMaxScrubberPosition;
 - (struct CGPoint)_accessibilityMinScrubberPosition;
 - (void)accessibilityDecrement;

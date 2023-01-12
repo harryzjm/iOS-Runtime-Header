@@ -15,13 +15,18 @@
     PLInternalResource *_backingResource;
 }
 
++ (_Bool)deviceSupportsHDR;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) PLInternalResource *backingResource; // @synthesize backingResource=_backingResource;
+- (id)additionalDescription;
 - (id)uniformTypeIdentifier;
+- (_Bool)isHDROrSDRDependingOnMasterVideo;
+- (_Bool)isSDRFallback;
+- (_Bool)isHDRDerivative;
 - (_Bool)hasAssociatedMediaMetadata;
 - (id)fileURLIfLocal;
 - (_Bool)matchesOrExceedsQualityLevel:(unsigned int)arg1;
-- (_Bool)isMediumHighQuality;
+- (_Bool)isLargeQuality;
 - (_Bool)isStreamable;
 - (_Bool)isDownloadable;
 - (_Bool)isPlayable;
@@ -30,6 +35,7 @@
 - (_Bool)isOriginalVideoComplement;
 - (_Bool)isOriginalVideo;
 - (unsigned int)version;
+- (unsigned short)storeClassID;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithBackingResource:(id)arg1;
 

@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <AppleMediaServicesUI/AMSUIWebActionRunnable-Protocol.h>
 
-@class AMSUIWebClientContext, NSArray, NSString;
+@class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebMediaAction : NSObject <AMSUIWebActionRunnable>
+@interface AMSUIWebMediaAction <AMSUIWebActionRunnable>
 {
     NSArray *_bundleIdentifiers;
     NSString *_clientIdentifier;
@@ -19,17 +17,19 @@ __attribute__((visibility("hidden")))
     NSArray *_itemIdentifiers;
     NSArray *_includedResultKeys;
     long long _type;
-    AMSUIWebClientContext *_context;
+    NSString *_urlString;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
+@property(retain, nonatomic) NSString *urlString; // @synthesize urlString=_urlString;
 @property(nonatomic) long long type; // @synthesize type=_type;
 @property(retain, nonatomic) NSArray *includedResultKeys; // @synthesize includedResultKeys=_includedResultKeys;
 @property(retain, nonatomic) NSArray *itemIdentifiers; // @synthesize itemIdentifiers=_itemIdentifiers;
 @property(retain, nonatomic) NSString *clientVersion; // @synthesize clientVersion=_clientVersion;
 @property(retain, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property(retain, nonatomic) NSArray *bundleIdentifiers; // @synthesize bundleIdentifiers=_bundleIdentifiers;
+- (id)_runMediaRequestWithType:(long long)arg1 clientIdentifier:(id)arg2 clientVersion:(id)arg3;
+- (id)_runMediaRequestWithURL:(id)arg1 clientIdentifier:(id)arg2 clientVersion:(id)arg3;
 - (id)runAction;
 - (id)initWithJSObject:(id)arg1 context:(id)arg2;
 

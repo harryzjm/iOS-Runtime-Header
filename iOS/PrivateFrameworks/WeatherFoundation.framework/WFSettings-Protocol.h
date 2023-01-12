@@ -7,14 +7,23 @@
 #import <WeatherFoundation/NSCopying-Protocol.h>
 #import <WeatherFoundation/NSObject-Protocol.h>
 
-@class NSSet, NSString, NSURL, WFWeatherEventsConfig;
+@class NSDictionary, NSSet, NSString, NSURL, WFWeatherEventsConfig;
 
 @protocol WFSettings <NSObject, NSCopying>
+@property(readonly, nonatomic) _Bool disableLimitReverseGeocoding;
+@property(readonly, nonatomic) _Bool loadSavedCitiesFromKVSOnly;
+@property(readonly, nonatomic) _Bool disablePriorityForecastRequestQueue;
+@property(readonly, nonatomic) _Bool disableForecastRequestCancelation;
+@property(readonly, nonatomic) double locationUpdateMinDistance;
+@property(readonly, nonatomic) double locationUpdateMinTimeInterval;
+@property(readonly, nonatomic) double cachedGeocodeLocationExpirationTimeInterval;
 @property(readonly, nonatomic) double privateUserIdentifierResetTimeInterval;
 @property(readonly, nonatomic) double userIdentifierResetTimeInterval;
+@property(readonly, nonatomic) float locationGeocodingSamplingRate;
 @property(readonly, nonatomic) float telemetrySamplingRate;
 @property(readonly, nonatomic) float dataSamplingRate;
 @property(readonly, nonatomic) NSURL *appAnalyticsEndpointUrl;
+@property(readonly, nonatomic) NSDictionary *widgetRefreshPolicy;
 @property(readonly, nonatomic) WFWeatherEventsConfig *weatherEventsConfig;
 @property(readonly, nonatomic) unsigned long long locationNumDecimalsOfPrecision;
 @property(readonly, nonatomic) unsigned long long networkSwitchExpirationTimeInSeconds;

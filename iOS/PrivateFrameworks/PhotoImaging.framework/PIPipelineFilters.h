@@ -22,6 +22,7 @@
 + (id)postGeometryFilter;
 + (id)preGeometryFilter;
 + (id)perspectiveStraightenWithoutCropFilter;
++ (id)orientationAsMetaDataFilter;
 + (id)noOrientationFilter;
 + (id)noGeometryFilter;
 + (id)stripAllTimeAdjustmentsFilter;

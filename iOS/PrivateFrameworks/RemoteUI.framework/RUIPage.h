@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 #import <RemoteUI/UIWebViewDelegate-Protocol.h>
 
@@ -31,6 +31,7 @@
     RUIPage *_parentPage;
     NSMutableArray *_childPages;
     NSMutableArray *_didAppearCallbacks;
+    _Bool _pageHeightSet;
     _Bool _showsTitlesAsHeaderViews;
     _Bool _loading;
     NSDictionary *_attributes;
@@ -81,6 +82,7 @@
 @property(readonly, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
 @property(copy, nonatomic) NSString *pageID; // @synthesize pageID=_pageID;
 @property(copy, nonatomic) NSDictionary *attributes; // @synthesize attributes=_attributes;
+- (void)dismissIfPresentedWithCompletion:(CDUnknownBlockType)arg1;
 - (_Bool)_shouldShowMultiChoiceElement;
 - (void)addDidAppearBlock:(CDUnknownBlockType)arg1;
 - (id)preferredFocusEnvironments;
@@ -92,10 +94,13 @@
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
+- (void)_setupMultiChoiceViewAsStickyBottomTray;
+- (void)_setupMultiChoiceView;
 - (void)loadView;
 - (void)dealloc;
 - (void)populatePostbackDictionary:(id)arg1;
 - (_Bool)hasChoiceView;
+- (_Bool)hasMultiChoiceView;
 - (_Bool)hasSpinnerView;
 @property(readonly, nonatomic) RUISpinnerView *spinnerViewOM;
 - (_Bool)hasPasscodeView;

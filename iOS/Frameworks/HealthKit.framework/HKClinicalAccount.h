@@ -10,21 +10,29 @@
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class HKClinicalBrand, HKClinicalGateway, NSDate, NSString, NSUUID;
+@class HKClinicalAccountProvenance, HKClinicalBrand, HKClinicalGateway, HKClinicalSharingStatus, NSDate, NSNumber, NSString, NSUUID;
 
 @interface HKClinicalAccount : NSObject <NSCopying, NSSecureCoding, HKClinicalBrandable>
 {
     _Bool _userEnabled;
+    _Bool _hasClinicalSharingScopes;
     NSUUID *_identifier;
     long long _state;
     NSDate *_lastFetchDate;
     NSDate *_lastFullFetchDate;
-    HKClinicalGateway *_gateway;
+    NSDate *_lastFailedFetchDate;
+    NSNumber *_failedFetchAttemptsCount;
+    HKClinicalSharingStatus *_clinicalSharingStatus;
+    HKClinicalAccountProvenance *_provenance;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) HKClinicalGateway *gateway; // @synthesize gateway=_gateway;
+@property(readonly, copy, nonatomic) HKClinicalAccountProvenance *provenance; // @synthesize provenance=_provenance;
+@property(readonly, nonatomic) _Bool hasClinicalSharingScopes; // @synthesize hasClinicalSharingScopes=_hasClinicalSharingScopes;
+@property(readonly, copy, nonatomic) HKClinicalSharingStatus *clinicalSharingStatus; // @synthesize clinicalSharingStatus=_clinicalSharingStatus;
+@property(readonly, copy, nonatomic) NSNumber *failedFetchAttemptsCount; // @synthesize failedFetchAttemptsCount=_failedFetchAttemptsCount;
+@property(readonly, copy, nonatomic) NSDate *lastFailedFetchDate; // @synthesize lastFailedFetchDate=_lastFailedFetchDate;
 @property(readonly, copy, nonatomic) NSDate *lastFullFetchDate; // @synthesize lastFullFetchDate=_lastFullFetchDate;
 @property(readonly, copy, nonatomic) NSDate *lastFetchDate; // @synthesize lastFetchDate=_lastFetchDate;
 @property(readonly, nonatomic, getter=isUserEnabled) _Bool userEnabled; // @synthesize userEnabled=_userEnabled;
@@ -40,8 +48,9 @@
 @property(readonly, copy, nonatomic) HKClinicalBrand *brand;
 @property(readonly, copy, nonatomic) NSString *subtitle;
 @property(readonly, copy, nonatomic) NSString *title;
+@property(readonly, copy, nonatomic) HKClinicalGateway *gateway;
 @property(readonly, copy) NSString *description;
-- (id)initWithIdentifier:(id)arg1 state:(long long)arg2 userEnabled:(_Bool)arg3 lastFetchDate:(id)arg4 lastFullFetchDate:(id)arg5 gateway:(id)arg6;
+- (id)initWithIdentifier:(id)arg1 state:(long long)arg2 userEnabled:(_Bool)arg3 lastFetchDate:(id)arg4 lastFullFetchDate:(id)arg5 lastFailedFetchDate:(id)arg6 failedFetchAttemptsCount:(id)arg7 clinicalSharingStatus:(id)arg8 hasClinicalSharingScopes:(_Bool)arg9 provenance:(id)arg10;
 - (id)init;
 
 // Remaining properties

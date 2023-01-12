@@ -11,18 +11,20 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_axDigitalTouchDescription;
+- (void)_axWarmLocationCoordinatePlacemarkIfNeededForMediaObject:(id)arg1;
+- (void)configureForMediaObject:(id)arg1 previewWidth:(double)arg2 orientation:(BOOL)arg3 hasInvisibleInkEffect:(_Bool)arg4;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityLabel;
 - (_Bool)accessibilityActivate;
 - (_Bool)_accessibilitySupportsActivateAction;
 - (_Bool)_axIsJellyfishVideo;
-- (_Bool)_axIsDigitalTouch;
 - (_Bool)_axIsLocating;
 - (_Bool)_axIsLocation;
 - (_Bool)_axIsPhoto;
 - (_Bool)_axIsVideo;
 - (id)_axMediaObject;
+- (void)_axSetLocationPlacemark:(id)arg1;
+- (id)_axLocationPlacemark;
 
 @end
 

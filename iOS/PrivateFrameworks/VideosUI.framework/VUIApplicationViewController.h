@@ -6,14 +6,14 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <VideosUI/TVApplicationControllerDelegate-Protocol.h>
 #import <VideosUI/UIGestureRecognizerDelegate-Protocol.h>
+#import <VideosUI/VUITVApplicationControllerDelegate-Protocol.h>
 
-@class NSString, TVApplicationController, UINavigationController, VUIBootURLController;
+@class NSString, UINavigationController, VUIBootURLController, VUITVApplicationController;
 
-@interface VUIApplicationViewController : UIViewController <TVApplicationControllerDelegate, UIGestureRecognizerDelegate>
+@interface VUIApplicationViewController : UIViewController <VUITVApplicationControllerDelegate, UIGestureRecognizerDelegate>
 {
-    TVApplicationController *_applicationController;
+    VUITVApplicationController *_applicationController;
     VUIBootURLController *_bootURLController;
     UINavigationController *_navigationController;
 }
@@ -21,7 +21,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) UINavigationController *navigationController; // @synthesize navigationController=_navigationController;
 @property(retain, nonatomic) VUIBootURLController *bootURLController; // @synthesize bootURLController=_bootURLController;
-@property(retain, nonatomic) TVApplicationController *applicationController; // @synthesize applicationController=_applicationController;
+@property(retain, nonatomic) VUITVApplicationController *applicationController; // @synthesize applicationController=_applicationController;
 - (void)_startApplicationControllerWithBootURL:(id)arg1;
 - (id)_initialViewControllerWithAppContext:(id)arg1;
 - (void)_exposeObjectsInJSContext:(id)arg1;

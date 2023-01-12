@@ -21,6 +21,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (_Bool)coordinateFileOperation:(unsigned long long)arg1 shouldCoordinate:(_Bool)arg2 fileURL:(id)arg3 destinationURL:(id)arg4 accessor:(CDUnknownBlockType)arg5;
 + (id)proposedFilenameForFile:(id)arg1 ofType:(id)arg2 unsanitizedName:(id *)arg3;
 + (id)proposedFilenameForFile:(id)arg1 ofType:(id)arg2;
 + (id)sanitizedFilename:(id)arg1 withExtension:(id)arg2 unsanitizedName:(id *)arg3;

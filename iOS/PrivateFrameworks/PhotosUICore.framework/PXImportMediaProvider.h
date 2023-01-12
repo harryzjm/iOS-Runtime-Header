@@ -19,8 +19,6 @@
     NSMutableDictionary *_extensionPlaceholderCachesByRequestSize;
 }
 
-+ (void)unregisterPXImportMediaProviderNotificationsReceiver:(id)arg1;
-+ (void)registerPXImportMediaProviderNotificationsReceiver:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool hasBeenIdle; // @synthesize hasBeenIdle=_hasBeenIdle;
 @property(retain, nonatomic) NSMutableDictionary *extensionPlaceholderCachesByRequestSize; // @synthesize extensionPlaceholderCachesByRequestSize=_extensionPlaceholderCachesByRequestSize;
@@ -31,6 +29,8 @@
 @property(readonly, nonatomic) unsigned short thumbnailImageFormat; // @synthesize thumbnailImageFormat=_thumbnailImageFormat;
 @property(nonatomic) long long nextRequestID; // @synthesize nextRequestID=_nextRequestID;
 @property(retain, nonatomic) PXLoadingStatusManager *loadingStatusManager; // @synthesize loadingStatusManager;
+- (void)sendMediaProviderThumbnailingBecameIdle;
+- (void)ppt_sendMediaProviderDidProcessAsset:(id)arg1;
 - (id)_placeholderForItem:(id)arg1 size:(unsigned long long)arg2;
 @property(readonly, nonatomic) struct CGSize gridItemSize;
 - (id)_placeholderExtensionForItem:(id)arg1;
@@ -52,11 +52,10 @@
 - (long long)requestAnimatedImageForAsset:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (long long)requestLivePhotoForAsset:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4 resultHandler:(CDUnknownBlockType)arg5;
 - (long long)requestPlayerItemForVideo:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
+- (long long)requestImageURLForAsset:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (long long)requestImageDataForAsset:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (long long)requestCGImageForAsset:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4 resultHandler:(CDUnknownBlockType)arg5;
 - (id)initWithImageFormat:(unsigned short)arg1;
-- (void)sendMediaProviderThumbnailingBecameIdle;
-- (void)ppt_sendMediaProviderDidProcessAsset:(id)arg1;
 
 @end
 

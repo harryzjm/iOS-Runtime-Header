@@ -12,7 +12,7 @@
 #import <UserNotificationsServer/UNSNotificationRepositoryDelegate-Protocol.h>
 #import <UserNotificationsServer/UNSRemoteNotificationServerObserver-Protocol.h>
 
-@class BKSApplicationStateMonitor, NSSet, NSString, UNSApplicationLauncher, UNSApplicationService, UNSAttachmentsRepository, UNSAttachmentsService, UNSBundleLibrarian, UNSContentProtectionManager, UNSDaemonLauncher, UNSDefaultDataProviderFactory, UNSLocalizationService, UNSLocationMonitor, UNSNotificationAuthorizationService, UNSNotificationCategoryRepository, UNSNotificationRepository, UNSNotificationScheduleRepository, UNSNotificationSchedulingService, UNSNotificationSettingsService, UNSNotificationTopicRepository, UNSPendingNotificationRepository, UNSPushRegistrationRepository, UNSRemoteNotificationServer, UNSSettingsGateway, UNSUserNotificationServerConnectionListener, UNSUserNotificationServerRemoteNotificationConnectionListener, UNSUserNotificationServerSettingsConnectionListener;
+@class BKSApplicationStateMonitor, NSSet, NSString, UNSApplicationLauncher, UNSApplicationService, UNSAttachmentsRepository, UNSAttachmentsService, UNSBundleLibrarian, UNSContentProtectionManager, UNSDaemonLauncher, UNSDefaultDataProviderFactory, UNSLocalizationService, UNSLocationMonitor, UNSNotificationAuthorizationService, UNSNotificationCategoryRepository, UNSNotificationRepository, UNSNotificationScheduleRepository, UNSNotificationSchedulingService, UNSNotificationSettingsService, UNSNotificationTopicRepository, UNSPendingNotificationRepository, UNSPushRegistrationRepository, UNSRemoteNotificationServer, UNSSettingsGateway, UNSUserNotificationServerConnectionListener, UNSUserNotificationServerRemoteNotificationConnectionListener, UNSUserNotificationServerSettingsConnectionListener, _UNNotificationCommunicationContextService;
 @protocol OS_dispatch_queue;
 
 @interface UNSUserNotificationServer : NSObject <LSApplicationWorkspaceObserverProtocol, UNSContentProtectionObserver, UNSDefaultDataProviderFactoryObserver, UNSNotificationRepositoryDelegate, UNSRemoteNotificationServerObserver>
@@ -24,6 +24,7 @@
     UNSContentProtectionManager *_contentProtectionManager;
     UNSDefaultDataProviderFactory *_dataProviderFactory;
     UNSLocalizationService *_localizationService;
+    _UNNotificationCommunicationContextService *_communicationContextService;
     UNSUserNotificationServerConnectionListener *_userNotificationServerConnectionListener;
     UNSUserNotificationServerSettingsConnectionListener *_userNotificationServerSettingsConnectionListener;
     UNSUserNotificationServerRemoteNotificationConnectionListener *_userNotificationServerRemoteNotificationConnectionListener;
@@ -81,7 +82,6 @@
 - (void)_migratePendingNotificationRequests;
 - (void)_validateNotificationRepository;
 - (void)_migrateNotificationRepository;
-- (void)_migrateUserNotificationsRepositories;
 - (void)contentProtectionStateChangedForFirstUnlock:(_Bool)arg1;
 - (void)didReceiveDeviceToken:(id)arg1 forBundleIdentifier:(id)arg2;
 - (void)willPresentNotification:(id)arg1 forBundleIdentifier:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;

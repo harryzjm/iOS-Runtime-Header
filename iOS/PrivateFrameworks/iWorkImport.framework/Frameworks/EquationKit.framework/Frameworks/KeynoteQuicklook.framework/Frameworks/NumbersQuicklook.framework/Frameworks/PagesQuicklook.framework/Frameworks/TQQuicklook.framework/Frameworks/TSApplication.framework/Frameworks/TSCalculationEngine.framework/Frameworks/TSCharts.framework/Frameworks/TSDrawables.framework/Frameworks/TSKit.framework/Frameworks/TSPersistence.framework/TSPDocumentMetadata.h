@@ -4,17 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSObject, NSSet;
+@protocol OS_dispatch_queue;
+
 @interface TSPDocumentMetadata
 {
+    NSObject<OS_dispatch_queue> *_accessQueue;
+    struct DigestMap<TSP::DataProperties> _dataPropertiesMap;
+    struct os_unfair_lock_s _archivingLock;
     _Bool _isInCollaborationModeForArchiving;
+    struct DigestMap<TSP::DataProperties> _dataPropertiesMapForArchiving;
+    NSSet *_knownDataDigests;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)saveToArchiver:(id)arg1;
+- (void)updateForSuccessfulSave;
+- (void)setKnownDataDigestsForAutosave:(id)arg1;
 - (void)takeSnapshotWithCollaborationMode:(_Bool)arg1;
 - (id)packageLocator;
 - (unsigned char)componentRequiredPackageIdentifier;
 - (long long)tsp_identifier;
 - (void)loadFromUnarchiver:(id)arg1;
+- (void)setPropertiesForData:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)propertiesForData:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (struct DataProperties)propertiesForData:(id)arg1;
+- (void)commonInit;
 
 @end
 

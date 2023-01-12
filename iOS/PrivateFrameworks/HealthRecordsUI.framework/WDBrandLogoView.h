@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)fetchBrandable:(id)arg1 dataProvider:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)intrinsicContentSize;
+- (id)initWithSize:(double)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

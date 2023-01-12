@@ -11,7 +11,7 @@
 
 @class CRKUser, DMFControlGroupIdentifier, NSDate, NSDictionary, NSSet, NSString;
 
-@interface CRKCourse : NSObject <NSCopying, NSSecureCoding>
+@interface CRKCourse : NSObject <NSSecureCoding, NSCopying>
 {
     _Bool _requestingUnenroll;
     _Bool _studentCredentialsAreValid;

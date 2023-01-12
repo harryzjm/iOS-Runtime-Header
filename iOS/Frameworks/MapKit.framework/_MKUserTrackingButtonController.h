@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _buttonBehavior;
 }
 
++ (double)_symbolPointSize;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long buttonBehavior; // @synthesize buttonBehavior=_buttonBehavior;
 @property(readonly, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;

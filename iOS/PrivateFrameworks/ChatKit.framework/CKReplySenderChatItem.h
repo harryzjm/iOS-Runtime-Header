@@ -11,6 +11,7 @@
 - (id)loadTranscriptText;
 - (BOOL)transcriptOrientation;
 - (struct UIEdgeInsets)contentInsets;
+- (id)layoutItemSpacingWithEnvironment:(id)arg1 datasourceItemIndex:(long long)arg2 allDatasourceItems:(id)arg3 supplementryItems:(id)arg4;
 
 @end
 

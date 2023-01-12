@@ -10,15 +10,15 @@
 
 @interface TSCHChartAxisID : NSObject <NSCopying>
 {
-    int mType;
-    unsigned long long mOrdinal;
+    int _type;
+    unsigned long long _ordinal;
 }
 
 + (id)axisIDWithType:(int)arg1 ordinal:(unsigned long long)arg2;
-@property(readonly) unsigned long long ordinal; // @synthesize ordinal=mOrdinal;
-@property(readonly) int type; // @synthesize type=mType;
-- (void)saveToArchive:(struct ChartAxisIDArchive *)arg1;
-- (id)initWithArchive:(const struct ChartAxisIDArchive *)arg1;
+@property(readonly) unsigned long long ordinal; // @synthesize ordinal=_ordinal;
+@property(readonly) int type; // @synthesize type=_type;
+- (void)saveToArchive:(void *)arg1;
+- (id)initWithArchive:(const void *)arg1;
 - (id)description;
 - (id)debuggingName;
 - (id)displayNameWithOrdinal:(_Bool)arg1;

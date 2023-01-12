@@ -7,28 +7,27 @@
 #import <objc/NSObject.h>
 
 #import <ProactiveContextClient/ATXModeFeaturizer-Protocol.h>
-#import <ProactiveContextClient/ATXMotionManagerDelegate-Protocol.h>
-#import <ProactiveContextClient/CARSessionObserving-Protocol.h>
 
-@class NSString, _PASLock;
-@protocol ATXModeFeaturizerDelegate;
+@class BMBiomeScheduler, BPSSink, NSString;
+@protocol ATXModeFeaturizerDelegate, OS_dispatch_queue;
 
-@interface ATXModeDrivingFeaturizer : NSObject <CARSessionObserving, ATXMotionManagerDelegate, ATXModeFeaturizer>
+@interface ATXModeDrivingFeaturizer : NSObject <ATXModeFeaturizer>
 {
-    _PASLock *_lock;
+    NSObject<OS_dispatch_queue> *_queue;
+    BPSSink *_DNDWDSink;
+    BMBiomeScheduler *_DNDWDScheduler;
     id <ATXModeFeaturizerDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <ATXModeFeaturizerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)didUpdateMotionType:(long long)arg1 isActive:(_Bool)arg2;
-- (void)sessionDidDisconnect:(id)arg1;
-- (void)sessionDidConnect:(id)arg1;
-- (void)_updateFeatures;
 - (void)stopListening;
 - (void)beginListening;
+- (void)_beginListeningForDNDWDEvents;
+- (id)_fetchMostRecentDNDWDEvent;
+- (void)_processNewDNDWDEvent:(id)arg1;
+- (id)_provideFeaturesWithLastDNDWDEvent:(id)arg1;
 - (id)provideFeatures;
-- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

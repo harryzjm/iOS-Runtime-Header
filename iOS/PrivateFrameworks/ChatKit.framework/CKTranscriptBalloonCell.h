@@ -4,15 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKBalloonView, CKLineView, CKTranscriptCollectionViewLayoutAttributes, NSArray;
+#import <ChatKit/CKQuickSaveButtonAnimationDelegate-Protocol.h>
+#import <ChatKit/CKQuickSaveButtonDelegate-Protocol.h>
+#import <ChatKit/IMPhotoLibraryPersistenceManagerListener-Protocol.h>
 
-@interface CKTranscriptBalloonCell
+@class CKBalloonView, CKLineView, CKQuickSaveButton, CKTranscriptCollectionViewLayoutAttributes, NSArray, NSString;
+
+@interface CKTranscriptBalloonCell <IMPhotoLibraryPersistenceManagerListener, CKQuickSaveButtonAnimationDelegate, CKQuickSaveButtonDelegate>
 {
     _Bool _mayReparentPluginViews;
     _Bool _insertingReply;
     _Bool _lineIsExtended;
+    _Bool _animatingInDarkEffect;
+    _Bool _canShowQuickSaveButton;
+    _Bool _hasQueuedQuickSaveButtonRemoval;
     CKBalloonView *_balloonView;
     unsigned long long _lineType;
+    NSArray *_syndicationIdentifiers;
+    CDUnknownBlockType _quickSaveButtonTappedCallback;
+    CKQuickSaveButton *_quickSaveButton;
     CKTranscriptCollectionViewLayoutAttributes *_layoutAttributes;
     NSArray *_threadGroupLayoutAttributes;
     NSArray *_threadLineDescription;
@@ -23,6 +33,7 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool hasQueuedQuickSaveButtonRemoval; // @synthesize hasQueuedQuickSaveButtonRemoval=_hasQueuedQuickSaveButtonRemoval;
 @property(nonatomic) double lineViewExpansionFactor; // @synthesize lineViewExpansionFactor=_lineViewExpansionFactor;
 @property(nonatomic) double lineViewReferenceY; // @synthesize lineViewReferenceY=_lineViewReferenceY;
 @property(nonatomic) double lineHorizontalOffset; // @synthesize lineHorizontalOffset=_lineHorizontalOffset;
@@ -30,11 +41,23 @@
 @property(copy, nonatomic) NSArray *threadLineDescription; // @synthesize threadLineDescription=_threadLineDescription;
 @property(copy, nonatomic) NSArray *threadGroupLayoutAttributes; // @synthesize threadGroupLayoutAttributes=_threadGroupLayoutAttributes;
 @property(copy, nonatomic) CKTranscriptCollectionViewLayoutAttributes *layoutAttributes; // @synthesize layoutAttributes=_layoutAttributes;
+@property(readonly, nonatomic) CKQuickSaveButton *quickSaveButton; // @synthesize quickSaveButton=_quickSaveButton;
+@property(copy, nonatomic) CDUnknownBlockType quickSaveButtonTappedCallback; // @synthesize quickSaveButtonTappedCallback=_quickSaveButtonTappedCallback;
+@property(nonatomic) _Bool canShowQuickSaveButton; // @synthesize canShowQuickSaveButton=_canShowQuickSaveButton;
+@property(retain, nonatomic) NSArray *syndicationIdentifiers; // @synthesize syndicationIdentifiers=_syndicationIdentifiers;
+@property(nonatomic) _Bool animatingInDarkEffect; // @synthesize animatingInDarkEffect=_animatingInDarkEffect;
 @property(readonly, nonatomic) _Bool lineIsExtended; // @synthesize lineIsExtended=_lineIsExtended;
 @property(nonatomic) unsigned long long lineType; // @synthesize lineType=_lineType;
 @property(nonatomic, getter=isInsertingReply) _Bool insertingReply; // @synthesize insertingReply=_insertingReply;
 @property(nonatomic) _Bool mayReparentPluginViews; // @synthesize mayReparentPluginViews=_mayReparentPluginViews;
 @property(retain, nonatomic) CKBalloonView *balloonView; // @synthesize balloonView=_balloonView;
+- (void)photoLibraryPersistedSyndicatedAssetSetDidChange;
+- (void)quickSaveButtonAnimationDidEnd:(id)arg1;
+- (void)quickSaveButtonAnimationDidBegin:(id)arg1;
+- (void)quickSaveButtonWasTapped:(id)arg1;
+- (void)updateQuickSaveButtonVisibility;
+- (void)_addQuickSaveButtonIfNeededAnimated:(_Bool)arg1;
+- (void)_removeQuickSaveButtonIfNeededAnimated:(_Bool)arg1;
 - (id)_extendPath:(id *)arg1 withFrame:(struct CGRect)arg2;
 - (id)_drawLowerBracketLoopForPath:(id)arg1 withLayout:(id)arg2 lineViewMaxY:(double)arg3;
 - (id)animationWithKeyPath:(id)arg1 fromValue:(id)arg2 toValue:(id)arg3 beginTime:(double)arg4 duration:(double)arg5 timingFunction:(id)arg6;
@@ -63,14 +86,20 @@
 - (double)insertionDurationForInsertionType:(long long)arg1;
 - (long long)insertionAnimationType;
 - (void)performInsertion:(CDUnknownBlockType)arg1;
+- (void)layoutSubviewsForAlignmentContents;
 - (void)layoutSubviewsForContents;
 - (void)applyLayoutAttributes:(id)arg1;
 - (void)_ck_setEditing:(_Bool)arg1 animated:(_Bool)arg2;
 - (_Bool)hidesCheckmark;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (id)init;
-- (void)configureForChatItem:(id)arg1;
+- (void)configureForChatItem:(id)arg1 context:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

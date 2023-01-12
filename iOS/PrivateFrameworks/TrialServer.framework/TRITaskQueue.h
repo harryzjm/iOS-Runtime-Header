@@ -25,8 +25,10 @@
 - (void).cxx_destruct;
 - (_Bool)ifNotPresentAddTask:(id)arg1;
 - (void)waitForAsyncQueue;
+- (id)activeActivityDescriptorGrantingCapability:(unsigned long long)arg1;
 - (id)activeActivityGrantingCapability:(unsigned long long)arg1;
 - (id)debugDescription;
+- (void)registerFinalizeBlockToRetryWithBlock:(CDUnknownBlockType)arg1;
 - (void)_registerTaskQueueActivityForDate:(id)arg1;
 - (void)_registerRetryActivityForDate:(id)arg1;
 - (_Bool)updateActivity:(id)arg1 withStartDate:(id)arg2;
@@ -39,12 +41,13 @@
 - (_Bool)cancelTask:(id)arg1;
 - (_Bool)_cancelTaskWithId:(id)arg1 guardedData:(id)arg2 persistCancel:(_Bool)arg3;
 - (id)_addTask:(id)arg1 withDependencies:(id)arg2 guardedData:(id)arg3;
-- (id)_addTask:(id)arg1 options:(id)arg2 guardedData:(id)arg3 accumulatedNewTaskRecords:(id)arg4;
+- (CDStruct_6b48f683)_addTask:(id)arg1 options:(id)arg2 guardedData:(id)arg3 taskIdOut:(id *)arg4 accumulatedNewTaskRecords:(id)arg5;
 - (void)_partitionTaskGroup:(id)arg1 byRunnabilityGivenCapabilities:(unsigned long long)arg2 runnableAtDate:(id)arg3 topoSortedCurrentlyRunnable:(id *)arg4 blocked:(id *)arg5 allowOnlyRootTasksRunnable:(_Bool)arg6;
 - (_Bool)_isTaskWithId:(id)arg1 inTaskGroup:(id)arg2 runnableGivenCapabilities:(unsigned long long)arg3 atDate:(id)arg4 cachedRunnability:(id)arg5 visitedPath:(id)arg6 topoSortedRunnable:(id)arg7 allowOnlyRootTasksRunnable:(_Bool)arg8;
 - (void)_startRunnableTasksIfNecessaryWithGuardedData:(id)arg1;
-- (_Bool)_addTask:(id)arg1 options:(id)arg2 guardedData:(id)arg3;
-- (_Bool)addTask:(id)arg1 options:(id)arg2;
+- (CDStruct_6b48f683)_addTask:(id)arg1 options:(id)arg2 guardedData:(id)arg3 taskId:(id *)arg4;
+- (CDStruct_6b48f683)addTask:(id)arg1 options:(id)arg2 taskId:(id *)arg3;
+- (CDStruct_6b48f683)addTask:(id)arg1 options:(id)arg2;
 - (_Bool)_removeTaskWithId:(id)arg1 guardedData:(id)arg2 persistRemove:(_Bool)arg3;
 - (void)_startImmediateTasksIfNotAlreadyQueued:(id)arg1 guardedData:(id)arg2 didStartNewWork:(_Bool *)arg3;
 - (id)_createOperationWithTask:(id)arg1 withId:(id)arg2 dependencies:(id)arg3 taskMap:(id)arg4;
@@ -52,8 +55,11 @@
 - (void)_finalizeTask:(id)arg1 withId:(id)arg2 runResult:(id)arg3;
 - (_Bool)resumeWithXPCActivityDescriptor:(id)arg1 executeWhenSuspended:(CDUnknownBlockType)arg2;
 - (void)_evaluateRunConditionsWithGuardedData:(id)arg1 shouldContinueWork:(_Bool *)arg2;
+- (id)_earliestStartDateFromTaskList:(id)arg1;
 - (void)_scheduleFutureActivitiesWithGuardedData:(id)arg1;
+- (void)_scheduleFutureRecurrentRollbackActivityWithTasks:(id)arg1;
 - (_Bool)finishXPCActivitiesWithGuardedData:(id)arg1;
+- (void)registerFinalizeBlock:(CDUnknownBlockType)arg1;
 - (id)initWithServerContext:(id)arg1 operationQueue:(id)arg2 operationGroup:(id)arg3 asyncQueue:(id)arg4;
 - (id)init;
 

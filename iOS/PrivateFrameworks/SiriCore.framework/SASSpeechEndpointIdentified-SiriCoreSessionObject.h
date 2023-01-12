@@ -7,6 +7,7 @@
 #import <SAObjects/SASSpeechEndpointIdentified.h>
 
 @interface SASSpeechEndpointIdentified (SiriCoreSessionObject)
+- (_Bool)siriCore_supportedByRemoteLimitedSession;
 - (_Bool)siriCore_supportedByLocalSession;
 @end
 

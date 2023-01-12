@@ -10,6 +10,12 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct CAFrameRateRange {
+    float _field1;
+    float _field2;
+    float _field3;
+};
+
 struct CGPoint {
     double _field1;
     double _field2;

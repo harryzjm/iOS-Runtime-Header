@@ -26,7 +26,7 @@
 - (_Bool)areAnyIconViewContextMenusAnimating;
 - (_Bool)areAnyIconViewContextMenusShowing;
 - (void)dismissAppIconForceTouchControllers:(CDUnknownBlockType)arg1;
-- (void)floatyFolderViewDidScrollHiddenIconViewAway:(id)arg1;
+- (void)containerViewDidScrollHiddenIconViewAway:(id)arg1;
 - (void)iconViewDidAnimateContextMenu:(id)arg1;
 - (void)iconViewWillAnimateContextMenu:(id)arg1;
 - (void)iconViewWillDismissContextMenu:(id)arg1;

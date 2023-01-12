@@ -9,7 +9,8 @@
 __attribute__((visibility("hidden")))
 @interface WKTextSelectionRect : UITextSelectionRect
 {
-    struct SelectionRect _selectionRect;
+    struct SelectionGeometry _selectionGeometry;
+    double _scaleFactor;
 }
 
 - (id).cxx_construct;
@@ -19,7 +20,9 @@ __attribute__((visibility("hidden")))
 - (id)range;
 - (long long)writingDirection;
 - (struct CGRect)rect;
-- (id)initWithSelectionRect:(const struct SelectionRect *)arg1;
+- (id)_customHandleInfo;
+- (id)_path;
+- (id)initWithSelectionGeometry:(const void *)arg1 scaleFactor:(double)arg2;
 - (id)initWithCGRect:(struct CGRect)arg1;
 
 @end

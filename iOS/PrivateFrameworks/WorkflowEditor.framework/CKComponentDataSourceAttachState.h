@@ -19,8 +19,8 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) int scopeIdentifier; // @synthesize scopeIdentifier=_scopeIdentifier;
 @property(readonly, nonatomic) NSSet *mountedComponents; // @synthesize mountedComponents=_mountedComponents;
-- (const struct CKComponentLayout *)layout;
-- (id)initWithScopeIdentifier:(int)arg1 mountedComponents:(id)arg2 layout:(const struct CKComponentLayout *)arg3;
+- (const void *)layout;
+- (id)initWithScopeIdentifier:(int)arg1 mountedComponents:(id)arg2 layout:(const void *)arg3;
 
 @end
 

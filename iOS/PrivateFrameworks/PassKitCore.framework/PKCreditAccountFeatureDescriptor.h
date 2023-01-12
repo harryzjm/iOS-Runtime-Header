@@ -14,10 +14,16 @@
     NSArray *_supportedFileFormatsForTransactionData;
     NSString *_paymentTermsIdentifier;
     NSString *_fundingSourceTermsIdentifier;
+    unsigned long long _maximumAccountUsers;
+    unsigned long long _minimumOwnerAge;
+    unsigned long long _minimumParticipantAge;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long minimumParticipantAge; // @synthesize minimumParticipantAge=_minimumParticipantAge;
+@property(nonatomic) unsigned long long minimumOwnerAge; // @synthesize minimumOwnerAge=_minimumOwnerAge;
+@property(nonatomic) unsigned long long maximumAccountUsers; // @synthesize maximumAccountUsers=_maximumAccountUsers;
 @property(copy, nonatomic) NSString *fundingSourceTermsIdentifier; // @synthesize fundingSourceTermsIdentifier=_fundingSourceTermsIdentifier;
 @property(copy, nonatomic) NSString *paymentTermsIdentifier; // @synthesize paymentTermsIdentifier=_paymentTermsIdentifier;
 @property(copy, nonatomic) NSArray *supportedFileFormatsForTransactionData; // @synthesize supportedFileFormatsForTransactionData=_supportedFileFormatsForTransactionData;

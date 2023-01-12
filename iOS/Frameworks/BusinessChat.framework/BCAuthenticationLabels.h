@@ -20,9 +20,9 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSString *action; // @synthesize action=_action;
-@property(retain, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
-@property(retain, nonatomic) NSString *title; // @synthesize title=_title;
+@property(readonly, nonatomic) NSString *action;
+@property(readonly, nonatomic) NSString *subtitle;
+@property(readonly, nonatomic) NSString *title;
 @property(readonly, nonatomic) NSDictionary *dictionaryValue;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

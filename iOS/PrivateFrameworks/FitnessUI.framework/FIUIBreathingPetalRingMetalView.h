@@ -37,6 +37,7 @@
 @property(nonatomic) struct CGPoint ringCenter;
 @property(nonatomic) float ringRadius;
 - (void)layoutSubviews;
+- (id)initWithFrame:(struct CGRect)arg1 petalColor:(long long)arg2 numberOfPetals:(long long)arg3 showBlurTrails:(_Bool)arg4 device:(id)arg5;
 - (id)initWithFrame:(struct CGRect)arg1 numberOfPetals:(long long)arg2 showBlurTrails:(_Bool)arg3 device:(id)arg4;
 
 // Remaining properties

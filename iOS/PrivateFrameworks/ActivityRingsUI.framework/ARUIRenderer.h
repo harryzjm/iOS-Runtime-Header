@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ARUIRingsRenderPipelineFactory, ARUIRingsRenderer, ARUISpritesRenderer;
+@class ARUICelebrationsRenderer, ARUIRingsRenderPipelineFactory, ARUIRingsRenderer, ARUISpritesRenderer;
 @protocol MTLCommandQueue, MTLDeviceSPI;
 
 @interface ARUIRenderer : NSObject
@@ -16,6 +16,7 @@
     ARUIRingsRenderPipelineFactory *_ringsRenderPipelineFactory;
     ARUIRingsRenderer *_ringsRenderer;
     ARUISpritesRenderer *_spritesRenderer;
+    ARUICelebrationsRenderer *_celebrationsRenderer;
     unsigned long long _renderStyle;
 }
 
@@ -28,6 +29,8 @@
 - (id)_snapshotRings:(id)arg1 spriteSheet:(id)arg2 withContext:(id)arg3;
 - (id)snapshotRings:(id)arg1 spriteSheet:(id)arg2 withContext:(id)arg3;
 - (id)snapshotRings:(id)arg1 withContext:(id)arg2;
+- (void)_renderRings:(id)arg1 commandEncoder:(id)arg2 passDescriptor:(id)arg3 commandBuffer:(id)arg4 withContext:(id)arg5;
+- (void)_renderRings:(id)arg1 passDescriptor:(id)arg2 commandBuffer:(id)arg3 withContext:(id)arg4;
 - (void)_renderRings:(id)arg1 spriteSheet:(id)arg2 intoTexture:(id)arg3 presentingDrawable:(id)arg4 withContext:(id)arg5 waitUntilCompleted:(_Bool)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)renderRings:(id)arg1 spriteSheet:(id)arg2 intoDrawable:(id)arg3 withContext:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)renderRings:(id)arg1 spriteSheet:(id)arg2 intoDrawable:(id)arg3 withContext:(id)arg4;

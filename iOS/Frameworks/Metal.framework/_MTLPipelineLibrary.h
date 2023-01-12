@@ -12,7 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface _MTLPipelineLibrary <MTLPipelineLibrarySPI>
 {
-    struct PipelineLibraryData *_pipelineLibraryData;
+    void *_pipelineLibraryData;
     id <MTLDevice> _device;
     NSArray *_pipelineNames;
     _Bool _disableRunTimeCompilation;
@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) id <MTLPipelineCache> functionCache; // @dynamic functionCache;
 @property(readonly, nonatomic) id <MTLPipelineCache> pipelineCache; // @dynamic pipelineCache;
 - (void)dealloc;
-- (id)initWithDevice:(id)arg1 pipelineLibraryData:(struct PipelineLibraryData *)arg2;
+- (id)initWithDevice:(id)arg1 pipelineLibraryData:(void *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

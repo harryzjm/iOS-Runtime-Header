@@ -21,7 +21,7 @@
 - (void)setUpUI;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
-- (id)initForOnboarding:(_Bool)arg1;
+- (id)initForOnboarding:(_Bool)arg1 upgradingFromAlgorithmVersion:(long long)arg2;
 
 @end
 

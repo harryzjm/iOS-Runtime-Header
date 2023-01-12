@@ -6,13 +6,20 @@
 
 #import <UIKit/UIImageView.h>
 
+@class UIColor;
+
 @interface MTShadowView : UIImageView
 {
+    _Bool _continuousCorners;
     double _maskCornerRadius;
+    UIColor *_shadowColor;
     struct UIEdgeInsets _shadowOutsets;
     CDStruct_b48b9fb5 _shadowAttributes;
 }
 
+- (void).cxx_destruct;
+@property(copy, nonatomic) UIColor *shadowColor; // @synthesize shadowColor=_shadowColor;
+@property(readonly, nonatomic) _Bool continuousCorners; // @synthesize continuousCorners=_continuousCorners;
 @property(readonly, nonatomic) double maskCornerRadius; // @synthesize maskCornerRadius=_maskCornerRadius;
 @property(readonly, nonatomic) CDStruct_b48b9fb5 shadowAttributes; // @synthesize shadowAttributes=_shadowAttributes;
 - (void)_updateShadowVisualStyling;
@@ -25,6 +32,7 @@
 - (struct CGRect)frameWithContentWithFrame:(struct CGRect)arg1;
 @property(readonly, nonatomic) struct UIEdgeInsets shadowOutsets; // @synthesize shadowOutsets=_shadowOutsets;
 - (id)initWithShadowAttributes:(CDStruct_b48b9fb5)arg1 maskCornerRadius:(double)arg2;
+- (id)initWithShadowAttributes:(CDStruct_b48b9fb5)arg1 maskCornerRadius:(double)arg2 continuousCorners:(_Bool)arg3;
 
 @end
 

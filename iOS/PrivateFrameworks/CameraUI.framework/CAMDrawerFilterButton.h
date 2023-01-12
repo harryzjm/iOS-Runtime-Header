@@ -10,7 +10,8 @@
 }
 
 @property(nonatomic, getter=isOn) _Bool on; // @synthesize on=_on;
-- (void)updateImage;
+- (_Bool)shouldUseHierarchicalSymbol;
+- (_Bool)shouldUseActiveTintForCurrentState;
 - (id)imageNameForCurrentState;
 - (_Bool)isSelfExpanding;
 - (long long)controlType;

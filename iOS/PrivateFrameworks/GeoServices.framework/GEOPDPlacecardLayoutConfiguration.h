@@ -10,7 +10,6 @@
 
 @class NSMutableArray, PBUnknownFields;
 
-__attribute__((visibility("hidden")))
 @interface GEOPDPlacecardLayoutConfiguration : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;

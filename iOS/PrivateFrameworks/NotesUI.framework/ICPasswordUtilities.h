@@ -17,6 +17,7 @@
 + (void)warnUserCannotPasswordProtectDueToManagedAppleIDInViewController:(id)arg1;
 + (void)warnUserCannotPasswordProtectNoteDueToSharedNoteInViewController:(id)arg1;
 + (void)warnUserCannotPasswordProtectNoteDueToUnsupportedAttachmentsInViewController:(id)arg1;
++ (void)showDontForgetPasswordAlertForAccountIdentifier:(id)arg1 isForFaceID:(_Bool)arg2 withDisplayWindow:(id)arg3;
 + (void)showFirstTimePasswordProtectNoteAlertForDisplayWindow:(id)arg1;
 + (void)authenticateForMovingNotes:(id)arg1 toNoteContainer:(id)arg2 displayWindow:(id)arg3 authenticateFailureHandler:(CDUnknownBlockType)arg4 movingBlock:(CDUnknownBlockType)arg5;
 + (void)authenticateiCloudPasswordFromRootViewController:(id)arg1 account:(id)arg2 confirmButtonTitle:(id)arg3 reason:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;

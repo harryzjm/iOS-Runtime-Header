@@ -8,26 +8,27 @@
 
 #import <Trial/TRINamespaceFactorProviding-Protocol.h>
 
-@class NSString;
-@protocol TRIFactorLevelCaching;
+@class NSString, TRIReferenceManagedDirReaderLock;
+@protocol TRIFactorLevelCaching, TRIPaths;
 
 @interface TRINamespaceFactorProvider : NSObject <TRINamespaceFactorProviding>
 {
     NSString *_namespaceName;
     NSString *_treatmentId;
-    unsigned int _namespaceVersion;
     unsigned int _namespaceCompatibilityVersion;
     id <TRIFactorLevelCaching> _factorLevels;
+    TRIReferenceManagedDirReaderLock *_factorDirectoryLock;
+    id <TRIPaths> _paths;
 }
 
 + (id)pathForFactor:(id)arg1 directory:(id)arg2;
 + (id)_assetFilenameForFactor:(id)arg1;
 + (id)factorLevelsWithTreatmentData:(id)arg1 referencePath:(id)arg2 filteredByNamespaceName:(id)arg3 outTreatmentId:(id *)arg4 error:(id *)arg5;
-+ (id)factorProviderWithNamespaceDescriptor:(id)arg1 asClientProcess:(_Bool)arg2;
-+ (id)factorProviderWithNamespaceName:(id)arg1 directory:(id)arg2;
-+ (id)factorProviderWithNamespaceId:(unsigned int)arg1 directory:(id)arg2;
++ (id)factorProviderWithNamespaceDescriptor:(id)arg1 paths:(id)arg2 faultOnMissingFactors:(_Bool)arg3 shouldLockFactorDirectory:(_Bool)arg4;
++ (id)factorProviderWithNamespaceName:(id)arg1 paths:(id)arg2 treatmentLayer:(unsigned long long)arg3 faultOnMissingFactors:(_Bool)arg4 shouldLockFactorDirectory:(_Bool)arg5;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *namespaceName; // @synthesize namespaceName=_namespaceName;
+- (void)dispose;
 - (unsigned int)namespaceId;
 - (_Bool)saveToPath:(id)arg1 copyAssets:(_Bool)arg2;
 - (id)_copyAssetsToDirectory:(id)arg1;
@@ -35,11 +36,12 @@
 - (id)levelForFactor:(id)arg1;
 - (id)factorLevels;
 @property(readonly, nonatomic) unsigned int namespaceCompatibilityVersion;
-@property(readonly, nonatomic) unsigned int namespaceVersion;
 - (id)rolloutId;
 - (id)treatmentId;
-- (id)initWithNamespaceName:(id)arg1 namespaceVersion:(unsigned int)arg2 namespaceCompatibilityVersion:(unsigned int)arg3 factorLevels:(id)arg4 treatmentId:(id)arg5;
-- (id)initWithNamespaceName:(id)arg1 treatmentData:(id)arg2 namespaceVersion:(unsigned int)arg3 namespaceCompatibilityVersion:(unsigned int)arg4 referencePath:(id)arg5 error:(id *)arg6;
+- (int)deploymentId;
+- (id)experimentId;
+- (id)initWithNamespaceName:(id)arg1 namespaceCompatibilityVersion:(unsigned int)arg2 paths:(id)arg3 factorLevels:(id)arg4 treatmentId:(id)arg5 factorDirectoryLock:(id)arg6;
+- (id)initWithNamespaceName:(id)arg1 treatmentData:(id)arg2 namespaceCompatibilityVersion:(unsigned int)arg3 paths:(id)arg4 referencePath:(id)arg5 factorDirectoryLock:(id)arg6 error:(id *)arg7;
 - (id)overlayLevelsFromFactorProvider:(id)arg1;
 
 // Remaining properties

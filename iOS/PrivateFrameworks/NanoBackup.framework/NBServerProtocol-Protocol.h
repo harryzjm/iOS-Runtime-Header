@@ -11,6 +11,7 @@
 @protocol NBServerProtocol <NSObject>
 - (void)setBackupsEnabled:(_Bool)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)deleteBackupID:(NSUUID *)arg1 backupType:(unsigned long long)arg2 completionHandler:(void (^)(NSError *))arg3;
+- (void)createManualBackupWithCompletion:(void (^)(NSError *))arg1;
 - (void)createLocalBackupForPairingID:(NSUUID *)arg1 completionHandler:(void (^)(NBBackup *, NSError *))arg2;
 - (void)restoreFromPairingID:(NSUUID *)arg1 forPairingID:(NSUUID *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)restoreFromBackupID:(NSUUID *)arg1 backupType:(unsigned long long)arg2 forPairingID:(NSUUID *)arg3 completionHandler:(void (^)(NSError *))arg4;

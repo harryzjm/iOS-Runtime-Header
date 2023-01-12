@@ -9,16 +9,22 @@
 #import <AppStoreDaemon/NSCopying-Protocol.h>
 #import <AppStoreDaemon/NSSecureCoding-Protocol.h>
 
-@class ASDProgress, NSError, NSNumber, NSProgress, NSString, NSUUID;
+@class ASDProgress, ASDUnfairLock, NSError, NSNumber, NSProgress, NSString, NSUUID;
 
 @interface ASDApp : NSObject <NSCopying, NSSecureCoding>
 {
+    ASDUnfairLock *_propertyLock;
+    unsigned char _openableStatus;
+    NSProgress *_progress;
+    ASDProgress *_remoteProgress;
     NSString *_artistName;
     NSString *_bundleID;
     NSString *_bundlePath;
     NSString *_bundleShortVersion;
     NSString *_bundleVersion;
+    NSString *_executablePath;
     NSString *_localizedName;
+    long long _softwarePlatform;
     long long _storeExternalVersionID;
     NSString *_storeCohort;
     NSNumber *_storeFront;
@@ -28,22 +34,18 @@
     long long _purchaserDSID;
     NSError *_installError;
     NSUUID *_installID;
-    NSProgress *_progress;
     NSString *_updateBuyParams;
     long long _watchApplicationMode;
     long long _extensions;
     long long _status;
-    ASDProgress *_remoteProgress;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(retain) ASDProgress *remoteProgress; // @synthesize remoteProgress=_remoteProgress;
 @property long long status; // @synthesize status=_status;
 @property long long extensions; // @synthesize extensions=_extensions;
 @property long long watchApplicationMode; // @synthesize watchApplicationMode=_watchApplicationMode;
 @property(retain) NSString *updateBuyParams; // @synthesize updateBuyParams=_updateBuyParams;
-@property(retain) NSProgress *progress; // @synthesize progress=_progress;
 @property(readonly) NSUUID *installID; // @synthesize installID=_installID;
 @property(retain) NSError *installError; // @synthesize installError=_installError;
 @property long long purchaserDSID; // @synthesize purchaserDSID=_purchaserDSID;
@@ -53,12 +55,15 @@
 @property(retain) NSNumber *storeFront; // @synthesize storeFront=_storeFront;
 @property(retain) NSString *storeCohort; // @synthesize storeCohort=_storeCohort;
 @property long long storeExternalVersionID; // @synthesize storeExternalVersionID=_storeExternalVersionID;
+@property long long softwarePlatform; // @synthesize softwarePlatform=_softwarePlatform;
 @property(retain) NSString *localizedName; // @synthesize localizedName=_localizedName;
+@property(retain) NSString *executablePath; // @synthesize executablePath=_executablePath;
 @property(retain) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
 @property(retain) NSString *bundleShortVersion; // @synthesize bundleShortVersion=_bundleShortVersion;
 @property(retain) NSString *bundlePath; // @synthesize bundlePath=_bundlePath;
 @property(readonly) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property(retain) NSString *artistName; // @synthesize artistName=_artistName;
+- (unsigned char)_cachedOpenableStatus;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -66,6 +71,9 @@
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)description;
+@property(setter=_setOpenableStatus:) unsigned char _openableStatus; // @synthesize _openableStatus;
+@property(retain) ASDProgress *remoteProgress; // @synthesize remoteProgress=_remoteProgress;
+@property(retain) NSProgress *progress; // @synthesize progress=_progress;
 @property(readonly, getter=isWrapped) _Bool wrapped;
 @property(readonly, getter=isUpdateAvailable) _Bool updateAvailable;
 @property(readonly, getter=isSystemApp) _Bool systemApp;

@@ -13,8 +13,6 @@
 }
 
 - (id)setupXPCConnection;
-- (void)initializeRateLimitingBuffer;
-- (id)capped:(id)arg1 to:(unsigned long long)arg2;
 - (void)cleanupExpiredConditionsInBuffer;
 - (_Bool)operationWithCondition:(id)arg1 forType:(long long)arg2;
 - (_Bool)isConditionRateLimited:(id)arg1 onOperation:(long long)arg2;

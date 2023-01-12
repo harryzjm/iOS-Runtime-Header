@@ -18,6 +18,7 @@
     _Bool _canMakeAccountActive;
     _Bool _enableAccountCreation;
     _Bool _ignoreAccountConversion;
+    _Bool _forceSyncToPairedWatch;
     _Bool _usernameEditable;
     _Bool _allowSecondaryCredentialSource;
     _Bool _demoAccountSetup;
@@ -64,6 +65,7 @@
 @property(retain, nonatomic) NSString *proxyAppBundleID; // @synthesize proxyAppBundleID=_proxyAppBundleID;
 @property(retain, nonatomic) NSString *promptTitle; // @synthesize promptTitle=_promptTitle;
 @property(retain, nonatomic) NSString *logKey; // @synthesize logKey=_logKey;
+@property(nonatomic) _Bool forceSyncToPairedWatch; // @synthesize forceSyncToPairedWatch=_forceSyncToPairedWatch;
 @property(nonatomic) _Bool ignoreAccountConversion; // @synthesize ignoreAccountConversion=_ignoreAccountConversion;
 @property(retain, nonatomic) NSURL *iconBundleURL; // @synthesize iconBundleURL=_iconBundleURL;
 @property(retain, nonatomic) NSDictionary *HTTPHeaders; // @synthesize HTTPHeaders=_HTTPHeaders;

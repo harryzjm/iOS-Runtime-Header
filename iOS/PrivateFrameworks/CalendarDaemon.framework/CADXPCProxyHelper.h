@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class CADDatabaseInitializationOptions, NSXPCConnection, Protocol;
+@protocol CADXPCProxyHelperDelegate;
 
 @interface CADXPCProxyHelper : NSObject
 {
@@ -14,13 +15,17 @@
     Protocol *_protocol;
     _Bool _synchronous;
     CADDatabaseInitializationOptions *_initializationOptions;
+    id <CADXPCProxyHelperDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <CADXPCProxyHelperDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain) CADDatabaseInitializationOptions *initializationOptions; // @synthesize initializationOptions=_initializationOptions;
 - (void)_callReplyHandler:(id)arg1 ofInvocation:(id)arg2 withErrorCode:(long long)arg3;
 - (long long)replyBlockArgumentIndex:(id)arg1;
 - (id)_getReplyBlockFromInvocation:(id)arg1;
+- (_Bool)_validateCADObjectIDsInInvocationArguments:(id)arg1;
+- (void)_tryInvokeWithGenerationValidation:(id)arg1 target:(id)arg2 replyBlock:(id)arg3 contextHolder:(id)arg4;
 - (id)_replaceReplyBlockInInvocation:(id)arg1 retryingAfterInitializationWithContextHolder:(id)arg2;
 - (_Bool)_shouldResendInitializationOptionsForInvocation:(id)arg1;
 - (void)forwardInvocation:(id)arg1;

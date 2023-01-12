@@ -16,17 +16,18 @@ __attribute__((visibility("hidden")))
 @interface TFFeedbackFormPresenter : NSObject <TFFeedbackDataContainerObserver, TFFeedbackDataUpdateProxy>
 {
     id <TFFeedbackFormPresenterView> _presenterView;
+    TFFeedbackSession *_session;
     TFFeedbackForm *_form;
     TFFeedbackDataContainer *_dataContainer;
-    TFFeedbackSession *_session;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) TFFeedbackSession *session; // @synthesize session=_session;
 @property(readonly, nonatomic) TFFeedbackDataContainer *dataContainer; // @synthesize dataContainer=_dataContainer;
 @property(readonly, nonatomic) TFFeedbackForm *form; // @synthesize form=_form;
+@property(readonly, nonatomic) TFFeedbackSession *session; // @synthesize session=_session;
 @property(nonatomic) __weak id <TFFeedbackFormPresenterView> presenterView; // @synthesize presenterView=_presenterView;
 - (void)showSubmissionFailureWithMessage:(id)arg1;
+- (void)presenterViewDidCancelFeedbackSubmission:(id)arg1;
 - (void)presenterViewDidInitiateFeedbackSubmission:(id)arg1;
 - (void)didUpdateEntry:(id)arg1 toString:(id)arg2 editInProgress:(_Bool)arg3;
 - (void)didUpdateEntry:(id)arg1 toGroupInclusionBool:(_Bool)arg2;

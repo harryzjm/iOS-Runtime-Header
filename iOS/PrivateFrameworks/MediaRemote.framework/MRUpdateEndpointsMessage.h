@@ -16,8 +16,6 @@
 @property(readonly, nonatomic) unsigned int features;
 @property(readonly, nonatomic) NSArray *endpoints;
 - (id)initWithEndpoints:(id)arg1 endpointFeature:(unsigned int)arg2;
-@property(readonly, nonatomic) NSArray *externalOutputDevices;
-@property(readonly, nonatomic) NSArray *externalEndpoints;
 
 @end
 

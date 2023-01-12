@@ -11,7 +11,6 @@
 @interface _TtC14SiriKitRuntime18DefaultMeCardProxy : _TtCs12_SwiftObject
 {
     MISSING_TYPE *remoteMeCard;
-    MISSING_TYPE *localMeCardFetcher;
 }
 
 @end

@@ -12,35 +12,36 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDDevice, HMDDeviceController, HMDHome, HMDResidentDeviceManager, HMFUnfairLock, NSString, NSUUID;
+@class HMDDevice, HMDDeviceController, HMDHome, HMFUnfairLock, NSString, NSUUID;
+@protocol HMDResidentDeviceManager;
 
 @interface HMDResidentDevice : HMFObject <HMDDeviceControllerDelegate, HMDBackingStoreObjectProtocol, HMFDumpState, HMFLogging, NSSecureCoding>
 {
     HMFUnfairLock *_lock;
     HMDDevice *_device;
     HMDDeviceController *_deviceController;
-    _Bool _enabled;
     _Bool _confirmed;
+    _Bool _enabled;
     _Bool _reachable;
     _Bool _lowBattery;
     NSUUID *_identifier;
     long long _batteryState;
     HMDHome *_home;
-    HMDResidentDeviceManager *_residentDeviceManager;
+    id <HMDResidentDeviceManager> _residentDeviceManager;
 }
 
++ (id)deriveUUIDFromHomeUUID:(id)arg1 deviceUUID:(id)arg2;
 + (_Bool)supportsSecureCoding;
 + (id)logCategory;
 + (id)batteryStateAsString:(long long)arg1;
 + (id)shortDescription;
 - (void).cxx_destruct;
-@property(nonatomic) __weak HMDResidentDeviceManager *residentDeviceManager; // @synthesize residentDeviceManager=_residentDeviceManager;
+@property(nonatomic) __weak id <HMDResidentDeviceManager> residentDeviceManager; // @synthesize residentDeviceManager=_residentDeviceManager;
 @property(nonatomic) __weak HMDHome *home; // @synthesize home=_home;
 @property(retain, nonatomic) HMDDevice *device; // @synthesize device=_device;
 @property(nonatomic, getter=isLowBattery) _Bool lowBattery; // @synthesize lowBattery=_lowBattery;
 @property(nonatomic) long long batteryState; // @synthesize batteryState=_batteryState;
 @property(nonatomic, getter=isReachable) _Bool reachable; // @synthesize reachable=_reachable;
-@property(readonly, nonatomic, getter=isConfirmed) _Bool confirmed; // @synthesize confirmed=_confirmed;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 @property(copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 - (void)encodeWithCoder:(id)arg1;
@@ -57,10 +58,13 @@
 - (void)__deviceUpdated:(id)arg1;
 - (id)deviceController;
 - (id)runtimeState;
+@property(readonly, nonatomic) _Bool supportsResidentFirmwareUpdate;
+@property(readonly, nonatomic) _Bool supportsFirmwareUpdate;
 @property(readonly, nonatomic) _Bool supportsShortcutActions;
 @property(readonly, nonatomic) _Bool supportsMediaActions;
 @property(readonly, nonatomic) _Bool supportsMediaSystem;
 @property(readonly, nonatomic) _Bool supportsSharedEventTriggerActivation;
+@property(readonly, nonatomic, getter=isConfirmed) _Bool confirmed;
 @property(readonly, nonatomic) unsigned long long status;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;

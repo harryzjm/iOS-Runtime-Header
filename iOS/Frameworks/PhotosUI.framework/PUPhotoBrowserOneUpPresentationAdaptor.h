@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)oneUpPresentationHelper:(id)arg1 scrollAssetReferenceToVisible:(id)arg2;
 - (void)oneUpPresentationHelper:(id)arg1 shouldHideAssetReferences:(id)arg2;
 - (id)oneUpPresentationHelper:(id)arg1 currentImageForAssetReference:(id)arg2;
-- (struct CGRect)oneUpPresentationHelper:(id)arg1 rectForAssetReference:(id)arg2 cropInsets:(struct UIEdgeInsets *)arg3 contentsRect:(struct CGRect *)arg4;
+- (id)oneUpPresentationHelper:(id)arg1 regionOfInterestForAssetReference:(id)arg2 cropInsets:(struct UIEdgeInsets *)arg3 contentsRect:(struct CGRect *)arg4;
 - (id)_photoTokenForAssetReference:(id)arg1;
 
 // Remaining properties

@@ -34,9 +34,9 @@
     UIView *_backgroundView;
     NSCountedSet *_liveContentDisableReasons;
     _Bool _placeholderContentEnabled;
-    _Bool _shouldRasterizeHostView;
+    _Bool _rendersAsynchronously;
     id <SBScenePlaceholderContentViewProvider> _placeholderContentProvider;
-    NSString *_hostViewMinificationFilter;
+    NSString *_minificationFilter;
     id <SBSceneViewDelegate> _delegate;
 }
 
@@ -44,8 +44,8 @@
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <SBSceneViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) id <UIScenePresenter> presenter; // @synthesize presenter=_presenter;
-@property(copy, nonatomic) NSString *hostViewMinificationFilter; // @synthesize hostViewMinificationFilter=_hostViewMinificationFilter;
-@property(nonatomic) _Bool shouldRasterizeHostView; // @synthesize shouldRasterizeHostView=_shouldRasterizeHostView;
+@property(nonatomic) _Bool rendersAsynchronously; // @synthesize rendersAsynchronously=_rendersAsynchronously;
+@property(copy, nonatomic) NSString *minificationFilter; // @synthesize minificationFilter=_minificationFilter;
 @property(nonatomic) _Bool placeholderContentEnabled; // @synthesize placeholderContentEnabled=_placeholderContentEnabled;
 @property(retain, nonatomic) id <SBScenePlaceholderContentContext> placeholderContentContext; // @synthesize placeholderContentContext=_placeholderContentContext;
 @property(retain, nonatomic) id <SBScenePlaceholderContentViewProvider> placeholderContentProvider; // @synthesize placeholderContentProvider=_placeholderContentProvider;
@@ -56,13 +56,15 @@
 @property(readonly, nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property(readonly, nonatomic) struct CGSize referenceSize; // @synthesize referenceSize=_referenceSize;
 @property(readonly, nonatomic) SBSceneHandle *sceneHandle; // @synthesize sceneHandle=_sceneHandle;
+- (void)_updateBackgroundViewContainment;
 - (void)_recheckLiveContentDependencies;
 - (void)_hotSwapLiveSnapshotView;
 - (void)_hotSwapPlaceholderContentView;
 - (void)_clearSnapshotViews;
 - (void)_reloadPlaceholderContentIfNecessary;
+- (void)_updateBackgroundColor;
 - (void)_configureBackgroundColorForLiveSnapshot:(_Bool)arg1;
-- (void)_updateLiveContentRasterization;
+- (void)_updateLiveContentRendering;
 - (void)_configureHostView;
 - (void)_configureLiveSnapshotView;
 - (void)_configurePlaceholderContentView;
@@ -83,8 +85,12 @@
 - (void)sceneHandle:(id)arg1 didUpdateContentState:(long long)arg2;
 - (void)sceneHandle:(id)arg1 didDestroyScene:(id)arg2;
 - (void)sceneHandle:(id)arg1 didCreateScene:(id)arg2;
+- (id)_sceneContentContainerView;
 - (void)_containerContentWrapperInterfaceOrientationChangedTo:(long long)arg1;
 - (void)_updateReferenceSize:(struct CGSize)arg1 andOrientation:(long long)arg2;
+- (double)_contentContainerCornerRadius;
+- (struct UIEdgeInsets)_contentContainerEdgeInsets;
+- (_Bool)_wantsBlackBackground;
 - (void)_layoutLiveHostView:(id)arg1;
 - (_Bool)_representsTranslucentContent;
 - (void)_invalidateSceneLiveHostView:(id)arg1;
@@ -94,7 +100,6 @@
 - (_Bool)_shouldAnimatePropertyWithKey:(id)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)didMoveToWindow;
 - (void)invalidate;
 @property(readonly, nonatomic) long long preferredStatusBarStyle;
 - (id)acquireLiveContentDisableAssertionForReason:(id)arg1;

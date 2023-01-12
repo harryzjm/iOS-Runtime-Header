@@ -40,8 +40,9 @@
 - (_Bool)enabled;
 - (id)contentValue;
 - (void)updateValue;
-- (id)liveListenImageName:(id)arg1;
-- (id)_productIdentifierForBTDevice:(id)arg1;
+- (id)liveListenImageNameFromBluetoothRoute:(id)arg1;
+- (struct CGSize)liveListenImageSize:(id)arg1 forProductID:(id)arg2;
+- (id)_productIdentifierFromBluetoothRoute:(id)arg1;
 - (void)updateConstraints;
 - (void)connectedDevicesDidChange:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

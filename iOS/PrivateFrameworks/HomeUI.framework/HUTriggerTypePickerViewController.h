@@ -4,33 +4,49 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HFActionSetBuilder, HUTriggerTypePickerItemManager, NSArray;
+#import <HomeUI/HURecommendedTriggerItemModuleControllerDelegate-Protocol.h>
+#import <HomeUI/HUTriggerEditorDelegate-Protocol.h>
+
+@class HFActionSetBuilder, HURecommendedTriggerItemModuleController, HUTriggerTypePickerItemManager, NSArray, NSString;
 @protocol HUTriggerEditorDelegate;
 
-@interface HUTriggerTypePickerViewController
+@interface HUTriggerTypePickerViewController <HURecommendedTriggerItemModuleControllerDelegate, HUTriggerEditorDelegate>
 {
     id <HUTriggerEditorDelegate> _delegate;
     HFActionSetBuilder *_actionSetBuilder;
     NSArray *_anonymousActionBuilders;
+    HURecommendedTriggerItemModuleController *_recommendationModuleController;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) __weak HURecommendedTriggerItemModuleController *recommendationModuleController; // @synthesize recommendationModuleController=_recommendationModuleController;
 @property(retain, nonatomic) NSArray *anonymousActionBuilders; // @synthesize anonymousActionBuilders=_anonymousActionBuilders;
 @property(retain, nonatomic) HFActionSetBuilder *actionSetBuilder; // @synthesize actionSetBuilder=_actionSetBuilder;
 @property(nonatomic) __weak id <HUTriggerEditorDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)_createTriggerBuilderOfClass:(Class)arg1;
 - (id)_createTriggerEditorForItem:(id)arg1;
+- (void)recommendedTriggerModuleControllerDidSelectShowMore:(id)arg1;
+- (void)recommendedTriggerModuleController:(id)arg1 didSelectToOpenTriggerBuilder:(id)arg2;
+- (void)triggerEditor:(id)arg1 didCommitTriggerBuilder:(id)arg2 withError:(id)arg3;
+- (_Bool)triggerEditor:(id)arg1 shouldCommitTriggerBuilder:(id)arg2;
+- (void)triggerEditor:(id)arg1 didFinishWithTriggerBuilder:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (_Bool)shouldHideFooterBelowSection:(long long)arg1;
 - (_Bool)shouldHideHeaderAboveSection:(long long)arg1;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3 animated:(_Bool)arg4;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
+- (id)buildItemModuleControllerForModule:(id)arg1;
 - (void)_cancel:(id)arg1;
+@property(nonatomic) _Bool showSuggestedAutomations;
 - (id)initWithActionSetBuilder:(id)arg1 anonymousActionBuilders:(id)arg2 delegate:(id)arg3;
 - (id)initWithActionSetBuilder:(id)arg1 delegate:(id)arg2;
 
 // Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) HUTriggerTypePickerItemManager *itemManager; // @dynamic itemManager;
+@property(readonly) Class superclass;
 
 @end
 

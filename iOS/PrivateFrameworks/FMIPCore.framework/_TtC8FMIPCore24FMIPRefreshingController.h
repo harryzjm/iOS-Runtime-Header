@@ -10,6 +10,7 @@
 
 @interface _TtC8FMIPCore24FMIPRefreshingController : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *identifier;
     MISSING_TYPE *delegate;
     MISSING_TYPE *selectedDevice;
     MISSING_TYPE *interactionController;
@@ -21,7 +22,10 @@
     MISSING_TYPE *maxCallbackInterval;
     MISSING_TYPE *lastRefreshTime;
     MISSING_TYPE *refreshTimer;
+    MISSING_TYPE *isInitializing;
+    MISSING_TYPE *ownerPhoneNumber;
     MISSING_TYPE *isRefreshing;
+    MISSING_TYPE *rangingParameters;
 }
 
 - (void)refreshTimerFired;

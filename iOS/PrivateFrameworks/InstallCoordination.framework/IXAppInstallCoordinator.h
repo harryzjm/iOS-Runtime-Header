@@ -21,10 +21,14 @@
     unsigned long long _observersCalled;
 }
 
++ (_Bool)refreshContainerTypes:(unsigned long long)arg1 forBundleID:(id)arg2 reason:(id)arg3 error:(id *)arg4;
 + (_Bool)refreshDataContainerForBundleID:(id)arg1 reason:(id)arg2 error:(id *)arg3;
++ (void)setRemovability:(unsigned long long)arg1 forAppWithBundleID:(id)arg2 byClient:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 + (void)setRemovability:(unsigned long long)arg1 forAppWithBundleID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)removabilityForAppWithBundleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (unsigned long long)removabilityForAppWithBundleID:(id)arg1 error:(id *)arg2;
++ (void)revertAppWithBundleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (_Bool)revertAppWithBundleID:(id)arg1 error:(id *)arg2;
 + (void)uninstallAppWithBundleID:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (_Bool)uninstallAppWithBundleID:(id)arg1 options:(id)arg2 disposition:(unsigned long long *)arg3 error:(id *)arg4;
 + (void)uninstallAppWithBundleID:(id)arg1 requestUserConfirmation:(_Bool)arg2 waitForDeletion:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
@@ -55,6 +59,7 @@
 + (void)setSkipIntentValidation:(_Bool)arg1;
 + (id)_coordinatorForAppWithBundleID:(id)arg1 withClientID:(unsigned long long)arg2 intent:(unsigned long long)arg3 createIfNotExisting:(_Bool)arg4 created:(_Bool *)arg5 error:(id *)arg6;
 + (_Bool)setTestModeForIdentifierPrefix:(id)arg1 testMode:(unsigned long long)arg2;
++ (_Bool)setTestModeForIdentifierPrefix:(id)arg1 testMode:(unsigned long long)arg2 testSpecificValidationData:(id)arg3;
 + (_Bool)setTestingEnabled:(_Bool)arg1;
 + (_Bool)postNSCurrentLocaleDidChangeNotification;
 + (int)daemonPid;
@@ -88,13 +93,14 @@
 - (oneway void)_clientDelegate_shouldResume;
 - (oneway void)_clientDelegate_shouldPrioritize;
 - (oneway void)_clientDelegate_didRegisterForObservation;
+@property(readonly, nonatomic) unsigned int creatorEUID; // @dynamic creatorEUID;
 @property(readonly, nonatomic) unsigned long long creatorIdentifier; // @dynamic creatorIdentifier;
 @property(readonly, nonatomic) NSUUID *uniqueIdentifier; // @dynamic uniqueIdentifier;
 @property(readonly, copy, nonatomic) NSString *bundleID; // @dynamic bundleID;
 @property(readonly, nonatomic) unsigned long long coordinationState;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
-@property(readonly, nonatomic) NSString *localDescription;
+@property(readonly, copy, nonatomic) NSString *descriptionWithRemoteState;
 @property(readonly, copy) NSString *description;
 - (_Bool)prioritizeWithError:(id *)arg1;
 - (_Bool)isPaused:(_Bool *)arg1 withError:(id *)arg2;
@@ -142,6 +148,7 @@
 - (void)cancelForReason:(id)arg1;
 - (void)dealloc;
 - (void)_updateInitWithSeed:(id)arg1 notifyDaemon:(_Bool)arg2;
+- (void)_conveyCurrentPriorityBoostReplacingExisting:(_Bool)arg1;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *internalQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *observerCalloutQueue;
 - (id)initWithBundleID:(id)arg1 creator:(unsigned long long)arg2 intent:(unsigned long long)arg3;

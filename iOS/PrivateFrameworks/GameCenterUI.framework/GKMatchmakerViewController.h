@@ -17,6 +17,8 @@
 {
     _Bool _userCancelledMatching;
     _Bool _hosted;
+    _Bool _canStartWithMinimumPlayers;
+    _Bool _inviterCancelNotificaitonReceived;
     id <GKMatchmakerViewControllerDelegate> matchmakerDelegate;
     GKMatchRequest *_matchRequest;
     long long _matchmakingMode;
@@ -29,11 +31,13 @@
 
 + (_Bool)_preventsAppearanceProxyCustomization;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool inviterCancelNotificaitonReceived; // @synthesize inviterCancelNotificaitonReceived=_inviterCancelNotificaitonReceived;
 @property(retain, nonatomic) UIAlertController *alertController; // @synthesize alertController=_alertController;
 @property(retain, nonatomic) NSMutableArray *hostedPlayers; // @synthesize hostedPlayers=_hostedPlayers;
 @property(retain, nonatomic) GKMatch *match; // @synthesize match=_match;
 @property(retain, nonatomic) GKInvite *acceptedInvite; // @synthesize acceptedInvite=_acceptedInvite;
 @property(retain, nonatomic) GKMatchmakerHostViewController *remoteViewController; // @synthesize remoteViewController=_remoteViewController;
+@property(nonatomic) _Bool canStartWithMinimumPlayers; // @synthesize canStartWithMinimumPlayers=_canStartWithMinimumPlayers;
 @property(nonatomic) long long matchmakingMode; // @synthesize matchmakingMode=_matchmakingMode;
 @property(nonatomic, getter=isHosted) _Bool hosted; // @synthesize hosted=_hosted;
 @property(retain, nonatomic) GKMatchRequest *matchRequest; // @synthesize matchRequest=_matchRequest;

@@ -8,22 +8,26 @@
 
 #import <SettingsCellularUI/PSSpecifierGroup-Protocol.h>
 
-@class CTCellularPlanManager, NSString, PSListController, PSSpecifier, PSUICellularPlanManagerCache;
+@class CTCellularPlanManager, NSString, PSListController, PSSpecifier, PSUIAddCellularPlanSpecifier, PSUICellularPlanManagerCache;
 
 __attribute__((visibility("hidden")))
 @interface PSUICarrierItemGroup : NSObject <PSSpecifierGroup>
 {
-    PSUICellularPlanManagerCache *_cellularPlanManager;
+    PSUICellularPlanManagerCache *_cellularPlanManagerCache;
     CTCellularPlanManager *_ctCellularPlanManager;
+    PSUIAddCellularPlanSpecifier *_addCellularPlanSpecifierEmbedded;
+    PSUIAddCellularPlanSpecifier *_addCellularPlanSpecifierStandard;
     PSSpecifier *_groupSpecifier;
     PSListController *_listController;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak PSListController *listController; // @synthesize listController=_listController;
+@property(retain, nonatomic) PSSpecifier *groupSpecifier; // @synthesize groupSpecifier=_groupSpecifier;
 - (void)carrierItemPressed:(id)arg1;
 - (id)specifiersForCarrierItems;
 - (_Bool)hasCarrierItems;
+- (id)getAddCellularPlanSpecifier:(_Bool)arg1;
 - (id)specifiers;
 - (id)initWithListController:(id)arg1 groupSpecifier:(id)arg2 planManager:(id)arg3 ctPlanManager:(id)arg4;
 - (id)initWithListController:(id)arg1 groupSpecifier:(id)arg2;

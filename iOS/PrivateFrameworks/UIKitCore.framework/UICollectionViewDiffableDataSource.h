@@ -41,11 +41,15 @@
 - (void)_setDidReorderItemsHandler:(CDUnknownBlockType)arg1;
 - (id)indexPathForItemIdentifier:(id)arg1;
 - (id)itemIdentifierForIndexPath:(id)arg1;
+- (long long)indexForSectionIdentifier:(id)arg1;
+- (id)sectionIdentifierForIndex:(long long)arg1;
 @property(copy, nonatomic) UICollectionViewDiffableDataSourceSectionSnapshotHandlers *sectionSnapshotHandlers;
 @property(copy, nonatomic) UICollectionViewDiffableDataSourceReorderingHandlers *reorderingHandlers;
 - (id)snapshotForSection:(id)arg1;
 - (void)applySnapshot:(id)arg1 toSection:(id)arg2 animatingDifferences:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)applySnapshot:(id)arg1 toSection:(id)arg2 animatingDifferences:(_Bool)arg3;
+- (void)applySnapshotUsingReloadData:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)applySnapshotUsingReloadData:(id)arg1;
 - (void)applySnapshot:(id)arg1 animatingDifferences:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)applySnapshot:(id)arg1 animatingDifferences:(_Bool)arg2;
 - (id)snapshot;
@@ -55,6 +59,7 @@
 - (id)initWithCollectionView:(id)arg1 sectionControllers:(id)arg2 rendererIdentifierProvider:(CDUnknownBlockType)arg3;
 - (id)initWithCollectionView:(id)arg1 itemRenderers:(id)arg2 rendererIdentifierProvider:(CDUnknownBlockType)arg3;
 - (id)initWithCollectionView:(id)arg1 cellProvider:(CDUnknownBlockType)arg2;
+- (void)validateIdentifiers;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned long long count; // @synthesize count=_count;
 - (void)dealloc;
 - (id)initWithCapacity:(unsigned long long)arg1;
-@property(readonly, nonatomic) Matrix_2bdd42a3 *points;
+@property(readonly, nonatomic) void *points;
 
 @end
 

@@ -18,12 +18,13 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak HKSPSleepStore *sleepStore; // @synthesize sleepStore=_sleepStore;
-- (void)sleepModeChanged:(long long)arg1 syncAnchor:(id)arg2;
-- (void)sleepScheduleStateChanged:(unsigned long long)arg1 syncAnchor:(id)arg2;
-- (void)sleepEventOccurred:(id)arg1 syncAnchor:(id)arg2;
-- (void)sleepEventRecordChanged:(id)arg1 syncAnchor:(id)arg2;
-- (void)sleepSettingsChanged:(id)arg1 syncAnchor:(id)arg2;
-- (void)sleepScheduleChanged:(id)arg1 syncAnchor:(id)arg2;
+- (void)sleepModeChanged:(id)arg1;
+- (void)sleepScheduleStateChanged:(id)arg1;
+- (void)sleepEventOccurred:(id)arg1;
+- (void)sleepEventRecordChanged:(id)arg1;
+- (void)sleepSettingsChanged:(id)arg1;
+- (void)sleepScheduleChanged:(id)arg1;
+- (void)clientShouldCheckInWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getClientIdentifierWithCompletion:(CDUnknownBlockType)arg1;
 
 @end

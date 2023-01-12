@@ -20,7 +20,9 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) SBHIconManager *iconManager; // @synthesize iconManager=_iconManager;
 @property(retain, nonatomic) ATXHomeScreenPrediction *currentPrediction; // @synthesize currentPrediction=_currentPrediction;
-- (id)_iconDataSourceInIcon:(id)arg1 withUniqueIdentifier:(id)arg2 extensionBundleIdentifier:(id)arg3 widgetKind:(id)arg4 suggestion:(_Bool)arg5;
+- (id)_makeDataSourceForAtxWidget:(id)arg1;
+- (id)_iconDataSourceInIcon:(id)arg1 withUniqueIdentifier:(id)arg2 extensionBundleIdentifier:(id)arg3 widgetKind:(id)arg4 suggestionSource:(long long)arg5;
+- (id)_supportedElementClasses;
 - (void)suggestionClientDidRefreshSuggestions:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;

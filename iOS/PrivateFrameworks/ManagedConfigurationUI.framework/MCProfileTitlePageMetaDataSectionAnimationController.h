@@ -10,7 +10,6 @@
 
 @class MCProfileTitlePageMetaDataSectionController, NSString, UITableView, UIView;
 
-__attribute__((visibility("hidden")))
 @interface MCProfileTitlePageMetaDataSectionAnimationController : NSObject <MCUIScrollAnimationResponder>
 {
     MCProfileTitlePageMetaDataSectionController *_sectionController;

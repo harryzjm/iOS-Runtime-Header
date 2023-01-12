@@ -16,7 +16,6 @@
 }
 
 - (void).cxx_destruct;
-- (void)_freezeSeriesForType:(id)arg1;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
 - (id)initWithProfile:(id)arg1;
 

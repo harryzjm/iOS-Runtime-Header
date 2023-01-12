@@ -6,7 +6,7 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
-@class HDAssertion, HDSyncSession, NSArray, NSDictionary;
+@class HDAssertion, HDProfile, HDSyncAnchorRangeMap, HDSyncSession, NSArray, NSDictionary;
 @protocol HDSyncAnchorMap, HDSyncChange, HDSyncStore;
 
 @protocol HDSyncEngine <NSObject>
@@ -14,11 +14,12 @@
 @property(readonly, copy, nonatomic) NSDictionary *allSyncEntitiesByIdentifier;
 @property(readonly, copy, nonatomic) NSArray *allOrderedSyncEntities;
 - (void)resetStore:(id <HDSyncStore>)arg1;
+- (_Bool)resetNextAnchorsForStore:(id <HDSyncStore>)arg1 profile:(HDProfile *)arg2 minimumElapsedTime:(double)arg3 error:(id *)arg4;
 - (_Bool)applyAcknowledgedAnchorMap:(id <HDSyncAnchorMap>)arg1 forStore:(id <HDSyncStore>)arg2 resetNext:(_Bool)arg3 resetInvalid:(_Bool)arg4 error:(id *)arg5;
 - (_Bool)getReceivedAnchorMap:(id <HDSyncAnchorMap>)arg1 forStore:(id <HDSyncStore>)arg2 error:(id *)arg3;
 - (_Bool)applySyncChange:(id <HDSyncChange>)arg1 forStore:(id <HDSyncStore>)arg2 error:(id *)arg3;
 - (void)resetAnchorsWithFailedChanges:(NSArray *)arg1 store:(id <HDSyncStore>)arg2;
 - (_Bool)performSyncSession:(HDSyncSession *)arg1 accessibilityAssertion:(HDAssertion *)arg2 error:(id *)arg3;
-- (long long)session:(HDSyncSession *)arg1 requiresSyncWithAnchors:(id <HDSyncAnchorMap>)arg2 error:(id *)arg3;
+- (HDSyncAnchorRangeMap *)syncAnchorRangesIfRequiredForSession:(HDSyncSession *)arg1 startingAnchors:(id <HDSyncAnchorMap>)arg2 error:(id *)arg3;
 @end
 

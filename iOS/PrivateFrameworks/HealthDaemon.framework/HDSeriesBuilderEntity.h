@@ -16,7 +16,6 @@
 + (id)createPersistentEntityForBuilderIdentifier:(id)arg1 seriesType:(id)arg2 state:(long long)arg3 profile:(id)arg4 error:(id *)arg5;
 + (id)persistentEntityForBuilderIdentifier:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (Class)seriesEntityClass;
-- (_Bool)_setMetadata:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
 - (_Bool)insertMetadata:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
 - (id)metadataWithTransaction:(id)arg1 error:(id *)arg2;
 - (_Bool)setBuilderState:(long long)arg1 transaction:(id)arg2 error:(id *)arg3;

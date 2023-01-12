@@ -10,20 +10,7 @@
 {
 }
 
-+ (void)setSmartInsertDelete:(long long)arg1;
-+ (void)setSmartDashes:(long long)arg1;
-+ (void)setSmartQuotes:(long long)arg1;
-+ (long long)textSmartInsertDelete;
-+ (long long)textSmartDashes;
-+ (long long)textSmartQuotes;
-+ (void)setTextSpellingSpellChecking:(long long)arg1;
-+ (void)setTextAutocorrection:(long long)arg1;
-+ (void)setTextAutocapitalization:(long long)arg1;
-+ (long long)textSpellChecking;
-+ (long long)textAutocorrection;
-+ (long long)textAutocapitalization;
-- (void)_setUpSpellingSubstitutionsDefaults;
-- (id)init;
++ (id)sharedInstance;
 
 @end
 

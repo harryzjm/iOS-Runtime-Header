@@ -16,7 +16,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
-- (void)healthRecordsStore:(id)arg1 accountDidChange:(id)arg2 changeType:(long long)arg3;
+- (void)clinicalAccountStore:(id)arg1 accountDidChange:(id)arg2 changeType:(long long)arg3;
 
 @end
 

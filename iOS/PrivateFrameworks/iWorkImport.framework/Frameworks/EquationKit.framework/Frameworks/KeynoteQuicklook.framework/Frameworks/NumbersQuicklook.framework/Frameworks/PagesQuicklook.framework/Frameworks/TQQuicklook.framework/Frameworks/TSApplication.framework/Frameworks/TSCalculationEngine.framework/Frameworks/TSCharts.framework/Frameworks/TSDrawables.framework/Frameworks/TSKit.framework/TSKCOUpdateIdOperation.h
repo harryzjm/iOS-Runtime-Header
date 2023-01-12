@@ -9,14 +9,14 @@
 }
 
 + (id)operationWithUUIDPath:(id)arg1 propertyId:(unsigned short)arg2;
-+ (id)operationWithAddress:(const vector_4dc5f307 *)arg1 propertyId:(unsigned short)arg2;
-- (void)saveToArchiver:(id)arg1 message:(struct Operation *)arg2;
-- (id)initWithUnarchiver:(id)arg1 message:(const struct Operation *)arg2;
++ (id)operationWithAddress:(const void *)arg1 propertyId:(unsigned short)arg2;
+- (void)saveToArchiver:(id)arg1 message:(void *)arg2;
+- (id)initWithUnarchiver:(id)arg1 message:(const void *)arg2;
 - (shared_ptr_f167ad79)newTransformableOperation;
 - (id)operationWithNewNoop:(_Bool)arg1;
-- (id)initWithAddress:(const vector_4dc5f307 *)arg1 propertyType:(const CDStruct_1464e8ba *)arg2 noop:(_Bool)arg3;
-- (id)initWithAddress:(const vector_4dc5f307 *)arg1 propertyId:(unsigned short)arg2 noop:(_Bool)arg3;
-- (id)initWithAddress:(const vector_4dc5f307 *)arg1 propertyId:(unsigned short)arg2;
+- (id)initWithAddress:(const void *)arg1 propertyType:(const CDStruct_1464e8ba *)arg2 noop:(_Bool)arg3;
+- (id)initWithAddress:(const void *)arg1 propertyId:(unsigned short)arg2 noop:(_Bool)arg3;
+- (id)initWithAddress:(const void *)arg1 propertyId:(unsigned short)arg2;
 
 @end
 

@@ -8,12 +8,12 @@
 
 @interface TSTMergeRegionMap : TSPObject
 {
-    vector_e87daf7b _mergedRects;
+    vector_fad096c6 _mergedRects;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) const vector_e87daf7b *mergedRects; // @synthesize mergedRects=_mergedRects;
+@property(readonly, nonatomic) const void *mergedRects; // @synthesize mergedRects=_mergedRects;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
 

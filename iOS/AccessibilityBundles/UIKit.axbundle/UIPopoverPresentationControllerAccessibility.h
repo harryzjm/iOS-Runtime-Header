@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)presentationTransitionWillBegin;
 - (id)preferredFocusEnvironments;
 - (id)preferredFocusedView;
 

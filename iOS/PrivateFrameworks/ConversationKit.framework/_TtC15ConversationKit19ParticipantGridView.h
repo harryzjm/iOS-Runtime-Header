@@ -10,15 +10,20 @@
 
 @interface _TtC15ConversationKit19ParticipantGridView : UIView
 {
-    MISSING_TYPE *participantViews;
+    MISSING_TYPE *layoutStyle;
+    MISSING_TYPE *participantIdentifiableTiles;
     MISSING_TYPE *unfocusedParticipantOverlay;
+    MISSING_TYPE *deviceType;
     MISSING_TYPE *organicLayoutConfiguration;
     MISSING_TYPE *currentlyFocusedParticipantIdentifier;
     MISSING_TYPE *mostProminentParticipantIdentifier;
+    MISSING_TYPE *fullScreenFocusedParticipantInfo;
     MISSING_TYPE *mostRecentAnimationIndex;
     MISSING_TYPE *delegate;
     MISSING_TYPE *currentParticipantAnimationContextUUID;
     MISSING_TYPE *cachedFrameSize;
+    MISSING_TYPE *isLocalMemberAuthorizedToChangeGroupMembership;
+    MISSING_TYPE *deviceOrientation;
 }
 
 - (void).cxx_destruct;

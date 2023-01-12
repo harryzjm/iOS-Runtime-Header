@@ -4,23 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CPLEnginePushRepository, CPLEngineScopeStorage, CPLEngineStore;
+@class CPLEnginePushRepository, CPLEngineScopeStorage;
 
 @interface CPLPushRepositoryStorage
 {
-    CPLEngineStore *_store;
-    CPLEnginePushRepository *_pushRepository;
+    unsigned long long _storageScopeType;
     CPLEngineScopeStorage *_scopes;
+    CPLEnginePushRepository *_pushRepository;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) CPLEngineScopeStorage *scopes; // @synthesize scopes=_scopes;
 @property(readonly, nonatomic) CPLEnginePushRepository *pushRepository; // @synthesize pushRepository=_pushRepository;
-@property(readonly, nonatomic) CPLEngineStore *store; // @synthesize store=_store;
 - (id)changesWithRelatedScopedIdentifier:(id)arg1 class:(Class)arg2;
 - (id)changeWithScopedIdentifier:(id)arg1;
+- (id)scopedIdentifierAddingScopeIndexForScopedIdentifier:(id)arg1;
 - (id)storageDescription;
-- (id)initWithStore:(id)arg1;
+- (id)initWithPushRepository:(id)arg1;
 - (_Bool)hasChangesWithRelatedScopedIdentifier:(id)arg1 class:(Class)arg2;
 - (_Bool)getRelatedScopedIdentifier:(id *)arg1 forRecordWithScopedIdentifier:(id)arg2;
 

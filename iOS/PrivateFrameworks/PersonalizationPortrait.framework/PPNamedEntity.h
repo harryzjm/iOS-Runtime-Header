@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProactiveSupport/_PASZonedObject.h>
+#import <objc/NSObject.h>
 
 #import <PersonalizationPortrait/MLFeatureProvider-Protocol.h>
 #import <PersonalizationPortrait/NSCopying-Protocol.h>
@@ -12,7 +12,7 @@
 
 @class NSSet, NSString, PPNamedEntityRecord;
 
-@interface PPNamedEntity : _PASZonedObject <NSCopying, NSSecureCoding, MLFeatureProvider>
+@interface PPNamedEntity : NSObject <NSCopying, NSSecureCoding, MLFeatureProvider>
 {
     NSString *_name;
     unsigned long long _category;

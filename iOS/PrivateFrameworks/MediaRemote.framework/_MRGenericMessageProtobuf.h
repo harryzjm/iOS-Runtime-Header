@@ -10,6 +10,7 @@
 
 @class NSData, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MRGenericMessageProtobuf : PBCodable <NSCopying>
 {
     NSData *_data;
@@ -18,18 +19,14 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSData *data; // @synthesize data=_data;
-@property(retain, nonatomic) NSString *key; // @synthesize key=_key;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(readonly, nonatomic) _Bool hasData;
-@property(readonly, nonatomic) _Bool hasKey;
 
 @end
 

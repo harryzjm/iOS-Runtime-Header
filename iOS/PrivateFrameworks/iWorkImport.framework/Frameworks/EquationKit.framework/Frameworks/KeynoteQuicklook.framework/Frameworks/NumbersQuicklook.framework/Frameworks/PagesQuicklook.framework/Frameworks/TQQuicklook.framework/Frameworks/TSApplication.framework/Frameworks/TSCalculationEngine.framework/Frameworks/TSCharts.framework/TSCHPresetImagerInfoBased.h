@@ -8,7 +8,7 @@
 
 @interface TSCHPresetImagerInfoBased
 {
-    TSCHChartType *mChartType;
+    TSCHChartType *_chartType;
 }
 
 + (id)presetImagerForChartType:(id)arg1;

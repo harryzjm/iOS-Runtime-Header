@@ -52,6 +52,7 @@
 - (_Bool)br_isInCloudDocsPrivateStoragesForRemoteDocumentVersions;
 - (_Bool)br_isInCloudDocsPrivateStorages;
 - (_Bool)_br_isInSyncedLocationStrictly:(_Bool)arg1;
+- (_Bool)_br_isInSyncedLocationWithCurrentPersonaID:(id)arg1 strictly:(_Bool)arg2 foundHomeDirectory:(_Bool)arg3 adoptionError:(id)arg4;
 - (_Bool)br_isStrictlyInSyncedLocation;
 - (_Bool)br_isInSyncedLocation;
 - (_Bool)br_isInSyncedDocuments;
@@ -60,7 +61,6 @@
 - (_Bool)br_isInTrash;
 - (id)br_debugDescription;
 - (id)br_pathRelativeToMobileDocuments;
-- (id)br_pathRelativeToSyncedRootURL:(id)arg1;
 - (id)br_pathRelativeToSyncedRootURLForContainerID:(id)arg1;
 - (void)br_containerIDsWithExternalReferencesWithHandler:(CDUnknownBlockType)arg1;
 - (void)br_bookmarkableStringForRemoteOpeningAppWithBundleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -72,5 +72,11 @@
 - (_Bool)br_isParentOfURL:(id)arg1 strictly:(_Bool)arg2;
 - (_Bool)br_isInLocalHomeDirectory;
 - (id)br_realpathURL;
+- (id)br_containerIDWithCurrentPersonaID:(id)arg1 needsPersonaSwitch:(_Bool)arg2;
+- (id)br_containerIDWithCurrentPersonaID:(id)arg1;
+- (id)br_pathRelativeToSyncedRootURL:(id)arg1 currentPersonaID:(id)arg2;
+- (_Bool)_br_isInLocalHomeDirectoryUnderCurrentPersona;
+- (_Bool)_br_isInLocalHomeDirectoryUnderPersona:(id)arg1 needsPersonaSwitch:(_Bool)arg2;
+- (_Bool)_br_isInPersonaRoot:(id)arg1;
 @end
 

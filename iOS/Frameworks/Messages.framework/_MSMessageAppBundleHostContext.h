@@ -29,6 +29,7 @@
 - (void)_updateSnapshotForNextLaunch:(id)arg1;
 - (void)_dismissAndPresentPhotosApp;
 - (void)_dismiss;
+- (void)_presentAlertWithTitle:(id)arg1 message:(id)arg2 buttonTitle:(id)arg3 destructiveButtonTitle:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_presentAlertWithTitle:(id)arg1 message:(id)arg2 buttonTitle:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_requestPresentationStyle:(unsigned long long)arg1;
 - (void)_dragMediaItemCanceled;

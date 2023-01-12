@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class UIViewController, VUIVideosPlayable;
+@class UIViewController, VUIExtrasInfo, VUIMediaEntity, VUIVideosPlayable;
 @protocol TVPMediaItem;
 
 __attribute__((visibility("hidden")))
@@ -15,6 +15,8 @@ __attribute__((visibility("hidden")))
     _Bool _contentAllowsCellularDownload;
     VUIVideosPlayable *_videosPlayable;
     NSObject<TVPMediaItem> *_mediaItem;
+    VUIMediaEntity *_mediaEntity;
+    VUIExtrasInfo *_extrasInfo;
     unsigned long long _restrictionsCheckType;
     UIViewController *_presentingController;
 }
@@ -24,6 +26,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIViewController *presentingController; // @synthesize presentingController=_presentingController;
 @property(nonatomic) unsigned long long restrictionsCheckType; // @synthesize restrictionsCheckType=_restrictionsCheckType;
 @property(nonatomic) _Bool contentAllowsCellularDownload; // @synthesize contentAllowsCellularDownload=_contentAllowsCellularDownload;
+@property(retain, nonatomic) VUIExtrasInfo *extrasInfo; // @synthesize extrasInfo=_extrasInfo;
+@property(retain, nonatomic) VUIMediaEntity *mediaEntity; // @synthesize mediaEntity=_mediaEntity;
 @property(retain, nonatomic) NSObject<TVPMediaItem> *mediaItem; // @synthesize mediaItem=_mediaItem;
 @property(retain, nonatomic) VUIVideosPlayable *videosPlayable; // @synthesize videosPlayable=_videosPlayable;
 - (void)_preflightDownloadWithCompletion:(CDUnknownBlockType)arg1;

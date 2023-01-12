@@ -21,9 +21,9 @@
 + (_Bool)supportsSecureCoding;
 + (id)initialStatus;
 @property(readonly, nonatomic) long long failureReasons; // @synthesize failureReasons=_failureReasons;
-@property(readonly, nonatomic) long long stateReason; // @synthesize stateReason=_stateReason;
+@property(nonatomic) long long stateReason; // @synthesize stateReason=_stateReason;
 @property(readonly, nonatomic) long long accuracy; // @synthesize accuracy=_accuracy;
-@property(readonly, nonatomic) long long state; // @synthesize state=_state;
+@property(nonatomic) long long state; // @synthesize state=_state;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;

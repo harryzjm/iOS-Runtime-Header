@@ -14,7 +14,7 @@
 - (id)_accessibilitySupplementaryFooterViews;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityLabel;
-- (id)_accessibilityAdvertisement;
+- (id)_accessibilityAdvertisementElement;
 - (_Bool)isAccessibilityElement;
 
 @end

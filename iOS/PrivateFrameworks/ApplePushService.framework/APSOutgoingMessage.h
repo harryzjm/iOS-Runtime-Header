@@ -4,17 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class APSOutgoingMessageCheckpointTrace, NSString;
+@class NSString;
 
 @interface APSOutgoingMessage
 {
-    APSOutgoingMessageCheckpointTrace *_checkpointTrace;
     _Bool _ackReceived;
 }
 
-- (void).cxx_destruct;
 @property(nonatomic) _Bool ackReceived; // @synthesize ackReceived=_ackReceived;
-@property(retain, nonatomic) APSOutgoingMessageCheckpointTrace *checkpointTrace; // @synthesize checkpointTrace=_checkpointTrace;
+- (void)setChannelID:(id)arg1;
+- (id)channelID;
 - (void)setPushFlags:(unsigned int)arg1;
 - (unsigned int)pushFlags;
 @property(nonatomic) unsigned long long ackTimestamp;
@@ -49,8 +48,6 @@
 - (id)timestamp;
 - (void)setMessageID:(unsigned long long)arg1;
 - (unsigned long long)messageID;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
 
 @end
 

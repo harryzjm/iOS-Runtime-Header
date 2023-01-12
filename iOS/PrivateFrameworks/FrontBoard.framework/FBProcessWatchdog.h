@@ -20,6 +20,7 @@
 @property(readonly, retain, nonatomic) FBProcessCPUStatistics *cpuStatistics; // @synthesize cpuStatistics=_cpuStatistics;
 @property(readonly, retain, nonatomic) FBProcessWatchdogEventContext *eventContext; // @synthesize eventContext=_eventContext;
 @property(readonly, nonatomic) long long event; // @synthesize event=_event;
+- (id)_policyDesc;
 - (void)activate;
 - (id)initWithProcess:(id)arg1 context:(id)arg2 policy:(id)arg3;
 

@@ -6,10 +6,10 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class PKDiscoveryCallToAction, PKDiscoveryCardView, UIView;
+@class NSString, PKDiscoveryCallToAction, PKDiscoveryCardView, UIView;
 
 @protocol PKDiscoveryCardViewDelegate <NSObject>
-- (void)discoveryCardViewCTATapped:(UIView *)arg1 callToAction:(PKDiscoveryCallToAction *)arg2;
+- (void)discoveryCardViewCTATapped:(UIView *)arg1 callToAction:(PKDiscoveryCallToAction *)arg2 itemIdentifier:(NSString *)arg3;
 
 @optional
 - (void)discoveryCardViewRemoveTapped:(PKDiscoveryCardView *)arg1;

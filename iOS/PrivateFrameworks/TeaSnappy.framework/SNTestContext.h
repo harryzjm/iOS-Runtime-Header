@@ -6,20 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, UIApplication;
+@class NSMutableDictionary, NSString, UIApplication;
 
 @interface SNTestContext : NSObject
 {
     UIApplication *_application;
+    NSString *_testName;
     NSMutableDictionary *_objects;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableDictionary *objects; // @synthesize objects=_objects;
+@property(readonly, nonatomic) NSString *testName; // @synthesize testName=_testName;
 @property(readonly, nonatomic) UIApplication *application; // @synthesize application=_application;
 - (id)objectForKey:(id)arg1;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
-- (id)initWithApplication:(id)arg1;
+- (id)initWithApplication:(id)arg1 testName:(id)arg2;
 
 @end
 

@@ -13,9 +13,8 @@
     _Bool _isLivePhoto;
     _Bool _isVideo;
     UIImage *_image;
-    UIImageView *_imageView;
     UIImageView *_livePhotoImage;
-    NSString *_identifier;
+    NSString *_resultIdentifier;
     UILabel *_durationLabel;
     UIImageView *_durationGradientImage;
     struct UIEdgeInsets marginInsets;
@@ -27,11 +26,11 @@
 @property(nonatomic) _Bool isLivePhoto; // @synthesize isLivePhoto=_isLivePhoto;
 @property(retain, nonatomic) UIImageView *durationGradientImage; // @synthesize durationGradientImage=_durationGradientImage;
 @property(retain, nonatomic) UILabel *durationLabel; // @synthesize durationLabel=_durationLabel;
-@property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(copy, nonatomic) NSString *resultIdentifier; // @synthesize resultIdentifier=_resultIdentifier;
 @property(retain, nonatomic) UIImageView *livePhotoImage; // @synthesize livePhotoImage=_livePhotoImage;
-@property(retain, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
 @property(nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets;
+- (void)setSelected:(_Bool)arg1;
 - (void)_configureDurationLabelForResult:(id)arg1;
 - (void)_videoDurationUpdated:(id)arg1;
 - (void)_livePhotoUpdated:(id)arg1;

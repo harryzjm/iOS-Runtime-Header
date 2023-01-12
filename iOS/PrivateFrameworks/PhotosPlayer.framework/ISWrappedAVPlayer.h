@@ -26,6 +26,7 @@
     _Bool _ivarQueue_loopingEnabled;
     _Bool _ivarQueue_audioEnabled;
     _Bool _ivarQueue_preventsSleepDuringVideoPlayback;
+    _Bool _ivarQueue_suppressesAudioRendering;
     long long _ivarQueue_itemStatus;
     NSError *_ivarQueue_itemError;
     CDStruct_1b6d18a9 _ivarQueue_itemForwardPlaybackEndTime;
@@ -65,6 +66,7 @@
 @property(getter=isLoopingEnabled) _Bool loopingEnabled;
 - (void)_playerQueue_updatePlayerItemAudioTracksEnabled;
 - (void)setAudioEnabled:(_Bool)arg1;
+@property _Bool suppressesAudioRendering;
 - (_Bool)preventsSleepDuringVideoPlayback;
 - (CDStruct_1b6d18a9)itemForwardPlaybackEndTime;
 - (CDStruct_1b6d18a9)currentTime;

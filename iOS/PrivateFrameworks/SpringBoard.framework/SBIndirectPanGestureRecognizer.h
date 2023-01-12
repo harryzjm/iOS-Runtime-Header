@@ -16,21 +16,21 @@
 
 @interface SBIndirectPanGestureRecognizer : UIGestureRecognizer <_UIHoverEventRespondable, SBIndirectTouchLifecycleObserving, SBGestureRecognizerTouchHistoryProviding, SBGestureRecognizerPanGestureProviding>
 {
+    _Bool _avoidActivatingForExternallyOwnedEdges;
     _Bool _shouldCancelAfterMovingAwayFromEdge;
     _Bool _shouldInvertXAxis;
     _Bool _shouldInvertYAxis;
     _Bool _pausedUntilTouchedUpOrMovedAwayFromEdge;
     _Bool _shouldActivateWithThreshold;
     _Bool _shouldRequireGestureToStartAtEdge;
-    _Bool _shouldSwitchAxes;
     _Bool _gesturePassedThroughScreenCenterRegion;
     unsigned long long _edges;
+    unsigned long long _activatedEdge;
     CDUnknownBlockType _translationAdjustmentBlock;
     double _activationRecognitionDistance;
     unsigned long long _endReason;
     unsigned long long _currentInputType;
     id <SBIndirectPanGestureRecognizerOrientationProviding> _orientationProvider;
-    unsigned long long _activatedEdge;
     SBTouchHistory *_touchHistory;
     UIEvent *_currentHoverEvent;
     UITouch *_currentTouch;
@@ -41,6 +41,7 @@
     BSMonotonicReferenceTime *_lastMouseActivationTimestamp;
     double _trackpadHysteresis;
     double _mouseHysteresis;
+    unsigned long long _activatingEdge;
     SBSystemGestureManager *_systemGestureManager;
     struct CGPoint _origin;
     struct CGPoint _lastKnownPoint;
@@ -49,6 +50,7 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) SBSystemGestureManager *systemGestureManager; // @synthesize systemGestureManager=_systemGestureManager;
+@property(nonatomic) unsigned long long activatingEdge; // @synthesize activatingEdge=_activatingEdge;
 @property(nonatomic) struct CGPoint translationWithinHysteresisRange; // @synthesize translationWithinHysteresisRange=_translationWithinHysteresisRange;
 @property(nonatomic) double mouseHysteresis; // @synthesize mouseHysteresis=_mouseHysteresis;
 @property(nonatomic) double trackpadHysteresis; // @synthesize trackpadHysteresis=_trackpadHysteresis;
@@ -61,8 +63,6 @@
 @property(retain, nonatomic) UITouch *currentTouch; // @synthesize currentTouch=_currentTouch;
 @property(retain, nonatomic) UIEvent *currentHoverEvent; // @synthesize currentHoverEvent=_currentHoverEvent;
 @property(retain, nonatomic) SBTouchHistory *touchHistory; // @synthesize touchHistory=_touchHistory;
-@property(nonatomic) _Bool shouldSwitchAxes; // @synthesize shouldSwitchAxes=_shouldSwitchAxes;
-@property(nonatomic) unsigned long long activatedEdge; // @synthesize activatedEdge=_activatedEdge;
 @property(nonatomic) struct CGPoint lastKnownPoint; // @synthesize lastKnownPoint=_lastKnownPoint;
 @property(nonatomic) struct CGPoint origin; // @synthesize origin=_origin;
 @property(nonatomic) __weak id <SBIndirectPanGestureRecognizerOrientationProviding> orientationProvider; // @synthesize orientationProvider=_orientationProvider;
@@ -76,7 +76,9 @@
 @property(nonatomic) _Bool shouldInvertYAxis; // @synthesize shouldInvertYAxis=_shouldInvertYAxis;
 @property(nonatomic) _Bool shouldInvertXAxis; // @synthesize shouldInvertXAxis=_shouldInvertXAxis;
 @property(nonatomic) _Bool shouldCancelAfterMovingAwayFromEdge; // @synthesize shouldCancelAfterMovingAwayFromEdge=_shouldCancelAfterMovingAwayFromEdge;
+@property(nonatomic) unsigned long long activatedEdge; // @synthesize activatedEdge=_activatedEdge;
 @property(nonatomic) unsigned long long edges; // @synthesize edges=_edges;
+@property(nonatomic) _Bool avoidActivatingForExternallyOwnedEdges; // @synthesize avoidActivatingForExternallyOwnedEdges=_avoidActivatingForExternallyOwnedEdges;
 - (struct CGPoint)_centerOfCircleForRoundedCorner:(unsigned long long)arg1 radius:(double)arg2 inView:(id)arg3;
 - (_Bool)_isPointOnRoundedCorner:(struct CGPoint)arg1 corner:(unsigned long long)arg2 radius:(double)arg3 inView:(id)arg4;
 - (_Bool)_isPointerOnTopScreenCorner:(struct CGPoint)arg1 radius:(double)arg2;
@@ -89,7 +91,7 @@
 - (struct CGPoint)averageTouchVelocityOverTimeDuration:(double)arg1;
 - (void)updateTouchHistoryWithTouches:(id)arg1;
 - (void)conformsToSBGestureRecognizerTouchHistoryProviding;
-- (_Bool)_shouldSwitchAxes;
+- (long long)_effectiveOrientation;
 - (struct CGPoint)_pointerModelLocation;
 - (void)_updateTranslationWithPointerEventAttributes:(id)arg1 activeEdge:(unsigned long long)arg2;
 - (double)hysteresisForInputType:(unsigned long long)arg1;

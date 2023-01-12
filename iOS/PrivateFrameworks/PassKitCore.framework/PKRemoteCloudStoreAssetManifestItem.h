@@ -13,6 +13,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void)downloadAssetWithCloudStoreCoordinatorDelegate:(id)arg1 tryCount:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)downloadAssetWithCloudStoreCoordinatorDelegate:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)itemType;
 @property(readonly, nonatomic) NSString *recordName;

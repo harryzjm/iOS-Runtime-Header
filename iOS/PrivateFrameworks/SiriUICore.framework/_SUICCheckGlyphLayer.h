@@ -22,9 +22,10 @@
 @property(copy, nonatomic) UIColor *primaryColor; // @synthesize primaryColor=_primaryColor;
 - (double)_updateCovered:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (double)setCovered:(_Bool)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)setRevealed:(_Bool)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
-@property(nonatomic) _Bool revealed;
+- (void)setRevealed:(_Bool)arg1 animated:(_Bool)arg2 withCompletion:(CDUnknownBlockType)arg3;
+@property(nonatomic, getter=isRevealed) _Bool revealed;
 - (void)setPrimaryColor:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setPrimaryColor:(id)arg1 animated:(_Bool)arg2;
 - (void)_createMask;
 - (double)_pointScaleToMatchBoundsSize:(struct CGSize)arg1;
 - (void)layoutSublayers;

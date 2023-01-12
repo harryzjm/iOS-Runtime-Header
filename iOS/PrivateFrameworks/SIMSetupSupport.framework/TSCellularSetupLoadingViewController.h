@@ -6,31 +6,42 @@
 
 #import <UIKitCore/UIViewController.h>
 
+#import <SIMSetupSupport/SFSafariViewControllerDelegate-Protocol.h>
 #import <SIMSetupSupport/TSSetupFlowItem-Protocol.h>
+#import <SIMSetupSupport/UIAdaptivePresentationControllerDelegate-Protocol.h>
 
-@class CTXPCServiceSubscriptionContext, CoreTelephonyClient, NSDictionary, NSString, NSURL, TSCellularSetupLoadingView;
+@class CoreTelephonyClient, NSDictionary, NSString, NSURL, TSCellularSetupLoadingView, TSRemotePlanWebsheetContext;
 @protocol TSSIMSetupFlowDelegate;
 
-@interface TSCellularSetupLoadingViewController : UIViewController <TSSetupFlowItem>
+@interface TSCellularSetupLoadingViewController : UIViewController <SFSafariViewControllerDelegate, UIAdaptivePresentationControllerDelegate, TSSetupFlowItem>
 {
     CoreTelephonyClient *_coreTelephonyClient;
+    _Bool _isProcessCanceled;
+    _Bool _useLiveID;
     _Bool _isRemotePlan;
+    int _flowType;
     id <TSSIMSetupFlowDelegate> _delegate;
     NSURL *_carrierURL;
     NSDictionary *_postdata;
     TSCellularSetupLoadingView *_loadingView;
-    NSString *_carrierName;
-    CTXPCServiceSubscriptionContext *_subscriptionContext;
+    TSRemotePlanWebsheetContext *_remotePlanWebsheetContext;
 }
 
 - (void).cxx_destruct;
+@property(retain) TSRemotePlanWebsheetContext *remotePlanWebsheetContext; // @synthesize remotePlanWebsheetContext=_remotePlanWebsheetContext;
 @property(nonatomic) _Bool isRemotePlan; // @synthesize isRemotePlan=_isRemotePlan;
-@property(nonatomic) CTXPCServiceSubscriptionContext *subscriptionContext; // @synthesize subscriptionContext=_subscriptionContext;
-@property(retain, nonatomic) NSString *carrierName; // @synthesize carrierName=_carrierName;
 @property(retain, nonatomic) TSCellularSetupLoadingView *loadingView; // @synthesize loadingView=_loadingView;
+@property(readonly) _Bool useLiveID; // @synthesize useLiveID=_useLiveID;
+@property int flowType; // @synthesize flowType=_flowType;
+@property(nonatomic) _Bool isProcessCanceled; // @synthesize isProcessCanceled=_isProcessCanceled;
 @property(retain, nonatomic) NSDictionary *postdata; // @synthesize postdata=_postdata;
 @property(retain, nonatomic) NSURL *carrierURL; // @synthesize carrierURL=_carrierURL;
 @property __weak id <TSSIMSetupFlowDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)safariViewController:(id)arg1 didCompleteInitialLoad:(_Bool)arg2;
+- (void)safariViewControllerDidFinish:(id)arg1;
+- (void)presentationControllerDidDismiss:(id)arg1;
+- (void)deactivate;
+- (void)safariViewController:(id)arg1 url:(id)arg2 postdata:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_showFailureAlert:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)navBarTitle;
 - (void)cancelButtonTapped;
@@ -38,7 +49,7 @@
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)setupNavigationBarItems;
 - (void)viewDidLoad;
-- (id)initWithSubscriptionContext:(id)arg1 carrier:(id)arg2 isRemotePlan:(_Bool)arg3;
+- (id)initWithRemotePlanWebsheetContext:(id)arg1 isRemotePlan:(_Bool)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

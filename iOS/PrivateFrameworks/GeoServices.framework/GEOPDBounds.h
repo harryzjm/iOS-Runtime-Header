@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOMapRegion, PBDataReader, PBUnknownFields;
+@class GEOMapRegion, GEOPDViewportFrame, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDBounds : PBCodable <NSCopying>
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     PBUnknownFields *_unknownFields;
     GEOMapRegion *_displayMapRegion;
     GEOMapRegion *_mapRegion;
+    GEOPDViewportFrame *_viewportFrame;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
@@ -28,36 +29,21 @@ __attribute__((visibility("hidden")))
         unsigned int read_unknownFields:1;
         unsigned int read_displayMapRegion:1;
         unsigned int read_mapRegion:1;
+        unsigned int read_viewportFrame:1;
         unsigned int wrote_anyField:1;
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
 + (id)boundsInfoForPlaceData:(id)arg1;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasMaxZoom;
-@property(nonatomic) float maxZoom;
-@property(nonatomic) _Bool hasMinZoom;
-@property(nonatomic) float minZoom;
-@property(retain, nonatomic) GEOMapRegion *displayMapRegion;
-@property(readonly, nonatomic) _Bool hasDisplayMapRegion;
-@property(retain, nonatomic) GEOMapRegion *mapRegion;
-@property(readonly, nonatomic) _Bool hasMapRegion;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

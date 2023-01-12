@@ -7,7 +7,7 @@
 #import <UIKit/UIViewController.h>
 
 @class PUModalTransition, PUNavigationTransition, PUToolbarViewModel, PUViewModel, UIColor, UIToolbar;
-@protocol PUDisplayAsset;
+@protocol NSFastEnumeration, PUDisplayAsset;
 
 @interface UIViewController (PHViewControllerChrome)
 + (id)pu_currentViewControllerStack;
@@ -24,6 +24,7 @@
 - (struct CGRect)ph_rectOfInterestForTransitionInCoordinateSpace:(id)arg1;
 - (struct CGRect)ph_rectOfInterestForTransitionInCoordinateSpace:(id)arg1 withInfo:(id)arg2;
 - (double)px_effectiveImageModulationIntensityWithProposedValue:(double)arg1;
+@property(readonly, nonatomic) _Bool pu_shouldOptOutFromChromelessBars;
 @property(readonly, nonatomic) long long pu_preferredBarStyle;
 - (void)ppt_performBlockAfterNextNavigationAnimation:(CDUnknownBlockType)arg1;
 - (id)pu_navigationController;
@@ -43,6 +44,7 @@
 @property(retain, nonatomic, setter=pu_setNavigationTransition:) PUNavigationTransition *pu_navigationTransition;
 @property(retain, nonatomic, setter=pu_setModalTransition:) PUModalTransition *pu_modalTransition;
 @property(readonly, nonatomic) PUViewModel *pu_debugCurrentViewModel;
+@property(readonly, nonatomic) id <NSFastEnumeration> pu_debugCurrentlySelectedAssets;
 @property(readonly, nonatomic) id <PUDisplayAsset> pu_debugCurrentAsset;
 @property(readonly, nonatomic) UIToolbar *pu_footerToolbar;
 - (id)_pu_offersTableView;

@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 - (id)notificationIconBundleIdentifier;
 - (id)notificationTitle;
 - (id)contact;
+- (id)compactTitle;
 - (void)adaptForPresentationInPopover:(_Bool)arg1;
 - (void)prepareViewControllerForActionController:(id)arg1;
 - (int)interactionType;

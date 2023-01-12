@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <Navigation/MNNavigationSessionObserver-Protocol.h>
+#import <Navigation/VGVirtualGarageObserver-Protocol.h>
 
-@class MNLocation, MNTraceRecorder, NSError, NSString, NSUUID;
+@class MNLocation, MNTraceRecorder, NSArray, NSDateFormatter, NSError, NSString, NSTimer, NSUUID, VGVehicle;
 
 __attribute__((visibility("hidden")))
-@interface MNTraceNavigationEventRecorder : NSObject <MNNavigationSessionObserver>
+@interface MNTraceNavigationEventRecorder : NSObject <VGVirtualGarageObserver, MNNavigationSessionObserver>
 {
     MNTraceRecorder *_traceRecorder;
     MNLocation *_lastMatchedLocation;
@@ -20,24 +21,36 @@ __attribute__((visibility("hidden")))
     NSUUID *_currentSecondarySignID;
     NSUUID *_laneGuidanceID;
     NSUUID *_junctionViewID;
+    NSArray *_lastARInfos;
+    VGVehicle *_lastEVState;
+    VGVehicle *_pendingEVState;
+    NSTimer *_evUpdateTimer;
+    NSDateFormatter *_evDateFormatter;
 }
 
 - (void).cxx_destruct;
+- (void)virtualGarageDidUpdate:(id)arg1;
+- (void)navigationSession:(id)arg1 didReceiveTransitAlert:(id)arg2;
+- (void)navigationSession:(id)arg1 didReceiveTrafficIncidentAlert:(id)arg2 responseCallback:(CDUnknownBlockType)arg3;
 - (void)navigationSession:(id)arg1 hideJunctionViewForId:(id)arg2;
 - (void)navigationSession:(id)arg1 showJunctionView:(id)arg2;
 - (void)navigationSession:(id)arg1 hideLaneDirectionsForId:(id)arg2;
 - (void)navigationSession:(id)arg1 showLaneDirections:(id)arg2;
+- (void)navigationSession:(id)arg1 updateSignsWithARInfo:(id)arg2;
 - (void)navigationSession:(id)arg1 updateSignsWithInfo:(id)arg2;
 - (void)navigationSession:(id)arg1 didAnnounce:(id)arg2 stage:(unsigned long long)arg3;
 - (void)navigationSession:(id)arg1 didUpdateDestination:(id)arg2;
 - (void)navigationSession:(id)arg1 didUpdateAlternateRoutes:(id)arg2;
+- (void)navigationSession:(id)arg1 didSwitchToNewTransportType:(int)arg2 newRoute:(id)arg3;
 - (void)navigationSession:(id)arg1 didReroute:(id)arg2 withLocation:(id)arg3 withAlternateRoutes:(id)arg4 rerouteReason:(unsigned long long)arg5;
 - (void)navigationSession:(id)arg1 didSuppressReroute:(id)arg2;
 - (void)navigationSession:(id)arg1 didResumeNavigatingFromWaypoint:(id)arg2 endOfLegIndex:(unsigned long long)arg3;
 - (void)navigationSession:(id)arg1 didArriveAtWaypoint:(id)arg2 endOfLegIndex:(unsigned long long)arg3;
 - (void)navigationSession:(id)arg1 didEnterPreArrivalStateForWaypoint:(id)arg2 endOfLegIndex:(unsigned long long)arg3;
-- (void)navigationSession:(id)arg1 shouldEndWithReason:(unsigned long long)arg2;
-- (void)navigationSessionDidStop:(id)arg1;
+- (void)navigationSession:(id)arg1 matchedToStepIndex:(unsigned long long)arg2 segmentIndex:(unsigned long long)arg3;
+- (void)navigationSession:(id)arg1 didStopWithReason:(unsigned long long)arg2;
+- (void)navigationSession:(id)arg1 didStartWithRoute:(id)arg2 navigationType:(int)arg3 isReconnecting:(_Bool)arg4;
+- (void)_recordEVChargingStateForVehicle:(id)arg1;
 - (id)_stringForSignDescription:(id)arg1;
 - (id)_descriptionForWaypoint:(id)arg1;
 - (void)_userWentOffRoute;
@@ -45,7 +58,7 @@ __attribute__((visibility("hidden")))
 - (void)_recordEvent:(long long)arg1 description:(id)arg2;
 - (void)_recordDebugSettings;
 - (void)setLastMatchedLocation:(id)arg1;
-- (void)recordStartNavigationWithRouteInfo:(id)arg1 navigationType:(int)arg2 isReconnecting:(_Bool)arg3;
+- (void)dealloc;
 - (id)initWithTraceRecorder:(id)arg1;
 
 // Remaining properties

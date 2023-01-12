@@ -15,19 +15,21 @@
 #import <SpringBoard/SBCoverSheetSecureAppEnvironmentViewControllerDelegate-Protocol.h>
 #import <SpringBoard/SBCoverSheetSlidingViewControllerDelegate-Protocol.h>
 #import <SpringBoard/SBFIdleTimerBehaviorProviding-Protocol.h>
+#import <SpringBoard/SBFZStackParticipantDelegate-Protocol.h>
 #import <SpringBoard/SBHomeGestureParticipantDelegate-Protocol.h>
 #import <SpringBoard/SBPearlMatchingStateProviderDelegate-Protocol.h>
 #import <SpringBoard/SBSecureAppObserver-Protocol.h>
 #import <SpringBoard/SBSecureAppViewControllerDelegate-Protocol.h>
 #import <SpringBoard/SBWallpaperOrientationProvider-Protocol.h>
 
-@class BSEventQueue, CSCoverSheetFlyInSettings, CSCoverSheetTransitionSettings, CSLockScreenSettings, NSMutableSet, NSSet, NSString, SBAsynchronousRenderingAssertion, SBCoverSheetIconFlyInAnimator, SBCoverSheetSceneManager, SBCoverSheetSecureAppEnvironmentViewController, SBCoverSheetSlidingViewController, SBDashBoardHostedAppViewController, SBDeviceApplicationSceneHandle, SBDisableActiveInterfaceOrientationChangeAssertion, SBHomeGestureParticipant, SBMainWorkspace, SBWindow, UIColor, UIImpactFeedbackGenerator, _UILegibilitySettings;
+@class BSEventQueue, CSCoverSheetFlyInSettings, CSCoverSheetTransitionSettings, CSLockScreenSettings, NSMutableSet, NSSet, NSString, SBAsynchronousRenderingAssertion, SBCoverSheetIconFlyInAnimator, SBCoverSheetSceneManager, SBCoverSheetSecureAppEnvironmentViewController, SBCoverSheetSlidingViewController, SBDashBoardHostedAppViewController, SBDeviceApplicationSceneHandle, SBDisableActiveInterfaceOrientationChangeAssertion, SBFZStackParticipant, SBHomeGestureParticipant, SBMainWorkspace, SBWindow, UIImpactFeedbackGenerator, _UILegibilitySettings;
 @protocol BSInvalidatable, OS_dispatch_group, SBCoverSheetPresentationDelegate, SBLockScreenEnvironment, SBPearlMatchingStateProvider, SBUILockStateProvider;
 
-@interface SBCoverSheetPresentationManager : NSObject <SBCoverSheetSlidingViewControllerDelegate, SBCoverSheetGrabberDelegate, CSExternalAppearanceProviding, CSExternalBehaviorProviding, CSCoverSheetViewControllerObserver, SBFIdleTimerBehaviorProviding, SBSecureAppViewControllerDelegate, SBSecureAppObserver, SBAssistantObserver, PTSettingsKeyObserver, SBHomeGestureParticipantDelegate, SBCoverSheetSecureAppEnvironmentViewControllerDelegate, SBWallpaperOrientationProvider, SBPearlMatchingStateProviderDelegate>
+@interface SBCoverSheetPresentationManager : NSObject <SBCoverSheetSlidingViewControllerDelegate, SBCoverSheetGrabberDelegate, CSExternalAppearanceProviding, CSExternalBehaviorProviding, CSCoverSheetViewControllerObserver, SBFIdleTimerBehaviorProviding, SBSecureAppViewControllerDelegate, SBSecureAppObserver, SBAssistantObserver, PTSettingsKeyObserver, SBHomeGestureParticipantDelegate, SBFZStackParticipantDelegate, SBCoverSheetSecureAppEnvironmentViewControllerDelegate, SBWallpaperOrientationProvider, SBPearlMatchingStateProviderDelegate>
 {
     _Bool _isCoverSheetHostingUnlockedEnvironmentWindows;
     _Bool _hasBeenDismissedSinceKeybagLock;
+    _Bool _hasBeenDismissedSinceKeybagLockAndAuthenticated;
     _Bool _hasBeenDismissedSinceBoot;
     _Bool _activeInterfaceOrientationLocked;
     _Bool _shouldDisplayFakeStatusBar;
@@ -73,20 +75,25 @@
     double _iconFlyInTension;
     double _iconFlyInFriction;
     SBHomeGestureParticipant *_homeGestureParticipant;
+    SBFZStackParticipant *_zStackParticipant;
     id <BSInvalidatable> _suspendWallpaperAnimationAssertion;
     id <BSInvalidatable> _requireWallpaperAssertion;
+    id <BSInvalidatable> _keyboardFocusAssertion;
     CDUnknownBlockType _ppt_transitionBeginsCallback;
     CDUnknownBlockType _ppt_transitionEndsCallback;
     SBCoverSheetSlidingViewController *_coverSheetSlidingViewController;
 }
 
++ (id)sharedInstanceIfExists;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 @property(retain, nonatomic) SBCoverSheetSlidingViewController *coverSheetSlidingViewController; // @synthesize coverSheetSlidingViewController=_coverSheetSlidingViewController;
 @property(copy, nonatomic) CDUnknownBlockType ppt_transitionEndsCallback; // @synthesize ppt_transitionEndsCallback=_ppt_transitionEndsCallback;
 @property(copy, nonatomic) CDUnknownBlockType ppt_transitionBeginsCallback; // @synthesize ppt_transitionBeginsCallback=_ppt_transitionBeginsCallback;
+@property(retain, nonatomic) id <BSInvalidatable> keyboardFocusAssertion; // @synthesize keyboardFocusAssertion=_keyboardFocusAssertion;
 @property(retain, nonatomic) id <BSInvalidatable> requireWallpaperAssertion; // @synthesize requireWallpaperAssertion=_requireWallpaperAssertion;
 @property(retain, nonatomic) id <BSInvalidatable> suspendWallpaperAnimationAssertion; // @synthesize suspendWallpaperAnimationAssertion=_suspendWallpaperAnimationAssertion;
+@property(retain, nonatomic) SBFZStackParticipant *zStackParticipant; // @synthesize zStackParticipant=_zStackParticipant;
 @property(retain, nonatomic) SBHomeGestureParticipant *homeGestureParticipant; // @synthesize homeGestureParticipant=_homeGestureParticipant;
 @property(nonatomic) _Bool wantsHomeGestureOwnership; // @synthesize wantsHomeGestureOwnership=_wantsHomeGestureOwnership;
 @property(nonatomic) _Bool iconAnimatorNeedsAnimating; // @synthesize iconAnimatorNeedsAnimating=_iconAnimatorNeedsAnimating;
@@ -121,6 +128,7 @@
 @property(retain, nonatomic) NSMutableSet *coverSheetWindowVisibleReasons; // @synthesize coverSheetWindowVisibleReasons=_coverSheetWindowVisibleReasons;
 @property(nonatomic, getter=activeInterfaceOrientationLocked) _Bool activeInterfaceOrientationLocked; // @synthesize activeInterfaceOrientationLocked=_activeInterfaceOrientationLocked;
 @property(nonatomic) _Bool hasBeenDismissedSinceBoot; // @synthesize hasBeenDismissedSinceBoot=_hasBeenDismissedSinceBoot;
+@property(readonly, nonatomic) _Bool hasBeenDismissedSinceKeybagLockAndAuthenticated; // @synthesize hasBeenDismissedSinceKeybagLockAndAuthenticated=_hasBeenDismissedSinceKeybagLockAndAuthenticated;
 @property(nonatomic) _Bool hasBeenDismissedSinceKeybagLock; // @synthesize hasBeenDismissedSinceKeybagLock=_hasBeenDismissedSinceKeybagLock;
 @property(retain, nonatomic) SBMainWorkspace *mainWorkspace; // @synthesize mainWorkspace=_mainWorkspace;
 @property(readonly, nonatomic) _Bool isCoverSheetHostingUnlockedEnvironmentWindows; // @synthesize isCoverSheetHostingUnlockedEnvironmentWindows=_isCoverSheetHostingUnlockedEnvironmentWindows;
@@ -135,6 +143,8 @@
 - (void)_setTransitionProgress:(double)arg1 animated:(_Bool)arg2 gestureActive:(_Bool)arg3 coverSheetProgress:(double)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_animateForProgress:(double)arg1;
 - (void)_prepareIconAnimatorForPresenting:(_Bool)arg1;
+- (id)_newRubberBandFeedbackGeneratorForSettings:(id)arg1;
+- (id)_impactFeedbackGeneratorConfigurationForStyle:(long long)arg1;
 - (_Bool)_isEffectivelyLocked;
 - (void)_authenticationChanged:(id)arg1;
 - (void)_relinquishAsynchronousRenderingAssertion;
@@ -176,6 +186,8 @@
 - (void)_cleanupPresentationTransition;
 - (void)_prepareForPresentationTransitionForUserGesture:(_Bool)arg1;
 - (long long)interfaceOrientationForWallpaperController:(id)arg1;
+- (void)zStackParticipant:(id)arg1 updatePreferences:(id)arg2;
+- (void)zStackParticipantDidChange:(id)arg1;
 - (void)homeGestureParticipantOwningHomeGestureDidChange:(id)arg1;
 - (void)_updateIconsFlyInWithSettings:(id)arg1;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
@@ -211,10 +223,8 @@
 @property(readonly, nonatomic) long long idleWarnMode;
 - (void)conformsToCSExternalBehaviorProviding;
 - (void)conformsToCSBehaviorProviding;
-@property(readonly, nonatomic) UIColor *backgroundColor;
 @property(readonly, nonatomic) _UILegibilitySettings *legibilitySettings;
 @property(readonly, copy, nonatomic) NSSet *components;
-@property(readonly, nonatomic) long long backgroundStyle;
 @property(readonly, copy, nonatomic) NSString *appearanceIdentifier;
 @property(readonly, copy, nonatomic) NSString *coverSheetIdentifier;
 - (void)conformsToCSAppearanceProviding;
@@ -241,12 +251,16 @@
 - (_Bool)isDismissGestureActive;
 - (_Bool)isPresented;
 - (_Bool)isTransitioning;
+- (_Bool)isVisibleAndNotDisappearing;
 - (_Bool)isVisible;
 - (void)updateInterfaceOrientationToMatchOrientation:(long long)arg1;
 - (void)updateBecauseSecureAppChanged;
 - (_Bool)isInSecureApp;
+- (void)_setCoverSheetPresented:(_Bool)arg1 forcePresented:(_Bool)arg2 animated:(_Bool)arg3 options:(unsigned long long)arg4 withCompletion:(CDUnknownBlockType)arg5;
 - (void)setCoverSheetPresented:(_Bool)arg1 animated:(_Bool)arg2 options:(unsigned long long)arg3 withCompletion:(CDUnknownBlockType)arg4;
+- (void)_setCoverSheetPresented:(_Bool)arg1 forcePresented:(_Bool)arg2 animated:(_Bool)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)setCoverSheetPresented:(_Bool)arg1 animated:(_Bool)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (_Bool)coverSheetCanTransitionToPresented:(_Bool)arg1;
 - (id)init;
 
 // Remaining properties

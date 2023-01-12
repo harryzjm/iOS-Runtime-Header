@@ -29,6 +29,7 @@
 }
 
 + (id)metricsForIdiom:(long long)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) double calculatedItemHeightCache; // @synthesize calculatedItemHeightCache=_calculatedItemHeightCache;
 @property(nonatomic) _Bool shouldShowSectionHeadersWhenNoItems; // @synthesize shouldShowSectionHeadersWhenNoItems=_shouldShowSectionHeadersWhenNoItems;
 @property(nonatomic) _Bool shouldAlwaysIncludeShowMore; // @synthesize shouldAlwaysIncludeShowMore=_shouldAlwaysIncludeShowMore;
@@ -55,7 +56,6 @@
 @property(nonatomic) double sectionHeaderHeight;
 - (id)localDescription;
 - (_Bool)isEqual:(id)arg1;
-- (void)dealloc;
 - (id)initWithIdiom:(long long)arg1;
 - (id)init;
 - (id)copyWithZone:(struct _NSZone *)arg1;

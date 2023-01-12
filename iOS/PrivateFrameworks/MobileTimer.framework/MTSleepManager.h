@@ -11,7 +11,7 @@
 #import <MobileTimer/MTSource-Protocol.h>
 
 @class HKHealthStore, HKSPFeatureAvailabilityStore, HKSPSleepStore, NSString;
-@protocol MTAlarmStorage;
+@protocol MTAlarmStorage, MTPersistence;
 
 @interface MTSleepManager : NSObject <MTSource, HKSPSleepStoreObserver, MTAlarmObserver>
 {
@@ -20,10 +20,12 @@
     HKSPSleepStore *_sleepStore;
     HKSPFeatureAvailabilityStore *_featureStore;
     HKHealthStore *_healthStore;
+    id <MTPersistence> _persistence;
 }
 
 + (id)nextSleepAlarm;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <MTPersistence> persistence; // @synthesize persistence=_persistence;
 @property(retain, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 @property(retain, nonatomic) HKSPFeatureAvailabilityStore *featureStore; // @synthesize featureStore=_featureStore;
 @property(retain, nonatomic) HKSPSleepStore *sleepStore; // @synthesize sleepStore=_sleepStore;
@@ -38,11 +40,12 @@
 - (void)source:(id)arg1 didAddAlarms:(id)arg2;
 - (void)sleepStore:(id)arg1 sleepSettingsDidChange:(id)arg2;
 - (id)sourceIdentifier;
+- (void)markSleepMigrationComplete;
 - (_Bool)watchSleepFeaturesEnabled;
 - (void)resetSleepAlarmSnoozeState;
 - (_Bool)_didCompleteSleepOnboarding;
 - (void)updateSleepAlarms;
-- (id)initWithAlarmStorage:(id)arg1 sleepStoreProvider:(CDUnknownBlockType)arg2 featureStoreProvider:(CDUnknownBlockType)arg3 healthStore:(id)arg4;
+- (id)initWithAlarmStorage:(id)arg1 sleepStoreProvider:(CDUnknownBlockType)arg2 featureStoreProvider:(CDUnknownBlockType)arg3 healthStore:(id)arg4 persistence:(id)arg5;
 - (id)initWithAlarmStorage:(id)arg1;
 
 // Remaining properties

@@ -6,11 +6,8 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-@class MISSING_TYPE;
-
 @interface _TtC11SiriKitFlow19DucTemplateExecutor : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *ducTemplatingService;
 }
 
 @end

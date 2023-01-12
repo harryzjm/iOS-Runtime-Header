@@ -14,6 +14,7 @@
 {
     NSArray *_proposals;
     _Bool _sequencePerTrafficClass;
+    _Bool _preferInitiatorProposalOrder;
     unsigned int _replayWindowSize;
     unsigned long long _mode;
     NSArray *_localTrafficSelectors;
@@ -23,6 +24,7 @@
 - (void).cxx_destruct;
 @property(retain) NSArray *remoteTrafficSelectors; // @synthesize remoteTrafficSelectors=_remoteTrafficSelectors;
 @property(retain) NSArray *localTrafficSelectors; // @synthesize localTrafficSelectors=_localTrafficSelectors;
+@property _Bool preferInitiatorProposalOrder; // @synthesize preferInitiatorProposalOrder=_preferInitiatorProposalOrder;
 @property _Bool sequencePerTrafficClass; // @synthesize sequencePerTrafficClass=_sequencePerTrafficClass;
 @property unsigned int replayWindowSize; // @synthesize replayWindowSize=_replayWindowSize;
 @property unsigned long long mode; // @synthesize mode=_mode;

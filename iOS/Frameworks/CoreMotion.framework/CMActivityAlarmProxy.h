@@ -12,7 +12,7 @@
 @interface CMActivityAlarmProxy : NSObject
 {
     id _internal;
-    struct CLConnectionClient *fLocationdConnection;
+    void *fLocationdConnection;
     int fAlarmCounter;
     NSMutableDictionary *fAlarms;
     NSObject<OS_dispatch_queue> *fReplyQueue;

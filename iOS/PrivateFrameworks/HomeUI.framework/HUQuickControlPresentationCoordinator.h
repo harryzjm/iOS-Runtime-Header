@@ -19,7 +19,7 @@
 #import <HomeUI/_UIClickPresentationInteractionDelegate-Protocol.h>
 #import <HomeUI/_UISheetPresentationControllerDelegate-Protocol.h>
 
-@class HUCardViewController, HUForceInterpolatedPressGestureRecognizer, HUGridActionSetTitleAndDescriptionView, HUGridServiceCell, HUGridServiceCellTextView, HUHomeStatusDetailsViewController, HUIconView, HUItemTableViewController, HUPressedItemContext, HUQuickControlContainerViewController, HUQuickControlNavigationController, HUQuickControlPresentationContext, NSMapTable, NSMutableSet, NSString, UIImpactFeedbackGenerator, UILabel, UINavigationController, UITapGestureRecognizer, UITraitCollection, UIView, UIViewController, UIVisualEffectView, _UIClickPresentationInteraction;
+@class HUCardViewController, HUForceInterpolatedPressGestureRecognizer, HUGridActionSetTitleAndDescriptionView, HUGridServiceCell, HUGridServiceCellTextView, HUHomeStatusDetailsViewController, HUIconView, HUPressedItemContext, HUQuickControlContainerViewController, HUQuickControlNavigationController, HUQuickControlPresentationContext, NSMapTable, NSMutableSet, NSString, UIImpactFeedbackGenerator, UILabel, UINavigationController, UITapGestureRecognizer, UITraitCollection, UIView, UIViewController, UIVisualEffectView, _UIClickPresentationInteraction;
 @protocol HUQuickControlPresentationCoordinatorDelegate, NACancelable;
 
 @interface HUQuickControlPresentationCoordinator : NSObject <HUQuickControlContainerViewControllerDelegate, HUPresentationDelegate, UIGestureRecognizerDelegate, HUCardViewControllerDelegate, UIPresentationControllerDelegatePrivate, _UIClickPresentationInteractionDelegate, UIViewControllerTransitioningDelegate, _UISheetPresentationControllerDelegate, UINavigationControllerDelegate, HUHomeStatusDetailsViewControllerDelegate, HFItemManagerDelegate, UITraitEnvironment>
@@ -32,7 +32,7 @@
     UIView *_targetView;
     id <HUQuickControlPresentationCoordinatorDelegate> _delegate;
     HUQuickControlNavigationController *_cardNavigationController;
-    HUItemTableViewController *_settingsViewController;
+    UIViewController *_settingsViewController;
     UINavigationController *_statusDetailsNavigationController;
     HUHomeStatusDetailsViewController *_statusDetailsViewController;
     UITapGestureRecognizer *_singleTapGestureRecognizer;
@@ -82,7 +82,7 @@
 @property(retain, nonatomic) UITapGestureRecognizer *singleTapGestureRecognizer; // @synthesize singleTapGestureRecognizer=_singleTapGestureRecognizer;
 @property(retain, nonatomic) HUHomeStatusDetailsViewController *statusDetailsViewController; // @synthesize statusDetailsViewController=_statusDetailsViewController;
 @property(retain, nonatomic) UINavigationController *statusDetailsNavigationController; // @synthesize statusDetailsNavigationController=_statusDetailsNavigationController;
-@property(retain, nonatomic) HUItemTableViewController *settingsViewController; // @synthesize settingsViewController=_settingsViewController;
+@property(retain, nonatomic) UIViewController *settingsViewController; // @synthesize settingsViewController=_settingsViewController;
 @property(retain, nonatomic) HUQuickControlNavigationController *cardNavigationController; // @synthesize cardNavigationController=_cardNavigationController;
 @property(nonatomic) _Bool isEditing; // @synthesize isEditing=_isEditing;
 @property(nonatomic) __weak id <HUQuickControlPresentationCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
@@ -91,7 +91,6 @@
 @property(retain, nonatomic) HUQuickControlContainerViewController *quickControlViewController; // @synthesize quickControlViewController=_quickControlViewController;
 @property(retain, nonatomic) HUQuickControlPresentationContext *presentationContext; // @synthesize presentationContext=_presentationContext;
 @property(retain, nonatomic) HUCardViewController *cardViewController; // @synthesize cardViewController=_cardViewController;
-- (void)_logUserMetricsAfterPress;
 - (void)_logInteractionEventOfType:(unsigned long long)arg1 withPresentationContext:(id)arg2;
 - (struct CGRect)sourceFrameForAnimationController;
 - (_Bool)_isRTL;
@@ -121,6 +120,7 @@
 - (id)dismissQuickControlAnimated:(_Bool)arg1;
 - (id)dismissQuickControlAnimated:(_Bool)arg1 wasDismissed:(_Bool *)arg2;
 - (void)_validatePresentationContext:(id)arg1;
+- (id)_buildSoftwareUpdateNavigationController;
 - (id)_buildStatusDetailsNavigationController;
 - (id)_buildCardNavigationController;
 - (void)_updateCardController;
@@ -176,6 +176,7 @@
 - (id)_gestureInstallationView;
 - (void)_handleMutuallyExclusiveGesture:(id)arg1;
 - (void)playBounceForItem:(id)arg1;
+- (id)createNavigationControllerForPresentationContext:(id)arg1;
 - (void)removeMutuallyExclusiveGestureRecognizer:(id)arg1;
 - (void)addMutuallyExclusiveGestureRecognizer:(id)arg1;
 @property(readonly, nonatomic) HUPressedItemContext *activePressedItemContext;

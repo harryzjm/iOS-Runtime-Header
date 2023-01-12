@@ -9,11 +9,11 @@
 #import <CalendarNotification/CALNIconCache-Protocol.h>
 
 @class NSString;
-@protocol CALNNotificationIconProvider, OS_dispatch_queue;
+@protocol CalIconProvider, OS_dispatch_queue;
 
 @interface CALNNotificationIconCache : NSObject <CALNIconCache>
 {
-    id <CALNNotificationIconProvider> _notificationIconProvider;
+    id <CalIconProvider> _iconProvider;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
@@ -23,7 +23,7 @@
 + (id)pathForCachedIconWithIdentifier:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property(readonly, nonatomic) id <CALNNotificationIconProvider> notificationIconProvider; // @synthesize notificationIconProvider=_notificationIconProvider;
+@property(readonly, nonatomic) id <CalIconProvider> iconProvider; // @synthesize iconProvider=_iconProvider;
 - (_Bool)_createCacheDirectoryIfNeeded;
 - (_Bool)_addIconWithIdentifier:(id)arg1 toCacheAtPath:(id)arg2;
 - (_Bool)removeIconWithIdentifier:(id)arg1 error:(id *)arg2;
@@ -31,7 +31,7 @@
 - (_Bool)addIconsWithIdentifiers:(id)arg1 error:(id *)arg2;
 - (id)iconIdentifierForCachedIconPath:(id)arg1;
 - (id)cachedIconPathForIconIdentifier:(id)arg1;
-- (id)initWithNotificationIconProvider:(id)arg1;
+- (id)initWithIconProvider:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

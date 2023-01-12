@@ -17,9 +17,7 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) id <SXBookmarkManager> bookmarkManager; // @synthesize bookmarkManager=_bookmarkManager;
 - (id)activityGroupForAction:(id)arg1;
-- (id)initWithBookmarkManager:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

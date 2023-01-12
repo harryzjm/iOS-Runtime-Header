@@ -16,6 +16,8 @@
 }
 
 + (id)sharedRegistry;
++ (id)inputContentItemClassesMatchingShortcutInputClasses:(id)arg1;
++ (id)shortcutInputClassesMatchingInputContentItemsOfClasses:(id)arg1 hostBundleIdentifier:(id)arg2;
 + (id)allContentItemClassesInContentKit;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) struct os_unfair_lock_s discoveryLock; // @synthesize discoveryLock=_discoveryLock;

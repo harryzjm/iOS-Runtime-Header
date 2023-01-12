@@ -6,11 +6,11 @@
 
 #import <HMFoundation/HMFObject.h>
 
-#import <HomeKitDaemon/HMDLogEventObserver-Protocol.h>
+#import <HomeKitDaemon/HMMLogEventObserver-Protocol.h>
 
 @class NSString;
 
-@interface HMDAWDLogEventObserver : HMFObject <HMDLogEventObserver>
+@interface HMDAWDLogEventObserver : HMFObject <HMMLogEventObserver>
 {
 }
 
@@ -18,7 +18,7 @@
 + (id)stringForAWDMetricType:(unsigned int)arg1;
 + (id)sharedAWDServerConnection;
 + (void)initialize;
-- (void)didReceiveEventFromDispatcher:(id)arg1 withLogContext:(id)arg2;
+- (void)didReceiveEventFromDispatcher:(id)arg1;
 - (id)init;
 
 // Remaining properties

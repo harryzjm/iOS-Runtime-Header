@@ -10,7 +10,6 @@
 {
 }
 
-- (unsigned long long)priority;
 - (unsigned long long)type;
 @property(readonly, nonatomic) MRPlayerPath *playerPath;
 @property(readonly, nonatomic) MRPlaybackQueueRequest *request;

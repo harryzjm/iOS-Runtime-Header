@@ -33,6 +33,7 @@
 + (id)hectometers;
 + (id)kilometers;
 + (id)megameters;
++ (id)icuType;
 + (id)baseUnit;
 + (void)initialize;
 

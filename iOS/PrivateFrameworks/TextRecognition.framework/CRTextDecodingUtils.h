@@ -10,9 +10,13 @@
 {
 }
 
-+ (id)whitespaceRangesForTokens:(id)arg1;
++ (id)tokenFilterPredicateFalsePositiveFiltering:(_Bool)arg1;
++ (id)characterRangesForTokens:(id)arg1 fromActivation:(id)arg2 falsePositiveFiltering:(_Bool)arg3;
++ (id)whitespaceRangesForTokens:(id)arg1 outputTokenString:(id *)arg2 falsePositiveFiltering:(_Bool)arg3;
 + (_Bool)validateProbability:(id)arg1 precisionThreshold:(double)arg2 withLM:(_Bool)arg3;
++ (void)getCharacterBoundariesForActivationRanges:(id)arg1 topPoints:(id *)arg2 bottomPoints:(id *)arg3 imageSize:(struct CGSize)arg4 scale:(float)arg5 rect:(struct CGRect)arg6 rotatedRoi:(struct CGRect)arg7 radians:(float)arg8 model:(id)arg9 configuration:(id)arg10;
 + (void)getWordBoundariesForWhiteSpaceRanges:(id)arg1 topPoints:(id *)arg2 bottomPoints:(id *)arg3 imageSize:(struct CGSize)arg4 scale:(float)arg5 rect:(struct CGRect)arg6 rotatedRoi:(struct CGRect)arg7 radians:(float)arg8 model:(id)arg9 configuration:(id)arg10;
++ (void)getBoundariesForRanges:(id)arg1 topPoints:(id *)arg2 bottomPoints:(id *)arg3 imageSize:(struct CGSize)arg4 scale:(float)arg5 rect:(struct CGRect)arg6 rotatedRoi:(struct CGRect)arg7 radians:(float)arg8 model:(id)arg9 configuration:(id)arg10 paddingLeft:(int)arg11 paddingRight:(int)arg12;
 
 @end
 

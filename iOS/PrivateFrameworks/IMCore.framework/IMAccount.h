@@ -106,8 +106,6 @@
 @property(readonly, nonatomic) __weak IMServiceImpl *service; // @synthesize service=_service;
 @property(readonly, nonatomic) NSString *strippedLogin; // @synthesize strippedLogin=_strippedLogin;
 @property(retain, nonatomic) NSString *login; // @synthesize login=_loginID;
-- (void)_handleIncomingCommand:(id)arg1 withProperties:(id)arg2 fromBuddyInfo:(id)arg3;
-- (void)_handleDeliveredCommand:(id)arg1 withProperties:(id)arg2 fromBuddyInfo:(id)arg3;
 - (_Bool)_updateDisplayName:(id)arg1;
 @property(copy, nonatomic) NSString *displayName;
 - (void)setInteger:(int)arg1 forPreferenceKey:(id)arg2;

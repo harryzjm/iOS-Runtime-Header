@@ -13,11 +13,15 @@
     MISSING_TYPE *theme;
     MISSING_TYPE *metrics;
     MISSING_TYPE *style;
+    MISSING_TYPE *$__lazy_storage_$_progressNumberFont;
+    MISSING_TYPE *$__lazy_storage_$_progressPercentageFont;
+    MISSING_TYPE *$__lazy_storage_$_numberFormatter;
     MISSING_TYPE *status;
-    MISSING_TYPE *backgroundGradient;
     MISSING_TYPE *image;
     MISSING_TYPE *innerShadow;
-    MISSING_TYPE *foilLayer;
+    MISSING_TYPE *outerFoilLabel;
+    MISSING_TYPE *outerFoilRing;
+    MISSING_TYPE *innerFoil;
     MISSING_TYPE *progressBarLayer;
     MISSING_TYPE *iconImageView;
     MISSING_TYPE *progressLabel;

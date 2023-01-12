@@ -11,9 +11,11 @@
 @interface NEHotspotNetwork : NSObject
 {
     struct __CNNetwork *_network;
+    long long _securityType;
 }
 
 + (void)fetchCurrentWithCompletionHandler:(CDUnknownBlockType)arg1;
+@property long long securityType; // @synthesize securityType=_securityType;
 - (_Bool)isChosenHelper;
 - (_Bool)didJustJoin;
 - (_Bool)didAutoJoin;
@@ -25,6 +27,7 @@
 @property(readonly) NSString *SSID;
 @property(readonly) NSString *interfaceName;
 @property struct __CNNetwork *network; // @synthesize network=_network;
+- (id)initWithNetwork:(struct __CNNetwork *)arg1 securityType:(id)arg2;
 - (id)initWithNetwork:(struct __CNNetwork *)arg1;
 - (id)description;
 - (void)dealloc;

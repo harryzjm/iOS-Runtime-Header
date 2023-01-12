@@ -10,17 +10,17 @@
 
 @interface TSCHStyleSemanticTag : NSObject <NSCopying>
 {
-    int mType;
-    unsigned long long mIndex;
+    int _type;
+    unsigned long long _index;
 }
 
 + (id)styleSemanticTagWithType:(int)arg1 index:(unsigned long long)arg2;
-@property(readonly, nonatomic) unsigned long long index; // @synthesize index=mIndex;
-@property(readonly, nonatomic) int type; // @synthesize type=mType;
-- (Class)styleClass;
-- (id)description;
+@property(readonly, nonatomic) unsigned long long index; // @synthesize index=_index;
+@property(readonly, nonatomic) int type; // @synthesize type=_type;
+@property(readonly, nonatomic) Class styleClass; // @dynamic styleClass;
 @property(readonly, nonatomic) _Bool isReferenceLine; // @dynamic isReferenceLine;
 @property(readonly, nonatomic) _Bool isSeries; // @dynamic isSeries;
+- (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

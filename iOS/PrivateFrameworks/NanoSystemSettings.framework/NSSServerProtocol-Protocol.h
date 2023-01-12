@@ -7,6 +7,7 @@
 #import <NanoSystemSettings/NSObject-Protocol.h>
 
 @protocol NSSServerProtocol <NSObject>
+- (void)getUsageData:(void (^)(NSSUsageRespMsg *, NSError *))arg1;
 - (void)enableAirplaneMode:(_Bool)arg1 completionHandler:(void (^)(NSError *))arg2;
 @end
 

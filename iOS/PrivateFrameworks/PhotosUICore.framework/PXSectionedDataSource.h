@@ -18,12 +18,12 @@
     NSNumber *_containsMultipleItemsCache;
     struct PXSimpleIndexPath _firstItemIndexPathCache;
     struct PXSimpleIndexPath _lastItemIndexPathCache;
-    unsigned long long _identifier;
+    long long _identifier;
 }
 
 + (id)emptyDataSource;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
+@property(readonly, nonatomic) long long identifier; // @synthesize identifier=_identifier;
 - (long long)_numberOfAssetsWithMaximum:(long long)arg1;
 - (id)inputForItem:(id)arg1;
 - (id)fetchAllItemObjects;
@@ -55,6 +55,7 @@
 @property(readonly, nonatomic) _Bool containsAnyItems;
 - (id)convertIndexPathSet:(id)arg1 fromSectionedDataSource:(id)arg2;
 - (struct PXSimpleIndexPath)convertIndexPath:(struct PXSimpleIndexPath)arg1 fromSectionedDataSource:(id)arg2;
+- (id)objectReferenceNearestToObjectReference:(id)arg1;
 - (id)objectReferenceForObjectReference:(id)arg1;
 - (id)objectReferenceAtIndexPath:(struct PXSimpleIndexPath)arg1;
 @property(readonly, nonatomic) NSObject<OS_os_log> *sectionedDataSourceLog;

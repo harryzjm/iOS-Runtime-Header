@@ -7,12 +7,11 @@
 #import <NeutrinoCore/NSObject-Protocol.h>
 
 @class NSString;
-@protocol NURenderer;
+@protocol MTLDevice, NURenderer;
 
 @protocol NUDevice <NSObject>
 @property(readonly, nonatomic) long long defaultSampleMode;
-@property(readonly, nonatomic) long long openGLVirtualScreen;
-@property(readonly, nonatomic) _Bool hasOpenGLSupport;
+@property(readonly, nonatomic) id <MTLDevice> metalDevice;
 @property(readonly, nonatomic) _Bool hasMetalSupport;
 @property(readonly, nonatomic) unsigned long long family;
 @property(readonly, nonatomic) NSString *model;
@@ -21,5 +20,6 @@
 - (id <NURenderer>)rendererWithoutIntermediateCaching:(out id *)arg1;
 - (id <NURenderer>)lowPriorityRenderer:(out id *)arg1;
 - (id <NURenderer>)renderer:(out id *)arg1;
+- (void)executeMetal:(void (^)(id <MTLCommandBuffer>))arg1;
 @end
 

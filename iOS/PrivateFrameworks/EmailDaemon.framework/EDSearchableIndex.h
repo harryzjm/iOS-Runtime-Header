@@ -6,17 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <EmailDaemon/CSSearchableIndexDelegate-Protocol.h>
 #import <EmailDaemon/EDSearchableIndexSchedulable-Protocol.h>
+#import <EmailDaemon/EDSearchableIndexShimDelegate-Protocol.h>
 #import <EmailDaemon/EDSearchableIndexVerifierDataSource-Protocol.h>
 #import <EmailDaemon/EFLoggable-Protocol.h>
 #import <EmailDaemon/EFSignpostable-Protocol.h>
 #import <EmailDaemon/EMSearchableIndexInterface-Protocol.h>
 
-@class CSSearchableIndex, EFCancelationToken, EFFuture, EFLazyCache, EFObservable, EFStoppableScheduler, NSMutableArray, NSMutableSet, NSString, _EMSearchableIndexPendingRemovals;
-@protocol EDSearchableIndexDataSource, EDSearchableIndexReasonProvider, EDSearchableIndexSchedulableDelegate, EFAssertableScheduler, EFCancelable, EFSuspendableScheduler><EFAssertableScheduler, OS_os_activity;
+@class EFCancelationToken, EFFuture, EFLazyCache, EFObservable, EFStoppableScheduler, NSMutableArray, NSMutableSet, NSString, _EMSearchableIndexPendingRemovals;
+@protocol EDSearchIndexablePrivate, EDSearchableIndexDataSource, EDSearchableIndexReasonProvider, EDSearchableIndexSchedulableDelegate, EFAssertableScheduler, EFCancelable, EFSuspendableScheduler><EFAssertableScheduler, OS_os_activity;
 
-@interface EDSearchableIndex : NSObject <CSSearchableIndexDelegate, EDSearchableIndexVerifierDataSource, EFLoggable, EFSignpostable, EDSearchableIndexSchedulable, EMSearchableIndexInterface>
+@interface EDSearchableIndex : NSObject <EDSearchableIndexShimDelegate, EDSearchableIndexVerifierDataSource, EFLoggable, EFSignpostable, EDSearchableIndexSchedulable, EMSearchableIndexInterface>
 {
     NSString *_indexName;
     EFCancelationToken *_cancelationToken;
@@ -59,7 +59,7 @@
     id <EDSearchableIndexDataSource> _dataSource;
     id <EDSearchableIndexReasonProvider> _reasonProvider;
     id <EDSearchableIndexSchedulableDelegate> _schedulableDelegate;
-    CSSearchableIndex *_csIndex;
+    id <EDSearchIndexablePrivate> _searchIndex;
     NSString *_searchableIndexBundleID;
     double _coalescingDelaySeconds;
     double _dataSourceUpdateTimeLimit;
@@ -82,7 +82,7 @@
 @property(nonatomic) _Bool enableSpotlightVerification; // @synthesize enableSpotlightVerification=_enableSpotlightVerification;
 @property(nonatomic) _Bool clientStateFetched; // @synthesize clientStateFetched=_clientStateFetched;
 @property(nonatomic) _Bool skipIndexExclusionCheck; // @synthesize skipIndexExclusionCheck=_skipIndexExclusionCheck;
-@property(retain, nonatomic) CSSearchableIndex *csIndex; // @synthesize csIndex=_csIndex;
+@property(retain, nonatomic) id <EDSearchIndexablePrivate> searchIndex; // @synthesize searchIndex=_searchIndex;
 @property(nonatomic) __weak id <EDSearchableIndexSchedulableDelegate> schedulableDelegate; // @synthesize schedulableDelegate=_schedulableDelegate;
 @property(nonatomic) __weak id <EDSearchableIndexReasonProvider> reasonProvider; // @synthesize reasonProvider=_reasonProvider;
 @property(nonatomic) __weak id <EDSearchableIndexDataSource> dataSource; // @synthesize dataSource=_dataSource;
@@ -93,6 +93,7 @@
 - (id)purgeReasons;
 - (id)dataSourceRefreshReasons;
 @property(readonly, nonatomic) _Bool canIndexAttachments;
+- (void)attachmentBecameAvailable:(id)arg1;
 - (void)removeSearchQueryCancelable:(id)arg1;
 - (void)addSearchQueryCancelable:(id)arg1;
 @property(readonly, nonatomic) _Bool shouldCancelSearchQuery;
@@ -101,7 +102,7 @@
 - (void)logPowerEventWithIdentifier:(id)arg1 eventData:(id)arg2;
 - (void)markMessagesAsPrinted:(id)arg1;
 - (void)indexMessages:(id)arg1 includeBody:(_Bool)arg2 indexingType:(long long)arg3;
-- (void)indexAttachmentsForMessageWithIdentifier:(id)arg1;
+- (void)indexAttachmentsForMessageWithIdentifier:(id)arg1 immediately:(_Bool)arg2;
 - (void)removeMessages:(id)arg1;
 - (_Bool)_preprocessItemIfNecessary:(id)arg1 fromRefresh:(_Bool)arg2;
 - (id)identifiersMatchingCriterion:(id)arg1;
@@ -157,7 +158,7 @@
 - (void)_startCoalescingTimer;
 - (id)searchableIndexForSearchableIndexVerifier:(id)arg1;
 - (id)dataSamplesForSearchableIndexVerifier:(id)arg1 searchableIndex:(id)arg2 count:(unsigned long long)arg3 lastVerifiedMessageID:(long long)arg4;
-- (id)bundleIdentifierForSearchableIndexVerifier:(id)arg1;
+- (id)bundleIDForSearchableIndexVerifier:(id)arg1;
 - (void)_dataSourcePrepareToIndexItems:(id)arg1 fromRefresh:(_Bool)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)_dataSourceVerifyRepresentativeSampleWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_dataSourceRequestNeededUpdatesExcludingIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -188,6 +189,7 @@
 - (void)_verifySpotlightIndex;
 - (void)_registerDistantFutureSpotlightVerification;
 - (void)_scheduleSpotlightVerificationOnIndexingQueueWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_clearOrphanedSearchableMessagesFromDatabase;
 - (void)_scheduleSpotlightVerification;
 @property(readonly, copy, nonatomic) NSString *indexName;
 @property(readonly, nonatomic) unsigned long long pendingIndexItemsCount;

@@ -15,18 +15,28 @@
 {
     NSUUID *_interruptionInvalidationAssertionUUID;
     NSSet *_assertionUpdateClientIdentifiers;
+    NSSet *_activeAssertionUpdateClientIdentifiers;
     _Bool _wantsStateUpdates;
     _Bool _wantsSettingsUpdates;
+    _Bool _wantsModeUpdates;
+    _Bool _wantsActiveModeUpdates;
+    _Bool _wantsGlobalConfigurationUpdates;
+    _Bool _wantsMeDeviceStateUpdates;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool wantsMeDeviceStateUpdates; // @synthesize wantsMeDeviceStateUpdates=_wantsMeDeviceStateUpdates;
+@property(readonly, nonatomic) _Bool wantsGlobalConfigurationUpdates; // @synthesize wantsGlobalConfigurationUpdates=_wantsGlobalConfigurationUpdates;
+@property(readonly, nonatomic) _Bool wantsActiveModeUpdates; // @synthesize wantsActiveModeUpdates=_wantsActiveModeUpdates;
+@property(readonly, nonatomic) _Bool wantsModeUpdates; // @synthesize wantsModeUpdates=_wantsModeUpdates;
 @property(readonly, nonatomic) _Bool wantsSettingsUpdates; // @synthesize wantsSettingsUpdates=_wantsSettingsUpdates;
 @property(readonly, nonatomic) _Bool wantsStateUpdates; // @synthesize wantsStateUpdates=_wantsStateUpdates;
+@property(readonly, copy, nonatomic) NSSet *activeAssertionUpdateClientIdentifiers; // @synthesize activeAssertionUpdateClientIdentifiers=_activeAssertionUpdateClientIdentifiers;
 @property(readonly, copy, nonatomic) NSSet *assertionUpdateClientIdentifiers; // @synthesize assertionUpdateClientIdentifiers=_assertionUpdateClientIdentifiers;
 @property(readonly, copy, nonatomic) NSUUID *interruptionInvalidationAssertionUUID; // @synthesize interruptionInvalidationAssertionUUID=_interruptionInvalidationAssertionUUID;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)_initWithInterruptionInvalidationAssertionUUID:(id)arg1 assertionUpdateClientIdentifiers:(id)arg2 wantsStateUpdates:(_Bool)arg3 wantsSettingsUpdates:(_Bool)arg4;
+- (id)_initWithInterruptionInvalidationAssertionUUID:(id)arg1 assertionUpdateClientIdentifiers:(id)arg2 activeAssertionUpdateClientIdentifiers:(id)arg3 wantsStateUpdates:(_Bool)arg4 wantsSettingsUpdates:(_Bool)arg5 wantsModeUpdates:(_Bool)arg6 wantsActiveModeUpdates:(_Bool)arg7 wantsGlobalConfigurationUpdates:(_Bool)arg8 wantsMeDeviceStateUpdates:(_Bool)arg9;
 - (id)_initWithDetails:(id)arg1;
 - (id)init;
 

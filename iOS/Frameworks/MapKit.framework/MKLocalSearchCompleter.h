@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CLLocation, GEOAutocompleteSessionData, GEOClientRankingModel, GEOMapServiceTraits, GEORetainedSearchMetadata, GEOSearchCategory, GEOSortPriorityMapping, MKLocalSearchCompletion, MKPointOfInterestFilter, NSArray, NSMutableArray, NSString, NSTimer;
+@class CLLocation, GEOAutocompleteSessionData, GEOClientRankingModel, GEOMapServiceTraits, GEOPDPlaceSummaryLayoutMetadata, GEORetainedSearchMetadata, GEOSearchCategory, GEOSortPriorityMapping, MKLocalSearchCompletion, MKPointOfInterestFilter, NSArray, NSMutableArray, NSString, NSTimer;
 @protocol MKAutocompleteAnalyticsProvider, MKLocalSearchCompleterDelegate, MKLocationManagerOperation;
 
 @interface MKLocalSearchCompleter : NSObject
@@ -44,15 +44,23 @@
     _Bool _autocompleteTopSectionIsQuerySuggestions;
     _Bool _showAutocompleteClientSource;
     _Bool _shouldPreloadTransitInfo;
+    _Bool _shouldEnableGrayscaleHighlighting;
+    _Bool _shouldUseDistanceFeatureServerResults;
     long long _filterType;
     unsigned long long _resultTypes;
     MKPointOfInterestFilter *_pointOfInterestFilter;
     id <MKAutocompleteAnalyticsProvider> _analyticsProvider;
     MKLocalSearchCompletion *_tappedQuerySuggestionCompletion;
     long long _privateFilterType;
+    GEOPDPlaceSummaryLayoutMetadata *_placeSummaryLayoutMetadata;
+    long long _highlightType;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic, getter=_highlightType) long long highlightType; // @synthesize highlightType=_highlightType;
+@property(readonly, nonatomic, getter=_placeSummaryLayoutMetadata) GEOPDPlaceSummaryLayoutMetadata *placeSummaryLayoutMetadata; // @synthesize placeSummaryLayoutMetadata=_placeSummaryLayoutMetadata;
+@property(readonly, nonatomic, getter=_shouldUseDistanceFeatureServerResults) _Bool shouldUseDistanceFeatureServerResults; // @synthesize shouldUseDistanceFeatureServerResults=_shouldUseDistanceFeatureServerResults;
+@property(readonly, nonatomic, getter=_shouldEnableGrayscaleHighlighting) _Bool shouldEnableGrayscaleHighlighting; // @synthesize shouldEnableGrayscaleHighlighting=_shouldEnableGrayscaleHighlighting;
 @property(nonatomic, getter=_privateFilterType, setter=_setPrivateFilterType:) long long privateFilterType; // @synthesize privateFilterType=_privateFilterType;
 @property(readonly, nonatomic, getter=_sections) NSArray *sections; // @synthesize sections=_sections;
 @property(nonatomic, getter=_shouldPreloadTransitInfo, setter=_setShouldPreloadTransitInfo:) _Bool shouldPreloadTransitInfo; // @synthesize shouldPreloadTransitInfo=_shouldPreloadTransitInfo;

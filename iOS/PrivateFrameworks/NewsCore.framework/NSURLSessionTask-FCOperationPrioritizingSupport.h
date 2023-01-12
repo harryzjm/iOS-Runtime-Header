@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSURLSessionTask.h>
+#import <CFNetwork/NSURLSessionTask.h>
 
 #import <NewsCore/FCOperationIdentifying-Protocol.h>
 #import <NewsCore/FCOperationPrioritizing-Protocol.h>
@@ -13,8 +13,8 @@
 
 @interface NSURLSessionTask (FCOperationPrioritizingSupport) <FCOperationPrioritizing, FCOperationIdentifying>
 @property(nonatomic) long long relativePriority;
-- (id)longOperationDescription;
-- (id)shortOperationDescription;
+@property(readonly, nonatomic) NSString *longOperationDescription;
+@property(readonly, nonatomic) NSString *shortOperationDescription;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

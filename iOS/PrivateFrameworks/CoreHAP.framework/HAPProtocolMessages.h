@@ -11,8 +11,11 @@
 }
 
 + (id)logCategory;
++ (_Bool)parseAuthChallengeResponse:(id)arg1 expectedTID:(unsigned char)arg2 outChallengeResponse:(id *)arg3 outMFICert:(id *)arg4 withHeader:(_Bool)arg5;
++ (id)constructAuthChallengeRequest:(id)arg1 nonce:(id)arg2 outTID:(char *)arg3;
 + (id)parseInfoResponse:(id)arg1 expectedTID:(unsigned char)arg2 withHeader:(_Bool)arg3;
 + (_Bool)parseTokenUpdateResponse:(id)arg1 expectedTID:(unsigned char)arg2 withHeader:(_Bool)arg3;
++ (_Bool)_parseEmptyResponse:(id)arg1 expectedTID:(unsigned char)arg2 withHeader:(_Bool)arg3;
 + (_Bool)parseTokenResponse:(id)arg1 expectedTID:(unsigned char)arg2 withHeader:(_Bool)arg3 outToken:(id *)arg4 outUUID:(id *)arg5;
 + (id)constructRequestHeaderFor:(unsigned long long)arg1 instanceID:(id)arg2 outTID:(char *)arg3;
 + (id)constructTokenUpdateRequest:(id)arg1 token:(id)arg2 outTID:(char *)arg3;

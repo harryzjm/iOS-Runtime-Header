@@ -26,7 +26,7 @@
 - (id)defaultFootprintString;
 - (id)defaultTypeString;
 - (id)defaultVoice;
-- (void)syncWithConfigFile:(id)arg1;
+- (void)syncWithConfigFile:(id)arg1 voiceType:(long long)arg2;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)description;

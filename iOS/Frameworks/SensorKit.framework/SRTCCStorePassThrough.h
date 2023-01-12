@@ -15,6 +15,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (void)initialize;
+- (_Bool)checkAccessForService:(id)arg1 auditToken:(CDStruct_6ad76789)arg2;
+- (void)requestAccessForService:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (long long)preflightAuthorizationStatusForService:(id)arg1;
 - (_Bool)setValue:(_Bool)arg1 forService:(id)arg2 bundleId:(id)arg3;
 - (_Bool)resetService:(id)arg1;
 - (_Bool)resetService:(id)arg1 forBundleId:(id)arg2;

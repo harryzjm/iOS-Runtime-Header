@@ -16,11 +16,11 @@
 }
 
 + (double)defaultHeight;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool didSetupLikeButton; // @synthesize didSetupLikeButton=_didSetupLikeButton;
 @property(nonatomic) UISegmentedControl *segmentedControl; // @synthesize segmentedControl=_segmentedControl;
 @property(retain, nonatomic) GKGameRecord *gameRecord; // @synthesize gameRecord=_gameRecord;
 - (void)awakeFromNib;
-- (void)dealloc;
 
 @end
 

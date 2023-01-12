@@ -31,7 +31,6 @@
 - (void)searchQueryStarted;
 - (void)setResults:(id)arg1;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
-- (void)viewDidLayoutSubviews;
 - (double)iconWidth;
 - (void)viewDidLoad;
 - (id)init;

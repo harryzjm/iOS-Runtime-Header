@@ -8,16 +8,17 @@
 
 @interface TSCH3DRetargetRenderProcessor
 {
-    TSCH3DRenderProcessor *mOriginal;
+    TSCH3DRenderProcessor *_original;
 }
 
 + (id)processorWithOriginal:(id)arg1;
-@property(retain, nonatomic) TSCH3DRenderProcessor *original; // @synthesize original=mOriginal;
-- (void)setRenderHints:(const struct RenderHints *)arg1;
+- (void).cxx_destruct;
+@property(retain, nonatomic) TSCH3DRenderProcessor *original; // @synthesize original=_original;
+- (void)setRenderHints:(const void *)arg1;
 - (struct RenderHints)renderHints;
 - (void)popRenderState;
 - (void)pushRenderState;
-- (void)setRenderState:(const struct RenderState *)arg1;
+- (void)setRenderState:(const void *)arg1;
 - (struct RenderState)renderState;
 - (void)updateRenderState;
 - (id)effectsStates;
@@ -25,21 +26,20 @@
 - (void)resetBuffers;
 - (void)endFrame;
 - (void)beginFrame;
-- (void)copyTransformInto:(tmat4x4_3074befe *)arg1;
-- (void)copyProjectionInto:(tmat4x4_3074befe *)arg1;
-- (void)projection:(tmat4x4_3074befe *)arg1;
+- (void)copyTransformInto:(void *)arg1;
+- (void)copyProjectionInto:(void *)arg1;
+- (void)projection:(void *)arg1;
 - (void)popMatrix;
 - (void)pushMatrix;
-- (void)translate:(tvec3_17f03ce0 *)arg1;
-- (void)scale:(tvec3_17f03ce0 *)arg1;
-- (void)multiply:(tmat4x4_3074befe *)arg1;
-- (void)replace:(tmat4x4_3074befe *)arg1;
+- (void)translate:(void *)arg1;
+- (void)scale:(void *)arg1;
+- (void)multiply:(void *)arg1;
+- (void)replace:(void *)arg1;
 - (void)popState;
 - (void)pushState;
-- (long long)texture:(id)arg1 resource:(id)arg2 attributes:(const struct TextureAttributes *)arg3;
+- (long long)texture:(id)arg1 resource:(id)arg2 attributes:(const void *)arg3;
 - (long long)attribute:(id)arg1 resource:(id)arg2 specs:(const struct AttributeSpecs *)arg3;
 - (void)submit:(id)arg1;
-- (void)dealloc;
 - (id)init;
 - (id)initWithOriginal:(id)arg1;
 - (_Bool)canRenderPrefilteredLines;

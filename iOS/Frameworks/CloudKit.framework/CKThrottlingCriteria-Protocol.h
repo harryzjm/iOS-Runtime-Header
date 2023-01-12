@@ -6,15 +6,18 @@
 
 #import <CloudKit/NSObject-Protocol.h>
 
-@class CKContainerID, NSArray, NSString;
+@class CKContainerID, NSObject, NSString;
+@protocol NSFastEnumeration;
 
 @protocol CKThrottlingCriteria <NSObject>
 
 @optional
 - (NSString *)functionName;
 - (NSString *)serviceName;
-- (int)operationType;
-- (NSArray *)relevantZoneIDs;
+- (NSString *)operationGroupName;
+- (NSString *)applicationBundleIdentifierForContainerAccess;
+- (_Bool)isOperationType:(int)arg1;
+- (NSObject<NSFastEnumeration> *)relevantZoneIDs;
 - (long long)databaseScope;
 - (CKContainerID *)containerID;
 @end

@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSDictionary;
+
 @interface SBPIPDefaults
 {
 }
@@ -12,7 +14,11 @@
 
 // Remaining properties
 @property(readonly, nonatomic) _Bool allowAutoPIP; // @dynamic allowAutoPIP;
+@property(nonatomic) _Bool initiallyUsesMinimumPreferredContentSize; // @dynamic initiallyUsesMinimumPreferredContentSize;
+@property(nonatomic) unsigned long long lastKnownCornerPosition; // @dynamic lastKnownCornerPosition;
+@property(nonatomic) NSDictionary *lastKnownSizeByContentType; // @dynamic lastKnownSizeByContentType;
 @property(readonly, nonatomic) _Bool visualizeKeyboardFrame; // @dynamic visualizeKeyboardFrame;
+@property(readonly, nonatomic) _Bool visualizePositionRegions; // @dynamic visualizePositionRegions;
 
 @end
 

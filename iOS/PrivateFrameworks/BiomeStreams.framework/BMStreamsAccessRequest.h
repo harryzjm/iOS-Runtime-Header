@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <BiomeStreams/BMStreamsAccessRequestProtocol-Protocol.h>
+
 @class NSString, NSXPCConnection;
 
-@interface BMStreamsAccessRequest : NSObject
+@interface BMStreamsAccessRequest : NSObject <BMStreamsAccessRequestProtocol>
 {
     CDStruct_4c969caf _token;
     NSString *_identifier;
@@ -16,13 +18,20 @@
 }
 
 - (void).cxx_destruct;
-- (void)requestWriteAccessTokenWithStream:(long long)arg1 reply:(CDUnknownBlockType)arg2;
-- (_Bool)hasWriteEntitlementForStream:(long long)arg1;
-- (void)requestReadAccessTokenWithStream:(long long)arg1 reply:(CDUnknownBlockType)arg2;
-- (_Bool)hasReadEntitlementForStream:(long long)arg1;
+- (void)_processRequestForDSLAccessWithReply:(CDUnknownBlockType)arg1;
+- (void)_processRequestForAccess:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)requestAccess:(unsigned long long)arg1 streamIdentifier:(id)arg2 streamType:(unsigned long long)arg3 reply:(CDUnknownBlockType)arg4;
+- (_Bool)entitledToAccess:(id)arg1;
 - (id)initWithAuditToken:(CDStruct_4c969caf)arg1 identifier:(id)arg2 connection:(id)arg3;
-- (_Bool)_hasDirectoryForStream:(long long)arg1;
-- (void)_createPublicStreamDirectories;
+- (_Bool)_hasDirectoryAtPath:(id)arg1;
+- (_Bool)_createDirectoryAtPath:(id)arg1;
+- (void)_configureDirectoryForStreamType:(unsigned long long)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

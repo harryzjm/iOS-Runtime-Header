@@ -36,7 +36,8 @@
 - (id)dateToken;
 - (id)amountToken;
 - (id)locationTokens;
-- (id)personToken;
+- (id)accountUserToken;
+- (id)peerPaymentToken;
 - (id)merchantToken;
 - (id)categoryToken;
 - (id)_groupTokenOfType:(unsigned long long)arg1;

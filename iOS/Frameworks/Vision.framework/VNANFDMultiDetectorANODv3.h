@@ -11,10 +11,11 @@ __attribute__((visibility("hidden")))
 
 + (id)knownFoodAndDrinkIdentifiers;
 + (id)recognizedFoodAndDrinkObjectClassToFoodAndDrinkCategoryName;
-+ (id)detectedObjectRequestClassToRequestInfo;
-+ (id)detectedObjectClassToRequestClass;
++ (id)detectedObjectRequestKeyToRequestInfo;
++ (id)detectedObjectClassToRequestKey;
 + (Class)detectorClass;
-- (_Bool)processDetectedObject:(id)arg1 requestRevision:(unsigned long long)arg2 objectBoundingBox:(struct CGRect)arg3 imageBuffer:(id)arg4 warningRecorder:(id)arg5 detectedObjectResults:(id)arg6 error:(id *)arg7;
+- (_Bool)processDetectedObject:(id)arg1 originatingRequestSpecifier:(id)arg2 objectBoundingBox:(struct CGRect)arg3 imageBuffer:(id)arg4 warningRecorder:(id)arg5 detectedObjectResults:(id)arg6 error:(id *)arg7;
+- (_Bool)updateRuntimeParametersFromOptions:(id)arg1 error:(id *)arg2;
 
 @end
 

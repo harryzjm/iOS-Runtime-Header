@@ -22,13 +22,13 @@
 }
 
 - (void).cxx_destruct;
-- (id)unknownObjectUnarchiverWithArchiveInfo:(const struct ArchiveInfo *)arg1 stream:(struct DispatchDataInputStream *)arg2 ignoreMessageData:(_Bool)arg3;
-- (id)unknownMessageFromMessageInfo:(const struct MessageInfo *)arg1 stream:(struct DispatchDataInputStream *)arg2;
-- (const struct MessageInfo *)unknownObjectMessageInfo;
+- (id)unknownObjectUnarchiverWithArchiveInfo:(const void *)arg1 stream:(struct DispatchDataInputStream *)arg2 ignoreMessageData:(_Bool)arg3 hasAlternateMessages:(_Bool)arg4;
+- (id)unknownMessageFromMessageInfo:(const void *)arg1 stream:(struct DispatchDataInputStream *)arg2;
+- (const void *)unknownObjectMessageInfo;
 - (void)didUnarchiveObject:(id)arg1 withUnarchiver:(id)arg2;
-- (id)newUnarchiverWithObjectIdentifier:(long long)arg1 messageInfo:(const struct MessageInfo *)arg2 message:(unique_ptr_1c88daa6 *)arg3 messageVersion:(unsigned long long)arg4 strongReferences:(unique_ptr_375828ba)arg5 unknownContent:(id)arg6;
-- (id)newUnarchiverWithArchiveInfo:(const struct ArchiveInfo *)arg1 stream:(struct DispatchDataInputStream *)arg2 isUnknownObject:(_Bool *)arg3;
-- (_Bool)componentParser:(id)arg1 didReadArchiveInfo:(const struct ArchiveInfo *)arg2 stream:(struct DispatchDataInputStream *)arg3 error:(id *)arg4;
+- (id)newUnarchiverWithObjectIdentifier:(long long)arg1 messageInfo:(const void *)arg2 unarchiveClass:(Class)arg3 message:(void *)arg4 messageVersion:(unsigned long long)arg5 strongReferences:(unique_ptr_3df01401)arg6 unknownContent:(id)arg7 hasAlternateMessages:(_Bool)arg8;
+- (id)newUnarchiverWithArchiveInfo:(const void *)arg1 stream:(struct DispatchDataInputStream *)arg2 isUnknownObject:(_Bool *)arg3;
+- (_Bool)componentParser:(id)arg1 didReadArchiveInfo:(const void *)arg2 stream:(struct DispatchDataInputStream *)arg3 error:(id *)arg4;
 - (_Bool)shouldProceedParsingOnFailure;
 - (void)beginReadingWithCompletionQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;

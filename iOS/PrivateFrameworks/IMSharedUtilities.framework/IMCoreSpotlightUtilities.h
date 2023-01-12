@@ -10,14 +10,21 @@
 {
 }
 
++ (_Bool)verboseLoggingEnabled;
 + (id)descriptionForReindexReason:(unsigned long long)arg1;
 + (_Bool)bypassIndexVersionCheck;
 + (unsigned long long)messageIndexBatchSize:(_Bool)arg1;
++ (id)expectedIndexProductVersion;
++ (id)currentIndexProductVersion;
 + (unsigned long long)expectedIndexVersion;
 + (unsigned long long)currentIndexVersion;
++ (unsigned long long)lastDonatedRowID;
 + (unsigned long long)lastIndexedRowID;
 + (void)setNeedsDeferredIndexing;
 + (_Bool)needsDeferredIndexing;
++ (void)setNeedsInitialDonation:(_Bool)arg1;
++ (_Bool)needsInitialDonation;
++ (_Bool)needsDonation;
 + (_Bool)needsIndexing;
 
 @end

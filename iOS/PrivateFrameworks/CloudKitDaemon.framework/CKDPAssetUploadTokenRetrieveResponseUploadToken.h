@@ -10,7 +10,6 @@
 
 @class CKDPAsset, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDPAssetUploadTokenRetrieveResponseUploadToken : PBCodable <NSCopying>
 {
     long long _tokenExpiration;

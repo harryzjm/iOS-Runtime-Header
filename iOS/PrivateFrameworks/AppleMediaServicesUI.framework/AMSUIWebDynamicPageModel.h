@@ -8,17 +8,20 @@
 
 #import <AppleMediaServicesUI/AMSUIWebPageProvider-Protocol.h>
 
-@class ACAccount, AMSUIWebClientContext, AMSUIWebNavigationBarModel, NSDictionary, NSString, NSURL;
+@class ACAccount, AMSMetricsEvent, AMSUIWebClientContext, AMSUIWebNavigationBarModel, NSDictionary, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface AMSUIWebDynamicPageModel : NSObject <AMSUIWebPageProvider>
 {
+    NSString *_backgroundColor;
+    AMSMetricsEvent *_impressionEvent;
     AMSUIWebNavigationBarModel *_navigationBar;
     ACAccount *_account;
     NSDictionary *_clientOptions;
     NSDictionary *_metricsOverlay;
     NSURL *_URL;
     AMSUIWebClientContext *_context;
+    struct CGSize _windowSize;
 }
 
 - (void).cxx_destruct;
@@ -27,7 +30,10 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSDictionary *metricsOverlay; // @synthesize metricsOverlay=_metricsOverlay;
 @property(retain, nonatomic) NSDictionary *clientOptions; // @synthesize clientOptions=_clientOptions;
 @property(retain, nonatomic) ACAccount *account; // @synthesize account=_account;
+@property(readonly, nonatomic) struct CGSize windowSize; // @synthesize windowSize=_windowSize;
 @property(readonly, nonatomic) AMSUIWebNavigationBarModel *navigationBar; // @synthesize navigationBar=_navigationBar;
+@property(readonly, nonatomic) AMSMetricsEvent *impressionEvent; // @synthesize impressionEvent=_impressionEvent;
+@property(readonly, nonatomic) NSString *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(readonly, nonatomic) _Bool disableReappearPlaceholder;
 - (id)createViewController;
 - (id)initWithJSObject:(id)arg1 context:(id)arg2;

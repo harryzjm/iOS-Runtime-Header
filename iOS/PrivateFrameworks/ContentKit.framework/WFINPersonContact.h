@@ -18,9 +18,8 @@
 @property(retain, nonatomic) INPerson *person; // @synthesize person=_person;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (Class)classForCoder;
 - (id)wfSerializedRepresentation;
-- (id)inPerson;
+- (id)INPersonRepresentation;
 - (id)wfName;
 - (id)initWithINPerson:(id)arg1;
 

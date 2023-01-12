@@ -15,7 +15,7 @@
 
 @interface TSTDataStoreIterator : NSObject <TSTCellIterating, TSTCellRegionIterating, TSTMutableCellIteratorDataUpdating>
 {
-    _Bool _rightToLeft;
+    _Bool _columnOrderReversed;
     _Bool _terminated;
     unsigned int _curRowIndex;
     TSTTableModel *_tableModel;
@@ -32,7 +32,7 @@
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool terminated; // @synthesize terminated=_terminated;
-@property(nonatomic) _Bool rightToLeft; // @synthesize rightToLeft=_rightToLeft;
+@property(nonatomic) _Bool columnOrderReversed; // @synthesize columnOrderReversed=_columnOrderReversed;
 @property(readonly, nonatomic) TSTCell *cell; // @synthesize cell=_cell;
 @property(nonatomic) unsigned int curRowIndex; // @synthesize curRowIndex=_curRowIndex;
 @property(retain, nonatomic) TSTTableTileRowInfo *curRow; // @synthesize curRow=_curRow;
@@ -53,7 +53,6 @@
 - (void)updateFormulaForCellData:(id)arg1;
 - (void)updateCellData:(id)arg1;
 - (void)p_setupTileAndRowAtCellID:(struct TSUCellCoord)arg1;
-- (void)dealloc;
 - (id)initWithModel:(id)arg1 region:(id)arg2 flags:(unsigned long long)arg3 searchMask:(unsigned long long)arg4;
 - (id)initWithInfo:(id)arg1 region:(id)arg2 flags:(unsigned long long)arg3 searchMask:(unsigned long long)arg4;
 

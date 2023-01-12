@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *overlayView;
     MISSING_TYPE *tree;
     MISSING_TYPE *editor;
+    MISSING_TYPE *$__lazy_storage_$_heatmapToolbar;
 }
 
 - (void).cxx_destruct;

@@ -19,6 +19,7 @@
 @property(readonly, nonatomic) long long modifierFlags;
 @property(readonly, nonatomic) struct CGPoint _clickLocationInRootViewCoordinates;
 @property(readonly, nonatomic) long long _syntheticClickType;
+@property(readonly, nonatomic) _Bool shouldPerformDownload;
 @property(readonly, copy, nonatomic) NSURLRequest *request;
 @property(readonly, nonatomic) long long navigationType;
 @property(readonly, copy, nonatomic) WKFrameInfo *targetFrame;

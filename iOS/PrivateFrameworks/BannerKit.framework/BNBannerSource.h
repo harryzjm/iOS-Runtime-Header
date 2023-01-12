@@ -6,22 +6,22 @@
 
 #import <objc/NSObject.h>
 
-#import <BannerKit/BNBannerClientContainerViewControllerDelegate-Protocol.h>
+#import <BannerKit/BNBannerClientContainerDelegate-Protocol.h>
 #import <BannerKit/BNBannerSceneComponentProviderDelegate-Protocol.h>
 #import <BannerKit/BNBannerSourceHostToClientInterface-Protocol.h>
 #import <BannerKit/BNBannerSourceProviding-Protocol.h>
 #import <BannerKit/BNBannerSourceProvidingPrivate-Protocol.h>
 
-@class BNBannerClientContainerViewController, BSServiceConnection, NSMutableArray, NSString;
-@protocol BNBannerSourceDelegate, OS_dispatch_queue;
+@class BSServiceConnection, NSMutableDictionary, NSString;
+@protocol BNBannerClientContainer, BNBannerSourceDelegate, OS_dispatch_queue;
 
-@interface BNBannerSource : NSObject <BNBannerSourceHostToClientInterface, BNBannerSceneComponentProviderDelegate, BNBannerClientContainerViewControllerDelegate, BNBannerSourceProvidingPrivate, BNBannerSourceProviding>
+@interface BNBannerSource : NSObject <BNBannerSourceHostToClientInterface, BNBannerSceneComponentProviderDelegate, BNBannerClientContainerDelegate, BNBannerSourceProvidingPrivate, BNBannerSourceProviding>
 {
     NSString *_machName;
     NSObject<OS_dispatch_queue> *_connectionQueue;
     BSServiceConnection *_connection;
-    NSMutableArray *_presentables;
-    BNBannerClientContainerViewController *_bannerClientContainerVCDeferringFocus;
+    NSMutableDictionary *_uniqueIDsToPresentables;
+    id <BNBannerClientContainer> _bannerClientContainerDeferringFocus;
     _Bool _valid;
     long long _destination;
     NSString *_requesterIdentifier;
@@ -36,18 +36,24 @@
 @property(nonatomic) __weak id <BNBannerSourceDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, copy, nonatomic) NSString *requesterIdentifier; // @synthesize requesterIdentifier=_requesterIdentifier;
 @property(readonly, nonatomic) long long destination; // @synthesize destination=_destination;
+- (id)_revokePresentableWithIdentification:(id)arg1 reason:(id)arg2 animated:(id)arg3 userInfo:(id)arg4 error:(out id *)arg5;
+- (void)_removePresentable:(id)arg1 reason:(id)arg2;
+- (void)_removePresentableWithUniqueIdentifier:(id)arg1 reason:(id)arg2;
 - (id)_presentableForUniqueIdentifier:(id)arg1;
+- (void)_addPresentable:(id)arg1;
 - (void)_invalidateConnection;
 - (id)_activeConnectionWithError:(out id *)arg1;
-- (void)bannerClientContainerViewControllerStoppedDeferringFocus:(id)arg1;
-- (_Bool)bannerClientContainerViewControllerShouldDeferFocus:(id)arg1;
+- (void)bannerClientContainerStoppedDeferringFocus:(id)arg1;
+- (_Bool)bannerClientContainerShouldDeferFocus:(id)arg1;
 - (void)sceneWillInvalidateForBannerSceneComponentProvider:(id)arg1;
 - (id)containerViewControllerForBannerSceneComponentProvider:(id)arg1;
 - (void)invalidate;
-- (id)keyWindowForScreen:(id)arg1;
 - (_Bool)setSuspended:(_Bool)arg1 forReason:(id)arg2 revokingCurrent:(_Bool)arg3 error:(out id *)arg4;
-- (_Bool)revokeAllPresentablesWithReason:(id)arg1 userInfo:(id)arg2 error:(out id *)arg3;
+- (id)keyWindowForScreen:(id)arg1;
+- (id)revokePresentableWithIdentification:(id)arg1 reason:(id)arg2 animated:(_Bool)arg3 userInfo:(id)arg4 error:(out id *)arg5;
 - (_Bool)revokePresentableWithRequestIdentifier:(id)arg1 animated:(_Bool)arg2 reason:(id)arg3 userInfo:(id)arg4 error:(out id *)arg5;
+- (id)revokeAllPresentablesWithReason:(id)arg1 userInfo:(id)arg2 error:(out id *)arg3;
+- (id)revokePresentableWithRequestIdentifier:(id)arg1 reason:(id)arg2 animated:(_Bool)arg3 userInfo:(id)arg4 error:(out id *)arg5;
 - (_Bool)postPresentable:(id)arg1 options:(unsigned long long)arg2 userInfo:(id)arg3 error:(out id *)arg4;
 - (id)layoutDescriptionWithError:(out id *)arg1;
 @property(readonly, copy) NSString *description;

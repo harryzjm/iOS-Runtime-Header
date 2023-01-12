@@ -18,6 +18,7 @@
 + (id)descriptorForRequiredKeys;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) CNUIIDSAvailabilityProvider *idsAvailabilityProvider; // @synthesize idsAvailabilityProvider=_idsAvailabilityProvider;
+- (id)resolveBestExpanseIDSPropertyForContact:(id)arg1 schedulerProvider:(id)arg2;
 - (id)resolveBestIMessageIDSPropertyForContact:(id)arg1 schedulerProvider:(id)arg2;
 - (id)resolveBestFaceTimeIDSPropertyForContact:(id)arg1 schedulerProvider:(id)arg2;
 - (id)resolveBestIDSPropertyForContact:(id)arg1 schedulerProvider:(id)arg2 usingAvailabilityProviderCall:(CDUnknownBlockType)arg3;

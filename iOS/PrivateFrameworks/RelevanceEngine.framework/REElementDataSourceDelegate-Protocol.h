@@ -10,6 +10,7 @@
 @protocol OS_dispatch_queue;
 
 @protocol REElementDataSourceDelegate <NSObject>
+- (void)invalidateElementsInSection:(NSString *)arg1;
 - (void)fetchElementWithIdentifierVisible:(NSString *)arg1 withHandler:(void (^)(_Bool))arg2;
 - (_Bool)hasElementWithId:(NSString *)arg1 inSectionWithIdentifier:(NSString *)arg2;
 - (void)refreshElement:(REElement *)arg1;

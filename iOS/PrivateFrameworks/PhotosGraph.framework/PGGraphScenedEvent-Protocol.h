@@ -6,11 +6,9 @@
 
 #import <PhotosGraph/PGGraphEvent-Protocol.h>
 
-@class NSSet;
+@protocol PGGraphEventCollection;
 
 @protocol PGGraphScenedEvent <PGGraphEvent>
-- (NSSet *)searchConfidenceSceneNodes;
-- (NSSet *)highConfidenceSceneNodes;
-- (NSSet *)sceneNodes;
+@property(readonly) id <PGGraphEventCollection> scenedEventCollection;
 @end
 

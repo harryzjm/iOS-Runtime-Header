@@ -38,6 +38,8 @@
 + (id)_activitiesThatDontRequireAssetExport;
 + (id)_activitiesThatSupportAssetBundles;
 + (id)_activitiesThatSupportLivePhotoBundles;
++ (id)_activitiesThatDontAllowRAW;
++ (_Bool)_dontAllowRAWForActivityType:(id)arg1;
 + (_Bool)supportsAssetLocalIdentifierForActivityType:(id)arg1;
 + (_Bool)isAssetBundleSupportedByActivityType:(id)arg1;
 + (_Bool)isLivePhotoBundleSupportedByActivityType:(id)arg1;

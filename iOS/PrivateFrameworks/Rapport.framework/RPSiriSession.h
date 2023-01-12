@@ -44,7 +44,9 @@
 - (void)invalidate;
 - (void)_activateCompletedWithError:(id)arg1;
 - (void)_activate2;
+- (void)_startActivationWithDestinationID:(id)arg1 messenger:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_activateWithCompletion:(CDUnknownBlockType)arg1;
+- (void)prewarmWithCompletion:(CDUnknownBlockType)arg1;
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;
 @property(readonly, copy) NSString *description;
 - (id)init;

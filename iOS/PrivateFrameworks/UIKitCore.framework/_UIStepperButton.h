@@ -10,10 +10,9 @@ __attribute__((visibility("hidden")))
     _Bool _left;
 }
 
++ (Class)_visualProviderClass;
 @property(nonatomic, getter=isLeft) _Bool left; // @synthesize left=_left;
-- (id)_systemDefaultFocusGroupDescriptor;
-- (_Bool)_shouldDefaultToTemplatesForImageViewBackground:(_Bool)arg1;
-- (struct CGRect)imageRectForContentRect:(struct CGRect)arg1;
+- (id)_systemDefaultFocusGroupIdentifier;
 
 @end
 

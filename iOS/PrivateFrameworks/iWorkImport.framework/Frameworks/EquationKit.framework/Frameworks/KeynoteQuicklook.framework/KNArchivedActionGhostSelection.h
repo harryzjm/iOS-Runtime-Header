@@ -18,7 +18,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) TSKSelection *selection; // @synthesize selection=_selection;
 - (void)saveToArchiver:(id)arg1;
-- (void)saveToArchiver:(id)arg1 intoMessage:(struct ActionGhostSelectionArchive *)arg2;
+- (void)saveToArchiver:(id)arg1 intoMessage:(void *)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 
 // Remaining properties

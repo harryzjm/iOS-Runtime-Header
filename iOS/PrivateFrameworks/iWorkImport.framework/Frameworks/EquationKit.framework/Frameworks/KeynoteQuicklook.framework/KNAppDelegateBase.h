@@ -12,6 +12,8 @@
 }
 
 + (id)kn_sharedPropertiesProvider;
+- (_Bool)supportsMovieHyperlinks;
+- (_Bool)supportsImageGalleryHyperlinks;
 - (void)p_inputMethodsChanged:(id)arg1;
 - (_Bool)supportsShrinkTextToFit;
 - (_Bool)sidebarPositionRespectsUserInterfaceLayoutDirection;
@@ -20,7 +22,7 @@
 - (_Bool)supportsFreehandAnimationUI;
 - (_Bool)supportsPastingIntoGroups;
 - (void)applicationDidFinishLaunching;
-- (id)defaultHyperlinkURLWithDocumentRoot:(id)arg1;
+- (id)defaultHyperlinkURL;
 - (_Bool)isValidURLForImportedHyperlink:(id)arg1 targetDocumentRoot:(id)arg2 forCrossDocumentPaste:(_Bool)arg3;
 - (void)registerAllowedElementKinds;
 - (void)registerClassTypeMappings;
@@ -34,11 +36,9 @@
 - (id)previewImageNameForEncryptedNativeDocument;
 - (id)previewImageNameForNativeDocument;
 - (id)universalPreviewImageNameForDocumentType:(id)arg1;
-- (id)appChartPropertyOverrides;
-- (id)applicationTemplateVariantsForLocale:(id)arg1;
+- (void)registerDrawableInfoClassMapping;
 - (id)createCompatibilityDelegate;
 - (Class)propertiesProviderClass;
-- (Class)documentRootClass;
 - (id)init;
 
 @end

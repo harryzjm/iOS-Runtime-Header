@@ -15,6 +15,7 @@
     MISSING_TYPE *times;
     MISSING_TYPE *evaluateFunc;
     MISSING_TYPE *evaluateSplineFunc;
+    MISSING_TYPE *quadratic;
 }
 
 @end

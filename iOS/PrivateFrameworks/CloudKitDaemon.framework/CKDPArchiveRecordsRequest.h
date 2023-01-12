@@ -10,7 +10,6 @@
 
 @class NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface CKDPArchiveRecordsRequest : PBRequest <NSCopying>
 {
     NSMutableArray *_idsToArchives;

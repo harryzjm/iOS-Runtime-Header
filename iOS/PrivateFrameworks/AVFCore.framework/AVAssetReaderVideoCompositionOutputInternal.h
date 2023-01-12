@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface AVAssetReaderVideoCompositionOutputInternal : NSObject
 {
     NSArray *videoTracks;
+    NSArray *sampleDataTrackIDs;
     AVVideoOutputSettings *videoOutputSettings;
     AVVideoComposition *videoComposition;
     void *figVideoCompositor;

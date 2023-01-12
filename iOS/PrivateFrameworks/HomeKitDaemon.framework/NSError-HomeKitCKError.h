@@ -20,12 +20,12 @@
 + (id)hmErrorWithCode:(long long)arg1;
 + (id)hmErrorWithCode:(long long)arg1 description:(id)arg2 reason:(id)arg3 suggestion:(id)arg4;
 + (id)hmErrorWithCode:(long long)arg1 description:(id)arg2 reason:(id)arg3 suggestion:(id)arg4 underlyingError:(id)arg5;
-- (id)convertToCKError;
-- (_Bool)isNonRecoverableCKError;
-- (_Bool)isCKError;
-- (id)hmErrorFromCKError;
-- (id)conciseCKError;
-- (id)actualCKErrorFromCKErrorPartialFailure:(id)arg1;
+@property(readonly, copy) NSError *hmd_convertedCKError;
+@property(readonly, getter=hmd_isNonRecoverableCKError) _Bool hmd_nonRecoverableCKError;
+@property(readonly, getter=hmd_isCKError) _Bool hmd_ckError;
+@property(readonly, copy) NSError *hmd_hmErrorFromCKError;
+@property(readonly, copy) NSError *hmd_conciseCKError;
+- (id)hmd_actualCKErrorFromCKErrorPartialFailure:(id)arg1;
 @property(readonly, nonatomic, getter=isHMError) _Bool hmError;
 @end
 

@@ -15,9 +15,6 @@
 
 + (void)registerScheduledEventsActivity;
 - (void).cxx_destruct;
-- (id)loadConfigWithFilename:(id)arg1;
-- (id)loadMetricDescriptorRegistry;
-- (id)loadEventDescriptorRegistry;
 - (void)dispatchEventWithName:(id)arg1 payload:(id)arg2 testingParameters:(id)arg3 eventSpec:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)adjustValue:(id)arg1 forFieldSpec:(id)arg2;
 - (id)adjustValues:(id)arg1 forFieldSpec:(id)arg2;

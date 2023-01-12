@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, VUIImageView, VUILabel, VUISeparatorView;
+@class NSString, VUILabel, VUISeparatorView, VUIVideosImageView;
 
 __attribute__((visibility("hidden")))
 @interface VUILibraryMenuItemViewCell
 {
-    VUIImageView *_imageView;
+    VUIVideosImageView *_imageView;
     _Bool _hideChevron;
     _Bool _shouldAppearAsHeader;
     NSString *_title;

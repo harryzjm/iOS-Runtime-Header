@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HealthDaemonFoundation/HDAssertion.h>
+
 @class NSSet;
 
 __attribute__((visibility("hidden")))
-@interface _HDEventsCollectionAssertion
+@interface _HDEventsCollectionAssertion : HDAssertion
 {
     NSSet *_eventCollectors;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSSet *eventCollectors; // @synthesize eventCollectors=_eventCollectors;
-- (id)initWithOwnerIdentifier:(id)arg1;
 
 @end
 

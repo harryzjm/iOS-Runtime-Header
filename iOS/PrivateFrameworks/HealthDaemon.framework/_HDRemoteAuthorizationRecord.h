@@ -17,10 +17,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) CDUnknownBlockType requestFinishedHandler; // @synthesize requestFinishedHandler=_requestFinishedHandler;
-@property(readonly, copy, nonatomic) CDUnknownBlockType requestSentHandler; // @synthesize requestSentHandler=_requestSentHandler;
-@property(readonly, nonatomic) HKAuthorizationRequestRecord *record; // @synthesize record=_record;
-- (id)initWithRequestRecord:(id)arg1 requestSentHandler:(CDUnknownBlockType)arg2 requestFinishedHandler:(CDUnknownBlockType)arg3;
 
 @end
 

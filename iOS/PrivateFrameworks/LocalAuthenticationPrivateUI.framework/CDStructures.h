@@ -27,10 +27,6 @@ struct CGSize {
     double height;
 };
 
-struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
-    struct __tree_node_base<void *> *__left_;
-};
-
 struct animation_completion_handler_container;
 
 struct array<(anonymous namespace)::blur_container, 2> {
@@ -42,13 +38,15 @@ struct blur_container {
     struct periodic_animation_state pulse;
 };
 
-struct map<CALayer *__unsafe_unretained, CALayer *, std::__1::less<CALayer *__unsafe_unretained>, std::__1::allocator<std::__1::pair<CALayer *const __unsafe_unretained, CALayer *>>> {
-    struct __tree<std::__1::__value_type<CALayer *__unsafe_unretained, CALayer *>, std::__1::__map_value_compare<CALayer *__unsafe_unretained, std::__1::__value_type<CALayer *__unsafe_unretained, CALayer *>, std::__1::less<CALayer *__unsafe_unretained>, true>, std::__1::allocator<std::__1::__value_type<CALayer *__unsafe_unretained, CALayer *>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<CALayer *__unsafe_unretained, CALayer *>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
+struct map<CALayer *__unsafe_unretained, CALayer *, std::less<CALayer *__unsafe_unretained>, std::allocator<std::pair<CALayer *const __unsafe_unretained, CALayer *>>> {
+    struct __tree<std::__value_type<CALayer *__unsafe_unretained, CALayer *>, std::__map_value_compare<CALayer *__unsafe_unretained, std::__value_type<CALayer *__unsafe_unretained, CALayer *>, std::less<CALayer *__unsafe_unretained>, true>, std::allocator<std::__value_type<CALayer *__unsafe_unretained, CALayer *>>> {
+        void *__begin_node_;
+        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<CALayer *__unsafe_unretained, CALayer *>, void *>>> {
+            struct __tree_end_node<std::__tree_node_base<void *>*> {
+                void *__left_;
+            } __value_;
         } __pair1_;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<CALayer *__unsafe_unretained, std::__1::__value_type<CALayer *__unsafe_unretained, CALayer *>, std::__1::less<CALayer *__unsafe_unretained>, true>> {
+        struct __compressed_pair<unsigned long, std::__map_value_compare<CALayer *__unsafe_unretained, std::__value_type<CALayer *__unsafe_unretained, CALayer *>, std::less<CALayer *__unsafe_unretained>, true>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
@@ -61,26 +59,26 @@ struct periodic_animation_state {
     NSObject *_removal_timer;
 };
 
-struct vector<CAShapeLayer *, std::__1::allocator<CAShapeLayer *>> {
+struct vector<CAShapeLayer *, std::allocator<CAShapeLayer *>> {
     id *__begin_;
     id *__end_;
-    struct __compressed_pair<CAShapeLayer *__strong *, std::__1::allocator<CAShapeLayer *>> {
+    struct __compressed_pair<CAShapeLayer *__strong *, std::allocator<CAShapeLayer *>> {
         id *__value_;
     } __end_cap_;
 };
 
-struct vector<LAUI_CA_utilities::animation_completion_handler_container, std::__1::allocator<LAUI_CA_utilities::animation_completion_handler_container>> {
+struct vector<LAUI_CA_utilities::animation_completion_handler_container, std::allocator<LAUI_CA_utilities::animation_completion_handler_container>> {
     struct animation_completion_handler_container *__begin_;
     struct animation_completion_handler_container *__end_;
-    struct __compressed_pair<LAUI_CA_utilities::animation_completion_handler_container *, std::__1::allocator<LAUI_CA_utilities::animation_completion_handler_container>> {
+    struct __compressed_pair<LAUI_CA_utilities::animation_completion_handler_container *, std::allocator<LAUI_CA_utilities::animation_completion_handler_container>> {
         struct animation_completion_handler_container *__value_;
     } __end_cap_;
 };
 
-struct vector<UIView *, std::__1::allocator<UIView *>> {
+struct vector<UIView *, std::allocator<UIView *>> {
     id *__begin_;
     id *__end_;
-    struct __compressed_pair<UIView *__strong *, std::__1::allocator<UIView *>> {
+    struct __compressed_pair<UIView *__strong *, std::allocator<UIView *>> {
         id *__value_;
     } __end_cap_;
 };

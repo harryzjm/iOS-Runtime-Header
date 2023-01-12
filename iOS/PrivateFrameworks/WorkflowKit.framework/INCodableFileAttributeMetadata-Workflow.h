@@ -7,9 +7,13 @@
 #import <Intents/INCodableFileAttributeMetadata.h>
 
 @interface INCodableFileAttributeMetadata (Workflow)
+- (void)wf_updateParameterDictionary:(id)arg1 forCodableAttribute:(id)arg2;
 - (id)wf_parameterStateForIntentValue:(id)arg1 parameterDefinition:(id)arg2;
 - (id)compatibleFileTypeForContentItem:(id)arg1 availableTypes:(id)arg2;
-- (_Bool)wf_processParameterValue:(id)arg1 forParameter:(id)arg2 codableAttribute:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)coerceContentItemsToSupportedUTIs:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)coerceContentItemsIfAppropriate:(id)arg1 withParameterStates:(id)arg2 codableAttribute:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)getINFileRepresentationsFromContent:(id)arg1 withParameterState:(id)arg2 codableAttribute:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (_Bool)wf_processParameterValue:(id)arg1 forParameter:(id)arg2 parameterState:(id)arg3 codableAttribute:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (Class)wf_parameterClass;
 - (Class)wf_objectClass;
 @end

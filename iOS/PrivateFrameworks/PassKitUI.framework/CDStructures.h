@@ -49,6 +49,13 @@ struct CLLocationCoordinate2D {
     double _field2;
 };
 
+struct NSDirectionalEdgeInsets {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+};
+
 struct PKBarcodeQuietZone {
     double _field1;
     double _field2;
@@ -117,6 +124,11 @@ typedef struct {
 } CDStruct_8bc48212;
 
 typedef struct {
+    unsigned int :1;
+    unsigned int :1;
+} CDStruct_d7010776;
+
+typedef struct {
     double target;
     double position;
     double velocity;
@@ -151,6 +163,14 @@ typedef struct {
 } CDStruct_5c14e0b2;
 
 typedef struct {
+    double barcodeTopPadding;
+    double disclaimerToBarcodePadding;
+    double disclaimerSidePadding;
+    double bankToDisclaimerPadding;
+    double altTextInset;
+} CDStruct_33fad236;
+
+typedef struct {
     double _field1;
     double _field2;
 } CDStruct_c3b9c2ee;
@@ -164,9 +184,16 @@ typedef struct {
 } CDStruct_e6a35582;
 
 typedef struct {
-    long long _field1;
-    long long _field2;
-} CDStruct_912cb5d2;
+    long long horizontalAlignment;
+    long long verticalAlignment;
+} CDStruct_2a40740a;
+
+typedef struct {
+    double _field1;
+    double _field2;
+    double _field3;
+    struct CGSize _field4;
+} CDStruct_86c7e6e0;
 
 typedef struct {
     double _field1;
@@ -198,6 +225,13 @@ typedef struct {
     struct CLLocationCoordinate2D _field1;
     CDStruct_c3b9c2ee _field2;
 } CDStruct_2b0c6e0b;
+
+typedef struct {
+    struct UIEdgeInsets margins;
+    double innerHorizontalMargin;
+    double innerVerticalMargin;
+    _Bool cornerSpinner;
+} CDStruct_dd47238d;
 
 typedef struct {
     struct CGRect _field1;

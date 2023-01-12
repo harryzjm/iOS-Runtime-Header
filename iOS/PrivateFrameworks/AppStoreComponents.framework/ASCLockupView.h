@@ -19,7 +19,7 @@
         unsigned int lockupViewDidFinishRequest:1;
         unsigned int lockupViewDidFailRequestWithError:1;
         unsigned int lockupViewAppStateDidChange:1;
-        unsigned int metricsActivityForLockupViewToPerformActionOfOffer:1;
+        unsigned int metricsActivityForAdLockupViewToPerformActionOfOfferInState:1;
         unsigned int lockupViewDidInvalidateIntrinsicContentSize:1;
     } _delegateRespondsTo;
     _Bool _automaticallyPresentsProductDetails;
@@ -41,7 +41,7 @@
 @property(readonly, nonatomic) ASCLockupContentView *contentView; // @synthesize contentView=_contentView;
 @property(nonatomic) _Bool automaticallyPresentsProductDetails; // @synthesize automaticallyPresentsProductDetails=_automaticallyPresentsProductDetails;
 @property(nonatomic) __weak id <ASCLockupViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)offerPresenterWillPerformActionOfOffer:(id)arg1 withActivity:(inout id *)arg2;
+- (void)offerPresenterWillPerformActionOfOffer:(id)arg1 inState:(id)arg2 withActivity:(inout id *)arg3;
 - (void)offerPresenterDidObserveChangeToState:(id)arg1;
 - (void)lockupPresenterDidFailRequestWithError:(id)arg1;
 - (void)lockupPresenterDidFinishRequest;
@@ -57,6 +57,8 @@
 - (void)didMoveToWindow;
 - (void)setHidden:(_Bool)arg1;
 - (void)setLayoutMargins:(struct UIEdgeInsets)arg1;
+- (void)layoutMarginsDidChange;
+@property(nonatomic) _Bool showsPlaceholderContent;
 @property(copy, nonatomic) ASCOfferTheme *offerTheme;
 @property(copy, nonatomic) ASCMetricsActivity *appearMetricsActivity;
 @property(nonatomic) _Bool automaticallyGeneratesAppearMetrics;

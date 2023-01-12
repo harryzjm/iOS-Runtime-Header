@@ -8,13 +8,11 @@
 
 #import <HealthDaemon/NSProgressReporting-Protocol.h>
 
-@class HDProfile, HDSyncAnchorRangeMap, NSError, NSMutableSet, NSProgress, NSString, NSURL, _HKArchiveCreator;
+@class HDProfile, HDSyncAnchorRangeMap, NSMutableSet, NSProgress, NSString, NSURL, _HKArchiveCreator;
 
 @interface HDCloudSyncSessionContext : NSObject <NSProgressReporting>
 {
     NSMutableSet *_syncEntityClassesWithProcessedChanges;
-    _Bool _isComplete;
-    _Bool _success;
     _Bool _hasOpenSequence;
     HDProfile *_profile;
     _HKArchiveCreator *_archiveCreator;
@@ -22,20 +20,12 @@
     HDSyncAnchorRangeMap *_pendingAnchorRangeMap;
     unsigned long long _changesetCount;
     unsigned long long _archiveCount;
-    CDUnknownBlockType _completion;
-    NSError *_error;
     NSProgress *_progress;
 }
 
-+ (_Bool)_updateAnchorRangeMap:(id)arg1 withChange:(id)arg2 outError:(id *)arg3;
-+ (id)_assetFileHandleForArchiveURL:(id)arg1 fileManager:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool hasOpenSequence; // @synthesize hasOpenSequence=_hasOpenSequence;
 @property(readonly, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
-@property(retain, nonatomic) NSError *error; // @synthesize error=_error;
-@property(nonatomic) _Bool success; // @synthesize success=_success;
-@property(nonatomic) _Bool isComplete; // @synthesize isComplete=_isComplete;
-@property(copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
 @property(nonatomic) unsigned long long archiveCount; // @synthesize archiveCount=_archiveCount;
 @property(nonatomic) unsigned long long changesetCount; // @synthesize changesetCount=_changesetCount;
 @property(readonly, nonatomic) HDSyncAnchorRangeMap *pendingAnchorRangeMap; // @synthesize pendingAnchorRangeMap=_pendingAnchorRangeMap;

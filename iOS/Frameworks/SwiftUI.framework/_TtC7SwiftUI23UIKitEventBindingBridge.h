@@ -9,6 +9,7 @@
 @interface _TtC7SwiftUI23UIKitEventBindingBridge
 {
     MISSING_TYPE *gestureRecognizer;
+    MISSING_TYPE *hoverGestureRecognizer;
 }
 
 @end

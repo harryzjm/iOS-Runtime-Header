@@ -6,8 +6,6 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
-
 __attribute__((visibility("hidden")))
 @interface _HDSQLiteStatementCacheStorage : NSObject
 {
@@ -17,15 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (void)clearStatements;
-- (void)setStatement:(struct sqlite3_stmt *)arg1 forSQL:(id)arg2;
-- (struct sqlite3_stmt *)statementForSQL:(id)arg1;
-- (void)setStatement:(struct sqlite3_stmt *)arg1 forKey:(const char *)arg2;
-- (struct sqlite3_stmt *)statementForKey:(const char *)arg1;
-@property(readonly, copy, nonatomic) NSArray *allStatementSQLStrings;
-@property(readonly, nonatomic) long long count;
 - (void)dealloc;
-- (id)initWithParentStorage:(id)arg1;
 - (id)init;
 
 @end

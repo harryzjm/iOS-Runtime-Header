@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (id)createViewControllerForAssetCollection:(id)arg1 existingAssetsFetchResult:(id)arg2;
 - (id)createViewControllerForAssetCollection:(id)arg1;
 - (_Bool)_isEmpty:(id)arg1;
-- (void)createGridViewControllerWithAssets:(id)arg1 withTitle:(id)arg2 hideTabBar:(_Bool)arg3 gridPresentationContext:(long long)arg4 containerViewController:(id)arg5 barsUpdateDelegate:(id)arg6 andCompletion:(CDUnknownBlockType)arg7;
+- (void)createGridViewControllerWithAssets:(id)arg1 photoLibrary:(id)arg2 withTitle:(id)arg3 hideTabBar:(_Bool)arg4 gridPresentationContext:(long long)arg5 containerViewController:(id)arg6 barsUpdateDelegate:(id)arg7 andCompletion:(CDUnknownBlockType)arg8;
 - (id)initWithUserInterfaceIdiom:(long long)arg1;
 - (id)init;
 

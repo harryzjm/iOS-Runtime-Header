@@ -11,6 +11,7 @@
 @class HFItem, NSString;
 
 @interface UIViewController (HUPresentation) <HUItemPresentationContainer>
+- (void)hu_updateNavigationBarStateForViewController;
 - (id)hu_dismissViewControllerAnimated:(_Bool)arg1;
 - (id)hu_performDismissalRequest:(id)arg1;
 - (id)hu_performPresentationRequest:(id)arg1;

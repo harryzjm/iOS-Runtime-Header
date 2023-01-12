@@ -13,6 +13,7 @@
 - (id)sf_lastPathComponentWithoutZipExtension;
 - (id)sf_stringByReplacingLastOccurrenceOfWhitespaceWithANonBreakingSpace;
 - (id)sf_stringByReplacingMarkupCharactersWithHTMLEntities;
+@property(readonly, nonatomic) NSString *sf_stringByAddingSoftBreaksBeforePeriods;
 @property(readonly, nonatomic) NSString *sf_URLScheme;
 @property(readonly, nonatomic) _Bool sf_isFeedScheme;
 @property(readonly, nonatomic) _Bool sf_isConfigProfileMIMEType;

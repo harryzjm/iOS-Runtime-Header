@@ -35,7 +35,7 @@
 - (void)performBlockOnDataProviders:(CDUnknownBlockType)arg1;
 - (void)removeDataProvider:(id)arg1;
 - (void)_queue_removeDataProvider:(id)arg1;
-- (id)dataProviderForUniversalSectionID:(id)arg1;
+- (id)dataProvidersForUniversalSectionID:(id)arg1;
 - (id)dataProviderForSectionID:(id)arg1;
 - (void)_addDataProviderClass:(Class)arg1 performMigration:(_Bool)arg2;
 - (void)_queue_addDataProvider:(id)arg1 performMigration:(_Bool)arg2;

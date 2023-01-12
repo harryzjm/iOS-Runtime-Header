@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
     double _nextDistance;
 }
 
-- (void)_getDelayBeforeNextStepData:(double *)arg1 stepCount:(unsigned long long *)arg2 distance:(double *)arg3;
 - (void)timerDidFireWithInterval:(double)arg1;
 - (void)scheduleNextFire;
 - (double)nextFireInterval;

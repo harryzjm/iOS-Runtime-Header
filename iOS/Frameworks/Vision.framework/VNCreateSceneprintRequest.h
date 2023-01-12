@@ -13,10 +13,9 @@
 }
 
 + (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
-+ (void)recordDefaultOptionsInDictionary:(id)arg1;
 + (Class)configurationClass;
 + (id)descriptionForPrivateRevision:(unsigned long long)arg1;
-+ (_Bool)supportsPrivateRevision:(unsigned long long)arg1;
++ (id)supportedPrivateRevisions;
 + (const CDStruct_7d93034e *)revisionAvailability;
 @property(readonly) NSArray *supportedImageSizeSet;
 - (_Bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
@@ -36,6 +35,7 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
+@property(readonly, copy) NSArray *results; // @dynamic results;
 @property(readonly) Class superclass;
 
 @end

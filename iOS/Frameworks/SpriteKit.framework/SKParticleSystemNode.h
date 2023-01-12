@@ -7,11 +7,11 @@
 __attribute__((visibility("hidden")))
 @interface SKParticleSystemNode
 {
-    struct SKCParticleSystemNode *_skcParticleSystemNode;
+    void *_skcParticleSystemNode;
 }
 
 - (void)_didMakeBackingNode;
-- (struct SKCNode *)_makeBackingNode;
+- (void *)_makeBackingNode;
 
 @end
 

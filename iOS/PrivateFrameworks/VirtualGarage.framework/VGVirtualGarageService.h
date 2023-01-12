@@ -28,6 +28,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property(copy) NSString *activeVehicleIdentifier; // @synthesize activeVehicleIdentifier=_activeVehicleIdentifier;
+- (void)virtualGarage:(id)arg1 didUpdateCarPlayConnection:(_Bool)arg2 associatedVehicle:(id)arg3;
 - (void)virtualGarage:(id)arg1 didUpdateUnpairedVehicles:(id)arg2;
 - (void)virtualGarageDidUpdate:(id)arg1;
 - (void)virtualGarageGetLatestStateOfVehicleWithIdentifier:(id)arg1 syncAcrossDevices:(_Bool)arg2 withReply:(CDUnknownBlockType)arg3;
@@ -43,8 +44,8 @@
 - (void)virtualGarageAddVehicle:(id)arg1;
 - (id)messageTargetWithErrorReply:(CDUnknownBlockType)arg1;
 - (void)_clearActiveVehicleIdentifierIfNeeded:(id)arg1;
-- (void)removeObserver:(id)arg1;
-- (void)addObserver:(id)arg1;
+- (void)unregisterObserver:(id)arg1;
+- (void)registerObserver:(id)arg1;
 - (void)_closeConnection;
 - (void)_openConnection;
 - (void)closeForClient:(id)arg1;

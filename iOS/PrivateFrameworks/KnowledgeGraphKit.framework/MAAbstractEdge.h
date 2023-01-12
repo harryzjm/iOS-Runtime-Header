@@ -10,14 +10,20 @@
 {
     MAAbstractNode *_sourceAbstractNode;
     MAAbstractNode *_targetAbstractNode;
+    _Bool _isDirected;
+    unsigned long long _minimum;
+    unsigned long long _maximum;
 }
 
 - (void).cxx_destruct;
+@property(readonly) _Bool isDirected; // @synthesize isDirected=_isDirected;
+@property(readonly) unsigned long long maximum; // @synthesize maximum=_maximum;
+@property(readonly) unsigned long long minimum; // @synthesize minimum=_minimum;
 - (id)oppositeNode:(id)arg1;
 - (id)targetNode;
 - (id)sourceNode;
-- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
-- (id)initWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3 properties:(id)arg4;
+- (id)initWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5 minimum:(unsigned long long)arg6 maximum:(unsigned long long)arg7 directed:(_Bool)arg8;
 
 @end
 

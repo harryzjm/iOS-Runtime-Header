@@ -8,7 +8,7 @@
 #import <ScreenTimeCore/STUniquelySerializableManagedObject-Protocol.h>
 #import <ScreenTimeCore/STVersionVectorable-Protocol.h>
 
-@class NSData, NSDate, NSSet, NSString, STBlueprintSchedule, STBlueprintUsageLimit, STCoreOrganization;
+@class NSData, NSDate, NSSet, NSString, STBlueprintSchedule, STBlueprintUsageLimit, STCoreDowntimeOverride, STCoreOrganization, STDowntimeConfiguration;
 
 @interface STBlueprint <STSerializableMappedObject, STUniquelySerializableManagedObject, STVersionVectorable>
 {
@@ -17,6 +17,23 @@
 + (id)scheduleTextWithLocale:(id)arg1 weekdayScheduleComparator:(CDUnknownBlockType)arg2 scheduleTimeGetter:(CDUnknownBlockType)arg3;
 + (id)serializableClassName;
 + (id)fetchOrCreateWithDictionaryRepresentation:(id)arg1 inContext:(id)arg2 error:(id *)arg3;
++ (id)_cemPredicateWithDowntimeOverride:(id)arg1 shouldUseGracePeriod:(_Bool)arg2 dateFormater:(id)arg3 calendar:(id)arg4;
++ (_Bool)shouldUseGracePeriodForDowntimeOverride:(id)arg1 configuration:(id)arg2;
++ (id)_buildDeclarationsFromConfigurationsByDeclarationIdentifier:(id)arg1 predicate:(id)arg2 identifier:(id)arg3;
++ (id)_buildConfigurationsByDeclarationIdentifierFromBlueprint:(id)arg1 error:(id *)arg2;
++ (id)_buildPredicateForUnspecializedBlueprint:(id)arg1 usingDateFormatter:(id)arg2 calendar:(id)arg3;
++ (void)_addCommonPredicatesForBlueprint:(id)arg1 toAllPredicates:(id)arg2 usingDateFormatter:(id)arg3 calendar:(id)arg4;
++ (void)_addSchedulePredicatesForBlueprintScheudle:(id)arg1 toAllPredicates:(id)arg2 usingDateFormatter:(id)arg3 calendar:(id)arg4;
++ (void)_addUserPredicateForBlueprint:(id)arg1 toAllPredicates:(id)arg2;
++ (void)_addMinimumInstallationDatePredicateForBlueprint:(id)arg1 toAllPredicates:(id)arg2 usingDateFormatter:(id)arg3;
++ (void)_addExpirationPredicateForBlueprint:(id)arg1 toAllPredicates:(id)arg2 usingDateFormatter:(id)arg3;
++ (id)_buildPredicateForDisablingBlueprint:(id)arg1;
++ (id)_predicateForManagedUserBlueprint:(id)arg1 withDateFormatter:(id)arg2 calendar:(id)arg3;
++ (id)_predicateForRestrictionsBlueprint:(id)arg1 withDateFormatter:(id)arg2 calendar:(id)arg3;
++ (id)_predicateForAlwaysAllowedAppsBlueprint:(id)arg1 withDateFormatter:(id)arg2 calendar:(id)arg3;
++ (id)_predicateForUsageLimitOverrideBlueprint:(id)arg1 withDateFormatter:(id)arg2 calendar:(id)arg3;
++ (id)_predicateForUsageLimitBlueprint:(id)arg1 withDateFormatter:(id)arg2 calendar:(id)arg3;
++ (id)_predicateForDowntimeBlueprint:(id)arg1 withDateFormatter:(id)arg2 calendar:(id)arg3;
 + (id)blueprintIdentifierForUser:(id)arg1;
 + (id)createBlueprintWithType:(id)arg1 user:(id)arg2;
 + (id)fetchResultsRequestsForChangesToBlueprintsForUserWithDSID:(id)arg1;
@@ -36,7 +53,25 @@
 + (id)keyPathsForValuesAffectingDowntimeScheduleText;
 + (id)defaultEndTime;
 + (id)defaultStartTime;
++ (_Bool)_updateConfiguration:(id)arg1 withDeclaration:(id)arg2 context:(id)arg3 error:(id *)arg4;
++ (id)_declarationForDowntime:(id)arg1 user:(id)arg2 configuration:(id)arg3 behaviorType:(unsigned long long)arg4 context:(id)arg5 error:(id *)arg6;
++ (id)_configurationForDowntime:(id)arg1 context:(id)arg2;
++ (id)_declarationModeForBehaviorType:(unsigned long long)arg1;
++ (id)_updatedScheduleFromSchedule:(id)arg1 withStartTime:(id)arg2 endTime:(id)arg3 scheduleByWeekdayIndex:(id)arg4 context:(id)arg5;
++ (id)_createDowntimeForUser:(id)arg1 organization:(id)arg2 context:(id)arg3;
++ (id)_userDSIDStringForUser:(id)arg1 context:(id)arg2;
++ (id)_organizationIdentifierForUser:(id)arg1 context:(id)arg2;
++ (id)_updatedDowntimeForUser:(id)arg1 startTime:(id)arg2 endTime:(id)arg3 scheduleByWeekdayIndex:(id)arg4 enabled:(_Bool)arg5 behaviorType:(unsigned long long)arg6 error:(id *)arg7;
 + (_Bool)saveDowntimeForUser:(id)arg1 startTime:(id)arg2 endTime:(id)arg3 scheduleByWeekdayIndex:(id)arg4 enabled:(_Bool)arg5 behaviorType:(unsigned long long)arg6 error:(id *)arg7;
++ (id)_userForUserID:(id)arg1 inContext:(id)arg2 error:(id *)arg3;
++ (id)_fetchOrCreateDowntimeForUserID:(id)arg1 inContext:(id)arg2 error:(id *)arg3;
++ (id)applyScheduleStateChange:(long long)arg1 forUserID:(id)arg2 context:(id)arg3 error:(id *)arg4;
++ (id)applyAutomaticOnDemandDowntimeStateChange:(long long)arg1 forUserID:(id)arg2 context:(id)arg3 error:(id *)arg4;
++ (_Bool)removeFixedDurationOnDemandDowntimeForUserID:(id)arg1 context:(id)arg2 error:(id *)arg3;
++ (id)applyOnDemandDowntimeStateChange:(long long)arg1 withFixedDuration:(double)arg2 forUserID:(id)arg3 context:(id)arg4 error:(id *)arg5;
++ (id)_downtimeForUser:(id)arg1 inContext:(id)arg2 error:(id *)arg3;
++ (_Bool)_isStateChangeValid:(long long)arg1 forState:(long long)arg2;
++ (id)downtimeConfigurationForUserID:(id)arg1 context:(id)arg2 error:(id *)arg3;
 + (_Bool)deleteManagedUserBlueprintForUser:(id)arg1 error:(id *)arg2;
 + (_Bool)saveManagedUserBlueprintForUser:(id)arg1 error:(id *)arg2;
 + (id)keyPathsForValuesAffectingLimitScheduleText;
@@ -56,9 +91,21 @@
 - (id)declarationsWithError:(id *)arg1;
 - (void)tombstone;
 @property(readonly, copy) NSString *downtimeScheduleText;
+- (id)_applyScheduleStateChange:(long long)arg1 atDate:(id)arg2 inCalendar:(id)arg3 error:(id *)arg4;
+- (void)_reportCoreAnalyticsEventForDowntimeOverride:(id)arg1 currentDate:(id)arg2;
+- (id)applyScheduleStateChange:(long long)arg1 error:(id *)arg2;
+- (id)applyAutomaticOnDemandDowntimeStateChange:(long long)arg1 error:(id *)arg2;
+- (_Bool)removeFixedDurationOnDemandDowntimeWithError:(id *)arg1;
+- (id)applyOnDemandDowntimeStateChange:(long long)arg1 withFixedDuration:(double)arg2 error:(id *)arg3;
+- (id)_applyAutomaticOnDemandDowntimeStateChange:(long long)arg1 atDate:(id)arg2 inCalendar:(id)arg3 error:(id *)arg4;
+- (id)_applyOnDemandDowntimeStateChange:(long long)arg1 withFixedDuration:(double)arg2 atDate:(id)arg3 inCalendar:(id)arg4 error:(id *)arg5;
+- (id)activeOverride;
+- (void)_updateActiveOverrideAfterScheduleChange;
 - (void)disableDowntimeForDay:(unsigned long long)arg1;
 - (void)setStartTime:(id)arg1 endTime:(id)arg2 forDay:(unsigned long long)arg3;
 - (void)setStartTime:(id)arg1 endTime:(id)arg2;
+@property(readonly, copy) STDowntimeConfiguration *downtimeConfiguration;
+- (id)_downtimeConfigurationAtDate:(id)arg1 inCalendar:(id)arg2;
 @property(getter=isDowntimeEnabled) _Bool downtimeEnabled;
 - (_Bool)permitWebFilterURL:(id)arg1 pageTitle:(id)arg2 error:(id *)arg3;
 - (id)_webFilterBlacklistStringsForURL:(id)arg1;
@@ -81,6 +128,7 @@
 @property(nonatomic) _Bool limitEnabled; // @dynamic limitEnabled;
 @property(copy, nonatomic) NSDate *minimumInstallationDate; // @dynamic minimumInstallationDate;
 @property(retain, nonatomic) STCoreOrganization *organization; // @dynamic organization;
+@property(retain) STCoreDowntimeOverride *override; // @dynamic override;
 @property(retain, nonatomic) STBlueprintSchedule *schedule; // @dynamic schedule;
 @property(readonly) Class superclass;
 @property(copy, nonatomic) NSString *type; // @dynamic type;

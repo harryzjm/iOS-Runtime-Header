@@ -10,6 +10,7 @@
 
 @class NSMutableArray;
 
+__attribute__((visibility("hidden")))
 @interface FCCKPQuery : PBCodable <NSCopying>
 {
     NSMutableArray *_filters;
@@ -23,35 +24,14 @@
     } _has;
 }
 
-@property(nonatomic) _Bool distinct; // @synthesize distinct=_distinct;
-@property(retain, nonatomic) NSMutableArray *sorts; // @synthesize sorts=_sorts;
-@property(retain, nonatomic) NSMutableArray *filters; // @synthesize filters=_filters;
-@property(retain, nonatomic) NSMutableArray *types; // @synthesize types=_types;
-- (void)mergeFrom:(id)arg1;
+- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasQueryOperator;
-@property(nonatomic) int queryOperator; // @synthesize queryOperator=_queryOperator;
-@property(nonatomic) _Bool hasDistinct;
-- (id)sortsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)sortsCount;
-- (void)addSorts:(id)arg1;
-- (void)clearSorts;
-- (id)filtersAtIndex:(unsigned long long)arg1;
-- (unsigned long long)filtersCount;
-- (void)addFilters:(id)arg1;
-- (void)clearFilters;
-- (id)typesAtIndex:(unsigned long long)arg1;
-- (unsigned long long)typesCount;
-- (void)addTypes:(id)arg1;
-- (void)clearTypes;
-- (void)dealloc;
 
 @end
 

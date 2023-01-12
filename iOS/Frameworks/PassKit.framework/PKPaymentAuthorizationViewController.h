@@ -30,7 +30,10 @@
 @property(nonatomic) _Bool viewHasAppeared; // @synthesize viewHasAppeared=_viewHasAppeared;
 @property(retain, nonatomic) PKPaymentAuthorizationCoordinator *paymentCoordinator; // @synthesize paymentCoordinator=_paymentCoordinator;
 @property(nonatomic) __weak id <PKPaymentAuthorizationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)_presentInAppPaymentInterfaceWithWindow:(id)arg1;
+- (void)_presentInAppPaymentInterface;
 - (void)paymentAuthorizationCoordinator:(id)arg1 willFinishWithError:(id)arg2;
+- (void)paymentAuthorizationCoordinator:(id)arg1 didChangeCouponCode:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)paymentAuthorizationCoordinator:(id)arg1 didSelectPaymentMethod:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)paymentAuthorizationCoordinator:(id)arg1 didSelectShippingAddress:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)paymentAuthorizationCoordinator:(id)arg1 didSelectShippingMethod:(id)arg2 handler:(CDUnknownBlockType)arg3;

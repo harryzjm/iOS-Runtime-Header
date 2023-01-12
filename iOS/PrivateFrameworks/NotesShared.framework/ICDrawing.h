@@ -65,10 +65,10 @@
 - (id)init;
 - (id)serializeWithPathData:(_Bool)arg1 toVersion:(unsigned int *)arg2;
 - (id)serializeWithPathData:(_Bool)arg1;
-- (unsigned int)saveToArchive:(struct Drawing *)arg1 withPathData:(_Bool)arg2;
-- (id)initWithArchive:(const struct Drawing *)arg1 version:(unsigned int)arg2 andReplicaID:(id)arg3;
-- (id)initWithData:(id)arg1 version:(unsigned int)arg2 andReplicaID:(id)arg3;
-- (id)initWithData:(id)arg1 andReplicaID:(id)arg2;
+- (unsigned int)saveToArchive:(void *)arg1 withPathData:(_Bool)arg2;
+- (id)initWithArchive:(const void *)arg1 version:(unsigned int)arg2 replicaID:(id)arg3;
+- (id)initWithData:(id)arg1 version:(unsigned int)arg2 replicaID:(id)arg3;
+- (id)initWithData:(id)arg1 replicaID:(id)arg2;
 
 @end
 

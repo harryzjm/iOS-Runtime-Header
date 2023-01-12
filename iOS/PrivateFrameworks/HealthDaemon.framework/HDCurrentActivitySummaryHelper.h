@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HDActivitySummaryQueryHelper, HDProfile, HKActivitySummary, NSArray, NSDate, NSHashTable, NSTimeZone;
+@class HDActivitySummaryQueryHelper, HDProfile, HKActivitySummary, HKObserverSet, NSArray, NSDate, NSTimeZone;
 @protocol OS_dispatch_queue;
 
 @interface HDCurrentActivitySummaryHelper : NSObject
@@ -14,35 +14,21 @@
     HDProfile *_profile;
     HDActivitySummaryQueryHelper *_queryHelper;
     NSObject<OS_dispatch_queue> *_queue;
-    NSObject<OS_dispatch_queue> *_observerQueue;
     long long _todayIndex;
     long long _yesterdayIndex;
     HKActivitySummary *_todaySummary;
     HKActivitySummary *_yesterdaySummary;
     _Bool _hasLoadedActivitySummaries;
     NSArray *_typesForDataCollection;
-    NSHashTable *_observers;
+    HKObserverSet *_observers;
     NSDate *_dateOverride;
     NSTimeZone *_timezoneOverride;
 }
 
 - (void).cxx_destruct;
-- (id)_createEmptyActivitySummaryForIndex:(long long)arg1;
 - (void)_handleSignificantTimeChangeNotification:(id)arg1;
-- (void)_registerForSignificantTimeChangeNotification;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
-- (void)_queue_alertObserversYesterdaySummaryUpdated:(id)arg1 changedFields:(unsigned long long)arg2;
-- (void)_queue_alertObserversTodaySummaryUpdated:(id)arg1 changedFields:(unsigned long long)arg2;
-- (void)_queue_resetQueryHelper;
-- (void)_queue_updateYesterdayActivitySummary:(id)arg1;
-- (void)_queue_updateTodayActivitySummary:(id)arg1;
-- (unsigned long long)_changedFieldsBetweenPreviousActivitySummary:(id)arg1 andNewActivitySummary:(id)arg2;
-- (void)_queue_updateActivitySummaries:(id)arg1;
-- (void)_queue_setUpActivityQueryHelper;
-- (void)_generateCacheIndexesWithTodayIndex:(long long *)arg1 yesterdayIndex:(long long *)arg2;
-- (_Bool)_queue_dateHasChanged;
-- (id)_queue_gregorianCalendar;
 @property(retain, nonatomic) NSTimeZone *timezoneOverride;
 @property(retain, nonatomic) NSDate *dateOverride;
 @property(readonly) _Bool hasLoadedActivitySummaries;

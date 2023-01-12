@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (id)cellForRow:(unsigned long long)arg1 table:(id)arg2;
 - (id)titleForHeader;
 - (unsigned long long)numberOfRows;
+- (void)applicationWillEnterForeground;
 - (void)viewWillAppear:(_Bool)arg1;
 
 @end

@@ -11,7 +11,8 @@
 __attribute__((visibility("hidden")))
 @interface _TtC7SwiftUI17SwiftUITabBarItem : UITabBarItem
 {
-    MISSING_TYPE *swiftUIAccessibilityLabel;
+    MISSING_TYPE *resolvedAccessibilityLabel;
+    MISSING_TYPE *accessibility;
 }
 
 - (void).cxx_destruct;

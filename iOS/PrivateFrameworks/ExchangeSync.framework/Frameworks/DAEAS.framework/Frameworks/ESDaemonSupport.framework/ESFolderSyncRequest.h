@@ -17,12 +17,14 @@
     _Bool _containsPostponedActions;
     DAFolder *_folder;
     NSArray *_actions;
+    NSArray *_skippedActions;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool containsPostponedActions; // @synthesize containsPostponedActions=_containsPostponedActions;
 @property(nonatomic) _Bool isResyncAfterServerError; // @synthesize isResyncAfterServerError=_isResyncAfterServerError;
 @property(nonatomic) _Bool isResyncAfterConnectionFailed; // @synthesize isResyncAfterConnectionFailed=_isResyncAfterConnectionFailed;
+@property(retain, nonatomic) NSArray *skippedActions; // @synthesize skippedActions=_skippedActions;
 @property(retain, nonatomic) NSArray *actions; // @synthesize actions=_actions;
 @property(nonatomic) _Bool isInitialUberSync; // @synthesize isInitialUberSync=_isInitialUberSync;
 @property(nonatomic) _Bool hasRemoteChanges; // @synthesize hasRemoteChanges=_hasRemoteChanges;

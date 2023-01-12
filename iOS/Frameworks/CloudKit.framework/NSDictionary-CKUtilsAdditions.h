@@ -7,9 +7,16 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (CKUtilsAdditions)
+- (id)CKObjectForKeyCaseInsensitive:(id)arg1;
 - (id)CKFirstUrlForKeys:(id)arg1;
 - (id)CKSingleLineDescription;
 - (id)CKDescriptionPropertiesWithPublic:(_Bool)arg1 private:(_Bool)arg2 shouldExpand:(_Bool)arg3;
 - (void)CKAssignToContainerWithID:(id)arg1;
+- (id)CKFilter:(CDUnknownBlockType)arg1;
+- (id)CKMapKeysAndValues:(CDUnknownBlockType)arg1;
+- (id)CKCompactMapValues:(CDUnknownBlockType)arg1;
+- (id)CKMapValues:(CDUnknownBlockType)arg1;
+- (id)CKCompactMap:(CDUnknownBlockType)arg1;
+- (id)CKMap:(CDUnknownBlockType)arg1;
 @end
 

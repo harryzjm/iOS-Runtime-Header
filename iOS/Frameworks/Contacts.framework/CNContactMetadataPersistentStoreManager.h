@@ -8,7 +8,6 @@
 
 @class NSPersistentContainer, NSURL;
 
-__attribute__((visibility("hidden")))
 @interface CNContactMetadataPersistentStoreManager : NSObject
 {
     NSURL *_storeLocation;

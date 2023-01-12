@@ -27,7 +27,7 @@
 - (_Bool)_simStatusMeansLocked:(id)arg1;
 - (id)_serviceDescriptionForStateProvider:(id)arg1 subscriptionInfo:(id)arg2 outSecondaryServiceDescription:(id *)arg3;
 - (unsigned long long)_serviceStateForStateProvider:(id)arg1 registrationStatus:(unsigned long long)arg2 countryCode:(id)arg3;
-- (void)_populateSIMInfo:(id)arg1 forStateProvider:(id)arg2 subscriptionInfo:(id)arg3 slot:(long long)arg4;
+- (id)_SIMInfoForStateProvider:(id)arg1 subscriptionInfo:(id)arg2 slot:(long long)arg3;
 - (void)_updateDataForSlot:(long long)arg1;
 - (void)mobileEquipmentInfoDidChangeForStateProvider:(id)arg1 slot:(long long)arg2;
 - (void)carrierBundleInfoDidChangeForStateProvider:(id)arg1 slot:(long long)arg2;

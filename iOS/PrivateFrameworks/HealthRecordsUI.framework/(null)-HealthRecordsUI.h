@@ -4,12 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HealthRecordsUI/HRConceptViewControllerFactory-Protocol.h>
-
-@interface (null) (HealthRecordsUI) <HRConceptViewControllerFactory>
-- (id)makeAlphabeticalViewControllerForCategory:(id)arg1 usingProfile:(id)arg2;
-- (id)makeTimelineViewControllerForCategory:(id)arg1 showsInitialSearchBar:(_Bool)arg2 usingProfile:(id)arg3;
-- (id)makeViewControllerForCategory:(id)arg1 usingProfile:(id)arg2;
-- (id)makeViewControllerForConcept:(id)arg1 fromCategory:(id)arg2 highlightedRecordId:(id)arg3 usingProfile:(id)arg4;
+@interface (null) (HealthRecordsUI)
+- (void)didReceiveClinicalAccountOnboardingCompletionWithNotification:(id)arg1;
+- (void)didReceiveOAuthCompletionWithNotification:(id)arg1;
+- (void)clinicalAccountStore:(id)arg1 accountDidChange:(id)arg2 changeType:(long long)arg3;
 @end
 

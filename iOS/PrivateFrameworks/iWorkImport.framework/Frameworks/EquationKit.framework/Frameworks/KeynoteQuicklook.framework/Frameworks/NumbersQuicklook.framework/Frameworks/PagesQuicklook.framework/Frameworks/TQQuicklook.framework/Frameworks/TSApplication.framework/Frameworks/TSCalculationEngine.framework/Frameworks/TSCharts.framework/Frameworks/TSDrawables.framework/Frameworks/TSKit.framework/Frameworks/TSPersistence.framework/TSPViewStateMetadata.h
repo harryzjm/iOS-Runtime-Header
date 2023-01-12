@@ -12,7 +12,7 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (long long)tsp_identifier;
-- (struct ViewStateMetadata *)message;
+- (void *)message;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
 

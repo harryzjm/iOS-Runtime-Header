@@ -5,52 +5,56 @@
 //
 
 #import <SpringBoard/SBDeviceApplicationSceneHandleObserver-Protocol.h>
-#import <SpringBoard/SBInlineAppExposeContainerViewControllerDelegate-Protocol.h>
 #import <SpringBoard/SBMainDisplaySceneLayoutElementViewControlling-Protocol.h>
 #import <SpringBoard/SBMedusaDecoratedDeviceApplicationSceneViewControlling-Protocol.h>
 #import <SpringBoard/SBMedusaDecoratedDeviceApplicationSceneViewControlling_Internal-Protocol.h>
 
-@class BSCornerRadiusConfiguration, NSMutableSet, NSString, SBDeviceApplicationSceneHandle, SBHomeGrabberView, SBInlineAppExposeContainerViewController, SBSceneViewStatusBarAssertion, UIDropInteraction, UIView;
+@class BSCornerRadiusConfiguration, NSMutableSet, NSString, SBDeviceApplicationSceneHandle, SBHomeGrabberView, UIDropInteraction, UIView;
 @protocol SBApplicationSceneBackgroundView, SBApplicationSceneViewControllingStatusBarDelegate, SBScenePlaceholderContentContext;
 
-@interface SBMainWorkspaceApplicationSceneLayoutElementViewController <SBDeviceApplicationSceneHandleObserver, SBInlineAppExposeContainerViewControllerDelegate, SBMedusaDecoratedDeviceApplicationSceneViewControlling_Internal, SBMainDisplaySceneLayoutElementViewControlling, SBMedusaDecoratedDeviceApplicationSceneViewControlling>
+@interface SBMainWorkspaceApplicationSceneLayoutElementViewController <SBDeviceApplicationSceneHandleObserver, SBMedusaDecoratedDeviceApplicationSceneViewControlling_Internal, SBMainDisplaySceneLayoutElementViewControlling, SBMedusaDecoratedDeviceApplicationSceneViewControlling>
 {
     _Bool _nubViewHidden;
     _Bool _nubViewHighlighted;
     NSMutableSet *_maskDisplayCornersReasons;
+    _Bool sceneRendersAsynchronously;
     _Bool _clipsToBounds;
+    NSString *sceneMinificationFilter;
     double _darkenViewAlpha;
     UIDropInteraction *_dropInteraction;
     BSCornerRadiusConfiguration *_cornerRadiusConfiguration;
     double _shadowOpacity;
     double _shadowOffset;
-    SBSceneViewStatusBarAssertion *_inlineAppExposeContainerStatusBarAssertion;
-    SBInlineAppExposeContainerViewController *_inlineAppExposeContainerOverlayViewController;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) SBInlineAppExposeContainerViewController *inlineAppExposeContainerOverlayViewController; // @synthesize inlineAppExposeContainerOverlayViewController=_inlineAppExposeContainerOverlayViewController;
-@property(retain, nonatomic) SBSceneViewStatusBarAssertion *inlineAppExposeContainerStatusBarAssertion; // @synthesize inlineAppExposeContainerStatusBarAssertion=_inlineAppExposeContainerStatusBarAssertion;
 @property(nonatomic) double shadowOffset; // @synthesize shadowOffset=_shadowOffset;
 @property(nonatomic) double shadowOpacity; // @synthesize shadowOpacity=_shadowOpacity;
 @property(retain, nonatomic) BSCornerRadiusConfiguration *cornerRadiusConfiguration; // @synthesize cornerRadiusConfiguration=_cornerRadiusConfiguration;
 @property(retain, nonatomic) UIDropInteraction *dropInteraction; // @synthesize dropInteraction=_dropInteraction;
 @property(nonatomic) double darkenViewAlpha; // @synthesize darkenViewAlpha=_darkenViewAlpha;
 @property(nonatomic) _Bool clipsToBounds; // @synthesize clipsToBounds=_clipsToBounds;
+@property(nonatomic) _Bool sceneRendersAsynchronously; // @synthesize sceneRendersAsynchronously;
+@property(copy, nonatomic) NSString *sceneMinificationFilter; // @synthesize sceneMinificationFilter;
+- (void)didRotateFromInterfaceOrientation:(long long)arg1 toInterfaceOrientation:(long long)arg2;
+- (void)willRotateFromInterfaceOrientation:(long long)arg1 toInterfaceOrientation:(long long)arg2 alongsideContainerView:(id)arg3 animated:(_Bool)arg4;
+- (double)currentStatusBarHeight;
+- (long long)trailingStatusBarStyle;
+- (long long)leadingStatusBarStyle;
 - (id)_deviceApplicationSceneViewController:(id)arg1;
 - (id)_deviceApplicationSceneViewController;
 - (id)_medusaDecoratedVC:(id)arg1;
 - (id)_medusaDecoratedVC;
-- (void)inlineContainerViewController:(id)arg1 setStatusBarHidden:(_Bool)arg2;
 - (id)containerViewForBlurContentView;
 - (id)initialCornerRadiusConfiguration;
 - (id)mainWorkspaceApplicationSceneLayoutElementViewController;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidEndWithTransitionContext:(id)arg2;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionWillEndWithTransitionContext:(id)arg2;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidBeginWithTransitionContext:(id)arg2;
+@property(readonly, nonatomic) UIView *sceneContentView;
+- (void)conformsToProtocolSBDeviceApplicationSceneViewControlling;
 @property(retain, nonatomic) UIView<SBApplicationSceneBackgroundView> *backgroundView;
-- (void)setInlineAppExposeContainerViewController:(id)arg1;
-- (id)animationControllerForTransitionRequest:(id)arg1;
+- (long long)bestHomeAffordanceOrientationForOrientation:(long long)arg1;
 @property(readonly, nonatomic) SBHomeGrabberView *homeGrabberView;
 @property(nonatomic, getter=isNubViewHighlighted) _Bool nubViewHighlighted;
 @property(nonatomic, getter=isNubViewHidden) _Bool nubViewHidden;
@@ -64,12 +68,9 @@
 - (void)_configureViewController:(id)arg1;
 - (id)_applicationSceneViewControllerForSceneHandle:(id)arg1;
 - (id)_applicationSceneViewController;
-- (void)setContentReferenceSize:(struct CGSize)arg1 withInterfaceOrientation:(long long)arg2;
-- (void)configureWithWorkspaceEntity:(id)arg1 forLayoutElement:(id)arg2 layoutState:(id)arg3 referenceFrame:(struct CGRect)arg4;
 - (_Bool)_shouldDisplayLayoutElementBecomeActive;
 - (unsigned long long)supportedContentInterfaceOrientations;
 - (void)prepareForReuse;
-- (id)_relinquishInlineAppExposeContainerViewController;
 - (long long)_overrideStatusBarOrientationGivenFallbackOrientation:(long long)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)setMaskDisplayCorners:(_Bool)arg1 forReason:(id)arg2;
@@ -79,7 +80,8 @@
 - (void)_endRequiringSceneViewMatchMoveAnimationForReason:(id)arg1;
 - (void)_beginRequiringSceneViewMatchMoveAnimationForReason:(id)arg1;
 @property(readonly, nonatomic, getter=isBlurred) _Bool blurred;
-- (void)blurApplicationContent:(_Bool)arg1 withAnimationFactory:(id)arg2 completion:(CDUnknownBlockType)arg3;
+@property(nonatomic) double blurViewIconScale;
+- (void)setLiveContentBlurEnabled:(_Bool)arg1 duration:(double)arg2 blurDelay:(double)arg3 iconViewScale:(double)arg4 began:(CDUnknownBlockType)arg5 completion:(CDUnknownBlockType)arg6;
 - (id)initWithDisplayIdentity:(id)arg1;
 
 // Remaining properties

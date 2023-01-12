@@ -17,11 +17,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSMutableArray *quantities; // @synthesize quantities=_quantities;
-@property(readonly, copy, nonatomic) NSNumber *anchor; // @synthesize anchor=_anchor;
-@property(readonly, nonatomic) HKQuantitySample *series; // @synthesize series=_series;
-- (void)addQuantity:(id)arg1 dateInterval:(id)arg2;
-- (id)initWithSeries:(id)arg1 anchor:(id)arg2;
 
 @end
 

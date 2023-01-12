@@ -29,6 +29,7 @@
     double _offsetForTextfield;
     _Bool _viewAppearing;
     _Bool _preconditionsValidated;
+    _Bool _sentViewHasAppearedEvent;
     PKTableHeaderView *_headerView;
     OBPrivacyLinkController *_privacyController;
     RemoteUIController *_termsController;
@@ -49,7 +50,7 @@
 @property(nonatomic) _Bool hidePrivacy; // @synthesize hidePrivacy=_hidePrivacy;
 - (void)_provisioningLocalizedProgressDescriptionDidChange:(id)arg1;
 - (void)_promptHSA2Required;
-- (void)_handleRawResponseData:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (_Bool)_handleRawResponseData:(id)arg1 error:(id)arg2;
 - (void)_presentDisplayableError:(id)arg1 allowEarlyExit:(_Bool)arg2;
 - (void)_presentDisplayableError:(id)arg1;
 - (void)_setupTermsControllerHandlerWithNavigationController:(id)arg1 forCompletion:(CDUnknownBlockType)arg2;

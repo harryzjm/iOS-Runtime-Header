@@ -14,6 +14,7 @@
 
 @interface PHFetchResult (PXDisplayAssetAdoption) <PXDisplayAssetFetchResult, PXPeopleFetchResult>
 - (id)thumbnailAssetAtIndex:(unsigned long long)arg1;
+- (id)px_fetchedObjectIDsSortedByLocalIdentifiers:(id)arg1;
 - (id)px_fetchAssetSortDatesWithDateRangeEliminationBlock:(CDUnknownBlockType)arg1;
 - (long long)px_indexOfSortedAssetNearestToAsset:(id)arg1;
 @property(readonly, nonatomic) unsigned long long px_sortOrder;

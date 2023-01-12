@@ -18,7 +18,7 @@
 - (id)_initWithItem:(id)arg1 text:(id)arg2 index:(long long)arg3 messagePartRange:(struct _NSRange)arg4 subject:(id)arg5 shouldDisplayLink:(_Bool)arg6;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
-- (id)replyContextPreviewChatItemForReply:(id)arg1;
+- (id)replyContextPreviewChatItemForReply:(id)arg1 chatContext:(id)arg2;
 - (void)setShouldDisplayRichLink:(_Bool)arg1;
 - (_Bool)shouldDisplayRichLink;
 

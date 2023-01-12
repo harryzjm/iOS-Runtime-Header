@@ -10,14 +10,13 @@
 #import <RunningBoard/RBBundlePropertiesManaging-Protocol.h>
 #import <RunningBoard/RBStateCapturing-Protocol.h>
 
-@class NSString, RBBundlePropertiesBSXPCProvider, RBBundlePropertiesBackgroundRefreshProvider, RBBundlePropertiesLSProvider, RBProcessIndex;
+@class NSString, RBBundlePropertiesBSXPCProvider, RBBundlePropertiesLSProvider, RBProcessIndex;
 @protocol RBBundlePropertiesManagerDelegate;
 
 @interface RBBundlePropertiesManager : NSObject <RBBundlePropertiesLSProviderDelegate, RBBundlePropertiesManaging, RBStateCapturing>
 {
     RBBundlePropertiesLSProvider *_lsProvider;
     RBBundlePropertiesBSXPCProvider *_xpcProvider;
-    RBBundlePropertiesBackgroundRefreshProvider *_bgRefreshProvider;
     RBProcessIndex *_processIndex;
     id <RBBundlePropertiesManagerDelegate> _delegate;
     struct os_unfair_lock_s _lock;

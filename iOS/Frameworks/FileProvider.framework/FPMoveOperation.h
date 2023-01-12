@@ -6,7 +6,7 @@
 
 #import <FileProvider/FPDaemonActionOperationClient-Protocol.h>
 
-@class FPItem, FPMoveInfo, FPProgressManager, NSArray, NSDictionary, NSMutableDictionary, NSMutableSet, NSURL;
+@class FPItem, FPMoveInfo, FPProgressManager, NSArray, NSDictionary, NSMutableDictionary, NSMutableSet, NSString, NSURL;
 @protocol NSXPCProxyCreating><FPDaemonActionOperation;
 
 @interface FPMoveOperation <FPDaemonActionOperationClient>
@@ -29,6 +29,7 @@
     NSDictionary *_errorsByItem;
     NSDictionary *_transferResults;
     NSMutableDictionary *_progressByRoot;
+    NSString *_providerIdentifier;
     _Bool _shouldBounceOnCollision;
     NSDictionary *_transferLocations;
     NSMutableDictionary *_filenamesByURL;
@@ -57,12 +58,14 @@
 - (void)_preflightForceBounceIfCopyingOntoSelf;
 - (_Bool)_preflightCheckNotMovingIntoSelfWithError:(id *)arg1;
 - (_Bool)_preflightCheckProviderCanMoveWithErrors:(id *)arg1;
+- (void)runUserInteractionsPreflight:(CDUnknownBlockType)arg1;
 - (unsigned long long)defaultLastUsedDatePolicy;
 @property(readonly, nonatomic) _Bool byCopy;
 - (void)presendNotifications;
 - (void)_presendNotifications;
 - (void)_completedWithResult:(id)arg1 error:(id)arg2;
 - (void)completedWithResult:(id)arg1 error:(id)arg2;
+- (void)completedWithResultsByRoot:(id)arg1 errorsByRoot:(id)arg2 error:(id)arg3;
 - (void)_completedWithResultsByRoot:(id)arg1 errorsByRoot:(id)arg2 error:(id)arg3;
 - (void)_recoverFromCollisionError:(id)arg1 withPolicy:(unsigned long long)arg2;
 - (void)remoteOperationFinishedSendingPastUpdates;
@@ -73,6 +76,7 @@
 - (void)_runWithRemoteOperation:(id)arg1;
 - (void)actionMain;
 - (void)_resolveURLsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (_Bool)_hasAccessToURL:(id)arg1 readonly:(_Bool)arg2;
 - (void)_recomputeMoveInfoIfNecessary;
 - (id)operationDescription;
 - (id)initWithSourceURLsAndNames:(id)arg1 destinationFolder:(id)arg2;
@@ -81,7 +85,7 @@
 - (id)initWithItems:(id)arg1 destinationFolder:(id)arg2;
 - (id)initWithURLs:(id)arg1 destinationFolder:(id)arg2;
 - (id)initWithItems:(id)arg1 destinationURL:(id)arg2;
-- (id)initWithSourceItems:(id)arg1 orSourceURLs:(id)arg2 destinationFolder:(id)arg3 orDestinationURL:(id)arg4 action:(id)arg5;
+- (id)initWithSourceItems:(id)arg1 orSourceURLs:(id)arg2 destinationFolder:(id)arg3 orDestinationURL:(id)arg4;
 - (void)checkNonEmptyPackage;
 
 @end

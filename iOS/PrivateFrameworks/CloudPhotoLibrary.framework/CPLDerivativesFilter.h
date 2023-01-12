@@ -8,22 +8,33 @@
 
 #import <CloudPhotoLibrary/NSSecureCoding-Protocol.h>
 
+@class NSArray, NSMutableDictionary;
+
 @interface CPLDerivativesFilter : NSObject <NSSecureCoding>
 {
-    _Bool _dropForImages;
-    _Bool _dropForVideos;
+    NSMutableDictionary *_skipInfoForAssetChange;
+    NSMutableDictionary *_skipInfoForMasterChange;
 }
 
-+ (id)dropDerivativesForImages:(_Bool)arg1 videos:(_Bool)arg2;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+- (void)enumerateDropDerivativeRulesWithBlock:(CDUnknownBlockType)arg1;
 - (id)description;
+@property(readonly, nonatomic) NSArray *plistDescription;
+- (id)_descriptionForStoredResponse:(id)arg1 recordType:(unsigned long long)arg2;
 - (id)redactedDescription;
+- (_Bool)isEmpty;
+- (void)reset;
 - (_Bool)isEqual:(id)arg1;
-- (_Bool)shouldDropDerivativeOfType:(unsigned long long)arg1 fromSourceType:(unsigned long long)arg2 isVideo:(_Bool)arg3;
-- (_Bool)mightDropSomeDerivativesForSourceType:(unsigned long long)arg1 isVideo:(_Bool)arg2;
+- (void)_enumerateDropDerivativeRules:(id)arg1 ofType:(unsigned long long)arg2 withBlock:(CDUnknownBlockType)arg3;
+- (_Bool)shouldDropDerivativeWithDropDerivativeRecipe:(id)arg1;
+- (_Bool)mightDropSomeDerivativesForSourceType:(unsigned long long)arg1 forChangeType:(unsigned long long)arg2;
+- (_Bool)addServerDropDerivativesRecipe:(id)arg1;
+- (_Bool)addServerDropDerivativesRecipes:(id)arg1;
+- (_Bool)_isValidDropDerivativeRecipeWithUTI:(id)arg1 sourceType:(unsigned long long)arg2 derivativeTypes:(id)arg3 changeType:(unsigned long long)arg4;
+- (id)_getTargetDictionaryForChangeType:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initDroppingDerivativesForImages:(_Bool)arg1 videos:(_Bool)arg2;
 - (id)init;
 
 @end

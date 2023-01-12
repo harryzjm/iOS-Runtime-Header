@@ -17,9 +17,6 @@
 + (_Bool)shouldLogAtOperationStart;
 - (void).cxx_destruct;
 - (void)synchronousTaskGroup:(id)arg1 didFinishWithSuccess:(_Bool)arg2 errors:(id)arg3;
-- (void)_deleteEmptyZones:(id)arg1 container:(id)arg2 database:(id)arg3;
-- (void)_validateZonesAreEmptyWithDeletionCandidates:(id)arg1 configurations:(id)arg2 container:(id)arg3 database:(id)arg4;
-- (void)_confirmAndDeleteEmptyZonesInContainer:(id)arg1 database:(id)arg2;
 - (void)main;
 - (id)initWithConfiguration:(id)arg1 cloudState:(id)arg2;
 

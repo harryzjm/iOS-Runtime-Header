@@ -11,7 +11,6 @@
 + (id)logCategory;
 + (_Bool)supportsSecureCoding;
 - (_Bool)isEqual:(id)arg1;
-- (id)initWithConfidence:(id)arg1 boundingBox:(struct CGRect)arg2 hasMotionVectors:(_Bool)arg3;
 - (id)initWithConfidence:(id)arg1 boundingBox:(struct CGRect)arg2;
 
 @end

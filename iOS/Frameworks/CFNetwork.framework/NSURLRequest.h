@@ -26,8 +26,12 @@
 + (id)allowsSpecificHTTPSCertificateForHost:(id)arg1;
 + (void)setAllowsAnyHTTPSCertificate:(_Bool)arg1 forHost:(id)arg2;
 + (_Bool)allowsAnyHTTPSCertificateForHost:(id)arg1;
+- (id)_trackerContext;
+- (_Bool)_isNonAppInitiated;
+- (_Bool)_isKnownTracker;
 - (id)boundInterfaceIdentifier;
-@property(readonly, getter=isKnownHTTP3Capable) _Bool knownHTTP3Capable;
+@property(readonly) unsigned long long attribution;
+@property(readonly) _Bool assumesHTTP3Capable;
 @property(readonly) _Bool allowsExpensiveNetworkAccess;
 @property(readonly) _Bool allowsConstrainedNetworkAccess;
 @property(readonly) _Bool allowsCellularAccess;
@@ -56,7 +60,7 @@
 - (id)initWithURL:(id)arg1;
 - (id)_initWithCFURLRequest:(struct _CFURLRequest *)arg1;
 - (id)initWithURL:(id)arg1 cachePolicy:(unsigned long long)arg2 timeoutInterval:(double)arg3;
-@property(readonly) struct URLRequest *_inner;
+@property(readonly) void *_inner;
 - (_Bool)_isSafeRequestForBackgroundDownload;
 - (_Bool)_isIdempotent;
 - (_Bool)_schemeWasUpgradedDueToDynamicHSTS;

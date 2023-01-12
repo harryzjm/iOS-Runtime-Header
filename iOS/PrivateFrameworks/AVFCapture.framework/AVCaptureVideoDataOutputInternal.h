@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     _Bool alwaysDiscardsLateVideoFrames;
     _Bool automaticallyConfiguresOutputBufferDimensions;
     _Bool deliversPreviewSizedOutputBuffers;
+    _Bool sceneStabilityMetadataEnabled;
     _Bool videoSettingsDimensionsOverrideEnabled;
     NSArray *availableVideoCVPixelFormatTypes;
     AVCaptureDataOutputDelegateCallbackHelper *delegateCallbackHelper;

@@ -28,6 +28,7 @@
 - (id)appendSizeT:(unsigned long long)arg1 counterpart:(CDUnknownBlockType)arg2;
 - (id)appendUnsignedInteger:(unsigned long long)arg1 counterpart:(CDUnknownBlockType)arg2;
 - (id)appendInteger:(long long)arg1 counterpart:(CDUnknownBlockType)arg2;
+- (id)appendInt64:(long long)arg1 counterpart:(CDUnknownBlockType)arg2;
 - (id)appendBool:(_Bool)arg1 counterpart:(CDUnknownBlockType)arg2;
 - (id)appendEqualsBlocks:(CDUnknownBlockType)arg1;
 - (id)init;

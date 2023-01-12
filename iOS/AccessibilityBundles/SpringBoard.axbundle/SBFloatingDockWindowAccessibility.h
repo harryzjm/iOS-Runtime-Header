@@ -11,10 +11,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)accessibilityViewIsModal;
 - (void)_axLeftArrowPressed;
 - (void)_axRightArrowPressed;
 - (id)_accessibilityKeyCommands;
-- (id)_systemDefaultFocusGroupDescriptor;
 - (long long)_accessibilitySortPriority;
 
 @end

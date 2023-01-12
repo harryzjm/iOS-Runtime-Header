@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class CLSSimilarStacker, NSSet;
+@protocol OS_os_log;
 
 @interface CLSAssetsBeautifier : NSObject
 {
@@ -17,11 +18,17 @@
     _Bool _enableFinalTimeClustering;
     CLSSimilarStacker *_similarStacker;
     _Bool _usesKMeans;
+    _Bool _discardNonEligibleClustersInSampling;
     NSSet *_identifiersOfRequiredItems;
+    NSSet *_identifiersOfEligibleItems;
+    NSObject<OS_os_log> *_loggingConnection;
 }
 
 + (id)beautifier;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSObject<OS_os_log> *loggingConnection; // @synthesize loggingConnection=_loggingConnection;
+@property(nonatomic) _Bool discardNonEligibleClustersInSampling; // @synthesize discardNonEligibleClustersInSampling=_discardNonEligibleClustersInSampling;
+@property(copy, nonatomic) NSSet *identifiersOfEligibleItems; // @synthesize identifiersOfEligibleItems=_identifiersOfEligibleItems;
 @property(copy, nonatomic) NSSet *identifiersOfRequiredItems; // @synthesize identifiersOfRequiredItems=_identifiersOfRequiredItems;
 @property(nonatomic) _Bool usesKMeans; // @synthesize usesKMeans=_usesKMeans;
 @property(nonatomic) _Bool enableFinalTimeClustering; // @synthesize enableFinalTimeClustering=_enableFinalTimeClustering;

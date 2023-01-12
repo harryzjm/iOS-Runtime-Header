@@ -14,9 +14,11 @@
 @interface _SFPBURLImage : PBCodable <_SFPBURLImage, NSSecureCoding>
 {
     _SFPBURL *_urlValue;
+    _SFPBURL *_darkUrlValue;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) _SFPBURL *darkUrlValue; // @synthesize darkUrlValue=_darkUrlValue;
 @property(retain, nonatomic) _SFPBURL *urlValue; // @synthesize urlValue=_urlValue;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;

@@ -39,7 +39,9 @@
 - (id)resolveCandidates:(id)arg1 forCategory:(id)arg2 label:(id)arg3 rawIndexSet:(id)arg4 taggedCharacterRanges:(id)arg5;
 - (id)parseHTML:(id)arg1;
 - (id)eventClassificationWithoutXPCForMailMessage:(id)arg1;
+- (id)mergeSchemas:(id)arg1 withExpectedSchemas:(id)arg2;
 - (id)diffSchemas:(id)arg1 withExpectedSchemas:(id)arg2;
+- (id)privacyAwareLogsForMLExtractions:(id)arg1;
 - (id)eventClassificationForMailMessage:(id)arg1;
 - (void)addEnrichmentsToEntityForOutputItems:(id)arg1 exceptions:(id)arg2 jsMessageLogs:(id)arg3 interaction:(id)arg4 entity:(id)arg5 startTime:(unsigned long long)arg6 backPressureHazard:(int)arg7;
 - (void)_addEnrichmentsToEntityForOutput:(id)arg1 interaction:(id)arg2 entity:(id)arg3 startTime:(unsigned long long)arg4 backPressureHazard:(int)arg5;

@@ -11,5 +11,6 @@
 @protocol PXActivitySharingController <NSObject>
 @property(nonatomic) __weak id <PXActivitySharingControllerDelegate> delegate;
 @property(readonly, nonatomic) id <PXActivityViewController> activityViewController;
+- (void)selectAllAssets;
 @end
 

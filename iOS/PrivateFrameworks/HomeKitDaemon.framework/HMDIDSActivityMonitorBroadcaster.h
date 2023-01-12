@@ -29,6 +29,7 @@
 - (id)logIdentifier;
 - (void)dataSourceDidUpdate:(id)arg1;
 - (void)timerDidFire:(id)arg1;
+- (void)configureWithDataSource:(id)arg1;
 - (void)configureWithQueue:(id)arg1;
 - (id)initWithActivityMonitor:(id)arg1;
 - (id)initWithActivityMonitor:(id)arg1 timer:(id)arg2;

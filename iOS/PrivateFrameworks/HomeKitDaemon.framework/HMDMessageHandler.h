@@ -10,13 +10,13 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 
-@class HMDMessageHandlerMetricsDispatcher, HMFMessageDispatcher, HMFUnfairLock, NSArray, NSDictionary, NSMutableDictionary, NSNotificationCenter, NSObject, NSString, NSUUID;
+@class HMDAppleAccountManager, HMDMessageHandlerMetricsDispatcher, HMFMessageDispatcher, HMFUnfairLock, NSArray, NSDictionary, NSMutableDictionary, NSNotificationCenter, NSObject, NSString, NSUUID;
 @protocol HMDMessageHandlerDataSource, OS_dispatch_queue;
 
 @interface HMDMessageHandler : HMFObject <HMDMessageHandlerQueuedMessageDelegate, HMFLogging, HMFMessageReceiver>
 {
     HMFUnfairLock *_lock;
-    NSMutableDictionary *_messageIdentifierToQueuedIncomingMessages;
+    NSMutableDictionary *_messageNameToQueuedIncomingMessages;
     NSMutableDictionary *_messageNameToQueuedOutgoingMessage;
     NSMutableDictionary *_deviceIdentifierToQueuedOutgoingMessageNames;
     NSUUID *_messageTargetUUID;
@@ -28,12 +28,14 @@
     HMFMessageDispatcher *_messageDispatcher;
     NSNotificationCenter *_notificationCenter;
     HMDMessageHandlerMetricsDispatcher *_metricsDispatcher;
+    HMDAppleAccountManager *_appleAccountManager;
     id <HMDMessageHandlerDataSource> _dataSource;
 }
 
 + (id)logCategory;
 - (void).cxx_destruct;
 @property __weak id <HMDMessageHandlerDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property(readonly) HMDAppleAccountManager *appleAccountManager; // @synthesize appleAccountManager=_appleAccountManager;
 @property(readonly) HMDMessageHandlerMetricsDispatcher *metricsDispatcher; // @synthesize metricsDispatcher=_metricsDispatcher;
 @property(readonly) NSNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
 @property(readonly) HMFMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
@@ -51,11 +53,13 @@
 - (void)didTriggerMessageHandlerQueuedMessage:(id)arg1;
 - (void)triggerQueuedIncomingMessagesTimeouts;
 - (void)triggerQueuedOutgoingMessagesTimeouts;
+- (void)handleAccountAddedDeviceNotification:(id)arg1;
+- (_Bool)isReadyForOutgoingMessaging;
+- (id)currentAccountDevice;
 - (_Bool)reachableForMessage:(id)arg1;
 - (id)deviceForMessage:(id)arg1;
 - (SEL)selectorForName:(id)arg1;
 - (void)routeQueuedIncomingMessages;
-@property(readonly) _Bool hasQueuedIncomingMessages;
 - (void)sendQueuedOutgoingMessages:(id)arg1;
 - (void)sendQueuedOutgoingMessagesForDevice:(id)arg1;
 - (void)sendQueuedOutgoingMessages;
@@ -69,19 +73,22 @@
 - (void)routeMessage:(id)arg1;
 - (id)queuedOutgoingMessagesForDevice:(id)arg1;
 - (id)queuedOutgoingMessages;
+- (_Bool)hasQueuedOutgoingMessage:(id)arg1;
+- (void)_cleanUpDeviceMappingsForMessage:(id)arg1;
 - (id)dequeueOutgoingMessage:(id)arg1;
 - (void)associateDevice:(id)arg1 withOutgoingMessage:(id)arg2;
 - (void)queueOutgoingMessage:(id)arg1;
-- (id)queuedIncomingMessageWithIdentifier:(id)arg1;
+- (_Bool)hasQueuedIncomingMessage:(id)arg1;
 - (id)dequeueQueuedIncomingMessages;
 - (id)dequeueIncomingMessage:(id)arg1;
 - (void)queueIncomingMessage:(id)arg1;
 - (id)queuedIncomingMessages;
+@property(readonly) _Bool hasQueuedIncomingMessages;
 - (void)registerForNotifications;
 - (void)registerForSPIRemoteMessages:(id)arg1 home:(id)arg2 userPrivilege:(unsigned long long)arg3 internalBuildOnly:(_Bool)arg4;
 - (void)registerForMessagesWithHome:(id)arg1;
 - (void)configureWithHome:(id)arg1;
-- (id)initWithMessageTargetUUID:(id)arg1 messageDispatcher:(id)arg2 notificationCenter:(id)arg3 ownerPrivateRemoteMessages:(id)arg4 adminPrivateRemoteMessages:(id)arg5 internalMessages:(id)arg6 notifications:(id)arg7 notificationsToObject:(id)arg8 metricsDispatcher:(id)arg9;
+- (id)initWithMessageTargetUUID:(id)arg1 messageDispatcher:(id)arg2 notificationCenter:(id)arg3 ownerPrivateRemoteMessages:(id)arg4 adminPrivateRemoteMessages:(id)arg5 internalMessages:(id)arg6 notifications:(id)arg7 notificationsToObject:(id)arg8 appleAccountManager:(id)arg9 metricsDispatcher:(id)arg10;
 - (id)initWithMessageTargetUUID:(id)arg1 messageDispatcher:(id)arg2 notificationCenter:(id)arg3 ownerPrivateRemoteMessages:(id)arg4 adminPrivateRemoteMessages:(id)arg5 internalMessages:(id)arg6 notifications:(id)arg7 notificationsToObject:(id)arg8;
 
 // Remaining properties

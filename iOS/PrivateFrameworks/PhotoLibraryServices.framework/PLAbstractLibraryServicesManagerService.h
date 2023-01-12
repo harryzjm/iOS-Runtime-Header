@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class PLLibraryServicesManager, PLPhotoLibrary;
+@class PLLibraryServicesManager;
 
 @interface PLAbstractLibraryServicesManagerService : NSObject
 {
@@ -15,7 +15,7 @@
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) PLLibraryServicesManager *libraryServicesManager; // @synthesize libraryServicesManager=_libraryServicesManager;
-@property(readonly, nonatomic) PLPhotoLibrary *photoLibrary;
+- (id)newShortLivedLibraryWithName:(const char *)arg1;
 - (id)initWithLibraryServicesManager:(id)arg1;
 
 @end

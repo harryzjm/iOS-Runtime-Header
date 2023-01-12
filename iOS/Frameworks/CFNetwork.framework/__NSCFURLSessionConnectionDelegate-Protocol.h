@@ -7,7 +7,7 @@
 #import <CFNetwork/NSCopying-Protocol.h>
 #import <CFNetwork/NSObject-Protocol.h>
 
-@class NSCachedURLResponse, NSError, NSHTTPURLResponse, NSInputStream, NSNumber, NSObject, NSString, NSURLAuthenticationChallenge, NSURLRequest, NSURLResponse, NSURLSessionTaskMetrics, __NSCFURLSessionConnection;
+@class NSCachedURLResponse, NSError, NSHTTPURLResponse, NSInputStream, NSNumber, NSObject, NSString, NSURLAuthenticationChallenge, NSURLRequest, NSURLResponse, __NSCFURLSessionConnection;
 @protocol OS_dispatch_data;
 
 @protocol __NSCFURLSessionConnectionDelegate <NSObject, NSCopying>
@@ -22,7 +22,6 @@
 - (void)connection:(__NSCFURLSessionConnection *)arg1 challenged:(NSURLAuthenticationChallenge *)arg2 authCallback:(void (^)(long long, NSURLCredential *))arg3;
 - (void)connection:(__NSCFURLSessionConnection *)arg1 didFinishLoadingWithError:(NSError *)arg2;
 - (void)connectionWillFinishLoading:(__NSCFURLSessionConnection *)arg1;
-- (void)connection:(__NSCFURLSessionConnection *)arg1 didFinishCollectingMetrics:(NSURLSessionTaskMetrics *)arg2 completion:(void (^)(void))arg3;
 - (void)connection:(__NSCFURLSessionConnection *)arg1 willCacheResponse:(NSCachedURLResponse *)arg2 responseCallback:(void (^)(NSCachedURLResponse *))arg3;
 - (void)connection:(__NSCFURLSessionConnection *)arg1 didReceiveResponse:(NSURLResponse *)arg2 completion:(void (^)(struct SessionResponseOptions))arg3;
 - (void)connection:(__NSCFURLSessionConnection *)arg1 request:(NSURLRequest *)arg2 needsNewBodyStreamCallback:(void (^)(NSInputStream *))arg3;

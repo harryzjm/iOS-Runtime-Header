@@ -9,8 +9,10 @@
 @class ICAppearanceInfo, ICViewControllerManager, UIColor, UIScrollView, UITraitCollection, UIWindowScene;
 
 @interface UIView (IC)
++ (void)ic_animateUsingSpringWithDampingRatio:(double)arg1 response:(double)arg2 animations:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 + (void)ic_animateWithDuration:(double)arg1 timingFunction:(id)arg2 animations:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 + (void)ic_animateWithDuration:(double)arg1 timingFunction:(id)arg2 animations:(CDUnknownBlockType)arg3;
++ (_Bool)ic_isRTL;
 + (void)ic_animateWithDuration:(double)arg1 animations:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)ic_performWithoutAnimationOnMainThread:(CDUnknownBlockType)arg1;
 + (void)ic_performWithoutAnimation:(CDUnknownBlockType)arg1;
@@ -18,10 +20,13 @@
 - (id)ic_renderImageView;
 - (id)ic_renderImage;
 - (void)ic_addConstraintsToFillSuperview;
+- (void)ic_addAnchorsToFillSuperviewLayoutMargins;
+- (void)ic_addAnchorsToFillSuperviewWithLeadingPadding:(double)arg1 trailingPadding:(double)arg2 verticalPadding:(double)arg3 usesSafeAreaLayoutGuideHorizontally:(_Bool)arg4 usesSafeAreaLayoutGuideVertically:(_Bool)arg5;
 - (void)ic_addAnchorsToFillSuperviewWithHorizontalPadding:(double)arg1 verticalPadding:(double)arg2 usesSafeAreaLayoutGuideHorizontally:(_Bool)arg3 usesSafeAreaLayoutGuideVertically:(_Bool)arg4;
 - (void)ic_addAnchorsToFillSuperviewWithHorizontalPadding:(double)arg1 verticalPadding:(double)arg2 usesSafeAreaLayoutGuide:(_Bool)arg3;
 - (void)ic_addAnchorsToFillSuperviewWithPadding:(double)arg1;
 - (void)ic_addAnchorsToFillSuperviewWithVerticalPadding:(double)arg1;
+- (void)ic_addAnchorsToFillSuperviewWithLeadingPadding:(double)arg1 trailingPadding:(double)arg2;
 - (void)ic_addAnchorsToFillSuperviewWithHorizontalPadding:(double)arg1;
 - (void)ic_addAnchorsToFillSuperview;
 - (void)ic_removeAllConstraintsForSubview:(id)arg1;

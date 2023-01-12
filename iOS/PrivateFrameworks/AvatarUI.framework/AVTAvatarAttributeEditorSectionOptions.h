@@ -6,24 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@class AVTAvatarPose, NSArray, NSString;
+@class AVTAvatarPose, AVTStickerConfiguration, NSArray, NSString;
 
 @interface AVTAvatarAttributeEditorSectionOptions : NSObject
 {
+    _Bool _showsLabel;
     NSString *_framingMode;
     AVTAvatarPose *_poseOverride;
     NSArray *_presetOverrides;
     unsigned long long _displayMode;
+    AVTStickerConfiguration *_stickerConfiguration;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool showsLabel; // @synthesize showsLabel=_showsLabel;
+@property(readonly, copy, nonatomic) AVTStickerConfiguration *stickerConfiguration; // @synthesize stickerConfiguration=_stickerConfiguration;
 @property(readonly, nonatomic) unsigned long long displayMode; // @synthesize displayMode=_displayMode;
 @property(readonly, copy, nonatomic) NSArray *presetOverrides; // @synthesize presetOverrides=_presetOverrides;
 @property(readonly, copy, nonatomic) AVTAvatarPose *poseOverride; // @synthesize poseOverride=_poseOverride;
 @property(readonly, copy, nonatomic) NSString *framingMode; // @synthesize framingMode=_framingMode;
 - (id)description;
 - (id)stringForDisplayMode;
-- (id)initWithFramingMode:(id)arg1 poseOverride:(id)arg2 presetOverrides:(id)arg3 displayMode:(unsigned long long)arg4;
+- (id)initWithFramingMode:(id)arg1 poseOverride:(id)arg2 presetOverrides:(id)arg3 displayMode:(unsigned long long)arg4 stickerConfiguration:(id)arg5 showsLabel:(_Bool)arg6;
 
 @end
 

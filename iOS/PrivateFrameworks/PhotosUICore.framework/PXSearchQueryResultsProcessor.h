@@ -38,12 +38,12 @@
 @property(readonly, copy, nonatomic) CDUnknownBlockType processingHandler; // @synthesize processingHandler=_processingHandler;
 - (void)_executeResultsHandlerForUpdatedSearchQueryResult:(id)arg1 curatedAssetsSearchResults:(id)arg2;
 - (id)_generateUpdatedPersonSearchResultsFromPersonSearchResults:(id)arg1 persons:(id)arg2;
-- (void)processSearchResults:(id)arg1 assetSearchResults:(id)arg2 personSearchResults:(id)arg3 searchSuggestions:(id)arg4 forSearchQuery:(id)arg5;
+- (void)processSearchResults:(id)arg1 assetSearchResults:(id)arg2 personSearchResults:(id)arg3 searchSuggestions:(id)arg4 sceneIdentifiers:(id)arg5 forSearchQuery:(id)arg6;
 - (id)initWithSearchIndexManager:(id)arg1 dispatchQueue:(id)arg2 resultsProcessingHandler:(CDUnknownBlockType)arg3;
 - (id)initForUnitTesting;
 - (void)_updateSearchQueryResult:(id)arg1 updatedPersonSearchResultsMap:(id)arg2;
 - (void)_updatePersonSearchResultsForSearchQueryResult:(id)arg1 withMergeTargetPerson:(id)arg2 sourcePerson:(id)arg3 tombstonedCandidatesLocalIdentifiers:(id)arg4;
-- (void)_processPersonNameChangeFromBootstrapContext:(id)arg1 searchQueryResult:(id)arg2;
+- (void)_processPersonNameChangeFromConfirmationInfo:(id)arg1 searchQueryResult:(id)arg2;
 - (void)_processPersonMergeFromNotification:(id)arg1 searchQueryResult:(id)arg2;
 - (void)_processPeopleChangesFromNotification:(id)arg1;
 - (void)addObserverForPeopleChangeHandlingNotifications;

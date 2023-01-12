@@ -20,6 +20,7 @@
 
 + (id)createActivityWithTitle:(id)arg1 actionType:(id)arg2 actionSystemImageName:(id)arg3;
 + (id)createAlertActionWithTitle:(id)arg1 handler:(CDUnknownBlockType)arg2;
++ (id)createStandardActionWithTitle:(id)arg1 image:(id)arg2 handler:(CDUnknownBlockType)arg3;
 + (id)createBarButtonItemForAssetCollectionReference:(id)arg1 withTarget:(id)arg2 action:(SEL)arg3;
 + (id)systemImageNameForAssetCollectionReference:(id)arg1 withInputs:(id)arg2;
 + (id)localizedTitleForUseCase:(unsigned long long)arg1 assetCollectionReference:(id)arg2 withInputs:(id)arg3;
@@ -37,7 +38,6 @@
 - (void)_handleAddToCloudSharedAlbum:(id)arg1 pickedAssets:(id)arg2;
 - (void)_promptBlacklistingConfirmatonForUserAction:(id)arg1 viewSpec:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)_confirmationAlertTitleForBlacklistingAction:(id)arg1 viewSpec:(id)arg2;
-- (void)_promptDeleteMemoryConfirmatonWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)localizedTitleForUseCase:(unsigned long long)arg1;
 
 // Remaining properties

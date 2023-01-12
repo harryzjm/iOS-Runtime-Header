@@ -18,15 +18,17 @@ __attribute__((visibility("hidden")))
     long long _deviceType;
     long long _deviceSubType;
     _Bool _isClusterLeader;
+    NSString *_modelID;
 }
 
+@property(readonly, nonatomic) NSString *modelID; // @synthesize modelID=_modelID;
 @property(readonly, nonatomic) _Bool isClusterLeader; // @synthesize isClusterLeader=_isClusterLeader;
 @property(readonly, nonatomic) long long deviceSubType; // @synthesize deviceSubType=_deviceSubType;
 @property(readonly, nonatomic) long long deviceType; // @synthesize deviceType=_deviceType;
 @property(readonly, nonatomic) NSString *deviceName; // @synthesize deviceName=_deviceName;
 @property(readonly, nonatomic) NSString *deviceID; // @synthesize deviceID=_deviceID;
 - (void)dealloc;
-- (id)initWithDeviceID:(id)arg1 deviceName:(id)arg2 deviceSubType:(long long)arg3 isClusterLeader:(_Bool)arg4;
+- (id)initWithDeviceID:(id)arg1 deviceName:(id)arg2 deviceSubType:(long long)arg3 isClusterLeader:(_Bool)arg4 modelID:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

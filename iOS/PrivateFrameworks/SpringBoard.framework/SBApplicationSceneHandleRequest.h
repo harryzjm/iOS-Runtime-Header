@@ -17,6 +17,7 @@
 }
 
 + (id)defaultRequestForApplication:(id)arg1 sceneIdentity:(id)arg2 displayIdentity:(id)arg3;
++ (id)defaultSceneSpecificationForDisplayIdentity:(id)arg1;
 - (void).cxx_destruct;
 @property(copy, nonatomic) FBSSceneDefinition *sceneDefinition; // @synthesize sceneDefinition=_sceneDefinition;
 @property(retain, nonatomic) FBSDisplayIdentity *displayIdentity; // @synthesize displayIdentity=_displayIdentity;

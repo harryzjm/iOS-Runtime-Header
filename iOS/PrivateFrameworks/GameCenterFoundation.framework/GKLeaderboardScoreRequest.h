@@ -24,6 +24,7 @@
 + (_Bool)supportsSecureCoding;
 + (id)requestForPlayerInternals:(id)arg1;
 + (id)requestForRankRange:(struct _NSRange)arg1;
+- (void).cxx_destruct;
 @property(nonatomic, getter=isPrefetch) _Bool prefetch; // @synthesize prefetch=_prefetch;
 @property(nonatomic) long long timeScope; // @synthesize timeScope=_timeScope;
 @property(nonatomic) _Bool friendsOnly; // @synthesize friendsOnly=_friendsOnly;
@@ -35,7 +36,6 @@
 - (unsigned long long)hash;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (void)dealloc;
 
 @end
 

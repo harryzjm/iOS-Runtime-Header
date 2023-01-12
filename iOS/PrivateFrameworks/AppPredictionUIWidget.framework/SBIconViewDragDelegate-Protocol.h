@@ -27,6 +27,7 @@
 - (void)iconView:(SBIconView *)arg1 willAnimateDragLiftWithAnimator:(id <UIDragAnimating>)arg2 session:(id <UIDragSession>)arg3;
 - (double)additionalDragLiftScaleForIconView:(SBIconView *)arg1;
 - (long long)iconView:(SBIconView *)arg1 draggingStartLocationWithProposedStartLocation:(long long)arg2;
+- (NSArray *)dragItemsForIconView:(SBIconView *)arg1;
 - (_Bool)iconViewCanBeginDrags:(SBIconView *)arg1;
 @end
 

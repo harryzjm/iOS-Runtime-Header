@@ -10,7 +10,8 @@
 
 @interface _TtC7SwiftUI16RootViewDelegate : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *focusedValuesSeed;
+    MISSING_TYPE *colorSchemeSeed;
+    MISSING_TYPE *navigationAuthority;
 }
 
 @end

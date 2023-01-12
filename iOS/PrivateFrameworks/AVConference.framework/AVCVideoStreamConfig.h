@@ -36,6 +36,7 @@
     unsigned long long _hdrMode;
     NSString *_remoteDeviceName;
     _Bool _latencySensitiveModeEnabled;
+    NSString *_profileLevel;
 }
 
 + (_Bool)isPixelFormatValid:(unsigned int)arg1 hdrMode:(unsigned long long)arg2;
@@ -47,6 +48,7 @@
 + (long long)videoResolutionFromClientResolution:(long long)arg1;
 + (long long)clientCodecTypeWithCodecType:(long long)arg1;
 + (long long)codecTypeWithClientCodecType:(long long)arg1;
+@property(retain, nonatomic) NSString *profileLevel; // @synthesize profileLevel=_profileLevel;
 @property(nonatomic, getter=isLatencySensitiveModeEnabled) _Bool latencySensitiveModeEnabled; // @synthesize latencySensitiveModeEnabled=_latencySensitiveModeEnabled;
 @property(retain, nonatomic) NSString *remoteDeviceName; // @synthesize remoteDeviceName=_remoteDeviceName;
 @property(nonatomic) unsigned long long hdrMode; // @synthesize hdrMode=_hdrMode;

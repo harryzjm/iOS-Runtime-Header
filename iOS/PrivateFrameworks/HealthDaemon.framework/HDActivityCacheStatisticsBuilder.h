@@ -11,9 +11,9 @@
 
 @interface HDActivityCacheStatisticsBuilder : NSObject
 {
-    vector_89c96404 _workouts;
-    vector_6cc1e454 _standHourSamples;
-    vector_67487aec _activationLogSamples;
+    struct vector<HDActivityCacheStatisticsBuilderWorkoutSample, std::allocator<HDActivityCacheStatisticsBuilderWorkoutSample>> _workouts;
+    struct vector<HDActivityCacheStatisticsBuilderStandHourSample, std::allocator<HDActivityCacheStatisticsBuilderStandHourSample>> _standHourSamples;
+    vector_0fd01da3 _activationLogSamples;
     HKQuantity *_lastActiveEnergyValue;
     NSNumber *_lastMoveMinuteValue;
     HKQuantity *_lastDistanceWalkingValue;
@@ -23,8 +23,8 @@
     NSNumber *_lastStandHourValue;
     NSNumber *_lastExerciseMinuteValue;
     double _deepBreathingDurationValue;
-    vector_67487aec _activeSourcesList;
-    struct map<_HKDataTypeCode, std::__1::map<long long, _HDActivityCacheSourceTotal, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, _HDActivityCacheSourceTotal>>>, std::__1::less<_HKDataTypeCode>, std::__1::allocator<std::__1::pair<const _HKDataTypeCode, std::__1::map<long long, _HDActivityCacheSourceTotal, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, _HDActivityCacheSourceTotal>>>>>> _sourceTotalsByIntervalIndexByTypeCode;
+    vector_0fd01da3 _activeSourcesList;
+    struct map<_HKDataTypeCode, std::map<long long, _HDActivityCacheSourceTotal>, std::less<_HKDataTypeCode>, std::allocator<std::pair<const _HKDataTypeCode, std::map<long long, _HDActivityCacheSourceTotal>>>> _sourceTotalsByIntervalIndexByTypeCode;
     double _builderStartTime;
     double _builderEndTime;
     NSString *_loggingName;
@@ -36,35 +36,19 @@
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <HDActivityCacheStatisticsBuilderSourceOrderDelegate> sourceOrderDelegate; // @synthesize sourceOrderDelegate=_sourceOrderDelegate;
 @property(nonatomic) double intervalDuration; // @synthesize intervalDuration=_intervalDuration;
-- (double)_sumSourceTotals:(map_c63dce6d *)arg1 orderedSources:(vector_d87a6415)arg2 strictStartTime:(double)arg3 strictEndTime:(double)arg4;
-- (double)_sumSourceTotals:(map_c63dce6d *)arg1 orderedSources:(vector_d87a6415)arg2;
-- (void)_addSample:(struct HDActivityCacheStatisticsBuilderSample)arg1 toSourceTotals:(map_c63dce6d *)arg2 fromWorkout:(_Bool)arg3;
-- (void)_addSamples:(const vector_7eaa0458 *)arg1 toSourceTotals:(map_c63dce6d *)arg2 fromWorkout:(_Bool)arg3;
-- (double)_maxTimestampInSourceTotals:(const map_c63dce6d *)arg1;
-- (double)_minTimestampInSourceTotals:(const map_c63dce6d *)arg1;
-- (_Bool)_sourceMapIsEmpty:(const map_c63dce6d *)arg1;
 - (id)workoutSamplesWithSourceManager:(id)arg1;
 - (id)createStandStatisticsWithCalendar:(id)arg1;
 - (id)createExerciseStatisticsWithIntervalComponents:(id)arg1 calendar:(id)arg2;
 - (id)createMoveMinuteStatisticsWithIntervalComponents:(id)arg1 calendar:(id)arg2;
 - (id)createMoveStatisticsWithIntervalComponents:(id)arg1 calendar:(id)arg2;
-- (id)_createStatisticsForType:(id)arg1 withIntervalComponents:(id)arg2 calendar:(id)arg3;
 - (id)createStatisticsCollectionWithType:(id)arg1 intervalComponents:(id)arg2 calendar:(id)arg3;
-- (vector_67487aec)_activeSourceVectorFromActivationLogSamples:(const vector_7eaa0458 *)arg1;
 - (void)addDeepBreathingSessionDuration:(double)arg1;
 - (void)addWorkoutSample:(struct HDActivityCacheStatisticsBuilderSample)arg1 typeCode:(long long)arg2;
-- (void)addDeviceSamples:(const vector_7eaa0458 *)arg1 typeCode:(long long)arg2;
+- (void)addDeviceSamples:(const void *)arg1 typeCode:(long long)arg2;
 - (void)addDeviceSample:(struct HDActivityCacheStatisticsBuilderSample)arg1 typeCode:(long long)arg2;
-- (void)addActivationLogSamples:(const vector_7eaa0458 *)arg1;
-- (void)addStandHourSamples:(const vector_6cc1e454 *)arg1;
-- (void)addWorkouts:(const vector_89c96404 *)arg1;
-- (void)_resetAllCachedValues;
-- (void)_clearCachedValueForTypeCode:(long long)arg1;
-- (void)_loadActiveSourceList;
-- (void)_clearActiveSources;
-- (void)_logActiveSourcesList:(vector_67487aec *)arg1;
-- (id)_workoutIdentifiersStringForActiveSource:(struct HDActivityCacheActiveSource *)arg1;
-- (id)_loggingPrefix;
+- (void)addActivationLogSamples:(const void *)arg1;
+- (void)addStandHourSamples:(const void *)arg1;
+- (void)addWorkouts:(const void *)arg1;
 - (double)deepBreathingDurationValue;
 - (long long)exerciseMinuteValue;
 - (long long)standHourValue;
@@ -74,7 +58,6 @@
 - (id)distanceWalkingValue;
 - (long long)moveMinuteValue;
 - (id)activeEnergyValue;
-- (vector_d87a6415)_sourceOrderForTypeCode:(long long)arg1;
 - (id)init;
 - (id)initWithDateInterval:(id)arg1 loggingName:(id)arg2;
 

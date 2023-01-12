@@ -13,6 +13,7 @@
 
 @interface HMBModel : HMFObject <HMFLogging, HMBModelProperties>
 {
+    _Bool _hmbIgnoreModel;
     NSMutableDictionary *_hmbReserved;
     NSUUID *_hmbModelID;
     NSUUID *_hmbParentModelID;
@@ -46,6 +47,7 @@
 + (_Bool)hmbShouldLogPrivateInformation;
 - (void).cxx_destruct;
 @property(nonatomic) __weak HMBModelContainer *hmbModelContainer; // @synthesize hmbModelContainer=_hmbModelContainer;
+@property(readonly, nonatomic) _Bool hmbIgnoreModel; // @synthesize hmbIgnoreModel=_hmbIgnoreModel;
 @property(retain, nonatomic) NSSet *hmbReadOnlyProperties; // @synthesize hmbReadOnlyProperties=_hmbReadOnlyProperties;
 @property(retain, nonatomic) NSSet *hmbUnavailableProperties; // @synthesize hmbUnavailableProperties=_hmbUnavailableProperties;
 @property(nonatomic) unsigned long long hmbRecordRow; // @synthesize hmbRecordRow=_hmbRecordRow;
@@ -72,8 +74,7 @@
 - (id)hmbPropertyNamed:(id)arg1 isSet:(_Bool *)arg2;
 - (void)hmbUnsetPropertyNamed:(id)arg1;
 - (void)hmbSetProperty:(id)arg1 named:(id)arg2;
-@property(readonly, nonatomic) _Bool hmbIgnoreModel;
-@property(retain, nonatomic) HMFVersion *hmbIgnoredBefore;
+@property(retain, nonatomic) HMFVersion *hmbMinimumSupportedVersion;
 - (_Bool)hmbIsDifferentFromModel:(id)arg1 differingFields:(id *)arg2;
 - (void)hmbMergeSetPropertiesFromModel:(id)arg1;
 - (id)hmbModelByMergingFromModel:(id)arg1 isFromCloud:(_Bool)arg2 error:(id *)arg3;

@@ -11,9 +11,9 @@
     NSArray *_recipientNameStrings;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *recipientNameStrings; // @synthesize recipientNameStrings=_recipientNameStrings;
 - (void)layoutSubviews;
-- (void)dealloc;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSPersonNameComponents, NSString;
+@class NSArray, NSPersonNameComponents, NSString;
 
 @interface TUMutableCallDisplayContext
 {
@@ -20,6 +20,7 @@
 @property(copy, nonatomic) NSString *callDirectoryLocalizedExtensionContainingAppName; // @dynamic callDirectoryLocalizedExtensionContainingAppName;
 @property(copy, nonatomic) NSString *companyName; // @dynamic companyName;
 @property(copy, nonatomic) NSString *contactIdentifier; // @dynamic contactIdentifier;
+@property(copy, nonatomic) NSArray *contactIdentifiers; // @dynamic contactIdentifiers;
 @property(copy, nonatomic) NSString *contactLabel; // @dynamic contactLabel;
 @property(copy, nonatomic) NSString *contactName; // @dynamic contactName;
 @property(copy, nonatomic) NSString *firstName; // @dynamic firstName;

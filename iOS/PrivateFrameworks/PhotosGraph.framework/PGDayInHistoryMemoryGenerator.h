@@ -8,14 +8,17 @@
 
 @interface PGDayInHistoryMemoryGenerator
 {
+    _Bool _ignoreLocalDate;
     NSDate *_localDate;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool ignoreLocalDate; // @synthesize ignoreLocalDate=_ignoreLocalDate;
 @property(retain, nonatomic) NSDate *localDate; // @synthesize localDate=_localDate;
-- (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
+- (id)titleGeneratorForTriggeredMemory:(id)arg1 withKeyAsset:(id)arg2 curatedAssets:(id)arg3 extendedCuratedAssets:(id)arg4 titleGenerationContext:(id)arg5 inGraph:(id)arg6;
+- (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2 andGraph:(id)arg3;
 - (id)_potentialMemoriesForDryTesting;
-- (void)_enumeratePotentialMemoriesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)_enumeratePotentialMemoriesWithGraph:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 
 @end
 

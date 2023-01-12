@@ -18,11 +18,11 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutComponentView;
 - (struct CGSize)layoutImagesForSize:(struct CGSize)arg1 applyingLayout:(_Bool)arg2;
-- (struct CGSize)_availableSizeForImageNumber:(unsigned long long)arg1 withLayout:(unsigned long long)arg2 withinSize:(struct CGSize)arg3;
+- (struct CGSize)_availableSizeForImageNumber:(unsigned long long)arg1 withLayout:(unsigned long long)arg2 withinSize:(struct CGSize)arg3 applyingLayout:(_Bool)arg4;
 - (struct CGRect)_computeRectForImageAtIndex:(unsigned long long)arg1 fittingSize:(struct CGSize *)arg2 width:(double *)arg3 height:(double *)arg4 size:(struct CGSize)arg5 multipleImageLayout:(unsigned long long)arg6;
 - (void)ensureImageViews;
-- (id)initWithImages:(id)arg1 style:(id)arg2;
-- (id)init;
+- (id)initWithHost:(id)arg1 images:(id)arg2 style:(id)arg3;
+- (id)initWithHost:(id)arg1;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <MapKit/_MKBalloonCalloutViewConfiguring-Protocol.h>
 
-@class NSString, UIColor, UIImage, UIView;
+@class NSString, UIBlurEffect, UIColor, UIImage, UIView;
 
 __attribute__((visibility("hidden")))
 @interface _MKBalloonLabelMarkerView <_MKBalloonCalloutViewConfiguring>
@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=_balloonCalloutShouldCenterWhenOffscreen) _Bool balloonCalloutShouldCenterWhenOffscreen;
 @property(readonly, nonatomic, getter=_balloonCalloutShouldShowArrow) _Bool balloonCalloutShouldShowArrow;
 @property(readonly, nonatomic, getter=_balloonImageTintColor) UIColor *balloonImageTintColor;
+@property(readonly, nonatomic, getter=_balloonMaterial) UIBlurEffect *balloonMaterial;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

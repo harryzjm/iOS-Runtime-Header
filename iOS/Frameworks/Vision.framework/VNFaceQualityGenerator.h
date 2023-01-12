@@ -10,14 +10,16 @@ __attribute__((visibility("hidden")))
     struct shared_ptr<vision::mod::FaceQualityPredictor> _mFaceQualityPredictor;
 }
 
++ (unsigned long long)inputImageAspectRatioHandlingForConfigurationOptions:(id)arg1;
++ (unsigned int)networkRequiredInputImagePixelFormatForConfigurationOptions:(id)arg1;
 + (id)configurationOptionKeysForDetectorKey;
++ (id)keyForDetectorWithConfigurationOptions:(id)arg1;
 + (id)espressoModelInputImageDimensionsBlobNameForConfigurationOptions:(id)arg1;
 + (id)espressoModelFileNameForConfigurationOptions:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
+- (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4 progressHandler:(CDUnknownBlockType)arg5;
 - (_Bool)completeInitializationForSession:(id)arg1 error:(id *)arg2;
-- (_Bool)supportsProcessingDevice:(id)arg1;
 
 @end
 

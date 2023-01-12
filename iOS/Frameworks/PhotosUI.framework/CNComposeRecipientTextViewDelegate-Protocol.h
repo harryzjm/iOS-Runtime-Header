@@ -5,10 +5,11 @@
 //
 
 #import <PhotosUI/CNComposeHeaderViewDelegate-Protocol.h>
+#import <PhotosUI/NSObject-Protocol.h>
 
 @class CNComposeRecipient, CNComposeRecipientAtom, CNComposeRecipientTextView, CNContact, NSArray, NSString, UIContextMenuConfiguration;
 
-@protocol CNComposeRecipientTextViewDelegate <CNComposeHeaderViewDelegate>
+@protocol CNComposeRecipientTextViewDelegate <CNComposeHeaderViewDelegate, NSObject>
 
 @optional
 - (_Bool)chooseSelectedSearchResultForComposeRecipientView:(CNComposeRecipientTextView *)arg1;
@@ -29,6 +30,7 @@
 - (void)composeRecipientView:(CNComposeRecipientTextView *)arg1 showCorecipients:(NSArray *)arg2;
 - (void)composeRecipientView:(CNComposeRecipientTextView *)arg1 showPersonCardForRecipient:(CNComposeRecipient *)arg2;
 - (UIContextMenuConfiguration *)composeRecipientView:(CNComposeRecipientTextView *)arg1 contextMenuConfigurationForAtom:(CNComposeRecipientAtom *)arg2;
+- (void)stopDisambiguatingForComposeRecipientView:(CNComposeRecipientTextView *)arg1;
 - (void)composeRecipientView:(CNComposeRecipientTextView *)arg1 disambiguateRecipientForAtom:(CNComposeRecipientAtom *)arg2;
 - (void)composeRecipientView:(CNComposeRecipientTextView *)arg1 showPersonCardForAtom:(CNComposeRecipientAtom *)arg2;
 - (void)composeRecipientViewDidFinishPickingRecipient:(CNComposeRecipientTextView *)arg1;

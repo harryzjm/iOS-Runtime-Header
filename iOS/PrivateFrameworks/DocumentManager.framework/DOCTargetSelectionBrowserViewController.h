@@ -14,7 +14,7 @@
 @class DOCAppearance, DOCConfiguration, NSArray, NSString, NSURL, UIViewController, _UIResilientRemoteViewContainerViewController;
 @protocol DOCRemoteAppearanceInterface, DOCServiceTargetSelectionBrowserViewControllerProxy, DOCTargetSelectionBrowserViewControllerDelegate;
 
-@interface DOCTargetSelectionBrowserViewController : UINavigationController <DOCKeyCommandDismissible, DOCHostTargetSelectionBrowserViewControllerProxy, DOCAppearanceCustomization, DOCRemoteViewControllerDelegate>
+@interface DOCTargetSelectionBrowserViewController : UINavigationController <DOCHostTargetSelectionBrowserViewControllerProxy, DOCAppearanceCustomization, DOCRemoteViewControllerDelegate, DOCKeyCommandDismissible>
 {
     id <DOCTargetSelectionBrowserViewControllerDelegate> _targetSelectionDelegate;
     NSURL *_directoryURLToReveal;
@@ -47,14 +47,13 @@
 - (void)effectiveAppearanceDidChange:(id)arg1;
 - (void)_cancelButtonPressed:(id)arg1;
 - (void)_updateNavigationBar;
+- (void)_performDismiss:(id)arg1;
 - (void)viewDidLoad;
 - (id)remoteInterface;
 - (id)initForPickingFolderWithConfiguration:(id)arg1;
 - (id)initWithConfiguration:(id)arg1 urls:(id)arg2;
 - (id)initWithConfiguration:(id)arg1 items:(id)arg2;
 - (id)initForExportingWithConfiguration:(id)arg1;
-- (void)dismissWithKeyCommand:(id)arg1;
-- (_Bool)canDismissWithKeyCommand;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

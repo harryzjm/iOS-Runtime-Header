@@ -8,7 +8,7 @@
 
 #import <NewsUI/UIContextMenuInteractionDelegate-Protocol.h>
 
-@class MPMediaControls, MPRouteButton, MPRouteLabel, NSString, NUTouchInsetsButton, UIButton, UIContextMenuInteraction;
+@class MPMediaControls, MPRouteButton, NSString, NUTouchInsetsButton, UIButton, UIContextMenuInteraction;
 @protocol NUNowPlayingBottomControlsDelegate;
 
 @interface NUNowPlayingBottomControls : UIView <UIContextMenuInteractionDelegate>
@@ -16,7 +16,6 @@
     UIView *_contentView;
     UIButton *_playbackSpeedButton;
     MPRouteButton *_routeButton;
-    MPRouteLabel *_routeLabel;
     MPMediaControls *_mediaControls;
     NUTouchInsetsButton *_ellipsisButton;
     double _inset;
@@ -32,11 +31,13 @@
 @property(nonatomic) double inset; // @synthesize inset=_inset;
 @property(retain, nonatomic) NUTouchInsetsButton *ellipsisButton; // @synthesize ellipsisButton=_ellipsisButton;
 @property(retain, nonatomic) MPMediaControls *mediaControls; // @synthesize mediaControls=_mediaControls;
-@property(retain, nonatomic) MPRouteLabel *routeLabel; // @synthesize routeLabel=_routeLabel;
 @property(retain, nonatomic) MPRouteButton *routeButton; // @synthesize routeButton=_routeButton;
 @property(retain, nonatomic) UIButton *playbackSpeedButton; // @synthesize playbackSpeedButton=_playbackSpeedButton;
 @property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 - (void)dealloc;
+- (void)updateRouteButtonWithRoute:(id)arg1;
+- (void)routeDidChange:(id)arg1;
+- (void)startAirplayStatusUpdates;
 - (id)contextMenuInteraction:(id)arg1 previewForDismissingMenuWithConfiguration:(id)arg2;
 - (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
 - (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;

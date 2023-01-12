@@ -12,6 +12,7 @@
 + (_Bool)_mutableCopyInputs;
 + (id)changeDetailsWithNoIncrementalChanges;
 - (void)addChangeDetails:(id)arg1;
+- (void)_updatePropertyChangesWithChangeDetails:(id)arg1;
 - (void)_updateChangedIndexesWithChangeDetails:(id)arg1;
 - (void)_updateMovesWithChangesDetails:(id)arg1;
 - (void)_addInsertedIndexes:(id)arg1;

@@ -10,6 +10,7 @@
 {
 }
 
++ (id)convertOffset:(struct UIOffset)arg1;
 + (id)convertRect:(struct CGRect)arg1;
 + (id)convertRange:(struct _NSRange)arg1;
 + (id)convertPoint:(struct CGPoint)arg1;

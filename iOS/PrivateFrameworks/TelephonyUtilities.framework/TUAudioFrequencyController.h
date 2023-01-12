@@ -18,6 +18,7 @@
     AVCAudioPowerSpectrumMeter *_powerSpectrumMeter;
 }
 
++ (float)rawPowerLevelForPowerSpectrum:(id)arg1;
 + (float)normalizedPowerLevelForPowerSpectrum:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) AVCAudioPowerSpectrumMeter *powerSpectrumMeter; // @synthesize powerSpectrumMeter=_powerSpectrumMeter;

@@ -20,7 +20,6 @@
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-@property(readonly, nonatomic, getter=isProxyConfigured) _Bool proxyConfigured;
 @property(readonly, nonatomic, getter=isTLSConfigured) _Bool TLSConfigured;
 @property(readonly, nonatomic) NSObject<OS_nw_endpoint> *endpoint;
 

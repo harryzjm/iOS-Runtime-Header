@@ -6,10 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <VideosUI/NSCopying-Protocol.h>
+
 @class NSDictionary, NSNumber, NSString, NSURL;
 
-__attribute__((visibility("hidden")))
-@interface VUIExtrasInfo : NSObject
+@interface VUIExtrasInfo : NSObject <NSCopying>
 {
     NSDictionary *_extrasDict;
 }
@@ -17,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool isEntitledToPlay;
 @property(readonly, nonatomic) NSURL *tvAppDeeplinkURL;
+@property(readonly, nonatomic) NSString *name;
 @property(readonly, nonatomic) _Bool isLightTheme;
 @property(readonly, nonatomic) NSString *loadingImage;
 @property(retain, nonatomic) NSString *actionParams;
@@ -24,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *previewURLString;
 @property(readonly, nonatomic) NSString *extrasURLString;
 @property(readonly, nonatomic) NSString *adamID;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithMediaItem:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 

@@ -6,12 +6,14 @@
 
 #import <ShareSheet/NSObject-Protocol.h>
 
-@class NSArray, NSNumber, NSString, NSUUID;
+@class NSArray, NSNumber, NSString, NSUUID, UIActivityContentViewController;
 
 @protocol UIActivityContentDelegate <NSObject>
+@property(readonly, nonatomic) NSString *customOptionsTitle;
+- (void)activityContentViewControllerDidExpand:(UIActivityContentViewController *)arg1;
 - (NSString *)_titleForActivity:(NSString *)arg1;
 - (void)_editActionsTapped;
-- (NSArray *)fallbackURLsForLinkPresentation;
+- (NSArray *)urlRequestsForLinkPresentation;
 - (NSArray *)requestMetadataValues;
 - (void)showScreenTimeRestrictedAlert;
 - (void)selectedActionWithIdentifier:(NSUUID *)arg1;

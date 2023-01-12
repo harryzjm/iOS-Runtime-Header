@@ -12,7 +12,11 @@
 
 @interface GEOLogMsgEventDailyUseSummary : PBCodable <NSCopying>
 {
+    double _firstEventDate;
     NSMutableArray *_useEvents;
+    struct {
+        unsigned int has_firstEventDate:1;
+    } _flags;
 }
 
 + (_Bool)isValid:(id)arg1;
@@ -31,6 +35,8 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasFirstEventDate;
+@property(nonatomic) double firstEventDate;
 - (id)useEventsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)useEventsCount;
 - (void)addUseEvents:(id)arg1;

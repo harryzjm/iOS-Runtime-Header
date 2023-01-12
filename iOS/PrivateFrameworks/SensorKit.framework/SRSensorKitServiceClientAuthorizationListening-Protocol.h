@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSSet, NSString;
+@class NSDictionary, NSSet, NSString;
 
 @protocol SRSensorKitServiceClientAuthorizationListening
-- (void)authorizedServicesDidChange:(NSSet *)arg1 deniedServices:(NSSet *)arg2 prerequisites:(long long)arg3 bundleIdentifier:(NSString *)arg4;
+- (void)authorizedServicesDidChange:(NSSet *)arg1 deniedServices:(NSSet *)arg2 prerequisites:(long long)arg3 lastModifiedTimes:(NSDictionary *)arg4 bundleIdentifier:(NSString *)arg5;
 @end
 

@@ -17,9 +17,11 @@
     WFWorkflowRecord *_workflowRecord;
     NSDate *_createdAt;
     NSString *_createdBy;
+    WFFileRepresentation *_signedShortcutFile;
     NSNumber *_iconColor;
     NSNumber *_iconGlyph;
     WFFileRepresentation *_shortcutFile;
+    NSString *_signingStatus;
     WFFileRepresentation *_iconFile;
 }
 
@@ -27,9 +29,11 @@
 + (id)recordType;
 - (void).cxx_destruct;
 @property(retain, nonatomic) WFFileRepresentation *iconFile; // @synthesize iconFile=_iconFile;
+@property(copy, nonatomic) NSString *signingStatus; // @synthesize signingStatus=_signingStatus;
 @property(retain, nonatomic) WFFileRepresentation *shortcutFile; // @synthesize shortcutFile=_shortcutFile;
 @property(retain, nonatomic) NSNumber *iconGlyph; // @synthesize iconGlyph=_iconGlyph;
 @property(retain, nonatomic) NSNumber *iconColor; // @synthesize iconColor=_iconColor;
+@property(retain, nonatomic) WFFileRepresentation *signedShortcutFile; // @synthesize signedShortcutFile=_signedShortcutFile;
 @property(readonly, nonatomic) NSString *createdBy; // @synthesize createdBy=_createdBy;
 @property(readonly, nonatomic) NSDate *createdAt; // @synthesize createdAt=_createdAt;
 @property(retain, nonatomic) WFWorkflowRecord *workflowRecord; // @synthesize workflowRecord=_workflowRecord;

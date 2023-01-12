@@ -26,15 +26,15 @@
 }
 
 + (long long)backdropStyleForStyle:(long long)arg1 quality:(long long)arg2;
-+ (id)configForAppearance:(long long)arg1 inputMode:(id)arg2;
++ (id)configForAppearance:(long long)arg1 inputMode:(id)arg2 traitEnvironment:(id)arg3;
 + (id)lowQualityDarkConfig;
 + (id)darkConfig;
 + (id)defaultEmojiConfig;
 + (id)defaultConfig;
-@property(readonly, nonatomic) _UIButtonBarButtonVisualProvider *buttonBarVisualProvider; // @synthesize buttonBarVisualProvider=_buttonBarVisualProvider;
+@property(readonly, retain, nonatomic) _UIButtonBarButtonVisualProvider *buttonBarVisualProvider; // @synthesize buttonBarVisualProvider=_buttonBarVisualProvider;
 @property(nonatomic) _Bool isFloating; // @synthesize isFloating=_isFloating;
-@property(nonatomic) NSString *activatedKeyplaneSwitchControlKeyBackgroundName; // @synthesize activatedKeyplaneSwitchControlKeyBackgroundName=_activatedKeyplaneSwitchControlKeyBackgroundName;
-@property(nonatomic) NSString *controlKeyBackgroundName; // @synthesize controlKeyBackgroundName=_controlKeyBackgroundName;
+@property(copy, nonatomic) NSString *activatedKeyplaneSwitchControlKeyBackgroundName; // @synthesize activatedKeyplaneSwitchControlKeyBackgroundName=_activatedKeyplaneSwitchControlKeyBackgroundName;
+@property(copy, nonatomic) NSString *controlKeyBackgroundName; // @synthesize controlKeyBackgroundName=_controlKeyBackgroundName;
 @property(nonatomic) _Bool lightKeyboard; // @synthesize lightKeyboard=_lightKeyboard;
 @property(nonatomic) double lightKeycapOpacity; // @synthesize lightKeycapOpacity=_lightKeycapOpacity;
 @property(nonatomic) double keycapOpacity; // @synthesize keycapOpacity=_keycapOpacity;
@@ -47,6 +47,7 @@
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
+- (void)dealloc;
 
 @end
 

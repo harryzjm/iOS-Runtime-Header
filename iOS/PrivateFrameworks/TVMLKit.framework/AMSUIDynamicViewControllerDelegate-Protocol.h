@@ -6,12 +6,13 @@
 
 #import <TVMLKit/NSObject-Protocol.h>
 
-@class AMSPurchaseResult, AMSUIDynamicViewController, NSDictionary, NSError, UIView, UIViewController;
+@class AMSCarrierLinkResult, AMSPurchaseResult, AMSUIDynamicViewController, NSDictionary, NSError, UIView, UIViewController;
 @protocol AMSUIDynamicContentViewProtocol;
 
 @protocol AMSUIDynamicViewControllerDelegate <NSObject>
 
 @optional
+- (void)dynamicViewController:(AMSUIDynamicViewController *)arg1 didFinishCarrierLinkingWithResult:(AMSCarrierLinkResult *)arg2 error:(NSError *)arg3;
 - (void)dynamicViewController:(AMSUIDynamicViewController *)arg1 didFinishWithPurchaseResult:(AMSPurchaseResult *)arg2 error:(NSError *)arg3;
 - (void)dynamicViewController:(AMSUIDynamicViewController *)arg1 didFinishPurchaseWithResult:(AMSPurchaseResult *)arg2 error:(NSError *)arg3;
 - (UIView<AMSUIDynamicContentViewProtocol> *)dynamicViewController:(AMSUIDynamicViewController *)arg1 contentViewWithDictionary:(NSDictionary *)arg2 frame:(struct CGRect)arg3;

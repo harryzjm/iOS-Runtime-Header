@@ -16,9 +16,11 @@ __attribute__((visibility("hidden")))
     long long lastSettingsUniqueID;
     NSArray *availablePhotoPixelFormatTypes;
     NSArray *availablePhotoCodecTypes;
-    NSArray *availableRawPhotoPixelFormatTypes;
+    NSDictionary *availableRawPhotoPixelFormatTypes;
     NSArray *availablePhotoFileTypes;
     NSArray *availableRawPhotoFileTypes;
+    _Bool appleProRAWSupported;
+    _Bool appleProRAWEnabled;
     long long maxPhotoQualityPrioritization;
     _Bool maxPhotoQualityPrioritizationHasBeenSetByClient;
     _Bool stillImageStabilizationSupported;
@@ -29,6 +31,7 @@ __attribute__((visibility("hidden")))
     _Bool dualCameraDualPhotoDeliveryEnabled;
     _Bool cameraCalibrationDataDeliverySupported;
     NSArray *supportedHDRModes;
+    _Bool EV0PhotoDeliverySupported;
     NSArray *supportedFlashModes;
     NSArray *supportedDigitalFlashModes;
     _Bool digitalFlashCaptureEnabled;
@@ -88,10 +91,15 @@ __attribute__((visibility("hidden")))
     _Bool deferredProcessingSupported;
     _Bool deferredProcessingEnabled;
     _Bool processedPhotoZoomWithoutUpscalingSupported;
+    _Bool contentAwareDistortionCorrectionSupported;
+    _Bool contentAwareDistortionCorrectionEnabled;
     _Bool previewQualityAdjustedPhotoFilterRenderingSupported;
     _Bool previewQualityAdjustedPhotoFilterRenderingEnabled;
     _Bool fastCapturePrioritizationSupported;
     _Bool fastCapturePrioritizationEnabled;
+    _Bool highPhotoQualitySupported;
+    _Bool semanticStyleRenderingSupported;
+    _Bool semanticStyleRenderingEnabled;
 }
 
 @end

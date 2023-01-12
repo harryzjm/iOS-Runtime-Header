@@ -9,5 +9,8 @@
 @protocol NSTextGraphicsContextInternal <NSTextGraphicsContext>
 - (void)restoreGraphicsState;
 - (void)saveGraphicsState;
+
+@optional
+- (void)becomeCurrentGraphicsContextDuringBlock:(void (^)(void))arg1;
 @end
 

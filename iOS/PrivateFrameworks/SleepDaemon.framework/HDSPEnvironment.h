@@ -11,7 +11,7 @@
 #import <SleepDaemon/HDSPEnvironmentStateMachineInfoProvider-Protocol.h>
 #import <SleepDaemon/HDSPSystemReadyDelegate-Protocol.h>
 
-@class HDSPAnalyticsManager, HDSPAssertionManager, HDSPChargingReminderManager, HDSPContextStoreManager, HDSPDiagnostics, HDSPDoNotDisturbManager, HDSPEnvironmentStateMachine, HDSPGoodMorningAlertManager, HDSPIDSServiceManager, HDSPNotificationListener, HDSPSleepActionManager, HDSPSleepAlarmManager, HDSPSleepEventScheduler, HDSPSleepLockScreenManager, HDSPSleepModeManager, HDSPSleepNotificationManager, HDSPSleepScheduleModelManager, HDSPSleepScheduleModelMigrationManager, HDSPSleepScheduleStateCoordinator, HDSPSleepStorage, HDSPSleepStoreServer, HDSPSleepTrackingManager, HDSPSystemMonitor, HDSPTimeChangeListener, HDSPWakeDetectionManager, HDSPWakeUpResultsNotificationManager, HKSPHealthStoreProvider, HKSPSensitiveUIMonitor, NAFuture, NSString, _HKBehavior;
+@class HDSPAnalyticsManager, HDSPAssertionManager, HDSPBiomeManager, HDSPChargingReminderManager, HDSPContextStoreManager, HDSPDiagnostics, HDSPEnvironmentStateMachine, HDSPGoodMorningAlertManager, HDSPIDSServiceManager, HDSPNotificationListener, HDSPSleepActionManager, HDSPSleepAlarmManager, HDSPSleepEventScheduler, HDSPSleepLockScreenManager, HDSPSleepModeManager, HDSPSleepNotificationManager, HDSPSleepScheduleModelManager, HDSPSleepScheduleModelMigrationManager, HDSPSleepScheduleStateCoordinator, HDSPSleepStorage, HDSPSleepStoreServer, HDSPSleepTrackingManager, HDSPSleepWidgetManager, HDSPSystemMonitor, HDSPTimeChangeListener, HDSPWakeDetectionManager, HDSPWakeUpResultsNotificationManager, HKSPHealthStoreProvider, HKSPSensitiveUIMonitor, NAFuture, NSString, _HKBehavior;
 @protocol HKSPQueueBackedScheduler, HKSPUserDefaults, NAScheduler;
 
 @interface HDSPEnvironment : NSObject <HDSPDiagnosticsProvider, HDSPEnvironmentStateMachineDelegate, HDSPEnvironmentStateMachineInfoProvider, HDSPSystemReadyDelegate>
@@ -40,19 +40,19 @@
     HDSPDiagnostics *_diagnostics;
     HDSPNotificationListener *_notificationListener;
     HDSPSleepLockScreenManager *_sleepLockScreenManager;
+    HDSPSleepWidgetManager *_sleepWidgetManager;
     HDSPSystemMonitor *_systemMonitor;
     HDSPAssertionManager *_assertionManager;
     HDSPTimeChangeListener *_timeChangeListener;
     HKSPSensitiveUIMonitor *_sensitiveUIMonitor;
     HDSPSleepScheduleModelMigrationManager *_migrationManager;
     HDSPContextStoreManager *_contextStoreManager;
-    HDSPDoNotDisturbManager *_doNotDisturbManager;
+    HDSPBiomeManager *_biomeManager;
     HDSPIDSServiceManager *_idsServiceManager;
     id <HKSPQueueBackedScheduler> _defaultCallbackScheduler;
     HDSPAnalyticsManager *_analyticsManager;
 }
 
-+ (id)unitTestEnvironment;
 + (id)demoModeEnvironment;
 + (id)disabledEnvironment;
 + (id)standardEnvironment;
@@ -60,13 +60,14 @@
 @property(readonly, nonatomic) HDSPAnalyticsManager *analyticsManager; // @synthesize analyticsManager=_analyticsManager;
 @property(readonly, nonatomic) id <HKSPQueueBackedScheduler> defaultCallbackScheduler; // @synthesize defaultCallbackScheduler=_defaultCallbackScheduler;
 @property(readonly, nonatomic) HDSPIDSServiceManager *idsServiceManager; // @synthesize idsServiceManager=_idsServiceManager;
-@property(readonly, nonatomic) HDSPDoNotDisturbManager *doNotDisturbManager; // @synthesize doNotDisturbManager=_doNotDisturbManager;
+@property(readonly, nonatomic) HDSPBiomeManager *biomeManager; // @synthesize biomeManager=_biomeManager;
 @property(readonly, nonatomic) HDSPContextStoreManager *contextStoreManager; // @synthesize contextStoreManager=_contextStoreManager;
 @property(readonly, nonatomic) HDSPSleepScheduleModelMigrationManager *migrationManager; // @synthesize migrationManager=_migrationManager;
 @property(readonly, nonatomic) HKSPSensitiveUIMonitor *sensitiveUIMonitor; // @synthesize sensitiveUIMonitor=_sensitiveUIMonitor;
 @property(readonly, nonatomic) HDSPTimeChangeListener *timeChangeListener; // @synthesize timeChangeListener=_timeChangeListener;
 @property(readonly, nonatomic) HDSPAssertionManager *assertionManager; // @synthesize assertionManager=_assertionManager;
 @property(readonly, nonatomic) HDSPSystemMonitor *systemMonitor; // @synthesize systemMonitor=_systemMonitor;
+@property(readonly, nonatomic) HDSPSleepWidgetManager *sleepWidgetManager; // @synthesize sleepWidgetManager=_sleepWidgetManager;
 @property(readonly, nonatomic) HDSPSleepLockScreenManager *sleepLockScreenManager; // @synthesize sleepLockScreenManager=_sleepLockScreenManager;
 @property(readonly, nonatomic) HDSPNotificationListener *notificationListener; // @synthesize notificationListener=_notificationListener;
 @property(readonly, nonatomic) HDSPDiagnostics *diagnostics; // @synthesize diagnostics=_diagnostics;
@@ -106,11 +107,17 @@
 - (void)systemDidBecomeReady;
 - (void)updateState;
 - (void)prepare;
+- (id)currentSource;
+- (id)currentContext;
+- (void)perform:(CDUnknownBlockType)arg1 withContext:(id)arg2;
+- (void)perform:(CDUnknownBlockType)arg1 withSource:(id)arg2;
+- (void)performWhenEnvironmentIsReady:(CDUnknownBlockType)arg1 withContext:(id)arg2;
 - (void)performWhenEnvironmentIsReady:(CDUnknownBlockType)arg1;
 - (void)_withLock:(CDUnknownBlockType)arg1;
 - (void)performBlock:(CDUnknownBlockType)arg1 withLock:(struct os_unfair_lock_s *)arg2;
+- (void)shutdown;
 - (void)dealloc;
-- (id)initWithBehavior:(id)arg1 sleepStorageProvider:(CDUnknownBlockType)arg2 sleepScheduleModelManagerProvider:(CDUnknownBlockType)arg3 sleepSchedulerProvider:(CDUnknownBlockType)arg4 sleepServerProvider:(CDUnknownBlockType)arg5 sleepCoordinatorProvider:(CDUnknownBlockType)arg6 sleepModeManagerProvider:(CDUnknownBlockType)arg7 sleepTrackingManagerProvider:(CDUnknownBlockType)arg8 goodMorningAlertManagerProvider:(CDUnknownBlockType)arg9 chargingReminderManagerProvider:(CDUnknownBlockType)arg10 wakeDetectionManagerProvider:(CDUnknownBlockType)arg11 wakeUpResultsNotificationManagerProvider:(CDUnknownBlockType)arg12 actionManagerProvider:(CDUnknownBlockType)arg13 sleepAlarmManagerProvider:(CDUnknownBlockType)arg14 healthStoreProvider:(id)arg15 contextStoreManagerProvider:(CDUnknownBlockType)arg16 doNotDisturbManagerProvider:(CDUnknownBlockType)arg17 migrationManagerProvider:(CDUnknownBlockType)arg18 notificationManagerProvider:(CDUnknownBlockType)arg19 notificationListenerProvider:(CDUnknownBlockType)arg20 sleepLockScreenManagerProvider:(CDUnknownBlockType)arg21 idsServiceManagerProvider:(CDUnknownBlockType)arg22 diagnosticsProvider:(CDUnknownBlockType)arg23 systemMonitorProvider:(CDUnknownBlockType)arg24 assertionManager:(id)arg25 timeChangeListenerProvider:(CDUnknownBlockType)arg26 sensitiveUIMonitorProvider:(CDUnknownBlockType)arg27 analyticsManagerProvider:(CDUnknownBlockType)arg28 userDefaults:(id)arg29 currentDateProvider:(CDUnknownBlockType)arg30 defaultCallbackScheduler:(id)arg31;
+- (id)initWithBehavior:(id)arg1 sleepStorageProvider:(CDUnknownBlockType)arg2 sleepScheduleModelManagerProvider:(CDUnknownBlockType)arg3 sleepSchedulerProvider:(CDUnknownBlockType)arg4 sleepServerProvider:(CDUnknownBlockType)arg5 sleepCoordinatorProvider:(CDUnknownBlockType)arg6 sleepModeManagerProvider:(CDUnknownBlockType)arg7 sleepTrackingManagerProvider:(CDUnknownBlockType)arg8 goodMorningAlertManagerProvider:(CDUnknownBlockType)arg9 chargingReminderManagerProvider:(CDUnknownBlockType)arg10 wakeDetectionManagerProvider:(CDUnknownBlockType)arg11 wakeUpResultsNotificationManagerProvider:(CDUnknownBlockType)arg12 actionManagerProvider:(CDUnknownBlockType)arg13 sleepAlarmManagerProvider:(CDUnknownBlockType)arg14 healthStoreProvider:(id)arg15 contextStoreManagerProvider:(CDUnknownBlockType)arg16 biomeManagerProvider:(CDUnknownBlockType)arg17 migrationManagerProvider:(CDUnknownBlockType)arg18 notificationManagerProvider:(CDUnknownBlockType)arg19 notificationListenerProvider:(CDUnknownBlockType)arg20 sleepLockScreenManagerProvider:(CDUnknownBlockType)arg21 sleepWidgetManagerProvider:(CDUnknownBlockType)arg22 idsServiceManagerProvider:(CDUnknownBlockType)arg23 diagnosticsProvider:(CDUnknownBlockType)arg24 systemMonitorProvider:(CDUnknownBlockType)arg25 assertionManager:(id)arg26 timeChangeListenerProvider:(CDUnknownBlockType)arg27 sensitiveUIMonitorProvider:(CDUnknownBlockType)arg28 analyticsManagerProvider:(CDUnknownBlockType)arg29 userDefaults:(id)arg30 currentDateProvider:(CDUnknownBlockType)arg31 defaultCallbackScheduler:(id)arg32;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

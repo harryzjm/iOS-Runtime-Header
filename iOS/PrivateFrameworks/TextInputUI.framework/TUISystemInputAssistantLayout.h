@@ -12,7 +12,8 @@
 }
 
 @property(nonatomic) _Bool usesUnifiedButtonBar; // @synthesize usesUnifiedButtonBar=_usesUnifiedButtonBar;
-- (id)_buttonBarGroupSetForApplicationAssistantItem:(id)arg1 withSystemInputAssistantItem:(id)arg2;
+- (id)_buttonBarGroupSetForApplicationAssistantItem:(id)arg1 withSystemInputAssistantItem:(id)arg2 forAssistantView:(id)arg3;
+- (void)invalidate:(id)arg1;
 - (void)layoutViewSet:(id)arg1 inBounds:(struct CGRect)arg2 forAssistantView:(id)arg3;
 - (void)configureButtonBarsInViewSet:(id)arg1 forApplicationAssistantItem:(id)arg2 withSystemAssistantItem:(id)arg3 withAssistantView:(id)arg4;
 

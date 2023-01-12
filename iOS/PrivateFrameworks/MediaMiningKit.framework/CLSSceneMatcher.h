@@ -19,6 +19,7 @@
 + (id)whiteboardSceneNames;
 + (id)interestingSceneNames;
 + (id)childTeenAndAdultSceneNames;
++ (id)babySceneNames;
 + (id)babyAndPetSceneNames;
 + (id)babyChildTeenAdultAndPetSceneNames;
 + (id)junkSceneNamesLegacy;

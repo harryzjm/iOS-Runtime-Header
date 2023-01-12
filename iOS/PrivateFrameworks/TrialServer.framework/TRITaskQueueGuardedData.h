@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSMutableDictionary;
+@class NSDate, NSMutableArray, NSMutableDictionary;
 @protocol TRITaskPersisting;
 
 @interface TRITaskQueueGuardedData : NSObject
@@ -18,6 +18,7 @@
     unsigned long long currentCapabilities;
     NSMutableDictionary *xpcDescriptorToState;
     CDUnknownBlockType taskQueueCompletionBlock;
+    NSMutableArray *_finalizeBlocks;
 }
 
 - (void).cxx_destruct;

@@ -6,12 +6,13 @@
 
 #import <UIKit/UITableViewHeaderFooterView.h>
 
-@class NSString, NTKCSeparatorView, UILabel;
+@class NSString, NTKCSeparatorView, UILabel, UIListContentConfiguration;
 
 @interface NTKCFaceDetailSectionHeaderView : UITableViewHeaderFooterView
 {
     UILabel *_detailLabel;
-    NTKCSeparatorView *_bottomSeparator;
+    NTKCSeparatorView *_separator;
+    UIListContentConfiguration *_configuration;
 }
 
 + (double)headerHeight;
@@ -19,7 +20,7 @@
 - (void).cxx_destruct;
 - (void)_fontSizeDidChange;
 - (id)_traitCollectionAdjustedIfNeeded;
-- (void)_updateLabelFonts;
+- (void)_updateConfig;
 - (void)layoutSubviews;
 @property(copy, nonatomic) NSString *groupName;
 @property(copy, nonatomic) NSString *subtitle;

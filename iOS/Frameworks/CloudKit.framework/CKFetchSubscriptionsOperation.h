@@ -12,6 +12,7 @@
 @interface CKFetchSubscriptionsOperation <CKFetchSubscriptionsOperationCallbacks>
 {
     _Bool _isFetchAllSubscriptionsOperation;
+    CDUnknownBlockType _perSubscriptionCompletionBlock;
     CDUnknownBlockType _fetchSubscriptionCompletionBlock;
     NSArray *_subscriptionIDs;
     NSArray *_subscriptions;
@@ -23,9 +24,6 @@
 + (id)fetchAllSubscriptionsOperation;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool isFetchAllSubscriptionsOperation; // @synthesize isFetchAllSubscriptionsOperation=_isFetchAllSubscriptionsOperation;
-@property(retain, nonatomic) NSMutableDictionary *subscriptionErrors; // @synthesize subscriptionErrors=_subscriptionErrors;
-@property(retain, nonatomic) NSMutableDictionary *subscriptionsBySubscriptionID; // @synthesize subscriptionsBySubscriptionID=_subscriptionsBySubscriptionID;
-@property(retain, nonatomic) NSArray *subscriptions; // @synthesize subscriptions=_subscriptions;
 @property(copy, nonatomic) NSArray *subscriptionIDs; // @synthesize subscriptionIDs=_subscriptionIDs;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)handleSubscriptionFetchForSubscriptionID:(id)arg1 subscription:(id)arg2 error:(id)arg3;
@@ -37,6 +35,7 @@
 - (id)initWithSubscriptionIDs:(id)arg1;
 - (id)activityCreate;
 @property(copy, nonatomic) CDUnknownBlockType fetchSubscriptionCompletionBlock; // @synthesize fetchSubscriptionCompletionBlock=_fetchSubscriptionCompletionBlock;
+@property(copy, nonatomic) CDUnknownBlockType perSubscriptionCompletionBlock; // @synthesize perSubscriptionCompletionBlock=_perSubscriptionCompletionBlock;
 - (id)init;
 
 // Remaining properties

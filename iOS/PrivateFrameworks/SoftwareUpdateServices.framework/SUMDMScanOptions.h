@@ -14,6 +14,7 @@
     SUScanOptions *_scanOptions;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(retain, nonatomic) SUScanOptions *scanOptions; // @synthesize scanOptions=_scanOptions;
 - (id)description;
@@ -22,7 +23,10 @@
 - (id)initWithCoder:(id)arg1;
 @property(readonly, retain, nonatomic) NSString *requestedProductMarketingVersion;
 @property(readonly, nonatomic) _Bool useDelayPeriod;
+- (_Bool)delayRestrictionEnabled;
 - (_Bool)deviceIsSupervised;
+- (unsigned long long)MCPathToSUMDMPath:(long long)arg1;
+@property(readonly, nonatomic) unsigned long long MDMSoftwareUpdatePath;
 @property(readonly, nonatomic) unsigned long long delayPeriodDays;
 - (id)initWithScanOption:(id)arg1;
 

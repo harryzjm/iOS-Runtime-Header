@@ -4,9 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GameCenterUI/ASCLockupViewDelegate-Protocol.h>
+#import <GameCenterUI/UITextFieldDelegate-Protocol.h>
 
-@interface (null) (GameCenterUI) <ASCLockupViewDelegate>
-- (id)presentingViewControllerForLockupView:(id)arg1;
+@interface (null) (GameCenterUI) <UITextFieldDelegate>
+- (void)textFieldDidEndEditing:(id)arg1 reason:(long long)arg2;
+- (void)textFieldDidChangeSelection:(id)arg1;
+- (_Bool)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
+- (void)textFieldDidBeginEditing:(id)arg1;
+- (_Bool)textFieldShouldReturn:(id)arg1;
 @end
 

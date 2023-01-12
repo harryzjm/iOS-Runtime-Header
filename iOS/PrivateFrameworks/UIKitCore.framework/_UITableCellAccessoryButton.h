@@ -4,17 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class UIColor;
+
 __attribute__((visibility("hidden")))
 @interface _UITableCellAccessoryButton
 {
+    UIColor *_accessoryTintColor;
     CDUnknownBlockType _backgroundImageProvider;
 }
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType backgroundImageProvider; // @synthesize backgroundImageProvider=_backgroundImageProvider;
+@property(retain, nonatomic) UIColor *accessoryTintColor; // @synthesize accessoryTintColor=_accessoryTintColor;
 - (id)viewForLastBaselineLayout;
 - (id)viewForFirstBaselineLayout;
 - (void)_dynamicUserInterfaceTraitDidChange;
+- (void)_reloadBackgroundImage;
 - (id)initWithFrame:(struct CGRect)arg1 backgroundImageProvider:(CDUnknownBlockType)arg2;
 
 @end

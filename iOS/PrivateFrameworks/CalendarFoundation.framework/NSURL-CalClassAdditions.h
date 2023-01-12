@@ -15,6 +15,7 @@
 + (id)URLForMail:(id)arg1;
 + (id)davCompatibleFilenameForFilename:(id)arg1;
 + (id)URLWithContactIdentifier:(id)arg1;
+- (id)cal_hostAfterGoogleRedirects;
 - (_Bool)_hasDescription:(id)arg1;
 - (_Bool)isNoTel;
 - (_Bool)isNoMail;

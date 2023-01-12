@@ -15,6 +15,7 @@
 {
     FARequestConfigurator *_requestConfigurator;
     CDUnknownBlockType _performOperationCompletion;
+    _Bool _requiresInProcessPresentation;
     UIViewController *_presenter;
     CDUnknownBlockType _presentationHandler;
     RUIStyle *_customRUIStyle;
@@ -22,6 +23,7 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool requiresInProcessPresentation; // @synthesize requiresInProcessPresentation=_requiresInProcessPresentation;
 @property(nonatomic) long long modalPresentationStyle; // @synthesize modalPresentationStyle=_modalPresentationStyle;
 @property(retain, nonatomic) RUIStyle *customRUIStyle; // @synthesize customRUIStyle=_customRUIStyle;
 @property(copy, nonatomic) CDUnknownBlockType presentationHandler; // @synthesize presentationHandler=_presentationHandler;

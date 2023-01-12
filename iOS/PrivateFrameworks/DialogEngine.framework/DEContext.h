@@ -4,29 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-@class NSString;
-
-@interface DEContext : NSObject
+@interface DEContext
 {
-    void *_This;
 }
-
-+ (id)globalParameters;
-@property void *This; // @synthesize This=_This;
-- (void)registerMorphunDataPathFor:(id)arg1 path:(id)arg2;
-@property(readonly) NSString *locale;
-@property(readonly) NSString *loadStatus;
-- (void)setTemplateDir:(id)arg1;
-- (id)getFile;
-- (void)setFile:(id)arg1;
-- (id)findVariable:(id)arg1;
-- (void)addVariable:(id)arg1;
-- (_Bool)load:(id)arg1 locale:(id)arg2;
-- (void)dealloc;
-- (id)initWithPtr:(struct Context *)arg1;
-- (id)init;
 
 @end
 

@@ -20,6 +20,7 @@
     AXBookendMetric *_piplelineMetric;
     VNSceneObservation *_sceneObservation;
     NSObject<OS_dispatch_queue> *_sceneObservationQueue;
+    NSMutableArray *_detectedSceneClassifications;
     NSMutableOrderedSet *_auxiliaryDetectors;
     _Bool _shouldProcessRemotely;
     _Bool _shouldCallCompletionHandlersForEngineBusyError;
@@ -77,6 +78,8 @@
 - (void)addEvaluatedFeatureType:(unsigned long long)arg1;
 - (void)appendFeature:(id)arg1;
 - (void)produceImage:(CDUnknownBlockType)arg1;
+- (void)addSceneLabelForOCRDocumentTypeDetection:(id)arg1;
+@property(readonly, nonatomic) NSArray *sceneLabelsForOCRDocumentTypeDetection;
 - (void)addResultHandlers:(id)arg1;
 - (void)addResultHandler:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSArray *resultHandlers;

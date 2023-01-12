@@ -30,6 +30,7 @@
 @property(nonatomic) __weak id <TLAlertPlaybackObserver> playbackObserver; // @synthesize playbackObserver=_playbackObserver;
 @property(retain, nonatomic) TLAlertPlaybackCompletionContext *playbackCompletionContext; // @synthesize playbackCompletionContext=_playbackCompletionContext;
 @property(retain, nonatomic) TLSystemSound *sound; // @synthesize sound=_sound;
+- (id)description;
 
 @end
 

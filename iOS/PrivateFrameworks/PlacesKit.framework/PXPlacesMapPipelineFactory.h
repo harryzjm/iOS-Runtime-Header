@@ -10,7 +10,7 @@
 {
 }
 
-+ (id)thumbnailPipelineForDataSource:(id)arg1 extendedTraitCollection:(id)arg2 geotaggableInfo:(id)arg3 popoverImageType:(unsigned long long)arg4;
++ (id)thumbnailPipelineForDataSource:(id)arg1 extendedTraitCollection:(id)arg2 geotaggableInfo:(id)arg3 popoverImageType:(unsigned long long)arg4 popoverImageOptions:(unsigned long long)arg5;
 + (id)thumbnailPipelineForDataSource:(id)arg1 extendedTraitCollection:(id)arg2 geotaggableInfo:(id)arg3;
 + (id)pinPipelineForDataSource:(id)arg1;
 + (id)defaultPipelineForDataSource:(id)arg1;

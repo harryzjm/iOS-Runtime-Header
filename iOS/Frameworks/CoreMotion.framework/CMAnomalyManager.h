@@ -13,7 +13,7 @@
 {
     NSObject<OS_dispatch_queue> *fPrivateQueue;
     NSObject<OS_dispatch_queue> *fAppQueue;
-    struct CLConnectionClient *fLocationdConnection;
+    void *fLocationdConnection;
     CMAnomalyEvent *fLastReceivedEvent;
     CMAnomalyEvent *fLastDispatchedEvent;
     _Bool fRegisteredForNotification;
@@ -23,6 +23,7 @@
 + (long long)getAnomalyFeatureEnablingStrategyForUserAge:(id)arg1;
 + (_Bool)isAnomalyDetectionAvailable;
 @property(nonatomic) id <CMAnomalyDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)updateAnomalyEventSOSCallState:(id)arg1 withSOSSCallState:(long long)arg2;
 - (void)resolveAnomalyEvent:(id)arg1 withResolution:(long long)arg2;
 - (void)respondToAnomalyEvent:(id)arg1 withResponse:(long long)arg2;
 - (void)_sendRegistrationForAnomalyEvent:(id)arg1;

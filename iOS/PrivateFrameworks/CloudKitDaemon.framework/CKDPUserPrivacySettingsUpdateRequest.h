@@ -10,7 +10,6 @@
 
 @class CKDPUserPrivacySettings, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDPUserPrivacySettingsUpdateRequest : PBRequest <NSCopying>
 {
     NSString *_bundleIdentifier;

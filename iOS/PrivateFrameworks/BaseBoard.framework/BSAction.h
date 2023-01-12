@@ -12,34 +12,18 @@
 #import <BaseBoard/BSXPCCoding-Protocol.h>
 #import <BaseBoard/NSSecureCoding-Protocol.h>
 
-@class BSActionListenerToken, BSActionResponse, BSAuditHistory, BSMachPortReceiveRight, BSMachPortTransferableSendRight, BSPortDeathSentinel, BSSettings, BSTimer, NSArray, NSString;
-@protocol OS_dispatch_queue;
+@class BSSettings, NSString, _BSActionResponder;
 
 @interface BSAction : NSObject <BSXPCCoding, NSSecureCoding, BSSettingDescriptionProvider, BSDebugDescriptionProviding, BSInvalidatable>
 {
-    unsigned long long _timeout;
-    NSObject<OS_dispatch_queue> *_queue;
-    CDUnknownBlockType _queue_handler;
-    BSActionListenerToken *_queue_listenerToken;
-    BSTimer *_queue_timer;
-    CDUnknownBlockType _queue_invalidationHandler;
-    BSActionResponse *_queue_response;
-    BSAuditHistory *_queue_auditHistory;
-    BSMachPortReceiveRight *_queue_receiveRight;
-    BSMachPortTransferableSendRight *_queue_sendRight;
-    BSPortDeathSentinel *_queue_portDeathSentinel;
-    NSArray *_queue_neuteredCallStack;
-    _Bool _hasTimeout;
-    _Bool _originatingAction;
-    _Bool _queue_hasBeenNeuteredForEncode;
-    _Bool _queue_hasBeenNeuteredForSend;
-    _Bool _queue_invalidated;
-    _Bool _expectsResponse;
+    _BSActionResponder *_responder;
+    _Bool _isImplicitOriginator;
     BSSettings *_info;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, nonatomic, getter=_expectsResponse) _Bool expectsResponse; // @synthesize expectsResponse=_expectsResponse;
++ (id)new;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) BSSettings *info; // @synthesize info=_info;
 - (id)debugDescriptionWithMultilinePrefix:(id)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
@@ -50,6 +34,8 @@
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic, getter=_expectsResponse) _Bool expectsResponse;
+- (void)setNullificationHandler:(CDUnknownBlockType)arg1;
 - (void)setInvalidationHandler:(CDUnknownBlockType)arg1;
 - (void)invalidate;
 - (_Bool)isValid;
@@ -65,6 +51,7 @@
 - (void)dealloc;
 - (id)init;
 - (id)initWithInfo:(id)arg1 timeout:(double)arg2 forResponseOnQueue:(id)arg3 withHandler:(CDUnknownBlockType)arg4;
+- (id)initWithInfo:(id)arg1 responder:(id)arg2;
 
 // Remaining properties
 @property(readonly) Class superclass;

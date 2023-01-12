@@ -24,6 +24,8 @@ __attribute__((visibility("hidden")))
     UIColor *_buttonGlyphColorDisabled;
     UIColor *_elementBackgroundColor;
     UIColor *_elementCoverColor;
+    double _undoControlMinWidth;
+    double _cutControlMinWidth;
     long long _appearance;
 }
 
@@ -31,6 +33,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool tooSmallForInstructionalText; // @synthesize tooSmallForInstructionalText=_tooSmallForInstructionalText;
 @property(nonatomic) _Bool cutCopyPasteIconOnly; // @synthesize cutCopyPasteIconOnly=_cutCopyPasteIconOnly;
 @property(nonatomic) long long appearance; // @synthesize appearance=_appearance;
+@property(nonatomic) double cutControlMinWidth; // @synthesize cutControlMinWidth=_cutControlMinWidth;
+@property(nonatomic) double undoControlMinWidth; // @synthesize undoControlMinWidth=_undoControlMinWidth;
 @property(nonatomic) _Bool isRTL; // @synthesize isRTL=_isRTL;
 @property(nonatomic) _Bool undoRedoIconOnly; // @synthesize undoRedoIconOnly=_undoRedoIconOnly;
 @property(retain, nonatomic) UIColor *elementCoverColor; // @synthesize elementCoverColor=_elementCoverColor;

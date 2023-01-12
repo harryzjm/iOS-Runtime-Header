@@ -31,9 +31,11 @@ __attribute__((visibility("hidden")))
     _Bool _showsPictureInPictureUnavailableIndicator;
     _Bool _showingControlsForHoverActive;
     id <PGCommandHandler> _commandHandler;
+    CDUnknownBlockType _coordinatedAnimationsForControlsVisibiity;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType coordinatedAnimationsForControlsVisibiity; // @synthesize coordinatedAnimationsForControlsVisibiity=_coordinatedAnimationsForControlsVisibiity;
 @property(nonatomic, getter=isInteractivelyResizing) _Bool interactivelyResizing; // @synthesize interactivelyResizing=_interactivelyResizing;
 @property(nonatomic, getter=isShowingControlsForHoverActive) _Bool showingControlsForHoverActive; // @synthesize showingControlsForHoverActive=_showingControlsForHoverActive;
 @property(nonatomic) _Bool showsPictureInPictureUnavailableIndicator; // @synthesize showsPictureInPictureUnavailableIndicator=_showsPictureInPictureUnavailableIndicator;

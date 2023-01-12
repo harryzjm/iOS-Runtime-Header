@@ -13,8 +13,10 @@
 + (id)safeCategoryTargetClassName;
 - (id)selectionButton;
 - (void)viewDidLoad;
+- (id)_axPlaybackEngine;
 - (_Bool)_axIsStreamingLive;
 - (_Bool)_axIsEditingClips;
+- (void)_axToggleClipTimescale:(id)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

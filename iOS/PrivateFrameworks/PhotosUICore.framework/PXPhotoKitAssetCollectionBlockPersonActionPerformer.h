@@ -5,18 +5,23 @@
 //
 
 #import <PhotosUICore/PXPhotoKitAssetCollectionActionPerformerInput-Protocol.h>
+#import <PhotosUICore/PXSuggestLessPeopleHelperDelegate-Protocol.h>
 
-@class NSString, PHFetchResult, PXAssetReference, PXAssetsDataSource;
+@class NSString, PHFetchResult, PXAssetReference, PXAssetsDataSource, PXSuggestLessPeopleHelper;
 @protocol UIDragSession, UIDropSession;
 
-@interface PXPhotoKitAssetCollectionBlockPersonActionPerformer <PXPhotoKitAssetCollectionActionPerformerInput>
+@interface PXPhotoKitAssetCollectionBlockPersonActionPerformer <PXPhotoKitAssetCollectionActionPerformerInput, PXSuggestLessPeopleHelperDelegate>
 {
+    PXSuggestLessPeopleHelper *_suggestLessPeopleHelper;
 }
 
 + (id)systemImageNameForAssetCollectionReference:(id)arg1 withInputs:(id)arg2;
 + (id)localizedTitleForUseCase:(unsigned long long)arg1 assetCollectionReference:(id)arg2 withInputs:(id)arg3;
 + (id)createActivityWithTitle:(id)arg1 actionType:(id)arg2 actionSystemImageName:(id)arg3;
 + (_Bool)canPerformOnAssetCollectionReference:(id)arg1 withInputs:(id)arg2;
+- (void).cxx_destruct;
+- (_Bool)suggestLessPeopleHelper:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)suggestLessPeopleHelper:(id)arg1 presentViewController:(id)arg2;
 - (void)performUserInteractionTask;
 
 // Remaining properties

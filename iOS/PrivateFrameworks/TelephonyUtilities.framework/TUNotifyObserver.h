@@ -13,6 +13,7 @@
 
 @interface TUNotifyObserver : NSObject <TUNotifyObserver>
 {
+    struct os_unfair_lock_s _lock;
     int _token;
     CDUnknownBlockType _callback;
     NSObject<OS_dispatch_queue> *_queue;
@@ -22,7 +23,8 @@
 - (void).cxx_destruct;
 @property(nonatomic) int token; // @synthesize token=_token;
 @property(copy, nonatomic) NSString *notificationName; // @synthesize notificationName=_notificationName;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property(readonly, nonatomic) struct os_unfair_lock_s lock; // @synthesize lock=_lock;
 - (void)_endObserving;
 - (void)endObserving;
 - (void)beginObserving;
@@ -30,6 +32,7 @@
 @property(readonly, nonatomic, getter=isObserving) _Bool observing;
 @property(copy, nonatomic) CDUnknownBlockType callback; // @synthesize callback=_callback;
 - (void)dealloc;
+- (id)initWithNotificationName:(id)arg1 queue:(id)arg2 callback:(CDUnknownBlockType)arg3;
 - (id)initWithNotificationName:(id)arg1 queue:(id)arg2;
 
 // Remaining properties

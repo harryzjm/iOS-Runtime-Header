@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
 @interface CCTextDetector : NSObject
 {
     int _getFilter_callCount;
-    unsigned long long _requestRevision;
     _Bool _computeZCVectorHighProbability;
     unsigned char _ii;
     unsigned char _profileNormal;
@@ -60,7 +59,7 @@ __attribute__((visibility("hidden")))
 @property int midRow; // @synthesize midRow=_midRow;
 @property _Bool computeZCVectorHighProbability; // @synthesize computeZCVectorHighProbability=_computeZCVectorHighProbability;
 @property(retain) CCCharBoxContext *charBoxContext; // @synthesize charBoxContext=_charBoxContext;
-- (id)textBoxesForImage:(id)arg1 error:(id *)arg2;
+- (id)textBoxesForImage:(id)arg1 originatingRequestSpecifier:(id)arg2 error:(id *)arg3;
 - (id)textBoxesForBuffer:(struct vImage_Buffer)arg1 error:(id *)arg2;
 - (int)_generatePulseVectorOutputs:(struct vImage_Buffer)arg1 votingImage:(struct vImage_Buffer)arg2 rowLocationsRef:(unsigned short *)arg3;
 - (int)_generateCRCharBoxInformation:(id)arg1 inputImage:(struct vImage_Buffer)arg2 singleVotingImageAddressRef:(char *)arg3 bigBoxes:(struct __CCBigBox *)arg4 bigBoxesAdapt:(struct __CCBigBox *)arg5 textOut:(struct vImage_Buffer)arg6 adaptOut:(struct vImage_Buffer)arg7 lowHighRGB:(struct __rgbMinMaxFloat *)arg8 countBigBox:(unsigned char)arg9 useLowLightEnhancement:(unsigned char)arg10;

@@ -8,11 +8,12 @@
 
 #import <PhotosGraph/PGTitleSpecDelegate-Protocol.h>
 
-@class NSSet, NSString, PGTitle, PGTitleSpecCollection;
+@class NSSet, NSString, PGTitle, PGTitleGenerationContext, PGTitleSpecCollection;
 @protocol PGSpecBasedTitleGeneratorDelegate;
 
 @interface PGSpecBasedTitleGenerator : NSObject <PGTitleSpecDelegate>
 {
+    PGTitleGenerationContext *_titleGenerationContext;
     NSSet *_momentNodes;
     NSSet *_features;
     PGTitleSpecCollection *_specCollection;
@@ -31,12 +32,12 @@
 - (id)_titleFromSpecs:(id)arg1;
 - (id)_title;
 @property(readonly, nonatomic) PGTitle *title; // @synthesize title=_title;
-- (id)initWithMomentNodes:(id)arg1 features:(id)arg2 specCollection:(id)arg3;
-- (id)initWithMomentNodes:(id)arg1 features:(id)arg2 meaningLabel:(id)arg3 isAggregation:(_Bool)arg4;
-- (id)initWithMomentNodes:(id)arg1 meaningLabel:(id)arg2;
-- (id)initWithMomentNodes:(id)arg1 personNodes:(id)arg2 memoryCategory:(unsigned long long)arg3 subcategory:(unsigned long long)arg4;
-- (id)initWithMomentNodes:(id)arg1 memoryCategory:(unsigned long long)arg2 subcategory:(unsigned long long)arg3;
-- (id)initWithMomentNodes:(id)arg1 specCollection:(id)arg2;
+- (id)initWithMomentNodes:(id)arg1 features:(id)arg2 specCollection:(id)arg3 titleGenerationContext:(id)arg4;
+- (id)initWithMomentNodes:(id)arg1 features:(id)arg2 meaningLabel:(id)arg3 isAggregation:(_Bool)arg4 titleGenerationContext:(id)arg5;
+- (id)initWithMomentNodes:(id)arg1 meaningLabel:(id)arg2 titleGenerationContext:(id)arg3;
+- (id)initWithMomentNodes:(id)arg1 personNodes:(id)arg2 memoryCategory:(unsigned long long)arg3 subcategory:(unsigned long long)arg4 titleGenerationContext:(id)arg5;
+- (id)initWithMomentNodes:(id)arg1 memoryCategory:(unsigned long long)arg2 subcategory:(unsigned long long)arg3 titleGenerationContext:(id)arg4;
+- (id)initWithMomentNodes:(id)arg1 specCollection:(id)arg2 titleGenerationContext:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

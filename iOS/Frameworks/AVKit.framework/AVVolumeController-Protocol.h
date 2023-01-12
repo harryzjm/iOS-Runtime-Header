@@ -11,12 +11,12 @@
 @protocol AVVolumeController <NSObject>
 + (id)volumeController;
 @property(readonly, nonatomic) _Bool currentRouteHasVolumeControl;
-@property(readonly, nonatomic) float effectiveVolumeLimit;
+@property(nonatomic) _Bool prefersSystemVolumeHUDHidden;
 @property(readonly, nonatomic) float volume;
 @property(readonly, nonatomic, getter=isChangingVolume) _Bool changingVolume;
 - (void)setTargetVolume:(float)arg1;
 - (void)endChangingVolume;
-- (void)beginChangingVolumeForWindowSceneSessionID:(NSString *)arg1;
-- (void)setClientWithIdentifier:(NSString *)arg1 prefersSystemVolumeHUDHidden:(_Bool)arg2 forWindowSceneSessionWithIdentifier:(NSString *)arg3;
+- (void)beginChangingVolume;
+- (void)setClientWithIdentifier:(NSString *)arg1 forWindowSceneSessionWithIdentifier:(NSString *)arg2;
 @end
 

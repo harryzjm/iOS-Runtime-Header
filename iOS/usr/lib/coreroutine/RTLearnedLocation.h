@@ -15,7 +15,8 @@
     double _confidence;
 }
 
-+ (double)confidenceFromDataPointCount:(unsigned long long)arg1;
++ (double)confidenceFromDataPointCount:(unsigned long long)arg1 highConfidenceThreshold:(double)arg2;
++ (id)removeOutlierLearnedLocationsWithLargeHorizontalUncertainty:(id)arg1;
 + (id)shiftLocation:(id)arg1 shifter:(id)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) double confidence; // @synthesize confidence=_confidence;
@@ -24,13 +25,15 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
-- (id)initWithLearnedLocations:(id)arg1;
+- (id)initWithChinaShiftedLearnedLocations:(id)arg1 type:(unsigned long long)arg2;
+- (id)aggregateLearnedLocations:(id)arg1 updateAltitude:(_Bool)arg2;
+- (id)initWithLearnedLocations:(id)arg1 type:(unsigned long long)arg2;
 - (void)calculateAltitude:(double *)arg1 verticalUncertainty:(double *)arg2 learnedLocations:(id)arg3;
-- (id)initWithLocation:(id)arg1 dataPointCount:(unsigned long long)arg2;
+- (id)initWithLocation:(id)arg1 dataPointCount:(unsigned long long)arg2 type:(unsigned long long)arg3;
 - (id)initWithLocation:(id)arg1 dataPointCount:(unsigned long long)arg2 confidence:(double)arg3;
 - (id)init;
 - (id)initWithLocationOfInterest:(id)arg1;
-- (id)initWithMapItem:(id)arg1;
+- (id)initWithMapItem:(id)arg1 type:(unsigned long long)arg2;
 
 @end
 

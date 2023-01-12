@@ -23,13 +23,17 @@ __attribute__((visibility("hidden")))
     double _plrEnvelope;
     unsigned int _burstLossPacketCount;
     _Bool _isUplinkRecentlyCongested;
+    float _offChannelTimeRatio;
+    _Bool _isOffChannelActivityHigh;
 }
 
 @property(readonly, nonatomic) double redundancyInterval; // @synthesize redundancyInterval=_redundancyInterval;
 @property(readonly, nonatomic) unsigned int redundancyPercentage; // @synthesize redundancyPercentage=_redundancyPercentage;
 - (unsigned int)updateRedundancyPercentageWithPLRThresholds:(unsigned int *)arg1;
 - (void)computeRedundancyInfo;
-- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_56e8fa21)arg1;
+- (void)processRCNetworkStatistics:(CDStruct_c0785916)arg1;
+- (void)processNWConnectionStatistics:(CDStruct_c0785916)arg1;
+- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_c0785916)arg1;
 - (id)init;
 
 // Remaining properties

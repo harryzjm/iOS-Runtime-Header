@@ -12,6 +12,7 @@
 
 - (void)setICloudPersonID:(id)arg1;
 - (void)setCloudBackupEnabled:(_Bool)arg1;
+@property(copy, nonatomic) NSDictionary *privacyAcknowledgementVersions; // @dynamic privacyAcknowledgementVersions;
 - (void)setPrivateListeningEnabledForHomeUsers:(id)arg1;
 @property(copy, nonatomic) NSNumber *privateListeningEnabled; // @dynamic privateListeningEnabled;
 @property(copy, nonatomic) NSDictionary *cloudLibraryStateReason; // @dynamic cloudLibraryStateReason;

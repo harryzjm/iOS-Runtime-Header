@@ -8,7 +8,7 @@
 
 @interface RLMThreadSafeReference : NSObject
 {
-    unique_ptr_d0e912ad _reference;
+    unique_ptr_14b91335 _reference;
     id _metadata;
     Class _type;
 }

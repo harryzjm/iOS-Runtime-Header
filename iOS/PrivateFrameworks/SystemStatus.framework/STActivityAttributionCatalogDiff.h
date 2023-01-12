@@ -9,30 +9,27 @@
 #import <SystemStatus/NSCopying-Protocol.h>
 #import <SystemStatus/STStatusDomainDataDiff-Protocol.h>
 
-@class NSDictionary, NSString, STActivityAttributionCatalog;
+@class NSDictionary, NSString;
 
 @interface STActivityAttributionCatalogDiff : NSObject <STStatusDomainDataDiff, NSCopying>
 {
-    STActivityAttributionCatalog *_attributionsAdded;
-    STActivityAttributionCatalog *_attributionsRemoved;
-    NSDictionary *_attributionsCleared;
+    NSDictionary *_attributionListDiffsByKey;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)diffFromCatalog:(id)arg1 toCatalog:(id)arg2;
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSDictionary *attributionsCleared; // @synthesize attributionsCleared=_attributionsCleared;
-@property(readonly, copy, nonatomic) STActivityAttributionCatalog *attributionsRemoved; // @synthesize attributionsRemoved=_attributionsRemoved;
-@property(readonly, copy, nonatomic) STActivityAttributionCatalog *attributionsAdded; // @synthesize attributionsAdded=_attributionsAdded;
+@property(readonly, copy, nonatomic) NSDictionary *attributionListDiffsByKey; // @synthesize attributionListDiffsByKey=_attributionListDiffsByKey;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)diffByApplyingDiff:(id)arg1;
 @property(readonly, nonatomic, getter=isEmpty) _Bool empty;
 - (void)applyToMutableCatalog:(id)arg1;
 - (id)catalogByApplyingToCatalog:(id)arg1;
-- (id)initWithAttributionsAdded:(id)arg1 attributionsRemoved:(id)arg2 attributionsCleared:(id)arg3;
+- (id)initWithAttributionListDiffsByKey:(id)arg1;
 - (id)init;
 
 // Remaining properties

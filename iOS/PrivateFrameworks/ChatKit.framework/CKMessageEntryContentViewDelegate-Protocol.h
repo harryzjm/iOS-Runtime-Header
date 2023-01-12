@@ -6,11 +6,19 @@
 
 #import <ChatKit/UIScrollViewDelegate-Protocol.h>
 
-@class CKMediaObject, CKMessageEntryContentView, IMPluginPayload, NSArray, NSString;
+@class CKEntity, CKMediaObject, CKMessageEntryContentView, IMPluginPayload, NSArray, NSString;
 
 @protocol CKMessageEntryContentViewDelegate <UIScrollViewDelegate>
+- (void)messageEntryContentViewCancelShowMentionSuggestions:(CKMessageEntryContentView *)arg1;
+- (void)messageEntryContentView:(CKMessageEntryContentView *)arg1 showMentionSuggestionsForEntities:(NSArray *)arg2 replacementRange:(struct _NSRange)arg3 completionHandler:(void (^)(CKEntity *))arg4;
+- (void)messageEntryContentView:(CKMessageEntryContentView *)arg1 insertMention:(NSString *)arg2 entity:(CKEntity *)arg3 replacementRange:(struct _NSRange)arg4;
+- (_Bool)messageEntryContentViewCanSuggestMentionForCurrentSelection:(CKMessageEntryContentView *)arg1;
+- (void)messageEntryContentViewInsertionPointExitedRangeWithMention:(CKMessageEntryContentView *)arg1;
+- (void)messageEntryContentView:(CKMessageEntryContentView *)arg1 insertionPointEnteredRange:(struct _NSRange)arg2 forMention:(NSString *)arg3 withEntities:(NSArray *)arg4;
+- (void)messageEntryContentView:(CKMessageEntryContentView *)arg1 didTapCharacterAtIndex:(unsigned long long)arg2 isLongPress:(_Bool)arg3;
 - (void)messageEntryContentViewDidTapMention:(CKMessageEntryContentView *)arg1 characterIndex:(double)arg2;
 - (_Bool)messageEntryContentViewWillChangeText:(CKMessageEntryContentView *)arg1 inRange:(struct _NSRange)arg2 withReplacementText:(NSString *)arg3;
+- (void)messageEntryContentView:(CKMessageEntryContentView *)arg1 didStagePluginPayload:(IMPluginPayload *)arg2;
 - (void)messageEntryContentViewCancelWasTapped:(CKMessageEntryContentView *)arg1 shelfPluginPayload:(IMPluginPayload *)arg2;
 - (void)messageEntryContentViewDidTapHandwritingKey:(CKMessageEntryContentView *)arg1;
 - (void)messageEntryContentView:(CKMessageEntryContentView *)arg1 didPasteURL:(NSString *)arg2;

@@ -66,6 +66,7 @@
 - (id)sideCarRecordIDWithZone:(id)arg1;
 - (id)sideCarRecordNameWithZone:(id)arg1;
 - (id)structureRecordIDForItemType:(BOOL)arg1 zone:(id)arg2 aliasTargetZoneIsShared:(_Bool)arg3;
+- (id)structureRecordPrefixForItemType:(BOOL)arg1 targetZoneShared:(_Bool)arg2;
 - (id)pcsChainDocumentStructureReferenceInZoneID:(id)arg1;
 - (id)pcsChainParentReferenceInZone:(id)arg1;
 - (id)validatingDirectoryReferenceInZone:(id)arg1;

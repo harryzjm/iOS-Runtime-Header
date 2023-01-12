@@ -15,9 +15,14 @@ struct CGSize {
     double height;
 };
 
+struct timespec {
+    long long tv_sec;
+    long long tv_nsec;
+};
+
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    unsigned int _field1[8];
-} CDStruct_6ad76789;
+    unsigned int val[8];
+} CDStruct_4c969caf;
 

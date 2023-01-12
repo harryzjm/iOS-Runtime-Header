@@ -8,14 +8,17 @@
 
 @class MISSING_TYPE;
 
+__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI217SearchDataManager : NSObject
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *searchService;
     MISSING_TYPE *tagService;
-    MISSING_TYPE *readingHistory;
-    MISSING_TYPE *readingList;
     MISSING_TYPE *subscriptionService;
+    MISSING_TYPE *feedServiceConfigFetcher;
+    MISSING_TYPE *feedService;
+    MISSING_TYPE *accessQueue;
+    MISSING_TYPE *feedServiceConfig;
 }
 
 - (void).cxx_destruct;

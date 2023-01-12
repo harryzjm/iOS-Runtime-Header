@@ -6,13 +6,13 @@
 
 #import <UIKit/UIView.h>
 
-@class UIImageView, _SUICCheckGlyphLayer, _SUICProgressRingLayer, _SUICRingLayer;
+@class LAUICheckmarkLayer, UIImageView, _SUICProgressRingLayer, _SUICRingLayer;
 
 @interface SUICProgressIndicatorView : UIView
 {
     _SUICRingLayer *_shadowRingLayer;
     _SUICProgressRingLayer *_progressRingLayer;
-    _SUICCheckGlyphLayer *_checkGlyphLayer;
+    LAUICheckmarkLayer *_checkmarkLayer;
     UIImageView *_actionArrowImageView;
 }
 

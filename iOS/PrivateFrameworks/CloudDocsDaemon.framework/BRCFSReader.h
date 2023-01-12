@@ -22,6 +22,7 @@
     unsigned long long _lostScanDelaySection;
     brc_task_tracker *_taskTracker;
     _Bool _resumed;
+    unsigned long long _lostItemCountUnderUnknownParent;
     NSObject<OS_dispatch_group> *_lostScanGroup;
 }
 
@@ -35,6 +36,7 @@
 - (void)cancel;
 - (void)reset;
 - (id)initWithAccountSession:(id)arg1;
+- (unsigned int)recoverAndReportMissingJobs;
 - (_Bool)thumbnailChangedForItem:(id)arg1 relpath:(id)arg2 url:(id)arg3 error:(id *)arg4;
 - (void)scheduleAppLibraryForLostScan:(id)arg1;
 - (void)unscheduleAppLibraryForLostScan:(id)arg1;
@@ -51,6 +53,7 @@
 - (void)_didResolvedDocumentID:(unsigned int)arg1 fileID:(unsigned long long)arg2 zone:(id)arg3;
 - (void)_resolveDocumentID:(unsigned int)arg1 zone:(id)arg2;
 - (void)_processLostItem:(id)arg1 resolvedToPath:(id)arg2;
+- (void)_recoverFromUnknownParentLoopAtPath:(id)arg1;
 - (void)_processLostItem:(id)arg1;
 - (id)_nextLostItemIDWithBackoff:(long long *)arg1 appLibrary:(id *)arg2 now:(long long)arg3;
 - (_Bool)_fetchNextLostItemID:(id *)arg1 parentID:(id *)arg2 appLibraryRowID:(id *)arg3 tooManyScans:(_Bool *)arg4 stamp:(long long *)arg5;

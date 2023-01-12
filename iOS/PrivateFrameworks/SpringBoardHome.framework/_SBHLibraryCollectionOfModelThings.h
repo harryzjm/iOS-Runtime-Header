@@ -28,7 +28,7 @@
 @property(readonly, nonatomic) __weak SBRootFolder *rootFolder; // @synthesize rootFolder=_rootFolder;
 @property(readonly, nonatomic) __weak SBHIconModel *iconModel; // @synthesize iconModel=_iconModel;
 @property(readonly, nonatomic) __weak id <SBIconViewProviding> iconViewProvider; // @synthesize iconViewProvider=_iconViewProvider;
-@property(readonly, nonatomic) _Bool isValid;
+- (_Bool)examineModelValidityWithError:(id *)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithIconViewProvider:(id)arg1 iconModel:(id)arg2 rootFolder:(id)arg3 listLayoutProvider:(id)arg4 iconImageCache:(id)arg5 folderIconImageCache:(id)arg6 categoryMapProvider:(id)arg7;
 

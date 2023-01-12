@@ -8,17 +8,16 @@
 
 @interface HDActivityCacheActiveSourceCalculator : NSObject
 {
-    vector_89c96404 _workouts;
-    vector_67487aec _activationLogEntries;
+    struct vector<HDActivityCacheStatisticsBuilderWorkoutSample, std::allocator<HDActivityCacheStatisticsBuilderWorkoutSample>> _workouts;
+    vector_0fd01da3 _activationLogEntries;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (struct HDActivityCacheActiveSource)_baseActiveSource;
-- (struct _HDActivityCacheActiveSourceCalculatorSourceEvent)_baseSourceEvent;
-- (vector_67487aec)createActiveSourceLog;
-- (void)setActivationLogEntries:(vector_67487aec *)arg1;
-- (void)setWorkouts:(vector_89c96404 *)arg1;
+- (vector_0fd01da3)createActiveSourceLog;
+- (void)setActivationLogEntries:(void *)arg1;
+- (void)setWorkouts:(void *)arg1;
 
 @end
 

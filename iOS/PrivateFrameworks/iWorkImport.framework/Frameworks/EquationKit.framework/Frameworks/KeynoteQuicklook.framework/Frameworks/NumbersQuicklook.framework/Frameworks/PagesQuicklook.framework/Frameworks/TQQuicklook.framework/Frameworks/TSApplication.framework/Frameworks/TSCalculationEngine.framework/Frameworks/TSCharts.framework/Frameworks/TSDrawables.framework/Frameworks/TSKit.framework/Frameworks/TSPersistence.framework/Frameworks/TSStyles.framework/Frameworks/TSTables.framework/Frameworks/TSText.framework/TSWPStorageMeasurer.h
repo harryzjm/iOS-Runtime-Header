@@ -10,7 +10,7 @@
 #import <TSText/TSWPLayoutOwner-Protocol.h>
 #import <TSText/TSWPLayoutTarget-Protocol.h>
 
-@class NSMutableArray, NSString, TSDCanvas, TSDLayout, TSPObject, TSWPPadding, TSWPStorage;
+@class NSMutableArray, NSString, TSDCanvas, TSPObject, TSWPPadding, TSWPStorage;
 @protocol TSDHint, TSWPFootnoteHeightMeasurer, TSWPFootnoteMarkProvider, TSWPOffscreenColumn, TSWPTopicNumberHints;
 
 @interface TSWPStorageMeasurer : NSObject <TSWPLayoutTarget, TSWPLayoutOwner, TSWPColumnMetrics>
@@ -35,7 +35,7 @@
 - (double)widthForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2;
 @property(readonly, nonatomic) unsigned long long columnCount;
 @property(readonly, nonatomic) TSWPPadding *layoutMargins;
-- (struct CGSize)adjustedInsetsForTarget:(id)arg1;
+- (struct UIEdgeInsets)adjustedInsetsForTarget:(id)arg1;
 - (id)textWrapper;
 - (void)didLayoutChangingDirtyRanges;
 - (void)layoutManager:(id)arg1 didClearDirtyRangeWithDelta:(long long)arg2 afterCharIndex:(unsigned long long)arg3;
@@ -52,7 +52,7 @@
 - (void)markHiddenInlineDrawableLayout:(id)arg1;
 - (void)clearHiddenInlineDrawableLayoutMarks;
 - (id)currentAnchoredDrawableLayouts;
-- (void)addAttachmentLayout:(id)arg1;
+- (id)addPartitionableAttachmentLayout:(id)arg1;
 - (id)currentInlineDrawableLayouts;
 - (id)validatedLayoutForAnchoredDrawable:(id)arg1;
 - (id)layoutForInlineDrawable:(id)arg1;
@@ -75,8 +75,7 @@
 @property(readonly, nonatomic) id <TSWPFootnoteMarkProvider> footnoteMarkProvider;
 @property(readonly, nonatomic) id <TSWPFootnoteHeightMeasurer> footnoteHeightMeasurer;
 @property(readonly, nonatomic) id <TSWPOffscreenColumn> nextTargetFirstColumn;
-@property(readonly, nonatomic) NSObject<TSWPTopicNumberHints> *nextTargetTopicNumbers;
-@property(readonly, nonatomic) NSObject<TSWPTopicNumberHints> *previousTargetTopicNumbers;
+@property(readonly, nonatomic) NSObject<TSWPTopicNumberHints> *nextTargetTopicNumberHints;
 @property(readonly, nonatomic) id <TSWPOffscreenColumn> previousTargetLastColumn;
 - (id)columnMetricsForCharIndex:(unsigned long long)arg1 outRange:(struct _NSRange *)arg2;
 - (double)textScaleForChild:(id)arg1;
@@ -86,19 +85,24 @@
 - (id)initWithStorage:(id)arg1;
 
 // Remaining properties
+@property(readonly, nonatomic) _Bool alwaysIncludesSpaceAfter;
+@property(readonly, nonatomic) _Bool alwaysIncludesSpaceBefore;
 @property(retain, nonatomic) NSMutableArray *anchoredDrawablesForRelayout;
 @property(readonly, nonatomic) TSDCanvas *canvas;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) struct __CFLocale *hyphenationLocale;
+@property(readonly, nonatomic) Class inlineTableOfContentsLayoutClass;
 @property(readonly, nonatomic) _Bool isLinked;
 @property(readonly, nonatomic) _Bool marginsAreMirrored;
 @property(readonly, nonatomic) struct CGRect maskRect;
-@property(readonly, nonatomic) TSDLayout *parentLayoutForInlineAttachments;
 @property(readonly, nonatomic) _Bool repShouldPreventCaret;
+@property(readonly, nonatomic) struct _NSRange restrictedLayoutCharRange;
 @property(readonly, nonatomic) _Bool shouldHyphenate;
+@property(readonly, nonatomic) _Bool shouldIgnoreAnchoredAttachments;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) _Bool supportsPageNumbers;
 @property(readonly, nonatomic) double textScaleFactor;
 
 @end

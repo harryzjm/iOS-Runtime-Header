@@ -8,7 +8,7 @@
 
 @interface TSPKnownFieldRepeatedDataReference
 {
-    NSArray *_datas;
+    NSArray *_allData;
 }
 
 - (void).cxx_destruct;

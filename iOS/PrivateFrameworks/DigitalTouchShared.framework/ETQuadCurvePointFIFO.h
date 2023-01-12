@@ -12,17 +12,17 @@
     float _unitSize;
     CDUnknownBlockType _emissionHandler;
     MISSING_TYPE *_lastPoint;
-    vector_e654105b _prevPoints;
-    vector_e654105b _points;
-    vector_e654105b _controlPoints;
+    vector_885e1103 _prevPoints;
+    vector_885e1103 _points;
+    vector_885e1103 _controlPoints;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(nonatomic) MISSING_TYPE *lastPoint; // @synthesize lastPoint=_lastPoint;
-@property(nonatomic) vector_80ea899f controlPoints; // @synthesize controlPoints=_controlPoints;
-@property(nonatomic) vector_80ea899f points; // @synthesize points=_points;
-@property(nonatomic) vector_80ea899f prevPoints; // @synthesize prevPoints=_prevPoints;
+@property(nonatomic) vector_825d63de controlPoints; // @synthesize controlPoints=_controlPoints;
+@property(nonatomic) vector_825d63de points; // @synthesize points=_points;
+@property(nonatomic) vector_825d63de prevPoints; // @synthesize prevPoints=_prevPoints;
 @property(copy) CDUnknownBlockType emissionHandler; // @synthesize emissionHandler=_emissionHandler;
 @property(nonatomic) _Bool emitInterpolatedPoints; // @synthesize emitInterpolatedPoints=_emitInterpolatedPoints;
 @property(nonatomic) float unitSize; // @synthesize unitSize=_unitSize;

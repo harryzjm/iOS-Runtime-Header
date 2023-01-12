@@ -10,6 +10,8 @@
 @protocol SBUIPowerDownViewInterface;
 
 @protocol SBUIPowerDownViewDelegate <NSObject>
+- (void)showPowerDownFindMyAlertWithProceed:(void (^)(void))arg1 cancelCompletion:(void (^)(void))arg2;
+- (void)showPowerDownFindMyAlert;
 - (void)powerDownViewWillAnimateOut:(UIView<SBUIPowerDownViewInterface> *)arg1;
 - (void)powerDownViewWillAnimateIn:(UIView<SBUIPowerDownViewInterface> *)arg1;
 - (void)powerDownViewAnimateOutCompleted:(UIView<SBUIPowerDownViewInterface> *)arg1;

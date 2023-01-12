@@ -14,10 +14,11 @@
     HMCameraClip *_cameraClip;
 }
 
++ (id)errorCodeForError:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) __weak HMCameraClip *cameraClip; // @synthesize cameraClip=_cameraClip;
 @property(readonly, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
-- (void)sendEventForState:(unsigned long long)arg1;
+- (id)sendEventForState:(unsigned long long)arg1;
 - (id)initWithCameraClip:(id)arg1;
 
 @end

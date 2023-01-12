@@ -24,11 +24,10 @@
 + (_Bool)supportsRBSXPCSecureCoding;
 + (id)exitContextForNamespace:(unsigned int)arg1 code:(unsigned long long)arg2 wait4Status:(int)arg3;
 - (void).cxx_destruct;
-@property(retain, nonatomic) RBSTerminateContext *terminationContext; // @synthesize terminationContext=_terminationContext;
+@property(readonly, nonatomic) RBSTerminateContext *terminationContext; // @synthesize terminationContext=_terminationContext;
 @property(readonly, nonatomic) int legacyCode; // @synthesize legacyCode=_legacyCode;
-@property(retain, nonatomic) RBSProcessExitStatus *status; // @synthesize status=_status;
-@property(nonatomic) long long type; // @synthesize type=_type;
-@property(retain, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
+@property(readonly, nonatomic) long long type; // @synthesize type=_type;
+@property(readonly, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithRBSXPCCoder:(id)arg1;
@@ -37,6 +36,10 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)copyWithTerminationContext:(id)arg1;
+- (id)copyWithTimestamp:(id)arg1;
+- (id)copyWithStatus:(id)arg1;
+@property(readonly, nonatomic) RBSProcessExitStatus *status; // @synthesize status=_status;
 
 // Remaining properties
 @property(readonly) Class superclass;

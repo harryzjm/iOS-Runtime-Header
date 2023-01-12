@@ -12,6 +12,8 @@
 
 + (_Bool)hasBridgeOS;
 + (_Bool)isAppleInternal;
++ (_Bool)isFileConduitEnabled;
++ (_Bool)isHTTPConduitEnabled;
 + (_Bool)isCreateAccountInSettingsEnabled;
 + (_Bool)isDeviceChannelEnabled;
 + (_Bool)isEnabled;

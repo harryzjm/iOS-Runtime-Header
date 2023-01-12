@@ -9,8 +9,8 @@
 @interface _CKComponentMemoizerImpl : NSObject
 {
     _CKComponentMemoizerImpl *_next;
-    struct unordered_multimap<CKMemoizationKey, CKComponent *, std::__1::hash<CKMemoizationKey>, std::__1::equal_to<CKMemoizationKey>, std::__1::allocator<std::__1::pair<const CKMemoizationKey, CKComponent *>>> componentCache_;
-    struct unordered_map<CKLayoutMemoizationKey, CKComponentLayout, CKLayoutMemoizationKey::Hash, CKLayoutMemoizationKey::Equals, std::__1::allocator<std::__1::pair<const CKLayoutMemoizationKey, CKComponentLayout>>> layoutCache_;
+    struct unordered_multimap<CKMemoizationKey, CKComponent *, std::hash<CKMemoizationKey>, std::equal_to<CKMemoizationKey>, std::allocator<std::pair<const CKMemoizationKey, CKComponent *>>> componentCache_;
+    struct unordered_map<CKLayoutMemoizationKey, CKComponentLayout, CKLayoutMemoizationKey::Hash, CKLayoutMemoizationKey::Equals, std::allocator<std::pair<const CKLayoutMemoizationKey, CKComponentLayout>>> layoutCache_;
 }
 
 + (void)setCurrentMemoizer:(id)arg1;

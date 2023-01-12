@@ -7,10 +7,15 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (LPInternal)
+- (_Bool)_lp_hasAllowedNonHTTPSchemeForMetadataDecoding;
+- (_Bool)_lp_hasWalletRelatedScheme;
 - (id)_lp_valueForQueryKey:(id)arg1;
 - (id)_lp_pathComponentAtIndex:(unsigned long long)arg1;
 - (id)_lp_componentsNoCopy;
 - (id)_lp_components;
+- (id)_lp_faceTimeInviteTitle;
+- (_Bool)_lp_isFaceTimeInviteURL;
+- (id)_lp_faceTimeInviteLink;
 - (id)_lp_formattedTelephoneNumber;
 - (_Bool)_lp_isTelephoneURL;
 - (_Bool)_lp_isHTTPFamilyOrLinkPresentationTestingURL;

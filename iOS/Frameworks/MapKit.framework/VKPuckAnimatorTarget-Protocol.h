@@ -7,6 +7,7 @@
 #import <MapKit/NSObject-Protocol.h>
 
 @protocol VKPuckAnimatorTarget <NSObject>
+@property(readonly, nonatomic) struct CGSize collisionSize;
 @property(nonatomic) double presentationCourse;
 - (void)setAnimatingToCoordinate:(_Bool)arg1;
 - (void)setPresentationCoordinate:(CDStruct_c3b9c2ee)arg1;

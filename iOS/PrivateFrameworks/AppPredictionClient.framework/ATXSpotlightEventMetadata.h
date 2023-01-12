@@ -14,6 +14,7 @@
 @interface ATXSpotlightEventMetadata : NSObject <NSSecureCoding, ATXProtoBufWrapper>
 {
     NSString *_queryAtEngagement;
+    NSString *_engagedAppString;
     NSNumber *_didSearchDuringSession;
     NSString *_searchEngagedBundleId;
     NSNumber *_searchEngagedActionType;
@@ -24,6 +25,7 @@
 @property(retain, nonatomic) NSNumber *searchEngagedActionType; // @synthesize searchEngagedActionType=_searchEngagedActionType;
 @property(retain, nonatomic) NSString *searchEngagedBundleId; // @synthesize searchEngagedBundleId=_searchEngagedBundleId;
 @property(retain, nonatomic) NSNumber *didSearchDuringSession; // @synthesize didSearchDuringSession=_didSearchDuringSession;
+@property(retain, nonatomic) NSString *engagedAppString; // @synthesize engagedAppString=_engagedAppString;
 @property(retain, nonatomic) NSString *queryAtEngagement; // @synthesize queryAtEngagement=_queryAtEngagement;
 - (unsigned long long)hash;
 - (_Bool)isEqualToATXSpotlightEventMetadata:(id)arg1;
@@ -35,7 +37,7 @@
 - (id)proto;
 - (id)initWithProto:(id)arg1;
 - (id)initWithProtoData:(id)arg1;
-- (id)initWithQueryAtEngagement:(id)arg1 didSearchDuringSession:(id)arg2 searchEngagedBundleId:(id)arg3 searchEngagedActionType:(id)arg4;
+- (id)initWithQueryAtEngagement:(id)arg1 engagedAppString:(id)arg2 didSearchDuringSession:(id)arg3 searchEngagedBundleId:(id)arg4 searchEngagedActionType:(id)arg5;
 - (id)init;
 
 @end

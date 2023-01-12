@@ -13,6 +13,7 @@
 
 + (id)_descriptionForHFErrorCode:(long long)arg1;
 + (id)_descriptionForHMErrorCode:(long long)arg1;
++ (id)_descriptionForHMHomeAddWalletKeyErrorCode:(long long)arg1;
 + (id)descriptionLocalizationKeyForError:(id)arg1;
 + (id)sharedHandler;
 @property(nonatomic, getter=isPresentingAlert) _Bool presentingAlert; // @synthesize presentingAlert=_presentingAlert;

@@ -14,8 +14,10 @@
 @interface HKCloudSyncObserverStatus : NSObject <NSSecureCoding, NSCopying>
 {
     _Bool _syncEnabled;
+    _Bool _accountSupportsSecureContainer;
     NSDate *_lastPullDate;
     NSDate *_lastPushDate;
+    NSDate *_lastPulledUpdateDate;
     NSDate *_restoreCompletionDate;
     NSError *_errorRequiringUserAction;
     long long _dataUploadRequestStatus;
@@ -30,8 +32,10 @@
 @property(nonatomic) long long dataUploadRequestStatus; // @synthesize dataUploadRequestStatus=_dataUploadRequestStatus;
 @property(copy, nonatomic) NSError *errorRequiringUserAction; // @synthesize errorRequiringUserAction=_errorRequiringUserAction;
 @property(copy, nonatomic) NSDate *restoreCompletionDate; // @synthesize restoreCompletionDate=_restoreCompletionDate;
+@property(copy, nonatomic) NSDate *lastPulledUpdateDate; // @synthesize lastPulledUpdateDate=_lastPulledUpdateDate;
 @property(copy, nonatomic) NSDate *lastPushDate; // @synthesize lastPushDate=_lastPushDate;
 @property(copy, nonatomic) NSDate *lastPullDate; // @synthesize lastPullDate=_lastPullDate;
+@property(nonatomic) _Bool accountSupportsSecureContainer; // @synthesize accountSupportsSecureContainer=_accountSupportsSecureContainer;
 @property(nonatomic) _Bool syncEnabled; // @synthesize syncEnabled=_syncEnabled;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
@@ -39,7 +43,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithSyncEnabled:(_Bool)arg1 lastPullDate:(id)arg2 lastPushDate:(id)arg3 restoreCompletionDate:(id)arg4 errorRequiringUserAction:(id)arg5 dataUploadRequestStatus:(long long)arg6 dataUploadRequestStartDate:(id)arg7 dataUploadRequestCompletionDate:(id)arg8;
+- (id)initWithSyncEnabled:(_Bool)arg1 accountSupportsSecureContainer:(_Bool)arg2 lastPullDate:(id)arg3 lastPushDate:(id)arg4 lastPulledUpdateDate:(id)arg5 restoreCompletionDate:(id)arg6 errorRequiringUserAction:(id)arg7 dataUploadRequestStatus:(long long)arg8 dataUploadRequestStartDate:(id)arg9 dataUploadRequestCompletionDate:(id)arg10;
 - (id)init;
 
 @end

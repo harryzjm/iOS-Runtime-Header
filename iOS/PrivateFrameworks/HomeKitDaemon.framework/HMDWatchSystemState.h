@@ -19,9 +19,7 @@
 + (id)sharedState;
 - (void).cxx_destruct;
 - (void)_callDidUpdateReachabilityChangeForCompanion:(_Bool)arg1 forDelegate:(id)arg2;
-- (void)_callDidReceiveNewIncomingMessageForDelegate:(id)arg1;
 - (void)registerDelegate:(id)arg1;
-- (void)newIncomingMessageFromClient;
 @property(readonly, nonatomic) NSHashTable *watchSystemStateDelegates; // @synthesize watchSystemStateDelegates=_watchSystemStateDelegates;
 @property(nonatomic, getter=isCompanionReachable) _Bool companionReachable; // @synthesize companionReachable=_companionReachable;
 - (id)init;

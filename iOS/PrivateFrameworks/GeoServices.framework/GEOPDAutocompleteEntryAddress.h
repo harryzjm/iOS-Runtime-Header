@@ -10,7 +10,6 @@
 
 @class GEOLatLng, GEOPDMapsIdentifier, PBDataReader, PBUnknownFields;
 
-__attribute__((visibility("hidden")))
 @interface GEOPDAutocompleteEntryAddress : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
@@ -24,11 +23,13 @@ __attribute__((visibility("hidden")))
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
     int _placeType;
+    _Bool _shouldCallPlacesForClientization;
     struct {
         unsigned int has_disambiguationRadiusMeters:1;
         unsigned int has_distance:1;
         unsigned int has_opaqueGeoId:1;
         unsigned int has_placeType:1;
+        unsigned int has_shouldCallPlacesForClientization:1;
         unsigned int read_unknownFields:1;
         unsigned int read_center:1;
         unsigned int read_mapsId:1;
@@ -45,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -53,6 +55,8 @@ __attribute__((visibility("hidden")))
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasShouldCallPlacesForClientization;
+@property(nonatomic) _Bool shouldCallPlacesForClientization;
 @property(retain, nonatomic) GEOPDMapsIdentifier *mapsId;
 @property(readonly, nonatomic) _Bool hasMapsId;
 @property(nonatomic) _Bool hasDisambiguationRadiusMeters;

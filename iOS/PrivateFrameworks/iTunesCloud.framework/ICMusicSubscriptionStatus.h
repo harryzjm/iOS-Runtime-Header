@@ -36,10 +36,18 @@
     NSString *_cellularOperatorName;
     NSString *_sessionIdentifier;
     long long _carrierBundlingErrorCode;
+    _Bool _isPartOfBundle;
+    _Bool _isBundleOwner;
+    NSArray *_eligibleOffers;
+    _Bool _partOfBundle;
+    _Bool _bundleOwner;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSArray *eligibleOffers; // @synthesize eligibleOffers=_eligibleOffers;
+@property(readonly, nonatomic, getter=isBundleOnwer) _Bool bundleOwner; // @synthesize bundleOwner=_bundleOwner;
+@property(readonly, nonatomic, getter=isPartOfBundle) _Bool partOfBundle; // @synthesize partOfBundle=_partOfBundle;
 @property(readonly, nonatomic) long long carrierBundlingErrorCode; // @synthesize carrierBundlingErrorCode=_carrierBundlingErrorCode;
 @property(readonly, copy, nonatomic) NSString *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
 @property(readonly, copy, nonatomic) NSString *cellularOperatorName; // @synthesize cellularOperatorName=_cellularOperatorName;
@@ -63,10 +71,12 @@
 @property(readonly, nonatomic, getter=isMinorAccountHolder) _Bool minorAccountHolder; // @synthesize minorAccountHolder=_isMinorAccountHolder;
 @property(readonly, copy, nonatomic) NSDictionary *responseDictionary; // @synthesize responseDictionary=_responseDictionary;
 - (void)_copySubscriptionStatusPropertiesToStatus:(id)arg1 withZone:(struct _NSZone *)arg2;
-@property(readonly, nonatomic, getter=isCloudMusicServiceEnabled) _Bool cloudMusicServiceEnabled;
 @property(readonly, copy, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(readonly, nonatomic, getter=isCloudMusicServiceEnabled) _Bool cloudMusicServiceEnabled;
 @property(readonly, nonatomic) _Bool hasAddToCloudLibraryCapability;
 @property(readonly, nonatomic) _Bool hasCatalogPlaybackCapability;
+- (_Bool)hasCapability:(unsigned long long)arg1;
+@property(readonly, nonatomic) unsigned long long capabilities;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

@@ -7,13 +7,15 @@
 #import <objc/NSObject.h>
 
 @class MPCPlaybackAccount, MPCPlaybackEngine, NSArray, NSMutableDictionary;
+@protocol OS_dispatch_group;
 
+__attribute__((visibility("hidden")))
 @interface _MPCPlaybackAccountManager : NSObject
 {
     struct os_unfair_lock_s _lock;
     NSMutableDictionary *_accounts;
     _Bool _needsRefreshDueToTimeout;
-    _Bool _hasLoadedInitialAccounts;
+    NSObject<OS_dispatch_group> *_initialAccountGroup;
     MPCPlaybackEngine *_playbackEngine;
 }
 
@@ -22,6 +24,7 @@
 - (void)_enumerateIdentitiesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_buildAccountFromDelegatedIdentity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_buildAccountFromLocalIdentity:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_updateAccountsWithAttemptCount:(long long)arg1;
 - (void)_updateAccounts;
 - (void)_userIdentityStoreChangedNotification:(id)arg1;
 - (void)_subscriptionStatusChangedNotification:(id)arg1;
@@ -29,7 +32,8 @@
 - (id)accountForHashedDSID:(id)arg1;
 - (id)accountForDSID:(id)arg1;
 @property(readonly, nonatomic) MPCPlaybackAccount *activeAccount;
-@property(readonly, nonatomic) _Bool hasLoadedInitialAccounts; // @synthesize hasLoadedInitialAccounts=_hasLoadedInitialAccounts;
+- (void)performAfterLoadingAccounts:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) _Bool hasLoadedInitialAccounts;
 @property(readonly, copy, nonatomic) NSArray *accounts;
 - (id)initWithPlaybackEngine:(id)arg1;
 

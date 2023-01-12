@@ -13,10 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (void)loadView;
 - (void)updateDockItemsVisibility;
-- (void)_accessibilityMarkupDockItems;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (void)_axUpdateGlobeKeyLabel;
-- (_Bool)_axShowsGlobeKeyAsEmoji;
 
 @end
 

@@ -6,34 +6,50 @@
 
 #import <WorkflowKit/ICAppInstallStatusObserver-Protocol.h>
 
-@class ICApp, NSObject, NSString, WFiTunesSessionManager;
-@protocol OS_dispatch_queue;
+@class INAppDescriptor, NSObject, NSString, WFiTunesSessionManager;
+@protocol OS_dispatch_queue, WFAppInstalledResourceDelegate;
 
 @interface WFAppInstalledResource <ICAppInstallStatusObserver>
 {
     _Bool _skipLookup;
+    _Bool _requiresAppToBeInstalled;
+    _Bool _intentIsSynced;
+    id <WFAppInstalledResourceDelegate> _delegate;
     WFiTunesSessionManager *_currentAppNameLookupSessionManager;
     NSObject<OS_dispatch_queue> *_stateQueue;
     NSString *_appName;
-    NSString *_appIdentifier;
+    INAppDescriptor *_descriptor;
 }
 
 + (_Bool)refreshesAvailabilityOnApplicationResume;
 + (_Bool)mustBeAvailableForDisplay;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSString *appIdentifier; // @synthesize appIdentifier=_appIdentifier;
+@property(retain, nonatomic) INAppDescriptor *descriptor; // @synthesize descriptor=_descriptor;
 @property(copy, nonatomic) NSString *appName; // @synthesize appName=_appName;
+@property(nonatomic) _Bool intentIsSynced; // @synthesize intentIsSynced=_intentIsSynced;
+@property(nonatomic) _Bool requiresAppToBeInstalled; // @synthesize requiresAppToBeInstalled=_requiresAppToBeInstalled;
 @property(nonatomic) _Bool skipLookup; // @synthesize skipLookup=_skipLookup;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *stateQueue; // @synthesize stateQueue=_stateQueue;
 @property(retain, nonatomic) WFiTunesSessionManager *currentAppNameLookupSessionManager; // @synthesize currentAppNameLookupSessionManager=_currentAppNameLookupSessionManager;
+@property(nonatomic) __weak id <WFAppInstalledResourceDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)appRegistry:(id)arg1 installStatusChangedForApp:(id)arg2;
 - (void)attemptRecoveryFromError:(id)arg1 optionIndex:(unsigned long long)arg2 userInterface:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)appNeedsUpdateErrorWithAppName:(id)arg1;
+- (id)appNotResolvedError;
 - (id)appNotInstalledError;
+- (_Bool)intentIsLocallyAvailable;
+- (_Bool)intentIsEligibleForRemoteExecution;
+- (id)intentDescriptor;
+- (_Bool)descriptorIsIntentDescriptor;
+- (void)notifyDelegateWithUpdatedDescriptor:(id)arg1;
+- (void)updateDescriptorsWithSelectedApp:(id)arg1;
 - (void)refreshAvailability;
 - (id)eventDictionary;
+- (id)bundleIdentifier;
 - (void)dealloc;
-- (id)initWithDefinition:(id)arg1;
-@property(readonly, nonatomic) ICApp *app;
+- (id)_initWithDescriptor:(id)arg1 requiresAppToBeInstalled:(_Bool)arg2 isSyncedFromOtherDevice:(_Bool)arg3;
+- (id)initWithIntentDescriptor:(id)arg1 isSyncedFromOtherDevice:(_Bool)arg2;
+- (id)initWithAppDescriptor:(id)arg1 requiresAppToBeInstalled:(_Bool)arg2;
 
 @end
 

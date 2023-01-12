@@ -19,26 +19,26 @@
     unsigned int _userIdentifier;
     float _zGradient;
     long long _pathIndex;
-    double _hitTestLocationX;
-    double _hitTestLocationY;
-    double _preciseLocationX;
-    double _preciseLocationY;
     BKSHIDEventAuthenticationMessage *_authenticationMessage;
+    struct CGPoint _hitTestLocation;
+    struct CGPoint _preciseLocation;
 }
 
 + (id)protobufSchema;
 - (void).cxx_destruct;
 @property(retain, nonatomic) BKSHIDEventAuthenticationMessage *authenticationMessage; // @synthesize authenticationMessage=_authenticationMessage;
-@property(nonatomic) double preciseLocationY; // @synthesize preciseLocationY=_preciseLocationY;
-@property(nonatomic) double preciseLocationX; // @synthesize preciseLocationX=_preciseLocationX;
-@property(nonatomic) double hitTestLocationY; // @synthesize hitTestLocationY=_hitTestLocationY;
-@property(nonatomic) double hitTestLocationX; // @synthesize hitTestLocationX=_hitTestLocationX;
+@property(nonatomic) struct CGPoint preciseLocation; // @synthesize preciseLocation=_preciseLocation;
+@property(nonatomic) struct CGPoint hitTestLocation; // @synthesize hitTestLocation=_hitTestLocation;
 @property(nonatomic) float zGradient; // @synthesize zGradient=_zGradient;
 @property(nonatomic) unsigned char locus; // @synthesize locus=_locus;
 @property(nonatomic) unsigned int userIdentifier; // @synthesize userIdentifier=_userIdentifier;
 @property(nonatomic) unsigned int touchIdentifier; // @synthesize touchIdentifier=_touchIdentifier;
 @property(nonatomic) long long pathIndex; // @synthesize pathIndex=_pathIndex;
 - (void)appendDescriptionToFormatter:(id)arg1;
+@property(nonatomic) double preciseLocationY; // @dynamic preciseLocationY;
+@property(nonatomic) double preciseLocationX; // @dynamic preciseLocationX;
+@property(nonatomic) double hitTestLocationY; // @dynamic hitTestLocationY;
+@property(nonatomic) double hitTestLocationX; // @dynamic hitTestLocationX;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

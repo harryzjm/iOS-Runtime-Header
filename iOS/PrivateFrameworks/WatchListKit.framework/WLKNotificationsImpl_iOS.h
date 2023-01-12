@@ -20,6 +20,7 @@
 }
 
 + (id)_JSONDictForResponse:(id)arg1;
++ (unsigned long long)_interruptionLevelForNumber:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool topicsAreInitialized; // @synthesize topicsAreInitialized=_topicsAreInitialized;
 @property(nonatomic) __weak id <WLKNotificationCenterDelegate> delegate; // @synthesize delegate;
@@ -35,6 +36,7 @@
 - (void)_initializeTopics;
 - (unsigned long long)_authOptions;
 - (id)_notificationCenter;
+- (_Bool)isCategoryBadgeSettingEnabledByUser:(long long)arg1;
 - (_Bool)isCategoryEnabledByUser:(long long)arg1;
 - (void)setBadgeString:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)setBadgeNumber:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

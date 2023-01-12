@@ -18,6 +18,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
+- (_Bool)isEqual:(id)arg1;
 - (id)initWithDisplayMode:(long long)arg1 styleOptions:(id)arg2 statusBarVisiblityOffset:(double)arg3;
 
 @end

@@ -10,11 +10,12 @@
 
 @interface TSCH3DChartScene : NSObject
 {
-    TSCH3DChartSceneInfo *mSceneInfo;
+    TSCH3DChartSceneInfo *_sceneInfo;
 }
 
 + (void)addObjectsToSceneWithSceneInfo:(id)arg1;
 + (_Bool)supportsValueAxisLabelAlignmentCaching;
+- (void).cxx_destruct;
 - (void)addAllObjectsToScene;
 - (void)addSeriesObjectsToScene;
 - (void)addObjectsToScene;
@@ -22,12 +23,12 @@
 - (void)addLabelsToScene;
 - (void)addChartTitlesToScene;
 - (void)adjustSceneSettings;
-- (CDStruct_b1c75024)layoutSettings;
+- (id)styleProvidingSource;
+- (CDStruct_c48db077)layoutSettings;
 - (id)seriesType;
 - (id)chartType;
 - (id)chartInfo;
 - (id)scene;
-- (void)dealloc;
 - (id)initWithSceneInfo:(id)arg1;
 
 @end

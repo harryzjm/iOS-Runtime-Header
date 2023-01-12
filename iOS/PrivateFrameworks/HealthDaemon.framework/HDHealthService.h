@@ -33,10 +33,6 @@
 + (id)serviceUUID;
 + (long long)serviceType;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableArray *pendingWrites; // @synthesize pendingWrites=_pendingWrites;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *writeQueue; // @synthesize writeQueue=_writeQueue;
-@property(retain, nonatomic) NSMutableDictionary *writableCharacteristics; // @synthesize writableCharacteristics=_writableCharacteristics;
-@property(retain, nonatomic) HDHealthServiceManager *serviceManager; // @synthesize serviceManager=_serviceManager;
 @property(readonly, nonatomic) _Bool characteristicsDiscovered; // @synthesize characteristicsDiscovered=_characteristicsDiscovered;
 @property(retain, nonatomic) NSString *serviceId; // @synthesize serviceId=_serviceId;
 @property _Bool deliverData; // @synthesize deliverData=_deliverData;
@@ -44,9 +40,6 @@
 @property(readonly, nonatomic) __weak HDHealthPeripheral *healthPeripheral; // @synthesize healthPeripheral=_healthPeripheral;
 @property(nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
 - (_Bool)processAdvertisementData:(id)arg1;
-- (_Bool)_shouldNotifyReceivedData;
-- (void)_bufferCharacteristicToBeNotified:(id)arg1;
-- (void)_dataQueue_deliverDataIfPossible;
 - (void)deviceInformationSetOnPeripheral;
 - (void)mfaSucceededOnPeripheral;
 - (id)description;
@@ -58,16 +51,11 @@
 - (void)writeCharacteristic:(id)arg1 expectResponse:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)supportsWritingCharacteristic:(id)arg1;
 - (void)setWritableCharacteristic:(id)arg1;
-- (void)markCharacteristicsDiscovered;
-- (void)executeFirstWrite;
-- (void)respondFirstWriteWithData:(id)arg1 error:(id)arg2;
 - (void)performOperation:(id)arg1 onPeripheral:(id)arg2 withParameters:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (_Bool)supportsOperation:(id)arg1;
-- (void)_dataQueue_notifyCharacteristic:(id)arg1;
 - (void)characteristicDataReceived:(id)arg1;
 - (id)servicesInProfile;
 - (void)deviceDisconnecting;
-- (id)_dataQueue_deviceEntity;
 - (id)initWithServiceManager:(id)arg1 peripheral:(id)arg2 advertisementData:(id)arg3 profile:(id)arg4;
 
 @end

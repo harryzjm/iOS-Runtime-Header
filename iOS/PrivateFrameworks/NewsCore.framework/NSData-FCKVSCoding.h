@@ -18,6 +18,7 @@
 - (_Bool)fc_anefKeyIsValid:(id)arg1;
 - (id)fc_anefDecryptWithKey:(id)arg1;
 - (id)fc_anefEncryptWithKey:(id)arg1;
+- (long long)fc_bigEndianCompareAsUnsignedInteger:(id)arg1;
 - (id)fc_URLSafeBase64EncodedStringWithOptions:(unsigned long long)arg1;
 - (id)fc_sha256;
 - (id)fc_decryptAESSIVWithKey:(id)arg1 additionalData:(id)arg2;

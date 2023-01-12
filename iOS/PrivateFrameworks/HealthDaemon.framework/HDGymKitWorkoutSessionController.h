@@ -27,8 +27,6 @@
 + (void)willFinishSessionWithRecoveryData:(id)arg1 profile:(id)arg2;
 + (id)recoveryIdentifier;
 - (void).cxx_destruct;
-- (void)_queue_sessionFinished;
-- (void)_queue_sessionPrepared;
 - (void)unitTest_setCMWorkoutManager:(id)arg1;
 - (void)hktest_setStateTransitionCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)finishAggregationWithDate:(id)arg1;
@@ -49,9 +47,6 @@
 - (_Bool)startActivityWithDate:(id)arg1 error:(id *)arg2;
 - (_Bool)prepareWithError:(id *)arg1;
 - (void)fitnessMachineSessionUUID:(id)arg1 updatedRecoveryConfiguration:(id)arg2;
-- (void)_queue_reconnectFitnessMachineFromRecoveryState:(id)arg1;
-- (void)_queue_storeSessionRecoveryConfiguration:(id)arg1;
-- (void)_setupRecoveryState:(id)arg1;
 - (void)workoutSessionServer:(id)arg1 accumulatorDidChange:(id)arg2;
 - (void)workoutSessionServer:(id)arg1 didChangeConfiguration:(id)arg2;
 - (void)workoutSessionServer:(id)arg1 didTransitionFromState:(long long)arg2 toState:(long long)arg3 date:(id)arg4;

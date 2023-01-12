@@ -15,7 +15,6 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) HDDatabaseTransaction *transaction; // @synthesize transaction=_transaction;
 - (_Bool)enumerateResultsForObjectID:(long long)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
-- (id)initWithTransaction:(id)arg1;
 
 @end
 

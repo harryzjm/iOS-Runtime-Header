@@ -16,11 +16,12 @@
 + (_Bool)idInfo:(id)arg1 isValidForDate:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *cache; // @synthesize cache=_cache;
+- (void)removeUnsyncedNamespaces;
 - (void)removeAllNamespaces;
 - (void)removeNamespaces:(id)arg1;
 - (void)removeNamespace:(id)arg1;
 - (void)addIDInfo:(id)arg1;
-- (id)IDInfoForScheme:(id)arg1 date:(id)arg2;
+- (id)IDInfoForScheme:(id)arg1 dsId:(id)arg2 date:(id)arg3;
 - (id)init;
 
 @end

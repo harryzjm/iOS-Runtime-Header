@@ -12,6 +12,7 @@
     unsigned long long _mode;
 }
 
++ (_Bool)canShowInputAction;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long mode; // @synthesize mode=_mode;
 @property(nonatomic) __weak id <WFTriggerComposeViewControllerDelegate> delegate; // @synthesize delegate;

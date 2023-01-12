@@ -16,5 +16,9 @@
 - (_Bool)containsObject:(id <NSObject><NSCopying>)arg1;
 - (NSArray *)objectsAtIndexes:(NSIndexSet *)arg1;
 - (id <NSObject><NSCopying>)objectAtIndex:(unsigned long long)arg1;
+
+@optional
+- (unsigned long long)indexOfObject:(id <NSObject><NSCopying>)arg1 inRange:(struct _NSRange)arg2;
+- (unsigned long long)indexOfObject:(id <NSObject><NSCopying>)arg1;
 @end
 

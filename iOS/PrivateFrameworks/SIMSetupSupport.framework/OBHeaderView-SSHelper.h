@@ -9,6 +9,7 @@
 @class NSArray, UILabel;
 
 @interface OBHeaderView (SSHelper)
+- (double)_labelToDetailPadding;
 - (void)addDetailLabel:(id)arg1 withPhoneNumber:(id)arg2;
 
 // Remaining properties

@@ -16,6 +16,7 @@
 }
 
 + (id)descriptionOfAllTransactionFilesForPathManager:(id)arg1;
++ (id)descriptionOfTransactionScopes:(id)arg1;
 + (id)transactionFromUserInfo:(id)arg1;
 + (void)removeTransactionFromUserInfo:(id)arg1;
 + (void)addTransaction:(id)arg1 toUserInfo:(id)arg2;

@@ -9,8 +9,8 @@
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
 #import <PhotosUICore/PXUIWidget-Protocol.h>
 
-@class NSLayoutConstraint, NSString, PHPerson, PXOneUpPresentation, PXPeopleSuggestionDataSource, PXPhotosDetailsContext, PXSectionedSelectionManager, PXTilingController, PXWidgetSpec, UIButton, UILabel, UIView;
-@protocol PXWidgetDelegate, PXWidgetEditingDelegate, PXWidgetUnlockDelegate;
+@class NSLayoutConstraint, NSString, PHPerson, PXAssetActionManager, PXOneUpPresentation, PXPeopleSuggestionDataSource, PXPhotosDetailsContext, PXSectionedSelectionManager, PXTilingController, PXWidgetSpec, UIButton, UILabel, UIView;
+@protocol PXWidgetDelegate, PXWidgetEditingDelegate, PXWidgetInteractionDelegate, PXWidgetUnlockDelegate;
 
 @interface PXPeopleCandidateWidget : NSObject <PXChangeObserver, PXUIWidget>
 {
@@ -56,6 +56,7 @@
 
 // Remaining properties
 @property(readonly, nonatomic) _Bool allowUserInteractionWithSubtitle;
+@property(readonly, nonatomic) PXAssetActionManager *assetActionManager;
 @property(readonly, nonatomic) long long contentLayoutStyle;
 @property(readonly, nonatomic) PXTilingController *contentTilingController;
 @property(readonly, nonatomic) long long contentViewAnchoringType;
@@ -75,12 +76,14 @@
 @property(retain, nonatomic) PXOneUpPresentation *oneUpPresentation;
 @property(nonatomic, getter=isSelecting) _Bool selecting;
 @property(readonly, nonatomic) PXSectionedSelectionManager *selectionManager;
+@property(readonly, nonatomic) NSString *snappableWidgetIdentifier;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) _Bool supportsFaceMode;
 @property(readonly, nonatomic) _Bool supportsSelection;
 @property(nonatomic, getter=isUserInteractionEnabled) _Bool userInteractionEnabled;
 @property(readonly, nonatomic) _Bool wantsFocus;
 @property(nonatomic) __weak id <PXWidgetEditingDelegate> widgetEditingDelegate;
+@property(nonatomic) __weak id <PXWidgetInteractionDelegate> widgetInteractionDelegate;
 @property(nonatomic) __weak id <PXWidgetUnlockDelegate> widgetUnlockDelegate;
 
 @end

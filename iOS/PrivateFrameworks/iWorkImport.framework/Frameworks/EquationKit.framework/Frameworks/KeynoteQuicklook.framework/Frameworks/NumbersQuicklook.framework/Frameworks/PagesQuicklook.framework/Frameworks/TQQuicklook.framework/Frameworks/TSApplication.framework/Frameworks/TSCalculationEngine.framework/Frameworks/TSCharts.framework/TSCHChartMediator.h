@@ -7,26 +7,26 @@
 #import <objc/NSObject.h>
 
 #import <TSCharts/NSCopying-Protocol.h>
-#import <TSCharts/TSCHUnretainedParent-Protocol.h>
 
 @class TSCHChartInfo, TSUIntToIntDictionary;
 @protocol TSCHNotifyOnModify;
 
-@interface TSCHChartMediator : NSObject <TSCHUnretainedParent, NSCopying>
+@interface TSCHChartMediator : NSObject <NSCopying>
 {
-    id <TSCHNotifyOnModify> mObjectToNotify;
-    TSCHChartInfo *mChartInfo;
-    TSUIntToIntDictionary *mRemoteSeriesIndexForGridSeriesIndex;
-    TSUIntToIntDictionary *mGridSeriesIndexForRemoteSeriesIndex;
+    id <TSCHNotifyOnModify> _objectToNotify;
+    TSCHChartInfo *_chartInfo;
+    TSUIntToIntDictionary *_remoteSeriesIndexForGridSeriesIndex;
+    TSUIntToIntDictionary *_gridSeriesIndexForRemoteSeriesIndex;
 }
 
 + (id)propertiesThatInvalidateMediator;
 - (void).cxx_destruct;
-@property(nonatomic) __weak id <TSCHNotifyOnModify> objectToNotify; // @synthesize objectToNotify=mObjectToNotify;
-@property(nonatomic) __weak TSCHChartInfo *chartInfo; // @synthesize chartInfo=mChartInfo;
+@property(nonatomic) __weak id <TSCHNotifyOnModify> objectToNotify; // @synthesize objectToNotify=_objectToNotify;
+@property(nonatomic) __weak TSCHChartInfo *chartInfo; // @synthesize chartInfo=_chartInfo;
 - (_Bool)preferSeriesToValues;
 - (unsigned long long)p_gridSeriesIndexForRemoteSeriesIndex:(unsigned long long)arg1;
 - (unsigned long long)p_remoteSeriesIndexForGridSeriesIndex:(unsigned long long)arg1;
+@property(readonly, nonatomic) unsigned long long referenceType;
 - (id)commandToSetNewSeriesIndex:(unsigned long long)arg1 forSeriesIndex:(unsigned long long)arg2;
 - (id)seriesDataFormulaForSeriesDimension:(id)arg1;
 - (id)commandToSetSeriesDataFormula:(id)arg1 seriesDimension:(id)arg2;
@@ -53,12 +53,10 @@
 @property(readonly, nonatomic) _Bool isPhantom;
 - (void)willModify;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)clearParent;
-- (void)dealloc;
 - (id)init;
 - (id)initWithChartInfo:(id)arg1;
-- (void)saveToArchive:(struct ChartMediatorArchive *)arg1;
-- (void)loadFromArchive:(const struct ChartMediatorArchive *)arg1;
+- (void)saveToArchive:(void *)arg1;
+- (void)loadFromArchive:(const void *)arg1;
 - (id)copyWithContext:(id)arg1;
 
 @end

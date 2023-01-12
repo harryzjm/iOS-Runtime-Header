@@ -16,8 +16,8 @@
 
 @property(readonly, nonatomic) int objectCounterSpace; // @synthesize objectCounterSpace=_objectCounterSpace;
 @property(readonly, nonatomic) int objectCount; // @synthesize objectCount=_objectCount;
-- (void)saveToArchiver:(id)arg1 message:(struct Operation *)arg2;
-- (id)initWithUnarchiver:(id)arg1 message:(const struct Operation *)arg2;
+- (void)saveToArchiver:(id)arg1 message:(void *)arg2;
+- (id)initWithUnarchiver:(id)arg1 message:(const void *)arg2;
 - (shared_ptr_f167ad79)newTransformableOperation;
 - (id)toString;
 @property(readonly) unsigned long long hash;
@@ -25,11 +25,11 @@
 - (id)operationWithNewNoop:(_Bool)arg1;
 - (int)placementType;
 - (id)initWithUUIDPath:(id)arg1 fromIndex:(int)arg2;
-- (id)initWithAddress:(const vector_4dc5f307 *)arg1 fromIndex:(int)arg2 toIndex:(int)arg3 dominating:(_Bool)arg4 noop:(_Bool)arg5;
-- (id)initWithAddress:(const vector_4dc5f307 *)arg1 fromIndex:(int)arg2;
-- (id)initWithAddress:(const vector_4dc5f307 *)arg1 fromIndex:(int)arg2 noop:(_Bool)arg3 objectCount:(int)arg4 objectCounterSpace:(int)arg5;
-- (id)initWithAddress:(const vector_4dc5f307 *)arg1 fromIndex:(int)arg2 objectCount:(int)arg3 objectCounterSpace:(int)arg4;
-- (id)initWithAddress:(const vector_4dc5f307 *)arg1 fromIndex:(int)arg2 toIndex:(int)arg3 dominating:(_Bool)arg4 noop:(_Bool)arg5 objectCount:(int)arg6 objectCounterSpace:(int)arg7;
+- (id)initWithAddress:(const void *)arg1 fromIndex:(int)arg2 toIndex:(int)arg3 dominating:(_Bool)arg4 noop:(_Bool)arg5;
+- (id)initWithAddress:(const void *)arg1 fromIndex:(int)arg2;
+- (id)initWithAddress:(const void *)arg1 fromIndex:(int)arg2 noop:(_Bool)arg3 objectCount:(int)arg4 objectCounterSpace:(int)arg5;
+- (id)initWithAddress:(const void *)arg1 fromIndex:(int)arg2 objectCount:(int)arg3 objectCounterSpace:(int)arg4;
+- (id)initWithAddress:(const void *)arg1 fromIndex:(int)arg2 toIndex:(int)arg3 dominating:(_Bool)arg4 noop:(_Bool)arg5 objectCount:(int)arg6 objectCounterSpace:(int)arg7;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -18,7 +18,7 @@
 @property(nonatomic) unsigned char decimalWidth; // @dynamic decimalWidth;
 @property(nonatomic) _Bool formatContainsIntegerToken; // @dynamic formatContainsIntegerToken;
 @property(copy, nonatomic) NSString *formatString; // @dynamic formatString;
-@property(nonatomic) int fractionAccuracy; // @dynamic fractionAccuracy;
+@property(nonatomic) BOOL fractionAccuracy; // @dynamic fractionAccuracy;
 @property(nonatomic) unsigned char indexFromRightOfLastDigitPlaceholder; // @dynamic indexFromRightOfLastDigitPlaceholder;
 @property(copy, nonatomic) NSIndexSet *interstitialStringInsertionIndexes; // @dynamic interstitialStringInsertionIndexes;
 @property(copy, nonatomic) NSArray *interstitialStrings; // @dynamic interstitialStrings;

@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class AWAttentionAwarenessClient, AWAttentionAwarenessConfiguration;
+#import <SpringBoard/BSInvalidatable-Protocol.h>
+
+@class AWAttentionAwarenessClient, AWAttentionAwarenessConfiguration, NSString;
 @protocol OS_dispatch_queue, SBAttentionAwarenessClientDelegate;
 
-@interface SBAttentionAwarenessClient : NSObject
+@interface SBAttentionAwarenessClient : NSObject <BSInvalidatable>
 {
     AWAttentionAwarenessConfiguration *_queue_configuration;
     _Bool _enabled;
@@ -28,7 +30,14 @@
 - (void)resetAttentionLostTimeout;
 - (void)setConfiguration:(id)arg1 shouldReset:(_Bool)arg2;
 @property(retain, nonatomic) AWAttentionAwarenessConfiguration *configuration;
+- (void)invalidate;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

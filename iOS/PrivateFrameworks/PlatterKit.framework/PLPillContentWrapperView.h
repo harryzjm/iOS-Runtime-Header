@@ -36,6 +36,7 @@
 - (_Bool)adjustForContentSizeCategoryChange;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)intrinsicContentSize;
+- (void)updateWithContentItem:(id)arg1;
 - (void)endAppearanceTransition:(_Bool)arg1;
 - (void)beginAppearanceTransition:(_Bool)arg1;
 - (void)setContentItem:(id)arg1 transitionCoordinator:(id)arg2;

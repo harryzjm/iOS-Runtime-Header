@@ -8,7 +8,7 @@
 
 @interface TSSTheme (TSTArchiving)
 + (void)tstRegisterPresetSourceClasses;
-- (void)tstSaveToArchive:(struct ThemeArchive *)arg1 archiver:(id)arg2;
-- (void)tstLoadFromArchive:(const struct ThemeArchive *)arg1 unarchiver:(id)arg2;
+- (void)tstSaveToArchive:(void *)arg1 archiver:(id)arg2;
+- (void)tstLoadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 @end
 

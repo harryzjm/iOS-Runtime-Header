@@ -7,7 +7,7 @@
 #import <PhotosUI/PUAssetSharedViewModelChangeObserver-Protocol.h>
 #import <PhotosUI/PUBrowsingVideoPlayerChangeObserver-Protocol.h>
 
-@class NSObject, NSString, PLRoundProgressView, PUAssetSharedViewModel, PUBrowsingVideoPlayer, PUOperationStatus, UIButton, UILabel;
+@class NSObject, NSString, PLRoundProgressView, PUAssetSharedViewModel, PUAssetViewModel, PUBrowsingVideoPlayer, PUOperationStatus, UIButton, UILabel;
 @protocol OS_os_log;
 
 __attribute__((visibility("hidden")))
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     PUAssetSharedViewModel *_assetSharedViewModel;
     PUBrowsingVideoPlayer *_videoPlayer;
     CDUnknownBlockType _errorPresenter;
+    PUAssetViewModel *_assetViewModel;
     long long __progressViewStyle;
     PUOperationStatus *__status;
     long long __sizeClass;
@@ -47,6 +48,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, setter=_setNeedsUpdateSizeClass:) _Bool _needsUpdateSizeClass; // @synthesize _needsUpdateSizeClass=__needsUpdateSizeClass;
 @property(nonatomic, setter=_setNeedsUpdateStatus:) _Bool _needsUpdateStatus; // @synthesize _needsUpdateStatus=__needsUpdateStatus;
 @property(nonatomic, setter=_setNeedsUpdateProgressViewStyle:) _Bool _needsUpdateProgressViewStyle; // @synthesize _needsUpdateProgressViewStyle=__needsUpdateProgressViewStyle;
+@property(retain, nonatomic) PUAssetViewModel *assetViewModel; // @synthesize assetViewModel=_assetViewModel;
 @property(copy, nonatomic) CDUnknownBlockType errorPresenter; // @synthesize errorPresenter=_errorPresenter;
 @property(retain, nonatomic) PUBrowsingVideoPlayer *videoPlayer; // @synthesize videoPlayer=_videoPlayer;
 @property(retain, nonatomic) PUAssetSharedViewModel *assetSharedViewModel; // @synthesize assetSharedViewModel=_assetSharedViewModel;

@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 @interface VCMediaNegotiatorLocalConfiguration : NSObject <NSCopying>
 {
     unsigned int _videoSSRC;
+    unsigned int _screenSSRC;
     VCMediaNegotiatorAudioConfiguration *_audioConfiguration;
     VCVideoRuleCollections *_videoRuleCollections;
     VCVideoRuleCollections *_screenRuleCollections;
@@ -25,7 +26,7 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_bandwidthConfigurations;
     NSSet *_captionsReceiverLanguages;
     NSSet *_captionsSenderLanguages;
-    unsigned long long _creationTime;
+    union tagNTP _creationTime;
     NSMutableOrderedSet *_multiwayAudioStreams;
     NSMutableOrderedSet *_multiwayVideoStreams;
     NSSet *_momentsVideoCodecs;
@@ -43,6 +44,11 @@ __attribute__((visibility("hidden")))
     NSSet *_pixelFormats;
     unsigned char _mediaControlInfoFECFeedbackVersion;
     unsigned char _linkProbingCapabilityVersion;
+    NSMutableSet *_streamGroupConfigs;
+    struct CGSize _screenSize;
+    struct CGSize _aspectRatioLandscape;
+    struct CGSize _aspectRatioPortrait;
+    struct CGSize _mismatchedLandscapeAspectRatio;
     _Bool _alwaysOnAudRedEnabled;
     _Bool _alwaysOnAudioRedundancyEnabled;
     _Bool _highFecEnabled;
@@ -55,6 +61,7 @@ __attribute__((visibility("hidden")))
     _Bool _duplicateImportantPktsEnabled;
     unsigned int _customVideoWidth;
     unsigned int _customVideoHeight;
+    struct CGSize _orientationMismatchAspectRatioLandscape;
 }
 
 @property(nonatomic) _Bool duplicateImportantPktsEnabled; // @synthesize duplicateImportantPktsEnabled=_duplicateImportantPktsEnabled;
@@ -69,6 +76,11 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool alwaysOnAudRedEnabled; // @synthesize alwaysOnAudRedEnabled=_alwaysOnAudRedEnabled;
 @property(nonatomic) int deviceRole; // @synthesize deviceRole=_deviceRole;
 @property(nonatomic) int preferredAudioCodec; // @synthesize preferredAudioCodec=_preferredAudioCodec;
+@property(readonly, nonatomic) struct CGSize orientationMismatchAspectRatioLandscape; // @synthesize orientationMismatchAspectRatioLandscape=_orientationMismatchAspectRatioLandscape;
+@property(readonly, nonatomic) struct CGSize aspectRatioPortrait; // @synthesize aspectRatioPortrait=_aspectRatioPortrait;
+@property(readonly, nonatomic) struct CGSize aspectRatioLandscape; // @synthesize aspectRatioLandscape=_aspectRatioLandscape;
+@property(readonly, nonatomic) struct CGSize screenSize; // @synthesize screenSize=_screenSize;
+@property(readonly, nonatomic) NSSet *streamGroupConfigs; // @synthesize streamGroupConfigs=_streamGroupConfigs;
 @property(nonatomic) unsigned char linkProbingCapabilityVersion; // @synthesize linkProbingCapabilityVersion=_linkProbingCapabilityVersion;
 @property(nonatomic) unsigned char mediaControlInfoFECFeedbackVersion; // @synthesize mediaControlInfoFECFeedbackVersion=_mediaControlInfoFECFeedbackVersion;
 @property(retain, nonatomic) NSSet *pixelFormats; // @synthesize pixelFormats=_pixelFormats;
@@ -85,7 +97,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSMutableOrderedSet *multiwayVideoStreams; // @synthesize multiwayVideoStreams=_multiwayVideoStreams;
 @property(retain, nonatomic) NSMutableOrderedSet *multiwayAudioStreams; // @synthesize multiwayAudioStreams=_multiwayAudioStreams;
 @property(nonatomic) unsigned char mediaControlInfoVersion; // @synthesize mediaControlInfoVersion=_mediaControlInfoVersion;
-@property(nonatomic) unsigned long long creationTime; // @synthesize creationTime=_creationTime;
+@property(nonatomic) union tagNTP creationTime; // @synthesize creationTime=_creationTime;
 @property(nonatomic) void *callLogFile; // @synthesize callLogFile=_callLogFile;
 @property(retain, nonatomic) NSSet *captionsReceiverLanguages; // @synthesize captionsReceiverLanguages=_captionsReceiverLanguages;
 @property(retain, nonatomic) NSSet *captionsSenderLanguages; // @synthesize captionsSenderLanguages=_captionsSenderLanguages;
@@ -94,6 +106,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *basebandCodec; // @synthesize basebandCodec=_basebandCodec;
 @property(nonatomic) _Bool isCaller; // @synthesize isCaller=_isCaller;
 @property(nonatomic) _Bool allowRTCPFB; // @synthesize allowRTCPFB=_allowRTCPFB;
+@property(nonatomic) unsigned int screenSSRC; // @synthesize screenSSRC=_screenSSRC;
 @property(nonatomic) unsigned int videoSSRC; // @synthesize videoSSRC=_videoSSRC;
 @property(retain, nonatomic) NSDictionary *videoFeatureStrings; // @synthesize videoFeatureStrings=_videoFeatureStrings;
 @property(retain, nonatomic) VCVideoRuleCollections *screenRuleCollections; // @synthesize screenRuleCollections=_screenRuleCollections;
@@ -104,9 +117,12 @@ __attribute__((visibility("hidden")))
 - (_Bool)isEqualMomentsVideoCodecs:(id)arg1;
 - (_Bool)isEqualMomentsImageTypes:(id)arg1;
 - (_Bool)isEqualFeatureStrings:(id)arg1;
+- (_Bool)isEqualStreamGroupConfigs:(id)arg1;
 - (_Bool)isEqualMultiwayVideoStreamSet:(id)arg1;
 - (_Bool)isEqualMultiwayAudioStreamSet:(id)arg1;
 - (_Bool)isEqualBandwidthConfigurations:(id)arg1;
+- (void)resetStreamGroups;
+- (void)addStreamGroupConfig:(id)arg1;
 - (void)addMultiwayVideoStream:(id)arg1;
 - (void)addMultiwayAudioStream:(id)arg1;
 - (void)addBandwidthConfiguration:(id)arg1;

@@ -11,9 +11,10 @@
 #import <MediaPlaybackCore/ICEnvironmentMonitorObserver-Protocol.h>
 #import <MediaPlaybackCore/MPRTCReportingItemSessionCreating-Protocol.h>
 
-@class ICMusicSubscriptionLeaseSession, ICMusicSubscriptionLeaseStatus, ICStoreRequestContext, MPCModelGenericAVItemTimedMetadataRequest, MPCModelGenericAVItemTimedMetadataResponse, MPCModelGenericAVItemUserIdentityPropertySet, MPCPlaybackEngineEventStream, MPCPlaybackRequestEnvironment, MPCSuzeLeaseSession, MPMediaLibrary, MPModelGenericObject, MPPropertySet, MPSubscriptionStatusPlaybackInformation, NSArray, NSData, NSDictionary, NSNumber, NSObject, NSOperationQueue, NSString, NSURL;
+@class ICAVAssetDownloadURLSession, ICContentKeySession, ICMusicSubscriptionLeaseSession, ICMusicSubscriptionLeaseStatus, ICStoreRequestContext, ICURLRequest, MPCModelGenericAVItemTimedMetadataRequest, MPCModelGenericAVItemTimedMetadataResponse, MPCModelGenericAVItemUserIdentityPropertySet, MPCPlaybackEngineEventStream, MPCPlaybackRequestEnvironment, MPCPlayerAudioFormat, MPCPlayerAudioRoute, MPCSuzeLeaseSession, MPMediaLibrary, MPModelGenericObject, MPPropertySet, MPSubscriptionStatusPlaybackInformation, NSArray, NSData, NSDictionary, NSNumber, NSObject, NSOperationQueue, NSString, NSURL;
 @protocol MPCModelPlaybackAssetCacheProviding, MPCReportingIdentityPropertiesLoading, OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface MPCModelGenericAVItem : MPAVItem <AVAssetResourceLoaderDelegate, AVPlayerItemMetadataOutputPushDelegate, ICEnvironmentMonitorObserver, MPRTCReportingItemSessionCreating>
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
@@ -26,7 +27,6 @@
     MPSubscriptionStatusPlaybackInformation *_subscriptionPlaybackInformation;
     NSObject<OS_dispatch_queue> *_subscriptionPlaybackInformationLoadQueue;
     _Bool _shouldAutomaticallyRefreshSubscriptionLease;
-    _Bool _isAssetSubscriptionProtectionType;
     _Bool _isSubscriptionPolicyContent;
     _Bool _lastPreparedForNonZeroRate;
     long long _subscriptionLeaseRequestCount;
@@ -44,22 +44,27 @@
     MPCModelGenericAVItemTimedMetadataResponse *_timedMetadataResponse;
     NSOperationQueue *_timedMetadataOperationQueue;
     _Bool _isMusicCellularStreamingAllowed;
-    _Bool _isHLSAsset;
     _Bool _didReceiveHLSTimedMetadata;
     NSString *_hlsStreamIdentifier;
     _Bool _isiTunesStoreStream;
     ICStoreRequestContext *_storeRequestContext;
     NSURL *_streamingKeyCertificateURL;
     NSURL *_streamingKeyServerURL;
-    id _rtcReportingParentHierarchyToken;
     NSString *_rtcReportingServiceIdentifier;
     MPCModelGenericAVItemUserIdentityPropertySet *_identityPropertySet;
-    _Bool supportsRadioTrackActions;
+    ICContentKeySession *_contentKeySession;
+    ICAVAssetDownloadURLSession *_hlsDownloadURLSession;
+    ICURLRequest *_hlsDownloadURLRequest;
+    struct os_unfair_lock_s _genericObjectLock;
     _Bool _radioPlayback;
     _Bool _radioStreamPlayback;
     _Bool _subscriptionRequired;
+    _Bool _hlsAsset;
+    _Bool _downloadedAsset;
     long long _leasePlaybackPreventionState;
     ICMusicSubscriptionLeaseStatus *_leaseStatus;
+    NSDictionary *_audioFormatsDictionary;
+    long long _preferredAudioAssetType;
     id <MPCModelPlaybackAssetCacheProviding> _assetCacheProvider;
     NSString *_assetSourceStoreFrontID;
     long long _equivalencySourceAdamID;
@@ -71,12 +76,28 @@
     long long _stationItemLikedState;
     NSDictionary *_trackInfo;
     MPCPlaybackEngineEventStream *_eventStream;
+    MPCPlayerAudioFormat *_preferredFormat;
+    MPCPlayerAudioFormat *_activeFormat;
+    long long _activeFormatJustification;
+    NSArray *_alternateFormats;
+    NSArray *_availableSortedFormats;
+    MPCPlayerAudioRoute *_audioRoute;
+    long long _loadedAudioAssetType;
 }
 
 + (id)_utilitySerialQueue;
 + (_Bool)_prefersHighQualityVideoContentForNetworkType:(long long)arg1;
 + (_Bool)_prefersHighQualityAudioContentForNetworkType:(long long)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic, getter=isDownloadedAsset) _Bool downloadedAsset; // @synthesize downloadedAsset=_downloadedAsset;
+@property(readonly, nonatomic, getter=isHLSAsset) _Bool hlsAsset; // @synthesize hlsAsset=_hlsAsset;
+@property(readonly, nonatomic) long long loadedAudioAssetType; // @synthesize loadedAudioAssetType=_loadedAudioAssetType;
+@property(retain, nonatomic) MPCPlayerAudioRoute *audioRoute; // @synthesize audioRoute=_audioRoute;
+@property(retain, nonatomic) NSArray *availableSortedFormats; // @synthesize availableSortedFormats=_availableSortedFormats;
+@property(retain, nonatomic) NSArray *alternateFormats; // @synthesize alternateFormats=_alternateFormats;
+@property(nonatomic) long long activeFormatJustification; // @synthesize activeFormatJustification=_activeFormatJustification;
+@property(retain, nonatomic) MPCPlayerAudioFormat *activeFormat; // @synthesize activeFormat=_activeFormat;
+@property(retain, nonatomic) MPCPlayerAudioFormat *preferredFormat; // @synthesize preferredFormat=_preferredFormat;
 @property(nonatomic) __weak MPCPlaybackEngineEventStream *eventStream; // @synthesize eventStream=_eventStream;
 @property(retain, nonatomic) NSDictionary *trackInfo; // @synthesize trackInfo=_trackInfo;
 @property(nonatomic) long long stationItemLikedState; // @synthesize stationItemLikedState=_stationItemLikedState;
@@ -91,9 +112,12 @@
 @property(nonatomic) long long equivalencySourceAdamID; // @synthesize equivalencySourceAdamID=_equivalencySourceAdamID;
 @property(copy, nonatomic) NSString *assetSourceStoreFrontID; // @synthesize assetSourceStoreFrontID=_assetSourceStoreFrontID;
 @property(retain, nonatomic) id <MPCModelPlaybackAssetCacheProviding> assetCacheProvider; // @synthesize assetCacheProvider=_assetCacheProvider;
-@property(nonatomic) _Bool supportsRadioTrackActions; // @synthesize supportsRadioTrackActions;
+@property(readonly, nonatomic) long long preferredAudioAssetType; // @synthesize preferredAudioAssetType=_preferredAudioAssetType;
+@property(copy, nonatomic) NSDictionary *audioFormatsDictionary; // @synthesize audioFormatsDictionary=_audioFormatsDictionary;
 - (id)leaseStatus;
 - (long long)leasePlaybackPreventionState;
+- (id)analyticsFormatInfo;
+- (id)analyticsFormatName;
 - (void)_updatePreventionStatusWithLeaseSession:(id)arg1;
 - (void)_updateJingleTimedMetadata;
 - (void)_updateBookmarkTime:(double)arg1 isCheckpoint:(_Bool)arg2;
@@ -114,6 +138,7 @@
 - (void)_getUnverifiedSubscriptionLeaseSessionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_getSubscriptionLeasePropertiesWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_bookmarkTime;
+- (unsigned long long)_audioFormatPreference;
 - (void)_applyPreferredPeakBitRateToPlayerItem:(id)arg1 withItemType:(long long)arg2;
 - (void)_applyLoudnessInfo;
 - (_Bool)_allowsStreamingPlayback;
@@ -133,7 +158,6 @@
 - (_Bool)resourceLoader:(id)arg1 shouldWaitForLoadingOfRequestedResource:(id)arg2;
 @property(readonly, nonatomic) long long rtcReportingAssetType;
 @property(readonly, copy, nonatomic) NSString *rtcReportingServiceIdentifier;
-@property(readonly, nonatomic) id rtcReportingParentHierarchyToken;
 - (id)mpcReporting_trackInfo;
 - (id)mpcReporting_siriInitiated;
 - (id)mpcReporting_privateListeningEnabled;
@@ -146,6 +170,9 @@
 - (unsigned long long)mpcReporting_itemType;
 - (long long)mpcReporting_equivalencySourceAdamID;
 - (CDUnknownBlockType)artworkCatalogBlock;
+- (long long)_keyServerAdamID;
+- (void)_didBecomeActivePlayerItem;
+- (void)_didResignActivePlayerItem;
 - (void)_willResignActivePlayerItem;
 - (void)_willBecomeActivePlayerItem;
 - (long long)_persistedLikedState;
@@ -165,10 +192,12 @@
 - (_Bool)allowsExternalPlayback;
 - (_Bool)allowsAirPlayFromCloud;
 - (_Bool)canUseLoadedAsset;
+- (void)_updateAudioFormatInfoForContentItem:(id)arg1;
 - (float)userRating;
 - (_Bool)useEmbeddedChapterData;
 - (id)urlTimeMarkers;
 - (long long)type;
+- (void)setupWithPlaybackInfo;
 - (id)playbackInfo;
 - (id)containerUniqueID;
 - (_Bool)hasTimeSyncedLyrics;
@@ -184,7 +213,6 @@
 - (long long)stationID;
 @property(readonly, nonatomic) _Bool shouldReportPlayEventsToStore;
 - (void)setRating:(float)arg1;
-- (void)reevaluateType;
 - (void)prepareForRate:(float)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)prefersSeekOverSkip;
 - (_Bool)shouldShowComposer;
@@ -206,7 +234,25 @@
 - (id)modelGenericObject;
 - (id)mediaItem;
 - (id)mainTitle;
+- (void)updatePlayerItemMetadata;
+- (void)_emitAudioFormatChangeEvent;
+- (void)_updateActiveFormatJustification:(long long)arg1;
+- (void)configureAVPlayerItemWithAudioFormat:(id)arg1 forceSpatial:(_Bool)arg2;
+- (_Bool)updateActiveFormat:(id)arg1 justification:(long long)arg2;
+- (_Bool)updatePreferredFormat:(id)arg1;
+- (_Bool)updateAudioFormatsDictionary:(id)arg1;
+- (id)audioFormatForStableVariantID:(id)arg1;
+- (id)currentPlayerAudioFormat;
 - (void)loadAssetAndPlayerItem;
+- (float)_volumeAdjustment;
+- (id)_loudnessInfoMediaKind;
+- (id)_gaplessInfo;
+- (id)_iTunesStorePurchasedMediaKind;
+- (long long)_suzeLeaseMediaType;
+- (id)_assetLoadPropertiesWithUserIdentityProperties:(id)arg1 delegatedUserIdentityProperties:(id)arg2;
+@property(readonly, nonatomic) _Bool hasVideo;
+- (_Bool)_prefersHighQualityContent;
+- (id)_delegatedUserIdentityProperties:(id *)arg1;
 - (_Bool)isValidPlayerSubstituteForItem:(id)arg1;
 - (_Bool)isStreamable;
 - (_Bool)isRadioItem;
@@ -239,6 +285,7 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) id rtcReportingParentHierarchyToken;
 @property(readonly) Class superclass;
 
 @end

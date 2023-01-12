@@ -8,11 +8,15 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
+@class NSMutableArray;
+
 @interface GEOLogMsgStateMapSettings : PBCodable <NSCopying>
 {
+    NSMutableArray *_navVoiceSettings;
     int _locationType;
     int _navVoiceVolume;
     int _preferredTransportMode;
+    _Bool _hFPEnabled;
     _Bool _avoidBusyRoads;
     _Bool _avoidHighways;
     _Bool _avoidHills;
@@ -29,6 +33,7 @@
         unsigned int has_locationType:1;
         unsigned int has_navVoiceVolume:1;
         unsigned int has_preferredTransportMode:1;
+        unsigned int has_hFPEnabled:1;
         unsigned int has_avoidBusyRoads:1;
         unsigned int has_avoidHighways:1;
         unsigned int has_avoidHills:1;
@@ -45,6 +50,8 @@
 }
 
 + (_Bool)isValid:(id)arg1;
++ (Class)navVoiceSettingsType;
+- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -58,6 +65,13 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasHFPEnabled;
+@property(nonatomic) _Bool hFPEnabled;
+- (id)navVoiceSettingsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)navVoiceSettingsCount;
+- (void)addNavVoiceSettings:(id)arg1;
+- (void)clearNavVoiceSettings;
+@property(retain, nonatomic) NSMutableArray *navVoiceSettings;
 @property(nonatomic) _Bool hasEBike;
 @property(nonatomic) _Bool eBike;
 - (int)StringAsLocationType:(id)arg1;

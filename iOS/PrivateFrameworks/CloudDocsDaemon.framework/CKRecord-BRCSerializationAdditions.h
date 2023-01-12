@@ -18,8 +18,6 @@
 + (id)rootAppLibraryRecordForAppLibraryID:(id)arg1 zoneID:(id)arg2;
 + (id)rootDirectoryRecordForZoneID:(id)arg1;
 + (id)brc_containerMetadataRecordWithContainer:(id)arg1;
-+ (id)brc_containerMetadataZoneID;
-+ (id)brc_zoneHealthZoneID;
 + (id)brc_fakeRecordWithErrorMarkerFor20716676;
 - (void)processAppLibraryDataWithMovedZoneNames:(id)arg1 serverZone:(id)arg2;
 - (id)_createAppLibraryIfNecessary:(id)arg1 session:(id)arg2;

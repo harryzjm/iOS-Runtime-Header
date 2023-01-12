@@ -12,11 +12,12 @@
 {
     unsigned int _task;
     struct _CSTypeRef _symbolicator;
-    _Bool _needToValidateAddressRange;
+    struct _CSTypeRef _libobjcSymbolOwner;
     CDUnknownBlockType _memoryReader;
     VMUTaskMemoryScanner *_scanner;
     unsigned int _objcABI;
     struct libSwiftRemoteMirrorWrapper *_swiftMirror;
+    struct _VMUSwiftRemoteMirrorReaderContext _swiftMirrorReaderContext;
     NSMutableDictionary *_libSwiftRemoteMirrors;
     VMUSwiftRuntimeInfo *_swiftRuntimeInfoStableABI;
     VMUSwiftRuntimeInfo *_swiftRuntimeInfoPreABI;
@@ -59,6 +60,7 @@
 @property(readonly) NSMutableDictionary *moduleNameToBinaryPathDict; // @synthesize moduleNameToBinaryPathDict=_moduleNameToBinaryPathDict;
 @property(readonly, nonatomic) struct VMUAutoreleasePoolPageLayout *autoreleasePoolPageLayout; // @synthesize autoreleasePoolPageLayout=_autoreleasePoolPageLayout;
 @property(readonly) unsigned int objcABI; // @synthesize objcABI=_objcABI;
+@property(readonly, nonatomic) struct _CSTypeRef libobjcSymbolOwner; // @synthesize libobjcSymbolOwner=_libobjcSymbolOwner;
 @property(readonly, nonatomic) struct _CSTypeRef symbolicator; // @synthesize symbolicator=_symbolicator;
 @property(readonly, nonatomic) unsigned long long taggedPointerMask; // @synthesize taggedPointerMask=_taggedPointerMask;
 @property(readonly, nonatomic) struct libSwiftRemoteMirrorWrapper *swiftMirror; // @synthesize swiftMirror=_swiftMirror;
@@ -68,10 +70,10 @@
 @property(readonly, nonatomic) CDUnknownBlockType memoryReader; // @synthesize memoryReader=_memoryReader;
 @property(retain, nonatomic) VMURangeArray *readonlyRegionRanges; // @synthesize readonlyRegionRanges=_readonlyRegionRanges;
 @property(nonatomic) unsigned int objectContentLevel; // @synthesize objectContentLevel=_objectContentLevel;
-@property(readonly) _Bool needToValidateAddressRange; // @synthesize needToValidateAddressRange=_needToValidateAddressRange;
 - (id)initWithTask:(unsigned int)arg1;
 @property(readonly) _Bool hasSwiftReflection;
 @property(readonly) _Bool hasSwiftContent;
+- (void)destroy_libSwiftRemoteMirror;
 - (void)loadSwiftReflectionLibraries;
 - (void)_populateSwiftABIVariables;
 - (int)_populateSwiftReflectionInfo:(struct SwiftReflectionInteropContext *)arg1;
@@ -163,6 +165,7 @@
 - (unsigned long long)SwiftClassCount;
 - (unsigned long long)ObjCclassCount;
 - (unsigned long long)CFTypeCount;
+- (void)flushMemoryCache;
 - (void)dealloc;
 - (id)initWithTask:(unsigned int)arg1 symbolicator:(struct _CSTypeRef)arg2 scanner:(id)arg3;
 - (id)initWithTask:(unsigned int)arg1 symbolicator:(struct _CSTypeRef)arg2;

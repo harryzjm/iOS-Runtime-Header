@@ -9,7 +9,7 @@
 @class HMDAccount, HMDAccountHandle, HMDBackingStore, HMDBackingStoreModelObject, HMDBackingStoreTransactionActions, HMDDevice;
 
 @protocol HMDAccountManager <NSObject>
-@property(retain, nonatomic) HMDBackingStore *backingStore;
+@property(readonly, nonatomic) HMDBackingStore *backingStore;
 - (_Bool)shouldDevice:(HMDDevice *)arg1 processModel:(HMDBackingStoreModelObject *)arg2 actions:(HMDBackingStoreTransactionActions *)arg3;
 - (_Bool)shouldAccount:(HMDAccount *)arg1 pushbackModel:(HMDBackingStoreModelObject *)arg2 actions:(HMDBackingStoreTransactionActions *)arg3;
 - (_Bool)shouldSyncDevice:(HMDDevice *)arg1;

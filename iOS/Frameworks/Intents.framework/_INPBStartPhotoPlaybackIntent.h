@@ -18,10 +18,8 @@
     CDStruct_95bda58d _includedAttributes;
     struct _has;
     _INPBString *_albumName;
-    _INPBContactList *_contentPerson;
     _INPBDateTimeRange *_dateCreated;
     _INPBIntentMetadata *_intentMetadata;
-    _INPBStringList *_keywordString;
     _INPBLocation *_locationCreated;
     _INPBContactList *_peopleInPhoto;
     _INPBStringList *_searchTerm;
@@ -32,10 +30,8 @@
 @property(retain, nonatomic) _INPBStringList *searchTerm; // @synthesize searchTerm=_searchTerm;
 @property(retain, nonatomic) _INPBContactList *peopleInPhoto; // @synthesize peopleInPhoto=_peopleInPhoto;
 @property(retain, nonatomic) _INPBLocation *locationCreated; // @synthesize locationCreated=_locationCreated;
-@property(retain, nonatomic) _INPBStringList *keywordString; // @synthesize keywordString=_keywordString;
 @property(retain, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property(retain, nonatomic) _INPBDateTimeRange *dateCreated; // @synthesize dateCreated=_dateCreated;
-@property(retain, nonatomic) _INPBContactList *contentPerson; // @synthesize contentPerson=_contentPerson;
 @property(retain, nonatomic) _INPBString *albumName; // @synthesize albumName=_albumName;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
@@ -49,7 +45,6 @@
 @property(readonly, nonatomic) _Bool hasSearchTerm;
 @property(readonly, nonatomic) _Bool hasPeopleInPhoto;
 @property(readonly, nonatomic) _Bool hasLocationCreated;
-@property(readonly, nonatomic) _Bool hasKeywordString;
 @property(readonly, nonatomic) _Bool hasIntentMetadata;
 - (int)StringAsIncludedAttributes:(id)arg1;
 - (id)includedAttributesAsString:(int)arg1;
@@ -68,7 +63,6 @@
 @property(readonly, nonatomic) int *excludedAttributes;
 - (void)setExcludedAttributes:(int *)arg1 count:(unsigned long long)arg2;
 @property(readonly, nonatomic) _Bool hasDateCreated;
-@property(readonly, nonatomic) _Bool hasContentPerson;
 @property(readonly, nonatomic) _Bool hasAlbumName;
 
 // Remaining properties

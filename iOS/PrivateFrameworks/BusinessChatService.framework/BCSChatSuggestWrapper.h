@@ -13,11 +13,14 @@
 __attribute__((visibility("hidden")))
 @interface BCSChatSuggestWrapper : PBCodable <NSCopying>
 {
+    long long _modTime;
     BCSChatSuggestMessage *_message;
     NSString *_phone;
+    CDStruct_14b7a8ea _has;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long modTime; // @synthesize modTime=_modTime;
 @property(retain, nonatomic) BCSChatSuggestMessage *message; // @synthesize message=_message;
 @property(retain, nonatomic) NSString *phone; // @synthesize phone=_phone;
 - (void)mergeFrom:(id)arg1;
@@ -29,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasModTime;
 @property(readonly, nonatomic) _Bool hasMessage;
 @property(readonly, nonatomic) _Bool hasPhone;
 

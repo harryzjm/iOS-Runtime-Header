@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <MobileMailUI/EMRemoteContentURLSessionObserver-Protocol.h>
 #import <MobileMailUI/WKNavigationDelegate-Protocol.h>
 #import <MobileMailUI/WKNavigationDelegatePrivate-Protocol.h>
 
 @class EMContentRepresentation, MFWebViewDictionary, NSError, NSString, NSURL, WKWebView, _WKRemoteObjectInterface;
 @protocol MFMailWebProcessDelegate;
 
-@interface MFWebViewLoadingController : NSObject <WKNavigationDelegate, WKNavigationDelegatePrivate>
+@interface MFWebViewLoadingController : NSObject <EMRemoteContentURLSessionObserver, WKNavigationDelegate, WKNavigationDelegatePrivate>
 {
     _Bool _webProcessPluginNeedsUpdate;
     WKWebView *_webView;
@@ -33,6 +34,7 @@
 @property(nonatomic) __weak id <MFMailWebProcessDelegate> webProcessDelegate; // @synthesize webProcessDelegate=_webProcessDelegate;
 @property(readonly, nonatomic) MFWebViewDictionary *webViewConstants; // @synthesize webViewConstants=_webViewConstants;
 @property(retain, nonatomic) WKWebView *webView; // @synthesize webView=_webView;
+- (void)remoteContentURLSession:(id)arg1 failedToProxyURL:(id)arg2;
 - (void)webProcessBrowserContextControllerDidBecomeAvailable;
 - (void)_reconveneWebProcessBundle;
 - (void)requestWebViewLoadWithContentRepresentation:(id)arg1;

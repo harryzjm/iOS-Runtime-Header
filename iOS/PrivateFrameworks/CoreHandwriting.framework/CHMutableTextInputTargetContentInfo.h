@@ -17,6 +17,7 @@
 @property(nonatomic) long long lastCharacterLevelPosition; // @dynamic lastCharacterLevelPosition;
 @property(nonatomic) _Bool supportsAutoLineBreaks; // @dynamic supportsAutoLineBreaks;
 @property(nonatomic) _Bool isSingleLine; // @dynamic isSingleLine;
+@property(nonatomic) int autoCorrectionMode; // @dynamic autoCorrectionMode;
 @property(nonatomic) int autoCapitalizationMode; // @dynamic autoCapitalizationMode;
 @property(nonatomic) int contentType; // @dynamic contentType;
 @property(nonatomic) struct _NSRange activePreviewRange; // @dynamic activePreviewRange;

@@ -12,11 +12,11 @@
 
 @interface PGDictionaryConfigurationSource : NSObject <PGConfigurationSource>
 {
-    NSDictionary *_dictionary;
+    NSDictionary *_configurationData;
 }
 
 - (void).cxx_destruct;
-@property(retain) NSDictionary *dictionary; // @synthesize dictionary=_dictionary;
+@property(copy, nonatomic) NSDictionary *configurationData; // @synthesize configurationData=_configurationData;
 - (id)objectForKey:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 

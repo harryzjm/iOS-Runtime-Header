@@ -6,7 +6,7 @@
 
 #import <NanoTimeKitCompanion/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSString, NTKEditOption, UIImageView, UIView;
+@class NSString, NTKComplicationDisplayWrapperView, NTKEditOption, UIImageView, UIView;
 
 @interface NTKBackgroundImageFaceView <UIGestureRecognizerDelegate>
 {
@@ -14,13 +14,13 @@
     UIView *_transitionViewFrom;
     NTKEditOption *_editOptionTo;
     UIView *_transitionViewTo;
-    UIView *_zoomingContainerView;
     UIView *_transitionDimmingView;
     _Bool _shouldAdjustLayoutForTimeTravel;
     UIView *_timeTravelDimmingOverlayView;
     UIView *_selectedContentView;
     double _breathScaleModifier;
     double _rubberBandScaleModifier;
+    NTKComplicationDisplayWrapperView *_touchWrapper;
     UIView *_backgroundContainerView;
     UIView *_zoomMaskView;
     UIImageView *_zoomVignette;
@@ -64,17 +64,11 @@
 - (void)_applyScaleTransform:(id)arg1;
 - (void)_applyRubberBandingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
-- (unsigned long long)_keylineLabelAlignmentForCustomEditMode:(long long)arg1 slot:(id)arg2;
-- (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (void)_cleanupAfterTransitionToOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyTransitionFraction:(double)arg1 fromOption:(id)arg2 toOption:(id)arg3 forCustomEditMode:(long long)arg4 slot:(id)arg5;
 - (void)setViewMode:(long long)arg1;
-- (void)_applyForegroundZoomAlpha:(double)arg1;
-- (void)_cleanupAfterZoom;
-- (void)_setZoomFraction:(double)arg1 iconDiameter:(double)arg2;
-- (void)_prepareToZoomWithIconView:(id)arg1 minDiameter:(double)arg2 maxDiameter:(double)arg3;
-- (_Bool)_needsVignette;
-- (_Bool)_usesCustomZoom;
+- (void)_cleanupAfterEditing;
+- (void)_prepareForEditing;
 - (double)_parallaxScaleFactor;
 - (id)_animationImageView;
 - (double)_timeLabelAlphaForEditMode:(long long)arg1;
@@ -82,10 +76,14 @@
 - (void)_configureForEditMode:(long long)arg1;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (_Bool)_fadesComplicationSlot:(id)arg1 inEditMode:(long long)arg2;
-- (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
 - (double)_keylineCornerRadiusForComplicationSlot:(id)arg1;
 - (id)_updateFontInStyle:(id)arg1 monospace:(_Bool)arg2;
 - (id)_digitalTimeLabelStyleFromViewMode:(long long)arg1 faceBounds:(struct CGRect)arg2;
+- (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
+- (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
+- (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
+- (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
+- (id)_complicationDisplayWrapperForTouch:(id)arg1;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (_Bool)_needsForegroundContainerView;

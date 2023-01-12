@@ -10,7 +10,7 @@
 #import <SensorKit/SRSampleExporting-Protocol.h>
 #import <SensorKit/SRSampling-Protocol.h>
 
-@class NSDictionary, NSMutableDictionary, NSString;
+@class NSDictionary, NSMutableArray, NSMutableDictionary, NSString;
 
 @interface SRDeviceUsageReport : NSObject <SRSampleExporting, NSSecureCoding, SRSampling>
 {
@@ -21,12 +21,22 @@
     NSMutableDictionary *_mutableApplicationUsageByCategory;
     NSMutableDictionary *_mutableNotificationUsageByCategory;
     NSMutableDictionary *_mutableWebUsageByCategory;
+    NSMutableArray *__mutableMotionActivities;
+    NSMutableArray *__mutableActivityLevels;
+    NSMutableDictionary *__reportApplicationIdentifierByBundleIdentifier;
     double _startTime;
+    double _totalScreenWakeDuration;
+    double __totalChargingDuration;
 }
 
 + (id)deviceUsageReportWithInterval:(id)arg1;
 + (_Bool)supportsSecureCoding;
+@property double _totalChargingDuration; // @synthesize _totalChargingDuration=__totalChargingDuration;
+@property double totalScreenWakeDuration; // @synthesize totalScreenWakeDuration=_totalScreenWakeDuration;
 @property double startTime; // @synthesize startTime=_startTime;
+@property(retain) NSMutableDictionary *_reportApplicationIdentifierByBundleIdentifier; // @synthesize _reportApplicationIdentifierByBundleIdentifier=__reportApplicationIdentifierByBundleIdentifier;
+@property(retain) NSMutableArray *_mutableActivityLevels; // @synthesize _mutableActivityLevels=__mutableActivityLevels;
+@property(retain) NSMutableArray *_mutableMotionActivities; // @synthesize _mutableMotionActivities=__mutableMotionActivities;
 @property(retain) NSMutableDictionary *mutableWebUsageByCategory; // @synthesize mutableWebUsageByCategory=_mutableWebUsageByCategory;
 @property(retain) NSMutableDictionary *mutableNotificationUsageByCategory; // @synthesize mutableNotificationUsageByCategory=_mutableNotificationUsageByCategory;
 @property(retain) NSMutableDictionary *mutableApplicationUsageByCategory; // @synthesize mutableApplicationUsageByCategory=_mutableApplicationUsageByCategory;
@@ -35,6 +45,8 @@
 @property long long totalScreenWakes; // @synthesize totalScreenWakes=_totalScreenWakes;
 @property double duration; // @synthesize duration=_duration;
 - (id)sr_dictionaryRepresentation;
+- (id)_activityLevels;
+- (id)_motionActivities;
 @property(readonly, copy) NSDictionary *webUsageByCategory;
 @property(readonly, copy) NSDictionary *notificationUsageByCategory;
 @property(readonly, copy) NSDictionary *applicationUsageByCategory;

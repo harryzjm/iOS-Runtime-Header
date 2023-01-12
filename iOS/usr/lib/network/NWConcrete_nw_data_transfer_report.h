@@ -9,6 +9,7 @@
 #import <network/OS_nw_data_transfer_report-Protocol.h>
 
 @class NSString, NWConcrete_nw_connection;
+@protocol OS_nw_interface;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_data_transfer_report : NSObject <OS_nw_data_transfer_report>
@@ -16,6 +17,7 @@ __attribute__((visibility("hidden")))
     unsigned long long start_time;
     unsigned long long duration_milliseconds;
     NWConcrete_nw_connection *connection;
+    NSObject<OS_nw_interface> *currently_collecting_interface;
     struct os_unfair_lock_s lock;
     unsigned int path_count;
     unsigned int allocated_path_count;

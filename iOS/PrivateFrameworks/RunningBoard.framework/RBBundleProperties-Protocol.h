@@ -13,7 +13,7 @@
 @property(readonly, nonatomic) _Bool isExtension;
 @property(readonly, nonatomic) _Bool hasPreferredJetsamBand;
 @property(readonly, nonatomic) int preferredJetsamBand;
-@property(readonly, nonatomic, getter=isBackgroundRefreshEnabled) _Bool backgroundRefreshEnabled;
+@property(readonly, nonatomic) _Bool continuousBackgroundMode;
 @property(readonly, nonatomic) _Bool usesSocketMonitoring;
 @property(readonly, nonatomic) _Bool supportsUnboundedTaskCompletion;
 @property(readonly, nonatomic) _Bool supportsBackgroundAudio;

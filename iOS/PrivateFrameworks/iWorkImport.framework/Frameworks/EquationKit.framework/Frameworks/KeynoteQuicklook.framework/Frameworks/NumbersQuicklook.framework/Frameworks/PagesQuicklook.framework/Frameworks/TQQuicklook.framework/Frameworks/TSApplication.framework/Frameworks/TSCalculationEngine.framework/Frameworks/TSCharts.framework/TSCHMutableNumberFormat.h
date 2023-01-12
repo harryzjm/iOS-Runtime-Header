@@ -15,22 +15,24 @@
 - (void)upgradePreU2_0CustomFormatsForDocumentRoot:(id)arg1;
 - (void)remapCustomFormatKeysWithOldToNewKeyMap:(id)arg1;
 - (void)updateAfterPasteForDocumentRoot:(id)arg1 pasteboardCustomFormatList:(id)arg2;
+- (void)updateCustomFormatKey:(id)arg1;
 @property(nonatomic) _Bool baseUseMinusSign; // @dynamic baseUseMinusSign;
 @property(nonatomic) unsigned int basePlaces; // @dynamic basePlaces;
 @property(nonatomic) unsigned int base; // @dynamic base;
-@property(copy, nonatomic) NSString *suffixString; // @dynamic suffixString;
-@property(copy, nonatomic) NSString *prefixString; // @dynamic prefixString;
-@property(nonatomic) int fractionAccuracy; // @dynamic fractionAccuracy;
-- (void)p_setFractionAccuracy:(int)arg1;
-@property(nonatomic) _Bool showThousandsSeparator; // @dynamic showThousandsSeparator;
-@property(nonatomic) int negativeStyle; // @dynamic negativeStyle;
+@property(nonatomic) BOOL fractionAccuracy; // @dynamic fractionAccuracy;
 @property(nonatomic) _Bool useAccountingStyle; // @dynamic useAccountingStyle;
 @property(copy, nonatomic) NSString *currencyCode; // @dynamic currencyCode;
+@property(nonatomic) _Bool showThousandsSeparator; // @dynamic showThousandsSeparator;
+@property(nonatomic) unsigned char negativeStyle; // @dynamic negativeStyle;
 @property(nonatomic) unsigned int decimalPlaces; // @dynamic decimalPlaces;
 - (void)setValueType:(int)arg1;
 @property(nonatomic) unsigned int formatType; // @dynamic formatType;
 - (id)p_formatTypeAffectedPropertyKeys;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+
+// Remaining properties
+@property(copy, nonatomic) NSString *prefixString; // @dynamic prefixString;
+@property(copy, nonatomic) NSString *suffixString; // @dynamic suffixString;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HKConcept, HKInspectableValueInRange, HKMedicalRecord, HKUIMetricColors, NSNumber, NSString, UIColor, UIImage, WDMedicalRecordCategorySummary;
+@class HKConcept, HKInspectableValueInRange, HKMedicalRecord, HKUIMetricColors, NSAttributedString, NSNumber, NSString, UIColor, UIImage, WDMedicalRecordCategorySummary;
 @protocol HKClinicalBrandable;
 
 __attribute__((visibility("hidden")))
@@ -15,15 +15,20 @@ __attribute__((visibility("hidden")))
     _Bool _extraTopPadding;
     _Bool _separatorHidden;
     _Bool _showDisclosureIndicator;
+    _Bool _showSelection;
     _Bool _useRegularFontForSubtitle;
+    _Bool _showSpinner;
     long long _displayItemType;
     long long _separatorStyle;
     long long _placement;
     long long _recordCategoryType;
+    double _rowHeight;
     NSString *_title;
     NSString *_subtitle;
+    NSAttributedString *_attributedSubtitle;
     NSString *_dateString;
     UIImage *_image;
+    UIColor *_imageColor;
     UIColor *_backgroundColor;
     HKUIMetricColors *_metricColors;
     HKInspectableValueInRange *_chartValueWithRange;
@@ -44,6 +49,8 @@ __attribute__((visibility("hidden")))
 + (id)standaloneItem;
 + (id)accountSourceItem;
 + (id)sectionHeaderItem;
++ (id)detailSpinnerItem;
++ (id)detailAttributedSubtitleItem;
 + (id)detailSubtitleItemWithTitle:(id)arg1 subtitle:(id)arg2 extraTopPadding:(_Bool)arg3;
 + (id)detailSubtitleItemWithTitle:(id)arg1 subtitle:(id)arg2;
 + (id)detailSubtitleItem;
@@ -74,11 +81,16 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) HKInspectableValueInRange *chartValueWithRange; // @synthesize chartValueWithRange=_chartValueWithRange;
 @property(retain, nonatomic) HKUIMetricColors *metricColors; // @synthesize metricColors=_metricColors;
 @property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property(retain, nonatomic) UIColor *imageColor; // @synthesize imageColor=_imageColor;
 @property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
 @property(retain, nonatomic) NSString *dateString; // @synthesize dateString=_dateString;
+@property(retain, nonatomic) NSAttributedString *attributedSubtitle; // @synthesize attributedSubtitle=_attributedSubtitle;
 @property(retain, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
+@property(nonatomic) double rowHeight; // @synthesize rowHeight=_rowHeight;
+@property(nonatomic) _Bool showSpinner; // @synthesize showSpinner=_showSpinner;
 @property(nonatomic) _Bool useRegularFontForSubtitle; // @synthesize useRegularFontForSubtitle=_useRegularFontForSubtitle;
+@property(nonatomic) _Bool showSelection; // @synthesize showSelection=_showSelection;
 @property(nonatomic) _Bool showDisclosureIndicator; // @synthesize showDisclosureIndicator=_showDisclosureIndicator;
 @property(nonatomic) long long recordCategoryType; // @synthesize recordCategoryType=_recordCategoryType;
 @property(nonatomic) long long placement; // @synthesize placement=_placement;

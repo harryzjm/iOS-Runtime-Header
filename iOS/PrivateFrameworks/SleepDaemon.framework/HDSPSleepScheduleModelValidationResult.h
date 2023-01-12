@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     HKSPSleepEventTimelineResults *_timelineResults;
 }
 
++ (id)emptyFailureWithError:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) HKSPSleepEventTimelineResults *timelineResults; // @synthesize timelineResults=_timelineResults;
 @property(readonly, nonatomic) NSError *error; // @synthesize error=_error;

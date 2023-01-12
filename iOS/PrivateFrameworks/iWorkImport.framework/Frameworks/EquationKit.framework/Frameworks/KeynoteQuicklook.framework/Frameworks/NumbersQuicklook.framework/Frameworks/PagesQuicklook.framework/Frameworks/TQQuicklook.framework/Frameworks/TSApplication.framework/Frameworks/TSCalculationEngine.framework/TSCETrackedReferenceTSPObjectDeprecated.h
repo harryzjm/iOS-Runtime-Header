@@ -12,7 +12,7 @@
     CDStruct_8dbd2315 mFormulaID;
 }
 
-- (void)encodeToArchive:(struct TrackedReferenceArchive *)arg1;
+- (void)encodeToArchive:(void *)arg1;
 - (void)saveToArchiver:(id)arg1;
 - (CDStruct_8dbd2315)formulaID;
 - (struct TSCEASTNodeArray *)ast;

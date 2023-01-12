@@ -13,6 +13,8 @@
 @interface ENTemporaryExposureKey : NSObject <CUXPCCodable>
 {
     unsigned char _transmissionRiskLevel;
+    _Bool _vaccinated;
+    _Bool _revised;
     unsigned int _rollingPeriod;
     unsigned int _rollingStartNumber;
     unsigned int _diagnosisReportType;
@@ -21,6 +23,8 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool revised; // @synthesize revised=_revised;
+@property(nonatomic) _Bool vaccinated; // @synthesize vaccinated=_vaccinated;
 @property(nonatomic) unsigned int diagnosisReportType; // @synthesize diagnosisReportType=_diagnosisReportType;
 @property(nonatomic) long long daysSinceOnsetOfSymptoms; // @synthesize daysSinceOnsetOfSymptoms=_daysSinceOnsetOfSymptoms;
 @property(nonatomic) unsigned char transmissionRiskLevel; // @synthesize transmissionRiskLevel=_transmissionRiskLevel;

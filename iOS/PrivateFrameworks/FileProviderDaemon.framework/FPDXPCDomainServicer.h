@@ -9,28 +9,51 @@
 #import <FileProviderDaemon/FPDDomainServicing-Protocol.h>
 #import <FileProviderDaemon/FPDLifetimeServicing-Protocol.h>
 
-@class FPDDomain, FPDExtensionSession, FPDProvider, FPDServer, FPDXPCDomainServicerLifetimeExtender, NSString;
-@protocol OS_dispatch_queue, OS_os_transaction;
+@class FPDDomain, FPDExtensionSession, FPDProvider, FPDServer, FPDXPCDomainServicerLifetimeExtender, NSString, NSXPCConnection;
+@protocol FPProgressProtocol, OS_dispatch_queue, OS_os_log, OS_os_transaction;
 
 __attribute__((visibility("hidden")))
 @interface FPDXPCDomainServicer : NSObject <FPDDomainServicing, FPDLifetimeServicing>
 {
     FPDServer *_server;
     FPDProvider *__provider;
+    FPDDomain *_domain;
+    NSXPCConnection *_connection;
     NSObject<OS_dispatch_queue> *_requestQueue;
     id _activePresenterObservation;
     FPDXPCDomainServicerLifetimeExtender *_lifetimeExtender;
     _Bool _isALifetimerExtender;
     NSObject<OS_os_transaction> *_serviceTransaction;
+    NSObject<OS_os_log> *_log;
     NSString *_providerDomainID;
+    id <FPProgressProtocol> _uploadProxy;
+    id <FPProgressProtocol> _downloadProxy;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <FPProgressProtocol> downloadProxy; // @synthesize downloadProxy=_downloadProxy;
+@property(retain, nonatomic) id <FPProgressProtocol> uploadProxy; // @synthesize uploadProxy=_uploadProxy;
 @property(readonly, nonatomic) NSString *providerDomainID; // @synthesize providerDomainID=_providerDomainID;
 - (void)_t_setFilePresenterObserver:(id)arg1;
 - (id)description;
+- (void)subscribeToDownloadProgressUpdates:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)subscribeToUploadProgressUpdates:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)runTestingOperations:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)listAvailableTestingOperationsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)temporaryDirectoryWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)signalErrorResolved:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)waitForStabilizationWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)waitForChangesOnItemsBelowItemWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)currentPendingSetSyncAnchorWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)enumeratePendingSetFromSyncAnchor:(id)arg1 suggestedBatchSize:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)currentMaterializedSetSyncAnchorWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)enumerateMaterializedSetFromSyncAnchor:(id)arg1 suggestedBatchSize:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)evictItemWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)setDownloadPolicy:(unsigned long long)arg1 forItemWithIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)reimportItemsBelowItemWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)ingestFromCacheItemWithIdentifier:(id)arg1 requestedFields:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)fetchAndStartEnumeratingWithSettings:(id)arg1 observer:(id)arg2 request:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)setDomainWithIdentifier:(id)arg1 ejectable:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)setDomainEjectable:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)resolveItemID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)didChangeItemID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)deleteSearchableItemsWithSpotlightDomainIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -43,11 +66,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) FPDDomain *domainOrNil;
 - (id)providerOrNil;
 - (id)__providerIfExists;
-- (_Bool)clientCanAccessService:(id)arg1 forConnection:(id)arg2;
 - (int)pid;
 - (void)dealloc;
 - (void)invalidate;
-- (id)initWithServer:(id)arg1 providerDomainID:(id)arg2 pid:(int)arg3;
+- (id)initWithServer:(id)arg1 providerDomainID:(id)arg2 domain:(id)arg3 connection:(id)arg4;
 
 @end
 

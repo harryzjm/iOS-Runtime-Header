@@ -16,13 +16,11 @@
     _Bool _isCurrentUserForScheduling;
     NSString *_emailAddress;
     NSString *_name;
-    NSString *_UUID;
 }
 
 - (void).cxx_destruct;
 @property(readonly) _Bool isCurrentUserForScheduling; // @synthesize isCurrentUserForScheduling=_isCurrentUserForScheduling;
 @property(readonly) _Bool isCurrentUserForSharing; // @synthesize isCurrentUserForSharing=_isCurrentUserForSharing;
-@property(readonly) NSString *UUID; // @synthesize UUID=_UUID;
 @property(readonly) NSString *name; // @synthesize name=_name;
 @property(readonly) NSString *emailAddress; // @synthesize emailAddress=_emailAddress;
 - (_Bool)isEqual:(id)arg1;

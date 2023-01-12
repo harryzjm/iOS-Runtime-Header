@@ -15,6 +15,7 @@
 
 @interface NENetworkRule : NSObject <NEConfigurationValidating, NEPrettyDescription, NSSecureCoding, NSCopying>
 {
+    _Bool _appliesToLoopback;
     NWHostEndpoint *_matchRemoteEndpoint;
     unsigned long long _matchRemotePrefix;
     NWHostEndpoint *_matchLocalNetwork;
@@ -25,6 +26,7 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool appliesToLoopback; // @synthesize appliesToLoopback=_appliesToLoopback;
 @property(readonly) long long matchDirection; // @synthesize matchDirection=_matchDirection;
 @property(readonly) long long matchProtocol; // @synthesize matchProtocol=_matchProtocol;
 @property(readonly) unsigned long long matchLocalPrefix; // @synthesize matchLocalPrefix=_matchLocalPrefix;

@@ -8,7 +8,8 @@
 {
 }
 
-- (id)floatVectorWithEntity:(id)arg1 error:(id *)arg2;
+- (id)_floatVectorForFaceSmileType:(unsigned short)arg1;
+- (id)floatMatrixWithEntities:(id)arg1 progressReporter:(id)arg2 error:(id *)arg3;
 - (id)defaultFloatVectorWithError:(id *)arg1;
 - (long long)featureLength;
 - (id)featureNames;

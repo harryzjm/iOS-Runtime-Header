@@ -8,17 +8,20 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class PKCloudStoreZoneInvitation, PKSharingDestination;
+@class NSError, PKCloudStoreZoneInvitation, PKSharingDestination;
 
 @interface PKCloudStoreZoneInvitationRequest : NSObject <NSSecureCoding>
 {
     PKCloudStoreZoneInvitation *_invitation;
     PKSharingDestination *_destination;
+    NSError *_invitationError;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)invitationErrorWithProtobuf:(id)arg1;
 + (id)cloudStoreZoneInvitationRequestWithProtobuf:(id)arg1;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSError *invitationError; // @synthesize invitationError=_invitationError;
 @property(retain, nonatomic) PKSharingDestination *destination; // @synthesize destination=_destination;
 @property(retain, nonatomic) PKCloudStoreZoneInvitation *invitation; // @synthesize invitation=_invitation;
 - (id)description;

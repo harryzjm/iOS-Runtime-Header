@@ -16,18 +16,18 @@
     struct MessageInfo _messageInfo;
     NSObject<OS_dispatch_data> *_messageData;
     TSPLazyReferenceArray *_objects;
-    NSArray *_datas;
+    NSArray *_allData;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSArray *datas; // @synthesize datas=_datas;
+@property(retain, nonatomic) NSArray *allData; // @synthesize allData=_allData;
 @property(retain, nonatomic) TSPLazyReferenceArray *objects; // @synthesize objects=_objects;
 @property(readonly, nonatomic) NSObject<OS_dispatch_data> *messageData; // @synthesize messageData=_messageData;
-- (const struct MessageInfo *)messageInfo;
-- (id)initWithMessageInfo:(const struct MessageInfo *)arg1 data:(id)arg2;
+- (const void *)messageInfo;
+- (id)initWithMessageInfo:(const void *)arg1 data:(id)arg2;
 - (id)init;
-@property(readonly, nonatomic) const struct FieldPath *fieldPath;
+@property(readonly, nonatomic) const void *fieldPath;
 @property(readonly, nonatomic) unsigned long long messageVersion;
 @property(readonly, nonatomic) _Bool isDiff;
 @property(readonly, nonatomic) _Bool isContentUnknown;

@@ -23,11 +23,13 @@
     unsigned long long _entitlement;
     NSString *_issuer;
     NSString *_deviceModel;
+    unsigned long long _supportedRadioTechnologies;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)invitationFromSharedCredential:(id)arg1 withCredential:(id)arg2 pass:(id)arg3;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long supportedRadioTechnologies; // @synthesize supportedRadioTechnologies=_supportedRadioTechnologies;
 @property(nonatomic, getter=isForWatch) _Bool forWatch; // @synthesize forWatch=_forWatch;
 @property(copy, nonatomic) NSString *deviceModel; // @synthesize deviceModel=_deviceModel;
 @property(copy, nonatomic) NSString *issuer; // @synthesize issuer=_issuer;
@@ -51,7 +53,7 @@
 - (id)sharingConfigurationRepresentation;
 - (id)dataRepresentation;
 - (id)initWithIdentifier:(id)arg1 sharingSessionIdentifier:(id)arg2 originatorIDSHandle:(id)arg3 invitationData:(id)arg4;
-- (id)initWithPartnerIdentifier:(id)arg1 pairedReaderIdentifier:(id)arg2 recipientName:(id)arg3 entitlement:(unsigned long long)arg4;
+- (id)initWithPartnerIdentifier:(id)arg1 pairedReaderIdentifier:(id)arg2 recipientName:(id)arg3 entitlement:(unsigned long long)arg4 supportedRadioTechnologies:(unsigned long long)arg5;
 
 @end
 

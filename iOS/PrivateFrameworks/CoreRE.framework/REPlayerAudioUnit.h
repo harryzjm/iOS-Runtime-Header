@@ -24,40 +24,40 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _playingNodeRenderBlock;
     CDUnknownBlockType _sampleRateConverterRenderBlock;
     struct OpaqueAudioComponentInstance *_playingNodeAudioUnit;
-    double _startTime;
-    double _pauseTime;
-    struct atomic<double> _renderSampleTime;
-    unsigned long long _currentPlayTimeParamAddress;
+    unsigned long long _currentMachStartTime;
+    CDStruct_1b6d18a9 _currentEventTime;
     struct atomic<REAudioPlaybackState> _playbackState;
     struct atomic<unsigned int> _playedFrames;
-    _Bool _isScheduled;
     struct atomic<bool> _shouldDispatchCompletion;
+    struct vector<float, std::allocator<float>> _fadeWindow;
+    unsigned long long _currentFadeIndex;
+    struct atomic<FadeState> _nextFadeState;
+    struct FadeState _currentFadeState;
+    unsigned char _missedPlayStrategy;
     NSObject<OS_dispatch_queue> *_serialWorkQueue;
-    CDUnknownBlockType _streamPlaybackDidComplete;
+    CDUnknownBlockType _playbackStateDidChange;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(copy) CDUnknownBlockType streamPlaybackDidComplete; // @synthesize streamPlaybackDidComplete=_streamPlaybackDidComplete;
-@property(retain) NSObject<OS_dispatch_queue> *serialWorkQueue; // @synthesize serialWorkQueue=_serialWorkQueue;
+@property(copy) CDUnknownBlockType playbackStateDidChange; // @synthesize playbackStateDidChange=_playbackStateDidChange;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *serialWorkQueue; // @synthesize serialWorkQueue=_serialWorkQueue;
+@property(nonatomic) unsigned char missedPlayStrategy; // @synthesize missedPlayStrategy=_missedPlayStrategy;
+- (void)scheduleMachStartTime:(unsigned long long)arg1 fromEventTime:(CDStruct_1b6d18a9)arg2 useMissedPlayStrategy:(_Bool)arg3;
 - (id)outputBusses;
 - (id)channelCapabilities;
 - (CDUnknownBlockType)internalRenderBlock;
 - (void)deallocateRenderResources;
 - (_Bool)allocateRenderResourcesAndReturnError:(id *)arg1;
-@property double playbackPosition;
-- (double)outputSampleRate;
-@property(readonly) double assetDuration;
-- (void)resume;
-- (void)pause;
+- (double)sampleRate;
 - (void)stop;
-- (void)play;
 @property(readonly) _Bool isPrepared;
 - (void)prepareToPlayBuffer:(id)arg1 withLayoutTag:(unsigned int)arg2 looping:(_Bool)arg3;
 - (void)prepareToPlayFile:(id)arg1 withLayoutTag:(unsigned int)arg2 looping:(_Bool)arg3;
-- (void)scheduleCurrentResourceOnPlayer:(id)arg1 startingProgress:(double)arg2;
-- (void)scheduleCurrentResourceOnPlayer:(id)arg1;
 - (void)_playbackCompletionCallback;
+- (void)changePlaybackStateTo:(unsigned long long)arg1;
+@property(readonly) unsigned long long state;
+- (void)dealloc;
 - (id)initWithComponentDescription:(struct AudioComponentDescription)arg1 options:(unsigned int)arg2 error:(id *)arg3;
 
 @end

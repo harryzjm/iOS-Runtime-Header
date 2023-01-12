@@ -7,23 +7,42 @@
 #import <objc/NSObject.h>
 
 #import <QuartzCore/CABrightnessControl-Protocol.h>
+#import <QuartzCore/CAPresetTransaction-Protocol.h>
 
-@class NSDictionary, NSSet, NSString;
+@class NSDictionary, NSSet, NSString, NSUUID;
 
-@interface CAWindowServerDisplay : NSObject <CABrightnessControl>
+@interface CAWindowServerDisplay : NSObject <CABrightnessControl, CAPresetTransaction>
 {
     struct CAWindowServerDisplayImpl *_impl;
     _Bool _mirroringEnabled;
+    unsigned long long _minimumFrameTime;
+    unsigned long long _maximumFrameTime;
+    unsigned long long _minimumVRRVBLDelta;
+    unsigned long long _maximumVRRVBLDelta;
 }
 
+@property(readonly) unsigned long long maximumVRRVBLDelta; // @synthesize maximumVRRVBLDelta=_maximumVRRVBLDelta;
+@property(readonly) unsigned long long minimumVRRVBLDelta; // @synthesize minimumVRRVBLDelta=_minimumVRRVBLDelta;
+@property(readonly) unsigned long long maximumFrameTime; // @synthesize maximumFrameTime=_maximumFrameTime;
+@property(readonly) unsigned long long minimumFrameTime; // @synthesize minimumFrameTime=_minimumFrameTime;
 @property(getter=isMirroringEnabled) _Bool mirroringEnabled; // @synthesize mirroringEnabled=_mirroringEnabled;
+- (void)renderForTime:(double)arg1;
+@property _Bool accessibilityFrameRateLimitEnabled;
 - (void)setGammaAdjustment:(struct CGColorTRC [3])arg1;
 @property struct CGColorTRC blackpointAdaptation;
 @property struct CGColorTRC systemGamma;
 @property(retain) struct CGColorSpace *displayColorSpace;
 @property(retain) struct CGColorSpace *blendColorSpace;
 @property(readonly) _Bool supportsColorSpaces;
+- (void)addFramePresentationTimestamp:(unsigned long long)arg1;
+- (void)copyDisplayTimingsFromDisplay:(id)arg1;
 - (_Bool)setDigitalModes:(id)arg1 withTimings:(id)arg2;
+- (void)postNotification:(id)arg1 payload:(id)arg2;
+- (void)setNotificationQueue:(id)arg1;
+- (id)notificationQueue;
+- (void)unregisterNotificationBlocks;
+- (void)registerForNotifications:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
+@property(readonly, nonatomic) unsigned int serviceObject;
 @property(readonly, nonatomic) NSDictionary *brightnessCapabilities;
 @property(readonly) _Bool wantedToDetach;
 @property(retain) struct __IOSurface *cursorSurface;
@@ -41,6 +60,7 @@
 @property(readonly) void *detachingDisplay;
 - (void)presentSurface:(struct __IOSurface *)arg1 withOptions:(id)arg2;
 - (void)activateReplay;
+- (_Bool)finishExternalUpdate:(void *)arg1 withFlags:(unsigned int)arg2 debugInfo:(unsigned long long)arg3;
 - (_Bool)finishExternalUpdate:(void *)arg1 withFlags:(unsigned int)arg2;
 - (void)beginExternalUpdate:(void *)arg1 usingSoftwareRenderer:(_Bool)arg2;
 @property(readonly) unsigned long long previousVBL;
@@ -48,10 +68,20 @@
 @property(readonly) double nextWakeupTime;
 - (_Bool)canUpdateWithFlags:(unsigned int)arg1;
 - (_Bool)canUpdate:(_Bool)arg1;
+- (_Bool)abortWhitePointRamp:(CDStruct_443af386 *)arg1 error:(id *)arg2;
+- (_Bool)setWhitePoint:(CDStruct_443af386 *)arg1 rampDuration:(double)arg2 error:(id *)arg3;
 @property(readonly, nonatomic) _Bool whitePointD50XYZ;
 @property(readonly, nonatomic) _Bool whitePointAvailable;
 @property(readonly, nonatomic) _Bool brightnessAvailable;
+- (_Bool)commitPreset;
+@property(nonatomic) _Bool preserveAppleSRGBGammaResponse;
+@property(nonatomic) long long trinityCabalConfig;
+@property(nonatomic) double maximumReferenceLuminance;
+@property(nonatomic) double minimumLuminance;
+@property(nonatomic) double maximumSDRLuminance;
+@property(nonatomic) double maximumHDRLuminance;
 - (_Bool)commitBrightness:(id *)arg1;
+- (void)setBrightnessLimit:(float)arg1;
 - (void)setSDRBrightness:(float)arg1;
 - (void)setPotentialHeadroom:(float)arg1;
 - (void)setHeadroom:(float)arg1;
@@ -71,6 +101,7 @@
 - (void)freeze;
 @property _Bool allowsDisplayCompositing;
 @property(getter=isSecure) _Bool secure;
+@property(copy) CDUnknownBlockType updateRequestCallback;
 @property(copy) CDUnknownBlockType brightnessCallback;
 @property(copy) CDUnknownBlockType hotPlugCallback;
 @property(copy) NSString *TVSignalType;
@@ -93,6 +124,7 @@
 @property float nits;
 - (void)abortContrastEnhancerRamp:(float *)arg1;
 - (void)setContrastEnhancer:(float)arg1 rampDuration:(double)arg2;
+- (void)setUserAdjustment:(float *)arg1 scale:(float)arg2;
 - (void)abortColorMatrixRamp:(float *)arg1 scale:(float *)arg2;
 - (void)setColorMatrix:(float *)arg1 scale:(float)arg2 rampDuration:(double)arg3;
 @property(getter=isGrayscale) _Bool grayscale;
@@ -106,6 +138,7 @@
 - (void)setCalibrationPhase:(unsigned int)arg1 forIdentifier:(unsigned int)arg2;
 - (void)willUnblank;
 @property(getter=isBlanked) _Bool blanked;
+- (void)powerStateDidChange:(id)arg1;
 @property(readonly) CAWindowServerDisplay *cloneMaster;
 - (void)removeAllClones;
 - (void)removeClone:(id)arg1;
@@ -122,6 +155,9 @@
 - (unsigned int)contextIdAtPosition:(struct CGPoint)arg1 excludingContextIds:(id)arg2;
 - (unsigned int)contextIdAtPosition:(struct CGPoint)arg1;
 @property(readonly) unsigned int rendererFlags;
+@property(readonly, nonatomic) NSUUID *uuid;
+@property(readonly, nonatomic) unsigned long long vendorId;
+@property(readonly, nonatomic) unsigned long long productId;
 @property(readonly) NSString *uniqueId;
 @property(readonly) long long displayType;
 @property(readonly) unsigned int displayId;
@@ -134,13 +170,15 @@
 @property(readonly) unsigned long long minimumSourceRectSize;
 @property(readonly) double maximumScale;
 @property(readonly) double minimumScale;
+@property _Bool scalePreservesAspect;
+@property struct CGSize scales;
 @property double scale;
 @property(readonly) struct CGSize nativeSize;
 @property(readonly) struct CGRect bounds;
 - (void)update;
 - (void)dealloc;
 - (void)invalidate;
-- (id)_initWithCADisplayServer:(struct Server *)arg1;
+- (id)_initWithCADisplayServer:(void *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

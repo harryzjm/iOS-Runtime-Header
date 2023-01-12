@@ -62,7 +62,6 @@
 @property(readonly, nonatomic) struct CGSize croppedScaledSize;
 @property(readonly, nonatomic) struct CGPoint croppedScaledAnchorPoint;
 @property(readonly, nonatomic) UIBezierPath *effectiveShadowPath;
-@property(readonly, nonatomic) _Bool _springboardPlatterStyle;
 @property(nonatomic) _Bool textMode;
 - (double)_topOffset;
 @property(readonly, nonatomic) struct CGSize unscaledSize;

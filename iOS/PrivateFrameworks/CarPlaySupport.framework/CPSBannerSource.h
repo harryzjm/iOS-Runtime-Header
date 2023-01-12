@@ -9,15 +9,15 @@
 #import <CarPlaySupport/BSInvalidatable-Protocol.h>
 #import <CarPlaySupport/CPBannerProviding-Protocol.h>
 #import <CarPlaySupport/CPSApplicationStateObserving-Protocol.h>
-#import <CarPlaySupport/CPSBannerItemDelegate-Protocol.h>
 #import <CarPlaySupport/CPSBannerViewControllerDelegate-Protocol.h>
 
 @class BNBannerSource, CPSApplicationStateMonitor, CPSBannerViewController, NSString, NSTimer, NSUUID;
 @protocol CPBannerDelegate;
 
-@interface CPSBannerSource : NSObject <CPSBannerItemDelegate, CPSBannerViewControllerDelegate, BSInvalidatable, CPBannerProviding, CPSApplicationStateObserving>
+@interface CPSBannerSource : NSObject <CPSBannerViewControllerDelegate, BSInvalidatable, CPBannerProviding, CPSApplicationStateObserving>
 {
     _Bool _rateLimited;
+    _Bool _active;
     NSString *_bundleIdentifier;
     id <CPBannerDelegate> _delegate;
     CPSApplicationStateMonitor *_applicationStateMonitor;
@@ -29,6 +29,7 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool active; // @synthesize active=_active;
 @property(retain, nonatomic) NSTimer *lastUserDismissedIdentifierResetTimer; // @synthesize lastUserDismissedIdentifierResetTimer=_lastUserDismissedIdentifierResetTimer;
 @property(retain, nonatomic) NSUUID *lastUserDismissedIdentifier; // @synthesize lastUserDismissedIdentifier=_lastUserDismissedIdentifier;
 @property(nonatomic, getter=isRateLimited) _Bool rateLimited; // @synthesize rateLimited=_rateLimited;
@@ -46,9 +47,10 @@
 - (void)_revokePresentedBannerWithReason:(id)arg1;
 - (void)_postBannerRequestForBannerItem:(id)arg1;
 - (void)_enqueueBannerItem:(id)arg1;
+- (void)bannerViewControllerDidDisappearWithIdentifier:(id)arg1;
+- (void)bannerViewControllerDidAppearWithIdentifier:(id)arg1;
+- (void)bannerViewControllerTappedWithIdentifier:(id)arg1;
 - (void)bannerViewController:(id)arg1 requestsDismissalWithReason:(id)arg2;
-- (void)bannerTappedWithIdentifier:(id)arg1;
-- (void)sceneActivationStateChangedTo:(id)arg1;
 - (void)postBannerForNavigationAlert:(id)arg1;
 - (void)postBannerForManeuver:(id)arg1 travelEstimates:(id)arg2;
 - (void)applicationStateMonitor:(id)arg1 didBecomeActive:(_Bool)arg2;

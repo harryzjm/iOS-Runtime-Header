@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 + (_Bool)canPerformOnSubsetOfSelection;
 + (_Bool)canPerformOnAsset:(id)arg1 inAssetCollection:(id)arg2 person:(id)arg3;
 + (id)_containedPerformerClasses;
+- (_Bool)_isDestructiveAction:(Class)arg1;
 - (void)_handleActionPick:(id)arg1 forPerformerClass:(Class)arg2;
 - (void)performUserInteractionTask;
 

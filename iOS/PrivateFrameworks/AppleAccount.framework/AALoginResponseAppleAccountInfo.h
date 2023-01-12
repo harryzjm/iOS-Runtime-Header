@@ -25,6 +25,7 @@
     NSNumber *_cloudDocsMigrated;
     NSNumber *_notesMigrated;
     NSNumber *_remindersMigrated;
+    NSNumber *_remindersAutoMigratableToCK;
 }
 
 - (void).cxx_destruct;
@@ -32,6 +33,7 @@
 @property(readonly, nonatomic, getter=hasOptionalTerms) _Bool optionalTerms; // @synthesize optionalTerms=_optionalTerms;
 @property(readonly, nonatomic, getter=isSandboxAccount) _Bool sandboxAccount; // @synthesize sandboxAccount=_sandboxAccount;
 @property(readonly, nonatomic, getter=isManagedAppleID) _Bool managedAppleID; // @synthesize managedAppleID=_managedAppleID;
+@property(readonly, nonatomic) NSNumber *remindersAutoMigratableToCK; // @synthesize remindersAutoMigratableToCK=_remindersAutoMigratableToCK;
 @property(readonly, nonatomic) NSNumber *remindersMigrated; // @synthesize remindersMigrated=_remindersMigrated;
 @property(readonly, nonatomic) NSNumber *notesMigrated; // @synthesize notesMigrated=_notesMigrated;
 @property(readonly, nonatomic) NSNumber *cloudDocsMigrated; // @synthesize cloudDocsMigrated=_cloudDocsMigrated;

@@ -12,6 +12,7 @@
 
 @optional
 - (void)refreshRegistrationForAccount:(NSString *)arg1;
+- (void)account:(NSString *)arg1 pseudonymsChanged:(NSDictionary *)arg2;
 - (void)account:(NSString *)arg1 displayNameChanged:(NSString *)arg2;
 - (void)account:(NSString *)arg1 loginChanged:(NSString *)arg2;
 - (void)account:(NSString *)arg1 profileChanged:(NSDictionary *)arg2;

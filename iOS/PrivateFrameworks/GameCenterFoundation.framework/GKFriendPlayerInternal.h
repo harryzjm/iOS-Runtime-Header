@@ -15,6 +15,7 @@
 
 + (id)secureCodedPropertyKeys;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)setLastPlayedGame:(id)arg1;
 - (id)lastPlayedGame;
 - (void)setLastPlayedDate:(id)arg1;
@@ -23,7 +24,6 @@
 - (id)status;
 - (int)defaultFamiliarity;
 - (_Bool)isFriend;
-- (void)dealloc;
 
 @end
 

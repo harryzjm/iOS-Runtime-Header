@@ -8,7 +8,7 @@
 
 #import <SceneKit/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableArray, SCNProgram;
+@class NSArray, NSDictionary, NSMutableArray, NSNumber, SCNProgram;
 
 __attribute__((visibility("hidden")))
 @interface SCNShadableHelper : NSObject <NSSecureCoding>
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     SCNProgram *_program;
     NSDictionary *_shaderModifiers;
     NSArray *_c3dShaderModifierCache;
+    NSNumber *_minimumLanguageVersion;
     NSMutableArray *_argumentsNames;
     NSDictionary *_symbolToBinder;
     NSDictionary *_symbolToUnbinder;
@@ -39,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)_programDidChange:(id)arg1;
 - (void)handleUnbindingOfSymbol:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)handleBindingOfSymbol:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+@property(retain, nonatomic) NSNumber *minimumLanguageVersion;
 - (void)copyModifiersFrom:(id)arg1;
 @property(copy, nonatomic) NSDictionary *shaderModifiers;
 - (void)_parseAndSetShaderModifier:(id)arg1;

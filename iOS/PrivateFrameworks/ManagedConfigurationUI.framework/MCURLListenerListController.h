@@ -6,7 +6,6 @@
 
 #import <Preferences/PSListController.h>
 
-__attribute__((visibility("hidden")))
 @interface MCURLListenerListController : PSListController
 {
 }
@@ -18,12 +17,11 @@ __attribute__((visibility("hidden")))
 + (id)originalURLSender;
 + (id)currentInstallationController;
 - (void)handleURL:(id)arg1;
-- (void)_pushProfileDetailsForProfileWithID:(id)arg1;
-- (void)_showSheetToInstallProvisioningProfile;
-- (void)_presentNextController:(id)arg1;
-- (void)_showSheetToInstallConfigurationProfileWithData:(id)arg1;
-- (void)_showSheetToInstallConfigurationProfileFromInstallationQueue;
-- (void)_showSheetToInstallConfigurationProfileFromPurgatory;
+- (void)_pushProfileDetailsForProfileWithID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_presentNextController:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_showSheetToInstallConfigurationProfileWithData:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_showSheetToInstallConfigurationProfileFromInstallationQueueWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_showSheetToInstallConfigurationProfileFromPurgatoryWithCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

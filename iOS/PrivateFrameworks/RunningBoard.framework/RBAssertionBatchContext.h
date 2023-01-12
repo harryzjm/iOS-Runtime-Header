@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSArray, RBProcess;
+@protocol RBDaemonContextProviding;
 
 @interface RBAssertionBatchContext : NSObject
 {
@@ -17,12 +18,14 @@
     NSArray *_identifiersToInvalidate;
     unsigned long long _acquisitionPolicy;
     id _holdToken;
+    id <RBDaemonContextProviding> _daemonContext;
 }
 
-+ (id)contextForProcess:(id)arg1 acquisitionCompletionPolicy:(unsigned long long)arg2 withDescriptorsToAcquire:(id)arg3 identifiersToInvalidate:(id)arg4;
-+ (id)contextForProcess:(id)arg1 withDescriptorsToAcquire:(id)arg2 identifiersToInvalidate:(id)arg3;
++ (id)contextForProcess:(id)arg1 acquisitionCompletionPolicy:(unsigned long long)arg2 withDescriptorsToAcquire:(id)arg3 identifiersToInvalidate:(id)arg4 daemonContext:(id)arg5;
++ (id)contextForProcess:(id)arg1 withDescriptorsToAcquire:(id)arg2 identifiersToInvalidate:(id)arg3 daemonContext:(id)arg4;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool unitTesting; // @synthesize unitTesting=_unitTesting;
+@property(readonly, nonatomic) id <RBDaemonContextProviding> daemonContext; // @synthesize daemonContext=_daemonContext;
 @property(retain, nonatomic) id holdToken; // @synthesize holdToken=_holdToken;
 @property(nonatomic) unsigned long long acquisitionPolicy; // @synthesize acquisitionPolicy=_acquisitionPolicy;
 @property(nonatomic) _Bool allowAbstractTarget; // @synthesize allowAbstractTarget=_allowAbstractTarget;

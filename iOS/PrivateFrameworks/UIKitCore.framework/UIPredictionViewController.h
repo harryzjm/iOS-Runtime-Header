@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)_inputResponderDidChangeNotification:(id)arg1;
 - (void)_inputModeDidChange;
 - (void)_registerForNotifications;
+- (void)_clearTextSuggestions;
 - (id)_currentTextSuggestions;
 - (_Bool)hidesExpandableButton;
 - (double)preferredHeightForTraitCollection:(id)arg1;

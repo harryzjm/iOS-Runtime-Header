@@ -37,7 +37,7 @@
 + (id)filledDiamond;
 + (id)filledCircle;
 + (id)simpleArrow;
-+ (id)instanceWithArchive:(const struct LineEndArchive *)arg1 unarchiver:(id)arg2;
++ (id)instanceWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) int lineJoin; // @synthesize lineJoin=_lineJoin;
 @property(readonly, nonatomic) _Bool isFilled; // @synthesize isFilled=_isFilled;
@@ -57,8 +57,8 @@
 - (id)initWithPath:(const struct CGPath *)arg1 endPoint:(struct CGPoint)arg2 isFilled:(_Bool)arg3 identifier:(id)arg4;
 - (id)initWithPath:(const struct CGPath *)arg1 wrapPath:(const struct CGPath *)arg2 endPoint:(struct CGPoint)arg3 isFilled:(_Bool)arg4 identifier:(id)arg5 lineJoin:(int)arg6;
 - (id)initWithBezierPath:(id)arg1 wrapPath:(id)arg2 endPoint:(struct CGPoint)arg3 isFilled:(_Bool)arg4 identifier:(id)arg5 lineJoin:(int)arg6;
-- (void)saveToArchive:(struct LineEndArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct LineEndArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 @end
 

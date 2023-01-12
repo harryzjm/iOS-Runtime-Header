@@ -11,8 +11,8 @@
 + (id)objectWithRichTextPayload:(id)arg1 refCount:(unsigned int)arg2;
 - (id)description;
 - (unsigned long long)estimateByteSize;
-- (void)encodeToArchive:(struct TableDataList_ListEntry *)arg1 archiver:(id)arg2;
-- (void)loadFromArchive:(const struct TableDataList_ListEntry *)arg1 unarchiver:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)encodeToArchive:(void *)arg1 archiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)initObjectWithRichTextPayload:(id)arg1 refCount:(unsigned int)arg2;
 - (id)richTextStorage;
 - (id)richTextPayload;

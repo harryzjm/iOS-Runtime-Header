@@ -15,6 +15,8 @@
     struct os_unfair_lock_s _canSendMailLock;
     _Bool _canSendMailChecked;
     CDStruct_9a98c240 _canSendMail;
+    _Bool _canSendMailInNewScene;
+    _Bool _didPresentModally;
     _Bool _isContentManaged;
     _Bool _keyboardVisible;
     _Bool _hasAnyAccount;
@@ -41,6 +43,9 @@
 - (void)encodeRestorableStateWithCoder:(id)arg1;
 - (void)_cleanup;
 - (void)mailComposeController:(id)arg1 didFinishWithResult:(long long)arg2 error:(id)arg3;
+- (_Bool)_dismissActivityFromViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (_Bool)_presentActivityOnViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (_Bool)_managesOwnPresentation;
 - (id)activityViewController;
 - (void)_setSessionID:(id)arg1;
 - (void)_setMailSubject:(id)arg1;

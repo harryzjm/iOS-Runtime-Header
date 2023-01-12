@@ -6,23 +6,40 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSString;
+#import <CloudPhotoLibrary/CPLSyncSessionPredictorObserver-Protocol.h>
+
+@class CPLEngineScheduler, CPLSyncSessionPredictor, NSDate, NSString;
 @protocol CPLSyncSessionRescheduler, OS_xpc_object;
 
-@interface CPLSyncSession : NSObject
+@interface CPLSyncSession : NSObject <CPLSyncSessionPredictorObserver>
 {
-    NSDate *_expectedDate;
-    unsigned long long _sequenceNumber;
+    struct os_unfair_lock_s _lock;
+    _Bool _watchingPredictor;
+    _Bool _shouldRescheduleASyncSession;
     id <CPLSyncSessionRescheduler> _rescheduler;
     NSObject<OS_xpc_object> *_detachedActivity;
+    CPLEngineScheduler *_scheduler;
+    NSDate *_expectedDate;
+    unsigned long long _sequenceNumber;
+    unsigned long long _requiredStateAtEndOfSyncSession;
+    CPLSyncSessionPredictor *_predictor;
 }
 
-+ (id)detachedSyncSession;
++ (id)detachedSyncSessionWithScheduler:(id)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSObject<OS_xpc_object> *detachedActivity; // @synthesize detachedActivity=_detachedActivity;
-@property(retain, nonatomic) id <CPLSyncSessionRescheduler> rescheduler; // @synthesize rescheduler=_rescheduler;
+@property(readonly, nonatomic) CPLSyncSessionPredictor *predictor; // @synthesize predictor=_predictor;
+@property(readonly, nonatomic) _Bool shouldRescheduleASyncSession; // @synthesize shouldRescheduleASyncSession=_shouldRescheduleASyncSession;
+@property(readonly, nonatomic) unsigned long long requiredStateAtEndOfSyncSession; // @synthesize requiredStateAtEndOfSyncSession=_requiredStateAtEndOfSyncSession;
 @property(readonly, nonatomic) unsigned long long sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
 @property(readonly, nonatomic) NSDate *expectedDate; // @synthesize expectedDate=_expectedDate;
+@property(readonly, nonatomic) __weak CPLEngineScheduler *scheduler; // @synthesize scheduler=_scheduler;
+- (void)predictor:(id)arg1 changedPrediction:(id)arg2;
+@property(retain, nonatomic) NSObject<OS_xpc_object> *detachedActivity; // @synthesize detachedActivity=_detachedActivity;
+@property(retain, nonatomic) id <CPLSyncSessionRescheduler> rescheduler; // @synthesize rescheduler=_rescheduler;
+- (void)_watchOrUnwatchPredictorIfNecessary;
+- (void)_unwatchPredictor;
+- (void)_watchPredictor;
+- (void)_updatePrediction:(id)arg1;
 @property(readonly, nonatomic) NSString *whenItWillStartDescription;
 @property(readonly, nonatomic) _Bool mightNeedForegroundToStart;
 - (void)engineIsClosing;
@@ -34,10 +51,17 @@
 - (_Bool)isInMoreThanTimeInverval:(double)arg1;
 - (_Bool)isBeforeDate:(id)arg1;
 - (_Bool)isAfterDate:(id)arg1;
+- (void)requestSyncStateAtEndOfSyncSession:(unsigned long long)arg1 reschedule:(_Bool)arg2;
 @property(readonly, nonatomic) _Bool shouldDefer;
 @property(readonly, nonatomic, getter=isDetached) _Bool detached;
-- (id)description;
-- (id)initWithSequenceNumber:(unsigned long long)arg1 expectedDate:(id)arg2;
+- (id)redactedDescription;
+@property(readonly, copy) NSString *description;
+- (id)initWithSequenceNumber:(unsigned long long)arg1 expectedDate:(id)arg2 scheduler:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

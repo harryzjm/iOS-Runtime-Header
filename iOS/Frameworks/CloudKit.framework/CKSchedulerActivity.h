@@ -15,6 +15,7 @@
 {
     _Bool _shouldDefer;
     _Bool _userRequestedBackupTask;
+    NSObject<OS_xpc_object> *_xpcActivityCriteriaOverrides;
     NSString *_identifier;
     long long _priority;
     unsigned long long _expectedTransferSizeBytes;
@@ -22,11 +23,9 @@
     CKContainer *_container;
     CKContainerID *_containerID;
     NSObject<OS_xpc_object> *_xpcActivity;
-    NSDictionary *_additionalXPCActivityCriteria;
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSDictionary *additionalXPCActivityCriteria; // @synthesize additionalXPCActivityCriteria=_additionalXPCActivityCriteria;
 @property(retain, nonatomic) NSObject<OS_xpc_object> *xpcActivity; // @synthesize xpcActivity=_xpcActivity;
 @property(nonatomic) _Bool userRequestedBackupTask; // @synthesize userRequestedBackupTask=_userRequestedBackupTask;
 @property(copy, nonatomic) CKContainerID *containerID; // @synthesize containerID=_containerID;
@@ -37,6 +36,9 @@
 @property(nonatomic) long long priority; // @synthesize priority=_priority;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(copy, nonatomic) NSObject<OS_xpc_object> *xpcActivityCriteriaOverrides; // @synthesize xpcActivityCriteriaOverrides=_xpcActivityCriteriaOverrides;
+@property(copy, nonatomic) NSDictionary *undeprecatedAdditionalXPCActivityCriteria;
+@property(copy, nonatomic) NSDictionary *additionalXPCActivityCriteria;
 @property(readonly, nonatomic) CKContainer *nullableContainer;
 - (id)description;
 - (id)CKDescriptionPropertiesWithPublic:(_Bool)arg1 private:(_Bool)arg2 shouldExpand:(_Bool)arg3;

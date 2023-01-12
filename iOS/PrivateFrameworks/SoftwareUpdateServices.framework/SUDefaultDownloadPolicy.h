@@ -33,6 +33,7 @@
 - (_Bool)isDownloadAllowableForCellular;
 - (_Bool)isDownloadableForCurrentNetworkConditions:(long long *)arg1 cellularFeesApply:(_Bool *)arg2 powerRequired:(_Bool *)arg3;
 - (_Bool)isDownloadableForCurrentNetworkConditions:(long long *)arg1 cellularFeesApply:(_Bool *)arg2;
+- (_Bool)is5GDownloadAllowed;
 - (_Bool)isDownloadFreeForCellular;
 - (_Bool)isDownloadAllowableForCellularRoaming;
 - (_Bool)allowExpensiveNetwork;

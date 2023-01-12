@@ -16,7 +16,7 @@
     NSObject<OS_dispatch_queue> *_queue;
     long long _lastEventSource;
     unsigned long long _lastEventSourceChangeTimestamp;
-    unsigned long long _eventSourceUsage[7];
+    unsigned long long _eventSourceUsage[8];
     NSTimer *_eventSourceTimer;
 }
 
@@ -33,6 +33,8 @@
 - (void)q_didEndMatchingAccumulatorName:(id)arg1 inputMode:(id)arg2;
 - (void)didEndMatchingAccumulatorName:(id)arg1;
 - (id)matchingAccumulatorNames;
+- (void)q_didBeginSession;
+- (void)didBeginSession;
 - (void)dealloc;
 - (id)init;
 

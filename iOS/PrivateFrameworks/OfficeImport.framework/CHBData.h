@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)readFrom:(const struct XlChartLinkedData *)arg1 state:(id)arg2;
++ (id)readFrom:(const void *)arg1 state:(id)arg2;
 
 @end
 

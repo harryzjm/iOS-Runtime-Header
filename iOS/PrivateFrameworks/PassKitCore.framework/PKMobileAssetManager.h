@@ -17,20 +17,16 @@
 - (void).cxx_destruct;
 - (id)_downloadOptionsWithUserInitiation:(_Bool)arg1 timeout:(long long)arg2;
 - (void)_downloadAsset:(id)arg1 userInitiated:(_Bool)arg2 timeout:(long long)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_executeQueries:(id)arg1 currentIndex:(unsigned long long)arg2 userInitiated:(_Bool)arg3 sortDescriptors:(id)arg4 timeout:(long long)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)_executeQueries:(id)arg1 currentIndex:(unsigned long long)arg2 userInitiated:(_Bool)arg3 sortDescriptors:(id)arg4 timeout:(long long)arg5 localOnly:(_Bool)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)_retrieveAssetWithQueries:(id)arg1 latestCompatibilityVersion:(unsigned long long)arg2 userInitiated:(_Bool)arg3 sortDescriptors:(id)arg4 timeout:(unsigned long long)arg5 catalogExpirationDays:(long long)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (id)_compatibleVersionsWithMinimumVersion:(unsigned long long)arg1 maximumVersion:(unsigned long long)arg2;
 - (id)_queriesForCityCodeStationProvider:(id)arg1;
-- (id)_queriesForMarketIdentifer:(id)arg1;
-- (id)_queriesForEducationVideo;
-- (id)sortDescriptorsForCityCode;
+- (id)_queriesForMarketNotificationIdentifier:(id)arg1;
+- (id)sortDescriptorsForLatestContentVersion;
 - (id)sortDescriptorsForMarkets;
+- (void)fetchRPIdentifierMappingUserInitiated:(_Bool)arg1 localOnly:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)fetchCityStationProviderAssetForBaseProvider:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)fetchAssetsForMarketWithIdentifier:(id)arg1 userInitiated:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (id)_sortDescriptorWithPreferredFeatureKey:(id)arg1 isFeaturePreferred:(_Bool)arg2 keyPath:(id)arg3;
-- (id)sortDescriptorsForEducationVideoWithPreferredFeatures:(unsigned long long)arg1;
-- (void)fetchEducationVideoWithPreferredFeatures:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)fetchNeededAssetsForThisDeviceWithPreferredFeatures:(unsigned long long)arg1;
+- (void)fetchMarketNotificationAssetsForIdentifier:(id)arg1 userInitiated:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)init;
 
 @end

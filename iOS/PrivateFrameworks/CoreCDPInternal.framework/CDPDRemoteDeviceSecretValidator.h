@@ -15,6 +15,7 @@
 - (void)resetAccountCDPState;
 - (void)cancelApproveFromAnotherDevice;
 - (id)_decoratedDelegate;
+- (void)validateCustodianRecoveryInfo:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)approveFromAnotherDeviceWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setValidSecretHandler:(CDUnknownBlockType)arg1;
 

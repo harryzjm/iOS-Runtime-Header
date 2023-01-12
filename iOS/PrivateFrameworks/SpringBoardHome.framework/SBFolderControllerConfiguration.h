@@ -14,6 +14,8 @@
 
 @interface SBFolderControllerConfiguration : NSObject <NSCopying, BSDescriptionProviding>
 {
+    _Bool _snapsToPageBoundariesAfterScrolling;
+    _Bool _addsFocusGuidesForWrapping;
     SBFolder *_folder;
     long long _orientation;
     unsigned long long _allowedOrientations;
@@ -34,6 +36,8 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool addsFocusGuidesForWrapping; // @synthesize addsFocusGuidesForWrapping=_addsFocusGuidesForWrapping;
+@property(nonatomic) _Bool snapsToPageBoundariesAfterScrolling; // @synthesize snapsToPageBoundariesAfterScrolling=_snapsToPageBoundariesAfterScrolling;
 @property(nonatomic) struct CGRect initialViewFrame; // @synthesize initialViewFrame=_initialViewFrame;
 @property(nonatomic) unsigned long long userInterfaceLayoutDirectionHandling; // @synthesize userInterfaceLayoutDirectionHandling=_userInterfaceLayoutDirectionHandling;
 @property(copy, nonatomic) NSString *originatingIconLocation; // @synthesize originatingIconLocation=_originatingIconLocation;

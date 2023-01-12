@@ -51,6 +51,7 @@
 - (_Bool)hasAttributes:(unsigned long long)arg1;
 @property(readonly, nonatomic) unsigned long long redirectSourceChainLength;
 @property(readonly, nonatomic) WBSHistoryVisit *endOfRedirectChain;
+- (id)initWithHistoryItem:(id)arg1 serviceVisit:(id)arg2;
 - (id)initWithHistoryItem:(id)arg1 sqliteRow:(id)arg2 baseColumnIndex:(unsigned long long)arg3;
 - (id)initWithHistoryItem:(id)arg1 visitTime:(double)arg2;
 - (id)initWithHistoryItem:(id)arg1 visitTime:(double)arg2 loadWasSuccesful:(_Bool)arg3 wasHTTPNonGet:(_Bool)arg4 origin:(long long)arg5 attributes:(unsigned long long)arg6;

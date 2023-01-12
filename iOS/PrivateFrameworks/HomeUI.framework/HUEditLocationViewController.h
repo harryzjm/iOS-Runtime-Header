@@ -16,13 +16,12 @@
 #import <HomeUI/UITextFieldDelegate-Protocol.h>
 #import <HomeUI/UITextViewDelegate-Protocol.h>
 
-@class HFHomeBuilder, HUEditLocationItemManager, HUEditableTextCell, HUEditableTextViewCell, HUHomeUsersCollectionViewController, HUUserNotificationTopicListModuleController, HUWallpaperPickerInlineViewController, NSString, UIBarButtonItem;
+@class HFHomeBuilder, HUEditLocationItemManager, HUEditableTextCell, HUEditableTextViewCell, HUUserNotificationTopicListModuleController, HUWallpaperPickerInlineViewController, NSString, UIBarButtonItem;
 @protocol HUEditLocationViewControllerAddLocationDelegate, HUPresentationDelegate;
 
 @interface HUEditLocationViewController <UITextFieldDelegate, UITextViewDelegate, HUWallpaperPickerViewControllerDelegate, HUWallpaperEditingViewControllerDelegate, HUAddPeopleViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, HFHomeManagerObserver, HUWallpaperThumbnailCellDelegate, HUWallpaperPickerInlineViewControllerDelegate, HUPresentationDelegateHost>
 {
     id <HUPresentationDelegate> _presentationDelegate;
-    HUHomeUsersCollectionViewController *_usersViewController;
     HFHomeBuilder *_homeBuilder;
     id <HUEditLocationViewControllerAddLocationDelegate> _addLocationDelegate;
     unsigned long long _context;
@@ -50,6 +49,9 @@
 @property(readonly, nonatomic) HFHomeBuilder *homeBuilder; // @synthesize homeBuilder=_homeBuilder;
 @property(nonatomic) __weak id <HUPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
 - (void)updateWallpaper:(id)arg1 image:(id)arg2;
+- (void)_updateSoftwareUpdateDynamicFooterView;
+- (void)itemManager:(id)arg1 didUpdateResultsForItem:(id)arg2 atIndexPath:(id)arg3;
+- (void)diffableDataItemManager:(id)arg1 didUpdateItems:(id)arg2 addItems:(id)arg3 removeItems:(id)arg4;
 - (void)homeManager:(id)arg1 didRemoveHome:(id)arg2;
 - (void)addPeopleViewControllerDidCancel:(id)arg1;
 - (void)wallpaperEditingDidCancel:(id)arg1;
@@ -64,8 +66,6 @@
 - (void)textViewDidChange:(id)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (_Bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
-- (_Bool)shouldHideSeparatorsForCell:(id)arg1 indexPath:(id)arg2;
-- (id)childViewControllersToPreload;
 - (void)textDidChange:(id)arg1 forTextField:(id)arg2 item:(id)arg3;
 - (id)currentTextForTextField:(id)arg1 item:(id)arg2;
 - (_Bool)shouldManageTextFieldForItem:(id)arg1;
@@ -77,13 +77,14 @@
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)doneButtonPressed:(id)arg1;
 - (void)addButtonPressed:(id)arg1;
+- (id)presentUserLockSettings:(id)arg1;
+- (id)presentPersonalRequestsSettings:(id)arg1;
 - (id)presentSoftwareUpdate:(_Bool)arg1;
 - (id)presentBridgeSettings:(_Bool)arg1;
 - (id)presentNetworkSettings:(_Bool)arg1;
 - (id)showNotificationSettingsForHomeKitObject:(id)arg1 animated:(_Bool)arg2;
 - (id)presentNotificationSettingsForTopic:(id)arg1 animated:(_Bool)arg2;
 - (void)scrollToNotificationTopicsAnimated:(_Bool)arg1;
-@property(readonly, nonatomic) HUHomeUsersCollectionViewController *usersViewController; // @synthesize usersViewController=_usersViewController;
 - (void)viewDidLoad;
 - (id)initWithHomeBuilder:(id)arg1 presentationDelegate:(id)arg2 addLocationDelegate:(id)arg3;
 - (id)initWithHomeBuilder:(id)arg1 presentationDelegate:(id)arg2 addLocationDelegate:(id)arg3 context:(unsigned long long)arg4;

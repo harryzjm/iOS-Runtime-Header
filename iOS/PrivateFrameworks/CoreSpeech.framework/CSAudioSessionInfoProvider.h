@@ -31,7 +31,7 @@
 - (void)_startMonitoring;
 - (void)CSAudioServerCrashMonitorDidReceiveServerRestart:(id)arg1;
 - (void)CSAudioServerCrashMonitorDidReceiveServerCrash:(id)arg1;
-- (unsigned int)audioSessionID;
+- (unsigned int)audioSessionIdForDeviceId:(id)arg1;
 - (void)unregisterObserver:(id)arg1;
 - (void)registerObserver:(id)arg1;
 - (void)dealloc;

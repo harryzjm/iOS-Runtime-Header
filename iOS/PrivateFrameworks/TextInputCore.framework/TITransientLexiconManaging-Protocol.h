@@ -6,9 +6,12 @@
 
 #import <TextInputCore/TIKeyboardActivityObserving-Protocol.h>
 
-@class NSString;
+@class NSString, TISupplementalLexiconController;
 
 @protocol TITransientLexiconManaging <TIKeyboardActivityObserving>
+@property(nonatomic, getter=isSupplementalLexiconSearchEnabled) _Bool supplementalLexiconSearchEnabled;
+@property(readonly, nonatomic) TISupplementalLexiconController *supplementalLexicons;
+@property(readonly, nonatomic) TISupplementalLexiconController *ensureSupplementalLexicons;
 @property(readonly, nonatomic) const struct _LXLexicon *namedEntityPhraseLexicon;
 @property(readonly, nonatomic) const struct _LXLexicon *namedEntityLexicon;
 - (void)provideFeedbackForString:(NSString *)arg1 type:(unsigned char)arg2 style:(unsigned char)arg3;

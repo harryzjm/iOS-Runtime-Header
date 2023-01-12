@@ -8,7 +8,7 @@
 
 #import <GameController/NSSecureCoding-Protocol.h>
 
-@class GCController, NSArray, NSDictionary, NSMutableDictionary, NSMutableSet, NSString, NSUUID, NSUserDefaults;
+@class GCController, GCReplayKitGestureSettings, NSArray, NSDictionary, NSMutableDictionary, NSMutableSet, NSString, NSUUID, NSUserDefaults;
 @protocol NSCopying><NSObject><NSSecureCoding;
 
 @interface GCControllerSettings : NSObject <NSSecureCoding>
@@ -21,6 +21,7 @@
     GCController *_controller;
     NSUUID *_customizedUUID;
     NSMutableDictionary *_elementSettings;
+    _Bool _settingsAppOpenedAtLeastOnce;
     NSMutableSet *_observedKeyPaths;
     _Bool _hapticsEnabled;
     _Bool _screenShotEnabled;
@@ -28,8 +29,15 @@
     _Bool _customizationsEnabled;
     _Bool _serialized;
     _Bool _customized;
+    GCReplayKitGestureSettings *_replayKitGestureSettings;
     id <NSCopying><NSObject><NSSecureCoding> _uniqueIdentifier;
     NSString *_bundleIdentifier;
+    NSString *_screenShotKey;
+    long long _screenShotGesture;
+    NSString *_videoRecordingKey;
+    long long _videoRecordingGesture;
+    long long _videoRecordingMode;
+    NSDictionary *_general_gameIntentMappings;
     CDUnknownBlockType _settingsChangedHandler;
     unsigned long long _settingsID;
 }
@@ -37,7 +45,6 @@
 + (_Bool)supportsSecureCoding;
 + (_Bool)settingsCustomizedForController:(id)arg1 forBundleIdentifier:(id)arg2;
 + (void)setSettingsExist:(_Bool)arg1 forController:(id)arg2 forBundleIdentifier:(id)arg3;
-+ (_Bool)settingsCustomizedForBundleIdentifier:(id)arg1;
 + (void)setSettingsExist:(_Bool)arg1 forBundleIdentifier:(id)arg2;
 + (id)metaDefaults;
 + (void)unregisterSettingsCustomizedHandlerForController:(id)arg1 forKey:(id)arg2;
@@ -51,6 +58,12 @@
 @property(nonatomic) unsigned long long settingsID; // @synthesize settingsID=_settingsID;
 @property(copy, nonatomic) CDUnknownBlockType settingsChangedHandler; // @synthesize settingsChangedHandler=_settingsChangedHandler;
 @property(nonatomic) _Bool customized; // @synthesize customized=_customized;
+@property(readonly, nonatomic) NSDictionary *general_gameIntentMappings; // @synthesize general_gameIntentMappings=_general_gameIntentMappings;
+@property(nonatomic) long long videoRecordingMode; // @synthesize videoRecordingMode=_videoRecordingMode;
+@property(nonatomic) long long videoRecordingGesture; // @synthesize videoRecordingGesture=_videoRecordingGesture;
+@property(retain, nonatomic) NSString *videoRecordingKey; // @synthesize videoRecordingKey=_videoRecordingKey;
+@property(nonatomic) long long screenShotGesture; // @synthesize screenShotGesture=_screenShotGesture;
+@property(retain, nonatomic) NSString *screenShotKey; // @synthesize screenShotKey=_screenShotKey;
 @property(nonatomic) _Bool serialized; // @synthesize serialized=_serialized;
 @property(nonatomic) _Bool customizationsEnabled; // @synthesize customizationsEnabled=_customizationsEnabled;
 @property(nonatomic) _Bool videoRecordingEnabled; // @synthesize videoRecordingEnabled=_videoRecordingEnabled;
@@ -79,11 +92,14 @@
 - (id)mappingForElement:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)initializeElementMappings;
+- (void)initializeReplayKitDefaultMappings;
 - (void)observeDefaultsKeyPaths:(id)arg1;
 - (void)initializeUserDefaults;
 - (id)suiteNameForBundleIdentifier:(id)arg1;
 - (id)defaultValues;
 - (id)staticDefaultValues;
+- (void)setGameIntentMappings:(id)arg1;
+@property(copy, nonatomic) GCReplayKitGestureSettings *replayKitGestureSettings; // @synthesize replayKitGestureSettings=_replayKitGestureSettings;
 - (void)_updateControllerReference:(id)arg1;
 - (void)dealloc;
 - (void)observeDefaultsKeyPath:(id)arg1 options:(unsigned long long)arg2 context:(void *)arg3;

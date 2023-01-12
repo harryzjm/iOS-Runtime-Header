@@ -10,7 +10,7 @@
 
 @interface USOGraph : NSObject <NSSecureCoding>
 {
-    unique_ptr_1f6b481a _usoGraph;
+    unique_ptr_e8bae616 _usoGraph;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -18,15 +18,15 @@
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (struct UsoGraph *)getCppGraph;
-- (struct UsoRootNode *)getCppRootNode;
+- (void *)getCppGraph;
+- (void *)getCppRootNode;
 - (id)getRoot;
 - (id)createIntNode:(id)arg1;
 - (id)createStringNode:(id)arg1;
-- (id)createTaskNode:(const struct OntologyNodeName *)arg1 verb:(const struct OntologyVerbName *)arg2;
-- (id)createEntityNode:(const struct OntologyNodeName *)arg1;
-- (id)createOperatorNode:(const struct OntologyNodeName *)arg1;
-- (id)initWithCppUsoGraph:(unique_ptr_1f6b481a)arg1;
+- (id)createTaskNode:(const void *)arg1 verb:(const void *)arg2;
+- (id)createEntityNode:(const void *)arg1;
+- (id)createOperatorNode:(const void *)arg1;
+- (id)initWithCppUsoGraph:(unique_ptr_e8bae616)arg1;
 - (id)init;
 
 @end

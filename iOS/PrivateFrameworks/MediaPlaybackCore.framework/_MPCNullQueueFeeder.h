@@ -10,6 +10,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MPCNullQueueFeeder : MPQueueFeeder <MPCQueueControllerDataSource>
 {
     NSString *_uniqueIdentifier;
@@ -20,8 +21,9 @@
 - (_Bool)section:(id)arg1 supportsShuffleType:(long long)arg2;
 - (void)reloadSection:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)itemForItem:(id)arg1 inSection:(id)arg2;
+- (id)identifiersForItem:(id)arg1 inSection:(id)arg2;
+- (id)modelPlayEventForItem:(id)arg1 inSection:(id)arg2;
 - (void)loadPlaybackContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)playbackInfoForItem:(id)arg1;
 - (_Bool)supportsAutoPlayForItem:(id)arg1 inSection:(id)arg2;
 @property(readonly, nonatomic) _Bool containsTransportableContent;
 @property(readonly, nonatomic) _Bool containsLiveStream;

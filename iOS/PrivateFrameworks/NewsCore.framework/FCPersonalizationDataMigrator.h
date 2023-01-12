@@ -8,14 +8,19 @@
 
 #import <NewsCore/FCKeyValueStoreMigrating-Protocol.h>
 
-@class NSString;
+@class FCPersonalizationTreatment, NSString;
 
 @interface FCPersonalizationDataMigrator : NSObject <FCKeyValueStoreMigrating>
 {
+    FCPersonalizationTreatment *_treatment;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) FCPersonalizationTreatment *treatment; // @synthesize treatment=_treatment;
 - (id)keyValueStore:(id)arg1 migrateObject:(id)arg2 forKey:(id)arg3 fromVersion:(unsigned long long)arg4;
+- (void)upgradeFromVersion2:(id)arg1;
 - (_Bool)keyValueStore:(id)arg1 canMigrateFromVersion:(unsigned long long)arg2;
+- (id)initWithTreatment:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

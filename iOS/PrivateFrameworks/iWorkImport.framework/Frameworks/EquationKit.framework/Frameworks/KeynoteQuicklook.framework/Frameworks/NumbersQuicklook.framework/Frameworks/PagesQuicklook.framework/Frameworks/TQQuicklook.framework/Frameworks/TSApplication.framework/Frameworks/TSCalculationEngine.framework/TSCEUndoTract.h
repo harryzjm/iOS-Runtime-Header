@@ -10,30 +10,35 @@
 
 @interface TSCEUndoTract : NSObject <NSCopying>
 {
-    vector_4dc5f307 _columnUids;
-    vector_4dc5f307 _rowUids;
+    TSKUIDStructVectorTemplate_de88e035 _columnUids;
+    TSKUIDStructVectorTemplate_de88e035 _rowUids;
     unsigned char _purpose;
     _Bool _isRangeRef;
     _Bool _preserveRectangularRange;
 }
 
-+ (_Bool)p_remapUidVector:(vector_4dc5f307 *)arg1 usingUidMap:(const UUIDMap_b66c2694 *)arg2 clearIfMissing:(_Bool)arg3;
-+ (void)saveToArchive:(struct ASTNodeArrayArchive_ASTUidTract *)arg1 columnUids:(const vector_4dc5f307 *)arg2 rowUids:(const vector_4dc5f307 *)arg3 purpose:(unsigned char)arg4 isRangeRef:(_Bool)arg5 preserveRectangularRange:(_Bool)arg6;
++ (_Bool)p_remapUidVector:(void *)arg1 usingUidMap:(const void *)arg2 clearIfMissing:(_Bool)arg3;
++ (void)saveToArchive:(void *)arg1 columnUids:(const void *)arg2 rowUids:(const void *)arg3 purpose:(unsigned char)arg4 isRangeRef:(_Bool)arg5 preserveRectangularRange:(_Bool)arg6;
++ (void)saveToArchive:(void *)arg1 tsuColumnUids:(const void *)arg2 tsuRowUids:(const void *)arg3 purpose:(unsigned char)arg4 isRangeRef:(_Bool)arg5 preserveRectangularRange:(_Bool)arg6;
 + (id)stringForPurpose:(unsigned char)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool preserveRectangularRange; // @synthesize preserveRectangularRange=_preserveRectangularRange;
 @property(nonatomic) _Bool isRangeRef; // @synthesize isRangeRef=_isRangeRef;
 @property(nonatomic) unsigned char purpose; // @synthesize purpose=_purpose;
-@property(readonly) vector_4dc5f307 *rowUids; // @synthesize rowUids=_rowUids;
-@property(readonly) vector_4dc5f307 *columnUids; // @synthesize columnUids=_columnUids;
-- (_Bool)remapUsingColumnUidMap:(const UUIDMap_b66c2694 *)arg1 rowUidMap:(const UUIDMap_b66c2694 *)arg2 clearIfMissing:(_Bool)arg3;
-- (_Bool)remapUsingUidMap:(const UUIDMap_b66c2694 *)arg1;
-- (void)saveToArchive:(struct ASTNodeArrayArchive_ASTUidTract *)arg1;
+@property(readonly) void *rowUids; // @synthesize rowUids=_rowUids;
+@property(readonly) void *columnUids; // @synthesize columnUids=_columnUids;
+- (_Bool)remapUsingColumnUidMap:(const void *)arg1 rowUidMap:(const void *)arg2 clearIfMissing:(_Bool)arg3;
+- (_Bool)remapUsingUidMap:(const void *)arg1;
+@property(readonly, nonatomic) _Bool spansAllRows;
+@property(readonly, nonatomic) _Bool spansAllColumns;
+- (void)saveToArchive:(void *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithArchive:(const struct ASTNodeArrayArchive_ASTUidTract *)arg1;
-- (id)initWithColumnUids:(const vector_4dc5f307 *)arg1 rowUids:(const vector_4dc5f307 *)arg2 purpose:(unsigned char)arg3;
-- (id)initWithColumnUid:(const UUIDData_5fbc143e *)arg1 rowUid:(const UUIDData_5fbc143e *)arg2 purpose:(unsigned char)arg3;
+- (id)initWithArchive:(const void *)arg1;
+- (id)initWithColumnUids:(const void *)arg1 rowUids:(const void *)arg2 purpose:(unsigned char)arg3;
+- (id)initWithColumnUid:(struct TSKUIDStruct)arg1 rowUid:(struct TSKUIDStruct)arg2 purpose:(unsigned char)arg3;
+- (id)initWithPurpose:(unsigned char)arg1;
+- (void)appendColumnUid:(struct TSKUIDStruct)arg1 rowUid:(struct TSKUIDStruct)arg2;
 
 @end
 

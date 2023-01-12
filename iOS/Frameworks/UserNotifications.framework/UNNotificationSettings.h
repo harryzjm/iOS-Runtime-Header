@@ -7,9 +7,10 @@
 #import <objc/NSObject.h>
 
 #import <UserNotifications/NSCopying-Protocol.h>
+#import <UserNotifications/NSMutableCopying-Protocol.h>
 #import <UserNotifications/NSSecureCoding-Protocol.h>
 
-@interface UNNotificationSettings : NSObject <NSCopying, NSSecureCoding>
+@interface UNNotificationSettings : NSObject <NSMutableCopying, NSCopying, NSSecureCoding>
 {
     long long _authorizationStatus;
     long long _soundSetting;
@@ -24,13 +25,22 @@
     _Bool _providesAppNotificationSettings;
     long long _announcementSetting;
     long long _groupingSetting;
+    long long _timeSensitiveSetting;
+    long long _scheduledDeliverySetting;
+    long long _directMessagesSetting;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)settingsWithAuthorizationStatus:(long long)arg1 soundSetting:(long long)arg2 badgeSetting:(long long)arg3 alertSetting:(long long)arg4 notificationCenterSetting:(long long)arg5 lockScreenSetting:(long long)arg6 carPlaySetting:(long long)arg7 announcementSetting:(long long)arg8 criticalAlertSetting:(long long)arg9 timeSensitiveSetting:(long long)arg10 scheduledDeliverySetting:(long long)arg11 directMessagesSetting:(long long)arg12 alertStyle:(long long)arg13 showPreviewsSetting:(long long)arg14 groupingSetting:(long long)arg15 providesAppNotificationSettings:(_Bool)arg16;
++ (id)settingsWithAuthorizationStatus:(long long)arg1 soundSetting:(long long)arg2 badgeSetting:(long long)arg3 alertSetting:(long long)arg4 notificationCenterSetting:(long long)arg5 lockScreenSetting:(long long)arg6 carPlaySetting:(long long)arg7 announcementSetting:(long long)arg8 criticalAlertSetting:(long long)arg9 timeSensitiveSetting:(long long)arg10 scheduledDeliverySetting:(long long)arg11 alertStyle:(long long)arg12 showPreviewsSetting:(long long)arg13 groupingSetting:(long long)arg14 providesAppNotificationSettings:(_Bool)arg15;
++ (id)settingsWithAuthorizationStatus:(long long)arg1 soundSetting:(long long)arg2 badgeSetting:(long long)arg3 alertSetting:(long long)arg4 notificationCenterSetting:(long long)arg5 lockScreenSetting:(long long)arg6 carPlaySetting:(long long)arg7 announcementSetting:(long long)arg8 criticalAlertSetting:(long long)arg9 timeSensitiveSetting:(long long)arg10 alertStyle:(long long)arg11 showPreviewsSetting:(long long)arg12 groupingSetting:(long long)arg13 providesAppNotificationSettings:(_Bool)arg14;
 + (id)settingsWithAuthorizationStatus:(long long)arg1 soundSetting:(long long)arg2 badgeSetting:(long long)arg3 alertSetting:(long long)arg4 notificationCenterSetting:(long long)arg5 lockScreenSetting:(long long)arg6 carPlaySetting:(long long)arg7 announcementSetting:(long long)arg8 criticalAlertSetting:(long long)arg9 alertStyle:(long long)arg10 showPreviewsSetting:(long long)arg11 groupingSetting:(long long)arg12 providesAppNotificationSettings:(_Bool)arg13;
 + (id)settingsWithAuthorizationStatus:(long long)arg1 soundSetting:(long long)arg2 badgeSetting:(long long)arg3 alertSetting:(long long)arg4 notificationCenterSetting:(long long)arg5 lockScreenSetting:(long long)arg6 carPlaySetting:(long long)arg7 spokenSetting:(long long)arg8 criticalAlertSetting:(long long)arg9 alertStyle:(long long)arg10 showPreviewsSetting:(long long)arg11 providesAppNotificationSettings:(_Bool)arg12;
 + (id)emptySettings;
 @property(readonly, nonatomic) long long groupingSetting; // @synthesize groupingSetting=_groupingSetting;
+@property(readonly, nonatomic) long long directMessagesSetting; // @synthesize directMessagesSetting=_directMessagesSetting;
+@property(readonly, nonatomic) long long scheduledDeliverySetting; // @synthesize scheduledDeliverySetting=_scheduledDeliverySetting;
+@property(readonly, nonatomic) long long timeSensitiveSetting; // @synthesize timeSensitiveSetting=_timeSensitiveSetting;
 @property(readonly, nonatomic) long long announcementSetting; // @synthesize announcementSetting=_announcementSetting;
 @property(readonly, nonatomic) _Bool providesAppNotificationSettings; // @synthesize providesAppNotificationSettings=_providesAppNotificationSettings;
 @property(readonly, nonatomic) long long criticalAlertSetting; // @synthesize criticalAlertSetting=_criticalAlertSetting;
@@ -45,13 +55,14 @@
 @property(readonly, nonatomic) long long authorizationStatus; // @synthesize authorizationStatus=_authorizationStatus;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (_Bool)hasEnabledNotificationSettings;
+- (_Bool)hasEnabledAlertSettings;
 - (_Bool)hasEnabledSettings;
-- (id)initWithAuthorizationStatus:(long long)arg1 soundSetting:(long long)arg2 badgeSetting:(long long)arg3 alertSetting:(long long)arg4 notificationCenterSetting:(long long)arg5 lockScreenSetting:(long long)arg6 carPlaySetting:(long long)arg7 announcementSetting:(long long)arg8 criticalAlertSetting:(long long)arg9 alertStyle:(long long)arg10 showPreviewsSetting:(long long)arg11 groupingSetting:(long long)arg12 providesAppNotificationSettings:(_Bool)arg13;
+- (id)initWithAuthorizationStatus:(long long)arg1 soundSetting:(long long)arg2 badgeSetting:(long long)arg3 alertSetting:(long long)arg4 notificationCenterSetting:(long long)arg5 lockScreenSetting:(long long)arg6 carPlaySetting:(long long)arg7 announcementSetting:(long long)arg8 criticalAlertSetting:(long long)arg9 timeSensitiveSetting:(long long)arg10 scheduledDeliverySetting:(long long)arg11 directMessagesSetting:(long long)arg12 alertStyle:(long long)arg13 showPreviewsSetting:(long long)arg14 groupingSetting:(long long)arg15 providesAppNotificationSettings:(_Bool)arg16;
 
 @end
 

@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TVPlayback/TVPBaseMediaItem.h>
-
 @class ML3Track, MPMediaItem, MPMediaLibrary, NSURL, VUIPlaybackPositionInfo;
 @protocol TVImageLoader;
 
 __attribute__((visibility("hidden")))
-@interface VUILibraryMediaItem_iOS : TVPBaseMediaItem
+@interface VUILibraryMediaItem_iOS
 {
     _Bool _bookmarkDisabled;
     long long _persistentID;
@@ -36,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)cleanUpMediaItem;
 - (void)updatePlayCountForElapsedTime:(double)arg1 duration:(double)arg2;
 - (void)updateBookmarkWithSuggestedTime:(double)arg1 forElapsedTime:(double)arg2 duration:(double)arg3 playbackOfMediaItemIsEnding:(_Bool)arg4;
+- (void)prepareForLoadingWithCompletion:(CDUnknownBlockType)arg1;
 - (id)mediaItemMetadataForProperty:(id)arg1;
 - (_Bool)hasTrait:(id)arg1;
 - (id)mediaItemURL;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVFoundation/AVAudioPlayerNode.h>
+#import <AVFAudio/AVAudioPlayerNode.h>
 
 @interface AVAudioPlayerNode (AudioUnit)
 @property(readonly) struct OpaqueAudioComponentInstance *_reAudioUnit;

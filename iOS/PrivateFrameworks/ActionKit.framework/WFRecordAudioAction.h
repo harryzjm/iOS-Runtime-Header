@@ -10,10 +10,13 @@
 {
 }
 
++ (_Bool)outputIsExemptFromTaintTrackingInheritance;
 + (id)datedFilenameForFormat:(long long)arg1;
 + (id)fileTypeForFormat:(long long)arg1;
 + (id)userInterfaceXPCInterface;
 + (id)userInterfaceProtocol;
+- (id)smartPromptWithContentDescription:(id)arg1 contentDestination:(id)arg2 workflowName:(id)arg3;
+- (id)contentDestinationWithError:(id *)arg1;
 @property(readonly, nonatomic) double recordingDuration;
 @property(readonly, nonatomic) _Bool startImmediately;
 @property(readonly, nonatomic) long long outputFormat;

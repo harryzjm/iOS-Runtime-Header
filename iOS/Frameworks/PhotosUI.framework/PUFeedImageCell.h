@@ -89,6 +89,7 @@ __attribute__((visibility("hidden")))
 - (void)setAudioSession:(id)arg1;
 - (void)setImage:(id)arg1 withTag:(long long)arg2;
 - (void)setParallaxOffset:(struct CGPoint)arg1;
+- (id)focusEffect;
 - (void)prepareForReuse;
 - (id)initWithFrame:(struct CGRect)arg1;
 

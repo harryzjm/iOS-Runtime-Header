@@ -6,17 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class CKDAccount, NSMutableDictionary, NSString;
+@class CKDAccount, CKDLogicalDeviceContext, NSMutableDictionary, NSString;
 
 @interface CKDPCSIdentityManager : NSObject
 {
-    _Bool _isSiloed;
     _Bool _forceEnableReadOnlyManatee;
     _Bool _forceSecurityErrorOnIdentityValidation;
     _Bool _forceManateeUnavailableForUnitTests;
     _Bool _serviceIsManateeForUnitTests;
+    unsigned int _clientSDKVersion;
     NSString *_serviceName;
     CKDAccount *_account;
+    CKDLogicalDeviceContext *_deviceContext;
     NSString *_cachedAccountDSID;
     NSMutableDictionary *_PCSIdentityWrappersByServiceName;
     struct _PCSIdentityData *_debugIdentity;
@@ -27,6 +28,7 @@
 + (id)sharedFakeIdentitySetsByServiceByUsername;
 + (struct _PCSIdentitySetData *)_copyStingrayIdentitiesForService:(id)arg1 forBackingFakeAccount:(id)arg2 withError:(id *)arg3;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned int clientSDKVersion; // @synthesize clientSDKVersion=_clientSDKVersion;
 @property(nonatomic) _Bool serviceIsManateeForUnitTests; // @synthesize serviceIsManateeForUnitTests=_serviceIsManateeForUnitTests;
 @property(nonatomic) _Bool forceManateeUnavailableForUnitTests; // @synthesize forceManateeUnavailableForUnitTests=_forceManateeUnavailableForUnitTests;
 @property(nonatomic) _Bool forceSecurityErrorOnIdentityValidation; // @synthesize forceSecurityErrorOnIdentityValidation=_forceSecurityErrorOnIdentityValidation;
@@ -34,7 +36,7 @@
 @property(retain) NSMutableDictionary *PCSIdentityWrappersByServiceName; // @synthesize PCSIdentityWrappersByServiceName=_PCSIdentityWrappersByServiceName;
 @property(retain) NSString *cachedAccountDSID; // @synthesize cachedAccountDSID=_cachedAccountDSID;
 @property(readonly, nonatomic) _Bool forceEnableReadOnlyManatee; // @synthesize forceEnableReadOnlyManatee=_forceEnableReadOnlyManatee;
-@property(readonly, nonatomic) _Bool isSiloed; // @synthesize isSiloed=_isSiloed;
+@property(readonly, nonatomic) CKDLogicalDeviceContext *deviceContext; // @synthesize deviceContext=_deviceContext;
 @property(retain) CKDAccount *account; // @synthesize account=_account;
 @property(readonly, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
 - (_Bool)_checkAndClearPCSTestOverrideForKey:(id)arg1;
@@ -71,7 +73,7 @@
 - (void)identitiesChanged;
 - (void)updateAccount:(id)arg1;
 - (void)dealloc;
-- (id)initWithAccount:(id)arg1 serviceName:(id)arg2 isSiloed:(_Bool)arg3 forceEnableReadOnlyManatee:(_Bool)arg4;
+- (id)initWithAccount:(id)arg1 deviceContext:(id)arg2 serviceName:(id)arg3 forceEnableReadOnlyManatee:(_Bool)arg4 clientSDKVersion:(unsigned int)arg5;
 
 @end
 

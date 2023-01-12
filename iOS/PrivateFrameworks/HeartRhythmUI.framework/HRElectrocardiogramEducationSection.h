@@ -6,21 +6,29 @@
 
 #import <HealthUI/HKDataMetadataSection.h>
 
-#import <HeartRhythmUI/HROnboardingPageViewControllerDelegate-Protocol.h>
+#import <HeartRhythmUI/HKOnboardingPageViewControllerDelegate-Protocol.h>
 
-@class HKHealthStore, NSMutableDictionary, NSString;
+@class HKHealthStore, NSMutableDictionary, NSNumber, NSString;
 
-@interface HRElectrocardiogramEducationSection : HKDataMetadataSection <HROnboardingPageViewControllerDelegate>
+@interface HRElectrocardiogramEducationSection : HKDataMetadataSection <HKOnboardingPageViewControllerDelegate>
 {
+    _Bool _firstTimeOnboarding;
+    _Bool _forSinglePlayer;
+    NSMutableDictionary *_userInfo;
     HKHealthStore *_store;
+    NSNumber *_activeAlgorithmVersion;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSNumber *activeAlgorithmVersion; // @synthesize activeAlgorithmVersion=_activeAlgorithmVersion;
+@property(readonly, nonatomic) _Bool forSinglePlayer; // @synthesize forSinglePlayer=_forSinglePlayer;
 @property(retain, nonatomic) HKHealthStore *store; // @synthesize store=_store;
-- (id)onboardingManagerDelegate;
+@property(readonly, nonatomic) _Bool firstTimeOnboarding; // @synthesize firstTimeOnboarding=_firstTimeOnboarding;
+@property(retain, nonatomic) NSMutableDictionary *userInfo; // @synthesize userInfo=_userInfo;
 - (id)dateCache;
 - (void)stepForward;
 - (id)healthStore;
+- (_Bool)_hasOnboardedBefore;
 - (id)_viewControllerForEducationRow:(unsigned long long)arg1;
 - (id)_cellTitleForEducationRow:(unsigned long long)arg1;
 - (void)willDisplayCell:(id)arg1 forIndex:(unsigned long long)arg2 tableView:(id)arg3;
@@ -28,14 +36,14 @@
 - (id)cellForIndex:(unsigned long long)arg1 tableView:(id)arg2;
 - (unsigned long long)numberOfRowsInSection;
 - (id)sectionTitle;
+- (id)fetchActiveECGAlgorithmVersion;
+- (id)initWithHealthStore:(id)arg1 forSinglePlayer:(_Bool)arg2 activeAlgorithmVersion:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(readonly, nonatomic) _Bool firstTimeOnboarding;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
-@property(retain, nonatomic) NSMutableDictionary *userInfo;
 
 @end
 

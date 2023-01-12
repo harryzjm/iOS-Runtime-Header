@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface WFAskWhenRunVariable
 {
 }
@@ -12,8 +14,10 @@
 - (_Bool)supportsAggrandizements;
 - (_Bool)isAvailable;
 - (id)name;
-- (id)icon;
+- (id)iconSymbolName;
+@property(readonly, nonatomic) NSString *prompt;
 - (void)retrieveContentCollectionWithVariableSource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)initWithPrompt:(id)arg1;
 - (id)init;
 
 @end

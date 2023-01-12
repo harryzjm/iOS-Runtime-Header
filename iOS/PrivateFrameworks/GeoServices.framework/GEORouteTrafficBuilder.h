@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableData;
+@class NSMutableArray;
 
 @interface GEORouteTrafficBuilder : NSObject
 {
-    NSMutableData *_trafficColors;
-    NSMutableData *_trafficOffsets;
-    unsigned int _trafficDistance;
+    NSMutableArray *_trafficColors;
+    NSMutableArray *_trafficOffsets;
+    double _trafficDistance;
 }
 
 - (void).cxx_destruct;
@@ -23,8 +23,8 @@
 - (void)addTrafficFromETARoute:(id)arg1;
 - (void)addTrafficFromRoute:(id)arg1 from:(unsigned int)arg2 to:(unsigned int)arg3;
 - (void)addTrafficFromRoute:(id)arg1 withStepRange:(struct _NSRange)arg2;
-- (void)_buildTrafficForRouteWithGeoRoute:(id)arg1 toDistance:(unsigned int)arg2;
-- (void)_buildTrafficForRoute:(id)arg1 toDistance:(unsigned int)arg2;
+- (void)_buildTrafficForRouteWithGeoRoute:(id)arg1 toDistance:(double)arg2;
+- (void)_buildTrafficForRoute:(id)arg1 toDistance:(double)arg2;
 - (void)_buildTrafficForOldRoute:(id)arg1 etaRoute:(id)arg2;
 - (void)_buildTrafficForRoute:(id)arg1 etaRoute:(id)arg2;
 - (void)buildTrafficForRoute:(id)arg1 etaRoute:(id)arg2;

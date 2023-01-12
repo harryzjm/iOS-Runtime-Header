@@ -25,10 +25,12 @@
     NSArray *_attributeNames;
     NSArray *_supportedAuthenticationSchemes;
     NSString *_accountProviderAuthenticationToken;
+    NSArray *_applicationAccountProviders;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *applicationAccountProviders; // @synthesize applicationAccountProviders=_applicationAccountProviders;
 @property(copy, nonatomic) NSString *accountProviderAuthenticationToken; // @synthesize accountProviderAuthenticationToken=_accountProviderAuthenticationToken;
 @property(copy, nonatomic) NSArray *supportedAuthenticationSchemes; // @synthesize supportedAuthenticationSchemes=_supportedAuthenticationSchemes;
 @property(copy, nonatomic) NSArray *attributeNames; // @synthesize attributeNames=_attributeNames;

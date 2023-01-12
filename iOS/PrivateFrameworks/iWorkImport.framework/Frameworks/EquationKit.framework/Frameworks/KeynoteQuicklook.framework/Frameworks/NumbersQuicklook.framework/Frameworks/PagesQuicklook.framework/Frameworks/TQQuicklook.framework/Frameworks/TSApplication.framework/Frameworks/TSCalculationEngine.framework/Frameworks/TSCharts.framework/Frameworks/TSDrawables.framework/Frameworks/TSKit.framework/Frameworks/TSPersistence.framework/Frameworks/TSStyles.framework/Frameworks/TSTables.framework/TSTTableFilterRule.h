@@ -17,17 +17,21 @@
 }
 
 + (id)ruleWhereValuesInTable:(id)arg1 inBaseColumn:(struct TSUModelColumnIndex)arg2 matchCell:(id)arg3;
++ (id)getPredArgDataFromCell:(id)arg1;
 + (id)ruleWithFormulaPredicate:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool doesNotNeedFormulaRewriteForImport; // @synthesize doesNotNeedFormulaRewriteForImport=_doesNotNeedFormulaRewriteForImport;
 @property(retain, nonatomic) TSTFormulaPredicate *predicate; // @synthesize predicate=_predicate;
-- (id)initFromArchive:(const struct FilterRuleArchive *)arg1;
-- (void)encodeToArchive:(struct FilterRuleArchive *)arg1 archiver:(id)arg2;
+- (id)initFromArchive:(const void *)arg1;
+- (void)encodeToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initFromPrePivotArchive:(const void *)arg1;
+- (void)encodeToPrePivotArchive:(void *)arg1 archiver:(id)arg2;
 - (_Bool)matchesCell:(id)arg1;
-- (struct TSUModelColumnIndex)baseColumnIndexForFilterRuleInTableInfo:(id)arg1;
-- (_Bool)matchesRow:(unsigned int)arg1 withFormulaTableUID:(const UUIDData_5fbc143e *)arg2 withCalculationEngine:(id)arg3;
+- (struct TSUModelColumnIndex)baseColumnIndexForFilterRuleInTableModel:(id)arg1;
+- (_Bool)matchesRow:(unsigned int)arg1 withFormulaTableUID:(const struct TSKUIDStruct *)arg2 withCalculationEngine:(id)arg3;
 - (_Bool)needsFormulaRewriteForImport;
 - (void)setDoesNotNeedFormulaRewriteForImport;
+- (_Bool)isUniquesOrDuplicates;
 - (_Bool)needsThreshold;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -36,7 +40,7 @@
 - (id)copyByRewritingToGeometricFormWithTableInfo:(id)arg1 containsBadRef:(_Bool *)arg2;
 - (id)copyByRewritingToUidFormWithTableInfo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initRuleWhereValuesInTable:(id)arg1 inBaseColumn:(struct TSUModelColumnIndex)arg2 matchCell:(id)arg3;
+- (id)initRuleWhereValuesInTable:(id)arg1 andDataList:(id)arg2 inBaseColumn:(struct TSUModelColumnIndex)arg3 matchCell:(id)arg4;
 - (id)initWithFormulaPredicate:(id)arg1;
 
 @end

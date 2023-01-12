@@ -10,7 +10,8 @@
 
 @interface _TtCC13SiriInference17BackgroundManager5Inner : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *interactionMonitor;
+    MISSING_TYPE *biomeMonitor;
+    MISSING_TYPE *coreduetMonitor;
     MISSING_TYPE *tombstoneObserver;
     MISSING_TYPE *trialManager;
 }

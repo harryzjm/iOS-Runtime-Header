@@ -14,7 +14,8 @@
 - (NAFuture *)moduleController:(HUItemTableModuleController *)arg1 presentViewControllerForRequest:(HUViewControllerPresentationRequest *)arg2;
 
 @optional
-- (void)reloadCellForItems:(NSArray *)arg1;
+- (void)reloadCellForItems:(NSArray *)arg1 withDiffableDataSourceReload:(_Bool)arg2;
+- (void)updateCellForItems:(NSArray *)arg1;
 - (UIViewController *)presentingViewControllerForModuleController:(HUItemTableModuleController *)arg1;
 @end
 

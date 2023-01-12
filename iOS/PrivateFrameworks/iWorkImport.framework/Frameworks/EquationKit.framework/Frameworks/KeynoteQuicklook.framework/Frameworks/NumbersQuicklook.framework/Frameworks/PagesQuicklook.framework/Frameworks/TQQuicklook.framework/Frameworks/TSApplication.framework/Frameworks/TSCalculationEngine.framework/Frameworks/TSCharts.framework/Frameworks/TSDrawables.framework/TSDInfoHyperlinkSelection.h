@@ -10,18 +10,20 @@
 
 @interface TSDInfoHyperlinkSelection : TSKSelection
 {
-    NSSet *_infos;
+    _Bool _openInEditMode;
+    NSSet *_drawableInfos;
 }
 
 + (Class)archivedSelectionClass;
-+ (id)selectionWithInfos:(id)arg1;
++ (id)selectionWithDrawableInfos:(id)arg1 openInEditMode:(_Bool)arg2;
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSSet *infos; // @synthesize infos=_infos;
+@property(readonly, nonatomic) _Bool openInEditMode; // @synthesize openInEditMode=_openInEditMode;
+@property(readonly, copy, nonatomic) NSSet *drawableInfos; // @synthesize drawableInfos=_drawableInfos;
 @property(readonly, nonatomic) unsigned long long unlockedInfoCount;
 @property(readonly, nonatomic) NSSet *unlockedInfos;
 @property(readonly, nonatomic) _Bool isEmpty;
 @property(readonly, nonatomic) unsigned long long infoCount;
-- (id)initWithInfos:(id)arg1;
+- (id)initWithDrawableInfos:(id)arg1 openInEditMode:(_Bool)arg2;
 
 @end
 

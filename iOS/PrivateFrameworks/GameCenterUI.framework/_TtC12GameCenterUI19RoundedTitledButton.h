@@ -11,11 +11,16 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *height;
     MISSING_TYPE *tapHandler;
+    MISSING_TYPE *visualEffectView;
 }
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)layoutSubviews;
 - (struct JUMeasurements)measurementsWithFitting:(struct CGSize)arg1 in:(id)arg2;
+- (void)setEnabled:(_Bool)arg1;
+- (void)_setCornerRadius:(double)arg1;
+@property(nonatomic) double _cornerRadius;
 - (void)didTapButton:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 

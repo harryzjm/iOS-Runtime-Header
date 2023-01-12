@@ -17,6 +17,8 @@
     NSString *_logDomain;
     NSURL *_crashMarkerURL;
     NSMutableArray *_uncommittedFiles;
+    _Bool _trackAllStoresAndDeletesUntilEndOfTransaction;
+    _Bool _shouldResetPlatformTrackAllStoresAndDeletes;
     _Bool _keepOriginals;
     _Bool _deleteImmediately;
     CPLPlatformObject *_platformObject;
@@ -29,6 +31,7 @@
 @property(nonatomic) _Bool keepOriginals; // @synthesize keepOriginals=_keepOriginals;
 @property(readonly, nonatomic) NSURL *baseURL; // @synthesize baseURL=_baseURL;
 @property(readonly, nonatomic) CPLPlatformObject *platformObject; // @synthesize platformObject=_platformObject;
+- (_Bool)addDeleteFlagToFileAtURL:(id)arg1 error:(id *)arg2;
 - (void)writeTransactionDidSucceed;
 - (void)writeTransactionDidFail;
 - (_Bool)checkIsEmpty;
@@ -64,6 +67,7 @@
 - (_Bool)doWrite:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (void)doRead:(CDUnknownBlockType)arg1;
 - (id)initWithBaseURL:(id)arg1;
+@property(nonatomic) _Bool trackAllStoresAndDeletesUntilEndOfTransaction;
 @property(nonatomic) _Bool trackAllStoresAndDeletes;
 - (id)_markerURLForTrackAllStoresAndDeletes;
 

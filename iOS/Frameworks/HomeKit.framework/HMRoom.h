@@ -21,10 +21,12 @@
     HMHome *_home;
     HMApplicationData *_applicationData;
     _HMContext *_context;
+    NSString *_assistantIdentifier;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *assistantIdentifier; // @synthesize assistantIdentifier=_assistantIdentifier;
 @property(retain, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property(readonly, copy) NSUUID *applicationDataIdentifier;
 - (void)_updateRoomName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -34,6 +36,8 @@
 - (void)updateApplicationData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)recomputeAssistantIdentifier;
+- (void)_recomputeAssistantIdentifier;
 @property(retain, nonatomic) HMApplicationData *applicationData; // @synthesize applicationData=_applicationData;
 @property(nonatomic) __weak HMHome *home; // @synthesize home=_home;
 @property(retain, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
@@ -43,7 +47,6 @@
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 - (void)__configureWithContext:(id)arg1 home:(id)arg2;
 - (id)initWithName:(id)arg1;
-- (void)dealloc;
 - (void)_unconfigure;
 - (void)_unconfigureContext;
 - (id)init;

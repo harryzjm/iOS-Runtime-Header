@@ -12,6 +12,7 @@
 - (void)finish;
 
 @optional
+- (void)dismissWithGameController;
 - (void)requestImagesForLeaderboardsInSet:(NSString *)arg1 handler:(void (^)(NSError *))arg2;
 - (void)requestImagesForLeaderboardSetsWithHandler:(void (^)(NSError *))arg1;
 - (void)requestDashboardLogoImageWithHandler:(void (^)(NSError *))arg1;

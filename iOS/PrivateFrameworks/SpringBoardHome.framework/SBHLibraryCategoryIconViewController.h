@@ -8,16 +8,19 @@
 
 #import <SpringBoardHome/SBFolderObserver-Protocol.h>
 #import <SpringBoardHome/SBHLegibility-Protocol.h>
+#import <SpringBoardHome/SBHLibraryCategoryObserver-Protocol.h>
 #import <SpringBoardHome/SBIconViewCustomImageViewControlling-Protocol.h>
 #import <SpringBoardHome/SBIconViewQuerying-Protocol.h>
 
-@class NSArray, NSString, SBFolder, SBFolderIconImageCache, SBHIconImageCache, SBHLibraryCategoryPodBackgroundView, SBIcon, SBIconListView, UIView, _UILegibilitySettings;
-@protocol SBIconListLayoutProvider, SBIconViewProviding, SBLeafIconDataSource;
+@class NSArray, NSString, SBFolder, SBFolderIconImageCache, SBHIconImageCache, SBHLibraryCategory, SBHLibraryCategoryPodBackgroundView, SBIcon, SBIconListView, UIView, _UILegibilitySettings;
+@protocol BSInvalidatable, SBIconListLayoutProvider, SBIconViewProviding, SBLeafIconDataSource;
 
-@interface SBHLibraryCategoryIconViewController : UIViewController <SBFolderObserver, SBIconViewQuerying, SBIconViewCustomImageViewControlling, SBHLegibility>
+@interface SBHLibraryCategoryIconViewController : UIViewController <SBFolderObserver, SBHLibraryCategoryObserver, SBIconViewQuerying, SBIconViewCustomImageViewControlling, SBHLegibility>
 {
     SBHLibraryCategoryPodBackgroundView *_backgroundView;
     SBIconListView *_iconListView;
+    SBHLibraryCategory *_category;
+    id <BSInvalidatable> _preventFolderUpdateAssertion;
     _Bool _editing;
     _Bool _showsSquareCorners;
     unsigned long long _pauseReasons;
@@ -37,6 +40,7 @@
 @property(retain, nonatomic) id <SBIconViewProviding> iconViewProvider; // @synthesize iconViewProvider=_iconViewProvider;
 @property(readonly, nonatomic) NSString *location; // @synthesize location=_location;
 @property(readonly, nonatomic) SBFolder *folder; // @synthesize folder=_folder;
+@property(readonly, nonatomic) SBHLibraryCategory *category; // @synthesize category=_category;
 @property(nonatomic) _Bool showsSquareCorners; // @synthesize showsSquareCorners=_showsSquareCorners;
 @property(nonatomic) unsigned long long pauseReasons; // @synthesize pauseReasons=_pauseReasons;
 @property(nonatomic, getter=isEditing) _Bool editing; // @synthesize editing=_editing;
@@ -60,33 +64,42 @@
 - (id)presentedIconLocations;
 - (void)folder:(id)arg1 didRemoveLists:(id)arg2 atIndexes:(id)arg3;
 - (void)folder:(id)arg1 didAddList:(id)arg2;
+- (void)categoryDidUpdate:(id)arg1;
+- (void)categoryWillUpdate:(id)arg1;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings;
+@property(readonly, nonatomic) UIView *backgroundView;
 @property(readonly, nonatomic) SBIconListView *iconListView;
 - (void)updateFolder:(id)arg1 location:(id)arg2;
+- (void)updateCategory:(id)arg1 location:(id)arg2;
 - (void)viewDidLoad;
 
 // Remaining properties
 @property(readonly, copy, nonatomic) NSArray *applicationShortcutItems;
+@property(nonatomic) struct SBIconApproximateLayoutPosition approximateLayoutPosition;
 @property(nonatomic) _Bool automaticallyUpdatesVisiblySettled;
-@property(nonatomic, getter=isBackgroundBlurEnabled) _Bool backgroundBlurEnabled;
+@property(copy, nonatomic) CDUnknownBlockType backgroundViewConfigurator;
 @property(copy, nonatomic) CDUnknownBlockType backgroundViewProvider;
 @property(nonatomic) double brightness;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(nonatomic, getter=isDropping) _Bool dropping;
+@property(nonatomic) _Bool forcesEdgeAntialiasing;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) SBIcon *icon;
 @property(nonatomic) unsigned long long imageViewAlignment;
 @property(nonatomic, getter=isOverlapping) _Bool overlapping;
 @property(nonatomic) unsigned long long presentationMode;
-@property(nonatomic, getter=isPrivateModeEnabled) _Bool privateModeEnabled;
 @property(nonatomic, getter=isShowingContextMenu) _Bool showingContextMenu;
+@property(nonatomic) _Bool showsSnapshotWhenDeactivated;
 @property(readonly, nonatomic) UIView *snapshotView;
+@property(readonly, nonatomic) struct CGPoint snapshotViewCenter;
+@property(readonly, nonatomic) UIView *springLoadingEffectTargetView;
 @property(readonly) Class superclass;
 @property(nonatomic, getter=isUserInteractionEnabled) _Bool userInteractionEnabled;
+@property(nonatomic) unsigned long long userVisibilityStatus;
 @property(readonly, nonatomic) id <SBLeafIconDataSource> visiblyActiveDataSource;
-@property(nonatomic, getter=isVisiblySettled) _Bool visiblySettled;
 @property(readonly, nonatomic) _Bool wantsCaptureOnlyBackgroundView;
+@property(nonatomic) _Bool wantsEditingDisplayStyle;
 @property(readonly, nonatomic) _Bool wantsLabelHidden;
 
 @end

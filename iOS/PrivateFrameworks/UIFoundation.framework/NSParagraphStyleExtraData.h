@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
+@class NSArray, NSString;
 
 @interface NSParagraphStyleExtraData : NSObject
 {
@@ -21,7 +21,12 @@
     unsigned long long _lineBreakStrategy;
     _Bool _usesDefaultHyphenation;
     long long _compositionLanguage;
+    NSArray *_presentationIntents;
+    long long _listIntentOrdinal;
+    NSString *_codeBlockIntentLanguageHint;
 }
+
+- (void)dealloc;
 
 @end
 

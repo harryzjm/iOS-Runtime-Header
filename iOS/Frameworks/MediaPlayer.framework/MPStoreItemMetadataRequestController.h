@@ -20,8 +20,6 @@
     long long _cacheSize;
 }
 
-+ (void)setImportToServerObjectDatabase:(_Bool)arg1;
-+ (_Bool)importToServerObjectDatabase;
 + (unsigned long long)optimalBatchSize;
 + (id)sharedStoreItemMetadataRequestController;
 - (void).cxx_destruct;

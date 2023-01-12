@@ -23,13 +23,13 @@
     double _extIPDetectionStartTime;
     unsigned int _dataSoMasks;
     NSString *_allocbindDataBlob;
-    unsigned short _remoteLinkFlags;
+    unsigned short _linkFlags;
     unsigned int _dataSoMask;
 }
 
 + (id)candidateWithType:(unsigned long long)arg1 transport:(long long)arg2 radioAccessTechnology:(unsigned int)arg3 mtu:(unsigned int)arg4 index:(int)arg5 address:(struct sockaddr *)arg6 external:(struct sockaddr *)arg7;
 - (void).cxx_destruct;
-@property(nonatomic) unsigned short remoteLinkFlags; // @synthesize remoteLinkFlags=_remoteLinkFlags;
+@property(nonatomic) unsigned short linkFlags; // @synthesize linkFlags=_linkFlags;
 @property(nonatomic) _Bool active; // @synthesize active=_active;
 @property(copy, nonatomic) NSString *allocbindDataBlob; // @synthesize allocbindDataBlob=_allocbindDataBlob;
 @property(nonatomic) unsigned int dataSoMask; // @synthesize dataSoMask=_dataSoMask;
@@ -51,6 +51,7 @@
 - (_Bool)isEqual:(id)arg1;
 @property(nonatomic) CDStruct_330c469e *prefix;
 - (void)updateTransport:(long long)arg1;
+- (void)setAddress:(const struct sockaddr *)arg1 external:(const struct sockaddr *)arg2;
 @property(nonatomic) struct sockaddr *external;
 @property(readonly, nonatomic) const struct sockaddr *address;
 - (id)description;

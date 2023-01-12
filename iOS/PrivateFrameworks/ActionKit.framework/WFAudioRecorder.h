@@ -23,6 +23,7 @@
     NSTimer *_updateTimer;
 }
 
++ (id)formattedStringWithDuration:(double)arg1 elapsedTime:(double)arg2;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool hasFinished; // @synthesize hasFinished=_hasFinished;
 @property(nonatomic) _Bool paused; // @synthesize paused=_paused;

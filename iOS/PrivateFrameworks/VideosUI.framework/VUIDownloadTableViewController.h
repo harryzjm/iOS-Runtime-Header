@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UITableViewDiffableDataSource *diffableDataSource; // @synthesize diffableDataSource=_diffableDataSource;
 @property(retain, nonatomic) VUIDownloadDataSource *downloadDataSource; // @synthesize downloadDataSource=_downloadDataSource;
 @property(retain, nonatomic) UITableView *downloadEntitiesTableView; // @synthesize downloadEntitiesTableView=_downloadEntitiesTableView;
+- (void)_updateNavigationBarPadding;
 - (id)_identifiersForDownloadEntities;
 - (id)_createIdentifierToDownloadEntityDictionary;
 - (id)_createDiffableDataSourceSnapshot;
@@ -65,6 +66,7 @@ __attribute__((visibility("hidden")))
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (void)viewDidLayoutSubviews;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewDidAppear:(_Bool)arg1;

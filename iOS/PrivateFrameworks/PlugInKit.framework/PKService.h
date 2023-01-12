@@ -16,11 +16,12 @@
     _Bool _shared;
     _Bool _isSystemService;
     unsigned int _extensionPointPlatform;
+    struct os_unfair_lock_s _personalityLock;
     PKServicePersonality *_solePersonality;
+    NSObject<OS_dispatch_queue> *_timerQueue;
     id <PKServiceDelegate> _delegate;
     NSXPCListener *_serviceListener;
     NSMutableDictionary *_personalities;
-    NSObject<OS_dispatch_queue> *__sync;
     NSArray *_subsystems;
     NSObject<OS_dispatch_source> *_terminationTimer;
     NSObject<OS_dispatch_source> *_firstHostRequestTimer;
@@ -35,10 +36,11 @@
 @property _Bool isSystemService; // @synthesize isSystemService=_isSystemService;
 @property _Bool shared; // @synthesize shared=_shared;
 @property(retain) NSArray *subsystems; // @synthesize subsystems=_subsystems;
-@property(retain) NSObject<OS_dispatch_queue> *_sync; // @synthesize _sync=__sync;
 @property(retain) NSMutableDictionary *personalities; // @synthesize personalities=_personalities;
 @property(retain) NSXPCListener *serviceListener; // @synthesize serviceListener=_serviceListener;
 @property(retain) id <PKServiceDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly) NSObject<OS_dispatch_queue> *timerQueue; // @synthesize timerQueue=_timerQueue;
+@property(readonly) struct os_unfair_lock_s personalityLock; // @synthesize personalityLock=_personalityLock;
 @property unsigned int extensionPointPlatform; // @synthesize extensionPointPlatform=_extensionPointPlatform;
 - (void)cancelTermination;
 - (void)scheduleTermination:(double)arg1;
@@ -55,7 +57,7 @@
 - (id)defaultsForPlugInNamed:(id)arg1;
 - (void)copyAppStoreReceipt:(CDUnknownBlockType)arg1;
 - (void)launchContainingApplicationForPlugInNamed:(id)arg1;
-- (id)discoverSubsystemNamed:(id)arg1 options:(id)arg2 logMissing:(_Bool)arg3;
+- (id)discoverSubsystemNamed:(id)arg1 options:(id)arg2 required:(_Bool)arg3;
 - (void)mergeSubsystemList:(id)arg1 from:(id)arg2;
 - (void)mergeSubsystems:(id)arg1 from:(id)arg2;
 - (id)configuredSubsystemList;

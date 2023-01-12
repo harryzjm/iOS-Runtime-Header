@@ -10,7 +10,7 @@
 #import <Photos/NSItemProviderReading-Protocol.h>
 #import <Photos/NSSecureCoding-Protocol.h>
 
-@class AVAsset, AVVideoComposition, NSString, NSURL, PHAsset, PHImageManager, PHSandboxExtensionWrapper;
+@class AVAsset, AVVideoComposition, NSNumber, NSString, NSURL, PHAsset, PHImageManager, PHSandboxExtensionWrapper;
 
 @interface PHLivePhoto : NSObject <NSItemProviderReading, NSCopying, NSSecureCoding>
 {
@@ -67,6 +67,7 @@
 @property(readonly, nonatomic) AVAsset *videoAsset; // @synthesize videoAsset=_videoAsset;
 @property(readonly, copy, nonatomic) NSString *assetUUID; // @synthesize assetUUID=_assetUUID;
 @property(readonly, nonatomic) struct CGSize size; // @synthesize size=_size;
+@property(readonly, nonatomic) NSNumber *srlCompensationValue;
 - (void)saveToPhotoLibraryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)videoComplement;
 - (void)_loadConstituentURLsWithNetworkAccessAllowed:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;

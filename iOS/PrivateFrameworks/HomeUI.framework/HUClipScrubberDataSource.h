@@ -9,14 +9,13 @@
 #import <HomeUI/HFCameraPlaybackEngineObserver-Protocol.h>
 #import <HomeUI/UICollectionViewDataSource-Protocol.h>
 
-@class HFCameraPlaybackEngine, HUClipScrubberSelectionView, HUClipScrubberTimeController, NSArray, NSDate, NSMutableArray, NSString, UICollectionView;
+@class HFCameraPlaybackEngine, HUClipScrubberSelectionView, HUClipScrubberTimeController, NSArray, NSDate, NSString, UICollectionView, UICollectionViewDiffableDataSource;
 @protocol HFCameraRecordingEvent;
 
 @interface HUClipScrubberDataSource : NSObject <HFCameraPlaybackEngineObserver, UICollectionViewDataSource>
 {
     _Bool _editing;
     _Bool _selectionViewHidden;
-    NSArray *_events;
     HUClipScrubberTimeController *_timeController;
     id <HFCameraRecordingEvent> _currentEvent;
     UICollectionView *_clipCollectionView;
@@ -30,11 +29,15 @@
     double _startingPinchDeltaX;
     HUClipScrubberSelectionView *_selectionView;
     double _lastGestureScale;
-    NSMutableArray *_clipEvents;
+    NSArray *_clipEvents;
+    UICollectionViewDiffableDataSource *_diffableDataSource;
+    id <HFCameraRecordingEvent> _lastUpdatedEvent;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableArray *clipEvents; // @synthesize clipEvents=_clipEvents;
+@property(nonatomic) __weak id <HFCameraRecordingEvent> lastUpdatedEvent; // @synthesize lastUpdatedEvent=_lastUpdatedEvent;
+@property(retain, nonatomic) UICollectionViewDiffableDataSource *diffableDataSource; // @synthesize diffableDataSource=_diffableDataSource;
+@property(retain, nonatomic) NSArray *clipEvents; // @synthesize clipEvents=_clipEvents;
 @property(nonatomic) double lastGestureScale; // @synthesize lastGestureScale=_lastGestureScale;
 @property(retain, nonatomic) HUClipScrubberSelectionView *selectionView; // @synthesize selectionView=_selectionView;
 @property(nonatomic) double startingPinchDeltaX; // @synthesize startingPinchDeltaX=_startingPinchDeltaX;
@@ -50,13 +53,14 @@
 @property(nonatomic) __weak UICollectionView *clipCollectionView; // @synthesize clipCollectionView=_clipCollectionView;
 @property(nonatomic) __weak id <HFCameraRecordingEvent> currentEvent; // @synthesize currentEvent=_currentEvent;
 @property(retain, nonatomic) HUClipScrubberTimeController *timeController; // @synthesize timeController=_timeController;
-@property(readonly, nonatomic) NSArray *events; // @synthesize events=_events;
+- (void)shrinkToMinimumZoom;
+- (void)expandToMaximumZoom;
 - (void)updateSelectionViewIfNeeded;
 - (void)updateMostRecentClipIndex;
-- (id)_indexPathsForClip:(id)arg1;
+- (id)indexPathsForClip:(id)arg1;
 - (void)playbackEngine:(id)arg1 didRemoveEvents:(id)arg2;
 - (void)playbackEngine:(id)arg1 didUpdateEvents:(id)arg2;
-- (void)_updateClipCollectionView;
+- (void)updateClipCollectionView;
 - (double)scrubbingResolutionForClip:(id)arg1;
 - (id)selectedDateFromCell:(id)arg1 atCurrentOffset:(double)arg2;
 - (id)startDateFromCell:(id)arg1;
@@ -66,14 +70,17 @@
 - (id)eventForSection:(unsigned long long)arg1;
 - (_Bool)isValidRecordingEventAtIndexPath:(id)arg1;
 - (_Bool)isValidEventAtIndexPath:(id)arg1;
-- (_Bool)_doesReachabilitySectionPrecedeSection:(unsigned long long)arg1;
 - (double)offsetForEvent:(id)arg1;
+- (void)changeTimeScaleForNewScale:(double)arg1;
 - (void)changeTimeScaleForPinchGesture:(id)arg1;
-- (_Bool)_isZoomingIn:(double)arg1;
+- (_Bool)isZoomingIn:(double)arg1;
 - (void)beginTimeScaleTrackingForPinchGesture:(id)arg1;
-- (id)_spacerCellForCollectionView:(id)arg1 forEvent:(id)arg2 atIndexPath:(id)arg3;
-- (id)_reachabilitySectionCellForCollectionView:(id)arg1 forEvent:(id)arg2 atIndexPath:(id)arg3;
-- (id)_recordingSectionCellForCollectionView:(id)arg1 forEvent:(id)arg2 atIndexPath:(id)arg3;
+- (id)spacerCellForCollectionView:(id)arg1 forEvent:(id)arg2 atIndexPath:(id)arg3;
+- (id)reachabilitySectionCellForCollectionView:(id)arg1 forEvent:(id)arg2 atIndexPath:(id)arg3;
+- (id)recordingSectionCellForCollectionView:(id)arg1 forEvent:(id)arg2 atIndexPath:(id)arg3;
+- (void)updateSnapshotForEditing;
+- (void)updateSnapshot;
+- (void)addDiffableDataSource;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
@@ -81,7 +88,7 @@
 - (_Bool)isSpacerAtIndexPath:(id)arg1;
 - (void)updateToClipAtIndexPath:(id)arg1;
 - (void)toggleSelectionStateForItemAtIndexPath:(id)arg1;
-- (void)reloadClipEvents;
+- (void)updateEvents:(id)arg1;
 - (void)reloadEvents:(id)arg1;
 - (id)initWithPlaybackEngine:(id)arg1;
 @property(readonly, nonatomic) NSArray *currentEvents;

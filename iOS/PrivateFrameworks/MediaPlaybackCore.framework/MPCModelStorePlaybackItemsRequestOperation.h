@@ -9,6 +9,7 @@
 @class MPCModelStorePlaybackItemsRequest, NSObject, NSOperationQueue, NSProgress;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface MPCModelStorePlaybackItemsRequestOperation : MPAsyncOperation
 {
     NSProgress *_activeProgress;
@@ -22,7 +23,6 @@
 @property(readonly, copy, nonatomic) CDUnknownBlockType responseHandler; // @synthesize responseHandler=_responseHandler;
 @property(readonly, copy, nonatomic) MPCModelStorePlaybackItemsRequest *request; // @synthesize request=_request;
 - (void)_validateUserIdentityForRequestWithCompletion:(CDUnknownBlockType)arg1;
-- (_Bool)_shouldUseLegacyAccumulator;
 - (void)_executeWithUserIdentity:(id)arg1;
 - (void)execute;
 - (void)cancel;

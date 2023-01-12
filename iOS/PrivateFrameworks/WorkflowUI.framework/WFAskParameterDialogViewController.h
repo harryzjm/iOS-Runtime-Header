@@ -7,10 +7,11 @@
 #import <WorkflowUI/WFModuleSummaryEditorDelegate-Protocol.h>
 #import <WorkflowUI/WFParameterEditorHostingCellDelegate-Protocol.h>
 
-@class NSString, UIButton, WFAction, WFCompactUnlockService, WFModuleSummaryEditor, WFParameterEditorHostingCell, WFSlotTemplateSlot;
+@class NSString, UIButton, WFAction, WFCompactUnlockService, WFModuleSummaryEditor, WFParameterEditorHostingCell, WFSlotTemplateSlot, WFWorkflow;
 
 @interface WFAskParameterDialogViewController <WFModuleSummaryEditorDelegate, WFParameterEditorHostingCellDelegate>
 {
+    WFWorkflow *_fakeWorkflow;
     WFAction *_fakeAction;
     WFParameterEditorHostingCell *_hostingCell;
     WFModuleSummaryEditor *_summaryEditor;
@@ -27,6 +28,7 @@
 @property(retain, nonatomic) WFModuleSummaryEditor *summaryEditor; // @synthesize summaryEditor=_summaryEditor;
 @property(retain, nonatomic) WFParameterEditorHostingCell *hostingCell; // @synthesize hostingCell=_hostingCell;
 @property(retain, nonatomic) WFAction *fakeAction; // @synthesize fakeAction=_fakeAction;
+@property(retain, nonatomic) WFWorkflow *fakeWorkflow; // @synthesize fakeWorkflow=_fakeWorkflow;
 - (void)summaryEditorDidFinish:(id)arg1 returnToKeyboard:(_Bool)arg2 withTextAttachmentToEdit:(id)arg3;
 - (void)summaryEditorDidRequestTextEntry:(id)arg1;
 - (void)summaryEditor:(id)arg1 didCommitParameterState:(id)arg2;

@@ -11,6 +11,7 @@
 @protocol SBIconViewActionDelegate <NSObject>
 
 @optional
+- (void)iconAccessoryViewTapped:(SBIconView *)arg1;
 - (void)iconCloseBoxTapped:(SBIconView *)arg1;
 - (void)iconTapped:(SBIconView *)arg1;
 - (void)icon:(SBIconView *)arg1 touchEnded:(_Bool)arg2;

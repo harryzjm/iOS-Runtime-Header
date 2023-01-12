@@ -6,20 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class MPCPlaybackEngine, NSMutableArray;
+@class MPCPlaybackEngine, NSMutableArray, _MPCAudioSpectrumAnalyzerStorage;
 
 @interface MPCAudioSpectrumAnalyzer : NSObject
 {
-    unsigned long long _frequencyBuffersSize;
-    float *_intermediateBuffer;
-    unsigned long long _windowSize;
-    struct DSPSplitComplex _fftBuffer;
     struct opaqueMTAudioProcessingTap *_audioProcessingTap;
-    float _sampleRate;
-    float _powerLevel;
     MPCPlaybackEngine *_playbackEngine;
-    struct OpaqueFFTSetup *_fftSetup;
-    float *_window;
+    _MPCAudioSpectrumAnalyzerStorage *_storage;
     NSMutableArray *_observers;
     MPCAudioSpectrumAnalyzer *_selfRef;
 }
@@ -27,24 +20,16 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) MPCAudioSpectrumAnalyzer *selfRef; // @synthesize selfRef=_selfRef;
 @property(retain, nonatomic) NSMutableArray *observers; // @synthesize observers=_observers;
-@property(nonatomic) float *window; // @synthesize window=_window;
-@property(nonatomic) struct OpaqueFFTSetup *fftSetup; // @synthesize fftSetup=_fftSetup;
-@property(nonatomic) float powerLevel; // @synthesize powerLevel=_powerLevel;
-@property(nonatomic) float sampleRate; // @synthesize sampleRate=_sampleRate;
+@property(retain, nonatomic) _MPCAudioSpectrumAnalyzerStorage *storage; // @synthesize storage=_storage;
 @property(readonly, nonatomic) __weak MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
-- (void)_freeBuffers;
-- (void)_resizeBuffers:(unsigned long long)arg1;
-- (void)_analyzeFrequencies:(struct AudioBufferList *)arg1 numberFrames:(long long)arg2 timeRange:(CDStruct_3c1748cc)arg3 observers:(id)arg4;
-- (void)_analyzeSamples:(struct AudioBufferList *)arg1 numberFrames:(long long)arg2 timeRange:(CDStruct_3c1748cc)arg3;
-- (void)_destroyFFTSetup;
+- (void)_prepareTap:(struct opaqueMTAudioProcessingTap *)arg1 maxFrames:(long long)arg2 processingFormat:(const struct AudioStreamBasicDescription *)arg3;
+- (void)_analyzeSamples:(struct AudioBufferList *)arg1 numberFrames:(long long)arg2;
 - (void)_destroyAudioTap;
 - (void)_createAudioTap;
-- (void)_attachAudioTapToPlayerItem:(id)arg1;
+- (_Bool)_shouldAttachAudioTap;
 - (void)_itemInsertedNotification:(id)arg1;
-- (void)_itemAssetLoadedNotification:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
-- (void)reset;
 - (void)configurePlayerItem:(id)arg1;
 - (void)dealloc;
 - (id)initWithPlaybackEngine:(id)arg1;

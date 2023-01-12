@@ -10,6 +10,7 @@
 
 @interface TADeviceRecordSettings : NSObject <NSSecureCoding>
 {
+    _Bool _surfaceImmediatelyBetweenBackstopAndKeyroll;
     double _expiryTimeInterval;
     double _purgeTimeInterval;
     double _keepAliveInterval;
@@ -20,6 +21,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+@property(readonly, nonatomic) _Bool surfaceImmediatelyBetweenBackstopAndKeyroll; // @synthesize surfaceImmediatelyBetweenBackstopAndKeyroll=_surfaceImmediatelyBetweenBackstopAndKeyroll;
 @property(readonly, nonatomic) double scanInterval; // @synthesize scanInterval=_scanInterval;
 @property(readonly, nonatomic) long long assumedKeyRollHour; // @synthesize assumedKeyRollHour=_assumedKeyRollHour;
 @property(readonly, nonatomic) long long stagingBackstopHour; // @synthesize stagingBackstopHour=_stagingBackstopHour;
@@ -30,8 +32,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
-- (id)initWithExpiryTimeIntervalOrDefault:(id)arg1 purgeTimeIntervalOrDefault:(id)arg2 keepAliveIntervalOrDefault:(id)arg3 minimumStagingIntervalOrDefault:(id)arg4 stagingBackstopHourOrDefault:(id)arg5 assumedKeyRollHourOrDefault:(id)arg6 scanIntervalOrDefault:(id)arg7;
-- (id)initWithExpiryTimeInterval:(double)arg1 purgeTimeInterval:(double)arg2 keepAliveInterval:(double)arg3 minimumStagingInterval:(double)arg4 stagingBackstopHour:(unsigned long long)arg5 assumedKeyRollHour:(unsigned long long)arg6 scanInterval:(double)arg7;
+- (id)initWithExpiryTimeIntervalOrDefault:(id)arg1 purgeTimeIntervalOrDefault:(id)arg2 keepAliveIntervalOrDefault:(id)arg3 minimumStagingIntervalOrDefault:(id)arg4 stagingBackstopHourOrDefault:(id)arg5 assumedKeyRollHourOrDefault:(id)arg6 scanIntervalOrDefault:(id)arg7 surfaceImmediatelyBetweenBackstopAndKeyrollOrDefault:(id)arg8;
+- (id)initWithExpiryTimeInterval:(double)arg1 purgeTimeInterval:(double)arg2 keepAliveInterval:(double)arg3 minimumStagingInterval:(double)arg4 stagingBackstopHour:(unsigned long long)arg5 assumedKeyRollHour:(unsigned long long)arg6 scanInterval:(double)arg7 surfaceImmediatelyBetweenBackstopAndKeyroll:(_Bool)arg8;
 - (id)init;
 
 @end

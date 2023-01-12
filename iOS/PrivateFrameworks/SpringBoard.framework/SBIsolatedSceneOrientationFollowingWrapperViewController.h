@@ -38,6 +38,7 @@
 - (void)sceneHandle:(id)arg1 didUpdateSettingsWithDiff:(id)arg2 previousSettings:(id)arg3;
 @property(readonly, nonatomic) UIView<SBDeviceApplicationSceneOverlayView> *overlayView;
 - (_Bool)_canShowWhileLocked;
+@property(readonly, nonatomic) long long currentInterfaceOrientation;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;

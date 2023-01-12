@@ -23,6 +23,10 @@
 - (void)_pendingNotificationIdentifiersWithCategoryIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)userNotificationCenter:(id)arg1 didReceiveNotificationResponse:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)handleNotificationResponse:(id)arg1;
+- (void)debugPendingNotificationRequests;
+- (void)hasPendingLocationNotification:(CDUnknownBlockType)arg1;
+- (void)removeAllPendingNotifications;
+- (void)removeAllDeliveredNotifications;
 - (void)removeNotification:(id)arg1;
 - (void)removeNotificationsWithCategoryIdentifier:(id)arg1;
 - (void)isNotificationPendingOrDeliveredWithCategoryIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

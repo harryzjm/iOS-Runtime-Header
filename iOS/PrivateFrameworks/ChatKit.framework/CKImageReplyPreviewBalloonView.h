@@ -11,6 +11,7 @@
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1 textAlignmentInsets:(struct UIEdgeInsets *)arg2;
 - (void)prepareForDisplay;
 - (void)layoutSubviews;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (void)configureForMessagePart:(id)arg1;
 
 @end

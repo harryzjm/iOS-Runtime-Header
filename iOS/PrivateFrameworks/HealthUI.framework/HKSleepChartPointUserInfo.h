@@ -9,17 +9,17 @@
 #import <HealthUI/HKGraphSeriesBlockCoordinateInfo-Protocol.h>
 #import <HealthUI/HKGraphSeriesChartData-Protocol.h>
 
-@class HKSHSleepDaySummary, HKSleepDay, NSString;
+@class HKSleepDay, HKSleepDaySummary, NSString;
 
 @interface HKSleepChartPointUserInfo : NSObject <HKGraphSeriesBlockCoordinateInfo, HKGraphSeriesChartData>
 {
     long long _seriesType;
     HKSleepDay *_sleepDay;
-    HKSHSleepDaySummary *_sleepDaySummary;
+    HKSleepDaySummary *_sleepDaySummary;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) HKSHSleepDaySummary *sleepDaySummary; // @synthesize sleepDaySummary=_sleepDaySummary;
+@property(readonly, nonatomic) HKSleepDaySummary *sleepDaySummary; // @synthesize sleepDaySummary=_sleepDaySummary;
 @property(readonly, nonatomic) HKSleepDay *sleepDay; // @synthesize sleepDay=_sleepDay;
 @property(readonly, nonatomic) long long seriesType; // @synthesize seriesType=_seriesType;
 - (id)initWithSeriesType:(long long)arg1 sleepDaySummary:(id)arg2;

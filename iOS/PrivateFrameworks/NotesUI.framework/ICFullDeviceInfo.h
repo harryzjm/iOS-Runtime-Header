@@ -22,9 +22,12 @@
 - (_Bool)shouldBeHidden;
 - (unsigned long long)hardwareInfoNameFromString:(id)arg1;
 - (struct ICDeviceHardwareInfo)hardwareInfoFromModelId:(id)arg1;
+- (_Bool)upgradedToIOS14EorMacOS11E;
 - (_Bool)upgradedToIOS13;
 - (_Bool)upgraded;
 - (_Bool)upgradedToMajor:(int)arg1 minor:(int)arg2;
+- (_Bool)isHardwareInfoUpgradableToMacOS11:(struct ICDeviceHardwareInfo)arg1;
+- (_Bool)upgradableToIOS14orMacOS11;
 - (_Bool)isHardwareInfoUpgradableToIOS13:(struct ICDeviceHardwareInfo)arg1;
 - (_Bool)upgradableToIOS13;
 - (_Bool)isHardwareInfoUpgradable:(struct ICDeviceHardwareInfo)arg1;

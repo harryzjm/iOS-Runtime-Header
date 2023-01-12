@@ -8,6 +8,8 @@
 
 @interface NSArray (CalClassAdditions)
 + (id)arrayOfSetsBySplitting:(id)arg1 batchSize:(unsigned long long)arg2;
+- (id)CalMap:(CDUnknownBlockType)arg1;
+- (id)CalFilter:(CDUnknownBlockType)arg1;
 - (id)filteredArrayUsingTest:(CDUnknownBlockType)arg1;
 - (id)CalStringValueForKeys:(id)arg1 keyPaths:(id)arg2;
 - (id)CalStringValueForKeyPaths:(id)arg1;

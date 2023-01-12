@@ -6,28 +6,21 @@
 
 #import <UIKit/UIButton.h>
 
-@class UIVisualEffectView;
-
 @interface PKDiscoveryDismissButton : UIButton
 {
-    UIVisualEffectView *_blurView;
     long long _style;
 }
 
 + (long long)_blurEffectStyleForUserInterfaceStyle:(long long)arg1;
 + (id)_tintColorForUserInterfaceStyle:(long long)arg1;
-- (void).cxx_destruct;
++ (id)buttonWithStyle:(long long)arg1 primaryAction:(id)arg2;
 @property(readonly, nonatomic) long long style; // @synthesize style=_style;
-- (void)_updateStyleWithStyle:(long long)arg1;
-- (id)_tintColor;
 - (id)_backingEffect;
+- (id)_tintColor;
+- (void)_updateStyleWithStyle:(long long)arg1;
 - (void)_dynamicUserInterfaceTraitDidChange;
 - (void)updateStyleWithStyle:(long long)arg1 animated:(_Bool)arg2;
-- (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (id)initWithStyle:(long long)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)init;
 
 @end
 

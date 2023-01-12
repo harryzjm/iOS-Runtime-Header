@@ -23,10 +23,7 @@
 @property(readonly, nonatomic) NSArray *sortDescriptors; // @synthesize sortDescriptors=_sortDescriptors;
 @property(readonly, nonatomic) unsigned long long maxResults; // @synthesize maxResults=_maxResults;
 - (void)_queue_start;
-- (void)authorizeSamples:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (_Bool)_deliverAuthorizedSamplesToClient:(id)arg1 errorOut:(id *)arg2;
-- (_Bool)_deliverOneSample:(id)arg1 client:(id)arg2 errorOut:(id *)arg3;
-- (id)samplesBeforeAuthorizationWithSortDescriptors:(id)arg1 errorOut:(id *)arg2;
+- (_Bool)validateConfiguration:(id *)arg1;
 - (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;
 
 @end

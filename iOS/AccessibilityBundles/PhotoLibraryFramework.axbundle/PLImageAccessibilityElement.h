@@ -12,6 +12,7 @@
 }
 
 @property(nonatomic) int index; // @synthesize index=_index;
+- (id)_accessibilityDefaultFocusGroupIdentifier;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityLabel;
 - (id)albumView;

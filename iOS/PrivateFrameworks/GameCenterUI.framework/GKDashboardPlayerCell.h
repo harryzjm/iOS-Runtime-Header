@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewCell.h>
-
 @class GKDashboardPlayerShadowView, GKPlayer, NSLayoutConstraint, UIColor, UILabel, UIView;
 
-@interface GKDashboardPlayerCell : UICollectionViewCell
+@interface GKDashboardPlayerCell
 {
     _Bool _onDarkBackground;
     GKPlayer *_player;
@@ -24,6 +22,7 @@
 
 + (double)preferredCollectionHeight;
 + (struct CGSize)defaultSize;
+- (void).cxx_destruct;
 @property(nonatomic) double playerViewBottomToNameLabelTopConstant; // @synthesize playerViewBottomToNameLabelTopConstant=_playerViewBottomToNameLabelTopConstant;
 @property(retain, nonatomic) UIColor *statusColor; // @synthesize statusColor=_statusColor;
 @property(retain, nonatomic) UIColor *nameColor; // @synthesize nameColor=_nameColor;
@@ -42,7 +41,6 @@
 - (void)setStatusText:(id)arg1;
 - (void)setNameText:(id)arg1;
 @property(readonly, nonatomic) UIView *popoverSourceView;
-- (void)dealloc;
 - (void)awakeFromNib;
 
 @end

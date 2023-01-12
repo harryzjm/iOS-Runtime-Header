@@ -56,6 +56,7 @@
 @property(readonly, nonatomic) _Bool showVehicleNumber;
 @property(readonly, nonatomic) NSString *lineColorString;
 @property(readonly, nonatomic) _Bool hasLineColorString;
+@property(readonly, nonatomic) id <GEOTransitArtworkDataSource> headerArtwork;
 @property(readonly, nonatomic) id <GEOTransitArtworkDataSource> alternateArtwork;
 @property(readonly, nonatomic) id <GEOTransitArtworkDataSource> modeArtwork;
 @property(readonly, nonatomic) id <GEOTransitArtworkDataSource> artwork;

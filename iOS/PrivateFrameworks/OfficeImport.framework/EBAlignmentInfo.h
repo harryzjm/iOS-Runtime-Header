@@ -11,10 +11,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (void)writeAlignmentInfo:(id)arg1 toXlGraphicsInfo:(struct XlGraphicsInfo *)arg2;
++ (void)writeAlignmentInfo:(id)arg1 toXlGraphicsInfo:(void *)arg2;
 + (struct XlDXfAlign *)xlDXfAlignFromEDAlignmentInfo:(id)arg1;
 + (void)writeAlignmentInfo:(id)arg1 toXlXf:(struct XlXf *)arg2;
-+ (id)edAlignmentInfoFromXlGraphicsInfo:(struct XlGraphicsInfo *)arg1;
++ (id)edAlignmentInfoFromXlGraphicsInfo:(void *)arg1;
 + (id)edAlignmentInfoFromXlDXfAlign:(struct XlDXfAlign *)arg1;
 + (id)edAlignmentInfoFromXlXf:(struct XlXf *)arg1;
 + (int)convertEDVerticalAlignmentEnumToXl:(int)arg1;

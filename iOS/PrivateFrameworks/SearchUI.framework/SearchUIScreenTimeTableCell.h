@@ -4,18 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class TLKLabel;
+@class SearchUIScreenTimeView;
 
 @interface SearchUIScreenTimeTableCell
 {
-    TLKLabel *_label;
 }
 
-- (void).cxx_destruct;
-@property(retain, nonatomic) TLKLabel *label; // @synthesize label=_label;
 - (id)visibleResults;
 - (void)updateWithRowModel:(id)arg1;
 - (id)initWithRowModel:(id)arg1 feedbackDelegate:(id)arg2;
+
+// Remaining properties
+@property(retain) SearchUIScreenTimeView *sizingContainer; // @dynamic sizingContainer;
 
 @end
 

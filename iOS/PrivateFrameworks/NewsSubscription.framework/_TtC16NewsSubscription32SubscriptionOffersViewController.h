@@ -16,6 +16,7 @@
     MISSING_TYPE *coverViewManager;
     MISSING_TYPE *purchasingSpinnerViewControllerFactory;
     MISSING_TYPE *$__lazy_storage_$_verificationSpinner;
+    MISSING_TYPE *$__lazy_storage_$_purchasingSpinner;
     MISSING_TYPE *purchasePresenter;
     MISSING_TYPE *purchaseController;
     MISSING_TYPE *subscriptionOffersView;
@@ -25,6 +26,7 @@
     MISSING_TYPE *offers;
     MISSING_TYPE *viewModel;
     MISSING_TYPE *tag;
+    MISSING_TYPE *webOptinFlowManager;
 }
 
 - (void).cxx_destruct;

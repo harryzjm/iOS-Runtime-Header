@@ -9,6 +9,7 @@
 @interface ASDPurgeableAppRequestOptions
 {
     _Bool _performAvailablityCheck;
+    _Bool _skipLaunchCheck;
     long long _urgency;
     NSString *_volume;
 }
@@ -17,6 +18,7 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *volume; // @synthesize volume=_volume;
 @property(nonatomic) long long urgency; // @synthesize urgency=_urgency;
+@property(nonatomic) _Bool skipLaunchCheck; // @synthesize skipLaunchCheck=_skipLaunchCheck;
 @property(nonatomic) _Bool performAvailablityCheck; // @synthesize performAvailablityCheck=_performAvailablityCheck;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

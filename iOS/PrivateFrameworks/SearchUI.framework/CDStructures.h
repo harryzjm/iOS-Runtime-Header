@@ -25,9 +25,11 @@ struct CGSize {
     double height;
 };
 
-struct SBHIconGridSize {
-    unsigned short _field1;
-    unsigned short _field2;
+struct NSDirectionalEdgeInsets {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
 };
 
 struct SBIconImageInfo {

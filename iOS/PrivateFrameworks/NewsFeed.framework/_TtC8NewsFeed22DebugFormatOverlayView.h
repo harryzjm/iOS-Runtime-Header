@@ -13,10 +13,12 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *selectionFrame;
     MISSING_TYPE *selectionContentFrame;
+    MISSING_TYPE *metricSelectionFrame;
     MISSING_TYPE *contentOffset;
     MISSING_TYPE *contentFrame;
     MISSING_TYPE *contentTransformation;
     MISSING_TYPE *selectionView;
+    MISSING_TYPE *metricSelectionView;
     MISSING_TYPE *rulerView;
 }
 

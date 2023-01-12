@@ -6,9 +6,10 @@
 
 #import <GameCenterFoundation/NSObject-Protocol.h>
 
-@class GKPlayerInternal, NSArray;
+@class GKPlayerInternal, NSArray, NSString;
 
 @protocol GKFriendService <NSObject>
+- (oneway void)createFriendRequestWithIdentifier:(NSString *)arg1 handler:(void (^)(NSString *, NSError *))arg2;
 - (oneway void)establishNearbyRelationshipsUsingPlayerTokens:(NSArray *)arg1 handler:(void (^)(NSError *))arg2;
 - (oneway void)getNearbyTokenForLocalPlayerWithHandler:(void (^)(NSString *, NSError *))arg1;
 - (oneway void)getChallengableFriendsForPlayer:(GKPlayerInternal *)arg1 handler:(void (^)(NSArray *, NSError *))arg2;

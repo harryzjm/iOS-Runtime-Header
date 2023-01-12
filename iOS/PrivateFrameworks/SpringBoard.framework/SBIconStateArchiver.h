@@ -10,7 +10,6 @@
 {
 }
 
-+ (id)_iTunesDictionaryForDownloadingIcon:(id)arg1;
 + (id)_iTunesDictionaryForLeafIcon:(id)arg1 withIdentifier:(id)arg2;
 + (id)_iTunesDictionaryForLeafIdentifier:(id)arg1;
 + (id)_iTunesIconCellForCell:(id)arg1 preApex:(_Bool)arg2 pending:(_Bool)arg3 iconSource:(id)arg4;

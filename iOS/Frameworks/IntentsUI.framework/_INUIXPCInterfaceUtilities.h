@@ -13,8 +13,6 @@ __attribute__((visibility("hidden")))
 
 + (id)extensionContextVendingInterface;
 + (id)extensionContextHostingInterface;
-+ (id)remoteViewControllerServingInterface;
-+ (id)remoteViewControllerHostingInterface;
 
 @end
 

@@ -27,9 +27,20 @@
 - (void)invalidateRemoteProxyTargetDevice;
 - (void)archiveBackgroundContext:(id)arg1;
 - (void)archiveContext:(id)arg1;
+- (void)addISO18013Blobs:(id)arg1 cardType:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (_Bool)areUnifiedAccessPassesSupported;
+- (void)generateISOEncryptionCertificateForSubCredentialId:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)generateSEEncryptionCertificateForSubCredentialId:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)signWithFidoKeyForRelyingParty:(id)arg1 relyingPartyAccountHash:(id)arg2 fidoKeyHash:(id)arg3 challenge:(id)arg4 publicKeyIdentifier:(id)arg5 externalizedAuth:(id)arg6 completion:(CDUnknownBlockType)arg7;
+- (void)checkFidoKeyPresenceForRelyingParty:(id)arg1 relyingPartyAccountHash:(id)arg2 fidoKeyHash:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)createFidoKeyForRelyingParty:(id)arg1 relyingPartyAccountHash:(id)arg2 challenge:(id)arg3 externalizedAuth:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)availableHomeKeyPassesWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)provisionHomeKeyPassForSerialNumbers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)generateTransactionKeyWithParameters:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)familyMembersWithCompletion:(CDUnknownBlockType)arg1;
 - (void)passOwnershipTokenWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)storePassOwnershipToken:(id)arg1 withIdentifier:(id)arg2;
+- (void)performDeviceRegistrationForReason:(id)arg1 brokerURL:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)performDeviceCheckInWithCompletion:(CDUnknownBlockType)arg1;
 - (void)endRequiringUpgradedPasscodeIfNecessary;
 - (void)startRequiringUpgradedPasscodeWithPasscodeMeetsPolicy:(_Bool)arg1;
@@ -43,6 +54,7 @@
 - (void)updateAccountWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)deviceMetadataWithFields:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)featureApplicationsForProvisioningWithCompletion:(CDUnknownBlockType)arg1;
+- (void)cachedFeatureApplicationsForProvisioningWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updatedAccountsForProvisioningWithCompletion:(CDUnknownBlockType)arg1;
 - (void)supportedFeatureIdentifiersForAccountProvisioningWithCompletion:(CDUnknownBlockType)arg1;
 - (void)supportedFeatureIdentifiersWithCompletion:(CDUnknownBlockType)arg1;
@@ -68,6 +80,7 @@
 - (void)registrationSupportedInCurrentRegionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)paymentSupportedInCurrentRegion:(CDUnknownBlockType)arg1;
 - (void)didRegisterWithRegionMap:(id)arg1 primaryRegionTopic:(id)arg2;
+- (void)deleteKeyMaterialForSubCredentialId:(id)arg1;
 - (void)deleteApplicationWithAID:(id)arg1;
 - (void)getProvisioningDataIncludingDeviceMetadata:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)signData:(id)arg1 signatureEntanglementMode:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;

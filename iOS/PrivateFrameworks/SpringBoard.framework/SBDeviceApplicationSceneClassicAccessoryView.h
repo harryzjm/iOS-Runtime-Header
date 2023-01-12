@@ -15,10 +15,13 @@
 {
     SBDeviceApplicationSceneHandle *_sceneHandle;
     id <SBDeviceApplicationSceneClassicAccessoryViewDelegate> _delegate;
-    UIView *_zoomButtonWrapperView;
+    UIView *_buttonWrapperView;
     UIButton *_zoomButton;
+    UIButton *_clockWiseRotationButton;
+    UIButton *_counterClockWiseRotationButton;
     long long _buttonOrientation;
     SBOrientationTransformWrapperView *_transformWrapperView;
+    _Bool _rotatingFromButtonTap;
     SBSceneHandleBlockObserver *_sceneHandleObserver;
     UIApplicationSceneClientSettingsDiffInspector *_clientSettingsInspector;
     UIApplicationSceneSettingsDiffInspector *_sceneSettingsInspector;
@@ -26,6 +29,10 @@
     NSLayoutConstraint *_zoomButtonVerticalConstraint;
     NSLayoutConstraint *_zoomButtonWidthConstraint;
     NSLayoutConstraint *_zoomButtonHeightConstraint;
+    NSLayoutConstraint *_rotationButtonTopConstraint;
+    NSLayoutConstraint *_rotationButtonBottomConstraint;
+    NSLayoutConstraint *_rotationButtonLeadingConstraint;
+    NSLayoutConstraint *_rotationButtonTrailingConstraint;
 }
 
 - (void).cxx_destruct;
@@ -33,15 +40,20 @@
 @property(readonly, retain, nonatomic) SBDeviceApplicationSceneHandle *sceneHandle; // @synthesize sceneHandle=_sceneHandle;
 @property(nonatomic) __weak id <SBDeviceApplicationSceneClassicAccessoryViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_setupPositioningAndRotationForInterfaceOrientation:(long long)arg1 offscreen:(_Bool)arg2;
-- (void)_updateZoomButton;
 - (void)_updateOrientationFrom:(long long)arg1 toOrientation:(long long)arg2 animationSettings:(id)arg3;
+- (void)_updateRotationButtonWithAnimationSettings:(id)arg1;
 - (void)_sceneHandleDidUpdateSettingsWithDiff:(id)arg1 previousSettings:(id)arg2;
 - (void)_sceneHandleDidUpdateClientSettingsWithDiff:(id)arg1 transitionContext:(id)arg2;
-- (void)_updateZoomButtonVisibilityAnimated:(_Bool)arg1;
+- (void)_rotateApplicationScene:(id)arg1;
+- (_Bool)_rotationButtonShouldBeVisible;
+- (void)_updateRotationButtonConstraints;
+- (void)_updateRotationButton;
 - (_Bool)_zoomButtonShouldBeVisible;
 - (void)_changeZoom:(id)arg1;
-- (void)layoutSubviews;
+- (void)_updateZoomButton;
 - (_Bool)_isZoomed;
+- (void)_updateButtonVisibilityAnimated:(_Bool)arg1;
+- (void)layoutSubviews;
 - (void)invalidate;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 sceneHandle:(id)arg2;

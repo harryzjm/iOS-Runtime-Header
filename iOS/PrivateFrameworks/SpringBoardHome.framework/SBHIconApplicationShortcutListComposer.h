@@ -10,9 +10,9 @@
 {
 }
 
-+ (id)composedShortcutsForWidgetIcon:(id)arg1 additionalApplicationShortcutItems:(id)arg2 widgetIconSupportsConfiguration:(_Bool)arg3 iconManagerAllowsEditing:(_Bool)arg4;
++ (id)composedShortcutsForWidgetIcon:(id)arg1 additionalApplicationShortcutItems:(id)arg2 widgetIconSupportsConfiguration:(_Bool)arg3 iconManagerAllowsEditing:(_Bool)arg4 widgetSettings:(id)arg5;
 + (id)composedShortcutsForFolderIcon:(id)arg1 iconImageCache:(id)arg2 iconManagerAllowsEditing:(_Bool)arg3 removeStyle:(long long)arg4 badgeViewGenerator:(CDUnknownBlockType)arg5;
-+ (id)composedShortcutsForDownloadingApplicationWithBundleIdentifier:(id)arg1 iconDisplayName:(id)arg2 prioritizationIsAvailable:(_Bool)arg3 downloadingInformationAgent:(id)arg4 canShare:(_Bool)arg5;
++ (id)composedShortcutsForDownloadingApplicationWithBundleIdentifier:(id)arg1 iconDisplayName:(id)arg2 prioritizationIsAvailable:(_Bool)arg3 downloadingInformationAgent:(id)arg4 removeStyle:(long long)arg5 canShare:(_Bool)arg6;
 + (id)composedShortcutsForBookmarkIcon:(id)arg1 withDisplayName:(id)arg2 removeStyle:(long long)arg3;
 + (id)composedShortcutsForApplicationWithBundleIdentifier:(id)arg1 iconDisplayName:(id)arg2 staticItems:(id)arg3 dynamicItems:(id)arg4 applicationItemID:(unsigned long long)arg5 numberOfDisplayItemsInSwitcher:(long long)arg6 supportsMultipleWindows:(_Bool)arg7 isSystemApplication:(_Bool)arg8 isInternalApplication:(_Bool)arg9 isApplicationInBeta:(_Bool)arg10 isApplicationHidden:(_Bool)arg11 removeStyle:(long long)arg12;
 + (_Bool)supportsMultiwindowShortcut;

@@ -17,6 +17,8 @@
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSObject<OS_dispatch_queue> *_operationQueue;
+    NSObject<OS_dispatch_queue> *_oversizeLoggingQueue;
+    unsigned long long _pendingRequestsProcessingCounter;
     NSMutableOrderedSet *_pendingRequests;
     NSMutableSet *_activeRequests;
     NSMutableDictionary *_completionHandlers;
@@ -29,11 +31,13 @@
 + (unsigned long long)defaultMaximumConcurrentRequests;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long maxConcurrentRequests; // @synthesize maxConcurrentRequests=_maxConcurrentRequests;
-- (void)_updateProgressForRequest:(id)arg1 withTotalBytesWritten:(long long)arg2 totalBytesExpectedToWrite:(long long)arg3;
+- (void)_updateProgressForSessionTask:(id)arg1 withTotalBytesWritten:(long long)arg2 totalBytesExpectedToWrite:(long long)arg3;
 - (double)_timeoutForRequest:(id)arg1;
 - (void)_scheduleNextRequestTimeoutCheck;
 - (void)_checkRequestTimeouts;
 - (id)_newResponseForRequest:(id)arg1;
+- (id)_createURLSessionTaskForRequest:(id)arg1 usingSession:(id)arg2;
+- (id)_createURLSessionWithConfiguration:(id)arg1;
 - (id)_requestForTask:(id)arg1;
 - (void)_finishRequest:(id)arg1;
 - (void)_processRequest:(id)arg1;
@@ -53,8 +57,8 @@
 - (void)pause;
 - (void)cancelRequest:(id)arg1 withError:(id)arg2;
 - (void)cancelRequest:(id)arg1;
-- (void)enqueueAVDownloadRequest:(id)arg1 toDestination:(id)arg2 withOptions:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)enqueueAVDownloadRequest:(id)arg1 withOptions:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)resumeRequest:(id)arg1;
+- (void)pauseRequest:(id)arg1;
 - (void)enqueueDownloadRequest:(id)arg1 toDestination:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)enqueueDownloadRequest:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)enqueueUploadRequest:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

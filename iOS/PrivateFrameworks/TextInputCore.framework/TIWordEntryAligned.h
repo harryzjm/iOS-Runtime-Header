@@ -18,10 +18,12 @@
     NSString *_expectedString;
     TIWordEntry *_originalWord;
     NSArray *_alignedTouches;
+    NSString *_completeString;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *completeString; // @synthesize completeString=_completeString;
 @property(retain, nonatomic) NSArray *alignedTouches; // @synthesize alignedTouches=_alignedTouches;
 @property(nonatomic) int inSessionAlignmentConfidence; // @synthesize inSessionAlignmentConfidence=_inSessionAlignmentConfidence;
 @property(nonatomic) _Bool isContinuousPathConversion; // @synthesize isContinuousPathConversion=_isContinuousPathConversion;

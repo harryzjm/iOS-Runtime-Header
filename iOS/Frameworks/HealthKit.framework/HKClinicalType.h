@@ -17,7 +17,11 @@
 + (id)conditionRecordType;
 + (id)allergyRecordType;
 + (id)allTypes;
++ (id)sampleTypesForResourceType:(id)arg1 error:(id *)arg2;
+- (_Bool)_requiresPerObjectAuthorization;
+- (_Bool)_requiresAuthorization;
 - (_Bool)isClinicalType;
+- (id)initWithIdentifier:(id)arg1;
 
 @end
 

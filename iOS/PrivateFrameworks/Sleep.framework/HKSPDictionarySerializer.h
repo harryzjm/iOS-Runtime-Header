@@ -6,7 +6,7 @@
 
 #import <Foundation/NSCoder.h>
 
-@class NSDictionary, NSError, NSMutableArray;
+@class NSDictionary, NSError, NSMutableArray, NSMutableSet, NSSet;
 
 @interface HKSPDictionarySerializer : NSCoder
 {
@@ -14,9 +14,11 @@
     unsigned long long _serializationOptions;
     NSError *_internalError;
     NSMutableArray *_stack;
+    NSMutableSet *_mutableSerializedClasses;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSMutableSet *mutableSerializedClasses; // @synthesize mutableSerializedClasses=_mutableSerializedClasses;
 @property(readonly, nonatomic) NSMutableArray *stack; // @synthesize stack=_stack;
 @property(readonly, nonatomic) NSError *internalError; // @synthesize internalError=_internalError;
 @property(readonly, nonatomic) unsigned long long serializationOptions; // @synthesize serializationOptions=_serializationOptions;
@@ -34,6 +36,7 @@
 - (void)encodeInteger:(long long)arg1 forKey:(id)arg2;
 - (void)encodeBool:(_Bool)arg1 forKey:(id)arg2;
 - (void)encodeRootObject:(id)arg1;
+@property(readonly, nonatomic) NSSet *serializedClasses;
 - (_Bool)serialize:(id)arg1 error:(id *)arg2;
 - (_Bool)allowsKeyedCoding;
 - (id)initWithSerializationOptions:(unsigned long long)arg1;

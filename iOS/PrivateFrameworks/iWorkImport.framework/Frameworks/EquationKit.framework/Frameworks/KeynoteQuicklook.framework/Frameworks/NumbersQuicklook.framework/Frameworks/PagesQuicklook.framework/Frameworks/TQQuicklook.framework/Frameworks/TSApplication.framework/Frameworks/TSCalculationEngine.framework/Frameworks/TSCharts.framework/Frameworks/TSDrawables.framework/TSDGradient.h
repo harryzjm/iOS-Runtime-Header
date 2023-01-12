@@ -14,24 +14,21 @@
 @interface TSDGradient <TSSPresetSource, TSDMixing, NSCopying, NSMutableCopying>
 {
     NSMutableArray *mStops;
+    struct CGShading *mShadingRef;
+    unsigned long long mShadingColorSpace;
+    _Bool mIsAdvancedGradient;
     unsigned long long mType;
     double mOpacity;
-    struct CGShading *mShadingRef;
-    _Bool mIsAdvancedGradient;
 }
 
-+ (void)bootstrapPresetsOfKind:(id)arg1 inTheme:(id)arg2 alternate:(int)arg3;
++ (void)bootstrapPresetsOfKind:(id)arg1 inTheme:(id)arg2 alternate:(unsigned long long)arg3;
 + (id)presetKinds;
 + (id)radialGradientWithGradientStops:(id)arg1;
 + (id)radialGradientWithStartColor:(id)arg1 endColor:(id)arg2;
 + (id)linearGradientWithGradientStops:(id)arg1;
 + (id)linearGradientWithStartColor:(id)arg1 endColor:(id)arg2;
 + (void)sortStopsArray:(id)arg1;
-+ (_Bool)useQuartzShadings;
-+ (_Bool)useInflections;
-+ (void)disableInflections;
-+ (void)enableInflections;
-+ (id)instanceWithArchive:(const struct FillArchive *)arg1 unarchiver:(id)arg2;
++ (id)instanceWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 @property(readonly, nonatomic) double opacity; // @synthesize opacity=mOpacity;
 @property(readonly, nonatomic) unsigned long long gradientType; // @synthesize gradientType=mType;
 - (void)p_setInflectionOfStopAtIndex:(unsigned long long)arg1 toInflection:(double)arg2;
@@ -56,22 +53,26 @@
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 - (long long)fillType;
+- (_Bool)p_isAnyStopP3;
 @property(readonly, nonatomic) _Bool hasAlpha;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) _Bool isOpaque;
 - (struct CGAffineTransform)centeredRadialTransformInRect:(struct CGRect)arg1;
 - (void)drawSwatchInRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
-- (void)paintPath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
+- (void)paintPath:(const struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
 - (void)paintRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2 atAngle:(double)arg3;
 - (void)paintRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
-- (id)newColorAtFraction:(double)arg1;
+- (id)p_newColorAtFraction:(double)arg1;
 - (id)stopAtIndex:(unsigned long long)arg1;
 - (id)stopAfterFraction:(double)arg1;
 - (id)stopBeforeFraction:(double)arg1;
 - (_Bool)isAdvancedGradientIgnoringFlag;
+@property(nonatomic, setter=i_setAdvancedGradientFlag:) _Bool i_advancedGradientFlag;
 @property(readonly, nonatomic) _Bool isAdvancedGradient; // @synthesize isAdvancedGradient=mIsAdvancedGradient;
+- (id)p_newColorInShadingColorSpaceFromColor:(id)arg1;
 - (void)releaseShadingRef;
+- (unsigned long long)p_shadingColorSpace;
 @property(readonly, nonatomic) struct CGShading *shadingRef;
 - (id)referenceColor;
 @property(readonly, nonatomic) TSUColor *lastColor;
@@ -88,8 +89,8 @@
 - (id)init;
 - (void)p_setIsAdvancedGradient:(_Bool)arg1;
 - (void)p_setOpacity:(double)arg1;
-- (void)saveToArchive:(struct FillArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct FillArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 @end
 

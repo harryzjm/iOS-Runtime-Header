@@ -25,7 +25,7 @@
 @property(retain, nonatomic) NSUserDefaults *defaults; // @synthesize defaults=_defaults;
 @property(nonatomic) __weak id <HFLocationSensingCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_defaultsDidChange;
-- (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
+- (void)locationManagerDidChangeAuthorization:(id)arg1;
 @property(nonatomic) _Bool homeSensingEnabled;
 @property(readonly, nonatomic) NAFuture *locationSensingAvailableFuture;
 - (void)dealloc;

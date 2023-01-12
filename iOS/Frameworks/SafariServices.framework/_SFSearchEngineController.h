@@ -6,16 +6,20 @@
 
 #import <objc/NSObject.h>
 
+#import <SafariServices/WBSSearchProviderContext-Protocol.h>
+
 @class NSArray, NSDictionary, NSString, _SFSearchEngineInfo;
 @protocol OS_dispatch_queue;
 
-@interface _SFSearchEngineController : NSObject
+@interface _SFSearchEngineController : NSObject <WBSSearchProviderContext>
 {
     NSArray *_searchEngines;
     unsigned long long _defaultSearchEngineIndex;
     NSObject<OS_dispatch_queue> *_searchEnginesQueue;
     _SFSearchEngineInfo *_defaultSearchEngine;
+    long long _deviceType;
     NSString *_countryCode;
+    NSString *_systemLanguage;
     NSDictionary *_templateParameterValues;
     NSDictionary *_carrierTemplateParameterValues;
 }
@@ -26,9 +30,13 @@
 + (id)sharedInstance;
 + (void)_initializeSharedInstance;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSDictionary *carrierTemplateParameterValues; // @synthesize carrierTemplateParameterValues=_carrierTemplateParameterValues;
-@property(readonly, nonatomic) NSDictionary *templateParameterValues; // @synthesize templateParameterValues=_templateParameterValues;
-@property(readonly, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
+@property(readonly, copy, nonatomic) NSDictionary *carrierTemplateParameterValues; // @synthesize carrierTemplateParameterValues=_carrierTemplateParameterValues;
+@property(readonly, copy, nonatomic) NSDictionary *templateParameterValues; // @synthesize templateParameterValues=_templateParameterValues;
+@property(readonly, copy, nonatomic) NSString *systemLanguage; // @synthesize systemLanguage=_systemLanguage;
+@property(readonly, copy, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
+@property(readonly, nonatomic) long long deviceType; // @synthesize deviceType=_deviceType;
+- (_Bool)isSearchProviderEnabled:(unsigned long long)arg1;
+@property(readonly, nonatomic) _Bool isChinaDevice;
 @property(readonly, copy, nonatomic) NSString *defaultSearchEngineName;
 @property(readonly, copy, nonatomic) NSArray *searchEngineNames;
 @property(readonly, copy, nonatomic) NSArray *enginesAvailableForUnifiedFieldSearching;
@@ -46,11 +54,16 @@
 - (id)defaultSearchEngine;
 - (void)_setDefaultSearchEngine:(id)arg1;
 - (void)setDefaultSearchEngine:(id)arg1;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (void)_addAllWebSearchEngineInfosToArray:(id)arg1 andAddUserVisibleWebSearchEngineInfosToArray:(id)arg2;
 - (void)reloadSearchEngines;
 - (void)_populateSearchEngines;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

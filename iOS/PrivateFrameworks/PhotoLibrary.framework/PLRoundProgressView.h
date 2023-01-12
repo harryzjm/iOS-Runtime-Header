@@ -17,6 +17,8 @@
     double _realProgress;
     double _increaseRate;
     NSDate *_prevUpdateTime;
+    _Bool _allowFake25PercentProgress;
+    _Bool _skipResetOnRelayout;
     long long _style;
     UIColor *_manualColor;
     double _progress;
@@ -35,6 +37,8 @@
 @property(retain, nonatomic, setter=_setSliceLayer:) CAShapeLayer *_sliceLayer; // @synthesize _sliceLayer=__sliceLayer;
 @property(retain, nonatomic, setter=_setContentView:) UIView *_contentView; // @synthesize _contentView=__contentView;
 @property(nonatomic) double progress; // @synthesize progress=_progress;
+@property(nonatomic) _Bool skipResetOnRelayout; // @synthesize skipResetOnRelayout=_skipResetOnRelayout;
+@property(nonatomic) _Bool allowFake25PercentProgress; // @synthesize allowFake25PercentProgress=_allowFake25PercentProgress;
 @property(retain, nonatomic) UIColor *manualColor; // @synthesize manualColor=_manualColor;
 @property(readonly, nonatomic) long long style; // @synthesize style=_style;
 - (void)traitCollectionDidChange:(id)arg1;

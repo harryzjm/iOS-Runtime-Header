@@ -14,8 +14,9 @@ __attribute__((visibility("hidden")))
     NSArray *__assets;
 }
 
-+ (void)getRemovalWarningMessage:(id *)arg1 buttonTitle:(id *)arg2 cancelTitle:(id *)arg3 forAssets:(id)arg4 inCollection:(id)arg5;
-+ (void)getCombinedRemovalDeletionWarningMessage:(id *)arg1 removeButtonTitle:(id *)arg2 deleteButtonTitle:(id *)arg3 cancelTitle:(id *)arg4 forAssets:(id)arg5 inCollection:(id)arg6;
++ (id)alertControllerForAssets:(id)arg1 inCollection:(id)arg2 cancelAction:(CDUnknownBlockType)arg3 removeAction:(CDUnknownBlockType)arg4 removeFromSharedLibraryAction:(CDUnknownBlockType)arg5 deleteAction:(CDUnknownBlockType)arg6;
++ (id)getRemovalWarningMessageForAssets:(id)arg1 removeFromSharedLibraryOnly:(_Bool)arg2;
++ (id)getCombinedRemovalDeletionWarningMessageForAssets:(id)arg1 canRemoveFromSharedLibrary:(_Bool)arg2 removeFromSharedLibraryOnly:(_Bool)arg3;
 + (id)_suffix:(id)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic, setter=_setAssets:) NSArray *_assets; // @synthesize _assets=__assets;

@@ -24,6 +24,7 @@
     UIView *_superviewOwningLayout;
 }
 
++ (_Bool)_deviceSupportsMinibars;
 - (void).cxx_destruct;
 @property(nonatomic) __weak UIView *superviewOwningLayout; // @synthesize superviewOwningLayout=_superviewOwningLayout;
 @property(nonatomic) __weak id <_SFBarRegistrationToken> barRegistration; // @synthesize barRegistration=_barRegistration;
@@ -45,6 +46,7 @@
 - (void)setItems:(id)arg1 animated:(_Bool)arg2;
 - (void)dealloc;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (id)initWithPlacement:(long long)arg1 hideBackground:(_Bool)arg2;
 - (id)initWithPlacement:(long long)arg1;
 
 // Remaining properties

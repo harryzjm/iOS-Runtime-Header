@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HUWallpaperThumbnailCell, UIImage;
+@class UIImage, UIView;
 
 @protocol HUWallpaperThumbnailCellDelegate
-- (void)wallpaperThumbnailCell:(HUWallpaperThumbnailCell *)arg1 didReceiveDroppedImage:(UIImage *)arg2;
+- (void)wallpaperThumbnailCell:(UIView *)arg1 didReceiveDroppedImage:(UIImage *)arg2;
 @end
 

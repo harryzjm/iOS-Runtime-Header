@@ -22,6 +22,7 @@
 @property(nonatomic) __weak id <ML3DatabaseValidationDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) ML3MusicLibrary *library; // @synthesize library=_library;
 @property(nonatomic) _Bool truncateBeforeValidating; // @synthesize truncateBeforeValidating=_truncateBeforeValidating;
+- (void)_logDatabasePathDirectoryAttributes;
 - (_Bool)_internalUserAgreesToRebuildUnmigratableDatabase;
 - (_Bool)_performDatabasePreprocessingWithLibrary:(id)arg1 error:(id *)arg2;
 - (_Bool)_performSchemaUpgradeWithLibrary:(id)arg1 error:(id *)arg2;

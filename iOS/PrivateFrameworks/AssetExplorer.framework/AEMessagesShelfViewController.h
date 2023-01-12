@@ -37,9 +37,11 @@
     long long __indexToScrollTo;
     UIColor *__roundedCornerOverlayFillColor;
     PUAssetExplorerReviewScreenViewController *_presentedReviewController;
+    unsigned long long __options;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long _options; // @synthesize _options=__options;
 @property(retain, nonatomic) PUAssetExplorerReviewScreenViewController *presentedReviewController; // @synthesize presentedReviewController=_presentedReviewController;
 @property(retain, nonatomic) UIColor *_roundedCornerOverlayFillColor; // @synthesize _roundedCornerOverlayFillColor=__roundedCornerOverlayFillColor;
 @property(nonatomic, setter=_setIndexToScrollTo:) long long _indexToScrollTo; // @synthesize _indexToScrollTo=__indexToScrollTo;
@@ -73,6 +75,7 @@
 - (id)framesOfVisibleContentViewInCoordinateSpace:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 @property(readonly) _Bool wantsEdgeToEdgeLayout;
+- (_Bool)layoutShouldShowCancelButtons:(id)arg1;
 - (_Bool)layoutShouldShowVideoDuration:(id)arg1;
 - (double)layout:(id)arg1 itemAtIndexPathDuration:(struct PXSimpleIndexPath)arg2;
 - (_Bool)layout:(id)arg1 itemAtIndexPathIsAnimatedImage:(struct PXSimpleIndexPath)arg2;
@@ -88,6 +91,7 @@
 - (void)_dismissPresentedReviewController:(id)arg1 animated:(_Bool)arg2;
 - (void)_presentReviewViewController:(id)arg1;
 - (void)dealloc;
+- (id)initWithPackageTransport:(id)arg1 options:(unsigned long long)arg2;
 - (id)initWithPackageTransport:(id)arg1;
 
 // Remaining properties

@@ -8,6 +8,7 @@
 
 @interface NSString (ChineseJapanese)
 - (id)_firstComposedCharacter;
+- (_Bool)endsInWhitespace;
 - (_Bool)endsInPunctuation;
 - (_Bool)TI_hasTrueSuffix:(id)arg1;
 - (_Bool)TI_hasTruePrefix:(id)arg1;

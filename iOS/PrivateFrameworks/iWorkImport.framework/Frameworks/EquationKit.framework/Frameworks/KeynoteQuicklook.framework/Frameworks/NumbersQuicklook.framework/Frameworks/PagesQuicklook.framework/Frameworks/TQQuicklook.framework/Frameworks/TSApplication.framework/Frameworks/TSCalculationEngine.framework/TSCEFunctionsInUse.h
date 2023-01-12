@@ -11,17 +11,21 @@
 @interface TSCEFunctionsInUse : NSObject
 {
     TSCECalculationEngine *_calcEngine;
-    struct unordered_map<TSCEFunctionIndex, TSCEReferenceSet *, std::__1::hash<TSCEFunctionIndex>, std::__1::equal_to<TSCEFunctionIndex>, std::__1::allocator<std::__1::pair<const TSCEFunctionIndex, TSCEReferenceSet *>>> _cellRefsUsingFunction;
-    struct _opaque_pthread_mutex_t _mutex;
+    struct unordered_map<TSCEFunctionIndex, TSCEReferenceSet *, std::hash<TSCEFunctionIndex>, std::equal_to<TSCEFunctionIndex>, std::allocator<std::pair<const TSCEFunctionIndex, TSCEReferenceSet *>>> _cellRefsUsingFunction;
+    struct _opaque_pthread_mutex_t {
+        long long __sig;
+        char __opaque[56];
+    } _mutex;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, retain, nonatomic) TSCECalculationEngine *calcEngine; // @synthesize calcEngine=_calcEngine;
 - (id)description;
-- (void)dirtyCellsUsingFunction:(int)arg1;
-- (void)addFunctionUsesInFormula:(id)arg1 atCellRef:(const struct TSCECellRef *)arg2;
-- (void)addUseOfFunctions:(const unordered_set_9760b1c1 *)arg1 atCellRef:(const struct TSCECellRef *)arg2;
+- (void)dirtyCellsUsingFunction:(unsigned short)arg1;
+- (void)addFunctionUsesInFormula:(id)arg1 atCellRef:(const struct TSCECellRef *)arg2 outContainsVolatileFunction:(_Bool *)arg3;
+- (void)addUseOfFunctions:(const void *)arg1 atCellRef:(const struct TSCECellRef *)arg2;
+- (vector_40cc974e)functionsUsed;
 - (void)dealloc;
 - (id)initWithCalcEngine:(id)arg1;
 

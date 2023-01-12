@@ -11,12 +11,13 @@
 }
 
 + (id)_baseURL;
-+ (id)_loadManifestFromBaseURL:(id)arg1;
 + (id)_eventRulesDictionariesForURL:(id)arg1;
-+ (id)_eventRulesFileDictionaryForURL:(id)arg1 error:(id *)arg2;
-+ (id)_eventRulesURLForCountryCode:(id)arg1 baseURL:(id)arg2;
-+ (id)eventRulesForLocale:(id)arg1;
-+ (id)eventRulesForLocale:(id)arg1 sourcesURL:(id)arg2;
++ (id)_allEventRulesForEventRulesDictionaries:(id)arg1;
++ (id)allSupportedCountryCodes;
++ (id)eventRulesURLForSourceURL:(id)arg1;
++ (id)eventRulesForSourcesURL:(id)arg1;
++ (id)eventRules;
++ (id)eventRulesSourcesURL:(id)arg1;
 
 @end
 

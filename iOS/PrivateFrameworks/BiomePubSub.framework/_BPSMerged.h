@@ -10,7 +10,7 @@
 @interface _BPSMerged
 {
     struct os_unfair_lock_s _lock;
-    struct os_unfair_lock_s _downstreamLock;
+    struct os_unfair_recursive_lock_s _downstreamLock;
     _Bool _terminated;
     _Bool _finished;
     _Bool _recursive;
@@ -19,16 +19,16 @@
     long long _demand;
     long long _upstreamFinished;
     NSMutableArray *_subscriptions;
-    NSMutableArray *_activeSubscriptions;
     NSMutableArray *_buffers;
     long long _pending;
+    NSMutableArray *_upstreamBookmarks;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *upstreamBookmarks; // @synthesize upstreamBookmarks=_upstreamBookmarks;
 @property(nonatomic) long long pending; // @synthesize pending=_pending;
 @property(nonatomic) _Bool recursive; // @synthesize recursive=_recursive;
 @property(retain, nonatomic) NSMutableArray *buffers; // @synthesize buffers=_buffers;
-@property(retain, nonatomic) NSMutableArray *activeSubscriptions; // @synthesize activeSubscriptions=_activeSubscriptions;
 @property(retain, nonatomic) NSMutableArray *subscriptions; // @synthesize subscriptions=_subscriptions;
 @property(nonatomic) _Bool finished; // @synthesize finished=_finished;
 @property(nonatomic) long long upstreamFinished; // @synthesize upstreamFinished=_upstreamFinished;
@@ -36,6 +36,8 @@
 @property(nonatomic) long long demand; // @synthesize demand=_demand;
 @property(nonatomic) long long count; // @synthesize count=_count;
 @property(retain, nonatomic) id <BPSSubscriber> downstream; // @synthesize downstream=_downstream;
+- (id)newBookmark;
+- (void)updateBookmarksWhenLockedForIndex:(unsigned long long)arg1;
 - (id)upstreamSubscriptions;
 - (void)cancel;
 - (void)requestDemand:(long long)arg1;

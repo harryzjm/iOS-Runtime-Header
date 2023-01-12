@@ -9,11 +9,11 @@
 __attribute__((visibility("hidden")))
 @interface WebResourceUsageOverlayLayer : CALayer
 {
-    struct ResourceUsageOverlay *m_overlay;
+    void *m_overlay;
 }
 
 - (void)drawInContext:(struct CGContext *)arg1;
-- (id)initWithResourceUsageOverlay:(struct ResourceUsageOverlay *)arg1;
+- (id)initWithResourceUsageOverlay:(void *)arg1;
 
 @end
 

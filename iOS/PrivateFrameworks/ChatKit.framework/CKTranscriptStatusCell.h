@@ -30,7 +30,7 @@
 - (void)setOrientation:(BOOL)arg1;
 @property(readonly, nonatomic) _Bool shouldHideDuringDarkFSM;
 - (void)prepareForReuse;
-- (void)configureForChatItem:(id)arg1;
+- (void)configureForChatItem:(id)arg1 context:(id)arg2;
 
 @end
 

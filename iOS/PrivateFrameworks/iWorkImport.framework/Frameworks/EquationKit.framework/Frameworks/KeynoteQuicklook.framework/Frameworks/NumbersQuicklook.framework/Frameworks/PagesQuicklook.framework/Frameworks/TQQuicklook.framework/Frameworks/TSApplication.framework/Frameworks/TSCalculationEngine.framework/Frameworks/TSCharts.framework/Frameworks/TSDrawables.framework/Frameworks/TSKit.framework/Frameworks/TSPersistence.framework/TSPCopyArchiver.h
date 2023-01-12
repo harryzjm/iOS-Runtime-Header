@@ -15,8 +15,8 @@
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <TSPProxyObjectMapping> proxyObjectMapping; // @synthesize proxyObjectMapping=_proxyObjectMapping;
-- (void)setStrongLazyReference:(id)arg1 message:(struct Reference *)arg2;
-- (void)setStrongReference:(id)arg1 message:(struct Reference *)arg2;
+- (void)setStrongLazyReference:(id)arg1 message:(void *)arg2;
+- (void)setStrongReference:(id)arg1 message:(void *)arg2;
 @property(readonly, nonatomic) long long targetType;
 
 @end

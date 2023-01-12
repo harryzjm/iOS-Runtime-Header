@@ -16,6 +16,7 @@
 }
 
 + (id)propertiesToPrefetch;
++ (_Bool)inverseIsToMany;
 + (_Bool)isToMany;
 + (id)keyPathToPrimaryObject;
 + (id)keyPathFromPrimaryObject;

@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOAbAssignInfo, GEOFormattedStringClientCapabilities, GEOLocalTime, GEOLocalizationCapabilities, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
+@class GEOAbAssignInfo, GEOAdvisoryClientCapabilities, GEOFormattedStringClientCapabilities, GEOLocalTime, GEOLocalizationCapabilities, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOClientCapabilities : PBCodable <NSCopying>
 {
@@ -16,6 +16,7 @@
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _supportedTransitFeatures;
     GEOAbAssignInfo *_abAssignInfo;
+    GEOAdvisoryClientCapabilities *_advisoryClientCapabilities;
     NSString *_appMajorVersion;
     NSString *_appMinorVersion;
     NSString *_deviceCountryCode;
@@ -41,11 +42,16 @@
     _Bool _includeCrossLanguagePhonetics;
     _Bool _internalInstall;
     _Bool _internalTool;
+    _Bool _replaceAccidentStringWithCrash;
     _Bool _routeOptionsSupported;
     _Bool _snapToClosestStopSupported;
+    _Bool _supportsAdvancedMap;
+    _Bool _supportsAreaEventsEnhancements;
     _Bool _supportsArrivalMapRegion;
     _Bool _supportsCongestionZones;
     _Bool _supportsElectricVehicleRoutes;
+    _Bool _supportsGuidanceEventImportanceInfo;
+    _Bool _supportsGuidanceEventPrivacyFilters;
     _Bool _supportsGuidanceEventsInlineShields;
     _Bool _supportsGuidanceEvents;
     _Bool _supportsJunctionView;
@@ -53,7 +59,10 @@
     _Bool _supportsLongShieldStrings;
     _Bool _supportsNaturalGuidance;
     _Bool _supportsRoadComplexities;
+    _Bool _supportsSilentRouteUpdates;
+    _Bool _supportsSpeedTrapAnnouncements;
     _Bool _supportsTrafficCameras;
+    _Bool _supportsUserIncidentReports;
     _Bool _supportsWaypointRoutes;
     _Bool _willSendEvDirectionsFeedback;
     struct {
@@ -67,11 +76,16 @@
         unsigned int has_includeCrossLanguagePhonetics:1;
         unsigned int has_internalInstall:1;
         unsigned int has_internalTool:1;
+        unsigned int has_replaceAccidentStringWithCrash:1;
         unsigned int has_routeOptionsSupported:1;
         unsigned int has_snapToClosestStopSupported:1;
+        unsigned int has_supportsAdvancedMap:1;
+        unsigned int has_supportsAreaEventsEnhancements:1;
         unsigned int has_supportsArrivalMapRegion:1;
         unsigned int has_supportsCongestionZones:1;
         unsigned int has_supportsElectricVehicleRoutes:1;
+        unsigned int has_supportsGuidanceEventImportanceInfo:1;
+        unsigned int has_supportsGuidanceEventPrivacyFilters:1;
         unsigned int has_supportsGuidanceEventsInlineShields:1;
         unsigned int has_supportsGuidanceEvents:1;
         unsigned int has_supportsJunctionView:1;
@@ -79,12 +93,16 @@
         unsigned int has_supportsLongShieldStrings:1;
         unsigned int has_supportsNaturalGuidance:1;
         unsigned int has_supportsRoadComplexities:1;
+        unsigned int has_supportsSilentRouteUpdates:1;
+        unsigned int has_supportsSpeedTrapAnnouncements:1;
         unsigned int has_supportsTrafficCameras:1;
+        unsigned int has_supportsUserIncidentReports:1;
         unsigned int has_supportsWaypointRoutes:1;
         unsigned int has_willSendEvDirectionsFeedback:1;
         unsigned int read_unknownFields:1;
         unsigned int read_supportedTransitFeatures:1;
         unsigned int read_abAssignInfo:1;
+        unsigned int read_advisoryClientCapabilities:1;
         unsigned int read_appMajorVersion:1;
         unsigned int read_appMinorVersion:1;
         unsigned int read_deviceCountryCode:1;
@@ -119,6 +137,22 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasSupportsGuidanceEventImportanceInfo;
+@property(nonatomic) _Bool supportsGuidanceEventImportanceInfo;
+@property(nonatomic) _Bool hasSupportsGuidanceEventPrivacyFilters;
+@property(nonatomic) _Bool supportsGuidanceEventPrivacyFilters;
+@property(nonatomic) _Bool hasReplaceAccidentStringWithCrash;
+@property(nonatomic) _Bool replaceAccidentStringWithCrash;
+@property(nonatomic) _Bool hasSupportsSilentRouteUpdates;
+@property(nonatomic) _Bool supportsSilentRouteUpdates;
+@property(nonatomic) _Bool hasSupportsAdvancedMap;
+@property(nonatomic) _Bool supportsAdvancedMap;
+@property(nonatomic) _Bool hasSupportsAreaEventsEnhancements;
+@property(nonatomic) _Bool supportsAreaEventsEnhancements;
+@property(nonatomic) _Bool hasSupportsUserIncidentReports;
+@property(nonatomic) _Bool supportsUserIncidentReports;
+@property(nonatomic) _Bool hasSupportsSpeedTrapAnnouncements;
+@property(nonatomic) _Bool supportsSpeedTrapAnnouncements;
 @property(nonatomic) _Bool hasSupportsRoadComplexities;
 @property(nonatomic) _Bool supportsRoadComplexities;
 @property(nonatomic) _Bool hasWillSendEvDirectionsFeedback;
@@ -171,6 +205,8 @@
 @property(nonatomic) _Bool includeCrossLanguagePhonetics;
 @property(nonatomic) _Bool hasSnapToClosestStopSupported;
 @property(nonatomic) _Bool snapToClosestStopSupported;
+@property(retain, nonatomic) GEOAdvisoryClientCapabilities *advisoryClientCapabilities;
+@property(readonly, nonatomic) _Bool hasAdvisoryClientCapabilities;
 @property(retain, nonatomic) GEOFormattedStringClientCapabilities *formattedStringClientCapabilities;
 @property(readonly, nonatomic) _Bool hasFormattedStringClientCapabilities;
 - (int)StringAsTransitMarketSupport:(id)arg1;

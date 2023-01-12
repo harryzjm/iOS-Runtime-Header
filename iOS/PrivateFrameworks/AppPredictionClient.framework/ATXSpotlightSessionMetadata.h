@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AppPredictionClient/NSSecureCoding-Protocol.h>
+#import <AppPredictionClient/ATXProactiveSuggestionUIFeedbackSessionMetadataProtocol-Protocol.h>
 
 @class NSString;
 
-@interface ATXSpotlightSessionMetadata : NSObject <NSSecureCoding>
+@interface ATXSpotlightSessionMetadata : NSObject <ATXProactiveSuggestionUIFeedbackSessionMetadataProtocol>
 {
     unsigned char _appConsumerSubType;
     unsigned char _actionConsumerSubType;
@@ -24,16 +24,21 @@
 @property(retain, nonatomic) NSString *engagedAppString; // @synthesize engagedAppString=_engagedAppString;
 @property(nonatomic) unsigned char actionConsumerSubType; // @synthesize actionConsumerSubType=_actionConsumerSubType;
 @property(nonatomic) unsigned char appConsumerSubType; // @synthesize appConsumerSubType=_appConsumerSubType;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqualToATXSpotlightSessionMetadata:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (_Bool)checkAndReportDecodingFailureIfNeededForBOOL:(_Bool)arg1 key:(id)arg2 coder:(id)arg3 errorDomain:(id)arg4 errorCode:(long long)arg5;
 - (_Bool)checkAndReportDecodingFailureIfNeededForid:(id)arg1 key:(id)arg2 coder:(id)arg3 errorDomain:(id)arg4 errorCode:(long long)arg5;
+@property(readonly, copy) NSString *description;
 - (id)initWithAppConsumerSubType:(unsigned char)arg1 actionConsumerSubType:(unsigned char)arg2 engagedAppString:(id)arg3 didSearchDuringSession:(_Bool)arg4;
 - (id)initWithAppConsumerSubType:(unsigned char)arg1 actionConsumerSubType:(unsigned char)arg2;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

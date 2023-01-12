@@ -21,7 +21,14 @@
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
     _Bool _arrivedAtDestination;
-    CDStruct_8bb9be38 _flags;
+    struct {
+        unsigned int has_navigationAudioFeedback:1;
+        unsigned int has_durationOfTrip:1;
+        unsigned int has_arrivedAtDestination:1;
+        unsigned int read_directionsFeedbacks:1;
+        unsigned int read_finalLocation:1;
+        unsigned int wrote_anyField:1;
+    } _flags;
 }
 
 + (_Bool)isValid:(id)arg1;
@@ -32,6 +39,8 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
+- (void)clearSensitiveFields:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;

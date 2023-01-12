@@ -106,6 +106,7 @@ struct netcore_stats_tcp_statistics_report {
     unsigned int connected:1;
     unsigned int cellular_fallback:1;
     unsigned int cellular_rrc_connected:1;
+    unsigned int prefer_fallback:1;
     unsigned int kernel_reported_stalls:1;
     unsigned int kernel_reporting_connection_stalled:1;
     unsigned int kernel_reporting_read_stalled:1;
@@ -113,8 +114,15 @@ struct netcore_stats_tcp_statistics_report {
     unsigned int tcp_fast_open:1;
     unsigned int first_party:1;
     unsigned int tls13_configured:1;
-    unsigned int __pad_bits:5;
+    unsigned int __pad_bits:4;
     unsigned char __pad[6];
+};
+
+struct nw_activity_client_metric_report_s {
+    unsigned char activity_uuid[16];
+    char client_metric_name[256];
+    char client_metric[5000];
+    unsigned char __pad[0];
 };
 
 struct nw_activity_epilogue_report_s {
@@ -139,6 +147,19 @@ struct nw_activity_report_s {
     unsigned char __pad[7];
 };
 
+struct nw_connection_protocol_establishment_report_s {
+    char protocol_name[32];
+    unsigned long long handshake_milliseconds;
+    unsigned long long handshake_rtt_milliseconds;
+    int protocol_index;
+    unsigned char __pad[4];
+};
+
+struct nw_connection_proxy_hop_s {
+    char proxy_name[64];
+    unsigned char __pad[0];
+};
+
 struct nw_connection_report_s {
     unsigned long long bytes_in;
     unsigned long long bytes_out;
@@ -153,6 +174,9 @@ struct nw_connection_report_s {
     unsigned long long multipath_bytes_out_wifi;
     unsigned long long multipath_bytes_in_initial;
     unsigned long long multipath_bytes_out_initial;
+    unsigned long long estimated_upload_throughput;
+    unsigned long long estimated_download_throughput;
+    unsigned long long transform_last_timeout_msecs;
     unsigned int current_rtt_msecs;
     unsigned int smoothed_rtt_msecs;
     unsigned int best_rtt_msecs;
@@ -177,8 +201,12 @@ struct nw_connection_report_s {
     unsigned int transport_protocol;
     unsigned int dns_protocol;
     unsigned int connection_report_reason;
+    unsigned int transform_first_protocol;
+    unsigned int transform_connected_protocol;
+    unsigned int transform_connected_protocol_index;
     int failure_reason;
     int connected_interface_type;
+    int connected_interface_subtype;
     int multipath_service_type;
     int connection_mode;
     int apple_host;
@@ -189,14 +217,19 @@ struct nw_connection_report_s {
     unsigned char first_address_family;
     unsigned char connected_address_family;
     unsigned char connection_uuid[16];
+    unsigned char parent_uuid[16];
     unsigned char activities[50][16];
     char bundle_id[256];
     char effective_bundle_id[256];
+    unsigned char privacy_stance;
+    unsigned int is_known_tracker:1;
+    unsigned int is_third_party_web_content:1;
     unsigned int triggered_path:1;
     unsigned int system_proxy_configured:1;
     unsigned int custom_proxy_configured:1;
     unsigned int fallback_eligible:1;
     unsigned int weak_fallback:1;
+    unsigned int prefer_fallback:1;
     unsigned int used_fallback:1;
     unsigned int resolution_required:1;
     unsigned int tls_configured:1;
@@ -221,8 +254,18 @@ struct nw_connection_report_s {
     unsigned int svcb_requested:1;
     unsigned int svcb_received:1;
     unsigned int svcb_dohuri:1;
-    unsigned int __pad_bits:3;
-    unsigned char __pad[6];
+    unsigned int is_probe:1;
+    unsigned int quic_experiment_enabled:1;
+    unsigned int quic_deferred:1;
+    unsigned int quic_application_deferred:1;
+    unsigned int quic_denied:1;
+    unsigned int quic_alternative_present:1;
+    unsigned int quic_updated_alternative:1;
+    unsigned int quic_speculative_attempt:1;
+    unsigned char __pad_bytes[4];
+    struct nw_connection_protocol_establishment_report_s protocol_establishment_reports[10];
+    struct nw_connection_proxy_hop_s proxy_hops[2];
+    unsigned char __pad[0];
 };
 
 struct nw_protocol {

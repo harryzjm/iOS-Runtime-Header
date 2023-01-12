@@ -7,6 +7,7 @@
 #import <UIKit/UIBezierPath.h>
 
 @interface UIBezierPath (PhotosUICore)
++ (id)px_bezierPathWithRoundedRect:(struct CGRect)arg1 cornerRadius:(double)arg2 continuousCorners:(_Bool)arg3;
 + (id)px_bezierPathWithRoundedRect:(struct CGRect)arg1 cornerRadii:(CDStruct_2bd92d94)arg2;
 @end
 

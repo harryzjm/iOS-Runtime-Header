@@ -29,8 +29,10 @@ __attribute__((visibility("hidden")))
     unsigned short _evsChannelAwareOffset;
     _Bool _evsHeaderFullOnly;
     _Bool _payloadOctetAligned;
+    _Bool _isOpusInBandFecEnabled;
 }
 
+@property(readonly, nonatomic) _Bool isOpusInBandFecEnabled; // @synthesize isOpusInBandFecEnabled=_isOpusInBandFecEnabled;
 @property(readonly, nonatomic) _Bool evsHeaderFullOnly; // @synthesize evsHeaderFullOnly=_evsHeaderFullOnly;
 @property(readonly, nonatomic) unsigned short evsChannelAwareOffset; // @synthesize evsChannelAwareOffset=_evsChannelAwareOffset;
 @property(readonly, nonatomic) unsigned int evsSIDPeriod; // @synthesize evsSIDPeriod=_evsSIDPeriod;
@@ -58,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (void)createSupportedBitratesForAMR16k;
 - (void)createSupportedBitratesForAMR8k;
 - (void)createSupportedBitratesForOpus;
+- (void)createSupportedBitratesForAACELD48;
 - (void)createSupportedBitratesForAACELD;
 - (void)createSupportedBitrates;
 - (unsigned int)aacBitrate;

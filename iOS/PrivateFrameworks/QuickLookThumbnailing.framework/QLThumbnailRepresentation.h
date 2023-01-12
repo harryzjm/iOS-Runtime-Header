@@ -22,11 +22,11 @@
 
 - (void).cxx_destruct;
 @property(retain) QLThumbnailMetadata *generatedProperties; // @synthesize generatedProperties=_generatedProperties;
-@property struct CGRect contentRect; // @synthesize contentRect=_contentRect;
 @property int flavor; // @synthesize flavor=_flavor;
 @property(nonatomic) double scale; // @synthesize scale=_scale;
 @property(nonatomic) struct CGImage *CGImageThumbnail; // @synthesize CGImageThumbnail=_CGImageThumbnail;
 @property(retain, nonatomic) UIImage *UIImageThumbnail; // @synthesize UIImageThumbnail=_UIImageThumbnail;
+@property(nonatomic) struct CGRect contentRect; // @synthesize contentRect=_contentRect;
 @property(readonly, nonatomic) NSImage *NSImage; // @synthesize NSImage=_NSImage;
 @property(nonatomic) long long type; // @synthesize type=_type;
 - (id)description;

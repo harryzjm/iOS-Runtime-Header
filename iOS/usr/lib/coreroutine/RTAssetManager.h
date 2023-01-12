@@ -32,7 +32,7 @@
 - (id)defaultXPCActivityCriteria;
 - (void)_performUpdateOfAssetsWithTypeAssetType:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)performUpdateOfAssetsWithTypeAssetType:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)_shutdown;
+- (void)_shutdownWithHandler:(CDUnknownBlockType)arg1;
 - (id)initWithDefaultsManager:(id)arg1 assetProcessor:(id)arg2 xpcActivityManager:(id)arg3;
 - (id)init;
 

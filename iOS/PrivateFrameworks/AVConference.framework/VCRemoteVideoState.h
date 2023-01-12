@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property _Bool isVideoPaused; // @synthesize isVideoPaused=_isVideoPaused;
 @property _Bool isVideoDegraded; // @synthesize isVideoDegraded=_isVideoDegraded;
 @property _Bool hasReceivedFirstFrame; // @synthesize hasReceivedFirstFrame=_hasReceivedFirstFrame;
+- (id)description;
 - (void)dealloc;
 
 @end

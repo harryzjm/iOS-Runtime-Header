@@ -40,7 +40,7 @@
 + (id)colorWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4;
 + (id)colorWithCGColor:(struct CGColor *)arg1;
 + (id)colorWithColor:(id)arg1;
-+ (id)instanceWithArchive:(const struct FillArchive *)arg1 unarchiver:(id)arg2;
++ (id)instanceWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) TSUColor *color; // @synthesize color=_color;
 @property(readonly, nonatomic) double brightness;
@@ -75,8 +75,8 @@
 - (id)initWithColor:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)saveToArchive:(struct FillArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct FillArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 @end
 

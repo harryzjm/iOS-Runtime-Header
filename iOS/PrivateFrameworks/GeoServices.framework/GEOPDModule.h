@@ -10,7 +10,6 @@
 
 @class GEOPDModuleOptions, NSString, PBDataReader, PBUnknownFields;
 
-__attribute__((visibility("hidden")))
 @interface GEOPDModule : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
@@ -20,8 +19,10 @@ __attribute__((visibility("hidden")))
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
+    int _moduleConfigurationIndex;
     int _type;
     struct {
+        unsigned int has_moduleConfigurationIndex:1;
         unsigned int has_type:1;
         unsigned int read_unknownFields:1;
         unsigned int read_moduleDebugDescription:1;
@@ -47,6 +48,8 @@ __attribute__((visibility("hidden")))
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasModuleConfigurationIndex;
+@property(nonatomic) int moduleConfigurationIndex;
 @property(retain, nonatomic) NSString *moduleDebugDescription;
 @property(readonly, nonatomic) _Bool hasModuleDebugDescription;
 @property(retain, nonatomic) GEOPDModuleOptions *options;

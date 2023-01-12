@@ -16,6 +16,7 @@
 @interface PLGenericAlbum <PLSearchableAssetCollection, PLSyncableObject, PLAlbumProtocol, PLDerivedAlbumOrigin, PLIndexMappersDataOrigin>
 {
     NSObject<PLIndexMappingCache> *_derivedAlbums[5];
+    _Bool _didAutomaticallyAssignParentFolder;
     _Bool isRegisteredForChanges;
     _Bool didRegisteredWithUserInterfaceContext;
 }
@@ -31,8 +32,6 @@
 + (id)allSyncedAlbumsInManagedObjectContext:(id)arg1;
 + (id)allAlbumsInManagedObjectContext:(id)arg1;
 + (id)albumFromGroupURL:(id)arg1 photoLibrary:(id)arg2;
-+ (id)insertNewSyncedFolderWithTitle:(id)arg1 intoLibrary:(id)arg2;
-+ (id)insertNewFolderWithTitle:(id)arg1 intoLibrary:(id)arg2;
 + (id)insertNewLegacyFaceAlbumIntoLibrary:(id)arg1;
 + (id)insertNewCloudSharedAlbumWithTitle:(id)arg1 lastInterestingDate:(id)arg2 intoLibrary:(id)arg3;
 + (id)insertNewSyncedEventIntoLibrary:(id)arg1;
@@ -123,7 +122,6 @@
 @property(readonly, nonatomic) _Bool isOwnedCloudSharedAlbum;
 @property(readonly, nonatomic) _Bool isRegularRootFolder;
 @property(readonly, nonatomic) _Bool isProjectAlbumRootFolder;
-@property(readonly, nonatomic) _Bool isRootFolder;
 @property(readonly, nonatomic) _Bool isFolder;
 @property(readonly, nonatomic) _Bool isStandInAlbum;
 @property(readonly, nonatomic) _Bool isPendingPhotoStreamAlbum;
@@ -151,6 +149,7 @@
 @property(readonly, nonatomic) unsigned long long approximateCount;
 - (void)_repairTitleIfEmpty;
 - (void)repairUuidAndTitleWithRecoveryReason:(const char *)arg1;
+- (void)didSave;
 - (void)willSave;
 - (void)willTurnIntoFault;
 - (void)awakeFromFetch;
@@ -199,6 +198,7 @@
 @property(retain, nonatomic) NSDate *endDate; // @dynamic endDate;
 @property(readonly) unsigned long long hash;
 @property(retain, nonatomic) NSString *importSessionID; // @dynamic importSessionID;
+@property(retain, nonatomic) NSString *importedByBundleIdentifier; // @dynamic importedByBundleIdentifier;
 @property(nonatomic) _Bool isPinned; // @dynamic isPinned;
 @property(nonatomic) _Bool isPrototype; // @dynamic isPrototype;
 @property(retain, nonatomic) PLManagedAsset *keyAsset; // @dynamic keyAsset;

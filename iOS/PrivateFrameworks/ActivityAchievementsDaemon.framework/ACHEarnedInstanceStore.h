@@ -40,7 +40,7 @@
 - (void)_notifyObserversOfRemovedEarnedInstances:(id)arg1;
 - (void)_notifyObserversOfAddedEarnedInstances:(id)arg1;
 - (void)_notifyInitialFetchComplete;
-- (void)loadAllEarnedInstancesFromDatabaseIfNecessary;
+- (_Bool)loadAllEarnedInstancesFromDatabaseIfNecessary;
 - (_Bool)removeAllEarnedInstancesWithError:(id *)arg1;
 - (_Bool)_queue_removeEarnedInstances:(id)arg1 error:(id *)arg2;
 - (_Bool)removeEarnedInstances:(id)arg1 error:(id *)arg2;

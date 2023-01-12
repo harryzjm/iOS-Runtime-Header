@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC8FMIPCore29FMIPReverseGeocodingOperation : NSOperation
 {
     MISSING_TYPE *request;

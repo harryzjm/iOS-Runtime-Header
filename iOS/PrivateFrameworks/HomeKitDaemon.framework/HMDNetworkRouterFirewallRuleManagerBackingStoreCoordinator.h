@@ -29,7 +29,7 @@
 + (id)__networkDeclarationDataDictionaryFromOverrideObjectDictionary:(id)arg1;
 + (id)__createProcessingOptionsWithLabel:(id)arg1;
 + (id)__createProcessingOptionsWithLabel:(id)arg1 qualityOfService:(long long)arg2;
-+ (id)__jsonFromRecords:(id)arg1 rawOutput:(_Bool)arg2 error:(id *)arg3;
++ (id)__jsonFromRecords:(id)arg1 validateWithPublicKeys:(id)arg2 rawOutput:(_Bool)arg3 error:(id *)arg4;
 + (id)__pairedMetadataFromRecord:(id)arg1 recordKey:(id)arg2 identifier:(id)arg3;
 + (id)__networkDeclarationsFromRecord:(id)arg1 recordKey:(id)arg2 identifier:(id)arg3;
 + (id)__jsonFromPairedMetadata:(id)arg1 rawOutput:(_Bool)arg2 error:(id *)arg3;

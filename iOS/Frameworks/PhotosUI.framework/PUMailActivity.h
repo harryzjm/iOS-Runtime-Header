@@ -27,6 +27,8 @@ __attribute__((visibility("hidden")))
     _Bool _isSharingSingleVideo;
     _Bool _didCheckMailDropAvailable;
     _Bool _isMailDropAvailable;
+    _Bool _canSendMailInNewScene;
+    _Bool _didFallbackToPresentComposeControllerModally;
     _Bool __remakerWasCancelled;
     id <PXActivityItemSourceController> _itemSourceController;
     NSString *_transcodedVideoFilePath;
@@ -51,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)editVideoViewController:(id)arg1 didTrimVideoWithOptions:(id)arg2;
 - (void)activityDidFinish:(_Bool)arg1;
 - (void)performActivity;
+- (_Bool)_dismissActivityFromViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)_presentActivityOnViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)mailComposeViewController;
 - (id)activityViewController;
@@ -74,6 +77,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_isMailDropEnabled;
 - (void)dealloc;
 - (void)_pu_cleanup;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

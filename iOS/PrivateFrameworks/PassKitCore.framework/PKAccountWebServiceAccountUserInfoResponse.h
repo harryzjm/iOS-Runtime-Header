@@ -11,6 +11,7 @@
     CNContact *_userInfo;
 }
 
++ (_Bool)jsonDataOptional;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) CNContact *userInfo; // @synthesize userInfo=_userInfo;
 - (id)_stringValueFromDictionary:(id)arg1 key:(id)arg2 isOptional:(_Bool)arg3;

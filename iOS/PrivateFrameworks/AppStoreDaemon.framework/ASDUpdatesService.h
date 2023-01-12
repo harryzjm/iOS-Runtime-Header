@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class ASDServiceBroker;
+#import <AppStoreDaemon/ASDServiceProvider-Protocol.h>
+
+@class ASDServiceBroker, NSString;
 @protocol OS_dispatch_queue;
 
-@interface ASDUpdatesService : NSObject
+@interface ASDUpdatesService : NSObject <ASDServiceProvider>
 {
     ASDServiceBroker *_serviceBroker;
     NSObject<OS_dispatch_queue> *_accessQueue;
@@ -46,6 +48,12 @@
 - (id)_initWithServiceBroker:(id)arg1;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

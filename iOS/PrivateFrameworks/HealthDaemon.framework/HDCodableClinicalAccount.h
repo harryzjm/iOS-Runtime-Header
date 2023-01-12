@@ -12,18 +12,32 @@
 
 @interface HDCodableClinicalAccount : PBCodable <NSCopying>
 {
+    double _clinicalSharingFirstSharedDate;
+    double _clinicalSharingLastSharedDate;
+    long long _clinicalSharingMultiDeviceStatus;
+    long long _clinicalSharingUserStatus;
     double _creationDate;
+    long long _failedFetchAttemptsCount;
+    double _lastFailedFetchDate;
     double _lastFetchDate;
     double _lastFullFetchDate;
     double _modificationDate;
     NSString *_accountIdentifier;
+    NSString *_clinicalSharingPrimaryDeviceName;
     NSString *_gatewayExternalID;
     HDCodableMessageVersion *_messageVersion;
     NSString *_patientHash;
+    NSString *_signedClinicalDataIssuerIdentifier;
     NSData *_syncIdentifier;
     _Bool _userEnabled;
     struct {
+        unsigned int clinicalSharingFirstSharedDate:1;
+        unsigned int clinicalSharingLastSharedDate:1;
+        unsigned int clinicalSharingMultiDeviceStatus:1;
+        unsigned int clinicalSharingUserStatus:1;
         unsigned int creationDate:1;
+        unsigned int failedFetchAttemptsCount:1;
+        unsigned int lastFailedFetchDate:1;
         unsigned int lastFetchDate:1;
         unsigned int lastFullFetchDate:1;
         unsigned int modificationDate:1;
@@ -32,6 +46,14 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long failedFetchAttemptsCount; // @synthesize failedFetchAttemptsCount=_failedFetchAttemptsCount;
+@property(nonatomic) double lastFailedFetchDate; // @synthesize lastFailedFetchDate=_lastFailedFetchDate;
+@property(retain, nonatomic) NSString *clinicalSharingPrimaryDeviceName; // @synthesize clinicalSharingPrimaryDeviceName=_clinicalSharingPrimaryDeviceName;
+@property(nonatomic) long long clinicalSharingMultiDeviceStatus; // @synthesize clinicalSharingMultiDeviceStatus=_clinicalSharingMultiDeviceStatus;
+@property(nonatomic) long long clinicalSharingUserStatus; // @synthesize clinicalSharingUserStatus=_clinicalSharingUserStatus;
+@property(nonatomic) double clinicalSharingLastSharedDate; // @synthesize clinicalSharingLastSharedDate=_clinicalSharingLastSharedDate;
+@property(nonatomic) double clinicalSharingFirstSharedDate; // @synthesize clinicalSharingFirstSharedDate=_clinicalSharingFirstSharedDate;
+@property(retain, nonatomic) NSString *signedClinicalDataIssuerIdentifier; // @synthesize signedClinicalDataIssuerIdentifier=_signedClinicalDataIssuerIdentifier;
 @property(retain, nonatomic) HDCodableMessageVersion *messageVersion; // @synthesize messageVersion=_messageVersion;
 @property(retain, nonatomic) NSString *patientHash; // @synthesize patientHash=_patientHash;
 @property(retain, nonatomic) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
@@ -51,6 +73,14 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasFailedFetchAttemptsCount;
+@property(nonatomic) _Bool hasLastFailedFetchDate;
+@property(readonly, nonatomic) _Bool hasClinicalSharingPrimaryDeviceName;
+@property(nonatomic) _Bool hasClinicalSharingMultiDeviceStatus;
+@property(nonatomic) _Bool hasClinicalSharingUserStatus;
+@property(nonatomic) _Bool hasClinicalSharingLastSharedDate;
+@property(nonatomic) _Bool hasClinicalSharingFirstSharedDate;
+@property(readonly, nonatomic) _Bool hasSignedClinicalDataIssuerIdentifier;
 @property(readonly, nonatomic) _Bool hasMessageVersion;
 @property(readonly, nonatomic) _Bool hasPatientHash;
 @property(readonly, nonatomic) _Bool hasAccountIdentifier;

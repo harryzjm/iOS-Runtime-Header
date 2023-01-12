@@ -41,7 +41,7 @@
 - (void)p_hideCaptionAndTitleFromDeepCopiedDrawable:(id)arg1;
 @property(readonly, nonatomic) TSUImage *drawableThumbnailImage;
 - (id)infoToConnectToForConnectionLineConnectedToInfo:(id)arg1;
-- (_Bool)isInfoAKeynoteMasterObject:(id)arg1;
+- (_Bool)isInfoAKeynoteTemplateObject:(id)arg1;
 - (id)initWithDocumentRoot:(id)arg1;
 
 // Remaining properties

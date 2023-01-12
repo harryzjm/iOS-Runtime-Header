@@ -4,24 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeUI/HFDiffableDataItemManagerDelegate-Protocol.h>
 #import <HomeUI/HFExecutionEnvironmentObserver-Protocol.h>
 #import <HomeUI/HFItemManagerDelegate-Protocol.h>
 #import <HomeUI/HUItemManagerContainer-Protocol.h>
 #import <HomeUI/HUItemPresentationContainer-Protocol.h>
 #import <HomeUI/HUPreloadableViewController-Protocol.h>
 #import <HomeUI/UICollectionViewDataSourcePrefetching-Protocol.h>
+#import <HomeUI/UITextFieldDelegate-Protocol.h>
 
-@class HFItem, HFItemManager, NSHashTable, NSMutableArray, NSMutableSet, NSString;
+@class HFItem, HFItemManager, NSHashTable, NSMapTable, NSMutableArray, NSMutableSet, NSString;
 @protocol NACancelable;
 
-@interface HUItemCollectionViewController <HFExecutionEnvironmentObserver, UICollectionViewDataSourcePrefetching, HFItemManagerDelegate, HUItemManagerContainer, HUItemPresentationContainer, HUPreloadableViewController>
+@interface HUItemCollectionViewController <HFExecutionEnvironmentObserver, UICollectionViewDataSourcePrefetching, UITextFieldDelegate, HFItemManagerDelegate, HUItemManagerContainer, HUItemPresentationContainer, HUPreloadableViewController, HFDiffableDataItemManagerDelegate>
 {
     _Bool _wantsPreferredContentSize;
     _Bool _suppressCollectionViewUpdatesForReorderCommit;
     _Bool _hasFinishedInitialLoad;
     _Bool _viewVisible;
+    _Bool _iconPreloadIsPrioritized;
     _Bool _visibilityUpdatesEnabled;
     HFItemManager *_itemManager;
+    NSMutableSet *_internalItemModuleControllers;
+    NSMapTable *_textFieldToCellMap;
     NSMutableSet *_registeredCellClasses;
     NSMutableArray *_foregroundUpdateFutures;
     NSMutableArray *_viewVisibleFutures;
@@ -39,19 +44,45 @@
 @property(retain, nonatomic) id <NACancelable> deferredVisibilityUpdate; // @synthesize deferredVisibilityUpdate=_deferredVisibilityUpdate;
 @property(nonatomic) _Bool visibilityUpdatesEnabled; // @synthesize visibilityUpdatesEnabled=_visibilityUpdatesEnabled;
 @property(readonly, nonatomic) NSMutableArray *viewVisibleFutures; // @synthesize viewVisibleFutures=_viewVisibleFutures;
+@property(nonatomic) _Bool iconPreloadIsPrioritized; // @synthesize iconPreloadIsPrioritized=_iconPreloadIsPrioritized;
 @property(nonatomic, getter=isViewVisible) _Bool viewVisible; // @synthesize viewVisible=_viewVisible;
 @property(retain, nonatomic) NSMutableArray *foregroundUpdateFutures; // @synthesize foregroundUpdateFutures=_foregroundUpdateFutures;
 @property(readonly, nonatomic) NSMutableSet *registeredCellClasses; // @synthesize registeredCellClasses=_registeredCellClasses;
 @property(nonatomic) _Bool hasFinishedInitialLoad; // @synthesize hasFinishedInitialLoad=_hasFinishedInitialLoad;
-@property(retain, nonatomic) HFItemManager *itemManager; // @synthesize itemManager=_itemManager;
+@property(readonly, nonatomic) NSMapTable *textFieldToCellMap; // @synthesize textFieldToCellMap=_textFieldToCellMap;
+@property(readonly, nonatomic) NSMutableSet *internalItemModuleControllers; // @synthesize internalItemModuleControllers=_internalItemModuleControllers;
 @property(nonatomic) _Bool suppressCollectionViewUpdatesForReorderCommit; // @synthesize suppressCollectionViewUpdatesForReorderCommit=_suppressCollectionViewUpdatesForReorderCommit;
 @property(nonatomic) _Bool wantsPreferredContentSize; // @synthesize wantsPreferredContentSize=_wantsPreferredContentSize;
+@property(retain, nonatomic) HFItemManager *itemManager; // @synthesize itemManager=_itemManager;
 - (void)_cancelIconPreload;
-- (void)_preloadIconsIfNeeded;
+- (id)_displayedPackageIconDescriptorsForItems:(id)arg1;
+- (void)_preloadIconsIfNeededWithItems:(id)arg1;
+- (void)_prioritizeIconPreloadIfNeeded;
+- (id)_itemForTextField:(id)arg1;
+- (id)moduleControllerForItem:(id)arg1;
+- (void)textFieldDidEndEditing:(id)arg1 item:(id)arg2;
+- (void)textDidChange:(id)arg1 forTextField:(id)arg2 item:(id)arg3;
+- (void)textFieldDidBeginEditing:(id)arg1 item:(id)arg2;
+- (id)placeholderTextForTextField:(id)arg1 item:(id)arg2;
+- (id)defaultTextForTextField:(id)arg1 item:(id)arg2;
+- (id)currentTextForTextField:(id)arg1 item:(id)arg2;
+- (_Bool)shouldManageTextFieldForItem:(id)arg1;
+- (void)reloadCellForItems:(id)arg1;
+- (void)updateCellForItems:(id)arg1;
+- (id)presentingViewControllerForModuleController:(id)arg1;
+- (id)moduleController:(id)arg1 dismissViewControllerForRequest:(id)arg2;
+- (void)_transformViewControllerForRequest:(id)arg1;
+- (id)moduleController:(id)arg1 presentViewControllerForRequest:(id)arg2;
 - (void)recursivelyDisableItemUpdates:(_Bool)arg1 withReason:(id)arg2;
 @property(readonly, nonatomic) HFItem *hu_presentedItem;
 - (void)executionEnvironmentRunningStateDidChange:(id)arg1;
 - (id)hu_preloadContent;
+- (_Bool)shouldPerformUpdateWithAnimationForDiffableDataItemManager:(id)arg1;
+- (void)diffableDataItemManager:(id)arg1 didUpdateItems:(id)arg2 addItems:(id)arg3 removeItems:(id)arg4;
+- (void)diffableDataItemManager:(id)arg1 willUpdateItems:(id)arg2 addItems:(id)arg3 removeItems:(id)arg4 isInitialLoad:(_Bool)arg5;
+- (void)diffableDataItemManager:(id)arg1 prefetchResourcesForItems:(id)arg2;
+- (void)itemManagerDidUpdate:(id)arg1;
+- (void)itemManager:(id)arg1 didUpdateItemModules:(id)arg2;
 - (void)itemManagerDidFinishUpdate:(id)arg1;
 - (void)itemManager:(id)arg1 didChangeHome:(id)arg2;
 - (void)itemManager:(id)arg1 didChangeSourceItem:(id)arg2;
@@ -66,12 +97,19 @@
 - (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
 - (id)itemManager:(id)arg1 futureToUpdateItems:(id)arg2 itemUpdateOptions:(id)arg3;
 - (void)collectionView:(id)arg1 prefetchItemsAtIndexPaths:(id)arg2;
+- (_Bool)collectionView:(id)arg1 shouldHighlightItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
+- (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
+- (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
+- (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (void)_updateTitle;
+- (void)_performStandardUpdateForCell:(id)arg1 forItem:(id)arg2;
+- (void)_routeUpdateForCell:(id)arg1 forItem:(id)arg2;
+- (unsigned long long)automaticDisablingReasonsForItem:(id)arg1;
 - (void)performBatchCollectionViewUpdatesForUpdateRequest:(id)arg1 reloadOnly:(_Bool)arg2;
 - (struct CGSize)preferredContentSizeForCollectionViewContentSize:(struct CGSize)arg1;
 - (_Bool)isLayoutDependentOnItemState;
@@ -79,6 +117,8 @@
 - (_Bool)automaticallyUpdatesViewControllerTitle;
 - (void)configureCell:(id)arg1 forItem:(id)arg2;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
+- (id)buildItemModuleControllerForModule:(id)arg1;
+- (id)itemModuleControllers;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
@@ -86,6 +126,9 @@
 - (void)viewWillAppear:(_Bool)arg1;
 - (_Bool)shouldAutomaticallyForwardAppearanceMethods;
 - (void)viewDidLoad;
+- (void)didReorderItemWithTransaction:(id)arg1;
+- (_Bool)collectionView:(id)arg1 canMoveItemAtIndexPath:(id)arg2;
+- (void)setUpDiffableDataItemManagerIfNeeded;
 - (id)initWithItemManager:(id)arg1 collectionViewLayout:(id)arg2;
 
 // Remaining properties

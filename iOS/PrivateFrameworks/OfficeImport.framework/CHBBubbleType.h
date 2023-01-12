@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (struct XlChartPlot *)xlChartPlotFrom:(id)arg1 state:(id)arg2;
++ (void *)xlChartPlotFrom:(id)arg1 state:(id)arg2;
 + (id)chdChartTypeWithState:(id)arg1;
 
 @end

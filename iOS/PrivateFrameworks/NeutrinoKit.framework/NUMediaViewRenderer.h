@@ -17,6 +17,7 @@
     NUSurfaceRenderClient *_backfillClient;
     NULivePhotoRenderClient *_livePhotoClient;
     NUVideoRenderClient *_videoClient;
+    NSString *_currentVideoSourceAssetIdentifier;
     UIView *_livePhotoView;
     NUCoalescer *_livePhotoUpdateCoalescer;
     NUCoalescer *_videoUpdateCoalescer;
@@ -74,7 +75,7 @@
 - (void)livePhotoView:(id)arg1 didEndPlaybackWithStyle:(long long)arg2;
 - (void)livePhotoView:(id)arg1 willBeginPlaybackWithStyle:(long long)arg2;
 - (void)removeObserver:(id)arg1;
-- (void)_notifyPlaybackTimeChange:(CDStruct_198678f7)arg1;
+- (void)_notifyPlaybackTimeChange:(CDStruct_1b6d18a9)arg1;
 - (id)addPlaybackTimeObserver:(CDUnknownBlockType)arg1;
 - (void)_notifyExternalPlaybackChange:(_Bool)arg1;
 - (id)addExternalPlaybackObserver:(CDUnknownBlockType)arg1;
@@ -86,14 +87,16 @@
 - (void)pause;
 - (void)play;
 - (void)stepByCount:(long long)arg1;
-- (void)seekToTime:(CDStruct_198678f7)arg1 toleranceBefore:(CDStruct_198678f7)arg2 toleranceAfter:(CDStruct_198678f7)arg3;
-- (void)seekToTime:(CDStruct_198678f7)arg1 exact:(_Bool)arg2;
+- (void)seekToTime:(CDStruct_1b6d18a9)arg1 toleranceBefore:(CDStruct_1b6d18a9)arg2 toleranceAfter:(CDStruct_1b6d18a9)arg3 forceSeek:(_Bool)arg4;
+- (void)seekToTime:(CDStruct_1b6d18a9)arg1 toleranceBefore:(CDStruct_1b6d18a9)arg2 toleranceAfter:(CDStruct_1b6d18a9)arg3;
+- (void)seekToTime:(CDStruct_1b6d18a9)arg1 exact:(_Bool)arg2 forceSeek:(_Bool)arg3;
+- (void)seekToTime:(CDStruct_1b6d18a9)arg1 exact:(_Bool)arg2;
 @property(readonly) NSArray *loadedTimeRanges;
-- (void)seekToTime:(CDStruct_198678f7)arg1;
-@property(readonly, nonatomic) CDStruct_198678f7 currentTime;
+- (void)seekToTime:(CDStruct_1b6d18a9)arg1;
+@property(readonly, nonatomic) CDStruct_1b6d18a9 currentTime;
 - (long long)_playbackStateFromPlayerStatus:(long long)arg1 rate:(float)arg2;
 @property(readonly, nonatomic) long long playbackState;
-@property(readonly, nonatomic) CDStruct_198678f7 mediaDuration;
+@property(readonly, nonatomic) CDStruct_1b6d18a9 mediaDuration;
 @property(readonly, nonatomic, getter=isVideoEnabled) _Bool videoEnabled;
 - (void)setVideoEnabled:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)_addFullExtentConstraintsForView:(id)arg1;
@@ -110,7 +113,7 @@
 - (void)_updateVideoViewLayoutWithGeometry:(id)arg1;
 - (void)_updateVideoComposition:(id)arg1;
 - (id)_scalePolicyForVideoCompositionRender;
-- (void)_updateVideoWithResult:(id)arg1;
+- (void)_updateVideoWithResult:(id)arg1 sourceChanged:(_Bool)arg2;
 - (id)cacheVideoRenderFilter;
 - (void)_tearDownAVPlayerController;
 - (void)_playerStatusDidChange:(long long)arg1;

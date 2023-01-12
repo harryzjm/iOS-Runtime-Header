@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CPLResource, CPLScopeChange, CPLScopedIdentifier, NSArray, NSDictionary, NSString, NSURL;
+@class CPLDropDerivativesRecipe, CPLResource, CPLResourceTransferTaskOptions, CPLScopeChange, CPLScopedIdentifier, NSArray, NSDictionary, NSString, NSURL;
 
 @protocol CPLDaemonLibraryManagerMinimalProtocol
+- (void)testKey:(NSString *)arg1 value:(NSString *)arg2 completionHandler:(void (^)(NSString *, NSError *))arg3;
 - (void)boostPriorityForScopeWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)deactivateScopeWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)activateScopeWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)addDropDerivativesRecipe:(CPLDropDerivativesRecipe *)arg1 writeToUserDefaults:(_Bool)arg2 withCompletionHandler:(void (^)(NSError *))arg3;
 - (void)provideCloudResource:(CPLResource *)arg1 completionHandler:(void (^)(CPLResource *, unsigned long long))arg2;
 - (void)provideRecordWithCloudScopeIdentifier:(CPLScopedIdentifier *)arg1 completionHandler:(void (^)(CPLRecordChange *, unsigned long long))arg2;
 - (void)provideScopeChangeForScopeWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(CPLScopeChange *, unsigned long long))arg2;
@@ -30,7 +32,6 @@
 - (void)getStatusForComponents:(NSArray *)arg1 completionHandler:(void (^)(NSString *, NSError *))arg2;
 - (void)getListOfComponentsWithCompletionHandler:(void (^)(NSArray *, NSError *))arg1;
 - (void)resetCacheWithOption:(unsigned long long)arg1 reason:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
-- (void)setDiagnosticsEnabled:(_Bool)arg1;
 - (void)noteClientIsEndingSignificantWork;
 - (void)noteClientIsBeginningSignificantWork;
 - (void)enableMingling;
@@ -53,13 +54,14 @@
 - (void)queryUserDetailsForShareParticipants:(NSArray *)arg1 completionHandler:(void (^)(NSArray *, NSError *))arg2;
 - (void)acceptSharedScope:(CPLScopeChange *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)fetchSharedScopeFromShareURL:(NSURL *)arg1 completionHandler:(void (^)(CPLScopeChange *, NSError *))arg2;
+- (void)updateShareForScope:(CPLScopeChange *)arg1 completionHandler:(void (^)(CPLScopeChange *, NSError *))arg2;
 - (void)createScope:(CPLScopeChange *)arg1 completionHandler:(void (^)(CPLScopeChange *, NSError *))arg2;
 - (void)getMappedScopedIdentifiersForScopedIdentifiers:(NSArray *)arg1 inAreLocalIdentifiers:(_Bool)arg2 completionHandler:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)resolveLocalScopedIdentifiersForCloudScopedIdentifiers:(NSArray *)arg1 completionHandler:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)beginInMemoryDownloadOfResource:(CPLResource *)arg1 reply:(void (^)(NSString *))arg2;
 - (void)rampingRequestForResourceType:(unsigned long long)arg1 numRequested:(unsigned long long)arg2 completionHandler:(void (^)(_Bool, unsigned long long, NSError *))arg3;
-- (void)getStreamingURLForResource:(CPLResource *)arg1 intent:(unsigned long long)arg2 hints:(NSDictionary *)arg3 clientBundleID:(NSString *)arg4 completionHandler:(void (^)(NSURL *, NSDate *, NSError *))arg5;
-- (void)beginDownloadForResource:(CPLResource *)arg1 clientBundleID:(NSString *)arg2 intent:(unsigned long long)arg3 proposedTaskIdentifier:(NSString *)arg4 reply:(void (^)(NSString *))arg5;
+- (void)getStreamingURLForResource:(CPLResource *)arg1 intent:(unsigned long long)arg2 hints:(NSDictionary *)arg3 timeRange:(CDStruct_e83c9415)arg4 clientBundleID:(NSString *)arg5 completionHandler:(void (^)(NSURL *, NSDate *, NSError *))arg6;
+- (void)beginDownloadForResource:(CPLResource *)arg1 clientBundleID:(NSString *)arg2 options:(CPLResourceTransferTaskOptions *)arg3 proposedTaskIdentifier:(NSString *)arg4 reply:(void (^)(NSString *))arg5;
 - (void)deactivateLibraryWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)closeLibraryWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)openLibraryWithClientLibraryBaseURL:(NSURL *)arg1 cloudLibraryStateStorageURL:(NSURL *)arg2 cloudLibraryResourceStorageURL:(NSURL *)arg3 libraryIdentifier:(NSString *)arg4 options:(unsigned long long)arg5 completionHandler:(void (^)(NSError *, NSDictionary *, unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long, NSString *, NSString *, NSURL *))arg6;

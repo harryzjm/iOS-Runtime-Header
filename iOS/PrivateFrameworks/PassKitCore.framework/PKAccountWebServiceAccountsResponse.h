@@ -4,16 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString;
+@class NSArray, NSString, PKFeatureFailureCollection;
 
 @interface PKAccountWebServiceAccountsResponse
 {
     NSArray *_accounts;
+    PKFeatureFailureCollection *_featureFailures;
     NSString *_lastUpdated;
 }
 
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *lastUpdated; // @synthesize lastUpdated=_lastUpdated;
+@property(readonly, nonatomic) PKFeatureFailureCollection *featureFailures; // @synthesize featureFailures=_featureFailures;
 @property(readonly, copy, nonatomic) NSArray *accounts; // @synthesize accounts=_accounts;
 - (id)initWithData:(id)arg1;
 

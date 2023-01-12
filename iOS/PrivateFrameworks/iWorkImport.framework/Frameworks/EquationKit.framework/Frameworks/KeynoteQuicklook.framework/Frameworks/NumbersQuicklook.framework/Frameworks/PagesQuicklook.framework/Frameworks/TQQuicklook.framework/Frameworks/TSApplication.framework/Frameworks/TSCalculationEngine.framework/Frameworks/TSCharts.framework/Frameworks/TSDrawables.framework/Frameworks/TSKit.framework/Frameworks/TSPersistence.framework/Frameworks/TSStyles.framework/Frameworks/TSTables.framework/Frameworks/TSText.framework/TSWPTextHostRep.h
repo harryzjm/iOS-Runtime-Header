@@ -25,7 +25,6 @@
 @property(retain, nonatomic) NSObject<TSKSearchReference> *primaryFindResultSearchReference; // @synthesize primaryFindResultSearchReference=_primaryFindResultSearchReference;
 - (void)drawTextBackground:(struct CGContext *)arg1 insetRect:(struct CGRect)arg2 pulsating:(_Bool)arg3;
 - (void)drawTextBackground:(struct CGContext *)arg1 insetRect:(struct CGRect)arg2 pulsating:(_Bool)arg3 shouldTint:(_Bool)arg4;
-- (void)setPulseControllerActive:(_Bool)arg1 autohide:(_Bool)arg2;
 - (id)childReps;
 @property(readonly, nonatomic) NSObject<TSDContainerInfo> *containerInfo;
 - (void)updateChildrenFromLayout;

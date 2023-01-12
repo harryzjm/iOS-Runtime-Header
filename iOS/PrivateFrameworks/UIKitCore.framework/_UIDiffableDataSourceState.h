@@ -19,6 +19,10 @@ __attribute__((visibility("hidden")))
     NSOrderedSet *_identifiers;
     NSOrderedSet *_sections;
     id <_UIDataSourceSnapshotTranslating> _dataSourceSnapshot;
+    struct {
+        unsigned int identifiersHaveGuaranteedPerformance:1;
+        unsigned int sectionsHaveGuaranteedPerformance:1;
+    } _stateFlags;
 }
 
 - (void).cxx_destruct;
@@ -26,6 +30,10 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)indexPathForItemIdentifier:(id)arg1;
 - (id)itemIdentifierForIndexPath:(id)arg1;
+- (long long)indexForSectionIdentifier:(id)arg1;
+- (id)sectionIdentifierForIndex:(long long)arg1;
+- (_Bool)containsSectionIdentifier:(id)arg1;
+- (_Bool)containsItemIdentifier:(id)arg1;
 - (long long)indexOfSectionIdentifier:(id)arg1;
 - (long long)indexOfItemIdentifier:(id)arg1;
 - (id)sectionIndexesForItemIndexRange:(struct _NSRange)arg1;
@@ -41,7 +49,11 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSOrderedSet *identifiers;
 @property(readonly, nonatomic) NSUUID *generationID;
 @property(readonly, copy) NSString *description;
+- (void)ensureOrderedSetsHaveGuaranteedPerformance;
+- (void)validateIdentifiers;
+- (id)initWithGenerationID:(id)arg1 identifiers:(id)arg2 sections:(id)arg3 dataSourceSnapshot:(id)arg4 identifiersHaveGuaranteedPerformance:(_Bool)arg5 sectionsHaveGuaranteedPerformance:(_Bool)arg6;
 - (id)initWithGenerationID:(id)arg1 identifiers:(id)arg2 sections:(id)arg3 dataSourceSnapshot:(id)arg4;
+- (id)initWithStateAdvancingGenerationID:(id)arg1;
 - (id)initWithState:(id)arg1;
 - (id)init;
 

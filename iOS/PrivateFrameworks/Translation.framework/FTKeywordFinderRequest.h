@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_002dc819)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_002dc819)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) _Bool enable_sanitization;
 @property(readonly, nonatomic) FTRecognitionResult *recognition_result;
 @property(readonly, nonatomic) NSArray *keywords;

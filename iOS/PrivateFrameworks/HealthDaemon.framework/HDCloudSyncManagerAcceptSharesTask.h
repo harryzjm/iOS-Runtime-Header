@@ -16,7 +16,7 @@
 @property(readonly, copy, nonatomic) NSArray *acceptedShares;
 - (_Bool)requiresExistingShareOwnerParticipant;
 - (id)pipelineForRepository:(id)arg1;
-- (id)initWithManager:(id)arg1 context:(id)arg2 shareSetupMetadata:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)initWithManager:(id)arg1 context:(id)arg2 shareSetupMetadata:(id)arg3 accessibilityAssertion:(id)arg4 completion:(CDUnknownBlockType)arg5;
 
 @end
 

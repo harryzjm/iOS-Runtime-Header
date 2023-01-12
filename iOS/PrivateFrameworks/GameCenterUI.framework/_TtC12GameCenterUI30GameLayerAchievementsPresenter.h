@@ -10,12 +10,14 @@
 
 @interface _TtC12GameCenterUI30GameLayerAchievementsPresenter : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *entryPoint;
     MISSING_TYPE *combinedAchievementsGrid;
     MISSING_TYPE *listHeaderStyle;
     MISSING_TYPE *sectionHeaderStyle;
     MISSING_TYPE *gameRecord;
     MISSING_TYPE *isUpdating;
     MISSING_TYPE *data;
+    MISSING_TYPE *gameCenterDataUpdatePresenter;
     MISSING_TYPE *onApplySnapshot;
     MISSING_TYPE *onUpdatePhaseChange;
 }

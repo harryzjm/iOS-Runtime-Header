@@ -8,7 +8,6 @@
 {
 }
 
-- (id)_resetOperationForContainer:(id)arg1 primary:(_Bool)arg2;
 - (void)main;
 
 @end

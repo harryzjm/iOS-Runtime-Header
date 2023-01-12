@@ -6,12 +6,23 @@
 
 #import <KnowledgeGraphKit/MAFeatureExtractor.h>
 
-@interface PGFeatureExtractor : MAFeatureExtractor
+#import <PhotosGraph/PGFeatureExtractorProtocol-Protocol.h>
+
+@class NSString;
+
+@interface PGFeatureExtractor : MAFeatureExtractor <PGFeatureExtractorProtocol>
 {
     long long featureLength;
 }
 
++ (id)featureExtractor;
 @property(readonly, nonatomic) long long featureLength; // @synthesize featureLength;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

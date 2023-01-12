@@ -8,7 +8,6 @@
 
 @class NSArray, NSDictionary;
 
-__attribute__((visibility("hidden")))
 @interface CNPostalAddressFormattingSpecification : NSObject
 {
     NSArray *_displayFieldArrangement;

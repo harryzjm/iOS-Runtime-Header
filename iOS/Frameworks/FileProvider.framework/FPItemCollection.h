@@ -9,8 +9,8 @@
 #import <FileProvider/FPCollectionDataSourceDelegate-Protocol.h>
 #import <FileProvider/FPReachabilityObserver-Protocol.h>
 
-@class FPAppRegistry, FPItemID, FPPacer, NSArray, NSMutableDictionary, NSMutableSet, NSPredicate, NSString, _FPItemList;
-@protocol FPCollectionDataSource, FPItemCollectionIndexPathBasedDelegate, FPItemCollectionItemIDBasedDelegate, FPItemCollectionMinimalDelegate, OS_dispatch_queue;
+@class FPAppRegistry, FPItemID, FPPacer, NSArray, NSDate, NSMutableDictionary, NSMutableSet, NSPredicate, NSString, _FPItemList;
+@protocol FPCollectionDataSource, FPItemCollectionIndexPathBasedDelegate, FPItemCollectionItemIDBasedDelegate, FPItemCollectionMinimalDelegate, OS_dispatch_queue, OS_dispatch_source;
 
 @interface FPItemCollection : NSObject <FPReachabilityObserver, FPCollectionDataSourceDelegate>
 {
@@ -19,9 +19,12 @@
     _FPItemList *_currentItems;
     NSObject<OS_dispatch_queue> *_workingQueue;
     NSObject<OS_dispatch_queue> *_itemAccessQueue;
+    NSObject<OS_dispatch_source> *_restartTimer;
+    NSDate *_lastInvalidationOnError;
+    unsigned long long _invalidationOnErrorCount;
     NSMutableDictionary *_updatedItemsByIdentifiers;
     NSMutableSet *_deletedItemsIdentifiers;
-    NSMutableSet *_formerItemsIdentifiers;
+    NSMutableDictionary *_formerItemsIdentifiers;
     _Bool _shouldResort;
     _Bool _regathering;
     _Bool _shouldRetryOnceAfterCrash;
@@ -34,14 +37,15 @@
     _Bool _hasMoreUpdates;
     _Bool _showHiddenFiles;
     _Bool _observing;
+    unsigned long long _lastForcedUpdate;
     id <FPItemCollectionMinimalDelegate> _delegate;
     FPItemID *_enumeratedItemID;
-    NSMutableDictionary *_dsCopyProgressTokenMap;
     NSPredicate *_additionalItemFilteringPredicate;
     NSObject<OS_dispatch_queue> *_updateQueue;
     FPPacer *_updatePacer;
 }
 
++ (void)refreshActiveCollectionsForDecorationChange;
 + (void)removeActiveCollection:(id)arg1;
 + (void)addActiveCollection:(id)arg1;
 + (void)resumeVendorEnumeration;
@@ -57,7 +61,6 @@
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *updateQueue; // @synthesize updateQueue=_updateQueue;
 @property(nonatomic) _Bool observing; // @synthesize observing=_observing;
 @property(retain, nonatomic) NSPredicate *additionalItemFilteringPredicate; // @synthesize additionalItemFilteringPredicate=_additionalItemFilteringPredicate;
-@property(retain, nonatomic) NSMutableDictionary *dsCopyProgressTokenMap; // @synthesize dsCopyProgressTokenMap=_dsCopyProgressTokenMap;
 @property(readonly, nonatomic) id <FPCollectionDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property(readonly) FPItemID *enumeratedItemID; // @synthesize enumeratedItemID=_enumeratedItemID;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *workingQueue; // @synthesize workingQueue=_workingQueue;
@@ -66,7 +69,9 @@
 @property(readonly, nonatomic) _Bool hasMoreUpdates; // @synthesize hasMoreUpdates=_hasMoreUpdates;
 @property(readonly, nonatomic, getter=isImmutable) _Bool immutable; // @synthesize immutable=_immutable;
 @property(nonatomic) __weak id <FPItemCollectionMinimalDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly) unsigned long long lastForcedUpdate; // @synthesize lastForcedUpdate=_lastForcedUpdate;
 @property(nonatomic, getter=isGathering) _Bool gathering; // @synthesize gathering=_gathering;
+- (void)_restartObservationWithReason:(id)arg1;
 - (void)_setObserving:(_Bool)arg1;
 - (void)_replaceContentsWithVendorItems:(id)arg1;
 @property(retain, nonatomic) NSPredicate *itemFilteringPredicate;
@@ -85,6 +90,7 @@
 - (id)indexPathsFromIndexSet:(id)arg1;
 - (id)indexPathFromIndex:(long long)arg1;
 - (void)_receivedBatchWithUpdatedItems:(id)arg1 deletedItemsIdentifiers:(id)arg2 forceFlush:(_Bool)arg3 dropForReplacedPlaceholders:(_Bool)arg4;
+- (void)forceRefreshOfItemWithItemID:(id)arg1;
 - (void)_receivedBatchWithUpdatedItems:(id)arg1 deletedItemsIdentifiers:(id)arg2 dropForReplacedPlaceholders:(_Bool)arg3;
 - (void)_receivedBatchWithUpdatedItems:(id)arg1 deletedItemsIdentifiers:(id)arg2;
 - (void)receivedBatchWithUpdatedItems:(id)arg1 deletedItemsIdentifiers:(id)arg2;
@@ -113,7 +119,12 @@
 - (void)dataSource:(id)arg1 wasInvalidatedWithError:(id)arg2;
 - (void)dataSource:(id)arg1 receivedUpdatedItems:(id)arg2 deletedItems:(id)arg3 hasMoreChanges:(_Bool)arg4;
 - (void)dataSource:(id)arg1 replaceContentsWithItems:(id)arg2 hasMoreChanges:(_Bool)arg3;
+- (_Bool)shouldRetryError:(id)arg1;
+- (_Bool)recoverFromError:(id)arg1;
+- (void)_startRegathering;
 - (void)startObserving;
+- (void)_cancelStartTime;
+- (void)_startObserving;
 - (void)reachabilityMonitor:(id)arg1 didChangeReachabilityStatusTo:(_Bool)arg2;
 - (id)init;
 - (id)initWithPacing:(_Bool)arg1;

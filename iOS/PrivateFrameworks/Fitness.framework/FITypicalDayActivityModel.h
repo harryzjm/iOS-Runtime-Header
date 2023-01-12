@@ -32,6 +32,7 @@
 + (id)_emptySimpleHistogram;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <FITypicalDayActivityModelDelegate> delegate; // @synthesize delegate=_delegate;
+- (id)_sleepDataProvider;
 - (void)_setProjectedOffWristDateToday:(id)arg1;
 - (void)_setSleepUserDay:(id)arg1;
 - (long long)_bucketIndexForDate:(id)arg1 startOfDay:(id)arg2 bucketDates:(id)arg3;
@@ -45,10 +46,12 @@
 - (void)_waitUntilActivitySummaryLoaded;
 - (id)currentCalendar;
 - (id)currentDate;
+- (void)sleepDataProviderLastAlarmWakeUpDateDidChange;
 - (void)sleepDataProviderLastGoodMorningDismissedDateDidChange;
 - (void)sleepDataProviderUserDayDidUpdate;
 - (void)handleUpdatedCurrentActivitySummary:(id)arg1;
-- (id)goodMorningAlertDismissedDateForToday;
+- (id)userWakeUpDateForToday;
+- (id)_goodMorningAlertDismissedDateForToday;
 - (_Bool)isSleepAlarmEnabledForToday;
 - (double)projectedDayDuration;
 - (id)projectedOffWrist;
@@ -76,7 +79,9 @@
 - (double)_queue_currentValueForHistogram:(id)arg1;
 - (id)endOfToday;
 - (id)startOfToday;
+- (id)sleepUserDay;
 - (void)_updateSleepUserDay;
+- (id)initForDateInterval:(id)arg1 delegate:(id)arg2 sleepDataProvider:(id)arg3;
 - (id)initForDateInterval:(id)arg1 delegate:(id)arg2;
 
 // Remaining properties

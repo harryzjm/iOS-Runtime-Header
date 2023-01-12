@@ -4,16 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <Vision/VNDetectedObjectObservationAcceptingInternal-Protocol.h>
 #import <Vision/VNFaceObservationAcceptingInternal-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface VNImageBasedRequest <VNFaceObservationAcceptingInternal>
+@interface VNImageBasedRequest <VNFaceObservationAcceptingInternal, VNDetectedObjectObservationAcceptingInternal>
 {
 }
 
-+ (void)recordDefaultOptionsInDictionary:(id)arg1;
 + (Class)configurationClass;
+- (_Bool)getOptionalValidatedInputDetectedObjectObservations:(id *)arg1 forObservationClass:(Class)arg2 relationWithRegionOfInterest:(unsigned long long)arg3 error:(id *)arg4;
+- (id)_detectedObjectObservationsForRegionOfInterestContainingDetectedObjectObservations:(id)arg1 relationWithRegionOfInterest:(unsigned long long)arg2;
+@property(copy, nonatomic) NSArray *inputDetectedObjectObservations;
 - (_Bool)getOptionalValidatedInputFaceObservations:(id *)arg1 clippedToRegionOfInterest:(_Bool)arg2 error:(id *)arg3;
 - (id)_faceObservationsForRegionOfInterestContainingFaceObservations:(id)arg1;
 @property(copy, nonatomic) NSArray *inputFaceObservations;

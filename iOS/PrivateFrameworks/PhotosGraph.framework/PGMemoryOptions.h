@@ -15,8 +15,8 @@
     CLLocation *_location;
     NSArray *_peopleNames;
     NSArray *_existingMemories;
-    NSArray *_blacklistedMemories;
-    NSSet *_blacklistedFeatures;
+    NSArray *_blockedMemories;
+    NSSet *_blockedFeatures;
     NSArray *_existingSuggestions;
     NSDate *_lastMemoryCreationUniversalDate;
     NSDate *_baseMemoryCreationUniversalDate;
@@ -33,8 +33,8 @@
 @property(retain, nonatomic) NSDate *baseMemoryCreationUniversalDate; // @synthesize baseMemoryCreationUniversalDate=_baseMemoryCreationUniversalDate;
 @property(retain, nonatomic) NSDate *lastMemoryCreationUniversalDate; // @synthesize lastMemoryCreationUniversalDate=_lastMemoryCreationUniversalDate;
 @property(retain, nonatomic) NSArray *existingSuggestions; // @synthesize existingSuggestions=_existingSuggestions;
-@property(retain, nonatomic) NSSet *blacklistedFeatures; // @synthesize blacklistedFeatures=_blacklistedFeatures;
-@property(retain, nonatomic) NSArray *blacklistedMemories; // @synthesize blacklistedMemories=_blacklistedMemories;
+@property(retain, nonatomic) NSSet *blockedFeatures; // @synthesize blockedFeatures=_blockedFeatures;
+@property(retain, nonatomic) NSArray *blockedMemories; // @synthesize blockedMemories=_blockedMemories;
 @property(retain, nonatomic) NSArray *existingMemories; // @synthesize existingMemories=_existingMemories;
 @property(retain, nonatomic) NSArray *peopleNames; // @synthesize peopleNames=_peopleNames;
 @property(retain, nonatomic) CLLocation *location; // @synthesize location=_location;

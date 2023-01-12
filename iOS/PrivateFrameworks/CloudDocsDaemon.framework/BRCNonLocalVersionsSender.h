@@ -10,7 +10,6 @@
 @class BRCAppLibrary, BRCItemID, BRCServerZone, BRCStatInfo, BRCXPCClient, CKRecordID, NSObject, NSString, NSURL;
 @protocol BRNonLocalVersionReceiving, GSAdditionStoring;
 
-__attribute__((visibility("hidden")))
 @interface BRCNonLocalVersionsSender <BRNonLocalVersionSending, BRCOperationSubclass>
 {
     id <BRNonLocalVersionReceiving> _receiver;

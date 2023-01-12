@@ -10,7 +10,6 @@
 
 @class CKRecordZoneID;
 
-__attribute__((visibility("hidden")))
 @interface CKDAssetZoneKey : NSObject <NSCopying>
 {
     CKRecordZoneID *_destinationZoneID;

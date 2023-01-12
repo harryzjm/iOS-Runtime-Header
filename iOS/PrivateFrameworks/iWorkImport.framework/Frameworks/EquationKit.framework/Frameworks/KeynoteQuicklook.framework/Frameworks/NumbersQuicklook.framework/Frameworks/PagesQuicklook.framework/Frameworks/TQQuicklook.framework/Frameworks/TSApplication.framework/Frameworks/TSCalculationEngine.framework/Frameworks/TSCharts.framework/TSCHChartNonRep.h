@@ -12,14 +12,14 @@
 
 @interface TSCHChartNonRep : NSObject <TSCHSupportsRendering>
 {
-    TSCHChartInfo *mChartInfo;
-    NSArray *mRenderers;
-    TSCHChartLayout *mChartLayout;
+    TSCHChartInfo *_chartInfo;
+    NSArray *_renderers;
+    TSCHChartLayout *_chartLayout;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) TSCHChartLayout *chartLayout; // @synthesize chartLayout=mChartLayout;
-@property(retain, nonatomic) TSCHChartInfo *chartInfo; // @synthesize chartInfo=mChartInfo;
+@property(retain, nonatomic) TSCHChartLayout *chartLayout; // @synthesize chartLayout=_chartLayout;
+@property(retain, nonatomic) TSCHChartInfo *chartInfo; // @synthesize chartInfo=_chartInfo;
 - (void)drawInContext:(struct CGContext *)arg1;
 - (_Bool)requireSeparateLabelLayer;
 - (_Bool)renderTrendLinesForSeriesIndex:(unsigned long long)arg1;
@@ -46,7 +46,6 @@
 - (_Bool)shadowsEnabled;
 - (void)clearRenderers;
 - (id)renderers;
-- (void)dealloc;
 - (id)initWithChartInfo:(id)arg1;
 
 // Remaining properties

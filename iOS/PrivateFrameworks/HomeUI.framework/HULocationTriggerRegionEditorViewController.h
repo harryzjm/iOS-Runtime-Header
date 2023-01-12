@@ -15,7 +15,7 @@
 #import <HomeUI/UITableViewDataSource-Protocol.h>
 #import <HomeUI/UITableViewDelegate-Protocol.h>
 
-@class HMHome, HULocationTriggerEditorMapDragRadiusView, HULocationTriggerRegion, MKLocalSearch, MKMapView, NSArray, NSIndexPath, NSLayoutConstraint, NSString, UISearchBar, UITableView, UIView;
+@class GEOLocationShifter, HMHome, HULocationTriggerEditorMapDragRadiusView, HULocationTriggerRegion, MKLocalSearch, MKMapView, NSArray, NSIndexPath, NSLayoutConstraint, NSString, UISearchBar, UITableView, UIView;
 @protocol HULocationTriggerRegionEditorViewControllerDelegate;
 
 @interface HULocationTriggerRegionEditorViewController : UIViewController <UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate, MKMapViewDelegatePrivate, HFLocationManagerObserver, HULocationTriggerEditorMapDragRadiusViewDelegate, HUPreloadableViewController>
@@ -29,6 +29,7 @@
     MKMapView *_mapView;
     HULocationTriggerEditorMapDragRadiusView *_dragView;
     NSIndexPath *_selectedIndexPath;
+    GEOLocationShifter *_locationShifter;
     NSArray *_constraints;
     NSLayoutConstraint *_mapHeightConstraint;
     NSArray *_recents;
@@ -44,6 +45,7 @@
 @property(retain, nonatomic) NSArray *recents; // @synthesize recents=_recents;
 @property(retain, nonatomic) NSLayoutConstraint *mapHeightConstraint; // @synthesize mapHeightConstraint=_mapHeightConstraint;
 @property(retain, nonatomic) NSArray *constraints; // @synthesize constraints=_constraints;
+@property(retain, nonatomic) GEOLocationShifter *locationShifter; // @synthesize locationShifter=_locationShifter;
 @property(retain, nonatomic) NSIndexPath *selectedIndexPath; // @synthesize selectedIndexPath=_selectedIndexPath;
 @property(retain, nonatomic) HULocationTriggerEditorMapDragRadiusView *dragView; // @synthesize dragView=_dragView;
 @property(retain, nonatomic) MKMapView *mapView; // @synthesize mapView=_mapView;
@@ -53,6 +55,8 @@
 @property(nonatomic) __weak id <HULocationTriggerRegionEditorViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 @property(retain, nonatomic) HULocationTriggerRegion *region; // @synthesize region=_region;
+- (id)_shiftLocationIfNeeded:(id)arg1 isRetry:(_Bool)arg2;
+- (id)_shiftLocationIfNeeded:(id)arg1;
 - (id)hu_preloadContent;
 - (void)searchBar:(id)arg1 textDidChange:(id)arg2;
 - (void)_resetSearchResults;
@@ -75,7 +79,7 @@
 - (void)_cancel:(id)arg1;
 - (void)_showMapRegionForCoordinate:(struct CLLocationCoordinate2D)arg1 radius:(double)arg2;
 - (id)_locationForRecentMetadataDictionary:(id)arg1;
-- (void)_displayLocationCoordinate:(struct CLLocationCoordinate2D)arg1;
+- (void)_displayLocation:(id)arg1;
 - (unsigned long long)_proximityType;
 - (_Bool)_hasLocation;
 - (void)_updateMapHeight;

@@ -27,6 +27,7 @@
 - (id)generateFetchResult;
 - (void)cancelImageLoadingForItem:(id)arg1;
 - (void)_asyncLoadImageForItem:(id)arg1 targetSize:(struct CGSize)arg2 withCompletionBlock:(CDUnknownBlockType)arg3 fastDisplayBlock:(CDUnknownBlockType)arg4;
+- (void)_asyncLoadImageForItem:(id)arg1 targetSize:(struct CGSize)arg2 displayScale:(double)arg3 resultHandler:(CDUnknownBlockType)arg4;
 - (id)_membersForModelObjects:(id)arg1;
 - (id)_applyChanges:(id)arg1;
 - (long long)_personTypeForFetchType:(unsigned long long)arg1;

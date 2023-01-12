@@ -15,14 +15,18 @@
     MISSING_TYPE *pptContext;
     MISSING_TYPE *configurationManager;
     MISSING_TYPE *bundleSubscriptionManager;
+    MISSING_TYPE *bundlePurchasePrewarmer;
     MISSING_TYPE *userInfo;
     MISSING_TYPE *router;
     MISSING_TYPE *didUpdateAfterInitialLaunch;
     MISSING_TYPE *appLaunchedWithOptions;
     MISSING_TYPE *openingURL;
-    MISSING_TYPE *continuingUserActivity;
     MISSING_TYPE *didEnterBackground;
     MISSING_TYPE *sceneActivationURL;
+    MISSING_TYPE *networkReachability;
+    MISSING_TYPE *deferredPromise;
+    MISSING_TYPE *lock;
+    MISSING_TYPE *sealed;
 }
 
 @end

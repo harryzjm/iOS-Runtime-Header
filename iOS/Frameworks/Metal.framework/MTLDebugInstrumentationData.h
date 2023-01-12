@@ -12,10 +12,10 @@
 @interface MTLDebugInstrumentationData : NSObject
 {
     NSObject<OS_dispatch_data> *_dataMap;
-    const struct MTLSerializedDebugInstrumentationData *_data;
-    struct vector<const __CFString *, std::__1::allocator<const __CFString *>> _strings;
-    struct vector<MTLDebugLocation *, std::__1::allocator<MTLDebugLocation *>> _debugLocations;
-    struct vector<MTLDebugSubProgram *, std::__1::allocator<MTLDebugSubProgram *>> _debugSubPrograms;
+    const void *_data;
+    struct vector<const __CFString *, std::allocator<const __CFString *>> _strings;
+    struct vector<MTLDebugLocation *, std::allocator<MTLDebugLocation *>> _debugLocations;
+    struct vector<MTLDebugSubProgram *, std::allocator<MTLDebugSubProgram *>> _debugSubPrograms;
     NSData *_globalConstantsData;
     NSObject<OS_dispatch_data> *_userReflectionData;
 }

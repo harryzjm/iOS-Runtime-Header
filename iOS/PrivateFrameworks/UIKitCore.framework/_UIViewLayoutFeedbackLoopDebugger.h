@@ -33,6 +33,8 @@ __attribute__((visibility("hidden")))
 - (id)topLevelViewHierarchyTrace;
 - (id)description;
 - (void)dumpInfoWithInfoCollectionSuccess:(_Bool)arg1;
+- (void)didUpdateLayoutMargins:(struct UIEdgeInsets)arg1 ofView:(id)arg2;
+- (void)didUpdateSafeAreaInsets:(struct UIEdgeInsets)arg1 ofView:(id)arg2;
 - (void)willSendSetFrame:(struct CGRect)arg1 toLayerOfView:(id)arg2;
 - (void)willSendSetPosition:(struct CGPoint)arg1 toLayerOfView:(id)arg2;
 - (void)willSendSetBounds:(struct CGRect)arg1 toLayerOfView:(id)arg2;

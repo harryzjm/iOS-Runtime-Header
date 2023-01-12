@@ -9,8 +9,8 @@
 
 @interface PXGItemsLayout
 {
-    _Bool _loadedItemsNeedUpdate;
-    CDStruct_d97c9657 _updateFlags;
+    CDStruct_af00bf4e _loadedItemsUpdateFlags;
+    CDStruct_af00bf4e _updateFlags;
     unsigned long long _delegateRespondsTo;
     long long _applyingItemChangesCount;
     long long *_currentStylableItems;
@@ -18,7 +18,7 @@
     _Bool *_pendingAnimations;
     long long *_styleableAnimations;
     double *_stylablePaddings;
-    _Bool _accessoryItemsNeedUpdate;
+    CDStruct_af00bf4e _accessoryItemsUpdateFlags;
     PXGLayout *_accessoryItemsContainerLayout;
     _Bool _lazy;
     id <PXGItemsLayoutDelegate> _delegate;
@@ -70,7 +70,9 @@
 - (void)_updateLoadedItems;
 - (void)updateLoadedItemsIfNeeded;
 - (void)invalidateLoadedItems;
+- (void)didUpdate;
 - (void)update;
+- (void)willUpdate;
 - (_Bool)shouldInvalidateDecorationForModifiedSprites;
 - (id)itemsLayout;
 - (unsigned int)spriteIndexForAccessoryItem:(long long)arg1;
@@ -82,6 +84,8 @@
 - (id)itemsForSpriteIndexes:(id)arg1;
 - (unsigned int)spriteIndexForItem:(long long)arg1;
 - (long long)itemForSpriteIndex:(unsigned int)arg1;
+- (void)effectsDidChange;
+- (void)invalidateEffects;
 - (void)accessoryItemsDidChange;
 - (void)numberOfAccessoryItemsDidChange;
 - (void)setAnimationParameters:(CDStruct_7f320dbc)arg1 forStylableType:(long long)arg2;
@@ -92,6 +96,7 @@
 - (void)loadedItemsDidChange;
 - (id)hitTestResultForSpriteIndex:(unsigned int)arg1;
 - (id)objectReferenceForSpriteIndex:(unsigned int)arg1;
+@property(readonly, nonatomic) id <PXGItemsLayoutDelegate> insetDelegate;
 - (id)layoutForItemChanges;
 - (id)description;
 - (void)dealloc;

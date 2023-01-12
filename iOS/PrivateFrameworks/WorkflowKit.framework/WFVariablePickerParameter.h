@@ -4,7 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface WFVariablePickerParameter
+#import <WorkflowKit/WFParameterValuePickable-Protocol.h>
+
+@class NSString;
+
+@interface WFVariablePickerParameter <WFParameterValuePickable>
 {
 }
 
@@ -13,6 +17,24 @@
 - (id)possibleStates;
 - (_Bool)alwaysShowsButton;
 - (Class)singleStateClass;
+- (id)wf_pickerLocalizedImageForState:(id)arg1;
+- (id)wf_pickerLocalizedSubtitleForState:(id)arg1;
+- (id)wf_pickerLocalizedTitleForState:(id)arg1;
+- (void)wf_reloadFromAttributesDidChangeWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)wf_loadStatesWithSearchTerm:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+@property(readonly, nonatomic) NSString *wf_displayLocalizedPrompt;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
+@property(readonly, nonatomic) _Bool wf_allowsMultipleSelection;
+@property(readonly, nonatomic) _Bool wf_alwaysScaleIconImage;
+@property(readonly, nonatomic) _Bool wf_shouldValidateCurrentStateOnCollectionChanged;
+@property(readonly, nonatomic) _Bool wf_supportsSearch;
+@property(readonly, nonatomic) _Bool wf_usesGroupTableViewStyle;
+@property(readonly, nonatomic) _Bool wf_usesTogglesForSelection;
 
 @end
 

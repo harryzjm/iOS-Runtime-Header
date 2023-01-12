@@ -134,7 +134,20 @@ typedef struct {
 
 // Ambiguous groups
 typedef struct {
-    unsigned int timestamp:1;
-    unsigned int type:1;
-} CDStruct_1769069f;
+    unsigned int endDate:1;
+    unsigned int startDate:1;
+} CDStruct_f7f9715d;
+
+typedef struct {
+    unsigned int latestSupportedVersion:1;
+    unsigned int minimumSupportedVersion:1;
+} CDStruct_514b95f0;
+
+typedef struct {
+    unsigned int dateData:1;
+} CDStruct_4140be0d;
+
+typedef struct {
+    unsigned int value:1;
+} CDStruct_01ef6375;
 

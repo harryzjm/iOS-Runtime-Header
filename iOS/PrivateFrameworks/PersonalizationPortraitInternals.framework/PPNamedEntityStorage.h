@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class PPDKStorage, PPRecordStorageHelper, PPSQLDatabase, PPSourceStorage;
+@class PPDKStorage, PPRecordStorageHelper, PPSQLDatabase, PPSourceStorage, PPTrialWrapper;
 @protocol OS_dispatch_queue;
 
 @interface PPNamedEntityStorage : NSObject
@@ -16,12 +16,12 @@
     id _deletionObserver;
     PPRecordStorageHelper *_storageHelper;
     PPSourceStorage *_sourceStorage;
+    PPTrialWrapper *_trialWrapper;
     NSObject<OS_dispatch_queue> *_populateDatabaseQueue;
 }
 
-+ (double)_scoreEntityWithInitialScore:(double)arg1 decayRate:(double)arg2 extractionDate:(id)arg3 scoringDate:(id)arg4;
-+ (id)_loadTrieFromLocalAsset:(id)arg1;
 - (void).cxx_destruct;
+- (id)firstDonationSourceCountsWithShouldContinueBlock:(CDUnknownBlockType)arg1;
 - (_Bool)setNamedEntityFilterLastRunDate:(id)arg1 error:(id *)arg2;
 - (_Bool)setNamedEntityFilterLastRecordDate:(id)arg1 error:(id *)arg2;
 - (id)namedEntityFilterLastRecordDate;
@@ -30,27 +30,18 @@
 - (id)thirdPartyBundleIdsFromToday;
 - (unsigned int)uniqueClusterIdentifierCount;
 - (id)clusterIdentifiersExistingBeforeDate:(id)arg1;
-- (id)tempTableForSourceIdsExcludedAlgorithms:(id)arg1 txnWitness:(id)arg2;
-- (id)sourceStatsWithExcludedAlgorithms:(id)arg1;
+- (id)tempViewForSourceIdsExcludedAlgorithms:(id)arg1 txnWitness:(id)arg2;
+- (id)sourceStats:(unsigned long long)arg1 withExcludedAlgorithms:(id)arg2;
 - (double)duetWriteBatchInterval;
 - (unsigned int)duetWriteBatchSize;
 - (unsigned int)duetReadBatchSize;
 - (void)disableSyncForBundleIds:(id)arg1;
-- (struct _PASDBIterAction_)_populateEvents:(id)arg1 statement:(id)arg2 txnWitness:(id)arg3;
 - (void)fixupDKEventsMetadataWithShouldContinueBlock:(CDUnknownBlockType)arg1;
 - (void)fixupDKEventsWithShouldContinueBlock:(CDUnknownBlockType)arg1;
 - (void)clearRemoteRecordsMissingFromDuetWithShouldContinueBlock:(CDUnknownBlockType)arg1;
-- (id)_generateExportRowIdsWithBatchSize:(unsigned int)arg1 isComplete:(_Bool *)arg2;
 - (void)exportRecordsToDKWithShouldContinueBlock:(CDUnknownBlockType)arg1;
-- (void)_dkEventImportToDatabaseWithEvent:(id)arg1 eventUUIDBlob:(id)arg2 txnWitness:(id)arg3 filter:(id)arg4;
-- (void)_importDKEventsWithShouldContinueBlock:(unsigned int)arg1 remoteEventsOnly:(_Bool)arg2 isComplete:(_Bool *)arg3 shouldContinueBlock:(CDUnknownBlockType)arg4;
-- (void)_importDKEventsWithLimit:(unsigned int)arg1 remoteEventsOnly:(_Bool)arg2 isComplete:(_Bool *)arg3;
-- (void)_asyncPopulateDatabaseFromDKEventsIfNecessary;
 - (void)importRemotelyGeneratedNamedEntityDKEventsWithLimit:(unsigned int)arg1 isComplete:(_Bool *)arg2 shouldContinueBlock:(CDUnknownBlockType)arg3;
-- (void)_truncateRecordsByDroppingOldestMakingRoomForCount:(unsigned int)arg1 txnWitness:(id)arg2;
 - (void)processNewDKEventDeletions;
-- (void)_asyncProcessNewDKEventDeletions;
-- (id)_deletionQueue;
 - (_Bool)pruneOrphanedNamedEntityFeedbackCountRecordsWithLimit:(unsigned long long)arg1 rowOffset:(unsigned long long)arg2 deletedCount:(unsigned long long *)arg3 isComplete:(_Bool *)arg4;
 - (_Bool)deleteAllNamedEntityFeedbackCountRecordsOlderThanDate:(id)arg1;
 - (_Bool)deleteAllNamedEntitiesFromSourcesWithBundleId:(id)arg1 groupId:(id)arg2 olderThanDate:(id)arg3 atLeastOneNamedEntityRemoved:(_Bool *)arg4 deletedCount:(unsigned long long *)arg5 error:(id *)arg6;
@@ -62,20 +53,14 @@
 - (_Bool)decayFeedbackCountsWithDecayRate:(double)arg1 shouldContinueBlock:(CDUnknownBlockType)arg2;
 - (_Bool)donateNamedEntityFeedback:(id)arg1;
 - (id)decayedFeedbackCountsForClusterIdentifier:(id)arg1;
-- (void)_prepareDonationStatement:(id)arg1 scoredNamedEntity:(id)arg2 algorithm:(unsigned long long)arg3 cloudSync:(_Bool)arg4 decayRate:(double)arg5 sentimentScore:(double)arg6 occurrencesInSource:(unsigned short)arg7 weightMultiplier:(double)arg8 sourceRowId:(long long)arg9;
-- (_Bool)_donateNamedEntities:(id)arg1 source:(id)arg2 algorithm:(unsigned long long)arg3 cloudSync:(_Bool)arg4 decayRate:(double)arg5 sentimentScore:(double)arg6 txnWitness:(id)arg7;
 - (_Bool)donateNamedEntities:(id)arg1 source:(id)arg2 algorithm:(unsigned long long)arg3 cloudSync:(_Bool)arg4 decayRate:(double)arg5 sentimentScore:(double)arg6 error:(id *)arg7;
-- (struct _PASDBIterAction_)_populateUpdates:(id)arg1 statement:(id)arg2 source:(id)arg3 weightMultiplier:(double)arg4 entityToScoredEntityMap:(id)arg5;
-- (id)_updatePreexistingEntitiesMatchingEntities:(id)arg1 source:(id)arg2 algorithm:(unsigned long long)arg3 txnWitness:(id)arg4;
-- (_Bool)_shouldSuppressRepeatedImpressions:(id)arg1;
 - (_Bool)clearWithError:(id *)arg1 deletedCount:(unsigned long long *)arg2;
-- (id)_createRecordWithStatement:(id)arg1 txnWitness:(id)arg2;
 - (_Bool)iterNamedEntityRecordsWithQuery:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
 - (_Bool)iterNamedEntityRecordsAndIdsWithQuery:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (id)init;
 - (id)initWithDatabase:(id)arg1;
-- (id)initWithDatabase:(id)arg1 maxRecords:(unsigned int)arg2 dkStorage:(id)arg3 loadEmptyDatabaseFromDK:(_Bool)arg4;
+- (id)initWithDatabase:(id)arg1 maxRecords:(unsigned int)arg2 dkStorage:(id)arg3 loadEmptyDatabaseFromDK:(_Bool)arg4 trialWrapper:(id)arg5;
 
 @end
 

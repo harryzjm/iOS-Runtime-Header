@@ -21,6 +21,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *lastModified; // @synthesize lastModified;
 @property(readonly, nonatomic) NSArray *cities; // @synthesize cities=_cities;
+- (id)citiesMatchingName:(id)arg1;
 - (id)citiesMatchingIdentifiers:(id)arg1;
 - (void)_notifyNano;
 - (void)moveCityFromIndex:(unsigned long long)arg1 toIndex:(unsigned long long)arg2;

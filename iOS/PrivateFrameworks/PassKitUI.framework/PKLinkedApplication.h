@@ -8,19 +8,20 @@
 
 #import <PassKitUI/SKStoreProductViewControllerDelegate-Protocol.h>
 
-@class AMSLookupItem, NSArray, NSHashTable, NSNumber, NSString, NSURL, SKStoreProductViewController, SSSoftwareLibraryItem, UIImage;
+@class AMSLookupItem, NSArray, NSHashTable, NSMutableArray, NSNumber, NSString, NSURL, SKStoreProductViewController, SSSoftwareLibraryItem, UIImage;
 @protocol PKCancelable;
 
 @interface PKLinkedApplication : NSObject <SKStoreProductViewControllerDelegate>
 {
-    SSSoftwareLibraryItem *_foundLibraryItem;
     AMSLookupItem *_foundStoreItem;
     struct os_unfair_lock_s _pendingLock;
     id <PKCancelable> _pendingUpdate;
     _Bool _loaded;
     _Bool _loading;
     NSHashTable *_observers;
+    NSMutableArray *_completionHandlers;
     SKStoreProductViewController *_presentedViewController;
+    SSSoftwareLibraryItem *_foundLibraryItem;
     _Bool _useSmallIcon;
     NSArray *_storeIDs;
     NSURL *_defaultLaunchURL;
@@ -50,10 +51,12 @@
 - (void)_unloadApplicationState;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
-- (void)openApplication:(id)arg1 launchAppStoreIfNotInstalled:(_Bool)arg2;
+- (void)openApplication:(id)arg1 withLaunchOptions:(unsigned long long)arg2 launchURL:(id)arg3;
+- (void)openApplication:(id)arg1 withLaunchOptions:(unsigned long long)arg2;
 - (void)openApplication:(id)arg1;
+- (void)reloadApplicationStateIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)reloadApplicationStateIfNecessary;
-- (void)_reloadApplicationState;
+- (void)_reloadApplicationStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)initWithStoreIDs:(id)arg1 defaultLaunchURL:(id)arg2;
 - (id)initWithPass:(id)arg1;

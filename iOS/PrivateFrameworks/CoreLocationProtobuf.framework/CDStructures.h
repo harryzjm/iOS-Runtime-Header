@@ -12,6 +12,7 @@ typedef struct {
     unsigned long long size;
 } CDStruct_95bda58d;
 
+// Ambiguous groups
 typedef struct {
     unsigned int arfcn:1;
     unsigned int ecn0:1;
@@ -23,7 +24,6 @@ typedef struct {
     unsigned int isLimitedService:1;
 } CDStruct_648273eb;
 
-// Ambiguous groups
 typedef struct {
     unsigned int timestamp:1;
 } CDStruct_b5306035;

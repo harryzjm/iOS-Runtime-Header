@@ -9,7 +9,7 @@
 #import <Message/EDMessageChangeHookResponder-Protocol.h>
 #import <Message/EFLoggable-Protocol.h>
 
-@class EFLazyCache, MFMailMessageLibrary, MFMailMessageLibraryQueryTransformer, MFMessageTransformer, NSMutableDictionary, NSObject, NSString;
+@class EFLazyCache, MFMailMessageLibrary, MFMailMessageLibraryQueryTransformer, NSMutableDictionary, NSObject, NSString;
 @protocol EFScheduler, MFMessageSummaryLoaderProvider, OS_dispatch_queue;
 
 @interface MFMessagePersistence_iOS : EDMessagePersistence <EFLoggable, EDMessageChangeHookResponder>
@@ -20,7 +20,6 @@
     id <MFMessageSummaryLoaderProvider> _summaryLoaderProvider;
     MFMailMessageLibrary *_library;
     MFMailMessageLibraryQueryTransformer *_queryTransformer;
-    MFMessageTransformer *_libraryMessageTransformer;
     id <EFScheduler> _networkContentLoadScheduler;
     id <EFScheduler> _offlineContentLoadScheduler;
     NSObject<OS_dispatch_queue> *_requestSummaryQueue;
@@ -31,12 +30,12 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *requestSummaryQueue; // @synthesize requestSummaryQueue=_requestSummaryQueue;
 @property(retain, nonatomic) id <EFScheduler> offlineContentLoadScheduler; // @synthesize offlineContentLoadScheduler=_offlineContentLoadScheduler;
 @property(retain, nonatomic) id <EFScheduler> networkContentLoadScheduler; // @synthesize networkContentLoadScheduler=_networkContentLoadScheduler;
-@property(retain, nonatomic) MFMessageTransformer *libraryMessageTransformer; // @synthesize libraryMessageTransformer=_libraryMessageTransformer;
 @property(retain, nonatomic) MFMailMessageLibraryQueryTransformer *queryTransformer; // @synthesize queryTransformer=_queryTransformer;
 @property(nonatomic) __weak MFMailMessageLibrary *library; // @synthesize library=_library;
 @property(retain, nonatomic) id <MFMessageSummaryLoaderProvider> summaryLoaderProvider; // @synthesize summaryLoaderProvider=_summaryLoaderProvider;
 - (void)persistenceDidChangeGlobalMessageID:(long long)arg1 orConversationID:(long long)arg2 message:(id)arg3 generationWindow:(id)arg4;
 - (long long)globalIDForMessageWithDatabaseID:(long long)arg1 mailboxScope:(id *)arg2;
+- (_Bool)compressFile:(id)arg1 error:(id *)arg2;
 - (id)cachedDatabaseIDsDictionaryForGlobalMessageIDs:(id)arg1;
 - (id)enabledAccountMailboxesExpression;
 - (id)libraryMessageForMessageObjectID:(id)arg1;
@@ -46,14 +45,13 @@
 - (id)groupedMessagesCountByMailboxMatchingQuery:(unsigned long long)arg1 variable:(id)arg2;
 - (id)persistedMessageForOutgoingMessage:(id)arg1 isDraft:(_Bool)arg2;
 - (id)persistedMessagesForDatabaseIDs:(id)arg1 requireProtectedData:(_Bool)arg2 temporarilyUnavailableDatabaseIDs:(id *)arg3;
-- (id)messagesForPersistedMessages:(id)arg1 mailboxScope:(id)arg2;
 - (void)_iterateMessagesMatchingQuery:(id)arg1 options:(unsigned int)arg2 cancelationToken:(id)arg3 resultHandler:(id)arg4 monitor:(id)arg5;
 - (void)iteratePersistedMessagesMatchingQuery:(id)arg1 limit:(long long)arg2 cancelationToken:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)iterateMessagesMatchingQuery:(id)arg1 batchSize:(long long)arg2 firstBatchSize:(long long)arg3 limit:(long long)arg4 cancelationToken:(id)arg5 handler:(CDUnknownBlockType)arg6;
 - (unsigned long long)_countOfMessagesMatchingCriteria:(id)arg1 includingDuplicates:(_Bool)arg2;
 - (long long)countOfMessagesMatchingQuery:(id)arg1;
 - (long long)countOfMessagesWithGlobalMessageID:(long long)arg1 matchingQuery:(id)arg2;
-- (id)initWithMailboxPersistence:(id)arg1 database:(id)arg2 hookRegistry:(id)arg3 library:(id)arg4;
+- (id)initWithMailboxPersistence:(id)arg1 database:(id)arg2 userProfileProvider:(id)arg3 blockedSenderManager:(id)arg4 vipReader:(id)arg5 hookRegistry:(id)arg6 library:(id)arg7;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

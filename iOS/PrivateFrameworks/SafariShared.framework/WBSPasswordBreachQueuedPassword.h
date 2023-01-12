@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSData, NSDictionary, NSMutableArray, NSUUID, WBSPair;
+@class NSArray, NSData, NSMutableArray, NSUUID, WBSPair;
 
 @interface WBSPasswordBreachQueuedPassword : NSObject
 {
@@ -21,12 +21,10 @@
 - (id)description;
 @property(readonly, nonatomic) NSUUID *uuid;
 @property(readonly, nonatomic) NSData *highFrequencyEncodedPasswordData;
-@property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property(readonly, nonatomic) unsigned long long remainingHashCount;
 @property(readonly, nonatomic) WBSPair *topBucketIdentiferAndHash;
 - (void)pushBucketIdentifiersAndHashesFromQueuedPassword:(id)arg1;
 - (void)removeTopBucketIdentifierAndHash;
-- (id)initWithDictionaryRepresentation:(id)arg1;
 - (id)initWithCredentials:(id)arg1 context:(id)arg2;
 - (id)initFakePasswordWithContext:(id)arg1;
 

@@ -4,12 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSArray;
+
 @interface VNIdentifyJunkRequest
 {
 }
 
 - (_Bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
 - (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSArray *results; // @dynamic results;
 
 @end
 

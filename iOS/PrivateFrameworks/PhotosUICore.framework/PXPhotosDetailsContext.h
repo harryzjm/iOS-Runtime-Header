@@ -9,7 +9,7 @@
 #import <PhotosUICore/PXMutablePhotosDetailsContext-Protocol.h>
 #import <PhotosUICore/PXPhotosDataSourceChangeObserver-Protocol.h>
 
-@class NSDictionary, NSString, PHFetchResult, PXDisplayTitleInfo, PXPhotosDataSource, PXPhotosDetailsViewModel;
+@class NSDictionary, NSString, PHFetchResult, PXDisplayTitleInfo, PXPhotosDataSource, PXPhotosDetailsViewModel, PXPhotosDetailsVisualLookupData;
 
 @interface PXPhotosDetailsContext <PXMutablePhotosDetailsContext, PXPhotosDataSourceChangeObserver, PXChangeObserver, PXHierarchicalContext>
 {
@@ -23,20 +23,29 @@
     long long _viewSourceOrigin;
     PXPhotosDetailsViewModel *_viewModel;
     unsigned long long _contextHierarchyDepth;
+    PXPhotosDetailsVisualLookupData *_visualLookupData;
+    PHFetchResult *_assetFetchResult;
     PHFetchResult *_assetCollections;
     NSDictionary *_assetsByCollection;
     PHFetchResult *_people;
     NSString *_localizedTitle;
     NSString *_localizedSubtitle;
     NSString *_titleFontName;
+    CDUnknownBlockType _unlockDeviceStatus;
 }
 
 + (id)photosDetailsContextForAsset:(id)arg1 parentContext:(id)arg2;
++ (id)_preheatedFetchResultForAsset:(id)arg1;
++ (id)preheatedAssets;
++ (void)photosDetailsContextPreheatForAssets:(id)arg1;
 + (id)photosDetailsContextForMemory:(id)arg1 enableCuration:(_Bool)arg2 enableKeyAssets:(_Bool)arg3;
 + (id)photosDetailsContextForMemory:(id)arg1;
++ (id)_assetFetchResultForAssets:(id)arg1;
++ (id)_fetchPropertySets;
 + (id)photosDetailsContextForAssetCollection:(id)arg1 assets:(id)arg2 keyAssets:(id)arg3 enableCuration:(_Bool)arg4 enableKeyAssets:(_Bool)arg5 useVerboseSmartDescription:(_Bool)arg6 viewSourceOrigin:(long long)arg7;
 + (id)photosDetailsContextForAssetCollection:(id)arg1 assets:(id)arg2 viewSourceOrigin:(long long)arg3;
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType unlockDeviceStatus; // @synthesize unlockDeviceStatus=_unlockDeviceStatus;
 @property(readonly, nonatomic) _Bool shouldUseKeyFace; // @synthesize shouldUseKeyFace=_shouldUseKeyFace;
 @property(readonly, nonatomic) _Bool hasLocation; // @synthesize hasLocation=_hasLocation;
 @property(readonly, nonatomic) _Bool shouldShowMovieHeader; // @synthesize shouldShowMovieHeader=_shouldShowMovieHeader;
@@ -46,6 +55,8 @@
 @property(readonly, nonatomic) PHFetchResult *people; // @synthesize people=_people;
 @property(readonly, copy, nonatomic) NSDictionary *assetsByCollection; // @synthesize assetsByCollection=_assetsByCollection;
 @property(readonly, nonatomic) PHFetchResult *assetCollections; // @synthesize assetCollections=_assetCollections;
+@property(readonly, nonatomic) PHFetchResult *assetFetchResult; // @synthesize assetFetchResult=_assetFetchResult;
+@property(readonly, nonatomic) PXPhotosDetailsVisualLookupData *visualLookupData; // @synthesize visualLookupData=_visualLookupData;
 @property(readonly, nonatomic) unsigned long long contextHierarchyDepth; // @synthesize contextHierarchyDepth=_contextHierarchyDepth;
 @property(readonly, nonatomic) PXPhotosDetailsViewModel *viewModel; // @synthesize viewModel=_viewModel;
 @property(readonly, nonatomic) long long viewSourceOrigin; // @synthesize viewSourceOrigin=_viewSourceOrigin;
@@ -58,6 +69,7 @@
 - (void)setPhotosDataSource:(id)arg1;
 - (void)setViewModel:(id)arg1;
 - (void)setViewSourceOrigin:(long long)arg1;
+- (void)setVisualLookupData:(id)arg1;
 - (void)setHasLocation:(_Bool)arg1;
 - (void)setShouldShowMovieHeader:(_Bool)arg1;
 - (void)setTitleFontName:(id)arg1;
@@ -73,6 +85,7 @@
 - (void)_updatePropertiesDerivedFromDisplayTitleInfo;
 - (void)_updatePropertiesDerivedFromPhotosDataSource;
 - (id)initWithPhotosDataSource:(id)arg1 displayTitleInfo:(id)arg2 parentContext:(id)arg3 keyAssetsFetchResult:(id)arg4;
+- (id)initWithPhotosDataSource:(id)arg1 displayTitleInfo:(id)arg2 parentContext:(id)arg3 keyAssetsFetchResult:(id)arg4 assetFetchResult:(id)arg5;
 - (id)init;
 
 // Remaining properties

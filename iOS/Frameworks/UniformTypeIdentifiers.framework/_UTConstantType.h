@@ -18,7 +18,7 @@
 - (void)_unrealize;
 - (_Bool)_isRealized;
 - (id)_typeRecord;
-- (_Bool)_getEnclosureColor:(struct UTHardwareColor *)arg1;
+- (unsigned long long)_getEnclosureColors:(struct UTHardwareColor *)arg1 count:(unsigned long long)arg2;
 - (id)tags;
 - (id)supertypes;
 - (_Bool)conformsToType:(id)arg1;

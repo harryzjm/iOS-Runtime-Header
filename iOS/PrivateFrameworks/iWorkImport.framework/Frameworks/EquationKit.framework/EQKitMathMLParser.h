@@ -15,8 +15,8 @@
     NSError *mError;
     EQKitEnvironmentInstance *mEnvironment;
     NSData *mSource;
-    struct stack<EQKitMathMLParserState, std::__1::deque<EQKitMathMLParserState, std::__1::allocator<EQKitMathMLParserState>>> mState;
-    struct AttributeCollection *mAttributeCollection;
+    struct stack<EQKitMathMLParserState, std::deque<EQKitMathMLParserState>> mState;
+    void *mAttributeCollection;
 }
 
 - (id).cxx_construct;
@@ -35,7 +35,7 @@
 - (id)parse;
 - (void)reportError:(long long)arg1 withNode:(struct _xmlNode *)arg2;
 - (id)environment;
-@property(nonatomic) struct AttributeCollection *attributeCollection;
+@property(nonatomic) void *attributeCollection;
 - (void)dealloc;
 - (id)initWithDocument:(struct _xmlDoc *)arg1 node:(struct _xmlNode *)arg2 source:(id)arg3 environment:(id)arg4;
 - (id)init;

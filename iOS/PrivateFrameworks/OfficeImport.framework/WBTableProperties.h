@@ -11,8 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (void)readFrom:(id)arg1 wrdProperties:(struct WrdTableProperties *)arg2 tracked:(struct WrdTableProperties *)arg3 properties:(id)arg4;
-+ (void)mapWordProperties:(struct WrdTableProperties *)arg1 reader:(id)arg2 toProperties:(id)arg3;
++ (void)readFrom:(id)arg1 wrdProperties:(void *)arg2 tracked:(void *)arg3 properties:(id)arg4;
++ (void)mapWordProperties:(void *)arg1 reader:(id)arg2 toProperties:(id)arg3;
 + (id)formattingChangeDate:(const struct WrdDateTime *)arg1;
 
 @end

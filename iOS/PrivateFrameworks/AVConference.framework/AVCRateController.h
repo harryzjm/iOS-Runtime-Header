@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class AVCBasebandCongestionDetector, AVCRateControlFeedbackController, AVCStatisticsCollector, NSString, VCNWConnectionCongestionDetector, VCRateControlMediaController, VCRateControlServerBag;
-@protocol AVCRateControllerDelegate, VCRateControlAlgorithm;
+@protocol AVCRateControllerDelegate, OS_nw_activity, VCRateControlAlgorithm;
 
 __attribute__((visibility("hidden")))
 @interface AVCRateController : NSObject
@@ -76,17 +76,26 @@ __attribute__((visibility("hidden")))
     int _reportingModuleID;
     unsigned int _lastReportFlushedVideoPacketCount;
     unsigned int _lastReportFlushedAudioPacketCount;
-    _Bool _isTargetBitrateOvershootReported;
     double _lastTimeTargetBitrateOvershootRecorded;
-    _Bool _isUnexpectedLowTargetBitrateReported;
     double _lastTimeUnexpectedLowTargetBitrateRecorded;
-    _Bool _isUnexpectedHighRTTReported;
+    double _lastTimeUnexpectedRampUpFrozenRecorded;
+    unsigned int _lastRecordedTargetBitrate;
     unsigned int _lastReportedBandwidthEstimation;
     unsigned int _totalSuddenBandwidthDropCount;
     unsigned int _totalMBLRampDownCount;
+    double _lastTimeSustainedHighUplinkPacketLossReported;
+    double _lastTimeSustainedHighDownlinkPacketLossReported;
+    double _lastTimeServerStatsActivityRecorded;
+    _Bool _isNoServerStatsIdleActivityReported;
     unsigned int _remotePacketReceivedAudio;
     unsigned int _remotePacketReceivedVideo;
     VCRateControlServerBag *_serverBag;
+    int _btNotificationHandlerIndex;
+    NSObject<OS_nw_activity> *_parentNWActivity;
+    NSObject<OS_nw_activity> *_noServerStatsUplinkNwActivity;
+    NSObject<OS_nw_activity> *_noServerStatsDownlinkNwActivity;
+    _Bool _useNWConnectionNotification;
+    _Bool _useBTNotificationMonitor;
     id _reportingAgent;
 }
 
@@ -102,9 +111,9 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) AVCRateControlFeedbackController *feedbackController; // @synthesize feedbackController=_feedbackController;
 @property(retain, nonatomic) VCNWConnectionCongestionDetector *nwConnectionCongestionDetector; // @synthesize nwConnectionCongestionDetector=_nwConnectionCongestionDetector;
 @property(retain, nonatomic) AVCBasebandCongestionDetector *basebandCongestionDetector; // @synthesize basebandCongestionDetector=_basebandCongestionDetector;
-- (void)printNWConnectionStatistics:(CDStruct_56e8fa21)arg1;
-- (void)printBasebandNotificationStatistics:(CDStruct_56e8fa21)arg1;
-- (void)printFeedbackMessage:(CDStruct_56e8fa21)arg1;
+- (void)printNWConnectionStatistics:(CDStruct_c0785916)arg1;
+- (void)printBasebandNotificationStatistics:(CDStruct_c0785916)arg1;
+- (void)printFeedbackMessage:(CDStruct_c0785916)arg1;
 - (void)releaseLogDumpFile:(void **)arg1;
 - (void)releaseAllLogDumpFiles;
 - (void)createNWConnectionLogDumpFile;
@@ -117,17 +126,29 @@ __attribute__((visibility("hidden")))
 - (void)reportTargetBitrateChange:(unsigned int)arg1 rateChangeCounter:(unsigned int)arg2;
 - (void)reportNetworkStatisticsWithArrivalTime:(double)arg1;
 - (void)reportInitialRampUpDeltas;
-- (void)doRateControlWithNWConnectionStatistics:(CDStruct_56e8fa21)arg1;
-- (void)doRateControlWithBasebandStatistics:(CDStruct_56e8fa21)arg1;
+- (void)checkOffChannelActivityWithStatistics:(CDStruct_c0785916)arg1;
+- (void)doRateControlWithNWConnectionStatistics:(CDStruct_c0785916)arg1;
+- (void)doRateControlWithBasebandStatistics:(CDStruct_c0785916)arg1;
 - (void)checkAndReportAbnormalSymptoms;
-- (void)doRateControlWithStatistics:(CDStruct_56e8fa21)arg1;
+- (void)handleNoServerStatsSymptomReport:(double)arg1;
+- (void)pushNoServerStatsToNwActivity:(_Bool)arg1;
+- (void)handleSignificantPacketLossSymptomReport:(double)arg1;
+- (void)handleAbnormalRateAdaptationSymptomReport:(double)arg1;
+- (void)doRateControlWithStatistics:(CDStruct_c0785916)arg1;
 - (void)createVCRateControlAlgorithmWithConfiguration:(struct VCRateControlAlgorithmConfig)arg1;
 - (void)configureAlgorithmWithRestart:(_Bool)arg1;
+- (int)multiwayMaxTierFromServerBag;
 - (void)applyServerBagGroupConfig:(struct VCRateControlAlgorithmConfig *)arg1;
+- (void)applyServerBagPauseResumeConfig:(struct VCRateControlAlgorithmConfig *)arg1;
+- (void)applyServerBagEmergencyTierConfig:(struct VCRateControlAlgorithmConfig *)arg1;
+- (void)applyServerBagOscillationAvoidanceConfig:(struct VCRateControlAlgorithmConfig *)arg1;
+- (void)applyServerBagFastRampUpConfig:(struct VCRateControlAlgorithmConfig *)arg1;
+- (void)applyServerBagProfileConfig:(struct VCRateControlAlgorithmConfig *)arg1;
 - (void)applyServerBagNotificationGroupConfig:(struct VCRateControlAlgorithmConfig *)arg1;
 - (void)applyServerBagRampDownGroupConfig:(struct VCRateControlAlgorithmConfig *)arg1;
 - (void)applyServerBagNoRampUpGroupConfig:(struct VCRateControlAlgorithmConfig *)arg1;
 - (void)setDefaultAlgorithmConfiguration:(struct VCRateControlAlgorithmConfig *)arg1;
+- (int)initialTierIndexForFaceTimeWithMaxTierIndex:(int)arg1;
 - (void)configureInternal:(struct AVCRateControlConfig)arg1;
 - (int)initialBitrateTierFromLearntBitrateWithLocalTechnology:(unsigned int)arg1 remoteTech:(unsigned int)arg2 defaultTier:(int)arg3;
 - (_Bool)isRadioTechnologyOnWiFiOrLTEAndNewer:(unsigned int)arg1;
@@ -136,8 +157,9 @@ __attribute__((visibility("hidden")))
 - (id)indicatorFromRadioTech:(unsigned int)arg1;
 - (unsigned int)radioAccessTechnologyFromAVConferenceCellTech:(int)arg1 isCellular:(_Bool)arg2;
 - (unsigned int)rateControlModeFromAVConferenceOperatingMode:(int)arg1;
+- (void)setBtNotificationMonitor;
 - (unsigned int)loadDefaultVCRCFeatureFlags:(unsigned int)arg1;
-- (void)configureWithOperatingMode:(int)arg1 isLocalCellular:(_Bool)arg2 localCellTech:(int)arg3 isRemoteCellular:(_Bool)arg4 remoteCellTech:(int)arg5 bitrateCapKbps:(unsigned int)arg6 featureFlags:(unsigned int)arg7;
+- (void)configureWithOperatingMode:(int)arg1 isLocalCellular:(_Bool)arg2 localCellTech:(int)arg3 isRemoteCellular:(_Bool)arg4 remoteCellTech:(int)arg5 bitrateCapKbps:(unsigned int)arg6 isTrafficBursty:(_Bool)arg7 featureFlags:(unsigned int)arg8;
 - (void)deregisterPeriodicTask;
 - (void)getRealTimeStats:(struct __CFDictionary *)arg1;
 - (void)getRealTimeStatsForiPadCompanion:(struct __CFDictionary *)arg1;
@@ -151,6 +173,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)start;
 - (void)configure:(struct AVCRateControlConfig)arg1;
 - (void)dealloc;
+- (void)cleanupNwActivity;
+- (void)completeAndReleaseNwActivity:(id)arg1 withReason:(int)arg2;
 - (id)initWithDelegate:(id)arg1 params:(struct AVCRateControlParams_t)arg2;
 - (id)initWithDelegate:(id)arg1 dumpID:(id)arg2 isUplink:(_Bool)arg3 reportingAgent:(id)arg4;
 

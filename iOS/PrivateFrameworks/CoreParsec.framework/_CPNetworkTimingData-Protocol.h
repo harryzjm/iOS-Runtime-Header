@@ -6,7 +6,7 @@
 
 #import <CoreParsec/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, NSString, _CPTCPInfo, _CPTuscanyConnectionInfo;
+@class NSData, NSDictionary, NSString, _CPTCPInfo;
 
 @protocol _CPNetworkTimingData <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
@@ -22,7 +22,6 @@
 @property(nonatomic) unsigned int domainLookupStart;
 @property(nonatomic) unsigned int connectEnd;
 @property(nonatomic) unsigned int connectStart;
-@property(retain, nonatomic) _CPTuscanyConnectionInfo *tuscany;
 @property(nonatomic) double timingDataInit;
 @property(nonatomic) _Bool TFOSuccess;
 @property(nonatomic) unsigned int responseHeaderSize;

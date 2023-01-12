@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 @interface UIKBTextStyle : NSObject <NSCopying>
 {
     _Bool _ignoreTextMarginOnKey;
+    _Bool _usesSymbolImage;
     NSString *_fontName;
     double _fontSize;
     double _imageScale;
@@ -33,6 +34,7 @@ __attribute__((visibility("hidden")))
 
 + (id)styleWithTextColor:(id)arg1;
 + (id)styleWithFontName:(id)arg1 withFontSize:(double)arg2;
+@property(nonatomic) _Bool usesSymbolImage; // @synthesize usesSymbolImage=_usesSymbolImage;
 @property(nonatomic) _Bool ignoreTextMarginOnKey; // @synthesize ignoreTextMarginOnKey=_ignoreTextMarginOnKey;
 @property(nonatomic) long long selector; // @synthesize selector=_selector;
 @property(nonatomic) unsigned long long anchorCorner; // @synthesize anchorCorner=_anchorCorner;

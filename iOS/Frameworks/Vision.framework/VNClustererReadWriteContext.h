@@ -7,16 +7,12 @@
 #import <Vision/VNClustererModelBuilding-Protocol.h>
 #import <Vision/VNClustererModelQuerying-Protocol.h>
 
-@class NSNumber, NSString;
 @protocol VNClusteringReadOnly><VNClusteringWritable><VNClusteringCancelling;
 
 __attribute__((visibility("hidden")))
 @interface VNClustererReadWriteContext <VNClustererModelQuerying, VNClustererModelBuilding>
 {
     id <VNClusteringReadOnly><VNClusteringWritable><VNClusteringCancelling> _clusterer;
-    NSString *_ageClassifierModelFilePath;
-    NSNumber *_ageClassifierBabyThreshold;
-    NSNumber *_ageClassifierKidThreshold;
 }
 
 + (id)nonGroupedGroupID;
@@ -38,12 +34,15 @@ __attribute__((visibility("hidden")))
 - (id)updateModelByAddingFaces:(id)arg1 andRemovingFaces:(id)arg2 canceller:(id)arg3 error:(id *)arg4;
 - (id)updateModelByRemovingFaces:(id)arg1 canceller:(id)arg2 error:(id *)arg3;
 - (id)updateModelByAddingFaces:(id)arg1 canceller:(id)arg2 error:(id *)arg3;
+- (id)_updateClustererWithOptions:(id)arg1 canceller:(id)arg2 error:(id *)arg3;
+- (id)updateModelByAddingPersons:(id)arg1 withGroupingIdentifiers:(id)arg2 andRemovingPersons:(id)arg3 canceller:(id)arg4 error:(id *)arg5;
 - (id)updateModelByAddingFaces:(id)arg1 withGroupingIdentifiers:(id)arg2 andRemovingFaces:(id)arg3 canceller:(id)arg4 error:(id *)arg5;
 - (id)saveAndReturnCurrentModelState:(id *)arg1;
 - (_Bool)resetModelState:(id)arg1 error:(id *)arg2;
-- (void)_initializeGreedyClustererOptions:(id)arg1;
-- (id)initWithType:(id)arg1 cachePath:(id)arg2 state:(id)arg3 threshold:(float)arg4 torsoThreshold:(float)arg5 babyThreshold:(float)arg6 kidThreshold:(float)arg7 requestRevision:(unsigned long long)arg8 error:(id *)arg9;
-- (id)initWithType:(id)arg1 cachePath:(id)arg2 state:(id)arg3 threshold:(float)arg4 babyThreshold:(float)arg5 kidThreshold:(float)arg6 requestRevision:(unsigned long long)arg7 error:(id *)arg8;
+- (id)initWithType:(id)arg1 cachePath:(id)arg2 state:(id)arg3 threshold:(float)arg4 torsoThreshold:(float)arg5 requestRevision:(unsigned long long)arg6 torsoprintRequestRevision:(unsigned long long)arg7 error:(id *)arg8;
+- (id)initWithType:(id)arg1 cachePath:(id)arg2 state:(id)arg3 threshold:(float)arg4 torsoThreshold:(float)arg5 requestRevision:(unsigned long long)arg6 error:(id *)arg7;
+- (id)initWithType:(id)arg1 cachePath:(id)arg2 state:(id)arg3 threshold:(float)arg4 requestRevision:(unsigned long long)arg5 torsoprintRequestRevision:(unsigned long long)arg6 error:(id *)arg7;
+- (id)initWithType:(id)arg1 cachePath:(id)arg2 state:(id)arg3 threshold:(float)arg4 requestRevision:(unsigned long long)arg5 error:(id *)arg6;
 
 @end
 

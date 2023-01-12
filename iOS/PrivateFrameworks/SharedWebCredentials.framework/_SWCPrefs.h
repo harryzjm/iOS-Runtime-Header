@@ -17,7 +17,9 @@
 - (double)retryIntervalAfterSuccess:(_Bool)arg1;
 @property(readonly) double retryIntervalAfterSuccess;
 @property(readonly) double retryIntervalAfterFailure;
+- (double)retryIntervalAfterReachLimitWithFailure:(unsigned long long)arg1;
 @property(readonly) unsigned long long maximumRetryCount;
+- (id)containerURLReturningError:(id *)arg1;
 - (void)_setString:(id)arg1 forKey:(id)arg2;
 - (id)_stringForKey:(id)arg1 defaultValue:(id)arg2;
 - (unsigned long long)_unsignedIntegerForKey:(id)arg1 defaultValue:(unsigned long long)arg2 minimumValue:(unsigned long long)arg3 maximumValue:(unsigned long long)arg4;

@@ -6,12 +6,11 @@
 
 #import <VideosUI/NSObject-Protocol.h>
 
-@class UIFont;
+@class UIFont, UITraitCollection;
 
 @protocol VUILibraryProductLockupViewLayout <NSObject>
-- (UIFont *)contentDescriptionFont;
-- (int)contentDescriptionNumberOfLines;
-- (_Bool)shouldShowTitleLabel;
+- (UIFont *)contentDescriptionFontForSizeClass:(long long)arg1;
+- (int)contentDescriptionNumberOfLinesForTraitCollection:(UITraitCollection *)arg1;
 - (long long)downloadButtonPosition;
 - (double)buttonModuleTopMarginForWindowWidth:(double)arg1;
 - (double)contentDescriptionBottomMarginForWindowWidth:(double)arg1;
@@ -20,7 +19,7 @@
 - (double)subtitleTopMarginForWindowWidth:(double)arg1;
 - (double)titleTopMargin;
 - (double)coverArtBottomPadding;
-- (double)coverArtImageRightMargin;
+- (double)coverArtImageRightMarginForWindowWidth:(double)arg1;
 - (struct CGSize)coverArtImageSize;
 - (long long)layoutTypeForWindowWidth:(double)arg1;
 @end

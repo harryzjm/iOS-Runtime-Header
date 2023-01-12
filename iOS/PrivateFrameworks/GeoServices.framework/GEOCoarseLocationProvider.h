@@ -18,7 +18,7 @@
 
 - (void).cxx_destruct;
 - (void)_fetchBasicCoarseEquivalentForLocation:(id)arg1 fallbackIsPermanent:(_Bool)arg2 callbackQueue:(id)arg3 callback:(CDUnknownBlockType)arg4;
-- (void)_fetchRepresentativePointFromData:(id)arg1 location:(id)arg2 callbackQueue:(id)arg3 callback:(CDUnknownBlockType)arg4;
+- (void)_fetchRepresentativePointFromData:(id)arg1 tileKey:(const struct _GEOTileKey *)arg2 location:(id)arg3 callbackQueue:(id)arg4 callback:(CDUnknownBlockType)arg5;
 - (void)fetchCoarseEquivalentForLocation:(id)arg1 callbackQueue:(id)arg2 callback:(CDUnknownBlockType)arg3;
 - (_Bool)_snapNonMercatorCoordinateIfNecessary:(id)arg1 callbackQueue:(id)arg2 callback:(CDUnknownBlockType)arg3;
 - (id)init;

@@ -20,6 +20,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)_requestWithID:(id)arg1 kind:(id)arg2 context:(id)arg3 productVariantID:(id)arg4;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSDictionary *mediaQueryParams; // @synthesize mediaQueryParams=_mediaQueryParams;
 @property(readonly, copy, nonatomic) NSString *context; // @synthesize context=_context;
@@ -33,7 +34,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithID:(id)arg1 kind:(id)arg2 context:(id)arg3;
-- (id)_initWithID:(id)arg1 kind:(id)arg2 context:(id)arg3 minExternalVersionID:(id)arg4;
+- (id)_initWithID:(id)arg1 kind:(id)arg2 context:(id)arg3 minExternalVersionID:(id)arg4 latestReleaseID:(id)arg5 productVariantID:(id)arg6;
 
 @end
 

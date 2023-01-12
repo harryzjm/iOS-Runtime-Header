@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSUUID;
+@class NSString, NSUUID;
 
 @interface WBSBrowserTabCompletionMatch
 {
     NSUUID *_tabUUID;
+    NSUUID *_tabGroupUUID;
+    NSString *_tabGroupTitle;
     NSUUID *_windowUUID;
     unsigned long long _tabIndex;
 }
@@ -16,8 +18,11 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long tabIndex; // @synthesize tabIndex=_tabIndex;
 @property(readonly, nonatomic) NSUUID *windowUUID; // @synthesize windowUUID=_windowUUID;
+@property(readonly, copy, nonatomic) NSString *tabGroupTitle; // @synthesize tabGroupTitle=_tabGroupTitle;
+@property(readonly, nonatomic) NSUUID *tabGroupUUID; // @synthesize tabGroupUUID=_tabGroupUUID;
 @property(readonly, nonatomic) NSUUID *tabUUID; // @synthesize tabUUID=_tabUUID;
 - (id)parsecDomainIdentifier;
+- (id)initWithTabUUID:(id)arg1 windowUUID:(id)arg2 tabGroupUUID:(id)arg3 tabGroupTitle:(id)arg4 tabIndex:(unsigned long long)arg5 userTypedString:(id)arg6 tabURL:(id)arg7 tabTitle:(id)arg8 forQueryID:(long long)arg9;
 - (id)initWithTabUUID:(id)arg1 windowUUID:(id)arg2 tabIndex:(unsigned long long)arg3 userTypedString:(id)arg4 tabURL:(id)arg5 tabTitle:(id)arg6 forQueryID:(long long)arg7;
 
 @end

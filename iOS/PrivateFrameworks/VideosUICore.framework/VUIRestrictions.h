@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@interface VUIRestrictions : NSObject
+#import <VideosUICore/VUIRestrictions-Protocol.h>
+
+@interface VUIRestrictions : NSObject <VUIRestrictions>
 {
 }
 
 + (id)sharedInstance;
-@property(readonly, nonatomic) _Bool allowsDAUMetricCollection;
 @property(readonly, nonatomic) _Bool allowsShowingUndownloadedMovies;
 @property(readonly, nonatomic) _Bool allowsShowingUndownloadedTVShows;
 

@@ -21,12 +21,9 @@
 
 + (id)bundleIdOfCurrentForegroundApp;
 - (void).cxx_destruct;
-- (void)waitForQueueEmpty;
-- (void)processResponse:(id)arg1;
 - (id)getResponse;
 - (void)_donateDelayedResponse:(id)arg1 timePlayed:(double)arg2 bundleId:(id)arg3;
 - (void)_registerForNowPlayingNotifications;
-- (id)initWithNamedEntityStore:(id)arg1 donationDelaySeconds:(double)arg2 registersResponseLoading:(_Bool)arg3 useSGNamedEntityDissector:(_Bool)arg4;
 - (id)init;
 
 @end

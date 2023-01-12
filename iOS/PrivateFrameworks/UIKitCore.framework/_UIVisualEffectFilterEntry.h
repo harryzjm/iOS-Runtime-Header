@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 @interface _UIVisualEffectFilterEntry : NSObject <_UIVisualEffectDiffable>
 {
     CAFilter *_filter;
+    _Bool _useRelaxedDiffingRule;
     NSString *_filterType;
     NSDictionary *_configurationValues;
     NSDictionary *_requestedValues;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *filterName; // @synthesize filterName=_filterName;
+@property(nonatomic) _Bool useRelaxedDiffingRule; // @synthesize useRelaxedDiffingRule=_useRelaxedDiffingRule;
 @property(nonatomic) double identityScaleHint; // @synthesize identityScaleHint=_identityScaleHint;
 @property(nonatomic) double requestedScaleHint; // @synthesize requestedScaleHint=_requestedScaleHint;
 @property(copy, nonatomic) NSDictionary *identityValues; // @synthesize identityValues=_identityValues;

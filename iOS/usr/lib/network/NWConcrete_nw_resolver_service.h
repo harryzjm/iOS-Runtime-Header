@@ -9,7 +9,7 @@
 #import <network/OS_nw_resolver_service-Protocol.h>
 
 @class NSString;
-@protocol OS_nw_endpoint, OS_nw_object;
+@protocol OS_dispatch_data, OS_nw_endpoint, OS_nw_object;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_resolver_service : NSObject <OS_nw_resolver_service>
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     unsigned short priority;
     unsigned short port;
     unsigned short flags;
+    NSObject<OS_dispatch_data> *ech_config;
     unsigned int sensitive_redacted:1;
     unsigned int host_matches_origin:1;
     unsigned int port_matches_origin:1;

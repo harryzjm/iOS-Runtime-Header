@@ -14,15 +14,22 @@
 {
     _Bool _excludeFrequentLocations;
     _Bool _excludeHomeWorkLocations;
+    _Bool _includeHomeLocations;
+    _Bool _includeWorkLocations;
+    _Bool _includeFrequentLocations;
 }
 
 + (id)criteriaWithDictionary:(id)arg1;
 + (id)criteriaKey;
+@property(nonatomic) _Bool includeFrequentLocations; // @synthesize includeFrequentLocations=_includeFrequentLocations;
+@property(nonatomic) _Bool includeWorkLocations; // @synthesize includeWorkLocations=_includeWorkLocations;
+@property(nonatomic) _Bool includeHomeLocations; // @synthesize includeHomeLocations=_includeHomeLocations;
 @property(nonatomic) _Bool excludeHomeWorkLocations; // @synthesize excludeHomeWorkLocations=_excludeHomeWorkLocations;
 @property(nonatomic) _Bool excludeFrequentLocations; // @synthesize excludeFrequentLocations=_excludeFrequentLocations;
 @property(readonly, copy) NSString *description;
 - (_Bool)isValid;
-- (_Bool)passesForMomentNode:(id)arg1;
+- (_Bool)passesForAssets:(id)arg1;
+- (_Bool)passesForMomentNode:(id)arg1 momentNodeCache:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

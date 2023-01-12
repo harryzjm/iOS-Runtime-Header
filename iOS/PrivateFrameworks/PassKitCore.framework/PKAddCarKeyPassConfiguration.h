@@ -9,12 +9,14 @@
 @interface PKAddCarKeyPassConfiguration
 {
     NSString *_password;
+    unsigned long long _supportedRadioTechnologies;
     NSString *_appIdentifier;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *appIdentifier; // @synthesize appIdentifier=_appIdentifier;
+@property(nonatomic) unsigned long long supportedRadioTechnologies; // @synthesize supportedRadioTechnologies=_supportedRadioTechnologies;
 @property(copy, nonatomic) NSString *password; // @synthesize password=_password;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

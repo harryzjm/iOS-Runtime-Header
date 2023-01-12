@@ -8,14 +8,16 @@
 
 #import <KnowledgeGraphKit/KGGraphStore-Protocol.h>
 
-@class KGDatabase, KGEntityDescription, NSString, NSURL, NSUUID;
+@class KGDatabase, NSString, NSURL, NSUUID;
+@protocol KGEntityFactory;
 
 @interface KGDegasGraphStore : NSObject <KGGraphStore>
 {
+    _Bool _isReadOnly;
     struct os_unfair_lock_s _lock;
     KGDatabase *_database;
     NSURL *_url;
-    KGEntityDescription *_entityDescription;
+    id <KGEntityFactory> _entityFactory;
     long long _transactionCounter;
 }
 
@@ -23,25 +25,20 @@
 + (_Bool)destroyAtURL:(id)arg1 error:(id *)arg2;
 + (_Bool)copyFromURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 + (id)persistentStoreFileExtension;
-+ (_Bool)setMarkerForDiskRepresentationAtURL:(id)arg1;
-+ (_Bool)hasMarkerForDiskRepresentationAtURL:(id)arg1;
-+ (void)deleteMarkerForDiskRepresentationAtURL:(id)arg1;
-+ (id)_markerFilePathForPersistentStoreFileURL:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool isReadOnly; // @synthesize isReadOnly=_isReadOnly;
 @property(nonatomic) long long transactionCounter; // @synthesize transactionCounter=_transactionCounter;
 @property(readonly, nonatomic) struct os_unfair_lock_s lock; // @synthesize lock=_lock;
-@property(readonly, nonatomic) KGEntityDescription *entityDescription; // @synthesize entityDescription=_entityDescription;
+@property(readonly, nonatomic) id <KGEntityFactory> entityFactory; // @synthesize entityFactory=_entityFactory;
 @property(retain, nonatomic) NSURL *url; // @synthesize url=_url;
 @property(readonly, nonatomic) KGDatabase *database; // @synthesize database=_database;
 - (_Bool)copyToURL:(id)arg1 error:(id *)arg2;
 - (void)close;
+- (_Bool)openWithMode:(unsigned long long)arg1 nameCache:(id)arg2 error:(id *)arg3;
 - (_Bool)openWithMode:(unsigned long long)arg1 error:(id *)arg2;
+- (void)rollbackTransaction;
 - (void)commitTransaction;
 - (void)beginTransaction;
-- (void)setMarker;
-@property(readonly, nonatomic) _Bool hasMarker;
-- (void)deleteMarker;
-- (id)_markerFilePath;
 - (_Bool)updateEdgeForIdentifier:(unsigned long long)arg1 withProperties:(id)arg2 error:(id *)arg3;
 - (_Bool)updateEdgeForIdentifier:(unsigned long long)arg1 withWeight:(float)arg2 error:(id *)arg3;
 - (_Bool)updateNodeForIdentifier:(unsigned long long)arg1 withProperties:(id)arg2 error:(id *)arg3;
@@ -52,35 +49,49 @@
 - (_Bool)removeNodeForIdentifier:(unsigned long long)arg1 error:(id *)arg2;
 - (id)edgeLabels;
 - (id)nodeLabels;
+- (id)arrayOfUnsignedIntegerPropertiesForEdgesWithIdentifiers:(id)arg1 propertyName:(id)arg2 error:(id *)arg3;
+- (id)arrayOfDoublePropertiesForEdgesWithIdentifiers:(id)arg1 propertyName:(id)arg2 error:(id *)arg3;
+- (id)arrayOfStringPropertiesForEdgesWithIdentifiers:(id)arg1 propertyName:(id)arg2 error:(id *)arg3;
+- (id)arrayOfIntegerPropertiesForEdgesWithIdentifiers:(id)arg1 propertyName:(id)arg2 error:(id *)arg3;
+- (id)arrayOfUnsignedIntegerPropertiesForNodesWithIdentifiers:(id)arg1 propertyName:(id)arg2 error:(id *)arg3;
+- (id)arrayOfDoublePropertiesForNodesWithIdentifiers:(id)arg1 propertyName:(id)arg2 error:(id *)arg3;
+- (id)arrayOfStringPropertiesForNodesWithIdentifiers:(id)arg1 propertyName:(id)arg2 error:(id *)arg3;
+- (id)arrayOfIntegerPropertiesForNodesWithIdentifiers:(id)arg1 propertyName:(id)arg2 error:(id *)arg3;
+- (id)sourcesByTargetWithEdgeIdentifiers:(id)arg1 error:(id *)arg2;
+- (id)targetsBySourceWithEdgeIdentifiers:(id)arg1 error:(id *)arg2;
+- (id)_lock_sourcesByTargetWithEdgeIdentifiers:(id)arg1 error:(id *)arg2;
+- (id)_lock_targetsBySourceWithEdgeIdentifiers:(id)arg1 error:(id *)arg2;
+- (id)nodeIdentifiersOfEdgesWithIdentifiers:(id)arg1 edgeDirection:(unsigned long long)arg2 error:(id *)arg3;
+- (id)_lock_nodeIdentifiersOfEdgesWithIdentifiers:(id)arg1 edgeDirection:(unsigned long long)arg2 error:(id *)arg3;
 - (id)neighborNodeIdentifiersWithStartNodeIdentifiers:(id)arg1 edgeDirection:(unsigned long long)arg2 edgeFilter:(id)arg3 error:(id *)arg4;
 - (id)_lock_neighborNodeIdentifiersWithStartNodeIdentifiers:(id)arg1 edgeDirection:(unsigned long long)arg2 edgeFilter:(id)arg3 error:(id *)arg4;
 - (id)edgeIdentifiersForNodeIdentifier:(unsigned long long)arg1 withLabels:(id)arg2 edgeDirection:(unsigned long long)arg3 error:(id *)arg4;
 - (id)edgeIdentifiersWithStartNodeIdentifiers:(id)arg1 edgeDirection:(unsigned long long)arg2 error:(id *)arg3;
 - (id)_lock_edgeIdentifiersWithStartNodeIdentifiers:(id)arg1 edgeDirection:(unsigned long long)arg2 error:(id *)arg3;
 - (_Bool)_lock_filterEdgesWithProperties:(id)arg1 edgeIdentifiers:(inout id *)arg2 error:(id *)arg3;
-- (_Bool)_lock_filterEdgesWithLabels:(id)arg1 edgeIdentifiers:(inout id *)arg2 error:(id *)arg3;
+- (_Bool)_lock_filterEdgesWithOptionalLabels:(id)arg1 edgeIdentifiers:(inout id *)arg2 error:(id *)arg3;
+- (_Bool)_lock_filterEdgesWithRequiredLabels:(id)arg1 edgeIdentifiers:(inout id *)arg2 error:(id *)arg3;
 - (id)_lock_edgeIdentifiersMatchingFilter:(id)arg1 intersectingIdentifiers:(id)arg2 error:(id *)arg3;
 - (id)edgeIdentifiersMatchingFilter:(id)arg1 intersectingIdentifiers:(id)arg2 error:(id *)arg3;
 - (_Bool)_lock_filterNodesWithProperties:(id)arg1 nodeIdentifiers:(inout id *)arg2 error:(id *)arg3;
-- (_Bool)_lock_filterNodesWithLabels:(id)arg1 nodeIdentifiers:(inout id *)arg2 error:(id *)arg3;
+- (id)_resolvedPropertyValue:(id)arg1 isScalar:(_Bool *)arg2;
+- (_Bool)_lock_filterNodesWithOptionalLabels:(id)arg1 nodeIdentifiers:(inout id *)arg2 error:(id *)arg3;
+- (_Bool)_lock_filterNodesWithRequiredLabels:(id)arg1 nodeIdentifiers:(inout id *)arg2 error:(id *)arg3;
 - (id)_lock_nodeIdentifiersMatchingFilter:(id)arg1 intersectingIdentifiers:(id)arg2 error:(id *)arg3;
 - (id)nodeIdentifiersMatchingFilter:(id)arg1 intersectingIdentifiers:(id)arg2 error:(id *)arg3;
 - (id)edgeForIdentifier:(unsigned long long)arg1 error:(id *)arg2;
 - (id)arrayOfEdgesWithIdentifiers:(id)arg1 error:(id *)arg2;
-- (id)edgesForIdentifiers:(id)arg1 error:(id *)arg2;
 - (_Bool)_lock_enumerateEdgesWithIdentifiers:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
 - (id)nodeForIdentifier:(unsigned long long)arg1 error:(id *)arg2;
 - (id)_lock_nodeForIdentifier:(unsigned long long)arg1 error:(id *)arg2;
 - (id)arrayOfNodesWithIdentifiers:(id)arg1 error:(id *)arg2;
-- (id)nodesForIdentifiers:(id)arg1 error:(id *)arg2;
 - (void)_lock_enumerateNodesWithIdentifiers:(id)arg1 block:(CDUnknownBlockType)arg2;
-- (id)_lock_edgeForIdentifier:(unsigned long long)arg1 labels:(id)arg2 weight:(float)arg3 sourceNode:(id)arg4 targetNode:(id)arg5 properties:(id)arg6 error:(id *)arg7;
-- (id)nodeForIdentifier:(unsigned long long)arg1 labels:(id)arg2 weight:(float)arg3 properties:(id)arg4;
-- (unsigned long long)addEdgeWithLabels:(id)arg1 weight:(float)arg2 properties:(id)arg3 sourceNodeIdentifier:(unsigned long long)arg4 targetNodeIdentifier:(unsigned long long)arg5 error:(id *)arg6;
-- (unsigned long long)addNodeWithLabels:(id)arg1 weight:(float)arg2 properties:(id)arg3 error:(id *)arg4;
+- (_Bool)addEdges:(id)arg1 error:(id *)arg2;
+- (_Bool)addNodes:(id)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) NSUUID *graphIdentifier;
 @property(nonatomic) unsigned long long graphVersion;
 - (id)initWithURL:(id)arg1;
+- (id)initWithURL:(id)arg1 entityFactory:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

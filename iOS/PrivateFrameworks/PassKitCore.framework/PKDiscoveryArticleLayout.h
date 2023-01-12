@@ -8,31 +8,39 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, PKDiscoveryCallToAction, PKDiscoveryCard;
+@class NSArray, NSString, PKDiscoveryCallToAction, PKDiscoveryCard, PKDiscoveryItem, PKMiniDiscoveryCard;
 
 @interface PKDiscoveryArticleLayout : NSObject <NSSecureCoding>
 {
+    _Bool _entitledToForceLargeCard;
+    _Bool _hitMaxLargeViewCount;
     _Bool _requestedBadge;
     NSString *_itemIdentifier;
     long long _version;
     long long _variant;
     PKDiscoveryCard *_card;
+    PKMiniDiscoveryCard *_miniCard;
     NSArray *_shelves;
     PKDiscoveryCallToAction *_footerLockup;
     long long _priority;
     CDUnknownBlockType _actionOnDismiss;
+    PKDiscoveryItem *_item;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) __weak PKDiscoveryItem *item; // @synthesize item=_item;
 @property(readonly, nonatomic, getter=hasRequestedBadge) _Bool requestedBadge; // @synthesize requestedBadge=_requestedBadge;
 @property(copy, nonatomic) CDUnknownBlockType actionOnDismiss; // @synthesize actionOnDismiss=_actionOnDismiss;
 @property(nonatomic) long long priority; // @synthesize priority=_priority;
 @property(readonly, nonatomic) PKDiscoveryCallToAction *footerLockup; // @synthesize footerLockup=_footerLockup;
 @property(readonly, nonatomic) NSArray *shelves; // @synthesize shelves=_shelves;
+@property(readonly, nonatomic) PKMiniDiscoveryCard *miniCard; // @synthesize miniCard=_miniCard;
 @property(readonly, nonatomic) PKDiscoveryCard *card; // @synthesize card=_card;
 @property(readonly, nonatomic) long long variant; // @synthesize variant=_variant;
 @property(readonly, nonatomic) long long version; // @synthesize version=_version;
+@property(readonly, nonatomic, getter=hasHitMaxLargeViewCount) _Bool hitMaxLargeViewCount; // @synthesize hitMaxLargeViewCount=_hitMaxLargeViewCount;
+@property(readonly, nonatomic) _Bool entitledToForceLargeCard; // @synthesize entitledToForceLargeCard=_entitledToForceLargeCard;
 @property(retain, nonatomic) NSString *itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -40,7 +48,6 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualForUI:(id)arg1;
-- (void)setForItem:(id)arg1;
 - (void)localizeWithBundle:(id)arg1 table:(id)arg2;
 - (void)localizeWithBundle:(id)arg1;
 - (id)initWithDictionary:(id)arg1;

@@ -6,10 +6,13 @@
 
 #import <HIDAnalytics/NSObject-Protocol.h>
 
+@class NSString;
+
 @protocol HIDAnalyticsEventFieldProtocol <NSObject>
-@property(retain) id value;
+@property __weak id value;
 
 @optional
+- (void)setStringValue:(NSString *)arg1;
 - (void)setIntegerValue:(unsigned long long)arg1;
 @end
 

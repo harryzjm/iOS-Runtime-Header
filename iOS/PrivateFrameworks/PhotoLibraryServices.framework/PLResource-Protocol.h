@@ -6,15 +6,16 @@
 
 #import <PhotoLibraryServices/PLResourceIdentity-Protocol.h>
 
-@class NSDate;
-@protocol PLAssetID, PLCodecIdentity, PLResourceDataStore, PLResourceDataStoreKey;
+@class NSDate, NSString;
+@protocol PLAssetID, PLResourceDataStore, PLResourceDataStoreKey;
 
 @protocol PLResource <PLResourceIdentity>
+@property(readonly, nonatomic) short utiConformanceHint;
 @property(readonly, nonatomic) NSDate *trashedDate;
 @property(readonly, nonatomic) short trashedState;
 @property(readonly, nonatomic) long long estimatedDataLength;
 @property(readonly, nonatomic) long long dataLength;
-@property(readonly, nonatomic) id <PLCodecIdentity> codecID;
+@property(readonly, nonatomic) NSString *codecFourCharCodeName;
 @property(readonly, nonatomic) int qualitySortValue;
 @property(readonly, nonatomic) short remoteAvailabilityTarget;
 @property(readonly, nonatomic) short remoteAvailability;
@@ -36,5 +37,6 @@
 - (_Bool)isPlayableVideo;
 - (_Bool)isDerivative;
 - (_Bool)isDefaultOrientation;
+- (_Bool)isInCloud;
 @end
 

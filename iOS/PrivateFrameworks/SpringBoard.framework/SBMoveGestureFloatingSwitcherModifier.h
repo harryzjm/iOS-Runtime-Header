@@ -6,28 +6,33 @@
 
 @interface SBMoveGestureFloatingSwitcherModifier
 {
+    _Bool _hideSlideOverTongueForDragFromStashedConfiguration;
     long long _initialFloatingConfiguration;
     long long _interfaceOrientation;
     struct CGPoint _translation;
 }
 
+@property(nonatomic) _Bool hideSlideOverTongueForDragFromStashedConfiguration; // @synthesize hideSlideOverTongueForDragFromStashedConfiguration=_hideSlideOverTongueForDragFromStashedConfiguration;
 @property(nonatomic) struct CGPoint translation; // @synthesize translation=_translation;
 @property(nonatomic) long long interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
 @property(nonatomic) long long initialFloatingConfiguration; // @synthesize initialFloatingConfiguration=_initialFloatingConfiguration;
+- (struct SBSwitcherAsyncRenderingAttributes)asyncRenderingAttributesForAppLayout:(id)arg1;
+- (id)appLayoutToAttachSlideOverTongue;
+- (unsigned long long)slideOverTongueDirection;
+- (unsigned long long)slideOverTongueState;
 - (id)topMostLayoutElements;
 - (id)appLayoutsToCacheSnapshots;
 - (double)shadowOffsetForIndex:(unsigned long long)arg1;
-- (double)shadowOpacityForIndex:(unsigned long long)arg1;
-- (double)opacityForIndex:(unsigned long long)arg1;
+- (double)shadowOpacityForLayoutRole:(long long)arg1 atIndex:(unsigned long long)arg2;
+- (double)opacityForLayoutRole:(long long)arg1 inAppLayout:(id)arg2 atIndex:(unsigned long long)arg3;
 - (id)animationAttributesForLayoutElement:(id)arg1;
 - (id)visibleAppLayouts;
-- (struct CGRect)frameForIndex:(unsigned long long)arg1;
 - (struct CGRect)containerViewBounds;
 - (id)_updateForGestureDidEndWithEvent:(id)arg1;
 - (id)_updateForGestureDidChangeWithEvent:(id)arg1;
 - (id)_updateForGestureDidBeginWithEvent:(id)arg1;
 - (id)handleGestureEvent:(id)arg1;
-- (id)handleMainTransitionEvent:(id)arg1;
+- (id)handleTransitionEvent:(id)arg1;
 - (id)initWithGestureID:(id)arg1 initialFloatingConfiguration:(long long)arg2 interfaceOrientation:(long long)arg3;
 
 @end

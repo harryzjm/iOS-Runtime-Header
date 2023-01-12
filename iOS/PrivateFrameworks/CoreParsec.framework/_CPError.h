@@ -22,10 +22,6 @@
 @property(nonatomic) double code; // @synthesize code=_code;
 @property(copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property(copy, nonatomic) NSString *domain; // @synthesize domain=_domain;
-- (id)initWithDictionary:(id)arg1;
-- (id)initWithJSON:(id)arg1;
-@property(readonly, nonatomic) NSData *jsonData;
-- (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
@@ -35,6 +31,7 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) NSData *jsonData; // @dynamic jsonData;
 @property(readonly) Class superclass;
 
 @end

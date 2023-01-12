@@ -44,6 +44,7 @@
     PKPaperList *_paperList;
     NSArray *_trays;
     NSArray *_jpegFeaturesSupported;
+    NSDictionary *_translations;
 }
 
 + (id)nameForHardcodedURI:(id)arg1;
@@ -63,6 +64,7 @@
 + (_Bool)urfIsOptional;
 + (struct http_addrlist_s *)_createAddrList:(const char *)arg1 hostName:(const char *)arg2 port:(int)arg3;
 + (struct _ipp_s *)getAttributes:(const char **)arg1 count:(int)arg2 fromURI:(id)arg3;
+@property(retain) NSDictionary *translations; // @synthesize translations=_translations;
 @property(retain) NSArray *jpegFeaturesSupported; // @synthesize jpegFeaturesSupported=_jpegFeaturesSupported;
 @property(retain) NSArray *trays; // @synthesize trays=_trays;
 @property(retain) PKPaperList *paperList; // @synthesize paperList=_paperList;
@@ -110,6 +112,7 @@
 @property(readonly) _Bool isIPPS; // @dynamic isIPPS;
 @property(readonly) _Bool isAdobeRGBSupported; // @dynamic isAdobeRGBSupported;
 - (void)getSupplyLevels:(CDUnknownBlockType)arg1;
+- (id)loadTranslations;
 @property(readonly) NSDictionary *printInfoSupported;
 - (void)checkOperations:(struct _ipp_s *)arg1;
 - (void)identifySelf;
@@ -119,6 +122,8 @@
 @property(readonly) long long jobTypesSupported;
 @property(readonly) long long identifyActionsSupported;
 - (id)localizedPrinterWarnings;
+- (void)_checkAvailable:(double)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+@property(readonly) _Bool _isAlwaysAvailable;
 - (void)pollForPrinterStatusQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)handlePrinterStateReasonsFromResponse:(struct _ipp_s *)arg1;
 - (id)makeAndModel;

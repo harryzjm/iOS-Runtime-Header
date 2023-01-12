@@ -22,8 +22,8 @@
     NSMutableDictionary *_upInfosByIdentifier;
     _Bool _didMoveFingersDuringUpdate;
     CDUnknownBlockType _gestureCompletion;
-    AXAssertionCoordinator *_suppressVisualsAssertionCoodinator;
     _Bool _isPerformingGesture;
+    AXAssertionCoordinator *_suppressVisualsAssertionCoodinator;
     id <AXPIFingerAppearanceDelegate> _appearanceDelegate;
     UIWindow *_fixedReferenceWindow;
 }
@@ -55,6 +55,7 @@
 - (id)_pointStringsFromFingers;
 - (void)assertionCoordinator:(id)arg1 assertionsDidBecomeActive:(_Bool)arg2;
 - (id)acquireAssertionToSuppressVisualsWithReason:(id)arg1;
+@property(readonly, nonatomic) AXAssertionCoordinator *suppressVisualsAssertionCoodinator; // @synthesize suppressVisualsAssertionCoodinator=_suppressVisualsAssertionCoodinator;
 - (id)fingerModelAtPoint:(struct CGPoint)arg1;
 - (void)_endGestureWithSuccess:(_Bool)arg1;
 - (void)_interruptGestureIfNeeded;

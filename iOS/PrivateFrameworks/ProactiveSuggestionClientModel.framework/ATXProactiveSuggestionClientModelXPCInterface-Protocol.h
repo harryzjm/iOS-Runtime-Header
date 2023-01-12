@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSData, NSString;
+@class ATXSuggestionRequest, NSArray, NSData, NSString;
 
 @protocol ATXProactiveSuggestionClientModelXPCInterface
-- (void)retrieveAvailableCriterionIdentifiersForClientModelId:(NSString *)arg1 reply:(void (^)(NSArray *, NSError *))arg2;
+- (void)generateLayoutForRequest:(ATXSuggestionRequest *)arg1 reply:(void (^)(id <ATXUICacheProtocol>))arg2;
 - (void)retrieveSuggestionsForClientModelId:(NSString *)arg1 reply:(void (^)(NSArray *, NSError *))arg2;
 - (void)clientModelUpdatedNotificationId:(NSString *)arg1 clientModelId:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)clientModelUpdatedSuggestions:(NSArray *)arg1 feedbackMetadata:(NSData *)arg2 clientModelId:(NSString *)arg3 completion:(void (^)(NSError *))arg4;

@@ -6,9 +6,11 @@
 
 #import <UIKit/UIView.h>
 
+#import <HomeUI/HUActsAsLabel-Protocol.h>
+
 @class NSArray, NSAttributedString, NSString, UIColor, UIFont, UILabel, UILayoutGuide, _UILegibilitySettings, _UILegibilityView;
 
-@interface HULegibilityLabel : UIView
+@interface HULegibilityLabel : UIView <HUActsAsLabel>
 {
     UILabel *_lookasideLabel;
     _UILegibilityView *_legibilityView;

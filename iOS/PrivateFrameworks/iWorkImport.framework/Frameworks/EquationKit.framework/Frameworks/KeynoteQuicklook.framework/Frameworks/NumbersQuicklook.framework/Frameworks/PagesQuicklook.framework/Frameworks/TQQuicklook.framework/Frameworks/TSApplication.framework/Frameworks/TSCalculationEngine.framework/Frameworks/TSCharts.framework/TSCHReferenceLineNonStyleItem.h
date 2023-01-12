@@ -10,15 +10,15 @@
 
 @interface TSCHReferenceLineNonStyleItem : NSObject
 {
-    TSCHReferenceLineNonStyle *mNonStyle;
-    NSUUID *mUUID;
+    TSCHReferenceLineNonStyle *_nonStyle;
+    NSUUID *_UUID;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) TSCHReferenceLineNonStyle *nonStyle; // @synthesize nonStyle=mNonStyle;
-@property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=mUUID;
-- (void)saveToArchiver:(id)arg1 message:(struct ChartReferenceLineNonStyleItem *)arg2;
-- (id)initFromUnarchiver:(id)arg1 message:(const struct ChartReferenceLineNonStyleItem *)arg2;
+@property(retain, nonatomic) TSCHReferenceLineNonStyle *nonStyle; // @synthesize nonStyle=_nonStyle;
+@property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_UUID;
+- (void)saveToArchiver:(id)arg1 message:(void *)arg2;
+- (id)initFromUnarchiver:(id)arg1 message:(const void *)arg2;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)description;

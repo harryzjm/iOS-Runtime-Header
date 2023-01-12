@@ -9,7 +9,7 @@
 #import <UserNotificationsUIKit/MTMaterialGrouping-Protocol.h>
 #import <UserNotificationsUIKit/PLContentSizeCategoryAdjusting-Protocol.h>
 
-@class NCNotificationListCellActionButton, NSString, UIStackView, _UIStatesFeedbackGenerator;
+@class NCNotificationListCellActionButton, NSArray, NSString, UIStackView, _UIStatesFeedbackGenerator;
 
 @interface NCNotificationListCellActionButtonsView : UIView <PLContentSizeCategoryAdjusting, MTMaterialGrouping>
 {
@@ -17,6 +17,7 @@
     _Bool _highlightDefaultActionButton;
     _Bool _didPlayHaptic;
     NSString *_materialGroupNameBase;
+    NSArray *_actions;
     double _stretchedWidth;
     double _defaultWidth;
     long long _backgroundMaterialRecipe;
@@ -26,8 +27,6 @@
     _UIStatesFeedbackGenerator *_defaultActionFeedbackGenerator;
 }
 
-+ (id)_openButtonDescriptionForNotificationRequest:(id)arg1 cell:(id)arg2;
-+ (id)_actionButtonDescriptionsForNotificationRequest:(id)arg1 sectionSettings:(id)arg2 cell:(id)arg3;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool didPlayHaptic; // @synthesize didPlayHaptic=_didPlayHaptic;
 @property(retain, nonatomic) _UIStatesFeedbackGenerator *defaultActionFeedbackGenerator; // @synthesize defaultActionFeedbackGenerator=_defaultActionFeedbackGenerator;
@@ -38,6 +37,7 @@
 @property(readonly, nonatomic) double defaultWidth; // @synthesize defaultWidth=_defaultWidth;
 @property(nonatomic) double stretchedWidth; // @synthesize stretchedWidth=_stretchedWidth;
 @property(nonatomic) _Bool highlightDefaultActionButton; // @synthesize highlightDefaultActionButton=_highlightDefaultActionButton;
+@property(copy, nonatomic) NSArray *actions; // @synthesize actions=_actions;
 @property(copy, nonatomic) NSString *materialGroupNameBase; // @synthesize materialGroupNameBase=_materialGroupNameBase;
 @property(nonatomic) _Bool adjustsFontForContentSizeCategory; // @synthesize adjustsFontForContentSizeCategory=_adjustsFontForContentSizeCategory;
 - (_Bool)adjustForContentSizeCategoryChange;
@@ -56,10 +56,9 @@
 - (void)_configureDefaultWidth;
 - (double)_maxAllowedButtonWidth;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (id)senderForActionWithIdentifier:(id)arg1;
 @property(readonly, nonatomic) _Bool shouldPerformDefaultAction;
-- (void)_configureActionButtonsForActionButtonDescriptions:(id)arg1 cell:(id)arg2;
-- (void)configureOpenActionButtonForNotificationRequest:(id)arg1 cell:(id)arg2;
-- (void)configureCellActionButtonsForNotificationRequest:(id)arg1 sectionSettings:(id)arg2 cell:(id)arg3;
+- (void)_configureActionButtonsWithActions:(id)arg1;
 - (void)layoutSubviews;
 - (void)willMoveToSuperview:(id)arg1;
 

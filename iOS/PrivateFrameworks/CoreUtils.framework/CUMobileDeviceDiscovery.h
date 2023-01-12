@@ -14,6 +14,7 @@
     _Bool _activateCalled;
     _Bool _invalidateCalled;
     CURunLoopThread *_mdRunLoopThread;
+    CUMobileDeviceDiscovery *_selfRef;
     unsigned int _changeFlags;
     unsigned int _discoveryFlags;
     NSObject<OS_dispatch_queue> *_dispatchQueue;

@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <BackBoardServices/BSProtobufSerializable-Protocol.h>
+#import <BackBoardServices/BSXPCCoding-Protocol.h>
 #import <BackBoardServices/NSCopying-Protocol.h>
 #import <BackBoardServices/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface BKSHIDEventDeferringEnvironment : NSObject <NSSecureCoding, BSProtobufSerializable, NSCopying>
+@interface BKSHIDEventDeferringEnvironment : NSObject <BSProtobufSerializable, NSSecureCoding, NSCopying, BSXPCCoding>
 {
     NSString *_identifier;
 }
@@ -27,6 +28,8 @@
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (id)initForProtobufDecoding;
+- (id)initWithXPCDictionary:(id)arg1;
+- (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -6,26 +6,26 @@
 
 @interface TSCH3DMatrixRenderProcessor
 {
-    struct StateStack<glm::detail::tmat4x4<float>, 8> mTransformStack;
-    tmat4x4_3074befe mProjection;
-    _Bool mTransformChanged;
-    _Bool mProjectionChanged;
+    struct StateStack<glm::detail::tmat4x4<float>, 8> _transformStack;
+    tmat4x4_3074befe _projection;
+    _Bool _transformChanged;
+    _Bool _projectionChanged;
 }
 
 - (id).cxx_construct;
-@property(readonly, nonatomic) _Bool projectionChanged; // @synthesize projectionChanged=mProjectionChanged;
-@property(readonly, nonatomic) _Bool transformChanged; // @synthesize transformChanged=mTransformChanged;
-- (void)projection:(tmat4x4_3074befe *)arg1;
+@property(readonly, nonatomic) _Bool projectionChanged; // @synthesize projectionChanged=_projectionChanged;
+@property(readonly, nonatomic) _Bool transformChanged; // @synthesize transformChanged=_transformChanged;
+- (void)projection:(void *)arg1;
 - (void)popMatrix;
 - (void)pushMatrix;
-- (void)translate:(tvec3_17f03ce0 *)arg1;
-- (void)scale:(tvec3_17f03ce0 *)arg1;
-- (void)multiply:(tmat4x4_3074befe *)arg1;
-- (void)replace:(tmat4x4_3074befe *)arg1;
-- (void)copyTransformInto:(tmat4x4_3074befe *)arg1;
-- (void)copyProjectionInto:(tmat4x4_3074befe *)arg1;
-@property(readonly, nonatomic) const tmat4x4_3074befe *projection;
-@property(readonly, nonatomic) const tmat4x4_3074befe *current;
+- (void)translate:(void *)arg1;
+- (void)scale:(void *)arg1;
+- (void)multiply:(void *)arg1;
+- (void)replace:(void *)arg1;
+- (void)copyTransformInto:(void *)arg1;
+- (void)copyProjectionInto:(void *)arg1;
+@property(readonly, nonatomic) const void *projection;
+@property(readonly, nonatomic) const void *current;
 - (id)normalizedViewAll;
 - (void)resetChangeFlags;
 

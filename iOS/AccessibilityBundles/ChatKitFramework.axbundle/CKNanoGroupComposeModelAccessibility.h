@@ -11,7 +11,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_axAnnotateStickerViewModels;
 - (void)_axAnnotateViewModels;
+- (void)configureStickerViewModel;
 - (void)transitionModelStateTo:(unsigned long long)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
 

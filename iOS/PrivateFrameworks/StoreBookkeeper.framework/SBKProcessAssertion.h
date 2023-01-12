@@ -20,11 +20,11 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(retain) id expirationObserver; // @synthesize expirationObserver=_expirationObserver;
-@property(readonly) unsigned long long identifier; // @synthesize identifier=_identifier;
+@property(retain, nonatomic) id expirationObserver; // @synthesize expirationObserver=_expirationObserver;
+@property(readonly, nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
 - (void)invalidate;
 - (void)_expireBackgroundTask;
-@property(retain) BKSProcessAssertion *bkProcessAssertion; // @synthesize bkProcessAssertion=_bkProcessAssertion;
+@property(retain, nonatomic) BKSProcessAssertion *bkProcessAssertion; // @synthesize bkProcessAssertion=_bkProcessAssertion;
 - (void)_onQueueSetBkProcessAssertion:(id)arg1;
 - (void)dealloc;
 - (id)description;

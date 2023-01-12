@@ -8,8 +8,12 @@ __attribute__((visibility("hidden")))
 @interface MTLComputePipelineDescriptorInternal
 {
     struct MTLComputePipelineDescriptorPrivate _private;
+    struct FlatBufferBuilder _builder;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
+- (const void *)getPipelineScript;
 - (id)newSerializedComputeDataWithFlags:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (id)newSerializedComputeData;
 - (void)validateWithDevice:(id)arg1;
@@ -46,14 +50,14 @@ __attribute__((visibility("hidden")))
 - (id)dynamicLibraries;
 - (void)setInsertLibraries:(id)arg1;
 - (id)insertLibraries;
+- (void)setPreloadedLibraries:(id)arg1;
+- (id)preloadedLibraries;
 - (void)setBinaryLibraries:(id)arg1;
 - (id)binaryLibraries;
 - (void)setBinaryArchives:(id)arg1;
 - (id)binaryArchives;
 - (void)setMaxCallStackDepth:(unsigned long long)arg1;
 - (unsigned long long)maxCallStackDepth;
-- (void)setMaxStackCallDepth:(unsigned long long)arg1;
-- (unsigned long long)maxStackCallDepth;
 - (void)setSupportAddingBinaryFunctions:(_Bool)arg1;
 - (_Bool)supportAddingBinaryFunctions;
 - (void)setLinkedFunctions:(id)arg1;

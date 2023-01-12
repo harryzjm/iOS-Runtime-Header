@@ -6,27 +6,35 @@
 
 #import <HomeUI/HUServiceGridItemManagerDelegate-Protocol.h>
 
-@class HFCharacteristicTriggerBuilder, NSString, UINavigationItem;
+@class HFCharacteristicEventBuilderItem, HFEventTriggerBuilder, NAFuture, NSString, UINavigationItem;
 @protocol HUTriggerEditorDelegate;
 
 @interface HUCharacteristicTriggerServicePickerContentViewController <HUServiceGridItemManagerDelegate>
 {
-    HFCharacteristicTriggerBuilder *_characteristicTriggerBuilder;
+    HFCharacteristicEventBuilderItem *_eventBuilderItem;
+    HFEventTriggerBuilder *_triggerBuilder;
     unsigned long long _mode;
     unsigned long long _source;
     UINavigationItem *_effectiveNavigationItem;
     CDUnknownBlockType _filter;
+    NAFuture *_characteristicReadFuture;
 }
 
++ (id)splitCharacteristicResults;
++ (CDUnknownBlockType)transformationSetBlock;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NAFuture *characteristicReadFuture; // @synthesize characteristicReadFuture=_characteristicReadFuture;
 @property(copy, nonatomic) CDUnknownBlockType filter; // @synthesize filter=_filter;
 @property(readonly, nonatomic) UINavigationItem *effectiveNavigationItem; // @synthesize effectiveNavigationItem=_effectiveNavigationItem;
 @property(readonly, nonatomic) unsigned long long source; // @synthesize source=_source;
 @property(readonly, nonatomic) unsigned long long mode; // @synthesize mode=_mode;
-@property(retain, nonatomic) HFCharacteristicTriggerBuilder *characteristicTriggerBuilder; // @synthesize characteristicTriggerBuilder=_characteristicTriggerBuilder;
+@property(readonly, nonatomic) HFEventTriggerBuilder *triggerBuilder; // @synthesize triggerBuilder=_triggerBuilder;
+@property(readonly, nonatomic) HFCharacteristicEventBuilderItem *eventBuilderItem; // @synthesize eventBuilderItem=_eventBuilderItem;
 - (void)_validateNextButton;
+- (void)_addTriggerValue:(id)arg1 forCharacteristics:(id)arg2;
 - (void)_addCharacteristicEventsForOtherDeviceItem:(id)arg1;
 - (void)_addCharacteristicEventsForAlarmItem:(id)arg1;
+- (id)getThresholdRangeValueForCharacteristic:(id)arg1;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (_Bool)canSelectItem:(id)arg1 indexPath:(id)arg2;
 - (void)didChangeSelection;
@@ -34,12 +42,12 @@
 - (_Bool)serviceGridItemManager:(id)arg1 shouldHideItem:(id)arg2;
 - (void)configureCell:(id)arg1 forItem:(id)arg2;
 - (id)layoutOptionsForSection:(long long)arg1;
-- (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
+- (void)itemManagerDidUpdate:(id)arg1;
 - (void)_next:(id)arg1;
 - (void)_cancel:(id)arg1;
 - (void)viewDidLoad;
 - (id)initWithServiceGridItemManager:(id)arg1;
-- (id)initWithCharacteristicTriggerBuilder:(id)arg1 mode:(unsigned long long)arg2 source:(unsigned long long)arg3 effectiveNavigationItem:(id)arg4 delegate:(id)arg5;
+- (id)initWithTriggerBuilder:(id)arg1 eventBuilderItem:(id)arg2 mode:(unsigned long long)arg3 source:(unsigned long long)arg4 effectiveNavigationItem:(id)arg5 delegate:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

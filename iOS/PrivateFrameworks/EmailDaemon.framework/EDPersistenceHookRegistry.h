@@ -6,13 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@interface EDPersistenceHookRegistry : NSObject
+#import <EmailDaemon/EFLoggable-Protocol.h>
+
+@class NSString;
+
+@interface EDPersistenceHookRegistry : NSObject <EFLoggable>
 {
     struct os_unfair_lock_s _lock;
     struct __CFDictionary *_hookRespondersBySelector;
     struct __CFDictionary *_methodSignaturesBySelector;
 }
 
++ (id)log;
 + (id)_proxiedProtocols;
 - (void)registerProtectedDataReconciliationHookResponder:(id)arg1;
 - (void)registerActivityHookResponder:(id)arg1;
@@ -34,10 +39,16 @@
 - (void)unregisterHookResponder:(id)arg1;
 - (void)_registerHookResponder:(id)arg1 protocol:(id)arg2;
 - (void)_registerHookResponder:(id)arg1 withMethodDescription:(struct objc_method_description)arg2;
-- (void)_registerSelector:(SEL)arg1 types:(const char *)arg2;
+- (void)_registerSelector:(struct objc_method_description)arg1;
 - (void)_initializeMethodSignatures;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

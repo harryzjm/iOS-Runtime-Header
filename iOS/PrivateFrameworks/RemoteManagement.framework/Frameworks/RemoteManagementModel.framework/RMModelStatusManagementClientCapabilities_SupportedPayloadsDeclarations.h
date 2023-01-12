@@ -11,12 +11,14 @@
     NSArray *_statusActivations;
     NSArray *_statusAssets;
     NSArray *_statusConfigurations;
+    NSArray *_statusManagement;
 }
 
 + (id)buildRequiredOnly;
-+ (id)buildWithActivations:(id)arg1 assets:(id)arg2 configurations:(id)arg3;
++ (id)buildWithActivations:(id)arg1 assets:(id)arg2 configurations:(id)arg3 management:(id)arg4;
 + (id)allowedStatusKeys;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *statusManagement; // @synthesize statusManagement=_statusManagement;
 @property(copy, nonatomic) NSArray *statusConfigurations; // @synthesize statusConfigurations=_statusConfigurations;
 @property(copy, nonatomic) NSArray *statusAssets; // @synthesize statusAssets=_statusAssets;
 @property(copy, nonatomic) NSArray *statusActivations; // @synthesize statusActivations=_statusActivations;

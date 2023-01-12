@@ -6,11 +6,22 @@
 
 #import <MediaPlayer/MPRemoteCommandCenter.h>
 
-@class MPRemoteCommand;
+#import <MediaPlaybackCore/MPCPlaybackEngineEventStreamInitializationParameters-Protocol.h>
 
-@interface MPRemoteCommandCenter (MPCCustomCommands)
+@class MPCDebugCommand, MPRemoteCommand, NSString;
+
+@interface MPRemoteCommandCenter (MPCCustomCommands) <MPCPlaybackEngineEventStreamInitializationParameters>
+@property(readonly, nonatomic) MPCDebugCommand *debugCommand;
+@property(readonly, nonatomic) MPRemoteCommand *shareQueueCommand;
 @property(readonly, nonatomic) MPRemoteCommand *clearUpNextQueueCommand;
 @property(readonly, nonatomic) MPRemoteCommand *disableQueueModificationsCommand;
-@property(readonly, nonatomic) MPRemoteCommand *startPictureInPictureCommand;
+@property(readonly, copy, nonatomic) NSString *originID;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly, copy, nonatomic) NSString *playerID;
+@property(readonly) Class superclass;
 @end
 

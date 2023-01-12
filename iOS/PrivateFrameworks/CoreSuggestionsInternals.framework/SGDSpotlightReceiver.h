@@ -30,7 +30,9 @@
 - (void)deleteSearchableItemsWithDomainIdentifiers:(id)arg1 bundleID:(id)arg2;
 - (void)deleteSearchableItemsWithIdentifiers:(id)arg1 bundleID:(id)arg2;
 - (void)purgeSearchableItemsWithIdentifiers:(id)arg1 bundleID:(id)arg2;
+- (void)_handleSocialHighlightsSafariDeletion;
 - (void)addUserAction:(id)arg1 withItem:(id)arg2;
+- (void)_addSearchableItem:(id)arg1 bundleID:(id)arg2;
 - (void)addOrUpdateSearchableItems:(id)arg1 bundleID:(id)arg2;
 - (id)initWithManager:(id)arg1;
 - (id)init;

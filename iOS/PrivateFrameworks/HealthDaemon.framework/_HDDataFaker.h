@@ -19,12 +19,10 @@
     NSArray *_modules;
 }
 
-+ (_Bool)_isSupportedActivityType:(long long)arg1;
 - (void).cxx_destruct;
 - (void)demoDataModule:(id)arg1 didProduceDataObject:(id)arg2;
 @property(readonly, nonatomic) HKQuantity *speed;
 @property(readonly, nonatomic) long long activityType;
-- (id)_generateSamplesForPeriodIncludeLessFrequentSamples:(_Bool)arg1;
 - (void)generateDataForMinutes:(double)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)stop;
 - (void)start;

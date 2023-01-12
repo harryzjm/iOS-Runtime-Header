@@ -6,7 +6,7 @@
 
 #import <MusicLibrary/NSObject-Protocol.h>
 
-@class ML3DatabaseImport, NSArray, NSDictionary, NSString, NSUUID;
+@class ML3DatabaseImport, MLTransactionContext, NSArray, NSDictionary, NSString, NSUUID;
 
 @protocol MLMediaLibraryServiceProtocol <NSObject>
 - (void)getClientImportServiceListenerEndpointWithCompletion:(void (^)(NSXPCListenerEndpoint *, NSError *))arg1;
@@ -25,6 +25,7 @@
 - (void)executeQuery:(NSString *)arg1 withParameters:(NSArray *)arg2 options:(NSDictionary *)arg3 onTransaction:(NSUUID *)arg4 withCompletionHandler:(void (^)(NSData *, NSError *))arg5;
 - (void)executeUpdate:(NSString *)arg1 withParameters:(NSArray *)arg2 onTransaction:(NSUUID *)arg3 withCompletionHandler:(void (^)(_Bool, NSError *))arg4;
 - (void)beginTransactionForDatabaseAtPath:(NSString *)arg1 withPriorityLevel:(unsigned long long)arg2 options:(unsigned long long)arg3 completionHandler:(void (^)(NSUUID *, NSError *))arg4;
+- (void)beginTransactionForDatabaseWithContext:(MLTransactionContext *)arg1 completionHandler:(void (^)(NSUUID *, NSError *))arg2;
 - (void)recreateDatabaseAtPath:(NSString *)arg1 withCompletionHandler:(void (^)(_Bool, NSError *))arg2;
 - (void)performDiagnosticWithCompletionHandler:(void (^)(NSString *, NSError *))arg1;
 - (void)checkIntegrityOfDatabaseAtPath:(NSString *)arg1 repairFaults:(_Bool)arg2 withCompletionHandler:(void (^)(_Bool, NSError *))arg3;

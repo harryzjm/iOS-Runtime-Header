@@ -17,10 +17,10 @@
 
 + (id)deleteActionWithName:(id)arg1;
 + (id)actionWithName:(id)arg1 selector:(SEL)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool destructive; // @synthesize destructive=_destructive;
 @property(nonatomic) SEL selector; // @synthesize selector=_selector;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (void)dealloc;
 
 @end
 

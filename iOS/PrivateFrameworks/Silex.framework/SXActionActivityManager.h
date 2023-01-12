@@ -18,7 +18,9 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableDictionary *activityProviders; // @synthesize activityProviders=_activityProviders;
 - (id)activityProviderForAction:(id)arg1;
+- (id)previewActivityForAction:(id)arg1 sourceView:(id)arg2 sourceRect:(struct CGRect)arg3;
 - (id)previewActivityForAction:(id)arg1;
+- (id)activityGroupForAction:(id)arg1 sourceView:(id)arg2 sourceRect:(struct CGRect)arg3;
 - (id)activityGroupForAction:(id)arg1;
 - (void)registerActionActivityProvider:(id)arg1 actionType:(id)arg2;
 - (id)init;

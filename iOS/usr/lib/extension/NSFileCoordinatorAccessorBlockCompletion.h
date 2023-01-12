@@ -6,8 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <Foundation/NSFileCoordinationRetainedAccess-Protocol.h>
+
+@class NSString;
+
 __attribute__((visibility("hidden")))
-@interface NSFileCoordinatorAccessorBlockCompletion : NSObject
+@interface NSFileCoordinatorAccessorBlockCompletion : NSObject <NSFileCoordinationRetainedAccess>
 {
     CDUnknownBlockType block;
     _Atomic int count;
@@ -17,6 +21,12 @@ __attribute__((visibility("hidden")))
 - (void)decrement;
 - (void)increment;
 - (void)dealloc;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

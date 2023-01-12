@@ -11,6 +11,7 @@
 @class NSLayoutDimension, NSLayoutXAxisAnchor, NSLayoutYAxisAnchor, NSString;
 
 @interface UIView (AVAdditions) <AVKitLayoutItem>
+- (struct CGRect)avkit_portionOfFrameUnobscuredBySuperviews;
 - (void)avkit_sizeWasInvalidatedNeedingLayoutIfNeeded:(id)arg1;
 - (void)avkit_reevaluateHiddenStateOfItem:(id)arg1;
 - (struct CGRect)avkit_largestInscribedRectInBoundingPathWithCenter:(struct CGPoint)arg1 aspectRatio:(double)arg2;

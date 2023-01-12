@@ -10,6 +10,15 @@
 {
 }
 
++ (id)_loggableUnknownTokenSequence:(id)arg1 withMask:(id)arg2;
++ (id)_loggableTitleSequence:(id)arg1 withMask:(id)arg2;
++ (id)_boolMaskVectorForTokens:(id)arg1;
++ (id)_tokenizeTitle:(id)arg1;
++ (void)logUserCreatedReminderTitle:(id)arg1;
++ (void)logReminderTitle:(id)arg1 actionType:(unsigned short)arg2;
++ (void)_logReminderTitleUnknownTokens:(id)arg1 recorderKey:(id)arg2;
++ (void)_logReminderTitleSequence:(id)arg1 recorderKey:(id)arg2;
++ (void)logActionVerb:(id)arg1 actionType:(unsigned short)arg2;
 + (void)logReminder:(id)arg1 actionType:(unsigned short)arg2;
 
 @end

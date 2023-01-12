@@ -11,12 +11,15 @@
 @interface ICWindow : UIWindow
 {
     NSString *_windowIdentifier;
+    NSString *_toolPickerIdentifier;
     ICViewControllerManager *_viewControllerManager;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) ICViewControllerManager *viewControllerManager; // @synthesize viewControllerManager=_viewControllerManager;
+@property(retain, nonatomic) NSString *toolPickerIdentifier; // @synthesize toolPickerIdentifier=_toolPickerIdentifier;
 @property(retain, nonatomic) NSString *windowIdentifier; // @synthesize windowIdentifier=_windowIdentifier;
+- (_Bool)accessibilityElementsHidden;
 - (id)ic_viewControllerManager;
 - (id)initWithWindowScene:(id)arg1;
 

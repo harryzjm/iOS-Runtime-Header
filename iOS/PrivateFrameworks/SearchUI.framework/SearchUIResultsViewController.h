@@ -11,8 +11,8 @@
 #import <SearchUI/SearchUITableViewTesting-Protocol.h>
 #import <SearchUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSArray, NSString, SearchUIBackgroundView, SearchUIResultsTableViewController, UIResponder, UISearchTextField, UIView;
-@protocol SFFeedbackListener, SearchUIResultsViewDelegate;
+@class NSArray, NSString, SearchUIBackgroundView, UIResponder, UISearchTextField, UIView;
+@protocol SFFeedbackListener, SearchUICommandDelegate, SearchUIResultsTableBridgingProtocol, SearchUIResultsViewDelegate;
 
 @interface SearchUIResultsViewController : UIViewController <UIGestureRecognizerDelegate, SearchUIKeyboardableTableViewDelegate, SearchUISizingDelegate, SearchUITableViewTesting>
 {
@@ -23,7 +23,7 @@
     CDUnknownBlockType cellWillDisplayHandler;
     NSArray *_sections;
     unsigned long long _style;
-    SearchUIResultsTableViewController *_resultsTableViewController;
+    UIViewController<SearchUIResultsTableBridgingProtocol> *_resultsTableViewController;
     NSString *_previousSearchString;
     id <SearchUIResultsViewDelegate> _delegate;
 }
@@ -32,13 +32,15 @@
 @property(nonatomic) _Bool shouldMonitorScrollingPastBottomOfContent; // @synthesize shouldMonitorScrollingPastBottomOfContent=_shouldMonitorScrollingPastBottomOfContent;
 @property(nonatomic) __weak id <SearchUIResultsViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) NSString *previousSearchString; // @synthesize previousSearchString=_previousSearchString;
-@property(retain, nonatomic) SearchUIResultsTableViewController *resultsTableViewController; // @synthesize resultsTableViewController=_resultsTableViewController;
+@property(retain, nonatomic) UIViewController<SearchUIResultsTableBridgingProtocol> *resultsTableViewController; // @synthesize resultsTableViewController=_resultsTableViewController;
 @property(nonatomic) unsigned long long style; // @synthesize style=_style;
 @property(retain, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 @property(nonatomic) _Bool immediatelyShowCardForSingleResult; // @synthesize immediatelyShowCardForSingleResult=_immediatelyShowCardForSingleResult;
 @property(copy, nonatomic) CDUnknownBlockType cellWillDisplayHandler; // @synthesize cellWillDisplayHandler;
 @property(copy, nonatomic) CDUnknownBlockType tableViewDidUpdateHandler; // @synthesize tableViewDidUpdateHandler;
 @property(copy, nonatomic) CDUnknownBlockType tableViewWillUpdateHandler; // @synthesize tableViewWillUpdateHandler;
+- (void)willDismiss;
+- (void)didPresentToResumeSearch:(_Bool)arg1;
 - (_Bool)_canShowWhileLocked;
 - (void)performReturnKeyPressAction;
 - (void)purgeMemory;
@@ -63,6 +65,7 @@
 @property(nonatomic) _Bool showsVerticalScrollIndicator;
 @property(nonatomic) _Bool shouldUseInsetRoundedSections;
 @property(nonatomic) _Bool shouldHideResultsUnderKeyboard;
+@property(nonatomic) __weak id <SearchUICommandDelegate> commandDelegate;
 @property(nonatomic) __weak id <SFFeedbackListener> feedbackListener;
 @property(retain, nonatomic) UISearchTextField *searchField;
 - (void)didTap;
@@ -72,6 +75,7 @@
 - (void)replaceResult:(id)arg1 withResult:(id)arg2;
 @property(retain, nonatomic) UIView *footerView;
 @property(nonatomic) _Bool shortenTopFloatingHeader;
+- (void)didUpdateKeyboardFocusToResult:(id)arg1 cardSection:(id)arg2;
 - (void)didFocusOnCell:(id)arg1;
 - (void)didBeginScrolling;
 - (void)didScrollPastBottomOfContent;

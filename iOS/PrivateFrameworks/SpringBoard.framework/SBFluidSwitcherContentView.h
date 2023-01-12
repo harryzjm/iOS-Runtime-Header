@@ -6,13 +6,32 @@
 
 #import <UIKit/UIView.h>
 
-@interface SBFluidSwitcherContentView : UIView
+#import <SpringBoard/UIFocusItemScrollableContainer-Protocol.h>
+
+@class NSString;
+@protocol SBFluidSwitcherContentViewDelegate, UICoordinateSpace;
+
+@interface SBFluidSwitcherContentView : UIView <UIFocusItemScrollableContainer>
 {
     _Bool _passesTouchesThrough;
+    id <SBFluidSwitcherContentViewDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) __weak id <SBFluidSwitcherContentViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool passesTouchesThrough; // @synthesize passesTouchesThrough=_passesTouchesThrough;
+- (id)preferredFocusEnvironments;
+@property(readonly, nonatomic) struct CGSize visibleSize;
+@property(readonly, nonatomic) struct CGSize contentSize;
+@property(nonatomic) struct CGPoint contentOffset;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+
+// Remaining properties
+@property(readonly, nonatomic) id <UICoordinateSpace> coordinateSpace;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

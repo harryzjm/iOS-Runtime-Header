@@ -9,11 +9,12 @@
 #import <HealthDaemon/HDDecoding-Protocol.h>
 #import <HealthDaemon/NSCopying-Protocol.h>
 
-@class HDCodableCoverageClassificationList, HDCodableMedicalCoding, HDCodableMedicalCodingList, HDCodableMedicalRecord, HDCodableStringList, NSData, NSString;
+@class HDCodableCoverageClassificationList, HDCodableFHIRIdentifierElement, HDCodableMedicalCoding, HDCodableMedicalCodingList, HDCodableMedicalRecord, HDCodableStringList, NSData, NSString;
 
 @interface HDCodableCoverageRecord : PBCodable <HDDecoding, NSCopying>
 {
     NSString *_beneficiary;
+    HDCodableFHIRIdentifierElement *_beneficiaryIdentifier;
     HDCodableCoverageClassificationList *_classification;
     HDCodableMedicalCodingList *_coverageTypeCodingCollection;
     HDCodableMedicalRecord *_medicalRecord;
@@ -26,9 +27,12 @@
     HDCodableMedicalCoding *_statusCoding;
     NSString *_subscriber;
     NSString *_subscriberId;
+    HDCodableFHIRIdentifierElement *_subscriberIdentifier;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) HDCodableFHIRIdentifierElement *beneficiaryIdentifier; // @synthesize beneficiaryIdentifier=_beneficiaryIdentifier;
+@property(retain, nonatomic) HDCodableFHIRIdentifierElement *subscriberIdentifier; // @synthesize subscriberIdentifier=_subscriberIdentifier;
 @property(retain, nonatomic) NSData *periodEndDate; // @synthesize periodEndDate=_periodEndDate;
 @property(retain, nonatomic) NSData *periodStartDate; // @synthesize periodStartDate=_periodStartDate;
 @property(retain, nonatomic) NSString *network; // @synthesize network=_network;
@@ -51,6 +55,8 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) _Bool hasBeneficiaryIdentifier;
+@property(readonly, nonatomic) _Bool hasSubscriberIdentifier;
 @property(readonly, nonatomic) _Bool hasPeriodEndDate;
 @property(readonly, nonatomic) _Bool hasPeriodStartDate;
 @property(readonly, nonatomic) _Bool hasNetwork;

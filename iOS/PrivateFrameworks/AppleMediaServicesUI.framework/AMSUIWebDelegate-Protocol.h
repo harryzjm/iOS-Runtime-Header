@@ -13,6 +13,7 @@
 @optional
 - (void)webViewController:(AMSUIWebViewController *)arg1 didFinishPurchaseWithResult:(AMSPurchaseResult *)arg2 error:(NSError *)arg3;
 - (void)webViewController:(AMSUIWebViewController *)arg1 didEncodeNetworkRequest:(NSMutableURLRequest *)arg2;
+- (void)webViewController:(AMSUIWebViewController *)arg1 didResolveWithResult:(NSDictionary *)arg2 error:(NSError *)arg3 completion:(void (^)(id, NSError *))arg4;
 - (void)webViewController:(AMSUIWebViewController *)arg1 handleDialogRequest:(AMSDialogRequest *)arg2 completion:(void (^)(AMSDialogResult *, NSError *))arg3;
 - (_Bool)webViewController:(AMSUIWebViewController *)arg1 handleDelegateAction:(NSDictionary *)arg2 completion:(void (^)(id, NSError *))arg3;
 - (void)webViewController:(AMSUIWebViewController *)arg1 handleAuthenticateRequest:(AMSAuthenticateRequest *)arg2 completion:(void (^)(AMSAuthenticateResult *, NSError *))arg3;

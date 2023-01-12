@@ -48,9 +48,6 @@
 - (void)calendarmigrator;
 - (void)appleaccountmigrator;
 - (void)appleaccountmergebuddyprovisioningresponsemigrator;
-- (void)appleaccountmergeandremovemobilemeaccountsmigrator;
-- (void)appleaccountlegacymigrator;
-- (void)appleaccountappleidaccountmigrator;
 - (void)airtrafficmigrator;
 - (void)addressbookmigrator;
 - (void)accountsobsolescencemigrator;
@@ -58,7 +55,6 @@
 - (void)accountsettingsmigrator;
 - (void)WiFiDataMigrator;
 - (void)WebBookmarksmigrator;
-- (void)Weather;
 - (void)VoiceShortcutsShortcutsMigrator;
 - (void)VideosMigrator;
 - (void)StocksMigrator;
@@ -78,7 +74,6 @@
 - (void)MSUDataMigrator;
 - (void)MKBMigrator;
 - (void)LaunchServicesMigrator;
-- (void)HomeKitMigrator;
 - (void)HealthMigrator;
 - (void)CookieDataMigratormigrator;
 - (void)CommCenterMigrator;

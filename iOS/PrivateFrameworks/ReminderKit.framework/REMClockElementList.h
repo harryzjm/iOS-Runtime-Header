@@ -17,8 +17,8 @@
 + (_Bool)list:(id)arg1 isCompatibleToList:(id)arg2;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *elements; // @synthesize elements=_elements;
-- (id)initWithEntryArchive:(const struct ReplicaEntry *)arg1;
-- (void)encodeIntoEntryArchive:(struct ReplicaEntry *)arg1;
+- (id)initWithEntryArchive:(const void *)arg1;
+- (void)encodeIntoEntryArchive:(void *)arg1;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithTTVectorTimestampElements:(id)arg1;

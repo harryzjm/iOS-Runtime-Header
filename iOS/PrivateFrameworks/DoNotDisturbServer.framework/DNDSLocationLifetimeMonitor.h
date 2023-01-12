@@ -7,38 +7,40 @@
 #import <objc/NSObject.h>
 
 #import <DoNotDisturbServer/CLLocationManagerDelegate-Protocol.h>
+#import <DoNotDisturbServer/DNDSAggregateLocationLifetimeMonitor-Protocol.h>
 #import <DoNotDisturbServer/DNDSLifetimeMonitor-Protocol.h>
+#import <DoNotDisturbServer/DNDSMeDeviceServiceListener-Protocol.h>
 
-@class CLLocationManager, CLRegion, NSArray, NSString;
-@protocol DNDSLifetimeMonitorDataSource, DNDSLifetimeMonitorDelegate, OS_dispatch_queue;
+@class CLLocationManager, DNDSExplicitRegionLocationLifetimeMonitor, DNDSMeDeviceService, DNDSUntilExitLocationLifetimeMonitor, NSArray, NSString;
+@protocol DNDSLifetimeMonitorDelegate, DNDSLocationLifetimeMonitorDataSource, OS_dispatch_queue;
 
-@interface DNDSLocationLifetimeMonitor : NSObject <CLLocationManagerDelegate, DNDSLifetimeMonitor>
+@interface DNDSLocationLifetimeMonitor : NSObject <CLLocationManagerDelegate, DNDSAggregateLocationLifetimeMonitor, DNDSMeDeviceServiceListener, DNDSLifetimeMonitor>
 {
     NSObject<OS_dispatch_queue> *_queue;
     CLLocationManager *_locationManager;
-    CLRegion *_currentRegion;
-    _Bool _regionEntered;
-    _Bool _hasActiveLifetimes;
-    NSArray *_activeLifetimeAssertionUUIDs;
-    id <DNDSLifetimeMonitorDataSource> _dataSource;
+    DNDSMeDeviceService *_meDeviceService;
+    DNDSUntilExitLocationLifetimeMonitor *_untilExitMonitor;
+    DNDSExplicitRegionLocationLifetimeMonitor *_explicitRegionMonitor;
+    NSArray *_children;
+    id <DNDSLocationLifetimeMonitorDataSource> _dataSource;
     id <DNDSLifetimeMonitorDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) CLLocationManager *locationManager; // @synthesize locationManager=_locationManager;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(nonatomic) __weak id <DNDSLifetimeMonitorDelegate> delegate; // @synthesize delegate=_delegate;
-@property(nonatomic) __weak id <DNDSLifetimeMonitorDataSource> dataSource; // @synthesize dataSource=_dataSource;
-@property(readonly, copy, nonatomic) NSArray *activeLifetimeAssertionUUIDs; // @synthesize activeLifetimeAssertionUUIDs=_activeLifetimeAssertionUUIDs;
-- (void)_queue_sendExpiryEventForAllLocationAssertions;
-- (void)_queue_geofenceLocation:(id)arg1;
-- (void)_queue_stopMonitoringCurrentLocation;
-- (void)_queue_beginMonitoringCurrentLocation;
-- (void)_queue_refreshMonitor;
+@property(nonatomic) __weak id <DNDSLocationLifetimeMonitorDataSource> dataSource; // @synthesize dataSource=_dataSource;
+- (void)_queue_refreshMonitorForDate:(id)arg1;
+- (void)meDeviceService:(id)arg1 didReceiveMeDeviceStateUpdate:(id)arg2;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
 - (void)locationManager:(id)arg1 didDetermineState:(long long)arg2 forRegion:(id)arg3;
 - (void)locationManager:(id)arg1 monitoringDidFailForRegion:(id)arg2 withError:(id)arg3;
+@property(readonly, nonatomic) unsigned long long availableRegions;
 - (void)refreshMonitorForDate:(id)arg1;
-- (id)init;
+@property(readonly, copy, nonatomic) NSArray *activeLifetimeAssertionUUIDs;
+- (id)initWithMeDeviceService:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

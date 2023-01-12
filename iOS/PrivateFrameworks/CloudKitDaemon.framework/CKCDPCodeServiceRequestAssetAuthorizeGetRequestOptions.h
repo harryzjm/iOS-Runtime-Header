@@ -10,7 +10,6 @@
 
 @class NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface CKCDPCodeServiceRequestAssetAuthorizeGetRequestOptions : PBCodable <NSCopying>
 {
     unsigned long long _contentRequestAuthorizeGetOptions;

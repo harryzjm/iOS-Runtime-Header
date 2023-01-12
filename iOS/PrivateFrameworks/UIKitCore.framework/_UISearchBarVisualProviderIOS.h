@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
         unsigned int reliesOnNavigationBarBackdrop:1;
         unsigned int hideBackground:1;
         unsigned int backgroundLayoutNeedsUpdate:1;
+        unsigned int isFrozenForDismissalCrossfade:1;
         unsigned int usesEmbeddedAppearance:1;
         unsigned int showsCancelButton:1;
         unsigned int autoDisableCancelButton:1;
@@ -48,6 +49,7 @@ __attribute__((visibility("hidden")))
         unsigned int showDictationButton:1;
         unsigned int allowedToShowDictationButton:1;
         unsigned int dictationButtonSetupComplete:1;
+        unsigned int hasSearchFieldContainerLayoutCustomizationDelegate:1;
     } _searchBarVisualProviderFlags;
     UIView<_UISearchBarVisualProvidingDelegate><_UINavigationBarAugmentedTitleView><UITextInputTraits_Private> *_delegate;
     UISearchBarTextField *_searchField;
@@ -126,6 +128,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UIImageView *shadowView;
 - (void)setBackgroundLayoutNeedsUpdate;
 - (void)updateBackgroundToBackdropStyle:(long long)arg1;
+@property(nonatomic) double additionalPaddingForSearchFieldAtLeadingEdge;
 @property(nonatomic) double additionalPaddingForCancelButtonAtLeadingEdge;
 - (void)setLayoutCustomizationDelegateSearchFieldContainerWillLayoutSubviewsCallback:(CDUnknownBlockType)arg1;
 - (void)setDelegateSearchFieldFrameManipulationBlock:(CDUnknownBlockType)arg1;
@@ -138,6 +141,7 @@ __attribute__((visibility("hidden")))
 - (double)effectiveBackgroundExtension;
 - (void)configureLayout:(id)arg1;
 - (void)invalidateLayout;
+@property(readonly, nonatomic, getter=isFrozenForDismissalCrossfade) _Bool frozenForDismissalCrossfade;
 - (_Bool)wouldCombineLandscapeBarsForSize:(struct CGSize)arg1;
 - (_Bool)shouldCombineLandscapeBarsForOrientation:(long long)arg1;
 - (double)availableBoundsWidthForSize:(struct CGSize)arg1;
@@ -177,6 +181,7 @@ __attribute__((visibility("hidden")))
 - (void)cancelTransitionToSearchLayoutState:(long long)arg1;
 - (void)completeTransitionToSearchLayoutState:(long long)arg1;
 - (void)animateTransitionToSearchLayoutState:(long long)arg1;
+- (void)freezeForAnimatedTransitionToSearchLayoutState:(long long)arg1;
 - (void)prepareForTransitionToSearchLayoutState:(long long)arg1;
 - (void)driveTransitionToSearchLayoutState:(long long)arg1;
 - (void)resetLayoutState;
@@ -190,6 +195,7 @@ __attribute__((visibility("hidden")))
 - (void)setShowDictationButton:(_Bool)arg1 shouldUpdateView:(_Bool)arg2;
 - (_Bool)wantsDictationButton;
 - (void)updateForAllowedToShowDictationChange;
+- (void)updateDictationButtonActiveState;
 - (_Bool)canShowDictationButton;
 - (void)setDisableDictationButton:(_Bool)arg1;
 - (void)cleanUpDictationMicsWithSearchField:(id)arg1;

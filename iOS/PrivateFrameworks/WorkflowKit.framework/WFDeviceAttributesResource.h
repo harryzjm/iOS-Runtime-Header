@@ -4,12 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSArray;
+
 @interface WFDeviceAttributesResource
 {
+    NSArray *_requiredDeviceIdioms;
+    NSArray *_requiredCapabilities;
 }
 
 + (_Bool)mustBeAvailableForDisplay;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *requiredCapabilities; // @synthesize requiredCapabilities=_requiredCapabilities;
+@property(readonly, nonatomic) NSArray *requiredDeviceIdioms; // @synthesize requiredDeviceIdioms=_requiredDeviceIdioms;
 - (void)refreshAvailability;
+- (id)initWithDefinition:(id)arg1;
 
 @end
 

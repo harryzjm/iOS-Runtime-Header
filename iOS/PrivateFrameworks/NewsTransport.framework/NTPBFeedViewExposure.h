@@ -33,6 +33,7 @@
     int _rankInToc;
     NSString *_referringSourceApplication;
     NSString *_referringUrl;
+    int _sessionEndReason;
     NSString *_sourceChannelId;
     NSString *_userActivityType;
     NSString *_viewFrameInScreen;
@@ -53,6 +54,7 @@
         unsigned int groupType:1;
         unsigned int presentationReason:1;
         unsigned int rankInToc:1;
+        unsigned int sessionEndReason:1;
         unsigned int adSupportedChannel:1;
         unsigned int cameFromGroup:1;
         unsigned int isNewUserToFeed:1;
@@ -95,6 +97,10 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsSessionEndReason:(id)arg1;
+- (id)sessionEndReasonAsString:(int)arg1;
+@property(nonatomic) _Bool hasSessionEndReason;
+@property(nonatomic) int sessionEndReason; // @synthesize sessionEndReason=_sessionEndReason;
 @property(nonatomic) _Bool hasRankInToc;
 @property(readonly, nonatomic) _Bool hasGroupViewExposureId;
 @property(nonatomic) _Bool hasPreviousArticlePublisherArticleVersion;

@@ -21,24 +21,9 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) FCThreadSafeMutableDictionary *activeDownloadsByAssetID; // @synthesize activeDownloadsByAssetID=_activeDownloadsByAssetID;
-@property(readonly, nonatomic) NFLazy *URLSession; // @synthesize URLSession=_URLSession;
-@property(readonly, nonatomic) FCAsyncOnceOperation *restoreBackgroundDownloadsOnce; // @synthesize restoreBackgroundDownloadsOnce=_restoreBackgroundDownloadsOnce;
-@property(readonly, nonatomic) id <FCAVAssetKeyCacheType> keyCache; // @synthesize keyCache=_keyCache;
-@property(readonly, nonatomic) id <FCAVAssetCacheType> assetCache; // @synthesize assetCache=_assetCache;
-- (void)_ensureAssetIsPurgeable:(id)arg1;
 - (id)_restoreBackgroundDownloadsWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (_Bool)_shouldUseAVAssetDownloadForAsset:(id)arg1;
-- (void)_callCompletionHandlersForAssetID:(id)arg1 interestToken:(id)arg2 error:(id)arg3;
-- (void)_completeRequestForAssetID:(id)arg1 withDownloadedURL:(id)arg2 remoteURL:(id)arg3 error:(id)arg4;
-- (id)_handleAssetDownloadFromNetwork:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (_Bool)_isAssetInCache:(id)arg1;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (void)URLSession:(id)arg1 assetDownloadTask:(id)arg2 didFinishDownloadingToURL:(id)arg3;
-- (id)downloadAsset:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)interestTokenForCachedAsset:(id)arg1;
-- (void)restoreBackgroundDownloadsWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)initWithAssetCache:(id)arg1 keyCache:(id)arg2;
 - (id)init;
 
 // Remaining properties

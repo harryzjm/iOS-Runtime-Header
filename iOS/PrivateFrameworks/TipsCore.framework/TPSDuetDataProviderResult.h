@@ -6,19 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSString;
+@class NSDate, NSString, _DKEvent;
 
 @interface TPSDuetDataProviderResult : NSObject
 {
-    NSString *_identifier;
-    NSDate *_startDate;
-    NSDate *_endDate;
+    _DKEvent *_event;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
-@property(retain, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
-@property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(retain, nonatomic) _DKEvent *event; // @synthesize event=_event;
+- (id)debugDescription;
+- (id)description;
+@property(readonly, nonatomic, getter=isRemoteEvent) _Bool remoteEvent; // @dynamic remoteEvent;
+@property(readonly, nonatomic) double creationDelay; // @dynamic creationDelay;
+@property(readonly, nonatomic) NSDate *localCreationDate; // @dynamic localCreationDate;
+@property(readonly, nonatomic) NSDate *creationDate; // @dynamic creationDate;
+@property(readonly, nonatomic) NSDate *endDate; // @dynamic endDate;
+@property(readonly, nonatomic) NSDate *startDate; // @dynamic startDate;
+@property(readonly, nonatomic) NSString *identifier; // @dynamic identifier;
 
 @end
 

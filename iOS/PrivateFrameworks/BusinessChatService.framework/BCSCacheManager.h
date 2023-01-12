@@ -10,23 +10,29 @@
 #import <BusinessChatService/BCSCacheClearing-Protocol.h>
 #import <BusinessChatService/BCSConfigCacheSkipping-Protocol.h>
 #import <BusinessChatService/BCSConfigCaching-Protocol.h>
+#import <BusinessChatService/BCSDomainItemCaching-Protocol.h>
 #import <BusinessChatService/BCSItemCacheSkipping-Protocol.h>
 #import <BusinessChatService/BCSItemCaching-Protocol.h>
 #import <BusinessChatService/BCSShardCacheQueryable-Protocol.h>
 #import <BusinessChatService/BCSShardCacheSkipping-Protocol.h>
 
 @class NSString;
-@protocol BCSItemCaching><BCSLinkItemCacheClearing, BCSShardCacheQueryable;
+@protocol BCSDomainItemCaching, BCSItemCaching><BCSLinkItemCacheClearing, BCSShardCacheQueryable;
 
-@interface BCSCacheManager : NSObject <BCSCacheClearing, BCSConfigCaching, BCSConfigCacheSkipping, BCSShardCacheQueryable, BCSShardCacheSkipping, BCSItemCaching, BCSItemCacheSkipping, BCSBatchable>
+@interface BCSCacheManager : NSObject <BCSCacheClearing, BCSConfigCaching, BCSConfigCacheSkipping, BCSShardCacheQueryable, BCSShardCacheSkipping, BCSItemCaching, BCSItemCacheSkipping, BCSBatchable, BCSDomainItemCaching>
 {
-    id <BCSShardCacheQueryable> _shardCache;
+    id <BCSShardCacheQueryable> _filterShardCache;
+    id <BCSDomainItemCaching> _domainItemCache;
     id <BCSItemCaching><BCSLinkItemCacheClearing> _itemCache;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) id <BCSItemCaching><BCSLinkItemCacheClearing> itemCache; // @synthesize itemCache=_itemCache;
-@property(retain, nonatomic) id <BCSShardCacheQueryable> shardCache; // @synthesize shardCache=_shardCache;
+- (void)updateDomainItemsForDomainShard:(id)arg1;
+- (void)deleteAllExpiredDomainItems;
+- (void)deleteAllDomainItems;
+- (void)deleteDomainItemMatching:(id)arg1;
+- (id)domainItemMatching:(id)arg1;
+- (void)updateDomainItem:(id)arg1 withDomainItemIdentifier:(id)arg2;
 - (void)endBatch;
 - (void)beginBatch;
 - (long long)countOfExpiredShardsOfType:(long long)arg1;
@@ -38,7 +44,6 @@
 - (id)shardItemMatching:(id)arg1;
 - (_Bool)shouldSkipCacheForShardItemOfType:(long long)arg1;
 - (void)deleteConfigItemForType:(long long)arg1;
-- (void)deleteExpiredConfigItemForType:(long long)arg1;
 - (void)updateConfigItem:(id)arg1 withType:(long long)arg2;
 - (id)configItemForType:(long long)arg1;
 - (_Bool)shouldSkipCacheForConfigItemOfType:(long long)arg1;
@@ -49,10 +54,9 @@
 - (id)itemMatching:(id)arg1;
 - (_Bool)shouldSkipCacheForItemOfType:(long long)arg1;
 - (void)clearCachesForLinkItemsAssociatedWithBundleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_clearExpiredCacheItemsForType:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)clearExpiredCachesForType:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)clearCachesForType:(long long)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)initWithShardCache:(id)arg1 itemCache:(id)arg2;
+- (id)initWithBloomFilterShardCache:(id)arg1 domainItemCache:(id)arg2 itemCache:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

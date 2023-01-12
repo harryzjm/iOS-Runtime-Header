@@ -19,14 +19,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) _UICollectionLayoutSectionGeometryTranslator *sectionGeometryTranslator; // @synthesize sectionGeometryTranslator=_sectionGeometryTranslator;
-@property(readonly, nonatomic) NSDictionary *auxillaryRangeIndexerKindDict; // @synthesize auxillaryRangeIndexerKindDict=_auxillaryRangeIndexerKindDict;
-@property(readonly, nonatomic) _UIOrderedRangeIndexer *itemRangeIndexer; // @synthesize itemRangeIndexer=_itemRangeIndexer;
-@property(readonly, nonatomic) _UIRTree *geometricIndexer; // @synthesize geometricIndexer=_geometricIndexer;
-@property(readonly, nonatomic) NSArray *bookmarks; // @synthesize bookmarks=_bookmarks;
 - (id)description;
-- (id)copyWithGeometryConverter:(id)arg1;
-- (id)initWithGeometryTranslator:(id)arg1 bookmarks:(id)arg2 geometricIndexer:(id)arg3 itemRangeIndexer:(id)arg4 auxillaryRangeIndexerDict:(id)arg5;
 
 @end
 

@@ -6,14 +6,18 @@
 
 #import <InstallCoordination/NSSecureCoding-Protocol.h>
 
-@class IXOwnedDataPromiseSeed, NSURL;
+@class IXOwnedDataPromiseSeed, NSString, NSURL;
 
 @interface IXOwnedDataPromise <NSSecureCoding>
 {
     NSURL *_stagedPath;
+    NSString *_targetLastPathComponent;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *targetLastPathComponent; // @synthesize targetLastPathComponent=_targetLastPathComponent;
+- (id)targetLastPathComponentWithError:(id *)arg1;
+- (_Bool)setTargetLastPathComponent:(id)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) NSURL *stagingBaseDir; // @dynamic stagingBaseDir;
 - (Class)seedClass;
 @property(retain, nonatomic) NSURL *stagedPath; // @synthesize stagedPath=_stagedPath;

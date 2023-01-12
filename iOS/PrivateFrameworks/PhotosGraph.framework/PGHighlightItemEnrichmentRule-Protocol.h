@@ -6,16 +6,17 @@
 
 #import <PhotosGraph/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, PGHighlightItemList, PGManager, PHAsset;
+@class NSArray, NSDictionary, NSObject, PGGraph, PGHighlightItemList, PGNeighborScoreComputer, PHAsset;
+@protocol OS_os_log;
 
 @protocol PGHighlightItemEnrichmentRule <NSObject>
-@property(readonly, nonatomic) PGManager *manager;
-- (void)enumerateChildVisibilityStateForHighlightItemList:(PGHighlightItemList *)arg1 withBlock:(void (^)(id <PGHighlightItem>, unsigned short))arg2;
+@property(readonly, nonatomic) NSObject<OS_os_log> *loggingConnection;
+- (void)enumerateChildVisibilityStateForHighlightItemList:(PGHighlightItemList *)arg1 withGraph:(PGGraph *)arg2 neighborScoreComputer:(PGNeighborScoreComputer *)arg3 usingBlock:(void (^)(id <PGHighlightItem>, unsigned short))arg4;
 - (NSArray *)curatedAssetsForHighlightItemList:(PGHighlightItemList *)arg1 contextualKeyAssetByHighlighItemUUID:(NSDictionary *)arg2;
 - (PHAsset *)keyAssetForHighlightItemList:(PGHighlightItemList *)arg1 contextualKeyAssetByHighlighItemUUID:(NSDictionary *)arg2;
 - (double)promotionScoreForHighlightItemList:(PGHighlightItemList *)arg1;
 
 @optional
-- (void)enumerateChildVisibilityStateForHighlightItemList:(PGHighlightItemList *)arg1 withBlock:(void (^)(id <PGHighlightItem>, unsigned short))arg2 maximumNumberOfVisibleItems:(unsigned long long)arg3 maximumNumberOfVisibleRegularItems:(unsigned long long)arg4;
+- (void)enumerateChildVisibilityStateForHighlightItemList:(PGHighlightItemList *)arg1 withGraph:(PGGraph *)arg2 neighborScoreComputer:(PGNeighborScoreComputer *)arg3 usingBlock:(void (^)(id <PGHighlightItem>, unsigned short))arg4 maximumNumberOfVisibleItems:(unsigned long long)arg5 maximumNumberOfVisibleRegularItems:(unsigned long long)arg6;
 @end
 

@@ -10,7 +10,7 @@
 #import <UIKitCore/NSCopying-Protocol.h>
 #import <UIKitCore/NSMutableCopying-Protocol.h>
 
-@class BSMutableSettings, NSDictionary, NSSet, NSString, UIColor, UIMutableTransformer, UITransformer;
+@class BSMutableSettings, NSDictionary, NSSet, NSString, UIColor, UIMutableTransformer, UISceneAsynchronousRenderingOptions, UITransformer;
 
 @interface UIScenePresentationContext : NSObject <BSDescriptionProviding, NSCopying, NSMutableCopying>
 {
@@ -34,6 +34,7 @@
 @property(readonly, copy, nonatomic) NSSet *_layerTargetsToExclude;
 @property(readonly, copy, nonatomic) NSSet *_exclusiveLayerTargetsToInclude;
 @property(readonly, copy, nonatomic) NSString *_minificationFilterName;
+@property(readonly, copy, nonatomic) UISceneAsynchronousRenderingOptions *asynchronousRenderingOptions;
 @property(readonly, nonatomic) unsigned long long renderingMode;
 @property(readonly, copy, nonatomic) UITransformer *hostTransformer;
 @property(readonly, copy, nonatomic) UIColor *backgroundColorWhileNotHosting;

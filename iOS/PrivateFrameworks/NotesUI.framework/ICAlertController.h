@@ -11,6 +11,7 @@
 @interface ICAlertController : UIAlertController
 {
     _Bool _didPerformAction;
+    _Bool _shouldDismissWhenShowingNote;
     _Bool _didDismissWithDismissWithoutActionBlock;
     CDUnknownBlockType _dismissWithoutActionBlock;
     UIAlertAction *_dismissAction;
@@ -18,12 +19,16 @@
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool didDismissWithDismissWithoutActionBlock; // @synthesize didDismissWithDismissWithoutActionBlock=_didDismissWithDismissWithoutActionBlock;
+@property(nonatomic) _Bool shouldDismissWhenShowingNote; // @synthesize shouldDismissWhenShowingNote=_shouldDismissWhenShowingNote;
 @property(retain, nonatomic) UIAlertAction *dismissAction; // @synthesize dismissAction=_dismissAction;
 @property(copy, nonatomic) CDUnknownBlockType dismissWithoutActionBlock; // @synthesize dismissWithoutActionBlock=_dismissWithoutActionBlock;
 @property(nonatomic) _Bool didPerformAction; // @synthesize didPerformAction=_didPerformAction;
 - (_Bool)_canShowWhileLocked;
 - (void)dismissWhenPossible;
 - (void)dealloc;
+- (void)commonInit;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 
 @end
 

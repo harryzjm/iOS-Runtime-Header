@@ -14,8 +14,10 @@
 {
     PBDataReader *_reader;
     double _completionTimeStamp;
+    NSData *_etaTrafficUpdateResponseId;
     GEOEVStepFeedbackInfo *_evStepInfo;
     NSData *_routeID;
+    double _stepEndPathPointOffset;
     NSData *_stepZilch;
     NSData *_tripID;
     unsigned int _readerMarkPos;
@@ -25,6 +27,7 @@
     int _maneuverType;
     unsigned int _routeIndex;
     unsigned int _stepID;
+    int _stepEndPathPointIndex;
     unsigned int _waypointRouteID;
     _Bool _completedStep;
     _Bool _lightGuidance;
@@ -32,15 +35,18 @@
     _Bool _routeResumed;
     struct {
         unsigned int has_completionTimeStamp:1;
+        unsigned int has_stepEndPathPointOffset:1;
         unsigned int has_expectedTime:1;
         unsigned int has_maneuverType:1;
         unsigned int has_routeIndex:1;
         unsigned int has_stepID:1;
+        unsigned int has_stepEndPathPointIndex:1;
         unsigned int has_waypointRouteID:1;
         unsigned int has_completedStep:1;
         unsigned int has_lightGuidance:1;
         unsigned int has_routePaused:1;
         unsigned int has_routeResumed:1;
+        unsigned int read_etaTrafficUpdateResponseId:1;
         unsigned int read_evStepInfo:1;
         unsigned int read_routeID:1;
         unsigned int read_stepZilch:1;
@@ -64,6 +70,12 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) NSData *etaTrafficUpdateResponseId;
+@property(readonly, nonatomic) _Bool hasEtaTrafficUpdateResponseId;
+@property(nonatomic) _Bool hasStepEndPathPointOffset;
+@property(nonatomic) double stepEndPathPointOffset;
+@property(nonatomic) _Bool hasStepEndPathPointIndex;
+@property(nonatomic) int stepEndPathPointIndex;
 @property(retain, nonatomic) NSData *stepZilch;
 @property(readonly, nonatomic) _Bool hasStepZilch;
 @property(nonatomic) _Bool hasExpectedTime;

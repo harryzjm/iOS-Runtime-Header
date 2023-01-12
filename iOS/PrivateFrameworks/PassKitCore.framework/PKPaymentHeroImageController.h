@@ -19,6 +19,7 @@
     long long _watchSize;
 }
 
++ (double)cardAspectRatio;
 + (struct CGSize)cardArtSizeForWatchViewSize:(struct CGSize)arg1;
 + (id)defaultImages;
 - (void).cxx_destruct;

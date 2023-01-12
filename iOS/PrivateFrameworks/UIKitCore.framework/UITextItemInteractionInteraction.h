@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)mightResponder:(id)arg1 haveInteractableTextItemAtPoint:(struct CGPoint)arg2 precision:(unsigned long long)arg3;
 + (_Bool)mightResponderHaveTextItemInteractions:(id)arg1;
+- (id)_contextMenuInteraction;
 - (_Bool)_allowItemInteractions;
 
 @end

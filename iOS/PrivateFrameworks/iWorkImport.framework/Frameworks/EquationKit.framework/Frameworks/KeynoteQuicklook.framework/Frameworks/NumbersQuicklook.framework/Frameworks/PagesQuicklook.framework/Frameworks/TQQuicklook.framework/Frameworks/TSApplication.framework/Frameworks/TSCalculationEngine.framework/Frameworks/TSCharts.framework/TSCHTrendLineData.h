@@ -6,32 +6,30 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCHUnretainedParent-Protocol.h>
-
 @class NSString, TSCHChartSeries, TSUBezierPath, TSURegressionModel;
 
-@interface TSCHTrendLineData : NSObject <TSCHUnretainedParent>
+@interface TSCHTrendLineData : NSObject
 {
-    TSCHChartSeries *mSeries;
-    long long mLineType;
-    _Bool mShowTrendLine;
-    TSURegressionModel *mRegression;
-    double mMaxYValue;
-    double mMinYValue;
-    double mMaxXValue;
-    double mMinXValue;
-    int mInputAxisType;
-    int mOutputAxisType;
-    _Bool mTrendLineInvalid;
-    TSUBezierPath *mCachedTrendLinePath;
-    struct CGRect mCachedChartFrame;
-    double mOffsetInBody;
-    _Bool mCachedChartVertical;
+    TSCHChartSeries *_series;
+    long long _lineType;
+    _Bool _showTrendLine;
+    TSURegressionModel *_regression;
+    double _maxYValue;
+    double _minYValue;
+    double _maxXValue;
+    double _minXValue;
+    int _inputAxisType;
+    int _outputAxisType;
+    _Bool _trendLineInvalid;
+    TSUBezierPath *_cachedTrendLinePath;
+    struct CGRect _cachedChartFrame;
+    double _offsetInBody;
+    _Bool _cachedChartVertical;
 }
 
 + (long long)getTrendLineTypeForSeries:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) _Bool showTrendLine; // @synthesize showTrendLine=mShowTrendLine;
+@property(readonly, nonatomic) _Bool showTrendLine; // @synthesize showTrendLine=_showTrendLine;
 - (void)p_releaseCache;
 - (void)p_updateTrendLineData;
 - (void)p_generateRegression;
@@ -61,7 +59,6 @@
 @property(readonly, nonatomic) _Bool showRSquared;
 @property(readonly, nonatomic) _Bool showEquation;
 @property(readonly, nonatomic) _Bool showTrendLineLegendText;
-- (void)clearParent;
 - (void)dealloc;
 - (id)initWithSeries:(id)arg1;
 

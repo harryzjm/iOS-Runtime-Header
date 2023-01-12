@@ -18,11 +18,10 @@
 }
 
 - (void).cxx_destruct;
-- (_Bool)wantsETAUpdates;
 - (id)userLocationForUpdateManager:(id)arg1;
-- (void)updateManager:(id)arg1 willSendETARequest:(id)arg2;
+- (void)updateRequestForETAUpdate:(id)arg1;
 - (void)_updateForAlternateRoutes:(id)arg1;
-- (void)updateManager:(id)arg1 didReceiveETAResponse:(id)arg2 toRequest:(id)arg3;
+- (void)updateForETAUResponse:(id)arg1;
 - (void)tunnelLocationProjector:(id)arg1 didUpdateLocation:(id)arg2;
 - (id)_alternateRouteForOffRouteLocation:(id)arg1;
 - (_Bool)_allowSwitchToTransportType:(int)arg1 forLocation:(id)arg2;

@@ -11,11 +11,12 @@
 }
 
 + (unsigned char)tileProviderIdentifier;
+- (_Bool)shouldDownloadToDiskForTileKey:(const struct _GEOTileKey *)arg1 estimatedDataSize:(unsigned long long)arg2;
 - (CDStruct_d1a7ebee)kindForTileKey:(const struct _GEOTileKey *)arg1;
 - (id)urlForTileKey:(const struct _GEOTileKey *)arg1;
 - (unsigned int)tileEditionForKey:(const struct _GEOTileKey *)arg1;
 - (id)activeTileSetForKey:(const struct _GEOTileKey *)arg1;
-- (unsigned int)tileSetForKey:(const struct _GEOTileKey *)arg1;
+- (CDUnion_23a7df3d)tileSetForKey:(const struct _GEOTileKey *)arg1;
 
 @end
 

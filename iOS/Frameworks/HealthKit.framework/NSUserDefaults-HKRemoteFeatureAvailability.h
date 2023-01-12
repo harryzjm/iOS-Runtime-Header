@@ -10,12 +10,22 @@
 
 @interface NSUserDefaults (HKRemoteFeatureAvailability)
 + (id)hk_remoteFeatureAvailabilityUserDefaults;
++ (id)hk_regionAvailabilityOverrideUserDefaults;
++ (id)hk_featureAvailabilityRequirementEvaluationOverridesUserDefaults;
 + (id)hk_heartRhythmDefaults;
++ (void)hk_deleteDomainsNamed:(id)arg1;
+- (id)_localCountrySetWithFeatureAvailabilityStore:(id)arg1 error:(id *)arg2;
+- (id)_fetchOverrideCountrySetWithFeatureIdentifier:(id)arg1;
+- (void)_saveOverrideCountrySet:(id)arg1 featureIdentifier:(id)arg2;
+- (void)removeAllRegionCodesForFeatureIdentifier:(id)arg1;
+- (_Bool)removeRegionCodes:(id)arg1 featureAvailabilityStore:(id)arg2 error:(id *)arg3;
+- (_Bool)addRegionCodes:(id)arg1 featureAvailabilityStore:(id)arg2 error:(id *)arg3;
+- (id)countrySetForFeatureIdentifier:(id)arg1;
 @property(nonatomic, getter=hk_electrocardiogramWatchAppInstallHasBeenAllowed, setter=hk_setElectrocardiogramWatchAppInstallIsAllowed:) _Bool hk_electrocardiogramWatchAppInstallIsAllowed;
 @property(readonly, nonatomic) _Bool hk_hfeModeEnabled;
 @property(retain, nonatomic, setter=hk_setDemoResultKeys:) NSArray *hk_demoResultKeys;
-@property(nonatomic, getter=hk_atrialFibrillationSetupModalViewHasBeenPresented, setter=hk_setAtrialFibrillationSetupModalViewPresented:) _Bool hk_atrialFibrillationSetupModalViewPresented;
-@property(nonatomic, getter=hk_electrocardiogramSetupModalViewHasBeenPresented, setter=hk_setElectrocardiogramSetupModalViewPresented:) _Bool hk_electrocardiogramSetupModalViewPresented;
+- (id)hk_dateForKey:(id)arg1;
+- (_Bool)hk_boolForKey:(id)arg1 defaultValue:(_Bool)arg2;
 - (void)hk_removeObjectsForKeysWithPrefix:(id)arg1;
 - (_Bool)hk_keyExists:(id)arg1;
 @end

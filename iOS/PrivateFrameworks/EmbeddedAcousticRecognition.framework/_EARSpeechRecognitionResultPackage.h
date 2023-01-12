@@ -8,7 +8,7 @@
 
 #import <EmbeddedAcousticRecognition/NSCopying-Protocol.h>
 
-@class _EARAudioAnalytics, _EARLatticeMitigatorResult, _EARSpeechRecognition;
+@class NSArray, _EARAudioAnalytics, _EARLatticeMitigatorResult, _EARSpeechRecognition;
 
 @interface _EARSpeechRecognitionResultPackage : NSObject <NSCopying>
 {
@@ -16,25 +16,30 @@
     _Bool _isFinal;
     _EARSpeechRecognition *_recognition;
     _EARSpeechRecognition *_preITNRecognition;
+    _EARSpeechRecognition *_unrepairedRecognition;
     _EARAudioAnalytics *_audioAnalytics;
     double _utteranceStart;
     _EARLatticeMitigatorResult *_latticeMitigatorResult;
+    NSArray *_correctPartialResultIndexList;
 }
 
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSArray *correctPartialResultIndexList; // @synthesize correctPartialResultIndexList=_correctPartialResultIndexList;
 @property(readonly, copy, nonatomic) _EARLatticeMitigatorResult *latticeMitigatorResult; // @synthesize latticeMitigatorResult=_latticeMitigatorResult;
 @property(readonly, nonatomic) double utteranceStart; // @synthesize utteranceStart=_utteranceStart;
 @property(readonly, copy, nonatomic) _EARAudioAnalytics *audioAnalytics; // @synthesize audioAnalytics=_audioAnalytics;
-@property(readonly, nonatomic) _Bool isFinal; // @synthesize isFinal=_isFinal;
+@property(nonatomic) _Bool isFinal; // @synthesize isFinal=_isFinal;
 @property(readonly, nonatomic) _Bool recognitionIsFormatted; // @synthesize recognitionIsFormatted=_recognitionIsFormatted;
+@property(readonly, copy, nonatomic) _EARSpeechRecognition *unrepairedRecognition; // @synthesize unrepairedRecognition=_unrepairedRecognition;
 @property(readonly, copy, nonatomic) _EARSpeechRecognition *preITNRecognition; // @synthesize preITNRecognition=_preITNRecognition;
 @property(readonly, copy, nonatomic) _EARSpeechRecognition *recognition; // @synthesize recognition=_recognition;
+- (void)setCorrectPartialResultIndexList:(const void *)arg1 oneBestFinalResult:(const void *)arg2 partialResultIndexOffset:(int)arg3;
 - (id)nBestResults;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)_initWithRecognition:(id)arg1 preITNRecognition:(id)arg2 recognitionIsFormatted:(_Bool)arg3 isFinal:(_Bool)arg4 audioAnalytics:(id)arg5 utteranceStart:(double)arg6 latticeMitigatorResult:(id)arg7;
-- (id)_initWithRecognition:(id)arg1 preITNRecognition:(id)arg2 recognitionIsFormatted:(_Bool)arg3 isFinal:(_Bool)arg4 audioAnalytics:(id)arg5 utteranceStart:(double)arg6;
-- (id)_initWithRecognition:(id)arg1 preITNRecognition:(id)arg2 recognitionIsFormatted:(_Bool)arg3 isFinal:(_Bool)arg4 audioAnalytics:(id)arg5;
-- (id)_initWithRecognition:(id)arg1 preITNRecognition:(id)arg2 recognitionIsFormatted:(_Bool)arg3 isFinal:(_Bool)arg4;
+- (id)_initWithRecognition:(id)arg1 preITNRecognition:(id)arg2 unrepairedRecognition:(id)arg3 recognitionIsFormatted:(_Bool)arg4 isFinal:(_Bool)arg5 audioAnalytics:(id)arg6 utteranceStart:(double)arg7 latticeMitigatorResult:(id)arg8;
+- (id)_initWithRecognition:(id)arg1 preITNRecognition:(id)arg2 unrepairedRecognition:(id)arg3 recognitionIsFormatted:(_Bool)arg4 isFinal:(_Bool)arg5 audioAnalytics:(id)arg6 utteranceStart:(double)arg7;
+- (id)_initWithRecognition:(id)arg1 preITNRecognition:(id)arg2 unrepairedRecognition:(id)arg3 recognitionIsFormatted:(_Bool)arg4 isFinal:(_Bool)arg5 audioAnalytics:(id)arg6;
+- (id)_initWithRecognition:(id)arg1 preITNRecognition:(id)arg2 unrepairedRecognition:(id)arg3 recognitionIsFormatted:(_Bool)arg4 isFinal:(_Bool)arg5;
 
 @end
 

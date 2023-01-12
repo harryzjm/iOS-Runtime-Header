@@ -20,12 +20,26 @@
     _Bool _reduceWhitePointWasEnabled;
     _Bool _ignoringNotifications;
     AXUIClient *_displayFilterUIClient;
+    double _lastCommittedReduceWhitePointValue;
+    double _lastCommittedReduceWhitePointEnabledStatus;
+    double _reduceWhitePointRampStartTime;
+    double _reduceWhitePointRampTime;
+    double _reduceWhitePointRampStartValue;
+    double _reduceWhitePointRampEndValue;
+    struct __MADisplayFilter *_reduceWhitePointRampDownFilter;
 }
 
 + (void)initializeMonitor;
 + (id)sharedInstance;
 + (void)disableAllFilters;
 - (void).cxx_destruct;
+@property(retain, nonatomic) struct __MADisplayFilter *reduceWhitePointRampDownFilter; // @synthesize reduceWhitePointRampDownFilter=_reduceWhitePointRampDownFilter;
+@property(nonatomic) double reduceWhitePointRampEndValue; // @synthesize reduceWhitePointRampEndValue=_reduceWhitePointRampEndValue;
+@property(nonatomic) double reduceWhitePointRampStartValue; // @synthesize reduceWhitePointRampStartValue=_reduceWhitePointRampStartValue;
+@property(nonatomic) double reduceWhitePointRampTime; // @synthesize reduceWhitePointRampTime=_reduceWhitePointRampTime;
+@property(nonatomic) double reduceWhitePointRampStartTime; // @synthesize reduceWhitePointRampStartTime=_reduceWhitePointRampStartTime;
+@property(nonatomic) double lastCommittedReduceWhitePointEnabledStatus; // @synthesize lastCommittedReduceWhitePointEnabledStatus=_lastCommittedReduceWhitePointEnabledStatus;
+@property(nonatomic) double lastCommittedReduceWhitePointValue; // @synthesize lastCommittedReduceWhitePointValue=_lastCommittedReduceWhitePointValue;
 @property(nonatomic) _Bool ignoringNotifications; // @synthesize ignoringNotifications=_ignoringNotifications;
 @property(nonatomic) _Bool reduceWhitePointWasEnabled; // @synthesize reduceWhitePointWasEnabled=_reduceWhitePointWasEnabled;
 @property(nonatomic) _Bool grayscaleWasEnabled; // @synthesize grayscaleWasEnabled=_grayscaleWasEnabled;
@@ -35,14 +49,18 @@
 @property(retain, nonatomic) AXUIClient *displayFilterUIClient; // @synthesize displayFilterUIClient=_displayFilterUIClient;
 - (void)dealloc;
 - (void)updateSettings;
+- (void)_applyMatrixFilter:(struct __MADisplayFilter *)arg1 whitePointReduction:(double)arg2;
 - (void)_updateMatrixSupport;
+- (void)_whitePointRampDown;
 - (void)_updateCoreSupport;
 - (void)_repostNotificationIfNeeded;
 - (void)_updateNotificationCache;
 - (void)_updateSettings:(id)arg1;
+- (_Bool)_invertColorsEnabled;
 - (_Bool)_allowSoftwareFilters;
 - (_Bool)_forceSoftwareFilters;
 - (void)_updateBrightnessFilters:(_Bool)arg1;
+- (void)_handleFrameRateLimit;
 - (struct __MADisplayFilter *)displayFilterFromLastUpdate;
 - (void)setDisplayFilterFromLastUpdate:(struct __MADisplayFilter *)arg1;
 

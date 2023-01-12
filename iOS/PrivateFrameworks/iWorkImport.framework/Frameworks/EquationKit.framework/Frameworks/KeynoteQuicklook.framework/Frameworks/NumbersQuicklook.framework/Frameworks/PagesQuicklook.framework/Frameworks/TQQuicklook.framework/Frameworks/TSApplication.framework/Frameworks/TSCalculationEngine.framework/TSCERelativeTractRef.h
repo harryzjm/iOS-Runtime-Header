@@ -60,7 +60,7 @@
 - (unsigned int)numColumns;
 - (_Bool)hasTableUID;
 @property(readonly, nonatomic) struct TSUPreserveFlags preserveFlags;
-@property(nonatomic) UUIDData_5fbc143e tableUID;
+@property(nonatomic) struct TSKUIDStruct tableUID;
 @property(nonatomic) _Bool preserveRectangular;
 @property(nonatomic) _Bool spansAllRows;
 @property(nonatomic) _Bool spansAllColumns;
@@ -68,7 +68,7 @@
 - (void)repairSpanningColumnSetting;
 - (id)initWithRangeRef:(const struct TSCERangeRef *)arg1 hostCell:(const struct TSUCellCoord *)arg2;
 - (id)initWithAbsoluteTractRef:(id)arg1 hostCell:(const struct TSUCellCoord *)arg2;
-- (id)initWithTableUID:(const UUIDData_5fbc143e *)arg1 preserveFlags:(const struct TSUPreserveFlags *)arg2;
+- (id)initWithTableUID:(const struct TSKUIDStruct *)arg1 preserveFlags:(const struct TSUPreserveFlags *)arg2;
 - (id)init;
 
 @end

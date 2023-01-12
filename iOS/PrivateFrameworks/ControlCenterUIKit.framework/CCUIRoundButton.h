@@ -6,20 +6,24 @@
 
 #import <UIKit/UIControl.h>
 
+#import <ControlCenterUIKit/MTVisualStylingRequiring-Protocol.h>
 #import <ControlCenterUIKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <ControlCenterUIKit/UIPointerInteractionDelegate-Protocol.h>
 
-@class CCUICAPackageDescription, CCUICAPackageView, MTVisualStylingProvider, NSString, UIColor, UIImage, UIImageView, UILongPressGestureRecognizer, UIView;
+@class CCUICAPackageDescription, CCUICAPackageView, MTVisualStylingProvider, NSArray, NSString, UIColor, UIImage, UIImageView, UILongPressGestureRecognizer, UIView;
 
-@interface CCUIRoundButton : UIControl <UIGestureRecognizerDelegate, UIPointerInteractionDelegate>
+@interface CCUIRoundButton : UIControl <UIGestureRecognizerDelegate, UIPointerInteractionDelegate, MTVisualStylingRequiring>
 {
     MTVisualStylingProvider *_visualStylingProvider;
     UILongPressGestureRecognizer *_longPressGestureRecognizer;
+    _Bool _isStateValid;
     _Bool _useAlternateBackground;
+    _Bool _dynamicLayoutEnabled;
     CCUICAPackageDescription *_glyphPackageDescription;
     UIImage *_glyphImage;
     NSString *_glyphState;
     UIColor *_highlightColor;
+    UIColor *_highlightTintColor;
     UIView *_normalStateBackgroundView;
     UIView *_selectedStateBackgroundView;
     UIView *_alternateSelectedStateBackgroundView;
@@ -35,17 +39,25 @@
 @property(retain, nonatomic) UIView *alternateSelectedStateBackgroundView; // @synthesize alternateSelectedStateBackgroundView=_alternateSelectedStateBackgroundView;
 @property(retain, nonatomic) UIView *selectedStateBackgroundView; // @synthesize selectedStateBackgroundView=_selectedStateBackgroundView;
 @property(retain, nonatomic) UIView *normalStateBackgroundView; // @synthesize normalStateBackgroundView=_normalStateBackgroundView;
-@property(retain, nonatomic) UIColor *highlightColor; // @synthesize highlightColor=_highlightColor;
+@property(copy, nonatomic) UIColor *highlightTintColor; // @synthesize highlightTintColor=_highlightTintColor;
+@property(copy, nonatomic) UIColor *highlightColor; // @synthesize highlightColor=_highlightColor;
+@property(nonatomic, getter=isDynamicLayoutEnabled) _Bool dynamicLayoutEnabled; // @synthesize dynamicLayoutEnabled=_dynamicLayoutEnabled;
 @property(nonatomic) _Bool useAlternateBackground; // @synthesize useAlternateBackground=_useAlternateBackground;
 @property(copy, nonatomic) NSString *glyphState; // @synthesize glyphState=_glyphState;
 @property(retain, nonatomic) UIImage *glyphImage; // @synthesize glyphImage=_glyphImage;
 @property(retain, nonatomic) CCUICAPackageDescription *glyphPackageDescription; // @synthesize glyphPackageDescription=_glyphPackageDescription;
-- (void)_updateVisualStylingOfGlyphView:(id)arg1;
+- (void)_visualStylingProvider:(id)arg1 didChangeWithOutgoingVisualStylingProvider:(id)arg2;
+- (void)_updateVisualStylingOfView:(id)arg1 style:(long long)arg2 visualStylingProvider:(id)arg3 outgoingProvider:(id)arg4;
+- (void)_updateForStateChangeIfNecessary;
 - (void)_updateForStateChange;
+- (void)_setNeedsStateChangeUpdate;
 - (void)_deactivateReachability:(id)arg1;
 - (void)_primaryActionPerformed:(id)arg1;
 - (void)_setCornerRadius:(double)arg1;
 - (double)_cornerRadius;
+- (void)setVisualStylingProvider:(id)arg1 forCategory:(long long)arg2;
+@property(readonly, copy, nonatomic) NSArray *requiredVisualStyleCategories;
+- (id)visualStylingProviderForCategory:(long long)arg1;
 - (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
@@ -57,9 +69,11 @@
 - (void)dealloc;
 - (id)initWithGlyphPackageDescription:(id)arg1 highlightColor:(id)arg2 useLightStyle:(_Bool)arg3;
 - (id)initWithGlyphPackageDescription:(id)arg1 highlightColor:(id)arg2;
+- (id)initWithGlyphImage:(id)arg1 highlightColor:(id)arg2 highlightTintColor:(id)arg3 useLightStyle:(_Bool)arg4;
+- (id)initWithGlyphImage:(id)arg1 highlightColor:(id)arg2 highlightTintColor:(id)arg3;
 - (id)initWithGlyphImage:(id)arg1 highlightColor:(id)arg2 useLightStyle:(_Bool)arg3;
 - (id)initWithGlyphImage:(id)arg1 highlightColor:(id)arg2;
-- (id)initWithHighlightColor:(id)arg1 useLightStyle:(_Bool)arg2;
+- (id)_initWithHighlightColor:(id)arg1 useLightStyle:(_Bool)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 {
     NSDictionary *_identifiers;
     NSUUID *_advertiserIdentifier;
+    NSUUID *_vendorIdentifierSeed;
     NSObject<OS_dispatch_queue> *_queue;
     int _saveFlag;
     NSDictionary *_perUserEntropy;
@@ -27,8 +28,10 @@ __attribute__((visibility("hidden")))
 - (void)getIdentifierOfType:(long long)arg1 vendorName:(id)arg2 bundleIdentifier:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 @property(readonly) NSObject<OS_dispatch_queue> *queue;
 - (id)init;
+- (id)deviceIdentifierVendorSeed;
 - (id)identifiersOfTypeNotDispatched:(long long)arg1;
 - (id)allIdentifiersNotDispatched;
+- (id)extractUUIDForKey:(id)arg1;
 - (id)applyPerUserEntropyNotDispatched:(id)arg1 type:(long long)arg2;
 - (void)generatePerUserEntropyIfNeededNotDispatched;
 - (id)generateSomePerUserEntropyNotDispatched;

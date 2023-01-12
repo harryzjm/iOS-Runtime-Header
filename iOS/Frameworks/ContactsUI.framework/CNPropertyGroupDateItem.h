@@ -9,6 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)propertyGroupItemWithLabeledValue:(id)arg1 group:(id)arg2 contact:(id)arg3;
 + (_Bool)isEmptyDateComponents:(id)arg1;
 + (id)initialValueForLabel:(id)arg1 group:(id)arg2;
 + (id)emptyValueForLabel:(id)arg1;

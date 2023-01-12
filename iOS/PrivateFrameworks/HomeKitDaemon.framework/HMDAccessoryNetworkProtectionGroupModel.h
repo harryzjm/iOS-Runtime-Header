@@ -15,9 +15,9 @@
 + (id)modelNamespace;
 
 // Remaining properties
-@property(retain, nonatomic) NSNumber *category; // @dynamic category;
-@property(retain, nonatomic) NSString *manufacturer; // @dynamic manufacturer;
-@property(retain, nonatomic) NSNumber *targetProtectionMode; // @dynamic targetProtectionMode;
+@property(copy, nonatomic) NSNumber *category; // @dynamic category;
+@property(copy, nonatomic) NSString *manufacturer; // @dynamic manufacturer;
+@property(copy, nonatomic) NSNumber *targetProtectionMode; // @dynamic targetProtectionMode;
 
 @end
 

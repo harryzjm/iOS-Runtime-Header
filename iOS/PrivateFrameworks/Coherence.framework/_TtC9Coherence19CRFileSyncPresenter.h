@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Coherence/NSFilePresenter-Protocol.h>
-
 @class MISSING_TYPE, NSOperationQueue, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface _TtC9Coherence19CRFileSyncPresenter : NSObject <NSFilePresenter>
+@interface _TtC9Coherence19CRFileSyncPresenter : NSObject
 {
     MISSING_TYPE *fileURL;
     MISSING_TYPE *queue;

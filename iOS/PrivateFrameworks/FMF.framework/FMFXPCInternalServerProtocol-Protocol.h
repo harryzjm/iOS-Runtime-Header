@@ -18,6 +18,7 @@
 - (oneway void)isIn5XXGracePeriodWithCompletion:(void (^)(_Bool))arg1;
 - (oneway void)exit5XXGracePeriod;
 - (oneway void)crashDaemon;
+- (oneway void)setSessionClientBundleId:(NSString *)arg1;
 - (oneway void)setSessionClientPid:(NSNumber *)arg1;
 - (oneway void)iCloudAccountNameWithCompletion:(void (^)(NSString *))arg1;
 @end

@@ -15,13 +15,17 @@
     double _timestampOfLastRecordedCallToProgress;
     unsigned long long _numberOfCallsToProgressSinceLastRecordedCall;
     NSObject<OS_os_log> *_loggingConnection;
+    double _lastProgress;
     _Bool _wasStopped;
+    _Bool _reportMemoryUsage;
     NSString *_taskName;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool reportMemoryUsage; // @synthesize reportMemoryUsage=_reportMemoryUsage;
 @property(copy, nonatomic) NSString *taskName; // @synthesize taskName=_taskName;
 - (void)checkCallsWithProgress:(double)arg1 stop:(_Bool)arg2;
+- (id)memoryUsage;
 - (id)initWithTaskName:(id)arg1;
 - (id)initWithTaskName:(id)arg1 loggingConnection:(id)arg2;
 

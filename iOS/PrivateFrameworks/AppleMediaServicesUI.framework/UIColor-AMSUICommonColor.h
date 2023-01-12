@@ -7,14 +7,18 @@
 #import <UIKit/UIColor.h>
 
 @interface UIColor (AMSUICommonColor)
++ (id)_colorIdentifierDictionary;
++ (id)ams_dynamicColorFromDictionary:(id)arg1;
++ (id)ams_namedColorFromDictionary:(id)arg1;
++ (id)ams_rgbColorFromDictionary:(id)arg1;
++ (id)ams_colorFromDictionary:(id)arg1;
 + (id)ams_dynamicColorWithLightColor:(id)arg1 darkColor:(id)arg2 lightHighContrastColor:(id)arg3 darkHighContrastColor:(id)arg4;
 + (id)ams_dynamicColorWithLightColor:(id)arg1 darkColor:(id)arg2 darkHighContrastColor:(id)arg3;
 + (id)ams_dynamicColorWithLightColor:(id)arg1 darkColor:(id)arg2 lightHighContrastColor:(id)arg3;
 + (id)ams_dynamicColorWithLightColor:(id)arg1 darkColor:(id)arg2;
++ (id)ams_colorFromHexString:(id)arg1;
 + (id)ams_shadow;
 + (id)ams_mediaBorder;
-+ (id)ams_defaultButtonTitle;
-+ (id)ams_defaultButtonBackground;
 + (id)ams_defaultLine;
 + (id)ams_quaternaryText;
 + (id)ams_tertiaryText;
@@ -29,5 +33,8 @@
 + (id)ams_dim;
 + (id)ams_clear;
 + (id)ams_appTint;
+@property(readonly, nonatomic) double ams_luminance;
+@property(readonly, nonatomic, getter=ams_isLight) _Bool ams_light;
+@property(readonly, nonatomic, getter=ams_isDark) _Bool ams_dark;
 @end
 

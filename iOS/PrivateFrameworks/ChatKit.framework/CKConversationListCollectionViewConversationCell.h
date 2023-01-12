@@ -14,7 +14,6 @@
 {
     NSObject<CKConversationListCollectionViewCellDelegate> *_delegate;
     _CKCollectionViewTapGestureRecognizer *_avatarViewTapGestureRecognizer;
-    double _widthForDeterminingAvatarVisibility;
     struct UIEdgeInsets _marginInsets;
 }
 
@@ -24,7 +23,6 @@
 + (id)identifierForConversation:(id)arg1;
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
-@property(nonatomic) double widthForDeterminingAvatarVisibility; // @synthesize widthForDeterminingAvatarVisibility=_widthForDeterminingAvatarVisibility;
 @property(retain, nonatomic) _CKCollectionViewTapGestureRecognizer *avatarViewTapGestureRecognizer; // @synthesize avatarViewTapGestureRecognizer=_avatarViewTapGestureRecognizer;
 @property(nonatomic) __weak NSObject<CKConversationListCollectionViewCellDelegate> *delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets=_marginInsets;
@@ -33,6 +31,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)selectedDeleteButtonForConversation:(id)arg1 inCell:(id)arg2;
 - (void)avatarHeaderWasTappedForConversation:(id)arg1 inCell:(id)arg2;
+- (double)widthForDeterminingAvatarVisibility;
 - (void)forceUnreadIndicatorVisibility:(_Bool)arg1 forConversation:(id)arg2 animated:(_Bool)arg3;
 - (id)avatarView;
 - (void)setEditingMode:(unsigned long long)arg1 animated:(_Bool)arg2;

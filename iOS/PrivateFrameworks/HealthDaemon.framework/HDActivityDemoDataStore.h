@@ -12,7 +12,6 @@
 
 + (id)demoStatisticsDataForTypeIdentifier:(id)arg1;
 + (id)demoValueForKey:(id)arg1 withDataTypeIdentifier:(id)arg2;
-+ (id)_baseActivityDemoKeyForDataTypeIdentifier:(id)arg1;
 + (_Bool)shouldShowActivityDemoData;
 
 @end

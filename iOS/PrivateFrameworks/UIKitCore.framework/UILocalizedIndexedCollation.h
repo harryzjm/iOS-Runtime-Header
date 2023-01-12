@@ -19,6 +19,8 @@
     NSString *_firstSectionStartString;
     NSString *_lastSectionStartString;
     struct __CFStringTokenizer *_tokenizer;
+    _Bool _primaryLanguageIsJapanese;
+    _Bool _preferJapaneseRomajiTranscriptions;
 }
 
 + (id)currentCollation;
@@ -32,6 +34,7 @@
 - (void)dealloc;
 - (struct __CFStringTokenizer *)tokenizer;
 - (id)transformedCollationStringForString:(id)arg1;
+- (id)_kanaTranscriptionForString:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 
 @end

@@ -8,7 +8,7 @@
 
 #import <TextInputCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSLocale, NSString;
+@class NSArray, NSLocale, NSString, TIWordEntryAligned;
 
 @interface TITypingSessionAligned : NSObject <NSSecureCoding>
 {
@@ -17,11 +17,15 @@
     NSArray *_layouts;
     NSLocale *_locale;
     NSArray *_alignedEntries;
+    TIWordEntryAligned *_unfinishedEntry;
     NSString *_alignedText;
+    NSString *_completeText;
     NSString *_highConfAlignedSubSegment;
     unsigned long long _firstCPEntryIndex;
 }
 
++ (id)resolveBackspacesInKeyboardInputs:(id)arg1;
++ (id)completeStringFromWordEntry:(id)arg1 leadingInputs:(id)arg2 trailingInputs:(id)arg3 followsContinuousPath:(_Bool)arg4;
 + (id)alignedPathTouchesForWord:(id)arg1;
 + (id)alignedEntryForWord:(id)arg1;
 + (_Bool)supportsSecureCoding;
@@ -30,11 +34,14 @@
 @property(nonatomic) _Bool containsCPEntries; // @synthesize containsCPEntries=_containsCPEntries;
 @property(nonatomic) _Bool success; // @synthesize success=_success;
 @property(retain, nonatomic) NSString *highConfAlignedSubSegment; // @synthesize highConfAlignedSubSegment=_highConfAlignedSubSegment;
+@property(readonly, nonatomic) NSString *completeText; // @synthesize completeText=_completeText;
 @property(retain, nonatomic) NSString *alignedText; // @synthesize alignedText=_alignedText;
+@property(readonly, nonatomic) TIWordEntryAligned *unfinishedEntry; // @synthesize unfinishedEntry=_unfinishedEntry;
 @property(retain, nonatomic) NSArray *alignedEntries; // @synthesize alignedEntries=_alignedEntries;
 @property(readonly, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 @property(readonly, nonatomic) NSArray *layouts; // @synthesize layouts=_layouts;
-- (id)alignedWordsFromSession:(id)arg1;
+- (_Bool)isNewLineScenarioWithCurrentWord:(id)arg1 andPreviousWord:(id)arg2;
+- (void)computeAlignedWordsFromSession:(id)arg1;
 - (id)textToAppendForEntry:(id)arg1 sessionIndx:(unsigned long long)arg2;
 - (void)getAlignedTextAndConfidence;
 - (_Bool)compareForConfidenceContextA:(id)arg1 contextB:(id)arg2;

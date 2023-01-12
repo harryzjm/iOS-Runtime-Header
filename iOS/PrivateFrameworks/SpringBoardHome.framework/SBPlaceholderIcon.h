@@ -22,8 +22,10 @@
 + (id)placeholderNodeIdentifierForIcon:(id)arg1;
 - (void).cxx_destruct;
 - (id)folder;
+- (_Bool)canReceiveGrabbedIcon;
 - (_Bool)isUninstallSupported;
 - (id)gridCellImage;
+- (void)updateReferencedIcons:(id)arg1;
 - (_Bool)referencesIconWithIdentifier:(id)arg1;
 - (_Bool)referencesIcon:(id)arg1;
 @property(readonly, copy, nonatomic) NSArray *referencedIcons;

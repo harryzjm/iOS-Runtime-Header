@@ -11,8 +11,6 @@
     double _fontSize;
 }
 
-+ (id)defaults;
-@property(nonatomic) double fontSize; // @synthesize fontSize=_fontSize;
 - (id)init;
 
 @end

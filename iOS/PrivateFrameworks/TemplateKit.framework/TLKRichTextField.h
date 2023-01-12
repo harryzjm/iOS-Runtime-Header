@@ -14,6 +14,7 @@
 __attribute__((visibility("hidden")))
 @interface TLKRichTextField <NUIContainerViewDelegate, TLKObservable, TLKObserver>
 {
+    _Bool _useCompactMode;
     id <TLKObserver> observer;
     long long batchUpdateCount;
     TLKRichText *_richText;
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) TLKStarsView *starRatingView; // @synthesize starRatingView=_starRatingView;
 @property(retain, nonatomic) TLKRoundedCornerLabels *roundedCornerLabels; // @synthesize roundedCornerLabels=_roundedCornerLabels;
 @property(retain, nonatomic) TLKLabel *textLabel; // @synthesize textLabel=_textLabel;
+@property(nonatomic) _Bool useCompactMode; // @synthesize useCompactMode=_useCompactMode;
 @property(nonatomic) unsigned long long roundedCornerLabelSizeConfiguration; // @synthesize roundedCornerLabelSizeConfiguration=_roundedCornerLabelSizeConfiguration;
 @property(retain, nonatomic) TLKRichText *richText; // @synthesize richText=_richText;
 @property(nonatomic) long long batchUpdateCount; // @synthesize batchUpdateCount;

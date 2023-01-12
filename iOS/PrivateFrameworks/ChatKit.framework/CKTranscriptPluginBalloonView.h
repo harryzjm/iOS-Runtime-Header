@@ -13,6 +13,7 @@
 {
     _Bool _isInteractive;
     _Bool _mayReparentPluginViews;
+    _Bool _isSyndicationOnboarding;
     _Bool _suppressMask;
     long long _userInterfaceStyle;
     long long _userInterfaceLevel;
@@ -27,6 +28,7 @@
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool suppressMask; // @synthesize suppressMask=_suppressMask;
+@property(nonatomic) _Bool isSyndicationOnboarding; // @synthesize isSyndicationOnboarding=_isSyndicationOnboarding;
 @property(retain, nonatomic) UIView *pluginSnapshotView; // @synthesize pluginSnapshotView=_pluginSnapshotView;
 @property(retain, nonatomic) CKBalloonImageView *outlineMask; // @synthesize outlineMask=_outlineMask;
 @property(retain, nonatomic) CKInteractiveBalloonImageView *tailMask; // @synthesize tailMask=_tailMask;
@@ -61,9 +63,10 @@
 - (void)updateBalloonMasks;
 - (void)prepareForDisplay;
 - (void)layoutSubviews;
+- (void)willRemoveSubview:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)configureForComposition:(id)arg1;
-- (void)configureForTranscriptPlugin:(id)arg1;
+- (void)configureForTranscriptPlugin:(id)arg1 context:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

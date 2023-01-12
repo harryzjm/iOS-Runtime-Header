@@ -10,6 +10,7 @@
 
 @protocol CKFetchDatabaseChangesOperationCallbacks <CKOperationCallbacks>
 - (void)handleChangeSetCompletionWithServerChangeToken:(CKServerChangeToken *)arg1 databaseChangesStatus:(long long)arg2 error:(NSError *)arg3 reply:(void (^)(NSError *))arg4;
+- (void)handleEncryptedDataResetForRecordZoneID:(CKRecordZoneID *)arg1;
 - (void)handlePurgeForRecordZoneID:(CKRecordZoneID *)arg1;
 - (void)handleDeleteForRecordZoneID:(CKRecordZoneID *)arg1;
 - (void)handleChangeForRecordZoneID:(CKRecordZoneID *)arg1;

@@ -4,44 +4,48 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CloudKit/CKSQLite.h>
-
 @class NSObject;
 @protocol OS_dispatch_queue;
 
-@interface CKDMetadataCache : CKSQLite
+@interface CKDMetadataCache
 {
     NSObject<OS_dispatch_queue> *_cacheQueue;
 }
 
 + (id)dbFileName;
++ (id)cacheDatabaseSchema;
 + (id)sharedCache;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *cacheQueue; // @synthesize cacheQueue=_cacheQueue;
 - (void)willCreateDatabase;
+- (void)resetThrottles;
+- (void)removeThrottle:(id)arg1;
+- (void)addThrottle:(id)arg1;
+- (id)throttles;
 - (id)cachedDSIDForAccountID:(id)arg1;
 - (void)setCachedDSID:(id)arg1 forAccountID:(id)arg2;
 - (void)removeContainerID:(id)arg1;
-- (void)setContainerInfo:(id)arg1 forContainerID:(id)arg2 accountID:(id)arg3;
-- (id)containerInfoForContainerID:(id)arg1 accountID:(id)arg2;
-- (id)inlock_containerInfoForContainerID:(id)arg1 accountID:(id)arg2;
+- (void)setContainerServerInfo:(id)arg1 forContainerID:(id)arg2 accountID:(id)arg3;
+- (id)containerServerInfoForContainerID:(id)arg1 accountID:(id)arg2;
+- (id)inlock_containerServerInfoForContainerID:(id)arg1 accountID:(id)arg2;
 - (void)setPublicKey:(id)arg1 ofType:(id)arg2 withIdentifier:(id)arg3;
 - (id)publicKeyOfType:(id)arg1 withIdentifier:(id)arg2;
 - (void)setGlobalConfiguration:(id)arg1;
 - (id)globalConfiguration;
 - (void)removeKnownApplicationID:(id)arg1;
-- (id)knownContainerizedApplicationBundleIDs;
-- (id)knownApplicationBundleIDs;
+- (id)knownContainerizedApplicationIDs;
+- (id)knownApplicationIDs;
 - (void)setApplicationMetadata:(id)arg1 forApplicationID:(id)arg2;
 - (id)applicationMetadataForApplicationID:(id)arg1;
 - (id)inlock_applicationMetadataForApplicationID:(id)arg1;
 - (void)setDateOfLastTokenUpdate:(id)arg1;
 - (void)inlock_setDateOfLastTokenUpdate:(id)arg1;
 - (id)dateOfLastTokenUpdate;
-- (void)setAppContainerIntersectionMetadata:(id)arg1 forAppContainerAccountTuple:(id)arg2;
-- (id)appContainerIntersectionMetadataForAppContainerAccountTuple:(id)arg1;
+- (void)setAppContainerAccountMetadata:(id)arg1 forAppContainerAccountTuple:(id)arg2;
+- (id)appContainerAccountMetadataForAppContainerAccountTuple:(id)arg1;
 - (id)knownAppContainerAccountTuples;
-- (id)knownAppContainerTuplesForAccountID:(id)arg1;
+- (id)knownAppContainerTuples;
+- (id)knownAppContainerAccountTuplesForAccountID:(id)arg1;
 - (void)setPushToken:(id)arg1 forAppContainerAccountTuple:(id)arg2;
 - (id)pushTokenForAppContainerAccountTuple:(id)arg1 filterOldTokens:(_Bool)arg2;
 - (void)expungeStaleAccountIDs;
@@ -49,7 +53,7 @@
 - (void)inlock_expungeDataForAccountID:(id)arg1;
 - (void)expungeOldData;
 - (void)expungeAllData;
-- (id)_initWithCacheDir:(id)arg1;
+- (id)initWithCacheDir:(id)arg1;
 
 @end
 

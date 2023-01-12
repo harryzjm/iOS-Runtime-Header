@@ -20,10 +20,7 @@
     long long mRepeatMode;
     CDStruct_1b6d18a9 mStartCMTime;
     CDStruct_1b6d18a9 mEndCMTime;
-    struct {
-        CDStruct_1b6d18a9 start;
-        CDStruct_1b6d18a9 duration;
-    } mPlayerItemTimeRange;
+    CDStruct_e83c9415 mPlayerItemTimeRange;
     _Bool mIsPlayerItemTimeRangeForScrubbing;
     AVPlayerLooper *mPlayerLooper;
     _Bool mIsUpdatingPlayerItems;
@@ -122,10 +119,11 @@
 - (double)duration;
 - (id)p_workingPlayerItems;
 - (void)p_updatePlayerItemsAndApplyRate:(float)arg1;
-- (_Bool)p_shouldUsePlayerLooperAtRate:(float)arg1;
+- (_Bool)p_shouldUsePlayerLooperAtRate:(float)arg1 timeRange:(CDStruct_e83c9415)arg2;
 - (id)newLayer;
 @property(readonly, nonatomic, getter=isExternalPlaybackActive) _Bool externalPlaybackActive;
 @property(readonly, nonatomic) AVAsset *currentAsset;
+- (void)attachAVPlayerViewController:(id)arg1;
 - (void)teardown;
 - (void)dealloc;
 - (id)initWithInitialPlayerItem:(id)arg1 enqueuedAssets:(id)arg2 initialEnqueuedAssetIndex:(unsigned long long)arg3 delegate:(id)arg4 streaming:(_Bool)arg5;

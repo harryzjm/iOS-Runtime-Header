@@ -8,6 +8,7 @@
 
 @interface MPModelRadioStation
 {
+    NSString *_playbackAuthorizationToken;
 }
 
 + (id)__endingAirDate_KEY;
@@ -31,6 +32,9 @@
 + (id)__live_KEY;
 + (id)__beats1_KEY;
 + (id)classesForSecureCoding;
++ (long long)genericObjectType;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *playbackAuthorizationToken; // @synthesize playbackAuthorizationToken=_playbackAuthorizationToken;
 @property(readonly, nonatomic) MPRadioStationEvent *upcomingStationEvent;
 @property(readonly, nonatomic) MPRadioStationEvent *currentStationEvent;
 - (id)stationGlyph;

@@ -15,11 +15,11 @@
     TSTStrokeSelection *mStrokeSelection;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) TSKSelection *selection; // @synthesize selection=mStrokeSelection;
 @property(readonly, copy) NSString *description;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)dealloc;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

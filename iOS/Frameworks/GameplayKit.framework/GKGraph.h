@@ -14,7 +14,7 @@
 @interface GKGraph : NSObject <NSCopying, NSSecureCoding>
 {
     NSMutableArray *_nodes;
-    struct GKCGraph *_cGraph;
+    void *_cGraph;
     NSMutableDictionary *__info;
 }
 
@@ -36,8 +36,8 @@
 - (void)dealloc;
 - (id)nodesMut;
 @property(readonly, nonatomic) NSArray *nodes;
-- (struct GKCGraph *)cGraph;
-- (struct GKCGraph *)makeCGraph;
+- (void *)cGraph;
+- (void *)makeCGraph;
 
 @end
 

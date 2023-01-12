@@ -13,6 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (void)colorDataSource:(id)arg1 didChangeDisplayMode:(long long)arg2 previousDisplayMode:(long long)arg3;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
+- (id)collectionView;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_axLoadAccessibilityForAttributeCell:(id)arg1 atIndexPath:(id)arg2;
 

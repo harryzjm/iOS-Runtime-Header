@@ -15,22 +15,25 @@
     _LTLocalePair *_localePair;
     double _start;
     double _firstResponse;
-    double _pageComplete;
     double _firstParagraphComplete;
+    double _progressComplete;
+    double _pageComplete;
     NSString *_processName;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *processName; // @synthesize processName=_processName;
-@property(readonly, nonatomic) double firstParagraphComplete; // @synthesize firstParagraphComplete=_firstParagraphComplete;
 @property(readonly, nonatomic) double pageComplete; // @synthesize pageComplete=_pageComplete;
+@property(readonly, nonatomic) double progressComplete; // @synthesize progressComplete=_progressComplete;
+@property(readonly, nonatomic) double firstParagraphComplete; // @synthesize firstParagraphComplete=_firstParagraphComplete;
 @property(readonly, nonatomic) double firstResponse; // @synthesize firstResponse=_firstResponse;
 @property(readonly, nonatomic) double start; // @synthesize start=_start;
 @property(copy, nonatomic) _LTLocalePair *localePair; // @synthesize localePair=_localePair;
 @property(readonly, nonatomic) NSDictionary *dict;
-- (void)markFirstParagraphComplete;
 - (void)markPageComplete;
+- (void)markProgressDone;
+- (void)markFirstParagraphComplete;
 - (void)markResponse;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

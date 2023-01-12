@@ -21,7 +21,6 @@
 - (void)beginWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (int)processIdentifier;
 - (id)bundle;
-- (id)identifier;
 - (id)vendorProtocolDelegate;
 - (id)init;
 - (id)initWithExtensionIdentifier:(id)arg1;

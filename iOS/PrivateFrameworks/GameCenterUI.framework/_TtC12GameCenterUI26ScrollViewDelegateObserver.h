@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GameCenterUI/UIScrollViewDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC12GameCenterUI26ScrollViewDelegateObserver : NSObject <UIScrollViewDelegate>
+@interface _TtC12GameCenterUI26ScrollViewDelegateObserver : NSObject
 {
     MISSING_TYPE *compoundScrollObserver;
 }

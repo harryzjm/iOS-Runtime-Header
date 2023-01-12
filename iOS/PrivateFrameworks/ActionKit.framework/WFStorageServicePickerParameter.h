@@ -22,7 +22,7 @@
 - (id)defaultSupportedVariableTypes;
 - (id)possibleStates;
 - (_Bool)isHidden;
-- (id)accessoryIconForPossibleState:(id)arg1;
+- (id)accessoryImageForPossibleState:(id)arg1;
 - (void)setActionResources:(id)arg1;
 
 @end

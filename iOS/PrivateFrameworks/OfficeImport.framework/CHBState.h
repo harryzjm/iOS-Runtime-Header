@@ -42,9 +42,9 @@ __attribute__((visibility("hidden")))
 - (void)readAndCacheXlChartDataSeries;
 - (int)xlSeriesCount;
 - (int)xlCurrentChartDataSeriesIndex;
-- (struct XlChartDataSeries *)xlCurrentChartDataSeries;
+- (void *)xlCurrentChartDataSeries;
 - (void)setXlCurrentSeriesIndex:(int)arg1;
-- (struct XlChartDataSeries *)xlChartDataSeriesAtIndex:(int)arg1;
+- (void *)xlChartDataSeriesAtIndex:(int)arg1;
 - (id)resources;
 - (id)workbook;
 - (void)setChart:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDate, NSDictionary, NSNumber, NSSet, NSString, NSURL, UNNotificationIcon, UNNotificationSound;
+@class NSArray, NSDate, NSDictionary, NSNumber, NSSet, NSString, NSURL, UNNotificationIcon, UNNotificationSound, _UNNotificationCommunicationContext;
 
 @interface UNMutableNotificationContent
 {
@@ -12,6 +12,8 @@
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(copy, nonatomic) NSDictionary *userInfo; // @dynamic userInfo;
+@property(nonatomic) double relevanceScore; // @dynamic relevanceScore;
+@property(nonatomic) unsigned long long interruptionLevel; // @dynamic interruptionLevel;
 @property(copy, nonatomic) NSString *targetContentIdentifier; // @dynamic targetContentIdentifier;
 @property(nonatomic) unsigned long long summaryArgumentCount; // @dynamic summaryArgumentCount;
 @property(copy, nonatomic) NSString *summaryArgument; // @dynamic summaryArgument;
@@ -21,11 +23,13 @@
 @property(copy, nonatomic) NSString *threadIdentifier; // @dynamic threadIdentifier;
 @property(copy, nonatomic) NSString *subtitle; // @dynamic subtitle;
 @property(copy, nonatomic) UNNotificationSound *sound; // @dynamic sound;
+@property(nonatomic) _Bool shouldDisplayActionsInline; // @dynamic shouldDisplayActionsInline;
 @property(nonatomic) _Bool shouldPreemptPresentedNotification; // @dynamic shouldPreemptPresentedNotification;
 @property(nonatomic) _Bool shouldUseRequestIdentifierForDismissalSync; // @dynamic shouldUseRequestIdentifierForDismissalSync;
 @property(nonatomic) _Bool shouldSuppressSyncDismissalWhenRemoved; // @dynamic shouldSuppressSyncDismissalWhenRemoved;
 @property(nonatomic) _Bool shouldSuppressScreenLightUp; // @dynamic shouldSuppressScreenLightUp;
 @property(nonatomic) _Bool shouldSuppressDefaultAction; // @dynamic shouldSuppressDefaultAction;
+@property(nonatomic) _Bool shouldShowSubordinateIcon; // @dynamic shouldShowSubordinateIcon;
 @property(nonatomic) _Bool shouldPreventNotificationDismissalAfterDefaultAction; // @dynamic shouldPreventNotificationDismissalAfterDefaultAction;
 @property(nonatomic) _Bool shouldBackgroundDefaultAction; // @dynamic shouldBackgroundDefaultAction;
 @property(nonatomic) _Bool shouldAuthenticateDefaultAction; // @dynamic shouldAuthenticateDefaultAction;
@@ -37,6 +41,7 @@
 @property(copy, nonatomic) NSString *launchImageName; // @dynamic launchImageName;
 @property(nonatomic) _Bool hasDefaultAction; // @dynamic hasDefaultAction;
 @property(copy, nonatomic) UNNotificationIcon *icon; // @dynamic icon;
+@property(copy, nonatomic) NSString *footer; // @dynamic footer;
 @property(copy, nonatomic) NSString *header; // @dynamic header;
 @property(copy, nonatomic) NSDate *expirationDate; // @dynamic expirationDate;
 @property(copy, nonatomic) NSURL *defaultActionURL; // @dynamic defaultActionURL;
@@ -47,6 +52,8 @@
 @property(copy, nonatomic) NSNumber *badge; // @dynamic badge;
 @property(copy, nonatomic) NSArray *attachments; // @dynamic attachments;
 @property(copy, nonatomic) NSString *accessoryImageName; // @dynamic accessoryImageName;
+@property(copy, nonatomic) _UNNotificationCommunicationContext *communicationContext; // @dynamic communicationContext;
+@property(copy, nonatomic) NSString *contentType; // @dynamic contentType;
 
 @end
 

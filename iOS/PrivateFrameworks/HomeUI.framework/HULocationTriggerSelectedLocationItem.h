@@ -6,15 +6,15 @@
 
 #import <Home/HFItem.h>
 
-@class HFLocationTriggerBuilder;
+@class HFEventTriggerBuilder;
 
 @interface HULocationTriggerSelectedLocationItem : HFItem
 {
-    HFLocationTriggerBuilder *_triggerBuilder;
+    HFEventTriggerBuilder *_triggerBuilder;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) HFLocationTriggerBuilder *triggerBuilder; // @synthesize triggerBuilder=_triggerBuilder;
+@property(readonly, nonatomic) HFEventTriggerBuilder *triggerBuilder; // @synthesize triggerBuilder=_triggerBuilder;
 - (_Bool)_locationIsHome;
 - (id)_locationTitle;
 @property(readonly, nonatomic) _Bool locationCanBeEdited;

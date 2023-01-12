@@ -23,12 +23,13 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *processingQueue; // @synthesize processingQueue=_processingQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *requestQueue; // @synthesize requestQueue=_requestQueue;
 - (id)createAtlasForTextureAtlasManager:(id)arg1;
-- (id)createTextureAtlasManagerForImageDataSpec:(CDStruct_1b544862)arg1;
+- (id)createTextureAtlasManagerForImageDataSpec:(CDStruct_6c943d2a)arg1;
 @property(readonly, nonatomic) PXGImageTexture *transparentTexture;
-@property(readonly, nonatomic) _Bool supportsTextureAtlas;
+@property(readonly, nonatomic) unsigned long long supportedContentTypes;
 - (id)createPayloadTextureFromPayload:(id)arg1;
-- (id)createTextureFromCVPixelBuffer:(struct __CVBuffer *)arg1 transform:(struct CGAffineTransform)arg2;
-- (id)createTextureFromCGImage:(struct CGImage *)arg1 orientation:(unsigned int)arg2;
+- (id)applyAdjustment:(id)arg1 toTexture:(id)arg2 options:(CDStruct_6238c8e0)arg3;
+- (id)createTextureFromCVPixelBuffer:(struct __CVBuffer *)arg1 transform:(CDStruct_6238c8e0)arg2 options: /* Error: Ran out of types for this method. */;
+- (id)createTextureFromCGImage:(struct CGImage *)arg1 transform:(CDStruct_6238c8e0)arg2 options: /* Error: Ran out of types for this method. */;
 @property(readonly, nonatomic) int presentationType;
 
 // Remaining properties

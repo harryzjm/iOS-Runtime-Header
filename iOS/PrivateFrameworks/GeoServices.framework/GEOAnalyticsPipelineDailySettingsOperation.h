@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+@class GEOLogMsgEventPeriodicSettingsSummary;
 
 __attribute__((visibility("hidden")))
 @interface GEOAnalyticsPipelineDailySettingsOperation
 {
-    NSArray *_states;
+    GEOLogMsgEventPeriodicSettingsSummary *_settings;
 }
 
 - (void).cxx_destruct;
 - (void)main;
-- (id)initWithStates:(id)arg1 remoteProxy:(id)arg2 runQueue:(id)arg3 completionQueue:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
+- (id)initWithSettings:(id)arg1 remoteProxy:(id)arg2 runQueue:(id)arg3 completionQueue:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSProgress, PHCompositeMediaResult, PHImageRequest, PHImageRequestOptions, PHMediaResourceRequest;
+@class NSProgress, PHCompositeMediaResult, PHImageRequest, PHImageRequestOptions;
 
 @interface PHImageRequestContext
 {
@@ -12,7 +12,6 @@
     PHImageRequest *_initialRequest;
     PHImageRequest *_intermediateRequest;
     PHImageRequest *_finalRequest;
-    PHMediaResourceRequest *_resourceRequest;
     struct atomic_flag _firstNonFastResultWasObserved;
     struct atomic_flag _finalResultSent;
     PHCompositeMediaResult *_delayedFinalInvalidDataResult;
@@ -35,6 +34,7 @@
 - (id)_produceFinalImageRequestForRequest:(id)arg1;
 - (id)_lazyProgress;
 - (id)_initialBehavior;
+- (_Bool)_shouldLoadHDRGainMapBasedOnChoosingPolicy:(long long)arg1;
 - (id)initWithRequestID:(int)arg1 managerID:(unsigned long long)arg2 asset:(id)arg3 displaySpec:(id)arg4 options:(id)arg5 resultHandler:(CDUnknownBlockType)arg6;
 
 @end

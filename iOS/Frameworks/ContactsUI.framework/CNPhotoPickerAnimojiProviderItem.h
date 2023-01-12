@@ -19,8 +19,11 @@ __attribute__((visibility("hidden")))
     CNAvatarStickerGeneratorProvider *_stickerGeneratorProvider;
     AVTRenderingScope *_renderingScope;
     AVTAvatarRecordImageProvider *_imageProvider;
+    struct CGSize _originalImageSize;
+    struct UIEdgeInsets _edgeInsets;
 }
 
++ (id)log;
 - (void).cxx_destruct;
 @property(retain, nonatomic) AVTAvatarRecordImageProvider *imageProvider; // @synthesize imageProvider=_imageProvider;
 @property(retain, nonatomic) AVTRenderingScope *renderingScope; // @synthesize renderingScope=_renderingScope;
@@ -28,6 +31,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIImage *loadingPlaceholderImage; // @synthesize loadingPlaceholderImage=_loadingPlaceholderImage;
 @property(retain, nonatomic) NSData *_generatedImageData; // @synthesize _generatedImageData=__generatedImageData;
 @property(retain, nonatomic) NSData *_originalImageData; // @synthesize _originalImageData=__originalImageData;
+@property(nonatomic) struct UIEdgeInsets edgeInsets; // @synthesize edgeInsets=_edgeInsets;
+@property(nonatomic) struct CGSize originalImageSize; // @synthesize originalImageSize=_originalImageSize;
 @property(retain, nonatomic) CNPhotoPickerColorVariant *backgroundColorVariant; // @synthesize backgroundColorVariant=_backgroundColorVariant;
 @property(retain, nonatomic) AVTStickerConfiguration *poseConfiguration; // @synthesize poseConfiguration=_poseConfiguration;
 @property(retain, nonatomic) id <AVTAvatarRecord> avatarRecord; // @synthesize avatarRecord=_avatarRecord;
@@ -49,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithAvatarRecord:(id)arg1 imageProvider:(id)arg2 renderingScope:(id)arg3 renderingQueue:(id)arg4 callbackQueue:(id)arg5;
 - (id)initWithOriginalImageData:(id)arg1 cropRect:(struct CGRect)arg2;
 - (id)initWithOriginalImageData:(id)arg1 cropRect:(struct CGRect)arg2 backgroundColorVariant:(id)arg3;
+- (struct CGAffineTransform)transformForMemojiMetadata;
 - (void)updateVisualIdentity:(id)arg1;
 - (id)originalImageData;
 - (id)imageData;

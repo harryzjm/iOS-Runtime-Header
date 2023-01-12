@@ -21,6 +21,7 @@
 }
 
 + (id)secureCodedPropertyKeys;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *completionDate; // @synthesize completionDate=_completionDate;
 @property(retain, nonatomic) NSDictionary *localizableMessage; // @synthesize localizableMessage=_localizableMessage;
 @property(retain, nonatomic) NSDate *sendDate; // @synthesize sendDate=_sendDate;
@@ -33,7 +34,6 @@
 @property(retain, nonatomic) NSString *exchangeID; // @synthesize exchangeID=_exchangeID;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (void)dealloc;
 
 @end
 

@@ -19,12 +19,13 @@
 #import <ContactsUI/UINavigationControllerDelegate-Protocol.h>
 
 @class CNAvatarEditingManager, CNContactStyle, CNPhotoPickerActionsViewController, CNPhotoPickerDataSource, CNPhotoPickerHeaderView, CNPhotoPickerProviderItem, CNVisualIdentity, CNVisualIdentityEditablePrimaryAvatarViewController, NSString, UICollectionView;
-@protocol CNVisualIdentityPickerViewControllerDelegate;
+@protocol CNVisualIdentityPickerPresenterDelegate, CNVisualIdentityPickerViewControllerDelegate;
 
 @interface CNVisualIdentityPickerViewController : UIViewController <UINavigationControllerDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, CNPhotoPickerHeaderViewDelegate, UIAdaptivePresentationControllerDelegate, CNVisualIdentityEditablePrimaryAvatarViewControllerDelegate, CNPhotoPickerProviderGroupDelegate, CNPhotoPickerActionsViewControllerDelegate, CNVisualIdentityItemEditorViewControllerDelegate>
 {
     _Bool _allowRotation;
     id <CNVisualIdentityPickerViewControllerDelegate> _delegate;
+    id <CNVisualIdentityPickerPresenterDelegate> _presenterDelegate;
     NSString *_assignActionTitleOverride;
     UICollectionView *_collectionView;
     CNPhotoPickerProviderItem *_lastSelectedProviderItem;
@@ -44,11 +45,11 @@
 + (id)imagePickerForContact:(id)arg1;
 + (_Bool)canShowAvatarEditor;
 + (double)itemsPerRowForWidth:(double)arg1;
-+ (id)photoPickerForGameCenterWithContact:(id)arg1;
 + (id)navigationControllerForPicker:(id)arg1;
 + (struct CGSize)defaultItemSize;
 + (struct CGSize)defaultContentSize;
 + (_Bool)canShowPhotoPickerForView:(id)arg1 withTraitCollection:(id)arg2;
++ (id)makeDescriptorForRequiredKeys;
 + (id)descriptorForRequiredKeys;
 + (id)log;
 - (void).cxx_destruct;
@@ -65,6 +66,7 @@
 @property(retain, nonatomic) CNPhotoPickerProviderItem *lastSelectedProviderItem; // @synthesize lastSelectedProviderItem=_lastSelectedProviderItem;
 @property(retain, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property(retain, nonatomic) NSString *assignActionTitleOverride; // @synthesize assignActionTitleOverride=_assignActionTitleOverride;
+@property(nonatomic) __weak id <CNVisualIdentityPickerPresenterDelegate> presenterDelegate; // @synthesize presenterDelegate=_presenterDelegate;
 @property(nonatomic) __weak id <CNVisualIdentityPickerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)viewController:(id)arg1 didSelectUpdatedProviderItem:(id)arg2;
 - (void)updateForSelectedProviderItem:(id)arg1;
@@ -77,6 +79,7 @@
 - (void)saveItemToRecentsImageStore:(id)arg1;
 - (void)deleteItemFromRecentsImageStore:(id)arg1;
 - (void)presentDismissConfirmation;
+- (void)presentationControllerWillDismiss:(id)arg1;
 - (void)presentationControllerDidAttemptToDismiss:(id)arg1;
 - (_Bool)isModalInPresentation;
 - (void)photoPickerActionsViewControllerDidFinish:(id)arg1;
@@ -121,6 +124,7 @@
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 referenceSizeForHeaderInSection:(long long)arg3;
+- (_Bool)collectionView:(id)arg1 canFocusItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
@@ -130,6 +134,7 @@
 - (id)insertNewItem:(id)arg1 toGroupType:(long long)arg2 updateActive:(_Bool)arg3 scrollToItem:(_Bool)arg4;
 - (id)insertNewItem:(id)arg1 toGroupType:(long long)arg2 updateActive:(_Bool)arg3;
 - (void)updateHeaderViewAvatar;
+- (void)updateDoneButtonEnabledStateForEditingProviderItem:(id)arg1;
 - (void)updateDoneButtonEnabledState;
 - (void)updateInjectedItemsSectionForProviderItem:(id)arg1;
 - (void)updateVisualIdentityWithProviderItem:(id)arg1;
@@ -142,6 +147,7 @@
 - (void)initializeHeaderView;
 - (void)buildHeaderView;
 - (void)buildCollectionView;
+- (double)collectionViewPaddingForCatalyst;
 - (double)textFieldFontSize;
 - (void)done:(id)arg1;
 - (void)confirmCancelAction;

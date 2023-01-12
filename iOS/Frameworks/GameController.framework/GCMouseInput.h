@@ -13,6 +13,8 @@
     long long _buttons;
     NSMutableArray *_auxiliaryButtons;
     UIWindow *_window;
+    CDUnknownBlockType _mouseMovedHandlerPrivate;
+    CDUnknownBlockType _mouseButtonPressedPrivate;
     CDUnknownBlockType _mouseMovedHandler;
     GCDeviceCursor *_scroll;
     GCControllerButtonInput *_leftButton;
@@ -42,6 +44,10 @@
 - (_Bool)shouldAcceptMouseEvents;
 - (id)initWithController:(id)arg1;
 - (void)_fireMouseMovedWithQueue:(id)arg1 deltaX:(float)arg2 deltaY:(float)arg3;
+- (void)setMouseButtonPressedPrivate:(CDUnknownBlockType)arg1;
+- (CDUnknownBlockType)mouseButtonPressedPrivate;
+- (void)setMouseMovedHandlerPrivate:(CDUnknownBlockType)arg1;
+- (CDUnknownBlockType)mouseMovedHandlerPrivate;
 
 @end
 

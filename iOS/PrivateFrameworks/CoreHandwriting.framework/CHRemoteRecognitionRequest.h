@@ -8,7 +8,7 @@
 
 #import <CoreHandwriting/NSSecureCoding-Protocol.h>
 
-@class CHDrawing, NSCharacterSet, NSDictionary, NSLocale;
+@class CHDrawing, NSArray, NSDictionary;
 
 @interface CHRemoteRecognitionRequest : NSObject <NSSecureCoding>
 {
@@ -20,8 +20,9 @@
     int _recognitionMode;
     int _contentType;
     int _autoCapitalizationMode;
-    NSLocale *_locale;
-    NSCharacterSet *_activeCharacterSet;
+    int _autoCorrectionMode;
+    NSArray *_locales;
+    NSDictionary *_activeCharacterSetPerLocale;
     unsigned long long _maxRecognitionResultCount;
     NSDictionary *_options;
     CHDrawing *_drawing;
@@ -39,21 +40,22 @@
 @property(copy, nonatomic) CHDrawing *drawing; // @synthesize drawing=_drawing;
 @property(copy, nonatomic) NSDictionary *options; // @synthesize options=_options;
 @property(nonatomic) unsigned long long maxRecognitionResultCount; // @synthesize maxRecognitionResultCount=_maxRecognitionResultCount;
-@property(copy, nonatomic) NSCharacterSet *activeCharacterSet; // @synthesize activeCharacterSet=_activeCharacterSet;
+@property(nonatomic) int autoCorrectionMode; // @synthesize autoCorrectionMode=_autoCorrectionMode;
 @property(nonatomic) int autoCapitalizationMode; // @synthesize autoCapitalizationMode=_autoCapitalizationMode;
 @property(nonatomic) int contentType; // @synthesize contentType=_contentType;
 @property(nonatomic) struct CGSize minimumDrawingSize; // @synthesize minimumDrawingSize=_minimumDrawingSize;
 @property(nonatomic) int recognitionMode; // @synthesize recognitionMode=_recognitionMode;
-@property(copy, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
+@property(copy, nonatomic) NSDictionary *activeCharacterSetPerLocale; // @synthesize activeCharacterSetPerLocale=_activeCharacterSetPerLocale;
+@property(copy, nonatomic) NSArray *locales; // @synthesize locales=_locales;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToRemoteRecognitionRequest:(id)arg1;
-- (id)recognizerConfigurationKey;
+- (id)recognizerConfigurationKeyWithLocale:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
-- (id)initWithLocale:(id)arg1 recognitionMode:(int)arg2 drawing:(id)arg3 options:(id)arg4 priority:(long long)arg5;
+- (id)initWithLocales:(id)arg1 recognitionMode:(int)arg2 drawing:(id)arg3 options:(id)arg4 priority:(long long)arg5;
 
 @end
 

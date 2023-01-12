@@ -7,6 +7,7 @@
 @class NSString, TRINamespaceDescriptor;
 
 @protocol TRINamespaceDescriptorProviding
+- (void)enumerateDefaultDescriptorsWithBlock:(void (^)(TRINamespaceDescriptor *, _Bool *))arg1;
 - (TRINamespaceDescriptor *)descriptorWithNamespaceName:(NSString *)arg1;
 @end
 

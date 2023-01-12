@@ -11,7 +11,7 @@
 @interface _TtC15HealthRecordsUI28MedicalRecordChartDataSource : HKGraphSeriesDataSource
 {
     MISSING_TYPE *type;
-    MISSING_TYPE *concept;
+    MISSING_TYPE *chartDefining;
     MISSING_TYPE *dataTransformer;
     MISSING_TYPE *chartableCodedQuantitySets;
     MISSING_TYPE *cachedBucketedSets;

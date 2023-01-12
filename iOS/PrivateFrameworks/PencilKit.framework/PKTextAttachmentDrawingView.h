@@ -4,31 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PencilKit/PKLinedPaperLayerDelegate-Protocol.h>
+#import <PencilKit/PKTextAttachmentDrawingViewProviderView-Protocol.h>
+#import <PencilKit/PKTextAttachmentResizeViewDelegate-Protocol.h>
 #import <PencilKit/PKTextAttachmentView-Protocol.h>
 #import <PencilKit/UIGestureRecognizerDelegate-Protocol.h>
+#import <PencilKit/UIPointerInteractionDelegate-Protocol.h>
 #import <PencilKit/UIScrollViewDelegate-Protocol.h>
-#import <PencilKit/_UICursorInteractionDelegate-Protocol.h>
 
-@class CALayer, NSMutableArray, NSString, NSTextAttachment, PKTextAttachmentDrawingResizeView, PKTextAttachmentDrawingViewTouchRecognizer, UILongPressGestureRecognizer, UIPanGestureRecognizer, UIScrollView, UITapGestureRecognizer, UIView;
+@class NSString, NSTextAttachment, PKLinedPaperLayer, PKTextAttachmentDrawingViewTouchRecognizer, PKTextAttachmentResizeView, UILongPressGestureRecognizer, UIPanGestureRecognizer, UIScrollView, UITapGestureRecognizer, UIView;
 
-@interface PKTextAttachmentDrawingView <PKTextAttachmentView, UIGestureRecognizerDelegate, _UICursorInteractionDelegate, UIScrollViewDelegate>
+@interface PKTextAttachmentDrawingView <PKTextAttachmentDrawingViewProviderView, PKTextAttachmentView, UIGestureRecognizerDelegate, PKTextAttachmentResizeViewDelegate, PKLinedPaperLayerDelegate, UIPointerInteractionDelegate, UIScrollViewDelegate>
 {
     UIScrollView *_tileMaskView;
+    struct CGAffineTransform _cachedDrawingTransform;
+    double _cachedDrawingTransformBoundsWidth;
     _Bool _resizeUpper;
     _Bool _inserted;
     _Bool _zoomingProgramatically;
-    _Bool _drawingMenuVisible;
-    _Bool _dataDetectorViewsHidden;
-    _Bool _dataDetectorStatisticsIgnoreItems;
-    _Bool _isDraggingSelection;
-    _Bool _toolPickerVisible;
-    _Bool _hideUntilScroll;
+    double _drawingAspectRatio;
     UIView *_tileScaleView;
     NSTextAttachment *_textAttachment;
     double _zoomScale;
-    PKTextAttachmentDrawingResizeView *_topResizeView;
-    PKTextAttachmentDrawingResizeView *_bottomResizeView;
-    CALayer *_linesLayer;
+    PKTextAttachmentResizeView *_topResizeView;
+    PKTextAttachmentResizeView *_bottomResizeView;
+    PKLinedPaperLayer *_linesLayer;
     PKTextAttachmentDrawingViewTouchRecognizer *_resizeHighlightGestureRecognizer;
     UIPanGestureRecognizer *_resizeDragGestureRecognizer;
     UITapGestureRecognizer *_eatKeyboardGestureRecognizer;
@@ -36,32 +36,18 @@
     UITapGestureRecognizer *_showMenuGestureRecognizer;
     UILongPressGestureRecognizer *_hideMenuGestureRecognizer;
     double _zoomStartScale;
-    NSMutableArray *_dataDetectorViews;
     struct CGPoint _zoomStartLocationInWindow;
     struct CGPoint _zoomStartLocationInAttachment;
     struct CGPoint _textViewContentOffsetStartLocation;
-    struct CGRect _originalDrawingBounds;
-    struct CGRect _originalViewBounds;
-    struct UIEdgeInsets _originalContentInset;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool hideUntilScroll; // @synthesize hideUntilScroll=_hideUntilScroll;
-@property(nonatomic) _Bool toolPickerVisible; // @synthesize toolPickerVisible=_toolPickerVisible;
-@property(nonatomic) _Bool isDraggingSelection; // @synthesize isDraggingSelection=_isDraggingSelection;
-@property(nonatomic) _Bool dataDetectorStatisticsIgnoreItems; // @synthesize dataDetectorStatisticsIgnoreItems=_dataDetectorStatisticsIgnoreItems;
-@property(nonatomic) _Bool dataDetectorViewsHidden; // @synthesize dataDetectorViewsHidden=_dataDetectorViewsHidden;
-@property(retain, nonatomic) NSMutableArray *dataDetectorViews; // @synthesize dataDetectorViews=_dataDetectorViews;
-@property(readonly, nonatomic) _Bool drawingMenuVisible; // @synthesize drawingMenuVisible=_drawingMenuVisible;
 @property(nonatomic) double zoomStartScale; // @synthesize zoomStartScale=_zoomStartScale;
 @property(nonatomic) struct CGPoint textViewContentOffsetStartLocation; // @synthesize textViewContentOffsetStartLocation=_textViewContentOffsetStartLocation;
 @property(nonatomic) struct CGPoint zoomStartLocationInAttachment; // @synthesize zoomStartLocationInAttachment=_zoomStartLocationInAttachment;
 @property(nonatomic) struct CGPoint zoomStartLocationInWindow; // @synthesize zoomStartLocationInWindow=_zoomStartLocationInWindow;
 @property(nonatomic) _Bool zoomingProgramatically; // @synthesize zoomingProgramatically=_zoomingProgramatically;
 @property(nonatomic) _Bool inserted; // @synthesize inserted=_inserted;
-@property(nonatomic) struct UIEdgeInsets originalContentInset; // @synthesize originalContentInset=_originalContentInset;
-@property(nonatomic) struct CGRect originalViewBounds; // @synthesize originalViewBounds=_originalViewBounds;
-@property(nonatomic) struct CGRect originalDrawingBounds; // @synthesize originalDrawingBounds=_originalDrawingBounds;
 @property(nonatomic) _Bool resizeUpper; // @synthesize resizeUpper=_resizeUpper;
 @property(retain, nonatomic) UILongPressGestureRecognizer *hideMenuGestureRecognizer; // @synthesize hideMenuGestureRecognizer=_hideMenuGestureRecognizer;
 @property(retain, nonatomic) UITapGestureRecognizer *showMenuGestureRecognizer; // @synthesize showMenuGestureRecognizer=_showMenuGestureRecognizer;
@@ -69,17 +55,33 @@
 @property(retain, nonatomic) UITapGestureRecognizer *eatKeyboardGestureRecognizer; // @synthesize eatKeyboardGestureRecognizer=_eatKeyboardGestureRecognizer;
 @property(retain, nonatomic) UIPanGestureRecognizer *resizeDragGestureRecognizer; // @synthesize resizeDragGestureRecognizer=_resizeDragGestureRecognizer;
 @property(retain, nonatomic) PKTextAttachmentDrawingViewTouchRecognizer *resizeHighlightGestureRecognizer; // @synthesize resizeHighlightGestureRecognizer=_resizeHighlightGestureRecognizer;
-@property(retain, nonatomic) CALayer *linesLayer; // @synthesize linesLayer=_linesLayer;
-@property(retain, nonatomic) PKTextAttachmentDrawingResizeView *bottomResizeView; // @synthesize bottomResizeView=_bottomResizeView;
-@property(retain, nonatomic) PKTextAttachmentDrawingResizeView *topResizeView; // @synthesize topResizeView=_topResizeView;
+@property(retain, nonatomic) PKLinedPaperLayer *linesLayer; // @synthesize linesLayer=_linesLayer;
+@property(retain, nonatomic) PKTextAttachmentResizeView *bottomResizeView; // @synthesize bottomResizeView=_bottomResizeView;
+@property(retain, nonatomic) PKTextAttachmentResizeView *topResizeView; // @synthesize topResizeView=_topResizeView;
 @property(nonatomic) double zoomScale; // @synthesize zoomScale=_zoomScale;
 @property(nonatomic) __weak NSTextAttachment *textAttachment; // @synthesize textAttachment=_textAttachment;
 @property(readonly, nonatomic) UIView *tileScaleView; // @synthesize tileScaleView=_tileScaleView;
-- (id)_accessibilityUserTestingChildren;
-- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+@property(readonly, nonatomic) double drawingAspectRatio; // @synthesize drawingAspectRatio=_drawingAspectRatio;
+- (id)linedPaperLayerTraitCollection:(id)arg1;
+- (id)linedPaperLayerAttachmentContainerView:(id)arg1;
+- (id)linedPaperLayerLinedPaper:(id)arg1;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (void)resetZoom;
 - (void)drawingDataDidChange:(id)arg1;
 - (id)dataForTextAttachment:(id)arg1;
+- (void)resizeViewDidUpdate:(id)arg1;
+- (void)resizeView:(id)arg1 finishedWithOriginalDrawingBounds:(struct CGRect)arg2 originalViewBounds:(struct CGRect)arg3;
+- (void)resizeViewLayoutAttachment:(id)arg1;
+- (void)resizeViewRemoveAttachment:(id)arg1;
+- (void)resizeView:(id)arg1 setDrawingHeight:(double)arg2 originalHeight:(double)arg3 growFromTop:(_Bool)arg4;
+- (struct CGRect)resizeViewDrawingBounds:(id)arg1;
+- (id)resizeViewTextView:(id)arg1;
+@property(readonly, nonatomic) struct CGAffineTransform drawingTransform;
+- (double)desiredAttachmentViewWidth;
+- (struct CGAffineTransform)drawingTransformForViewWidth:(double)arg1;
+- (double)drawingScaleForViewWidth:(double)arg1;
+- (struct CGRect)drawingBoundsForViewWidth:(double)arg1;
+- (struct CGRect)drawingContentBounds;
 - (void)handleDoubleTap:(id)arg1;
 - (void)scrollViewDidEndZooming:(id)arg1 withView:(id)arg2 atScale:(double)arg3;
 - (void)scrollViewDidZoom:(id)arg1;
@@ -87,7 +89,6 @@
 - (id)viewForZoomingInScrollView:(id)arg1;
 - (void)layoutTileViews;
 - (void)updateTileContainerViewFrame;
-- (void)drawLines;
 - (void)layoutSubviews;
 - (_Bool)isAtEndOfDocument;
 @property(readonly, nonatomic) _Bool isAtBeginningOfDocument;
@@ -111,7 +112,6 @@
 - (void)showDrawingMenu:(id)arg1;
 - (void)hideDrawingMenu:(id)arg1;
 - (void)menuDidHide:(id)arg1;
-- (void)drawingScrollViewDidScroll:(id)arg1;
 - (void)resizeDrawing:(id)arg1;
 - (void)higlightResize:(id)arg1;
 - (_Bool)gestureRecognizerShouldDelayLift:(id)arg1;
@@ -134,42 +134,41 @@
 - (void)_adjustResizeIndicatorVisibility;
 - (void)_adjustResizeIndicatorVisibilityNotification;
 - (void)setAttachmentChromeVisible:(_Bool)arg1 animated:(_Bool)arg2 highlightBackground:(_Bool)arg3;
-- (void)_sceneDidActivate:(id)arg1;
+- (void)_updateViewHeightIfNecessary;
 - (void)pixelAlignForContentScale:(double)arg1 enclosingScrollView:(id)arg2;
 - (void)updateFrameForTextContainer;
 - (void)setHidden:(_Bool)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)fingerDrawingEnabledDidChange;
-- (void)revealDataDetectorViews;
-- (void)layoutDataDetectorViews;
-- (id)dataDetectorViewAtPoint:(struct CGPoint)arg1;
-- (void)updateDataDetectorResults:(id)arg1;
-- (void)updateDataDetectorVisibility;
-- (void)didEndModifyDrawing;
-- (void)didBeginModifyDrawing;
-- (void)_toolPickerDidShowHide:(id)arg1;
-- (void)containingScrollViewDidScroll;
-- (void)drawingDidChange;
+- (void)toolPickerDidHide;
+- (void)toolPickerDidShow;
+- (void)drawingDidChangeVisibleStrokes:(_Bool)arg1;
 - (void)drawingDidEraseStrokes;
 - (void)didBeginDrawing;
-@property(readonly, nonatomic) double drawingAspectRatio;
 - (struct CGRect)drawingBounds;
 @property(readonly, nonatomic) struct CGSize drawingVisibleSize;
 - (void)_updateAttachmentBoundsEnsureLayout:(_Bool)arg1;
-- (long long)_characterIndex;
+@property(readonly, nonatomic) long long _characterIndex;
 - (id)_textView;
 - (void)_triggerRedraw;
 - (void)setContentHidden:(_Bool)arg1;
+- (id)tiledView;
+- (void)_updateAfterBackgroundSnapshotting:(id)arg1;
+- (void)_sceneDidActivate:(id)arg1;
 - (void)didMoveToSuperview;
 - (void)didMoveToWindow;
-- (void)willMoveToWindow:(id)arg1;
 - (id)tileMaskView;
 - (void)_updateResizeTouchInsetsFingerDrawingEnabled:(_Bool)arg1;
+@property(nonatomic) struct CGRect drawingCanvasBounds;
+- (id)drawingForTextAttachment:(id)arg1 drawingClass:(Class)arg2;
+- (id)topLevelAttachmentView;
+- (id)tiledViewAttachmentViews;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithAttachment:(id)arg1 inserted:(_Bool)arg2;
-- (id)init;
+- (id)initWithAttachment:(id)arg1 drawingClass:(Class)arg2 inserted:(_Bool)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 drawing:(id)arg2;
+- (id)initWithDrawingClass:(Class)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

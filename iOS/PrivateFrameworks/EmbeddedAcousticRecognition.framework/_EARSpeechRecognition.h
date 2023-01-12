@@ -18,15 +18,15 @@
 
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSArray *interpretationIndices; // @synthesize interpretationIndices=_interpretationIndices;
-@property(readonly, copy, nonatomic) NSArray *tokenSausage; // @synthesize tokenSausage=_tokenSausage;
+@property(copy, nonatomic) NSArray *tokenSausage; // @synthesize tokenSausage=_tokenSausage;
 - (id)description;
 - (id)granularizedRecognition;
-- (pair_a60b4d2a)_tokenPhraseChoiceList;
+- (pair_a9e0fe82)_tokenPhraseChoiceList;
 - (id)oneBest;
 - (id)nBest;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)_initWithTokenPhraseChoiceList:(const pair_a60b4d2a *)arg1;
-- (id)_initWithNBestList:(const vector_2c247c42 *)arg1 useHatText:(_Bool)arg2;
+- (id)_initWithTokenPhraseChoiceList:(const void *)arg1;
+- (id)_initWithNBestList:(const void *)arg1 useHatText:(_Bool)arg2;
 - (id)_initWithTokenSausage:(id)arg1 interpretationIndices:(id)arg2;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

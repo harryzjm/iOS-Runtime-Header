@@ -8,6 +8,6 @@
 
 @protocol MFAudioSessionControlling
 - (void)updateAudioSessionWithConfiguration:(MFAudioSessionConfiguration *)arg1;
-- (_Bool)setAudioSessionActive:(_Bool)arg1 withOptions:(unsigned long long)arg2 error:(id *)arg3;
+- (void)activateAudioSessionWithCompletion:(void (^)(_Bool, NSError *))arg1;
 @end
 

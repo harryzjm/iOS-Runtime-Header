@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class CPLEngineLibrary, CPLSyncSession, NSDate, NSString;
-@protocol CPLEngineSyncTaskDelegate, NSCoding;
+@protocol CPLEngineStoreUserIdentifier, CPLEngineSyncTaskDelegate;
 
 @interface CPLEngineSyncTask : NSObject
 {
@@ -20,7 +20,7 @@
     id <CPLEngineSyncTaskDelegate> _delegate;
     CPLEngineLibrary *_engineLibrary;
     CPLSyncSession *_session;
-    id <NSCoding> _transportUserIdentifier;
+    id <CPLEngineStoreUserIdentifier> _transportUserIdentifier;
 }
 
 + (id)taskWithEngineLibrary:(id)arg1 session:(id)arg2;
@@ -28,7 +28,7 @@
 @property(getter=isCancelled, setter=_setCancelled:) _Bool cancelled; // @synthesize cancelled=_cancelled;
 @property(nonatomic) _Bool forceSync; // @synthesize forceSync=_forceSync;
 @property(nonatomic) _Bool foreground; // @synthesize foreground=_foreground;
-@property(retain, nonatomic) id <NSCoding> transportUserIdentifier; // @synthesize transportUserIdentifier=_transportUserIdentifier;
+@property(retain, nonatomic) id <CPLEngineStoreUserIdentifier> transportUserIdentifier; // @synthesize transportUserIdentifier=_transportUserIdentifier;
 @property(readonly, nonatomic) CPLSyncSession *session; // @synthesize session=_session;
 @property(readonly, nonatomic) CPLEngineLibrary *engineLibrary; // @synthesize engineLibrary=_engineLibrary;
 @property(retain) id <CPLEngineSyncTaskDelegate> delegate; // @synthesize delegate=_delegate;

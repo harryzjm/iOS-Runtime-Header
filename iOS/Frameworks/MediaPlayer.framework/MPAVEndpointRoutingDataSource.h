@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableDictionary, NSObject, NSString;
+@class MRAVRoutingDiscoverySession, MRAVRoutingDiscoverySessionConfiguration, NSMutableDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface MPAVEndpointRoutingDataSource
 {
-    void *_discoverySession;
-    void *_callbackToken;
+    MRAVRoutingDiscoverySession *_discoverySession;
+    id _callbackToken;
+    unsigned int _targetSessionID;
     NSString *_routingContextUID;
     NSObject<OS_dispatch_queue> *_serialQueue;
     NSMutableDictionary *_endpoints;
@@ -20,12 +21,15 @@
 @property(retain, nonatomic) NSMutableDictionary *endpoints; // @synthesize endpoints=_endpoints;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property(copy, nonatomic) NSString *routingContextUID; // @synthesize routingContextUID=_routingContextUID;
+- (unsigned int)targetSessionID;
 - (void)_endpointsDidChange:(id)arg1;
 - (void)setPickedRoute:(id)arg1 withPassword:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)getRoutesForCategory:(id)arg1;
 - (_Bool)devicePresenceDetected;
 - (void)setDiscoveryMode:(long long)arg1;
 - (long long)discoveryMode;
+@property(readonly, nonatomic) MRAVRoutingDiscoverySessionConfiguration *discoverySessionConfiguration;
+- (void)setTargetSessionID:(unsigned int)arg1;
 - (void)dealloc;
 - (id)initWithThrottlingEnabled:(_Bool)arg1;
 - (id)init;

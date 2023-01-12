@@ -12,11 +12,13 @@
 
 @interface TPSyncingPolicy : NSObject <NSSecureCoding>
 {
+    _Bool _isInheritedAccount;
     int _syncUserControllableViews;
     NSString *_model;
     TPPolicyVersion *_version;
     NSArray *_keyViewMapping;
     NSSet *_viewList;
+    NSSet *_priorityViews;
     NSSet *_viewsToPiggybackTLKs;
     NSSet *_userControllableViews;
 }
@@ -24,8 +26,10 @@
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly) int syncUserControllableViews; // @synthesize syncUserControllableViews=_syncUserControllableViews;
+@property _Bool isInheritedAccount; // @synthesize isInheritedAccount=_isInheritedAccount;
 @property(readonly) NSSet *userControllableViews; // @synthesize userControllableViews=_userControllableViews;
 @property(readonly) NSSet *viewsToPiggybackTLKs; // @synthesize viewsToPiggybackTLKs=_viewsToPiggybackTLKs;
+@property(readonly) NSSet *priorityViews; // @synthesize priorityViews=_priorityViews;
 @property(readonly) NSSet *viewList; // @synthesize viewList=_viewList;
 @property(readonly) NSArray *keyViewMapping; // @synthesize keyViewMapping=_keyViewMapping;
 @property(readonly) TPPolicyVersion *version; // @synthesize version=_version;
@@ -36,7 +40,7 @@
 - (_Bool)syncUserControllableViewsAsBoolean;
 - (id)mapDictionaryToView:(id)arg1;
 - (id)description;
-- (id)initWithModel:(id)arg1 version:(id)arg2 viewList:(id)arg3 userControllableViews:(id)arg4 syncUserControllableViews:(int)arg5 viewsToPiggybackTLKs:(id)arg6 keyViewMapping:(id)arg7;
+- (id)initWithModel:(id)arg1 version:(id)arg2 viewList:(id)arg3 priorityViews:(id)arg4 userControllableViews:(id)arg5 syncUserControllableViews:(int)arg6 viewsToPiggybackTLKs:(id)arg7 keyViewMapping:(id)arg8 isInheritedAccount:(_Bool)arg9;
 
 @end
 

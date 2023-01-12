@@ -9,12 +9,14 @@
 @interface PPEvictingMinPriorityQueue : NSObject
 {
     unsigned long long _capacity;
-    struct priority_queue<PPScoredItem *, std::__1::vector<PPScoredItem *, std::__1::allocator<PPScoredItem *>>, PPScoredItemCompareGreater> *_queue;
+    void *_queue;
 }
 
 - (id)extractSortedMutableArray;
+- (id)getMinItemWithoutPopping;
 - (id)popItem;
 - (void)addObject:(id)arg1;
+- (unsigned long long)capacity;
 @property(readonly, nonatomic) double count;
 - (void)dealloc;
 - (id)initWithCapacity:(unsigned long long)arg1;

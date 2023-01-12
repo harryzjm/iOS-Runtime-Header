@@ -10,11 +10,11 @@
 @protocol NCAuxiliaryOptionsProviding;
 
 @protocol NCNotificationGroupListDelegate <NCNotificationListComponentDelegate>
+- (_Bool)isNotificationGroupListInCollapsedStack:(NCNotificationGroupList *)arg1;
+- (_Bool)notificationGroupListShouldReloadNotificationCells:(NCNotificationGroupList *)arg1;
 - (_Bool)isViewVisibleForNotificationGroupList:(NCNotificationGroupList *)arg1;
 - (_Bool)notificationGroupListShouldScrollToTop:(NCNotificationGroupList *)arg1;
 - (void)notificationGroupList:(NCNotificationGroupList *)arg1 requestsScrollToTopOfGroupWithCompletion:(void (^)(void))arg2;
 - (id <NCAuxiliaryOptionsProviding>)notificationGroupList:(NCNotificationGroupList *)arg1 requestsAuxiliaryOptionsContentProviderForNotificationRequest:(NCNotificationRequest *)arg2 isLongLook:(_Bool)arg3;
-- (void)notificationGroupList:(NCNotificationGroupList *)arg1 didRemoveNotificationRequest:(NCNotificationRequest *)arg2;
-- (void)notificationGroupListDidRemoveAllNotificationRequests:(NCNotificationGroupList *)arg1;
 @end
 

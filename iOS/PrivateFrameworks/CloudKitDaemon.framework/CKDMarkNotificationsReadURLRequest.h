@@ -6,7 +6,6 @@
 
 @class NSArray, NSMutableDictionary;
 
-__attribute__((visibility("hidden")))
 @interface CKDMarkNotificationsReadURLRequest
 {
     CDUnknownBlockType _notificationMarkedReadProgressBlock;

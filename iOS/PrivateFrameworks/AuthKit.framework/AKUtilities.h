@@ -4,28 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <AAAFoundation/AFUtilities.h>
 
-@interface AKUtilities : NSObject
+@interface AKUtilities : AFUtilities
 {
 }
-
-+ (_Bool)screenLockIsEnabled;
-+ (_Bool)openAppleIDPrefWithLaunchParameters:(id)arg1;
-+ (void)openAppleIDPref;
-+ (void)openParentalControlPref;
-+ (void)openInternetAccountPref;
-+ (void)openSecurityPref;
-+ (void)openSharingPref;
-+ (void)openEnergySaverPref;
-+ (void)launchPhotosApplication;
-+ (void)launchSoftwareUpdate;
-+ (void)openApplicationWithBundleID:(id)arg1;
-+ (id)urlForBundleIdentifier:(id)arg1;
-+ (id)currentApplicationVersion;
-+ (id)currentApplicationIdentifier;
-+ (id)bundleVersion;
-+ (id)bundleIdentifier;
 
 @end
 

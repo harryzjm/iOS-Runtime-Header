@@ -13,7 +13,7 @@
 #import <UIKitCore/_UIDragSetDownAnimationTarget-Protocol.h>
 
 @class NSMapTable, NSMutableSet, NSString, UIDropInteractionContextImpl, UIPasteConfiguration, UIView;
-@protocol UIDropInteractionDelegate, UIDropInteractionEffect;
+@protocol UIDropInteractionDelegate, UIDropInteractionEffect, _UIDropInteractionOwning;
 
 @interface UIDropInteraction : NSObject <UIDragGestureRecognizerDelegate, UIInteraction_Internal, UIDragInteraction, _UIDragSetDownAnimationTarget, UIInteraction>
 {
@@ -23,7 +23,7 @@
     _Bool _allowsSimultaneousDropSessions;
     _Bool _wantsDefaultVisualBehavior;
     id <UIDropInteractionDelegate> _delegate;
-    UIView *_view;
+    id <_UIDropInteractionOwning> _owner;
     UIDropInteractionContextImpl *_context;
     UIPasteConfiguration *_pasteConfiguration;
     id <UIDropInteractionEffect> _interactionEffect;
@@ -34,7 +34,7 @@
 @property(retain, nonatomic) id <UIDropInteractionEffect> interactionEffect; // @synthesize interactionEffect=_interactionEffect;
 @property(readonly, copy, nonatomic, getter=_pasteConfiguration) UIPasteConfiguration *pasteConfiguration; // @synthesize pasteConfiguration=_pasteConfiguration;
 @property(retain, nonatomic) UIDropInteractionContextImpl *context; // @synthesize context=_context;
-@property(nonatomic) __weak UIView *view; // @synthesize view=_view;
+@property(nonatomic) __weak id <_UIDropInteractionOwning> owner; // @synthesize owner=_owner;
 @property(nonatomic) _Bool allowsSimultaneousDropSessions; // @synthesize allowsSimultaneousDropSessions=_allowsSimultaneousDropSessions;
 @property(readonly, nonatomic) __weak id <UIDropInteractionDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_sendSessionDidEnd:(id)arg1;
@@ -54,6 +54,9 @@
 - (_Bool)_gestureRecognizer:(id)arg1 shouldReceiveDragEvent:(id)arg2;
 - (void)didMoveToView:(id)arg1;
 - (void)willMoveToView:(id)arg1;
+@property(readonly, nonatomic) __weak UIView *view;
+- (void)didMoveToOwner:(id)arg1;
+- (void)willMoveToOwner:(id)arg1;
 - (_Bool)isActive;
 - (id)_dynamicGestureRecognizersForEvent:(id)arg1;
 - (id)_initWithPasteConfiguration:(id)arg1;

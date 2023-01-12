@@ -6,10 +6,17 @@
 
 #import <UIKit/UIColor.h>
 
+@class NSArray, NSData;
+
 @interface UIColor (SafariSharedExtras)
 + (id)safari_colorWithSerializedColorData:(id)arg1;
 + (id)safari_colorWithRGBColorComponents:(id)arg1;
-- (id)safari_colorDataForSerialization;
-- (id)safari_rgbColorComponents;
+- (double)safari_contrastRatioWithColor:(id)arg1;
+@property(readonly, nonatomic) _Bool safari_isOffWhite;
+@property(readonly, nonatomic) _Bool safari_meetsThresholdForDarkAppearance;
+@property(readonly, nonatomic) double safari_grayscaleComponent;
+@property(readonly, nonatomic) double safari_luminance;
+@property(readonly, copy, nonatomic) NSData *safari_colorDataForSerialization;
+@property(readonly, copy, nonatomic) NSArray *safari_rgbColorComponents;
 @end
 

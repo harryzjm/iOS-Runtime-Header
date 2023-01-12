@@ -29,6 +29,8 @@
 @property(readonly, nonatomic) unsigned long long themeType; // @synthesize themeType=_themeType;
 @property(readonly, nonatomic) NSString *javaScriptName;
 @property(readonly, nonatomic) UIColor *tintColor;
+@property(readonly, nonatomic) UIColor *cardBackgroundColor;
+@property(readonly, nonatomic) UIColor *transitIncidentBackgroundColor;
 @property(readonly, nonatomic) UIColor *ratingBarBackgroundColor;
 @property(readonly, nonatomic) UIColor *ratingBarEndColor;
 @property(readonly, nonatomic) UIColor *ratingBarStartColor;

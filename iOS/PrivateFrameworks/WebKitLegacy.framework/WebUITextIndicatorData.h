@@ -34,7 +34,7 @@
 @property(retain, nonatomic) UIImage *dataInteractionImage; // @synthesize dataInteractionImage=_dataInteractionImage;
 - (void)dealloc;
 - (id)initWithImage:(struct CGImage *)arg1 scale:(double)arg2;
-- (id)initWithImage:(struct CGImage *)arg1 textIndicatorData:(const struct TextIndicatorData *)arg2 scale:(double)arg3;
+- (id)initWithImage:(struct CGImage *)arg1 textIndicatorData:(const void *)arg2 scale:(double)arg3;
 
 @end
 

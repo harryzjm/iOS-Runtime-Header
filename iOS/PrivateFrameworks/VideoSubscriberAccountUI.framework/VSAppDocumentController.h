@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) VSViewModel *viewModel; // @synthesize viewModel=_viewModel;
 @property(nonatomic) __weak id <VSAppDocumentControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) IKAppDocument *appDocument; // @synthesize appDocument=_appDocument;
+- (void)userInterfaceStyleDidUpdate;
 - (void)_notiftyDidFailToUpdateViewModelWithError:(id)arg1;
 - (void)_notiftyDidUpdateViewModel:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

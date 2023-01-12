@@ -12,6 +12,7 @@
 - (void)_openURL:(NSURL *)arg1 completionHandler:(void (^)(_Bool))arg2;
 - (void)_remoteViewDidBecomeReadyForDisplay;
 - (void)_updateSnapshotForNextLaunch:(UIImage *)arg1;
+- (void)_presentAlertWithTitle:(NSString *)arg1 message:(NSString *)arg2 buttonTitle:(NSString *)arg3 destructiveButtonTitle:(NSString *)arg4 completion:(void (^)(_Bool))arg5;
 - (void)_presentAlertWithTitle:(NSString *)arg1 message:(NSString *)arg2 buttonTitle:(NSString *)arg3 completion:(void (^)(void))arg4;
 - (void)_dismissAndPresentPhotosApp;
 - (void)_dismiss;

@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     unsigned int _maxAllowedBitrate2G;
     unsigned int _maxAllowedBitrate3G;
     unsigned int _maxAllowedBitrateLTE;
-    unsigned int _maxAllowedBitrate5G;
+    unsigned int _maxAllowedBitrateHighRat;
     unsigned int _maxAllowedBitrateWifi;
     unsigned int _maxAllowedScreenShareBitrate2G;
     unsigned int _maxAllowedScreenShareBitrate3G;
@@ -32,10 +32,11 @@ __attribute__((visibility("hidden")))
     unsigned int _maxAllowedBitrateUSB;
 }
 
-+ (void)updateMaxAllowedBitratePerConnection:(unsigned int *)arg1 connectionType:(int)arg2 bandwidthSettings:(id)arg3;
++ (void)updateMaxAllowedBitratePerConnection:(unsigned int *)arg1 connectionType:(int)arg2 negotiatedSettings:(id)arg3;
 @property(readonly) unsigned int maxAllowedBitrateUSB; // @synthesize maxAllowedBitrateUSB=_maxAllowedBitrateUSB;
 @property(readonly) unsigned int maxAllowedBitrateP2P; // @synthesize maxAllowedBitrateP2P=_maxAllowedBitrateP2P;
 @property(readonly) unsigned int maxAllowedBitrateWifi; // @synthesize maxAllowedBitrateWifi=_maxAllowedBitrateWifi;
+@property(readonly) unsigned int maxAllowedBitrateHighRat; // @synthesize maxAllowedBitrateHighRat=_maxAllowedBitrateHighRat;
 @property(readonly) unsigned int maxAllowedBitrateLTE; // @synthesize maxAllowedBitrateLTE=_maxAllowedBitrateLTE;
 @property(readonly) unsigned int maxAllowedBitrate3G; // @synthesize maxAllowedBitrate3G=_maxAllowedBitrate3G;
 @property(readonly) unsigned int maxAllowedBitrate2G; // @synthesize maxAllowedBitrate2G=_maxAllowedBitrate2G;
@@ -47,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (unsigned int)maxAllowedAudioOnlyBitrateForConnection:(int)arg1;
 - (unsigned int)maxAllowedScreenShareBitrateForConnection:(int)arg1;
 - (unsigned int)maxAllowedBitrateForVCConnection:(id)arg1 forLocalInterface:(_Bool)arg2 encodeRule:(id)arg3;
+- (unsigned int)maxAllowedBitrateForVCConnection:(id)arg1 forLocalInterface:(_Bool)arg2;
 - (unsigned int)maxAllowedBitrateForConnectionType:(int)arg1;
 - (unsigned int)maxAllowedScreenShareCellularBitrate;
 - (unsigned int)maxAllowedCellularBitrate;

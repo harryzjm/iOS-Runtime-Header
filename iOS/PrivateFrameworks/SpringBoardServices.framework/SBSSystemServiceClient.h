@@ -14,6 +14,7 @@
 - (void)disableRemoteStateDumpWithCompletion:(CDUnknownBlockType)arg1;
 - (void)enableRemoteStateDumpWithTimeout:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestStateDump:(unsigned long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)addWidgetStackWithIdentifiers:(id)arg1 toPage:(int)arg2 withSizing:(int)arg3;
 - (void)addWidgetWithIdentifier:(id)arg1 toPage:(int)arg2 withSizing:(int)arg3;
 - (void)addWidgetsToEachPage;
 - (void)loadStashedSwitcherModelFromPath:(id)arg1;
@@ -22,12 +23,16 @@
 - (id)acquireHUDHiddenAssertionForIdentifier:(id)arg1;
 - (void)setTestRunnerRecoveryApplicationBundleIdentifier:(id)arg1;
 - (void)setApplicationBundleIdentifier:(id)arg1 blockedForScreenTime:(_Bool)arg2;
+- (void)setAccessoryType:(long long)arg1 attached:(_Bool)arg2;
 - (void)resetToHomeScreenAnimated:(_Bool)arg1;
+- (id)acquireAssertionForReachabilityEnabled:(_Bool)arg1;
+- (void)setReachabilityActive:(_Bool)arg1;
 - (void)setMallocStackLoggingEnabled:(_Bool)arg1;
 - (void)setOrientationLockEnabled:(_Bool)arg1;
 - (void)setIdleTimerEnabled:(_Bool)arg1;
 - (void)setHiddenFeaturesEnabled:(_Bool)arg1;
 - (void)setAlertsEnabled:(_Bool)arg1;
+- (void)clearAllUserNotifications;
 - (void)suspendAllDisplays;
 @property(nonatomic) long long passcodePolicy;
 - (void)fetchHapticTypeForButtonKind:(long long)arg1 completion:(CDUnknownBlockType)arg2;

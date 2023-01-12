@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <HomeKit/HMFObject-Protocol.h>
+#import <HomeKit/NSCopying-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface HMLightProfileSettings : NSObject <HMFObject, NSSecureCoding>
+@interface HMLightProfileSettings : NSObject <HMFObject, NSCopying, NSSecureCoding>
 {
     _Bool _naturalLightingEnabled;
     unsigned long long _supportedFeatures;
@@ -29,6 +30,7 @@
 - (id)initWithCoder:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithSupportedFeatures:(unsigned long long)arg1 naturalLightingEnabled:(_Bool)arg2;
 
 // Remaining properties

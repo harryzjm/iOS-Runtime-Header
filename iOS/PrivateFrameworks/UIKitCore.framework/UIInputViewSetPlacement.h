@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSArray *subPlacements; // @synthesize subPlacements=_subPlacements;
 @property(nonatomic) double extendedHeight; // @synthesize extendedHeight=_extendedHeight;
 @property(nonatomic) id <UIInputViewSetPlacementDelegate> delegate; // @synthesize delegate;
+- (struct UIEdgeInsets)inputAccessoryViewPadding;
 - (unsigned long long)computeComparisonMask;
 - (void)setOtherPlacement:(id)arg1;
 - (struct CGRect)adjustBoundsForNotificationsWithOwner:(id)arg1;
@@ -46,11 +47,14 @@ __attribute__((visibility("hidden")))
 - (id)horizontalConstraintForInputViewSet:(id)arg1 hostView:(id)arg2 containerView:(id)arg3;
 @property(readonly, nonatomic) _Bool requiresWindowBasedSafeAreaInsets;
 @property(readonly, nonatomic) _Bool isInteractive;
+@property(readonly, nonatomic) _Bool showsEditItems;
 @property(readonly, nonatomic) _Bool showsInputOrAssistantViews;
 @property(readonly, nonatomic) _Bool showsKeyboard;
 @property(readonly, nonatomic) _Bool showsInputViews;
 @property(readonly, nonatomic) _Bool isHiddenForFloatingTransition;
 @property(readonly, nonatomic) _Bool isVisible;
+@property(readonly, nonatomic) _Bool isCompactAssistantView;
+@property(readonly, nonatomic) _Bool isFloatingAssistantView;
 @property(readonly, nonatomic) _Bool isFloating;
 @property(readonly, nonatomic) _Bool isUndocked;
 - (_Bool)isEqual:(id)arg1;

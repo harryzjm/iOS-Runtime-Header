@@ -9,7 +9,7 @@
 #import <WebKit/NSSecureCoding-Protocol.h>
 #import <WebKit/WKObject-Protocol.h>
 
-@class NSString, NSURL;
+@class NSString, NSURL, UIColor;
 
 @interface _WKApplicationManifest : NSObject <WKObject, NSSecureCoding>
 {
@@ -19,6 +19,7 @@
 + (id)applicationManifestFromJSON:(id)arg1 manifestURL:(id)arg2 documentURL:(id)arg3;
 + (_Bool)supportsSecureCoding;
 @property(readonly, nonatomic) long long displayMode;
+@property(readonly, copy, nonatomic) UIColor *themeColor;
 @property(readonly, copy, nonatomic) NSURL *startURL;
 @property(readonly, copy, nonatomic) NSURL *scope;
 @property(readonly, copy, nonatomic) NSString *applicationDescription;

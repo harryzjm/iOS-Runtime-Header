@@ -6,20 +6,19 @@
 
 #import <FileProvider/FPDaemonActionOperationClient-Protocol.h>
 
-@class FPDownloadInfo, NSArray, NSMutableDictionary, NSMutableSet, NSObject, NSObservation;
-@protocol NSXPCProxyCreating><FPDaemonActionOperation, OS_dispatch_source;
+@class FPDownloadInfo, NSArray, NSFileCoordinator, NSMutableDictionary, NSMutableSet, NSObservation;
+@protocol NSXPCProxyCreating><FPDaemonActionOperation;
 
 @interface FPDownloadOperation <FPDaemonActionOperationClient>
 {
     NSArray *_items;
     FPDownloadInfo *_info;
     NSMutableSet *_itemsPendingDownload;
-    NSObject<OS_dispatch_source> *_stitchingTimer;
     id <NSXPCProxyCreating><FPDaemonActionOperation> _remoteMoveOperation;
     NSMutableDictionary *_progressByRoot;
     NSObservation *_observation;
     NSMutableDictionary *_childProxies;
-    NSMutableDictionary *_globalChildProxies;
+    NSFileCoordinator *_coordinator;
     _Bool _recursively;
     CDUnknownBlockType _downloadCompletionBlock;
     CDUnknownBlockType __t_patchActionOperationInfo;
@@ -31,11 +30,9 @@
 @property(nonatomic) _Bool recursively; // @synthesize recursively=_recursively;
 - (void)_retrieveChildProgressForItem:(id)arg1 childProxies:(id)arg2 parentSetup:(CDUnknownBlockType)arg3;
 - (void)_removeProgressWithItemID:(id)arg1;
-- (void)_updateGlobalParentProgressForItem:(id)arg1;
-- (void)_updateParentProgressForItem:(id)arg1;
+- (void)_updateParentProgressForItem:(id)arg1 withUnitCount:(id)arg2;
 - (void)_setupParentProgress;
 - (void)_updateProgressWithUpdatedFileCountForItem:(id)arg1;
-- (void)showItemsAsDownloadingEvenIfDownloaded:(_Bool)arg1;
 - (void)_runWithRemoteOperation:(id)arg1;
 - (void)remoteOperationProgressesAreReady;
 - (void)remoteOperationFinishedSendingPastUpdates;

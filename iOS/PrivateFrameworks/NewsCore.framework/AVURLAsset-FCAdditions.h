@@ -6,11 +6,6 @@
 
 #import <AVFoundation/AVURLAsset.h>
 
-@class FCInterestToken;
-
 @interface AVURLAsset (FCAdditions)
-- (id)_fc_hlsKeysMetadataItem;
-- (void)fc_fetchContentKeyIdentifiersWithCompletionHandler:(CDUnknownBlockType)arg1;
-@property(retain, nonatomic) FCInterestToken *fc_cacheInterestToken;
 @end
 

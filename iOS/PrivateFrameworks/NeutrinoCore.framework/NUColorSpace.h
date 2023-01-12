@@ -16,8 +16,6 @@
 
 + (id)colorSpaceFromColorPrimaries:(id)arg1 transferFunction:(id)arg2 yccMatrix:(id)arg3;
 + (id)colorSpaceFromVideoColorProperties:(id)arg1;
-+ (struct CGColorSpace *)_newLinearWideGamutColorSpace;
-+ (id)linearWideGamutColorSpace;
 + (id)workingColorSpace;
 + (id)rec709ColorSpace;
 + (id)displayP3LinearColorSpace;
@@ -26,8 +24,10 @@
 + (id)genericRGBLinearColorSpace;
 + (id)genericRGBColorSpace;
 + (id)adobeRGBColorSpace;
++ (id)extendedSRGBLinearColorSpace;
 + (id)sRGBLinearColorSpace;
 + (id)itur2100HLGColorSpace;
++ (id)genericGrayGamma2_2ColorSpace;
 + (id)sRGBColorSpace;
 + (id)_loadICCProfileDataWithIdentifier:(id)arg1;
 - (void).cxx_destruct;

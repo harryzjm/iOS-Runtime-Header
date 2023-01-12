@@ -14,6 +14,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)defaultOriginatingRequestClassNameForRequestRevision:(unsigned long long)arg1;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *text; // @synthesize text=_text;
 @property(nonatomic) _Bool isTitle; // @synthesize isTitle=_isTitle;
@@ -21,7 +22,7 @@
 - (void)setText:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)vn_cloneObject;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)topCandidates:(unsigned long long)arg1;

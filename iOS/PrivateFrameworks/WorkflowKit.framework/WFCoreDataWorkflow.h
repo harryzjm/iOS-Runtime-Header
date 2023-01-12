@@ -8,7 +8,7 @@
 
 #import <WorkflowKit/WFRecordStorage-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSSet, NSString, WFCoreDataRunEvent, WFCoreDataWorkflowActions, WFCoreDataWorkflowIcon, WFCoreDataWorkflowQuarantine, WFWorkflowIcon, WFWorkflowQuarantine;
+@class NSArray, NSData, NSDate, NSDictionary, NSSet, NSString, WFCoreDataWorkflowActions, WFCoreDataWorkflowIcon, WFCoreDataWorkflowQuarantine, WFWorkflowIcon, WFWorkflowQuarantine;
 
 @interface WFCoreDataWorkflow : NSManagedObject <WFRecordStorage>
 {
@@ -22,8 +22,11 @@
 @property(nonatomic) long long remoteQuarantineStatus;
 @property(readonly, nonatomic) unsigned long long estimatedSize;
 @property(readonly, nonatomic, getter=isConflictOfOtherWorkflow) _Bool conflictOfOtherWorkflow;
+@property(copy, nonatomic) NSSet *smartPromptPerWorkflowStates;
 @property(copy, nonatomic) NSSet *accessResourcePerWorkflowStates;
 @property(copy, nonatomic) NSArray *deserializedImportQuestions;
+@property(copy, nonatomic) NSArray *deserializedOutputClasses;
+@property(copy, nonatomic) NSDictionary *deserializedNoInputBehavior;
 @property(copy, nonatomic) NSArray *deserializedInputClasses;
 @property(copy, nonatomic) NSArray *deserializedActions;
 @property(nonatomic) _Bool hiddenFromLibraryAndSync;
@@ -47,26 +50,35 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(copy, nonatomic) NSString *galleryIdentifier; // @dynamic galleryIdentifier;
+@property(nonatomic) _Bool hasOutputFallback; // @dynamic hasOutputFallback;
+@property(nonatomic) _Bool hasShortcutInputVariables; // @dynamic hasShortcutInputVariables;
 @property(readonly) unsigned long long hash;
 @property(nonatomic) _Bool hiddenFromWidget; // @dynamic hiddenFromWidget;
 @property(retain, nonatomic) WFCoreDataWorkflowIcon *icon; // @dynamic icon;
 @property(retain, nonatomic) NSData *importQuestionsData; // @dynamic importQuestionsData;
 @property(retain, nonatomic) NSData *inputClassesData; // @dynamic inputClassesData;
 @property(copy, nonatomic) NSString *lastMigratedClientVersion; // @dynamic lastMigratedClientVersion;
+@property(copy, nonatomic) NSDate *lastRunEventDate; // @dynamic lastRunEventDate;
 @property(copy, nonatomic) NSString *lastSavedOnDeviceName; // @dynamic lastSavedOnDeviceName;
 @property(nonatomic) long long lastSyncedHash; // @dynamic lastSyncedHash;
 @property(copy, nonatomic) NSString *minimumClientVersion; // @dynamic minimumClientVersion;
 @property(copy, nonatomic) NSDate *modificationDate; // @dynamic modificationDate;
 @property(copy, nonatomic) NSString *name; // @dynamic name;
+@property(retain, nonatomic) NSData *noInputBehaviorData; // @dynamic noInputBehaviorData;
+@property(retain, nonatomic) NSData *outputClassesData; // @dynamic outputClassesData;
 @property(retain, nonatomic) NSSet *parents; // @dynamic parents;
 @property(copy, nonatomic) NSString *phrase; // @dynamic phrase;
 @property(retain, nonatomic) WFCoreDataWorkflowQuarantine *quarantine; // @dynamic quarantine;
+@property(nonatomic) _Bool receivesOnScreenContent; // @dynamic receivesOnScreenContent;
 @property(nonatomic) int remoteQuarantineStatusValue; // @dynamic remoteQuarantineStatusValue;
-@property(retain, nonatomic) WFCoreDataRunEvent *runEvents; // @dynamic runEvents;
+@property(retain, nonatomic) NSSet *runEvents; // @dynamic runEvents;
+@property(readonly, nonatomic) long long runEventsCount; // @dynamic runEventsCount;
+@property(retain, nonatomic) NSSet *smartPromptPermissions; // @dynamic smartPromptPermissions;
 @property(copy, nonatomic) NSString *source; // @dynamic source;
 @property(readonly) Class superclass;
 @property(nonatomic) long long syncHash; // @dynamic syncHash;
 @property(nonatomic) _Bool tombstoned; // @dynamic tombstoned;
+@property(readonly, nonatomic) long long triggerCount; // @dynamic triggerCount;
 @property(retain, nonatomic) NSSet *triggers; // @dynamic triggers;
 @property(retain, nonatomic) NSSet *trustedDomains; // @dynamic trustedDomains;
 @property(copy, nonatomic) NSString *workflowID; // @dynamic workflowID;

@@ -12,17 +12,23 @@
 
 @interface HDMCNotification : NSObject <NSCopying>
 {
-    long long _dayIndex;
+    long long _fireOnDayIndex;
     NSString *_category;
+    long long _fertileWindowEndDayIndex;
+    long long _daysShifted;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) long long daysShifted; // @synthesize daysShifted=_daysShifted;
+@property(readonly, nonatomic) long long fertileWindowEndDayIndex; // @synthesize fertileWindowEndDayIndex=_fertileWindowEndDayIndex;
 @property(readonly, copy, nonatomic) NSString *category; // @synthesize category=_category;
-@property(readonly, nonatomic) long long dayIndex; // @synthesize dayIndex=_dayIndex;
+@property(readonly, nonatomic) long long fireOnDayIndex; // @synthesize fireOnDayIndex=_fireOnDayIndex;
+- (id)eventIdentifierFromUpdateFertileWindowNotification;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithDayIndex:(long long)arg1 category:(id)arg2;
+- (id)initWithFireOnDayIndex:(long long)arg1 category:(id)arg2 fertileWindowEndDayIndex:(long long)arg3 daysShifted:(long long)arg4;
+- (id)initWithFireOnDayIndex:(long long)arg1 category:(id)arg2;
 
 @end
 

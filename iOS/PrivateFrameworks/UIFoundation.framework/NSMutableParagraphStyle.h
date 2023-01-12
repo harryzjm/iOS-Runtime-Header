@@ -4,16 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+#import <UIFoundation/_NSMutableParagraphStyleMarkdownSettings-Protocol.h>
 
-@interface NSMutableParagraphStyle
+@class NSArray, NSString;
+
+@interface NSMutableParagraphStyle <_NSMutableParagraphStyleMarkdownSettings>
 {
 }
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)setHeaderLevel:(long long)arg1;
+@property long long headerLevel;
 - (void)setCompositionLanguage:(long long)arg1;
-- (void)setUsesDefaultHyphenation:(_Bool)arg1;
+@property(nonatomic) _Bool usesDefaultHyphenation; // @dynamic usesDefaultHyphenation;
 - (void)setTighteningFactorForTruncation:(float)arg1;
 @property(nonatomic) float hyphenationFactor; // @dynamic hyphenationFactor;
 @property(nonatomic) long long baseWritingDirection; // @dynamic baseWritingDirection;
@@ -41,6 +43,18 @@
 @property(nonatomic) double paragraphSpacing; // @dynamic paragraphSpacing;
 @property(nonatomic) double lineSpacing; // @dynamic lineSpacing;
 - (void)setParagraphStyle:(id)arg1;
+@property(setter=_setListIntentOrdinal:) long long _listIntentOrdinal;
+@property(copy, nonatomic, setter=_setPresentationIntents:) NSArray *presentationIntents;
+@property long long listIntentOrdinal;
+- (void)setPresentationIntents:(id)arg1;
+@property(copy) NSString *codeBlockIntentLanguageHint;
+
+// Remaining properties
+@property(copy, nonatomic, setter=_setPresentationIntents:) NSArray *_presentationIntents;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -4,24 +4,44 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, UIImageView, UILabel, UIView, _SFDimmingButton;
+@class NSLayoutConstraint, NSString, SFThemeColorEffectView, UIButton, UIColor, UIImageView, UILabel, UIView, _SFDimmingButton;
 
 @interface _SFLinkBanner
 {
+    SFThemeColorEffectView *_backdrop;
     UIView *_separator;
+    NSLayoutConstraint *_titleTopConstraint;
+    NSLayoutConstraint *_titleLeadingConstraint;
+    NSLayoutConstraint *_messageTopConstraint;
+    NSLayoutConstraint *_messageBottomConstraint;
+    UIButton *_dismissButton;
+    NSLayoutConstraint *_iconLeadingConstraintToSuperview;
+    NSLayoutConstraint *_backdropTopConstraint;
+    _Bool _shouldHideIcon;
     UIImageView *_icon;
     UILabel *_titleLabel;
     UILabel *_messageLabel;
     _SFDimmingButton *_openButton;
     CDUnknownBlockType _openActionHandler;
+    CDUnknownBlockType _dismissButtonHandler;
+    double _backdropTopExtension;
 }
 
++ (double)iconHeight;
 - (void).cxx_destruct;
+@property(nonatomic) double backdropTopExtension; // @synthesize backdropTopExtension=_backdropTopExtension;
+@property(copy, nonatomic) CDUnknownBlockType dismissButtonHandler; // @synthesize dismissButtonHandler=_dismissButtonHandler;
+@property(nonatomic) _Bool shouldHideIcon; // @synthesize shouldHideIcon=_shouldHideIcon;
 @property(copy, nonatomic) CDUnknownBlockType openActionHandler; // @synthesize openActionHandler=_openActionHandler;
 @property(retain, nonatomic) _SFDimmingButton *openButton; // @synthesize openButton=_openButton;
 @property(retain, nonatomic) UILabel *messageLabel; // @synthesize messageLabel=_messageLabel;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) UIImageView *icon; // @synthesize icon=_icon;
+- (void)_dismiss;
+- (void)_setShowsDismissButton:(_Bool)arg1;
+@property(readonly, nonatomic) UIColor *preferredButtonTintColor;
+@property(readonly, nonatomic) UIColor *preferredButtonBackgroundColor;
+- (void)themeDidChange;
 - (void)invalidateBannerLayout;
 - (void)contentSizeCategoryDidChange;
 - (void)layoutSubviews;
@@ -30,6 +50,7 @@
 - (void)_open;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 @property(retain, nonatomic) NSString *messageLabelText;
+- (id)_messageLabelFont;
 - (id)_titleLabelFont;
 - (id)init;
 

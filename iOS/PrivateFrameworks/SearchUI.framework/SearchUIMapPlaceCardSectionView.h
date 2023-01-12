@@ -4,20 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <SearchUI/MUPlaceViewControllerDelegate-Protocol.h>
 #import <SearchUI/NUIContainerViewDelegate-Protocol.h>
-#import <SearchUI/_MKPlaceViewControllerDelegate-Protocol.h>
 
 @class NSString, SearchUIMapsViewController;
 
-@interface SearchUIMapPlaceCardSectionView <NUIContainerViewDelegate, _MKPlaceViewControllerDelegate>
+@interface SearchUIMapPlaceCardSectionView <NUIContainerViewDelegate, MUPlaceViewControllerDelegate>
 {
     _Bool _alreadyDispatchedOnMainQueue;
     SearchUIMapsViewController *_mapViewController;
-    struct CGSize _placecardBoundsSize;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) struct CGSize placecardBoundsSize; // @synthesize placecardBoundsSize=_placecardBoundsSize;
 @property _Bool alreadyDispatchedOnMainQueue; // @synthesize alreadyDispatchedOnMainQueue=_alreadyDispatchedOnMainQueue;
 @property(retain) SearchUIMapsViewController *mapViewController; // @synthesize mapViewController=_mapViewController;
 - (_Bool)isReportAProblemAvailable;

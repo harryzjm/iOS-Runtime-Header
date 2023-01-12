@@ -15,19 +15,22 @@
 {
     NSMutableDictionary *_iconLabelVisualConfigurations;
     struct SBHIconGridSizeClassIconImageInfos _iconGridSizeClassIconImageInfos;
+    struct SBHIconGridSizeClassExtraFloats _iconGridSizeClassEditingAnimationStrengths;
     unsigned long long _numberOfPortraitColumns;
     unsigned long long _numberOfPortraitRows;
     unsigned long long _numberOfLandscapeColumns;
     unsigned long long _numberOfLandscapeRows;
     unsigned long long _supportedIconGridSizeClasses;
+    unsigned long long _rotatedLayoutClusterGridSizeClass;
+    long long _primaryOrientationForGridCellLayoutClusterSize;
     SBHIconAccessoryVisualConfiguration *_iconAccessoryVisualConfiguration;
     SBHFolderIconVisualConfiguration *_folderIconVisualConfiguration;
     SBHFloatyFolderVisualConfiguration *_floatyFolderVisualConfiguration;
     SBHAppLibraryVisualConfiguration *_appLibraryVisualConfiguration;
     SBHSidebarVisualConfiguration *_sidebarVisualConfiguration;
     SBHRootFolderVisualConfiguration *_rootFolderVisualConfiguration;
-    struct SBHIconGridSizeClassSizes _iconGridSizeClassSizes;
     struct CGSize _listSizeForIconSpacingCalculation;
+    struct SBHIconGridSizeClassSizes _iconGridSizeClassSizes;
     struct UIEdgeInsets _portraitLayoutInsets;
     struct UIEdgeInsets _landscapeLayoutInsets;
 }
@@ -40,6 +43,8 @@
 @property(copy, nonatomic) SBHFolderIconVisualConfiguration *folderIconVisualConfiguration; // @synthesize folderIconVisualConfiguration=_folderIconVisualConfiguration;
 @property(copy, nonatomic) SBHIconAccessoryVisualConfiguration *iconAccessoryVisualConfiguration; // @synthesize iconAccessoryVisualConfiguration=_iconAccessoryVisualConfiguration;
 @property(nonatomic) struct CGSize listSizeForIconSpacingCalculation; // @synthesize listSizeForIconSpacingCalculation=_listSizeForIconSpacingCalculation;
+@property(nonatomic) long long primaryOrientationForGridCellLayoutClusterSize; // @synthesize primaryOrientationForGridCellLayoutClusterSize=_primaryOrientationForGridCellLayoutClusterSize;
+@property(nonatomic) unsigned long long rotatedLayoutClusterGridSizeClass; // @synthesize rotatedLayoutClusterGridSizeClass=_rotatedLayoutClusterGridSizeClass;
 @property(nonatomic) struct UIEdgeInsets landscapeLayoutInsets; // @synthesize landscapeLayoutInsets=_landscapeLayoutInsets;
 @property(nonatomic) struct UIEdgeInsets portraitLayoutInsets; // @synthesize portraitLayoutInsets=_portraitLayoutInsets;
 @property(nonatomic) unsigned long long supportedIconGridSizeClasses; // @synthesize supportedIconGridSizeClasses=_supportedIconGridSizeClasses;
@@ -56,6 +61,8 @@
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)setEditingAnimationStrength:(double)arg1 forGridSizeClass:(unsigned long long)arg2;
+- (double)editingAnimationStrengthForGridSizeClass:(unsigned long long)arg1;
 - (void)setIconImageInfo:(struct SBIconImageInfo)arg1 forGridSizeClass:(unsigned long long)arg2;
 - (struct SBIconImageInfo)iconImageInfoForGridSizeClass:(unsigned long long)arg1;
 @property(nonatomic) struct SBIconImageInfo iconImageInfo;

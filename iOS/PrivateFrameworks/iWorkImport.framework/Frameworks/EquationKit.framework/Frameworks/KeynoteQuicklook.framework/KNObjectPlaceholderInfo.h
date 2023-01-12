@@ -8,6 +8,8 @@
 {
 }
 
+- (_Bool)supportsHyperlinks;
+- (id)typeName;
 - (_Bool)canRemoveTitle;
 - (_Bool)canAddTitle;
 - (_Bool)canRemoveCaption;

@@ -17,10 +17,10 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) PXPhotosViewModel *viewModel; // @synthesize viewModel=_viewModel;
 @property(readonly, nonatomic) _PXPhotosBarButtonSpecManager *specManager; // @synthesize specManager=_specManager;
-- (id)_createBarButtonItemWithTitle:(id)arg1 orSystemItem:(long long)arg2 orSystemIconName:(id)arg3 target:(id)arg4 action:(SEL)arg5;
-- (id)createBarButtonItemWithSystemIconName:(id)arg1 target:(id)arg2 action:(SEL)arg3;
-- (id)createBarButtonItemWithSystemItem:(long long)arg1 target:(id)arg2 action:(SEL)arg3;
-- (id)createBarButtonItemWithTitle:(id)arg1 target:(id)arg2 action:(SEL)arg3;
+- (id)_createBarButtonItemWithTitle:(id)arg1 orSystemItem:(long long)arg2 orSystemIconName:(id)arg3 target:(id)arg4 action:(SEL)arg5 menuAction:(SEL)arg6;
+- (id)createBarButtonItemWithSystemIconName:(id)arg1 target:(id)arg2 action:(SEL)arg3 menuAction:(SEL)arg4;
+- (id)createBarButtonItemWithSystemItem:(long long)arg1 target:(id)arg2 action:(SEL)arg3 menuAction:(SEL)arg4;
+- (id)createBarButtonItemWithTitle:(id)arg1 target:(id)arg2 action:(SEL)arg3 menuAction:(SEL)arg4;
 - (id)initWithExtendedTraitCollection:(id)arg1 viewModel:(id)arg2;
 - (id)init;
 

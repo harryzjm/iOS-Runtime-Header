@@ -11,7 +11,7 @@
 
 @interface WKProcessGroup : NSObject
 {
-    struct RefPtr<WebKit::WebProcessPool, WTF::DumbPtrTraits<WebKit::WebProcessPool>> _processPool;
+    struct RefPtr<WebKit::WebProcessPool, WTF::RawPtrTraits<WebKit::WebProcessPool>, WTF::DefaultRefDerefTraits<WebKit::WebProcessPool>> _processPool;
     struct WeakObjCPtr<id<WKProcessGroupDelegate>> _delegate;
     struct RetainPtr<WKGeolocationProviderIOS> _geolocationProvider;
 }
@@ -23,7 +23,6 @@
 - (id)initWithInjectedBundleURL:(id)arg1;
 - (id)init;
 @property(readonly) WKGeolocationProviderIOS *_geolocationProvider;
-- (void)_setAllowsSpecificHTTPSCertificate:(id)arg1 forHost:(id)arg2;
 @property(readonly) struct OpaqueWKContext *_contextRef;
 
 @end

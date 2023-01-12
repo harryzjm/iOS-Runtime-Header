@@ -6,9 +6,10 @@
 
 #import <MapKit/NSObject-Protocol.h>
 
-@class GEOPlaceCollection;
+@class GEOExploreGuides, GEOPlaceCollection;
 
 @protocol MKCollectionCarouselRoutingDelegate <NSObject>
+- (void)routeToGuidesHomeFromExploreGuides:(GEOExploreGuides *)arg1;
 - (void)routeToCuratedCollection:(GEOPlaceCollection *)arg1;
 @end
 

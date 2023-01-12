@@ -22,8 +22,8 @@
 #import <PhotosUICore/UIDragInteractionDelegate-Protocol.h>
 #import <PhotosUICore/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSDate, NSMutableSet, NSSet, NSString, PXAssetReference, PXBasicUIViewTileAnimator, PXLayoutGenerator, PXOneUpPresentation, PXPhotoKitAssetsDataSourceManager, PXPhotoKitUIMediaProvider, PXPhotosDataSource, PXPhotosDataSourceStressTest, PXPhotosDetailsAssetsSpecManager, PXPhotosDetailsContext, PXPhotosDetailsInlinePlaybackController, PXPhotosDetailsLoadCoordinationToken, PXSectionedLayoutEngine, PXSectionedSelectionManager, PXSwipeSelectionManager, PXTilingController, PXTouchingUIGestureRecognizer, PXUIAssetsScene, PXUITapGestureRecognizer, PXWidgetSpec, UIPinchGestureRecognizer;
-@protocol PXAnonymousView, PXPhotosDetailsAssetsWidgetEventTracker, PXWidgetDelegate, PXWidgetEditingDelegate, PXWidgetUnlockDelegate, UIDragSession;
+@class NSDate, NSMutableSet, NSSet, NSString, PXAssetActionManager, PXAssetReference, PXBasicUIViewTileAnimator, PXLayoutGenerator, PXOneUpPresentation, PXPhotoKitAssetsDataSourceManager, PXPhotoKitUIMediaProvider, PXPhotosDataSource, PXPhotosDataSourceStressTest, PXPhotosDetailsAssetsSpecManager, PXPhotosDetailsContext, PXPhotosDetailsInlinePlaybackController, PXPhotosDetailsLoadCoordinationToken, PXSectionedLayoutEngine, PXSectionedSelectionManager, PXSwipeSelectionManager, PXTilingController, PXTouchingUIGestureRecognizer, PXUIAssetsScene, PXUITapGestureRecognizer, PXWidgetSpec, UIPinchGestureRecognizer;
+@protocol PXAnonymousView, PXPhotosDetailsAssetsWidgetEventTracker, PXWidgetDelegate, PXWidgetEditingDelegate, PXWidgetInteractionDelegate, PXWidgetUnlockDelegate, UIDragSession;
 
 @interface PXPhotosDetailsAssetsWidget : NSObject <PXAssetsSceneDelegate, PXTileSource, PXTilingControllerTransitionDelegate, PXScrollViewControllerObserver, PXTilingControllerScrollDelegate, PXChangeObserver, PXEngineDrivenAssetsTilingLayoutDelegate, PXSwipeSelectionManagerDelegate, PXUIPlayButtonTileDelegate, UIGestureRecognizerDelegate, PXActionPerformerDelegate, PXPhotosDetailsInlinePlaybackControllerDelegate, UIDragInteractionDelegate, PXUIWidget, PXOneUpPresentationDelegate>
 {
@@ -61,6 +61,7 @@
     NSSet *__draggingAssetReferences;
     PXSwipeSelectionManager *__swipeSelectionManager;
     PXUITapGestureRecognizer *__tapGesture;
+    PXUITapGestureRecognizer *__pressGesture;
     UIPinchGestureRecognizer *__pinchGesture;
     PXTouchingUIGestureRecognizer *__touchGesture;
     PXAssetReference *__highlightedAssetReference;
@@ -84,6 +85,7 @@
 @property(nonatomic, setter=_setVisibleOriginScrollTarget:) struct CGPoint _visibleOriginScrollTarget; // @synthesize _visibleOriginScrollTarget=__visibleOriginScrollTarget;
 @property(readonly, nonatomic) PXTouchingUIGestureRecognizer *_touchGesture; // @synthesize _touchGesture=__touchGesture;
 @property(readonly, nonatomic) UIPinchGestureRecognizer *_pinchGesture; // @synthesize _pinchGesture=__pinchGesture;
+@property(readonly, nonatomic) PXUITapGestureRecognizer *_pressGesture; // @synthesize _pressGesture=__pressGesture;
 @property(readonly, nonatomic) PXUITapGestureRecognizer *_tapGesture; // @synthesize _tapGesture=__tapGesture;
 @property(readonly, nonatomic) PXSwipeSelectionManager *_swipeSelectionManager; // @synthesize _swipeSelectionManager=__swipeSelectionManager;
 @property(nonatomic, setter=_setShowSelectionButton:) _Bool _showSelectionButton; // @synthesize _showSelectionButton=__showSelectionButton;
@@ -155,9 +157,12 @@
 - (id)oneUpPresentationDataSourceManager:(id)arg1;
 - (long long)oneUpPresentationOrigin:(id)arg1;
 - (void)playButtonTileWasTapped:(id)arg1;
-- (void)_handleTapOnAssetReference:(id)arg1 autoPlayVideo:(_Bool)arg2;
+- (void)_handleTapOnFocusedAssetReferenceWithActivity:(unsigned long long)arg1;
+- (void)_handleTapOnAssetReference:(id)arg1 autoPlayVideo:(_Bool)arg2 activity:(unsigned long long)arg3;
+- (void)presentOneUpForAssetReference:(id)arg1 animated:(_Bool)arg2;
 - (void)handleTouch:(id)arg1;
 - (void)handlePinch:(id)arg1;
+- (void)handlePress:(id)arg1;
 - (void)handleTap:(id)arg1;
 - (id)tilingController:(id)arg1 transitionAnimationCoordinatorForChange:(id)arg2;
 - (id)tilingController:(id)arg1 tileIdentifierConverterForChange:(id)arg2;
@@ -180,6 +185,8 @@
 - (id)imageViewBasicTileForPreviewingAtPoint:(struct CGPoint)arg1;
 @property(readonly, nonatomic) _Bool cursorInteractionEnabled;
 - (id)bestCursorTileForLiftingAtPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
+- (void)spaceBarWasPressed;
+@property(readonly, nonatomic) PXAssetActionManager *assetActionManager;
 - (void)contentViewDidDisappear;
 - (void)contentViewWillAppear;
 - (void)environmentDidUpdateFocusInContext:(id)arg1;
@@ -187,6 +194,7 @@
 @property(readonly, nonatomic) _Bool supportsSelection;
 - (void)userDidSelectDisclosureControl;
 - (void)userDidSelectSubtitle;
+- (void)_toggleCuration;
 - (void)_userDidSelectCurationButton;
 @property(readonly, nonatomic) _Bool allowUserInteractionWithSubtitle;
 @property(readonly, nonatomic) NSString *localizedSubtitle;
@@ -202,6 +210,7 @@
 - (void)_updateDebugBadgeManager;
 @property(readonly, nonatomic) PXSectionedSelectionManager *selectionManager;
 - (id)dataSourceManager;
+- (id)_assetActionManagerForAssetsReference:(id)arg1;
 - (void)_fallBackByTogglingCurationIfNeeded;
 - (id)_regionOfInterestForAssetReference:(id)arg1;
 - (void)_performTilingChangeWithoutAnimationTransition:(CDUnknownBlockType)arg1;
@@ -234,9 +243,11 @@
 @property(readonly, nonatomic) _Bool isInEditMode;
 @property(readonly, nonatomic) NSString *localizedCaption;
 @property(nonatomic) struct CGSize maxVisibleSizeInEditMode;
+@property(readonly, nonatomic) NSString *snappableWidgetIdentifier;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) _Bool wantsFocus;
 @property(nonatomic) __weak id <PXWidgetEditingDelegate> widgetEditingDelegate;
+@property(nonatomic) __weak id <PXWidgetInteractionDelegate> widgetInteractionDelegate;
 @property(nonatomic) __weak id <PXWidgetUnlockDelegate> widgetUnlockDelegate;
 
 @end

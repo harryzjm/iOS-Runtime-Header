@@ -8,27 +8,20 @@
 
 #import <NewsCore/FCPurchaseMetadataFetcher-Protocol.h>
 
-@class FCPurchaseLookupResult, NSNumber;
+@class FCPurchaseLookupResult, NSNumber, NSString;
+@protocol OS_dispatch_queue;
 
 @interface FCPurchaseMetadataFetcher : NSObject <FCPurchaseMetadataFetcher>
 {
-    NSNumber *_bundleID;
+    NSString *_bundleID;
     NSNumber *_externalVersionID;
     FCPurchaseLookupResult *_lookupResult;
+    NSObject<OS_dispatch_queue> *_accessQueue;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) FCPurchaseLookupResult *lookupResult; // @synthesize lookupResult=_lookupResult;
-@property(copy, nonatomic) NSNumber *externalVersionID; // @synthesize externalVersionID=_externalVersionID;
-@property(copy, nonatomic) NSNumber *bundleID; // @synthesize bundleID=_bundleID;
-- (id)createAMSLookupWithProfile:(id)arg1;
-- (id)promiseBundleIDWithAppAdamID:(id)arg1;
-- (id)promiseProductLookupWithLookupResult:(id)arg1 externalVersionID:(id)arg2 restorePurchase:(_Bool)arg3;
-- (id)promiseStoreExternalVersionWithAppAdamID:(id)arg1;
-- (id)checkIfOfferUsedAlreadyWithAppAdamID:(id)arg1;
-- (id)promiseStoreExternalVersionWithLookupResult:(id)arg1;
-- (id)promisePurchaseLookupWithAppAdamID:(id)arg1;
 - (id)fetchPurchaseMetadataForPurchaseID:(id)arg1 restorePurchase:(_Bool)arg2;
+- (id)init;
 
 @end
 

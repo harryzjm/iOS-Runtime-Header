@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     NSArray *_calendars;
     NSSet *_calendarIdentifierSet;
+    _Bool noCalendarNoResult;
 }
 
 - (void).cxx_destruct;
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)evaluateWithObject:(id)arg1;
 - (id)fetchMatchingRemindersInStore:(id)arg1 allLists:(id)arg2 error:(id *)arg3;
 - (id)remListIDsWithAllLists:(id)arg1;
+- (id)initForCalendarStoreWithCalendars:(id)arg1;
 - (id)initWithCalendars:(id)arg1;
 
 @end

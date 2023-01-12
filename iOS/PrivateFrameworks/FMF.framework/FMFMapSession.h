@@ -19,12 +19,16 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property(retain, nonatomic) FMFMapCache *mapCache; // @synthesize mapCache=_mapCache;
+- (void)mapImageForLocation:(id)arg1 isShifted:(_Bool)arg2 altitude:(double)arg3 pitch:(double)arg4 screenRatio:(double)arg5 andCompletion:(CDUnknownBlockType)arg6;
 - (void)mapImageForLocation:(id)arg1 altitude:(double)arg2 pitch:(double)arg3 screenRatio:(double)arg4 andCompletion:(CDUnknownBlockType)arg5;
 - (void)noLocationImageForScreenRatio:(double)arg1 andCompletion:(CDUnknownBlockType)arg2;
 - (void)gridImageForScreenRatio:(double)arg1 andCompletion:(CDUnknownBlockType)arg2;
 - (void)mapImageForRequest:(id)arg1 andCompletion:(CDUnknownBlockType)arg2;
+- (void)mapImageForLocation:(id)arg1 isShifted:(_Bool)arg2 altitude:(double)arg3 pitch:(double)arg4 width:(double)arg5 height:(double)arg6 cache:(_Bool)arg7 andCompletion:(CDUnknownBlockType)arg8;
 - (void)mapImageForLocation:(id)arg1 altitude:(double)arg2 pitch:(double)arg3 width:(double)arg4 height:(double)arg5 cache:(_Bool)arg6 andCompletion:(CDUnknownBlockType)arg7;
 - (void)noLocationImageForWidth:(double)arg1 height:(double)arg2 cache:(_Bool)arg3 andCompletion:(CDUnknownBlockType)arg4;
+- (void)mapImageForLocation:(id)arg1 isShifted:(_Bool)arg2 radius:(double)arg3 width:(double)arg4 height:(double)arg5 cache:(_Bool)arg6 andCompletion:(CDUnknownBlockType)arg7;
+- (void)mapImageForLocation:(id)arg1 radius:(double)arg2 width:(double)arg3 height:(double)arg4 cache:(_Bool)arg5 andCompletion:(CDUnknownBlockType)arg6;
 - (void)gridImageForWidth:(double)arg1 height:(double)arg2 cache:(_Bool)arg3 andCompletion:(CDUnknownBlockType)arg4;
 
 @end

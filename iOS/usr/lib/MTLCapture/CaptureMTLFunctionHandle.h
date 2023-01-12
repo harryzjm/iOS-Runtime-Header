@@ -9,7 +9,7 @@
 #import <MTLCapture/CaptureMTLObject-Protocol.h>
 #import <MTLCapture/MTLFunctionHandle-Protocol.h>
 
-@class CaptureMTLComputePipelineState, CaptureMTLDevice, NSString;
+@class CaptureMTLComputePipelineState, CaptureMTLDevice, CaptureMTLFunction, CaptureMTLRenderPipelineState, NSString;
 @protocol MTLDevice, MTLFunctionHandle;
 
 @interface CaptureMTLFunctionHandle : NSObject <MTLFunctionHandle, CaptureMTLObject>
@@ -17,15 +17,14 @@
     id <MTLFunctionHandle> _baseObject;
     CaptureMTLDevice *_captureDevice;
     CaptureMTLComputePipelineState *_computePipelineState;
+    CaptureMTLRenderPipelineState *_renderPipelineState;
+    CaptureMTLFunction *_captureFunction;
     struct GTTraceContext *_traceContext;
     struct GTTraceStream *_traceStream;
 }
 
 - (void).cxx_destruct;
 - (void)dealloc;
-@property(readonly) NSString *name;
-@property(readonly) unsigned long long functionType;
-@property(readonly) id <MTLDevice> device;
 - (_Bool)conformsToProtocol:(id)arg1;
 - (_Bool)respondsToSelector:(SEL)arg1;
 @property(readonly, copy) NSString *description;
@@ -35,9 +34,12 @@
 @property(readonly) struct GTTraceContext *traceContext;
 - (void)touch;
 - (id)originalObject;
+@property(readonly) NSString *name;
+@property(readonly) unsigned long long functionType;
+@property(readonly) id <MTLDevice> device;
 @property(readonly) id <MTLFunctionHandle> baseObject;
-- (id)initWithBaseObject:(id)arg1 captureComputePipelineState:(id)arg2;
-- (id)initWithBaseObject:(id)arg1 captureContext:(struct GTTraceContext *)arg2 captureDevice:(id)arg3;
+- (id)initWithBaseObject:(id)arg1 captureRenderPipelineState:(id)arg2 captureFunction:(id)arg3;
+- (id)initWithBaseObject:(id)arg1 captureComputePipelineState:(id)arg2 captureFunction:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

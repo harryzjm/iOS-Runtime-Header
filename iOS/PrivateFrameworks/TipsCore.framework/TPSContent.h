@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <TipsCore/NAIdentifiable-Protocol.h>
 #import <TipsCore/NSCopying-Protocol.h>
 #import <TipsCore/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSString, TPSAssets;
 
-@interface TPSContent <NSCopying, NSSecureCoding>
+@interface TPSContent <NSCopying, NSSecureCoding, NAIdentifiable>
 {
     _Bool _bodyContainsLink;
     long long _labelStyle;
@@ -21,7 +22,6 @@
 }
 
 + (id)na_identity;
-+ (id)classSet;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) TPSAssets *assets; // @synthesize assets=_assets;
@@ -31,14 +31,17 @@
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(nonatomic) long long labelStyle; // @synthesize labelStyle=_labelStyle;
 @property(nonatomic) _Bool bodyContainsLink; // @synthesize bodyContainsLink=_bodyContainsLink;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)debugDescription;
-- (id)description;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithDictionary:(id)arg1 metadata:(id)arg2;
+
+// Remaining properties
+@property(readonly) Class superclass;
 
 @end
 

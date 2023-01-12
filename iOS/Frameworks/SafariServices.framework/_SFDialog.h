@@ -15,6 +15,8 @@
     _SFDialogController *_dialogController;
 }
 
++ (id)webExtensionAlwaysAllowDialogWithExtensionName:(id)arg1 domains:(id)arg2 includeDenyButton:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
++ (id)webExtensionPermissionDialogWithExtensionName:(id)arg1 domains:(id)arg2 callingAPIName:(id)arg3 showMoreOptionsForAlwaysAllow:(_Bool)arg4 includeDenyButton:(_Bool)arg5 completionHandler:(CDUnknownBlockType)arg6;
 + (id)websiteLocationDialogForURL:(id)arg1 preciseLocation:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)authenticatorDialogForPanel:(id)arg1 dialogController:(id)arg2;
 + (id)allowDownloadDialogWithDownload:(id)arg1 initiatingURL:(id)arg2 allowViewAction:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -38,7 +40,6 @@
 + (id)_dialogWithTitle:(id)arg1 message:(id)arg2 primaryAction:(id)arg3 secondaryAction:(id)arg4 applicationModal:(_Bool)arg5 completionHandler:(CDUnknownBlockType)arg6;
 + (id)dialogWithWebUIAlert:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)telephonyNavigationDialogWithCompletionHandler:(CDUnknownBlockType)arg1;
-+ (id)mailNavigationDialogWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (id)javaScriptPromptDialogWithMessage:(id)arg1 defaultText:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)javaScriptConfirmDialogWithMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)javaScriptAlertDialogWithMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

@@ -9,10 +9,11 @@
 #import <UIFoundation/NSCopying-Protocol.h>
 #import <UIFoundation/NSMutableCopying-Protocol.h>
 #import <UIFoundation/NSSecureCoding-Protocol.h>
+#import <UIFoundation/_NSParagraphStyleMarkdownSettings-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSString;
 
-@interface NSParagraphStyle : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
+@interface NSParagraphStyle : NSObject <_NSParagraphStyleMarkdownSettings, NSCopying, NSMutableCopying, NSSecureCoding>
 {
     double _lineSpacing;
     double _paragraphSpacing;
@@ -42,12 +43,12 @@
 + (long long)_defaultWritingDirection;
 + (id)defaultParagraphStyle;
 + (void)initialize;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (_Bool)_isSuitableForFastStringDrawingWithAlignment:(long long *)arg1 mirrorsTextAlignment:(_Bool)arg2 lineBreakMode:(long long *)arg3 tighteningFactorForTruncation:(double *)arg4;
 @property(readonly, nonatomic) _Bool allowsDefaultTighteningForTruncation;
-- (long long)headerLevel;
+@property(readonly) long long headerLevel;
 - (float)tighteningFactorForTruncation;
 @property(readonly, nonatomic) float hyphenationFactor;
 - (id)textLists;
@@ -65,7 +66,7 @@
 - (_Bool)allowsHangingPunctuation;
 - (unsigned long long)_lineBoundsOptions;
 - (long long)compositionLanguage;
-- (_Bool)usesDefaultHyphenation;
+@property(readonly, nonatomic) _Bool usesDefaultHyphenation;
 @property(readonly, copy, nonatomic) NSArray *tabStops;
 @property(readonly, nonatomic) double tailIndent;
 @property(readonly, nonatomic) double headIndent;
@@ -74,13 +75,22 @@
 @property(readonly, nonatomic) double lineSpacing;
 - (_Bool)isEqual:(id)arg1;
 - (void)dealloc;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)_initWithParagraphStyle:(id)arg1;
 - (void)_deallocExtraData;
 - (void)_allocExtraData;
+@property(readonly) long long _listIntentOrdinal;
+@property(readonly, copy, nonatomic) NSArray *_presentationIntents;
+@property(readonly) long long listIntentOrdinal;
+@property(readonly, copy, nonatomic) NSArray *presentationIntents;
+@property(readonly, copy, nonatomic) NSString *codeBlockIntentLanguageHint;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

@@ -9,15 +9,18 @@
 #import <SettingsCellularUI/CoreTelephonyClientDataDelegate-Protocol.h>
 #import <SettingsCellularUI/RadiosPreferencesDelegate-Protocol.h>
 
-@class CoreTelephonyClient, NSMutableDictionary, NSString, RadiosPreferences;
+@class CoreTelephonyClient, Logger, NSMutableDictionary, NSString, RadiosPreferences;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface PSUICoreTelephonyDataCache : NSObject <CoreTelephonyClientDataDelegate, RadiosPreferencesDelegate>
 {
     NSObject<OS_dispatch_queue> *_queue;
+    Logger *_logger;
     _Bool _cellularDataSetting;
     _Bool _cellularDataSettingInitialized;
+    _Bool _privacyProxySettingsFetched;
+    CDStruct_7152cabe _privacyProxySetting;
     struct __CTServerConnection *_ctConnection;
     CoreTelephonyClient *_client;
     NSMutableDictionary *_dataStatusDict;
@@ -27,6 +30,8 @@ __attribute__((visibility("hidden")))
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property _Bool privacyProxySettingsFetched; // @synthesize privacyProxySettingsFetched=_privacyProxySettingsFetched;
+@property CDStruct_7152cabe privacyProxySetting; // @synthesize privacyProxySetting=_privacyProxySetting;
 @property _Bool cellularDataSettingInitialized; // @synthesize cellularDataSettingInitialized=_cellularDataSettingInitialized;
 @property _Bool cellularDataSetting; // @synthesize cellularDataSetting=_cellularDataSetting;
 @property(retain, nonatomic) RadiosPreferences *radioPreferences; // @synthesize radioPreferences=_radioPreferences;
@@ -34,6 +39,11 @@ __attribute__((visibility("hidden")))
 @property(retain) NSMutableDictionary *dataStatusDict; // @synthesize dataStatusDict=_dataStatusDict;
 @property(retain, nonatomic) CoreTelephonyClient *client; // @synthesize client=_client;
 @property struct __CTServerConnection *ctConnection; // @synthesize ctConnection=_ctConnection;
+- (id)getLogger;
+- (void)setPrivacyProxy:(id)arg1 enabled:(_Bool)arg2;
+- (_Bool)isPrivacyProxyEnabled:(id)arg1;
+- (_Bool)canSetPrivacyProxy:(id)arg1;
+- (void)fetchPrivacyProxyStatus:(id)arg1;
 - (void)airplaneModeChanged;
 - (void)setDataFallbackEnabled:(_Bool)arg1;
 - (_Bool)isDataFallbackEnabled;
@@ -41,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)setCellularDataEnabled:(_Bool)arg1;
 - (_Bool)isCellularDataEnabled;
 - (void)fetchCellularDataEnabled;
+- (void)dataRoamingSettingsChanged:(id)arg1 status:(_Bool)arg2;
 - (void)setInternationalDataAccessStatus:(id)arg1 status:(_Bool)arg2;
 - (void)setInternationalDataAccessStatus:(_Bool)arg1;
 - (_Bool)getInternationalDataAccessStatus:(id)arg1;

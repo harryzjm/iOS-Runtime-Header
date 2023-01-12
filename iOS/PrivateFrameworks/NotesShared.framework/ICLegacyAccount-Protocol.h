@@ -24,7 +24,7 @@
 @property(readonly, copy, nonatomic) NSString *objectIdentifier;
 @property(readonly, copy, nonatomic) NSString *allItemsFolderLocalizedTitle;
 @property(readonly, copy, nonatomic) NSString *name;
-@property(readonly, nonatomic) _Bool didChooseToMigrate;
+@property(nonatomic) _Bool didChooseToMigrate;
 @property(readonly, nonatomic) _Bool enabled;
 @end
 

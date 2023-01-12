@@ -14,6 +14,7 @@
 {
     _Bool _successfulSync;
     _Bool _marked;
+    _Bool _notInSyncedData;
     NSData *_deviceID;
     NSData *_clientData;
     NSData *_deviceVRFOutput;
@@ -22,6 +23,7 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property _Bool notInSyncedData; // @synthesize notInSyncedData=_notInSyncedData;
 @property(retain) NSData *clientDataVRFOutput; // @synthesize clientDataVRFOutput=_clientDataVRFOutput;
 @property(retain) NSData *deviceVRFOutput; // @synthesize deviceVRFOutput=_deviceVRFOutput;
 @property _Bool marked; // @synthesize marked=_marked;

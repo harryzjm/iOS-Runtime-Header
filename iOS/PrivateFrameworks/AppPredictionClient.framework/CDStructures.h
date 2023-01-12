@@ -8,6 +8,23 @@
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
+#pragma mark Named Structures
+
+struct CGPoint {
+    double x;
+    double y;
+};
+
+struct CGRect {
+    struct CGPoint origin;
+    struct CGSize size;
+};
+
+struct CGSize {
+    double width;
+    double height;
+};
+
 #pragma mark Typedef'd Structures
 
 typedef struct {
@@ -16,6 +33,20 @@ typedef struct {
 
 // Ambiguous groups
 typedef struct {
+    unsigned int date:1;
+    unsigned int eventType:1;
+} CDStruct_7fb26528;
+
+typedef struct {
+    unsigned int timestamp:1;
+    unsigned int eventType:1;
+} CDStruct_7e36e431;
+
+typedef struct {
     unsigned int engagementType:1;
 } CDStruct_c054b854;
+
+typedef struct {
+    unsigned int timestamp:1;
+} CDStruct_b5306035;
 

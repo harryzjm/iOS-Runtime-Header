@@ -16,8 +16,6 @@
 
 - (void).cxx_destruct;
 - (void)synchronousTaskGroup:(id)arg1 didFinishWithSuccess:(_Bool)arg2 errors:(id)arg3;
-- (void)_fetchDatabaseChangesOperationDidFinishWithChangedZones:(id)arg1 deletedZones:(id)arg2 container:(id)arg3 database:(id)arg4 error:(id)arg5;
-- (void)_startZoneFetchForContainer:(id)arg1 database:(id)arg2;
 - (void)main;
 - (id)initWithConfiguration:(id)arg1 cloudState:(id)arg2;
 

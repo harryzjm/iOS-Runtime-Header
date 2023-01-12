@@ -7,7 +7,5 @@
 #import <CloudKit/CKRecordID.h>
 
 @interface CKRecordID (FCSentinel)
-+ (id)fc_staticSentinelRecordID;
-+ (id)fc_staticSecureSentinelRecordID;
 @end
 

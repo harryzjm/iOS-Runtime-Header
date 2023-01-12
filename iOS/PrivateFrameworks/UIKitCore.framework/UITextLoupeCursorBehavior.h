@@ -8,12 +8,11 @@
 
 #import <UIKitCore/UITextLoupeInteractionBehaviorDelegate-Protocol.h>
 
-@class NSNumber, NSString, UITextSelectionGrabberSuppressionAssertion, _UIKeyboardTextSelectionController;
+@class NSString, UITextSelectionGrabberSuppressionAssertion, _UIKeyboardTextSelectionController;
 
 __attribute__((visibility("hidden")))
 @interface UITextLoupeCursorBehavior : NSObject <UITextLoupeInteractionBehaviorDelegate>
 {
-    NSNumber *_inheritedGranularity;
     _UIKeyboardTextSelectionController *_activeSelectionController;
     UITextSelectionGrabberSuppressionAssertion *_grabberHandleSuppressionAssertion;
 }
@@ -23,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)velocityInView:(id)arg1 forLoupeGesture:(id)arg2;
 - (struct CGPoint)translationInView:(id)arg1 forLoupeGesture:(id)arg2;
 - (struct CGPoint)startPointForLoupeGesture:(id)arg1;
+- (_Bool)triggeredByLongPressGesture:(id)arg1;
 - (_Bool)usesTouchAlignment;
 - (_Bool)loupeGestureRecognizerShouldBegin:(id)arg1 forTextLoupeInteraction:(id)arg2;
 - (_Bool)shouldAllowEnforcedTouchTypeForTouch:(id)arg1 forGestureRecognizer:(id)arg2;

@@ -6,10 +6,11 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray;
 @protocol NSCollectionLayoutContainer, _UICollectionLayoutSupplementaryEnrolling, _UICollectionPreferredSizes;
 
 @protocol _UICollectionLayoutAuxillaryHosting <NSObject>
+- (_Bool)auxillaryHostWantsOverlapAdjustmentForMatchingAlignmentsOnly;
 - (id <_UICollectionPreferredSizes>)auxillaryHostPreferredSizes;
 - (id <_UICollectionLayoutSupplementaryEnrolling>)auxillaryHostSupplementaryEnroller;
 - (long long)auxillaryHostAuxillaryKind;
@@ -17,11 +18,11 @@
 - (_Bool)auxillaryHostShouldLayoutRTL;
 - (NSArray *)auxillaryHostAuxillaryItems;
 - (id <NSCollectionLayoutContainer>)auxillaryHostContainer;
-- (struct CGSize)auxillaryHostPinningContentSize;
+- (struct CGRect)auxillaryHostPinningRect;
 - (struct CGSize)auxillaryHostContentSize;
 
 @optional
-- (struct NSDirectionalEdgeInsets)auxillaryHostEdgeInsetsForAuxillaryOfKind:(NSString *)arg1;
+- (double)auxillaryHostPaddingBeforeBoundarySupplementaries;
 - (struct CGPoint)auxillaryHostAdditionalFrameOffset;
 @end
 

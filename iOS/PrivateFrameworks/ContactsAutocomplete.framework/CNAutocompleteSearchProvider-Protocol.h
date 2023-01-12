@@ -13,7 +13,7 @@
 - (id <CNAutocompleteSearch>)calendarServerSearch;
 - (id <CNAutocompleteSearch>)directoryServerSearch;
 - (NSArray *)localExtensionSearches;
-- (id <CNAutocompleteSearch>)duetSearch;
+- (id <CNAutocompleteSearch>)predictionSearch;
 - (id <CNAutocompleteSearch>)suggestionsSearch;
 - (id <CNAutocompleteSearch>)recentsSearch;
 - (id <CNAutocompleteSearch>)localSearch;

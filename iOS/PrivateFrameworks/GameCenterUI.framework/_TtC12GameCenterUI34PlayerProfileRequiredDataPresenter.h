@@ -10,6 +10,7 @@
 
 @interface _TtC12GameCenterUI34PlayerProfileRequiredDataPresenter : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *sinks;
     MISSING_TYPE *localPlayer;
     MISSING_TYPE *playerId;
     MISSING_TYPE *playerInternal;
@@ -17,6 +18,8 @@
     MISSING_TYPE *bidirectionalFriends;
     MISSING_TYPE *recentlyPlayedWithFriends;
     MISSING_TYPE *recommendedFriends;
+    MISSING_TYPE *recommendedGroups;
+    MISSING_TYPE *friendRequests;
     MISSING_TYPE *recentlyPlayedGames;
     MISSING_TYPE *gameCount;
     MISSING_TYPE *achievementCount;
@@ -27,6 +30,8 @@
     MISSING_TYPE *onRequiredDataUpdated;
     MISSING_TYPE *logTimer;
 }
+
+- (void)updateSections:(id)arg1;
 
 @end
 

@@ -6,26 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSSet, NSString, TPPeerDynamicInfo, TPPeerPermanentInfo, TPPeerStableInfo;
+@class NSSet, NSString, TPPeerDynamicInfo, TPPeerPermanentInfo, TPPeerStableInfo;
 
 @interface TPPeer : NSObject
 {
     TPPeerPermanentInfo *_permanentInfo;
     TPPeerStableInfo *_stableInfo;
     TPPeerDynamicInfo *_dynamicInfo;
-    NSData *_wrappedPrivateKeys;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSData *wrappedPrivateKeys; // @synthesize wrappedPrivateKeys=_wrappedPrivateKeys;
-@property(retain, nonatomic) TPPeerDynamicInfo *dynamicInfo; // @synthesize dynamicInfo=_dynamicInfo;
-@property(retain, nonatomic) TPPeerStableInfo *stableInfo; // @synthesize stableInfo=_stableInfo;
-@property(retain, nonatomic) TPPeerPermanentInfo *permanentInfo; // @synthesize permanentInfo=_permanentInfo;
+@property(readonly, nonatomic) TPPeerDynamicInfo *dynamicInfo; // @synthesize dynamicInfo=_dynamicInfo;
+@property(readonly, nonatomic) TPPeerStableInfo *stableInfo; // @synthesize stableInfo=_stableInfo;
+@property(readonly, nonatomic) TPPeerPermanentInfo *permanentInfo; // @synthesize permanentInfo=_permanentInfo;
 - (id)description;
 @property(readonly, nonatomic) NSSet *trustedPeerIDs;
-- (long long)updateDynamicInfo:(id)arg1;
-- (long long)updateStableInfo:(id)arg1;
+- (id)peerWithUpdatedDynamicInfo:(id)arg1 error:(id *)arg2;
+- (id)peerWithUpdatedStableInfo:(id)arg1 error:(id *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithPermanentInfo:(id)arg1 stableInfo:(id)arg2 dynamicInfo:(id)arg3;
 - (id)initWithPermanentInfo:(id)arg1;
 @property(readonly, nonatomic) NSString *peerID;
 

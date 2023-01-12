@@ -19,6 +19,7 @@
 @property(readonly, nonatomic) NSArray *inks; // @synthesize inks=_inks;
 @property(readonly, nonatomic) NSArray *strokes; // @synthesize strokes=_strokes;
 - (id)description;
+- (id)applyToDrawingReturnInverted:(id)arg1;
 - (void)applyToDrawing:(id)arg1;
 - (id)invertedInDrawing:(id)arg1;
 - (id)initWithStrokes:(id)arg1 drawingUUID:(id)arg2 actionName:(id)arg3 inks:(id)arg4 oldInks:(id)arg5;

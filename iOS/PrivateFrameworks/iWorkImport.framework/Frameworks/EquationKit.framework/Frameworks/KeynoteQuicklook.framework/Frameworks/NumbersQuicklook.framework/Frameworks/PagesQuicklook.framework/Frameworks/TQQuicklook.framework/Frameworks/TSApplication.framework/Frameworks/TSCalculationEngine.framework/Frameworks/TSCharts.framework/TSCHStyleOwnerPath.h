@@ -12,17 +12,17 @@
 
 @interface TSCHStyleOwnerPath : NSObject <NSCopying>
 {
-    NSArray *mUuids;
+    NSArray *_uuids;
 }
 
 + (id)styleOwnerPathWithUUIDs:(id)arg1;
 + (id)verifiedUUIDs:(id)arg1;
-+ (id)instanceWithArchive:(const struct StyleOwnerPath *)arg1 unarchiver:(id)arg2;
++ (id)instanceWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 + (id)styleOwnerPathForStyleOwner:(id)arg1;
 + (id)styleOwnerPathForSemanticTag:(id)arg1 ofChart:(id)arg2;
 + (unsigned char)styleOwnerPathTypeForStyleOwner:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSArray *uuids; // @synthesize uuids=mUuids;
+@property(readonly, nonatomic) NSArray *uuids; // @synthesize uuids=_uuids;
 - (id)pathByPrefixingWithUUIDs:(id)arg1;
 - (id)TSUUUIDPath;
 - (void)didInitFromSOS;
@@ -30,8 +30,8 @@
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithUUIDs:(id)arg1;
-- (void)saveToArchive:(struct StyleOwnerPath *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct StyleOwnerPath *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (id)styleOwnerForChart:(id)arg1;
 - (id)p_referenceLineStyleOwnerForChart:(id)arg1;
 - (id)p_seriesStyleOwnerForChart:(id)arg1;

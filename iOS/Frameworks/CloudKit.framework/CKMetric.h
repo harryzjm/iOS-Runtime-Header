@@ -40,11 +40,9 @@
 @property double queueing; // @synthesize queueing=_queueing;
 @property double duration; // @synthesize duration=_duration;
 @property(copy, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
-- (void)unionMetric:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)CKPropertiesDescription;
-- (id)ckPropertyDescriptionForChunkProfileDictionary:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 

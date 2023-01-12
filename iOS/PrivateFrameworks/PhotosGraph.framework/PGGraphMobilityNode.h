@@ -4,19 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+#import <PhotosGraph/MAUniquelyIdentifiableNode-Protocol.h>
 
-@interface PGGraphMobilityNode
+@class MANodeFilter, NSString;
+
+@interface PGGraphMobilityNode <MAUniquelyIdentifiableNode>
 {
     NSString *_label;
 }
 
 + (unsigned long long)mobilityTypeForMobilityLabel:(id)arg1;
++ (id)filter;
 - (void).cxx_destruct;
 - (id)label;
 @property(readonly, nonatomic) unsigned long long mobilityType;
+@property(readonly, nonatomic) MANodeFilter *uniquelyIdentifyingFilter;
 - (unsigned short)domain;
-- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3 properties:(id)arg4;
 - (id)initWithLabel:(id)arg1;
 
 @end

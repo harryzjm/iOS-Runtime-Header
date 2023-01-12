@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEORPFeedbackConversation, GEORPFeedbackNotification, GEORPFeedbackOverview, GEORPPoiEnrichment, PBDataReader, PBUnknownFields;
+@class GEORPFeedbackConversation, GEORPFeedbackNotification, GEORPFeedbackOverview, GEORPPoiEnrichment, GEORPRapInfo, PBDataReader, PBUnknownFields;
 
 @interface GEORPFeedbackComponentValue : PBCodable <NSCopying>
 {
@@ -18,6 +18,7 @@
     GEORPFeedbackNotification *_notification;
     GEORPFeedbackOverview *_overview;
     GEORPPoiEnrichment *_poiEnrichment;
+    GEORPRapInfo *_rapInfo;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
@@ -27,6 +28,7 @@
         unsigned int read_notification:1;
         unsigned int read_overview:1;
         unsigned int read_poiEnrichment:1;
+        unsigned int read_rapInfo:1;
         unsigned int wrote_anyField:1;
     } _flags;
 }
@@ -48,6 +50,8 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) GEORPRapInfo *rapInfo;
+@property(readonly, nonatomic) _Bool hasRapInfo;
 @property(retain, nonatomic) GEORPPoiEnrichment *poiEnrichment;
 @property(readonly, nonatomic) _Bool hasPoiEnrichment;
 @property(retain, nonatomic) GEORPFeedbackConversation *conversation;

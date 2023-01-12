@@ -14,10 +14,15 @@
 + (id)ef_messageAllowedCharacterSet;
 + (id)ef_accountAllowedCharacterSet;
 + (id)ef_defaultAllowedCharacterSet;
++ (id)ef_urlWithString:(id)arg1;
+- (id)ef_urlByRemovingPrefixFromScheme:(id)arg1;
+- (id)ef_urlByAddingPrefixToScheme:(id)arg1;
+- (id)ef_urlByReplacingSchemeWithScheme:(id)arg1;
 - (id)ef_hostNilForEmpty;
 - (_Bool)ef_isHTTPOrHTTPSURL;
 - (_Bool)ef_hasHost:(id)arg1;
 - (_Bool)ef_hasScheme:(id)arg1;
+@property(readonly, nonatomic) NSURL *ef_caseNormalizedURL;
 - (id)ef_URLByAppendingPathComponent:(id)arg1 isDirectory:(_Bool)arg2;
 - (id)ef_URLByAppendingPathComponent:(id)arg1;
 @property(readonly, nonatomic) EFPathComponent *ef_lastPathComponent;

@@ -17,14 +17,14 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *$__lazy_storage_$_imageView;
     MISSING_TYPE *$__lazy_storage_$_titleLabel;
     MISSING_TYPE *$__lazy_storage_$_primaryDescriptionLabel;
-    MISSING_TYPE *$__lazy_storage_$_secondaryDescriptionLabel;
+    MISSING_TYPE *$__lazy_storage_$_secondaryDescriptionButton;
     MISSING_TYPE *baseConstraintsActive;
     MISSING_TYPE *primaryDescriptionLabelBottomConstraint;
     MISSING_TYPE *secondaryDescriptionLabelConstraints;
 }
 
 - (void).cxx_destruct;
-- (void)drawRect:(struct CGRect)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

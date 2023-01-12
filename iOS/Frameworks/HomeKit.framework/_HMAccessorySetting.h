@@ -61,11 +61,9 @@
 - (void)setReflected:(_Bool)arg1;
 @property(readonly, getter=isReflected) _Bool reflected; // @synthesize reflected=_reflected;
 - (void)removeConstraint:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_handleRemovedConstraint:(id)arg1;
 - (void)notifyDelegateOfRemovedConstraint:(id)arg1;
 - (void)removeConstraint:(id)arg1;
 - (void)addConstraint:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_handleAddedConstraint:(id)arg1;
 - (void)notifyDelegateOfAddedConstraint:(id)arg1;
 - (void)addConstraint:(id)arg1;
 - (id)constraintWithType:(long long)arg1;
@@ -79,7 +77,8 @@
 - (id)shortDescription;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
-- (void)dealloc;
+- (void)unconfigure;
+- (void)_unconfigureContext;
 - (id)initWithType:(long long)arg1 properties:(unsigned long long)arg2 name:(id)arg3 constraints:(id)arg4;
 
 // Remaining properties

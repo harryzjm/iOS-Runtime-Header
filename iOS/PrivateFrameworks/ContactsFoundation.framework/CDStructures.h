@@ -71,6 +71,13 @@ struct statfs {
 #pragma mark Typedef'd Structures
 
 typedef struct {
+    unsigned long long state;
+    id *itemsPtr;
+    unsigned long long *mutationsPtr;
+    unsigned long long extra[5];
+} CDStruct_58648341;
+
+typedef struct {
     unsigned int val[8];
 } CDStruct_4c969caf;
 

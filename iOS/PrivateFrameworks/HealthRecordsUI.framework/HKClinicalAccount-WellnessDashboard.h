@@ -10,8 +10,16 @@
 
 @interface HKClinicalAccount (WellnessDashboard)
 - (void)beginReloginSessionWithClinicalSourcesDataProvider:(id)arg1 completion:(CDUnknownBlockType)arg2;
+@property(nonatomic, readonly) NSString *displayableUploadStatus;
+@property(nonatomic, readonly) NSString *displayableLastSharedToProviderDate;
+@property(nonatomic, readonly) NSString *displayableSharingSinceTitle;
+@property(nonatomic, readonly) _Bool isSharingToProvider;
+@property(nonatomic, readonly) _Bool canEnableSharingToProvider;
 @property(nonatomic, readonly) NSString *displayableStatus;
+@property(nonatomic, readonly) NSString *displayableLastDownloadDate;
+@property(nonatomic, readonly) _Bool needsLoginToEnableClinicalSharing;
 @property(nonatomic, readonly) _Bool needsLogin;
+@property(nonatomic, readonly) _Bool isSourceType;
 @property(nonatomic, readonly) _Bool hasLogo;
 @end
 

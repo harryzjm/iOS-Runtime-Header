@@ -97,8 +97,8 @@
 @property(readonly, nonatomic) UIFont *photoEditingCropToggleButtonFont;
 @property(readonly, nonatomic) UIFont *photoEditingCropTiltWheelFont;
 @property(readonly, nonatomic) UIColor *photoEditingCropTiltWheelColor;
-@property(readonly, nonatomic) UIColor *photoEditingCropButtonSelectedColor;
-@property(readonly, nonatomic) UIColor *photoEditingCropButtonColor;
+@property(readonly, nonatomic) UIColor *photoEditingToolbarButtonSelectedColor;
+@property(readonly, nonatomic) UIColor *photoEditingToolbarButtonColor;
 @property(readonly, nonatomic) UIFont *photoEditingFilterTitleFont;
 @property(readonly, nonatomic) UIColor *photoEditingActiveFilterTitleColor;
 @property(readonly, nonatomic) UIColor *photoEditingInactiveFilterTitleColor;
@@ -125,6 +125,7 @@
 @property(readonly, nonatomic) UIFont *photoEditingToolbarButtonNormalFont;
 @property(readonly, nonatomic) UIColor *photoEditingToolbarDestructiveButtonColor;
 @property(readonly, nonatomic) UIColor *photoEditingToolbarMainButtonColor;
+@property(readonly, nonatomic) UIColor *photoEditingToolButtonColor;
 @property(readonly, nonatomic) UIColor *photoEditingToolbarSecondaryButtonColor;
 @property(readonly, nonatomic) UIColor *photoEditingPopoverBackgroundColor;
 @property(readonly, nonatomic) UIColor *photoEditingBackgroundColor;
@@ -168,6 +169,7 @@
 @property(readonly, nonatomic) UIColor *photoBrowserChromeHiddenBackgroundColor;
 @property(readonly, nonatomic) UIColor *photoBrowserChromeVisibleBackgroundColor;
 @property(readonly, nonatomic) UIColor *photoBrowserTitleViewTappableTextColor;
+@property(readonly, nonatomic) UIColor *photoBrowserSpotlightThemeColor;
 @property(readonly, nonatomic) UIColor *photoBrowserTitleViewTextColor;
 @property(readonly, nonatomic) long long photoBrowserBarStyle;
 @property(readonly, nonatomic) long long photoBrowserStatusBarStyle;

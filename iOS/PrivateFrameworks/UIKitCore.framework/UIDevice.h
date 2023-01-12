@@ -21,6 +21,7 @@
         unsigned int proximityState:1;
         unsigned int hasTouchPadOverride:1;
         unsigned int hasTouchPad:1;
+        unsigned int isHardwareKeyboardAvailable:1;
     } _deviceFlags;
 }
 
@@ -31,6 +32,8 @@
 + (id)modelSpecificLocalizedStringKeyForKey:(id)arg1;
 + (_Bool)_hasHomeButton;
 + (_Bool)_isLowEnd;
+@property(readonly, nonatomic, getter=_isHardwareKeyboardAvailable) _Bool _hardwareKeyboardAvailable;
+- (void)_hardwareKeyboardAvailabilityChanged;
 - (void)_playInputDeleteSound;
 - (void)_playInputSelectSound;
 - (void)_playSystemSound:(unsigned int)arg1;
@@ -42,6 +45,7 @@
 @property(nonatomic, setter=_setBacklightLevel:) float _backlightLevel;
 - (void)playInputClick;
 @property(readonly, nonatomic) long long userInterfaceIdiom;
+- (void)_setActiveUserInterfaceIdiom:(long long)arg1;
 @property(readonly, nonatomic, getter=isMultitaskingSupported) _Bool multitaskingSupported;
 @property(readonly, nonatomic) _Bool proximityState;
 - (void)_setExpectsFaceContactInLandscape:(_Bool)arg1;
@@ -62,7 +66,8 @@
 @property(readonly, nonatomic) NSString *model;
 @property(readonly, nonatomic) NSString *name;
 - (id)_deviceInfoForKey:(struct __CFString *)arg1;
-- (void)_setActiveUserInterfaceIdiom:(long long)arg1;
+- (void)dealloc;
+- (id)init;
 - (id)_tapticEngine;
 @property(readonly, nonatomic, getter=_feedbackSupportLevel) long long feedbackSupportLevel;
 - (void)_enableDeviceOrientationEvents:(_Bool)arg1;

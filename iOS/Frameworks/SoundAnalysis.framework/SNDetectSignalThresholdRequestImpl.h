@@ -25,11 +25,11 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned int blockSize; // @synthesize blockSize=_blockSize;
 @property(nonatomic) double sampleRate; // @synthesize sampleRate=_sampleRate;
 - (id)sharedProcessorConfiguration;
-@property(readonly, nonatomic) struct Box *resultsBox;
+@property(readonly, nonatomic) void *resultsBox;
 - (_Bool)adaptToSystemConfiguration:(id)arg1 error:(id *)arg2;
-- (id)resultsFromBox:(struct Box *)arg1 renderedWithFrameCount:(int)arg2;
+- (id)resultsFromBox:(void *)arg1 renderedWithFrameCount:(int)arg2;
 @property(readonly, nonatomic) shared_ptr_f6ac7592 graph;
-- (id)initWithSampleRate:(double)arg1 blockSize:(int)arg2 magnitudeThreshold:(double)arg3;
+- (id)initWithSampleRate:(double)arg1 blockSize:(unsigned int)arg2 magnitudeThreshold:(double)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

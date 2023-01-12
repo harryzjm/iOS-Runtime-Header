@@ -6,11 +6,13 @@
 
 #import <NanoPassKit/NSObject-Protocol.h>
 
-@class NPKPaymentProvisioningFlowControllerRequestContext, NPKPaymentProvisioningFlowPickerItem, NSArray, NSDecimalNumber, NSError, NSString, PKAddPaymentPassRequest, PKAddPaymentPassRequestConfiguration, PKPaymentCredential, PKPaymentPass, PKPaymentSetupProduct, PKVerificationChannel;
+@class NPKPaymentProvisioningFlowControllerRequestContext, NPKPaymentProvisioningFlowPickerItem, NPKPaymentProvisioningFlowPickerSection, NSArray, NSDecimalNumber, NSError, NSString, PKAddPaymentPassRequest, PKAddPaymentPassRequestConfiguration, PKPaymentCredential, PKPaymentPass, PKPaymentSetupProduct, PKVerificationChannel;
 @protocol NPKPaymentProvisioningFlowControllerDelegate;
 
 @protocol NPKPaymentProvisioningFlowControllerProtocol <NSObject>
 @property(nonatomic) __weak id <NPKPaymentProvisioningFlowControllerDelegate> delegate;
+- (void)chooseTransitProductFromFlowPickerSection:(NPKPaymentProvisioningFlowPickerSection *)arg1 requestContext:(NPKPaymentProvisioningFlowControllerRequestContext *)arg2;
+- (void)chooseCardsOnFileFlowForProduct:(PKPaymentSetupProduct *)arg1 requestContext:(NPKPaymentProvisioningFlowControllerRequestContext *)arg2 preloadMetadata:(_Bool)arg3;
 - (void)handleIssuerApplicationAddRequest:(PKAddPaymentPassRequest *)arg1 requestContext:(NPKPaymentProvisioningFlowControllerRequestContext *)arg2;
 - (void)skipIssuerVerification:(NPKPaymentProvisioningFlowControllerRequestContext *)arg1;
 - (void)handleIssuerVerificationCode:(NSString *)arg1 requestContext:(NPKPaymentProvisioningFlowControllerRequestContext *)arg2;
@@ -27,6 +29,7 @@
 - (void)handleReaderModeFields:(NSArray *)arg1 requestContext:(NPKPaymentProvisioningFlowControllerRequestContext *)arg2;
 - (void)chooseReaderMode:(NPKPaymentProvisioningFlowControllerRequestContext *)arg1;
 - (void)handleDigitalIssuanceAmount:(NSDecimalNumber *)arg1 requestContext:(NPKPaymentProvisioningFlowControllerRequestContext *)arg2;
+- (void)chooseProduct:(PKPaymentSetupProduct *)arg1 includeCardsOnFile:(_Bool)arg2 requestContext:(NPKPaymentProvisioningFlowControllerRequestContext *)arg3;
 - (void)chooseProduct:(PKPaymentSetupProduct *)arg1 requestContext:(NPKPaymentProvisioningFlowControllerRequestContext *)arg2;
 - (void)chooseFlowForPickerItem:(NPKPaymentProvisioningFlowPickerItem *)arg1 requestContext:(NPKPaymentProvisioningFlowControllerRequestContext *)arg2;
 - (void)acknowledgeWelcome:(NPKPaymentProvisioningFlowControllerRequestContext *)arg1;

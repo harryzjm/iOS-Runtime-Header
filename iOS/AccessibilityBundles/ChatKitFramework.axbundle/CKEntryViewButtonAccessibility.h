@@ -12,12 +12,10 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (long long)_axButtonType;
-- (id)accessibilityHint;
-- (unsigned long long)accessibilityTraits;
-- (id)accessibilityLabel;
-- (id)accessibilityPath;
+- (id)_accessibilityElementHelpForCatalyst;
+- (id)_accessibilityHint;
+- (id)_accessibilityLabel;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (_Bool)isAccessibilityElement;
 
 @end
 

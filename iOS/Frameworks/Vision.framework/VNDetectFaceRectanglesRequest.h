@@ -4,35 +4,40 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSNumber;
+#import <Vision/VNImageIdealImageSizeProviding-Protocol.h>
 
-@interface VNDetectFaceRectanglesRequest
+@class NSArray, NSNumber, NSString;
+
+@interface VNDetectFaceRectanglesRequest <VNImageIdealImageSizeProviding>
 {
-    _Bool _faceCoreEnhanceEyesAndMouthLocalization;
-    _Bool _faceCoreExtractBlink;
-    _Bool _faceCoreExtractSmile;
-    NSNumber *_faceCoreMinFaceSize;
-    NSNumber *_faceCoreNumberOfDetectionAngles;
 }
 
 + (Class)configurationClass;
 + (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
-+ (void)recordDefaultOptionsInDictionary:(id)arg1;
 + (id)descriptionForPrivateRevision:(unsigned long long)arg1;
-+ (_Bool)supportsPrivateRevision:(unsigned long long)arg1;
++ (id)supportedPrivateRevisions;
 + (const CDStruct_7d93034e *)revisionAvailability;
-- (void).cxx_destruct;
-@property(nonatomic) _Bool faceCoreExtractSmile; // @synthesize faceCoreExtractSmile=_faceCoreExtractSmile;
-@property(nonatomic) _Bool faceCoreExtractBlink; // @synthesize faceCoreExtractBlink=_faceCoreExtractBlink;
-@property(nonatomic) _Bool faceCoreEnhanceEyesAndMouthLocalization; // @synthesize faceCoreEnhanceEyesAndMouthLocalization=_faceCoreEnhanceEyesAndMouthLocalization;
-@property(retain, nonatomic) NSNumber *faceCoreNumberOfDetectionAngles; // @synthesize faceCoreNumberOfDetectionAngles=_faceCoreNumberOfDetectionAngles;
-@property(retain, nonatomic) NSNumber *faceCoreMinFaceSize; // @synthesize faceCoreMinFaceSize=_faceCoreMinFaceSize;
+@property(readonly) NSArray *supportedImageSizeSet;
+@property(nonatomic) float precisionRecallThreshold;
+@property(nonatomic) _Bool faceCoreExtractSmile;
+@property(nonatomic) _Bool faceCoreExtractBlink;
+@property(nonatomic) _Bool faceCoreEnhanceEyesAndMouthLocalization;
+@property(retain, nonatomic) NSNumber *faceCoreNumberOfDetectionAngles;
+@property(retain, nonatomic) NSNumber *faceCoreMinFaceSize;
 @property(nonatomic) unsigned long long faceCoreType;
 - (_Bool)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 - (void)applyConfigurationOfRequest:(id)arg1;
 - (_Bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
 - (long long)dependencyProcessingOrdinality;
 - (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
+- (id)_detectorTypeForRevision:(unsigned long long)arg1 error:(id *)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly, copy) NSArray *results; // @dynamic results;
+@property(readonly) Class superclass;
 
 @end
 

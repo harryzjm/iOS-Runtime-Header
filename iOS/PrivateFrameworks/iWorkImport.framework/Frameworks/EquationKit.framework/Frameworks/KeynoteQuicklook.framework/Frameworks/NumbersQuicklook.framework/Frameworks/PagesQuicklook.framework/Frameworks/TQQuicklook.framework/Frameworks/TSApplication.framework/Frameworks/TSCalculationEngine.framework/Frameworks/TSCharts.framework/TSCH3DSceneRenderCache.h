@@ -10,19 +10,19 @@
 
 @interface TSCH3DSceneRenderCache : NSObject
 {
-    NSMutableSet *mEnabledKeys;
-    TSCH3DDictionaryOfDictionary *mCache;
+    NSMutableSet *_enabledKeys;
+    TSCH3DDictionaryOfDictionary *_cache;
 }
 
 + (id)cache;
 + (id)cacheFromScene:(id)arg1;
+- (void).cxx_destruct;
 - (void)setCacheObject:(id)arg1 forKey:(id)arg2 cacheID:(id)arg3;
 - (id)cacheObjectForKey:(id)arg1 cacheID:(id)arg2 created:(_Bool *)arg3 ifAbsent:(CDUnknownBlockType)arg4;
 - (void)enableCache:(_Bool)arg1 forKey:(id)arg2;
 - (_Bool)cacheEnabledForKey:(id)arg1;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)init;
 
 @end

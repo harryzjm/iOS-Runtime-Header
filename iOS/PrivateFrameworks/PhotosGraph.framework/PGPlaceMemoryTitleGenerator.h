@@ -15,7 +15,7 @@
 @property(retain, nonatomic) PGGraphNode *placeNode; // @synthesize placeNode=_placeNode;
 - (id)_placeTitle;
 - (void)_generateTitleAndSubtitleWithResult:(CDUnknownBlockType)arg1;
-- (id)initWithMomentNodes:(id)arg1 placeNode:(id)arg2;
+- (id)initWithMomentNodes:(id)arg1 placeNode:(id)arg2 titleGenerationContext:(id)arg3;
 
 @end
 

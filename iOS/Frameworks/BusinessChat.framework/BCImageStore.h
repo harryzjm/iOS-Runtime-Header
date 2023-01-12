@@ -16,11 +16,8 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSData *data; // @synthesize data=_data;
 @property(retain, nonatomic) NSDictionary *dictionary; // @synthesize dictionary=_dictionary;
 @property(retain, nonatomic) NSArray *rawArray; // @synthesize rawArray=_rawArray;
-- (id)stringPaddedForBase64:(id)arg1;
-- (id)generateImageDictionaryFromArray:(id)arg1;
 - (id)initWithImages:(id)arg1;
 - (id)initWithArray:(id)arg1;
 - (id)initWithData:(id)arg1;

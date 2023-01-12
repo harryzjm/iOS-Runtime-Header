@@ -10,12 +10,16 @@
 {
 }
 
++ (_Bool)_reloadContainedMediaTypes:(_Bool)arg1 removedMediaTypes:(id)arg2 addedMediaTypes:(id)arg3 notify:(_Bool)arg4 incrementEntityRevision:(_Bool)arg5 usingLibrary:(id)arg6 connection:(id)arg7 forContainerPersistentID:(long long)arg8;
 + (void)_insertNewSmartPlaylist:(id)arg1 criteriaBlob:(id)arg2 evaluationOrder:(unsigned int)arg3 limited:(_Bool)arg4 trackOrder:(unsigned int)arg5 distinguishedKind:(int)arg6 inLibrary:(id)arg7 cachedNameOrders:(id)arg8;
 + (id)_allStaticItemContainersInLibrary:(id)arg1 usingConnection:(id)arg2;
 + (void)reloadContainedMediaTypesForContainerWithPersistID:(long long)arg1 usingConnection:(id)arg2;
 + (void)removeNonLibraryItemsFromContainer:(id)arg1 usingConnection:(id)arg2;
 + (void)removeNonLibraryItemsFromContainersInLibrary:(id)arg1 usingConnection:(id)arg2;
 + (void)removeAnyNonLibraryItemsInPersistentIDs:(id)arg1 fromContainersInLibrary:(id)arg2 usingConnection:(id)arg3;
++ (_Bool)updateLovedPlaylistByRemovingTrackWithPersistentID:(id)arg1 inLibrary:(id)arg2;
++ (_Bool)updateLovedPlaylistByAddingTrackWithPersistentID:(id)arg1 inLibrary:(id)arg2;
++ (void)_lovedPlaylistContainerPID:(id *)arg1 trackPositions:(id *)arg2 forTrackWithPersistentID:(id)arg3 usingConnection:(id)arg4;
 + (void)populateMediaTypesOfStaticContainersInLibrary:(id)arg1;
 + (void)_removeMediaTypesFromContainerWithPersistentID:(long long)arg1 mediaTypes:(id)arg2 connection:(id)arg3;
 + (void)_addMediaTypesToContainerWithPersistentID:(long long)arg1 mediaTypes:(id)arg2 connection:(id)arg3;
@@ -26,7 +30,7 @@
 + (_Bool)deleteFromLibrary:(id)arg1 deletionType:(int)arg2 persistentIDs:(const long long *)arg3 count:(unsigned long long)arg4;
 + (void)deleteAutoCreatedBuiltInSmartPlaylistsPIDs:(id)arg1 inLibrary:(id)arg2;
 + (id)autoCreatedBuiltInSmartPlaylistsPIDs:(id)arg1;
-+ (_Bool)updateBuiltInSmartPlaylistNamesForCurrentLanguageInLibrary:(id)arg1 usingConnection:(id)arg2;
++ (_Bool)updateBuiltInSmartPlaylistNamesForCurrentLanguageInLibrary:(id)arg1;
 + (id)predicateForCriteriaList:(struct SearchCriteriaList *)arg1 parentMatchedAny:(_Bool)arg2;
 + (_Bool)hasCriterionInCriteriaList:(struct SearchCriteriaList *)arg1 forITDBTrackField:(int)arg2;
 + (void)populateSortOrdersOfPropertyValues:(id)arg1 inLibrary:(id)arg2 cachedNameOrders:(id)arg3;
@@ -63,16 +67,16 @@
 - (_Bool)appendTracksWithPersistentIDs:(id)arg1 notify:(_Bool)arg2;
 - (_Bool)setTracksWithPersistentIDs:(id)arg1 notify:(_Bool)arg2;
 - (_Bool)removeAllTracks;
-@property(readonly, copy) NSArray *displayOrderingTerms;
-@property(readonly, copy) NSArray *cloudDisplayOrderingTerms;
-@property(readonly) long long limitValue;
-@property(readonly, copy) NSArray *limitOrderingTerms;
+@property(readonly, copy, nonatomic) NSArray *displayOrderingTerms;
+@property(readonly, copy, nonatomic) NSArray *cloudDisplayOrderingTerms;
+@property(readonly, nonatomic) long long limitValue;
+@property(readonly, copy, nonatomic) NSArray *limitOrderingTerms;
 - (id)evaluationOrderingTerms;
-@property(readonly, copy) NSString *limitingProperty;
-@property(readonly, getter=isLimitOrderingDescending) _Bool limitOrderingDescending;
-@property(readonly, getter=isLimitedByCount) _Bool limitedByCount;
+@property(readonly, copy, nonatomic) NSString *limitingProperty;
+@property(readonly, nonatomic, getter=isLimitOrderingDescending) _Bool limitOrderingDescending;
+@property(readonly, nonatomic, getter=isLimitedByCount) _Bool limitedByCount;
 - (_Bool)isEvaluationOrderingDescending;
-@property(readonly) ML3Predicate *smartCriteriaPredicate;
+@property(readonly, nonatomic) ML3Predicate *smartCriteriaPredicate;
 - (struct SearchCriteriaList *)importedCriteriaList;
 - (void)setValues:(id)arg1 forProperties:(id)arg2 async:(_Bool)arg3 withCompletionBlock:(CDUnknownBlockType)arg4;
 - (id)initWithDictionary:(id)arg1 inLibrary:(id)arg2 cachedNameOrders:(id)arg3 usingConnection:(id)arg4;

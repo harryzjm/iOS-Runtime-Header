@@ -8,6 +8,8 @@
 
 @protocol CSPowerStatusProviding <NSObject>
 @property(readonly, nonatomic, getter=isConnectedToQiPower) _Bool connectedToQiPower;
+@property(readonly, nonatomic, getter=isConnectedToWirelessInternalChargingAccessory) _Bool connectedToWirelessInternalChargingAccessory;
+@property(readonly, nonatomic, getter=isConnectedToWirelessInternalCharger) _Bool connectedToWirelessInternalCharger;
 @property(readonly, nonatomic, getter=isConnectedToExternalChargingSource) _Bool connectedToExternalChargingSource;
 @property(readonly, nonatomic, getter=isOnAC) _Bool onAC;
 @end

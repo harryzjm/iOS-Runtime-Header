@@ -6,30 +6,50 @@
 
 #import <objc/NSObject.h>
 
-@class HKHealthStore, HKKeyValueDomain, HKMenstrualCyclesStore, HKQuantity, NSDate, NSNumber;
+#import <HealthMenstrualCycles/HKFeatureAvailabilityProvidingObserver-Protocol.h>
 
-@interface HKMCOnboardingManager : NSObject
+@class HKFeatureAvailabilityStore, HKHealthStore, HKKeyValueDomain, HKMenstrualCyclesStore, HKObserverSet, HKQuantity, NSNumber, NSString;
+@protocol OS_dispatch_queue;
+
+@interface HKMCOnboardingManager : NSObject <HKFeatureAvailabilityProvidingObserver>
 {
     HKHealthStore *_healthStore;
+    HKObserverSet *_observers;
     HKMenstrualCyclesStore *_menstrualCyclesStore;
     HKKeyValueDomain *_keyValueDomain;
-    NSNumber *_mostRecentOnboardingVersionCompleted;
+    HKFeatureAvailabilityStore *_featureAvailabilityStore;
+    NSObject<OS_dispatch_queue> *_observerQueue;
 }
 
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSNumber *mostRecentOnboardingVersionCompleted; // @synthesize mostRecentOnboardingVersionCompleted=_mostRecentOnboardingVersionCompleted;
+- (void)featureAvailabilityProvidingDidUpdatePairedDeviceCapability:(id)arg1;
+- (void)featureAvailabilityProvidingDidUpdateOnboardingCompletion:(id)arg1;
+- (void)resetCycleFactorsOnboarding:(CDUnknownBlockType)arg1;
 - (void)resetOnboarding:(CDUnknownBlockType)arg1;
 - (void)_triggerHealthKitSync;
 - (_Bool)_resetOnboardingCharacteristicsWithError:(id *)arg1;
 - (_Bool)_resetOnboardingKeyValueDomainWithError:(id *)arg1;
-- (void)setOnboardingCompletedWithUserEnteredCycleLength:(id)arg1 userEnteredPeriodLength:(id)arg2 userEnteredLastPeriodStartDay:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_saveUserEnteredCycleLength:(id)arg1 userEnteredPeriodLength:(id)arg2 userEnteredLastPeriodStartDay:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (_Bool)_setKeyValueDomainOnboardingCompletedVersion:(long long)arg1 error:(id *)arg2;
+- (void)setCycleFactorsUpgradeOnboardingCompletedWithAddedCycleFactors:(id)arg1 deletedCycleFactors:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setOnboardingCompletedWithUserEnteredCycleLength:(id)arg1 userEnteredPeriodLength:(id)arg2 userEnteredLastPeriodStartDay:(id)arg3 addedCycleFactors:(id)arg4 deletedCycleFactors:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)_setCurrentOnboardingVersionCompletedWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_saveUserEnteredCycleLength:(id)arg1 userEnteredPeriodLength:(id)arg2 userEnteredLastPeriodStartDay:(id)arg3 addedCycleFactors:(id)arg4 deletedCycleFactors:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (_Bool)_setLegacyOnboardingCompletedVersion:(long long)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) HKQuantity *userEnteredPeriodLength;
 @property(readonly, nonatomic) HKQuantity *userEnteredCycleLength;
-@property(readonly, copy, nonatomic) NSDate *onboardingFirstCompletedDate;
-@property(readonly, nonatomic, getter=isOnboardingCompleted) _Bool onboardingCompleted;
+@property(readonly, copy, nonatomic) NSNumber *highestOnboardingVersionCompleted;
+- (_Bool)isOnboardingCompletedForVersion:(long long)arg1;
+- (_Bool)isAnyOnboardingVersionCompleted;
+- (_Bool)isCurrentOnboardingVersionCompleted;
+- (void)removeObserver:(id)arg1;
+- (void)addObserver:(id)arg1 queue:(id)arg2;
+- (id)initWithHealthStore:(id)arg1 queue:(id)arg2;
 - (id)initWithHealthStore:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -43,7 +43,8 @@
 - (id)_conversationList;
 - (id)_alertTitleForDelete;
 - (void)_deleteConversation:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (void)_restoreConverstion;
+- (void)_openRestoredChatInMessages;
+- (void)_restoreConversation;
 - (void)_confirmDeleteConversation:(id)arg1 view:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;

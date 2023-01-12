@@ -13,15 +13,15 @@
 {
     MLUpdateProgressHandlers *_progressHandlers;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
-    vector_7984f87c _updatableModelIndicies;
+    vector_b42bd36b _updatableModelIndicies;
 }
 
-+ (id)loadModelFromCompiledArchive:(struct _MLModelInputArchiver *)arg1 modelVersionInfo:(id)arg2 compilerVersionInfo:(id)arg3 configuration:(id)arg4 error:(id *)arg5;
++ (id)loadModelFromCompiledArchive:(void *)arg1 modelVersionInfo:(id)arg2 compilerVersionInfo:(id)arg3 configuration:(id)arg4 error:(id *)arg5;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(retain) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property(retain) MLUpdateProgressHandlers *progressHandlers; // @synthesize progressHandlers=_progressHandlers;
-@property(readonly) vector_7984f87c updatableModelIndicies; // @synthesize updatableModelIndicies=_updatableModelIndicies;
+@property(readonly) vector_b42bd36b updatableModelIndicies; // @synthesize updatableModelIndicies=_updatableModelIndicies;
 - (id)parameterValueForKey:(id)arg1 error:(id *)arg2;
 - (_Bool)writeToURL:(id)arg1 error:(id *)arg2;
 - (void)cancelUpdate;
@@ -29,7 +29,7 @@
 - (void)resumeUpdate;
 - (void)updateModelWithData:(id)arg1;
 - (void)setUpdateProgressHandlers:(id)arg1 dispatchQueue:(id)arg2;
-- (id)initFromCompiledArchive:(struct _MLModelInputArchiver *)arg1 modelVersionInfo:(id)arg2 compilerVersionInfo:(id)arg3 configuration:(id)arg4 error:(id *)arg5;
+- (id)initFromCompiledArchive:(void *)arg1 modelVersionInfo:(id)arg2 compilerVersionInfo:(id)arg3 configuration:(id)arg4 error:(id *)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

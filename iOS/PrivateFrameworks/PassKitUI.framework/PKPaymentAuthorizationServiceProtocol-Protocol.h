@@ -6,9 +6,10 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class NSArray, NSError, PKApplePayTrustSignatureRequest, PKPaymentAuthorizationResult, PKPaymentMerchantSession, PKPaymentRequest, PKPaymentRequestMerchantSessionUpdate, PKPaymentRequestPaymentMethodUpdate, PKPaymentRequestShippingContactUpdate, PKPaymentRequestShippingMethodUpdate;
+@class NSArray, NSError, PKApplePayTrustSignatureRequest, PKPaymentAuthorizationResult, PKPaymentMerchantSession, PKPaymentRequest, PKPaymentRequestCouponCodeUpdate, PKPaymentRequestMerchantSessionUpdate, PKPaymentRequestPaymentMethodUpdate, PKPaymentRequestShippingContactUpdate, PKPaymentRequestShippingMethodUpdate;
 
 @protocol PKPaymentAuthorizationServiceProtocol <NSObject>
+- (void)authorizationDidChangeCouponCodeCompleteWithUpdate:(PKPaymentRequestCouponCodeUpdate *)arg1;
 - (void)authorizationDidSelectPaymentMethodCompleteWithUpdate:(PKPaymentRequestPaymentMethodUpdate *)arg1;
 - (void)authorizationDidSelectShippingAddressCompleteWithUpdate:(PKPaymentRequestShippingContactUpdate *)arg1;
 - (void)authorizationDidSelectShippingMethodCompleteWithUpdate:(PKPaymentRequestShippingMethodUpdate *)arg1;

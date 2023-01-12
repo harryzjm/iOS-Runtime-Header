@@ -17,11 +17,12 @@
 + (id)contentCategories;
 + (id)outputTypes;
 + (id)ownedTypes;
++ (void)getPDFFromPrintFormatters:(id)arg1 nameIfKnown:(id)arg2 matchingInputSize:(_Bool)arg3 withMargin:(_Bool)arg4 startingAtPage:(long long)arg5 endingAtPage:(long long)arg6 completionHandler:(CDUnknownBlockType)arg7;
 + (id)itemWithPrintFormatters:(id)arg1 names:(id)arg2;
+- (void)enumeratePagesInDocument:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)generateObjectRepresentations:(CDUnknownBlockType)arg1 options:(id)arg2 forClass:(Class)arg3;
-- (void)getPageTextsWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)getPageTextsWithPDFKit:(CDUnknownBlockType)arg1;
 - (void)generateFileRepresentations:(CDUnknownBlockType)arg1 options:(id)arg2 forType:(id)arg3;
+- (void)createImageWithFileType:(id)arg1 colorspace:(struct CGColorSpace *)arg2 resolution:(double)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)getPDF:(CDUnknownBlockType)arg1 matchingInputSize:(_Bool)arg2 withMargin:(_Bool)arg3 startingAtPage:(long long)arg4 endingAtPage:(long long)arg5;
 
 @end

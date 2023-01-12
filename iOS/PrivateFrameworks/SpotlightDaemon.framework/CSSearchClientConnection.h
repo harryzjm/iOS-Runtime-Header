@@ -20,8 +20,10 @@
 @property(retain, nonatomic) NSMutableOrderedSet *pausedTasks; // @synthesize pausedTasks=_pausedTasks;
 @property(retain, nonatomic) SDConnectionConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(retain, nonatomic) NSMutableDictionary *queryTasks; // @synthesize queryTasks=_queryTasks;
+- (id)allowedBundleIDs;
 - (id)protectionClass;
 - (_Bool)searchInternal;
+- (void)overrideMailHitCounts:(id)arg1;
 - (id)bundleID;
 - (void)_didReceiveResultsBatchCompletion;
 - (void)_willSendResultsBatch:(id)arg1 qid:(long long)arg2;

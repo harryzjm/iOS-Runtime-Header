@@ -4,20 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, WFCoreDataResultState, WFWorkflowQuery;
+@class NSArray, WFCoreDataResultState, WFResultQuery;
 
 @interface WFObservableArrayResult
 {
     NSArray *_values;
-    WFWorkflowQuery *_query;
+    WFResultQuery *_query;
     WFCoreDataResultState *_resultState;
 }
 
++ (id)getEmptyResultWithQuery:(id)arg1 valueType:(Class)arg2 glyphSize:(struct CGSize)arg3;
++ (id)getResultWithQuery:(id)arg1 valueType:(Class)arg2 glyphSize:(struct CGSize)arg3 error:(id *)arg4;
 + (void)getResultWithQuery:(id)arg1 valueType:(Class)arg2 glyphSize:(struct CGSize)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void).cxx_destruct;
 @property(copy, nonatomic) WFCoreDataResultState *resultState; // @synthesize resultState=_resultState;
-@property(readonly, nonatomic) WFWorkflowQuery *query; // @synthesize query=_query;
+@property(readonly, nonatomic) WFResultQuery *query; // @synthesize query=_query;
 @property(readonly, nonatomic) NSArray *values; // @synthesize values=_values;
+- (id)description;
 - (void)handleChangeNotification:(id)arg1;
 - (id)initWithValueType:(Class)arg1 glyphSize:(struct CGSize)arg2 initialValues:(id)arg3 query:(id)arg4 resultState:(id)arg5;
 

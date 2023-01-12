@@ -42,6 +42,7 @@
 - (void)itemsWereModified:(NSArray *)arg1 byUserInitiatedAction:(_Bool)arg2;
 - (void)itemsWereAdded:(NSArray *)arg1 byUserInitiatedAction:(_Bool)arg2;
 - (void)removePastHistoryVisitsForItem:(WBSHistoryItem *)arg1 completionHandler:(void (^)(void))arg2;
+- (void)getHighLevelHTTPFamilyDomainsVisitedAfterDate:(NSDate *)arg1 beforeDate:(NSDate *)arg2 onlyFromThisDevice:(_Bool)arg3 completionHandler:(void (^)(NSSet *))arg4;
 - (void)checkIfLocalVisitExistsInAnyOfItems:(NSSet *)arg1 withCompletion:(void (^)(_Bool))arg2;
 - (void)getVisitsCreatedAfterDate:(NSDate *)arg1 beforeDate:(NSDate *)arg2 completionHandler:(void (^)(NSSet *))arg3;
 - (void)enumerateSubsequentVisitsInRedirectChainOnDatabaseQueue:(NSSet *)arg1 items:(NSSet *)arg2 enumerationBlock:(void (^)(WBSHistoryVisit *))arg3;

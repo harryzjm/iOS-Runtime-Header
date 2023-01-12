@@ -10,7 +10,7 @@
 
 @interface MLGKDecisionTree : NSObject
 {
-    struct TreeEnsembleClassifier *_trc;
+    void *_trc;
     MLTreeEnsembleClassifier *_treeClassifier;
     NSMutableArray *__attributes;
     NSMutableOrderedSet *__objectStore;

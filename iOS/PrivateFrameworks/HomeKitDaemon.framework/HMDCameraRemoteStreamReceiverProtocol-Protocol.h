@@ -6,10 +6,10 @@
 
 #import <HomeKitDaemon/HMDCameraRemoteStreamProtocol-Protocol.h>
 
-@class IDSSession, NSString;
+@class HMDDevice, IDSSession;
 
 @protocol HMDCameraRemoteStreamReceiverProtocol <HMDCameraRemoteStreamProtocol>
-@property(readonly, nonatomic) IDSSession *session;
-- (void)setupReceiver:(NSString *)arg1;
+@property(readonly) IDSSession *session;
+- (void)setUpRemoteConnectionWithDevice:(HMDDevice *)arg1;
 @end
 

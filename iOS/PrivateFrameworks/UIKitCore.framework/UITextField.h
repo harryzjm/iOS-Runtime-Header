@@ -15,24 +15,25 @@
 #import <UIKitCore/UITextDropSupporting-Protocol.h>
 #import <UIKitCore/UITextDroppable-Protocol.h>
 #import <UIKitCore/UITextDroppable_Private-Protocol.h>
+#import <UIKitCore/UITextFieldContent-Protocol.h>
 #import <UIKitCore/UITextInput-Protocol.h>
 #import <UIKitCore/UITextInputTraits_Private-Protocol.h>
 #import <UIKitCore/UITextPasteConfigurationSupporting-Protocol.h>
 #import <UIKitCore/UITextPasteConfigurationSupporting_Internal-Protocol.h>
 #import <UIKitCore/UIViewGhostedRangeSupporting-Protocol.h>
-#import <UIKitCore/_UIDrawsTextInRect-Protocol.h>
 #import <UIKitCore/_UIFieldEditorHostingViewRequirements-Protocol.h>
 #import <UIKitCore/_UIFloatingContentViewDelegate-Protocol.h>
 #import <UIKitCore/_UILayoutBaselineUpdating-Protocol.h>
-#import <UIKitCore/_UITextFieldCanvasViewContext-Protocol.h>
+#import <UIKitCore/_UITextFieldCanvasContext-Protocol.h>
 #import <UIKitCore/_UITextFieldClearButtonImageProviding-Protocol.h>
 #import <UIKitCore/_UITextFieldVisualStyleSubject-Protocol.h>
+#import <UIKitCore/_UITextItemDiscoverable-Protocol.h>
 #import <UIKitCore/_UIViewBaselineSpacing-Protocol.h>
 
-@class CUICatalog, CUIStyleEffectConfiguration, NSAttributedString, NSDictionary, NSIndexSet, NSLayoutManager, NSMutableDictionary, NSString, NSTextContainer, UIColor, UIDragInteraction, UIDropInteraction, UIFieldEditor, UIFont, UIImage, UIImageView, UIInputContextHistory, UILabel, UIPasteConfiguration, UITapGestureRecognizer, UITextFieldLabel, UITextInputPasswordRules, UITextInputTraits, UITextInteractionAssistant, UITextPasteController, UITextPosition, UITextRange, UITraitCollection, UIView, UIVisualEffectView, _UICascadingTextStorage, _UIFieldEditorLayoutManager, _UIFloatingContentView, _UIFullFontSize, _UITextFieldBackgroundProvider, _UITextFieldCanvasView, _UITextFieldClearButton, _UITextFieldVisualStyle, _UITextItemDiscoverer;
-@protocol UITextDragDelegate, UITextDragDropSupport, UITextDropDelegate, UITextFieldDelegate, UITextInputDelegate, UITextInputTokenizer, UITextPasteDelegate, _UITextFieldMetricsProvider;
+@class CUICatalog, CUIStyleEffectConfiguration, NSAttributedString, NSDictionary, NSIndexSet, NSMutableDictionary, NSString, NSTextContainer, NSTextStorage, UIColor, UIDragInteraction, UIDropInteraction, UIFieldEditor, UIFont, UIImage, UIImageView, UIInputContextHistory, UILabel, UIPasteConfiguration, UITapGestureRecognizer, UITextFieldLabel, UITextInputPasswordRules, UITextInputTraits, UITextInteractionAssistant, UITextPasteController, UITextPosition, UITextRange, UITraitCollection, UIView, UIVisualEffectView, _UICascadingTextStorage, _UIFloatingContentView, _UIFullFontSize, _UISupplementalLexicon, _UITextFieldBackgroundProvider, _UITextFieldClearButton, _UITextFieldVisualStyle, _UITextItemDiscoverer, _UITextLayoutController, _UITextStorageDraggableGeometry;
+@protocol UICoordinateSpace, UITextDragDelegate, UITextDragDropSupport, UITextDropDelegate, UITextFieldDelegate, UITextInputDelegate, UITextInputTokenizer, UITextPasteDelegate, _UITextCanvas, _UITextFieldMetricsProvider;
 
-@interface UITextField <_UIViewBaselineSpacing, UIKeyboardInput, _UILayoutBaselineUpdating, _UIFloatingContentViewDelegate, UIGestureRecognizerDelegate, _UITextFieldVisualStyleSubject, UIViewGhostedRangeSupporting, _UIDrawsTextInRect, _UITextFieldClearButtonImageProviding, UITextInputTraits_Private, UIPopoverControllerDelegate, _UITextFieldCanvasViewContext, UIKeyInputPrivate, _UIFieldEditorHostingViewRequirements, UITextDragSupporting, UITextDropSupporting, UITextPasteConfigurationSupporting_Internal, UITextDroppable_Private, UITextDraggable, UITextDroppable, UITextPasteConfigurationSupporting, UITextInput, NSCoding, UIContentSizeCategoryAdjusting>
+@interface UITextField <_UIViewBaselineSpacing, UIKeyboardInput, _UILayoutBaselineUpdating, _UIFloatingContentViewDelegate, UIGestureRecognizerDelegate, _UITextFieldVisualStyleSubject, UIViewGhostedRangeSupporting, _UITextFieldClearButtonImageProviding, UITextInputTraits_Private, UIPopoverControllerDelegate, UITextFieldContent, _UITextFieldCanvasContext, UIKeyInputPrivate, _UIFieldEditorHostingViewRequirements, UITextDragSupporting, UITextDropSupporting, UITextPasteConfigurationSupporting_Internal, UITextDroppable_Private, _UITextItemDiscoverable, UITextDraggable, UITextDroppable, UITextPasteConfigurationSupporting, UITextInput, NSCoding, UIContentSizeCategoryAdjusting>
 {
     double _minimumFontSize;
     id _delegate;
@@ -72,15 +73,16 @@
     UITextInteractionAssistant *_interactionAssistant;
     UITapGestureRecognizer *_selectGestureRecognizer;
     UIFieldEditor *_fieldEditor;
-    NSTextContainer *__textContainer;
-    _UIFieldEditorLayoutManager *__layoutManager;
+    NSTextContainer *_textContainer;
     _UICascadingTextStorage *_textStorage;
+    _UITextLayoutController *_textLayoutController;
     NSDictionary *_linkTextAttributes;
     UITextPasteController *_pasteController;
     UIView *_inputView;
     UIView *_inputAccessoryView;
     UIView *_recentsAccessoryView;
     id <UITextDragDropSupport> _textDragDropSupport;
+    _UITextStorageDraggableGeometry *_draggableGeometry;
     _UITextItemDiscoverer *_textItemDiscoverer;
     struct {
         unsigned int verticallyCenterText:1;
@@ -115,15 +117,18 @@
         unsigned int backgroundProviderDraws:1;
         unsigned int backgroundProviderHasBackgroundView:1;
         unsigned int isHandlingClearButton:1;
+        unsigned int textLayoutManagerEnabled:1;
+        unsigned int shouldDisplayDictationPlaceholderMessage:1;
     } _textFieldFlags;
     double _firstBaselineOffsetFromTop;
     double _lastBaselineOffsetFromBottom;
+    _Bool _didInvalidateBaselineConstraintsOnHeightChange;
     _Bool _deferringBecomeFirstResponder;
     long long _preferredBorderStyle;
     double _preferredBackgroundCornerRadius;
     _UITextFieldBackgroundProvider *_backgroundProvider;
     id <_UITextFieldMetricsProvider> _metricsProvider;
-    _UITextFieldCanvasView *_textCanvasView;
+    UIView<_UITextCanvas> *_textCanvasView;
     CUICatalog *_cuiCatalog;
     CUIStyleEffectConfiguration *_cuiStyleEffectConfiguration;
     _Bool _adjustsFontForContentSizeCategory;
@@ -138,11 +143,10 @@
     _UITextFieldVisualStyle *_visualStyle;
 }
 
-+ (Class)_canvasViewClass;
 + (Class)_textPasteItemClass;
 + (Class)_fieldEditorClass;
 + (_Bool)_wantsFadedEdges;
-+ (_Bool)_isCompatibilityTextField;
++ (_Bool)_isTextLayoutManagerEnabled;
 - (void).cxx_destruct;
 @property(retain, nonatomic) _UITextFieldVisualStyle *visualStyle; // @synthesize visualStyle=_visualStyle;
 @property(nonatomic) __weak id <UITextDropDelegate> textDropDelegate; // @synthesize textDropDelegate=_textDropDelegate;
@@ -167,10 +171,9 @@
 - (_Bool)_overridePasscodeStyle;
 - (void)_setOverridePasscodeStyle:(_Bool)arg1;
 - (_Bool)_isPasscodeStyle;
-- (Class)_systemBackgroundViewClass;
 - (struct _NSRange)_unobscuredSecureRange;
-- (struct CGRect)_clipRectForFadedEdges;
-- (id)_targetForDrawTextInRect;
+@property(readonly, nonatomic) struct CGRect _clipRectForFadedEdges;
+- (_Bool)drawTextInRectIfNeeded:(struct CGRect)arg1;
 - (_Bool)_isFocused;
 - (long long)_userInterfaceStyle;
 - (long long)_keyboardAppearance;
@@ -180,13 +183,17 @@
 - (id)_contentFloatingContainerView;
 - (void)_addTextCanvasViewAdjustingFrame:(_Bool)arg1;
 - (void)_initTextCanvasView;
+- (void)_initTextLayoutController;
 - (void)_initTextStorage;
 - (_Bool)hasTextItemsOfType:(long long)arg1 inTextRange:(id)arg2;
 - (id)textItemsOfType:(long long)arg1 inTextRange:(id)arg2;
 - (id)visibleTextRange;
-- (id)textItemCoordinateSpace;
+@property(readonly, nonatomic) id <UICoordinateSpace> textItemCoordinateSpace;
 - (id)_textItemDiscoverer;
+- (struct CGRect)_boundingRectForRange:(id)arg1;
+- (id)_previewRendererForRange:(id)arg1 unifyRects:(_Bool)arg2;
 - (struct _NSRange)_visibleRangeWithLayout:(_Bool)arg1;
+- (id)_textGeometry;
 - (void)droppingFinished;
 - (void)droppingStarted;
 @property(nonatomic) struct CGPoint contentOffsetForSameViewDrops;
@@ -245,7 +252,9 @@
 - (struct _NSRange)_rangeForSetText;
 - (_Bool)_delegateShouldBeginEditing;
 - (void)_updateHelpMessageOverrideWithMessage:(id)arg1;
-- (_Bool)_displaysHelpMessageLabel;
+- (void)_setShouldDisplayDictationPlaceholderMessage:(_Bool)arg1;
+- (_Bool)_shouldDisplayDictationPlaceholderMessage;
+- (_Bool)_shouldIgnoreBaseWritingDirectionChanges;
 - (_Bool)_shouldResignOnEditingDidEndOnExit;
 - (id)rangeWithTextAlternatives:(id *)arg1 atPosition:(id)arg2;
 - (void)_setOverridePlaceholder:(id)arg1 alignment:(long long)arg2;
@@ -296,6 +305,7 @@
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (_Bool)_inPopover;
 - (void)validateCommand:(id)arg1;
+- (void)captureTextFromCamera:(id)arg1;
 - (void)_transliterateChinese:(id)arg1;
 - (void)_promptForReplace:(id)arg1;
 - (void)replace:(id)arg1;
@@ -331,7 +341,9 @@
 - (_Bool)_isDisplayingShareViewController;
 - (_Bool)_isDisplayingReferenceLibraryViewController;
 - (_Bool)_isDisplayingShortcutViewController;
+- (_Bool)_isDisplayingTextService;
 - (void)_share:(id)arg1;
+- (void)_translate:(id)arg1;
 - (void)_define:(id)arg1;
 - (void)copy:(id)arg1;
 - (void)cut:(id)arg1;
@@ -424,7 +436,7 @@
 - (void)_setLeadingPadding:(double)arg1;
 - (void)_setPadding:(struct UIEdgeInsets)arg1;
 - (struct UIEdgeInsets)_padding;
-- (id)accessibilityPath;
+- (_Bool)_wantsFocusRing;
 - (void)drawRect:(struct CGRect)arg1;
 - (_Bool)_canDrawContent;
 - (void)_detectCustomDrawing;
@@ -582,21 +594,22 @@
 @property(readonly, nonatomic) _Bool _hasContent;
 - (id)_attributedText;
 - (id)_text;
-- (_Bool)allowsAttachments;
-- (void)setAllowsAttachments:(_Bool)arg1;
-- (void)setNonEditingLinebreakMode:(long long)arg1;
-- (long long)nonEditingLinebreakMode;
+@property(nonatomic) _Bool allowsAttachments;
+@property(nonatomic) long long nonEditingLinebreakMode;
 @property(copy, nonatomic) NSDictionary *linkTextAttributes;
 @property(readonly, nonatomic) struct CGPoint textContainerOrigin;
 - (id)_textStorage;
 - (id)_textContainer;
-- (id)_layoutManager;
-- (id)textStorage;
+- (id)_textLayoutController;
+@property(readonly, nonatomic) NSTextStorage *textStorage;
 @property(readonly, nonatomic) NSTextContainer *textContainer;
-@property(readonly, nonatomic) NSLayoutManager *layoutManager;
+@property(readonly, nonatomic) _UITextLayoutController *textLayoutController;
+- (Class)_canvasViewClass;
 - (void)_invalidatePasscodeStyleFromStyle:(_Bool)arg1;
 - (_Bool)_shouldObscureInput;
 @property(copy, nonatomic) UITextInputPasswordRules *passwordRules; // @dynamic passwordRules;
+- (void)_notifySystemKeyboardOfAppearanceChange;
+- (void)_noteThatKeyboardAppearanceHasChanged;
 @property(nonatomic) long long keyboardAppearance; // @dynamic keyboardAppearance;
 @property(nonatomic) _Bool displaySecureEditsUsingPlainText; // @dynamic displaySecureEditsUsingPlainText;
 @property(nonatomic) _Bool displaySecureTextUsingPlainText; // @dynamic displaySecureTextUsingPlainText;
@@ -631,6 +644,7 @@
 - (_Bool)_shouldEndEditing;
 - (void)_setVisualizesDebugRects:(_Bool)arg1;
 - (_Bool)_visualizesDebugRects;
+- (_Bool)_isTextLayoutManagerEnabled;
 - (void)layoutSubviews;
 - (void)setNeedsLayout;
 - (void)floatingContentView:(id)arg1 isTransitioningFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
@@ -706,7 +720,7 @@
 - (void)_activateSelectionView;
 - (void)_stopObservingFieldEditorScroll;
 - (id)_preferredConfigurationForFocusAnimation:(long long)arg1 inContext:(id)arg2;
-- (id)_systemDefaultFocusGroupDescriptor;
+- (id)_systemDefaultFocusGroupIdentifier;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (_Bool)canBecomeFocused;
 - (double)_foregroundViewsAlpha;
@@ -742,6 +756,8 @@
 - (void)setFrame:(struct CGRect)arg1;
 - (void)_sizeChanged:(_Bool)arg1;
 - (void)_setNeedsStyleRecalc;
+- (_Bool)_shouldAppendTextInViewDescription;
+@property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (void)_encodeBackgroundColorWithCoder:(id)arg1;
@@ -751,6 +767,7 @@
 - (void)_initIncreasedContrastNotifications;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)_initWithFrame:(struct CGRect)arg1 textLayoutManagerEnabled:(_Bool)arg2;
 - (void)setSemanticContentAttribute:(long long)arg1;
 - (void)_propagateCuiProperties;
 - (void)_updateTextEffectsConfigurationIfNeeded;
@@ -759,12 +776,20 @@
 - (void)_setupDefaultStyleEffectConfiguration;
 - (id)_cuiCatalog;
 - (void)_setCuiCatalog:(id)arg1;
+- (void)didLayoutTextAttachmentView:(id)arg1 inFragmentRect:(struct CGRect)arg2;
+- (void)didAddTextAttachmentViews:(id)arg1;
+- (void)didRemoveTextAttachmentViews:(id)arg1;
+- (void)textContainerUsageDidChangeToBounds:(struct CGRect)arg1;
 @property(readonly, nonatomic) struct CGPoint drawingScale;
 - (_Bool)isElementAccessibilityExposedToInterfaceBuilder;
 - (_Bool)isAccessibilityElementByDefault;
 - (id)largeContentTitle;
 - (void)decodeRestorableStateWithCoder:(id)arg1;
+- (void)decodeRestorableStateWithCoder:(id)arg1 includingSelectedTextAndDisplayedViewControllers:(_Bool)arg2;
 - (void)encodeRestorableStateWithCoder:(id)arg1;
+- (void)encodeRestorableStateWithCoder:(id)arg1 includingSelectedTextAndDisplayedViewControllers:(_Bool)arg2;
+@property(copy, nonatomic, setter=_setInteractionState:) id _interactionState;
+@property(copy, nonatomic) id interactionState;
 - (double)_autolayoutSpacingAtEdge:(int)arg1 forAttribute:(long long)arg2 nextToNeighbor:(id)arg3 edge:(int)arg4 attribute:(long long)arg5 multiplier:(double)arg6;
 - (double)_autolayoutSpacingAtEdge:(int)arg1 forAttribute:(long long)arg2 inContainer:(id)arg3 isGuide:(_Bool)arg4;
 - (_Bool)_hasCustomAutolayoutNeighborSpacingForAttribute:(long long *)arg1;
@@ -783,8 +808,8 @@
 @property(copy, nonatomic) NSString *autocorrectionContext;
 @property(nonatomic) long long autocorrectionType; // @dynamic autocorrectionType;
 @property(nonatomic) _Bool contentsIsSingleValue;
-@property(readonly, copy) NSString *debugDescription;
 @property(nonatomic) _Bool deferBecomingResponder; // @dynamic deferBecomingResponder;
+@property(nonatomic) _Bool disableHandwritingKeyboard;
 @property(nonatomic) _Bool disableInputBars;
 @property(nonatomic) _Bool disablePrediction;
 @property(nonatomic) int emptyContentReturnKeyType;
@@ -809,13 +834,18 @@
 @property(nonatomic) _Bool loadKeyboardsForSiriLanguage;
 @property(copy, nonatomic) UIPasteConfiguration *pasteConfiguration; // @dynamic pasteConfiguration;
 @property(nonatomic) _Bool preferOnlineDictation;
+@property(nonatomic) long long preferredKeyboardStyle;
 @property(copy, nonatomic) NSString *recentInputIdentifier;
 @property(copy, nonatomic) NSString *responseContext;
 @property(nonatomic) _Bool returnKeyGoesToNextResponder;
 @property(nonatomic) long long returnKeyType; // @dynamic returnKeyType;
 @property(nonatomic) long long selectionAffinity;
 @property(retain, nonatomic) UIColor *selectionBarColor;
+@property(retain, nonatomic) UIColor *selectionBorderColor;
+@property(nonatomic) double selectionBorderWidth;
+@property(nonatomic) double selectionCornerRadius;
 @property(retain, nonatomic) UIImage *selectionDragDotImage;
+@property(nonatomic) struct UIEdgeInsets selectionEdgeInsets;
 @property(retain, nonatomic) UIColor *selectionHighlightColor;
 @property(nonatomic) int shortcutConversionType;
 @property(nonatomic) _Bool showDictationButton;
@@ -824,9 +854,12 @@
 @property(nonatomic) long long smartQuotesType; // @dynamic smartQuotesType;
 @property(nonatomic) long long spellCheckingType; // @dynamic spellCheckingType;
 @property(readonly) Class superclass;
+@property(retain, nonatomic) _UISupplementalLexicon *supplementalLexicon;
+@property(retain, nonatomic) UIImage *supplementalLexiconAmbiguousItemIcon;
 @property(nonatomic) _Bool suppressReturnKeyStyling;
 @property(copy, nonatomic) NSString *textContentType; // @dynamic textContentType;
 @property(nonatomic) int textLoupeVisibility;
+@property(readonly, nonatomic) UITextRange *textRangeForServicesInteraction;
 @property(nonatomic) long long textScriptType;
 @property(nonatomic) id textSuggestionDelegate;
 @property(nonatomic) struct __CFCharacterSet *textTrimmingSet;

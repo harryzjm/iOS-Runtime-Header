@@ -12,7 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface VKLabelNavRoadLabel : NSObject
 {
-    shared_ptr_93ff9d4a _label;
+    struct shared_ptr<md::NavLabel> _label;
     int _navLabelType;
     id <VKLabelNavFeature> _navFeature;
     NSString *_displayGroup;
@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) float desiredOffsetDistance; // @synthesize desiredOffsetDistance=_desiredOffsetDistance;
 @property(nonatomic) unsigned char alignment; // @synthesize alignment=_alignment;
 @property(nonatomic) unsigned int displayID; // @synthesize displayID=_displayID;
-@property(readonly, nonatomic) const shared_ptr_93ff9d4a *label; // @synthesize label=_label;
+@property(readonly, nonatomic) const void *label; // @synthesize label=_label;
 @property(nonatomic) id <VKLabelNavFeature> navFeature; // @synthesize navFeature=_navFeature;
 - (id)description;
 - (id)displayGroup;
@@ -42,7 +42,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool isShieldLabel;
 @property(nonatomic) unsigned short renderOrder;
 - (void)dealloc;
-- (id)initWithNavFeature:(id)arg1 label:(const shared_ptr_93ff9d4a *)arg2 navLabelType:(int)arg3;
+- (id)initWithNavFeature:(id)arg1 label:(const void *)arg2 navLabelType:(int)arg3;
 
 @end
 

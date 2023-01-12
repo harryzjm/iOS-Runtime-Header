@@ -37,7 +37,7 @@
 - (void)overlayStateDidChange:(_Bool)arg1 contextItem:(id)arg2 chartController:(id)arg3;
 - (void)invalidateContextItem;
 - (id)contextItemForLastUpdate;
-- (void)updateContextItemForDateInterval:(id)arg1 timeScope:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)updateContextItemForDateInterval:(id)arg1 overlayController:(id)arg2 timeScope:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)overlayDisplayTypeForTimeScope:(long long)arg1;
 - (id)sampleTypeForDateRangeUpdates;
 - (id)initWithOverlayChartController:(id)arg1 applicationItems:(id)arg2 mode:(long long)arg3;

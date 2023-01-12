@@ -9,6 +9,7 @@
 @class IMChat, IMChatItem, IMItem, NSArray, NSDate, NSMutableArray;
 
 @protocol IMChatItemRules <NSObject>
+- (void)_invalidateSpamIndicatorCachedValues;
 - (IMItem *)_itemWithChatItemsDeleted:(NSArray *)arg1 fromItem:(IMItem *)arg2 indexesOfItemsDeleted:(id *)arg3 indexToRangeMapOfItemsDeleted:(id *)arg4;
 - (_Bool)_shouldReloadChatItemWithAssociatedChatItems:(NSArray *)arg1 oldAssociatedChatItems:(NSArray *)arg2;
 - (_Bool)_shouldReloadChatItem:(IMChatItem *)arg1 oldChatItem:(IMChatItem *)arg2;

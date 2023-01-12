@@ -89,6 +89,7 @@
 - (void)endPresentationWithLocation:(struct CGPoint)arg1 translation:(struct CGPoint)arg2 velocity:(struct CGPoint)arg3;
 - (void)updatePresentationWithLocation:(struct CGPoint)arg1 translation:(struct CGPoint)arg2 velocity:(struct CGPoint)arg3;
 - (void)beginPresentationWithLocation:(struct CGPoint)arg1 translation:(struct CGPoint)arg2 velocity:(struct CGPoint)arg3;
+- (id)contentModuleContext:(id)arg1 requestsSensorActivityDataForActiveSensorType:(unsigned long long)arg2;
 - (void)dismissControlCenterForContentModuleContext:(id)arg1;
 - (struct CGRect)compactAvoidanceFrameForStatusBar:(id)arg1;
 - (id)compactTrailingStyleRequestForStatusBar:(id)arg1;
@@ -106,6 +107,7 @@
 @property(readonly, nonatomic) UIView *overlayContainerView;
 @property(readonly, nonatomic) UIScrollView *overlayScrollView;
 @property(readonly, nonatomic) MTMaterialView *overlayBackgroundView;
+- (void)moduleInstancesLayoutChangedForModuleInstanceManager:(id)arg1;
 - (void)moduleInstancesChangedForModuleInstanceManager:(id)arg1;
 - (void)statusLabelViewControllerDidFinishStatusUpdates:(id)arg1;
 - (void)statusLabelViewControllerWillBeginStatusUpdates:(id)arg1;
@@ -120,6 +122,7 @@
 - (void)scrollViewDidScroll:(id)arg1;
 - (_Bool)scrollView:(id)arg1 gestureRecognizerShouldBegin:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
+- (_Bool)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (_Bool)_canShowWhileLocked;
@@ -127,6 +130,7 @@
 - (unsigned long long)supportedInterfaceOrientations;
 - (unsigned long long)preferredScreenEdgesDeferringSystemGestures;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;
 - (id)_moduleCollectionViewContainerView;
@@ -144,8 +148,11 @@
 - (void)reachabilityAnimationDidEnd;
 - (id)_initWithSystemAgent:(id)arg1 presentationProvider:(id)arg2;
 - (id)initWithSystemAgent:(id)arg1;
-- (id)_controlCenterShowOrbActionsEventStream;
-- (struct CGPoint)_centerPointOfTopmostModule;
+- (void)_disableModule:(id)arg1;
+- (_Bool)_forceModuleEnabled:(id)arg1;
+- (unsigned long long)_fetchModuleEnabledState:(id)arg1;
+- (id)_controlCenterShowOrbActionsEventStream:(id)arg1;
+- (struct CGPoint)_centerPointOfModuleWithIdentifier:(id)arg1;
 - (_Bool)runTest:(id)arg1 options:(id)arg2 delegate:(id)arg3;
 - (void)didReceiveSignpost:(unsigned long long)arg1;
 - (void)runTest:(id)arg1 subtests:(id)arg2 eventStream:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;

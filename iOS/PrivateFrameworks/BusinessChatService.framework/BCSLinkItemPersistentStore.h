@@ -7,20 +7,13 @@
 #import <BusinessChatService/BCSItemCaching-Protocol.h>
 #import <BusinessChatService/BCSLinkItemCacheClearing-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface BCSLinkItemPersistentStore <BCSItemCaching, BCSLinkItemCacheClearing>
 {
     long long _schemaVersion;
 }
 
 + (const char *)debugQueueName;
-- (_Bool)_executeDeleteSQLQuery:(const char *)arg1;
-- (void)_deleteAllItems;
-- (void)_deleteLinkItemMatching:(id)arg1;
-- (_Bool)_insertLinkItem:(id)arg1 withItemIdentifier:(id)arg2;
-- (void)_updateLinkItem:(id)arg1 withItemIdentifier:(id)arg2;
-- (id)_extractLinkItemFromStatement:(struct sqlite3_stmt *)arg1;
-- (id)_executeFetchLinkItemSQLQuery:(const char *)arg1;
-- (id)_linkItemMatching:(id)arg1;
 - (void)deleteLinkItemsWithBundleID:(id)arg1;
 - (void)deleteExpiredItemsOfType:(long long)arg1;
 - (void)deleteItemsOfType:(long long)arg1;
@@ -31,7 +24,6 @@
 - (void)schemaVersionWillChangeForDatabase:(struct sqlite3 *)arg1 fromSchemaVersion:(long long)arg2 toSchemaVersion:(long long)arg3;
 - (long long)schemaVersion;
 - (id)databasePath;
-- (id)initWithSchemaVersion:(long long)arg1;
 - (id)init;
 
 @end

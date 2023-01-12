@@ -21,6 +21,7 @@
     _Bool _dislikesSaveSentMbox;
 }
 
++ (id)log;
 - (void).cxx_destruct;
 - (void)setUseSaveSent:(_Bool)arg1 toFolder:(id)arg2;
 - (_Bool)_supportsSaveSentExtension;

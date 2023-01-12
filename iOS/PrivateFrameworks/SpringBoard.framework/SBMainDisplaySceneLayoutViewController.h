@@ -11,12 +11,11 @@
 #import <SpringBoard/SBSystemPointerInteractionDelegate-Protocol.h>
 #import <SpringBoard/TFBetaLaunchHandleActivationDelegate-Protocol.h>
 
-@class FBScene, NSArray, NSLayoutConstraint, NSMutableSet, NSObject, NSString, SBFHomeGrabberSettings, SBHomeGrabberRotationView, SBHomeGrabberView, SBKeyboardHomeAffordanceAssertion, SBMainDisplayLayoutState, SBMainDisplaySceneLayoutGestureManager, SBMainDisplaySceneLayoutStatusBarView, SBMedusaSettings, SBOrientationTransformWrapperView, SBSceneHandleBlockObserver, SBSeparatorView, UIApplicationSceneClientSettingsDiffInspector, UIView;
+@class FBScene, NSArray, NSLayoutConstraint, NSMutableSet, NSObject, NSString, SBFHomeGrabberSettings, SBHomeGrabberRotationView, SBHomeGrabberView, SBKeyboardHomeAffordanceAssertion, SBMainDisplayLayoutState, SBMainDisplaySceneLayoutStatusBarView, SBMedusaSettings, SBOrientationTransformWrapperView, SBSceneHandleBlockObserver, SBSeparatorView, UIApplicationSceneClientSettingsDiffInspector, UIView;
 @protocol BSInvalidatable, OS_dispatch_queue;
 
 @interface SBMainDisplaySceneLayoutViewController <SBMainDisplaySceneLayoutStatusBarViewDataSource, PTSettingsKeyObserver, SBSceneHandleObserver, TFBetaLaunchHandleActivationDelegate, SBDeviceApplicationSceneStatusBarBreadcrumbProviderObserver, SBSystemPointerInteractionDelegate>
 {
-    SBMainDisplaySceneLayoutGestureManager *_gestureManager;
     NSMutableSet *_pushPopTransformReasons;
     NSMutableSet *_pushPopWallpaperReasons;
     _Bool _showsPushInWallpaper;
@@ -47,6 +46,7 @@
     NSString *_keyboardFocusSceneID;
 }
 
++ (double)_separatorViewWidth;
 - (void).cxx_destruct;
 @property(copy, nonatomic, getter=_keyboardFocusSceneID, setter=_setKeyboardFocusSceneID:) NSString *keyboardFocusSceneID; // @synthesize keyboardFocusSceneID=_keyboardFocusSceneID;
 @property(nonatomic, setter=_setPreventsCornerRadiusUpdate:) _Bool _preventsCornerRadiusUpdate; // @synthesize _preventsCornerRadiusUpdate=__preventsCornerRadiusUpdate;
@@ -54,7 +54,7 @@
 @property(retain, nonatomic) id <BSInvalidatable> pushPopWallpaperRequireAssertion; // @synthesize pushPopWallpaperRequireAssertion=_pushPopWallpaperRequireAssertion;
 @property(nonatomic, setter=_setNubStyle:) unsigned long long _nubStyle; // @synthesize _nubStyle;
 @property(nonatomic, setter=_setSeparatorViewAlpha:) double _separatorViewAlpha; // @synthesize _separatorViewAlpha;
-- (struct CGSize)_layoutSizeForLayoutRole:(long long)arg1 spaceConfiguration:(long long)arg2 interfaceOrientation:(long long)arg3 frameOptions:(unsigned long long)arg4;
+- (struct CGSize)_layoutSizeForLayoutRole:(long long)arg1 spaceConfiguration:(long long)arg2 peekConfiguration:(long long)arg3 interfaceOrientation:(long long)arg4 frameOptions:(unsigned long long)arg5;
 - (struct CGRect)_layoutFrameForLayoutRole:(long long)arg1 inLayoutState:(id)arg2;
 - (unsigned int)_convertAnchorEdge:(unsigned int)arg1 toLayoutOrientation:(long long)arg2;
 - (unsigned int)_anchorEdgeForLayoutRole:(long long)arg1;
@@ -98,7 +98,6 @@
 - (struct CGRect)referenceFrameForUniqueIdentifier:(id)arg1 inLayoutState:(id)arg2;
 - (struct CGRect)referenceFrameForEntity:(id)arg1 inLayoutState:(id)arg2;
 - (id)_displayConfiguration;
-- (id)_inlineAppExposeOverlayForLayoutRole:(long long)arg1;
 - (id)_applicationSceneLayoutElementControllerForLayoutRole:(long long)arg1;
 @property(readonly, copy, nonatomic) NSArray *_transitioningAppViewControllers;
 @property(readonly, nonatomic) NSArray *appViewControllers;
@@ -120,6 +119,7 @@
 - (struct CGAffineTransform)_pushedInTransform;
 - (void)_setMaskDisplayCorners:(_Bool)arg1 forReason:(id)arg2;
 - (void)setUserResizing:(_Bool)arg1;
+- (struct CGRect)_separatorViewReferenceFrameForLayoutRole:(long long)arg1 spaceConfiguration:(long long)arg2 interfaceOrientation:(long long)arg3 frameOptions:(unsigned long long)arg4;
 - (struct CGRect)_separatorViewReferenceFrameForSpaceConfiguration:(long long)arg1 interfaceOrientation:(long long)arg2 frameOptions:(unsigned long long)arg3;
 - (struct CGRect)_referenceFrameForLayoutRole:(long long)arg1 spaceConfiguration:(long long)arg2 interfaceOrientation:(long long)arg3 frameOptions:(unsigned long long)arg4;
 - (struct CGSize)_layoutSizeForLayoutRole:(long long)arg1 spaceConfiguration:(long long)arg2 layoutState:(id)arg3;
@@ -144,7 +144,6 @@
 - (struct CGRect)_statusBarAvoidanceFrameForLayoutState:(id)arg1 layoutRole:(long long)arg2;
 - (struct CGRect)_statusBarAvoidanceFrameForLayoutState:(id)arg1;
 @property(readonly, nonatomic) struct CGRect _separatorViewHitTestFrame;
-@property(readonly, nonatomic) double _separatorViewWidth;
 - (unsigned int)_anchorEdgeForLayoutRole:(long long)arg1 inInterfaceOrientation:(long long)arg2;
 - (void)_orderFrontOverlayViews;
 - (void)_orderFrontLayoutElementViewController:(id)arg1;
@@ -161,10 +160,8 @@
 - (void)_performJiggleHintAnimationForApplicationSceneHandle:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_removeAppForTransitionRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_replaceSingleSceneForTransitionRequest:(id)arg1 animationSettings:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_fadeOutInlineOverlayForTransitionRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_slideOverAndFadeElementOffscreenForTransitionRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_addSingleSceneForTransitionRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)_createFadeOutInlineOverlayWithTransitionRequest:(id)arg1;
 - (id)_createSlideOverAndFadeElementOffscreenWithTransitionRequest:(id)arg1;
 - (id)_createSplitAnimationControllerWithTransitionRequest:(id)arg1;
 - (id)_replaceSingleAppAnimationControllerWithTransitionRequest:(id)arg1;
@@ -176,11 +173,6 @@
 - (id)_bannerUnfurlAnimationControllerForTransitionRequest:(id)arg1;
 - (id)animationControllerForRotatingWithTransitionRequest:(id)arg1;
 - (id)animationControllerForTransitionRequest:(id)arg1;
-- (double)normalizedDismissRightLocation;
-- (double)normalizedWideNarrowLocation;
-- (double)normalizedHalfHalfLocation;
-- (double)normalizedNarrowWideLocation;
-- (double)normalizedDismissLeftLocation;
 - (struct CGRect)statusBarAvoidanceFrame;
 - (long long)_layoutRoleForSceneWithIdentifier:(id)arg1;
 - (id)_layoutElementForSceneWithIdentifier:(id)arg1;

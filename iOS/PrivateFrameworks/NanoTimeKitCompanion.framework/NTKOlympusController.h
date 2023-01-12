@@ -31,6 +31,7 @@
 - (void)_handleSignificantTimeChanged;
 - (_Bool)_hasWindrunnerWedge;
 - (void)_animateClockHandsFromDate:(id)arg1 toDate:(id)arg2 duration:(double)arg3;
+- (void)_updateTimeComponentsWithDate:(id)arg1 hour:(long long)arg2 minute:(long long)arg3 second:(long long)arg4;
 - (void)_updateHourComponentsWithDate:(id)arg1;
 - (void)_stopClockUpdates;
 - (void)_startClockUpdates;

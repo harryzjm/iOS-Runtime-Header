@@ -22,8 +22,8 @@
 @property(copy) NSString *calculationMode;
 - (_Bool)CA_validateValue:(id)arg1 forKey:(id)arg2;
 - (void)CA_prepareRenderValue;
-- (struct Animation *)_copyRenderAnimationForLayer:(id)arg1;
-- (_Bool)_setCARenderAnimation:(struct Animation *)arg1 layer:(id)arg2;
+- (void *)_copyRenderAnimationForLayer:(id)arg1;
+- (_Bool)_setCARenderAnimation:(void *)arg1 layer:(id)arg2;
 
 @end
 

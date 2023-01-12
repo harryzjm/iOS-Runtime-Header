@@ -10,8 +10,6 @@
 }
 
 + (unsigned long long)typeFromAdvertisementData:(id)arg1;
-+ (id)_allCharacteristicClasses;
-+ (id)_characteristicsMap;
 + (id)implementedProperties;
 + (id)serviceUUID;
 + (long long)serviceType;

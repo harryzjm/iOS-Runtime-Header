@@ -10,13 +10,46 @@
 {
 }
 
++ (id)postSiriEngagementStream;
++ (id)siriExecutionStream;
++ (id)readMessageStream;
++ (id)siriUIStream;
++ (id)gameControllerStream;
++ (id)siriIntentEventsStream;
++ (id)mindfulnessStream;
++ (id)schoolTimeStream;
++ (id)deviceMetadataStream;
++ (id)screenTimeRequestStream;
++ (id)textInputSessionStream;
++ (id)userStatusChangeStream;
++ (id)soundDetection;
++ (id)findMyLocationChangeStream;
++ (id)askToBuyStream;
++ (id)healthKitWorkoutStream;
++ (id)backlightStream;
++ (id)semanticLocationStream;
++ (id)webUsageStream;
++ (id)groupActivitySessionStream;
++ (id)workoutStream;
++ (id)notificationStream;
++ (id)nowPlayingStream;
++ (id)screenSharingStream;
++ (id)screenRecordingStream;
++ (id)alarmStream;
++ (id)homeKitClientActionSetStream;
++ (id)homeKitClientMediaAccessoryControlStream;
++ (id)homeKitClientAccessoryControlStream;
++ (id)doNotDisturbWhileDrivingStream;
++ (id)carPlayStream;
++ (id)userFocusActivity;
++ (id)userFocusComputedMode;
++ (id)contextualActions;
++ (id)poiCategory;
 + (id)intent;
 + (id)appClipLaunch;
 + (id)mediaUsage;
 + (id)appLaunch;
-+ (id)appClipLaunch;
-+ (id)mediaUsage;
-+ (id)appLaunch;
++ (id)sleepModeStream;
 + (id)discoverabilitySignal;
 + (id)coreDuetStream;
 

@@ -36,11 +36,10 @@
 @property(retain, nonatomic) BRSetupControllerTracker *setupControllerTracker; // @synthesize setupControllerTracker=_setupControllerTracker;
 @property(retain, nonatomic) NSMutableDictionary *openPairingTimeEvents; // @synthesize openPairingTimeEvents=_openPairingTimeEvents;
 @property(retain, nonatomic) BRRTCPairingMetric *pairingMetric; // @synthesize pairingMetric=_pairingMetric;
-- (id)trimPrecision:(id)arg1;
-- (_Bool)metricKeyIsBlacklisted:(id)arg1;
+- (id)_trimPrecision:(id)arg1;
 - (void)clearPendingEventQueue;
 - (void)addPendingEventToMetric;
-- (void)addEventToPendingQueue:(unsigned long long)arg1 withValue:(id)arg2;
+- (void)_addEventToPendingQueue:(unsigned long long)arg1 withValue:(id)arg2;
 - (void)completeRTCPairingMetricForMetricID:(id)arg1 withSuccess:(CDUnknownBlockType)arg2;
 - (id)combineMetricPlistsForArchive:(id)arg1;
 - (void)archivePairingMetric:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
@@ -51,16 +50,22 @@
 - (void)initializeEndToEndMetric;
 - (void)setupPairingMetric:(unsigned long long)arg1;
 - (void)submitAnyPendingMetrics;
+- (void)completeMetricForAppTermination;
 - (void)completePairingMetricWithSuccess:(_Bool)arg1;
-- (_Bool)eventClearedForRecord:(unsigned long long)arg1;
+- (_Bool)_eventClearedForRecord:(unsigned long long)arg1;
 - (id)truncateSetupControllerClassName:(id)arg1;
-- (void)writeToPairingPlist:(id)arg1 withValue:(id)arg2;
+- (void)_cleanupAfterWrite;
+- (void)_writeToPairingPlist:(id)arg1 withValue:(id)arg2;
 - (void)writePushOrHoldToPairingPlist:(id)arg1 action:(unsigned long long)arg2;
 - (id)deltaForControllerAction:(id)arg1;
 - (void)writeDeltasForSetupControllerActions:(id)arg1 action:(unsigned long long)arg2;
+- (void)recordSetupController:(id)arg1 action:(unsigned long long)arg2;
+- (void)checkInWithRUIController:(id)arg1;
 - (void)checkInWithController:(id)arg1 action:(unsigned long long)arg2;
 - (void)checkInWithClosingPairingTimeEvent:(unsigned long long)arg1;
 - (void)checkInWithOpenPairingTimeEvent:(unsigned long long)arg1;
+- (void)_addEvent:(unsigned long long)arg1 withValue:(id)arg2 withError:(id)arg3;
+- (void)addPairingTimeEventStringToPairingReportPlist:(unsigned long long)arg1 withValue:(id)arg2 withError:(id)arg3;
 - (void)addPairingTimeEventToPairingReportPlist:(unsigned long long)arg1 withValue:(id)arg2 withError:(id)arg3;
 - (id)initWithPairingBeginsType:(unsigned long long)arg1;
 

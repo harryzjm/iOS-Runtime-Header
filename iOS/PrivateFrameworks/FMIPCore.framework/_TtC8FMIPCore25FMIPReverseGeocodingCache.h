@@ -12,9 +12,11 @@
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *processQueue;
-    MISSING_TYPE *pendingRequest;
-    MISSING_TYPE *geocodingRecords;
     MISSING_TYPE *geocodingQueue;
+    MISSING_TYPE *locale;
+    MISSING_TYPE *recordsPerGeoHash;
+    MISSING_TYPE *recordsPerIdentifier;
+    MISSING_TYPE *pendingOperations;
 }
 
 @end

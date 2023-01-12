@@ -8,27 +8,32 @@
 
 #import <iTunesCloud/ICCloudAvailability-Protocol.h>
 
-@class ICCloudClientAvailabilityService, ICCloudClientCloudService, ICCloudServerListenerEndpointProvider, ICConnectionConfiguration, NSString, NSXPCConnection;
+@class ICCloudClientAvailabilityService, ICCloudClientCloudService, ICCloudServerListenerEndpointProvider, ICConnectionConfiguration, NSMutableArray, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 @interface ICCloudClient : NSObject <ICCloudAvailability>
 {
     _Bool _active;
+    _Bool _serverIsSetup;
     ICConnectionConfiguration *_configuration;
     CDUnknownBlockType _updateSagaInProgressChangedHandler;
     CDUnknownBlockType _updateJaliscoInProgressChangedHandler;
-    NSXPCConnection *_xpcConnection;
     ICCloudServerListenerEndpointProvider *_listenerEndpointProvider;
     NSObject<OS_dispatch_queue> *_serialAccessQueue;
+    NSObject<OS_dispatch_queue> *_serverSetupBlockQueue;
     long long _preferredVideoQuality;
     ICCloudClientAvailabilityService *_availabilityService;
     ICCloudClientCloudService *_cloudService;
+    NSMutableArray *_pendingServerSetupCompleteBlocks;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool serverIsSetup; // @synthesize serverIsSetup=_serverIsSetup;
+@property(retain, nonatomic) NSMutableArray *pendingServerSetupCompleteBlocks; // @synthesize pendingServerSetupCompleteBlocks=_pendingServerSetupCompleteBlocks;
 @property(readonly, nonatomic) ICCloudClientCloudService *cloudService; // @synthesize cloudService=_cloudService;
 @property(readonly, nonatomic) ICCloudClientAvailabilityService *availabilityService; // @synthesize availabilityService=_availabilityService;
 @property(nonatomic) long long preferredVideoQuality; // @synthesize preferredVideoQuality=_preferredVideoQuality;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *serverSetupBlockQueue; // @synthesize serverSetupBlockQueue=_serverSetupBlockQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *serialAccessQueue; // @synthesize serialAccessQueue=_serialAccessQueue;
 @property(readonly, nonatomic) ICCloudServerListenerEndpointProvider *listenerEndpointProvider; // @synthesize listenerEndpointProvider=_listenerEndpointProvider;
 @property(copy, nonatomic) CDUnknownBlockType updateJaliscoInProgressChangedHandler; // @synthesize updateJaliscoInProgressChangedHandler=_updateJaliscoInProgressChangedHandler;
@@ -36,8 +41,8 @@
 - (_Bool)_isAuthenticated;
 - (void)_serverJaliscoUpdateInProgressDidChange;
 - (void)_serverSagaUpdateInProgressDidChange;
-- (void)_serverDidLaunch;
-@property(readonly, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
+- (void)_serverSetupDidComplete;
+@property(readonly, nonatomic) NSXPCConnection *xpcConnection;
 - (void)_tearDownNotifications;
 - (void)_setupNotifications;
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
@@ -55,6 +60,7 @@
 - (_Bool)hasProperNetworkConditionsToShowCloudMedia;
 - (_Bool)hasProperNetworkConditionsToPlayMedia;
 - (void)listCloudServerOperations;
+- (_Bool)createMusicNotificationFromAMSDialogRequest:(id)arg1 error:(id *)arg2;
 - (_Bool)hasSetPreferenceForAutomaticDownloads;
 - (_Bool)isAutomaticDownloadsEnabledForMediaKindMusic;
 - (void)handleAutomaticDownloadPreferenceChangedForMediaKindMusic:(_Bool)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
@@ -66,7 +72,6 @@
 - (void)uploadItemProperties;
 - (void)setItemProperties:(id)arg1 forSagaID:(unsigned long long)arg2;
 - (void)setItemProperties:(id)arg1 forPurchaseHistoryID:(unsigned long long)arg2;
-- (_Bool)canSetItemProperty:(id)arg1;
 - (void)setDaemonConfiguration:(unsigned long long)arg1;
 - (void)resignActive;
 - (void)resetConfiguration:(id)arg1;
@@ -156,12 +161,11 @@
 - (void)addItemWithSagaID:(long long)arg1 toPlaylistWithPersistentID:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)addStoreItemWithAdamID:(long long)arg1 referral:(id)arg2 toPlaylistWithPersistentID:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)setPlaylistProperties:(id)arg1 trackList:(id)arg2 forPlaylistPersistentID:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (_Bool)canSetPlaylistProperty:(id)arg1;
 - (void)sdk_createPlaylistWithPersistentID:(long long)arg1 properties:(id)arg2 tracklist:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)createPlaylistWithPersistentID:(long long)arg1 properties:(id)arg2 trackList:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)setCloudAddToPlaylistBehavior:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (long long)cloudAddToPlaylistBehavior;
 @property(readonly, nonatomic) ICConnectionConfiguration *configuration; // @synthesize configuration=_configuration;
+- (void)performBlockAfterServerSetup:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)initWithConfiguration:(id)arg1;
 - (id)initWithUserIdentity:(id)arg1;

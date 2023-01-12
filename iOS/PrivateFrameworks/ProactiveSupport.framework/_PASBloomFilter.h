@@ -18,6 +18,7 @@
 }
 
 + (id)bloomFilterWithPathToFile:(id)arg1;
++ (id)bloomFilterWithData:(id)arg1;
 - (void).cxx_destruct;
 - (id)combineHashesWithSeed:(int)arg1 hashA:(id)arg2 hashB:(id)arg3 reuse:(id)arg4;
 - (_Bool)getWithHashes:(id)arg1;

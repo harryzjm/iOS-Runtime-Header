@@ -17,6 +17,8 @@
 @property(retain) NSArray *facedAssetLocalIdentifiers; // @synthesize facedAssetLocalIdentifiers=_facedAssetLocalIdentifiers;
 @property(retain) NSArray *bestAssetLocalIdentifiers; // @synthesize bestAssetLocalIdentifiers=_bestAssetLocalIdentifiers;
 @property(readonly) PGGraphPersonNode *personNode; // @synthesize personNode=_personNode;
+- (id)memoryFeatureNodesInGraph:(id)arg1;
+- (unsigned long long)memoryCategory;
 - (id)uuid;
 - (id)initWithPersonNode:(id)arg1 momentNodes:(id)arg2;
 

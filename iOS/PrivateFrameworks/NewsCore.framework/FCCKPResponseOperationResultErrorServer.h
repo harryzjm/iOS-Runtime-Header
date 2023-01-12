@@ -8,23 +8,20 @@
 
 #import <NewsCore/NSCopying-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface FCCKPResponseOperationResultErrorServer : PBCodable <NSCopying>
 {
     int _type;
     CDStruct_f953fb60 _has;
 }
 
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasType;
-@property(nonatomic) int type; // @synthesize type=_type;
 
 @end
 

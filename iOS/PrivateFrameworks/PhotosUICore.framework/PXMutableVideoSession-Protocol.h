@@ -9,6 +9,7 @@
 @class NSString;
 
 @protocol PXMutableVideoSession <NSObject>
+@property(nonatomic) _Bool shouldDisableAutomaticPixelBufferUpdates;
 @property(nonatomic) _Bool allowsExternalPlayback;
 @property(nonatomic) _Bool preventsSleepDuringVideoPlayback;
 @property(nonatomic) long long desiredPlayState;

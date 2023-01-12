@@ -15,7 +15,7 @@
 
 @interface PXCuratedLibrarySectionHeaderLayout <PXGTitleSubtitleSource, PXGViewSource, PXGNamedImageSource, PXChangeObserver, PXLibrarySummaryOutputPresenter>
 {
-    CDStruct_d97c9657 _updateFlags;
+    CDStruct_af00bf4e _updateFlags;
     unsigned short _textVersion;
     unsigned short _ellipsisButtonVersion;
     unsigned short _filterButtonVersion;

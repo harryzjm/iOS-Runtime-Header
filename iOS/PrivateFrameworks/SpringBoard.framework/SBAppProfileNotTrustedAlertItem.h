@@ -16,6 +16,7 @@
 - (void).cxx_destruct;
 - (_Bool)dismissOnLock;
 - (_Bool)shouldShowInLockScreen;
+- (_Bool)forcesModalAlertAppearance;
 - (void)configure:(_Bool)arg1 requirePasscodeForActions:(_Bool)arg2;
 - (id)initWithApp:(id)arg1;
 

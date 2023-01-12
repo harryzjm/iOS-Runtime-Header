@@ -29,6 +29,7 @@
 
 + (id)_defaultModuleIdentifierAllowedList;
 + (id)_defaultModuleDirectories;
++ (void)initialize;
 + (id)repositoryWithDefaults;
 + (id)_deviceFamily;
 - (void).cxx_destruct;

@@ -7,7 +7,10 @@
 #import <Intents/JSExport-Protocol.h>
 #import <Intents/NSObject-Protocol.h>
 
+@class NSString;
+
 @protocol INAnswerCallIntentExport <NSObject, JSExport>
+@property(copy, nonatomic) NSString *callIdentifier;
 @property(nonatomic) long long audioRoute;
 - (id)init;
 @end

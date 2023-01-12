@@ -7,17 +7,19 @@
 #import <CoreServices/NSCopying-Protocol.h>
 #import <CoreServices/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSString, _LSBoundIconInfo;
+@class NSDictionary, NSString, _LSBoundIconInfo, _LSLazyPropertyList;
 @protocol LSIconResourceLocator;
 
 @interface LSResourceProxy <NSCopying, NSSecureCoding>
 {
     NSString *_localizedName;
     _LSBoundIconInfo *__boundIconInfo;
+    _LSLazyPropertyList *__iconsDictionary;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic, setter=_setIconsDictionary:) _LSLazyPropertyList *_iconsDictionary; // @synthesize _iconsDictionary=__iconsDictionary;
 @property(retain, nonatomic, setter=_setBoundIconInfo:) _LSBoundIconInfo *_boundIconInfo; // @synthesize _boundIconInfo=__boundIconInfo;
 @property(copy, nonatomic, setter=_setLocalizedName:) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property(nonatomic) unsigned long long propertyListCachingStrategy;

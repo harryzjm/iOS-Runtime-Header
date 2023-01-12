@@ -49,6 +49,7 @@
     NSString *_defaultToneIdentifier;
     NSString *_noneString;
     NSString *_selectedVibrationIdentifier;
+    NSString *_overrideFirstToneSectionTitle;
     id <TLToneStoreDownloadController> _toneStoreDownloadController;
     NSArray *__classicRingtoneIdentifiers;
     NSArray *__classicAlertToneIdentifiers;
@@ -67,6 +68,7 @@
 @property(retain, nonatomic, setter=_setClassicAlertToneIdentifiers:) NSArray *_classicAlertToneIdentifiers; // @synthesize _classicAlertToneIdentifiers=__classicAlertToneIdentifiers;
 @property(retain, nonatomic, setter=_setClassicRingtoneIdentifiers:) NSArray *_classicRingtoneIdentifiers; // @synthesize _classicRingtoneIdentifiers=__classicRingtoneIdentifiers;
 @property(retain, nonatomic) id <TLToneStoreDownloadController> toneStoreDownloadController; // @synthesize toneStoreDownloadController=_toneStoreDownloadController;
+@property(copy, nonatomic) NSString *overrideFirstToneSectionTitle; // @synthesize overrideFirstToneSectionTitle=_overrideFirstToneSectionTitle;
 @property(nonatomic) _Bool ignoreMute; // @synthesize ignoreMute=_ignoreMute;
 @property(nonatomic) _Bool showsIgnoreMute; // @synthesize showsIgnoreMute=_showsIgnoreMute;
 @property(copy, nonatomic) NSString *selectedVibrationIdentifier; // @synthesize selectedVibrationIdentifier=_selectedVibrationIdentifier;

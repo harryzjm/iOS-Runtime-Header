@@ -8,10 +8,10 @@
 
 @interface _SBStatusBarLocalDataOverridesWrapper : NSObject
 {
-    CDStruct_35107363 *_overrides;
+    CDStruct_56970673 *_overrides;
 }
 
-@property(nonatomic) CDStruct_35107363 *overrides; // @synthesize overrides=_overrides;
+@property(nonatomic) CDStruct_56970673 *overrides; // @synthesize overrides=_overrides;
 - (void)dealloc;
 
 @end

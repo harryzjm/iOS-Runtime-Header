@@ -6,24 +6,36 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDate;
+#import <HealthKit/HKRedactedDescription-Protocol.h>
+#import <HealthKit/NSCopying-Protocol.h>
+#import <HealthKit/NSSecureCoding-Protocol.h>
 
-@interface HKSleepPeriodSegment : NSObject
+@class NSArray, NSDateInterval, NSString;
+
+@interface HKSleepPeriodSegment : NSObject <HKRedactedDescription, NSSecureCoding, NSCopying>
 {
-    NSDate *_startDate;
-    NSDate *_endDate;
+    _Bool _containsAppleSleepTrackingData;
+    NSDateInterval *_dateInterval;
+    NSArray *_sampleIntervals;
     long long _category;
-    NSArray *_samples;
-    double _duration;
 }
 
++ (_Bool)supportsSecureCoding;
++ (id)sleepPeriodSegmentWithDateInterval:(id)arg1 sampleIntervals:(id)arg2 category:(long long)arg3 containsAppleSleepTrackingData:(_Bool)arg4;
++ (id)sleepPeriodSegmentWithDateInterval:(id)arg1 sampleIntervals:(id)arg2 category:(long long)arg3;
++ (id)sleepPeriodSegmentWithDateInterval:(id)arg1 category:(long long)arg2;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) double duration; // @synthesize duration=_duration;
-@property(readonly, copy, nonatomic) NSArray *samples; // @synthesize samples=_samples;
+@property(readonly, nonatomic) _Bool containsAppleSleepTrackingData; // @synthesize containsAppleSleepTrackingData=_containsAppleSleepTrackingData;
 @property(readonly, nonatomic) long long category; // @synthesize category=_category;
-@property(readonly, copy, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
-@property(readonly, copy, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
-- (id)initWithStartDate:(id)arg1 endDate:(id)arg2 category:(long long)arg3 samples:(id)arg4 duration:(double)arg5;
+@property(readonly, copy, nonatomic) NSArray *sampleIntervals; // @synthesize sampleIntervals=_sampleIntervals;
+@property(readonly, copy, nonatomic) NSDateInterval *dateInterval; // @synthesize dateInterval=_dateInterval;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+@property(readonly, copy) NSString *hk_redactedDescription;
+- (id)description;
 
 @end
 

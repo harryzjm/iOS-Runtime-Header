@@ -17,6 +17,7 @@
     NSSet *_cachedOwnerAddresses;
 }
 
++ (id)primaryLocalSourceID;
 + (long long)_calEventPrivacyLevelToEKPrivacyLevel:(int)arg1;
 + (int)_ekPrivacyLevelToCalEventPrivacyLevel:(long long)arg1;
 + (id)sourceWithEventStore:(id)arg1;
@@ -57,9 +58,14 @@
 @property(readonly, nonatomic) EKAvailabilityCache *availabilityCache;
 @property(readonly, nonatomic) _Bool wantsCommentPromptWhenDeclining;
 - (_Bool)remove:(id *)arg1;
-- (_Bool)commit:(id *)arg1;
+- (_Bool)save:(id *)arg1;
 - (_Bool)validate:(id *)arg1;
+- (_Bool)_validateClientCanModifySources:(id *)arg1;
 - (id)description;
+@property(readonly, nonatomic, getter=isNestedLocalSource) _Bool nestedLocalSource;
+@property(readonly, nonatomic, getter=isPrimaryLocalSource) _Bool primaryLocalSource;
+@property(copy, nonatomic) NSString *ownerName;
+@property(nonatomic) int displayOrder;
 @property(readonly, nonatomic) _Bool syncs;
 @property(readonly, nonatomic) _Bool isSyncing;
 @property(retain, nonatomic) NSDate *lastSyncEndDate;
@@ -76,6 +82,7 @@
 - (id)_ekOfficeHoursFromCalDAVOfficeHours:(id)arg1;
 - (void)fetchOfficeHoursWithCompletion:(CDUnknownBlockType)arg1 onQueue:(id)arg2;
 @property(readonly, nonatomic) NSString *personaIdentifier;
+@property(readonly, nonatomic) NSString *symbolicColorForNewCalendar;
 @property(readonly, nonatomic) int displayOrderForNewCalendar;
 @property(readonly, nonatomic) EKSourceConstraints *constraints;
 @property(readonly, nonatomic) _Bool supportsPhoneNumbers;
@@ -94,6 +101,13 @@
 @property(readonly, nonatomic) _Bool isFacebookSource;
 @property(readonly, nonatomic) _Bool isDelegate;
 @property(copy, nonatomic) NSString *delegatedAccountOwnerStoreID;
+@property(nonatomic) _Bool supportsPush;
+@property(nonatomic) _Bool supportsAttachments;
+@property(nonatomic) _Bool requiresOccurrencesConformToRecurrenceRule;
+@property(nonatomic) _Bool supportsEventForwarding;
+@property(nonatomic) _Bool prohibitsSlicingEventsWithAttendees;
+@property(nonatomic) _Bool supportsDelegateEnumeration;
+@property(nonatomic) _Bool supportsDelegation;
 @property(nonatomic) _Bool prohibitsYearlyRecurrenceInterval;
 @property(nonatomic) _Bool prohibitsMultipleMonthsInYearlyRecurrence;
 @property(nonatomic) _Bool prohibitsMultipleDaysInMonthlyRecurrence;
@@ -117,6 +131,9 @@
 @property(nonatomic) _Bool usesSelfAttendee;
 @property(nonatomic) _Bool showsNotifications;
 @property(nonatomic) _Bool wasMigrated;
+@property(nonatomic) _Bool doesSyncDefaultAlarmsToServer;
+@property(nonatomic) _Bool isInSeparateWindow;
+@property(nonatomic) _Bool isInMainWindow;
 - (void)setFlag2:(int)arg1 value:(_Bool)arg2;
 - (_Bool)flag2:(int)arg1;
 @property(nonatomic) int flags2;
@@ -136,6 +153,7 @@
 @property(retain, nonatomic) NSString *sourceIdentifier;
 - (void)setUUID:(id)arg1;
 - (id)UUID;
+@property(copy, nonatomic) NSNumber *defaultAllDayAlarmOffset;
 @property(copy, nonatomic) NSNumber *defaultAlarmOffset;
 @property(copy, nonatomic) NSString *title;
 @property(nonatomic) long long strictestEventPrivateValue;

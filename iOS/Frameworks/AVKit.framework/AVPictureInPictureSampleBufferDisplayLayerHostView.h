@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateGeometryIfNeeded;
 - (void)layoutSubviews;
 - (void)setFrame:(struct CGRect)arg1 contentDimensions:(struct CGSize)arg2 imageQueueSize:(struct CGSize)arg3;
+@property(nonatomic) double beginTime;
 @property(nonatomic) unsigned int contextId;
 - (id)initWithFrame:(struct CGRect)arg1;
 

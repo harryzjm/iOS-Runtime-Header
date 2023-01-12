@@ -6,11 +6,12 @@
 
 #import <Foundation/NSNumberFormatter.h>
 
+#import <Home/HFUnitFormatter-Protocol.h>
 #import <Home/NSCopying-Protocol.h>
 
-@class NSNumber;
+@class NSNumber, NSString;
 
-@interface HFPercentFormatter : NSNumberFormatter <NSCopying>
+@interface HFPercentFormatter : NSNumberFormatter <NSCopying, HFUnitFormatter>
 {
     NSNumber *_minimumValue;
     NSNumber *_maximumValue;
@@ -21,6 +22,8 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSNumber *maximumValue; // @synthesize maximumValue=_maximumValue;
 @property(copy, nonatomic) NSNumber *minimumValue; // @synthesize minimumValue=_minimumValue;
+- (id)stringForObjectValue:(id)arg1 withUnit:(_Bool)arg2;
+@property(readonly, nonatomic) NSString *unitDescription;
 - (_Bool)getObjectValue:(out id *)arg1 forString:(id)arg2 range:(inout struct _NSRange *)arg3 error:(out id *)arg4;
 - (id)stringForObjectValue:(id)arg1;
 - (id)stringForNormalizedObjectValue:(id)arg1;
@@ -28,6 +31,12 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)initWithMinimumValue:(id)arg1 maximumValue:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

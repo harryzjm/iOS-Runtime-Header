@@ -10,7 +10,6 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKCDPCodeServiceRequestServiceClientConfig : PBCodable <NSCopying>
 {
     NSString *_host;

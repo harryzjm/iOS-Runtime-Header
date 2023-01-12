@@ -60,7 +60,7 @@
 - (oneway void)removePresenterWithID:(id)arg1;
 - (void)addPresenter:(id)arg1 withID:(id)arg2 fileURL:(id)arg3 lastPresentedItemEventIdentifier:(id)arg4 ubiquityAttributes:(id)arg5 options:(unsigned long long)arg6 responses:(unsigned long long)arg7;
 - (void)cancelMaterializationWithRequestID:(id)arg1;
-- (void)makeProviderMaterializeFileAtURL:(id)arg1 kernelOperation:(unsigned int)arg2 withRequestID:(id)arg3 fromProcess:(int)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)makeProviderMaterializeFileAtURL:(id)arg1 kernelInfo:(id)arg2 withRequestID:(id)arg3 fromProcess:(int)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (_Bool)_materializeProviderlessDirectoryAtURL:(id)arg1 error:(id *)arg2;
 - (void)grantSubarbitrationClaim:(id)arg1 withServer:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)grantAccessClaim:(id)arg1 withReply:(CDUnknownBlockType)arg2;

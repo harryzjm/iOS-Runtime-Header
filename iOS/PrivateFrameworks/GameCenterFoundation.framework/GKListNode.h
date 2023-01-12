@@ -13,11 +13,11 @@
     GKListNode *_nextNode;
 }
 
-@property(nonatomic) GKListNode *nextNode; // @synthesize nextNode=_nextNode;
-@property(nonatomic) GKListNode *prevNode; // @synthesize prevNode=_prevNode;
+- (void).cxx_destruct;
+@property(retain, nonatomic) GKListNode *nextNode; // @synthesize nextNode=_nextNode;
+@property(retain, nonatomic) GKListNode *prevNode; // @synthesize prevNode=_prevNode;
 @property(retain, nonatomic) id value; // @synthesize value=_value;
 - (id)description;
-- (void)dealloc;
 - (id)initWithValue:(id)arg1;
 
 @end

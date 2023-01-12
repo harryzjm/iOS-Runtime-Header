@@ -11,7 +11,7 @@
 #import <Silex/_WKFullscreenDelegate-Protocol.h>
 
 @class NSString, SWCrashRetryThrottler, UIActivityIndicatorView, WKWebView, WKWebsiteDataStore;
-@protocol SXComponentActionHandler, SXProxyAuthenticationHandler;
+@protocol SXComponentActionHandler, SXProxyAuthenticationHandler, SXSceneStateMonitor;
 
 @interface SXEmbedVideoComponentView <WKNavigationDelegate, WKNavigationDelegatePrivate, WKUIDelegate, SXViewportChangeListener, _WKFullscreenDelegate>
 {
@@ -23,10 +23,12 @@
     WKWebsiteDataStore *_dataStore;
     UIActivityIndicatorView *_activityIndicator;
     id <SXProxyAuthenticationHandler> _proxyAuthenticationHandler;
+    id <SXSceneStateMonitor> _sceneStateMonitor;
 }
 
 + (id)sharedConfiguration;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <SXSceneStateMonitor> sceneStateMonitor; // @synthesize sceneStateMonitor=_sceneStateMonitor;
 @property(readonly, nonatomic) id <SXProxyAuthenticationHandler> proxyAuthenticationHandler; // @synthesize proxyAuthenticationHandler=_proxyAuthenticationHandler;
 @property(readonly, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
 @property(readonly, nonatomic) WKWebsiteDataStore *dataStore; // @synthesize dataStore=_dataStore;
@@ -62,7 +64,7 @@
 - (void)renderContents;
 - (void)layoutSubviews;
 - (void)presentComponentWithChanges:(CDStruct_12a35e6e)arg1;
-- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 analyticsReporting:(id)arg5 appStateMonitor:(id)arg6 actionHandler:(id)arg7 websiteDataStore:(id)arg8 proxyAuthenticationHandler:(id)arg9;
+- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 analyticsReporting:(id)arg5 appStateMonitor:(id)arg6 sceneStateMonitor:(id)arg7 actionHandler:(id)arg8 websiteDataStore:(id)arg9 proxyAuthenticationHandler:(id)arg10;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

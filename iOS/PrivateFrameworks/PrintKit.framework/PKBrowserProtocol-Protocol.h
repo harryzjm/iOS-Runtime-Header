@@ -16,6 +16,6 @@
 - (void)_mdns_queryTxtSynchronous:(NSString *)arg1 reply:(void (^)(NSDictionary *))arg2;
 - (void)_mdns_resolveSynchronous:(NSString *)arg1 regType:(NSString *)arg2 domain:(NSString *)arg3 reply:(void (^)(NSDictionary *))arg4;
 - (void)stopBrowsing;
-- (void)startBrowsing;
+- (void)startBrowsing:(NSDictionary *)arg1;
 @end
 

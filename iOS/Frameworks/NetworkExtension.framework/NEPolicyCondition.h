@@ -16,7 +16,9 @@
     unsigned char _prefix;
     unsigned short _ipProtocol;
     unsigned short _packetFilterTags;
+    unsigned short _schemePort;
     int _pid;
+    int _pid_version;
     unsigned int _uid;
     unsigned int _trafficClassStart;
     unsigned int _trafficClassEnd;
@@ -37,9 +39,12 @@
     NSString *_signingIdentifier;
 }
 
++ (id)delegateIsPlatformBinary;
++ (id)isLoopback;
 + (id)flowRemoteAddressEmpty;
 + (id)flowLocalAddressEmpty;
 + (id)usesModernNetworkAPI;
++ (id)allowsUnsafeSocketAccess;
 + (id)isSystemProxyConnection;
 + (id)isListener;
 + (id)isInbound;
@@ -54,6 +59,7 @@
 + (id)platformBinary;
 + (id)customEntitlement:(id)arg1;
 + (id)entitlement;
++ (id)schemeUsingPort:(unsigned short)arg1;
 + (id)flowRemoteAddressStart:(id)arg1 end:(id)arg2;
 + (id)localNetworks;
 + (id)remoteAddressStart:(id)arg1 end:(id)arg2;
@@ -71,10 +77,12 @@
 + (id)domain:(id)arg1;
 + (id)accountIdentifier:(id)arg1;
 + (id)uid:(unsigned int)arg1;
++ (id)effectivePID:(int)arg1 version:(int)arg2;
 + (id)effectivePID:(int)arg1;
 + (id)realApplication:(id)arg1;
 + (id)effectiveApplication:(id)arg1;
 - (void).cxx_destruct;
+@property unsigned short schemePort; // @synthesize schemePort=_schemePort;
 @property unsigned short packetFilterTags; // @synthesize packetFilterTags=_packetFilterTags;
 @property(copy) NSString *signingIdentifier; // @synthesize signingIdentifier=_signingIdentifier;
 @property unsigned int minSDKVersion; // @synthesize minSDKVersion=_minSDKVersion;
@@ -94,6 +102,7 @@
 @property(copy) NSString *domain; // @synthesize domain=_domain;
 @property(copy) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
 @property unsigned int uid; // @synthesize uid=_uid;
+@property int pid_version; // @synthesize pid_version=_pid_version;
 @property int pid; // @synthesize pid=_pid;
 @property(copy) NSUUID *applicationUUID; // @synthesize applicationUUID=_applicationUUID;
 @property(getter=isNegative) _Bool negative; // @synthesize negative=_negative;

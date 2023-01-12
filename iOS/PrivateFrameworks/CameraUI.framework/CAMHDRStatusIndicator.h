@@ -12,6 +12,7 @@
 
 @property(nonatomic, getter=isAutoHDRAllowed) _Bool autoHDRAllowed; // @synthesize autoHDRAllowed=_autoHDRAllowed;
 @property(nonatomic, setter=setHDRMode:) long long hdrMode; // @synthesize hdrMode=_hdrMode;
+- (id)imageNameForAXHUD;
 - (_Bool)shouldShowSlashForCurrentState;
 - (_Bool)shouldUseSlash;
 - (void)setOrientation:(long long)arg1 animated:(_Bool)arg2;

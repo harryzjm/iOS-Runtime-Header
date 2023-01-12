@@ -16,8 +16,7 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) __weak PGGraphNamingProcessor *processor; // @synthesize processor=_processor;
-- (id)_keyFaceByPersonLocalIdentifierForPersonNodes:(id)arg1;
+- (id)_keyFaceByPersonLocalIdentifierForPersonNodes:(id)arg1 inPhotoLibrary:(id)arg2;
 - (void)runAnalysisWithProgressBlock:(CDUnknownBlockType)arg1;
 - (id)initWithNamingProcessor:(id)arg1;
 - (id)name;

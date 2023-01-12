@@ -26,7 +26,9 @@
 - (void)sceneHandle:(id)arg1 didUpdateSettingsWithDiff:(id)arg2 previousSettings:(id)arg3;
 - (void)sceneHandle:(id)arg1 didUpdateClientSettingsWithDiff:(id)arg2 transitionContext:(id)arg3;
 - (long long)_fallbackInterfaceOrientation;
+- (_Bool)_statusBarAppearsOutsideOfAJailedAppCanChange;
 - (_Bool)_statusBarAppearsOutsideOfAJailedApp;
+- (_Bool)_statusBarAppearsOutsideOfAJailedAppInOrientation:(long long)arg1;
 - (_Bool)_suppressInheritedPartStyles;
 - (id)sceneToHandleStatusBarTapIfExists;
 - (id)classicApplicationSceneHandleIfExists;
@@ -35,7 +37,7 @@
 - (id)overlayStatusBarData;
 - (_Bool)sceneWantsDeviceOrientationEventsEnabled;
 - (struct CGRect)statusBarAvoidanceFrame;
-- (int)statusBarStyleOverridesToSuppress;
+- (unsigned long long)statusBarStyleOverridesToSuppress;
 - (long long)_statusBarOrientationGivenFallbackOrientation:(long long)arg1;
 - (_Bool)_statusBarHiddenGivenFallbackOrientation:(long long)arg1;
 - (double)_statusBarAlpha;

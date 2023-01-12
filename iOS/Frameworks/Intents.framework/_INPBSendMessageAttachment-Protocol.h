@@ -6,12 +6,18 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class _INPBFileDataAttachment, _INPBURLValue;
+@class NSString, _INPBFileDataAttachment, _INPBURLValue;
 
 @protocol _INPBSendMessageAttachment <NSObject>
 @property(readonly, nonatomic) unsigned long long whichDatasource;
+@property(readonly, nonatomic) _Bool hasTypeIdentifier;
+@property(copy, nonatomic) NSString *typeIdentifier;
 @property(readonly, nonatomic) _Bool hasSpeechDataURL;
 @property(retain, nonatomic) _INPBURLValue *speechDataURL;
+@property(readonly, nonatomic) _Bool hasSharedLink;
+@property(retain, nonatomic) _INPBURLValue *sharedLink;
+@property(readonly, nonatomic) _Bool hasPhAssetId;
+@property(copy, nonatomic) NSString *phAssetId;
 @property(readonly, nonatomic) _Bool hasFileURL;
 @property(retain, nonatomic) _INPBURLValue *fileURL;
 @property(readonly, nonatomic) _Bool hasFile;

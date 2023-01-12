@@ -9,25 +9,31 @@
 #import <DoNotDisturb/NSCopying-Protocol.h>
 #import <DoNotDisturb/NSSecureCoding-Protocol.h>
 
-@class DNDClientEventDetails;
+@class DNDClientEventDetails, NSString, NSUUID;
 
 @interface DNDClientEventBehavior : NSObject <NSCopying, NSSecureCoding>
 {
     DNDClientEventDetails *_eventDetails;
     unsigned long long _interruptionSuppression;
+    unsigned long long _resolutionReason;
+    NSUUID *_activeModeUUID;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSUUID *activeModeUUID; // @synthesize activeModeUUID=_activeModeUUID;
+@property(readonly, nonatomic) unsigned long long resolutionReason; // @synthesize resolutionReason=_resolutionReason;
 @property(readonly, nonatomic) unsigned long long interruptionSuppression; // @synthesize interruptionSuppression=_interruptionSuppression;
 @property(readonly, copy, nonatomic) DNDClientEventDetails *eventDetails; // @synthesize eventDetails=_eventDetails;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)_descriptionForRedacted:(_Bool)arg1;
+@property(readonly, copy) NSString *redactedDescription;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithEventDetails:(id)arg1 interruptionSuppression:(unsigned long long)arg2;
+- (id)initWithEventDetails:(id)arg1 interruptionSuppression:(unsigned long long)arg2 resolutionReason:(unsigned long long)arg3 activeModeUUID:(id)arg4;
 
 @end
 

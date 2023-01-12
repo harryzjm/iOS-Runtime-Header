@@ -27,6 +27,9 @@
     STMenuButton *_askForMoreTimeButton;
     UIButton *_enterScreenTimePasscodeButton;
     UIButton *_addContactButton;
+    UIImageView *_customImageView;
+    UIButton *_customPrimaryButton;
+    UIButton *_customSecondaryButton;
     SBSLockScreenService *_lockScreenService;
     long long _policy;
     NSString *_categoryIdentifier;
@@ -49,6 +52,9 @@
 @property(copy) NSString *categoryIdentifier; // @synthesize categoryIdentifier=_categoryIdentifier;
 @property long long policy; // @synthesize policy=_policy;
 @property(readonly) SBSLockScreenService *lockScreenService; // @synthesize lockScreenService=_lockScreenService;
+@property(retain) UIButton *customSecondaryButton; // @synthesize customSecondaryButton=_customSecondaryButton;
+@property(retain) UIButton *customPrimaryButton; // @synthesize customPrimaryButton=_customPrimaryButton;
+@property(retain) UIImageView *customImageView; // @synthesize customImageView=_customImageView;
 @property(retain) UIButton *addContactButton; // @synthesize addContactButton=_addContactButton;
 @property(retain) UIButton *enterScreenTimePasscodeButton; // @synthesize enterScreenTimePasscodeButton=_enterScreenTimePasscodeButton;
 @property(retain) STMenuButton *askForMoreTimeButton; // @synthesize askForMoreTimeButton=_askForMoreTimeButton;
@@ -65,6 +71,12 @@
 - (void)contactViewController:(id)arg1 didCompleteWithContact:(id)arg2;
 - (void)contextMenuWillEndForButton:(id)arg1;
 - (void)contextMenuWillDisplayForButton:(id)arg1;
+- (void)_handleCustomButtonResponse:(id)arg1 forAction:(long long)arg2 error:(id)arg3;
+- (void)_customButtonPressed:(id)arg1;
+- (void)_showDefaultHourglassView;
+- (id)_secondaryButtonConfiguration;
+- (id)_primaryButtonConfiguration;
+- (void)_updateAppearanceWithCustomConfiguration:(id)arg1 defaultMessageFormatKey:(id)arg2 defaultMessageArgument:(id)arg3;
 - (void)_unlockDeviceIfNeededWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)_iCloudContainer;
 - (id)_newContact;
@@ -94,6 +106,7 @@
 - (void)updateAppearanceUsingPolicy:(long long)arg1 forWebpageURL:(id)arg2;
 - (void)updateAppearanceUsingPolicy:(long long)arg1 forBundleIdentifier:(id)arg2;
 - (void)updateAppearanceUsingPolicy:(long long)arg1 forCategoryIdentifier:(id)arg2;
+- (void)_hideCustomButtons;
 - (void)_updateAddContactButton;
 - (void)_updateButtons;
 - (void)_ok:(id)arg1;

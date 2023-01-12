@@ -12,11 +12,15 @@
 {
 }
 
++ (id)accessoryModelTypeToString:(long long)arg1;
 - (id)selectFallbackModelForLocale:(id)arg1 downloadedModels:(id)arg2 preinstalledModels:(id)arg3 rtLocaleMap:(id)arg4;
 - (id)getAccessoryFallbackFamilyLocal:(id)arg1 fromLocaleMap:(id)arg2;
 - (id)getAccessoryFallbackLocalTable;
 - (void)voiceTriggerJarvisLanguageList:(id)arg1 jarvisSelectedLanguage:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)voiceTriggerHearstRTModelForVersion:(unsigned long long)arg1 minorVersion:(unsigned long long)arg2 locale:(id)arg3 downloadedModels:(id)arg4 preinstalledModels:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)voiceTriggerRemoraRTModelForVersion:(unsigned long long)arg1 minorVersion:(unsigned long long)arg2 locale:(id)arg3 endpointId:(id)arg4 downloadedModels:(id)arg5 preinstalledModels:(id)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)voiceTriggerRTModelForVersion:(unsigned long long)arg1 minorVersion:(unsigned long long)arg2 locale:(id)arg3 downloadedModels:(id)arg4 preinstalledModels:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)voiceTriggerRTModelForVersion:(unsigned long long)arg1 minorVersion:(unsigned long long)arg2 accessoryRTModelType:(long long)arg3 locale:(id)arg4 endpointId:(id)arg5 downloadedModels:(id)arg6 preinstalledModels:(id)arg7 completion:(CDUnknownBlockType)arg8;
 - (void)_handleFakeHearstModelRequest:(id)arg1 majorVersion:(unsigned long long)arg2 minorVersion:(unsigned long long)arg3 downloadedModels:(id)arg4 preinstalledModels:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)fetchRemoteVoiceTriggerAssetForLanguageCode:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)installedVoiceTriggerAssetForLanguageCode:(id)arg1 completion:(CDUnknownBlockType)arg2;

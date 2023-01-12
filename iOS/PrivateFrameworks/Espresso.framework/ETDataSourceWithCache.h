@@ -14,8 +14,8 @@ __attribute__((visibility("hidden")))
 @interface ETDataSourceWithCache : NSObject <ETDataSource>
 {
     id <ETDataSource> _source;
-    struct map<int, ETDataPoint *, std::__1::less<int>, std::__1::allocator<std::__1::pair<const int, ETDataPoint *>>> _cache;
-    basic_string_90719d97 dump_path;
+    struct map<int, ETDataPoint *, std::less<int>, std::allocator<std::pair<const int, ETDataPoint *>>> _cache;
+    struct basic_string<char, std::char_traits<char>, std::allocator<char>> dump_path;
     _Bool dump_descriptors;
 }
 

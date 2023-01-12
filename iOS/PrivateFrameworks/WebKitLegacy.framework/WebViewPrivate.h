@@ -6,43 +6,42 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableSet, NSString, NSURL, WAKWindow, WebFixedPositionContent, WebFullScreenController, WebIndicateLayer, WebInspector, WebNodeHighlight, WebPreferences;
+@class NSURL;
 @protocol WebCaretChangeListener, WebDeviceOrientationProvider, WebFormDelegate, WebGeolocationProvider, WebNotificationProvider;
 
 __attribute__((visibility("hidden")))
 @interface WebViewPrivate : NSObject
 {
     struct Page *page;
-    struct RefPtr<WebViewGroup, WTF::DumbPtrTraits<WebViewGroup>> group;
+    struct RefPtr<WebViewGroup, WTF::RawPtrTraits<WebViewGroup>, WTF::DefaultRefDerefTraits<WebViewGroup>> group;
     id UIDelegate;
-    id UIDelegateForwarder;
+    struct RetainPtr<id> UIDelegateForwarder;
     id resourceProgressDelegate;
     id downloadDelegate;
     id policyDelegate;
-    id policyDelegateForwarder;
+    struct RetainPtr<id> policyDelegateForwarder;
     id frameLoadDelegate;
-    id frameLoadDelegateForwarder;
+    struct RetainPtr<id> frameLoadDelegateForwarder;
     id <WebFormDelegate> formDelegate;
     id editingDelegate;
-    id editingDelegateForwarder;
+    struct RetainPtr<id> editingDelegateForwarder;
     id scriptDebugDelegate;
     id historyDelegate;
-    id resourceProgressDelegateForwarder;
-    id formDelegateForwarder;
-    WebInspector *inspector;
-    WebNodeHighlight *currentNodeHighlight;
-    struct RefPtr<WebCore::ValidationBubble, WTF::DumbPtrTraits<WebCore::ValidationBubble>> formValidationBubble;
+    struct RetainPtr<id> resourceProgressDelegateForwarder;
+    struct RetainPtr<id> formDelegateForwarder;
+    struct RetainPtr<WebInspector> inspector;
+    struct RetainPtr<WebNodeHighlight> currentNodeHighlight;
+    struct RefPtr<WebCore::ValidationBubble, WTF::RawPtrTraits<WebCore::ValidationBubble>, WTF::DefaultRefDerefTraits<WebCore::ValidationBubble>> formValidationBubble;
     _Bool shouldMaintainInactiveSelection;
     _Bool allowsUndo;
     float zoomMultiplier;
     _Bool zoomsTextOnly;
-    NSString *applicationNameForUserAgent;
+    struct RetainPtr<NSString> applicationNameForUserAgent;
     struct String userAgent;
     _Bool userAgentOverridden;
-    WebPreferences *preferences;
-    _Bool useSiteSpecificSpoofing;
+    struct RetainPtr<WebPreferences> preferences;
     NSURL *userStyleSheetLocation;
-    WAKWindow *hostWindow;
+    struct RetainPtr<WAKWindow> hostWindow;
     int programmaticFocusCount;
     struct WebResourceDelegateImplementationCache resourceLoadDelegateImplementations;
     struct WebFrameLoadDelegateImplementationCache frameLoadDelegateImplementations;
@@ -58,16 +57,16 @@ __attribute__((visibility("hidden")))
     _Bool becomingFirstResponder;
     _Bool becomingFirstResponderFromOutside;
     _Bool usesPageCache;
-    struct CGColor *backgroundColor;
-    NSString *mediaStyle;
+    struct RetainPtr<CGColor *> backgroundColor;
+    struct RetainPtr<NSString> mediaStyle;
     _Bool hasSpellCheckerDocumentTag;
     long long spellCheckerDocumentTag;
     _Bool isStopping;
     id UIKitDelegate;
-    id UIKitDelegateForwarder;
+    struct RetainPtr<id> UIKitDelegateForwarder;
     id WebMailDelegate;
     _Bool allowsMessaging;
-    NSMutableSet *_caretChangeListeners;
+    struct RetainPtr<NSMutableSet> _caretChangeListeners;
     id <WebCaretChangeListener> _caretChangeListener;
     struct CGSize fixedLayoutSize;
     _Bool mainViewIsScrollingOrZooming;
@@ -80,26 +79,26 @@ __attribute__((visibility("hidden")))
     unsigned long long dragSourceAction;
     struct RetainPtr<NSURL> draggedLinkURL;
     struct RetainPtr<NSString> draggedLinkTitle;
-    struct HashMap<unsigned long, WTF::RetainPtr<id>, WTF::DefaultHash<unsigned long>, WTF::HashTraits<unsigned long>, WTF::HashTraits<WTF::RetainPtr<id>>> identifierMap;
+    struct HashMap<unsigned long, WTF::RetainPtr<id>, WTF::DefaultHash<unsigned long>, WTF::HashTraits<unsigned long>, WTF::HashTraits<WTF::RetainPtr<id>>, WTF::HashTableTraits> identifierMap;
     _Bool _keyboardUIModeAccessed;
     int _keyboardUIMode;
     _Bool shouldUpdateWhileOffscreen;
     _Bool needsOneShotDrawingSynchronization;
     _Bool postsAcceleratedCompositingNotifications;
-    struct RefPtr<LayerFlushController, WTF::DumbPtrTraits<LayerFlushController>> layerFlushController;
+    struct RefPtr<LayerFlushController, WTF::RawPtrTraits<LayerFlushController>, WTF::DefaultRefDerefTraits<LayerFlushController>> layerFlushController;
     struct CGSize lastLayoutSize;
     struct RetainPtr<WebVideoFullscreenController> fullscreenController;
     struct Vector<WTF::RetainPtr<WebVideoFullscreenController>, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> fullscreenControllersExiting;
-    WebFullScreenController *newFullscreenController;
-    WebIndicateLayer *indicateLayer;
+    struct RetainPtr<WebFullScreenController> newFullscreenController;
+    struct RetainPtr<WebIndicateLayer> indicateLayer;
     id <WebGeolocationProvider> _geolocationProvider;
     id <WebDeviceOrientationProvider> m_deviceOrientationProvider;
     id <WebNotificationProvider> _notificationProvider;
     _Bool interactiveFormValidationEnabled;
     int validationMessageTimerMagnification;
     float customDeviceScaleFactor;
-    WebFixedPositionContent *_fixedPositionContent;
-    struct unique_ptr<WebCore::AlternativeTextUIController, std::__1::default_delete<WebCore::AlternativeTextUIController>> m_alternativeTextUIController;
+    struct RetainPtr<WebFixedPositionContent> _fixedPositionContent;
+    struct unique_ptr<WebCore::AlternativeTextUIController, std::default_delete<WebCore::AlternativeTextUIController>> m_alternativeTextUIController;
     struct RetainPtr<NSData> sourceApplicationAuditData;
     _Bool _didPerformFirstNavigation;
 }

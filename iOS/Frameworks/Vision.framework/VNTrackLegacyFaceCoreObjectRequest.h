@@ -11,6 +11,7 @@
     _Bool _faceCoreEnhanceEyesAndMouthLocalization;
     _Bool _faceCoreExtractBlink;
     _Bool _faceCoreExtractSmile;
+    float _faceCoreKalmanFilter;
     NSNumber *_faceCoreMinFaceSize;
     NSNumber *_faceCoreNumberOfDetectionAngles;
 }
@@ -18,14 +19,16 @@
 + (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
 + (unsigned int)frameCVPixelBufferFormatForRequestRevision:(unsigned long long)arg1;
 + (id)trackerTypeForRequestRevision:(unsigned long long)arg1 error:(id *)arg2;
-+ (_Bool)supportsPrivateRevision:(unsigned long long)arg1;
++ (id)supportedPrivateRevisions;
 - (void).cxx_destruct;
+@property(nonatomic) float faceCoreKalmanFilter; // @synthesize faceCoreKalmanFilter=_faceCoreKalmanFilter;
 @property(nonatomic) _Bool faceCoreExtractSmile; // @synthesize faceCoreExtractSmile=_faceCoreExtractSmile;
 @property(nonatomic) _Bool faceCoreExtractBlink; // @synthesize faceCoreExtractBlink=_faceCoreExtractBlink;
 @property(nonatomic) _Bool faceCoreEnhanceEyesAndMouthLocalization; // @synthesize faceCoreEnhanceEyesAndMouthLocalization=_faceCoreEnhanceEyesAndMouthLocalization;
 @property(retain, nonatomic) NSNumber *faceCoreNumberOfDetectionAngles; // @synthesize faceCoreNumberOfDetectionAngles=_faceCoreNumberOfDetectionAngles;
 @property(retain, nonatomic) NSNumber *faceCoreMinFaceSize; // @synthesize faceCoreMinFaceSize=_faceCoreMinFaceSize;
 - (void)populateDetectorProcessingOptions:(id)arg1 session:(id)arg2;
+- (id)initWithDetectedObjectObservation:(id)arg1;
 
 @end
 

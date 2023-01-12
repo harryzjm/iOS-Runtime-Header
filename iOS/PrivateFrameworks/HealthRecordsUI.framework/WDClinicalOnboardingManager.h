@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HRProfile, WDClinicalGatewayProxy, WDClinicalOnboardingOAuthNavigationViewController;
+@class HRProfile, UINavigationController, WDClinicalGatewayProxy, WDClinicalOnboardingOAuthNavigationViewController;
 
 __attribute__((visibility("hidden")))
 @interface WDClinicalOnboardingManager : NSObject
@@ -14,9 +14,13 @@ __attribute__((visibility("hidden")))
     HRProfile *_profile;
     WDClinicalGatewayProxy *_pendingOnboardingGateway;
     WDClinicalOnboardingOAuthNavigationViewController *_inFlightLoginViewController;
+    UINavigationController *_inFlightClinicalSharingLoginViewController;
+    UINavigationController *_onboardingTileNavigationController;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) __weak UINavigationController *onboardingTileNavigationController; // @synthesize onboardingTileNavigationController=_onboardingTileNavigationController;
+@property(nonatomic) __weak UINavigationController *inFlightClinicalSharingLoginViewController; // @synthesize inFlightClinicalSharingLoginViewController=_inFlightClinicalSharingLoginViewController;
 @property(nonatomic) __weak WDClinicalOnboardingOAuthNavigationViewController *inFlightLoginViewController; // @synthesize inFlightLoginViewController=_inFlightLoginViewController;
 @property(retain, nonatomic) WDClinicalGatewayProxy *pendingOnboardingGateway; // @synthesize pendingOnboardingGateway=_pendingOnboardingGateway;
 @property(nonatomic) __weak HRProfile *profile; // @synthesize profile=_profile;
@@ -28,7 +32,9 @@ __attribute__((visibility("hidden")))
 - (void)registerInflightOnboardingViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_presentAccount:(id)arg1 presentingViewController:(id)arg2;
 - (id)gatewayProxyWithActivity:(id)arg1;
+- (id)_deepLinkOnboardingViewControllerWithOptions:(unsigned long long)arg1;
 - (void)onboardWithActivity:(id)arg1 presentingViewController:(id)arg2;
+- (id)logPrefix;
 - (void)dealloc;
 - (id)initWithProfile:(id)arg1;
 - (id)init;

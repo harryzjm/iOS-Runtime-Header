@@ -9,18 +9,22 @@
 #import <CoreCDP/NSCopying-Protocol.h>
 #import <CoreCDP/NSSecureCoding-Protocol.h>
 
-@class AKCircleRequestContext, CUMessageSession, KCAESGCMDuplexSession, NSDictionary, NSNumber, NSString;
+@class AKCircleRequestContext, CDPCustodianRecoveryInfo, CUMessageSession, KCAESGCMDuplexSession, NSData, NSDictionary, NSNumber, NSString, NSUUID;
 @protocol CDPAuthProviderInternal;
 
 @interface CDPContext : NSObject <NSSecureCoding, NSCopying>
 {
     _Bool _isHSA2Account;
     _Bool _isFederatedAccount;
+    _Bool _isBeneficiaryAccount;
     _Bool _didUseSMSVerification;
     _Bool _guestMode;
     _Bool _supportsSkipSignIn;
+    _Bool _failSignInOnError;
+    _Bool __supportsCustodianRecovery;
     _Bool __useSecureBackupCachedPassphrase;
     _Bool __alwaysCreateEscrowRecord;
+    _Bool __skipEscrowFetches;
     _Bool __ignoreLockAssertErrors;
     _Bool _idmsRecovery;
     _Bool _idmsMasterKeyRecovery;
@@ -34,26 +38,35 @@
     NSString *_cachedLocalSecret;
     unsigned long long _cachedLocalSecretType;
     NSString *_findMyiPhoneUUID;
+    NSUUID *_beneficiaryIdentifier;
     id <CDPAuthProviderInternal> __authProvider;
     KCAESGCMDuplexSession *_duplexSession;
     AKCircleRequestContext *_resumeContext;
     CUMessageSession *_sharingChannel;
     NSString *__recoveryToken;
+    CDPCustodianRecoveryInfo *_custodianRecoveryInfo;
+    NSData *_beneficiaryWrappedKeyData;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)preflightContext:(id)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSData *beneficiaryWrappedKeyData; // @synthesize beneficiaryWrappedKeyData=_beneficiaryWrappedKeyData;
+@property(retain, nonatomic) CDPCustodianRecoveryInfo *custodianRecoveryInfo; // @synthesize custodianRecoveryInfo=_custodianRecoveryInfo;
 @property(nonatomic) _Bool idmsMasterKeyRecovery; // @synthesize idmsMasterKeyRecovery=_idmsMasterKeyRecovery;
 @property(nonatomic) _Bool idmsRecovery; // @synthesize idmsRecovery=_idmsRecovery;
 @property(nonatomic) _Bool _ignoreLockAssertErrors; // @synthesize _ignoreLockAssertErrors=__ignoreLockAssertErrors;
 @property(copy, nonatomic) NSString *_recoveryToken; // @synthesize _recoveryToken=__recoveryToken;
+@property(nonatomic) _Bool _skipEscrowFetches; // @synthesize _skipEscrowFetches=__skipEscrowFetches;
 @property(nonatomic) _Bool _alwaysCreateEscrowRecord; // @synthesize _alwaysCreateEscrowRecord=__alwaysCreateEscrowRecord;
 @property(nonatomic) _Bool _useSecureBackupCachedPassphrase; // @synthesize _useSecureBackupCachedPassphrase=__useSecureBackupCachedPassphrase;
 @property(retain, nonatomic) CUMessageSession *sharingChannel; // @synthesize sharingChannel=_sharingChannel;
+@property(nonatomic) _Bool _supportsCustodianRecovery; // @synthesize _supportsCustodianRecovery=__supportsCustodianRecovery;
+@property(nonatomic) _Bool failSignInOnError; // @synthesize failSignInOnError=_failSignInOnError;
 @property(retain, nonatomic) AKCircleRequestContext *resumeContext; // @synthesize resumeContext=_resumeContext;
 @property(retain, nonatomic) KCAESGCMDuplexSession *duplexSession; // @synthesize duplexSession=_duplexSession;
 @property(retain, nonatomic) id <CDPAuthProviderInternal> _authProvider; // @synthesize _authProvider=__authProvider;
+@property(copy, nonatomic) NSUUID *beneficiaryIdentifier; // @synthesize beneficiaryIdentifier=_beneficiaryIdentifier;
 @property _Bool supportsSkipSignIn; // @synthesize supportsSkipSignIn=_supportsSkipSignIn;
 @property(copy) NSString *findMyiPhoneUUID; // @synthesize findMyiPhoneUUID=_findMyiPhoneUUID;
 @property(nonatomic) _Bool guestMode; // @synthesize guestMode=_guestMode;
@@ -61,6 +74,7 @@
 @property(copy, nonatomic) NSString *cachedLocalSecret; // @synthesize cachedLocalSecret=_cachedLocalSecret;
 @property(nonatomic) long long type; // @synthesize type=_type;
 @property(nonatomic) _Bool didUseSMSVerification; // @synthesize didUseSMSVerification=_didUseSMSVerification;
+@property(nonatomic) _Bool isBeneficiaryAccount; // @synthesize isBeneficiaryAccount=_isBeneficiaryAccount;
 @property(nonatomic) _Bool isFederatedAccount; // @synthesize isFederatedAccount=_isFederatedAccount;
 @property(nonatomic) _Bool isHSA2Account; // @synthesize isHSA2Account=_isHSA2Account;
 @property(copy, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;

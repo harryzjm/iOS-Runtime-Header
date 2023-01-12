@@ -19,7 +19,6 @@
 @property(nonatomic) float aggregationScore;
 @property(readonly, nonatomic) NSString *managedEntityName;
 - (_Bool)applyMutationsToManagedObject:(id)arg1 photoLibrary:(id)arg2 error:(id *)arg3;
-- (_Bool)validateMutationsToManagedObject:(id)arg1 error:(id *)arg2;
 - (_Bool)allowMutationToManagedObject:(id)arg1 propertyKey:(id)arg2 error:(id *)arg3;
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
 - (void)encodeToXPCDict:(id)arg1;

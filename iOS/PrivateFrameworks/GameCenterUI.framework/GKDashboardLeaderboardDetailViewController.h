@@ -20,6 +20,7 @@
     GKScore *_score;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) GKScore *score; // @synthesize score=_score;
 @property(retain, nonatomic) GKLeaderboard *leaderboard; // @synthesize leaderboard=_leaderboard;
 @property(nonatomic) UIButton *reportProblemButton; // @synthesize reportProblemButton=_reportProblemButton;
@@ -36,7 +37,6 @@
 - (void)configureForScore;
 - (id)preferredFocusEnvironments;
 - (void)viewDidLoad;
-- (void)dealloc;
 - (id)initWithScore:(id)arg1 leaderboard:(id)arg2;
 
 @end

@@ -6,19 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSSet;
-
 @interface CLSHolidayCalendarEventRuleTraits : NSObject
 {
     _Bool _containsMePerson;
     unsigned long long _numberOfPeople;
     unsigned long long _peopleTrait;
     unsigned long long _locationTrait;
-    NSSet *_categories;
 }
 
-- (void).cxx_destruct;
-@property(retain, nonatomic) NSSet *categories; // @synthesize categories=_categories;
 @property(nonatomic) unsigned long long locationTrait; // @synthesize locationTrait=_locationTrait;
 @property(nonatomic) unsigned long long peopleTrait; // @synthesize peopleTrait=_peopleTrait;
 @property(nonatomic) unsigned long long numberOfPeople; // @synthesize numberOfPeople=_numberOfPeople;

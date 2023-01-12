@@ -40,7 +40,6 @@
 @property(readonly, nonatomic) id <PXDisplayAsset> displayAsset; // @synthesize displayAsset=_displayAsset;
 - (id)description;
 @property(readonly, copy) NSString *diagnosticScoresDescription;
-- (void)prepareForOneUpVisible;
 - (void)prepareForInvisible;
 - (void)prepareForVisible;
 @property(readonly, nonatomic) _Bool isPlaying;

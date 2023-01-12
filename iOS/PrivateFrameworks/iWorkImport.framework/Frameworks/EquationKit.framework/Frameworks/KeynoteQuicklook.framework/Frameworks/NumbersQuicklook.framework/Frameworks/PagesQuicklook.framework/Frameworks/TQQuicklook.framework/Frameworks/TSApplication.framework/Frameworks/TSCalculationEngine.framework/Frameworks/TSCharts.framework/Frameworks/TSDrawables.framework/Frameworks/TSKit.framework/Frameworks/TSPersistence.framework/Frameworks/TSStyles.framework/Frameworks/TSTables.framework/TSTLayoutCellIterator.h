@@ -4,38 +4,40 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class TSTCell, TSTMasterLayout, TSTMutableCellIteratorData;
+@class TSTCell, TSTLayoutEngine, TSTMutableCellIteratorData;
 @protocol TSTCellIteratorData;
 
 @interface TSTLayoutCellIterator
 {
     _Bool _queriedModel;
     _Bool _modelIteratorHasCell;
+    _Bool _columnOrderReversed;
     unsigned int _numberOfLayoutColumns;
     unsigned int _numberOfColumns;
     unsigned int _numberOfRows;
-    TSTMasterLayout *_masterLayout;
+    TSTLayoutEngine *_layoutEngine;
     struct TSUCellCoord _layoutCellID;
     TSTCell *_layoutCell;
-    TSTMutableCellIteratorData *_layoutCellData;
     id <TSTCellIteratorData> _modelIteratorData;
+    TSTMutableCellIteratorData *_layoutCellData;
     struct TSUCellRect _layoutRange;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) id <TSTCellIteratorData> modelIteratorData; // @synthesize modelIteratorData=_modelIteratorData;
 @property(retain, nonatomic) TSTMutableCellIteratorData *layoutCellData; // @synthesize layoutCellData=_layoutCellData;
 @property(nonatomic) unsigned int numberOfRows; // @synthesize numberOfRows=_numberOfRows;
 @property(nonatomic) unsigned int numberOfColumns; // @synthesize numberOfColumns=_numberOfColumns;
 @property(nonatomic) unsigned int numberOfLayoutColumns; // @synthesize numberOfLayoutColumns=_numberOfLayoutColumns;
+@property(nonatomic) _Bool columnOrderReversed; // @synthesize columnOrderReversed=_columnOrderReversed;
 @property(nonatomic) _Bool modelIteratorHasCell; // @synthesize modelIteratorHasCell=_modelIteratorHasCell;
 @property(nonatomic) _Bool queriedModel; // @synthesize queriedModel=_queriedModel;
+@property(nonatomic) id <TSTCellIteratorData> modelIteratorData; // @synthesize modelIteratorData=_modelIteratorData;
 @property(readonly, nonatomic) TSTCell *layoutCell; // @synthesize layoutCell=_layoutCell;
 @property(readonly, nonatomic) struct TSUCellCoord layoutCellID; // @synthesize layoutCellID=_layoutCellID;
 @property(readonly, nonatomic) struct TSUCellRect layoutRange; // @synthesize layoutRange=_layoutRange;
-@property(readonly, retain, nonatomic) TSTMasterLayout *masterLayout; // @synthesize masterLayout=_masterLayout;
+@property(readonly, retain, nonatomic) TSTLayoutEngine *layoutEngine; // @synthesize layoutEngine=_layoutEngine;
 - (_Bool)getNextCellData:(id *)arg1;
-- (id)initWithMasterLayout:(id)arg1 range:(struct TSUCellRect)arg2 flags:(unsigned long long)arg3 searchFlags:(unsigned long long)arg4;
+- (id)initWithLayoutEngine:(id)arg1 range:(struct TSUCellRect)arg2 flags:(unsigned long long)arg3 searchFlags:(unsigned long long)arg4;
 - (id)initWithLayout:(id)arg1 range:(struct TSUCellRect)arg2 flags:(unsigned long long)arg3 searchFlags:(unsigned long long)arg4;
 
 @end

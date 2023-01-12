@@ -9,12 +9,12 @@
 __attribute__((visibility("hidden")))
 @interface WebDeviceOrientationInternal : NSObject
 {
-    RefPtr_2fae532e m_orientation;
+    struct RefPtr<WebCore::DeviceOrientationData, WTF::RawPtrTraits<WebCore::DeviceOrientationData>, WTF::DefaultRefDerefTraits<WebCore::DeviceOrientationData>> m_orientation;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)initWithCoreDeviceOrientation:(RefPtr_2fae532e *)arg1;
+- (id)initWithCoreDeviceOrientation:(void *)arg1;
 
 @end
 

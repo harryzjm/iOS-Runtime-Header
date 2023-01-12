@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class APSIncomingMessageCheckpointTrace, NSData, NSDate;
+@class NSData, NSDate, NSString;
 
 @interface APSIncomingMessage
 {
-    APSIncomingMessageCheckpointTrace *_checkpointTrace;
 }
 
-- (void).cxx_destruct;
-@property(retain, nonatomic) APSIncomingMessageCheckpointTrace *checkpointTrace; // @synthesize checkpointTrace=_checkpointTrace;
+@property(retain, nonatomic) NSString *channelID;
 @property(nonatomic) unsigned int pushFlags;
 @property(nonatomic) unsigned long long pushType;
 @property(copy, nonatomic) NSData *tracingUUID;
@@ -21,9 +19,8 @@
 @property(nonatomic, getter=wasLastMessageFromStorage) _Bool lastMessageFromStorage;
 @property(nonatomic, getter=wasFromStorage) _Bool fromStorage;
 @property(copy, nonatomic) NSData *token;
+@property(retain, nonatomic) NSDate *expirationDate;
 @property(copy, nonatomic) NSDate *timestamp;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
 
 @end
 

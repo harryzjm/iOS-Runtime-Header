@@ -21,10 +21,16 @@ __attribute__((visibility("hidden")))
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
     int _status;
+    _Bool _alwaysPositionInitialRatingCtaTowardsTop;
+    _Bool _collectPhotos;
     _Bool _isOverride;
+    _Bool _suppressOnExistingRichData;
     struct {
         unsigned int has_status:1;
+        unsigned int has_alwaysPositionInitialRatingCtaTowardsTop:1;
+        unsigned int has_collectPhotos:1;
         unsigned int has_isOverride:1;
+        unsigned int has_suppressOnExistingRichData:1;
         unsigned int read_historicalMapsIds:1;
         unsigned int read_mapsId:1;
         unsigned int read_scorecardLayout:1;
@@ -32,37 +38,15 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
-+ (Class)historicalMapsIdType;
 - (void).cxx_destruct;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (id)historicalMapsIdAtIndex:(unsigned long long)arg1;
-- (unsigned long long)historicalMapsIdsCount;
-- (void)addHistoricalMapsId:(id)arg1;
-- (void)clearHistoricalMapsIds;
-@property(retain, nonatomic) NSMutableArray *historicalMapsIds;
-@property(nonatomic) _Bool hasIsOverride;
-@property(nonatomic) _Bool isOverride;
-@property(retain, nonatomic) GEOPDMapsIdentifier *mapsId;
-@property(readonly, nonatomic) _Bool hasMapsId;
-@property(retain, nonatomic) GEOPDScorecardLayout *scorecardLayout;
-@property(readonly, nonatomic) _Bool hasScorecardLayout;
-- (int)StringAsStatus:(id)arg1;
-- (id)statusAsString:(int)arg1;
-@property(nonatomic) _Bool hasStatus;
-@property(nonatomic) int status;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

@@ -7,13 +7,14 @@
 #import <PassKitUI/PKPaymentSetupViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKViewControllerPreflightable-Protocol.h>
 
-@class NSString, PKPaymentProvisioningController;
+@class NSString, PKPaymentProvisioningController, PKPaymentSetupFlowController;
 @protocol PKPaymentSetupDelegate;
 
 @interface PKPaymentSetupNavigationController <PKPaymentSetupViewControllerDelegate, PKViewControllerPreflightable>
 {
     long long _context;
     _Bool _rootViewControllerNeedsConfiguration;
+    PKPaymentSetupFlowController *_flowController;
     _Bool _showsWelcomeViewController;
     _Bool _allowsManualEntry;
     PKPaymentProvisioningController *_provisioningController;
@@ -28,6 +29,7 @@
 @property(nonatomic) _Bool showsWelcomeViewController; // @synthesize showsWelcomeViewController=_showsWelcomeViewController;
 @property(nonatomic) __weak id <PKPaymentSetupDelegate> setupDelegate; // @synthesize setupDelegate=_setupDelegate;
 @property(readonly, retain, nonatomic) PKPaymentProvisioningController *provisioningController; // @synthesize provisioningController=_provisioningController;
+- (void)dismissViewControllerAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(_Bool)arg3;
 - (unsigned long long)supportedInterfaceOrientations;
 - (_Bool)shouldAutorotate;

@@ -8,7 +8,7 @@
 
 #import <GeoServices/GEOResourceManifestServerProxy-Protocol.h>
 
-@class GEOActiveTileGroup, GEOResourceManifestConfiguration, NSString;
+@class GEOActiveTileGroup, GEOResourceManifestConfiguration, NSMutableDictionary, NSString, geo_isolater;
 @protocol GEOResourceManifestServerProxyDelegate, OS_dispatch_queue, OS_xpc_object;
 
 @interface GEOResourceManifestServerRemoteProxy : NSObject <GEOResourceManifestServerProxy>
@@ -25,12 +25,14 @@
     struct os_unfair_lock_s _authTokenLock;
     NSString *_authToken;
     int _activeTileGroupChangedNotificationToken;
+    geo_isolater *_maximumZoomLevelIsolation;
+    NSMutableDictionary *_maximumZoomLevelCache;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <GEOResourceManifestServerProxyDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_handleMessage:(id)arg1 xpcMessage:(id)arg2;
-- (unsigned long long)maximumZoomLevelForStyle:(int)arg1 scale:(int)arg2;
+- (unsigned long long)maximumZoomLevelForStyle:(int)arg1 scale:(int)arg2 outSize:(int *)arg3;
 - (void)deactivateResourceScenario:(int)arg1;
 - (void)activateResourceScenario:(int)arg1;
 - (void)deactivateResourceScale:(int)arg1;
@@ -47,7 +49,6 @@
 - (oneway void)setActiveTileGroupIdentifier:(id)arg1;
 - (void)closeConnection;
 - (void)openConnection;
-- (id)_xpcConnection;
 - (id)configuration;
 - (id)authToken;
 - (void)dealloc;

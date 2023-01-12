@@ -20,7 +20,6 @@
     MISSING_TYPE *subscribeButton3;
     MISSING_TYPE *webAuthButton;
     MISSING_TYPE *learnMoreLabel;
-    MISSING_TYPE *learnMoreButton;
 }
 
 - (void).cxx_destruct;

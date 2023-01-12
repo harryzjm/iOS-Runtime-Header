@@ -26,7 +26,8 @@
 - (id)uniqueIdentifier;
 - (long long)connectionType;
 - (id)designatedGroupLeader;
-- (id)initWithDesignatedGroupLeader:(id)arg1 outputDevices:(id)arg2;
+- (id)initWithDesignatedGroupLeader:(id)arg1 outputDevices:(id)arg2 preferredSuffix:(id)arg3 connectionType:(long long)arg4;
+- (id)initWithDesignatedGroupLeader:(id)arg1 outputDevices:(id)arg2 preferredSuffix:(id)arg3;
 
 @end
 

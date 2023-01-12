@@ -7,7 +7,6 @@
 @class CKDCancelTokenGroup, NSArray, NSMapTable, NSMutableArray, NSMutableDictionary, NSObject;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface CKDDownloadAssetsOperation
 {
     CDUnknownBlockType _downloadPreparationBlock;
@@ -83,7 +82,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)makeStateTransition;
 - (id)CKStatusReportLogGroups;
 - (id)activityCreate;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 // Remaining properties
 @property(nonatomic) unsigned long long state; // @dynamic state;

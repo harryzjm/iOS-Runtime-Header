@@ -7,7 +7,6 @@
 @class NSArray, NSMutableArray;
 @protocol CKFetchSubscriptionsOperationCallbacks;
 
-__attribute__((visibility("hidden")))
 @interface CKDFetchSubscriptionsOperation
 {
     _Bool _isFetchAllSubscriptionsOperation;
@@ -26,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (int)operationType;
 - (void)_handleSubscriptionFetched:(id)arg1 withID:(id)arg2 responseCode:(id)arg3;
 - (id)activityCreate;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 // Remaining properties
 @property(retain, nonatomic) id <CKFetchSubscriptionsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;

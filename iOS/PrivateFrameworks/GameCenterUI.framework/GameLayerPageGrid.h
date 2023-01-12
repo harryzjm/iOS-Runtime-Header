@@ -26,8 +26,12 @@
 - (id)init;
 - (id)initWithWidth:(double)arg1 columnSizeCategory:(long long)arg2 maxColumns:(id)arg3;
 - (id)initWithSize:(struct CGSize)arg1 traitCollection:(id)arg2;
+- (id)initWithContainerSize:(struct CGSize)arg1 traitCollection:(id)arg2;
 @property(nonatomic, readonly) struct UIEdgeInsets centeringInsets; // @synthesize centeringInsets;
+@property(nonatomic, readonly) struct UIEdgeInsets minimumInsets; // @synthesize minimumInsets;
 @property(nonatomic, readonly) long long columnCount; // @synthesize columnCount;
+@property(nonatomic, readonly) double interColumnSpacing; // @synthesize interColumnSpacing;
+@property(nonatomic, readonly) double columnWidth; // @synthesize columnWidth;
 
 @end
 

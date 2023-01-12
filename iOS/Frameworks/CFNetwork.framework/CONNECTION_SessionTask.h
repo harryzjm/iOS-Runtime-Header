@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableURLRequest, NSURLRequest, NSURLSession, NSURLSessionEffectiveConfiguration, NSUUID, __CFN_TaskMetrics;
+@class NSMutableURLRequest, NSURLRequest, NSURLSession, NSURLSessionConfiguration, NSUUID, __CFN_TaskMetrics;
 
 @interface CONNECTION_SessionTask : NSObject
 {
@@ -18,7 +18,7 @@
     NSMutableURLRequest *_nsCurrentRequest;
     NSURLRequest *_nsOriginalRequest;
     NSURLSession *_session_ivar;
-    NSURLSessionEffectiveConfiguration *_effectiveConfiguration;
+    NSURLSessionConfiguration *_effectiveConfiguration;
     NSUUID *_uniqueIdentifier;
     _Bool _is_cellular;
     Class _my_protocolForTask;
@@ -47,6 +47,7 @@
 - (id)_incompleteCurrentTaskTransactionMetrics;
 - (id)_incompleteTaskMetrics;
 - (_Bool)_preconnect;
+- (void)didReceiveInformationalResponse:(id)arg1;
 - (void)set_preconnect:(_Bool)arg1;
 - (void)_consumePendingBytesReceivedEncoded;
 - (void)_appendCountOfPendingBytesReceivedEncoded:(long long)arg1;
@@ -96,14 +97,20 @@
 - (unsigned char)_shouldSkipPipelineProbe;
 - (unsigned char)_shouldPipelineHTTP;
 - (long long)_requestPriority;
+- (void)set_proxyHandshakePending:(_Bool)arg1;
+- (unsigned char)_proxyHandshakePending;
 - (struct __CFDictionary *)_proxySettings;
 - (unsigned char)_preventsIdleSystemSleep;
 - (unsigned long long)_cachePolicy;
 - (unsigned long long)_allowedProtocolTypes;
+- (id)_privacyProxyFailClosed;
+- (id)_trackerContext;
+- (id)_isKnownTracker;
+- (id)_attribution;
 - (id)_timeWindowDuration;
 - (id)_timeWindowDelay;
 - (id)_expectedWorkload;
-- (id)_knownHTTP3Capable;
+- (id)_assumesHTTP3Capable;
 - (id)_allowsCellularOverride;
 - (id)_allowsConstrainedOverride;
 - (id)_allowsExpensiveOverride;
@@ -140,13 +147,15 @@
 - (id)workQueue;
 - (id)session;
 - (_Bool)shouldHandleCookiesAndSchemeIsAppropriate;
-- (void)_setConnectionCacheKey:(struct HTTPConnectionCacheKey *)arg1;
+- (void)_setConnectionCacheKey:(void *)arg1;
 - (void)_setSocketProperties:(struct __CFDictionary *)arg1 connectionProperties:(struct __CFDictionary *)arg2;
 - (const struct XCredentialStorage *)_createXCredentialStorage;
 - (const struct XCookieStorage *)_createXCookieStorage;
 - (void)_withXURLCache:(CDUnknownBlockType)arg1;
 - (struct _CFHSTSPolicy *)_copyHSTSPolicy;
 - (void)_processConnectionProperties;
+- (id)_backtrace;
+- (id)_description;
 - (id)_loggableDescription;
 - (struct __CFDictionary *)_copySocketStreamProperties;
 - (void)updateCurrentRequest:(id)arg1;

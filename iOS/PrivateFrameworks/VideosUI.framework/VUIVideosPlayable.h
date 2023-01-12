@@ -8,16 +8,18 @@
 
 @class NSDate, NSDictionary, NSNumber, NSString, NSURL, VUIContentMetadata, VUIExtrasInfo, VUIRouterDataSource;
 
-__attribute__((visibility("hidden")))
 @interface VUIVideosPlayable : NSObject
 {
     NSDictionary *_videosPlayableDict;
     NSURL *_previewArtwork;
     VUIContentMetadata *_metadata;
+    VUIExtrasInfo *_extrasInfo;
 }
 
++ (id)videosPlayableFromSerializedData:(id)arg1;
 + (id)videosPlayablesFromDictionaries:(id)arg1 andMetadataDictionary:(id)arg2;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) VUIExtrasInfo *extrasInfo; // @synthesize extrasInfo=_extrasInfo;
 @property(readonly, nonatomic) VUIContentMetadata *metadata; // @synthesize metadata=_metadata;
 @property(readonly, nonatomic) NSURL *previewArtwork; // @synthesize previewArtwork=_previewArtwork;
 @property(readonly, nonatomic) NSNumber *repeatLoopCount;
@@ -28,8 +30,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSNumber *frequencyOfAgeConfirmation;
 @property(readonly, nonatomic) NSNumber *requiredAgeForPlayback;
 @property(readonly, nonatomic) NSURL *tvAppDeeplinkURL;
-@property(readonly, nonatomic) VUIExtrasInfo *extrasInfo;
 @property(readonly, nonatomic) NSString *referenceID;
+@property(readonly, nonatomic) unsigned long long sourceRef;
 @property(readonly, nonatomic) NSString *rtcServiceIdentifier;
 @property(readonly, nonatomic) _Bool disableScrubbing;
 @property(readonly, nonatomic) NSString *externalServiceID;
@@ -51,8 +53,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *externalID;
 @property(readonly, nonatomic) _Bool isFamilySharingContent;
 @property(readonly, nonatomic) NSString *bookmarkID;
-@property(readonly, nonatomic) NSDate *resumeTimeTimeStamp;
+@property(readonly, nonatomic) NSDate *resumeTimeTimestamp;
 - (_Bool)mostRecentResumeTime:(id *)arg1 mostRecentTimestamp:(id *)arg2;
+@property(readonly, nonatomic) NSDate *mainContentRelativeResumeTimeTimestamp;
+@property(readonly, nonatomic) NSNumber *mainContentRelativeResumeTime;
 @property(readonly, nonatomic) NSNumber *resumeTime;
 @property(readonly, nonatomic) NSString *utsEntityType;
 @property(readonly, nonatomic) NSString *mediaType;
@@ -63,9 +67,16 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSURL *fpsCertificateURL;
 @property(readonly, nonatomic) NSURL *fpsKeyServerURL;
 @property(readonly, nonatomic) NSURL *downloadURL;
-@property(readonly, nonatomic) NSURL *hlsURL;
+@property(retain, nonatomic) NSURL *hlsURL;
+@property(readonly, nonatomic) NSString *groupActivityDay;
+@property(readonly, nonatomic) NSString *cowatchingProhibitedReason;
+@property(readonly, nonatomic) _Bool isCowatchingProhibited;
+@property(readonly, nonatomic) _Bool useSharedPlayableForCowatching;
+@property(readonly, nonatomic) NSString *sharedWatchId;
+@property(readonly, nonatomic) NSURL *sharedWatchUrl;
 @property(readonly, nonatomic) NSURL *playbackURL;
 @property(readonly, nonatomic) _Bool isMovie;
+- (id)serializedData;
 - (id)initWithDictionary:(id)arg1 andMetadataDictionary:(id)arg2;
 
 @end

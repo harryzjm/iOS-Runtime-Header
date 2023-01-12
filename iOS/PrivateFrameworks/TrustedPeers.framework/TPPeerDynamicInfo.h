@@ -13,7 +13,6 @@
     unsigned long long _clock;
     NSSet *_includedPeerIDs;
     NSSet *_excludedPeerIDs;
-    NSDictionary *_dispositions;
     NSSet *_preapprovals;
     NSData *_data;
     NSData *_sig;
@@ -23,10 +22,9 @@
 + (id)dynamicInfoWithClock:(unsigned long long)arg1 includedPeerIDs:(id)arg2 excludedPeerIDs:(id)arg3 dispositions:(id)arg4 preapprovals:(id)arg5 signingKeyPair:(id)arg6 error:(id *)arg7;
 + (id)dynamicInfoPBWithClock:(unsigned long long)arg1 includedPeerIDs:(id)arg2 excludedPeerIDs:(id)arg3 dispositions:(id)arg4 preapprovals:(id)arg5;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSData *sig; // @synthesize sig=_sig;
-@property(retain, nonatomic) NSData *data; // @synthesize data=_data;
+@property(readonly, nonatomic) NSData *sig; // @synthesize sig=_sig;
+@property(readonly, nonatomic) NSData *data; // @synthesize data=_data;
 @property(readonly, nonatomic) NSSet *preapprovals; // @synthesize preapprovals=_preapprovals;
-@property(retain, nonatomic) NSDictionary *dispositions; // @synthesize dispositions=_dispositions;
 @property(readonly, nonatomic) NSSet *excludedPeerIDs; // @synthesize excludedPeerIDs=_excludedPeerIDs;
 @property(readonly, nonatomic) NSSet *includedPeerIDs; // @synthesize includedPeerIDs=_includedPeerIDs;
 @property(readonly, nonatomic) unsigned long long clock; // @synthesize clock=_clock;
@@ -36,6 +34,7 @@
 - (_Bool)isEqualToPeerDynamicInfo:(id)arg1;
 - (_Bool)checkSignatureWithKey:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly, nonatomic) NSDictionary *dispositions;
 - (id)initWithObj:(id)arg1 data:(id)arg2 sig:(id)arg3;
 
 @end

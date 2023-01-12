@@ -48,9 +48,6 @@
 @property(readonly, nonatomic) long long calendarDay;
 @property(readonly, nonatomic) NSDate *currentDate;
 @property(readonly, nonatomic, getter=isCoolingDown) _Bool coolingDown;
-- (_Bool)isDoingFunctionalStrengthTraining;
-- (_Bool)isDoingCardioDance;
-- (_Bool)isDoingCoreTraining;
 @property(readonly, nonatomic, getter=isHiking) _Bool hiking;
 @property(readonly, nonatomic, getter=isDoingYoga) _Bool doingYoga;
 @property(readonly, nonatomic, getter=isWalking) _Bool walking;

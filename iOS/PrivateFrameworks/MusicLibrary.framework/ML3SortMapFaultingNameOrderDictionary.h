@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 - (void)setObject:(id)arg1 forKey:(id)arg2;
 - (unsigned long long)count;
 - (id)initWithObjects:(const id *)arg1 forKeys:(const id *)arg2 count:(unsigned long long)arg3;
-- (id)initWithConnection:(id)arg1;
 
 @end
 

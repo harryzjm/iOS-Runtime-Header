@@ -6,17 +6,17 @@
 
 @interface TSCH3DChartPieResizer
 {
-    tvec2_01ee4891 mDirections;
+    tvec2_01ee4891 _directions;
 }
 
 + (float)perspectiveness;
-+ (tvec2_84d5962d)adjustLabelWrapSize:(const tvec2_84d5962d *)arg1;
++ (tvec2_84d5962d)adjustLabelWrapSize:(const void *)arg1;
 - (id).cxx_construct;
-- (tvec2_84d5962d)updateResizerFromRequestedSize:(const tvec2_84d5962d *)arg1 startingSize:(tvec2_84d5962d *)arg2;
-- (tvec2_84d5962d)updateDirectionsFromRequestedSize:(const tvec2_84d5962d *)arg1 startingSize:(tvec2_84d5962d *)arg2;
-- (tvec2_84d5962d)squareSize:(const tvec2_84d5962d *)arg1;
-- (tvec3_17f03ce0)adjust:(tvec3_17f03ce0 *)arg1 by:(float)arg2;
-- (void)setScale:(tvec3_17f03ce0 *)arg1;
+- (tvec2_84d5962d)updateResizerFromRequestedSize:(const void *)arg1 startingSize:(void *)arg2;
+- (tvec2_84d5962d)updateDirectionsFromRequestedSize:(const void *)arg1 startingSize:(void *)arg2;
+- (tvec2_84d5962d)squareSize:(const void *)arg1;
+- (tvec3_17f03ce0)adjust:(void *)arg1 by:(float)arg2;
+- (void)setScale:(void *)arg1;
 - (tvec2_01ee4891)canImprove;
 
 @end

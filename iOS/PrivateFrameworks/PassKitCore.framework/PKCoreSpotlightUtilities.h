@@ -14,7 +14,10 @@
 + (id)spotlightIdentifierForTransactionIdentifier:(id)arg1;
 + (id)passUniqueIdentifierFromSpotlightIdentifier:(id)arg1;
 + (id)spotlightIdentifierForPassUniqueIdentifier:(id)arg1;
++ (id)passUniqueIdentifierFromCardInformationSpotlightIdentifier:(id)arg1;
++ (id)spotlightIdentifierForCardInformationUniqueIdentifier:(id)arg1;
 + (struct CGSize)_thumbnailImageSizeForSourceImageSize:(struct CGSize)arg1;
++ (void)searchableItemForCardNumberFromPass:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)searchableItemForPass:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)searchableItemForTransaction:(id)arg1 passUniqueIdentifier:(id)arg2 regions:(id)arg3 tags:(id)arg4 keywords:(id)arg5 imageGenerator:(id)arg6 contactResolver:(id)arg7 completion:(CDUnknownBlockType)arg8;
 

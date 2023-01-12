@@ -9,6 +9,9 @@
 @class PKPGSVSectionHeaderView, PKPass;
 
 @protocol PKPGSVSectionHeaderViewDelegate <NSObject>
+- (unsigned long long)inboxBadgeCountForSectionHeaderView:(PKPGSVSectionHeaderView *)arg1;
+- (_Bool)inboxVisibleForSectionheaderView:(PKPGSVSectionHeaderView *)arg1;
+- (void)presentInvitationsForHeaderView:(PKPGSVSectionHeaderView *)arg1;
 - (void)presentPassDetailsForHeaderView:(PKPGSVSectionHeaderView *)arg1;
 - (PKPass *)passForSectionHeaderView:(PKPGSVSectionHeaderView *)arg1;
 @end

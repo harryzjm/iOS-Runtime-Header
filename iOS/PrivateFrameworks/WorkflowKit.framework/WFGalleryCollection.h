@@ -18,6 +18,8 @@
     NSString *_name;
     NSString *_collectionDescription;
     NSArray *_workflows;
+    long long _minVersion;
+    NSArray *_supportedIdioms;
     NSDate *_modifiedAt;
     NSString *_language;
     CKRecordID *_base;
@@ -31,6 +33,8 @@
 @property(readonly, nonatomic) CKRecordID *base; // @synthesize base=_base;
 @property(readonly, nonatomic) NSString *language; // @synthesize language=_language;
 @property(readonly, nonatomic) NSDate *modifiedAt; // @synthesize modifiedAt=_modifiedAt;
+@property(copy, nonatomic) NSArray *supportedIdioms; // @synthesize supportedIdioms=_supportedIdioms;
+@property(readonly, nonatomic) long long minVersion; // @synthesize minVersion=_minVersion;
 @property(readonly, nonatomic) NSArray *workflows; // @synthesize workflows=_workflows;
 @property(readonly, nonatomic) NSString *collectionDescription; // @synthesize collectionDescription=_collectionDescription;
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;

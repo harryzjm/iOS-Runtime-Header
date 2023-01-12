@@ -11,9 +11,12 @@
 @protocol PLAlbumProtocol;
 
 @protocol PXRootLibraryNavigationController <NSObject, PLCloudFeedNavigating>
+- (void)navigateToSearchWithSearchText:(NSString *)arg1 searchCategory:(unsigned long long)arg2;
 - (void)navigateToSearchWithHashtag:(NSString *)arg1;
+- (void)navigateToSearch;
+- (void)navigateToPlacesAlbumAnimated:(_Bool)arg1;
 - (void)navigateToPeopleAlbumAnimated:(_Bool)arg1 revealPersonWithLocalIdentifier:(NSString *)arg2 completion:(void (^)(UIViewController *))arg3;
-- (void)navigateToMomentShareWithURL:(NSURL *)arg1 animated:(_Bool)arg2;
+- (void)navigateToCloudKitShareWithURL:(NSURL *)arg1 animated:(_Bool)arg2;
 - (void)navigateToInvitationCMMWithIdentifier:(NSString *)arg1 animated:(_Bool)arg2;
 - (void)navigateToSuggestedCMMWithIdentifier:(NSString *)arg1 animated:(_Bool)arg2;
 - (void)navigateToFeaturedPhotoWithSuggestionIdentifier:(NSString *)arg1 animated:(_Bool)arg2;

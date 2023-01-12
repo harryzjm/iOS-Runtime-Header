@@ -33,6 +33,7 @@
 - (void)hostFocusableItem:(id)arg1 focused:(_Bool)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_windowDidCreateContext:(id)arg1;
+- (void)setContentReady;
 - (void)setNeedsLargeSize:(_Bool)arg1 animationSettings:(id)arg2;
 @property(readonly, nonatomic) UIColor *focusHighlightColor;
 - (void)setFocusableViews:(id)arg1;

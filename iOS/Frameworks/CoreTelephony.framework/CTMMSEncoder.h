@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
-@interface CTMmsEncoder : NSObject
+@interface CTMMSEncoder : NSObject
 {
 }
 

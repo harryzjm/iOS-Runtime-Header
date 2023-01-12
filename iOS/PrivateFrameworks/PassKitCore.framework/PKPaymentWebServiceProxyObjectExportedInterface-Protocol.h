@@ -6,21 +6,33 @@
 
 #import <PassKitCore/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, NSString, PKApplePayTrustKeyRequest, PKPass, PKPaymentPass, PKPaymentWebServiceBackgroundContext, PKPaymentWebServiceContext;
+@class NSArray, NSData, NSDictionary, NSMapTable, NSString, NSURL, PKApplePayTrustKeyRequest, PKPass, PKPaymentPass, PKPaymentWebServiceBackgroundContext, PKPaymentWebServiceContext;
 
 @protocol PKPaymentWebServiceProxyObjectExportedInterface <NSObject>
 - (void)invalidateRemoteProxyTargetDevice;
 - (void)archiveBackgroundContext:(PKPaymentWebServiceBackgroundContext *)arg1;
 - (void)archiveContext:(PKPaymentWebServiceContext *)arg1;
-- (void)familyMembersWithCompletion:(void (^)(NSArray *))arg1;
 - (void)passOwnershipTokenWithIdentifier:(NSString *)arg1 completion:(void (^)(NSString *))arg2;
 - (void)storePassOwnershipToken:(NSString *)arg1 withIdentifier:(NSString *)arg2;
+- (void)addISO18013Blobs:(NSMapTable *)arg1 cardType:(long long)arg2 completion:(void (^)(NSError *))arg3;
+- (_Bool)areUnifiedAccessPassesSupported;
+- (void)generateISOEncryptionCertificateForSubCredentialId:(NSString *)arg1 completion:(void (^)(NSArray *, NSData *, NSError *))arg2;
+- (void)generateSEEncryptionCertificateForSubCredentialId:(NSString *)arg1 completion:(void (^)(NSData *, NSError *))arg2;
+- (void)signWithFidoKeyForRelyingParty:(NSString *)arg1 relyingPartyAccountHash:(NSString *)arg2 fidoKeyHash:(NSData *)arg3 challenge:(NSData *)arg4 publicKeyIdentifier:(NSString *)arg5 externalizedAuth:(NSData *)arg6 completion:(void (^)(NSData *, NSError *))arg7;
+- (void)checkFidoKeyPresenceForRelyingParty:(NSString *)arg1 relyingPartyAccountHash:(NSString *)arg2 fidoKeyHash:(NSData *)arg3 completion:(void (^)(_Bool))arg4;
+- (void)createFidoKeyForRelyingParty:(NSString *)arg1 relyingPartyAccountHash:(NSString *)arg2 challenge:(NSData *)arg3 externalizedAuth:(NSData *)arg4 completion:(void (^)(NSData *, NSData *, NSError *))arg5;
+- (void)availableHomeKeyPassesWithCompletionHandler:(void (^)(NSArray *, NSError *))arg1;
+- (void)provisionHomeKeyPassForSerialNumbers:(NSArray *)arg1 completionHandler:(void (^)(NSArray *, NSError *))arg2;
+- (void)generateTransactionKeyWithParameters:(NSDictionary *)arg1 withCompletion:(void (^)(NSString *, NSArray *, NSData *, NSError *))arg2;
+- (void)familyMembersWithCompletion:(void (^)(NSArray *))arg1;
+- (void)performDeviceRegistrationForReason:(NSString *)arg1 brokerURL:(NSURL *)arg2 completion:(void (^)(unsigned long long, NSError *))arg3;
 - (void)performDeviceCheckInWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)deleteApplePayTrustKeyWithIdentifier:(NSString *)arg1 completion:(void (^)(_Bool))arg2;
 - (void)createApplePayTrustKeyWithRequest:(PKApplePayTrustKeyRequest *)arg1 completion:(void (^)(PKApplePayTrustKey *, NSError *))arg2;
 - (void)applePayTrustKeyForIdentifier:(NSString *)arg1 completion:(void (^)(PKApplePayTrustKey *))arg2;
 - (void)deviceMetadataWithFields:(unsigned long long)arg1 completion:(void (^)(PKPaymentDeviceMetadata *))arg2;
 - (void)featureApplicationsForProvisioningWithCompletion:(void (^)(NSArray *))arg1;
+- (void)cachedFeatureApplicationsForProvisioningWithCompletion:(void (^)(NSArray *))arg1;
 - (void)updatedAccountsForProvisioningWithCompletion:(void (^)(NSArray *, NSArray *))arg1;
 - (void)supportedFeatureIdentifiersForAccountProvisioningWithCompletion:(void (^)(NSSet *))arg1;
 - (void)supportedFeatureIdentifiersWithCompletion:(void (^)(NSSet *))arg1;
@@ -56,6 +68,7 @@
 - (void)registrationSupportedInCurrentRegionWithCompletion:(void (^)(int))arg1;
 - (void)paymentSupportedInCurrentRegion:(void (^)(int))arg1;
 - (void)didRegisterWithRegionMap:(NSDictionary *)arg1 primaryRegionTopic:(NSString *)arg2;
+- (void)deleteKeyMaterialForSubCredentialId:(NSString *)arg1;
 - (void)deleteApplicationWithAID:(NSString *)arg1;
 - (void)getProvisioningDataIncludingDeviceMetadata:(_Bool)arg1 withCompletion:(void (^)(PKPaymentDeviceProvisioningData *, NSError *))arg2;
 - (void)signData:(NSData *)arg1 signatureEntanglementMode:(unsigned long long)arg2 withCompletion:(void (^)(NSData *, PKSecureElementSignatureInfo *, NSError *))arg3;

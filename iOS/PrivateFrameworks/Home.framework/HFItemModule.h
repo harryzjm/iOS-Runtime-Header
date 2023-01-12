@@ -11,6 +11,7 @@
 
 @interface HFItemModule : NSObject
 {
+    NSSet *_itemProviders;
     id <HFItemUpdating> _itemUpdater;
 }
 
@@ -21,7 +22,8 @@
 - (_Bool)containsItem:(id)arg1;
 @property(readonly, nonatomic) NSSet *allItems;
 - (id)buildSectionsWithDisplayedItems:(id)arg1;
-@property(readonly, nonatomic) NSSet *itemProviders;
+- (id)buildItemProviders;
+@property(readonly, nonatomic) NSSet *itemProviders; // @synthesize itemProviders=_itemProviders;
 - (id)initWithItemUpdater:(id)arg1;
 - (id)init;
 

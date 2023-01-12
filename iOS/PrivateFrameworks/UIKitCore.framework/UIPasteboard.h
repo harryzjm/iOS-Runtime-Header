@@ -12,10 +12,13 @@
 {
 }
 
++ (void)_performAsDataOwnerForAction:(SEL)arg1 responder:(id)arg2 block:(CDUnknownBlockType)arg3;
++ (void)_performAsDataOwner:(long long)arg1 block:(CDUnknownBlockType)arg2;
 + (void)_clearPinnedItemProvidersForPasteboardNamed:(id)arg1;
 + (void)_pinItemProviders:(id)arg1 forPasteboardNamed:(id)arg2 withExpirationDate:(id)arg3;
 + (id)_pasteboardWithUniqueName;
 + (id)_pasteboardWithName:(id)arg1 create:(_Bool)arg2;
++ (void)_attemptAuthenticationWithMessage:(id)arg1;
 + (void)removePasteboardWithName:(id)arg1;
 + (id)pasteboardWithUniqueName;
 + (id)pasteboardWithName:(id)arg1 create:(_Bool)arg2;

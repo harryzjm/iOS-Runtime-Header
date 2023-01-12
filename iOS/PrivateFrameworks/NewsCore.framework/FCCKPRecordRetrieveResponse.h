@@ -10,6 +10,7 @@
 
 @class FCCKPRecord;
 
+__attribute__((visibility("hidden")))
 @interface FCCKPRecordRetrieveResponse : PBCodable <NSCopying>
 {
     FCCKPRecord *_record;
@@ -19,20 +20,14 @@
     } _has;
 }
 
-@property(nonatomic) _Bool clientVersionETagMatch; // @synthesize clientVersionETagMatch=_clientVersionETagMatch;
-@property(retain, nonatomic) FCCKPRecord *record; // @synthesize record=_record;
-- (void)mergeFrom:(id)arg1;
+- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasClientVersionETagMatch;
-@property(readonly, nonatomic) _Bool hasRecord;
-- (void)dealloc;
 
 @end
 

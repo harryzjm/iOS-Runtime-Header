@@ -6,12 +6,13 @@
 
 #import <Preferences/NSObject-Protocol.h>
 
-@class UIViewController;
+@class PSSystemPolicyForApp, UIViewController;
 
 @protocol PSSystemPolicyForAppDelegate <NSObject>
 - (void)reloadSpecifiers;
 
 @optional
+- (void)systemPolicyForApp:(PSSystemPolicyForApp *)arg1 didUpdateForSystemPolicyOptions:(unsigned long long)arg2 withValue:(id)arg3;
 - (void)showController:(UIViewController *)arg1 animate:(_Bool)arg2;
 @end
 

@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSProgressReporting-Protocol.h>
 
-@class GEOApplicationAuditToken, GEOPowerAssertion, GEOReportedProgress, NSArray, NSMapTable, NSMutableArray, NSProgress, NSString, NSURL;
+@class GEOApplicationAuditToken, GEOReportedProgress, NSArray, NSMapTable, NSMutableArray, NSProgress, NSString, NSURL;
 @protocol OS_dispatch_queue, OS_os_log;
 
 @interface GEOResourceLoader : NSObject <NSProgressReporting>
@@ -29,9 +29,7 @@
     NSArray *_resourceInfos;
     NSMutableArray *_loadedResources;
     GEOApplicationAuditToken *_auditToken;
-    _Bool _allowResumingPartialDownloads;
     NSMapTable *_inProgressResourceDownloads;
-    GEOPowerAssertion *_powerAssertion;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     GEOReportedProgress *_progress;
@@ -48,7 +46,7 @@
 @property(retain, nonatomic) GEOApplicationAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 - (void)cancel;
 - (_Bool)_copyResource:(id)arg1 fromPath:(id)arg2 allowCreatingHardLink:(_Bool)arg3 error:(id *)arg4;
-- (void)_writeResourceToDisk:(id)arg1 withData:(id)arg2 checksum:(id)arg3 eTag:(id)arg4 completionHandler:(CDUnknownBlockType)arg5 callbackQueue:(id)arg6;
+- (void)_writeResourceToDisk:(id)arg1 withData:(id)arg2 orTempFile:(id)arg3 checksum:(id)arg4 eTag:(id)arg5 completionHandler:(CDUnknownBlockType)arg6 callbackQueue:(id)arg7;
 - (void)_loadNextResourceFromNetwork;
 - (void)_loadResourcesFromDisk;
 - (_Bool)_establishHardLinkIfPossibleForResource:(id)arg1 toResource:(id)arg2 error:(id *)arg3;

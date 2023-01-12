@@ -21,8 +21,8 @@
 @property(readonly, nonatomic) double followingSpace; // @synthesize followingSpace=mFollowingSpace;
 @property(nonatomic) unsigned long long firstColumnIndex; // @synthesize firstColumnIndex=mFirstColumnIndex;
 @property(readonly, nonatomic) long long alignmentShift; // @synthesize alignmentShift=mAlignmentShift;
-- (id)newBoxWithStackWidth:(double)arg1 columnWidthIter:(__wrap_iter_8fb6ff7c)arg2 iterMax:(__wrap_iter_8fb6ff7c)arg3 previousRow:(id)arg4 layoutManager:(const struct EQKitLayoutManager *)arg5;
-- (id)p_crossoutDigitBox:(id)arg1 crossout:(int)arg2 layoutManager:(const struct EQKitLayoutManager *)arg3;
+- (id)newBoxWithStackWidth:(double)arg1 columnWidthIter:(__wrap_iter_8fb6ff7c)arg2 iterMax:(__wrap_iter_8fb6ff7c)arg3 previousRow:(id)arg4 layoutManager:(const void *)arg5;
+- (id)p_crossoutDigitBox:(id)arg1 crossout:(int)arg2 layoutManager:(const void *)arg3;
 @property(readonly, nonatomic) _Bool spansStack;
 - (void)populateMaxColumnWidths:(__wrap_iter_8fb6ff7c)arg1;
 @property(readonly, nonatomic) unsigned long long columnCount;

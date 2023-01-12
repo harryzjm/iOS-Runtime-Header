@@ -20,7 +20,7 @@
 @property(readonly, nonatomic) _Bool isInflectionPoint; // @synthesize isInflectionPoint=_isInflectionPoint;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithTouchPoint:(struct CGPoint)arg1 radius:(double)arg2 timestamp:(double)arg3 inflectionPoint:(_Bool)arg4 touchHistory:(const RefPtr_48eecea7 *)arg5;
+- (id)initWithTouchPoint:(struct CGPoint)arg1 radius:(double)arg2 timestamp:(double)arg3 inflectionPoint:(_Bool)arg4 touchHistory:(const void *)arg5;
 - (id)initWithTouchPoint:(struct CGPoint)arg1 radius:(double)arg2 timestamp:(double)arg3;
 
 @end

@@ -6,12 +6,12 @@
 
 #import <TextRecognition/NSObject-Protocol.h>
 
-@class CRRecognizerConfiguration, NSObject;
+@class CRNeuralRecognizerConfiguration, NSObject;
 @protocol CRTextRecognizerModel, CRTextRecognizerModelOutput;
 
 @protocol CRTextDecoding <NSObject>
 - (_Bool)shouldDecodeWithLM;
 - (void)decodeOutput:(NSObject<CRTextRecognizerModelOutput> *)arg1 imageSize:(struct CGSize)arg2 error:(id *)arg3;
-- (id)initWithConfiguration:(CRRecognizerConfiguration *)arg1 model:(NSObject<CRTextRecognizerModel> *)arg2 error:(id *)arg3;
+- (id)initWithConfiguration:(CRNeuralRecognizerConfiguration *)arg1 model:(NSObject<CRTextRecognizerModel> *)arg2 error:(id *)arg3;
 @end
 

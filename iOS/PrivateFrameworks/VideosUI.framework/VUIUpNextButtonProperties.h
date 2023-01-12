@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, VUIButton, VUIUpNextStateView;
+@class NSString, UIView, VUIUpNextStateView;
 @protocol VUIUpNextButtonProtocol;
 
 __attribute__((visibility("hidden")))
@@ -15,19 +15,20 @@ __attribute__((visibility("hidden")))
     _Bool _isWatchListed;
     _Bool _dismissOnSelect;
     _Bool _confirmationShouldWaitCompletion;
+    _Bool _hasUpdated;
     VUIUpNextStateView *_addedStateView;
     VUIUpNextStateView *_removedStateView;
-    VUIButton<VUIUpNextButtonProtocol> *_delegate;
+    UIView<VUIUpNextButtonProtocol> *_delegate;
     NSString *_canonicalID;
 }
 
-+ (id)configureWithElement:(id)arg1 existingButton:(id)arg2;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool hasUpdated; // @synthesize hasUpdated=_hasUpdated;
 @property(nonatomic) _Bool confirmationShouldWaitCompletion; // @synthesize confirmationShouldWaitCompletion=_confirmationShouldWaitCompletion;
 @property(nonatomic) _Bool dismissOnSelect; // @synthesize dismissOnSelect=_dismissOnSelect;
 @property(nonatomic) _Bool isWatchListed; // @synthesize isWatchListed=_isWatchListed;
 @property(retain, nonatomic) NSString *canonicalID; // @synthesize canonicalID=_canonicalID;
-@property(nonatomic) __weak VUIButton<VUIUpNextButtonProtocol> *delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak UIView<VUIUpNextButtonProtocol> *delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) VUIUpNextStateView *removedStateView; // @synthesize removedStateView=_removedStateView;
 @property(readonly, nonatomic) VUIUpNextStateView *addedStateView; // @synthesize addedStateView=_addedStateView;
 - (void)_errorInUpdatingState:(id)arg1;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)updateButtonContentView;
 - (void)callAPIAndToggleUpNextState;
 - (void)_toggleUpNextState;
+- (void)removeNotificationObserver;
 - (void)setupNotificationObserver;
 - (id)init;
 

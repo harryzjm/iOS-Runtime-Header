@@ -9,6 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+@property(readonly) unsigned long long pressSource;
 - (_Bool)_shouldReceivePress:(id)arg1;
 
 @end

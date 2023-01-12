@@ -27,6 +27,7 @@
 - (void)registerFeedback:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)contactHandlesForSource:(id)arg1 error:(id *)arg2;
 - (id)contactHandlesForTopics:(id)arg1 error:(id *)arg2;
+- (id)upcomingRelevantContactsForQuery:(id)arg1 error:(id *)arg2;
 - (_Bool)iterContactNameRecordsForClient:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
 - (_Bool)iterRankedContactsWithQuery:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
 - (id)init;

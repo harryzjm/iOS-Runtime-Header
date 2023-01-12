@@ -15,15 +15,9 @@
 - (_Bool)_accessibilityHandlesRemoteFocusMovement;
 - (id)_accessibilityRemoteSceneID;
 - (int)_accessibilityRemotePid;
-- (id)_axRemoteChild;
 - (id)_viewToAddFocusLayer;
-- (void)_accessibilityResetRemoteElementArray;
-- (void)_accessibilitySetRemoteElementIfNecessary;
-- (_Bool)_accessibilityShouldUseRemoteElement;
 - (void)dealloc;
 - (id)accessibilityElements;
-- (void)_accessibilitySetRemoteElementArray:(id)arg1;
-- (id)_accessibilityGetRemoteElementArray;
 
 @end
 

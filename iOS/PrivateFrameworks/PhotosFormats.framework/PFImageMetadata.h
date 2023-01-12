@@ -18,6 +18,8 @@
 + (id)dictionaryRepresentationForAuxiliaryImagePixelBuffer:(struct __CVBuffer *)arg1 metadata:(struct CGImageMetadata *)arg2;
 + (id)transformAuxiliaryImages:(id)arg1 scaleFactor:(double)arg2 applyingOrientation:(unsigned int)arg3;
 + (id)auxiliaryImageIdentifiersToPreserveForDerivatives;
++ (id)auxiliaryImageRecordsToPreserveForDerivativesFromImageSource:(struct CGImageSource *)arg1 imageIndex:(unsigned long long)arg2;
++ (id)auxiliaryImageRecordsToPreserveForDerivativesFromPrimaryImageInImageSource:(struct CGImageSource *)arg1;
 + (id)auxiliaryImagesToPreserveForDerivativesFromImageSource:(struct CGImageSource *)arg1 imageIndex:(unsigned long long)arg2;
 + (_Bool)enumerateImageSourceIndexesOfFileAtURL:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
 + (_Bool)queryImagePropertiesOfFileAtURL:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;

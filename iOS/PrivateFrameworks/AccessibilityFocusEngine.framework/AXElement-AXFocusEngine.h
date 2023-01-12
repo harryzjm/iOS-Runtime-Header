@@ -11,6 +11,11 @@
 @class NSString;
 
 @interface AXElement (AXFocusEngine) <AXElementNamesItem>
+- (_Bool)moveFocusWithHeading:(unsigned long long)arg1 withQueryString:(id)arg2;
+- (_Bool)moveFocusWithHeading:(unsigned long long)arg1 byGroup:(_Bool)arg2;
+- (void)disableFocus;
+- (void)enableFocus;
+- (void)focusOnApplication;
 - (void)focusOnRemoteSceneID;
 - (id)remoteSceneID;
 @property(readonly, nonatomic) AXElement *currentFocusElement;

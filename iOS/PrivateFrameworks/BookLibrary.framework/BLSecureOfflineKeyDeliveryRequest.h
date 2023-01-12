@@ -8,7 +8,7 @@
 
 #import <BookLibrary/AVContentKeySessionDelegate-Protocol.h>
 
-@class AVContentKeySession, ICStoreRequestContext, NSData, NSObject, NSString, NSURL;
+@class AVContentKeySession, ICStoreRequestContext, MPMediaItem, NSData, NSObject, NSString, NSURL, _BLAcquireSlotRequest;
 @protocol OS_dispatch_queue;
 
 @interface BLSecureOfflineKeyDeliveryRequest : ICRequestOperation <AVContentKeySessionDelegate>
@@ -18,12 +18,15 @@
     ICStoreRequestContext *_requestContext;
     NSData *_persistentKeyData;
     NSData *_certificateData;
+    _BLAcquireSlotRequest *_slotRequest;
     NSURL *_keyCertificateURL;
     NSURL *_keyServerURL;
     NSString *_identity;
+    MPMediaItem *_mediaItem;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) MPMediaItem *mediaItem; // @synthesize mediaItem=_mediaItem;
 @property(copy, nonatomic) NSString *identity; // @synthesize identity=_identity;
 @property(copy, nonatomic) NSURL *keyServerURL; // @synthesize keyServerURL=_keyServerURL;
 @property(copy, nonatomic) NSURL *keyCertificateURL; // @synthesize keyCertificateURL=_keyCertificateURL;

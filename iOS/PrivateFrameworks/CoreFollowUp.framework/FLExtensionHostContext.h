@@ -20,7 +20,7 @@
 + (id)_extensionAuxiliaryHostProtocol;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <FLExtensionHostContextInterface> delegate; // @synthesize delegate=_delegate;
-- (void)extensionDidFinishWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)extensionDidFinishWithUserInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)extensionDidFinish;
 - (id)remoteContextWithErrorHandler:(CDUnknownBlockType)arg1;
 

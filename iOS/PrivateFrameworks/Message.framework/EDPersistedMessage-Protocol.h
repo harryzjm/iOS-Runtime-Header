@@ -12,6 +12,7 @@
 @property(readonly) unsigned long long conversationFlags;
 @property(readonly, nonatomic) long long globalMessageID;
 @property(readonly, nonatomic) long long persistedMessageID;
+@property(readonly, copy, nonatomic) NSString *summary;
 @property(readonly, copy, nonatomic) NSString *persistentID;
 @end
 

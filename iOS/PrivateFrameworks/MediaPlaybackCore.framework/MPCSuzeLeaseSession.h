@@ -8,6 +8,7 @@
 
 @class ICSuzeLeaseSession;
 
+__attribute__((visibility("hidden")))
 @interface MPCSuzeLeaseSession : NSObject
 {
     ICSuzeLeaseSession *_icSuzeLeaseSession;

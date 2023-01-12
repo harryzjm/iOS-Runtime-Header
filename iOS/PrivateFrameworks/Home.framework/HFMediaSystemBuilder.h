@@ -7,7 +7,7 @@
 #import <Home/HFMediaAccountArbitratingBuilderProtocol-Protocol.h>
 #import <Home/HFServiceLikeBuilder-Protocol.h>
 
-@class HFAppleMusicAccountArbitrator, HFNamingComponents, HFRoomBuilder, HMAccessory, HMMediaSystem, HMMediaSystemBuilder, NSArray, NSSet, NSString;
+@class HFAppleMusicAccountArbitrator, HFNamingComponents, HFRoomBuilder, HMAccessory, HMMediaSystem, HMMediaSystemBuilder, HMUser, NSArray, NSSet, NSString;
 @protocol HFIconDescriptor;
 
 @interface HFMediaSystemBuilder <HFServiceLikeBuilder, HFMediaAccountArbitratingBuilderProtocol>
@@ -17,6 +17,7 @@
     _Bool _isCreatingMediaSystem;
     id <HFIconDescriptor> _iconDescriptor;
     HFAppleMusicAccountArbitrator *_accountArbitrator;
+    HMUser *_preferredMediaUser;
     HMAccessory *_firstSetupSourceAccessory;
     HMMediaSystemBuilder *_homeKitMediaSystemBuilder;
     HFNamingComponents *_namingComponent;
@@ -31,6 +32,7 @@
 @property(retain, nonatomic) HFNamingComponents *namingComponent; // @synthesize namingComponent=_namingComponent;
 @property(retain, nonatomic) HMMediaSystemBuilder *homeKitMediaSystemBuilder; // @synthesize homeKitMediaSystemBuilder=_homeKitMediaSystemBuilder;
 @property(readonly, nonatomic) HMAccessory *firstSetupSourceAccessory; // @synthesize firstSetupSourceAccessory=_firstSetupSourceAccessory;
+@property(retain, nonatomic) HMUser *preferredMediaUser; // @synthesize preferredMediaUser=_preferredMediaUser;
 @property(retain, nonatomic) HFAppleMusicAccountArbitrator *accountArbitrator; // @synthesize accountArbitrator=_accountArbitrator;
 @property(retain, nonatomic) id <HFIconDescriptor> iconDescriptor; // @synthesize iconDescriptor=_iconDescriptor;
 @property(nonatomic) _Bool isFavorite; // @synthesize isFavorite=_isFavorite;
@@ -40,9 +42,12 @@
 - (id)_defaultName;
 @property(readonly, nonatomic) NSString *originalName;
 - (id)_rooms;
+- (id)_updatePreferredMediaUser;
 - (id)_updateAssistantAccessControl;
 - (id)_updateRoom;
 - (id)_updateFavorite;
+- (id)_setHomeTheaterSource:(id)arg1 toDestination:(id)arg2;
+- (id)_arbitrateMusicAccount;
 - (id)_commitChangesToMediaSystemBuilder;
 - (id)commitItem;
 - (_Bool)swapRoles;

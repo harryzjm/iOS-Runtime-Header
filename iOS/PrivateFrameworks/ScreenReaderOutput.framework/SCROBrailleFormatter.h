@@ -10,7 +10,7 @@
 #import <ScreenReaderOutput/BRLTBrailleTranslationDelegateProtocol-Protocol.h>
 #import <ScreenReaderOutput/NSCopying-Protocol.h>
 
-@class BRLTBrailleStateManager, NSAttributedString, NSString;
+@class BRLTBrailleStateManager, BRLTScriptString, NSAttributedString, NSString;
 @protocol BRLTBrailleStateManagerDelegate;
 
 @interface SCROBrailleFormatter : NSObject <BRLTBrailleTranslationDelegateProtocol, BRLTBrailleStateManagerDelegate, NSCopying>
@@ -32,10 +32,12 @@
     long long _lastToken;
     unsigned long long _generationID;
     id <BRLTBrailleStateManagerDelegate> _outputDelegate;
+    BRLTScriptString *_emptyEditingScriptString;
 }
 
 + (void)resetEditingManager;
 - (void).cxx_destruct;
+@property(retain, nonatomic) BRLTScriptString *emptyEditingScriptString; // @synthesize emptyEditingScriptString=_emptyEditingScriptString;
 @property(nonatomic) __weak id <BRLTBrailleStateManagerDelegate> outputDelegate; // @synthesize outputDelegate=_outputDelegate;
 @property(readonly, nonatomic) unsigned long long generationID; // @synthesize generationID=_generationID;
 @property(readonly, nonatomic) long long lastToken; // @synthesize lastToken=_lastToken;
@@ -63,6 +65,8 @@
 - (id)printBrailleForText:(id)arg1 language:(id)arg2 mode:(unsigned long long)arg3 textPositionsRange:(struct _NSRange)arg4 locations:(id *)arg5;
 - (void)translate:(_Bool)arg1;
 - (void)translate;
+- (void)clearPlaceholderForEditing;
+- (_Bool)hasPlaceholderText;
 - (struct _NSRange)rangeOfBrailleCellRepresentingCharacterAtIndex:(unsigned long long)arg1;
 - (void)addText:(id)arg1 overrideText:(id)arg2 language:(id)arg3 selection:(struct _NSRange *)arg4 token:(long long)arg5 focus:(struct _NSRange *)arg6 technical:(_Bool)arg7 isEditableText:(_Bool)arg8 paddingRange:(struct _NSRange)arg9 editingString:(id)arg10;
 - (void)addText:(id)arg1 overrideText:(id)arg2 language:(id)arg3 selection:(struct _NSRange *)arg4 token:(long long)arg5 focus:(struct _NSRange *)arg6 technical:(_Bool)arg7 isEditableText:(_Bool)arg8;

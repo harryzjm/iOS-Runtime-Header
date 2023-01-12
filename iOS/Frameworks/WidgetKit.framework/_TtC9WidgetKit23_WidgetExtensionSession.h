@@ -21,12 +21,14 @@
     MISSING_TYPE *rbsInterface;
     MISSING_TYPE *suspensionObserver;
     MISSING_TYPE *widgetExtensionAssertion;
+    MISSING_TYPE *bundleProvider;
     MISSING_TYPE *lock_invalidated;
     MISSING_TYPE *connection;
 }
 
 - (void)invalidate;
 - (void)getTimelineFor:(id)arg1 into:(id)arg2 environment:(id)arg3 isPreview:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)getTimelinesWithRequests:(id)arg1 isPreview:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)attachPreviewAgentWithFrameworkPath:(id)arg1 endpoint:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)handleURLSessionEventsFor:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getPlaceholdersWithEnvironment:(id)arg1 for:(id)arg2 completion:(CDUnknownBlockType)arg3;

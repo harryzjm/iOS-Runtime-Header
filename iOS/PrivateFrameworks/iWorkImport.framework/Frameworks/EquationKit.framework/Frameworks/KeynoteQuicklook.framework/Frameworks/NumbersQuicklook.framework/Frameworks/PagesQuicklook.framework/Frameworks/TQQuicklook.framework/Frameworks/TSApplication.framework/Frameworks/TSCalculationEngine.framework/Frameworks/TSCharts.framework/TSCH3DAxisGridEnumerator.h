@@ -8,16 +8,16 @@
 
 @interface TSCH3DAxisGridEnumerator
 {
-    TSCHChartAxis *mAxis;
+    TSCHChartAxis *_axis;
 }
 
 + (id)enumeratorWithAxis:(id)arg1;
-@property(readonly, nonatomic) TSCHChartAxis *axis; // @synthesize axis=mAxis;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) TSCHChartAxis *axis; // @synthesize axis=_axis;
 - (struct AxisGridLocation)position;
 - (void)update;
 - (unsigned long long)count;
 @property(readonly, nonatomic) int type;
-- (void)dealloc;
 - (id)initWithAxis:(id)arg1;
 
 @end

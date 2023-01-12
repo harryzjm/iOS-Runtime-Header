@@ -14,9 +14,6 @@
 - (_Bool)_accessibilityNavigationControllerShouldSendScreenChange;
 - (void)navigationTransitionView:(id)arg1 didEndTransition:(long long)arg2 fromView:(id)arg3 toView:(id)arg4;
 - (void)navigationTransitionView:(id)arg1 didStartTransition:(long long)arg2;
-- (_Bool)_accessibilityPostScreenChangeForAppearingView:(id)arg1;
-- (_Bool)_accessibilityVoiceOverFocusIsInView:(id)arg1;
-- (id)_accessibilityOutermostNavigationController;
 - (id)_accessibilitySpeakThisViewController;
 - (_Bool)accessibilityPerformEscape;
 - (_Bool)_accessibilityCanPerformEscapeAction;

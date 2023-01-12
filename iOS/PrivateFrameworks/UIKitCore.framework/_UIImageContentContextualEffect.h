@@ -6,11 +6,13 @@
 
 #import <objc/NSObject.h>
 
+@class UIImageSymbolConfiguration;
 @protocol _UIImageContentEffect, _UIImageContentLayoutSource;
 
 __attribute__((visibility("hidden")))
 @interface _UIImageContentContextualEffect : NSObject
 {
+    UIImageSymbolConfiguration *_symbolConfiguration;
     id <_UIImageContentEffect> _effect;
     id <_UIImageContentLayoutSource> _source;
 }

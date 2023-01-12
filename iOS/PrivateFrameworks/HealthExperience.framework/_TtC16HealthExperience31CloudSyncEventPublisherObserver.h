@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthExperience/HKCloudSyncObserverDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC16HealthExperience31CloudSyncEventPublisherObserver : NSObject <HKCloudSyncObserverDelegate>
+@interface _TtC16HealthExperience31CloudSyncEventPublisherObserver : NSObject
 {
     MISSING_TYPE *healthStore;
     MISSING_TYPE *observer;

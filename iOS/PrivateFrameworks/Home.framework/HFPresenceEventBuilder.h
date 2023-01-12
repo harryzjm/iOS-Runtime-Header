@@ -11,20 +11,24 @@
 @interface HFPresenceEventBuilder <HFLocationEventBuilder>
 {
     HFSelectedUserCollection *_users;
-    unsigned long long _eventType;
+    unsigned long long _locationEventType;
     unsigned long long _activationGranularity;
 }
 
 + (id)_selectedUsersForPresenceEvent:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long activationGranularity; // @synthesize activationGranularity=_activationGranularity;
-@property(nonatomic) unsigned long long eventType; // @synthesize eventType=_eventType;
+@property(nonatomic) unsigned long long locationEventType; // @synthesize locationEventType=_locationEventType;
 @property(retain, nonatomic) HFSelectedUserCollection *users; // @synthesize users=_users;
+- (id)naturalLanguageNameWithOptions:(id)arg1;
+- (id)comparisonKey;
+- (id)eventType;
 @property(readonly, copy) NSString *description;
-- (id)buildNewEventFromCurrentState;
+- (id)buildNewEventsFromCurrentState;
 @property(readonly, nonatomic) unsigned long long presenceUserType;
 @property(readonly, nonatomic) unsigned long long presenceEventType;
 - (id)initWithEvent:(id)arg1;
+- (id)compareToObject:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -9,12 +9,12 @@
 @class NSArray, NSString, REMObjectID;
 
 @protocol _REMDAChangeTrackableModel <NSObject>
-+ (id <REMDAChangedIdentifierResult> (^)(id <_REMDAChangeTrackableModel>))rem_DA_deletedKeyFromLazyDeletedModelObjectBlock;
++ (id <REMDAChangedIdentifierResult> (^)(id <_REMDAChangeTrackableModel>))rem_DA_deletedKeyFromConcealedModelObjectBlock;
 + (id <REMDAChangedIdentifierResult> (^)(REMChangeTombstone *))rem_DA_deletedKeyFromTombstoneBlock;
 + (NSDictionary * (^)(NSArray *, REMStore *, id *))rem_DA_fetchByObjectIDsBlock;
 + (id <_REMDAChangeTrackableModel> (^)(REMObjectID *, _Bool, REMStore *, id *))rem_DA_fetchByObjectIDBlock;
-+ (NSArray *)rem_DA_lazyDeleteProperties;
-+ (_Bool)rem_DA_supportsLazyDelete;
++ (NSArray *)rem_DA_propertiesAffectingIsConcealed;
++ (_Bool)rem_DA_supportsConcealedObjects;
 + (_Bool)rem_DA_supportsFetching;
 @property(readonly, nonatomic) REMObjectID *accountID;
 @property(readonly, nonatomic) REMObjectID *objectID;

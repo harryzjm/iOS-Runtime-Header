@@ -8,27 +8,27 @@
 
 @interface TSCH3DPixelBuffer : NSObject
 {
-    tvec2_3b141483 mSize;
-    unsigned long long mComponents;
-    struct CGContext *mBitmapContext;
+    tvec2_3b141483 _size;
+    unsigned long long _components;
+    struct CGContext *_bitmapContext;
 }
 
-+ (id)pixelBufferWithSize:(const tvec2_3b141483 *)arg1 components:(unsigned long long)arg2;
-+ (id)pixelBufferFromFramebuffer:(id)arg1 processor:(id)arg2 session:(id)arg3 sourceRegion:(const box_0260e9b3 *)arg4 components:(unsigned long long)arg5 flipped:(_Bool)arg6;
++ (id)pixelBufferWithSize:(const void *)arg1 components:(unsigned long long)arg2;
++ (id)pixelBufferFromFramebuffer:(id)arg1 processor:(id)arg2 session:(id)arg3 sourceRegion:(const void *)arg4 components:(unsigned long long)arg5 flipped:(_Bool)arg6;
 - (id).cxx_construct;
-@property(readonly, nonatomic) struct CGContext *context; // @synthesize context=mBitmapContext;
-@property(readonly, nonatomic) unsigned long long components; // @synthesize components=mComponents;
-@property(readonly, nonatomic) tvec2_3b141483 size; // @synthesize size=mSize;
+@property(readonly, nonatomic) struct CGContext *context; // @synthesize context=_bitmapContext;
+@property(readonly, nonatomic) unsigned long long components; // @synthesize components=_components;
+@property(readonly, nonatomic) tvec2_3b141483 size; // @synthesize size=_size;
 - (void)flip;
-- (void)copyPixelsFromSourceBuffer:(id)arg1 sourceRegion:(const box_0260e9b3 *)arg2 targetRegion:(const box_0260e9b3 *)arg3 flipped:(_Bool)arg4;
+- (void)copyPixelsFromSourceBuffer:(id)arg1 sourceRegion:(const void *)arg2 targetRegion:(const void *)arg3 flipped:(_Bool)arg4;
 - (void)copyPixelsFromData:(const void *)arg1;
 @property(readonly, nonatomic) char *buffer;
 - (void *)data;
 - (id)TSUImage;
-@property(readonly, nonatomic) box_0260e9b3 bounds;
+@property(readonly, nonatomic) box_ce64ce81 bounds;
 - (void)dealloc;
-- (id)initWithSize:(const tvec2_3b141483 *)arg1 components:(unsigned long long)arg2;
-- (_Bool)copyPixelsFromFramebuffer:(id)arg1 processor:(id)arg2 session:(id)arg3 sourceRegion:(const box_0260e9b3 *)arg4 targetRegion:(const box_0260e9b3 *)arg5 flipped:(_Bool)arg6;
+- (id)initWithSize:(const void *)arg1 components:(unsigned long long)arg2;
+- (_Bool)copyPixelsFromFramebuffer:(id)arg1 processor:(id)arg2 session:(id)arg3 sourceRegion:(const void *)arg4 targetRegion:(const void *)arg5 flipped:(_Bool)arg6;
 
 @end
 

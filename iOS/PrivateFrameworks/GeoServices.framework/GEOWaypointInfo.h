@@ -8,12 +8,13 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOEVChargingInfo, GEOLatLng, GEOPBTransitArtwork, GEOStyleAttributes, NSString, PBDataReader, PBUnknownFields;
+@class GEOARInfo, GEOEVChargingInfo, GEOLatLng, GEOPBTransitArtwork, GEOStyleAttributes, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOWaypointInfo : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    GEOARInfo *_arInfo;
     GEOPBTransitArtwork *_artwork;
     GEOEVChargingInfo *_evChargingInfo;
     unsigned long long _muid;
@@ -26,6 +27,7 @@
     struct {
         unsigned int has_muid:1;
         unsigned int read_unknownFields:1;
+        unsigned int read_arInfo:1;
         unsigned int read_artwork:1;
         unsigned int read_evChargingInfo:1;
         unsigned int read_name:1;
@@ -44,6 +46,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -52,6 +55,8 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) GEOARInfo *arInfo;
+@property(readonly, nonatomic) _Bool hasArInfo;
 @property(retain, nonatomic) GEOEVChargingInfo *evChargingInfo;
 @property(readonly, nonatomic) _Bool hasEvChargingInfo;
 @property(retain, nonatomic) GEOPBTransitArtwork *artwork;

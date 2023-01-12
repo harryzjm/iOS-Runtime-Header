@@ -12,6 +12,7 @@
 @interface CKFetchShareParticipantsOperation <CKFetchShareParticipantsOperationCallbacks>
 {
     CDUnknownBlockType _shareParticipantFetchedBlock;
+    CDUnknownBlockType _perShareParticipantCompletionBlock;
     CDUnknownBlockType _fetchShareParticipantsCompletionBlock;
     NSArray *_userIdentityLookupInfos;
     NSMutableSet *_discoveredUserIdentities;
@@ -32,6 +33,7 @@
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
 @property(copy, nonatomic) CDUnknownBlockType fetchShareParticipantsCompletionBlock; // @synthesize fetchShareParticipantsCompletionBlock=_fetchShareParticipantsCompletionBlock;
+@property(copy, nonatomic) CDUnknownBlockType perShareParticipantCompletionBlock; // @synthesize perShareParticipantCompletionBlock=_perShareParticipantCompletionBlock;
 @property(copy, nonatomic) CDUnknownBlockType shareParticipantFetchedBlock; // @synthesize shareParticipantFetchedBlock=_shareParticipantFetchedBlock;
 - (id)initWithUserIdentityLookupInfos:(id)arg1;
 - (id)init;

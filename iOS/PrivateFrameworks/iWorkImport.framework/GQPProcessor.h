@@ -27,8 +27,8 @@ __attribute__((visibility("hidden")))
     SFUCryptoKey *mCryptoKey;
     unsigned long long mTotalBytesToConsume;
     SFUZipInflateInputStream *mInputStream;
-    stack_e5003a0d *mStateStack;
-    stack_00018fe6 *mActionStack;
+    void *mStateStack;
+    void *mActionStack;
     GQSDocument *mDocumentState;
     struct __QLPreviewRequest *mOutputPreviewRequest;
     struct __CFBundle *mBundle;
@@ -47,8 +47,8 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)thumbnailSize;
 - (id)cryptoKey;
 - (id)documentState;
-- (stack_00018fe6 *)actionStack;
-- (stack_e5003a0d *)stateStack;
+- (void *)actionStack;
+- (void *)stateStack;
 - (_Bool)go;
 - (void)setBundle:(struct __CFBundle *)arg1;
 - (struct __CFBundle *)bundle;

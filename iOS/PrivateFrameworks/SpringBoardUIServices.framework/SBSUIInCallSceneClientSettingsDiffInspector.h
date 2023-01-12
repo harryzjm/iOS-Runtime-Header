@@ -10,6 +10,9 @@
 {
 }
 
+- (void)observePrefersHiddenWhenDismissedWithBlock:(CDUnknownBlockType)arg1;
+- (void)observePrefersBannersHiddenFromClonedDisplayWithBlock:(CDUnknownBlockType)arg1;
+- (void)observeExpanseHUDDodgingInsetsWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeCallConnectedWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeTransientOverlayHomeIndicatorAutoHiddenWithBlock:(CDUnknownBlockType)arg1;
 - (void)observePreferredStatusBarStyleOverridesToSuppressWithBlock:(CDUnknownBlockType)arg1;

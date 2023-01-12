@@ -6,7 +6,7 @@
 
 #import <EventKitUI/NSObject-Protocol.h>
 
-@class NSArray, NSIndexPath, NSString, UITableView, UITableViewCell;
+@class NSArray, NSIndexPath, NSString, UITableView, UITableViewCell, UITableViewHeaderFooterView;
 
 @protocol EKUIInviteesViewSection <NSObject>
 - (NSArray *)actionsForRow:(NSIndexPath *)arg1;
@@ -27,6 +27,8 @@
 - (NSString *)debugTitle;
 
 @optional
+- (UITableViewHeaderFooterView *)customFooterView;
+- (UITableViewHeaderFooterView *)customHeaderView;
 - (_Bool)hideDivderLineForindexPath:(NSIndexPath *)arg1;
 @end
 

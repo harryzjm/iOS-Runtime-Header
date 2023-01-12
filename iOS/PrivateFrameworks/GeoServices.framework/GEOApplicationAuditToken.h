@@ -22,6 +22,7 @@
     NSString *_secondaryIdentifier;
 }
 
++ (id)currentProcessAuditToken;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic, getter=_secondaryIdentifier) NSString *secondaryIdentifier; // @synthesize secondaryIdentifier=_secondaryIdentifier;

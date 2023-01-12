@@ -6,9 +6,10 @@
 
 #import <WorkflowUI/NSObject-Protocol.h>
 
-@class WFWorkflowSettingsViewController;
+@class UIViewController;
 
 @protocol WFWorkflowSettingsViewControllerDelegate <NSObject>
-- (void)settingsViewControllerWantsWorkflowReload:(WFWorkflowSettingsViewController *)arg1;
+- (_Bool)settingsViewControllerWantsToKnowIfNewShortcutFlow:(UIViewController *)arg1;
+- (void)settingsViewControllerWantsWorkflowReload:(UIViewController *)arg1;
 @end
 

@@ -32,32 +32,33 @@ struct CLLocationCoordinate2D {
     double longitude;
 };
 
-struct NURendererResources {
-    id pipelines[3];
+struct NUNIRendererResources {
+    id pipelines[5];
     id vertexBuffer;
     id indexBuffer;
 };
 
-struct NURendererState {
-    struct NUViewport _field1;
-    unsigned long long _field2;
-    unsigned long long _field3;
-    float _field4;
-    struct _NUGeometryRange _field5;
-    struct _NUGeometryRange _field6;
-    union float4x4 _field7;
-    union float4x4 _field8;
-    union float4x4 _field9;
+struct NUNIRendererState {
+    struct NUNIViewport viewport;
+    unsigned long long projectionType;
+    unsigned long long collectionType;
+    float yearsSince1970;
+    float cameraRoll;
+    struct _NUNIGeometryRange octGeomRange;
+    struct _NUNIGeometryRange quadGeomRange;
+    union float4x4 cameraPosition__cameraTarget__cameraUp__cameraLeft__cameraForward__cameraProj;
+    union float4x4 cameraView;
+    union float4x4 cameraProjView;
 };
 
-struct NUViewport {
-    int _field1;
-    int _field2;
-    int _field3;
-    int _field4;
+struct NUNIViewport {
+    int x;
+    int y;
+    int width;
+    int height;
 };
 
-struct _NUGeometryRange {
+struct _NUNIGeometryRange {
     int start;
     int count;
 };
@@ -65,8 +66,8 @@ struct _NUGeometryRange {
 #pragma mark Named Unions
 
 union float4x4 {
-    float _field1[16];
-    float _field2[4][4];
-    MISSING_TYPE *_field3[4];
+    float m[16];
+    float d[4][4];
+    MISSING_TYPE *v[4];
 };
 

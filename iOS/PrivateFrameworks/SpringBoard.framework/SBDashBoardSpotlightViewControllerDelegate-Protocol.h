@@ -7,6 +7,7 @@
 @class SBDashBoardSpotlightViewController;
 
 @protocol SBDashBoardSpotlightViewControllerDelegate
+- (long long)zStackParticipantIdentifierForSpotlightViewController:(SBDashBoardSpotlightViewController *)arg1;
 - (long long)homeGestureParticipantIdentifierForSpotlightViewController:(SBDashBoardSpotlightViewController *)arg1;
 - (unsigned long long)remoteSearchViewPresentationSourceForSpotlightViewController:(SBDashBoardSpotlightViewController *)arg1;
 - (unsigned long long)spotlightMultiplexingLevelForSpotlightViewController:(SBDashBoardSpotlightViewController *)arg1;

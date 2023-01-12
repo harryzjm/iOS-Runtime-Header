@@ -10,6 +10,7 @@
 {
 }
 
++ (_Bool)canonicalizedEqualityTestValue1:(id)arg1 value2:(id)arg2 key:(id)arg3 object1:(id)arg4 object2:(id)arg5;
 + (id)_copyFileAtURLToTemporaryDirectory:(id)arg1;
 + (id)createTempDestinationURLWithExtension:(id)arg1;
 + (id)knownSingleValueKeysForComparison;
@@ -19,29 +20,30 @@
 - (id)description;
 - (id)semanticIdentifier;
 - (long long)compareFileNames:(id)arg1;
-- (void)setURLForPendingFileCopy:(id)arg1;
-@property(readonly, nonatomic) NSURL *URLForPendingFileCopy;
-- (void)setExternalID:(id)arg1;
-- (id)externalID;
+@property(retain, nonatomic) NSURL *URLForPendingFileCopy;
+- (void)setSecurityScopedURLWrapperForPendingFileCopy:(id)arg1;
+- (id)securityScopedURLWrapperForPendingFileCopy;
+@property(retain, nonatomic) NSString *externalID;
 - (void)setXPropertiesData:(id)arg1;
 - (id)XPropertiesData;
 - (void)setUUID:(id)arg1;
 @property(readonly, nonatomic) NSString *UUID;
-- (void)setFileSize:(id)arg1;
-@property(readonly, nonatomic) NSNumber *fileSize;
+@property(retain, nonatomic) NSNumber *fileSize;
 - (void)setLocalRelativePath:(id)arg1;
 @property(readonly, nonatomic) NSString *localRelativePath;
 @property(readonly, nonatomic) NSURL *localURL;
-- (void)setIsBinary:(_Bool)arg1;
-@property(readonly, nonatomic) _Bool isBinary;
-- (void)setFileFormat:(id)arg1;
-@property(readonly, nonatomic) NSString *fileFormat;
-- (void)setFileNameRaw:(id)arg1;
+@property(nonatomic) _Bool isBinary;
+@property(retain, nonatomic) NSString *fileFormat;
+@property(retain, nonatomic) NSString *fileNameRaw;
 @property(readonly, nonatomic) NSString *fileName;
-- (id)fileNameRaw;
-- (void)setURL:(id)arg1;
-@property(readonly, nonatomic) NSURL *URL;
+@property(retain, nonatomic) NSString *externalModificationTag;
+@property(retain, nonatomic) NSURL *URL;
+- (void)setURLString:(id)arg1;
+- (id)URLString;
 - (id)initWithFilepath:(id)arg1;
+- (id)init;
+- (_Bool)save:(id *)arg1;
+- (_Bool)validateWithOwner:(id)arg1 error:(id *)arg2;
 
 @end
 

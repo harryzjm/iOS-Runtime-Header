@@ -12,7 +12,8 @@
     float _rotation;
 }
 
-+ (id)instanceWithArchive:(const struct Chart3DBaseImageTextureTilingArchive *)arg1 unarchiver:(id)arg2;
++ (id)instanceWithArchive:(const void *)arg1 unarchiver:(id)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) float rotation; // @synthesize rotation=_rotation;
 - (void)didInitFromSOS;
 @property(nonatomic) tvec2_84d5962d scale;
@@ -20,9 +21,8 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (void)saveToArchive:(struct Chart3DBaseImageTextureTilingArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct Chart3DBaseImageTextureTilingArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 @end
 

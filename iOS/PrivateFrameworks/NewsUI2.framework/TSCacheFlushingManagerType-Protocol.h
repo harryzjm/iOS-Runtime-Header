@@ -4,7 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class TSCachePreFlushTask;
+
 @protocol TSCacheFlushingManagerType
+- (TSCachePreFlushTask *)createPreFlushTask;
 - (void)addPreFlushTask:(void (^)(void (^)(void)))arg1;
 - (void)enableFlushing;
 @end

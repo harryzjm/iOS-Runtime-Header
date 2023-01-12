@@ -10,6 +10,8 @@
 + (id)fc_encryptionErrorWithCode:(unsigned long long)arg1 descriptionFormat:(id)arg2;
 + (id)fc_encryptionErrorWithCode:(unsigned long long)arg1 description:(id)arg2;
 + (id)fc_encryptionErrorWithCode:(unsigned long long)arg1;
++ (id)fc_exceededQueryBudgetErrorWithAdditionalUserInfo:(id)arg1;
++ (id)fc_HTTPErrorWithURL:(id)arg1 statusCode:(unsigned long long)arg2 requestUUID:(id)arg3 additionalUserInfo:(id)arg4;
 + (id)fc_encryptionRequiredError;
 + (id)fc_secureSubscriptionsDisallowedError;
 + (id)fc_emptyM3UPlaylistError;
@@ -52,14 +54,18 @@
 - (_Bool)fc_isMissingZoneError;
 - (_Bool)fc_isCKUnknownItemError;
 - (_Bool)fc_hasErrorCode:(long long)arg1;
+- (_Bool)fc_isAuthenticationUserCancelled;
 - (id)fc_errorWithMaximumRetryAfter:(double)arg1;
+- (_Bool)fc_isHTTPNotFoundError;
 - (_Bool)fc_isAVUnauthorizedError;
 - (_Bool)fc_isBlockedInStoreFrontError;
 - (_Bool)fc_isUnknownItemError;
+- (_Bool)fc_isRecoverableNetworkError;
 - (_Bool)fc_isOfflineErrorOfflineReason:(long long *)arg1;
 - (_Bool)fc_isOfflineError;
 - (_Bool)fc_isOperationThrottledError;
 - (_Bool)fc_isServiceUnavailableError;
+- (_Bool)fc_isRequestDroppedError;
 - (_Bool)fc_isCancellationError;
 - (_Bool)fc_isNetworkUnavailableError;
 - (_Bool)fc_shouldRetry;

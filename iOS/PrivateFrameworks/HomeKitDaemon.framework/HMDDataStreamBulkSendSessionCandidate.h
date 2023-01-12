@@ -12,6 +12,7 @@
 
 @interface HMDDataStreamBulkSendSessionCandidate : NSObject <HMDDataStreamBulkSendSessionCandidate>
 {
+    NSDictionary *_metadata;
     HMDDataStreamBulkSendProtocol *_bulkSendProtocol;
     NSDictionary *_requestHeader;
     NSMutableArray *_pendingReads;
@@ -23,9 +24,10 @@
 @property(retain, nonatomic) NSMutableArray *pendingReads; // @synthesize pendingReads=_pendingReads;
 @property(readonly, nonatomic) NSDictionary *requestHeader; // @synthesize requestHeader=_requestHeader;
 @property(readonly, nonatomic) __weak HMDDataStreamBulkSendProtocol *bulkSendProtocol; // @synthesize bulkSendProtocol=_bulkSendProtocol;
+@property(readonly, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
 - (void)rejectBulkSendSessionWithStatus:(unsigned short)arg1;
 - (void)acceptBulkSendSessionOnQueue:(id)arg1 callback:(CDUnknownBlockType)arg2;
-- (id)initWithProtocol:(id)arg1 requestHeader:(id)arg2;
+- (id)initWithProtocol:(id)arg1 requestHeader:(id)arg2 metadata:(id)arg3;
 
 @end
 

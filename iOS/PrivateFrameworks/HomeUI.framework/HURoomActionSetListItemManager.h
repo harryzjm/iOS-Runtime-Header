@@ -18,6 +18,7 @@
 - (CDUnknownBlockType)_roomComparator;
 - (id)_sortedRooms;
 - (id)_currentSectionIdentifiers;
+- (id)currentSectionIdentifiersSnapshot;
 - (void)_willUpdateSections;
 - (id)_sectionIdentifierForItem:(id)arg1;
 - (id)_titleForSectionWithIdentifier:(id)arg1;

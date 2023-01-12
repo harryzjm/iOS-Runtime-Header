@@ -4,7 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface NFCISO15693ReaderSession
+#import <CoreNFC/NFReaderSessionCallbacks-Protocol.h>
+
+@class NSString;
+
+@interface NFCISO15693ReaderSession <NFReaderSessionCallbacks>
 {
 }
 
@@ -13,7 +17,13 @@
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2;
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2 pollMethod:(unsigned long long)arg3;
 - (id)initWithDelegate:(id)arg1 sessionDelegateType:(long long)arg2 queue:(id)arg3 pollMethod:(unsigned long long)arg4 sessionConfig:(unsigned long long)arg5;
-- (void)didDetectTags:(id)arg1;
+- (void)didDetectTags:(id)arg1 connectedTagIndex:(unsigned long long)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
     unsigned int connection_group_connection:1;
     unsigned int connection_group_multicast:1;
     unsigned int supports_replies:1;
-    unsigned int __pad_bits:1;
+    unsigned int is_wake_packet:1;
 }
 
 - (void).cxx_destruct;

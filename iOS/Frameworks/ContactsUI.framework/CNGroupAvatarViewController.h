@@ -6,10 +6,15 @@
 
 #import <UIKit/UIViewController.h>
 
-@class CNGroupIdentity, CNVisualIdentityAvatarViewController;
+@class CNAvatarAccessoryView, CNBadgingAvatarBadgeStyleSettings, CNGroupIdentity, CNVisualIdentityAvatarViewController, UIImage;
 
 @interface CNGroupAvatarViewController : UIViewController
 {
+    _Bool _isMarkedForSyndication;
+    _Bool _isDoNotDisturb;
+    UIImage *_badgeImage;
+    CNBadgingAvatarBadgeStyleSettings *_badgeStyleSettings;
+    CNAvatarAccessoryView *_mediaContextBadge;
     CNGroupIdentity *_group;
     CNVisualIdentityAvatarViewController *_avatarViewController;
 }
@@ -20,7 +25,15 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) CNVisualIdentityAvatarViewController *avatarViewController; // @synthesize avatarViewController=_avatarViewController;
 @property(retain, nonatomic) CNGroupIdentity *group; // @synthesize group=_group;
+@property(retain, nonatomic) CNAvatarAccessoryView *mediaContextBadge; // @synthesize mediaContextBadge=_mediaContextBadge;
+@property(nonatomic) _Bool isDoNotDisturb; // @synthesize isDoNotDisturb=_isDoNotDisturb;
+@property(nonatomic) _Bool isMarkedForSyndication; // @synthesize isMarkedForSyndication=_isMarkedForSyndication;
+@property(retain, nonatomic) CNBadgingAvatarBadgeStyleSettings *badgeStyleSettings; // @synthesize badgeStyleSettings=_badgeStyleSettings;
+@property(retain, nonatomic) UIImage *badgeImage; // @synthesize badgeImage=_badgeImage;
+- (_Bool)contactsEqualToContactsFromGroup:(id)arg1;
 - (void)groupIdentityDidUpdate:(id)arg1;
+- (_Bool)_canShowWhileLocked;
+- (void)loadView;
 - (id)initWithGroup:(id)arg1 avatarViewControllerSettings:(id)arg2;
 - (id)initWithGroup:(id)arg1;
 

@@ -6,29 +6,36 @@
 
 #import <objc/NSObject.h>
 
-@class MISSING_TYPE, NSMutableArray;
+@class MISSING_TYPE, NSArray, SCNPhysicsWorld;
 @protocol AVTPhysicsControllerDelegate;
 
 @interface AVTPhysicsController : NSObject
 {
-    NSMutableArray *_physicsRigs;
+    SCNPhysicsWorld *_physicsWorld;
+    NSArray *_physicsRigs;
+    _Bool _physicsBehaviorsAreInstalledInPhysicsWorld;
+    unsigned int _frameCount;
     _Bool _setupDone;
-    _Bool _firstFrameRendered;
+    _Bool _hasPhysicsStateOverride;
     id <AVTPhysicsControllerDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <AVTPhysicsControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)resetToPhysicsState:(id)arg1;
+- (void)removeFromPhysicsWorld:(id)arg1;
+- (void)addToPhysicsWorld:(id)arg1;
+- (void)resetToPhysicsState:(id)arg1 assumeRestStateIfNil:(_Bool)arg2;
 - (id)physicsState;
-- (void)setupPhysicsIfNeeded;
 - (void)downforcesDidChange;
-- (void)_setupPhysicsChain:(id)arg1;
+- (void)_setupPhysicsChain:(id)arg1 physicsRigs:(id)arg2;
 - (void)_setupCollisionNode:(id)arg1;
 - (void)setupPhysics;
+- (void)setupPhysicsIfNeeded;
+- (void)installPhysics;
 - (MISSING_TYPE *)offsetFromRestingPositionForNode:(id)arg1 inCoordinateSpaceOfNode:(id)arg2;
 - (void)updateAtTime:(double)arg1 forceMultiplier:(double)arg2;
 - (void)applyForcesWithMultiplier:(double)arg1;
+- (void)solvePhysicsLimitState;
 
 @end
 

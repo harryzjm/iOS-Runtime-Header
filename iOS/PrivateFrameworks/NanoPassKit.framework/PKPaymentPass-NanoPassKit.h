@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PassKit/PKPaymentPass.h>
+#import <PassKitCore/PKPaymentPass.h>
 
 @interface PKPaymentPass (NanoPassKit)
+- (_Bool)npkIsInLostMode;
 - (void)npkSetPreferredPaymentApplication:(id)arg1;
 - (id)npkPreferredContactlessPaymentApplication;
 - (id)npkDevicePaymentApplicationForAID:(id)arg1;

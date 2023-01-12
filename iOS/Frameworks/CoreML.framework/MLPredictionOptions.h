@@ -14,6 +14,7 @@
 @interface MLPredictionOptions : NSObject <NSCopying, NSSecureCoding>
 {
     _Bool _usesCPUOnly;
+    _Bool _enablePixelBufferDirectBinding;
     unsigned long long _classifyTopK;
     NSDictionary *_outputBackings;
     NSDictionary *_automaticOutputBackingMode;
@@ -23,6 +24,7 @@
 + (_Bool)supportsSecureCoding;
 + (id)defaultOptions;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool enablePixelBufferDirectBinding; // @synthesize enablePixelBufferDirectBinding=_enablePixelBufferDirectBinding;
 @property unsigned long long maxComputationBatchSize; // @synthesize maxComputationBatchSize=_maxComputationBatchSize;
 @property(copy, nonatomic) NSDictionary *automaticOutputBackingMode; // @synthesize automaticOutputBackingMode=_automaticOutputBackingMode;
 @property(copy, nonatomic) NSDictionary *outputBackings; // @synthesize outputBackings=_outputBackings;
@@ -31,8 +33,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-@property _Bool useCPUOnly;
-- (id)initWithUseCPUOnly:(_Bool)arg1;
+@property(readonly, nonatomic) _Bool predictionUsesCPU;
 - (id)init;
 - (id)initWithUsesCPUOnly:(_Bool)arg1;
 

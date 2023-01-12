@@ -14,6 +14,7 @@
     _Bool _forAccountGroup;
     _Bool _zeroAction;
     _Bool _badgeApp;
+    _Bool _premiumOffer;
     NSString *_title;
     NSString *_message;
     NSString *_altMessage;
@@ -23,28 +24,39 @@
     NSString *_altNoteMessage;
     ICQLink *_noteActivateLink;
     ICQLink *_noteClearLink;
+    long long _followupDisplayStyle;
+    NSString *_sfSymbolID;
+    NSString *_sfSymbolBundlePath;
+    NSString *_notifyingAppId;
 }
 
-+ (void)clearFollowupWithController:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)clearFollowupWithController:(id)arg1 isPremium:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool premiumOffer; // @synthesize premiumOffer=_premiumOffer;
+@property(copy, nonatomic) NSString *notifyingAppId; // @synthesize notifyingAppId=_notifyingAppId;
+@property(copy, nonatomic) NSString *sfSymbolBundlePath; // @synthesize sfSymbolBundlePath=_sfSymbolBundlePath;
+@property(copy, nonatomic) NSString *sfSymbolID; // @synthesize sfSymbolID=_sfSymbolID;
+@property(nonatomic) long long followupDisplayStyle; // @synthesize followupDisplayStyle=_followupDisplayStyle;
 @property(nonatomic) _Bool badgeApp; // @synthesize badgeApp=_badgeApp;
 @property(nonatomic, getter=isZeroAction) _Bool zeroAction; // @synthesize zeroAction=_zeroAction;
 @property(nonatomic, getter=isForAccountGroup) _Bool forAccountGroup; // @synthesize forAccountGroup=_forAccountGroup;
 @property(retain, nonatomic) ICQLink *noteClearLink; // @synthesize noteClearLink=_noteClearLink;
 @property(retain, nonatomic) ICQLink *noteActivateLink; // @synthesize noteActivateLink=_noteActivateLink;
-@property(retain, nonatomic) NSString *altNoteMessage; // @synthesize altNoteMessage=_altNoteMessage;
-@property(retain, nonatomic) NSString *noteMessage; // @synthesize noteMessage=_noteMessage;
-@property(retain, nonatomic) NSString *noteTitle; // @synthesize noteTitle=_noteTitle;
+@property(copy, nonatomic) NSString *altNoteMessage; // @synthesize altNoteMessage=_altNoteMessage;
+@property(copy, nonatomic) NSString *noteMessage; // @synthesize noteMessage=_noteMessage;
+@property(copy, nonatomic) NSString *noteTitle; // @synthesize noteTitle=_noteTitle;
 @property(retain, nonatomic) NSArray *links; // @synthesize links=_links;
-@property(retain, nonatomic) NSString *altMessage; // @synthesize altMessage=_altMessage;
-@property(retain, nonatomic) NSString *message; // @synthesize message=_message;
-@property(retain, nonatomic) NSString *title; // @synthesize title=_title;
+@property(copy, nonatomic) NSString *altMessage; // @synthesize altMessage=_altMessage;
+@property(copy, nonatomic) NSString *message; // @synthesize message=_message;
+@property(copy, nonatomic) NSString *title; // @synthesize title=_title;
+- (void)addNotifyingAppIdForItem:(id)arg1;
 @property(retain, nonatomic) NSDictionary *serverDict;
 - (void)postFollowupWithController:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)postFollowupWithController:(id)arg1;
 @property(readonly, nonatomic) NSURL *remoteUIURL;
 - (id)followupActionForLink:(id)arg1 needsFlow:(_Bool)arg2;
 - (id)followupActionForLink:(id)arg1;
+- (id)identifierPrefix;
 - (id)initWithServerDictionary:(id)arg1;
 - (id)init;
 

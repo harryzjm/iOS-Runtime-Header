@@ -18,6 +18,7 @@
 @property(nonatomic) double cellSpacing; // @synthesize cellSpacing=_cellSpacing;
 @property(nonatomic) double cellSize; // @synthesize cellSize=_cellSize;
 @property(nonatomic) struct HUGridSize gridSize; // @synthesize gridSize=_gridSize;
+- (id)description;
 
 @end
 

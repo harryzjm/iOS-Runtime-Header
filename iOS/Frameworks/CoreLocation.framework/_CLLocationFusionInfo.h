@@ -12,8 +12,11 @@
 @interface _CLLocationFusionInfo : NSObject <NSCopying, NSSecureCoding>
 {
     _Bool _coordinateFused;
+    _Bool _coordinateFusedWithVL;
     int _referenceFrame;
     double _horizontalAccuracy;
+    double _altitude;
+    double _verticalAccuracy;
     double _course;
     double _courseAccuracy;
     CDStruct_2c43369c _coordinate;
@@ -22,14 +25,17 @@
 + (_Bool)supportsSecureCoding;
 @property(readonly, nonatomic) double courseAccuracy; // @synthesize courseAccuracy=_courseAccuracy;
 @property(readonly, nonatomic) double course; // @synthesize course=_course;
+@property(readonly, nonatomic) double verticalAccuracy; // @synthesize verticalAccuracy=_verticalAccuracy;
+@property(readonly, nonatomic) double altitude; // @synthesize altitude=_altitude;
 @property(readonly, nonatomic) int referenceFrame; // @synthesize referenceFrame=_referenceFrame;
 @property(readonly, nonatomic) double horizontalAccuracy; // @synthesize horizontalAccuracy=_horizontalAccuracy;
 @property(readonly, nonatomic) CDStruct_c3b9c2ee coordinate; // @synthesize coordinate=_coordinate;
+@property(readonly, nonatomic, getter=isCoordinateFusedWithVL) _Bool coordinateFusedWithVL; // @synthesize coordinateFusedWithVL=_coordinateFusedWithVL;
 @property(readonly, nonatomic, getter=isCoordinateFused) _Bool coordinateFused; // @synthesize coordinateFused=_coordinateFused;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithCoordinateFused:(_Bool)arg1 coordinate:(CDStruct_c3b9c2ee)arg2 horizontalAccuracy:(double)arg3 referenceFrame:(int)arg4 course:(double)arg5 courseAccuracy:(double)arg6;
+- (id)initWithCoordinateFused:(_Bool)arg1 coordinateFusedWithVL:(_Bool)arg2 coordinate:(CDStruct_c3b9c2ee)arg3 horizontalAccuracy:(double)arg4 referenceFrame:(int)arg5 altitude:(double)arg6 verticalAccuracy:(double)arg7 course:(double)arg8 courseAccuracy:(double)arg9;
 - (id)init;
 
 @end

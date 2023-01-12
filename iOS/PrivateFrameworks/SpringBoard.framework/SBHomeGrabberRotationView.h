@@ -12,6 +12,7 @@
 {
     NSMutableArray *_rotationWrapperViews;
     SBFHomeGrabberSettings *_grabberSettings;
+    _Bool _useRotationWrapperViews;
     SBHomeGrabberView *_grabberView;
     long long _orientation;
 }
@@ -22,6 +23,7 @@
 - (id)_addWrapperViewWithOrientation:(long long)arg1;
 - (void)setOrientation:(long long)arg1 animated:(_Bool)arg2 rotationSettings:(id)arg3;
 - (void)layoutSubviews;
+- (id)initWithFrame:(struct CGRect)arg1 settings:(id)arg2 useRotationWrapperViews:(_Bool)arg3;
 - (id)initWithFrame:(struct CGRect)arg1 settings:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 

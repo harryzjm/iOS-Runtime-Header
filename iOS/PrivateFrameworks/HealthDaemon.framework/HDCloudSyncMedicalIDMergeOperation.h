@@ -17,8 +17,7 @@
 @property(readonly, nonatomic) _HKMedicalIDData *mergedMedicalIDData; // @synthesize mergedMedicalIDData=_mergedMedicalIDData;
 @property(retain, nonatomic) _HKMedicalIDData *cloudMedicalIDData; // @synthesize cloudMedicalIDData=_cloudMedicalIDData;
 @property(retain, nonatomic) _HKMedicalIDData *localMedicalIDData; // @synthesize localMedicalIDData=_localMedicalIDData;
-- (id)_legacyDateSavedBasedMergeForCloudMedicalID:(id)arg1 localMedicalIDData:(id)arg2;
-- (void)main;
+- (_Bool)performWithError:(id *)arg1;
 
 @end
 

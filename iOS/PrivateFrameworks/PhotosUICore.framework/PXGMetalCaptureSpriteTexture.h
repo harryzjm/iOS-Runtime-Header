@@ -14,10 +14,12 @@
     long long _renderPipelineIndex;
     id <MTLTexture> _texture;
     const CDStruct_869f9c67 *_spriteGeometries;
+    double _drawingScale;
     struct CGRect _captureRect;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) double drawingScale; // @synthesize drawingScale=_drawingScale;
 @property(nonatomic) const CDStruct_869f9c67 *spriteGeometries; // @synthesize spriteGeometries=_spriteGeometries;
 @property(retain, nonatomic) id <MTLTexture> texture; // @synthesize texture=_texture;
 @property(nonatomic) struct CGRect captureRect; // @synthesize captureRect=_captureRect;
@@ -29,7 +31,7 @@
 - (void)cleanupAfterRender:(long long)arg1;
 - (void)prepareForRender:(long long)arg1;
 @property(readonly, nonatomic) PXGColorProgram *colorProgram;
-- (void)getTextureInfos:(CDStruct_183601bc *)arg1 forSpriteIndexes:(unsigned int *)arg2 geometries:(const CDStruct_3ab912e1 *)arg3 spriteStyles:(const CDStruct_506f5052 *)arg4 spriteInfos:(const CDStruct_9d1ebe49 *)arg5 screenScale:(double)arg6 count:(unsigned int)arg7;
+- (void)getTextureInfos:(CDStruct_183601bc *)arg1 forSpriteIndexes:(unsigned int *)arg2 geometries:(const CDStruct_4f725fed *)arg3 spriteStyles:(const CDStruct_76b550e2 *)arg4 spriteInfos:(const CDStruct_9d1ebe49 *)arg5 screenScale:(double)arg6 count:(unsigned int)arg7;
 @property(readonly, nonatomic) id <MTLTexture> chromaTexture;
 @property(readonly, copy, nonatomic) PXGCaptureSpritePayload *payload;
 - (id)initWithPayload:(id)arg1 presentationType:(int)arg2;
@@ -38,8 +40,10 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) long long estimatedByteSize;
+@property(readonly, nonatomic) _Bool hasSprites;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) struct CGImage *imageRepresentation;
+@property(readonly, nonatomic) _Bool isDegraded;
 @property(readonly, nonatomic) struct CGSize pixelSize;
 @property(readonly, nonatomic) int presentationType;
 @property(readonly, nonatomic) unsigned int spriteCount;

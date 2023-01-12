@@ -10,16 +10,16 @@
 
 @interface MPULayoutInterpolator : NSObject <NSCopying>
 {
-    struct vector<MPU::LayoutInterpolator::EntriesContainer, std::__1::allocator<MPU::LayoutInterpolator::EntriesContainer>> _entriesContainers;
+    struct vector<MPU::LayoutInterpolator::EntriesContainer, std::allocator<MPU::LayoutInterpolator::EntriesContainer>> _entriesContainers;
     _Bool _hasEntryWithSpecificSecondaryReferenceMetric;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_sortPointsFor3DInterpolation:(vector_c97e033f *)arg1 usingQueriedPoint:(struct Point3D)arg2;
-- (vector_c97e033f)_sortedPointsFor3DInterpolationFromEntriesContainer:(struct EntriesContainer *)arg1 usingQueriedPoint:(struct Point3D)arg2 fallbackSecondaryReferenceMetric:(double)arg3;
+- (void)_sortPointsFor3DInterpolation:(void *)arg1 usingQueriedPoint:(struct Point3D)arg2;
+- (vector_524c7f2b)_sortedPointsFor3DInterpolationFromEntriesContainer:(void *)arg1 usingQueriedPoint:(struct Point3D)arg2 fallbackSecondaryReferenceMetric:(double)arg3;
 - (struct Point3D)_pointForEntry:(struct Entry)arg1 andPrimaryReferenceMetric:(double)arg2 usingFallbackSecondaryReferenceMetric:(double)arg3;
-- (double)_interpolatedValueForPrimaryReferenceMetric:(double)arg1 secondaryReferenceMetric:(double)arg2 betweenFirstEntriesContainer:(struct EntriesContainer *)arg3 andSecondEntriesContainer:(struct EntriesContainer *)arg4;
+- (double)_interpolatedValueForPrimaryReferenceMetric:(double)arg1 secondaryReferenceMetric:(double)arg2 betweenFirstEntriesContainer:(void *)arg3 andSecondEntriesContainer:(void *)arg4;
 - (double)valueForReferenceMetric:(double)arg1 secondaryReferenceMetric:(double)arg2;
 - (double)valueForReferenceMetric:(double)arg1;
 - (void)addValue:(double)arg1 forReferenceMetric:(double)arg2 secondaryReferenceMetric:(double)arg3;

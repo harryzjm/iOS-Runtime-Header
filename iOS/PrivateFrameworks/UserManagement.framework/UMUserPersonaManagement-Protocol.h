@@ -32,6 +32,7 @@
 - (void)deleteUserPersonaWithProfileInfo:(NSDictionary *)arg1 passcodeData:(NSData *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)deleteUserPersonaWithPersonaUniqueString:(NSString *)arg1 passcodeData:(NSData *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)deleteUserPersonaWithIDString:(NSString *)arg1 passcodeData:(NSData *)arg2 completionHandler:(void (^)(NSError *))arg3;
+- (void)createUserPersona:(NSDictionary *)arg1 passcodeData:(NSData *)arg2 passcodeDataType:(unsigned long long)arg3 completionHandler:(void (^)(NSDictionary *, NSError *))arg4;
 - (void)createUserPersona:(NSDictionary *)arg1 passcodeData:(NSData *)arg2 completionHandler:(void (^)(NSDictionary *, NSError *))arg3;
 @end
 

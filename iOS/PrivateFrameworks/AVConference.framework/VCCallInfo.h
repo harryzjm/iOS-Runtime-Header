@@ -19,9 +19,6 @@ __attribute__((visibility("hidden")))
     _Bool videoIsPaused;
     _Bool isPreLionOS;
     _Bool isVideoQualityDegraded;
-    double lastGoodVideoQualityTime;
-    double lastBadVideoQualityTime;
-    double lastVideoQualityDegradedSwitchTime;
     NSString *sdpString;
     SDPMini *sdp;
     _Bool is4x;
@@ -34,16 +31,16 @@ __attribute__((visibility("hidden")))
     _Bool useNewPLCalc;
     double firstDegradedMeasure;
     double videoDegradedThreshold;
-    double videoImprovedThreshold;
-    double videoMinFrameRate;
-    _Bool shouldUseExitHysteresis;
     unsigned char u8Version;
     NSString *_frameworkVersion;
     NSString *_osVersion;
     NSString *_deviceType;
+    _Bool _isVideoQualityNearDegraded;
+    double _videoNearDegradedThreshold;
 }
 
 + (unsigned char)getVCCurrentVersion;
+@property(nonatomic) _Bool isVideoQualityNearDegraded; // @synthesize isVideoQualityNearDegraded=_isVideoQualityNearDegraded;
 @property(copy, nonatomic) NSString *frameworkVersion; // @synthesize frameworkVersion=_frameworkVersion;
 @property(copy, nonatomic) NSString *OSVersion; // @synthesize OSVersion=_osVersion;
 @property(copy, nonatomic) NSString *deviceType; // @synthesize deviceType=_deviceType;
@@ -70,8 +67,7 @@ __attribute__((visibility("hidden")))
 - (void)setUserAgent:(id)arg1;
 - (struct VoiceIOFarEndVersionInfo)audioVersionInfo:(_Bool)arg1;
 @property(readonly) _Bool supportsDynamicContentsRectWithAspectPreservation;
-- (_Bool)updateWithCurrentFramerate:(double)arg1 bitrate:(double)arg2 packetLossRate:(float)arg3 time:(double)arg4;
-- (void)resetLastGoodVideoQualityTime:(double)arg1;
+- (_Bool)updateWithLastDecodedFrameTime:(double)arg1 time:(double)arg2;
 @property(readonly, nonatomic) _Bool requiresImplicitFeatureString;
 - (void)dealloc;
 - (id)init;

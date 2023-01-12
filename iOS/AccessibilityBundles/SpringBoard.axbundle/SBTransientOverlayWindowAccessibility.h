@@ -11,6 +11,11 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_axRemoteContentViewController;
+- (id)_axRemoteServiceBundleIdentifier;
+- (id)_axAdditionalElements;
+- (_Bool)accessibilityPerformEscape;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (_Bool)accessibilityViewIsModal;
 
 @end

@@ -16,15 +16,11 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) HDGymKitWorkoutAnalyticEvent *gymKitWorkoutEvent; // @synthesize gymKitWorkoutEvent=_gymKitWorkoutEvent;
-@property(retain, nonatomic) HKPersistentTimer *authorizationTimer; // @synthesize authorizationTimer=_authorizationTimer;
 - (void)workoutEndedSubmitMetricsWith:(id)arg1;
-- (long long)_failureReasonForError:(id)arg1;
 - (void)workoutFailedWithError:(id)arg1;
 - (void)setFitnessMachineType:(unsigned long long)arg1 manufacturer:(id)arg2;
-- (void)_recordTimeToAuthorize;
 - (void)userIsAuthorized;
 - (void)userBeganPairing;
-- (void)_reset;
 - (id)init;
 
 @end

@@ -10,6 +10,7 @@
 {
 }
 
++ (id)photosSupportedPreviewGeneratorClasses;
 + (_Bool)asset:(id)arg1 containsMetadataKey:(id)arg2;
 + (Class)__AVDataAssetClass;
 

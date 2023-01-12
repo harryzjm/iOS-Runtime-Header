@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (void)encodeWithCoder:(id)arg1;
 - (_Bool)_requiresDatabaseMappingEntitlement;
 - (void)_enumerateWithXPCConnection:(id)arg1 block:(CDUnknownBlockType)arg2;
-- (void)yieldBundles:(const vector_12da65de *)arg1 context:(struct LSContext *)arg2 block:(CDUnknownBlockType)arg3;
+- (void)yieldBundles:(const void *)arg1 context:(struct LSContext *)arg2 block:(CDUnknownBlockType)arg3;
 - (id)initWithURL:(id)arg1;
 
 @end

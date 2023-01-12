@@ -29,7 +29,7 @@
 - (void)enumerateAssetIdentifiersUsingBlock:(CDUnknownBlockType)arg1;
 - (CDStruct_fd7a954a)spriteSnapshotForAssetWithIdentifier:(id)arg1;
 - (id)assetIdentifierForAssetReference:(id)arg1;
-- (void)enumerateAssetInfoForGeometries:(const CDStruct_3ab912e1 *)arg1 styles:(const CDStruct_506f5052 *)arg2 infos:(const CDStruct_9d1ebe49 *)arg3 count:(unsigned int)arg4 options:(unsigned long long)arg5 usingBlock:(CDUnknownBlockType)arg6;
+- (void)enumerateAssetInfoForGeometries:(const CDStruct_4f725fed *)arg1 styles:(const CDStruct_76b550e2 *)arg2 infos:(const CDStruct_9d1ebe49 *)arg3 count:(unsigned int)arg4 options:(unsigned long long)arg5 usingBlock:(CDUnknownBlockType)arg6;
 @property(readonly, nonatomic) struct CGRect fullyVisibleRect; // @synthesize fullyVisibleRect=_fullyVisibleRect;
 @property(readonly, nonatomic) struct CGRect visibleRect; // @synthesize visibleRect=_visibleRect;
 - (long long)_addSpriteSnapshot:(CDStruct_fd7a954a)arg1;

@@ -8,7 +8,6 @@
 {
 }
 
-- (id)_shareRecordIDsToDelete;
 - (void)main;
 
 @end

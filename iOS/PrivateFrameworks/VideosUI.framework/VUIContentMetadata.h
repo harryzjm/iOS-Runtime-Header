@@ -6,9 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSDictionary, NSNumber, NSString;
+@class NSArray, NSDate, NSDictionary, NSNumber, NSString;
 
-__attribute__((visibility("hidden")))
 @interface VUIContentMetadata : NSObject
 {
     NSDictionary *_metadataDictionary;
@@ -16,6 +15,9 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *roles;
+@property(readonly, nonatomic) NSString *studio;
+@property(readonly, nonatomic) _Bool isSharedWatchEnabled;
 @property(readonly, nonatomic) NSString *showCanonicalId;
 @property(readonly, nonatomic) NSNumber *ratingValue;
 @property(readonly, nonatomic) _Bool isAdultContent;
@@ -23,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *seasonTitle;
 @property(readonly, nonatomic) NSNumber *seasonNumber;
 @property(readonly, nonatomic) NSNumber *episodeIndexInSeries;
+@property(readonly, nonatomic) NSNumber *fractionalEpisodeNumber;
 @property(readonly, nonatomic) NSNumber *episodeNumber;
 @property(readonly, nonatomic) NSString *ratingDomain;
 @property(readonly, nonatomic) NSString *ratingSystem;
@@ -38,6 +41,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned long long tomatoFreshness;
 @property(readonly, nonatomic) NSNumber *tomatoPercentage;
 @property(readonly, nonatomic) NSNumber *duration;
+@property(readonly, nonatomic) NSString *rentalStartedWatchingTimestamp;
+@property(readonly, nonatomic) NSString *rentalPurchasedTimestamp;
+@property(readonly, nonatomic) NSNumber *rentalPlaybackDurationInMilliseconds;
+@property(readonly, nonatomic) NSNumber *rentalDurationInMilliseconds;
 @property(readonly, nonatomic) NSDate *rentalExpiration;
 @property(readonly, nonatomic) NSString *formattedReleaseDate;
 @property(readonly, nonatomic) NSDate *releasedDate;
@@ -55,6 +62,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *artworkURLFormat;
 @property(readonly, nonatomic) unsigned long long contentType;
 @property(readonly, nonatomic) NSString *type;
+- (id)backingDictionary;
 - (id)initWithDictionary:(id)arg1;
 
 @end

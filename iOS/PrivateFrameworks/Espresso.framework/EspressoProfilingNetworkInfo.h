@@ -6,15 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSString;
+@class EspressoProfilingANEcompilerAnalytics, EspressoProfilingNetworkANEInfo, NSMutableArray, NSString;
 
 @interface EspressoProfilingNetworkInfo : NSObject
 {
     NSMutableArray *_layers;
     NSString *_network_at_path;
+    EspressoProfilingNetworkANEInfo *_ane_performance_info;
+    EspressoProfilingANEcompilerAnalytics *_ane_compiler_analytics;
 }
 
 - (void).cxx_destruct;
+@property(retain) EspressoProfilingANEcompilerAnalytics *ane_compiler_analytics; // @synthesize ane_compiler_analytics=_ane_compiler_analytics;
+@property(retain) EspressoProfilingNetworkANEInfo *ane_performance_info; // @synthesize ane_performance_info=_ane_performance_info;
 @property(retain) NSString *network_at_path; // @synthesize network_at_path=_network_at_path;
 @property(retain) NSMutableArray *layers; // @synthesize layers=_layers;
 

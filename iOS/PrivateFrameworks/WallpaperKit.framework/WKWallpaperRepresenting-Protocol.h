@@ -10,6 +10,7 @@
 @protocol WKFileBasedWallpaper, WKValueBasedWallpaper;
 
 @protocol WKWallpaperRepresenting <WKHashable>
+@property(readonly, nonatomic) _Bool disableParallax;
 @property(readonly, nonatomic) unsigned long long contentSource;
 @property(readonly, copy, nonatomic) NSString *name;
 @property(readonly, copy, nonatomic) NSString *identifierString;

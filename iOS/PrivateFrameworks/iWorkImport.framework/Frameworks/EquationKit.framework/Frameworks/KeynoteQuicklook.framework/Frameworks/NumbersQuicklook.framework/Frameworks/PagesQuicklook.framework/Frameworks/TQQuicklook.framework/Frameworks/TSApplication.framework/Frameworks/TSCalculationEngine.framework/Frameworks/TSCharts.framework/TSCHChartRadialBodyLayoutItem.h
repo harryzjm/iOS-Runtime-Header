@@ -8,12 +8,12 @@
 
 @interface TSCHChartRadialBodyLayoutItem
 {
-    TSCHRadialBodyLayoutItemPathCache *mPathCache;
-    NSArray *mWedgeLayoutInfosInLocalSpace;
+    TSCHRadialBodyLayoutItemPathCache *_pathCache;
+    NSArray *_wedgeLayoutInfosInLocalSpace;
 }
 
 - (void).cxx_destruct;
-@property(retain) TSCHRadialBodyLayoutItemPathCache *p_pathCache; // @synthesize p_pathCache=mPathCache;
+@property(retain) TSCHRadialBodyLayoutItemPathCache *p_pathCache; // @synthesize p_pathCache=_pathCache;
 - (id)knobsWithRadius:(double)arg1 center:(struct CGPoint)arg2 startAngle:(double)arg3 midAngle:(double)arg4 endAngle:(double)arg5;
 - (struct CGPath *)newElementPathWithPercentage:(double)arg1 radius:(double)arg2 center:(struct CGPoint)arg3 startAngle:(double)arg4 midAngle:(double)arg5 endAngle:(double)arg6 withInnerRadius:(id)arg7;
 - (id)pathCacheForSeries:(unsigned long long)arg1 withInnerRadius:(id)arg2;

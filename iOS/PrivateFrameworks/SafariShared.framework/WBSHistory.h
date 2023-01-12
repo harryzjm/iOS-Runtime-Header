@@ -40,6 +40,7 @@
 - (void)initializeCloudHistoryWithConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)computeFrequentlyVisitedSites:(unsigned long long)arg1 minimalVisitCountScore:(unsigned long long)arg2 disallowList:(id)arg3 allowList:(id)arg4 options:(unsigned long long)arg5 currentTime:(double)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (void)searchForUserTypedString:(id)arg1 options:(unsigned long long)arg2 currentTime:(double)arg3 enumerationBlock:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)historyStore:(id)arg1 didRemoveHighLevelDomains:(id)arg2;
 - (void)historyStore:(id)arg1 didRemoveHostnames:(id)arg2;
 - (void)historyStore:(id)arg1 didRemoveItems:(id)arg2;
 - (void)historyStore:(id)arg1 didRemoveVisits:(id)arg2;
@@ -87,9 +88,13 @@
 - (void)checkIfLocalVisitExistsInAnyOfItems:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)getHighLevelHTTPFamilyDomainsVisitedAfterDate:(id)arg1 beforeDate:(id)arg2 onlyFromThisDevice:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)getVisitsCreatedAfterDate:(id)arg1 beforeDate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)itemRedirectedFrom:(id)arg1 to:(id)arg2 origin:(long long)arg3 date:(id)arg4 statusCode:(long long)arg5;
 - (id)itemRedirectedFrom:(id)arg1 to:(id)arg2 origin:(long long)arg3 date:(id)arg4;
+- (id)itemVisitedAtURLString:(id)arg1 title:(id)arg2 timeOfVisit:(double)arg3 wasHTTPNonGet:(_Bool)arg4 wasFailure:(_Bool)arg5 increaseVisitCount:(_Bool)arg6 statusCode:(long long)arg7 origin:(long long)arg8 attributes:(unsigned long long)arg9;
 - (id)itemVisitedAtURLString:(id)arg1 title:(id)arg2 timeOfVisit:(double)arg3 wasHTTPNonGet:(_Bool)arg4 wasFailure:(_Bool)arg5 increaseVisitCount:(_Bool)arg6 origin:(long long)arg7 attributes:(unsigned long long)arg8;
+- (id)itemVisitedAtURLString:(id)arg1 title:(id)arg2 timeOfVisit:(double)arg3 wasHTTPNonGet:(_Bool)arg4 wasFailure:(_Bool)arg5 increaseVisitCount:(_Bool)arg6 statusCode:(long long)arg7 origin:(long long)arg8;
 - (id)itemVisitedAtURLString:(id)arg1 title:(id)arg2 timeOfVisit:(double)arg3 wasHTTPNonGet:(_Bool)arg4 wasFailure:(_Bool)arg5 increaseVisitCount:(_Bool)arg6 origin:(long long)arg7;
+- (id)itemVisitedAtURLString:(id)arg1 title:(id)arg2 wasHTTPNonGet:(_Bool)arg3 wasFailure:(_Bool)arg4 increaseVisitCount:(_Bool)arg5 statusCode:(long long)arg6;
 - (id)itemVisitedAtURLString:(id)arg1 title:(id)arg2 wasHTTPNonGet:(_Bool)arg3 wasFailure:(_Bool)arg4 increaseVisitCount:(_Bool)arg5;
 - (void)setLastSeenDate:(id)arg1 forCloudClientVersion:(unsigned long long)arg2;
 - (id)lastSeenDateForCloudClientVersion:(unsigned long long)arg1;

@@ -8,6 +8,7 @@
 
 @class MPCPlaybackHistoryRecordChangeRequest, NSOperationQueue;
 
+__attribute__((visibility("hidden")))
 @interface MPCPlaybackHistoryRecordChangeRequestOperation : MPAsyncOperation
 {
     NSOperationQueue *_operationQueue;

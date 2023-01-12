@@ -14,6 +14,7 @@
 @interface TRIRunningXPCActivityDescriptor : NSObject <NSCopying>
 {
     NSObject<OS_os_transaction> *_txn;
+    unsigned int _generationCount;
     NSString *_name;
     CDUnknownBlockType _shouldDefer;
     CDUnknownBlockType _completion;
@@ -23,6 +24,7 @@
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long capabilities; // @synthesize capabilities=_capabilities;
+@property(readonly, nonatomic) unsigned int generationCount; // @synthesize generationCount=_generationCount;
 @property(readonly, nonatomic) NSObject<OS_xpc_object> *activity; // @synthesize activity=_activity;
 @property(copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
 @property(copy, nonatomic) CDUnknownBlockType shouldDefer; // @synthesize shouldDefer=_shouldDefer;

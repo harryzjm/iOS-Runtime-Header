@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class CNComposeHeaderLabelView, NSString;
+@class CNComposeHeaderLabelView, NSString, UILabel;
 @protocol CNComposeHeaderViewDelegate;
 
 @interface CNComposeHeaderView : UIView
@@ -15,6 +15,9 @@
     NSString *_navTitle;
     CNComposeHeaderLabelView *_labelView;
     id <CNComposeHeaderViewDelegate> _delegate;
+    NSString *_composeFieldInfoText;
+    id <CNComposeHeaderViewDelegate> _internalDelegate;
+    UILabel *_composeFieldInfoLabel;
     UIView *_separator;
     UIView *_highlightedBackgroundView;
     struct NSDirectionalEdgeInsets _separatorDirectionalEdgeInsets;
@@ -24,11 +27,15 @@
 + (double)_labelTopPaddingSpecification;
 + (double)separatorHeight;
 + (double)preferredHeight;
++ (id)supplimentalMessageFont;
 + (id)defaultFont;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIView *highlightedBackgroundView; // @synthesize highlightedBackgroundView=_highlightedBackgroundView;
 @property(retain, nonatomic) UIView *separator; // @synthesize separator=_separator;
+@property(retain, nonatomic) UILabel *composeFieldInfoLabel; // @synthesize composeFieldInfoLabel=_composeFieldInfoLabel;
+@property(nonatomic) __weak id <CNComposeHeaderViewDelegate> internalDelegate; // @synthesize internalDelegate=_internalDelegate;
 @property(nonatomic) struct NSDirectionalEdgeInsets separatorDirectionalEdgeInsets; // @synthesize separatorDirectionalEdgeInsets=_separatorDirectionalEdgeInsets;
+@property(copy, nonatomic) NSString *composeFieldInfoText; // @synthesize composeFieldInfoText=_composeFieldInfoText;
 @property(nonatomic) __weak id <CNComposeHeaderViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool showsHighlightWhenTouched; // @synthesize showsHighlightWhenTouched=_showsHighlightWhenTouched;
 @property(retain, nonatomic) CNComposeHeaderLabelView *labelView; // @synthesize labelView=_labelView;
@@ -45,10 +52,15 @@
 - (void)handleTouchesEnded;
 - (_Bool)_canBecomeFirstResponder;
 - (struct CGRect)titleLabelBaselineAlignmentRectForLabel:(id)arg1;
+- (void)_notifyDelegateOfSizeChange;
+- (double)_additionalContentHeight;
 - (struct CGRect)_contentRect;
 - (_Bool)_shouldEmbedLabelInTextView;
+- (id)headerViewDelegates;
 - (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
+- (void)layoutComposeFieldInfoLabelWithContentRect:(struct CGRect)arg1 labelRect:(struct CGRect)arg2;
+- (void)createComposeFieldInfoLabelIfNeeded;
 @property(copy, nonatomic) NSString *label; // @dynamic label;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;

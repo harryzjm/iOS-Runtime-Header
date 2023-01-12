@@ -6,16 +6,18 @@
 
 #import <Foundation/NSFormatter.h>
 
-@class HMHome;
+@class HFTriggerNaturalLanguageOptions, HMHome;
 
 @interface HFPresenceEventFormatter : NSFormatter
 {
     unsigned long long _nameType;
     unsigned long long _style;
     HMHome *_home;
+    HFTriggerNaturalLanguageOptions *_options;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) __weak HFTriggerNaturalLanguageOptions *options; // @synthesize options=_options;
 @property(retain, nonatomic) HMHome *home; // @synthesize home=_home;
 @property(nonatomic) unsigned long long style; // @synthesize style=_style;
 @property(nonatomic) unsigned long long nameType; // @synthesize nameType=_nameType;

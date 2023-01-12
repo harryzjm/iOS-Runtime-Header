@@ -4,28 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKRecordZone, NSArray, NSMutableDictionary;
+@class CKDPCSKeySyncCoreAnalytics, CKRecordZone, CKRecordZoneID, NSArray, NSError, NSMutableDictionary;
 
-__attribute__((visibility("hidden")))
 @interface CKDAggregateZonePCSOperation
 {
-    _Bool _isHandlingPCSOplockFailure;
+    _Bool _isHandlingRetryableError;
     NSArray *_sourceZoneIDs;
     CKRecordZone *_targetZone;
     NSMutableDictionary *_zonePCSDataByZoneID;
+    NSError *_currentError;
     long long _numZoneSaveAttempts;
     long long _maxZoneSaveAttempts;
+    CKRecordZoneID *_zoneWaitingOnKeyRegistrySync;
+    CKDPCSKeySyncCoreAnalytics *_keySyncAnalytics;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) CKDPCSKeySyncCoreAnalytics *keySyncAnalytics; // @synthesize keySyncAnalytics=_keySyncAnalytics;
+@property(retain, nonatomic) CKRecordZoneID *zoneWaitingOnKeyRegistrySync; // @synthesize zoneWaitingOnKeyRegistrySync=_zoneWaitingOnKeyRegistrySync;
 @property(nonatomic) long long maxZoneSaveAttempts; // @synthesize maxZoneSaveAttempts=_maxZoneSaveAttempts;
 @property(nonatomic) long long numZoneSaveAttempts; // @synthesize numZoneSaveAttempts=_numZoneSaveAttempts;
-@property _Bool isHandlingPCSOplockFailure; // @synthesize isHandlingPCSOplockFailure=_isHandlingPCSOplockFailure;
+@property(retain) NSError *currentError; // @synthesize currentError=_currentError;
+@property _Bool isHandlingRetryableError; // @synthesize isHandlingRetryableError=_isHandlingRetryableError;
 @property(retain, nonatomic) NSMutableDictionary *zonePCSDataByZoneID; // @synthesize zonePCSDataByZoneID=_zonePCSDataByZoneID;
 @property(retain, nonatomic) CKRecordZone *targetZone; // @synthesize targetZone=_targetZone;
 @property(retain, nonatomic) NSArray *sourceZoneIDs; // @synthesize sourceZoneIDs=_sourceZoneIDs;
-- (void)_setPermanentOplockFailure;
+- (void)_setPermanentFailure;
 - (void)_handleZoneSavedWithID:(id)arg1 responseCode:(id)arg2;
+- (void)_sendCoreAnalyticsEventForKeySync;
+- (void)_sychronizeUserKeyRegistryIfNeeded;
 - (int)operationType;
 - (_Bool)_saveTargetZone;
 - (void)_prepareTargetZonePCS;
@@ -36,7 +43,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)makeStateTransition;
 - (id)relevantZoneIDs;
 - (id)activityCreate;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 // Remaining properties
 @property(nonatomic) unsigned long long state; // @dynamic state;

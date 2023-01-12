@@ -14,7 +14,7 @@
     NSMutableArray *_currentSeries;
     _HKGraphViewSelectionContext *_selectionContext;
     _HKGraphViewAxisAnnotationHandler *_axisAnnotationHandler;
-    NSArray *_axesToShowSimultaneously;
+    NSArray *_independentAxes;
     HKLegendView *_legendView;
     struct CGSize _lastLegendSize;
 }
@@ -22,7 +22,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) struct CGSize lastLegendSize; // @synthesize lastLegendSize=_lastLegendSize;
 @property(retain, nonatomic) HKLegendView *legendView; // @synthesize legendView=_legendView;
-@property(retain, nonatomic) NSArray *axesToShowSimultaneously; // @synthesize axesToShowSimultaneously=_axesToShowSimultaneously;
+@property(retain, nonatomic) NSArray *independentAxes; // @synthesize independentAxes=_independentAxes;
 @property(retain, nonatomic) _HKGraphViewAxisAnnotationHandler *axisAnnotationHandler; // @synthesize axisAnnotationHandler=_axisAnnotationHandler;
 @property(retain, nonatomic) _HKGraphViewSelectionContext *selectionContext; // @synthesize selectionContext=_selectionContext;
 @property(retain, nonatomic) NSMutableArray *currentSeries; // @synthesize currentSeries=_currentSeries;

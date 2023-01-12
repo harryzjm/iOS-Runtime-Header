@@ -11,11 +11,9 @@
 }
 
 + (id)_exportableCameraName:(id)arg1;
-+ (double)durationOfRecordingAtURL:(id)arg1;
 + (double)durationOfCachedRecordingForCameraClip:(id)arg1;
 + (_Bool)hasCachedRecordingForCameraClip:(id)arg1;
 + (id)userFriendlyExportURLForCameraName:(id)arg1 withStartDate:(id)arg2;
-+ (id)destinationURLForUploadPayloadFromCameraClipUUIDString:(id)arg1;
 + (id)destinationURLForStrippedAudioFileFromCameraClipUUIDString:(id)arg1;
 + (id)destinationURLForMovieFileUsingKey:(id)arg1;
 

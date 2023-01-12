@@ -7,6 +7,7 @@
 #import <SleepDaemon/HKSPStateMachineEventHandler-Protocol.h>
 
 @protocol HDSPSleepLockScreenStateMachineEventHandler <HKSPStateMachineEventHandler>
+- (void)bedtimeExpiredEventDue;
 - (void)sleepModeDidChange:(long long)arg1 reason:(unsigned long long)arg2;
 - (void)dismissAlertForGoodMorning;
 - (void)presentAlertForGoodMorning;

@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-__attribute__((visibility("hidden")))
 @interface BRCSyncUpScheduler
 {
 }
 
 - (void)schedule;
 - (void)performFirstSchedulingAfterStartupInDB:(id)arg1;
+- (unsigned int)recoverAndReportMissingJobs;
 - (void)_scheduleSyncUpJob:(id)arg1;
 - (void)setState:(int)arg1 forItem:(id)arg2 zone:(id)arg3;
 - (unsigned long long)postponeSyncUpForItem:(id)arg1 inZone:(id)arg2;
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isItemInSyncUpAndInFlight:(id)arg1 inZone:(id)arg2;
 - (_Bool)isItemInSyncUpAndInFlight:(id)arg1;
 - (unsigned long long)finishSyncUpForItem:(id)arg1 inZone:(id)arg2 success:(_Bool)arg3;
+- (void)_clearSyncUpErrorForItem:(id)arg1;
 - (void)prepareItemForSyncUp:(id)arg1 inFlightDiffs:(unsigned long long)arg2 inZone:(id)arg3;
 - (void)deleteSyncUpJobsForItem:(id)arg1;
 - (void)createSyncUpJobForItem:(id)arg1 inZone:(id)arg2;

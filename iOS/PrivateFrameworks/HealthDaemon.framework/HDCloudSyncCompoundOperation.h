@@ -26,17 +26,10 @@
 @property(readonly) _Bool continueOnSubOperationError; // @synthesize continueOnSubOperationError=_continueOnSubOperationError;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 - (id)description;
-- (id)_compoundError;
-- (void)_recordError:(id)arg1;
 - (void)addOperation:(id)arg1 transitionHandler:(CDUnknownBlockType)arg2;
-- (void)_currentOperation:(id)arg1 didFailWithError:(id)arg2 nextOperation:(id)arg3 transitionHandler:(CDUnknownBlockType)arg4;
-- (void)_currentOperationDidFinish:(id)arg1 nextOperation:(id)arg2 transitionHandler:(CDUnknownBlockType)arg3;
-- (void)_clearOperationAndRunRemaining:(id)arg1;
-- (void)_runRemainingOperations;
-- (id)_popNextRunnableOperation;
 - (void)addOperationOfClass:(Class)arg1 transitionHandler:(CDUnknownBlockType)arg2;
 @property(readonly, copy) NSArray *operations;
-- (void)_invalidate;
+@property(readonly) _Bool hasEncounteredSubOperationError;
 - (void)skip;
 - (void)main;
 - (_Bool)finishWithSuccess:(_Bool)arg1 error:(id)arg2;

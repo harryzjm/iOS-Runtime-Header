@@ -8,21 +8,25 @@
 
 #import <PassKitUI/PKDashboardItemPresenter-Protocol.h>
 
-@class NSCache, NSString, PKMapsSnapshotManager, PKPaymentTransactionIconGenerator, PKPeerPaymentContactResolver, PKThumbnailCollectionViewCell, UIImage;
+@class NSCache, NSString, PKContactAvatarManager, PKContactResolver, PKMapsSnapshotManager, PKPaymentTransactionIconGenerator, PKThumbnailCollectionViewCell, UIImage;
+@protocol PKPaymentDataProvider;
 
 @interface PKTransactionGroupThumbnailPresenter : NSObject <PKDashboardItemPresenter>
 {
     PKPaymentTransactionIconGenerator *_iconGenerator;
-    PKPeerPaymentContactResolver *_contactResolver;
+    PKContactResolver *_contactResolver;
     NSCache *_iconsPerMerchantCategory;
     UIImage *_mapsPlaceholderImage;
     PKMapsSnapshotManager *_snapshotManager;
     PKThumbnailCollectionViewCell *_sampleCell;
+    id <PKPaymentDataProvider> _paymentDataProvider;
+    PKContactAvatarManager *_avatarManager;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) PKContactAvatarManager *avatarManager; // @synthesize avatarManager=_avatarManager;
+@property(retain, nonatomic) id <PKPaymentDataProvider> paymentDataProvider; // @synthesize paymentDataProvider=_paymentDataProvider;
 @property(retain, nonatomic) PKMapsSnapshotManager *snapshotManager; // @synthesize snapshotManager=_snapshotManager;
-- (id)mapsPlaceholderImage;
 - (void)_updateTitleOnThumbnailCell:(id)arg1 withPeerPaymentCounterpartHandle:(id)arg2 contact:(id)arg3;
 - (void)_updateAvatarOnThumbnailCell:(id)arg1 contact:(id)arg2;
 - (id)_contactKeysToFetch;

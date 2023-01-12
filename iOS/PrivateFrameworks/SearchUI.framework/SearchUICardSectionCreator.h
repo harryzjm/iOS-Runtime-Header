@@ -12,7 +12,7 @@
 
 + (id)cardSectionViewForModel:(id)arg1 feedbackDelegate:(id)arg2;
 + (id)viewsForCardSections:(id)arg1 isInline:(_Bool)arg2 feedbackDelegate:(id)arg3;
-+ (Class)viewClassForCardSection:(id)arg1;
++ (Class)viewClassForCardSection:(id)arg1 horizontal:(_Bool)arg2;
 
 @end
 

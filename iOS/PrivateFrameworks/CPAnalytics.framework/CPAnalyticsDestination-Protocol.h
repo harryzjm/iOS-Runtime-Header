@@ -9,11 +9,11 @@
 @class CPAnalytics, NSDictionary;
 
 @protocol CPAnalyticsDestination <CPAnalyticsDestinationProtocol>
+- (void)updateWithConfig:(NSDictionary *)arg1;
 - (id)initWithConfig:(NSDictionary *)arg1 cpAnalyticsInstance:(CPAnalytics *)arg2;
 - (id)init;
 
 @optional
-+ (_Bool)disabled;
-- (void)updateWithConfig:(NSDictionary *)arg1;
+@property(readonly, nonatomic) _Bool disabled;
 @end
 

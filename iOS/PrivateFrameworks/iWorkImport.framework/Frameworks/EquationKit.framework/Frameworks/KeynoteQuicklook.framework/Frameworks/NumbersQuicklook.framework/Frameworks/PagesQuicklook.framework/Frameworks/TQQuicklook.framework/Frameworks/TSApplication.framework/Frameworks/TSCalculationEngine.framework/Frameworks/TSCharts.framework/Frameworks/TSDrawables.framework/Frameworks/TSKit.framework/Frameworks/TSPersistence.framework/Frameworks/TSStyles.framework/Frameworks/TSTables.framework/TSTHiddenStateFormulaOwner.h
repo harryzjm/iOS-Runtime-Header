@@ -10,19 +10,18 @@
 
 @interface TSTHiddenStateFormulaOwner : TSPObject
 {
-    UUIDData_5fbc143e _ownerUID;
+    struct TSKUIDStruct _ownerUID;
     NSArray *_thresholdCellValues;
     _Bool _needsToUpdateFilterSetForImport;
 }
 
-- (id).cxx_construct;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *thresholdCellValues; // @synthesize thresholdCellValues=_thresholdCellValues;
 @property(nonatomic) _Bool needsToUpdateFilterSetForImport; // @synthesize needsToUpdateFilterSetForImport=_needsToUpdateFilterSetForImport;
-@property(nonatomic) UUIDData_5fbc143e ownerUID; // @synthesize ownerUID=_ownerUID;
+@property(nonatomic) struct TSKUIDStruct ownerUID; // @synthesize ownerUID=_ownerUID;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
-- (id)initWithContext:(id)arg1;
+- (id)initWithContext:(id)arg1 ownerUID:(const struct TSKUIDStruct *)arg2;
 
 @end
 

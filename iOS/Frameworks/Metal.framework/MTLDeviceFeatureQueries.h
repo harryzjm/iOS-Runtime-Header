@@ -13,6 +13,13 @@ __attribute__((visibility("hidden")))
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)alloc;
+@property(readonly, nonatomic) _Bool supportsStackOverflowErrorCode;
+@property(readonly, nonatomic) _Bool supportsCommandBufferJump;
+@property(readonly, nonatomic) _Bool supportsLossyCompression;
+@property(readonly, nonatomic) _Bool supportsAtomicUlongVoidMinMax;
+@property(readonly, nonatomic) _Bool supportsSparseDepthAttachments;
+@property(readonly, nonatomic) _Bool supportsBfloat16Format;
+@property(readonly, nonatomic) _Bool supportsSIMDShuffleAndFill;
 @property(readonly, nonatomic) _Bool supportsQuadReduction;
 @property(readonly, nonatomic) _Bool supportsInterchangeTiled;
 @property(readonly, nonatomic) _Bool supportsSIMDGroupMatrix;
@@ -34,9 +41,13 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportsMirrorClampToEdgeSamplerMode;
 @property(readonly, nonatomic) _Bool supportsBlackOrWhiteSamplerBorderColors;
 @property(readonly, nonatomic) _Bool supportsShaderBarycentricCoordinates;
+@property(readonly, nonatomic) _Bool supportsPrimitiveMotionBlur;
+@property(readonly, nonatomic) _Bool supportsRaytracingFromRender;
+@property(readonly, nonatomic) _Bool supportsSharedFunctionTables;
+@property(readonly, nonatomic) _Bool supportsFunctionPointersFromRender;
+@property(readonly, nonatomic) _Bool supportsRenderDynamicLibraries;
 @property(readonly, nonatomic) _Bool supportsStatefulDynamicLibraries;
 @property(readonly, nonatomic) _Bool supportsDynamicLibraries;
-@property(readonly, nonatomic) _Bool supportsBinaryFunctionPointers;
 @property(readonly, nonatomic) _Bool supportsFunctionPointers;
 @property(readonly, nonatomic) _Bool supportsIndirectWritableTextures;
 @property(readonly, nonatomic) _Bool supportsSparseHeaps;
@@ -137,15 +148,21 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportsBufferPrefetchStatistics;
 @property(readonly, nonatomic) _Bool supportsSharedTextureHandles;
 @property(readonly, nonatomic) _Bool supportsNonZeroTextureWriteLOD;
+@property(readonly, nonatomic) _Bool supportsLateEvalEvent;
 @property(readonly, nonatomic) _Bool supportsFixedLinePointFillDepthGradient;
 @property(readonly, nonatomic) _Bool supportsInt64;
 @property(readonly, nonatomic) _Bool supportsPullModelInterpolation;
 @property(readonly, nonatomic) _Bool supportsOpenCLTextureWriteSwizzles;
 @property(readonly, nonatomic) _Bool supportsPlacementHeaps;
 @property(readonly, nonatomic) _Bool supportsVertexAmplification;
+@property(readonly, nonatomic) _Bool supportsQueryTextureLOD;
 @property(readonly, nonatomic) _Bool supports32BitFloatFiltering;
 @property(readonly, nonatomic) _Bool supports32BitMSAA;
 @property(readonly, nonatomic) _Bool supports32bpcMSAATextures;
+@property(readonly, nonatomic) _Bool supportsTLS;
+@property(readonly, nonatomic) _Bool supportsGlobalVariableRelocationCompute;
+@property(readonly, nonatomic) _Bool supportsGlobalVariableRelocationRender;
+@property(readonly, nonatomic) _Bool supportsGlobalVariableRelocation;
 @property(readonly, nonatomic) _Bool supportsPrimitiveRestartOverride;
 @property(readonly, nonatomic) _Bool supportsRGBA10A2Gamma;
 @property(readonly, nonatomic) _Bool supports3DBCTextures;
@@ -154,6 +171,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportsCustomBorderColor;
 @property(readonly, nonatomic) _Bool supportsLargeFramebufferConfigs;
 @property(readonly, nonatomic) _Bool supportsProgrammableSamplePositions;
+@property(readonly, nonatomic) _Bool supportsStreamingCodecSignaling;
 @property(readonly, nonatomic) _Bool supportsReadWriteTextureArgumentsTier2;
 @property(readonly, nonatomic) _Bool supportsArgumentBuffersTier2;
 @property(readonly, nonatomic) _Bool supportsRenderMemoryBarrier;

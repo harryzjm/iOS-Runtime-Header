@@ -42,10 +42,10 @@
 - (id)initWithWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 pixelFormat:(unsigned int)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelBufferProvider:(CDUnknownBlockType)arg5;
 - (id)initWithPixelBuffer:(struct __CVBuffer *)arg1;
 - (void)_set_YCC_matrix:(int)arg1 fullRange:(_Bool)arg2 deep:(_Bool)arg3 isFloat:(float)arg4;
-- (struct RenderTask *)_render:(struct Image *)arg1 withContext:(struct Context *)arg2;
+- (void *)_render:(void *)arg1 withContext:(void *)arg2;
 - (void)dealloc;
-- (id)_initWithInternalRenderDestination:(struct RenderDestination *)arg1 width:(unsigned long long)arg2 height:(unsigned long long)arg3 format:(int)arg4 colorspace:(struct CGColorSpace *)arg5;
-- (struct RenderDestination *)_internalRenderDestination;
+- (id)_initWithInternalRenderDestination:(void *)arg1 width:(unsigned long long)arg2 height:(unsigned long long)arg3 format:(int)arg4 colorspace:(struct CGColorSpace *)arg5;
+- (void *)_internalRenderDestination;
 - (struct CIRenderDestinationInternal *)_internalRepresentation;
 - (id)init;
 

@@ -7,14 +7,19 @@
 @interface GKChallengeListViewController
 {
     _Bool _shouldShowPlayForChallenge;
+    double _startTime;
 }
 
+@property(nonatomic) double startTime; // @synthesize startTime=_startTime;
 @property(nonatomic) _Bool shouldShowPlayForChallenge; // @synthesize shouldShowPlayForChallenge=_shouldShowPlayForChallenge;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)donePressed:(id)arg1;
 - (void)configureCollectionView;
 - (void)viewWillLayoutSubviews;
 - (void)configureCloseButton;
+- (void)setupVisualEffect;
+- (void)viewWillDisappear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)setupNoContentView:(id)arg1 withError:(id)arg2;

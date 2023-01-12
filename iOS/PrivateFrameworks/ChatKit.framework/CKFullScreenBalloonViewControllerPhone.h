@@ -6,15 +6,17 @@
 
 #import <ChatKit/CKActionSheetMenuViewDelegate-Protocol.h>
 #import <ChatKit/CKBalloonViewDelegate-Protocol.h>
+#import <ChatKit/CKMessageHighlightButtonDelegate-Protocol.h>
 #import <ChatKit/CKStickerDetailViewControllerDelegate-Protocol.h>
 #import <ChatKit/PHLivePhotoViewDelegate-Protocol.h>
 
-@class CAShapeLayer, CKActionSheetMenuView, CKGroupAcknowledgmentVotingViewController, CKLivePhotoBalloonView, NSArray, NSString, UIView, UIVisualEffectView;
+@class CAShapeLayer, CKActionSheetMenuView, CKGroupAcknowledgmentVotingViewController, CKLivePhotoBalloonView, CKMessageHighlightButton, NSArray, NSString, UIView, UIVisualEffectView;
 
-@interface CKFullScreenBalloonViewControllerPhone <CKActionSheetMenuViewDelegate, CKBalloonViewDelegate, CKStickerDetailViewControllerDelegate, PHLivePhotoViewDelegate>
+@interface CKFullScreenBalloonViewControllerPhone <CKActionSheetMenuViewDelegate, CKBalloonViewDelegate, CKStickerDetailViewControllerDelegate, PHLivePhotoViewDelegate, CKMessageHighlightButtonDelegate>
 {
     _Bool _shouldLayoutViews;
     _Bool _animationsDisabledForTesting;
+    _Bool _hideBalloonView;
     CKActionSheetMenuView *_menuView;
     CKGroupAcknowledgmentVotingViewController *_votingViewController;
     UIView *_balloonView;
@@ -26,9 +28,12 @@
     CAShapeLayer *_tintViewMaskLayer;
     UIView *_replyButtonView;
     double _balloonYOffsetFromTranscript;
+    CKMessageHighlightButton *_highlightButton;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool hideBalloonView; // @synthesize hideBalloonView=_hideBalloonView;
+@property(retain, nonatomic) CKMessageHighlightButton *highlightButton; // @synthesize highlightButton=_highlightButton;
 @property(nonatomic) _Bool animationsDisabledForTesting; // @synthesize animationsDisabledForTesting=_animationsDisabledForTesting;
 @property(nonatomic) double balloonYOffsetFromTranscript; // @synthesize balloonYOffsetFromTranscript=_balloonYOffsetFromTranscript;
 @property(retain, nonatomic) UIView *replyButtonView; // @synthesize replyButtonView=_replyButtonView;
@@ -41,8 +46,16 @@
 @property(retain, nonatomic) UIView *balloonView; // @synthesize balloonView=_balloonView;
 @property(retain, nonatomic) CKGroupAcknowledgmentVotingViewController *votingViewController; // @synthesize votingViewController=_votingViewController;
 @property(retain, nonatomic) CKActionSheetMenuView *menuView; // @synthesize menuView=_menuView;
+- (void)addHighlightButtonIfNeeded;
+- (BOOL)messageHightlightButtonTranscriptOrientation:(id)arg1;
+- (struct CGRect)messageHightlightButtonReplyButtonFrame:(id)arg1;
+- (struct CGRect)messageHightlightButtonBalloonViewFrame:(id)arg1;
+- (void)messageHightlightButtonDidFinishAnimating:(id)arg1;
+- (void)messageHightlightButtonWasClicked:(id)arg1;
+- (double)replyButtonHeightFromBalloon;
+- (double)replyButtonVerticalOffset;
 - (void)updateReplyButtonColor;
-- (void)updateReplyButtonSize:(struct CGRect)arg1;
+- (void)updateReplyButtonSizeAndLocation:(struct CGRect)arg1 layoutRelativeToHighlightButton:(_Bool)arg2;
 - (void)setupReplyButton;
 - (void)disableAnimationsForTesting;
 - (_Bool)_shouldShowVotingView;
@@ -68,13 +81,13 @@
 - (void)balloonEditMenuViewWasDismissed:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
-- (void)viewDidDisappear:(_Bool)arg1;
-- (void)viewWillAppear:(_Bool)arg1;
+- (struct CGRect)balloonViewFrameWithoutTransform;
 - (void)presentStickerDetailControllerWithStickers:(id)arg1;
 - (void)performInitialAnimations;
 - (void)loadLivePhotoBalloonViewIfNeeded;
 - (id)initWithChatItem:(id)arg1 title:(id)arg2 interfaceActions:(id)arg3 gradientReferenceView:(id)arg4 isGroupConversation:(_Bool)arg5 showActionMenu:(_Bool)arg6 pluginBalloonSnapshot:(id)arg7 delegate:(id)arg8;
 - (void)dealloc;
+- (_Bool)__im_ff_isInterstellarEnabled;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

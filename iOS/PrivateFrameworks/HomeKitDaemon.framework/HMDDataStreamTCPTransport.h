@@ -16,6 +16,7 @@
 {
     _Bool _connected;
     long long _remotePort;
+    int _schedulingMode;
     id <HMDDataStreamTransportDelegate> delegate;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMFNetAddress *_remoteAddress;
@@ -32,6 +33,7 @@
 @property(readonly, nonatomic) HMFNetAddress *remoteAddress; // @synthesize remoteAddress=_remoteAddress;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(nonatomic) __weak id <HMDDataStreamTransportDelegate> delegate; // @synthesize delegate;
+- (void)setTrafficClass:(unsigned long long)arg1;
 - (void)sendRawFrame:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)close;
 - (void)_doReceive;
@@ -39,7 +41,9 @@
 - (void)_stop;
 - (void)_start;
 - (void)connect;
+- (id)_createTcpConnection;
 - (void)dealloc;
+- (id)initWithAddress:(id)arg1 port:(long long)arg2 targetQueue:(id)arg3 logIdentifier:(id)arg4;
 - (id)initWithAddress:(id)arg1 port:(long long)arg2 workQueue:(id)arg3 logIdentifier:(id)arg4;
 
 // Remaining properties

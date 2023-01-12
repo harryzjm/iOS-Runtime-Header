@@ -13,7 +13,7 @@
 
 + (_Bool)supportsSecureCoding;
 @property(nonatomic) long long index; // @synthesize index=_index;
-- (_Bool)_shouldEncodeData;
+- (_Bool)_isSubstitute;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithVideo:(id)arg1;

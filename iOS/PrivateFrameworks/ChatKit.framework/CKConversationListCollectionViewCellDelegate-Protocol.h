@@ -9,6 +9,7 @@
 @class CKConversation, UICollectionViewCell;
 
 @protocol CKConversationListCollectionViewCellDelegate <NSObject>
+- (double)widthForDeterminingAvatarVisibility;
 
 @optional
 - (void)selectedDeleteButtonForConversation:(CKConversation *)arg1 inCell:(UICollectionViewCell *)arg2;

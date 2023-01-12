@@ -7,12 +7,14 @@
 #import <SpringBoardUIServices/BKFaceDetectOperationDelegate-Protocol.h>
 #import <SpringBoardUIServices/BKMatchOperationDelegate-Protocol.h>
 
-@class BKMatchOperation, BKMatchPearlOperation, BKMatchPearlResultInfo;
+@class BKFaceOcclusionInfo, BKFaceWUPoseEligibilityInfo, BKMatchOperation, BKMatchPearlOperation, BKMatchPearlResultInfo;
 
 @protocol BKMatchPearlOperationDelegate <BKFaceDetectOperationDelegate, BKMatchOperationDelegate>
 
 @optional
 - (void)matchOperation:(BKMatchPearlOperation *)arg1 matchedWithResult:(BKMatchPearlResultInfo *)arg2;
+- (void)matchOperation:(BKMatchOperation *)arg1 providedFaceWUPoseEligibilityInfo:(BKFaceWUPoseEligibilityInfo *)arg2;
+- (void)matchOperation:(BKMatchOperation *)arg1 providedFaceOcclusionInfo:(BKFaceOcclusionInfo *)arg2;
 - (void)matchOperation:(BKMatchOperation *)arg1 providedFeedback:(long long)arg2;
 @end
 

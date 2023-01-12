@@ -6,17 +6,24 @@
 
 #import <PassKitCore/NSObject-Protocol.h>
 
-@class NSSet, NSString, PKAppletSubcredential, PKFelicaPassProperties, PKPaymentBalanceReminder, PKPaymentMessage, PKPaymentTransaction, PKTransactionReceipt, PKTransitPassProperties;
+@class NSArray, NSSet, NSString, PKAppletSubcredential, PKFeatureApplication, PKFelicaPassProperties, PKPaymentApplication, PKPaymentBalanceReminder, PKPaymentMessage, PKPaymentTransaction, PKTransactionReceipt, PKTransitPassProperties;
 
 @protocol PKPaymentDataProviderDelegate <NSObject>
 
 @optional
+- (void)didUpdateFamilyMembers:(NSArray *)arg1;
+- (void)featureApplicationChanged:(PKFeatureApplication *)arg1;
+- (void)featureApplicationRemoved:(PKFeatureApplication *)arg1;
+- (void)featureApplicationAdded:(PKFeatureApplication *)arg1;
 - (void)transactionWithIdentifier:(NSString *)arg1 didDownloadTransactionReceipt:(PKTransactionReceipt *)arg2;
+- (void)credential:(PKAppletSubcredential *)arg1 forPaymentApplication:(PKPaymentApplication *)arg2 didUpdateRangingSuspensionReasons:(unsigned long long)arg3;
 - (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didUpdateCredential:(PKAppletSubcredential *)arg2;
 - (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didUpdateWithFelicaPassProperties:(PKFelicaPassProperties *)arg2;
 - (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didUpdateWithTransitPassProperties:(PKTransitPassProperties *)arg2;
 - (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didUpdateBalanceReminder:(PKPaymentBalanceReminder *)arg2 forBalanceWithIdentifier:(NSString *)arg3;
+- (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didReceivePlanUpdate:(NSSet *)arg2;
 - (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didReceiveBalanceUpdate:(NSSet *)arg2;
+- (void)passWithUniqueIdentifier:(NSString *)arg1 didUpdateTiles:(NSArray *)arg2;
 - (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didReceiveMessage:(PKPaymentMessage *)arg2;
 - (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didEnableMessageService:(_Bool)arg2;
 - (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didEnableTransactionService:(_Bool)arg2;

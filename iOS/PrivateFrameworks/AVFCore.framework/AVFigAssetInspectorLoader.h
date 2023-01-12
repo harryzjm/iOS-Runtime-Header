@@ -37,6 +37,7 @@
 - (long long)firstFragmentSequenceNumber;
 - (_Bool)_isStreaming;
 - (_Bool)hasProtectedContent;
+- (id)contentKeySpecifiersEligibleForPreloading;
 - (unsigned long long)downloadToken;
 - (id)originalNetworkContentURL;
 - (id)resolvedURL;
@@ -49,6 +50,7 @@
 - (_Bool)isExportable;
 - (_Bool)isPlayable;
 - (id)lyrics;
+- (id)variants;
 - (CDStruct_1b6d18a9)duration;
 - (void)_ensureAllDependenciesOfKeyAreLoaded:(id)arg1;
 - (void)cancelLoading;

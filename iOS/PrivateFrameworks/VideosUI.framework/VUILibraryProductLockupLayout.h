@@ -20,10 +20,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) VUIMediaEntityType *entityType; // @synthesize entityType=_entityType;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
-- (id)contentDescriptionFont;
-- (int)contentDescriptionNumberOfLines;
+- (id)contentDescriptionFontForSizeClass:(long long)arg1;
+- (int)contentDescriptionNumberOfLinesForTraitCollection:(id)arg1;
 - (long long)downloadButtonPosition;
-- (_Bool)shouldShowTitleLabel;
 - (double)buttonModuleTopMarginForWindowWidth:(double)arg1;
 - (double)contentDescriptionBottomMarginForWindowWidth:(double)arg1;
 - (double)contentDescriptionTopMarginForWindowWidth:(double)arg1;
@@ -31,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (double)subtitleTopMarginForWindowWidth:(double)arg1;
 - (double)titleTopMargin;
 - (double)coverArtBottomPadding;
-- (double)coverArtImageRightMargin;
+- (double)coverArtImageRightMarginForWindowWidth:(double)arg1;
 - (struct CGSize)coverArtImageSize;
 - (long long)layoutTypeForWindowWidth:(double)arg1;
 - (id)initWithLayoutType:(long long)arg1 entityType:(id)arg2;

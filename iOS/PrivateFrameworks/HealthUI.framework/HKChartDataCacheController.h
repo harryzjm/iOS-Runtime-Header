@@ -42,7 +42,7 @@
 - (id)_chartCacheIdentifiersFromSamples:(id)arg1;
 - (void)updateController:(id)arg1 didReceiveHighFrequencyUpdateForType:(id)arg2;
 - (_Bool)_anySampleShouldInvalidateCache:(id)arg1;
-- (void)updateController:(id)arg1 didReceiveUpdateForType:(id)arg2 samplesAdded:(id)arg3 objectsRemoved:(id)arg4;
+- (void)updateController:(id)arg1 didReceiveUpdateForType:(id)arg2 samplesAdded:(id)arg3 objectsRemoved:(id)arg4 recoveringFromError:(_Bool)arg5;
 - (id)_generateChartCacheForDisplayType:(id)arg1 timeScope:(long long)arg2;
 - (id)_chartCacheForDisplayType:(id)arg1 timeScope:(long long)arg2 chartCachesByDisplayTypeIdentifier:(id)arg3;
 - (id)_timeScopeBasedChartCacheForDisplayType:(id)arg1 timeScope:(long long)arg2;

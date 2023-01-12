@@ -15,14 +15,17 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (_Bool)isSleepLockScreenDisabled;
-- (long long)sleepLockScreenState;
+- (void)bedtimeExpiredEventDue;
+- (_Bool)_isSleepLockScreenDisabled;
+@property(readonly, nonatomic) long long sleepLockScreenState;
 - (void)_updateStateForSleepMode:(long long)arg1 reason:(unsigned long long)arg2 context:(id)arg3;
 - (void)sleepModeDidChange:(long long)arg1 reason:(unsigned long long)arg2;
 - (void)environmentDidBecomeReady;
 - (void)updateState;
 - (void)dismissAlertForGoodMorning;
 - (void)presentAlertForGoodMorning;
+@property(readonly, nonatomic) _Bool schedulesLockScreenStateChange;
+- (void)didExitWithNextState:(id)arg1 context:(id)arg2;
 - (void)didEnterWithPreviousState:(id)arg1 context:(id)arg2;
 
 // Remaining properties

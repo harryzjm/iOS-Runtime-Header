@@ -15,6 +15,10 @@
 }
 
 + (id)styleProviderForStorage:(id)arg1;
+- (id)textPropertiesForEquation:(id)arg1 basedOnProperties:(id)arg2;
+- (id)dropCapStyleAtParIndex:(unsigned long long)arg1;
+- (id)listStyleAtParIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
+- (id)characterStyleAtCharIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
 - (id)paragraphStyleAtParIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
 
 // Remaining properties

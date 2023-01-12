@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *components;
     MISSING_TYPE *utterance;
+    MISSING_TYPE *directInvocation;
     MISSING_TYPE *allowLineWrapForDisplayText;
     MISSING_TYPE *displayImage;
     MISSING_TYPE *monogramLetters;

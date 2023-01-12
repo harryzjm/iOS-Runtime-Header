@@ -6,17 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class EDDifferentialPrivacyReporter, EDInteractionLogger, EDPETInteractionEventLog;
+@class EDBiomeInteractionEventLog, EDDifferentialPrivacyReporter, EDInteractionLogger, EDPETInteractionEventLog;
 
 @interface EDCategorySubsystem : NSObject
 {
     EDInteractionLogger *_interactionLogger;
     EDPETInteractionEventLog *_petLog;
+    EDBiomeInteractionEventLog *_biomeLog;
     EDDifferentialPrivacyReporter *_differentialPrivacyReporter;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) EDDifferentialPrivacyReporter *differentialPrivacyReporter; // @synthesize differentialPrivacyReporter=_differentialPrivacyReporter;
+@property(readonly, nonatomic) EDBiomeInteractionEventLog *biomeLog; // @synthesize biomeLog=_biomeLog;
 @property(readonly, nonatomic) EDPETInteractionEventLog *petLog; // @synthesize petLog=_petLog;
 @property(readonly, nonatomic) EDInteractionLogger *interactionLogger; // @synthesize interactionLogger=_interactionLogger;
 - (void)_schedulePETSubmissionActivityForLog:(id)arg1;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSData, NSDictionary, NSString;
 
 @interface CATResult : NSObject
 {
@@ -17,11 +17,19 @@
     NSArray *_dialogId;
     NSArray *_captionSpeak;
     NSArray *_captionPrint;
+    NSArray *_printOnly;
     NSArray *_spokenOnly;
+    NSString *_visualId;
+    NSDictionary *_visualParameters;
+    NSData *_visualResponse;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSData *visualResponse; // @synthesize visualResponse=_visualResponse;
+@property(retain, nonatomic) NSDictionary *visualParameters; // @synthesize visualParameters=_visualParameters;
+@property(retain, nonatomic) NSString *visualId; // @synthesize visualId=_visualId;
 @property(retain, nonatomic) NSArray *spokenOnly; // @synthesize spokenOnly=_spokenOnly;
+@property(retain, nonatomic) NSArray *printOnly; // @synthesize printOnly=_printOnly;
 @property(retain, nonatomic) NSArray *captionPrint; // @synthesize captionPrint=_captionPrint;
 @property(retain, nonatomic) NSArray *captionSpeak; // @synthesize captionSpeak=_captionSpeak;
 @property(retain, nonatomic) NSArray *dialogId; // @synthesize dialogId=_dialogId;

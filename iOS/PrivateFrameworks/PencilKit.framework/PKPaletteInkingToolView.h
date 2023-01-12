@@ -8,7 +8,7 @@
 #import <PencilKit/PKPaletteInkingTool-Protocol.h>
 
 @class NSLayoutConstraint, NSString, PKInk, PKPaletteAttributeViewController, UIImage, UIImageView, UILabel;
-@protocol PKPaletteErasingTool, PKPaletteInkingTool;
+@protocol PKPaletteErasingTool, PKPaletteHandwritingTool, PKPaletteInkingTool;
 
 @interface PKPaletteInkingToolView <PKPaletteInkingTool, PKInkAttributesPickerDelegate>
 {
@@ -94,6 +94,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) id <PKPaletteErasingTool> erasingTool;
+@property(readonly, nonatomic) id <PKPaletteHandwritingTool> handwritingTool;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) id <PKPaletteInkingTool> inkingTool;
 @property(readonly) Class superclass;

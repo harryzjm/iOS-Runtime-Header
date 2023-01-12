@@ -8,7 +8,7 @@
 
 @interface PXGMetalRenderTextureStore : NSObject
 {
-    CDStruct_dcc83465 *_textures;
+    CDStruct_6e34cc2d *_textures;
     long long _count;
     long long _capacity;
     _Bool _sorted;
@@ -17,7 +17,7 @@
 - (void)_sortIfNeeded;
 - (void)removeAllTextures;
 - (void)drawWithOrder:(unsigned long long)arg1 enumerationBlock:(CDUnknownBlockType)arg2;
-- (void)addTexture:(CDStruct_dcc83465)arg1;
+- (void)addTexture:(CDStruct_6e34cc2d)arg1;
 - (void)dealloc;
 - (id)init;
 

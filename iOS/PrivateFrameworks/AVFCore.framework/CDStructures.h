@@ -101,11 +101,38 @@ struct os_unfair_lock_s {
 #pragma mark Typedef'd Structures
 
 typedef struct {
+    _Bool _field1;
+    _Bool _field2;
+    _Bool _field3;
+    _Bool _field4;
+    _Bool _field5;
+    _Bool _field6;
+} CDStruct_157d85a6;
+
+typedef struct {
+    _Bool _field1;
+    _Bool _field2;
+    _Bool _field3;
+} CDStruct_2a4d9400;
+
+typedef struct {
+    _Bool _field1;
+    long long _field2;
+} CDStruct_8f3a66c8;
+
+typedef struct {
     double left;
     double top;
     double right;
     double bottom;
 } CDStruct_1edcc8d7;
+
+typedef struct {
+    long long _field1;
+    _Bool _field2;
+    _Bool _field3;
+    _Bool _field4;
+} CDStruct_20587683;
 
 typedef struct {
     long long value;
@@ -128,4 +155,9 @@ typedef struct {
     CDStruct_e83c9415 source;
     CDStruct_e83c9415 target;
 } CDStruct_82206317;
+
+typedef struct {
+    struct CGRect _field1;
+    struct CGRect _field2;
+} CDStruct_b7523c42;
 

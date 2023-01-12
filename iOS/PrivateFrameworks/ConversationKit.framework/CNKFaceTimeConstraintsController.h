@@ -10,24 +10,40 @@
 
 @interface CNKFaceTimeConstraintsController : NSObject
 {
+    MISSING_TYPE *shutterButtonState;
     MISSING_TYPE *participantListState;
+    MISSING_TYPE *shouldForceAllowNextLocalParticipantStateUpdate;
+    MISSING_TYPE *mostRecentLocalParticipantCorner;
     MISSING_TYPE *localParticipantState;
+    MISSING_TYPE *localParticipantAspectRatio;
     MISSING_TYPE *inCallControlsState;
+    MISSING_TYPE *inCallConversationBannerState;
+    MISSING_TYPE *participantGridState;
     MISSING_TYPE *floatingControlsState;
     MISSING_TYPE *viewStateEffects;
     MISSING_TYPE *viewControllerLayout;
+    MISSING_TYPE *bannerControlsWidthConstraint;
+    MISSING_TYPE *bannerControlsHeightConstraint;
+    MISSING_TYPE *configurableRosterCellWidthConstraint;
+    MISSING_TYPE *bannerDodgingLayoutGuide;
+    MISSING_TYPE *bannerControlsSize;
+    MISSING_TYPE *configurableRosterCellWidth;
     MISSING_TYPE *inCallControlsFramesCache;
 }
 
 - (void).cxx_destruct;
 - (id)init;
-- (void)updateConstraintsWith:(id)arg1 controlsViewController:(id)arg2 effectsView:(id)arg3 effectsBrowserViewController:(id)arg4;
+- (void)updateConstraintsWith:(id)arg1 controlsViewController:(id)arg2 localParticipantView:(id)arg3 effectsView:(id)arg4 effectsBrowserViewController:(id)arg5;
 - (void)removeEffectsConstraints;
 - (void)updateFor:(struct CGRect)arg1 deviceOrientation:(long long)arg2;
 - (struct CGRect)inCallControlsViewFrameFor:(id)arg1 state:(long long)arg2;
-- (id)initWithContainingView:(id)arg1 controlsViewController:(id)arg2 inCallControlsState:(long long)arg3 deviceOrientation:(long long)arg4;
+- (id)initWithContainingView:(id)arg1 controlsViewController:(id)arg2 inCallControlsState:(long long)arg3 localParticipantView:(id)arg4 deviceOrientation:(long long)arg5;
 @property(nonatomic) long long inCallControlsState; // @synthesize inCallControlsState;
-@property(nonatomic) long long localParticipantState; // @synthesize localParticipantState;
+- (void)setLocalParticipantState:(long long)arg1;
+- (long long)localParticipantState;
+
+// Remaining properties
+@property(nonatomic) long long accessibilityLocalParticipantState;
 
 @end
 

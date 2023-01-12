@@ -18,9 +18,9 @@ __attribute__((visibility("hidden")))
     _Bool _badge;
     _Bool _documentAllowOverride;
     NSString *_applicationIdentifier;
+    NSURL *_resourcesDirectoryURL;
     NSURL *_containerURL;
     NSURL *_dataContainerURL;
-    NSURL *_resourcesDirectoryURL;
     _LSLazyPropertyList *_iconsDictionary;
     NSString *_cacheKey;
     NSArray *_fileNames;
@@ -28,19 +28,9 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool documentAllowOverride; // @synthesize documentAllowOverride=_documentAllowOverride;
-@property(nonatomic, getter=isBadge) _Bool badge; // @synthesize badge=_badge;
-@property(nonatomic, getter=isPrerendered) _Bool prerendered; // @synthesize prerendered=_prerendered;
-@property(copy, nonatomic) NSArray *fileNames; // @synthesize fileNames=_fileNames;
-@property(copy, nonatomic) NSString *cacheKey; // @synthesize cacheKey=_cacheKey;
-@property(copy, nonatomic) _LSLazyPropertyList *iconsDictionary; // @synthesize iconsDictionary=_iconsDictionary;
 @property(retain, nonatomic) NSURL *resourcesDirectoryURL; // @synthesize resourcesDirectoryURL=_resourcesDirectoryURL;
-@property(retain, nonatomic) NSURL *dataContainerURL; // @synthesize dataContainerURL=_dataContainerURL;
-@property(retain, nonatomic) NSURL *containerURL; // @synthesize containerURL=_containerURL;
 @property(copy, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
 @property(readonly) NSDictionary *bundleIconsDictionary;
-- (_Bool)hasValidIconDictionary;
-- (_Bool)hasValidFileNames;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

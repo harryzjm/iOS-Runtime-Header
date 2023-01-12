@@ -6,7 +6,7 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class NSString, PKContinuousButton, PKPaymentTransaction, UIImageView, UILabel;
+@class CNContact, NSString, PKContinuousButton, PKPaymentTransaction, UIImageView, UILabel;
 @protocol PKTransactionDetailQuestionCellDelegate;
 
 @interface PKTransactionDetailQuestionCell : UITableViewCell
@@ -18,6 +18,7 @@
     UIImageView *_imageView;
     _Bool _isTemplateLayout;
     PKPaymentTransaction *_transaction;
+    CNContact *_accountUserContact;
     NSString *_submittingAnswer;
     _Bool _smallDevice;
     id <PKTransactionDetailQuestionCellDelegate> _questionDelegate;
@@ -28,7 +29,7 @@
 - (void)_enableButtons:(_Bool)arg1;
 - (void)_leadingButtonTapped:(id)arg1;
 - (void)_trailingButtonTapped:(id)arg1;
-- (void)setTransaction:(id)arg1 submittingAnswer:(id)arg2;
+- (void)setTransaction:(id)arg1 accountUserContact:(id)arg2 submittingAnswer:(id)arg3;
 - (struct CGSize)_layoutWithBounds:(struct CGRect)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;

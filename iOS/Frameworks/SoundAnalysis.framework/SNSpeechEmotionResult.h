@@ -13,10 +13,11 @@
 #import <SoundAnalysis/SNResult-Protocol.h>
 #import <SoundAnalysis/SNTimeRangeProviding-Protocol.h>
 #import <SoundAnalysis/SNTimeRangeProvidingWritable-Protocol.h>
+#import <SoundAnalysis/SRSampling-Protocol.h>
 
 @class NSString;
 
-@interface SNSpeechEmotionResult : NSObject <NSCopying, NSSecureCoding, SNTimeRangeProvidingWritable, SNConfidenceProvidingWritable, SNResult, SNTimeRangeProviding, SNConfidenceProviding>
+@interface SNSpeechEmotionResult : NSObject <NSCopying, NSSecureCoding, SRSampling, SNTimeRangeProvidingWritable, SNConfidenceProvidingWritable, SNResult, SNTimeRangeProviding, SNConfidenceProviding>
 {
     double _confidence;
     double _mood;
@@ -33,6 +34,9 @@
 @property double mood; // @synthesize mood=_mood;
 @property(nonatomic) double confidence; // @synthesize confidence=_confidence;
 @property(nonatomic) CDStruct_e83c9415 timeRange; // @synthesize timeRange=_timeRange;
+- (id)initWithBinarySampleRepresentation:(id)arg1 metadata:(id)arg2 timestamp:(double)arg3;
+- (id)binarySampleRepresentation;
+- (id)initWithBinarySampleRepresentation:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(readonly) unsigned long long hash;

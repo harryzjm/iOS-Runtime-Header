@@ -8,7 +8,6 @@
 
 @interface NSMutableString (TSCEAdditions)
 - (void)tsce_replaceCharactersInSet:(id)arg1 withString:(id)arg2;
-- (void)tsce_appendWhitespace:(char *)arg1 startingIndex:(int *)arg2;
 - (void)tsce_appendSpaces:(int)arg1;
 @end
 

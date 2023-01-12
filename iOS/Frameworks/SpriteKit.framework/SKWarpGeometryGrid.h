@@ -10,8 +10,8 @@
 
 @interface SKWarpGeometryGrid <NSSecureCoding>
 {
-    struct vector<float __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>> _sourcePositions;
-    struct vector<float __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>> _destPositions;
+    struct vector<float __attribute__((ext_vector_type(2))), std::allocator<float __attribute__((ext_vector_type(2)))>> _sourcePositions;
+    struct vector<float __attribute__((ext_vector_type(2))), std::allocator<float __attribute__((ext_vector_type(2)))>> _destPositions;
     MISSING_TYPE *_dimensions;
     int _vertexCount;
     _Bool _isIdentityWarp;

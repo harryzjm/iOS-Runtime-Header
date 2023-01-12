@@ -18,7 +18,9 @@
 - (void).cxx_destruct;
 @property _Bool isLargeDayView; // @synthesize isLargeDayView=_isLargeDayView;
 - (void)tapped:(id)arg1;
+- (void)updateActionText;
 - (void)viewDidMoveToSuperview;
+- (void)tintColorDidChange;
 - (id)initWithViewController:(id)arg1;
 
 @end

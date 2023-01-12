@@ -11,7 +11,7 @@
 #import <ContactsAutocompleteUI/NSItemProviderWriting-Protocol.h>
 #import <ContactsAutocompleteUI/NSSecureCoding-Protocol.h>
 
-@class CNAutocompleteResult, CNComposeRecipientOriginContext, CNContact, NSArray, NSPersonNameComponents, NSString;
+@class CNAutocompleteResult, CNComposeRecipientOriginContext, CNContact, NSArray, NSPersonNameComponents, NSSet, NSString;
 
 @interface CNComposeRecipient : NSObject <NSItemProviderReading, NSItemProviderWriting, NSCopying, NSSecureCoding>
 {
@@ -23,6 +23,7 @@
     NSArray *_cachedCompleteMatches;
     NSArray *_cachedMatchedStrings;
     NSArray *_cachedSortedMembers;
+    NSSet *_cachedHandles;
     NSString *_compositeName;
     NSString *_contactIdentifier;
     NSString *_valueIdentifier;
@@ -54,6 +55,7 @@
 @property(copy, nonatomic) NSString *valueIdentifier; // @synthesize valueIdentifier=_valueIdentifier;
 @property(copy, nonatomic) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
 @property(copy, nonatomic) NSString *compositeName; // @synthesize compositeName=_compositeName;
+@property(retain, nonatomic) NSSet *cachedHandles; // @synthesize cachedHandles=_cachedHandles;
 @property(retain, nonatomic) NSArray *cachedSortedMembers; // @synthesize cachedSortedMembers=_cachedSortedMembers;
 @property(retain, nonatomic) NSArray *cachedMatchedStrings; // @synthesize cachedMatchedStrings=_cachedMatchedStrings;
 @property(retain, nonatomic) NSArray *cachedCompleteMatches; // @synthesize cachedCompleteMatches=_cachedCompleteMatches;
@@ -64,14 +66,20 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
+- (_Bool)isEquivalentAddressToRecipient:(id)arg1;
 - (id)labeledValueIdentifier;
 - (id)_unformattedAddress;
 @property(readonly, nonatomic) _Bool supportsPasteboardUnarchiving;
 @property(readonly, copy, nonatomic) NSString *pasteboardString;
+@property(readonly, nonatomic) NSString *stringForEqualityTesting;
 @property(readonly, nonatomic) NSString *uncommentedAddress;
 @property(readonly, nonatomic) NSString *placeholderName;
+- (id)alternativeToDisplayString;
+- (id)displayStringPreferringNickname:(_Bool)arg1;
 @property(readonly, nonatomic) NSString *shortName;
 @property(readonly, nonatomic) NSString *commentedAddress;
+- (id)associatedHandles;
+- (id)unifiedHandles;
 @property(readonly, nonatomic) NSString *normalizedAddress;
 - (id)preferredSendingAddress;
 - (id)completelyMatchedAttributedStrings;
@@ -87,6 +95,7 @@
 - (id)children;
 - (id)rawDisplayString;
 @property(readonly, nonatomic) unsigned long long sourceType;
+- (void)addRecipientToPasteboard:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;

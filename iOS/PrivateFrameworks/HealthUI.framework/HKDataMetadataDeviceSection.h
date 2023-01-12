@@ -8,7 +8,8 @@
 {
 }
 
-- (void)_loadDetailsForSample:(id)arg1;
+- (void)_loadDetailsForSample:(id)arg1 regulatedFeatureInfoProvider:(id)arg2;
+- (id)initWithSample:(id)arg1 regulatedFeatureInfoProvider:(id)arg2;
 - (id)initWithSample:(id)arg1;
 
 @end

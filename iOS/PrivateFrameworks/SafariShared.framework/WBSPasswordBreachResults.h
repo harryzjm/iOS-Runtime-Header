@@ -22,6 +22,7 @@
 - (void)clearAllResultsSynchronously;
 - (void)clearRecentlyBreachedResultRecords;
 - (id)recentlyBreachedResultRecords;
+- (void)markAllCompromisedResultRecordsAsRecentlyBreached;
 - (void)addResultRecords:(id)arg1;
 - (id)resultRecordsForQueries:(id)arg1;
 - (id)initWithContext:(id)arg1;

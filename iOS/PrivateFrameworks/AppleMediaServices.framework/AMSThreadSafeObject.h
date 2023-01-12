@@ -10,14 +10,18 @@
 
 @interface AMSThreadSafeObject : NSObject
 {
-    id _object;
-    NSObject<OS_dispatch_queue> *_objectAccessQueue;
+    NSObject<OS_dispatch_queue> *_accessQueue;
+    id _underlyingObject;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *objectAccessQueue; // @synthesize objectAccessQueue=_objectAccessQueue;
+@property(retain, nonatomic) id underlyingObject; // @synthesize underlyingObject=_underlyingObject;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue=_accessQueue;
+- (void)setObject:(id)arg1;
+- (id)object;
 - (id)accessAndSetObjectWithBlock:(CDUnknownBlockType)arg1;
-@property(retain, nonatomic) id object; // @synthesize object=_object;
+- (void)readWrite:(CDUnknownBlockType)arg1;
+- (void)read:(CDUnknownBlockType)arg1;
 - (id)initWithObject:(id)arg1;
 - (id)init;
 

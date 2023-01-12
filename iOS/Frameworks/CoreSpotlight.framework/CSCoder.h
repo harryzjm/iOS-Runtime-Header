@@ -31,6 +31,7 @@
 - (void)encodeMDPlistObject:(CDStruct_b7fac349)arg1;
 - (void)encodeString:(const char *)arg1 stringLength:(long long)arg2 forKey:(const char *)arg3 keyLength:(long long)arg4;
 - (void)encodeObject:(id)arg1 forKey:(const char *)arg2 keyLength:(long long)arg3;
+- (void)encodeObject:(id)arg1 withKey:(id)arg2;
 - (void)encodeData:(const void *)arg1 length:(long long)arg2;
 - (void)encodeString:(const char *)arg1 length:(long long)arg2;
 - (void)encodeString:(const char *)arg1;
@@ -40,6 +41,7 @@
 - (void)encodeBool:(_Bool)arg1;
 - (void)dealloc;
 @property(readonly, nonatomic) NSData *data; // @synthesize data=_data;
+- (const struct _MDPlistContainer *)plistContainer;
 - (id)init;
 
 @end

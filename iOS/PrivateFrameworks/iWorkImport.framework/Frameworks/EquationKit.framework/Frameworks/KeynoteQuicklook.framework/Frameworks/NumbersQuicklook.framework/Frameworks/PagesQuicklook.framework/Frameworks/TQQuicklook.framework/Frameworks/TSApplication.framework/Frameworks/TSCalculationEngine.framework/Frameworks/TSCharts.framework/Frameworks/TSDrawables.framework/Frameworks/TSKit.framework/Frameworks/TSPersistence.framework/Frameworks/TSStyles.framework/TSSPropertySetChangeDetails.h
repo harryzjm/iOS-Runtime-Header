@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class TSSMutablePropertySet;
+@class TSSMutablePropertySet, TSSPropertySet;
 
 @interface TSSPropertySetChangeDetails : NSObject
 {
@@ -14,7 +14,7 @@
 }
 
 - (void).cxx_destruct;
-- (id)changedProperties;
+@property(readonly, nonatomic) TSSPropertySet *changedProperties;
 - (void)addChangedProperties:(id)arg1;
 - (void)addChangedProperty:(int)arg1;
 - (id)init;

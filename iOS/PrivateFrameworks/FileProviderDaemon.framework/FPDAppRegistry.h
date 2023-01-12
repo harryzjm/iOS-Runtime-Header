@@ -11,8 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)_postNotificationName:(id)arg1 userInfo:(id)arg2;
-- (id)removeAppsWithBundleIDs:(id)arg1;
++ (_Bool)keepInSync;
+- (void)removeAppsWithBundleIDs:(id)arg1;
 - (void)addApps:(id)arg1;
 
 @end

@@ -6,7 +6,7 @@
 
 #import <NetworkExtension/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSObject, NSString, NSUUID, NSXPCInterface, NSXPCListenerEndpoint;
+@class NEProcessIdentity, NSArray, NSDictionary, NSObject, NSString, NSXPCInterface, NSXPCListenerEndpoint;
 @protocol NEPluginManagerObjectFactory, OS_dispatch_queue;
 
 @protocol NEAgentSessionDelegate <NSObject>
@@ -23,6 +23,6 @@
 - (id)initWithPluginType:(NSString *)arg1 pluginClass:(long long)arg2 pluginInfo:(NSDictionary *)arg3 queue:(NSObject<OS_dispatch_queue> *)arg4 factory:(id <NEPluginManagerObjectFactory>)arg5;
 
 @optional
-- (id)initWithPluginType:(NSString *)arg1 pluginClass:(long long)arg2 pluginEndpoint:(NSXPCListenerEndpoint *)arg3 pluginUUID:(NSUUID *)arg4 queue:(NSObject<OS_dispatch_queue> *)arg5 factory:(id <NEPluginManagerObjectFactory>)arg6;
+- (id)initWithPluginType:(NSString *)arg1 pluginClass:(long long)arg2 pluginEndpoint:(NSXPCListenerEndpoint *)arg3 pluginProcessIdentity:(NEProcessIdentity *)arg4 queue:(NSObject<OS_dispatch_queue> *)arg5 factory:(id <NEPluginManagerObjectFactory>)arg6;
 @end
 

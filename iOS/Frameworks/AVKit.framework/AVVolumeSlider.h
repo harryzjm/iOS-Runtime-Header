@@ -9,7 +9,7 @@
 #import <AVKit/AVExternalGestureRecognizerPreventing-Protocol.h>
 #import <AVKit/AVPlaybackControlsViewItem-Protocol.h>
 
-@class AVLayoutItemAttributes, AVVolumeWarningView, NSNumber, NSString, UIImageView;
+@class AVLayoutItemAttributes, NSString, UIImageView;
 
 __attribute__((visibility("hidden")))
 @interface AVVolumeSlider : UISlider <AVExternalGestureRecognizerPreventing, AVPlaybackControlsViewItem>
@@ -22,23 +22,19 @@ __attribute__((visibility("hidden")))
     _Bool _animatingVolumeChange;
     _Bool _hasChangedLocationAtLeastOnce;
     _Bool _scrubsWhenTappedAnywhere;
-    float _effectiveVolumeLimit;
     UIImageView *_thumbView;
-    NSNumber *_unclampedValue;
     AVLayoutItemAttributes *_layoutAttributes;
-    AVVolumeWarningView *_volumeWarningView;
+    double _thumbSize;
     struct CGSize _extrinsicContentSize;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool scrubsWhenTappedAnywhere; // @synthesize scrubsWhenTappedAnywhere=_scrubsWhenTappedAnywhere;
 @property(nonatomic) _Bool hasChangedLocationAtLeastOnce; // @synthesize hasChangedLocationAtLeastOnce=_hasChangedLocationAtLeastOnce;
-@property(nonatomic) __weak AVVolumeWarningView *volumeWarningView; // @synthesize volumeWarningView=_volumeWarningView;
+@property(nonatomic, setter=setThumbSize:) double thumbSize; // @synthesize thumbSize=_thumbSize;
 @property(nonatomic, getter=isAnimatingVolumeChange) _Bool animatingVolumeChange; // @synthesize animatingVolumeChange=_animatingVolumeChange;
 @property(readonly, nonatomic) AVLayoutItemAttributes *layoutAttributes; // @synthesize layoutAttributes=_layoutAttributes;
 @property(nonatomic, getter=isRemoved) _Bool removed; // @synthesize removed=_removed;
-@property(retain, nonatomic) NSNumber *unclampedValue; // @synthesize unclampedValue=_unclampedValue;
-@property(nonatomic) float effectiveVolumeLimit; // @synthesize effectiveVolumeLimit=_effectiveVolumeLimit;
 @property(retain, nonatomic) UIImageView *thumbView; // @synthesize thumbView=_thumbView;
 @property(nonatomic) _Bool hasFullScreenAppearance; // @synthesize hasFullScreenAppearance=_hasFullScreenAppearance;
 @property(nonatomic) _Bool hasAlternateAppearance; // @synthesize hasAlternateAppearance=_hasAlternateAppearance;
@@ -64,9 +60,12 @@ __attribute__((visibility("hidden")))
 - (void)didMoveToWindow;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (struct CGSize)intrinsicContentSize;
+- (id)accessibilityLabel;
 - (_Bool)avkit_shouldPreventExternalGestureRecognizerAtPoint:(struct CGPoint)arg1;
 @property(readonly, nonatomic, getter=isCollapsedOrExcluded) _Bool collapsedOrExcluded;
 - (struct CGSize)minimumSize;
+- (void)_commonInit;
+- (id)initWithFrame:(struct CGRect)arg1 thumbSize:(double)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

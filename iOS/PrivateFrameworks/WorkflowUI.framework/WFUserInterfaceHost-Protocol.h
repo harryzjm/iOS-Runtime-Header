@@ -6,17 +6,21 @@
 
 #import <WorkflowUI/NSObject-Protocol.h>
 
-@class INInteraction, NSDictionary, NSString, NSURL, WFAlert, WFContentCollection, WFDialogTransformer;
+@class INAppDescriptor, INInteraction, NSDictionary, NSString, NSURL, UIWindow, WFAlert, WFContentCollection, WFDialogTransformer, WFWorkflowAuthorizationConfiguration;
 
 @protocol WFUserInterfaceHost <NSObject>
-@property(readonly, nonatomic) NSString *userInterfaceType;
 - (void)presentAlert:(WFAlert *)arg1;
+@property(nonatomic, readonly) NSString *userInterfaceType;
 
 @optional
+- (void)resolveDescriptor:(INAppDescriptor *)arg1 completionHandler:(void (^)(INAppDescriptor *))arg2;
+- (UIWindow *)presentationAnchor;
 - (_Bool)openURL:(NSURL *)arg1 withBundleIdentifier:(NSString *)arg2 completionHandler:(void (^)(_Bool))arg3;
 - (WFDialogTransformer *)dialogTransformer;
 - (_Bool)shouldNotHandoff;
-- (void)requestActionInterfacePresentationForActionClassName:(NSString *)arg1 classNamesByType:(NSDictionary *)arg2 completionHandler:(void (^)(id <WFRemoteUserInterface>, NSError *))arg3;
+- (void)requestFileAccessForLocation:(NSURL *)arg1 workflowName:(NSString *)arg2 workflowID:(NSString *)arg3 completionHandler:(void (^)(_Bool, NSError *))arg4;
+- (void)requestAuthorizationWithConfiguration:(WFWorkflowAuthorizationConfiguration *)arg1 completionHandler:(void (^)(unsigned long long))arg2;
+- (void)requestActionInterfacePresentationForActionClassName:(NSString *)arg1 classNamesByType:(NSDictionary *)arg2 completionHandler:(void (^)(id <WFActionRemoteUserInterface>, NSError *))arg3;
 - (void)dismissPresentedContentWithCompletionHandler:(void (^)(void))arg1;
 - (void)showPreviewForContentCollection:(WFContentCollection *)arg1 completionHandler:(void (^)(_Bool))arg2;
 - (void)showHandleInteraction:(INInteraction *)arg1 prompt:(NSString *)arg2 completionHandler:(void (^)(unsigned long long))arg3;

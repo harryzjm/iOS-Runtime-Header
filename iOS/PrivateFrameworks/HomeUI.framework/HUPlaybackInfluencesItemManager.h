@@ -6,16 +6,20 @@
 
 #import <Home/HFItemManager.h>
 
-@class HFAccessorySettingItem, HFStaticItem, NSArray;
+@class HFAccessorySettingItem, HFSiriLanguageOptionsManager, HFStaticItem, HUHomeKitAccessorySettingsItemModule, NSArray;
 
 @interface HUPlaybackInfluencesItemManager : HFItemManager
 {
     NSArray *_playbackInfluencesOptionItems;
     HFStaticItem *_selectedItem;
     HFStaticItem *_useListeningHistoryItem;
+    HUHomeKitAccessorySettingsItemModule *_accessorySettingsModule;
+    HFSiriLanguageOptionsManager *_siriLanguageOptionsManager;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) HFSiriLanguageOptionsManager *siriLanguageOptionsManager; // @synthesize siriLanguageOptionsManager=_siriLanguageOptionsManager;
+@property(retain, nonatomic) HUHomeKitAccessorySettingsItemModule *accessorySettingsModule; // @synthesize accessorySettingsModule=_accessorySettingsModule;
 @property(retain, nonatomic) HFStaticItem *useListeningHistoryItem; // @synthesize useListeningHistoryItem=_useListeningHistoryItem;
 @property(retain, nonatomic) HFStaticItem *selectedItem; // @synthesize selectedItem=_selectedItem;
 @property(readonly, nonatomic) NSArray *playbackInfluencesOptionItems; // @synthesize playbackInfluencesOptionItems=_playbackInfluencesOptionItems;
@@ -25,6 +29,7 @@
 - (_Bool)playbackInfluencesFollowUser;
 - (id)playbackInfluencesSetting;
 @property(readonly, nonatomic) HFAccessorySettingItem *settingItem;
+- (id)initWithDelegate:(id)arg1 module:(id)arg2 homeKitAccessorySettingItem:(id)arg3;
 - (id)initWithDelegate:(id)arg1 settingItem:(id)arg2;
 - (id)initWithDelegate:(id)arg1;
 - (id)initWithDelegate:(id)arg1 sourceItem:(id)arg2;

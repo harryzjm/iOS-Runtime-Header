@@ -7,26 +7,25 @@
 #import <SIMSetupSupport/TSEntitlementJSHandlerDelegate-Protocol.h>
 #import <SIMSetupSupport/TSSIMSetupFlowDelegate-Protocol.h>
 
-@class CTXPCServiceSubscriptionContext, NSString;
+@class CoreTelephonyClient, NSString, TSRemotePlanWebsheetContext;
 
 @interface TSRemotePlanSignUpFlow <TSSIMSetupFlowDelegate, TSEntitlementJSHandlerDelegate>
 {
-    NSString *_carrierName;
-    CTXPCServiceSubscriptionContext *_subscriptionContext;
+    CoreTelephonyClient *_client;
+    TSRemotePlanWebsheetContext *_remotePlanWebsheetContext;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) CTXPCServiceSubscriptionContext *subscriptionContext; // @synthesize subscriptionContext=_subscriptionContext;
-@property(retain, nonatomic) NSString *carrierName; // @synthesize carrierName=_carrierName;
+@property(retain) TSRemotePlanWebsheetContext *remotePlanWebsheetContext; // @synthesize remotePlanWebsheetContext=_remotePlanWebsheetContext;
 - (void)accountPendingRelease;
 - (void)accountCancelled;
 - (void)didTransferPlanSuccessfullyWithEid:(id)arg1 imei:(id)arg2 meid:(id)arg3 iccid:(id)arg4 srcIccid:(id)arg5 alternateSDMP:(id)arg6 state:(id)arg7;
-- (void)didPurchasePlanSuccessfullyWithEid:(id)arg1 imei:(id)arg2 meid:(id)arg3 iccid:(id)arg4 alternateSDMP:(id)arg5;
+- (void)didPurchasePlanSuccessfullyWithEid:(id)arg1 imei:(id)arg2 meid:(id)arg3 iccid:(id)arg4 alternateSDMP:(id)arg5 state:(id)arg6;
 - (void)viewControllerDidComplete:(id)arg1;
 - (id)nextViewControllerFrom:(id)arg1;
 - (void)firstViewController:(CDUnknownBlockType)arg1;
 - (id)firstViewController;
-- (id)initWithSubscriptionContext:(id)arg1 carrier:(id)arg2;
+- (id)initWithRemotePlanWebsheetContext:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

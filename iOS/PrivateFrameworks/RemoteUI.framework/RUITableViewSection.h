@@ -7,7 +7,7 @@
 #import <RemoteUI/RUIHeaderDelegate-Protocol.h>
 #import <RemoteUI/RUITableFooterDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSNumber, RUIDetailHeaderElement, RUIElement, RUISubHeaderElement, RUITableView, RUITableViewHeaderFooterView, RUITableViewRow, UIView;
+@class NSArray, NSMutableArray, NSNumber, RUIDetailHeaderElement, RUIElement, RUIMultiChoiceElement, RUISubHeaderElement, RUITableView, RUITableViewHeaderFooterView, RUITableViewRow, UIView;
 @protocol RUIHeader, RemoteUITableFooter;
 
 @interface RUITableViewSection <RUIHeaderDelegate, RUITableFooterDelegate>
@@ -27,12 +27,14 @@
     RUISubHeaderElement *_subHeader;
     RUIDetailHeaderElement *_detailHeader;
     RUIElement *_footer;
+    RUIMultiChoiceElement *_multiChoiceElement;
     RUITableView *_tableElement;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool configured; // @synthesize configured=_configured;
 @property(nonatomic) __weak RUITableView *tableElement; // @synthesize tableElement=_tableElement;
+@property(retain, nonatomic) RUIMultiChoiceElement *multiChoiceElement; // @synthesize multiChoiceElement=_multiChoiceElement;
 @property(retain, nonatomic) RUIElement *footer; // @synthesize footer=_footer;
 @property(retain, nonatomic) RUIDetailHeaderElement *detailHeader; // @synthesize detailHeader=_detailHeader;
 @property(retain, nonatomic) RUISubHeaderElement *subHeader; // @synthesize subHeader=_subHeader;

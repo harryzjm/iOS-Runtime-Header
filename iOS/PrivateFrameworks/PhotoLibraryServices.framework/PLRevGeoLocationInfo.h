@@ -46,7 +46,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)placeWithAnnotation:(id)arg1;
 - (_Bool)hasLocation;
-- (_Bool)_isCurrentLocaleLanguageNonReverseAddress;
+- (unsigned long long)_locationInfoOrderForCurrentLocale;
 - (id)placeNamesForLocalizedDetailedDescription;
 - (id)localizedDescription;
 - (_Bool)hasMapItem;

@@ -14,8 +14,8 @@
     NSArray *_dataDetectorMatches;
 }
 
-+ (id)stripRepeatedContent:(id)arg1;
-+ (id)cleanCandidates:(id)arg1;
++ (id)stripRepeatedContent:(id)arg1 repeatedLength:(unsigned long long)arg2;
++ (id)cleanCandidates:(id)arg1 outputName:(id)arg2 label:(id)arg3;
 + (_Bool)caseInsensitiveContainsString:(id)arg1 inCandidates:(id)arg2;
 + (id)simpleCandidateResolutionFromCandidates:(id)arg1;
 + (id)candidatesForLabelIndexSets:(id)arg1 inPlainText:(id)arg2 forTaggedCharacterRanges:(id)arg3;
@@ -24,6 +24,7 @@
 @property(readonly, nonatomic) NSArray *dataDetectorMatches; // @synthesize dataDetectorMatches=_dataDetectorMatches;
 @property(readonly, nonatomic) unsigned char category; // @synthesize category=_category;
 @property(readonly, nonatomic) NSString *plainText; // @synthesize plainText=_plainText;
+- (_Bool)detectedEventPolarity;
 - (id)labelTokenIndexesForOutputName:(id)arg1 label:(id)arg2;
 - (id)resolveCandidates:(id)arg1 forCategory:(unsigned char)arg2 label:(id)arg3 rawIndexSet:(id)arg4 taggedCharacterRanges:(id)arg5;
 - (id)predictedStringsFromModelOutput;

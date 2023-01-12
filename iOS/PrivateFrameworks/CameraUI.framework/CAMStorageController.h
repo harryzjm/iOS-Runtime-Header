@@ -6,42 +6,57 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate;
+@class CAMCaptureGraphConfiguration, NSByteCountFormatter, NSDate;
 @protocol CAMStorageControllerDelegate, OS_dispatch_queue;
 
 @interface CAMStorageController : NSObject
 {
+    _Bool __purging;
+    _Bool __shouldCancelNextPurge;
     id <CAMStorageControllerDelegate> _delegate;
+    CAMCaptureGraphConfiguration *_graphConfiguration;
     long long __cachedVeryLowDiskThreshold;
     long long __cachedLowDiskThreshold;
     long long __cachedLegacyMGDiskThreshold;
     NSDate *__lastPurgeRequestUpdateTime;
     NSObject<OS_dispatch_queue> *__cacheDeleteQueryQueue;
     struct CacheDeleteToken *__queryQueue_currentToken;
+    NSByteCountFormatter *__byteFormatter;
+    CDStruct_91dcaeda __cachedEstimatedSpace;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSByteCountFormatter *_byteFormatter; // @synthesize _byteFormatter=__byteFormatter;
+@property(nonatomic, setter=_setCachedEstimatedSpace:) CDStruct_91dcaeda _cachedEstimatedSpace; // @synthesize _cachedEstimatedSpace=__cachedEstimatedSpace;
+@property(nonatomic) _Bool _shouldCancelNextPurge; // @synthesize _shouldCancelNextPurge=__shouldCancelNextPurge;
+@property(nonatomic, setter=_setPurging:) _Bool _purging; // @synthesize _purging=__purging;
 @property(nonatomic) struct CacheDeleteToken *_queryQueue_currentToken; // @synthesize _queryQueue_currentToken=__queryQueue_currentToken;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *_cacheDeleteQueryQueue; // @synthesize _cacheDeleteQueryQueue=__cacheDeleteQueryQueue;
 @property(retain, nonatomic) NSDate *_lastPurgeRequestUpdateTime; // @synthesize _lastPurgeRequestUpdateTime=__lastPurgeRequestUpdateTime;
 @property(nonatomic) long long _cachedLegacyMGDiskThreshold; // @synthesize _cachedLegacyMGDiskThreshold=__cachedLegacyMGDiskThreshold;
 @property(nonatomic) long long _cachedLowDiskThreshold; // @synthesize _cachedLowDiskThreshold=__cachedLowDiskThreshold;
 @property(nonatomic) long long _cachedVeryLowDiskThreshold; // @synthesize _cachedVeryLowDiskThreshold=__cachedVeryLowDiskThreshold;
+@property(retain, nonatomic) CAMCaptureGraphConfiguration *graphConfiguration; // @synthesize graphConfiguration=_graphConfiguration;
 @property(nonatomic) __weak id <CAMStorageControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_legacyDiskSpaceDidBecomeLowNotification;
 - (void)_queryQueue_updatePurgeRequestStateForTotalFreeBytes:(long long)arg1 preferredFreeBytes:(long long)arg2;
 - (void)_queryQueue_aggregateLowDiskEventWithIdentifier:(id)arg1;
 - (void)_updatePurgeRequestStateForConfiguration:(id)arg1 totalFreeBytes:(long long)arg2;
 - (long long)_preferredMinimumBytesForConfiguration:(id)arg1;
-- (long long)_preferredMinimumBytesForVideoConfiguration:(long long)arg1 encodingBehavior:(long long)arg2;
-- (void)_notifyDelegate;
+- (long long)bytesPerMinuteForGraphConfiguration:(id)arg1;
+- (void)_notifyDelegateAndUpdateContinuousPurgeStatus:(_Bool)arg1 forceStop:(_Bool)arg2;
 - (void)_loadFreeDiskThresholds;
 - (long long)_absoluteMinimumBytesForMode:(long long)arg1;
+- (long long)_totalBytesInSystem;
 - (long long)_totalFreeBytes;
 - (void)_statMountPoint:(struct statfs *)arg1;
+- (id)_cacheDeleteVolume;
 - (id)_pathForStorageMountPoint;
+- (long long)minimumDiskUsageThresholdInBytesForGraphConfiguration:(id)arg1;
+- (double)availableRecordingTimeInSecondsForGraphConfiguration:(id)arg1;
 - (void)reportLowDiskEventWithIdentifier:(id)arg1;
 - (_Bool)hasDiskSpaceToAllowCaptureWithConfiguration:(id)arg1 allowPurging:(_Bool)arg2;
+@property(readonly, nonatomic, getter=isPurging) _Bool purging;
 - (id)init;
 
 @end

@@ -11,7 +11,7 @@
 
 @interface CKComponentScopeRoot : NSObject
 {
-    struct unordered_multimap<CKComponentAnnouncedEvent, CKComponentController *, std::__1::hash<unsigned long>, std::__1::equal_to<unsigned long>, std::__1::allocator<std::__1::pair<const CKComponentAnnouncedEvent, CKComponentController *>>> _eventRegistration;
+    struct unordered_multimap<CKComponentAnnouncedEvent, CKComponentController *, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<const CKComponentAnnouncedEvent, CKComponentController *>>> _eventRegistration;
     NSHashTable *_boundsAnimationComponents;
     int _globalIdentifier;
     id <CKComponentStateListener> _listener;

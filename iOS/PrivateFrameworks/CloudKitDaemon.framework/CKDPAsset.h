@@ -8,9 +8,8 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-@class CKDPProtectionInfo, CKDPRecordIdentifier, NSData, NSString;
+@class CKDPProtectionInfo, CKDPRecordIdentifier, CKDPReservedVoucher, NSData, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDPAsset : PBCodable <NSCopying>
 {
     long long _constructedAssetDownloadEstimatedSize;
@@ -31,6 +30,7 @@ __attribute__((visibility("hidden")))
     CKDPRecordIdentifier *_recordId;
     NSData *_referenceSignature;
     NSString *_requestor;
+    CKDPReservedVoucher *_reservedVoucher;
     NSData *_signature;
     NSString *_uploadReceipt;
     struct {
@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) CKDPReservedVoucher *reservedVoucher; // @synthesize reservedVoucher=_reservedVoucher;
 @property(retain, nonatomic) NSData *constructedAssetDownloadParameters; // @synthesize constructedAssetDownloadParameters=_constructedAssetDownloadParameters;
 @property(nonatomic) long long constructedAssetDownloadEstimatedSize; // @synthesize constructedAssetDownloadEstimatedSize=_constructedAssetDownloadEstimatedSize;
 @property(nonatomic) long long constructedAssetDownloadURLExpiration; // @synthesize constructedAssetDownloadURLExpiration=_constructedAssetDownloadURLExpiration;
@@ -72,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasReservedVoucher;
 @property(readonly, nonatomic) _Bool hasConstructedAssetDownloadParameters;
 @property(nonatomic) _Bool hasConstructedAssetDownloadEstimatedSize;
 @property(nonatomic) _Bool hasConstructedAssetDownloadURLExpiration;

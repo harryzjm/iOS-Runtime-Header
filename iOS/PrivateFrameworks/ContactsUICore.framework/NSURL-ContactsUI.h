@@ -7,6 +7,7 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (ContactsUI)
++ (id)_cnui_expanseURLWithHandle:(id)arg1;
 + (id)_cnui_walletPayURLWithHandle:(id)arg1;
 + (id)_cnui_mailURLWithHandle:(id)arg1 contact:(id)arg2;
 + (id)_cnui_messagesURLWithHandle:(id)arg1 contact:(id)arg2;
@@ -22,6 +23,7 @@
 + (id)_cnui_faceTimeVideoURLWithHandle:(id)arg1 contact:(id)arg2;
 + (id)_cnui_faceTimeAudioURLWithHandle:(id)arg1 contact:(id)arg2;
 + (id)_cnui_telephonyURLWithHandle:(id)arg1 contact:(id)arg2;
++ (id)_cnui_expanseURLFutureWithHandle:(id)arg1;
 + (id)_cnui_walletPayURLFutureWithHandle:(id)arg1;
 + (id)_cnui_mailURLFutureWithHandle:(id)arg1 contact:(id)arg2;
 + (id)_cnui_messagesURLFutureWithHandle:(id)arg1 contact:(id)arg2;

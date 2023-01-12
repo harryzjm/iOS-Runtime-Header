@@ -9,18 +9,18 @@
 #import <ClassroomKit/CRKIDSMessageBroadcasting-Protocol.h>
 
 @class NSHashTable;
-@protocol CRKIDSListener, CRKIDSPrimitives;
+@protocol CRKCancelable, CRKIDSPrimitives;
 
 @interface CRKPrimitiveBackedIDSMessageBroadcaster : NSObject <CRKIDSMessageBroadcasting>
 {
     id <CRKIDSPrimitives> _IDSPrimitives;
     NSHashTable *_broadcastHandlers;
-    id <CRKIDSListener> _messageListener;
+    id <CRKCancelable> _messageSubscription;
 }
 
 + (id)broadcasterWithIDSPrimitives:(id)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) id <CRKIDSListener> messageListener; // @synthesize messageListener=_messageListener;
+@property(retain, nonatomic) id <CRKCancelable> messageSubscription; // @synthesize messageSubscription=_messageSubscription;
 @property(readonly, nonatomic) NSHashTable *broadcastHandlers; // @synthesize broadcastHandlers=_broadcastHandlers;
 @property(readonly, nonatomic) id <CRKIDSPrimitives> IDSPrimitives; // @synthesize IDSPrimitives=_IDSPrimitives;
 - (void)broadcastMessage:(id)arg1 senderAppleID:(id)arg2 senderAddress:(id)arg3;

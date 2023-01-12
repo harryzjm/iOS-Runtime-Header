@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_a1e3ccf4)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_a1e3ccf4)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSArray *user_interacted_senses;
 @property(readonly, nonatomic) NSString *user_selected_sense;
 @property(readonly, nonatomic) NSArray *senses;

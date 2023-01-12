@@ -16,27 +16,25 @@
 {
     unsigned long long _controlType;
     CCUIContentModuleDetailTransitioningDelegate *_detailTransitioningDelegate;
+    double preferredExpandedContentHeight;
+    UIView<HACCContentModule> *_contentView;
     UIViewController<CCUIContentModuleContentViewController> *_expandedViewController;
     UITapGestureRecognizer *_tapRecognizer;
-    UIView<HACCContentModule> *_contentView;
     struct CGRect _collapsedFrame;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) UIView<HACCContentModule> *contentView; // @synthesize contentView=_contentView;
 @property(retain, nonatomic) UITapGestureRecognizer *tapRecognizer; // @synthesize tapRecognizer=_tapRecognizer;
 @property(retain, nonatomic) UIViewController<CCUIContentModuleContentViewController> *expandedViewController; // @synthesize expandedViewController=_expandedViewController;
+@property(retain, nonatomic) UIView<HACCContentModule> *contentView; // @synthesize contentView=_contentView;
 @property(nonatomic) struct CGRect collapsedFrame; // @synthesize collapsedFrame=_collapsedFrame;
+@property(readonly, nonatomic) double preferredExpandedContentHeight; // @synthesize preferredExpandedContentHeight;
 - (_Bool)supportsExpanding;
 - (void)_handleTapGestureRecognizer:(id)arg1;
 - (id)viewControllerForExpandedView;
 - (void)_updateMenuItemsForViewController:(id)arg1;
 - (void)_updatePresentedMenuViewControllerIfNecessary;
 - (id)menuModuleViewControllerForProgramModule:(unsigned long long)arg1;
-- (long long)layoutRequirement;
-@property(readonly, nonatomic) double preferredExpandedContentHeight;
-- (struct CGSize)collapsedContentSize;
-- (struct CGSize)collapsedContentUnitSize;
 - (unsigned long long)controlTypeForModule:(unsigned long long)arg1;
 - (void)updateViewConstraints;
 - (id)value;

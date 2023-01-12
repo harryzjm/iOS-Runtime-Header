@@ -11,7 +11,7 @@
 
 @protocol VLLocalizationDataProvider <NSObject>
 @property(nonatomic) __weak id <VLLocalizationDataProviderDelegate> delegate;
-- (void)determineAvailabilityForCoordinate:(const CDStruct_160d0e14 *)arg1 callbackQueue:(NSObject<OS_dispatch_queue> *)arg2 callback:(void (^)(_Bool, NSError *))arg3;
+- (void)determineAvailabilityForCoordinate:(const CDStruct_160d0e14 *)arg1 purpose:(long long)arg2 callbackQueue:(NSObject<OS_dispatch_queue> *)arg3 callback:(void (^)(_Bool, NSError *))arg4;
 - (NSURL *)fileURLForKey:(const CDStruct_4c217994 *)arg1 error:(id *)arg2;
 @end
 

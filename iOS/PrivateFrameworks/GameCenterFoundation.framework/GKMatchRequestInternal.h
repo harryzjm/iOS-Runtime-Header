@@ -27,6 +27,7 @@
 }
 
 + (id)secureCodedPropertyKeys;
+- (void).cxx_destruct;
 @property(retain, nonatomic) GKTournamentInternal *tournamentForInvitePool; // @synthesize tournamentForInvitePool=_tournamentForInvitePool;
 @property(nonatomic) _Bool restrictToAutomatch; // @synthesize restrictToAutomatch=_restrictToAutomatch;
 @property(nonatomic) unsigned char defaultNumberOfPlayers; // @synthesize defaultNumberOfPlayers=_defaultNumberOfPlayers;
@@ -46,7 +47,6 @@
 - (_Bool)hasGuestPlayers;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (void)dealloc;
 - (id)init;
 
 @end

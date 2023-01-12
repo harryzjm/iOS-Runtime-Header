@@ -18,6 +18,7 @@
     WBSAppLink *_appLink;
 }
 
++ (void)determineResultOfLoadingRequest:(id)arg1 isMainFrame:(_Bool)arg2 disallowRedirectToExternalApps:(_Bool)arg3 preferredApplicationBundleIdentifier:(id)arg4 redirectDecisionHandler:(CDUnknownBlockType)arg5 completionHandler:(CDUnknownBlockType)arg6;
 + (id)resultOfLoadingRequest:(id)arg1 isMainFrame:(_Bool)arg2 disallowRedirectToExternalApps:(_Bool)arg3 preferredApplicationBundleIdentifier:(id)arg4 redirectDecisionHandler:(CDUnknownBlockType)arg5;
 + (id)resultWithAppLink:(id)arg1;
 + (id)resultWithRedirectToExternalURL:(id)arg1 preferredApplicationBundleIdentifier:(id)arg2;

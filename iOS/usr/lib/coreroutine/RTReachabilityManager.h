@@ -24,7 +24,7 @@
 - (void)fetchCurrentReachability:(CDUnknownBlockType)arg1;
 - (id)currentReachabilityString;
 - (void)_processReachabilityChange:(id)arg1;
-- (void)_shutdown;
+- (void)_shutdownWithHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)internalRemoveObserver:(id)arg1 name:(id)arg2;
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;

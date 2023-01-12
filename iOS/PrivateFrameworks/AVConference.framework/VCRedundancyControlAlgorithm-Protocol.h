@@ -9,9 +9,9 @@
 @protocol VCRedundancyControlAlgorithm <NSObject>
 @property(readonly, nonatomic) double redundancyInterval;
 @property(readonly, nonatomic) unsigned int redundancyPercentage;
-- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_56e8fa21)arg1;
+- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_c0785916)arg1;
 
 @optional
-- (CDStruct_cd7ddd1c)getFecLevelPerFrameSizeVector;
+- (CDStruct_d7e2e0ee)getFecLevelPerFrameSizeVector;
 @end
 

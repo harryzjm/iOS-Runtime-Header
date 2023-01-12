@@ -40,12 +40,24 @@
     _Bool _nonDestructiveCropEnabled;
     _Bool _geometricDistortionCorrectionEnabled;
     _Bool _variableFrameRateVideoCaptureEnabled;
+    _Bool _cinematicFramingEnabled;
+    _Bool _cinematicFramingSupported;
+    int _cinematicFramingControlMode;
+    _Bool _backgroundBlurSupported;
+    _Bool _backgroundBlurEnabled;
+    _Bool _clientOSVersionSupportsDecoupledIO;
 }
 
 + (id)stringForSourceDeviceType:(int)arg1;
 + (id)stringForSourcePosition:(int)arg1;
 + (int)sourceTypeForString:(id)arg1;
 + (id)stringForSourceType:(int)arg1;
+@property(nonatomic) _Bool clientOSVersionSupportsDecoupledIO; // @synthesize clientOSVersionSupportsDecoupledIO=_clientOSVersionSupportsDecoupledIO;
+@property(nonatomic) _Bool backgroundBlurEnabled; // @synthesize backgroundBlurEnabled=_backgroundBlurEnabled;
+@property(nonatomic, getter=isBackgroundBlurSupported) _Bool backgroundBlurSupported; // @synthesize backgroundBlurSupported=_backgroundBlurSupported;
+@property(nonatomic) int cinematicFramingControlMode; // @synthesize cinematicFramingControlMode=_cinematicFramingControlMode;
+@property(nonatomic, getter=isCinematicFramingSupported) _Bool cinematicFramingSupported; // @synthesize cinematicFramingSupported=_cinematicFramingSupported;
+@property(nonatomic) _Bool cinematicFramingEnabled; // @synthesize cinematicFramingEnabled=_cinematicFramingEnabled;
 @property(nonatomic) _Bool variableFrameRateVideoCaptureEnabled; // @synthesize variableFrameRateVideoCaptureEnabled=_variableFrameRateVideoCaptureEnabled;
 @property(nonatomic) _Bool geometricDistortionCorrectionEnabled; // @synthesize geometricDistortionCorrectionEnabled=_geometricDistortionCorrectionEnabled;
 @property(nonatomic) _Bool nonDestructiveCropEnabled; // @synthesize nonDestructiveCropEnabled=_nonDestructiveCropEnabled;
@@ -70,11 +82,6 @@
 @property(nonatomic) float requiredMaxFrameRate; // @synthesize requiredMaxFrameRate=_requiredMaxFrameRate;
 @property(retain, nonatomic) FigCaptureSourceVideoFormat *requiredFormat; // @synthesize requiredFormat=_requiredFormat;
 @property(copy, nonatomic) NSString *sourceID; // @synthesize sourceID=_sourceID;
-- (id)_sourceUID;
-- (int)_sourceToken;
-- (_Bool)_isMicSource;
-- (_Bool)_isCameraSource;
-- (id)_sourceAttributes;
 @property(readonly, nonatomic) struct OpaqueFigCaptureSource *source;
 @property(readonly, nonatomic) int sourceDeviceType;
 @property(readonly, nonatomic) int sourceType;

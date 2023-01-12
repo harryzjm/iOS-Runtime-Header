@@ -17,27 +17,12 @@
     PPLocalNamedEntityStore *_namedEntityStore;
 }
 
-+ (_Bool)_shouldImport;
 + (id)defaultInstance;
 - (void).cxx_destruct;
 - (void)visitDeleteContactEvent:(id)arg1;
 - (void)visitUpdateContactEvent:(id)arg1;
 - (void)visitAddContactEvent:(id)arg1;
 - (void)visitDropEverythingEvent:(id)arg1;
-- (void)_deleteContactWithIdentifier:(id)arg1;
-- (void)_updateContactWithIdentifier:(id)arg1;
-- (_Bool)_deleteAndReAddWholeContact:(id)arg1 contactIdentifier:(id)arg2;
-- (void)_addContactWithIdentifier:(id)arg1;
-- (id)_loadContactIdentifiersAlreadyImportedInPastDay;
-- (void)_removeStashedImportedContacts;
-- (void)_stashImportedContactsIdentifiers:(id)arg1;
-- (id)_scoredContactWithContactIdentifier:(id)arg1;
-- (id)_entitiesForScoredContact:(id)arg1;
-- (id)_sourceForContactWithContactIdentifier:(id)arg1;
-- (_Bool)_donateScoredNamedEntities:(id)arg1 source:(id)arg2 error:(id *)arg3;
-- (_Bool)_handleNotificationWithError:(id *)arg1;
-- (void)_registerForNotifications;
-- (_Bool)importScoredContact:(id)arg1 contactsIdentifier:(id)arg2 error:(id *)arg3;
 - (void)importContactsDataWithShouldContinueBlock:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithDatabase:(id)arg1;

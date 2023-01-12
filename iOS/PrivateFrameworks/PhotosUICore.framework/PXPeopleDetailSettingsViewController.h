@@ -11,19 +11,21 @@
 #import <PhotosUICore/UICollectionViewDelegate-Protocol.h>
 #import <PhotosUICore/UICollectionViewDelegateFlowLayout-Protocol.h>
 
-@class NSString, PXPeoplePersonDataSource, PXPeopleSuggestionDataSource, UICollectionView;
+@class NSArray, NSString, PXPeoplePersonDataSource, PXPeopleSuggestionDataSource, UICollectionView;
 
 @interface PXPeopleDetailSettingsViewController : UIViewController <PXPeopleDataSourceDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 {
     PXPeoplePersonDataSource *_dataSource;
     UICollectionView *_collectionView;
     PXPeopleSuggestionDataSource *_suggestionDataSource;
+    NSArray *_personDetectionTypes;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *personDetectionTypes; // @synthesize personDetectionTypes=_personDetectionTypes;
 @property(retain, nonatomic) PXPeopleSuggestionDataSource *suggestionDataSource; // @synthesize suggestionDataSource=_suggestionDataSource;
 @property(retain, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
-@property(retain) PXPeoplePersonDataSource *dataSource; // @synthesize dataSource=_dataSource;
+@property(retain, nonatomic) PXPeoplePersonDataSource *dataSource; // @synthesize dataSource=_dataSource;
 - (void)loadSuggestionsForPerson:(id)arg1;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (void)peopleDataSource:(id)arg1 didApplyIncrementalChanges:(id)arg2;
@@ -35,9 +37,10 @@
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (void)viewDidLoad;
-- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (id)initWithCoder:(id)arg1;
+- (id)initWithPersonDetectionType:(short)arg1;
+- (id)initWithDataSourceReloadBlock:(CDUnknownBlockType)arg1;
 - (id)init;
+- (void)commonInitWithDataSourceReloadBlock:(CDUnknownBlockType)arg1;
 - (void)commonInit;
 
 // Remaining properties

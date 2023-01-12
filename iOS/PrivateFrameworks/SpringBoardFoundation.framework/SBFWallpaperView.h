@@ -104,6 +104,8 @@
 - (id)_backdrop_generateImageFromImage:(id)arg1 forBackdropParameters:(CDStruct_d8f0d129)arg2 includeTint:(_Bool)arg3 traitCollection:(id)arg4;
 - (id)_generateImageFromImage:(id)arg1 forBackdropParameters:(CDStruct_d8f0d129)arg2 includeTint:(_Bool)arg3 traitCollection:(id)arg4;
 - (id)_imageForBackdropParameters:(CDStruct_d8f0d129)arg1 includeTint:(_Bool)arg2 overrideTraitCollection:(id)arg3;
+- (id)_imageURLForBackdropParameters:(CDStruct_d8f0d129)arg1 includeTint:(_Bool)arg2 overrideTraitCollection:(id)arg3;
+- (id)_blurredImageURL;
 - (id)_blurredImage;
 - (void)preheatImageData;
 - (void)_stopGeneratingBlurredImages;
@@ -118,6 +120,9 @@
 - (void)setHidden:(_Bool)arg1;
 - (void)layoutSubviews;
 - (void)invalidate;
+- (id)imageURLForBackdropParameters:(CDStruct_d8f0d129)arg1 includeTint:(_Bool)arg2 overrideTraitCollection:(id)arg3;
+- (id)blurredImageURL;
+- (id)snapshotImageURL;
 - (id)imageForBackdropParameters:(CDStruct_d8f0d129)arg1 includeTint:(_Bool)arg2 overrideTraitCollection:(id)arg3;
 - (id)blurredImage;
 - (id)snapshotImage;
@@ -137,6 +142,7 @@
 - (void)setZoomFactor:(double)arg1 withAnimationFactory:(id)arg2;
 @property(readonly, nonatomic) _UILegibilitySettings *legibilitySettings;
 @property(readonly, nonatomic) double cropZoomScale;
+@property(readonly, nonatomic, getter=isContentStatic) _Bool contentStatic;
 @property(readonly, nonatomic) _Bool supportsCropping;
 - (void)prepareToDisappear;
 - (void)prepareToAppear;

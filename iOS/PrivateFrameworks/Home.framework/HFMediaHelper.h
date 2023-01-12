@@ -17,6 +17,10 @@
 + (_Bool)isAudioReceiver:(id)arg1;
 + (_Bool)isAirPortExpress:(id)arg1;
 + (_Bool)isAppleTV:(id)arg1;
++ (_Bool)isHomePodMini:(id)arg1;
++ (_Bool)isHomePodMiniMediaSystem:(id)arg1;
++ (_Bool)isHomePodOriginal:(id)arg1;
++ (_Bool)isHomePodOriginalMediaSystem:(id)arg1;
 + (_Bool)isHomePod:(id)arg1;
 + (_Bool)isHomePodMediaSystem:(id)arg1;
 

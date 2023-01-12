@@ -68,14 +68,18 @@
 - (void)setValue:(id)arg1 forPreferenceKey:(id)arg2;
 - (_Bool)boolForPreferenceKey:(id)arg1;
 - (id)valueForPreferenceKey:(id)arg1;
+- (id)_configuredPreferencesForDomain:(id)arg1;
+- (void)_configureKey:(id)arg1 domain:(id)arg2 defaultValue:(id)arg3 fallbackKey:(id)arg4 isAnalyzed:(_Bool)arg5;
 - (void)_configureKey:(id)arg1 domain:(id)arg2 defaultValue:(id)arg3 fallbackKey:(id)arg4;
 - (void)_configureKey:(id)arg1 domain:(id)arg2 fallbackKey:(id)arg3;
 - (void)_configureKey:(id)arg1 domain:(id)arg2 defaultValue:(id)arg3;
+- (void)_configureKeyForAnalytics:(id)arg1 domain:(id)arg2 defaultValue:(id)arg3;
 - (void)_configureDomain:(id)arg1 notification:(id)arg2;
 - (void)_configurePreferences;
 - (void)_configureDomains;
 - (void)dealloc;
 - (id)init;
+- (void)profileSettingDidChange:(id)arg1;
 - (void)managedKeyboardSettingDidChange:(id)arg1;
 - (void)preferencesChangedCallback:(id)arg1;
 

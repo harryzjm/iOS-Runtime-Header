@@ -21,7 +21,7 @@
 @property(readonly, nonatomic) NSString *relevanceEngineName; // @synthesize relevanceEngineName=_relevanceEngineName;
 @property(readonly, nonatomic) NSString *targetProcessName; // @synthesize targetProcessName=_targetProcessName;
 - (id)encodedObjectAtPath:(id)arg1;
-- (id)storedDiagnosticLogsPath;
+- (id)storedDiagnosticLogsURL;
 - (_Bool)runActionOfElementWithDescription1:(id)arg1;
 - (id)availableRelevanceEngines;
 - (id)allElements;

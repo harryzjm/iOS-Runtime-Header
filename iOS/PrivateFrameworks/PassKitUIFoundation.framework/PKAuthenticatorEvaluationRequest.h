@@ -13,6 +13,7 @@
     _Bool _useStockAuthInterface;
     _Bool _hasInitialAuthenticatorState;
     _Bool _assumeUserIntentAvailable;
+    _Bool _passcodeOnly;
     long long _policy;
     NSString *_reason;
     NSString *_processName;
@@ -27,6 +28,7 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool passcodeOnly; // @synthesize passcodeOnly=_passcodeOnly;
 @property(nonatomic) _Bool assumeUserIntentAvailable; // @synthesize assumeUserIntentAvailable=_assumeUserIntentAvailable;
 @property(nonatomic) unsigned long long initialAuthenticatorState; // @synthesize initialAuthenticatorState=_initialAuthenticatorState;
 @property(nonatomic) _Bool hasInitialAuthenticatorState; // @synthesize hasInitialAuthenticatorState=_hasInitialAuthenticatorState;

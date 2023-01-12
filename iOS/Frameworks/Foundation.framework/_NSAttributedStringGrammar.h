@@ -36,13 +36,14 @@
 @property long long determinationType; // @synthesize determinationType=_determinationType;
 @property long long deictic; // @synthesize deictic=_deictic;
 @property long long aspect; // @synthesize aspect=_aspect;
+- (id)initWithMorphology:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 @property(readonly, getter=_wordAttributes) CDStruct_be0ff5be _wordAttributes;
-- (id)_initWithMarkupDictionary:(id)arg1;
+- (id)_initWithMarkdownDictionary:(id)arg1;
 
 @end
 

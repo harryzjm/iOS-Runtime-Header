@@ -6,7 +6,13 @@
 
 #import <Foundation/NSData.h>
 
+@class NSString;
+
 @interface NSData (MD5)
 - (void)MD5:(unsigned char [16])arg1;
+- (id)blt_sha256StringFilenameSafe;
+@property(readonly) NSString *blt_sha256String;
+@property(readonly) NSData *blt_sha256;
+- (unsigned long long)blt_sizeof;
 @end
 

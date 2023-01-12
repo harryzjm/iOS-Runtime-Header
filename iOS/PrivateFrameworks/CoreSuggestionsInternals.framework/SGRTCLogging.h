@@ -8,19 +8,14 @@
 
 #import <CoreSuggestionsInternals/NSSecureCoding-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSString, _PASLock;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface SGRTCLogging : NSObject <NSSecureCoding>
 {
-    struct _opaque_pthread_mutex_t _lock;
+    _PASLock *_lock;
     NSString *_path;
-    NSMutableArray *_loggedExtractions;
-    NSMutableArray *_loggedInteractions;
-    NSMutableArray *_loggedInteractionsSummary;
-    long long _loggedExtractionsEventsCount;
     NSObject<OS_dispatch_source> *_persistenceTimerSource;
-    double _storeCreationDate;
     NSObject<OS_dispatch_queue> *_interactionsWriteQueue;
 }
 
@@ -59,6 +54,7 @@
 - (_Bool)resetInteractionsSummaryLogs;
 - (_Bool)resetExtractionLogs;
 - (_Bool)resetLogs;
+- (void)sendRTCLogsWithShouldContinueBlock:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)sendRTCLogsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_createRTCReporting;
 - (id)logsToSend;
@@ -77,7 +73,8 @@
 - (void)logAndIncrementEventCountForDictionary:(id)arg1;
 - (void)_updateLocationTypeFromInteractionsSummaryForEventKey:(id)arg1 locationType:(id)arg2;
 - (_Bool)incrementAndUpgradeInteractionSummaryForEventKey:(id)arg1 interactionKey:(id)arg2 parentEntity:(id)arg3;
-- (void)_enrichLogWithAppsUsage:(id)arg1;
+- (id)_calendarUsageLast2Weeks;
+- (id)_mapsUsageLast2Weeks;
 - (void)enrichInteractionSummaryLog:(id)arg1;
 - (id)launchCountMessageAfterDate:(id)arg1;
 - (id)bucketizedRemindersCreatedAfterDate:(id)arg1 endDate:(id)arg2;
@@ -86,7 +83,6 @@
 - (void)enrichAggregateSummaryLog:(id)arg1;
 - (void)enrichReminderInteractionSummaryLog:(id)arg1;
 - (id)createInteractionSummaryForEventKey:(id)arg1 expirationDate:(id)arg2 interactionKey:(id)arg3 interactionAttributes:(id)arg4 rtcCategory:(unsigned short)arg5;
-- (id)_createInteractionForEventWithStartTime:(id)arg1 interactionKey:(id)arg2 interactionAttributes:(id)arg3;
 - (id)_interactionAttributesForEntity:(id)arg1 parentEntity:(id)arg2;
 - (id)_interactionAttributesForRealtimeEvent:(id)arg1 parentEntity:(id)arg2;
 - (id)_interactionAttributesForTags:(id)arg1 parentEntity:(id)arg2;
@@ -101,6 +97,8 @@
 - (void)dealloc;
 - (id)initWithFilename:(id)arg1;
 - (id)init;
+- (id)_deepMutableContainersCopy:(id)arg1;
+- (id)_deepCopy:(id)arg1;
 - (id)trialIds;
 - (id)_interactionDictionaryForDueLocation:(id)arg1 dueDateComponents:(id)arg2;
 - (id)_baseInteractionAttributesForReminder:(id)arg1;

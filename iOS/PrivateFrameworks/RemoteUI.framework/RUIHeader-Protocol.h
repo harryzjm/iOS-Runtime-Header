@@ -13,6 +13,7 @@
 - (id)initWithAttributes:(NSDictionary *)arg1;
 
 @optional
+- (void)setHTMLContent:(NSString *)arg1 toElementsMatchingQuery:(NSString *)arg2;
 - (double)headerHeightForWidth:(double)arg1 inTableView:(UITableView *)arg2;
 - (void)setSectionIsFirst:(_Bool)arg1;
 - (void)setDelegate:(id <RUIHeaderDelegate>)arg1;
@@ -21,6 +22,8 @@
 - (void)setIconImage:(UIImage *)arg1;
 - (RUILinkLabel *)detailHeaderLabel;
 - (void)setDetailText:(NSString *)arg1 attributes:(NSDictionary *)arg2;
+- (void)setImageLabelPadding:(double)arg1;
+- (void)setSubHeaderTopMargin:(double)arg1;
 - (UILabel *)subHeaderLabel;
 - (void)setSubHeaderText:(NSString *)arg1 attributes:(NSDictionary *)arg2;
 - (UILabel *)headerLabel;

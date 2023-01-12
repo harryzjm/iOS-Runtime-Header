@@ -25,7 +25,10 @@
 - (void)visitUpdateContactEvent:(id)arg1;
 - (void)visitAddContactEvent:(id)arg1;
 - (void)visitDropEverythingEvent:(id)arg1;
+- (void)addAliasToCNIDToAliasMap:(id)arg1 withCNID:(id)arg2;
+- (void)removeAliasFromCNIDToAliasesMap:(id)arg1 withCNID:(id)arg2;
 - (id)generateCNIDToAliasesMapFrom:(id)arg1;
+- (id)getCNIDToAliasesMap;
 - (id)getAliasToCNIDMap;
 - (id)initWithAliasToCNIDMap:(id)arg1;
 

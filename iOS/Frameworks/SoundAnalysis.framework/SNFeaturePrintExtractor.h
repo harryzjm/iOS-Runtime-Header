@@ -8,38 +8,34 @@
 
 #import <SoundAnalysis/SNAnalyzing-Protocol.h>
 
-@class MLModel, MLModelDescription, NSString, SNSystemConfiguration;
-@protocol MLCustomModel;
+@class NSString;
+@protocol SNFeaturePrintExtractorProtocol;
 
 __attribute__((visibility("hidden")))
 @interface SNFeaturePrintExtractor : NSObject <SNAnalyzing>
 {
     shared_ptr_f6ac7592 _graph;
-    id <MLCustomModel> _logMelSpectrogramModel;
-    MLModelDescription *_logMelSpectrogramModelDescription;
-    MLModel *_featureEmbeddingModel;
-    SNSystemConfiguration *_systemConfiguration;
-    int _timeDomainBlockSize;
+    id <SNFeaturePrintExtractorProtocol> _featureExtractor;
+    NSString *_outputFeatureName;
+    CDStruct_1b6d18a9 _windowDuration;
     int _resultsToDiscardCount;
     float _overlapFactor;
     long long _featurePrintType;
 }
 
++ (id)extractOutputWithOptionalName:(id)arg1 fromFeatureProvider:(id)arg2;
++ (id)extractDefaultOutputFeatureFromFeatureProvider:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(nonatomic) float overlapFactor; // @synthesize overlapFactor=_overlapFactor;
 @property(nonatomic) long long featurePrintType; // @synthesize featurePrintType=_featurePrintType;
-@property(readonly, nonatomic) struct Box *resultsBox;
+@property(readonly, nonatomic) void *resultsBox;
 - (void)primeGraph;
-- (id)resultsFromBox:(struct Box *)arg1 renderedWithFrameCount:(int)arg2;
+- (id)resultsFromBox:(void *)arg1 renderedWithFrameCount:(int)arg2;
 - (id)sharedProcessorConfiguration;
 - (_Bool)adaptToSystemConfiguration:(id)arg1 error:(id *)arg2;
-- (id)embeddingModel;
-- (id)logMelSpectrogramModel;
-- (id)logMelSpectrogramModelDescription;
 @property(readonly, nonatomic) shared_ptr_f6ac7592 graph;
-- (void)updateGraph;
-- (id)initWithFeaturePrintType:(long long)arg1 overlapFactor:(float)arg2;
+- (id)initWithFeaturePrintType:(long long)arg1 overlapFactor:(float)arg2 windowDuration:(CDStruct_1b6d18a9)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

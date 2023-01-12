@@ -15,10 +15,12 @@
     PBDataReader *_reader;
     NSString *_addressID;
     GEOLocation *_addressLocation;
+    double _radiusInMeters;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
     struct {
+        unsigned int has_radiusInMeters:1;
         unsigned int read_addressID:1;
         unsigned int read_addressLocation:1;
         unsigned int wrote_anyField:1;
@@ -32,7 +34,8 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
-- (void)clearSensitiveFields;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
+- (void)clearSensitiveFields:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -41,6 +44,8 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasRadiusInMeters;
+@property(nonatomic) double radiusInMeters;
 @property(retain, nonatomic) NSString *addressID;
 @property(readonly, nonatomic) _Bool hasAddressID;
 @property(retain, nonatomic) GEOLocation *addressLocation;

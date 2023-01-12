@@ -4,23 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSAttributedString, NSDictionary, NSString;
+@class NSAttributedString, NSDictionary;
 
 @interface TPSDiscoverabilityTip
 {
+    _Bool _localContent;
     NSAttributedString *_attributedString;
-    NSString *_userLanguageCode;
     NSDictionary *_preconditions;
 }
 
-+ (id)classSet;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSDictionary *preconditions; // @synthesize preconditions=_preconditions;
-@property(copy, nonatomic) NSString *userLanguageCode; // @synthesize userLanguageCode=_userLanguageCode;
 @property(retain, nonatomic) NSAttributedString *attributedString; // @synthesize attributedString=_attributedString;
+@property(nonatomic, getter=isLocalContent) _Bool localContent; // @synthesize localContent=_localContent;
 - (id)debugDescription;
-- (id)initWithDictionary:(id)arg1 metadata:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

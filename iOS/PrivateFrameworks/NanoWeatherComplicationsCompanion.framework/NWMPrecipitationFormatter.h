@@ -8,10 +8,11 @@
 
 #import <NanoWeatherComplicationsCompanion/NWMDataFormatter-Protocol.h>
 
-@class NSNumberFormatter, NSString;
+@class NSNumber, NSNumberFormatter, NSString;
 
 @interface NWMPrecipitationFormatter : NSObject <NWMDataFormatter>
 {
+    NSNumber *_minimumPercentage;
     NSNumberFormatter *_numberFormatter;
     NSNumberFormatter *_percentageFormatter;
 }
@@ -20,10 +21,14 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSNumberFormatter *percentageFormatter; // @synthesize percentageFormatter=_percentageFormatter;
 @property(retain, nonatomic) NSNumberFormatter *numberFormatter; // @synthesize numberFormatter=_numberFormatter;
+@property(retain, nonatomic) NSNumber *minimumPercentage; // @synthesize minimumPercentage=_minimumPercentage;
 @property(readonly, nonatomic) NSString *percentSymbol;
+- (double)roundedChanceOfPrecipitation:(id)arg1;
 - (double)value:(id)arg1;
+- (id)formattedChanceOfPrecipitationChance:(id)arg1 style:(unsigned long long)arg2 shouldIncludePercentSymbol:(_Bool)arg3;
 - (id)formattedChanceOfPrecipitation:(id)arg1 style:(unsigned long long)arg2 shouldIncludePercentSymbol:(_Bool)arg3;
 - (id)formattedChanceOfPrecipitation:(id)arg1 shouldIncludePercentSymbol:(_Bool)arg2;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

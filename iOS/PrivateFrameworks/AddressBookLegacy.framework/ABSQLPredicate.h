@@ -17,6 +17,7 @@
 }
 
 + (id)predicateUnioningPredicate:(id)arg1 withPredicate:(id)arg2;
++ (id)predicateForContactsMatchingText:(id)arg1 tokenizer:(struct __CFStringTokenizer *)arg2 collator:(struct UCollator *)arg3 matchNameFieldsOnly:(_Bool)arg4;
 + (id)predicateForContactsMatchingPhoneNumbers:(id)arg1 emailAddresses:(id)arg2 containerIdentifiers:(id)arg3 map:(id)arg4;
 + (id)predicateForMeContact;
 + (id)predicateForContactsMatchingPreferredChannel:(id)arg1 limitOne:(_Bool)arg2;

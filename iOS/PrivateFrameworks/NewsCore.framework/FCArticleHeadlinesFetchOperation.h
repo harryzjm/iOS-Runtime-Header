@@ -17,6 +17,7 @@
     double _articleMaximumCachedAge;
     unsigned long long _tagCachePolicy;
     double _tagMaximumCachedAge;
+    CDUnknownBlockType _interestTokenHandler;
     id <FCContentContext> _context;
     NSArray *_articleIDs;
     NSArray *_ignoreCacheForArticleIDs;
@@ -28,6 +29,7 @@
 @property(retain, nonatomic) NSArray *ignoreCacheForArticleIDs; // @synthesize ignoreCacheForArticleIDs=_ignoreCacheForArticleIDs;
 @property(retain, nonatomic) NSArray *articleIDs; // @synthesize articleIDs=_articleIDs;
 @property(retain, nonatomic) id <FCContentContext> context; // @synthesize context=_context;
+@property(copy, nonatomic) CDUnknownBlockType interestTokenHandler; // @synthesize interestTokenHandler=_interestTokenHandler;
 @property(nonatomic) _Bool shouldFilterHeadlinesWithoutSourceChannels; // @synthesize shouldFilterHeadlinesWithoutSourceChannels=_shouldFilterHeadlinesWithoutSourceChannels;
 @property double tagMaximumCachedAge; // @synthesize tagMaximumCachedAge=_tagMaximumCachedAge;
 @property unsigned long long tagCachePolicy; // @synthesize tagCachePolicy=_tagCachePolicy;

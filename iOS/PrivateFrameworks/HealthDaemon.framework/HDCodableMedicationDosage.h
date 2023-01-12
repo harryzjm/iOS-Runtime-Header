@@ -8,15 +8,21 @@
 
 #import <HealthDaemon/NSCopying-Protocol.h>
 
-@class HDCodableMedicalDateInterval, NSString;
+@class HDCodableMedicalCoding, HDCodableMedicalDateInterval, NSString;
 
 @interface HDCodableMedicationDosage : PBCodable <NSCopying>
 {
     NSString *_instruction;
+    HDCodableMedicalCoding *_methodCoding;
+    HDCodableMedicalCoding *_routeCoding;
+    HDCodableMedicalCoding *_siteCoding;
     HDCodableMedicalDateInterval *_timingPeriod;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) HDCodableMedicalCoding *methodCoding; // @synthesize methodCoding=_methodCoding;
+@property(retain, nonatomic) HDCodableMedicalCoding *routeCoding; // @synthesize routeCoding=_routeCoding;
+@property(retain, nonatomic) HDCodableMedicalCoding *siteCoding; // @synthesize siteCoding=_siteCoding;
 @property(retain, nonatomic) HDCodableMedicalDateInterval *timingPeriod; // @synthesize timingPeriod=_timingPeriod;
 @property(retain, nonatomic) NSString *instruction; // @synthesize instruction=_instruction;
 - (void)mergeFrom:(id)arg1;
@@ -28,6 +34,9 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasMethodCoding;
+@property(readonly, nonatomic) _Bool hasRouteCoding;
+@property(readonly, nonatomic) _Bool hasSiteCoding;
 @property(readonly, nonatomic) _Bool hasTimingPeriod;
 @property(readonly, nonatomic) _Bool hasInstruction;
 

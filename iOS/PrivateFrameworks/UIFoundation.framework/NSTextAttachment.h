@@ -8,13 +8,15 @@
 
 #import <UIFoundation/NSSecureCoding-Protocol.h>
 #import <UIFoundation/NSTextAttachmentContainer-Protocol.h>
+#import <UIFoundation/NSTextAttachmentLayout-Protocol.h>
 
-@class NSData, NSFileWrapper, NSString, NSTextAttachmentView, UIImage, UIView;
+@class NSData, NSFileWrapper, NSString, NSTextAttachmentView, UIImage, UIView, UTType;
+@protocol NSTextAttachmentCell;
 
-@interface NSTextAttachment : NSObject <NSTextAttachmentContainer, NSSecureCoding>
+@interface NSTextAttachment : NSObject <NSTextAttachmentLayout, NSTextAttachmentContainer, NSSecureCoding>
 {
     NSData *_data;
-    NSString *_uti;
+    UTType *_uti;
     NSString *_cacheKey;
     struct CGRect _bounds;
     double _layoutPadding;
@@ -23,10 +25,16 @@
         unsigned int _embeddingType:4;
         unsigned int _standaloneAlignment:3;
         unsigned int _allocatesTextContainer:1;
+        unsigned int _prefersOldAttachmentBounds:1;
+        unsigned int _prefersOldImageForBounds:1;
+        unsigned int _cellWasExplicitlySet:1;
+        unsigned int _ignoresOrientation:1;
+        unsigned int _allowsEditingContents:1;
     } _taFlags;
-    NSFileWrapper *_fileWrapper;
+    NSFileWrapper *_fileWrapperForContents;
     UIImage *_image;
     NSTextAttachmentView *_wrapperView;
+    id <NSTextAttachmentCell> _attachmentCell;
 }
 
 + (void)registerTextAttachmentClass:(Class)arg1 forFileType:(id)arg2;
@@ -41,16 +49,22 @@
 - (id)viewProviderForParentView:(id)arg1 location:(id)arg2 textContainer:(id)arg3;
 - (struct CGRect)attachmentBoundsForAttributes:(id)arg1 location:(id)arg2 textContainer:(id)arg3 proposedLineFragment:(struct CGRect)arg4 position:(struct CGPoint)arg5;
 - (id)imageForBounds:(struct CGRect)arg1 attributes:(id)arg2 location:(id)arg3 textContainer:(id)arg4;
+- (void)_showWithBounds:(struct CGRect)arg1 attributes:(id)arg2 location:(id)arg3 textContainer:(id)arg4 applicationFrameworkContext:(long long)arg5;
+- (long long)_characterIndexForLocation:(id)arg1 textContainer:(id)arg2;
 @property(readonly, copy) NSString *description;
+- (_Bool)allowsEditingContents;
+- (void)setAllowsEditingContents:(_Bool)arg1;
+- (void)setAttachmentCell:(id)arg1;
+- (_Bool)ignoresOrientation;
+- (void)setIgnoresOrientation:(_Bool)arg1;
 - (void)detachView:(id)arg1 fromParentView:(id)arg2;
 - (void)placeView:(id)arg1 withFrame:(struct CGRect)arg2 inParentView:(id)arg3 characterIndex:(unsigned long long)arg4 layoutManager:(id)arg5;
 - (id)viewProviderForParentView:(id)arg1 characterIndex:(unsigned long long)arg2 layoutManager:(id)arg3;
-- (_Bool)usesTextAttachmentView;
+@property(readonly) _Bool usesTextAttachmentView;
+@property(readonly) _Bool _hasTextAttachmentViewCell;
 - (Class)textAttachmentViewProviderClass;
-- (void)setAllowsTextAttachmentView:(_Bool)arg1;
-- (_Bool)allowsTextAttachmentView;
-- (void)setLineLayoutPadding:(double)arg1;
-- (double)lineLayoutPadding;
+@property _Bool allowsTextAttachmentView;
+@property double lineLayoutPadding;
 - (void)setStandaloneAlignment:(long long)arg1;
 - (long long)standaloneAlignment;
 - (void)setEmbeddingType:(long long)arg1;
@@ -73,11 +87,15 @@
 - (id)initWithFileWrapper:(id)arg1;
 - (id)init;
 - (id)initWithData:(id)arg1 ofType:(id)arg2;
+- (void)_setupAPIPreferences;
 - (void)_setAllocatesTextContainer:(_Bool)arg1;
 - (_Bool)_allocatesTextContainer;
 - (id)_image;
 - (id)_cacheKey;
-- (id)_imageForUTI_iOS:(id)arg1;
+- (void)_showAttachmentCell_iOS:(id)arg1 inRect:(struct CGRect)arg2 characterIndex:(unsigned long long)arg3;
+- (id)_imageForUTType_iOS:(id)arg1;
+- (id)accessibilityLabel;
+- (void)setAccessibilityLabel:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -8,8 +8,8 @@
 
 #import <PhotosUICore/PXWidget-Protocol.h>
 
-@class NSString, PXPhotosDetailsContext, PXSectionedSelectionManager, PXTilingController, PXWidgetSpec, UIView;
-@protocol PXAnonymousView, PXWidgetDelegate, PXWidgetEditingDelegate, PXWidgetUnlockDelegate;
+@class NSString, PXAssetActionManager, PXPhotosDetailsContext, PXSectionedSelectionManager, PXTilingController, PXWidgetSpec, UIView;
+@protocol PXAnonymousView, PXWidgetDelegate, PXWidgetEditingDelegate, PXWidgetInteractionDelegate, PXWidgetUnlockDelegate;
 
 @interface PXDemoViewWidget : NSObject <PXWidget>
 {
@@ -52,6 +52,7 @@
 
 // Remaining properties
 @property(readonly, nonatomic) _Bool allowUserInteractionWithSubtitle;
+@property(readonly, nonatomic) PXAssetActionManager *assetActionManager;
 @property(readonly, nonatomic) long long contentLayoutStyle;
 @property(readonly, nonatomic) PXTilingController *contentTilingController;
 @property(retain, nonatomic) PXPhotosDetailsContext *context;
@@ -67,12 +68,14 @@
 @property(nonatomic) struct CGSize maxVisibleSizeInEditMode;
 @property(nonatomic, getter=isSelecting) _Bool selecting;
 @property(readonly, nonatomic) PXSectionedSelectionManager *selectionManager;
+@property(readonly, nonatomic) NSString *snappableWidgetIdentifier;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) _Bool supportsFaceMode;
 @property(readonly, nonatomic) _Bool supportsSelection;
 @property(nonatomic, getter=isUserInteractionEnabled) _Bool userInteractionEnabled;
 @property(readonly, nonatomic) _Bool wantsFocus;
 @property(nonatomic) __weak id <PXWidgetEditingDelegate> widgetEditingDelegate;
+@property(nonatomic) __weak id <PXWidgetInteractionDelegate> widgetInteractionDelegate;
 @property(nonatomic) __weak id <PXWidgetUnlockDelegate> widgetUnlockDelegate;
 
 @end

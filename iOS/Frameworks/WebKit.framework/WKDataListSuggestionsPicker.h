@@ -21,9 +21,9 @@ __attribute__((visibility("hidden")))
 - (id)pickerView:(id)arg1 titleForRow:(long long)arg2 forComponent:(long long)arg3;
 - (long long)pickerView:(id)arg1 numberOfRowsInComponent:(long long)arg2;
 - (long long)numberOfComponentsInPickerView:(id)arg1;
-- (void)showSuggestionsDropdown:(struct WebDataListSuggestionsDropdownIOS *)arg1 activationType:(unsigned char)arg2;
-- (void)updateWithInformation:(struct DataListSuggestionInformation *)arg1;
-- (id)initWithInformation:(struct DataListSuggestionInformation *)arg1 inView:(id)arg2;
+- (void)showSuggestionsDropdown:(void *)arg1 activationType:(unsigned char)arg2;
+- (void)updateWithInformation:(void *)arg1;
+- (id)initWithInformation:(void *)arg1 inView:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

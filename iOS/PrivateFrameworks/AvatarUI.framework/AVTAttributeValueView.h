@@ -9,7 +9,7 @@
 #import <AvatarUI/AVTDiscardableContent-Protocol.h>
 #import <AvatarUI/AVTSectionItemTransitionModel-Protocol.h>
 
-@class CALayer, CAShapeLayer, NSString, NSUUID, UIImage, UILabel;
+@class CALayer, CAShapeLayer, NSString, NSUUID, UIImage;
 
 @interface AVTAttributeValueView : UIView <AVTSectionItemTransitionModel, AVTDiscardableContent>
 {
@@ -24,14 +24,12 @@
     CAShapeLayer *_selectionLayer;
     UIView *_contentView;
     CALayer *_transitionImageLayer;
-    UILabel *_titleLabel;
     struct CGSize _imageSizeRatio;
 }
 
 + (struct CGRect)imageViewRectForBounds:(struct CGRect)arg1 imageSizeRatio:(struct CGSize)arg2 scale:(double)arg3;
 - (void).cxx_destruct;
 @property(nonatomic, getter=isSelected) _Bool selected; // @synthesize selected=_selected;
-@property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) CALayer *transitionImageLayer; // @synthesize transitionImageLayer=_transitionImageLayer;
 @property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property(retain, nonatomic) CAShapeLayer *selectionLayer; // @synthesize selectionLayer=_selectionLayer;
@@ -46,7 +44,6 @@
 - (void)cleanupAfterTransition;
 - (id)toLayer;
 - (id)fromLayer;
-@property(retain, nonatomic) NSString *displayedTitle;
 @property(nonatomic) _Bool showPlaceholder; // @synthesize showPlaceholder=_showPlaceholder;
 - (void)prepareForTransitionToImage:(id)arg1;
 - (void)updateWithImage:(id)arg1;

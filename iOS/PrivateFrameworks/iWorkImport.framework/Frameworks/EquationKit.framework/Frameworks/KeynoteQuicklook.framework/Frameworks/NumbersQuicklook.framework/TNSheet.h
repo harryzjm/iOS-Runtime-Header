@@ -16,7 +16,7 @@
 #import <NumbersQuicklook/TSWPHeaderFooterProvider-Protocol.h>
 #import <NumbersQuicklook/TSWPStorageParent-Protocol.h>
 
-@class NSArray, NSEnumerator, NSMutableArray, NSMutableSet, NSObject, NSString, TNDocumentRoot, TNSheetStyle, TSDColorFill, TSDInfoGeometry, TSDLayoutController, TSWPStorage;
+@class NSArray, NSEnumerator, NSMutableArray, NSMutableSet, NSObject, NSSet, NSString, TNDocumentRoot, TNSheetStyle, TSDColorFill, TSDInfoGeometry, TSDLayoutController, TSWPStorage;
 @protocol TSDInfo, TSDOwningAttachment;
 
 @interface TNSheet : TSPObject <TNPrintableInfoProviding, TSKDocumentObject, TSKModel, TSCEResolverContainer, TSDDrawableContainerInfo, TSDMutableContainerInfo, TSSStyleClient, TSWPHeaderFooterProvider, TSWPStorageParent>
@@ -56,16 +56,16 @@
 - (struct CGColor *)printingBackgroundCGColor;
 @property(readonly, nonatomic) TSDColorFill *backgroundColor;
 - (void)replaceReferencedStylesUsingBlock:(CDUnknownBlockType)arg1;
-- (id)referencedStyles;
+@property(readonly, nonatomic) NSSet *referencedStyles;
 - (void)acceptVisitor:(id)arg1;
 - (id)i_newHeaderFooterStorage;
 - (void)i_importHeadersFooters:(id)arg1 headerType:(long long)arg2 useSingleHeaderFooter:(_Bool)arg3;
 - (struct CGRect)frame;
 @property(readonly, copy) NSString *description;
-- (void)saveToArchive:(struct SheetArchive *)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)loadFromArchive:(const struct SheetArchive *)arg1 unarchiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (id)copyWithContext:(id)arg1;
 @property(readonly, nonatomic) _Bool supportsMultipleColumns;
 @property(readonly, nonatomic) long long contentWritingDirection;
@@ -134,6 +134,7 @@
 - (void)insertDrawableInfo:(id)arg1 context:(id)arg2;
 - (id)printableInfosIncludingComments:(_Bool)arg1;
 @property(readonly, nonatomic) NSArray *printableInfos;
+@property(readonly, nonatomic) _Bool isPrintable;
 @property(copy, nonatomic) NSArray *childInfos;
 - (id)infoForSelectionPath:(id)arg1;
 - (_Bool)layoutIsLeftToRight;

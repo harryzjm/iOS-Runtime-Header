@@ -6,7 +6,7 @@
 
 #import <CameraUI/NSObject-Protocol.h>
 
-@class PLCropOverlay;
+@class NSArray, PLCropOverlay;
 
 @protocol PLCropOverlayDelegate <NSObject>
 
@@ -15,7 +15,7 @@
 - (void)setImageAsHomeScreenAndLockScreenClicked:(id)arg1;
 - (void)setImageAsLockScreenClicked:(id)arg1;
 - (void)setImageAsHomeScreenClicked:(id)arg1;
-- (void)cropOverlayFileResizingSelected:(PLCropOverlay *)arg1;
+- (NSArray *)cropOverlayFileSizeMenuActions:(PLCropOverlay *)arg1;
 - (void)cropOverlayPause:(PLCropOverlay *)arg1;
 - (void)cropOverlayPlay:(PLCropOverlay *)arg1;
 - (void)cropOverlayWasToggled:(PLCropOverlay *)arg1;

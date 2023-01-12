@@ -10,25 +10,6 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct Arena;
-
-struct ArenaStringPtr {
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> *_field1;
-};
-
-struct Attribution;
-
-struct BookmarkFieldArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct ArenaStringPtr _field5;
-    struct SmartFieldArchive *_field6;
-    unsigned int _field7;
-    unsigned int _field8;
-};
-
 struct CGAffineTransform {
     double a;
     double b;
@@ -55,649 +36,13 @@ struct CGSize {
     double height;
 };
 
-struct CachedSize {
-    struct atomic<int> _field1;
-};
-
-struct CharacterStyleArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct StyleArchive *_field5;
-    struct CharacterStylePropertiesArchive *_field6;
-    unsigned int _field7;
-};
-
-struct CharacterStylePropertiesArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<2> _field3;
-    struct RepeatedPtrField<TSWP::FontFeatureArchive> _field4;
-    struct ArenaStringPtr _field5;
-    struct ArenaStringPtr _field6;
-    struct ArenaStringPtr _field7;
-    struct ArenaStringPtr _field8;
-    struct Color *_field9;
-    struct Color *_field10;
-    struct ShadowArchive *_field11;
-    struct Color *_field12;
-    struct Color *_field13;
-    struct Color *_field14;
-    struct StrokeArchive *_field15;
-    struct FillArchive *_field16;
-    float _field17;
-    _Bool _field18;
-    _Bool _field19;
-    _Bool _field20;
-    _Bool _field21;
-    int _field22;
-    int _field23;
-    int _field24;
-    int _field25;
-    float _field26;
-    float _field27;
-    int _field28;
-    _Bool _field29;
-    _Bool _field30;
-    _Bool _field31;
-    _Bool _field32;
-    float _field33;
-    float _field34;
-    float _field35;
-    _Bool _field36;
-    _Bool _field37;
-    _Bool _field38;
-    _Bool _field39;
-    float _field40;
-    _Bool _field41;
-    _Bool _field42;
-    _Bool _field43;
-    _Bool _field44;
-    _Bool _field45;
-    _Bool _field46;
-    _Bool _field47;
-    _Bool _field48;
-    _Bool _field49;
-    int _field50;
-    struct CachedSize _field51;
-};
-
-struct CharacterStylePropertyChangeSetArchive;
-
-struct Color;
-
-struct ColumnStyleArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct StyleArchive *_field5;
-    struct ColumnStylePropertiesArchive *_field6;
-    unsigned int _field7;
-};
-
-struct ColumnStylePropertiesArchive;
-
-struct ColumnsArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct ColumnsArchive_EqualColumnsArchive *_field5;
-    struct ColumnsArchive_NonEqualColumnsArchive *_field6;
-};
-
-struct ColumnsArchive_EqualColumnsArchive;
-
-struct ColumnsArchive_NonEqualColumnsArchive;
-
-struct CommentInfoArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct ShapeInfoArchive *_field5;
-    struct Reference *_field6;
-};
-
-struct DataReference;
-
-struct DrawableArchive;
-
-struct DrawableAttachmentArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct Reference *_field5;
-    unsigned int _field6;
-    float _field7;
-    unsigned int _field8;
-    float _field9;
-};
-
-struct DropCapArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    int _field5;
-    unsigned int _field6;
-    float _field7;
-    float _field8;
-    int _field9;
-    _Bool _field10;
-    float _field11;
-    float _field12;
-    double _field13;
-    double _field14;
-    double _field15;
-    unsigned int _field16;
-    unsigned int _field17;
-    double _field18;
-};
-
-struct DropCapStyleArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct StyleArchive *_field5;
-    struct CharacterStylePropertiesArchive *_field6;
-    struct DropCapStylePropertiesArchive *_field7;
-    unsigned int _field8;
-};
-
-struct DropCapStylePropertiesArchive;
-
-struct ExtensionSet {
-    struct Arena *_field1;
-    unsigned short _field2;
-    unsigned short _field3;
-    union AllocatedData _field4;
-};
-
-struct FillArchive;
-
-struct FlowInfoArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct RepeatedPtrField<TSP::Reference> _field5;
-    struct Reference *_field6;
-    unsigned int _field7;
-};
-
-struct FlowInfoContainerArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct RepeatedPtrField<TSP::Reference> _field5;
-    unsigned int _field6;
-};
-
-struct HasBits<1> {
-    unsigned int _field1[1];
-};
-
-struct HasBits<2> {
-    unsigned int _field1[2];
-};
-
-struct HighlightArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct ArenaStringPtr _field5;
-    struct Reference *_field6;
-};
-
-struct HyperlinkFieldArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct ArenaStringPtr _field5;
-    struct SmartFieldArchive *_field6;
-};
-
-struct ImageAdjustmentsArchive;
-
-struct ImageArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct ExtensionSet _field2;
-    struct InternalMetadataWithArena _field3;
-    struct HasBits<1> _field4;
-    struct CachedSize _field5;
-    struct DrawableArchive *_field6;
-    struct Reference *_field7;
-    struct Reference *_field8;
-    struct Size *_field9;
-    struct Reference *_field10;
-    struct Reference *_field11;
-    struct Reference *_field12;
-    struct Size *_field13;
-    struct Path *_field14;
-    struct DataReference *_field15;
-    struct DataReference *_field16;
-    struct DataReference *_field17;
-    struct ImageAdjustmentsArchive *_field18;
-    struct DataReference *_field19;
-    struct DataReference *_field20;
-    struct DataReference *_field21;
-    struct Path *_field22;
-    struct Attribution *_field23;
-    unsigned int _field24;
-    _Bool _field25;
-    _Bool _field26;
-};
-
-struct InternalMetadataWithArena {
+struct InternalMetadata {
     void *_field1;
-};
-
-struct KeyValue;
-
-struct LineSpacingArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    int _field5;
-    float _field6;
-    float _field7;
-};
-
-struct ListStyleArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    RepeatedField_9cbdf2a0 _field5;
-    RepeatedField_280beee3 _field6;
-    RepeatedField_280beee3 _field7;
-    struct RepeatedPtrField<TSWP::ListStyleArchive_LabelGeometry> _field8;
-    RepeatedField_9cbdf2a0 _field9;
-    struct RepeatedPtrField<std::__1::basic_string<char>> _field10;
-    struct RepeatedPtrField<TSWP::ListStyleArchive_LabelImage> _field11;
-    RepeatedField_dbae4dc9 _field12;
-    struct ArenaStringPtr _field13;
-    struct StyleArchive *_field14;
-    struct ShadowArchive *_field15;
-    struct Color *_field16;
-    unsigned int _field17;
-    _Bool _field18;
-    _Bool _field19;
-    _Bool _field20;
-    int _field21;
 };
 
 struct Message {
     CDUnknownFunctionPointerType *_field1;
-};
-
-struct PaddingArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    float _field5;
-    float _field6;
-    float _field7;
-    float _field8;
-};
-
-struct ParagraphStyleArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct StyleArchive *_field5;
-    struct CharacterStylePropertiesArchive *_field6;
-    struct ParagraphStylePropertiesArchive *_field7;
-    unsigned int _field8;
-};
-
-struct ParagraphStylePropertiesArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<2> _field3;
-    struct ArenaStringPtr _field4;
-    struct ArenaStringPtr _field5;
-    struct ArenaStringPtr _field6;
-    struct Color *_field7;
-    struct LineSpacingArchive *_field8;
-    struct Point *_field9;
-    struct TabsArchive *_field10;
-    struct StrokeArchive *_field11;
-    struct Reference *_field12;
-    struct Reference *_field13;
-    int _field14;
-    float _field15;
-    _Bool _field16;
-    _Bool _field17;
-    _Bool _field18;
-    _Bool _field19;
-    float _field20;
-    float _field21;
-    _Bool _field22;
-    _Bool _field23;
-    _Bool _field24;
-    _Bool _field25;
-    int _field26;
-    float _field27;
-    float _field28;
-    float _field29;
-    float _field30;
-    unsigned int _field31;
-    _Bool _field32;
-    _Bool _field33;
-    _Bool _field34;
-    _Bool _field35;
-    int _field36;
-    _Bool _field37;
-    _Bool _field38;
-    _Bool _field39;
-    _Bool _field40;
-    _Bool _field41;
-    _Bool _field42;
-    int _field43;
-    struct CachedSize _field44;
-};
-
-struct ParagraphStylePropertyChangeSetArchive;
-
-struct Path;
-
-struct PencilAnnotationArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct ArenaStringPtr _field5;
-    struct Reference *_field6;
-};
-
-struct PlaceholderSmartFieldArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct ArenaStringPtr _field5;
-    struct SmartFieldArchive *_field6;
-    _Bool _field7;
-};
-
-struct Point {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    float _field5;
-    float _field6;
-};
-
-struct Range;
-
-struct Reference;
-
-struct Rep;
-
-struct RepeatedField<bool> {
-    int _field1;
-    int _field2;
-    union Pointer _field3;
-};
-
-struct RepeatedField<float> {
-    int _field1;
-    int _field2;
-    union Pointer _field3;
-};
-
-struct RepeatedField<int> {
-    int _field1;
-    int _field2;
-    union Pointer _field3;
-};
-
-struct RepeatedPtrField<TSP::Color> {
-    struct Arena *_field1;
-    int _field2;
-    int _field3;
-    struct Rep *_field4;
-};
-
-struct RepeatedPtrField<TSP::Range> {
-    struct Arena *_field1;
-    int _field2;
-    int _field3;
-    struct Rep *_field4;
-};
-
-struct RepeatedPtrField<TSP::Reference> {
-    struct Arena *_field1;
-    int _field2;
-    int _field3;
-    struct Rep *_field4;
-};
-
-struct RepeatedPtrField<TSP::UUID> {
-    struct Arena *_field1;
-    int _field2;
-    int _field3;
-    struct Rep *_field4;
-};
-
-struct RepeatedPtrField<TSWP::FontFeatureArchive> {
-    struct Arena *_field1;
-    int _field2;
-    int _field3;
-    struct Rep *_field4;
-};
-
-struct RepeatedPtrField<TSWP::ListStyleArchive_LabelGeometry> {
-    struct Arena *_field1;
-    int _field2;
-    int _field3;
-    struct Rep *_field4;
-};
-
-struct RepeatedPtrField<TSWP::ListStyleArchive_LabelImage> {
-    struct Arena *_field1;
-    int _field2;
-    int _field3;
-    struct Rep *_field4;
-};
-
-struct RepeatedPtrField<TSWP::TOCSettingsArchive_TOCEntryData> {
-    struct Arena *_field1;
-    int _field2;
-    int _field3;
-    struct Rep *_field4;
-};
-
-struct RepeatedPtrField<TSWP::TabArchive> {
-    struct Arena *_field1;
-    int _field2;
-    int _field3;
-    struct Rep *_field4;
-};
-
-struct RepeatedPtrField<std::__1::basic_string<char>> {
-    struct Arena *_field1;
-    int _field2;
-    int _field3;
-    struct Rep *_field4;
-};
-
-struct RubyFieldArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct ArenaStringPtr _field5;
-    struct SmartFieldArchive *_field6;
-};
-
-struct SelectionArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct Range *_field5;
-    struct Range *_field6;
-    int _field7;
-    int _field8;
-    int _field9;
-};
-
-struct ShadowArchive;
-
-struct ShapeArchive;
-
-struct ShapeInfoArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct ShapeArchive *_field5;
-    struct Reference *_field6;
-    struct Reference *_field7;
-    struct Reference *_field8;
-    _Bool _field9;
-};
-
-struct ShapeStyleArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct ShapeStyleArchive *_field5;
-    struct ShapeStylePropertiesArchive *_field6;
-    unsigned int _field7;
-};
-
-struct ShapeStylePropertiesArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct ColumnsArchive *_field5;
-    struct PaddingArchive *_field6;
-    struct Reference *_field7;
-    int _field8;
-    _Bool _field9;
-    _Bool _field10;
-    _Bool _field11;
-    _Bool _field12;
-    unsigned int _field13;
-    _Bool _field14;
-    _Bool _field15;
-};
-
-struct ShapeStylePropertyChangeSetArchive;
-
-struct Size;
-
-struct SmartFieldArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct ArenaStringPtr _field5;
-};
-
-struct StrokeArchive;
-
-struct StyleArchive;
-
-struct StyleDiffArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct Reference *_field5;
-    struct CharacterStylePropertyChangeSetArchive *_field6;
-    struct ParagraphStylePropertyChangeSetArchive *_field7;
-    struct ShapeStylePropertyChangeSetArchive *_field8;
-};
-
-struct TOCAttachmentArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct DrawableAttachmentArchive *_field5;
-};
-
-struct TOCEntryInstanceArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct ArenaStringPtr _field5;
-    struct ArenaStringPtr _field6;
-    struct Reference *_field7;
-    struct Reference *_field8;
-    unsigned int _field9;
-    unsigned int _field10;
-    unsigned int _field11;
-    unsigned int _field12;
-    unsigned int _field13;
-};
-
-struct TOCEntryStyleArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct ParagraphStyleArchive *_field5;
-    struct TOCEntryStylePropertiesArchive *_field6;
-};
-
-struct TOCEntryStylePropertiesArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct Reference *_field5;
-    _Bool _field6;
-    _Bool _field7;
-};
-
-struct TOCInfoArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct RepeatedPtrField<TSP::Reference> _field5;
-    struct RepeatedPtrField<TSP::Range> _field6;
-    struct ShapeInfoArchive *_field7;
-    struct Reference *_field8;
-    _Bool _field9;
-};
-
-struct TOCLayoutHintArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct Range *_field5;
-};
-
-struct TOCSettingsArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct RepeatedPtrField<TSWP::TOCSettingsArchive_TOCEntryData> _field5;
-    struct ArenaStringPtr _field6;
-    unsigned int _field7;
+    struct InternalMetadata _field2;
 };
 
 struct TSWPAttributeArray {
@@ -783,42 +128,6 @@ struct TSWPFontHeightInfo {
     double underlineThickness;
 };
 
-struct TSWPLineFragment {
-    unsigned long long _field1;
-    unsigned long long _field2;
-    unsigned long long _field3;
-    unsigned long long _field4;
-    double _field5;
-    struct CGRect _field6;
-    struct CGRect _field7;
-    struct TSWPFontHeightInfo _field8;
-    id _field9;
-    id _field10;
-    struct vector<TSWPLineRef, std::__1::allocator<TSWPLineRef>> _field11;
-    double _field12;
-    struct vector<TSWPLineRef, std::__1::allocator<TSWPLineRef>> _field13;
-    struct vector<TSWPLineRef, std::__1::allocator<TSWPLineRef>> _field14;
-    struct map<unsigned long, CGRect, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, CGRect>>> _field15;
-    id _field16;
-    id _field17;
-    id _field18;
-    id _field19;
-    id _field20;
-    id _field21;
-    id _field22;
-    id _field23;
-    unsigned int _field24;
-    double _field25;
-    id _field26;
-    id _field27;
-    id _field28;
-    id _field29;
-    id _field30;
-    unsigned long long _field31;
-    struct vector<TSWPLFCharIndexData, std::__1::allocator<TSWPLFCharIndexData>> _field32;
-    id _field33;
-};
-
 struct TSWPLineFragmentArray;
 
 struct TSWPLineRef {
@@ -828,14 +137,6 @@ struct TSWPLineRef {
     unsigned long long _field4;
     struct CGAffineTransform _field5;
     unsigned long long _field6;
-};
-
-struct TSWPMarkers {
-    struct vector<std::__1::pair<unsigned long, unsigned short>, std::__1::allocator<std::__1::pair<unsigned long, unsigned short>>> _field1;
-    _Bool _field2;
-    _Bool _field3;
-    _Bool _field4;
-    _Bool _field5;
 };
 
 struct TSWPParagraphAttributeArray {
@@ -893,156 +194,11 @@ struct TSWPParagraphMetrics {
 
 struct TSWPParagraphTypesetter;
 
-struct TSWPStorageAction;
-
-struct TSWPStorageActionBuilder {
-    CDUnknownFunctionPointerType *_field1;
-    id _field2;
-    struct TSWPStorageTransaction *_field3;
-    struct TSWPStorageTransaction _field4;
-    _Bool _field5;
-    id _field6;
-    struct TSWPStorageActionRunner _field7;
-    unsigned long long _field8;
-    struct vector<TSWPStorageAction, std::__1::allocator<TSWPStorageAction>> *_field9;
-    struct TSWPStorageAction *_field10;
-    _Bool _field11;
-    _Bool _field12;
-    int _field13;
-    unsigned int _field14;
-    unsigned long long _field15;
-};
-
-struct TSWPStorageActionGroup {
-    int _field1;
-    struct vector<TSWPStorageAction, std::__1::allocator<TSWPStorageAction>> _field2;
-    struct vector<TSWPStorageAction, std::__1::allocator<TSWPStorageAction>> _field3;
-    struct vector<TSWPStorageAction, std::__1::allocator<TSWPStorageAction>> _field4;
-    struct vector<TSWPStorageAction, std::__1::allocator<TSWPStorageAction>> _field5;
-    _Bool _field6;
-    struct TSWPMarkers _field7;
-};
-
-struct TSWPStorageActionRunner {
-    struct TSWPStorageActionState *_field1;
-    _Bool _field2;
-};
-
-struct TSWPStorageActionState {
-    CDUnknownFunctionPointerType *_field1;
-    id _field2;
-    struct TSWPStorageTransaction *_field3;
-    struct TSWPStorageTransaction _field4;
-    _Bool _field5;
-    id _field6;
-    struct TSWPStorageActionRunner _field7;
-    unsigned long long _field8;
-    struct vector<TSWPStorageAction, std::__1::allocator<TSWPStorageAction>> *_field9;
-    struct TSWPStorageAction *_field10;
-    _Bool _field11;
-    _Bool _field12;
-};
-
-struct TSWPStorageChangeRange;
-
-struct TSWPStorageParagraphIndexChange;
-
-struct TSWPStorageTransaction {
-    struct vector<TSWPStorageTransactionObject, std::__1::allocator<TSWPStorageTransactionObject>> _field1;
-    struct vector<TSWPStorageActionGroup, std::__1::allocator<TSWPStorageActionGroup>> _field2;
-    unsigned long long _field3;
-    unsigned long long _field4;
-    unsigned long long _field5;
-    struct TSWPStorageActionGroup _field6;
-    unsigned int _field7;
-    unsigned long long _field8;
-    struct vector<TSWPAttributeArrayKind, std::__1::allocator<TSWPAttributeArrayKind>> _field9;
-    struct vector<TSWPStorageChangeRange, std::__1::allocator<TSWPStorageChangeRange>> _field10;
-    struct vector<TSWPStorageParagraphIndexChange, std::__1::allocator<TSWPStorageParagraphIndexChange>> _field11;
-    unsigned long long _field12;
-    unsigned long long _field13;
-    _Bool _field14;
-    id _field15;
-    struct vector<TSWPStorageAction, std::__1::allocator<TSWPStorageAction>> _field16;
-    struct vector<TSWPStorageAction, std::__1::allocator<TSWPStorageAction>> _field17;
-    _Bool _field18;
-};
-
-struct TSWPStorageTransactionObject;
-
-struct TabArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct ArenaStringPtr _field5;
-    float _field6;
-    int _field7;
-};
-
-struct TabsArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct RepeatedPtrField<TSWP::TabArchive> _field5;
-};
-
-struct TateChuYokoFieldArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct SmartFieldArchive *_field5;
-};
-
-struct TextPresetDisplayItemArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct ArenaStringPtr _field5;
-    struct Reference *_field6;
-};
-
-struct TextStylePresetArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct ArenaStringPtr _field5;
-    struct Reference *_field6;
-    struct Reference *_field7;
-};
-
-struct TextualAttachmentArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct ArenaStringPtr _field5;
-    int _field6;
-};
-
-struct ThemeArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct ExtensionSet _field2;
-    struct InternalMetadataWithArena _field3;
-    struct HasBits<1> _field4;
-    struct CachedSize _field5;
-    struct RepeatedPtrField<TSP::UUID> _field6;
-    struct RepeatedPtrField<TSP::UUID> _field7;
-    struct RepeatedPtrField<TSP::Color> _field8;
-    struct ArenaStringPtr _field9;
-    struct Reference *_field10;
-    struct Reference *_field11;
-};
-
-struct UIGraphicalAttachment {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
+struct UIEdgeInsets {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
 };
 
 struct _NSRange {
@@ -1060,77 +216,51 @@ struct _TSWPCharIndexAndPosition {
     double _field5;
 };
 
-struct __list_node_base<unsigned long, void *> {
-    struct __list_node_base<unsigned long, void *> *__prev_;
-    struct __list_node_base<unsigned long, void *> *__next_;
-};
-
 struct __shared_weak_count;
 
-struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
-    struct __tree_node_base<void *> *__left_;
-};
-
-struct atomic<int> {
-    struct __cxx_atomic_impl<int, std::__1::__cxx_atomic_base_impl<int>> {
-        _Atomic int _field1;
-    } _field1;
+struct __tree_end_node<std::__tree_node_base<void *>*> {
+    void *__left_;
 };
 
 struct atomic<unsigned long> {
-    struct __cxx_atomic_impl<unsigned long, std::__1::__cxx_atomic_base_impl<unsigned long>> {
+    struct __cxx_atomic_impl<unsigned long, std::__cxx_atomic_base_impl<unsigned long>> {
         _Atomic unsigned long long __a_value;
     } __a_;
 };
 
-struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>;
-
-struct list<unsigned long, std::__1::allocator<unsigned long>> {
-    struct __list_node_base<unsigned long, void *> __end_;
-    struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<unsigned long, void *>>> {
+struct list<unsigned long, std::allocator<unsigned long>> {
+    struct __list_node_base<unsigned long, void *> {
+        void *__prev_;
+        void *__next_;
+    } __end_;
+    struct __compressed_pair<unsigned long, std::allocator<std::__list_node<unsigned long, void *>>> {
         unsigned long long __value_;
     } __size_alloc_;
 };
 
-struct map<int, google::protobuf::internal::ExtensionSet::Extension, std::__1::less<int>, std::__1::allocator<std::__1::pair<const int, google::protobuf::internal::ExtensionSet::Extension>>>;
-
-struct map<unsigned long, CGRect, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, CGRect>>> {
-    struct __tree<std::__1::__value_type<unsigned long, CGRect>, std::__1::__map_value_compare<unsigned long, std::__1::__value_type<unsigned long, CGRect>, std::__1::less<unsigned long>, true>, std::__1::allocator<std::__1::__value_type<unsigned long, CGRect>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned long, CGRect>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned long, std::__1::__value_type<unsigned long, CGRect>, std::__1::less<unsigned long>, true>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
-};
-
-struct map<unsigned long, TSWPFontMetricsCacheEntry, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, TSWPFontMetricsCacheEntry>>> {
-    struct __tree<std::__1::__value_type<unsigned long, TSWPFontMetricsCacheEntry>, std::__1::__map_value_compare<unsigned long, std::__1::__value_type<unsigned long, TSWPFontMetricsCacheEntry>, std::__1::less<unsigned long>, true>, std::__1::allocator<std::__1::__value_type<unsigned long, TSWPFontMetricsCacheEntry>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned long, TSWPFontMetricsCacheEntry>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
+struct map<unsigned long, TSWPFontMetricsCacheEntry, std::less<unsigned long>, std::allocator<std::pair<const unsigned long, TSWPFontMetricsCacheEntry>>> {
+    struct __tree<std::__value_type<unsigned long, TSWPFontMetricsCacheEntry>, std::__map_value_compare<unsigned long, std::__value_type<unsigned long, TSWPFontMetricsCacheEntry>, std::less<unsigned long>, true>, std::allocator<std::__value_type<unsigned long, TSWPFontMetricsCacheEntry>>> {
+        void *__begin_node_;
+        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<unsigned long, TSWPFontMetricsCacheEntry>, void *>>> {
+            struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
         } __pair1_;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned long, std::__1::__value_type<unsigned long, TSWPFontMetricsCacheEntry>, std::__1::less<unsigned long>, true>> {
+        struct __compressed_pair<unsigned long, std::__map_value_compare<unsigned long, std::__value_type<unsigned long, TSWPFontMetricsCacheEntry>, std::less<unsigned long>, true>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
 };
 
-struct map<unsigned long, std::__1::shared_ptr<TSWPParagraphTypesetter>, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, std::__1::shared_ptr<TSWPParagraphTypesetter>>>> {
-    struct __tree<std::__1::__value_type<unsigned long, std::__1::shared_ptr<TSWPParagraphTypesetter>>, std::__1::__map_value_compare<unsigned long, std::__1::__value_type<unsigned long, std::__1::shared_ptr<TSWPParagraphTypesetter>>, std::__1::less<unsigned long>, true>, std::__1::allocator<std::__1::__value_type<unsigned long, std::__1::shared_ptr<TSWPParagraphTypesetter>>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned long, std::__1::shared_ptr<TSWPParagraphTypesetter>>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
+struct map<unsigned long, std::shared_ptr<TSWPParagraphTypesetter>, std::less<unsigned long>, std::allocator<std::pair<const unsigned long, std::shared_ptr<TSWPParagraphTypesetter>>>> {
+    struct __tree<std::__value_type<unsigned long, std::shared_ptr<TSWPParagraphTypesetter>>, std::__map_value_compare<unsigned long, std::__value_type<unsigned long, std::shared_ptr<TSWPParagraphTypesetter>>, std::less<unsigned long>, true>, std::allocator<std::__value_type<unsigned long, std::shared_ptr<TSWPParagraphTypesetter>>>> {
+        void *__begin_node_;
+        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<unsigned long, std::shared_ptr<TSWPParagraphTypesetter>>, void *>>> {
+            struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
         } __pair1_;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned long, std::__1::__value_type<unsigned long, std::__1::shared_ptr<TSWPParagraphTypesetter>>, std::__1::less<unsigned long>, true>> {
+        struct __compressed_pair<unsigned long, std::__map_value_compare<unsigned long, std::__value_type<unsigned long, std::shared_ptr<TSWPParagraphTypesetter>>, std::less<unsigned long>, true>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
 };
-
-struct pair<unsigned long, unsigned short>;
 
 struct shared_ptr<TSWPLineFragmentArray> {
     struct TSWPLineFragmentArray *__ptr_;
@@ -1142,159 +272,93 @@ struct shared_ptr<TSWPParagraphTypesetter> {
     struct __shared_weak_count *_field2;
 };
 
-struct vector<CGPoint, std::__1::allocator<CGPoint>> {
+struct vector<CGPoint, std::allocator<CGPoint>> {
     struct CGPoint *__begin_;
     struct CGPoint *__end_;
-    struct __compressed_pair<CGPoint *, std::__1::allocator<CGPoint>> {
+    struct __compressed_pair<CGPoint *, std::allocator<CGPoint>> {
         struct CGPoint *__value_;
     } __end_cap_;
 };
 
-struct vector<CGRect, std::__1::allocator<CGRect>> {
+struct vector<CGRect, std::allocator<CGRect>> {
     struct CGRect *__begin_;
     struct CGRect *__end_;
-    struct __compressed_pair<CGRect *, std::__1::allocator<CGRect>> {
+    struct __compressed_pair<CGRect *, std::allocator<CGRect>> {
         struct CGRect *__value_;
     } __end_cap_;
 };
 
-struct vector<TSWPAttachmentPosition, std::__1::allocator<TSWPAttachmentPosition>> {
+struct vector<TSWPAttachmentPosition, std::allocator<TSWPAttachmentPosition>> {
     CDStruct_183601bc *__begin_;
     CDStruct_183601bc *__end_;
-    struct __compressed_pair<TSWPAttachmentPosition *, std::__1::allocator<TSWPAttachmentPosition>> {
+    struct __compressed_pair<TSWPAttachmentPosition *, std::allocator<TSWPAttachmentPosition>> {
         CDStruct_183601bc *__value_;
     } __end_cap_;
 };
 
-struct vector<TSWPAttributeArrayKind, std::__1::allocator<TSWPAttributeArrayKind>> {
-    unsigned long long *_field1;
-    unsigned long long *_field2;
-    struct __compressed_pair<TSWPAttributeArrayKind *, std::__1::allocator<TSWPAttributeArrayKind>> {
-        unsigned long long *_field1;
-    } _field3;
-};
-
-struct vector<TSWPDirtyRange, std::__1::allocator<TSWPDirtyRange>> {
+struct vector<TSWPDirtyRange, std::allocator<TSWPDirtyRange>> {
     CDStruct_183601bc *__begin_;
     CDStruct_183601bc *__end_;
-    struct __compressed_pair<TSWPDirtyRange *, std::__1::allocator<TSWPDirtyRange>> {
+    struct __compressed_pair<TSWPDirtyRange *, std::allocator<TSWPDirtyRange>> {
         CDStruct_183601bc *__value_;
     } __end_cap_;
 };
 
-struct vector<TSWPLFCharIndexData, std::__1::allocator<TSWPLFCharIndexData>> {
-    CDStruct_183601bc *_field1;
-    CDStruct_183601bc *_field2;
-    struct __compressed_pair<TSWPLFCharIndexData *, std::__1::allocator<TSWPLFCharIndexData>> {
-        CDStruct_183601bc *_field1;
-    } _field3;
-};
-
-struct vector<TSWPLineRef, std::__1::allocator<TSWPLineRef>> {
-    struct TSWPLineRef *_field1;
-    struct TSWPLineRef *_field2;
-    struct __compressed_pair<TSWPLineRef *, std::__1::allocator<TSWPLineRef>> {
-        struct TSWPLineRef *_field1;
-    } _field3;
-};
-
-struct vector<TSWPParagraphMetrics, std::__1::allocator<TSWPParagraphMetrics>> {
+struct vector<TSWPParagraphMetrics, std::allocator<TSWPParagraphMetrics>> {
     struct TSWPParagraphMetrics *__begin_;
     struct TSWPParagraphMetrics *__end_;
-    struct __compressed_pair<TSWPParagraphMetrics *, std::__1::allocator<TSWPParagraphMetrics>> {
+    struct __compressed_pair<TSWPParagraphMetrics *, std::allocator<TSWPParagraphMetrics>> {
         struct TSWPParagraphMetrics *__value_;
     } __end_cap_;
 };
 
-struct vector<TSWPStorageAction, std::__1::allocator<TSWPStorageAction>> {
-    struct TSWPStorageAction *_field1;
-    struct TSWPStorageAction *_field2;
-    struct __compressed_pair<TSWPStorageAction *, std::__1::allocator<TSWPStorageAction>> {
-        struct TSWPStorageAction *_field1;
-    } _field3;
-};
-
-struct vector<TSWPStorageActionGroup, std::__1::allocator<TSWPStorageActionGroup>> {
-    struct TSWPStorageActionGroup *_field1;
-    struct TSWPStorageActionGroup *_field2;
-    struct __compressed_pair<TSWPStorageActionGroup *, std::__1::allocator<TSWPStorageActionGroup>> {
-        struct TSWPStorageActionGroup *_field1;
-    } _field3;
-};
-
-struct vector<TSWPStorageChangeRange, std::__1::allocator<TSWPStorageChangeRange>> {
-    struct TSWPStorageChangeRange *_field1;
-    struct TSWPStorageChangeRange *_field2;
-    struct __compressed_pair<TSWPStorageChangeRange *, std::__1::allocator<TSWPStorageChangeRange>> {
-        struct TSWPStorageChangeRange *_field1;
-    } _field3;
-};
-
-struct vector<TSWPStorageParagraphIndexChange, std::__1::allocator<TSWPStorageParagraphIndexChange>> {
-    struct TSWPStorageParagraphIndexChange *_field1;
-    struct TSWPStorageParagraphIndexChange *_field2;
-    struct __compressed_pair<TSWPStorageParagraphIndexChange *, std::__1::allocator<TSWPStorageParagraphIndexChange>> {
-        struct TSWPStorageParagraphIndexChange *_field1;
-    } _field3;
-};
-
-struct vector<TSWPStorageTransactionObject, std::__1::allocator<TSWPStorageTransactionObject>> {
-    struct TSWPStorageTransactionObject *_field1;
-    struct TSWPStorageTransactionObject *_field2;
-    struct __compressed_pair<TSWPStorageTransactionObject *, std::__1::allocator<TSWPStorageTransactionObject>> {
-        struct TSWPStorageTransactionObject *_field1;
-    } _field3;
-};
-
-struct vector<_NSRange, std::__1::allocator<_NSRange>> {
+struct vector<_NSRange, std::allocator<_NSRange>> {
     struct _NSRange *__begin_;
     struct _NSRange *__end_;
-    struct __compressed_pair<_NSRange *, std::__1::allocator<_NSRange>> {
+    struct __compressed_pair<_NSRange *, std::allocator<_NSRange>> {
         struct _NSRange *__value_;
     } __end_cap_;
 };
 
-struct vector<_TSWPCharIndexAndAffinity, std::__1::allocator<_TSWPCharIndexAndAffinity>> {
+struct vector<_TSWPCharIndexAndAffinity, std::allocator<_TSWPCharIndexAndAffinity>> {
     struct _TSWPCharIndexAndAffinity *__begin_;
     struct _TSWPCharIndexAndAffinity *__end_;
-    struct __compressed_pair<_TSWPCharIndexAndAffinity *, std::__1::allocator<_TSWPCharIndexAndAffinity>> {
+    struct __compressed_pair<_TSWPCharIndexAndAffinity *, std::allocator<_TSWPCharIndexAndAffinity>> {
         struct _TSWPCharIndexAndAffinity *__value_;
     } __end_cap_;
 };
 
-struct vector<bool, std::__1::allocator<bool>> {
+struct vector<bool, std::allocator<bool>> {
     unsigned long long *__begin_;
     unsigned long long __size_;
-    struct __compressed_pair<unsigned long, std::__1::allocator<unsigned long>> {
+    struct __compressed_pair<unsigned long, std::allocator<unsigned long>> {
         unsigned long long __value_;
     } __cap_alloc_;
 };
 
-struct vector<std::__1::pair<unsigned long, unsigned short>, std::__1::allocator<std::__1::pair<unsigned long, unsigned short>>> {
-    struct pair<unsigned long, unsigned short> *_field1;
-    struct pair<unsigned long, unsigned short> *_field2;
-    struct __compressed_pair<std::__1::pair<unsigned long, unsigned short>*, std::__1::allocator<std::__1::pair<unsigned long, unsigned short>>> {
-        struct pair<unsigned long, unsigned short> *_field1;
-    } _field3;
-};
-
-struct vector<unsigned long, std::__1::allocator<unsigned long>> {
+struct vector<unsigned long, std::allocator<unsigned long>> {
     unsigned long long *__begin_;
     unsigned long long *__end_;
-    struct __compressed_pair<unsigned long *, std::__1::allocator<unsigned long>> {
+    struct __compressed_pair<unsigned long *, std::allocator<unsigned long>> {
         unsigned long long *__value_;
     } __end_cap_;
 };
 
-struct vector<unsigned short, std::__1::allocator<unsigned short>> {
+struct vector<unsigned short, std::allocator<unsigned short>> {
     unsigned short *__begin_;
     unsigned short *__end_;
-    struct __compressed_pair<unsigned short *, std::__1::allocator<unsigned short>> {
+    struct __compressed_pair<unsigned short *, std::allocator<unsigned short>> {
         unsigned short *__value_;
     } __end_cap_;
 };
 
 #pragma mark Typedef'd Structures
+
+typedef struct {
+    unsigned long long _field1;
+    unsigned long long _field2;
+    _Bool _field3;
+} CDStruct_f03de906;
 
 typedef struct {
     unsigned long long _field1;
@@ -1307,12 +371,6 @@ typedef struct {
     unsigned long long _field1;
     double _field2;
 } CDStruct_316206b0;
-
-typedef struct {
-    int _field1;
-    unsigned long long _field2;
-    _Bool _field3;
-} CDStruct_b9fbe577;
 
 typedef struct {
     long long _field1;
@@ -1368,83 +426,24 @@ typedef struct {
 } CDStruct_f9ea3fe9;
 
 // Template types
-typedef struct RepeatedField<bool> {
-    int _field1;
-    int _field2;
-    union Pointer _field3;
-} RepeatedField_dbae4dc9;
-
-typedef struct RepeatedField<float> {
-    int _field1;
-    int _field2;
-    union Pointer _field3;
-} RepeatedField_280beee3;
-
-typedef struct RepeatedField<int> {
-    int _field1;
-    int _field2;
-    union Pointer _field3;
-} RepeatedField_9cbdf2a0;
-
-typedef struct shared_ptr<TSWPLineFragmentArray> {
-    struct TSWPLineFragmentArray *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-} shared_ptr_1a254aea;
-
 typedef struct shared_ptr<TSWPParagraphTypesetter> {
     struct TSWPParagraphTypesetter *_field1;
     struct __shared_weak_count *_field2;
 } shared_ptr_b124cf66;
 
-typedef struct vector<TSWPDirtyRange, std::__1::allocator<TSWPDirtyRange>> {
-    CDStruct_183601bc *__begin_;
-    CDStruct_183601bc *__end_;
-    struct __compressed_pair<TSWPDirtyRange *, std::__1::allocator<TSWPDirtyRange>> {
-        CDStruct_183601bc *__value_;
-    } __end_cap_;
-} vector_e3deae5b;
-
-typedef struct vector<_NSRange, std::__1::allocator<_NSRange>> {
-    struct _NSRange *__begin_;
-    struct _NSRange *__end_;
-    struct __compressed_pair<_NSRange *, std::__1::allocator<_NSRange>> {
-        struct _NSRange *__value_;
-    } __end_cap_;
-} vector_b5e32e34;
-
-typedef struct vector<_TSWPCharIndexAndAffinity, std::__1::allocator<_TSWPCharIndexAndAffinity>> {
+typedef struct vector<_TSWPCharIndexAndAffinity, std::allocator<_TSWPCharIndexAndAffinity>> {
     struct _TSWPCharIndexAndAffinity *__begin_;
     struct _TSWPCharIndexAndAffinity *__end_;
-    struct __compressed_pair<_TSWPCharIndexAndAffinity *, std::__1::allocator<_TSWPCharIndexAndAffinity>> {
+    struct __compressed_pair<_TSWPCharIndexAndAffinity *, std::allocator<_TSWPCharIndexAndAffinity>> {
         struct _TSWPCharIndexAndAffinity *__value_;
     } __end_cap_;
-} vector_7c702c4c;
+} vector_c03e297f;
 
-typedef struct vector<bool, std::__1::allocator<bool>> {
-    unsigned long long *__begin_;
-    unsigned long long __size_;
-    struct __compressed_pair<unsigned long, std::__1::allocator<unsigned long>> {
-        unsigned long long __value_;
-    } __cap_alloc_;
-} vector_553f084a;
-
-typedef struct vector<unsigned long, std::__1::allocator<unsigned long>> {
+typedef struct vector<unsigned long, std::allocator<unsigned long>> {
     unsigned long long *__begin_;
     unsigned long long *__end_;
-    struct __compressed_pair<unsigned long *, std::__1::allocator<unsigned long>> {
+    struct __compressed_pair<unsigned long *, std::allocator<unsigned long>> {
         unsigned long long *__value_;
     } __end_cap_;
-} vector_06e666a8;
-
-#pragma mark Named Unions
-
-union AllocatedData {
-    struct KeyValue *_field1;
-    struct map<int, google::protobuf::internal::ExtensionSet::Extension, std::__1::less<int>, std::__1::allocator<std::__1::pair<const int, google::protobuf::internal::ExtensionSet::Extension>>> *_field2;
-};
-
-union Pointer {
-    struct Arena *_field1;
-    struct Rep *_field2;
-};
+} vector_2056c7c2;
 

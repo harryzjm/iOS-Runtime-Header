@@ -4,18 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <swiftCore/_TtCs12_SwiftObject.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC26SiriPlaybackControlSupport18PlaybackController : NSObject
+@interface _TtC26SiriPlaybackControlSupport18PlaybackController : _TtCs12_SwiftObject
 {
     MISSING_TYPE *nowPlayingQueue;
-    MISSING_TYPE *mediaRemoteCommandToStringMap;
+    MISSING_TYPE *assistantDiscovery;
+    MISSING_TYPE *playbackControlsCommandProvider;
 }
-
-- (void).cxx_destruct;
-- (id)init;
 
 @end
 

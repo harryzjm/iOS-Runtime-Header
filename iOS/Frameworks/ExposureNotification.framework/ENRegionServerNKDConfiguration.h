@@ -9,7 +9,7 @@
 #import <ExposureNotification/NSCopying-Protocol.h>
 #import <ExposureNotification/NSSecureCoding-Protocol.h>
 
-@class ENRegion, NSString, NSURL;
+@class ENRegion, NSArray, NSString, NSURL;
 
 @interface ENRegionServerNKDConfiguration : NSObject <NSSecureCoding, NSCopying>
 {
@@ -19,16 +19,20 @@
     double _tekPublishInterval;
     NSURL *_tekUploadURL;
     NSString *_healthAuthorityID;
+    NSArray *_acceptedReportTypes;
     NSString *_testVerificationAPIKey;
     NSURL *_testVerificationCertificateURL;
     NSURL *_testVerificationURL;
+    NSArray *_travelerDownloadConfigurations;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSArray *travelerDownloadConfigurations; // @synthesize travelerDownloadConfigurations=_travelerDownloadConfigurations;
 @property(readonly, copy, nonatomic) NSURL *testVerificationURL; // @synthesize testVerificationURL=_testVerificationURL;
 @property(readonly, copy, nonatomic) NSURL *testVerificationCertificateURL; // @synthesize testVerificationCertificateURL=_testVerificationCertificateURL;
 @property(readonly, copy, nonatomic) NSString *testVerificationAPIKey; // @synthesize testVerificationAPIKey=_testVerificationAPIKey;
+@property(readonly, copy, nonatomic) NSArray *acceptedReportTypes; // @synthesize acceptedReportTypes=_acceptedReportTypes;
 @property(readonly, copy, nonatomic) NSString *healthAuthorityID; // @synthesize healthAuthorityID=_healthAuthorityID;
 @property(readonly, copy, nonatomic) NSURL *tekUploadURL; // @synthesize tekUploadURL=_tekUploadURL;
 @property(readonly, nonatomic) double tekPublishInterval; // @synthesize tekPublishInterval=_tekPublishInterval;

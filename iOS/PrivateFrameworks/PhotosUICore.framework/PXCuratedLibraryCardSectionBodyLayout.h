@@ -13,8 +13,8 @@
 {
     unsigned short _assetVersion;
     id <PXDisplayAsset> _keyAsset;
-    CDStruct_d97c9657 _updateFlags;
-    CDStruct_d97c9657 _postUpdateFlags;
+    CDStruct_af00bf4e _updateFlags;
+    CDStruct_af00bf4e _postUpdateFlags;
     struct _PXGSpriteIndexRange _assetSpriteIndexRange;
     NSMutableIndexSet *_axSpriteIndexes;
     _Bool _isSelected;
@@ -49,7 +49,6 @@
 - (id)axContentInfoAtSpriteIndex:(unsigned int)arg1;
 - (id)axSelectedSpriteIndexes;
 - (id)axSpriteIndexes;
-- (id)displayAssetRequestObserverForSpritesInRange:(struct _PXGSpriteIndexRange)arg1 inLayout:(id)arg2;
 - (id)displayAssetFetchResultForSpritesInRange:(struct _PXGSpriteIndexRange)arg1 inLayout:(id)arg2;
 - (struct CGSize)minSpriteSizeForPresentationStyle:(unsigned long long)arg1;
 - (unsigned long long)desiredPlaceholderStyleInLayout:(id)arg1;

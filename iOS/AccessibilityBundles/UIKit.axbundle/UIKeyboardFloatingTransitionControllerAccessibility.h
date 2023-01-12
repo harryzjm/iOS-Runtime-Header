@@ -13,7 +13,6 @@
 + (id)safeCategoryTargetClassName;
 - (void)finalizeTransition;
 - (void)setProgress:(double)arg1;
-- (void)_axAnnounceFloating:(_Bool)arg1;
 
 @end
 

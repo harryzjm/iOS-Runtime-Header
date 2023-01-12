@@ -16,9 +16,9 @@
 + (id)dateValueWithNSDate:(id)arg1;
 + (id)dateValueWithDouble:(double)arg1;
 + (id)numberValueWithDouble:(double)arg1;
-+ (void)saveGridValue:(id)arg1 toArchive:(struct GridValue *)arg2;
-+ (id)instanceWithArchive:(const struct GridValue *)arg1;
-- (id)initWithArchive:(const struct GridValue *)arg1;
++ (void)saveGridValue:(id)arg1 toArchive:(void *)arg2;
++ (id)instanceWithArchive:(const void *)arg1;
+- (id)initWithArchive:(const void *)arg1;
 
 @end
 

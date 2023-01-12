@@ -13,22 +13,7 @@
 @interface NSISLinearExpression : NSObject <NSFastEnumeration>
 {
     NSISEngine *engine;
-    struct {
-        unsigned short inline_capacity;
-        unsigned int var_count;
-        double constant;
-        union {
-            struct {
-                id stored_extern_marker;
-                CDStruct_183601bc *slab;
-                unsigned long long capacity;
-            } extern_data;
-            struct {
-                unsigned long long aligner;
-            } inline_slab;
-            unsigned char padding[48];
-        } data;
-    } linExp;
+    CDStruct_9ac54d62 linExp;
 }
 
 + (id)acquireFromPoolForUseCase:(long long)arg1 engine:(id)arg2;

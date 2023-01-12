@@ -8,7 +8,7 @@
 
 #import <Translation/_LTSpeechTranslationDelegate-Protocol.h>
 
-@class NSString, NSUUID, _LTHybridEndpointer, _LTLanguageDetector;
+@class NSError, NSString, NSUUID, _LTHybridEndpointer, _LTLanguageDetector, _LTSpeechActivityDetector, _LTSpeechDataQueue, _LTTranslationContext;
 @protocol OS_dispatch_queue, _LTSpeechTranslationDelegate, _LTTranslationEngine;
 
 __attribute__((visibility("hidden")))
@@ -17,7 +17,12 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_queue;
     _Bool _expectFinalLidResult;
     _Bool _sentFinalLidResult;
-    _Bool _translationFinishedWithoutError;
+    _Bool _translationFinished;
+    struct atomic<bool> _speechActivityDetected;
+    NSError *_translationError;
+    _LTTranslationContext *_context;
+    _LTSpeechDataQueue *_cache;
+    _LTSpeechActivityDetector *_speechDetector;
     NSUUID *_sessionID;
     id <_LTTranslationEngine> _engine;
     CDUnknownBlockType _completionHandler;
@@ -40,11 +45,14 @@ __attribute__((visibility("hidden")))
 - (void)hybridEndpointerFoundEndpoint;
 - (void)languageDetectionCompleted;
 - (void)languageDetectionResult:(id)arg1;
+- (void)speechActivityDetected;
 - (void)delegateTranslationDidFinishWithError:(id)arg1;
 - (void)cancel;
 - (void)endAudio;
+- (void)_translateSpeechAudioData:(id)arg1;
 - (void)addSpeechAudioData:(id)arg1;
 - (void)startTextToSpeechTranslationWithContext:(id)arg1 text:(id)arg2;
+- (void)_startSpeechTranslationWithContext:(id)arg1;
 - (void)startSpeechTranslationWithContext:(id)arg1;
 - (id)initWithEngine:(id)arg1 delegate:(id)arg2;
 

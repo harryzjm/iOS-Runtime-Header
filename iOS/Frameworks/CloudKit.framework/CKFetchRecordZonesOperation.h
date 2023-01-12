@@ -13,6 +13,7 @@
 {
     _Bool _isFetchAllRecordZonesOperation;
     _Bool _ignorePCSFailures;
+    CDUnknownBlockType _perRecordZoneCompletionBlock;
     CDUnknownBlockType _fetchRecordZonesCompletionBlock;
     NSArray *_recordZoneIDs;
     NSMutableDictionary *_recordZonesByZoneID;
@@ -37,6 +38,7 @@
 - (id)activityCreate;
 - (id)relevantZoneIDs;
 @property(copy, nonatomic) CDUnknownBlockType fetchRecordZonesCompletionBlock; // @synthesize fetchRecordZonesCompletionBlock=_fetchRecordZonesCompletionBlock;
+@property(copy, nonatomic) CDUnknownBlockType perRecordZoneCompletionBlock; // @synthesize perRecordZoneCompletionBlock=_perRecordZoneCompletionBlock;
 - (id)initWithRecordZoneIDs:(id)arg1;
 - (id)init;
 

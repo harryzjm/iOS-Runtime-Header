@@ -16,5 +16,6 @@
 
 @optional
 + (_Bool)shouldLoadPluginForDaemon:(id <HDHealthDaemon>)arg1;
+- (void)handleDatabaseObliteration;
 @end
 

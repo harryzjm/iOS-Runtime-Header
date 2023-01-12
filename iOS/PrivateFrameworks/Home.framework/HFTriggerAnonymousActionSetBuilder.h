@@ -15,6 +15,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long actionSetType; // @synthesize actionSetType=_actionSetType;
 @property(retain, nonatomic) HMTrigger *containingTrigger; // @synthesize containingTrigger=_containingTrigger;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)commitItem;
 - (id)deleteActionSet;
 - (void)updateAction:(id)arg1;

@@ -35,7 +35,6 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSString *iconLocation; // @synthesize iconLocation=_iconLocation;
 @property(readonly, nonatomic) struct UIEdgeInsets fontLanguageInsets; // @synthesize fontLanguageInsets=_fontLanguageInsets;
 @property(readonly, nonatomic) struct UIEdgeInsets textInsets; // @synthesize textInsets=_textInsets;
 @property(readonly, nonatomic) UIColor *focusHighlightColor; // @synthesize focusHighlightColor=_focusHighlightColor;

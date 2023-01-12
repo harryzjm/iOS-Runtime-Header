@@ -11,7 +11,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (struct CGSize)intrinsicContentSize;
 - (id)init;
 
 @end

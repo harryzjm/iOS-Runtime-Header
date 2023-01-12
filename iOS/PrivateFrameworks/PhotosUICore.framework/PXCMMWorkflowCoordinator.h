@@ -6,18 +6,21 @@
 
 #import <objc/NSObject.h>
 
+#import <PhotosUICore/PXAssetCollectionActionPerformerDelegate-Protocol.h>
 #import <PhotosUICore/PXCMMActionControllerDelegate-Protocol.h>
 #import <PhotosUICore/PXCMMActionPerformerDelegate-Protocol.h>
 #import <PhotosUICore/PXCMMViewControllerDelegate-Protocol.h>
 #import <PhotosUICore/PXCMMWorkflowPresenting-Protocol.h>
 
-@class NSString, PXCMMViewController, PXCPLStatusProvider, UINavigationController;
+@class NSString, PXCMMGridController, PXCMMSession, PXCMMViewController, PXCPLStatusProvider, UINavigationController, UIViewController;
 @protocol PXCMMWorkflowCoordinatorDelegate;
 
-@interface PXCMMWorkflowCoordinator : NSObject <PXCMMViewControllerDelegate, PXCMMActionPerformerDelegate, PXCMMActionControllerDelegate, PXCMMWorkflowPresenting>
+@interface PXCMMWorkflowCoordinator : NSObject <PXCMMViewControllerDelegate, PXAssetCollectionActionPerformerDelegate, PXCMMActionPerformerDelegate, PXCMMActionControllerDelegate, PXCMMWorkflowPresenting>
 {
     UINavigationController *_navigationController;
-    PXCMMViewController *_rootWorkflowViewController;
+    PXCMMGridController *_gridController;
+    UIViewController *_rootWorkflowViewController;
+    PXCMMSession *_rootWorkflowSession;
     PXCMMViewController *_sendBackWorkflowViewController;
     id <PXCMMWorkflowCoordinatorDelegate> _delegate;
     PXCPLStatusProvider *_cplStatusProvider;
@@ -29,7 +32,8 @@
 - (id)_alertControllerForSession:(id)arg1 withSuccess:(_Bool)arg2 error:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_presentAlertController:(id)arg1;
 - (id)_presentingViewControllerForViewController:(id)arg1;
-- (id)_createWorkflowViewControllerWithContext:(id)arg1;
+- (id)_createSendBackWorkflowViewControllerWithContext:(id)arg1;
+- (id)_createRootWorkflowViewControllerWithSession:(id)arg1 willBeEmbeddedInNavigationController:(_Bool)arg2 assetActionManager:(id)arg3 assetCollectionActionManager:(id)arg4 photosViewConfigurationBlock:(CDUnknownBlockType)arg5;
 - (void)completeMyMomentViewController:(id)arg1 showPhotoPickerForSession:(id)arg2;
 - (void)didCancelCompleteMyMomentViewController:(id)arg1;
 - (void)startPreloadingTasksForCompleteMyMomentViewController:(id)arg1;
@@ -55,7 +59,10 @@
 - (id)_performDeleteActionForSession:(id)arg1;
 - (id)_performPublishActionForSession:(id)arg1;
 - (id)_performActionWithType:(id)arg1 forSession:(id)arg2;
+- (void)performQuickSaveForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)cancelWorkflow;
+- (id)workflowViewControllerWithSession:(id)arg1 embedInNavigationControllerOfClass:(Class)arg2 assetActionManager:(id)arg3 assetCollectionActionManager:(id)arg4 photosViewConfigurationBlock:(CDUnknownBlockType)arg5;
+- (id)workflowViewControllerWithContext:(id)arg1 embedInNavigationControllerOfClass:(Class)arg2 photosViewConfigurationBlock:(CDUnknownBlockType)arg3;
 - (id)workflowViewControllerWithContext:(id)arg1 embedInNavigationControllerOfClass:(Class)arg2;
 - (id)workflowViewControllerWithContext:(id)arg1;
 - (id)init;

@@ -9,6 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (id)_deepestActionResponder;
 - (id)preferredFocusedView;
 - (void)didMoveToSuperview;
 - (id)_collectionViewController;

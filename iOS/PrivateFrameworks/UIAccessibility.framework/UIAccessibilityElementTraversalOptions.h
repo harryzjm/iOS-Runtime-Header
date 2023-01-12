@@ -18,6 +18,7 @@
     _Bool _includeWindowlessViews;
     _Bool _sorted;
     _Bool _includeAncestorsOfSelfInSiblingMatch;
+    _Bool _honorsElementGrouping;
     _Bool _forSpeakScreen;
     _Bool _shouldIncludeStatusBarWindow;
     long long _direction;
@@ -26,18 +27,19 @@
     CDUnknownBlockType _alternateViewChildrenHandler;
 }
 
++ (id)defaultFullKeyboardAccessOptions;
 + (id)defaultSpeakScreenOptions;
 + (id)defaultSwitchControlOptions;
-+ (id)voiceOverOptionsIncludingElementsFromOpaqueProviders:(_Bool)arg1;
-+ (id)defaultVoiceOverOptionsHonoringGroupsForContainer:(id)arg1;
++ (id)voiceOverOptionsIncludingElementsFromOpaqueProviders:(_Bool)arg1 honorsGroups:(_Bool)arg2;
++ (id)defaultVoiceOverOptionsHonoringGroups;
 + (id)defaultVoiceOverOptions;
-+ (id)optionsHonoringGroupsForContainer:(id)arg1;
 + (id)options;
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType alternateViewChildrenHandler; // @synthesize alternateViewChildrenHandler=_alternateViewChildrenHandler;
 @property(nonatomic) _Bool shouldIncludeStatusBarWindow; // @synthesize shouldIncludeStatusBarWindow=_shouldIncludeStatusBarWindow;
 @property(nonatomic) _Bool forSpeakScreen; // @synthesize forSpeakScreen=_forSpeakScreen;
 @property(retain, nonatomic) NSArray *allowedViewsForTraversal; // @synthesize allowedViewsForTraversal=_allowedViewsForTraversal;
+@property(nonatomic) _Bool honorsElementGrouping; // @synthesize honorsElementGrouping=_honorsElementGrouping;
 @property(nonatomic) _Bool includeAncestorsOfSelfInSiblingMatch; // @synthesize includeAncestorsOfSelfInSiblingMatch=_includeAncestorsOfSelfInSiblingMatch;
 @property(nonatomic) _Bool sorted; // @synthesize sorted=_sorted;
 @property(nonatomic) _Bool includeWindowlessViews; // @synthesize includeWindowlessViews=_includeWindowlessViews;

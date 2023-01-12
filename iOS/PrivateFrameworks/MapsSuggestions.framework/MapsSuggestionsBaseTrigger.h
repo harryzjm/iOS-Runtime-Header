@@ -19,20 +19,22 @@
 }
 
 - (void).cxx_destruct;
+- (id)objectForJSON;
+- (id)nameForJSON;
 @property(readonly, nonatomic) NSString *uniqueName;
-- (void)removeObserver:(id)arg1;
-- (void)addObserver:(id)arg1;
+- (void)unregisterObserver:(id)arg1;
+- (void)registerObserver:(id)arg1;
 - (void)didRemoveLastObserver;
 - (void)didAddFirstObserver;
 - (void)triggerMyObservers;
 - (_Bool)hasObservers;
 - (id)dispatchQueue;
+@property(readonly, copy) NSString *description;
 - (id)initWithName:(id)arg1 queue:(id)arg2;
 - (id)initWithName:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

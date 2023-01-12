@@ -13,7 +13,6 @@
 + (id)safeCategoryTargetClassName;
 - (id)init;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (id)_axLabelKeyForClassNameDict;
 
 @end
 

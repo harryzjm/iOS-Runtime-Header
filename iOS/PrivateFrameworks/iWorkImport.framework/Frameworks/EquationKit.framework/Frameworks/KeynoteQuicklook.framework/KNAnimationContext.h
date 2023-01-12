@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CALayer, KNAnimationRegistryWithFallbacks, TSDCapabilities;
+@class CALayer, TSDCapabilities;
 
 @interface KNAnimationContext : NSObject
 {
@@ -14,7 +14,6 @@
     struct CGColorSpace *_colorSpace;
     double _fieldOfViewInRadians;
     double _pixelAspectRatio;
-    KNAnimationRegistryWithFallbacks *_registry;
     CALayer *_showLayer;
     double _viewScale;
     struct CGRect _slideRect;
@@ -28,7 +27,6 @@
 @property(readonly, nonatomic) struct CGRect slideRect; // @synthesize slideRect=_slideRect;
 @property(readonly, nonatomic) struct CATransform3D slideProjectionMatrix; // @synthesize slideProjectionMatrix=_slideProjectionMatrix;
 @property(readonly, nonatomic) CALayer *showLayer; // @synthesize showLayer=_showLayer;
-@property(readonly, nonatomic) KNAnimationRegistryWithFallbacks *registry; // @synthesize registry=_registry;
 @property(nonatomic) double pixelAspectRatio; // @synthesize pixelAspectRatio=_pixelAspectRatio;
 @property(readonly, nonatomic) double fieldOfViewInRadians; // @synthesize fieldOfViewInRadians=_fieldOfViewInRadians;
 @property(nonatomic) struct CGColorSpace *colorSpace; // @synthesize colorSpace=_colorSpace;

@@ -14,11 +14,12 @@
 
 + (id)lpPluginPathsCustomKey;
 + (id)lpHasRichMediaCustomKey;
-+ (_Bool)_richLinkPluginHasRichContentForItem:(id)arg1 attachmentPaths:(id)arg2;
++ (_Bool)_richLinkPluginHasRichContentForItem:(id)arg1 attachmentPaths:(id)arg2 outURL:(id *)arg3 outTitle:(id *)arg4;
 + (id)_pluginPayloadAttachmentPathsForItem:(id)arg1;
 + (id)_newSummaryTextForPayloadData:(id)arg1 item:(id)arg2;
++ (id)lpTitleCustomKey;
 + (id)lpDescriptionCustomKey;
-+ (void)indexItem:(id)arg1 withChat:(id)arg2 isReindexing:(_Bool)arg3 metadataToUpdate:(id)arg4;
++ (void)indexItem:(id)arg1 withChat:(id)arg2 isReindexing:(_Bool)arg3 metadataToUpdate:(id)arg4 timingProfiler:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

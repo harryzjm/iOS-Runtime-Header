@@ -9,6 +9,7 @@
 @interface NRPairingCompatibilityVersionInfo : NSObject
 {
     _Bool _isOverrideActive;
+    _Bool _isRevlockFeatureFlagActive;
     long long _pairingCompatibilityVersion;
     long long _maxPairingCompatibilityVersion;
     long long _minPairingCompatibilityVersion;
@@ -20,6 +21,7 @@
 + (id)systemVersions;
 + (id)stringFromCFPrefs:(id)arg1;
 + (id)numberFromCFPrefs:(id)arg1;
+@property(nonatomic) _Bool isRevlockFeatureFlagActive; // @synthesize isRevlockFeatureFlagActive=_isRevlockFeatureFlagActive;
 @property(nonatomic) _Bool isOverrideActive; // @synthesize isOverrideActive=_isOverrideActive;
 @property(nonatomic) long long minQuickSwitchCompatibilityVersion; // @synthesize minQuickSwitchCompatibilityVersion=_minQuickSwitchCompatibilityVersion;
 @property(nonatomic) long long minPairingCompatibilityVersionWithChipID; // @synthesize minPairingCompatibilityVersionWithChipID=_minPairingCompatibilityVersionWithChipID;

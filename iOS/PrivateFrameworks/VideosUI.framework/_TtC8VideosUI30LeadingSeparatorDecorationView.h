@@ -4,19 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionReusableView.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI30LeadingSeparatorDecorationView : UICollectionReusableView
+@interface _TtC8VideosUI30LeadingSeparatorDecorationView
 {
     MISSING_TYPE *lineView;
     MISSING_TYPE *lineHeight;
 }
 
 - (void).cxx_destruct;
-- (void)layoutSubviews;
+- (struct CGSize)vui_layoutSubviews:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

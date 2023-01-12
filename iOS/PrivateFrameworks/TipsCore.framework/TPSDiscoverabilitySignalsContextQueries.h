@@ -10,6 +10,7 @@
 {
 }
 
++ (id)userInfo;
 + (id)contextKey;
 + (id)sourceBundleIDKey;
 + (id)signalsIDKey;

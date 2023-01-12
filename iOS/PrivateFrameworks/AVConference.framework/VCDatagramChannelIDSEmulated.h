@@ -33,9 +33,9 @@ __attribute__((visibility("hidden")))
 - (void)setWiFiAssist:(_Bool)arg1;
 - (void)setChannelPreferences:(id)arg1;
 - (void)setEventHandler:(CDUnknownBlockType)arg1;
-- (void)writeDatagrams:(const void **)arg1 datagramsSize:(unsigned int *)arg2 datagramsInfo:(CDStruct_54fea20c *)arg3 datagramsCount:(int)arg4 options:(struct **)arg5 completionHandler:(CDUnknownBlockType)arg6;
-- (_Bool)writeToEmulatedNetworkWithDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 datagramInfo:(CDStruct_54fea20c)arg3 options:(CDStruct_c3727dd2 *)arg4;
-- (void)writeDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 datagramInfo:(CDStruct_54fea20c)arg3 options:(CDStruct_c3727dd2 *)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)writeDatagrams:(const void **)arg1 datagramsSize:(unsigned int *)arg2 datagramsInfo:(CDStruct_4aae7d13 *)arg3 datagramsCount:(int)arg4 options:(struct **)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (_Bool)writeToEmulatedNetworkWithDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 datagramInfo:(CDStruct_4aae7d13)arg3 options:(CDStruct_c6a5d548 *)arg4;
+- (void)writeDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 datagramInfo:(CDStruct_4aae7d13)arg3 options:(CDStruct_c6a5d548 *)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)dealloc;
 - (id)initWithIDSDatagramChannel:(id)arg1 mode:(long long)arg2;
 

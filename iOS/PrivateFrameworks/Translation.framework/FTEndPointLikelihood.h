@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_5ff2e0e3)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_5ff2e0e3)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) int end_point_likelihood;
 @property(readonly, nonatomic) NSString *return_str;
 @property(readonly, nonatomic) int return_code;

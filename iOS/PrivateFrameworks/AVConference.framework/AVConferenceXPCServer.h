@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)appendContextToDictionary:(id)arg1 forConnection:(id)arg2;
 - (void)appendPIDToDictionary:(id)arg1 pid:(int)arg2;
 - (id)newClientDiedDictionary;
+- (id)newNSDictionaryWidthNSDictionary:(id)arg1;
 - (id)newNSDictionaryFromNSError:(id)arg1;
 - (id)newNSErrorFromNSDictionary:(id)arg1;
 - (id)newXPCDictionaryFromNSDictionary:(id)arg1 forEvent:(id)arg2;

@@ -63,6 +63,11 @@ struct CLLocationCoordinate2D {
     double longitude;
 };
 
+struct HUDownloadControlStatus {
+    long long statusType;
+    double downloadProgress;
+};
+
 struct HUGridPosition {
     long long _field1;
     long long _field2;
@@ -90,6 +95,10 @@ struct _NSRange {
     unsigned long long _field2;
 };
 
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
+};
+
 #pragma mark Typedef'd Structures
 
 typedef struct {
@@ -108,14 +117,15 @@ typedef struct {
 } CDStruct_dbd0f16f;
 
 typedef struct {
-    double minScrollPercentage;
-    double maxScrollPercentage;
-    double maxValue;
-} CDStruct_d6c048b4;
-
-typedef struct {
     double _field1;
 } CDStruct_2418a849;
+
+typedef struct {
+    long long value;
+    int timescale;
+    unsigned int flags;
+    long long epoch;
+} CDStruct_1b6d18a9;
 
 typedef struct {
     struct {

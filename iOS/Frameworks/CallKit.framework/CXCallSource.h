@@ -16,12 +16,14 @@
 {
     _Bool _connected;
     id <CXCallSourceDelegate> _delegate;
+    NSString *_identifier;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(nonatomic, getter=isConnected) _Bool connected; // @synthesize connected=_connected;
+@property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(nonatomic) __weak id <CXCallSourceDelegate> delegate; // @synthesize delegate=_delegate;
 - (oneway void)handleAudioSessionActivationStateChangedTo:(_Bool)arg1;
 - (oneway void)handleActionTimeout:(id)arg1;
@@ -58,10 +60,9 @@
 @property(readonly, copy, nonatomic) NSString *localizedName;
 @property(readonly, copy, nonatomic) NSURL *bundleURL;
 @property(readonly, copy, nonatomic) NSString *bundleIdentifier;
-@property(readonly, copy, nonatomic) NSString *identifier;
 @property(readonly, nonatomic) id <CXProviderVendorProtocol> vendorProtocolDelegate;
 @property(readonly, copy) NSString *description;
-- (id)init;
+- (id)initWithIdentifier:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

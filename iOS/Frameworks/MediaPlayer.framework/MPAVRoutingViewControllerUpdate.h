@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
+@class NSArray, NSDictionary;
 
 __attribute__((visibility("hidden")))
 @interface MPAVRoutingViewControllerUpdate : NSObject
@@ -19,12 +19,14 @@ __attribute__((visibility("hidden")))
     NSArray *_displayableAvailableRoutes;
     NSArray *_displayAsPickedRoutes;
     NSArray *_volumeCapableRoutes;
+    NSDictionary *_routeGrouping;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool shouldReload; // @synthesize shouldReload=_shouldReload;
 @property(nonatomic) _Bool hasPendingPickedRoutes; // @synthesize hasPendingPickedRoutes=_hasPendingPickedRoutes;
 @property(nonatomic) _Bool canGroup; // @synthesize canGroup=_canGroup;
+@property(copy, nonatomic) NSDictionary *routeGrouping; // @synthesize routeGrouping=_routeGrouping;
 @property(copy, nonatomic) NSArray *volumeCapableRoutes; // @synthesize volumeCapableRoutes=_volumeCapableRoutes;
 @property(copy, nonatomic) NSArray *displayAsPickedRoutes; // @synthesize displayAsPickedRoutes=_displayAsPickedRoutes;
 @property(copy, nonatomic) NSArray *displayableAvailableRoutes; // @synthesize displayableAvailableRoutes=_displayableAvailableRoutes;

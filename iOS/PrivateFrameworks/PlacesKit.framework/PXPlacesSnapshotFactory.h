@@ -62,7 +62,7 @@
 - (void)_fetchImageOfAsset:(id)arg1 withSnapshotOptions:(id)arg2 andCompletion:(CDUnknownBlockType)arg3;
 - (void)_handleAsyncPlacesLibraryAlbumSnapshotWithSnapshotOptions:(id)arg1 andCompletion:(CDUnknownBlockType)arg2;
 - (void)requestPlacesLibraryAlbumSnapshotWithSnapshotOptions:(id)arg1 andCompletion:(CDUnknownBlockType)arg2;
-- (void)requestPlacesSnapshotWithSnapshotOptions:(id)arg1 assets:(id)arg2 andCompletion:(CDUnknownBlockType)arg3;
+- (void)requestPlacesSnapshotWithSnapshotOptions:(id)arg1 popoverImageOptions:(unsigned long long)arg2 assets:(id)arg3 andCompletion:(CDUnknownBlockType)arg4;
 @property(nonatomic) long long currentUserInterfaceStyle; // @synthesize currentUserInterfaceStyle=_currentUserInterfaceStyle;
 - (void)dealloc;
 - (id)init;

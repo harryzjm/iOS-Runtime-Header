@@ -19,6 +19,7 @@
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, nonatomic) unsigned long long preferredScale;
 @property(readonly, nonatomic) unsigned long long internalRepresentation;
+@property(readonly, nonatomic) _Bool isVRR;
 @property(readonly, nonatomic) unsigned long long bitDepth;
 @property(readonly, copy, nonatomic) NSString *colorGamut;
 @property(readonly, copy, nonatomic) NSString *hdrMode;

@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
     int result_protocol;
     int result_provider;
     char log_str[84];
+    unsigned int unique_id;
     unsigned int is_custom_resolver:1;
     unsigned int used_local_cache:1;
     unsigned int ipv4_used_resolver_cache:1;
@@ -55,6 +56,10 @@ __attribute__((visibility("hidden")))
     unsigned int svcb_requested:1;
     unsigned int svcb_received:1;
     unsigned int svcb_dohuri:1;
+    unsigned int is_standalone:1;
+    unsigned int has_oblivious_config:1;
+    unsigned int config_allows_failover:1;
+    unsigned int oblivious_config_fell_back:1;
 }
 
 - (void).cxx_destruct;

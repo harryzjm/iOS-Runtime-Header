@@ -10,7 +10,6 @@
 {
 }
 
-- (void)appIconDidChange:(id)arg1;
 - (id)genericImage;
 
 @end

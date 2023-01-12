@@ -12,24 +12,34 @@
 {
     NSMutableDictionary *_connectionByServiceName;
     _Bool _synchronous;
+    long long _channelType;
 }
 
++ (id)synchronousEnrollmentControllerForManagementChannelType:(long long)arg1;
 + (id)synchronousEnrollmentController;
 + (id)userDefaultsEnrollmentURL;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) long long channelType; // @synthesize channelType=_channelType;
 @property(nonatomic, getter=isSynchronous) _Bool synchronous; // @synthesize synchronous=_synchronous;
-- (id)_webAuthenticationURL:(id)arg1 withUserIdentifierQuery:(id)arg2;
-- (void)_webAuthenticationURLFromWellKnownURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_discoverWebAuthenticationURLForDomain:(id)arg1 port:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)discoverWebAuthenticationURLForUserIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_enrollmentURLFromWellKnownURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_discoverEnrollmentURLForDomain:(id)arg1 port:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)discoverEnrollmentURLForUserIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_agentConnection;
 - (id)_agentProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)_daemonConnection;
 - (id)_daemonProxyWithErrorHandler:(CDUnknownBlockType)arg1;
+- (id)_channelTypeProxyWithErrorHandler:(CDUnknownBlockType)arg1;
+- (void)managementChannelWithEnrollmentURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)managementChannelWithAccountIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)updateWithIdentifier:(id)arg1 tokensResponse:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)updateWithIdentifier:(id)arg1 pushMessage:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)syncWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)deviceChannelEnrollmentExistsWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)enrollUserChannelWithURI:(id)arg1 authenticationCredential:(id)arg2 withDataSeparation:(_Bool)arg3 passcodeData:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)unenrollUserChannelWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)unenrollDeviceChannelWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)enrollUserChannelWithAccountIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)enrollDeviceChannelWithURI:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)initWithChannelType:(long long)arg1;
 - (id)init;
 
 @end

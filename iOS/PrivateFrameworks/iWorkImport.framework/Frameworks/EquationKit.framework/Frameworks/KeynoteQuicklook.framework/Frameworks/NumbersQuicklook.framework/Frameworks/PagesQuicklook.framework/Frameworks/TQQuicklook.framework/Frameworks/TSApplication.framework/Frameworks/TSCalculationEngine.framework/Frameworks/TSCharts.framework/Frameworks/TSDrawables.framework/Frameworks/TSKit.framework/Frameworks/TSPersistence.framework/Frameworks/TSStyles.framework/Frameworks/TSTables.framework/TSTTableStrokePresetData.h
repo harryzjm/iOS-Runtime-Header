@@ -16,16 +16,16 @@
     unsigned int mVisibleMask;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned int mask; // @synthesize mask=mVisibleMask;
 @property(retain, nonatomic) TSDStroke *exteriorStroke; // @synthesize exteriorStroke=mExteriorStroke;
 @property(retain, nonatomic) TSDStroke *verticalStroke; // @synthesize verticalStroke=mVerticalStroke;
 @property(retain, nonatomic) TSDStroke *horizontalStroke; // @synthesize horizontalStroke=mHorizontalStroke;
 - (_Bool)isEqual:(id)arg1;
-- (void)saveToArchive:(struct StrokePresetDataArchive *)arg1 archiver:(id)arg2;
-- (id)initWithDeprecatedArchive:(const struct Deprecated_StrokePresetDataArchive *)arg1 unarchiver:(id)arg2;
-- (id)initWithArchive:(const struct StrokePresetDataArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithDeprecatedArchive:(const void *)arg1 unarchiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (id)initWithMask:(unsigned int)arg1 horizontalStroke:(id)arg2 verticalStroke:(id)arg3 exteriorStroke:(id)arg4;
-- (void)dealloc;
 - (id)init;
 
 @end

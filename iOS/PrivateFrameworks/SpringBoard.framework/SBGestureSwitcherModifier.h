@@ -16,9 +16,10 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long gesturePhase; // @synthesize gesturePhase=_gesturePhase;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)handleMainTransitionEvent:(id)arg1;
+- (id)handleTransitionEvent:(id)arg1;
 - (id)handleGestureEvent:(id)arg1;
 - (id)handleEvent:(id)arg1;
+- (unsigned long long)maskedCornersForIndex:(unsigned long long)arg1;
 - (double)visibleMarginForItemContainerAtIndex:(unsigned long long)arg1;
 - (_Bool)clipsToUnobscuredMarginAtIndex:(unsigned long long)arg1;
 - (id)animationAttributesForLayoutElement:(id)arg1;

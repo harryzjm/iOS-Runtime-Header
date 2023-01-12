@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSMutableDictionary, SXColumnLayout, SXDocumentController;
+@class NSDictionary, NSMutableDictionary, NSMutableOrderedSet, SXColumnLayout, SXDocumentController;
 
 @interface SXImageController : NSObject
 {
@@ -14,12 +14,14 @@
     NSDictionary *_image2ResourcesGroupedByImageIdentifier;
     SXDocumentController *_documentController;
     SXColumnLayout *_columnLayout;
-    NSMutableDictionary *_optimalImageResources;
+    NSMutableOrderedSet *_optimalImageResources;
+    NSMutableDictionary *_optimalImageResourcesByID;
     struct CGSize _viewportSize;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSMutableDictionary *optimalImageResources; // @synthesize optimalImageResources=_optimalImageResources;
+@property(readonly, nonatomic) NSMutableDictionary *optimalImageResourcesByID; // @synthesize optimalImageResourcesByID=_optimalImageResourcesByID;
+@property(readonly, nonatomic) NSMutableOrderedSet *optimalImageResources; // @synthesize optimalImageResources=_optimalImageResources;
 @property(readonly, nonatomic) SXColumnLayout *columnLayout; // @synthesize columnLayout=_columnLayout;
 @property(readonly, nonatomic) __weak SXDocumentController *documentController; // @synthesize documentController=_documentController;
 @property(readonly, nonatomic) NSDictionary *image2ResourcesGroupedByImageIdentifier; // @synthesize image2ResourcesGroupedByImageIdentifier=_image2ResourcesGroupedByImageIdentifier;

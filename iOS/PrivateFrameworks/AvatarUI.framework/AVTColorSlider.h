@@ -16,6 +16,7 @@
     CALayer *_trackLayer;
     CAShapeLayer *_thumbClippingLayer;
     CALayer *_thumbContentLayer;
+    CALayer *_thumbSoftShadowLayer;
     CAShapeLayer *_thumbBorderLayer;
     UIImageView *_thumbView;
     _UIEdgeFeedbackGenerator *_edgeFeedbackGenerator;
@@ -30,6 +31,7 @@
 @property(retain, nonatomic) _UIEdgeFeedbackGenerator *edgeFeedbackGenerator; // @synthesize edgeFeedbackGenerator=_edgeFeedbackGenerator;
 @property(retain, nonatomic) UIImageView *thumbView; // @synthesize thumbView=_thumbView;
 @property(retain, nonatomic) CAShapeLayer *thumbBorderLayer; // @synthesize thumbBorderLayer=_thumbBorderLayer;
+@property(retain, nonatomic) CALayer *thumbSoftShadowLayer; // @synthesize thumbSoftShadowLayer=_thumbSoftShadowLayer;
 @property(retain, nonatomic) CALayer *thumbContentLayer; // @synthesize thumbContentLayer=_thumbContentLayer;
 @property(retain, nonatomic) CAShapeLayer *thumbClippingLayer; // @synthesize thumbClippingLayer=_thumbClippingLayer;
 @property(retain, nonatomic) CALayer *trackLayer; // @synthesize trackLayer=_trackLayer;

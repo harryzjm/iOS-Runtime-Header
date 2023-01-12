@@ -17,8 +17,8 @@
 #import <PhotosUICore/PXUIWidget-Protocol.h>
 #import <PhotosUICore/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class NSArray, NSMutableSet, NSString, PHFetchResult, PXActionPerformer, PXActionRowTile, PXOneUpPresentation, PXPhotoKitAssetCollectionActionManager, PXPhotosDataSource, PXPhotosDetailsActionsSpecManager, PXPhotosDetailsContext, PXPhotosDetailsViewModel, PXReusableObjectPool, PXSectionedSelectionManager, PXTilingController, PXUIScrollViewController, PXWidgetSpec;
-@protocol PXActionPerformerDelegate, PXAnonymousView, PXTileAnimator, PXWidgetDelegate, PXWidgetEditingDelegate, PXWidgetUnlockDelegate;
+@class NSArray, NSMutableSet, NSString, PHFetchResult, PXActionPerformer, PXActionRowTile, PXAssetActionManager, PXOneUpPresentation, PXPhotoKitAssetCollectionActionManager, PXPhotosDataSource, PXPhotosDetailsActionsSpecManager, PXPhotosDetailsContext, PXPhotosDetailsViewModel, PXReusableObjectPool, PXSectionedSelectionManager, PXTilingController, PXUIScrollViewController, PXWidgetSpec;
+@protocol PXActionPerformerDelegate, PXAnonymousView, PXTileAnimator, PXWidgetDelegate, PXWidgetEditingDelegate, PXWidgetInteractionDelegate, PXWidgetUnlockDelegate;
 
 @interface PXPhotosDetailsActionsUIWidget : NSObject <PXPhotosDataSourceChangeObserver, PXTileSource, PXTilingControllerTransitionDelegate, PXReusableObjectPoolDelegate, PXActionRowTileDelegate, PXActionPerformerDelegate, PXChangeObserver, PXPhotoLibraryUIChangeObserver, UIPopoverPresentationControllerDelegate, PXUIWidget>
 {
@@ -35,6 +35,7 @@
     } _needsUpdateFlags;
     _Bool _allowRevealInMomentAction;
     _Bool _allowCreateMemoryAction;
+    _Bool _allowInteralFileRadarAction;
     id <PXWidgetDelegate> _widgetDelegate;
     id <PXWidgetUnlockDelegate> _widgetUnlockDelegate;
     PXWidgetSpec *_spec;
@@ -76,6 +77,7 @@
 @property(readonly, nonatomic) id <PXTileAnimator> _tileAnimator; // @synthesize _tileAnimator=__tileAnimator;
 @property(readonly, nonatomic) PXTilingController *_tilingController; // @synthesize _tilingController=__tilingController;
 @property(nonatomic) __weak id <PXActionPerformerDelegate> actionPerformerDelegate; // @synthesize actionPerformerDelegate=_actionPerformerDelegate;
+@property(nonatomic) _Bool allowInteralFileRadarAction; // @synthesize allowInteralFileRadarAction=_allowInteralFileRadarAction;
 @property(nonatomic) _Bool allowCreateMemoryAction; // @synthesize allowCreateMemoryAction=_allowCreateMemoryAction;
 @property(nonatomic) _Bool allowRevealInMomentAction; // @synthesize allowRevealInMomentAction=_allowRevealInMomentAction;
 @property(retain, nonatomic) PXPhotosDetailsContext *context; // @synthesize context=_context;
@@ -111,6 +113,7 @@
 - (void)configureActionButtonTile:(id)arg1 withIdentifier:(struct PXTileIdentifier)arg2;
 - (void)reusableObjectPool:(id)arg1 didEvictReusableObject:(id)arg2;
 - (void)reusableObjectPool:(id)arg1 didCreateReusableObject:(id)arg2;
+@property(readonly, nonatomic) NSString *snappableWidgetIdentifier;
 @property(readonly, nonatomic) PXTilingController *contentTilingController;
 @property(readonly, nonatomic) _Bool hasContentForCurrentInput;
 - (id)_createNewLayout;
@@ -121,6 +124,7 @@
 
 // Remaining properties
 @property(readonly, nonatomic) _Bool allowUserInteractionWithSubtitle;
+@property(readonly, nonatomic) PXAssetActionManager *assetActionManager;
 @property(readonly, nonatomic) long long contentLayoutStyle;
 @property(readonly, nonatomic) NSObject<PXAnonymousView> *contentView;
 @property(readonly, nonatomic) long long contentViewAnchoringType;
@@ -146,6 +150,7 @@
 @property(nonatomic, getter=isUserInteractionEnabled) _Bool userInteractionEnabled;
 @property(readonly, nonatomic) _Bool wantsFocus;
 @property(nonatomic) __weak id <PXWidgetEditingDelegate> widgetEditingDelegate;
+@property(nonatomic) __weak id <PXWidgetInteractionDelegate> widgetInteractionDelegate;
 
 @end
 

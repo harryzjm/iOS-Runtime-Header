@@ -28,7 +28,7 @@
 - (void)handleFailureWithHandler:(CDUnknownBlockType)arg1 error:(id)arg2;
 - (_Bool)processData:(id)arg1 CRC:(unsigned int *)arg2 isDone:(_Bool)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)readWithFileHeaderLength:(unsigned long long)arg1 handler:(CDUnknownBlockType)arg2;
-- (_Bool)readFileHeaderFromData:(id)arg1 headerLength:(unsigned long long *)arg2;
+- (_Bool)readFileHeaderFromData:(id)arg1 headerLength:(unsigned long long *)arg2 error:(id *)arg3;
 - (void)readFromOffsetAndWait:(long long)arg1 length:(unsigned long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)readFromOffset:(long long)arg1 length:(unsigned long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)readWithHandler:(CDUnknownBlockType)arg1;

@@ -14,6 +14,8 @@
     MISSING_TYPE *lock;
     MISSING_TYPE *currentObjects;
     MISSING_TYPE *cancellables;
+    MISSING_TYPE *improveHealthActivityAllowed;
+    MISSING_TYPE *analyticsAllowed;
 }
 
 @end

@@ -5,7 +5,7 @@
 //
 
 @class FCCachePolicy, FCForYouConfig, NSArray, NSDictionary, NSError;
-@protocol FCContentContext, FCCoreConfiguration, FCFeedPersonalizing, FCForYouBridgedConfigurationParser;
+@protocol FCBundleSubscriptionManagerType, FCContentContext, FCCoreConfiguration, FCFeedPersonalizing;
 
 @interface FCForYouConfigHeadlinesOperation
 {
@@ -13,7 +13,7 @@
     id <FCCoreConfiguration> _configuration;
     id <FCContentContext> _context;
     id <FCFeedPersonalizing> _personalizer;
-    id <FCForYouBridgedConfigurationParser> _bridgedConfigurationParser;
+    id <FCBundleSubscriptionManagerType> _bundleSubscriptionManager;
     long long _fields;
     NSArray *_additionalArticleListIDs;
     NSArray *_additionalTagIDs;
@@ -48,11 +48,12 @@
 @property(copy, nonatomic) NSArray *additionalTagIDs; // @synthesize additionalTagIDs=_additionalTagIDs;
 @property(copy, nonatomic) NSArray *additionalArticleListIDs; // @synthesize additionalArticleListIDs=_additionalArticleListIDs;
 @property(nonatomic) long long fields; // @synthesize fields=_fields;
-@property(retain, nonatomic) id <FCForYouBridgedConfigurationParser> bridgedConfigurationParser; // @synthesize bridgedConfigurationParser=_bridgedConfigurationParser;
+@property(retain, nonatomic) id <FCBundleSubscriptionManagerType> bundleSubscriptionManager; // @synthesize bundleSubscriptionManager=_bundleSubscriptionManager;
 @property(retain, nonatomic) id <FCFeedPersonalizing> personalizer; // @synthesize personalizer=_personalizer;
 @property(retain, nonatomic) id <FCContentContext> context; // @synthesize context=_context;
 @property(copy, nonatomic) id <FCCoreConfiguration> configuration; // @synthesize configuration=_configuration;
 - (id)localTodayFeedConfiguration;
+- (id)forYouConfigRecordID;
 - (id)_edgeCacheHint;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;

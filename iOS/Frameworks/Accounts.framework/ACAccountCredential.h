@@ -11,11 +11,11 @@
 #import <Accounts/NSCopying-Protocol.h>
 #import <Accounts/NSSecureCoding-Protocol.h>
 
-@class ACAccount, NSDate, NSMutableDictionary, NSMutableSet, NSSet, NSString;
+@class ACAccount, NSDate, NSDictionary, NSMutableSet, NSSet, NSString;
 
 @interface ACAccountCredential : NSObject <ACProtobufCoding, NSCoding, NSCopying, NSSecureCoding>
 {
-    NSMutableDictionary *_credentialItems;
+    NSDictionary *_credentialItems;
     NSString *_credentialType;
     NSMutableSet *_dirtyProperties;
     ACAccount *_owningAccount;
@@ -25,6 +25,7 @@
 }
 
 + (id)additionalServiceSegmentForAccountTypeIdentifier:(id)arg1;
++ (_Bool)credentialPolicyIsMixedForAccountTypeIdentifier:(id)arg1;
 + (id)credentialPolicyForAccountTypeIdentifier:(id)arg1 key:(id)arg2 clientID:(id)arg3;
 + (id)nonPersistentKeysForAccountTypeIdentifier:(id)arg1 credentialType:(id)arg2;
 + (id)supportedKeysForAccountTypeIdentifier:(id)arg1 credentialType:(id)arg2;

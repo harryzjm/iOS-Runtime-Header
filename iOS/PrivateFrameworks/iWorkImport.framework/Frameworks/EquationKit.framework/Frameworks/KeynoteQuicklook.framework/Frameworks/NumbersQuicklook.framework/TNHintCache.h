@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class TNPageController, TNPageCoordinateDictionary, TSDDrawableInfo;
+@protocol OS_dispatch_queue;
 
 @interface TNHintCache : NSObject
 {
@@ -16,16 +17,18 @@
     _Bool mIsMaxColumnValid;
     _Bool mIsMaxRowValid;
     TNPageCoordinateDictionary *mHintCacheEntryDictionary;
-    set_ad2bbc7b _pageCoordinatesWithAnnotations;
+    set_c723b88d _pageCoordinatesWithAnnotations;
     _Bool _pageCoordinatesWithAnnotationsIsValid;
+    NSObject<OS_dispatch_queue> *_pageCoordinatesWriterQueue;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *pageCoordinatesWriterQueue; // @synthesize pageCoordinatesWriterQueue=_pageCoordinatesWriterQueue;
 @property(nonatomic) _Bool pageCoordinatesWithAnnotationsIsValid; // @synthesize pageCoordinatesWithAnnotationsIsValid=_pageCoordinatesWithAnnotationsIsValid;
 @property(retain) TSDDrawableInfo *info; // @synthesize info=mInfo;
 @property(readonly) TNPageController *pageController; // @synthesize pageController=mPageController;
-- (set_ad2bbc7b)pageCoordinatesWithAnnotations;
+- (set_c723b88d)pageCoordinatesWithAnnotations;
 - (id)p_hintCacheEntryAtCoordinate:(struct TSUCellCoord)arg1;
 - (id)_infoPartitioner;
 - (void)invalidate;

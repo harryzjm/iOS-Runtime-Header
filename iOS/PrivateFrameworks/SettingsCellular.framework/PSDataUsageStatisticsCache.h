@@ -6,12 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class CTDeviceDataUsage, CoreTelephonyClient, NSDictionary;
+@class CTDeviceDataUsage, CoreTelephonyClient, Logger, NSDictionary;
 @protocol OS_dispatch_queue;
 
 @interface PSDataUsageStatisticsCache : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
+    struct __CTServerConnection *_serverConnection;
+    Logger *_logger;
     _Bool _refreshInProgress;
     _Bool _cacheNeedsRefresh;
     CoreTelephonyClient *_client;
@@ -30,6 +32,7 @@
 @property _Bool refreshInProgress; // @synthesize refreshInProgress=_refreshInProgress;
 @property(retain) CTDeviceDataUsage *cachedDeviceDataUsage; // @synthesize cachedDeviceDataUsage=_cachedDeviceDataUsage;
 @property(retain, nonatomic) CoreTelephonyClient *client; // @synthesize client=_client;
+- (id)getLogger;
 - (void)_handleUsageOrInfoChanged;
 - (id)previousBillingCycleEndDate;
 - (id)billingCycleEndDate;

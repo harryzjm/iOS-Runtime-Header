@@ -13,13 +13,18 @@
     _Bool _paused;
     NSDate *_activityStartDate;
     NSString *_primaryActivityItemIdentifier;
+    NSString *_parentEntityName;
     _Bool _backgroundTimeTrackingEnabled;
+    long long _type;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)relations;
 - (void).cxx_destruct;
+@property(nonatomic) long long type; // @synthesize type=_type;
 @property(nonatomic, getter=isBackgroudTimeTrackingEnabled) _Bool backgroundTimeTrackingEnabled; // @synthesize backgroundTimeTrackingEnabled=_backgroundTimeTrackingEnabled;
+@property(copy, nonatomic) NSString *parentEntityName; // @synthesize parentEntityName=_parentEntityName;
+- (void)removeAllActivityItems;
 @property(readonly, copy) NSString *description;
 - (id)dictionaryRepresentation;
 @property(readonly, nonatomic) NSArray *additionalActivityItems;
@@ -32,6 +37,7 @@
 @property(copy, nonatomic) NSString *primaryActivityItemIdentifier;
 - (void)_generateTimeInterval;
 - (long long)effectiveAuthorizationStatus;
+- (void)_generatePartialTimeOnSave;
 - (void)resume;
 - (void)pause;
 - (void)stop;
@@ -43,6 +49,7 @@
 - (void)addProgressRangeFromStart:(double)arg1 toEnd:(double)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)_initWithTargetClass:(Class)arg1;
 - (id)_init;
 
 // Remaining properties

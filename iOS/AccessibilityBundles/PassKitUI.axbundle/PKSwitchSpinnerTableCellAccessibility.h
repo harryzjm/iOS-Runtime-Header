@@ -12,6 +12,10 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (struct CGPoint)accessibilityActivationPoint;
+- (unsigned long long)accessibilityTraits;
+- (id)accessibilityValue;
+- (id)accessibilityLabel;
+- (_Bool)isAccessibilityElement;
 
 @end
 

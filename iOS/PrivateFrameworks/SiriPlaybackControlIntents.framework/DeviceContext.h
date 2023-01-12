@@ -6,22 +6,25 @@
 
 #import <Intents/INObject.h>
 
-@class NSDate, NSString;
+@class NSDate, NSNumber, NSString;
 
 @interface DeviceContext : INObject
 {
 }
 
+- (id)initWithCoder:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 displayString:(id)arg2 pronunciationHint:(id)arg3;
 @property(nonatomic, readonly) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 
 // Remaining properties
-@property(copy, nonatomic) NSString *groupId; // @dynamic groupId;
+@property(nonatomic, copy) NSString *groupId; // @dynamic groupId;
 @property(nonatomic) long long nowPlayingMediaType; // @dynamic nowPlayingMediaType;
 @property(nonatomic) long long nowPlayingState; // @dynamic nowPlayingState;
-@property(copy, nonatomic) NSDate *nowPlayingTimestamp; // @dynamic nowPlayingTimestamp;
+@property(nonatomic, copy) NSDate *nowPlayingTimestamp; // @dynamic nowPlayingTimestamp;
 @property(nonatomic) long long proximity; // @dynamic proximity;
-@property(copy, nonatomic) NSString *routeId; // @dynamic routeId;
+@property(nonatomic, copy) NSString *routeId; // @dynamic routeId;
+@property(nonatomic, retain) NSNumber *silentPrimary; // @dynamic silentPrimary;
 
 @end
 

@@ -23,6 +23,10 @@
 - (void).cxx_destruct;
 @property(readonly) SFMediaRemoteControlCardSection *cardSection; // @synthesize cardSection=_cardSection;
 @property(nonatomic) __weak id <CRKCardSectionViewControllingDelegate> cardSectionViewControllingDelegate; // @synthesize cardSectionViewControllingDelegate;
+- (void)_updateActiveSystemEndpointForRouteUID:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
+- (id)_nowPlayingVisualStylingProvider;
+- (id)_nowPlayingViewControllerWithRouteUID:(id)arg1;
 - (void)_updatePlatterForRouteUID:(id)arg1;
 - (void)_updatePlatterForHashedRouteUID:(id)arg1;
 - (_Bool)_canShowWhileLocked;

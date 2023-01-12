@@ -8,6 +8,7 @@
 {
 }
 
++ (id)peekCardForRowModel:(id)arg1;
 + (_Bool)supportsRowModel:(id)arg1 environment:(id)arg2;
 - (id)generateViewController;
 

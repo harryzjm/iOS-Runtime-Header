@@ -11,7 +11,6 @@
 @class Protocol;
 @protocol CKOperationCallbacks;
 
-__attribute__((visibility("hidden")))
 @interface CKDOperationCallbackProxy : NSObject <CKOperationCallbacks>
 {
     id <CKOperationCallbacks> _clientOperationCallbackProxy;

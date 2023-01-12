@@ -8,6 +8,7 @@
 
 @class NSMutableArray;
 
+__attribute__((visibility("hidden")))
 @interface PQLStatement : NSObject
 {
     struct sqlite3_stmt *_stmt;

@@ -15,6 +15,7 @@
     NSMutableArray *_items;
     NSMutableArray *_actions;
     NSArray *_actionItems;
+    _Bool _displaysDropdownMenu;
     _Bool _useSplitActions;
     _Bool _addSpacerFromPreviousGroup;
     CNContact *_contact;
@@ -25,6 +26,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) _Bool addSpacerFromPreviousGroup; // @synthesize addSpacerFromPreviousGroup=_addSpacerFromPreviousGroup;
 @property(nonatomic) _Bool useSplitActions; // @synthesize useSplitActions=_useSplitActions;
+@property(nonatomic) _Bool displaysDropdownMenu; // @synthesize displaysDropdownMenu=_displaysDropdownMenu;
 @property(readonly, nonatomic) NSArray *actions; // @synthesize actions=_actions;
 @property(readonly, nonatomic) NSString *title; // @synthesize title=_title;
 @property(retain, nonatomic) CNContact *contact; // @synthesize contact=_contact;
@@ -35,10 +37,13 @@
 - (SEL)unwrappedSelectorForAction:(id)arg1;
 - (id)unwrappedTargetForAction:(id)arg1;
 - (void)removeActionWithTarget:(id)arg1 selector:(SEL)arg2;
+- (void)addAction:(id)arg1 withTitle:(id)arg2 color:(id)arg3 glyphColor:(id)arg4 transportType:(long long)arg5 wrapTitle:(_Bool)arg6;
 - (void)addAction:(id)arg1 withTitle:(id)arg2 color:(id)arg3 glyphColor:(id)arg4 transportType:(long long)arg5;
+- (void)addAction:(id)arg1 withTitle:(id)arg2 color:(id)arg3 transportType:(long long)arg4 wrapTitle:(_Bool)arg5;
 - (void)addAction:(id)arg1 withTitle:(id)arg2 color:(id)arg3 transportType:(long long)arg4;
 - (id)addActionWithTitle:(id)arg1 target:(id)arg2 selector:(SEL)arg3;
 - (id)addActionWithTitle:(id)arg1 target:(id)arg2 selector:(SEL)arg3 destructive:(_Bool)arg4;
+- (id)addActionWithTitle:(id)arg1 menuProvider:(CDUnknownBlockType)arg2 destructive:(_Bool)arg3;
 - (void)addAction:(id)arg1 withTitle:(id)arg2 wrapTitle:(_Bool)arg3;
 - (void)addAction:(id)arg1 withTitle:(id)arg2;
 @property(readonly, nonatomic) NSArray *actionItems;

@@ -10,7 +10,7 @@
 #import <PointerUIServices/NSMutableCopying-Protocol.h>
 #import <PointerUIServices/NSSecureCoding-Protocol.h>
 
-@class NSValue, PSMatchMoveSource, PSPointerPortalSourceCollection, PSPointerShape;
+@class NSArray, NSValue, PSMatchMoveSource, PSPointerPortalSourceCollection, PSPointerShape;
 
 @interface PSPointerHoverRegion : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
 {
@@ -30,13 +30,17 @@
     long long _overlayEffectStyle;
     _Bool _shouldPointerUnderlayContent;
     _Bool _shouldPointerSuppressMirroring;
+    unsigned long long _pointerLatchingAxes;
+    NSArray *_accessories;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSArray *accessories; // @synthesize accessories=_accessories;
 @property(readonly, nonatomic) _Bool shouldPointerSuppressMirroring; // @synthesize shouldPointerSuppressMirroring=_shouldPointerSuppressMirroring;
 @property(readonly, nonatomic) _Bool shouldPointerUnderlayContent; // @synthesize shouldPointerUnderlayContent=_shouldPointerUnderlayContent;
 @property(readonly, nonatomic) double pointerVisualIntensity; // @synthesize pointerVisualIntensity=_pointerVisualIntensity;
+@property(readonly, nonatomic) unsigned long long pointerLatchingAxes; // @synthesize pointerLatchingAxes=_pointerLatchingAxes;
 @property(readonly, nonatomic) unsigned long long pointerRecenteringAxes; // @synthesize pointerRecenteringAxes=_pointerRecenteringAxes;
 @property(readonly, copy, nonatomic) NSValue *pointerSlipValue; // @synthesize pointerSlipValue=_pointerSlipValue;
 @property(readonly, copy, nonatomic) PSPointerShape *pointerShape; // @synthesize pointerShape=_pointerShape;
@@ -50,6 +54,7 @@
 @property(readonly, copy, nonatomic) PSPointerPortalSourceCollection *pointerPortalSourceCollection; // @synthesize pointerPortalSourceCollection=_pointerPortalSourceCollection;
 @property(readonly, nonatomic) unsigned int coordinateSpaceSourceContextID; // @synthesize coordinateSpaceSourceContextID=_coordinateSpaceSourceContextID;
 @property(readonly, nonatomic) unsigned long long coordinateSpaceSourceLayerRenderID; // @synthesize coordinateSpaceSourceLayerRenderID=_coordinateSpaceSourceLayerRenderID;
+- (_Bool)isLatching;
 - (_Bool)isNumericDataValid;
 @property(readonly, nonatomic, getter=isOverlayEffectVisible) _Bool overlayEffectVisible;
 - (id)_copyWithClass:(Class)arg1;

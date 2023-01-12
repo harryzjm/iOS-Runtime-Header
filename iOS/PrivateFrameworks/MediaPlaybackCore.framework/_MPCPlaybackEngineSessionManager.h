@@ -12,6 +12,7 @@
 @class MPCPlaybackEngine, MPCPlayerPath, MPNowPlayingInfoCenter, MPRemoteCommandCenter, NSMutableArray, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface _MPCPlaybackEngineSessionManager : NSObject <MPCPlaybackEngineEventObserving, MPNowPlayingPlaybackQueueDataSource>
 {
     MPCPlaybackEngine *_playbackEngine;
@@ -20,10 +21,12 @@
     MPRemoteCommandCenter *_commandCenter;
     NSMutableArray *_sessionArchives;
     NSMutableDictionary *_sessionIdentifierArchiveMap;
+    NSMutableDictionary *_stagedQueueControllers;
 }
 
 + (id)archivesAtURL:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSMutableDictionary *stagedQueueControllers; // @synthesize stagedQueueControllers=_stagedQueueControllers;
 @property(readonly, nonatomic) NSMutableDictionary *sessionIdentifierArchiveMap; // @synthesize sessionIdentifierArchiveMap=_sessionIdentifierArchiveMap;
 @property(readonly, nonatomic) NSMutableArray *sessionArchives; // @synthesize sessionArchives=_sessionArchives;
 @property(readonly, nonatomic) MPRemoteCommandCenter *commandCenter; // @synthesize commandCenter=_commandCenter;
@@ -36,6 +39,10 @@
 - (id)nowPlayingInfoCenter:(id)arg1 contentItemForID:(id)arg2;
 - (id)nowPlayingInfoCenter:(id)arg1 contentItemIDForOffset:(long long)arg2;
 - (void)_performCommandEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)stagedQueueControllerIdentifiers;
+- (id)queueControllerForIdentifier:(id)arg1;
+- (void)stageQueueController:(id)arg1 forIdentifier:(id)arg2;
+- (_Bool)unstageQueueControllerForIdentifier:(id)arg1;
 @property(retain, nonatomic) NSString *stateRestorationSessionIdentifier;
 - (void)deleteSessionWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)saveSessionWithCompletion:(CDUnknownBlockType)arg1;

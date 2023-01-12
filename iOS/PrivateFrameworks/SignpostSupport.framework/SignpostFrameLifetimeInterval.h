@@ -52,6 +52,7 @@
 @property(readonly, nonatomic) unsigned long long missedVBLCount;
 @property(readonly, nonatomic) NSNumber *displayIDNum;
 - (_Bool)_hasDisplayID;
+- (unsigned int)_displayID;
 @property(readonly, nonatomic) unsigned int displayID;
 @property(readonly, nonatomic) NSSet *contributingPIDs;
 @property(readonly, nonatomic) _Bool mayBeFirstFrame;

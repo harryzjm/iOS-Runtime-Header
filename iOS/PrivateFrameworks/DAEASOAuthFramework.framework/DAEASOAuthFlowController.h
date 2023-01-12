@@ -26,11 +26,13 @@
     NSString *_clientID;
     NSString *_username;
     NSString *_easEndPoint;
+    NSString *_claimsChallenge;
 }
 
 + (id)upgradeTokenEndpoint:(id)arg1;
 + (id)upgradeAuthorizationEndpoint:(id)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *claimsChallenge; // @synthesize claimsChallenge=_claimsChallenge;
 @property(copy, nonatomic) NSString *easEndPoint; // @synthesize easEndPoint=_easEndPoint;
 @property(copy, nonatomic) NSString *username; // @synthesize username=_username;
 @property(copy, nonatomic) NSString *clientID; // @synthesize clientID=_clientID;
@@ -43,12 +45,12 @@
 @property(copy, nonatomic) NSString *redirectURI; // @synthesize redirectURI=_redirectURI;
 @property(retain, nonatomic) DAEASOAuthPKCEChallenge *challenge; // @synthesize challenge=_challenge;
 @property(retain, nonatomic) NSString *state; // @synthesize state=_state;
-- (void)_exchangeAuthCode:(id)arg1 codeVerifier:(id)arg2 forTokensWithCompletion:(CDUnknownBlockType)arg3;
-- (void)_exchangeAuthCode:(id)arg1 codeVerifier:(id)arg2 forTokensAndUsernameWithCompletion:(CDUnknownBlockType)arg3;
+- (void)_exchangeAuthCode:(id)arg1 codeVerifier:(id)arg2 claims:(id)arg3 forTokensWithCompletion:(CDUnknownBlockType)arg4;
+- (void)_exchangeAuthCode:(id)arg1 codeVerifier:(id)arg2 claims:(id)arg3 forTokensAndUsernameWithCompletion:(CDUnknownBlockType)arg4;
 - (void)retrieveJWKSDataFromURI:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)retrieveOpenIDMetadataFromURI:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)exchangeAuthCode:(id)arg1 codeVerifier:(id)arg2 forTokensAndUsernameWithCompletion:(CDUnknownBlockType)arg3;
-- (id)_urlRequestForOAuthTokenFromAuthCode:(id)arg1 codeVerifier:(id)arg2;
+- (void)exchangeAuthCode:(id)arg1 codeVerifier:(id)arg2 claims:(id)arg3 forTokensAndUsernameWithCompletion:(CDUnknownBlockType)arg4;
+- (id)_urlRequestForOAuthTokenFromAuthCode:(id)arg1 codeVerifier:(id)arg2 claims:(id)arg3;
 - (void)webViewDidFinishLoadWithPageTitleSupplier:(CDUnknownBlockType)arg1;
 - (_Bool)shouldHideWebViewForLoadWithRequest:(id)arg1;
 - (id)requestForAuthURL:(id)arg1;
@@ -57,7 +59,7 @@
 - (id)authURLForUsername:(id)arg1;
 - (void)setAuthFlowCompletion:(CDUnknownBlockType)arg1;
 - (id)initialRedirectURL;
-- (id)initWithOAuthType:(unsigned long long)arg1 authURI:(id)arg2 username:(id)arg3;
+- (id)initWithOAuthType:(unsigned long long)arg1 authURI:(id)arg2 username:(id)arg3 claims:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

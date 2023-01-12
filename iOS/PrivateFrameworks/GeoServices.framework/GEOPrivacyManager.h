@@ -10,8 +10,15 @@
 {
     _Bool _lastKnownLocationServicesEnabled;
     _Bool _hasLastKnownLocationServicesEnabled;
+    _Bool _hasFiredCallHistoryRecentsClearedNotification;
+    _Bool _hasFiredResetPrivacyWarningsNotification;
+    _Bool _hasFiredLocationServicesDisabledNotification;
 }
 
++ (id)sharedManager;
+@property(readonly, nonatomic) _Bool hasFiredLocationServicesDisabledNotification; // @synthesize hasFiredLocationServicesDisabledNotification=_hasFiredLocationServicesDisabledNotification;
+@property(readonly, nonatomic) _Bool hasFiredResetPrivacyWarningsNotification; // @synthesize hasFiredResetPrivacyWarningsNotification=_hasFiredResetPrivacyWarningsNotification;
+@property(readonly, nonatomic) _Bool hasFiredCallHistoryRecentsClearedNotification; // @synthesize hasFiredCallHistoryRecentsClearedNotification=_hasFiredCallHistoryRecentsClearedNotification;
 - (void)_locationServicesStateChanged;
 - (void)_fireResetLocationAndPrivacyNotification;
 - (void)_fireRecentsClearedNotification;

@@ -10,24 +10,27 @@
 #import <UIKitCore/NSSecureCoding-Protocol.h>
 
 @class NSString, UIImage;
+@protocol _UIMenuImageOrName;
 
 @interface UIMenuElement : NSObject <NSCopying, NSSecureCoding>
 {
+    NSString *_subtitle;
     NSString *_accessibilityIdentifier;
     NSString *_title;
-    NSString *_imageName;
-    UIImage *_imageIfLoaded;
+    id <_UIMenuImageOrName> _imageOrName;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) UIImage *imageIfLoaded; // @synthesize imageIfLoaded=_imageIfLoaded;
-@property(readonly, nonatomic) NSString *imageName; // @synthesize imageName=_imageName;
+@property(readonly, nonatomic) id <_UIMenuImageOrName> imageOrName; // @synthesize imageOrName=_imageOrName;
+@property(copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(readonly, nonatomic) NSString *title; // @synthesize title=_title;
 - (void)setAccessibilityIdentifier:(id)arg1;
 - (id)accessibilityIdentifier;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)_willBePreparedForInitialDisplay:(id)arg1;
 - (void)_setImage:(id)arg1;
+- (void)_setSubtitle:(id)arg1;
 - (void)_setTitle:(id)arg1;
 - (id)_mutableCopy;
 - (id)_immutableCopy;
@@ -41,6 +44,7 @@
 - (id)initWithCoder:(id)arg1;
 @property(readonly, nonatomic) _Bool isLoadingPlaceholder;
 @property(readonly, nonatomic) _Bool isLeaf;
+- (id)_customContentView;
 - (_Bool)_isVisible;
 - (_Bool)_canBeHighlighted;
 - (_Bool)_isInlineGroup;

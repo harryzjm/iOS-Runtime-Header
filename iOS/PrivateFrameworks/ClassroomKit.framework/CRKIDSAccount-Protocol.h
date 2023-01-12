@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol CRKIDSListener;
+@class NSString;
 
 @protocol CRKIDSAccount
 @property(readonly, nonatomic, getter=isActive) _Bool active;
-- (id <CRKIDSListener>)listenForAccountActiveWithHandler:(void (^)(void))arg1;
+@property(readonly, copy, nonatomic) NSString *loginID;
 @end
 

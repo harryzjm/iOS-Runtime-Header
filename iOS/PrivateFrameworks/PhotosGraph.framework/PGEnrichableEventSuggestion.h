@@ -49,7 +49,7 @@
 @property(readonly, nonatomic) long long version;
 - (id)_whitelistedMeaningLabels;
 - (id)assetCollectionToShareForAssetCollection:(id)arg1 loggingConnection:(id)arg2;
-- (id)initWithType:(unsigned short)arg1 subtype:(unsigned short)arg2 enrichableEvent:(id)arg3 sharingSuggestionResults:(id)arg4 manager:(id)arg5 loggingConnection:(id)arg6;
+- (id)initWithType:(unsigned short)arg1 subtype:(unsigned short)arg2 enrichableEvent:(id)arg3 sharingSuggestionResults:(id)arg4 photoLibrary:(id)arg5 curationManager:(id)arg6 loggingConnection:(id)arg7 titleGenerationContext:(id)arg8;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

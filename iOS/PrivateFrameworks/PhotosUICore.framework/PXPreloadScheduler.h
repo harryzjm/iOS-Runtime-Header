@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CADisplayLink, NSMutableArray;
+@class NSMutableArray, PXDisplayLink;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
 @interface PXPreloadScheduler : NSObject
@@ -14,7 +14,9 @@
     NSObject<OS_dispatch_queue> *_utilityQueue;
     NSObject<OS_dispatch_queue> *_backgroundQueue;
     NSObject<OS_dispatch_group> *_pendingUtilityTasks;
-    CADisplayLink *_displayLink;
+    PXDisplayLink *_displayLink;
+    double _waitStartTime;
+    _Bool _shouldIgnoreDisplayLinkTimestamps;
     NSMutableArray *_pendingBlocks;
     struct __CFRunLoopObserver *_runloopObserver;
     _Bool __isActive;

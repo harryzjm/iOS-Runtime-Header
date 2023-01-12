@@ -8,10 +8,11 @@
 {
 }
 
-- (void)loadFromMessage:(const struct LargeLazyObjectArraySegment *)arg1 unarchiver:(id)arg2;
+- (void)loadFromMessage:(const void *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)saveToMessage:(struct LargeLazyObjectArraySegment *)arg1 archiver:(id)arg2;
+- (void)saveToMessage:(void *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
+- (Class)elementClass;
 - (id)referredObjectAtIndex:(unsigned long long)arg1;
 - (void)addReferredObject:(id)arg1;
 - (unsigned long long)estimatedByteSizeOfElement:(id)arg1;

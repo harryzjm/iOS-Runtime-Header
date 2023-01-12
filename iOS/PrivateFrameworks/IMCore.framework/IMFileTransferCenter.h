@@ -21,6 +21,7 @@
     NSMutableSet *_pendingTransfers;
     _Bool _disconnectionListenerSetUp;
     NSMutableDictionary *_fetchHighQualityVariantCompletionHandlers;
+    NSMutableDictionary *_localFileURLRetrievalCompletionHandlers;
     _Bool _issueSandboxEstensionsForTransfers;
 }
 
@@ -30,7 +31,12 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 @property(nonatomic, getter=shouldIssueSandboxEstensionsForTransfers) _Bool issueSandboxEstensionsForTransfers; // @synthesize issueSandboxEstensionsForTransfers=_issueSandboxEstensionsForTransfers;
+- (void)_registerDaemonListenerIfNecessary;
+- (void)createItemForPHAssetWithUUID:(id)arg1 parentChatItemGUID:(id)arg2 chatGUID:(id)arg3;
+- (void)_initiateLocalFileURLRetrievalInDaemonForGUID:(id)arg1 options:(long long)arg2;
+- (void)retrieveLocalFileURLForFileTransferWithGUID:(id)arg1 options:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)preWarmConnection;
+- (void)_daemonDisconnected:(id)arg1;
 - (void)_daemonRestarted:(id)arg1;
 - (void)_initiateHighQualityVariantDownloadWithDaemonForGUID:(id)arg1;
 - (void)_fetchHighQualityVariantForTransferGUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -38,10 +44,12 @@
 - (id)guidsForStoredAttachmentPayloadData:(id)arg1 messageGUID:(id)arg2;
 - (void)setAuxVideoForTransfer:(id)arg1 value:(_Bool)arg2;
 - (void)setAuxImageForTransfer:(id)arg1 value:(_Bool)arg2;
+- (void)_handleFileTransferExplicitDownloadFailed:(id)arg1 suggestedRetryGUID:(id)arg2 error:(id)arg3;
+- (void)_handleFileTransfer:(id)arg1 explicitDownloadSucceededWithPath:(id)arg2 livePhotoBundlePath:(id)arg3;
 - (void)_handleFileTransferHighQualityDownloadFailed:(id)arg1;
 - (void)_handleFileTransfer:(id)arg1 highQualityDownloadSucceededWithPath:(id)arg2;
 - (void)_handleFileTransfer:(id)arg1 updatedWithCurrentBytes:(unsigned long long)arg2 totalBytes:(unsigned long long)arg3 averageTransferRate:(unsigned long long)arg4;
-- (void)_handleFileTransfer:(id)arg1 updatedWithProperties:(id)arg2;
+- (void)_handleFileTransfer:(id)arg1 updatedWithProperties:(id)arg2 forceNotify:(_Bool)arg3;
 - (void)_handleFileTransfers:(id)arg1 createdWithLocalPaths:(id)arg2;
 - (void)_handleFileTransfer:(id)arg1 createdWithProperties:(id)arg2;
 - (void)_handleAllFileTransfers:(id)arg1;

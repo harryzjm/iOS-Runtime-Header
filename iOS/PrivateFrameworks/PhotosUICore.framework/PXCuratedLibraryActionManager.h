@@ -20,6 +20,7 @@
 @property(readonly, nonatomic) NSDictionary *assetCollectionActionPerformersByType; // @synthesize assetCollectionActionPerformersByType=_assetCollectionActionPerformersByType;
 @property(readonly, nonatomic) NSDictionary *actionPerformersByType; // @synthesize actionPerformersByType=_actionPerformersByType;
 @property(readonly, nonatomic) PXCuratedLibraryViewModel *viewModel; // @synthesize viewModel=_viewModel;
+- (id)actionPerformerForNavigatingToNextZoomLevelInLayout:(id)arg1;
 - (id)actionPerformerForHitTestResult:(id)arg1;
 - (id)curationDebugPerformerAssetCollectionReference:(id)arg1 diagnosticLayout:(id)arg2;
 - (id)tapToRadarPerformerAssetCollectionReference:(id)arg1 diagnosticLayout:(id)arg2;

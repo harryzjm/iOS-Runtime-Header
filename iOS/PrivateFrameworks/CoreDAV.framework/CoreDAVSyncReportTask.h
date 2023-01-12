@@ -8,17 +8,19 @@
 
 @interface CoreDAVSyncReportTask
 {
-    NSString *_previousSyncToken;
-    NSString *_nextSyncToken;
     _Bool _moreToSync;
     _Bool _wasInvalidSyncToken;
+    NSString *_nextSyncToken;
+    NSString *_previousSyncToken;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *previousSyncToken; // @synthesize previousSyncToken=_previousSyncToken;
 @property(readonly, nonatomic) _Bool wasInvalidSyncToken; // @synthesize wasInvalidSyncToken=_wasInvalidSyncToken;
 @property(readonly, nonatomic) _Bool moreToSync; // @synthesize moreToSync=_moreToSync;
 @property(readonly, nonatomic) NSString *nextSyncToken; // @synthesize nextSyncToken=_nextSyncToken;
 - (void)finishCoreDAVTaskWithError:(id)arg1;
+- (_Bool)hadUnexpectedChangeOfSyncTokenWithZeroResponses;
 - (id)copyDefaultParserForContentType:(id)arg1;
 - (id)notFoundHREFs;
 - (id)requestBody;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, PHFetchResult, PXSearchQuery;
+@class NSArray, NSSet, PHFetchResult, PXSearchQuery;
 
 @interface PXSearchQueryResult : NSObject
 {
@@ -15,18 +15,20 @@
     NSArray *_searchAssetResults;
     PHFetchResult *_curatedAssetsFetchResult;
     NSArray *_searchSuggestions;
+    NSSet *_sceneIdentifiers;
     NSArray *_reloadItemIdentifiers;
 }
 
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSArray *reloadItemIdentifiers; // @synthesize reloadItemIdentifiers=_reloadItemIdentifiers;
+@property(readonly, copy, nonatomic) NSSet *sceneIdentifiers; // @synthesize sceneIdentifiers=_sceneIdentifiers;
 @property(readonly, copy, nonatomic) NSArray *searchSuggestions; // @synthesize searchSuggestions=_searchSuggestions;
 @property(readonly, copy, nonatomic) PHFetchResult *curatedAssetsFetchResult; // @synthesize curatedAssetsFetchResult=_curatedAssetsFetchResult;
 @property(readonly, copy, nonatomic) NSArray *searchAssetResults; // @synthesize searchAssetResults=_searchAssetResults;
 @property(readonly, copy, nonatomic) NSArray *searchResults; // @synthesize searchResults=_searchResults;
 @property(readonly, copy, nonatomic) PXSearchQuery *searchQuery; // @synthesize searchQuery=_searchQuery;
 - (id)initEmptySearchQueryResultForQuery:(id)arg1;
-- (id)initWithSearchQuery:(id)arg1 searchResults:(id)arg2 searchAssetResults:(id)arg3 curatedAssetsFetchResult:(id)arg4 searchSuggestions:(id)arg5 reloadItemIdentifiers:(id)arg6;
+- (id)initWithSearchQuery:(id)arg1 searchResults:(id)arg2 searchAssetResults:(id)arg3 curatedAssetsFetchResult:(id)arg4 searchSuggestions:(id)arg5 sceneIdentifiers:(id)arg6 reloadItemIdentifiers:(id)arg7;
 
 @end
 

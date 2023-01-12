@@ -21,5 +21,6 @@
 - (void)hybridEndpointerFoundEndpoint;
 - (void)languageDetectionCompleted;
 - (void)languageDetectionResult:(_LTLanguageDetectionResult *)arg1;
+- (void)speechActivityDetected;
 @end
 

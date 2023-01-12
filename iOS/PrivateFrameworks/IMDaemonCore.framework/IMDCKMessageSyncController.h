@@ -42,8 +42,8 @@
 - (void)syncMessagesWithSyncType:(long long)arg1 deviceConditionsToCheck:(unsigned long long)arg2 activity:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (_Bool)_kickOffWriteIfNeededForSyncType:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_kickOffWriteOnCKQueueWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_hasMarkedAllMessagesAsNeedingSync;
 - (void)_markAllUnsuccessFullSyncMessagesAsNeedingSync;
+- (void)_hasMarkedAllMessagesAsNeedingSync;
 - (_Bool)_shouldMarkAllMessagesAsNeedingSync;
 - (void)_needsToMarkAllMessagesAsNeedingSync;
 - (void)_markAllIncompatibleMessagesForDeletion;
@@ -58,7 +58,6 @@
 - (void)_fetchArchivedRecordsIfNeeded:(_Bool)arg1 currentBatchCount:(long long)arg2 maxNumberOfBatches:(long long)arg3 WithCompletionBlock:(CDUnknownBlockType)arg4;
 - (void)_processArchivedRecordsFetchCompletionZoneID:(id)arg1 serverChangeToken:(id)arg2 moreComing:(_Bool)arg3 currentBatchCount:(long long)arg4 maxNumberOfBatches:(long long)arg5 NSError:(id)arg6 completionBlock:(CDUnknownBlockType)arg7;
 - (void)_resetSyncToken;
-- (void)_deleteStingRaySyncToken;
 @property(retain, nonatomic) CKServerChangeToken *latestSyncToken;
 - (id)_changeTokenKey;
 - (void)_resetArvchivedRecordSyncToken;

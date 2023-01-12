@@ -10,12 +10,12 @@
 #import <SpriteKit/NSSecureCoding-Protocol.h>
 #import <SpriteKit/UIFocusItem-Protocol.h>
 
-@class GKEntity, MISSING_TYPE, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, SKPhysicsBody, SKReachConstraints, SKScene, UIView;
+@class GKEntity, MISSING_TYPE, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, SKPhysicsBody, SKReachConstraints, SKScene, UIFocusEffect, UIView;
 @protocol UIFocusEnvironment, UIFocusItemContainer;
 
 @interface SKNode : UIResponder <NSCopying, NSSecureCoding, UIFocusItem>
 {
-    struct SKCNode *_skcNode;
+    void *_skcNode;
     SKNode *_parent;
     NSMutableArray *_children;
     NSMutableArray *_actions;
@@ -113,7 +113,7 @@
 - (id)_descendants;
 @property(readonly, nonatomic) NSArray *children;
 - (_Bool)hasChildren;
-- (void)_processSearchTokens:(vector_408ca79d)arg1 visited:(set_3449d313 *)arg2 usingBlock:(CDUnknownBlockType)arg3 stopPointer:(_Bool *)arg4;
+- (void)_processSearchTokens:(vector_c6b866d0)arg1 visited:(void *)arg2 usingBlock:(CDUnknownBlockType)arg3 stopPointer:(_Bool *)arg4;
 - (void)_enumerateChildNodesWithName:(id)arg1 usingBlock:(CDUnknownBlockType)arg2 stopPointer:(_Bool *)arg3;
 - (id)objectForKeyedSubscript:(id)arg1;
 - (void)enumerateChildNodesWithName:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
@@ -145,8 +145,8 @@
 - (Class)swiftClassFromString:(id)arg1 moduleName:(id)arg2;
 - (id)init;
 - (void)_didMakeBackingNode;
-@property(readonly, nonatomic) struct SKCNode *_backingNode;
-- (struct SKCNode *)_makeBackingNode;
+@property(readonly, nonatomic) void *_backingNode;
+- (void *)_makeBackingNode;
 - (_Bool)isEqualToNode:(id)arg1;
 @property(readonly, nonatomic) shared_ptr_11a7378b _aether;
 - (void)_removeChild:(id)arg1;
@@ -178,8 +178,11 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy, nonatomic) UIFocusEffect *focusEffect;
 @property(readonly, copy, nonatomic) NSString *focusGroupIdentifier;
+@property(readonly, nonatomic) long long focusGroupPriority;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool isTransparentFocusItem;
 @property(readonly, nonatomic) __weak UIView *preferredFocusedView;
 @property(readonly) Class superclass;
 

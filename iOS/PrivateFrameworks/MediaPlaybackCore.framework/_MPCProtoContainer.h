@@ -10,23 +10,20 @@
 
 @class NSMutableArray, NSString, _MPCProtoContainerIdentifierSet;
 
+__attribute__((visibility("hidden")))
 @interface _MPCProtoContainer : PBCodable <NSCopying>
 {
     int _containerType;
     _MPCProtoContainerIdentifierSet *_identifierSet;
     NSMutableArray *_items;
     NSString *_playActivityFeatureName;
+    NSString *_playActivityQueueGroupingID;
     struct {
         unsigned int containerType:1;
     } _has;
 }
 
-+ (Class)itemType;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSString *playActivityFeatureName; // @synthesize playActivityFeatureName=_playActivityFeatureName;
-@property(retain, nonatomic) NSMutableArray *items; // @synthesize items=_items;
-@property(retain, nonatomic) _MPCProtoContainerIdentifierSet *identifierSet; // @synthesize identifierSet=_identifierSet;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -34,14 +31,6 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasPlayActivityFeatureName;
-- (id)itemAtIndex:(unsigned long long)arg1;
-- (unsigned long long)itemsCount;
-- (void)addItem:(id)arg1;
-- (void)clearItems;
-@property(readonly, nonatomic) _Bool hasIdentifierSet;
-@property(nonatomic) _Bool hasContainerType;
-@property(nonatomic) int containerType; // @synthesize containerType=_containerType;
 
 @end
 

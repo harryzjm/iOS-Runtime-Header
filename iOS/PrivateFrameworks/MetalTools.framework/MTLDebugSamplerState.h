@@ -11,12 +11,11 @@
     MTLSamplerDescriptor *_descriptor;
 }
 
-+ (id)newSamplerStateWithBaseObject:(id)arg1 device:(id)arg2 descriptor:(id)arg3;
 @property(readonly, copy, nonatomic) MTLSamplerDescriptor *descriptor; // @synthesize descriptor=_descriptor;
 - (id)description;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (void)dealloc;
-- (id)_initWithBaseSamplerState:(id)arg1 device:(id)arg2 descriptor:(id)arg3;
+- (id)initWithSamplerState:(id)arg1 descriptor:(id)arg2 device:(id)arg3;
 
 @end
 

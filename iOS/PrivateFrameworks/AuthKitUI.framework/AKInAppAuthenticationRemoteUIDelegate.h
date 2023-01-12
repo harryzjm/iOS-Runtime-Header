@@ -29,6 +29,7 @@
 @property(readonly, nonatomic) UINavigationController *modalRemoteUINavController; // @synthesize modalRemoteUINavController=_modalRemoteUINavController;
 @property(readonly, nonatomic) RUIObjectModel *currentRemoteOM; // @synthesize currentRemoteOM=_currentRemoteOM;
 @property(retain, nonatomic) AKAppleIDServerUIContextController *serverUIContextController; // @synthesize serverUIContextController=_serverUIContextController;
+- (void)_processAndHandleConflictErrorFromResponse:(id)arg1;
 - (void)_showAlert:(id)arg1;
 - (_Bool)_isDeferrableFinalResponseHarvested;
 - (void)remoteUIController:(id)arg1 didReceiveChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

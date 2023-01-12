@@ -12,19 +12,19 @@
 {
     _Bool _shouldApplyBackground;
     _Bool _requireFixedSize;
+    UIColor *_backgroundColor;
     long long _filter;
     long long _scalingMode;
-    UIColor *_backgroundColor;
     UIColor *_maskColor;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIColor *maskColor; // @synthesize maskColor=_maskColor;
-@property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(nonatomic) _Bool requireFixedSize; // @synthesize requireFixedSize=_requireFixedSize;
 @property(nonatomic) _Bool shouldApplyBackground; // @synthesize shouldApplyBackground=_shouldApplyBackground;
 @property(nonatomic) long long scalingMode; // @synthesize scalingMode=_scalingMode;
 @property(nonatomic) long long filter; // @synthesize filter=_filter;
+@property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 - (id)init;
 
 @end

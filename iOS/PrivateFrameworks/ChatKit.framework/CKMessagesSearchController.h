@@ -4,7 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface CKMessagesSearchController
+#import <ChatKit/CKMessageSearchResultCellDelegate-Protocol.h>
+
+@class NSString;
+
+@interface CKMessagesSearchController <CKMessageSearchResultCellDelegate>
 {
 }
 
@@ -14,6 +18,7 @@
 + (id)sectionTitle;
 + (_Bool)supportsMenuInteraction;
 + (_Bool)supportsQuicklookForResult:(id)arg1;
+- (double)widthForDeterminingAvatarVisibility;
 - (id)cellForItemInCollectionView:(id)arg1 atIndex:(long long)arg2 withIdentifier:(id)arg3;
 - (struct NSDirectionalEdgeInsets)additionalGroupInsets;
 - (id)customLayoutSectionForEnvironment:(id)arg1;
@@ -22,6 +27,12 @@
 - (void)searchWithText:(id)arg1 mode:(unsigned long long)arg2;
 - (id)queryAttributesForText:(id)arg1;
 - (id)fetchAttributes;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

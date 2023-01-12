@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class CLKComplicationDescriptor;
+
 @interface CLKCComplicationBundleDataSource
 {
 }
@@ -13,10 +15,13 @@
 + (id)appGroupIdentifier;
 + (id)legacyNTKComplicationType;
 + (id)localizedAppName;
++ (id)complicationDescriptors;
 + (id)appIdentifier;
++ (id)sectionIdentifier;
 + (id)bundleIdentifier;
 - (void)getLaunchURLForTimelineEntryDate:(id)arg1 timeTravelDate:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (id)complicationApplicationIdentifier;
+@property(readonly, nonatomic) CLKComplicationDescriptor *complicationDescriptor;
 
 @end
 

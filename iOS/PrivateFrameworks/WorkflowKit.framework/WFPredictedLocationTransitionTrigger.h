@@ -11,6 +11,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (long long)triggerBacking;
++ (id)displayGlyph;
 + (id)localizedDisplayExplanation;
 + (id)localizedDisplayName;
 @property(nonatomic) unsigned long long minutesBefore; // @synthesize minutesBefore=_minutesBefore;

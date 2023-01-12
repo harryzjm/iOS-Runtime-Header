@@ -6,17 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSMutableArray, NSMutableDictionary, NSSet, PGGraph;
+@class NSDictionary, NSMutableArray, NSMutableDictionary, NSSet, PGGraph, PGGraphMomentNodeCollection, PGGraphPersonNodeCollection;
 
 @interface PGGraphRelationshipProcessor : NSObject
 {
     unsigned long long _runOptions;
     NSMutableArray *_analyzersToRun;
     unsigned long long _numberOfSignals;
-    NSSet *_personNodes;
-    NSSet *_momentNodes;
+    PGGraphPersonNodeCollection *_personNodes;
+    PGGraphMomentNodeCollection *_momentNodes;
     NSSet *_contactIdentifiers;
-    NSDictionary *_personIdentifierByContactIdentifier;
+    NSDictionary *_personLocalIdentifierByContactIdentifier;
     PGGraph *_graph;
     NSMutableDictionary *_relationshipAnalyzerPropertiesByPersonLocalIdentifier;
     NSMutableDictionary *_partnerScoreByPersonLocalIdentifier;
@@ -36,10 +36,10 @@
 @property(retain, nonatomic) NSMutableDictionary *partnerScoreByPersonLocalIdentifier; // @synthesize partnerScoreByPersonLocalIdentifier=_partnerScoreByPersonLocalIdentifier;
 @property(retain, nonatomic) NSMutableDictionary *relationshipAnalyzerPropertiesByPersonLocalIdentifier; // @synthesize relationshipAnalyzerPropertiesByPersonLocalIdentifier=_relationshipAnalyzerPropertiesByPersonLocalIdentifier;
 @property(readonly, nonatomic) PGGraph *graph; // @synthesize graph=_graph;
-@property(readonly, nonatomic) NSDictionary *personIdentifierByContactIdentifier; // @synthesize personIdentifierByContactIdentifier=_personIdentifierByContactIdentifier;
+@property(readonly, nonatomic) NSDictionary *personLocalIdentifierByContactIdentifier; // @synthesize personLocalIdentifierByContactIdentifier=_personLocalIdentifierByContactIdentifier;
 @property(readonly, nonatomic) NSSet *contactIdentifiers; // @synthesize contactIdentifiers=_contactIdentifiers;
-@property(readonly, nonatomic) NSSet *momentNodes; // @synthesize momentNodes=_momentNodes;
-@property(readonly, nonatomic) NSSet *personNodes; // @synthesize personNodes=_personNodes;
+@property(readonly, nonatomic) PGGraphMomentNodeCollection *momentNodes; // @synthesize momentNodes=_momentNodes;
+@property(readonly, nonatomic) PGGraphPersonNodeCollection *personNodes; // @synthesize personNodes=_personNodes;
 @property(readonly, nonatomic) unsigned long long numberOfSignals; // @synthesize numberOfSignals=_numberOfSignals;
 @property(retain, nonatomic) NSMutableArray *analyzersToRun; // @synthesize analyzersToRun=_analyzersToRun;
 @property(readonly, nonatomic) unsigned long long runOptions; // @synthesize runOptions=_runOptions;
@@ -56,7 +56,7 @@
 - (void)_aggregateScores;
 - (void)_extractSignalsFromRunOptions;
 - (void)enumerateInferredRelationshipsUsingBlock:(CDUnknownBlockType)arg1;
-- (void)runRelationshipAnalysisWithProgressBlock:(CDUnknownBlockType)arg1;
+- (void)runRelationshipAnalysisWithLoggingConnection:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (id)initWithPersonNodes:(id)arg1 runOptions:(unsigned long long)arg2;
 
 @end

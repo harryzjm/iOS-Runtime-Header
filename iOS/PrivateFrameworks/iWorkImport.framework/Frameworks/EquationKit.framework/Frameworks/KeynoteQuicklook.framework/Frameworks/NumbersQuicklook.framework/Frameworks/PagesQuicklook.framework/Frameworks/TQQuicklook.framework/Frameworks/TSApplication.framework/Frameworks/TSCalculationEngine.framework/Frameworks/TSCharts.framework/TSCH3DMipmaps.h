@@ -10,10 +10,10 @@
 
 @interface TSCH3DMipmaps : NSObject
 {
-    int mWidth;
-    int mHeight;
-    unsigned long long mComponents;
-    NSData *mData;
+    int _width;
+    int _height;
+    unsigned long long _components;
+    NSData *_data;
 }
 
 + (id)mipmapsFromData:(id)arg1;
@@ -22,10 +22,10 @@
 + (struct CGSize)optimizedMipmapLevel0Size;
 + (id)mipmapNameFromImageName:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSData *data; // @synthesize data=mData;
-@property(readonly, nonatomic) unsigned long long components; // @synthesize components=mComponents;
-@property(readonly, nonatomic) int height; // @synthesize height=mHeight;
-@property(readonly, nonatomic) int width; // @synthesize width=mWidth;
+@property(readonly, nonatomic) NSData *data; // @synthesize data=_data;
+@property(readonly, nonatomic) unsigned long long components; // @synthesize components=_components;
+@property(readonly, nonatomic) int height; // @synthesize height=_height;
+@property(readonly, nonatomic) int width; // @synthesize width=_width;
 - (_Bool)writeToFile:(id)arg1;
 - (_Bool)valid;
 - (id)description;

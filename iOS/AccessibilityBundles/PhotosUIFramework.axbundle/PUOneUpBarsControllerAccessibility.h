@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_updateToggleDetailsBarButtonItem;
 - (void)_performToggleFavoriteAction;
 - (id)_newBarButtonItemWithIdentifier:(long long)arg1 location:(long long)arg2;
 - (_Bool)accessibilityScroll:(long long)arg1;

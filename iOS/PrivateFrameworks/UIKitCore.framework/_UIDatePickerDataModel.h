@@ -11,10 +11,10 @@
 __attribute__((visibility("hidden")))
 @interface _UIDatePickerDataModel : NSObject
 {
-    NSLocale *_effectiveLocale;
     NSCalendar *_effectiveCalendar;
     _UIDatePickerChineseCalendar *_chineseWrapperCalendar;
     _UIDatePickerDateRange *_dateRange;
+    _Bool _roundsToMinuteInterval;
     long long _datePickerStyle;
     long long _datePickerMode;
     NSLocale *_locale;
@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *customFontDesign; // @synthesize customFontDesign=_customFontDesign;
+@property(nonatomic) _Bool roundsToMinuteInterval; // @synthesize roundsToMinuteInterval=_roundsToMinuteInterval;
 @property(nonatomic) long long minuteInterval; // @synthesize minuteInterval=_minuteInterval;
 @property(retain, nonatomic) NSDateComponents *lastSelectedDateComponents; // @synthesize lastSelectedDateComponents=_lastSelectedDateComponents;
 @property(retain, nonatomic) NSDate *date; // @synthesize date=_date;
@@ -36,15 +37,18 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 @property(nonatomic) long long datePickerMode; // @synthesize datePickerMode=_datePickerMode;
 @property(nonatomic) long long datePickerStyle; // @synthesize datePickerStyle=_datePickerStyle;
+- (id)createDatePickerRepresentingDataModelForMode:(long long)arg1 style:(long long)arg2;
+- (id)createDatePickerRepresentingDataModel;
 @property(retain, nonatomic) NSDate *maximumDate;
 @property(retain, nonatomic) NSDate *minimumDate;
 @property(readonly, copy, nonatomic) NSDateComponents *effectiveDateComponents;
+- (id)_dateForRoundingDateToMinuteInterval:(id)arg1;
 @property(readonly, nonatomic) NSDate *effectiveDate;
 - (void)resetForCurrentLocaleOrCalendarChange;
 @property(readonly, nonatomic) NSCalendar *formattingCalendar;
 @property(readonly, nonatomic) NSCalendar *effectiveCalendar;
 @property(readonly, nonatomic) NSLocale *effectiveLocale;
-- (void)_setupDerivedLocaleAndCalendars;
+- (void)_setupDerivedCalendars;
 - (id)init;
 
 @end

@@ -19,12 +19,9 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSDate *lastFireDate; // @synthesize lastFireDate=_lastFireDate;
 @property(nonatomic) __weak id <_HDDemoDataModuleDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)timerDidFireWithInterval:(double)arg1;
-- (void)scheduleNextFireWithInterval:(double)arg1;
 - (void)scheduleNextFire;
-- (void)handleDataObject:(id)arg1;
 @property(readonly, nonatomic) double nextFireInterval;
 - (void)stop;
 - (void)start;

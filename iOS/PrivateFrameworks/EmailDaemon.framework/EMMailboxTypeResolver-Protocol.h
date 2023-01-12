@@ -6,11 +6,11 @@
 
 #import <EmailDaemon/NSObject-Protocol.h>
 
-@class EMObjectID, NSSet;
+@class EMMailboxObjectID, NSSet;
 
 @protocol EMMailboxTypeResolver <NSObject>
 @property(readonly, nonatomic) NSSet *allMailboxObjectIDs;
-- (long long)mailboxTypeForMailboxObjectID:(EMObjectID *)arg1;
+- (long long)mailboxTypeForMailboxObjectID:(EMMailboxObjectID *)arg1;
 - (NSSet *)mailboxObjectIDsForMailboxType:(long long)arg1;
 @end
 

@@ -11,8 +11,8 @@
 }
 
 + (id)createClassLabelToIndexMapWith:(id)arg1;
-+ (id)loadParameterDescriptionsAndContainerFromUpdateParameters:(const struct NetworkUpdateParameters *)arg1 modelDescription:(id)arg2;
-+ (_Bool)loadUpdateParameters:(struct NetworkUpdateParameters *)arg1 fromCompiledArchive:(struct _MLModelInputArchiver *)arg2 error:(id *)arg3;
++ (id)loadParameterDescriptionsAndContainerFromUpdateParameters:(const void *)arg1 modelDescription:(id)arg2;
++ (_Bool)loadUpdateParameters:(void *)arg1 fromCompiledArchive:(void *)arg2 error:(id *)arg3;
 
 @end
 

@@ -8,17 +8,17 @@
 
 #import <Message/MFMessageDataConsumerFactory-Protocol.h>
 
-@class MFMessage, MFMessageLibrary, NSString;
+@class MFMailMessageLibrary, MFMessage, NSString;
 
 @interface _MFDALibraryConsumerFactory : NSObject <MFMessageDataConsumerFactory>
 {
-    MFMessageLibrary *_library;
+    MFMailMessageLibrary *_library;
     MFMessage *_message;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) MFMessage *message; // @synthesize message=_message;
-@property(retain, nonatomic) MFMessageLibrary *library; // @synthesize library=_library;
+@property(retain, nonatomic) MFMailMessageLibrary *library; // @synthesize library=_library;
 - (id)dataConsumerForPart:(id)arg1;
 
 // Remaining properties

@@ -4,22 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HealthUI/HKOnboardingBaseViewController.h>
+
+#import <HeartRhythmUI/HKOnboardingCompactDatePickerViewDelegate-Protocol.h>
 #import <HeartRhythmUI/HRStackedButtonViewDelegate-Protocol.h>
-#import <HeartRhythmUI/UITextFieldDelegate-Protocol.h>
 
-@class HKCaretOptionalTextField, HKSeparatorLineView, HRStackedButtonView, NSDate, NSDateFormatter, NSLayoutConstraint, NSNumber, NSString, UIDatePicker, UIImageView, UILabel, UIStackView, UIView;
+@class HKSeparatorLineView, HRStackedButtonView, NSDate, NSLayoutConstraint, NSNumber, NSString, UIImageView, UILabel, UIStackView, UIView;
 
-@interface HROnboardingAtrialFibrillationGateViewController <HRStackedButtonViewDelegate, UITextFieldDelegate>
+@interface HROnboardingAtrialFibrillationGateViewController : HKOnboardingBaseViewController <HRStackedButtonViewDelegate, HKOnboardingCompactDatePickerViewDelegate>
 {
+    _Bool _didLayoutSubviewsOnce;
     UILabel *_titleLabel;
     UILabel *_bodyLabel;
     HKSeparatorLineView *_birthdayTopSeparator;
     UIStackView *_birthdayEntryView;
-    HKCaretOptionalTextField *_birthdayTextField;
     UILabel *_birthdayFooterLabel;
-    UIDatePicker *_datePicker;
     NSDate *_dateOfBirth;
-    NSDateFormatter *_dateFormatter;
     HKSeparatorLineView *_birthdayBottomSeparator;
     UILabel *_diagnosisPromptLabel;
     NSNumber *_diagnosis;
@@ -40,6 +40,7 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool didLayoutSubviewsOnce; // @synthesize didLayoutSubviewsOnce=_didLayoutSubviewsOnce;
 @property(retain, nonatomic) NSLayoutConstraint *contentViewBottomConstraint; // @synthesize contentViewBottomConstraint=_contentViewBottomConstraint;
 @property(retain, nonatomic) HRStackedButtonView *stackedButtonView; // @synthesize stackedButtonView=_stackedButtonView;
 @property(retain, nonatomic) UILabel *diagnosisFooterLabel; // @synthesize diagnosisFooterLabel=_diagnosisFooterLabel;
@@ -57,11 +58,8 @@
 @property(retain, nonatomic) NSNumber *diagnosis; // @synthesize diagnosis=_diagnosis;
 @property(retain, nonatomic) UILabel *diagnosisPromptLabel; // @synthesize diagnosisPromptLabel=_diagnosisPromptLabel;
 @property(retain, nonatomic) HKSeparatorLineView *birthdayBottomSeparator; // @synthesize birthdayBottomSeparator=_birthdayBottomSeparator;
-@property(retain, nonatomic) NSDateFormatter *dateFormatter; // @synthesize dateFormatter=_dateFormatter;
 @property(retain, nonatomic) NSDate *dateOfBirth; // @synthesize dateOfBirth=_dateOfBirth;
-@property(retain, nonatomic) UIDatePicker *datePicker; // @synthesize datePicker=_datePicker;
 @property(retain, nonatomic) UILabel *birthdayFooterLabel; // @synthesize birthdayFooterLabel=_birthdayFooterLabel;
-@property(retain, nonatomic) HKCaretOptionalTextField *birthdayTextField; // @synthesize birthdayTextField=_birthdayTextField;
 @property(retain, nonatomic) UIStackView *birthdayEntryView; // @synthesize birthdayEntryView=_birthdayEntryView;
 @property(retain, nonatomic) HKSeparatorLineView *birthdayTopSeparator; // @synthesize birthdayTopSeparator=_birthdayTopSeparator;
 @property(retain, nonatomic) UILabel *bodyLabel; // @synthesize bodyLabel=_bodyLabel;
@@ -91,22 +89,17 @@
 - (void)_adjustButtonFooterViewLocationForViewContentHeight;
 - (void)_setUpButtonFooterView;
 - (void)_updateButtonState;
-- (void)_updateDateOfBirthDisplay;
 - (void)stackedButtonView:(id)arg1 didTapButtonAtIndex:(long long)arg2;
-- (_Bool)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
-- (void)_keyboardFrameChanged:(id)arg1;
 - (void)_diagnosisRowTapped:(id)arg1;
 - (void)_setUpDiagnosisRowWithTitle:(id)arg1 value:(_Bool)arg2;
-- (void)_datePickerValueChanged:(id)arg1;
-- (id)_dateOfBirthDatePicker;
-- (void)_dateOfBirthTapped:(id)arg1;
+- (void)compactDatePickerView:(id)arg1 didChangeValue:(id)arg2;
 - (void)_setUpBirthdayEntryView;
+- (id)_defaultDOB;
 - (void)setUpConstraints;
-- (void)_didTapBackground;
 - (void)setUpUI;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
-- (id)initForOnboarding:(_Bool)arg1;
+- (id)initForOnboarding:(_Bool)arg1 upgradingFromAlgorithmVersion:(long long)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

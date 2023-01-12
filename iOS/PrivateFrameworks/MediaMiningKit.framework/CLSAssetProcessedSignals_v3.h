@@ -9,10 +9,12 @@
 @interface CLSAssetProcessedSignals_v3 <CLSNSFWProcessedSignals>
 {
     unsigned int _isRecallinglyNSFWExplicit:1;
+    unsigned int _isPreciselyNSFWExplicit:1;
     unsigned int _isNSFWExplicit:1;
 }
 
 @property(nonatomic) _Bool isNSFWExplicit; // @synthesize isNSFWExplicit=_isNSFWExplicit;
+@property(nonatomic) _Bool isPreciselyNSFWExplicit; // @synthesize isPreciselyNSFWExplicit=_isPreciselyNSFWExplicit;
 @property(nonatomic) _Bool isRecallinglyNSFWExplicit; // @synthesize isRecallinglyNSFWExplicit=_isRecallinglyNSFWExplicit;
 
 @end

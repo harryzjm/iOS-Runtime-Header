@@ -10,6 +10,7 @@
 {
 }
 
++ (_Bool)isCharacterEmoji:(id)arg1;
 + (_Bool)shouldRelaxCharacterBoundsPercentageOverlapForScript:(int)arg1;
 + (_Bool)isRightToLeftScriptForCharacter:(id)arg1;
 + (_Bool)isCharacterFullWidth:(id)arg1;

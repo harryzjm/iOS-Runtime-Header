@@ -33,6 +33,7 @@
 @property(copy) NSString *providerBundleIdentifier;
 @property(copy) NSString *localizedDescription;
 @property(copy) NSDictionary *providerConfiguration;
+@property(copy) NSArray *matchPrivateLTENetworks;
 @property(copy) NSArray *matchSSIDs;
 @property(getter=isEnabled) _Bool enabled;
 - (void)saveToPreferencesWithCompletionHandler:(CDUnknownBlockType)arg1;

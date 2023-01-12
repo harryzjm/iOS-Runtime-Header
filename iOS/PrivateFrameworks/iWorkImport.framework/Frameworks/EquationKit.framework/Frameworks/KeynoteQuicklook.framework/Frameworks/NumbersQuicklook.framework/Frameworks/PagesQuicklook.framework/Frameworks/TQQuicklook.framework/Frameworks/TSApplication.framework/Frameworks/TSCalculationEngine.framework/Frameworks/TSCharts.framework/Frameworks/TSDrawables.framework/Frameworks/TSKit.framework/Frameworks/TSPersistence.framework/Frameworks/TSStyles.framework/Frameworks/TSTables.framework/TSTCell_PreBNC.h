@@ -15,6 +15,7 @@
     double _valueDouble;
     unsigned int _valueID;
     NSObject *_valueObject;
+    unsigned char _valueType;
     unsigned char _conditionalStyleAppliedRule;
     unsigned short _explicitFormatFlags;
     unsigned short _cellFlags;
@@ -33,7 +34,6 @@
     unsigned int _multipleChoiceListFormatID;
     unsigned int _commentStorageID;
     unsigned int _importWarningSetID;
-    int _valueType;
     TSTCellStyle *_cellStyle;
     TSWPParagraphStyle *_textStyle;
     TSTConditionalStyleSet *_conditionalStyle;
@@ -53,8 +53,8 @@
     TSTCellSpec *_cellSpec;
 }
 
-+ (id)stringForCellValueType:(int)arg1;
-+ (_Bool)mismatchBetweenValueType:(int)arg1 andFormatType:(unsigned int)arg2;
++ (id)stringForCellValueType:(unsigned char)arg1;
++ (_Bool)mismatchBetweenValueType:(unsigned char)arg1 andFormatType:(unsigned int)arg2;
 + (_Bool)hasASlotForFormatType:(unsigned int)arg1;
 + (_Bool)formatType:(unsigned int)arg1 sharesASpareSlotWithFormatType:(unsigned int)arg2;
 + (_Bool)p_TSTCellFormatIsANumberFormatTypeForMostRecentlySet:(unsigned int)arg1;
@@ -79,7 +79,7 @@
 @property(retain, nonatomic) TSTConditionalStyleSet *conditionalStyle; // @synthesize conditionalStyle=_conditionalStyle;
 @property(retain, nonatomic) TSWPParagraphStyle *textStyle; // @synthesize textStyle=_textStyle;
 @property(retain, nonatomic) TSTCellStyle *cellStyle; // @synthesize cellStyle=_cellStyle;
-@property(nonatomic) int valueType; // @synthesize valueType=_valueType;
+@property(nonatomic) unsigned char valueType; // @synthesize valueType=_valueType;
 @property(nonatomic) unsigned int importWarningSetID; // @synthesize importWarningSetID=_importWarningSetID;
 @property(nonatomic) unsigned int commentStorageID; // @synthesize commentStorageID=_commentStorageID;
 @property(nonatomic) unsigned int multipleChoiceListFormatID; // @synthesize multipleChoiceListFormatID=_multipleChoiceListFormatID;
@@ -106,7 +106,7 @@
 @property(readonly, nonatomic) _Bool hasMismatchedFormatAndValue;
 @property(readonly, nonatomic) _Bool isMostRecentlyExplicitPercent;
 @property(readonly, nonatomic) _Bool hasAnyFormats;
-@property(readonly, nonatomic) int currentFormatNegativeStyle;
+@property(readonly, nonatomic) unsigned char currentFormatNegativeStyle;
 @property(readonly, nonatomic) _Bool currentFormatUsesAccountingStyle;
 @property(readonly, nonatomic) NSString *customFormatString;
 - (int)p_mostRecentlySetTextFormatType;
@@ -193,7 +193,7 @@
 - (void)clear;
 @property(readonly, nonatomic) _Bool isEmpty;
 @property(readonly, nonatomic) _Bool isEmptyForDataStore;
-- (_Bool)hasEqualContentToCell:(id)arg1 usingRichTextStyleComparisonBlock:(CDUnknownBlockType)arg2;
+- (_Bool)hasEqualContentToCell:(id)arg1 usingRichTextObjectComparisonBlock:(CDUnknownBlockType)arg2;
 - (_Bool)hasEqualContentToCell:(id)arg1;
 - (_Bool)p_currentFormatIsEqualToOtherCellFormat:(id)arg1;
 - (void)inflateFromStorageRef:(CDStruct_106f10ff *)arg1 dataStore:(id)arg2 suppressingTransmutation:(_Bool)arg3;

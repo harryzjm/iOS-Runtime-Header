@@ -4,26 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI31EpisodeCollectionViewController : UIViewController
+@interface _TtC8VideosUI31EpisodeCollectionViewController
 {
-    MISSING_TYPE *collectionView;
-    MISSING_TYPE *headerView;
+    MISSING_TYPE *viewImpressioner;
     MISSING_TYPE *viewModel;
     MISSING_TYPE *dataSource;
     MISSING_TYPE *currentSnapshot;
-    MISSING_TYPE *prototypeCell;
+    MISSING_TYPE *cachedPrototypeCell;
+    MISSING_TYPE *cachedPrototypeCellMetrics;
+    MISSING_TYPE *cachedPrototypeLastWidth;
+    MISSING_TYPE *contextMenuInteractor;
 }
 
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (void)viewDidLoad;
-- (void)loadView;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)vui_viewDidLayoutSubviews;
+- (void)vui_loadView;
 
 @end
 

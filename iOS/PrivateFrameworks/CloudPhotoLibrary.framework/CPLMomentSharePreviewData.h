@@ -13,12 +13,15 @@
 @interface CPLMomentSharePreviewData : PBCodable <NSCopying>
 {
     NSString *_cropRectString;
+    NSMutableArray *_curatedAssetIdentifiers;
     NSString *_keyAssetIdentifier;
     NSMutableArray *_previewImageDatas;
 }
 
++ (Class)curatedAssetIdentifiersType;
 + (Class)previewImageDataType;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *curatedAssetIdentifiers; // @synthesize curatedAssetIdentifiers=_curatedAssetIdentifiers;
 @property(retain, nonatomic) NSString *cropRectString; // @synthesize cropRectString=_cropRectString;
 @property(retain, nonatomic) NSString *keyAssetIdentifier; // @synthesize keyAssetIdentifier=_keyAssetIdentifier;
 @property(retain, nonatomic) NSMutableArray *previewImageDatas; // @synthesize previewImageDatas=_previewImageDatas;
@@ -31,6 +34,10 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)curatedAssetIdentifiersAtIndex:(unsigned long long)arg1;
+- (unsigned long long)curatedAssetIdentifiersCount;
+- (void)addCuratedAssetIdentifiers:(id)arg1;
+- (void)clearCuratedAssetIdentifiers;
 @property(readonly, nonatomic) _Bool hasCropRectString;
 @property(readonly, nonatomic) _Bool hasKeyAssetIdentifier;
 - (id)previewImageDataAtIndex:(unsigned long long)arg1;

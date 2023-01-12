@@ -20,6 +20,7 @@
     NSString *_emailBody;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool complete; // @synthesize complete=_complete;
 @property(retain, nonatomic) NSString *emailBody; // @synthesize emailBody=_emailBody;
 @property(retain, nonatomic) NSString *emailSubject; // @synthesize emailSubject=_emailSubject;
@@ -33,7 +34,6 @@
 - (id)thumbnailForActivityType:(id)arg1;
 - (id)operationThatBlocksUntilLoaded;
 - (id)initWithGame:(id)arg1;
-- (void)dealloc;
 
 @end
 

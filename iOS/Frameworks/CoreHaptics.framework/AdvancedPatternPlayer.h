@@ -4,30 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <CoreHaptics/CHHapticAdvancedPatternPlayerExtended-Protocol.h>
-#import <CoreHaptics/PatternPlayerDetails-Protocol.h>
 
-@class AVHapticSequence, CHHapticEngine, NSArray, NSString;
+@class AVHapticSequence, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AdvancedPatternPlayer : NSObject <CHHapticAdvancedPatternPlayerExtended, PatternPlayerDetails>
+@interface AdvancedPatternPlayer <CHHapticAdvancedPatternPlayerExtended>
 {
-    CHHapticEngine *_engine;
     AVHapticSequence *_sequence;
-    double _patternDuration;
     double _loopEnd;
     int _state;
-    NSArray *_events;
-    int _muteState;
     double _seekOffset;
     CDUnknownBlockType _completionHandler;
 }
 
 - (void).cxx_destruct;
 @property double seekOffset; // @synthesize seekOffset=_seekOffset;
-@property __weak CHHapticEngine *engine; // @synthesize engine=_engine;
 - (_Bool)setVolume:(float)arg1 atTime:(double)arg2 error:(id *)arg3;
 - (_Bool)activateChannelByIndex:(unsigned long long)arg1 atTime:(double)arg2 error:(id *)arg3;
 - (id)initWithRingtoneData:(id)arg1 engine:(id)arg2 error:(id *)arg3;
@@ -38,7 +30,7 @@ __attribute__((visibility("hidden")))
 @property _Bool loopEnabled;
 @property(readonly) _Bool paused;
 @property(readonly) _Bool running;
-@property(readonly) double patternDuration;
+- (double)patternDuration;
 - (_Bool)cancelAndReturnError:(id *)arg1;
 - (_Bool)seekToOffset:(double)arg1 error:(id *)arg2;
 - (_Bool)resumeAtTime:(double)arg1 error:(id *)arg2;

@@ -20,7 +20,7 @@
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
-- (_Bool)_isRestoringFromiCloud;
+- (void)_completedRestoreFromiCloud:(CDUnknownBlockType)arg1;
 - (void)signOutController:(id)arg1 didCompleteWithSuccess:(_Bool)arg2 error:(id)arg3;
 - (void)signOutControllerDidCancel:(id)arg1;
 - (void)signOutFlowController:(id)arg1 signOutAccount:(id)arg2 completion:(CDUnknownBlockType)arg3;

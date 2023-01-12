@@ -14,11 +14,13 @@
 @interface HUTappableTextView : UITextView <UIGestureRecognizerDelegate>
 {
     id <HUTappableTextViewDelegate> _tappableTextViewDelegate;
+    NSString *_identifier;
     UITapGestureRecognizer *_tapRecognizer;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) UITapGestureRecognizer *tapRecognizer; // @synthesize tapRecognizer=_tapRecognizer;
+@property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(nonatomic) __weak id <HUTappableTextViewDelegate> tappableTextViewDelegate; // @synthesize tappableTextViewDelegate=_tappableTextViewDelegate;
 - (void)_handleTap:(id)arg1;
 - (void)configureTapRecognizer;

@@ -6,19 +6,20 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HMDLogEventDispatcher, NSOperationQueue;
+@class NSOperationQueue;
+@protocol HMMLogEventSubmitting;
 
 @interface HMDMPCSessionController : HMFObject
 {
     NSOperationQueue *_speakerGroupCommandOperationQueue;
-    HMDLogEventDispatcher *_logEventDispatcher;
+    id <HMMLogEventSubmitting> _logEventSubmitter;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) HMDLogEventDispatcher *logEventDispatcher; // @synthesize logEventDispatcher=_logEventDispatcher;
+@property(readonly, nonatomic) id <HMMLogEventSubmitting> logEventSubmitter; // @synthesize logEventSubmitter=_logEventSubmitter;
 @property(readonly, nonatomic) NSOperationQueue *speakerGroupCommandOperationQueue; // @synthesize speakerGroupCommandOperationQueue=_speakerGroupCommandOperationQueue;
 - (void)executeSessionWithSessionData:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)initWithLogEventDispatcher:(id)arg1;
+- (id)initWithLogEventSubmitter:(id)arg1;
 
 @end
 

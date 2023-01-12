@@ -9,6 +9,8 @@
 @class SBAuthenticationFeedback, SBLockScreenBiometricAuthenticationCoordinator;
 
 @protocol SBLockScreenBiometricAuthenticationCoordinatorDelegate <NSObject>
+- (_Bool)biometricAuthenticationCoordinatorShouldWaitToInvalidateMatchingAssertion:(SBLockScreenBiometricAuthenticationCoordinator *)arg1;
+- (void)biometricAuthenticationCoordinator:(SBLockScreenBiometricAuthenticationCoordinator *)arg1 handleIdentityMatchSuccess:(_Bool)arg2;
 - (_Bool)biometricAuthenticationCoordinator:(SBLockScreenBiometricAuthenticationCoordinator *)arg1 requestsUnlockWithIntent:(int)arg2;
 - (_Bool)biometricAuthenticationCoordinator:(SBLockScreenBiometricAuthenticationCoordinator *)arg1 requestsAuthenticationFeedback:(SBAuthenticationFeedback *)arg2;
 @end

@@ -8,9 +8,6 @@
 {
 }
 
-+ (id)_tableNamePredicate:(id)arg1;
-+ (id)_namePredicate:(id)arg1;
-+ (id)_typePredicate:(id)arg1;
 + (id)queryWithDatabase:(id)arg1 types:(id)arg2 tableName:(id)arg3;
 + (id)queryWithDatabase:(id)arg1 type:(id)arg2 tableName:(id)arg3;
 + (id)queryWithDatabase:(id)arg1 type:(id)arg2;

@@ -26,7 +26,7 @@
 @property(readonly, nonatomic) NSString *reactiveParameterKey; // @synthesize reactiveParameterKey=_reactiveParameterKey;
 - (id)parameterStateFromDialogResponse:(id)arg1;
 - (id)createDialogTextFieldConfigurationWithDefaultState:(id)arg1;
-- (void)createDialogRequestWithAttribution:(id)arg1 defaultState:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)createDialogRequestWithAttribution:(id)arg1 defaultState:(id)arg2 prompt:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)dateFormatterForConfiguration:(id)arg1;
 - (id)datePickerConfiguration;
 @property(readonly, nonatomic) NSString *localizedIncompleteHintString;

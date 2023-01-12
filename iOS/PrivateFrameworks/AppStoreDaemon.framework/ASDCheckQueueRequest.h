@@ -19,12 +19,8 @@
 
 - (void).cxx_destruct;
 - (void)_setupConnection;
-- (void)_makeAutomaticQueueRequestWithCompletionBlock:(CDUnknownBlockType)arg1;
-- (void)_makeRequestWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)_sendRequestWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)sendRequestCompletionBlock:(CDUnknownBlockType)arg1;
-- (void)checkPendingCheckWithCompletionBlock:(CDUnknownBlockType)arg1;
-- (void)checkAutomaticCheckWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)initWithOptions:(id)arg1;
 
 // Remaining properties

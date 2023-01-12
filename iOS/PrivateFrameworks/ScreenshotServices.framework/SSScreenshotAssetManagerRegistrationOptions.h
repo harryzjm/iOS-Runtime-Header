@@ -6,11 +6,16 @@
 
 #import <objc/NSObject.h>
 
+@class SSUIServiceOptionsAssetMetadata;
+
 @interface SSScreenshotAssetManagerRegistrationOptions : NSObject
 {
     unsigned long long _saveLocation;
+    SSUIServiceOptionsAssetMetadata *_assetMetadata;
 }
 
+- (void).cxx_destruct;
+@property(copy, nonatomic) SSUIServiceOptionsAssetMetadata *assetMetadata; // @synthesize assetMetadata=_assetMetadata;
 @property(nonatomic) unsigned long long saveLocation; // @synthesize saveLocation=_saveLocation;
 
 @end

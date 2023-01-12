@@ -4,26 +4,36 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI24SearchTemplateController : UIViewController
+@interface _TtC8VideosUI24SearchTemplateController
 {
-    MISSING_TYPE *templateViewModel;
+    MISSING_TYPE *collectionImpressioner;
+    MISSING_TYPE *internalCustomSearchFieldWidth;
+    MISSING_TYPE *maxSearchFieldWidth;
     MISSING_TYPE *searchController;
+    MISSING_TYPE *searchTopResultsServiceRequest;
     MISSING_TYPE *recentlySearchedDataManager;
-    MISSING_TYPE *activeSearchState;
-    MISSING_TYPE *$__lazy_storage_$_landingPageViewController;
+    MISSING_TYPE *document;
+    MISSING_TYPE *searchHintsServiceRequest;
+    MISSING_TYPE *currentSearchTextInputSource;
+    MISSING_TYPE *resultsServiceRequest;
     MISSING_TYPE *resultsViewController;
-    MISSING_TYPE *hintsRequestController;
+    MISSING_TYPE *landingPageViewController;
+    MISSING_TYPE *activeSearchState;
+    MISSING_TYPE *pageMetrics;
 }
 
 - (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (void)viewWillAppear:(_Bool)arg1;
-- (void)viewDidLoad;
+- (void)vui_didMoveToParentViewController:(id)arg1;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (void)vui_viewDidDisappear:(_Bool)arg1;
+- (void)vui_viewWillDisappear:(_Bool)arg1;
+- (void)vui_viewDidAppear:(_Bool)arg1;
+- (void)vui_viewWillAppear:(_Bool)arg1;
+- (void)vui_viewDidLoad;
 - (id)initWithCoder:(id)arg1;
 
 @end

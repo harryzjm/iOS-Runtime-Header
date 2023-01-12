@@ -11,9 +11,9 @@
 }
 
 + (_Bool)isEmptyEvent:(id)arg1;
-+ (id)_descriptionForEvent:(id)arg1 withPhotoLibrary:(id)arg2;
++ (id)_descriptionForEvent:(id)arg1 withPersistentStoreCoordinator:(id)arg2;
 + (id)_descriptionForEvent:(id)arg1;
-+ (id)localChangeEventFromChangeHubEvent:(id)arg1 withPhotoLibrary:(id)arg2;
++ (id)localChangeEventFromChangeHubEvent:(id)arg1 withLibraryBundle:(id)arg2;
 
 @end
 

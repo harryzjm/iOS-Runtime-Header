@@ -16,12 +16,11 @@
 
 + (_Bool)readingAvailable;
 - (void)_callbackDidBecomeActive;
-- (void)_callbackDidInvalidateWithError:(id)arg1;
 - (void)connectToTag:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)restartPolling;
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2 invalidateAfterFirstRead:(_Bool)arg3;
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2 pollMethod:(unsigned long long)arg3;
-- (void)didDetectNDEFMessages:(id)arg1 fromTags:(id)arg2 updateUICallback:(CDUnknownBlockType)arg3;
+- (void)didDetectNDEFMessages:(id)arg1 fromTags:(id)arg2 connectedTagIndex:(unsigned long long)arg3 updateUICallback:(CDUnknownBlockType)arg4;
 - (void)didTerminate:(id)arg1;
 - (id)initWithDelegate:(id)arg1 sessionDelegateType:(long long)arg2 queue:(id)arg3 pollMethod:(unsigned long long)arg4 sessionConfig:(unsigned long long)arg5;
 

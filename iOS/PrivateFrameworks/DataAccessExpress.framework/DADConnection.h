@@ -22,6 +22,7 @@
     NSMutableDictionary *_inFlightAttachmentDownloads;
     NSMutableDictionary *_inFlightCalendarAvailabilityRequests;
     NSMutableDictionary *_inFlightCalendarDirectorySearches;
+    NSMutableDictionary *_inFlightGroupExpansions;
     NSMutableDictionary *_inFlightShareRequests;
     NSMutableDictionary *_inFlightOofSettingsRequests;
     NSMutableDictionary *_inFlightOfficeHoursRequests;
@@ -48,15 +49,18 @@
 - (id)init;
 - (void)externalIdentificationInfoForAccountID:(id)arg1 resultsBlock:(CDUnknownBlockType)arg2;
 - (void)externalIdentificationForAccountID:(id)arg1 resultsBlock:(CDUnknownBlockType)arg2;
+- (void)_groupExpansionFinished:(id)arg1;
+- (void)performGroupExpansionWithAccountID:(id)arg1 principalPath:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)_calendarDirectorySearchFinished:(id)arg1;
 - (void)_calendarDirectorySearchReturnedResults:(id)arg1;
 - (void)cancelCalendarDirectorySearchWithID:(id)arg1;
 - (id)performCalendarDirectorySearchWithAccountID:(id)arg1 terms:(id)arg2 recordTypes:(id)arg3 resultLimit:(unsigned long long)arg4 resultsBlock:(CDUnknownBlockType)arg5 completionBlock:(CDUnknownBlockType)arg6;
 - (void)_updateGrantedDelegatePermissionRequestFinished:(id)arg1;
-- (id)updateGrantedDelegatePermissionForAccountID:(id)arg1 grantedDelegate:(id)arg2 resultsBlock:(CDUnknownBlockType)arg3;
+- (id)updateGrantedDelegateForAccountID:(id)arg1 grantedDelegate:(id)arg2 action:(long long)arg3 resultsBlock:(CDUnknownBlockType)arg4;
 - (void)_grantedDelegatesListRequestFinished:(id)arg1;
 - (void)cancelGrantedDelegatesListRequestWithID:(id)arg1;
 - (id)requestGrantedDelegatesListForAccountID:(id)arg1 resultsBlock:(CDUnknownBlockType)arg2;
+- (void)validateCandidateSubscriptionURLWithICloud:(id)arg1 queue:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)_downloadSubscribedCalendarRequiresPassword:(id)arg1;
 - (void)_downloadSubscribedCalendarFinished:(id)arg1;
 - (void)_downloadSubscribedCalendarProgress:(id)arg1;

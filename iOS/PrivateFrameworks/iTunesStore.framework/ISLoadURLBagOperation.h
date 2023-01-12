@@ -30,7 +30,6 @@
 - (void)_setOutputURLBag:(id)arg1;
 - (void)_sendPingsForURLBag:(id)arg1;
 - (void)_postBagDidLoadNotificationWithURLBag:(id)arg1;
-- (void)_analyzeBagForActiveSystemApps:(id)arg1;
 - (void)_addHeadersToRequestProperties:(id)arg1;
 - (void)operation:(id)arg1 willSendRequest:(id)arg2;
 - (_Bool)operation:(id)arg1 shouldSetStoreFrontID:(id)arg2;

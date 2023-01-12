@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_25be8a7a)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_25be8a7a)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSString *delimiter;
 @property(readonly, nonatomic) unsigned int word_penalty;
 @property(readonly, nonatomic) unsigned int max_latency;

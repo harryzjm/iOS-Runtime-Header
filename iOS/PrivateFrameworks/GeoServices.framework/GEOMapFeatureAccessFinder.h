@@ -12,18 +12,20 @@ __attribute__((visibility("hidden")))
 @interface GEOMapFeatureAccessFinder : NSObject
 {
     _Bool _allowNetwork;
+    _Bool _allowStaleData;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property(nonatomic) _Bool allowStaleData; // @synthesize allowStaleData=_allowStaleData;
 @property(nonatomic) _Bool allowNetwork; // @synthesize allowNetwork=_allowNetwork;
 - (id)init;
-- (_Bool)_boundingCircle:(const Sphere_37dc312c *)arg1 intersectsPoints:(CDStruct_6e3f967a *)arg2 pointCount:(unsigned long long)arg3;
-- (_Bool)_boundingCircle:(const Sphere_37dc312c *)arg1 intersectsTransitLink:(CDStruct_32d7d945 *)arg2;
-- (_Bool)_boundingCircle:(const Sphere_37dc312c *)arg1 intersectsFeature:(CDStruct_4da79865 *)arg2;
-- (Sphere_37dc312c)_boundingCircleWithCenter:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 inTile:(struct _GEOTileKey)arg3;
-- (_Bool)_featureHasValidGeometry:(CDStruct_4da79865 *)arg1;
+- (_Bool)_boundingCircle:(const void *)arg1 intersectsPoints:(struct GeoCodecsVectorTilePoint *)arg2 pointCount:(unsigned long long)arg3;
+- (_Bool)_boundingCircle:(const void *)arg1 intersectsTransitLink:(id)arg2;
+- (_Bool)_boundingCircle:(const void *)arg1 intersectsFeature:(id)arg2;
+- (Sphere_67aef8b0)_boundingCircleWithCenter:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 inTile:(struct _GEOTileKey)arg3;
+- (_Bool)_featureHasValidGeometry:(id)arg1;
 
 @end
 

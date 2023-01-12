@@ -16,7 +16,7 @@
 + (void)enumerateSignalsFromAsset:(id)arg1 fullHierarchyName:(_Bool)arg2 usingBlock:(CDUnknownBlockType)arg3;
 + (short)audioClassificationsToEmphasizeWithAudioClassificationCounts:(id)arg1 threshold:(double)arg2;
 + (void)addAudioClassifications:(short)arg1 toAudioClassificationCounts:(id)arg2;
-+ (id)scoringContextWithAssets:(id)arg1;
++ (id)scoringContextWithAssets:(id)arg1 aestheticScoreThresholdToBeAwesome:(double)arg2;
 + (double)legacyAestheticScoreThresholdToNotBeJunk;
 + (double)legacyAestheticScoreThresholdToBeAestheticallyPrettyGood;
 + (double)legacyAestheticScoreThresholdToBeAwesome;

@@ -57,6 +57,7 @@
 @property(readonly, nonatomic) NSString *localeIdentifier;
 - (void)gatherTelephonyData;
 @property(nonatomic) _Bool isPersonalizedAdsEnabled;
+- (_Bool)isRestrictedByScreenTime;
 - (void)setIdentifierForAdvertisingAllowed:(_Bool)arg1;
 - (_Bool)isAccountRestricted;
 - (void)reloadStorefront:(CDUnknownBlockType)arg1;

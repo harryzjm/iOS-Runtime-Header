@@ -28,6 +28,7 @@
 @property(nonatomic, getter=isVisible) _Bool visible; // @synthesize visible=_visible;
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
 @property(readonly, copy, nonatomic) SBAppLayout *appLayout; // @synthesize appLayout=_appLayout;
+@property(nonatomic) unsigned long long maskedCorners;
 @property(nonatomic) double cornerRadius;
 @property(nonatomic) long long orientation;
 @property(nonatomic) long long contentOrientation;

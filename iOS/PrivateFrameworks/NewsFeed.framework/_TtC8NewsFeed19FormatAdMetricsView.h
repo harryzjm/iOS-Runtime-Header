@@ -12,10 +12,10 @@
 {
     MISSING_TYPE *contentView;
     MISSING_TYPE *metricsView;
+    MISSING_TYPE *privacyMarker;
 }
 
 - (void).cxx_destruct;
-- (void)layoutSubviews;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

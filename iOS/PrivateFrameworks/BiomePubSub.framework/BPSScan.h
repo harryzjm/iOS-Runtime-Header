@@ -4,29 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <BiomePubSub/BPSPublisher-Protocol.h>
+@protocol BPSPublisher;
 
-@class BPSPublisher, NSString;
-
-@interface BPSScan <BPSPublisher>
+@interface BPSScan
 {
-    BPSPublisher *_upstream;
+    id <BPSPublisher> _upstream;
     id _initialResult;
     CDUnknownBlockType _nextPartialResult;
 }
 
++ (id)publisherWithPublisher:(id)arg1 upstreams:(id)arg2 bookmarkState:(id)arg3;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) CDUnknownBlockType nextPartialResult; // @synthesize nextPartialResult=_nextPartialResult;
 @property(readonly, nonatomic) id initialResult; // @synthesize initialResult=_initialResult;
-@property(readonly, nonatomic) BPSPublisher *upstream; // @synthesize upstream=_upstream;
+@property(readonly, nonatomic) id <BPSPublisher> upstream; // @synthesize upstream=_upstream;
 - (void)subscribe:(id)arg1;
 - (id)initWithUpstream:(id)arg1 initialResult:(id)arg2 nextPartialResult:(CDUnknownBlockType)arg3;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (_Bool)canStorePassThroughValueInBookmark;
+- (_Bool)canStoreInternalStateInBookmark;
+- (id)bookmarkableUpstreams;
 
 @end
 

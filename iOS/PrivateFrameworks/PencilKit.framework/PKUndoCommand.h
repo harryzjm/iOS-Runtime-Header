@@ -10,18 +10,22 @@
 
 @interface PKUndoCommand : NSObject
 {
+    _Bool _changesVisibleStrokes;
     NSUUID *_drawingUUID;
     NSString *_actionName;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSString *actionName; // @synthesize actionName=_actionName;
+@property(readonly, nonatomic) _Bool changesVisibleStrokes; // @synthesize changesVisibleStrokes=_changesVisibleStrokes;
+@property(copy, nonatomic) NSString *actionName; // @synthesize actionName=_actionName;
 @property(readonly, nonatomic) NSUUID *drawingUUID; // @synthesize drawingUUID=_drawingUUID;
 - (id)strokes;
+- (id)applyToDrawingReturnInverted:(id)arg1;
 - (void)applyToDrawing:(id)arg1;
 - (id)invertedInDrawing:(id)arg1;
 - (id)inverted;
 - (void)registerWithUndoManager:(id)arg1 target:(id)arg2 selector:(SEL)arg3;
+- (id)initWithDrawingUUID:(id)arg1 actionName:(id)arg2 changesVisibleStrokes:(_Bool)arg3;
 - (id)initWithDrawingUUID:(id)arg1 actionName:(id)arg2;
 
 @end

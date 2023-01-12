@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol _UITextFieldCanvasViewContext;
+@protocol _UITextFieldCanvasContext;
 
 __attribute__((visibility("hidden")))
 @interface _UITextFieldCanvasView
@@ -14,9 +14,11 @@ __attribute__((visibility("hidden")))
 - (void)drawRect:(struct CGRect)arg1;
 - (void)drawTextInRect:(struct CGRect)arg1;
 - (_Bool)_enableAutoConstraining;
+- (id)initWithCoder:(id)arg1;
+- (id)init;
 
 // Remaining properties
-@property(nonatomic) __weak id <_UITextFieldCanvasViewContext> context; // @dynamic context;
+@property(nonatomic) __weak id <_UITextFieldCanvasContext> context; // @dynamic context;
 
 @end
 

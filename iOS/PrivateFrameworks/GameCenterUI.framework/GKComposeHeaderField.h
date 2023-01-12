@@ -11,12 +11,12 @@
     GKLabel *_valueLabel;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) GKLabel *valueLabel; // @synthesize valueLabel=_valueLabel;
 - (struct CGRect)valueFrame;
 - (void)setMaxLineCount:(unsigned long long)arg1;
 - (void)setValueText:(id)arg1;
 - (id)valueText;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

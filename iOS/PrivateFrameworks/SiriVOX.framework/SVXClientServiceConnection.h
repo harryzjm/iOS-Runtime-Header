@@ -10,8 +10,8 @@
 #import <SiriVOX/SVXClientServiceDelegate-Protocol.h>
 #import <SiriVOX/SVXClientServiceProviding-Protocol.h>
 
-@class NSString, NSXPCConnection, SVXClientActivationService, SVXClientAudioPowerService, SVXClientAudioSystemService, SVXClientDeviceService, SVXClientSessionService, SVXClientSpeechSynthesisService, SVXQueuePerformer;
-@protocol SVXClientActivationServicing, SVXClientAudioPowerServicing, SVXClientAudioSystemServicing, SVXClientDeviceServicing, SVXClientServiceConnectionDelegate, SVXClientSessionServicing, SVXClientSpeechSynthesisServicing, SVXPerforming;
+@class AFInstanceContext, NSString, NSXPCConnection, SVXClientActivationService, SVXClientAudioPowerService, SVXClientAudioSystemService, SVXClientDeviceService, SVXClientKeepAliveService, SVXClientSessionService, SVXClientSpeechSynthesisService, SVXQueuePerformer;
+@protocol SVXClientActivationServicing, SVXClientAudioPowerServicing, SVXClientAudioSystemServicing, SVXClientDeviceServicing, SVXClientKeepAliveServicing, SVXClientServiceConnectionDelegate, SVXClientSessionServicing, SVXClientSpeechSynthesisServicing, SVXPerforming;
 
 @interface SVXClientServiceConnection : NSObject <SVXClientService, SVXClientServiceDelegate, SVXClientServiceProviding>
 {
@@ -25,19 +25,23 @@
     SVXClientSpeechSynthesisService *_speechSynthesisService;
     SVXClientDeviceService *_deviceService;
     SVXClientAudioSystemService *_audioSystemService;
+    SVXClientKeepAliveService *_keepAliveService;
     NSXPCConnection *_connection;
+    AFInstanceContext *_instanceContext;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) AFInstanceContext *instanceContext; // @synthesize instanceContext=_instanceContext;
 - (void)_cleanUpComponents;
 - (void)_cleanUpConnection;
 - (void)connectionInvalidated;
 - (void)connectionInterrupted;
 - (id)_connection;
-- (void)_clientServiceDidChange;
+- (void)_clientServiceDidChange:(_Bool)arg1;
 - (id)_clientServiceWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)_invalidate;
 - (void)getClientServiceUsingBlock:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
+- (oneway void)handleSpeechSynthesisSynthesizedBufferForHandlerUUID:(id)arg1 audioChunkData:(id)arg2 audioChunkIndex:(unsigned long long)arg3 reply:(CDUnknownBlockType)arg4;
 - (oneway void)notifyAudioSessionDidBecomeActive:(_Bool)arg1 activationContext:(id)arg2 deactivationContext:(id)arg3;
 - (oneway void)notifyAudioSessionWillBecomeActive:(_Bool)arg1 activationContext:(id)arg2 deactivationContext:(id)arg3;
 - (oneway void)notifyDidEndUpdateAudioPowerWithType:(long long)arg1;
@@ -58,16 +62,18 @@
 - (oneway void)notifyDidActivateWithContext:(id)arg1;
 - (oneway void)notifyWillActivateWithContext:(id)arg1;
 - (oneway void)requestPermissionToActivateWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (oneway void)getInstanceInfoWithCompletion:(CDUnknownBlockType)arg1;
 - (oneway void)prepareForDeviceSetupWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)setDeviceSetupContext:(id)arg1;
 - (oneway void)stopSpeechSynthesisRequest:(id)arg1;
 - (oneway void)cancelPendingSpeechSynthesisRequest:(id)arg1;
 - (oneway void)enqueueSpeechSynthesisRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (oneway void)synthesizeRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (oneway void)synthesizeRequest:(id)arg1 handlerUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (oneway void)prewarmRequest:(id)arg1;
 - (oneway void)fetchAudioPowerWithType:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)prewarmWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)preheatWithActivationSource:(long long)arg1;
+- (oneway void)fetchAlarmAndTimerFiringContextWithCompletion:(CDUnknownBlockType)arg1;
 - (oneway void)fetchSessionActivityStateWithCompletion:(CDUnknownBlockType)arg1;
 - (oneway void)fetchSessionStateWithCompletion:(CDUnknownBlockType)arg1;
 - (oneway void)transitToAutomaticEndpointing;
@@ -76,6 +82,7 @@
 - (oneway void)activateWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)pingWithReply:(CDUnknownBlockType)arg1;
 - (void)invalidate;
+@property(readonly, nonatomic) id <SVXClientKeepAliveServicing> keepAliveService;
 @property(readonly, nonatomic) id <SVXClientSessionServicing> sessionService;
 @property(readonly, nonatomic) id <SVXClientAudioSystemServicing> audioSystemService;
 @property(readonly, nonatomic) id <SVXClientDeviceServicing> deviceService;
@@ -84,8 +91,10 @@
 @property(readonly, nonatomic) id <SVXClientAudioPowerServicing> inputAudioPowerService;
 @property(readonly, nonatomic) id <SVXClientActivationServicing> activationService;
 @property(readonly, nonatomic) id <SVXPerforming> performer;
-- (id)initWithQueuePerformer:(id)arg1 activationService:(id)arg2 audioSystemService:(id)arg3 deviceService:(id)arg4 inputAudioPowerService:(id)arg5 outputAudioPowerService:(id)arg6 sessionService:(id)arg7 speechSynthesisService:(id)arg8 delegate:(id)arg9;
+- (id)initWithQueuePerformer:(id)arg1 activationService:(id)arg2 audioSystemService:(id)arg3 deviceService:(id)arg4 inputAudioPowerService:(id)arg5 outputAudioPowerService:(id)arg6 sessionService:(id)arg7 speechSynthesisService:(id)arg8 keepAliveService:(id)arg9 instanceContext:(id)arg10 delegate:(id)arg11;
+- (id)initWithComponents:(unsigned long long)arg1 instanceContext:(id)arg2 delegate:(id)arg3;
 - (id)initWithComponents:(unsigned long long)arg1 delegate:(id)arg2;
+- (void)dealloc;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

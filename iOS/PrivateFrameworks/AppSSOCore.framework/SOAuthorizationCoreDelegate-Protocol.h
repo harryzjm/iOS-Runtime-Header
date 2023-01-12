@@ -6,12 +6,13 @@
 
 #import <AppSSOCore/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, NSError, NSHTTPURLResponse, SOAuthorizationCore;
+@class NSData, NSDictionary, NSError, NSHTTPURLResponse, SOAuthorizationCore, SOAuthorizationResultCore;
 
 @protocol SOAuthorizationCoreDelegate <NSObject>
 
 @optional
 - (void)authorization:(SOAuthorizationCore *)arg1 didCompleteWithError:(NSError *)arg2;
+- (void)authorization:(SOAuthorizationCore *)arg1 didCompleteWithAuthorizationResult:(SOAuthorizationResultCore *)arg2;
 - (void)authorization:(SOAuthorizationCore *)arg1 didCompleteWithHTTPResponse:(NSHTTPURLResponse *)arg2 httpBody:(NSData *)arg3;
 - (void)authorization:(SOAuthorizationCore *)arg1 didCompleteWithHTTPAuthorizationHeaders:(NSDictionary *)arg2;
 - (void)authorizationDidComplete:(SOAuthorizationCore *)arg1;

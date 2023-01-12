@@ -6,14 +6,19 @@
 
 #import <PhotosUICore/PXGLayoutContentSource-Protocol.h>
 
-@class PXGLayout;
-@protocol PXDisplayAssetFetchResult, PXGDisplayAssetRequestObserver;
+@class PXGDisplayAssetVideoPresentationController, PXGLayout;
+@protocol PXDisplayAsset, PXDisplayAssetFetchResult, PXGDisplayAssetAdjustment, PXGDisplayAssetRequestObserver;
 
 @protocol PXGDisplayAssetSource <PXGLayoutContentSource>
-- (id <PXGDisplayAssetRequestObserver>)displayAssetRequestObserverForSpritesInRange:(struct _PXGSpriteIndexRange)arg1 inLayout:(PXGLayout *)arg2;
-- (id <PXDisplayAssetFetchResult>)displayAssetFetchResultForSpritesInRange:(struct _PXGSpriteIndexRange)arg1 inLayout:(PXGLayout *)arg2;
-- (struct CGSize)minSpriteSizeForPresentationStyle:(unsigned long long)arg1;
 - (unsigned long long)desiredPlaceholderStyleInLayout:(PXGLayout *)arg1;
+- (id <PXDisplayAssetFetchResult>)displayAssetFetchResultForSpritesInRange:(struct _PXGSpriteIndexRange)arg1 inLayout:(PXGLayout *)arg2;
+
+@optional
+- (unsigned long long)presentationIntentForSpritesInRange:(struct _PXGSpriteIndexRange)arg1 inLayout:(PXGLayout *)arg2;
+- (id <PXGDisplayAssetAdjustment>)adjustmentForDisplayAsset:(id <PXDisplayAsset>)arg1 spriteIndex:(unsigned int)arg2 inLayout:(PXGLayout *)arg3;
+- (PXGDisplayAssetVideoPresentationController *)videoPresentationControllerForDisplayAsset:(id <PXDisplayAsset>)arg1 spriteIndex:(unsigned int)arg2 inLayout:(PXGLayout *)arg3;
+- (id <PXGDisplayAssetRequestObserver>)displayAssetRequestObserverForSpritesInRange:(struct _PXGSpriteIndexRange)arg1 inLayout:(PXGLayout *)arg2;
+- (struct CGSize)minSpriteSizeForPresentationStyle:(unsigned long long)arg1;
 - (unsigned long long)supportedDisplayAssetPresentationStylesInLayout:(PXGLayout *)arg1;
 @end
 

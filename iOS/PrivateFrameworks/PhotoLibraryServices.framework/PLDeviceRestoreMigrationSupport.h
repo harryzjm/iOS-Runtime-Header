@@ -17,6 +17,7 @@
     CDUnknownBlockType _prerequisitesCompleteBlock;
 }
 
++ (_Bool)isDataMigrationInProgress;
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType prerequisitesCompleteBlock; // @synthesize prerequisitesCompleteBlock=_prerequisitesCompleteBlock;
 @property(nonatomic, getter=hasDataMigratorPluginRequestedLibraryMigration) _Bool dataMigratorPluginHasRequestedLibraryMigration; // @synthesize dataMigratorPluginHasRequestedLibraryMigration=_dataMigratorPluginHasRequestedLibraryMigration;
@@ -26,6 +27,7 @@
 - (_Bool)isRestoreFromBackupSourceDifferentDevice;
 - (_Bool)isRestoreFromBackupSourceDeviceToDevice;
 - (_Bool)isRestoreFromBackupSourceiTunes;
+- (_Bool)isRestoreFromBackupSourceMegaBackup;
 - (_Bool)isRestoreFromBackupSourceCloud;
 - (_Bool)isRestoreFromBackup;
 - (_Bool)isOTARestoreInProgress;
@@ -38,6 +40,7 @@
 - (void)_prepareDatabaseForOTAAssetsPhase;
 - (_Bool)prepareDatabaseForOTARestoreIfNecessaryWithMigrationType:(long long)arg1;
 - (id)initWithLibraryServicesManager:(id)arg1;
+- (id)_newShortLivedLibrarySupportingLibraryOpenWithName:(const char *)arg1;
 
 @end
 

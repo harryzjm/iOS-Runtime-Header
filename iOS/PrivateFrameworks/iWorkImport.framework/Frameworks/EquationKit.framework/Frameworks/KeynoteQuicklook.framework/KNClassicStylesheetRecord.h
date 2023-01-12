@@ -19,8 +19,8 @@
 @property(retain, nonatomic) NSDictionary *identifierToStyleMap; // @synthesize identifierToStyleMap=_identifierToStyleMap;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)saveToArchive:(struct ClassicStylesheetRecordArchive *)arg1 archiver:(id)arg2;
-- (void)loadFromArchive:(const struct ClassicStylesheetRecordArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (id)childEnumerator;
 - (id)referencedStyles;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;

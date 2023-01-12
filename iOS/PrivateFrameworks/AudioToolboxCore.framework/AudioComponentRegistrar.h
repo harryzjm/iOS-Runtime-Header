@@ -12,10 +12,10 @@
 
 @interface AudioComponentRegistrar : NSObject <NSXPCListenerDelegate>
 {
-    struct AudioComponentRegistrarImpl *_impl;
+    void *_impl;
 }
 
-@property(readonly, nonatomic) struct AudioComponentRegistrarImpl *impl; // @synthesize impl=_impl;
+@property(readonly, nonatomic) void *impl; // @synthesize impl=_impl;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)resumeListeners;
 - (void)dealloc;

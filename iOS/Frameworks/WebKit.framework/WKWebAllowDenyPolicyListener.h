@@ -13,7 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface WKWebAllowDenyPolicyListener : NSObject <WebAllowDenyPolicyListener>
 {
-    Function_da50b38b _completionHandler;
+    struct Function<void (bool)> _completionHandler;
 }
 
 - (id).cxx_construct;
@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (void)denyOnlyThisRequest;
 - (void)deny;
 - (void)allow;
-- (id)initWithCompletionHandler:(Function_da50b38b *)arg1;
+- (id)initWithCompletionHandler:(void *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

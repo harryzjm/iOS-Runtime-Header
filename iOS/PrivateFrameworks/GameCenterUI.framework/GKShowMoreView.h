@@ -24,6 +24,7 @@
 }
 
 + (_Bool)requiresConstraintBasedLayout;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIActivityIndicatorView *spinner; // @synthesize spinner=_spinner;
 @property(retain, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property(nonatomic) long long numberToShow; // @synthesize numberToShow=_numberToShow;
@@ -35,7 +36,6 @@
 @property(nonatomic) double textAlignmentOffset; // @synthesize textAlignmentOffset=_textAlignmentOffset;
 @property(nonatomic) _Bool loading; // @synthesize loading=_loading;
 @property(nonatomic) SEL showMoreAction; // @synthesize showMoreAction=_showMoreAction;
-- (void)dealloc;
 - (void)prepareForReuse;
 - (void)updateLabel;
 - (void)applyLayoutAttributes:(id)arg1;

@@ -8,18 +8,17 @@
 
 #import <WebInspector/RWIRelayDelegate-Protocol.h>
 
-@class BKSApplicationStateMonitor, RWIRelay, _RWITCPServer;
+@class RBSProcessMonitor, RWIRelay, _RWITCPServer;
 
 @interface RWIRelayDelegateIOS : NSObject <RWIRelayDelegate>
 {
     RWIRelay *_relay;
-    BKSApplicationStateMonitor *_applicationStateMonitor;
+    RBSProcessMonitor *_processMonitor;
     _RWITCPServer *_tcpServer;
 }
 
 - (void).cxx_destruct;
 - (void)tcpServer:(id)arg1 receivedConnection:(id)arg2;
-- (void)_backBoardApplicationStateChanged:(id)arg1;
 - (id)relaySetupResponseForClientConnection:(id)arg1;
 - (void)relay:(id)arg1 unhandledApplicationXPCMessage:(id)arg2;
 - (void)relay:(id)arg1 activateApplicationWithBundleIdentifier:(id)arg2;
@@ -27,11 +26,14 @@
 - (void)relay:(id)arg1 applicationUpdated:(id)arg2;
 - (void)relay:(id)arg1 applicationDisconnected:(id)arg2;
 - (void)relay:(id)arg1 applicationConnected:(id)arg2;
-- (void)_createApplicationStateMonitorIfNeeded;
 - (id)relay:(id)arg1 applicationInfoForIncomingConnection:(id)arg2 bundleIdentifier:(id)arg3;
 - (_Bool)relay:(id)arg1 allowIncomingApplicationConnection:(id)arg2 bundleIdentifier:(id)arg3;
 - (_Bool)relay:(id)arg1 allowIncomingApplicationViaProxy:(CDStruct_6ad76789)arg2 pid:(int)arg3;
 - (void)relayInitialize:(id)arg1;
+- (void)_updateProcessMonitorPredicates;
+- (void)_createProcessMonitorIfNeeded;
+- (void)_handleProcessMonitorStateUpdate:(id)arg1 forProcess:(id)arg2;
+- (id)_processMonitorPredicatesForConnectedApplications;
 
 @end
 

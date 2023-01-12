@@ -20,6 +20,10 @@
 - (id)newLinearTextureWithDescriptor:(id)arg1 offset:(unsigned long long)arg2 bytesPerRow:(unsigned long long)arg3 bytesPerImage:(unsigned long long)arg4;
 - (void)didModifyRange:(struct _NSRange)arg1;
 - (void *)contents;
+- (void)setParentGPUSize:(unsigned long long)arg1;
+- (unsigned long long)parentGPUSize;
+- (void)setParentGPUAddress:(unsigned long long)arg1;
+- (unsigned long long)parentGPUAddress;
 - (unsigned long long)gpuAddress;
 @property(readonly) unsigned long long length;
 - (id)formattedDescription:(unsigned long long)arg1;

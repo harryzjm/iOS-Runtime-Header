@@ -7,11 +7,12 @@
 #import <Foundation/NSXPCListener.h>
 
 #import <coreroutine/NSXPCListenerDelegate-Protocol.h>
+#import <coreroutine/RTWatchdogProtocol-Protocol.h>
 
 @class NSMutableArray, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface RTXPCListener : NSXPCListener <NSXPCListenerDelegate>
+@interface RTXPCListener : NSXPCListener <NSXPCListenerDelegate, RTWatchdogProtocol>
 {
     NSString *_machServiceName;
     NSObject<OS_dispatch_queue> *_queue;
@@ -24,10 +25,10 @@
 @property(readonly, nonatomic) NSMutableArray *connectedClients; // @synthesize connectedClients=_connectedClients;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly, nonatomic) NSString *machServiceName; // @synthesize machServiceName=_machServiceName;
+- (void)checkInWithHandler:(CDUnknownBlockType)arg1;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)logClients;
-- (void)shutdown;
-- (void)_shutdown;
+- (void)shutdownWithHandler:(CDUnknownBlockType)arg1;
 - (void)setup;
 - (void)_setup;
 - (id)initWithMachServiceName:(id)arg1;

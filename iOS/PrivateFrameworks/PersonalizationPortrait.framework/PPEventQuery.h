@@ -20,6 +20,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *toDate; // @synthesize toDate=_toDate;
 @property(retain, nonatomic) NSDate *fromDate; // @synthesize fromDate=_fromDate;
+- (id)description;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 

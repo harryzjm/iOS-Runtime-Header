@@ -23,6 +23,7 @@
 + (id)data;
 + (id)_alloc;
 + (id)allocWithZone:(struct _NSZone *)arg1;
++ (_Bool)_subclassesMustBeExplicitlyMentionedWhenDecoded;
 - (_Bool)_providesConcreteBacking;
 - (id)base64Encoding;
 - (id)initWithBase64Encoding:(id)arg1;
@@ -81,9 +82,11 @@
 - (unsigned long long)_cfTypeID;
 - (const void *)bytes;
 - (unsigned long long)length;
+- (id)_compressedDataUsingCompressionAlgorithm:(int)arg1 error:(id *)arg2;
+- (id)_decompressedDataUsingCompressionAlgorithm:(int)arg1 error:(id *)arg2;
 - (id)compressedDataUsingAlgorithm:(long long)arg1 error:(id *)arg2;
 - (id)decompressedDataUsingAlgorithm:(long long)arg1 error:(id *)arg2;
-- (id)_dataWithCompressionOperation:(int)arg1 algorithm:(long long)arg2;
+- (id)_dataWithCompressionOperation:(int)arg1 algorithm:(int)arg2;
 - (id)_replaceCString:(const char *)arg1 withCString:(const char *)arg2;
 - (id)_web_parseRFC822HeaderFields;
 - (id)_web_guessedMIMETypeForExtension:(id)arg1;

@@ -50,6 +50,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool isPresentedForSecondScreen; // @synthesize isPresentedForSecondScreen=_isPresentedForSecondScreen;
 @property(retain, nonatomic) PUOneUpMergedVideoProvider *mergedVideoProvider; // @synthesize mergedVideoProvider=_mergedVideoProvider;
 @property(retain, nonatomic) PUBrowsingViewModel *browsingViewModel; // @synthesize browsingViewModel=_browsingViewModel;
+- (void)_updateSRLCompensation;
 - (void)_updatePlaybackEnabled;
 - (void)_videoCurrentTimeDidChange:(CDStruct_1b6d18a9)arg1;
 - (void)_updateMergedVideo;
@@ -61,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)livePhotoView:(id)arg1 didEndPlaybackWithStyle:(long long)arg2;
 - (void)livePhotoView:(id)arg1 willBeginPlaybackWithStyle:(long long)arg2;
+- (_Bool)livePhotoView:(id)arg1 canBeginPlaybackWithStyle:(long long)arg2;
 - (id)gestureRecognizers;
 - (id)loadView;
 - (void)dealloc;

@@ -6,16 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class GEOCollectionPublisherAttribution, GEOMapItemIdentifier, GEOPDPublisher, NSString, NSURL;
+@class GEOMapItemIdentifier, GEOPDPublisher, NSString, NSURL;
+@protocol GEOCollectionPublisherAttribution;
 
 @interface GEOPublisher : NSObject
 {
     GEOPDPublisher *_publisher;
-    GEOCollectionPublisherAttribution *_publisherAttribution;
+    NSString *_publisherAttributionIdentifierString;
+    id <GEOCollectionPublisherAttribution> _publisherAttribution;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) GEOCollectionPublisherAttribution *publisherAttribution; // @synthesize publisherAttribution=_publisherAttribution;
 @property(readonly, nonatomic, getter=isBlocked) _Bool blocked;
 @property(readonly, nonatomic, getter=isSuppressed) _Bool suppressed;
 @property(readonly, nonatomic) NSURL *publisherURL;
@@ -23,6 +24,7 @@
 @property(readonly, nonatomic) GEOMapItemIdentifier *identifier;
 @property(readonly, nonatomic) long long totalCollectionCount;
 - (unsigned long long)hash;
+@property(readonly, nonatomic) id <GEOCollectionPublisherAttribution> publisherAttribution; // @synthesize publisherAttribution=_publisherAttribution;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithPublisher:(id)arg1 usingAttribution:(id)arg2;
 

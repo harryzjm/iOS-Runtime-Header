@@ -27,15 +27,18 @@
 @property(readonly, nonatomic) NSArray *outputDevices;
 @property(readonly, nonatomic) NSArray *inputDevices;
 @property(readonly, nonatomic) NSArray *devices;
+- (void)setFollowsSystemOutputSetting:(_Bool)arg1;
+- (void)setFollowsSystemInputSetting:(_Bool)arg1;
 - (oneway void)setCurrentAudioOutputDeviceToDeviceWithUID:(id)arg1;
 @property(retain, nonatomic) AVAudioDevice *currentOutputDevice;
 - (oneway void)setCurrentAudioInputDeviceToDeviceWithUID:(id)arg1;
 @property(retain, nonatomic) AVAudioDevice *currentInputDevice;
 - (void)removeDelegate:(id)arg1;
 - (void)addDelegate:(id)arg1;
-- (void)choosePreferredDeviceIfNecessary;
+- (void)setMixesVoiceWithMedia:(_Bool)arg1;
 @property(readonly, copy) NSString *debugDescription;
 - (id)init;
+- (void)dealloc;
 - (id)initWithActionsDelegate:(id)arg1 serialQueue:(id)arg2;
 
 // Remaining properties

@@ -8,6 +8,7 @@
 
 @class NSArray, NSSet, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MPCPlayerInsertItemsCommand <MPCPlayerInsertItemsCommand>
 {
     _Bool _supportsCreateStation;

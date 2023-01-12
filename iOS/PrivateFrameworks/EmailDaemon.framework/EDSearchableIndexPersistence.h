@@ -37,6 +37,7 @@
 - (id)_identifiersForAttachmentsInTransactions:(id)arg1 usingConnection:(id)arg2;
 - (id)_identifiersForDeletedAttachmentsUsingConnection:(id)arg1;
 - (id)_attachmentItemsFromAttachmentData:(id)arg1 limit:(unsigned long long)arg2 cancelationToken:(id)arg3;
+- (id)_attachmentDataForMessageWithIdentifier:(id)arg1 connection:(id)arg2;
 - (id)_attachmentDataForItemsRequiringIndexingExcludingIdentifiers:(id)arg1 limit:(unsigned long long)arg2 cancelationToken:(id)arg3 connection:(id)arg4;
 - (id)_messageIDTransactionIDDictionaryToVerifyUsingConnection:(id)arg1 count:(unsigned long long)arg2 lastVerifiedMessageID:(long long)arg3;
 - (id)_identifiersForDeletedMessagesUsingConnection:(id)arg1;
@@ -49,6 +50,7 @@
 - (id)_assignIndexedItems:(id)arg1 transaction:(long long)arg2 connection:(id)arg3;
 - (id)_assignIndexedItems:(id)arg1 connection:(id)arg2 query:(id)arg3 indexedBindingsGenerator:(CDUnknownBlockType)arg4;
 - (id)_searchableIndexMessageIndexingTypes;
+- (void)clearOrphanedSearchableMessagesFromDatabase;
 - (id)verificationDataSamplesForSearchableIndex:(id)arg1 count:(unsigned long long)arg2 lastVerifiedMessageID:(long long)arg3;
 - (void)searchableIndex:(id)arg1 prepareToIndexAttachmentsForMessageWithIdentifier:(id)arg2;
 - (id)searchableIndex:(id)arg1 invalidateItemsInTransactions:(id)arg2;
@@ -63,6 +65,8 @@
 - (id)updatesForSearchableIndex:(id)arg1 excludingIdentifiers:(id)arg2 count:(unsigned long long)arg3 cancelationToken:(id)arg4;
 @property(readonly, nonatomic) NSString *additionalFilterClause;
 - (id)verificationDataSamplesFromMessageIDTransactionIDDictionary:(id)arg1;
+- (id)searchableIndex:(id)arg1 attachmentItemsForMessageWithIdentifier:(id)arg2;
+- (void)attachmentItemMetadataForAttachmentID:(id)arg1 attachmentPersistentID:(id)arg2 messagePersistentID:(id)arg3 name:(id)arg4 mailboxID:(long long)arg5 result:(CDUnknownBlockType)arg6;
 - (void)attachmentItemMetadataForAttachmentID:(id)arg1 messagePersistentID:(id)arg2 name:(id)arg3 mailboxID:(long long)arg4 result:(CDUnknownBlockType)arg5;
 - (id)searchableIndexItemsFromMessages:(id)arg1 type:(long long)arg2;
 - (id)messagesWhere:(id)arg1 sortedBy:(id)arg2 limit:(long long)arg3;

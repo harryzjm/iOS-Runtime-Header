@@ -15,10 +15,11 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSSet *upcomingHolidayNames; // @synthesize upcomingHolidayNames=_upcomingHolidayNames;
 @property(retain, nonatomic) NSDate *localDate; // @synthesize localDate=_localDate;
+- (id)titleGeneratorForTriggeredMemory:(id)arg1 withKeyAsset:(id)arg2 curatedAssets:(id)arg3 extendedCuratedAssets:(id)arg4 titleGenerationContext:(id)arg5 inGraph:(id)arg6;
 - (id)_potentialMemoriesForDryTesting;
 - (id)_holidayNodeForMomentNodes:(id)arg1;
-- (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
-- (void)_enumeratePotentialMemoriesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2 andGraph:(id)arg3;
+- (void)_enumeratePotentialMemoriesWithGraph:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 
 @end
 

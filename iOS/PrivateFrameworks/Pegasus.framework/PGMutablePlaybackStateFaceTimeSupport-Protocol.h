@@ -7,6 +7,7 @@
 #import <Pegasus/NSObject-Protocol.h>
 
 @protocol PGMutablePlaybackStateFaceTimeSupport <NSObject>
+@property(nonatomic) _Bool disablesLayerCloning;
 @property(nonatomic, getter=isMicrophoneMuted) _Bool microphoneMuted;
 @property(nonatomic) _Bool canSwitchCamera;
 @property(nonatomic, getter=isCameraActive) _Bool cameraActive;

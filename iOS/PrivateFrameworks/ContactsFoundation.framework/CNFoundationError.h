@@ -24,6 +24,8 @@
 + (_Bool)isCertificateError:(id)arg1;
 + (_Bool)isFileAlreadyExistsError:(id)arg1;
 + (_Bool)isFileNotFoundError:(id)arg1;
++ (_Bool)isNotImplementedError:(id)arg1;
++ (id)notImplementedError;
 + (_Bool)isCanceledError:(id)arg1;
 + (id)userCanceledError;
 + (_Bool)isTimeoutError:(id)arg1;

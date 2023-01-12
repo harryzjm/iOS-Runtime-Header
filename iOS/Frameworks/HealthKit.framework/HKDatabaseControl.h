@@ -24,6 +24,7 @@
 - (void)performMigrationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)obliterateHealthDataWithOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getHealthDirectorySizeInBytesWithCompletion:(CDUnknownBlockType)arg1;
+- (id)healthDatabaseIdentifierWithError:(id *)arg1;
 - (id)initWithHealthStore:(id)arg1;
 
 // Remaining properties

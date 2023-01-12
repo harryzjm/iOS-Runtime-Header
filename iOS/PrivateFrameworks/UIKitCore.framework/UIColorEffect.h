@@ -16,7 +16,6 @@
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)colorEffectAverageColor;
 + (id)colorEffectCurvesRed:(id)arg1 green:(id)arg2 blue:(id)arg3 alpha:(id)arg4;
 + (id)colorEffectLuminanceCurveMap:(id)arg1 blendingAmount:(double)arg2;
 + (id)colorEffectLuminanceMap:(id)arg1 blendingAmount:(double)arg2;

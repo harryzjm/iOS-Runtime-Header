@@ -21,6 +21,8 @@
     _HMDIDSProxyLinkPreferenceAssertion *_proxyLinkPreferenceAssertion;
 }
 
++ (id)sharedIDSServiceName;
++ (id)sharedIDSService;
 + (id)sharedManager;
 - (void).cxx_destruct;
 @property __weak _HMDIDSProxyLinkPreferenceAssertion *proxyLinkPreferenceAssertion; // @synthesize proxyLinkPreferenceAssertion=_proxyLinkPreferenceAssertion;
@@ -31,7 +33,7 @@
 @property(readonly) IDSService *streamService; // @synthesize streamService=_streamService;
 @property(readonly) IDSService *proxyService; // @synthesize proxyService=_proxyService;
 @property(readonly) IDSService *service; // @synthesize service=_service;
-- (void)setProxyServiceLinkPreferences:(id)arg1;
+- (void)addProxyServiceLinkPreferencesAssertionHolder:(id)arg1;
 - (void)setActivityMonitorDataSource:(id)arg1;
 - (id)init;
 

@@ -9,7 +9,7 @@
 #import <PhotosUI/PUOneUpPresentationHelperAssetDisplayDelegate-Protocol.h>
 #import <PhotosUI/PUOneUpPresentationHelperDelegate-Protocol.h>
 
-@class NSString, PUOneUpPresentationHelper, PXOneUpPresentation;
+@class NSString, PUOneUpPresentationHelper, PXAssetReference, PXOneUpPresentation;
 
 __attribute__((visibility("hidden")))
 @interface PUPXOneUpPresentationImplementation : NSObject <PUOneUpPresentationHelperDelegate, PUOneUpPresentationHelperAssetDisplayDelegate>
@@ -25,7 +25,9 @@ __attribute__((visibility("hidden")))
 - (void)oneUpPresentationHelper:(id)arg1 shouldHideAssetReferences:(id)arg2;
 - (void)oneUpPresentationHelper:(id)arg1 scrollAssetReferenceToVisible:(id)arg2;
 - (id)oneUpPresentationHelper:(id)arg1 currentImageForAssetReference:(id)arg2;
-- (struct CGRect)oneUpPresentationHelper:(id)arg1 rectForAssetReference:(id)arg2 cropInsets:(struct UIEdgeInsets *)arg3 contentsRect:(struct CGRect *)arg4;
+- (id)oneUpPresentationHelper:(id)arg1 regionOfInterestForAssetReference:(id)arg2 cropInsets:(struct UIEdgeInsets *)arg3 contentsRect:(struct CGRect *)arg4;
+- (id)oneUpPresentationHelperSpotlightTextsToHighlight:(id)arg1;
+- (_Bool)oneUpPresentationHelperShouldLeaveContentOnSecondScreen:(id)arg1;
 - (id)oneUpPresentationHelperScrollView:(id)arg1;
 - (id)oneUpPresentationHelperViewHostingTilingView:(id)arg1;
 - (unsigned long long)oneUpPresentationHelperAdditionalOptions:(id)arg1;
@@ -41,8 +43,9 @@ __attribute__((visibility("hidden")))
 - (void)commitPreviewViewController:(id)arg1;
 - (void)didDismissPreviewViewController:(id)arg1 committing:(_Bool)arg2;
 - (id)previewViewControllerAllowingActions:(_Bool)arg1;
-- (_Bool)startAnimated:(_Bool)arg1 interactiveMode:(long long)arg2;
-@property(readonly, nonatomic) _Bool canStart;
+- (_Bool)startWithConfigurationHandler:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) PXAssetReference *lastViewedAssetReference;
+- (_Bool)canStartAnimated:(_Bool)arg1;
 - (void)presentingViewControllerViewDidDisappear:(_Bool)arg1;
 - (void)presentingViewControllerViewWillDisappear:(_Bool)arg1;
 - (void)presentingViewControllerViewDidAppear:(_Bool)arg1;

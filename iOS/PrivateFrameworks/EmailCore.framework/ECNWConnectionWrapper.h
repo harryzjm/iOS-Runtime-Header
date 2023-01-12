@@ -31,6 +31,7 @@
     _Bool _writable;
     double _connectTime;
     _Bool _allowsTrustPrompt;
+    _Bool _isNonAppInitiated;
     _Bool _disableEphemeralDiffieHellmanCiphers;
     _Bool _usesOpportunisticSockets;
     unsigned int _timeout;
@@ -59,6 +60,7 @@
 @property(copy, nonatomic) NSString *networkAccountIdentifier; // @synthesize networkAccountIdentifier=_networkAccountIdentifier;
 @property(retain) NSError *error; // @synthesize error=_error;
 @property(nonatomic) _Bool disableEphemeralDiffieHellmanCiphers; // @synthesize disableEphemeralDiffieHellmanCiphers=_disableEphemeralDiffieHellmanCiphers;
+@property(nonatomic) _Bool isNonAppInitiated; // @synthesize isNonAppInitiated=_isNonAppInitiated;
 @property(copy, nonatomic) NSString *connectionServiceType; // @synthesize connectionServiceType=_connectionServiceType;
 @property(retain, nonatomic) NSArray *clientCertificates; // @synthesize clientCertificates=_clientCertificates;
 @property(nonatomic) _Bool allowsTrustPrompt; // @synthesize allowsTrustPrompt=_allowsTrustPrompt;
@@ -91,6 +93,8 @@
 - (void)_handleConnectionFailure:(int)arg1;
 - (void)_handleConnectionReady;
 - (id)_createConnectionWithEndpoint:(id)arg1 error:(int *)arg2;
+- (_Bool)_connectToEndpoint:(id)arg1 service:(id)arg2;
+- (_Bool)test_connectToUNIXSocket:(id)arg1 service:(id)arg2;
 - (_Bool)connectToHost:(id)arg1 withPort:(unsigned int)arg2 service:(id)arg3;
 - (void)cancel;
 - (void)dealloc;

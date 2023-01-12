@@ -21,8 +21,10 @@
 + (void)_px_animateView:(id)arg1 toCenter:(struct CGPoint)arg2 bounds:(struct CGRect)arg3 transform:(struct CGAffineTransform)arg4 withInitialVelocity:(struct PXDisplayVelocity)arg5 usingSpringAnimation:(CDUnknownBlockType)arg6 completion:(CDUnknownBlockType)arg7;
 + (void)px_animateView:(id)arg1 toCenter:(struct CGPoint)arg2 bounds:(struct CGRect)arg3 transform:(struct CGAffineTransform)arg4 usingDefaultDampedSpringWithDelay:(double)arg5 initialVelocity:(struct PXDisplayVelocity)arg6 options:(unsigned long long)arg7 completion:(CDUnknownBlockType)arg8;
 + (void)px_animateView:(id)arg1 toCenter:(struct CGPoint)arg2 bounds:(struct CGRect)arg3 transform:(struct CGAffineTransform)arg4 withDuration:(double)arg5 delay:(double)arg6 usingSpringWithDamping:(double)arg7 initialVelocity:(struct PXDisplayVelocity)arg8 options:(unsigned long long)arg9 completion:(CDUnknownBlockType)arg10;
+- (_Bool)shouldReloadForUserData:(id)arg1;
+@property(readonly, nonatomic) _Bool shouldReuseWhenInvisible;
 - (void)pxg_shiftPosition:(struct CGPoint)arg1;
-- (void)pxg_configureWithTexture:(id)arg1 geometry:(CDStruct_3ab912e1 *)arg2 info:(CDStruct_9d1ebe49 *)arg3 style:(CDStruct_506f5052 *)arg4 textureInfo:(CDStruct_183601bc *)arg5 resizableCapInsets:(CDStruct_0054b44d *)arg6;
+- (void)pxg_configureWithTexture:(id)arg1 geometry:(CDStruct_4f725fed *)arg2 info:(CDStruct_9d1ebe49 *)arg3 style:(CDStruct_76b550e2 *)arg4 textureInfo:(CDStruct_183601bc *)arg5 resizableCapInsets:(CDStruct_0054b44d)arg6 reusableViewInfo:(id)arg7 screenScale:(double)arg8;
 - (void)pxg_prepareForReuse;
 - (void)pxg_becomeReusable;
 - (void)pxg_removeFromSuperview;
@@ -36,7 +38,9 @@
 - (void)px_transferToSuperview:(id)arg1;
 - (struct CGAffineTransform)px_convertTransform:(struct CGAffineTransform)arg1 toView:(id)arg2;
 - (struct CGAffineTransform)px_convertTransform:(struct CGAffineTransform)arg1 fromView:(id)arg2;
+- (void)px_enumerateDescendantSubviewsPassingTest:(CDUnknownBlockType)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)px_enumerateDescendantSubviewsUsingBlock:(CDUnknownBlockType)arg1;
+- (_Bool)px_isAncestorOfFocusEnvironment:(id)arg1;
 @property(readonly, nonatomic) _Bool px_hasHiddenAncestor;
 @property(readonly, nonatomic) struct UIEdgeInsets px_peripheryInsets;
 @property(readonly, nonatomic) double px_screenScale;

@@ -7,35 +7,52 @@
 #import <objc/NSObject.h>
 
 #import <DistributedEvaluation/NSCopying-Protocol.h>
+#import <DistributedEvaluation/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString;
+@class NSArray, NSData, NSDictionary, NSNumber, NSString;
 
-@interface DESRecipe : NSObject <NSCopying>
+@interface DESRecipe : NSObject <NSSecureCoding, NSCopying>
 {
     NSDictionary *_recipeUserInfo;
     NSData *_certificate;
     NSArray *_attachments;
     NSArray *_attachmentSignatures;
     NSDictionary *_parametersUsed;
-    NSString *_recipeId;
-    NSString *_recipeType;
+    NSString *_recipeID;
+    NSString *_bundleIdentifier;
 }
 
++ (_Bool)supportsSecureCoding;
++ (_Bool)useAggregatableMetadata:(id)arg1;
++ (_Bool)_hasValidClippingBounds:(id)arg1 matchValidNumChunks:(id)arg2;
++ (_Bool)useSparsification:(id)arg1;
++ (_Bool)pluginShouldAddNoiseAndEncryptResult:(id)arg1;
++ (_Bool)transportIsDedisco:(id)arg1;
 + (void)initialize;
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSString *recipeType; // @synthesize recipeType=_recipeType;
-@property(copy, nonatomic) NSString *recipeId; // @synthesize recipeId=_recipeId;
+@property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property(copy, nonatomic) NSString *recipeID; // @synthesize recipeID=_recipeID;
 @property(readonly, copy, nonatomic) NSDictionary *parametersUsed; // @synthesize parametersUsed=_parametersUsed;
 @property(readonly, copy, nonatomic) NSArray *attachmentSignatures; // @synthesize attachmentSignatures=_attachmentSignatures;
 @property(copy, nonatomic) NSArray *attachments; // @synthesize attachments=_attachments;
 @property(readonly, copy, nonatomic) NSData *certificate; // @synthesize certificate=_certificate;
 @property(readonly, copy, nonatomic) NSDictionary *recipeUserInfo; // @synthesize recipeUserInfo=_recipeUserInfo;
+- (id)description;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-@property(readonly, copy, nonatomic) NSDictionary *secureAggregationRecipeInfo;
-@property(readonly, nonatomic) _Bool supportsSecureAggregation;
-- (id)_initWithRecipeResponse:(id)arg1 recipeId:(id)arg2 recipeType:(id)arg3 error:(id *)arg4;
-- (id)_initWithRecipeUserInfo:(id)arg1 recipeId:(id)arg2 recipeType:(id)arg3;
-- (id)_inithWithContentsOfFile:(id)arg1 recipeId:(id)arg2 recipeType:(id)arg3 error:(id *)arg4;
+@property(readonly, nonatomic) NSNumber *normBinCount;
+@property(readonly, nonatomic) NSNumber *maxNorm;
+@property(readonly, nonatomic) _Bool useAggregatableMetadata;
+@property(readonly, nonatomic) _Bool useSparsification;
+- (id)haruspexKeyWithError:(id *)arg1;
+@property(readonly, nonatomic) NSString *privacyIdentifierExt;
+@property(readonly, nonatomic) NSString *privacyIdentifier;
+@property(readonly, nonatomic) _Bool pluginShouldAddNoiseAndEncryptResult;
+@property(readonly, nonatomic) _Bool transportIsDedisco;
+- (id)_initWithRecipeResponse:(id)arg1 recipeID:(id)arg2 bundleIdentifier:(id)arg3 error:(id *)arg4;
+- (id)_initWithRecipeUserInfo:(id)arg1 recipeID:(id)arg2 bundleIdentifier:(id)arg3;
+- (id)_inithWithContentsOfFile:(id)arg1 recipeID:(id)arg2 bundleIdentifier:(id)arg3 error:(id *)arg4;
 
 @end
 

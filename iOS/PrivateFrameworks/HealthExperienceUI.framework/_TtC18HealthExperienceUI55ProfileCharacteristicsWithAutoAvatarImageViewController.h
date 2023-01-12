@@ -9,6 +9,7 @@
 @interface _TtC18HealthExperienceUI55ProfileCharacteristicsWithAutoAvatarImageViewController
 {
     MISSING_TYPE *healthExperienceStore;
+    MISSING_TYPE *healthStore;
     MISSING_TYPE *dataSource;
     MISSING_TYPE *profileInformationCancellable;
 }
@@ -16,6 +17,7 @@
 - (void).cxx_destruct;
 - (id)initWithHealthStore:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (void)didUpdateName;
 - (void)setUpNavigationBar;
 
 @end

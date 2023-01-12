@@ -19,8 +19,10 @@
     MISSING_TYPE *isPad;
     MISSING_TYPE *isCarPlay;
     MISSING_TYPE *isCarDnD;
+    MISSING_TYPE *isSidekick;
     MISSING_TYPE *isTextToSpeechEnabled;
     MISSING_TYPE *isLockedWithPasscode;
+    MISSING_TYPE *isAuthenticated;
     MISSING_TYPE *isEyesFree;
     MISSING_TYPE *isVoiceTriggerEnabled;
     MISSING_TYPE *isVOX;
@@ -32,6 +34,8 @@
     MISSING_TYPE *deviceName;
     MISSING_TYPE *companionName;
     MISSING_TYPE *siriLocale;
+    MISSING_TYPE *deviceRegionCode;
+    MISSING_TYPE *restrictions;
 }
 
 @end

@@ -50,10 +50,8 @@
 @property(copy, nonatomic) NSString *externalPlaybackVideoGravity;
 - (void)_setEQPreset:(int)arg1;
 - (void)_setClientName:(id)arg1;
-- (void)_setCALayerDestinationIsTVOut:(_Bool)arg1;
 - (_Bool)_resumePlayback:(double)arg1;
 - (void)_currentItemDidChangeNotification:(id)arg1;
-- (_Bool)_CALayerDestinationIsTVOut;
 @property(readonly, nonatomic) _Bool outputObscuredDueToInsufficientExternalProtection;
 @property(readonly, nonatomic) id playerAVAudioSession;
 @property(readonly, nonatomic) _Bool usesExternalPlaybackWhileExternalScreenIsActive;

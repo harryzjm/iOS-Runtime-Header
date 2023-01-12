@@ -11,9 +11,9 @@
 @interface TSCEFormulasForUndoForOwnerKind : NSObject <NSCopying>
 {
     unsigned short _ownerKind;
-    struct unordered_map<TSCECellRef, TSCEFormulaObject *, std::__1::hash<TSCECellRef>, std::__1::equal_to<TSCECellRef>, std::__1::allocator<std::__1::pair<const TSCECellRef, TSCEFormulaObject *>>> _formulas;
-    struct unordered_set<TSCECellRef, std::__1::hash<TSCECellRef>, std::__1::equal_to<TSCECellRef>, std::__1::allocator<TSCECellRef>> _nonFormulaCells;
-    unordered_set_c6a929bd _formulaOwnerUIDs;
+    struct unordered_map<TSCECellRef, TSCEFormulaObject *, std::hash<TSCECellRef>, std::equal_to<TSCECellRef>, std::allocator<std::pair<const TSCECellRef, TSCEFormulaObject *>>> _formulas;
+    struct unordered_set<TSCECellRef, std::hash<TSCECellRef>, std::equal_to<TSCECellRef>, std::allocator<TSCECellRef>> _nonFormulaCells;
+    unordered_set_f120dcbf _formulaOwnerUIDs;
 }
 
 - (id).cxx_construct;
@@ -21,7 +21,7 @@
 @property(nonatomic) unsigned short ownerKind; // @synthesize ownerKind=_ownerKind;
 - (id)description;
 - (void)foreachFormula:(CDUnknownBlockType)arg1;
-- (const unordered_set_c6a929bd *)formulaOwnerUIDs;
+- (const void *)formulaOwnerUIDs;
 - (void)addFormula:(id)arg1 atCellRef:(const struct TSCECellRef *)arg2;
 - (unsigned long long)count;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProtocolBuffer/PBCodable.h>
-
 @class NSArray, NSData, PETSchemaPETMetadata;
 
-@interface PETSchemaPETUpload : PBCodable
+@interface PETSchemaPETUpload
 {
     PETSchemaPETMetadata *_metadata;
     NSArray *_aggregated_messages;
@@ -57,6 +55,7 @@
 - (unsigned long long)aggregated_messagesCount;
 - (void)addAggregated_messages:(id)arg1;
 - (void)clearAggregated_messages;
+- (id)qualifiedMessageName;
 - (int)getAnyEventType;
 
 @end

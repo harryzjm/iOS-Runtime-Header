@@ -16,6 +16,7 @@
 @interface IDSDependencyProvider : NSObject <IDSServiceLoader, IDSKeychainAdapter, IDSPushAdapter, IDSXPCAdapter>
 {
     NSMutableDictionary *_registeredAdapters;
+    struct os_unfair_lock_s _lock;
 }
 
 + (void)registerObject:(id)arg1 forProtocol:(id)arg2;
@@ -30,6 +31,7 @@
 - (void).cxx_destruct;
 - (void)registerObject:(id)arg1 forProtocol:(id)arg2;
 - (id)registeredObjectForProtocol:(id)arg1;
+- (id)_init;
 - (id)loadServiceDictionaries;
 - (_Bool)removeKeychainDataOnService:(id)arg1 account:(id)arg2 error:(int *)arg3;
 - (_Bool)getKeychainData:(id *)arg1 service:(id)arg2 account:(id)arg3 accessGroup:(id)arg4 error:(int *)arg5;

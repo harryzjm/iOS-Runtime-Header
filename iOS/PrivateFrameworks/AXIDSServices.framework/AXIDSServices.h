@@ -9,23 +9,32 @@
 #import <AXIDSServices/AXUIClientDelegate-Protocol.h>
 
 @class AXUIClient, NSArray, NSHashTable, NSString;
+@protocol AXUIService;
 
 @interface AXIDSServices : NSObject <AXUIClientDelegate>
 {
     NSHashTable *_clients;
     struct os_unfair_lock_s _clientsLock;
     struct os_unfair_lock_s _connectedDevicesLock;
+    _Bool _isConnectingToAXUIServer;
+    id <AXUIService> _localService;
     AXUIClient *_idsServerClient;
     NSArray *_cachedConnectedDevices;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isConnectingToAXUIServer; // @synthesize isConnectingToAXUIServer=_isConnectingToAXUIServer;
 @property(retain, nonatomic) NSArray *cachedConnectedDevices; // @synthesize cachedConnectedDevices=_cachedConnectedDevices;
+- (void)connectionWithServiceWasInterruptedForUserInterfaceClient:(id)arg1;
 - (void)_handleConnectedDevicesChanged:(id)arg1;
 - (void)_handleIncomingDataWithMessage:(id)arg1;
+- (void)handleMessage:(id)arg1 withMessageID:(unsigned long long)arg2;
 - (id)userInterfaceClient:(id)arg1 accessQueueForProcessingMessageWithIdentifier:(unsigned long long)arg2;
 - (id)userInterfaceClient:(id)arg1 processMessageFromServer:(id)arg2 withIdentifier:(unsigned long long)arg3 error:(id *)arg4;
+- (id)_sendSynchronousMessage:(id)arg1 withMessageID:(unsigned long long)arg2;
+- (void)_sendAsynchronousMessage:(id)arg1 withMessageID:(unsigned long long)arg2;
+- (id)publishDirectIDSMessage:(id)arg1;
 - (id)publishResourceAtURL:(id)arg1 priority:(unsigned long long)arg2 requestingResponse:(_Bool)arg3;
 - (id)publishMessage:(id)arg1 priority:(unsigned long long)arg2 requestingResponse:(_Bool)arg3;
 - (id)publishData:(id)arg1 priority:(unsigned long long)arg2 requestingResponse:(_Bool)arg3;
@@ -37,9 +46,12 @@
 - (id)publishData:(id)arg1;
 - (id)sendPublishMessageToServer:(id)arg1;
 - (void)deregisterForIncomingData:(id)arg1;
+- (void)_initializeServerConnection;
 - (void)registerForIncomingData:(id)arg1;
 - (void)_performBlockOnClients:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) AXUIClient *idsServerClient; // @synthesize idsServerClient=_idsServerClient;
+@property(readonly, nonatomic) id <AXUIService> localService; // @synthesize localService=_localService;
+- (_Bool)shouldUseLocalServiceBundle;
 - (id)_init;
 @property(readonly, nonatomic) NSArray *connectedDevices;
 

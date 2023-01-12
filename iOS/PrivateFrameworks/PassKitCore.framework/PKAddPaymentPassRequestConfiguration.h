@@ -37,6 +37,7 @@
 @property(nonatomic) long long style; // @synthesize style=_style;
 @property(readonly, copy, nonatomic) NSString *encryptionScheme; // @synthesize encryptionScheme=_encryptionScheme;
 - (id)description;
+@property(readonly, nonatomic, getter=isPaymentAccount) _Bool paymentAccount;
 - (id)_effectiveDetails;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

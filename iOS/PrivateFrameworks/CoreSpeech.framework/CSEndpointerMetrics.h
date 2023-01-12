@@ -11,6 +11,7 @@
 @interface CSEndpointerMetrics : NSObject
 {
     double _totalAudioRecorded;
+    unsigned long long _endpointBufferHostTime;
     NSArray *_featuresAtEndpoint;
     long long _endpointerType;
     NSDictionary *_serverFeatureLatencyDistribution;
@@ -22,8 +23,9 @@
 @property(retain, nonatomic) NSDictionary *serverFeatureLatencyDistribution; // @synthesize serverFeatureLatencyDistribution=_serverFeatureLatencyDistribution;
 @property(nonatomic) long long endpointerType; // @synthesize endpointerType=_endpointerType;
 @property(retain, nonatomic) NSArray *featuresAtEndpoint; // @synthesize featuresAtEndpoint=_featuresAtEndpoint;
+@property(nonatomic) unsigned long long endpointBufferHostTime; // @synthesize endpointBufferHostTime=_endpointBufferHostTime;
 @property(nonatomic) double totalAudioRecorded; // @synthesize totalAudioRecorded=_totalAudioRecorded;
-- (id)initWithTotalAudioRecorded:(double)arg1 featuresAtEndpoint:(id)arg2 endpointerType:(long long)arg3 serverFeatureLatencyDistribution:(id)arg4 additionalMetrics:(id)arg5;
+- (id)initWithTotalAudioRecorded:(double)arg1 endpointBufferHostTime:(unsigned long long)arg2 featuresAtEndpoint:(id)arg3 endpointerType:(long long)arg4 serverFeatureLatencyDistribution:(id)arg5 additionalMetrics:(id)arg6;
 
 @end
 

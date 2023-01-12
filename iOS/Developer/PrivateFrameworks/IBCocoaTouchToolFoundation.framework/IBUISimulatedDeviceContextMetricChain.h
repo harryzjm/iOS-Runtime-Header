@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class IBAccessibilityOverrides, NSValue;
+
 @interface IBUISimulatedDeviceContextMetricChain
 {
     long long _idiom;
@@ -11,10 +13,15 @@
     long long _interfaceStyle;
     long long _horizontalSizeClass;
     long long _verticalSizeClass;
+    IBAccessibilityOverrides *_accessibilityOverrides;
+    NSValue *_additionalSafeAreaEdgeInsets;
     struct CGSize _screenSize;
 }
 
 + (_Bool)canBeRootOfMetricChain;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSValue *additionalSafeAreaEdgeInsets; // @synthesize additionalSafeAreaEdgeInsets=_additionalSafeAreaEdgeInsets;
+@property(readonly, nonatomic) IBAccessibilityOverrides *accessibilityOverrides; // @synthesize accessibilityOverrides=_accessibilityOverrides;
 @property(readonly, nonatomic) long long verticalSizeClass; // @synthesize verticalSizeClass=_verticalSizeClass;
 @property(readonly, nonatomic) long long horizontalSizeClass; // @synthesize horizontalSizeClass=_horizontalSizeClass;
 @property(readonly, nonatomic) long long interfaceStyle; // @synthesize interfaceStyle=_interfaceStyle;
@@ -29,8 +36,8 @@
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)initWithBinaryUnarchiver:(id)arg1;
 - (id)singleLinkDescription;
-- (id)initWithScreenSize:(struct CGSize)arg1 idiom:(long long)arg2 orientation:(long long)arg3 interfaceStyle:(long long)arg4 horizontalSizeClass:(long long)arg5 verticalSizeClass:(long long)arg6;
-- (id)initWithScreenSize:(struct CGSize)arg1 idiom:(long long)arg2 orientation:(long long)arg3 traitCollection:(id)arg4;
+- (id)initWithScreenSize:(struct CGSize)arg1 idiom:(long long)arg2 orientation:(long long)arg3 interfaceStyle:(long long)arg4 horizontalSizeClass:(long long)arg5 verticalSizeClass:(long long)arg6 accessibilityOverrides:(id)arg7 additionalSafeAreaEdgeInsets:(id)arg8;
+- (id)initWithScreenSize:(struct CGSize)arg1 idiom:(long long)arg2 orientation:(long long)arg3 traitCollection:(id)arg4 accessibilityOverrides:(id)arg5 additionalSafeAreaEdgeInsets:(id)arg6;
 - (id)createWindowForViewController:(id)arg1 initialSize:(id)arg2 inContext:(id)arg3;
 
 @end

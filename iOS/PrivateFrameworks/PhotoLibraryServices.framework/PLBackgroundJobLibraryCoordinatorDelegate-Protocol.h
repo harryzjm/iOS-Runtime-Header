@@ -10,6 +10,6 @@
 
 @protocol PLBackgroundJobLibraryCoordinatorDelegate <NSObject>
 - (void)libraryCoordinatorFinishedJobsOnAllSubmittedBundles;
-- (void)libraryCoordinatorFinishedJobsOnSubmittedBundle:(PLPhotoLibraryBundle *)arg1 priority:(unsigned long long)arg2;
+- (void)libraryCoordinatorFinishedJobsOnSubmittedBundle:(PLPhotoLibraryBundle *)arg1 priority:(long long)arg2;
 @end
 

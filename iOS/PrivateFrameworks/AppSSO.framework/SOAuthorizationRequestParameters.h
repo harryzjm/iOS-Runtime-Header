@@ -13,7 +13,9 @@
 @interface SOAuthorizationRequestParameters : NSObject <NSSecureCoding>
 {
     _Bool _useInternalExtensions;
+    _Bool _cfNetworkInterception;
     _Bool _callerManaged;
+    _Bool _enableUserInteraction;
     NSURL *_url;
     NSString *_requestedOperation;
     NSDictionary *_httpHeaders;
@@ -26,13 +28,17 @@
     long long _responseCode;
     NSString *_callerTeamIdentifier;
     NSString *_localizedCallerDisplayName;
+    NSString *_impersonationBundleIdentifier;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *impersonationBundleIdentifier; // @synthesize impersonationBundleIdentifier=_impersonationBundleIdentifier;
+@property(nonatomic, getter=isUserInteractionEnabled) _Bool enableUserInteraction; // @synthesize enableUserInteraction=_enableUserInteraction;
 @property(copy, nonatomic) NSString *localizedCallerDisplayName; // @synthesize localizedCallerDisplayName=_localizedCallerDisplayName;
 @property(copy, nonatomic) NSString *callerTeamIdentifier; // @synthesize callerTeamIdentifier=_callerTeamIdentifier;
 @property(nonatomic, getter=isCallerManaged) _Bool callerManaged; // @synthesize callerManaged=_callerManaged;
+@property(nonatomic, getter=isCFNetworkInterception) _Bool cfNetworkInterception; // @synthesize cfNetworkInterception=_cfNetworkInterception;
 @property(nonatomic) long long responseCode; // @synthesize responseCode=_responseCode;
 @property(nonatomic) _Bool useInternalExtensions; // @synthesize useInternalExtensions=_useInternalExtensions;
 @property(retain, nonatomic) NSDictionary *authorizationOptions; // @synthesize authorizationOptions=_authorizationOptions;

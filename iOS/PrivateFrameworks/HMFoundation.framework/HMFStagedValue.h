@@ -9,14 +9,14 @@
 #import <HMFoundation/HMFLogging-Protocol.h>
 #import <HMFoundation/HMFTimerDelegate-Protocol.h>
 
-@class HMFTimer, HMFUnfairLock, NSString;
+@class HMFTimer, NSString;
 @protocol HMFStagedValueDelegate;
 
 @interface HMFStagedValue : NSObject <HMFLogging, HMFTimerDelegate>
 {
+    struct os_unfair_lock_s _lock;
     id _stagedValue;
     _Bool _isStaged;
-    HMFUnfairLock *_lock;
     id _committedValue;
     HMFTimer *_timer;
     id <HMFStagedValueDelegate> _delegate;
@@ -30,11 +30,13 @@
 @property(retain) HMFTimer *timer; // @synthesize timer=_timer;
 - (void)timerDidFire:(id)arg1;
 @property(retain) id committedValue; // @synthesize committedValue=_committedValue;
+@property(readonly, getter=isStaged) _Bool staged;
 @property(readonly) id value;
 - (void)_commitValue:(id)arg1;
 - (void)_unstageValue;
-- (void)_stageValue:(id)arg1 withTimeout:(double)arg2;
+- (void)_stageValue:(id)arg1 withTimer:(id)arg2;
 - (void)commitValue:(id)arg1;
+- (void)stageValue:(id)arg1;
 - (void)stageValue:(id)arg1 withTimeout:(double)arg2;
 - (id)initWithValue:(id)arg1;
 

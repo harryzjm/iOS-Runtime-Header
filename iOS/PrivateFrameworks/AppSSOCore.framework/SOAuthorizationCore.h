@@ -13,6 +13,7 @@
 {
     SOClient *_client;
     SOAuthorizationRequestParametersCore *_requestParametersCore;
+    _Bool _enableUserInteraction;
     id <SOAuthorizationCoreDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_delegateDispatchQueue;
     NSDictionary *_authorizationOptions;
@@ -20,10 +21,12 @@
 
 + (_Bool)_doAKshouldProcessURL:(id)arg1;
 + (_Bool)_canPerformAuthorizationWithURL:(id)arg1 responseCode:(long long)arg2 callerBundleIdentifier:(id)arg3 useInternalExtensions:(_Bool)arg4;
++ (_Bool)canPerformAuthorizationWithURL:(id)arg1 responseCode:(long long)arg2 callerBundleIdentifier:(id)arg3 useInternalExtensions:(_Bool)arg4;
 + (_Bool)canPerformAuthorizationWithURL:(id)arg1 responseCode:(long long)arg2 useInternalExtensions:(_Bool)arg3;
 + (_Bool)canPerformAuthorizationWithURL:(id)arg1 responseCode:(long long)arg2;
 + (void)isExtensionProcessWithAuditToken:(CDStruct_6ad76789)arg1 completion:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
+@property(nonatomic, getter=isUserInteractionEnabled) _Bool enableUserInteraction; // @synthesize enableUserInteraction=_enableUserInteraction;
 @property(retain, nonatomic) NSDictionary *authorizationOptions; // @synthesize authorizationOptions=_authorizationOptions;
 @property(retain) NSObject<OS_dispatch_queue> *delegateDispatchQueue; // @synthesize delegateDispatchQueue=_delegateDispatchQueue;
 @property __weak id <SOAuthorizationCoreDelegate> delegate; // @synthesize delegate=_delegate;
@@ -36,6 +39,8 @@
 - (void)beginAuthorizationWithURL:(id)arg1 httpHeaders:(id)arg2 httpBody:(id)arg3;
 - (void)getAuthorizationHintsWithURL:(id)arg1 responseCode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;
+- (id)createSecKeysFromSecKeyProxyEndpoints:(id)arg1 error:(id *)arg2;
+- (void)finishAuthorizationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)debugHintsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)performBlockOnDelegateQueue:(CDUnknownBlockType)arg1;
 - (void)beginAuthorizationWithRequestParameters:(id)arg1 completion:(CDUnknownBlockType)arg2;

@@ -6,20 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class HDProfile, NSMutableDictionary;
+@class NSMutableDictionary;
 
 @interface HDBackgroundObservationServerExtensionManager : NSObject
 {
     struct os_unfair_lock_s _lock;
     NSMutableDictionary *_availableExtensions;
-    HDProfile *_profile;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
-- (id)_lock_extensionForBundleIdentifier:(id)arg1 error:(id *)arg2;
 - (id)extensionForBundleIdentifier:(id)arg1 error:(id *)arg2;
-- (id)initWithProfile:(id)arg1;
 - (id)init;
 
 @end

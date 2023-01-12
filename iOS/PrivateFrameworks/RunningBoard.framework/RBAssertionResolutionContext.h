@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableSet, NSSet, RBAssertionCollection, RBAttributeContext, RBProcessIndex, RBProcessMap, RBProcessStateChangeSet, RBSystemState;
+@class NSMapTable, NSMutableSet, NSSet, RBAssertionCollection, RBAttributeContext, RBProcessIndex, RBProcessMap, RBProcessStateChangeSet, RBSystemState;
 @protocol RBBundlePropertiesManaging, RBDomainAttributeManaging, RBEntitlementManaging;
 
 @interface RBAssertionResolutionContext : NSObject
@@ -26,6 +26,7 @@
     id <RBDomainAttributeManaging> _domainAttributeManager;
     id <RBBundlePropertiesManaging> _bundlePropertiesManager;
     id <RBEntitlementManaging> _entitlementManager;
+    NSMapTable *_savedEndowments;
     RBSystemState *_systemState;
 }
 

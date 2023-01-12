@@ -28,6 +28,7 @@
 - (id)createGroupForPruningCheck;
 - (id)createGroupForAnalysisDownload;
 - (id)createGroupForMovieStreamingWithIntent:(unsigned long long)arg1;
+- (id)createGroupForDownloadWithIntent:(unsigned long long)arg1 priority:(unsigned long long)arg2;
 - (id)createGroupForWidgetResourcesDownload;
 - (id)createGroupForResourcesDownload;
 - (id)createGroupForThumbnailsDownload;
@@ -49,9 +50,11 @@
 - (id)createGroupForInitialDownload;
 - (id)createGroupForResetSync;
 - (id)createGroupForInitialUpload;
+- (void)dropPersistedInitialSyncSession;
 - (void)findPersistedInitialSyncSession:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)isResourceDynamic:(id)arg1;
-- (void)getPushEnvironmentWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)noteClientIsInBackground;
+- (void)noteClientIsInForeground;
 - (void)getStatusDictionaryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)componentName;
@@ -61,6 +64,7 @@
 - (id)transportScopeForUpgradeFromScopeName:(id)arg1;
 - (id)scopeNameForTransportScope:(id)arg1;
 - (id)descriptionForTransportScope:(id)arg1;
+- (id)tentativeTransportScopeForScope:(id)arg1;
 - (void)cancelBlockedTasksIncludingBackground:(_Bool)arg1;
 - (void)noteClientIsEndingSignificantWork;
 - (void)noteClientIsBeginningSignificantWork;
@@ -73,12 +77,13 @@
 - (id)queryUserDetailsTaskForParticipants:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)acceptTaskForSharedScope:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)fetchTaskForScopeWithShareURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)updateShareTaskForScope:(id)arg1 transportScope:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)createScopeTaskForScope:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)inMemoryDownloadTaskForResource:(id)arg1 transportScope:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)inMemoryDownloadTaskForResource:(id)arg1 record:(id)arg2 transportScope:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)resourcesDownloadTaskWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)rampingRequestTaskForResourceType:(unsigned long long)arg1 numRequested:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)resourceCheckTaskForResources:(id)arg1 transportScopes:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (id)getStreamingURLTaskForResource:(id)arg1 intent:(unsigned long long)arg2 hints:(id)arg3 transportScope:(id)arg4 clientBundleID:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (id)getStreamingURLTaskForResource:(id)arg1 intent:(unsigned long long)arg2 hints:(id)arg3 timeRange:(CDStruct_e83c9415)arg4 transportScope:(id)arg5 clientBundleID:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (id)fetchTransportScopeForScope:(id)arg1 transportScope:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)getCurrentSyncAnchorWithTransportScope:(id)arg1 scope:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)getScopeInfoWithTransportScope:(id)arg1 scope:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

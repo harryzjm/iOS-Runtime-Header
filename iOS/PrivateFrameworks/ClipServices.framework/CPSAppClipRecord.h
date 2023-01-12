@@ -32,8 +32,8 @@
 @property(nonatomic) double lastVersionCheckTime; // @synthesize lastVersionCheckTime=_lastVersionCheckTime;
 @property(nonatomic) double lastProxCardLaunchTime; // @synthesize lastProxCardLaunchTime=_lastProxCardLaunchTime;
 @property(nonatomic) long long locationConfirmationState; // @synthesize locationConfirmationState=_locationConfirmationState;
-@property(retain, nonatomic) NSNumber *locationConfirmationGranted; // @synthesize locationConfirmationGranted=_locationConfirmationGranted;
-@property(retain, nonatomic) NSNumber *userNotificationGranted; // @synthesize userNotificationGranted=_userNotificationGranted;
+@property(copy, nonatomic) NSNumber *locationConfirmationGranted; // @synthesize locationConfirmationGranted=_locationConfirmationGranted;
+@property(copy, nonatomic) NSNumber *userNotificationGranted; // @synthesize userNotificationGranted=_userNotificationGranted;
 @property(copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 - (id)initWithSQLiteRow:(id)arg1 bundleID:(id)arg2;
 - (id)initWithBundleID:(id)arg1;

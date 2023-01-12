@@ -17,10 +17,7 @@
 - (_Bool)deleteMeCardCache;
 - (_Bool)writeMeCardCache:(id)arg1;
 - (id)loadMeCardCache;
-- (id)_cachedDateComponentsFromDateComponents:(id)arg1;
-- (id)_dateComponentsFromCachedDateComponents:(id)arg1;
 - (id)init;
-- (id)initWithPath:(id)arg1;
 
 @end
 

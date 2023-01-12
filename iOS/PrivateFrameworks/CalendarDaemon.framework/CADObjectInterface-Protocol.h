@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CADObjectID, NSArray, NSDictionary, NSString;
+@class CADObjectID, NSArray, NSString;
 
 @protocol CADObjectInterface
 - (void)CADObjectIsManaged:(CADObjectID *)arg1 reply:(void (^)(int, _Bool))arg2;
-- (void)CADDatabaseDeleteObjectsWithObjectIDs:(NSArray *)arg1 reply:(void (^)(int))arg2;
-- (void)CADDatabaseInsertObjectsWithTempObjectIDs:(NSArray *)arg1 reply:(void (^)(int))arg2;
-- (void)CADObject:(CADObjectID *)arg1 setAttributes:(NSDictionary *)arg2 andRelations:(NSDictionary *)arg3 reply:(void (^)(int))arg4;
 - (void)CADObject:(CADObjectID *)arg1 getRelatedObjectsWithRelationName:(NSString *)arg2 reply:(void (^)(int, NSSet *))arg3;
 - (void)CADObject:(CADObjectID *)arg1 getRelatedObjectWithRelationName:(NSString *)arg2 reply:(void (^)(int, CADObjectID *))arg3;
+- (void)CADObject:(CADObjectID *)arg1 getSecurityScopedURLWrapperPropertyWithName:(NSString *)arg2 reply:(void (^)(int, NSSecurityScopedURLWrapper *))arg3;
 - (void)CADObject:(CADObjectID *)arg1 getDataPropertyWithName:(NSString *)arg2 reply:(void (^)(int, NSData *))arg3;
 - (void)CADObject:(CADObjectID *)arg1 getDatePropertyWithName:(NSString *)arg2 reply:(void (^)(int, NSDate *))arg3;
 - (void)CADObject:(CADObjectID *)arg1 getNumberPropertyWithName:(NSString *)arg2 reply:(void (^)(int, NSNumber *))arg3;

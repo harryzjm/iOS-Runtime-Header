@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, SCNMaterialProperty;
+@class NSString;
 
 @interface AVTStickerShaderModifierProperty : NSObject
 {
@@ -14,13 +14,13 @@
     NSString *_type;
     id _value;
     id _originalValue;
-    SCNMaterialProperty *_materialProperty;
+    id _effectiveValue;
 }
 
 + (id)shaderModifierPropertyFromDictionary:(id)arg1 assetsPath:(id)arg2;
 + (id)shaderModifierPropertyCache;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) SCNMaterialProperty *materialProperty; // @synthesize materialProperty=_materialProperty;
+@property(readonly, nonatomic) id effectiveValue; // @synthesize effectiveValue=_effectiveValue;
 @property(retain, nonatomic) id originalValue; // @synthesize originalValue=_originalValue;
 @property(readonly, nonatomic) id value; // @synthesize value=_value;
 @property(readonly, nonatomic) NSString *type; // @synthesize type=_type;

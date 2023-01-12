@@ -7,7 +7,19 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (BackingStores)
++ (id)dnds_meDeviceStoreFileURL;
++ (id)dnds_assertionSyncMetadataFileURL;
++ (id)dnds_idsSyncEngineMetadataFileURL;
++ (id)dnds_syncEngineLastChanceFileURL;
++ (id)dnds_syncEngineMetadataFileURL;
++ (id)dnds_placeholderModesLocalBackingStoreFileURL;
++ (id)dnds_globalConfigurationBackingStoreFileURL;
++ (id)dnds_modeConfigurationsSecureBackingStoreFileURL;
++ (id)dnds_modeConfigurationsBackingStoreFileURL;
++ (id)dnds_locationAssertionExplicitRegionFileURL;
++ (id)dnds_locationAssertionUntilExitRegionFileURL;
 + (id)dnds_legacySettingsFileURL;
++ (id)dnds_metricsBackingStoreFileURL;
 + (id)dnds_settingsBackingStoreFileURL;
 + (id)dnds_localAssertionBackingStoreFileURL;
 @end

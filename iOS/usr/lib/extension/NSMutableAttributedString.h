@@ -9,6 +9,7 @@
 }
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
+- (Class)_intentResolver;
 - (Class)classForCoder;
 - (void)endEditing;
 - (void)beginEditing;
@@ -25,6 +26,8 @@
 - (void)setAttributes:(id)arg1 range:(struct _NSRange)arg2;
 - (void)replaceCharactersInRange:(struct _NSRange)arg1 withString:(id)arg2;
 - (void)_inflectWithReplacements:(id)arg1;
+- (void)_addAttributesIfNotPresentMergingInlinePresentationIntents:(id)arg1 toRange:(struct _NSRange)arg2;
+- (void)appendLocalizedFormat:(id)arg1;
 
 @end
 

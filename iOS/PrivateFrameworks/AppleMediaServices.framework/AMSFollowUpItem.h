@@ -14,6 +14,8 @@
     ACAccount *_account;
     NSString *_identifier;
     NSMutableDictionary *_userInfo;
+    _Bool _disableGrouping;
+    _Bool _hardwareOffer;
     _Bool _shouldPostNotification;
     NSArray *_actions;
     long long _displayStyle;
@@ -34,8 +36,10 @@
 @property(nonatomic) _Bool shouldPostNotification; // @synthesize shouldPostNotification=_shouldPostNotification;
 @property(retain, nonatomic) AMSMetricsEvent *metricsEvent; // @synthesize metricsEvent=_metricsEvent;
 @property(retain, nonatomic) NSString *informativeText; // @synthesize informativeText=_informativeText;
+@property(nonatomic, getter=isHardwareOffer) _Bool hardwareOffer; // @synthesize hardwareOffer=_hardwareOffer;
 @property(retain, nonatomic) NSString *footer; // @synthesize footer=_footer;
 @property(nonatomic) long long displayStyle; // @synthesize displayStyle=_displayStyle;
+@property(nonatomic) _Bool disableGrouping; // @synthesize disableGrouping=_disableGrouping;
 @property(retain, nonatomic) NSArray *actions; // @synthesize actions=_actions;
 - (id)postMetricsWithBagContract:(id)arg1;
 - (_Bool)shouldOverwriteItem:(id)arg1;

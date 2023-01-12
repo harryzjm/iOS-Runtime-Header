@@ -32,7 +32,7 @@
 - (_Bool)isDraggable;
 - (_Bool)isTappable;
 - (id)punchouts;
-- (void)toggleAddToUpNextWithFeedbackDelegate:(id)arg1;
+- (void)toggleAddToUpNext;
 - (void)updateWithText:(id)arg1 buttonState:(long long)arg2 image:(id)arg3 punchout:(id)arg4;
 - (void)updateWithText:(id)arg1 buttonState:(long long)arg2;
 - (id)initWithResult:(id)arg1 cardSection:(id)arg2 asyncRowManager:(id)arg3 queryId:(unsigned long long)arg4;

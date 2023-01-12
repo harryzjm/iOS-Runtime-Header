@@ -10,6 +10,7 @@
 
 @class FCCKPResponseOperationResultErrorClient, FCCKPResponseOperationResultErrorExtension, FCCKPResponseOperationResultErrorServer, NSString;
 
+__attribute__((visibility("hidden")))
 @interface FCCKPResponseOperationResultError : PBCodable <NSCopying>
 {
     FCCKPResponseOperationResultErrorClient *_clientError;
@@ -23,28 +24,14 @@
     } _has;
 }
 
-@property(retain, nonatomic) NSString *errorKey; // @synthesize errorKey=_errorKey;
-@property(retain, nonatomic) NSString *errorDescription; // @synthesize errorDescription=_errorDescription;
-@property(nonatomic) int retryAfterSeconds; // @synthesize retryAfterSeconds=_retryAfterSeconds;
-@property(retain, nonatomic) FCCKPResponseOperationResultErrorExtension *extensionError; // @synthesize extensionError=_extensionError;
-@property(retain, nonatomic) FCCKPResponseOperationResultErrorServer *serverError; // @synthesize serverError=_serverError;
-@property(retain, nonatomic) FCCKPResponseOperationResultErrorClient *clientError; // @synthesize clientError=_clientError;
-- (void)mergeFrom:(id)arg1;
+- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasErrorKey;
-@property(readonly, nonatomic) _Bool hasErrorDescription;
-@property(nonatomic) _Bool hasRetryAfterSeconds;
-@property(readonly, nonatomic) _Bool hasExtensionError;
-@property(readonly, nonatomic) _Bool hasServerError;
-@property(readonly, nonatomic) _Bool hasClientError;
-- (void)dealloc;
 
 @end
 

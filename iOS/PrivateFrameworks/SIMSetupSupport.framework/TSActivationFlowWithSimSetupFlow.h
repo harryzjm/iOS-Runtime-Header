@@ -8,36 +8,42 @@
 #import <SIMSetupSupport/TSEntitlementJSHandlerDelegate-Protocol.h>
 #import <SIMSetupSupport/TSSIMSetupFlowDelegate-Protocol.h>
 
-@class NSError, NSMutableArray, NSString, UIBarButtonItem, UIViewController;
-@protocol TSSetupFlowItem;
+@class CTDisplayPlanList, NSError, NSMutableArray, NSObject, NSString, UIBarButtonItem, UIViewController;
+@protocol OS_dispatch_group, TSSetupFlowItem;
 
 @interface TSActivationFlowWithSimSetupFlow <TSSIMSetupFlowDelegate, TSCellularPlanManagerCacheDelegate, TSEntitlementJSHandlerDelegate>
 {
     _Bool _requireSetup;
     _Bool _confirmationCodeRequired;
     _Bool _isTransferCapable;
+    _Bool _isActivationPolicyMismatch;
+    _Bool _isDualeSIMCapabilityLoss;
     NSError *_planInstallError;
     NSMutableArray *_danglingPlanItems;
     NSMutableArray *_transferItems;
+    CTDisplayPlanList *_pendingInstallPlans;
     NSString *_name;
     unsigned long long _userConsentType;
     UIBarButtonItem *_cancelButton;
     long long _signupConsentResponse;
     UIViewController<TSSetupFlowItem> *_currentViewController;
+    NSObject<OS_dispatch_group> *_queryGroup;
     _Bool _isPreinstallingViewControllerActive;
 }
 
 - (void).cxx_destruct;
 @property _Bool isPreinstallingViewControllerActive; // @synthesize isPreinstallingViewControllerActive=_isPreinstallingViewControllerActive;
-- (void)_requestPendingInstallItems;
-- (void)_requestTransferPlanList;
-- (void)_maybeShowPreinstallConsentOnViewController:(id)arg1;
+- (void)_userDidTapCancel;
+- (void)_requestPendingInstallItemsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_requestTransferPlanListWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_requestPlansWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_maybeShowPreinstallConsentOnViewController:(id)arg1 planItems:(id)arg2;
+- (id)_createViewController:(id)arg1;
 - (void)accountPendingRelease;
 - (void)accountCancelled;
 - (void)didTransferPlanSuccessfullyWithEid:(id)arg1 imei:(id)arg2 meid:(id)arg3 iccid:(id)arg4 srcIccid:(id)arg5 alternateSDMP:(id)arg6 state:(id)arg7;
-- (void)didPurchasePlanSuccessfullyWithEid:(id)arg1 imei:(id)arg2 meid:(id)arg3 iccid:(id)arg4 alternateSDMP:(id)arg5;
+- (void)didPurchasePlanSuccessfullyWithEid:(id)arg1 imei:(id)arg2 meid:(id)arg3 iccid:(id)arg4 alternateSDMP:(id)arg5 state:(id)arg6;
 - (void)planItemsUpdated:(id)arg1 planListError:(id)arg2;
-- (void)popViewController:(id)arg1;
 - (long long)signupUserConsentResponse;
 - (void)setDefaultNavigationItems:(id)arg1;
 - (void)viewControllerDidComplete:(id)arg1;

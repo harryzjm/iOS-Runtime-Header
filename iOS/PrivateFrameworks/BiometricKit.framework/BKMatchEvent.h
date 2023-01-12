@@ -6,13 +6,18 @@
 
 #import <objc/NSObject.h>
 
+@class BKIdentity;
+
 @interface BKMatchEvent : NSObject
 {
     _Bool _result;
     unsigned long long _timeStamp;
+    BKIdentity *_matchedIdentity;
 }
 
-+ (id)matchEventWithDictionary:(id)arg1 error:(id *)arg2;
++ (id)matchEventWithDictionary:(id)arg1 device:(id)arg2 error:(id *)arg3;
+- (void).cxx_destruct;
+@property(retain, nonatomic) BKIdentity *matchedIdentity; // @synthesize matchedIdentity=_matchedIdentity;
 @property(nonatomic) unsigned long long timeStamp; // @synthesize timeStamp=_timeStamp;
 @property(nonatomic) _Bool result; // @synthesize result=_result;
 

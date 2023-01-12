@@ -13,6 +13,18 @@
 {
 }
 
++ (id)offIconTintColor;
++ (id)onIconTintColor;
++ (id)displayGlyphTintColor;
++ (id)offLabel;
++ (id)onLabel;
++ (id)offIcon;
++ (id)onIcon;
++ (long long)triggerBacking;
++ (double)displayGlyphCornerRadius;
++ (id)displayGlyph;
++ (id)displayGlyphHierarchicalColors;
++ (id)displayGlyphName;
 + (id)localizedDisplayExplanation;
 + (id)localizedDisplayName;
 + (_Bool)isSupportedOnThisDevice;
@@ -23,6 +35,13 @@
 - (id)localizedPastTenseDescription;
 - (id)localizedDescriptionWithConfigurationSummary;
 - (_Bool)hasValidConfiguration;
+- (id)displayGlyphTintColor;
+- (double)displayGlyphCornerRadius;
+- (id)displayGlyph;
+- (id)displayGlyphHierarchicalColors;
+- (id)displayGlyphName;
+- (id)localizedDisplayExplanation;
+- (id)localizedDisplayName;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

@@ -6,12 +6,22 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-@interface CacheDeleteHostExtensionContext : NSExtensionContext
+#import <CacheDelete/CacheDeleteHostProtocol-Protocol.h>
+
+@class NSString;
+
+@interface CacheDeleteHostExtensionContext : NSExtensionContext <CacheDeleteHostProtocol>
 {
 }
 
 + (id)_extensionAuxiliaryVendorProtocol;
 + (id)_extensionAuxiliaryHostProtocol;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

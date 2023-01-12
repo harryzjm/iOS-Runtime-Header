@@ -11,7 +11,6 @@
     int _protection;
     int _advice;
     void *_start;
-    void *_end;
     unsigned long long _currentOffset;
     unsigned long long _size;
     long long _offset;

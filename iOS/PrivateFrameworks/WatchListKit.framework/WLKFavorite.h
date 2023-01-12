@@ -10,15 +10,18 @@
 
 @interface WLKFavorite : NSObject
 {
-    NSString *_id;
+    NSString *_ID;
     NSString *_name;
+    NSString *_leagueID;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *leagueID; // @synthesize leagueID=_leagueID;
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
-@property(readonly, nonatomic) NSString *id; // @synthesize id=_id;
+@property(readonly, nonatomic) NSString *ID; // @synthesize ID=_ID;
 - (id)description;
 - (id)init;
+@property(readonly, nonatomic) NSString *id;
 - (id)initWithDictionary:(id)arg1;
 
 @end

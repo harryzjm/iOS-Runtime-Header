@@ -23,7 +23,7 @@
 - (id)_loadLiveXIBViewForApplication:(id)arg1;
 - (struct CGSize)_naturalSizeForOrientation:(long long)arg1 referenceSize:(struct CGSize)arg2;
 - (_Bool)_checkApplicationRestorationState:(id)arg1 useSnapshot:(_Bool *)arg2;
-- (id)_contentViewFromSceneHandle:(id)arg1 displayConfiguration:(id)arg2 orientation:(long long)arg3 snapshot:(id)arg4 size:(struct CGSize)arg5 statusBarDescriptor:(id)arg6;
+- (id)_contentViewFromSceneHandle:(id)arg1 displayConfiguration:(id)arg2 orientation:(long long)arg3 snapshot:(id)arg4 size:(struct CGSize)arg5 statusBarDescriptor:(id)arg6 hasOrientationMismatchForClassicApp:(_Bool)arg7;
 - (id)sceneView:(id)arg1 requestsPlaceholderContentViewWithContext:(id)arg2;
 - (void)_snapshotsDidChange:(id)arg1;
 - (void)dealloc;

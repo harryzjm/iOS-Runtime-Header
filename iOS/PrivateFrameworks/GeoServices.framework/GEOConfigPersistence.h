@@ -6,20 +6,38 @@
 
 #import <objc/NSObject.h>
 
-@class GEOSQLiteDB, _GEOConfigDB, _GEOConfigDBOperationQueue;
+@class GEOSQLiteDB, _GEOConfigCache, _GEOConfigDB, _GEOConfigDBOperationQueue;
 
 @interface GEOConfigPersistence : NSObject
 {
     GEOSQLiteDB *_db;
     _GEOConfigDB *_configDB;
+    _GEOConfigDB *_xpcConfigDB;
+    _GEOConfigCache *_keyExpiryCache;
     _GEOConfigDBOperationQueue *_operationQueue;
 }
 
 + (_Bool)_setup:(id)arg1;
++ (_Bool)_migrateDates:(id)arg1 withConverter:(CDUnknownBlockType)arg2;
 + (id)shared;
 - (void).cxx_destruct;
+- (void)pruneExpiredKeyPathsOlderThanOSVersion:(id)arg1;
+- (id)getExpiredKeyPathsOlderThanOSVersion:(id)arg1;
+- (void)pruneExpiredKeyPathsOlderThanTime:(id)arg1;
+- (id)getExpiredKeyPathsOlderThanTime:(id)arg1;
+- (void)_pruneExpiredKeyPathsOlderThanTime:(id)arg1 osVersion:(id)arg2;
+- (id)_getExpiredKeyPathsOlderThanTime:(id)arg1 osVersion:(id)arg2;
+- (id)_getExpiredKeyPathsOlderThanTime:(id)arg1 osVersion:(id)arg2 from:(id)arg3;
+- (id)getAllExpiringKeys;
+- (id)getExpireForKeyPath:(id)arg1;
+- (void)clearExpirationForKeyPath:(id)arg1;
+- (void)setExpire:(id)arg1;
+- (void)migrateXPCKeys:(id)arg1;
+- (id)xpcDefaultForKeyPathComponents:(id)arg1;
+- (id)xpcDefaultForKeyPath:(id)arg1;
 - (id)defaultForKeyPathComponents:(id)arg1;
 - (id)defaultForKeyPath:(id)arg1;
+- (void)setXPCDefault:(id)arg1 forKeyPath:(id)arg2;
 - (void)setDefault:(id)arg1 forKeyPath:(id)arg2;
 - (void)dealloc;
 - (void)tearDown;

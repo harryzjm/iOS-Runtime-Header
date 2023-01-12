@@ -9,14 +9,17 @@
 #import <iTunesCloud/NSCopying-Protocol.h>
 #import <iTunesCloud/NSSecureCoding-Protocol.h>
 
-@class NSDictionary;
+@class NSDictionary, NSString;
 
 @interface ICRadioContentReference : NSObject <NSCopying, NSSecureCoding>
 {
+    NSString *_playbackAuthorizationToken;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)storeItemWithIdentifier:(id)arg1;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *playbackAuthorizationToken; // @synthesize playbackAuthorizationToken=_playbackAuthorizationToken;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

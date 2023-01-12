@@ -16,6 +16,7 @@
 
 @interface RTDaemonClient : NSObject <RTDaemonClientRegistrarVehicleEventProtocol, RTDaemonClientRegistrarScenarioTriggerProtocol, RTDaemonProtocol, NSXPCConnectionDelegate>
 {
+    _Bool _targetUserSession;
     _Bool _enabled;
     _Bool _supported;
     _Bool _monitorVisits;
@@ -95,12 +96,14 @@
 @property(nonatomic) _Bool monitorVisits; // @synthesize monitorVisits=_monitorVisits;
 @property(nonatomic) _Bool supported; // @synthesize supported=_supported;
 @property _Bool enabled; // @synthesize enabled=_enabled;
+@property(nonatomic) _Bool targetUserSession; // @synthesize targetUserSession=_targetUserSession;
 @property(retain, nonatomic) NSMutableDictionary *restorationData; // @synthesize restorationData=_restorationData;
 @property(nonatomic) __weak id <RTClientListenerProtocol> clientManagerDelegate; // @synthesize clientManagerDelegate=_clientManagerDelegate;
 @property(copy, nonatomic) NSString *restorationIdentifier; // @synthesize restorationIdentifier=_restorationIdentifier;
 @property(retain, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 - (void)fetchFormattedPostalAddressesFromMeCard:(CDUnknownBlockType)arg1;
 - (void)fetchEnumerableObjectsWithOptions:(id)arg1 offset:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)fetchEstimatedLocationAtDate:(id)arg1 options:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)fetchStoredLocationsWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)userInteractionWithPredictedLocationOfInterest:(id)arg1 interaction:(unsigned long long)arg2 feedback:(id)arg3 geoMapItem:(id)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)extendLifetimeOfVisitsWithIdentifiers:(id)arg1 reply:(CDUnknownBlockType)arg2;
@@ -139,7 +142,7 @@
 - (void)fetchLocationOfInterestWithIdentifier:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)fetchLocationOfInterestAtLocation:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)shutdown;
-- (void)onRoutineEnabled:(id)arg1;
+- (void)onAuthorizationNotification:(id)arg1;
 - (void)fetchPathToDiagnosticFilesWithReply:(CDUnknownBlockType)arg1;
 - (void)fetchStoredVisitsWithOptions:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)onVisitManagerNotification:(id)arg1;

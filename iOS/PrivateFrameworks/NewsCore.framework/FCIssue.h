@@ -6,14 +6,15 @@
 
 #import <objc/NSObject.h>
 
+#import <NewsCore/FCContentArchivable-Protocol.h>
 #import <NewsCore/FCFeedPersonalizingItem-Protocol.h>
 #import <NewsCore/FCIssueAccessCheckable-Protocol.h>
 #import <NewsCore/NSCopying-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, FCAssetHandle, FCColor, FCInterestToken, NSArray, NSDate, NSString, NTPBIssueRecord;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLLIVERPOOLTagMetadata, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, FCAssetHandle, FCColor, FCContentArchive, FCInterestToken, NSArray, NSDate, NSString, NTPBIssueRecord;
 @protocol FCChannelProviding;
 
-@interface FCIssue : NSObject <FCFeedPersonalizingItem, FCIssueAccessCheckable, NSCopying>
+@interface FCIssue : NSObject <FCFeedPersonalizingItem, FCIssueAccessCheckable, NSCopying, FCContentArchivable>
 {
     _Bool _isCurrent;
     _Bool _isDraft;
@@ -27,6 +28,9 @@
     FCAssetHandle *_coverImageAssetHandle;
     double _coverImageAspectRatio;
     FCColor *_coverImagePrimaryColor;
+    FCColor *_coverImageBackgroundColor;
+    FCColor *_coverImageTextColor;
+    FCColor *_coverImageAccentColor;
     NSString *_layeredCoverJSON;
     double _layeredCoverAspectRatio;
     FCColor *_layeredCoverPrimaryColor;
@@ -62,6 +66,9 @@
 @property(readonly, copy, nonatomic) FCColor *layeredCoverPrimaryColor; // @synthesize layeredCoverPrimaryColor=_layeredCoverPrimaryColor;
 @property(readonly, nonatomic) double layeredCoverAspectRatio; // @synthesize layeredCoverAspectRatio=_layeredCoverAspectRatio;
 @property(readonly, copy, nonatomic) NSString *layeredCoverJSON; // @synthesize layeredCoverJSON=_layeredCoverJSON;
+@property(readonly, copy, nonatomic) FCColor *coverImageAccentColor; // @synthesize coverImageAccentColor=_coverImageAccentColor;
+@property(readonly, copy, nonatomic) FCColor *coverImageTextColor; // @synthesize coverImageTextColor=_coverImageTextColor;
+@property(readonly, copy, nonatomic) FCColor *coverImageBackgroundColor; // @synthesize coverImageBackgroundColor=_coverImageBackgroundColor;
 @property(readonly, copy, nonatomic) FCColor *coverImagePrimaryColor; // @synthesize coverImagePrimaryColor=_coverImagePrimaryColor;
 @property(readonly, nonatomic) double coverImageAspectRatio; // @synthesize coverImageAspectRatio=_coverImageAspectRatio;
 @property(readonly, nonatomic) FCAssetHandle *coverImageAssetHandle; // @synthesize coverImageAssetHandle=_coverImageAssetHandle;
@@ -71,6 +78,7 @@
 @property(readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(readonly, nonatomic) FCContentArchive *contentArchive;
 @property(readonly, copy, nonatomic) NSString *sourceChannelID;
 @property(readonly, nonatomic) _Bool isLocalDraft;
 @property(readonly, nonatomic) _Bool isBlockedExplicitContent;
@@ -81,10 +89,12 @@
 @property(readonly, copy) NSString *description;
 - (id)initWithIssue:(id)arg1 overrides:(id)arg2;
 - (id)initWithIssueRecord:(id)arg1 assetManager:(id)arg2 interestToken:(id)arg3 sourceChannel:(id)arg4;
-- (id)initWithIdentifier:(id)arg1 type:(long long)arg2 title:(id)arg3 publicationDate:(id)arg4 coverDate:(id)arg5 metadataJSONAssetHandle:(id)arg6 coverImageAssetHandle:(id)arg7 coverImageAspectRatio:(double)arg8 coverImagePrimaryColor:(id)arg9 layeredCoverJSON:(id)arg10 layeredCoverAspectRatio:(double)arg11 layeredCoverPrimaryColor:(id)arg12 isCurrent:(_Bool)arg13 isDraft:(_Bool)arg14 isPaid:(_Bool)arg15 minimumNewsVersion:(long long)arg16 allArticleIDs:(id)arg17 coverArticleID:(id)arg18 allowedStorefrontIDs:(id)arg19 blockedStorefrontIDs:(id)arg20 topicTagIDs:(id)arg21 sourceChannel:(id)arg22 notificationDescription:(id)arg23 issueDescription:(id)arg24;
+- (id)initWithIdentifier:(id)arg1 type:(long long)arg2 title:(id)arg3 publicationDate:(id)arg4 coverDate:(id)arg5 metadataJSONAssetHandle:(id)arg6 coverImageAssetHandle:(id)arg7 coverImageAspectRatio:(double)arg8 coverImagePrimaryColor:(id)arg9 coverImageBackgroundColor:(id)arg10 coverImageTextColor:(id)arg11 coverImageAccentColor:(id)arg12 layeredCoverJSON:(id)arg13 layeredCoverAspectRatio:(double)arg14 layeredCoverPrimaryColor:(id)arg15 isCurrent:(_Bool)arg16 isDraft:(_Bool)arg17 isPaid:(_Bool)arg18 minimumNewsVersion:(long long)arg19 allArticleIDs:(id)arg20 coverArticleID:(id)arg21 allowedStorefrontIDs:(id)arg22 blockedStorefrontIDs:(id)arg23 topicTagIDs:(id)arg24 sourceChannel:(id)arg25 notificationDescription:(id)arg26 issueDescription:(id)arg27;
 - (id)initWithData:(id)arg1 sourceChannel:(id)arg2 assetManager:(id)arg3;
 - (id)init;
 - (void)enumerateTopicConversionStatsWithBlock:(CDUnknownBlockType)arg1;
+@property(readonly, copy, nonatomic) NSArray *topics;
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLTagMetadata *publisherTagMetadata;
 @property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *publisherConversionStats;
 @property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *globalConversionStats;
 - (void)enumerateTopicCohortsWithBlock:(CDUnknownBlockType)arg1;
@@ -106,6 +116,8 @@
 @property(readonly, nonatomic) long long bodyTextLength;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, nonatomic) _Bool hasAudioTrack;
+@property(readonly, copy, nonatomic) NSArray *iAdCategories;
+@property(readonly, nonatomic) _Bool isEvergreen;
 @property(readonly, nonatomic) _Bool isFeatured;
 @property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVector;
 @property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVectorAlt;

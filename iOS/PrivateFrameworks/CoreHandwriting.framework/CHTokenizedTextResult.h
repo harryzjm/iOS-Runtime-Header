@@ -23,10 +23,12 @@
     NSString *_trailingSeparator;
 }
 
-+ (id)extendedToken:(id)arg1 withStrokeIndexSet:(id)arg2 alignmentScore:(double)arg3;
++ (id)tokenizedTextResultFromResults:(id)arg1 shouldPerformStrictFiltering:(_Bool)arg2;
++ (id)extendedToken:(id)arg1 withStrokeIndexSet:(id)arg2 alignmentScore:(double)arg3 bounds:(struct CGRect)arg4;
 + (long long)mergeTokenRow:(id)arg1 intoUniqueRows:(id)arg2;
++ (id)_originalRowFromRow:(id)arg1;
 + (_Bool)areTokenRowsEquivalent:(id)arg1 otherRow:(id)arg2;
-+ (id)tokenizedTextResultWithString:(id)arg1 strokeIndexes:(id)arg2 trailingSeparator:(id)arg3 recognizerGenerationIdentifier:(long long)arg4;
++ (id)tokenizedTextResultWithString:(id)arg1 strokeIndexes:(id)arg2 bounds:(struct CGRect)arg3 trailingSeparator:(id)arg4 recognizerGenerationIdentifier:(long long)arg5;
 + (long long)_characterCountInToken:(id)arg1 filteringCharacterSet:(id)arg2 filteredCharacterCount:(long long *)arg3;
 + (pair_b2618ff2)_scoreMeanAndStdForToken:(id)arg1 forLocale:(id)arg2;
 + (_Bool)supportsSecureCoding;
@@ -38,22 +40,26 @@
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToTokenizedTextResult:(id)arg1;
 - (void)enumerateTokensInTranscriptionPath:(id)arg1 columnRange:(struct _NSRange)arg2 tokenProcessingBlock:(CDUnknownBlockType)arg3;
-- (long long)_tokenCountInTranscriptionPath:(id)arg1 columnRange:(struct _NSRange)arg2;
+- (void)enumerateTokensInTopTranscriptionPathWithBlock:(CDUnknownBlockType)arg1;
 - (id)_legacyTextRecognitionResultForTranscriptionIndex:(long long)arg1;
 - (id)legacyTextRecognitionResults;
 - (_Bool)_isGibberishToken:(id)arg1;
 - (double)_normalizedLanguageFitness:(double)arg1;
-- (double)languageFitnessForTranscriptionPath:(id)arg1 locale:(id)arg2 recognitionMode:(int)arg3;
-- (double)languageFitnessForLocale:(id)arg1 recognitionMode:(int)arg2;
+- (double)_rawLanguageFitnessForTranscriptionPath:(id)arg1 locale:(id)arg2 recognitionMode:(int)arg3;
+- (double)_averageTokenRecognitionScoreInTranscriptionPath:(id)arg1;
+- (CDStruct_c3b9c2ee)languageFitnessForLocale:(id)arg1 recognitionMode:(int)arg2;
 - (id)tokenizedResultWithFilteredPaths:(double)arg1;
 - (id)tokensFromTopTranscriptionWithCharacterRange:(struct _NSRange)arg1;
 - (_Bool)isValid;
 - (id)strokeIndexesForColumnsInRange:(struct _NSRange)arg1;
 - (id)precedingSeparatorForToken:(id)arg1;
+- (id)precedingSeparatorForRawTranscriptionPath;
 - (id)precedingSeparatorForTopTranscriptionPath;
 - (_Bool)shouldFilterOutStringForToken:(id)arg1 isGibberish:(_Bool *)arg2;
 - (id)transcriptionWithPath:(id)arg1 columnRange:(struct _NSRange)arg2 filterLowConfidence:(_Bool)arg3 excludeGibberish:(_Bool)arg4 rejectionRate:(double *)arg5 tokenProcessingBlock:(CDUnknownBlockType)arg6;
 - (id)transcriptionWithPath:(id)arg1 columnRange:(struct _NSRange)arg2 filterLowConfidence:(_Bool)arg3;
+@property(readonly, copy, nonatomic) NSString *rawTranscription;
+- (id)_rawPath;
 @property(readonly, copy, nonatomic) NSString *topTranscription;
 @property(readonly, nonatomic) NSString *recognizerDebugDescription;
 - (long long)precedingLineBreaks;

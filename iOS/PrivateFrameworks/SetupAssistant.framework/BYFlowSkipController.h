@@ -13,6 +13,7 @@
 + (id)flowSkipIdentifiersFromFollowUpAction:(id)arg1;
 + (id)_supportedIdentifiers;
 + (id)sharedInstance;
+- (void)unregisterActivities;
 - (void)registerActivities;
 - (void)observeFinishSetupTriggers;
 - (void)revisePendingFollowUpsForcingRepost:(_Bool)arg1;

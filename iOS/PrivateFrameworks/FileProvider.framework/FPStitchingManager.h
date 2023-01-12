@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)stitchedItemsForParentID:(id)arg1;
 @property(readonly, nonatomic) NSDictionary *stitchedFieldsAndItemsByItemIDs;
+- (_Bool)cleanStitchedForItemID:(id)arg1 ignoreSession:(id)arg2;
 @property(readonly, nonatomic) NSMutableArray *allDeletedIDs;
 @property(readonly, nonatomic) NSArray *allPlaceholderReplacementsIDs;
 @property(readonly, nonatomic) NSDictionary *allPlaceholderItemsByParentIdentifierAndName;

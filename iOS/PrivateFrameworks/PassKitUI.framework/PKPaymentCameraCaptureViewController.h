@@ -6,14 +6,13 @@
 
 #import <UIKit/UIViewController.h>
 
-@class NSArray, PKCameraCaptureInstructionView, PKPaymentCardManualEntryViewController, PKPaymentSetupBrowseProductsViewController, UIColor, UIView;
+@class NSArray, PKCameraCaptureInstructionView, PKPaymentCardManualEntryViewController, PKPaymentProvisioningController, UIColor, UIView;
 @protocol PKPaymentCameraCaptureViewControllerDelegate, PKPaymentSetupViewControllerDelegate;
 
 @interface PKPaymentCameraCaptureViewController : UIViewController
 {
     NSArray *_outputObjects;
     PKPaymentCardManualEntryViewController *_manualEntryController;
-    PKPaymentSetupBrowseProductsViewController *_browseCardsController;
     id <PKPaymentCameraCaptureViewControllerDelegate> _cameraCaptureDelegate;
     long long _context;
     id <PKPaymentSetupViewControllerDelegate> _setupDelegate;
@@ -21,6 +20,7 @@
     UIView *_cameraInstructionContainerView;
     PKCameraCaptureInstructionView *_cameraInstructionView;
     unsigned long long _cameraCaptureStartTime;
+    PKPaymentProvisioningController *_provisioningController;
     _Bool _hideSetupLaterButton;
     UIColor *_maskColor;
     UIColor *_maskOutlineColor;
@@ -37,6 +37,8 @@
 - (void)_pushManualEntryViewController;
 - (void)_setupLater:(id)arg1;
 - (void)_manualEntryButtonPressed:(id)arg1;
+- (void)viewDidDisappear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;

@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)exportedInterface;
++ (_Bool)shouldPropagateAppearanceCustomizations;
 + (id)passwordServiceViewControllerName;
 + (id)requestViewControllerWithConnectionHandler:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;

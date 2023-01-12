@@ -14,8 +14,10 @@
 {
     PBUnknownFields *_unknownFields;
     int _realtimeStatus;
+    int _spokenPrivacyFilterType;
     struct {
         unsigned int has_realtimeStatus:1;
+        unsigned int has_spokenPrivacyFilterType:1;
     } _flags;
 }
 
@@ -36,6 +38,10 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsSpokenPrivacyFilterType:(id)arg1;
+- (id)spokenPrivacyFilterTypeAsString:(int)arg1;
+@property(nonatomic) _Bool hasSpokenPrivacyFilterType;
+@property(nonatomic) int spokenPrivacyFilterType;
 - (int)StringAsRealtimeStatus:(id)arg1;
 - (id)realtimeStatusAsString:(int)arg1;
 @property(nonatomic) _Bool hasRealtimeStatus;

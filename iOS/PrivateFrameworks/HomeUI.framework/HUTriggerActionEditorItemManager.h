@@ -6,23 +6,21 @@
 
 #import <Home/HFSimpleItemManager.h>
 
-@class HUButtonItem, HUInstructionsItem, HUTriggerHeaderItem, HUViewControllerTableViewItem;
+@class HUButtonItem, HUTriggerHeaderItem, HUViewControllerTableViewItem;
 
 @interface HUTriggerActionEditorItemManager : HFSimpleItemManager
 {
     HUButtonItem *_addShortcutItem;
     HUViewControllerTableViewItem *_gridItem;
-    HUInstructionsItem *_instructionsItem;
     HUTriggerHeaderItem *_addShortcutHeader;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) HUTriggerHeaderItem *addShortcutHeader; // @synthesize addShortcutHeader=_addShortcutHeader;
-@property(retain, nonatomic) HUInstructionsItem *instructionsItem; // @synthesize instructionsItem=_instructionsItem;
 @property(retain, nonatomic) HUViewControllerTableViewItem *gridItem; // @synthesize gridItem=_gridItem;
 @property(retain, nonatomic) HUButtonItem *addShortcutItem; // @synthesize addShortcutItem=_addShortcutItem;
 - (id)_buildSectionsWithDisplayedItems:(id)arg1;
-- (id)initWithInstructionsItem:(id)arg1 andDelegate:(id)arg2 showShortcutItem:(_Bool)arg3;
+- (id)initWithDelegate:(id)arg1 showShortcutItem:(_Bool)arg2;
 
 @end
 

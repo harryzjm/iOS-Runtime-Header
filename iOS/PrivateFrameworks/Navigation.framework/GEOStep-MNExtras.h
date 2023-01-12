@@ -8,6 +8,5 @@
 
 @interface GEOStep (MNExtras)
 - (_Bool)maneuverIsTakeNthExitAtRoundabout;
-- (double)speed;
 @end
 

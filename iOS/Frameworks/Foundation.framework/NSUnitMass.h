@@ -27,6 +27,7 @@
 + (id)decigrams;
 + (id)grams;
 + (id)kilograms;
++ (id)icuType;
 + (id)baseUnit;
 + (void)initialize;
 

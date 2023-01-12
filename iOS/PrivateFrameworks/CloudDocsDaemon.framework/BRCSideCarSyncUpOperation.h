@@ -8,7 +8,6 @@
 
 @class BRCAccountSession, NSString;
 
-__attribute__((visibility("hidden")))
 @interface BRCSideCarSyncUpOperation <BRCOperationSubclass>
 {
     BRCAccountSession *_session;

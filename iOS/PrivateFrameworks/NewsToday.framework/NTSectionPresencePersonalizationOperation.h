@@ -15,13 +15,19 @@
     FCPersonalizationTreatment *_personalizationTreatment;
     NSArray *_absoluteRequests;
     NSArray *_relativeRequests;
+    CDUnknownBlockType _absolutePresenceHandler;
+    CDUnknownBlockType _relativePresenceHandler;
     CDUnknownBlockType _personalizationCompletion;
-    NSDictionary *_result;
+    NSDictionary *_absolutePresenceResult;
+    NSDictionary *_relativePresenceResult;
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSDictionary *result; // @synthesize result=_result;
+@property(copy, nonatomic) NSDictionary *relativePresenceResult; // @synthesize relativePresenceResult=_relativePresenceResult;
+@property(copy, nonatomic) NSDictionary *absolutePresenceResult; // @synthesize absolutePresenceResult=_absolutePresenceResult;
 @property(copy, nonatomic) CDUnknownBlockType personalizationCompletion; // @synthesize personalizationCompletion=_personalizationCompletion;
+@property(copy, nonatomic) CDUnknownBlockType relativePresenceHandler; // @synthesize relativePresenceHandler=_relativePresenceHandler;
+@property(copy, nonatomic) CDUnknownBlockType absolutePresenceHandler; // @synthesize absolutePresenceHandler=_absolutePresenceHandler;
 @property(copy, nonatomic) NSArray *relativeRequests; // @synthesize relativeRequests=_relativeRequests;
 @property(copy, nonatomic) NSArray *absoluteRequests; // @synthesize absoluteRequests=_absoluteRequests;
 @property(copy, nonatomic) FCPersonalizationTreatment *personalizationTreatment; // @synthesize personalizationTreatment=_personalizationTreatment;

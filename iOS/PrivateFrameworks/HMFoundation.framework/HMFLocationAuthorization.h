@@ -32,7 +32,7 @@
 @property(readonly) NSBundle *bundle; // @synthesize bundle=_bundle;
 @property(readonly, copy) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 - (id)logIdentifier;
-- (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
+- (void)locationManagerDidChangeAuthorization:(id)arg1;
 - (void)mark;
 - (void)requestAuthorization:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)unregisterObserver:(id)arg1;

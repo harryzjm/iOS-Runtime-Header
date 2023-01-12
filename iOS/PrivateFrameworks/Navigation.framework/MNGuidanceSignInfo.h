@@ -14,6 +14,7 @@
 {
     MNGuidanceSignDescription *_primarySign;
     MNGuidanceSignDescription *_secondarySign;
+    unsigned long long _stepIndex;
     double _primaryDistance_SIRI_USE_ONLY;
     double _secondaryDistance_SIRI_USE_ONLY;
     double _timeUntilPrimarySign_SIRI_USE_ONLY;
@@ -26,13 +27,14 @@
 @property(readonly, nonatomic) double timeUntilPrimarySign_SIRI_USE_ONLY; // @synthesize timeUntilPrimarySign_SIRI_USE_ONLY=_timeUntilPrimarySign_SIRI_USE_ONLY;
 @property(readonly, nonatomic) double secondaryDistance_SIRI_USE_ONLY; // @synthesize secondaryDistance_SIRI_USE_ONLY=_secondaryDistance_SIRI_USE_ONLY;
 @property(readonly, nonatomic) double primaryDistance_SIRI_USE_ONLY; // @synthesize primaryDistance_SIRI_USE_ONLY=_primaryDistance_SIRI_USE_ONLY;
+@property(readonly, nonatomic) unsigned long long stepIndex; // @synthesize stepIndex=_stepIndex;
 @property(readonly, nonatomic) MNGuidanceSignDescription *secondarySign; // @synthesize secondarySign=_secondarySign;
 @property(readonly, nonatomic) MNGuidanceSignDescription *primarySign; // @synthesize primarySign=_primarySign;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)debugDescription;
 - (id)description;
-- (id)initWithPrimarySign:(id)arg1 secondarySign:(id)arg2 primaryDistance:(double)arg3 secondaryDistance:(double)arg4 timeUntilPrimarySign:(double)arg5 timeUntilSecondarySign:(double)arg6;
+- (id)debugDescription;
+- (id)initWithPrimarySign:(id)arg1 secondarySign:(id)arg2 stepIndex:(unsigned long long)arg3 primaryDistance:(double)arg4 secondaryDistance:(double)arg5 timeUntilPrimarySign:(double)arg6 timeUntilSecondarySign:(double)arg7;
 
 @end
 

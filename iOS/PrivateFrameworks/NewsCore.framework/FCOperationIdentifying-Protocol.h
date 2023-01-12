@@ -9,7 +9,7 @@
 @class NSString;
 
 @protocol FCOperationIdentifying <NSObject>
-- (NSString *)longOperationDescription;
-- (NSString *)shortOperationDescription;
+@property(readonly, nonatomic) NSString *longOperationDescription;
+@property(readonly, nonatomic) NSString *shortOperationDescription;
 @end
 

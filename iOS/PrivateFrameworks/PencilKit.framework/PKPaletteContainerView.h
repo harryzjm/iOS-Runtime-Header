@@ -6,12 +6,12 @@
 
 #import <UIKit/UIView.h>
 
-#import <PencilKit/PKEdgeLocatable-Protocol.h>
+#import <PencilKit/PKPaletteEdgeLocating-Protocol.h>
 #import <PencilKit/PKPaletteViewSizeScaling-Protocol.h>
 
 @class NSLayoutConstraint, NSString, PKAccessoryView;
 
-@interface PKPaletteContainerView : UIView <PKEdgeLocatable, PKPaletteViewSizeScaling>
+@interface PKPaletteContainerView : UIView <PKPaletteEdgeLocating, PKPaletteViewSizeScaling>
 {
     unsigned long long _edgeLocation;
     double _scalingFactor;

@@ -91,7 +91,7 @@
 @property(retain, nonatomic) NSString *principalPath; // @synthesize principalPath=_principalPath;
 @property(retain, nonatomic) NSString *fullName; // @synthesize fullName=_fullName;
 @property(retain, nonatomic) NSSet *preferredCalendarUserAddresses; // @synthesize preferredCalendarUserAddresses=_preferredCalendarUserAddresses;
-@property(nonatomic) id <CalDAVAccount> account; // @synthesize account=_account;
+@property(nonatomic) __weak id <CalDAVAccount> account; // @synthesize account=_account;
 @property(retain, nonatomic) NSString *uid; // @synthesize uid=_uid;
 @property(retain, nonatomic) NSMutableSet *deletedCalendarURLs; // @synthesize deletedCalendarURLs=_deletedCalendarURLs;
 - (void)noteTimeSpentInNetworking:(double)arg1;
@@ -105,6 +105,7 @@
 - (_Bool)shouldHandleHTTPCookiesForURL:(id)arg1;
 - (_Bool)shouldFailAllTasks;
 - (_Bool)handleCertificateError:(id)arg1;
+- (_Bool)handleTrustChallenge:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)handleTrustChallenge:(id)arg1;
 - (void)webLoginRequestedAtURL:(id)arg1 reasonString:(id)arg2 inQueue:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)clientTokenRequestedByServer;
@@ -173,9 +174,14 @@
 - (id)init;
 
 // Remaining properties
+@property(nonatomic) _Bool alarmsDirty;
 @property(readonly, copy) NSString *debugDescription;
+@property(retain, nonatomic) NSString *defaultAllDayAlarms;
+@property(retain, nonatomic) NSString *defaultTimedAlarms;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(nonatomic) _Bool needsDefaultAllDayAlarmUpdate;
+@property(nonatomic) _Bool needsDefaultTimedAlarmUpdate;
 @property(readonly) Class superclass;
 
 @end

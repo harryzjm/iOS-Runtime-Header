@@ -45,7 +45,6 @@
 - (void)_removeViewsForRebuild;
 - (void)_invalidateLayout;
 - (void)_buildStandardAnnotationViews;
-- (double)_trailingMargin;
 - (double)_leadingMargin;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)intrinsicContentSize;

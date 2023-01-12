@@ -17,6 +17,7 @@
 + (id)registerForLockStateChangeNotifications:(CDUnknownBlockType)arg1;
 + (int)lockState;
 + (_Bool)isUnlocked;
++ (void)runBlockWhenDeviceIsClassCUnlockedWithQoS:(unsigned int)arg1 block:(CDUnknownBlockType)arg2;
 + (void)runBlockWhenDeviceIsClassCUnlocked:(CDUnknownBlockType)arg1;
 + (_Bool)isClassCLocked;
 + (void)setDefaultSystemCallbacks;

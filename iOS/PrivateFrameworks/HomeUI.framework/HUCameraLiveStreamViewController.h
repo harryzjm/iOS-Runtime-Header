@@ -13,6 +13,7 @@
 
 @interface HUCameraLiveStreamViewController : UIViewController <HFCameraLiveStreamControllerDelegate>
 {
+    _Bool _shouldRespectAspectRatio;
     id <HFCameraLiveStreamControllerDelegate> _liveStreamControllerDelegate;
     HFCameraLiveStreamController *_liveStreamController;
     HUCameraView *_cameraView;
@@ -21,6 +22,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) HUCameraView *cameraView; // @synthesize cameraView=_cameraView;
 @property(retain, nonatomic) HFCameraLiveStreamController *liveStreamController; // @synthesize liveStreamController=_liveStreamController;
+@property(nonatomic) _Bool shouldRespectAspectRatio; // @synthesize shouldRespectAspectRatio=_shouldRespectAspectRatio;
 @property(nonatomic) __weak id <HFCameraLiveStreamControllerDelegate> liveStreamControllerDelegate; // @synthesize liveStreamControllerDelegate=_liveStreamControllerDelegate;
 - (void)streamControllerStateDidUpdate:(id)arg1;
 - (void)viewDidLoad;

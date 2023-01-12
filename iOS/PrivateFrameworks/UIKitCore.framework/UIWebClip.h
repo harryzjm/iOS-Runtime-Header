@@ -43,6 +43,7 @@
     _Bool _scenelessBackgroundLaunch;
     _Bool _ignoreManifestScope;
     _Bool _configurationIsManaged;
+    NSString *_shortcutIdentifier;
     unsigned long long _contentMode;
     unsigned long long _webClipStatusBarStyle;
 }
@@ -79,6 +80,7 @@
 @property unsigned long long contentMode; // @synthesize contentMode=_contentMode;
 @property _Bool scenelessBackgroundLaunch; // @synthesize scenelessBackgroundLaunch=_scenelessBackgroundLaunch;
 @property _Bool isAppClip; // @synthesize isAppClip=_isAppClip;
+@property(copy, nonatomic) NSString *shortcutIdentifier; // @synthesize shortcutIdentifier=_shortcutIdentifier;
 @property(nonatomic) __weak id <WebClipDelegate> delegate; // @synthesize delegate;
 @property(retain, nonatomic) UIImage *initialLaunchImage; // @synthesize initialLaunchImage;
 @property(retain, nonatomic) UIImage *startupLandscapeImage; // @synthesize startupLandscapeImage;

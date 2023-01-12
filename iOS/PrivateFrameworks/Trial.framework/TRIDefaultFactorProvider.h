@@ -6,24 +6,26 @@
 
 #import <objc/NSObject.h>
 
-#import <Trial/TRIFactorProvidingPrivate-Protocol.h>
+#import <Trial/TRIFactorProviding-Protocol.h>
 
-@class NSMutableDictionary, NSString;
+@class NSString, _PASLock;
 @protocol TRIPaths;
 
-@interface TRIDefaultFactorProvider : NSObject <TRIFactorProvidingPrivate>
+@interface TRIDefaultFactorProvider : NSObject <TRIFactorProviding>
 {
     id <TRIPaths> _paths;
-    NSMutableDictionary *_factorProviders;
-    NSMutableDictionary *_containerIds;
-    _Bool _asClientProcess;
+    _Bool _supportsCacheInvalidation;
+    _PASLock *_lock;
 }
 
 - (void).cxx_destruct;
 - (id)factorLevelsWithNamespace:(unsigned int)arg1;
 - (id)levelForFactor:(id)arg1 withNamespace:(unsigned int)arg2;
-- (id)rolloutIdWithNamespaceName:(id)arg1;
+- (id)promotableFactorPackIdForNamespaceName:(id)arg1;
+- (id)rolloutDeploymentWithNamespaceName:(id)arg1;
+- (id)factorPackIdWithNamespaceName:(id)arg1;
 - (id)treatmentIdWithNamespaceName:(id)arg1;
+- (id)experimentDeploymentWithNamespaceName:(id)arg1;
 - (id)factorLevelsWithNamespaceName:(id)arg1;
 - (id)levelForFactor:(id)arg1 withNamespaceName:(id)arg2;
 - (_Bool)hasTreatmentInAnyOfLayers:(unsigned long long)arg1 withNamespaceName:(id)arg2;
@@ -31,8 +33,8 @@
 - (_Bool)hasRegisteredNamespaceWithName:(id)arg1;
 - (id)_providerForNamespace:(id)arg1;
 - (void)setContainer:(id)arg1 forNamespaceName:(id)arg2;
-- (void)invalidateFactorsWithNamespaceName:(id)arg1;
-- (id)initWithPaths:(id)arg1;
+- (void)invalidateAllFactorProviders;
+- (id)initWithPaths:(id)arg1 factorsState:(id)arg2;
 - (id)init;
 
 // Remaining properties

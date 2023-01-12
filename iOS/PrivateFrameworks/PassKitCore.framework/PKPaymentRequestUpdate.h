@@ -8,25 +8,28 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray;
+@class NSArray, PKPaymentTokenConfiguration;
 
 @interface PKPaymentRequestUpdate : NSObject <NSSecureCoding>
 {
+    NSArray *_shippingMethods;
     long long _status;
     NSArray *_paymentSummaryItems;
     NSArray *_contentItems;
+    PKPaymentTokenConfiguration *_tokenConfiguration;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) PKPaymentTokenConfiguration *tokenConfiguration; // @synthesize tokenConfiguration=_tokenConfiguration;
 @property(copy, nonatomic) NSArray *contentItems; // @synthesize contentItems=_contentItems;
+@property(copy, nonatomic) NSArray *shippingMethods; // @synthesize shippingMethods=_shippingMethods;
 @property(copy, nonatomic) NSArray *paymentSummaryItems; // @synthesize paymentSummaryItems=_paymentSummaryItems;
 @property(nonatomic) long long status; // @synthesize status=_status;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithPaymentSummaryItems:(id)arg1;
-- (id)initWithStatus:(long long)arg1 paymentSummaryItems:(id)arg2;
 
 @end
 

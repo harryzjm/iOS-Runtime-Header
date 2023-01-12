@@ -16,7 +16,6 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) __weak PGGraphNamingProcessor *processor; // @synthesize processor=_processor;
 - (id)name;
 - (void)findRelationshipMatchesFromContactIdentifiersByRelationship:(id)arg1 graph:(id)arg2 withProgressBlock:(CDUnknownBlockType)arg3;
 - (void)runAnalysisWithProgressBlock:(CDUnknownBlockType)arg1;

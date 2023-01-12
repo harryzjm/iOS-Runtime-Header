@@ -18,12 +18,15 @@
     id <HAENotificationCenterUserDelegate> _delegate;
 }
 
++ (_Bool)connectedWiredDeviceIsHeadphoneWithUUID:(id)arg1;
++ (_Bool)connectedWiredDeviceIsHeadphone;
 + (void)startNotificationCenterServer;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) __weak id <HAENotificationCenterUserDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) double liveMonitorWindowInSec; // @synthesize liveMonitorWindowInSec;
 @property(readonly, nonatomic) double liveThresholdInDBA; // @synthesize liveThresholdInDBA;
 @property(readonly, nonatomic) NSString *bundleID; // @synthesize bundleID;
+- (id)addHAENotificationEvent:(id)arg1 error:(id *)arg2;
 - (void)addHAENotificationEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setDelegate:(id)arg1;
 - (id)initWithBundleIdentifier:(id)arg1;

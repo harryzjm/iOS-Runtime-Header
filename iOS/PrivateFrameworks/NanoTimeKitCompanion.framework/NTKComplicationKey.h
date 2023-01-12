@@ -28,6 +28,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)description;
 - (id)initWithClientIdentifier:(id)arg1 complicationIdentifier:(id)arg2;
 - (id)initWithClientIdentifier:(id)arg1 descriptor:(id)arg2;
 

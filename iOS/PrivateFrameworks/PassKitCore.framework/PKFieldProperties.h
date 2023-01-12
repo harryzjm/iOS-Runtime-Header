@@ -8,7 +8,7 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSData, NSString;
 
 @interface PKFieldProperties : NSObject <NSSecureCoding>
 {
@@ -20,16 +20,18 @@
     unsigned long long _technology;
     long long _terminalType;
     long long _valueAddedServiceMode;
-    unsigned long long _terminalSubtype;
+    long long _accessTerminalSubtype;
     unsigned long long _pairingRequested;
     NSArray *_TCIs;
     NSArray *_merchantIdentifiers;
     NSString *_applicationIdentifier;
     NSString *_credentialIdentifier;
+    NSData *_readerIdentifier;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSData *readerIdentifier; // @synthesize readerIdentifier=_readerIdentifier;
 @property(copy, nonatomic) NSString *credentialIdentifier; // @synthesize credentialIdentifier=_credentialIdentifier;
 @property(copy, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
 @property(copy, nonatomic) NSArray *merchantIdentifiers; // @synthesize merchantIdentifiers=_merchantIdentifiers;
@@ -40,16 +42,15 @@
 @property(nonatomic) _Bool secondaryPropertiesRequired; // @synthesize secondaryPropertiesRequired=_secondaryPropertiesRequired;
 @property(nonatomic) _Bool backgroundTransaction; // @synthesize backgroundTransaction=_backgroundTransaction;
 @property(nonatomic) _Bool authenticationRequired; // @synthesize authenticationRequired=_authenticationRequired;
-@property(readonly, nonatomic) unsigned long long terminalSubtype; // @synthesize terminalSubtype=_terminalSubtype;
+@property(readonly, nonatomic) long long accessTerminalSubtype; // @synthesize accessTerminalSubtype=_accessTerminalSubtype;
 @property(readonly, nonatomic) long long valueAddedServiceMode; // @synthesize valueAddedServiceMode=_valueAddedServiceMode;
 @property(readonly, nonatomic) long long terminalType; // @synthesize terminalType=_terminalType;
 @property(readonly, nonatomic) unsigned long long technology; // @synthesize technology=_technology;
 @property(readonly, nonatomic) _Bool shouldIgnore;
-@property(readonly, nonatomic) long long accessTerminalSubtype;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)description;
-- (id)initWithTechnology:(unsigned long long)arg1 terminalType:(long long)arg2 terminalSubtype:(unsigned long long)arg3 valueAddedServiceMode:(long long)arg4;
+- (id)initWithTechnology:(unsigned long long)arg1 terminalType:(long long)arg2 accessTerminalSubtype:(long long)arg3 valueAddedServiceMode:(long long)arg4;
 
 @end
 

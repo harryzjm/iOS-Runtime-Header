@@ -7,16 +7,21 @@
 #import <MessageUI/NSObject-Protocol.h>
 #import <MessageUI/UITextInputTraits-Protocol.h>
 
-@class NSIndexSet, NSString, UIColor, UIImage, UIInputContextHistory;
+@class NSIndexSet, NSString, UIColor, UIImage, UIInputContextHistory, UITextRange, _UISupplementalLexicon;
 @protocol UITextInputTraits;
 
 @protocol UITextInputTraits_Private <NSObject, UITextInputTraits>
 - (void)takeTraitsFrom:(id <UITextInputTraits>)arg1;
 
 @optional
+@property(readonly, nonatomic) UITextRange *textRangeForServicesInteraction;
+@property(nonatomic) long long preferredKeyboardStyle;
 @property(nonatomic, getter=isDevicePasscodeEntry) _Bool devicePasscodeEntry;
+@property(nonatomic) _Bool disableHandwritingKeyboard;
 @property(nonatomic) _Bool hidePrediction;
 @property(nonatomic) _Bool disablePrediction;
+@property(retain, nonatomic) UIImage *supplementalLexiconAmbiguousItemIcon;
+@property(retain, nonatomic) _UISupplementalLexicon *supplementalLexicon;
 @property(nonatomic) _Bool loadKeyboardsForSiriLanguage;
 @property(nonatomic) long long textScriptType;
 @property(nonatomic) _Bool isCarPlayIdiom;
@@ -58,6 +63,10 @@
 @property(nonatomic) unsigned long long insertionPointWidth;
 @property(retain, nonatomic) UIColor *underlineColorForSpelling;
 @property(retain, nonatomic) UIColor *underlineColorForTextAlternatives;
+@property(nonatomic) struct UIEdgeInsets selectionEdgeInsets;
+@property(nonatomic) double selectionCornerRadius;
+@property(nonatomic) double selectionBorderWidth;
+@property(retain, nonatomic) UIColor *selectionBorderColor;
 @property(retain, nonatomic) UIImage *selectionDragDotImage;
 @property(retain, nonatomic) UIColor *selectionHighlightColor;
 @property(retain, nonatomic) UIColor *selectionBarColor;

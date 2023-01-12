@@ -10,7 +10,6 @@
 
 @class NSData, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDPStreamingAssetIdentifier : PBCodable <NSCopying>
 {
     NSData *_fileSignature;

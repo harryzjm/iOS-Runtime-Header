@@ -18,7 +18,7 @@
 }
 
 + (id)_profileKeyChordsFromDictionaryValue:(id)arg1;
-+ (void)_addSlaveCommandsToCommand:(id)arg1 fromCommandProperties:(id)arg2 overlayProperties:(id)arg3;
++ (void)_addSecondaryCommandsToCommand:(id)arg1 fromCommandProperties:(id)arg2 overlayProperties:(id)arg3;
 + (void)_addQuickNavShortcutsToCommand:(id)arg1 fromCommandProperties:(id)arg2 overlayProperties:(id)arg3;
 + (void)_addKeyboardShortcutsToCommand:(id)arg1 fromCommandProperties:(id)arg2 overlayProperties:(id)arg3;
 + (void)_addGesturesToCommand:(id)arg1 fromCommandProperties:(id)arg2 overlayProperties:(id)arg3;
@@ -47,8 +47,9 @@
 - (id)gestureBindingsForCommand:(id)arg1 withResolver:(id)arg2;
 - (id)userPresentableAllShortcutBindingsWithResolver:(id)arg1;
 - (id)allShortcutBindingsWithResolver:(id)arg1;
+- (id)allSiriShortcutCommandsWithResolver:(id)arg1;
 - (id)allCommandsWithResolver:(id)arg1;
-- (id)_resolvedSlaveCommandForProfileCommand:(id)arg1 resolver:(id)arg2;
+- (id)_resolvedSecondaryCommandForProfileCommand:(id)arg1 resolver:(id)arg2;
 - (id)commandForKeyChord:(id)arg1 withResolver:(id)arg2;
 - (id)commandForTouchGesture:(id)arg1 withResolver:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;

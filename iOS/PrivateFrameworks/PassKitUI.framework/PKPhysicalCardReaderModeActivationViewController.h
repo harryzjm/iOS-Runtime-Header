@@ -7,12 +7,13 @@
 #import <PassKitUI/PKExplanationViewDelegate-Protocol.h>
 #import <PassKitUI/PKNFCTagReaderSessionDelegate-Protocol.h>
 
-@class NSString, PKAccount, PKAccountService, PKBusinessChatController, PKNFCTagReaderSession, PKPaymentPass, PKPaymentSessionHandle, PKPhysicalCard, PKPhysicalCardActivationAnimationView;
+@class NSString, PKAccount, PKAccountService, PKAccountUser, PKBusinessChatController, PKNFCTagReaderSession, PKPaymentPass, PKPaymentSessionHandle, PKPhysicalCard, PKPhysicalCardActivationAnimationView;
 
 @interface PKPhysicalCardReaderModeActivationViewController <PKExplanationViewDelegate, PKNFCTagReaderSessionDelegate>
 {
     PKAccountService *_accountService;
     PKAccount *_account;
+    PKAccountUser *_accountUser;
     PKPhysicalCard *_physicalCard;
     PKPaymentPass *_paymentPass;
     unsigned long long _feature;
@@ -31,13 +32,14 @@
 - (void)_startTagReaderSession;
 - (void)_dismiss;
 - (void)explanationViewDidSelectSetupLater:(id)arg1;
+- (void)nfcTagReaderSessionDidTimeout:(id)arg1;
 - (void)nfcTagReaderSessionDidEndUnexpectedly:(id)arg1;
 - (void)nfcTagReaderSession:(id)arg1 didDetectTags:(id)arg2;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)dealloc;
-- (id)initWithAccountService:(id)arg1 account:(id)arg2 paymentPass:(id)arg3 physicalCard:(id)arg4;
+- (id)initWithAccountService:(id)arg1 account:(id)arg2 accountUser:(id)arg3 paymentPass:(id)arg4 physicalCard:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

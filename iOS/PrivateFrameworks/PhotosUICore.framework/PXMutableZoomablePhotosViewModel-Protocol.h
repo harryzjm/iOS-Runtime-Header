@@ -9,10 +9,12 @@
 @class NSSet, PXAssetReference;
 
 @protocol PXMutableZoomablePhotosViewModel <NSObject>
+@property(copy, nonatomic) CDUnknownBlockType effectProvider;
 @property(nonatomic) _Bool layoutExtendsContentBelowBounds;
 @property(nonatomic) _Bool wantsOverBackgroundFloatingHeaderAppearance;
 @property(nonatomic) _Bool isInteractiveZooming;
 @property(nonatomic) _Bool isPinching;
+@property(nonatomic) _Bool wantsNumberedSelectionStyle;
 @property(nonatomic) _Bool wantsDimmedSelectionStyle;
 @property(nonatomic) _Bool captionsVisible;
 @property(nonatomic) _Bool aspectFit;

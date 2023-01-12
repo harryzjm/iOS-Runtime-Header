@@ -10,7 +10,7 @@
 #import <FrontBoardServices/NSCopying-Protocol.h>
 #import <FrontBoardServices/NSMutableCopying-Protocol.h>
 
-@class BSSettings, FBSDisplayConfiguration, FBSDisplayIdentity, NSArray, NSSet, NSString;
+@class BSSettings, FBSDisplayConfiguration, FBSDisplayIdentity, NSSet, NSString;
 
 @interface FBSSceneSettings : NSObject <BSDebugDescriptionProviding, NSCopying, NSMutableCopying>
 {
@@ -23,6 +23,8 @@
     BSSettings *_otherSettings;
     BSSettings *_transientLocalSettings;
     _Bool _prefersProcessTaskSuspensionWhileSceneForeground;
+    BOOL _activityMode;
+    BOOL _jetsamMode;
     long long _isOccluded;
     _Bool _occluded;
     NSSet *_ignoreOcclusionReasons;
@@ -60,9 +62,11 @@
 - (id)transientLocalSettings;
 - (_Bool)isIgnoringOcclusions;
 - (id)ignoreOcclusionReasons;
+- (BOOL)jetsamMode;
+- (BOOL)activityMode;
 - (id)otherSettings;
 - (_Bool)isOccluded;
-@property(readonly, copy, nonatomic) NSArray *occlusions;
+- (id)occlusions;
 @property(readonly, nonatomic, getter=isBackgrounded) _Bool backgrounded;
 - (struct CGRect)bounds;
 @property(readonly, copy, nonatomic) FBSDisplayIdentity *displayIdentity;

@@ -31,7 +31,6 @@
 - (void)cardViewController:(id)arg1 preferredContentSizeDidChange:(struct CGSize)arg2 animated:(_Bool)arg3;
 - (void)didInvalidateSizeAnimated:(_Bool)arg1;
 - (void)applyCardHeightAnimated:(_Bool)arg1;
-@property(nonatomic) _Bool shouldShowKeyboardInputBars;
 - (double)heightOfNavigationBar;
 - (double)contentHeightIncludingCardViewController;
 - (double)contentHeightIncludingSearchView;

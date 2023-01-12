@@ -22,9 +22,10 @@
     NSMutableSet *_lock_pendingConnects;
 }
 
++ (id)sharedInstanceDomain;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) BSServiceDomainSpecification *domain; // @synthesize domain=_domain;
+@property(readonly, copy, nonatomic) BSServiceDomainSpecification *domain; // @synthesize domain=_domain;
 - (void)_lock_evaluateSuspendedFacility:(id)arg1;
 - (_Bool)_lock_areFacilityPrerequisitesSatisfied:(id)arg1;
 - (void)_facilityQueue_facility:(id)arg1 handleMessage:(id)arg2 client:(id)arg3;

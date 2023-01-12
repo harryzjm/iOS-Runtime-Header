@@ -10,7 +10,7 @@
 
 + (_Bool)CA_automaticallyNotifiesObservers:(Class)arg1;
 + (_Bool)_hasRenderLayerSubclass;
-- (struct Layer *)_copyRenderLayer:(struct Transaction *)arg1 layerFlags:(unsigned int)arg2 commitFlags:(unsigned int *)arg3;
+- (void *)_copyRenderLayer:(void *)arg1 layerFlags:(unsigned int)arg2 commitFlags:(unsigned int *)arg3;
 
 @end
 

@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface OABShapeManager <OABPropertiesManager>
 {
-    struct EshShape *mShape;
+    void *mShape;
 }
 
 - (_Bool)hidden;
@@ -31,8 +31,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)isShadowOK;
 - (_Bool)isStrokeOK;
 - (_Bool)isFillOK;
-- (id)initWithShape:(struct EshShape *)arg1;
-- (id)initWithShape:(struct EshShape *)arg1 masterShape:(struct EshShape *)arg2;
+- (id)initWithShape:(void *)arg1;
+- (id)initWithShape:(void *)arg1 masterShape:(void *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

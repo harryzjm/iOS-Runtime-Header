@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)_handleAVPlayerItemStateChange;
 - (void)_playerItemDidEndNotification:(id)arg1;
 - (void)dealloc;
+- (void)resetCurrentTime;
 - (void)prepareToPlay;
 @property(readonly, nonatomic) double duration;
 @property(readonly, nonatomic) double currentTime;

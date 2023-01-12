@@ -11,6 +11,7 @@
     _Bool _shouldRecomputeDerivedVisitCountScores;
     long long _visitCount;
     long long _visitCountScore;
+    long long _statusCode;
     NSString *_url;
     NSData *_dailyVisitCounts;
     NSData *_weeklyVisitCounts;
@@ -22,10 +23,12 @@
 @property(copy, nonatomic) NSData *dailyVisitCounts; // @synthesize dailyVisitCounts=_dailyVisitCounts;
 @property(readonly, nonatomic) NSString *url; // @synthesize url=_url;
 @property(nonatomic) _Bool shouldRecomputeDerivedVisitCountScores; // @synthesize shouldRecomputeDerivedVisitCountScores=_shouldRecomputeDerivedVisitCountScores;
+@property(nonatomic) long long statusCode; // @synthesize statusCode=_statusCode;
 @property(nonatomic) long long visitCountScore; // @synthesize visitCountScore=_visitCountScore;
 @property(nonatomic) long long visitCount; // @synthesize visitCount=_visitCount;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithSQLRow:(id)arg1;
 - (id)initWithItem:(id)arg1;
 
 @end

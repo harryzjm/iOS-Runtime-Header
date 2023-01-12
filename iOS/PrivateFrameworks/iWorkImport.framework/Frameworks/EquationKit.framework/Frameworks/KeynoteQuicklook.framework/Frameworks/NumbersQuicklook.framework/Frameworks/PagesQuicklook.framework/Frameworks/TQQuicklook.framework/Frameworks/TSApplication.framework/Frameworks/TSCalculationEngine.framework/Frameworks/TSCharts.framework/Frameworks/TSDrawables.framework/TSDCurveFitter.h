@@ -12,13 +12,10 @@
     long long mErrorIterations;
 }
 
-+ (id)curveFitter;
 @property(nonatomic) long long errorIterations; // @synthesize errorIterations=mErrorIterations;
 @property(nonatomic) double errorDistance; // @synthesize errorDistance=mErrorDistance;
 - (void)fitCurveToPointArray:(CDStruct_c3b9c2ee *)arg1 count:(long long)arg2 bezierCallback:(CDUnknownFunctionPointerType)arg3 context:(void *)arg4;
-- (void)fitCurveToPoints:(id)arg1 bezierCallback:(CDUnknownFunctionPointerType)arg2 context:(void *)arg3;
 - (id)bezierPathFittingPointArray:(CDStruct_c3b9c2ee *)arg1 count:(long long)arg2;
-- (id)bezierPathFittingPoints:(id)arg1;
 - (id)init;
 
 @end

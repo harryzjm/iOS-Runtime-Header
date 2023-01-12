@@ -41,7 +41,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)_dismissMenu:(id)arg1;
 - (void)_handleLongPress:(id)arg1;
-- (void)pasteAndNavigate:(id)arg1;
+- (void)pasteAndGo:(id)arg1;
+- (void)pasteAndSearch:(id)arg1;
 - (void)copy:(id)arg1;
 - (_Bool)canBecomeFirstResponder;
 - (void)setHighlighted:(_Bool)arg1;

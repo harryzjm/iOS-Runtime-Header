@@ -11,7 +11,6 @@
 __attribute__((visibility("hidden")))
 @interface BitrateLimits : NSObject
 {
-    int operatingMode;
     unsigned long long defaultValue;
     unsigned long long defaultValueCellular;
     unsigned long long defaultValue2G;
@@ -19,7 +18,6 @@ __attribute__((visibility("hidden")))
 }
 
 + (unsigned long long)insertionIndex:(id)arg1 forValue:(id)arg2;
-@property(readonly, nonatomic) int operatingMode; // @synthesize operatingMode;
 @property(readonly, nonatomic) NSArray *limits; // @synthesize limits;
 - (unsigned long long)defaultValueForNetwork:(_Bool)arg1;
 - (void)capDefaultValues:(unsigned long long)arg1;

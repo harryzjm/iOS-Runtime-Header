@@ -8,18 +8,18 @@
 
 @interface TSCH3DChartSilhouetteEdgeCollectProcessor
 {
-    struct EdgeDetectionParameters mEdgeDetectionParameters;
-    TSCH3DResource *mVertices;
-    TSCH3Dvec3DataBuffer *mEdges;
+    struct EdgeDetectionParameters _edgeDetectionParameters;
+    TSCH3DResource *_vertices;
+    TSCH3Dvec3DataBuffer *_edges;
 }
 
 - (id).cxx_construct;
-@property(readonly, nonatomic) TSCH3Dvec3DataBuffer *edges; // @synthesize edges=mEdges;
-@property(retain, nonatomic) TSCH3DResource *vertices; // @synthesize vertices=mVertices;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) TSCH3Dvec3DataBuffer *edges; // @synthesize edges=_edges;
+@property(retain, nonatomic) TSCH3DResource *vertices; // @synthesize vertices=_vertices;
 - (void)submit:(id)arg1;
 - (long long)attribute:(id)arg1 resource:(id)arg2 specs:(const struct AttributeSpecs *)arg3;
 - (id)matrix;
-- (void)dealloc;
 - (id)initWithEdgeDetectionParameters:(const struct EdgeDetectionParameters *)arg1;
 
 @end

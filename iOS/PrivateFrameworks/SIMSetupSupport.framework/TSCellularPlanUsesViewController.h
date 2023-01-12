@@ -16,6 +16,7 @@
 @interface TSCellularPlanUsesViewController : OBTableWelcomeController <UITableViewDataSource, UITableViewDelegate, TSSetupFlowItem>
 {
     OBBoldTrayButton *_doneButton;
+    NSLayoutConstraint *_heightConstraint;
     _Bool _dataSwitchEnabled;
     _Bool _hasDoneButton;
     id <TSSIMSetupFlowDelegate> _delegate;

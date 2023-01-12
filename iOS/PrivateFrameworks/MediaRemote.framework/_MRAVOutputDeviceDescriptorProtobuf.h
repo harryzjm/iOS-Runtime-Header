@@ -12,19 +12,26 @@
 
 @interface _MRAVOutputDeviceDescriptorProtobuf : PBCodable <NSCopying>
 {
+    NSString *_airPlayGroupID;
+    NSMutableArray *_availableBluetoothListeningModes;
     float _batteryLevel;
     NSString *_bluetoothID;
     NSMutableArray *_clusterCompositions;
+    unsigned int _clusterType;
+    unsigned int _configuredClusterSize;
+    NSString *_currentBluetoothListeningMode;
     int _deviceSubType;
     int _deviceType;
     NSString *_firmwareVersion;
     NSString *_groupID;
+    int _hostDeviceClass;
     NSString *_logicalDeviceID;
     NSData *_macAddress;
     NSString *_modelID;
     NSData *_modelSpecificInfoData;
     NSString *_name;
     NSString *_parentGroupIdentifier;
+    NSString *_primaryUID;
     _MRAVOutputDeviceSourceInfoProtobuf *_sourceInfo;
     NSString *_uniqueIdentifier;
     float _volume;
@@ -47,16 +54,23 @@
     _Bool _isVolumeControlAvailable;
     _Bool _parentGroupContainsDiscoverableLeader;
     _Bool _presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets;
+    _Bool _producesLowFidelityAudio;
     _Bool _requiresAuthorization;
     _Bool _shouldForceRemoteControlabillity;
     _Bool _supportsBufferedAirPlay;
     _Bool _supportsExternalScreen;
     _Bool _supportsHAP;
+    _Bool _supportsMultiplayer;
+    _Bool _supportsRapportRemoteControlTransport;
+    _Bool _supportsSharePlayHandoff;
     _Bool _usingJSONProtocol;
     struct {
         unsigned int batteryLevel:1;
+        unsigned int clusterType:1;
+        unsigned int configuredClusterSize:1;
         unsigned int deviceSubType:1;
         unsigned int deviceType:1;
+        unsigned int hostDeviceClass:1;
         unsigned int volume:1;
         unsigned int volumeCapabilities:1;
         unsigned int canAccessAppleMusic:1;
@@ -77,17 +91,32 @@
         unsigned int isVolumeControlAvailable:1;
         unsigned int parentGroupContainsDiscoverableLeader:1;
         unsigned int presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets:1;
+        unsigned int producesLowFidelityAudio:1;
         unsigned int requiresAuthorization:1;
         unsigned int shouldForceRemoteControlabillity:1;
         unsigned int supportsBufferedAirPlay:1;
         unsigned int supportsExternalScreen:1;
         unsigned int supportsHAP:1;
+        unsigned int supportsMultiplayer:1;
+        unsigned int supportsRapportRemoteControlTransport:1;
+        unsigned int supportsSharePlayHandoff:1;
         unsigned int usingJSONProtocol:1;
     } _has;
 }
 
++ (Class)availableBluetoothListeningModesType;
 + (Class)clusterCompositionType;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool supportsSharePlayHandoff; // @synthesize supportsSharePlayHandoff=_supportsSharePlayHandoff;
+@property(retain, nonatomic) NSString *airPlayGroupID; // @synthesize airPlayGroupID=_airPlayGroupID;
+@property(nonatomic) _Bool producesLowFidelityAudio; // @synthesize producesLowFidelityAudio=_producesLowFidelityAudio;
+@property(nonatomic) _Bool supportsMultiplayer; // @synthesize supportsMultiplayer=_supportsMultiplayer;
+@property(retain, nonatomic) NSMutableArray *availableBluetoothListeningModes; // @synthesize availableBluetoothListeningModes=_availableBluetoothListeningModes;
+@property(retain, nonatomic) NSString *currentBluetoothListeningMode; // @synthesize currentBluetoothListeningMode=_currentBluetoothListeningMode;
+@property(nonatomic) _Bool supportsRapportRemoteControlTransport; // @synthesize supportsRapportRemoteControlTransport=_supportsRapportRemoteControlTransport;
+@property(nonatomic) unsigned int configuredClusterSize; // @synthesize configuredClusterSize=_configuredClusterSize;
+@property(retain, nonatomic) NSString *primaryUID; // @synthesize primaryUID=_primaryUID;
+@property(nonatomic) unsigned int clusterType; // @synthesize clusterType=_clusterType;
 @property(retain, nonatomic) NSMutableArray *clusterCompositions; // @synthesize clusterCompositions=_clusterCompositions;
 @property(nonatomic) _Bool usingJSONProtocol; // @synthesize usingJSONProtocol=_usingJSONProtocol;
 @property(nonatomic) _Bool supportsHAP; // @synthesize supportsHAP=_supportsHAP;
@@ -136,6 +165,23 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasSupportsSharePlayHandoff;
+@property(readonly, nonatomic) _Bool hasAirPlayGroupID;
+- (int)StringAsHostDeviceClass:(id)arg1;
+- (id)hostDeviceClassAsString:(int)arg1;
+@property(nonatomic) _Bool hasHostDeviceClass;
+@property(nonatomic) int hostDeviceClass; // @synthesize hostDeviceClass=_hostDeviceClass;
+@property(nonatomic) _Bool hasProducesLowFidelityAudio;
+@property(nonatomic) _Bool hasSupportsMultiplayer;
+- (id)availableBluetoothListeningModesAtIndex:(unsigned long long)arg1;
+- (unsigned long long)availableBluetoothListeningModesCount;
+- (void)addAvailableBluetoothListeningModes:(id)arg1;
+- (void)clearAvailableBluetoothListeningModes;
+@property(readonly, nonatomic) _Bool hasCurrentBluetoothListeningMode;
+@property(nonatomic) _Bool hasSupportsRapportRemoteControlTransport;
+@property(nonatomic) _Bool hasConfiguredClusterSize;
+@property(readonly, nonatomic) _Bool hasPrimaryUID;
+@property(nonatomic) _Bool hasClusterType;
 - (id)clusterCompositionAtIndex:(unsigned long long)arg1;
 - (unsigned long long)clusterCompositionsCount;
 - (void)addClusterComposition:(id)arg1;

@@ -13,12 +13,10 @@
 {
     NSObject<OS_dispatch_queue> *_tileQueue;
     NSMutableDictionary *_tileFramebuffers;
+    NSMutableDictionary *_tileMultiplyFramebuffers;
 }
 
-+ (id)sharedController;
 - (void).cxx_destruct;
-- (void)didTeardownTile:(id)arg1;
-- (id)framebufferForTile:(id)arg1 createIfNeeded:(_Bool)arg2 device:(id)arg3 pixelFormat:(unsigned long long)arg4 clearFramebufferBlock:(CDUnknownBlockType)arg5;
 - (id)init;
 
 @end

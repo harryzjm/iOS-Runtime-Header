@@ -11,7 +11,6 @@
 }
 
 + (_Bool)deleteFileAtPath:(id)arg1;
-+ (int)projectIdFromExperiment:(id)arg1 paths:(id)arg2;
 + (id)providerWithProjectId:(int)arg1 paths:(id)arg2;
 - (void)updatePersistedLogNamespace:(id)arg1;
 - (void)removeTreatment:(id)arg1;

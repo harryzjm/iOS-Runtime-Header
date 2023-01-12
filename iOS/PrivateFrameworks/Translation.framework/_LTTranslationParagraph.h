@@ -10,7 +10,6 @@
 
 @class NSArray, NSString;
 
-__attribute__((visibility("hidden")))
 @interface _LTTranslationParagraph : NSObject <NSSecureCoding>
 {
     NSString *_identifier;
@@ -23,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) NSArray *spans; // @synthesize spans=_spans;
 @property(readonly, copy, nonatomic) NSString *text; // @synthesize text=_text;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+- (id)splitIntoSentences;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 text:(id)arg2 spans:(id)arg3;

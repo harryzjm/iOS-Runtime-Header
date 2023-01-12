@@ -8,19 +8,19 @@
 
 @interface TSCH3DAxisLabelEnumerator
 {
-    TSCHChartAxis *mAxis;
-    TSCH3DAxisLabelKind *mKind;
+    TSCHChartAxis *_axis;
+    TSCH3DAxisLabelKind *_kind;
 }
 
 + (id)enumeratorWithAxis:(id)arg1 kind:(id)arg2;
-@property(readonly, nonatomic) TSCH3DAxisLabelKind *kind; // @synthesize kind=mKind;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) TSCH3DAxisLabelKind *kind; // @synthesize kind=_kind;
 - (int)labelPosition;
 - (_Bool)shouldRender;
 - (id)stringForLabelResources:(id)arg1;
 - (id)string;
 - (void)update;
 - (unsigned long long)count;
-- (void)dealloc;
 - (id)initWithAxis:(id)arg1 kind:(id)arg2;
 
 @end

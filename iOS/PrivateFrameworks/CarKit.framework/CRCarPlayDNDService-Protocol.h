@@ -7,7 +7,6 @@
 @class NSString;
 
 @protocol CRCarPlayDNDService
-- (void)internalUtilityToolWithReply:(void (^)(NSString *))arg1;
 - (void)disableDNDUntilEndOfDriveWithContext:(NSString *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
 - (void)setDNDTriggerMode:(unsigned long long)arg1 withReply:(void (^)(_Bool, NSError *))arg2;
 - (void)fetchDNDTriggerModeWithReply:(void (^)(unsigned long long, NSError *))arg1;
@@ -17,7 +16,6 @@
 - (void)allowedAutoReplyAudienceWithReply:(void (^)(unsigned long long, NSError *))arg1;
 - (void)shouldDisplayExitConfirmationWithReply:(void (^)(_Bool, NSError *))arg1;
 - (void)resetAutomaticDNDPreferencesWithReply:(void (^)(_Bool, NSError *))arg1;
-- (void)completeDNDBuddyWithOption:(unsigned long long)arg1 withReply:(void (^)(_Bool, NSError *))arg2;
 - (void)setCarPlayAutomaticDNDActive:(_Bool)arg1 withReply:(void (^)(_Bool, NSError *))arg2;
 - (void)isCarPlayAutomaticDNDActiveWithReply:(void (^)(_Bool))arg1;
 @end

@@ -37,10 +37,13 @@
 - (id)description;
 - (_Bool)doesAliasAnyResources:(const id *)arg1 count:(unsigned long long)arg2;
 - (_Bool)doesAliasAllResources:(const id *)arg1 count:(unsigned long long)arg2;
+- (void)setParentGPUSize:(unsigned long long)arg1;
+- (unsigned long long)parentGPUSize;
+- (void)setParentGPUAddress:(unsigned long long)arg1;
+- (unsigned long long)parentGPUAddress;
 - (unsigned long long)gpuAddress;
 - (void)makeAliasable;
 - (_Bool)doesAliasResource:(id)arg1;
-- (id)heap;
 - (unsigned long long)resourceIndex;
 - (void)dealloc;
 - (id)initWithBuffer:(id)arg1 device:(id)arg2 bytes:(const void *)arg3 options:(unsigned long long)arg4;

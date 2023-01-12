@@ -18,14 +18,14 @@
     float _w;
 }
 
-+ (id)vectorWithVec4:(const tvec4_ac57c72d *)arg1;
-+ (id)vectorWithVec3:(const tvec3_17f03ce0 *)arg1;
-+ (id)vectorWithVec2:(const tvec2_84d5962d *)arg1;
++ (id)vectorWithVec4:(const void *)arg1;
++ (id)vectorWithVec3:(const void *)arg1;
++ (id)vectorWithVec2:(const void *)arg1;
 + (id)x:(float)arg1 y:(float)arg2 z:(float)arg3 w:(float)arg4;
 + (id)x:(float)arg1 y:(float)arg2 z:(float)arg3;
 + (id)vector;
-+ (unsigned long long)hashVec4:(const tvec4_ac57c72d *)arg1;
-+ (id)instanceWithArchive:(const struct Chart3DVectorArchive *)arg1 unarchiver:(id)arg2;
++ (unsigned long long)hashVec4:(const void *)arg1;
++ (id)instanceWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 @property(readonly, nonatomic) float w; // @synthesize w=_w;
 @property(readonly, nonatomic) float z; // @synthesize z=_z;
 @property(readonly, nonatomic) float y; // @synthesize y=_y;
@@ -43,12 +43,12 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithX:(float)arg1 y:(float)arg2 z:(float)arg3 w:(float)arg4;
 - (id)initWithX:(float)arg1 y:(float)arg2 z:(float)arg3;
-- (id)initWithVec4:(const tvec4_ac57c72d *)arg1;
-- (id)initWithVec3:(const tvec3_17f03ce0 *)arg1;
-- (id)initWithVec2:(const tvec2_84d5962d *)arg1;
+- (id)initWithVec4:(const void *)arg1;
+- (id)initWithVec3:(const void *)arg1;
+- (id)initWithVec2:(const void *)arg1;
 - (id)init;
-- (void)saveToArchive:(struct Chart3DVectorArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct Chart3DVectorArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 @end
 

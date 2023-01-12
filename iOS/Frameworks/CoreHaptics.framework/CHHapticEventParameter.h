@@ -10,8 +10,8 @@
 
 @interface CHHapticEventParameter : NSObject
 {
-    NSString *_param;
     float _value;
+    NSString *_param;
 }
 
 - (void).cxx_destruct;

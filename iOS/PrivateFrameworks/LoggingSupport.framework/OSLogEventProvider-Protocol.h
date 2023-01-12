@@ -40,6 +40,7 @@
 @property(readonly, nonatomic) unsigned long long transitionActivityIdentifier;
 @property(readonly, nonatomic) unsigned long long parentActivityIdentifier;
 @property(readonly, nonatomic) unsigned long long activityIdentifier;
+@property(readonly, nonatomic) unsigned int processIdentifierVersion;
 @property(readonly, nonatomic) int processIdentifier;
 @property(readonly, nonatomic) struct timezone *unixTimeZone;
 @property(readonly, nonatomic) struct timeval *unixDate;

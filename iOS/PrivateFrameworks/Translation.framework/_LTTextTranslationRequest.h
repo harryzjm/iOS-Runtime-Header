@@ -4,22 +4,51 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+#import <Translation/_LTSpeechTranslationDelegate-Protocol.h>
 
-@interface _LTTextTranslationRequest
+@class NSArray, NSAttributedString, NSMutableDictionary, NSString, _LTTextToSpeechTranslationRequest, _LTTranslationSession;
+
+@interface _LTTextTranslationRequest <_LTSpeechTranslationDelegate>
 {
+    _LTTranslationSession *_session;
+    _LTTextToSpeechTranslationRequest *_request;
+    NSMutableDictionary *_savedAttributes;
+    NSArray *_paragraphOrder;
+    unsigned long long _outstandingCount;
+    NSMutableDictionary *_receivedParagraphs;
+    CDUnknownBlockType _done;
+    _Bool _translationFinished;
     NSString *_sentence;
+    NSAttributedString *_text;
+    NSArray *_ignoringAttributes;
     CDUnknownBlockType _textHandler;
     CDUnknownBlockType _translationHandler;
+    CDUnknownBlockType _textTranslationHandler;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType textTranslationHandler; // @synthesize textTranslationHandler=_textTranslationHandler;
 @property(copy, nonatomic) CDUnknownBlockType translationHandler; // @synthesize translationHandler=_translationHandler;
 @property(copy, nonatomic) CDUnknownBlockType textHandler; // @synthesize textHandler=_textHandler;
+@property(copy, nonatomic) NSArray *ignoringAttributes; // @synthesize ignoringAttributes=_ignoringAttributes;
+@property(copy, nonatomic) NSAttributedString *text; // @synthesize text=_text;
 @property(copy, nonatomic) NSString *sentence; // @synthesize sentence=_sentence;
+- (void)translationDidFinishWithError:(id)arg1;
+- (void)translatorDidTranslate:(id)arg1;
+- (void)_handleParagraphResponse:(id)arg1 error:(id)arg2;
+- (void)_constructFinalParagraphResult;
+- (id)_realign:(id)arg1 identifier:(id)arg2;
 - (void)_translationFailedWithError:(id)arg1;
 - (void)_startTranslationWithService:(id)arg1 done:(CDUnknownBlockType)arg2;
+- (id)serviceDelegate;
+- (id)_paragraphRequestForText:(id)arg1;
 - (id)loggingType;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

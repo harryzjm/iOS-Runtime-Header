@@ -10,7 +10,7 @@
 #import <UserNotificationsUIKit/NCNotificationDispatcherSourceDelegate-Protocol.h>
 #import <UserNotificationsUIKit/NCNotificationSource-Protocol.h>
 
-@class BBObserver, BBSettingsGateway, NCNotificationDispatcher, NSMutableDictionary, NSString;
+@class BBObserver, BBSettingsGateway, DNDEventBehaviorResolutionService, NCNotificationDispatcher, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface NCBulletinNotificationSource : NSObject <BBObserverDelegate, NCNotificationDispatcherSourceDelegate, NCNotificationSource>
@@ -21,26 +21,44 @@
     NCNotificationDispatcher *_dispatcher;
     NSMutableDictionary *_sectionInfoById;
     NSMutableDictionary *_bulletinFeeds;
+    NSMutableDictionary *_bulletinsToUUIDs;
+    NSMutableDictionary *_uuidsToRequests;
+    DNDEventBehaviorResolutionService *_eventBehaviorResolutionService;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) DNDEventBehaviorResolutionService *eventBehaviorResolutionService; // @synthesize eventBehaviorResolutionService=_eventBehaviorResolutionService;
+@property(retain, nonatomic) NSMutableDictionary *uuidsToRequests; // @synthesize uuidsToRequests=_uuidsToRequests;
+@property(retain, nonatomic) NSMutableDictionary *bulletinsToUUIDs; // @synthesize bulletinsToUUIDs=_bulletinsToUUIDs;
 @property(retain, nonatomic) NSMutableDictionary *bulletinFeeds; // @synthesize bulletinFeeds=_bulletinFeeds;
 @property(retain, nonatomic) NSMutableDictionary *sectionInfoById; // @synthesize sectionInfoById=_sectionInfoById;
 @property(retain, nonatomic) NCNotificationDispatcher *dispatcher; // @synthesize dispatcher=_dispatcher;
 @property(retain, nonatomic) BBSettingsGateway *settingsGateway; // @synthesize settingsGateway=_settingsGateway;
 @property(retain, nonatomic) BBObserver *observer; // @synthesize observer=_observer;
+- (id)_alertOptionsWithBehavior:(id)arg1;
+- (id)_updatedRequestWithAlertOptions:(id)arg1;
 - (unsigned long long)_updateFeedForCoverSheetDestination:(unsigned long long)arg1 storedFeed:(unsigned long long)arg2;
 - (id)_bulletinsToClearPerSectionIdForNotificationRequests:(id)arg1 removingDestinations:(id)arg2;
 - (id)_bulletinsPerSectionIdForNotificationRequests:(id)arg1;
 - (id)_queue_sectionInfoForBulletin:(id)arg1;
 - (void)_applicationIconChanged:(id)arg1;
+- (void)_modifySectionIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (id)_requestUUIDForBulletinPublisherMatchID:(id)arg1;
+- (id)dispatcher:(id)arg1 notificationRequestForUUID:(id)arg2;
+- (void)dispatcher:(id)arg1 didExecuteAction:(id)arg2 forNotificationRequest:(id)arg3;
+- (void)dispatcher:(id)arg1 setSystemScheduledDeliveryEnabled:(_Bool)arg2 scheduledDeliveryTimes:(id)arg3;
+- (void)dispatcher:(id)arg1 setScheduledDelivery:(_Bool)arg2 forSectionIdentifier:(id)arg3;
+- (void)dispatcher:(id)arg1 setAllowsDirectMessages:(_Bool)arg2 forSectionIdentifier:(id)arg3;
+- (void)dispatcher:(id)arg1 setAllowsTimeSensitive:(_Bool)arg2 forSectionIdentifier:(id)arg3;
 - (void)dispatcher:(id)arg1 setAllowsCriticalAlerts:(_Bool)arg2 forSectionIdentifier:(id)arg3;
+- (void)dispatcher:(id)arg1 setMuted:(_Bool)arg2 untilDate:(id)arg3 forSectionIdentifier:(id)arg4 threadIdentifier:(id)arg5;
 - (void)dispatcher:(id)arg1 setDeliverQuietly:(_Bool)arg2 forSectionIdentifier:(id)arg3;
 - (void)dispatcher:(id)arg1 setAllowsNotifications:(_Bool)arg2 forSectionIdentifier:(id)arg3;
 - (void)dispatcher:(id)arg1 requestsClearingNotificationRequestsFromDate:(id)arg2 toDate:(id)arg3 inSections:(id)arg4;
 - (void)dispatcher:(id)arg1 requestsClearingNotificationRequestsInSections:(id)arg2;
 - (void)dispatcher:(id)arg1 requestsClearingNotificationRequests:(id)arg2 fromDestinations:(id)arg3;
 - (void)dispatcher:(id)arg1 requestsClearingNotificationRequests:(id)arg2;
+- (void)observer:(id)arg1 updateGlobalSettings:(id)arg2;
 - (void)observer:(id)arg1 noteBulletinsLoadedForSectionID:(id)arg2;
 - (void)observer:(id)arg1 noteServerConnectionStateChanged:(_Bool)arg2;
 - (void)observer:(id)arg1 removeSection:(id)arg2;

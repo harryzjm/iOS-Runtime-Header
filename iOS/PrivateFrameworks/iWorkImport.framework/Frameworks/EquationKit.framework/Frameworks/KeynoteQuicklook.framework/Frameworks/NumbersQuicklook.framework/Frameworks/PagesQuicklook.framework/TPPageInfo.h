@@ -7,17 +7,16 @@
 #import <objc/NSObject.h>
 
 #import <PagesQuicklook/TSDContainerInfo-Protocol.h>
-#import <PagesQuicklook/TSKModelRootIndexProvider-Protocol.h>
 
-@class NSArray, NSString, TPBodyInfo, TPDocumentRoot, TSDInfoGeometry, TSPObject;
-@protocol TPPageLayoutInfoProvider, TSDInfo, TSDOwningAttachment;
+@class NSArray, NSString, TPBodyInfo, TPDocumentRoot, TPPageController, TSDInfoGeometry, TSPObject;
+@protocol TSDInfo, TSDOwningAttachment;
 
-@interface TPPageInfo : NSObject <TSDContainerInfo, TSKModelRootIndexProvider>
+@interface TPPageInfo : NSObject <TSDContainerInfo>
 {
     unsigned long long _pageIndex;
     TPBodyInfo *_bodyInfo;
     TPDocumentRoot *_documentRoot;
-    id <TPPageLayoutInfoProvider> _layoutInfoProvider;
+    struct CGRect _pageFrame;
 }
 
 + (unsigned long long)documentSetupLeftSidePageIndex;
@@ -28,12 +27,13 @@
 + (_Bool)isAlternativePageIndex:(unsigned long long)arg1 documentRoot:(id)arg2;
 + (_Bool)isPageTemplatePageIndex:(unsigned long long)arg1 documentRoot:(id)arg2;
 + (_Bool)isDocSetupPageIndex:(unsigned long long)arg1;
++ (Class)bodyInfoClass;
 + (_Bool)hasBodyInfo;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) __weak id <TPPageLayoutInfoProvider> layoutInfoProvider; // @synthesize layoutInfoProvider=_layoutInfoProvider;
 @property(readonly, nonatomic) __weak TPDocumentRoot *documentRoot; // @synthesize documentRoot=_documentRoot;
 @property(readonly, nonatomic) TPBodyInfo *bodyInfo; // @synthesize bodyInfo=_bodyInfo;
 @property(readonly, nonatomic) unsigned long long pageIndex; // @synthesize pageIndex=_pageIndex;
+@property(readonly, nonatomic) struct CGRect pageFrame; // @synthesize pageFrame=_pageFrame;
 - (id)infoForSelectionPath:(id)arg1;
 @property(readonly, copy, nonatomic) NSArray *childInfos;
 - (Class)layoutClass;
@@ -45,18 +45,18 @@
 @property(readonly, nonatomic, getter=isFloatingAboveText) _Bool floatingAboveText;
 @property(readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse;
 @property(nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment;
-- (long long)modelRootIndex;
 - (_Bool)isThemeContent;
 - (Class)repClass;
 - (void)setPrimitiveGeometry:(id)arg1;
 @property(copy, nonatomic) TSDInfoGeometry *geometry;
 - (void)clearBackPointerToParentInfoIfNeeded:(id)arg1;
 @property(nonatomic) NSObject<TSDInfo> *parentInfo;
+@property(readonly, nonatomic) TPPageController *pageController;
 - (id)copyWithContext:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)dealloc;
-- (id)initWithPageIndex:(unsigned long long)arg1 documentRoot:(id)arg2 layoutInfoProvider:(id)arg3;
+- (id)initWithPageIndex:(unsigned long long)arg1 documentRoot:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -45,14 +45,19 @@
 - (void)_updateVisibleRowRange;
 - (void)didMoveToWindow;
 - (void)scrollViewDidEndScrolling:(id)arg1;
+- (void)scrollViewWillBeginScrolling:(id)arg1;
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)scrollViewDidScroll:(id)arg1;
-- (id)_findHiddenIconView;
-- (_Bool)_shouldManageScrolledHiddenClippedIconView;
+- (void)_enumerateScrollableIconViewsUsingBlock:(CDUnknownBlockType)arg1;
+- (struct UIEdgeInsets)_scrollingInteractionVisibleInsets;
+- (_Bool)_shouldUseScrollableIconViewInteraction;
+- (_Bool)_animatesRotationForAllVisibleIconListViews;
+- (void)_orientationDidChange:(long long)arg1;
 - (struct CGSize)_iconListViewSize;
 - (struct CGSize)_scrollViewContentSize;
 - (struct CGRect)_frameForIconListAtIndex:(unsigned long long)arg1;
+- (struct CGSize)_iconSpacingForIconListView;
 - (void)_configureIconListView:(id)arg1;
 - (struct CGRect)_iconListFrameForPageRect:(struct CGRect)arg1 atIndex:(unsigned long long)arg2;
 - (void)_updateIconListContainment:(id)arg1 atIndex:(unsigned long long)arg2;
@@ -66,7 +71,9 @@
 @property(readonly, nonatomic) UINavigationBar *navigationBar; // @synthesize navigationBar=_navBar;
 - (void)setLegibilitySettings:(id)arg1;
 - (void)setFolder:(id)arg1;
+- (_Bool)isLibraryPodCategoryFolderView;
 - (long long)iconVisibilityHandling;
+- (void)_configureScrollingInteraction:(id)arg1;
 - (id)initWithConfiguration:(id)arg1;
 
 // Remaining properties

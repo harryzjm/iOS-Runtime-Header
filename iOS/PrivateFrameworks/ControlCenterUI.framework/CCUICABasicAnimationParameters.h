@@ -16,9 +16,13 @@
 {
     double _duration;
     id <CCUIAnimationTimingFunctionDescription> _timingFunction;
+    struct CAFrameRateRange _frameRateRange;
+    unsigned int _highFrameRateReason;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned int highFrameRateReason; // @synthesize highFrameRateReason=_highFrameRateReason;
+@property(readonly, nonatomic) struct CAFrameRateRange frameRateRange; // @synthesize frameRateRange=_frameRateRange;
 @property(readonly, copy, nonatomic) id <CCUIAnimationTimingFunctionDescription> timingFunction; // @synthesize timingFunction=_timingFunction;
 @property(readonly, nonatomic) double duration; // @synthesize duration=_duration;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;

@@ -19,8 +19,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) struct CGSize size;
 - (void)layoutComponentView;
 - (id)ensureAccessoryView;
-- (id)initWithType:(long long)arg1 side:(long long)arg2;
-- (id)init;
+- (id)initWithHost:(id)arg1 type:(long long)arg2 side:(long long)arg3;
+- (id)initWithHost:(id)arg1;
 
 @end
 

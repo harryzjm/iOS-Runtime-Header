@@ -9,7 +9,7 @@
 #import <NumbersQuicklook/TSTFormsSheetProvider-Protocol.h>
 #import <NumbersQuicklook/TSTResolverContainerNameProvider-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, TNDocumentViewController, TNHyperlinkController, TNTheme, TNUIState, TSKTreeNode, TSSStylesheet;
+@class NSArray, NSMutableArray, NSString, TNDocumentViewController, TNHyperlinkController, TNTheme, TNUIState, TSKTreeNodeDeprecated, TSSStylesheet;
 
 @interface TNDocumentRoot : TSADocumentRoot <TSTResolverContainerNameProvider, TSTFormsSheetProvider>
 {
@@ -17,21 +17,23 @@
     struct CGSize _pageSize;
     _Bool _printingAllSheets;
     TNTheme *_theme;
-    TSKTreeNode *_sidebarOrder;
     TNHyperlinkController *_tn_hyperlinkController;
     NSMutableArray *_mutableSheets;
     TSSStylesheet *_stylesheet;
+    TSKTreeNodeDeprecated *_deprecatedSidebarOrder;
 }
 
 + (_Bool)shouldShowImportedDataNotificationsOnOpen;
 + (struct CGSize)previewImageMaxSizeForType:(unsigned long long)arg1;
 + (struct CGSize)previewImageSizeForType:(unsigned long long)arg1;
++ (_Bool)platformSupportsForms;
++ (id)sheetDisplayPredicate;
 - (void).cxx_destruct;
+@property(retain, nonatomic) TSKTreeNodeDeprecated *deprecatedSidebarOrder; // @synthesize deprecatedSidebarOrder=_deprecatedSidebarOrder;
 @property(retain, nonatomic) TSSStylesheet *stylesheet; // @synthesize stylesheet=_stylesheet;
 @property(retain, nonatomic) NSMutableArray *mutableSheets; // @synthesize mutableSheets=_mutableSheets;
 @property(retain, nonatomic) TNHyperlinkController *tn_hyperlinkController; // @synthesize tn_hyperlinkController=_tn_hyperlinkController;
 @property(nonatomic, getter=isPrintingAllSheets) _Bool printingAllSheets; // @synthesize printingAllSheets=_printingAllSheets;
-@property(retain, nonatomic) TSKTreeNode *sidebarOrder; // @synthesize sidebarOrder=_sidebarOrder;
 @property(readonly, nonatomic) TNTheme *theme; // @synthesize theme=_theme;
 - (int)verticalAlignmentForTextStorage:(id)arg1;
 - (int)naturalAlignmentAtCharIndex:(unsigned long long)arg1 inTextStorage:(id)arg2;
@@ -69,15 +71,19 @@
 - (id)nameForResolverContainer:(id)arg1;
 - (id)resolverContainerNameForResolver:(id)arg1;
 - (id)p_resolverContainerForResolver:(id)arg1;
-- (void)tableUID:(const UUIDData_5fbc143e *)arg1 changedToTableUID:(const UUIDData_5fbc143e *)arg2;
-- (_Bool)isTableLinkedToAForm:(const UUIDData_5fbc143e *)arg1;
+- (void)tableUID:(const struct TSKUIDStruct *)arg1 changedToTableUID:(const struct TSKUIDStruct *)arg2;
+- (id)formSheetsForTable:(struct TSKUIDStruct)arg1;
+- (id)formSheetForTable:(struct TSKUIDStruct)arg1;
+- (_Bool)_tableInfoIsEligibleForBuilder:(struct TSKUIDStruct)arg1;
+- (id)_formSheetForTable:(struct TSKUIDStruct)arg1;
+- (_Bool)isTableLinkedToAForm:(struct TSKUIDStruct)arg1;
 - (_Bool)containsForms;
-- (void)p_buildSidebarOrder;
-- (void)p_removeSidebarNodeForSheet:(id)arg1;
-- (void)p_addSidebarNodeForSheet:(id)arg1;
-- (void)setSidebarChildren:(id)arg1 forSheet:(id)arg2;
+- (id)createDeprecatedSidebarOrder;
+- (void)p_createDeprecatedSidebarOrderIfNecessaryFromSaveToArchiver;
+- (void)p_clearDeprecatedSidebarOrder;
 @property(readonly, nonatomic, getter=isPrintPreviewSupported) _Bool printPreviewSupported;
 @property(copy, nonatomic) NSString *printerID;
+- (id)sheetForName:(id)arg1 caseSensitive:(_Bool)arg2;
 - (_Bool)validName:(id)arg1 forRenamingSheet:(id)arg2;
 - (_Bool)validNameForNewSheet:(id)arg1;
 - (_Bool)shouldShowFloatingCommentInfo:(id)arg1;
@@ -98,6 +104,7 @@
 - (void)setStylesheet:(id)arg1 andThemeForImport:(id)arg2;
 - (unsigned long long)p_tableCountForSheet:(id)arg1;
 @property(readonly, nonatomic) unsigned long long tableCount;
+@property(readonly, copy, nonatomic) NSArray *visibleSheets;
 @property(readonly, copy, nonatomic) NSArray *sheets;
 - (void)setImportedPaperID:(id)arg1 printerID:(id)arg2;
 - (void)setStylesheetForUpgradeToSingleStylesheet:(id)arg1;

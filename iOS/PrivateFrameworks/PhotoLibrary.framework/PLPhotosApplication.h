@@ -21,13 +21,11 @@
     int _sharedPhotoStreamInvitationFailureToken;
     NSString *_currentTestName;
     NSDictionary *_currentTestOptions;
-    long long _waitForGraphCount;
     NSSet *_notificationSuppressionContexts;
 }
 
 + (void)initialize;
 @property(copy, nonatomic) NSSet *notificationSuppressionContexts; // @synthesize notificationSuppressionContexts=_notificationSuppressionContexts;
-@property(nonatomic) long long waitForGraphCount; // @synthesize waitForGraphCount=_waitForGraphCount;
 @property(retain, nonatomic) NSDictionary *currentTestOptions; // @synthesize currentTestOptions=_currentTestOptions;
 @property(retain, nonatomic) NSString *currentTestName; // @synthesize currentTestName=_currentTestName;
 @property(readonly, nonatomic) _Bool isOnWifi; // @synthesize isOnWifi=_isOnWifi;
@@ -41,7 +39,6 @@
 - (void)_startObservingReachabilityChanges;
 - (void)_networkReachabilityDidChange:(id)arg1;
 - (void)setReceivingRemoteControlEvents:(_Bool)arg1;
-- (void)_cleanUpOutboundSharingAssets;
 - (void)_updateSuspensionSettings;
 - (void)prepareForApplicationDidBecomeActive;
 - (void)_applicationDidBecomeActive:(id)arg1;

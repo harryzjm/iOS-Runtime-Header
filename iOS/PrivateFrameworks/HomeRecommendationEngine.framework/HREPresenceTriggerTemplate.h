@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSString;
-
 @interface HREPresenceTriggerTemplate
 {
+    unsigned long long _presenceType;
+    unsigned long long _presenceUserType;
 }
 
-- (id)naturalLanguageTitleForObjectsInContext:(id)arg1 forRecommendation:(id)arg2 options:(id)arg3;
-@property(readonly, nonatomic) NSDictionary *actionKeyDictionary;
-@property(readonly, nonatomic) NSString *formatStarter;
+@property(nonatomic) unsigned long long presenceUserType; // @synthesize presenceUserType=_presenceUserType;
+@property(nonatomic) unsigned long long presenceType; // @synthesize presenceType=_presenceType;
+- (id)_subclass_triggerBuilderForRecommendation:(id)arg1 withObjects:(id)arg2;
 
 @end
 

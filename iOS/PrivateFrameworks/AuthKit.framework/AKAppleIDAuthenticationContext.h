@@ -28,6 +28,7 @@
     AKDevice *_companionDevice;
     NSString *_interpolatedReason;
     unsigned long long _attemptIndex;
+    _Bool _isContextRequestingReauthForExistingService;
     _Bool _performUIOutOfProcess;
     _Bool _keepAlive;
     _Bool _isProxyingForApp;
@@ -37,6 +38,7 @@
     _Bool _shouldSkipInitialReachabilityCheck;
     _Bool _shouldPreventInteractiveAuth;
     _Bool _shouldForceInteractiveAuth;
+    _Bool _forceEligibleForForegroundAuthentication;
     _Bool _isUsernameEditable;
     _Bool _shouldAllowAppleIDCreation;
     _Bool _needsCredentialRecovery;
@@ -103,6 +105,10 @@
     NSSet *_desiredInternalTokens;
     NSString *_securityUpgradeContext;
     NSString *_cellularDataAttributionAppBundleID;
+    long long _verifyCredentialReason;
+    NSString *_custodianRecoveryToken;
+    NSString *_callerIconBundlePath;
+    NSString *_localizedCallerName;
     NSString *_displayString;
     NSString *_displayTitle;
 }
@@ -111,6 +117,10 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *displayTitle; // @synthesize displayTitle=_displayTitle;
 @property(copy, nonatomic) NSString *displayString; // @synthesize displayString=_displayString;
+@property(copy, nonatomic) NSString *localizedCallerName; // @synthesize localizedCallerName=_localizedCallerName;
+@property(copy, nonatomic) NSString *callerIconBundlePath; // @synthesize callerIconBundlePath=_callerIconBundlePath;
+@property(copy, nonatomic, setter=setCustodianRecoveryToken:) NSString *custodianRecoveryToken; // @synthesize custodianRecoveryToken=_custodianRecoveryToken;
+@property(nonatomic) long long verifyCredentialReason; // @synthesize verifyCredentialReason=_verifyCredentialReason;
 @property(copy, nonatomic) NSString *cellularDataAttributionAppBundleID; // @synthesize cellularDataAttributionAppBundleID=_cellularDataAttributionAppBundleID;
 @property(nonatomic) _Bool needsSecurityUpgradeUI; // @synthesize needsSecurityUpgradeUI=_needsSecurityUpgradeUI;
 @property(nonatomic) _Bool needsNewChildAccount; // @synthesize needsNewChildAccount=_needsNewChildAccount;
@@ -163,6 +173,7 @@
 @property(nonatomic) _Bool shouldAllowAppleIDCreation; // @synthesize shouldAllowAppleIDCreation=_shouldAllowAppleIDCreation;
 @property(nonatomic) _Bool isUsernameEditable; // @synthesize isUsernameEditable=_isUsernameEditable;
 @property(copy, nonatomic) NSString *username; // @synthesize username=_username;
+@property(nonatomic, getter=_isForcedEligibleForForegroundAuthentication, setter=set_forceEligibleForForegroundAuthentication:) _Bool _forceEligibleForForegroundAuthentication; // @synthesize _forceEligibleForForegroundAuthentication;
 @property(nonatomic) long long authenticationMode; // @synthesize authenticationMode=_authenticationMode;
 @property(nonatomic) _Bool _keepAlive; // @synthesize _keepAlive;
 @property(nonatomic) _Bool _performUIOutOfProcess; // @synthesize _performUIOutOfProcess;
@@ -204,7 +215,10 @@
 @property(readonly, nonatomic) NSString *_interpolatedReason;
 @property(nonatomic) _Bool shouldForceInteractiveAuth; // @synthesize shouldForceInteractiveAuth=_shouldForceInteractiveAuth;
 @property(nonatomic) _Bool shouldPreventInteractiveAuth; // @synthesize shouldPreventInteractiveAuth=_shouldPreventInteractiveAuth;
+@property(readonly, nonatomic) _Bool _shouldRefreshAccountAndUpdateContext;
 @property(readonly, nonatomic) unsigned long long _capabilityForUIDisplay; // @synthesize _capabilityForUIDisplay;
+@property(readonly, nonatomic, getter=isContextRequestingReauthForExistingService) _Bool contextRequestingReauthForExistingService;
+- (_Bool)_isVerifyCredentialReasonEligibleForBiometricOrPasscodeAuth;
 @property(readonly, nonatomic, getter=isContextEligibleForBiometricOrPasscodeAuth) _Bool contextEligibleForBiometricOrPasscodeAuth;
 @property(readonly, nonatomic, getter=isContextEligibleForSilentAuth) _Bool contextEligibleForSilentAuth;
 @property(readonly, nonatomic, getter=isContextEligibleForSilentAuthCoercion) _Bool contextEligibleForSilentAuthCoercion;

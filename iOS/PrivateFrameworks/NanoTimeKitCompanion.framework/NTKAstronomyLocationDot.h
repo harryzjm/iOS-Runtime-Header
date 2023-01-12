@@ -24,10 +24,10 @@
 
 + (double)defaultPulseAlphaDelay;
 + (double)defaultPulseDuration;
-+ (double)_defaultInnerDotDiameterForSizeClass:(unsigned long long)arg1;
-+ (double)_defaultOuterDotDiameterForSizeClass:(unsigned long long)arg1;
++ (double)_defaultInnerDotDiameterForDevice:(id)arg1;
++ (double)_defaultOuterDotDiameterForDevice:(id)arg1;
 + (id)_defaultColor;
-+ (struct CGSize)_defaultSize;
++ (struct CGSize)_defaultSizeForDevice:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool animating; // @synthesize animating=_animating;
 @property(nonatomic) double pulseAlphaDelay; // @synthesize pulseAlphaDelay=_pulseAlphaDelay;

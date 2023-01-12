@@ -32,7 +32,7 @@
 @property(readonly, nonatomic) _Bool cellHasCustomFormat;
 @property(readonly, nonatomic) _Bool cellHasConditionalStyle;
 @property(readonly, nonatomic) _Bool cellHasFormula;
-@property(readonly, nonatomic) int cellValueType;
+@property(readonly, nonatomic) unsigned char cellValueType;
 - (void)reset;
 @property(retain, nonatomic) TSTCellFormulaSpec *formulaSpec; // @synthesize formulaSpec=_formulaSpec;
 @property(nonatomic) struct TSUCellRect mergeRange; // @synthesize mergeRange=_mergeRange;

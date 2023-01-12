@@ -19,11 +19,13 @@ __attribute__((visibility("hidden")))
     struct BlockPtr<void (PKPaymentRequestPaymentMethodUpdate *)> _didSelectPaymentMethodCompletion;
     struct BlockPtr<void (PKPaymentRequestShippingContactUpdate *)> _didSelectShippingContactCompletion;
     struct BlockPtr<void (PKPaymentRequestShippingMethodUpdate *)> _didSelectShippingMethodCompletion;
+    struct BlockPtr<void (PKPaymentRequestCouponCodeUpdate *)> _didChangeCouponCodeCompletion;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)invalidate;
+- (void)completeCouponCodeChange:(id)arg1;
 - (void)completeShippingMethodSelection:(id)arg1;
 - (void)completeShippingContactSelection:(id)arg1;
 - (void)completePaymentSession:(long long)arg1 errors:(id)arg2;
@@ -33,13 +35,14 @@ __attribute__((visibility("hidden")))
 - (id)summaryItems;
 - (void)_willFinishWithError:(id)arg1;
 - (void)_getPaymentServicesMerchantURL:(CDUnknownBlockType)arg1;
+- (void)_didChangeCouponCode:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_didSelectShippingMethod:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_didSelectShippingContact:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_didSelectPaymentMethod:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_didRequestMerchantSession:(CDUnknownBlockType)arg1;
 - (void)_didFinish;
 - (void)_didAuthorizePayment:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)_initWithRequest:(id)arg1 presenter:(struct PaymentAuthorizationPresenter *)arg2;
+- (id)_initWithRequest:(id)arg1 presenter:(void *)arg2;
 
 @end
 

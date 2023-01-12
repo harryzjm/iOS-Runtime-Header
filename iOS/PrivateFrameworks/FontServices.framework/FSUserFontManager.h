@@ -10,6 +10,7 @@
 {
 }
 
++ (void)synchronizeProfileFonts:(CDUnknownBlockType)arg1;
 + (void)synchronizeFontAssets:(CDUnknownBlockType)arg1;
 + (void)_removeAllUserFonts;
 + (void)reset;

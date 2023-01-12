@@ -14,6 +14,7 @@
 + (_Bool)error:(id)arg1 hasCode:(long long)arg2;
 + (void)raiseExceptionOnError:(id)arg1;
 + (id)errorNotSupported;
++ (id)deniedBundleIdentifier:(id)arg1;
 + (id)doNotHandleBreakingRecursionWithCallerBundleIdentifier:(id)arg1;
 + (id)invalidURLError:(id)arg1;
 + (id)missingEntitlementError:(id)arg1;

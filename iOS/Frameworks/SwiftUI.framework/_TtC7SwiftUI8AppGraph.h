@@ -13,7 +13,12 @@
     MISSING_TYPE *_updateSeed;
     MISSING_TYPE *_rootScenePhase;
     MISSING_TYPE *_rootSceneList;
+    MISSING_TYPE *_primarySceneSummaries;
     MISSING_TYPE *_focusedValues;
+    MISSING_TYPE *_focusStore;
+    MISSING_TYPE *$__lazy_storage_$_launchProfileOptions;
+    MISSING_TYPE *didCollectLaunchProfile;
+    MISSING_TYPE *_rootCommandsList;
 }
 
 @end

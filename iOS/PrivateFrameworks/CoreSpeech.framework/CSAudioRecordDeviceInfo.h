@@ -17,10 +17,12 @@
     NSString *_route;
     NSUUID *_remoteDeviceUID;
     NSString *_remoteDeviceProductIdentifier;
+    NSString *_remoteDeviceUIDString;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *remoteDeviceUIDString; // @synthesize remoteDeviceUIDString=_remoteDeviceUIDString;
 @property(readonly, copy, nonatomic) NSString *remoteDeviceProductIdentifier; // @synthesize remoteDeviceProductIdentifier=_remoteDeviceProductIdentifier;
 @property(readonly, copy, nonatomic) NSUUID *remoteDeviceUID; // @synthesize remoteDeviceUID=_remoteDeviceUID;
 @property(readonly, nonatomic) _Bool isRemoteDevice; // @synthesize isRemoteDevice=_isRemoteDevice;
@@ -32,6 +34,7 @@
 - (id)description;
 - (id)xpcObject;
 - (id)initWithXPCObject:(id)arg1;
+- (id)initWithRoute:(id)arg1 isRemoteDevice:(_Bool)arg2 remoteDeviceUID:(id)arg3 remoteDeviceProductIdentifier:(id)arg4 remoteDeviceUIDString:(id)arg5;
 - (id)initWithRoute:(id)arg1 isRemoteDevice:(_Bool)arg2 remoteDeviceUID:(id)arg3 remoteDeviceProductIdentifier:(id)arg4;
 
 @end

@@ -9,18 +9,22 @@
 
 @interface CKDetailsContactsTableViewCell
 {
+    _Bool _tuConversationStatusIsActive;
     _Bool _showsLocation;
     _Bool _showMessageButton;
     _Bool _showPhoneButton;
     _Bool _showFaceTimeVideoButton;
     _Bool _showInfoButton;
     _Bool _showScreenSharingButton;
+    _Bool _showsTUConversationStatus;
     CKAvatarView *_contactAvatarView;
     id <CKDetailsContactsTableViewCellDelegate> _delegate;
     CKLabel *_nameLabel;
     UILabel *_locationLabel;
+    UILabel *_expanseStatusLabel;
     NSString *_entityName;
     NSString *_locationString;
+    long long _callType;
     UIButton *_messageButton;
     UIButton *_phoneButton;
     UIButton *_facetimeVideoButton;
@@ -41,14 +45,18 @@
 @property(retain, nonatomic) UIButton *facetimeVideoButton; // @synthesize facetimeVideoButton=_facetimeVideoButton;
 @property(retain, nonatomic) UIButton *phoneButton; // @synthesize phoneButton=_phoneButton;
 @property(retain, nonatomic) UIButton *messageButton; // @synthesize messageButton=_messageButton;
+@property(nonatomic) _Bool showsTUConversationStatus; // @synthesize showsTUConversationStatus=_showsTUConversationStatus;
 @property(nonatomic) _Bool showScreenSharingButton; // @synthesize showScreenSharingButton=_showScreenSharingButton;
 @property(nonatomic) _Bool showInfoButton; // @synthesize showInfoButton=_showInfoButton;
 @property(nonatomic) _Bool showFaceTimeVideoButton; // @synthesize showFaceTimeVideoButton=_showFaceTimeVideoButton;
 @property(nonatomic) _Bool showPhoneButton; // @synthesize showPhoneButton=_showPhoneButton;
 @property(nonatomic) _Bool showMessageButton; // @synthesize showMessageButton=_showMessageButton;
 @property(nonatomic) _Bool showsLocation; // @synthesize showsLocation=_showsLocation;
+@property(nonatomic) long long callType; // @synthesize callType=_callType;
+@property(nonatomic) _Bool tuConversationStatusIsActive; // @synthesize tuConversationStatusIsActive=_tuConversationStatusIsActive;
 @property(copy, nonatomic) NSString *locationString; // @synthesize locationString=_locationString;
 @property(copy, nonatomic) NSString *entityName; // @synthesize entityName=_entityName;
+@property(retain, nonatomic) UILabel *expanseStatusLabel; // @synthesize expanseStatusLabel=_expanseStatusLabel;
 @property(retain, nonatomic) UILabel *locationLabel; // @synthesize locationLabel=_locationLabel;
 @property(retain, nonatomic) CKLabel *nameLabel; // @synthesize nameLabel=_nameLabel;
 @property(nonatomic) __weak id <CKDetailsContactsTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
@@ -60,12 +68,14 @@
 - (void)_handleCommunicationAction:(id)arg1;
 - (void)_dismissUpdatingParticipantSpinner;
 - (void)_showUpdatingParticipantSpinner;
+- (void)_formatExpanseStatusLabel;
 - (void)configureWithViewModel:(id)arg1;
 - (void)layoutSubviews;
 - (id)_imageNamed:(id)arg1;
 - (id)_ckSymbolImageNamed:(id)arg1 preferredContentSizeCategory:(id)arg2 preferredFontTextStyle:(id)arg3;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (_Bool)__im_ff_isExpanseEnabled;
 
 @end
 

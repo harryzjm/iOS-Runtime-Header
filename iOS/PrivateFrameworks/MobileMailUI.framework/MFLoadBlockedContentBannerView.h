@@ -13,11 +13,17 @@
     unsigned long long _blockedContentTypes;
 }
 
++ (id)log;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long blockedContentTypes; // @synthesize blockedContentTypes=_blockedContentTypes;
 @property(nonatomic) __weak id <MFLoadBlockedContentBannerViewDelegate> delegate; // @synthesize delegate=_delegate;
+- (id)actionTitle;
+- (id)title;
 - (void)_titleControlTapped:(id)arg1;
+- (void)enablePrivacyProtectionAlertForAccount;
+- (void)primaryAction;
 - (void)_updateBannerText;
+- (id)bannerIcon;
 - (id)initWithFrame:(struct CGRect)arg1 blockedContentTypes:(unsigned long long)arg2 blockingReason:(long long)arg3;
 
 @end

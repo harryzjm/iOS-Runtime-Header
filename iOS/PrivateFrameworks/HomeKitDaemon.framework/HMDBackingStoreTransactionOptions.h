@@ -15,6 +15,7 @@
 {
     _Bool _mustReplay;
     _Bool _mustPush;
+    _Bool _mustSaveArchiveAtomically;
     unsigned long long _source;
     unsigned long long _destination;
     NSDate *_committed;
@@ -24,6 +25,7 @@
 + (id)stringForHMDBackingStoreDestination:(unsigned long long)arg1;
 + (id)stringForHMDBackingStoreTransactionSource:(unsigned long long)arg1;
 + (id)logCategory;
++ (id)defaultOutOfSyncOptions;
 + (id)defaultPreferencesOptions;
 + (id)defaultResidenceOptions;
 + (id)defaultMetadataCloudOptions;
@@ -35,8 +37,10 @@
 + (id)defaultXPCOptions;
 + (id)defaultLocalOptions;
 + (id)optionsWithSource:(unsigned long long)arg1 destination:(unsigned long long)arg2 mustReplay:(_Bool)arg3 mustPush:(_Bool)arg4;
++ (id)optionsWithSource:(unsigned long long)arg1 destination:(unsigned long long)arg2 mustReplay:(_Bool)arg3 mustPush:(_Bool)arg4 mustSaveArchiveAtomically:(_Bool)arg5;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool mustSaveArchiveAtomically; // @synthesize mustSaveArchiveAtomically=_mustSaveArchiveAtomically;
 @property(readonly, nonatomic) _Bool mustPush; // @synthesize mustPush=_mustPush;
 @property(readonly, nonatomic) _Bool mustReplay; // @synthesize mustReplay=_mustReplay;
 @property(readonly, nonatomic) NSString *label; // @synthesize label=_label;
@@ -52,6 +56,7 @@
 - (void)setLabel:(id)arg1;
 - (id)initWithSource:(unsigned long long)arg1 destination:(unsigned long long)arg2;
 - (id)initWithSource:(unsigned long long)arg1 destination:(unsigned long long)arg2 label:(id)arg3 mustReplay:(_Bool)arg4 mustPush:(_Bool)arg5;
+- (id)initWithSource:(unsigned long long)arg1 destination:(unsigned long long)arg2 label:(id)arg3 mustReplay:(_Bool)arg4 mustPush:(_Bool)arg5 mustSaveArchiveAtomically:(_Bool)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

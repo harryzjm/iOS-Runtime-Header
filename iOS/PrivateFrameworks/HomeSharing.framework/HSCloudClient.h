@@ -51,7 +51,6 @@
 - (void)uploadItemProperties;
 - (void)setItemProperties:(id)arg1 forSagaID:(unsigned long long)arg2;
 - (void)setItemProperties:(id)arg1 forPurchaseHistoryID:(unsigned long long)arg2;
-- (_Bool)canSetItemProperty:(id)arg1;
 - (void)setPreferredVideoQuality:(long long)arg1;
 - (void)setDaemonConfiguration:(unsigned long long)arg1;
 - (void)resignActive;
@@ -134,11 +133,8 @@
 - (void)addItemWithSagaID:(long long)arg1 toPlaylistWithPersistentID:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)addStoreItemWithAdamID:(long long)arg1 toPlaylistWithPersistentID:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setPlaylistProperties:(id)arg1 trackList:(id)arg2 forPlaylistPersistentID:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (_Bool)canSetPlaylistProperty:(id)arg1;
 - (void)sdk_createPlaylistWithPersistentID:(long long)arg1 properties:(id)arg2 tracklist:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)createPlaylistWithPersistentID:(long long)arg1 properties:(id)arg2 trackList:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)setCloudAddToPlaylistBehavior:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (long long)cloudAddToPlaylistBehavior;
 - (void)dealloc;
 - (id)initWithConfiguration:(id)arg1;
 - (id)init;

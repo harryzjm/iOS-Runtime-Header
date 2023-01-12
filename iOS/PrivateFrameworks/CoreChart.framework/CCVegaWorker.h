@@ -21,11 +21,14 @@
     CCVegaJSDocument *document;
     CCVegaWorkerClient *currentClient;
     unsigned long long _dispatchQueueID;
+    CDUnknownBlockType _onDealloc;
 }
 
-+ (id)sharedMainThreadWorker;
++ (void)cleanUpWithCallback:(CDUnknownBlockType)arg1;
++ (void)cleanUp;
 + (id)sharedWorker;
 - (void).cxx_destruct;
+@property(copy) CDUnknownBlockType onDealloc; // @synthesize onDealloc=_onDealloc;
 @property(readonly) unsigned long long dispatchQueueID; // @synthesize dispatchQueueID=_dispatchQueueID;
 @property __weak CCVegaWorkerClient *currentClient; // @synthesize currentClient;
 @property(retain, nonatomic) CCVegaJSDocument *document; // @synthesize document;

@@ -55,6 +55,7 @@
     double _cursorHoverShadowRadiusInterpolationAmount;
     double _cursorHoverShadowOpacityInterpolationAmount;
     double _cursorHoverShadowOffsetInterpolationAmount;
+    double _peekInsetWidth;
     double _appExposeNonFloatingSingleRowScale;
     double _appExposeNonFloatingDoubleRowScale;
     double _appExposeFloatingDoubleRowScale;
@@ -67,6 +68,7 @@
     double _gridSwitcherSwipeUpNormalizedRubberbandingRange;
     double _gridSwitcherSwipeUpNormalizedRubberbandedTranslationAtMinimumScale;
     double _gridSwitcherSwipeUpMinimumScale;
+    double _gridSwitcherHomeButtonDeviceCardCornerRadius;
     unsigned long long _numberOfSnapshotsToCacheInSwitcher;
     unsigned long long _numberOfSnapshotsToAlwaysKeepAround;
     double _spacingBetweenLeadingEdgeAndIcon;
@@ -76,6 +78,8 @@
     double _spacingBetweenSnapshotAndDescriptionLabelBaseline;
     double _spacingBetweenTitleAndSubtitleBaseline;
     double _spacingBetweenIconAndLabel;
+    double _spacingBetweenLabelAndMultipleWindowsIndicator;
+    double _multipleWindowsIndicatorSideLength;
     double _spacingBetweenLabelAndSecondIcon;
     double _spacingBetweenBoundsCenterAndSecondIcon;
     double _deckSwitcherPageScale;
@@ -91,6 +95,7 @@
     double _titleOpacityCCoeff;
     double _titleOpacityDCoeff;
     SBFluidSwitcherAnimationSettings *_animationSettings;
+    PTOutlet *_clearModelOutlet;
     PTOutlet *_stashModelOutlet;
     PTOutlet *_loadModelOutlet;
     PTOutlet *_addAppsToModelOutlet;
@@ -112,6 +117,7 @@
 @property(retain, nonatomic) PTOutlet *addAppsToModelOutlet; // @synthesize addAppsToModelOutlet=_addAppsToModelOutlet;
 @property(retain, nonatomic) PTOutlet *loadModelOutlet; // @synthesize loadModelOutlet=_loadModelOutlet;
 @property(retain, nonatomic) PTOutlet *stashModelOutlet; // @synthesize stashModelOutlet=_stashModelOutlet;
+@property(retain, nonatomic) PTOutlet *clearModelOutlet; // @synthesize clearModelOutlet=_clearModelOutlet;
 @property(retain, nonatomic) SBFluidSwitcherAnimationSettings *animationSettings; // @synthesize animationSettings=_animationSettings;
 @property _Bool shouldDisableSwitcherModelUpdatesForDemo; // @synthesize shouldDisableSwitcherModelUpdatesForDemo=_shouldDisableSwitcherModelUpdatesForDemo;
 @property _Bool showFloatingModifierTimeline; // @synthesize showFloatingModifierTimeline=_showFloatingModifierTimeline;
@@ -132,6 +138,8 @@
 @property double deckSwitcherPageScale; // @synthesize deckSwitcherPageScale=_deckSwitcherPageScale;
 @property double spacingBetweenBoundsCenterAndSecondIcon; // @synthesize spacingBetweenBoundsCenterAndSecondIcon=_spacingBetweenBoundsCenterAndSecondIcon;
 @property double spacingBetweenLabelAndSecondIcon; // @synthesize spacingBetweenLabelAndSecondIcon=_spacingBetweenLabelAndSecondIcon;
+@property double multipleWindowsIndicatorSideLength; // @synthesize multipleWindowsIndicatorSideLength=_multipleWindowsIndicatorSideLength;
+@property double spacingBetweenLabelAndMultipleWindowsIndicator; // @synthesize spacingBetweenLabelAndMultipleWindowsIndicator=_spacingBetweenLabelAndMultipleWindowsIndicator;
 @property double spacingBetweenIconAndLabel; // @synthesize spacingBetweenIconAndLabel=_spacingBetweenIconAndLabel;
 @property double spacingBetweenTitleAndSubtitleBaseline; // @synthesize spacingBetweenTitleAndSubtitleBaseline=_spacingBetweenTitleAndSubtitleBaseline;
 @property double spacingBetweenSnapshotAndDescriptionLabelBaseline; // @synthesize spacingBetweenSnapshotAndDescriptionLabelBaseline=_spacingBetweenSnapshotAndDescriptionLabelBaseline;
@@ -141,6 +149,7 @@
 @property double spacingBetweenLeadingEdgeAndIcon; // @synthesize spacingBetweenLeadingEdgeAndIcon=_spacingBetweenLeadingEdgeAndIcon;
 @property unsigned long long numberOfSnapshotsToAlwaysKeepAround; // @synthesize numberOfSnapshotsToAlwaysKeepAround=_numberOfSnapshotsToAlwaysKeepAround;
 @property unsigned long long numberOfSnapshotsToCacheInSwitcher; // @synthesize numberOfSnapshotsToCacheInSwitcher=_numberOfSnapshotsToCacheInSwitcher;
+@property double gridSwitcherHomeButtonDeviceCardCornerRadius; // @synthesize gridSwitcherHomeButtonDeviceCardCornerRadius=_gridSwitcherHomeButtonDeviceCardCornerRadius;
 @property double gridSwitcherSwipeUpMinimumScale; // @synthesize gridSwitcherSwipeUpMinimumScale=_gridSwitcherSwipeUpMinimumScale;
 @property double gridSwitcherSwipeUpNormalizedRubberbandedTranslationAtMinimumScale; // @synthesize gridSwitcherSwipeUpNormalizedRubberbandedTranslationAtMinimumScale=_gridSwitcherSwipeUpNormalizedRubberbandedTranslationAtMinimumScale;
 @property double gridSwitcherSwipeUpNormalizedRubberbandingRange; // @synthesize gridSwitcherSwipeUpNormalizedRubberbandingRange=_gridSwitcherSwipeUpNormalizedRubberbandingRange;
@@ -153,6 +162,7 @@
 @property double appExposeFloatingDoubleRowScale; // @synthesize appExposeFloatingDoubleRowScale=_appExposeFloatingDoubleRowScale;
 @property double appExposeNonFloatingDoubleRowScale; // @synthesize appExposeNonFloatingDoubleRowScale=_appExposeNonFloatingDoubleRowScale;
 @property double appExposeNonFloatingSingleRowScale; // @synthesize appExposeNonFloatingSingleRowScale=_appExposeNonFloatingSingleRowScale;
+@property double peekInsetWidth; // @synthesize peekInsetWidth=_peekInsetWidth;
 @property double cursorHoverShadowOffsetInterpolationAmount; // @synthesize cursorHoverShadowOffsetInterpolationAmount=_cursorHoverShadowOffsetInterpolationAmount;
 @property double cursorHoverShadowOpacityInterpolationAmount; // @synthesize cursorHoverShadowOpacityInterpolationAmount=_cursorHoverShadowOpacityInterpolationAmount;
 @property double cursorHoverShadowRadiusInterpolationAmount; // @synthesize cursorHoverShadowRadiusInterpolationAmount=_cursorHoverShadowRadiusInterpolationAmount;

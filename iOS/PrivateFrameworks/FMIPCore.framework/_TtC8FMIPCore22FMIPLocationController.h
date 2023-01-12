@@ -10,7 +10,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC8FMIPCore22FMIPLocationController : NSObject <CLLocationManagerDelegate>
 {
     MISSING_TYPE *locationManager;

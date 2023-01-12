@@ -22,6 +22,7 @@
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3 animated:(_Bool)arg4;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
+- (id)initWithAccessorySettingItem:(id)arg1 module:(id)arg2;
 - (id)initWithAccessoryGroupItem:(id)arg1;
 
 // Remaining properties

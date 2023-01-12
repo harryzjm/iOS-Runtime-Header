@@ -13,7 +13,7 @@
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) TSWPRep *textStorageChunk; // @synthesize textStorageChunk=_textStorageChunk;
-- (id)initWithStateOfTagger:(id)arg1 textStorageChunk:(id)arg2;
+- (id)initWithStateOfTagger:(id)arg1 textStorageChunk:(id)arg2 limitSelection:(id)arg3;
 
 @end
 

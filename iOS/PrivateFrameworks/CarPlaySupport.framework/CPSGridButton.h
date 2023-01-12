@@ -30,6 +30,9 @@
 - (void)setEnabled:(_Bool)arg1;
 - (void)layoutSubviews;
 - (double)preferredLabelWidth;
+- (unsigned long long)hash;
+- (_Bool)isEqualToGridButton:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
 
 @end
 

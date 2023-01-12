@@ -6,18 +6,24 @@
 
 #import <Home/HFItemModule.h>
 
-@class HFUserNotificationServiceTopicItemProvider, HMHome;
+@class HFItem, HFStaticItemProvider, HFUserNotificationServiceTopicItemProvider, HMHome;
 
 @interface HUUserNotificationTopicListModule : HFItemModule
 {
+    HFItem *_bridgesAndResidentDevicesItem;
+    HFItem *_networkRoutersListItem;
     HMHome *_home;
     HFUserNotificationServiceTopicItemProvider *_notificationTopicItemProvider;
+    HFStaticItemProvider *_staticItemProvider;
 }
 
 + (id)sectionID;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) HFStaticItemProvider *staticItemProvider; // @synthesize staticItemProvider=_staticItemProvider;
 @property(readonly, nonatomic) HFUserNotificationServiceTopicItemProvider *notificationTopicItemProvider; // @synthesize notificationTopicItemProvider=_notificationTopicItemProvider;
 @property(readonly, nonatomic) HMHome *home; // @synthesize home=_home;
+@property(retain, nonatomic) HFItem *networkRoutersListItem; // @synthesize networkRoutersListItem=_networkRoutersListItem;
+@property(retain, nonatomic) HFItem *bridgesAndResidentDevicesItem; // @synthesize bridgesAndResidentDevicesItem=_bridgesAndResidentDevicesItem;
 - (id)topicForItem:(id)arg1;
 - (id)buildSectionsWithDisplayedItems:(id)arg1;
 - (id)itemProviders;

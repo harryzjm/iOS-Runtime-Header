@@ -25,7 +25,7 @@
 - (void)walkGraph:(CDUnknownBlockType)arg1;
 - (id)deltaSince:(id)arg1 in:(id)arg2;
 - (void)mergeWith:(id)arg1;
-@property(retain, nonatomic) id contents;
+@property(nonatomic) __weak id contents;
 - (void)addItem:(id)arg1;
 - (void)setUpdated:(id)arg1;
 - (id)timestampForNewItem;

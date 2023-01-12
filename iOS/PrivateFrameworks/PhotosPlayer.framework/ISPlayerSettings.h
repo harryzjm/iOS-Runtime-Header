@@ -20,29 +20,21 @@ __attribute__((visibility("hidden")))
     _Bool _useDedicatedQueues;
     _Bool _allowFrameBlending;
     _Bool _allowVideoPreRoll;
-    _Bool _allowPlayerReuse;
     float _vitalityEaseMinRate;
     double _vitalityEaseDuration;
     long long _startBehavior;
-    double _forceScrubMinimumPressure;
-    double _forceScrubMaximumPressure;
     double _forceScrubRewindFactor;
     double _forceScrubMinRateChange;
     double _forceScrubMinimumRate;
     double _forceScrubMaximumInteractiveRate;
-    double _audioRampDuration;
 }
 
 + (id)settingsControllerModule;
 + (id)sharedInstance;
-@property(nonatomic) double audioRampDuration; // @synthesize audioRampDuration=_audioRampDuration;
 @property(nonatomic) double forceScrubMaximumInteractiveRate; // @synthesize forceScrubMaximumInteractiveRate=_forceScrubMaximumInteractiveRate;
 @property(nonatomic) double forceScrubMinimumRate; // @synthesize forceScrubMinimumRate=_forceScrubMinimumRate;
 @property(nonatomic) double forceScrubMinRateChange; // @synthesize forceScrubMinRateChange=_forceScrubMinRateChange;
 @property(nonatomic) double forceScrubRewindFactor; // @synthesize forceScrubRewindFactor=_forceScrubRewindFactor;
-@property(nonatomic) double forceScrubMaximumPressure; // @synthesize forceScrubMaximumPressure=_forceScrubMaximumPressure;
-@property(nonatomic) double forceScrubMinimumPressure; // @synthesize forceScrubMinimumPressure=_forceScrubMinimumPressure;
-@property(nonatomic) _Bool allowPlayerReuse; // @synthesize allowPlayerReuse=_allowPlayerReuse;
 @property(nonatomic) _Bool allowVideoPreRoll; // @synthesize allowVideoPreRoll=_allowVideoPreRoll;
 @property(nonatomic) _Bool allowFrameBlending; // @synthesize allowFrameBlending=_allowFrameBlending;
 @property(nonatomic) _Bool useDedicatedQueues; // @synthesize useDedicatedQueues=_useDedicatedQueues;

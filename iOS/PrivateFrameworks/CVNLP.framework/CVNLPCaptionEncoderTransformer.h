@@ -9,9 +9,14 @@
     void *encoderPlan;
     void *encoderCtx;
     CDStruct_2bc666a5 encoderNet;
+    vector_bfe5b09a encoderInputNames;
     CDStruct_0a65202a attFeatsBlob;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
+- (void)computeCaptionForVideoPixelBufferImpl:(void *)arg1 outputs:(id *)arg2;
+- (void)computeCaptionForVideoPixelBuffer:(void *)arg1 outputs:(id *)arg2;
 - (void)computeCaptionForPixelBufferImpl:(struct __CVBuffer *)arg1 outputs:(id *)arg2;
 - (void)computeCaptionForPixelBuffer:(struct __CVBuffer *)arg1 outputs:(id *)arg2;
 - (void)computeCaptionForImageImpl:(struct vImage_Buffer *)arg1 outputs:(id *)arg2;

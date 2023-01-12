@@ -38,7 +38,7 @@
 @property(nonatomic, getter=isMicrophoneEnabled) _Bool microphoneEnabled; // @synthesize microphoneEnabled=_microphoneEnabled;
 @property(nonatomic) __weak id <HFCameraLiveStreamControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)cameraUserSettingsDidUpdate:(id)arg1;
-@property(readonly, copy) NSString *description;
+@property(readonly, copy) NSString *debugDescription;
 - (void)cameraStreamControl:(id)arg1 didStopStreamWithError:(id)arg2;
 - (void)cameraStreamControlDidStartStream:(id)arg1;
 - (void)cameraSnapshotControlDidUpdateMostRecentSnapshot:(id)arg1;
@@ -59,7 +59,7 @@
 - (id)init;
 
 // Remaining properties
-@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

@@ -11,13 +11,12 @@
 @interface ICStoreRadioStreamAssetInfo : NSObject
 {
     NSDictionary *_itemResponseDictionary;
-    _Bool _iTunesStoreStream;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic, getter=isiTunesStoreStream) _Bool iTunesStoreStream; // @synthesize iTunesStoreStream=_iTunesStoreStream;
 - (long long)ICStoreRadioStreamProtocolWithString:(id)arg1;
 - (long long)ICStoreRadioStreamFlavorWithString:(id)arg1;
+@property(readonly, nonatomic, getter=isiTunesStoreStream) _Bool iTunesStoreStream;
 @property(readonly, copy, nonatomic) NSURL *keyServerURL;
 @property(readonly, copy, nonatomic) NSURL *keyCertificateURL;
 @property(readonly, copy, nonatomic) NSURL *streamURL;

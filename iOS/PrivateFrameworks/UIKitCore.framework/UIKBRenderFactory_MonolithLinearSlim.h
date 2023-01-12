@@ -15,6 +15,9 @@ __attribute__((visibility("hidden")))
 - (id)_variantTraitsForKeyplaneSwitchKey:(id)arg1 onKeyplane:(id)arg2;
 - (id)_activeTraitsForKeyplaneSwitchKey:(id)arg1 onKeyplane:(id)arg2;
 - (id)_enabledTraitsForKeyplaneSwitchKey:(id)arg1 onKeyplane:(id)arg2;
+- (void)configureCornersOnGeometry:(id)arg1 forKey:(id)arg2;
+- (struct CGPoint)_textOffsetForKey:(id)arg1;
+- (void)configureSymbolStyle:(id)arg1 forActiveKeyplaneSwitchKey:(id)arg2;
 - (void)configureSymbolStyle:(id)arg1 forEnabledKeyplaneSwitchKey:(id)arg2;
 - (struct CGRect)spaceDisplayFrameFromRect:(struct CGRect)arg1;
 - (struct CGRect)spaceSymbolFrameFromRect:(struct CGRect)arg1;

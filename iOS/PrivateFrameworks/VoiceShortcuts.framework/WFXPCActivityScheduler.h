@@ -11,15 +11,18 @@
 @interface WFXPCActivityScheduler : NSObject
 {
     NSString *_activityIdentifier;
+    struct _xpc_activity_eligibility_changed_handler_s *_eligibilityChangedHandler;
 }
 
 + (id)activatedSchedulerWithActivityIdentifier:(id)arg1 runHandler:(CDUnknownBlockType)arg2;
 + (id)activatedSchedulerWithActivityIdentifier:(id)arg1 checkInHandler:(CDUnknownBlockType)arg2 runHandler:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
+@property(nonatomic) struct _xpc_activity_eligibility_changed_handler_s *eligibilityChangedHandler; // @synthesize eligibilityChangedHandler=_eligibilityChangedHandler;
 @property(readonly, nonatomic) NSString *activityIdentifier; // @synthesize activityIdentifier=_activityIdentifier;
 - (void)scheduleWithRunHandler:(CDUnknownBlockType)arg1;
 - (void)scheduleWithCheckInHandler:(CDUnknownBlockType)arg1 runHandler:(CDUnknownBlockType)arg2;
 - (void)invalidate;
+- (void)dealloc;
 - (id)initWithActivityIdentifier:(id)arg1;
 
 @end

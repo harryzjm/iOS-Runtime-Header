@@ -10,13 +10,16 @@
 
 @interface SBPortalView : UIView
 {
+    _Bool _passesTouchesThrough;
     UIView *_sourceView;
 }
 
 + (Class)layerClass;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool passesTouchesThrough; // @synthesize passesTouchesThrough=_passesTouchesThrough;
 @property(nonatomic) __weak UIView *sourceView; // @synthesize sourceView=_sourceView;
 @property(readonly, nonatomic) CAPortalLayer *portalLayer; // @dynamic portalLayer;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)description;
 @property(nonatomic) _Bool allowsBackdropGroups; // @dynamic allowsBackdropGroups;
 @property(nonatomic) _Bool matchesPosition; // @dynamic matchesPosition;

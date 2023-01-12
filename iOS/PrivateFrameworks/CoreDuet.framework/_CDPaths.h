@@ -20,6 +20,7 @@
 + (id)policiesConfigPath;
 + (id)userKnowledgeDirectory;
 + (id)knowledgeDirectory;
++ (id)modelDirectory;
 + (id)peopleDirectory;
 + (id)defaultSleepPath;
 + (id)otaSleepPath;

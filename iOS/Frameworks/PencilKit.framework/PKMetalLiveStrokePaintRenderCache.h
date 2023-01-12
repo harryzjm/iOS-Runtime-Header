@@ -8,7 +8,7 @@
 
 #import <PencilKit/PKStrokeRenderCache-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString;
+@class NSMutableArray, NSString;
 
 @interface PKMetalLiveStrokePaintRenderCache : NSObject <PKStrokeRenderCache>
 {
@@ -20,15 +20,10 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) struct CGRect animatedStrokeBounds; // @synthesize animatedStrokeBounds=_animatedStrokeBounds;
-@property(nonatomic) double duration; // @synthesize duration=_duration;
-@property(nonatomic) double startTime; // @synthesize startTime=_startTime;
 - (_Bool)lockPurgeableResourcesAddToSet:(id)arg1;
 - (_Bool)isCompatibleWithInk:(id)arg1;
 - (_Bool)needsCompute;
 - (unsigned long long)cacheCost;
-@property(readonly, nonatomic) NSArray *buffers; // @dynamic buffers;
-- (void)addBuffer:(id)arg1;
 - (id)init;
 
 // Remaining properties

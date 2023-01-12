@@ -16,6 +16,7 @@
 
 @optional
 - (id <AVTCacheableResourceChangeToken>)tokenForObservingChangesWithHandler:(void (^)(void))arg1;
+- (NSString *)persistentDataHashForScope:(id <AVTCacheableResourceScope>)arg1;
 - (NSString *)persistentIdentifierForScope:(id <AVTCacheableResourceScope>)arg1;
 @end
 

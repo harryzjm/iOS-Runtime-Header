@@ -13,6 +13,7 @@
     NSPointerArray *_delegates;
 }
 
++ (_Bool)isSyncStatusChangeNotification:(id)arg1;
 + (id)changedIdentifiersForNotification:(id)arg1;
 + (id)updatedObjectFor:(id)arg1 changeNotification:(id)arg2;
 - (void).cxx_destruct;
@@ -20,7 +21,6 @@
 - (void)objectsChangedNotification:(id)arg1;
 - (id)_orderedDelegates;
 - (void)registerDelegate:(id)arg1;
-- (void)dealloc;
 - (id)init;
 
 @end

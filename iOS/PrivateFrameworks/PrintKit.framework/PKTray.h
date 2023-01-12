@@ -19,6 +19,7 @@
 @property(retain) NSDictionary *trayDict; // @synthesize trayDict=_trayDict;
 - (id)description;
 @property(readonly) _Bool isEmpty; // @dynamic isEmpty;
+- (id)mediaName;
 @property(readonly) NSString *localizedName;
 @property(readonly) NSString *name; // @dynamic name;
 - (void)dealloc;

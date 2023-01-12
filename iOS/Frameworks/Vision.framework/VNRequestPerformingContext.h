@@ -13,9 +13,10 @@
 __attribute__((visibility("hidden")))
 @interface VNRequestPerformingContext : NSObject <VNImageBufferProviding>
 {
+    unsigned long long _serialNumber;
     VNSession *_session;
     unsigned int _qosClass;
-    VNRequestPerformer *_requestPerformer_DO_NOT_DIRECTLY_ACCESS;
+    VNRequestPerformer *_weakRequestPerformer;
     VNImageBuffer *_imageBuffer_DO_NOT_DIRECTLY_ACCESS;
     NSMapTable *_requestToObservationsCacheKeyMap;
     VNObservationsCache *_observationsCache;
@@ -23,21 +24,19 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (id)previousSequencedObservationsForRequest:(id)arg1;
-- (void)recordSequencedObservationsForRequest:(id)arg1;
-- (id)cachedObservationsForRequest:(id)arg1;
-- (_Bool)cacheObservationsForRequest:(id)arg1;
+- (id)previousSequencedObservationsAcceptedByRequest:(id)arg1;
+- (void)recordSequencedObservationsOfRequest:(id)arg1;
+- (id)cachedObservationsAcceptedByRequest:(id)arg1;
+- (_Bool)cacheObservationsOfRequest:(id)arg1;
 - (id)imageBufferAndReturnError:(id *)arg1;
 - (unsigned int)qosClass;
 - (id)requestForensics;
-- (_Bool)performDependentRequests:(id)arg1 onBehalfOfRequest:(id)arg2 error:(id *)arg3;
 - (id)requestPerformerAndReturnError:(id *)arg1;
 @property(readonly) VNSession *session;
+@property(readonly) unsigned long long serialNumber;
 - (id)_observationsCacheKeyForRequest:(id)arg1;
 - (id)initWithSession:(id)arg1 requestPerformer:(id)arg2 imageBuffer:(id)arg3 forensics:(id)arg4 observationsCache:(id)arg5 qosClass:(unsigned int)arg6;
 - (id)initWithSession:(id)arg1 requestPerformer:(id)arg2 imageBuffer:(id)arg3 forensics:(id)arg4 observationsCache:(id)arg5;
-- (id)modelRequestHandlerAndReturnError:(id *)arg1;
-- (void)setModelRequestHandler:(id)arg1;
 
 @end
 

@@ -24,6 +24,7 @@
 - (_Bool)isFrontmostStatusBarPartHidden:(long long)arg1;
 - (_Bool)isFrontmostStatusBarHidden;
 - (id)trailingStatusBarStyleRequest;
+- (id)leadingStatusBarStyleRequest;
 - (id)frontmostStatusBarStyleRequest;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
@@ -32,6 +33,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 - (void)handleStatusBarTapWithEvent:(id)arg1;
+- (void)resetStatusBar:(id)arg1;
 - (void)recycleStatusBar:(id)arg1;
 - (void)_removeStatusBarContainer:(id)arg1;
 - (id)createStatusBarWithReason:(id)arg1 withFrame:(struct CGRect)arg2;

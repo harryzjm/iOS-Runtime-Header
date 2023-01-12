@@ -8,9 +8,11 @@
 
 @interface NSDictionary (WLKHashingAdditions)
 - (unsigned long long)wlk_deepHash;
+- (id)wlk_dictionaryByReplacingOccurrencesOfKey:(id)arg1 with:(id)arg2;
 - (id)wlk_dictionaryDifference:(id)arg1;
 - (id)wlk_caseInsensitiveValueForKey:(id)arg1;
 - (id)_lookupValueForKey:(id)arg1 expectedClass:(Class)arg2;
+- (id)wlk_urlForKey:(id)arg1;
 - (id)wlk_dataForKey:(id)arg1;
 - (id)wlk_arrayForKey:(id)arg1;
 - (id)wlk_dictionaryForKey:(id)arg1;

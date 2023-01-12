@@ -11,7 +11,6 @@
     long long _orientation;
 }
 
-@property(nonatomic) long long orientation; // @synthesize orientation=_orientation;
 - (long long)_accessibilityOrientation;
 - (_Bool)_accessibilityIsScrollBarIndicator;
 

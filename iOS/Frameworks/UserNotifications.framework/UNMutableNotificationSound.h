@@ -19,6 +19,7 @@
 @property(copy, nonatomic) NSString *toneFileName; // @dynamic toneFileName;
 @property(nonatomic) _Bool shouldRepeat; // @dynamic shouldRepeat;
 @property(nonatomic) _Bool shouldIgnoreRingerSwitch; // @dynamic shouldIgnoreRingerSwitch;
+@property(nonatomic) _Bool shouldIgnoreAccessibilityDisabledVibrationSetting; // @dynamic shouldIgnoreAccessibilityDisabledVibrationSetting;
 @property(nonatomic) double maximumDuration; // @dynamic maximumDuration;
 @property(nonatomic, getter=isCritical) _Bool critical; // @dynamic critical;
 @property(copy, nonatomic) NSNumber *audioVolume; // @dynamic audioVolume;

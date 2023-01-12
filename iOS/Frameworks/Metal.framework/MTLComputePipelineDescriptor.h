@@ -13,10 +13,12 @@
 
 @interface MTLComputePipelineDescriptor : NSObject <NSCopying>
 {
+    NSArray *_insertLibraries;
 }
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)alloc;
+@property(copy, nonatomic) NSArray *insertLibraries; // @synthesize insertLibraries=_insertLibraries;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)reset;
 
@@ -25,11 +27,11 @@
 @property(readonly) MTLPipelineBufferDescriptorArray *buffers; // @dynamic buffers;
 @property(retain, nonatomic) id <MTLFunction> computeFunction; // @dynamic computeFunction;
 @property(nonatomic) _Bool forceResourceIndex; // @dynamic forceResourceIndex;
-@property(copy, nonatomic) NSArray *insertLibraries; // @dynamic insertLibraries;
 @property(copy, nonatomic) NSString *label; // @dynamic label;
 @property(copy, nonatomic) MTLLinkedFunctions *linkedFunctions; // @dynamic linkedFunctions;
 @property(nonatomic) unsigned long long maxCallStackDepth; // @dynamic maxCallStackDepth;
 @property(nonatomic) unsigned long long maxTotalThreadsPerThreadgroup; // @dynamic maxTotalThreadsPerThreadgroup;
+@property(copy, nonatomic) NSArray *preloadedLibraries; // @dynamic preloadedLibraries;
 @property(nonatomic) unsigned long long resourceIndex; // @dynamic resourceIndex;
 @property(copy, nonatomic) MTLStageInputOutputDescriptor *stageInputDescriptor; // @dynamic stageInputDescriptor;
 @property(nonatomic) _Bool supportAddingBinaryFunctions; // @dynamic supportAddingBinaryFunctions;

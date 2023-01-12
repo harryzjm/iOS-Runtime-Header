@@ -18,24 +18,26 @@
     unsigned long long _numberOfDimensions;
     unsigned int _dataType;
     NSString *_label;
-    struct MPSDevice *_device;
+    void *_device;
     MPSNDArray *_parent;
     struct MPSAutoBuffer _buffer;
+    struct __IOSurface *_iosurface;
     unsigned long long _offset;
     unsigned long long _rowBytes;
-    struct MPSLibrary *_library;
+    void *_library;
     _Bool _isTemporary;
 }
 
 + (id)defaultAllocator;
-+ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
++ (const struct MPSLibraryInfo *)libraryInfo:(void *)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, retain, nonatomic) MPSNDArray *parent; // @synthesize parent=_parent;
 @property(readonly, nonatomic) unsigned long long numberOfDimensions; // @synthesize numberOfDimensions=_numberOfDimensions;
 @property(readonly, nonatomic) unsigned int dataType; // @synthesize dataType=_dataType;
 @property(copy) NSString *label; // @synthesize label=_label;
-- (id)checkNDArray:(float *)arg1 nativeUlps:(float)arg2 absoluteErr:(float)arg3;
+- (id)checkNDArray:(const float *)arg1 nativeUlps:(float)arg2 absoluteErr:(float)arg3 PSNR:(float)arg4;
+- (id)checkNDArray:(const float *)arg1 nativeUlps:(float)arg2 absoluteErr:(float)arg3;
 - (void)printNDArrayToFile:(struct __sFILE *)arg1;
 - (void)printNDArray;
 - (id)debugDescription;

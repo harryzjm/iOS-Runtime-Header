@@ -11,11 +11,14 @@
 @property(nonatomic, getter=isActive) _Bool active;
 @property(readonly, nonatomic) _Bool contentRequiresGroupOpacity;
 @property(nonatomic) long long orientation;
+@property(nonatomic) unsigned long long maskedCorners;
 @property(nonatomic) double cornerRadius;
 - (void)invalidate;
 
 @optional
 - (_Bool)hasSceneOverlayView;
+- (void)setUsesNonuniformScaling:(_Bool)arg1;
+- (void)setShouldStretchToBounds:(_Bool)arg1;
 - (void)setShowingIconOverlayView:(_Bool)arg1;
 - (void)setShouldUseBrightMaterial:(_Bool)arg1;
 @end

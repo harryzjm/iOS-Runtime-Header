@@ -17,6 +17,7 @@
 - (void)setNeedsLayoutForInteractionController:(SBPIPInteractionController *)arg1 traits:(unsigned long long)arg2 withReason:(unsigned long long)arg3 behavior:(int)arg4 completion:(void (^)(_Bool, _Bool))arg5;
 
 @optional
+- (void)interactionControllerPanGestureDidEnd:(SBPIPInteractionController *)arg1;
 - (void)interactionControllerDidUpdateEdgeInsets:(SBPIPInteractionController *)arg1;
 - (void)interactionControllerDidEndAllInteractions:(SBPIPInteractionController *)arg1;
 - (void)interactionControllerDidBeginInteraction:(SBPIPInteractionController *)arg1 forGestureRecognizer:(UIGestureRecognizer *)arg2;

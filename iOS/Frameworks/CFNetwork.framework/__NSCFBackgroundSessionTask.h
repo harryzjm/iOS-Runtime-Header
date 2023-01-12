@@ -19,6 +19,7 @@
 - (void)set_TLSMinimumSupportedProtocolVersion:(unsigned short)arg1;
 - (void)set_discretionaryOverride:(long long)arg1;
 - (id)_timingData;
+- (void)setDelegate:(id)arg1;
 - (void)setTaskDescription:(id)arg1;
 - (void)_onSessionQueue_disavow;
 - (void)_onqueue_adjustBytesPerSecondLimit:(long long)arg1;

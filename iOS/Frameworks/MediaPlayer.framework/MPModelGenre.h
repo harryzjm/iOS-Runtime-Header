@@ -14,6 +14,7 @@
 + (id)__artworkCatalogBlock_KEY;
 + (id)__name_KEY;
 + (id)kindWithAlbumKind:(id)arg1;
++ (long long)genericObjectType;
 - (id)artworkCatalog;
 - (id)humanDescription;
 

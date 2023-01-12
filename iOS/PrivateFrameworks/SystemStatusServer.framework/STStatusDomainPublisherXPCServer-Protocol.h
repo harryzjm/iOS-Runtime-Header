@@ -6,13 +6,12 @@
 
 #import <SystemStatusServer/NSObject-Protocol.h>
 
-@class NSSet;
-@protocol STStatusDomainData, STStatusDomainDataDiff;
+@protocol STStatusDomainData, STStatusDomainData><STStatusDomainDataDifferencing, STStatusDomainDataDiff;
 
 @protocol STStatusDomainPublisherXPCServer <NSObject>
-- (void)publishDiff:(id <STStatusDomainDataDiff>)arg1 forDomain:(unsigned long long)arg2 discardingOnExit:(_Bool)arg3 reply:(void (^)(void))arg4;
+- (void)publishDiff:(id <STStatusDomainDataDiff>)arg1 forDomain:(unsigned long long)arg2 replacingData:(_Bool)arg3 discardingOnExit:(_Bool)arg4 reply:(void (^)(void))arg5;
 - (void)publishData:(id <STStatusDomainData>)arg1 forDomain:(unsigned long long)arg2 discardingOnExit:(_Bool)arg3 reply:(void (^)(void))arg4;
-- (void)unregisterFromPublishingDomains:(NSSet *)arg1;
-- (void)registerToPublishDomains:(NSSet *)arg1;
+- (void)unregisterFromPublishingDomain:(unsigned long long)arg1;
+- (void)registerToPublishDomain:(unsigned long long)arg1 fallbackData:(id <STStatusDomainData><STStatusDomainDataDifferencing>)arg2;
 @end
 

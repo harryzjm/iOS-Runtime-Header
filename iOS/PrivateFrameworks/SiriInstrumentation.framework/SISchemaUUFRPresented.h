@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProtocolBuffer/PBCodable.h>
-
 @class NSData, NSString, SISchemaViewContainer;
 
-@interface SISchemaUUFRPresented : PBCodable
+@interface SISchemaUUFRPresented
 {
     SISchemaViewContainer *_viewContainer;
     NSString *_errorDomain;

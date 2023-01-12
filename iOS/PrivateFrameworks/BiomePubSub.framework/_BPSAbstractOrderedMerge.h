@@ -10,44 +10,50 @@
 @interface _BPSAbstractOrderedMerge
 {
     struct os_unfair_lock_s _lock;
-    struct os_unfair_lock_s _downstreamLock;
+    struct os_unfair_recursive_lock_s _downstreamLock;
     _Bool _recursion;
     _Bool _finished;
+    _Bool _errored;
     _Bool _cancelled;
     unsigned long long _upstreamCount;
     id <BPSSubscriber> _downstream;
     NSMutableArray *_subscriptions;
-    NSMutableArray *_activeSubscriptions;
     NSMutableArray *_buffers;
-    NSMutableArray *_overflowBuffer;
-    NSMutableSet *_currentlyProcessing;
+    NSMutableArray *_requestsPerSubscription;
+    NSMutableArray *_upstreamBookmarks;
     NSMutableSet *_completedUpstreamIndexes;
     long long _demand;
-    unsigned long long _subscribedCount;
+    unsigned long long _finishCount;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) unsigned long long subscribedCount; // @synthesize subscribedCount=_subscribedCount;
+@property(nonatomic) unsigned long long finishCount; // @synthesize finishCount=_finishCount;
 @property(nonatomic) long long demand; // @synthesize demand=_demand;
 @property(nonatomic) _Bool cancelled; // @synthesize cancelled=_cancelled;
+@property(nonatomic) _Bool errored; // @synthesize errored=_errored;
 @property(nonatomic) _Bool finished; // @synthesize finished=_finished;
 @property(nonatomic) _Bool recursion; // @synthesize recursion=_recursion;
 @property(retain, nonatomic) NSMutableSet *completedUpstreamIndexes; // @synthesize completedUpstreamIndexes=_completedUpstreamIndexes;
-@property(retain, nonatomic) NSMutableSet *currentlyProcessing; // @synthesize currentlyProcessing=_currentlyProcessing;
-@property(retain, nonatomic) NSMutableArray *overflowBuffer; // @synthesize overflowBuffer=_overflowBuffer;
+@property(retain, nonatomic) NSMutableArray *upstreamBookmarks; // @synthesize upstreamBookmarks=_upstreamBookmarks;
+@property(retain, nonatomic) NSMutableArray *requestsPerSubscription; // @synthesize requestsPerSubscription=_requestsPerSubscription;
 @property(retain, nonatomic) NSMutableArray *buffers; // @synthesize buffers=_buffers;
-@property(retain, nonatomic) NSMutableArray *activeSubscriptions; // @synthesize activeSubscriptions=_activeSubscriptions;
 @property(retain, nonatomic) NSMutableArray *subscriptions; // @synthesize subscriptions=_subscriptions;
 @property(retain, nonatomic) id <BPSSubscriber> downstream; // @synthesize downstream=_downstream;
 @property(nonatomic) unsigned long long upstreamCount; // @synthesize upstreamCount=_upstreamCount;
+- (id)newBookmark;
+- (void)updateBookmarksWhenLockedForIndex:(unsigned long long)arg1;
 - (id)upstreamSubscriptions;
 - (void)cancel;
 - (long long)compareFirst:(id)arg1 withSecond:(id)arg2;
-- (id)nextValue;
-- (id)nextProcessingIndex;
+- (id)nextValueIndex:(id *)arg1;
+- (void)flushBufferAndRequestMoreWhileLocked;
 - (void)receiveCompletion:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)_guardedBecomeTerminal;
+- (void)_completeWhileLockedWithCompletion:(id)arg1;
+- (_Bool)_isBuffersEmpty;
 - (long long)receiveInput:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)receiveSubscription:(id)arg1 atIndex:(unsigned long long)arg2;
+- (_Bool)isWaitingForMoreValues;
 - (void)requestDemand:(long long)arg1;
 - (id)initWithDownstream:(id)arg1 upstreamCount:(unsigned long long)arg2;
 

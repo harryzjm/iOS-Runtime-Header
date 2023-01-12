@@ -14,6 +14,7 @@
     MISSING_TYPE *reminderChangeItem;
     MISSING_TYPE *pendingMoveTargetList;
     MISSING_TYPE *undoManager;
+    MISSING_TYPE *pendingCustomSmartListToMatch;
 }
 
 @end

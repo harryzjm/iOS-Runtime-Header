@@ -27,7 +27,7 @@
 - (int)supportsEmailFlagging;
 - (int)supportsMailboxSearch;
 - (_Bool)supportsAttachments;
-- (_Bool)supportsUniqueServerId;
+- (int)supportsUniqueServerId;
 - (_Bool)useEmptyAttendees;
 - (_Bool)supportsForwarderTracking;
 - (_Bool)supportsMailboxEnhancedSearch;

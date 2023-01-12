@@ -19,11 +19,12 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (oneway void)handleCommand:(id)arg1;
 - (oneway void)setResourcesUsageReductionReasons:(unsigned long long)arg1;
+- (oneway void)setStashedOrUnderLock:(_Bool)arg1;
 - (oneway void)actionButtonTapped;
 - (oneway void)hostedWindowSizeChangeEnded;
 - (oneway void)hostedWindowSizeChangeBegan;
 - (oneway void)updateHostedWindowSize:(struct CGSize)arg1 animationType:(long long)arg2 initialSpringVelocity:(double)arg3 synchronizationFence:(id)arg4;
-- (oneway void)pictureInPictureCancelled;
+- (oneway void)pictureInPictureInvalidated;
 - (oneway void)updatePictureInPicturePossible:(_Bool)arg1;
 - (oneway void)pictureInPictureCancelRequestedAnimated:(_Bool)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (oneway void)endTwoStagePictureInPictureStopWithCompletionBlock:(CDUnknownBlockType)arg1;

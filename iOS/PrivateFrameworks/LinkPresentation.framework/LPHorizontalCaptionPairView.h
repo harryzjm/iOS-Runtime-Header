@@ -7,7 +7,7 @@
 #import <LinkPresentation/LPContentInsettable-Protocol.h>
 #import <LinkPresentation/LPTextStyleable-Protocol.h>
 
-@class LPCaptionButtonPresentationProperties, LPTextView, UIButton;
+@class LPCaptionButtonPresentationProperties, LPTextView, NSRegularExpression, UIButton;
 
 __attribute__((visibility("hidden")))
 @interface LPHorizontalCaptionPairView <LPTextStyleable, LPContentInsettable>
@@ -18,22 +18,25 @@ __attribute__((visibility("hidden")))
     struct UIEdgeInsets _contentInset;
     long long _balancingMode;
     UIButton *_button;
+    long long _overrideMaximumNumberOfLines;
+    NSRegularExpression *_emphasizedTextExpression;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSRegularExpression *emphasizedTextExpression; // @synthesize emphasizedTextExpression=_emphasizedTextExpression;
+@property(nonatomic) long long overrideMaximumNumberOfLines; // @synthesize overrideMaximumNumberOfLines=_overrideMaximumNumberOfLines;
 - (void)buttonPressed:(id)arg1;
 - (struct CGSize)_layoutCaptionPairForSize:(struct CGSize)arg1 applyingLayout:(_Bool)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutComponentView;
-- (void)setOverrideMaximumNumberOfLines:(long long)arg1;
 - (long long)computedNumberOfLines;
 - (double)descender;
 - (double)ascender;
 - (double)lastLineDescent;
 - (double)firstLineLeading;
 - (void)setContentInset:(struct UIEdgeInsets)arg1;
-- (id)initWithLeadingText:(id)arg1 leadingStyle:(id)arg2 trailingText:(id)arg3 trailingStyle:(id)arg4 button:(id)arg5 balancingMode:(long long)arg6;
-- (id)init;
+- (id)initWithHost:(id)arg1 leadingText:(id)arg2 leadingStyle:(id)arg3 trailingText:(id)arg4 trailingStyle:(id)arg5 button:(id)arg6 balancingMode:(long long)arg7;
+- (id)initWithHost:(id)arg1;
 
 @end
 

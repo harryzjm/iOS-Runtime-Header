@@ -9,6 +9,7 @@
 @class CCUIModuleInstanceManager;
 
 @protocol CCUIModuleInstanceManagerObserver <NSObject>
+- (void)moduleInstancesLayoutChangedForModuleInstanceManager:(CCUIModuleInstanceManager *)arg1;
 - (void)moduleInstancesChangedForModuleInstanceManager:(CCUIModuleInstanceManager *)arg1;
 @end
 

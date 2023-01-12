@@ -6,15 +6,15 @@
 
 @interface TSCH3DTexCoordGenerationCylinder
 {
-    box_a3bd9649 mBbox;
+    box_c9ef104e _bbox;
 }
 
-+ (id)generatorWithBBox:(const box_a3bd9649 *)arg1 transform:(const tmat4x4_3074befe *)arg2;
-+ (id)generatorWithBBox:(const box_a3bd9649 *)arg1;
++ (id)generatorWithBBox:(const void *)arg1 transform:(const void *)arg2;
++ (id)generatorWithBBox:(const void *)arg1;
 - (id).cxx_construct;
-- (void)generateFromVertexArray:(const tvec3_17f03ce0 *)arg1 normalArray:(const tvec3_17f03ce0 *)arg2 numVertices:(long long)arg3 destination4D:(tvec4_ac57c72d *)arg4;
-- (id)initWithBBox:(const box_a3bd9649 *)arg1;
-- (id)initWithBBox:(const box_a3bd9649 *)arg1 transform:(const tmat4x4_3074befe *)arg2;
+- (void)generateFromVertexArray:(const void *)arg1 normalArray:(const void *)arg2 numVertices:(long long)arg3 destination4D:(void *)arg4;
+- (id)initWithBBox:(const void *)arg1;
+- (id)initWithBBox:(const void *)arg1 transform:(const void *)arg2;
 
 @end
 

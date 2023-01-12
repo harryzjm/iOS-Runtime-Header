@@ -67,67 +67,6 @@ typedef struct {
     double longitude;
 } CDStruct_2c43369c;
 
-typedef struct {
-    float _field1;
-    float _field2;
-} CDStruct_b2fbf00d;
-
-typedef struct {
-    struct {
-        id _field1;
-        char *_field2;
-        unsigned long long _field3;
-        unsigned long long _field4;
-        unsigned long long _field5;
-        unsigned long long _field6;
-        unsigned int _field7;
-        unsigned long long _field8;
-        _Bool _field9;
-        unsigned long long _field10;
-        float _field11;
-        unsigned long long _field12;
-        id _field13;
-        int _field14;
-    } _field1;
-    unsigned long long _field2;
-    unsigned long long _field3;
-    int _field4;
-    int _field5;
-    int _field6;
-    unsigned long long _field7;
-    unsigned long long _field8;
-    unsigned int _field9;
-    unsigned int _field10;
-    union {
-        struct {
-            CDStruct_b2fbf00d _field1;
-            CDStruct_b2fbf00d _field2;
-        } _field1;
-        struct {
-            float _field1;
-            float _field2;
-            float _field3;
-            float _field4;
-        } _field2;
-    } _field11;
-    struct *_field12;
-    struct {
-        unsigned short _field1[2];
-        unsigned short _field2[2];
-    } _field13;
-    unsigned char _field14;
-    _Bool _field15;
-    unsigned char _field16;
-    _Bool _field17;
-    _Bool _field18;
-    unsigned char _field19;
-    _Bool _field20;
-    unsigned short _field21;
-    struct _NSRange _field22;
-    _Bool _field23;
-    unsigned int _field24;
-} CDStruct_66740237;
-
 // Template types
 typedef struct Matrix<double, 3, 1> {
     double _field1[3];

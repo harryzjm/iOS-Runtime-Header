@@ -10,7 +10,7 @@
 #import <TextInput/NSSecureCoding-Protocol.h>
 #import <TextInput/TIKeyboardCandidateCoding-Protocol.h>
 
-@class NSString, TIProactiveTrigger;
+@class NSArray, NSString, TIProactiveTrigger;
 
 @interface TIKeyboardCandidate : NSObject <NSCopying, NSSecureCoding, TIKeyboardCandidateCoding>
 {
@@ -19,24 +19,30 @@
     _Bool _asIsCandidate;
     _Bool _wubixingConvertedByPinyin;
     _Bool _prefixMatched;
+    unsigned short _supplementalItemPrefix;
     unsigned int _slotID;
     unsigned int _sourceMask;
     int _confidence;
+    unsigned int _typingEngine;
     NSString *_alternativeText;
     NSString *_annotationText;
     unsigned long long _customInfoType;
     unsigned long long _indexForMetrics;
     NSString *_responseKitCategory;
+    NSArray *_supplementalItemIdentifiers;
 }
 
 + (int)type;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned int typingEngine; // @synthesize typingEngine=_typingEngine;
 @property(readonly, nonatomic, getter=confidence) int confidence; // @synthesize confidence=_confidence;
 @property(readonly, nonatomic) unsigned int sourceMask; // @synthesize sourceMask=_sourceMask;
 @property(readonly, nonatomic, getter=isPrefixMatched) _Bool prefixMatched; // @synthesize prefixMatched=_prefixMatched;
 @property(readonly, nonatomic, getter=isWubixingConvertedByPinyin) _Bool wubixingConvertedByPinyin; // @synthesize wubixingConvertedByPinyin=_wubixingConvertedByPinyin;
 @property(readonly, nonatomic, getter=isAsIsCandidate) _Bool asIsCandidate; // @synthesize asIsCandidate=_asIsCandidate;
+@property(nonatomic) unsigned short supplementalItemPrefix; // @synthesize supplementalItemPrefix=_supplementalItemPrefix;
+@property(copy, nonatomic) NSArray *supplementalItemIdentifiers; // @synthesize supplementalItemIdentifiers=_supplementalItemIdentifiers;
 @property(nonatomic) _Bool isSendCurrentLocation; // @synthesize isSendCurrentLocation=_isSendCurrentLocation;
 @property(nonatomic) unsigned long long indexForMetrics; // @synthesize indexForMetrics=_indexForMetrics;
 @property(nonatomic) unsigned long long customInfoType; // @synthesize customInfoType=_customInfoType;
@@ -47,6 +53,7 @@
 - (id)candidateByReplacingWithCandidate:(id)arg1;
 - (void)encodeWithCandidateResultSetCoder:(id)arg1;
 - (id)initWithCandidateResultSetCoder:(id)arg1;
+@property(readonly, nonatomic, getter=isMecabraCandidate) _Bool mecabraCandidate;
 @property(readonly, nonatomic, getter=isInlineCandidate) _Bool inlineCandidate;
 @property(readonly, nonatomic, getter=isPartialCandidate) _Bool partialCandidate;
 @property(readonly, nonatomic, getter=isTransliterationCandidate) _Bool transliterationCandidate;
@@ -68,6 +75,8 @@
 @property(readonly, nonatomic) _Bool shouldInsertSpaceAfterSelection;
 @property(readonly, nonatomic) _Bool shouldAccept;
 @property(readonly, nonatomic, getter=isContinuousPathConversion) _Bool continuousPathConversion;
+@property(readonly, nonatomic) _Bool isAutocorrectionIgnoringCaseAndDiacriticsAndSupplementalItemPrefix;
+@property(readonly, nonatomic) _Bool isAutocorrectionIgnoringCaseAndSupplementalItemPrefix;
 @property(readonly, nonatomic) _Bool isAutocorrection;
 @property(readonly, nonatomic) _Bool isForShortcutConversion;
 @property(readonly) unsigned long long hash;
@@ -78,6 +87,8 @@
 @property(copy, nonatomic) NSString *label;
 @property(readonly, nonatomic) NSString *input;
 @property(readonly, nonatomic) _Bool isAddress;
+@property(readonly, nonatomic) NSString *inputWithoutSupplementalItemPrefix;
+@property(readonly, nonatomic, getter=isSupplementalItemCandidate) _Bool supplementalItemCandidate;
 @property(readonly, copy, nonatomic) NSString *responseKitCategory; // @synthesize responseKitCategory=_responseKitCategory;
 @property(readonly, nonatomic) TIProactiveTrigger *proactiveTrigger;
 @property(readonly, nonatomic) NSString *candidate;

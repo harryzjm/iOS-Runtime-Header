@@ -8,12 +8,12 @@
 
 #import <UserNotificationsUIKit/NCClickInteractionPresenterDelegate-Protocol.h>
 #import <UserNotificationsUIKit/PLContentSizeCategoryAdjusting-Protocol.h>
-#import <UserNotificationsUIKit/_UICursorInteractionDelegate-Protocol.h>
+#import <UserNotificationsUIKit/UIPointerInteractionDelegate-Protocol.h>
 
-@class NCClickInteractionPresenter, NCToggleControlPair, NSString, UILabel;
+@class NCClickInteractionPresenter, NCToggleControlPair, NSString, UILabel, UIPointerInteraction;
 @protocol NCToggleControlDelegate;
 
-@interface NCToggleControl : PLGlyphControl <NCClickInteractionPresenterDelegate, _UICursorInteractionDelegate, PLContentSizeCategoryAdjusting>
+@interface NCToggleControl : PLGlyphControl <NCClickInteractionPresenterDelegate, UIPointerInteractionDelegate, PLContentSizeCategoryAdjusting>
 {
     _Bool _adjustsFontForContentSizeCategory;
     _Bool _expanded;
@@ -26,6 +26,7 @@
     UILabel *_titleLabel;
     NCToggleControlPair *_managingPair;
     NCClickInteractionPresenter *_previewInteractionPlatterPresenter;
+    UIPointerInteraction *_pointerInteraction;
     struct CGSize _cachedEffectiveMaxExpandedSize;
     struct CGSize _cachedEffectiveMaxUnexpandedSize;
 }
@@ -36,6 +37,7 @@
 + (id)showLessControlWithMaterialRecipe:(long long)arg1;
 + (id)dismissControlWithMaterialRecipe:(long long)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIPointerInteraction *pointerInteraction; // @synthesize pointerInteraction=_pointerInteraction;
 @property(nonatomic, getter=_wasExpandedPriorToControlEvent) _Bool expandedPriorToControlEvent; // @synthesize expandedPriorToControlEvent=_expandedPriorToControlEvent;
 @property(retain, nonatomic, getter=_previewInteractionPlatterPresenter) NCClickInteractionPresenter *previewInteractionPlatterPresenter; // @synthesize previewInteractionPlatterPresenter=_previewInteractionPlatterPresenter;
 @property(nonatomic, getter=_managingPair, setter=_setManagingPair:) __weak NCToggleControlPair *managingPair; // @synthesize managingPair=_managingPair;
@@ -64,8 +66,8 @@
 - (void)_updateTitleLabelTextAttributes;
 - (id)_labelFont;
 - (void)_handleSecondaryClickEventForGestureRecognizer:(id)arg1;
-- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
-- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (_Bool)adjustForContentSizeCategoryChange;
 - (void)clickInteractionPresenterDidDismiss:(id)arg1;
 - (void)clickInteractionPresenterDidPresent:(id)arg1;

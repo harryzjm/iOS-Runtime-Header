@@ -6,8 +6,10 @@
 
 #import <CoreFollowUpUI/NSObject-Protocol.h>
 
+@class NSDictionary;
+
 @protocol FLExtensionHostContextInterface <NSObject>
-- (void)extensionDidFinishWithCompletionHandler:(void (^)(void))arg1;
+- (void)extensionDidFinishWithUserInfo:(NSDictionary *)arg1 completionHandler:(void (^)(void))arg2;
 - (void)extensionDidFinish;
 @end
 

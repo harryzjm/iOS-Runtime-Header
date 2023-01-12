@@ -8,26 +8,32 @@
 
 #import <SpringBoard/SBViewMorphAnimatorDataSource-Protocol.h>
 
-@class NSString;
+@class NSString, PGPictureInPictureController, SBPIPContentViewLayoutSettings, SBPIPController;
 
 @interface SBPIPMorphAnimatorDataSource : NSObject <SBViewMorphAnimatorDataSource>
 {
     _Bool _gestureInitiated;
     int _targetProcessIdentifier;
+    SBPIPController *_pipController;
+    PGPictureInPictureController *_pegasusController;
     NSString *_scenePersistenceIdentifier;
+    SBPIPContentViewLayoutSettings *_contentViewLayoutSettings;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) SBPIPContentViewLayoutSettings *contentViewLayoutSettings; // @synthesize contentViewLayoutSettings=_contentViewLayoutSettings;
 @property(readonly, nonatomic, getter=isGestureInitiated) _Bool gestureInitiated; // @synthesize gestureInitiated=_gestureInitiated;
-@property(readonly, nonatomic) NSString *scenePersistenceIdentifier; // @synthesize scenePersistenceIdentifier=_scenePersistenceIdentifier;
-@property(readonly, nonatomic) int targetProcessIdentifier; // @synthesize targetProcessIdentifier=_targetProcessIdentifier;
+@property(retain, nonatomic) NSString *scenePersistenceIdentifier; // @synthesize scenePersistenceIdentifier=_scenePersistenceIdentifier;
+@property(nonatomic) int targetProcessIdentifier; // @synthesize targetProcessIdentifier=_targetProcessIdentifier;
+@property(retain, nonatomic) PGPictureInPictureController *pegasusController; // @synthesize pegasusController=_pegasusController;
+@property(retain, nonatomic) SBPIPController *pipController; // @synthesize pipController=_pipController;
+- (double)sourceBlackCurtainCornerRadiusForAnimator:(id)arg1;
+- (double)sourceCornerRadiusForAnimator:(id)arg1;
 - (double)targetFinalCornerRadiusForAnimator:(id)arg1;
 - (struct CGRect)targetFinalFrameForAnimator:(id)arg1;
 - (struct CGRect)sourceAppLayoutFrameForAnimator:(id)arg1;
 - (struct CGRect)sourceContentFrameForAnimator:(id)arg1;
-- (_Bool)isContentFromFillGravityForAnimator:(id)arg1;
-- (id)init;
-- (id)initWithTargetProcessIdentifier:(int)arg1 scenePersistenceIdentifier:(id)arg2 gestureInitiated:(_Bool)arg3;
+- (id)initWithTargetProcessIdentifier:(int)arg1 scenePersistenceIdentifier:(id)arg2 gestureInitiated:(_Bool)arg3 pipController:(id)arg4 pegasusController:(id)arg5 contentViewLayoutSettings:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

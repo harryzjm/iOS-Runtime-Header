@@ -11,10 +11,10 @@
 
 @interface SCROBrailleDisplayAutoDetector : NSObject
 {
+    NSObject<OS_dispatch_source> *_serialSource;
     _Bool _isDetectingDisplays;
     struct IONotificationPort *_notificationPort;
     NSMutableDictionary *_iteratorDict;
-    NSObject<OS_dispatch_source> *_serialSource;
 }
 
 + (id)allocWithZone:(struct _NSZone *)arg1;

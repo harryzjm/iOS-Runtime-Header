@@ -4,19 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <NewsCore/FCOfflineArticleContributing-Protocol.h>
-#import <NewsCore/FCOperationThrottlerDelegate-Protocol.h>
+@class FCCloudContext, FCMTWriterLock, NSMutableDictionary;
 
-@class FCCloudContext, FCMTWriterLock, FCObservable, NSMutableDictionary, NSString;
-@protocol FCOperationThrottler;
-
-@interface FCReadingList <FCOperationThrottlerDelegate, FCOfflineArticleContributing>
+@interface FCReadingList
 {
-    FCObservable *_articleIDsToDownload;
-    long long _articleDownloadOptions;
     NSMutableDictionary *_entriesByArticleID;
     FCCloudContext *_cloudContext;
-    id <FCOperationThrottler> _articleIDsAvailableForOfflineReadingUpdateThrottler;
     FCMTWriterLock *_itemsLock;
 }
 
@@ -32,28 +25,13 @@
 + (_Bool)requiresPushNotificationSupport;
 + (id)desiredKeys;
 - (void).cxx_destruct;
-@property(retain, nonatomic) FCMTWriterLock *itemsLock; // @synthesize itemsLock=_itemsLock;
-@property(retain, nonatomic) id <FCOperationThrottler> articleIDsAvailableForOfflineReadingUpdateThrottler; // @synthesize articleIDsAvailableForOfflineReadingUpdateThrottler=_articleIDsAvailableForOfflineReadingUpdateThrottler;
-@property(retain, nonatomic) FCCloudContext *cloudContext; // @synthesize cloudContext=_cloudContext;
-@property(retain, nonatomic) NSMutableDictionary *entriesByArticleID; // @synthesize entriesByArticleID=_entriesByArticleID;
-@property(readonly, nonatomic) long long articleDownloadOptions; // @synthesize articleDownloadOptions=_articleDownloadOptions;
-@property(readonly, nonatomic) FCObservable *articleIDsToDownload; // @synthesize articleIDsToDownload=_articleIDsToDownload;
-- (id)_allSortedEntriesInReadingList;
-- (id)_allEntriesInReadingList;
-- (id)_readingListEntryForArticleID:(id)arg1;
-- (void)_addedArticleIDs:(id)arg1 removedArticleIDs:(id)arg2 eventInitiationLevel:(long long)arg3;
-- (void)prepareToContributeWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)operationThrottler:(id)arg1 performAsyncOperationWithCompletion:(CDUnknownBlockType)arg2;
 - (id)recordsForRestoringZoneName:(id)arg1;
 - (_Bool)canHelpRestoreZoneName:(id)arg1;
 - (id)allKnownRecordNamesWithinRecordZoneWithID:(id)arg1;
 - (void)handleSyncWithChangedRecords:(id)arg1 deletedRecordNames:(id)arg2;
 - (void)loadLocalCachesFromStore;
-- (void)expressInterestInOfflineArticlesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
-- (unsigned long long)_maxCountOfArticlesAvailableOfflineWithConfiguration:(id)arg1;
-- (void)_fetchArticleIDsAvailableForOfflineReadingWithCompletion:(CDUnknownBlockType)arg1;
 - (id)allNonConsumedArticleIDsIntersectingSet:(id)arg1;
 - (id)allNonConsumedArticleIDs;
 - (unsigned long long)countOfAllArticlesSavedOutsideOfNewsSince:(id)arg1;
@@ -65,12 +43,6 @@
 - (_Bool)isArticleOnReadingList:(id)arg1;
 - (_Bool)shouldHideHeadline:(id)arg1;
 - (id)initWithContext:(id)arg1 pushNotificationCenter:(id)arg2 storeDirectory:(id)arg3;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

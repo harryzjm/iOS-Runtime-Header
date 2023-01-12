@@ -20,13 +20,13 @@
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <PXZoomablePhotosInteractionDelegate> delegate; // @synthesize delegate=_delegate;
-@property(readonly, nonatomic) NSObject<PXAnonymousView> *view; // @synthesize view=_view;
+@property(nonatomic) __weak NSObject<PXAnonymousView> *view; // @synthesize view=_view;
 @property(readonly, nonatomic) PXZoomablePhotosViewModel *viewModel; // @synthesize viewModel=_viewModel;
 - (_Bool)handlePinch:(id)arg1;
 - (_Bool)_pinchInteractionShouldBegin;
 - (_Bool)handleTapOnAssetReference:(id)arg1;
 - (id)init;
-- (id)initWithZoomablePhotosViewModel:(id)arg1 view:(id)arg2;
+- (id)initWithZoomablePhotosViewModel:(id)arg1;
 
 @end
 

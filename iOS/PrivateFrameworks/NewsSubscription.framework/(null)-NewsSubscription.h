@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <NewsSubscription/UIGestureRecognizerDelegate-Protocol.h>
-
-@interface (null) (NewsSubscription) <UIGestureRecognizerDelegate>
-- (_Bool)gestureRecognizerShouldBegin:(id)arg1;
+@interface (null) (NewsSubscription)
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)viewWillLayoutSubviews;
+- (void)viewDidLoad;
 @end
 

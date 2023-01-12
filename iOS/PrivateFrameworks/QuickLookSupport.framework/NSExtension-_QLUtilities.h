@@ -7,6 +7,7 @@
 #import <Foundation/NSExtension.h>
 
 @interface NSExtension (_QLUtilities)
+- (_Bool)isGenerationPreview;
 - (id)QL_parentBundleID;
 - (_Bool)QL_isAppleExtension;
 @end

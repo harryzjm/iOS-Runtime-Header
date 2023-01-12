@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MusicLibrary/ML3AccountInformationProviding-Protocol.h>
+#import <MusicLibrary/_MSVAccountInformationProviding-Protocol.h>
 
 @class ACAccount, NSString;
 
-@interface ML3AccountStore : NSObject <ML3AccountInformationProviding>
+@interface ML3AccountStore : NSObject <_MSVAccountInformationProviding>
 {
 }
 

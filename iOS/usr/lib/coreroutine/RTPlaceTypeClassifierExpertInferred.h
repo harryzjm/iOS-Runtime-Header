@@ -8,17 +8,23 @@
 
 #import <coreroutine/RTPlaceTypeProvider-Protocol.h>
 
-@class NSString, RTLearnedLocationStore;
+@class NSString, RTDistanceCalculator, RTLearnedLocationStore, RTPlaceTypeClassifierMetricsCalculator, RTPlatform;
 
 @interface RTPlaceTypeClassifierExpertInferred : NSObject <RTPlaceTypeProvider>
 {
+    RTDistanceCalculator *_distanceCalculator;
     RTLearnedLocationStore *_learnedLocationStore;
+    RTPlaceTypeClassifierMetricsCalculator *_placeTypeClassifierMetricsCalculator;
+    RTPlatform *_platform;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) RTPlatform *platform; // @synthesize platform=_platform;
+@property(retain, nonatomic) RTPlaceTypeClassifierMetricsCalculator *placeTypeClassifierMetricsCalculator; // @synthesize placeTypeClassifierMetricsCalculator=_placeTypeClassifierMetricsCalculator;
 @property(retain, nonatomic) RTLearnedLocationStore *learnedLocationStore; // @synthesize learnedLocationStore=_learnedLocationStore;
+@property(retain, nonatomic) RTDistanceCalculator *distanceCalculator; // @synthesize distanceCalculator=_distanceCalculator;
 - (id)classifyWithError:(id *)arg1;
-- (id)initWithLearnedLocationStore:(id)arg1;
+- (id)initWithDistanceCalculator:(id)arg1 learnedLocationStore:(id)arg2 placeTypeClassifierMetricsCalculator:(id)arg3 platform:(id)arg4;
 - (id)init;
 
 // Remaining properties

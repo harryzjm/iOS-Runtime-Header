@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSDictionary, NSString;
 
 @interface FCCKRecordSchema : NSObject
 {
@@ -15,16 +15,7 @@
     NSString *_serverRecordType;
 }
 
-+ (id)recordWithClientType:(id)arg1 serverType:(id)arg2 fields:(id)arg3;
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSString *serverRecordType; // @synthesize serverRecordType=_serverRecordType;
-@property(readonly, copy, nonatomic) NSString *clientRecordType; // @synthesize clientRecordType=_clientRecordType;
-- (_Bool)isFieldEncrypted:(id)arg1;
-- (_Bool)isFieldKnown:(id)arg1;
-@property(readonly, copy, nonatomic) NSArray *allUnencryptedFieldNames;
-@property(readonly, copy, nonatomic) NSArray *allEncryptedFieldNames;
-@property(readonly, nonatomic) _Bool hasEncryptedFields;
-- (id)initWithClientRecordType:(id)arg1 serverRecordType:(id)arg2 fieldSchemas:(id)arg3;
 - (id)init;
 
 @end

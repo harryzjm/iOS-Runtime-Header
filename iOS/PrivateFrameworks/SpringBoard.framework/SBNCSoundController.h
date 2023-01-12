@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class DNDEventBehaviorResolutionService, NSMutableDictionary, NSMutableSet, SBLockScreenManager, SBLockStateAggregator;
+@class NSMutableDictionary, NSMutableSet, SBLockScreenManager, SBLockStateAggregator;
 
 @interface SBNCSoundController : NSObject
 {
@@ -14,11 +14,9 @@
     SBLockStateAggregator *_lockStateAggregator;
     NSMutableDictionary *_playingSounds;
     NSMutableSet *_requestsRequiringExplicitKill;
-    DNDEventBehaviorResolutionService *_dndEventBehaviorResolutionService;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) DNDEventBehaviorResolutionService *dndEventBehaviorResolutionService; // @synthesize dndEventBehaviorResolutionService=_dndEventBehaviorResolutionService;
 @property(retain, nonatomic) NSMutableSet *requestsRequiringExplicitKill; // @synthesize requestsRequiringExplicitKill=_requestsRequiringExplicitKill;
 @property(retain, nonatomic) NSMutableDictionary *playingSounds; // @synthesize playingSounds=_playingSounds;
 @property(retain, nonatomic) SBLockStateAggregator *lockStateAggregator; // @synthesize lockStateAggregator=_lockStateAggregator;

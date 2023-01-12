@@ -15,10 +15,10 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(nonatomic) int drawHand; // @synthesize drawHand=_drawHand;
-@property(readonly, nonatomic) struct PathResampler *resampler; // @synthesize resampler=_resampler;
+@property(readonly, nonatomic) void *resampler; // @synthesize resampler=_resampler;
 @property(readonly, nonatomic) struct CGRect currentLayoutCharacterKeysFrame; // @synthesize currentLayoutCharacterKeysFrame=_currentLayoutCharacterKeysFrame;
 @property(readonly, nonatomic) RefPtr_54d74a7c keyboardLayout; // @synthesize keyboardLayout=_keyboardLayout;
-- (void)_updateSampledInputsWithResampler:(const struct PathResampler *)arg1 permanentlyFinalized:(_Bool)arg2;
+- (void)_updateSampledInputsWithResampler:(const void *)arg1 permanentlyFinalized:(_Bool)arg2;
 - (void)_updateSampledInputs;
 @property(readonly, nonatomic) _Bool isDrawing;
 @property(readonly, nonatomic) _Bool isCompleting;
@@ -29,9 +29,9 @@
 - (_Bool)canComposeNew:(id)arg1;
 - (_Bool)_canCompose;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (Vector_edffb8f6)copyLayoutKeys;
-- (id)initWithKeyboardLayout:(const RefPtr_54d74a7c *)arg1 currentLayoutCharacterKeysFrame:(struct CGRect)arg2;
-- (id)initWithKeyboardLayout:(const RefPtr_54d74a7c *)arg1;
+- (Vector_cb2903b7)copyLayoutKeys;
+- (id)initWithKeyboardLayout:(const void *)arg1 currentLayoutCharacterKeysFrame:(struct CGRect)arg2;
+- (id)initWithKeyboardLayout:(const void *)arg1;
 - (id)init;
 
 @end

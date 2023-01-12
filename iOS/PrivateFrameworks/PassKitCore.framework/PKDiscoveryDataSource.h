@@ -18,15 +18,18 @@
     NSArray *_articleLayouts;
     _Bool _updatingArticles;
     NSObject<OS_dispatch_queue> *_workQueue;
+    _Bool _miniCardsAllowed;
     id <PKDiscoveryDataSourceDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic, getter=isMiniCardsAllowed) _Bool miniCardsAllowed; // @synthesize miniCardsAllowed=_miniCardsAllowed;
 @property(nonatomic) __weak id <PKDiscoveryDataSourceDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_addDismissActionToArticleLayouts:(id)arg1;
 - (_Bool)_queue_updateArticleLayouts:(id)arg1;
 - (void)_updateArticlesWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_articleLayoutForItemIdentifier:(id)arg1;
+- (void)_manifestAllowsMiniCardsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)displayedDiscoveryItemWithIdentifier:(id)arg1;
 - (void)discoveryService:(id)arg1 receivedUpdatedDiscoveryArticleLayouts:(id)arg2;
 @property(retain, nonatomic) NSArray *articleLayouts;

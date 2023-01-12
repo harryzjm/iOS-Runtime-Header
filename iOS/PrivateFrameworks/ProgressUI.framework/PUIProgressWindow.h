@@ -48,9 +48,6 @@
 - (void)drawLayer:(id)arg1 inContext:(struct CGContext *)arg2;
 - (void)_drawProgressLayerInContext:(struct CGContext *)arg1;
 - (void)_layoutScreen;
-- (int)_nanoMaterial;
-- (_Bool)_isNano;
-- (unsigned long long)_nanoDeviceType;
 - (const char *)_appleTVProductSuffix;
 - (const char *)_productSuffix;
 - (void)setStatusText:(id)arg1;
@@ -59,6 +56,9 @@
 - (void)_updateIOSurface;
 - (void)_updateLayerForFramebufferSize:(struct CGSize)arg1;
 - (void)_createLayer;
+- (struct CGColor *)_copyBlackCGColorRef;
+- (struct CGColor *)_copyWhiteCGColorRef;
+- (struct CGColor *)_copyCGColorRefWithComponents:(const double *)arg1;
 - (void)_createContext;
 - (void)_collectDisplayInfo;
 - (void)dealloc;

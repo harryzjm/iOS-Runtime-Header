@@ -17,6 +17,10 @@
 + (void)setFigRenderSynchronizerFactory:(id)arg1 forQueue:(id)arg2;
 + (id)currentFigRenderSynchronizerFactory;
 - (void)_updateRateFromTimebase;
+@property(nonatomic) _Bool delaysRateChangeUntilHasSufficientMediaData;
+- (int)_setRate:(float)arg1 time:(CDStruct_1b6d18a9)arg2 atHostTime:(CDStruct_1b6d18a9)arg3;
+- (_Bool)setRate:(float)arg1 time:(CDStruct_1b6d18a9)arg2 atHostTime:(CDStruct_1b6d18a9)arg3 error:(id *)arg4;
+- (void)setRate:(float)arg1 time:(CDStruct_1b6d18a9)arg2 atHostTime:(CDStruct_1b6d18a9)arg3;
 - (void)setRate:(float)arg1 time:(CDStruct_1b6d18a9)arg2;
 @property(nonatomic) float rate;
 - (CDStruct_1b6d18a9)currentTime;

@@ -37,6 +37,7 @@
 - (void)startTimer;
 - (void)_updateText;
 - (void)_updateForTimer:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)_updateFont;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

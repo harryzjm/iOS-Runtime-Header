@@ -9,11 +9,12 @@
 @class VCAudioIOControllerClient;
 
 @protocol VCAudioIOControllerControl <VCBasebandCodecNotifications>
-- (void)updateClient:(VCAudioIOControllerClient *)arg1;
+- (void)updateClient:(VCAudioIOControllerClient *)arg1 direction:(unsigned char)arg2;
 - (void)stopClient:(VCAudioIOControllerClient *)arg1;
 - (void)startClient:(VCAudioIOControllerClient *)arg1;
 
 @optional
+- (void)setMute:(_Bool)arg1 forClient:(VCAudioIOControllerClient *)arg2;
 - (void)refreshRemoteCodecType:(unsigned int)arg1 sampleRate:(double)arg2;
 - (void)refreshOutputMetering;
 - (void)refreshInputMetering;

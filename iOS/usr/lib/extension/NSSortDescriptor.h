@@ -22,6 +22,7 @@
 + (_Bool)supportsSecureCoding;
 + (id)_defaultSelectorName;
 + (id)sortDescriptorWithKey:(id)arg1 ascending:(_Bool)arg2 comparator:(CDUnknownBlockType)arg3;
++ (id)sortDescriptorWithKey:(id)arg1 ascending:(_Bool)arg2 reverseNullOrder:(_Bool)arg3;
 + (id)sortDescriptorWithKey:(id)arg1;
 + (id)sortDescriptorWithKey:(id)arg1 ascending:(_Bool)arg2 selector:(SEL)arg3;
 + (id)sortDescriptorWithKey:(id)arg1 ascending:(_Bool)arg2;
@@ -35,6 +36,8 @@
 - (void)_setSelectorName:(id)arg1;
 @property(readonly) CDUnknownBlockType comparator;
 @property(readonly) SEL selector;
+- (_Bool)reverseNullOrder;
+- (void)setReverseNullOrder:(_Bool)arg1;
 @property(readonly) _Bool ascending;
 - (void)_setAscending:(_Bool)arg1;
 @property(readonly, copy) NSString *key;
@@ -46,6 +49,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (void)dealloc;
 - (id)initWithKey:(id)arg1 ascending:(_Bool)arg2 comparator:(CDUnknownBlockType)arg3;
+- (id)initWithKey:(id)arg1 ascending:(_Bool)arg2 reverseNullOrder:(_Bool)arg3 selector:(SEL)arg4;
+- (id)initWithKey:(id)arg1 ascending:(_Bool)arg2 reverseNullOrder:(_Bool)arg3;
 - (id)initWithKey:(id)arg1 ascending:(_Bool)arg2 selector:(SEL)arg3;
 - (id)initWithKey:(id)arg1;
 - (id)initWithKey:(id)arg1 ascending:(_Bool)arg2;

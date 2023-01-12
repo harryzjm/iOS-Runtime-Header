@@ -7,7 +7,7 @@
 #import <Foundation/NSDate.h>
 
 @interface NSDate (TSPArchivingUtility)
-- (void)tsp_saveToMessage:(struct Date *)arg1;
-- (id)tsp_initWithMessage:(const struct Date *)arg1;
+- (void)tsp_saveToMessage:(void *)arg1;
+- (id)tsp_initWithMessage:(const void *)arg1;
 @end
 

@@ -8,21 +8,24 @@
 
 #import <SiriOntology/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSString, NSUUID;
 
 @interface SIRINLURequestID : NSObject <NSSecureCoding>
 {
     NSString *_idAsString;
+    NSUUID *_nluRequestId;
     NSString *_connectionID;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *connectionID; // @synthesize connectionID=_connectionID;
+@property(retain, nonatomic) NSUUID *nluRequestId; // @synthesize nluRequestId=_nluRequestId;
 @property(retain, nonatomic) NSString *idAsString; // @synthesize idAsString=_idAsString;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithIdAsString:(id)arg1 nluRequestId:(id)arg2 connectionID:(id)arg3;
 - (id)initWithIdAsString:(id)arg1 connectionID:(id)arg2;
 
 @end

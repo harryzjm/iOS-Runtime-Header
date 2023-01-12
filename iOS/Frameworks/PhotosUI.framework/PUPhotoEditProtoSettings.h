@@ -8,12 +8,22 @@
 
 @interface PUPhotoEditProtoSettings : PXSettings
 {
+    _Bool _enableCPVEditing;
+    _Bool _disableTimelineAnimations;
+    _Bool _enableNURenderJobDebug;
+    _Bool _nuRenderJobDebugCaptureNodeGraphs;
+    _Bool _nuRenderJobDebugCaptureNodeCache;
+    _Bool _nuRenderJobDebugCaptureCanceledJobs;
+    _Bool _nuRenderJobDebugCapturePerfStatHistory;
+    _Bool _nuRenderJobDebugCaptureOnlyPerfStats;
+    _Bool _nuRenderJobDebugCapture5PercentOfJobs;
+    _Bool _renderBackfillBlue;
+    _Bool _renderZoomPurple;
     _Bool _enableCoreImageDebugMode;
     _Bool _enableCoreImageDebugInputs;
     _Bool _enableCoreImageDebugOutputs;
     _Bool _enableCoreImageDebugIntermediates;
     _Bool _enableCoreImageDebugTiming;
-    _Bool _enableModernPipeline;
     _Bool _enableVideoStabilizion;
     _Bool _enableFinalizerGesture;
     _Bool _useAsynchronousRenderingPhotos;
@@ -21,8 +31,14 @@
     _Bool _enableLiveVideoRender;
     _Bool _enablePerfDebugHUD;
     _Bool _enableReframeDebugHUD;
+    _Bool _enableSemanticDevelopmentHUD;
+    _Bool _overrideVideoEditability;
+    _Bool _hideTrackersDuringPlayback;
     _Bool _enablePerfTTRButton;
     _Bool _alwaysShowPortraitV2;
+    _Bool _forceGlassesMatteOff;
+    _Bool _forceSpillMatteOff;
+    _Bool _allowSpillMatteOnOlderPortraitV2Captures;
     _Bool _showResetToolButton;
     _Bool _allowAnyPlugin;
     _Bool _attemptEditExtensionUndoAutoSetup;
@@ -37,6 +53,8 @@
     _Bool _simulateEditEntryError;
     _Bool _showFileRadarButtonForEditEntryOnInternalInstalls;
     _Bool _previewOriginalTimesOut;
+    _Bool _alwaysShowDoneButton;
+    _Bool _disableIOSurfacePortaitExport;
     _Bool _loopBounceTrimAllowed;
     _Bool _pauseAfterMovingPlayhead;
     _Bool _alwaysAllowKeyPhotoEditing;
@@ -54,11 +72,17 @@
     _Bool _enableEnterEditDepthEffectAutoCalc;
     _Bool _enableEnterEditPortraitAutoCalc;
     _Bool _enableEnterEditFilterThumbnailGeneration;
-    _Bool _useCALayerTileAssembly;
     _Bool _runNeutrinoSynchronously;
     _Bool _showSmartBlackAndWhiteAdjustment;
+    _Bool _showHDRDebugAdjustments;
+    _Bool _allAssetsCanUseHDRPipeline;
+    _Bool _disablePacked10BitPixelFormats;
+    _Bool _showSemanticDevelopmentSwitch;
     _Bool _showStabilizationWatermark;
     _Bool _applyVideoOrientationAsMetadata;
+    _Bool _disableVideoFilmstrip;
+    _Bool _showFrameNumberOnVideoScrubber;
+    _Bool _tapTimelineToSeek;
     double _videoStabilizeMaxCropFraction;
     long long _renderPriority;
     double _ttrButtonDurationThreshold;
@@ -80,13 +104,20 @@
 }
 
 + (id)settingsControllerModule;
++ (_Bool)isCapableOfLivePhotoRender;
 + (id)sharedInstance;
+@property(nonatomic) _Bool tapTimelineToSeek; // @synthesize tapTimelineToSeek=_tapTimelineToSeek;
+@property(nonatomic) _Bool showFrameNumberOnVideoScrubber; // @synthesize showFrameNumberOnVideoScrubber=_showFrameNumberOnVideoScrubber;
+@property(nonatomic) _Bool disableVideoFilmstrip; // @synthesize disableVideoFilmstrip=_disableVideoFilmstrip;
 @property(nonatomic) unsigned long long videoCompositorDebugMode; // @synthesize videoCompositorDebugMode=_videoCompositorDebugMode;
 @property(nonatomic) _Bool applyVideoOrientationAsMetadata; // @synthesize applyVideoOrientationAsMetadata=_applyVideoOrientationAsMetadata;
 @property(nonatomic) _Bool showStabilizationWatermark; // @synthesize showStabilizationWatermark=_showStabilizationWatermark;
+@property(nonatomic) _Bool showSemanticDevelopmentSwitch; // @synthesize showSemanticDevelopmentSwitch=_showSemanticDevelopmentSwitch;
+@property(nonatomic) _Bool disablePacked10BitPixelFormats; // @synthesize disablePacked10BitPixelFormats=_disablePacked10BitPixelFormats;
+@property(nonatomic) _Bool allAssetsCanUseHDRPipeline; // @synthesize allAssetsCanUseHDRPipeline=_allAssetsCanUseHDRPipeline;
+@property(nonatomic) _Bool showHDRDebugAdjustments; // @synthesize showHDRDebugAdjustments=_showHDRDebugAdjustments;
 @property(nonatomic) _Bool showSmartBlackAndWhiteAdjustment; // @synthesize showSmartBlackAndWhiteAdjustment=_showSmartBlackAndWhiteAdjustment;
 @property(nonatomic) _Bool runNeutrinoSynchronously; // @synthesize runNeutrinoSynchronously=_runNeutrinoSynchronously;
-@property(nonatomic) _Bool useCALayerTileAssembly; // @synthesize useCALayerTileAssembly=_useCALayerTileAssembly;
 @property(nonatomic) _Bool enableEnterEditFilterThumbnailGeneration; // @synthesize enableEnterEditFilterThumbnailGeneration=_enableEnterEditFilterThumbnailGeneration;
 @property(nonatomic) _Bool enableEnterEditPortraitAutoCalc; // @synthesize enableEnterEditPortraitAutoCalc=_enableEnterEditPortraitAutoCalc;
 @property(nonatomic) _Bool enableEnterEditDepthEffectAutoCalc; // @synthesize enableEnterEditDepthEffectAutoCalc=_enableEnterEditDepthEffectAutoCalc;
@@ -107,6 +138,8 @@
 @property(nonatomic) _Bool alwaysAllowKeyPhotoEditing; // @synthesize alwaysAllowKeyPhotoEditing=_alwaysAllowKeyPhotoEditing;
 @property(nonatomic) _Bool pauseAfterMovingPlayhead; // @synthesize pauseAfterMovingPlayhead=_pauseAfterMovingPlayhead;
 @property(nonatomic) _Bool loopBounceTrimAllowed; // @synthesize loopBounceTrimAllowed=_loopBounceTrimAllowed;
+@property(nonatomic) _Bool disableIOSurfacePortaitExport; // @synthesize disableIOSurfacePortaitExport=_disableIOSurfacePortaitExport;
+@property(nonatomic) _Bool alwaysShowDoneButton; // @synthesize alwaysShowDoneButton=_alwaysShowDoneButton;
 @property(nonatomic) double previewOriginalDuration; // @synthesize previewOriginalDuration=_previewOriginalDuration;
 @property(nonatomic) _Bool previewOriginalTimesOut; // @synthesize previewOriginalTimesOut=_previewOriginalTimesOut;
 @property(nonatomic) _Bool showFileRadarButtonForEditEntryOnInternalInstalls; // @synthesize showFileRadarButtonForEditEntryOnInternalInstalls=_showFileRadarButtonForEditEntryOnInternalInstalls;
@@ -132,9 +165,15 @@
 @property(nonatomic) _Bool attemptEditExtensionUndoAutoSetup; // @synthesize attemptEditExtensionUndoAutoSetup=_attemptEditExtensionUndoAutoSetup;
 @property(nonatomic) _Bool allowAnyPlugin; // @synthesize allowAnyPlugin=_allowAnyPlugin;
 @property(nonatomic) _Bool showResetToolButton; // @synthesize showResetToolButton=_showResetToolButton;
+@property(nonatomic) _Bool allowSpillMatteOnOlderPortraitV2Captures; // @synthesize allowSpillMatteOnOlderPortraitV2Captures=_allowSpillMatteOnOlderPortraitV2Captures;
+@property(nonatomic) _Bool forceSpillMatteOff; // @synthesize forceSpillMatteOff=_forceSpillMatteOff;
+@property(nonatomic) _Bool forceGlassesMatteOff; // @synthesize forceGlassesMatteOff=_forceGlassesMatteOff;
 @property(nonatomic) _Bool alwaysShowPortraitV2; // @synthesize alwaysShowPortraitV2=_alwaysShowPortraitV2;
 @property(nonatomic) double ttrButtonDurationThreshold; // @synthesize ttrButtonDurationThreshold=_ttrButtonDurationThreshold;
 @property(nonatomic) _Bool enablePerfTTRButton; // @synthesize enablePerfTTRButton=_enablePerfTTRButton;
+@property(nonatomic) _Bool hideTrackersDuringPlayback; // @synthesize hideTrackersDuringPlayback=_hideTrackersDuringPlayback;
+@property(nonatomic) _Bool overrideVideoEditability; // @synthesize overrideVideoEditability=_overrideVideoEditability;
+@property(nonatomic) _Bool enableSemanticDevelopmentHUD; // @synthesize enableSemanticDevelopmentHUD=_enableSemanticDevelopmentHUD;
 @property(nonatomic) _Bool enableReframeDebugHUD; // @synthesize enableReframeDebugHUD=_enableReframeDebugHUD;
 @property(nonatomic) _Bool enablePerfDebugHUD; // @synthesize enablePerfDebugHUD=_enablePerfDebugHUD;
 @property(nonatomic) _Bool enableLiveVideoRender; // @synthesize enableLiveVideoRender=_enableLiveVideoRender;
@@ -144,12 +183,23 @@
 @property(nonatomic) _Bool enableFinalizerGesture; // @synthesize enableFinalizerGesture=_enableFinalizerGesture;
 @property(nonatomic) double videoStabilizeMaxCropFraction; // @synthesize videoStabilizeMaxCropFraction=_videoStabilizeMaxCropFraction;
 @property(nonatomic) _Bool enableVideoStabilizion; // @synthesize enableVideoStabilizion=_enableVideoStabilizion;
-@property(nonatomic) _Bool enableModernPipeline; // @synthesize enableModernPipeline=_enableModernPipeline;
 @property(nonatomic) _Bool enableCoreImageDebugTiming; // @synthesize enableCoreImageDebugTiming=_enableCoreImageDebugTiming;
 @property(nonatomic) _Bool enableCoreImageDebugIntermediates; // @synthesize enableCoreImageDebugIntermediates=_enableCoreImageDebugIntermediates;
 @property(nonatomic) _Bool enableCoreImageDebugOutputs; // @synthesize enableCoreImageDebugOutputs=_enableCoreImageDebugOutputs;
 @property(nonatomic) _Bool enableCoreImageDebugInputs; // @synthesize enableCoreImageDebugInputs=_enableCoreImageDebugInputs;
 @property(nonatomic) _Bool enableCoreImageDebugMode; // @synthesize enableCoreImageDebugMode=_enableCoreImageDebugMode;
+@property(nonatomic) _Bool renderZoomPurple; // @synthesize renderZoomPurple=_renderZoomPurple;
+@property(nonatomic) _Bool renderBackfillBlue; // @synthesize renderBackfillBlue=_renderBackfillBlue;
+@property(nonatomic) _Bool nuRenderJobDebugCapture5PercentOfJobs; // @synthesize nuRenderJobDebugCapture5PercentOfJobs=_nuRenderJobDebugCapture5PercentOfJobs;
+@property(nonatomic) _Bool nuRenderJobDebugCaptureOnlyPerfStats; // @synthesize nuRenderJobDebugCaptureOnlyPerfStats=_nuRenderJobDebugCaptureOnlyPerfStats;
+@property(nonatomic) _Bool nuRenderJobDebugCapturePerfStatHistory; // @synthesize nuRenderJobDebugCapturePerfStatHistory=_nuRenderJobDebugCapturePerfStatHistory;
+@property(nonatomic) _Bool nuRenderJobDebugCaptureCanceledJobs; // @synthesize nuRenderJobDebugCaptureCanceledJobs=_nuRenderJobDebugCaptureCanceledJobs;
+@property(nonatomic) _Bool nuRenderJobDebugCaptureNodeCache; // @synthesize nuRenderJobDebugCaptureNodeCache=_nuRenderJobDebugCaptureNodeCache;
+@property(nonatomic) _Bool nuRenderJobDebugCaptureNodeGraphs; // @synthesize nuRenderJobDebugCaptureNodeGraphs=_nuRenderJobDebugCaptureNodeGraphs;
+@property(nonatomic) _Bool enableNURenderJobDebug; // @synthesize enableNURenderJobDebug=_enableNURenderJobDebug;
+@property(nonatomic) _Bool disableTimelineAnimations;
+@property(nonatomic) _Bool enableCPVEditing;
+- (_Bool)showHDRDebugAdjustment;
 - (void)updateCoreImageDebug;
 - (void)setDefaultValues;
 - (id)parentSettings;

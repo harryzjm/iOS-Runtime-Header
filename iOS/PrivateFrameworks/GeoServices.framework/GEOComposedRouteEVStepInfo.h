@@ -12,18 +12,14 @@
 {
     unsigned int _remainingBatteryPercentage;
     unsigned int _remainingBatteryCharge;
-    double _remainingTravelRange;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, nonatomic) double remainingTravelRange; // @synthesize remainingTravelRange=_remainingTravelRange;
 @property(readonly, nonatomic) unsigned int remainingBatteryPercentage; // @synthesize remainingBatteryPercentage=_remainingBatteryPercentage;
 @property(readonly, nonatomic) unsigned int remainingBatteryCharge; // @synthesize remainingBatteryCharge=_remainingBatteryCharge;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithGeoETAStep:(id)arg1;
-- (id)initWithGeoStep:(id)arg1;
 - (id)initWithEVStateInfo:(id)arg1;
 - (id)init;
 

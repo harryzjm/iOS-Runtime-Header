@@ -6,9 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <AppleMediaServices/NSCopying-Protocol.h>
+#import <AppleMediaServices/NSSecureCoding-Protocol.h>
+
 @class AMSPurchase, NSDictionary, NSError, NSString;
 
-@interface AMSPurchaseResult : NSObject
+@interface AMSPurchaseResult : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_correlationID;
     NSError *_error;
@@ -16,11 +19,18 @@
     NSDictionary *_responseDictionary;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSDictionary *responseDictionary; // @synthesize responseDictionary=_responseDictionary;
 @property(copy, nonatomic) AMSPurchase *purchase; // @synthesize purchase=_purchase;
 @property(copy, nonatomic) NSError *error; // @synthesize error=_error;
 @property(copy, nonatomic) NSString *correlationID; // @synthesize correlationID=_correlationID;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (_Bool)isEqualToPurchaseResult:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
 
 @end
 

@@ -13,5 +13,6 @@
 - (oneway void)didEndPKCanvasSession:(NSDictionary *)arg1 withInputMode:(NSString *)arg2;
 - (oneway void)didEndInputSessionUsingScribbleWithInputMode:(NSString *)arg1;
 - (oneway void)didEndInputSessionWithInputMode:(NSString *)arg1;
+- (oneway void)didBeginInputSession;
 @end
 

@@ -10,7 +10,7 @@
 
 @interface GKQuadtreeNode : NSObject
 {
-    struct GKCQuadTreeNode<NSObject> *_cQuadTreeNode;
+    void *_cQuadTreeNode;
     struct GKQuad _quad;
 }
 

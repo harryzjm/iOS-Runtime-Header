@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 {
     struct {
         _Bool respondsToShouldShowPauseButton;
+        _Bool respondsToShouldShowPlayButtonWhileActivated;
         _Bool respondsToDidTapButton;
         _Bool respondsToDelayForButtonAnimation;
     } _delegateFlags;
@@ -41,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)_setShouldShowPlayButton:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)_updateButtonAnimated:(_Bool)arg1;
 - (void)_playButtonTapped:(id)arg1;
+@property(readonly, nonatomic) _Bool showPlayButtonWhileActivated;
 @property(readonly, nonatomic) _Bool canShowPauseButton;
 - (void)becomeReusable;
 - (void)dealloc;

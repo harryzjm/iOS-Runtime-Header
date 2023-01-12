@@ -12,16 +12,18 @@
 #import <AppPredictionUIWidget/SBIconViewProviding-Protocol.h>
 #import <AppPredictionUIWidget/SBIconViewQuerying-Protocol.h>
 
-@class APUIAppIconDataSource, APUIAppIconGridLayoutProvider, NSArray, NSString, SBIconListModel, SBIconListView, SBReusableViewMap, _UILegibilitySettings;
+@class APUIAppIconDataSource, APUIAppIconGridLayoutProvider, NSArray, NSString, SBIconListModel, SBIconListView, SBReusableViewMap, UILabel, _UILegibilitySettings;
 @protocol APUIAppIconGridViewDelegate;
 
 @interface APUIAppIconGridView : UIView <SBIconViewProviding, SBIconViewDelegate, APUIAppIconDataSourceDelegate, SBIconListLayoutObserver, SBIconViewQuerying>
 {
     APUIAppIconDataSource *_dataSource;
     SBIconListView *_gridView;
+    UILabel *_emptyStateLabel;
     SBIconListModel *_model;
     SBReusableViewMap *_reusableIconViewMap;
     APUIAppIconGridLayoutProvider *_layoutProvider;
+    _Bool _shouldDisplayEmptyState;
     _Bool _occluded;
     id <APUIAppIconGridViewDelegate> _delegate;
     NSArray *_bundleIds;
@@ -34,6 +36,7 @@
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property(nonatomic, getter=isOccluded) _Bool occluded; // @synthesize occluded=_occluded;
 @property(nonatomic) unsigned long long mode; // @synthesize mode=_mode;
+@property(nonatomic) _Bool shouldDisplayEmptyState; // @synthesize shouldDisplayEmptyState=_shouldDisplayEmptyState;
 @property(copy, nonatomic) NSArray *bundleIds; // @synthesize bundleIds=_bundleIds;
 @property(nonatomic) __weak id <APUIAppIconGridViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)enumerateDisplayedIconViewsUsingBlock:(CDUnknownBlockType)arg1;
@@ -55,6 +58,7 @@
 - (double)_iconLabelAlphaForMode:(unsigned long long)arg1;
 - (_Bool)appIconDataSource:(id)arg1 launchAppFromIcon:(id)arg2;
 - (_Bool)iconViewDisplaysBadges:(id)arg1;
+- (void)_configureAliasingForIconView:(id)arg1;
 - (void)configureIconView:(id)arg1 forIcon:(id)arg2;
 - (_Bool)isIconViewRecycled:(id)arg1;
 - (void)recycleIconView:(id)arg1;
@@ -63,6 +67,7 @@
 - (_Bool)iconViewCanBeginDrags:(id)arg1;
 - (id)bundleIdAtLocation:(struct CGPoint)arg1;
 - (void)_addGridView;
+- (id)_emptyStateLabel;
 - (void)_significantTimeChange:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

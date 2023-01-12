@@ -8,17 +8,17 @@
 
 @interface TSCH3DSageGeometryHelperLimitingSeriesUpgrader
 {
-    TSCH3DChartResizerHelper *mResizerHelper;
-    TSCH3DChartBoundsLayout *mBoundsLayout;
+    TSCH3DChartResizerHelper *_resizerHelper;
+    TSCH3DChartBoundsLayout *_boundsLayout;
 }
 
-@property(readonly, nonatomic) TSCH3DChartBoundsLayout *boundsLayout; // @synthesize boundsLayout=mBoundsLayout;
-@property(readonly, nonatomic) TSCH3DChartResizerHelper *resizerHelper; // @synthesize resizerHelper=mResizerHelper;
-- (id)boundsLayoutByResizingToLayoutSize:(const tvec2_84d5962d *)arg1;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) TSCH3DChartBoundsLayout *boundsLayout; // @synthesize boundsLayout=_boundsLayout;
+@property(readonly, nonatomic) TSCH3DChartResizerHelper *resizerHelper; // @synthesize resizerHelper=_resizerHelper;
+- (id)boundsLayoutByResizingToLayoutSize:(const void *)arg1;
 - (id)containingViewportByResizingScene:(id)arg1 toResizingFrame:(struct CGRect)arg2;
 - (struct CGRect)oldResizingFrame;
-- (id)sceneResetWithLayoutSettings:(CDStruct_b1c75024)arg1;
-- (void)dealloc;
+- (id)sceneResetWithLayoutSettings:(CDStruct_c48db077)arg1;
 
 @end
 

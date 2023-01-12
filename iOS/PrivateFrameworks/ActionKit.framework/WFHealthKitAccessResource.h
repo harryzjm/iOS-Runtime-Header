@@ -6,14 +6,11 @@
 
 #import <WorkflowKit/WFGranularAccessResource.h>
 
-#import <ActionKit/WFActionEventObserver-Protocol.h>
+@class HKHealthStore;
 
-@class HKHealthStore, NSString, WFAction;
-
-@interface WFHealthKitAccessResource : WFGranularAccessResource <WFActionEventObserver>
+@interface WFHealthKitAccessResource : WFGranularAccessResource
 {
     unsigned long long _globalLevelStatus;
-    WFAction *_action;
     HKHealthStore *_healthStore;
 }
 
@@ -22,7 +19,6 @@
 + (_Bool)alwaysMakeAvailable;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
-@property(nonatomic) __weak WFAction *action; // @synthesize action=_action;
 - (unsigned long long)globalLevelStatus;
 - (id)localizedWorkflowLevelDeniedStatusMessage;
 - (id)localizedWorkflowLevelNotDeterminedStatusMessage;
@@ -42,16 +38,9 @@
 - (id)readTypes;
 - (id)objectTypes;
 - (id)objectTypesForAccessType:(id)arg1;
-- (void)action:(id)arg1 parameterStateDidChangeForKey:(id)arg2;
 - (id)initWithDefinition:(id)arg1;
 - (id)protectedResourceDescription;
 - (id)associatedAppIdentifier;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

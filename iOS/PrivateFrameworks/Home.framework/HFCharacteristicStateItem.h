@@ -4,25 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Home/NAEquatable-Protocol.h>
+#import <Home/NAIdentifiable-Protocol.h>
 
 @class NSString;
 @protocol HFAggregatedCharacteristicValueSource;
 
-@interface HFCharacteristicStateItem <NAEquatable>
+@interface HFCharacteristicStateItem <NAIdentifiable>
 {
     NSString *_characteristicType;
     id <HFAggregatedCharacteristicValueSource> _valueSource;
     CDUnknownBlockType _resultsProvider;
 }
 
++ (id)na_identity;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) CDUnknownBlockType resultsProvider; // @synthesize resultsProvider=_resultsProvider;
 @property(readonly, nonatomic) id <HFAggregatedCharacteristicValueSource> valueSource; // @synthesize valueSource=_valueSource;
 @property(readonly, copy, nonatomic) NSString *characteristicType; // @synthesize characteristicType=_characteristicType;
 - (id)_subclass_updateWithOptions:(id)arg1;
-@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
+@property(readonly) unsigned long long hash;
 - (id)init;
 - (id)initWithCharacteristicType:(id)arg1 valueSource:(id)arg2 resultsProvider:(CDUnknownBlockType)arg3;
 

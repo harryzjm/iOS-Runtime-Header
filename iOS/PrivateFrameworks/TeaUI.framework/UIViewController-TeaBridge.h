@@ -11,6 +11,7 @@
 @class TSTransitionContainerViewController;
 
 @interface UIViewController (TeaBridge) <TSPresenterType>
++ (void)ts_performWithoutDeferringTransitions:(CDUnknownBlockType)arg1;
 - (_Bool)ts_setAppearanceTransitionsAreDisabled:(_Bool)arg1;
 @property(readonly, nonatomic) UIViewController *ts_parentVC;
 @property(nonatomic, readonly) TSTransitionContainerViewController *ts_transitionContainerViewController;

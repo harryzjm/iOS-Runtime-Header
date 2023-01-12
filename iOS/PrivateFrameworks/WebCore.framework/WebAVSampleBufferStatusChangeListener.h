@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (void)begin;
 - (void)invalidate;
 - (void)dealloc;
-- (id)initWithParent:(struct LocalSampleBufferDisplayLayer *)arg1;
+- (id)initWithParent:(void *)arg1;
 
 @end
 

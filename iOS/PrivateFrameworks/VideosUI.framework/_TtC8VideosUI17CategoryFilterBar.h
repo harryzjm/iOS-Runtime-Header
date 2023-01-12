@@ -16,15 +16,14 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *selectedCategory;
     MISSING_TYPE *lastKnownBounds;
     MISSING_TYPE *buttons;
-    MISSING_TYPE *selectionButton;
-    MISSING_TYPE *$__lazy_storage_$_selectionBackgroundView;
+    MISSING_TYPE *selectedButton;
+    MISSING_TYPE *$__lazy_storage_$_selectedButtonBackgroundView;
     MISSING_TYPE *needsButtonsLayout;
 }
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)categoryButtonTapped:(id)arg1;
-- (void)tintColorDidChange;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)initWithCoder:(id)arg1;

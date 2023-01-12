@@ -11,7 +11,8 @@
 @protocol _UICollectionViewLayoutInteractionStateProviding <NSObject>
 @property(readonly, nonatomic) Class invalidationContextClass;
 - (_Bool)enumerateSectionsAfterSectionIndex:(long long)arg1 enumerator:(void (^)(NSCollectionLayoutSection *, long long, long long, double, _Bool *))arg2;
-- (_Bool)_shouldAdjustLayoutToMergeBarInSection:(long long)arg1;
+- (_Bool)_shouldAdjustLayoutToDrawTopSeparatorInSection:(long long)arg1;
+- (_Bool)itemAtIndexPathIsBeingReordered:(NSIndexPath *)arg1;
 - (_Bool)itemAtIndexPathIsHighlighted:(NSIndexPath *)arg1;
 - (_Bool)itemAtIndexPathIsSelected:(NSIndexPath *)arg1;
 - (unsigned long long)selectionGroupingForItemAtIndexPath:(NSIndexPath *)arg1;

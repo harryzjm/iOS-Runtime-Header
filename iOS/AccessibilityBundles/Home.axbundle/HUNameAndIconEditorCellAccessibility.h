@@ -12,6 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (_Bool)canBecomeFocused;
+- (id)accessibilityElements;
 
 @end
 

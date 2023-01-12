@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HDKeyValueDomain, HDProfile, HKMCAnalysis;
+@class HDKeyValueDomain, HDProfile, HKFeatureStatusManager, HKMCAnalysis;
 
 __attribute__((visibility("hidden")))
 @interface HDMCDailyAnalytics : NSObject
@@ -14,16 +14,20 @@ __attribute__((visibility("hidden")))
     HDProfile *_profile;
     HKMCAnalysis *_analysis;
     HDKeyValueDomain *_keyValueDomain;
+    HDKeyValueDomain *_fertileWindowNotificationKeyValueDomain;
+    HKFeatureStatusManager *_heartRateFeatureStatusManager;
 }
 
 + (_Bool)shouldSubmit;
 - (void).cxx_destruct;
 - (id)_yearsBetweenStartDateComponents:(id)arg1 endDate:(id)arg2 calendar:(id)arg3;
 - (id)_weeksBetweenStartDate:(id)arg1 endDate:(id)arg2 calendar:(id)arg3;
+- (id)_predicateForFirstPartySleepDataFromPast48HoursWithCalendar:(id)arg1;
+- (id)_predicateForSleepDataFromPast48HoursWithCalendar:(id)arg1;
 - (_Bool)_collectSensitiveFieldsForMetric:(id)arg1 gregorianCalendar:(id)arg2 error:(id *)arg3;
 - (_Bool)_collectDiagnosticFieldsForMetric:(id)arg1 gregorianCalendar:(id)arg2 error:(id *)arg3;
 - (_Bool)submitMetricWithError:(id *)arg1;
-- (id)initWithProfile:(id)arg1 analysis:(id)arg2;
+- (id)initWithProfile:(id)arg1 analysis:(id)arg2 heartRateFeatureAvailabilityManager:(id)arg3;
 
 @end
 

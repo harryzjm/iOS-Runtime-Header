@@ -6,30 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class CKDClientContext, CKSQLite, CKSQLitePool, NSDate, NSNumber;
-@protocol OS_dispatch_queue;
+@class CKDContainer, CKSQLite, NSDate, NSNumber;
 
 @interface CKDRecordCache : NSObject
 {
     CKSQLite *_db;
-    CKSQLitePool *_dbPool;
-    CKDClientContext *_context;
+    CKDContainer *_container;
     long long _scope;
     NSNumber *_explicitCacheSizeLimit;
-    NSObject<OS_dispatch_queue> *_queue;
     NSDate *_lastExpiryAttempt;
 }
 
 + (id)_expiryDateFormatter;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *lastExpiryAttempt; // @synthesize lastExpiryAttempt=_lastExpiryAttempt;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) NSNumber *explicitCacheSizeLimit; // @synthesize explicitCacheSizeLimit=_explicitCacheSizeLimit;
 @property(nonatomic) long long scope; // @synthesize scope=_scope;
-@property(retain, nonatomic) CKDClientContext *context; // @synthesize context=_context;
-@property(retain, nonatomic) CKSQLitePool *dbPool; // @synthesize dbPool=_dbPool;
+@property(nonatomic) __weak CKDContainer *container; // @synthesize container=_container;
 @property(retain, nonatomic) CKSQLite *db; // @synthesize db=_db;
-- (void)scheduleRecordExpirationWithExpiryDate:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)scheduleRecordExpirationWithExpiryDate:(id)arg1;
 - (unsigned long long)recordCacheSizeLimit;
 - (void)_attemptRecordExpiryIfNeeded;
 - (unsigned long long)_lockedSizeOfAllRecordsInDb;
@@ -49,10 +44,9 @@
 - (_Bool)_cachedRecordHasValidAssets:(id)arg1 forRequiredKeys:(id)arg2;
 - (_Bool)_cachedRecordKnownUserKeyData:(id)arg1 satisfiesRequiredKeys:(id)arg2;
 - (id)_dsid;
-- (void)close;
-- (void)open;
+- (void)replaceDatabase:(id)arg1;
 - (void)releaseDatabase;
-- (id)initWithDatabase:(id)arg1 dbPool:(id)arg2 context:(id)arg3 scope:(long long)arg4;
+- (id)initWithDatabase:(id)arg1 container:(id)arg2 scope:(long long)arg3;
 
 @end
 

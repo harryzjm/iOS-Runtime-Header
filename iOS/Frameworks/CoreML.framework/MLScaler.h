@@ -14,7 +14,7 @@
     MLFeatureValue *_scaleValue;
 }
 
-+ (id)loadModelFromSpecification:(struct _MLModelSpecification *)arg1 configuration:(id)arg2 error:(id *)arg3;
++ (id)loadModelFromSpecification:(void *)arg1 configuration:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) MLFeatureValue *scaleValue; // @synthesize scaleValue=_scaleValue;
 @property(readonly, nonatomic) MLFeatureValue *shiftValue; // @synthesize shiftValue=_shiftValue;

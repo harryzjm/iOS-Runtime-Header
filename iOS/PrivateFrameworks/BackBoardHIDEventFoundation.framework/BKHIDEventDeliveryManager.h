@@ -8,7 +8,7 @@
 
 #import <BackBoardHIDEventFoundation/BKHIDEventClientDelegate-Protocol.h>
 
-@class BKSHIDEventAuthenticationKeyRing, BKSHIDEventDisplay, BSMutableIntegerMap, NSMutableArray, NSMutableDictionary, NSSet, NSString;
+@class BKSHIDEventAuthenticationOriginator, BKSHIDEventDisplay, BSMutableIntegerMap, NSMutableArray, NSMutableDictionary, NSSet, NSString;
 @protocol BKHIDEventDeliveryResolutionObserver;
 
 @interface BKHIDEventDeliveryManager : NSObject <BKHIDEventClientDelegate>
@@ -16,7 +16,7 @@
     struct os_unfair_lock_s _lock;
     _Bool _observeClientDeath;
     BKSHIDEventDisplay *_mainDisplay;
-    BKSHIDEventAuthenticationKeyRing *_authenticationKeyRing;
+    BKSHIDEventAuthenticationOriginator *_authenticationOriginator;
     NSMutableArray *_deliveryRoots;
     NSMutableArray *_keyCommandDeliveryRoots;
     BSMutableIntegerMap *_deferringRulesByPID;
@@ -28,29 +28,9 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) id <BKHIDEventDeliveryResolutionObserver> resolutionObserver; // @synthesize resolutionObserver=_resolutionObserver;
-@property(retain, nonatomic) NSMutableDictionary *destinationCacheBySender; // @synthesize destinationCacheBySender=_destinationCacheBySender;
-@property(retain, nonatomic) NSSet *deferringResolutions; // @synthesize deferringResolutions=_deferringResolutions;
-@property(retain, nonatomic) BSMutableIntegerMap *clientsByPID; // @synthesize clientsByPID=_clientsByPID;
-@property(retain, nonatomic) BSMutableIntegerMap *deferringRulesByPID; // @synthesize deferringRulesByPID=_deferringRulesByPID;
-@property(retain, nonatomic) NSMutableArray *keyCommandDeliveryRoots; // @synthesize keyCommandDeliveryRoots=_keyCommandDeliveryRoots;
-@property(retain, nonatomic) NSMutableArray *deliveryRoots; // @synthesize deliveryRoots=_deliveryRoots;
 - (void)clientDied:(id)arg1;
-- (void)_lock_notifyObserversOfResolutionUpdates:(CDUnknownBlockType)arg1;
-- (id)_lock_allRootResolutions;
-- (void)_lock_setKeyCommandDispatchingRules:(id)arg1 forClientWithPID:(int)arg2;
-- (void)_lock_setKeyCommandsRegistrations:(id)arg1 forClientWithPID:(int)arg2;
-- (void)_lock_setDeferringRules:(id)arg1 forClientWithPID:(int)arg2;
-- (void)_lock_setDispatchingRuleSets:(id)arg1 forClientWithPID:(int)arg2;
-- (id)_lock_resolveDeferringChainForPID:(int)arg1 display:(id)arg2 environment:(id)arg3 targetOrder:(out id *)arg4;
-- (id)_lock_selectNextDeferringRuleForPID:(int)arg1 display:(id)arg2 environment:(id)arg3 token:(id)arg4 incomplete:(_Bool *)arg5 ignoreRulesWithTargets:(id)arg6;
-- (id)_destinationFromTarget:(id)arg1 display:(id)arg2 environment:(id)arg3;
-- (id)_lock_destinationsForKeyCommand:(id)arg1 sender:(id)arg2;
-- (long long)_registration:(id)arg1 containsMatchForKeyCommand:(id)arg2;
-- (id)_lock_dispatchingRuleInDeliveryRoot:(id)arg1 matchingDescriptor:(id)arg2 sender:(id)arg3;
-- (id)_lock_canonicalDisplayForEventSender:(id)arg1;
-- (id)_lock_clientWithPID:(int)arg1 createIfNeeded:(_Bool)arg2;
-- (id)_lock_bundleIdentifierForPID:(int)arg1;
-@property(readonly, nonatomic) BKSHIDEventAuthenticationKeyRing *authenticationKeyRing; // @synthesize authenticationKeyRing=_authenticationKeyRing;
+- (id)descriptionOfResolutionPathForEventDescriptor:(id)arg1 senderDescriptor:(id)arg2;
+@property(readonly, nonatomic) BKSHIDEventAuthenticationOriginator *authenticationOriginator; // @synthesize authenticationOriginator=_authenticationOriginator;
 - (id)destinationsForKeyCommand:(id)arg1 sender:(id)arg2;
 - (id)destinationsStartingFromPID:(int)arg1 deferringPredicate:(id)arg2;
 - (id)destinationsForEvent:(struct __IOHIDEvent *)arg1 sender:(id)arg2;

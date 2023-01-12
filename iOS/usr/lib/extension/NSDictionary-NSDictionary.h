@@ -12,6 +12,7 @@
 + (id)dictionaryWithContentsOfURL:(id)arg1 error:(id *)arg2;
 + (id)dictionaryWithContentsOfURL:(id)arg1;
 + (id)dictionaryWithContentsOfFile:(id)arg1;
++ (_Bool)_subclassesMustBeExplicitlyMentionedWhenDecoded;
 + (_Bool)supportsSecureCoding;
 - (id)initWithContentsOfURL:(id)arg1 error:(id *)arg2;
 - (id)initWithContentsOfURL:(id)arg1;

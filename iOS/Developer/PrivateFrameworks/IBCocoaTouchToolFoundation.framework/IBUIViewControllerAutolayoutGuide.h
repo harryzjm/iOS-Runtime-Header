@@ -82,12 +82,12 @@
 - (_Bool)ibCanFrameDecideEvenWhenAmbiguousForNextStatusUpdate;
 @property(readonly, nonatomic) long long ibFrameDecisionStrategy;
 @property(readonly, nonatomic) _Bool ibIsSelfManagedContainerInEngine;
-- (CDUnion_42e99c75)convertKnobPosition:(CDUnion_42e99c75)arg1 fromView:(id)arg2;
-- (CDUnion_42e99c75)convertKnobPosition:(CDUnion_42e99c75)arg1 toView:(id)arg2;
-- (unsigned int)convertRectEdge:(unsigned int)arg1 fromView:(id)arg2;
-- (unsigned int)convertRectEdge:(unsigned int)arg1 toView:(id)arg2;
-- (CDStruct_c519178c)convertInset:(CDStruct_c519178c)arg1 fromView:(id)arg2;
-- (CDStruct_c519178c)convertInset:(CDStruct_c519178c)arg1 toView:(id)arg2;
+- (CDUnion_42e99c75)ib_convertKnobPosition:(CDUnion_42e99c75)arg1 fromView:(id)arg2;
+- (CDUnion_42e99c75)ib_convertKnobPosition:(CDUnion_42e99c75)arg1 toView:(id)arg2;
+- (unsigned int)ib_convertRectEdge:(unsigned int)arg1 fromView:(id)arg2;
+- (unsigned int)ib_convertRectEdge:(unsigned int)arg1 toView:(id)arg2;
+- (CDStruct_c519178c)ib_convertInset:(CDStruct_c519178c)arg1 fromView:(id)arg2;
+- (CDStruct_c519178c)ib_convertInset:(CDStruct_c519178c)arg1 toView:(id)arg2;
 - (struct CGRect)convertRect:(struct CGRect)arg1 toView:(id)arg2;
 - (struct CGRect)convertRect:(struct CGRect)arg1 fromView:(id)arg2;
 - (struct CGSize)convertSize:(struct CGSize)arg1 toView:(id)arg2;
@@ -128,7 +128,6 @@
 @property(readonly, nonatomic) NSArray *subviews;
 @property(readonly, nonatomic) NSObject<IBAutolayoutItem> *superview;
 @property(readonly, nonatomic) _Bool ibExternalEffectiveTranslatesAutoresizingMaskIntoConstraints;
-- (id)initAsEngineSpacerItemWithInitialLayoutFrame:(struct CGRect)arg1;
 - (id)ibEffectiveRootCoordinateSystemForConversions;
 - (id)ibEffectiveWindowForConversions;
 @property(readonly, nonatomic, getter=isFlipped) _Bool flipped;

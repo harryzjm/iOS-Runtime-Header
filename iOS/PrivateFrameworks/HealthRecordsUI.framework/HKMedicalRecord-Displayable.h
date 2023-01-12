@@ -14,7 +14,7 @@
 - (id)meaningfulDateDisplayStringWithPreferredForm:(long long)arg1 showTime:(_Bool)arg2;
 - (id)sortDateTitle;
 @property(readonly, nonatomic) NSString *titleDisplayStringForDetailViewController;
-@property(readonly, nonatomic) long long recordCategoryType;
+@property(readonly, nonatomic) _Bool canDefineConceptRoom;
 @property(readonly, nonatomic) _Bool isDateLess;
 @property(readonly, nonatomic) _Bool isDisplayable;
 @property(readonly, nonatomic) NSString *meaningfulDateString;
@@ -24,6 +24,7 @@
 - (void)fetchObservationDetailItemsWithHealthRecordsStore:(id)arg1 style:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchChartValueWithRangeWithHealthStore:(id)arg1 completion:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) NSArray *conceptNameItems;
+- (void)fetchAttachmentItemsWithHealthRecordsStore:(id)arg1 conceptStore:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchDisplayNameItemWithHealthRecordsStore:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchConceptRoomItemsWithHealthRecordsStore:(id)arg1 conceptStore:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchStructuredFieldItemsWithHealthRecordsStore:(id)arg1 conceptStore:(id)arg2 completion:(CDUnknownBlockType)arg3;

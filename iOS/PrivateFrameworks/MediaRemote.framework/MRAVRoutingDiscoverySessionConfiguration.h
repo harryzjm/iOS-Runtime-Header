@@ -7,28 +7,39 @@
 #import <objc/NSObject.h>
 
 #import <MediaRemote/NSCopying-Protocol.h>
+#import <MediaRemote/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSString, _MRDiscoverySessionConfigurationProtobuf;
 
-@interface MRAVRoutingDiscoverySessionConfiguration : NSObject <NSCopying>
+@interface MRAVRoutingDiscoverySessionConfiguration : NSObject <NSCopying, NSSecureCoding>
 {
     _Bool _enableThrottling;
     _Bool _alwaysAllowUpdates;
     _Bool _populatesExternalDevice;
     unsigned int _features;
+    unsigned int _targetAudioSessionID;
     NSString *_routingContextUID;
+    NSString *_outputDeviceUID;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)configurationWithEndpointFeatures:(unsigned int)arg1;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *outputDeviceUID; // @synthesize outputDeviceUID=_outputDeviceUID;
 @property(nonatomic) _Bool populatesExternalDevice; // @synthesize populatesExternalDevice=_populatesExternalDevice;
+@property(nonatomic) unsigned int targetAudioSessionID; // @synthesize targetAudioSessionID=_targetAudioSessionID;
 @property(nonatomic) _Bool alwaysAllowUpdates; // @synthesize alwaysAllowUpdates=_alwaysAllowUpdates;
 @property(nonatomic) _Bool enableThrottling; // @synthesize enableThrottling=_enableThrottling;
 @property(copy, nonatomic) NSString *routingContextUID; // @synthesize routingContextUID=_routingContextUID;
 @property(readonly, nonatomic) unsigned int features; // @synthesize features=_features;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
+@property(readonly, copy, nonatomic) _MRDiscoverySessionConfigurationProtobuf *protobuf;
+- (id)initWithProtobuf:(id)arg1;
 - (id)initWithEndpointFeatures:(unsigned int)arg1;
 
 @end

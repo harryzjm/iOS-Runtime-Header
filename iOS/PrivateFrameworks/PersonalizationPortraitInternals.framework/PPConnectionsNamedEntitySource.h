@@ -6,18 +6,19 @@
 
 #import <PersonalizationPortraitInternals/PPConnectionsLocationSource-Protocol.h>
 
-@class NSString, PPLocalNamedEntityStore;
+@class NSString, PPLocalContactStore, PPLocalNamedEntityStore;
 
 @interface PPConnectionsNamedEntitySource <PPConnectionsLocationSource>
 {
     PPLocalNamedEntityStore *_namedEntityStore;
+    PPLocalContactStore *_contactStore;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)locationItemsWithCriteria:(id)arg1 earliest:(id)arg2 latest:(id)arg3 limit:(unsigned long long)arg4 consumer:(unsigned long long)arg5 explanationSet:(id)arg6;
 - (id)identifier;
-- (id)initWithNamedEntityStore:(id)arg1;
+- (id)initWithNamedEntityStore:(id)arg1 contactStore:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

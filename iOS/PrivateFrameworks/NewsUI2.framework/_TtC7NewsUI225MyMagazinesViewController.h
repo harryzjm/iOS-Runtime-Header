@@ -7,8 +7,8 @@
 #import <UIKit/UIViewController.h>
 
 @class MISSING_TYPE;
-@protocol TUPluggableDelegate;
 
+__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI225MyMagazinesViewController : UIViewController
 {
     MISSING_TYPE *isBeingUsedAsPlugin;
@@ -25,8 +25,6 @@
 - (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithCoder:(id)arg1;
-@property(nonatomic) __weak id <TUPluggableDelegate> pluggableDelegate; // @synthesize pluggableDelegate;
-@property(nonatomic) _Bool isBeingUsedAsPlugin; // @synthesize isBeingUsedAsPlugin;
 
 @end
 

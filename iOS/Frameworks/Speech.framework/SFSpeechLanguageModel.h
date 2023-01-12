@@ -6,22 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSData, NSLocale, _EARLmData;
+@class NSArray, NSDictionary, NSLocale, NSMutableDictionary, NSString, _EARAppLmData, _EARLmModel;
 
 @interface SFSpeechLanguageModel : NSObject
 {
-    _EARLmData *_appLmData;
+    _EARAppLmData *_appLmData;
+    NSString *_recognizerConfigFilePath;
+    _EARLmModel *_model;
+    NSMutableDictionary *_oovDict;
     NSLocale *_locale;
-    NSData *_model;
-    NSArray *_outOfVocabularyWords;
 }
 
++ (void)trainAppLmFromNgramsSerializedDataFile:(id)arg1 customPronsFile:(id)arg2 language:(id)arg3 writeToDirectory:(id)arg4 modelOverride:(id)arg5 completion:(CDUnknownBlockType)arg6;
 + (id)supportedLocales;
 + (void)initialize;
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSArray *outOfVocabularyWords; // @synthesize outOfVocabularyWords=_outOfVocabularyWords;
-@property(readonly, copy, nonatomic) NSData *model; // @synthesize model=_model;
 @property(readonly, copy, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
+- (id)metrics;
+- (long long)lmeThreshold;
+- (_Bool)addProns:(id)arg1 forWord:(id)arg2;
+- (void)addPronsFromFile:(id)arg1;
+- (id)deserializeModelData:(id)arg1;
+- (void)generateNgramsSerializeDataAndWriteToFile:(id)arg1;
+- (_Bool)trainFromPlainTextAndWriteToDirectory:(id)arg1;
+- (void)trainFromPlainTextAndWriteToDirectory:(id)arg1 completion:(CDUnknownBlockType)arg2;
+@property(readonly, copy, nonatomic) NSDictionary *outOfVocabularyWordsAndFrequencies;
+@property(readonly, copy, nonatomic) NSArray *outOfVocabularyWords;
+- (id)addOovsFromSentence:(id)arg1;
+- (void)addSentences:(id)arg1;
+- (void)addSentence:(id)arg1;
 - (id)initWithAssetPath:(id)arg1;
 - (id)initWithLocale:(id)arg1;
 - (id)init;

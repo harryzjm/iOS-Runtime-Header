@@ -21,6 +21,7 @@
 - (id)setupCloudScopedIdentifier:(id)arg1 forLocalScopedIdentifier:(id)arg2 isFinal:(_Bool)arg3 direction:(unsigned long long)arg4 error:(id *)arg5;
 - (id)localScopedIdentifierForCloudScopedIdentifierIncludeRemappedRecords:(id)arg1;
 - (id)localScopedIdentifierForCloudScopedIdentifier:(id)arg1 isFinal:(_Bool *)arg2;
+- (id)firstAvailableCloudScopedIdentifierForProposedCloudScopedIdentifier:(id)arg1;
 - (id)cloudScopedIdentifierForLocalScopedIdentifier:(id)arg1 isFinal:(_Bool *)arg2;
 - (_Bool)addCloudScopedIdentifier:(id)arg1 forLocalScopedIdentifier:(id)arg2 isFinal:(_Bool)arg3 direction:(unsigned long long)arg4 error:(id *)arg5;
 - (id)initWithIDMapping:(id)arg1;

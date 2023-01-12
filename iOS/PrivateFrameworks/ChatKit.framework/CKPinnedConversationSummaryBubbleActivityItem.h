@@ -8,7 +8,7 @@
 
 #import <ChatKit/CKPinnedConversationActivityItem-Protocol.h>
 
-@class IMChat, IMMessage, NSString;
+@class IMChat, IMMessage, NSAttributedString, NSString;
 
 @interface CKPinnedConversationSummaryBubbleActivityItem : NSObject <CKPinnedConversationActivityItem>
 {
@@ -16,9 +16,11 @@
     NSString *_attachedContactItemIdentifier;
     IMMessage *_message;
     IMChat *_chat;
+    NSAttributedString *_summaryText;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSAttributedString *summaryText; // @synthesize summaryText=_summaryText;
 @property(readonly, nonatomic) IMChat *chat; // @synthesize chat=_chat;
 @property(readonly, nonatomic) IMMessage *message; // @synthesize message=_message;
 @property(readonly, nonatomic) double activityItemContentScale; // @synthesize activityItemContentScale=_activityItemContentScale;
@@ -27,6 +29,7 @@
 @property(readonly, nonatomic) _Bool activityItemDisappearsWithAnimation;
 @property(readonly, nonatomic) _Bool activityItemAppearsWithAnimation;
 @property(readonly, nonatomic) NSString *activityItemIdentifier;
+- (id)initWithSummaryText:(id)arg1;
 - (id)initWithMessage:(id)arg1 chat:(id)arg2 contentScale:(double)arg3 attachedContactItemIdentifier:(id)arg4;
 
 // Remaining properties

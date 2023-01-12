@@ -21,14 +21,22 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)medicalCodingWithSystem:(id)arg1 codingVersion:(id)arg2 code:(id)arg3 displayString:(id)arg4;
++ (id)ICD10CodingWithCode:(id)arg1;
++ (id)ICD10CodingWithCode:(id)arg1 displayString:(id)arg2;
 + (id)ucum_centimeterUnitCoding;
 + (id)ucum_meterUnitCoding;
 + (id)ucum_codingWithCode:(id)arg1 displayString:(id)arg2;
 + (id)loinc_systolicBloodPressureCoding;
 + (id)loinc_diastolicBloodPressureCoding;
++ (id)LOINCCodingWithCode:(id)arg1;
++ (id)LOINCCodingWithCode:(id)arg1 displayString:(id)arg2;
++ (id)ICD9CodingWithCode:(id)arg1;
++ (id)ICD9CodingWithCode:(id)arg1 displayString:(id)arg2;
 + (id)RxNormCodingWithCode:(id)arg1;
 + (id)RxNormCodingWithCode:(id)arg1 displayString:(id)arg2;
 + (id)text_codingWithDisplayString:(id)arg1;
++ (id)SNOMEDCodingWithCode:(id)arg1;
++ (id)SNOMEDCodingWithCode:(id)arg1 displayString:(id)arg2;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *displayString; // @synthesize displayString=_displayString;
 @property(readonly, copy, nonatomic) NSString *code; // @synthesize code=_code;

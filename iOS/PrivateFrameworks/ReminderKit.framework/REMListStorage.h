@@ -10,11 +10,11 @@
 #import <ReminderKit/NSSecureCoding-Protocol.h>
 #import <ReminderKit/REMExternalSyncMetadataWritableProviding-Protocol.h>
 #import <ReminderKit/REMObjectIDProviding-Protocol.h>
-#import <ReminderKit/REMSortingStyleReadWriteProtocol-Protocol.h>
+#import <ReminderKit/REMObjectStorageSupportedVersionProviding-Protocol.h>
 
 @class NSArray, NSData, NSDate, NSDictionary, NSOrderedSet, NSSet, NSString, REMColor, REMObjectID, REMResolutionTokenMap;
 
-@interface REMListStorage : NSObject <NSCopying, NSSecureCoding, REMSortingStyleReadWriteProtocol, REMObjectIDProviding, REMExternalSyncMetadataWritableProviding>
+@interface REMListStorage : NSObject <NSCopying, NSSecureCoding, REMObjectIDProviding, REMExternalSyncMetadataWritableProviding, REMObjectStorageSupportedVersionProviding>
 {
     NSOrderedSet *_reminderIDsMergeableOrdering;
     unsigned long long _storeGeneration;
@@ -27,12 +27,13 @@
     _Bool _daIsImmutable;
     _Bool _daIsNotificationsCollection;
     _Bool _isPlaceholder;
+    NSString *sortingStyle;
     NSString *externalIdentifier;
     NSString *externalModificationTag;
     NSString *daSyncToken;
     NSString *daPushKey;
-    NSString *sortingStyle;
-    long long sortingDirection;
+    long long minimumSupportedVersion;
+    long long effectiveMinimumSupportedVersion;
     REMObjectID *_accountID;
     REMObjectID *_objectID;
     NSString *_name;
@@ -45,6 +46,8 @@
     REMResolutionTokenMap *_resolutionTokenMap;
     NSData *_resolutionTokenMapData;
     NSSet *_reminderIDsToUndelete;
+    NSSet *_childListIDsToUndelete;
+    NSSet *_childSmartListIDsToUndelete;
     NSString *_sharedOwnerName;
     NSString *_sharedOwnerAddress;
     long long _sharingStatus;
@@ -84,6 +87,8 @@
 @property(copy, nonatomic) NSString *sharedOwnerAddress; // @synthesize sharedOwnerAddress=_sharedOwnerAddress;
 @property(copy, nonatomic) NSString *sharedOwnerName; // @synthesize sharedOwnerName=_sharedOwnerName;
 @property(nonatomic) _Bool remindersICSDisplayOrderChanged; // @synthesize remindersICSDisplayOrderChanged=_remindersICSDisplayOrderChanged;
+@property(retain, nonatomic) NSSet *childSmartListIDsToUndelete; // @synthesize childSmartListIDsToUndelete=_childSmartListIDsToUndelete;
+@property(retain, nonatomic) NSSet *childListIDsToUndelete; // @synthesize childListIDsToUndelete=_childListIDsToUndelete;
 @property(retain, nonatomic) NSSet *reminderIDsToUndelete; // @synthesize reminderIDsToUndelete=_reminderIDsToUndelete;
 @property(retain, nonatomic) NSData *resolutionTokenMapData; // @synthesize resolutionTokenMapData=_resolutionTokenMapData;
 @property(retain, nonatomic) REMResolutionTokenMap *resolutionTokenMap; // @synthesize resolutionTokenMap=_resolutionTokenMap;
@@ -98,13 +103,17 @@
 @property(nonatomic) _Bool isGroup; // @synthesize isGroup=_isGroup;
 @property(retain, nonatomic) REMObjectID *objectID; // @synthesize objectID=_objectID;
 @property(retain, nonatomic) REMObjectID *accountID; // @synthesize accountID=_accountID;
-@property(nonatomic) long long sortingDirection; // @synthesize sortingDirection;
-@property(copy, nonatomic) NSString *sortingStyle; // @synthesize sortingStyle;
+- (void)setEffectiveMinimumSupportedVersion:(long long)arg1;
+@property(readonly, nonatomic) long long effectiveMinimumSupportedVersion;
+- (void)setMinimumSupportedVersion:(long long)arg1;
+@property(readonly, nonatomic) long long minimumSupportedVersion;
 @property(copy, nonatomic) NSString *daPushKey; // @synthesize daPushKey;
 @property(copy, nonatomic) NSString *daSyncToken; // @synthesize daSyncToken;
 @property(copy, nonatomic) NSString *externalModificationTag; // @synthesize externalModificationTag;
 @property(copy, nonatomic) NSString *externalIdentifier; // @synthesize externalIdentifier;
+@property(copy, nonatomic) NSString *sortingStyle; // @synthesize sortingStyle;
 - (id)cdKeyToStorageKeyMap;
+- (_Bool)isUnsupported;
 @property(readonly, nonatomic) REMObjectID *remObjectID;
 @property(readonly, nonatomic) NSString *displayName;
 - (_Bool)hasDeserializedReminderIDsMergeableOrdering;
@@ -119,6 +128,7 @@
 - (unsigned long long)storeGeneration;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)optionalObjectID;
 - (id)initWithObjectID:(id)arg1 accountID:(id)arg2 name:(id)arg3 isGroup:(_Bool)arg4 reminderIDsMergeableOrderingData:(id)arg5;
 - (id)initWithObjectID:(id)arg1 accountID:(id)arg2 name:(id)arg3 isGroup:(_Bool)arg4 reminderIDsMergeableOrdering:(id)arg5;
 - (id)initWithObjectID:(id)arg1 accountID:(id)arg2 name:(id)arg3;

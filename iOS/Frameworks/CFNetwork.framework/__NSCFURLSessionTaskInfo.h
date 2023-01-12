@@ -8,7 +8,7 @@
 
 #import <CFNetwork/NSSecureCoding-Protocol.h>
 
-@class AVURLAsset, NSData, NSDate, NSDictionary, NSError, NSString, NSURL, NSURLRequest, NSURLResponse, NSUUID, __CFN_TaskMetrics;
+@class AVAssetDownloadConfiguration, AVURLAsset, NSData, NSDate, NSDictionary, NSError, NSString, NSURL, NSURLRequest, NSURLResponse, NSUUID, __CFN_TaskMetrics;
 @protocol SZExtractor;
 
 @interface __NSCFURLSessionTaskInfo : NSObject <NSSecureCoding>
@@ -25,8 +25,10 @@
     _Bool _mayBeDemotedToDiscretionary;
     _Bool __hasSZExtractor;
     _Bool __doesSZExtractorConsumeExtractedData;
+    _Bool __updatedStreamingZipModificationDate;
     _Bool _startedUserInitiated;
     _Bool _initializedWithAVAsset;
+    _Bool _enableSPIDelegateCallbacks;
     unsigned short __TLSMinimumSupportedProtocolVersion;
     unsigned short __TLSMaximumSupportedProtocolVersion;
     unsigned int _qos;
@@ -43,6 +45,7 @@
     long long _countOfBytesClientExpectsToSend;
     long long _countOfBytesClientExpectsToReceive;
     NSError *_error;
+    NSError *_retryError;
     NSURL *_fileURL;
     NSURL *_downloadFileURL;
     NSString *_bundleID;
@@ -70,6 +73,7 @@
     NSURL *_AVAssetURL;
     NSURL *_temporaryDestinationURL;
     NSDictionary *_resolvedMediaSelectionPlist;
+    AVAssetDownloadConfiguration *_downloadConfig;
     NSString *_avAssetDownloadChildDownloadSessionIdentifier;
     long long _countOfBytesReceived;
     long long _countOfBytesSent;
@@ -90,6 +94,8 @@
 @property long long countOfBytesSent; // @synthesize countOfBytesSent=_countOfBytesSent;
 @property long long countOfBytesReceived; // @synthesize countOfBytesReceived=_countOfBytesReceived;
 @property(copy) NSString *avAssetDownloadChildDownloadSessionIdentifier; // @synthesize avAssetDownloadChildDownloadSessionIdentifier=_avAssetDownloadChildDownloadSessionIdentifier;
+@property(retain) AVAssetDownloadConfiguration *downloadConfig; // @synthesize downloadConfig=_downloadConfig;
+@property _Bool enableSPIDelegateCallbacks; // @synthesize enableSPIDelegateCallbacks=_enableSPIDelegateCallbacks;
 @property(copy) NSDictionary *resolvedMediaSelectionPlist; // @synthesize resolvedMediaSelectionPlist=_resolvedMediaSelectionPlist;
 @property(copy) NSURL *temporaryDestinationURL; // @synthesize temporaryDestinationURL=_temporaryDestinationURL;
 @property _Bool initializedWithAVAsset; // @synthesize initializedWithAVAsset=_initializedWithAVAsset;
@@ -102,6 +108,7 @@
 @property(copy) NSURL *URL; // @synthesize URL=_URL;
 @property unsigned long long AVAssetDownloadToken; // @synthesize AVAssetDownloadToken=_AVAssetDownloadToken;
 @property _Bool startedUserInitiated; // @synthesize startedUserInitiated=_startedUserInitiated;
+@property(nonatomic) _Bool _updatedStreamingZipModificationDate; // @synthesize _updatedStreamingZipModificationDate=__updatedStreamingZipModificationDate;
 @property(nonatomic) _Bool _doesSZExtractorConsumeExtractedData; // @synthesize _doesSZExtractorConsumeExtractedData=__doesSZExtractorConsumeExtractedData;
 @property(nonatomic) _Bool _hasSZExtractor; // @synthesize _hasSZExtractor=__hasSZExtractor;
 @property(retain, nonatomic) id <SZExtractor> _extractor; // @synthesize _extractor=__extractor;
@@ -132,6 +139,7 @@
 @property(copy) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property(copy) NSURL *downloadFileURL; // @synthesize downloadFileURL=_downloadFileURL;
 @property(copy) NSURL *fileURL; // @synthesize fileURL=_fileURL;
+@property(copy) NSError *retryError; // @synthesize retryError=_retryError;
 @property(copy) NSError *error; // @synthesize error=_error;
 @property _Bool respondedToWillBeginDelayedRequestCallback; // @synthesize respondedToWillBeginDelayedRequestCallback=_respondedToWillBeginDelayedRequestCallback;
 @property _Bool resumedAndWaitingForEarliestBeginDate; // @synthesize resumedAndWaitingForEarliestBeginDate=_resumedAndWaitingForEarliestBeginDate;
@@ -150,8 +158,8 @@
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithAVAggregateAssetDownloadChildDownloadSessionIdentifier:(id)arg1 assetTitle:(id)arg2 assetArtworkData:(id)arg3 options:(id)arg4 taskIdentifier:(unsigned long long)arg5 uniqueIdentifier:(id)arg6 bundleID:(id)arg7 sessionID:(id)arg8;
-- (id)initWithAVAggregateDownloadTaskNoChildTaskKindWithURL:(id)arg1 destinationURL:(id)arg2 assetTitle:(id)arg3 assetArtworkData:(id)arg4 options:(id)arg5 taskIdentifier:(unsigned long long)arg6 uniqueIdentifier:(id)arg7 bundleID:(id)arg8 sessionID:(id)arg9;
-- (id)initWithAVAssetDownloadURL:(id)arg1 destinationURL:(id)arg2 assetTitle:(id)arg3 assetArtworkData:(id)arg4 options:(id)arg5 taskIdentifier:(unsigned long long)arg6 uniqueIdentifier:(id)arg7 bundleID:(id)arg8 sessionID:(id)arg9;
+- (id)initWithAVAggregateDownloadTaskNoChildTaskKindWithURL:(id)arg1 destinationURL:(id)arg2 assetTitle:(id)arg3 assetArtworkData:(id)arg4 options:(id)arg5 taskIdentifier:(unsigned long long)arg6 uniqueIdentifier:(id)arg7 bundleID:(id)arg8 sessionID:(id)arg9 enableSPIDelegateCallbacks:(_Bool)arg10;
+- (id)initWithAVAssetDownloadURL:(id)arg1 destinationURL:(id)arg2 assetTitle:(id)arg3 assetArtworkData:(id)arg4 options:(id)arg5 taskIdentifier:(unsigned long long)arg6 uniqueIdentifier:(id)arg7 bundleID:(id)arg8 sessionID:(id)arg9 downloadConfig:(id)arg10;
 - (id)initWithDownloadTask:(id)arg1 uniqueIdentifier:(id)arg2 bundleID:(id)arg3 sessionID:(id)arg4;
 - (id)initWithUploadTask:(id)arg1 uniqueIdentifier:(id)arg2 bundleID:(id)arg3 sessionID:(id)arg4;
 - (id)initWithDataTask:(id)arg1 uniqueIdentifier:(id)arg2 bundleID:(id)arg3 sessionID:(id)arg4;

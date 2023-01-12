@@ -46,15 +46,8 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)newItemWithPath:(id)arg1 parentGlobalID:(id)arg2;
-+ (_Bool)parseBookmarkData:(id)arg1 inAccountSession:(id)arg2 docID:(id *)arg3 itemID:(id *)arg4 mangledID:(id *)arg5 unsaltedBookmarkData:(id *)arg6 error:(id *)arg7;
-+ (_Bool)parseUnsaltedBookmarkData:(id)arg1 itemID:(id *)arg2 mangledID:(id *)arg3 error:(id *)arg4;
-+ (id)unsaltedBookmarkDataWithRelativePath:(id)arg1 serverZone:(id)arg2;
-+ (id)bookmarkDataWithRelativePath:(id)arg1 serverZone:(id)arg2;
-+ (id)itemResolutionStringWithRelativePath:(id)arg1;
-+ (id)unsaltedBookmarkDataWithItemResolutionString:(id)arg1 serverZone:(id)arg2;
-+ (id)bookmarkDataWithItemResolutionString:(id)arg1 serverZone:(id)arg2;
-+ (id)_bookmarkDataWithItemResolutionString:(id)arg1 serverZone:(id)arg2 salted:(_Bool)arg3;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool isUserVisible; // @synthesize isUserVisible=_isUserVisible;
 @property(readonly, nonatomic) BRCPQLConnection *db; // @synthesize db=_db;
 @property(retain, nonatomic) BRCAppLibrary *appLibrary; // @synthesize appLibrary=_appLibrary;
 @property(nonatomic) unsigned long long sharingOptions; // @synthesize sharingOptions=_sharingOptions;
@@ -78,6 +71,7 @@
 @property(readonly, nonatomic) _Bool needsSyncUp;
 @property(readonly, nonatomic) _Bool needsUpload;
 @property(readonly, nonatomic) _Bool needsReading;
+- (void)bounceSourceItemWithServerLogicalName:(id)arg1 bounceNumber:(unsigned long long)arg2;
 - (void)bouncePhysicalNameToRepresentableName;
 - (void)bounceReservedItemWithBounceNumber:(unsigned long long)arg1;
 - (void)markBounceFailed;
@@ -124,6 +118,7 @@
 - (_Bool)updateLocationAndMetaFromFSAtPath:(id)arg1 parentGlobalID:(id)arg2;
 - (_Bool)_isReadonlyShareChild;
 - (_Bool)updateFromFSAtPath:(id)arg1 parentGlobalID:(id)arg2;
+- (void)_fixSpotlightAttributeIfNecessaryAtPath:(id)arg1;
 - (_Bool)_checkForSharedToMeItemInTrashWithPath:(id)arg1;
 - (void)_updatePropagatedInfoFromFSAtPath:(id)arg1;
 - (_Bool)_checkZoneUpdateFromFSAtPath:(id)arg1 parentGlobalID:(id)arg2;
@@ -141,12 +136,14 @@
 @property(readonly, nonatomic) unsigned short uploadStatus;
 @property(readonly, nonatomic) _Bool fromReadOnlyDB;
 @property(readonly, nonatomic) NSError *syncUpError;
+- (void)setOrRemoveSpotlightAttributeAt:(id)arg1;
+- (void)scanParentDirectory;
 - (void)markForceNotify;
 - (void)triggerNotificationIfNeeded;
 - (void)_sendNotificationIfNeededWithDiffs:(unsigned long long)arg1 regather:(_Bool)arg2;
 @property(readonly, nonatomic) NSMutableSet *setOfAppLibraryIDsWithReverseAliases;
 - (id)fetchParentFileIDs;
-- (id)_setOfParentIDs;
+- (id)setOfParentIDs;
 - (void)_ascendItemHierarchyWithBlock:(CDUnknownBlockType)arg1;
 - (_Bool)_isInterestingUpdateForNotifsWithDiffs:(unsigned long long)arg1;
 - (_Bool)_isInterestingUpdateForNotifs;
@@ -187,6 +184,7 @@
 @property(readonly, nonatomic) _Bool needsOSUpgradeToSyncUp;
 - (void)inheritOSUpgradeNeededFromItem:(id)arg1;
 @property(readonly, nonatomic) _Bool physicalNameNeedsRename;
+@property(readonly, nonatomic) _Bool isDocumentBeingCopiedToNewZone;
 @property(readonly, nonatomic) _Bool hasShareIDAndIsOwnedByMe;
 @property(readonly, nonatomic) _Bool isChildSharedItem;
 @property(readonly, nonatomic) _Bool isTopLevelSharedItem;
@@ -244,6 +242,7 @@
 @property(readonly, nonatomic) BRCDocumentItem *asDocument;
 @property(readonly, nonatomic) BRCDirectoryItem *asDirectory;
 @property(readonly, nonatomic) BRCAliasItem *asBRAlias;
+@property(readonly, nonatomic) NSString *bookmarkData;
 - (void)updateParentZoneRowID:(id)arg1;
 - (void)insertTombstoneAliasRecordInZone:(id)arg1;
 - (id)structureRecordBeingDeadInServerTruth:(_Bool)arg1 shouldPCSChainStatus:(unsigned char)arg2 inZone:(id)arg3;
@@ -256,8 +255,6 @@
 - (id)sideCarRecordID;
 - (id)structureRecordBeingDeadInServerTruth:(_Bool)arg1 stageID:(id)arg2 shouldPCSChainStatus:(unsigned char)arg3;
 - (id)baseStructureRecord;
-@property(readonly, nonatomic) NSString *bookmarkData;
-- (id)itemResolutionString;
 - (void)fixupStagedItemAtStartup;
 - (void)applyMetadataOnFileID:(unsigned long long)arg1 liveFD:(unsigned long long)arg2 sharingOptions:(unsigned long long)arg3;
 - (_Bool)learnStagedInfoFromDownloadStageID:(id)arg1 error:(id *)arg2;

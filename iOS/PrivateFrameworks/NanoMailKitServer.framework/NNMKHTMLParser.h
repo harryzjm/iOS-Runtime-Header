@@ -10,7 +10,7 @@
 
 @interface NNMKHTMLParser : NSObject
 {
-    _Bool _containsBlacklistedElements;
+    _Bool _containsBlockedElements;
     _Bool _parsingHead;
     _Bool _parsingBody;
     _Bool _cancelled;
@@ -54,7 +54,7 @@
 @property(nonatomic) _Bool cancelled; // @synthesize cancelled=_cancelled;
 @property(nonatomic) _Bool parsingBody; // @synthesize parsingBody=_parsingBody;
 @property(nonatomic) _Bool parsingHead; // @synthesize parsingHead=_parsingHead;
-@property(nonatomic) _Bool containsBlacklistedElements; // @synthesize containsBlacklistedElements=_containsBlacklistedElements;
+@property(nonatomic) _Bool containsBlockedElements; // @synthesize containsBlockedElements=_containsBlockedElements;
 - (void)_appendImageFromAttributes:(const char **)arg1;
 - (void)_appendString:(id)arg1;
 - (void)_flushCharactersIfNeeded;
@@ -82,8 +82,8 @@
 - (_Bool)_isElementLineBreak:(id)arg1;
 - (_Bool)_isElementQuoteElement:(id)arg1 attributes:(const char **)arg2;
 - (_Bool)_isElementDisplayedInBlock:(id)arg1;
-- (_Bool)_isErrorBlacklisted:(struct _xmlError *)arg1;
-- (_Bool)_isElementBlacklisted:(id)arg1 attributes:(const char **)arg2;
+- (_Bool)_isErrorBlocked:(struct _xmlError *)arg1;
+- (_Bool)_isElementBlocked:(id)arg1 attributes:(const char **)arg2;
 - (void)processImgTagSource:(id)arg1 contentRange:(struct _NSRange)arg2;
 - (void)processBodyHTMLContent:(id)arg1 style:(id)arg2 contentRange:(struct _NSRange)arg3;
 - (void)processHeadHTMLTagContent:(id)arg1;
@@ -91,8 +91,8 @@
 - (void)appendString:(id)arg1 stringAttributes:(id)arg2;
 - (void)appendImageWithSource:(id)arg1 width:(double)arg2 height:(double)arg3 stringAttributes:(id)arg4;
 - (_Bool)isElementIgnorable:(id)arg1;
-- (_Bool)isErrorTypeBlacklisted:(char *)arg1;
-- (_Bool)isElementBlacklisted:(id)arg1 attributeQueryBlock:(CDUnknownBlockType)arg2;
+- (_Bool)isErrorTypeBlocked:(char *)arg1;
+- (_Bool)isElementBlocked:(id)arg1 attributeQueryBlock:(CDUnknownBlockType)arg2;
 - (void)parseHTMLBody:(id)arg1 encoding:(unsigned long long)arg2;
 - (id)init;
 

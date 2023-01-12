@@ -10,7 +10,7 @@
 #import <TelephonyUtilities/NSMutableCopying-Protocol.h>
 #import <TelephonyUtilities/NSSecureCoding-Protocol.h>
 
-@class NSPersonNameComponents, NSString;
+@class NSArray, NSPersonNameComponents, NSString;
 
 @interface TUCallDisplayContext : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
 {
@@ -25,7 +25,7 @@
     NSString *_callDirectoryLabel;
     NSString *_callDirectoryLocalizedExtensionContainingAppName;
     NSString *_callDirectoryExtensionIdentifier;
-    NSString *_contactIdentifier;
+    NSArray *_contactIdentifiers;
     NSString *_name;
     NSString *_label;
 }
@@ -35,7 +35,7 @@
 @property(copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(nonatomic) int legacyAddressBookIdentifier; // @synthesize legacyAddressBookIdentifier=_legacyAddressBookIdentifier;
-@property(copy, nonatomic) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
+@property(copy, nonatomic) NSArray *contactIdentifiers; // @synthesize contactIdentifiers=_contactIdentifiers;
 @property(copy, nonatomic) NSString *callDirectoryExtensionIdentifier; // @synthesize callDirectoryExtensionIdentifier=_callDirectoryExtensionIdentifier;
 @property(copy, nonatomic) NSString *callDirectoryLocalizedExtensionContainingAppName; // @synthesize callDirectoryLocalizedExtensionContainingAppName=_callDirectoryLocalizedExtensionContainingAppName;
 @property(copy, nonatomic) NSString *callDirectoryLabel; // @synthesize callDirectoryLabel=_callDirectoryLabel;
@@ -55,6 +55,7 @@
 - (id)displayContextByMergingWithDisplayContext:(id)arg1;
 - (void)setFirstName:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *firstName;
+@property(copy, nonatomic) NSString *contactIdentifier;
 - (id)init;
 
 @end

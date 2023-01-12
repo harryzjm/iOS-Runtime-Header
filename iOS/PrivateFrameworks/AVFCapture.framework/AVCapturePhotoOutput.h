@@ -17,6 +17,10 @@
 + (unsigned long long)maxLivePhotoDataSize;
 + (id)DNGPhotoDataRepresentationForRawSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 previewPhotoSampleBuffer:(struct opaqueCMSampleBuffer *)arg2;
 + (id)JPEGPhotoDataRepresentationForJPEGSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 previewPhotoSampleBuffer:(struct opaqueCMSampleBuffer *)arg2;
++ (_Bool)isDemosaicedRawPixelFormat:(unsigned int)arg1;
++ (_Bool)isAppleProRAWPixelFormat:(unsigned int)arg1;
++ (_Bool)isBayerRawPixelFormat:(unsigned int)arg1;
++ (_Bool)isBayerRAWPixelFormat:(unsigned int)arg1;
 + (id)new;
 + (void)initialize;
 - (void)_handleDidFinishMovieCaptureMovieNotificationWithPayload:(id)arg1 forRequest:(id)arg2;
@@ -54,7 +58,11 @@
 - (void)_setIsFlashScene:(_Bool)arg1 firingKVO:(_Bool)arg2;
 - (void)_decrementObserverCountForKeyPath:(id)arg1;
 - (void)_incrementObserverCountForKeyPath:(id)arg1;
+- (void)_updateSemanticStyleRenderingSupportedForDevice:(id)arg1;
+- (void)_updateHighPhotoQualitySupportedForDevice:(id)arg1;
 - (void)_updateFastCapturePrioritizationSupportedForDevice:(id)arg1;
+- (void)_updateAppleProRAWSupportedForDevice:(id)arg1;
+- (void)_updateContentAwareDistortionCorrectionSupportedForDevice:(id)arg1;
 - (void)_updatePreviewQualityAdjustedPhotoFilterRenderingSupportedForDevice:(id)arg1;
 - (void)_updateProcessedPhotoZoomWithoutUpscalingSupportedForSourceDevice:(id)arg1;
 - (void)_updateDeferredProcessingSupportedForSourceDevice:(id)arg1;
@@ -82,11 +90,14 @@
 - (void)_updateAutoRedReductionSupportedForSourceDevice:(id)arg1;
 - (_Bool)_HEVCAndHEIFAreAvailableForSourceDevice:(id)arg1;
 - (void)_updateAvailablePhotoFileTypesForSourceDevice:(id)arg1;
+- (unsigned int)_internalRawFormatFromRawFormat:(unsigned int)arg1;
 - (void)_updateAvailableRawPhotoPixelFormatTypesForSourceDevice:(id)arg1;
 - (void)_updateAvailablePhotoCodecTypesForSourceDevice:(id)arg1;
 - (void)_updateAvailablePhotoPixelFormatTypesForSourceDevice:(id)arg1;
 - (void)_updateSupportedPropertiesForSourceDevice:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)handleBackgroundBlurActiveChangedForDevice:(id)arg1;
+- (void)handleCenterStageActiveChangedForDevice:(id)arg1;
 - (void)handleChangedActiveFormat:(id)arg1 forDevice:(id)arg2;
 - (void)safelyHandleServerConnectionDeathForFigCaptureSession:(struct OpaqueFigCaptureSession *)arg1;
 - (void)detachSafelyFromFigCaptureSession:(struct OpaqueFigCaptureSession *)arg1;
@@ -129,6 +140,8 @@
 - (CDStruct_1b6d18a9)livePhotoMovieVideoFrameDuration;
 - (CDStruct_1b6d18a9)livePhotoMovieDuration;
 - (CDStruct_79c71658)livePhotoMovieDimensions;
+@property(nonatomic, getter=isContentAwareDistortionCorrectionEnabled) _Bool contentAwareDistortionCorrectionEnabled;
+@property(readonly, nonatomic, getter=isContentAwareDistortionCorrectionSupported) _Bool contentAwareDistortionCorrectionSupported;
 - (void)setEnabledSemanticSegmentationMatteTypes:(id)arg1;
 - (id)enabledSemanticSegmentationMatteTypes;
 - (id)availableSemanticSegmentationMatteTypes;
@@ -149,6 +162,9 @@
 @property(readonly, nonatomic) unsigned long long maxBracketedCapturePhotoCount;
 @property(nonatomic, getter=isHighResolutionCaptureEnabled) _Bool highResolutionCaptureEnabled;
 @property(copy, nonatomic) AVCapturePhotoSettings *photoSettingsForSceneMonitoring;
+- (void)setSemanticStyleRenderingEnabled:(_Bool)arg1;
+- (_Bool)isSemanticStyleRenderingEnabled;
+- (_Bool)isSemanticStyleRenderingSupported;
 - (void)setFastCapturePrioritizationEnabled:(_Bool)arg1;
 - (_Bool)isFastCapturePrioritizationEnabled;
 - (_Bool)isFastCapturePrioritizationSupported;
@@ -175,7 +191,9 @@
 @property(readonly, nonatomic) NSArray *supportedFlashModes;
 @property(readonly, nonatomic) _Bool isStillImageStabilizationScene;
 - (_Bool)isHDRScene;
+- (_Bool)isEV0PhotoDeliverySupported;
 - (id)supportedHDRModes;
+- (_Bool)_isStillImageStabilizationSupported;
 @property(readonly, nonatomic, getter=isStillImageStabilizationSupported) _Bool stillImageStabilizationSupported;
 @property(nonatomic) long long maxPhotoQualityPrioritization;
 - (id)supportedRawPhotoPixelFormatTypesForFileType:(id)arg1;
@@ -184,6 +202,11 @@
 @property(readonly, nonatomic) NSArray *availableRawPhotoFileTypes;
 @property(readonly, nonatomic) NSArray *availablePhotoFileTypes;
 @property(readonly, nonatomic) NSArray *availableRawPhotoPixelFormatTypes;
+- (void)setDemosaicedRawEnabled:(_Bool)arg1;
+@property(nonatomic, getter=isAppleProRAWEnabled) _Bool appleProRAWEnabled;
+- (_Bool)isDemosaicedRawEnabled;
+- (_Bool)isDemosaicedRawSupported;
+@property(readonly, nonatomic, getter=isAppleProRAWSupported) _Bool appleProRAWSupported;
 @property(readonly, nonatomic) NSArray *availablePhotoCodecTypes;
 @property(readonly, nonatomic) NSArray *availablePhotoPixelFormatTypes;
 - (void)setPreparedPhotoSettingsArray:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

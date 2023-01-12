@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDate, PLManagedAsset;
+@class NSData, NSDate, PLCharacterRecognitionAttributes, PLManagedAsset, PLVisualSearchAttributes;
 
 @interface PLMediaAnalysisAssetAttributes
 {
@@ -13,29 +13,37 @@
 + (id)entityName;
 + (id)fetchRequest;
 - (void)willSave;
+- (void)resetVisualSearchAttributes;
+- (void)setVisualSearchData:(id)arg1 algorithmVersion:(short)arg2 adjustmentVersion:(id)arg3;
+- (void)resetCharacterRecognitionAttributes;
+- (void)setCharacterRecognitionData:(id)arg1 machineReadableCodeData:(id)arg2 algorithmVersion:(short)arg3 adjustmentVersion:(id)arg4;
 - (CDStruct_3c1748cc)bestVideoTimeRange;
 - (void)setBestVideoTimeRange:(CDStruct_3c1748cc)arg1;
-- (CDStruct_198678f7)bestKeyFrameTime;
-- (void)setBestKeyFrameTime:(CDStruct_198678f7)arg1;
 
 // Remaining properties
 @property(nonatomic) float activityScore; // @dynamic activityScore;
 @property(retain, nonatomic) PLManagedAsset *asset; // @dynamic asset;
 @property(nonatomic) short audioClassification; // @dynamic audioClassification;
 @property(nonatomic) float autoplaySuggestionScore; // @dynamic autoplaySuggestionScore;
-@property(nonatomic) int bestKeyFrameTimeScale; // @dynamic bestKeyFrameTimeScale;
-@property(nonatomic) long long bestKeyFrameValue; // @dynamic bestKeyFrameValue;
 @property(nonatomic) int bestVideoRangeDurationTimeScale; // @dynamic bestVideoRangeDurationTimeScale;
 @property(nonatomic) long long bestVideoRangeDurationValue; // @dynamic bestVideoRangeDurationValue;
 @property(nonatomic) int bestVideoRangeStartTimeScale; // @dynamic bestVideoRangeStartTimeScale;
 @property(nonatomic) long long bestVideoRangeStartValue; // @dynamic bestVideoRangeStartValue;
 @property(nonatomic) float blurrinessScore; // @dynamic blurrinessScore;
+@property(retain, nonatomic) PLCharacterRecognitionAttributes *characterRecognitionAttributes; // @dynamic characterRecognitionAttributes;
+@property(retain, nonatomic) NSData *colorNormalizationData; // @dynamic colorNormalizationData;
 @property(nonatomic) float exposureScore; // @dynamic exposureScore;
 @property(nonatomic) unsigned long long faceCount; // @dynamic faceCount;
 @property(retain, nonatomic) NSDate *mediaAnalysisTimeStamp; // @dynamic mediaAnalysisTimeStamp;
 @property(nonatomic) unsigned long long mediaAnalysisVersion; // @dynamic mediaAnalysisVersion;
 @property(nonatomic) long long packedBestPlaybackRect; // @dynamic packedBestPlaybackRect;
+@property(nonatomic) short probableRotationDirection; // @dynamic probableRotationDirection;
+@property(nonatomic) float probableRotationDirectionConfidence; // @dynamic probableRotationDirectionConfidence;
+@property(nonatomic) unsigned short screenTimeDeviceImageSensitivity; // @dynamic screenTimeDeviceImageSensitivity;
+@property(nonatomic) unsigned short syndicationProcessingValue; // @dynamic syndicationProcessingValue;
+@property(nonatomic) unsigned long long syndicationProcessingVersion; // @dynamic syndicationProcessingVersion;
 @property(nonatomic) float videoScore; // @dynamic videoScore;
+@property(retain, nonatomic) PLVisualSearchAttributes *visualSearchAttributes; // @dynamic visualSearchAttributes;
 
 @end
 

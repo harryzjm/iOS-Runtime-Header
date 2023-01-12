@@ -6,12 +6,13 @@
 
 #import <PhotosGraph/NSObject-Protocol.h>
 
-@class NSDictionary, NSString, PGGraphMomentNode;
+@class NSArray, NSDictionary, NSString, PGGraphMomentNode, PGMeaningCriteriaMomentNodeCache;
 
 @protocol PGMeaningCriteria <NSObject>
 + (id)criteriaWithDictionary:(NSDictionary *)arg1;
 + (NSString *)criteriaKey;
 - (_Bool)isValid;
-- (_Bool)passesForMomentNode:(PGGraphMomentNode *)arg1;
+- (_Bool)passesForAssets:(NSArray *)arg1;
+- (_Bool)passesForMomentNode:(PGGraphMomentNode *)arg1 momentNodeCache:(PGMeaningCriteriaMomentNodeCache *)arg2;
 @end
 

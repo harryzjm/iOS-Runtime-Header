@@ -34,6 +34,10 @@
 - (id)i_copyIntoContext:(id)arg1 stylesheet:(id)arg2 paragraphStyle:(id)arg3 listStyle:(id)arg4 bakeModes:(_Bool)arg5 resettingHostTableToMatch:(id)arg6 referenceColorHelper:(id)arg7 disableMenus:(_Bool)arg8;
 - (id)i_copyIntoContext:(id)arg1 stylesheet:(id)arg2;
 - (id)p_processEndNode:(id)arg1 startNode:(id)arg2 bakeModes:(_Bool)arg3 tokenDict:(id)arg4;
+- (struct _NSRange)rangeForCellID:(struct TSUCellCoord)arg1 includingBreak:(_Bool)arg2;
+- (id)tst_tableInfo;
+- (id)tst_selectionForImplicitlyEditingWithFormatType:(unsigned int)arg1 percentSymbol:(id)arg2 currencySymbol:(id)arg3 adjustSelectionForCurrencyOrPercentSymbols:(_Bool)arg4;
+- (id)tst_selectionForImplicitlyEditingCellWithFormat:(id)arg1 adjustSelectionForCurrencyOrPercentSymbols:(_Bool)arg2;
 - (_Bool)hasAttachmentsThatChangeWithPageNumberOrPageCount;
 - (_Bool)changesWithPageCount;
 - (void)nonUndoableAppendStoragePreservingEmphasis:(id)arg1;

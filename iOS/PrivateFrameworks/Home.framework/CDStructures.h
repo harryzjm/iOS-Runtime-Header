@@ -16,8 +16,8 @@ struct CGPoint {
 };
 
 struct CGSize {
-    double _field1;
-    double _field2;
+    double width;
+    double height;
 };
 
 struct _NSRange {
@@ -25,9 +25,8 @@ struct _NSRange {
     unsigned long long _field2;
 };
 
-struct _opaque_pthread_rwlock_t {
-    long long __sig;
-    char __opaque[192];
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
 };
 
 #pragma mark Typedef'd Structures
@@ -43,4 +42,11 @@ typedef struct {
     double _field1;
     double _field2;
 } CDStruct_c3b9c2ee;
+
+typedef struct {
+    long long _field1;
+    int _field2;
+    unsigned int _field3;
+    long long _field4;
+} CDStruct_198678f7;
 

@@ -37,6 +37,8 @@
 - (_Bool)respondsToSelector:(SEL)arg1;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)description;
+- (id)signerIdentity;
+- (id)signerOrganization;
 - (_Bool)freeProfileValidated;
 - (_Bool)UPPValidated;
 - (_Bool)profileValidated;

@@ -11,16 +11,21 @@
     _Bool canDealloc;
     _Bool canEndEncoding;
     _Bool hasEndEncoding;
-    struct deque<id, std::__1::allocator<id>> updatedFences;
+    struct deque<id, std::allocator<id>> updatedFences;
     MTLDebugCommandBuffer *_commandBuffer;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)invalidateCompressedTexture:(id)arg1 slice:(unsigned long long)arg2 level:(unsigned long long)arg3;
+- (void)invalidateCompressedTexture:(id)arg1;
 - (void)resolveCounters:(id)arg1 inRange:(struct _NSRange)arg2 destinationBuffer:(id)arg3 destinationOffset:(unsigned long long)arg4;
 - (void)sampleCountersInBuffer:(id)arg1 atSampleIndex:(unsigned long long)arg2 withBarrier:(_Bool)arg3;
 - (void)copyFromTexture:(id)arg1 toTexture:(id)arg2;
 - (void)copyFromTexture:(id)arg1 sourceSlice:(unsigned long long)arg2 sourceLevel:(unsigned long long)arg3 toTexture:(id)arg4 destinationSlice:(unsigned long long)arg5 destinationLevel:(unsigned long long)arg6 sliceCount:(unsigned long long)arg7 levelCount:(unsigned long long)arg8;
+- (void)fillTexture:(id)arg1 level:(unsigned long long)arg2 slice:(unsigned long long)arg3 region:(CDStruct_1e3be3a8)arg4 color:(CDStruct_d2b197d1)arg5 pixelFormat:(unsigned long long)arg6;
+- (void)fillTexture:(id)arg1 level:(unsigned long long)arg2 slice:(unsigned long long)arg3 region:(CDStruct_1e3be3a8)arg4 color:(CDStruct_d2b197d1)arg5;
+- (void)fillTexture:(id)arg1 level:(unsigned long long)arg2 slice:(unsigned long long)arg3 region:(CDStruct_1e3be3a8)arg4 bytes:(const void *)arg5 length:(unsigned long long)arg6;
 - (void)optimizeIndirectCommandBuffer:(id)arg1 withRange:(struct _NSRange)arg2;
 - (void)copyIndirectCommandBuffer:(id)arg1 sourceRange:(struct _NSRange)arg2 destination:(id)arg3 destinationIndex:(unsigned long long)arg4;
 - (void)resetCommandsInBuffer:(id)arg1 withRange:(struct _NSRange)arg2;
@@ -36,6 +41,7 @@
 - (void)waitForFence:(id)arg1;
 - (void)updateFence:(id)arg1;
 - (void)copyFromBuffer:(id)arg1 sourceOffset:(unsigned long long)arg2 toBuffer:(id)arg3 destinationOffset:(unsigned long long)arg4 size:(unsigned long long)arg5;
+- (void)fillBuffer:(id)arg1 range:(struct _NSRange)arg2 pattern4:(unsigned int)arg3;
 - (void)fillBuffer:(id)arg1 range:(struct _NSRange)arg2 value:(unsigned char)arg3;
 - (void)generateMipmapsForTexture:(id)arg1;
 - (void)copyFromTexture:(id)arg1 sourceSlice:(unsigned long long)arg2 sourceLevel:(unsigned long long)arg3 sourceOrigin:(CDStruct_14f26992)arg4 sourceSize:(CDStruct_14f26992)arg5 toBuffer:(id)arg6 destinationOffset:(unsigned long long)arg7 destinationBytesPerRow:(unsigned long long)arg8 destinationBytesPerImage:(unsigned long long)arg9 options:(unsigned long long)arg10;

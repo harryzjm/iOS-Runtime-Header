@@ -10,25 +10,23 @@
 
 @interface VKRouteEtaDescription : NSObject
 {
-    struct _retain_ptr<NSString *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> {
-        CDUnknownFunctionPointerType *_vptr$_retain_ptr;
-        NSString *_obj;
-        struct _retain_objc _retain;
-        struct _release_objc _release;
-    } _etaText;
+    struct _retain_ptr<NSString *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> _etaText;
     unsigned char _glyphType;
     GEOFeatureStyleAttributes *_styleAttributes;
+    long long _routeEtaType;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) long long routeEtaType; // @synthesize routeEtaType=_routeEtaType;
 @property(readonly, nonatomic) GEOFeatureStyleAttributes *styleAttributes; // @synthesize styleAttributes=_styleAttributes;
 @property(readonly, nonatomic) unsigned char glyphType; // @synthesize glyphType=_glyphType;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, nonatomic) NSString *etaText;
 - (void)dealloc;
-- (id)initWithEtaText:(id)arg1 styleAttributes:(id)arg2;
+- (id)initWithEtaText:(id)arg1 styleAttributes:(id)arg2 routeEtaType:(long long)arg3;
+- (id)initWithEtaText:(id)arg1 etaAdvisoryStyleAttributes:(id)arg2 routeEtaType:(long long)arg3;
 - (id)initWithEtaText:(id)arg1 etaAdvisoryStyleAttributes:(id)arg2;
 - (id)initWithEtaText:(id)arg1;
 - (id)initWithEtaText:(id)arg1 glyphType:(unsigned char)arg2;

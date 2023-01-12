@@ -21,10 +21,9 @@
 + (_Bool)supportsQuicklookForResult:(id)arg1;
 + (unsigned long long)recencyRankedTargetResultCount;
 - (id)_activityItemProviderForResult:(id)arg1;
-- (id)_pasteboardItemsForResult:(id)arg1;
 - (id)previewViewControllerForResult:(id)arg1;
+- (void)updateSupplementryViewIfNeeded:(id)arg1 atIndexPath:(id)arg2;
 - (id)cellForSupplementryItemInCollectionView:(id)arg1 atIndexPath:(id)arg2 supplementryViewKind:(id)arg3;
-- (id)cellForItemInCollectionView:(id)arg1 atIndex:(long long)arg2 withIdentifier:(id)arg3;
 - (id)layoutGroupWithEnvironment:(id)arg1;
 - (_Bool)applyLayoutMarginsToLayoutGroup;
 - (double)interGroupSpacing;

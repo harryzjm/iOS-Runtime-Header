@@ -28,6 +28,8 @@ __attribute__((visibility("hidden")))
     _Bool _backgroundCoversContentOnly;
     _Bool _clientWantsBackgroundHidden;
     _Bool _useManualScrollEdgeAppearance;
+    _Bool _clientUsesManualScrollEdgeAppearanceProgressSPI;
+    _Bool _clientCanUpdateChromelessTransitionProgress;
     _Bool _clientWantsToPreserveSearchBarAcrossTransitions;
     _Bool _hidesSearchBarWhenScrolling;
     _UINavigationBarModernPromptView *_promptView;
@@ -70,6 +72,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIView *canvasView; // @synthesize canvasView=_canvasView;
 @property(retain, nonatomic) UILabel *weeTitleLabel; // @synthesize weeTitleLabel=_weeTitleLabel;
 @property(retain, nonatomic) _UINavigationControllerRefreshControlHost *refreshControlHost; // @synthesize refreshControlHost=_refreshControlHost;
+@property(nonatomic) _Bool clientCanUpdateChromelessTransitionProgress; // @synthesize clientCanUpdateChromelessTransitionProgress=_clientCanUpdateChromelessTransitionProgress;
+@property(nonatomic) _Bool clientUsesManualScrollEdgeAppearanceProgressSPI; // @synthesize clientUsesManualScrollEdgeAppearanceProgressSPI=_clientUsesManualScrollEdgeAppearanceProgressSPI;
 @property(nonatomic) double manualScrollEdgeAppearanceProgress; // @synthesize manualScrollEdgeAppearanceProgress=_manualScrollEdgeAppearanceProgress;
 @property(nonatomic) _Bool useManualScrollEdgeAppearance; // @synthesize useManualScrollEdgeAppearance=_useManualScrollEdgeAppearance;
 @property(nonatomic) _Bool clientWantsBackgroundHidden; // @synthesize clientWantsBackgroundHidden=_clientWantsBackgroundHidden;
@@ -92,8 +96,9 @@ __attribute__((visibility("hidden")))
 - (void)prepareToRecordToState:(id)arg1;
 - (void)recordFromStateForTransition:(id)arg1;
 @property(readonly, copy) NSString *description;
+- (_Bool)isBackgroundForScrollEdge;
 @property(readonly, nonatomic, getter=isVariableHeight) _Bool variableHeight;
-@property(readonly, nonatomic) CDStruct_39925896 layoutHeights;
+@property(readonly, nonatomic) CDStruct_cf303044 layoutHeights;
 @property(readonly, copy, nonatomic) NSArray *restingHeights;
 - (id)layoutForMeasuringWidth:(double)arg1;
 - (void)removeViewsNotInLayout:(id)arg1;

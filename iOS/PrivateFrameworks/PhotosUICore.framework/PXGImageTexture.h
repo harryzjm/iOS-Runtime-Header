@@ -10,10 +10,13 @@
 {
     struct CGImage *_sourceCGImage;
     struct __CVBuffer *_sourceCVPixelBuffer;
+    id _cacheKey;
 }
 
 + (id)_sharedCIContext;
-- (void)getTextureInfos:(CDStruct_183601bc *)arg1 forSpriteIndexes:(unsigned int *)arg2 geometries:(const CDStruct_3ab912e1 *)arg3 spriteStyles:(const CDStruct_506f5052 *)arg4 spriteInfos:(const CDStruct_9d1ebe49 *)arg5 screenScale:(double)arg6 count:(unsigned int)arg7;
+- (void).cxx_destruct;
+@property(retain, nonatomic) id cacheKey; // @synthesize cacheKey=_cacheKey;
+- (void)getTextureInfos:(CDStruct_183601bc *)arg1 forSpriteIndexes:(unsigned int *)arg2 geometries:(const CDStruct_4f725fed *)arg3 spriteStyles:(const CDStruct_76b550e2 *)arg4 spriteInfos:(const CDStruct_9d1ebe49 *)arg5 screenScale:(double)arg6 count:(unsigned int)arg7;
 - (struct CGImage *)imageRepresentation;
 @property(readonly, nonatomic) MISSING_TYPE *orientationTransform;
 - (void)dealloc;

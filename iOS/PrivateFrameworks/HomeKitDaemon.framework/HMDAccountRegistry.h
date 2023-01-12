@@ -35,6 +35,7 @@
 - (void)__handleAppleAccountDeviceAdded:(id)arg1;
 - (void)__handleAppleAccountHandlesUpdated:(id)arg1;
 - (void)__handleAppleAccountUpdate:(id)arg1;
+- (id)deviceForIDSIdentifier:(id)arg1;
 - (id)deviceForPushToken:(id)arg1;
 - (id)deviceForDevice:(id)arg1 exists:(_Bool *)arg2;
 - (id)deviceForDevice:(id)arg1;
@@ -53,7 +54,6 @@
 @property(readonly) _Bool started; // @synthesize started=_started;
 - (id)attributeDescriptions;
 - (id)initWithAppleAccountManager:(id)arg1 remoteAccountManager:(id)arg2;
-- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

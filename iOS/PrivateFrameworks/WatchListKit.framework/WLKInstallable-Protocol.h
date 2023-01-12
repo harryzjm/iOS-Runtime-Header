@@ -14,5 +14,8 @@
 @property(readonly, copy, nonatomic) NSArray *appBundleIDs;
 @property(readonly, copy, nonatomic) NSString *name;
 - (NSURL *)appIconURLForSize:(struct CGSize)arg1;
+
+@optional
+@property(readonly, nonatomic) _Bool forceDSIDlessInstall;
 @end
 

@@ -4,16 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HFActionSetBuilder;
+@class HFActionSetBuilder, NSSet;
 @protocol HUSceneServicePickerViewControllerDelegate;
 
 @interface HUSceneServicePickerViewController
 {
     id <HUSceneServicePickerViewControllerDelegate> _servicePickerDelegate;
     HFActionSetBuilder *_actionSetBuilder;
+    NSSet *_existingActionSetCharacteristics;
+    NSSet *_existingActionSetMediaProfiles;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSSet *existingActionSetMediaProfiles; // @synthesize existingActionSetMediaProfiles=_existingActionSetMediaProfiles;
+@property(retain, nonatomic) NSSet *existingActionSetCharacteristics; // @synthesize existingActionSetCharacteristics=_existingActionSetCharacteristics;
 @property(readonly, nonatomic) HFActionSetBuilder *actionSetBuilder; // @synthesize actionSetBuilder=_actionSetBuilder;
 @property(nonatomic) __weak id <HUSceneServicePickerViewControllerDelegate> servicePickerDelegate; // @synthesize servicePickerDelegate=_servicePickerDelegate;
 - (void)_validateDoneButton;
@@ -24,7 +28,7 @@
 - (_Bool)canSelectItem:(id)arg1 indexPath:(id)arg2;
 - (void)configureCell:(id)arg1 forItem:(id)arg2;
 - (id)layoutOptionsForSection:(long long)arg1;
-- (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
+- (void)itemManagerDidUpdate:(id)arg1;
 - (void)didChangeSelection;
 - (void)_done:(id)arg1;
 - (void)_cancel:(id)arg1;

@@ -14,8 +14,6 @@
     struct AUListenerBase *_parameterListener;
     _Bool _removingObserverWithContext;
     struct atomic<bool> _willSetFullState;
-    semaphore_e8b15a0e _parameterListenerSemaphore;
-    struct atomic<unsigned long long> _expectedEventMessages;
     struct atomic<unsigned int> _eventsTriggeringParameterTreeInvalidation;
     NSObject<OS_dispatch_queue> *_parameterTreeRebuildQueue;
     struct OpaqueAudioComponentInstance *_audioUnit;
@@ -23,8 +21,9 @@
     AUV2BridgeBusArray *_inputBusses;
     AUV2BridgeBusArray *_outputBusses;
     AUParameterTree *_cachedParameterTree;
-    struct unique_ptr<AUAudioUnitV2Bridge_Renderer, std::__1::default_delete<AUAudioUnitV2Bridge_Renderer>> _renderer;
+    struct unique_ptr<AUAudioUnitV2Bridge_Renderer, std::default_delete<AUAudioUnitV2Bridge_Renderer>> _renderer;
     CDUnknownBlockType _MIDIOutputEventBlock;
+    CDUnknownBlockType _MIDIOutputEventListBlock;
 }
 
 + (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
@@ -36,6 +35,8 @@
 - (void)setCurrentPreset:(id)arg1;
 - (void)setFullStateForDocument:(id)arg1;
 - (void)setFullState:(id)arg1;
+- (_Bool)providesUserInterface;
+- (void)requestViewControllerWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)removeObserver:(id)arg1 forKeyPath:(id)arg2;
 - (void)removeObserver:(id)arg1 forKeyPath:(id)arg2 context:(void *)arg3;
 - (void)addObserver:(id)arg1 forKeyPath:(id)arg2 options:(unsigned long long)arg3 context:(void *)arg4;
@@ -48,8 +49,11 @@
 - (_Bool)allocateRenderResourcesAndReturnError:(id *)arg1;
 - (void)setTransportStateBlock:(CDUnknownBlockType)arg1;
 - (void)setMusicalContextBlock:(CDUnknownBlockType)arg1;
+- (void)setMIDIOutputEventListBlock:(CDUnknownBlockType)arg1;
 - (void)setMIDIOutputEventBlock:(CDUnknownBlockType)arg1;
+- (CDUnknownBlockType)MIDIOutputEventListBlock;
 - (CDUnknownBlockType)MIDIOutputEventBlock;
+- (void)deliverV2Parameters:(const union AURenderEvent *)arg1;
 - (CDUnknownBlockType)internalRenderBlock;
 - (id)outputBusses;
 - (id)inputBusses;
@@ -60,6 +64,8 @@
 - (id)initWithComponentDescription:(struct AudioComponentDescription)arg1 options:(unsigned int)arg2 error:(id *)arg3;
 - (void)init2;
 - (void)_invalidateParameterTree:(unsigned int)arg1;
+- (id)_buildNewParameterTree;
+- (void)_notifyParameterChange:(unsigned long long)arg1;
 - (int)enableBus:(unsigned int)arg1 scope:(unsigned int)arg2 enable:(_Bool)arg3;
 - (void)_rebuildBusses:(unsigned int)arg1;
 - (_Bool)_setElementCount:(unsigned int)arg1 count:(unsigned int)arg2 error:(id *)arg3;

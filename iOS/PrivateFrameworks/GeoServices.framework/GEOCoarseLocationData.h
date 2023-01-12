@@ -6,18 +6,17 @@
 
 #import <objc/NSObject.h>
 
+@class GEOGloriaDB;
+
 __attribute__((visibility("hidden")))
 @interface GEOCoarseLocationData : NSObject
 {
-    struct unique_ptr<gloria::DB, std::__1::default_delete<gloria::DB>> _db;
-    struct vector<unsigned char, std::__1::allocator<unsigned char>> _availableZoomLevels;
+    GEOGloriaDB *_db;
 }
 
-- (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)snappedLocationForLocation:(id)arg1;
-- (_Bool)_populateAvailableZoomRange;
-- (id)initWithFileURL:(id)arg1;
+- (id)initWithFileURL:(id)arg1 tileKey:(const struct _GEOTileKey *)arg2;
 - (id)init;
 
 @end

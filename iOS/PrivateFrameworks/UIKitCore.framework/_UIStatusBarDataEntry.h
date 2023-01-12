@@ -26,7 +26,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (id)init;
-- (id)initFromData:(const CDStruct_3fd7985f *)arg1 type:(int)arg2;
+- (id)initFromData:(const CDStruct_e9def42b *)arg1 type:(int)arg2;
 
 @end
 

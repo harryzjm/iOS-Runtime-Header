@@ -16,9 +16,11 @@ __attribute__((visibility("hidden")))
     _Bool _hasAlternateAppearance;
     _Bool _hasFullScreenAppearance;
     AVLayoutItemAttributes *_layoutAttributes;
+    NSString *_currentMicaPackageName;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *currentMicaPackageName; // @synthesize currentMicaPackageName=_currentMicaPackageName;
 @property(nonatomic) _Bool hasFullScreenAppearance; // @synthesize hasFullScreenAppearance=_hasFullScreenAppearance;
 @property(nonatomic) _Bool hasAlternateAppearance; // @synthesize hasAlternateAppearance=_hasAlternateAppearance;
 @property(nonatomic, getter=isRemoved) _Bool removed; // @synthesize removed=_removed;
@@ -26,6 +28,8 @@ __attribute__((visibility("hidden")))
 - (void)_updateLayoutItem;
 - (struct CGSize)intrinsicContentSize;
 - (void)updateButtonAppearance;
+- (void)_updateCustomButtonMicaPackage;
+- (void)setPrioritizesVideoDevices:(_Bool)arg1;
 @property(readonly, nonatomic) AVButton *customButton;
 - (void)layoutAttributesDidChange;
 @property(nonatomic) struct CGSize extrinsicContentSize;

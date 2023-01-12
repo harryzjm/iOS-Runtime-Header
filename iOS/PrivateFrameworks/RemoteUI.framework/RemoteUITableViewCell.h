@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITableViewCell.h>
+#import <UIKitCore/UITableViewCell.h>
 
 @class RUIWebContainerView, UIButton, UIColor, UIImageView, UIView;
 
@@ -37,6 +37,7 @@
 - (void)layoutSubviews;
 - (id)detailLinkButton;
 - (void)setDetailLinkText:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)addDetailLinkButton:(id)arg1;
 - (void)_detailLinkPressed;
 - (void)setHTMLData:(id)arg1 sourceURL:(id)arg2 delegate:(id)arg3;
 - (void)_showActivityIndicatorAccessory;

@@ -22,6 +22,7 @@
 - (void)authenticateTask:(id)arg1 handleDialogRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)performAuthentication;
 - (id)initWithRequest:(id)arg1 presentingViewController:(id)arg2;
+- (id)initWithAuthenticationResults:(id)arg1 presentingViewController:(id)arg2 options:(id)arg3;
 - (id)initWithAccount:(id)arg1 presentingViewController:(id)arg2 options:(id)arg3;
 
 // Remaining properties

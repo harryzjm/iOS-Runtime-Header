@@ -15,8 +15,6 @@
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) FCCurrentAudioContent *resultCurrentContent; // @synthesize resultCurrentContent=_resultCurrentContent;
-@property(readonly, nonatomic) id <FCContentContext> context; // @synthesize context=_context;
 @property(copy, nonatomic) CDUnknownBlockType fetchCompletionHandler; // @synthesize fetchCompletionHandler=_fetchCompletionHandler;
 - (id)_promisePlaceholderContentWithConfiguration:(id)arg1;
 - (id)_promiseContentWithConfiguration:(id)arg1;

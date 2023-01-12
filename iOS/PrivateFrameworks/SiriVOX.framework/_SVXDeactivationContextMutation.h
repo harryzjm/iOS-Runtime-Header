@@ -8,7 +8,7 @@
 
 #import <SiriVOX/SVXDeactivationContextMutating-Protocol.h>
 
-@class NSDictionary, NSString, SVXButtonEvent, SVXClientInfo, SVXDeactivationContext;
+@class NSDictionary, NSString, SVXButtonEvent, SVXClientInfo, SVXDeactivationContext, SVXDeactivationOptions;
 
 __attribute__((visibility("hidden")))
 @interface _SVXDeactivationContextMutation : NSObject <SVXDeactivationContextMutating>
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     SVXButtonEvent *_buttonEvent;
     SVXClientInfo *_clientInfo;
     NSDictionary *_userInfo;
+    SVXDeactivationOptions *_options;
     struct _mutationFlags {
         unsigned int isDirty:1;
         unsigned int hasSource:1;
@@ -26,11 +27,13 @@ __attribute__((visibility("hidden")))
         unsigned int hasButtonEvent:1;
         unsigned int hasClientInfo:1;
         unsigned int hasUserInfo:1;
+        unsigned int hasOptions:1;
     } _mutationFlags;
 }
 
 - (void).cxx_destruct;
 - (id)generate;
+- (void)setOptions:(id)arg1;
 - (void)setUserInfo:(id)arg1;
 - (void)setClientInfo:(id)arg1;
 - (void)setButtonEvent:(id)arg1;

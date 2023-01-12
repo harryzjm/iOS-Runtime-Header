@@ -16,7 +16,7 @@
     id <MLCustomModel> _frontendProcessingModel;
 }
 
-+ (id)loadModelFromSpecification:(struct _MLModelSpecification *)arg1 configuration:(id)arg2 error:(id *)arg3;
++ (id)loadModelFromSpecification:(void *)arg1 configuration:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 - (id)predictionFromFeatures:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)initWithDescription:(id)arg1 configuration:(id)arg2 error:(id *)arg3;

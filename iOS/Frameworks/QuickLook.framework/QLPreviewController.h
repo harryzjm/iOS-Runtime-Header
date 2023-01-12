@@ -6,10 +6,12 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <QuickLook/QLLockActivityDelegate-Protocol.h>
 #import <QuickLook/QLPreviewControllerStateProtocolHostOnly-Protocol.h>
 #import <QuickLook/QLPreviewItemProvider-Protocol.h>
 #import <QuickLook/QLPreviewItemStoreDelegate-Protocol.h>
 #import <QuickLook/UIDocumentInteractionControllerDelegate-Protocol.h>
+#import <QuickLook/UIDocumentPickerDelegate-Protocol.h>
 #import <QuickLook/UIGestureRecognizerDelegate-Protocol.h>
 #import <QuickLook/UINavigationControllerDelegate-Protocol.h>
 #import <QuickLook/UIPageViewControllerDelegate-Protocol.h>
@@ -17,10 +19,10 @@
 #import <QuickLook/UIScrollViewDelegate-Protocol.h>
 #import <QuickLook/UIViewControllerTransitioningDelegate-Protocol.h>
 
-@class NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSString, NSURL, QLActivityItemProvider, QLBarButtonItem, QLCustomURLSharingProxyDelegate, QLErrorView, QLItem, QLNavigationState, QLPinchRotationTracker, QLPreviewItemStore, QLStateManager, QLSwipeDownTracker, QLToolbarController, QLTransitionController, UIAlertController, UIColor, UIDocumentInteractionController, UINavigationController, UIPanGestureRecognizer, UIPinchGestureRecognizer, UIRotationGestureRecognizer;
+@class NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSString, NSURL, NSUserActivity, QLActivityItemProvider, QLBarButtonItem, QLCustomURLSharingProxyDelegate, QLErrorView, QLItem, QLNavigationState, QLPinchRotationTracker, QLPreviewItemStore, QLStateManager, QLSwipeDownTracker, QLToolbarController, QLTransitionController, UIAlertController, UIColor, UIDocumentInteractionController, UINavigationController, UIPanGestureRecognizer, UIPinchGestureRecognizer, UIRotationGestureRecognizer;
 @protocol QLPreviewCollectionProtocol, QLPreviewControllerDataSource, QLPreviewControllerDelegate, QLPreviewItem, QLPrintingProtocol, QLRemotePopoverTracker;
 
-@interface QLPreviewController : UIViewController <UIScreenshotServiceDelegate, UIDocumentInteractionControllerDelegate, UIGestureRecognizerDelegate, QLPreviewItemStoreDelegate, QLPreviewItemProvider, QLPreviewControllerStateProtocolHostOnly, UIPageViewControllerDelegate, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate, UIScrollViewDelegate>
+@interface QLPreviewController : UIViewController <QLLockActivityDelegate, UIScreenshotServiceDelegate, UIDocumentPickerDelegate, UIDocumentInteractionControllerDelegate, UIGestureRecognizerDelegate, QLPreviewItemStoreDelegate, QLPreviewItemProvider, QLPreviewControllerStateProtocolHostOnly, UIPageViewControllerDelegate, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate, UIScrollViewDelegate>
 {
     QLBarButtonItem *_doneButton;
     QLBarButtonItem *_actionButton;
@@ -43,6 +45,7 @@
     UIColor *_navigationBarTintColor;
     UIColor *_toolbarTintColor;
     UIViewController *_modalRootViewController;
+    NSUserActivity *_userActivity;
     _Bool _canChangeCurrentPage;
     _Bool _overlayHidden;
     _Bool _fullScreen;
@@ -52,6 +55,7 @@
     _Bool _allowInteractiveTransitions;
     _Bool _canShowToolbar;
     _Bool _canShowNavBar;
+    _Bool _forceDismissActionsPresentation;
     _Bool _currentPreviewHasRemoteUnsavedEdits;
     _Bool _isObtainingEditsFromServiceBeforeDismissing;
     _Bool _isContentManaged;
@@ -93,6 +97,7 @@
     unsigned long long _appearanceActions;
     NSArray *_additionalLeftBarButtonItems;
     NSArray *_additionalRightBarButtonItems;
+    unsigned long long _presentationStyle;
     unsigned long long _presentationMode;
     unsigned long long _forcedSupportedInterfaceOrientations;
     NSString *_overrideParentApplicationDisplayIdentifier;
@@ -117,8 +122,9 @@
 @property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(retain, nonatomic) UIColor *navigationBarTintColor; // @synthesize navigationBarTintColor=_navigationBarTintColor;
 @property(retain, nonatomic) UIColor *toolbarTintColor; // @synthesize toolbarTintColor=_toolbarTintColor;
-@property(retain) NSArray *additionalRightBarButtonItems; // @synthesize additionalRightBarButtonItems=_additionalRightBarButtonItems;
-@property(retain) NSArray *additionalLeftBarButtonItems; // @synthesize additionalLeftBarButtonItems=_additionalLeftBarButtonItems;
+@property unsigned long long presentationStyle; // @synthesize presentationStyle=_presentationStyle;
+@property(retain, nonatomic) NSArray *additionalRightBarButtonItems; // @synthesize additionalRightBarButtonItems=_additionalRightBarButtonItems;
+@property(retain, nonatomic) NSArray *additionalLeftBarButtonItems; // @synthesize additionalLeftBarButtonItems=_additionalLeftBarButtonItems;
 @property(nonatomic) _Bool forceModalPresentation; // @synthesize forceModalPresentation=_forceModalPresentation;
 @property(nonatomic) _Bool showActionAsDefaultButton; // @synthesize showActionAsDefaultButton=_showActionAsDefaultButton;
 @property(nonatomic) _Bool alwaysDisplayPreviewItemTitle; // @synthesize alwaysDisplayPreviewItemTitle=_alwaysDisplayPreviewItemTitle;
@@ -128,6 +134,7 @@
 @property(nonatomic) unsigned long long quickLookVisibility; // @synthesize quickLookVisibility=_quickLookVisibility;
 @property(nonatomic) _Bool isObtainingEditsFromServiceBeforeDismissing; // @synthesize isObtainingEditsFromServiceBeforeDismissing=_isObtainingEditsFromServiceBeforeDismissing;
 @property(nonatomic) _Bool currentPreviewHasRemoteUnsavedEdits; // @synthesize currentPreviewHasRemoteUnsavedEdits=_currentPreviewHasRemoteUnsavedEdits;
+@property(nonatomic) _Bool forceDismissActionsPresentation; // @synthesize forceDismissActionsPresentation=_forceDismissActionsPresentation;
 @property _Bool canShowNavBar; // @synthesize canShowNavBar=_canShowNavBar;
 @property _Bool canShowToolbar; // @synthesize canShowToolbar=_canShowToolbar;
 @property(retain) QLTransitionController *currentAnimator; // @synthesize currentAnimator=_currentAnimator;
@@ -167,6 +174,7 @@
 @property(readonly) id <QLPrintingProtocol> printer; // @synthesize printer=_printer;
 @property(nonatomic) __weak id <QLPreviewControllerDataSource> dataSource; // @synthesize dataSource=_dataSource;
 - (_Bool)prefersHomeIndicatorAutoHidden;
+- (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(_Bool)arg3;
 - (long long)itemStore:(id)arg1 editingModeForPreviewItem:(id)arg2;
 - (unsigned long long)itemStore:(id)arg1 editedFileBehaviorForItem:(id)arg2;
 - (_Bool)itemStore:(id)arg1 canHandleEditedCopyOfPreviewItem:(id)arg2;
@@ -212,6 +220,10 @@
 - (void)remoteViewControllerWasInvalidated;
 - (void)updateKeyCommands;
 - (void)_dismissQuickLookFromKeyboardCommand;
+- (void)updateStateRestorationWithUserInfo:(id)arg1;
+- (void)getStateRestorationUserInfo:(CDUnknownBlockType)arg1;
+- (void)setUserActivity:(id)arg1;
+- (id)userActivity;
 - (void)triggerQuickLookDismissal;
 - (void)showShareSheetWithPopoverTracker:(id)arg1 customSharedURL:(id)arg2 dismissCompletion:(CDUnknownBlockType)arg3;
 - (void)showShareSheet;
@@ -234,6 +246,7 @@
 - (void)setLoadingTextForMissingFiles:(id)arg1;
 @property(readonly) long long numberOfPreviewItems;
 - (id)previewItemAtIndex:(long long)arg1;
+- (id)fixedPreviewItemAtIndex:(long long)arg1;
 - (void)_updateToolbarSuperview;
 - (void)_updateViewHierarchyPresentation;
 - (long long)_preferredModalPresentationStyle;
@@ -247,6 +260,8 @@
 - (void)_setCurrentPreviewItemIndex:(long long)arg1 updatePreview:(_Bool)arg2 animated:(_Bool)arg3;
 - (void)prepareForActionSheetPresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)waitForPreviewCollectionWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)viewForAdditionalButtonWithActionName:(SEL)arg1;
+- (struct CGRect)frameForAdditionalButtonWithActionName:(SEL)arg1;
 - (void)_removePreviewCollectionFromViewHierarchy;
 - (void)_showPreviewCollection;
 - (void)_configurePreviewCollectionIfNeeded;
@@ -274,6 +289,7 @@
 - (void)loadView;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithPreviewItems:(id)arg1;
+- (void)requestLockingForActivity:(id)arg1;
 - (id)additionalActivitiesForDocumentInteractionController:(id)arg1;
 - (id)activityItemForDocumentInteractionController:(id)arg1;
 - (id)excludedActivityTypesForDocumentInteractionController:(id)arg1;
@@ -283,6 +299,9 @@
 - (void)screenshotService:(id)arg1 generatePDFRepresentationWithCompletion:(CDUnknownBlockType)arg2;
 - (void)unregisterFromScreenshotService;
 - (void)registerForScreenshotService;
+- (void)documentPicker:(id)arg1 didPickDocumentsAtURLs:(id)arg2;
+- (void)documentPickerWasCancelled:(id)arg1;
+- (void)presentSaveToFilesForEditedItems:(id)arg1;
 - (void)obtainAndUpdateEditedCopyOfCurrentPreviewItem:(CDUnknownBlockType)arg1;
 - (void)shareableURLForCurrentPreviewItem:(CDUnknownBlockType)arg1;
 - (void)_asynchronouslyUpdateContentsOfPreviewItem:(id)arg1 editedCopy:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -341,7 +360,7 @@
 - (void)updateRemoteOverlayIfNeeded;
 - (void)updateStatusBarAnimated:(_Bool)arg1;
 - (unsigned long long)_numberOfButtonsExcludingSpacersInButtons:(id)arg1 disappearingOnTap:(_Bool)arg2;
-- (_Bool)_toolbarButtonArray:(id)arg1 isEqualToArray:(id)arg2;
+- (_Bool)_barButtonItemArray:(id)arg1 isEqualToArray:(id)arg2;
 - (void)_updateOverlayButtonsIfNeededWithTraitCollection:(id)arg1 animated:(_Bool)arg2 updatedToolbarButtons:(id *)arg3;
 - (void)updateOverlayAnimated:(_Bool)arg1 animatedButtons:(_Bool)arg2 forceRefresh:(_Bool)arg3 withTraitCollection:(id)arg4;
 - (void)updateOverlayAnimated:(_Bool)arg1 forceRefresh:(_Bool)arg2 withTraitCollection:(id)arg3;

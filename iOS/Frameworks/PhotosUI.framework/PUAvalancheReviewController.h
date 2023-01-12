@@ -53,7 +53,6 @@ __attribute__((visibility("hidden")))
     struct CGRect __previousPreheatRect;
 }
 
-+ (id)filteringContext;
 - (void).cxx_destruct;
 @property(retain, nonatomic) PUAssetTransitionInfo *_assetTransitionInfo; // @synthesize _assetTransitionInfo=__assetTransitionInfo;
 @property(retain, nonatomic) PUPhotosSharingTransitionContext *_photosSharingTransitionContext; // @synthesize _photosSharingTransitionContext=__photosSharingTransitionContext;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIViewController.h>
+#import <UIKit/UIViewController.h>
 
 #import <BusinessChat/WKNavigationDelegate-Protocol.h>
 
@@ -24,28 +24,16 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool wasCallbackCaptured; // @synthesize wasCallbackCaptured=_wasCallbackCaptured;
-@property(retain, nonatomic) NSURL *originURL; // @synthesize originURL=_originURL;
-@property(retain, nonatomic) BCServerErrorView *serverErrorView; // @synthesize serverErrorView=_serverErrorView;
-@property(retain, nonatomic) BCProgressIndicatorView *progressIndicatorView; // @synthesize progressIndicatorView=_progressIndicatorView;
-@property(retain, nonatomic) BCInvalidCertificatView *invalidCertificatView; // @synthesize invalidCertificatView=_invalidCertificatView;
 @property(retain, nonatomic) NSString *callbackURI; // @synthesize callbackURI=_callbackURI;
 @property(retain, nonatomic) WKWebView *webkitView; // @synthesize webkitView=_webkitView;
 @property(nonatomic) __weak id <BCWebViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (_Bool)isCertificatRelatedError:(id)arg1;
 - (void)webView:(id)arg1 didStartProvisionalNavigation:(id)arg2;
 - (void)webView:(id)arg1 didFailProvisionalNavigation:(id)arg2 withError:(id)arg3;
 - (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
-- (void)setupProgressIndicator;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)removeObservers;
-- (void)setupObservers;
-- (void)dismissErrorViews;
-- (void)presentServerError;
 - (void)presentCertificatErrorForHost:(id)arg1;
 - (void)setupConstraints;
 - (void)setupSubviews;
-- (void)viewWillDisappear;
 - (void)viewDidLoad;
 - (void)loadView;
 - (void)reload;

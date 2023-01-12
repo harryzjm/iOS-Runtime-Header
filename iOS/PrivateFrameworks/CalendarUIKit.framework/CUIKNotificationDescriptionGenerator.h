@@ -25,9 +25,6 @@
 - (id)conflictStringForConflictDetails:(id)arg1 descriptions:(id)arg2;
 - (id)_adjustedTitle:(id)arg1 maxLength:(unsigned long long)arg2;
 - (id)timePeriodForTimeInterval:(id)arg1;
-- (id)descriptionStringsForNotification:(id)arg1 withOptions:(unsigned long long)arg2;
-- (id)descriptionForNotification:(id)arg1 withOptions:(unsigned long long)arg2;
-- (id)titleStringForNotification:(id)arg1 withOptions:(unsigned long long)arg2;
 - (id)_sharedDateTimeFormatter;
 - (id)_sharedTimeFormatter;
 - (id)_sharedDateFormatter;

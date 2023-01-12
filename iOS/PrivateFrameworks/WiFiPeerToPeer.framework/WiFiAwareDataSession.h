@@ -8,7 +8,7 @@
 
 #import <WiFiPeerToPeer/WiFiAwareDatapathXPCDelegate-Protocol.h>
 
-@class NSData, NSNumber, NSString, NSXPCConnection, WiFiAwareDiscoveryResult, WiFiAwarePublishDatapathServiceSpecificInfo, WiFiMACAddress;
+@class NSData, NSNumber, NSString, NSXPCConnection, WiFiAwareDiscoveryResult, WiFiAwareInternetSharingConfiguration, WiFiAwarePublishDatapathServiceSpecificInfo, WiFiMACAddress;
 @protocol OS_dispatch_queue, WiFiAwareDataSessionDelegate, WiFiAwareDatapathXPC;
 
 @interface WiFiAwareDataSession : NSObject <WiFiAwareDatapathXPCDelegate>
@@ -24,12 +24,16 @@
     WiFiAwarePublishDatapathServiceSpecificInfo *_serviceSpecificInfo;
     NSString *_passphrase;
     NSData *_pmk;
+    NSData *_pmkID;
+    WiFiAwareInternetSharingConfiguration *_internetSharingConfiguration;
     id <WiFiAwareDataSessionDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned int localInterfaceIndex; // @synthesize localInterfaceIndex=_localInterfaceIndex;
 @property(nonatomic) __weak id <WiFiAwareDataSessionDelegate> delegate; // @synthesize delegate=_delegate;
+@property(copy, nonatomic) WiFiAwareInternetSharingConfiguration *internetSharingConfiguration; // @synthesize internetSharingConfiguration=_internetSharingConfiguration;
+@property(readonly, nonatomic) NSData *pmkID; // @synthesize pmkID=_pmkID;
 @property(readonly, nonatomic) NSData *pmk; // @synthesize pmk=_pmk;
 @property(readonly, nonatomic) NSString *passphrase; // @synthesize passphrase=_passphrase;
 @property(readonly, nonatomic) WiFiAwarePublishDatapathServiceSpecificInfo *serviceSpecificInfo; // @synthesize serviceSpecificInfo=_serviceSpecificInfo;
@@ -42,6 +46,8 @@
 - (void)datapathStartedWithInstanceID:(unsigned char)arg1 initiatorDataAddress:(id)arg2 localInterfaceIndex:(unsigned int)arg3;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) WiFiMACAddress *localDataAddress;
+- (void)generateStatisticsReportWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)updateLinkStatus:(long long)arg1;
 - (void)reportIssue:(id)arg1;
 - (void)stop;
 - (void)start;
@@ -50,10 +56,11 @@
 - (void)resetState;
 - (void)handleError;
 - (void)dealloc;
+- (id)initWithDiscoveryResult:(id)arg1 serviceType:(long long)arg2 serviceSpecificInfo:(id)arg3 pmk:(id)arg4 pmkID:(id)arg5;
 - (id)initWithDiscoveryResult:(id)arg1 serviceType:(long long)arg2 serviceSpecificInfo:(id)arg3 pmk:(id)arg4;
 - (id)initWithDiscoveryResult:(id)arg1 serviceType:(long long)arg2 serviceSpecificInfo:(id)arg3 passphrase:(id)arg4;
 - (id)initWithDiscoveryResult:(id)arg1 serviceType:(long long)arg2 serviceSpecificInfo:(id)arg3;
-- (id)initWithDiscoveryResult:(id)arg1 serviceType:(long long)arg2 serviceSpecificInfo:(id)arg3 passphrase:(id)arg4 pmk:(id)arg5;
+- (id)initWithDiscoveryResult:(id)arg1 serviceType:(long long)arg2 serviceSpecificInfo:(id)arg3 passphrase:(id)arg4 pmk:(id)arg5 pmkID:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

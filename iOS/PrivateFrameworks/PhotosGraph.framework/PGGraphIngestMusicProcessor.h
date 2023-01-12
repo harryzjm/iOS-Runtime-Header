@@ -8,21 +8,20 @@
 
 #import <PhotosGraph/PGGraphIngestProcessor-Protocol.h>
 
-@class NSString;
-@protocol OS_os_log;
+@class NSString, PGGraphBuilder;
 
 @interface PGGraphIngestMusicProcessor : NSObject <PGGraphIngestProcessor>
 {
-    NSObject<OS_os_log> *_loggingConnection;
+    PGGraphBuilder *_graphBuilder;
 }
 
 + (unsigned long long)nowPlayingStreamConverterOptions;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSObject<OS_os_log> *loggingConnection; // @synthesize loggingConnection=_loggingConnection;
 - (id)_ingestStreamEventSession:(id)arg1 graph:(id)arg2 performerNodesByName:(id)arg3;
 - (void)processMusicForGraph:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (void)runWithGraphUpdate:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (_Bool)shouldRunWithGraphUpdate:(id)arg1;
+- (void)setGraphBuilder:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

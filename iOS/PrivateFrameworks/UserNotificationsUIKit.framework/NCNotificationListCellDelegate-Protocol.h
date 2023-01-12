@@ -9,11 +9,14 @@
 @class NCNotificationListCell, NCNotificationSectionSettings, NSString, UIView;
 
 @protocol NCNotificationListCellDelegate <NSObject>
+- (_Bool)notificationListCellShouldShowViewActionButton:(NCNotificationListCell *)arg1;
+- (_Bool)notificationListCellShouldShowDefaultActionButton:(NCNotificationListCell *)arg1;
 - (_Bool)notificationListCellShouldPanHorizontally:(NCNotificationListCell *)arg1;
 - (void)notificationListCellDidHideCellActions:(NCNotificationListCell *)arg1 resetCellScrollPosition:(_Bool)arg2 animated:(_Bool)arg3;
 - (void)notificationListCellDidRevealCellActions:(NCNotificationListCell *)arg1;
 - (void)notificationListCellDidSignificantUserInteraction:(NCNotificationListCell *)arg1;
 - (NCNotificationSectionSettings *)notificationListCellRequestsSectionSettings:(NCNotificationListCell *)arg1 sectionIdentifier:(NSString *)arg2;
+- (void)notificationListCellRequestsPresentingOptionsMenu:(NCNotificationListCell *)arg1 forCellActionWithIdentifier:(NSString *)arg2 completion:(void (^)(_Bool))arg3;
 - (void)notificationListCellRequestsPresentingManagementView:(NCNotificationListCell *)arg1 withPresentingView:(UIView *)arg2 completion:(void (^)(_Bool))arg3;
 - (void)notificationListCellRequestsPresentingLongLook:(NCNotificationListCell *)arg1 completion:(void (^)(_Bool))arg2;
 - (void)notificationListCellRequestsDismissAction:(NCNotificationListCell *)arg1 completion:(void (^)(_Bool))arg2;

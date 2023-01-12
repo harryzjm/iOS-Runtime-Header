@@ -55,6 +55,7 @@
 - (_Bool)_canTransitionToState:(long long)arg1 withMinimumTopBarHeight:(double)arg2;
 - (_Bool)canTransitionToState:(long long)arg1;
 @property(readonly, nonatomic) long long targetState;
+@property(readonly, nonatomic) _Bool isInSteadyState;
 - (void)_setInSteadyState:(_Bool)arg1;
 - (void)_updateOutputs;
 - (double)_bottomBarOffsetForTopBarHeight:(double)arg1;

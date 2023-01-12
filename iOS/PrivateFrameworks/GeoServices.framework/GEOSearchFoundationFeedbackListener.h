@@ -13,13 +13,16 @@
 @interface GEOSearchFoundationFeedbackListener : NSObject <SFFeedbackListener>
 {
     int _uiTarget;
-    NSArray *_sections;
-    NSArray *_resultCardSections;
+    NSArray *_mapsResultsIdentifiers;
+    NSArray *_resultCardIdentifiers;
 }
 
++ (id)_mapsResultIdentifiersFromSections:(id)arg1;
++ (id)_identifiersFromCardSections:(id)arg1;
 + (id)feedbackListenerForParsec;
 - (void).cxx_destruct;
 - (void)cardViewDidAppear:(id)arg1;
+- (void)didPerformCommand:(id)arg1;
 - (void)didEngageCardSection:(id)arg1;
 - (void)didEngageResult:(id)arg1;
 - (void)didEngageSection:(id)arg1;

@@ -8,6 +8,7 @@
 {
 }
 
++ (_Bool)validateEntityWithProfile:(id)arg1 error:(id *)arg2 validationErrorHandler:(CDUnknownBlockType)arg3;
 + (_Bool)isConcreteEntity;
 + (id)entityEncoderForProfile:(id)arg1 transaction:(id)arg2 purpose:(long long)arg3 encodingOptions:(id)arg4 authorizationFilter:(CDUnknownBlockType)arg5;
 + (_Bool)addCodableObject:(id)arg1 toCollection:(id)arg2;

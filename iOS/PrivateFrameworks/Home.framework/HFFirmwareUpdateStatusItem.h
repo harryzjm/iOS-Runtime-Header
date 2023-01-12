@@ -8,7 +8,6 @@
 {
 }
 
-- (id)_firmwareUpdateStatus_updateWithOptions:(id)arg1;
 - (id)_subclass_updateWithOptions:(id)arg1;
 
 @end

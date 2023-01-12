@@ -8,3 +8,98 @@
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
+#pragma mark Named Structures
+
+struct Field {
+    unsigned char _field1[1];
+};
+
+struct Indexer;
+
+struct Item {
+    unsigned char _field1[1];
+};
+
+struct Offset<Siri::Vocabulary::Field> {
+    unsigned int _field1;
+};
+
+struct Offset<Siri::Vocabulary::Item> {
+    unsigned int _field1;
+};
+
+struct OntologyEdgeName;
+
+struct OntologyNodeName;
+
+struct Searcher;
+
+struct Tokenizer;
+
+struct _NSRange {
+    unsigned long long location;
+    unsigned long long length;
+};
+
+struct optional<std::pair<const siri::ontology::OntologyNodeName *, const siri::ontology::OntologyEdgeName *>> {
+    union {
+        char _field1;
+        pair_530c4d38 _field2;
+    } _field1;
+    _Bool _field2;
+};
+
+struct pair<const siri::ontology::OntologyNodeName *, const siri::ontology::OntologyEdgeName *> {
+    struct OntologyNodeName *_field1;
+    struct OntologyEdgeName *_field2;
+};
+
+struct unique_ptr<skitbridge::Indexer, std::default_delete<skitbridge::Indexer>> {
+    struct __compressed_pair<skitbridge::Indexer *, std::default_delete<skitbridge::Indexer>> {
+        struct Indexer *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<skitbridge::Searcher, std::default_delete<skitbridge::Searcher>> {
+    struct __compressed_pair<skitbridge::Searcher *, std::default_delete<skitbridge::Searcher>> {
+        struct Searcher *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<skitbridge::Tokenizer, std::default_delete<skitbridge::Tokenizer>> {
+    struct __compressed_pair<skitbridge::Tokenizer *, std::default_delete<skitbridge::Tokenizer>> {
+        struct Tokenizer *__value_;
+    } __ptr_;
+};
+
+#pragma mark Typedef'd Structures
+
+typedef struct {
+    unsigned long long _field1;
+    id *_field2;
+    unsigned long long *_field3;
+    unsigned long long _field4[5];
+} CDStruct_70511ce9;
+
+// Template types
+typedef struct Offset<Siri::Vocabulary::Field> {
+    unsigned int _field1;
+} Offset_e7496d7a;
+
+typedef struct Offset<Siri::Vocabulary::Item> {
+    unsigned int _field1;
+} Offset_1e806769;
+
+typedef struct optional<std::pair<const siri::ontology::OntologyNodeName *, const siri::ontology::OntologyEdgeName *>> {
+    union {
+        char _field1;
+        pair_530c4d38 _field2;
+    } _field1;
+    _Bool _field2;
+} optional_8e6d679a;
+
+typedef struct pair<const siri::ontology::OntologyNodeName *, const siri::ontology::OntologyEdgeName *> {
+    struct OntologyNodeName *_field1;
+    struct OntologyEdgeName *_field2;
+} pair_530c4d38;
+

@@ -17,6 +17,7 @@
 
 @optional
 - (id <_GCDeviceDriverConnection>)driverConnectionForHIDDevice:(_GCCControllerHIDServiceInfo *)arg1;
+- (_Bool)acceptFilterConnection:(id <_GCDeviceDriverConnection>)arg1 forHIDDevice:(_GCCControllerHIDServiceInfo *)arg2;
 - (_Bool)acceptDriverConnection:(id <_GCDeviceDriverConnection>)arg1 forHIDDevice:(_GCCControllerHIDServiceInfo *)arg2;
 @end
 

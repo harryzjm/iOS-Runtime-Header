@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+@class NSArray, NSString;
 
 @protocol PCSupportDaemonInterface
-- (void)fetchSegmentData:(void (^)(NSString *))arg1;
+- (void)policyForPlacement:(NSString *)arg1 placementType:(NSString *)arg2 bannerType:(NSString *)arg3 completion:(void (^)(NSArray *))arg4;
+- (void)fetchGenderAndAgeGroupData:(void (^)(NSDictionary *))arg1;
 - (void)addClientToSegments:(NSArray *)arg1 replaceExisting:(_Bool)arg2 privateSegment:(_Bool)arg3;
 @end
 

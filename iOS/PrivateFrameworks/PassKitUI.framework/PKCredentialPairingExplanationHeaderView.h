@@ -6,11 +6,12 @@
 
 #import <UIKit/UIView.h>
 
-@class UIImageView;
+@class PKSubcredentialPairingFlowControllerContext, UIImageView;
 
 @interface PKCredentialPairingExplanationHeaderView : UIView
 {
     UIImageView *_imageView;
+    PKSubcredentialPairingFlowControllerContext *_context;
     _Bool _useCompactLayout;
 }
 
@@ -20,7 +21,7 @@
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
 - (id)pairingImage;
-- (id)init;
+- (id)initWithContext:(id)arg1;
 
 @end
 

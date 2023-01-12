@@ -37,10 +37,7 @@
 - (void)registerAsConceptObserver:(id)arg1 onQueue:(id)arg2;
 @property(readonly, nonatomic) unsigned long long currentConceptIndexerState;
 - (void)resetOntologyUsingAssetAtLocation:(id)arg1 rememberLocation:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
-- (_Bool)cleanUpAfterUnitTest;
-- (long long)countOfConceptsAssociatedToUserRecordsWithError:(id *)arg1;
-- (_Bool)breakAssociationFromSample:(id)arg1 toConcept:(id)arg2;
-- (_Bool)makeAssociationFromSample:(id)arg1 toConcept:(id)arg2;
+- (id)countOfConceptsAssociatedToUserRecordsWithError:(id *)arg1;
 - (_Bool)loadRelationshipsForConcept:(id)arg1 error:(id *)arg2;
 - (void)fetchConceptForIdentifier:(id)arg1 loadRelationships:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)conceptForIdentifier:(id)arg1 error:(id *)arg2;

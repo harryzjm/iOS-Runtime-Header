@@ -6,13 +6,13 @@
 
 #import <HomeUI/HUDayOfWeekPickerCellDelegate-Protocol.h>
 #import <HomeUI/HUInlineDatePickerCellDelegate-Protocol.h>
-#import <HomeUI/HUTimerTriggerOffsetEditorDelegate-Protocol.h>
+#import <HomeUI/HUTimeEventOffsetEditorDelegate-Protocol.h>
 #import <HomeUI/HUTriggerConditionEditorItemModuleControllerDelegate-Protocol.h>
 
 @class HFItem, HFTimerTriggerBuilder, HUGridLayoutOptions, HUTimerTriggerEditorItemManager, HUTriggerConditionEditorItemModuleController, NSArray, NSDateComponents, NSString;
 @protocol HUTriggerEditorDelegate;
 
-@interface HUTimerTriggerEditorViewController <HUDayOfWeekPickerCellDelegate, HUTimerTriggerOffsetEditorDelegate, HUTriggerConditionEditorItemModuleControllerDelegate, HUInlineDatePickerCellDelegate>
+@interface HUTimerTriggerEditorViewController <HUDayOfWeekPickerCellDelegate, HUTimeEventOffsetEditorDelegate, HUTriggerConditionEditorItemModuleControllerDelegate, HUInlineDatePickerCellDelegate>
 {
     HFTimerTriggerBuilder *_timerTriggerBuilder;
     unsigned long long _mode;

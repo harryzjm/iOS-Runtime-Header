@@ -12,7 +12,7 @@
     CLKTextProvider *_line2TextProvider;
 }
 
-+ (struct CGSize)_imageSize;
++ (void)_imageSDKSize:(struct CGSize *)arg1 deviceSize:(struct CGSize *)arg2 forSDKVersion:(long long)arg3;
 + (id)templateWithLine1ImageProvider:(id)arg1 line2TextProvider:(id)arg2;
 - (void).cxx_destruct;
 @property(copy, nonatomic) CLKTextProvider *line2TextProvider; // @synthesize line2TextProvider=_line2TextProvider;

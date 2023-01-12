@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)vp9Encoder;
++ (id)vp9Encoder:(id)arg1;
 
 @end
 

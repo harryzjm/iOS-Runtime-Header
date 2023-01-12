@@ -11,7 +11,7 @@
 
 @interface SKTileMapNode <NSCopying, NSSecureCoding>
 {
-    struct SKCTileMapNode *_skcTileMapNode;
+    void *_skcTileMapNode;
     SKTileSet *_tileSet;
     struct CGSize _tileSize;
     MISSING_TYPE *_isoOrigin;
@@ -84,7 +84,7 @@
 - (double)alpha;
 @property(nonatomic) _Bool enableAutomapping;
 - (void)_didMakeBackingNode;
-- (struct SKCNode *)_makeBackingNode;
+- (void *)_makeBackingNode;
 @property(nonatomic) unsigned int lightingBitMask;
 @property(retain, nonatomic) SKShader *shader;
 @property(nonatomic) struct CGPoint anchorPoint;

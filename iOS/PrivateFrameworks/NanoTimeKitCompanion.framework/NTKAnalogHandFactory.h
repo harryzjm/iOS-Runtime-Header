@@ -12,7 +12,7 @@
 
 + (struct CGPath *)newPathForPeg:(id)arg1 inset:(double)arg2;
 + (struct CGPath *)newPathForSecondWithConfiguration:(id)arg1 inset:(double)arg2;
-+ (struct CGPath *)newPathForHourMinuteWithConfiguration:(id)arg1 inset:(double)arg2;
++ (struct CGPath *)newPathForHourMinuteWithConfiguration:(id)arg1 inset:(double)arg2 includePeg:(_Bool)arg3;
 + (id)_createMaskedShadowImageFromShadow:(id)arg1 size:(struct CGSize)arg2 maskPath:(struct CGPath *)arg3 radius:(double)arg4 opacity:(double)arg5;
 + (id)_createShadowImageSize:(struct CGSize)arg1 path:(struct CGPath *)arg2 radius:(double)arg3 opacity:(double)arg4;
 + (id)_createHandImageWithSize:(struct CGSize)arg1 paths:(id)arg2 colors:(id)arg3;

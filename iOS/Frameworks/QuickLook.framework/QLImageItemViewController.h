@@ -5,23 +5,48 @@
 //
 
 #import <QuickLook/QLAnimationTimerObserver-Protocol.h>
+#import <QuickLook/QLImageAnalysisManagerDelegate-Protocol.h>
+#import <QuickLook/UIAdaptivePresentationControllerDelegate-Protocol.h>
 
-@class NSString, QLAnimatedImage, UIImageView;
+@class NSDictionary, NSNumber, NSString, QLAnimatedImage, QLImageAnalysisManager, UIImage, UIImageView, UIView;
 
-@interface QLImageItemViewController <QLAnimationTimerObserver>
+@interface QLImageItemViewController <QLAnimationTimerObserver, UIAdaptivePresentationControllerDelegate, QLImageAnalysisManagerDelegate>
 {
     UIImageView *_imageView;
     QLAnimatedImage *_animatedImage;
+    QLImageAnalysisManager *_imageAnalysisManager;
     double _initialTimeStamp;
     double _currentPlaybackTime;
     struct CGSize _imageSize;
     _Bool _imageIsAnimated;
+    _Bool _isFullScreen;
+    NSNumber *_savedFullScreenState;
 }
 
 - (void).cxx_destruct;
+- (_Bool)shouldAcceptTouch:(id)arg1 ofGestureRecognizer:(id)arg2;
+- (void)performFirstTimeAppearanceActions:(unsigned long long)arg1;
+- (_Bool)canPerformFirstTimeAppearanceActions:(unsigned long long)arg1;
+- (void)didScroll:(id)arg1;
+- (void)didZoom:(id)arg1;
+- (void)adjustImageInteractionForScrollEvent:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)previewBecameFullScreen:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)_updateImageAnalysisViewsConstraints;
+- (void)_setupAndStartImageAnalysis;
+- (void)imageAnalysisInteractionDidDismissVisualSearchController;
+- (void)imageAnalysisInteractionWillPresentVisualSearchController;
+- (void)imageAnalyzerWantsUpdateInfoButtonWithAnimation:(_Bool)arg1;
+@property(readonly, nonatomic) NSDictionary *clientPreviewOptions;
+@property(readonly, nonatomic) UIView *imageAnalysisView;
+- (_Bool)draggableViewShouldStartDragSession:(id)arg1;
 - (id)draggableView;
+- (void)presentationControllerDidDismiss:(id)arg1;
+- (void)buttonPressedWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)toolbarButtonsForTraitCollection:(id)arg1;
 - (void)animationTimerFired:(double)arg1;
 - (long long)preferredWhitePointAdaptivityStyle;
+@property(readonly, nonatomic) UIImage *image;
 - (struct CGSize)imageSize;
 - (void)setAppearance:(id)arg1 animated:(_Bool)arg2;
 - (void)previewDidDisappear:(_Bool)arg1;

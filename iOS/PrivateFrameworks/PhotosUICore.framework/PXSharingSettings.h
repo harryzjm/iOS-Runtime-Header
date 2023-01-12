@@ -14,6 +14,7 @@
     _Bool _sharingSuggestionsWidgetHeuristicsEnabled;
     _Bool _sharingSuggestionsWidgetLearningEnabled;
     _Bool _sharingSuggestionsWidgetCoreDuetEnabled;
+    _Bool _enableNewActionContextMenu;
     _Bool _enableNewActionShareSheet;
     _Bool _enableOneUpAnimation;
     _Bool _allowFallbacksWhilePreparing;
@@ -29,6 +30,7 @@
     _Bool _simulateLowDiskSpaceError;
     _Bool _simulateUserCloudNotAuthenticated;
     _Bool _simulateMaxFilesizeLimitForGIFsInSharedAlbumsError;
+    _Bool _simulateSyndicatedResourceUnavailable;
     _Bool _simulateMismatchedExportCounts;
     _Bool _showFileRadarButtonOnInternalInstalls;
     _Bool _showSingleVideoDurationInShareSheetHeader;
@@ -76,6 +78,7 @@
 @property(nonatomic) long long simulatedErrorType; // @synthesize simulatedErrorType=_simulatedErrorType;
 @property(nonatomic) _Bool showFileRadarButtonOnInternalInstalls; // @synthesize showFileRadarButtonOnInternalInstalls=_showFileRadarButtonOnInternalInstalls;
 @property(nonatomic) _Bool simulateMismatchedExportCounts; // @synthesize simulateMismatchedExportCounts=_simulateMismatchedExportCounts;
+@property(nonatomic) _Bool simulateSyndicatedResourceUnavailable; // @synthesize simulateSyndicatedResourceUnavailable=_simulateSyndicatedResourceUnavailable;
 @property(nonatomic) _Bool simulateMaxFilesizeLimitForGIFsInSharedAlbumsError; // @synthesize simulateMaxFilesizeLimitForGIFsInSharedAlbumsError=_simulateMaxFilesizeLimitForGIFsInSharedAlbumsError;
 @property(nonatomic) _Bool simulateUserCloudNotAuthenticated; // @synthesize simulateUserCloudNotAuthenticated=_simulateUserCloudNotAuthenticated;
 @property(nonatomic) _Bool simulateLowDiskSpaceError; // @synthesize simulateLowDiskSpaceError=_simulateLowDiskSpaceError;
@@ -92,6 +95,7 @@
 @property(nonatomic) _Bool allowFallbacksWhilePreparing; // @synthesize allowFallbacksWhilePreparing=_allowFallbacksWhilePreparing;
 @property(nonatomic) _Bool enableOneUpAnimation; // @synthesize enableOneUpAnimation=_enableOneUpAnimation;
 @property(nonatomic) _Bool enableNewActionShareSheet; // @synthesize enableNewActionShareSheet=_enableNewActionShareSheet;
+@property(nonatomic) _Bool enableNewActionContextMenu; // @synthesize enableNewActionContextMenu=_enableNewActionContextMenu;
 @property(nonatomic) _Bool sharingSuggestionsWidgetCoreDuetEnabled; // @synthesize sharingSuggestionsWidgetCoreDuetEnabled=_sharingSuggestionsWidgetCoreDuetEnabled;
 @property(nonatomic) _Bool sharingSuggestionsWidgetLearningEnabled; // @synthesize sharingSuggestionsWidgetLearningEnabled=_sharingSuggestionsWidgetLearningEnabled;
 @property(nonatomic) _Bool sharingSuggestionsWidgetHeuristicsEnabled; // @synthesize sharingSuggestionsWidgetHeuristicsEnabled=_sharingSuggestionsWidgetHeuristicsEnabled;

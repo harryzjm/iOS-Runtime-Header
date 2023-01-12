@@ -16,7 +16,6 @@
     SGContactDetailsHolder *_internalDetectedDetails;
 }
 
-+ (void)subtractDetailsFromSGContact:(id)arg1 thatMatchCNContact:(id)arg2;
 + (id)mergeAll:(id)arg1;
 + (id)contactWithMasterEntityId:(long long)arg1;
 + (id)contactFromContactEntity:(id)arg1;

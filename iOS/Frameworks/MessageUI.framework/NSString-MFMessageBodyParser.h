@@ -17,5 +17,6 @@
 - (id)mf_copyDisplayableAddressComment;
 - (id)mf_substringTruncatedInRange:(struct _NSRange)arg1;
 - (id)mf_substringTruncatedToIndex:(unsigned long long)arg1;
+- (id)ef_repeatedStringTimes:(long long)arg1;
 @end
 

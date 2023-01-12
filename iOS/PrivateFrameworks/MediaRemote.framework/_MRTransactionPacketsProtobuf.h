@@ -10,27 +10,20 @@
 
 @class NSMutableArray;
 
+__attribute__((visibility("hidden")))
 @interface _MRTransactionPacketsProtobuf : PBCodable <NSCopying>
 {
     NSMutableArray *_packets;
 }
 
-+ (Class)packetsType;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableArray *packets; // @synthesize packets=_packets;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (id)packetsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)packetsCount;
-- (void)addPackets:(id)arg1;
-- (void)clearPackets;
 
 @end
 

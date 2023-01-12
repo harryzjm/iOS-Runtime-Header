@@ -8,7 +8,7 @@
 
 #import <Sharing/AVAudioPlayerDelegate-Protocol.h>
 
-@class ACAccount, ACAccountStore, AVAudioPlayer, AVAudioSession, HMAccessory, HMHome, NSArray, NSDictionary, NSMutableArray, NSSet, NSString, RPCompanionLinkClient, SFDevice, SFDeviceOperationCDPSetup, SFDeviceOperationHomeKitSetup, SFDeviceOperationWiFiSetup, SFSession, SSAccount, TROperationQueue, TRSession, UIViewController;
+@class ACAccount, ACAccountStore, AFEnablementConfiguration, AFEnablementFlowConfigurationProvider, AFVoiceInfo, AMSPromise, AVAudioPlayer, AVAudioSession, HMAccessory, HMHome, NSArray, NSDictionary, NSMutableArray, NSSet, NSString, RPCompanionLinkClient, SFDevice, SFDeviceOperationCDPSetup, SFDeviceOperationHomeKitSetup, SFDeviceOperationWiFiSetup, SFSession, SSAccount, TROperationQueue, TRSession, UIViewController;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface SFDeviceSetupB238Session : NSObject <AVAudioPlayerDelegate>
@@ -42,6 +42,7 @@
     NSObject<OS_dispatch_source> *_appleMusicTimeoutTimer;
     int _preflightAppleMusicState;
     int _appleStoreMode;
+    AMSPromise *_amsDeviceRegistrationPromise;
     int _preflightMiscState;
     _Bool _locationEnabled;
     _Bool _locationDecided;
@@ -52,6 +53,12 @@
     HMAccessory *_stereoCounterpartAccessory;
     int _stereoPairUserInputState;
     int _stereoPairRole;
+    _Bool _tvAudioEnabled;
+    _Bool _tvAudioInputAvailable;
+    int _tvAudioUserInputState;
+    _Bool _prefTVAudioEnabled;
+    NSArray *_potentialTVs;
+    HMAccessory *_tvAudioInput;
     SFSession *_sfSession;
     _Bool _sfSessionSecured;
     int _sfSessionState;
@@ -62,11 +69,16 @@
     long long _siriLanguageIndex;
     _Bool _siriLanguagePicked;
     int _siriLanguageState;
+    AFVoiceInfo *_selectedSiriVoice;
+    int _siriEnablementConfigurationState;
+    AFEnablementConfiguration *_siriEnablementConfiguration;
+    AFEnablementFlowConfigurationProvider *_siriEnablementConfigurationProvider;
     NSString *_siriPreferredLanguage;
     _Bool _siriPasscodeEnabled;
     _Bool _siriPasscodeInitDone;
     _Bool _siriPasscodeSecured;
     int _siriPasscodeState;
+    NSString *_forcedPasscode;
     unsigned int _pairSetupFlags;
     int _pairSetupState;
     double _pairSetupSecs;
@@ -88,6 +100,7 @@
     double _basicConfigSecs;
     NSString *_deviceGUID;
     NSString *_deviceSerialNumber;
+    NSString *_deviceModel;
     SFDeviceOperationWiFiSetup *_wifiSetupOperation;
     int _wifiSetupState;
     double _wifiSetupSecs;
@@ -102,12 +115,15 @@
     double _trSetupConfigurationSecs;
     _Bool _trNeedsNetwork;
     NSSet *_trUnauthServices;
+    _Bool _trUseAIDA;
     int _trActivationState;
-    unsigned long long _trActivationStartTicks;
-    double _trActivationSecs;
+    int _bgActivationState;
+    double _activationSecs;
     int _trAuthenticationState;
+    _Bool _trAuthenticationStateReset;
     unsigned long long _trAuthenticationStartTicks;
     double _trAuthenticationSecs;
+    double _trAuthenticationTotalSecs;
     _Bool _cdpEnabled;
     SFDeviceOperationCDPSetup *_cdpSetupOperation;
     double _cdpSetupSecs;
@@ -154,21 +170,27 @@
     CDUnknownBlockType _promptForPINHandler;
     CDUnknownBlockType _promptForRoomHandler;
     CDUnknownBlockType _promptForSiriEnableHandler;
+    CDUnknownBlockType _promptForSiriVoiceSelectionHandler;
     CDUnknownBlockType _promptForTermsHandler;
+    CDUnknownBlockType _promptForTVAudioHandler;
     CDUnknownBlockType _promptToInstallHomeAppHandler;
     CDUnknownBlockType _promptToShareSettingsHandler;
     CDUnknownBlockType _promptForSiriLanguageHandler;
     CDUnknownBlockType _promptForStereoRoleHandler;
     CDUnknownBlockType _promptForStereoMultipleHandler;
+    CDUnknownBlockType _deviceColorFoundHandler;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType deviceColorFoundHandler; // @synthesize deviceColorFoundHandler=_deviceColorFoundHandler;
 @property(copy, nonatomic) CDUnknownBlockType promptForStereoMultipleHandler; // @synthesize promptForStereoMultipleHandler=_promptForStereoMultipleHandler;
 @property(copy, nonatomic) CDUnknownBlockType promptForStereoRoleHandler; // @synthesize promptForStereoRoleHandler=_promptForStereoRoleHandler;
 @property(copy, nonatomic) CDUnknownBlockType promptForSiriLanguageHandler; // @synthesize promptForSiriLanguageHandler=_promptForSiriLanguageHandler;
 @property(copy, nonatomic) CDUnknownBlockType promptToShareSettingsHandler; // @synthesize promptToShareSettingsHandler=_promptToShareSettingsHandler;
 @property(copy, nonatomic) CDUnknownBlockType promptToInstallHomeAppHandler; // @synthesize promptToInstallHomeAppHandler=_promptToInstallHomeAppHandler;
+@property(copy, nonatomic) CDUnknownBlockType promptForTVAudioHandler; // @synthesize promptForTVAudioHandler=_promptForTVAudioHandler;
 @property(copy, nonatomic) CDUnknownBlockType promptForTermsHandler; // @synthesize promptForTermsHandler=_promptForTermsHandler;
+@property(copy, nonatomic) CDUnknownBlockType promptForSiriVoiceSelectionHandler; // @synthesize promptForSiriVoiceSelectionHandler=_promptForSiriVoiceSelectionHandler;
 @property(copy, nonatomic) CDUnknownBlockType promptForSiriEnableHandler; // @synthesize promptForSiriEnableHandler=_promptForSiriEnableHandler;
 @property(copy, nonatomic) CDUnknownBlockType promptForRoomHandler; // @synthesize promptForRoomHandler=_promptForRoomHandler;
 @property(copy, nonatomic) CDUnknownBlockType promptForPINHandler; // @synthesize promptForPINHandler=_promptForPINHandler;
@@ -193,6 +215,7 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property(readonly, nonatomic) int bonjourTestState; // @synthesize bonjourTestState=_bonjourTestState;
 @property(copy, nonatomic) NSDictionary *additionalMetrics; // @synthesize additionalMetrics=_additionalMetrics;
+- (void)forcePassCode:(id)arg1;
 - (void)audioSessionInterrupted:(id)arg1;
 - (void)audioPlayerDidFinishPlaying:(id)arg1 successfully:(_Bool)arg2;
 - (void)audioPlayerDecodeErrorDidOccur:(id)arg1 error:(id)arg2;
@@ -203,7 +226,7 @@
 - (void)_promptForPINWithFlags:(unsigned int)arg1 throttleSeconds:(int)arg2;
 - (void)_playLocalSoundID:(int)arg1 remoteSoundID:(int)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_playLocalSoundID:(int)arg1 remoteSoundID:(int)arg2;
-- (void)_logMetrics;
+- (void)_logMetrics:(id)arg1;
 - (void)_homeKitUpdateiCloudSwitchState:(_Bool)arg1;
 - (id)_homeKitFindSettingsWithKeyPath:(id)arg1 group:(id)arg2;
 - (void)_handlePeerEvent:(id)arg1 flags:(unsigned int)arg2;
@@ -215,8 +238,11 @@
 - (int)_runMultiUserEnable;
 - (int)_runHomeKitSetup;
 - (int)_runCDPSetup:(_Bool)arg1;
-- (int)_runTRAuthentication;
+- (int)_runTRAuthentication:(id)arg1;
+- (int)_runTROtherAuthentication;
+- (int)_runTRiCloudAuthentication;
 - (int)_runTRActivation;
+- (void)_runBackgroundActivation;
 - (int)_runTRSetupConfiguration;
 - (int)_runWiFiSetup;
 - (int)_runTRSessionStart;
@@ -236,15 +262,19 @@
 - (int)_runSiriForEveryone;
 - (int)_runPersonalRequests;
 - (void)_runRecognizeVoiceCheckVoiceProfileResponse:(_Bool)arg1 error:(id)arg2;
+- (void)_getSiriEnablementConfiguration;
 - (void)_runRecognizeVoiceCheckVoiceProfileStart;
 - (void)_runRecognizeVoiceCheckLanguageResponse:(id)arg1 error:(id)arg2;
 - (void)_runRecognizeVoiceCheckLanguageStart;
+- (int)_runSiriEnablementConfigurationFetch;
 - (int)_runRecognizeVoice;
 - (int)_runSiriLanguage;
+- (int)_enableSiriForPersonalRequestIfNecessary;
 - (int)_runCheckAccount;
 - (void)_runPreAuthResponse:(id)arg1 error:(id)arg2;
 - (void)_runPreAuthRequest;
 - (int)_runPreAuth;
+- (int)_runTVAudioUserInput;
 - (void)_runStereoPairUserInputPickColors:(_Bool)arg1;
 - (int)_runStereoPairUserInput;
 - (int)_runHomeKitUserInput;
@@ -254,6 +284,7 @@
 - (int)_runPreflightWiFi;
 - (int)_runSFSessionStart;
 - (void)_run;
+- (void)tvAudioEnabled:(_Bool)arg1;
 - (void)termsAgreed;
 - (void)stereoMultiplePicked:(id)arg1;
 - (void)stereoRolePicked:(int)arg1;
@@ -264,6 +295,8 @@
 - (void)speakPasscodeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)skipiTunesSignIn;
 - (void)skipAudioPasscode;
+- (void)didDismiss;
+- (void)siriVoicePicked:(id)arg1;
 - (void)siriLanguagePicked:(long long)arg1;
 - (void)siriForEveryoneAnswered;
 @property(readonly, nonatomic) _Bool siriDataSharingEnabled;

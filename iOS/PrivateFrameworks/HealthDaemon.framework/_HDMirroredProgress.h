@@ -13,14 +13,9 @@ __attribute__((visibility("hidden")))
     struct os_unfair_lock_s _lock;
 }
 
-+ (id)_KVOKeyPaths;
 - (void).cxx_destruct;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)_update;
-- (void)_unregisterForKVO;
-- (void)_registerForKVO;
 - (void)dealloc;
-- (id)initWithMirroredProgress:(id)arg1;
 
 @end
 

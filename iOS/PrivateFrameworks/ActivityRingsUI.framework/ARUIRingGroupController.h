@@ -55,6 +55,8 @@
 - (void)setIconFirstFrameOrigin:(struct CGPoint)arg1 frameSize:(struct CGSize)arg2 frameCount:(long long)arg3 columns:(long long)arg4 ofRingAtIndex:(long long)arg5;
 - (void)setIconDotTextureOrigin:(struct CGPoint)arg1 ofRingAtIndex:(long long)arg2;
 - (void)setDotPercentage:(double)arg1 ofRingAtIndex:(long long)arg2 animated:(_Bool)arg3;
+- (void)removeCelebration:(id)arg1 fromRingAtIndex:(long long)arg2;
+- (void)addCelebration:(id)arg1 toRingAtIndex:(long long)arg2;
 - (void)setActiveEnergyPercentage:(double)arg1 briskPercentage:(double)arg2 movingHoursPercentage:(double)arg3 animated:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)setBriskPercentage:(double)arg1 animated:(_Bool)arg2;
 - (void)setMovingHoursPercentage:(double)arg1 animated:(_Bool)arg2;

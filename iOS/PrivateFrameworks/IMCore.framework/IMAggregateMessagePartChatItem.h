@@ -16,7 +16,7 @@
 - (id)_initWithItem:(id)arg1 messagePartRange:(struct _NSRange)arg2 subparts:(id)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
-- (id)replyContextPreviewChatItemForReply:(id)arg1;
+- (id)replyContextPreviewChatItemForReply:(id)arg1 chatContext:(id)arg2;
 
 @end
 

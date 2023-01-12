@@ -14,6 +14,7 @@
 - (long long)_defaultValue;
 - (long long)_categoryValueForValue:(long long)arg1;
 - (_Bool)_acceptsValue:(long long)arg1;
+- (id)initWithIdentifier:(id)arg1;
 
 @end
 

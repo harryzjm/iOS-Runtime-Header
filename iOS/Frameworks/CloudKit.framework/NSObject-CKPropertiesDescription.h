@@ -17,7 +17,11 @@
 - (id)CKDescriptionPropertiesWithPublic:(_Bool)arg1 private:(_Bool)arg2 shouldExpand:(_Bool)arg3;
 - (id)CKPropertiesDescription;
 - (void)CKAssignToContainerWithID:(id)arg1;
-- (id)CKStatusReport;
 - (void)ck_bindInStatement:(id)arg1 atIndex:(unsigned long long)arg2;
+- (id)CKObjectDescriptionRedact:(_Bool)arg1 avoidShortDescription:(_Bool)arg2;
+- (id)CKObjectDescriptionRedact:(_Bool)arg1;
+- (id)CKDescriptionRedact:(_Bool)arg1 avoidShortDescription:(_Bool)arg2;
+- (id)CKRedactedDescription;
+- (id)CKUnredactedDescription;
 @end
 

@@ -18,15 +18,12 @@
 - (id)accessibilityLabel;
 - (_Bool)_updateSectionForTouch:(id)arg1 withEvent:(id)arg2;
 - (id)accessibilityFlowToElements;
-- (id)_accessibilityValueToPost:(id)arg1;
+- (id)_axDetermineTableCellLabel:(id)arg1;
 - (struct CGPoint)accessibilityActivationPoint;
 - (void)accessibilityDecrement;
 - (void)accessibilityIncrement;
-- (void)_accessibilityMoveToIndexAtPosition:(long long)arg1;
-- (void)_accessibilityBumpValue:(_Bool)arg1;
 - (void)_accessibilityJumpToTableIndex:(id)arg1;
 - (long long)_accessibilityTableIndexAdjustment;
-- (id)_accessibilityIndexData;
 
 @end
 

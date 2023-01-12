@@ -6,9 +6,9 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class MPCAssistantCommand;
+@protocol HMDMPCAssistantCommand;
 
 @protocol HMDMPCSendMRCommandOperationExternalObjectInterface <NSObject>
-- (MPCAssistantCommand *)createMPCAssistantCommand;
+- (id <HMDMPCAssistantCommand>)createMPCAssistantCommand;
 @end
 

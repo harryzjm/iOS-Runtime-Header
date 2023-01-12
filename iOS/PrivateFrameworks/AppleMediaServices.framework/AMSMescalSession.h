@@ -17,13 +17,10 @@ __attribute__((visibility("hidden")))
     AMSURLSession *_urlSession;
     AMSMescalFairPlay *_fairPlayContext;
     long long _mescalType;
-    _Bool _primed;
 }
 
 + (id)sessionWithType:(long long)arg1;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool primed; // @synthesize primed=_primed;
-- (_Bool)_verifyPrimeResponse:(id)arg1 error:(id *)arg2;
 - (_Bool)_verifyEntitlements;
 - (_Bool)_shouldRetryFairPlayForError:(id)arg1;
 - (void)_resetSession;
@@ -33,9 +30,10 @@ __attribute__((visibility("hidden")))
 - (id)_cachedCertPath;
 - (id)_cachedCertData;
 - (_Bool)_cacheCertData:(id)arg1 expiration:(double)arg2;
+- (_Bool)verifyPrimeSignature:(id)arg1 error:(id *)arg2;
 - (_Bool)verifyData:(id)arg1 withSignature:(id)arg2 bag:(id)arg3 error:(id *)arg4;
 - (id)signData:(id)arg1 bag:(id)arg2 error:(id *)arg3;
-- (_Bool)primeTheConnectionWithBag:(id)arg1 error:(id *)arg2;
+- (id)primeSignatureForData:(id)arg1 bag:(id)arg2 error:(id *)arg3;
 - (id)initWithType:(long long)arg1;
 
 @end

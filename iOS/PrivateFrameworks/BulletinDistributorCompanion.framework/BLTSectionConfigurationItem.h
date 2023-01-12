@@ -14,7 +14,7 @@
     _Bool _alwaysSyncSettings;
     _Bool _alwaysAlert;
     _Bool _optOutOfWaitForUserIdle;
-    _Bool _applyWhitelistToChildSections;
+    _Bool _applyAllowListToChildSections;
     _Bool _optOutOfNotificationTuning;
     _Bool _hasLegacyMapInUserInfo;
     _Bool _hasLegacyMapInContext;
@@ -23,17 +23,17 @@
     _Bool _optOutOfSettingsCoordination;
     _Bool _overrideAppliesToCoordinationOptOut;
     unsigned long long _coordinationType;
-    NSArray *_whitelistedSubtypes;
-    NSArray *_blacklistedCategories;
-    NSArray *_whitelistedCategories;
+    NSArray *_allowListedSubtypes;
+    NSArray *_denyListedCategories;
+    NSArray *_allowListedCategories;
     NSNumber *_watchVersionThatUsesUserInfoForContext;
     NSArray *_additionalBridgeSectionIDs;
     NSNumber *_watchVersionThatUsesAttachmentURL;
-    NSMutableDictionary *_blacklistedCategoriesWithVersion;
+    NSMutableDictionary *_denyListedCategoriesWithVersion;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableDictionary *blacklistedCategoriesWithVersion; // @synthesize blacklistedCategoriesWithVersion=_blacklistedCategoriesWithVersion;
+@property(retain, nonatomic) NSMutableDictionary *denyListedCategoriesWithVersion; // @synthesize denyListedCategoriesWithVersion=_denyListedCategoriesWithVersion;
 @property(retain, nonatomic) NSNumber *watchVersionThatUsesAttachmentURL; // @synthesize watchVersionThatUsesAttachmentURL=_watchVersionThatUsesAttachmentURL;
 @property(nonatomic) _Bool overrideAppliesToCoordinationOptOut; // @synthesize overrideAppliesToCoordinationOptOut=_overrideAppliesToCoordinationOptOut;
 @property(nonatomic) _Bool optOutOfSettingsCoordination; // @synthesize optOutOfSettingsCoordination=_optOutOfSettingsCoordination;
@@ -44,12 +44,12 @@
 @property(nonatomic) _Bool hasLegacyMapInContext; // @synthesize hasLegacyMapInContext=_hasLegacyMapInContext;
 @property(nonatomic) _Bool hasLegacyMapInUserInfo; // @synthesize hasLegacyMapInUserInfo=_hasLegacyMapInUserInfo;
 @property(nonatomic) _Bool optOutOfNotificationTuning; // @synthesize optOutOfNotificationTuning=_optOutOfNotificationTuning;
-@property(nonatomic) _Bool applyWhitelistToChildSections; // @synthesize applyWhitelistToChildSections=_applyWhitelistToChildSections;
+@property(nonatomic) _Bool applyAllowListToChildSections; // @synthesize applyAllowListToChildSections=_applyAllowListToChildSections;
 @property(nonatomic) _Bool optOutOfWaitForUserIdle; // @synthesize optOutOfWaitForUserIdle=_optOutOfWaitForUserIdle;
 @property(nonatomic) _Bool alwaysAlert; // @synthesize alwaysAlert=_alwaysAlert;
-@property(retain, nonatomic) NSArray *whitelistedCategories; // @synthesize whitelistedCategories=_whitelistedCategories;
-@property(retain, nonatomic) NSArray *blacklistedCategories; // @synthesize blacklistedCategories=_blacklistedCategories;
-@property(retain, nonatomic) NSArray *whitelistedSubtypes; // @synthesize whitelistedSubtypes=_whitelistedSubtypes;
+@property(retain, nonatomic) NSArray *allowListedCategories; // @synthesize allowListedCategories=_allowListedCategories;
+@property(retain, nonatomic) NSArray *denyListedCategories; // @synthesize denyListedCategories=_denyListedCategories;
+@property(retain, nonatomic) NSArray *allowListedSubtypes; // @synthesize allowListedSubtypes=_allowListedSubtypes;
 @property(nonatomic) _Bool alwaysSyncSettings; // @synthesize alwaysSyncSettings=_alwaysSyncSettings;
 @property(nonatomic) _Bool optOutOfAttachmentTransmission; // @synthesize optOutOfAttachmentTransmission=_optOutOfAttachmentTransmission;
 @property unsigned long long coordinationType; // @synthesize coordinationType=_coordinationType;

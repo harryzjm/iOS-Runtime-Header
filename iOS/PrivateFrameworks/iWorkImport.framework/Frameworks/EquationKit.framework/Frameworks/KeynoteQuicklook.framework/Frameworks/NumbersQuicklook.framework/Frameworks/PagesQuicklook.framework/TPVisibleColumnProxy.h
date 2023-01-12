@@ -8,14 +8,14 @@
 
 #import <PagesQuicklook/TSWPOffscreenColumn-Protocol.h>
 
-@class NSString, TPPageController;
+@class NSString, TPPaginatedPageController;
 @protocol TSWPFlowInfo;
 
 @interface TPVisibleColumnProxy : NSObject <TSWPOffscreenColumn>
 {
     unsigned long long _pageIndex;
     id <TSWPFlowInfo> _flowInfo;
-    TPPageController *_pageController;
+    TPPaginatedPageController *_pageController;
 }
 
 - (void).cxx_destruct;

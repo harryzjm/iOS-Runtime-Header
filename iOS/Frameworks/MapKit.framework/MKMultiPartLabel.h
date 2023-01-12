@@ -13,16 +13,21 @@
     UITextView *_textView;
     struct CGRect _previousBounds;
     NSDictionary *_cachedTextAttributes;
+    NSDictionary *_lastAppliedNonColorAttributes;
+    _Bool _highlighted;
     MKMultiPartAttributedString *_multiPartString;
     UIFont *_font;
     UIColor *_textColor;
     long long _textAlignment;
+    UIColor *_highlightedTextColor;
     _MKMultiPartLabelMetrics *_data;
 }
 
 + (id)_formattedStringsCache;
 - (void).cxx_destruct;
 @property(retain, nonatomic) _MKMultiPartLabelMetrics *data; // @synthesize data=_data;
+@property(nonatomic, getter=isHighlighted) _Bool highlighted; // @synthesize highlighted=_highlighted;
+@property(retain, nonatomic) UIColor *highlightedTextColor; // @synthesize highlightedTextColor=_highlightedTextColor;
 @property(nonatomic) long long textAlignment; // @synthesize textAlignment=_textAlignment;
 @property(retain, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
 @property(retain, nonatomic) UIFont *font; // @synthesize font=_font;
@@ -44,6 +49,8 @@
 - (id)_textAttributes;
 @property(nonatomic) long long lineBreakMode;
 @property(nonatomic) unsigned long long numberOfLines;
+- (void)_updateColorsForCurrentState;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)_setupTextView;
 - (id)initWithFrame:(struct CGRect)arg1;
 

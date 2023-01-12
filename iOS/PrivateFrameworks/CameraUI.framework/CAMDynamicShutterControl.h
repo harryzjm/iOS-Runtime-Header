@@ -15,6 +15,7 @@
 @interface CAMDynamicShutterControl : UIControl <CAMMetalViewDelegate, UIGestureRecognizerDelegate>
 {
     struct {
+        _Bool respondsToTopLevelSuperview;
         _Bool respondsToDidShortPress;
         _Bool respondsToCanStartOnTouchDown;
         _Bool respondsToShouldBeginGesture;
@@ -23,6 +24,8 @@
         _Bool respondsToGesturesDidCancel;
         _Bool respondsToDidStart;
         _Bool respondsToDidStartWithGesture;
+        _Bool respondsToDidStartZoomGesture;
+        _Bool respondsToDidChangeZoomScale;
         _Bool respondsToDidStop;
         _Bool respondsToDidPressLockButton;
         _Bool respondsToDidPresentCounter;
@@ -30,8 +33,10 @@
         _Bool respondsToTouchAttemptedWhileDisabled;
     } _delegateFlags;
     _Bool _spinning;
+    _Bool _zooming;
     _Bool _showContrastBorder;
     _Bool _showDisabled;
+    _Bool __canZoom;
     _Bool __externalShutterPressed;
     _Bool __externalLockButtonPressed;
     _Bool __shouldCheckTouchUpEvents;
@@ -59,6 +64,7 @@
     double __touchBeganTime;
     long long __touchSequencePhase;
     CAMDynamicShutterGestureRecognizer *__gestureRecognizer;
+    double __initalZoomGestureOffsetY;
     CAMFeedbackController *__feedbackController;
     long long __shutterState;
     long long __dragHandleState;
@@ -82,7 +88,7 @@
     struct CAMShutterButtonSpec __shutterButtonSpec;
     struct CAMShutterButtonSpec __lockButtonActiveSpec;
     struct CAMShutterButtonSpec __lockButtonInactiveSpec;
-    CDStruct_41c1ae05 _settings;
+    CDStruct_463d3f11 _settings;
 }
 
 + (struct CAMShutterButtonSpec)shutterButtonSpecForLayoutStyle:(long long)arg1;
@@ -109,6 +115,8 @@
 @property(nonatomic, setter=_setDragHandleState:) long long _dragHandleState; // @synthesize _dragHandleState=__dragHandleState;
 @property(nonatomic, setter=_setShutterState:) long long _shutterState; // @synthesize _shutterState=__shutterState;
 @property(readonly, nonatomic) CAMFeedbackController *_feedbackController; // @synthesize _feedbackController=__feedbackController;
+@property(nonatomic) double _initalZoomGestureOffsetY; // @synthesize _initalZoomGestureOffsetY=__initalZoomGestureOffsetY;
+@property(nonatomic) _Bool _canZoom; // @synthesize _canZoom=__canZoom;
 @property(readonly, nonatomic) CAMDynamicShutterGestureRecognizer *_gestureRecognizer; // @synthesize _gestureRecognizer=__gestureRecognizer;
 @property(nonatomic, setter=_setMostRecentTouch:) CDStruct_299b3d1e _mostRecentTouch; // @synthesize _mostRecentTouch=__mostRecentTouch;
 @property(nonatomic, setter=_setFirstTouch:) CDStruct_299b3d1e _firstTouch; // @synthesize _firstTouch=__firstTouch;
@@ -138,11 +146,13 @@
 @property(nonatomic) double lockButtonCenterRightInset; // @synthesize lockButtonCenterRightInset=_lockButtonCenterRightInset;
 @property(nonatomic) _Bool showDisabled; // @synthesize showDisabled=_showDisabled;
 @property(nonatomic) _Bool showContrastBorder; // @synthesize showContrastBorder=_showContrastBorder;
+@property(nonatomic, getter=isZooming, setter=setZooming:) _Bool zooming; // @synthesize zooming=_zooming;
 @property(nonatomic, getter=isSpinning) _Bool spinning; // @synthesize spinning=_spinning;
-@property(nonatomic) CDStruct_41c1ae05 settings; // @synthesize settings=_settings;
+@property(nonatomic) CDStruct_463d3f11 settings; // @synthesize settings=_settings;
 @property(nonatomic) __weak id <CAMDynamicShutterControlDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)metalViewDidChangeDrawableSize:(id)arg1;
 - (void)_updateCounterAlpha;
+- (void)_updateLockGlyphTransformAndAlpha;
 - (void)_updateLockUI;
 - (void)_updateRightLine;
 - (void)_updateLeftLine;
@@ -174,15 +184,15 @@
 - (void)_updateOuterAndInnerLayersAnimated:(_Bool)arg1;
 - (id)_outerImage;
 @property(readonly, nonatomic, getter=_isDraggingEnabled) _Bool _draggingEnabled;
-- (void)setSettings:(CDStruct_41c1ae05)arg1 animated:(_Bool)arg2;
+- (void)setSettings:(CDStruct_463d3f11)arg1 animated:(_Bool)arg2;
 - (void)resetCounter;
 - (long long)incrementCounter;
 - (void)_updateCounterLabelText;
 - (void)externalLockButtonReleased;
 - (void)externalLockButtonPressed;
 - (void)externalButtonCancelled;
-- (void)externalButtonReleased;
-- (void)externalButtonPressedWithBehavior:(long long)arg1;
+- (_Bool)externalButtonReleased;
+- (_Bool)externalButtonPressedWithBehavior:(long long)arg1;
 - (void)_handleTapToStartStop;
 - (void)_cancelTouchSequenceForReset:(_Bool)arg1;
 - (void)_touchSequenceCancelledForReset:(_Bool)arg1;
@@ -202,6 +212,7 @@
 - (_Bool)_isPointWithinLockRingTouchArea:(struct CGPoint)arg1;
 - (struct CGRect)_lockButtonFrame;
 @property(readonly, nonatomic) struct CGPoint _lockButtonCenter;
+- (double)_absoluteShutterToBottomDistance;
 - (_Bool)_isPointWithinShutterButtonTouchArea:(struct CGPoint)arg1;
 - (struct CGRect)_shutterButtonFrame;
 @property(readonly, nonatomic) struct CGPoint _shutterButtonCenter;
@@ -213,6 +224,7 @@
 - (struct CGRect)frameForAlignmentRect:(struct CGRect)arg1 availableWidth:(double)arg2;
 - (void)setOrientation:(long long)arg1 animated:(_Bool)arg2;
 - (void)resetAnimated:(_Bool)arg1;
+- (void)cancelZoom;
 - (void)_setInnerShapeState:(long long)arg1 animated:(_Bool)arg2;
 - (void)_setDragHandleState:(long long)arg1 animated:(_Bool)arg2;
 - (long long)_startGestureForShutterState:(long long)arg1;

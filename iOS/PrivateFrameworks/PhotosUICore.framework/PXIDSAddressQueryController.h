@@ -9,19 +9,21 @@
 #import <PhotosUICore/IDSBatchIDQueryControllerDelegate-Protocol.h>
 
 @class IDSBatchIDQueryController, NSMutableArray, NSMutableDictionary, NSString;
+@protocol OS_dispatch_queue;
 
 @interface PXIDSAddressQueryController : NSObject <IDSBatchIDQueryControllerDelegate>
 {
-    NSMutableDictionary *_queryStateForAddress;
+    NSObject<OS_dispatch_queue> *_serialQueue;
     NSMutableArray *_queries;
+    NSMutableDictionary *_queryStateForAddress;
     IDSBatchIDQueryController *_idsBatchIDQueryController;
-    CDUnknownBlockType _completionHandler;
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+- (void)_callResultsHandlerForQueries:(id)arg1;
 - (void)_idStatusUpdatedForDestinations:(id)arg1 service:(id)arg2;
 - (void)batchQueryController:(id)arg1 updatedDestinationsStatus:(id)arg2 onService:(id)arg3 error:(id)arg4;
+- (void)_performBatchQueryForAddresses:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (void)performBatchQueryForAddresses:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)init;

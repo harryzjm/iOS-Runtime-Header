@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitMetrics/HMMLogEvent.h>
+
 #import <HomeKitDaemon/HMDAWDLogEvent-Protocol.h>
 
 @class NSString;
 
-@interface HMDHomeInviteLogEvent <HMDAWDLogEvent>
+@interface HMDHomeInviteLogEvent : HMMLogEvent <HMDAWDLogEvent>
 {
     int _stage;
     int _responseType;
 }
 
-+ (id)uuid;
 + (id)homeInvitationWithStage:(int)arg1 responseType:(int)arg2;
 + (id)homeInvitationWithStage:(int)arg1;
 @property(readonly, nonatomic) int responseType; // @synthesize responseType=_responseType;

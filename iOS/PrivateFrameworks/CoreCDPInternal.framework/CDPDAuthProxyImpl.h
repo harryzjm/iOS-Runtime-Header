@@ -14,6 +14,7 @@
 {
 }
 
+- (_Bool)isPrimaryAppleIDLoggedIn;
 - (id)_authContextFromCDPContext:(id)arg1;
 - (void)cdpContext:(id)arg1 persistMasterKeyVerifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 

@@ -28,6 +28,7 @@
 @property(retain, nonatomic) NSSet *actions; // @synthesize actions=_actions;
 @property(retain, nonatomic) HFActionNaturalLanguageOptions *options; // @synthesize options=_options;
 - (void)updateInvolvedObjects;
+@property(readonly, nonatomic) unsigned long long accessoryCount;
 @property(readonly, nonatomic) id <HFUIRepresentableHomeObject> singularInvolvedObject;
 - (id)initWithOptions:(id)arg1;
 

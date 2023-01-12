@@ -13,20 +13,7 @@
     NSMutableDictionary *_featureDictionary;
 }
 
-+ (id)sharedStatisticsManager;
 - (void).cxx_destruct;
-- (void)didUseDataDetectors;
-- (void)didUseInsertSpace;
-- (void)didUseSmartShapes;
-- (void)didCopyAsText;
-- (void)didUseSmartSelection;
-- (void)didDrawStroke;
-- (void)_testManuallyTriggeringDailyStatistics;
-- (void)_messageHandwritingAnalyticsWithProxyBlock:(CDUnknownBlockType)arg1;
-- (void)_sendUsageSessionStatistics;
-- (id)_featureUsageFlattenedDictionary;
-- (void)endSession;
-- (void)logFeatureUsed:(id)arg1;
 
 @end
 

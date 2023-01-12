@@ -4,14 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSObject;
+@protocol OS_dispatch_source;
+
 @interface HDCloudSyncPipelineStageWaitForDeviceToDeviceEncryptionAvailability
 {
+    NSObject<OS_dispatch_source> *_expirationTimer;
+    double _expirationInterval;
 }
 
+- (void).cxx_destruct;
+- (void)unitTest_setExpirationInterval:(double)arg1;
 - (_Bool)finishWithSuccess:(_Bool)arg1 error:(id)arg2;
 - (void)_cloudKitIdentityUpdated:(id)arg1;
-- (void)_checkForDevicetoDeviceEncryptionAvailability;
 - (void)main;
+- (id)initWithConfiguration:(id)arg1;
 
 @end
 

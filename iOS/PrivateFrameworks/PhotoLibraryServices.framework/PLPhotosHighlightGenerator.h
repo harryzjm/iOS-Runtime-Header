@@ -56,6 +56,7 @@
 - (id)_fetchMomentsRequiringLocationProcessingWhenFrequentLocationsChanged;
 - (id)_fetchMomentsWithLocationTypeUnprocessed;
 - (id)_fetchAllMoments;
+- (id)_recentHighlightsDateIntervalWithDate:(id)arg1;
 @property(readonly, nonatomic) NSDateInterval *recentHighlightsDateInterval; // @synthesize recentHighlightsDateInterval=_recentHighlightsDateInterval;
 - (void)cleanupEmptyHighlights;
 - (void)updateHighlightTitles;

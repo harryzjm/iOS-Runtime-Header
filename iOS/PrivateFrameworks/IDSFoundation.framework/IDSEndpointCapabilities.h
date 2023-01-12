@@ -17,6 +17,10 @@
     BOOL _supportsLocationSharing;
     BOOL _supportsScreenTimeV2;
     BOOL _supportsIncomingFindMyV1;
+    BOOL _supportsSecureLocationsV1;
+    BOOL _supportsHomeKitResident;
+    BOOL _supportsMapsRoutingPathLeg;
+    BOOL _supportsBecaonSharingV2;
     BOOL _ecVersion;
     BOOL _isC2KEquipment;
     BOOL _showPeerErrors;
@@ -37,6 +41,7 @@
     BOOL _supportsAutoloopVideoV1;
     BOOL _supportsMediaV2;
     BOOL _supportsPhotosExtensionV1;
+    BOOL _supportsPhotosExtensionV2;
     BOOL _supportsAudioMessagingV2;
     BOOL _supportsAnimojiV2;
     BOOL _supportsCertifiedDeliveryV1;
@@ -45,6 +50,14 @@
     BOOL _supportsHEIFEncoding;
     BOOL _supportsHDRVideo;
     BOOL _prefersSDRVideo;
+    BOOL _supportsSyndicationActionsV1;
+    BOOL _supportsUWB;
+    BOOL _supportsDeliveredQuietlyAndNotifyRecipient;
+    BOOL _supportsModernGFT;
+    BOOL _supportsCo;
+    BOOL _isGreenTea;
+    BOOL _supportsGondola;
+    BOOL _doesNotSupportGFTCalls;
 }
 
 + (_Bool)supportsSecureCoding;

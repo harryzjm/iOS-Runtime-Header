@@ -6,7 +6,7 @@
 
 #import <FrontBoard/FBSServiceFacility.h>
 
-@protocol SBApplicationServerHarmonyDelegate, SBApplicationServerMiscDelegate, SBApplicationServerMultiwindowDelegate, SBApplicationServerShortcutDelegate;
+@protocol SBApplicationServerHarmonyDelegate, SBApplicationServerMedusaShortcutDelegate, SBApplicationServerMiscDelegate, SBApplicationServerMultiwindowDelegate, SBApplicationServerShortcutDelegate;
 
 @interface SBApplicationServer : FBSServiceFacility
 {
@@ -14,10 +14,12 @@
     id <SBApplicationServerHarmonyDelegate> _harmonyDelegate;
     id <SBApplicationServerShortcutDelegate> _shortcutDelegate;
     id <SBApplicationServerMultiwindowDelegate> _multiwindowDelegate;
+    id <SBApplicationServerMedusaShortcutDelegate> _medusaShortcutDelegate;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <SBApplicationServerMedusaShortcutDelegate> medusaShortcutDelegate; // @synthesize medusaShortcutDelegate=_medusaShortcutDelegate;
 @property(nonatomic) __weak id <SBApplicationServerMultiwindowDelegate> multiwindowDelegate; // @synthesize multiwindowDelegate=_multiwindowDelegate;
 @property(nonatomic) __weak id <SBApplicationServerShortcutDelegate> shortcutDelegate; // @synthesize shortcutDelegate=_shortcutDelegate;
 @property(nonatomic) __weak id <SBApplicationServerHarmonyDelegate> harmonyDelegate; // @synthesize harmonyDelegate=_harmonyDelegate;

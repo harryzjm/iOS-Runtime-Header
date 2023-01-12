@@ -14,6 +14,7 @@
     MISSING_TYPE *image;
     MISSING_TYPE *error;
     MISSING_TYPE *downloader;
+    MISSING_TYPE *expires;
     MISSING_TYPE *processor;
     MISSING_TYPE *underlyingCache;
     MISSING_TYPE *imageCompletionBlock;

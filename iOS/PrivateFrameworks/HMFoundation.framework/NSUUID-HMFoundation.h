@@ -8,10 +8,11 @@
 
 #import <HMFoundation/HMFObject-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSData, NSString;
 
 @interface NSUUID (HMFoundation) <HMFObject>
 + (id)shortDescription;
++ (id)hmf_UUIDWithBytesAsData:(id)arg1;
 + (id)zeroUUID;
 + (id)hmf_zeroUUID;
 + (id)hmf_UUIDWithNamespace:(id)arg1 data:(id)arg2;
@@ -19,6 +20,7 @@
 - (_Bool)hmf_isEqualToUUID:(id)arg1;
 @property(readonly, copy) NSString *privateDescription;
 @property(readonly, copy) NSString *shortDescription;
+@property(readonly) NSData *hmf_bytesAsData;
 - (id)initWithNamespace:(id)arg1 data:(id)arg2;
 
 // Remaining properties

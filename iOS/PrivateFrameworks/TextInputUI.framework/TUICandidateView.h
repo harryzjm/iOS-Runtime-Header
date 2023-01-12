@@ -8,7 +8,7 @@
 
 #import <TextInputUI/TUICandidateGridDelegate-Protocol.h>
 
-@class NSIndexPath, NSString, TIKeyboardCandidate, TIKeyboardCandidateResultSet, TUICandidateArrowButton, TUICandidateBackdropView, TUICandidateGrid, TUICandidateInlineTextView, TUICandidateSortControl;
+@class NSIndexPath, NSString, TIKeyboardCandidate, TIKeyboardCandidateResultSet, TUICandidateArrowButton, TUICandidateBackdropView, TUICandidateGrid, TUICandidateInlineTextView, TUICandidateMask, TUICandidateSortControl;
 @protocol TUICandidateViewDelegate, TUICandidateViewState;
 
 @interface TUICandidateView : UIView <TUICandidateGridDelegate>
@@ -21,6 +21,7 @@
     NSString *_inlineText;
     id <TUICandidateViewDelegate> _delegate;
     UIView *_clipsToBoundsView;
+    TUICandidateMask *_maskView;
     TUICandidateGrid *_primaryGrid;
     TUICandidateGrid *_disambiguationGrid;
     TUICandidateSortControl *_sortControl;
@@ -40,6 +41,7 @@
 @property(retain, nonatomic) TUICandidateSortControl *sortControl; // @synthesize sortControl=_sortControl;
 @property(retain, nonatomic) TUICandidateGrid *disambiguationGrid; // @synthesize disambiguationGrid=_disambiguationGrid;
 @property(retain, nonatomic) TUICandidateGrid *primaryGrid; // @synthesize primaryGrid=_primaryGrid;
+@property(retain, nonatomic) TUICandidateMask *maskView; // @synthesize maskView=_maskView;
 @property(retain, nonatomic) UIView *clipsToBoundsView; // @synthesize clipsToBoundsView=_clipsToBoundsView;
 @property(nonatomic) __weak id <TUICandidateViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic) NSString *inlineText; // @synthesize inlineText=_inlineText;

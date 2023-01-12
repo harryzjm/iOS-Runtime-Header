@@ -12,6 +12,7 @@
     NSString *_iconImageName;
 }
 
+- (void).cxx_destruct;
 @property(copy) NSString *iconImageName; // @synthesize iconImageName=_iconImageName;
 @property(retain) GKGame *game; // @synthesize game=_game;
 - (id)imageNameForIcon;
@@ -19,7 +20,6 @@
 - (id)achievedDescription;
 - (id)title;
 - (id)_localizedStringFromKey:(id)arg1;
-- (void)dealloc;
 
 @end
 

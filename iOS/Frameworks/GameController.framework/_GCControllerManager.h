@@ -16,7 +16,6 @@
 @class GCController, GCExtendedGamepad, GCKeyboardAndMouseManager, GCMicroGamepad, GCMouse, NSMapTable, NSMutableArray, NSMutableDictionary, NSString, NSThread, NSTimer, NSXPCConnection, _GCHIDEventSubject;
 @protocol GCRemoteDaemonProxy, NSObject><NSCopying><NSSecureCoding, OS_dispatch_queue, _GCIPCObjectRegistry, _GCIPCServiceRegistry;
 
-__attribute__((visibility("hidden")))
 @interface _GCControllerManager : NSObject <_GCImplicitIPCObject, _GCIPCObjectRegistry, _GCIPCServiceRegistry, _GCIPCObjectMaterializationContext, GameControllerClientProtocol, _GCHIDEventSource>
 {
     NSObject<OS_dispatch_queue> *_controllersQueue;
@@ -49,9 +48,10 @@ __attribute__((visibility("hidden")))
     NSTimer *_idleWatchTimer;
     _Bool _gameControllerActive;
     _Bool _isAppInBackground;
-    _Bool _shouldMonitorBackgroundEvents;
     long long _currentMediaRemoteInputMode;
     GCKeyboardAndMouseManager *_keyboardAndMouseManager;
+    GCController *__controller_genericBTRemote;
+    _Bool _shouldMonitorBackgroundEvents;
     NSObject<OS_dispatch_queue> *_hidSystemPropertyQueue;
 }
 
@@ -66,11 +66,16 @@ __attribute__((visibility("hidden")))
 - (void)teardownHIDMonitor:(_Bool)arg1;
 - (void)setupHIDMonitor:(_Bool)arg1;
 - (void)onScreenshotTriggeredWithController:(id)arg1;
+- (void)onVideoRecordingToggledWithController:(id)arg1 mode:(long long)arg2;
 - (void)onVideoRecordingToggledWithController:(id)arg1;
+- (void)stopVideoRecordingBuffering;
+- (void)startVideoRecordingBuffering;
+- (void)enableKeyboardAndMouseSupport;
 - (void)onHIDDeviceRemoved:(struct __IOHIDServiceClient *)arg1;
 - (void)onHIDDeviceAdded:(struct __IOHIDServiceClient *)arg1;
 - (id)makeHIDEventSource:(struct __IOHIDEventSystemClient *)arg1;
 - (id)HIDDeviceMatchingAttributes;
+@property(nonatomic) _Bool shouldMonitorBackgroundEvents; // @synthesize shouldMonitorBackgroundEvents=_shouldMonitorBackgroundEvents;
 - (void)dealloc;
 - (id)init;
 @property(readonly) id <_GCIPCServiceRegistry> IPCServiceRegistry;
@@ -88,8 +93,8 @@ __attribute__((visibility("hidden")))
 - (void)addControllerForAppStoreRemote:(id)arg1;
 - (_Bool)combineSiriRemoteHIDDevicesWithNewController:(id)arg1 existingController:(id)arg2;
 @property(nonatomic) __weak GCController *firstMicroGamepad;
+- (int)connectedATVRemoteCount;
 - (void)removeCoalescedControllerComponent:(id)arg1;
-- (_Bool)isPhysicalB239:(id)arg1;
 - (void)_legacy_updateControllerWithEvent:(struct __IOHIDEvent *)arg1;
 @property(retain) GCExtendedGamepad *currentExtendedGamepad;
 @property(retain) GCMicroGamepad *currentMicroGamepad;
@@ -107,7 +112,6 @@ __attribute__((visibility("hidden")))
 - (void)removeController:(id)arg1 registryID:(id)arg2;
 - (void)removeController:(id)arg1;
 - (void)addController:(id)arg1;
-- (_Bool)shouldStoreController:(id)arg1;
 - (void)storeController:(id)arg1;
 - (void)_legacy_unpublishController:(id)arg1;
 - (void)updateCurrentControllerAndProfileForUnpublishedController:(id)arg1;

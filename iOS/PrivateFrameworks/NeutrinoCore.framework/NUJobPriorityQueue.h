@@ -16,6 +16,7 @@
     NUJobQueue *_owner;
     NSObject<OS_dispatch_queue> *_runQueue;
     NSObject<OS_dispatch_queue> *_stateQueue;
+    NSString *_currentlyExecutingJobName;
     _Bool _isRunning;
     NSString *_name;
 }

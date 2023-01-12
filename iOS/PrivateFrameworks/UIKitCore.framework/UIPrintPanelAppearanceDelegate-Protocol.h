@@ -7,10 +7,6 @@
 @protocol UIPrintPanelAppearanceDelegate
 
 @optional
-- (void)printMoreOptionsViewDidDisappear;
-- (void)printRangeViewDidDisappear;
-- (void)printPaperViewDidDisappear;
-- (void)printPanelDidDisappear;
 - (void)printNavigationConrollerDidDismiss;
 @end
 

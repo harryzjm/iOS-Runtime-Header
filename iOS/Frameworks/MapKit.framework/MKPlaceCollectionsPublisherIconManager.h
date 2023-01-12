@@ -22,6 +22,8 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSCache *publisherIconCache; // @synthesize publisherIconCache=_publisherIconCache;
 - (void)cache:(id)arg1 willEvictObject:(id)arg2;
+- (id)_iconForPublisherNamed:(id)arg1 usingId:(unsigned int)arg2 usingContentScale:(double)arg3 usingSizeGroup:(unsigned long long)arg4 isNightMode:(_Bool)arg5;
+- (id)iconForPublisherNamed:(id)arg1 usingId:(unsigned int)arg2 usingContentScale:(double)arg3 usingSizeGroup:(unsigned long long)arg4 isNightMode:(_Bool)arg5;
 - (void)iconForPublisherNamed:(id)arg1 usingId:(unsigned int)arg2 contentScale:(double)arg3 onCompletion:(CDUnknownBlockType)arg4;
 - (id)init;
 

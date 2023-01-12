@@ -13,23 +13,23 @@
     NSMutableArray *mRecentFunctions;
     NSMutableArray *mBackFunctions;
     NSMutableArray *mForwardFunctions;
-    int mCurrentFunction;
+    unsigned short mCurrentFunction;
 }
 
+- (void).cxx_destruct;
 - (void)saveToArchiver:(id)arg1;
 - (id)recentFunctions;
-- (void)recordRecentFunction:(int)arg1;
-- (void)recordNavigationTo:(int)arg1;
-- (int)currentFunction;
+- (void)recordRecentFunction:(unsigned short)arg1;
+- (void)recordNavigationTo:(unsigned short)arg1;
+- (unsigned short)currentFunction;
 - (id)allForwardFunctions;
 - (id)allBackFunctions;
-- (int)forwardByAmount:(unsigned long long)arg1;
-- (int)backByAmount:(unsigned long long)arg1;
-- (int)forward;
-- (int)back;
+- (unsigned short)forwardByAmount:(unsigned long long)arg1;
+- (unsigned short)backByAmount:(unsigned long long)arg1;
+- (unsigned short)forward;
+- (unsigned short)back;
 - (_Bool)canGoForward;
 - (_Bool)canGoBack;
-- (void)dealloc;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)p_filterOutUnknownFunctions:(id)arg1;
 - (id)initWithContext:(id)arg1;

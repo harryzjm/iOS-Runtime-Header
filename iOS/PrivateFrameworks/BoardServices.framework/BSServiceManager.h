@@ -8,13 +8,15 @@
 
 #import <BoardServices/RBSServiceDelegate-Protocol.h>
 
-@class BSServicesConfiguration, NSDictionary, NSMapTable, NSMutableDictionary, NSString, RBSService;
+@class BSServicesConfiguration, NSMapTable, NSMutableDictionary, NSString, RBSService;
 
 @interface BSServiceManager : NSObject <RBSServiceDelegate>
 {
-    BSServicesConfiguration *_configuration;
-    NSDictionary *_identifierToDomain;
+    BSServicesConfiguration *_bootstrapConfiguration;
     struct os_unfair_lock_s _lock;
+    NSMutableDictionary *_lock_identifierToDomain;
+    _Bool _lock_bootstrapped;
+    unsigned long long _lock_bootstrapExtensions;
     NSMutableDictionary *_lock_endpointToOutgoingRootConnections;
     NSMutableDictionary *_lock_inheritanceToEndpoint;
     NSMapTable *_lock_endpointToInheritances;

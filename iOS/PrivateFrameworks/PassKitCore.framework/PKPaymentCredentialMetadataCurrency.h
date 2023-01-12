@@ -13,6 +13,9 @@
 
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *currencyCode; // @synthesize currencyCode=_currencyCode;
+- (unsigned long long)hash;
+- (_Bool)_isEqualToMetadata:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
 - (id)displayString;
 - (id)initWithConfiguration:(id)arg1;
 

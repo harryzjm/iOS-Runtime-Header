@@ -11,6 +11,7 @@
 @interface _TtC11SiriKitFlow22RefreshableDeviceState : _TtCs12_SwiftObject
 {
     MISSING_TYPE *deviceState;
+    MISSING_TYPE *environmentUpdater;
 }
 
 @end

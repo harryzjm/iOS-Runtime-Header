@@ -6,15 +6,16 @@
 
 #import <SpringBoardHome/SBFolderViewDelegate-Protocol.h>
 
-@class SBRootFolderView, UIView;
+@class NSMutableDictionary, NSString, SBRootFolderView, SBRootFolderViewPageManagementLayoutManager, UIView;
 @protocol UIViewImplicitlyAnimating;
 
 @protocol SBRootFolderViewDelegate <SBFolderViewDelegate>
 
 @optional
-- (void)rootFolderViewDidDismissPageManagement:(SBRootFolderView *)arg1;
-- (void)rootFolderView:(SBRootFolderView *)arg1 willDismissPageManagementUsingAnimator:(id <UIViewImplicitlyAnimating>)arg2;
-- (void)rootFolderView:(SBRootFolderView *)arg1 willPresentPageManagementUsingAnimator:(id <UIViewImplicitlyAnimating>)arg2;
+- (NSString *)iconLocationForListsWithNonDefaultSizedIconsForRootFolderView:(SBRootFolderView *)arg1;
+- (void)rootFolderView:(SBRootFolderView *)arg1 didDismissPageManagementWithLayoutManager:(SBRootFolderViewPageManagementLayoutManager *)arg2 context:(NSMutableDictionary *)arg3;
+- (void)rootFolderView:(SBRootFolderView *)arg1 willDismissPageManagementUsingAnimator:(id <UIViewImplicitlyAnimating>)arg2 context:(NSMutableDictionary *)arg3;
+- (void)rootFolderView:(SBRootFolderView *)arg1 willPresentPageManagementWithLayoutManager:(SBRootFolderViewPageManagementLayoutManager *)arg2 animator:(id <UIViewImplicitlyAnimating>)arg3 context:(NSMutableDictionary *)arg4;
 - (void)rootFolderViewWantsWidgetEditingViewControllerPresented:(SBRootFolderView *)arg1;
 - (void)rootFolderViewWantsToEndEditing:(SBRootFolderView *)arg1;
 - (void)rootFolderView:(SBRootFolderView *)arg1 didEndOverscrollOnLastPageWithVelocity:(double)arg2 translation:(double)arg3;
@@ -30,6 +31,6 @@
 - (double)externalDockHeightForRootFolderView:(SBRootFolderView *)arg1;
 - (double)maxExternalDockHeightForRootFolderView:(SBRootFolderView *)arg1;
 - (double)distanceToTopOfSpotlightIconsForRootFolderView:(SBRootFolderView *)arg1;
-- (void)rootFolderView:(SBRootFolderView *)arg1 wantsToAdjustTodayContentForEdgeBounceForScrollOffset:(struct CGPoint)arg2;
+- (void)rootFolderView:(SBRootFolderView *)arg1 wantsToAdjustLeadingCustomContentForEdgeBounceForScrollOffset:(struct CGPoint)arg2;
 @end
 

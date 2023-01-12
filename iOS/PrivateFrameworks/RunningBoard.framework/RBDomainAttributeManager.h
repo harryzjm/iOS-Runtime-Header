@@ -22,13 +22,14 @@
 - (id)captureState;
 @property(readonly, copy, nonatomic) NSString *stateCaptureTitle;
 - (_Bool)containsAttributeWithDomain:(id)arg1 andName:(id)arg2;
-- (_Bool)areTargetPropertiesValid:(id)arg1 forAttributeWithDomain:(id)arg2 andName:(id)arg3;
+- (_Bool)areTargetPropertiesValidForContext:(id)arg1 forAttributeWithDomain:(id)arg2 andName:(id)arg3;
 - (id)endowmentNamespaceForDomain:(id)arg1 andName:(id)arg2;
+- (id)restrictionsForDomain:(id)arg1 andName:(id)arg2;
 - (id)additionalRestrictionsForDomain:(id)arg1 andName:(id)arg2;
 - (id)targetEntitlementsForDomain:(id)arg1 andName:(id)arg2;
 - (id)originatorEntitlementsForDomain:(id)arg1 andName:(id)arg2;
 - (id)allEntitlements;
-- (id)attributesForDomain:(id)arg1 andName:(id)arg2 targetProperties:(id)arg3 withError:(id *)arg4;
+- (id)attributesForDomain:(id)arg1 andName:(id)arg2 context:(id)arg3 withError:(id *)arg4;
 @property(readonly, copy) NSString *debugDescription;
 - (id)initWithDataProvider:(id)arg1;
 

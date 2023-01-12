@@ -7,6 +7,9 @@
 @class NSDictionary;
 
 @protocol CSSmartSiriVolumeService
+- (void)setPermanentVolumeOffsetWithDirection:(_Bool)arg1;
+- (void)setSmartSiriVolumeDirection:(_Bool)arg1;
+- (void)setSmartSiriVolumePercentage:(float)arg1;
 - (void)getVolumeForTTSType:(unsigned long long)arg1 withContext:(NSDictionary *)arg2 reply:(void (^)(NSError *, CSSmartSiriVolumeEstimate *))arg3;
 @end
 

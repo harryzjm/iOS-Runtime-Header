@@ -15,15 +15,11 @@
     _Bool _matchObjectsWithoutKey;
 }
 
-+ (id)_predicateWithMetadataKey:(id)arg1 exists:(_Bool)arg2;
-+ (id)_predicateWithMetadataKey:(id)arg1 value:(id)arg2 operatorType:(unsigned long long)arg3;
-+ (id)_predicateWithMetadataKey:(id)arg1 allowedValues:(id)arg2;
 + (id)predicateWithMetadataKey:(id)arg1 exists:(_Bool)arg2;
 + (id)predicateWithMetadataKey:(id)arg1 value:(id)arg2 operatorType:(unsigned long long)arg3;
 + (id)predicateWithMetadataKey:(id)arg1 allowedValues:(id)arg2;
 - (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
-- (id)_valuePredicateForValue:(id)arg1 operatorType:(unsigned long long)arg2;
 - (void)bindToStatement:(struct sqlite3_stmt *)arg1 bindingIndex:(inout int *)arg2;
 - (id)SQLForEntityClass:(Class)arg1;
 

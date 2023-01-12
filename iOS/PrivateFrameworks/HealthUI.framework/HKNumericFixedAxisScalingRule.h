@@ -4,11 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface HKNumericFixedAxisScalingRule
+#import <HealthUI/HKInteractiveChartNumericDefaultAxisBoundsProvider-Protocol.h>
+
+@class HKValueRange;
+
+@interface HKNumericFixedAxisScalingRule <HKInteractiveChartNumericDefaultAxisBoundsProvider>
 {
+    HKValueRange *_noDataAxisBounds;
 }
 
 + (id)ruleWithDefaultAxisBounds:(id)arg1 axisBoundsOverrides:(id)arg2;
+- (void).cxx_destruct;
+@property(retain, nonatomic) HKValueRange *noDataAxisBounds; // @synthesize noDataAxisBounds=_noDataAxisBounds;
+- (id)noDataStartingRange;
 
 @end
 

@@ -11,10 +11,12 @@
 @interface PGPublicEventCriteria : NSObject
 {
     _Bool _allowsExpandingTimeAttendance;
+    _Bool _shouldCheckForTemporalEventMatches;
     NSString *_eventCategory;
     double _minimumTimeAttendance;
     double _maximumDistance;
     long long _minimumAttendance;
+    double _temporalEventDistanceThreshold;
     NSArray *_disambiguationCriteria;
     NSArray *_highConfidenceCriteria;
     NSArray *_prohibitedCriteria;
@@ -24,11 +26,14 @@
 @property(retain, nonatomic) NSArray *prohibitedCriteria; // @synthesize prohibitedCriteria=_prohibitedCriteria;
 @property(retain, nonatomic) NSArray *highConfidenceCriteria; // @synthesize highConfidenceCriteria=_highConfidenceCriteria;
 @property(retain, nonatomic) NSArray *disambiguationCriteria; // @synthesize disambiguationCriteria=_disambiguationCriteria;
+@property(nonatomic) double temporalEventDistanceThreshold; // @synthesize temporalEventDistanceThreshold=_temporalEventDistanceThreshold;
+@property(nonatomic) _Bool shouldCheckForTemporalEventMatches; // @synthesize shouldCheckForTemporalEventMatches=_shouldCheckForTemporalEventMatches;
 @property(nonatomic) _Bool allowsExpandingTimeAttendance; // @synthesize allowsExpandingTimeAttendance=_allowsExpandingTimeAttendance;
 @property(nonatomic) long long minimumAttendance; // @synthesize minimumAttendance=_minimumAttendance;
 @property(nonatomic) double maximumDistance; // @synthesize maximumDistance=_maximumDistance;
 @property(nonatomic) double minimumTimeAttendance; // @synthesize minimumTimeAttendance=_minimumTimeAttendance;
 @property(retain, nonatomic) NSString *eventCategory; // @synthesize eventCategory=_eventCategory;
+- (_Bool)_isMatchingTemporalClusterEventForEvent:(id)arg1 matchingOptions:(id)arg2;
 @property(readonly, nonatomic) _Bool hasMinimumAttendance;
 - (_Bool)isMatchingEvent:(id)arg1 matchingOptions:(id)arg2 withHighConfidence:(_Bool *)arg3 matchingDistance:(double *)arg4;
 - (_Bool)_isMatchingMeaningDisambiguationForEvent:(id)arg1 matchingOptions:(id)arg2 withHighConfidence:(_Bool *)arg3;

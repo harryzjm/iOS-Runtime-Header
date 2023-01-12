@@ -29,6 +29,7 @@
 - (id)subtitle1Description;
 - (id)subtitle1Label;
 - (id)title;
+@property(readonly, nonatomic) _Bool isMDMClientIdentity;
 @property(readonly, nonatomic) _Bool isIdentity;
 @property(readonly, nonatomic) _Bool isFullyTrustedRootCert;
 @property(readonly, nonatomic) _Bool isRoot;

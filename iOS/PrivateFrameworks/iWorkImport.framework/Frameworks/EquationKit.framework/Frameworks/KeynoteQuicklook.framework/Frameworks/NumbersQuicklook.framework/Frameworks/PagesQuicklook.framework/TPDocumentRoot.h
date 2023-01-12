@@ -9,17 +9,16 @@
 #import <PagesQuicklook/TPPageControllerDelegate-Protocol.h>
 #import <PagesQuicklook/TSCEResolverContainer-Protocol.h>
 #import <PagesQuicklook/TSDInfoUUIDPathPrefixComponentsProvider-Protocol.h>
-#import <PagesQuicklook/TSDPencilAnnotationSupportedDocument-Protocol.h>
 #import <PagesQuicklook/TSTResolverContainerNameProvider-Protocol.h>
 #import <PagesQuicklook/TSWPChangeSessionManager-Protocol.h>
 #import <PagesQuicklook/TSWPChangeVisibility-Protocol.h>
 #import <PagesQuicklook/TSWPDrawableOLC-Protocol.h>
 #import <PagesQuicklook/TSWPStorageParent-Protocol.h>
 
-@class EQKitEnvironment, NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, TPBackgroundPaginationController, TPBookmarkController, TPDocumentSettings, TPDocumentViewController, TPDrawablesZOrder, TPFloatingDrawables, TPPageController, TPPageLayoutNotifier, TPSection, TPTheme, TPUIState, TSDThumbnailController, TSPData, TSSStylesheet, TSWPChangeSession, TSWPFlowInfoContainer, TSWPStorage;
-@protocol TSDPencilAnnotationRenderingDetailsFactoryHelper, TSWPTOCController;
+@class EQKitEnvironment, NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, TPBookmarkController, TPDocumentSettings, TPDocumentViewController, TPDrawablesZOrder, TPFloatingDrawables, TPSection, TPTheme, TPUIState, TSDThumbnailController, TSPData, TSSStylesheet, TSWPChangeSession, TSWPFlowInfoContainer, TSWPStorage;
+@protocol TSWPTOCController;
 
-@interface TPDocumentRoot : TSADocumentRoot <TPPageControllerDelegate, TSDInfoUUIDPathPrefixComponentsProvider, TSDPencilAnnotationSupportedDocument, TSWPDrawableOLC, TSWPStorageParent, TSWPChangeSessionManager, TSWPChangeVisibility, TSTResolverContainerNameProvider, TSCEResolverContainer>
+@interface TPDocumentRoot : TSADocumentRoot <TSDInfoUUIDPathPrefixComponentsProvider, TSWPDrawableOLC, TSWPStorageParent, TSWPChangeSessionManager, TSWPChangeVisibility, TSTResolverContainerNameProvider, TSCEResolverContainer, TPPageControllerDelegate>
 {
     NSArray *_citationRecords;
     _Bool _shouldUniquifyTableNames;
@@ -49,10 +48,9 @@
     NSMutableArray *_changeSessionHistory;
     TSWPChangeSession *_mostRecentChangeSession;
     TSWPChangeSession *_activeChangeSession;
-    TPPageController *_paginatedPageController;
-    TPPageLayoutNotifier *_pageLayoutNotifier;
     _Bool _newDocument;
     _Bool _viewDidAppear;
+    _Bool _isTornDown;
     TPDocumentViewController *_viewController;
     unsigned int _tableNameCounter;
     NSMutableDictionary *_tablesWithUniqueNames;
@@ -62,13 +60,10 @@
     NSMutableArray *_pageTemplates;
     _Bool _shouldUseAnchoredDrawableWrapSlop;
     _Bool _suppressViewStateCapture;
-    _Bool initiallyShowRuler;
-    _Bool initiallyShowTwoUp;
     _Bool _forceChangeTrackingMarkupHidden;
-    id <TSWPTOCController> _tocController;
+    id <TSWPTOCController> _tocInfoController;
     TSDThumbnailController *_thumbnailController;
     TPBookmarkController *_bookmarkController;
-    TPBackgroundPaginationController *_backgroundPaginationController;
     TSWPFlowInfoContainer *_flowInfoContainer;
 }
 
@@ -79,12 +74,9 @@
 - (void).cxx_destruct;
 @property(nonatomic) _Bool forceChangeTrackingMarkupHidden; // @synthesize forceChangeTrackingMarkupHidden=_forceChangeTrackingMarkupHidden;
 @property(retain, nonatomic) TSWPFlowInfoContainer *flowInfoContainer; // @synthesize flowInfoContainer=_flowInfoContainer;
-@property(readonly, nonatomic) TPBackgroundPaginationController *backgroundPaginationController; // @synthesize backgroundPaginationController=_backgroundPaginationController;
 @property(readonly, nonatomic) TPBookmarkController *bookmarkController; // @synthesize bookmarkController=_bookmarkController;
 @property(readonly, nonatomic) TSDThumbnailController *thumbnailController; // @synthesize thumbnailController=_thumbnailController;
-- (id)tocController;
-@property(nonatomic) _Bool initiallyShowTwoUp; // @synthesize initiallyShowTwoUp;
-@property(nonatomic) _Bool initiallyShowRuler; // @synthesize initiallyShowRuler;
+- (id)tocInfoController;
 - (_Bool)shouldUseAnchoredDrawableWrapSlop;
 @property(nonatomic) _Bool suppressViewStateCapture; // @synthesize suppressViewStateCapture=_suppressViewStateCapture;
 @property(retain, nonatomic) TSWPChangeSession *activeChangeSession; // @synthesize activeChangeSession=_activeChangeSession;
@@ -95,10 +87,8 @@
 @property(readonly, nonatomic) TSWPStorage *bodyStorage; // @synthesize bodyStorage=_bodyStorage;
 @property(retain, nonatomic) TSSStylesheet *stylesheet; // @synthesize stylesheet=_stylesheet;
 @property(readonly, nonatomic) _Bool isNewDocument; // @synthesize isNewDocument=_newDocument;
-@property(readonly, nonatomic) TPPageController *pageController; // @synthesize pageController=_paginatedPageController;
 - (double)currentDesiredPencilAnnotationDrawingScale;
 - (_Bool)hasPencilAnnotations;
-@property(retain, nonatomic) id <TSDPencilAnnotationRenderingDetailsFactoryHelper> pencilAnnotationFactoryHelper; // @dynamic pencilAnnotationFactoryHelper;
 - (_Bool)documentAllowsPencilAnnotationsOnModel:(id)arg1;
 - (_Bool)p_isUniquePageTemplateName:(id)arg1;
 - (void)pUpgradeSection:(id)arg1 documentVersion:(unsigned long long)arg2;
@@ -132,6 +122,7 @@
 - (void)didAddDrawable:(id)arg1;
 - (_Bool)shouldShowMarkupForChangeKind:(int)arg1 date:(id)arg2;
 - (_Bool)shouldShowChangeKind:(int)arg1 date:(id)arg2;
+- (void)setExportViewModeForCTMarkup:(_Bool)arg1 deletions:(_Bool)arg2 paginatedPageController:(id)arg3;
 - (void)upgradeFromOldSectionWithPageSize:(struct CGSize)arg1 leftMargin:(double)arg2 rightMargin:(double)arg3 topMargin:(double)arg4 bottomMargin:(double)arg5 headerMargin:(double)arg6 footerMargin:(double)arg7;
 - (id)uuidPathPrefixComponentsForInfo:(id)arg1;
 - (_Bool)textIsVerticalInStorage:(id)arg1 atCharIndex:(unsigned long long)arg2;
@@ -145,12 +136,12 @@
 - (id)pencilAnnotationUIState;
 - (id)freehandDrawingToolkitUIState;
 - (unsigned long long)inheritedSectionIndexForSectionIndex:(unsigned long long)arg1;
-- (_Bool)pageMastersAllowDrawable:(id)arg1;
+- (_Bool)sectionTemplatePagesAllowDrawable:(id)arg1;
 - (_Bool)p_drawableInfoIsOwnedByATPPageTemplate:(id)arg1;
 - (_Bool)cellCommentsAllowedOnInfo:(id)arg1;
-- (_Bool)isDrawableOnPageMaster:(id)arg1;
-- (_Bool)isMasterInfo:(id)arg1;
-- (id)pageMasterOwningModel:(id)arg1;
+- (_Bool)isDrawableOnSectionTemplatePage:(id)arg1;
+- (_Bool)isSectionTemplateInfo:(id)arg1;
+- (id)sectionTemplatePageOwningModel:(id)arg1;
 - (_Bool)isSectionModel:(id)arg1;
 - (unsigned long long)pageTemplateIndexForModelObject:(id)arg1;
 - (void)setValue:(double)arg1 forMargin:(long long)arg2;
@@ -166,7 +157,6 @@
 - (void)viewWillAppear;
 - (_Bool)hasViewState;
 - (void)readViewState;
-- (void)readCanvasState;
 - (void)invalidateViewState;
 - (id)modelPathComponentForChild:(id)arg1;
 - (id)childEnumerator;
@@ -178,14 +168,12 @@
 - (_Bool)exportToPath:(id)arg1 exporter:(id)arg2 delegate:(id)arg3 error:(id *)arg4;
 - (_Bool)supportHeaderFooterParagraphAlignmentInInspectors;
 - (Class)thumbnailImagerClass;
-- (void)pageCountDidChangeForPageController:(id)arg1;
 @property(readonly, nonatomic) struct CGSize unrotatedPaperSize;
 @property(readonly, nonatomic) struct CGSize paperSize;
 - (void)invalidateThumbnailForPageIndex:(unsigned long long)arg1;
 - (unsigned long long)pageIndexForThumbnailIdentifier:(id)arg1;
 - (id)thumbnailIdentifierForPageIndex:(unsigned long long)arg1;
 - (id)selectionPathForSearchReference:(id)arg1;
-- (id)modelEnumeratorForSearchWithFlags:(unsigned long long)arg1 forObjectsPassingTest:(CDUnknownBlockType)arg2;
 - (void)updateWritingDirection:(unsigned long long)arg1;
 - (void)prepareNewDocumentWithTemplateIdentifier:(id)arg1 bundle:(id)arg2 documentLocale:(id)arg3;
 - (_Bool)freehandDrawingsRequireSpacerShape;
@@ -222,7 +210,6 @@
 - (void)pCreateFloatingDrawables;
 - (void)pCreateDrawablesZOrderBodyStorage:(id)arg1 addAnchoredDrawables:(_Bool)arg2;
 - (void)pCreateBodyStorage;
-- (struct CGRect)pConjureUpBodyRect;
 - (void)dealloc;
 - (void)documentDidLoad;
 - (id)equationEnvironment;
@@ -254,16 +241,13 @@
 @property(nonatomic) double pageScale;
 @property(nonatomic) struct CGSize pageSize;
 @property(nonatomic) _Bool usesSingleHeaderFooter;
+- (void)forceRepaginationOfAllChangeTrackedTextForPageController:(id)arg1;
 - (id)storagesWithChanges;
 - (_Bool)needsToExplainEnablingChangeTracking;
 @property(readonly, nonatomic) _Bool hasTrackedChanges;
-- (unsigned long long)p_autoNumberForStorage:(id)arg1 ignoreDeletedFootnotes:(_Bool)arg2 footnoteKind:(long long)arg3;
 - (_Bool)footnotesShouldAffectBodyLayout;
 - (double)footnoteGap;
 - (long long)footnoteKind;
-- (_Bool)textIsVerticalForFootnoteReferenceStorage:(id)arg1;
-- (id)markStringForFootnoteReferenceStorage:(id)arg1 ignoreDeletedFootnotes:(_Bool)arg2 forceDocumentEndnotes:(_Bool)arg3;
-- (id)markStringForFootnoteReferenceStorage:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

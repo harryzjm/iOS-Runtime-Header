@@ -4,10 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface PKHandwritingTool
 {
+    NSString *_localeIdentifier;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *localeIdentifier; // @synthesize localeIdentifier=_localeIdentifier;
+- (id)initWithLocaleIdentifier:(id)arg1;
 - (id)init;
 
 @end

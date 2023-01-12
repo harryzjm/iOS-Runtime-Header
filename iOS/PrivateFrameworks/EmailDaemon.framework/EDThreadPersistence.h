@@ -61,7 +61,6 @@
 - (_Bool)threadScopeManager:(id)arg1 mailboxScopeExists:(id)arg2;
 - (id)statisticsForThreadScopesWithDatabaseIDs:(id)arg1;
 - (_Bool)addThreadScopeToDatabase:(id)arg1 needsUpdate:(_Bool)arg2 lastViewedDate:(id)arg3;
-- (_Bool)_canResetThreadScope:(id)arg1;
 - (_Bool)_addThreadScopeToDatabase:(id)arg1 withMailboxDatabaseID:(long long)arg2 needsUpdate:(_Bool)arg3 lastViewedDate:(id)arg4 updateThreadScopeManager:(_Bool)arg5 connection:(id)arg6;
 - (_Bool)_addThreadScopeToDatabaseWithMailboxType:(id)arg1 needsUpdate:(_Bool)arg2 lastViewedDate:(id)arg3 connection:(id)arg4;
 - (_Bool)_addThreadScopeToDatabase:(id)arg1 needsUpdate:(_Bool)arg2 lastViewedDate:(id)arg3 updateThreadScopeManager:(_Bool)arg4;
@@ -87,7 +86,6 @@
 - (id)_threadDatabaseIDExpressionForThreadScopeDatabaseID:(long long)arg1 conversation:(long long)arg2;
 - (_Bool)setPriorityForDisplayMessageSenderForThreadObjectID:(id)arg1;
 - (id)_recalculateDisplayMessageForThreadObjectID:(id)arg1 threadScopeDatabaseID:(long long)arg2;
-- (_Bool)_updateDisplayMessageWithUnreadWrappedMessages:(id)arg1 threadExpression:(id)arg2;
 - (_Bool)_recalculateNewestReadMessageForThreadObjectID:(id)arg1 threadScopeDatabaseID:(long long)arg2;
 - (_Bool)_updateNewestReadMessageWithWrappedMessage:(id)arg1 threadExpression:(id)arg2;
 - (void)_addKeyPathsForDisplayMessageChangeToKeyPaths:(id)arg1;
@@ -105,9 +103,7 @@
 - (void)persistenceDidChangeGlobalMessageID:(long long)arg1 orConversationID:(long long)arg2 message:(id)arg3 generationWindow:(id)arg4;
 - (void)persistenceIsChangingConversationID:(long long)arg1 messages:(id)arg2 generationWindow:(id)arg3;
 - (void)persistenceDidDeleteAllMessagesInMailboxesWithURLs:(id)arg1 generationWindow:(id)arg2;
-- (void)_updateAllThreadsAfterDeleteInThreadScope:(id)arg1 withDatabaseID:(id)arg2 generationWindow:(id)arg3;
 - (void)_resetThreadScope:(id)arg1 withDatabaseID:(id)arg2;
-- (void)_deleteAllMessagesInThreadScope:(id)arg1 withDatabaseID:(id)arg2 generationWindow:(id)arg3;
 - (void)persistenceIsDeletingAllMessagesInMailboxWithURL:(id)arg1 generationWindow:(id)arg2;
 - (_Bool)_deleteRecipientsOfType:(unsigned long long)arg1 fromThreadWithDatabaseID:(id)arg2 messageThreadExpression:(id)arg3;
 - (_Bool)_deleteSendersFromThreadWithDatabaseID:(id)arg1 messageThreadExpression:(id)arg2;
@@ -148,7 +144,7 @@
 - (id)_comparisonExpressionForSortDescriptors:(id)arg1 conversationID:(long long)arg2 threadExpression:(id)arg3 threadScopeDatabaseID:(long long)arg4 connection:(id)arg5;
 - (void)_addOrderByToThreadSelect:(id)arg1 forSortDescriptors:(id)arg2;
 - (id)threadObjectIDsByNextExistingForThreadObjectIDs:(id)arg1 forSortDescriptors:(id)arg2 excluding:(id)arg3;
-- (id)threadObjectIDBeforeThreadObjectID:(id)arg1 forSortDescriptors:(id)arg2 excluding:(id)arg3;
+- (id)nextExistingThreadObjectIDForThreadObjectID:(id)arg1 forSortDescriptors:(id)arg2 excluding:(id)arg3;
 - (id)_addressesFromSelectStatement:(id)arg1;
 - (id)_addressesFromMessageAddressesStatement:(id)arg1;
 - (id)_recipientsOfType:(unsigned long long)arg1 fromMessagesForThreadObjectID:(id)arg2;

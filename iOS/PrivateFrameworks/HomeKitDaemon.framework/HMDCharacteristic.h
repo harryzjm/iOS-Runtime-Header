@@ -8,12 +8,13 @@
 
 #import <HomeKitDaemon/HMDBulletinIdentifiers-Protocol.h>
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HMDCharacteristicMetadata, HMDHAPAccessory, HMDService, NSData, NSDate, NSDictionary, NSMutableSet, NSNumber, NSSet, NSString, NSUUID;
 @protocol HMFLocking;
 
-@interface HMDCharacteristic : HMFObject <HMDBulletinIdentifiers, NSSecureCoding, HMFDumpState>
+@interface HMDCharacteristic : HMFObject <HMDBulletinIdentifiers, HMFLogging, NSSecureCoding, HMFDumpState>
 {
     id <HMFLocking> _lock;
     NSMutableSet *_notificationRegistrations;
@@ -25,18 +26,23 @@
     HMDHAPAccessory *_accessory;
     HMDService *_service;
     NSNumber *_stateNumber;
+    id _previousValue;
     NSData *_authorizationData;
     NSString *_characteristicType;
     id _lastKnownValue;
     NSDate *_lastKnownValueUpdateTime;
     NSNumber *_characteristicInstanceID;
     long long _characteristicProperties;
+    NSData *_notificationContext;
 }
 
++ (id)currentTargetStateCharacteristicTypeMap;
++ (id)logCategory;
 + (_Bool)supportsSecureCoding;
 + (_Bool)value:(id)arg1 differentThan:(id)arg2;
 + (CDUnknownBlockType)sortComparatorForCharacteristicDictionary;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSData *notificationContext; // @synthesize notificationContext=_notificationContext;
 @property(nonatomic) long long characteristicProperties; // @synthesize characteristicProperties=_characteristicProperties;
 @property(retain, nonatomic) NSNumber *characteristicInstanceID; // @synthesize characteristicInstanceID=_characteristicInstanceID;
 @property(retain, nonatomic) NSDate *lastKnownValueUpdateTime; // @synthesize lastKnownValueUpdateTime=_lastKnownValueUpdateTime;
@@ -44,15 +50,22 @@
 @property(retain, nonatomic) NSString *characteristicType; // @synthesize characteristicType=_characteristicType;
 @property(nonatomic) _Bool broadcastNotificationEnabled; // @synthesize broadcastNotificationEnabled=_broadcastNotificationEnabled;
 @property(copy, nonatomic) NSData *authorizationData; // @synthesize authorizationData=_authorizationData;
+@property(retain, nonatomic) id previousValue; // @synthesize previousValue=_previousValue;
 @property(copy, nonatomic, setter=setStateNumber:) NSNumber *stateNumber; // @synthesize stateNumber=_stateNumber;
 @property(readonly, nonatomic) __weak HMDService *service; // @synthesize service=_service;
 @property(readonly, nonatomic) __weak HMDHAPAccessory *accessory; // @synthesize accessory=_accessory;
+- (id)attributeDescriptions;
+- (id)logIdentifier;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)contextDataForWriteRequestWithIdentifier:(id)arg1;
+@property(readonly) _Bool supportsNotificationContext;
 @property(readonly) _Bool shouldIgnoreCacheValueForRead;
 - (void)updateService:(id)arg1 accessory:(id)arg2;
 - (_Bool)deregisterNotificationForClientIdentifier:(id)arg1;
+- (_Bool)deregisterNotificationIfNotLastForClientIdentifier:(id)arg1;
 - (void)setNotificationEnabled:(_Bool)arg1 forClientIdentifier:(id)arg2;
+- (_Bool)setNotificationEnabled:(_Bool)arg1 forClientIdentifier:(id)arg2 removeLast:(_Bool)arg3;
 @property(retain, nonatomic) NSDate *notificationEnabledTime; // @synthesize notificationEnabledTime=_notificationEnabledTime;
 - (_Bool)isNotificationEnabledForClientIdentifierPrefix:(id)arg1;
 - (_Bool)isNotificationEnabledForClientIdentifier:(id)arg1;
@@ -68,7 +81,7 @@
 - (id)validateValueForWrite:(id)arg1 outValue:(id *)arg2;
 - (_Bool)isValueUpdatedFromHAPCharacteristic:(id)arg1;
 - (void)updateLastKnownValue;
-- (void)updateValue:(id)arg1 updatedTime:(id)arg2 stateNumber:(id)arg3;
+- (void)updateValue:(id)arg1 updatedTime:(id)arg2 stateNumber:(id)arg3 notificationContext:(id)arg4;
 @property(readonly, copy, nonatomic) id value;
 @property(readonly, nonatomic) long long properties;
 - (id)characteristicForHAPAccessory:(id)arg1;
@@ -82,13 +95,13 @@
 - (id)hapCharacteristicTupleWithIdentifier:(id)arg1 linkType:(long long)arg2;
 @property(readonly, nonatomic) NSString *serializedIdentifier;
 - (id)dumpState;
+@property(readonly, copy, nonatomic) NSUUID *spiClientIdentifier;
 - (id)characteristicTypeDescription;
 @property(readonly, copy, nonatomic) NSSet *notificationRegistrations;
 - (id)shortTypeDescription;
 @property(readonly, nonatomic) HMDCharacteristicMetadata *metadata; // @synthesize metadata=_metadata;
 @property(retain, nonatomic) NSSet *hapCharacteristicTuples; // @synthesize hapCharacteristicTuples=_hapCharacteristicTuples;
 @property(nonatomic) _Bool notificationRegisteredWithRemoteGateway; // @synthesize notificationRegisteredWithRemoteGateway=_notificationRegisteredWithRemoteGateway;
-@property(readonly, copy) NSString *description;
 - (id)initWithCharacteristic:(id)arg1 service:(id)arg2 accessory:(id)arg3;
 - (id)init;
 @property(readonly, nonatomic) NSDictionary *bulletinContext;
@@ -97,6 +110,7 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

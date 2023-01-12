@@ -18,8 +18,8 @@
     unsigned int _convertPacketCount;
     unsigned int _convertAudioCapacity;
     unsigned long long _lastTimestamp;
+    unsigned long long _lastArrivalTimestampToAudioRecorder;
     float _outPacketSizeInSec;
-    _Bool _didSendFirstPacket;
     id <CSAudioConverterDelegate> _delegate;
 }
 
@@ -29,9 +29,9 @@
 @property __weak id <CSAudioConverterDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_configureAudioConverter:(struct OpaqueAudioConverter *)arg1;
 - (void)reset;
-- (void)_convertBufferedLPCM:(id)arg1 allowPartial:(_Bool)arg2 timestamp:(unsigned long long)arg3;
+- (void)_convertBufferedLPCM:(id)arg1 allowPartial:(_Bool)arg2 timestamp:(unsigned long long)arg3 arrivalTimestampToAudioRecorder:(unsigned long long)arg4;
 - (void)flush;
-- (void)addSamples:(id)arg1 timestamp:(unsigned long long)arg2;
+- (void)addSamples:(id)arg1 timestamp:(unsigned long long)arg2 arrivalTimestampToAudioRecorder:(unsigned long long)arg3;
 - (void)dealloc;
 - (id)initWithInASBD:(struct AudioStreamBasicDescription)arg1 outASBD:(struct AudioStreamBasicDescription)arg2;
 

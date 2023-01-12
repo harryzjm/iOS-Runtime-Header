@@ -9,7 +9,7 @@
 #import <HealthDaemon/HDSyncStore-Protocol.h>
 #import <HealthDaemon/NSCopying-Protocol.h>
 
-@class HDProfile, HDSharingPredicate, NSString, NSUUID;
+@class HDCloudSyncShardPredicate, HDProfile, HDSharingPredicate, NSString, NSUUID;
 
 @interface HDCloudSyncStore : NSObject <NSCopying, HDSyncStore>
 {
@@ -22,17 +22,20 @@
     NSString *_ownerIdentifier;
     NSString *_containerIdentifier;
     HDProfile *_profile;
+    HDCloudSyncShardPredicate *_shardPredicate;
     NSString *_sharingIdentifier;
     HDSharingPredicate *_sharingPredicate;
 }
 
-+ (id)syncStoreForProfile:(id)arg1 storeIdentifier:(id)arg2 syncCircleName:(id)arg3 ownerIdentifier:(id)arg4 containerIdentifier:(id)arg5 sharingIdentifier:(id)arg6 predicate:(id)arg7 error:(id *)arg8;
++ (id)createOrUpdateShardStoresForProfile:(id)arg1 throughDate:(id)arg2 syncCircleName:(id)arg3 ownerIdentifier:(id)arg4 containerIdentifier:(id)arg5 error:(id *)arg6;
++ (id)shardPredicatesForProfile:(id)arg1 syncCircleName:(id)arg2 ownerIdentifier:(id)arg3 containerIdentifier:(id)arg4 currentDate:(id)arg5 error:(id *)arg6;
 + (id)syncStoreForProfile:(id)arg1 storeIdentifier:(id)arg2 syncCircleName:(id)arg3 ownerIdentifier:(id)arg4 containerIdentifier:(id)arg5 error:(id *)arg6;
-+ (void)samplesDeletedInProfile:(id)arg1 byUser:(_Bool)arg2;
++ (void)samplesDeletedInProfile:(id)arg1 byUser:(_Bool)arg2 intervals:(id)arg3;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool syncTombstonesOnly; // @synthesize syncTombstonesOnly=_syncTombstonesOnly;
 @property(readonly, nonatomic) HDSharingPredicate *sharingPredicate; // @synthesize sharingPredicate=_sharingPredicate;
 @property(readonly, copy, nonatomic) NSString *sharingIdentifier; // @synthesize sharingIdentifier=_sharingIdentifier;
+@property(readonly, copy, nonatomic) HDCloudSyncShardPredicate *shardPredicate; // @synthesize shardPredicate=_shardPredicate;
 @property(readonly, nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
 @property(readonly, nonatomic) _Bool canPush; // @synthesize canPush=_canPush;
 @property(readonly, copy, nonatomic) NSString *containerIdentifier; // @synthesize containerIdentifier=_containerIdentifier;
@@ -46,6 +49,7 @@
 - (_Bool)supportsSpeculativeChangesForSyncEntityClass:(Class)arg1;
 - (_Bool)enforceSyncEntityOrdering;
 - (id)orderedSyncEntities;
+- (id)primaryOrderedSyncEntities;
 - (_Bool)canRecieveSyncObjectsForEntityClass:(Class)arg1;
 - (id)syncEntityDependenciesForSyncEntity:(Class)arg1;
 - (id)syncStoreDefaultSourceBundleIdentifier;
@@ -56,19 +60,19 @@
 - (_Bool)replaceFrozenAnchorMap:(id)arg1 updateDate:(id)arg2 error:(id *)arg3;
 - (id)persistedStateWithError:(id *)arg1;
 - (_Bool)persistState:(id)arg1 error:(id *)arg2;
-- (id)_syncAnchorMapByStrippingBlacklistedEntities:(id)arg1;
+- (id)_syncAnchorMapByStrippingBlockedEntities:(id)arg1;
 - (id)getPersistedAnchorMapWithError:(id *)arg1;
 - (_Bool)clearAllSyncAnchorsWithError:(id *)arg1;
 - (_Bool)replacePersistedAnchorMap:(id)arg1 error:(id *)arg2;
 - (_Bool)resetReceivedSyncAnchorMapWithError:(id *)arg1;
 - (id)receivedSyncAnchorMapWithError:(id *)arg1;
+@property(readonly, nonatomic) _Bool supportsRebase;
 @property(readonly) long long syncStoreType;
 @property(readonly) int protocolVersion;
 - (id)syncStoreForTombstoneSyncOnly:(_Bool)arg1;
 - (id)syncStoreForProtocolVersion:(int)arg1;
 - (id)syncStoreForEpoch:(long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithProfile:(id)arg1 storeIdentifier:(id)arg2 syncCircleName:(id)arg3 ownerIdentifier:(id)arg4 containerIdentifier:(id)arg5 sharingIdentifier:(id)arg6 predicate:(id)arg7 error:(id *)arg8;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

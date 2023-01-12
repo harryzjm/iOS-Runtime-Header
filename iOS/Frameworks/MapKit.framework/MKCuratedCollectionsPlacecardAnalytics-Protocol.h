@@ -7,6 +7,7 @@
 @class GEOMapItemIdentifier;
 
 @protocol MKCuratedCollectionsPlacecardAnalytics
+- (void)placecardExploreGuidesButtonTapped;
 - (void)placecardCollectionsSeeAllTapped;
 - (void)placecardCollectionTapped:(GEOMapItemIdentifier *)arg1 atIndex:(unsigned long long)arg2 isCurrentlySaved:(_Bool)arg3;
 - (void)placecardCollectionsScrollBackward;

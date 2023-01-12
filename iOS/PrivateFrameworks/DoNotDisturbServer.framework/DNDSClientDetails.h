@@ -16,6 +16,7 @@
     _Bool _userInteractionClient;
     _Bool _persistentAssertionClient;
     _Bool _syncSuppressedClient;
+    _Bool _iOS14SyncSuppressedClient;
     NSString *_clientIdentifier;
     NSArray *_identifiers;
 }
@@ -24,6 +25,7 @@
 + (id)detailsForClientIdentifier:(id)arg1 applicationBundleURL:(id)arg2;
 + (id)detailsForBundleAtURL:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic, getter=isIOS14SyncSuppressedClient) _Bool iOS14SyncSuppressedClient; // @synthesize iOS14SyncSuppressedClient=_iOS14SyncSuppressedClient;
 @property(readonly, nonatomic, getter=isSyncSuppressedClient) _Bool syncSuppressedClient; // @synthesize syncSuppressedClient=_syncSuppressedClient;
 @property(readonly, nonatomic, getter=isPersistentAssertionClient) _Bool persistentAssertionClient; // @synthesize persistentAssertionClient=_persistentAssertionClient;
 @property(readonly, nonatomic, getter=isUserInteractionClient) _Bool userInteractionClient; // @synthesize userInteractionClient=_userInteractionClient;
@@ -31,7 +33,7 @@
 @property(readonly, copy, nonatomic) NSArray *identifiers; // @synthesize identifiers=_identifiers;
 @property(readonly, copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithClientIdentifier:(id)arg1 identifiers:(id)arg2 resolutionContextAssumingDeviceUILocked:(_Bool)arg3 userInteractionClient:(_Bool)arg4 persistentAssertionClient:(_Bool)arg5 syncSuppressedClient:(_Bool)arg6;
+- (id)initWithClientIdentifier:(id)arg1 identifiers:(id)arg2 resolutionContextAssumingDeviceUILocked:(_Bool)arg3 userInteractionClient:(_Bool)arg4 persistentAssertionClient:(_Bool)arg5 syncSuppressedClient:(_Bool)arg6 iOS14SyncSuppressedClient:(_Bool)arg7;
 
 @end
 

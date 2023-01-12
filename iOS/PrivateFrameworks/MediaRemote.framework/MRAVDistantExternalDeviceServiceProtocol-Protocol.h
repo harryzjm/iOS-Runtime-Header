@@ -6,13 +6,16 @@
 
 #import <MediaRemote/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSError, NSString;
+@class MRAVRoutingDiscoverySessionConfiguration, NSArray, NSData, NSDictionary, NSError, NSString;
 
 @protocol MRAVDistantExternalDeviceServiceProtocol <NSObject>
+@property(copy, nonatomic) NSArray *subscribedPlayerPaths;
+- (void)setDiscoveryMode:(unsigned int)arg1 forConfiguration:(MRAVRoutingDiscoverySessionConfiguration *)arg2;
 - (void)sendButtonEventWithUsagePage:(unsigned int)arg1 usage:(unsigned int)arg2 down:(_Bool)arg3;
 - (void)pingWithTimeout:(double)arg1 callback:(void (^)(NSError *))arg2;
 - (void)sendCustomData:(NSData *)arg1 withName:(NSString *)arg2;
-- (void)modifyOutputContextOfType:(unsigned int)arg1 addingDeviceUIDs:(NSArray *)arg2 removingDeviceUIDs:(NSArray *)arg3 settingDeviceUIDs:(NSArray *)arg4 completion:(void (^)(NSError *))arg5;
+- (void)modifyByAddingDeviceUIDs:(NSArray *)arg1 removingDeviceUIDs:(NSArray *)arg2 settingDeviceUIDs:(NSArray *)arg3 addingClusterDeviceUIDs:(NSArray *)arg4 removingClusterDeviceUIDs:(NSArray *)arg5 settingClusterDeviceUIDs:(NSArray *)arg6 completion:(void (^)(NSError *))arg7;
+- (void)setListeningMode:(NSString *)arg1 outputDeviceUID:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)outputDeviceVolumeControlCapabilities:(NSString *)arg1 withCompletion:(void (^)(unsigned int, NSError *))arg2;
 - (void)setOutputDeviceVolume:(float)arg1 forOutputDevice:(NSString *)arg2 withCompletion:(void (^)(NSError *))arg3;
 - (void)outputDeviceVolume:(NSString *)arg1 withCompletion:(void (^)(float, NSError *))arg2;

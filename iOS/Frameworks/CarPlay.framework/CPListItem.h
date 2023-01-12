@@ -14,6 +14,7 @@
 
 @interface CPListItem : NSObject <CPListItemPrivate, NSSecureCoding, CPSelectableListItem>
 {
+    _Bool _enabled;
     _Bool _explicitContent;
     _Bool _playing;
     _Bool _showsDisclosureIndicator;
@@ -47,6 +48,7 @@
 @property(nonatomic) double playbackProgress; // @synthesize playbackProgress=_playbackProgress;
 @property(nonatomic, getter=isExplicitContent) _Bool explicitContent; // @synthesize explicitContent=_explicitContent;
 @property(nonatomic) long long accessoryType; // @synthesize accessoryType=_accessoryType;
+@property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (void)setShowsDisclosureIndicator:(_Bool)arg1;

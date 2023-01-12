@@ -17,8 +17,6 @@
     struct __AXUIElement *_systemWideElement;
 }
 
-+ (void)initialize;
-+ (void)_startAXServer;
 @property struct __AXUIElement *systemWideElement; // @synthesize systemWideElement=_systemWideElement;
 @property(readonly) int processID; // @synthesize processID=_processID;
 @property(readonly) _Bool allowsRemoteAccess; // @synthesize allowsRemoteAccess=_allowsRemoteAccess;

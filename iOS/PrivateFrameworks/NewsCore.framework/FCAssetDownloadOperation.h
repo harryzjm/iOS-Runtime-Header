@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FCNetworkBehaviorMonitor, NSData, NSDictionary, NSError, NSHTTPURLResponse, NSString, NSURL;
+@class FCNetworkBehaviorMonitor, FCURLRequestScheduler, NSData, NSDictionary, NSError, NSHTTPURLResponse, NSString, NSURL;
 
 @interface FCAssetDownloadOperation
 {
@@ -12,10 +12,12 @@
     NSURL *_URL;
     NSString *_loggingKey;
     long long _downloadDestination;
+    unsigned long long _cachePolicy;
     NSDictionary *_additionalRequestHTTPHeaders;
     FCNetworkBehaviorMonitor *_networkBehaviorMonitor;
     CDUnknownBlockType _fileDownloadCompletionHandler;
     CDUnknownBlockType _dataDownloadCompletionHandler;
+    FCURLRequestScheduler *_scheduler;
     NSURL *_downloadedFileURL;
     NSData *_downloadedData;
     NSString *_requestUUID;
@@ -39,19 +41,24 @@
 @property(retain, nonatomic) NSString *requestUUID; // @synthesize requestUUID=_requestUUID;
 @property(retain, nonatomic) NSData *downloadedData; // @synthesize downloadedData=_downloadedData;
 @property(retain, nonatomic) NSURL *downloadedFileURL; // @synthesize downloadedFileURL=_downloadedFileURL;
+@property(retain, nonatomic) FCURLRequestScheduler *scheduler; // @synthesize scheduler=_scheduler;
 @property(copy, nonatomic) CDUnknownBlockType dataDownloadCompletionHandler; // @synthesize dataDownloadCompletionHandler=_dataDownloadCompletionHandler;
 @property(copy, nonatomic) CDUnknownBlockType fileDownloadCompletionHandler; // @synthesize fileDownloadCompletionHandler=_fileDownloadCompletionHandler;
 @property(retain, nonatomic) FCNetworkBehaviorMonitor *networkBehaviorMonitor; // @synthesize networkBehaviorMonitor=_networkBehaviorMonitor;
 @property(copy, nonatomic) NSDictionary *additionalRequestHTTPHeaders; // @synthesize additionalRequestHTTPHeaders=_additionalRequestHTTPHeaders;
+@property(nonatomic) unsigned long long cachePolicy; // @synthesize cachePolicy=_cachePolicy;
 @property(nonatomic) int networkEventType; // @synthesize networkEventType=_networkEventType;
 @property(nonatomic) long long downloadDestination; // @synthesize downloadDestination=_downloadDestination;
 @property(copy, nonatomic) NSString *loggingKey; // @synthesize loggingKey=_loggingKey;
 @property(retain, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 - (id)throttleGroup;
-- (void)resetForRetry;
+- (unsigned long long)maxRetries;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
+- (void)prepareOperation;
 - (_Bool)validateOperation;
+- (id)initWithURLRequestScheduler:(id)arg1;
+- (id)init;
 
 @end
 

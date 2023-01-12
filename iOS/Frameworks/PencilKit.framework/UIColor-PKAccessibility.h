@@ -11,6 +11,7 @@
 @interface UIColor (PKAccessibility)
 + (id)pkaxHueNameForValue:(double)arg1;
 + (double)pk_rgbDistanceFromColor:(id)arg1 toColor:(id)arg2;
++ (id)pk_randomColor;
 + (id)pk_convertColorPickerColor:(id)arg1 fromUserInterfaceStyle:(long long)arg2 to:(long long)arg3;
 + (id)pk_textInputReserveSpaceColor;
 + (id)pk_textInputDeletionPreviewColor;

@@ -35,6 +35,7 @@
 @property(readonly, nonatomic) id <TUMomentsControllerDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 - (void)serverDiedForDataSource:(id)arg1;
+- (void)dataSource:(id)arg1 requestSandboxExtensionForURL:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)dataSource:(id)arg1 didReceiveLocallyRequestedMomentDescriptor:(id)arg2;
 - (void)dataSource:(id)arg1 willCaptureRemoteRequestFromRequesterID:(id)arg2;
 - (void)dataSource:(id)arg1 didUpdateCapabilities:(id)arg2 forVideoStreamToken:(long long)arg3;

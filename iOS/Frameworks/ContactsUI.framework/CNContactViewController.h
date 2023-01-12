@@ -27,6 +27,8 @@
     _Bool _allowsDisplayModePickerActions;
     _Bool _allowsEditPhoto;
     _Bool _ignoresParentalRestrictions;
+    _Bool _forcesTransparentBackground;
+    _Bool _shouldUseModernNavigationBarHiding;
     CNContact *_contact;
     NSArray *_displayedPropertyKeys;
     id <CNContactViewControllerDelegate> _delegate;
@@ -40,7 +42,8 @@
     _UIAccessDeniedView *_accessDeniedView;
     NSString *_highlightedPropertyKey;
     NSString *_highlightedPropertyIdentifier;
-    NSArray *_extraBarButtonItems;
+    NSArray *_extraRightBarButtonItems;
+    NSArray *_extraLeftBarButtonItems;
     NSArray *_preEditLeftBarButtonItems;
     UINavigationItem *_observedNavigationItem;
     UIViewController<CNContactContentViewController> *_viewController;
@@ -68,11 +71,13 @@
 + (id)viewControllerForContact:(id)arg1;
 + (id)descriptorForRequiredKeys;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldUseModernNavigationBarHiding; // @synthesize shouldUseModernNavigationBarHiding=_shouldUseModernNavigationBarHiding;
 @property(retain, nonatomic) UIViewController *contactHeaderViewController; // @synthesize contactHeaderViewController=_contactHeaderViewController;
 @property(retain, nonatomic) UIView *contactHeaderView; // @synthesize contactHeaderView=_contactHeaderView;
 @property(copy, nonatomic) NSAttributedString *verifiedInfoMessage; // @synthesize verifiedInfoMessage=_verifiedInfoMessage;
 @property(copy, nonatomic) NSString *warningMessage; // @synthesize warningMessage=_warningMessage;
 @property(copy, nonatomic) NSString *importantMessage; // @synthesize importantMessage=_importantMessage;
+@property(nonatomic) _Bool forcesTransparentBackground; // @synthesize forcesTransparentBackground=_forcesTransparentBackground;
 @property(nonatomic) _Bool ignoresParentalRestrictions; // @synthesize ignoresParentalRestrictions=_ignoresParentalRestrictions;
 @property(nonatomic) _Bool allowsEditPhoto; // @synthesize allowsEditPhoto=_allowsEditPhoto;
 @property(nonatomic) _Bool allowsDisplayModePickerActions; // @synthesize allowsDisplayModePickerActions=_allowsDisplayModePickerActions;
@@ -96,7 +101,8 @@
 @property(retain, nonatomic) NSArray *preEditLeftBarButtonItems; // @synthesize preEditLeftBarButtonItems=_preEditLeftBarButtonItems;
 @property(nonatomic) _Bool hasCompletedSetup; // @synthesize hasCompletedSetup=_hasCompletedSetup;
 @property(nonatomic) _Bool requiresSetup; // @synthesize requiresSetup=_requiresSetup;
-@property(retain, nonatomic) NSArray *extraBarButtonItems; // @synthesize extraBarButtonItems=_extraBarButtonItems;
+@property(retain, nonatomic) NSArray *extraLeftBarButtonItems; // @synthesize extraLeftBarButtonItems=_extraLeftBarButtonItems;
+@property(retain, nonatomic) NSArray *extraRightBarButtonItems; // @synthesize extraRightBarButtonItems=_extraRightBarButtonItems;
 @property(nonatomic) _Bool highlightedPropertyImportant; // @synthesize highlightedPropertyImportant=_highlightedPropertyImportant;
 @property(retain, nonatomic) NSString *highlightedPropertyIdentifier; // @synthesize highlightedPropertyIdentifier=_highlightedPropertyIdentifier;
 @property(retain, nonatomic) NSString *highlightedPropertyKey; // @synthesize highlightedPropertyKey=_highlightedPropertyKey;
@@ -112,6 +118,7 @@
 @property(nonatomic) __weak id <CNContactViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic) NSArray *displayedPropertyKeys; // @synthesize displayedPropertyKeys=_displayedPropertyKeys;
 @property(retain, nonatomic) CNContact *contact; // @synthesize contact=_contact;
+- (void)viewServiceDidTerminate;
 - (void)didExecuteDeleteFromDowntimeWhitelistAction;
 - (void)didExecuteClearRecentsDataAction;
 - (void)viewDidAppear;
@@ -122,12 +129,14 @@
 - (void)didCompleteWithContact:(id)arg1;
 - (void)updateEditing:(_Bool)arg1 doneButtonEnabled:(_Bool)arg2 doneButtonText:(id)arg3;
 - (_Bool)shouldPerformDefaultActionForContact:(id)arg1 propertyKey:(id)arg2 propertyIdentifier:(id)arg3;
+- (void)enableEditKeyboardShortcut;
 - (void)enableCancelKeyboardShortcut;
 - (void)enableSaveKeyboardShortcut;
 - (void)configureNavigationItem:(id)arg1;
 - (void)didMoveToParentViewController:(id)arg1;
 - (void)updateEditNavigationItemsAnimated:(_Bool)arg1 doneButtonEnabled:(_Bool)arg2 doneButtonText:(id)arg3;
 - (void)setDoneButtonText:(id)arg1 enabled:(_Bool)arg2;
+- (void)toggleEditing;
 - (void)toggleEditing:(id)arg1;
 - (void)editCancel:(id)arg1;
 - (id)navigationItemController;

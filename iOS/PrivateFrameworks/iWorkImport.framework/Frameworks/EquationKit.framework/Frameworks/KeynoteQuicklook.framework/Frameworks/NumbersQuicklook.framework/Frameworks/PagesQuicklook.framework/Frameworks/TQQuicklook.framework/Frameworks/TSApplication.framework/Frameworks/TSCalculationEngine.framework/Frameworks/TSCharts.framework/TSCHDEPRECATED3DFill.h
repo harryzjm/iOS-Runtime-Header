@@ -12,16 +12,16 @@
 
 @interface TSCHDEPRECATED3DFill : NSObject <TSSPropertyValueArchiving>
 {
-    TSDFill *mFill;
-    TSCH3DLightingModel *mLightingModel;
-    TSCH3DFillSetIdentifier *mIdentifier;
+    TSDFill *_fill;
+    TSCH3DLightingModel *_lightingModel;
+    TSCH3DFillSetIdentifier *_identifier;
 }
 
-+ (id)instanceWithArchive:(const struct DEPRECATEDChart3DFillArchive *)arg1 unarchiver:(id)arg2;
++ (id)instanceWithArchive:(const void *)arg1 unarchiver:(id)arg2;
+- (void).cxx_destruct;
 - (id)convertToTSDFill;
-- (void)saveToArchive:(struct DEPRECATEDChart3DFillArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct DEPRECATEDChart3DFillArchive *)arg1 unarchiver:(id)arg2;
-- (void)dealloc;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 @end
 

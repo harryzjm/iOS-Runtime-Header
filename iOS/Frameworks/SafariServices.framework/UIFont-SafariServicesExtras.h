@@ -7,6 +7,7 @@
 #import <UIKit/UIFont.h>
 
 @interface UIFont (SafariServicesExtras)
++ (id)_sf_preferredFontForTextStyle:(id)arg1 weight:(double)arg2 compatibleWithTraitCollection:(id)arg3;
 + (id)_sf_preferredFontForTextStyle:(id)arg1 attributes:(id)arg2;
 + (id)_sf_preferredFontForTextStyle:(id)arg1 symbolicTraits:(unsigned int)arg2;
 @end

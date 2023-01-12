@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProtocolBuffer/PBCodable.h>
-
 @class NSArray, NSData, NSString, SISchemaLocaleIdentifier;
 
-@interface SISchemaDictationContext : PBCodable
+@interface SISchemaDictationContext
 {
     NSString *_keyboardLanguage;
     SISchemaLocaleIdentifier *_keyboardLocale;

@@ -17,19 +17,18 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDCameraResidentMessageHandler, HMDCameraSnapshotMonitorEvents, HMDCameraStreamSnapshotHandler, HMDHAPAccessory, HMDNotificationRegistration, HMDSnapshotCacheRequestHandler, HMDSnapshotLocalSession, HMDSnapshotRequestHandler, HMDSnapshotSlotManager, HMFMessageDispatcher, HMFNetMonitor, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSSet, NSString, NSUUID;
+@class HMDCameraResidentMessageHandler, HMDCameraSnapshotMonitorEvents, HMDCameraStreamSnapshotHandler, HMDHAPAccessory, HMDSnapshotCacheRequestHandler, HMDSnapshotLocalSession, HMDSnapshotRequestHandler, HMDSnapshotSlotManager, HMFMessageDispatcher, HMFNetMonitor, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDCameraSnapshotManager : HMFObject <HMDCameraSnapshotLocalDelegate, HMDCameraSnapshotRemoteRelaySenderDelegate, HMDCameraSnapshotRemoteRelayReceiverDelegate, HMDCameraSnapshotRemoteStreamSenderDelegate, HMDCameraSnapshotRemoteStreamReceiverDelegate, HMDCameraSnapshotRemoteRelayStreamDelegate, HMFTimerDelegate, HMFLogging, HMDCameraStreamSnapshotHandlerDelegate, HMDHomeMessageReceiver>
+@interface HMDCameraSnapshotManager : HMFObject <HMDCameraSnapshotLocalDelegate, HMDCameraSnapshotRemoteRelayReceiverDelegate, HMDCameraSnapshotRemoteRelaySenderDelegate, HMDCameraSnapshotRemoteRelayStreamDelegate, HMDCameraSnapshotRemoteStreamReceiverDelegate, HMDCameraSnapshotRemoteStreamSenderDelegate, HMFLogging, HMFTimerDelegate, HMDCameraStreamSnapshotHandlerDelegate, HMDHomeMessageReceiver>
 {
     NSObject<OS_dispatch_queue> *_workQueue;
+    NSUUID *_uniqueIdentifier;
     HMFMessageDispatcher *_msgDispatcher;
     HMDSnapshotLocalSession *_currentLocalSession;
     NSMutableDictionary *_currentRemoteSessions;
     HMDHAPAccessory *_accessory;
-    NSUUID *_uniqueIdentifier;
     NSString *_imageCacheDirectory;
-    NSString *_logID;
     HMDCameraSnapshotMonitorEvents *_monitorServicesManager;
     HMDSnapshotRequestHandler *_snapshotRequestHandler;
     HMDSnapshotCacheRequestHandler *_snapshotCacheRequestHandler;
@@ -37,32 +36,17 @@
     HMDCameraStreamSnapshotHandler *_streamSnapshotHandler;
     NSMutableArray *_pendingSnapshotRequestDuringStreamSetup;
     NSMutableArray *_pendingRemoteSnapshotRequestDuringStreamSetup;
-    HMDNotificationRegistration *_notificationRegistration;
     HMFNetMonitor *_networkMonitor;
     HMDCameraResidentMessageHandler *_residentMessageHandler;
+    NSString *_logIdentifier;
 }
 
 + (_Bool)hasMessageReceiverChildren;
 + (void)auditSnapshotDirectories:(id)arg1;
 + (id)logCategory;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) HMDCameraResidentMessageHandler *residentMessageHandler; // @synthesize residentMessageHandler=_residentMessageHandler;
-@property(retain, nonatomic) HMFNetMonitor *networkMonitor; // @synthesize networkMonitor=_networkMonitor;
-@property(readonly, nonatomic) HMDNotificationRegistration *notificationRegistration; // @synthesize notificationRegistration=_notificationRegistration;
-@property(readonly, nonatomic) NSMutableArray *pendingRemoteSnapshotRequestDuringStreamSetup; // @synthesize pendingRemoteSnapshotRequestDuringStreamSetup=_pendingRemoteSnapshotRequestDuringStreamSetup;
-@property(readonly, nonatomic) NSMutableArray *pendingSnapshotRequestDuringStreamSetup; // @synthesize pendingSnapshotRequestDuringStreamSetup=_pendingSnapshotRequestDuringStreamSetup;
-@property(readonly, nonatomic) HMDCameraStreamSnapshotHandler *streamSnapshotHandler; // @synthesize streamSnapshotHandler=_streamSnapshotHandler;
-@property(readonly) HMDSnapshotSlotManager *snapshotSlotManager; // @synthesize snapshotSlotManager=_snapshotSlotManager;
-@property(readonly, nonatomic) HMDSnapshotCacheRequestHandler *snapshotCacheRequestHandler; // @synthesize snapshotCacheRequestHandler=_snapshotCacheRequestHandler;
-@property(readonly, nonatomic) HMDSnapshotRequestHandler *snapshotRequestHandler; // @synthesize snapshotRequestHandler=_snapshotRequestHandler;
-@property(readonly, nonatomic) HMDCameraSnapshotMonitorEvents *monitorServicesManager; // @synthesize monitorServicesManager=_monitorServicesManager;
-@property(readonly, nonatomic) NSString *logID; // @synthesize logID=_logID;
-@property(readonly, nonatomic) NSString *imageCacheDirectory; // @synthesize imageCacheDirectory=_imageCacheDirectory;
-@property(readonly, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
-@property(readonly, nonatomic) __weak HMDHAPAccessory *accessory; // @synthesize accessory=_accessory;
-@property(retain, nonatomic) NSMutableDictionary *currentRemoteSessions; // @synthesize currentRemoteSessions=_currentRemoteSessions;
-@property(retain, nonatomic) HMDSnapshotLocalSession *currentLocalSession; // @synthesize currentLocalSession=_currentLocalSession;
-@property(retain, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
+@property(readonly, nonatomic) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
+@property(readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 - (void)handleCameraSettingsDidChangeNotification:(id)arg1;
 - (void)streamSnapshotHandler:(id)arg1 didChangeStreamSetupInProgress:(_Bool)arg2;
@@ -74,6 +58,7 @@
 - (void)snapshotStreamSender:(id)arg1 didStartCaptureImage:(id)arg2 sessionID:(id)arg3;
 - (void)snapshotStreamReceiver:(id)arg1 didSaveSnapshotFile:(id)arg2 error:(id)arg3 sessionID:(id)arg4;
 - (void)snapshotStreamReceiver:(id)arg1 didStartGettingImage:(id)arg2 sessionID:(id)arg3;
+- (void)snapshotRelaySender:(id)arg1 didSaveSnapshotFile:(id)arg2 sessionID:(id)arg3;
 - (void)snapshotRelaySender:(id)arg1 didCompleteSendImage:(id)arg2 sessionID:(id)arg3;
 - (void)snapshotRelaySender:(id)arg1 didStartCaptureImage:(id)arg2 sessionID:(id)arg3;
 - (void)snapshotRelayReceiver:(id)arg1 didSaveSnapshotFile:(id)arg2 error:(id)arg3 sessionID:(id)arg4;
@@ -82,35 +67,21 @@
 @property(readonly, copy) NSSet *messageReceiverChildren;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;
-- (void)_sendRemoteResponse:(id)arg1 sessionID:(id)arg2;
-- (void)_sendResponse:(id)arg1 error:(id)arg2 sessionID:(id)arg3;
 - (void)_handleSnapshotSendFailure:(id)arg1;
 - (void)_handleSnapshotReceived:(id)arg1;
-- (void)_endSession:(id)arg1 error:(id)arg2;
 - (void)timerDidFire:(id)arg1;
-- (void)_issueGetSnapshot:(id)arg1;
-- (void)_sendSnapshotRequestRelayStream:(id)arg1 snapshotSessionID:(id)arg2;
-- (void)_sendSnapshotRequestStreamReceiver:(id)arg1 snapshotSessionID:(id)arg2;
-- (void)_sendSnapshotRequestStreamInitiator:(id)arg1 snapshotSessionID:(id)arg2;
-- (void)_sendSnapshotRequestRelayInitiator:(id)arg1 snapshotSessionID:(id)arg2;
-- (void)_sendSnapshotRequestRelayReceiver:(id)arg1 snapshotSessionID:(id)arg2;
-- (void)_sendSnapshotRequestLocal:(id)arg1 snapshotSessionID:(id)arg2;
-- (void)_sendStreamSnapshotRequest:(id)arg1 snapshotSessionID:(id)arg2;
 - (void)_handleSnapshotRemoteRequest:(id)arg1;
 - (void)_handleSnapshotRequest:(id)arg1;
-- (id)_createSnapshotSessionIDWithMessage:(id)arg1 error:(id *)arg2;
 @property(readonly, copy) NSDictionary *encodedMostRecentSnapshot;
 - (void)_handleCreateSnapshotFromBulletinContext:(id)arg1;
 - (void)_handleReleaseSnapshot:(id)arg1;
-- (void)_removeAllPendingRequests:(id)arg1;
 - (void)handleAccessoryDisconnected:(id)arg1;
 - (void)releaseSnapshot:(id)arg1;
 - (void)takeSnapshot:(id)arg1;
-- (id)_findSessionWithID:(id)arg1;
 - (void)registerForMessages;
 - (void)dealloc;
-- (id)logIdentifier;
-- (id)initWithAccessory:(id)arg1 workQueue:(id)arg2 streamSnapshotHandler:(id)arg3 uniqueIdentifier:(id)arg4 logID:(id)arg5 msgDispatcher:(id)arg6 networkMonitor:(id)arg7 residentMessageHandler:(id)arg8;
+- (id)initWithAccessory:(id)arg1 workQueue:(id)arg2 streamSnapshotHandler:(id)arg3 uniqueIdentifier:(id)arg4 msgDispatcher:(id)arg5 networkMonitor:(id)arg6 residentMessageHandler:(id)arg7;
+- (id)initWithAccessory:(id)arg1 workQueue:(id)arg2 streamSnapshotHandler:(id)arg3 uniqueIdentifier:(id)arg4 msgDispatcher:(id)arg5 networkMonitor:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

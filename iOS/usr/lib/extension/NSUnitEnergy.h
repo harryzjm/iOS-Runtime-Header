@@ -13,9 +13,11 @@
 + (id)_measurementWithNaturalScale:(id)arg1 system:(unsigned long long)arg2;
 + (id)kilowattHours;
 + (id)calories;
++ (id)foodcalories;
 + (id)kilocalories;
 + (id)joules;
 + (id)kilojoules;
++ (id)icuType;
 + (id)baseUnit;
 + (void)initialize;
 

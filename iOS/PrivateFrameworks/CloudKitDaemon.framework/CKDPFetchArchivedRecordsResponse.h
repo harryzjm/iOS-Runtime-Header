@@ -10,7 +10,6 @@
 
 @class NSData, NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface CKDPFetchArchivedRecordsResponse : PBCodable <NSCopying>
 {
     NSData *_archiveContinuationToken;

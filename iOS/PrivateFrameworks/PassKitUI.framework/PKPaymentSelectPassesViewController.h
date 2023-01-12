@@ -14,17 +14,20 @@
     NSMutableArray *_selectedIndexPaths;
     id <PKPaymentSelectPassesViewControllerDelegate> _delegate;
     PKPeerPaymentAccount *_peerPaymentAccount;
-    _Bool _canSelectMultiplePasses;
+    _Bool _showCancelButton;
+    unsigned long long _minimumSelectionCount;
     NSString *_buttonText;
     NSString *_headerTitle;
     NSString *_headerSubtitle;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool showCancelButton; // @synthesize showCancelButton=_showCancelButton;
 @property(copy, nonatomic) NSString *headerSubtitle; // @synthesize headerSubtitle=_headerSubtitle;
 @property(copy, nonatomic) NSString *headerTitle; // @synthesize headerTitle=_headerTitle;
 @property(copy, nonatomic) NSString *buttonText; // @synthesize buttonText=_buttonText;
-@property(nonatomic) _Bool canSelectMultiplePasses; // @synthesize canSelectMultiplePasses=_canSelectMultiplePasses;
+@property(nonatomic) unsigned long long minimumSelectionCount; // @synthesize minimumSelectionCount=_minimumSelectionCount;
+- (void)_cancelPressed;
 - (void)_setNavigationBarEnabled:(_Bool)arg1;
 - (void)_setViewEnabledState:(_Bool)arg1;
 - (void)_continuousButtonPressed;
@@ -36,11 +39,11 @@
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (void)setPassSelectionCount:(unsigned long long)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)willMoveToParentViewController:(id)arg1;
-- (id)initWithStyle:(long long)arg1 context:(long long)arg2;
 - (id)initWithPaymentPasses:(id)arg1 context:(long long)arg2 delegate:(id)arg3 peerPaymentAccount:(id)arg4;
 
 @end

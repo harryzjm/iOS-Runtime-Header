@@ -185,10 +185,16 @@ typedef struct {
     long long dragRightBehavior;
     long long dragLeftBehavior;
     _Bool allowsLockButton;
+    _Bool allowsZoom;
     long long ringStyle;
     long long stopColor;
     long long idleColor;
-} CDStruct_41c1ae05;
+} CDStruct_463d3f11;
+
+typedef struct {
+    long long freeBytes;
+    long long fastPurgeableBytes;
+} CDStruct_91dcaeda;
 
 typedef struct {
     double _field1;
@@ -205,7 +211,8 @@ typedef struct {
     long long _field1;
     long long _field2;
     struct CGSize _field3;
-} CDStruct_7270c63f;
+    long long _field4;
+} CDStruct_c1e2adca;
 
 typedef struct {
     struct CGPoint point;

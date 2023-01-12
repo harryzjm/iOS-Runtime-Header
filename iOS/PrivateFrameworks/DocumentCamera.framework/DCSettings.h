@@ -16,10 +16,13 @@
 + (id)sharedSettings;
 - (void).cxx_destruct;
 @property(retain) NSUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
+- (void)setUseDocumentSegmentationRequestBoxed:(id)arg1;
+- (id)useDocumentSegmentationRequestBoxed;
 - (void)setFinishAfterFirstScanBoxed:(id)arg1;
 - (id)finishAfterFirstScanBoxed;
 - (void)setEnableViewServiceBoxed:(id)arg1;
 - (id)enableViewServiceBoxed;
+@property(readonly, nonatomic) _Bool useDocumentSegmentationRequest;
 @property(readonly, nonatomic) _Bool finishAfterFirstScan;
 @property(readonly, nonatomic) _Bool enableViewService;
 - (id)init;

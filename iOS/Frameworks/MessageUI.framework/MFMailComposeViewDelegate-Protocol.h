@@ -24,7 +24,7 @@
 - (void)importDocument;
 - (void)showPhotoPickerWithSourceType:(long long)arg1 fromSource:(id)arg2;
 - (void)insertPhotoOrVideo;
-- (int)compositionType;
+- (long long)compositionType;
 - (NSString *)currentScaleImageSize;
 - (_Bool)hasAttachments;
 - (_Bool)bccAddressesDirtied;

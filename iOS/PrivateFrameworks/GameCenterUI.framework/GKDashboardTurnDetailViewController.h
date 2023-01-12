@@ -20,6 +20,7 @@
     NSLayoutConstraint *_secondButtonCenteringConstraint;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) NSLayoutConstraint *secondButtonCenteringConstraint; // @synthesize secondButtonCenteringConstraint=_secondButtonCenteringConstraint;
 @property(nonatomic) UIButton *secondButton; // @synthesize secondButton=_secondButton;
 @property(nonatomic) UIButton *firstButton; // @synthesize firstButton=_firstButton;

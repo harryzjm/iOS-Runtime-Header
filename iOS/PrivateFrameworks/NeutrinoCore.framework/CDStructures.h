@@ -6,9 +6,7 @@
 
 @class MISSING_TYPE;
 
-#pragma mark Function Pointers and Blocks
-
-typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
+#pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
@@ -54,97 +52,32 @@ struct CGVector {
     double _field2;
 };
 
-struct Context {
-    CDUnknownFunctionPointerType *_field1;
-    int _field2;
-    int _field3;
-    id _field4;
-    id _field5;
-};
-
 struct DataSet {
-    struct vector<double, std::__1::allocator<double>> _values;
-};
-
-struct Histogram<long, double>;
-
-struct Region {
-    struct unordered_set<NU::RegionRect, NU::RectHash, NU::RectEqualTo, std::__1::allocator<NU::RegionRect>> _field1;
-};
-
-struct _NSRange {
-    unsigned long long _field1;
-    unsigned long long _field2;
-};
-
-struct __hash_node_base<std::__1::__hash_node<NU::RegionRect, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<NU::RegionRect, void *>*> *_field1;
-};
-
-struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
-    struct __tree_node_base<void *> *__left_;
-};
-
-struct map<unsigned int, std::__1::stack<unsigned int, std::__1::deque<unsigned int, std::__1::allocator<unsigned int>>>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, std::__1::stack<unsigned int, std::__1::deque<unsigned int, std::__1::allocator<unsigned int>>>>>> {
-    struct __tree<std::__1::__value_type<unsigned int, std::__1::stack<unsigned int, std::__1::deque<unsigned int, std::__1::allocator<unsigned int>>>>, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, std::__1::stack<unsigned int, std::__1::deque<unsigned int, std::__1::allocator<unsigned int>>>>, std::__1::less<unsigned int>, true>, std::__1::allocator<std::__1::__value_type<unsigned int, std::__1::stack<unsigned int, std::__1::deque<unsigned int, std::__1::allocator<unsigned int>>>>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned int, std::__1::stack<unsigned int, std::__1::deque<unsigned int, std::__1::allocator<unsigned int>>>>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
-        } __pair1_;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, std::__1::stack<unsigned int, std::__1::deque<unsigned int, std::__1::allocator<unsigned int>>>>, std::__1::less<unsigned int>, true>> {
-            unsigned long long __value_;
-        } __pair3_;
-    } __tree_;
+    struct vector<double, std::allocator<double>> _values;
 };
 
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
 
-struct unique_ptr<NU::Histogram<long, double>, std::__1::default_delete<NU::Histogram<long, double>>> {
-    struct __compressed_pair<NU::Histogram<long, double>*, std::__1::default_delete<NU::Histogram<long, double>>> {
-        struct Histogram<long, double> *__value_;
+struct unique_ptr<NU::Histogram<long, double>, std::default_delete<NU::Histogram<long, double>>> {
+    struct __compressed_pair<NU::Histogram<long, double>*, std::default_delete<NU::Histogram<long, double>>> {
+        void *__value_;
     } __ptr_;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<NU::RegionRect, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<NU::RegionRect, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<NU::RegionRect, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<NU::RegionRect, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<NU::RegionRect, void *>*> **_field1;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<NU::RegionRect, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<NU::RegionRect, void *>*>*>> {
-                unsigned long long _field1;
-            } _field1;
-        } _field2;
-    } _field1;
-};
-
-struct unordered_set<NU::RegionRect, NU::RectHash, NU::RectEqualTo, std::__1::allocator<NU::RegionRect>> {
-    struct __hash_table<NU::RegionRect, NU::RectHash, NU::RectEqualTo, std::__1::allocator<NU::RegionRect>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<NU::RegionRect, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<NU::RegionRect, void *>*>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<NU::RegionRect, void *>*>, std::__1::allocator<std::__1::__hash_node<NU::RegionRect, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<NU::RegionRect, void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, NU::RectHash> {
-            unsigned long long _field1;
-        } _field3;
-        struct __compressed_pair<float, NU::RectEqualTo> {
-            float _field1;
-        } _field4;
-    } _field1;
-};
-
-struct vector<double, std::__1::allocator<double>> {
+struct vector<double, std::allocator<double>> {
     double *__begin_;
     double *__end_;
-    struct __compressed_pair<double *, std::__1::allocator<double>> {
+    struct __compressed_pair<double *, std::allocator<double>> {
         double *__value_;
     } __end_cap_;
 };
 
-struct vector<unsigned char, std::__1::allocator<unsigned char>> {
+struct vector<unsigned char, std::allocator<unsigned char>> {
     char *__begin_;
     char *__end_;
-    struct __compressed_pair<unsigned char *, std::__1::allocator<unsigned char>> {
+    struct __compressed_pair<unsigned char *, std::allocator<unsigned char>> {
         char *__value_;
     } __end_cap_;
 };
@@ -166,40 +99,23 @@ typedef struct {
 } CDStruct_14d5dc5e;
 
 typedef struct {
+    double red;
+    double green;
+    double blue;
+    double alpha;
+} CDStruct_3ead2808;
+
+typedef struct {
     double min;
     double max;
 } CDStruct_59a221c9;
 
 typedef struct {
-    float m00;
-    float m01;
-    float m02;
-    float m03;
-    float m10;
-    float m11;
-    float m12;
-    float m13;
-    float m20;
-    float m21;
-    float m22;
-    float m23;
-    float m30;
-    float m31;
-    float m32;
-    float m33;
-} CDStruct_81e6f6d3;
-
-typedef struct {
-    float a;
+    float r;
+    float g;
     float b;
-    float _unused1;
-    float c;
-    float d;
-    float _unused2;
-    float tx;
-    float ty;
-    float _unused3;
-} CDStruct_6fdb7d3f;
+    float a;
+} CDStruct_83984b6f;
 
 typedef struct {
     float _field1;
@@ -208,16 +124,20 @@ typedef struct {
 } CDStruct_869f9c67;
 
 typedef struct {
-    float x;
-    float y;
-} CDStruct_6e3f967a;
-
-typedef struct {
     long long value;
     int timescale;
     unsigned int flags;
     long long epoch;
 } CDStruct_1b6d18a9;
+
+typedef struct {
+    CDStruct_67e7699a origin;
+    struct {
+        unsigned long long width;
+        unsigned long long height;
+        unsigned long long depth;
+    } size;
+} CDStruct_1e3be3a8;
 
 typedef struct {
     CDStruct_83984b6f r;
@@ -238,18 +158,16 @@ typedef struct {
 
 // Ambiguous groups
 typedef struct {
-    float _field1;
-    float _field2;
-    float _field3;
-    float _field4;
-} CDStruct_818bb265;
+    unsigned long long _field1;
+    unsigned long long _field2;
+    unsigned long long _field3;
+} CDStruct_14f26992;
 
 typedef struct {
-    float r;
-    float g;
-    float b;
-    float a;
-} CDStruct_83984b6f;
+    unsigned long long x;
+    unsigned long long y;
+    unsigned long long z;
+} CDStruct_67e7699a;
 
 typedef struct {
     long long _field1;

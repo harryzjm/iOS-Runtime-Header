@@ -8,7 +8,7 @@
 
 @interface _TtC13SiriInference17ScrubDodMLRecords
 {
-    MISSING_TYPE *tombStonedRecords;
+    MISSING_TYPE *numDeletedRecords;
 }
 
 - (id)init;

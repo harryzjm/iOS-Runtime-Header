@@ -23,6 +23,7 @@
     NSNumber *_bytesReceived;
     NSNumber *_duplicateBytesReceived;
     NSNumber *_outOfOrderBytesReceived;
+    NSNumber *_sendBufferBytes;
     NSNumber *_sendBandwidth;
     NSNumber *_synRetransmits;
     NSNumber *_tfoSynDataAcked;
@@ -32,6 +33,7 @@
 @property(readonly, copy, nonatomic) NSNumber *tfoSynDataAcked; // @synthesize tfoSynDataAcked=_tfoSynDataAcked;
 @property(readonly, copy, nonatomic) NSNumber *synRetransmits; // @synthesize synRetransmits=_synRetransmits;
 @property(readonly, copy, nonatomic) NSNumber *sendBandwidth; // @synthesize sendBandwidth=_sendBandwidth;
+@property(readonly, copy, nonatomic) NSNumber *sendBufferBytes; // @synthesize sendBufferBytes=_sendBufferBytes;
 @property(readonly, copy, nonatomic) NSNumber *outOfOrderBytesReceived; // @synthesize outOfOrderBytesReceived=_outOfOrderBytesReceived;
 @property(readonly, copy, nonatomic) NSNumber *duplicateBytesReceived; // @synthesize duplicateBytesReceived=_duplicateBytesReceived;
 @property(readonly, copy, nonatomic) NSNumber *bytesReceived; // @synthesize bytesReceived=_bytesReceived;
@@ -47,7 +49,7 @@
 @property(readonly, copy, nonatomic) NSString *interfaceName; // @synthesize interfaceName=_interfaceName;
 - (id)description;
 - (id)init;
-- (id)initWithInterfaceName:(id)arg1 rttCurrent:(id)arg2 rttSmoothed:(id)arg3 rttVariance:(id)arg4 rttBest:(id)arg5 packetsSent:(id)arg6 bytesSent:(id)arg7 bytesRetransmitted:(id)arg8 bytesUnacked:(id)arg9 packetsReceived:(id)arg10 bytesReceived:(id)arg11 duplicateBytesReceived:(id)arg12 outOfOrderBytesReceived:(id)arg13 sendBandwidth:(id)arg14 synRetransmits:(id)arg15 tfoSynDataAcked:(id)arg16;
+- (id)initWithInterfaceName:(id)arg1 rttCurrent:(id)arg2 rttSmoothed:(id)arg3 rttVariance:(id)arg4 rttBest:(id)arg5 packetsSent:(id)arg6 bytesSent:(id)arg7 bytesRetransmitted:(id)arg8 bytesUnacked:(id)arg9 packetsReceived:(id)arg10 bytesReceived:(id)arg11 duplicateBytesReceived:(id)arg12 outOfOrderBytesReceived:(id)arg13 sendBufferBytes:(id)arg14 sendBandwidth:(id)arg15 synRetransmits:(id)arg16 tfoSynDataAcked:(id)arg17;
 
 @end
 

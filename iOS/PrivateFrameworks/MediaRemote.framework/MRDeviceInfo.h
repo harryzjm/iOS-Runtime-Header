@@ -37,6 +37,10 @@
     _Bool _hasGroupLeader;
     _Bool _airPlayActive;
     _Bool _hasAirPlayActive;
+    _Bool _supportsMultiplayer;
+    _Bool _hasSupportsMultiplayer;
+    _Bool _clusterAware;
+    unsigned int _clusterType;
     long long _deviceClass;
     unsigned long long _protocolVersion;
     unsigned long long _groupedDeviceCount;
@@ -50,11 +54,13 @@
     NSString *_bundleVersion;
     NSString *_systemMediaApplication;
     NSString *_systemPodcastApplication;
+    NSString *_systemBooksApplication;
     NSString *_deviceUID;
     NSString *_localReceiverPairingIdentity;
     NSString *_managedConfigurationDeviceIdentifier;
     NSString *_tightSyncUID;
     NSString *_groupUID;
+    NSString *_airPlayGroupUID;
     NSString *_groupName;
     NSString *_senderDefaultGroupUID;
     NSData *_bluetoothAddress;
@@ -63,15 +69,18 @@
     NSString *_linkAgent;
     NSString *_clusterID;
     NSString *_clusterLeaderID;
+    NSString *_modelID;
+    NSString *_routingContextID;
 }
 
-+ (id)_deviceIDFromData:(id)arg1;
-+ (id)networkIdentifier;
 + (long long)deviceClass;
 + (id)dataFromDeviceInfos:(id)arg1;
 + (id)deviceInfosFromData:(id)arg1;
-+ (id)currentDeviceInfo;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *routingContextID; // @synthesize routingContextID=_routingContextID;
+@property(copy, nonatomic) NSString *modelID; // @synthesize modelID=_modelID;
+@property(nonatomic, getter=isClusterAware) _Bool clusterAware; // @synthesize clusterAware=_clusterAware;
+@property(nonatomic) unsigned int clusterType; // @synthesize clusterType=_clusterType;
 @property(copy, nonatomic) NSString *clusterLeaderID; // @synthesize clusterLeaderID=_clusterLeaderID;
 @property(copy, nonatomic) NSString *clusterID; // @synthesize clusterID=_clusterID;
 @property(copy, nonatomic) NSString *linkAgent; // @synthesize linkAgent=_linkAgent;
@@ -80,11 +89,13 @@
 @property(copy, nonatomic) NSData *bluetoothAddress; // @synthesize bluetoothAddress=_bluetoothAddress;
 @property(copy, nonatomic) NSString *senderDefaultGroupUID; // @synthesize senderDefaultGroupUID=_senderDefaultGroupUID;
 @property(copy, nonatomic) NSString *groupName; // @synthesize groupName=_groupName;
+@property(copy, nonatomic) NSString *airPlayGroupUID; // @synthesize airPlayGroupUID=_airPlayGroupUID;
 @property(copy, nonatomic) NSString *groupUID; // @synthesize groupUID=_groupUID;
 @property(copy, nonatomic) NSString *tightSyncUID; // @synthesize tightSyncUID=_tightSyncUID;
 @property(copy, nonatomic) NSString *managedConfigurationDeviceIdentifier; // @synthesize managedConfigurationDeviceIdentifier=_managedConfigurationDeviceIdentifier;
 @property(copy, nonatomic) NSString *localReceiverPairingIdentity; // @synthesize localReceiverPairingIdentity=_localReceiverPairingIdentity;
 @property(copy, nonatomic) NSString *deviceUID; // @synthesize deviceUID=_deviceUID;
+@property(copy, nonatomic) NSString *systemBooksApplication; // @synthesize systemBooksApplication=_systemBooksApplication;
 @property(copy, nonatomic) NSString *systemPodcastApplication; // @synthesize systemPodcastApplication=_systemPodcastApplication;
 @property(copy, nonatomic) NSString *systemMediaApplication; // @synthesize systemMediaApplication=_systemMediaApplication;
 @property(copy, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
@@ -93,6 +104,8 @@
 @property(copy, nonatomic) NSString *localizedModelName; // @synthesize localizedModelName=_localizedModelName;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property(nonatomic) _Bool hasSupportsMultiplayer; // @synthesize hasSupportsMultiplayer=_hasSupportsMultiplayer;
+@property(nonatomic) _Bool supportsMultiplayer; // @synthesize supportsMultiplayer=_supportsMultiplayer;
 @property(nonatomic) _Bool hasAirPlayActive; // @synthesize hasAirPlayActive=_hasAirPlayActive;
 @property(nonatomic, getter=isAirPlayActive) _Bool airPlayActive; // @synthesize airPlayActive=_airPlayActive;
 @property(nonatomic) _Bool hasGroupLeader; // @synthesize hasGroupLeader=_hasGroupLeader;
@@ -130,6 +143,8 @@
 - (id)deltaDescriptionFromDeviceInfo:(id)arg1;
 - (id)deltaDescriptionFromDeviceInfo:(id)arg1 minimal:(_Bool)arg2;
 - (void)mergeFrom:(id)arg1;
+@property(readonly, nonatomic) _Bool supportsImplicitChangeShuffleAndRepeatModeInSetPlaybackQueueCommandOptions;
+@property(readonly, copy, nonatomic) NSString *WHAIdentifier;
 @property(readonly, nonatomic, getter=isGizmo) _Bool gizmo;
 @property(readonly, nonatomic, getter=isCompanion) _Bool companion;
 @property(readonly, copy, nonatomic) NSString *minimalDescription;

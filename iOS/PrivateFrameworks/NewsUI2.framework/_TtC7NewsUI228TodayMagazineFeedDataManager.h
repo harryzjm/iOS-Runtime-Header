@@ -8,16 +8,17 @@
 
 @class MISSING_TYPE;
 
+__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI228TodayMagazineFeedDataManager : NSObject
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *group;
-    MISSING_TYPE *cursor;
-    MISSING_TYPE *feedContext;
-    MISSING_TYPE *paidBundleConfigManager;
+    MISSING_TYPE *cursorContainer;
+    MISSING_TYPE *myMagazinesModule;
+    MISSING_TYPE *pluginManager;
+    MISSING_TYPE *childParentPluginIdentifierMap;
+    MISSING_TYPE *parentPluggableViewController;
     MISSING_TYPE *subscriptionService;
-    MISSING_TYPE *readingHistory;
-    MISSING_TYPE *readingList;
 }
 
 - (void).cxx_destruct;

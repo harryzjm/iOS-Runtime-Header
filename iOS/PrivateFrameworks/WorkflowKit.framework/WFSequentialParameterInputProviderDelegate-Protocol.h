@@ -6,12 +6,12 @@
 
 #import <WorkflowKit/NSObject-Protocol.h>
 
-@class NSDictionary, WFAction, WFParameter, WFSequentialParameterInputProvider;
+@class NSDictionary, NSString, WFAction, WFParameter, WFSequentialParameterInputProvider;
 @protocol WFParameterState;
 
 @protocol WFSequentialParameterInputProviderDelegate <NSObject>
 - (void)sequentialParameterInputProviderDidCancel:(WFSequentialParameterInputProvider *)arg1;
 - (void)sequentialParameterInputProvider:(WFSequentialParameterInputProvider *)arg1 didFinishWithInputtedStates:(NSDictionary *)arg2;
-- (void)sequentialParameterInputProvider:(WFSequentialParameterInputProvider *)arg1 didAdvanceToParameter:(WFParameter *)arg2 action:(WFAction *)arg3 defaultState:(id <WFParameterState>)arg4 completion:(void (^)(_Bool, id <WFParameterState>))arg5;
+- (void)sequentialParameterInputProvider:(WFSequentialParameterInputProvider *)arg1 didAdvanceToParameter:(WFParameter *)arg2 action:(WFAction *)arg3 defaultState:(id <WFParameterState>)arg4 prompt:(NSString *)arg5 completion:(void (^)(_Bool, id <WFParameterState>))arg6;
 @end
 

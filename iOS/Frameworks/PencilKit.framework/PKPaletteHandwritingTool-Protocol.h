@@ -6,6 +6,9 @@
 
 #import <PencilKit/PKPaletteTool-Protocol.h>
 
+@class NSString;
+
 @protocol PKPaletteHandwritingTool <PKPaletteTool>
+@property(copy, nonatomic) NSString *localeIdentifier;
 @end
 

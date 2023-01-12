@@ -33,11 +33,6 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)totalWifiAssistUsageForPeriod:(unsigned long long)arg1;
-- (id)totalSystemServiceDataUsageForPeriod:(unsigned long long)arg1;
-- (id)totalProxiedOnlyAppDataUsageForPeriod:(unsigned long long)arg1;
-- (id)totalUninstalledAppDataUsageForPeriod:(unsigned long long)arg1;
-- (id)totalAppDataUsageForPeriod:(unsigned long long)arg1;
-- (id)totalDataUsageForPeriod:(unsigned long long)arg1;
 - (id)totalSystemServiceDataUsedForPeriod:(unsigned long long)arg1;
 - (id)totalProxiedOnlyAppDataUsedForPeriod:(unsigned long long)arg1;
 - (id)totalUninstalledAppDataUsedForPeriod:(unsigned long long)arg1;
@@ -49,6 +44,7 @@
 - (id)uninstalledAppDataUsageForPeriod:(unsigned long long)arg1;
 - (id)appDataUsageForPeriod:(unsigned long long)arg1;
 - (id)dataUsage:(id)arg1 forPeriod:(unsigned long long)arg2;
+- (id)description;
 
 @end
 

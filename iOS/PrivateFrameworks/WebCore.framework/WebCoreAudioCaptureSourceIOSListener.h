@@ -9,12 +9,12 @@
 __attribute__((visibility("hidden")))
 @interface WebCoreAudioCaptureSourceIOSListener : NSObject
 {
-    struct CoreAudioCaptureSourceFactoryIOS *_callback;
+    void *_callback;
 }
 
 - (void)sessionMediaServicesWereReset:(id)arg1;
 - (void)invalidate;
-- (id)initWithCallback:(struct CoreAudioCaptureSourceFactoryIOS *)arg1;
+- (id)initWithCallback:(void *)arg1;
 
 @end
 

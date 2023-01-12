@@ -11,26 +11,27 @@
 #import <Email/EMXPCProxyCreating-Protocol.h>
 
 @class NSMutableArray, NSString, Protocol;
-@protocol OS_dispatch_queue;
+@protocol EMRemoteProxyGenerator, NSXPCProxyCreating, OS_dispatch_queue;
 
 @interface EMRemoteConnection : NSObject <EFLoggable, EMRemoteConnectionRecoveryAssertionDelegate, EMXPCProxyCreating>
 {
     NSObject<OS_dispatch_queue> *_queue;
-    CDUnknownBlockType _generator;
     Protocol *_protocol;
     struct __CFDictionary *_knownSelectors;
     NSMutableArray *_resetHandlers;
     NSMutableArray *_recoveryHandlers;
     NSMutableArray *_pendingReattempts;
-    id _currentProxy;
+    id <NSXPCProxyCreating> _currentProxy;
     struct os_unfair_lock_s _lock;
     struct os_unfair_lock_s _proxyLock;
     _Bool _waitingForRecovery;
     _Atomic unsigned int _activeVouchers;
+    id <EMRemoteProxyGenerator> _generator;
 }
 
 + (id)log;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <EMRemoteProxyGenerator> generator; // @synthesize generator=_generator;
 @property(readonly) Protocol *protocol; // @synthesize protocol=_protocol;
 - (void)voucherInvalidated;
 - (void)voucherInitialized;
@@ -53,7 +54,8 @@
 - (void)reset;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-- (id)initWithProtocol:(id)arg1 proxyGenerator:(CDUnknownBlockType)arg2;
+- (void)dealloc;
+- (id)initWithProtocol:(id)arg1 proxyGenerator:(id)arg2;
 
 // Remaining properties
 @property(readonly) unsigned long long hash;

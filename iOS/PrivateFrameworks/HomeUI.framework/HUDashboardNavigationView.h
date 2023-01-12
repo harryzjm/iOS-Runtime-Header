@@ -16,10 +16,9 @@
     UIVisualEffectView *_titleButtonEffectView;
     UIButton *_homeAppButton;
     UIImageView *_chevronImageView;
-    UIVisualEffectView *_separatorEffectView;
+    UIView *_separatorView;
     UILabel *_headerTitleLabel;
     UIButton *_titleButton;
-    UIView *_separatorView;
     NSDictionary *_largeTitleTextAttributes;
     NSArray *_allConstraints;
 }
@@ -28,10 +27,9 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *allConstraints; // @synthesize allConstraints=_allConstraints;
 @property(retain, nonatomic) NSDictionary *largeTitleTextAttributes; // @synthesize largeTitleTextAttributes=_largeTitleTextAttributes;
-@property(retain, nonatomic) UIView *separatorView; // @synthesize separatorView=_separatorView;
 @property(retain, nonatomic) UIButton *titleButton; // @synthesize titleButton=_titleButton;
 @property(retain, nonatomic) UILabel *headerTitleLabel; // @synthesize headerTitleLabel=_headerTitleLabel;
-@property(retain, nonatomic) UIVisualEffectView *separatorEffectView; // @synthesize separatorEffectView=_separatorEffectView;
+@property(retain, nonatomic) UIView *separatorView; // @synthesize separatorView=_separatorView;
 @property(readonly, nonatomic) UIImageView *chevronImageView; // @synthesize chevronImageView=_chevronImageView;
 @property(retain, nonatomic) UIButton *homeAppButton; // @synthesize homeAppButton=_homeAppButton;
 @property(retain, nonatomic) UIVisualEffectView *titleButtonEffectView; // @synthesize titleButtonEffectView=_titleButtonEffectView;

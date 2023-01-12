@@ -23,8 +23,8 @@
     NSArray *_childHints;
     TSUNoCopyDictionary *_anchoredDrawablePositions;
     NSSet *_startingPartitionedAttachments;
-    NSObject<TSWPTopicNumberHints> *_topicNumbers;
-    NSDictionary *_flowTopicNumbers;
+    NSObject<TSWPTopicNumberHints> *_topicNumberHints;
+    NSDictionary *_flowTopicNumberHints;
     _Bool _isCopyForCaching;
     _Bool _hasForcedFootnotes;
 }
@@ -39,12 +39,12 @@
 @property(nonatomic) unsigned long long pageRow; // @synthesize pageRow=_pageRow;
 @property(nonatomic) unsigned long long pageColumn; // @synthesize pageColumn=_pageColumn;
 @property(nonatomic) long long pageKind; // @synthesize pageKind=_pageKind;
-- (void)p_unarchiveTopicNumbers:(id)arg1 fromArchive:(const struct TopicNumberHintsArchive *)arg2 unarchiver:(id)arg3;
-- (void)p_archiveTopicNumbers:(id)arg1 intoArchive:(struct TopicNumberHintsArchive *)arg2 archiver:(id)arg3;
-- (_Bool)p_unarchiveHint:(id)arg1 fromArchive:(const struct TargetHintArchive *)arg2;
-- (void)p_archiveHint:(id)arg1 intoArchive:(struct TargetHintArchive *)arg2;
-- (void)saveToArchive:(struct PageHintArchive *)arg1 archiver:(id)arg2 context:(id)arg3;
-- (id)initWithArchive:(const struct PageHintArchive *)arg1 unarchiver:(id)arg2;
+- (void)p_unarchiveTopicNumberHints:(id)arg1 fromArchive:(const void *)arg2 unarchiver:(id)arg3;
+- (void)p_archiveTopicNumberHints:(id)arg1 intoArchive:(void *)arg2 archiver:(id)arg3;
+- (_Bool)p_unarchiveHint:(id)arg1 fromArchive:(const void *)arg2;
+- (void)p_archiveHint:(id)arg1 intoArchive:(void *)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2 context:(id)arg3;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 @property(readonly, nonatomic) unsigned long long lineCount;
 - (void)trimToCharIndex:(unsigned long long)arg1 inTarget:(id)arg2 removeFootnoteReferenceCount:(unsigned long long)arg3 removeAutoNumberFootnoteCount:(unsigned long long)arg4;
 @property(readonly, nonatomic) _Bool terminatedByBreak;
@@ -54,22 +54,22 @@
 - (struct _NSRange)rangeAndChildHints:(out id *)arg1;
 - (struct _NSRange)p_range;
 @property(readonly, nonatomic) struct _NSRange range;
-@property(readonly, nonatomic) NSObject<TSWPTopicNumberHints> *topicNumbers;
+@property(readonly, nonatomic) NSObject<TSWPTopicNumberHints> *topicNumberHints;
 @property(readonly, nonatomic) id <TSDHint> lastChildHint;
 @property(readonly, nonatomic) id <TSDHint> firstChildHint;
 - (void)updateRangeForIndexPath:(id)arg1 withStorage:(id)arg2;
 - (_Bool)syncsFlowRanges:(id)arg1 withEndOfPageHint:(id)arg2;
 - (_Bool)syncsWithEndOfPageHint:(id)arg1 bodyStorage:(id)arg2 flowRanges:(id)arg3;
 - (void)offsetStartCharIndexBy:(long long)arg1 charIndex:(unsigned long long)arg2;
-- (id)flowTopicNumbers;
+- (id)flowTopicNumberHints;
 - (id)flowHints;
 - (id)hints;
 - (id)lastHint;
 - (id)firstHint;
 - (id)lastColumn;
 - (id)firstColumn;
-- (void)setFlowHints:(id)arg1 flowTopicNumbers:(id)arg2;
-- (void)setHints:(id)arg1 topicNumbers:(id)arg2;
+- (void)setFlowHints:(id)arg1 flowTopicNumberHints:(id)arg2;
+- (void)setHints:(id)arg1 topicNumberHints:(id)arg2;
 - (id)copyForCaching;
 - (id)copyForArchiving;
 

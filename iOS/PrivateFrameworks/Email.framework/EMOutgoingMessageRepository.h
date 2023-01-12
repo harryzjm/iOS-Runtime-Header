@@ -14,6 +14,7 @@
 
 @interface EMOutgoingMessageRepository : NSObject <EFLoggable, EMOutgoingMessageRepositoryInterfaceObserver>
 {
+    _Atomic _Bool _hasStartedObservingUnsentChanges;
     EMRemoteConnection *_connection;
     id <EFCancelable> _registrationCancelable;
     id <EFScheduler> _scheduler;
@@ -27,8 +28,8 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSNumber *pendingMessages; // @synthesize pendingMessages=_pendingMessages;
 @property(readonly, nonatomic) NSMutableArray *observers; // @synthesize observers=_observers;
-@property(retain, nonatomic) id <EFScheduler> scheduler; // @synthesize scheduler=_scheduler;
-@property(retain, nonatomic) id <EFCancelable> registrationCancelable; // @synthesize registrationCancelable=_registrationCancelable;
+@property(readonly, nonatomic) id <EFScheduler> scheduler; // @synthesize scheduler=_scheduler;
+@property(retain) id <EFCancelable> registrationCancelable; // @synthesize registrationCancelable=_registrationCancelable;
 @property(retain) EMRemoteConnection *connection; // @synthesize connection=_connection;
 - (void)updateObservers;
 - (void)removeObserver:(id)arg1;

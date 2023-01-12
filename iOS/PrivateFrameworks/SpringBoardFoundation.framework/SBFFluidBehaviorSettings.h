@@ -6,11 +6,12 @@
 
 #import <PrototypeTools/PTSettings.h>
 
+#import <SpringBoardFoundation/BSDescriptionProviding-Protocol.h>
 #import <SpringBoardFoundation/UIViewSpringAnimationBehaviorDescribing-Protocol.h>
 
-@class NSString;
+@class NSString, PTFrameRateRangeSettings;
 
-@interface SBFFluidBehaviorSettings : PTSettings <UIViewSpringAnimationBehaviorDescribing>
+@interface SBFFluidBehaviorSettings : PTSettings <BSDescriptionProviding, UIViewSpringAnimationBehaviorDescribing>
 {
     _Bool _smoothingAndProjectionEnabled;
     long long _behaviorType;
@@ -28,11 +29,15 @@
     double _trackingResponseSmoothing;
     double _inertialTargetSmoothingRatio;
     double _inertialProjectionDeceleration;
+    PTFrameRateRangeSettings *_preferredFrameRateRange;
+    struct CAFrameRateRange _frameRateRange;
 }
 
 + (id)_moduleWithSectionTitle:(id)arg1;
 + (id)settingsControllerModule;
 - (void).cxx_destruct;
+@property(nonatomic) struct CAFrameRateRange frameRateRange; // @synthesize frameRateRange=_frameRateRange;
+@property(retain, nonatomic) PTFrameRateRangeSettings *preferredFrameRateRange; // @synthesize preferredFrameRateRange=_preferredFrameRateRange;
 @property(nonatomic) double inertialProjectionDeceleration; // @synthesize inertialProjectionDeceleration=_inertialProjectionDeceleration;
 @property(nonatomic) double inertialTargetSmoothingRatio; // @synthesize inertialTargetSmoothingRatio=_inertialTargetSmoothingRatio;
 @property(nonatomic) double trackingResponseSmoothing; // @synthesize trackingResponseSmoothing=_trackingResponseSmoothing;
@@ -49,13 +54,25 @@
 @property(nonatomic) double deceleration; // @synthesize deceleration=_deceleration;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(nonatomic) long long behaviorType; // @synthesize behaviorType=_behaviorType;
+- (void)setFrameRateRange:(struct CAFrameRateRange)arg1 highFrameRateReason:(unsigned int)arg2;
 - (double)_effectiveTrackingRetargetImpulse;
 - (double)_effectiveTrackingResponse;
 - (double)_effectiveTrackingDampingRatio;
 - (double)settlingDuration;
+- (id)BSAnimationSettings;
+- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)descriptionWithMultilinePrefix:(id)arg1;
+- (id)succinctDescriptionBuilder;
+- (id)succinctDescription;
+@property(readonly, copy) NSString *description;
 - (CDStruct_aa45ca86)parametersForTransitionFromState:(int)arg1 toState:(int)arg2;
 - (void)setDefaultCriticallyDampedValues;
 - (void)setDefaultValues;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

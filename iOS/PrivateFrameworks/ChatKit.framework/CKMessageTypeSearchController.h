@@ -28,6 +28,9 @@
 @property(nonatomic) _Bool gotResults; // @synthesize gotResults=_gotResults;
 @property(retain, nonatomic) NSSet *intermediaryResults; // @synthesize intermediaryResults=_intermediaryResults;
 @property(nonatomic) _Bool searchTerminated; // @synthesize searchTerminated=_searchTerminated;
+- (_Bool)isTokenizationSearchController;
+- (void)removeFromCache:(id)arg1;
+- (id)itemProviderForSearchResult:(id)arg1;
 - (void)deleteAttachmentForResult:(id)arg1;
 - (id)menuElementsForResult:(id)arg1 atRect:(struct CGRect)arg2;
 - (_Bool)wantsDeleteAction;
@@ -40,6 +43,7 @@
 - (void)postProcessAndUpdateResults:(id)arg1;
 - (id)queryResultsForItems:(id)arg1;
 - (void)searchEnded;
+- (CDUnknownBlockType)createFoundItemsHandler;
 - (void)searchWithText:(id)arg1 mode:(unsigned long long)arg2;
 - (void)fractionalWidth:(double *)arg1 count:(unsigned long long *)arg2 forLayoutWidth:(unsigned long long)arg3;
 - (unsigned long long)maxResultsForMode:(unsigned long long)arg1;

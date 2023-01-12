@@ -11,6 +11,7 @@
 @property(readonly, nonatomic) NSString *daSyncToken;
 @property(readonly, nonatomic) NSString *externalModificationTag;
 @property(readonly, nonatomic) NSString *externalIdentifier;
+- (_Bool)shouldUseExternalIdentifierAsDeletionKey;
 - (NSString *)externalIdentifierForMarkedForDeletionObject;
 @end
 

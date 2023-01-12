@@ -10,8 +10,7 @@
 @protocol HDPairedDeviceCapabilityProviding
 @property(nonatomic) __weak id <HDPairedDeviceCapabilityProvidingDelegate> delegate;
 - (void)startListeningForUpdates;
-- (NSNumber *)isCapabilitySupported:(NSUUID *)arg1 onDevice:(NRDevice *)arg2 error:(id *)arg3;
-- (NRDevice *)deviceForPairingID:(NSUUID *)arg1;
+- (_Bool)isCapabilitySupported:(NSUUID *)arg1 onDevice:(NRDevice *)arg2;
 - (NRDevice *)activePairedDevice;
 - (NSNumber *)isCapabilitySupportedOnActivePairedDevice:(NSUUID *)arg1 error:(id *)arg2;
 @end

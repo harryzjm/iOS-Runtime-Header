@@ -8,14 +8,16 @@
 
 #import <PhotosUI/PXFeedbackImageQualityUIViewControllerDelegate-Protocol.h>
 
-@class NSString;
+@class NSString, PXFeedbackImageQualityUIViewController;
 
 __attribute__((visibility("hidden")))
 @interface PUInternalImageQualityFeedbackActivity : PXActivity <PXFeedbackImageQualityUIViewControllerDelegate>
 {
+    PXFeedbackImageQualityUIViewController *_feedbackController;
 }
 
 + (long long)activityCategory;
+- (void).cxx_destruct;
 - (void)feedbackImageQualityUIViewController:(id)arg1 didFinish:(_Bool)arg2;
 - (id)activityViewController;
 - (_Bool)canPerformWithActivityItems:(id)arg1;

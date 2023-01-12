@@ -16,7 +16,7 @@
 @property(readonly, nonatomic) CDStruct_79de6ffd xAxisDescriptor; // @synthesize xAxisDescriptor=_xAxisDescriptor;
 @property(readonly, nonatomic) CDUnknownBlockType function; // @synthesize function=_function;
 - (double)_xAxisValueForNormalizedPosition:(double)arg1;
-- (void)renderInBuffer:(vector_12bd641b *)arg1 atFrame:(unsigned long long)arg2;
+- (void)renderInBuffer:(void *)arg1 atFrame:(unsigned long long)arg2;
 - (id)initWithUnivariateFunction:(CDUnknownBlockType)arg1 sampleRate:(double)arg2 envelope:(id)arg3 xAxisDescriptor:(CDStruct_79de6ffd)arg4 yAxisDescriptor:(CDStruct_79de6ffd)arg5;
 
 @end

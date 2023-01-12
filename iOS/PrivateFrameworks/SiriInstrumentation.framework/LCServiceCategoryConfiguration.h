@@ -4,26 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProtocolBuffer/PBCodable.h>
-
 @class LCServiceBlacklistedFields, LCServiceLoggingParameters, NSData;
 
-@interface LCServiceCategoryConfiguration : PBCodable
+@interface LCServiceCategoryConfiguration
 {
-    _Bool _hasEventType;
-    _Bool _hasCategoryParameters;
-    _Bool _hasBlacklist;
     int _eventType;
     LCServiceLoggingParameters *_categoryParameters;
     LCServiceBlacklistedFields *_blacklist;
+    struct {
+        unsigned int eventType:1;
+    } _has;
+    _Bool _hasCategoryParameters;
+    _Bool _hasBlacklist;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool hasBlacklist; // @synthesize hasBlacklist=_hasBlacklist;
-@property(retain, nonatomic) LCServiceBlacklistedFields *blacklist; // @synthesize blacklist=_blacklist;
 @property(nonatomic) _Bool hasCategoryParameters; // @synthesize hasCategoryParameters=_hasCategoryParameters;
+@property(retain, nonatomic) LCServiceBlacklistedFields *blacklist; // @synthesize blacklist=_blacklist;
 @property(retain, nonatomic) LCServiceLoggingParameters *categoryParameters; // @synthesize categoryParameters=_categoryParameters;
-@property(nonatomic) _Bool hasEventType; // @synthesize hasEventType=_hasEventType;
 @property(nonatomic) int eventType; // @synthesize eventType=_eventType;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
@@ -33,6 +32,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
+@property(nonatomic) _Bool hasEventType;
 
 @end
 

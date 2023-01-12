@@ -13,9 +13,13 @@
     NSString *_identifier;
     NSDictionary *_observationMap;
     NSDate *_resultDate;
+    NSDictionary *_userInfo;
+    id _bookmark;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) id bookmark; // @synthesize bookmark=_bookmark;
+@property(retain, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 @property(retain, nonatomic) NSDate *resultDate; // @synthesize resultDate=_resultDate;
 @property(copy, nonatomic) NSDictionary *observationMap; // @synthesize observationMap=_observationMap;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;

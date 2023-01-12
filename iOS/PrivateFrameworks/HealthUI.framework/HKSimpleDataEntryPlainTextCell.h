@@ -39,6 +39,7 @@
 - (void)beginEditing;
 - (void)_updateForCurrentSizeCategory;
 - (void)_setupLayoutConstraints;
+- (void)layoutMarginsDidChange;
 - (void)_setupLabels;
 - (void)_setupInputTextFieldWithIntention:(long long)arg1;
 - (id)initWithIntention:(long long)arg1 reuseIdentifier:(id)arg2;

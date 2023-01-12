@@ -8,14 +8,12 @@
 {
 }
 
+- (_Bool)layoutFrameShouldEncloseInfoGeometry;
 - (_Bool)supportsAxisLabelAngle;
 - (_Bool)shouldChangeExplosionWithPreviousChartType:(id)arg1 chartInfo:(id)arg2 seriesList:(id)arg3;
 - (id)animationDeliveryStylesForFilter:(id)arg1;
 - (_Bool)explosionAffectsChartBodyBounds;
 - (Class)repClass;
-- (id)init;
-- (struct CGSize)mungeBodySize:(struct CGSize)arg1;
-- (_Bool)layoutFrameShouldEncloseInfoGeometry;
 
 @end
 

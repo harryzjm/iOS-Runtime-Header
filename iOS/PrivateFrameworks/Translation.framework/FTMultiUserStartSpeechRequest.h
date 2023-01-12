@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_3f188f44)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_3f188f44)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSString *primary_speech_id;
 @property(readonly, nonatomic) NSArray *user_parameters;
 @property(readonly, nonatomic) FTStartSpeechRequest *start_speech_request;

@@ -4,21 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/_UIDiffableDataSourceOutlineSectionController.h>
+#import <objc/NSObject.h>
 
-@class NSManagedObjectContext;
+@class _UIDiffableDataSourceOutlineSectionController;
 
-@interface ICRDSectionController : _UIDiffableDataSourceOutlineSectionController
+@interface ICRDSectionController : NSObject
 {
-    NSManagedObjectContext *_legacyViewContext;
-    NSManagedObjectContext *_modernViewContext;
+    _UIDiffableDataSourceOutlineSectionController *_outlineSectionController;
     unsigned long long _sectionControllerType;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long sectionControllerType; // @synthesize sectionControllerType=_sectionControllerType;
-@property(readonly, nonatomic) NSManagedObjectContext *modernViewContext; // @synthesize modernViewContext=_modernViewContext;
-@property(readonly, nonatomic) NSManagedObjectContext *legacyViewContext; // @synthesize legacyViewContext=_legacyViewContext;
+@property(readonly, nonatomic) _UIDiffableDataSourceOutlineSectionController *outlineSectionController; // @synthesize outlineSectionController=_outlineSectionController;
+- (id)snapshotForSection:(id)arg1;
 - (id)initWithDiffableDataSource:(id)arg1 sectionControllerType:(unsigned long long)arg2;
 
 @end

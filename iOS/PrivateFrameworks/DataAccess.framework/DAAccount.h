@@ -176,6 +176,7 @@
 @property(copy, nonatomic) NSString *username;
 - (id)displayName;
 @property(copy, nonatomic) NSString *accountDescription;
+- (id)redactedDescription;
 @property(readonly, nonatomic) NSString *publicDescription;
 @property(readonly, nonatomic) NSString *changeTrackingID;
 - (void)_setPersistentUUID:(id)arg1;
@@ -212,6 +213,7 @@
 - (id)reportShareRequestAsJunkForCalendar:(id)arg1 consumer:(id)arg2;
 - (id)respondToShareRequestForCalendar:(id)arg1 withResponse:(long long)arg2 consumer:(id)arg3;
 - (void)cancelCalendarDirectorySearchWithID:(id)arg1;
+- (void)performGroupExpansionForPrincipalPath:(id)arg1 consumer:(id)arg2;
 - (id)performCalendarDirectorySearchForTerms:(id)arg1 recordTypes:(id)arg2 resultLimit:(unsigned long long)arg3 consumer:(id)arg4;
 - (void)cancelUpdateGrantedDelegatePermissionRequestWithID:(id)arg1;
 - (id)updateGrantedDelegatePermission:(id)arg1 consumer:(id)arg2;

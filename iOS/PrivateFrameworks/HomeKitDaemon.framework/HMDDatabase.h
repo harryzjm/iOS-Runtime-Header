@@ -12,7 +12,8 @@
 #import <HomeKitDaemon/HMDDatabaseZoneDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMBCloudDatabase, HMBLocalDatabase, HMDLogEventDispatcher, HMFUnfairLock, NSHashTable, NSMapTable, NSString;
+@class HMBCloudDatabase, HMBLocalDatabase, HMFUnfairLock, NSHashTable, NSMapTable, NSString;
+@protocol HMMLogEventSubmitting;
 
 @interface HMDDatabase : HMFObject <HMBLocalDatabaseDelegate, HMBCloudDatabaseDelegate, HMDDatabaseZoneDelegate, HMFLogging, HMDDatabase>
 {
@@ -22,16 +23,17 @@
     NSHashTable *_delegates;
     NSMapTable *_zoneDelegatesByLocalZone;
     HMFUnfairLock *_lock;
-    HMDLogEventDispatcher *_logEventDispatcher;
+    id <HMMLogEventSubmitting> _logEventSubmitter;
 }
 
 + (id)logCategory;
 + (id)cameraClipsDatabase;
 + (id)defaultDatabase;
++ (void)registerQueries;
 + (id)defaultLocalDatabaseFileURL;
 - (void).cxx_destruct;
 @property _Bool hasStarted; // @synthesize hasStarted=_hasStarted;
-@property(readonly) HMDLogEventDispatcher *logEventDispatcher; // @synthesize logEventDispatcher=_logEventDispatcher;
+@property(readonly) id <HMMLogEventSubmitting> logEventSubmitter; // @synthesize logEventSubmitter=_logEventSubmitter;
 @property(readonly) HMFUnfairLock *lock; // @synthesize lock=_lock;
 @property(readonly) HMBCloudDatabase *cloudDatabase; // @synthesize cloudDatabase=_cloudDatabase;
 @property(readonly) HMBLocalDatabase *localDatabase; // @synthesize localDatabase=_localDatabase;
@@ -57,7 +59,6 @@
 @property(readonly) NSHashTable *delegates; // @synthesize delegates=_delegates;
 - (id)removeZonesWithID:(id)arg1 isPrivate:(_Bool)arg2;
 - (id)zonesWithID:(id)arg1 isPrivate:(_Bool)arg2 shouldCreate:(_Bool)arg3 configuration:(id)arg4 delegate:(id)arg5 error:(id *)arg6;
-- (id)declineInvitation:(id)arg1;
 - (id)acceptInvitation:(id)arg1;
 - (id)removeLocalAndCloudDataForLocalZone:(id)arg1;
 - (id)removeSharedZonesWithName:(id)arg1;
@@ -71,7 +72,7 @@
 - (void)start;
 - (void)removeDelegate:(id)arg1;
 - (void)addDelegate:(id)arg1;
-- (id)initWithLocalDatabase:(id)arg1 cloudDatabase:(id)arg2 logEventDispatcher:(id)arg3;
+- (id)initWithLocalDatabase:(id)arg1 cloudDatabase:(id)arg2 logEventSubmitter:(id)arg3;
 - (id)initWithFileURL:(id)arg1 cloudContainerIdentifier:(id)arg2 cloudContainerSourceApplicationBundleIdentifier:(id)arg3;
 
 // Remaining properties

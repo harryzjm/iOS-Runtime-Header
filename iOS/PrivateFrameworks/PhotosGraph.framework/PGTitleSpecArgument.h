@@ -15,8 +15,8 @@
 - (void).cxx_destruct;
 @property(retain) id inputVariable; // @synthesize inputVariable=_inputVariable;
 @property _Bool requiresInput; // @synthesize requiresInput=_requiresInput;
-- (id)_resolvedStringWithMomentNodes:(id)arg1 features:(id)arg2;
-- (id)_resolvedStringWithMomentNodes:(id)arg1;
+- (id)_resolvedStringWithMomentNodes:(id)arg1 features:(id)arg2 argumentEvaluationContext:(id)arg3;
+- (id)_resolvedStringWithMomentNodes:(id)arg1 argumentEvaluationContext:(id)arg2;
 
 @end
 

@@ -13,9 +13,9 @@
 
 @interface TSWPTypesetterTextSource : NSObject <TSWPTextSource>
 {
-    vector_06e666a8 _spaceCharIndexes;
-    vector_06e666a8 _bidiCharIndexes;
-    vector_553f084a _bidiDirectionMarkIsRTLVector;
+    vector_2056c7c2 _spaceCharIndexes;
+    vector_2056c7c2 _bidiCharIndexes;
+    struct vector<bool, std::allocator<bool>> _bidiDirectionMarkIsRTLVector;
     id <TSWPTextSource> _source;
     TSWPRangeMap *_rangeMap;
     unsigned long long _length;

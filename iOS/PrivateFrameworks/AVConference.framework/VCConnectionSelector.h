@@ -13,8 +13,10 @@ __attribute__((visibility("hidden")))
 @interface VCConnectionSelector : NSObject
 {
     _Bool _isMultiwaySession;
-    CDStruct_e8d5fb5c _connectionSelectionPolicy;
+    CDStruct_155bd25f _connectionSelectionPolicy;
     NSArray *_linkPreferenceOrder;
+    CDStruct_f24b774a _serverLinks;
+    CDStruct_f24b774a _endToEndLinks;
     id <VCConnectionProtocol> _primaryConnection;
     id <VCConnectionProtocol> _secondaryConnection;
     id <VCConnectionProtocol> _connectionForDuplication;
@@ -22,6 +24,7 @@ __attribute__((visibility("hidden")))
     id <VCConnectionProtocol> _lastPrimaryConnectionInUse;
 }
 
+@property(readonly) CDStruct_f24b774a serverLinks; // @synthesize serverLinks=_serverLinks;
 @property(copy, nonatomic) NSArray *linkPreferenceOrder; // @synthesize linkPreferenceOrder=_linkPreferenceOrder;
 @property(retain, nonatomic) id <VCConnectionProtocol> lastPrimaryConnectionInUse; // @synthesize lastPrimaryConnectionInUse=_lastPrimaryConnectionInUse;
 @property(retain, nonatomic) id <VCConnectionProtocol> connectionForDuplicationNonProbingVersion; // @synthesize connectionForDuplicationNonProbingVersion=_connectionForDuplicationNonProbingVersion;
@@ -29,11 +32,14 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) id <VCConnectionProtocol> secondaryConnection; // @synthesize secondaryConnection=_secondaryConnection;
 @property(retain, nonatomic) id <VCConnectionProtocol> primaryConnection; // @synthesize primaryConnection=_primaryConnection;
 - (_Bool)isPrimaryConnectionSameAsConnection:(id)arg1;
-- (void)updateConnectionSelectionPolicyWithPreferRelayOverP2P:(_Bool)arg1 preferNonVPN:(_Bool)arg2;
-- (CDStruct_2a4d9400 *)getConnectionSelectionPolicy;
+- (void)selectConnectionForGroupType:(unsigned char)arg1 fromConnectionArray:(id)arg2 asPrimary:(_Bool)arg3;
+- (void)updateSelectedConnectionsForGroupType:(unsigned char)arg1 connectionRemoved:(id)arg2 connectionArray:(id)arg3;
+- (void)updateSelectedConnectionsForGroupType:(unsigned char)arg1 connectionAdded:(id)arg2;
+- (void)updateConnectionSelectionPolicyWithPreferRelayOverP2P:(_Bool)arg1 preferNonVPN:(_Bool)arg2 preferE2E:(_Bool)arg3;
+- (CDStruct_155bd25f *)getConnectionSelectionPolicy;
 - (void)useConnectionAsPrimary:(id)arg1;
 - (_Bool)selectPrimaryAndSecondaryWithConnection:(id)arg1;
-- (void)updateConnectionForDuplicationForDuplicationReason:(unsigned char)arg1 duplicationEnhancementEnabled:(_Bool)arg2 preferredLocalInterfaceForDuplication:(int)arg3 preferredRemoteInterfaceForDuplication:(int)arg4 connectionArray:(id)arg5;
+- (void)updateConnectionForDuplicationForDuplicationReason:(unsigned char)arg1 duplicationEnhancementEnabled:(_Bool)arg2 preferredLocalInterfaceForDuplication:(unsigned char)arg3 preferredRemoteInterfaceForDuplication:(unsigned char)arg4 connectionArray:(id)arg5;
 - (void)updateSecondaryWithConnection:(id)arg1;
 - (void)updatePrimaryWithConnection:(id)arg1;
 - (void)dealloc;

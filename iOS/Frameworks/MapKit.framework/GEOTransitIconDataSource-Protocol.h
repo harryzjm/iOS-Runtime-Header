@@ -6,10 +6,13 @@
 
 #import <MapKit/NSObject-Protocol.h>
 
+@class GEOStyleAttributes;
+
 @protocol GEOTransitIconDataSource <NSObject>
 @property(readonly, nonatomic) int iconType;
 
 @optional
+@property(readonly, nonatomic) GEOStyleAttributes *styleAttributes;
 @property(readonly, nonatomic) unsigned int iconAttributeValue;
 @property(readonly, nonatomic) unsigned int iconAttributeKey;
 @property(readonly, nonatomic) unsigned int defaultTransitType;

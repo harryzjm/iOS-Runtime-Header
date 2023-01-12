@@ -8,10 +8,11 @@
 
 #import <ChatKit/CKAppMenuItem-Protocol.h>
 
-@class NSString, UIImage;
+@class NSString;
 
 @interface IMBalloonPlugin (CKAppMenuItem) <CKAppMenuItem>
-@property(readonly, nonatomic) UIImage *__ck_image;
++ (id)__ck_appIconFromPayloadDictionary:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
+- (id)__ck_imageForTraitCollection:(id)arg1;
 @property(readonly, nonatomic) NSString *__ck_displayName;
 @property(readonly, nonatomic) id __ck_identifier;
 - (id)recentsBadgeIcon;

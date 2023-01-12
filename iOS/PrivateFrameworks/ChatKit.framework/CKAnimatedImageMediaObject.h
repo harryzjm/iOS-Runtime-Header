@@ -8,6 +8,7 @@
 {
 }
 
++ (double)maxPixelDimensionOfThumbnailWithImagePixelSize:(struct CGSize)arg1 forWidth:(double)arg2 isSticker:(_Bool)arg3;
 + (id)UTITypes;
 + (Class)__ck_attachmentItemClass;
 - (_Bool)validPreviewExistsAtURL:(id)arg1;
@@ -20,10 +21,13 @@
 - (id)thumbnailAtIndex:(unsigned long long)arg1 forWidth:(double)arg2 imageData:(id)arg3 isSticker:(_Bool)arg4 orientation:(BOOL)arg5;
 - (id)scaledThumbnailFromThumbnail:(id)arg1 forWidth:(double)arg2 isSticker:(_Bool)arg3;
 - (id)savedAnimatedPreviewFromURL:(id)arg1 forOrientation:(BOOL)arg2;
+- (id)savedPreviewFromURL:(id)arg1 forOrientation:(BOOL)arg2;
 - (id)notificationCenter;
+- (id)generateAndPersistAnimatedPreviewFromSourceURL:(id)arg1 forWidth:(double)arg2 withTransferGUID:(id)arg3 isSticker:(_Bool)arg4;
 - (id)generateAndPersistAnimatedPreviewFromImageData:(id)arg1 forWidth:(double)arg2 withTransferGUID:(id)arg3 isSticker:(_Bool)arg4;
 - (void)prewarmPreviewForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (id)previewForWidth:(double)arg1 orientation:(BOOL)arg2;
+- (_Bool)canQuickSave;
 - (id)metricsCollectorMediaType;
 - (id)animatedImageForWidth:(double)arg1;
 

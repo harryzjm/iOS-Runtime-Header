@@ -32,39 +32,15 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
-+ (Class)operandType;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (id)operandAtIndex:(unsigned long long)arg1;
-- (unsigned long long)operandsCount;
-- (void)addOperand:(id)arg1;
-- (void)clearOperands;
-@property(retain, nonatomic) NSMutableArray *operands;
-- (int)StringAsOperator:(id)arg1;
-- (id)operatorAsString:(int)arg1;
-@property(nonatomic) _Bool hasOperator;
-@property(nonatomic) int operator;
-@property(retain, nonatomic) GEOPDSInferredValue *inferredValue;
-@property(readonly, nonatomic) _Bool hasInferredValue;
-- (int)StringAsInferredType:(id)arg1;
-- (id)inferredTypeAsString:(int)arg1;
-@property(nonatomic) _Bool hasInferredType;
-@property(nonatomic) int inferredType;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

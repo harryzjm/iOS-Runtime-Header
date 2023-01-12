@@ -8,7 +8,7 @@
 
 #import <Photos/PHImportDuplicateCheckerItem-Protocol.h>
 
-@class AVAssetImageGenerator, IPAMetadata, NSArray, NSData, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSNumber, NSSet, NSString, NSTimeZone, NSURL, PHImportSource;
+@class AVAssetImageGenerator, NSArray, NSData, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSNumber, NSSet, NSString, NSTimeZone, NSURL, PFMetadata, PHImportAssetFilePresenter, PHImportSource, UTType;
 @protocol OS_dispatch_queue;
 
 @interface PHImportAsset : NSObject <PHImportDuplicateCheckerItem>
@@ -25,9 +25,8 @@
     _Bool _treatAsUnsupportedRAW;
     _Bool _sidecarsLoaded;
     unsigned char _fileLocation;
-    unsigned short _resourceSubType;
-    id _uuid;
-    IPAMetadata *_metadata;
+    NSString *_uuid;
+    PFMetadata *_metadata;
     NSMutableArray *_relatedBurstAssets;
     PHImportAsset *_burstPick;
     id _avchdAssetId;
@@ -35,7 +34,7 @@
     NSMutableDictionary *_duplicates;
     NSDate *_lastDuplicateCheck;
     NSURL *_url;
-    NSString *_uti;
+    UTType *_contentType;
     NSString *_fileName;
     NSString *_createdFileName;
     unsigned long long _fileSize;
@@ -55,12 +54,14 @@
     AVAssetImageGenerator *_imageGenerator;
     NSObject<OS_dispatch_queue> *_loadSidecars;
     NSString *_importIdentifier;
-    NSMutableDictionary *_filePresenters;
-    NSDate *_exifImageDate;
+    PHImportAssetFilePresenter *_filePresenter;
     unsigned long long _copyMethod;
     NSData *_fileData;
     long long _resourceType;
+    unsigned long long _resourceSubType;
     NSMutableDictionary *_sidecarAssetsByType;
+    NSDictionary *_customAssetProperties;
+    struct CGSize _unorientedPixelSize;
     struct CGSize _thumbnailSize;
     struct CGSize _imageSize;
 }
@@ -70,19 +71,19 @@
 + (id)loadDatesForAssets:(id)arg1 atEnd:(CDUnknownBlockType)arg2;
 + (id)loadDatesForAssetSequence:(id)arg1 atEnd:(CDUnknownBlockType)arg2;
 + (void)logImageDateFileDateDifferencesForAsset:(id)arg1;
-+ (id)assetFileForURL:(id)arg1 source:(id)arg2;
 + (id)assetFileForURL:(id)arg1 source:(id)arg2 withUuid:(id)arg3;
++ (id)assetFileForURL:(id)arg1 source:(id)arg2;
 + (_Bool)isValidAsSidecar:(id)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSDictionary *customAssetProperties; // @synthesize customAssetProperties=_customAssetProperties;
 @property(retain, nonatomic) NSMutableDictionary *sidecarAssetsByType; // @synthesize sidecarAssetsByType=_sidecarAssetsByType;
-@property(nonatomic) unsigned short resourceSubType; // @synthesize resourceSubType=_resourceSubType;
+@property(nonatomic) unsigned long long resourceSubType; // @synthesize resourceSubType=_resourceSubType;
 @property(nonatomic) long long resourceType; // @synthesize resourceType=_resourceType;
 @property(readonly, nonatomic) __weak PHImportSource *source; // @synthesize source=_source;
 @property(nonatomic) unsigned char fileLocation; // @synthesize fileLocation=_fileLocation;
 @property(retain, nonatomic) NSData *fileData; // @synthesize fileData=_fileData;
 @property(nonatomic) unsigned long long copyMethod; // @synthesize copyMethod=_copyMethod;
-@property(retain, nonatomic) NSDate *exifImageDate; // @synthesize exifImageDate=_exifImageDate;
-@property(retain, nonatomic) NSMutableDictionary *filePresenters; // @synthesize filePresenters=_filePresenters;
+@property(retain, nonatomic) PHImportAssetFilePresenter *filePresenter; // @synthesize filePresenter=_filePresenter;
 @property(retain, nonatomic) NSString *importIdentifier; // @synthesize importIdentifier=_importIdentifier;
 @property(nonatomic) _Bool sidecarsLoaded; // @synthesize sidecarsLoaded=_sidecarsLoaded;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *loadSidecars; // @synthesize loadSidecars=_loadSidecars;
@@ -90,6 +91,7 @@
 @property(nonatomic) struct CGSize imageSize; // @synthesize imageSize=_imageSize;
 @property(nonatomic) _Bool treatAsUnsupportedRAW; // @synthesize treatAsUnsupportedRAW=_treatAsUnsupportedRAW;
 @property(nonatomic) struct CGSize thumbnailSize; // @synthesize thumbnailSize=_thumbnailSize;
+@property(readonly, nonatomic) struct CGSize unorientedPixelSize; // @synthesize unorientedPixelSize=_unorientedPixelSize;
 @property(retain, nonatomic) NSDate *fileModificationDate; // @synthesize fileModificationDate=_fileModificationDate;
 @property(retain, nonatomic) NSDate *fileCreationDate; // @synthesize fileCreationDate=_fileCreationDate;
 @property(retain, nonatomic) PHImportAsset *audioAsset; // @synthesize audioAsset=_audioAsset;
@@ -106,7 +108,7 @@
 @property(nonatomic) unsigned long long fileSize; // @synthesize fileSize=_fileSize;
 @property(retain, nonatomic) NSString *createdFileName; // @synthesize createdFileName=_createdFileName;
 @property(retain, nonatomic) NSString *fileName; // @synthesize fileName=_fileName;
-@property(retain, nonatomic) NSString *uti; // @synthesize uti=_uti;
+@property(retain, nonatomic) UTType *contentType; // @synthesize contentType=_contentType;
 @property(retain, nonatomic) NSURL *url; // @synthesize url=_url;
 @property(retain) NSDate *lastDuplicateCheck; // @synthesize lastDuplicateCheck=_lastDuplicateCheck;
 @property(retain) NSMutableDictionary *duplicates; // @synthesize duplicates=_duplicates;
@@ -116,7 +118,7 @@
 @property(retain, nonatomic) PHImportAsset *burstPick; // @synthesize burstPick=_burstPick;
 @property(retain, nonatomic) NSMutableArray *relatedBurstAssets; // @synthesize relatedBurstAssets=_relatedBurstAssets;
 @property unsigned char duplicateStateConfidence; // @synthesize duplicateStateConfidence=_duplicateStateConfidence;
-@property(retain, nonatomic) id uuid; // @synthesize uuid=_uuid;
+@property(retain, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 - (_Bool)isEqualToImportAsset:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
@@ -133,8 +135,8 @@
 @property(readonly, nonatomic) NSString *assetDescription;
 @property(readonly, nonatomic) NSSet *keywordTitles;
 @property(readonly, nonatomic) NSString *title;
-@property(readonly, nonatomic) NSTimeZone *exifTimeZone;
-- (id)timezoneCorrectedExifImageDate;
+@property(readonly, nonatomic) NSTimeZone *timeZone;
+@property(readonly, nonatomic) NSDate *creationDate;
 @property(readonly) id originatingAssetID;
 - (void)copyToURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)copyFromURL:(id)arg1 toURL:(id)arg2;
@@ -145,8 +147,7 @@
 - (id)resourceTypes;
 - (_Bool)hasOriginalResourceType;
 - (id)validateMetadataForImportRecord:(id)arg1;
-- (_Bool)isBlessed:(id)arg1 includeXmp:(_Bool)arg2;
-- (_Bool)isValidMetadata:(id)arg1;
+- (_Bool)_loadMetadataIfNecessaryForURL:(id)arg1 detail:(unsigned char)arg2;
 - (struct CGImage *)avThumbnailOfSize:(unsigned long long)arg1 canceler:(id)arg2 error:(id *)arg3;
 - (struct CGImage *)imageThumbnailOfSize:(unsigned long long)arg1 canceler:(id)arg2 error:(id *)arg3;
 - (struct CGImage *)removeBlackBarsFromExifThumbnail:(struct CGImage *)arg1 fullSize:(struct CGSize)arg2;
@@ -155,14 +156,15 @@
 - (id)thumbnailForSize:(unsigned long long)arg1 priority:(unsigned char)arg2 atEnd:(CDUnknownBlockType)arg3;
 - (id)thumbnailForSize:(unsigned long long)arg1 atEnd:(CDUnknownBlockType)arg2;
 - (void)_setMetadata:(id)arg1;
-@property(retain, nonatomic) IPAMetadata *metadata; // @synthesize metadata=_metadata;
+@property(retain, nonatomic) PFMetadata *metadata; // @synthesize metadata=_metadata;
 - (void)loadMetadataAsync:(CDUnknownBlockType)arg1;
 - (void)loadMetadataSync;
 - (void)addBurstAsset:(id)arg1;
 - (_Bool)isAppropriateForUI;
+- (_Bool)hasAdjustments;
 - (id)xmpSidecar;
-- (id)originalAaeSidecar;
-- (id)aaeSidecar;
+- (id)originalAdjustmentSidecar;
+- (id)adjustmentSidecar;
 - (id)slmSidecar;
 - (void)removeSidecarAsset:(id)arg1;
 - (void)addSidecarAsset:(id)arg1;
@@ -181,31 +183,35 @@
 @property(readonly, nonatomic) NSNumber *sampleRate;
 @property(readonly, nonatomic) NSNumber *fps;
 @property(readonly, nonatomic) NSString *codec;
-@property(readonly, nonatomic) NSNumber *shutterSpeed;
-@property(readonly, nonatomic) NSNumber *aperture;
+@property(readonly, nonatomic) NSNumber *exposureTime;
+@property(readonly, nonatomic) NSNumber *fNumber;
 @property(readonly, nonatomic) NSNumber *exposureBias;
+@property(readonly, nonatomic) NSNumber *digitalZoomRatio;
+@property(readonly, nonatomic) NSNumber *focalLengthIn35mm;
 @property(readonly, nonatomic) NSNumber *focalLength;
 @property(readonly, nonatomic) NSNumber *iso;
 @property(readonly, nonatomic) NSNumber *meteringMode;
 @property(readonly, nonatomic) NSNumber *whiteBalance;
 @property(readonly, nonatomic) NSNumber *flashFired;
 @property(readonly, nonatomic) NSString *lensModel;
+@property(readonly, nonatomic) NSString *formattedCameraModel;
 @property(readonly, nonatomic) NSString *cameraModel;
 @property(readonly, nonatomic) NSString *cameraMake;
 @property(readonly, nonatomic) NSNumber *duration;
 - (id)spatialOverCaptureIdentifier;
-- (id)mediaGroupId;
+- (id)livePhotoPairingIdentifier;
 - (int)burstPickType;
 - (id)groupingUUID;
 @property(readonly, nonatomic) NSString *burstUUID;
+@property(readonly, nonatomic) struct CGSize pixelSize;
 - (struct CGSize)cgImageSize;
 - (void)_accessMetadata:(CDUnknownBlockType)arg1;
-@property(readonly, nonatomic) _Bool hasAdjustments;
 @property(readonly, nonatomic) _Bool isViewable;
 @property(readonly, nonatomic) _Bool isTagged;
 - (void)takeAsVideoComplement:(id)arg1;
 - (_Bool)isVideoComplementOf:(id)arg1;
 - (_Bool)performAdditionalLivePhotoChecksOnImageAsset:(id)arg1;
+- (id)makeImportIdentifier;
 - (id)stripMarkerFromName:(id)arg1 markerLocation:(unsigned long long)arg2;
 - (id)basenameForOriginalAdjustmentData;
 - (_Bool)isOriginalAdjustmentData;
@@ -245,10 +251,12 @@
 @property(readonly, nonatomic) id representedObject;
 - (id)descriptionWithPrefix:(id)arg1;
 @property(readonly, copy) NSString *description;
-- (id)initWithSource:(id)arg1 url:(id)arg2 uti:(id)arg3 supportedType:(unsigned char)arg4;
+- (id)initWithSource:(id)arg1 url:(id)arg2 type:(id)arg3 supportedMediaType:(unsigned char)arg4 uuid:(id)arg5;
+- (void)configureSidecarTypeForExtension:(id)arg1;
 - (id)initWithSource:(id)arg1;
-- (_Bool)configureWithUTI:(id)arg1 supportedType:(unsigned char)arg2;
-- (void)updateIsRAW:(_Bool)arg1 uti:(id)arg2;
+- (_Bool)configureWithContentType:(id)arg1 supportedMediaType:(unsigned char)arg2;
+- (void)updateIsRAW:(_Bool)arg1 contentType:(id)arg2;
+- (_Bool)shouldPreserveUUID;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

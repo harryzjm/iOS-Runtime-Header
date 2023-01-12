@@ -28,5 +28,6 @@
 
 @optional
 @property(nonatomic) unsigned long long behavior;
+@property(nonatomic) unsigned long long driverStyle;
 @end
 

@@ -48,10 +48,12 @@
     FIUIChartDateAnchorRule *_subAnchorRule;
     unsigned long long _subTimeInterval;
     double _subAxisVerticalPadding;
+    UIFont *_labelAMPMFont;
 }
 
 + (unsigned long long)_spacingIntervalFromAxisSpacing:(id)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIFont *labelAMPMFont; // @synthesize labelAMPMFont=_labelAMPMFont;
 @property(nonatomic) double subAxisVerticalPadding; // @synthesize subAxisVerticalPadding=_subAxisVerticalPadding;
 @property(nonatomic) _Bool subAxisCapitalize; // @synthesize subAxisCapitalize=_subAxisCapitalize;
 @property(nonatomic) _Bool generateSubAxisDescriptorOnlyForNoonMidnight; // @synthesize generateSubAxisDescriptorOnlyForNoonMidnight=_generateSubAxisDescriptorOnlyForNoonMidnight;

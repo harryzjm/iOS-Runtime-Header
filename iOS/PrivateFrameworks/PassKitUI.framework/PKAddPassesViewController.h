@@ -6,19 +6,20 @@
 
 #import <UIKit/UIViewController.h>
 
-@class NSArray, PKAssertion, PKRemoteAddPassesViewController, _UIAsyncInvocation;
+@class NSArray, PKAssertion, PKPassesXPCContainer, PKRemoteAddPassesViewController, _UIAsyncInvocation;
 @protocol PKAddPassesViewControllerDelegate;
 
 @interface PKAddPassesViewController : UIViewController
 {
     _Bool _viewHasAppeared;
     _Bool _succeeded;
-    unsigned long long _presentationSource;
-    NSArray *_passDataArray;
     _UIAsyncInvocation *_viewServiceCancelRequest;
     PKRemoteAddPassesViewController *_remoteViewController;
     PKAssertion *_contactlessInterfaceAssertion;
     id <PKAddPassesViewControllerDelegate> _delegate;
+    unsigned long long _presentationSource;
+    NSArray *_passes;
+    PKPassesXPCContainer *_passesContainer;
 }
 
 + (_Bool)_shouldForwardViewWillTransitionToSize;
@@ -43,7 +44,9 @@
 - (void)applicationWillResignActive:(id)arg1;
 - (void)applicationDidBecomeActive:(id)arg1;
 - (void)dealloc;
-- (id)initWithPasses:(id)arg1 presentationSource:(unsigned long long)arg2;
+- (id)_initWithPasses:(id)arg1 orPassesContainer:(id)arg2 fromPresentationSource:(unsigned long long)arg3;
+- (id)initWithPassesContainer:(id)arg1 fromPresentationSource:(unsigned long long)arg2;
+- (id)initWithPasses:(id)arg1 fromPresentationSource:(unsigned long long)arg2;
 - (id)initWithPasses:(id)arg1;
 - (id)initWithPass:(id)arg1;
 

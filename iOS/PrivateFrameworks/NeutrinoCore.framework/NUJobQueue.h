@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NUJobPriorityQueue;
+@class NSString, NUJobPriorityQueue;
 @protocol OS_dispatch_queue;
 
 @interface NUJobQueue : NSObject
@@ -15,6 +15,7 @@
     NUJobPriorityQueue *_interactiveQueue;
     NUJobPriorityQueue *_initiatedQueue;
     long long _updateGroupLevel;
+    NSString *_name;
     long long _stage;
 }
 
@@ -34,7 +35,7 @@
 - (id)debugDescription;
 - (id)description;
 - (id)init;
-- (id)initWithStage:(long long)arg1;
+- (id)initWithStage:(long long)arg1 name:(id)arg2;
 
 @end
 

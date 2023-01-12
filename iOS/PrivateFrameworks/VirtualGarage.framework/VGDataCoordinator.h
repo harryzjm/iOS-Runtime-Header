@@ -30,6 +30,7 @@
 - (void)getLatestStateOfVehicle:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)OEMAppsUpdated:(id)arg1;
 - (void)_removeUnpairedIapVehicleIfNeeded;
+- (void)_loadIapVehicles;
 - (void)accessoryUpdatedWithVehicle:(id)arg1;
 - (void)vehicleStateUpdated:(id)arg1;
 - (void)_stopChargeStreamForVehicle:(id)arg1;
@@ -50,7 +51,7 @@
 - (id)_vehicleStateProviderForVehicle:(id)arg1;
 - (unsigned long long)_indexOfVehicleInUnpairedVehicles:(id)arg1;
 - (void)_updateStateOfChargeForVehicle:(id)arg1 syncAcrossDevices:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_updateGarageWithVehicle:(id)arg1 selectVehicle:(_Bool)arg2 syncAcrossDevices:(_Bool)arg3;
+- (void)_updateGarageWithVehicle:(id)arg1 syncAcrossDevices:(_Bool)arg2;
 - (double)_vehicleStateRefreshInterval;
 - (id)deviceIdentifier;
 @property(readonly, copy, nonatomic) NSArray *unpairedVehicles;

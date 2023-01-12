@@ -21,14 +21,13 @@
 }
 
 + (id)_selectedTextByDeletingInteriorSentences:(id)arg1;
-+ (id)_contextStringByTrimmingSuccedingLines:(id)arg1;
-+ (id)_contextStringByTrimmingPrecedingLines:(id)arg1;
 + (id)_string:(id)arg1 byTrimmingWordsAfterIndex:(unsigned long long)arg2;
 + (id)_string:(id)arg1 byTrimmingWordsBeforeIndex:(unsigned long long)arg2;
 + (id)documentStateWithContextBefore:(id)arg1 markedText:(id)arg2 selectedRange:(struct _NSRange)arg3 contextAfter:(id)arg4;
 + (id)documentStateWithContextBefore:(id)arg1 selectedText:(id)arg2 contextAfter:(id)arg3;
 + (_Bool)supportsSecureCoding;
 + (id)unboundedDocumentStateForTestingWithContextBefore:(id)arg1 selectedText:(id)arg2 contextAfter:(id)arg3;
++ (id)documentStateForTestingWithContextBefore:(id)arg1 selectedText:(id)arg2 contextAfter:(id)arg3 markedText:(id)arg4 selectedRangeInMarkedText:(struct _NSRange)arg5;
 + (id)documentStateForTestingWithContextBefore:(id)arg1 selectedText:(id)arg2 contextAfter:(id)arg3;
 + (id)documentStateForTestingWithText:(id)arg1 selectedRange:(struct _NSRange)arg2;
 - (void).cxx_destruct;
@@ -37,11 +36,13 @@
 @property(readonly, nonatomic) NSString *selectedText; // @synthesize selectedText=_selectedText;
 @property(readonly, nonatomic) NSString *markedText; // @synthesize markedText=_markedText;
 @property(readonly, nonatomic) NSString *contextBeforeInput; // @synthesize contextBeforeInput=_contextBeforeInput;
+@property(readonly, nonatomic) NSString *string;
 - (_Bool)documentIsEmpty;
 - (id)description;
 - (unsigned long long)hash;
 - (unsigned long long)hashString:(id)arg1 intoHashValue:(unsigned long long)arg2;
 - (_Bool)isEqual:(id)arg1;
+- (_Bool)isEqualIgnoringMarkedText:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

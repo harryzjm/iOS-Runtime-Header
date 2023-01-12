@@ -12,8 +12,9 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilitySetupDateCellForKey:(id)arg1;
+- (void)_datePickerChanged:(id)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (id)_endDateCell;
+- (void)_axUpdateEndDateCellLabel;
 - (void)editor:(id)arg1 didSelectSubitem:(unsigned long long)arg2;
 
 @end

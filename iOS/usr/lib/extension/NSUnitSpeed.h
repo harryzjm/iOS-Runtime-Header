@@ -14,6 +14,7 @@
 + (id)milesPerHour;
 + (id)kilometersPerHour;
 + (id)metersPerSecond;
++ (id)icuType;
 + (id)baseUnit;
 + (void)initialize;
 

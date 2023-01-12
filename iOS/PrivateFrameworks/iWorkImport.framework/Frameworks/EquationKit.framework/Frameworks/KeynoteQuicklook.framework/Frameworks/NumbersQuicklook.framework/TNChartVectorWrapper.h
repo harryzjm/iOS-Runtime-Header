@@ -8,12 +8,12 @@
 
 @interface TNChartVectorWrapper : NSObject
 {
-    struct TSCEVector *_vector;
+    struct TSCEGrid *_vector;
 }
 
-@property(readonly, nonatomic) struct TSCEVector *vector; // @synthesize vector=_vector;
+@property(readonly, nonatomic) struct TSCEGrid *vector; // @synthesize vector=_vector;
 - (void)dealloc;
-- (id)initWithVector:(struct TSCEVector)arg1;
+- (id)initWithVector:(struct TSCEGrid)arg1;
 
 @end
 

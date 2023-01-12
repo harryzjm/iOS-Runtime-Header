@@ -27,11 +27,6 @@
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *groupDescription; // @synthesize groupDescription=_groupDescription;
 - (id)description;
-- (void)_queue_runPendingCheckpointTasks:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_queue_reportResult:(long long)arg1;
-- (void)_queue_insertPendingSubtasks;
-- (void)_queue_beginNextTask;
-- (void)_queue_completeCurrentTaskWithResult:(long long)arg1 error:(id)arg2;
 - (void)cancel;
 - (void)begin;
 @property(readonly, nonatomic) NSArray *allErrors;

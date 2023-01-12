@@ -17,6 +17,7 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (void)_configureWithClient:(id)arg1;
 - (void)_cleanupClient:(id)arg1;

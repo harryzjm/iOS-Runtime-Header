@@ -80,6 +80,7 @@
     _Bool _shouldZoomOutOnEndEditing;
     _Bool _forceZoomInOnBeginEditing;
     _Bool _supportsCategorization;
+    _Bool _supportsPivotTables;
     _Bool _allowsBlackDragDropBackground;
     _Bool _supportsAddBodyRowAtBottomSiriKitIntent;
     unsigned int _maxNumberOfRows;
@@ -97,6 +98,7 @@
 @property(nonatomic) unsigned long long structuredTextImportSizeLimit; // @synthesize structuredTextImportSizeLimit=_structuredTextImportSizeLimit;
 @property(nonatomic) double structuredTextImportConfidenceThresholdForCanvas; // @synthesize structuredTextImportConfidenceThresholdForCanvas=_structuredTextImportConfidenceThresholdForCanvas;
 @property(nonatomic) double structuredTextImportConfidenceThreshold; // @synthesize structuredTextImportConfidenceThreshold=_structuredTextImportConfidenceThreshold;
+@property(nonatomic) _Bool supportsPivotTables; // @synthesize supportsPivotTables=_supportsPivotTables;
 @property(nonatomic) _Bool supportsCategorization; // @synthesize supportsCategorization=_supportsCategorization;
 @property(nonatomic) _Bool forceZoomInOnBeginEditing; // @synthesize forceZoomInOnBeginEditing=_forceZoomInOnBeginEditing;
 @property(nonatomic) _Bool shouldZoomOutOnEndEditing; // @synthesize shouldZoomOutOnEndEditing=_shouldZoomOutOnEndEditing;

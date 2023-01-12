@@ -10,13 +10,14 @@
 #import <AppPredictionClient/ATXMemoryPressureObserver-Protocol.h>
 #import <AppPredictionClient/ATXProtoBufWrapper-Protocol.h>
 #import <AppPredictionClient/ATXSuggestionExecutableProtocol-Protocol.h>
+#import <AppPredictionClient/BMStoreData-Protocol.h>
 #import <AppPredictionClient/CRContent-Protocol.h>
 #import <AppPredictionClient/NSCopying-Protocol.h>
 #import <AppPredictionClient/NSSecureCoding-Protocol.h>
 
-@class ATXAVRouteInfo, ATXActionCriteria, ATXLazyIntent, CSSearchableItemAttributeSet, INIntent, NSDictionary, NSString, NSUUID, NSUserActivity, UAUserActivityProxy;
+@class ATXAVRouteInfo, ATXActionCriteria, ATXLazyIntent, CSSearchableItemAttributeSet, INIntent, NSDictionary, NSNumber, NSString, NSUUID, NSUserActivity, UAUserActivityProxy;
 
-@interface ATXAction : NSObject <CRContent, ATXLazyIntentDelegateProtocol, NSSecureCoding, NSCopying, ATXSuggestionExecutableProtocol, ATXProtoBufWrapper, ATXMemoryPressureObserver>
+@interface ATXAction : NSObject <BMStoreData, CRContent, ATXLazyIntentDelegateProtocol, NSSecureCoding, NSCopying, ATXSuggestionExecutableProtocol, ATXProtoBufWrapper, ATXMemoryPressureObserver>
 {
     NSUserActivity *_userActivity;
     UAUserActivityProxy *_userActivityProxy;
@@ -37,9 +38,11 @@
     NSString *_userActivityString;
     CSSearchableItemAttributeSet *_contentAttributeSet;
     ATXAVRouteInfo *_routeInfo;
+    NSNumber *_cachedHash;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)actionFromProactiveSuggestion:(id)arg1;
 + (id)_extractValueInKeyValueBlob:(id)arg1 withKey:(id)arg2;
 + (id)getNSUATypefromActivityType:(id)arg1;
 + (id)getDateFromUserActivityString:(id)arg1 forActionKey:(id)arg2;
@@ -47,7 +50,9 @@
 + (id)getActionKeyForBundleId:(id)arg1 actionType:(id)arg2;
 + (unsigned long long)_userActivityHashForUserInfoDict:(id)arg1 activityType:(id)arg2 webpageURL:(id)arg3;
 + (_Bool)_isTVIntent:(id)arg1 bundleId:(id)arg2;
++ (id)eventWithData:(id)arg1 dataVersion:(unsigned int)arg2;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSNumber *cachedHash; // @synthesize cachedHash=_cachedHash;
 @property(readonly, nonatomic) ATXAVRouteInfo *routeInfo; // @synthesize routeInfo=_routeInfo;
 @property(readonly, nonatomic) CSSearchableItemAttributeSet *contentAttributeSet; // @synthesize contentAttributeSet=_contentAttributeSet;
 @property(readonly, nonatomic) NSString *userActivityString; // @synthesize userActivityString=_userActivityString;
@@ -87,6 +92,7 @@
 - (id)actionDescription;
 @property(readonly, nonatomic) _Bool isHeuristic;
 @property(readonly, copy) NSString *description;
+- (id)userActivityWebpageURL;
 - (unsigned long long)userActivityHash;
 - (void)_setUserActivityHash:(unsigned long long)arg1;
 - (unsigned long long)hashSlotSetWithNonNilParameters:(id)arg1;
@@ -98,19 +104,25 @@
 - (void)didDeserializeIntent:(id)arg1;
 - (void)setLaunchIdForIntent:(id)arg1;
 - (id)initWithProto:(id)arg1;
+- (id)slotSet;
+- (unsigned long long)paramHash;
+- (unsigned long long)_hash;
 @property(readonly) unsigned long long hash;
+- (void)invalidateCachedHash;
 - (_Bool)isEqualToAction:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, nonatomic) _Bool isTVWhiteListedLongFormMedia; // @synthesize isTVWhiteListedLongFormMedia=_isTVWhiteListedLongFormMediaDoNotUseDirectly;
 - (id)actionWithRouteInfo:(id)arg1;
 - (void)dealloc;
-- (id)initWithActivityProxy:(id)arg1 activity:(id)arg2 activityString:(id)arg3 itemIdentifier:(id)arg4 contentAttributeSet:(id)arg5 intent:(id)arg6 actionUUID:(id)arg7 bundleId:(id)arg8 type:(unsigned long long)arg9 heuristic:(id)arg10 heuristicMetadata:(id)arg11 criteria:(id)arg12 isFutureMedia:(_Bool)arg13 routeInfo:(id)arg14 title:(id)arg15 subtitle:(id)arg16 languageCode:(id)arg17;
+- (id)initWithActivityProxy:(id)arg1 activity:(id)arg2 activityString:(id)arg3 itemIdentifier:(id)arg4 contentAttributeSet:(id)arg5 intent:(id)arg6 actionUUID:(id)arg7 bundleId:(id)arg8 type:(unsigned long long)arg9 heuristic:(id)arg10 heuristicMetadata:(id)arg11 criteria:(id)arg12 isFutureMedia:(_Bool)arg13 routeInfo:(id)arg14 title:(id)arg15 subtitle:(id)arg16 languageCode:(id)arg17 cachedHash:(id)arg18;
 - (id)initWithNSUserActivityString:(id)arg1 actionUUID:(id)arg2 bundleId:(id)arg3 itemIdentifier:(id)arg4 contentAttributeSet:(id)arg5 heuristic:(id)arg6 heuristicMetadata:(id)arg7 isFutureMedia:(_Bool)arg8 title:(id)arg9 subtitle:(id)arg10;
 - (id)initFromBestAppSuggestion:(id)arg1 activity:(id)arg2 actionUUID:(id)arg3 bundleId:(id)arg4 contentAttributeSet:(id)arg5 itemIdentifier:(id)arg6 heuristic:(id)arg7 heuristicMetadata:(id)arg8 criteria:(id)arg9 isFutureMedia:(_Bool)arg10 title:(id)arg11 subtitle:(id)arg12;
 - (id)initWithNSUserActivity:(id)arg1 actionUUID:(id)arg2 bundleId:(id)arg3 contentAttributeSet:(id)arg4 itemIdentifier:(id)arg5 heuristic:(id)arg6 heuristicMetadata:(id)arg7 criteria:(id)arg8 isFutureMedia:(_Bool)arg9 title:(id)arg10 subtitle:(id)arg11;
 - (id)initWithIntent:(id)arg1 actionUUID:(id)arg2 bundleId:(id)arg3 heuristic:(id)arg4 heuristicMetadata:(id)arg5 criteria:(id)arg6 isFutureMedia:(_Bool)arg7 title:(id)arg8 subtitle:(id)arg9;
 - (id)init;
 - (_Bool)isTVAction;
+- (id)serialize;
+@property(readonly, nonatomic) unsigned int dataVersion;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

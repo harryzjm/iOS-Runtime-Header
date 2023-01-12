@@ -51,6 +51,7 @@
 - (id)_explainUnsatisfaction;
 - (void)_forceSatisfactionMeasuringUnsatisfactionChanges:(id *)arg1 andMutuallyExclusiveConstraints:(id *)arg2;
 - (void)_tryToActivateMeasuringUnsatisfactionChanges:(id *)arg1 andMutuallyExclusiveConstraints:(id *)arg2;
+- (id)_loweredExpression;
 - (_Bool)_lowerIntoExpression:(id)arg1 reportingConstantIsRounded:(_Bool *)arg2;
 - (struct CGSize)_engineToContainerScalingCoefficients;
 - (void)_removeFromEngine:(id)arg1;

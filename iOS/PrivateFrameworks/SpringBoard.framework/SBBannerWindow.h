@@ -8,6 +8,7 @@
 {
 }
 
++ (id)_traitsArbiterOrientationActuationRole;
 + (_Bool)layoutContentViewControllerWithConstraints;
 - (void)setHidden:(_Bool)arg1;
 - (_Bool)resignFirstResponder;

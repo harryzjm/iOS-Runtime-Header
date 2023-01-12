@@ -75,7 +75,7 @@
 @property(readonly, nonatomic) NSURL *applicationIconFileURL;
 - (void)_fetchParentApplicationMetadataWithBundleID:(id)arg1;
 - (void)_fetchBusinessIconIfNeeded;
-- (void)_fetchAppMetadataWithBundleID:(id)arg1;
+- (void)_fetchAppMetadataWithBundleID:(id)arg1 url:(id)arg2 accountInvocationPolicy:(id)arg3;
 - (void)_fetchBusinessMetadata;
 @property(readonly, nonatomic, getter=isPurgeable) _Bool purgeable;
 @property(readonly, nonatomic) NSString *logID;

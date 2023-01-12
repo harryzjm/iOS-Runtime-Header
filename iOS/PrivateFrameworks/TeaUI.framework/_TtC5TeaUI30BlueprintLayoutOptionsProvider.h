@@ -16,6 +16,7 @@
     MISSING_TYPE *layoutViewportDimensionChecks;
     MISSING_TYPE *contentSizeCategoryProvider;
     MISSING_TYPE *appTraitEnvironmentProvider;
+    MISSING_TYPE *compositionalLayoutOptionsProvider;
 }
 
 @end

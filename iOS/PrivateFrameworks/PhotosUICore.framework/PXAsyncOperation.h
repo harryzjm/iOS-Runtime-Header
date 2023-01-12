@@ -6,19 +6,17 @@
 
 #import <Foundation/NSOperation.h>
 
-@class NSLock;
-
 @interface PXAsyncOperation : NSOperation
 {
-    NSLock *_stateLock;
+    struct os_unfair_lock_s _stateLock;
     int _operationState;
 }
 
-- (void).cxx_destruct;
 - (void)px_finishIfPossible;
 - (void)px_start;
 - (_Bool)isFinished;
 - (_Bool)isExecuting;
+- (void)cancel;
 - (void)start;
 - (_Bool)isAsynchronous;
 - (id)init;

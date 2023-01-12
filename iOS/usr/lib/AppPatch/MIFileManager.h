@@ -11,7 +11,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)_sanitizeFilePathForVarOrTmpSymlink:(id)arg1;
 + (id)defaultManager;
+- (_Bool)secureRenameFromSourceURL:(id)arg1 toDestinationURL:(id)arg2 destinationStatus:(unsigned char)arg3 error:(id *)arg4;
+- (id)debugDescriptionForItemAtURL:(id)arg1;
 - (id)modificationDateForURL:(id)arg1 error:(id *)arg2;
 - (_Bool)setModificationDateToNowForURL:(id)arg1 error:(id *)arg2;
 - (unsigned long long)diskUsageForURL:(id)arg1;
@@ -21,8 +24,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)setData:(id)arg1 forExtendedAttributeNamed:(id)arg2 onFD:(int)arg3 fdLocation:(id)arg4 error:(id *)arg5;
 - (_Bool)setData:(id)arg1 forExtendedAttributeNamed:(id)arg2 onURL:(id)arg3 error:(id *)arg4;
 - (_Bool)_setData:(id)arg1 forExtendedAttributeNamed:(id)arg2 onURL:(id)arg3 orFD:(int)arg4 error:(id *)arg5;
-- (id)installTypeForBundle:(id)arg1 error:(id *)arg2;
-- (_Bool)setInstallType:(id)arg1 onBundle:(id)arg2 error:(id *)arg3;
+- (id)installTypeFromExtendedAttributeOnBundle:(id)arg1 error:(id *)arg2;
+- (_Bool)setInstallType:(id)arg1 inExtendedAttributeOnBundle:(id)arg2 error:(id *)arg3;
 - (id)insecureCachedAppIdentifierIfValidatedByFreeProfileForBundle:(id)arg1 error:(id *)arg2;
 - (_Bool)setValidatedByFreeProfileAppIdentifier:(id)arg1 insecurelyCachedOnBundle:(id)arg2 error:(id *)arg3;
 - (id)insecureCachedAppIdentifierIfAppClipForBundle:(id)arg1 error:(id *)arg2;
@@ -44,7 +47,10 @@ __attribute__((visibility("hidden")))
 - (id)extendedAttributesFromURL:(id)arg1 error:(id *)arg2;
 - (id)aclTextFromURL:(id)arg1 error:(id *)arg2;
 - (id)upToFirstFourBytesFromURL:(id)arg1 error:(id *)arg2;
+- (_Bool)itemIsDirectoryAtURL:(id)arg1 error:(id *)arg2;
+- (_Bool)itemIsSymlinkAtURL:(id)arg1 error:(id *)arg2;
 - (_Bool)itemIsFileAtURL:(id)arg1 error:(id *)arg2;
+- (_Bool)_itemIsType:(unsigned short)arg1 withDescription:(id)arg2 atURL:(id)arg3 error:(id *)arg4;
 - (_Bool)itemDoesNotExistAtURL:(id)arg1;
 - (_Bool)itemExistsAtURL:(id)arg1;
 - (_Bool)itemExistsAtURL:(id)arg1 error:(id *)arg2;
@@ -57,19 +63,20 @@ __attribute__((visibility("hidden")))
 - (_Bool)standardizeOwnershipAtURL:(id)arg1 toUID:(unsigned int)arg2 GID:(unsigned int)arg3 removeACLs:(_Bool)arg4 setProtectionClass:(_Bool)arg5 foundSymlink:(_Bool *)arg6 error:(id *)arg7;
 - (_Bool)stageURL:(id)arg1 toItemName:(id)arg2 inStagingDir:(id)arg3 stagingMode:(int)arg4 settingUID:(unsigned int)arg5 gid:(unsigned int)arg6 hasSymlink:(_Bool *)arg7 error:(id *)arg8;
 - (_Bool)_stageURLByCopying:(id)arg1 toItemName:(id)arg2 inStagingDir:(id)arg3 stagingMode:(int)arg4 settingUID:(unsigned int)arg5 gid:(unsigned int)arg6 hasSymlink:(_Bool *)arg7 error:(id *)arg8;
-- (_Bool)_stageURLByMoving:(id)arg1 toItemName:(id)arg2 inStagingDir:(id)arg3 settingUID:(unsigned int)arg4 gid:(unsigned int)arg5 hasSymlink:(_Bool *)arg6 error:(id *)arg7;
+- (_Bool)stageURLByMoving:(id)arg1 toItemName:(id)arg2 inStagingDir:(id)arg3 settingUID:(unsigned int)arg4 gid:(unsigned int)arg5 dataProtectionClass:(int)arg6 hasSymlink:(_Bool *)arg7 error:(id *)arg8;
 - (_Bool)_bulkSetPropertiesForPath:(const char *)arg1 existingFD:(int)arg2 UID:(unsigned int)arg3 GID:(unsigned int)arg4 mode:(unsigned short)arg5 flags:(unsigned int)arg6 dataProtectionClass:(int)arg7 removeACL:(_Bool)arg8 error:(id *)arg9;
 - (_Bool)bulkSetPropertiesForPath:(const char *)arg1 UID:(unsigned int)arg2 GID:(unsigned int)arg3 mode:(unsigned short)arg4 flags:(unsigned int)arg5 dataProtectionClass:(int)arg6 removeACL:(_Bool)arg7 error:(id *)arg8;
 - (_Bool)bulkSetPropertiesForPath:(const char *)arg1 withOpenFD:(int)arg2 UID:(unsigned int)arg3 GID:(unsigned int)arg4 mode:(unsigned short)arg5 flags:(unsigned int)arg6 dataProtectionClass:(int)arg7 removeACL:(_Bool)arg8 error:(id *)arg9;
 - (_Bool)_removeACLAtPath:(const char *)arg1 isDir:(_Bool)arg2 error:(id *)arg3;
 - (id)createTemporaryDirectoryInDirectoryURL:(id)arg1 error:(id *)arg2;
 - (_Bool)moveItemAtURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
+- (_Bool)copyItemIgnoringErrorsAtURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 - (_Bool)copyItemAtURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 - (_Bool)moveItemIfExistsAtURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 - (_Bool)copyItemIfExistsAtURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 - (_Bool)copyItemAtURL:(id)arg1 toURL:(id)arg2 alwaysClone:(_Bool)arg3 error:(id *)arg4;
 - (_Bool)_moveItemAtURL:(id)arg1 toURL:(id)arg2 failIfSrcMissing:(_Bool)arg3 error:(id *)arg4;
-- (_Bool)_copyItemAtURL:(id)arg1 toURL:(id)arg2 failIfSrcMissing:(_Bool)arg3 alwaysClone:(_Bool)arg4 error:(id *)arg5;
+- (_Bool)_copyItemAtURL:(id)arg1 toURL:(id)arg2 failIfSrcMissing:(_Bool)arg3 alwaysClone:(_Bool)arg4 ignoreErrors:(_Bool)arg5 error:(id *)arg6;
 - (_Bool)createDirectoryAtURL:(id)arg1 withIntermediateDirectories:(_Bool)arg2 mode:(unsigned short)arg3 error:(id *)arg4;
 - (_Bool)createDirectoryAtURL:(id)arg1 withIntermediateDirectories:(_Bool)arg2 mode:(unsigned short)arg3 class:(int)arg4 error:(id *)arg5;
 - (_Bool)removeItemAtURL:(id)arg1 keepParent:(_Bool)arg2 error:(id *)arg3;

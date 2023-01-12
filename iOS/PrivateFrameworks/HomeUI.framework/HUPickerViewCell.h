@@ -6,16 +6,17 @@
 
 #import <UIKit/UITableViewCell.h>
 
+#import <HomeUI/HUCellProtocol-Protocol.h>
 #import <HomeUI/UIPickerViewDataSource-Protocol.h>
 #import <HomeUI/UIPickerViewDelegate-Protocol.h>
 
 @class HFItem, NSIndexPath, NSString, UIPickerView;
-@protocol HUPickerCellDelegate;
+@protocol HUPickerCellDelegate, HUResizableCellDelegate;
 
-@interface HUPickerViewCell : UITableViewCell <UIPickerViewDelegate, UIPickerViewDataSource>
+@interface HUPickerViewCell : UITableViewCell <UIPickerViewDelegate, UIPickerViewDataSource, HUCellProtocol>
 {
+    HFItem *item;
     NSIndexPath *_selectedIndexPath;
-    HFItem *_item;
     id <HUPickerCellDelegate> _delegate;
     UIPickerView *_pickerView;
     long long _numberOfValues;
@@ -25,14 +26,15 @@
 @property(nonatomic) long long numberOfValues; // @synthesize numberOfValues=_numberOfValues;
 @property(retain, nonatomic) UIPickerView *pickerView; // @synthesize pickerView=_pickerView;
 @property(nonatomic) __weak id <HUPickerCellDelegate> delegate; // @synthesize delegate=_delegate;
-@property(retain, nonatomic) HFItem *item; // @synthesize item=_item;
 @property(readonly, nonatomic) NSIndexPath *selectedIndexPath; // @synthesize selectedIndexPath=_selectedIndexPath;
+@property(retain, nonatomic) HFItem *item; // @synthesize item;
 - (void)pickerView:(id)arg1 didSelectRow:(long long)arg2 inComponent:(long long)arg3;
 - (id)pickerView:(id)arg1 attributedTitleForRow:(long long)arg2 forComponent:(long long)arg3;
 - (id)pickerView:(id)arg1 titleForRow:(long long)arg2 forComponent:(long long)arg3;
 - (long long)pickerView:(id)arg1 numberOfRowsInComponent:(long long)arg2;
 - (long long)numberOfComponentsInPickerView:(id)arg1;
 - (_Bool)_canSelectValueAtIndex:(long long)arg1;
+- (void)updateUIWithAnimation:(_Bool)arg1;
 - (void)setSelectedIndex:(long long)arg1 animated:(_Bool)arg2;
 - (void)reloadPickerView;
 - (void)prepareForReuse;
@@ -42,6 +44,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(nonatomic) __weak id <HUResizableCellDelegate> resizingDelegate;
 @property(readonly) Class superclass;
 
 @end

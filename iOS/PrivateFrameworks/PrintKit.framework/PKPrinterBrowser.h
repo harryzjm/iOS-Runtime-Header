@@ -22,6 +22,7 @@
     NSMutableDictionary *_btDevices;
 }
 
++ (id)browserWithDelegate:(id)arg1 infoDictionary:(id)arg2;
 + (id)browserWithDelegate:(id)arg1;
 @property(retain, nonatomic) NSMutableDictionary *btDevices; // @synthesize btDevices=_btDevices;
 @property(retain, nonatomic) NSMutableDictionary *printers; // @synthesize printers=_printers;
@@ -32,7 +33,7 @@
 - (void)printerAdded:(id)arg1 more:(_Bool)arg2;
 - (void)btleRssiUpdated:(id)arg1 rssi:(id)arg2;
 - (void)dealloc;
-- (id)initWithDelegate:(id)arg1;
+- (id)initWithDelegate:(id)arg1 infoDictionary:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

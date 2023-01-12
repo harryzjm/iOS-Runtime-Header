@@ -20,6 +20,7 @@
 - (id)dvt_anyObjectPassingTest:(CDUnknownBlockType)arg1;
 - (_Bool)dvt_areAnyObjectsPassingTest:(CDUnknownBlockType)arg1;
 - (id)dvt_setByFilteringUsingBlock:(CDUnknownBlockType)arg1;
+- (id)dvt_arrayByApplyingBlockStrictly:(CDUnknownBlockType)arg1;
 - (id)dvt_setByApplyingBlockStrictly:(CDUnknownBlockType)arg1;
 - (id)dvt_arrayByApplyingBlock:(CDUnknownBlockType)arg1;
 - (id)dvt_setByApplyingBlock:(CDUnknownBlockType)arg1;

@@ -9,7 +9,7 @@
 }
 
 - (_Bool)isEqual:(id)arg1;
-- (id)loadImage;
+- (id)loadImageWithImageData:(id)arg1 scale:(double)arg2 isDarkStyle:(_Bool)arg3;
 - (int)defaultCornerRoundingStyle;
 - (id)initWithSFImage:(id)arg1;
 

@@ -13,7 +13,7 @@
 - (_Bool)descendentWrappablesContainsWrappable:(id)arg1;
 - (id)descendentWrappables;
 - (id)visibleGeometries;
-- (_Bool)canFlip;
+- (_Bool)supportsFlipping;
 - (struct CGSize)minimumSize;
 - (struct CGRect)boundsForStandardKnobs;
 - (struct CGRect)baseFrameForFrameForCullingWithAdditionalTransform:(struct CGAffineTransform)arg1;

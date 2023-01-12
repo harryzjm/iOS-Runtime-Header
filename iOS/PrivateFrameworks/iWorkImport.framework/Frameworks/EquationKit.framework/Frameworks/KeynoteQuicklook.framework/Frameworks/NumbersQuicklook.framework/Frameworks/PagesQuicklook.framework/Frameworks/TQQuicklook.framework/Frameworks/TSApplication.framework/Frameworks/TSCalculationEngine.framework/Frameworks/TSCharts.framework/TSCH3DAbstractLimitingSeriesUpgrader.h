@@ -10,27 +10,27 @@
 
 @interface TSCH3DAbstractLimitingSeriesUpgrader : NSObject
 {
-    TSCHChartInfo *mChartInfo;
-    CDUnknownBlockType mWillModifyBlock;
+    TSCHChartInfo *_chartInfo;
+    CDUnknownBlockType _willModifyBlock;
 }
 
 + (id)upgraderWithChartInfo:(id)arg1;
 + (double)depthFactorForAdjustingNumberOfSeries:(unsigned long long)arg1 chartType:(id)arg2 fromOldLimitingSeries:(unsigned long long)arg3 toNewLimitingSeries:(unsigned long long)arg4;
 + (_Bool)chartTypeUsesSeriesLimiting:(id)arg1;
-@property(copy, nonatomic) CDUnknownBlockType willModifyBlock; // @synthesize willModifyBlock=mWillModifyBlock;
+- (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType willModifyBlock; // @synthesize willModifyBlock=_willModifyBlock;
 - (void)upgradeForSpice:(_Bool)arg1 naturalSize:(struct CGSize)arg2;
-- (void)mutateInfoByAdjustingScaleFromLayoutSettings:(const CDStruct_b1c75024 *)arg1 toLayoutSettings:(const CDStruct_b1c75024 *)arg2;
-- (id)adjustedScaleFromLayoutSettings:(const CDStruct_b1c75024 *)arg1 toLayoutSettings:(const CDStruct_b1c75024 *)arg2;
+- (void)mutateInfoByAdjustingScaleFromLayoutSettings:(const CDStruct_c48db077 *)arg1 toLayoutSettings:(const CDStruct_c48db077 *)arg2;
+- (id)adjustedScaleFromLayoutSettings:(const CDStruct_c48db077 *)arg1 toLayoutSettings:(const CDStruct_c48db077 *)arg2;
 - (unsigned long long)numberOfSeries;
 - (void)mutateInfoWithContainingViewport:(id)arg1 scene:(id)arg2;
 - (id)constantDepthInfoChartScaleForInfoChartScale:(id)arg1;
 - (void)mutateInfoWithMutations:(id)arg1;
-- (id)configuredSceneWithLayoutSettings:(CDStruct_b1c75024)arg1;
+- (id)configuredSceneWithLayoutSettings:(CDStruct_c48db077)arg1;
 - (void)configureScene:(id)arg1;
-- (CDStruct_b1c75024)upgradedLayoutSettings;
-- (CDStruct_b1c75024)oldLayoutSettings;
-- (CDStruct_b1c75024)p_oldLayoutSettingsForSpice:(_Bool)arg1;
-- (void)dealloc;
+- (CDStruct_c48db077)upgradedLayoutSettings;
+- (CDStruct_c48db077)oldLayoutSettings;
+- (CDStruct_c48db077)p_oldLayoutSettingsForSpice:(_Bool)arg1;
 - (id)initWithChartInfo:(id)arg1;
 
 @end

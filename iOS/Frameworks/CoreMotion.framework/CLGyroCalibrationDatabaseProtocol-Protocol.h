@@ -20,8 +20,8 @@
 - (void)startFactoryGYTT;
 - (int)syncgetMaxDynamicTemperature;
 - (_Bool)syncgetGyroStatsWithBias:(CDStruct_03942939 *)arg1 slope:(CDStruct_03942939 *)arg2 l2Error:(CDStruct_03942939 *)arg3 isDynamic:(_Bool)arg4 deltaBias:(CDStruct_03942939 *)arg5 deltaSlope:(CDStruct_03942939 *)arg6 deltaError:(CDStruct_03942939 *)arg7 isDeltaDynamic:(_Bool)arg8;
-- (_Bool)syncgetDoSync:(void (^)(struct CLGyroCalibrationDatabase *))arg1;
-- (void)doAsync:(void (^)(struct CLGyroCalibrationDatabase *))arg1 withReply:(void (^)(void))arg2;
-- (void)doAsync:(void (^)(struct CLGyroCalibrationDatabase *))arg1;
+- (_Bool)syncgetDoSync:(void (^)(void *))arg1;
+- (void)doAsync:(void (^)(void *))arg1 withReply:(void (^)(void))arg2;
+- (void)doAsync:(void (^)(void *))arg1;
 @end
 

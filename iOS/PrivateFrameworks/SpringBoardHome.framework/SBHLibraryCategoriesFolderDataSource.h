@@ -8,20 +8,19 @@
 
 #import <SpringBoardHome/SBIconObserver-Protocol.h>
 
-@class NSArray, NSSet, NSString, SBHIconModel, SBHLibraryCategoriesRootFolder, SBHLibraryCategoryMap;
-@protocol SBHLibraryCategoriesFolderDataSourceDelegate;
+@class NSArray, NSHashTable, NSSet, NSString, SBHIconModel, SBHLibraryCategoriesRootFolder, SBHLibraryCategoryMap;
 
 @interface SBHLibraryCategoriesFolderDataSource : NSObject <SBIconObserver>
 {
     NSSet *_mappedIcons;
     SBHLibraryCategoryMap *_categoryMap;
+    long long _maximumNumberOfDisplayedCategories;
+    NSHashTable *_observers;
     SBHLibraryCategoriesRootFolder *_categoriesFolder;
     SBHIconModel *_iconModel;
-    id <SBHLibraryCategoriesFolderDataSourceDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) __weak id <SBHLibraryCategoriesFolderDataSourceDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) SBHIconModel *iconModel; // @synthesize iconModel=_iconModel;
 @property(readonly, nonatomic) SBHLibraryCategoriesRootFolder *categoriesFolder; // @synthesize categoriesFolder=_categoriesFolder;
 - (void)_noteWillLayoutIconState:(id)arg1;
@@ -32,12 +31,17 @@
 - (void)_noteDidAddIcon:(id)arg1;
 - (void)iconAccessoriesDidUpdate:(id)arg1;
 - (void)_regenerateCategoriesFolder;
+@property(readonly, nonatomic) unsigned long long categoryIdentifiersCount;
 @property(readonly, nonatomic) NSArray *categoryIdentifiers;
 - (id)categoryForIdentifier:(id)arg1;
 - (_Bool)containsIcon:(id)arg1;
+- (void)setMaximumNumberOfDisplayedCategories:(long long)arg1;
+- (long long)maximumNumberOfDisplayedCategories;
 - (id)reloadDataSourceUsingIcons:(id)arg1 categoryMap:(id)arg2;
 - (id)reloadDataWithCategoryMap:(id)arg1;
 - (id)reloadData;
+- (void)removeObserver:(id)arg1;
+- (void)addObserver:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToDataSource:(id)arg1;
 - (id)init;

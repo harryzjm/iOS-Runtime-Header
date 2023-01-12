@@ -21,8 +21,14 @@
     NSMutableDictionary *_topicToEnabledAccounts;
     NSMutableDictionary *_accountToDevices;
     NSMutableDictionary *_serviceToLinkedDevices;
+    NSMutableDictionary *_serviceToFamilyInfo;
+    NSMutableDictionary *_serviceToFamilyDevices;
+    NSMutableDictionary *_serviceToPendingInvitations;
+    NSMutableDictionary *_serviceToReceivedInvitations;
+    NSMutableDictionary *_serviceToMaxMessageSize;
     NSMutableDictionary *_accountToActiveDeviceUniqueID;
     NSMutableDictionary *_serviceToActiveDeviceUniqueID;
+    NSMutableDictionary *_directMessagingMetadata;
     NSString *_deviceIdentifier;
     _Bool _setupComplete;
     _Bool _postedSetupComplete;
@@ -51,6 +57,7 @@
 - (void)xpcObject:(id)arg1 objectContext:(id)arg2;
 - (void)connectionComplete:(_Bool)arg1 withResponse:(id)arg2;
 - (void)__postSetupComplete;
+- (id)getDirectMessagingMetadataDictionary;
 - (void)setupCompleteWithInfo:(id)arg1;
 - (void)deactivatePairedDevices;
 - (void)_internalSwitchActivePairedDevice:(id)arg1 forAccount:(id)arg2;
@@ -65,6 +72,12 @@
 - (id)dependentDevicesForAccount:(id)arg1;
 - (void)refreshRegistrationForAccount:(id)arg1;
 - (void)registrationFailedForAccount:(id)arg1 needsDeletion:(id)arg2;
+- (long long)maxEffectivePayloadSizeForService:(id)arg1;
+- (id)receivedInvitationsForService:(id)arg1;
+- (id)pendingInvitationsForService:(id)arg1;
+- (void)familyDevicesForService:(id)arg1 listenerID:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (id)familyInfoForService:(id)arg1;
+- (void)service:(id)arg1 familyInfoUpdated:(id)arg2;
 - (void)service:(id)arg1 tinkerDeviceUpdated:(id)arg2;
 - (void)service:(id)arg1 tinkerDeviceRemoved:(id)arg2;
 - (void)service:(id)arg1 tinkerDeviceAdded:(id)arg2;

@@ -16,6 +16,7 @@
     TSPDeepCopyObjectMap *_objectMap;
     TSPObject *_cachedMetadataObject;
     NSDictionary *_cachedDataMap;
+    _Bool _isDecodingTransientObject;
     unsigned long long _readVersion;
     TSPComponent *_component;
 }
@@ -23,10 +24,11 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool isCrossAppPaste;
 @property(readonly, nonatomic) _Bool isCrossDocumentPaste;
-@property(readonly, nonatomic) long long sourceType;
+@property(readonly, nonatomic) unsigned int sourceType;
 @property(readonly, nonatomic) _Bool hasDocumentVersionUUID;
 @property(readonly, nonatomic) unsigned long long readVersion;
 @property(readonly, nonatomic) unsigned long long fileFormatVersion;
+- (_Bool)isDecodingTransientObject;
 - (_Bool)shouldDecodeMissingDataAsRemote;
 - (id)dataInfoForIdentifier:(long long)arg1;
 - (id)cachedDataForIdentifier:(long long)arg1;

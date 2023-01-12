@@ -8,15 +8,9 @@
 {
 }
 
-+ (id)eventServiceTypeToActionKeyMap;
-- (id)iconDescriptorForHomeObjects:(id)arg1 forRecommendation:(id)arg2;
-- (_Bool)usesRoomNameGrouping;
-- (id)verboseContextKey;
-- (id)actionOnlyContextKey;
-- (id)eventOnlyContextKey;
-- (id)titleFormat;
-- (id)actionKeyForServiceType:(id)arg1 forRecommendation:(id)arg2;
-- (id)initWithConfiguration:(id)arg1;
+- (id)_lazy_allowedVariance;
+- (id)_lazy_actionMap;
+- (id)init;
 
 @end
 

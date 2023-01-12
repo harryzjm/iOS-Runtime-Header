@@ -8,26 +8,32 @@
 
 #import <Vision/NSCopying-Protocol.h>
 #import <Vision/NSSecureCoding-Protocol.h>
+#import <Vision/VNOriginatingRequestSpecifierProviding-Protocol.h>
 #import <Vision/VNRequestRevisionProviding-Protocol.h>
 
-@interface VNFaceLandmarkRegion : NSObject <NSCopying, NSSecureCoding, VNRequestRevisionProviding>
+@class VNRequestSpecifier;
+
+@interface VNFaceLandmarkRegion : NSObject <VNOriginatingRequestSpecifierProviding, NSCopying, NSSecureCoding, VNRequestRevisionProviding>
 {
     struct CGRect _faceBoundingBox;
     unsigned long long _pointCount;
-    unsigned long long _requestRevision;
+    VNRequestSpecifier *_originatingRequestSpecifier;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, nonatomic) unsigned long long requestRevision; // @synthesize requestRevision=_requestRevision;
-@property unsigned long long pointCount; // @synthesize pointCount=_pointCount;
-@property struct CGRect faceBoundingBox; // @synthesize faceBoundingBox=_faceBoundingBox;
++ (id)defaultOriginatingRequestClassNameForRequestRevision:(unsigned long long)arg1;
+- (void).cxx_destruct;
+@property(readonly) VNRequestSpecifier *originatingRequestSpecifier; // @synthesize originatingRequestSpecifier=_originatingRequestSpecifier;
+@property(readonly) unsigned long long pointCount; // @synthesize pointCount=_pointCount;
+@property(readonly) struct CGRect faceBoundingBox; // @synthesize faceBoundingBox=_faceBoundingBox;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithRequestRevision:(unsigned long long)arg1 faceBoundingBox:(struct CGRect)arg2;
+- (id)initWithOriginatingRequestSpecifier:(id)arg1 faceBoundingBox:(struct CGRect)arg2 pointCount:(unsigned long long)arg3;
+@property(readonly, nonatomic) unsigned long long requestRevision;
 
 @end
 

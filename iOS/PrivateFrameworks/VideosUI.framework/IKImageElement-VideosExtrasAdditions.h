@@ -12,6 +12,5 @@
 - (id)cachePath;
 - (id)bestURL;
 - (id)artworkCatalog;
-@property(readonly, nonatomic) _Bool vui_hasValidImage;
 @end
 

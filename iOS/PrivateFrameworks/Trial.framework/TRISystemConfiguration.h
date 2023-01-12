@@ -19,6 +19,7 @@
 - (void).cxx_destruct;
 - (id)enabledInputModeIdentifiers;
 - (CDStruct_2ec95fd7)marketingOSVersion;
+- (id)userSettingsBCP47DeviceLocale;
 - (id)userSettingsRegionCode;
 - (id)userSettingsLanguageCode;
 - (id)osBuild;

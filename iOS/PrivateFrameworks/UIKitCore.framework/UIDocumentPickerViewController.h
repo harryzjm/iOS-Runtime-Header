@@ -59,6 +59,7 @@
 - (id)_initIgnoringApplicationEntitlementForImportOfTypes:(id)arg1;
 @property(nonatomic) unsigned long long pickerUserInterfaceStyle;
 @property(nonatomic) _Bool shouldShowFileExtensions;
+- (id)_initForImportingDocumentsWithConversionRules:(id)arg1;
 - (id)initForExportingURLs:(id)arg1;
 - (id)initForExportingURLs:(id)arg1 asCopy:(_Bool)arg2;
 - (id)initWithURLs:(id)arg1 inMode:(unsigned long long)arg2;

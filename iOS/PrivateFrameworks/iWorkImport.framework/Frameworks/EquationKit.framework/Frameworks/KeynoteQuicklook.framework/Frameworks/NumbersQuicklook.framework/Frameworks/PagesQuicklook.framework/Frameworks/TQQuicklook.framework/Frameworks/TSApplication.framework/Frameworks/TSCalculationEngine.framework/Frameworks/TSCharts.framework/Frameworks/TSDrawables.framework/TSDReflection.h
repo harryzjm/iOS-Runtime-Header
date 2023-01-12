@@ -18,7 +18,7 @@
 
 + (_Bool)canMixWithNilObjects;
 + (id)reflection;
-+ (id)instanceWithArchive:(const struct ReflectionArchive *)arg1 unarchiver:(id)arg2;
++ (id)instanceWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 @property(readonly, nonatomic) double fadeAcceleration; // @synthesize fadeAcceleration=mFadeAcceleration;
 @property(readonly, nonatomic) double opacity; // @synthesize opacity=mOpacity;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
@@ -28,11 +28,11 @@
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
+- (id)init;
 - (id)initWithOpacity:(double)arg1;
 - (id)initWithOpacity:(double)arg1 fadeAcceleration:(double)arg2;
-- (id)init;
-- (void)saveToArchive:(struct ReflectionArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct ReflectionArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 @end
 

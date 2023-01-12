@@ -14,25 +14,20 @@
 @interface PKSelectionHighlightRenderer : NSObject <PKSelectionRendering>
 {
     CAShapeLayer *_highlightLayer;
+    UIBezierPath *_lassoPath;
     PKStrokeSelection *_strokeSelection;
     id <PKSelectionRenderingDelegate> _renderingDelegate;
-    UIBezierPath *_lassoPath;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) UIBezierPath *lassoPath; // @synthesize lassoPath=_lassoPath;
-@property(nonatomic) __weak id <PKSelectionRenderingDelegate> renderingDelegate; // @synthesize renderingDelegate=_renderingDelegate;
-@property(retain, nonatomic) PKStrokeSelection *strokeSelection; // @synthesize strokeSelection=_strokeSelection;
 - (id)_accessibilityUserTestingChildren;
-- (id)_bezierPathForStrokes:(id)arg1;
-- (id)_highlightColor;
-- (void)_setupHighlightIfNecessary;
 - (void)_renderLiveSelectionPath:(const struct CGPath *)arg1 forStrokes:(id)arg2 inDrawing:(id)arg3 liveScrollOffset:(struct CGPoint)arg4;
 - (struct CGPoint)editMenuLocation;
 - (void)_didEndDraggingSelection;
 - (void)_didBeginDraggingSelection;
 - (void)_setupSelectionAdornment;
 - (id)adornmentLayer;
+- (id)lassoPath;
 - (id)initForLiveSelectionWithRenderingDelegate:(id)arg1;
 - (id)initWithStrokeSelection:(id)arg1 renderingDelegate:(id)arg2;
 

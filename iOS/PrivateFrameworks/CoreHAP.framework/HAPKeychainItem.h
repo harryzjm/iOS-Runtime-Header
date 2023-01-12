@@ -6,9 +6,11 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <CoreHAP/NSMutableCopying-Protocol.h>
+
 @class NSData, NSDate, NSNumber, NSString;
 
-@interface HAPKeychainItem : HMFObject
+@interface HAPKeychainItem : HMFObject <NSMutableCopying>
 {
     _Bool _syncable;
     _Bool _invisible;
@@ -16,29 +18,33 @@
     NSNumber *_type;
     NSString *_account;
     NSData *_valueData;
-    NSString *_viewHint;
-    NSDate *_creationDate;
     NSString *_label;
     NSString *_itemDescription;
-    void *_platformReference;
+    NSString *_viewHint;
+    NSDate *_creationDate;
     NSData *_genericData;
+    void *_platformReference;
 }
 
++ (_Bool)isQueryResultValid:(struct __CFDictionary *)arg1 shouldIncludeData:(_Bool)arg2;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSData *genericData; // @synthesize genericData=_genericData;
 @property(nonatomic) void *platformReference; // @synthesize platformReference=_platformReference;
 @property(readonly, nonatomic, getter=isInvisible) _Bool invisible; // @synthesize invisible=_invisible;
-@property(retain, nonatomic) NSString *itemDescription; // @synthesize itemDescription=_itemDescription;
-@property(retain, nonatomic) NSString *label; // @synthesize label=_label;
+@property(retain, nonatomic) NSData *genericData; // @synthesize genericData=_genericData;
 @property(retain, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property(retain, nonatomic) NSString *viewHint; // @synthesize viewHint=_viewHint;
 @property(nonatomic, getter=isSyncable) _Bool syncable; // @synthesize syncable=_syncable;
+@property(retain, nonatomic) NSString *itemDescription; // @synthesize itemDescription=_itemDescription;
+@property(retain, nonatomic) NSString *label; // @synthesize label=_label;
 @property(retain, nonatomic) NSData *valueData; // @synthesize valueData=_valueData;
 @property(retain, nonatomic) NSString *account; // @synthesize account=_account;
 @property(retain, nonatomic) NSNumber *type; // @synthesize type=_type;
 @property(retain, nonatomic) NSString *accessGroup; // @synthesize accessGroup=_accessGroup;
 - (_Bool)matchesPublicKeyData:(id)arg1;
 - (void)dealloc;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)mutableCopy;
+- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)initWithQueryResult:(struct __CFDictionary *)arg1 shouldIncludeData:(_Bool)arg2;
 - (id)description;
 

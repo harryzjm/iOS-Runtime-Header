@@ -22,7 +22,6 @@
 
 - (void).cxx_destruct;
 - (void)provideFeedbackForString:(id)arg1 type:(unsigned char)arg2 style:(unsigned char)arg3;
-- (void)_reloadNamedEntityDataAfterReset;
 - (id)_makeNamedEntityDelegate;
 - (id)_makeContactDelegate;
 - (void)hibernate;

@@ -9,15 +9,17 @@
 #import <SyncedDefaults/NSCopying-Protocol.h>
 #import <SyncedDefaults/NSSecureCoding-Protocol.h>
 
-@class SYDStoreID;
+@class NSString, SYDStoreID;
 
 @interface SYDStoreConfiguration : NSObject <NSSecureCoding, NSCopying>
 {
     SYDStoreID *_storeID;
+    NSString *_personaUniqueString;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *personaUniqueString; // @synthesize personaUniqueString=_personaUniqueString;
 @property(retain, nonatomic) SYDStoreID *storeID; // @synthesize storeID=_storeID;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

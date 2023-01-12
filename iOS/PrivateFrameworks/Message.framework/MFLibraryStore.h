@@ -42,7 +42,6 @@
 - (id)criterion;
 - (void)_setNeedsAutosave;
 - (void)updateMetadata;
-- (void)writeUpdatedMessageDataToDisk;
 - (id)dataPathForMessage:(id)arg1 part:(id)arg2;
 - (void)compactMessages:(id)arg1;
 - (void)doCompact;
@@ -54,7 +53,6 @@
 - (id)setFlagsFromDictionary:(id)arg1 forMessages:(id)arg2;
 - (void)deleteMessagesOlderThanNumberOfDays:(int)arg1 compact:(_Bool)arg2;
 - (void)deleteMessages:(id)arg1 moveToTrash:(_Bool)arg2;
-- (unsigned long long)indexOfMessage:(id)arg1;
 - (id)bodyDataForMessage:(id)arg1 isComplete:(_Bool *)arg2 isPartial:(_Bool *)arg3 downloadIfNecessary:(_Bool)arg4;
 - (id)fullBodyDataForMessage:(id)arg1 andHeaderDataIfReadilyAvailable:(id *)arg2 isComplete:(_Bool *)arg3 downloadIfNecessary:(_Bool)arg4 didDownload:(_Bool *)arg5;
 - (id)fullBodyDataForMessage:(id)arg1 andHeaderDataIfReadilyAvailable:(id *)arg2 isComplete:(_Bool *)arg3 downloadIfNecessary:(_Bool)arg4 usePartDatas:(_Bool)arg5 didDownload:(_Bool *)arg6;
@@ -89,11 +87,7 @@
 - (id)dateOfOldestNonIndexedNonSearchResultMessage;
 - (id)serverSearchResults;
 - (id)copyMessagesWithRemoteIDs:(id)arg1 options:(unsigned int)arg2 inMailbox:(id)arg3;
-- (id)copyMessagesWithRemoteIDs:(id)arg1 options:(unsigned int)arg2;
 - (id)copyMessagesMatchingCriterion:(id)arg1 options:(unsigned int)arg2;
-- (id)copyMessagesMatchingText:(id)arg1 options:(unsigned int)arg2;
-- (id)mutableCopyOfAllMessages;
-- (id)copyOfAllMessagesForBodyLoadingFromRowID:(long long)arg1 limit:(unsigned int)arg2;
 - (id)copyOfAllMessages;
 - (id)copyOfAllMessagesWithOptions:(unsigned int)arg1;
 - (id)copyOfMessagesInRange:(struct _NSRange)arg1 options:(unsigned int)arg2;

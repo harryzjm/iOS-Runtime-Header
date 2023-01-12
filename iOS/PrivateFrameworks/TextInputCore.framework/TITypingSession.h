@@ -9,13 +9,14 @@
 #import <TextInputCore/NSSecureCoding-Protocol.h>
 #import <TextInputCore/TIKeyboardInteractionProtocol-Protocol.h>
 
-@class NSDate, NSLocale, NSMutableArray, NSMutableDictionary, NSString, TIKeyboardInput, TIKeyboardState, TIKeyboardTouchEvent, TIWordEntry;
-@protocol TITypingSessionDelegate;
+@class NSDate, NSLocale, NSMutableArray, NSMutableDictionary, NSString, TIFeatureUsageMetricsCache, TIKeyboardInput, TIKeyboardState, TIKeyboardTouchEvent, TITypingSessionParams, TIWordEntry;
 
 @interface TITypingSession : NSObject <NSSecureCoding, TIKeyboardInteractionProtocol>
 {
     _Bool _didReceiveSecureFieldEvent;
     _Bool _includeInputToLastWord;
+    int _candidatesAccepted;
+    int _candidatesAcceptedWithText;
     NSString *_layoutName;
     NSString *_startContext;
     NSMutableArray *_layouts;
@@ -23,7 +24,8 @@
     NSDate *_startTime;
     NSDate *_endTime;
     NSString *_applicationID;
-    id <TITypingSessionDelegate> _delegate;
+    TITypingSessionParams *_sessionParams;
+    TIFeatureUsageMetricsCache *_featureUsageMetricsCache;
     NSMutableArray *_userActionHistory;
     TIWordEntry *_currentWord;
     TIKeyboardInput *_lastInput;
@@ -49,7 +51,10 @@
 @property(retain, nonatomic) TIKeyboardInput *lastInput; // @synthesize lastInput=_lastInput;
 @property(retain, nonatomic) TIWordEntry *currentWord; // @synthesize currentWord=_currentWord;
 @property(retain, nonatomic) NSMutableArray *userActionHistory; // @synthesize userActionHistory=_userActionHistory;
-@property(nonatomic) __weak id <TITypingSessionDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) int candidatesAcceptedWithText; // @synthesize candidatesAcceptedWithText=_candidatesAcceptedWithText;
+@property(nonatomic) int candidatesAccepted; // @synthesize candidatesAccepted=_candidatesAccepted;
+@property(retain, nonatomic) TIFeatureUsageMetricsCache *featureUsageMetricsCache; // @synthesize featureUsageMetricsCache=_featureUsageMetricsCache;
+@property(retain, nonatomic) TITypingSessionParams *sessionParams; // @synthesize sessionParams=_sessionParams;
 @property(nonatomic) _Bool didReceiveSecureFieldEvent; // @synthesize didReceiveSecureFieldEvent=_didReceiveSecureFieldEvent;
 @property(copy, nonatomic) NSString *applicationID; // @synthesize applicationID=_applicationID;
 @property(retain, nonatomic) NSDate *endTime; // @synthesize endTime=_endTime;

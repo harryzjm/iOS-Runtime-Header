@@ -38,6 +38,7 @@
     NSObject<OS_dispatch_source> *_btWriteSource;
     _Bool _btWriteSuspended;
     CBScalablePipe *_btPipe;
+    long long _btPipePriority;
     CBScalablePipeManager *_btPipeManager;
     NSMutableDictionary *_frameHandlers;
     _Bool _invalidateCalled;
@@ -77,6 +78,7 @@
 - (void)_setupPipe:(id)arg1;
 - (void)_setupIfNeeded;
 - (void)_sendFrameType:(unsigned char)arg1 payload:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)sendFrameTypeDirect:(unsigned char)arg1 payload:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)sendFrameType:(unsigned char)arg1 payload:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeFrameHandlerForType:(unsigned char)arg1;
 - (void)addFrameHandlerForType:(unsigned char)arg1 handler:(CDUnknownBlockType)arg2;
@@ -84,9 +86,11 @@
 - (void)invalidate;
 - (void)_activate;
 - (void)activate;
+- (id)getPeerUUID;
 @property(readonly, nonatomic) long long connectionState;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
+- (id)initWithPriority:(long long)arg1;
 - (id)init;
 
 // Remaining properties

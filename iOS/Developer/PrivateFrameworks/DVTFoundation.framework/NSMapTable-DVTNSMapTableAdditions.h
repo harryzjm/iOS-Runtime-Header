@@ -13,7 +13,10 @@
 - (id)dvt_objectForKey:(id)arg1 creatingIfNecessaryWithBlock:(CDUnknownBlockType)arg2;
 - (id)dvt_objectForKey:(id)arg1 creatingIfNecessaryFromClass:(Class)arg2;
 - (id)dvt_popObjectFromArrayForKey:(id)arg1;
+- (void)dvt_addObject:(id)arg1 toSetForKey:(id)arg2;
+- (void)dvt_addObject:(id)arg1 toOrderedSetForKey:(id)arg2;
 - (void)dvt_addObject:(id)arg1 toArrayForKey:(id)arg2;
+- (void)dvt_addIndex:(unsigned long long)arg1 toIndexSetForKey:(id)arg2;
 - (id)dvt_collectionOfClass:(Class)arg1 forKey:(id)arg2;
 - (id)dvt_removeObjectForKey:(id)arg1;
 - (void)dvt_enumerateKeysAndObjectsUsingBlock:(CDUnknownBlockType)arg1;

@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class LAContext, NSXPCConnection;
-@protocol SecureStorageService;
+@protocol LASecureStorageService;
 
 @interface LAStorage : NSObject
 {
@@ -15,14 +15,14 @@
     long long _domain;
     LAContext *_authenticationContext;
     NSXPCConnection *_connection;
-    id <SecureStorageService> _remoteObjectProxy;
+    id <LASecureStorageService> _remoteObjectProxy;
 }
 
 + (id)objectDescription:(id)arg1;
 + (unsigned int)newInstanceId;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned int instanceId; // @synthesize instanceId=_instanceId;
-@property(readonly, nonatomic) id <SecureStorageService> remoteObjectProxy; // @synthesize remoteObjectProxy=_remoteObjectProxy;
+@property(readonly, nonatomic) id <LASecureStorageService> remoteObjectProxy; // @synthesize remoteObjectProxy=_remoteObjectProxy;
 @property(readonly, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property(readonly, nonatomic) LAContext *authenticationContext; // @synthesize authenticationContext=_authenticationContext;
 @property(readonly, nonatomic) long long domain; // @synthesize domain=_domain;

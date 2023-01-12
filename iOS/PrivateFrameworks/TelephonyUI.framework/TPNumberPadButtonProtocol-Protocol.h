@@ -8,6 +8,7 @@
 
 @protocol TPNumberPadButtonProtocol <NSObject>
 @property long long character;
+- (id)initForCharacter:(long long)arg1 style:(long long)arg2;
 - (id)initForCharacter:(long long)arg1;
 
 @optional

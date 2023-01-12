@@ -6,11 +6,17 @@
 
 #import <Foundation/NSURL.h>
 
+@class NSString;
+
 @interface NSURL (SafariCoreExtras)
++ (id)safari_startPageBackgroundImageFileURL;
 + (struct _NSRange)safari_hostAndPortRangeFromUserTypedString:(id)arg1;
 - (_Bool)safari_hasSameSiteAsURL:(id)arg1;
 - (_Bool)safari_hasSameOriginAsURL:(id)arg1;
 - (_Bool)safari_isSubdomainOfDomain:(id)arg1;
 - (id)_labelsOfDomainWithoutWWWOrMSubdomains:(id)arg1;
+
+// Remaining properties
+@property(readonly, nonatomic) NSString *safari_displayNameForFile;
 @end
 

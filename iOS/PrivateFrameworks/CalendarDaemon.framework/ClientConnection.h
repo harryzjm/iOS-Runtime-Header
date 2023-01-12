@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <CalendarDaemon/CADDatabaseProvider-Protocol.h>
+#import <CalendarDaemon/CalCalendarDatabaseRestoreGenerationChangedDelegate-Protocol.h>
 
-@class CADDatabaseInitializationOptions, CADOperationProxy, ClientIdentity, NSMutableDictionary, NSMutableSet, NSOperationQueue, NSString, NSXPCConnection;
+@class CADDatabaseInitializationOptions, CADOperationProxy, ClientIdentity, NSMutableSet, NSOperationQueue, NSString, NSXPCConnection;
 @protocol CADAccountAccessHandler, ClientConnectionDelegate, OS_dispatch_queue;
 
-@interface ClientConnection : NSObject <CADDatabaseProvider>
+@interface ClientConnection : NSObject <CADDatabaseProvider, CalCalendarDatabaseRestoreGenerationChangedDelegate>
 {
     _Bool _allowedEntityTypesValid;
     long long _eventAccess;
@@ -21,10 +22,10 @@
     id <CADAccountAccessHandler> _strictAccountAccessHandler;
     NSObject<OS_dispatch_queue> *_dbQueue;
     NSOperationQueue *_operations;
-    NSMutableDictionary *_insertedObjects;
     NSMutableSet *_canceledRequests;
     NSObject<OS_dispatch_queue> *_canceledRequestsLock;
     _Bool _initializationOptionsSet;
+    int _databaseRestoreGeneration;
     CADOperationProxy *_cadOperationProxy;
     id <ClientConnectionDelegate> _delegate;
     ClientIdentity *_identity;
@@ -33,7 +34,6 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly) _Bool initializationOptionsSet; // @synthesize initializationOptionsSet=_initializationOptionsSet;
 @property(retain, nonatomic) CADDatabaseInitializationOptions *databaseInitializationOptions; // @synthesize databaseInitializationOptions=_databaseInitializationOptions;
 @property(retain, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 @property(readonly, nonatomic) ClientIdentity *identity; // @synthesize identity=_identity;
@@ -43,6 +43,7 @@
 - (_Bool)isCalendarItemManaged:(void *)arg1;
 - (_Bool)isCalendarManaged:(void *)arg1;
 - (_Bool)isStoreManaged:(void *)arg1;
+- (_Bool)isAlarmRestricted:(void *)arg1 forAction:(unsigned long long)arg2;
 - (_Bool)isNotificationRestricted:(void *)arg1 forAction:(unsigned long long)arg2;
 - (_Bool)isCalendarItemRestricted:(void *)arg1 forAction:(unsigned long long)arg2;
 - (_Bool)isCalendarRestricted:(void *)arg1 forAction:(unsigned long long)arg2;
@@ -57,14 +58,17 @@
 - (void)clearCachedAuthorizationStatus;
 - (void)_loadAccessPermissionsIfNeeded;
 - (void)dumpState;
-- (id)insertedObjects;
-- (void)clearInsertedObjects;
-- (void *)objectForKey:(id)arg1;
-- (void)insertObject:(void *)arg1 key:(id)arg2;
 - (id)operations;
 - (void)addOperation:(id)arg1;
 @property(readonly, nonatomic) NSString *changeTrackingID;
+- (void)database:(struct CalDatabase *)arg1 restoreGenerationChangedExternally:(int)arg2;
 - (void)closeDatabase;
+@property(readonly, nonatomic) struct CalDatabase *existingDatabase;
+- (struct CalDatabase *)_database;
+- (void)databaseRestoreGenerationChanged:(int)arg1;
+- (void)_databaseRestoreGenerationChanged:(int)arg1;
+@property(readonly) int databaseRestoreGeneration;
+@property(readonly) _Bool initializationOptionsSet;
 - (void)dealloc;
 - (void)handleDatabaseChanged;
 - (id)strictAccountAccessHandler;
@@ -72,6 +76,12 @@
 - (id)_createManagedConfigAccountAccessHandlerWithValidator:(id)arg1;
 - (void)_initAccountAccessHandler;
 - (id)initWithXPCConnection:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

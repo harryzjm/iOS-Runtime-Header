@@ -9,7 +9,7 @@
 #import <CoreParsec/NSSecureCoding-Protocol.h>
 #import <CoreParsec/_CPFeedbackPayload-Protocol.h>
 
-@class NSData, NSString, _CPCBAEngagementFeedback, _CPCacheHitFeedback, _CPCardSectionEngagementFeedback, _CPCardSectionFeedback, _CPCardViewAppearFeedback, _CPCardViewDisappearFeedback, _CPClearInputFeedback, _CPClientTimingFeedback, _CPConnectionInvalidatedFeedback, _CPCustomFeedback, _CPDidGoToSearchFeedback, _CPDidGoToSiteFeedback, _CPEndLocalSearchFeedback, _CPEndNetworkSearchFeedback, _CPEndSearchFeedback, _CPErrorFeedback, _CPFeedback, _CPLateSectionsAppendedFeedback, _CPLookupHintRelevancyFeedback, _CPMapsCardSectionEngagementFeedback, _CPRankingFeedback, _CPResultEngagementFeedback, _CPResultFeedback, _CPResultGradingFeedback, _CPResultRankingFeedback, _CPResultsReceivedAfterTimeoutFeedback, _CPSearchViewAppearFeedback, _CPSearchViewDisappearFeedback, _CPSectionEngagementFeedback, _CPSectionRankingFeedback, _CPSessionEndFeedback, _CPSessionMissingResultsFeedback, _CPSessionMissingSuggestionsFeedback, _CPSkipSearchFeedback, _CPStartLocalSearchFeedback, _CPStartNetworkSearchFeedback, _CPStartSearchFeedback, _CPStoreCardSectionEngagementFeedback, _CPSuggestionEngagementFeedback, _CPVisibleResultsFeedback, _CPVisibleSectionHeaderFeedback, _CPVisibleSuggestionsFeedback;
+@class NSData, NSString, _CPCBAEngagementFeedback, _CPCacheHitFeedback, _CPCardSectionEngagementFeedback, _CPCardSectionFeedback, _CPCardViewAppearFeedback, _CPCardViewDisappearFeedback, _CPClearInputFeedback, _CPClientTimingFeedback, _CPCommandEngagementFeedback, _CPConnectionInvalidatedFeedback, _CPCustomFeedback, _CPDidGoToSearchFeedback, _CPDidGoToSiteFeedback, _CPDynamicButtonVisibilityFeedback, _CPEndLocalSearchFeedback, _CPEndNetworkSearchFeedback, _CPEndSearchFeedback, _CPErrorFeedback, _CPExperimentTriggeredFeedback, _CPFeedback, _CPLateSectionsAppendedFeedback, _CPLookupHintRelevancyFeedback, _CPMapsCardSectionEngagementFeedback, _CPRankingFeedback, _CPResultEngagementFeedback, _CPResultFeedback, _CPResultGradingFeedback, _CPResultRankingFeedback, _CPResultsReceivedAfterTimeoutFeedback, _CPSearchViewAppearFeedback, _CPSearchViewDisappearFeedback, _CPSectionEngagementFeedback, _CPSectionRankingFeedback, _CPSessionEndFeedback, _CPSessionMissingResultsFeedback, _CPSessionMissingSuggestionsFeedback, _CPSkipSearchFeedback, _CPStartLocalSearchFeedback, _CPStartNetworkSearchFeedback, _CPStartSearchFeedback, _CPStoreCardSectionEngagementFeedback, _CPSuggestionEngagementFeedback, _CPVisibleResultsFeedback, _CPVisibleSectionHeaderFeedback, _CPVisibleSuggestionsFeedback;
 @protocol _CPProcessableFeedback;
 
 @interface _CPFeedbackPayload : PBCodable <_CPFeedbackPayload, NSSecureCoding>
@@ -56,6 +56,9 @@
     _CPCacheHitFeedback *_cacheHitFeedback;
     _CPCBAEngagementFeedback *_cbaEngagementFeedback;
     _CPClientTimingFeedback *_clientTimingFeedback;
+    _CPCommandEngagementFeedback *_commandEngagementFeedback;
+    _CPDynamicButtonVisibilityFeedback *_dynamicButtonVisibilityFeedback;
+    _CPExperimentTriggeredFeedback *_experimentTriggeredFeedback;
     unsigned long long _queryId;
     unsigned long long _whichContained_Feedback;
 }
@@ -63,14 +66,13 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long whichContained_Feedback; // @synthesize whichContained_Feedback=_whichContained_Feedback;
 @property(nonatomic) unsigned long long queryId; // @synthesize queryId=_queryId;
-- (id)initWithDictionary:(id)arg1;
-- (id)initWithJSON:(id)arg1;
-@property(readonly, nonatomic) NSData *jsonData;
-- (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
+@property(retain, nonatomic) _CPExperimentTriggeredFeedback *experimentTriggeredFeedback; // @synthesize experimentTriggeredFeedback=_experimentTriggeredFeedback;
+@property(retain, nonatomic) _CPDynamicButtonVisibilityFeedback *dynamicButtonVisibilityFeedback; // @synthesize dynamicButtonVisibilityFeedback=_dynamicButtonVisibilityFeedback;
+@property(retain, nonatomic) _CPCommandEngagementFeedback *commandEngagementFeedback; // @synthesize commandEngagementFeedback=_commandEngagementFeedback;
 @property(retain, nonatomic) _CPClientTimingFeedback *clientTimingFeedback; // @synthesize clientTimingFeedback=_clientTimingFeedback;
 @property(retain, nonatomic) _CPCBAEngagementFeedback *cbaEngagementFeedback; // @synthesize cbaEngagementFeedback=_cbaEngagementFeedback;
 @property(retain, nonatomic) _CPCacheHitFeedback *cacheHitFeedback; // @synthesize cacheHitFeedback=_cacheHitFeedback;
@@ -118,10 +120,12 @@
 @property(readonly, nonatomic) int type;
 - (id)initWithCodable:(id)arg1;
 - (id)initWithFeedback:(id)arg1;
+- (void)updateQueryId:(unsigned long long)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) NSData *jsonData; // @dynamic jsonData;
 @property(readonly) Class superclass;
 
 @end

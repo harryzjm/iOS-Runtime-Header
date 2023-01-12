@@ -20,6 +20,7 @@
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 - (id)replacementObjectForCoder:(id)arg1;
+- (Class)classForCoder;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

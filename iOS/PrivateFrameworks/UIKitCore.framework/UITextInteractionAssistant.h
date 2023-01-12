@@ -11,7 +11,7 @@
 #import <UIKitCore/UITextCursorAssertionControllerSubject-Protocol.h>
 #import <UIKitCore/UITextInteraction_AssistantDelegate-Protocol.h>
 
-@class NSNumber, NSString, UIFieldEditor, UIGestureRecognizer, UILongPressGestureRecognizer, UIPointerInteraction, UIResponder, UIScrollView, UITapGestureRecognizer, UITextChecker, UITextCursorAssertionController, UITextInteraction, UITextLinkInteraction, UITextRange, UITextSelectionView, _UIKeyboardTextSelectionController;
+@class NSNumber, NSString, UIFieldEditor, UIGestureRecognizer, UILongPressGestureRecognizer, UIPointerInteraction, UIResponder, UIScrollView, UITapGestureRecognizer, UITextChecker, UITextCursorAssertionController, UITextInteraction, UITextLinkInteraction, UITextRange, UITextSelectionView, _UIKeyboardTextSelectionController, _UITextInteractionAssistantGestureState;
 @protocol UITextInput;
 
 @interface UITextInteractionAssistant : NSObject <UITextInteraction_AssistantDelegate, UITextCursorAssertionControllerSubject, UIPointerInteractionDelegate, UIResponderStandardEditActions>
@@ -43,15 +43,19 @@
     UITextInteraction *_externalInteractions;
     id _grabberSuppressionAssertion;
     id _keyboardSuppressionAssertion;
+    _UITextInteractionAssistantGestureState *_gestureState;
     _UIKeyboardTextSelectionController *_nonEditableSelectionController;
     UITextCursorAssertionController *_assertionController;
     _Bool _detaching;
     NSNumber *_viewConformsToTextItemInteracting;
     NSNumber *_viewRespondsToInteractiveTextSelectionDisabled;
+    NSNumber *_viewConformsToAsynchronousInteractionViewProtocol;
+    _Bool _canShowSelectionCommands;
 }
 
 + (long long)_nextGranularityInCycle:(long long)arg1 forTouchType:(long long)arg2;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool canShowSelectionCommands; // @synthesize canShowSelectionCommands=_canShowSelectionCommands;
 - (void)pointerInteraction:(id)arg1 willExitRegion:(id)arg2 animator:(id)arg3;
 - (void)pointerInteraction:(id)arg1 willEnterRegion:(id)arg2 animator:(id)arg3;
 - (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
@@ -66,7 +70,7 @@
 - (void)layoutChangedByScrolling:(_Bool)arg1;
 - (_Bool)swallowsDoubleTapWithScale:(double)arg1 atPoint:(struct CGPoint)arg2;
 - (_Bool)hasReplacements;
-- (void)scheduleReplacementsForRange:(id)arg1 withOptions:(unsigned long long)arg2;
+- (_Bool)scheduleReplacementsForRange:(id)arg1 withOptions:(unsigned long long)arg2;
 - (id)generatorForRange:(id)arg1 withOptions:(unsigned long long)arg2;
 - (void)scheduleDictationReplacementsForMultilingualAlternatives:(id)arg1 range:(id)arg2;
 - (void)scheduleDictationReplacementsForAlternatives:(id)arg1 range:(id)arg2;
@@ -75,9 +79,11 @@
 - (id)attributedTextInRange:(id)arg1;
 - (id)rangeForTextReplacement:(id)arg1;
 - (void)scheduleChineseTransliteration;
+- (void)_updateSelectionInViewIfNeeded:(id)arg1 toRange:(id)arg2;
 - (void)scheduleReplacementsWithOptions:(unsigned long long)arg1;
 - (void)scheduleReplacements;
 - (_Bool)viewCouldBecomeEditable:(id)arg1;
+- (_Bool)didPerformLoupeSelectionHandoff;
 - (void)updateAutoscroll:(id)arg1;
 - (void)autoscrollWillNotStart;
 - (void)cancelAutoscroll;
@@ -88,12 +94,14 @@
 - (void)beginFloatingCursorAtPoint:(struct CGPoint)arg1;
 - (void)willBeginFloatingCursor:(_Bool)arg1;
 @property(readonly, nonatomic) UITextCursorAssertionController *_assertionController;
+- (unsigned long long)currentDraggedHandle;
 @property(nonatomic) _Bool ghostAppearance;
 @property(nonatomic) _Bool cursorVisible;
 @property(nonatomic) _Bool cursorBlinks;
 - (_Bool)hasActiveSelectionInteraction;
 - (void)didEndSelectionInteraction;
 - (void)willBeginSelectionInteraction;
+- (_Bool)viewConformsToAsynchronousInteractionProtocol;
 - (_Bool)usesAsynchronousSelectionController;
 - (_Bool)didUseStashedSelection;
 - (void)clearStashedSelection;
@@ -140,6 +148,7 @@
 - (_Bool)supportsIndirectInteractions;
 - (Class)selectionInteractionClass;
 - (void)setGestureRecognizers;
+- (id)_computeGestureStateForView:(id)arg1;
 - (void)canBeginDragCursor:(id)arg1;
 - (_Bool)useGesturesForEditableContent;
 - (void)clearGestureRecognizers:(_Bool)arg1;

@@ -22,6 +22,7 @@
 @property(readonly, nonatomic) _Bool protocolBufferHasPreamble;
 @property(readonly, nonatomic) NSString *remoteAddressAndPort;
 @property(readonly, nonatomic) NSError *error;
+@property(readonly, nonatomic) unsigned long long receivedDataLength;
 @property(readonly, copy, nonatomic) NSURL *downloadedFileURL;
 @property(readonly, nonatomic) NSData *receivedData;
 - (void)cancel;

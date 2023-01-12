@@ -20,15 +20,15 @@
     NSMutableArray *_mergeActions;
     NSMutableArray *_cellLists;
     NSMutableArray *_inverseMergeActions;
-    vector_4dc5f307 _cachedRowUIDs;
-    vector_4dc5f307 _cachedColumnUIDs;
+    TSKUIDStructVectorTemplate_de88e035 _cachedRowUIDs;
+    TSKUIDStructVectorTemplate_de88e035 _cachedColumnUIDs;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool applyingToTable; // @synthesize applyingToTable=_applyingToTable;
-@property(nonatomic) vector_4dc5f307 cachedColumnUIDs; // @synthesize cachedColumnUIDs=_cachedColumnUIDs;
-@property(nonatomic) vector_4dc5f307 cachedRowUIDs; // @synthesize cachedRowUIDs=_cachedRowUIDs;
+@property(nonatomic) TSKUIDStructVectorTemplate_de88e035 cachedColumnUIDs; // @synthesize cachedColumnUIDs=_cachedColumnUIDs;
+@property(nonatomic) TSKUIDStructVectorTemplate_de88e035 cachedRowUIDs; // @synthesize cachedRowUIDs=_cachedRowUIDs;
 @property(retain, nonatomic) NSMutableArray *inverseMergeActions; // @synthesize inverseMergeActions=_inverseMergeActions;
 @property(retain, nonatomic) NSMutableArray *cellLists; // @synthesize cellLists=_cellLists;
 @property(retain, nonatomic) NSMutableArray *mergeActions; // @synthesize mergeActions=_mergeActions;
@@ -64,11 +64,11 @@
 - (void)appendCellLists:(id)arg1;
 - (void)appendCellList:(id)arg1;
 - (void)accumulateCurrentCellsConcurrentlyUsingBlock:(CDUnknownBlockType)arg1;
-- (const vector_4dc5f307 *)columnUIDs;
-- (const vector_4dc5f307 *)rowUIDs;
+- (const void *)columnUIDs;
+- (const void *)rowUIDs;
 - (void)p_cacheRowColumnUIDs;
-- (vector_793e6c56)cellUIDRanges;
-- (vector_1235e7c3)viewCellRects;
+- (vector_87ea8040)cellUIDRanges;
+- (vector_834bca64)viewCellRects;
 - (unsigned long long)cellCount;
 - (_Bool)hasMultipleCells;
 - (_Bool)hasCells;

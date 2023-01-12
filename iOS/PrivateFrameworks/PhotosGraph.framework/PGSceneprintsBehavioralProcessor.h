@@ -27,8 +27,8 @@
 - (id)dataToPersist;
 - (float)semanticScoreForAsset:(id)arg1;
 - (void)preprocessWithProgressBlock:(CDUnknownBlockType)arg1;
-- (id)initWithGoldAssets:(id)arg1 graph:(id)arg2 persistedData:(id)arg3;
-- (id)initWithGoldAssets:(id)arg1 graph:(id)arg2;
+- (id)initWithGoldAssets:(id)arg1 persistedData:(id)arg2;
+- (id)initWithGoldAssets:(id)arg1;
 
 @end
 

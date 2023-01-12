@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <KeynoteQuicklook/NSSecureCoding-Protocol.h>
+
 @class KNBuildAttributes, NSArray, NSDictionary, NSString;
 
-@interface KNAnimatedBuild : NSObject
+@interface KNAnimatedBuild : NSObject <NSSecureCoding>
 {
     KNAnimatedBuild *_parentBuild;
     _Bool _automatic;
@@ -37,6 +39,7 @@
     NSArray *_childBuilds;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *childBuilds; // @synthesize childBuilds=_childBuilds;
 @property(copy, nonatomic) NSDictionary *finalAttributes; // @synthesize finalAttributes=_finalAttributes;
@@ -62,6 +65,8 @@
 @property(nonatomic) long long eventIndex; // @synthesize eventIndex=_eventIndex;
 @property(readonly, nonatomic) NSString *effectIdentifier; // @synthesize effectIdentifier=_effectIdentifier;
 @property(readonly, nonatomic) long long buildType; // @synthesize buildType=_buildType;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 @property(readonly, nonatomic) double finalRotation;
 @property(readonly, nonatomic) double initialRotation;
 @property(readonly, nonatomic) NSArray *requiredScales;

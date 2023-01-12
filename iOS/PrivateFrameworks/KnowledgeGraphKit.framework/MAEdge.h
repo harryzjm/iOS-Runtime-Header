@@ -10,44 +10,38 @@
 #import <KnowledgeGraphKit/MAElement-Protocol.h>
 #import <KnowledgeGraphKit/NSCopying-Protocol.h>
 
-@class MABaseGraph, MAGraphReference, MANode, NSArray, NSDictionary, NSString;
+@class MAGraphReference, MANode, NSArray, NSDictionary, NSString;
+@protocol MAGraphProxy;
 
-@interface MAEdge : NSObject <KGEdge, MAElement, NSCopying>
+@interface MAEdge : NSObject <MAElement, NSCopying, KGEdge>
 {
-    MANode *_strongSourceNode;
-    MANode *_strongTargetNode;
-    MANode *_weakSourceNode;
-    MANode *_weakTargetNode;
-    unsigned int _identifier;
+    unsigned long long _identifier;
     MAGraphReference *_graphReference;
+    MANode *_sourceNode;
+    MANode *_targetNode;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) MANode *targetNode; // @synthesize targetNode=_targetNode;
+@property(readonly, nonatomic) MANode *sourceNode; // @synthesize sourceNode=_sourceNode;
 @property(retain, nonatomic) MAGraphReference *graphReference; // @synthesize graphReference=_graphReference;
-@property(nonatomic) unsigned int identifier; // @synthesize identifier=_identifier;
+@property(nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
 - (unsigned long long)memoryFootprint:(id)arg1;
 - (id)visualStringWithName:(id)arg1 andPropertyKeys:(id)arg2;
 - (id)visualStringWithName:(id)arg1;
 - (id)visualString;
-- (void)updatePersistedWeight:(float)arg1;
 - (_Bool)isLoop;
 - (id)commonNode:(id)arg1;
 - (id)oppositeNode:(id)arg1;
-- (void)setLocalProperties:(id)arg1;
 - (id)propertyDictionary;
 - (id)propertyKeys;
 - (unsigned long long)propertiesCount;
 - (_Bool)hasProperties;
-- (void)setProperties:(id)arg1;
-- (void)setPropertyValue:(id)arg1 forKey:(id)arg2;
-- (void)removeAllProperties;
-- (void)removePropertyForKey:(id)arg1;
 - (void)enumeratePropertiesUsingBlock:(CDUnknownBlockType)arg1;
 - (_Bool)isIdentifiedByProperties:(id)arg1;
 - (id)propertyForKey:(id)arg1 kindOfClass:(Class)arg2;
 - (id)propertyForKey:(id)arg1;
 - (_Bool)hasProperties:(id)arg1;
-- (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 - (id)objectForKeyedSubscript:(id)arg1;
 - (_Bool)isUnique;
 - (_Bool)isEqualToEdge:(id)arg1;
@@ -55,25 +49,25 @@
 - (_Bool)isSameEdgeAsEdge:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)shortDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly, nonatomic) __weak MANode *targetNode;
-@property(readonly, nonatomic) __weak MANode *sourceNode;
-@property(readonly, nonatomic) __weak MABaseGraph *graph;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5;
-- (_Bool)conformsToEdgeSchema:(id)arg1;
+- (void)resolveIdentifier:(unsigned long long)arg1;
 @property(readonly, copy, nonatomic) NSDictionary *properties;
 @property(readonly, copy, nonatomic) NSArray *labels;
 - (id)oppositeNodeFromNode:(id)arg1;
 - (id)initWithIdentifier:(unsigned long long)arg1 labels:(id)arg2 weight:(float)arg3 properties:(id)arg4 sourceNode:(id)arg5 targetNode:(id)arg6;
+- (id)shortDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) id <MAGraphProxy> graph;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5 properties:(id)arg6;
+- (id)initWithSourceNode:(id)arg1 targetNode:(id)arg2;
+- (_Bool)conformsToEdgeSchema:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, nonatomic) unsigned short domain; // @dynamic domain;
 @property(readonly, copy, nonatomic) NSString *label; // @dynamic label;
 @property(readonly) Class superclass;
-@property(nonatomic) float weight; // @dynamic weight;
+@property(readonly, nonatomic) float weight; // @dynamic weight;
 
 @end
 

@@ -14,8 +14,8 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (const shared_ptr_f15d0389 *)getBlob;
-- (id)initWithAbstractBlobContainer:(shared_ptr_f15d0389 *)arg1;
+- (const void *)getBlob;
+- (id)initWithAbstractBlobContainer:(void *)arg1;
 
 @end
 

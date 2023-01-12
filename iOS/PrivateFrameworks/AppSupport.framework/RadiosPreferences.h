@@ -34,6 +34,7 @@
 - (void)setTelephonyState:(_Bool)arg1 fromBundleID:(id)arg2;
 - (_Bool)telephonyStateWithBundleIdentifierOut:(id *)arg1;
 - (void)setAirplaneModeWithoutMirroring:(_Bool)arg1;
+- (void)setAirplaneModeInNSS:(_Bool)arg1;
 @property(nonatomic) _Bool airplaneMode;
 - (void)dealloc;
 - (oneway void)release;

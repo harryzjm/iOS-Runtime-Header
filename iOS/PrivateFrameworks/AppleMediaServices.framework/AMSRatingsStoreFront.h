@@ -19,6 +19,7 @@
     NSArray *_supportedLanguages;
 }
 
++ (id)storeFrontWithDictionary:(id)arg1 mediaType:(unsigned long long)arg2;
 + (id)storeFrontWithDictionary:(id)arg1 mediaType:(unsigned long long)arg2 andStoreFront:(id)arg3;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *supportedLanguages; // @synthesize supportedLanguages=_supportedLanguages;
@@ -29,6 +30,7 @@
 @property(readonly, nonatomic) unsigned long long mediaType; // @synthesize mediaType=_mediaType;
 @property(readonly, nonatomic) NSString *defaultLanguage; // @synthesize defaultLanguage=_defaultLanguage;
 - (id)description;
+- (id)initWithDictionary:(id)arg1 mediaType:(unsigned long long)arg2;
 - (id)initWithDictionary:(id)arg1 mediaType:(unsigned long long)arg2 andStoreFront:(id)arg3;
 
 @end

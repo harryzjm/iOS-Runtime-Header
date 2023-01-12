@@ -54,8 +54,10 @@
 - (void)setPresentGestureFailureRequirements:(id)arg1;
 - (_Bool)_areAnyGesturesRecognizedInSet:(id)arg1;
 - (id)dismissGestures;
+- (_Bool)isDismissGestureAllowedToBegin;
 - (_Bool)isDismissGestureActive;
 - (id)presentGestures;
+- (_Bool)isPresentGestureAllowedToBegin;
 - (_Bool)isPresentGestureActive;
 - (id)initWithViewController:(id)arg1 dismissGestureRecognizer:(id)arg2 dismissAddendumGestureRecognizer:(id)arg3 dismissalPreemptingGestureRecognizer:(id)arg4;
 

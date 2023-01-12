@@ -12,6 +12,7 @@
 
 @interface NSDate (Readable) <INJSONSerializable>
 + (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
+- (id)_intents_readableTitleWithLocalizer:(id)arg1 metadata:(id)arg2 timeZone:(id)arg3;
 - (id)_intents_readableTitleWithLocalizer:(id)arg1 metadata:(id)arg2;
 - (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
 

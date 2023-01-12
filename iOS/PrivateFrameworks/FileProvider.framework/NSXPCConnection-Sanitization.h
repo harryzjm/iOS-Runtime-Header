@@ -10,7 +10,10 @@
 
 @interface NSXPCConnection (Sanitization)
 @property(readonly, nonatomic) FPXPCSanitizer *fp_sanitizer;
+- (id)fp_applicationGroups;
 - (id)fp_bundleIdentifier;
+- (id)fp_bundleURL;
+- (_Bool)fp_hasOneOfEntitlements:(id)arg1 nonSandboxedAccess:(_Bool)arg2 logLevel:(unsigned long long)arg3;
 - (_Bool)fp_hasOneOfEntitlements:(id)arg1 logLevel:(unsigned long long)arg2;
 - (_Bool)fp_hasOneOfEntitlements:(id)arg1;
 - (id)fp_valueForEntitlement:(id)arg1;

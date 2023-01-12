@@ -11,6 +11,7 @@
 @protocol HKConceptIndexable <HKCodedObject>
 + (NSArray *)cachedConceptRelationshipKeyPaths;
 + (NSArray *)indexableConceptKeyPaths;
+@property(readonly, nonatomic) long long recordCategoryType;
 @property(readonly, copy, nonatomic) NSString *country;
 @property(readonly, copy, nonatomic) NSLocale *locale;
 @property(readonly) NSUUID *UUID;

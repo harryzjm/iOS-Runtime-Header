@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, _TVShadowViewElementID;
+@class NSArray, NSString, _TVShadowViewElementID;
 
 __attribute__((visibility("hidden")))
 @interface _TVShadowViewElement : NSObject
@@ -14,9 +14,11 @@ __attribute__((visibility("hidden")))
     _TVShadowViewElementID *_elementID;
     NSArray *_children;
     _TVShadowViewElement *_parent;
+    NSString *_resourceName;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *resourceName; // @synthesize resourceName=_resourceName;
 @property(nonatomic) __weak _TVShadowViewElement *parent; // @synthesize parent=_parent;
 @property(copy, nonatomic) NSArray *children; // @synthesize children=_children;
 @property(copy, nonatomic) _TVShadowViewElementID *elementID; // @synthesize elementID=_elementID;

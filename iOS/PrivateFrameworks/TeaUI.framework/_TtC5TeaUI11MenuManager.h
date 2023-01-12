@@ -20,6 +20,8 @@
 - (void).cxx_destruct;
 - (id)init;
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
+- (void)handleAlternateMenuCommandWithSender:(id)arg1;
+- (void)handleMenuCommandWithSender:(id)arg1;
 - (void)buildMenuWithBuilder:(id)arg1;
 
 @end

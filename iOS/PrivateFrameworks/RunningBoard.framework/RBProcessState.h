@@ -23,22 +23,26 @@
     NSMutableSet *_legacyAssertions;
     NSMutableSet *_primitiveAssertions;
     unsigned long long _legacyFinishTaskReason;
+    _Bool _guaranteedRunning;
     unsigned char _terminationResistance;
-    unsigned char _jetsamBand;
+    unsigned long long _explicitJetsamBand;
     unsigned char _role;
+    unsigned char _gpuRole;
     unsigned char _flags;
     NSSet *_preventLaunchReasons;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSSet *preventLaunchReasons; // @synthesize preventLaunchReasons=_preventLaunchReasons;
+@property(readonly, nonatomic) _Bool guaranteedRunning; // @synthesize guaranteedRunning=_guaranteedRunning;
 @property(readonly, nonatomic) unsigned long long legacyFinishTaskReason; // @synthesize legacyFinishTaskReason=_legacyFinishTaskReason;
 @property(readonly, copy, nonatomic) NSSet *primitiveAssertions;
 @property(readonly, copy, nonatomic) NSSet *legacyAssertions;
 @property(readonly, copy, nonatomic) NSSet *tags;
 @property(readonly, nonatomic) NSSet *preventIdleSleepIdentifiers; // @synthesize preventIdleSleepIdentifiers=_preventIdleSleepIdentifiers;
+@property(readonly, nonatomic) unsigned char gpuRole; // @synthesize gpuRole=_gpuRole;
 @property(readonly, nonatomic) unsigned char role; // @synthesize role=_role;
-@property(readonly, nonatomic) unsigned char jetsamBand; // @synthesize jetsamBand=_jetsamBand;
+@property(readonly, nonatomic) unsigned long long explicitJetsamBand; // @synthesize explicitJetsamBand=_explicitJetsamBand;
 @property(readonly, copy, nonatomic) RBSProcessIdentity *identity; // @synthesize identity=_identity;
 @property(readonly, nonatomic) unsigned char terminationResistance; // @synthesize terminationResistance=_terminationResistance;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
@@ -66,7 +70,6 @@
 @property(readonly, nonatomic) _Bool jetsamLenientMode;
 @property(readonly, nonatomic) _Bool preventIdleSleep;
 @property(readonly, nonatomic) _Bool isBeingDebugged;
-@property(readonly, nonatomic) _Bool GPUAllowed;
 @property(readonly, nonatomic) _Bool preventSuspend;
 - (id)initWithIdentity:(id)arg1;
 - (id)init;

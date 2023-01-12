@@ -7,11 +7,8 @@
 #import <AvatarUI/AVTAvatarStore-Protocol.h>
 #import <AvatarUI/AVTStickerBackend-Protocol.h>
 
-@class NSString;
-
 @protocol AVTAvatarStoreInternal <AVTAvatarStore, AVTStickerBackend>
 + (unsigned long long)maximumNumberOfFetchableAvatars;
 + (unsigned long long)maximumNumberOfSavableAvatars;
-- (void)deleteAvatarWithIdentifier:(NSString *)arg1 completionBlock:(void (^)(_Bool, NSError *))arg2;
 @end
 

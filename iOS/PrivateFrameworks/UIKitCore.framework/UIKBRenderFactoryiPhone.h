@@ -53,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (id)dictationKeyImageName;
 - (id)globalEmojiKeyImageName;
 - (id)globalKeyImageName;
+- (struct CGPoint)symbolImageControlKeyOffset;
 - (struct CGPoint)ZWNJKeyOffset;
 - (struct CGPoint)secondaryShiftKeyOffset;
 - (struct CGPoint)shiftKeyOffset;
@@ -74,6 +75,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)leftArrowKeyOffset;
 - (struct CGPoint)returnKeyOffset;
 - (struct CGPoint)stringKeyOffset;
+- (double)symbolImageControlKeyFontSize;
 - (double)zhuyinFirstToneKeyFontSize;
 - (double)moreABCKeyWideCellFontSize;
 - (double)moreABCKeyFontSize;
@@ -84,6 +86,7 @@ __attribute__((visibility("hidden")))
 - (double)shiftKeyFontSize;
 - (double)deleteKeyFontSize;
 - (double)stringKeyFontSize;
+- (long long)assetIdiom;
 - (long long)lightHighQualityEnabledBlendForm;
 
 @end

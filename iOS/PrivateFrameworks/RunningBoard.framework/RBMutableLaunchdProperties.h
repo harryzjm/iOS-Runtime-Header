@@ -8,6 +8,7 @@
 {
 }
 
+- (void)setIsAngel;
 - (void)setIsDaemon;
 - (void)setSpecifiedIdentity:(id)arg1;
 - (void)setUnderlyingAssertion:(id)arg1;
@@ -17,6 +18,7 @@
 - (void)setExecutablePath:(id)arg1;
 - (void)setJobLabel:(id)arg1;
 - (void)setBundleID:(id)arg1;
+- (void)setDisableFreezing:(_Bool)arg1;
 - (void)setOverrideManageFlags:(unsigned char)arg1;
 - (void)setDoesOverrideManagement:(_Bool)arg1;
 - (void)setVariableEUID:(_Bool)arg1;

@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
     _Bool mDirty;
     NSObject<OS_dispatch_queue> *mDispatchQueue;
     struct function<void (AudioComponentVector &, AudioComponentVector &)> mNotificationCallback;
-    function_84aba934 mScanHashCallback;
+    function_ffe40f9b mScanHashCallback;
     NSData *mCarbonComponentHash;
 }
 
@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 + (_Bool)supportsSecureCoding;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)initialScanDirectory:(id)arg1 priority:(int)arg2 components:(struct AudioComponentVector *)arg3;
+- (void)initialScanDirectory:(id)arg1 priority:(int)arg2 components:(void *)arg3;
 - (struct AudioComponentVector)postInit:(_Bool)arg1;
 - (void)writeIfDirty;
 - (void)encodeWithCoder:(id)arg1;

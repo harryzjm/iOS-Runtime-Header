@@ -67,6 +67,7 @@ __attribute__((visibility("hidden")))
 - (long long)pickerViewCellNumberOfRows:(id)arg1;
 - (long long)pickerViewCellInitialSelectedRow:(id)arg1;
 - (id)pickerViewCell:(id)arg1 titleForRow:(long long)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (id)pickerTitle;
 - (void)pickerButtonSelected;
 - (void)buildButtonsIfNeeded;

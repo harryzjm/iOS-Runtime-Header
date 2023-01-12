@@ -12,8 +12,8 @@
     CKComponent *_component;
 }
 
-+ (id)newWithView:(const struct CKComponentViewConfiguration *)arg1 size:(const struct CKComponentSize *)arg2;
-+ (id)newWithView:(const struct CKComponentViewConfiguration *)arg1 insets:(struct UIEdgeInsets)arg2 component:(id)arg3;
++ (id)newWithView:(const void *)arg1 size:(const struct CKComponentSize *)arg2;
++ (id)newWithView:(const void *)arg1 insets:(struct UIEdgeInsets)arg2 component:(id)arg3;
 + (id)newWithInsets:(struct UIEdgeInsets)arg1 component:(id)arg2;
 - (void).cxx_destruct;
 - (struct CKComponentLayout)computeLayoutThatFits:(struct CKSizeRange)arg1 restrictedToSize:(const struct CKComponentSize *)arg2 relativeToParentSize:(struct CGSize)arg3;

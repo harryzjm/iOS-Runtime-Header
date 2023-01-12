@@ -74,6 +74,7 @@
 @property(readonly, nonatomic) _Bool _applyCornerMaskToSelf;
 - (void)_setCornerRadius:(double)arg1 continuous:(_Bool)arg2 maskedCorners:(unsigned long long)arg3;
 - (void)_setContinuousCornerRadius:(double)arg1;
+- (id)_cornerCurve;
 - (double)_continuousCornerRadius;
 @property(nonatomic, setter=_setCornerRadius:) double _cornerRadius;
 - (void)_applyCornerRadiusToSubviews;

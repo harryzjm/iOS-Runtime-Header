@@ -8,15 +8,20 @@
 
 #import <ARKit/NSCopying-Protocol.h>
 
+@class NSString;
+
 @interface ARVideoFormat : NSObject <NSCopying>
 {
     long long _captureDevicePosition;
+    NSString *_captureDeviceType;
     long long _framesPerSecond;
     struct CGSize _imageResolution;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) long long framesPerSecond; // @synthesize framesPerSecond=_framesPerSecond;
 @property(readonly, nonatomic) struct CGSize imageResolution; // @synthesize imageResolution=_imageResolution;
+@property(readonly, nonatomic) NSString *captureDeviceType; // @synthesize captureDeviceType=_captureDeviceType;
 @property(readonly, nonatomic) long long captureDevicePosition; // @synthesize captureDevicePosition=_captureDevicePosition;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 

@@ -10,7 +10,7 @@
 #import <SleepDaemon/HDSPSleepLockScreenStateMachineEventHandler-Protocol.h>
 #import <SleepDaemon/HDSPSleepLockScreenStateMachineInfoProvider-Protocol.h>
 
-@class HDSPSleepLockScreenBedtimeState, HDSPSleepLockScreenGreetingState, HDSPSleepLockScreenOffState, HDSPSleepLockScreenWindDownState, HKSPSleepScheduleModel, NSDate, NSString;
+@class HDSPSleepLockScreenBedtimeInProgressState, HDSPSleepLockScreenBedtimeState, HDSPSleepLockScreenGreetingState, HDSPSleepLockScreenOffState, HDSPSleepLockScreenWindDownState, HKSPSleepScheduleModel, NSDate, NSString;
 @protocol HDSPSleepLockScreenStateMachineDelegate, HDSPSleepLockScreenStateMachineInfoProvider, NAScheduler;
 
 @interface HDSPSleepLockScreenStateMachine : HKSPPersistentStateMachine <HDSPSleepLockScreenStateMachineDelegate, HDSPSleepLockScreenStateMachineInfoProvider, HDSPSleepLockScreenStateMachineEventHandler>
@@ -18,23 +18,30 @@
     HDSPSleepLockScreenOffState *_offState;
     HDSPSleepLockScreenWindDownState *_windDownState;
     HDSPSleepLockScreenBedtimeState *_bedtimeState;
+    HDSPSleepLockScreenBedtimeInProgressState *_bedtimeInProgressState;
     HDSPSleepLockScreenGreetingState *_greetingState;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) HDSPSleepLockScreenGreetingState *greetingState; // @synthesize greetingState=_greetingState;
+@property(readonly, nonatomic) HDSPSleepLockScreenBedtimeInProgressState *bedtimeInProgressState; // @synthesize bedtimeInProgressState=_bedtimeInProgressState;
 @property(readonly, nonatomic) HDSPSleepLockScreenBedtimeState *bedtimeState; // @synthesize bedtimeState=_bedtimeState;
 @property(readonly, nonatomic) HDSPSleepLockScreenWindDownState *windDownState; // @synthesize windDownState=_windDownState;
 @property(readonly, nonatomic) HDSPSleepLockScreenOffState *offState; // @synthesize offState=_offState;
+@property(readonly, nonatomic) _Bool isLockScreenActive;
+@property(readonly, nonatomic) _Bool inUserRequestedSleepMode;
 @property(readonly, nonatomic) long long sleepMode;
 @property(readonly, nonatomic) HKSPSleepScheduleModel *sleepScheduleModel;
 @property(readonly, nonatomic) NSDate *currentDate;
+- (void)unscheduleLockScreenStateChange;
+- (void)scheduleLockScreenStateChange;
 - (void)sleepLockScreenStateDidChange:(long long)arg1 previousState:(long long)arg2;
+- (void)bedtimeExpiredEventDue;
 - (void)sleepModeDidChange:(long long)arg1 reason:(unsigned long long)arg2;
 - (void)dismissAlertForGoodMorning;
 - (void)presentAlertForGoodMorning;
 - (void)environmentDidBecomeReady;
-- (id)stateMachineLog;
+- (unsigned long long)loggingCategory;
 - (id)initWithIdentifier:(id)arg1 persistence:(id)arg2 delegate:(id)arg3 infoProvider:(id)arg4 currentDateProvider:(CDUnknownBlockType)arg5;
 
 // Remaining properties

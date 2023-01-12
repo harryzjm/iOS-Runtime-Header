@@ -12,11 +12,11 @@
     unsigned short _tileColumnBegin;
     unsigned int _tileRowBegin;
     struct TSCECellRecordTile *_tile;
-    struct TSCECellRecordList *_unarchivedCellRecords;
+    void *_unarchivedCellRecords;
 }
 
 @property(nonatomic) unsigned short internalOwnerID; // @synthesize internalOwnerID=_internalOwnerID;
-- (void)unpackAfterUnarchiveForCellDependencies:(struct TSCECellDependencies *)arg1;
+- (void)unpackAfterUnarchiveForCellDependencies:(void *)arg1;
 - (id)description;
 @property(readonly, nonatomic) unsigned long long numCellRecords;
 - (struct TSCECellRecordTile *)cppTile;

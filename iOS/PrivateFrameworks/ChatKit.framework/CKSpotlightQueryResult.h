@@ -23,6 +23,7 @@
 @property(retain, nonatomic) CKConversation *conversation; // @synthesize conversation=_conversation;
 @property(retain, nonatomic) CSSearchableItem *item; // @synthesize item=_item;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, nonatomic) NSString *previewItemTitle;
 @property(readonly, nonatomic) NSURL *previewItemURL;
@@ -31,7 +32,6 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

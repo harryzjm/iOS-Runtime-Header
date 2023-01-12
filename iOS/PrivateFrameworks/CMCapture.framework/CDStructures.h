@@ -32,6 +32,23 @@ struct os_unfair_lock_s {
 #pragma mark Typedef'd Structures
 
 typedef struct {
+    _Bool enabled;
+    long long selectionBehavior;
+    unsigned long long restrictedSelectionConditions;
+} CDStruct_53454c09;
+
+typedef struct {
+    void *base;
+    void *offsetTable;
+    unsigned long long nObjects;
+    unsigned long long topObjectOffset;
+    unsigned long long offsetTableStart;
+    unsigned char sortVersion;
+    unsigned char offsetSize;
+    unsigned char referenceSize;
+} CDStruct_e993e376;
+
+typedef struct {
     double w;
     double x;
     double y;
@@ -50,15 +67,6 @@ typedef struct {
     float y;
     float z;
 } CDStruct_03942939;
-
-typedef struct {
-    int _field1;
-    int _field2;
-    char *_field3;
-    int _field4;
-    unsigned long long _field5;
-    void *_field6;
-} CDStruct_38ec6540;
 
 typedef struct {
     int width;
@@ -82,6 +90,8 @@ typedef struct {
     _Bool _field7;
     _Bool _field8;
     float _field9;
-    int _field10;
-} CDStruct_69e6d857;
+    _Bool _field10;
+    _Bool _field11;
+    int _field12;
+} CDStruct_227c825c;
 

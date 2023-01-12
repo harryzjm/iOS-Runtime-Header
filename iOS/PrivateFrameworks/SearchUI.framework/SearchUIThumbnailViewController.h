@@ -13,7 +13,6 @@
 + (_Bool)rowModelHasSuggestionThumbnail:(id)arg1;
 + (_Bool)supportsRowModel:(id)arg1;
 - (unsigned long long)type;
-- (void)forceVerticalCenteringOfContents;
 - (void)applyImageConstraints;
 - (void)setUsesCompactWidth:(_Bool)arg1;
 - (void)updateWithRowModel:(id)arg1;

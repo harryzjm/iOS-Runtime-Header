@@ -9,7 +9,7 @@
 #import <HealthKit/HKQueryClientInterface-Protocol.h>
 #import <HealthKit/_HKXPCExportable-Protocol.h>
 
-@class HKHealthStore, HKObjectType, HKQueryServerProxyProvider, HKSampleType, NSPredicate, NSString, NSUUID, _HKFilter;
+@class HKHealthStore, HKObjectType, HKQueryServerProxyProvider, HKSampleType, NSArray, NSPredicate, NSString, NSUUID, _HKFilter;
 @protocol HKQueryDelegate, HKQueryServerInterface, OS_dispatch_queue;
 
 @interface HKQuery : NSObject <_HKXPCExportable, HKQueryClientInterface>
@@ -20,14 +20,15 @@
     _Atomic int _activationState;
     _Atomic int _deactivateCallCount;
     double _activationTime;
+    HKObjectType *_objectType;
+    NSPredicate *_predicate;
     HKHealthStore *_strongHealthStore;
     id <HKQueryServerInterface> _serverProxy;
     _Bool _shouldSuppressDataCollection;
     unsigned int _applicationSDKVersion;
-    HKObjectType *_objectType;
-    NSPredicate *_predicate;
     NSUUID *_activationUUID;
     _HKFilter *_filter;
+    NSArray *_queryDescriptors;
     NSString *_debugIdentifier;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_clientQueue;
@@ -44,6 +45,24 @@
 + (void)configureClientInterface:(id)arg1;
 + (id)serverInterfaceProtocol;
 + (id)clientInterfaceProtocol;
++ (id)predicateForVerifiableClinicalRecordsWithRelevantDateWithinDateInterval:(id)arg1;
++ (id)predicateForMedicalRecordsWithSignedClinicalDataOriginIdentifier:(id)arg1;
++ (id)predicateForMedicalRecordsAssociatedWithMedicalUserDomainConcept:(id)arg1;
++ (id)predicateForMedicalRecordWithState:(unsigned long long)arg1;
++ (id)predicateForMedicalRecordWithOriginType:(unsigned long long)arg1;
++ (id)predicateForCreationDateWithTodayViewRange:(id)arg1;
++ (id)predicateForRecordsWithSortDateFromStartDateComponents:(id)arg1 endDateComponents:(id)arg2;
++ (id)predicateForDiagnosticTestResultWithReferenceRangeStatus:(long long)arg1;
++ (id)predicateForDiagnosticTestResultCategory:(id)arg1;
++ (id)predicateForMedicalUserDomainConceptsByResolvingConceptResolutionDefinition:(id)arg1;
++ (id)predicateForMedicalUserDomainConceptsMappingToSampleWithUUIDs:(id)arg1;
++ (id)predicateForMedicalUserDomainConceptsMappingToSampleWithUUID:(id)arg1;
++ (id)predicateForMedicalUserDomainConceptsWithCategoryTypes:(id)arg1;
++ (id)predicateForMedicalUserDomainConceptWithCategoryType:(long long)arg1;
++ (id)predicateForListUserDomainConceptsWithListTypes:(id)arg1;
++ (id)predicateForListUserDomainConceptWithListType:(unsigned long long)arg1;
++ (id)predicateForUserDomainConceptsWithUUIDs:(id)arg1;
++ (id)predicateForUserDomainConceptWithUUID:(id)arg1;
 + (id)predicateForObjectsFromContributorWithUUID:(id)arg1;
 + (id)predicateForElectrocardiogramsWithSymptomsStatus:(long long)arg1;
 + (id)predicateForElectrocardiogramsWithPrivateClassification:(unsigned long long)arg1;
@@ -59,11 +78,7 @@
 + (id)predicateForWorkoutsWithWorkoutActivityType:(unsigned long long)arg1;
 + (id)predicateForCategorySamplesWithOperatorType:(unsigned long long)arg1 value:(long long)arg2;
 + (id)predicateForQuantitySamplesWithOperatorType:(unsigned long long)arg1 quantity:(id)arg2;
-+ (id)predicateForMedicalRecordWithState:(unsigned long long)arg1;
-+ (id)predicateForCreationDateWithTodayViewRange:(id)arg1;
-+ (id)predicateForRecordsWithSortDateFromStartDateComponents:(id)arg1 endDateComponents:(id)arg2;
 + (id)predicateForSamplesWithConceptIdentifier:(id)arg1 keyPath:(id)arg2;
-+ (id)predicateForDiagnosticTestResultCategory:(id)arg1;
 + (id)predicateForRecordsFromGatewayWithExternalIdentifier:(id)arg1;
 + (id)predicateForRecordsFromClinicalAccountIdentifier:(id)arg1;
 + (id)predicateForSamplesForDayFromDate:(id)arg1 calendar:(id)arg2 options:(unsigned long long)arg3;
@@ -96,23 +111,24 @@
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(copy, nonatomic) NSString *debugIdentifier; // @synthesize debugIdentifier=_debugIdentifier;
 @property(nonatomic) _Bool shouldSuppressDataCollection; // @synthesize shouldSuppressDataCollection=_shouldSuppressDataCollection;
+@property(readonly, copy, nonatomic) NSArray *queryDescriptors; // @synthesize queryDescriptors=_queryDescriptors;
 @property(readonly, nonatomic, getter=_filter) _HKFilter *filter; // @synthesize filter=_filter;
 @property(copy) NSUUID *activationUUID; // @synthesize activationUUID=_activationUUID;
-@property(retain, nonatomic) NSPredicate *predicate; // @synthesize predicate=_predicate;
-@property(retain, nonatomic) HKObjectType *objectType; // @synthesize objectType=_objectType;
 - (void)connectionInterrupted;
 - (void)connectionInvalidated;
 - (id)remoteInterface;
 - (id)exportedInterface;
 - (id)_filterForPredicate:(id)arg1 objectType:(id)arg2;
 @property(readonly, copy) NSString *description;
+@property(retain, nonatomic) HKObjectType *objectType;
+@property(retain, nonatomic) NSPredicate *predicate;
 @property(readonly, nonatomic) __weak id <HKQueryDelegate> delegate;
 @property(readonly) HKSampleType *sampleType;
 - (void)client_deliverError:(id)arg1 forQuery:(id)arg2;
 @property(readonly) long long deactivateCallCount;
 - (_Bool)_queue_deactivateWithError:(id)arg1;
 - (void)_queue_finishActivationWithServerProxy:(id)arg1 activationUUID:(id)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_queue_activateWithHealthStore:(id)arg1 activationUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_queue_activateWithHealthStore:(id)arg1 activationUUID:(id)arg2 isReactivating:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)queue_deactivate;
 - (_Bool)deactivate;
 @property(readonly) _Bool deactivating;
@@ -128,6 +144,7 @@
 - (void)queue_queryDidFinishActivation:(id)arg1 success:(_Bool)arg2 error:(id)arg3;
 - (void)queue_validate;
 - (void)queue_deliverError:(id)arg1;
+- (id)_initWithQueryDescriptors:(id)arg1;
 - (id)_initWithObjectType:(id)arg1 predicate:(id)arg2;
 
 // Remaining properties

@@ -9,7 +9,7 @@
 @interface _TtC13SiriInference23ScrubRuntimeDataRecords
 {
     MISSING_TYPE *expiredRecords;
-    MISSING_TYPE *tombStonedRecords;
+    MISSING_TYPE *tombstonedRecords;
 }
 
 - (id)init;

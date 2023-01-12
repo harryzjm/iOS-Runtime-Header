@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSMapTable, NSMutableArray;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, OS_os_log;
 
 @interface PXObservable : NSObject
 {
@@ -20,9 +20,13 @@
     _Bool _observersQueue_shouldCopyChangeObserversOnWrite;
     NSMapTable *_observersQueue_changeObserversWithContexts;
     _Bool _hasObservers;
+    NSObject<OS_os_log> *_log;
+    unsigned long long _logContext;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long logContext; // @synthesize logContext=_logContext;
+@property(retain, nonatomic) NSObject<OS_os_log> *log; // @synthesize log=_log;
 @property(readonly, nonatomic) _Bool hasObservers; // @synthesize hasObservers=_hasObservers;
 - (void)_observersQueue_copyChangeObserversForWriteIfNeeded;
 - (void)_applyPendingChanges;
@@ -35,6 +39,7 @@
 @property(readonly, nonatomic) unsigned long long currentChanges;
 - (void)signalChange:(unsigned long long)arg1;
 - (void)hasObserversDidChange;
+- (void)didEndChangeHandling;
 - (void)didPublishChanges;
 - (void)didPerformChanges;
 - (void)willPerformChanges;
@@ -42,7 +47,11 @@
 - (void)unregisterChangeObserver:(id)arg1 context:(void *)arg2;
 - (void)registerChangeObserver:(id)arg1 context:(void *)arg2;
 - (void)performChanges:(CDUnknownBlockType)arg1;
+- (void)copyLogConfigurationFrom:(id)arg1;
 - (id)init;
+- (id)_pxStoryPPT_observeChangesUsingChangeHandler:(CDUnknownBlockType)arg1;
+- (id)pxStory_enumerateStatesByWatchingChanges:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)pxStory_enumerateStatesWithTimeout:(double)arg1 watchingChanges:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 
 @end
 

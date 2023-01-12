@@ -9,9 +9,9 @@
 @class NSArray;
 
 @protocol SNAnalyzing <SNProcessing>
-@property(readonly, nonatomic) struct Box *resultsBox;
+@property(readonly, nonatomic) void *resultsBox;
 - (id)sharedProcessorConfiguration;
-- (NSArray *)resultsFromBox:(struct Box *)arg1 renderedWithFrameCount:(int)arg2;
+- (NSArray *)resultsFromBox:(void *)arg1 renderedWithFrameCount:(int)arg2;
 
 @optional
 - (void)primeGraph;

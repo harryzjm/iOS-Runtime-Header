@@ -26,10 +26,12 @@
 @property(retain, nonatomic) NSObject<OS_os_transaction> *transaction; // @synthesize transaction=_transaction;
 @property(retain, nonatomic) NSString *pairedDeviceUUID; // @synthesize pairedDeviceUUID=_pairedDeviceUUID;
 - (id)disconnectAndForceSlave:(id)arg1;
+- (id)disconnectAndForceClient:(id)arg1;
 - (id)connectToControllerWithID:(id)arg1;
 - (id)readAvailableControllers:(id)arg1;
 - (id)readAvailableDevices:(id)arg1;
 - (void)updateNearbyDeviceAvailability;
+- (id)registerForControlMessageUpdates:(id)arg1;
 - (id)writeDeviceProperty:(id)arg1;
 - (void)sendUpdatesForProperties:(id)arg1 excludingClient:(id)arg2;
 - (id)readDeviceProperty:(id)arg1;

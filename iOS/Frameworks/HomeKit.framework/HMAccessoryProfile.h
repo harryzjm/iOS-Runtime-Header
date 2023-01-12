@@ -18,6 +18,8 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _HMAccessoryProfile *accessoryProfile; // @synthesize accessoryProfile=_accessoryProfile;
 - (void)refreshStateWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)assistantIdentifier;
+- (void)recomputeAssistantIdentifier;
 - (void)handleRuntimeStateUpdate:(id)arg1;
 @property(readonly, copy, nonatomic) NSUUID *profileUniqueIdentifier; // @dynamic profileUniqueIdentifier;
 @property(readonly, copy, nonatomic) NSUUID *uuid;

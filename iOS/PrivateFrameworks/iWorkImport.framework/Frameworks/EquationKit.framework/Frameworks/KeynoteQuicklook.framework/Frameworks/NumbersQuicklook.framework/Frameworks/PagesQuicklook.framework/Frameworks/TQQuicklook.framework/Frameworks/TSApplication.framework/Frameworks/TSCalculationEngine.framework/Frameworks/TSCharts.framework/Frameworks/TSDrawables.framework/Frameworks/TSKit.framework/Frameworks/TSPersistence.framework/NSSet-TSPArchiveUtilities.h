@@ -8,8 +8,8 @@
 
 @interface NSSet (TSPArchiveUtilities)
 + (id)tsp_consolidateFeatureInfos:(id)arg1 andReturnReadVersion:(out unsigned long long *)arg2 writeVersion:(out unsigned long long *)arg3;
-- (id)tsp_initWithProtobufStringArray:(const RepeatedPtrField_fe7cf120 *)arg1;
-- (void)tsp_saveToProtobufStringArray:(RepeatedPtrField_fe7cf120 *)arg1;
+- (id)tsp_initWithProtobufStringArray:(const void *)arg1;
+- (void)tsp_saveToProtobufStringArray:(void *)arg1;
 - (id)tsp_sortedDataArray;
 - (id)tsp_sortedObjectArray;
 @end

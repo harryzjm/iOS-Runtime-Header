@@ -7,6 +7,7 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (CoreHandwriting)
+- (_Bool)hasSubstringInSet:(id)arg1;
 - (long long)ch_occurrencesOfCharactersInSet:(id)arg1 maxCount:(long long)arg2;
 @end
 

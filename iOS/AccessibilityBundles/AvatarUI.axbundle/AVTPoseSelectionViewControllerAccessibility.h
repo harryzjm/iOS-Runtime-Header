@@ -12,13 +12,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)setMode:(unsigned long long)arg1;
-- (void)_axMarkupCell:(id)arg1 atIndexPath:(id)arg2;
-- (void)_axSetCachedAvatarDescription:(id)arg1;
-- (id)_axGetCachedAvatarDescription;
-- (void)_axSetCachedAvatarRecord:(id)arg1;
-- (id)_axGetCachedAvatarRecord;
-- (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
-- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

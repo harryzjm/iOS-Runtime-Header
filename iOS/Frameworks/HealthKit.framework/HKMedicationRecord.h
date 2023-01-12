@@ -8,44 +8,45 @@
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class HKConcept, HKMedicalCoding, HKMedicalDate, HKMedicationRecordType, NSArray, NSLocale, NSString, NSUUID;
+@class HKConcept, HKMedicalCoding, HKMedicalCodingCollection, HKMedicalDate, HKMedicationRecordType, NSArray, NSLocale, NSString, NSUUID;
 
 @interface HKMedicationRecord <HKConceptIndexable, NSSecureCoding, NSCopying>
 {
-    NSArray *_medicationCodings;
+    HKMedicalCodingCollection *_medicationCodingCollection;
     long long _assertionType;
     NSString *_asserter;
     HKMedicalDate *_assertionDate;
     HKMedicalCoding *_statusCoding;
     NSArray *_dosages;
     HKMedicalDate *_earliestDosageDate;
-    NSArray *_reasonForUseCodings;
+    NSArray *_reasonForUseCodingCollections;
     _Bool _notTaken;
-    NSArray *_reasonsNotTakenCodings;
+    NSArray *_reasonsNotTakenCodingCollections;
     HKMedicalDate *_effectiveStartDate;
     HKMedicalDate *_effectiveEndDate;
     HKConcept *_medication;
     HKConcept *_status;
-    HKConcept *_reasonForUse;
+    NSArray *_reasonForUse;
     NSArray *_reasonsNotTaken;
 }
 
 + (_Bool)_isConcreteObjectClass;
 + (_Bool)supportsEquivalence;
 + (_Bool)supportsSecureCoding;
-+ (id)_newMedicationRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(_Bool)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 country:(id)arg11 state:(unsigned long long)arg12 medicationCodings:(id)arg13 assertionType:(long long)arg14 asserter:(id)arg15 assertionDate:(id)arg16 statusCoding:(id)arg17 dosages:(id)arg18 earliestDosageDate:(id)arg19 reasonForUseCodings:(id)arg20 notTaken:(_Bool)arg21 reasonsNotTakenCodings:(id)arg22 effectiveStartDate:(id)arg23 effectiveEndDate:(id)arg24 config:(CDUnknownBlockType)arg25;
-+ (id)medicationRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(_Bool)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 country:(id)arg11 state:(unsigned long long)arg12 medicationCodings:(id)arg13 assertionType:(long long)arg14 asserter:(id)arg15 assertionDate:(id)arg16 statusCoding:(id)arg17 dosages:(id)arg18 earliestDosageDate:(id)arg19 reasonForUseCodings:(id)arg20 notTaken:(_Bool)arg21 reasonsNotTakenCodings:(id)arg22 effectiveStartDate:(id)arg23 effectiveEndDate:(id)arg24;
++ (id)_newMedicationRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(_Bool)arg3 modifiedDate:(id)arg4 originIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 country:(id)arg11 state:(unsigned long long)arg12 medicationCodingCollection:(id)arg13 assertionType:(long long)arg14 asserter:(id)arg15 assertionDate:(id)arg16 statusCoding:(id)arg17 dosages:(id)arg18 earliestDosageDate:(id)arg19 reasonForUseCodingCollections:(id)arg20 notTaken:(_Bool)arg21 reasonsNotTakenCodingCollections:(id)arg22 effectiveStartDate:(id)arg23 effectiveEndDate:(id)arg24 config:(CDUnknownBlockType)arg25;
++ (id)medicationRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(_Bool)arg3 modifiedDate:(id)arg4 originIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 country:(id)arg11 state:(unsigned long long)arg12 medicationCodingCollection:(id)arg13 assertionType:(long long)arg14 asserter:(id)arg15 assertionDate:(id)arg16 statusCoding:(id)arg17 dosages:(id)arg18 earliestDosageDate:(id)arg19 reasonForUseCodingCollections:(id)arg20 notTaken:(_Bool)arg21 reasonsNotTakenCodingCollections:(id)arg22 effectiveStartDate:(id)arg23 effectiveEndDate:(id)arg24;
 + (id)defaultDisplayString;
++ (_Bool)groupsByUserDomainConcept;
 + (id)cachedConceptRelationshipKeyPaths;
 + (id)indexableConceptKeyPaths;
-+ (id)medicationRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(_Bool)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 country:(id)arg10 state:(unsigned long long)arg11 medicationCodings:(id)arg12 assertionType:(long long)arg13 asserter:(id)arg14 assertionDate:(id)arg15 statusCoding:(id)arg16 dosages:(id)arg17 earliestDosageDate:(id)arg18 reasonForUseCodings:(id)arg19 notTaken:(_Bool)arg20 reasonsNotTakenCodings:(id)arg21 effectiveStartDate:(id)arg22 effectiveEndDate:(id)arg23;
++ (id)medicationRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(_Bool)arg3 modifiedDate:(id)arg4 originIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 country:(id)arg10 state:(unsigned long long)arg11 medicationCodingCollection:(id)arg12 assertionType:(long long)arg13 asserter:(id)arg14 assertionDate:(id)arg15 statusCoding:(id)arg16 dosages:(id)arg17 earliestDosageDate:(id)arg18 reasonForUseCodingCollections:(id)arg19 notTaken:(_Bool)arg20 reasonsNotTakenCodingCollections:(id)arg21 effectiveStartDate:(id)arg22 effectiveEndDate:(id)arg23;
 - (void).cxx_destruct;
 @property(readonly, copy) HKMedicationRecordType *medicationRecordType;
 - (id)_validateWithConfiguration:(struct HKObjectValidationConfiguration)arg1;
 - (void)_setReasonsNotTaken:(id)arg1;
 @property(readonly, copy) NSArray *reasonsNotTaken;
 - (void)_setReasonForUse:(id)arg1;
-@property(readonly, copy) HKConcept *reasonForUse;
+@property(readonly, copy) NSArray *reasonForUse;
 - (void)_setStatus:(id)arg1;
 @property(readonly, copy) HKConcept *status;
 - (void)_setMedication:(id)arg1;
@@ -54,12 +55,12 @@
 @property(readonly, copy) HKMedicalDate *effectiveEndDate;
 - (void)_setEffectiveStartDate:(id)arg1;
 @property(readonly, copy) HKMedicalDate *effectiveStartDate;
-- (void)_setReasonsNotTakenCodings:(id)arg1;
-@property(readonly, copy) NSArray *reasonsNotTakenCodings;
+- (void)_setReasonsNotTakenCodingCollections:(id)arg1;
+@property(readonly, copy) NSArray *reasonsNotTakenCodingCollections;
 - (void)_setNotTaken:(_Bool)arg1;
 @property(readonly) _Bool notTaken;
-- (void)_setReasonForUseCodings:(id)arg1;
-@property(readonly, copy) NSArray *reasonForUseCodings;
+- (void)_setReasonForUseCodingCollections:(id)arg1;
+@property(readonly, copy) NSArray *reasonForUseCodingCollections;
 - (void)_setEarliestDosageDate:(id)arg1;
 @property(readonly, copy) HKMedicalDate *earliestDosageDate;
 - (void)_setDosages:(id)arg1;
@@ -72,12 +73,9 @@
 @property(readonly, copy) NSString *asserter;
 - (void)_setAssertionType:(long long)arg1;
 @property(readonly) long long assertionType;
-- (void)_setMedicationCodings:(id)arg1;
-@property(readonly, copy) NSArray *medicationCodings;
-- (id)reasonsNotTakenCodingsCollections;
-- (id)reasonForUseCodingsCollection;
+- (void)_setMedicationCodingCollection:(id)arg1;
+@property(readonly, copy) HKMedicalCodingCollection *medicationCodingCollection;
 - (id)statusCodingCollection;
-- (id)medicationCodingsCollection;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEquivalent:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -85,6 +83,7 @@
 @property(readonly, copy) NSString *description;
 - (id)init;
 - (id)medicalRecordCodings;
+@property(readonly, nonatomic) long long recordCategoryType;
 - (_Bool)applyConcepts:(id)arg1 forKeyPath:(id)arg2 error:(id *)arg3;
 - (id)codingsForKeyPath:(id)arg1 error:(id *)arg2;
 

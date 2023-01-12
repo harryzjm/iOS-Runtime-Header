@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class LPLinkMetadata;
 @protocol UIActivityItemsConfigurationReading;
 
 @interface _UIActivityItemsConfigurationActivityItemProvider
 {
     id <UIActivityItemsConfigurationReading> _activityItemsConfiguration;
     id _item;
-    long long _index;
+    LPLinkMetadata *_linkMetadata;
+    long long _sourceIndex;
 }
 
 - (void).cxx_destruct;
@@ -19,7 +21,7 @@
 - (id)_title;
 - (id)activityViewController:(id)arg1 itemForActivityType:(id)arg2;
 - (id)item;
-- (id)initWithActivityItemsConfiguration:(id)arg1 itemAtIndex:(long long)arg2;
+- (id)initWithActivityItemsConfiguration:(id)arg1 itemAtSourceIndex:(long long)arg2;
 
 @end
 

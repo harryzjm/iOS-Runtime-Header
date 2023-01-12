@@ -8,6 +8,7 @@
 
 #import <MediaPlaybackCore/NSCopying-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface _MPCProtoRadioContentReferenceStoreContentReference : PBCodable <NSCopying>
 {
     long long _storeAdamID;
@@ -16,8 +17,6 @@
     } _has;
 }
 
-@property(nonatomic) long long storeAdamID; // @synthesize storeAdamID=_storeAdamID;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -25,7 +24,6 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasStoreAdamID;
 
 @end
 

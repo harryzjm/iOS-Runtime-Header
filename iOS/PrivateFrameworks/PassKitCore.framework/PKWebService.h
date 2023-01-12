@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <PassKitCore/NSURLSessionDataDelegate-Protocol.h>
 #import <PassKitCore/NSURLSessionTaskDelegate-Protocol.h>
 
 @class ACAccountStore, NSMutableArray, NSMutableDictionary, NSOperationQueue, NSSet, NSString, NSURLSession, NSURLSessionConfiguration;
 @protocol OS_dispatch_queue, PKTapToRadarDelegate;
 
-@interface PKWebService : NSObject <NSURLSessionTaskDelegate>
+@interface PKWebService : NSObject <NSURLSessionTaskDelegate, NSURLSessionDataDelegate>
 {
     ACAccountStore *_accountStore;
     unsigned long long _taskIDCounter;
@@ -19,6 +20,7 @@
     NSOperationQueue *_delegateOperationQueue;
     NSMutableDictionary *_webServiceTasks;
     NSMutableDictionary *_diagnosticReasonsByTaskID;
+    NSMutableDictionary *_tasksMetadata;
     NSMutableArray *_diagnosticReasons;
     NSURLSession *_urlSession;
     NSObject<OS_dispatch_queue> *_diagnosticReasonsQueue;
@@ -35,13 +37,14 @@
 - (id)_redactLogsWithData:(id)arg1;
 - (void)logResponse:(id)arg1 withData:(id)arg2;
 - (void)logRequest:(id)arg1;
-- (id)logFacility;
+- (long long)logFacilityType;
 - (id)_urlRequestTaggedWithDiagnosticReasonHeader:(id)arg1 forTaskID:(unsigned long long)arg2;
 - (void)_cleanUpDiagnosticReasonsForTaskID:(unsigned long long)arg1;
 - (void)_associateDiagnosticReasonsWithTaskID:(unsigned long long)arg1;
 - (void)removeDiagnosticReason:(id)arg1;
 - (void)addDiagnosticReason:(id)arg1;
 - (void)diagnosticSessionWithReason:(id)arg1 sessionHandler:(CDUnknownBlockType)arg2;
+- (id)_urlRequestTaggedWithUniqueRequestIdentifier:(id)arg1;
 - (id)_urlRequestTaggedWithWebServiceSessionMarkerHeader:(id)arg1;
 - (void)resetWebServiceSessionMarker;
 @property(readonly, nonatomic) NSString *webServiceSessionMarker;
@@ -49,6 +52,9 @@
 - (void)URLSession:(id)arg1 didBecomeInvalidWithError:(id)arg2;
 - (void)URLSession:(id)arg1 taskIsWaitingForConnectivity:(id)arg2;
 - (void)URLSession:(id)arg1 task:(id)arg2 willPerformHTTPRedirection:(id)arg3 newRequest:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)URLSession:(id)arg1 dataTask:(id)arg2 willCacheResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
+- (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
 - (_Bool)_trustPassesExtendedValidation:(struct __SecTrust *)arg1;
 - (id)forbiddenErrorWithResponse:(id)arg1;
 - (id)_accountStore;
@@ -56,7 +62,9 @@
 - (id)urlSession;
 - (id)dataTaskWithRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (unsigned long long)webServiceTaskIdentifierForTaskIdentifier:(long long)arg1;
+- (void)performRequest:(id)arg1 taskIdentifier:(unsigned long long)arg2 retries:(unsigned long long)arg3 authHandling:(_Bool)arg4 cacheResponse:(_Bool)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)performRequest:(id)arg1 taskIdentifier:(unsigned long long)arg2 retries:(unsigned long long)arg3 authHandling:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)performRequest:(id)arg1 taskIdentifier:(unsigned long long)arg2 cacheResponse:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)performRequest:(id)arg1 taskIdentifier:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (unsigned long long)nextTaskID;
 - (void)refreshSessionWithConfiguration:(id)arg1;

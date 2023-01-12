@@ -10,7 +10,7 @@
 #import <WorkflowKit/WFCloudKitItem-Protocol.h>
 #import <WorkflowKit/WFSortableGalleryObject-Protocol.h>
 
-@class CKRecordID, NSData, NSDate, NSNumber, NSString, WFFileRepresentation, WFWorkflowIcon, WFWorkflowRecord;
+@class CKRecordID, NSArray, NSData, NSDate, NSNumber, NSString, WFFileRepresentation, WFWorkflowIcon, WFWorkflowRecord;
 
 @interface WFGalleryWorkflow : NSObject <WFCloudKitItem, WFSortableGalleryObject, NSMutableCopying>
 {
@@ -20,29 +20,39 @@
     NSString *_shortDescription;
     NSString *_longDescription;
     NSNumber *_searchable;
+    long long _minVersion;
+    NSArray *_hiddenRegions;
+    NSArray *_supportedIdioms;
     NSDate *_createdAt;
     NSDate *_modifiedAt;
     NSString *_language;
     CKRecordID *_base;
     NSString *_persistentIdentifier;
     WFFileRepresentation *_shortcutFile;
+    WFFileRepresentation *_signedShortcutFile;
     WFFileRepresentation *_iconFile;
     NSNumber *_iconColor;
     NSNumber *_iconGlyph;
+    NSString *_signingStatus;
 }
 
 + (id)properties;
 + (id)recordType;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *signingStatus; // @synthesize signingStatus=_signingStatus;
 @property(retain, nonatomic) NSNumber *iconGlyph; // @synthesize iconGlyph=_iconGlyph;
 @property(retain, nonatomic) NSNumber *iconColor; // @synthesize iconColor=_iconColor;
 @property(readonly, nonatomic) WFFileRepresentation *iconFile; // @synthesize iconFile=_iconFile;
+@property(retain, nonatomic) WFFileRepresentation *signedShortcutFile; // @synthesize signedShortcutFile=_signedShortcutFile;
 @property(readonly, nonatomic) WFFileRepresentation *shortcutFile; // @synthesize shortcutFile=_shortcutFile;
 @property(readonly, nonatomic) NSString *persistentIdentifier; // @synthesize persistentIdentifier=_persistentIdentifier;
 @property(readonly, nonatomic) CKRecordID *base; // @synthesize base=_base;
 @property(readonly, nonatomic) NSString *language; // @synthesize language=_language;
 @property(readonly, nonatomic) NSDate *modifiedAt; // @synthesize modifiedAt=_modifiedAt;
 @property(readonly, nonatomic) NSDate *createdAt; // @synthesize createdAt=_createdAt;
+@property(readonly, nonatomic) NSArray *supportedIdioms; // @synthesize supportedIdioms=_supportedIdioms;
+@property(readonly, nonatomic) NSArray *hiddenRegions; // @synthesize hiddenRegions=_hiddenRegions;
+@property(readonly, nonatomic) long long minVersion; // @synthesize minVersion=_minVersion;
 @property(readonly, nonatomic) NSNumber *searchable; // @synthesize searchable=_searchable;
 @property(readonly, nonatomic) NSString *longDescription; // @synthesize longDescription=_longDescription;
 @property(readonly, nonatomic) NSString *shortDescription; // @synthesize shortDescription=_shortDescription;

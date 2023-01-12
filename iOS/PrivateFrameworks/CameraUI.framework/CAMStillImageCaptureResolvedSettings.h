@@ -10,18 +10,22 @@
 {
     _Bool _HDREnabled;
     _Bool _portraitEffectEnabled;
+    _Bool _lowLightCaptureHasInitialPreviewFeedbackSensitivity;
+    _Bool _lowLightCaptureHasConstantPreviewFeedbackSensitivity;
     _Bool _captureBeforeResolvingSettingsEnabled;
     double _lowLightCaptureTime;
     struct CGColor *_lowLightPreviewColorEstimate;
 }
 
 @property(readonly, nonatomic, getter=isCaptureBeforeResolvingSettingsEnabled) _Bool captureBeforeResolvingSettingsEnabled; // @synthesize captureBeforeResolvingSettingsEnabled=_captureBeforeResolvingSettingsEnabled;
+@property(readonly, nonatomic) _Bool lowLightCaptureHasConstantPreviewFeedbackSensitivity; // @synthesize lowLightCaptureHasConstantPreviewFeedbackSensitivity=_lowLightCaptureHasConstantPreviewFeedbackSensitivity;
+@property(readonly, nonatomic) _Bool lowLightCaptureHasInitialPreviewFeedbackSensitivity; // @synthesize lowLightCaptureHasInitialPreviewFeedbackSensitivity=_lowLightCaptureHasInitialPreviewFeedbackSensitivity;
 @property(readonly, nonatomic) struct CGColor *lowLightPreviewColorEstimate; // @synthesize lowLightPreviewColorEstimate=_lowLightPreviewColorEstimate;
 @property(readonly, nonatomic) double lowLightCaptureTime; // @synthesize lowLightCaptureTime=_lowLightCaptureTime;
 @property(readonly, nonatomic, getter=isPortraitEffectEnabled) _Bool portraitEffectEnabled; // @synthesize portraitEffectEnabled=_portraitEffectEnabled;
 @property(readonly, nonatomic, getter=isHDREnabled) _Bool HDREnabled; // @synthesize HDREnabled=_HDREnabled;
 - (void)dealloc;
-- (id)initWithHDREnabled:(_Bool)arg1 portraitEffectEnabled:(_Bool)arg2 lowLightCaptureTime:(double)arg3 lowLightPreviewColorEstimate:(struct CGColor *)arg4 captureBeforeResolvingSettingsEnabled:(_Bool)arg5;
+- (id)initWithHDREnabled:(_Bool)arg1 portraitEffectEnabled:(_Bool)arg2 lowLightCaptureTime:(double)arg3 lowLightPreviewColorEstimate:(struct CGColor *)arg4 lowLightCaptureHasInitialPreviewFeedbackSensitivity:(_Bool)arg5 lowLightCaptureHasConstantPreviewFeedbackSensitivity:(_Bool)arg6 captureBeforeResolvingSettingsEnabled:(_Bool)arg7;
 
 @end
 

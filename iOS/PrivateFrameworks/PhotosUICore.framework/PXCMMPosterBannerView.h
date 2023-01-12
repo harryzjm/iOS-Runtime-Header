@@ -20,6 +20,7 @@
     PXUpdater *_updater;
     _Bool _containsUnverifiedPersons;
     _Bool _loadingPeopleSuggestions;
+    _Bool _addingPhotos;
     NSString *_headline;
     NSString *_subheadline;
     NSArray *_localizedNamesForHeadline;
@@ -29,6 +30,7 @@
 + (id)_headlineLabelBoldFont;
 + (id)_headlineLabelFont;
 - (void).cxx_destruct;
+@property(nonatomic, getter=isAddingPhotos) _Bool addingPhotos; // @synthesize addingPhotos=_addingPhotos;
 @property(nonatomic, getter=isLoadingPeopleSuggestions) _Bool loadingPeopleSuggestions; // @synthesize loadingPeopleSuggestions=_loadingPeopleSuggestions;
 @property(nonatomic) _Bool containsUnverifiedPersons; // @synthesize containsUnverifiedPersons=_containsUnverifiedPersons;
 @property(copy, nonatomic) NSArray *localizedNamesForHeadline; // @synthesize localizedNamesForHeadline=_localizedNamesForHeadline;

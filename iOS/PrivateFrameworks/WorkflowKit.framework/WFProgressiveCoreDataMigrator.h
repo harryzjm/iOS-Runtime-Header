@@ -10,7 +10,7 @@
 {
 }
 
-+ (_Bool)migrateDatabaseAtPersistentStoreURL:(id)arg1 error:(id *)arg2;
++ (_Bool)migrateDatabaseAtPersistentStoreDescription:(id)arg1 error:(id *)arg2;
 + (id)customModificationsStepForSchemaWithIdentifier:(id)arg1;
 
 @end

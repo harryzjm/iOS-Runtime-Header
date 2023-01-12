@@ -15,6 +15,7 @@
     MISSING_TYPE *_sliceLengths;
     MISSING_TYPE *_dimensionOrder;
     unsigned long long _numberOfDimensions;
+    unsigned long long _rowBytes;
     unsigned int _dataType;
     MPSNDArrayDescriptor *_child;
     MPSNDArrayDescriptor *_parent;
@@ -25,13 +26,14 @@
 + (id)descriptorWithDataType:(unsigned int)arg1 dimensionSizes:(unsigned long long)arg2;
 + (id)descriptorWithDataType:(unsigned int)arg1 shape:(id)arg2;
 + (id)descriptorWithDataType:(unsigned int)arg1 dimensionCount:(unsigned long long)arg2 dimensionSizes:(unsigned long long *)arg3;
+@property(nonatomic) unsigned long long rowBytes; // @synthesize rowBytes=_rowBytes;
 @property(nonatomic) _Bool preferPackedRows; // @synthesize preferPackedRows=_preferPackedRows;
 @property(nonatomic) unsigned long long numberOfDimensions; // @synthesize numberOfDimensions=_numberOfDimensions;
 @property(nonatomic) unsigned int dataType; // @synthesize dataType=_dataType;
 - (void)dealloc;
 - (void)reshapeWithDimensionCount:(unsigned long long)arg1 dimensionSizes:(unsigned long long *)arg2;
 - (void)reshapeWithShape:(id)arg1;
-- (unique_ptr_443eaf63)getShapeVector;
+- (unique_ptr_ad0d5218)getShapeVector;
 - (id)getShape;
 - (id)initWithDataType:(unsigned int)arg1 dimensions:(unsigned long long)arg2 sizes: /* Error: Ran out of types for this method. */;
 - (MISSING_TYPE *)dimensionOrder;

@@ -11,16 +11,20 @@
 @interface OSLogStore : NSObject
 {
     OSLogEventSource *_source;
+    int _constraint;
 }
 
 + (id)storeWithURL:(id)arg1 error:(id *)arg2;
-+ (id)localStoreAndReturnError:(id *)arg1;
++ (id)storeWithScope:(long long)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 - (id)positionWithTimeIntervalSinceLatestBoot:(double)arg1;
 - (id)positionWithTimeIntervalSinceEnd:(double)arg1;
 - (id)positionWithDate:(id)arg1;
 - (id)entriesEnumeratorAndReturnError:(id *)arg1;
 - (id)entriesEnumeratorWithOptions:(unsigned long long)arg1 position:(id)arg2 predicate:(id)arg3 error:(id *)arg4;
+- (id)_constrainedEntriesEnumeratorWithOptions:(unsigned long long)arg1 position:(id)arg2 predicate:(id)arg3 error:(id *)arg4;
+- (id)initForFactory;
+- (id)init;
 
 @end
 

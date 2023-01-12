@@ -43,11 +43,7 @@
 + (void)_removeUserStyleSheetFromGroup:(id)arg1 world:(id)arg2 url:(id)arg3;
 + (void)_removeUserScriptFromGroup:(id)arg1 world:(id)arg2 url:(id)arg3;
 + (void)_addUserStyleSheetToGroup:(id)arg1 world:(id)arg2 source:(id)arg3 url:(id)arg4 includeMatchPatternStrings:(id)arg5 excludeMatchPatternStrings:(id)arg6 injectedFrames:(int)arg7;
-+ (void)_addUserStyleSheetToGroup:(id)arg1 world:(id)arg2 source:(id)arg3 url:(id)arg4 whitelist:(id)arg5 blacklist:(id)arg6 injectedFrames:(int)arg7;
-+ (void)_addUserStyleSheetToGroup:(id)arg1 world:(id)arg2 source:(id)arg3 url:(id)arg4 whitelist:(id)arg5 blacklist:(id)arg6;
 + (void)_addUserScriptToGroup:(id)arg1 world:(id)arg2 source:(id)arg3 url:(id)arg4 includeMatchPatternStrings:(id)arg5 excludeMatchPatternStrings:(id)arg6 injectionTime:(int)arg7 injectedFrames:(int)arg8;
-+ (void)_addUserScriptToGroup:(id)arg1 world:(id)arg2 source:(id)arg3 url:(id)arg4 whitelist:(id)arg5 blacklist:(id)arg6 injectionTime:(int)arg7 injectedFrames:(int)arg8;
-+ (void)_addUserScriptToGroup:(id)arg1 world:(id)arg2 source:(id)arg3 url:(id)arg4 whitelist:(id)arg5 blacklist:(id)arg6 injectionTime:(int)arg7;
 + (void)_resetOriginAccessAllowLists;
 + (void)_removeOriginAccessAllowListEntryWithSourceOrigin:(id)arg1 destinationProtocol:(id)arg2 destinationHost:(id)arg3 allowDestinationSubdomains:(_Bool)arg4;
 + (void)_addOriginAccessAllowListEntryWithSourceOrigin:(id)arg1 destinationProtocol:(id)arg2 destinationHost:(id)arg3 allowDestinationSubdomains:(_Bool)arg4;
@@ -301,7 +297,6 @@
 - (id)_UIKitDelegateForwarder;
 - (void)_preferencesChanged:(id)arg1;
 - (void)_preferencesChangedNotification:(id)arg1;
-- (_Bool)_needsPreHTML5ParserQuirks;
 - (id)_formDelegateForSelector:(SEL)arg1;
 - (id)_formDelegateForwarder;
 - (id)_formDelegate;
@@ -349,12 +344,12 @@
 @property(readonly, nonatomic) unsigned long long _dragSourceAction;
 @property(readonly, nonatomic, getter=_dataOperationTextIndicator) WebUITextIndicatorData *dataOperationTextIndicator;
 @property(readonly, nonatomic, getter=_dataInteractionCaretRect) struct CGRect dataInteractionCaretRect;
-- (void)_startDrag:(const struct DragItem *)arg1;
+- (void)_startDrag:(const void *)arg1;
 - (_Bool)_requestStartDataInteraction:(struct CGPoint)arg1 globalPosition:(struct CGPoint)arg2;
 - (void)updateLayoutIgnorePendingStyleSheets;
 - (void)_replaceCurrentHistoryItem:(id)arg1;
 - (id)initSimpleHTMLDocumentWithStyle:(id)arg1 frame:(struct CGRect)arg2 preferences:(id)arg3 groupName:(id)arg4;
-- (void)_viewWillDrawInternal;
+- (void)_updateRendering;
 - (id)_initWithFrame:(struct CGRect)arg1 frameName:(id)arg2 groupName:(id)arg3;
 - (void)_commonInitializationWithFrameName:(id)arg1 groupName:(id)arg2;
 - (void)_injectLaBanquePostaleQuirks;
@@ -591,7 +586,7 @@
 - (Vector_05504c84)_dictationAlternatives:(ObjectIdentifier_2e565102)arg1;
 - (void)_removeDictationAlternatives:(ObjectIdentifier_2e565102)arg1;
 - (void)_showDictationAlternativeUI:(const struct FloatRect *)arg1 forDictationContext:(ObjectIdentifier_2e565102)arg2;
-- (void)_getWebCoreDictationAlternatives:(Vector_4aeed4b7 *)arg1 fromTextAlternatives:(const Vector_15b552f4 *)arg2;
+- (void)_getWebCoreDictationAlternatives:(void *)arg1 fromTextAlternatives:(const void *)arg2;
 - (void)_exitVideoFullscreen;
 - (void)_enterVideoFullscreenForVideoElement:(NakedPtr_311734dd)arg1 mode:(unsigned int)arg2;
 - (void)_scheduleRenderingUpdateForPendingTileCacheRepaint;
@@ -601,7 +596,7 @@
 - (_Bool)_needsOneShotDrawingSynchronization;
 - (void)_clearCredentials;
 - (id)_selectedOrMainFrame;
-- (struct Frame *)_mainCoreFrame;
+- (void *)_mainCoreFrame;
 - (int)_keyboardUIMode;
 - (void)_retrieveKeyboardUIModeFromPreferences:(id)arg1;
 - (void)_removeObjectForIdentifier:(unsigned long long)arg1;
@@ -625,6 +620,7 @@
 - (void)revealCurrentSelection;
 - (id)_editableElementsInRect:(struct CGRect)arg1;
 - (id)fullScreenPlaceholderView;
+- (void)_preferencesChangedGenerated:(id)arg1;
 
 @end
 

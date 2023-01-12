@@ -10,7 +10,9 @@
 
 @interface _TtC9WidgetKit12WidgetCenter : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *connection;
+    MISSING_TYPE *_calloutQueue;
+    MISSING_TYPE *_lock;
+    MISSING_TYPE *_lock_connection;
 }
 
 @end

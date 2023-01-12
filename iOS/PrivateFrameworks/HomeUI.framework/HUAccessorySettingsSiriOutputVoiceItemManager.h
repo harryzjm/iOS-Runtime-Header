@@ -7,20 +7,25 @@
 #import <Home/HFItemManager.h>
 
 #import <HomeUI/HFAccessorySettingSiriLanguageAdapterObserver-Protocol.h>
+#import <HomeUI/HFSiriLanguageOptionsManagerObserver-Protocol.h>
 
-@class HFAccessorySettingGroupItem, HFAccessorySettingSiriLanguageAdapter, HUSiriLanguageOptionItemProvider, NSString;
+@class HFAccessorySettingGroupItem, HFAccessorySettingSiriLanguageAdapter, HFSiriLanguageOptionsManager, HUSiriLanguageOptionItemProvider, NSString;
 
-@interface HUAccessorySettingsSiriOutputVoiceItemManager : HFItemManager <HFAccessorySettingSiriLanguageAdapterObserver>
+@interface HUAccessorySettingsSiriOutputVoiceItemManager : HFItemManager <HFAccessorySettingSiriLanguageAdapterObserver, HFSiriLanguageOptionsManagerObserver>
 {
     HFAccessorySettingSiriLanguageAdapter *_adapter;
     HUSiriLanguageOptionItemProvider *_accentOptionItemProvider;
     HUSiriLanguageOptionItemProvider *_genderOptionItemProvider;
+    HFSiriLanguageOptionsManager *_siriLanguageOptionsManager;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) HFSiriLanguageOptionsManager *siriLanguageOptionsManager; // @synthesize siriLanguageOptionsManager=_siriLanguageOptionsManager;
 @property(retain, nonatomic) HUSiriLanguageOptionItemProvider *genderOptionItemProvider; // @synthesize genderOptionItemProvider=_genderOptionItemProvider;
 @property(retain, nonatomic) HUSiriLanguageOptionItemProvider *accentOptionItemProvider; // @synthesize accentOptionItemProvider=_accentOptionItemProvider;
 @property(readonly, nonatomic) HFAccessorySettingSiriLanguageAdapter *adapter; // @synthesize adapter=_adapter;
+- (void)siriLanguageOptionsManager:(id)arg1 availableLanguageOptionsDidChange:(id)arg2;
+- (void)siriLanguageOptionsManager:(id)arg1 selectedLanguageOptionDidChange:(id)arg2;
 - (void)siriLanguageAdapter:(id)arg1 availableLanguageOptionsDidChange:(id)arg2;
 - (void)siriLanguageAdapter:(id)arg1 selectedLanguageOptionDidChange:(id)arg2;
 - (void)_unregisterForExternalUpdates;
@@ -28,7 +33,9 @@
 - (id)_buildSectionsWithDisplayedItems:(id)arg1;
 - (id)_buildItemProvidersForHome:(id)arg1;
 - (id)updateSelectionWithOptionItem:(id)arg1;
+- (id)initWithDelegate:(id)arg1 siriLanguageOptionsManager:(id)arg2 sourceItem:(id)arg3;
 @property(readonly, copy, nonatomic) HFAccessorySettingGroupItem *groupItem;
+- (void)dealloc;
 - (id)initWithDelegate:(id)arg1 groupItem:(id)arg2;
 - (id)initWithDelegate:(id)arg1;
 - (id)initWithDelegate:(id)arg1 sourceItem:(id)arg2;

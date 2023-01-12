@@ -14,9 +14,14 @@
 }
 
 + (id)displayLinkWithTarget:(id)arg1 selector:(SEL)arg2;
++ (void)dispatchDeferredDisplayLinks;
++ (void)setWillFireHandler:(CDUnknownBlockType)arg1;
++ (double)expectedWakeupBeforeCommitDeadline:(double)arg1;
++ (_Bool)supportsExpectedWakeupBeforeCommitDeadline;
++ (long long)willFireInfoVersion;
 + (id)displayLinkWithDisplay:(id)arg1 target:(id)arg2 selector:(SEL)arg3;
 - (void)invalidate;
-- (long long)actualFramesPerSecond;
+@property(nonatomic) struct CAFrameRateRange preferredFrameRateRange;
 @property(nonatomic) long long preferredFramesPerSecond;
 @property(readonly, nonatomic) double targetTimestamp;
 @property(nonatomic) long long frameInterval;
@@ -27,7 +32,11 @@
 - (void)removeFromRunLoop:(id)arg1 forMode:(id)arg2;
 - (void)addToRunLoop:(id)arg1 forMode:(id)arg2;
 - (void)dealloc;
-- (id)_initWithDisplayLinkItem:(struct DisplayLinkItem *)arg1;
+- (id)_initWithDisplayLinkItem:(void *)arg1;
+@property(nonatomic) double timingOffset;
+- (void)setHighFrameRateReasons:(const unsigned int *)arg1 count:(unsigned long long)arg2;
+@property unsigned int highFrameRateReason;
+@property(readonly, nonatomic) long long actualFramesPerSecond;
 @property(readonly, nonatomic) long long minimumFrameDuration;
 @property(readonly, nonatomic) double heartbeatRate;
 @property(retain, nonatomic) id userInfo;

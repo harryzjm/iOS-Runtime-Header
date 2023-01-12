@@ -6,8 +6,12 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC7VFXCore20TextureDiscardSystem : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *cleanupCPUQuery;
+    MISSING_TYPE *cleanupGPUQuery;
 }
 
 @end

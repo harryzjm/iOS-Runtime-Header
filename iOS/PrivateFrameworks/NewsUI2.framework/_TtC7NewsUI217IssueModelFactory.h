@@ -15,6 +15,7 @@
     MISSING_TYPE *featureAvailability;
     MISSING_TYPE *subscriptionController;
     MISSING_TYPE *subscriptionService;
+    MISSING_TYPE *paidAccessChecker;
     MISSING_TYPE *offlineIssueManager;
 }
 

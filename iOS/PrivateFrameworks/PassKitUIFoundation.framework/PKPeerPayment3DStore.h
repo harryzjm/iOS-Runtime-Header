@@ -8,22 +8,22 @@
 
 #import <PassKitUIFoundation/PKMotionManagerClientProtocol-Protocol.h>
 
-@class MISSING_TYPE, NSCache, NSMutableArray, NSString, PKMotionManager, SCNMaterial;
+@class MISSING_TYPE, NSCache, NSMutableArray, NSString, SCNMaterial;
 @protocol OS_dispatch_queue;
 
 @interface PKPeerPayment3DStore : NSObject <PKMotionManagerClientProtocol>
 {
+    struct os_unfair_lock_s _lock;
+    NSMutableArray *_activeScenes;
     NSCache *_cache;
     SCNMaterial *_textMaterial;
-    NSObject<OS_dispatch_queue> *_scenesQueue;
     NSObject<OS_dispatch_queue> *_sceneLoadingQueue;
-    NSMutableArray *_activeScenes;
     CDStruct_14d5dc5e _rotationMatrix;
     MISSING_TYPE *_skew;
     MISSING_TYPE *_lastRollPitch;
     CDStruct_14d5dc5e _staticRotationMatrix;
     MISSING_TYPE *_staticSkew;
-    PKMotionManager *_motionManager;
+    _Bool _monitorMotion;
 }
 
 + (id)sharedInstance;
@@ -32,11 +32,14 @@
 - (void)charactersForText:(id)arg1 completion:(CDUnknownBlockType)arg2 synchronously:(_Bool)arg3;
 - (id)material;
 - (void)motionManager:(id)arg1 didReceiveMotion:(id)arg2;
-- (void)setRollPitch: /* Error: Ran out of types for this method. */;
+- (void)_setMonitorMotion:(_Bool)arg1;
+- (void)_updateMonitorMotion;
+- (_Bool)_shouldMonitorMotion;
 - (void)sceneDidBecomeInactive:(id)arg1;
 - (void)sceneDidBecomeActive:(id)arg1;
 - (void)relinquishScene:(id)arg1;
 - (void)newSceneWithCompletion:(CDUnknownBlockType)arg1 synchronously:(_Bool)arg2;
+- (id)_init;
 - (id)init;
 
 // Remaining properties

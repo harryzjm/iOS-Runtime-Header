@@ -4,50 +4,74 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, NSUUID, UIButton, UIImageView, UILabel;
+@class CKAvatarView, NSString, NSUUID, UIButton, UIImageView, UILabel;
 
 @interface CKTUConversationBalloonView
 {
+    BOOL _orientation;
     _Bool _animating;
     NSUUID *_tuConversationUUID;
     unsigned long long _state;
-    UIImageView *_iconImageView;
+    UIImageView *_imageView;
+    UIImageView *_iconView;
+    CKAvatarView *_avatarView;
     UILabel *_titleLabel;
-    UILabel *_statusLabel;
-    UILabel *_durationLabel;
+    UILabel *_subtitleLabel1;
+    UILabel *_subtitleLabel2;
     UIButton *_joinButton;
     NSString *_joinButtonText_TestingOverride;
 }
 
-+ (id)facetimeImageForSize:(struct CGSize)arg1;
-+ (struct CGSize)facetimeIconSize;
++ (struct CGSize)appIconSize;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *joinButtonText_TestingOverride; // @synthesize joinButtonText_TestingOverride=_joinButtonText_TestingOverride;
 @property(nonatomic) _Bool animating; // @synthesize animating=_animating;
 @property(retain, nonatomic) UIButton *joinButton; // @synthesize joinButton=_joinButton;
-@property(retain, nonatomic) UILabel *durationLabel; // @synthesize durationLabel=_durationLabel;
-@property(retain, nonatomic) UILabel *statusLabel; // @synthesize statusLabel=_statusLabel;
+@property(retain, nonatomic) UILabel *subtitleLabel2; // @synthesize subtitleLabel2=_subtitleLabel2;
+@property(retain, nonatomic) UILabel *subtitleLabel1; // @synthesize subtitleLabel1=_subtitleLabel1;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property(retain, nonatomic) UIImageView *iconImageView; // @synthesize iconImageView=_iconImageView;
+@property(retain, nonatomic) CKAvatarView *avatarView; // @synthesize avatarView=_avatarView;
+@property(retain, nonatomic) UIImageView *iconView; // @synthesize iconView=_iconView;
+@property(retain, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property(nonatomic) unsigned long long state; // @synthesize state=_state;
 @property(retain, nonatomic) NSUUID *tuConversationUUID; // @synthesize tuConversationUUID=_tuConversationUUID;
+- (BOOL)orientation;
+- (double)stringWidthConstraint;
+- (void)contentSizeCategoryDidChange:(id)arg1;
+- (_Bool)activeCallIsJoinable;
+- (void)chatParticipantsChanged:(id)arg1;
+- (void)_multiWayCallStateChanged:(id)arg1;
+- (void)formatIconViewForActivity;
+- (void)formatIconViewForFaceTime;
+- (struct CGSize)joinButtonRenderedAsIconSize;
+- (struct CGSize)imageViewSize;
 - (_Bool)joinButtonIsShowingTextContent;
 - (_Bool)joinButtonIsShowingImageContent;
 - (id)_joinButtonText;
 - (void)_joinButtonTapped:(id)arg1;
 - (id)_currentCall;
-- (void)_updateStatusLabelForDuration;
-- (id)_joinStateStatusString;
 @property(readonly, nonatomic) _Bool shouldRenderJoinButtonAsIcon;
+@property(readonly, nonatomic) _Bool shouldUseAXLayout;
+- (void)formatImageViewForActivity;
+- (void)formatImageViewForFaceTime;
+- (void)configureJoinButton;
+- (void)configureSubtitle2;
+- (void)configureSubtitle1;
+- (void)configureTitle;
+- (void)configureIconView;
+- (void)configureImageView;
 - (void)configureForCurrentState;
 - (id)tuConversation;
 - (_Bool)wantsGradient;
+- (void)setOrientation:(BOOL)arg1;
 - (BOOL)color;
+- (void)didHoverOverCell:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1 textAlignmentInsets:(struct UIEdgeInsets *)arg2;
 - (void)prepareForDisplay;
 - (void)prepareForReuse;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (_Bool)__im_ff_isExpanseEnabled;
 - (void)configureForTUConversationChatItem:(id)arg1;
 
 @end

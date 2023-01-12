@@ -43,7 +43,7 @@ __attribute__((visibility("hidden")))
 - (int)strokeStartArrowType;
 - (int)strokeJoinStyle;
 - (int)strokeCapStyle;
-- (const struct EshTablePropVal<int> *)strokeCustomDash;
+- (const void *)strokeCustomDash;
 - (int)strokePresetDash;
 - (int)strokeCompoundType;
 - (int)strokeMiterLimit;
@@ -56,7 +56,7 @@ __attribute__((visibility("hidden")))
 - (id)fillBlipName;
 - (struct EshBlip *)fillBlipDataReference;
 - (unsigned int)fillBlipID;
-- (const struct EshTablePropVal<EshGradientStop> *)fillGradientColors;
+- (const void *)fillGradientColors;
 - (int)fillFocusBottom;
 - (int)fillFocusRight;
 - (int)fillFocusTop;

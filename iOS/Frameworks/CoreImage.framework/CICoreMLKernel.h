@@ -9,8 +9,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (void)copyToOutput:(id)arg1 fromBuffer:(struct __CVBuffer **)arg2 usingFormat:(unsigned int)arg3;
-+ (void)copyInput:(id)arg1 toBuffer:(struct __CVBuffer **)arg2 usingFormat:(unsigned int)arg3;
 + (int)outputFormat;
 + (int)formatForInputAtIndex:(int)arg1;
 + (_Bool)processWithInputs:(id)arg1 arguments:(id)arg2 output:(id)arg3 error:(id *)arg4;

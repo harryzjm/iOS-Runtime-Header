@@ -16,6 +16,7 @@
 {
     _Bool _suppressGroupSuggestions;
     _Bool _biasForOutgoingInteraction;
+    _Bool _zkwGroupSuggestionsEnabled;
     id <CKContactsSearchManagerDelegate> _delegate;
     NSArray *_enteredRecipients;
     CNAutocompleteSearchManager *_searchManager;
@@ -31,6 +32,7 @@
 @property(retain, nonatomic) NSMutableArray *searchResults; // @synthesize searchResults=_searchResults;
 @property(retain, nonatomic) NSCharacterSet *emojiCharacterSet; // @synthesize emojiCharacterSet=_emojiCharacterSet;
 @property(retain, nonatomic) CNAutocompleteSearchManager *searchManager; // @synthesize searchManager=_searchManager;
+@property(nonatomic) _Bool zkwGroupSuggestionsEnabled; // @synthesize zkwGroupSuggestionsEnabled=_zkwGroupSuggestionsEnabled;
 @property(nonatomic) _Bool biasForOutgoingInteraction; // @synthesize biasForOutgoingInteraction=_biasForOutgoingInteraction;
 @property(nonatomic) _Bool suppressGroupSuggestions; // @synthesize suppressGroupSuggestions=_suppressGroupSuggestions;
 @property(retain, nonatomic) NSArray *enteredRecipients; // @synthesize enteredRecipients=_enteredRecipients;
@@ -41,6 +43,7 @@
 - (id)participantMatchGroupResults;
 - (_Bool)shouldIncludeGroupInResults:(id)arg1;
 - (id)matchingConversationWithGuid:(id)arg1;
+- (id)zkwGroupSuggestions;
 - (id)nameGroupSearchResults;
 - (void)endedNetworkActivity;
 - (void)beganNetworkActivity;
@@ -58,6 +61,7 @@
 - (void)searchWithText:(id)arg1;
 - (id)init;
 - (void)dealloc;
+- (_Bool)isMAIDGroupsEnabled;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

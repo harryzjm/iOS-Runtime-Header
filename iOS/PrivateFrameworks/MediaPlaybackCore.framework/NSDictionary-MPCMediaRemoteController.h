@@ -7,12 +7,12 @@
 #import <Foundation/NSDictionary.h>
 
 #import <MediaPlaybackCore/MPCPlaybackEngineEventPayloadJSONValue-Protocol.h>
-#import <MediaPlaybackCore/_MPCSupportedCommands-Protocol.h>
+#import <MediaPlaybackCore/MPCSupportedCommands-Protocol.h>
 
 @class NSString;
 
-@interface NSDictionary (MPCMediaRemoteController) <_MPCSupportedCommands, MPCPlaybackEngineEventPayloadJSONValue>
-- (id)_allCommandInfos;
+@interface NSDictionary (MPCMediaRemoteController) <MPCSupportedCommands, MPCPlaybackEngineEventPayloadJSONValue>
+- (id)allCommandInfos;
 - (void *)commandInfoForCommand:(unsigned int)arg1;
 
 // Remaining properties

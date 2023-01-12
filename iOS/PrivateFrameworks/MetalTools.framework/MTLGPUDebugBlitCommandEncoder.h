@@ -14,6 +14,8 @@
 }
 
 @property(readonly) unsigned int encoderID; // @synthesize encoderID=_encoderID;
+- (id)temporaryBufferWithLength:(unsigned long long)arg1;
+- (id)temporaryBufferWithBytes:(const void *)arg1 length:(unsigned long long)arg2;
 - (void)copyIndirectCommandBuffer:(id)arg1 sourceRange:(struct _NSRange)arg2 destination:(id)arg3 destinationIndex:(unsigned long long)arg4;
 - (void)optimizeIndirectCommandBuffer:(id)arg1 withRange:(struct _NSRange)arg2;
 - (id)initWithBlitCommandEncoder:(id)arg1 parent:(id)arg2 encoderID:(unsigned int)arg3;

@@ -6,25 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class NSSet, NSString;
+@class AFVoiceInfo, NSSet, NSString;
 
 @interface AssistantVoiceViewModel : NSObject
 {
     _Bool _spinningOnLanguage;
-    _Bool _shouldShowGenderGroup;
+    _Bool _shouldShowVoiceVariationGroup;
     NSSet *_languageOptions;
     NSString *_selectedLanguage;
     NSString *_languageGroupFooterText;
-    long long _genderToSpin;
-    long long _genderToCheckmark;
-    NSString *_genderGroupFooterText;
+    NSString *_voiceVariationToSpin;
+    NSString *_voiceVariationToCheckMark;
+    NSString *_voiceVariationGroupFooterText;
+    AFVoiceInfo *_inProgressVoice;
+    AFVoiceInfo *_currentVoice;
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSString *genderGroupFooterText; // @synthesize genderGroupFooterText=_genderGroupFooterText;
-@property(nonatomic) long long genderToCheckmark; // @synthesize genderToCheckmark=_genderToCheckmark;
-@property(nonatomic) long long genderToSpin; // @synthesize genderToSpin=_genderToSpin;
-@property(nonatomic) _Bool shouldShowGenderGroup; // @synthesize shouldShowGenderGroup=_shouldShowGenderGroup;
+@property(retain, nonatomic) AFVoiceInfo *currentVoice; // @synthesize currentVoice=_currentVoice;
+@property(retain, nonatomic) AFVoiceInfo *inProgressVoice; // @synthesize inProgressVoice=_inProgressVoice;
+@property(copy, nonatomic) NSString *voiceVariationGroupFooterText; // @synthesize voiceVariationGroupFooterText=_voiceVariationGroupFooterText;
+@property(nonatomic) _Bool shouldShowVoiceVariationGroup; // @synthesize shouldShowVoiceVariationGroup=_shouldShowVoiceVariationGroup;
+@property(copy, nonatomic) NSString *voiceVariationToCheckMark; // @synthesize voiceVariationToCheckMark=_voiceVariationToCheckMark;
+@property(copy, nonatomic) NSString *voiceVariationToSpin; // @synthesize voiceVariationToSpin=_voiceVariationToSpin;
 @property(copy, nonatomic) NSString *languageGroupFooterText; // @synthesize languageGroupFooterText=_languageGroupFooterText;
 @property(copy, nonatomic) NSString *selectedLanguage; // @synthesize selectedLanguage=_selectedLanguage;
 @property(copy, nonatomic) NSSet *languageOptions; // @synthesize languageOptions=_languageOptions;

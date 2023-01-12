@@ -13,7 +13,7 @@
     struct CGImage *_imageRef;
     NSData *_data;
     NSString *_name;
-    struct Texture2D *_gglTexture;
+    void *_gglTexture;
     struct shared_ptr<md::TextureAtlasRegion> _textureAtlasRegion;
     Box_8bd38d92 _textureCoordinates;
     struct CGRect _collisionRect;
@@ -46,8 +46,8 @@
 - (struct CGImage *)image;
 - (void)_prepareTextureWithAtlas:(struct TextureAtlas *)arg1;
 - (void)prepareTextureWithAtlas:(struct TextureAtlas *)arg1;
-- (const Box_8bd38d92 *)textureCoordinates;
-- (struct Texture2D *)gglTexture;
+- (const void *)textureCoordinates;
+- (void *)gglTexture;
 - (void)dealloc;
 - (id)initWithName:(id)arg1 scale:(double)arg2 resourceManager:(id)arg3;
 - (id)initWithData:(id)arg1 scale:(double)arg2;

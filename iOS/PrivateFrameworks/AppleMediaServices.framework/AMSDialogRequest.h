@@ -13,9 +13,11 @@
 
 @interface AMSDialogRequest : NSObject <NSSecureCoding, NSCopying>
 {
+    NSDictionary *_appearanceInfo;
     NSArray *_buttonActions;
     AMSDialogAction *_defaultAction;
     NSURL *_iconBundleURL;
+    NSURL *_iconURL;
     NSString *_identifier;
     NSString *_logKey;
     NSString *_message;
@@ -37,9 +39,11 @@
 @property(copy, nonatomic) NSString *message; // @synthesize message=_message;
 @property(copy, nonatomic) NSString *logKey; // @synthesize logKey=_logKey;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(copy, nonatomic) NSURL *iconURL; // @synthesize iconURL=_iconURL;
 @property(copy, nonatomic) NSURL *iconBundleURL; // @synthesize iconBundleURL=_iconBundleURL;
 @property(retain, nonatomic) AMSDialogAction *defaultAction; // @synthesize defaultAction=_defaultAction;
 @property(copy, nonatomic) NSArray *buttonActions; // @synthesize buttonActions=_buttonActions;
+@property(readonly, nonatomic) NSDictionary *appearanceInfo; // @synthesize appearanceInfo=_appearanceInfo;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -48,6 +52,7 @@
 - (void)addTextField:(id)arg1;
 - (void)addButtonAction:(id)arg1;
 - (id)description;
+- (id)initWithTitle:(id)arg1 message:(id)arg2 appearanceInfo:(id)arg3;
 - (id)initWithTitle:(id)arg1 message:(id)arg2;
 - (id)initWithError:(id)arg1;
 - (id)init;

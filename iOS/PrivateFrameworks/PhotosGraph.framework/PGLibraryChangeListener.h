@@ -61,7 +61,7 @@
 - (void)stopListening;
 - (void)startListening;
 - (void)photoLibraryDidBecomeUnavailable:(id)arg1;
-- (id)initWithPhotoLibrary:(id)arg1 clientIdentifier:(id)arg2;
+- (id)initWithPhotoLibrary:(id)arg1 clientIdentifier:(id)arg2 analytics:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

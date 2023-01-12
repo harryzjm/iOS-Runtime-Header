@@ -14,7 +14,7 @@
 
 @class INIntent, NSString;
 
-@interface CHSWidget : NSObject <BSDescriptionProviding, BSXPCCoding, CHSWidgetPersonality, NSCopying, NSSecureCoding>
+@interface CHSWidget : NSObject <BSXPCCoding, BSDescriptionProviding, CHSWidgetPersonality, NSCopying, NSSecureCoding>
 {
     NSString *_extensionBundleIdentifier;
     NSString *_containerBundleIdentifier;
@@ -30,6 +30,8 @@
 @property(readonly, copy, nonatomic) NSString *kind; // @synthesize kind=_kind;
 @property(readonly, copy, nonatomic) NSString *containerBundleIdentifier; // @synthesize containerBundleIdentifier=_containerBundleIdentifier;
 @property(readonly, copy, nonatomic) NSString *extensionBundleIdentifier; // @synthesize extensionBundleIdentifier=_extensionBundleIdentifier;
+- (id)_loggingIdentifierWithMetrics:(id)arg1;
+- (id)_loggingIdentifierWithoutMetrics;
 - (id)initWithXPCDictionary:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithCoder:(id)arg1;

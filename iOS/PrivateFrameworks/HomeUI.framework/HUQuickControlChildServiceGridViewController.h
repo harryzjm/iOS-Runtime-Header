@@ -20,8 +20,8 @@
 - (_Bool)_canShowWhileLocked;
 - (void)viewDidLoad;
 - (id)hu_preloadContent;
-- (id)initWithChildServiceControlItem:(id)arg1 home:(id)arg2 itemUpdater:(id)arg3;
-- (id)initWithControlItems:(id)arg1 home:(id)arg2 itemUpdater:(id)arg3;
+- (id)initWithChildServiceControlItem:(id)arg1 home:(id)arg2 itemUpdater:(id)arg3 controlOrientation:(unsigned long long)arg4 preferredControl:(unsigned long long)arg5;
+- (id)initWithControlItems:(id)arg1 home:(id)arg2 itemUpdater:(id)arg3 controlOrientation:(unsigned long long)arg4 preferredControl:(unsigned long long)arg5;
 
 @end
 

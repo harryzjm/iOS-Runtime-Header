@@ -49,8 +49,6 @@ __attribute__((visibility("hidden")))
 - (void)setPerformanceStatistics:(id)arg1;
 - (void)dealloc;
 - (id)initWithTileData:(id)arg1 functionType:(unsigned long long)arg2 device:(id)arg3 options:(unsigned long long)arg4 flags:(CDStruct_7ce1aa5b)arg5;
-- (id)initWithTileData:(id)arg1 device:(id)arg2 options:(unsigned long long)arg3 flags:(CDStruct_7ce1aa5b)arg4;
-- (id)initWithTileArguments:(id *)arg1 argumentCount:(unsigned int)arg2 builtInArgumentCount:(unsigned int)arg3 imageBlockDataReturn:(id)arg4 device:(id)arg5 traceBufferIndex:(unsigned int)arg6 flags:(CDStruct_7ce1aa5b)arg7;
 - (id)initWithVertexData:(id)arg1 fragmentData:(id)arg2 serializedVertexDescriptor:(id)arg3 device:(id)arg4 options:(unsigned long long)arg5 flags:(CDStruct_7ce1aa5b)arg6;
 
 @end

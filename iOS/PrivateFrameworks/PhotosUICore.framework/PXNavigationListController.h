@@ -11,48 +11,60 @@
 #import <PhotosUICore/UITableViewDataSource-Protocol.h>
 #import <PhotosUICore/UITableViewDelegate-Protocol.h>
 
-@class NSString, NSUserActivity, PXNavigationListDataSection, PXNavigationListDataSectionManager, UITableView;
-@protocol PXNavigationListContainer;
+@class NSDate, NSMutableDictionary, NSMutableSet, NSString, NSUserActivity, PXNavigationListDataSection, PXNavigationListDataSectionManager, UIFont, UIImage, UITableView, UITableViewCell;
 
 @interface PXNavigationListController : UIViewController <UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate, PXNavigationListDataSectionManagerObserver>
 {
-    _Bool __needsUpdateRowHeight;
-    UITableView *_tableView;
-    PXNavigationListDataSectionManager *_dataSectionManager;
-    id <PXNavigationListContainer> _container;
     PXNavigationListDataSection *_dataSection;
+    UIFont *_textLabelFont;
+    UIFont *_detailTextLabelFont;
+    NSMutableDictionary *_rowHeightCache;
+    double _layoutWidth;
+    double _currentContentHeight;
+    UITableViewCell *_measuringCell;
+    UIImage *_measuringImage;
+    NSDate *_firstPreloadCacheStartTime;
+    NSMutableSet *_queuedCacheKeys;
+    PXNavigationListDataSectionManager *_dataSectionManager;
     NSUserActivity *_siriActionActivity;
-    double _rowHeight;
+    UITableView *_tableView;
+    struct UIEdgeInsets _contentInsets;
 }
 
++ (id)viewControllerLog;
++ (id)_rowHeightCachingQueue;
 + (id)navigateToListItem:(id)arg1 sourceViewController:(id)arg2 existingAssetsFetchResult:(id)arg3 animated:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
 - (void).cxx_destruct;
-@property(nonatomic, setter=_setNeedsUpdateRowHeight:) _Bool _needsUpdateRowHeight; // @synthesize _needsUpdateRowHeight=__needsUpdateRowHeight;
-@property(nonatomic) double rowHeight; // @synthesize rowHeight=_rowHeight;
+@property(nonatomic) struct UIEdgeInsets contentInsets; // @synthesize contentInsets=_contentInsets;
+@property(readonly, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
 @property(retain, nonatomic) NSUserActivity *siriActionActivity; // @synthesize siriActionActivity=_siriActionActivity;
-@property(retain, nonatomic) PXNavigationListDataSection *dataSection; // @synthesize dataSection=_dataSection;
-@property(nonatomic) __weak id <PXNavigationListContainer> container; // @synthesize container=_container;
 @property(readonly, nonatomic) PXNavigationListDataSectionManager *dataSectionManager; // @synthesize dataSectionManager=_dataSectionManager;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (double)_insetWidth;
+- (void)_finishedAllPreloadTasks;
+- (void)_preloadRowHeightsForAllValidItems;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (id)_navigateTolistItem:(id)arg1 animated:(_Bool)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (void)_updateCellSeparatorStyle:(id)arg1 forRowAtIndexPath:(id)arg2;
+- (void)_tableView:(id)arg1 updateCellSeparatorStyle:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
-- (void)_updateCell:(id)arg1 atIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (void)_configureCell:(id)arg1 forListItem:(id)arg2 textColor:(id)arg3;
+- (void)_resetCachedMeasuringCell;
+- (void)_resetCachedHeight;
+- (void)_resetFonts;
+- (id)_detailTextLabelFont;
+- (id)_textLabelFont;
 - (void)contentHeightDidChange;
 - (void)_preferredContentSizeChanged:(id)arg1;
-- (double)_rowHeightForCurrentFont;
-@property(readonly, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
-- (void)_updateTableView;
-@property(nonatomic) _Bool allowsNavigation;
-@property(readonly, nonatomic) double contentHeight;
-- (double)_contentHeightForDataSection:(id)arg1;
-- (id)_createTransparentFullWidthViewOfHeight:(double)arg1;
-- (void)viewWillAppear:(_Bool)arg1;
+- (void)_updateDataSection;
+- (double)contentHeightForWidth:(double)arg1;
+- (double)_contentHeightForCellWithWidth:(double)arg1 listItem:(id)arg2;
+- (double)_contentHeightForWidth:(double)arg1 dataSection:(id)arg2;
 - (void)loadView;
+- (void)_reportContentHeightDidChangeIfNecessary;
+- (_Bool)_skipPreloadTaskIfNecessary;
+- (void)_preloadRowHeightCache;
 - (id)initWithDataSectionManager:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

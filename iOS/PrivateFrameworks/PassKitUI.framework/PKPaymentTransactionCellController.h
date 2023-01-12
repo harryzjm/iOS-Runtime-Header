@@ -6,19 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class PKPaymentTransactionIconGenerator, PKPeerPaymentContactResolver;
+@class PKContactResolver, PKPaymentTransactionIconGenerator;
 
 @interface PKPaymentTransactionCellController : NSObject
 {
     PKPaymentTransactionIconGenerator *_iconGenerator;
-    PKPeerPaymentContactResolver *_contactResolver;
+    PKContactResolver *_contactResolver;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) PKPeerPaymentContactResolver *contactResolver; // @synthesize contactResolver=_contactResolver;
+@property(readonly, nonatomic) PKContactResolver *contactResolver; // @synthesize contactResolver=_contactResolver;
 - (void)_updatePrimaryLabelOnTransactionCell:(id)arg1 withPeerPaymentCounterpartHandle:(id)arg2 contact:(id)arg3;
 - (void)_updateAvatarOnTransactionCell:(id)arg1 withTransaction:(id)arg2 contact:(id)arg3;
-- (void)configureCell:(id)arg1 forTransaction:(id)arg2 transactionSource:(id)arg3 account:(id)arg4 detailStyle:(long long)arg5 deviceName:(id)arg6 avatarViewDelegate:(id)arg7;
+- (void)configureCell:(id)arg1 forTransaction:(id)arg2 transactionSource:(id)arg3 familyMember:(id)arg4 account:(id)arg5 detailStyle:(long long)arg6 deviceName:(id)arg7 avatarViewDelegate:(id)arg8;
 - (id)initWithContactResolver:(id)arg1;
 
 @end

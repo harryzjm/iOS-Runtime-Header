@@ -4,11 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CCUIAppLauncherModule, SCUIAssetProvider;
+#import <ControlCenterUIKit/CCUIContentModuleContentViewControllerInternal-Protocol.h>
 
-@interface CCUIAppLauncherViewController
+@class CCUIAppLauncherModule, NSArray, NSObject, NSString, SCUIAssetProvider, UIViewPropertyAnimator;
+@protocol OS_dispatch_queue;
+
+@interface CCUIAppLauncherViewController <CCUIContentModuleContentViewControllerInternal>
 {
     SCUIAssetProvider *_assetProvider;
+    NSObject<OS_dispatch_queue> *_menuItemsFetchQueue;
+    NSArray *_fetchedMenuItems;
     CCUIAppLauncherModule *_module;
 }
 
@@ -16,14 +21,33 @@
 @property(nonatomic) __weak CCUIAppLauncherModule *module; // @synthesize module=_module;
 - (void)_activateApplicationForShortcutItem:(id)arg1;
 - (id)_menuItemForShortcutItem:(id)arg1;
-- (void)_updateApplicationShortcutsActions;
-- (_Bool)shouldBeginTransitionToExpandedContentModule;
-- (_Bool)_canShowWhileLocked;
 - (id)_assetProvider;
+- (void)_queue_updateApplicationShortcutsActions;
+- (void)_updateWithFetchedMenuItemsIfNecessary;
+- (void)_queue_setFetchedMenuItems:(id)arg1;
+- (void)_updateApplicationShortcutsActionsIfNecessary;
+- (_Bool)_canShowWhileLocked;
+- (void)willResignActive;
+- (void)didTransitionToExpandedContentMode:(_Bool)arg1;
+- (_Bool)shouldBeginTransitionToExpandedContentModule;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (id)leadingImageForMenuItem:(id)arg1;
 - (void)buttonTapped:(id)arg1 forEvent:(id)arg2;
 - (void)buttonTouchDown:(id)arg1 forEvent:(id)arg2;
+
+// Remaining properties
+@property(readonly, nonatomic) UIViewPropertyAnimator *customAnimator;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) double preferredExpandedContentHeight;
+@property(readonly, nonatomic) double preferredExpandedContentWidth;
+@property(readonly, nonatomic) double preferredExpandedContinuousCornerRadius;
+@property(readonly, nonatomic) _Bool providesOwnPlatter;
+@property(readonly, nonatomic) _Bool shouldPerformClickInteraction;
+@property(readonly, nonatomic) _Bool shouldPerformHoverInteraction;
+@property(readonly) Class superclass;
 
 @end
 

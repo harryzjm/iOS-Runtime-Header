@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ACAccount, AMSMetrics, AMSProcessInfo, AMSSnapshotBag, AMSUIWebFlowController, AMSUIWebJSDataProvider, AMSUIWebPageViewController, AMSUIWebPluginLoader, AMSURLSession, NSDictionary, NSString;
+@class ACAccount, AMSMescalAccountPrimeSession, AMSMetrics, AMSProcessInfo, AMSSnapshotBag, AMSUIWebFlowController, AMSUIWebJSDataProvider, AMSUIWebPageViewController, AMSUIWebPluginLoader, AMSURLSession, NSDictionary, NSString;
 @protocol AMSBagProtocol, AMSUIWebActionRunnerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -25,13 +25,14 @@ __attribute__((visibility("hidden")))
     NSString *_logKey;
     AMSMetrics *_metrics;
     NSDictionary *_metricsOverlay;
+    AMSMescalAccountPrimeSession *_mescalSession;
     AMSUIWebPluginLoader *_pluginLoader;
     AMSURLSession *_URLSession;
     AMSUIWebPageViewController *_webPage;
     id <AMSBagProtocol> _backingBag;
 }
 
-+ (id)_updatedClientInfoMatchingAccount:(id)arg1 clientInfo:(id)arg2;
++ (id)_createClientInfoFromAccount:(id)arg1 clientInfo:(id)arg2;
 + (_Bool)_boolForKey:(id)arg1 defaultValue:(_Bool)arg2 domain:(struct __CFString *)arg3;
 - (void).cxx_destruct;
 @property(retain, nonatomic) id <AMSBagProtocol> backingBag; // @synthesize backingBag=_backingBag;
@@ -39,6 +40,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) AMSURLSession *URLSession; // @synthesize URLSession=_URLSession;
 @property(nonatomic) _Bool signatureResumption; // @synthesize signatureResumption=_signatureResumption;
 @property(retain, nonatomic) AMSUIWebPluginLoader *pluginLoader; // @synthesize pluginLoader=_pluginLoader;
+@property(retain, nonatomic) AMSMescalAccountPrimeSession *mescalSession; // @synthesize mescalSession=_mescalSession;
 @property(retain, nonatomic) NSDictionary *metricsOverlay; // @synthesize metricsOverlay=_metricsOverlay;
 @property(retain, nonatomic) AMSMetrics *metrics; // @synthesize metrics=_metrics;
 @property(retain, nonatomic) NSString *logKey; // @synthesize logKey=_logKey;
@@ -46,12 +48,12 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) AMSUIWebFlowController *flowController; // @synthesize flowController=_flowController;
 @property(retain, nonatomic) AMSUIWebJSDataProvider *dataProvider; // @synthesize dataProvider=_dataProvider;
 @property(retain, nonatomic) NSDictionary *clientOptions; // @synthesize clientOptions=_clientOptions;
-@property(retain, nonatomic) AMSProcessInfo *clientInfo; // @synthesize clientInfo=_clientInfo;
+@property(readonly, nonatomic) AMSProcessInfo *clientInfo; // @synthesize clientInfo=_clientInfo;
 @property(retain, nonatomic) NSDictionary *additionalHeaders; // @synthesize additionalHeaders=_additionalHeaders;
 @property(nonatomic) __weak id <AMSUIWebActionRunnerDelegate> actionDelegate; // @synthesize actionDelegate=_actionDelegate;
 @property(readonly, nonatomic) ACAccount *account; // @synthesize account=_account;
 - (void)updateBackingBag:(id)arg1;
-- (void)replaceCurrentAccount:(id)arg1;
+- (void)replaceCurrentAccount:(id)arg1 clientInfo:(id)arg2;
 - (id)loadSnapshot;
 - (id)JSAccountFromAccount:(id)arg1 store:(id)arg2;
 - (id)iTunesAccountFromJSDSID:(id)arg1;

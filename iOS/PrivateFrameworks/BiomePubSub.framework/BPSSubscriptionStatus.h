@@ -14,6 +14,9 @@
     BPSSubscription *_subscription;
 }
 
++ (id)terminal;
++ (id)subscribedWithSubscription:(id)arg1;
++ (id)awaitingSubscription;
 - (void).cxx_destruct;
 @property(retain, nonatomic) BPSSubscription *subscription; // @synthesize subscription=_subscription;
 @property(nonatomic) long long state; // @synthesize state=_state;

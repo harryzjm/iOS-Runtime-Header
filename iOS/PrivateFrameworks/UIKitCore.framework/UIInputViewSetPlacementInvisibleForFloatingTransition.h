@@ -9,8 +9,13 @@
 __attribute__((visibility("hidden")))
 @interface UIInputViewSetPlacementInvisibleForFloatingTransition <NSSecureCoding>
 {
+    _Bool _isFloatingAssistantView;
 }
 
++ (id)placementWithPlacement:(id)arg1 forFloatingAssistantViewTransition:(_Bool)arg2;
++ (id)placementWithPlacement:(id)arg1;
+- (_Bool)isFloatingAssistantView;
+- (_Bool)showsEditItems;
 - (_Bool)isHiddenForFloatingTransition;
 
 @end

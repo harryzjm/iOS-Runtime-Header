@@ -14,6 +14,7 @@
     NAFuture *_softwareUpdateFetchFuture;
 }
 
++ (id)_dateFormatter;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NAFuture *softwareUpdateFetchFuture; // @synthesize softwareUpdateFetchFuture=_softwareUpdateFetchFuture;
 @property(readonly, nonatomic) HMHome *home; // @synthesize home=_home;

@@ -4,8 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MTEnvironment, MTEventRecorder;
-@protocol MTEventFilter;
+@class MTEnvironment, MTEventRecorder, NSObject;
+@protocol MTEventFilter, OS_dispatch_queue;
 
 @interface MTSystem
 {
@@ -13,9 +13,11 @@
     MTEventRecorder *_eventRecorder;
     id <MTEventFilter> _eventFilter;
     id <MTEventFilter> _treatmentFilter;
+    NSObject<OS_dispatch_queue> *_queue;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) id <MTEventFilter> treatmentFilter; // @synthesize treatmentFilter=_treatmentFilter;
 @property(retain, nonatomic) id <MTEventFilter> eventFilter; // @synthesize eventFilter=_eventFilter;
 @property(retain, nonatomic) MTEventRecorder *eventRecorder; // @synthesize eventRecorder=_eventRecorder;

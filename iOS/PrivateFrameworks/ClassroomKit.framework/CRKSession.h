@@ -46,6 +46,7 @@
 - (void)delegateInvalidated;
 - (void)delegateDisconnected;
 - (void)delegateConnected;
+- (void)delegateDidBecomeNotConnectableAndDidLoseBeacon;
 - (void)delegateDidBecomeNotConnectable;
 - (void)delegateDidBecomeConnectable;
 - (void)delegateDidLoseBeacon;

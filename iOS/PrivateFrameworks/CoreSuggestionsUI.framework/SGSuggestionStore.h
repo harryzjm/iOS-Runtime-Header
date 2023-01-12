@@ -15,9 +15,11 @@
     long long _notificationsLockCount;
     _Bool _modified;
     id <SGSuggestionDelegate> _suggestionDelegate;
+    long long _hostApp;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long hostApp; // @synthesize hostApp=_hostApp;
 @property(nonatomic) __weak id <SGSuggestionDelegate> suggestionDelegate; // @synthesize suggestionDelegate=_suggestionDelegate;
 - (void)list:(id)arg1 didRemoveItem:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)list:(id)arg1 didAddItem:(id)arg2 atIndex:(unsigned long long)arg3;
@@ -25,6 +27,7 @@
 - (void)lockNotifications;
 @property(copy, nonatomic) NSArray *suggestions;
 - (void)updateSuggestion:(id)arg1;
+- (void)dismissAllSuggestions;
 - (void)removeSuggestion:(id)arg1;
 - (void)addSuggestion:(id)arg1;
 - (id)sectionWithItem:(id)arg1;

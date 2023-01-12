@@ -58,7 +58,7 @@
 - (void)_checkAndConsumeShowsAppAttributionBannerIfNeeded;
 - (void)checkAndConsumeShowsAppAttributionBannerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getLastLaunchOptionsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)notifyWebClipActivationWithBundleID:(id)arg1;
+- (void)notifyWebClipActivationWithBundleID:(id)arg1 referrerBundleID:(id)arg2;
 - (void)openClipWithLaunchOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)cancel;
 - (void)installClip;

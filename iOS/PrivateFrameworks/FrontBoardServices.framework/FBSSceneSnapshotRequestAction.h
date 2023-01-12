@@ -16,7 +16,7 @@
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;
 @property(readonly, nonatomic) FBSSceneSnapshotContext *context;
 @property(readonly, nonatomic) unsigned long long type;
-- (id)initWithType:(unsigned long long)arg1 context:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)_initWithType:(unsigned long long)arg1 context:(id)arg2 responder:(id)arg3;
 
 @end
 

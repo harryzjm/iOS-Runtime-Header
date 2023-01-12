@@ -8,12 +8,12 @@
 
 #import <MediaPlayer/NSCopying-Protocol.h>
 #import <MediaPlayer/NSMutableCopying-Protocol.h>
+#import <MediaPlayer/NSObject-Protocol.h>
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
-#import <MediaPlayer/_MPStateDumpPropertyListTransformable-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface MPSectionedCollection : NSObject <_MPStateDumpPropertyListTransformable, NSCopying, NSMutableCopying, NSSecureCoding>
+@interface MPSectionedCollection : NSObject <NSCopying, NSMutableCopying, NSSecureCoding, NSObject>
 {
     NSArray *_sectionedItems;
     NSArray *_sections;

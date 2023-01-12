@@ -14,13 +14,14 @@
     int _CIFormat;
     unsigned int _CVPixelFormat;
     long long _bytesPerPixel;
+    unsigned long long _metalFormat;
     NSString *_name;
 }
 
-+ (id)XRSRGB10;
++ (id)sRGB10XR;
 + (id)A2RGB10;
-+ (id)A16;
-+ (id)I8;
++ (id)R16;
++ (id)R8;
 + (id)RGBAh;
 + (id)RGBAf;
 + (id)RG16;
@@ -34,6 +35,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, nonatomic) _Bool supportsExtendedRange; // @synthesize supportsExtendedRange=_supportsExtendedRange;
+@property(readonly, nonatomic) unsigned long long metalFormat; // @synthesize metalFormat=_metalFormat;
 @property(readonly, nonatomic) unsigned int CVPixelFormat; // @synthesize CVPixelFormat=_CVPixelFormat;
 @property(readonly, nonatomic) int CIFormat; // @synthesize CIFormat=_CIFormat;
 @property(readonly, nonatomic) long long bytesPerPixel; // @synthesize bytesPerPixel=_bytesPerPixel;

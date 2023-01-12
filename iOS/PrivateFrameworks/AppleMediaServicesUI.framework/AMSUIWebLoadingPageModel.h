@@ -8,22 +8,30 @@
 
 #import <AppleMediaServicesUI/AMSUIWebPageProvider-Protocol.h>
 
-@class AMSUIWebClientContext, AMSUIWebNavigationBarModel, NSString;
+@class AMSMetricsEvent, AMSUIWebClientContext, AMSUIWebNavigationBarModel, NSString;
 
 __attribute__((visibility("hidden")))
 @interface AMSUIWebLoadingPageModel : NSObject <AMSUIWebPageProvider>
 {
+    _Bool _animateFadeIn;
     _Bool _disableDelay;
+    NSString *_backgroundColor;
+    AMSMetricsEvent *_impressionEvent;
     AMSUIWebNavigationBarModel *_navigationBar;
     NSString *_message;
     AMSUIWebClientContext *_context;
+    struct CGSize _windowSize;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
 @property(retain, nonatomic) NSString *message; // @synthesize message=_message;
 @property(nonatomic) _Bool disableDelay; // @synthesize disableDelay=_disableDelay;
+@property(nonatomic) _Bool animateFadeIn; // @synthesize animateFadeIn=_animateFadeIn;
+@property(readonly, nonatomic) struct CGSize windowSize; // @synthesize windowSize=_windowSize;
 @property(readonly, nonatomic) AMSUIWebNavigationBarModel *navigationBar; // @synthesize navigationBar=_navigationBar;
+@property(readonly, nonatomic) AMSMetricsEvent *impressionEvent; // @synthesize impressionEvent=_impressionEvent;
+@property(readonly, nonatomic) NSString *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(readonly, nonatomic) _Bool disableReappearPlaceholder;
 - (id)createViewController;
 - (id)initWithJSObject:(id)arg1 context:(id)arg2;

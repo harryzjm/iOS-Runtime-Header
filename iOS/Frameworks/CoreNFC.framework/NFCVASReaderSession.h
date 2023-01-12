@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NFTimer, NSArray;
+#import <CoreNFC/NFReaderSessionCallbacks-Protocol.h>
 
-@interface NFCVASReaderSession
+@class NFTimer, NSArray, NSString;
+
+@interface NFCVASReaderSession <NFReaderSessionCallbacks>
 {
     NFTimer *_presenceCheckTimer;
     NSArray *_vasConfig;
@@ -14,16 +16,22 @@
 
 + (_Bool)readingAvailable;
 - (void).cxx_destruct;
-- (void)didDetectTags:(id)arg1;
+- (void)didDetectTags:(id)arg1 connectedTagIndex:(unsigned long long)arg2;
 - (void)didTerminate:(id)arg1;
-- (id)_getVASDataWithConfig:(id)arg1 lastInSequence:(_Bool)arg2;
-- (_Bool)_selectOSE;
+- (id)_convertVASResponseToExternal:(id)arg1;
+- (id)_convertVASConfigToInternalRequest:(id)arg1;
+- (id)_sendVASRequests:(id)arg1 error:(id *)arg2;
 - (void)_callbackDidBecomeActive;
-- (void)_callbackDidInvalidateWithError:(id)arg1;
 - (void)beginSession;
 - (void)dealloc;
 - (id)initWithVASCommandConfigurations:(id)arg1 delegate:(id)arg2 queue:(id)arg3;
 - (id)initWithDelegate:(id)arg1 sessionDelegateType:(long long)arg2 queue:(id)arg3 pollMethod:(unsigned long long)arg4 sessionConfig:(unsigned long long)arg5;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

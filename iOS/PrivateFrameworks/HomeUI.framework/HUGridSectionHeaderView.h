@@ -6,30 +6,38 @@
 
 #import <UIKit/UICollectionReusableView.h>
 
-@class HUGridLayoutOptions, NSArray, NSString, UIButton, UILabel;
+#import <HomeUI/UIContentView-Protocol.h>
 
-@interface HUGridSectionHeaderView : UICollectionReusableView
+@class HUGridLayoutOptions, NSArray, NSString, UIButton, UIListContentView;
+@protocol UIContentConfiguration;
+
+@interface HUGridSectionHeaderView : UICollectionReusableView <UIContentView>
 {
-    NSString *_sectionTitle;
+    id <UIContentConfiguration> _configuration;
     UIButton *_button;
     HUGridLayoutOptions *_layoutOptions;
-    UILabel *_titleLabel;
+    UIListContentView *_contentView;
     NSArray *_headerCellConstraints;
 }
 
 + (_Bool)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *headerCellConstraints; // @synthesize headerCellConstraints=_headerCellConstraints;
-@property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property(retain, nonatomic) UIListContentView *contentView; // @synthesize contentView=_contentView;
 @property(retain, nonatomic) HUGridLayoutOptions *layoutOptions; // @synthesize layoutOptions=_layoutOptions;
 @property(retain, nonatomic) UIButton *button; // @synthesize button=_button;
-@property(retain, nonatomic) NSString *sectionTitle; // @synthesize sectionTitle=_sectionTitle;
-- (void)_updateTitleLabel;
+@property(copy, nonatomic) id <UIContentConfiguration> configuration; // @synthesize configuration=_configuration;
 - (void)updateConstraints;
 - (void)_invalidateConstraints;
 - (id)preferredLayoutAttributesFittingAttributes:(id)arg1;
 - (void)prepareForReuse;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

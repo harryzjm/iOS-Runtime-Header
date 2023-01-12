@@ -10,7 +10,6 @@
 
 @class CKDPLocationCoordinate, CKDPRecordFieldIdentifier;
 
-__attribute__((visibility("hidden")))
 @interface CKDPQuerySort : PBCodable <NSCopying>
 {
     CKDPLocationCoordinate *_coordinate;

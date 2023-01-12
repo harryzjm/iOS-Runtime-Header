@@ -14,11 +14,15 @@
 {
     NSMutableArray *_diagnosticReasonsList;
     NSString *_boundInterfaceIdentifier;
+    unsigned long long _cachePolicyOverride;
+    double _timeoutOverride;
 }
 
 + (id)_HTTPBodyWithDictionary:(id)arg1;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) double timeoutOverride; // @synthesize timeoutOverride=_timeoutOverride;
+@property(nonatomic) unsigned long long cachePolicyOverride; // @synthesize cachePolicyOverride=_cachePolicyOverride;
 @property(copy, nonatomic) NSString *boundInterfaceIdentifier; // @synthesize boundInterfaceIdentifier=_boundInterfaceIdentifier;
 - (id)_murlRequestWithServiceURL:(id)arg1 endpointComponents:(id)arg2 queryParameters:(id)arg3 appleAccountInformation:(id)arg4;
 - (id)_murlRequestWithURL:(id)arg1 appleAccountInformation:(id)arg2;

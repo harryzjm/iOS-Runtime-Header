@@ -12,6 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (void)_updateContent;
 - (void)viewDidLoad;
 - (_Bool)accessibilityPerformEscape;
 - (id)_axBackgroundView;

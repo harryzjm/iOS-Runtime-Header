@@ -23,19 +23,6 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSError *resultError; // @synthesize resultError=_resultError;
-@property(retain, nonatomic) CKQueryCursor *resultCursor; // @synthesize resultCursor=_resultCursor;
-@property(retain, nonatomic) NSArray *resultRecords; // @synthesize resultRecords=_resultRecords;
-@property(retain, nonatomic) NSString *tagTypeString; // @synthesize tagTypeString=_tagTypeString;
-@property(copy, nonatomic) CDUnknownBlockType queryCompletionHandler; // @synthesize queryCompletionHandler=_queryCompletionHandler;
-@property(copy, nonatomic) NSString *locale; // @synthesize locale=_locale;
-@property(copy, nonatomic) NSArray *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
-@property(retain, nonatomic) CKQueryCursor *cursor; // @synthesize cursor=_cursor;
-@property(nonatomic) long long tagType; // @synthesize tagType=_tagType;
-@property(copy, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
-@property(nonatomic) unsigned long long resultsLimit; // @synthesize resultsLimit=_resultsLimit;
-@property(retain, nonatomic) FCCKContentDatabase *database; // @synthesize database=_database;
-- (id)_constructTagSearchQuery;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)resetForRetry;
 - (void)performOperation;

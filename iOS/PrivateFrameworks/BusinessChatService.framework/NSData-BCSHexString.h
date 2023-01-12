@@ -7,6 +7,5 @@
 #import <Foundation/NSData.h>
 
 @interface NSData (BCSHexString)
-+ (id)bcs_dataWithHexString:(id)arg1;
 @end
 

@@ -12,12 +12,15 @@
 {
     PKFamilyMember *_member;
     PKPaymentTransaction *_transaction;
+    long long _setupType;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long setupType; // @synthesize setupType=_setupType;
 @property(retain, nonatomic) PKPaymentTransaction *transaction; // @synthesize transaction=_transaction;
 @property(retain, nonatomic) PKFamilyMember *member; // @synthesize member=_member;
 - (id)description;
+- (id)initWithPKFamilyMember:(id)arg1 setupType:(long long)arg2;
 - (id)initWithPKFamilyMember:(id)arg1 transaction:(id)arg2;
 - (id)initWithPKFamilyMember:(id)arg1 options:(id)arg2;
 

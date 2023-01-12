@@ -21,7 +21,7 @@
 @property(retain, nonatomic) id <FCFeedTransforming> privateLimitTransformation; // @synthesize privateLimitTransformation=_privateLimitTransformation;
 @property(copy, nonatomic) NSArray *priorFeedItems; // @synthesize priorFeedItems=_priorFeedItems;
 - (id)transformFeedItems:(id)arg1;
-- (id)initWithPersonalizer:(id)arg1 limit:(unsigned long long)arg2 priorFeedItems:(id)arg3;
+- (id)initWithFunctionProvider:(id)arg1 limit:(unsigned long long)arg2 priorFeedItems:(id)arg3;
 - (id)init;
 
 // Remaining properties

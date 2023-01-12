@@ -24,6 +24,7 @@
 
 - (void).cxx_destruct;
 - (void)switchTableViewCell:(id)arg1 didChangeSwitchState:(_Bool)arg2;
+- (_Bool)tableView:(id)arg1 canFocusRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;

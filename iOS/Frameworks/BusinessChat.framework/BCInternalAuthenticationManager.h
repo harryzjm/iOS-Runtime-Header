@@ -17,25 +17,17 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) id <ACAccountStoreProtocol> accountStore; // @synthesize accountStore=_accountStore;
-@property(retain, nonatomic) id <ACAccountProtocol> account; // @synthesize account=_account;
-@property(retain, nonatomic) BCInternalAuthenticationRequest *authenticationRequest; // @synthesize authenticationRequest=_authenticationRequest;
-- (id)labelCategory;
-- (id)globalAuthToken;
-- (id)deviceSerialNumber;
+@property(readonly, nonatomic) BCInternalAuthenticationRequest *authenticationRequest;
 @property(readonly, nonatomic) long long state;
 @property(readonly, copy, nonatomic) NSString *action;
 @property(readonly, copy, nonatomic) NSString *subtitle;
 @property(readonly, copy, nonatomic) NSString *title;
 @property(readonly, nonatomic) _Bool isUserSignedIn;
-- (id)altPersonIdentifier;
-- (id)personIdentifier;
 @property(readonly, copy, nonatomic) NSString *lastName;
 @property(readonly, copy, nonatomic) NSString *middleName;
 @property(readonly, copy, nonatomic) NSString *firstName;
 @property(readonly, copy, nonatomic) NSString *username;
 - (void)fetchCredentials:(CDUnknownBlockType)arg1;
-- (id)initWithAuthenticationRequest:(id)arg1 acAccount:(id)arg2 acAccountStore:(id)arg3;
 - (id)initWithAuthenticationRequest:(id)arg1;
 
 @end

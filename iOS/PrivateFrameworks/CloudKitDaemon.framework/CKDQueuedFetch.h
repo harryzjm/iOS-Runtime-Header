@@ -6,10 +6,9 @@
 
 #import <objc/NSObject.h>
 
-@class CKDClientContext, CKDOperation, NSDate, NSMutableDictionary, NSMutableSet, NSOperationQueue, NSString;
+@class CKDContainer, CKDOperation, NSDate, NSMutableDictionary, NSMutableSet, NSOperationQueue, NSString;
 @protocol OS_dispatch_queue, OS_os_activity;
 
-__attribute__((visibility("hidden")))
 @interface CKDQueuedFetch : NSObject
 {
     _Bool _isFinished;
@@ -22,7 +21,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _lastCompletionHandlerCount;
     NSDate *_startDate;
     NSDate *_lastRequestDate;
-    CKDClientContext *_context;
+    CKDContainer *_container;
     NSOperationQueue *_operationQueue;
     long long _scope;
     NSObject<OS_dispatch_queue> *_callbackQueue;
@@ -44,7 +43,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property(nonatomic) long long scope; // @synthesize scope=_scope;
 @property(nonatomic) __weak NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
-@property(nonatomic) __weak CKDClientContext *context; // @synthesize context=_context;
+@property(nonatomic) __weak CKDContainer *container; // @synthesize container=_container;
 @property(retain, nonatomic) NSDate *lastRequestDate; // @synthesize lastRequestDate=_lastRequestDate;
 @property(retain, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property(nonatomic) unsigned long long lastCompletionHandlerCount; // @synthesize lastCompletionHandlerCount=_lastCompletionHandlerCount;
@@ -71,7 +70,7 @@ __attribute__((visibility("hidden")))
 - (int)numberOfCallbacks;
 @property(nonatomic) _Bool isCancelled; // @synthesize isCancelled=_isCancelled;
 @property(nonatomic) _Bool isFinished; // @synthesize isFinished=_isFinished;
-- (id)initWithOperation:(id)arg1 context:(id)arg2 operationQueue:(id)arg3;
+- (id)initWithOperation:(id)arg1 container:(id)arg2 operationQueue:(id)arg3;
 - (id)init;
 
 @end

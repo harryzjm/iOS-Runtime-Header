@@ -11,6 +11,7 @@
     NSArray *_dataSources;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *dataSources; // @synthesize dataSources=_dataSources;
 - (void)collectionView:(id)arg1 didUnfocusItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didFocusItemAtIndexPath:(id)arg2;
@@ -32,7 +33,6 @@
 - (void)loadDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setupCollectionView:(id)arg1;
 - (id)dataSourceForIndexPath:(id)arg1;
-- (void)dealloc;
 
 @end
 

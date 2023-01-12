@@ -14,7 +14,7 @@
 
 - (void)applicationsDidUninstall:(id)arg1;
 - (void)applicationsDidInstall:(id)arg1;
-- (_Bool)shouldRun;
+- (_Bool)isTrue;
 - (void)didRemoveLastObserver;
 - (void)didAddFirstObserver;
 

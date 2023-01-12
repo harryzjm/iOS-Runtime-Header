@@ -23,12 +23,14 @@
     CDUnknownBlockType _testBehavior_didCompleteWithError;
 }
 
-+ (void)_reportWithOptions:(id)arg1 networkEvent:(id)arg2 genericEvent:(id)arg3 triggers:(int)arg4;
++ (void)_reportWithOptions:(id)arg1 networkEvent:(id)arg2 genericEvent:(id)arg3 triggers:(int)arg4 eventName:(id)arg5 startTime:(id)arg6 endTime:(id)arg7 attributes:(id)arg8;
++ (void)_c2FormatValueForRTC:(id)arg1 keyPrefix:(id)arg2 targetDictionary:(id)arg3 multipleOperationGroups:(_Bool)arg4;
 + (void)reportMetricWithOptions:(id)arg1 genericMetricType:(long long)arg2 eventName:(id)arg3 startTime:(id)arg4 endTime:(id)arg5 attributes:(id)arg6;
 + (void)reportNetworkEvent:(id)arg1 triggers:(int)arg2 originalSessionTask:(id)arg3;
 + (id)gzipDecode:(id)arg1;
 + (id)gzipEncode:(id)arg1;
-+ (id)requestForMetricRequestOptions:(id)arg1 networkEvent:(id)arg2 genericEvent:(id)arg3 triggers:(int)arg4;
++ (id)requestForMetricRequestOptions:(id)arg1 metrics:(id)arg2;
++ (id)metricsForMetricRequestOptions:(id)arg1 networkEvent:(id)arg2 genericEvent:(id)arg3 triggers:(int)arg4;
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType testBehavior_didCompleteWithError; // @synthesize testBehavior_didCompleteWithError=_testBehavior_didCompleteWithError;
 @property(copy, nonatomic) CDUnknownBlockType testBehavior_tooManyTasksRunning; // @synthesize testBehavior_tooManyTasksRunning=_testBehavior_tooManyTasksRunning;

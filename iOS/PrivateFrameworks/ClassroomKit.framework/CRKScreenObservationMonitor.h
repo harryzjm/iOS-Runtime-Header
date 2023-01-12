@@ -6,52 +6,49 @@
 
 #import <objc/NSObject.h>
 
-#import <ClassroomKit/CRKStudentDaemonProxyObserver-Protocol.h>
+@class CRKFetchObservingInstructorsByCourseOperation, NSDictionary;
+@protocol CRKCancelable, CRKDarwinNotificationPublisher, CRKFeatureDataStoreProtocol, CRKObservation, CRKScreenObservationMonitorDelegate, CRKStudentConnection, CRKStudentConnectionPrimitives;
 
-@class CRKStudentDaemonProxy, NSDictionary, NSString;
-@protocol CRKScreenObservationMonitorDelegate;
-
-@interface CRKScreenObservationMonitor : NSObject <CRKStudentDaemonProxyObserver>
+@interface CRKScreenObservationMonitor : NSObject
 {
-    int mNotificationToken;
+    _Bool _connecting;
     id <CRKScreenObservationMonitorDelegate> _delegate;
     NSDictionary *_observingInstructorsByCourse;
-    CRKStudentDaemonProxy *_daemonProxy;
-    NSDictionary *_observingInstructorIdentifiersByCourseIdentifierString;
-    NSDictionary *_enrolledCoursesByCourseIdentifierString;
+    id <CRKStudentConnectionPrimitives> _studentConnectionPrimitives;
+    id <CRKDarwinNotificationPublisher> _darwinNotificationPublisher;
+    id <CRKFeatureDataStoreProtocol> _featureDataStore;
+    id <CRKStudentConnection> _studentConnection;
+    id <CRKObservation> _observersDidChangeObservation;
+    id <CRKCancelable> _enrollmentStatusDidChangeSubscription;
+    CRKFetchObservingInstructorsByCourseOperation *_fetchObservingInstructorsByCourseOperation;
 }
 
++ (_Bool)automaticallyNotifiesObserversOfObservingInstructorsByCourse;
 + (id)keyPathsForValuesAffectingHasObservingInstructors;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSDictionary *enrolledCoursesByCourseIdentifierString; // @synthesize enrolledCoursesByCourseIdentifierString=_enrolledCoursesByCourseIdentifierString;
-@property(retain, nonatomic) NSDictionary *observingInstructorIdentifiersByCourseIdentifierString; // @synthesize observingInstructorIdentifiersByCourseIdentifierString=_observingInstructorIdentifiersByCourseIdentifierString;
-@property(readonly, nonatomic) CRKStudentDaemonProxy *daemonProxy; // @synthesize daemonProxy=_daemonProxy;
-@property(retain, nonatomic) NSDictionary *observingInstructorsByCourse; // @synthesize observingInstructorsByCourse=_observingInstructorsByCourse;
+@property(nonatomic, getter=isConnecting) _Bool connecting; // @synthesize connecting=_connecting;
+@property(retain, nonatomic) CRKFetchObservingInstructorsByCourseOperation *fetchObservingInstructorsByCourseOperation; // @synthesize fetchObservingInstructorsByCourseOperation=_fetchObservingInstructorsByCourseOperation;
+@property(retain, nonatomic) id <CRKCancelable> enrollmentStatusDidChangeSubscription; // @synthesize enrollmentStatusDidChangeSubscription=_enrollmentStatusDidChangeSubscription;
+@property(retain, nonatomic) id <CRKObservation> observersDidChangeObservation; // @synthesize observersDidChangeObservation=_observersDidChangeObservation;
+@property(retain, nonatomic) id <CRKStudentConnection> studentConnection; // @synthesize studentConnection=_studentConnection;
+@property(readonly, nonatomic) id <CRKFeatureDataStoreProtocol> featureDataStore; // @synthesize featureDataStore=_featureDataStore;
+@property(readonly, nonatomic) id <CRKDarwinNotificationPublisher> darwinNotificationPublisher; // @synthesize darwinNotificationPublisher=_darwinNotificationPublisher;
+@property(readonly, nonatomic) id <CRKStudentConnectionPrimitives> studentConnectionPrimitives; // @synthesize studentConnectionPrimitives=_studentConnectionPrimitives;
+@property(copy, nonatomic) NSDictionary *observingInstructorsByCourse; // @synthesize observingInstructorsByCourse=_observingInstructorsByCourse;
 @property(nonatomic) __weak id <CRKScreenObservationMonitorDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)daemonProxy:(id)arg1 didReceiveNotificationWithName:(id)arg2 userInfo:(id)arg3;
-- (void)daemonProxyDidDisconnect:(id)arg1;
-- (void)daemonProxyDidConnect:(id)arg1;
-- (void)updateObservingInstructorsByCourses;
-- (void)fetchEnrolledCoursesDidFinish:(id)arg1 userInfo:(id)arg2;
-- (void)fetchEnrolledCoursesForObservingInstructors:(id)arg1;
-- (void)updateObservingInstructorsWithDictionary:(id)arg1;
-- (void)fetchObservingInstructorsDidFinish:(id)arg1;
-- (void)fetchObservingInstructors;
+- (void)fetchObservingInstructorsByCourseOperationDidFinish:(id)arg1;
+- (void)fetchObservingInstructorsByCourse;
+- (void)didLoseStudentConnection;
+- (void)didEstablishStudentConnection:(id)arg1;
 - (void)disconnectFromStudentdIfNeeded;
 - (void)connectToStudentdIfNeeded;
+- (void)beginObservingEnrollmentStatus;
 - (void)enrollmentStatusDidChange;
-@property(readonly, nonatomic, getter=isConnected) _Bool connected;
-@property(readonly, nonatomic, getter=isEnrolled) _Bool enrolled;
+- (id)instructorIdentifiersByCourseIdentifier;
 @property(readonly, nonatomic) _Bool hasObservingInstructors;
-- (void)dealloc;
-- (id)initWithDaemonProxy:(id)arg1;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)initWithStudentConnectionPrimitives:(id)arg1 darwinNotificationPublisher:(id)arg2 featureDataStore:(id)arg3;
+- (void)dealloc;
 
 @end
 

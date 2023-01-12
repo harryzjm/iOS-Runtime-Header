@@ -7,6 +7,8 @@
 #import <Foundation/NSUserDefaults.h>
 
 @interface NSUserDefaults (SafariServicesExtras)
++ (id)_sf_safariSharedDefaults;
++ (id)_sf_sfAppDefaults;
 + (id)_sf_safariDefaults;
 - (_Bool)_sf_passwordManagerIsInDemoMode;
 - (void)_sf_setShouldAutomaticallyDownloadReadingListItems:(_Bool)arg1;

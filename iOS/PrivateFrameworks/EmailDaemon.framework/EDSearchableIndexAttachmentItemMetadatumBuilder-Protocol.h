@@ -16,5 +16,6 @@
 @property(copy, nonatomic) NSArray *mailboxIdentifiers;
 @property(copy, nonatomic) NSString *accountIdentifier;
 @property(copy, nonatomic) NSString *domainIdentifier;
+@property(copy, nonatomic) NSString *name;
 @end
 

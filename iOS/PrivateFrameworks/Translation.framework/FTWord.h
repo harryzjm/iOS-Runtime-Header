@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_a1b0fd55)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_a1b0fd55)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSString *tag;
 @property(readonly, nonatomic) int frequency;
 - (void)pronunciations:(CDUnknownBlockType)arg1;

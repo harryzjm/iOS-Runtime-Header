@@ -21,6 +21,7 @@
     _Bool _showCanvasGuides;
     _Bool _inspectorPaneIsVisible;
     _Bool _inspectorPaneIsAutoHidden;
+    _Bool _isInPaginatedMode;
     int _inspectorPaneViewMode;
     TSKSelectionPath *_selectionPath;
     id <TNUIStateDelegate> _delegate;
@@ -37,6 +38,7 @@
 + (double)maximumViewScale;
 + (double)minimumViewScale;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool isInPaginatedMode; // @synthesize isInPaginatedMode=_isInPaginatedMode;
 @property(nonatomic, getter=inspectorPaneIsAutoHidden) _Bool inspectorPaneIsAutoHidden; // @synthesize inspectorPaneIsAutoHidden=_inspectorPaneIsAutoHidden;
 @property(nonatomic, getter=inspectorPaneIsVisible) _Bool inspectorPaneIsVisible; // @synthesize inspectorPaneIsVisible=_inspectorPaneIsVisible;
 @property(readonly, nonatomic) NSMutableDictionary *editModeSheetUIStates; // @synthesize editModeSheetUIStates=_editModeSheetUIStates;
@@ -62,12 +64,13 @@
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)saveToArchive:(struct UIStateArchive *)arg1 archiver:(id)arg2 context:(id)arg3;
-- (id)initWithArchive:(const struct UIStateArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2 context:(id)arg3;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 @property(readonly, copy) NSString *description;
 - (id)archivedUIStateInContext:(id)arg1;
 @property(nonatomic) long long inspectorPaneHiddenState;
 - (void)p_exitPaginatedMode;
+- (id)_sheetUIStateForPrintingSheet:(id)arg1;
 - (void)p_enterPaginatedMode;
 @property(readonly, nonatomic) _Bool hasPreviousVisibleRect;
 @property(readonly, nonatomic) _Bool hasVisibleRect;
@@ -82,7 +85,7 @@
 @property(readonly, nonatomic) float previousViewScale;
 - (float)viewScaleForSheet:(id)arg1;
 @property(readonly, nonatomic) float viewScale;
-- (float)p_defaultViewScale;
+@property(readonly, nonatomic) float defaultViewScale;
 - (float)p_calculateViewScaleForVisibleRect:(struct CGRect)arg1;
 - (void)clearPreviousVisibleRect;
 @property(nonatomic) struct CGRect previousVisibleRect;

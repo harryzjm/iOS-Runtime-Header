@@ -8,19 +8,23 @@
 
 #import <SettingsCellularUI/PSSpecifierGroup-Protocol.h>
 
-@class NSString, PSListController, PSSpecifier;
+@class CTXPCServiceSubscriptionContext, NSString, PSListController, PSSpecifier, PSUICoreTelephonyDataCache, PSUIDataModeSpecifier;
 
 __attribute__((visibility("hidden")))
 @interface PSUIDataModeSubgroup : NSObject <PSSpecifierGroup>
 {
     PSListController *_hostController;
     PSSpecifier *_parentSpecifier;
+    PSUICoreTelephonyDataCache *_dataCache;
+    CTXPCServiceSubscriptionContext *_context;
+    PSUIDataModeSpecifier *_dataModeSpecifier;
 }
 
 - (void).cxx_destruct;
 - (id)initWithListController:(id)arg1 groupSpecifier:(id)arg2;
+@property(readonly, nonatomic) _Bool shouldShowLinkCell;
 - (id)specifiers;
-- (id)initWithHostController:(id)arg1 parentSpecifier:(id)arg2;
+- (id)initWithHostController:(id)arg1 parentSpecifier:(id)arg2 dataCache:(id)arg3 context:(id)arg4 ctClient:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

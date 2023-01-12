@@ -10,6 +10,6 @@
 @protocol PXGMetalSpriteTexture;
 
 @protocol PXGMetalTextureConverterDelegate <NSObject>
-- (void)metalTextureConverter:(PXGMetalTextureConverter *)arg1 didCreateTexture:(id <PXGMetalSpriteTexture>)arg2;
+- (void)metalTextureConverter:(PXGMetalTextureConverter *)arg1 didCreateTexture:(id <PXGMetalSpriteTexture>)arg2 options:(CDStruct_6238c8e0)arg3;
 @end
 

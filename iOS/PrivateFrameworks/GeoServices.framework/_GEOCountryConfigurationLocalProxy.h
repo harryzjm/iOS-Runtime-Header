@@ -9,7 +9,7 @@
 #import <GeoServices/_GEOCountryConfigurationServerProxy-Protocol.h>
 
 @class NSString;
-@protocol OS_dispatch_queue, OS_dispatch_source, _GEOCountryConfigurationServerProxyDelegate;
+@protocol GEOCancellable, OS_dispatch_queue, OS_dispatch_source, _GEOCountryConfigurationServerProxyDelegate;
 
 __attribute__((visibility("hidden")))
 @interface _GEOCountryConfigurationLocalProxy : NSObject <_GEOCountryConfigurationServerProxy>
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSObject<OS_dispatch_source> *_scheduledUpdateTimer;
     id _countryCodeOverrideChangeListener;
+    id <GEOCancellable> _geoIPLookupTask;
 }
 
 - (void).cxx_destruct;

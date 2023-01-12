@@ -25,17 +25,21 @@ __attribute__((visibility("hidden")))
     unsigned char _mediaControlInfoFECFeedbackVersion;
     int _type;
     unsigned long long _statisticsID;
+    _Bool _isNWConnectionEnabled;
+    int _btNotificationHandlerIndex;
     NSArray *_fecLevelPerFrameSizeVector;
 }
 
 + (double)convertRedundancyPercentageToRatio:(unsigned int)arg1;
 @property(readonly, nonatomic) NSArray *fecLevelPerFrameSizeVector; // @synthesize fecLevelPerFrameSizeVector=_fecLevelPerFrameSizeVector;
 @property(nonatomic) unsigned long long statisticsID; // @synthesize statisticsID=_statisticsID;
+- (void)resetRedundancyStrategy:(CDStruct_b9c9288f *)arg1;
+- (void)setBtNotificationMonitor;
 - (void)loadDefaultSettings;
 - (void)reportRedundancyPercentage:(unsigned int)arg1 redundancyInterval:(double)arg2;
-- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_56e8fa21)arg1;
+- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_c0785916)arg1;
 - (void)dealloc;
-- (id)initWithDelegate:(id)arg1 statisticsCollector:(id)arg2 mode:(unsigned int)arg3 maxAllowedRedundancyPercentage:(unsigned int)arg4;
+- (id)initWithDelegate:(id)arg1 mode:(unsigned int)arg2 parameters:(struct VCRedundancyControllerVideoParameters_t)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

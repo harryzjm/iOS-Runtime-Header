@@ -9,14 +9,15 @@
 #import <TSPersistence/TSPArchiverManagerDelegate-Protocol.h>
 #import <TSPersistence/TSPComponentWriterDelegate-Protocol.h>
 #import <TSPersistence/TSPDataArchiver-Protocol.h>
+#import <TSPersistence/TSPDataReferenceMapPersistedObjectProvider-Protocol.h>
 #import <TSPersistence/TSPExternalReferenceDelegate-Protocol.h>
 #import <TSPersistence/TSPObjectModifyDelegate-Protocol.h>
 #import <TSPersistence/TSPPersistedObjectUUIDMapDelegate-Protocol.h>
 
-@class NSError, NSHashTable, NSMapTable, NSMutableArray, NSMutableSet, NSSet, NSString, NSURL, TSPArchiverManager, TSPComponentExternalReferenceMap, TSPDataAttributesSnapshot, TSPDocumentRevision, TSPObject, TSPObjectContainer, TSPObjectContext, TSPObjectReferenceMap, TSPPackageMetadata, TSPPersistedObjectUUIDMap, TSPSupportPackageWriteCoordinator;
+@class NSError, NSHashTable, NSMapTable, NSMutableArray, NSMutableSet, NSSet, NSString, NSURL, TSPArchiverManager, TSPComponentExternalReferenceMap, TSPDataAttributesSnapshot, TSPDocumentRevision, TSPObject, TSPObjectContainer, TSPObjectContext, TSPObjectReferenceMap, TSPPackageMetadata, TSPPersistedDataReferenceMap, TSPPersistedObjectUUIDMap, TSPSupportPackageWriteCoordinator;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
-@interface TSPPackageWriteCoordinator : NSObject <TSPArchiverManagerDelegate, TSPComponentWriterDelegate, TSPDataArchiver, TSPExternalReferenceDelegate, TSPPersistedObjectUUIDMapDelegate, TSPObjectModifyDelegate>
+@interface TSPPackageWriteCoordinator : NSObject <TSPArchiverManagerDelegate, TSPComponentWriterDelegate, TSPDataArchiver, TSPDataReferenceMapPersistedObjectProvider, TSPExternalReferenceDelegate, TSPPersistedObjectUUIDMapDelegate, TSPObjectModifyDelegate>
 {
     _Atomic _Bool _didWriteObjectContainer;
     TSPObjectContext *_context;
@@ -32,21 +33,23 @@
     NSObject<OS_dispatch_queue> *_completionQueue;
     NSObject<OS_dispatch_group> *_completionGroup;
     NSSet *_knownComponentLocators;
-    struct unordered_map<const long long, TSP::ComponentPropertiesSnapshot, TSP::IdentifierHash, std::__1::equal_to<const long long>, std::__1::allocator<std::__1::pair<const long long, TSP::ComponentPropertiesSnapshot>>> _componentPropertiesSnapshot;
+    struct IdentifierMap<TSP::ComponentPropertiesSnapshot> _componentPropertiesSnapshot;
     NSObject<OS_dispatch_queue> *_accessQueue;
     _Atomic unsigned long long _accessQueueSuspendCount;
     _Atomic void *_currentComponentWriterPointer;
-    struct unordered_map<const long long, TSP::WrittenComponentInfo, TSP::IdentifierHash, std::__1::equal_to<const long long>, std::__1::allocator<std::__1::pair<const long long, TSP::WrittenComponentInfo>>> _writtenComponents;
-    struct unordered_map<const long long, TSP::ComponentProperties, TSP::IdentifierHash, std::__1::equal_to<const long long>, std::__1::allocator<std::__1::pair<const long long, TSP::ComponentProperties>>> _componentProperties;
-    struct map<unsigned int, std::__1::map<long long, TSPComponent *, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, TSPComponent *>>>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, std::__1::map<long long, TSPComponent *, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, TSPComponent *>>>>>> _remainingComponentsQueue;
+    struct IdentifierMap<TSP::WrittenComponentInfo> _writtenComponents;
+    struct IdentifierMap<TSP::ComponentProperties> _componentProperties;
+    struct map<unsigned int, std::map<long long, TSPComponent *>, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, std::map<long long, TSPComponent *>>>> _remainingComponentsQueue;
     NSMutableSet *_packageLocatorSet;
     TSPObjectContainer *_objectContainer;
+    long long _objectContainerIdentifier;
     TSPPersistedObjectUUIDMap *_persistedUUIDMap;
+    TSPPersistedDataReferenceMap *_persistedDataReferenceMap;
     NSMapTable *_loadedObjects;
     _Atomic unsigned long long _wastefullyEnqueuedComponentCount;
-    struct unordered_map<const long long, TSP::WrittenObjectInfo, TSP::IdentifierHash, std::__1::equal_to<const long long>, std::__1::allocator<std::__1::pair<const long long, TSP::WrittenObjectInfo>>> _writtenObjects;
-    struct unordered_map<const long long, const long long, TSP::IdentifierHash, std::__1::equal_to<const long long>, std::__1::allocator<std::__1::pair<const long long, const long long>>> _delayedObjects;
-    struct queue<TSP::WrittenObjectInfo, std::__1::deque<TSP::WrittenObjectInfo, std::__1::allocator<TSP::WrittenObjectInfo>>> _writtenLazyReferences;
+    struct IdentifierMap<TSP::WrittenObjectInfo> _writtenObjects;
+    struct IdentifierMap<long long> _delayedObjects;
+    struct queue<TSP::WrittenObjectInfo, std::deque<TSP::WrittenObjectInfo>> _writtenLazyReferences;
     NSObject<OS_dispatch_queue> *_modifyObjectQueue;
     NSHashTable *_modifiedObjectsDuringWrite;
     _Bool _captureSnapshots;
@@ -71,7 +74,7 @@
     NSError *_packageWriterError;
     NSURL *_documentTargetURL;
     TSPSupportPackageWriteCoordinator *_supportPackageWriteCoordinator;
-    unordered_map_38045d47 _validatedExternalReferences;
+    struct IdentifierMap<bool> _validatedExternalReferences;
     NSURL *_relativeURLForExternalData;
     TSPPackageMetadata *_packageMetadata;
 }
@@ -80,7 +83,8 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) TSPPackageMetadata *packageMetadata; // @synthesize packageMetadata=_packageMetadata;
 @property(readonly, nonatomic) NSURL *relativeURLForExternalData; // @synthesize relativeURLForExternalData=_relativeURLForExternalData;
-- (void)persistedObjectUUIDMap:(id)arg1 foundDuplicateUUID:(id)arg2 firstObjectLocation:(struct ObjectLocation)arg3 secondObjectLocation:(struct ObjectLocation)arg4;
+- (_Bool)wasObjectPersistedWithIdentifier:(long long)arg1;
+- (void)persistedObjectUUIDMap:(id)arg1 foundDuplicateUUID:(id)arg2 firstObjectLocation:(struct TSPObjectLocation)arg3 secondObjectLocation:(struct TSPObjectLocation)arg4;
 - (id)persistedObjectUUIDMap:(id)arg1 needsDescriptionForComponentIdentifier:(long long)arg2 objectIdentifier:(long long)arg3;
 - (id)explicitComponentRootObjectForObject:(id)arg1;
 - (_Bool)wasComponentCopied:(long long)arg1;
@@ -106,7 +110,7 @@
 - (void)didReferenceData:(id)arg1;
 - (void)calculateExternalReferences;
 - (void)updateExternalReferencesForCopiedComponent:(id)arg1;
-- (void)setArchivedObjects:(id)arg1 componentObjectUUIDMap:(id)arg2 objectReferenceMap:(id)arg3 externalStrongReferences:(id)arg4 ambiguousReferences:(id)arg5 externalWeakReferences:(id)arg6 featureInfos:(id)arg7 dataReferences:(id)arg8 forComponent:(id)arg9;
+- (void)setArchivedObjects:(id)arg1 componentObjectUUIDMap:(id)arg2 objectReferenceMap:(id)arg3 externalStrongReferences:(id)arg4 ambiguousReferences:(id)arg5 externalWeakReferences:(id)arg6 featureInfos:(id)arg7 componentDataReferenceMap:(id)arg8 forComponent:(id)arg9;
 - (id)componentForObjectIdentifier:(long long)arg1 objectOrNil:(id)arg2 componentReadVersion:(unsigned long long *)arg3;
 - (_Bool)isObjectInExternalPackage:(id)arg1 claimingComponent:(id *)arg2 componentReadVersion:(unsigned long long *)arg3;
 - (_Bool)isObjectWrittenInExternalPackageWithIdentifier:(long long)arg1;
@@ -122,15 +126,18 @@
 - (void)writeComponent:(id)arg1 rootObjectOrNil:(id)arg2 forceArchive:(_Bool)arg3 withPackageWriter:(id)arg4;
 - (void)writeRemainingComponentsWithPackageWriter:(id)arg1 completionQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)nextComponentAndRootObjectForComponentWriteWithCompletion:(CDUnknownBlockType)arg1;
-- (void)enqueueReferencedObject:(id)arg1 referencingComponent:(id)arg2 isWeakReference:(_Bool)arg3 forWastefullyEnqueuedComponent:(id)arg4 componentRootObject:(id)arg5 componentInfo:(struct WrittenComponentInfo *)arg6;
-- (_Bool)enqueueComponent:(id)arg1 rootObjectOrNil:(id)arg2 forceArchive:(_Bool)arg3 isWastefullyEnqueueing:(_Bool)arg4 isWeakReference:(_Bool)arg5 referencingComponent:(id)arg6 referencedObject:(id)arg7;
+- (void)addDelayedObjectToObjectContainer:(id)arg1 referencingComponent:(id)arg2 forWastefullyEnqueuedComponent:(id)arg3 componentRootObject:(id)arg4;
+- (void)enqueueReferencedObject:(id)arg1 referencingComponent:(id)arg2 isWeakReference:(_Bool)arg3 forWastefullyEnqueuedComponent:(id)arg4 componentRootObject:(id)arg5 componentInfo:(struct WrittenComponentInfo *)arg6 hasArchiverAccessLock:(_Bool)arg7;
+- (_Bool)enqueueComponent:(id)arg1 rootObjectOrNil:(id)arg2 forceArchive:(_Bool)arg3 isWastefullyEnqueueing:(_Bool)arg4 isWeakReference:(_Bool)arg5 referencingComponent:(id)arg6 referencedObject:(id)arg7 hasArchiverAccessLock:(_Bool)arg8;
 - (void)enqueueRootObjectImpl:(id)arg1 forceArchive:(_Bool)arg2 isAddingDelayedObjectReferencedByObjectContainer:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)forceArchivingComponentIdentifier:(long long)arg1;
 - (void)enqueueRootObject:(id)arg1 forceArchive:(_Bool)arg2 isAddingDelayedObjectReferencedByObjectContainer:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)writeRootObjectAndRelatedComponents:(id)arg1 withPackageWriter:(id)arg2 completionQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)writeRemainingRootObjectsAndRelatedComponents:(id)arg1 withPackageWriter:(id)arg2 completionQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)enumerateWrittenObjectsWithBlock:(CDUnknownBlockType)arg1;
-- (void)updateObjectContextForSuccessfulSaveWithPackageWriter:(id)arg1 packageURL:(id)arg2;
+- (void)updateObjectContextForSuccessfulSaveWithPackageWriter:(id)arg1 packageURL:(id)arg2 allDataIdentifiers:(id)arg3;
+- (void)didFinishWritingWithSupportPackageWriteCoordinator:(id)arg1;
+- (const void *)writtenComponents;
 @property(readonly, nonatomic) NSSet *featureIdentifiers;
 @property(readonly, nonatomic) TSPObjectContainer *objectContainer;
 - (void)writeRootObject:(id)arg1 withPackageWriter:(id)arg2 saveOperationState:(id)arg3 completionQueue:(id)arg4 completion:(CDUnknownBlockType)arg5;
@@ -138,12 +145,13 @@
 - (void)stopCapturingSnapshots;
 - (void)willModifyObject:(id)arg1 options:(unsigned long long)arg2;
 - (unsigned long long)objectTargetType;
+- (void)setDataAttributesSnapshot:(id)arg1;
 - (void)setSupportPackageWriteCoordinator:(id)arg1;
 - (id)packageWriterError;
 - (void)setPackageWriterErrorIfNeeded:(id)arg1;
 - (void)dealloc;
-- (id)initWithContext:(id)arg1 archiverClass:(Class)arg2 archiverFlags:(BOOL)arg3 documentRevision:(id)arg4 saveToken:(unsigned long long)arg5 packageIdentifier:(unsigned char)arg6 fileFormatVersion:(unsigned long long)arg7 preferredPackageType:(long long)arg8 metadataObject:(id)arg9 dataAttributesSnapshot:(id)arg10 packageWriteCoordinator:(id)arg11 captureSnapshots:(_Bool)arg12;
-- (id)initWithContext:(id)arg1 archiverClass:(Class)arg2 archiverFlags:(BOOL)arg3 documentRevision:(id)arg4 saveToken:(unsigned long long)arg5 packageIdentifier:(unsigned char)arg6 fileFormatVersion:(unsigned long long)arg7 preferredPackageType:(long long)arg8 metadataObject:(id)arg9 dataAttributesSnapshot:(id)arg10;
+- (id)initWithContext:(id)arg1 archiverClass:(Class)arg2 archiverFlags:(BOOL)arg3 documentRevision:(id)arg4 saveToken:(unsigned long long)arg5 packageIdentifier:(unsigned char)arg6 fileFormatVersion:(unsigned long long)arg7 preferredPackageType:(long long)arg8 metadataObject:(id)arg9 packageWriteCoordinator:(id)arg10 captureSnapshots:(_Bool)arg11;
+- (id)initWithContext:(id)arg1 archiverClass:(Class)arg2 archiverFlags:(BOOL)arg3 documentRevision:(id)arg4 saveToken:(unsigned long long)arg5 packageIdentifier:(unsigned char)arg6 fileFormatVersion:(unsigned long long)arg7 preferredPackageType:(long long)arg8 metadataObject:(id)arg9;
 - (id)init;
 
 // Remaining properties

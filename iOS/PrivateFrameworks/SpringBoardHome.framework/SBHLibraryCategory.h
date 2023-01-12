@@ -37,7 +37,6 @@
 @property(readonly, copy, nonatomic) NSString *leafIdentifier;
 - (long long)labelAccessoryTypeForIcon:(id)arg1;
 - (void)iconAccessoriesDidUpdate:(id)arg1;
-- (_Bool)isEqual:(id)arg1;
 @property(readonly, nonatomic) SBHLibraryAdditionalItemsIndicatorIcon *additionalItemsIndicatorIcon; // @synthesize additionalItemsIndicatorIcon=_additionalItemsIndicatorIcon;
 @property(readonly, copy, nonatomic) SBHLibraryCategoryFolder *expandedPodFolder; // @synthesize expandedPodFolder=_expandedPodFolder;
 @property(readonly, copy, nonatomic) SBHLibraryCategoryFolder *compactPodAdditionalItemsFolder; // @synthesize compactPodAdditionalItemsFolder=_compactPodAdditionalItemsFolder;
@@ -48,7 +47,9 @@
 - (void)_noteCategoryDidUpdate;
 - (void)_noteCategoryWillUpdate;
 - (_Bool)updateCategoryWithIcons:(id)arg1;
+- (_Bool)updateCategoryIdentifier:(id)arg1;
 - (void)_localizedDisplayNameChangedTo:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToCategory:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (void)removeObserver:(id)arg1;
@@ -57,13 +58,13 @@
 - (_Bool)iconSupportsUninstall:(id)arg1;
 - (id)icon:(id)arg1 displayNameForLocation:(id)arg2;
 - (unsigned long long)priorityForIcon:(id)arg1;
+@property(readonly, copy, nonatomic) NSString *uniqueIdentifier;
 
 // Remaining properties
 @property(readonly, copy, nonatomic) NSString *configurationStorageIdentifier;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
-@property(readonly, copy, nonatomic) NSString *uniqueIdentifier;
 
 @end
 

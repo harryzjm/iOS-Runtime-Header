@@ -20,8 +20,6 @@
 @property(nonatomic) __weak id <MKPlaceActivityProviderDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)mapMetadataSpecialization;
 - (id)activityAnnotationView;
-- (id)webPlaceCardURL;
-- (_Bool)shouldUseWebPlaceCardForActivityType:(id)arg1;
 - (id)activityURL;
 - (id)activityTitle;
 - (id)initWithMapItem:(id)arg1;

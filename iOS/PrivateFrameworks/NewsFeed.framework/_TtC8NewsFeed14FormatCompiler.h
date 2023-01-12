@@ -6,8 +6,12 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC8NewsFeed14FormatCompiler : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *systemOptions;
+    MISSING_TYPE *settings;
 }
 
 @end

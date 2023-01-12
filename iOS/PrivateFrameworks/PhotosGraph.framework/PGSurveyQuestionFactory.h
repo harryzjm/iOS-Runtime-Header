@@ -8,18 +8,18 @@
 
 #import <PhotosGraph/PGQuestionFactory-Protocol.h>
 
-@class NSDictionary, NSString, PGManager;
+@class NSDictionary, NSString, PGManagerWorkingContext;
 
 @interface PGSurveyQuestionFactory : NSObject <PGQuestionFactory>
 {
     _Bool _ignoreExistingQuestions;
     NSDictionary *_existingQuestionsByEntityIdentifier;
-    PGManager *_manager;
+    PGManagerWorkingContext *_workingContext;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool ignoreExistingQuestions; // @synthesize ignoreExistingQuestions=_ignoreExistingQuestions;
-@property(retain, nonatomic) PGManager *manager; // @synthesize manager=_manager;
+@property(readonly) PGManagerWorkingContext *workingContext; // @synthesize workingContext=_workingContext;
 @property(retain, nonatomic) NSDictionary *existingQuestionsByEntityIdentifier; // @synthesize existingQuestionsByEntityIdentifier=_existingQuestionsByEntityIdentifier;
 - (id)representativeCuratedAssetsFromMomentNode:(id)arg1;
 - (id)_assetFromAssets:(id)arg1 closestToLocationCoordinate:(struct CLLocationCoordinate2D)arg2 radius:(double)arg3;
@@ -34,7 +34,7 @@
 - (id)generateQuestionsWithLimit:(unsigned long long)arg1 progressBlock:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) long long questionOptions;
 @property(readonly, nonatomic) unsigned short questionType;
-- (id)initWithManager:(id)arg1;
+- (id)initWithWorkingContext:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

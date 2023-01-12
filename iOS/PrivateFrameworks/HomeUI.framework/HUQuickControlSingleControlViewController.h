@@ -77,8 +77,8 @@
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
 @property(readonly, nonatomic) HFControlItem *controlItem;
-- (id)initWithControlItem:(id)arg1 home:(id)arg2 itemUpdater:(id)arg3;
-- (id)initWithControlItems:(id)arg1 home:(id)arg2 itemUpdater:(id)arg3;
+- (id)initWithControlItem:(id)arg1 home:(id)arg2 itemUpdater:(id)arg3 controlOrientation:(unsigned long long)arg4 preferredControl:(unsigned long long)arg5;
+- (id)initWithControlItems:(id)arg1 home:(id)arg2 itemUpdater:(id)arg3 controlOrientation:(unsigned long long)arg4 preferredControl:(unsigned long long)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

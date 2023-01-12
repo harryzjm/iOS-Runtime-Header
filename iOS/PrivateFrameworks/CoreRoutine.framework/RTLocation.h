@@ -20,12 +20,15 @@
     double _altitude;
     double _verticalUncertainty;
     NSDate *_date;
+    unsigned long long _sourceAccuracy;
     double _speed;
 }
 
++ (id)sourceAccuracyToString:(unsigned long long)arg1;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) double speed; // @synthesize speed=_speed;
+@property(readonly, nonatomic) unsigned long long sourceAccuracy; // @synthesize sourceAccuracy=_sourceAccuracy;
 @property(readonly, nonatomic) int referenceFrame; // @synthesize referenceFrame=_referenceFrame;
 @property(readonly, nonatomic) NSDate *date; // @synthesize date=_date;
 @property(readonly, nonatomic) double verticalUncertainty; // @synthesize verticalUncertainty=_verticalUncertainty;
@@ -43,6 +46,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithLatitude:(double)arg1 longitude:(double)arg2 horizontalUncertainty:(double)arg3 altitude:(double)arg4 verticalUncertainty:(double)arg5 date:(id)arg6 referenceFrame:(int)arg7 speed:(double)arg8 sourceAccuracy:(unsigned long long)arg9;
 - (id)initWithLatitude:(double)arg1 longitude:(double)arg2 horizontalUncertainty:(double)arg3 altitude:(double)arg4 verticalUncertainty:(double)arg5 date:(id)arg6 referenceFrame:(int)arg7 speed:(double)arg8;
 - (id)initWithLatitude:(double)arg1 longitude:(double)arg2 horizontalUncertainty:(double)arg3 date:(id)arg4 referenceFrame:(int)arg5;
 - (id)initWithLatitude:(double)arg1 longitude:(double)arg2 horizontalUncertainty:(double)arg3 date:(id)arg4;

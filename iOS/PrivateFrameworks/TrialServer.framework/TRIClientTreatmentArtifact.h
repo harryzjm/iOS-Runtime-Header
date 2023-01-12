@@ -8,20 +8,17 @@
 
 #import <TrialServer/NSCopying-Protocol.h>
 
-@class NSData, NSDictionary, NSString;
+@class NSData, NSString;
 
 @interface TRIClientTreatmentArtifact : NSObject <NSCopying>
 {
     NSData *_encodedTreatmentDefinition;
     NSString *_encodedTreatmentDefinitionSignature;
     NSData *_publicCertificate;
-    NSDictionary *_assetURLs;
 }
 
-+ (id)artifactWithEncodedTreatmentDefinition:(id)arg1 encodedTreatmentDefinitionSignature:(id)arg2 publicCertificate:(id)arg3 assetURLs:(id)arg4;
-+ (id)artifactFromCKRecordFields:(id)arg1 loadAssetUrls:(CDUnknownBlockType)arg2;
++ (id)artifactWithEncodedTreatmentDefinition:(id)arg1 encodedTreatmentDefinitionSignature:(id)arg2 publicCertificate:(id)arg3;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSDictionary *assetURLs; // @synthesize assetURLs=_assetURLs;
 @property(readonly, nonatomic) NSData *publicCertificate; // @synthesize publicCertificate=_publicCertificate;
 @property(readonly, nonatomic) NSString *encodedTreatmentDefinitionSignature; // @synthesize encodedTreatmentDefinitionSignature=_encodedTreatmentDefinitionSignature;
 @property(readonly, nonatomic) NSData *encodedTreatmentDefinition; // @synthesize encodedTreatmentDefinition=_encodedTreatmentDefinition;
@@ -31,12 +28,10 @@
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToArtifact:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)copyWithReplacementAssetURLs:(id)arg1;
 - (id)copyWithReplacementPublicCertificate:(id)arg1;
 - (id)copyWithReplacementEncodedTreatmentDefinitionSignature:(id)arg1;
 - (id)copyWithReplacementEncodedTreatmentDefinition:(id)arg1;
-- (id)initWithEncodedTreatmentDefinition:(id)arg1 encodedTreatmentDefinitionSignature:(id)arg2 publicCertificate:(id)arg3 assetURLs:(id)arg4;
-- (id)unsignedAssetURLs;
+- (id)initWithEncodedTreatmentDefinition:(id)arg1 encodedTreatmentDefinitionSignature:(id)arg2 publicCertificate:(id)arg3;
 - (_Bool)isValidWithTreatmentId:(id)arg1;
 
 @end

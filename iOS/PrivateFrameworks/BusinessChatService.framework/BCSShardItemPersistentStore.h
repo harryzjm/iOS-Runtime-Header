@@ -14,19 +14,13 @@
 }
 
 + (const char *)debugQueueName;
-- (id)_extractShardItemFromStatement:(struct sqlite3_stmt *)arg1;
-- (long long)_executeCountSQLQuery:(const char *)arg1;
 - (long long)countOfExpiredShardsOfType:(long long)arg1;
 - (long long)countOfShardsOfType:(long long)arg1;
-- (_Bool)_executeDeleteBusinessItemSQLQuery:(const char *)arg1;
 - (void)deleteExpiredShardItemsOfType:(long long)arg1;
 - (void)deleteShardItemsOfType:(long long)arg1;
 - (void)deleteShardItemMatching:(id)arg1;
-- (id)_executeFetchPersistentShardItemObjectSQLQuery:(const char *)arg1;
 - (id)shardItemMatching:(id)arg1;
-- (_Bool)_updateShardItem:(id)arg1 withShardIdentifier:(id)arg2;
 - (void)updateShardItem:(id)arg1 withShardIdentifier:(id)arg2;
-- (id)_databasePath;
 - (const char *)schema;
 - (void)schemaVersionWillChangeForDatabase:(struct sqlite3 *)arg1 fromSchemaVersion:(long long)arg2 toSchemaVersion:(long long)arg3;
 - (long long)schemaVersion;

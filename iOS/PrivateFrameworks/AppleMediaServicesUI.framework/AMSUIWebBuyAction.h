@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <AppleMediaServicesUI/AMSPurchaseDelegate-Protocol.h>
 #import <AppleMediaServicesUI/AMSUIWebActionRunnable-Protocol.h>
 
-@class ACAccount, AMSUIWebClientContext, NSDictionary, NSString;
+@class ACAccount, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebBuyAction : NSObject <AMSPurchaseDelegate, AMSUIWebActionRunnable>
+@interface AMSUIWebBuyAction <AMSPurchaseDelegate, AMSUIWebActionRunnable>
 {
     _Bool _legacyBuy;
     _Bool _makeCurrentAccount;
@@ -20,7 +18,7 @@ __attribute__((visibility("hidden")))
     ACAccount *_account;
     NSString *_buyParams;
     long long _type;
-    AMSUIWebClientContext *_context;
+    NSString *_contentType;
     NSDictionary *_metricsOverlay;
 }
 
@@ -28,13 +26,16 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSDictionary *metricsOverlay; // @synthesize metricsOverlay=_metricsOverlay;
 @property(nonatomic) _Bool requiresAccount; // @synthesize requiresAccount=_requiresAccount;
 @property(nonatomic) _Bool makeCurrentAccount; // @synthesize makeCurrentAccount=_makeCurrentAccount;
-@property(retain, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
+@property(retain, nonatomic) NSString *contentType; // @synthesize contentType=_contentType;
 @property(nonatomic) long long type; // @synthesize type=_type;
 @property(nonatomic) _Bool legacyBuy; // @synthesize legacyBuy=_legacyBuy;
 @property(retain, nonatomic) NSString *buyParams; // @synthesize buyParams=_buyParams;
 @property(retain, nonatomic) ACAccount *account; // @synthesize account=_account;
 - (id)_runLegacyBuy;
+- (id)_runBuyWithContentType:(id)arg1;
 - (id)_runBuy;
+- (id)_purchasePluginIdentifierForContentType:(id)arg1;
+- (id)purchaseContentWithType:(id)arg1;
 - (void)_makeCurrentAccountIfNeeded:(id)arg1;
 - (void)purchase:(id)arg1 handleEngagementRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)purchase:(id)arg1 handleDialogRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;

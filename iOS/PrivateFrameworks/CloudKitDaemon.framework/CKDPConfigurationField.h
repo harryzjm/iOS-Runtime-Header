@@ -10,7 +10,6 @@
 
 @class CKDPConfigurationFieldValue, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDPConfigurationField : PBCodable <NSCopying>
 {
     NSString *_name;

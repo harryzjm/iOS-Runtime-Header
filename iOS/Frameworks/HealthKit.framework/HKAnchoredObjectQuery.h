@@ -42,6 +42,7 @@
 - (void)queue_populateConfiguration:(id)arg1;
 - (void)client_deliverSampleObjects:(id)arg1 deletedObjects:(id)arg2 anchor:(id)arg3 clearPendingSamples:(_Bool)arg4 deliverResults:(_Bool)arg5 query:(id)arg6;
 @property(nonatomic) _Bool ignoreDeletedObjects;
+- (id)initWithQueryDescriptors:(id)arg1 anchor:(id)arg2 limit:(long long)arg3 resultsHandler:(CDUnknownBlockType)arg4;
 - (id)initWithType:(id)arg1 predicate:(id)arg2 anchor:(id)arg3 limit:(unsigned long long)arg4 resultsHandler:(CDUnknownBlockType)arg5;
 - (id)initWithType:(id)arg1 predicate:(id)arg2 anchor:(unsigned long long)arg3 limit:(unsigned long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
 

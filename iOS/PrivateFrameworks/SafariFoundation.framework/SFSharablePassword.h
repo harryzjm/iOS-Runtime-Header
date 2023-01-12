@@ -16,6 +16,7 @@
     NSString *_password;
     NSString *_displayName;
     NSString *_highLevelDomain;
+    NSURL *_otpAuthURL;
     NSArray *_protectionSpaces;
 }
 
@@ -26,6 +27,7 @@
 + (id)sharablePasswordFromEncryptedData:(id)arg1 encryptionKeyReference:(id)arg2;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSArray *protectionSpaces; // @synthesize protectionSpaces=_protectionSpaces;
+@property(readonly, copy, nonatomic) NSURL *otpAuthURL; // @synthesize otpAuthURL=_otpAuthURL;
 @property(readonly, copy, nonatomic) NSString *highLevelDomain; // @synthesize highLevelDomain=_highLevelDomain;
 @property(readonly, copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property(readonly, copy, nonatomic) NSString *password; // @synthesize password=_password;
@@ -37,6 +39,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)urlRepresentationForAirDrop;
 @property(readonly, nonatomic) NSURL *passwordManagerURL;
+- (id)initWithSavedPassword:(id)arg1;
 - (id)initWithUsername:(id)arg1 password:(id)arg2 displayName:(id)arg3 highLevelDomain:(id)arg4 protectionSpaces:(id)arg5;
 
 @end

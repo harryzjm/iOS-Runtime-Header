@@ -47,11 +47,6 @@ struct __SecKey {
     void *_field3;
 };
 
-struct __sbuf {
-    char *_field1;
-    int _field2;
-};
-
 struct _opaque_pthread_mutex_t {
     long long __sig;
     char __opaque[56];
@@ -145,6 +140,13 @@ typedef struct {
 typedef struct {
     unsigned char bytes[6];
 } CDStruct_83abfce7;
+
+typedef struct {
+    int callCountIncomingConnected;
+    int callCountIncomingUnconnected;
+    int callCountOutgoingConnected;
+    int callCountOutgoingUnconnected;
+} CDStruct_8b281280;
 
 typedef struct {
     int _field1;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, PKDrawing, PKMetalRendererController, PKStrokeGenerator;
+@class NSArray, NSMutableArray, PKDrawing, PKMetalRendererController;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore, PKControllerDelegate;
 
 @interface PKController : NSObject
@@ -15,6 +15,7 @@
     NSMutableArray *_mutableRenderedStrokes;
     _Bool _liveInteraction;
     _Bool _invertColors;
+    _Bool _sixChannelBlending;
     NSObject<PKControllerDelegate> *_delegate;
     PKMetalRendererController *_rendererController;
     PKDrawing *_drawing;
@@ -23,54 +24,7 @@
     NSObject<OS_dispatch_queue> *_backgroundQueue;
 }
 
-+ (void)updatesFrom:(id)arg1 to:(id)arg2 newStrokesToRender:(id *)arg3 redrawAllInRect:(struct CGRect *)arg4;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *backgroundQueue; // @synthesize backgroundQueue=_backgroundQueue;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *interactQueue; // @synthesize interactQueue=_interactQueue;
-@property(retain, nonatomic) NSObject<OS_dispatch_semaphore> *interactSemaphore; // @synthesize interactSemaphore=_interactSemaphore;
-@property(retain, nonatomic) PKDrawing *drawing; // @synthesize drawing=_drawing;
-@property(nonatomic) _Bool invertColors; // @synthesize invertColors=_invertColors;
-@property _Bool liveInteraction; // @synthesize liveInteraction=_liveInteraction;
-@property(retain, nonatomic) PKMetalRendererController *rendererController; // @synthesize rendererController=_rendererController;
-@property(nonatomic) __weak NSObject<PKControllerDelegate> *delegate; // @synthesize delegate=_delegate;
-- (void)addNewStrokes:(id)arg1 hidden:(_Bool)arg2 preDrawingChangedBlock:(CDUnknownBlockType)arg3;
-- (void)addNewStrokes:(id)arg1 preDrawingChangedBlock:(CDUnknownBlockType)arg2;
-- (void)_addNewStrokes:(id)arg1 hidden:(_Bool)arg2 preDrawingChangedBlock:(CDUnknownBlockType)arg3;
-- (void)addNewRenderedStrokes:(id)arg1 hidden:(_Bool)arg2 preDrawingChangedBlock:(CDUnknownBlockType)arg3;
-- (void)imageWithCompletionBlock:(CDUnknownBlockType)arg1;
-- (void)_renderAllStrokes:(id)arg1 clipRect:(struct CGRect)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_renderAllInStrokeSpaceRect:(struct CGRect)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_renderStrokes:(id)arg1 clippedToStrokeSpaceRect:(struct CGRect)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_drawingChanged;
-- (void)_didRenderStrokes:(id)arg1;
-- (void)_renderStrokes:(id)arg1 renderIntermediateSteps:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)renderStrokes:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)renderImage:(struct CGImage *)arg1 andMask:(struct CGImage *)arg2 forRenderedStrokes:(id)arg3 thenRenderStrokes:(id)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)renderImage:(struct CGImage *)arg1 andMask:(struct CGImage *)arg2 forRenderedStrokes:(id)arg3 thenRenderStrokes:(id)arg4 inStrokeSpaceClipRect:(struct CGRect)arg5 completion:(CDUnknownBlockType)arg6;
-- (void)removeStrokesInRect:(struct CGRect)arg1 from:(id)arg2;
-- (void)applyCommands:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
-- (void)applyCommand:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
-- (void)_applyCommands:(id)arg1 interactCompletion:(CDUnknownBlockType)arg2 completionBlock:(CDUnknownBlockType)arg3;
-- (void)updateDrawingFrom:(id)arg1;
-- (void)_updateDrawing:(id)arg1 erasedStrokes:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)updateDrawingWithErasedStrokes:(id)arg1;
-- (void)hideStrokesWithoutUpdating:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)updateDrawing;
-- (void)performAsyncInteractBlock:(CDUnknownBlockType)arg1;
-- (void)_renderImage:(struct CGImage *)arg1 andMask:(struct CGImage *)arg2;
-- (_Bool)_updateFrom:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_setDrawing:(id)arg1 initialDrawing:(id)arg2 withImage:(struct CGImage *)arg3 andMask:(struct CGImage *)arg4 setupComplete:(CDUnknownBlockType)arg5 completion:(CDUnknownBlockType)arg6;
-- (void)setDrawing:(id)arg1 initialDrawing:(id)arg2 withImage:(struct CGImage *)arg3 andMask:(struct CGImage *)arg4 setupComplete:(CDUnknownBlockType)arg5 completion:(CDUnknownBlockType)arg6;
-- (void)setDrawing:(id)arg1 tiles:(id)arg2 tileTransform:(struct CGAffineTransform)arg3 setupComplete:(CDUnknownBlockType)arg4 completionBlock:(CDUnknownBlockType)arg5;
-- (_Bool)_loadInitialDrawing:(id)arg1 withImage:(struct CGImage *)arg2 andMask:(struct CGImage *)arg3;
-- (void)didEndLiveInteraction;
-- (void)didStartLiveInteraction;
-- (void)cancelLongRunningRenders;
-@property(readonly, nonatomic) PKStrokeGenerator *inputController;
-- (void)_didUpdateMutableRenderedStrokes;
-@property(readonly, nonatomic) NSArray *renderedStrokes; // @dynamic renderedStrokes;
-- (void)teardown;
-- (id)initWithPixelSize:(struct CGSize)arg1 actualSize:(struct CGSize)arg2 renderQueue:(id)arg3 usePrivateResourceHandler:(_Bool)arg4 singleComponent:(_Bool)arg5;
 - (id)init;
 
 @end

@@ -36,39 +36,15 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasIncludeRankingFeatures;
-@property(nonatomic) _Bool includeRankingFeatures;
-@property(nonatomic) _Bool hasNormalizePOIs;
-@property(nonatomic) _Bool normalizePOIs;
-@property(retain, nonatomic) NSData *suggestionEntryMetadata;
-@property(readonly, nonatomic) _Bool hasSuggestionEntryMetadata;
-@property(retain, nonatomic) NSData *suggestionMetadata;
-@property(readonly, nonatomic) _Bool hasSuggestionMetadata;
-- (int)StringAsEntriesType:(id)arg1;
-- (id)entriesTypeAsString:(int)arg1;
-@property(nonatomic) _Bool hasEntriesType;
-@property(nonatomic) int entriesType;
-- (int)StringAsListType:(id)arg1;
-- (id)listTypeAsString:(int)arg1;
-@property(nonatomic) _Bool hasListType;
-@property(nonatomic) int listType;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

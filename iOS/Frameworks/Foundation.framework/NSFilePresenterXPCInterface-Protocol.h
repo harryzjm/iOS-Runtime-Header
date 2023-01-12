@@ -19,13 +19,13 @@
 - (oneway void)observeUbiquityChangeWithSubitemURL:(NSURLPromisePair *)arg1;
 - (oneway void)observeReconnection;
 - (oneway void)observeDisconnection;
-- (oneway void)observeMoveToURL:(NSURLPromisePair *)arg1 withSubitemURL:(NSURLPromisePair *)arg2 byWriterWithPurposeID:(id)arg3;
+- (oneway void)observeMoveToURL:(NSURLPromisePair *)arg1 withSubitemURL:(NSURLPromisePair *)arg2 byWriterWithPurposeID:(NSString *)arg3;
 - (oneway void)observeChangeWithSubitemURL:(NSURLPromisePair *)arg1;
 - (void)accommodateDeletionOfSubitemAtURL:(NSURLPromisePair *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)saveChangesWithCompletionHandler:(void (^)(NSError *))arg1;
-- (void)reacquireFromWritingClaimForID:(id)arg1 completionHandler:(void (^)(void))arg2;
-- (void)relinquishToWritingClaimWithID:(id)arg1 options:(unsigned long long)arg2 purposeID:(id)arg3 subitemURL:(NSURLPromisePair *)arg4 completionHandler:(void (^)(NSError *))arg5;
-- (oneway void)reacquireFromReadingClaimForID:(id)arg1;
-- (void)relinquishToReadingClaimWithID:(id)arg1 options:(unsigned long long)arg2 purposeID:(id)arg3 completionHandler:(void (^)(NSError *))arg4;
+- (void)reacquireFromWritingClaimForID:(NSString *)arg1 completionHandler:(void (^)(void))arg2;
+- (void)relinquishToWritingClaimWithID:(NSString *)arg1 options:(unsigned long long)arg2 purposeID:(NSString *)arg3 subitemURL:(NSURLPromisePair *)arg4 completionHandler:(void (^)(NSError *))arg5;
+- (oneway void)reacquireFromReadingClaimForID:(NSString *)arg1;
+- (void)relinquishToReadingClaimWithID:(NSString *)arg1 options:(unsigned long long)arg2 purposeID:(NSString *)arg3 completionHandler:(void (^)(NSError *))arg4;
 @end
 

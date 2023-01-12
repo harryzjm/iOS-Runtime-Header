@@ -9,6 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface STRootViewController
 {
+    _Bool _presentedAsModal;
     _Bool _shouldRefreshUsageData;
     STEnableScreenTimeGroupSpecifierProvider *_enableScreenTimeGroupSpecifierProvider;
     STNoUsageReportedGroupSpecifierProvider *_noUsageReportedGroupSpecifierProvider;
@@ -20,13 +21,17 @@ __attribute__((visibility("hidden")))
 @property(readonly) STScreenTimeGroupSpecifierProvider *screenTimeGroupSpecifierProvider; // @synthesize screenTimeGroupSpecifierProvider=_screenTimeGroupSpecifierProvider;
 @property(readonly) STNoUsageReportedGroupSpecifierProvider *noUsageReportedGroupSpecifierProvider; // @synthesize noUsageReportedGroupSpecifierProvider=_noUsageReportedGroupSpecifierProvider;
 @property(readonly) STEnableScreenTimeGroupSpecifierProvider *enableScreenTimeGroupSpecifierProvider; // @synthesize enableScreenTimeGroupSpecifierProvider=_enableScreenTimeGroupSpecifierProvider;
+@property(readonly, nonatomic) _Bool presentedAsModal; // @synthesize presentedAsModal=_presentedAsModal;
+- (void)doneButtonAction:(id)arg1;
 - (void)handleURL:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)viewDidLoad;
 - (void)dealloc;
+- (id)initWithRootViewModelCoordinator:(id)arg1 presentedAsModal:(_Bool)arg2;
 - (id)initWithRootViewModelCoordinator:(id)arg1;
 
 @end

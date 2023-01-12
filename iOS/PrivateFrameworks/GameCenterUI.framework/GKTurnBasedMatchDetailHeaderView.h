@@ -6,7 +6,7 @@
 
 #import <UIKit/UICollectionReusableView.h>
 
-@class GKDashboardPlayerPhotoView, GKLabel, GKTurnBasedMatch, NSArray, NSString, UIButton, UILabel;
+@class GKDashboardPlayerPhotoView, GKLabel, GKTurnBasedMatch, NSArray, NSString, UIButton, UIFocusGuide, UILabel;
 
 @interface GKTurnBasedMatchDetailHeaderView : UICollectionReusableView
 {
@@ -20,12 +20,14 @@
     GKLabel *_lastTurnLabel;
     GKLabel *_infoLabel;
     GKDashboardPlayerPhotoView *_avatarView;
+    UIFocusGuide *_actionFocusGuide;
     NSArray *_constraints;
 }
 
 + (_Bool)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *constraints; // @synthesize constraints=_constraints;
+@property(retain, nonatomic) UIFocusGuide *actionFocusGuide; // @synthesize actionFocusGuide=_actionFocusGuide;
 @property(retain, nonatomic) GKDashboardPlayerPhotoView *avatarView; // @synthesize avatarView=_avatarView;
 @property(retain, nonatomic) GKLabel *infoLabel; // @synthesize infoLabel=_infoLabel;
 @property(retain, nonatomic) GKLabel *lastTurnLabel; // @synthesize lastTurnLabel=_lastTurnLabel;

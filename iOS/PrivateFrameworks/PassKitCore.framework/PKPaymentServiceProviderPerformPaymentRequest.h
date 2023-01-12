@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, PKPaymentPass, PKSecureElementCertificateSet, PKServiceProviderOrder;
+@class NSData, NSString, PKPaymentPass, PKSecureElementCertificateSet, PKServiceProviderOrder;
 
 @interface PKPaymentServiceProviderPerformPaymentRequest
 {
@@ -12,11 +12,13 @@
     PKPaymentPass *_pass;
     PKServiceProviderOrder *_serviceProviderOrder;
     NSData *_nonce;
+    NSString *_targetDeviceSerialNumber;
     long long _cryptogramType;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) long long cryptogramType; // @synthesize cryptogramType=_cryptogramType;
+@property(copy, nonatomic) NSString *targetDeviceSerialNumber; // @synthesize targetDeviceSerialNumber=_targetDeviceSerialNumber;
 @property(copy, nonatomic) NSData *nonce; // @synthesize nonce=_nonce;
 @property(retain, nonatomic) PKServiceProviderOrder *serviceProviderOrder; // @synthesize serviceProviderOrder=_serviceProviderOrder;
 @property(retain, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;

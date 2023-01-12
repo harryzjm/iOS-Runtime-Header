@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_3379e06c)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_3379e06c)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSString *fork_id;
 @property(readonly, nonatomic) NSString *request_locale;
 @property(readonly, nonatomic) NSString *language;

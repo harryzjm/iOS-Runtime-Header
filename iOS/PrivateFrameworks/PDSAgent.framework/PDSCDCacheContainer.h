@@ -42,6 +42,8 @@
 - (_Bool)updateEntryState:(unsigned char)arg1 forUser:(id)arg2 withError:(id *)arg3;
 - (_Bool)_deleteEntry:(id)arg1 context:(id)arg2 withError:(id *)arg3;
 - (_Bool)_storeEntry:(id)arg1 transitionBlock:(CDUnknownBlockType)arg2 context:(id)arg3 withError:(id *)arg4;
+- (void)deleteCache;
+- (_Bool)deleteEntriesForUser:(id)arg1 withState:(unsigned char)arg2 withError:(id *)arg3;
 - (_Bool)deleteEntry:(id)arg1 withError:(id *)arg2;
 - (_Bool)storeEntries:(id)arg1 transitionBlock:(CDUnknownBlockType)arg2 deleteEntries:(id)arg3 withError:(id *)arg4;
 - (_Bool)storeEntry:(id)arg1 transitionBlock:(CDUnknownBlockType)arg2 withError:(id *)arg3;

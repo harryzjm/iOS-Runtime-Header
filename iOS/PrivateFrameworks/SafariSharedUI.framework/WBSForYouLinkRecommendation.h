@@ -53,6 +53,7 @@
 @property(readonly, copy, nonatomic) NSString *badgeBundleIdentifier;
 @property(readonly, nonatomic) UIImage *sourceIcon;
 @property(readonly, nonatomic) UIImage *appIcon;
+@property(readonly, nonatomic) _Bool prefersLeadImage;
 - (id)initWithTitle:(id)arg1 url:(id)arg2 lastSeenDate:(id)arg3 source:(unsigned long long)arg4 topicSource:(unsigned long long)arg5;
 
 @end

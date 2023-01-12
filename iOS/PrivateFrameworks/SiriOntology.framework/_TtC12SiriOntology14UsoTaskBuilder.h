@@ -10,6 +10,8 @@
 {
     MISSING_TYPE *baseEntityString;
     MISSING_TYPE *verbString;
+    MISSING_TYPE *verbName;
+    MISSING_TYPE *entityName;
     MISSING_TYPE *argumentsMap;
 }
 

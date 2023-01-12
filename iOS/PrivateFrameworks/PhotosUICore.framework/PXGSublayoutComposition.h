@@ -10,7 +10,7 @@
 
 @interface PXGSublayoutComposition : NSObject
 {
-    CDStruct_d97c9657 _updateFlags;
+    CDStruct_af00bf4e _updateFlags;
     long long _lastSublayoutDataStoreVersion;
     PXGCompositeLayout *_compositeLayout;
     PXGSublayoutDataStore *_sublayoutDataStore;
@@ -33,7 +33,7 @@
 - (void)updateEstimate;
 - (void)enumerateSublayoutProvidersForRange:(struct _NSRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (struct UIEdgeInsets)sublayoutInsetsForStylableType:(long long)arg1;
-@property(readonly, nonatomic) CDStruct_ff9a7497 *sublayoutGeometries;
+@property(readonly, nonatomic) CDStruct_7dd43651 *sublayoutGeometries;
 @property(readonly, nonatomic) long long numberOfSublayouts;
 - (void)referenceSizeDidChange;
 - (void)setReferenceSize:(struct CGSize)arg1;

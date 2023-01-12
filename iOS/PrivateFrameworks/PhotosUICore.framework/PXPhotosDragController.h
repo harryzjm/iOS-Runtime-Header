@@ -12,7 +12,7 @@
 #import <PhotosUICore/UIDragInteractionDelegate-Protocol.h>
 #import <PhotosUICore/UIDropInteractionDelegate-Protocol.h>
 
-@class NSMutableSet, NSSet, NSString, PXAssetCollectionActionManager, PXAssetReference, PXSectionedSelectionManager, PXUpdater, UIView, UIViewController, _UIDragSnappingFeedbackGenerator;
+@class NSMutableSet, NSSet, NSString, PXAssetCollectionActionManager, PXAssetReference, PXSectionedSelectionManager, PXUpdater, UIDragInteraction, UIDropInteraction, UIView, UIViewController, _UIDragSnappingFeedbackGenerator;
 @protocol PXPhotosDragControllerDelegate;
 
 @interface PXPhotosDragController : NSObject <PXChangeObserver, UIDragInteractionDelegate, UIDropInteractionDelegate, PXAssetCollectionActionPerformerDelegate, PXLocalDragSessionDelegate>
@@ -31,9 +31,13 @@
     _UIDragSnappingFeedbackGenerator *_reorderFeedbackGenerator;
     NSSet *_excludedAssets;
     PXAssetReference *_hitAssetReference;
+    UIDragInteraction *_dragInteraction;
+    UIDropInteraction *_dropInteraction;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) UIDropInteraction *dropInteraction; // @synthesize dropInteraction=_dropInteraction;
+@property(readonly, nonatomic) UIDragInteraction *dragInteraction; // @synthesize dragInteraction=_dragInteraction;
 @property(retain, nonatomic) PXAssetReference *hitAssetReference; // @synthesize hitAssetReference=_hitAssetReference;
 @property(nonatomic) _Bool reorderFeedbackEnabled; // @synthesize reorderFeedbackEnabled=_reorderFeedbackEnabled;
 @property(retain, nonatomic) NSSet *excludedAssets; // @synthesize excludedAssets=_excludedAssets;
@@ -47,7 +51,7 @@
 @property(readonly, nonatomic) __weak id <PXPhotosDragControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) PXAssetCollectionActionManager *assetCollectionActionManager; // @synthesize assetCollectionActionManager=_assetCollectionActionManager;
 @property(readonly, nonatomic) PXSectionedSelectionManager *selectionManager; // @synthesize selectionManager=_selectionManager;
-@property(readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
+@property(readonly, nonatomic) __weak UIView *contentView; // @synthesize contentView=_contentView;
 - (void)localDragSession:(id)arg1 didChangeProperty:(SEL)arg2;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (id)hostViewControllerForActionPerformer:(id)arg1;
@@ -93,6 +97,7 @@
 @property(readonly, nonatomic) UIViewController *viewControllerForPresentation;
 - (void)_setupWithContentView:(id)arg1;
 - (id)_actionManagerForDropSession:(id)arg1;
+- (void)removeFromView;
 - (id)init;
 - (id)initWithContentView:(id)arg1 selectionManager:(id)arg2 assetCollectionActionManager:(id)arg3 delegate:(id)arg4;
 

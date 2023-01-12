@@ -6,17 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class RTContactsManager, RTDistanceCalculator, RTLearnedLocationAlgorithmMetricCalculator, RTLearnedLocationStore, RTMapServiceManager, RTMapsSupportManager, RTPlatform;
+@class RTContactsManager, RTDistanceCalculator, RTLearnedLocationStore, RTMapServiceManager, RTMapsSupportManager, RTPlaceTypeClassifierMetricsCalculator, RTPlatform;
 @protocol OS_dispatch_queue;
 
 @interface RTPlaceTypeClassifier : NSObject
 {
     RTContactsManager *_contactsManager;
-    RTLearnedLocationAlgorithmMetricCalculator *_algorithmMetricCalculator;
     RTDistanceCalculator *_distanceCalculator;
     RTLearnedLocationStore *_learnedLocationStore;
     RTMapServiceManager *_mapServiceManager;
     RTMapsSupportManager *_mapsSupportManager;
+    RTPlaceTypeClassifierMetricsCalculator *_placeTypeClassifierMetricsCalculator;
     RTPlatform *_platform;
     NSObject<OS_dispatch_queue> *_queue;
 }
@@ -24,11 +24,11 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) RTPlatform *platform; // @synthesize platform=_platform;
+@property(retain, nonatomic) RTPlaceTypeClassifierMetricsCalculator *placeTypeClassifierMetricsCalculator; // @synthesize placeTypeClassifierMetricsCalculator=_placeTypeClassifierMetricsCalculator;
 @property(retain, nonatomic) RTMapsSupportManager *mapsSupportManager; // @synthesize mapsSupportManager=_mapsSupportManager;
 @property(retain, nonatomic) RTMapServiceManager *mapServiceManager; // @synthesize mapServiceManager=_mapServiceManager;
 @property(retain, nonatomic) RTLearnedLocationStore *learnedLocationStore; // @synthesize learnedLocationStore=_learnedLocationStore;
 @property(retain, nonatomic) RTDistanceCalculator *distanceCalculator; // @synthesize distanceCalculator=_distanceCalculator;
-@property(retain, nonatomic) RTLearnedLocationAlgorithmMetricCalculator *algorithmMetricCalculator; // @synthesize algorithmMetricCalculator=_algorithmMetricCalculator;
 @property(retain, nonatomic) RTContactsManager *contactsManager; // @synthesize contactsManager=_contactsManager;
 - (_Bool)classifyWithError:(id *)arg1;
 - (_Bool)processExpertClassifications:(id)arg1 error:(id *)arg2;
@@ -39,9 +39,9 @@
 - (id)coalescePlacesFromExperts:(id)arg1;
 - (id)replaceBusinessMapItemWithReverseGeocodedMapItemForHome:(id)arg1;
 - (void)donateInferredPlaces:(id)arg1;
-- (id)getExistingClassifiedPlacesWithError:(id *)arg1;
+- (id)getStoredPlacesWithError:(id *)arg1;
 - (_Bool)isRottedMeCard:(id)arg1 inferredPlace:(id)arg2;
-- (id)initWithAlgorithmMetricCalculator:(id)arg1 contactsManager:(id)arg2 distanceCalculator:(id)arg3 learnedLocationStore:(id)arg4 mapServiceManager:(id)arg5 mapsSupportManager:(id)arg6 platform:(id)arg7 queue:(id)arg8;
+- (id)initWithContactsManager:(id)arg1 distanceCalculator:(id)arg2 learnedLocationStore:(id)arg3 mapServiceManager:(id)arg4 mapsSupportManager:(id)arg5 placeTypeClassifierMetricsCalculator:(id)arg6 platform:(id)arg7 queue:(id)arg8;
 - (id)init;
 
 @end

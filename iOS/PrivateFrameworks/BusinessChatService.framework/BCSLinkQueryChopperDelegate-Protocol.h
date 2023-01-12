@@ -11,6 +11,6 @@
 
 @protocol BCSLinkQueryChopperDelegate <NSObject>
 - (void)_isBusinessRegisteredWithItemIdentifier:(id <BCSItemIdentifying>)arg1 forClientBundleID:(NSString *)arg2 completion:(void (^)(_Bool, BCSConfigItem *, NSError *))arg3;
-- (void)_itemWithIdentifier:(id <BCSItemIdentifying>)arg1 forClientBundleID:(NSString *)arg2 completion:(void (^)(BCSItem *, NSError *))arg3;
+- (void)_itemWithIdentifier:(id <BCSItemIdentifying>)arg1 forClientBundleID:(NSString *)arg2 skipFilterCheck:(_Bool)arg3 completion:(void (^)(BCSItem *, NSError *))arg4;
 @end
 

@@ -15,8 +15,6 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) unsigned long long nextIdentifier; // @synthesize nextIdentifier=_nextIdentifier;
-@property(retain, nonatomic) NSMapTable *map; // @synthesize map=_map;
 - (id)allObjects;
 - (void)removeAllObjects;
 - (void)removeObjectWithIdentifier:(unsigned long long)arg1;

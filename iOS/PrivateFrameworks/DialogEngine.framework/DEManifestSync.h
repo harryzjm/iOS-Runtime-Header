@@ -12,7 +12,6 @@
 
 @interface DEManifestSync : NSObject <NSURLSessionDownloadDelegate>
 {
-    _Bool _syncInForeground;
     _Bool _checkOverlay;
     _Bool _cleanStorage;
     _Bool _downloadFailure;
@@ -20,8 +19,11 @@
     DEManifest *_manifest;
     DEUpdater *_updater;
     NSURLSession *_urlSession;
+    NSMutableDictionary *_downloads;
     NSMutableDictionary *_inProgress;
     CDUnknownBlockType _postSyncBlock;
+    NSString *_backgroundId;
+    NSString *_priorBackgroundId;
 }
 
 - (void).cxx_destruct;
@@ -29,9 +31,11 @@
 @property(nonatomic) _Bool downloadFailure; // @synthesize downloadFailure=_downloadFailure;
 @property(nonatomic) _Bool cleanStorage; // @synthesize cleanStorage=_cleanStorage;
 @property(nonatomic) _Bool checkOverlay; // @synthesize checkOverlay=_checkOverlay;
-@property(nonatomic) _Bool syncInForeground; // @synthesize syncInForeground=_syncInForeground;
+@property(retain, nonatomic) NSString *priorBackgroundId; // @synthesize priorBackgroundId=_priorBackgroundId;
+@property(retain, nonatomic) NSString *backgroundId; // @synthesize backgroundId=_backgroundId;
 @property(copy, nonatomic) CDUnknownBlockType postSyncBlock; // @synthesize postSyncBlock=_postSyncBlock;
 @property(retain, nonatomic) NSMutableDictionary *inProgress; // @synthesize inProgress=_inProgress;
+@property(retain, nonatomic) NSMutableDictionary *downloads; // @synthesize downloads=_downloads;
 @property(retain, nonatomic) NSURLSession *urlSession; // @synthesize urlSession=_urlSession;
 @property(retain, nonatomic) DEUpdater *updater; // @synthesize updater=_updater;
 @property(retain, nonatomic) DEManifest *manifest; // @synthesize manifest=_manifest;
@@ -44,6 +48,7 @@
 - (void)sync:(CDUnknownBlockType)arg1;
 - (void)sync;
 - (void)backgroundSync;
+- (_Bool)startDownload:(id)arg1;
 - (void)clean;
 - (void)cleanStorage:(id)arg1 removes:(id)arg2 workArray:(id)arg3 postFileBlock:(CDUnknownBlockType)arg4;
 - (void)checkOverlay:(id)arg1 overlayChecks:(id)arg2 workArray:(id)arg3 postFileBlock:(CDUnknownBlockType)arg4;
@@ -52,7 +57,8 @@
 - (void)cleanupURLSession;
 - (_Bool)isLatest;
 - (id)init;
-- (id)initWithManifest:(id)arg1 updater:(id)arg2 syncInForeground:(_Bool)arg3;
+- (id)initWithManifest:(id)arg1 updater:(id)arg2;
+- (id)initWithManifest:(id)arg1 updater:(id)arg2 backgroundId:(id)arg3 priorBackgroundId:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

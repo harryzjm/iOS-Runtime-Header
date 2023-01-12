@@ -6,16 +6,20 @@
 
 #import <SceneKit/SCNView.h>
 
-@class AVTAvatar, AVTAvatarEnvironment, AVTHUDView, NSLock, NSString, NSTimer, SCNNode;
+#import <AvatarKit/_SCNSceneCommandBufferStatusMonitor-Protocol.h>
+#import <AvatarKit/_SCNSceneRendererResourceManagerMonitor-Protocol.h>
 
-@interface AVTView : SCNView
+@class AVTAvatar, AVTAvatarEnvironment, AVTHUDView, AVTStickerConfiguration, AVTStickerConfigurationReversionContext, NSLock, NSString, NSTimer, SCNNode, SCNTechnique;
+
+@interface AVTView : SCNView <_SCNSceneCommandBufferStatusMonitor, _SCNSceneRendererResourceManagerMonitor>
 {
-    unsigned long long _currentExpressionIndex[100];
     AVTAvatar *_avatar;
     SCNNode *_avatarNode;
     _Bool _lockLookAt;
     AVTAvatarEnvironment *_environment;
-    NSString *_framingMode;
+    AVTStickerConfiguration *_stickerConfiguration;
+    SCNTechnique *_stickerTransitionTechnique;
+    AVTStickerConfigurationReversionContext *_stickerTransitionReversionContext;
     unsigned long long _lastTrackingUpdateTimestamp;
     unsigned long long _noTrackingFrameCount;
     double _currentlyRenderedTrackingDate;
@@ -38,8 +42,12 @@
 }
 
 - (void).cxx_destruct;
+- (void)renderer:(id)arg1 commandBufferDidCompleteWithError:(id)arg2;
+- (void)renderer:(id)arg1 didFallbackToDefaultTextureForSource:(id)arg2 message:(id)arg3;
 - (void)_renderer:(id)arg1 didBuildSubdivDataForHash:(id)arg2 dataProvider:(CDUnknownBlockType)arg3;
 - (id)_renderer:(id)arg1 subdivDataForHash:(id)arg2;
+- (void)_renderer:(id)arg1 updateAtTime:(double)arg2;
+- (void)_renderer:(id)arg1 didApplyAnimationsAtTime:(double)arg2;
 - (void)layoutSubviews;
 - (double)currentAudioTime;
 - (_Bool)isDoubleBuffered;
@@ -56,24 +64,24 @@
 - (void)warmupMemoji;
 - (void)_resetFaceToRandomPosition;
 - (_Bool)faceIsFullyActive;
+- (void)transitionToStickerConfiguration:(id)arg1 duration:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)transitionToPose:(id)arg1 duration:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_transitionToStickerConfiguration:(id)arg1 duration:(double)arg2 completionHandler:(CDUnknownBlockType)arg3 postSnaphotBlock:(CDUnknownBlockType)arg4;
 - (void)_UIOrientationDidChangeNotification:(id)arg1;
 - (void)updateInterfaceOrientation;
 - (void)setupOrientation;
-- (void)setInterfaceOrientation:(long long)arg1;
-- (long long)interfaceOrientation;
 - (void)didMoveToWindow;
 - (void)avatarDidChange;
 @property(retain, nonatomic) AVTAvatar *avatar;
 - (id)environment;
+- (void)addAvatarPresentedOnScreenCallbackWithQueue:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_drawAtTime:(double)arg1;
-- (void)_renderer:(id)arg1 updateAtTime:(double)arg2;
 - (void)updateAtTime:(double)arg1;
 - (_Bool)allowTrackSmoothing;
 - (void)_willRecord;
 - (void)willUpdateAvatarWithNewFaceTrackingData:(double)arg1;
 - (void)didLostTrackingForAWhile;
 - (void)_enablePhysics:(_Bool)arg1;
-- (void)_renderer:(id)arg1 didApplyAnimationsAtTime:(double)arg2;
 - (void)_updateFocal;
 - (void)unlockAvatar;
 - (void)lockAvatar;
@@ -83,6 +91,12 @@
 - (id)initWithFrame:(struct CGRect)arg1 options:(id)arg2;
 - (void)dealloc;
 - (void)_avtCommonInit;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class UITextSelectionRectImpl;
+@class UIBezierPath, UITextSelectionRectCustomHandleInfo, UITextSelectionRectImpl;
 
 @interface UITextSelectionRect : NSObject
 {
@@ -14,12 +14,16 @@
 
 + (_Bool)endIsHorizontal:(id)arg1;
 + (_Bool)startIsHorizontal:(id)arg1;
++ (id)endCustomSelectionPathFromRects:(id)arg1;
++ (id)startCustomSelectionPathFromRects:(id)arg1;
 + (struct CGRect)endEdgeFromRects:(id)arg1;
 + (id)endRectFromRects:(id)arg1;
 + (struct CGRect)startEdgeFromRects:(id)arg1;
 + (id)startRectFromRects:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+@property(readonly, nonatomic) UITextSelectionRectCustomHandleInfo *_customHandleInfo;
+@property(readonly, nonatomic) UIBezierPath *_path;
 @property(readonly, nonatomic) _Bool _drawsOwnHighlight;
 @property(readonly, nonatomic) _Bool isVertical;
 @property(readonly, nonatomic) _Bool containsStart;

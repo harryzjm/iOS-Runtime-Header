@@ -10,7 +10,7 @@
 
 @interface NTKFaceSnapshotRequest : NSObject
 {
-    NSDate *_createdAt;
+    NSDate *_creationDate;
     NTKFace *_face;
     NSDictionary *_options;
     CDUnknownBlockType _completion;
@@ -19,8 +19,8 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
 @property(readonly, copy, nonatomic) NSDictionary *options; // @synthesize options=_options;
-@property(readonly, copy, nonatomic) NTKFace *face; // @synthesize face=_face;
-@property(readonly, copy, nonatomic) NSDate *createdAt; // @synthesize createdAt=_createdAt;
+@property(readonly, nonatomic) NTKFace *face; // @synthesize face=_face;
+@property(readonly, copy, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property(readonly, nonatomic, getter=isReady) _Bool ready;
 - (id)initWithFace:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 

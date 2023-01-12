@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSLayoutConstraint, UIButton, UIImageView;
+@class NSLayoutConstraint, UIButton, UIImageView, UIView;
 
 @interface GKDashboardPlayerPickerCell
 {
@@ -12,6 +12,7 @@
     _Bool _showsLastPlayedStatusText;
     _Bool _showsMessagesHandleInStatusText;
     UIImageView *_selectionView;
+    UIView *_ringView;
     UIButton *_selectionButton;
     NSLayoutConstraint *_nameConstraint;
     NSLayoutConstraint *_selectionHorizontalConstraint;
@@ -23,21 +24,25 @@
     double _statusInitialConstant;
 }
 
++ (struct CGSize)defaultSize;
+- (void).cxx_destruct;
 @property(nonatomic) double statusInitialConstant; // @synthesize statusInitialConstant=_statusInitialConstant;
 @property(nonatomic) double selectionInitialVerticalConstant; // @synthesize selectionInitialVerticalConstant=_selectionInitialVerticalConstant;
 @property(nonatomic) double selectionInitialHorizontalConstant; // @synthesize selectionInitialHorizontalConstant=_selectionInitialHorizontalConstant;
 @property(nonatomic) double nameInitialConstant; // @synthesize nameInitialConstant=_nameInitialConstant;
-@property(nonatomic) NSLayoutConstraint *statusHeightConstraint; // @synthesize statusHeightConstraint=_statusHeightConstraint;
-@property(nonatomic) NSLayoutConstraint *selectionVerticalConstraint; // @synthesize selectionVerticalConstraint=_selectionVerticalConstraint;
-@property(nonatomic) NSLayoutConstraint *selectionHorizontalConstraint; // @synthesize selectionHorizontalConstraint=_selectionHorizontalConstraint;
-@property(nonatomic) NSLayoutConstraint *nameConstraint; // @synthesize nameConstraint=_nameConstraint;
-@property(nonatomic) UIButton *selectionButton; // @synthesize selectionButton=_selectionButton;
-@property(nonatomic) UIImageView *selectionView; // @synthesize selectionView=_selectionView;
+@property(nonatomic) __weak NSLayoutConstraint *statusHeightConstraint; // @synthesize statusHeightConstraint=_statusHeightConstraint;
+@property(nonatomic) __weak NSLayoutConstraint *selectionVerticalConstraint; // @synthesize selectionVerticalConstraint=_selectionVerticalConstraint;
+@property(nonatomic) __weak NSLayoutConstraint *selectionHorizontalConstraint; // @synthesize selectionHorizontalConstraint=_selectionHorizontalConstraint;
+@property(nonatomic) __weak NSLayoutConstraint *nameConstraint; // @synthesize nameConstraint=_nameConstraint;
+@property(nonatomic) __weak UIButton *selectionButton; // @synthesize selectionButton=_selectionButton;
+@property(nonatomic) __weak UIView *ringView; // @synthesize ringView=_ringView;
+@property(nonatomic) __weak UIImageView *selectionView; // @synthesize selectionView=_selectionView;
 @property(nonatomic) _Bool showsMessagesHandleInStatusText; // @synthesize showsMessagesHandleInStatusText=_showsMessagesHandleInStatusText;
 @property(nonatomic) _Bool showsLastPlayedStatusText; // @synthesize showsLastPlayedStatusText=_showsLastPlayedStatusText;
 @property(nonatomic, getter=isSelectable) _Bool selectable; // @synthesize selectable=_selectable;
 - (void)_dynamicUserInterfaceTraitDidChange;
 - (void)setSelected:(_Bool)arg1;
+- (void)setStatusText:(id)arg1;
 - (void)setStatusWithAchievementEarnedPoints:(long long)arg1 andDate:(id)arg2;
 - (void)setPlayer:(id)arg1;
 - (void)awakeFromNib;

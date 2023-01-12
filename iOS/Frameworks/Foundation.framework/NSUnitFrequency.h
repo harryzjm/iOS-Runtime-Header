@@ -20,6 +20,7 @@
 + (id)megahertz;
 + (id)gigahertz;
 + (id)terahertz;
++ (id)icuType;
 + (id)baseUnit;
 + (void)initialize;
 

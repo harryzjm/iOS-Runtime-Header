@@ -11,16 +11,19 @@
 #import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
 @class NSString, RBSProcessIdentifier, RBSProcessIdentity;
+@protocol OS_xpc_object;
 
 @interface RBSTarget : NSObject <RBSXPCSecureCoding, RBSProcessMatching, NSCopying>
 {
     RBSProcessIdentifier *_processIdentifier;
     RBSProcessIdentity *_processIdentity;
     NSString *_environment;
+    NSObject<OS_xpc_object> *_endpoint;
     NSString *_shortDescription;
 }
 
 + (_Bool)supportsRBSXPCSecureCoding;
++ (id)targetWithEndpoint:(id)arg1;
 + (id)targetWithProcessIdentifier:(id)arg1 environmentIdentifier:(id)arg2;
 + (id)targetWithPid:(int)arg1 environmentIdentifier:(id)arg2;
 + (id)targetWithProcessIdentifier:(id)arg1;
@@ -30,6 +33,7 @@
 + (id)currentProcess;
 + (id)systemTarget;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSObject<OS_xpc_object> *endpoint; // @synthesize endpoint=_endpoint;
 @property(readonly, copy, nonatomic) NSString *environment; // @synthesize environment=_environment;
 @property(readonly, nonatomic) RBSProcessIdentity *processIdentity; // @synthesize processIdentity=_processIdentity;
 @property(readonly, nonatomic) RBSProcessIdentifier *processIdentifier; // @synthesize processIdentifier=_processIdentifier;

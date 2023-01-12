@@ -58,7 +58,6 @@
 - (id)decodedSessionError;
 - (id)decodedSessionStartDate;
 - (id)decodedSessionUUID;
-- (void)_addChanges:(id)arg1;
 - (id)copyForPersistentUserInfo;
 - (void)addToPersistentUserInfo:(id)arg1;
 

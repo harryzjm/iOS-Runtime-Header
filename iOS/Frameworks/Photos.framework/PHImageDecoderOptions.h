@@ -8,21 +8,32 @@
 
 @interface PHImageDecoderOptions : NSObject
 {
-    _Bool _applyOrientationTransform;
+    _Bool _shouldLoadGainMap;
     _Bool _optimizeForDrawing;
     _Bool _highPriority;
     _Bool _waitUntilComplete;
-    long long _maximumLongSideLength;
+    _Bool _allowFallbackDecoder;
+    _Bool _preferSWDecode;
+    long long _contentMode;
     long long _resizeMode;
+    struct CGSize _targetSize;
+    struct CGRect _normalizedCropRect;
 }
 
+@property(nonatomic) _Bool preferSWDecode; // @synthesize preferSWDecode=_preferSWDecode;
+@property(nonatomic) _Bool allowFallbackDecoder; // @synthesize allowFallbackDecoder=_allowFallbackDecoder;
 @property(nonatomic) _Bool waitUntilComplete; // @synthesize waitUntilComplete=_waitUntilComplete;
 @property(nonatomic) _Bool highPriority; // @synthesize highPriority=_highPriority;
 @property(nonatomic) _Bool optimizeForDrawing; // @synthesize optimizeForDrawing=_optimizeForDrawing;
-@property(nonatomic) _Bool applyOrientationTransform; // @synthesize applyOrientationTransform=_applyOrientationTransform;
+@property(nonatomic) struct CGRect normalizedCropRect; // @synthesize normalizedCropRect=_normalizedCropRect;
 @property(nonatomic) long long resizeMode; // @synthesize resizeMode=_resizeMode;
-@property(nonatomic) long long maximumLongSideLength; // @synthesize maximumLongSideLength=_maximumLongSideLength;
+@property(nonatomic) long long contentMode; // @synthesize contentMode=_contentMode;
+@property(nonatomic) struct CGSize targetSize; // @synthesize targetSize=_targetSize;
+@property(nonatomic) _Bool shouldLoadGainMap; // @synthesize shouldLoadGainMap=_shouldLoadGainMap;
+@property(readonly, nonatomic) _Bool shouldCrop;
+@property(readonly, nonatomic) long long maximumLongSideLength;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)init;
 
 @end
 

@@ -16,7 +16,8 @@
 
 + (unsigned long long)dataLengthFromPreviewByte:(unsigned char)arg1;
 + (id)_keyDataWithRelativePath:(id)arg1 type:(unsigned int)arg2;
-+ (id)_relativeFilePathForPersonID:(id)arg1 albumID:(id)arg2 dcimDirectory:(id)arg3 fileName:(id)arg4;
++ (id)_relativeDCIMFilePathForPersonID:(id)arg1 albumID:(id)arg2 dcimDirectory:(id)arg3 fileName:(id)arg4;
++ (id)_relativeFilePathForPersonID:(id)arg1 albumID:(id)arg2 fileName:(id)arg3;
 + (id)_replacementPathExtensionForType:(unsigned int)arg1;
 - (void).cxx_destruct;
 - (id)fileURLForAssetID:(id)arg1;

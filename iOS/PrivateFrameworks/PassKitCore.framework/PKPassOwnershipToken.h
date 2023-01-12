@@ -22,6 +22,7 @@
 - (void)_readFromKeychain;
 - (void)_writeToKeychain;
 - (id)description;
+- (id)dictionaryRepresentation;
 - (void)deleteTokenFromLocalKeychain;
 - (void)deleteTokenFromKeychain;
 @property(copy, nonatomic) NSString *ownershipToken;

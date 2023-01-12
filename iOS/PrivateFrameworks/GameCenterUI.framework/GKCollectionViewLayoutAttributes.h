@@ -27,6 +27,7 @@
     unsigned long long _gridLayoutLocation;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool doesAbutLeftOfCollectionView; // @synthesize doesAbutLeftOfCollectionView=_doesAbutLeftOfCollectionView;
 @property(nonatomic) unsigned long long gridLayoutLocation; // @synthesize gridLayoutLocation=_gridLayoutLocation;
 @property(nonatomic) _Bool isPartOfGlobalPinningGroup; // @synthesize isPartOfGlobalPinningGroup=_isPartOfGlobalPinningGroup;
@@ -44,7 +45,6 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
-- (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 

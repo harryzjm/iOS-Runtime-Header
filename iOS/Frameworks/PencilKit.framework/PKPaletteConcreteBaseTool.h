@@ -9,12 +9,13 @@
 #import <PencilKit/PKPaletteTool-Protocol.h>
 
 @class NSString;
-@protocol PKPaletteErasingTool, PKPaletteInkingTool;
+@protocol PKPaletteErasingTool, PKPaletteHandwritingTool, PKPaletteInkingTool;
 
 @interface PKPaletteConcreteBaseTool : NSObject <PKPaletteTool>
 {
 }
 
+@property(readonly, nonatomic) id <PKPaletteHandwritingTool> handwritingTool;
 - (_Bool)isHandwritingTool;
 - (_Bool)isLassoTool;
 @property(readonly, nonatomic) id <PKPaletteErasingTool> erasingTool;

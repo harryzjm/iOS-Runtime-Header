@@ -6,27 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class NFUnfairLock, NSMapTable, NSMutableOrderedSet;
+@class NFUnfairLock, NSDate, NSMapTable, NSMutableOrderedSet, NSURLSession;
 
 @interface FCURLRequestScheduler : NSObject
 {
+    NSURLSession *_URLSession;
     NSMutableOrderedSet *_requests;
     NSMapTable *_inFlightURLTasks;
+    unsigned long long _maxInFlightURLTasks;
+    unsigned long long _maxInFlightLowPriorityURLTasks;
     NFUnfairLock *_lock;
+    NSDate *_dateOfLastProgress;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NFUnfairLock *lock; // @synthesize lock=_lock;
-@property(retain, nonatomic) NSMapTable *inFlightURLTasks; // @synthesize inFlightURLTasks=_inFlightURLTasks;
-@property(retain, nonatomic) NSMutableOrderedSet *requests; // @synthesize requests=_requests;
-- (void)_applyPriority:(long long)arg1 toRequest:(id)arg2;
-- (void)_cancelRequest:(id)arg1;
-- (void)_suspendURLTaskForRequest:(id)arg1;
-- (void)_resumeURLTaskForRequest:(id)arg1;
-- (_Bool)_isLowPriority:(long long)arg1;
-- (void)_serviceRequests;
-- (id)scheduleURLRequest:(id)arg1 URLSession:(id)arg2 destination:(long long)arg3 priority:(long long)arg4 loggingKey:(id)arg5 completion:(CDUnknownBlockType)arg6;
-- (id)init;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (id)scheduleURLRequest:(id)arg1 destination:(long long)arg2 priority:(long long)arg3 loggingKey:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (id)initWithURLSession:(id)arg1;
 
 @end
 

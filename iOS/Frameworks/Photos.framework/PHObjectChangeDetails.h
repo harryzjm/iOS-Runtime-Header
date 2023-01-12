@@ -14,6 +14,7 @@
     PHObject *_objectAfterChanges;
     _Bool _assetContentChanged;
     _Bool _assetCollectionTitlePropertiesChanged;
+    struct os_unfair_lock_s _stateLock;
 }
 
 - (void).cxx_destruct;

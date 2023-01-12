@@ -31,6 +31,7 @@
     long long _authorizationStatus;
 }
 
++ (_Bool)conformsToProtocol:(id)arg1;
 + (id)reservedContextTypes;
 + (id)allowedTopics;
 + (id)arrayOfStringClasses;
@@ -41,7 +42,6 @@
 + (id)validatedContextIdentifierPathFromPath:(id)arg1;
 + (id)defaultProgressReportingCapability;
 + (_Bool)supportsSecureCoding;
-+ (_Bool)conformsToProtocol:(id)arg1;
 + (id)relations;
 - (void).cxx_destruct;
 @property(nonatomic) long long authorizationStatus; // @synthesize authorizationStatus=_authorizationStatus;
@@ -52,6 +52,10 @@
 @property(nonatomic, getter=isAssignable) _Bool assignable; // @synthesize assignable=_assignable;
 @property(nonatomic) long long type; // @synthesize type=_type;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+- (id)newItemProvider;
+- (id)activityViewController:(id)arg1 itemForActivityType:(id)arg2;
+- (id)activityViewControllerPlaceholderItem:(id)arg1;
+- (_Bool)conformsToProtocol:(id)arg1;
 - (id)dictionaryRepresentation;
 @property(readonly, copy) NSString *description;
 - (long long)effectiveAuthorizationStatus;
@@ -60,6 +64,10 @@
 - (void)resignActive;
 - (void)becomeActive;
 @property(readonly, nonatomic, getter=isActive) _Bool active;
+- (void)removeNavigationChildContext:(id)arg1;
+- (void)addNavigationChildContext:(id)arg1;
+- (id)navigationChildContexts;
+- (id)_navigationNodes;
 - (void)resetProgressReportingCapabilities;
 - (void)resetProgressReportingCapabilities_unprotected;
 - (void)addProgressReportingCapabilities:(id)arg1;
@@ -86,14 +94,10 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (_Bool)validateObject:(id *)arg1;
-- (_Bool)conformsToProtocol:(id)arg1;
 - (id)initWithType:(long long)arg1 identifier:(id)arg2 title:(id)arg3;
 - (id)initWithInternalType:(long long)arg1 identifier:(id)arg2 title:(id)arg3;
 - (void)_setType:(long long)arg1 identifier:(id)arg2 title:(id)arg3;
 - (id)_init;
-- (id)newItemProvider;
-- (id)activityViewController:(id)arg1 itemForActivityType:(id)arg2;
-- (id)activityViewControllerPlaceholderItem:(id)arg1;
 - (id)createNewActivity;
 @property(readonly, nonatomic) CLSActivity *currentActivity;
 

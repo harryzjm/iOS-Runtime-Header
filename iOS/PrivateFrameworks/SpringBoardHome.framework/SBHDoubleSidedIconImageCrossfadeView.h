@@ -14,9 +14,9 @@
 + (Class)_containerViewClass;
 + (Class)layerClass;
 - (void)_applyCornerRadiusToCrossfadeView;
+- (void)_applyCornerRadiusToBackgroundView;
 - (void)_applyCornerRadiusToIconImageView;
 - (void)_applyCornerRadiusToViews;
-- (_Bool)reparentsSourceView;
 - (void)_applyCornerRadius:(double)arg1;
 - (void)_setCornerRadiusEnabled:(_Bool)arg1;
 - (void)cleanup;

@@ -10,7 +10,7 @@
 
 @interface CUIPSDImageRef : NSObject
 {
-    struct CPSDFile *_psd;
+    void *_psd;
     NSString *_path;
     int _file;
     _Bool _parsedForLayers;
@@ -21,17 +21,17 @@
 + (_Bool)isValidPSDResourceAtPath:(id)arg1 withLayerCount:(unsigned int *)arg2 validateLayers:(_Bool)arg3;
 + (_Bool)isValidPSDResourceAtPath:(id)arg1 withLayerCount:(unsigned int *)arg2;
 + (_Bool)isValidPSDResourceAtPath:(id)arg1;
-@property(nonatomic) struct CPSDFile *psd; // @synthesize psd=_psd;
+@property(nonatomic) void *psd; // @synthesize psd=_psd;
 @property(copy, nonatomic) NSString *path; // @synthesize path=_path;
 @property(nonatomic) int file; // @synthesize file=_file;
 - (id)_layerEffectsAtAbsoluteIndex:(unsigned int)arg1;
-- (id)_bevelEmbossFromLayerEffectsInfo:(struct CPSDObjectEffectsLayerInfo *)arg1;
+- (id)_bevelEmbossFromLayerEffectsInfo:(void *)arg1;
 - (id)_gradientOverlayFromLayerEffectsAtAbsoluteIndex:(unsigned int)arg1;
-- (id)_colorOverlayFromLayerEffectsInfo:(struct CPSDObjectEffectsLayerInfo *)arg1;
-- (id)_outerGlowFromLayerEffectsInfo:(struct CPSDObjectEffectsLayerInfo *)arg1;
-- (id)_innerGlowFromLayerEffectsInfo:(struct CPSDObjectEffectsLayerInfo *)arg1;
-- (id)_innerShadowFromLayerEffectsInfo:(struct CPSDObjectEffectsLayerInfo *)arg1;
-- (id)_dropShadowFromLayerEffectsInfo:(struct CPSDObjectEffectsLayerInfo *)arg1;
+- (id)_colorOverlayFromLayerEffectsInfo:(void *)arg1;
+- (id)_outerGlowFromLayerEffectsInfo:(void *)arg1;
+- (id)_innerGlowFromLayerEffectsInfo:(void *)arg1;
+- (id)_innerShadowFromLayerEffectsInfo:(void *)arg1;
+- (id)_dropShadowFromLayerEffectsInfo:(void *)arg1;
 - (id)colorFromDocumentColor:(double *)arg1;
 - (id)_gradientAtAbsoluteIndex:(unsigned int)arg1;
 - (int)cgBlendModeForPSDLayerOrLayerEffectBlendMode:(unsigned int)arg1;
@@ -48,11 +48,11 @@
 - (struct CGRect)_boundsAtAbsoluteIndex:(unsigned int)arg1;
 - (id)_namesOfSublayers:(id)arg1;
 - (id)_nameAtAbsoluteIndex:(unsigned int)arg1;
-- (void)_logInvalidAbsoluteIndex:(unsigned int)arg1 psd:(struct CPSDFile *)arg2;
+- (void)_logInvalidAbsoluteIndex:(unsigned int)arg1 psd:(void *)arg2;
 - (id)_copySublayerInfoAtAbsoluteIndex:(unsigned int)arg1 atRoot:(_Bool)arg2;
 - (_Bool)_treatDividerAsLayer;
 - (id)_layerRefAtAbsoluteIndex:(unsigned int)arg1;
-- (struct CPSDLayerRecord *)_psdLayerRecordAtAbsoluteIndex:(unsigned int)arg1;
+- (void *)_psdLayerRecordAtAbsoluteIndex:(unsigned int)arg1;
 - (unsigned int)_absoluteIndexOfRootLayer:(unsigned int)arg1;
 - (id)_layerInfo;
 - (id)gradientAtLayer:(unsigned int)arg1;
@@ -86,9 +86,9 @@
 - (id)imageAtLayer:(unsigned int)arg1;
 - (struct CGImage *)createCGImageAtLayer:(unsigned int)arg1;
 - (id)imageFromRef:(struct CGImage *)arg1;
-- (struct CPSDFile *)psdFileForComposite;
-- (struct CPSDFile *)psdFile;
-- (struct CPSDFile *)_psdFileWithLayers:(_Bool)arg1;
+- (void *)psdFileForComposite;
+- (void *)psdFile;
+- (void *)_psdFileWithLayers:(_Bool)arg1;
 - (void)dealloc;
 - (id)initWithPath:(id)arg1;
 - (_Bool)loadPSDFileWithLayers:(_Bool)arg1;

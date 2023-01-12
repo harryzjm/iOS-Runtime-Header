@@ -13,6 +13,9 @@
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)_updateHasChanges;
+- (void)deleteObjects:(id)arg1;
+- (void)updateObjects:(id)arg1;
+- (void)addObjects:(id)arg1;
 - (void)updateObject:(id)arg1;
 - (void)deleteAllObjects;
 - (void)deleteObject:(id)arg1;

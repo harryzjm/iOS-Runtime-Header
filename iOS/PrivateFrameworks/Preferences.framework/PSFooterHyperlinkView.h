@@ -40,6 +40,7 @@
 - (void)updateConstraints;
 - (void)setTableView:(id)arg1;
 - (void)setupSubviewsAndContstraints;
+- (void)refreshContentsWithSpecifier:(id)arg1;
 - (id)initWithSpecifier:(id)arg1;
 
 // Remaining properties

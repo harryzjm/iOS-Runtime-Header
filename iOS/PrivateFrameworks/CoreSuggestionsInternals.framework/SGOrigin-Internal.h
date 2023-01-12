@@ -7,9 +7,10 @@
 #import <CoreSuggestions/SGOrigin.h>
 
 @interface SGOrigin (Internal)
-+ (id)originForDuplicateKey:(id)arg1 entity:(id)arg2 parent:(id)arg3;
++ (id)originForDuplicateKey:(id)arg1 entity:(id)arg2 parent:(id)arg3 store:(id)arg4;
 + (id)originForDuplicateKey:(id)arg1 sourceKey:(id)arg2 store:(id)arg3;
 + (unsigned long long)originTypeForEntityType:(long long)arg1;
+- (void)addRecipientDetailsFromOriginatingMessageEntity:(id)arg1 entity:(id)arg2 store:(id)arg3;
 - (void)addSnippetIfNotExistsFromContentOfEntity:(id)arg1;
 - (void)addDetailsFromOriginatingInteractionEntity:(id)arg1;
 - (void)addDetailsFromOriginatingCalendarEntity:(id)arg1;

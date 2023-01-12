@@ -18,6 +18,7 @@
     NSObject<OS_dispatch_queue> *_accessQueue;
     id <IAMApplicationContextProvider> _applicationContext;
     NSMutableDictionary *_messageTargetsByTargetIdentifier;
+    NSMutableDictionary *_messageTargetsRequiringNilPriorityMessageNotificationAfterRegistrationByTargetIdentifier;
     NSMutableDictionary *_priorityMessageEntryByTargetIdentifier;
     IAMImpressionManager *_impressionManager;
     NSMutableArray *_pendingTriggerContexts;
@@ -30,6 +31,7 @@
     NSString *_modalTargetIdentifier;
     IAMModalTarget *_modalTarget;
     NSDictionary *_messageGroupsByGroupIdentifier;
+    NSMutableDictionary *_completionHandlersForObservedEvents;
     id <IAMMessageMetricsDelegate> _metricsDelegate;
 }
 
@@ -47,10 +49,11 @@
 - (id)_dequeuePendingTriggerContexts;
 - (void)_enqueuePendingTriggerContext:(id)arg1;
 - (id)_filterActiveTargetIdentifiers:(id)arg1;
-- (void)_notifyMessageTargets:(id)arg1 withTargetIdentifier:(id)arg2 didUpdatePriorityMessageFromEntry:(id)arg3;
-- (void)_updatePriorityMessageEntry:(id)arg1 forTargetIdentifier:(id)arg2 shouldNotifyTargetsIfNonNil:(_Bool)arg3;
+- (void)_processObservedEventCallbacksforEventName:(id)arg1 willTriggerPresentation:(_Bool)arg2 messageIdentifier:(id)arg3;
+- (void)_notifyMessageTargets:(id)arg1 withTargetIdentifier:(id)arg2 didUpdatePriorityMessageFromEntry:(id)arg3 observedEventName:(id)arg4;
+- (void)_updatePriorityMessageEntry:(id)arg1 forTargetIdentifier:(id)arg2 shouldNotifyTargetsIfNonNil:(_Bool)arg3 observedEventName:(id)arg4;
 - (void)_reevaluateTargetsWithIdentifiers:(id)arg1 forTriggerContext:(id)arg2 shouldNotifyTargetsIfPriorityMessageNonNil:(_Bool)arg3;
-- (void)_reevaluateMessageEntries:(id)arg1 forTargetIdentifier:(id)arg2 shouldNotifyTargetsIfPriorityMessageNonNil:(_Bool)arg3;
+- (void)_reevaluateMessageEntries:(id)arg1 forTargetIdentifier:(id)arg2 shouldNotifyTargetsIfPriorityMessageNonNil:(_Bool)arg3 withObservedEventName:(id)arg4;
 - (void)_calculateMessagesProximityAndDownloadResourcesIfNeeded:(id)arg1;
 - (id)_metadataEntryForMessageIdentifier:(id)arg1;
 - (id)_messageBundleIdentifiers;
@@ -68,6 +71,9 @@
 - (void)reportChangedContextPropertiesContext:(id)arg1;
 - (void)receiveTriggerEventContext:(id)arg1;
 - (void)reportMetricsEvent:(id)arg1;
+- (void)triggerPresentationForMessageWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)endObservingTriggerEvent:(id)arg1 forToken:(id)arg2;
+- (id)beginObservingTriggerEvent:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)reportApplicationContextPropertiesDidChange:(id)arg1;
 - (void)reportMessageWithIdentifier:(id)arg1 actionWasPerformedWithIdentifier:(id)arg2 fromTargetWithIdentifier:(id)arg3;
 - (void)reportMessageWithIdentifier:(id)arg1 actionWasPerformedWithIdentifier:(id)arg2;

@@ -18,10 +18,12 @@
 - (void)_processingQueue_unmarkBundleIdentifiers:(id)arg1 iconLibraryQueryContext:(id)arg2;
 - (void)_processingQueue_markBundleIdentifiers:(id)arg1 iconLibraryQueryContext:(id)arg2;
 - (_Bool)_processingQueue_isBundleIdentifierValid:(id)arg1 iconLibraryQueryContext:(id)arg2;
+- (void)_teardownCSSearchQuery:(id)arg1;
 - (void)_processingQueue_teardownQueryContext:(id)arg1;
 - (void)executeQuery:(id)arg1;
 - (id)_relevancyQueryForLibraryQuery:(id)arg1;
 - (id)_searchQueryForIconLibraryQuery:(id)arg1;
+- (void)dealloc;
 
 @end
 

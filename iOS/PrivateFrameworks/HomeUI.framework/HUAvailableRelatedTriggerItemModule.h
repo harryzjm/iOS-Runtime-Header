@@ -26,7 +26,7 @@
     HUAvailableRelatedTriggerItemProvider *_availableTriggerItemProvider;
     HFStaticItemProvider *_staticItemProvider;
     NSMutableArray *_previouslySortedItems;
-    NSArray *_alarmCharacteristics;
+    NSArray *_sensorCharacteristics;
     NSArray *_actionBuilderFactories;
     NSArray *_eventOptionsItems;
     HUAvailableTriggerItemActivationRequest *_activeRequest;
@@ -42,7 +42,7 @@
 @property(retain, nonatomic) HUAvailableTriggerItemActivationRequest *activeRequest; // @synthesize activeRequest=_activeRequest;
 @property(retain, nonatomic) NSArray *eventOptionsItems; // @synthesize eventOptionsItems=_eventOptionsItems;
 @property(retain, nonatomic) NSArray *actionBuilderFactories; // @synthesize actionBuilderFactories=_actionBuilderFactories;
-@property(retain, nonatomic) NSArray *alarmCharacteristics; // @synthesize alarmCharacteristics=_alarmCharacteristics;
+@property(retain, nonatomic) NSArray *sensorCharacteristics; // @synthesize sensorCharacteristics=_sensorCharacteristics;
 @property(retain, nonatomic) NSMutableArray *previouslySortedItems; // @synthesize previouslySortedItems=_previouslySortedItems;
 @property(retain, nonatomic) HFStaticItemProvider *staticItemProvider; // @synthesize staticItemProvider=_staticItemProvider;
 @property(retain, nonatomic) HUAvailableRelatedTriggerItemProvider *availableTriggerItemProvider; // @synthesize availableTriggerItemProvider=_availableTriggerItemProvider;

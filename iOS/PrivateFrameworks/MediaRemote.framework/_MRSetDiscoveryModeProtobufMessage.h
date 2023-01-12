@@ -8,8 +8,12 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
+@class _MRDiscoverySessionConfigurationProtobuf;
+
+__attribute__((visibility("hidden")))
 @interface _MRSetDiscoveryModeProtobufMessage : PBCodable <NSCopying>
 {
+    _MRDiscoverySessionConfigurationProtobuf *_configuration;
     int _features;
     int _mode;
     struct {
@@ -18,23 +22,14 @@
     } _has;
 }
 
-- (void)mergeFrom:(id)arg1;
+- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (int)StringAsFeatures:(id)arg1;
-- (id)featuresAsString:(int)arg1;
-@property(nonatomic) _Bool hasFeatures;
-@property(nonatomic) int features; // @synthesize features=_features;
-- (int)StringAsMode:(id)arg1;
-- (id)modeAsString:(int)arg1;
-@property(nonatomic) _Bool hasMode;
-@property(nonatomic) int mode; // @synthesize mode=_mode;
 
 @end
 

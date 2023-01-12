@@ -70,7 +70,8 @@
 - (void)_handleGuidedAccessManagedConfigurationDidChange:(id)arg1;
 - (void)_bootstrapSoundDetection;
 - (void)_ensureUltronAppVisibility:(_Bool)arg1;
-- (_Bool)_shouldArmSoundDetection;
+- (_Bool)_shouldArmVoiceTriggers;
+- (_Bool)_shouldArmSoundRecognition;
 - (void)_startupSoundDetectionUIServer;
 - (void)connectionWithServiceWasInterruptedForUserInterfaceClient:(id)arg1;
 - (void)_turnOnHearingControlCenterModule;

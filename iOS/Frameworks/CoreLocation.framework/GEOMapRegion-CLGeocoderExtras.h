@@ -7,6 +7,6 @@
 #import <GeoServices/GEOMapRegion.h>
 
 @interface GEOMapRegion (CLGeocoderExtras)
-- (id)_initWithCLRegion:(id)arg1;
+- (id)_initWithCircularRegion:(id)arg1;
 @end
 

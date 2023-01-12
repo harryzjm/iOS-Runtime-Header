@@ -8,7 +8,7 @@
 
 @interface TSTArrayNode
 {
-    struct TSCEVectorIndexPair _dimensions;
+    struct TSCEGridDimensions _dimensions;
     NSString *_whitespaceBeforeFirstChild;
     NSArray *_whitespaceAfterDelimiters;
 }
@@ -17,12 +17,12 @@
 - (void).cxx_destruct;
 @property(retain) NSArray *whitespaceAfterDelimiters; // @synthesize whitespaceAfterDelimiters=_whitespaceAfterDelimiters;
 @property(retain) NSString *whitespaceBeforeFirstChild; // @synthesize whitespaceBeforeFirstChild=_whitespaceBeforeFirstChild;
-@property(readonly) struct TSCEVectorIndexPair dimensions; // @synthesize dimensions=_dimensions;
-- (void)saveToArchive:(struct ArrayNodeArchive *)arg1 archiver:(id)arg2;
-- (void)loadFromArchive:(const struct ArrayNodeArchive *)arg1 unarchiver:(id)arg2;
+@property(readonly) struct TSCEGridDimensions dimensions; // @synthesize dimensions=_dimensions;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)buildASTNodeArray:(struct TSCEASTNodeArray *)arg1 hostCell:(struct TSUCellCoord)arg2 symbolTable:(struct TSCESymbolTable *)arg3;
+- (void)buildASTNodeArray:(struct TSCEASTNodeArray *)arg1 hostCell:(struct TSUCellCoord)arg2 symbolTable:(void *)arg3;
 - (void)insertFormulaText:(id)arg1 includeWhitespace:(_Bool)arg2;
 - (struct TSCEFunctionArgSpec *)argumentSpec;
 - (id)string;

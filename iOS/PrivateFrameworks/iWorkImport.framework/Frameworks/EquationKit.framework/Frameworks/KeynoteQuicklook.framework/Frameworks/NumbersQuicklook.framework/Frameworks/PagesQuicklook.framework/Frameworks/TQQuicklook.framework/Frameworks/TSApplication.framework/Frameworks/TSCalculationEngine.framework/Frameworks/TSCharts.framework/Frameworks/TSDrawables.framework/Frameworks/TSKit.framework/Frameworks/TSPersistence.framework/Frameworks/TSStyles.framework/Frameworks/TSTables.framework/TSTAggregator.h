@@ -11,27 +11,24 @@
 @interface TSTAggregator : NSObject
 {
     TSTGroupBy *_groupBy;
-    UUIDData_5fbc143e _columnUid;
+    struct TSKUIDStruct _columnUid;
     TSTAggNode *_aggRoot;
 }
 
-- (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) const UUIDData_5fbc143e *columnUid; // @synthesize columnUid=_columnUid;
+@property(readonly, nonatomic) struct TSKUIDStruct columnUid; // @synthesize columnUid=_columnUid;
 @property(readonly, nonatomic) __weak TSTGroupBy *groupBy; // @synthesize groupBy=_groupBy;
+- (void)upgradeForNewAggregateTypes:(id)arg1;
 - (void)clearAggFormulas:(id)arg1;
 - (void)rebuildAggFormulas;
 - (id)aggNodeForGroupNode:(id)arg1;
-- (vector_4115f7f8)cellRefsForAggNodesAtGroup:(id)arg1;
-- (vector_4115f7f8)cellRefsForRowUids:(id)arg1 tableUID:(const UUIDData_5fbc143e *)arg2;
+- (vector_522b9630)cellRefsForAggNodesAtGroup:(id)arg1;
 - (id)description;
-- (struct TSCECategoryRef)aggregateRefForType:(unsigned char)arg1 atLevel:(unsigned char)arg2 atRow:(struct TSUViewRowIndex)arg3;
-- (struct TSCEValue)aggregateValueForType:(unsigned char)arg1 atLevel:(unsigned char)arg2 atRow:(struct TSUViewRowIndex)arg3;
-- (struct TSCEValue)aggregateValueForType:(unsigned char)arg1 groupNodeUid:(UUIDData_5fbc143e)arg2;
+- (vector_522b9630)cellRefsForRowIndexes:(const struct TSUIndexSet *)arg1 tableUID:(const struct TSKUIDStruct *)arg2;
 @property(readonly, nonatomic) TSTCategoryOwner *categoryOwner;
-- (void)encodeToArchive:(struct CategoryOwnerArchive_GroupByArchive_AggregatorArchive *)arg1;
-- (id)initWithArchive:(const struct CategoryOwnerArchive_GroupByArchive_AggregatorArchive *)arg1 groupBy:(id)arg2;
-- (id)initWithColumn:(const UUIDData_5fbc143e *)arg1 forGroupBy:(id)arg2;
+- (void)encodeToArchive:(void *)arg1;
+- (id)initWithArchive:(const void *)arg1 groupBy:(id)arg2;
+- (id)initWithColumn:(struct TSKUIDStruct)arg1 forGroupBy:(id)arg2;
 
 @end
 

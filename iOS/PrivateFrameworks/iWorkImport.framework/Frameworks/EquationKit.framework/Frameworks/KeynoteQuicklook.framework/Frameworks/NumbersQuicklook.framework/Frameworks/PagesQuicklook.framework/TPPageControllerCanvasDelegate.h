@@ -15,14 +15,16 @@
 {
     TPDocumentRoot *_documentRoot;
     TSDCanvas *_canvas;
+    unsigned long long _textLayoutMustIncludeAdornmentsCounter;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long textLayoutMustIncludeAdornmentsCounter; // @synthesize textLayoutMustIncludeAdornmentsCounter=_textLayoutMustIncludeAdornmentsCounter;
 @property(readonly, nonatomic) TSDCanvas *canvas; // @synthesize canvas=_canvas;
 - (_Bool)shouldShowInstructionalTextForLayout:(id)arg1;
-- (_Bool)textLayoutMustIncludeAdornments;
 - (_Bool)wantsEditingLayoutsForOffscreenInfos;
 - (struct CGRect)visibleScaledBoundsForClippingRepsOnCanvas:(id)arg1;
+- (_Bool)textLayoutMustIncludeAdornments;
 - (id)documentRoot;
 - (void)tearDown;
 - (void)dealloc;

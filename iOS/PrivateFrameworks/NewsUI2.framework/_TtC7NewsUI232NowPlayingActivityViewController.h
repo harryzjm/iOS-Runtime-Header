@@ -6,11 +6,11 @@
 
 #import <UIKit/UIActivityViewController.h>
 
+__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI232NowPlayingActivityViewController : UIActivityViewController
 {
 }
 
-- (id)initWithAssetIdentifiers:(id)arg1 activityItems:(id)arg2 applicationActivities:(id)arg3;
 - (id)initWithActivityItems:(id)arg1 applicationActivities:(id)arg2;
 - (_Bool)_shouldShowSystemActivityType:(id)arg1;
 

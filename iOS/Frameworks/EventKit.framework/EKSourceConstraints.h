@@ -8,10 +8,11 @@
 
 @interface EKSourceConstraints : NSObject
 {
-    CDStruct_9e0d2422 _flags;
+    CDStruct_d497be9b _flags;
 }
 
 + (id)allAllowSourceConstraints;
+@property(nonatomic) _Bool supportsPush;
 @property(nonatomic) _Bool supportsRecurrenceSplit;
 @property(nonatomic) _Bool supportsInvitationModificationsWithoutNotification;
 @property(nonatomic) _Bool supportsDelegateEnumeration;
@@ -21,6 +22,9 @@
 @property(nonatomic) _Bool shouldUseDeleteAndAddInsteadOfMoveBetweenCalendars;
 @property(nonatomic) _Bool requiresOpeningAttachmentAsLink;
 @property(nonatomic) _Bool supportsAttachments;
+@property(nonatomic) _Bool supportsParticipantRoles;
+@property(nonatomic) _Bool supportsSubscriptionMirroring;
+@property(nonatomic) _Bool supportsManagedSubscribedCalendars;
 @property(nonatomic) _Bool supportsSubscribedCalendars;
 @property(nonatomic) _Bool prohibitsSlicingEventsWithAttendees;
 @property(nonatomic) _Bool attendeesUseDeletedByOrganizerStatus;
@@ -85,7 +89,7 @@
 @property(nonatomic) int maxRecurrencesAllowed;
 @property(nonatomic) int maxAlarmsAllowed;
 - (id)init;
-- (id)initWithCDBSourceConstraintFlags:(CDStruct_9e0d2422)arg1;
+- (id)initWithCDBSourceConstraintFlags:(CDStruct_d497be9b)arg1;
 
 @end
 

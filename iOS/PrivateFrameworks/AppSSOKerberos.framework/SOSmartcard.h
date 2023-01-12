@@ -10,8 +10,10 @@
 {
 }
 
++ (id)availableSmartCards;
++ (id)searchForCachedIdentityPersistentRef:(id)arg1 tokenID:(id)arg2;
 + (id)searchForCachedIdentityWithSerial:(struct __CFData *)arg1 withIssuer:(struct __CFData *)arg2 withTokenID:(id)arg3;
-+ (_Bool)pollSmartcardForIdentityWithSerialNumber:(id)arg1 withIssuer:(id)arg2 withTokenID:(id)arg3;
++ (_Bool)pollSmartcardForIdentityWithPersistentRef:(id)arg1 tokenID:(id)arg2;
 + (int)getIdentityForPersistentRef:(struct __CFData *)arg1 identityToReturn:(struct __SecIdentity **)arg2;
 + (struct __SecIdentity *)getLocalAuthIdentityForCert:(id)arg1 withLAContext:(id)arg2;
 

@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMIVideoFrameAnalyzer, HMIVideoFrameAnalyzerResult, NSError;
+@class HMIAnalysisStateUpdate, HMIVideoFrameAnalyzer, HMIVideoFrameAnalyzerResult, NSError;
 
 @protocol HMIVideoFrameAnalyzerDelegate
+- (void)frameAnalyzer:(HMIVideoFrameAnalyzer *)arg1 didProduceAnalysisStateUpdate:(HMIAnalysisStateUpdate *)arg2;
 - (void)frameAnalyzer:(HMIVideoFrameAnalyzer *)arg1 didAnalyzeFrame:(HMIVideoFrameAnalyzerResult *)arg2 error:(NSError *)arg3;
 @end
 

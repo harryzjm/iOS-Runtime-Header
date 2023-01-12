@@ -13,7 +13,7 @@
     MISSING_TYPE *delegate;
     MISSING_TYPE *key;
     MISSING_TYPE *showCompletedSnapshot;
-    MISSING_TYPE *whitelistCompletedReminderIDs;
+    MISSING_TYPE *allowlistCompletedReminderIDs;
     MISSING_TYPE *userDefaultsObserveToken;
     MISSING_TYPE *isSettingShowsCompletedUserDefaults;
 }

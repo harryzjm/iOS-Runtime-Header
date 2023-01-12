@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+@property(nonatomic) _Bool is_stable_result;
 @property(nonatomic) int confidence;
 @property(copy, nonatomic) NSString *recognition_text;
 @property(copy, nonatomic) NSString *source_locale;

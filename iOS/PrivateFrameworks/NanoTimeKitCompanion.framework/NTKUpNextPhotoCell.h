@@ -14,6 +14,7 @@
 
 - (void)updateMonochromeColor;
 - (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)applyLayoutAttributes:(id)arg1;
 - (void)prepareForReuse;
 - (id)transitionContextInView:(id)arg1;
 - (void)layoutSubviews;

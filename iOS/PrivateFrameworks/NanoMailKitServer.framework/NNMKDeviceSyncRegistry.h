@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NNMKSQLiteConnection, NSDate, NSNumber, NSString;
+@class NNMKSQLiteConnection, NSDate, NSMutableDictionary, NSNumber, NSString;
 
 @interface NNMKDeviceSyncRegistry : NSObject
 {
@@ -22,9 +22,11 @@
     NSDate *_disconnectedSince;
     unsigned long long _currentDatabaseSchemaVersion;
     NNMKSQLiteConnection *_database;
+    NSMutableDictionary *_pendingComposedMessages;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableDictionary *pendingComposedMessages; // @synthesize pendingComposedMessages=_pendingComposedMessages;
 @property(retain, nonatomic) NNMKSQLiteConnection *database; // @synthesize database=_database;
 @property(readonly, nonatomic) _Bool recreatedFromScratch; // @synthesize recreatedFromScratch=_recreatedFromScratch;
 @property(nonatomic) unsigned long long currentDatabaseSchemaVersion; // @synthesize currentDatabaseSchemaVersion=_currentDatabaseSchemaVersion;
@@ -58,6 +60,15 @@
 - (id)objectIdsForType:(id)arg1;
 - (id)objectIdsForIDSIdentifierNotYetAckd:(id)arg1 type:(id *)arg2 resendInterval:(unsigned long long *)arg3;
 - (void)addObjectIds:(id)arg1 type:(id)arg2 resendInterval:(unsigned long long)arg3 forIDSIdentifierNotYetAckd:(id)arg4;
+- (id)_attachmentDirectory;
+- (id)_urlForAttachmentsWithComposedMessageId:(id)arg1;
+- (void)_removeAllPendingAttachments;
+- (void)_removeAttachmentsForComposedMessageId:(id)arg1;
+- (void)saveAttachmentsForComposedMessageId:(id)arg1 temporaryURL:(id)arg2;
+- (id)pendingComposedMessageWithId:(id)arg1;
+- (void)storePendingComposedMessage:(id)arg1;
+- (id)attachmentsFromURL:(id)arg1;
+- (id)attachmentsForComposedMessageId:(id)arg1;
 - (void)removeProgressForComposedMessageWithId:(id)arg1;
 - (void)removePendingComposedMessages;
 - (id)pendingComposedMessageIds;

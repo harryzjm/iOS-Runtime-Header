@@ -8,9 +8,9 @@
 {
 }
 
-- (void)modifySubitemIndexSetForDataSourceIdentifier:(unsigned long long)arg1 section:(long long)arg2 item:(long long)arg3 usingBlock:(CDUnknownBlockType)arg4;
-- (void)modifyItemIndexSetForDataSourceIdentifier:(unsigned long long)arg1 section:(long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
-- (void)modifySectionIndexSetForDataSourceIdentifier:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)modifySubitemIndexSetForDataSourceIdentifier:(long long)arg1 section:(long long)arg2 item:(long long)arg3 usingBlock:(CDUnknownBlockType)arg4;
+- (void)modifyItemIndexSetForDataSourceIdentifier:(long long)arg1 section:(long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (void)modifySectionIndexSetForDataSourceIdentifier:(long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)removeAllIndexPaths;
 - (void)minusIndexPathSet:(id)arg1;
 - (void)unionIndexPathSet:(id)arg1;

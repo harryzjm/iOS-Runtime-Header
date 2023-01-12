@@ -13,7 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityValue;
 - (id)accessibilityLabel;
-- (_Bool)_accessibilityIsTransitPass;
+- (_Bool)_accessibilityIsStoredValuePass;
 - (_Bool)_accessibilityIsAccessPass;
 - (_Bool)_accessibilityIsApplePayCashCard;
 - (_Bool)isAccessibilityElement;

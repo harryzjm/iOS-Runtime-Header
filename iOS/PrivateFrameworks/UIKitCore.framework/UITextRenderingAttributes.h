@@ -10,6 +10,7 @@
 
 @class UIFont;
 
+__attribute__((visibility("hidden")))
 @interface UITextRenderingAttributes : NSObject <NSCopying>
 {
     UIFont *_font;

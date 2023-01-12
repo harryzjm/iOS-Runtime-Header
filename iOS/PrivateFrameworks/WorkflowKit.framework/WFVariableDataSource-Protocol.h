@@ -4,10 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, NSXPCListenerEndpoint, WFContentCollection;
+@class NSDate, NSDictionary, NSString, NSURL, WFContentCollection, WFFileLocation, WFFileRepresentation;
+@protocol WFPropertyListObject;
 
 @protocol WFVariableDataSource
-- (NSXPCListenerEndpoint *)listenerEndpointWithIdentifier:(NSString *)arg1;
+- (void)requestAccessToFileAtURL:(NSURL *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
+- (void)requestAccessToFileAtLocation:(WFFileLocation *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
+- (void)captureFileRepresentation:(WFFileRepresentation *)arg1;
+- (id <WFPropertyListObject>)contentForPrivateVariableKey:(NSString *)arg1;
+- (void)setContent:(id <WFPropertyListObject>)arg1 forPrivateVariableKey:(NSString *)arg2;
+- (NSDate *)workflowStartDate;
+- (NSDictionary *)listenerEndpoints;
 - (WFContentCollection *)workflowInput;
 - (WFContentCollection *)contentForVariableWithName:(NSString *)arg1;
 - (_Bool)setContent:(WFContentCollection *)arg1 forVariableWithName:(NSString *)arg2;

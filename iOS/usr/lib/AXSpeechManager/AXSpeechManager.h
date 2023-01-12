@@ -101,6 +101,7 @@
 - (void)clearSpeechQueue;
 - (void)_clearSpeechQueue;
 - (void)_dispatchSpeechAction:(id)arg1;
+- (void)_processAudioBufferCallback:(id)arg1;
 - (void)_startNextSpeechJob;
 - (id)_phonemeSubstitutionsForAction:(id)arg1;
 - (id)voiceIdentifierUsedForLanguage:(id)arg1;

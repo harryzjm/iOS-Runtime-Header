@@ -27,7 +27,7 @@
 @property(readonly, copy, nonatomic) NSString *accountIdentifier;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(readonly, nonatomic) _Bool didChooseToMigrate;
+@property(nonatomic) _Bool didChooseToMigrate;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property(readonly, copy, nonatomic) NSString *name;

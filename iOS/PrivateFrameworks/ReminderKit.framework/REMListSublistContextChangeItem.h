@@ -15,7 +15,16 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) REMListChangeItem *listChangeItem; // @synthesize listChangeItem=_listChangeItem;
-- (void)_insertListChangeItem:(id)arg1 adjacentToListChangeItem:(id)arg2 isAfter:(_Bool)arg3;
+- (id)_accountChangeItem;
+- (void)undeleteChildSmartListWithID:(id)arg1 usingUndo:(id)arg2;
+- (void)undeleteChildListWithID:(id)arg1 usingUndo:(id)arg2;
+- (void)insertMergeableOrderingNode:(id)arg1 afterMergeableOrderingNode:(id)arg2;
+- (void)insertMergeableOrderingNode:(id)arg1 beforeMergeableOrderingNode:(id)arg2;
+- (void)addMergeableOrderingNode:(id)arg1;
+- (void)insertSmartListChangeItem:(id)arg1 afterSmartListChangeItem:(id)arg2;
+- (void)insertSmartListChangeItem:(id)arg1 beforeSmartListChangeItem:(id)arg2;
+- (void)addSmartListChangeItem:(id)arg1;
+- (void)_insertMergeableOrderingNode:(id)arg1 adjacentToMergeableOrderingNode:(id)arg2 isAfter:(_Bool)arg3;
 - (void)insertListChangeItem:(id)arg1 afterListChangeItem:(id)arg2;
 - (void)insertListChangeItem:(id)arg1 beforeListChangeItem:(id)arg2;
 - (void)addListChangeItem:(id)arg1;

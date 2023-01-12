@@ -4,11 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIActivityIndicatorView, UISwitch;
+#import <HomeUI/HUDisableableCellProtocol-Protocol.h>
+
+@class NSString, UIActivityIndicatorView, UISwitch;
 @protocol HUUserSwitchCellDelegate;
 
-@interface HUUserSwitchCell
+@interface HUUserSwitchCell <HUDisableableCellProtocol>
 {
+    _Bool _disabled;
     _Bool _loading;
     id <HUUserSwitchCellDelegate> _delegate;
     UISwitch *_switchView;
@@ -20,16 +23,23 @@
 @property(retain, nonatomic) UISwitch *switchView; // @synthesize switchView=_switchView;
 @property(nonatomic) __weak id <HUUserSwitchCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic, getter=isLoading) _Bool loading; // @synthesize loading=_loading;
+@property(nonatomic, getter=isDisabled) _Bool disabled; // @synthesize disabled=_disabled;
+- (void)_updateAppearanceForDisabled:(_Bool)arg1;
 - (void)_toggleOn:(id)arg1;
-- (double)labelSpacing;
 - (void)updateUIWithAnimation:(_Bool)arg1;
 - (void)setOn:(_Bool)arg1 animated:(_Bool)arg2;
 @property(nonatomic, getter=isOn) _Bool on;
-- (void)setDisabled:(_Bool)arg1;
+- (id)defaultContentConfiguration;
 - (void)prepareForReuse;
 - (void)setHighlighted:(_Bool)arg1;
 - (void)setSelected:(_Bool)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

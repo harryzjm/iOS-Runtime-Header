@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithVector:(const struct AudioComponentVector *)arg1;
+- (id)initWithVector:(const void *)arg1;
 
 @end
 

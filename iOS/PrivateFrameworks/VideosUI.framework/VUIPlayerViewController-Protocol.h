@@ -9,6 +9,7 @@
 @class AVPlayer, AVPlayerViewControllerCustomControlsView, NSArray, NSString, UIView, UIViewController;
 
 @protocol VUIPlayerViewController <NSObject>
+@property(nonatomic) __weak id delegate;
 @property(nonatomic) _Bool allowAutorotate;
 @property(readonly, nonatomic) double videoDisplayScale;
 @property(readonly, nonatomic) struct CGSize videoDisplaySize;

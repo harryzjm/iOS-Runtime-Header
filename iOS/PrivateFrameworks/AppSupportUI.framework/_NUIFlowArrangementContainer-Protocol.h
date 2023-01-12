@@ -7,6 +7,6 @@
 #import <AppSupportUI/NUIArrangementContainer-Protocol.h>
 
 @protocol _NUIFlowArrangementContainer <NUIArrangementContainer>
-- (void)populateFlowArrangementCells:(vector_702fc599 *)arg1;
+- (void)populateFlowArrangementCells:(void *)arg1;
 @end
 

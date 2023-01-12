@@ -8,5 +8,7 @@
 
 @interface AVURLAsset (MPCModelPlaybackAssetCacheProvidingInternalAdditions)
 - (void)mpc_addDownloadCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)mpc_HLSAVMetadataItemInMetadata:(id)arg1;
+- (id)mpc_synchronousHLSSessionDataWithTimeout:(long long)arg1 error:(id *)arg2;
 @end
 

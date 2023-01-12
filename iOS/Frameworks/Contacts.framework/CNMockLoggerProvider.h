@@ -9,7 +9,7 @@
 #import <Contacts/CNContactsLoggerProvider-Protocol.h>
 
 @class NSString;
-@protocol CNAPITriageLogger, CNContactsLogger, CNFavoritesLogger, CNGeminiLogger, CNRegulatoryLogger, CNSpotlightIndexingLogger;
+@protocol CNAPITriageLogger, CNContactsLogger, CNFavoritesLogger, CNGeminiLogger, CNImageUtilitiesLogger, CNRegulatoryLogger, CNSpotlightIndexingLogger;
 
 __attribute__((visibility("hidden")))
 @interface CNMockLoggerProvider : NSObject <CNContactsLoggerProvider>
@@ -20,10 +20,12 @@ __attribute__((visibility("hidden")))
     id <CNFavoritesLogger> _favoritesLogger;
     id <CNGeminiLogger> _geminiLogger;
     id <CNAPITriageLogger> _apiTriageLogger;
+    id <CNImageUtilitiesLogger> _imageUtilitiesLogger;
 }
 
 + (id)loggerProvider;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <CNImageUtilitiesLogger> imageUtilitiesLogger; // @synthesize imageUtilitiesLogger=_imageUtilitiesLogger;
 @property(retain, nonatomic) id <CNAPITriageLogger> apiTriageLogger; // @synthesize apiTriageLogger=_apiTriageLogger;
 @property(retain, nonatomic) id <CNGeminiLogger> geminiLogger; // @synthesize geminiLogger=_geminiLogger;
 @property(retain, nonatomic) id <CNFavoritesLogger> favoritesLogger; // @synthesize favoritesLogger=_favoritesLogger;

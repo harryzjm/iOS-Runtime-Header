@@ -6,20 +6,24 @@
 
 #import <CoreData/NSManagedObject.h>
 
+#import <ParsecModel/NSFetchRequestResult-Protocol.h>
+
 @class NSDate;
 
-@interface PARImagesPropensity : NSManagedObject
+@interface PARImagesPropensity : NSManagedObject <NSFetchRequestResult>
 {
 }
 
-+ (id)fetchRequest;
+- (void).cxx_destruct;
+- (void).cxx_construct;
+- (id)initWithEntity:(id)arg1 insertIntoManagedObjectContext:(id)arg2;
 
 // Remaining properties
 @property(nonatomic) short image; // @dynamic image;
 @property(nonatomic) short other; // @dynamic other;
 @property(nonatomic) short querySuggestion; // @dynamic querySuggestion;
 @property(nonatomic) short recentResult; // @dynamic recentResult;
-@property(copy, nonatomic) NSDate *timestamp; // @dynamic timestamp;
+@property(nonatomic, copy) NSDate *timestamp; // @dynamic timestamp;
 @property(nonatomic) short zkw; // @dynamic zkw;
 
 @end

@@ -9,30 +9,32 @@
 #import <HomeKitDaemon/HAPBTLECentralManagerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class CUBLEAdvertiser, HAPBTLECentralManager, HMDAccessoryQueues, HMDHAPAccessory, HMFTimer, HMFUnfairLock, NSArray, NSObject, NSString;
+@class CUBLEAdvertiser, HAPBTLECentralManager, HMDAccessoryQueues, HMDHAPAccessory, HMFTimer, NSArray, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HMDBTLEAdvertiser : HMFObject <HAPBTLECentralManagerDelegate, HMFTimerDelegate>
 {
-    NSObject<OS_dispatch_queue> *workQueue;
-    CUBLEAdvertiser *leAdvertiser;
-    HMFTimer *advertisementTimer;
-    HMDHAPAccessory *accessory;
-    HAPBTLECentralManager *centralManager;
-    HMDAccessoryQueues *powerOnQueues;
-    HMFUnfairLock *_lock;
+    CUBLEAdvertiser *_leAdvertiser;
+    HMFTimer *_advertisementTimer;
+    HMDHAPAccessory *_accessory;
+    HAPBTLECentralManager *_centralManager;
+    HMDAccessoryQueues *_powerOnQueues;
+    NSObject<OS_dispatch_queue> *_workQueue;
+    double _advertisementTimeInterval;
+    double _reachabilityTimeInterval;
 }
 
 + (id)initializeAdvertiser;
 + (id)sharedAdvertiser;
 - (void).cxx_destruct;
-@property(retain, nonatomic) HMFUnfairLock *lock; // @synthesize lock=_lock;
-@property(retain, nonatomic) HMDAccessoryQueues *powerOnQueues; // @synthesize powerOnQueues;
-@property(retain, nonatomic) HAPBTLECentralManager *centralManager; // @synthesize centralManager;
-@property(retain, nonatomic) HMDHAPAccessory *accessory; // @synthesize accessory;
-@property(retain, nonatomic) HMFTimer *advertisementTimer; // @synthesize advertisementTimer;
-@property(retain, nonatomic) CUBLEAdvertiser *leAdvertiser; // @synthesize leAdvertiser;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue;
+@property(nonatomic) double reachabilityTimeInterval; // @synthesize reachabilityTimeInterval=_reachabilityTimeInterval;
+@property(nonatomic) double advertisementTimeInterval; // @synthesize advertisementTimeInterval=_advertisementTimeInterval;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+@property(retain, nonatomic) HMDAccessoryQueues *powerOnQueues; // @synthesize powerOnQueues=_powerOnQueues;
+@property(retain, nonatomic) HAPBTLECentralManager *centralManager; // @synthesize centralManager=_centralManager;
+@property(retain, nonatomic) HMDHAPAccessory *accessory; // @synthesize accessory=_accessory;
+@property(retain, nonatomic) HMFTimer *advertisementTimer; // @synthesize advertisementTimer=_advertisementTimer;
+@property(retain, nonatomic) CUBLEAdvertiser *leAdvertiser; // @synthesize leAdvertiser=_leAdvertiser;
 @property(readonly, getter=isReady) _Bool isReady;
 - (_Bool)isAdvertisingForAccessory:(id)arg1;
 - (void)timerDidFire:(id)arg1;

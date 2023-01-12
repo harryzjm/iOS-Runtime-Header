@@ -7,7 +7,10 @@
 #import <SystemStatus/NSObject-Protocol.h>
 #import <SystemStatus/NSSecureCoding-Protocol.h>
 
+@protocol STStatusDomainDataDiff;
+
 @protocol STStatusDomainDataDiff <NSObject, NSSecureCoding>
 @property(readonly, nonatomic, getter=isEmpty) _Bool empty;
+- (id <STStatusDomainDataDiff>)diffByApplyingDiff:(id <STStatusDomainDataDiff>)arg1;
 @end
 

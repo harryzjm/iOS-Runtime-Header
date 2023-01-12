@@ -44,8 +44,8 @@ struct CGVector {
 };
 
 struct _NSRange {
-    unsigned long long _field1;
-    unsigned long long _field2;
+    unsigned long long location;
+    unsigned long long length;
 };
 
 struct os_unfair_lock_s {
@@ -57,8 +57,6 @@ struct shared_ptr<CGImage> {
     struct __shared_weak_count *_field2;
 };
 
-struct shared_ptr<espresso_buffer_t>;
-
 struct vImage_Buffer {
     void *_field1;
     unsigned long long _field2;
@@ -66,39 +64,45 @@ struct vImage_Buffer {
     unsigned long long _field4;
 };
 
-struct vector<NSString *, std::__1::allocator<NSString *>> {
+struct vector<NSString *, std::allocator<NSString *>> {
     id *__begin_;
     id *__end_;
-    struct __compressed_pair<NSString *__strong *, std::__1::allocator<NSString *>> {
+    struct __compressed_pair<NSString *__strong *, std::allocator<NSString *>> {
         id *__value_;
     } __end_cap_;
 };
 
-struct vector<float, std::__1::allocator<float>> {
+struct vector<float, std::allocator<float>> {
     float *__begin_;
     float *__end_;
-    struct __compressed_pair<float *, std::__1::allocator<float>> {
+    struct __compressed_pair<float *, std::allocator<float>> {
         float *__value_;
     } __end_cap_;
 };
 
-struct vector<int, std::__1::allocator<int>> {
+struct vector<int, std::allocator<int>> {
     int *__begin_;
     int *__end_;
-    struct __compressed_pair<int *, std::__1::allocator<int>> {
+    struct __compressed_pair<int *, std::allocator<int>> {
         int *__value_;
     } __end_cap_;
 };
 
-struct vector<std::__1::shared_ptr<espresso_buffer_t>, std::__1::allocator<std::__1::shared_ptr<espresso_buffer_t>>> {
-    struct shared_ptr<espresso_buffer_t> *__begin_;
-    struct shared_ptr<espresso_buffer_t> *__end_;
-    struct __compressed_pair<std::__1::shared_ptr<espresso_buffer_t>*, std::__1::allocator<std::__1::shared_ptr<espresso_buffer_t>>> {
-        struct shared_ptr<espresso_buffer_t> *__value_;
+struct vector<std::shared_ptr<espresso_buffer_t>, std::allocator<std::shared_ptr<espresso_buffer_t>>> {
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<std::shared_ptr<espresso_buffer_t>*, std::allocator<std::shared_ptr<espresso_buffer_t>>> {
+        void *__value_;
     } __end_cap_;
 };
 
 #pragma mark Typedef'd Structures
+
+typedef struct {
+    id _field1;
+    id _field2;
+    unsigned long long _field3;
+} CDStruct_695c46a3;
 
 typedef struct {
     MISSING_TYPE *columns[4];
@@ -130,12 +134,4 @@ typedef struct shared_ptr<CGImage> {
     struct CGImage *_field1;
     struct __shared_weak_count *_field2;
 } shared_ptr_34708d24;
-
-typedef struct vector<int, std::__1::allocator<int>> {
-    int *__begin_;
-    int *__end_;
-    struct __compressed_pair<int *, std::__1::allocator<int>> {
-        int *__value_;
-    } __end_cap_;
-} vector_12bd641b;
 

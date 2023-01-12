@@ -29,6 +29,7 @@
 - (void)_handleStateDumpServiceClientMessageTypeDisableRemoteStateDump:(id)arg1 fromClient:(id)arg2;
 - (void)_handleStateDumpServiceClientMessageTypeEnableRemoteStateDump:(id)arg1 fromClient:(id)arg2;
 - (void)_handleStateDumpServiceClientMessageTypeStateDump:(id)arg1 fromClient:(id)arg2;
+- (void)_handleTestAutomationAddSpecificWidgetStackToPageWithSize:(id)arg1 fromClient:(id)arg2;
 - (void)_handleTestAutomationAddSpecificWidgetToPageWithSize:(id)arg1 fromClient:(id)arg2;
 - (void)_handleTestAutomationAddWidgetsToEachPage:(id)arg1 fromClient:(id)arg2;
 - (void)_handleLoadStashedSwitcherModelFromPath:(id)arg1 fromClient:(id)arg2;
@@ -37,12 +38,16 @@
 - (void)_handleTestAutomationSetTestRunnerRecoveryApplicationBundleIdentifier:(id)arg1 fromClient:(id)arg2;
 - (void)_handleTestAutomationRequestHUDHiddenAssertion:(id)arg1 fromClient:(id)arg2;
 - (void)_handleTestAutomationBlockApplicationForScreenTime:(id)arg1 fromClient:(id)arg2;
+- (void)_handleTestAutomationSetAccessoryAttachedState:(id)arg1 fromClient:(id)arg2;
 - (void)_handleTestAutomationResetToHomeScreen:(id)arg1 fromClient:(id)arg2;
+- (void)_handleTestAutomationRequestReachabilityEnabledAssertion:(id)arg1 fromClient:(id)arg2;
+- (void)_handleTestAutomationSetReachabilityActiveState:(id)arg1 fromClient:(id)arg2;
 - (void)_handleTestAutomationSetMallocStackLoggingState:(id)arg1 fromClient:(id)arg2;
 - (void)_handleTestAutomationSetOrientationLockState:(id)arg1 fromClient:(id)arg2;
 - (void)_handleTestAutomationSetIdleTimerState:(id)arg1 fromClient:(id)arg2;
 - (void)_handleTestAutomationSetHiddenFeatureState:(id)arg1 fromClient:(id)arg2;
 - (void)_handleTestAutomationSetAlertState:(id)arg1 fromClient:(id)arg2;
+- (void)_handleTestAutomationClearAllUserNotifications:(id)arg1 fromClient:(id)arg2;
 - (void)_handleTestAutomationSuspendAllDisplays:(id)arg1 fromClient:(id)arg2;
 - (void)_handleSoftwareUpdateGetPasscodePolicy:(id)arg1 fromClient:(id)arg2;
 - (void)_handleSoftwareUpdateSetPasscodePolicy:(id)arg1 fromClient:(id)arg2;

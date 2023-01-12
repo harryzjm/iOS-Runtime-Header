@@ -35,7 +35,7 @@
 - (id)_goalGivenChartPoints:(id)arg1;
 - (id)_durationContextItemWithGoal:(id)arg1;
 - (void)overlayStateWillChange:(_Bool)arg1 contextItem:(id)arg2 chartController:(id)arg3;
-- (void)updateContextItemForDateInterval:(id)arg1 timeScope:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)updateContextItemForDateInterval:(id)arg1 overlayController:(id)arg2 timeScope:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (_Bool)unselectedContextShouldUseContextBaseType;
 - (id)baseDisplayTypeForOverlay:(long long)arg1;
 - (id)sampleTypeForDateRangeUpdates;

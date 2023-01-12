@@ -26,6 +26,7 @@
 
 + (id)phoneMetrics;
 + (id)padMetrics;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSLayoutConstraint *backgroundViewHeightConstraint; // @synthesize backgroundViewHeightConstraint=_backgroundViewHeightConstraint;
 @property(nonatomic) _Bool allSectionItemsVisible; // @synthesize allSectionItemsVisible=_allSectionItemsVisible;
 @property(nonatomic) long long maxItemCount; // @synthesize maxItemCount=_maxItemCount;
@@ -49,7 +50,6 @@
 @property(retain, nonatomic) NSString *leftText;
 - (void)establishConstraints;
 - (void)updateGutterConstraints;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

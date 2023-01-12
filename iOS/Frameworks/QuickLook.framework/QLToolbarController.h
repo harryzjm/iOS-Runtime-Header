@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
     _UIToolbarConfiguration *_customToolbarConfiguration;
     double _derivedToolbarExtensionHeight;
     _Bool _accessoryViewHidden;
-    _Bool _originalToolbarHidden;
     _Bool _hidden;
     double _accessoryViewHiddenProgress;
     UIToolbar *_originalToolbar;
@@ -47,11 +46,11 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double originalToolbarAlpha; // @synthesize originalToolbarAlpha=_originalToolbarAlpha;
 @property(nonatomic) double toolbarAlpha; // @synthesize toolbarAlpha=_toolbarAlpha;
 @property(nonatomic, getter=isHidden) _Bool hidden; // @synthesize hidden=_hidden;
-@property(nonatomic, getter=isOriginalToolbarHidden) _Bool originalToolbarHidden; // @synthesize originalToolbarHidden=_originalToolbarHidden;
 @property(nonatomic) double preferredAccesoryViewHeight; // @synthesize preferredAccesoryViewHeight=_preferredAccesoryViewHeight;
 @property(nonatomic) __weak UIView *accessoryView; // @synthesize accessoryView=_accessoryView;
 @property(readonly) UIToolbar *customToolbar; // @synthesize customToolbar=_customToolbar;
 @property(nonatomic) __weak UIToolbar *originalToolbar; // @synthesize originalToolbar=_originalToolbar;
+@property(nonatomic, getter=isOriginalToolbarHidden) _Bool originalToolbarHidden;
 - (void)setAccessoryView:(id)arg1 animated:(_Bool)arg2;
 @property(nonatomic) double accessoryViewHiddenProgress; // @synthesize accessoryViewHiddenProgress=_accessoryViewHiddenProgress;
 @property(nonatomic, getter=isAccessoryViewHidden) _Bool accessoryViewHidden; // @synthesize accessoryViewHidden=_accessoryViewHidden;

@@ -12,7 +12,7 @@
 {
     HDDatabaseTransaction *_transaction;
     unsigned long long _bufferSize;
-    struct deque<std::__1::tuple<double, double, float>, std::__1::allocator<std::__1::tuple<double, double, float>>> _data;
+    struct deque<std::tuple<double, double, float>, std::allocator<std::tuple<double, double, float>>> _data;
     _Bool _hasFetchedData;
     _Bool _hasFetchedAllData;
     _Bool _hasDeterminedSeriesVersion;
@@ -36,11 +36,6 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool hasFetchedAllData; // @synthesize hasFetchedAllData=_hasFetchedAllData;
-@property(nonatomic) double lastDatumTime; // @synthesize lastDatumTime=_lastDatumTime;
-@property(nonatomic) double lastFetchedDatumTime; // @synthesize lastFetchedDatumTime=_lastFetchedDatumTime;
-@property(nonatomic) _Bool hasFetchedData; // @synthesize hasFetchedData=_hasFetchedData;
-@property(nonatomic) struct ObjectIdentifier objectIdentifier; // @synthesize objectIdentifier=_objectIdentifier;
 @property(readonly, nonatomic) long long HFDKey; // @synthesize HFDKey=_HFDKey;
 @property(readonly, nonatomic) long long sourceID; // @synthesize sourceID=_sourceID;
 @property(readonly, nonatomic) long long count; // @synthesize count=_count;
@@ -49,8 +44,6 @@
 @property(readonly, nonatomic) long long dataTypeCode; // @synthesize dataTypeCode=_dataTypeCode;
 @property(readonly, nonatomic) long long persistentID; // @synthesize persistentID=_persistentID;
 - (void)_unitTesting_addToBufferTimestamp:(double)arg1 value:(double)arg2 duration:(float)arg3 isLastDatum:(_Bool)arg4;
-- (_Bool)_addToBufferTimestamp:(double)arg1 value:(double)arg2 duration:(float)arg3;
-- (_Bool)_fillValueBufferWithError:(id *)arg1;
 - (id)description;
 @property(readonly, nonatomic) unsigned char (*UUIDBytesPtr)[16];
 @property(readonly, nonatomic) _Bool done;

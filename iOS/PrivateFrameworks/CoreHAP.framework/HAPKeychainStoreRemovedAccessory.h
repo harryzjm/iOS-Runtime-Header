@@ -6,21 +6,29 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <CoreHAP/HMFLogging-Protocol.h>
+
 @class NSDate, NSError, NSString;
 
-@interface HAPKeychainStoreRemovedAccessory : HMFObject
+@interface HAPKeychainStoreRemovedAccessory : HMFObject <HMFLogging>
 {
     NSString *_accessoryName;
     NSDate *_creationDate;
     NSError *_removeError;
 }
 
++ (id)logCategory;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSError *removeError; // @synthesize removeError=_removeError;
 @property(readonly, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property(readonly, nonatomic) NSString *accessoryName; // @synthesize accessoryName=_accessoryName;
 - (id)initWithName:(id)arg1 creationDate:(id)arg2;
-- (id)description;
+@property(readonly, copy) NSString *description;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

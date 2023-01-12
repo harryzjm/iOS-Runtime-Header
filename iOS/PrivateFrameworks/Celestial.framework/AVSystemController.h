@@ -24,6 +24,7 @@
 - (_Bool)shouldClientWithAudioScore:(int)arg1 hijackRoute:(id)arg2 hijackDeniedReason:(id *)arg3;
 - (_Bool)hasRouteSharingPolicyLongFormVideo:(id)arg1;
 - (_Bool)allowUserToExceedEUVolumeLimit;
+- (_Bool)overrideToPartnerRoute;
 - (_Bool)currentRouteHasVolumeControl;
 - (id)pickableRoutesForCategory:(id)arg1;
 - (id)pickableRoutesForCategory:(id)arg1 andMode:(id)arg2;

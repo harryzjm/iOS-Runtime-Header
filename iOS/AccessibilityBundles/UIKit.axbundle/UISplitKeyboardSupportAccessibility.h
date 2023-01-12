@@ -11,10 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_axDescriptionForPoint:(struct CGPoint)arg1 windowWidth:(double)arg2 windowHeight:(double)arg3;
 - (void)translateDetected:(id)arg1;
-- (void)_axSetLastLocationDescription:(id)arg1;
-- (id)_axLastLocationDescription;
 
 @end
 

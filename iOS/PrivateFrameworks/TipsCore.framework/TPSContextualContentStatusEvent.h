@@ -12,7 +12,6 @@
     NSString *_contentID;
 }
 
-+ (id)classSet;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *contentID; // @synthesize contentID=_contentID;

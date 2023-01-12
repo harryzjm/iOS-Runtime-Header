@@ -16,9 +16,6 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSSet *resolutions; // @synthesize resolutions=_resolutions;
-@property(retain, nonatomic) NSArray *dispatchingRules; // @synthesize dispatchingRules=_dispatchingRules;
-@property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)description;
 
 @end

@@ -73,7 +73,6 @@
 + (_Bool)_useShadowForSelectedTintColor:(id)arg1 traitCollection:(id)arg2;
 + (struct CGColor *)_backgroundPrimaryColorSelected:(_Bool)arg1 highlighted:(_Bool)arg2 traitCollection:(id)arg3 tintColor:(id)arg4;
 + (_Bool)_selectFocusedSegmentAfterFocusUpdate;
-+ (_Bool)_cursorInteractionEnabled;
 + (double)_selectionOffsetAdjustmentForSegment:(id)arg1;
 + (_Bool)_updateDynamicShadowView:(id)arg1 withAnimationDelegate:(id)arg2 useDynamicShadow:(_Bool)arg3 animated:(_Bool)arg4;
 + (id)_selectionOpacityAnimationFromValue:(float)arg1 toValue:(float)arg2;
@@ -124,6 +123,8 @@
 - (void)_selectFocusedSegment;
 - (_Bool)_hasEnabledSegment;
 - (void)_diagnoseFocusabilityForReport:(id)arg1;
+- (_Bool)_wantsFocusRing;
+- (id)_viewToAddFocusLayer;
 - (_Bool)canBecomeFocused;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1;
@@ -142,10 +143,10 @@
 - (void)setEnabled:(_Bool)arg1;
 - (void)_setEnabled:(_Bool)arg1 forcePropagateToSegments:(_Bool)arg2;
 - (_Bool)useBlockyMagnificationInClassic;
-- (void)cursorInteraction:(id)arg1 willExitRegion:(id)arg2 withAnimator:(id)arg3;
-- (void)cursorInteraction:(id)arg1 willEnterRegion:(id)arg2 withAnimator:(id)arg3;
-- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
-- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (void)pointerInteraction:(id)arg1 willExitRegion:(id)arg2 animator:(id)arg3;
+- (void)pointerInteraction:(id)arg1 willEnterRegion:(id)arg2 animator:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (_Bool)_shouldConsumeEventWithPresses:(id)arg1;
 - (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;

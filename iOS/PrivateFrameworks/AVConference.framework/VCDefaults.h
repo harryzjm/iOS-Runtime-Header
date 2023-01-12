@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     _Bool _forceWiFiAssistOutOfBudget;
 }
 
++ (id)copyStringValueForKey:(struct __CFString *)arg1;
 + (_Bool)booleanValueForKey:(struct __CFString *)arg1 defaultValue:(_Bool)arg2;
 + (_Bool)booleanValueForKey:(struct __CFString *)arg1;
 + (long long)integerValueForKey:(struct __CFString *)arg1 defaultValue:(long long)arg2;
@@ -89,6 +90,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) int max2GRate;
 @property(readonly) int redundancyControlForceVideoRedundancyPercentage;
 @property(readonly) int packetExpirationTime;
+@property(readonly) int rateControlBasebandSlowDownFactor;
 @property(readonly) int rateControlForceRxRate;
 @property(readonly) int rateControlForceTxRate;
 @property(readonly) int rateControlForceRxCap;
@@ -102,7 +104,6 @@ __attribute__((visibility("hidden")))
 @property(readonly) int rateControllerType;
 @property(readonly) _Bool mediaQueueDumpEnabled;
 @property(readonly) _Bool forceDisableMediaQueue;
-@property(readonly) _Bool cannedReplayEnabled;
 @property(readonly) int videoStreamRateControlAlgorithm;
 @property(readonly) _Bool videoStreamRateControlDumpEnabled;
 @property(readonly) _Bool enableHEIFAndHEVCForMoments;
@@ -135,13 +136,14 @@ __attribute__((visibility("hidden")))
 @property(readonly) _Bool disableVAD;
 @property(readonly) _Bool canDecodeHD;
 @property(readonly) int encodingScore;
+@property(readonly) _Bool enableTxTimestampAlignmentLogs;
 @property(readonly) int extraPayloads;
 @property(readonly) _Bool enablePacketLogging;
 @property(readonly) _Bool enableTxBitstreamDump;
 @property(readonly) int enableTxSourceYuvDump;
 @property(readonly) _Bool enableRecvBitstreamDump;
 @property(readonly) _Bool enableVPBLogging;
-@property(readonly) int enable2vuyCapture;
+@property(readonly) int enableRxDecodeYUVDump;
 @property(readonly) _Bool enableBitstreamCapture;
 - (unsigned int)forceThermalLevelFramerate:(unsigned int)arg1;
 @property(readonly) _Bool forceDisableVideoRuleCell720;

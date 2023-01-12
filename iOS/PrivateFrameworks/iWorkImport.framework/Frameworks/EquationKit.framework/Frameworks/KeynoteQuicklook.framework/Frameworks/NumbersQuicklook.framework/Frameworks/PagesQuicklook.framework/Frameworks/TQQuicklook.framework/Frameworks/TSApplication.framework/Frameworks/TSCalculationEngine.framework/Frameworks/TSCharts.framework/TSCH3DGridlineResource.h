@@ -8,15 +8,15 @@
 
 @interface TSCH3DGridlineResource
 {
-    TSCH3DAxisGridEnumerator *mAxis;
+    TSCH3DAxisGridEnumerator *_axis;
 }
 
 + (id)resourceWithAxisEnumerator:(id)arg1;
+- (void).cxx_destruct;
 - (id)get;
 @property(readonly, nonatomic) float opacity;
 @property(readonly, nonatomic) TSDStroke *stroke;
 @property(readonly, nonatomic) _Bool enabled;
-- (void)dealloc;
 - (id)initWithAxisEnumerator:(id)arg1;
 
 @end

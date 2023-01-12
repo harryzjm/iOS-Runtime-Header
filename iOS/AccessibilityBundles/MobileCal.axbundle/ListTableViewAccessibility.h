@@ -11,6 +11,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityFirstContainedElementForTechnology:(id)arg1 honoringGroups:(_Bool)arg2 shouldAlwaysScroll:(_Bool)arg3;
+- (id)accessibilityLabel;
+- (long long)accessibilityContainerType;
 - (_Bool)_accessibilityOpaqueElementScrollsContentIntoView;
 
 @end

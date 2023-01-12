@@ -19,6 +19,7 @@
 - (void)audioSessionEventProvidingWillSetAudioSessionActive:(_Bool)arg1;
 - (void)_stopMonitoring;
 - (void)_startMonitoringWithQueue:(id)arg1;
+- (id)initWithCrashMonitor:(id)arg1;
 - (id)init;
 
 // Remaining properties

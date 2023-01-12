@@ -6,7 +6,7 @@
 
 #import <VideoSubscriberAccount/VSAsyncOperation.h>
 
-@class NSArray, NSOperationQueue, NSXPCConnection, VSAuditToken, VSIdentityProviderAvailabilityInfoCenter, VSOptional, VSStoreURLBag;
+@class NSArray, NSOperationQueue, NSXPCConnection, VSAuditToken, VSIdentityProviderAvailabilityInfoCenter, VSOptional;
 
 __attribute__((visibility("hidden")))
 @interface VSViewServiceRequestPreparationOperation : VSAsyncOperation
@@ -20,17 +20,16 @@ __attribute__((visibility("hidden")))
     VSAuditToken *_auditToken;
     NSArray *_supportedIdentityProviderIdentifiers;
     NSArray *_featuredIdentityProviderIdentifiers;
+    NSArray *_applicationAccountProviders;
     VSOptional *_currentAccount;
     VSOptional *_result;
     NSOperationQueue *_privateQueue;
     NSXPCConnection *_privacyServiceConnection;
     VSIdentityProviderAvailabilityInfoCenter *_availabilityInfoCenter;
-    VSStoreURLBag *_bag;
     CDStruct_4c969caf _hostAuditToken;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) VSStoreURLBag *bag; // @synthesize bag=_bag;
 @property(retain, nonatomic) VSIdentityProviderAvailabilityInfoCenter *availabilityInfoCenter; // @synthesize availabilityInfoCenter=_availabilityInfoCenter;
 @property(retain, nonatomic) NSXPCConnection *privacyServiceConnection; // @synthesize privacyServiceConnection=_privacyServiceConnection;
 @property(retain, nonatomic) NSOperationQueue *privateQueue; // @synthesize privateQueue=_privateQueue;
@@ -39,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isAccountModificationAllowed) _Bool accountModificationAllowed; // @synthesize accountModificationAllowed=_accountModificationAllowed;
 @property(nonatomic) _Bool shouldReturnErrorOnTVProviderFeatureUnsupportedByStorefront; // @synthesize shouldReturnErrorOnTVProviderFeatureUnsupportedByStorefront=_shouldReturnErrorOnTVProviderFeatureUnsupportedByStorefront;
 @property(nonatomic) _Bool shouldInferFeaturedProviders; // @synthesize shouldInferFeaturedProviders=_shouldInferFeaturedProviders;
+@property(copy, nonatomic) NSArray *applicationAccountProviders; // @synthesize applicationAccountProviders=_applicationAccountProviders;
 @property(copy, nonatomic) NSArray *featuredIdentityProviderIdentifiers; // @synthesize featuredIdentityProviderIdentifiers=_featuredIdentityProviderIdentifiers;
 @property(copy, nonatomic) NSArray *supportedIdentityProviderIdentifiers; // @synthesize supportedIdentityProviderIdentifiers=_supportedIdentityProviderIdentifiers;
 @property(nonatomic) _Bool requestRequiresPrivacyUI; // @synthesize requestRequiresPrivacyUI=_requestRequiresPrivacyUI;

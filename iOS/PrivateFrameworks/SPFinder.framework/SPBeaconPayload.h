@@ -12,6 +12,7 @@
 
 @interface SPBeaconPayload : NSObject <NSSecureCoding>
 {
+    _Bool _refreshGeotag;
     SPAdvertisement *_advertisement;
     SPEstimatedLocation *_location;
     long long _observationValue;
@@ -19,6 +20,7 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool refreshGeotag; // @synthesize refreshGeotag=_refreshGeotag;
 @property(nonatomic) long long observationValue; // @synthesize observationValue=_observationValue;
 @property(copy, nonatomic) SPEstimatedLocation *location; // @synthesize location=_location;
 @property(retain, nonatomic) SPAdvertisement *advertisement; // @synthesize advertisement=_advertisement;

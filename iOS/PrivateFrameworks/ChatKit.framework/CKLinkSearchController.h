@@ -8,6 +8,11 @@
 {
 }
 
++ (_Bool)handleSelectionForResult:(id)arg1;
++ (id)previewViewControllerForResult:(id)arg1;
++ (id)_activityItemProviderForResult:(id)arg1;
++ (id)itemProviderForSearchResult:(id)arg1;
++ (id)_additionalMenuElementsForResult:(id)arg1;
 + (Class)cellClass;
 + (id)indexingString;
 + (id)reuseIdentifier;
@@ -18,9 +23,10 @@
 - (_Bool)shouldStartMenuInteractionForResult:(id)arg1;
 - (void)deleteAttachmentForResult:(id)arg1;
 - (id)_activityItemProviderForResult:(id)arg1;
-- (id)_pasteboardItemsForResult:(id)arg1;
+- (id)itemProviderForSearchResult:(id)arg1;
 - (id)_additionalMenuElementsForResult:(id)arg1;
 - (Class)_richLinkDatasourceClass;
+- (void)fractionalWidth:(double *)arg1 count:(unsigned long long *)arg2 forLayoutWidth:(unsigned long long)arg3;
 - (id)layoutGroupWithEnvironment:(id)arg1;
 - (void)updateSupplementryViewIfNeeded:(id)arg1 atIndexPath:(id)arg2;
 - (id)cellForSupplementryItemInCollectionView:(id)arg1 atIndexPath:(id)arg2 supplementryViewKind:(id)arg3;

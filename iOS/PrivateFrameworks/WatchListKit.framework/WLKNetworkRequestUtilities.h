@@ -10,8 +10,10 @@
 {
 }
 
++ (id)_sharedCacheSessionConfiguration;
++ (id)_defaultAppSessionConfiguration;
++ (id)defaultSessionConfiguration;
 + (id)configurationBaseURLString;
-+ (id)sharedCacheSessionConfiguration;
 + (void)startNetworkRequest:(id)arg1 account:(id)arg2 sessionConfiguration:(id)arg3 options:(long long)arg4 completion:(CDUnknownBlockType)arg5;
 
 @end

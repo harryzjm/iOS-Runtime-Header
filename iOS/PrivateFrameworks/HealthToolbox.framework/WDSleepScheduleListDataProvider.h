@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDateFormatter;
+@class NSCalendar, NSDateFormatter;
 
 __attribute__((visibility("hidden")))
 @interface WDSleepScheduleListDataProvider
 {
     NSDateFormatter *_standaloneFormatter;
     NSDateFormatter *_listItemFormatter;
+    NSCalendar *_gregorianCalender;
 }
 
 - (void).cxx_destruct;

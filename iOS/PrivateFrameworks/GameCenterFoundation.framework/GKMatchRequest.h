@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <GameCenterFoundation/GKReportable-Protocol.h>
+
 @class GKMatchRequestInternal, GKTournament, NSArray, NSString;
 
-@interface GKMatchRequest : NSObject
+@interface GKMatchRequest : NSObject <GKReportable>
 {
     GKMatchRequestInternal *_internal;
     CDUnknownBlockType _inviteeResponseHandler;
@@ -18,6 +20,7 @@
 + (_Bool)instancesRespondToSelector:(SEL)arg1;
 + (id)instanceMethodSignatureForSelector:(SEL)arg1;
 + (unsigned long long)maxPlayersAllowedForMatchOfType:(unsigned long long)arg1;
++ (id)reportableKeyPaths;
 - (void).cxx_destruct;
 @property(copy) CDUnknownBlockType recipientResponseHandler; // @synthesize recipientResponseHandler=_recipientResponseHandler;
 @property(copy) CDUnknownBlockType inviteeResponseHandler; // @synthesize inviteeResponseHandler=_inviteeResponseHandler;

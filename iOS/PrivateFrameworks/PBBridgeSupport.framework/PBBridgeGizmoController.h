@@ -45,6 +45,7 @@
 @property(readonly, nonatomic) NSString *regionIdentifer; // @synthesize regionIdentifer=_regionIdentifer;
 @property(readonly, nonatomic) NSString *languageIdentifer; // @synthesize languageIdentifer=_languageIdentifer;
 @property(nonatomic) __weak id <PBBridgeConnectionDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)provideAppViewListImage:(id)arg1;
 - (void)handleBuysOnWatchIngestion:(id)arg1;
 - (void)ingestTinkerCredentials:(id)arg1;
 - (void)setComputedTimeZone:(id)arg1;
@@ -81,6 +82,7 @@
 - (void)tellCompanionThatGizmoFailedToCreatePasscode:(int)arg1;
 - (void)tellCompanionThatGizmoFinishedSettingPasscode:(_Bool)arg1 isLong:(_Bool)arg2;
 - (id)customDescriptionOfMessageType:(unsigned short)arg1;
+- (void)handleSetLauncherViewModeForTinker:(id)arg1;
 - (_Bool)tellCompanionThatLanguageAndLanguageCompletedWithStatus:(unsigned short)arg1;
 - (void)companionDidSendTinkerWirelessCredentials:(id)arg1;
 - (void)companionDidSendWirelessCredentials:(id)arg1;

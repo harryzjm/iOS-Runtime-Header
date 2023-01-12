@@ -10,7 +10,6 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDPUserAlias : PBCodable <NSCopying>
 {
     NSString *_identifier;

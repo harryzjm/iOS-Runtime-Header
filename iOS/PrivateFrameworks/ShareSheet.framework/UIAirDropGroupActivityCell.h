@@ -6,18 +6,21 @@
 
 #import <UIKitCore/UICollectionViewCell.h>
 
-@class NSArray, UIAirDropNode, UILabel, UIView, UIVisualEffectView, _UIAirDropProgressView;
+@class NSArray, NSUUID, UIAirDropNode, UILabel, UIView, UIVisualEffectView, _UIAirDropProgressView;
 
 @interface UIAirDropGroupActivityCell : UICollectionViewCell
 {
     _Bool _stateBeingRestored;
     _Bool _disabled;
+    _Bool _squareImage;
+    NSUUID *_itemIdentifier;
     UILabel *_nameLabel;
     UIView *_titleSlotView;
     UIView *_subtitleSlotView;
     UIView *_displayNameSlotView;
     UIView *_imageSlotView;
     UIView *_transportSlotView;
+    UIView *_placeholderView;
     UIAirDropNode *_node;
     double _progress;
     UIVisualEffectView *_vibrantTitleView;
@@ -39,16 +42,19 @@
 @property(retain, nonatomic) UILabel *secondLabel; // @synthesize secondLabel=_secondLabel;
 @property(retain, nonatomic) UIVisualEffectView *vibrantSubtitleView; // @synthesize vibrantSubtitleView=_vibrantSubtitleView;
 @property(retain, nonatomic) UIVisualEffectView *vibrantTitleView; // @synthesize vibrantTitleView=_vibrantTitleView;
+@property(nonatomic) _Bool squareImage; // @synthesize squareImage=_squareImage;
 @property(nonatomic, getter=isDisabled) _Bool disabled; // @synthesize disabled=_disabled;
 @property(nonatomic) _Bool stateBeingRestored; // @synthesize stateBeingRestored=_stateBeingRestored;
 @property(nonatomic) double progress; // @synthesize progress=_progress;
 @property(retain, nonatomic) UIAirDropNode *node; // @synthesize node=_node;
+@property(retain, nonatomic) UIView *placeholderView; // @synthesize placeholderView=_placeholderView;
 @property(retain, nonatomic) UIView *transportSlotView; // @synthesize transportSlotView=_transportSlotView;
 @property(retain, nonatomic) UIView *imageSlotView; // @synthesize imageSlotView=_imageSlotView;
 @property(retain, nonatomic) UIView *displayNameSlotView; // @synthesize displayNameSlotView=_displayNameSlotView;
 @property(retain, nonatomic) UIView *subtitleSlotView; // @synthesize subtitleSlotView=_subtitleSlotView;
 @property(retain, nonatomic) UIView *titleSlotView; // @synthesize titleSlotView=_titleSlotView;
 @property(retain, nonatomic) UILabel *nameLabel; // @synthesize nameLabel=_nameLabel;
+@property(retain, nonatomic) NSUUID *itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
 - (void)setTransportSlotHidden:(_Bool)arg1 animated:(_Bool)arg2 useDelay:(_Bool)arg3;
 - (void)setSelected:(_Bool)arg1;
 - (void)setHighlighted:(_Bool)arg1;
@@ -59,6 +65,7 @@
 - (void)prepareForReuse;
 - (void)setupConstraintsYukon;
 - (id)initWithFrame:(struct CGRect)arg1;
+@property(readonly, nonatomic) double circleWidth;
 
 @end
 

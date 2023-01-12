@@ -30,11 +30,13 @@
     NSNumber *_entityConfidenceSignalsFrequencyDenominatorInternal;
     NSNumber *_entityConfidenceSignalsFrequencyDenominatorProd;
     NSNumber *_entityConfidenceSignalsMaxItemsToDisambiguate;
+    NSString *_alternativeProviderBundleIdentifier;
 }
 
 + (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *alternativeProviderBundleIdentifier; // @synthesize alternativeProviderBundleIdentifier=_alternativeProviderBundleIdentifier;
 @property(readonly, copy, nonatomic) NSNumber *entityConfidenceSignalsMaxItemsToDisambiguate; // @synthesize entityConfidenceSignalsMaxItemsToDisambiguate=_entityConfidenceSignalsMaxItemsToDisambiguate;
 @property(readonly, copy, nonatomic) NSNumber *entityConfidenceSignalsFrequencyDenominatorProd; // @synthesize entityConfidenceSignalsFrequencyDenominatorProd=_entityConfidenceSignalsFrequencyDenominatorProd;
 @property(readonly, copy, nonatomic) NSNumber *entityConfidenceSignalsFrequencyDenominatorInternal; // @synthesize entityConfidenceSignalsFrequencyDenominatorInternal=_entityConfidenceSignalsFrequencyDenominatorInternal;
@@ -59,8 +61,9 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
-- (id)initWithAppSelectionEnabled:(id)arg1 appInferred:(id)arg2 audioSearchResults:(id)arg3;
 - (id)initWithAppSelectionEnabled:(id)arg1 appInferred:(id)arg2 audioSearchResults:(id)arg3 privateMediaIntentData:(id)arg4 appSelectionSignalsEnabled:(id)arg5 appSelectionSignalsFrequencyDenominator:(id)arg6 shouldSuppressCommonWholeHouseAudioRoutes:(id)arg7 immediatelyStartPlayback:(id)arg8 isAmbiguousPlay:(id)arg9 isPersonalizedRequest:(id)arg10 internalSignals:(id)arg11 entityConfidenceSignalsEnabled:(id)arg12 entityConfidenceSignalsFrequencyDenominatorInternal:(id)arg13 entityConfidenceSignalsFrequencyDenominatorProd:(id)arg14 entityConfidenceSignalsMaxItemsToDisambiguate:(id)arg15;
+- (id)initWithAppSelectionEnabled:(id)arg1 appInferred:(id)arg2 audioSearchResults:(id)arg3;
+- (id)initWithAppSelectionEnabled:(id)arg1 appInferred:(id)arg2 audioSearchResults:(id)arg3 privateMediaIntentData:(id)arg4 appSelectionSignalsEnabled:(id)arg5 appSelectionSignalsFrequencyDenominator:(id)arg6 shouldSuppressCommonWholeHouseAudioRoutes:(id)arg7 immediatelyStartPlayback:(id)arg8 isAmbiguousPlay:(id)arg9 isPersonalizedRequest:(id)arg10 internalSignals:(id)arg11 entityConfidenceSignalsEnabled:(id)arg12 entityConfidenceSignalsFrequencyDenominatorInternal:(id)arg13 entityConfidenceSignalsFrequencyDenominatorProd:(id)arg14 entityConfidenceSignalsMaxItemsToDisambiguate:(id)arg15 alternativeProviderBundleIdentifier:(id)arg16;
 - (id)initWithAppSelectionEnabled:(id)arg1 appInferred:(id)arg2 audioSearchResults:(id)arg3 privateMediaIntentData:(id)arg4 appSelectionSignalsEnabled:(id)arg5 appSelectionSignalsFrequencyDenominator:(id)arg6 shouldSuppressCommonWholeHouseAudioRoutes:(id)arg7 immediatelyStartPlayback:(id)arg8 isAmbiguousPlay:(id)arg9 isPersonalizedRequest:(id)arg10;
 - (id)initWithAppSelectionEnabled:(id)arg1 appInferred:(id)arg2 audioSearchResults:(id)arg3 privateMediaIntentData:(id)arg4 appSelectionSignalsEnabled:(id)arg5 appSelectionSignalsFrequencyDenominator:(id)arg6 shouldSuppressCommonWholeHouseAudioRoutes:(id)arg7 immediatelyStartPlayback:(id)arg8 isAmbiguousPlay:(id)arg9;
 - (id)initWithAppSelectionEnabled:(id)arg1 appInferred:(id)arg2 audioSearchResults:(id)arg3 privateMediaIntentData:(id)arg4 appSelectionSignalsEnabled:(id)arg5 appSelectionSignalsFrequencyDenominator:(id)arg6 shouldSuppressCommonWholeHouseAudioRoutes:(id)arg7 immediatelyStartPlayback:(id)arg8;

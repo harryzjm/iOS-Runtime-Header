@@ -10,10 +10,10 @@
     struct CKTextComponentAccessibilityContext _accessibilityContext;
 }
 
-+ (id)newWithTextAttributes:(const struct CKTextKitAttributes *)arg1 viewAttributes:(const unordered_map_b2cee720 *)arg2 options:(const struct CKTextComponentOptions *)arg3 size:(const struct CKComponentSize *)arg4;
++ (id)newWithTextAttributes:(const struct CKTextKitAttributes *)arg1 viewAttributes:(const void *)arg2 options:(const struct CKTextComponentOptions *)arg3 size:(const struct CKComponentSize *)arg4;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (struct MountResult)mountInContext:(const struct MountContext *)arg1 size:(struct CGSize)arg2 children:(shared_ptr_6a94d7a4)arg3 supercomponent:(id)arg4;
+- (struct MountResult)mountInContext:(const void *)arg1 size:(struct CGSize)arg2 children:(shared_ptr_3e79f8e7)arg3 supercomponent:(id)arg4;
 - (struct CKComponentLayout)computeLayoutThatFits:(struct CKSizeRange)arg1;
 - (void)wf_applyVisualStying:(id)arg1;
 

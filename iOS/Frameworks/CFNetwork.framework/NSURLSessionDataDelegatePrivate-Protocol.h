@@ -6,12 +6,13 @@
 
 #import <CFNetwork/NSURLSessionDataDelegate-Protocol.h>
 
-@class NSError, NSURLSession, NSURLSessionDataTask;
+@class NSData, NSError, NSURLSession, NSURLSessionDataTask;
 
 @protocol NSURLSessionDataDelegatePrivate <NSURLSessionDataDelegate>
 
 @optional
 - (void)URLSession:(NSURLSession *)arg1 _willRetryBackgroundDataTask:(NSURLSessionDataTask *)arg2;
 - (void)URLSession:(NSURLSession *)arg1 _willRetryBackgroundDataTask:(NSURLSessionDataTask *)arg2 withError:(NSError *)arg3;
+- (void)URLSession:(NSURLSession *)arg1 dataTask:(NSURLSessionDataTask *)arg2 _didReceiveData:(NSData *)arg3 completionHandler:(void (^)(void))arg4;
 @end
 

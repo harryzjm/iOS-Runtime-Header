@@ -8,23 +8,39 @@
 
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSData;
+@class NSArray, NSData, NSString;
 
 @interface HMFWoWLANInfo : HMFObject <NSSecureCoding>
 {
+    _Bool _supportsSleepConfig;
+    unsigned char _version;
+    unsigned short _wakePort;
     NSData *_primaryMACAddress;
     NSArray *_additionalMACAddresses;
+    NSData *_wakeAddress;
+    long long _wakeType;
+    long long _wakePacketType;
+    NSData *_wakePattern;
 }
 
-+ (id)shortDescription;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSData *wakePattern; // @synthesize wakePattern=_wakePattern;
+@property(readonly, nonatomic) unsigned char version; // @synthesize version=_version;
+@property(readonly, nonatomic) long long wakePacketType; // @synthesize wakePacketType=_wakePacketType;
+@property(readonly, nonatomic) long long wakeType; // @synthesize wakeType=_wakeType;
+@property(retain, nonatomic) NSData *wakeAddress; // @synthesize wakeAddress=_wakeAddress;
+@property(readonly, nonatomic) unsigned short wakePort; // @synthesize wakePort=_wakePort;
+@property(readonly, nonatomic) _Bool supportsSleepConfig; // @synthesize supportsSleepConfig=_supportsSleepConfig;
 @property(readonly, nonatomic) NSArray *additionalMACAddresses; // @synthesize additionalMACAddresses=_additionalMACAddresses;
 @property(readonly, nonatomic) NSData *primaryMACAddress; // @synthesize primaryMACAddress=_primaryMACAddress;
+- (id)description;
+@property(readonly, nonatomic) NSString *wakeAddressString;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
+- (id)initWithWakeVersion:(unsigned char)arg1 wakePort:(unsigned short)arg2 wakeAddress:(id)arg3 wakeType:(long long)arg4 wakePacketType:(long long)arg5 wakePattern:(id)arg6;
 - (id)initWithPrimaryIdentifier:(id)arg1 wifiIdentifiers:(id)arg2;
 
 @end

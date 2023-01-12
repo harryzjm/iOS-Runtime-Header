@@ -36,17 +36,23 @@
 - (id)safari_URLByReplacingSchemeWithString:(id)arg1;
 - (id)safari_URLByReplacingHostWithString:(id)arg1;
 - (id)safari_URLByRemovingUserAndPath;
+@property(readonly, nonatomic) _Bool safari_isOTPAuthURL;
 @property(readonly, nonatomic) _Bool safari_isEligibleToShowNotSecureWarning;
 @property(readonly, nonatomic) _Bool safari_isLocalOrPrivateNetworkURL;
+@property(readonly, nonatomic) _Bool safari_isSafariExtensionURL;
+@property(readonly, nonatomic) _Bool safari_isSafariWebExtensionURL;
 @property(readonly, nonatomic) _Bool safari_isSafariResourceURL;
-- (_Bool)safari_isMailtoURL;
+@property(readonly, nonatomic) _Bool safari_isMailtoURL;
 @property(readonly, nonatomic) _Bool safari_isBlobURL;
 @property(readonly, nonatomic) _Bool safari_hasCustomScheme;
-- (_Bool)safari_isDataURL;
-- (_Bool)safari_isHTTPURL;
-- (_Bool)safari_isHTTPFamilyURL;
-- (_Bool)safari_hasLocalScheme;
+@property(readonly, nonatomic) _Bool safari_isDataURL;
+@property(readonly, nonatomic) _Bool safari_isSecureURL;
+@property(readonly, nonatomic) _Bool safari_isHTTPSURL;
+@property(readonly, nonatomic) _Bool safari_isHTTPURL;
+@property(readonly, nonatomic) _Bool safari_isHTTPFamilyURL;
+@property(readonly, nonatomic) _Bool safari_hasLocalScheme;
 - (_Bool)safari_hasScheme:(id)arg1;
+@property(readonly, nonatomic) NSString *safari_fileType;
 - (id)safari_path;
 @end
 

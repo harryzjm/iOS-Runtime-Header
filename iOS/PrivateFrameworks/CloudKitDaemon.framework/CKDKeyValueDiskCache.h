@@ -6,19 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class CKDClientContext, NSString, PQLConnection;
+@class CKDContainer, NSString, PQLConnection;
 
-__attribute__((visibility("hidden")))
 @interface CKDKeyValueDiskCache : NSObject
 {
     double _expirationTimeout;
     PQLConnection *_db;
     NSString *_identifier;
-    CKDClientContext *_context;
+    CKDContainer *_container;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) __weak CKDClientContext *context; // @synthesize context=_context;
+@property(nonatomic) __weak CKDContainer *container; // @synthesize container=_container;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) PQLConnection *db; // @synthesize db=_db;
 @property(nonatomic) double expirationTimeout; // @synthesize expirationTimeout=_expirationTimeout;
@@ -30,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)setupCacheWithError:(id *)arg1;
 - (id)dbPath;
 - (void)dealloc;
-- (id)initWithIdentifier:(id)arg1 context:(id)arg2;
+- (id)initWithIdentifier:(id)arg1 container:(id)arg2;
 
 @end
 

@@ -15,14 +15,19 @@
 }
 
 - (void).cxx_destruct;
+- (void)_startObservingSystemControllerLifecycle;
+- (void)_systemControllerDied:(id)arg1;
 - (void)_notifyJarvisConnectionState:(_Bool)arg1;
 - (void)_notifyHearstConnectionState:(_Bool)arg1;
 - (_Bool)_fetchJarvisConnectionState;
 - (_Bool)_fetchHearstConnectionState;
 - (void)_stopMonitoring;
+- (void)_startObservingAudioRouteChange;
 - (void)_startMonitoringWithQueue:(id)arg1;
-- (void)carPlayAudioRouteDidChange:(id)arg1;
+- (void)carPlayIsConnectedDidChange:(id)arg1;
+- (void)carPlayAuxStreamSupportDidChange:(id)arg1;
 - (void)preferredExternalRouteDidChange:(id)arg1;
+- (_Bool)carPlayConnected;
 - (_Bool)jarvisConnected;
 - (void)getJarvisConnected:(CDUnknownBlockType)arg1;
 - (_Bool)hearstConnected;

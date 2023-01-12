@@ -14,6 +14,8 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)_axPlayPauseButton;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (id)accessibilityElements;
+- (_Bool)isAccessibilityElement;
 
 @end
 

@@ -164,8 +164,8 @@
 - (void)playBorderHitSoundForBrailleDisplay:(id)arg1;
 - (id)newBrailleDisplayCommandDispatcher;
 - (id)brailleInputManager;
-- (void)brailleDisplay:(id)arg1 didPanRight:(id)arg2 elementToken:(id)arg3 appToken:(id)arg4;
-- (void)brailleDisplay:(id)arg1 didPanLeft:(id)arg2 elementToken:(id)arg3 appToken:(id)arg4;
+- (void)brailleDisplay:(id)arg1 didPanRight:(id)arg2 elementToken:(id)arg3 appToken:(id)arg4 lineOffset:(id)arg5;
+- (void)brailleDisplay:(id)arg1 didPanLeft:(id)arg2 elementToken:(id)arg3 appToken:(id)arg4 lineOffset:(id)arg5;
 - (void)brailleDisplay:(id)arg1 didDisplay:(id)arg2;
 - (void)brailleDisplay:(id)arg1 memorizedKey:(id)arg2;
 - (void)brailleDisplay:(id)arg1 willMemorizeKey:(id)arg2;
@@ -174,6 +174,7 @@
 - (void)brailleDisplay:(id)arg1 insertedUntranslatedText:(id)arg2 speakLiterally:(_Bool)arg3;
 - (void)brailleDisplay:(id)arg1 didReplaceRange:(struct _NSRange)arg2 withString:(id)arg3 cursor:(unsigned long long)arg4;
 - (void)brailleDidStartEditingWithDisplay:(id)arg1;
+- (void)brailleDisplayHadUserInteraction:(id)arg1;
 - (void)brailleDisplay:(id)arg1 pressedKeys:(id)arg2;
 - (void)brailleDisplay:(id)arg1 didMoveSelection:(unsigned long long)arg2;
 - (void)configurationChangedForBrailleDisplay:(id)arg1;

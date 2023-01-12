@@ -23,7 +23,8 @@
     _Bool _scheduleMigration;
     _Bool _scheduleChangePast24Hours;
     _Bool _scheduleChangePast7days;
-    _Bool _interactionWithWindDownLast24hrs;
+    _Bool _interactedWithWindDownLast24Hrs;
+    _Bool _useSleepScreen;
     _Bool _alarmFriday;
     _Bool _alarmMonday;
     _Bool _alarmSaturday;
@@ -45,6 +46,7 @@
     _Bool _isDefaultScheduleThursday;
     _Bool _isDefaultScheduleTuesday;
     _Bool _isDefaultScheduleWednesday;
+    _Bool _didWearWatchToSleepLastNight;
     NSNumber *_userAge;
     NSString *_biologicalSex;
     NSNumber *_weeksSinceOnboardedSleepSchedule;
@@ -62,9 +64,14 @@
     NSNumber *_stddevActualTimeAsleep;
     NSNumber *_stddevScheduledTimeAsleep;
     NSNumber *_stddevActualVsScheduledTimeAsleep;
+    long long _daysWornWatchToSleepInLast7Days;
+    long long _weekendDaysWornWatchToSleepInLast7Days;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool didWearWatchToSleepLastNight; // @synthesize didWearWatchToSleepLastNight=_didWearWatchToSleepLastNight;
+@property(nonatomic) long long weekendDaysWornWatchToSleepInLast7Days; // @synthesize weekendDaysWornWatchToSleepInLast7Days=_weekendDaysWornWatchToSleepInLast7Days;
+@property(nonatomic) long long daysWornWatchToSleepInLast7Days; // @synthesize daysWornWatchToSleepInLast7Days=_daysWornWatchToSleepInLast7Days;
 @property(copy, nonatomic) NSNumber *stddevActualVsScheduledTimeAsleep; // @synthesize stddevActualVsScheduledTimeAsleep=_stddevActualVsScheduledTimeAsleep;
 @property(copy, nonatomic) NSNumber *stddevScheduledTimeAsleep; // @synthesize stddevScheduledTimeAsleep=_stddevScheduledTimeAsleep;
 @property(copy, nonatomic) NSNumber *stddevActualTimeAsleep; // @synthesize stddevActualTimeAsleep=_stddevActualTimeAsleep;
@@ -96,7 +103,8 @@
 @property(nonatomic) _Bool alarmSaturday; // @synthesize alarmSaturday=_alarmSaturday;
 @property(nonatomic) _Bool alarmMonday; // @synthesize alarmMonday=_alarmMonday;
 @property(nonatomic) _Bool alarmFriday; // @synthesize alarmFriday=_alarmFriday;
-@property(nonatomic) _Bool interactionWithWindDownLast24hrs; // @synthesize interactionWithWindDownLast24hrs=_interactionWithWindDownLast24hrs;
+@property(nonatomic) _Bool useSleepScreen; // @synthesize useSleepScreen=_useSleepScreen;
+@property(nonatomic) _Bool interactedWithWindDownLast24Hrs; // @synthesize interactedWithWindDownLast24Hrs=_interactedWithWindDownLast24Hrs;
 @property(nonatomic) _Bool scheduleChangePast7days; // @synthesize scheduleChangePast7days=_scheduleChangePast7days;
 @property(nonatomic) _Bool scheduleChangePast24Hours; // @synthesize scheduleChangePast24Hours=_scheduleChangePast24Hours;
 @property(nonatomic) _Bool scheduleMigration; // @synthesize scheduleMigration=_scheduleMigration;

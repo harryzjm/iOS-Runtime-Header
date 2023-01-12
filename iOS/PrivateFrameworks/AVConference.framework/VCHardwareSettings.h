@@ -18,6 +18,34 @@ __attribute__((visibility("hidden")))
     _Bool _vcpSupportsHEVCEncoder;
 }
 
++ (_Bool)supportsPortraitCameraCapture;
++ (_Bool)isVideoRenderingSupported;
++ (unsigned int)maxActiveVideoDecoders;
++ (unsigned int)maxActiveVideoEncoders;
++ (long long)screenShareCapabilities;
++ (float)previewPreferredAspectRatio;
++ (_Bool)disableMLScalarDuringSharing;
++ (_Bool)supportsDedicatedSystemAudioStream;
++ (_Bool)limitCameraDownlinkBitrateDuringSharing;
++ (id)supportedVideoPayloads;
++ (unsigned int)maxMultiwayFramerateSupported;
++ (unsigned int)maxOneToOneFramerateSupported;
++ (_Bool)supportsHEVCDecoding;
++ (_Bool)supportsHEVCEncoding;
++ (_Bool)supportsHEIFEncoding;
++ (_Bool)isCaptureSIFRPreferred;
++ (_Bool)isSpatialAudioSupported;
++ (_Bool)isDisplayPortrait;
++ (unsigned int)maxFrameRateSupportedBackgroundBlur;
++ (unsigned int)maxActiveScreenEncoders;
++ (unsigned int)maxFrameRateSupportedScreenShare;
++ (unsigned long long)maxScreenEncodingSizeSupported;
++ (unsigned int)mainDisplayHeight;
++ (unsigned int)mainDisplayWidth;
++ (unsigned int)screenHeight;
++ (unsigned int)screenWidth;
++ (_Bool)disableViewPointCorrectionForSharing;
++ (unsigned int)maxFpsCameraCaptureDuringSharing;
 + (unsigned int)maxRemoteParticipants30fps;
 + (unsigned int)builtinMicCount;
 + (long long)deviceClass;
@@ -25,7 +53,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool vcpSupportsHEVCEncoder; // @synthesize vcpSupportsHEVCEncoder=_vcpSupportsHEVCEncoder;
 @property(readonly, nonatomic) _Bool isVideoRenderingSupported;
 - (unsigned int)maxNetworkBitrateMultiwayVideoOnWifi:(_Bool)arg1;
-- (unsigned int)maxNetworkBitrateMultiwayAudioOnWifi:(_Bool)arg1;
+- (unsigned int)maxNetworkBitrateMultiwayAudioOnWifi:(_Bool)arg1 isLowLatencyAudio:(_Bool)arg2;
 - (_Bool)storeHardwareSettingsForAllOperatingModes;
 - (unsigned int)tilesPerVideoFrame:(int)arg1 hdrMode:(unsigned long long)arg2;
 - (unsigned int)tilesPerVideoFrame:(int)arg1;

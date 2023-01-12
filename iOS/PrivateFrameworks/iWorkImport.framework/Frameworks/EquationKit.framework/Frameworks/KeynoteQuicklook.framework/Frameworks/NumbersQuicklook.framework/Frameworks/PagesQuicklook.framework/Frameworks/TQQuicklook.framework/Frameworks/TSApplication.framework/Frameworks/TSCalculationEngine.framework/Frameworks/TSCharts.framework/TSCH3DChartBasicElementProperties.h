@@ -8,18 +8,19 @@
 
 @interface TSCH3DChartBasicElementProperties
 {
-    TSCH3DChartModelEnumerator *mEnumerator;
-    tvec2_3b141483 mSize;
+    TSCH3DChartModelEnumerator *_enumerator;
+    tvec2_3b141483 _size;
 }
 
 - (id).cxx_construct;
-@property(readonly, nonatomic) tvec2_3b141483 size; // @synthesize size=mSize;
-- (id)texcoordsForSeries:(id)arg1 index:(const tvec2_3b141483 *)arg2;
-- (id)normalsForSeries:(id)arg1 index:(const tvec2_3b141483 *)arg2;
-- (id)boundsGeometryForSeries:(id)arg1 index:(const tvec2_3b141483 *)arg2;
-- (id)geometryForSeries:(id)arg1 index:(const tvec2_3b141483 *)arg2;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) tvec2_3b141483 size; // @synthesize size=_size;
+- (id)texcoordsForSeries:(id)arg1 index:(const void *)arg2;
+- (id)normalsForSeries:(id)arg1 index:(const void *)arg2;
+- (id)boundsGeometryForSeries:(id)arg1 index:(const void *)arg2;
+- (id)geometryForSeries:(id)arg1 index:(const void *)arg2;
 - (void)createResources;
-- (void)resetWithEnumerator:(id)arg1 layoutSettings:(CDStruct_b1c75024)arg2;
+- (void)resetWithEnumerator:(id)arg1 layoutSettings:(CDStruct_c48db077)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 

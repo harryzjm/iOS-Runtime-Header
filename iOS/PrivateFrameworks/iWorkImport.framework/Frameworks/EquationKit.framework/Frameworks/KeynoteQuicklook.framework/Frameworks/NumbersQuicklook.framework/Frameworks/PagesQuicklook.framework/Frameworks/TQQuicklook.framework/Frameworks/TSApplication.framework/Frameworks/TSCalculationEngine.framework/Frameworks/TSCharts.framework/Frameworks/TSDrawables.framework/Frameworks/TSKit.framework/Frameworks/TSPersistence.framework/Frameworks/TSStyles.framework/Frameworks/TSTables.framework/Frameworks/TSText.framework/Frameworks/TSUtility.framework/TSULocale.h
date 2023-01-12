@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSCache, NSLocale, NSLock, NSMutableArray, NSMutableDictionary, NSString, NSTimeZone, TSUDateParserLibrary, TSUDecimalFormatter, TSUFormattingSymbols;
+@class NSArray, NSCache, NSLocale, NSLock, NSMutableArray, NSMutableDictionary, NSRecursiveLock, NSString, NSTimeZone, TSUDateParserLibrary, TSUDecimalFormatter, TSUFormattingSymbols;
 
 @interface TSULocale : NSObject
 {
@@ -36,6 +36,7 @@
     NSLock *_localeSpecificStorageLock;
     NSMutableDictionary *_localeSpecificStorage;
     NSCache *_cachedLocalizedStrings;
+    NSRecursiveLock *_icuDateBlockUsingLock;
     _Bool _uses24HourTimeCycle;
     TSUFormattingSymbols *_formattingSymbols;
     NSString *_trueString;
@@ -60,6 +61,7 @@
 + (id)localeIDWithoutDefaultRegionCode:(id)arg1 avoidAmbiguousCases:(_Bool)arg2;
 + (id)localeIDWithDefaultRegionCode:(id)arg1;
 + (id)deducedScriptForLocale:(id)arg1;
++ (id)sanitizedLocaleIdentifierForIdentifier:(id)arg1;
 + (id)canonicalizeLocaleIdentifierWithLanguageScriptAndRegionOnly:(id)arg1;
 + (id)canonicalizeLocaleIdentifierWithLanguageAndScriptOnly:(id)arg1;
 + (id)canonicalizeLocaleIdentifierWithLanguageAndRegionOnly:(id)arg1;
@@ -87,6 +89,7 @@
 @property(readonly) NSString *languageCode; // @synthesize languageCode=_languageCode;
 @property(readonly) NSLocale *gregorianCalendarLocale; // @synthesize gregorianCalendarLocale=_gregorianCalendarLocale;
 @property(readonly) NSLocale *locale; // @synthesize locale=_locale;
+@property(readonly) _Bool currencyUsesRightToLeftWritingDirection;
 - (id)URLForResource:(id)arg1 withExtension:(id)arg2 subdirectory:(id)arg3 inBundle:(struct __CFBundle *)arg4;
 - (id)URLForResource:(id)arg1 withExtension:(id)arg2 subdirectory:(id)arg3 inBundleWithURL:(id)arg4;
 - (id)URLForResource:(id)arg1 withExtension:(id)arg2 subdirectory:(id)arg3;
@@ -98,6 +101,7 @@
 - (id)localizedStringWithFormat:(id)arg1;
 - (void)setLocaleSpecificStorage:(id)arg1 forKey:(id)arg2;
 - (id)localeSpecificStorageForKey:(id)arg1;
+- (void)performICUDateUsingBlock:(CDUnknownBlockType)arg1;
 - (id)numberFormatterStringFromDouble:(double)arg1 withFormat:(id)arg2 useDecimalPlaces:(_Bool)arg3 minDecimalPlaces:(unsigned short)arg4 decimalPlaces:(unsigned short)arg5 showThousandsSeparator:(_Bool)arg6 currencyCode:(id)arg7 suppressMinusSign:(_Bool)arg8;
 - (void)_initializeNumberFormatterStringFromDoubleCache;
 - (void)returnScientificNumberFormatter:(id)arg1;
@@ -107,7 +111,7 @@
 - (id)checkoutNumberFormatter;
 - (_Bool)isLanguageFormulasDirectionRightToLeft;
 - (_Bool)isLanguageCharacterDirectionRightToLeft;
-@property(readonly, nonatomic) const struct TSUNumberOrDateLexer *numberOrDateLexer;
+@property(readonly, nonatomic) const void *numberOrDateLexer;
 - (id)displayNameForCurrencyCode:(id)arg1;
 - (id)currencyCodeForCurrencySymbol:(id)arg1;
 - (id)currencySymbolForCurrencyCode:(id)arg1;

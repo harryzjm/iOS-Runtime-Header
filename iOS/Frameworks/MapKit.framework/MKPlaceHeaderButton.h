@@ -10,7 +10,6 @@
 
 @class MKVibrantView, NSLayoutConstraint, NSString, _MKPlaceActionButtonController;
 
-__attribute__((visibility("hidden")))
 @interface MKPlaceHeaderButton : UIButton <_MKPlaceActionControlledButton>
 {
     unsigned long long _buttonType;

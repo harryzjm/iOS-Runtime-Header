@@ -29,7 +29,7 @@
 @property(readonly, nonatomic) EMAccountRepository *accountRepository; // @synthesize accountRepository=_accountRepository;
 @property(retain, nonatomic) NSMapTable *observerMap; // @synthesize observerMap=_observerMap;
 @property(retain, nonatomic) EFPromise *mailboxesPromise; // @synthesize mailboxesPromise=_mailboxesPromise;
-@property(retain, nonatomic) id <EFCancelable> registrationCancelable; // @synthesize registrationCancelable=_registrationCancelable;
+@property(retain) id <EFCancelable> registrationCancelable; // @synthesize registrationCancelable=_registrationCancelable;
 @property(retain) EMRemoteConnection *connection; // @synthesize connection=_connection;
 @property(readonly) NSOrderedSet *mailboxesIfAvailable;
 - (id)_mailboxesFuture;
@@ -46,6 +46,7 @@
 - (id)mailboxesForObjectIDs:(id)arg1;
 - (id)mailboxForObjectID:(id)arg1;
 - (void)_prepareMailboxes:(id)arg1;
+- (void)refreshQueryWithObserver:(id)arg1;
 - (id)performQuery:(id)arg1 withObserver:(id)arg2;
 - (void)performQuery:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_restartObservingMailboxChangesIfNecessary;

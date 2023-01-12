@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface _MKSpatialColliderPairSet : NSObject
 {
-    struct unordered_set<_MKAnnotationViewPair, std::__1::hash<_MKAnnotationViewPair>, std::__1::equal_to<_MKAnnotationViewPair>, std::__1::allocator<_MKAnnotationViewPair>> _pairs;
+    struct unordered_set<_MKAnnotationViewPair, std::hash<_MKAnnotationViewPair>, std::equal_to<_MKAnnotationViewPair>, std::allocator<_MKAnnotationViewPair>> _pairs;
 }
 
 - (id).cxx_construct;

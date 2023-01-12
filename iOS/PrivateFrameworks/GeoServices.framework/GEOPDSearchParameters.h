@@ -8,19 +8,24 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDAutocompleteEntry, GEOPDETAFilter, GEOPDRecentRouteInfo, GEOPDRetainedSearchMetadata, GEOPDSInferredSignals, GEOPDSSearchEvChargingParameters, GEOPDSSearchFilter, GEOPDSSearchLocationParameters, GEOPDSSearchStructureIntentRequestType, GEOPDViewportInfo, NSData, NSString, PBDataReader, PBUnknownFields;
+@class GEOPDAutocompleteEntry, GEOPDETAFilter, GEOPDRecentRouteInfo, GEOPDResultRefinementQuery, GEOPDRetainedSearchMetadata, GEOPDSInferredSignals, GEOPDSSearchEvChargingParameters, GEOPDSSearchFilter, GEOPDSSearchLocationParameters, GEOPDSSearchStructureIntentRequestType, GEOPDViewportInfo, NSData, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDSearchParameters : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    CDStruct_95bda58d _knownRefinementTypes;
+    CDStruct_95bda58d _supportedPlaceSummaryFormatTypes;
     CDStruct_95bda58d _supportedRelatedEntitySectionTypes;
+    CDStruct_95bda58d _supportedSearchSectionTypes;
     CDStruct_95bda58d _supportedSearchTierTypes;
     GEOPDETAFilter *_etaFilter;
     GEOPDSSearchEvChargingParameters *_evChargingParameters;
     GEOPDSInferredSignals *_inferredSignals;
+    GEOPDViewportInfo *_previousSearchViewport;
     GEOPDRecentRouteInfo *_recentRouteInfo;
+    GEOPDResultRefinementQuery *_resultRefinementQuery;
     GEOPDRetainedSearchMetadata *_retainedSearch;
     GEOPDSSearchFilter *_searchFilter;
     GEOPDSSearchLocationParameters *_searchLocationParameters;
@@ -35,6 +40,7 @@ __attribute__((visibility("hidden")))
     struct os_unfair_lock_s _readerLock;
     unsigned int _auxiliaryTierNumResults;
     unsigned int _maxResults;
+    int _placeSummaryRevision;
     int _searchType;
     int _sortDirection;
     int _sortOrder;
@@ -45,6 +51,7 @@ __attribute__((visibility("hidden")))
     struct {
         unsigned int has_auxiliaryTierNumResults:1;
         unsigned int has_maxResults:1;
+        unsigned int has_placeSummaryRevision:1;
         unsigned int has_searchType:1;
         unsigned int has_sortDirection:1;
         unsigned int has_sortOrder:1;
@@ -53,12 +60,17 @@ __attribute__((visibility("hidden")))
         unsigned int has_supportSearchResultSection:1;
         unsigned int has_supportUnresolvedDirectionIntent:1;
         unsigned int read_unknownFields:1;
+        unsigned int read_knownRefinementTypes:1;
+        unsigned int read_supportedPlaceSummaryFormatTypes:1;
         unsigned int read_supportedRelatedEntitySectionTypes:1;
+        unsigned int read_supportedSearchSectionTypes:1;
         unsigned int read_supportedSearchTierTypes:1;
         unsigned int read_etaFilter:1;
         unsigned int read_evChargingParameters:1;
         unsigned int read_inferredSignals:1;
+        unsigned int read_previousSearchViewport:1;
         unsigned int read_recentRouteInfo:1;
+        unsigned int read_resultRefinementQuery:1;
         unsigned int read_retainedSearch:1;
         unsigned int read_searchFilter:1;
         unsigned int read_searchLocationParameters:1;
@@ -72,90 +84,15 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
-- (void)clearSensitiveFields;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasAuxiliaryTierNumResults;
-@property(nonatomic) unsigned int auxiliaryTierNumResults;
-- (int)StringAsSupportedSearchTierTypes:(id)arg1;
-- (id)supportedSearchTierTypesAsString:(int)arg1;
-- (void)setSupportedSearchTierTypes:(int *)arg1 count:(unsigned long long)arg2;
-- (int)supportedSearchTierTypeAtIndex:(unsigned long long)arg1;
-- (void)addSupportedSearchTierType:(int)arg1;
-- (void)clearSupportedSearchTierTypes;
-@property(readonly, nonatomic) int *supportedSearchTierTypes;
-@property(readonly, nonatomic) unsigned long long supportedSearchTierTypesCount;
-@property(retain, nonatomic) GEOPDETAFilter *etaFilter;
-@property(readonly, nonatomic) _Bool hasEtaFilter;
-@property(retain, nonatomic) GEOPDSSearchEvChargingParameters *evChargingParameters;
-@property(readonly, nonatomic) _Bool hasEvChargingParameters;
-- (int)StringAsSupportedRelatedEntitySectionTypes:(id)arg1;
-- (id)supportedRelatedEntitySectionTypesAsString:(int)arg1;
-- (void)setSupportedRelatedEntitySectionTypes:(int *)arg1 count:(unsigned long long)arg2;
-- (int)supportedRelatedEntitySectionTypeAtIndex:(unsigned long long)arg1;
-- (void)addSupportedRelatedEntitySectionType:(int)arg1;
-- (void)clearSupportedRelatedEntitySectionTypes;
-@property(readonly, nonatomic) int *supportedRelatedEntitySectionTypes;
-@property(readonly, nonatomic) unsigned long long supportedRelatedEntitySectionTypesCount;
-@property(retain, nonatomic) GEOPDSInferredSignals *inferredSignals;
-@property(readonly, nonatomic) _Bool hasInferredSignals;
-- (int)StringAsSortDirection:(id)arg1;
-- (id)sortDirectionAsString:(int)arg1;
-@property(nonatomic) _Bool hasSortDirection;
-@property(nonatomic) int sortDirection;
-@property(nonatomic) _Bool hasSupportSearchResultSection;
-@property(nonatomic) _Bool supportSearchResultSection;
-@property(nonatomic) _Bool hasSupportUnresolvedDirectionIntent;
-@property(nonatomic) _Bool supportUnresolvedDirectionIntent;
-@property(retain, nonatomic) GEOPDRetainedSearchMetadata *retainedSearch;
-@property(readonly, nonatomic) _Bool hasRetainedSearch;
-@property(nonatomic) _Bool hasSupportDirectionIntentSearch;
-@property(nonatomic) _Bool supportDirectionIntentSearch;
-@property(nonatomic) _Bool hasSupportDymSuggestion;
-@property(nonatomic) _Bool supportDymSuggestion;
-@property(retain, nonatomic) GEOPDSSearchFilter *searchFilter;
-@property(readonly, nonatomic) _Bool hasSearchFilter;
-@property(retain, nonatomic) GEOPDRecentRouteInfo *recentRouteInfo;
-@property(readonly, nonatomic) _Bool hasRecentRouteInfo;
-@property(retain, nonatomic) GEOPDSSearchLocationParameters *searchLocationParameters;
-@property(readonly, nonatomic) _Bool hasSearchLocationParameters;
-@property(retain, nonatomic) GEOPDSSearchStructureIntentRequestType *searchStructureIntentType;
-@property(readonly, nonatomic) _Bool hasSearchStructureIntentType;
-- (int)StringAsSearchType:(id)arg1;
-- (id)searchTypeAsString:(int)arg1;
-@property(nonatomic) _Bool hasSearchType;
-@property(nonatomic) int searchType;
-@property(retain, nonatomic) GEOPDAutocompleteEntry *suggestionEntry;
-@property(readonly, nonatomic) _Bool hasSuggestionEntry;
-@property(retain, nonatomic) NSData *suggestionEntryMetadata;
-@property(readonly, nonatomic) _Bool hasSuggestionEntryMetadata;
-@property(retain, nonatomic) NSData *suggestionMetadata;
-@property(readonly, nonatomic) _Bool hasSuggestionMetadata;
-@property(retain, nonatomic) GEOPDViewportInfo *viewportInfo;
-@property(readonly, nonatomic) _Bool hasViewportInfo;
-@property(retain, nonatomic) NSString *searchString;
-@property(readonly, nonatomic) _Bool hasSearchString;
-@property(nonatomic) _Bool hasMaxResults;
-@property(nonatomic) unsigned int maxResults;
-- (int)StringAsSortOrder:(id)arg1;
-- (id)sortOrderAsString:(int)arg1;
-@property(nonatomic) _Bool hasSortOrder;
-@property(nonatomic) int sortOrder;
 - (void)dealloc;
 - (id)initWithData:(id)arg1;
 - (id)init;

@@ -62,6 +62,8 @@
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+@property(readonly, nonatomic) unsigned long long itemCount;
+@property(readonly, nonatomic) _Bool isJustFiles;
 - (void)setUpProgressToBroadcast:(_Bool)arg1;
 - (void)setUpProgress;
 - (id)initWithIdentifier:(id)arg1 initialInformation:(id)arg2;

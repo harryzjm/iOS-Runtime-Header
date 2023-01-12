@@ -29,6 +29,7 @@
 - (void)didMoveToSuperview;
 - (void)presentComponentWithChanges:(CDStruct_12a35e6e)arg1;
 - (id)accessibilityHint;
+- (id)accessibilityUserInputLabels;
 - (id)accessibilityValue;
 - (id)accessibilityLabel;
 - (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4;

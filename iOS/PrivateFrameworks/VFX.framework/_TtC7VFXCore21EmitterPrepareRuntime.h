@@ -6,8 +6,14 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC7VFXCore21EmitterPrepareRuntime : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *addRuntimeQuery;
+    MISSING_TYPE *addOrRemoveInverseWorldQuery;
+    MISSING_TYPE *updateRuntimeQuery;
+    MISSING_TYPE *removeOrphanedRuntimeQuery;
 }
 
 @end

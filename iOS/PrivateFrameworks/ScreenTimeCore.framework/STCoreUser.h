@@ -10,6 +10,7 @@
 
 @interface STCoreUser : NSManagedObject
 {
+    NSString *_familyMemberType;
 }
 
 + (id)fetchRequestMatchingAppleID:(id)arg1;
@@ -19,6 +20,9 @@
 + (id)fetchUserWithAppleID:(id)arg1 inContext:(id)arg2 error:(id *)arg3;
 + (id)fetchUserWithDSID:(id)arg1 inContext:(id)arg2 error:(id *)arg3;
 + (id)fetchLocalUserInContext:(id)arg1 error:(id *)arg2;
++ (id)keyPathsForValuesAffectingIsCommunicationSafetyNotificationEnabled;
++ (id)keyPathsForValuesAffectingIsCommunicationSafetyReceivingRestricted;
++ (id)keyPathsForValuesAffectingIsCommunicationSafetySendingRestricted;
 + (id)keyPathsForValuesAffectingCommunicationWhileLimitedPolicy;
 + (id)keyPathsForValuesAffectingCommunicationPolicy;
 + (id)keyPathsForValuesAffectingShareWebUsage;
@@ -33,11 +37,24 @@
 + (id)keyPathsForValuesAffectingScreenTimeEnabled;
 + (id)keyPathsForValuesAffectingLocalizedFullName;
 + (id)keyPathsForValuesAffectingContactManagementState;
++ (id)keyPathsForValuesAffectingObservableCommunicationSafetyNotificationEnabled;
++ (id)keyPathsForValuesAffectingObservableCommunicationSafetyReceivingRestricted;
++ (id)keyPathsForValuesAffectingObservableCommunicationSafetySendingRestricted;
++ (id)keyPathsForValuesAffectingObservableShareWebUsage;
++ (id)keyPathsForValuesAffectingObservableCanSetUpFamily;
++ (id)keyPathsForValuesAffectingObservableAllLimitsEnabled;
++ (id)keyPathsForValuesAffectingObservableSyncingEnabled;
++ (id)keyPathsForValuesAffectingObservableScreenTimeEnabled;
+- (void).cxx_destruct;
 - (id)_primaryContainerInContactStore:(id)arg1 withError:(id *)arg2;
 - (id)_contactStoreForUser;
 - (void)notifyServerOfScreenTimeEnabled:(_Bool)arg1;
 - (void)didChangeValueForKey:(id)arg1;
 - (void)updateWithDescription:(id)arg1;
+- (id)initWithFamilyMemberType:(id)arg1 context:(id)arg2;
+@property _Bool isCommunicationSafetyNotificationEnabled;
+@property _Bool isCommunicationSafetyReceivingRestricted;
+@property _Bool isCommunicationSafetySendingRestricted;
 @property(nonatomic) _Bool contactsEditable;
 @property(nonatomic) long long communicationWhileLimitedPolicy;
 @property(nonatomic) long long communicationPolicy;
@@ -62,6 +79,15 @@
 @property(readonly, copy) NSString *managedUserActivationIdentifier;
 @property(readonly, copy) NSString *alwaysAllowConfigurationIdentifier;
 @property(readonly, copy) NSString *alwaysAllowActivationIdentifier;
+@property _Bool observableCommunicationSafetyNotificationEnabled;
+@property _Bool observableCommunicationSafetyReceivingRestricted;
+@property _Bool observableCommunicationSafetySendingRestricted;
+- (void)resetPasscode;
+@property _Bool observableShareWebUsage;
+@property(readonly) _Bool observableCanSetUpFamily;
+@property _Bool observableAllLimitsEnabled;
+@property _Bool observableSyncingEnabled;
+@property _Bool observableScreenTimeEnabled;
 
 // Remaining properties
 @property(copy, nonatomic) NSString *altDSID; // @dynamic altDSID;

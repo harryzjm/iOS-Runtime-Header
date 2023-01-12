@@ -15,6 +15,7 @@
 }
 
 + (id)standardNumericYAxisWithLabelDimension:(id)arg1;
++ (id)preferredAxisStyle;
 + (double)_roundUpByMultiple:(double)arg1 factor:(double)arg2;
 + (double)_roundDownByMultiple:(double)arg1 factor:(double)arg2;
 + (id)ticksAndLabelsForRangeInModelCoordinates:(id)arg1 maximumLabelCount:(long long)arg2 endingOptions:(long long)arg3 dimension:(id)arg4;
@@ -25,7 +26,6 @@
 @property(retain, nonatomic) id <HKAxisLabelDimension> labelDimension; // @synthesize labelDimension=_labelDimension;
 - (id)adjustValueRangeForLabels:(id)arg1;
 - (id)findAxisLabelsInModelRange:(id)arg1 zoomScale:(double)arg2;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)zoomScaleEngine;
 - (double)labelSpacingFactorForNumberFormatter;
 - (id)stringFromNumber:(id)arg1;

@@ -15,7 +15,7 @@
 - (_Bool)isRTL;
 - (struct CGColor *)selectionColor;
 - (double)scaleForDrawing:(PKDrawing *)arg1;
-- (struct CGRect)selectedStrokesViewClipRectForDrawing:(PKDrawing *)arg1;
+- (struct CGRect)attachmentBoundsForDrawing:(PKDrawing *)arg1;
 - (struct CGAffineTransform)transformFromStrokeSpaceToViewInDrawing:(PKDrawing *)arg1;
 @end
 

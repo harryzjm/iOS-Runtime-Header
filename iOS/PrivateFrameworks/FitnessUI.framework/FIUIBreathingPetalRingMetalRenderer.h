@@ -33,13 +33,18 @@
     id <MTLTexture> _circleGradient;
     id <MTLRenderPipelineState> _renderPipeline;
     MISSING_TYPE *_ringCenterVector;
+    long long _petalColor;
     long long _numberOfPetals;
     _Bool _showBlurTrails;
     float _ringRadius;
     long long _numberOfVisiblePetals;
     CDUnknownBlockType _stateUpdateBlock;
     struct CGPoint _ringCenter;
-    CDStruct_7104cd25 _circleProperties;
+    struct {
+        MISSING_TYPE *circlePosition[20];
+        MISSING_TYPE *circleProperties[20];
+        MISSING_TYPE *textureRotationVector;
+    } _circleProperties;
 }
 
 - (void).cxx_destruct;
@@ -65,7 +70,7 @@
 - (void)_setupIndexes;
 - (void)_createBuffers;
 - (void)_loadTextures;
-- (id)initWithMetalKitView:(id)arg1 numberOfPetals:(long long)arg2 showBlurTrails:(_Bool)arg3;
+- (id)initWithMetalKitView:(id)arg1 petalColor:(long long)arg2 numberOfPetals:(long long)arg3 showBlurTrails:(_Bool)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

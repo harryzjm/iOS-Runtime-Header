@@ -13,11 +13,12 @@
 }
 
 + (_Bool)supportsRowModel:(id)arg1;
+- (void)didUpdateKeyboardFocusToResult:(id)arg1 cardSection:(id)arg2;
 - (unsigned long long)type;
 - (void)updateWithRowModel:(id)arg1;
-- (void)didEngageResult:(id)arg1 withTriggerEvent:(unsigned long long)arg2 destination:(unsigned long long)arg3;
-- (void)didEngageResult:(id)arg1;
 - (_Bool)shouldVerticallyCenter;
+- (void)deleteIcon:(id)arg1;
+- (void)setFeedbackDelegate:(id)arg1;
 - (id)setupView;
 
 // Remaining properties

@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (void)prewarm;
 - (_Bool)_getValue:(id *)arg1 forPropertyListKey:(id)arg2;
 - (_Bool)_getPropertyList:(id *)arg1;
 - (id)initWithLazyPropertyLists:(id)arg1;

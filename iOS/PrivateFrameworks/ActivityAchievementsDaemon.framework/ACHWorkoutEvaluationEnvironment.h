@@ -12,6 +12,8 @@
 {
     ACHWorkoutEvaluationWorkoutProperties *_workout;
     unsigned long long _numberOfFirstPartyWorkoutsOver5MinutesWithType;
+    unsigned long long _numberOfFirstPartyWorkoutsOver5MinutesDuringCurrentFitnessWeek;
+    unsigned long long _numberOfFirstPartyWorkoutsOver15MinutesWithType;
     unsigned long long _numberOfFirstPartyWorkoutsOver15MinutesDuringCurrentFitnessWeek;
     double _bestKilocaloriesForType;
     unsigned long long _experienceType;
@@ -21,10 +23,12 @@
 @property(readonly, nonatomic) unsigned long long experienceType; // @synthesize experienceType=_experienceType;
 @property(readonly, nonatomic) double bestKilocaloriesForType; // @synthesize bestKilocaloriesForType=_bestKilocaloriesForType;
 @property(readonly, nonatomic) unsigned long long numberOfFirstPartyWorkoutsOver15MinutesDuringCurrentFitnessWeek; // @synthesize numberOfFirstPartyWorkoutsOver15MinutesDuringCurrentFitnessWeek=_numberOfFirstPartyWorkoutsOver15MinutesDuringCurrentFitnessWeek;
+@property(readonly, nonatomic) unsigned long long numberOfFirstPartyWorkoutsOver15MinutesWithType; // @synthesize numberOfFirstPartyWorkoutsOver15MinutesWithType=_numberOfFirstPartyWorkoutsOver15MinutesWithType;
+@property(readonly, nonatomic) unsigned long long numberOfFirstPartyWorkoutsOver5MinutesDuringCurrentFitnessWeek; // @synthesize numberOfFirstPartyWorkoutsOver5MinutesDuringCurrentFitnessWeek=_numberOfFirstPartyWorkoutsOver5MinutesDuringCurrentFitnessWeek;
 @property(readonly, nonatomic) unsigned long long numberOfFirstPartyWorkoutsOver5MinutesWithType; // @synthesize numberOfFirstPartyWorkoutsOver5MinutesWithType=_numberOfFirstPartyWorkoutsOver5MinutesWithType;
 @property(readonly, nonatomic) ACHWorkoutEvaluationWorkoutProperties *workout; // @synthesize workout=_workout;
 - (id)valueForUndefinedKey:(id)arg1;
-- (id)initWithWorkout:(id)arg1 numberOfFirstPartyWorkoutsOver5MinutesWithType:(unsigned long long)arg2 numberOfFirstPartyWorkoutsOver15MinutesDuringCurrentFitnessWeek:(unsigned long long)arg3 bestKilocaloriesForType:(double)arg4 experienceType:(unsigned long long)arg5;
+- (id)initWithWorkout:(id)arg1 numberOfFirstPartyWorkoutsOver5MinutesWithType:(unsigned long long)arg2 numberOfFirstPartyWorkoutsOver5MinutesDuringCurrentFitnessWeek:(unsigned long long)arg3 bestKilocaloriesForType:(double)arg4 experienceType:(unsigned long long)arg5;
 
 @end
 

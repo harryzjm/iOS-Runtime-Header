@@ -10,5 +10,8 @@
 
 @protocol VUIAction <NSObject>
 - (void)performWithTargetResponder:(UIResponder *)arg1 completionHandler:(void (^)(_Bool))arg2;
+
+@optional
+- (_Bool)canPerformNow;
 @end
 

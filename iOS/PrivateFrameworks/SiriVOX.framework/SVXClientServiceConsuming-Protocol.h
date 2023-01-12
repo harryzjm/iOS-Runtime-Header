@@ -6,10 +6,11 @@
 
 #import <SiriVOX/NSObject-Protocol.h>
 
+@class AFAnalytics;
 @protocol SVXClientServiceProviding, SVXPerforming;
 
 @protocol SVXClientServiceConsuming <NSObject>
-- (void)clientServiceDidChange;
-- (id)initWithClientServiceProvider:(id <SVXClientServiceProviding>)arg1 performer:(id <SVXPerforming>)arg2;
+- (void)clientServiceDidChange:(_Bool)arg1;
+- (id)initWithClientServiceProvider:(id <SVXClientServiceProviding>)arg1 analytics:(AFAnalytics *)arg2 performer:(id <SVXPerforming>)arg3;
 @end
 

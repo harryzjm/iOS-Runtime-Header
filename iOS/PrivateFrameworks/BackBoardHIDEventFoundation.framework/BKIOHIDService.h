@@ -8,11 +8,12 @@
 
 #import <BackBoardHIDEventFoundation/BKHIDEventSenderInfo-Protocol.h>
 #import <BackBoardHIDEventFoundation/BSDescriptionProviding-Protocol.h>
+#import <BackBoardHIDEventFoundation/NSCopying-Protocol.h>
 
 @class BKSHIDEventSenderDescriptor, NSMutableArray, NSString;
 @protocol OS_dispatch_queue;
 
-@interface BKIOHIDService : NSObject <BKHIDEventSenderInfo, BSDescriptionProviding>
+@interface BKIOHIDService : NSObject <BKHIDEventSenderInfo, BSDescriptionProviding, NSCopying>
 {
     BKIOHIDService *_strongSelf;
     struct os_unfair_lock_s _workQueueAccessLock;
@@ -62,6 +63,7 @@
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (id)initWithHIDServiceRef:(struct __IOHIDService *)arg1;

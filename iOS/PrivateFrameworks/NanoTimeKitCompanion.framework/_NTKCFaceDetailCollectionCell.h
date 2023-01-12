@@ -15,6 +15,7 @@
     _NTKCFaceDetailCollectionCellLabel *_label;
     _Bool _active;
     double _outlineOutset;
+    long long _swatchImageContentMode;
     UIImage *_image;
     NSString *_text;
     long long _style;
@@ -28,6 +29,7 @@
 @property(nonatomic) long long style; // @synthesize style=_style;
 @property(retain, nonatomic) NSString *text; // @synthesize text=_text;
 @property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
+@property(nonatomic) long long swatchImageContentMode; // @synthesize swatchImageContentMode=_swatchImageContentMode;
 @property(nonatomic) double outlineOutset; // @synthesize outlineOutset=_outlineOutset;
 @property(nonatomic) struct CGRect swatchFrame; // @synthesize swatchFrame=_swatchFrame;
 - (void)setActive:(_Bool)arg1 animated:(_Bool)arg2;

@@ -28,7 +28,7 @@
 - (void)updateProtocolQualityOfService:(_Bool)arg1 localAddress:(struct sockaddr *)arg2;
 - (_Bool)dropIPPackets:(id)arg1 localAddress:(struct sockaddr *)arg2 remoteAddress:(struct sockaddr *)arg3 isRelay:(_Bool)arg4 channelNumberMSB:(unsigned char)arg5;
 - (void)setRemoteDeviceVersion:(unsigned int)arg1;
-- (_Bool)setPacketNotificationFilter:(struct sockaddr *)arg1 remote:(struct sockaddr *)arg2 uniqueTag:(unsigned int)arg3 callType:(unsigned char)arg4;
+- (_Bool)setPacketNotificationFilter:(const struct sockaddr *)arg1 remote:(const struct sockaddr *)arg2 uniqueTag:(unsigned int)arg3 callType:(unsigned char)arg4;
 - (void)removePacketNotificationFilter;
 @property(readonly) unsigned int dataSoMaskBits; // @synthesize dataSoMaskBits=_dataSoMaskBits;
 @property(readonly) _Bool dataUsable; // @synthesize dataUsable=_dataUsable;

@@ -14,8 +14,8 @@
 }
 
 @property(readonly, nonatomic) _Bool didAddMissingEventsForRadar49654305; // @synthesize didAddMissingEventsForRadar49654305=_didAddMissingEventsForRadar49654305;
-- (void)saveToMessage:(struct RecordingCorrectionHistory *)arg1 archiver:(id)arg2;
-- (id)initWithMessage:(const struct RecordingCorrectionHistory *)arg1 unarchiver:(id)arg2;
+- (void)saveToMessage:(void *)arg1 archiver:(id)arg2;
+- (id)initWithMessage:(const void *)arg1 unarchiver:(id)arg2;
 @property(readonly, nonatomic) KNRecordingCorrectionHistory *correctionHistoryWithAddedMissingEventsForRadar49654305;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;

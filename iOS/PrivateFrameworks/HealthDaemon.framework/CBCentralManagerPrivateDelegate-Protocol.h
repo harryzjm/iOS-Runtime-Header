@@ -6,12 +6,15 @@
 
 #import <HealthDaemon/CBCentralManagerDelegate-Protocol.h>
 
-@class CBCentralManager, CBPeripheral, NSArray, NSData, NSError, NSNumber, NSString;
+@class CBCentralManager, CBPeripheral, NSArray, NSData, NSDictionary, NSError, NSNumber, NSString;
 
 @protocol CBCentralManagerPrivateDelegate <CBCentralManagerDelegate>
 
 @optional
+- (NSArray *)retrieveConnectingPeripherals;
+- (void)centralManager:(CBCentralManager *)arg1 didUpdateRSSIStatisticsDetectionForPeripheral:(CBPeripheral *)arg2 results:(NSDictionary *)arg3 error:(NSError *)arg4;
 - (void)centralManager:(CBCentralManager *)arg1 didUpdateControllerBTClockForPeripheral:(CBPeripheral *)arg2 eventType:(NSNumber *)arg3 seconds:(NSNumber *)arg4 microseconds:(NSNumber *)arg5 localClock:(NSNumber *)arg6 remoteClock:(NSNumber *)arg7;
+- (void)centralManager:(CBCentralManager *)arg1 didUpdateMTUForPeripheral:(CBPeripheral *)arg2;
 - (void)centralManager:(CBCentralManager *)arg1 didFailToScanWithError:(NSError *)arg2;
 - (void)centralManager:(CBCentralManager *)arg1 connectionEventDidOccur:(long long)arg2 forPeripheral:(CBPeripheral *)arg3;
 - (void)centralManager:(CBCentralManager *)arg1 canSendDataToPeripheral:(CBPeripheral *)arg2;

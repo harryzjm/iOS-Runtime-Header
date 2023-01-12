@@ -26,6 +26,7 @@
 @property(retain, nonatomic) SFSession *sfSession; // @synthesize sfSession=_sfSession;
 @property(nonatomic) _Bool failIfCDPNotEnabled; // @synthesize failIfCDPNotEnabled=_failIfCDPNotEnabled;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
+- (void)cdpContext:(id)arg1 promptForBeneficiaryAccessKeyWithCompletion:(CDUnknownBlockType)arg2;
 - (void)cdpContext:(id)arg1 promptForRemoteSecretWithDevices:(id)arg2 offeringRemoteApproval:(_Bool)arg3 validator:(id)arg4;
 - (void)cdpContext:(id)arg1 promptForLocalSecretWithCompletion:(CDUnknownBlockType)arg2;
 - (void)cdpContext:(id)arg1 promptForInteractiveAuthenticationWithCompletion:(CDUnknownBlockType)arg2;

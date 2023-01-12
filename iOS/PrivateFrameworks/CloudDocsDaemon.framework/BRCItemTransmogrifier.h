@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (double)_renameDelayForZone:(id)arg1;
 - (void)scheduleDirectoryToPackageTransmogrification:(id)arg1 absolutePath:(id)arg2;
 - (void)_finishDirectoryToPackageTransmogrification:(id)arg1 relpath:(id)arg2;
-- (void)removeOperationsForItem:(id)arg1;
+- (void)removeOperationsForItemGlobalID:(id)arg1;
 - (_Bool)addOperation:(id)arg1 forItem:(id)arg2;
 - (id)queue;
 - (id)initWithSession:(id)arg1;

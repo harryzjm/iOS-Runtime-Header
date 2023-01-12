@@ -6,9 +6,10 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSString;
+@class FPSandboxingURLWrapper, NSArray, NSData, NSDictionary, NSString;
 
 @protocol INVCVoiceShortcutClient <NSObject>
+- (FPSandboxingURLWrapper *)resolveBookmarkData:(NSData *)arg1 updatedData:(id *)arg2 error:(id *)arg3;
 - (void)sendAceCommandDictionary:(NSDictionary *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)setInteger:(long long)arg1 forKey:(NSString *)arg2 inDomain:(NSString *)arg3 completionHandler:(void (^)(_Bool, NSError *))arg4;
 - (void)setShortcutSuggestions:(NSArray *)arg1 forAppWithBundleIdentifier:(NSString *)arg2;

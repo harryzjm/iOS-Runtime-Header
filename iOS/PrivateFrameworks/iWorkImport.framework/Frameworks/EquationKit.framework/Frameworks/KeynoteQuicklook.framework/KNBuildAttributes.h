@@ -13,16 +13,16 @@
 + (id)supportedCustomAttributes;
 + (id)attributeValueForProperty:(id)arg1 value:(id)arg2;
 - (id)attributeValueForProperty:(id)arg1;
-- (void)p_writeAttributesForTypewriterToDiffArchive:(struct BuildAttributesArchive *)arg1 archiver:(id)arg2;
-- (void)p_writeBuildAttributesToArchive:(struct BuildAttributesArchive *)arg1 archiver:(id)arg2;
-- (void)p_writeSharedAttributesToArchive:(struct BuildAttributesArchive *)arg1;
+- (void)p_writeAttributesForTypewriterToDiffArchive:(void *)arg1 archiver:(id)arg2;
+- (void)p_writeBuildAttributesToArchive:(void *)arg1 archiver:(id)arg2;
+- (void)p_writeSharedAttributesToArchive:(void *)arg1;
 - (void)p_setUnsafeDirection:(unsigned long long)arg1 onAttributes:(id)arg2;
-- (void)p_readTEFAttributesForArchive:(const struct BuildAttributesArchive *)arg1 intoDictionary:(id)arg2;
-- (void)p_readBuildAttributesForArchive:(const struct BuildAttributesArchive *)arg1 intoDictionary:(id)arg2;
-- (void)p_readSharedAttributesForArchive:(struct AnimationAttributesArchive *)arg1 intoDictionary:(id)arg2;
+- (void)p_readTEFAttributesForArchive:(const void *)arg1 intoDictionary:(id)arg2;
+- (void)p_readBuildAttributesForArchive:(const void *)arg1 intoDictionary:(id)arg2;
+- (void)p_readSharedAttributesForArchive:(void *)arg1 intoDictionary:(id)arg2;
 - (_Bool)p_usesAlignToPath;
-- (void)encodeToArchive:(struct BuildAttributesArchive *)arg1 archiver:(id)arg2;
-- (id)initFromBuildAttributesArchive:(const struct BuildAttributesArchive *)arg1;
+- (void)encodeToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initFromBuildAttributesArchive:(const void *)arg1;
 
 @end
 

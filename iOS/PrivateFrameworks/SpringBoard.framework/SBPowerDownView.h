@@ -14,6 +14,7 @@
 
 @property(nonatomic) __weak id <SBPowerDownViewDelegate> powerDownDelegate;
 - (void)_idleTimerFired;
+- (void)_didTapFindMy;
 - (void)_cancelButtonTapped;
 - (void)_powerDownSliderDidCancelSlide;
 - (void)_powerDownSliderDidCompleteSlide;

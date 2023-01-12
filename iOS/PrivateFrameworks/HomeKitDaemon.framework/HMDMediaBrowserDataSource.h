@@ -15,8 +15,10 @@
 }
 
 + (id)shortDescription;
+- (id)createUnassociatedHomePodAccessory:(id)arg1 name:(id)arg2 category:(id)arg3 messageDispatcher:(id)arg4;
 - (id)createUnassociatedAppleMediaAccessory:(id)arg1 name:(id)arg2 category:(id)arg3 messageDispatcher:(id)arg4;
 @property(readonly) HMFSystemInfo *systemInfo;
+@property(readonly) _Bool requiresHomePodPairing;
 @property(readonly) _Bool isAppleMediaAccessory;
 @property(readonly) NSString *currentAccessoryMediaRouteIdentifier;
 

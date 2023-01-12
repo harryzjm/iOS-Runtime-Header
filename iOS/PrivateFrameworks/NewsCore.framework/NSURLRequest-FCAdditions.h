@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSURLRequest.h>
+#import <CFNetwork/NSURLRequest.h>
 
 @interface NSURLRequest (FCAdditions)
-+ (id)frRequestWithURL:(id)arg1;
-+ (id)frRequestWithURL:(id)arg1 cachePolicy:(unsigned long long)arg2 timeoutInterval:(double)arg3;
++ (id)fcRequestWithURL:(id)arg1;
++ (id)fcRequestWithURL:(id)arg1 cachePolicy:(unsigned long long)arg2 timeoutInterval:(double)arg3;
 + (void)setupFeldsparUserAgent;
 + (id)overrideUserAgent;
 @end

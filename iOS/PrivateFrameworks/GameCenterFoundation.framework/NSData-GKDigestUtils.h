@@ -15,6 +15,7 @@
 - (id)_gkSHA1HashData;
 - (id)_gkMD5HashString;
 - (id)_gkSHA1HashString;
+- (id)_gkZippedDictionaryValue;
 - (id)_gkBase64EncodedString;
 - (id)initWithBase64EncodedString_gk:(id)arg1;
 @end

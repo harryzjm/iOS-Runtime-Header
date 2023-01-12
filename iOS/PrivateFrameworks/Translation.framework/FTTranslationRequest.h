@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_5dffcd6c)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_5dffcd6c)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSString *app_id;
 @property(readonly, nonatomic) long long opt_in_status;
 @property(readonly, nonatomic) _Bool disable_log;

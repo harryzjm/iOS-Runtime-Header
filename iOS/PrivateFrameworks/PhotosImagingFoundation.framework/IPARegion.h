@@ -11,7 +11,7 @@
 
 @interface IPARegion : NSObject <NSCopying, NSMutableCopying>
 {
-    struct Region *_imp;
+    void *_imp;
 }
 
 + (id)regionWithRegion:(id)arg1;

@@ -8,13 +8,18 @@
 
 @interface ICAttachmentWebModel (PreviewGeneration)
 + (id)genericBrickThumbnailWithSize:(struct CGSize)arg1 scale:(double)arg2;
-- (void)saveLPImage:(id)arg1;
+- (void)updateAttachmentWithPreviewImage:(id)arg1;
+- (void)saveImagesFromLinkMetadata:(id)arg1;
 - (void)updateTitle:(id)arg1 andDescription:(id)arg2;
+- (_Bool)updateAttachmentPreviewImagesMetadata;
+- (_Bool)downloadPreviewForAttachmentURL:(id)arg1;
+- (_Bool)extractPreviewImagesFromSynapseData:(id)arg1;
 - (_Bool)generatePreviewsInOperation:(id)arg1;
 - (_Bool)generateAsynchronousPreviews;
 - (_Bool)needToGeneratePreviews;
 - (CDUnknownBlockType)genericBrickLargeThumbnailCreator;
 - (CDUnknownBlockType)genericBrickThumbnailCreator;
 - (CDUnknownBlockType)genericListThumbnailCreator;
+- (id)itemProvider;
 @end
 

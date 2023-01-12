@@ -23,9 +23,9 @@
 @property(copy, nonatomic) CDUnknownBlockType exitConfirmationChangeObserver; // @synthesize exitConfirmationChangeObserver=_exitConfirmationChangeObserver;
 @property(copy, nonatomic) CDUnknownBlockType statusChangeObserver; // @synthesize statusChangeObserver=_statusChangeObserver;
 @property(readonly, nonatomic) unsigned long long cachedAutomaticDNDActiveState; // @synthesize cachedAutomaticDNDActiveState=_cachedAutomaticDNDActiveState;
+- (void)_exitConfirmationStateChanged:(_Bool)arg1;
+- (void)_dndStateChanged:(_Bool)arg1;
 - (void)_detachObservers;
-- (void)_notifyExitConfirmationActive:(_Bool)arg1;
-- (void)_fetchStatusForObserver;
 - (void)_performCARPreferencesBlock:(CDUnknownBlockType)arg1 forReading:(_Bool)arg2;
 - (id)disableTimerTimestamp;
 - (void)setDisableTimerTimestamp:(id)arg1;
@@ -35,6 +35,8 @@
 - (double)mostRecentTriggerMethodChange;
 - (_Bool)shouldActivateWithCarPlay;
 - (void)setActivateWithCarPlay:(_Bool)arg1;
+- (void)setHasMigratedToDriving:(_Bool)arg1;
+- (_Bool)hasMigratedToDriving;
 - (_Bool)hasAdjustedTriggerMethod;
 - (void)setHasAdjustedTriggerMethod:(_Bool)arg1;
 - (_Bool)hasOptedOutOfAutomaticDND;
@@ -62,7 +64,6 @@
 - (_Bool)shouldEnforceInternalWhitelist;
 - (_Bool)platformSupportsUrgentMessages;
 - (_Bool)platformSupportsSendingAutoReplies;
-- (void)outputOfDiagnosticUtilityWithReply:(CDUnknownBlockType)arg1;
 - (void)setAutoReplyMessage:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)autoReplyMessageWithReply:(CDUnknownBlockType)arg1;
 - (void)setAllowedAutoReplyAudience:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
@@ -70,7 +71,6 @@
 - (void)fetchAutomaticDNDExitConfirmationWithReply:(CDUnknownBlockType)arg1;
 - (void)setAutomaticDNDActive:(_Bool)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)_resetUserDNDSettingsWithReply:(CDUnknownBlockType)arg1;
-- (void)_completeDNDBuddyWithOption:(unsigned long long)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)_xpcFetchWithServiceBlock:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (void)fetchAutomaticDNDAssertionWithReply:(CDUnknownBlockType)arg1;
 - (void)dealloc;

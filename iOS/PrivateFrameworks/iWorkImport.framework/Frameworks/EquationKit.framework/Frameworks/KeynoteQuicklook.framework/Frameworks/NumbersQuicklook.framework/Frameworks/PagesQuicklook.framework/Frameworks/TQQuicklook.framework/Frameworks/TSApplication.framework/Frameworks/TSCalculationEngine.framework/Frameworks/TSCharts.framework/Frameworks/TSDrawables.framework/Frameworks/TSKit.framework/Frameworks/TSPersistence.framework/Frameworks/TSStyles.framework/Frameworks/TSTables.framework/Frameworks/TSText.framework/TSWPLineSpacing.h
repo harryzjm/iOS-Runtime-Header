@@ -25,8 +25,8 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)saveToArchive:(struct LineSpacingArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct LineSpacingArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (id)initWithLocalizationDictionary:(id)arg1;
 - (id)initWithMode:(long long)arg1 amount:(double)arg2;
 - (id)initWithMode:(long long)arg1 amount:(double)arg2 baselineRule:(double)arg3;

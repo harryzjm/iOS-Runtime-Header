@@ -10,11 +10,21 @@
 
 @interface SBPIPInteractionSettings : PTSettings
 {
+    _Bool _shouldStashOnTransitionToSwitcher;
+    _Bool _shouldUnstashOnTransitionFromSwitcher;
+    _Bool _shouldStashOnTransitionToHomescreen;
+    _Bool _shouldUnstashOnTransitionFromHomescreen;
+    _Bool _shouldStashOnAppToAppTransitions;
+    _Bool _usesKeyboards;
+    _Bool _keyboardDismissesOnTransitionToHomescreen;
+    _Bool _keyboardDismissesOnOutsideUserInteractionOnHomescreen;
+    _Bool _keyboardDismissesOnOutsideUserInteractionOutsideHomescreen;
     _Bool _alwaysStartAtSmallestSize;
-    _Bool _freelyPositionable;
     _Bool _panGestureEnabled;
     _Bool _pinchGestureEnabled;
     _Bool _rotationGestureEnabled;
+    _Bool _stashingEnabled;
+    unsigned long long _freePositioning;
     double _defaultContentSizeResetTimeout;
     double _inFlightHitTestPadding;
     double _maximumSizeSpanForPreferredSizeTuning;
@@ -31,10 +41,12 @@
     double _stashProgressTabAppearanceThresholdX;
     SBFFluidBehaviorSettings *_interactiveFluidBehavior;
     SBFFluidBehaviorSettings *_stashTabFluidBehavior;
+    SBFFluidBehaviorSettings *_regionUpdateFluidBehavior;
 }
 
 + (id)settingsControllerModule;
 - (void).cxx_destruct;
+@property(retain, nonatomic) SBFFluidBehaviorSettings *regionUpdateFluidBehavior; // @synthesize regionUpdateFluidBehavior=_regionUpdateFluidBehavior;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *stashTabFluidBehavior; // @synthesize stashTabFluidBehavior=_stashTabFluidBehavior;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *interactiveFluidBehavior; // @synthesize interactiveFluidBehavior=_interactiveFluidBehavior;
 @property(nonatomic) double stashProgressTabAppearanceThresholdX; // @synthesize stashProgressTabAppearanceThresholdX=_stashProgressTabAppearanceThresholdX;
@@ -51,11 +63,21 @@
 @property(nonatomic) double maximumSizeSpanForPreferredSizeTuning; // @synthesize maximumSizeSpanForPreferredSizeTuning=_maximumSizeSpanForPreferredSizeTuning;
 @property(nonatomic) double inFlightHitTestPadding; // @synthesize inFlightHitTestPadding=_inFlightHitTestPadding;
 @property(nonatomic) double defaultContentSizeResetTimeout; // @synthesize defaultContentSizeResetTimeout=_defaultContentSizeResetTimeout;
+@property(nonatomic) unsigned long long freePositioning; // @synthesize freePositioning=_freePositioning;
+@property(nonatomic) _Bool stashingEnabled; // @synthesize stashingEnabled=_stashingEnabled;
 @property(nonatomic) _Bool rotationGestureEnabled; // @synthesize rotationGestureEnabled=_rotationGestureEnabled;
 @property(nonatomic) _Bool pinchGestureEnabled; // @synthesize pinchGestureEnabled=_pinchGestureEnabled;
 @property(nonatomic) _Bool panGestureEnabled; // @synthesize panGestureEnabled=_panGestureEnabled;
-@property(nonatomic) _Bool freelyPositionable; // @synthesize freelyPositionable=_freelyPositionable;
 @property(nonatomic) _Bool alwaysStartAtSmallestSize; // @synthesize alwaysStartAtSmallestSize=_alwaysStartAtSmallestSize;
+@property(nonatomic) _Bool keyboardDismissesOnOutsideUserInteractionOutsideHomescreen; // @synthesize keyboardDismissesOnOutsideUserInteractionOutsideHomescreen=_keyboardDismissesOnOutsideUserInteractionOutsideHomescreen;
+@property(nonatomic) _Bool keyboardDismissesOnOutsideUserInteractionOnHomescreen; // @synthesize keyboardDismissesOnOutsideUserInteractionOnHomescreen=_keyboardDismissesOnOutsideUserInteractionOnHomescreen;
+@property(nonatomic) _Bool keyboardDismissesOnTransitionToHomescreen; // @synthesize keyboardDismissesOnTransitionToHomescreen=_keyboardDismissesOnTransitionToHomescreen;
+@property(nonatomic) _Bool usesKeyboards; // @synthesize usesKeyboards=_usesKeyboards;
+@property(nonatomic) _Bool shouldStashOnAppToAppTransitions; // @synthesize shouldStashOnAppToAppTransitions=_shouldStashOnAppToAppTransitions;
+@property(nonatomic) _Bool shouldUnstashOnTransitionFromHomescreen; // @synthesize shouldUnstashOnTransitionFromHomescreen=_shouldUnstashOnTransitionFromHomescreen;
+@property(nonatomic) _Bool shouldStashOnTransitionToHomescreen; // @synthesize shouldStashOnTransitionToHomescreen=_shouldStashOnTransitionToHomescreen;
+@property(nonatomic) _Bool shouldUnstashOnTransitionFromSwitcher; // @synthesize shouldUnstashOnTransitionFromSwitcher=_shouldUnstashOnTransitionFromSwitcher;
+@property(nonatomic) _Bool shouldStashOnTransitionToSwitcher; // @synthesize shouldStashOnTransitionToSwitcher=_shouldStashOnTransitionToSwitcher;
 - (void)setDefaultValues;
 
 @end

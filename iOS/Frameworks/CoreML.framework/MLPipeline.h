@@ -15,12 +15,12 @@
 }
 
 + (id)classLabelsForPipelineFromSubModelArray:(id)arg1 predictedFeatureName:(id)arg2;
-+ (id)compiledVersionForSpecification:(struct _MLModelSpecification *)arg1 options:(id)arg2 error:(id *)arg3;
-+ (id)compileSpecification:(struct _MLModelSpecification *)arg1 toArchive:(struct _MLModelOutputArchiver *)arg2 options:(id)arg3 error:(id *)arg4;
-+ (id)compileWithModelsInPipeline:(const struct Pipeline *)arg1 toArchive:(struct _MLModelOutputArchiver *)arg2 options:(id)arg3 updatable:(_Bool)arg4 error:(id *)arg5;
-+ (_Bool)archivePipelineModelDetailsFrom:(const struct Pipeline *)arg1 toArchive:(struct _MLModelOutputArchiver *)arg2 error:(id *)arg3;
-+ (void)archiveCustomModelNames:(const RepeatedPtrField_fe7cf120 *)arg1 to:(struct _MLModelOutputArchiver *)arg2;
-+ (void)archivePipelineUpdateParameterForModels:(const RepeatedPtrField_f3160e5f *)arg1 to:(struct _MLModelOutputArchiver *)arg2 updatable:(_Bool)arg3;
++ (id)compiledVersionForSpecification:(void *)arg1 options:(id)arg2 error:(id *)arg3;
++ (id)compileSpecification:(void *)arg1 toArchive:(void *)arg2 options:(id)arg3 error:(id *)arg4;
++ (id)compileWithModelsInPipeline:(const void *)arg1 toArchive:(void *)arg2 options:(id)arg3 updatable:(_Bool)arg4 error:(id *)arg5;
++ (_Bool)archivePipelineModelDetailsFrom:(const void *)arg1 toArchive:(void *)arg2 error:(id *)arg3;
++ (void)archiveCustomModelNames:(const void *)arg1 to:(void *)arg2;
++ (void)archivePipelineUpdateParameterForModels:(const void *)arg1 to:(void *)arg2 updatable:(_Bool)arg3;
 - (void).cxx_destruct;
 @property(retain) NSArray *modelNames; // @synthesize modelNames=_modelNames;
 @property(retain) NSArray *models; // @synthesize models=_models;
@@ -30,9 +30,10 @@
 - (void)replaceModelAtIndex:(unsigned long long)arg1 with:(id)arg2;
 - (id)predictionFromFeatures:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)predictionsFromBatch:(id)arg1 options:(id)arg2 error:(id *)arg3;
-- (id)initModelFromMetadataAndArchive:(struct _MLModelInputArchiver *)arg1 versionInfo:(id)arg2 interface:(id)arg3 metadata:(id)arg4 configuration:(id)arg5 error:(id *)arg6;
+- (id)initWithModels:(id)arg1 modelNames:(id)arg2 description:(id)arg3 configuration:(id)arg4;
+- (id)initModelFromMetadataAndArchive:(void *)arg1 versionInfo:(id)arg2 description:(id)arg3 configuration:(id)arg4 error:(id *)arg5;
 - (void)updateParameterDescriptionsByKeyBasedOnSubModel;
-- (id)extractModelNamesFromArchive:(struct _MLModelInputArchiver *)arg1 numModels:(unsigned long long)arg2;
+- (id)extractModelNamesFromArchive:(void *)arg1 numModels:(unsigned long long)arg2;
 
 @end
 

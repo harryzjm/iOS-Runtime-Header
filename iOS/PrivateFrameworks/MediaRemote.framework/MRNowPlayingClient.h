@@ -9,12 +9,18 @@
 #import <MediaRemote/MRNowPlayingClientState-Protocol.h>
 
 @class MRClient, MRPlayer, MRPlayerPath, NSArray, NSMutableArray;
+@protocol OS_dispatch_queue;
 
 @interface MRNowPlayingClient : NSObject <MRNowPlayingClientState>
 {
     MRPlayer *_activePlayer;
     NSMutableArray *_playerClients;
     _Bool _isForeground;
+    _Bool _canBeNowPlaying;
+    double _canBeNowPlayingTimestamp;
+    NSObject<OS_dispatch_queue> *_replayQueue;
+    NSMutableArray *_commandQueue;
+    _Bool _perPlayerCanBeNowPlaying;
     _Bool _useMediaRemoteActivePlayerHeuristic;
     MRPlayerPath *_playerPath;
 }
@@ -22,9 +28,14 @@
 - (void).cxx_destruct;
 @property(nonatomic) _Bool useMediaRemoteActivePlayerHeuristic; // @synthesize useMediaRemoteActivePlayerHeuristic=_useMediaRemoteActivePlayerHeuristic;
 @property(retain, nonatomic) MRPlayerPath *playerPath; // @synthesize playerPath=_playerPath;
+@property(nonatomic) _Bool perPlayerCanBeNowPlaying; // @synthesize perPlayerCanBeNowPlaying=_perPlayerCanBeNowPlaying;
 - (id)debugDescription;
 - (id)description;
 - (void)restoreNowPlayingClientState;
+- (void)_avSessionMediaServicesResetNotification:(id)arg1;
+- (void)sendQueuedCommandsWithReason:(id)arg1;
+- (void)enqueueCommand:(unsigned int)arg1 options:(id)arg2 commandCompletion:(CDUnknownBlockType)arg3;
+- (_Bool)canBeNowPlayingForPlayer:(id)arg1;
 @property(readonly, nonatomic) NSArray *playerClients;
 - (void)removePlayer:(id)arg1;
 - (id)nowPlayingPlayerClientForPlayerPath:(id)arg1;
@@ -32,11 +43,12 @@
 - (void)applicationDidEnterBackground;
 - (void)applicationWillEnterForeground;
 - (void)reevaluateActivePlayerWithReason:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)setActivePlayerPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setActivePlayerPath:(id)arg1 reason:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)updateActivePlayerPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestActiveForPlayerPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)mergeClient:(id)arg1;
 @property(retain, nonatomic) MRClient *client;
+@property(nonatomic) _Bool canBeNowPlaying;
 - (void)dealloc;
 - (id)initWithPlayerPath:(id)arg1;
 

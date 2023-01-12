@@ -8,21 +8,22 @@
 
 #import <TSDrawables/TSPDataCullingListener-Protocol.h>
 
-@class NSString, TSUPointerKeyDictionary;
+@class NSMapTable, NSString;
 
 @interface TSDImageProviderPool : NSObject <TSPDataCullingListener>
 {
-    TSUPointerKeyDictionary *mImageDataUniqueIdentifierToImageProviderMap;
+    NSMapTable *mImageDataUniqueIdentifierToImageProviderMap;
     unsigned long long mOpenFileDescriptorLimit;
     _Bool mHaveRaisedFileDescriptorLimit;
 }
 
 + (Class)p_providerClassForData:(id)arg1;
-+ (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)sharedPool;
-+ (id)_singletonAlloc;
+- (void).cxx_destruct;
 - (void)p_updateFileDescriptorLimit;
+- (void)p_flushProvidersWithNoOneActivelyHoldingAReference;
 - (unsigned long long)p_removeProvidersWithZeroInterest;
+- (void)p_applicationDidEnterBackground:(id)arg1;
 - (void)p_didReceiveMemoryWarning:(id)arg1;
 - (void)flushProvidersToFreeMemoryIfNecessaryExcludingProvider:(id)arg1;
 - (unsigned long long)p_estimatedSizeOfAllProviders;
@@ -44,11 +45,6 @@
 - (id)providerForData:(id)arg1 shouldValidate:(_Bool)arg2;
 - (void)dealloc;
 - (id)init;
-- (id)autorelease;
-- (oneway void)release;
-- (unsigned long long)retainCount;
-- (id)retain;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

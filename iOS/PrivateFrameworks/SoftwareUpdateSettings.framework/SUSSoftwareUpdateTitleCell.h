@@ -6,33 +6,44 @@
 
 #import <Preferences/PSTableCell.h>
 
-@class NSLayoutConstraint, PSWebContainerView, SUSSoftwareUpdateAnimatedIcon, UIImage, UIImageView, UILabel, UIProgressView;
+@class NSLayoutConstraint, PSWebContainerView, SUSSoftwareUpdateAnimatedIcon, UIImage, UIImageView, UILabel, UIProgressView, UIStackView;
+@protocol SUSUISoftwareUpdateTitleCellDelegate;
 
 @interface SUSSoftwareUpdateTitleCell : PSTableCell
 {
     int _progressStyle;
     SUSSoftwareUpdateAnimatedIcon *_animatedGearView;
+    UIImageView *_imageView;
+    UIImage *_updateIcon;
     _Bool _animatingGearView;
-    UIImageView *_gearBackgroundImageView;
+    _Bool _showLearnMoreButton;
+    UIStackView *_stackView;
     UIProgressView *_progressBar;
     UILabel *_updateStatusLabel;
+    UILabel *_learnMoreLabel;
     PSWebContainerView *_releaseNotesSummaryView;
     NSLayoutConstraint *_updateStatusLabelVerticalConstraint;
+    id <SUSUISoftwareUpdateTitleCellDelegate> _delegate;
 }
 
 + (long long)cellStyle;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <SUSUISoftwareUpdateTitleCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) NSLayoutConstraint *updateStatusLabelVerticalConstraint; // @synthesize updateStatusLabelVerticalConstraint=_updateStatusLabelVerticalConstraint;
 @property(readonly, nonatomic) PSWebContainerView *releaseNotesSummaryView; // @synthesize releaseNotesSummaryView=_releaseNotesSummaryView;
+@property(readonly, nonatomic) UILabel *learnMoreLabel; // @synthesize learnMoreLabel=_learnMoreLabel;
 @property(readonly, nonatomic) UILabel *updateStatusLabel; // @synthesize updateStatusLabel=_updateStatusLabel;
 @property(readonly, nonatomic) UIProgressView *progressBar; // @synthesize progressBar=_progressBar;
-@property(retain, nonatomic) UIImageView *gearBackgroundImageView; // @synthesize gearBackgroundImageView=_gearBackgroundImageView;
+- (void)handleLearnMoreTap:(id)arg1;
+- (id)newLearnMoreLabel;
 - (id)newUpdateStatusLabel;
 - (id)newProgressBar;
 - (id)newGearBackgroundImageView;
+- (id)newUpdateIconImageView;
 @property(readonly, nonatomic) UIImage *gearBackgroundImage;
 - (void)animationDidStop:(id)arg1 finished:(_Bool)arg2;
 - (void)setAnimatingGearView:(_Bool)arg1;
+- (void)setLearnMoreText:(id)arg1;
 - (void)setStatusMessage:(id)arg1;
 - (void)setPublisherText:(id)arg1;
 - (void)setUpdateName:(id)arg1;
@@ -46,14 +57,21 @@
 - (void)configureUpdateStatusLabel:(_Bool)arg1;
 - (void)configurePublisherLabel:(_Bool)arg1;
 - (void)configureUpdateNameLabel:(_Bool)arg1;
+- (void)createUpdateIconConstraints;
 - (void)createGearIconConstraints;
+- (void)configureUpdateImageViewFromImageSize:(struct CGSize)arg1;
 - (void)configureAnimatedGearViewFromImageSize:(struct CGSize)arg1;
 - (void)configureImageView;
 - (void)setupViews;
 - (void)layoutSubviews;
 - (double)preferredHeightWithTable:(id)arg1;
 - (void)updateConstraints;
+- (void)updateStatusLabelVerticalConstraints;
+- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 specifier:(id)arg3 updateIcon:(id)arg4 showLearnMore:(_Bool)arg5 delegate:(id)arg6;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 specifier:(id)arg3;
+
+// Remaining properties
+@property(retain, nonatomic) UIImageView *imageView;
 
 @end
 

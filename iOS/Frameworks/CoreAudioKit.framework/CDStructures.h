@@ -10,6 +10,45 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct AudioUnitEvent {
+    unsigned int _field1;
+    union {
+        struct AudioUnitParameter _field1;
+        struct AudioUnitProperty _field2;
+    } _field2;
+};
+
+struct AudioUnitFrequencyResponseBin {
+    double _field1;
+    double _field2;
+};
+
+struct AudioUnitParameter {
+    struct OpaqueAudioComponentInstance *_field1;
+    unsigned int _field2;
+    unsigned int _field3;
+    unsigned int _field4;
+};
+
+struct AudioUnitParameterInfo {
+    char _field1[52];
+    struct __CFString *_field2;
+    unsigned int _field3;
+    struct __CFString *_field4;
+    unsigned int _field5;
+    float _field6;
+    float _field7;
+    float _field8;
+    unsigned int _field9;
+};
+
+struct AudioUnitProperty {
+    struct OpaqueAudioComponentInstance *_field1;
+    unsigned int _field2;
+    unsigned int _field3;
+    unsigned int _field4;
+};
+
 struct CGPoint {
     double x;
     double y;
@@ -33,8 +72,12 @@ struct HostCallbackInfo {
     CDUnknownFunctionPointerType _field5;
 };
 
+struct OpaqueAudioComponentInstance;
+
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;
 };
+
+struct __CFString;
 

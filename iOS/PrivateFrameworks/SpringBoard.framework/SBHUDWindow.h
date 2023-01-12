@@ -8,5 +8,7 @@
 {
 }
 
++ (id)_traitsArbiterOrientationActuationRole;
+
 @end
 

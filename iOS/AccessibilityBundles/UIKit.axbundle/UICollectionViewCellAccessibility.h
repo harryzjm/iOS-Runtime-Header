@@ -13,7 +13,6 @@
 + (id)safeCategoryTargetClassName;
 - (_Bool)_accessibilityIsInCollectionCell;
 - (struct _NSRange)_accessibilityIndexPathAsRange;
-- (_Bool)_axContentViewHasSingleFocusableSubview;
 - (_Bool)canBecomeFocused;
 - (_Bool)_isEligibleForFocusInteraction;
 - (id)accessibilityDropPointDescriptors;
@@ -33,10 +32,9 @@
 - (void)insertSubview:(id)arg1 belowSubview:(id)arg2;
 - (void)willRemoveSubview:(id)arg1;
 - (void)addSubview:(id)arg1;
-- (void)_accessibilityClearInternalCaches;
-- (id)_axCustomActionsForActions:(id)arg1;
 - (id)_privateAccessibilityCustomActions;
-- (id)_accessibilityCachedChildren;
+- (_Bool)_accessibilityRespondsToUserInteractionForElement:(id)arg1;
+- (_Bool)_accessibilityHitTestReverseOrder;
 - (id)_accessibilityChildren;
 - (id)_accessibilityUserTestingChildren;
 - (_Bool)shouldGroupAccessibilityChildren;
@@ -44,7 +42,6 @@
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)prepareForReuse;
 - (unsigned long long)accessibilityTraits;
-- (id)_accessibilityParentScrollView;
 - (id)_accessibilityParentCollectionView;
 - (unsigned long long)_accessibilityAutomationType;
 

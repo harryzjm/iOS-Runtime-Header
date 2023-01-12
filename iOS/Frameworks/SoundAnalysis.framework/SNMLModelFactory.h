@@ -11,20 +11,30 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)sharedLockedSoundPrint100kNeuralNetDetectorHeadWithSoundIdentifier:(id)arg1;
-+ (id)createSoundPrint100kNeuralNetDetectorHeadWithSoundIdentifier:(id)arg1;
++ (id)defaultDetectorIdentifierForSoundIdentifier:(id)arg1;
++ (id)createSharedLockedSoundClassifierVersion1;
++ (id)createSoundClassifierVersion1;
++ (Class)soundClassifierVersion1Modelclass;
++ (id)sharedLockedSoundPrintKFeatureExtractor;
++ (id)createSoundPrintKFeatureExtractor;
++ (Class)soundPrintKFeatureExtractorModelClass;
++ (id)sharedLockedSoundPrintAFeatureExtractorWithModelConfiguration:(id)arg1;
++ (id)createSoundPrintAFeatureExtractorWithModelConfiguration:(id)arg1;
++ (Class)soundPrintAFeatureExtractorModelClass;
 + (Class)soundprint100kModelClassForSoundIdentifier:(id)arg1;
-+ (id)sharedLockedSoundPrint100kFeatureExtractor;
-+ (id)createSoundPrint100kFeatureExtractor;
++ (id)sharedLockedSoundPrint100kFeatureExtractorWithModelConfiguration:(id)arg1;
++ (id)createSoundPrint100kFeatureExtractorWithModelConfiguration:(id)arg1;
 + (Class)soundPrint100kFeatureExtractorModelClass;
-+ (id)sharedLockedVGGishNeuralNetDetectorHeadWithSoundIdentifier:(id)arg1;
-+ (id)createVGGishNeuralNetDetectorHeadWithSoundIdentifier:(id)arg1;
 + (Class)vggishModelClassForSoundIdentifier:(id)arg1;
-+ (id)sharedLockedVGGishFeatureExtractor;
-+ (id)createVGGishFeatureExtractor;
++ (id)splitDetectorInfoForDetectorIdentifier:(id)arg1;
++ (id)sharedLockedVGGishFeatureExtractorWithModelConfiguration:(id)arg1;
++ (id)createVGGishFeatureExtractorWithModelConfiguration:(id)arg1;
 + (Class)vggishFeatureExtractorModelClass;
 + (id)sharedLockedModelOfClass:(Class)arg1;
++ (id)sharedLockedModelOfClass:(Class)arg1 modelConfiguration:(id)arg2;
++ (id)sharedLockedModelOfClass:(Class)arg1 memoized:(_Bool)arg2 modelConfiguration:(id)arg3;
 + (id)createModelOfClass:(Class)arg1;
++ (id)createModelOfClass:(Class)arg1 modelConfiguration:(id)arg2;
 + (id)sharedLockedModelWithKey:(id)arg1 orCreateNewModelWithWithFunction:(CDUnknownBlockType)arg2;
 
 @end

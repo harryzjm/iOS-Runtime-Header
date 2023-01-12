@@ -10,23 +10,21 @@
 #import <CoreParsec/_CPErrorFeedback-Protocol.h>
 #import <CoreParsec/_CPProcessableFeedback-Protocol.h>
 
-@class NSData, NSDictionary, NSString, _CPError;
+@class NSData, NSString, _CPError;
 
 @interface _CPErrorFeedback : PBCodable <_CPProcessableFeedback, _CPErrorFeedback, NSSecureCoding>
 {
     unsigned long long _timestamp;
     _CPError *_error;
     _CPError *_underlyingError;
+    NSString *_relatedStartNetworkSearchFeedbackId;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *relatedStartNetworkSearchFeedbackId; // @synthesize relatedStartNetworkSearchFeedbackId=_relatedStartNetworkSearchFeedbackId;
 @property(retain, nonatomic) _CPError *underlyingError; // @synthesize underlyingError=_underlyingError;
 @property(retain, nonatomic) _CPError *error; // @synthesize error=_error;
 @property(nonatomic) unsigned long long timestamp;
-- (id)initWithDictionary:(id)arg1;
-- (id)initWithJSON:(id)arg1;
-@property(readonly, nonatomic) NSData *jsonData;
-@property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
@@ -38,7 +36,7 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(readonly, nonatomic) id feedbackJSON;
+@property(readonly, nonatomic) NSData *jsonData; // @dynamic jsonData;
 @property(readonly) Class superclass;
 
 @end

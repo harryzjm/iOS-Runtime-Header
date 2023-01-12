@@ -10,6 +10,7 @@
 
 @interface SVPlayerLayer : CALayer
 {
+    _Bool _shouldPlayInBackground;
     SVImageLayer *_stillImageLayer;
     AVPlayerLayer *_playerLayer;
     SVLooper *_looper;
@@ -27,6 +28,7 @@
 @property(retain, nonatomic) SVKeyValueObserver *readyForDisplayObserver; // @synthesize readyForDisplayObserver=_readyForDisplayObserver;
 @property(retain, nonatomic) SVLooper *looper; // @synthesize looper=_looper;
 @property(retain, nonatomic) AVPlayerLayer *playerLayer; // @synthesize playerLayer=_playerLayer;
+@property(nonatomic) _Bool shouldPlayInBackground; // @synthesize shouldPlayInBackground=_shouldPlayInBackground;
 @property(readonly) SVImageLayer *stillImageLayer; // @synthesize stillImageLayer=_stillImageLayer;
 - (void)dealloc;
 - (void)reduceMotionStatusDidChange;

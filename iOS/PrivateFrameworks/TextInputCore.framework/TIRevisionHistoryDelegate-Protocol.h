@@ -15,6 +15,7 @@
 - (void)registerNegativeEvidence:(NSString *)arg1 tokenID:(struct TITokenID)arg2 context:(const struct TITokenID *)arg3 contextLength:(unsigned long long)arg4 intendedTokenID:(struct TITokenID *)arg5 hint:(int)arg6 contextStringTokens:(NSArray *)arg7;
 - (void)decrementLanguageModelCount:(NSString *)arg1 tokenID:(struct TITokenID)arg2 context:(const struct TITokenID *)arg3 contextLength:(unsigned long long)arg4 contextStringTokens:(NSArray *)arg5;
 - (void)incrementLanguageModelCount:(NSString *)arg1 tokenID:(struct TITokenID)arg2 context:(const struct TITokenID *)arg3 contextLength:(unsigned long long)arg4 contextStringTokens:(NSArray *)arg5 saveToDifferentialPrivacy:(int)arg6;
+- (_Bool)isStringBasedModel;
 - (void)incrementUsageTrackingKeyForAppWithIsSentence:(_Bool)arg1;
 - (void)incrementUsageTrackingKey:(NSString *)arg1;
 - (void)incrementUsageTrackingKeyForAutocorrectionStatistic:(NSString *)arg1 autocorrectionTypes:(unsigned int)arg2;

@@ -13,10 +13,20 @@
 @interface TRIXPCNamespaceManagementClient : NSObject <TRINamespaceManagementProtocol>
 {
     _PASXPCClientHelper *_helper;
+    _PASXPCClientHelper *_internalHelper;
 }
 
 - (void).cxx_destruct;
+- (id)activeRolloutInformation:(id *)arg1;
+- (unsigned long long)statusOfDownloadForFactors:(id)arg1 withNamespace:(id)arg2 notificationKey:(id *)arg3 error:(id *)arg4;
+- (_Bool)promoteFactorPackId:(id)arg1 forNamespaceName:(id)arg2 rolloutDeployment:(id)arg3 error:(id *)arg4;
+- (_Bool)rejectFactorPackId:(id)arg1 forNamespaceName:(id)arg2 rolloutDeployment:(id)arg3 error:(id *)arg4;
+- (_Bool)setProvisionalFactorPackId:(id)arg1 forNamespaceName:(id)arg2 error:(id *)arg3;
+- (id)loadNamespaceMetadataForNamespaceName:(id)arg1 error:(id *)arg2;
+- (_Bool)setPurgeabilityLevelsForFactors:(id)arg1 forNamespaceName:(id)arg2 error:(id *)arg3;
 - (_Bool)deregisterNamespaceWithNamespaceName:(id)arg1 error:(id *)arg2;
+- (_Bool)removeLevelsForFactors:(id)arg1 withNamespace:(id)arg2 error:(id *)arg3;
+- (_Bool)immediateDownloadForNamespaceNames:(id)arg1 allowExpensiveNetworking:(_Bool)arg2 error:(id *)arg3;
 - (id)startDownloadLevelsForFactors:(id)arg1 withNamespace:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (_Bool)startNamespaceDownloadWithName:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (_Bool)registerNamespaceWithNamespaceName:(id)arg1 compatibilityVersion:(unsigned int)arg2 defaultsFileURL:(id)arg3 applicationGroup:(id)arg4 cloudKitContainerId:(int)arg5 error:(id *)arg6;

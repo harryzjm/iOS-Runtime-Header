@@ -10,22 +10,21 @@
 
 @class NSArray, NSDictionary;
 
-__attribute__((visibility("hidden")))
 @interface CKDFetchBatchedRecordsOperationInfo : CKDatabaseOperationInfo <NSSecureCoding>
 {
     _Bool _shouldFetchAssetContents;
     _Bool _fetchAllChanges;
-    _Bool _shouldReportAllPerItemFailures;
     _Bool _forcePCSDecryptionAttempt;
     NSArray *_recordZoneIDs;
     NSDictionary *_configurationsByRecordZoneID;
     NSDictionary *_assetTransferOptionsByRecordTypeAndKey;
+    long long _errorReportingStyle;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool forcePCSDecryptionAttempt; // @synthesize forcePCSDecryptionAttempt=_forcePCSDecryptionAttempt;
-@property(nonatomic) _Bool shouldReportAllPerItemFailures; // @synthesize shouldReportAllPerItemFailures=_shouldReportAllPerItemFailures;
+@property(nonatomic) long long errorReportingStyle; // @synthesize errorReportingStyle=_errorReportingStyle;
 @property(retain, nonatomic) NSDictionary *assetTransferOptionsByRecordTypeAndKey; // @synthesize assetTransferOptionsByRecordTypeAndKey=_assetTransferOptionsByRecordTypeAndKey;
 @property(nonatomic) _Bool fetchAllChanges; // @synthesize fetchAllChanges=_fetchAllChanges;
 @property(nonatomic) _Bool shouldFetchAssetContents; // @synthesize shouldFetchAssetContents=_shouldFetchAssetContents;

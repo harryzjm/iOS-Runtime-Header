@@ -20,18 +20,20 @@
     NSString *_unmodifiedInput;
     NSString *_shiftModifiedInput;
     NSString *_commandModifiedInput;
+    long long _usagePage;
 }
 
 + (id)descriptorWithKeyCode:(long long)arg1 modifierFlags:(long long)arg2;
 + (id)descriptorWithInput:(id)arg1 modifierFlags:(long long)arg2;
-+ (_Bool)_shouldMatchKeyCommandsWithKeyCode:(long long)arg1 gsKeyboard:(struct __GSKeyboard *)arg2;
-+ (_Bool)_keyCodeIsModifierKey:(long long)arg1;
++ (_Bool)_shouldMatchKeyCommandsForEvent:(struct __IOHIDEvent *)arg1 gsKeyboard:(struct __GSKeyboard *)arg2;
++ (_Bool)_isModifierKeyWithPage:(long long)arg1 usage:(long long)arg2;
 + (id)keyCommandForEvent:(struct __IOHIDEvent *)arg1 gsKeyboard:(struct __GSKeyboard *)arg2 activeModifiers:(long long *)arg3;
 + (id)keyCommandForEvent:(struct __IOHIDEvent *)arg1 gsKeyboard:(struct __GSKeyboard *)arg2;
 + (_Bool)supportsSecureCoding;
 + (id)keyCommandWithKeyCode:(long long)arg1 modifierFlags:(long long)arg2;
 + (id)keyCommandWithInput:(id)arg1 modifierFlags:(long long)arg2;
 - (void).cxx_destruct;
+@property(nonatomic) long long usagePage; // @synthesize usagePage=_usagePage;
 @property(retain, nonatomic) NSString *commandModifiedInput; // @synthesize commandModifiedInput=_commandModifiedInput;
 @property(retain, nonatomic) NSString *shiftModifiedInput; // @synthesize shiftModifiedInput=_shiftModifiedInput;
 @property(retain, nonatomic) NSString *unmodifiedInput; // @synthesize unmodifiedInput=_unmodifiedInput;
@@ -39,6 +41,8 @@
 @property(readonly, nonatomic) long long keyCode; // @synthesize keyCode=_keyCode;
 @property(readonly, nonatomic) NSString *input; // @synthesize input=_input;
 - (long long)describes:(id)arg1;
+@property(readonly) _Bool isRoutableKeyCommand;
+- (_Bool)isModifierOnlyCommand;
 @property(readonly, nonatomic) _Bool isTextualKeyCommand;
 - (id)_sanitizedInputForDescription;
 - (void)_appendPropertiesCommon:(id)arg1;

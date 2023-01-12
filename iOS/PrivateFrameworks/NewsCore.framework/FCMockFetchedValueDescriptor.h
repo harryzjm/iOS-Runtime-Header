@@ -34,6 +34,7 @@
 - (_Bool)isValue:(id)arg1 equalToValue:(id)arg2;
 - (void)fetchValueWithCachePolicy:(unsigned long long)arg1 qualityOfService:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)markDirty;
 - (id)initWithInputManagers:(id)arg1;
 - (id)init;
 

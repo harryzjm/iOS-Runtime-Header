@@ -6,25 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
-
 __attribute__((visibility("hidden")))
 @interface ShotflowNetwork : NSObject
 {
     CDStruct_2bc666a5 _espressoNetwork;
     void *_espressoPlan;
     void *_espressoContext;
-    struct vector<std::__1::shared_ptr<espresso_buffer_t>, std::__1::allocator<std::__1::shared_ptr<espresso_buffer_t>>> _logitsPosOutputs;
-    struct vector<std::__1::shared_ptr<espresso_buffer_t>, std::__1::allocator<std::__1::shared_ptr<espresso_buffer_t>>> _logitsNegOutputs;
-    struct vector<std::__1::shared_ptr<espresso_buffer_t>, std::__1::allocator<std::__1::shared_ptr<espresso_buffer_t>>> _offsetsOutputs;
-    struct vector<std::__1::shared_ptr<espresso_buffer_t>, std::__1::allocator<std::__1::shared_ptr<espresso_buffer_t>>> _rollOutputs;
-    struct vector<std::__1::shared_ptr<espresso_buffer_t>, std::__1::allocator<std::__1::shared_ptr<espresso_buffer_t>>> _yawOutputs;
+    struct vector<std::shared_ptr<espresso_buffer_t>, std::allocator<std::shared_ptr<espresso_buffer_t>>> _logitsPosOutputs;
+    struct vector<std::shared_ptr<espresso_buffer_t>, std::allocator<std::shared_ptr<espresso_buffer_t>>> _logitsNegOutputs;
+    struct vector<std::shared_ptr<espresso_buffer_t>, std::allocator<std::shared_ptr<espresso_buffer_t>>> _offsetsOutputs;
+    struct vector<std::shared_ptr<espresso_buffer_t>, std::allocator<std::shared_ptr<espresso_buffer_t>>> _rollOutputs;
+    struct vector<std::shared_ptr<espresso_buffer_t>, std::allocator<std::shared_ptr<espresso_buffer_t>>> _yawOutputs;
     unsigned long long _currentNetworkWidth;
     unsigned long long _currentNetworkHeight;
     _Bool _releaseEspressoContext;
     _Bool _releaseEspressoPlan;
     _Bool isAnchorSquare[10];
-    NSArray *_filterThreshold;
     float _defaultBoxSizes[6][10][2];
     float _threshold;
     unsigned long long _preferredSmallSide;
@@ -36,10 +33,10 @@ __attribute__((visibility("hidden")))
 + (unsigned long long)numberBinsRoll;
 + (_Bool)hasPose;
 + (_Bool)inputBGR;
-+ (tuple_8621cb4d)inputBiasRGB;
++ (tuple_8dc74180)inputBiasRGB;
 + (float)inputScale;
-+ (const vector_7584168e *)defaultBoxesSides;
-+ (const vector_7584168e *)strides;
++ (const void *)defaultBoxesSides;
++ (const void *)strides;
 + (float)nonSquareYawDefault;
 + (float)nonSquareRollDefault;
 + (float)inputImageAspectRatio;

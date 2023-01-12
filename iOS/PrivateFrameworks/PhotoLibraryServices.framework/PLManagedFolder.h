@@ -20,6 +20,7 @@
 + (id)validKindsForPersistence;
 + (id)cloudUUIDKeyForDeletion;
 + (long long)cloudDeletionTypeForTombstone:(id)arg1;
++ (id)insertNewFolderWithTitle:(id)arg1 kind:(int)arg2 intoLibrary:(id)arg3;
 + (id)localizedRecoveredTitle;
 + (id)childKeyForOrdering;
 + (id)entityName;

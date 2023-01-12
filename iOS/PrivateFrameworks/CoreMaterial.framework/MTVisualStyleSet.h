@@ -18,10 +18,13 @@
     NSString *_visualStyleSetName;
 }
 
++ (id)recipeNameForRecipeFromStyle:(id)arg1 fromStyleSetWithName:(id)arg2;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *visualStyleSetName; // @synthesize visualStyleSetName=_visualStyleSetName;
 @property(readonly, nonatomic) long long visualStyleSetVersion; // @synthesize visualStyleSetVersion=_visualStyleSetVersion;
 @property(readonly, copy) NSString *description;
+- (id)_newMaterialSettingsForStyle:(id)arg1 withProvidedStyles:(id)arg2;
+- (id)_materialDescriptionForStyle:(id)arg1 withProvidedStyles:(id)arg2;
 - (id)visualStylingForStyle:(id)arg1;
 - (id)initWithName:(id)arg1 visualStyleSetDescription:(id)arg2 andDescendantDescriptions:(id)arg3;
 

@@ -6,21 +6,48 @@
 
 #import <objc/NSObject.h>
 
+@protocol OS_dispatch_queue;
+
 @interface WFMediaPlaybackController : NSObject
 {
+    NSObject<OS_dispatch_queue> *_queue;
+    void *_reconSession;
 }
 
 + (id)songPropertySet;
 + (id)bundleIdentifierForMediaPlaybackApplication:(unsigned long long)arg1;
+- (void).cxx_destruct;
+@property(nonatomic) void *reconSession; // @synthesize reconSession=_reconSession;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+- (void)goToBeginningOfTrackOnDevicesWithUIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)goToPreviousTrackOnDevicesWithUIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)goToNextTrackOnDevicesWithUIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)skipToPositionOnDevicesWithUIDs:(id)arg1 interval:(double)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)skipBackwardOnDevicesWithUIDs:(id)arg1 interval:(double)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)skipForwardOnDevicesWithUIDs:(id)arg1 interval:(double)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)pauseOnDevicesWithUIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)playOnDevicesWithUIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)playPauseOnDevicesWithUIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)sendCommandToDevicesWithUIDs:(unsigned int)arg1 deviceUIDs:(id)arg2 options:(id)arg3 sendTwice:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)sendCommand:(unsigned int)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)sendCommand:(unsigned int)arg1 playerPath:(void *)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)sendCommand:(unsigned int)arg1 origin:(void *)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)createSendCommandError:(unsigned int)arg1;
+- (void)connectToExternalDevice:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)connectToEndpoint:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getRemoteControlEndpointsMatchingUIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getActivePlayerPathWithCompletion:(CDUnknownBlockType)arg1;
 - (void)clearQueueWithCompletion:(CDUnknownBlockType)arg1;
 - (void)queueItemsWithIdentifierSets:(id)arg1 inAdditionMode:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)queueiTunesStoreItems:(id)arg1 inAdditionMode:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)queueMediaItems:(id)arg1 inAdditionMode:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)getPreferredMediaControlOriginWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getPreferredPlaybackOriginWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getCurrentlyPlayingMediaWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getLocalPlaybackCapabilityWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
+- (void)getPreferredMediaControlDestinationForOutputDeviceUIDs:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)getPreferredPlaybackDestinationForPlaybackArchive:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 
 @end
 

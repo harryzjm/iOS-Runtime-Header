@@ -9,7 +9,7 @@
 #import <AppPredictionClient/ATXProtoBufWrapper-Protocol.h>
 #import <AppPredictionClient/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableArray, NSNumber;
+@class ATXCGRectWrapper, NSArray, NSDictionary, NSMutableArray, NSNumber, NSURL;
 
 @interface ATXHomeScreenEventMetadata : NSObject <NSSecureCoding, ATXProtoBufWrapper>
 {
@@ -19,10 +19,16 @@
     NSArray *_widgetsInStack;
     NSNumber *_isSuggestionInAddWidgetSheet;
     NSNumber *_isWidgetInTodayView;
+    ATXCGRectWrapper *_visibleRect;
+    NSURL *_engagedUrl;
+    NSNumber *_isStalenessRotation;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSNumber *isStalenessRotation; // @synthesize isStalenessRotation=_isStalenessRotation;
+@property(retain, nonatomic) NSURL *engagedUrl; // @synthesize engagedUrl=_engagedUrl;
+@property(retain, nonatomic) ATXCGRectWrapper *visibleRect; // @synthesize visibleRect=_visibleRect;
 @property(retain, nonatomic) NSNumber *isWidgetInTodayView; // @synthesize isWidgetInTodayView=_isWidgetInTodayView;
 @property(retain, nonatomic) NSNumber *isSuggestionInAddWidgetSheet; // @synthesize isSuggestionInAddWidgetSheet=_isSuggestionInAddWidgetSheet;
 @property(retain, nonatomic) NSArray *widgetsInStack; // @synthesize widgetsInStack=_widgetsInStack;
@@ -39,7 +45,7 @@
 - (id)initWithProto:(id)arg1;
 - (id)initWithProtoData:(id)arg1;
 @property(retain, nonatomic) NSDictionary *stacks;
-- (id)initWithPageIndex:(id)arg1 stacks:(id)arg2 widgetsInStack:(id)arg3 isSuggestionInAddWidgetSheet:(id)arg4 isWidgetInTodayView:(id)arg5;
+- (id)initWithPageIndex:(id)arg1 stacks:(id)arg2 widgetsInStack:(id)arg3 isSuggestionInAddWidgetSheet:(id)arg4 isWidgetInTodayView:(id)arg5 visibleRect:(id)arg6 engagedUrl:(id)arg7;
 - (id)init;
 
 @end

@@ -8,6 +8,7 @@
 
 @class MPPropertySet;
 
+__attribute__((visibility("hidden")))
 @interface MPCModelRadioStationBuilder : NSObject
 {
     struct {
@@ -31,7 +32,7 @@
 
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) MPPropertySet *requestedProperties; // @synthesize requestedProperties=_requestedProperties;
-- (id)modelRadioStationForMetadata:(id)arg1;
+- (id)modelRadioStationForMetadata:(id)arg1 userIdentity:(id)arg2;
 - (id)initWithRequestedProperties:(id)arg1;
 
 @end

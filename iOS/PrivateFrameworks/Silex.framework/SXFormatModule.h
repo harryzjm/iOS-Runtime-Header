@@ -9,15 +9,15 @@
 #import <Silex/SXFormatModule-Protocol.h>
 
 @class NSString;
-@protocol NFResolver;
+@protocol TFResolver;
 
 @interface SXFormatModule : NSObject <SXFormatModule>
 {
-    id <NFResolver> _resolver;
+    id <TFResolver> _resolver;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) id <NFResolver> resolver; // @synthesize resolver=_resolver;
+@property(readonly, nonatomic) id <TFResolver> resolver; // @synthesize resolver=_resolver;
 - (id)createViewController;
 - (id)initWithResolver:(id)arg1;
 

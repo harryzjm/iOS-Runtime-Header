@@ -12,7 +12,7 @@
 
 @interface TSTCellDiffMap : TSPObject <NSCopying>
 {
-    vector_38b190b0 _cellIDs;
+    vector_7f5598a1 _cellIDs;
     _Bool _uidBased;
     _Bool _containsCellBorderChanges;
     _Bool _containsSuppressCustomFormatHandlingProperty;
@@ -37,10 +37,10 @@
 - (_Bool)p_scanNSArrayOfDiffsForCellBorderChanges:(id)arg1;
 - (void)enumerateCellIDElementsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateElementsUsingBlock:(CDUnknownBlockType)arg1;
-- (id)cellDiffMapByRemovingColumns:(const vector_4dc5f307 *)arg1;
-- (id)cellDiffMapByRemovingRows:(const vector_4dc5f307 *)arg1;
-- (id)cellDiffMapByIntersectingUIDs:(const vector_4dc5f307 *)arg1 inRows:(_Bool)arg2;
-- (const vector_38b190b0 *)cellIDs;
+- (id)cellDiffMapByRemovingColumns:(const void *)arg1;
+- (id)cellDiffMapByRemovingRows:(const void *)arg1;
+- (id)cellDiffMapByIntersectingUIDs:(const void *)arg1 inRows:(_Bool)arg2;
+- (const void *)cellIDs;
 - (void)p_resolveCellIDsToUUIDsByTableInfo:(id)arg1;
 - (id)uuidBasedCellDiffMapByTableInfo:(id)arg1;
 - (id)pruneCellDiffMapAgainstTable:(id)arg1 behavior:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
@@ -49,9 +49,9 @@
 - (void)addCellDiffs:(id)arg1 atCellUIDs:(id)arg2;
 - (void)addCellDiffMap:(id)arg1;
 - (id)addCellDiff:(id)arg1 andCellID:(struct TSUCellCoord)arg2 avoidCopy:(_Bool)arg3;
-- (id)addCellDiff:(id)arg1 andCellUID:(struct TSTCellUID)arg2 avoidCopy:(_Bool)arg3;
+- (id)addCellDiff:(id)arg1 andCellUID:(struct TSKUIDStructCoord)arg2 avoidCopy:(_Bool)arg3;
 - (void)addCellDiff:(id)arg1 andCellID:(struct TSUCellCoord)arg2;
-- (void)addCellDiff:(id)arg1 andCellUID:(struct TSTCellUID)arg2;
+- (void)addCellDiff:(id)arg1 andCellUID:(struct TSKUIDStructCoord)arg2;
 @property(readonly, nonatomic) unsigned long long count;
 - (id)initWithContext:(id)arg1 cellDiffArray:(id)arg2 cellUIDList:(id)arg3 uidBased:(_Bool)arg4;
 - (id)initWithContext:(id)arg1 cellDiff:(id)arg2 cellUIDList:(id)arg3;

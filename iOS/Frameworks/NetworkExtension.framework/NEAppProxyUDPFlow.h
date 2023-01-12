@@ -17,6 +17,7 @@
 - (void)writeDatagrams:(id)arg1 sentByEndpoints:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)readDatagramsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)openWithLocalEndpoint:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)resetLocalEndpoint;
 - (id)initWithNEFlow:(struct _NEFlow *)arg1 queue:(id)arg2;
 
 @end

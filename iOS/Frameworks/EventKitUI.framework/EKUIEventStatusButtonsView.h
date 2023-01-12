@@ -48,6 +48,7 @@
 - (double)baselineFromBoundsTop;
 - (void)layoutSubviews;
 - (void)updateConstraints;
+- (double)_buttonFontSizeFromDelegate;
 - (double)_updateFontFromDelegate;
 - (id)_fontWithSize:(double)arg1 selected:(_Bool)arg2;
 - (double)_minimumFontSize;

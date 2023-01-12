@@ -8,7 +8,7 @@
 
 @interface VKObjectBoundsContext : NSObject
 {
-    vector_554e3200 _points;
+    struct vector<gm::Matrix<double, 2, 1>, std::allocator<gm::Matrix<double, 2, 1>>> _points;
     struct VKEdgeInsets _edgePadding;
 }
 
@@ -17,7 +17,7 @@
 @property(nonatomic) struct VKEdgeInsets edgePadding; // @synthesize edgePadding=_edgePadding;
 - (CDStruct_02837cd9)boundingRect;
 - (_Bool)isEmpty;
-- (void)addPoints:(const vector_554e3200 *)arg1;
+- (void)addPoints:(const void *)arg1;
 
 @end
 

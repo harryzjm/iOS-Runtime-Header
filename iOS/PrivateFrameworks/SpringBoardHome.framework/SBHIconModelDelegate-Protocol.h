@@ -6,7 +6,7 @@
 
 #import <SpringBoardHome/NSObject-Protocol.h>
 
-@class NSDictionary, NSIndexPath, NSSet, NSString, SBHIconModel, SBIcon, SBLeafIcon, SBRootFolder;
+@class NSDictionary, NSIndexPath, NSSet, NSString, SBHIconGridPath, SBHIconModel, SBHIconRelativePath, SBIcon, SBLeafIcon, SBRootFolder;
 
 @protocol SBHIconModelDelegate <NSObject>
 - (NSString *)iconModel:(SBHIconModel *)arg1 localizedFolderNameForDefaultDisplayName:(NSString *)arg2;
@@ -21,7 +21,19 @@
 - (unsigned long long)maxListCountForFoldersForIconModel:(SBHIconModel *)arg1;
 
 @optional
+- (SBHIconGridPath *)iconModel:(SBHIconModel *)arg1 customInsertionGridPathForIcon:(SBIcon *)arg2 inRootFolder:(SBRootFolder *)arg3;
+- (SBHIconRelativePath *)iconModel:(SBHIconModel *)arg1 customInsertionRelativePathForIcon:(SBIcon *)arg2 inRootFolder:(SBRootFolder *)arg3;
+- (unsigned long long)allowedGridSizeClassesForTodayListForIconModel:(SBHIconModel *)arg1;
+- (unsigned long long)allowedGridSizeClassesForDockForIconModel:(SBHIconModel *)arg1;
+- (unsigned long long)iconModel:(SBHIconModel *)arg1 allowedGridSizeClassesForFolderClass:(Class)arg2;
+- (struct SBHIconGridSize)iconModel:(SBHIconModel *)arg1 listWithNonDefaultSizedIconsGridSizeForFolderClass:(Class)arg2;
+- (_Bool)iconModel:(SBHIconModel *)arg1 listsAllowRotatedLayoutForFolderClass:(Class)arg2;
+- (unsigned long long)listRotatedLayoutClusterGridSizeClassForIconModel:(SBHIconModel *)arg1;
+- (unsigned long long)maxRowCountForFavoriteTodayListForIconModel:(SBHIconModel *)arg1;
+- (unsigned long long)maxColumnCountForTodayListForIconModel:(SBHIconModel *)arg1;
+- (Class)iconModel:(SBHIconModel *)arg1 iconClassForApplicationWithBundleIdentifier:(NSString *)arg2 proposedClass:(Class)arg3;
 - (void)iconModel:(SBHIconModel *)arg1 willRemoveIcon:(SBIcon *)arg2;
+- (_Bool)iconModel:(SBHIconModel *)arg1 shouldRemoveIcon:(SBIcon *)arg2;
 - (void)iconModel:(SBHIconModel *)arg1 didAddIcon:(SBIcon *)arg2;
 - (_Bool)iconModel:(SBHIconModel *)arg1 shouldPlaceIconOnIgnoredList:(SBLeafIcon *)arg2;
 - (_Bool)iconModel:(SBHIconModel *)arg1 shouldAvoidPlacingIconOnFirstPage:(SBLeafIcon *)arg2;

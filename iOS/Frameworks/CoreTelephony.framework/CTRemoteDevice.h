@@ -12,6 +12,7 @@
 
 @interface CTRemoteDevice : NSObject <NSSecureCoding>
 {
+    _Bool _isMultiESimEnabled;
     CTDeviceIdentifier *_deviceID;
     NSArray *_remoteDisplayPlans;
     NSArray *_remotePlans;
@@ -19,6 +20,7 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isMultiESimEnabled; // @synthesize isMultiESimEnabled=_isMultiESimEnabled;
 @property(retain, nonatomic) NSArray *remotePlans; // @synthesize remotePlans=_remotePlans;
 @property(retain, nonatomic) NSArray *remoteDisplayPlans; // @synthesize remoteDisplayPlans=_remoteDisplayPlans;
 @property(retain, nonatomic) CTDeviceIdentifier *deviceID; // @synthesize deviceID=_deviceID;

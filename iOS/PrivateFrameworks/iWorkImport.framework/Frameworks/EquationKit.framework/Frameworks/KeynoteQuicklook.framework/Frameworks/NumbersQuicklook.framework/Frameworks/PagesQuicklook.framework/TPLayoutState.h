@@ -32,8 +32,8 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (void)saveToArchive:(struct LayoutStateArchive *)arg1 archiver:(id)arg2 context:(id)arg3;
-- (id)initWithArchive:(const struct LayoutStateArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2 context:(id)arg3;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (id)archivedLayoutStateInContext:(id)arg1;
 - (_Bool)isEqualToLayoutState:(id)arg1;
 - (void)reset;

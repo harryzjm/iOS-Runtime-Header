@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)shouldLoadWallpaperCollectionAtURL:(id)arg1;
-+ (id)_createTemporaryWallpaperCollectionWithImage:(id)arg1 videoAssetURL:(id)arg2 wallpaperOptions:(id)arg3 error:(id *)arg4;
++ (id)_createTemporaryWallpaperCollectionWithImages:(id)arg1 videoAssetURLs:(id)arg2 wallpaperOptions:(id)arg3 error:(id *)arg4;
 + (id)dynamicWallpaperCollection;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSBundle *_bundleForLocalizationResources; // @synthesize _bundleForLocalizationResources=__bundleForLocalizationResources;

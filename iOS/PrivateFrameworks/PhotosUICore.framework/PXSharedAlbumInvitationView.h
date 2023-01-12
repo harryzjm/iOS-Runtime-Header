@@ -8,7 +8,7 @@
 
 #import <PhotosUICore/PXSettingsKeyObserver-Protocol.h>
 
-@class NSString, PXCapsuleButton, PXFeedInvitationSectionInfo, PXRoundedCornerOverlayView, UIImageView, UILabel;
+@class NSString, PXFeedInvitationSectionInfo, PXRoundedCornerOverlayView, UIButton, UIImageView, UILabel;
 @protocol PLCloudSharedAlbumProtocol, PXSharedAlbumInvitationViewDelegate;
 
 @interface PXSharedAlbumInvitationView : UIView <PXSettingsKeyObserver>
@@ -23,8 +23,8 @@
     UILabel *_infoLabel;
     UILabel *_albumTitleLabel;
     UILabel *_subscriberInfoLabel;
-    PXCapsuleButton *_acceptButton;
-    PXCapsuleButton *_declineButton;
+    UIButton *_acceptButton;
+    UIButton *_declineButton;
     UILabel *_reportJunkLabel;
     id <PLCloudSharedAlbumProtocol> _sharedAlbum;
     struct UIEdgeInsets _contentInsets;
@@ -34,8 +34,8 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) id <PLCloudSharedAlbumProtocol> sharedAlbum; // @synthesize sharedAlbum=_sharedAlbum;
 @property(retain, nonatomic) UILabel *reportJunkLabel; // @synthesize reportJunkLabel=_reportJunkLabel;
-@property(retain, nonatomic) PXCapsuleButton *declineButton; // @synthesize declineButton=_declineButton;
-@property(retain, nonatomic) PXCapsuleButton *acceptButton; // @synthesize acceptButton=_acceptButton;
+@property(retain, nonatomic) UIButton *declineButton; // @synthesize declineButton=_declineButton;
+@property(retain, nonatomic) UIButton *acceptButton; // @synthesize acceptButton=_acceptButton;
 @property(retain, nonatomic) UILabel *subscriberInfoLabel; // @synthesize subscriberInfoLabel=_subscriberInfoLabel;
 @property(retain, nonatomic) UILabel *albumTitleLabel; // @synthesize albumTitleLabel=_albumTitleLabel;
 @property(retain, nonatomic) UILabel *infoLabel; // @synthesize infoLabel=_infoLabel;
@@ -51,7 +51,6 @@
 - (void)_reportJunk;
 - (void)_declineButtonTapped:(id)arg1;
 - (void)_acceptButtonTapped:(id)arg1;
-- (void)_presentToastWithTitle:(id)arg1;
 - (void)_enableUserInteractions:(_Bool)arg1;
 - (void)_showOutOfNetworkInvitationMessageForSharedAlbum:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_actionButtonWithTitle:(id)arg1 action:(SEL)arg2 buttonColor:(id)arg3 titleColor:(id)arg4;
@@ -64,7 +63,6 @@
 - (void)_updateRoundedCornerOverlayView;
 - (void)_updateColors;
 - (id)_roundedCornerViewBackgroundColor;
-- (id)_declineButtonColor;
 - (id)_parentViewBackgroundColor;
 - (struct CGSize)_performLayoutInRect:(struct CGRect)arg1 updateSubviewFrames:(_Bool)arg2;
 - (void)_contentSizeCategoryDidChangeNotification:(id)arg1;

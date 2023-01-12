@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) NSEnumerator *extensionPathsEnumerator; // @synthesize extensionPathsEnumerator=_extensionPathsEnumerator;
 @property(readonly) NSArray *extensionPaths; // @synthesize extensionPaths=_extensionPaths;
 - (id)nextObject;
+- (id)initWithCacheURLs:(id)arg1 paths:(id)arg2;
 - (id)initWithCacheURLs:(id)arg1;
 
 @end

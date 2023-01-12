@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 @interface MPStoreLibraryPersonalizationCollectionDataSource : NSObject <MPLazySectionedCollectionDataSource>
 {
     NSObject<OS_dispatch_queue> *_accessSerialQueue;
-    struct vector<std::__1::shared_ptr<mlcore::EntityCache>, std::__1::allocator<std::__1::shared_ptr<mlcore::EntityCache>>> _entityCaches;
+    struct vector<std::shared_ptr<mlcore::EntityCache>, std::allocator<std::shared_ptr<mlcore::EntityCache>>> _entityCaches;
     MPSectionedCollection *_unpersonalizedContentDescriptors;
     MPPropertySet *_itemProperties;
     MPPropertySet *_sectionProperties;
@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 + (id)_requiredLightweightPersonalizationPropertiesForModelClass:(Class)arg1 requestedProperties:(id)arg2;
 + (id)_lightweightPersonalizedObjectWithUnpersonalizedObject:(id)arg1 libraryObject:(id)arg2 personalizationProperties:(id)arg3 overrideLibraryAddedStatus:(long long)arg4;
 + (id)_lightweightPersonalizedStoreAssetWithUnpersonalizedAsset:(id)arg1 libraryAsset:(id)arg2 personalizationProperties:(id)arg3;
++ (id)_lightweightPersonalizedLyricsWithUnpersonalizedLyrics:(id)arg1 libraryLyrics:(id)arg2 identifiers:(id)arg3 personalizationProperties:(id)arg4;
 + (id)_lightweightPersonalizedPlaybackPositionWithUnpersonalizedPlaybackPosition:(id)arg1 identifiers:(id)arg2 personalizationProperties:(id)arg3;
 + (id)_lightweightPersonalizedPlaybackPositionWithUnpersonalizedPlaybackPosition:(id)arg1 libraryPlaybackPosition:(id)arg2 personalizationProperties:(id)arg3;
 - (id).cxx_construct;
@@ -42,7 +43,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) MPPropertySet *sectionProperties; // @synthesize sectionProperties=_sectionProperties;
 @property(copy, nonatomic) MPPropertySet *itemProperties; // @synthesize itemProperties=_itemProperties;
 @property(retain, nonatomic) MPSectionedCollection *unpersonalizedContentDescriptors; // @synthesize unpersonalizedContentDescriptors=_unpersonalizedContentDescriptors;
-- (shared_ptr_1c86f238)_entityCacheForEntityClass:(struct EntityClass *)arg1 propertiesToFetch:(vector_90d4f7ff)arg2;
+- (shared_ptr_1c86f238)_entityCacheForEntityClass:(void *)arg1 propertiesToFetch:(vector_2194507e)arg2;
 - (id)_libraryObjectWithRelativeModelClass:(Class)arg1 identifierSet:(id)arg2 propertySet:(id)arg3;
 - (id)indexPathForItemWithIdentifiersIntersectingSet:(id)arg1;
 - (id)identifiersForSectionAtIndex:(long long)arg1;

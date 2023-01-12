@@ -32,9 +32,9 @@
 @property(readonly, nonatomic) unsigned long long mostRecentRestorableToolType; // @synthesize mostRecentRestorableToolType=_mostRecentRestorableToolType;
 @property(nonatomic) unsigned long long currentToolType; // @synthesize currentToolType=_currentToolType;
 - (void)p_setColor:(id)arg1 forToolType:(unsigned long long)arg2;
-- (void)saveToArchive:(struct FreehandDrawingToolkitUIState *)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
-- (void)loadFromArchive:(const struct FreehandDrawingToolkitUIState *)arg1 unarchiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

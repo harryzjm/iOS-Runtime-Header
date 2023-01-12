@@ -6,26 +6,30 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMBModelObjectCoder-Protocol.h>
 #import <HomeKitDaemon/HMFObject-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSString, NSUUID, _HMDAccountIdentifier;
 
-@interface HMDAccountIdentifier : HMFObject <HMFObject, NSCopying, NSSecureCoding>
+@interface HMDAccountIdentifier : HMFObject <HMBModelObjectCoder, HMFObject, NSCopying, NSSecureCoding>
 {
     _HMDAccountIdentifier *_internal;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)accountIdentifierForSenderCorrelationIdentifier:(id)arg1;
 + (id)accountIdentifierForMessageContext:(id)arg1;
 + (id)accountIdentifierForAppleAccountContext:(id)arg1;
 + (id)accountIdentifierForAccountHandle:(id)arg1;
++ (id)hmbDecodeData:(id)arg1 fromStorageLocation:(unsigned long long)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 @property(readonly, copy) _HMDAccountIdentifier *internal; // @synthesize internal=_internal;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)updateAppleAccountSenderCorrelationIdentifier:(id)arg1;
 @property(readonly, copy) NSString *senderCorrelationIdentifier;
 @property(readonly, getter=isAuthenticated) _Bool authenticated;
 @property(readonly, copy) NSUUID *identifier;
@@ -35,6 +39,7 @@
 @property(readonly) unsigned long long hash;
 - (id)initWithInternal:(id)arg1;
 - (id)init;
+- (id)hmbEncodeForStorageLocation:(unsigned long long)arg1 error:(id *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

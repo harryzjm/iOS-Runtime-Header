@@ -10,10 +10,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic) double nextBloodAlcoholContentSampleTime; // @synthesize nextBloodAlcoholContentSampleTime=_nextBloodAlcoholContentSampleTime;
-- (double)_computeNumDrinksTodayForDemoPerson:(id)arg1 atTime:(double)arg2;
-- (id)bloodAlcoholContentForDemoPerson:(id)arg1 atTime:(double)arg2;
-- (void)generateSamplesForDemoPerson:(id)arg1 atTime:(double)arg2 sampleDate:(id)arg3 objectCollection:(id)arg4;
+- (void)generateSamplesForDemoPerson:(id)arg1 fromTime:(double)arg2 toTime:(double)arg3 currentDate:(id)arg4 objectCollection:(id)arg5;
 - (void)setupWithDemoDataGenerator:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

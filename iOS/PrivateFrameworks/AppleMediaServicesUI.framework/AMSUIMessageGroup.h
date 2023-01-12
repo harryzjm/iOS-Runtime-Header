@@ -6,12 +6,18 @@
 
 #import <InAppMessages/IAMMessageGroup.h>
 
-@class NSDictionary;
-@protocol AMSBagProtocol;
+#import <AppleMediaServicesUI/AMSUIDynamicViewControllerDelegate-Protocol.h>
+#import <AppleMediaServicesUI/AMSUIWebDelegate-Protocol.h>
 
-@interface AMSUIMessageGroup : IAMMessageGroup
+@class NSDictionary, NSString;
+@protocol AMSBagProtocol, AMSUIMessageGroupDelegate;
+
+@interface AMSUIMessageGroup : IAMMessageGroup <AMSUIWebDelegate, AMSUIDynamicViewControllerDelegate>
 {
     NSDictionary *_clientData;
+    NSString *_clientIdentifier;
+    NSString *_clientVersion;
+    id <AMSUIMessageGroupDelegate> _delegate;
     NSDictionary *_clientMetricsOverlay;
     id <AMSBagProtocol> _bag;
 }
@@ -19,11 +25,25 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) id <AMSBagProtocol> bag; // @synthesize bag=_bag;
 @property(retain, nonatomic) NSDictionary *clientMetricsOverlay; // @synthesize clientMetricsOverlay=_clientMetricsOverlay;
+@property(nonatomic) __weak id <AMSUIMessageGroupDelegate> delegate; // @synthesize delegate=_delegate;
+@property(retain, nonatomic) NSString *clientVersion; // @synthesize clientVersion=_clientVersion;
+@property(retain, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property(retain, nonatomic) NSDictionary *clientData; // @synthesize clientData=_clientData;
-- (id)_viewControllerForType:(long long)arg1 account:(id)arg2 URL:(id)arg3 sidepack:(id)arg4 metrics:(id)arg5;
+- (id)_viewControllerForURL:(id)arg1 account:(id)arg2 sidepack:(id)arg3 metrics:(id)arg4;
+- (id)_viewControllerForServiceType:(id)arg1 placement:(id)arg2 clientIdentifier:(id)arg3 clientVersion:(id)arg4 params:(id)arg5 account:(id)arg6 sidepack:(id)arg7 metrics:(id)arg8;
+- (id)_dictionaryForParamObject:(id)arg1 error:(id *)arg2;
+- (void)dynamicViewController:(id)arg1 didFinishCarrierLinkingWithResult:(id)arg2 error:(id)arg3;
+- (void)dynamicViewController:(id)arg1 didFinishPurchaseWithResult:(id)arg2 error:(id)arg3;
+- (void)webViewController:(id)arg1 didFinishPurchaseWithResult:(id)arg2 error:(id)arg3;
 - (void)viewControllerForModalMessagePresentation:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithBag:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

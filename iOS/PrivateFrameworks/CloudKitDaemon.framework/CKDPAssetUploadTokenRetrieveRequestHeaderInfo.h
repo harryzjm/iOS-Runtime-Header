@@ -10,7 +10,6 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDPAssetUploadTokenRetrieveRequestHeaderInfo : PBCodable <NSCopying>
 {
     NSString *_headerKey;

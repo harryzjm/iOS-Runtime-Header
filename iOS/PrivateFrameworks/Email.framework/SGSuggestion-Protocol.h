@@ -17,6 +17,7 @@
 
 @optional
 - (UIViewController *)suggestionPrimaryActionViewController;
+- (long long)suggestionActionButtonType;
 - (UIImage *)suggestionImage;
 - (NSAttributedString *)suggestionAttributedSubtitle;
 - (NSString *)suggestionSubtitle;

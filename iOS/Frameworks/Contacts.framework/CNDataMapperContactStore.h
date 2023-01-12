@@ -14,7 +14,7 @@
     id <CNRegulatoryLogger> _regulatoryLogger;
 }
 
-+ (Class)dataMapperClassForOptions:(unsigned long long)arg1;
++ (Class)dataMapperClassForConfiguration:(id)arg1;
 + (_Bool)enableContactsOutOfProcess;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id <CNRegulatoryLogger> regulatoryLogger; // @synthesize regulatoryLogger=_regulatoryLogger;
@@ -36,16 +36,6 @@
 - (id)legacyTetheredSyncComputerAnchor;
 - (void)setLegacyTetheredSyncDeviceAnchor:(id)arg1;
 - (id)legacyTetheredSyncDeviceAnchor;
-- (id)_smartGroupsMatchingPredicate:(id)arg1;
-- (id)_smartGroupsForAccountsWithIdentifiers:(id)arg1;
-- (_Bool)_saveCustomPropertyValuesForRemoteRecords:(id)arg1 error:(id *)arg2;
-- (_Bool)_saveAddedCustomProperties:(id)arg1 deletedCustomProperties:(id)arg2 error:(id *)arg3;
-- (id)_persistentStoreURLForRecordWithIdentifier:(id)arg1;
-- (id)_infosForAccountsWithIdentifiers:(id)arg1 error:(id *)arg2;
-- (id)_groupsMatchingCoreDataPredicate:(id)arg1 error:(id *)arg2;
-- (id)_createInfo;
-- (id)_customPropertyValuesForRecordWithIdentifier:(id)arg1 error:(id *)arg2;
-- (id)_allCustomProperties;
 - (id)defaultContainerIdentifier;
 - (_Bool)executeSaveRequest:(id)arg1 response:(id *)arg2 authorizationContext:(id)arg3 error:(id *)arg4;
 - (_Bool)executeSaveRequest:(id)arg1 error:(id *)arg2;
@@ -79,7 +69,7 @@
 - (_Bool)resetSortDataIfNeededWithError:(id *)arg1;
 - (_Bool)setDefaultAccountIdentifier:(id)arg1 error:(id *)arg2;
 - (id)initWithDataMapper:(id)arg1 environment:(id)arg2;
-- (id)initWithEnvironment:(id)arg1 options:(unsigned long long)arg2 managedConfiguration:(id)arg3;
+- (id)initWithConfiguration:(id)arg1;
 - (id)initWithEnvironment:(id)arg1 managedConfiguration:(id)arg2;
 - (id)initWithEnvironment:(id)arg1;
 - (id)init;

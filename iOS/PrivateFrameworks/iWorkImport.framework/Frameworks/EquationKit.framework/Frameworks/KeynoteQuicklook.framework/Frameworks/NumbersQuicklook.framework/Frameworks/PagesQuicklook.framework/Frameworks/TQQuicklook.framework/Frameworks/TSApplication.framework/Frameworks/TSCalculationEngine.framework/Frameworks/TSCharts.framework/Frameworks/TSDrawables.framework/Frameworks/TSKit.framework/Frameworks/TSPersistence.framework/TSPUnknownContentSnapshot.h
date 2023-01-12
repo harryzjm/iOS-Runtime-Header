@@ -22,7 +22,7 @@
 @property(readonly, nonatomic) NSArray *messages; // @synthesize messages=_messages;
 - (void)enumerateKnownFieldRulesUsingBlock:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) _Bool isContentUnknown;
-- (void)updateMessageInfo:(struct MessageInfo *)arg1;
+- (void)updateMessageInfo:(void *)arg1;
 - (void)saveToArchiver:(id)arg1;
 - (id)newFieldTree;
 - (id)newUnknownContentSnapshotWithMessages:(id)arg1;

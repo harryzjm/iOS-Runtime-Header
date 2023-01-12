@@ -11,13 +11,16 @@
 @interface _TtC15ConversationKit29ParticipantListViewController : UIViewController
 {
     MISSING_TYPE *collectionViewDataSource;
+    MISSING_TYPE *participantListLayout;
     MISSING_TYPE *viewContent;
     MISSING_TYPE *lastLayedOutViewSize;
     MISSING_TYPE *participantsViewControllerDelegate;
+    MISSING_TYPE *participantListViewControllerDelegate;
 }
 
 - (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (id)accessibilityParticipantCollectionView;
 - (_Bool)_canShowWhileLocked;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidAppear:(_Bool)arg1;

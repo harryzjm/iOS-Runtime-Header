@@ -27,6 +27,7 @@
 @property(readonly, nonatomic) NSString *requestedOperation;
 @property(readonly, nonatomic) NSURL *url;
 - (void)presentAuthorizationViewControllerWithCompletion:(CDUnknownBlockType)arg1;
+- (void)completeWithAuthorizationResult:(id)arg1;
 - (void)completeWithError:(id)arg1;
 - (void)completeWithHTTPResponse:(id)arg1 httpBody:(id)arg2;
 - (void)completeWithHTTPAuthorizationHeaders:(id)arg1;

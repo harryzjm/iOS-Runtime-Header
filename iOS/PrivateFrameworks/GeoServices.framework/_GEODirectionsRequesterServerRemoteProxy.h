@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (_Bool)_finishRequest:(id)arg1;
 - (void)cancelRequest:(id)arg1;
-- (void)startRequest:(id)arg1 auditToken:(id)arg2 isDoomRequest:(_Bool)arg3 requestPriority:(id)arg4 callbackQueue:(id)arg5 finished:(CDUnknownBlockType)arg6 networkActivity:(CDUnknownBlockType)arg7 error:(CDUnknownBlockType)arg8;
+- (void)startRequest:(id)arg1 auditToken:(id)arg2 useBackgroundURL:(_Bool)arg3 requestPriority:(id)arg4 callbackQueue:(id)arg5 finished:(CDUnknownBlockType)arg6 networkActivity:(CDUnknownBlockType)arg7 error:(CDUnknownBlockType)arg8;
 - (id)init;
 
 // Remaining properties

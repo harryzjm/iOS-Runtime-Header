@@ -18,9 +18,10 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) RPCompanionLinkDevice *pairedCallDevice; // @synthesize pairedCallDevice=_pairedCallDevice;
 @property(retain, nonatomic) RPCompanionLinkClient *client; // @synthesize client=_client;
-- (id)responseForRequest:(id)arg1;
+- (id)responseForRequest:(id)arg1 options:(id)arg2;
 - (void)removeDevice:(id)arg1;
 - (void)addDevice:(id)arg1;
+- (void)sendCallIDChallengeToDeviceId:(id)arg1;
 - (void)sendCallIDChallengeToDevice:(id)arg1;
 - (void)setupRapportClient;
 - (void)resetRapportClientAndInvalidate:(_Bool)arg1;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CIFilter, NSString, NUCacheNodeRegistry, NUGLContext, NUGLContextPool, NUJSContextPool, NUPlatform, NUPurgeableStoragePool, NURenderNodeCache, NURenderPipelineRegistry, NUScheduler, NUSchemaRegistry;
+@class CIFilter, NSString, NUCacheNodeRegistry, NUJSContextPool, NUPlatform, NUPurgeableStoragePool, NURenderNodeCache, NURenderPipelineRegistry, NUScheduler, NUSchemaRegistry;
 @protocol NUStorageFactory;
 
 @interface NUFactory : NSObject
@@ -19,8 +19,6 @@
     NUPurgeableStoragePool *_surfaceStoragePool;
     id <NUStorageFactory> _bufferFactory;
     id <NUStorageFactory> _surfaceFactory;
-    NUGLContext *_sharedOpenGLContext;
-    NUGLContextPool *_sharedOpenGLContextPool;
     NURenderNodeCache *_renderNodeCache;
     NUPlatform *_platform;
     NUJSContextPool *_sharedJavaScriptContextPool;
@@ -39,8 +37,6 @@
 @property(retain, nonatomic) NUJSContextPool *sharedJavaScriptContextPool; // @synthesize sharedJavaScriptContextPool=_sharedJavaScriptContextPool;
 @property(retain, nonatomic) NUPlatform *platform; // @synthesize platform=_platform;
 @property(retain, nonatomic) NURenderNodeCache *renderNodeCache; // @synthesize renderNodeCache=_renderNodeCache;
-@property(retain, nonatomic) NUGLContextPool *sharedOpenGLContextPool; // @synthesize sharedOpenGLContextPool=_sharedOpenGLContextPool;
-@property(retain, nonatomic) NUGLContext *sharedOpenGLContext; // @synthesize sharedOpenGLContext=_sharedOpenGLContext;
 @property(retain, nonatomic) id <NUStorageFactory> surfaceFactory; // @synthesize surfaceFactory=_surfaceFactory;
 @property(retain, nonatomic) id <NUStorageFactory> bufferFactory; // @synthesize bufferFactory=_bufferFactory;
 @property(retain, nonatomic) NUPurgeableStoragePool *surfaceStoragePool; // @synthesize surfaceStoragePool=_surfaceStoragePool;

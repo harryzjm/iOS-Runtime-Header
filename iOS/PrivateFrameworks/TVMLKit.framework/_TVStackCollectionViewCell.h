@@ -11,11 +11,17 @@
 @interface _TVStackCollectionViewCell : UICollectionViewCell
 {
     UIView *_cellContentView;
+    long long _pressesEventDepth;
+    UIView *_stowedContentView;
     UIViewController *_viewController;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak UIViewController *viewController; // @synthesize viewController=_viewController;
+- (void)_pressesDidEnd;
+- (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
+- (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;
+- (void)pressesBegan:(id)arg1 withEvent:(id)arg2;
 - (id)preferredFocusEnvironments;
 - (_Bool)canBecomeFocused;
 - (void)layoutSubviews;

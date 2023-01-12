@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSURL;
+@class NSArray, NSString, NSURL;
 
 @interface UIPrinter : NSObject
 {
@@ -17,6 +17,18 @@
 + (id)printerWithURL:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, copy) NSURL *URL; // @synthesize URL;
+- (long long)jobAccountIDSupport;
+- (_Bool)supportsJobAccountID;
+@property(readonly) NSArray *supportedQualities;
+@property(readonly) NSArray *supportedMediaTypes;
+@property(readonly) NSArray *supportedPapers;
+@property(readonly) NSArray *loadedPapers;
+@property(readonly) NSArray *supportedTrays;
+@property(readonly) NSArray *supportedPresets;
+@property(readonly) NSArray *outputBins;
+@property(readonly) NSArray *finishingTemplates;
+@property(readonly) NSArray *printerFinishingOptions;
+- (id)_printerID;
 - (id)_internalPrinter;
 - (void)contactPrinter:(CDUnknownBlockType)arg1;
 @property(readonly) _Bool supportsDuplex;

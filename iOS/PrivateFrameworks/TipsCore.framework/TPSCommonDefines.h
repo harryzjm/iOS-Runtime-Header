@@ -6,20 +6,20 @@
 
 #import <objc/NSObject.h>
 
-#import <TipsCore/IDSServiceDelegate-Protocol.h>
-
-@class NSMutableArray, NSMutableDictionary, NSString, NSUserDefaults, TPSTipStatusController;
+@class NSDate, NSMutableArray, NSMutableDictionary, NSString, NSUserDefaults, TPSTipStatusController;
 @protocol OS_dispatch_queue;
 
-@interface TPSCommonDefines : NSObject <IDSServiceDelegate>
+@interface TPSCommonDefines : NSObject
 {
     NSMutableArray *_cloudDevices;
-    _Bool _tipsAccessAllowed;
+    NSString *_userLanguage;
     _Bool _supportsUIApplication;
+    _Bool _tipsAccessAllowed;
     _Bool _phoneUI;
     int _maxVersion;
     NSString *_majorVersion;
     NSString *_model;
+    NSString *_language;
     NSUserDefaults *_appGroupDefaults;
     NSMutableDictionary *_appBundleIDMap;
     long long _assetRatioType;
@@ -28,8 +28,13 @@
     NSMutableDictionary *_collectionStatusMap;
 }
 
++ (_Bool)callerIsTipsdWithSource:(id)arg1;
 + (_Bool)hardwareChanged;
++ (id)notificationBundleIdentifier;
++ (id)clientBundleIdentifier;
++ (id)deviceFamily;
 + (id)osBuild;
++ (_Bool)isInternalBuild;
 + (_Bool)isInternalDevice;
 + (id)appGroupIdentifier;
 + (id)sharedInstance;
@@ -40,16 +45,18 @@
 @property(readonly, nonatomic) long long assetRatioType; // @synthesize assetRatioType=_assetRatioType;
 @property(retain, nonatomic) NSMutableDictionary *appBundleIDMap; // @synthesize appBundleIDMap=_appBundleIDMap;
 @property(readonly, nonatomic) NSUserDefaults *appGroupDefaults; // @synthesize appGroupDefaults=_appGroupDefaults;
+@property(copy, nonatomic) NSString *language; // @synthesize language=_language;
 @property(retain, nonatomic) NSString *model; // @synthesize model=_model;
 @property(retain, nonatomic) NSString *majorVersion; // @synthesize majorVersion=_majorVersion;
-@property(nonatomic) int maxVersion; // @synthesize maxVersion=_maxVersion;
 @property(readonly, nonatomic, getter=isPhoneUI) _Bool phoneUI; // @synthesize phoneUI=_phoneUI;
-@property(nonatomic) _Bool supportsUIApplication; // @synthesize supportsUIApplication=_supportsUIApplication;
 @property(readonly, nonatomic) _Bool tipsAccessAllowed; // @synthesize tipsAccessAllowed=_tipsAccessAllowed;
+@property(nonatomic) _Bool supportsUIApplication; // @synthesize supportsUIApplication=_supportsUIApplication;
+@property(nonatomic) int maxVersion; // @synthesize maxVersion=_maxVersion;
+@property(retain, nonatomic) NSDate *lastMajorVersionUpdateDate; // @dynamic lastMajorVersionUpdateDate;
+@property(readonly, nonatomic) long long daysSinceLastMajorVersionUpdate; // @dynamic daysSinceLastMajorVersionUpdate;
 @property(readonly, nonatomic, getter=isPadUI) _Bool padUI; // @dynamic padUI;
 - (long long)userType;
 - (id)appBundleIDForInstalledAppWithIdentifier:(id)arg1;
-- (_Bool)appValidWithIdentifier:(id)arg1;
 - (id)dateForCollectionIdentifier:(id)arg1 dateType:(unsigned long long)arg2;
 - (id)activateDateForCollectionIdentifier:(id)arg1;
 - (id)collectionStatusForCollectionIdentifier:(id)arg1;
@@ -64,15 +71,10 @@
 - (void)notifiedCollection:(id)arg1;
 - (id)collectionIdentifierToUseForCollectionIdentifiers:(id)arg1;
 - (void)clearDataCache;
+@property(copy, nonatomic) NSString *userLanguage; // @dynamic userLanguage;
 - (id)reloadAppGroupDefaults;
 - (_Bool)hasLocaleChanged;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

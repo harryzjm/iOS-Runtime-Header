@@ -7,16 +7,19 @@
 #import <RunningBoard/NSObject-Protocol.h>
 #import <RunningBoard/RBDomainAttributeManaging-Protocol.h>
 
-@class NSSet, RBAssertion, RBAssertionAcquisitionContext, RBAssertionBatchContext, RBProcess, RBProcessState, RBSAssertionIdentifier, RBSProcessIdentifier, RBSProcessIdentity, RBSProcessInstance, RBSProcessLimitations, RBSystemState;
+@class NSDictionary, NSSet, RBAssertion, RBAssertionAcquisitionContext, RBAssertionBatchContext, RBProcess, RBProcessState, RBSAssertionIdentifier, RBSProcessIdentifier, RBSProcessIdentity, RBSProcessInstance, RBSProcessLimitations, RBSSavedEndowment, RBSystemState;
 
 @protocol RBAssertionManaging <NSObject, RBDomainAttributeManaging>
 @property(readonly, copy, nonatomic) RBSystemState *systemState;
+- (NSDictionary *)savedEndowmentsForProcess:(RBProcess *)arg1;
+- (_Bool)addSavedEndowment:(RBSSavedEndowment *)arg1 forProcess:(RBProcess *)arg2;
 - (RBProcess *)processForIdentity:(RBSProcessIdentity *)arg1;
 - (RBProcessState *)stateForIdentity:(RBSProcessIdentity *)arg1;
 - (void)revalidateAssertionsForProcessIdentities:(NSSet *)arg1;
 - (_Bool)isProcessForeground:(RBProcess *)arg1;
 - (void)processDidTerminate:(RBProcess *)arg1;
 - (void)processDidLaunch:(RBProcess *)arg1;
+- (id)popPluginHoldForAssertion:(RBSAssertionIdentifier *)arg1;
 - (_Bool)hasAssertionWithIdentifier:(RBSAssertionIdentifier *)arg1;
 - (NSSet *)assertionsForOriginator:(RBSProcessIdentifier *)arg1;
 - (RBSProcessLimitations *)limitationsForInstance:(RBSProcessInstance *)arg1;

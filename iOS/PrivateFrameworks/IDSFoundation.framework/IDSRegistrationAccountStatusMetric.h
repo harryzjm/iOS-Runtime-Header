@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <IDSFoundation/CUTAWDMetric-Protocol.h>
+#import <IDSFoundation/CUTCoreAnalyticsMetric-Protocol.h>
 #import <IDSFoundation/CUTRTCMetric-Protocol.h>
 
 @class NSDictionary, NSString, PBCodable;
 @protocol NSCopying;
 
-@interface IDSRegistrationAccountStatusMetric : NSObject <CUTRTCMetric, CUTAWDMetric>
+@interface IDSRegistrationAccountStatusMetric : NSObject <CUTCoreAnalyticsMetric, CUTRTCMetric, CUTAWDMetric>
 {
     _Bool _doesExist;
     _Bool _isEnabled;

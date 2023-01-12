@@ -27,10 +27,16 @@
     long long _streamingVideoIntent;
     long long _contentMode;
     NSObject<OS_dispatch_queue> *_resultHandlerQueue;
+    long long _downloadIntent;
+    long long _downloadPriority;
     struct CGSize _targetSize;
+    CDStruct_e83c9415 _timeRange;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) CDStruct_e83c9415 timeRange; // @synthesize timeRange=_timeRange;
+@property(nonatomic) long long downloadPriority; // @synthesize downloadPriority=_downloadPriority;
+@property(nonatomic) long long downloadIntent; // @synthesize downloadIntent=_downloadIntent;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *resultHandlerQueue; // @synthesize resultHandlerQueue=_resultHandlerQueue;
 @property(nonatomic) _Bool liveRenderAndOnDemandRenderVideoConcurrently; // @synthesize liveRenderAndOnDemandRenderVideoConcurrently=_liveRenderAndOnDemandRenderVideoConcurrently;
 @property(nonatomic) _Bool liveRenderVideoIfNeeded; // @synthesize liveRenderVideoIfNeeded=_liveRenderVideoIfNeeded;
@@ -45,6 +51,7 @@
 @property(nonatomic) long long deliveryMode; // @synthesize deliveryMode=_deliveryMode;
 @property(nonatomic) long long version; // @synthesize version=_version;
 @property(nonatomic, getter=isNetworkAccessAllowed) _Bool networkAccessAllowed; // @synthesize networkAccessAllowed=_networkAccessAllowed;
+- (_Bool)hasValidTimeRange;
 @property(readonly, copy) NSString *description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;

@@ -19,7 +19,6 @@
 + (id)commandsToMergeLocalDataToCloud:(id)arg1;
 + (long long)commandQueueUrgency;
 + (id)commandStoreFileName;
-+ (id)localStoreMigrator;
 + (void)populateLocalStoreClassRegistry:(id)arg1;
 + (unsigned long long)localStoreVersion;
 + (id)localStoreFilename;
@@ -30,14 +29,6 @@
 + (_Bool)requiresPushNotificationSupport;
 + (id)desiredKeys;
 - (void).cxx_destruct;
-@property(retain, nonatomic) FCMTWriterLock *itemsLock; // @synthesize itemsLock=_itemsLock;
-@property(retain, nonatomic) NSMutableDictionary *itemsByArticleID; // @synthesize itemsByArticleID=_itemsByArticleID;
-@property(retain, nonatomic) NSMutableDictionary *itemsByIdentifier; // @synthesize itemsByIdentifier=_itemsByIdentifier;
-- (void)_removeHistoryItemWithItemID:(id)arg1 articleID:(id)arg2;
-- (void)_addHistoryItems:(id)arg1 addToStore:(_Bool)arg2;
-- (void)_modifyHistoryForArticleID:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
-- (id)_loadReadingHistoryItemForArticleID:(id)arg1;
-- (id)_readingHistoryItemForArticleID:(id)arg1;
 - (void)markArticle:(id)arg1 withReadingPositionJSON:(id)arg2;
 - (id)readingPositionSavedDateFor:(id)arg1;
 - (id)readingPositionJSONFor:(id)arg1;
@@ -59,14 +50,14 @@
 - (_Bool)hasArticleBeenMarkedAsOffensive:(id)arg1;
 - (_Bool)toggleDislikeForArticleWithID:(id)arg1;
 - (_Bool)toggleLikeForArticleWithID:(id)arg1;
-- (_Bool)_markArticle:(id)arg1 withLikingStatus:(unsigned long long)arg2;
 - (_Bool)markArticle:(id)arg1 withLikingStatus:(unsigned long long)arg2;
 - (unsigned long long)likingStatusForArticleID:(id)arg1;
-- (_Bool)_markArticleAsSeenWithArticleID:(id)arg1 articleVersion:(long long)arg2 historyItem:(id)arg3 modifiedHistoryFeaturesOut:(unsigned long long *)arg4;
-- (_Bool)_markArticleAsSeenWithHeadline:(id)arg1 historyItem:(id)arg2 modifiedHistoryFeaturesOut:(unsigned long long *)arg3;
+- (_Bool)markArticle:(id)arg1 withCompletedReading:(_Bool)arg2;
+- (_Bool)hasArticleCompletedReading:(id)arg1;
 - (_Bool)markArticle:(id)arg1 withCompletedListening:(_Bool)arg2;
 - (_Bool)hasArticleCompletedListening:(id)arg1;
 - (id)markArticlesAsSeenWithHeadlines:(id)arg1;
+- (_Bool)markArticleAsSeenWithHeadline:(id)arg1 rememberForever:(_Bool)arg2;
 - (_Bool)markArticleAsSeenWithHeadline:(id)arg1;
 - (_Bool)hasArticleBeenSeen:(id)arg1;
 - (_Bool)hasArticleBeenVisited:(id)arg1;
@@ -78,8 +69,6 @@
 @property(readonly, nonatomic) NSSet *allConsumedArticleIDs;
 @property(readonly, nonatomic) NSSet *allSeenArticleIDs;
 @property(readonly, nonatomic) NSSet *allReadArticleIDs;
-- (id)_sortedReadingHistoryItemsWithMaxCount:(unsigned long long)arg1;
-- (id)_sortedReadingHistoryItemsWithMaxCount:(unsigned long long)arg1 sortDescriptor:(id)arg2 test:(CDUnknownBlockType)arg3;
 - (id)allSortedArticleIDsInReadingHistory;
 - (id)mostRecentlyCompletedListeningArticlesWithMaxCount:(unsigned long long)arg1;
 - (id)mostRecentlyReadArticlesWithMaxCount:(unsigned long long)arg1;
@@ -94,8 +83,8 @@
 - (void)addObserver:(id)arg1;
 - (id)allKnownRecordNamesWithinRecordZoneWithID:(id)arg1;
 - (void)handleSyncWithChangedRecords:(id)arg1 deletedRecordNames:(id)arg2;
+- (id)localStoreMigrator;
 - (void)loadLocalCachesFromStore;
-- (id)syncReadingHistoryItemRecords:(id)arg1 deletedArticleIDs:(id)arg2 didRemoveLastVisitedAt:(out _Bool *)arg3;
 - (id)initWithContext:(id)arg1 pushNotificationCenter:(id)arg2 storeDirectory:(id)arg3;
 
 // Remaining properties

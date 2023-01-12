@@ -7,9 +7,11 @@
 #import <UIKit/UIImageView.h>
 
 @interface UIImageView (HealthRecordsUI)
++ (double)providerDetailLogoViewDimension;
 + (double)largeLogoViewDimension;
 + (double)mediumLogoViewDimension;
 + (double)smallLogoViewDimension;
++ (double)logoInsetForImageViewSize:(struct CGSize)arg1;
 + (double)logoDimensionForImageViewSize:(struct CGSize)arg1;
 - (void)applyAccountLogoStyleForIsMonogram:(_Bool)arg1 imageViewSize:(struct CGSize)arg2;
 @end

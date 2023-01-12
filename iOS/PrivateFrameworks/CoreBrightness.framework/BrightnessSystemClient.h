@@ -10,6 +10,10 @@
 {
 }
 
+- (void)unregisterNotificationForKeys:(id)arg1;
+- (void)registerNotificationForKeys:(id)arg1;
+- (void)unregisterNotificationForKey:(id)arg1;
+- (void)registerNotificationForKey:(id)arg1;
 - (void)registerNotificationBlock:(CDUnknownBlockType)arg1 forProperties:(id)arg2;
 - (void)registerNotificationBlock:(CDUnknownBlockType)arg1;
 - (_Bool)isAlsSupported;

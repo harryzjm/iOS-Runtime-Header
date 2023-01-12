@@ -18,6 +18,8 @@
 @property(readonly) long long year; // @synthesize year=_year;
 @property(readonly) PGGraphPersonNode *ownerPersonNode; // @synthesize ownerPersonNode=_ownerPersonNode;
 @property(retain) NSArray *petAssetLocalIdentifiers; // @synthesize petAssetLocalIdentifiers=_petAssetLocalIdentifiers;
+- (id)memoryFeatureNodesInGraph:(id)arg1;
+- (unsigned long long)memoryCategory;
 - (void)addMomentNode:(id)arg1;
 - (id)initWithOwner:(id)arg1 year:(long long)arg2;
 

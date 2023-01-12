@@ -10,8 +10,19 @@
 {
 }
 
++ (id)quickLookMultiWindow;
++ (id)shapeTagsSupported;
++ (id)groupHorizontalScrolling;
++ (id)goToFolderBlurAnimation;
++ (id)goToFolder;
++ (id)groupItems;
++ (id)shortcutsActions;
++ (id)configurableWidget;
++ (id)keyboardSelection;
++ (id)useBlastDoorThumbnails;
 + (id)denseIconGrid;
 + (id)inlineRename;
++ (id)copyProgressIndeterminateUI;
 + (id)DSCopyEngine;
 
 @end

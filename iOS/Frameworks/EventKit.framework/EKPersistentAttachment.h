@@ -10,8 +10,8 @@
 
 + (Class)meltedClass;
 + (id)relations;
-- (void)setURLForPendingFileCopy:(id)arg1;
-- (id)URLForPendingFileCopy;
+- (void)setSecurityScopedURLWrapperForPendingFileCopy:(id)arg1;
+- (id)securityScopedURLWrapperForPendingFileCopy;
 - (id)description;
 - (id)semanticIdentifier;
 - (void)setExternalID:(id)arg1;
@@ -30,8 +30,10 @@
 - (id)fileFormat;
 - (void)setFileNameRaw:(id)arg1;
 - (id)fileNameRaw;
-- (void)setURL:(id)arg1;
-- (id)URL;
+- (void)setExternalModificationTag:(id)arg1;
+- (id)externalModificationTag;
+- (void)setURLString:(id)arg1;
+- (id)URLString;
 - (int)entityType;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 

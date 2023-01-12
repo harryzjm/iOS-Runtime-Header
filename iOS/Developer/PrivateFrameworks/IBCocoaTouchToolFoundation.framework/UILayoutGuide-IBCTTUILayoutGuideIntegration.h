@@ -9,6 +9,7 @@
 @class UIView;
 
 @interface UILayoutGuide (IBCTTUILayoutGuideIntegration)
+- (id)ibEffectiveWindowForConversions;
 - (id)superview;
 - (id)ibParentItem;
 - (id)ibEffectiveItemForRuntimeConstraintAdjustingConstant:(double *)arg1 attribute:(unsigned long long *)arg2 orConstraintClassIfNeeded:(Class *)arg3 context:(id)arg4;

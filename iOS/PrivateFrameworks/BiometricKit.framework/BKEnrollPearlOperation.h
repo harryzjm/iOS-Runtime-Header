@@ -10,12 +10,14 @@
 @interface BKEnrollPearlOperation
 {
     _Bool _clientToComplete;
+    long long _enrollmentType;
     BKIdentity *_augmentedIdentity;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) BKIdentity *augmentedIdentity; // @synthesize augmentedIdentity=_augmentedIdentity;
 @property(nonatomic) _Bool clientToComplete; // @synthesize clientToComplete=_clientToComplete;
+@property(nonatomic) long long enrollmentType; // @synthesize enrollmentType=_enrollmentType;
 - (_Bool)resumeWithError:(id *)arg1;
 - (_Bool)suspendWithError:(id *)arg1;
 - (_Bool)completeWithError:(id *)arg1;

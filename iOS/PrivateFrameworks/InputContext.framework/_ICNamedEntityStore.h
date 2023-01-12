@@ -6,38 +6,45 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableOrderedSet, _ICTransientLexicon;
+@class NSMutableOrderedSet, NSString, _ICLexiconView, _ICTransientLexicon;
 
 @interface _ICNamedEntityStore : NSObject
 {
-    NSMutableOrderedSet *_recentNamedEntityQueue;
-    _ICTransientLexicon *_wordLexicon;
-    _ICTransientLexicon *_phraseLexicon;
-    NSArray *_lexicons;
-    CDUnknownBlockType _wordFilteringBlock;
-    CDUnknownBlockType _filteringBlock;
+    NSMutableOrderedSet *_leastRecentlyAddedEntities;
+    unsigned long long _maximumRecentlyAddedEntities;
+    _Bool _treatHyphenatedWordAsPhrase;
+    _ICLexiconView *_wordLexiconView;
+    _ICLexiconView *_phraseLexiconView;
+    NSString *_name;
+    unsigned long long _durableEntitiesAdded;
+    unsigned long long _recentEntitiesAdded;
+    unsigned long long _minimumWordLength;
+    _ICTransientLexicon *_wordLexiconImpl;
+    _ICTransientLexicon *_phraseLexiconImpl;
 }
 
 + (id)tokenize:(id)arg1;
-+ (id)lexiconViews;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSArray *lexicons; // @synthesize lexicons=_lexicons;
-@property(copy, nonatomic) CDUnknownBlockType filteringBlock; // @synthesize filteringBlock=_filteringBlock;
-- (void)removeAllEntries;
+@property(retain, nonatomic) _ICTransientLexicon *phraseLexiconImpl; // @synthesize phraseLexiconImpl=_phraseLexiconImpl;
+@property(retain, nonatomic) _ICTransientLexicon *wordLexiconImpl; // @synthesize wordLexiconImpl=_wordLexiconImpl;
+@property(nonatomic) _Bool treatHyphenatedWordAsPhrase; // @synthesize treatHyphenatedWordAsPhrase=_treatHyphenatedWordAsPhrase;
+@property(nonatomic) unsigned long long minimumWordLength; // @synthesize minimumWordLength=_minimumWordLength;
+@property(readonly, nonatomic) unsigned long long recentEntitiesAdded; // @synthesize recentEntitiesAdded=_recentEntitiesAdded;
+@property(readonly, nonatomic) unsigned long long durableEntitiesAdded; // @synthesize durableEntitiesAdded=_durableEntitiesAdded;
+@property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
+- (_Bool)entityIsHyphenatedWord:(id)arg1;
+- (void)removeAllEntities;
 - (void)reloadRecents;
 - (void)addEntity:(id)arg1 isDurable:(_Bool)arg2;
+- (id)_adjustWordsForHyphenationIfNeeded:(id)arg1 didAdjust:(_Bool *)arg2;
 - (_Bool)isValidNamedEntity:(id)arg1 explanation:(id *)arg2;
 - (_Bool)areStringCharactersWhitelisted:(id)arg1;
 - (struct USet *)exemplarSetForSupportedLocales;
-- (void)updateQueueFromString:(id)arg1 newEntity:(id)arg2;
-- (void)updateQueue:(id)arg1 newEntity:(id)arg2;
-- (void)removeEntriesBySource:(unsigned char)arg1;
-- (void)removeEntry:(id)arg1 source:(unsigned char)arg2;
-- (void)removeEntry:(id)arg1;
-- (void)addEntry:(id)arg1 tokenizedNewEntity:(id)arg2 source:(unsigned char)arg3 type:(unsigned char)arg4;
-- (id)filterWord:(id)arg1;
-- (_Bool)isFirstCandidateBetter:(id)arg1 than:(id)arg2;
-- (id)init;
+- (_Bool)isCloserToTitleCase:(id)arg1 than:(id)arg2;
+@property(readonly, nonatomic) _ICLexiconView *phraseLexicon; // @synthesize phraseLexicon=_phraseLexiconView;
+@property(readonly, nonatomic) _ICLexiconView *wordLexicon; // @synthesize wordLexicon=_wordLexiconView;
+- (id)initWithName:(id)arg1 maximumRecentlyAddedEntities:(unsigned long long)arg2;
+- (id)initWithName:(id)arg1;
 
 @end
 

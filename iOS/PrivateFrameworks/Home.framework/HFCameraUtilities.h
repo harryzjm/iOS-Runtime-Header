@@ -10,10 +10,14 @@
 {
 }
 
++ (id)destinationURLForTimelapseVideoFromCameraClip:(id)arg1;
++ (double)durationOfRecordingAtURL:(id)arg1;
 + (id)cameraFeedbackQueryString;
 + (void)acceptEmployeeCameraFeedbackConsent;
 + (_Bool)hasAcceptedCameraFeedbackEmployeeConsent;
 + (_Bool)internalCameraFeedbackSupported;
++ (void)toggleDisplayOfInternalUpgradeViews:(_Bool)arg1;
++ (_Bool)shouldDisplayInternalUpgradeViews;
 + (id)localizerKeyDayNameFromDate:(id)arg1;
 + (id)attributedShortTimeStringFromDate:(id)arg1;
 + (id)attributedFullTimeStringFromDate:(id)arg1;
@@ -27,7 +31,15 @@
 + (id)dayStringFromDate:(id)arg1;
 + (id)twelveHourTimeStringFromDate:(id)arg1;
 + (id)twentyFourHourTimeStringFromDate:(id)arg1;
++ (_Bool)forceDisplayOfDismissedCameraUpgradeBanner;
++ (_Bool)forceDisplayMultiCameraUpgradeBanner;
++ (_Bool)forceDisplaySingleCameraUpgradeBanner;
++ (double)cachedScrubberTimeScale;
++ (void)cacheScrubberTimeScale:(double)arg1;
++ (_Bool)shouldCacheScrubberTimeScale;
 + (_Bool)shouldDisplayInternalViews;
++ (_Bool)shouldDisableHeroFrameDownloads;
++ (_Bool)shouldPurgeVideoFileCache;
 + (_Bool)shouldPurgePosterFrameCache;
 + (double)elapsedTimeSinceMidnightForEvent:(id)arg1;
 + (id)percentageOfDurationUntilNextDayForEvent:(id)arg1;

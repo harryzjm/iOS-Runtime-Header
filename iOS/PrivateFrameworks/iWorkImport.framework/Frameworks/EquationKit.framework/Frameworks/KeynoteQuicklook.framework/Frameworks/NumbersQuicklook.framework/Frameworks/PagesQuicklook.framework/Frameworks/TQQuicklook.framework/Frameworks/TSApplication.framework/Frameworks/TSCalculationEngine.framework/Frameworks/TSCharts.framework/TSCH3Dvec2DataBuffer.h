@@ -6,7 +6,7 @@
 
 @interface TSCH3Dvec2DataBuffer
 {
-    vector_d73af98f mContainer;
+    struct vector<glm::detail::tvec2<float>, std::allocator<glm::detail::tvec2<float>>> _container;
 }
 
 - (id).cxx_construct;
@@ -18,7 +18,7 @@
 - (unsigned long long)count;
 - (void)fillCapacity;
 - (const void *)data;
-@property(readonly, nonatomic) vector_d73af98f *container;
+@property(readonly, nonatomic) void *container;
 - (id)initWithCapacity:(unsigned long long)arg1;
 
 @end

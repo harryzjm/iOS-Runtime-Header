@@ -6,10 +6,13 @@
 
 #import <Pegasus/NSObject-Protocol.h>
 
-@class NSDictionary, NSString, PGHostedWindowHostingHandle;
+@class NSArray, NSDictionary, NSString, PGHostedWindowHostingHandle, UIImage;
 
 @protocol PGPictureInPictureRemoteObjectInterface <NSObject>
+- (oneway void)setScreenSharingTitle:(NSString *)arg1 avatar:(UIImage *)arg2;
 - (oneway void)stopPictureInPictureAndRestoreUserInterface;
+- (oneway void)setActivitySessionIdentifier:(NSString *)arg1;
+- (oneway void)updateMenuItems:(NSArray *)arg1;
 - (oneway void)updatePlaybackStateWithDiff:(NSDictionary *)arg1;
 - (oneway void)setPictureInPictureShouldStartWhenEnteringBackground:(_Bool)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
 - (oneway void)cleanupWithCompletionHandler:(void (^)(_Bool, NSError *))arg1;
@@ -21,7 +24,7 @@
 - (oneway void)updateSourceSceneSessionPersistentIdentifierForInteractiveTransitionAnimationUponBackgrounding:(NSString *)arg1 withCompletionHandler:(void (^)(_Bool, NSError *))arg2;
 - (oneway void)updateInitialLayerFrameForInteractiveTransitionAnimationUponBackgrounding:(struct CGRect)arg1 withCompletionHandler:(void (^)(_Bool, NSError *))arg2;
 - (oneway void)startPictureInPictureAnimated:(_Bool)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
-- (oneway void)setupStartAnimated:(_Bool)arg1 hostedWindowHostingHandle:(PGHostedWindowHostingHandle *)arg2 sceneSessionPersistentIdentifier:(NSString *)arg3 preferredContentSize:(struct CGSize)arg4 initialInterfaceOrientation:(long long)arg5 initialLayerFrame:(struct CGRect)arg6 playbackState:(NSDictionary *)arg7 completionHandler:(void (^)(_Bool, NSError *))arg8;
+- (oneway void)setupStartAnimated:(_Bool)arg1 hostedWindowHostingHandle:(PGHostedWindowHostingHandle *)arg2 sceneSessionPersistentIdentifier:(NSString *)arg3 preferredContentSize:(struct CGSize)arg4 initialInterfaceOrientation:(long long)arg5 initialLayerFrame:(struct CGRect)arg6 completionHandler:(void (^)(_Bool, NSError *))arg7;
 - (oneway void)initializePictureInPictureWithControlsStyle:(long long)arg1 preferredContentSize:(struct CGSize)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
 @end
 

@@ -4,33 +4,37 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
-
 @class CAShapeLayer, UIColor;
 
 __attribute__((visibility("hidden")))
-@interface VUICircularProgress : UIView
+@interface VUICircularProgress
 {
     _Bool _indeterminate;
+    _Bool _progressBgHidden;
     double _indeterminateWidth;
     UIColor *_progressFillColor;
+    UIColor *_progressBgColor;
+    double _progressWidth;
     double _progress;
     double _centerSquareWidth;
+    double _centerSquareCornerRadius;
     CAShapeLayer *_indeterminateLayer;
     CAShapeLayer *_centerLayer;
     CAShapeLayer *_progressLayer;
     CAShapeLayer *_progressBackgroundLayer;
-    double _progressWidth;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) double progressWidth; // @synthesize progressWidth=_progressWidth;
 @property(retain, nonatomic) CAShapeLayer *progressBackgroundLayer; // @synthesize progressBackgroundLayer=_progressBackgroundLayer;
 @property(retain, nonatomic) CAShapeLayer *progressLayer; // @synthesize progressLayer=_progressLayer;
 @property(retain, nonatomic) CAShapeLayer *centerLayer; // @synthesize centerLayer=_centerLayer;
 @property(retain, nonatomic) CAShapeLayer *indeterminateLayer; // @synthesize indeterminateLayer=_indeterminateLayer;
+@property(nonatomic) double centerSquareCornerRadius; // @synthesize centerSquareCornerRadius=_centerSquareCornerRadius;
 @property(nonatomic) double centerSquareWidth; // @synthesize centerSquareWidth=_centerSquareWidth;
 @property(nonatomic) double progress; // @synthesize progress=_progress;
+@property(nonatomic) double progressWidth; // @synthesize progressWidth=_progressWidth;
+@property(nonatomic) _Bool progressBgHidden; // @synthesize progressBgHidden=_progressBgHidden;
+@property(retain, nonatomic) UIColor *progressBgColor; // @synthesize progressBgColor=_progressBgColor;
 @property(retain, nonatomic) UIColor *progressFillColor; // @synthesize progressFillColor=_progressFillColor;
 @property(nonatomic, getter=isIndeterminate) _Bool indeterminate; // @synthesize indeterminate=_indeterminate;
 @property(nonatomic) double indeterminateWidth; // @synthesize indeterminateWidth=_indeterminateWidth;
@@ -42,12 +46,13 @@ __attribute__((visibility("hidden")))
 - (void)_removeProgressLayer;
 - (void)_addProgressLayer;
 - (id)_progressPath;
-- (struct CGRect)_progressFrame;
 - (void)_configureProgress:(_Bool)arg1;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)_updateColors;
+- (struct CGSize)vui_sizeThatFits:(struct CGSize)arg1;
+- (void)vui_traitCollectionDidChange:(id)arg1;
 - (void)tintColorDidChange;
-- (void)didMoveToWindow;
-- (void)layoutSubviews;
+- (void)vui_didMoveToWindow;
+- (struct CGSize)vui_layoutSubviews:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 

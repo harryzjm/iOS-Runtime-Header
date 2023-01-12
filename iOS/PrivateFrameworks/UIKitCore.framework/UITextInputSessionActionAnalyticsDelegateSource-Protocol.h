@@ -10,5 +10,8 @@
 
 @protocol UITextInputSessionActionAnalyticsDelegateSource <NSObject>
 - (UIResponder *)_delegateAsResponder;
+
+@optional
+- (long long)_overrideTextInputSource;
 @end
 

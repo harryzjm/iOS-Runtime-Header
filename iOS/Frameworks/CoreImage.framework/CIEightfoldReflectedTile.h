@@ -10,8 +10,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)outputImage;
-- (id)_kernel_source;
-- (id)_kernel_name;
+- (id)_kernel;
 
 @end
 

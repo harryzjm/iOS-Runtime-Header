@@ -18,9 +18,8 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)_layoutImagesForSize:(struct CGSize)arg1 applyingLayout:(_Bool)arg2;
 - (void)layoutComponentView;
-- (void)setDelegate:(id)arg1;
-- (id)initWithImages:(id)arg1 style:(id)arg2;
-- (id)init;
+- (id)initWithHost:(id)arg1 images:(id)arg2 style:(id)arg3;
+- (id)initWithHost:(id)arg1;
 
 @end
 

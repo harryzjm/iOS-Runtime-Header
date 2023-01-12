@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITableViewCell.h>
-
 @class EKEvent;
 
-@interface EKEventDetailCell : UITableViewCell
+@interface EKEventDetailCell
 {
     EKEvent *_event;
     _Bool _editable;

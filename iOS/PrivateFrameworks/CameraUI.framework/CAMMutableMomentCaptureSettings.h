@@ -10,6 +10,7 @@
 {
 }
 
+@property(nonatomic) long long photoEncodingBehavior; // @dynamic photoEncodingBehavior;
 @property(nonatomic) _Bool autoSpatialOverCaptureEnabled; // @dynamic autoSpatialOverCaptureEnabled;
 @property(nonatomic) _Bool shouldDisableCameraSwitchingDuringVideoRecording; // @dynamic shouldDisableCameraSwitchingDuringVideoRecording;
 @property(nonatomic) long long photoQualityPrioritization; // @dynamic photoQualityPrioritization;
@@ -17,6 +18,7 @@
 @property(nonatomic) long long lowLightMode; // @dynamic lowLightMode;
 @property(nonatomic) _Bool autoOriginalPhotoDeliveryEnabled; // @dynamic autoOriginalPhotoDeliveryEnabled;
 @property(nonatomic) long long hdrMode; // @dynamic hdrMode;
+@property(nonatomic) long long torchMode; // @dynamic torchMode;
 @property(nonatomic) long long flashMode; // @dynamic flashMode;
 @property(copy, nonatomic) NSString *persistenceUUID; // @dynamic persistenceUUID;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;

@@ -21,6 +21,7 @@
 @property(nonatomic) _Bool isPurgeable; // @synthesize isPurgeable=_isPurgeable;
 @property(retain, nonatomic) NSURL *url; // @synthesize url=_url;
 - (_Bool)markPurgeableWithError:(id *)arg1;
+- (id)initWithFile:(id)arg1 isPurgeable:(_Bool)arg2;
 - (id)initWithFile:(id)arg1 account:(id)arg2;
 
 // Remaining properties

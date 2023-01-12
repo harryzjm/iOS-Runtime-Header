@@ -6,7 +6,7 @@
 
 #import <UIKitCore/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class NSArray, NSString, UIScrollView, _UIButtonBar;
+@class NSArray, NSString, UIColor, UIScrollView, _UIButtonBar;
 
 __attribute__((visibility("hidden")))
 @interface _UIButtonGroupViewController <UIPopoverPresentationControllerDelegate>
@@ -16,9 +16,12 @@ __attribute__((visibility("hidden")))
     UIScrollView *_scrollView;
     NSArray *_barButtonItemGroups;
     _Bool _overLightKeyboard;
+    UIColor *_tintColor;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
+@property(retain, nonatomic) UIColor *backgroundColor;
 - (_Bool)_canShowWhileLocked;
 - (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
 - (void)_cleanupForDismissal;

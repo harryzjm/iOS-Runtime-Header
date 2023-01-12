@@ -11,7 +11,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_axHideTimeLabel;
 - (void)_setupViewHierarchy;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (_Bool)accessibilityPerformEscape;

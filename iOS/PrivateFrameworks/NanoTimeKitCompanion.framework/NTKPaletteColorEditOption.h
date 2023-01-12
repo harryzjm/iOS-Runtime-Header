@@ -4,11 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface NTKPaletteColorEditOption
+#import <NanoTimeKitCompanion/NTKPigmentEditOptionConvertible-Protocol.h>
+
+@class NSString;
+
+@interface NTKPaletteColorEditOption <NTKPigmentEditOptionConvertible>
 {
 }
 
-+ (id)_localizedNameForValue:(unsigned long long)arg1 forDevice:(id)arg2;
++ (unsigned long long)colorValueForColorName:(id)arg1;
++ (id)colorNameForColorValue:(unsigned long long)arg1;
++ (void)colorName:(id *)arg1 collectionName:(id *)arg2 forColorValue:(unsigned long long)arg3;
 + (id)_snapshotKeyForValue:(unsigned long long)arg1 forDevice:(id)arg2;
 + (id)__orderedValuesForDevice:(id)arg1;
 + (id)_orderedValuesForDevice:(id)arg1;
@@ -16,9 +22,17 @@
 + (id)optionByValidatingValueOfInvalidOption:(id)arg1;
 + (id)optionWithPaletteColor:(unsigned long long)arg1 forDevice:(id)arg2;
 - (_Bool)optionExistsInDevice:(id)arg1;
+- (id)pigmentEditOption;
 - (id)_valueToFaceBundleStringDict;
+- (id)localizedName;
 @property(readonly, nonatomic) unsigned long long paletteColor;
 - (long long)swatchStyle;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

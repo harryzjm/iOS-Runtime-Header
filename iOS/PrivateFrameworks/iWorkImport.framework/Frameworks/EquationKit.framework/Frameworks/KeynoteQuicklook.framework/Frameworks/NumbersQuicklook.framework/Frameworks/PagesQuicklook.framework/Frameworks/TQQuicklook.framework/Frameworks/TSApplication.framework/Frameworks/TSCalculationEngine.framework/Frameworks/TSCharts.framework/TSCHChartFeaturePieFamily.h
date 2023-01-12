@@ -17,10 +17,11 @@
 - (unsigned long long)maxCellsToCheckForGridValueType;
 - (_Bool)supportsCategoryLabelsInChartRangeEditor;
 - (_Bool)supportsMultipleValuesPerSeries;
-- (id)initialSceneWithChartInfo:(id)arg1 layoutSettings:(CDStruct_b1c75024)arg2;
+- (id)initialSceneWithChartInfo:(id)arg1 layoutSettings:(CDStruct_c48db077)arg2;
 - (_Bool)supportsPercentNumberFormatting;
 - (_Bool)supportsLabelExplosion;
 - (_Bool)supportsElementSeriesNames;
+- (_Bool)supportsBorderStroke;
 - (_Bool)supportsBorderFrame;
 - (_Bool)rendersUsingRadialGeometry;
 - (_Bool)hasExplodableSeriesElements;
@@ -33,8 +34,8 @@
 - (_Bool)supportsGroupedShadows;
 - (unsigned long long)styleIndexForAxisID:(id)arg1;
 - (Class)valueAxisClassForID:(id)arg1 scale:(long long)arg2;
-- (void)p_initializeAxisIDs;
 - (id)genericToSpecificPropertyMap;
+- (id)initWithChartType:(id)arg1;
 
 @end
 

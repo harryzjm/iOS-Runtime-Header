@@ -8,11 +8,13 @@
 
 @interface TRCompanionAuthOperation
 {
+    _Bool _shouldUseAIDA;
     ACAccount *_account;
     NSSet *_targetedServices;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldUseAIDA; // @synthesize shouldUseAIDA=_shouldUseAIDA;
 @property(retain, nonatomic) NSSet *targetedServices; // @synthesize targetedServices=_targetedServices;
 @property(retain, nonatomic) ACAccount *account; // @synthesize account=_account;
 - (void)_handleResponse:(id)arg1;

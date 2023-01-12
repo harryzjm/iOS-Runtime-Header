@@ -6,11 +6,12 @@
 
 @interface PKCredentialProvisioningView
 {
+    _Bool _supportsUWB;
     long long _state;
 }
 
 @property(nonatomic) long long state; // @synthesize state=_state;
-- (id)init;
+- (id)initWithContext:(id)arg1;
 
 @end
 

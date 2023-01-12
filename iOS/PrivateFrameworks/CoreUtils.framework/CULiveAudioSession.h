@@ -25,6 +25,7 @@
     _Bool _invalidateDone;
     _Bool _peersActivated;
     NSMutableSet *_peerSessionSet;
+    CULiveAudioSession *_selfRef;
     int _sessionState;
     _Bool _sentTimingInfo;
     int _startRecordingState;

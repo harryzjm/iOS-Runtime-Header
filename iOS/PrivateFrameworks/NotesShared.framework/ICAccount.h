@@ -6,7 +6,7 @@
 
 #import <NotesShared/ICCloudObject-Protocol.h>
 
-@class ICAccountData, ICAccountProxy, ICFolder, NSData, NSPersistentStore, NSSet, NSString;
+@class ICAccountData, ICAccountProxy, ICFolder, NSData, NSDictionary, NSPersistentStore, NSSet, NSString;
 
 @interface ICAccount <ICCloudObject>
 {
@@ -14,22 +14,29 @@
     _Bool _didAddTrashObservers;
     ICFolder *_defaultFolder;
     ICFolder *_trashFolder;
+    ICFolder *_systemPaperFolder;
     ICAccountProxy *_accountProxy;
 }
 
 + (id)keyPathsForValuesAffectingCanBeSharedViaICloud;
++ (id)mostRecentSystemPaperNoteInManagedObjectContext:(id)arg1;
++ (void)ensureSystemPaperFoldersExistInManagedObjectContext:(id)arg1;
++ (unsigned long long)countOfSystemPaperFoldersAcrossAllAccountsInContext:(id)arg1;
 + (id)keyPathsForValuesAffectingVisibleNoteContainerChildren;
 + (id)keyPathsForValuesAffectingLocalizedName;
 + (id)standardFolderIdentifierWithPrefix:(id)arg1 accountIdentifier:(id)arg2 accountType:(int)arg3;
++ (id)systemPaperFolderIdentifierForAccount:(id)arg1;
 + (void)localeDidChange:(id)arg1;
 + (void)initialize;
 + (void)setAccountUtilities:(id)arg1;
 + (id)accountUtilities;
++ (_Bool)hasModernAccountInContext:(id)arg1;
 + (_Bool)hasActiveCloudKitAccountInContext:(id)arg1;
 + (id)accountsMatchingPredicate:(id)arg1 context:(id)arg2;
 + (id)localizedLocalAccountNameMidSentence;
 + (id)localizedLocalAccountName;
 + (_Bool)clearAccountForAppleCloudKitTable;
++ (_Bool)isCloudKitAccountAvailableInContext:(id)arg1;
 + (_Bool)isCloudKitAccountAvailable;
 + (id)accountsWithAccountType:(int)arg1 context:(id)arg2;
 + (id)allActiveCloudKitAccountsInContext:(id)arg1;
@@ -54,14 +61,19 @@
 + (id)newLocalAccountInContext:(id)arg1;
 + (id)newAccountWithIdentifier:(id)arg1 type:(int)arg2 context:(id)arg3;
 + (void)initializeLocalAccountNamesInBackground;
-+ (id)allCloudObjectsInContext:(id)arg1;
++ (void)enumerateAllCloudObjectsInContext:(id)arg1 batchSize:(unsigned long long)arg2 saveAfterBatch:(_Bool)arg3 usingBlock:(CDUnknownBlockType)arg4;
++ (id)allCloudObjectIDsInContext:(id)arg1 passingTest:(CDUnknownBlockType)arg2;
 + (id)existingCloudObjectForRecordID:(id)arg1 accountID:(id)arg2 context:(id)arg3;
 - (void).cxx_destruct;
 @property(retain, nonatomic) ICAccountProxy *accountProxy; // @synthesize accountProxy=_accountProxy;
+@property(retain, nonatomic) ICFolder *systemPaperFolder; // @synthesize systemPaperFolder=_systemPaperFolder;
 @property(retain, nonatomic) ICFolder *trashFolder; // @synthesize trashFolder=_trashFolder;
 @property(retain, nonatomic) ICFolder *defaultFolder; // @synthesize defaultFolder=_defaultFolder;
 @property(nonatomic) _Bool didAddTrashObservers; // @synthesize didAddTrashObservers=_didAddTrashObservers;
 @property(nonatomic) _Bool didAddObservers; // @synthesize didAddObservers=_didAddObservers;
+- (id)replicaIDForBundleIdentifier:(id)arg1;
+- (_Bool)allowsExporting;
+- (_Bool)allowsImporting;
 - (void)updateSubFolderMergeableDataChangeCount;
 - (id)subFolderOrderMergeableData;
 - (void)setSubFolderOrderMergeableData:(id)arg1;
@@ -96,10 +108,18 @@
 - (_Bool)canPasswordProtectNotes;
 - (id)passwordProtectedNotes;
 - (id)cryptoPassphraseVerifier;
+@property(nonatomic) _Bool hidesSystemPaperNotesInCustomFolders;
+- (_Bool)createSystemPaperFolderIfNecessary;
+- (_Bool)hasSystemPaperFolder;
+- (id)systemPaperNotes;
+- (id)systemPaperBundlesDirectoryURL;
+- (id)systemPaperDirectoryURL;
+- (void)deleteUnusedHashtagsWithStandardizedContent:(id)arg1;
 - (id)previewImageDirectoryURL;
 - (id)exportableMediaDirectoryURL;
 - (id)mediaDirectoryURL;
 - (id)fallbackImageDirectoryURL;
+- (id)accountFilesDirectoryURLInApplicationDataContainer;
 - (id)accountFilesDirectoryURL;
 - (_Bool)shouldExcludeFilesFromCloudBackup;
 - (id)allChildObjects;
@@ -130,9 +150,12 @@
 - (id)localizedNameMidSentence;
 @property(readonly, nonatomic) NSString *localizedName;
 - (id)standardFolderIdentifierWithPrefix:(id)arg1;
+- (id)systemPaperFolderIdentifier;
 - (id)trashFolderIdentifier;
 - (id)defaultFolderIdentifier;
 - (id)containerIdentifier;
+- (id)systemPaperFolderNoCreate;
+- (void)createSystemPaperFolder;
 - (void)createTrashFolder;
 - (void)createDefaultFolder;
 - (void)createStandardFolders;
@@ -150,12 +173,13 @@
 - (void)awakeFromInsert;
 - (void)awakeFromFetch;
 - (id)cacheKey;
+@property(readonly, nonatomic) NSString *dsid;
 @property(readonly, nonatomic) _Bool isManaged;
 - (id)newlyCreatedRecord;
-- (void)mergeDataFromRecord:(id)arg1 accountID:(id)arg2;
+- (void)mergeDataFromRecord:(id)arg1 accountID:(id)arg2 force:(_Bool)arg3;
 - (_Bool)shouldBeDeletedFromLocalDatabase;
-- (_Bool)needsToBePushedToCloud;
-- (_Bool)needsToBeDeletedFromCloud;
+@property(readonly, nonatomic) _Bool needsToBePushedToCloud;
+@property(readonly, nonatomic) _Bool needsToBeDeletedFromCloud;
 - (id)recordType;
 - (id)recordZoneName;
 - (id)recordName;
@@ -171,10 +195,19 @@
 @property(nonatomic) _Bool didMigrateOnMac; // @dynamic didMigrateOnMac;
 @property(retain, nonatomic) NSSet *folders; // @dynamic folders;
 @property(readonly) unsigned long long hash;
+@property(retain, nonatomic) NSSet *hashtags; // @dynamic hashtags;
 @property(retain, nonatomic) NSSet *legacyTombstones; // @dynamic legacyTombstones;
+@property(readonly, nonatomic) _Bool needsToBeFetchedFromCloud;
 @property(retain, nonatomic) NSSet *notes; // @dynamic notes;
 @property(retain, nonatomic) NSSet *ownerInverse; // @dynamic ownerInverse;
+@property(retain, nonatomic) NSDictionary *replicaIDToBundleIdentifier; // @dynamic replicaIDToBundleIdentifier;
 @property(retain, nonatomic) NSSet *serverChangeTokens; // @dynamic serverChangeTokens;
+@property(copy, nonatomic) NSData *serverSideUpdateTaskContinuationToken; // @dynamic serverSideUpdateTaskContinuationToken;
+@property(nonatomic) unsigned short serverSideUpdateTaskFailureCount; // @dynamic serverSideUpdateTaskFailureCount;
+@property(copy, nonatomic) NSString *serverSideUpdateTaskLastAttemptedBuild; // @dynamic serverSideUpdateTaskLastAttemptedBuild;
+@property(copy, nonatomic) NSString *serverSideUpdateTaskLastAttemptedVersion; // @dynamic serverSideUpdateTaskLastAttemptedVersion;
+@property(copy, nonatomic) NSString *serverSideUpdateTaskLastCompletedBuild; // @dynamic serverSideUpdateTaskLastCompletedBuild;
+@property(copy, nonatomic) NSString *serverSideUpdateTaskLastCompletedVersion; // @dynamic serverSideUpdateTaskLastCompletedVersion;
 @property(nonatomic) _Bool storeDataSeparately; // @dynamic storeDataSeparately;
 @property(readonly) Class superclass;
 @property(retain, nonatomic) NSString *userRecordName; // @dynamic userRecordName;

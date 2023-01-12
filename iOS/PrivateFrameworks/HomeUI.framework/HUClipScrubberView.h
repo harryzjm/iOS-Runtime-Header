@@ -11,7 +11,6 @@
 @interface HUClipScrubberView : UIView
 {
     _Bool _isPlayingMedia;
-    HUClipScrubberPlayheadView *_playHeadView;
     UIView *_contentView;
     AVBackgroundView *_contentBackgroundView;
     HUClipScrubberPlayheadView *_playheadView;
@@ -38,7 +37,6 @@
 @property(retain, nonatomic) HUClipScrubberPlayheadView *playheadView; // @synthesize playheadView=_playheadView;
 @property(retain, nonatomic) AVBackgroundView *contentBackgroundView; // @synthesize contentBackgroundView=_contentBackgroundView;
 @property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
-@property(readonly, nonatomic) HUClipScrubberPlayheadView *playHeadView; // @synthesize playHeadView=_playHeadView;
 - (id)displayModeDescription;
 - (id)_deleteImage;
 - (id)_pauseImage;

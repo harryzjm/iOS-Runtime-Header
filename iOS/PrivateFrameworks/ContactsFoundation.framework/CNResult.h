@@ -13,6 +13,8 @@
     CNEither *_either;
 }
 
++ (CDUnknownBlockType)isFailure;
++ (CDUnknownBlockType)isSuccess;
 + (id)failureWithError:(id)arg1;
 + (id)successWithValue:(id)arg1;
 + (id)resultWithFuture:(id)arg1;

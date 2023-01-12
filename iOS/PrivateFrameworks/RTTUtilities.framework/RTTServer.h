@@ -6,7 +6,7 @@
 
 #import <HearingCore/HCServer.h>
 
-@class BKSProcessAssertion, NSLock, NSMutableDictionary, NSObject;
+@class NSLock, NSMutableDictionary, NSObject;
 @protocol OS_dispatch_queue;
 
 @interface RTTServer : HCServer
@@ -15,12 +15,10 @@
     NSMutableDictionary *_databaseResponseBlocks;
     NSObject<OS_dispatch_queue> *_commonRequestQueue;
     CDUnknownBlockType _actionCompletionBlock;
-    BKSProcessAssertion *_assertion;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-@property(retain, nonatomic) BKSProcessAssertion *assertion; // @synthesize assertion=_assertion;
 @property(copy, nonatomic) CDUnknownBlockType actionCompletionBlock; // @synthesize actionCompletionBlock=_actionCompletionBlock;
 - (void)primeRTTServer;
 - (void)setTTYDictionaryAvailability:(_Bool)arg1;

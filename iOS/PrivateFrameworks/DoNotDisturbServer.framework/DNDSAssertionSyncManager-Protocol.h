@@ -6,7 +6,7 @@
 
 #import <DoNotDisturbServer/NSObject-Protocol.h>
 
-@class DNDSModeAssertionUpdateResult, DNDStateUpdate;
+@class DNDSModeAssertionUpdateResult, DNDStateUpdate, NSArray;
 @protocol DNDSAssertionSyncManagerDataSource, DNDSAssertionSyncManagerDelegate;
 
 @protocol DNDSAssertionSyncManager <NSObject>
@@ -15,7 +15,9 @@
 - (void)resume;
 
 @optional
+- (void)forceUpdateAllDevices;
 - (void)updateForStateUpdate:(DNDStateUpdate *)arg1;
+- (void)updateDevices:(NSArray *)arg1;
 - (void)updateForModeAssertionUpdateResult:(DNDSModeAssertionUpdateResult *)arg1;
 @end
 

@@ -13,7 +13,7 @@
 - (void)prefetchConfigsWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)prefetchBloomFilterAndConfigsWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)fetchLinkItemModelWithHash:(NSString *)arg1 forClientBundleID:(NSString *)arg2 completion:(void (^)(BCSLinkItemModel *, NSError *))arg3;
-- (void)isBusinessRegisteredForURL:(NSURL *)arg1 chopURL:(_Bool)arg2 forClientBundleID:(NSString *)arg3 completion:(void (^)(_Bool, NSError *))arg4;
+- (void)isBusinessRegisteredForURL:(NSURL *)arg1 chopURL:(_Bool)arg2 forClientBundleID:(NSString *)arg3 completion:(void (^)(_Bool, NSString *, NSDictionary *, NSError *))arg4;
 - (void)fetchLinkItemModelWithURL:(NSURL *)arg1 chopURL:(_Bool)arg2 forClientBundleID:(NSString *)arg3 completion:(void (^)(BCSLinkItemModel *, NSError *))arg4;
 - (void)_deleteInMemoryCache;
 - (void)fetchSquareIconDataForBusinessItem:(BCSBusinessItem *)arg1 forClientBundleID:(NSString *)arg2 completion:(void (^)(NSData *, NSError *))arg3;
@@ -21,6 +21,5 @@
 - (void)fetchIsBusinessPhoneNumber:(NSString *)arg1 forClientBundleID:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)fetchBusinessItemWithDetailsForPhoneNumber:(NSString *)arg1 forClientBundleID:(NSString *)arg2 completion:(void (^)(BCSBusinessItem *, _Bool, _Bool, NSError *))arg3;
 - (void)fetchBusinessItemWithPhoneNumber:(NSString *)arg1 forClientBundleID:(NSString *)arg2 completion:(void (^)(BCSBusinessItem *, NSError *))arg3;
-- (void)fetchBusinessItemWithBizID:(NSString *)arg1 forClientBundleID:(NSString *)arg2 completion:(void (^)(BCSBusinessItem *, NSError *))arg3;
 @end
 

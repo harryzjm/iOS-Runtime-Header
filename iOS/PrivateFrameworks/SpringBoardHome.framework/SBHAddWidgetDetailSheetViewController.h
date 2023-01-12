@@ -4,61 +4,95 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
-
 #import <SpringBoardHome/BSUIScrollViewDelegate-Protocol.h>
-#import <SpringBoardHome/SBHWidgetDragHandlerPassing-Protocol.h>
-#import <SpringBoardHome/SBHWidgetWrapperViewControllerDelegate-Protocol.h>
+#import <SpringBoardHome/SBHAddWidgetDetailsSheetPageViewControllerDelegate-Protocol.h>
+#import <SpringBoardHome/SBHWidgetSheetViewControlling-Protocol.h>
 
-@class BSUIScrollView, MTMaterialView, NSMutableArray, NSString, SBFFluidBehaviorSettings, SBHAddWidgetButton, SBHAddWidgetDetailsSheetPageViewController, SBHAddWidgetSheetAppCollectionViewCell, SBHAddWidgetSheetAppCollectionViewCellConfigurator, SBHApplicationWidgetCollection, UIButton, UIPageControl, UIStackView;
-@protocol SBHAddWidgetSheetViewControllerDelegate, SBHWidgetDragHandling, SBIconListLayoutProvider, SBIconViewProviding;
+@class BSUIScrollView, MTMaterialView, NSLayoutConstraint, NSMutableArray, NSMutableDictionary, NSString, SBFFluidBehaviorSettings, SBHAddWidgetButton, SBHAddWidgetDetailSheetTitleView, SBHAddWidgetDetailsSheetPageViewController, SBHApplicationWidgetCollection, SBHWidgetSearchController, UIButton, UIPageControl, UIStackView, UIView;
+@protocol SBHWidgetDragHandling, SBHWidgetSheetViewControllerPresenter;
 
-@interface SBHAddWidgetDetailSheetViewController : UIViewController <BSUIScrollViewDelegate, SBHWidgetWrapperViewControllerDelegate, SBHWidgetDragHandlerPassing>
+@interface SBHAddWidgetDetailSheetViewController <BSUIScrollViewDelegate, SBHAddWidgetDetailsSheetPageViewControllerDelegate, SBHWidgetSheetViewControlling>
 {
-    id <SBHAddWidgetSheetViewControllerDelegate> _delegate;
+    NSMutableDictionary *_userInfo;
+    _Bool _performedInitialSelection;
+    _Bool _scrollingInitiatedByInfoScrollView;
+    id <SBHWidgetSheetViewControllerPresenter> _presenter;
     SBHApplicationWidgetCollection *_applicationWidgetCollection;
-    id <SBIconListLayoutProvider> _listLayoutProvider;
-    id <SBIconViewProviding> _iconViewProvider;
-    SBHAddWidgetSheetAppCollectionViewCellConfigurator *_appCellConfigurator;
+    SBHWidgetSearchController *_externalSearchController;
     MTMaterialView *_backgroundView;
-    SBHAddWidgetSheetAppCollectionViewCell *_headerCell;
+    MTMaterialView *_magicPocketBackgroundView;
     UIButton *_closeButton;
+    SBHAddWidgetDetailSheetTitleView *_titleView;
     UIStackView *_widgetInfoStackView;
     BSUIScrollView *_widgetInfoScrollView;
-    BSUIScrollView *_scrollView;
-    UIStackView *_avocadosStackView;
+    BSUIScrollView *_widgetGalleryScrollView;
+    UIStackView *_widgetGalleryStackView;
     SBHAddWidgetButton *_addButton;
     UIPageControl *_pageControl;
     SBFFluidBehaviorSettings *_widgetInfoScrollViewAnimationSettings;
+    UIView *_containerView;
+    BSUIScrollView *_contentScrollView;
+    UIStackView *_contentStackView;
+    UIView *_headerView;
+    UIView *_addButtonContainerView;
+    UIView *_addButtonStackSpacerView;
+    NSLayoutConstraint *_topSpacingConstraint;
+    NSLayoutConstraint *_pageControlTopConstraint;
+    NSLayoutConstraint *_addButtonTopConstraint;
+    NSLayoutConstraint *_addButtonBottomConstraint;
+    NSLayoutConstraint *_widgetGalleryHeightConstraint;
     NSMutableArray *_pages;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool scrollingInitiatedByInfoScrollView; // @synthesize scrollingInitiatedByInfoScrollView=_scrollingInitiatedByInfoScrollView;
 @property(retain, nonatomic) NSMutableArray *pages; // @synthesize pages=_pages;
+@property(retain, nonatomic) NSLayoutConstraint *widgetGalleryHeightConstraint; // @synthesize widgetGalleryHeightConstraint=_widgetGalleryHeightConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *addButtonBottomConstraint; // @synthesize addButtonBottomConstraint=_addButtonBottomConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *addButtonTopConstraint; // @synthesize addButtonTopConstraint=_addButtonTopConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *pageControlTopConstraint; // @synthesize pageControlTopConstraint=_pageControlTopConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *topSpacingConstraint; // @synthesize topSpacingConstraint=_topSpacingConstraint;
+@property(retain, nonatomic) UIView *addButtonStackSpacerView; // @synthesize addButtonStackSpacerView=_addButtonStackSpacerView;
+@property(retain, nonatomic) UIView *addButtonContainerView; // @synthesize addButtonContainerView=_addButtonContainerView;
+@property(retain, nonatomic) UIView *headerView; // @synthesize headerView=_headerView;
+@property(retain, nonatomic) UIStackView *contentStackView; // @synthesize contentStackView=_contentStackView;
+@property(retain, nonatomic) BSUIScrollView *contentScrollView; // @synthesize contentScrollView=_contentScrollView;
+@property(retain, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *widgetInfoScrollViewAnimationSettings; // @synthesize widgetInfoScrollViewAnimationSettings=_widgetInfoScrollViewAnimationSettings;
 @property(retain, nonatomic) UIPageControl *pageControl; // @synthesize pageControl=_pageControl;
 @property(retain, nonatomic) SBHAddWidgetButton *addButton; // @synthesize addButton=_addButton;
-@property(retain, nonatomic) UIStackView *avocadosStackView; // @synthesize avocadosStackView=_avocadosStackView;
-@property(retain, nonatomic) BSUIScrollView *scrollView; // @synthesize scrollView=_scrollView;
+@property(retain, nonatomic) UIStackView *widgetGalleryStackView; // @synthesize widgetGalleryStackView=_widgetGalleryStackView;
+@property(retain, nonatomic) BSUIScrollView *widgetGalleryScrollView; // @synthesize widgetGalleryScrollView=_widgetGalleryScrollView;
 @property(retain, nonatomic) BSUIScrollView *widgetInfoScrollView; // @synthesize widgetInfoScrollView=_widgetInfoScrollView;
 @property(retain, nonatomic) UIStackView *widgetInfoStackView; // @synthesize widgetInfoStackView=_widgetInfoStackView;
+@property(retain, nonatomic) SBHAddWidgetDetailSheetTitleView *titleView; // @synthesize titleView=_titleView;
 @property(retain, nonatomic) UIButton *closeButton; // @synthesize closeButton=_closeButton;
-@property(retain, nonatomic) SBHAddWidgetSheetAppCollectionViewCell *headerCell; // @synthesize headerCell=_headerCell;
+@property(retain, nonatomic) MTMaterialView *magicPocketBackgroundView; // @synthesize magicPocketBackgroundView=_magicPocketBackgroundView;
 @property(retain, nonatomic) MTMaterialView *backgroundView; // @synthesize backgroundView=_backgroundView;
-@property(retain, nonatomic) SBHAddWidgetSheetAppCollectionViewCellConfigurator *appCellConfigurator; // @synthesize appCellConfigurator=_appCellConfigurator;
-@property(retain, nonatomic) id <SBIconViewProviding> iconViewProvider; // @synthesize iconViewProvider=_iconViewProvider;
-@property(retain, nonatomic) id <SBIconListLayoutProvider> listLayoutProvider; // @synthesize listLayoutProvider=_listLayoutProvider;
+@property(retain, nonatomic) SBHWidgetSearchController *externalSearchController; // @synthesize externalSearchController=_externalSearchController;
 @property(retain, nonatomic) SBHApplicationWidgetCollection *applicationWidgetCollection; // @synthesize applicationWidgetCollection=_applicationWidgetCollection;
-@property(nonatomic) __weak id <SBHAddWidgetSheetViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak id <SBHWidgetSheetViewControllerPresenter> presenter; // @synthesize presenter=_presenter;
+@property(readonly, nonatomic) NSMutableDictionary *userInfo;
+- (void)configureBackgroundView:(id)arg1 matchingMaterialBeneathPageViewController:(id)arg2;
+- (id)backgroundViewMatchingMaterialBeneathPageViewController:(id)arg1;
 @property(readonly, nonatomic) __weak id <SBHWidgetDragHandling> widgetDragHandler;
+- (void)_updateStackViewForSizeCategory;
+- (void)_contentSizeCategoryDidChange:(id)arg1;
+- (id)_materialViewForVisualStyling;
 - (id)_currentGalleryItem;
 - (unsigned long long)_closestPageWithGalleryItem:(id)arg1;
 - (void)_scrollMainScrollViewToMatchInfoScrollViewIfNeeded;
 - (void)_updateParallaxEffect;
-- (void)_updateControlsForContentOffset:(struct CGPoint)arg1;
+- (void)_updateControlsForContentOffset:(struct CGPoint)arg1 animated:(_Bool)arg2;
+- (unsigned long long)_pageIndexAtContentOffset:(struct CGPoint)arg1;
 @property(readonly, nonatomic) SBHAddWidgetDetailsSheetPageViewController *currentPage;
+- (void)_updatePageViewControllerAppearanceForFastScrollToTargetIndex:(unsigned long long)arg1;
+- (void)_updatePageViewControllerAppearanceWithAppearedBlock:(CDUnknownBlockType)arg1;
+- (void)_updatePageViewControllerAppearanceForNormalScroll;
 - (void)_addPage:(id)arg1;
+- (void)_updateMaterialRecipeForBackgroundView:(id)arg1;
 - (void)_updateBackgroundRecipe;
+- (id)_newBackgroundView;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)scrollViewDidScroll:(id)arg1;
@@ -68,11 +102,19 @@
 - (void)addButtonTapped:(id)arg1;
 - (void)closeButtonTapped:(id)arg1;
 - (void)configureForGalleryItem:(id)arg1 selectedSizeClass:(long long)arg2;
+- (double)_minumumWidgetGalleryScrollViewHeight;
+- (void)_updateLayoutMargins;
+- (void)_updateConstraintConstants;
 - (void)_createConstraints;
 - (void)_createViews;
+- (void)viewDidLayoutSubviews;
+- (void)updateViewConstraints;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (_Bool)shouldAutomaticallyForwardAppearanceMethods;
+- (void)dealloc;
 - (void)loadView;
-- (id)initWithListLayoutProvider:(id)arg1 iconViewProvider:(id)arg2 appCellConfigurator:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

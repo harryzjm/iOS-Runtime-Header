@@ -12,7 +12,6 @@
 @interface SPXPCServer : NSObject
 {
     double _idleTimerInterval;
-    _Bool _shutdown;
     NSObject<OS_xpc_object> *_conn;
     NSMutableSet *_connections;
     NSMutableDictionary *_handlerMap;
@@ -21,6 +20,7 @@
     NSObject<OS_dispatch_queue> *_timerQueue;
     unsigned int _qos;
     _Bool hadConnection;
+    _Bool _shutdown;
     CDUnknownBlockType _disconnectHandler;
     CDUnknownBlockType _defaultMessageHandler;
     CDUnknownBlockType _firstConnectionBlock;

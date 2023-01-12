@@ -6,31 +6,26 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthMenstrualCyclesDaemon/HDAnalyticsSubmissionCoordinatorDelegate-Protocol.h>
 #import <HealthMenstrualCyclesDaemon/HDHealthDaemonReadyObserver-Protocol.h>
-#import <HealthMenstrualCyclesDaemon/HDPeriodicActivityDelegate-Protocol.h>
 
-@class HDMCAnalysisManager, HDPeriodicActivity, HDProfile, NSString;
+@class HDFeatureAvailabilityManager, HDMCAnalysisManager, HDProfile, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface HDMCAnalyticsManager : NSObject <HDHealthDaemonReadyObserver, HDPeriodicActivityDelegate>
+@interface HDMCAnalyticsManager : NSObject <HDAnalyticsSubmissionCoordinatorDelegate, HDHealthDaemonReadyObserver>
 {
     HDMCAnalysisManager *_analysisManager;
-    HDPeriodicActivity *_activity;
     HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_queue;
+    HDFeatureAvailabilityManager *_heartRateFeatureAvailabilityManager;
 }
 
 - (void).cxx_destruct;
-- (void)_queue_submitAnalyticsWithActivityCompletion:(CDUnknownBlockType)arg1;
-- (void)_queue_performActivityWithCompletion:(CDUnknownBlockType)arg1;
-- (void)performPeriodicActivity:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)periodicActivity:(id)arg1 configureXPCActivityCriteria:(id)arg2;
-- (_Bool)periodicActivityRequiresProtectedData:(id)arg1;
+- (void)_queue_submitAnalyticsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)reportDailyAnalyticsWithCoordinator:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)daemonReady:(id)arg1;
-- (double)_retryInterval;
-- (double)_submissionInterval;
-- (id)initWithProfile:(id)arg1 analysisManager:(id)arg2;
+- (id)initWithProfile:(id)arg1 analysisManager:(id)arg2 heartRateFeatureAvailabilityManager:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

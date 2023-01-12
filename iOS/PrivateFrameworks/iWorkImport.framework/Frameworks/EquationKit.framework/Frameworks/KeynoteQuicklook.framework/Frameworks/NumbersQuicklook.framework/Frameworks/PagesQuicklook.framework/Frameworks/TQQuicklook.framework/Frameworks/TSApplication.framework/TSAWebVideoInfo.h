@@ -12,7 +12,7 @@
 #import <TSApplication/TSDStyleOwning-Protocol.h>
 #import <TSApplication/TSSStyleClient-Protocol.h>
 
-@class NSString, NSURL, TSDAttribution, TSDMediaStyle, TSPData, TSSStyle;
+@class NSSet, NSString, NSURL, TSDAttribution, TSDMediaStyle, TSPData, TSSStyle;
 
 @interface TSAWebVideoInfo : TSDDrawableInfo <TSDFittingOnInsertion, TSDMixing, TSDDrawableInfoCustomUnarchivingSubclassProviding, TSDStyleOwning, TSSStyleClient>
 {
@@ -29,17 +29,16 @@
 + (Class)drawableInfoSubclassForClass:(Class)arg1 unarchiver:(id)arg2;
 - (void).cxx_destruct;
 @property(copy, nonatomic) TSDAttribution *attribution; // @synthesize attribution=_attribution;
-@property(readonly, nonatomic) TSPData *posterImageData; // @synthesize posterImageData=_posterImageData;
 - (void)didInitFromSOS;
-- (void)saveToArchive:(struct ImageArchive *)arg1 archiver:(id)arg2;
-- (void)loadFromArchive:(const struct ImageArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 - (id)animationFilters;
 - (void)replaceReferencedStylesUsingBlock:(CDUnknownBlockType)arg1;
-- (id)referencedStyles;
+@property(readonly, nonatomic) NSSet *referencedStyles;
 @property(readonly, nonatomic) Class styleClass;
 @property(retain, nonatomic) TSSStyle *style;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
@@ -54,6 +53,7 @@
 - (void)takePropertiesFromReplacedWebVideoInfo:(id)arg1;
 - (void)takeGeometryFromReplacedWebVideoInfo:(id)arg1;
 @property(readonly, nonatomic) NSURL *URL;
+- (id)typeName;
 - (_Bool)allowsTitle;
 - (_Bool)allowsCaption;
 - (_Bool)wantsCounterRotationWhenNotSupportingParentRotationInRotatedParent;
@@ -64,6 +64,8 @@
 - (id)copyWithContext:(id)arg1;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 style:(id)arg3 URL:(id)arg4 posterImageData:(id)arg5;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 URL:(id)arg3 posterImageData:(id)arg4;
+- (void)setPosterImageData:(id)arg1;
+@property(readonly, nonatomic) TSPData *posterImageData;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

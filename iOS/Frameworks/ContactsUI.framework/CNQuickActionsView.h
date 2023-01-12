@@ -59,6 +59,7 @@
 @property(copy, nonatomic) NSArray *categories; // @synthesize categories=_categories;
 @property(retain, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 - (void)contactActionsController:(id)arg1 didSelectAction:(id)arg2;
+- (void)didDisambiguateActionType:(id)arg1 withActionItem:(id)arg2;
 - (void)performAction:(id)arg1;
 - (void)showDisambiguationControllerWithDataSource:(id)arg1 actionType:(id)arg2 onController:(id)arg3 sourceView:(id)arg4;
 - (_Bool)quickActionButton:(id)arg1 performAction:(id)arg2;

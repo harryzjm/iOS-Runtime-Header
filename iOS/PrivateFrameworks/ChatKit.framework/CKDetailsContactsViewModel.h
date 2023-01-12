@@ -6,20 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class CNContact, NSString;
+@class CKEntity, CNContact, NSString;
 
 @interface CKDetailsContactsViewModel : NSObject
 {
+    _Bool _tuConversationStatusIsActive;
     _Bool _showsLocation;
     _Bool _showsMessageButton;
     _Bool _showsFaceTimeVideoButton;
     _Bool _showsPhoneButton;
     _Bool _showsScreenSharingButton;
+    _Bool _showsTUConversationStatus;
     _Bool _isPendingRecipient;
     _Bool _verified;
     NSString *_preferredHandle;
     NSString *_entityName;
+    CKEntity *_entity;
     NSString *_locationString;
+    long long _callType;
     CNContact *_contact;
 }
 
@@ -28,15 +32,19 @@
 @property(nonatomic) _Bool verified; // @synthesize verified=_verified;
 @property(nonatomic) _Bool isPendingRecipient; // @synthesize isPendingRecipient=_isPendingRecipient;
 @property(retain, nonatomic) CNContact *contact; // @synthesize contact=_contact;
+@property(nonatomic) _Bool showsTUConversationStatus; // @synthesize showsTUConversationStatus=_showsTUConversationStatus;
 @property(nonatomic) _Bool showsScreenSharingButton; // @synthesize showsScreenSharingButton=_showsScreenSharingButton;
 @property(nonatomic) _Bool showsPhoneButton; // @synthesize showsPhoneButton=_showsPhoneButton;
 @property(nonatomic) _Bool showsFaceTimeVideoButton; // @synthesize showsFaceTimeVideoButton=_showsFaceTimeVideoButton;
 @property(nonatomic) _Bool showsMessageButton; // @synthesize showsMessageButton=_showsMessageButton;
 @property(nonatomic) _Bool showsLocation; // @synthesize showsLocation=_showsLocation;
+@property(nonatomic) long long callType; // @synthesize callType=_callType;
+@property(nonatomic) _Bool tuConversationStatusIsActive; // @synthesize tuConversationStatusIsActive=_tuConversationStatusIsActive;
 @property(copy, nonatomic) NSString *locationString; // @synthesize locationString=_locationString;
+@property(retain, nonatomic) CKEntity *entity; // @synthesize entity=_entity;
 @property(copy, nonatomic) NSString *entityName; // @synthesize entityName=_entityName;
 @property(copy, nonatomic) NSString *preferredHandle; // @synthesize preferredHandle=_preferredHandle;
-- (id)initWithPreferredHandle:(id)arg1 entityName:(id)arg2 locationString:(id)arg3 showsLocation:(_Bool)arg4 showsMessageButton:(_Bool)arg5 showsFaceTimeVideoButton:(_Bool)arg6 showsPhoneButton:(_Bool)arg7 showsScreenSharingButton:(_Bool)arg8 contact:(id)arg9 isPendingRecipient:(_Bool)arg10 verified:(_Bool)arg11;
+- (id)initWithEntity:(id)arg1 locationString:(id)arg2 tuConversationStatusIsActive:(_Bool)arg3 callType:(long long)arg4 showsLocation:(_Bool)arg5 showsMessageButton:(_Bool)arg6 showsFaceTimeVideoButton:(_Bool)arg7 showsPhoneButton:(_Bool)arg8 showsScreenSharingButton:(_Bool)arg9 contact:(id)arg10 isPendingRecipient:(_Bool)arg11 verified:(_Bool)arg12 showsTUConversationStatus:(_Bool)arg13;
 
 @end
 

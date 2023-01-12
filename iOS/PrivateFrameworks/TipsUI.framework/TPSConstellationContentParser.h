@@ -62,6 +62,7 @@
 - (id)attributesWithMarks:(id)arg1;
 - (id)attributedStringForContent:(id)arg1 error:(id *)arg2;
 - (id)attributedStringForConstellationContent:(id)arg1 defaultAttributes:(id)arg2 identifier:(id)arg3 language:(id)arg4 assetsBaseURL:(id)arg5 error:(id *)arg6;
+- (void)cancelAssetFetches;
 - (id)init;
 - (void)dealloc;
 

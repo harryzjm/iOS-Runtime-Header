@@ -4,28 +4,49 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface VNFaceprint
+#import <Vision/VNEntityIdentificationModelPrint-Protocol.h>
+#import <Vision/VNSerializingInternal-Protocol.h>
+
+@class NSData, NSString, VNRequestSpecifier;
+
+@interface VNFaceprint <VNEntityIdentificationModelPrint, VNSerializingInternal>
 {
     float _confidence;
 }
 
++ (id)emptyFaceprintDataForRevision:(unsigned long long)arg1;
 + (_Bool)supportsSecureCoding;
-+ (unsigned long long)confidenceTypeForRevision:(unsigned long long)arg1;
++ (unsigned long long)confidenceTypeForOriginatingRequestSpecifier:(id)arg1;
++ (_Bool)shouldAssumeOriginatingRequestClassForHeaderSerializationVersion:(unsigned int)arg1;
++ (_Bool)shouldIgnoreLagecyLabelsAndConfidenceForHeaderSerializationVersion:(unsigned int)arg1;
 + (unsigned long long)currentSerializationVersion;
 + (unsigned long long)serializationMagicNumber;
 + (id)codingTypesToCodingKeys;
 + (unsigned int)currentCodingVersion;
 + (id)currentVersion;
++ (id)defaultOriginatingRequestClassNameForRequestRevision:(unsigned long long)arg1;
 @property(readonly, nonatomic) float confidence; // @synthesize confidence=_confidence;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)serializeStateIntoData:(id)arg1 startingAtByteOffset:(unsigned long long)arg2 error:(id *)arg3;
-- (unsigned long long)serializedLength;
+@property(readonly, nonatomic) unsigned long long serializedLength;
 - (id)initWithState:(id)arg1 byteOffset:(unsigned long long *)arg2 error:(id *)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithData:(const void *)arg1 elementCount:(unsigned long long)arg2 elementType:(unsigned long long)arg3 lengthInBytes:(unsigned long long)arg4 labelsAndConfidence:(id)arg5 confidence:(float)arg6 requestRevision:(unsigned long long)arg7;
-- (id)initWithData:(const void *)arg1 elementCount:(unsigned long long)arg2 elementType:(unsigned long long)arg3 lengthInBytes:(unsigned long long)arg4 labelsAndConfidence:(id)arg5 requestRevision:(unsigned long long)arg6;
+- (id)initWithData:(const void *)arg1 elementCount:(unsigned long long)arg2 elementType:(unsigned long long)arg3 lengthInBytes:(unsigned long long)arg4 confidence:(float)arg5 originatingRequestSpecifier:(id)arg6;
+- (id)initWithData:(const void *)arg1 elementCount:(unsigned long long)arg2 elementType:(unsigned long long)arg3 lengthInBytes:(unsigned long long)arg4 confidence:(float)arg5 requestRevision:(unsigned long long)arg6;
+- (id)initWithData:(const void *)arg1 elementCount:(unsigned long long)arg2 elementType:(unsigned long long)arg3 lengthInBytes:(unsigned long long)arg4 requestRevision:(unsigned long long)arg5;
+- (_Bool)isEquivalentToVNEntityIdentificationModelPrint:(id)arg1;
+@property(readonly) NSData *VNEntityIdentificationModelPrintData;
+@property(readonly) unsigned long long VNEntityIdentificationModelPrintByteLength;
+@property(readonly) unsigned long long VNEntityIdentificationModelPrintElementType;
+@property(readonly) unsigned long long VNEntityIdentificationModelPrintElementCount;
+@property(readonly, copy) VNRequestSpecifier *VNEntityIdentificationModelPrintOriginatingRequestSpecifier;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) Class superclass;
 
 @end
 

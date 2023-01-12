@@ -23,7 +23,6 @@
 + (id)na_identity;
 + (id)tipIdentifiersForDictionary:(id)arg1;
 + (id)collectionIdentifierForDictionary:(id)arg1;
-+ (id)classSet;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *countText; // @synthesize countText=_countText;
@@ -38,6 +37,7 @@
 - (id)debugDescription;
 @property(readonly, copy, nonatomic) TPSAssets *tileAssets; // @dynamic tileAssets;
 @property(readonly, copy, nonatomic) TPSAssets *featuredAssets; // @dynamic featuredAssets;
+@property(readonly, copy, nonatomic) NSString *featuredText;
 @property(readonly, copy, nonatomic) NSString *featuredTitle; // @dynamic featuredTitle;
 @property(copy, nonatomic) NSString *text; // @dynamic text;
 @property(copy, nonatomic) NSString *title; // @dynamic title;

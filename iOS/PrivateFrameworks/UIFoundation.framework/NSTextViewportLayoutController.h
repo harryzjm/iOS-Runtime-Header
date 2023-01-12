@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, NSTextRange;
-@protocol NSTextViewportElementProvider, NSTextViewportLayoutDelegate;
+@class NSArray, NSMutableArray, NSTextLayoutManager, NSTextRange;
+@protocol NSTextViewportElementProvider, NSTextViewportLayoutControllerDelegate, NSTextViewportLayoutDelegate_Private;
 
 @interface NSTextViewportLayoutController : NSObject
 {
@@ -16,15 +16,22 @@
     NSTextRange *_viewportRange;
     NSArray *_viewportElements;
     NSMutableArray *_viewportLayoutObservers;
-    _Bool _layoutIsValid;
-    id <NSTextViewportLayoutDelegate> _delegate;
+    id <NSTextViewportLayoutDelegate_Private> _delegate;
+    struct {
+        unsigned int _layoutIsValid:1;
+        unsigned int _needsLayout:1;
+        unsigned int _delegateConformsToPublicAPI:1;
+        unsigned int _delegateSupportsLocationPositionMapping:1;
+        unsigned int _needsLayoutSelectorType:2;
+    } _viewportLayoutControllerFlags;
     id <NSTextViewportElementProvider> _elementProvider;
+    NSTextLayoutManager *_textLayoutManager;
 }
 
++ (_Bool)flushesCachedViewportElements;
 - (void).cxx_destruct;
-@property(readonly) struct CGRect viewportBounds; // @synthesize viewportBounds=_viewportBounds;
+@property(readonly) __weak NSTextLayoutManager *textLayoutManager; // @synthesize textLayoutManager=_textLayoutManager;
 @property(readonly) __weak id <NSTextViewportElementProvider> elementProvider; // @synthesize elementProvider=_elementProvider;
-@property __weak id <NSTextViewportLayoutDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)removeViewportLayoutObserver:(id)arg1;
 - (void)addViewportLayoutObserver:(id)arg1;
 - (id)textViewportElementForLocation:(id)arg1;
@@ -32,13 +39,18 @@
 - (void)enumerateTextViewportElementsInRect:(struct CGRect)arg1 options:(long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (id)textViewportElementsInRect:(struct CGRect)arg1;
 - (id)textViewportElementAtPoint:(struct CGPoint)arg1;
+- (void)setNeedsLayout;
 @property(readonly) NSTextRange *viewportRange;
 - (struct CGRect)viewport;
-- (void)adjustViewport:(double)arg1;
-- (double)relocateViewport:(id)arg1;
+@property(readonly) struct CGRect viewportBounds;
+- (void)adjustViewport:(double)arg1 atLocation:(id)arg2 verticalOffsetFromLocation:(double)arg3;
+- (void)adjustViewportByVerticalOffset:(double)arg1;
+- (double)relocateViewportToTextLocation:(id)arg1;
 - (void)layoutViewport;
+@property __weak id <NSTextViewportLayoutControllerDelegate> delegate;
 - (void)dealloc;
 - (id)initWithElementProvider:(id)arg1;
+- (id)initWithTextLayoutManager:(id)arg1;
 
 @end
 

@@ -19,8 +19,6 @@
 @property(readonly, nonatomic) struct _LXCursor *_rootCursor; // @synthesize _rootCursor=__rootCursor;
 @property(readonly, nonatomic) unsigned long long priority; // @synthesize priority=_priority;
 @property(readonly, nonatomic) const struct _LXLexicon *lexicon; // @synthesize lexicon=_lexicon;
-- (id)packagedLexiconRootCursor;
-- (id)packagedLexiconCursorUsingTextDecodingContext:(id)arg1;
 - (void)dealloc;
 - (id)initWithLexicon:(struct _LXLexicon *)arg1;
 - (id)initWithLexicon:(struct _LXLexicon *)arg1 priority:(unsigned long long)arg2;

@@ -12,7 +12,7 @@
 {
     INIntent *_intent;
     NSString *_widgetExtensionBundleIdentifier;
-    unsigned long long _sizeClass;
+    long long _family;
     NSString *_widgetDisplayName;
     NSString *_widgetDescription;
     struct CGRect _initialConfigurationCardViewFrame;
@@ -22,9 +22,10 @@
 @property(copy, nonatomic) NSString *widgetDescription; // @synthesize widgetDescription=_widgetDescription;
 @property(copy, nonatomic) NSString *widgetDisplayName; // @synthesize widgetDisplayName=_widgetDisplayName;
 @property(nonatomic) struct CGRect initialConfigurationCardViewFrame; // @synthesize initialConfigurationCardViewFrame=_initialConfigurationCardViewFrame;
-@property(nonatomic) unsigned long long sizeClass; // @synthesize sizeClass=_sizeClass;
+@property(nonatomic) long long family; // @synthesize family=_family;
 @property(retain, nonatomic) NSString *widgetExtensionBundleIdentifier; // @synthesize widgetExtensionBundleIdentifier=_widgetExtensionBundleIdentifier;
 @property(retain, nonatomic) INIntent *intent; // @synthesize intent=_intent;
+@property(nonatomic) unsigned long long sizeClass;
 - (id)init;
 
 @end

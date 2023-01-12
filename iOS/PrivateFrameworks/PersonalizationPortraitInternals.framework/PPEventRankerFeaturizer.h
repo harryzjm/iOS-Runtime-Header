@@ -6,13 +6,18 @@
 
 #import <objc/NSObject.h>
 
+@class PPTrialWrapper;
+
 @interface PPEventRankerFeaturizer : NSObject
 {
+    PPTrialWrapper *_trialWrapper;
 }
 
 + (void)clearAssetCache;
 + (id)scoreFeatureSchema:(id)arg1;
-+ (id)featureSchema;
+- (void).cxx_destruct;
+- (id)featureSchema;
+- (id)initWithTrialWrapper:(id)arg1;
 
 @end
 

@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <IMCore/IMMomentSharePresentationCacheDelegate-Protocol.h>
+#import <IMCore/IMPhotoLibraryPersistenceManagerListener-Protocol.h>
 #import <IMCore/IMSendProgressDelegate-Protocol.h>
 #import <IMCore/IMStateLoggable-Protocol.h>
 #import <IMCore/INSpeakable-Protocol.h>
 
-@class IMAccount, IMChatRegistry, IMHandle, IMInlineReplyController, IMMessage, IMMessageItem, IMOrderingTools, IMScheduledUpdater, IMSendProgress, IMTimingCollection, MKMapItem, NSArray, NSData, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSNumber, NSSet, NSString;
+@class IMAccount, IMBrand, IMChatRegistry, IMChatScrutinyController, IMHandle, IMInlineReplyController, IMMessage, IMMessageItem, IMMomentShareCache, IMMomentSharePresentationCache, IMOrderingTools, IMParticipantChangeChatItem, IMScheduledUpdater, IMSendProgress, IMTimingCollection, NSArray, NSData, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSNumber, NSSet, NSString;
 @protocol IMChatItemRules;
 
-@interface IMChat <IMStateLoggable, INSpeakable, IMSendProgressDelegate>
+@interface IMChat <IMPhotoLibraryPersistenceManagerListener, IMStateLoggable, INSpeakable, IMSendProgressDelegate, IMMomentSharePresentationCacheDelegate>
 {
     NSString *_guid;
     NSString *_typingGUID;
@@ -51,7 +53,6 @@
     unsigned int _isFirstMessageInvitation:1;
     unsigned int _wasInvitationHandled:1;
     unsigned int _didSendAFinishedMessage:1;
-    unsigned int _hasPendingMarkRead:1;
     unsigned int _isUpdatingChatItems:1;
     unsigned int _ignoreDowngradeStatusUpdates:1;
     long long _isFiltered;
@@ -63,18 +64,29 @@
     _Bool _hasEarlierMessagesToLoad;
     _Bool _hasMoreRecentMessagesToLoad;
     _Bool _isCurrentlyDownloadingPurgedAssets;
+    IMMomentShareCache *_momentShareCache;
+    IMMomentSharePresentationCache *_momentSharePresentationCache;
     _Bool _allowedByScreenTime;
     _Bool _hasSurfRequest;
+    _Bool _unregistered;
+    _Bool _isSubscriptionSwitchParticipantAddTypeFound;
     IMInlineReplyController *_inlineReplyController;
     NSSet *_mergedPinningIdentifiers;
     NSString *_personCentricID;
+    long long _autoDonationBehavior;
     NSMutableArray *_mentionMessageGuidsToRemove;
     NSDictionary *_bizIntent;
     unsigned long long _senderBlackholeWarningStatus;
     NSString *_groupChatIdentifierUppercase;
+    long long _hasKnownParticipantsCacheStatus;
+    NSString *_activeChatItemUpdateReason;
     double _latestTypingIndicatorTimeInterval;
     IMOrderingTools *_orderingTools;
     NSString *_currentLocationGUID;
+    long long _cachedShouldShowReportSpam;
+    long long _cachedShouldShowSpam;
+    IMParticipantChangeChatItem *_subscriptionSwitchParticipantAddChatItem;
+    NSString *_originalGroupID;
 }
 
 + (Class)chatItemRulesClass;
@@ -89,18 +101,27 @@
 + (void)storeGUIDInAttemptingListInScrutinyMode:(id)arg1;
 + (id)stateCaptureRecents;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *originalGroupID; // @synthesize originalGroupID=_originalGroupID;
 @property(retain, nonatomic) NSString *lastAddressedSIMID; // @synthesize lastAddressedSIMID=_lastAddressedSIMID;
+@property(retain, nonatomic) IMParticipantChangeChatItem *subscriptionSwitchParticipantAddChatItem; // @synthesize subscriptionSwitchParticipantAddChatItem=_subscriptionSwitchParticipantAddChatItem;
+@property(nonatomic) _Bool isSubscriptionSwitchParticipantAddTypeFound; // @synthesize isSubscriptionSwitchParticipantAddTypeFound=_isSubscriptionSwitchParticipantAddTypeFound;
+@property(nonatomic) long long cachedShouldShowSpam; // @synthesize cachedShouldShowSpam=_cachedShouldShowSpam;
+@property(nonatomic) long long cachedShouldShowReportSpam; // @synthesize cachedShouldShowReportSpam=_cachedShouldShowReportSpam;
 @property(retain, nonatomic) NSString *currentLocationGUID; // @synthesize currentLocationGUID=_currentLocationGUID;
 @property(retain, nonatomic) IMOrderingTools *orderingTools; // @synthesize orderingTools=_orderingTools;
 @property(nonatomic) double latestTypingIndicatorTimeInterval; // @synthesize latestTypingIndicatorTimeInterval=_latestTypingIndicatorTimeInterval;
+@property(nonatomic, getter=isUnregistered) _Bool unregistered; // @synthesize unregistered=_unregistered;
+@property(retain, nonatomic) NSString *activeChatItemUpdateReason; // @synthesize activeChatItemUpdateReason=_activeChatItemUpdateReason;
+@property(nonatomic) long long hasKnownParticipantsCacheStatus; // @synthesize hasKnownParticipantsCacheStatus=_hasKnownParticipantsCacheStatus;
 @property(retain, nonatomic) NSString *groupChatIdentifierUppercase; // @synthesize groupChatIdentifierUppercase=_groupChatIdentifierUppercase;
 @property(copy, nonatomic) NSDictionary *bizIntent; // @synthesize bizIntent=_bizIntent;
 @property(readonly, nonatomic) long long lastMessageTimeStampOnLoad; // @synthesize lastMessageTimeStampOnLoad=_lastMessageTimeStampOnLoad;
 @property(retain, nonatomic) NSMutableArray *mentionMessageGuidsToRemove; // @synthesize mentionMessageGuidsToRemove=_mentionMessageGuidsToRemove;
 @property(nonatomic) _Bool hasSurfRequest; // @synthesize hasSurfRequest=_hasSurfRequest;
+@property(nonatomic) long long autoDonationBehavior; // @synthesize autoDonationBehavior=_autoDonationBehavior;
 @property(readonly, nonatomic) NSData *engramID; // @synthesize engramID=_engramID;
 @property(retain, nonatomic) NSString *personCentricID; // @synthesize personCentricID=_personCentricID;
-@property(readonly, nonatomic) NSSet *mergedPinningIdentifiers; // @synthesize mergedPinningIdentifiers=_mergedPinningIdentifiers;
+@property(retain, nonatomic) NSSet *mergedPinningIdentifiers; // @synthesize mergedPinningIdentifiers=_mergedPinningIdentifiers;
 @property(readonly, nonatomic) IMInlineReplyController *inlineReplyController; // @synthesize inlineReplyController=_inlineReplyController;
 @property(retain, nonatomic) IMMessage *invitationForPendingParticipants; // @synthesize invitationForPendingParticipants=_invitationForPendingParticipants;
 @property(readonly, nonatomic) long long joinState; // @synthesize joinState=_joinState;
@@ -135,7 +156,19 @@
 - (void)_accountControllerUpdated:(id)arg1;
 - (_Bool)_sanityCheckAccounts;
 - (void)_handleAddressBookChangeForRecipientUID:(id)arg1;
+@property(readonly, nonatomic) _Bool canShareFocusStatus;
+- (void)autoInviteToViewAvailabilityIfNeeded;
+- (void)_reloadChatItemsForHandleAvailabilityChange;
+- (void)endObservingHandleAvailability;
+- (void)beginObservingHandleAvailability;
+@property(readonly, nonatomic) _Bool isInvitedToViewMyFocusStatus;
+@property(readonly, nonatomic) NSDate *availabilityStatusPublishedDate;
+@property(readonly, nonatomic) _Bool shouldDisplayUnavailabilityIndicator;
 @property(readonly, nonatomic) _Bool isPinned;
+- (void)momentSharePresentationCacheDidChange:(id)arg1;
+- (void)_momentShareCacheDidChange:(id)arg1;
+@property(readonly, nonatomic) IMMomentSharePresentationCache *momentSharePresentationCache;
+- (id)momentShareCache;
 @property(readonly, nonatomic) _Bool hasMessageFromMe;
 - (void)addPendingParticipants:(id)arg1;
 - (void)_removeParticipantsFromChat:(id)arg1 reason:(id)arg2 fromiMessageChat:(_Bool)arg3;
@@ -216,11 +249,13 @@
 - (void)acceptInvitation;
 @property(readonly, nonatomic) _Bool hasUnhandledInvitation;
 @property(readonly, nonatomic) NSString *roomNameWithoutSuffix;
+@property(readonly, nonatomic) NSString *identityHash;
 @property(readonly, nonatomic) NSString *pinningIdentifier;
 @property(readonly, nonatomic) NSString *deviceIndependentID;
 @property(readonly, nonatomic) NSString *persistentID;
 - (void)_updateLastAddressedSIMID:(id)arg1;
 - (void)_updateLastAddressedHandleID:(id)arg1;
+- (id)displayNameWithRawAddress:(_Bool)arg1 isSpamFilteringEnabled:(_Bool)arg2;
 - (void)_updateEngramID:(id)arg1;
 - (void)_updateDisplayName:(id)arg1 sender:(id)arg2;
 - (void)_updateDisplayName:(id)arg1;
@@ -233,6 +268,7 @@
 - (void)_clearCachedIdentifier;
 - (unsigned long long)stateForParticipant:(id)arg1;
 - (id)participantsWithState:(unsigned long long)arg1;
+- (void)_validateChatRegistrationWithRegistry;
 - (void)_engroupParticipantsUpdated;
 - (void)_handleAttributionChanged;
 - (void)beginListeningToAttributionChanges;
@@ -261,8 +297,6 @@
 - (void)_startTiming:(id)arg1;
 - (id)_timingCollection;
 - (void)_accountLoggedOut:(id)arg1;
-- (void)_unwatchHandleStatusChangedForHandle:(id)arg1;
-- (void)_watchHandleStatusChangedForHandle:(id)arg1;
 - (void)_handleHandleStatusChanged:(id)arg1;
 @property(nonatomic) _Bool allowedByScreenTime; // @synthesize allowedByScreenTime=_allowedByScreenTime;
 - (void)_recomputeOverallChatStatusQuietly:(_Bool)arg1;
@@ -271,20 +305,31 @@
 @property(nonatomic) _Bool hasHadSuccessfulQuery;
 - (long long)numberOfTimesRespondedToThread;
 - (_Bool)containsMessageFromContactOrMe;
+- (void)updateIsEmergencyChat:(_Bool)arg1;
+- (_Bool)isEmergencyChat;
+- (void)updateLastMessageGUID:(id)arg1 forLanguageCode:(id)arg2;
+- (id)lastTranslatableMessageGUIDWithLanguageCode:(id)arg1;
+@property(readonly, nonatomic, getter=isAutoDonatingMessages) _Bool autoDonateMessages;
+@property(readonly, nonatomic) _Bool shouldShowAutoDonationAction;
 - (void)_updateLastSeenMessageGuid:(id)arg1;
 @property(readonly, nonatomic) NSString *lastSeenMessageGuid;
 - (void)_updateChatItemsAsNotSpamEnumeratingItems:(CDUnknownBlockType)arg1;
 - (void)_updateChatItemsAsNotSpam;
 - (_Bool)isCategorized;
 - (void)clearSMSCategory;
+@property(readonly, nonatomic) long long filterCategory;
 - (long long)chatPropertyValueFor:(long long)arg1;
 - (void)updateSMSCategory:(long long)arg1;
 - (void)updateShouldForceToSMS:(_Bool)arg1;
 - (_Bool)shouldForceToSMS;
 - (_Bool)isSMS;
 - (_Bool)allParticipantsAreContacts;
+- (_Bool)hasKnownParticipantsCache;
+- (void)setHasKnownParticipantsCache:(_Bool)arg1;
+- (void)invalidateHasKnownParticipantsCache;
 - (_Bool)hasKnownParticipants;
 - (void)loadParticipantContactsIfNecessary;
+- (void)updateLineSwitchedTo:(id)arg1;
 - (void)updateIsBlackholed:(_Bool)arg1;
 - (void)updateIsFiltered:(long long)arg1;
 @property(nonatomic) long long isFiltered; // @dynamic isFiltered;
@@ -336,6 +381,7 @@
 - (void)_initialize;
 - (id)_initWithGUID:(id)arg1 account:(id)arg2 style:(unsigned char)arg3 roomName:(id)arg4 displayName:(id)arg5 lastAddressedHandle:(id)arg6 lastAddressedSIMID:(id)arg7 items:(id)arg8 participants:(id)arg9 isFiltered:(long long)arg10 hasHadSuccessfulQuery:(_Bool)arg11;
 - (void)_setupObservation;
+@property(readonly, nonatomic) IMChatScrutinyController *chatScrutinyController;
 @property(nonatomic) _Bool forceMMS;
 @property(readonly, nonatomic) _Bool suppressAccountRetargetingForNamedGroupConversation;
 - (_Bool)_recipientIsPhoneNumber;
@@ -352,17 +398,26 @@
 - (id)_previousAccountForService:(id)arg1;
 - (_Bool)_accountIsOperational:(id)arg1 forService:(id)arg2;
 - (void)_delayedInvalidateDowngradeState;
-- (void)_handleIncomingCommand:(id)arg1;
-- (void)_handleDeliveredCommand:(id)arg1;
-- (_Bool)sendDowngradeNotificationTo:(id)arg1;
-- (void)sendDowngradePingForMessage:(id)arg1 manualDowngrade:(_Bool)arg2 downgradeChat:(_Bool)arg3;
-- (void)sendDowngradePingForMessage:(id)arg1 manualDowngrade:(_Bool)arg2;
+- (void)downgradeMessage:(id)arg1 manualDowngrade:(_Bool)arg2 downgradeChat:(_Bool)arg3;
+- (void)downgradeMessage:(id)arg1 manualDowngrade:(_Bool)arg2;
 - (void)refreshServiceForSending;
+- (_Bool)__im_ff_isExpanseEnabled;
+- (id)remoteMembersForTUConversation;
+- (id)activeParticipantsForTUConversation;
+- (id)currentTUCall;
+- (id)callDurationStringForTuCall;
+- (void)initiateTUDialRequestWithVideoEnabled:(_Bool)arg1;
+- (void)initiateTUConversationWithVideoEnabled:(_Bool)arg1;
+- (void)joinExistingTUConversation;
+- (id)conversation;
+- (void)addHandlesToGoupFaceTimeChatIfRegistered:(id)arg1;
+- (_Bool)mapsToTUConversation:(id)arg1;
 - (long long)_compareChat:(id)arg1 withDate:(id)arg2 withDate:(id)arg3;
 - (id)_tuDateForChat:(id)arg1;
 - (long long)compareChatByTUDateAndLastFinishedMessageDate:(id)arg1;
 - (long long)compareChatByDate:(id)arg1;
 - (_Bool)_hasJustSentAMessage;
+- (_Bool)shouldBeAllowListed;
 - (void)verifyFiltering;
 - (void)saveWatermark;
 - (void)updateWatermarks;
@@ -374,15 +429,26 @@
 - (void)sendMessageAcknowledgment:(long long)arg1 forChatItem:(id)arg2 withAssociatedMessageInfo:(id)arg3;
 - (void)sendMessageAcknowledgment:(long long)arg1 forChatItem:(id)arg2 withMessageSummaryInfo:(id)arg3 withGuid:(id)arg4;
 - (void)sendMessageAcknowledgment:(long long)arg1 forChatItem:(id)arg2 withMessageSummaryInfo:(id)arg3;
+- (void)createIMChatItemForTransientAttachmentWithAssetUUID:(id)arg1 parentChatItemGUID:(id)arg2;
 - (void)deleteExtensionPayloadData;
 - (void)closeSession;
 @property(readonly, nonatomic) _Bool isAppleChat;
 @property(readonly, nonatomic) _Bool isMakoChat;
 @property(readonly, nonatomic) _Bool hasVerifiedBusiness;
 @property(readonly, nonatomic) _Bool isBusinessChat;
+@property(readonly, nonatomic) IMHandle *businessHandle;
 @property(readonly, nonatomic) _Bool isReplyEnabled;
-@property(readonly, nonatomic) MKMapItem *mapItem;
+@property(readonly, nonatomic) IMBrand *brand;
+- (_Bool)__im_ff_isInterstellarEnabled;
+- (void)sendAutoDonationUpdate:(_Bool)arg1;
+- (void)sendSyndicationAction:(unsigned char)arg1 forMessagePartGUID:(id)arg2 syndicatedMessagePartRange:(struct _NSRange)arg3;
+- (void)_updateExistingMessageWithSyndicationAction:(id)arg1;
+- (id)_existingMessageFromMessagePartGUID:(id)arg1;
+- (void)photoLibraryPersistedSyndicatedAssetSetDidChange;
 - (id)localizedUnreadShortcutTitle;
+- (_Bool)__im_ff_isInterstellarEnabled;
+- (_Bool)__im_ff_improvedPriorityInversionFixEnabled;
+- (_Bool)__im_ff_chatCacheEnabled;
 - (id)_privateInitWithAccount:(id)arg1 style:(unsigned char)arg2 roomName:(id)arg3 messages:(id)arg4 participants:(id)arg5 isFiltered:(long long)arg6 hasHadSuccessfulQuery:(_Bool)arg7;
 - (void)clearScrutinyMode;
 - (void)watermarkOutForScrutinyMode;
@@ -418,6 +484,7 @@
 - (void)markChatItemAsPlayedExpressiveSend:(id)arg1;
 - (void)_markItemAsPlayed:(id)arg1;
 - (void)markChatItemAsPlayed:(id)arg1;
+- (void)markChatItemAsNotifyRecipient:(id)arg1;
 - (void)markChatItemAsSaved:(id)arg1;
 - (void)deleteIMMessageItems:(id)arg1;
 - (void)deleteChatItems:(id)arg1;
@@ -453,14 +520,11 @@
 - (id)testChatItems;
 @property(nonatomic) unsigned int ignoreDowngradeStatusUpdates;
 - (_Bool)canEditChatItem:(id)arg1;
-- (void)initiateTUConversationWithVideoEnabled:(_Bool)arg1;
-- (void)joinExistingTUConversationWithVideoEnabled:(_Bool)arg1;
-- (void)_launchAppForJoinRequest:(id)arg1;
-- (id)conversation;
-- (_Bool)mapsToTUConversation:(id)arg1;
 - (_Bool)receivedResponseForChat;
 - (_Bool)repliedToChat;
 - (id)stateDictionaryForDiagnosticsRequest;
+- (void)invalidateSpamIndicatorCachedValuesIfNeeded;
+- (void)invalidateSpamIndicatorCachedValues;
 - (id)participantHandleIDs;
 - (id)hashOfParticipantIDs;
 - (id)conversationContext;

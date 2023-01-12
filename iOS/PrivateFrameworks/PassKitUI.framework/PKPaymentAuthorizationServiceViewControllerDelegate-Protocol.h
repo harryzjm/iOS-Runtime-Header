@@ -9,6 +9,7 @@
 @class PKPaymentAuthorizationServiceViewController;
 
 @protocol PKPaymentAuthorizationServiceViewControllerDelegate <NSObject>
+- (void)authorizationViewControllerDidRequestPaymentSetup;
 - (void)authorizationViewControllerDidChangeCoachingState:(PKPaymentAuthorizationServiceViewController *)arg1;
 - (void)authorizationViewControllerDidChangePhysicalButtonState:(PKPaymentAuthorizationServiceViewController *)arg1;
 

@@ -42,8 +42,8 @@
 @property(readonly, nonatomic) unsigned long long count;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)encodeIntoProtobufTimestamp:(VectorTimestamp_346eb33a *)arg1 coder:(id)arg2;
-- (id)initWithProtobufTimestamp:(const VectorTimestamp_346eb33a *)arg1 decoder:(id)arg2;
+- (void)encodeIntoProtobufTimestamp:(void *)arg1 coder:(id)arg2;
+- (id)initWithProtobufTimestamp:(const void *)arg1 decoder:(id)arg2;
 - (void)encodeWithCRCoder:(id)arg1;
 - (id)initWithCRCoder:(id)arg1;
 - (id)init;

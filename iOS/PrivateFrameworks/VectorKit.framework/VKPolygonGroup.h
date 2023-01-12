@@ -8,40 +8,42 @@ __attribute__((visibility("hidden")))
 @interface VKPolygonGroup
 {
     struct optional<md::MeshSet<ggl::PolygonCommonStroke::MeshMesh, ggl::PolygonCommonStroke::DefaultVbo>> _strokeMeshInfo;
-    vector_d473a3e0 _strokeMeshes;
+    struct vector<std::shared_ptr<ggl::PolygonCommonStroke::MeshMesh>, std::allocator<std::shared_ptr<ggl::PolygonCommonStroke::MeshMesh>>> _strokeMeshes;
     shared_ptr_479d1306 _sourceTexture;
     shared_ptr_479d1306 _targetTexture;
     shared_ptr_479d1306 _sourceRoofTexture;
     shared_ptr_479d1306 _targetRoofTexture;
     unsigned char _lastResolvedZoom;
+    struct vector<std::shared_ptr<ggl::DaVinci::ElevatedStrokeMesh>, std::allocator<std::shared_ptr<ggl::DaVinci::ElevatedStrokeMesh>>> _elevatedStrokeMeshes;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)updateTextures:(unsigned char)arg1 textureManager:(shared_ptr_f2399894 *)arg2;
-- (void)addStrokeForSection:(const struct PolygonSection *)arg1 paddedCount:(unsigned int)arg2 key:(pair_1503616b)arg3 attributes:(id)arg4 styles:(vector_0496561e *)arg5 cullingMask:(unsigned int)arg6 accessor:(struct ResourceAccessor *)arg7;
-- (unsigned char)initialStyleIndexForSection:(const struct PolygonSection *)arg1 attributes:(id)arg2 styles:(const vector_0496561e *)arg3;
-- (unsigned char)styleIndexForAttributes:(id)arg1 edgePair:(const CDStruct_1e94be47 *)arg2;
-- (_Bool)addFillForSection:(const struct PolygonSection *)arg1 precision:(unsigned char)arg2 styleIndex:(unsigned int)arg3 cullingMask:(unsigned int)arg4 accessor:(struct ResourceAccessor *)arg5 triangulator:(Triangulator_edf345a1 *)arg6;
-- (void)addPolygon:(CDStruct_bcbc66fa *)arg1 hasNonWaterStyle:(_Bool)arg2 accessor:(struct ResourceAccessor *)arg3 triangulator:(Triangulator_edf345a1 *)arg4;
+@property(readonly, nonatomic) void *elevatedStrokeMeshes; // @synthesize elevatedStrokeMeshes=_elevatedStrokeMeshes;
+- (void)updateTextures:(unsigned char)arg1 textureManager:(void *)arg2;
+- (void)addStrokeForSection:(const void *)arg1 paddedCount:(unsigned int)arg2 key:(pair_802f950e)arg3 attributes:(const void *)arg4 styles:(void *)arg5 cullingMask:(unsigned int)arg6 accessor:(struct ResourceAccessor *)arg7;
+- (unsigned char)initialStyleIndexForSection:(const void *)arg1 attributes:(const void *)arg2 styles:(const void *)arg3;
+- (unsigned char)styleIndexForAttributes:(const void *)arg1 edgePair:(const struct GeoCodecsFeatureStylePair *)arg2;
+- (_Bool)addFillForSection:(const void *)arg1 precision:(unsigned char)arg2 styleIndex:(unsigned int)arg3 cullingMask:(unsigned int)arg4 accessor:(struct ResourceAccessor *)arg5 triangulator:(void *)arg6;
+- (void)addPolygon:(void *)arg1 accessor:(struct ResourceAccessor *)arg2 triangulator:(void *)arg3 withRounder:(struct PolygonRound *)arg4;
 - (void)didFinishAddingData;
 - (void)willAddDataWithAccessor:(struct ResourceAccessor *)arg1;
-- (void)prepareToStrokeSection:(const struct PolygonSection *)arg1 key:(const pair_1503616b *)arg2 styles:(vector_0496561e *)arg3 paddedCount:(unsigned int)arg4;
-- (void)prepareToFillSection:(const struct PolygonSection *)arg1;
-- (void)enclosePointsInBoundingBox:(Matrix_8746f91e *)arg1 count:(unsigned long long)arg2;
-- (void)prepareForPolygon:(CDStruct_bcbc66fa *)arg1 hasNonWaterStyle:(_Bool)arg2;
-- (unsigned int)createStrokePointStyleList:(CDStruct_bcbc66fa *)arg1 section:(unsigned long long)arg2 outPointStyles:(vector_0496561e *)arg3;
-@property(readonly, nonatomic) vector_d473a3e0 *strokeMeshes;
-- (void)updateTexturesIfNecessary:(float)arg1 textureManager:(shared_ptr_f2399894 *)arg2;
+- (void)prepareToStrokeSection:(const void *)arg1 key:(const void *)arg2 styles:(void *)arg3 paddedCount:(unsigned int)arg4;
+- (void)prepareToFillSection:(const void *)arg1;
+- (void)enclosePointsInBoundingBox:(const void *)arg1 count:(unsigned long long)arg2;
+- (void)prepareForPolygon:(void *)arg1 withRounder:(struct PolygonRound *)arg2;
+- (unsigned int)createStrokePointStyleList:(void *)arg1 section:(unsigned long long)arg2 outPointStyles:(void *)arg3 withRounder:(struct PolygonRound *)arg4;
+@property(readonly, nonatomic) void *strokeMeshes;
+- (void)updateTexturesIfNecessary:(float)arg1 textureManager:(void *)arg2;
 - (void)setNeedsTextureUpdate;
 @property(readonly, nonatomic) struct FeatureAttributeSet styleAttributes;
-- (shared_ptr_479d1306)_textureForName:(const basic_string_90719d97 *)arg1 textureManager:(shared_ptr_f2399894 *)arg2;
+- (shared_ptr_479d1306)_textureForName:(const void *)arg1 textureManager:(void *)arg2;
 - (void)dealloc;
-- (id)initWithStyleQuery:(shared_ptr_c5d816ee *)arg1 tileZoom:(float)arg2 fixedAroundCentroid:(const Matrix_8746f91e *)arg3 contentScale:(float)arg4;
-@property(readonly, nonatomic) struct Texture2D *targetRoofTexture;
-@property(readonly, nonatomic) struct Texture2D *sourceRoofTexture;
-@property(readonly, nonatomic) struct Texture2D *targetTexture;
-@property(readonly, nonatomic) struct Texture2D *sourceTexture;
+- (id)initWithStyleQuery:(void *)arg1 tileZoom:(float)arg2 fixedAroundCentroid:(const void *)arg3 contentScale:(float)arg4;
+@property(readonly, nonatomic) void *targetRoofTexture;
+@property(readonly, nonatomic) void *sourceRoofTexture;
+@property(readonly, nonatomic) void *targetTexture;
+@property(readonly, nonatomic) void *sourceTexture;
 
 @end
 

@@ -11,8 +11,9 @@
 @interface _TtC9ChronoKit18WidgetCacheManager : _TtCs12_SwiftObject
 {
     MISSING_TYPE *fileManager;
-    MISSING_TYPE *urlProvider;
-    MISSING_TYPE *descriptorProvider;
+    MISSING_TYPE *identifier;
+    MISSING_TYPE *cacheURLProvider;
+    MISSING_TYPE *cacheKeyProvider;
     MISSING_TYPE *protectionLevelProvider;
     MISSING_TYPE *archiveValidationOptions;
 }

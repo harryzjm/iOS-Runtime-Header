@@ -28,6 +28,8 @@
 - (_Bool)shouldShowEarnedShortDescription;
 - (id)localizedAttributedDescriptionString;
 - (id)localizedAttributedTitleString;
+- (id)localizedAttributedCombinedStringShowingProgress:(_Bool)arg1;
+- (id)localizedAttributedCombinedStringWithoutProgress;
 - (id)localizedAttributedCombinedString;
 - (id)backsideAttributesWithSizeVariant:(long long)arg1;
 - (id)descriptionAttributes;

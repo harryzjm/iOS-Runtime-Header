@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitMetrics/HMMLogEvent.h>
+
 @class NSString;
 
-@interface HMDActiveXPCConnectionLogEvent
+@interface HMDActiveXPCConnectionLogEvent : HMMLogEvent
 {
     _Bool _activated;
     _Bool _added;
@@ -15,7 +17,6 @@
 
 + (id)initWithXPCConnectionRemoved:(id)arg1;
 + (id)initWithNewXPCConnectionAdded:(id)arg1;
-+ (id)identifier;
 - (void).cxx_destruct;
 @property(readonly) _Bool added; // @synthesize added=_added;
 @property(readonly, getter=isActivated) _Bool activated; // @synthesize activated=_activated;

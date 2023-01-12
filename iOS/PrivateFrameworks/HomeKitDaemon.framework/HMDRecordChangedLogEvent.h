@@ -6,13 +6,10 @@
 
 @interface HMDRecordChangedLogEvent
 {
-    _Bool _legacy;
-    unsigned long long _size;
 }
 
-+ (id)uuid;
-@property(readonly, nonatomic, getter=isLegacy) _Bool legacy; // @synthesize legacy=_legacy;
-@property(readonly, nonatomic) unsigned long long size; // @synthesize size=_size;
++ (id)legacyRecordChanged:(id)arg1;
++ (id)recordChanged:(id)arg1;
 - (id)initWithChangedRecord:(id)arg1 isLegacy:(_Bool)arg2;
 
 @end

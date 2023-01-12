@@ -7,6 +7,7 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (TUI_NSStringExtras)
+- (id)tui_centerTruncatedStringWithAttributes:(id)arg1 fittingWidth:(double)arg2;
 - (struct CGSize)tui_optimizedSizeWithFont:(id)arg1;
 @end
 

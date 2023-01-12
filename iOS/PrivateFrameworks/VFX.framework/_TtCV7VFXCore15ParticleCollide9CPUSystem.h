@@ -6,8 +6,11 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtCV7VFXCore15ParticleCollide9CPUSystem : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *eventClass;
 }
 
 @end

@@ -14,6 +14,7 @@
     MISSING_TYPE *kind;
     MISSING_TYPE *startDate;
     MISSING_TYPE *appSessionIdentifier;
+    MISSING_TYPE *timestampConfiguration;
 }
 
 @end

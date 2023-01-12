@@ -17,6 +17,7 @@
     NSObject<OS_dispatch_data> *_leftoverData;
     long long _offset;
     unsigned long long _length;
+    _Bool _closeChannelOnClose;
 }
 
 - (void).cxx_destruct;
@@ -29,6 +30,7 @@
 - (unsigned long long)readToBuffer:(char *)arg1 size:(unsigned long long)arg2;
 - (long long)offset;
 - (void)dealloc;
+- (id)initWithReadChannel:(id)arg1 length:(unsigned long long)arg2 closeChannelOnClose:(_Bool)arg3;
 - (id)initWithReadChannel:(id)arg1 length:(unsigned long long)arg2;
 
 // Remaining properties

@@ -63,12 +63,12 @@ __attribute__((visibility("hidden")))
 - (id)initWithFileName:(id)arg1 andStringOptimization:(_Bool)arg2;
 - (id)initWithStringOptimization:(_Bool)arg1;
 - (id)init;
-- (void)removeWorksheetAtIndex:(unsigned int)arg1;
 - (void)setEscherDrawingGroup:(id)arg1;
 - (id)escherDrawingGroup;
 - (void)reduceMemoryIfPossible;
 - (void)setActiveSheetIndex:(unsigned long long)arg1;
 - (unsigned long long)activeSheetIndex;
+- (void)removeWorksheetAtIndex:(unsigned int)arg1;
 
 @end
 

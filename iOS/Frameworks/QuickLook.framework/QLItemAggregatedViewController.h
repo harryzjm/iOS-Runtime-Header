@@ -36,10 +36,14 @@
 - (_Bool)automaticallyUpdateScrollViewIndicatorInset;
 - (_Bool)automaticallyUpdateScrollViewContentInset;
 - (_Bool)automaticallyUpdateScrollViewContentOffset;
+- (id)stateRestorationDictionary;
+- (void)notifyStateRestorationWithUserInfo:(id)arg1;
 - (void)performFirstTimeAppearanceActions:(unsigned long long)arg1;
 - (_Bool)canPerformFirstTimeAppearanceActions:(unsigned long long)arg1;
 - (id)parallaxView;
 - (id)scrollView;
+- (void)requestLockForCurrentItem;
+- (_Bool)canBeLocked;
 - (_Bool)canShowNavBar;
 - (_Bool)canShowToolBar;
 - (_Bool)canPinchToDismiss;
@@ -47,6 +51,8 @@
 - (_Bool)canToggleFullScreen;
 - (_Bool)canSwipeToDismiss;
 - (id)safeAreaLayoutGuide;
+- (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (_Bool)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (_Bool)shouldRecognizeGestureRecognizer:(id)arg1;
 - (_Bool)shouldAcceptTouch:(id)arg1 ofGestureRecognizer:(id)arg2;
 - (void)handlePerformedKeyCommandIfNeeded:(id)arg1;
@@ -55,6 +61,7 @@
 - (id)toolbarButtonsForTraitCollection:(id)arg1;
 - (id)accessoryView;
 - (_Bool)canEnterFullScreen;
+- (void)actionSheetDidDismiss;
 - (void)prepareForActionSheetPresentation;
 - (void)hostApplicationDidEnterBackground:(id)arg1;
 - (void)hostApplicationDidBecomeActive;

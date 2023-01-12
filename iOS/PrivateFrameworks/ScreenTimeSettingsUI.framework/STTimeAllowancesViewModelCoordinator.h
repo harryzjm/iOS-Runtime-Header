@@ -38,6 +38,10 @@ __attribute__((visibility("hidden")))
 - (void)saveAllAllowancesEnabled:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)deleteAllowance:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)saveAllowance:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+@property(readonly, nonatomic) double timeToNextExpectedStateChange;
+@property(readonly, nonatomic) long long currentDowntimeState;
+@property(readonly, nonatomic) _Bool isDowntimeActive;
+- (void)toggleDowntimeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)saveDeviceBedtime:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_iCloudAccountPredicate;
 - (void)loadViewModelWithCompletionHandler:(CDUnknownBlockType)arg1;

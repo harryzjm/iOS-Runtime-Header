@@ -9,6 +9,7 @@
 #import <GenerationalStorage/NSCopying-Protocol.h>
 #import <GenerationalStorage/NSSecureCoding-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface GSDocumentIdentifier : NSObject <NSCopying, NSSecureCoding>
 {
     unsigned char volumeUUID[16];

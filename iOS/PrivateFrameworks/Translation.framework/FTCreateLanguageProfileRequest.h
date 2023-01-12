@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_9283f17b)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_9283f17b)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) FTUserLanguageProfile *user_language_profile;
 @property(readonly, nonatomic) NSArray *user_data;
 @property(readonly, nonatomic) NSString *language;

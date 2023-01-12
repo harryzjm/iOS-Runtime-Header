@@ -8,10 +8,12 @@
 
 #import <SpringBoardUIServices/_SBUIPopoverExtensionRemoteInterface-Protocol.h>
 
+@class NSUUID;
 @protocol SBUIPopoverExtension, _SBUIPopoverExtensionHostInterface;
 
 @interface SBUIPopoverExtensionRemoteViewController : UIViewController <_SBUIPopoverExtensionRemoteInterface>
 {
+    NSUUID *_instanceIdentifier;
     id <_SBUIPopoverExtensionHostInterface> _hostService;
     UIViewController<SBUIPopoverExtension> *_extensionViewController;
 }
@@ -28,8 +30,16 @@
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)addChildViewController:(id)arg1;
 - (void)_willAppearInRemoteViewController:(id)arg1;
+- (void)viewDidDisappear:(_Bool)arg1;
+- (void)viewWillDisappear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
+- (void)viewWillAppear:(_Bool)arg1;
+- (void)_invalidateSBUIPopoverExtension;
+- (void)_updateForWidgetConfiguration:(id)arg1;
 - (void)_updateForBundleIdentifier:(id)arg1;
 - (_Bool)_canShowWhileLocked;
+- (void)dealloc;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 
 @end
 

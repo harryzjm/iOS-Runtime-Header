@@ -28,8 +28,11 @@
 @property(nonatomic) long long weight; // @synthesize weight=_weight;
 @property(nonatomic) double pointSize; // @synthesize pointSize=_pointSize;
 @property(nonatomic) long long configurationType; // @synthesize configurationType=_configurationType;
+@property(readonly, copy) NSString *description;
+@property(readonly, copy) NSString *debugDescription;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)uiSymbolConfiguration;
 - (id)transformAfterMarshalling;
 - (id)ibDefaultFontDescription;
 - (double)ibDefaultPointSize;
@@ -47,8 +50,6 @@
 - (id)initWithUnspecifiedConfiguration;
 
 // Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

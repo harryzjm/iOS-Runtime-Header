@@ -11,10 +11,10 @@
     MTLFunctionConstantValues *_constantValues;
 }
 
-+ (id)newFunctionWithBaseObject:(id)arg1 parent:(id)arg2;
 @property(retain, nonatomic) MTLFunctionConstantValues *constantValues; // @synthesize constantValues=_constantValues;
-- (id)precompiledOutput;
 - (id)bitcodeData;
+- (id)importedLibraries;
+- (id)importedSymbols;
 - (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id *)arg2 binaryArchives:(id)arg3;
 - (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id *)arg2 pipelineLibrary:(id)arg3;
 - (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id *)arg2;

@@ -6,34 +6,42 @@
 
 #import <objc/NSObject.h>
 
-#import <FrontBoardServices/BSDescriptionProviding-Protocol.h>
+#import <FrontBoardServices/FBSSceneClientIdentifying-Protocol.h>
 #import <FrontBoardServices/NSCopying-Protocol.h>
+#import <FrontBoardServices/NSSecureCoding-Protocol.h>
 
-@class NSString, RBSProcessIdentity;
+@class FBProcess, NSString, RBSProcessHandle, RBSProcessIdentity;
 
-@interface FBSSceneClientIdentity : NSObject <NSCopying, BSDescriptionProviding>
+@interface FBSSceneClientIdentity : NSObject <FBSSceneClientIdentifying, NSCopying, NSSecureCoding>
 {
+    NSString *_description;
     _Bool _local;
     RBSProcessIdentity *_processIdentity;
+    RBSProcessHandle *_processHandle;
+    FBProcess *_transientLocalProcess;
 }
 
++ (_Bool)supportsSecureCoding;
++ (id)identityForProcessHandle:(id)arg1 transientLocalProcess:(id)arg2;
++ (id)identityForProcessHandle:(id)arg1;
 + (id)identityForProcessIdentity:(id)arg1;
 + (id)identityForBundleID:(id)arg1;
 + (id)localIdentity;
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) RBSProcessIdentity *processIdentity; // @synthesize processIdentity=_processIdentity;
+@property(readonly, nonatomic) FBProcess *transientLocalProcess; // @synthesize transientLocalProcess=_transientLocalProcess;
+@property(readonly, nonatomic) RBSProcessHandle *processHandle; // @synthesize processHandle=_processHandle;
 @property(readonly, nonatomic, getter=isLocal) _Bool local; // @synthesize local=_local;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (id)succinctDescriptionBuilder;
-- (id)succinctDescription;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)fbs_sceneClientIdentity;
 @property(readonly, copy, nonatomic) NSString *bundleIdentifier;
-- (id)_init;
-- (id)init;
+@property(readonly, copy, nonatomic) RBSProcessIdentity *processIdentity; // @synthesize processIdentity=_processIdentity;
+- (_Bool)isValid;
+- (id)_initWithLocal:(_Bool)arg1 identity:(id)arg2 handle:(id)arg3 description:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

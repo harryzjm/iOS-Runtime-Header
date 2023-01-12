@@ -24,6 +24,8 @@ __attribute__((visibility("hidden")))
 - (void)setBackgroundColor:(id)arg1;
 @property(retain, nonatomic) CNPropertyGroupItem *propertyItem;
 - (void)traitCollectionDidChange:(id)arg1;
+- (id)displayStringForValue:(id)arg1;
+- (id)placeholderString;
 - (void)setCardGroupItem:(id)arg1;
 - (id)constantConstraints;
 - (void)contentSizeCategoryDidChange:(id)arg1;

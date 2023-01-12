@@ -9,6 +9,7 @@
 @class NSArray, NSDictionary, NSString;
 
 @interface FBSSceneSpecification (UIKitSceneSpecification)
+@property(readonly, nonatomic) _Bool affectsScreenOrientation;
 @property(readonly, nonatomic) _Bool affectsAppLifecycleIfInternal;
 @property(readonly, nonatomic) _Bool isInternal;
 @property(readonly, nonatomic) Class uiSceneMinimumClass;
@@ -19,6 +20,7 @@
 - (id)connectionHandlers;
 @property(readonly, nonatomic) NSString *uiSceneSessionRole;
 @property(readonly, nonatomic) NSDictionary *baseSceneComponentClassDictionary;
+- (id)coreSceneComponentClassDictionary;
 @property(readonly, nonatomic) NSArray *finalActionHandlers;
 @property(readonly, nonatomic) NSArray *initialActionHandlers;
 @property(readonly, nonatomic) NSArray *finalSettingsDiffActions;

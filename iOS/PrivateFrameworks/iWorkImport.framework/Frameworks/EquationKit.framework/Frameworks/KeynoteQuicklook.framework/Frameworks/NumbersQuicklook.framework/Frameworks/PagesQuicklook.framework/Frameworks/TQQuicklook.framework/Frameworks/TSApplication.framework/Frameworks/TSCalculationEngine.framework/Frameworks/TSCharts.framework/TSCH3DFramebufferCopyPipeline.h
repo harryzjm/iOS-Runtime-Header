@@ -8,30 +8,30 @@
 
 @interface TSCH3DFramebufferCopyPipeline
 {
-    NSArray *mEffects;
-    TSCH3DResource *mVertices;
-    TSCH3DResource *mTexcoords;
-    struct RenderState mRenderState;
-    tmat4x4_3074befe mTransform;
-    box_0260e9b3 mTargetViewport;
-    _Bool mWipeTarget;
-    tvec4_ac57c72d mWipeColor;
-    CDUnknownBlockType mUpdateShaderEffectsStatesBlock;
+    NSArray *_effects;
+    TSCH3DResource *_vertices;
+    TSCH3DResource *_texcoords;
+    struct RenderState _renderState;
+    tmat4x4_3074befe _transform;
+    box_ce64ce81 _targetViewport;
+    _Bool _wipeTarget;
+    tvec4_ac57c72d _wipeColor;
+    CDUnknownBlockType _updateShaderEffectsStatesBlock;
 }
 
 - (id).cxx_construct;
-@property(copy, nonatomic) CDUnknownBlockType updateShaderEffectsStatesBlock; // @synthesize updateShaderEffectsStatesBlock=mUpdateShaderEffectsStatesBlock;
-@property(nonatomic) tvec4_ac57c72d wipeColor; // @synthesize wipeColor=mWipeColor;
-@property(nonatomic) _Bool wipeTarget; // @synthesize wipeTarget=mWipeTarget;
-@property(nonatomic) box_0260e9b3 targetViewport; // @synthesize targetViewport=mTargetViewport;
-@property(nonatomic) tmat4x4_3074befe transform; // @synthesize transform=mTransform;
-@property(nonatomic) struct RenderState renderState; // @synthesize renderState=mRenderState;
-@property(retain, nonatomic) TSCH3DResource *texcoords; // @synthesize texcoords=mTexcoords;
-@property(retain, nonatomic) TSCH3DResource *vertices; // @synthesize vertices=mVertices;
-@property(copy, nonatomic) NSArray *effects; // @synthesize effects=mEffects;
+- (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType updateShaderEffectsStatesBlock; // @synthesize updateShaderEffectsStatesBlock=_updateShaderEffectsStatesBlock;
+@property(nonatomic) tvec4_ac57c72d wipeColor; // @synthesize wipeColor=_wipeColor;
+@property(nonatomic) _Bool wipeTarget; // @synthesize wipeTarget=_wipeTarget;
+@property(nonatomic) box_ce64ce81 targetViewport; // @synthesize targetViewport=_targetViewport;
+@property(nonatomic) tmat4x4_3074befe transform; // @synthesize transform=_transform;
+@property(nonatomic) struct RenderState renderState; // @synthesize renderState=_renderState;
+@property(retain, nonatomic) TSCH3DResource *texcoords; // @synthesize texcoords=_texcoords;
+@property(retain, nonatomic) TSCH3DResource *vertices; // @synthesize vertices=_vertices;
+@property(copy, nonatomic) NSArray *effects; // @synthesize effects=_effects;
 - (void)updateShaderEffectsStates;
 - (void)transformFramebuffer;
-- (void)dealloc;
 - (id)initWithProcessor:(id)arg1 session:(id)arg2;
 
 @end

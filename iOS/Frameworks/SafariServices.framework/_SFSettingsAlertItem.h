@@ -6,12 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSAttributedString, NSString, UIColor, UIImage, UIView;
+@class NSArray, NSAttributedString, NSString, UIColor, UIImage, UIImageView, UIView;
 @protocol SFSettingsAlertItemView;
 
 @interface _SFSettingsAlertItem : NSObject
 {
     _Bool _enabled;
+    UIView *_badgeView;
+    NSArray *_componentsArrangement;
+    UIImageView *_statusImageView;
     long long _type;
     NSString *_title;
     NSAttributedString *_attributedTitle;
@@ -32,6 +35,7 @@
 + (id)itemWithCustomView:(id)arg1;
 + (id)optionsGroupWithTitle:(id)arg1 controller:(id)arg2;
 + (id)stepperWithController:(id)arg1 handler:(CDUnknownBlockType)arg2;
++ (id)singleLineButtonWithTitle:(id)arg1 textStyle:(id)arg2 icon:(id)arg3 handler:(CDUnknownBlockType)arg4;
 + (id)buttonWithTitle:(id)arg1 textStyle:(id)arg2 icon:(id)arg3 handler:(CDUnknownBlockType)arg4;
 + (id)buttonWithAttributedTitle:(id)arg1 textStyle:(id)arg2 icon:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (void).cxx_destruct;
@@ -51,8 +55,12 @@
 @property(copy, nonatomic) NSAttributedString *attributedTitle; // @synthesize attributedTitle=_attributedTitle;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
+@property(retain, nonatomic) UIImageView *statusImageView; // @synthesize statusImageView=_statusImageView;
+@property(copy, nonatomic) NSArray *componentsArrangement; // @synthesize componentsArrangement=_componentsArrangement;
+@property(retain, nonatomic) UIView *badgeView; // @synthesize badgeView=_badgeView;
 - (void)_updateButtonTitle;
 - (void)updateOptionsGroupDetailLabel;
+- (void)_buttonCommonInitWithTextStyle:(id)arg1 icon:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)initWithType:(long long)arg1;
 
 @end

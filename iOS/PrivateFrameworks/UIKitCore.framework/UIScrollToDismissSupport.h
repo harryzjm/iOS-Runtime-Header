@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     UIInputViewSetNotificationInfo *_scrollViewNotificationInfo;
 }
 
+- (void)_updateKeyboardLayoutGuideForInteractiveScrollWithSize:(struct CGSize)arg1;
 - (void)scrollView:(id)arg1 didFinishPanGesture:(id)arg2;
 - (void)scrollView:(id)arg1 didPanWithGesture:(id)arg2;
 - (void)completeKeyboardDismiss:(unsigned long long)arg1 withDuration:(double)arg2;

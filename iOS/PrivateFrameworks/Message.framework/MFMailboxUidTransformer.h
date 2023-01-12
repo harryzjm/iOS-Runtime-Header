@@ -11,6 +11,7 @@
 }
 
 + (_Bool)isMailbox:(id)arg1 equalTo:(id)arg2 uidToMailboxMap:(id)arg3;
+- (id)_transformMailboxUid:(id)arg1 parent:(id)arg2 uidToMailboxMap:(id)arg3 objectIDToUidMap:(id)arg4;
 - (id)transformMailboxUid:(id)arg1 uidToMailboxMap:(id)arg2 objectIDToUidMap:(id)arg3;
 - (id)init;
 

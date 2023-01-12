@@ -21,8 +21,9 @@
 - (void).cxx_destruct;
 - (void)clearAllCachedImages;
 - (void)clearCachedImagesForRequestIDs:(id)arg1;
-- (void)cacheImage:(struct CGImage *)arg1 orientation:(unsigned int)arg2 forRequestID:(int)arg3;
-- (struct CGImage *)cachedImageWithOrientation:(unsigned int *)arg1 forAsset:(id)arg2 targetSize:(struct CGSize)arg3 contentMode:(long long)arg4 forRequestID:(int)arg5;
+- (void)_cacheImage:(struct CGImage *)arg1 orientation:(unsigned int)arg2 isDegraded:(_Bool)arg3 forRequestID:(int)arg4 outCGImage:(out struct CGImage **)arg5;
+- (struct CGImage *)cacheCGImage:(struct CGImage *)arg1 orientation:(unsigned int)arg2 isDegraded:(_Bool)arg3 forRequestID:(int)arg4;
+- (_Bool)getCachedImage:(struct CGImage **)arg1 withOrientation:(unsigned int *)arg2 outIsDegraded:(_Bool *)arg3 forAsset:(id)arg4 targetSize:(struct CGSize)arg5 contentMode:(long long)arg6 forRequestID:(int)arg7;
 - (id)debugDescription;
 - (id)description;
 - (id)init;

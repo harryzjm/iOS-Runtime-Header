@@ -26,6 +26,7 @@
 @property(retain, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property _Bool isInternal; // @synthesize isInternal=_isInternal;
 @property(readonly) _Bool isRunningNative;
+- (_Bool)isAppleSilicon;
 - (_Bool)isPlatform:(long long)arg1;
 @property(readonly) NSString *platformName;
 - (id)_init;

@@ -9,7 +9,7 @@
 #import <SchoolTime/NSXPCListenerDelegate-Protocol.h>
 #import <SchoolTime/SCLSchoolModeClientProxyDelegate-Protocol.h>
 
-@class NSMapTable, NSMutableSet, NSString, NSXPCListener, SCLSchoolModeManagerConfiguration, SCLSuppressSchoolModeAssertionManager, SCLTransportService;
+@class NSMapTable, NSMutableSet, NSString, NSXPCListener, SCLInterruptBehaviorResolver, SCLSchoolModeManagerConfiguration, SCLSuppressSchoolModeAssertionManager, SCLTransportService;
 @protocol OS_dispatch_queue;
 
 @interface SCLSchoolModeManager : NSObject <NSXPCListenerDelegate, SCLSchoolModeClientProxyDelegate>
@@ -20,6 +20,7 @@
     NSXPCListener *_listener;
     unsigned long long _stateHandle;
     SCLSuppressSchoolModeAssertionManager *_supppressionManager;
+    SCLInterruptBehaviorResolver *_interruptBehaviorResolver;
     NSObject<OS_dispatch_queue> *_queue;
     NSMapTable *_coordinatorMap;
 }
@@ -27,6 +28,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSMapTable *coordinatorMap; // @synthesize coordinatorMap=_coordinatorMap;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property(readonly, nonatomic) SCLInterruptBehaviorResolver *interruptBehaviorResolver; // @synthesize interruptBehaviorResolver=_interruptBehaviorResolver;
 @property(readonly, nonatomic) SCLSuppressSchoolModeAssertionManager *supppressionManager; // @synthesize supppressionManager=_supppressionManager;
 @property(nonatomic) unsigned long long stateHandle; // @synthesize stateHandle=_stateHandle;
 @property(readonly, nonatomic) NSXPCListener *listener; // @synthesize listener=_listener;

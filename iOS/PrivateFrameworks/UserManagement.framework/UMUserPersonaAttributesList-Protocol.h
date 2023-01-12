@@ -7,6 +7,8 @@
 @class NSArray;
 
 @protocol UMUserPersonaAttributesList
+- (unsigned long long)personaGenerationIdentifierWithError:(id *)arg1;
+- (NSArray *)listAllPersonaAttributesWithError:(id *)arg1;
 - (NSArray *)listAllPersonaWithAttributes;
 @end
 

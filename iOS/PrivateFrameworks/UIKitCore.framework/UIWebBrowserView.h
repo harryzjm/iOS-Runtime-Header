@@ -95,8 +95,8 @@
 - (double)heightToKeepVisible;
 - (double)minimumVerticalContentOffset;
 - (struct CGRect)rectOfInterestForRotation;
-- (void)updateBoundariesOfScrollView:(id)arg1 withScales:(CDStruct_39925896)arg2;
-- (CDStruct_39925896)scalesForContainerSize:(struct CGSize)arg1;
+- (void)updateBoundariesOfScrollView:(id)arg1 withScales:(CDStruct_cf303044)arg2;
+- (CDStruct_cf303044)scalesForContainerSize:(struct CGSize)arg1;
 @property(nonatomic) _Bool alwaysDispatchesScrollEvents;
 - (void)webView:(id)arg1 didFirstVisuallyNonEmptyLayoutInFrame:(id)arg2;
 - (id)_absoluteUrlRelativeToDocumentURL:(id)arg1;
@@ -184,6 +184,8 @@
 - (void)_keyboardDidChangeFrame:(id)arg1;
 - (void)_keyboardWillChangeFrame:(id)arg1;
 - (void)_setInputViewBoundsForAutomaticKeyboardInfo:(id)arg1 adjustScrollView:(_Bool)arg2;
+- (void)_stopRelinquishingFirstResponderToFocusedElement;
+- (void)_startRelinquishingFirstResponderToFocusedElement;
 - (void)_stopAssistingNode:(id)arg1;
 - (void)_startAssistingNode:(id)arg1;
 - (void)_stopAssistingKeyboard;

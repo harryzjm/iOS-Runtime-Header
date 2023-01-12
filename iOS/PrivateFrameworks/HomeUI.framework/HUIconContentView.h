@@ -43,6 +43,8 @@
 - (id)managedVisualEffectViews;
 - (_Bool)wantsManagedVibrancyEffect;
 - (_Bool)shouldFlipForRTL;
+- (void)renounceIconIfPossible;
+- (void)reclaimIconIfPossible;
 - (void)updateWithIconDescriptor:(id)arg1 displayStyle:(unsigned long long)arg2 animated:(_Bool)arg3;
 - (id)initWithFrame:(struct CGRect)arg1;
 

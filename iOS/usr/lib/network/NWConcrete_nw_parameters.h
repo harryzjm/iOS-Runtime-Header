@@ -9,17 +9,17 @@
 #import <network/OS_nw_parameters-Protocol.h>
 
 @class NSString, NWConcrete_nw_path_parameters, NWConcrete_nw_protocol_stack;
-@protocol OS_dispatch_data, OS_nw_array, OS_nw_endpoint, OS_xpc_object;
+@protocol OS_dispatch_data, OS_nw_array, OS_nw_endpoint, OS_nw_proxy_config, OS_xpc_object;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_parameters : NSObject <OS_nw_parameters>
 {
     struct {
         unsigned char parent_id[16];
-        struct {
-            unsigned int val[8];
-        } e_audit_token;
+        unsigned char listener_uuid[16];
+        CDStruct_4c969caf e_audit_token;
         unsigned long long expected_workload;
+        unsigned long long channel_teardown_delay;
         int data_mode;
         int ecn_mode;
         int service_class;
@@ -62,12 +62,13 @@ __attribute__((visibility("hidden")))
     char *e_bundle_id;
     char *proxy_bundle_id;
     NSObject<OS_xpc_object> *tls_session_id;
-    NSObject<OS_xpc_object> *proxy_configuration;
-    NSObject<OS_xpc_object> *effective_proxy_settings;
     NSObject<OS_xpc_object> *extra_parent_ids;
     NSObject<OS_dispatch_data> *initial_data_payload;
     NWConcrete_nw_protocol_stack *default_stack;
+    NSObject<OS_nw_array> *transforms;
     NSObject<OS_nw_array> *proxy_options;
+    NSObject<OS_nw_array> *custom_proxy_configs;
+    NSObject<OS_nw_proxy_config> *effective_proxy_config;
     NSObject<OS_nw_endpoint> *url_endpoint;
     NSObject<OS_xpc_object> *metadata;
 }

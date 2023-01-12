@@ -10,6 +10,14 @@
 
 @protocol _CPUsageSinceLookback <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(nonatomic) int numSearchEngagements;
+@property(nonatomic) int voiceSearchDays;
+@property(nonatomic) int webEngagedDays;
+@property(nonatomic) int suggestionOrAppleResultEngagedDays;
+@property(nonatomic) int searchedDays;
+@property(nonatomic) int zkwEngagedDays;
+@property(nonatomic) int invokedDays;
+@property(nonatomic) _Bool isDiagnosticsAndUsageEnabled;
 @property(nonatomic) int totalEngagements;
 @property(nonatomic) int activeDaysInCollectionPeriod;
 @property(nonatomic) int configuredLookbackTimeInDays;

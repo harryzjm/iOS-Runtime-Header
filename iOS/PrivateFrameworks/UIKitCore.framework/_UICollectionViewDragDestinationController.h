@@ -39,19 +39,13 @@ __attribute__((visibility("hidden")))
 - (_Bool)_shouldQueryDropActionForIndexPath:(id)arg1;
 - (id)_dragAndDropController;
 - (id)_effectiveDropProposalForProposal:(id)arg1;
-- (void)_updateDropProposalByQueryingClientIfNeeded:(id)arg1;
+- (void)_updateDropProposalByQueryingClientIfNeeded:(id)arg1 indicatorLayoutAttributes:(id)arg2;
 - (_Bool)_isMultiItemSource;
 - (_Bool)_shouldPerformMovementForProposal:(id)arg1;
 - (void)_commitCurrentInteractiveReordering;
 - (void)_cancelCurrentInteractiveReorder;
 - (void)_commitCurrentDragAndDropSession;
 - (void)_reorderingDisplayLinkDidTick;
-- (_Bool)_delegateImplementsSelector:(SEL)arg1;
-- (_Bool)_delegateImplementsTargetIndexPath;
-- (_Bool)_delegateImplementsDidExit;
-- (_Bool)_delegateImplementsDropActionForIndexPath;
-- (_Bool)_delegateImplementsPerformDropFromIndexPathsWithAction;
-- (_Bool)_delegateImplementsPerformDropFromIndexPathsWithCoordinator;
 - (_Bool)_isLocalInteractiveMove;
 - (void)_resumeReorderingDisplayLink;
 - (void)_pauseReorderingDisplayLink;
@@ -78,7 +72,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)hasPerformedReordering;
 - (void)dropWasCancelled;
 - (void)dragSourceSelectedItemCountDidChangeWithCount:(long long)arg1;
-- (_Bool)isInteractiveReorderingDisabled;
 @property(readonly, nonatomic) id <UIDropSession> currentDropSession;
 @property(readonly, nonatomic) UICollectionViewDropProposal *currentDropProposal;
 @property(readonly, nonatomic) NSIndexPath *currentIndexPath;

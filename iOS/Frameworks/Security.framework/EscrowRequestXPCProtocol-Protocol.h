@@ -9,6 +9,7 @@
 @class NSData, NSString;
 
 @protocol EscrowRequestXPCProtocol <NSObject>
+- (void)escrowCompletedWithinLastSeconds:(double)arg1 reply:(void (^)(_Bool, NSError *))arg2;
 - (void)storePrerecordsInEscrow:(void (^)(unsigned long long, NSError *))arg1;
 - (void)resetAllRequests:(void (^)(NSError *))arg1;
 - (void)fetchRequestStatuses:(void (^)(NSDictionary *, NSError *))arg1;

@@ -23,21 +23,8 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) SXTextTangierFlowLayout *flowLayout; // @synthesize flowLayout=_flowLayout;
-@property(retain, nonatomic) SXTextTangierTextLayout *layout; // @synthesize layout=_layout;
-@property(readonly, nonatomic) UIView<TSDRepDirectLayerHosting> *directLayerHost; // @synthesize directLayerHost=_directLayerHost;
-@property(readonly, nonatomic) _Bool selectable; // @synthesize selectable=_selectable;
-@property(readonly, nonatomic) NSString *componentIdentifier; // @synthesize componentIdentifier=_componentIdentifier;
-@property(readonly, nonatomic) struct _NSRange flowRange; // @synthesize flowRange=_flowRange;
-@property(readonly, nonatomic) SXTextTangierFlowStorage *flowStorage; // @synthesize flowStorage=_flowStorage;
-@property(retain, nonatomic) SXTextTangierStorage *storage; // @synthesize storage=_storage;
 - (id)description;
 - (id)debugDescription;
-- (id)flowLayoutWithICC:(id)arg1;
-@property(readonly, nonatomic) SXTextTangierFlowInfo *flowInfo; // @synthesize flowInfo=_flowInfo;
-- (void)appendToFlowStorage:(id)arg1;
-- (void)updateWithLayout:(id)arg1;
-- (id)initWithStorage:(id)arg1 layout:(id)arg2 directLayerHost:(id)arg3 selectable:(_Bool)arg4 componentIdentifier:(id)arg5;
 
 @end
 

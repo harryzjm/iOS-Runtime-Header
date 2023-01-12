@@ -14,6 +14,7 @@
 - (void)unlock;
 - (void)lockForWrite;
 - (void)lockForRead;
+- (id)mutableStrokeLayerWithContext:(id)arg1 subtractingDefaultsFrom:(id)arg2 forRange:(struct TSTSimpleRange)arg3;
 - (id)portalledStrokeLayer;
 - (void)enumerateStrokesAndCapsInRange:(struct TSTSimpleRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateStrokesAndCapsFrom:(unsigned int)arg1 to:(unsigned int)arg2 usingBlock:(CDUnknownBlockType)arg3;

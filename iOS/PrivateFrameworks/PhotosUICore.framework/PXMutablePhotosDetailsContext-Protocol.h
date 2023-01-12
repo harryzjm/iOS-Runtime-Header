@@ -6,9 +6,11 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class NSDictionary, NSString, PHFetchResult, PXPhotosDataSource, PXPhotosDetailsViewModel;
+@class NSDictionary, NSString, PHFetchResult, PXPhotosDataSource, PXPhotosDetailsViewModel, PXPhotosDetailsVisualLookupData;
 
 @protocol PXMutablePhotosDetailsContext <NSObject>
+@property(copy, nonatomic) CDUnknownBlockType unlockDeviceStatus;
+@property(copy, nonatomic) PXPhotosDetailsVisualLookupData *visualLookupData;
 @property(retain, nonatomic) PXPhotosDataSource *photosDataSource;
 @property(retain, nonatomic) PXPhotosDetailsViewModel *viewModel;
 @property(nonatomic) long long viewSourceOrigin;

@@ -6,11 +6,34 @@
 
 #import <ControlCenterUIKit/CCUICustomContentModuleBackgroundViewController.h>
 
+@class AXDispatchTimer, CCUILabeledRoundButtonViewController, NSMutableArray;
+@protocol HACCShortcutViewBackgroundDelegate;
+
 @interface HACCShortcutViewBackgroundController : CCUICustomContentModuleBackgroundViewController
 {
+    AXDispatchTimer *_noiseControlUpdateTimer;
+    id <HACCShortcutViewBackgroundDelegate> _delegate;
+    CCUILabeledRoundButtonViewController *_deviceToggleButtonController;
+    CCUILabeledRoundButtonViewController *_liveListenButtonController;
+    NSMutableArray *_controls;
+    NSMutableArray *_constraints;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *constraints; // @synthesize constraints=_constraints;
+@property(retain, nonatomic) NSMutableArray *controls; // @synthesize controls=_controls;
+@property(retain, nonatomic) CCUILabeledRoundButtonViewController *liveListenButtonController; // @synthesize liveListenButtonController=_liveListenButtonController;
+@property(retain, nonatomic) CCUILabeledRoundButtonViewController *deviceToggleButtonController; // @synthesize deviceToggleButtonController=_deviceToggleButtonController;
+@property(nonatomic) __weak id <HACCShortcutViewBackgroundDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)updateFooterLayout;
+- (double)footerHeight;
+- (void)comfortSoundsButtonTapped:(id)arg1;
+- (void)liveListenButtonTapped:(id)arg1;
+- (void)otherDeviceButtonTapped:(id)arg1;
+- (void)reset;
+- (void)update;
 - (_Bool)_canShowWhileLocked;
+- (id)init;
 
 @end
 

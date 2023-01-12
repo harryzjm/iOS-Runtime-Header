@@ -20,6 +20,7 @@
     double _resumeTimestamp;
     Class _protocolClass;
     _Bool _wasResumedFromURL;
+    _Bool _requestToDeferByDAS;
     DESRecipe *_recipe;
     DESRecordSet *_matchingRecordSet;
     NSObject<OS_xpc_object> *_activity;
@@ -41,6 +42,7 @@
 @property(readonly, copy, nonatomic) NSData *binaryResult; // @synthesize binaryResult=_binaryResult;
 @property(readonly, copy, nonatomic) NSDictionary *JSONResult; // @synthesize JSONResult=_JSONResult;
 @property(readonly, nonatomic) long long evaluationResult; // @synthesize evaluationResult=_evaluationResult;
+@property(nonatomic) _Bool requestToDeferByDAS; // @synthesize requestToDeferByDAS=_requestToDeferByDAS;
 @property(retain, nonatomic) NSObject<OS_xpc_object> *activity; // @synthesize activity=_activity;
 @property(readonly, nonatomic) DESRecordSet *matchingRecordSet; // @synthesize matchingRecordSet=_matchingRecordSet;
 @property(readonly, nonatomic) DESRecipe *recipe; // @synthesize recipe=_recipe;
@@ -49,13 +51,13 @@
 - (id)deferralURL;
 - (id)deferWithDeadline:(id)arg1 error:(id *)arg2;
 - (void)completeWithError:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)completeWithJSONResult:(id)arg1 binaryResult:(id)arg2 secureAggregationFloats:(const float *)arg3 count:(unsigned long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)completeWithJSONResult:(id)arg1 binaryResult:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_postResultsToServerIfNeededWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)sendRecipeResponseWithDuration:(double)arg1 evaluationError:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)downloadAttachmentsWithConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_initWithResumptionURL:(id)arg1 recordSet:(id)arg2 protocolClass:(Class)arg3 error:(id *)arg4;
 - (id)initWithResumptionURL:(id)arg1 error:(id *)arg2;
-- (id)_initWithRecipe:(id)arg1 matchingRecordSet:(id)arg2 baseURL:(id)arg3 localeIdentifier:(id)arg4;
+- (id)_initWithDodMLTask:(id)arg1;
 - (void)dealloc;
 
 @end

@@ -16,6 +16,7 @@
     long long _deviceUtcOffset;
     NSString *_deviceAppBundleId;
     NSString *_deviceAppVersion;
+    int _deviceDigestMode;
     NSString *_deviceOsVersion;
     NSMutableArray *_devicePreferredLanguages;
     NSString *_devicePushToken;
@@ -25,6 +26,7 @@
     struct {
         unsigned int deviceDstOffset:1;
         unsigned int deviceUtcOffset:1;
+        unsigned int deviceDigestMode:1;
         unsigned int deviceTokenEnv:1;
     } _has;
 }
@@ -48,6 +50,8 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasDeviceDigestMode;
+@property(nonatomic) int deviceDigestMode; // @synthesize deviceDigestMode=_deviceDigestMode;
 @property(readonly, nonatomic) _Bool hasDeviceAppBundleId;
 @property(readonly, nonatomic) _Bool hasDeviceAppVersion;
 @property(nonatomic) _Bool hasDeviceDstOffset;

@@ -7,7 +7,7 @@
 #import <Foundation/NSNull.h>
 
 @interface NSNull (TSCHArchivingUtilities)
-- (void)tsch_saveToProtobufString:(basic_string_7c0a1c0b *)arg1;
-- (void)tsch_saveToArchive:(struct ChartsNSNumberDoubleArchive *)arg1 archiver:(id)arg2;
+- (void)tsch_saveToProtobufString:(void *)arg1;
+- (void)tsch_saveToArchive:(void *)arg1 archiver:(id)arg2;
 @end
 

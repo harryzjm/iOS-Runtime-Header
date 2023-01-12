@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSCountedSet, NSDictionary, NSHashTable, NSMutableDictionary, PLClientServerTransaction, PLPhotoLibrary, PLPhotoLibraryPathManager, PLSearchIndexDateFormatter, PLSearchMetadataStore, PLThrottleTimer, PLZeroKeywordStore, PSIDatabase;
-@protocol OS_dispatch_queue, PLSearchIndexManagerSceneTaxonomyProxy;
+@class NSCountedSet, NSDictionary, NSHashTable, NSMutableDictionary, PLClientServerTransaction, PLPhotoLibrary, PLPhotoLibraryPathManager, PLSearchIndexDateFormatter, PLSearchIndexSceneTaxonomy, PLSearchMetadataStore, PLSpotlightDonationManager, PLThrottleTimer, PLZeroKeywordStore, PSIDatabase;
+@protocol OS_dispatch_queue, PLSearchIndexManagerDatabaseConnectionDelegate;
 
 @interface PLSearchIndexManager : NSObject
 {
@@ -19,8 +19,7 @@
     PLSearchMetadataStore *_searchMetadataStore;
     PLThrottleTimer *_throttleTimer;
     PLClientServerTransaction *_serverTransaction;
-    Class _sceneTaxonomyProxyClass;
-    id <PLSearchIndexManagerSceneTaxonomyProxy> _sceneTaxonomyProxy;
+    PLSearchIndexSceneTaxonomy *_sceneTaxonomy;
     NSDictionary *_searchSystemInfo;
     NSObject<OS_dispatch_queue> *_queue;
     NSDictionary *_inqUUIDsToProcess;
@@ -43,6 +42,9 @@
     _Bool __indexing;
     CDUnknownBlockType __inqAfterIndexingDidIterate;
     NSCountedSet *__pauseReasons;
+    PLSpotlightDonationManager *_spotlightDonationManager;
+    long long _lastKnownSearchIndexVersion;
+    id <PLSearchIndexManagerDatabaseConnectionDelegate> _databaseConnectionDelegate;
 }
 
 + (void)setShouldIndexFilenames:(_Bool)arg1;
@@ -61,17 +63,21 @@
 + (id)fetchAlbumsWithUUIDs:(id)arg1 managedObjectContext:(id)arg2 error:(id *)arg3;
 + (id)fetchAssetsWithUUIDs:(id)arg1 managedObjectContext:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
+@property __weak id <PLSearchIndexManagerDatabaseConnectionDelegate> databaseConnectionDelegate; // @synthesize databaseConnectionDelegate=_databaseConnectionDelegate;
+@property(nonatomic) long long lastKnownSearchIndexVersion; // @synthesize lastKnownSearchIndexVersion=_lastKnownSearchIndexVersion;
+@property(readonly, nonatomic) PLSpotlightDonationManager *spotlightDonationManager; // @synthesize spotlightDonationManager=_spotlightDonationManager;
 @property(readonly, copy, nonatomic) NSCountedSet *_pauseReasons; // @synthesize _pauseReasons=__pauseReasons;
 @property(copy, nonatomic, setter=_setInqAfterIndexingDidIterate:) CDUnknownBlockType _inqAfterIndexingDidIterate; // @synthesize _inqAfterIndexingDidIterate=__inqAfterIndexingDidIterate;
 @property(getter=_isIndexing, setter=_setIndexing:) _Bool _indexing; // @synthesize _indexing=__indexing;
+@property(readonly) PSIDatabase *database;
 - (id)searchIndexManagerLog;
-- (id)_featuredPeopleIdentifiersFromPhotosGraphData:(id)arg1 photosGraphVersion:(long long)arg2;
+- (id)_featuredPersonLocalIdentifiersFromPhotosGraphData:(id)arg1 photosGraphVersion:(long long)arg2;
 - (void)_fetchMemoriesToIndexWithUUIDs:(id)arg1 managedObjectContext:(id)arg2 result:(CDUnknownBlockType)arg3;
 - (id)_inqKeywordsByCategoryMaskByAssetUUIDFromAssetUUIDsBySocialGroup:(id)arg1;
 - (id)_inqKeywordsByCategoryMaskByAssetUUIDFromAssetSearchKeywords:(id)arg1;
 - (id)_inqKeywordsByCategoryMaskByAssetUUIDFromAssetSearchKeywords:(id)arg1 andAssetUUIDsBySocialGroup:(id)arg2;
 - (void)_inqResumeIndexingIfNeeded;
-- (void)_inqValidateSearchIndex;
+- (void)_inqValidateSearchIndexWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)_collectionUUIDsToRemoveFromUUIDsToProcess:(id)arg1;
 - (id)_assetUUIDsToRemoveFromUUIDsToProcess:(id)arg1;
 - (long long)_inqRebuildReasonIfSearchSupportingDataIsValid;
@@ -81,7 +87,9 @@
 - (void)_inqEnsureSceneTaxonomyProxyExists;
 - (void)_inqIndexPhotoLibrary;
 - (void)_inqEnsureSearchProgressExists;
+- (void)_inqUpdateUUIDsToProcessWithSpotlightProgress;
 - (void)_inqEnsureSearchSystemInfoExists;
+- (void)_inqEnsureSpotlightDonationManagerExists;
 - (void)_inqEnsureSearchIndexExists;
 - (void)_inqCloseIndexIfAbleOrForce:(_Bool)arg1 isDelete:(_Bool)arg2;
 - (void)_inqDropClientServerTransactionIfNeeded;
@@ -124,6 +132,7 @@
 - (_Bool)_inqUpdateWordEmbeddingVersion:(id)arg1;
 - (_Bool)_inqUpdateSceneTaxonomySHA:(id)arg1;
 - (_Bool)_inqUpdateLocale;
+- (long long)_inqSpotlightRequestedRebuild;
 - (_Bool)_inqUpdateVersion;
 - (_Bool)_inqUpdateSearchSystemInfo:(id)arg1 forKey:(id)arg2 logMessage:(id)arg3;
 - (_Bool)_onQueueAsyncWithDelay:(double)arg1 perform:(CDUnknownBlockType)arg2;
@@ -131,7 +140,10 @@
 - (_Bool)_onQueueSync:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)initWithPathManager:(id)arg1;
-@property(retain, nonatomic) Class sceneTaxonomyProxyClass;
+- (_Bool)_shouldForceSpotlightReindexForCurrentBundleIdentifier;
+- (id)_domainIdentifier;
+- (id)_searchIndexName;
+- (id)_bundleIdentifier;
 - (id)defaultSearchMetadataStorePath;
 - (id)defaultDatabasePath;
 - (id)_defaultDatabaseDirectory;

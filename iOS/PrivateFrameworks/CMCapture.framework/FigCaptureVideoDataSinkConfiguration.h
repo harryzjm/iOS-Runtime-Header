@@ -8,8 +8,10 @@
 {
     _Bool _discardsLateVideoFrames;
     _Bool _derivedFromPreview;
+    _Bool _sceneStabilityMetadataEnabled;
 }
 
+@property(nonatomic) _Bool sceneStabilityMetadataEnabled; // @synthesize sceneStabilityMetadataEnabled=_sceneStabilityMetadataEnabled;
 @property(nonatomic) _Bool derivedFromPreview; // @synthesize derivedFromPreview=_derivedFromPreview;
 @property(nonatomic) _Bool discardsLateVideoFrames; // @synthesize discardsLateVideoFrames=_discardsLateVideoFrames;
 - (int)sinkType;

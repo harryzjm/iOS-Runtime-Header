@@ -10,6 +10,8 @@
 
 @protocol SOExtensionDelegate <NSObject>
 - (void)authorizationDidCompleteWithCredential:(SOAuthorizationCredential *)arg1 error:(NSError *)arg2;
+
+@optional
 - (void)presentAuthorizationViewControllerWithHints:(NSDictionary *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 @end
 

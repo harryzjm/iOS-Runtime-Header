@@ -16,15 +16,18 @@ __attribute__((visibility("hidden")))
     long long _type;
     NSString *_extraPreviewText;
     NSURL *_url;
+    NSString *_preferredBundleID;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *preferredBundleID; // @synthesize preferredBundleID=_preferredBundleID;
 @property(readonly, nonatomic) NSURL *url; // @synthesize url=_url;
 @property(readonly, copy, nonatomic) NSString *extraPreviewText; // @synthesize extraPreviewText=_extraPreviewText;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithURL:(id)arg1 type:(long long)arg2 extraPreviewText:(id)arg3 preferredBundleID:(id)arg4;
 - (id)initWithURL:(id)arg1 type:(long long)arg2 extraPreviewText:(id)arg3;
 - (id)initWithURL:(id)arg1 type:(long long)arg2;
 - (id)initWithURL:(id)arg1;

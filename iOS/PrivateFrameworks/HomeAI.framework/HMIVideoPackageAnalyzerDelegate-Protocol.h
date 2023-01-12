@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMIVideoPackageAnalyzer, NSError;
+@class HMIVideoPackageAnalyzer, HMIVideoPackageAnalyzerResult, NSError;
 
 @protocol HMIVideoPackageAnalyzerDelegate
 
 @optional
-- (void)packageAnalyzer:(HMIVideoPackageAnalyzer *)arg1 didDetectPackage:(id)arg2 error:(NSError *)arg3;
+- (void)packageAnalyzer:(HMIVideoPackageAnalyzer *)arg1 didDetectPackagesWithResult:(HMIVideoPackageAnalyzerResult *)arg2 error:(NSError *)arg3;
 @end
 

@@ -35,7 +35,6 @@
 - (unsigned long long)resolvedNetworkServiceTypeForConfig:(id)arg1;
 @property(readonly, nonatomic) long long approximateReceiveBytes;
 @property(readonly, nonatomic) long long approximateSendBytes;
-- (long long)_approximateBytesForTransferSize:(long long)arg1;
 @property(copy) CKOperationConfiguration *defaultConfiguration; // @synthesize defaultConfiguration=_defaultConfiguration;
 @property long long expectedReceiveSize; // @synthesize expectedReceiveSize=_expectedReceiveSize;
 @property long long expectedSendSize; // @synthesize expectedSendSize=_expectedSendSize;

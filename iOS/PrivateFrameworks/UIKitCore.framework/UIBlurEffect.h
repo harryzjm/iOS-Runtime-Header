@@ -21,7 +21,6 @@
 + (id)_effectWithStyle:(long long)arg1 invertAutomaticStyle:(_Bool)arg2;
 + (id)_effectWithTintColor:(id)arg1;
 + (id)effectWithStyle:(long long)arg1;
-+ (id)_coreUIImplementationForStyle:(long long)arg1;
 - (void).cxx_destruct;
 - (id)effectSettings;
 - (id)description;

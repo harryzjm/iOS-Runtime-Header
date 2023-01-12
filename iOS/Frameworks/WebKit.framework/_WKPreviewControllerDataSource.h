@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<ARQuickLookWebKitItem> _item;
     struct URL _originatingPageURL;
     struct URL _downloadedURL;
-    struct SystemPreviewController *_previewController;
+    void *_previewController;
     CDUnknownBlockType _completionHandler;
     NSString *_mimeType;
 }
@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (id)previewController:(id)arg1 previewItemAtIndex:(long long)arg2;
 - (long long)numberOfPreviewItemsInPreviewController:(id)arg1;
 - (void)dealloc;
-- (id)initWithSystemPreviewController:(struct SystemPreviewController *)arg1 MIMEType:(id)arg2 originatingPageURL:(struct URL)arg3;
+- (id)initWithSystemPreviewController:(void *)arg1 MIMEType:(id)arg2 originatingPageURL:(struct URL)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

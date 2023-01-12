@@ -19,7 +19,7 @@
     HAPMetadata *_hapMetadata;
     NSSet *_hmRequiresDeviceUnlockTuples;
     NSDictionary *_hmAllowableSecuringWrites;
-    NSDictionary *_hmPowerOnWriteFilter;
+    NSDictionary *_hmWakeOnOperationsFilter;
     NSDictionary *_hmAccessoryCategories;
     NSSet *_hmBlacklistedServices;
     NSSet *_hmBlacklistedCharacteristics;
@@ -39,6 +39,7 @@
 + (void)resetShouldUploadToCloudAfterHomedReady;
 + (_Bool)shouldUploadToCloudAfterHomedReady;
 + (void)prepareMetadata;
++ (_Bool)doesWriteRequiresOwnerPrivilegeForCharacteristicType:(id)arg1;
 + (id)dataFromMetadataDictionaryWithKey:(id)arg1;
 + (id)legacyV3DataForCloud;
 + (id)legacyV3DataForIDS;
@@ -62,7 +63,7 @@
 @property(retain, nonatomic) NSSet *hmBlacklistedCharacteristics; // @synthesize hmBlacklistedCharacteristics=_hmBlacklistedCharacteristics;
 @property(retain, nonatomic) NSSet *hmBlacklistedServices; // @synthesize hmBlacklistedServices=_hmBlacklistedServices;
 @property(retain, nonatomic) NSDictionary *hmAccessoryCategories; // @synthesize hmAccessoryCategories=_hmAccessoryCategories;
-@property(retain, nonatomic) NSDictionary *hmPowerOnWriteFilter; // @synthesize hmPowerOnWriteFilter=_hmPowerOnWriteFilter;
+@property(retain, nonatomic) NSDictionary *hmWakeOnOperationsFilter; // @synthesize hmWakeOnOperationsFilter=_hmWakeOnOperationsFilter;
 @property(retain, nonatomic) NSDictionary *hmAllowableSecuringWrites; // @synthesize hmAllowableSecuringWrites=_hmAllowableSecuringWrites;
 @property(retain, nonatomic) NSSet *hmRequiresDeviceUnlockTuples; // @synthesize hmRequiresDeviceUnlockTuples=_hmRequiresDeviceUnlockTuples;
 @property(retain, nonatomic) HAPMetadata *hapMetadata; // @synthesize hapMetadata=_hapMetadata;
@@ -81,7 +82,7 @@
 - (id)parseCharacteristicArray:(id)arg1;
 - (id)parseServiceArray:(id)arg1;
 - (void)parseAndSetHMCategories:(id)arg1;
-- (void)parseAndSetPowerOnWriteFilter:(id)arg1;
+- (void)parseAndSetWakeOnOperationsFilter:(id)arg1;
 - (void)parseAndSetAllowableSecuringWrites:(id)arg1;
 - (id)parseMetadataTupleSetFromPlist:(id)arg1;
 - (_Bool)parseAndSetAssistantMetadataWithAssistantPlist:(id)arg1;
@@ -129,7 +130,7 @@
 - (_Bool)isTargetCharacteristic:(id)arg1;
 - (_Bool)requiresTimedWrite:(id)arg1 forService:(id)arg2;
 - (_Bool)requiresDeviceUnlock:(id)arg1 forService:(id)arg2;
-- (_Bool)shouldAllowWriteToWakeSuspendedAccessoryForService:(id)arg1 characteristicType:(id)arg2 value:(id)arg3;
+- (_Bool)shouldAllowToWakeSuspendedAccessoryForOperation:(long long)arg1 service:(id)arg2 characteristicType:(id)arg3 value:(id)arg4;
 - (_Bool)allowsSecuringWriteFor:(id)arg1 withValue:(id)arg2;
 - (id)descriptionForCharacteristicType:(id)arg1;
 - (id)descriptionForServiceType:(id)arg1;

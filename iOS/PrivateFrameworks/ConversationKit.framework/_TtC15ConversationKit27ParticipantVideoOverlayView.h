@@ -13,6 +13,7 @@
     MISSING_TYPE *visualEffectView;
     MISSING_TYPE *imageView;
     MISSING_TYPE *monogramView;
+    MISSING_TYPE *spinnerView;
 }
 
 - (void).cxx_destruct;

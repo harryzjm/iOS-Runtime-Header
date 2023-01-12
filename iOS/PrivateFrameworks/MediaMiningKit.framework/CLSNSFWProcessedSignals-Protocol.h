@@ -6,6 +6,7 @@
 
 @protocol CLSNSFWProcessedSignals
 @property(nonatomic) _Bool isNSFWExplicit;
+@property(nonatomic) _Bool isPreciselyNSFWExplicit;
 @property(nonatomic) _Bool isRecallinglyNSFWExplicit;
 @end
 

@@ -4,16 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PencilKit/UIContextMenuInteractionDelegate-Protocol.h>
 #import <PencilKit/UIDragInteractionDelegate_Private-Protocol.h>
 #import <PencilKit/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSString, UIDragInteraction, UIDragPreview, UILongPressGestureRecognizer, UITapGestureRecognizer;
+@class NSString, UIContextMenuInteraction, UIDragInteraction, UIDragPreview, UILongPressGestureRecognizer, UITapGestureRecognizer;
 
-@interface PKSelectionView <UIDragInteractionDelegate_Private, UIGestureRecognizerDelegate>
+@interface PKSelectionView <UIDragInteractionDelegate_Private, UIGestureRecognizerDelegate, UIContextMenuInteractionDelegate>
 {
     UIDragPreview *_previewProvider;
     struct CGRect _originalStrokeFrame;
     struct CGPoint _initialDragPosition;
+    struct CGPoint _currentScrollOffset;
     double _initialRotation;
     double _rotation;
     double _scale;
@@ -22,6 +24,7 @@
     double _startScale;
     _Bool _hasTranscription;
     _Bool _menuVisible;
+    _Bool _displayingContextMenu;
     CDUnknownBlockType _finishDragToAttachmentBlock;
     _Bool _isDragging;
     _Bool _wantsDragPlatter;
@@ -29,6 +32,7 @@
     UITapGestureRecognizer *_editMenuGR;
     UITapGestureRecognizer *_doubleTapGR;
     UIDragInteraction *_dragInteraction;
+    UIContextMenuInteraction *_contextMenuInteraction;
     long long _selectionType;
     struct CGPoint _offsetInTouchView;
     struct CGAffineTransform _selectionDrawingTransform;
@@ -38,6 +42,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) struct CGAffineTransform userTransform; // @synthesize userTransform=_userTransform;
 @property(nonatomic) long long selectionType; // @synthesize selectionType=_selectionType;
+@property(readonly, nonatomic) UIContextMenuInteraction *contextMenuInteraction; // @synthesize contextMenuInteraction=_contextMenuInteraction;
 @property(readonly, nonatomic) UIDragInteraction *dragInteraction; // @synthesize dragInteraction=_dragInteraction;
 @property(readonly, nonatomic) UITapGestureRecognizer *doubleTapGR; // @synthesize doubleTapGR=_doubleTapGR;
 @property(readonly, nonatomic) UITapGestureRecognizer *editMenuGR; // @synthesize editMenuGR=_editMenuGR;
@@ -49,7 +54,14 @@
 - (id)_accessibilityUserTestingChildren;
 - (void)_findTranscriptionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_didAddNewAttachment;
+- (id)_currentAttachment;
 - (void)didDoubleTap;
+- (_Bool)_exactlyOneExternalElementSelected;
+- (void)contextMenuInteraction:(id)arg1 willEndForConfiguration:(id)arg2 animator:(id)arg3;
+- (void)contextMenuInteraction:(id)arg1 willDisplayMenuForConfiguration:(id)arg2 animator:(id)arg3;
+- (void)contextMenuInteraction:(id)arg1 willPerformPreviewActionForMenuWithConfiguration:(id)arg2 animator:(id)arg3;
+- (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
+- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (void)didBeginDraggingSelection;
 - (void)updateLocationForDrop:(struct CGPoint)arg1;
 - (long long)_dragInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
@@ -62,6 +74,7 @@
 - (void)rotateSelection:(id)arg1;
 - (void)scaleSelection:(id)arg1;
 - (void)_cleanupDragState;
+- (void)_resetDragState;
 - (void)_commitDragToAttachment;
 - (void)didEndGestureWithTranslation:(struct CGPoint)arg1 transform:(struct CGAffineTransform)arg2;
 - (void)dragSelection:(id)arg1;
@@ -73,6 +86,7 @@
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)insertSpace:(id)arg1;
 - (struct CGPoint)_insertSpacePositionForMenuController:(id)arg1;
+- (void)translate:(id)arg1;
 - (void)copyTranscription:(id)arg1;
 - (void)duplicate:(id)arg1;
 - (void)paste:(id)arg1;

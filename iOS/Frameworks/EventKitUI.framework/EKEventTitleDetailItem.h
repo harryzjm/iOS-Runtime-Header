@@ -16,7 +16,8 @@ __attribute__((visibility("hidden")))
     UIColor *_color;
     _Bool _showDot;
     _Bool _cellNeedsUpdate;
-    _Bool _hidesSeparator;
+    _Bool _hidesTopSeparator;
+    _Bool _hidesBottomSeparator;
     _Bool _hasMapItemLaunchOptionFromTimeToLeaveNotification;
     NSDate *_proposedTime;
     NSObject<EKEventTitleDetailItemDelegate> *_editDelegate;
@@ -28,7 +29,11 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool hasMapItemLaunchOptionFromTimeToLeaveNotification; // @synthesize hasMapItemLaunchOptionFromTimeToLeaveNotification=_hasMapItemLaunchOptionFromTimeToLeaveNotification;
 @property(nonatomic) __weak NSObject<EKEventTitleDetailItemDelegate> *editDelegate; // @synthesize editDelegate=_editDelegate;
 @property(retain, nonatomic) NSDate *proposedTime; // @synthesize proposedTime=_proposedTime;
-@property(nonatomic) _Bool hidesSeparator; // @synthesize hidesSeparator=_hidesSeparator;
+@property(nonatomic) _Bool hidesBottomSeparator; // @synthesize hidesBottomSeparator=_hidesBottomSeparator;
+@property(nonatomic) _Bool hidesTopSeparator; // @synthesize hidesTopSeparator=_hidesTopSeparator;
+- (void)conferenceInformationUpdated;
+- (_Bool)showsDetectedConferenceItem;
+- (id)owningViewController;
 @property(readonly, nonatomic) UIView *sourceViewForPopover;
 - (_Bool)minimalMode;
 - (void)predictionWasActedOn;
@@ -36,7 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)editButtonPressed;
 - (void)refreshCopiedEvents;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
-- (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
+- (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2 forceUpdate:(_Bool)arg3;
 - (double)titleHeight;
 - (void)_updateCellIfNeededForWidth:(double)arg1;
 - (void)setCellPosition:(int)arg1;

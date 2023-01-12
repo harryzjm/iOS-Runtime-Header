@@ -16,6 +16,7 @@
 + (id)privateCreateArray:(id)arg1 owningSession:(id)arg2;
 - (id)initWithPortType:(id)arg1 owningSession:(id)arg2;
 - (void)configureChannelsAndDataSources:(id)arg1;
+- (void)setSupportsSpatialAudio:(_Bool)arg1;
 - (id)initWithRawPortDescription:(id)arg1 owningSession:(id)arg2;
 - (id)privateGetID;
 - (struct PortDescriptionImpl *)privateGetImplementation;
@@ -25,8 +26,10 @@
 @property(readonly, nonatomic) AVAudioSessionDataSourceDescription *preferredDataSource;
 @property(readonly, nonatomic) AVAudioSessionDataSourceDescription *selectedDataSource;
 - (unsigned long long)endpointType;
+- (_Bool)isLowLatencyAirPlay;
 - (_Bool)isHeadphones;
 - (_Bool)isLiveListenSupported;
+@property(readonly, getter=isSpatialAudioEnabled) _Bool spatialAudioEnabled;
 @property(readonly) _Bool hasHardwareVoiceCallProcessing;
 @property(readonly, nonatomic) NSArray *dataSources;
 @property(readonly, nonatomic) NSArray *channels;

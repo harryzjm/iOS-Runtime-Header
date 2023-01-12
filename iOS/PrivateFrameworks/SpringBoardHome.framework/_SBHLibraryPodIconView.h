@@ -8,6 +8,8 @@
 {
 }
 
++ (_Bool)supportsCursorInteraction;
++ (_Bool)supportsPreviewInteraction;
 + (_Bool)supportsTapGesture;
 
 @end

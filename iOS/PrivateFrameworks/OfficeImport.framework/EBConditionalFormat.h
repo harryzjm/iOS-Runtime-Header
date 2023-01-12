@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (void)readXlConditionalFormat:(struct XlConditionalFormat *)arg1 toEDConditionalFormatting:(id)arg2 state:(id)arg3;
++ (void)readXlConditionalFormat:(void *)arg1 toEDConditionalFormatting:(id)arg2 state:(id)arg3;
 + (int)convertEDConditionalFmtOperatorEnumToXl:(int)arg1;
 + (int)convertXlConditionalFmtOperatorEnumToED:(int)arg1;
 + (int)convertXlConditionalFmtTypeEnumToED:(int)arg1;

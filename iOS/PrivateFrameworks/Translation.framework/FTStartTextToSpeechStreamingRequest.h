@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_acd6b661)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_acd6b661)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) FTTextToSpeechUserProfile *profile;
 @property(readonly, nonatomic) FTTextToSpeechRequestDebug *debug;
 @property(readonly, nonatomic) FTTTSRequestFeatureFlags *feature_flags;

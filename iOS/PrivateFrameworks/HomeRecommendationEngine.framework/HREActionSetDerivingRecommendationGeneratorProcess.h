@@ -13,10 +13,9 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *sourceCharacteristics; // @synthesize sourceCharacteristics=_sourceCharacteristics;
-- (id)_createRecommendationWithActionSet:(id)arg1;
-- (id)_recommendationForActionSet:(id)arg1 inHome:(id)arg2;
+- (id)_createRecommendationWithActionSet:(id)arg1 trigger:(id)arg2;
+- (id)_recommendationForActionSet:(id)arg1 trigger:(id)arg2;
 - (id)generateRecommendations;
-- (_Bool)shouldGenerateRecommendations;
 
 @end
 

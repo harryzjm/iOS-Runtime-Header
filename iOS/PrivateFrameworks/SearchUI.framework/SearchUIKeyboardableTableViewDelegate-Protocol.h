@@ -6,12 +6,15 @@
 
 #import <SearchUI/NSObject-Protocol.h>
 
-@class UITableViewCell;
+@class SFCardSection, SFSearchResult, UIView;
 
 @protocol SearchUIKeyboardableTableViewDelegate <NSObject>
 @property(nonatomic) _Bool shouldMonitorScrollingPastBottomOfContent;
 - (void)didScrollPastBottomOfContent;
-- (void)didFocusOnCell:(UITableViewCell *)arg1;
+- (void)didFocusOnCell:(UIView *)arg1;
 - (void)didBeginScrolling;
+
+@optional
+- (void)didUpdateKeyboardFocusToResult:(SFSearchResult *)arg1 cardSection:(SFCardSection *)arg2;
 @end
 

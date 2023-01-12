@@ -14,7 +14,7 @@
 @interface CKVoiceController : NSObject <AVVoiceControllerRecordDelegate>
 {
     id <CKVoiceControllerDelegate> _delegate;
-    long long __activationMode;
+    long long _activationMode;
     NSDictionary *_recordSettings;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_source> *_powerUpdateTimer;
@@ -28,7 +28,7 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_source> *powerUpdateTimer; // @synthesize powerUpdateTimer=_powerUpdateTimer;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(copy, nonatomic) NSDictionary *recordSettings; // @synthesize recordSettings=_recordSettings;
-@property(nonatomic, setter=_setActivationMode:) long long _activationMode; // @synthesize _activationMode=__activationMode;
+@property(nonatomic) long long activationMode; // @synthesize activationMode=_activationMode;
 @property(nonatomic) __weak id <CKVoiceControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)messageSent:(id)arg1;
 - (void)stopUpdatingPower;
@@ -42,7 +42,6 @@
 - (void)playAlertSoundForType:(int)arg1;
 - (void)stop;
 - (void)record;
-- (void)setActivationMode:(long long)arg1;
 - (id)initWithActivationMode:(long long)arg1 recordSettings:(id)arg2 queue:(id)arg3;
 - (void)cleanup;
 - (void)dealloc;

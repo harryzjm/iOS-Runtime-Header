@@ -19,36 +19,41 @@
     AXDispatchTimer *_refreshDispatchTimer;
     int _notifyToken;
     _Bool _userInitiated;
+    _Bool _shouldRefreshForAssetInstallNotifications;
     AXAssetPolicy *_assetPolicy;
     NSObject<OS_dispatch_queue> *_mobileAssetQueue;
 }
 
++ (id)assetControllerWithPolicy:(id)arg1 qosClass:(unsigned int)arg2 shouldRefreshForAssetInstallNotifications:(_Bool)arg3;
 + (id)assetControllerWithPolicy:(id)arg1 qosClass:(unsigned int)arg2;
 + (id)assetControllerWithPolicy:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldRefreshForAssetInstallNotifications; // @synthesize shouldRefreshForAssetInstallNotifications=_shouldRefreshForAssetInstallNotifications;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *mobileAssetQueue; // @synthesize mobileAssetQueue=_mobileAssetQueue;
 @property(nonatomic) _Bool userInitiated; // @synthesize userInitiated=_userInitiated;
 @property(readonly, nonatomic) AXAssetPolicy *assetPolicy; // @synthesize assetPolicy=_assetPolicy;
 - (void)_queue_updateDownloadPriorityIfNecessary;
-- (void)_queue_purgeAssets:(id)arg1;
+- (void)_queue_purgeAssets:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_queue_downloadAssets:(id)arg1 successStartBlock:(CDUnknownBlockType)arg2;
 - (void)_updateCatalogWithOverrideTimeout:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_queue_refreshAssets:(_Bool)arg1;
+- (void)_queue_refreshAssets:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_handleAssetDownloadCompletion:(id)arg1 downloadResult:(long long)arg2;
 - (void)_handleAssetProgressUpdate:(id)arg1 progressNotification:(id)arg2;
 - (void)_handleAssetDownloadStarted:(id)arg1;
 - (void)removeInProgressAsset:(id)arg1;
 - (void)addInProgressAsset:(id)arg1;
-- (void)replaceCachedAssetsWithAssets:(id)arg1 error:(id)arg2;
+- (void)_replaceCachedAssetsWithAssets:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)performBlockOnAssetObservers:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) _Bool hasInProgressDownloads;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (void)getCachedDownloadedAssets:(CDUnknownBlockType)arg1;
 - (void)getCachedAvailableAssets:(CDUnknownBlockType)arg1;
+- (void)purgeAssets:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)purgeAssets:(id)arg1;
 - (void)downloadAssets:(id)arg1 successStartBlock:(CDUnknownBlockType)arg2;
-- (void)_refreshQueue_refreshAssets:(_Bool)arg1;
+- (void)_refreshQueue_refreshAssets:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)refreshAssetsByForceUpdatingCatalog:(_Bool)arg1 updatingCatalogIfNeeded:(_Bool)arg2 catalogRefreshOverrideTimeout:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)refreshAssetsByForceUpdatingCatalog:(_Bool)arg1 updatingCatalogIfNeeded:(_Bool)arg2 catalogRefreshOverrideTimeout:(id)arg3;
 - (void)refreshAssetsByForceUpdatingCatalog:(_Bool)arg1 updatingCatalogIfNeeded:(_Bool)arg2;
 - (id)description;
@@ -56,9 +61,10 @@
 - (void)logDebug:(id)arg1;
 - (void)logInfo:(id)arg1;
 - (void)performWithinLock:(CDUnknownBlockType)arg1;
+- (void)dealloc;
 - (void)deregisterForNotifications;
 - (void)registerForNotifications;
-- (id)_initWithAssetPolicy:(id)arg1 qosClass:(unsigned int)arg2;
+- (id)_initWithAssetPolicy:(id)arg1 qosClass:(unsigned int)arg2 shouldRefreshForAssetInstallNotifications:(_Bool)arg3;
 
 @end
 

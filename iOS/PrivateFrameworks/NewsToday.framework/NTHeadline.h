@@ -10,7 +10,7 @@
 #import <NewsToday/NTFeedTransformationItem-Protocol.h>
 #import <NewsToday/NTHeadlineProviding-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, NSArray, NSDate, NSString, NSURL, NTHeadlinePersonalizationMetadata, NTPBFeedItem, NTPBHeadlineAdElement, NTPBHeadlineAnalyticsElement, NTPBHeadlineBackingElement, SFSearchResult;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLLIVERPOOLTagMetadata, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, NSArray, NSDate, NSString, NSURL, NTHeadlinePersonalizationMetadata, NTPBFeedItem, NTPBHeadlineAdElement, NTPBHeadlineAnalyticsElement, NTPBHeadlineBackingElement, SFSearchResult;
 @protocol FCChannelProviding, FCFeedTransformationItem;
 
 @interface NTHeadline : NSObject <NTFeedTransformationItem, FCFeedTransformationItem, NTHeadlineProviding>
@@ -19,6 +19,7 @@
     _Bool _needsSeenStateTracking;
     _Bool _supportsSavingForLater;
     _Bool _hiddenFromAutoFavorites;
+    _Bool _isBundlePaid;
     NSString *_title;
     NSString *_titleCompact;
     NSString *_shortExcerpt;
@@ -52,6 +53,7 @@
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(nonatomic) _Bool isBundlePaid; // @synthesize isBundlePaid=_isBundlePaid;
 @property(copy, nonatomic) NSURL *flintDocumentURL; // @synthesize flintDocumentURL=_flintDocumentURL;
 @property(copy, nonatomic) NSURL *videoCallToActionURL; // @synthesize videoCallToActionURL=_videoCallToActionURL;
 @property(copy, nonatomic) NSString *videoCallToActionTitle; // @synthesize videoCallToActionTitle=_videoCallToActionTitle;
@@ -93,6 +95,8 @@
 - (id)initWithIdentifier:(id)arg1;
 - (id)init;
 - (void)enumerateTopicConversionStatsWithBlock:(CDUnknownBlockType)arg1;
+@property(readonly, copy, nonatomic) NSArray *topics;
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLTagMetadata *publisherTagMetadata;
 @property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *publisherConversionStats;
 @property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *globalConversionStats;
 - (void)enumerateTopicCohortsWithBlock:(CDUnknownBlockType)arg1;
@@ -135,6 +139,8 @@
 @property(readonly, nonatomic, getter=isBundlePaid) _Bool bundlePaid;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, nonatomic) _Bool hasAudioTrack;
+@property(readonly, copy, nonatomic) NSArray *iAdCategories;
+@property(readonly, nonatomic) _Bool isEvergreen;
 @property(readonly, nonatomic) _Bool isFeatured;
 @property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVector;
 @property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVectorAlt;

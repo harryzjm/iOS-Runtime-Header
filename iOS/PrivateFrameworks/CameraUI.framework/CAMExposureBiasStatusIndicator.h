@@ -27,6 +27,8 @@
 @property(nonatomic) double shadowClipping; // @synthesize shadowClipping=_shadowClipping;
 @property(nonatomic, getter=isExposureValueVisible) _Bool exposureValueVisible; // @synthesize exposureValueVisible=_exposureValueVisible;
 @property(nonatomic) double exposureBiasValue; // @synthesize exposureBiasValue=_exposureBiasValue;
+- (id)hudItemForAccessibilityHUDManager:(id)arg1;
+- (id)imageNameForAXHUD;
 - (void)_updateHighlightClippingTickAlpha;
 - (void)_updateShadowClippingTickAlpha;
 - (double)_clippingTickAlphaForClipping:(double)arg1;

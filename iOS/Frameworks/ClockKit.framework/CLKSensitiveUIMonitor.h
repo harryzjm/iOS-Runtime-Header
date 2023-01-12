@@ -13,9 +13,9 @@
 + (id)sharedMonitor;
 - (_Bool)considersUISensitivitySensitive:(long long)arg1;
 - (_Bool)shouldHideForSensitivity:(long long)arg1;
-- (_Bool)hideSensitiveUISwitchEnabled;
 - (void)removeSensitiveUIObserver:(id)arg1;
 - (void)addSensitiveUIObserver:(id)arg1;
+- (_Bool)isSensitiveUIEnabled;
 - (_Bool)_isVendorRelease;
 
 @end

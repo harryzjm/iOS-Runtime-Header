@@ -9,7 +9,8 @@
 @class WBSSQLiteRow;
 
 @protocol WBSSiteMetadataImageCacheSettingsEntry <NSObject>
-@property(nonatomic) long long databaseID;
+@property(readonly, nonatomic) long long databaseID;
+- (id)entryWithDatabaseID:(long long)arg1;
 - (id)initWithSQLiteRow:(WBSSQLiteRow *)arg1;
 @end
 

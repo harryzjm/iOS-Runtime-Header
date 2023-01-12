@@ -29,6 +29,7 @@
 - (void)registerFeedback:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)contactHandlesForSource:(id)arg1 queryId:(unsigned long long)arg2;
 - (void)contactHandlesForTopics:(id)arg1 queryId:(unsigned long long)arg2;
+- (void)upcomingRelevantContactsForQuery:(id)arg1 queryId:(unsigned long long)arg2;
 - (void)rankedContactsWithQuery:(id)arg1 queryId:(unsigned long long)arg2;
 - (void)unblockPendingQueries;
 - (void)setIsTerminated;

@@ -21,8 +21,8 @@
 + (id)taskIdentifier;
 - (void).cxx_destruct;
 - (void)tearDownHealthSharingForProfile:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)revokeAccessForAllShareParticipantsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)fetchAllShareParticipantEmailAddressesWithCompletion:(CDUnknownBlockType)arg1;
+- (void)revokeAccessForAllShareParticipantsForSharingType:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchAllShareParticipantEmailAddressesForSharingType:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)connectionInvalidated;
 - (id)remoteInterface;
 - (id)exportedInterface;

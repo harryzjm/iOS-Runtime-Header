@@ -24,6 +24,7 @@
 - (_Bool)removeMessage:(id)arg1;
 - (_Bool)addMessageAtHeadOfQueue:(id)arg1;
 - (_Bool)addMessage:(id)arg1;
+- (id)messageForUniqueID:(unsigned long long)arg1;
 - (id)dequeueTopMessage;
 - (void)removeAllMessages;
 - (void)_timeoutHit;

@@ -6,13 +6,16 @@
 
 #import <HealthDaemon/NSCopying-Protocol.h>
 
+@protocol NSObject;
+
 @interface HDSQLiteComparisonPredicate <NSCopying>
 {
     long long _comparisonType;
-    id _value;
+    id <NSObject> _value;
     _Bool _influenceIndexUsage;
 }
 
++ (id)predicateWithProperty:(id)arg1 comparisonType:(long long)arg2 subqueryDescriptor:(id)arg3 subqueryProperties:(id)arg4;
 + (id)predicateWithCoalescedProperties:(id)arg1 value:(id)arg2 comparisonType:(long long)arg3;
 + (id)predicateWithProperty:(id)arg1 ifNullValue:(id)arg2 value:(id)arg3 comparisonType:(long long)arg4;
 + (id)predicateWithProperty:(id)arg1 value:(id)arg2 comparisonType:(long long)arg3 influenceIndexUsage:(_Bool)arg4;
@@ -32,7 +35,6 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id value; // @synthesize value=_value;
 @property(readonly, nonatomic) long long comparisonType; // @synthesize comparisonType=_comparisonType;
-- (id)_comparisonTypeString;
 - (id)description;
 - (_Bool)isCompatibleWithPredicate:(id)arg1;
 - (id)SQLForEntityClass:(Class)arg1;

@@ -7,6 +7,8 @@
 #import <RunningBoardServices/RBSAttribute.h>
 
 @interface RBSAttribute (RBProcessState)
+- (_Bool)preventsSuspension;
+- (_Bool)hasMandatoryAttributes:(id)arg1 error:(id *)arg2;
 - (_Bool)conflictsWithAttribute:(id)arg1;
 - (_Bool)isValidForContext:(id)arg1 withError:(id *)arg2;
 - (id)effectiveAttributesWithContext:(id)arg1;

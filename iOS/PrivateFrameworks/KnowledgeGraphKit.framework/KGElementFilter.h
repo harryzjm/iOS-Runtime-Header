@@ -10,17 +10,22 @@
 
 @interface KGElementFilter : NSObject
 {
-    NSArray *_labels;
+    NSArray *_requiredLabels;
+    NSArray *_optionalLabels;
     NSDictionary *_properties;
 }
 
 + (id)any;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSDictionary *properties; // @synthesize properties=_properties;
-@property(readonly, nonatomic) NSArray *labels; // @synthesize labels=_labels;
+@property(readonly, nonatomic) NSArray *optionalLabels; // @synthesize optionalLabels=_optionalLabels;
+@property(readonly, nonatomic) NSArray *requiredLabels; // @synthesize requiredLabels=_requiredLabels;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)initWithLabels:(id)arg1 properties:(id)arg2;
+- (_Bool)matchesProperties:(id)arg1;
+- (_Bool)matchesLabels:(id)arg1;
+- (_Bool)matchesElement:(id)arg1;
+- (id)initWithRequiredLabels:(id)arg1 optionalLabels:(id)arg2 properties:(id)arg3;
 
 @end
 

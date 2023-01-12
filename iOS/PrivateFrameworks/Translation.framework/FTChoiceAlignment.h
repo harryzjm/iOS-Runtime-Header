@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_22d7513b)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_22d7513b)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSArray *pre_itn_token_to_post_itn_char_alignments;
 @property(readonly, nonatomic) NSArray *post_itn_choice_indices;
 - (id)copyWithZone:(struct _NSZone *)arg1;

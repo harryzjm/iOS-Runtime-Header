@@ -17,13 +17,14 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) long long currentEnvironmentMode; // @synthesize currentEnvironmentMode=_currentEnvironmentMode;
 @property(readonly, nonatomic) SBAppLayout *selectedAppLayout; // @synthesize selectedAppLayout=_selectedAppLayout;
-- (id)_transitionModifier;
 - (id)_gestureModifier;
+@property(readonly, nonatomic) _Bool canTransitionWithoutGestureModifier;
+@property(readonly, nonatomic) SBSwitcherModifier *transitionModifier;
 - (id)transitionChildModifierForMainTransitionEvent:(id)arg1 activeGestureModifier:(id)arg2;
 - (id)gestureChildModifierForGestureEvent:(id)arg1 activeTransitionModifier:(id)arg2;
 - (id)handleRemovalEvent:(id)arg1;
 - (id)handleGestureEvent:(id)arg1;
-- (id)handleMainTransitionEvent:(id)arg1;
+- (id)handleTransitionEvent:(id)arg1;
 - (id)handleEvent:(id)arg1;
 - (_Bool)completesWhenChildrenComplete;
 - (long long)gestureType;

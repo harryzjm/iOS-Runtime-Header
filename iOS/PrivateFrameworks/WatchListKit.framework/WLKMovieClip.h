@@ -22,7 +22,6 @@
 @property(readonly, copy, nonatomic) NSArray *assets; // @synthesize assets=_assets;
 @property(readonly, nonatomic) WLKMovieClipPreviewArtwork *previewArtwork; // @synthesize previewArtwork=_previewArtwork;
 @property(readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
-- (_Bool)_supportHD;
 - (id)preferredURL;
 @property(readonly, nonatomic) WLKMovieClipAsset *preferredAsset;
 - (id)init;

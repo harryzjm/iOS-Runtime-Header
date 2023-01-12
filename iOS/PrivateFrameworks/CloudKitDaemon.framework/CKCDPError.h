@@ -10,7 +10,6 @@
 
 @class NSMutableArray, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKCDPError : PBCodable <NSCopying>
 {
     int _auxiliaryCode;

@@ -16,6 +16,7 @@
     _Bool _canBeHidden;
     _Bool _hasTopPadding;
     _Bool _hasBottomPadding;
+    _Bool _shouldSearchDirectionsAlongCurrentRoute;
     int _separatorStyle;
     NSArray *_punchoutOptions;
     NSString *_punchoutPickerTitle;
@@ -26,6 +27,7 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldSearchDirectionsAlongCurrentRoute; // @synthesize shouldSearchDirectionsAlongCurrentRoute=_shouldSearchDirectionsAlongCurrentRoute;
 @property(copy, nonatomic) NSData *mapsData; // @synthesize mapsData=_mapsData;
 @property(retain, nonatomic) _SFPBColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(nonatomic) int separatorStyle; // @synthesize separatorStyle=_separatorStyle;

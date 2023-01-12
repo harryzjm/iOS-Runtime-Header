@@ -7,7 +7,7 @@
 #import <Photos/PHInsertChangeRequest-Protocol.h>
 #import <Photos/PHUpdateChangeRequest-Protocol.h>
 
-@class NSDictionary, NSManagedObjectID, NSMutableArray, NSMutableSet, NSString, PHObjectPlaceholder, PHPerson, PHRelationshipChangeRequestHelper;
+@class NSDictionary, NSManagedObjectID, NSMutableArray, NSMutableSet, NSString, PHObjectPlaceholder, PHPerson, PHRelationshipChangeRequestHelper, PHUserFeedback;
 
 @interface PHPersonChangeRequest <PHInsertChangeRequest, PHUpdateChangeRequest>
 {
@@ -16,8 +16,10 @@
     NSMutableSet *_faceUUIDsRequiringFaceCropGeneration;
     NSMutableSet *_rejectedMergeCandidatePersonUUIDs;
     NSMutableSet *_graphDedupePersonUUIDs;
+    _Bool _didUnsetUserFeedback;
     PHPerson *_targetPerson;
     NSString *_identifier;
+    PHUserFeedback *_userFeedback;
     PHRelationshipChangeRequestHelper *_facesHelper;
     PHRelationshipChangeRequestHelper *_keyFaceHelper;
     PHRelationshipChangeRequestHelper *_rejectedFacesHelper;
@@ -38,6 +40,7 @@
 @property(readonly, nonatomic) PHRelationshipChangeRequestHelper *rejectedFacesHelper; // @synthesize rejectedFacesHelper=_rejectedFacesHelper;
 @property(readonly, nonatomic) PHRelationshipChangeRequestHelper *keyFaceHelper; // @synthesize keyFaceHelper=_keyFaceHelper;
 @property(readonly, nonatomic) PHRelationshipChangeRequestHelper *facesHelper; // @synthesize facesHelper=_facesHelper;
+@property(copy, nonatomic) PHUserFeedback *userFeedback; // @synthesize userFeedback=_userFeedback;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) PHPerson *targetPerson; // @synthesize targetPerson=_targetPerson;
 - (void)_setGraphDedupePersons:(id)arg1;
@@ -79,6 +82,7 @@
 @property(readonly, nonatomic) NSString *managedEntityName;
 @property(nonatomic, getter=isVerified) _Bool verified;
 @property(nonatomic) unsigned short sexType;
+@property(nonatomic) short detectionType;
 @property(nonatomic) unsigned short suggestedForClientType;
 @property(nonatomic) short keyFacePickSource;
 @property(copy, nonatomic) NSDictionary *contactMatchingDictionary;

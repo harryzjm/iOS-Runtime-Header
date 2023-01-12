@@ -8,12 +8,14 @@
 
 #import <MetalPerformanceShadersGraph/NSCopying-Protocol.h>
 
-@class MPSGraphOperation, NSArray, NSString;
+@class MPSGraph, MPSGraphBlock, MPSGraphOperation, NSArray, NSString;
 
 @interface MPSGraphTensor : NSObject <NSCopying>
 {
     struct Value _value;
     MPSGraphOperation *_operation;
+    MPSGraph *_graph;
+    MPSGraphBlock *_parentBlock;
     unsigned int _dataType;
     unsigned long long _index;
     NSArray *_shape;
@@ -22,17 +24,18 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) struct Value value; // @synthesize value=_value;
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, nonatomic) unsigned int dataType; // @synthesize dataType=_dataType;
 @property(readonly, copy, nonatomic) NSArray *shape; // @synthesize shape=_shape;
+@property(readonly, nonatomic) struct Value value; // @synthesize value=_value;
 @property(readonly, nonatomic) unsigned long long index; // @synthesize index=_index;
 @property(readonly, nonatomic) __weak MPSGraphOperation *operation; // @synthesize operation=_operation;
 - (id)debugDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initTensorWithOperation:(id)arg1 value:(struct Value)arg2 name:(id)arg3;
-- (id)initTensorWithOperation:(id)arg1 value:(struct Value)arg2;
-- (id)initTensorWithValue:(struct Value)arg1;
+- (id)initTensorWithOperation:(id)arg1 value:(struct Value)arg2 graph:(id)arg3 parentBlock:(id)arg4 name:(id)arg5;
+- (id)initTensorWithOperation:(id)arg1 value:(struct Value)arg2 graph:(id)arg3 name:(id)arg4;
+- (id)initTensorWithOperation:(id)arg1 value:(struct Value)arg2 graph:(id)arg3;
+- (id)initTensorWithValue:(struct Value)arg1 graph:(id)arg2;
 
 @end
 

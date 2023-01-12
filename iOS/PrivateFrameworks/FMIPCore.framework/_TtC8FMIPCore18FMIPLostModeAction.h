@@ -13,6 +13,7 @@
     MISSING_TYPE *isTrackingEnabled;
     MISSING_TYPE *isUserTextEnabled;
     MISSING_TYPE *isEmailUpdatesEnabled;
+    MISSING_TYPE *email;
     MISSING_TYPE *message;
     MISSING_TYPE *phoneNumber;
     MISSING_TYPE *passcode;

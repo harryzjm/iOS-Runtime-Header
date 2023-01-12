@@ -20,14 +20,11 @@
 
 + (id)powerAssertionWithIdentifier:(id)arg1 timeout:(double)arg2 timeoutHandler:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
-- (void)_timerDidFire;
-- (void)_scheduleTimer;
 - (void)invalidate;
 @property(readonly) _Bool invalidated;
 @property(readonly) double timeout; // @synthesize timeout=_timeout;
 @property(readonly, copy) NSString *identifier; // @synthesize identifier=_identifier;
 - (void)dealloc;
-- (id)_initWithIdentifier:(id)arg1 timeout:(double)arg2 timeoutHandler:(CDUnknownBlockType)arg3;
 - (id)init;
 
 @end

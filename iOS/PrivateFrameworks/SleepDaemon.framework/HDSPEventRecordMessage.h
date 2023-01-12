@@ -14,13 +14,11 @@
 __attribute__((visibility("hidden")))
 @interface HDSPEventRecordMessage : NSObject <BSDescriptionProviding, HDSPIDSMessage>
 {
-    double _timeout;
     NSDate *_date;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSDate *date; // @synthesize date=_date;
-@property(readonly, nonatomic) double timeout; // @synthesize timeout=_timeout;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
@@ -31,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *identifier;
-- (id)initWithDate:(id)arg1 timeout:(double)arg2;
+- (id)initWithDate:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

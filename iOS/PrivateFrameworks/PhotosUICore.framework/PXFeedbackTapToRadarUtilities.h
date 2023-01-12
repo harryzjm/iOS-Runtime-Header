@@ -10,17 +10,18 @@
 {
 }
 
-+ (id)originalImageFileForAsset:(id)arg1;
 + (id)detailedDebugDescriptionFileForAsset:(id)arg1;
 + (id)_tempDirectoryURL;
-+ (id)defaultTitlePrefix;
 + (id)defaultDescription;
++ (id)imageFileURLForAsset:(id)arg1;
++ (id)defaultTitlePrefix;
 + (id)captureScreenshot;
++ (void)presentTermsAndConditionsForUIViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (id)alertControllerWithInternalReleaseAgreementAndCompletion:(CDUnknownBlockType)arg1;
++ (id)alertControllerWithPrivacyTitle:(id)arg1 message:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)fileRadarWithTitle:(id)arg1 description:(id)arg2 classification:(id)arg3 componentID:(id)arg4 componentName:(id)arg5 componentVersion:(id)arg6 keyword:(id)arg7 screenshotURLs:(id)arg8 attachmentURLs:(id)arg9 includeSysDiagnose:(_Bool)arg10 includeInternalRelease:(_Bool)arg11 additionalExtensionIdentifiers:(id)arg12 completionHandler:(CDUnknownBlockType)arg13;
 + (void)fileRadarWithTitle:(id)arg1 description:(id)arg2 classification:(id)arg3 componentID:(id)arg4 componentName:(id)arg5 componentVersion:(id)arg6 keyword:(id)arg7 attachmentURLs:(id)arg8 includeSysDiagnose:(_Bool)arg9 completionHandler:(CDUnknownBlockType)arg10;
-+ (void)presentTermsAndConditionsForUIViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (id)internalReleaseAgreement;
-+ (id)alertControllerWithPrivacyMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)summaryDescription;
 + (id)attachmentURLForDiagnosticDictionaries:(id)arg1 descriptionName:(id)arg2;
 

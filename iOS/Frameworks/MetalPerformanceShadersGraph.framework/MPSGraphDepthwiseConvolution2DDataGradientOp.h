@@ -9,7 +9,7 @@
 }
 
 - (id)partialDerivativeForInputTensor:(id)arg1 incomingGradient:(id)arg2 inputIndex:(unsigned long long)arg3 name:(id)arg4;
-- (struct Value)makeMLIROpWithBuilder:(struct OpBuilder *)arg1 symbolTable:(struct MPSSymbolTable *)arg2 inputValues:(vector_c90d9c45 *)arg3 opInitialization:(_Bool)arg4 name:(id)arg5;
+- (void *)makeMLIROpWithBuilder:(void *)arg1 symbolTable:(void *)arg2 inputValues:(void *)arg3 opInitialization:(_Bool)arg4 name:(id)arg5;
 
 @end
 

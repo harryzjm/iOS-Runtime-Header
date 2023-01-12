@@ -8,6 +8,7 @@
 
 @class NSArray, NSDictionary, NSSet, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MPCPlayerResetTracklistCommand <MPCPlayerResetTracklistCommand>
 {
     _Bool _supportsSetQueueCommand;

@@ -24,8 +24,6 @@
 @property(retain, nonatomic) NSDictionary *userContext;
 @property(retain, nonatomic) NSDate *endDate;
 @property(retain, nonatomic) NSDate *startDate;
-- (id)_job;
-- (id)_initWithJob:(id)arg1;
 - (id)init;
 
 @end

@@ -9,8 +9,8 @@
 #import <MTLCapture/CaptureMTLObject-Protocol.h>
 #import <MTLCapture/MTLFunctionSPI-Protocol.h>
 
-@class CaptureMTLDevice, CaptureMTLLibrary, MTLType, NSArray, NSDictionary, NSString;
-@protocol MTLDevice, MTLFunction, MTLFunctionSPI;
+@class CaptureMTLDevice, CaptureMTLLibrary, MTLDebugInstrumentationData, MTLType, NSArray, NSDictionary, NSString;
+@protocol MTLDevice, MTLFunction, MTLFunctionHandle, MTLFunctionSPI;
 
 @interface CaptureMTLFunction : NSObject <MTLFunctionSPI, CaptureMTLObject>
 {
@@ -21,7 +21,6 @@
     struct GTTraceStream *_traceStream;
 }
 
-+ (_Bool)newCaptureFunction:(out id *)arg1 associatedWithBaseFunction:(id)arg2 captureLibrary:(id)arg3;
 - (void).cxx_destruct;
 - (id)reflectionWithOptions:(unsigned long long)arg1 pipelineLibrary:(id)arg2;
 - (id)reflectionWithOptions:(unsigned long long)arg1;
@@ -34,13 +33,17 @@
 @property(readonly) NSArray *stageInputAttributes;
 @property(readonly) MTLType *returnType;
 @property(readonly) unsigned long long renderTargetArrayIndexType;
+@property(copy, nonatomic) NSArray *relocations;
 @property(readonly) unsigned long long patchType;
 @property(readonly) long long patchControlPointCount;
 @property(readonly) unsigned long long options;
 @property(readonly) NSString *name;
 @property(readonly) long long lineNumber;
 @property(copy) NSString *label;
+@property(readonly) NSArray *importedSymbols;
+@property(readonly) NSArray *importedLibraries;
 @property(readonly) unsigned long long functionType;
+@property(readonly, nonatomic) id <MTLFunctionHandle> functionHandle;
 @property(readonly) NSDictionary *functionConstantsDictionary;
 @property(readonly, copy) NSString *filePath;
 @property(readonly) id <MTLDevice> device;
@@ -67,6 +70,7 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, nonatomic) MTLDebugInstrumentationData *debugInstrumentationData;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

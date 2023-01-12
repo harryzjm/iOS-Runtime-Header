@@ -7,39 +7,26 @@
 #import <objc/NSObject.h>
 
 @class NSMutableSet;
-@protocol BCSBloomFilterAndConfigRemoteFetching, BCSConfigCaching, BCSFeatureFlagArbitrating, BCSMetricFactoryProtocol, BCSPrefetchTrigger, BCSShardCacheQueryable, BCSShardCacheSkipping, BCSShardItemInstantiating, BCSUserDefaultsProviding;
+@protocol BCSBloomFilterAndConfigRemoteFetching, BCSConfigCaching, BCSMetricFactoryProtocol, BCSPrefetchTrigger, BCSShardCacheQueryable, BCSShardCacheSkipping, BCSShardItemInstantiating, BCSUserDefaultsProviding;
 
 @interface BCSBloomFilterAndConfigPrefetcher : NSObject
 {
+    long long _type;
+    long long _shardType;
     id <BCSConfigCaching> _configCache;
     id <BCSShardCacheQueryable> _shardCache;
     id <BCSShardCacheSkipping> _shardCacheSkipper;
     id <BCSBloomFilterAndConfigRemoteFetching> _bloomFilterAndConfigRemoteFetch;
     id <BCSPrefetchTrigger> _prefetchTrigger;
     id <BCSShardItemInstantiating> _shardInstantiator;
-    id <BCSFeatureFlagArbitrating> _featureFlagAribiter;
     id <BCSUserDefaultsProviding> _userDefaults;
     id <BCSMetricFactoryProtocol> _metricFactory;
     NSMutableSet *_triggers;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableSet *triggers; // @synthesize triggers=_triggers;
-@property(retain, nonatomic) id <BCSMetricFactoryProtocol> metricFactory; // @synthesize metricFactory=_metricFactory;
-@property(retain, nonatomic) id <BCSUserDefaultsProviding> userDefaults; // @synthesize userDefaults=_userDefaults;
-@property(retain, nonatomic) id <BCSFeatureFlagArbitrating> featureFlagAribiter; // @synthesize featureFlagAribiter=_featureFlagAribiter;
-@property(retain, nonatomic) id <BCSShardItemInstantiating> shardInstantiator; // @synthesize shardInstantiator=_shardInstantiator;
-@property(retain, nonatomic) id <BCSPrefetchTrigger> prefetchTrigger; // @synthesize prefetchTrigger=_prefetchTrigger;
-@property(retain, nonatomic) id <BCSBloomFilterAndConfigRemoteFetching> bloomFilterAndConfigRemoteFetch; // @synthesize bloomFilterAndConfigRemoteFetch=_bloomFilterAndConfigRemoteFetch;
-@property(retain, nonatomic) id <BCSShardCacheSkipping> shardCacheSkipper; // @synthesize shardCacheSkipper=_shardCacheSkipper;
-@property(retain, nonatomic) id <BCSShardCacheQueryable> shardCache; // @synthesize shardCache=_shardCache;
-@property(retain, nonatomic) id <BCSConfigCaching> configCache; // @synthesize configCache=_configCache;
-- (_Bool)_shouldPrefetchType:(long long)arg1;
-- (long long)_hoursSinceLastSuccessfulPrefetchForType:(long long)arg1;
-- (void)_notePrefetchForType:(long long)arg1 finishedSuccessfully:(_Bool)arg2;
-- (void)_prefetchBloomFilterAndConfigIfNecessaryWithXPCActivity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addPrefetchTrigger:(id)arg1;
-- (id)initWithConfigCache:(id)arg1 shardCache:(id)arg2 shardCacheSkipper:(id)arg3 shardInstantiator:(id)arg4 featureFlagArbiter:(id)arg5 businessLinkRemoteFetcher:(id)arg6 userDefaults:(id)arg7 metricFactory:(id)arg8;
+- (id)initWithShardType:(long long)arg1 configCache:(id)arg2 shardCache:(id)arg3 shardCacheSkipper:(id)arg4 shardInstantiator:(id)arg5 megashardRemoteFetcher:(id)arg6 userDefaults:(id)arg7 metricFactory:(id)arg8;
 
 @end
 

@@ -10,7 +10,6 @@
 
 @class CKDPShareIdentifier;
 
-__attribute__((visibility("hidden")))
 @interface CKDPRecordSaveRequestShareIdUpdate : PBCodable <NSCopying>
 {
     CKDPShareIdentifier *_shareId;

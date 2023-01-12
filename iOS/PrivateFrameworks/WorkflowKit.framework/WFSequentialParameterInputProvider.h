@@ -15,17 +15,19 @@
     WFAction *_fakeAction;
     NSMutableOrderedSet *_queuedParameters;
     NSDictionary *_defaultStates;
+    NSDictionary *_prompts;
     NSMutableDictionary *_inputtedStates;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *inputtedStates; // @synthesize inputtedStates=_inputtedStates;
+@property(retain, nonatomic) NSDictionary *prompts; // @synthesize prompts=_prompts;
 @property(retain, nonatomic) NSDictionary *defaultStates; // @synthesize defaultStates=_defaultStates;
 @property(retain, nonatomic) NSMutableOrderedSet *queuedParameters; // @synthesize queuedParameters=_queuedParameters;
 @property(retain, nonatomic) WFAction *fakeAction; // @synthesize fakeAction=_fakeAction;
 @property(nonatomic) __weak id <WFSequentialParameterInputProviderDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)askForParameterIfAvailable;
-- (void)startWithAction:(id)arg1 parameters:(id)arg2 defaultStates:(id)arg3;
+- (void)startWithAction:(id)arg1 parameters:(id)arg2 defaultStates:(id)arg3 prompts:(id)arg4;
 - (id)initWithDelegate:(id)arg1;
 
 @end

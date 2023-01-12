@@ -6,17 +6,22 @@
 
 #import <objc/NSObject.h>
 
+#import <SpringBoard/SBFZStackParticipantDelegate-Protocol.h>
 #import <SpringBoard/SBHomeGestureParticipantDelegate-Protocol.h>
+#import <SpringBoard/SBHomeGrabberDelegate-Protocol.h>
 
 @class NSString;
 @protocol CSModalHomeGestureParticipating;
 
-@interface SBDashBoardModalHomeAffordanceControllerClientBridge : NSObject <SBHomeGestureParticipantDelegate>
+@interface SBDashBoardModalHomeAffordanceControllerClientBridge : NSObject <SBHomeGestureParticipantDelegate, SBFZStackParticipantDelegate, SBHomeGrabberDelegate>
 {
     id <CSModalHomeGestureParticipating> _coverSheetModalHomeGestureParticipant;
 }
 
 - (void).cxx_destruct;
+- (double)additionalEdgeSpacingForHomeGrabberView:(id)arg1;
+- (void)zStackParticipant:(id)arg1 updatePreferences:(id)arg2;
+- (void)zStackParticipantDidChange:(id)arg1;
 - (void)homeGestureParticipantOwningHomeGestureDidChange:(id)arg1;
 - (id)initWithCoverSheetModalHomeGestureParticipant:(id)arg1;
 

@@ -24,6 +24,7 @@
     long long _pixelHeight;
 }
 
++ (id)assetResourceForDuplicatingAssetResource:(id)arg1 newResourceType:(long long)arg2 asData:(_Bool)arg3 error:(id *)arg4;
 + (id)assetResourceForDuplicatingAssetResource:(id)arg1 asData:(_Bool)arg2 error:(id *)arg3;
 + (unsigned long long)probableCPLResourceTypeFromAssetResourceType:(long long)arg1;
 - (void).cxx_destruct;

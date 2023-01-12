@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSString;
+@class MPCPlaybackSharedListeningProperties, NSData, NSDictionary, NSString;
 @protocol MPCPlaybackIntentDataSource, NSSecureCoding;
 
 @interface MPCPlaybackIntent : NSObject
@@ -14,11 +14,14 @@
     id <MPCPlaybackIntentDataSource> _resolvedTracklistDataSource;
     _Bool _prefersEnqueuingUsingAirPlay;
     NSString *_localizedTitle;
+    NSDictionary *_startTimeModifications;
+    NSDictionary *_endTimeModifications;
     long long _tracklistSource;
     id <NSSecureCoding> _tracklistToken;
     long long _actionAfterQueueLoad;
     long long _shuffleMode;
     long long _repeatMode;
+    NSString *_queueGroupingID;
     NSString *_playActivityFeatureName;
     NSData *_playActivityRecommendationData;
     NSString *_siriAssetInfo;
@@ -26,6 +29,8 @@
 }
 
 + (id)tracklistDataSourceForSource:(long long)arg1;
++ (id)sharedSessionIntentWithProperties:(id)arg1 identity:(id)arg2;
++ (void)buildSharedSessionIntentWithIntent:(id)arg1 identity:(id)arg2 extendedStatusCompletion:(CDUnknownBlockType)arg3;
 + (id)radioPlaybackIntentWithStationURL:(id)arg1;
 + (id)radioPlaybackIntentWithStationStringID:(id)arg1;
 + (id)radioPlaybackIntentWithStation:(id)arg1;
@@ -40,15 +45,23 @@
 @property(copy, nonatomic) NSString *siriAssetInfo; // @synthesize siriAssetInfo=_siriAssetInfo;
 @property(copy, nonatomic) NSData *playActivityRecommendationData; // @synthesize playActivityRecommendationData=_playActivityRecommendationData;
 @property(copy, nonatomic) NSString *playActivityFeatureName; // @synthesize playActivityFeatureName=_playActivityFeatureName;
+@property(copy, nonatomic) NSString *queueGroupingID; // @synthesize queueGroupingID=_queueGroupingID;
 @property(nonatomic) _Bool prefersEnqueuingUsingAirPlay; // @synthesize prefersEnqueuingUsingAirPlay=_prefersEnqueuingUsingAirPlay;
 @property(nonatomic) long long repeatMode; // @synthesize repeatMode=_repeatMode;
 @property(nonatomic) long long shuffleMode; // @synthesize shuffleMode=_shuffleMode;
 @property(nonatomic) long long actionAfterQueueLoad; // @synthesize actionAfterQueueLoad=_actionAfterQueueLoad;
 @property(retain, nonatomic) id <NSSecureCoding> tracklistToken; // @synthesize tracklistToken=_tracklistToken;
 @property(nonatomic) long long tracklistSource; // @synthesize tracklistSource=_tracklistSource;
+@property(copy, nonatomic) NSDictionary *endTimeModifications; // @synthesize endTimeModifications=_endTimeModifications;
+@property(copy, nonatomic) NSDictionary *startTimeModifications; // @synthesize startTimeModifications=_startTimeModifications;
 @property(copy, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
+- (id)artworkCatalogForMetadataModelObject:(id)arg1;
+- (id)generateNowPlayingContentItemWithMetadataObject:(id)arg1;
+@property(readonly, nonatomic) MPCPlaybackSharedListeningProperties *sharedListeningProperties;
 - (void)getArchiveWithConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)getRepresentativeMetadataWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getNowPlayingInfoWithArtworkCatalogConfiguration:(CDUnknownBlockType)arg1 artworkHandler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)getRepresentativeObjectWithProperties:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getRemotePlaybackQueueDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getRemotePlaybackQueueRepresentationWithPlayerPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getPlaybackContextWithCompletion:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) id <MPCPlaybackIntentDataSource> tracklistDataSource;

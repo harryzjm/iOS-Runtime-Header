@@ -7,6 +7,6 @@
 #import <ScreenReaderOutput/SCROIOElementProtocol-Protocol.h>
 
 @protocol SCROIOHIDElementProtocol <SCROIOElementProtocol>
-- (struct __IOHIDDevice *)hidDevice;
+- (void *)hidDevice;
 @end
 

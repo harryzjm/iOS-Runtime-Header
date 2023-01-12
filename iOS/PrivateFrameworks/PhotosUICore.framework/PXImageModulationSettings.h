@@ -4,12 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface PXImageModulationSettings
 {
     _Bool _enabled;
+    _Bool _gainMapEnabled;
+    _Bool _showGainMapBorder;
+    _Bool _animateGainMapAppearance;
+    _Bool _useThresholdForVideos;
     _Bool _forceCurrentScreenSupportsHDR;
+    float _gainMapFaceMaxStops;
+    float _gainMapFaceKneeStops;
+    float _gainMapFaceKnee;
+    float _gainMapFaceMinStops;
+    float _gainMapMaxStops;
+    float _gainMapKneeStops;
+    float _gainMapKnee;
+    float _gainMapMinStops;
     long long _filterType;
     long long _HDRConsideration;
+    double _gainMapAnimationDuration;
+    NSString *_gainMapAnimationTimingFunction;
+    double _gainMapAnimationActivationThreshold;
     double _HDRModulationIntensity;
     double _SDRModulationIntensity;
     double _videoComplementModulationIntensity;
@@ -25,6 +42,15 @@
 
 + (id)sharedInstance;
 + (id)settingsControllerModule;
+- (void).cxx_destruct;
+@property(nonatomic) float gainMapMinStops; // @synthesize gainMapMinStops=_gainMapMinStops;
+@property(nonatomic) float gainMapKnee; // @synthesize gainMapKnee=_gainMapKnee;
+@property(nonatomic) float gainMapKneeStops; // @synthesize gainMapKneeStops=_gainMapKneeStops;
+@property(nonatomic) float gainMapMaxStops; // @synthesize gainMapMaxStops=_gainMapMaxStops;
+@property(nonatomic) float gainMapFaceMinStops; // @synthesize gainMapFaceMinStops=_gainMapFaceMinStops;
+@property(nonatomic) float gainMapFaceKnee; // @synthesize gainMapFaceKnee=_gainMapFaceKnee;
+@property(nonatomic) float gainMapFaceKneeStops; // @synthesize gainMapFaceKneeStops=_gainMapFaceKneeStops;
+@property(nonatomic) float gainMapFaceMaxStops; // @synthesize gainMapFaceMaxStops=_gainMapFaceMaxStops;
 @property(nonatomic) _Bool forceCurrentScreenSupportsHDR; // @synthesize forceCurrentScreenSupportsHDR=_forceCurrentScreenSupportsHDR;
 @property(nonatomic) double deviceMaximumEDRHeadroomStops; // @synthesize deviceMaximumEDRHeadroomStops=_deviceMaximumEDRHeadroomStops;
 @property(nonatomic) double highEDRRequestedHeadroomStops; // @synthesize highEDRRequestedHeadroomStops=_highEDRRequestedHeadroomStops;
@@ -33,10 +59,17 @@
 @property(nonatomic) double EDRHeadroomRequestHDRThreshold; // @synthesize EDRHeadroomRequestHDRThreshold=_EDRHeadroomRequestHDRThreshold;
 @property(nonatomic) double manualEDRHeadroomRequestStops; // @synthesize manualEDRHeadroomRequestStops=_manualEDRHeadroomRequestStops;
 @property(nonatomic) long long EDRHeadroomUsageScheme; // @synthesize EDRHeadroomUsageScheme=_EDRHeadroomUsageScheme;
+@property(nonatomic) _Bool useThresholdForVideos; // @synthesize useThresholdForVideos=_useThresholdForVideos;
 @property(nonatomic) long long EDRHeadroomRequestScheme; // @synthesize EDRHeadroomRequestScheme=_EDRHeadroomRequestScheme;
 @property(nonatomic) double videoComplementModulationIntensity; // @synthesize videoComplementModulationIntensity=_videoComplementModulationIntensity;
 @property(nonatomic) double SDRModulationIntensity; // @synthesize SDRModulationIntensity=_SDRModulationIntensity;
 @property(nonatomic) double HDRModulationIntensity; // @synthesize HDRModulationIntensity=_HDRModulationIntensity;
+@property(nonatomic) double gainMapAnimationActivationThreshold; // @synthesize gainMapAnimationActivationThreshold=_gainMapAnimationActivationThreshold;
+@property(copy, nonatomic) NSString *gainMapAnimationTimingFunction; // @synthesize gainMapAnimationTimingFunction=_gainMapAnimationTimingFunction;
+@property(nonatomic) double gainMapAnimationDuration; // @synthesize gainMapAnimationDuration=_gainMapAnimationDuration;
+@property(nonatomic) _Bool animateGainMapAppearance; // @synthesize animateGainMapAppearance=_animateGainMapAppearance;
+@property(nonatomic) _Bool showGainMapBorder; // @synthesize showGainMapBorder=_showGainMapBorder;
+@property(nonatomic) _Bool gainMapEnabled; // @synthesize gainMapEnabled=_gainMapEnabled;
 @property(nonatomic) long long HDRConsideration; // @synthesize HDRConsideration=_HDRConsideration;
 @property(nonatomic) long long filterType; // @synthesize filterType=_filterType;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;

@@ -14,7 +14,11 @@
     const void *_lexicon;
 }
 
++ (id)lexiconWithOptions:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
+- (long long)lexiconType;
+- (id)languages;
+- (id)language;
 - (void)enumerateCompletionsForPrefix:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (_Bool)getProbabilityForTokenID:(unsigned int)arg1 probability:(double *)arg2;
 - (_Bool)getProbabilityForString:(id)arg1 probability:(double *)arg2;
@@ -26,6 +30,7 @@
 - (id)description;
 @property(readonly, copy) NSString *localization;
 - (id)initWithLocalization:(id)arg1;
+- (id)initWithLocalization:(id)arg1 error:(id *)arg2;
 
 @end
 

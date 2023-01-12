@@ -18,8 +18,6 @@
     NSArray *_equivalentBundleIdentifiers;
     NSArray *_webDomains;
     NSString *_primaryWebDomain;
-    NSString *_secondaryIdentifier;
-    NSString *_resourceString;
 }
 
 + (id)parentAppBundleIdentifierForAppRecord:(id)arg1;
@@ -34,8 +32,9 @@
 + (id)_identifierUsingContextKit:(id)arg1 error:(id *)arg2 relatedItems:(id *)arg3;
 + (void)_lookupAppStoreUsing:(id)arg1 platform:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 + (id)_DHToAppStoreCategoriesMap;
++ (id)bundleIDForPlatform:(id)arg1 fromBundleID:(id)arg2 platform:(id)arg3;
++ (id)schemeStringForPlatform:(id)arg1;
 + (id)_DHIDtoCategoryDisplayNameMap;
-+ (id)_DHIDtoPrimaryCategoriesMap;
 + (void)_getCategoryTypeForDomainName:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 + (id)systemCategoryIDWithPatternMatching:(id)arg1;
 + (id)_overrideEquivalentIdentifiers:(id)arg1 forBundleID:(id)arg2;
@@ -55,8 +54,6 @@
 + (id)_xpcConnection;
 + (void)initialize;
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSString *resourceString; // @synthesize resourceString=_resourceString;
-@property(copy, nonatomic) NSString *secondaryIdentifier; // @synthesize secondaryIdentifier=_secondaryIdentifier;
 @property(copy, nonatomic) NSString *primaryWebDomain; // @synthesize primaryWebDomain=_primaryWebDomain;
 @property(copy, nonatomic) NSArray *webDomains; // @synthesize webDomains=_webDomains;
 @property(readonly, copy, nonatomic) NSArray *equivalentBundleIdentifiers; // @synthesize equivalentBundleIdentifiers=_equivalentBundleIdentifiers;
@@ -68,11 +65,8 @@
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToCategory:(id)arg1;
 - (id)description;
-@property(readonly, copy, nonatomic) NSArray *equivalentBundleIdentifers;
-@property(readonly, copy, nonatomic) NSString *secondaryLocalizedName;
+- (id)equivalentBundleIdentifers;
 @property(readonly, copy, nonatomic) NSString *localizedName;
-@property(readonly, copy, nonatomic) NSString *primaryLocalizedName;
-@property(readonly, copy, nonatomic) NSString *primaryIdentifier;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)_ctCategoryCommonInitWithIdentifier:(id)arg1 equivalentBundleIdentifiers:(id)arg2 webDomains:(id)arg3 bundleIdentifier:(id)arg4 primaryWebDomain:(id)arg5 canonicalBundleIdentifier:(id)arg6;

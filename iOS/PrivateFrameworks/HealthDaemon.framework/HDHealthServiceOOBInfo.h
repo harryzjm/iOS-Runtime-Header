@@ -16,7 +16,6 @@
     NSData *_btAddress;
 }
 
-+ (id)reverseData:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSData *btAddress; // @synthesize btAddress=_btAddress;
 @property(readonly, nonatomic) NSData *confirmationValue; // @synthesize confirmationValue=_confirmationValue;

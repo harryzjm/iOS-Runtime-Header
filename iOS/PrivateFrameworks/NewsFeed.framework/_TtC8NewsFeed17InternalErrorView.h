@@ -10,9 +10,12 @@
 
 @interface _TtC8NewsFeed17InternalErrorView : UIView
 {
+    MISSING_TYPE *onButtonTap;
+    MISSING_TYPE *iconImageView;
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *subtitleLabel;
-    MISSING_TYPE *messageLabel;
+    MISSING_TYPE *footerLabel;
+    MISSING_TYPE *button;
     MISSING_TYPE *debugButton;
 }
 

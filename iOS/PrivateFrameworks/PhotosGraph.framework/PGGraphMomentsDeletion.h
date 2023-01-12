@@ -8,15 +8,15 @@
 
 @interface PGGraphMomentsDeletion
 {
-    NSSet *_momentLocalIdentifiers;
+    NSSet *_momentUUIDs;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSSet *momentLocalIdentifiers; // @synthesize momentLocalIdentifiers=_momentLocalIdentifiers;
+@property(readonly, nonatomic) NSSet *momentUUIDs; // @synthesize momentUUIDs=_momentUUIDs;
 - (id)description;
 - (unsigned long long)changeCount;
 - (unsigned long long)type;
-- (id)initWithMomentLocalIdentifiers:(id)arg1;
+- (id)initWithMomentUUIDs:(id)arg1;
 
 @end
 

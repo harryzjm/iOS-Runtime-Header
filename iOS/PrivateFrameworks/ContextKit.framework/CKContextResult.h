@@ -9,11 +9,12 @@
 #import <ContextKit/NSCopying-Protocol.h>
 #import <ContextKit/NSSecureCoding-Protocol.h>
 
-@class NSOrderedSet, NSSet, NSString, NSURL;
+@class NSDateComponents, NSDictionary, NSOrderedSet, NSSet, NSString, NSURL;
 
 @interface CKContextResult : NSObject <NSSecureCoding, NSCopying>
 {
     _Bool _exactMatch;
+    _Bool _onScreen;
     NSString *_title;
     NSString *_query;
     long long _minPrefix;
@@ -23,11 +24,22 @@
     NSString *_debug;
     NSOrderedSet *_relatedItems;
     NSSet *_tags;
+    NSDateComponents *_extractedStartDateComponents;
+    NSDateComponents *_extractedEndDateComponents;
+    NSDictionary *_extractedAddressComponents;
+    struct CGPoint _absoluteOriginOnScreen;
+    struct CGRect _frameInWindow;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)new;
 - (void).cxx_destruct;
+@property(nonatomic, getter=isOnScreen) _Bool onScreen; // @synthesize onScreen=_onScreen;
+@property(nonatomic) struct CGPoint absoluteOriginOnScreen; // @synthesize absoluteOriginOnScreen=_absoluteOriginOnScreen;
+@property(nonatomic) struct CGRect frameInWindow; // @synthesize frameInWindow=_frameInWindow;
+@property(copy, nonatomic) NSDictionary *extractedAddressComponents; // @synthesize extractedAddressComponents=_extractedAddressComponents;
+@property(copy, nonatomic) NSDateComponents *extractedEndDateComponents; // @synthesize extractedEndDateComponents=_extractedEndDateComponents;
+@property(copy, nonatomic) NSDateComponents *extractedStartDateComponents; // @synthesize extractedStartDateComponents=_extractedStartDateComponents;
 @property(nonatomic, getter=isExactMatch) _Bool exactMatch; // @synthesize exactMatch=_exactMatch;
 @property(copy, nonatomic) NSSet *tags; // @synthesize tags=_tags;
 @property(copy, nonatomic) NSOrderedSet *relatedItems; // @synthesize relatedItems=_relatedItems;

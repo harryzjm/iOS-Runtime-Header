@@ -16,10 +16,13 @@
 + (id)hmbErrorWithSQLContext:(id)arg1 statement:(const char *)arg2;
 + (id)hmbErrorWithSQLContext:(id)arg1;
 @property(readonly, getter=hmbIsRetryShareOperationError) _Bool hmbRetryShareOperationError;
+- (_Bool)_hmbIsCKErrorOrHasPartialFailureWithCode:(long long)arg1;
+- (_Bool)_hmbIsCKErrorWithCode:(long long)arg1;
+@property(readonly) _Bool hmbIsCKNotAuthenticatedError;
+@property(readonly) _Bool hmbIsCKUnsyncedKeychainError;
 @property(readonly) _Bool hmbIsCKManateeUnavailableError;
 @property(readonly) _Bool hmbIsCKLimitExceededError;
-@property(readonly) _Bool hmbIsCKManateeTemporarilyUnavailableError;
-@property(readonly) _Bool hmbIsCKLostIdentityError;
+@property(readonly) _Bool hmbIsCKMissingManateeIdentityError;
 @property(readonly) _Bool hmbIsCKPartialFailureError;
 @property(readonly) _Bool hmbIsCKChangeTokenExpiredError;
 @property(readonly) _Bool hmbIsCKZoneDeletedError;

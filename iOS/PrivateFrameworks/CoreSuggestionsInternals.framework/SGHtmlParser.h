@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSHashTable, NSIndexSet, NSMutableArray, NSMutableData, NSMutableIndexSet, NSString;
+@class NSArray, NSHashTable, NSIndexSet, NSMutableArray, NSMutableData, NSMutableIndexSet, NSMutableSet, NSSet, NSString;
 
 @interface SGHtmlParser : NSObject
 {
@@ -17,10 +17,8 @@
     struct _opaque_pthread_mutex_t _plainTextContentLock;
     NSString *_plainTextContent;
     unsigned long long _plainTextLinesTotalLength;
-    NSMutableArray *_plainTextLineToHTMLOffset;
     _Bool _currentLineIsCollapsed;
     NSMutableData *_currentLineData;
-    NSString *_currentLineString;
     struct _xmlParserCtxt {
         struct _xmlSAXHandler *_field1;
         void *_field2;
@@ -159,9 +157,11 @@
     NSMutableArray *_activeRegionStartPositionStack;
     NSMutableArray *_activeRegionIndexSetStack;
     unsigned long long _quoteToEndFromPosition;
+    NSMutableSet *_appleAnchorHrefs;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSSet *appleAnchorHrefs; // @synthesize appleAnchorHrefs=_appleAnchorHrefs;
 @property(readonly, nonatomic) NSIndexSet *signatureRegions;
 @property(readonly, nonatomic) NSIndexSet *tabularRegions;
 @property(readonly, nonatomic) NSIndexSet *quotedRegions;

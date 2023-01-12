@@ -10,6 +10,8 @@
 {
 }
 
++ (struct CGAffineTransform)transformConvertingRect:(struct CGRect)arg1 toRect:(struct CGRect)arg2 percent:(double)arg3;
++ (id)textureFromImage:(struct CGImage *)arg1 device:(id)arg2;
 + (struct CGSize)clampedPixelSize:(struct CGSize)arg1;
 + (_Bool)deviceSupportsMemorylessFramebuffers:(id)arg1;
 + (_Bool)deviceSupportsFramebufferFetch:(id)arg1;

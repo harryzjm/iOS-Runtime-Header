@@ -22,7 +22,7 @@
 + (id)defaultManager;
 - (void).cxx_destruct;
 - (void)assetResourceRequest:(id)arg1 didFinishWithError:(id)arg2;
-- (void)assetResourceRequest:(id)arg1 didFindFileURL:(id)arg2;
+- (int)_requestForAssetResource:(id)arg1 loadURLOnly:(_Bool)arg2 options:(id)arg3 urlReceivedHandler:(CDUnknownBlockType)arg4 dataReceivedHandler:(CDUnknownBlockType)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (int)_nextRequestID;
 - (void)_autoResolveReferencedResources:(id)arg1 folderURL:(id)arg2 resourceClient:(id)arg3;
 - (id)reconnectAssets:(id)arg1 urlResolvingHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;

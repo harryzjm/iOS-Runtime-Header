@@ -29,10 +29,13 @@
 - (void)dataStream:(id)arg1 didReceiveEvent:(id)arg2 header:(id)arg3 payload:(id)arg4;
 - (void)dataStream:(id)arg1 didFailWithError:(id)arg2;
 - (void)dataStreamDidClose:(id)arg1;
+- (void)dataStreamInitiatedClose:(id)arg1;
 - (void)dataStreamDidOpen:(id)arg1;
 @property(readonly, nonatomic, getter=isActive) _Bool active;
-- (void)sendData:(id)arg1 socket:(id)arg2;
+- (void)sendData:(id)arg1 socket:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_notifyActiveStatusChangedFromPreviousValue:(_Bool)arg1;
+- (void)_reevaluateTrafficClassForDataStream;
+- (void)evaluateOptionsForSocket:(id)arg1;
 - (void)unregisterSocket:(id)arg1;
 - (void)registerSocket:(id)arg1;
 - (id)initWithDataStream:(id)arg1;

@@ -7,7 +7,6 @@
 #import <HealthUI/HKDisplayType.h>
 
 @interface HKDisplayType (WDDataProviders)
-- (id)wd_detailViewControllerWithProfile:(id)arg1 displayDate:(id)arg2;
 - (long long)_heartRoomDisplayTypeContext:(long long)arg1;
 - (Class)_wd_listViewControllerDataProviderClass:(_Bool)arg1;
 - (id)wd_dataListViewControllerWithProfile:(id)arg1 unitController:(id)arg2;

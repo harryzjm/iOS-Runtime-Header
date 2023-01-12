@@ -20,7 +20,6 @@
 + (id)decodeSyncObjectWithData:(id)arg1;
 + (long long)nextSyncAnchorWithSession:(id)arg1 startSyncAnchor:(long long)arg2 profile:(id)arg3 error:(id *)arg4;
 + (_Bool)generateSyncObjectsForSession:(id)arg1 syncAnchorRange:(struct HDSyncAnchorRange)arg2 profile:(id)arg3 messageHandler:(id)arg4 error:(id *)arg5;
-+ (id)sourceOrderSyncPredicateForSession:(id)arg1;
 + (id)syncEntityIdentifier;
 + (unsigned long long)supportedNanoSyncDirectionsForProtocolVersion:(int)arg1;
 + (int)nanoSyncObjectType;

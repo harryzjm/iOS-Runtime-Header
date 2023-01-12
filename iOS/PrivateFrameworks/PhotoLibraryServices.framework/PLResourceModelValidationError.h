@@ -10,6 +10,7 @@
 {
 }
 
++ (id)tableThumbUUIDMistmatchErrorForKey:(id)arg1 indexFromKey:(unsigned long long)arg2 assetID:(id)arg3;
 + (id)unreachableFileThumbnailErrorForKey:(id)arg1 assetID:(id)arg2;
 + (id)unreachableTableThumbnailErrorForKey:(id)arg1 assetID:(id)arg2;
 + (id)unreachableKeyErrorForKey:(id)arg1 atURL:(id)arg2 resource:(id)arg3;

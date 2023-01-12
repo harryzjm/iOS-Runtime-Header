@@ -7,6 +7,7 @@
 @class NSString;
 
 @protocol AVTAvatarAttributeEditorLayout
+@property(readonly, nonatomic) double maxGroupLabelWidth;
 @property(readonly, nonatomic) struct CGRect sideGroupContainerFrame;
 @property(readonly, nonatomic) _Bool showSideGroupPicker;
 @property(readonly, nonatomic) struct CGRect groupDialContainerFrame;

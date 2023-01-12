@@ -17,6 +17,7 @@
 - (_Bool)shouldShowPlaybackProgress;
 - (double)playbackProgress;
 - (_Bool)showExplicit;
+- (_Bool)enabled;
 - (UIImage *)image;
 - (CPUITableCellAccessory *)accessory;
 - (NSString *)detailText;

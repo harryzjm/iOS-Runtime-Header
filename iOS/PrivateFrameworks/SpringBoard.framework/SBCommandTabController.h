@@ -18,6 +18,7 @@
     SBCommandTabViewController *_commandTabViewController;
     NSTimer *_timer;
     UIApplicationSceneDeactivationAssertion *_resignActiveAssertion;
+    id <BSInvalidatable> _keyboardFocusAssertion;
     SBRecentDisplayItemsController *_recentDisplayItemsController;
     NSOrderedSet *_persistedRecentDisplayItems;
     NSMutableSet *_appsAllowedWhileHidden;

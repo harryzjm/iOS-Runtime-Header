@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString, NSUserDefaults;
+@class NSArray, NSDictionary, NSString, NSUserDefaults;
 
 @interface MRUserSettings : NSObject
 {
@@ -17,9 +17,19 @@
 + (id)currentSettings;
 - (void).cxx_destruct;
 @property(nonatomic, getter=isExternalDevicePairingAllowed) _Bool externalDevicePairingAllowed; // @synthesize externalDevicePairingAllowed=_externalDevicePairingAllowed;
+@property(readonly, nonatomic) _Bool visuallyIdentifyProactiveSuggestion;
+@property(readonly, nonatomic) _Bool supportProactiveSuggestion;
+@property(readonly, nonatomic) unsigned long long maximumNumberOfMediaSuggestions;
+@property(retain, nonatomic) NSDictionary *personalDeviceState;
+@property(readonly, nonatomic) double personalDeviceLockScreenTimeout;
+@property(readonly, nonatomic) _Bool supportLockscreenPlatterDisplayForPersonalDevice;
+@property(readonly, nonatomic) _Bool supportNowPlayingPIP;
+@property(readonly, nonatomic) _Bool supportMultiplayer;
+@property(readonly, nonatomic) _Bool hostSidekickDevices;
+@property(readonly, nonatomic) _Bool discoverSidekickDevices;
 @property(readonly, nonatomic) _Bool useClusterDevices;
-@property(readonly, nonatomic) _Bool useOutputDeviceTransport;
 @property(readonly, nonatomic) _Bool useAPSyncAPI;
+@property(readonly, nonatomic) _Bool discoverCompanionDevices;
 @property(readonly, nonatomic) _Bool supportNanoLinkAgent;
 @property(retain, nonatomic) NSString *lastBootUUID;
 - (void)setLocalLastPlayingDate:(id)arg1;
@@ -31,22 +41,36 @@
 - (void)updateDefaultSupportedCommandsData:(id)arg1 forClient:(id)arg2;
 - (id)defaultSupportedCommandsDataForClient:(id)arg1;
 @property(readonly, nonatomic) _Bool connectToAllEndpointsWhenInProximityToAnyDevice;
+@property(readonly, nonatomic) _Bool forceEnableCECVolume;
 @property(readonly, nonatomic) double sendPlaybackSessionUpdateToCompanionCoalesceInterval;
 @property(readonly, nonatomic) double lastPlayingDeviceThresholdInterval;
 @property(readonly, nonatomic) _Bool sendLastPlayingDeviceToHome;
+@property(readonly, nonatomic) _Bool supportRapportRemoteControlConnection;
+@property(readonly, nonatomic) _Bool supportRapportRemoteControlTransport;
 @property(readonly, nonatomic) _Bool supportLastPlayingDevice;
+@property(readonly, nonatomic) _Bool forceFadeForEveryHandoff;
+@property(readonly, nonatomic) _Bool supportOutOfProcessMigration;
+@property(readonly, nonatomic) _Bool supportExpanseMigration;
+@property(readonly, nonatomic) _Bool supportProximityMigrationV2;
+@property(readonly, nonatomic) _Bool supportNewMigrationArchitecture;
+@property(readonly, nonatomic) _Bool supportNewMigrationBehaviorForProximity;
 @property(readonly, nonatomic) _Bool supportMigration;
+@property(readonly, nonatomic) int nowPlayingControllerVersion;
+@property(readonly, nonatomic) NSArray *destinationResolverReconRetryIntervals;
 @property(readonly, nonatomic) _Bool supportProximityMigration;
-@property(readonly, nonatomic) NSArray *remoteControlDiscoveryWhitelist;
-@property(readonly, nonatomic) NSArray *remoteControlDiscoveryBlacklist;
+@property(readonly, nonatomic) NSArray *remoteControlDiscoveryAllowList;
+@property(readonly, nonatomic) NSArray *remoteControlDiscoveryDenyList;
 @property(readonly, nonatomic) NSArray *jsonClientUIDs;
 @property(readonly, nonatomic) double launchApplicationTimeoutInterval;
+@property(readonly, nonatomic) _Bool remoteDeviceIdleDisconnection;
+@property(readonly, nonatomic) double remoteDeviceIdleDisconnectionInterval;
 @property(readonly, nonatomic) double endpointRecentlyUserSelectedInterval;
 @property(readonly, nonatomic) double mediaRecentlyPlayedInterval;
 @property(readonly, nonatomic) double deviceRecentlyUsedInterval;
 @property(readonly, nonatomic) double discoverEndpointTimeoutInterval;
 @property(readonly, nonatomic) _Bool connectToUserSelectedEndpoint;
 @property(readonly, nonatomic) _Bool connectToAllEndpointsWhenAnyEndpointBeginsPlayback;
+@property(readonly, nonatomic) _Bool notifyDevicesInHomeThatPlaybackStarted;
 @property(readonly, nonatomic) _Bool connectToEndpointWhenBeginsPlayback;
 @property(readonly, nonatomic) _Bool useProactiveEndpoint;
 @property(readonly, nonatomic) _Bool needNowPlayingForegroundState;
@@ -63,6 +87,9 @@
 @property(readonly, nonatomic) double transactionWaitDurationOnOutOfMemory;
 @property(readonly, nonatomic) long long maxTransactionMemorySize;
 @property(readonly, nonatomic) _Bool useExternalDeviceSystemPairing;
+@property(readonly, nonatomic) double checkXPCConnectionStatusDefaultResponseTimeout;
+@property(readonly, nonatomic) unsigned long long checkXPCConnectionStatusDefaultInterval;
+@property(readonly, nonatomic) double wakingPlayerPathAssetionDuration;
 @property(readonly, nonatomic) double airPlayOutputContextInitTimeoutDuration;
 @property(readonly, nonatomic) double broadcastCommandWaitDuration;
 @property(readonly, nonatomic) double bluetoothDeviceResumeDuration;
@@ -74,6 +101,11 @@
 @property(readonly, nonatomic) double externalDeviceTimeoutDuration;
 @property(readonly, nonatomic) long long externalDeviceSocketQOSLevel;
 @property(readonly, nonatomic) _Bool hasExternalDeviceSocketQOSLevelSet;
+@property(readonly, nonatomic) _Bool verboseNowPlayingControllerLogging;
+@property(readonly, nonatomic) _Bool verboseConnectionMonitorLogging;
+@property(readonly, nonatomic) _Bool verboseMRDMediaRemoteClientLogging;
+@property(readonly, nonatomic) _Bool verboseHostedExternalDeviceClientLogging;
+@property(readonly, nonatomic) _Bool verboseHostedDiscoverySessionLogging;
 @property(readonly, nonatomic) _Bool shouldWakeDeviceForRemoteControlCommands;
 @property(readonly, nonatomic) _Bool verboseProtocolMessageLogging;
 @property(readonly, nonatomic) _Bool shouldLogArtwork;

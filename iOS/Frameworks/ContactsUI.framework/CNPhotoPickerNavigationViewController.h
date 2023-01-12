@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)keyboardWillShow:(id)arg1;
 - (void)beginDisablingAutorotation;
 - (void)endDisablingAutorotation;
+- (void)endDisablingAutorotationIfNeeded;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)dealloc;

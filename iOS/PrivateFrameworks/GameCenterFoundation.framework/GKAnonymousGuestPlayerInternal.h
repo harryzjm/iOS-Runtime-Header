@@ -14,13 +14,13 @@
 
 + (id)secureCodedPropertyKeys;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)setGuestIdentifier:(id)arg1;
 - (id)guestIdentifier;
 @property(retain, nonatomic) GKPlayerInternal *hostPlayerInternal; // @synthesize hostPlayerInternal=_hostPlayerInternal;
 - (_Bool)isGuestPlayer;
 - (id)playerID;
 - (id)initWithHostPlayerInternal:(id)arg1 guestIdentifier:(id)arg2;
-- (void)dealloc;
 
 @end
 

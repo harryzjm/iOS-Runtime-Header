@@ -9,7 +9,7 @@
 #import <HomeKitDaemon/HMDDataStreamBulkSendListener-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDHAPAccessory, NSObject, NSString;
+@class HMDHAPAccessory, NSDictionary, NSObject, NSString;
 @protocol HMDAccessoryDataStreamAdapterDelegate, HMDDataStreamBulkSendSession, OS_dispatch_queue;
 
 @interface HMDAccessoryDataStreamAdapter : HMFObject <HMFLogging, HMDDataStreamBulkSendListener>
@@ -21,6 +21,7 @@
     HMDHAPAccessory *_accessory;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSString *_fileType;
+    NSDictionary *_metadata;
     NSString *_reason;
     id <HMDDataStreamBulkSendSession> _currentBulkSendSession;
     CDUnknownBlockType _pendingOpenSessionCallback;
@@ -34,6 +35,7 @@
 @property(copy) CDUnknownBlockType pendingOpenSessionCallback; // @synthesize pendingOpenSessionCallback=_pendingOpenSessionCallback;
 @property(retain) id <HMDDataStreamBulkSendSession> currentBulkSendSession; // @synthesize currentBulkSendSession=_currentBulkSendSession;
 @property(readonly) NSString *reason; // @synthesize reason=_reason;
+@property(readonly) NSDictionary *metadata; // @synthesize metadata=_metadata;
 @property(readonly, copy) NSString *fileType; // @synthesize fileType=_fileType;
 @property(readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(readonly) __weak HMDHAPAccessory *accessory; // @synthesize accessory=_accessory;
@@ -57,7 +59,7 @@
 - (void)dealloc;
 - (void)shutDown;
 - (id)attributeDescriptions;
-- (id)initWithAccessory:(id)arg1 workQueue:(id)arg2 fileType:(id)arg3 reason:(id)arg4;
+- (id)initWithAccessory:(id)arg1 workQueue:(id)arg2 fileType:(id)arg3 metadata:(id)arg4 reason:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

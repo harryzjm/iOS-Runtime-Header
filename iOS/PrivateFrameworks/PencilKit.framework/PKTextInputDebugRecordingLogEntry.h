@@ -12,7 +12,7 @@
     PKDrawing *__originalDrawing;
 }
 
-+ (id)_dictionaryRepresentationForTargetContentInfo:(id)arg1 elementType:(id)arg2 detailLevel:(long long)arg3 contentLevel:(long long)arg4 resultAffectedRange:(struct _NSRange)arg5 localeIdentifier:(id)arg6;
++ (id)_dictionaryRepresentationForTargetContentInfo:(id)arg1 elementType:(id)arg2 detailLevel:(long long)arg3 contentLevel:(long long)arg4 resultAffectedRange:(struct _NSRange)arg5 localeIdentifiers:(id)arg6;
 + (id)_dictionaryRepresentationForTarget:(id)arg1;
 + (id)_dictionaryRepresentationForDrawing:(id)arg1 detailLevel:(long long)arg2 containsInProgress:(_Bool)arg3;
 - (void).cxx_destruct;

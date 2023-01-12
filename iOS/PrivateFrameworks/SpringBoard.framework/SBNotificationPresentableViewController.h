@@ -7,22 +7,33 @@
 #import <UserNotificationsUIKit/NCNotificationPresentableViewController.h>
 
 #import <SpringBoard/SBBannerManagerPresentable-Protocol.h>
+#import <SpringBoard/SBBarSwipeAffordanceObserver-Protocol.h>
+#import <SpringBoard/SBButtonEventsHandler-Protocol.h>
+#import <SpringBoard/SBUIPresentableLocalHomeGestureParticipant-Protocol.h>
 
 @class NSString, UIViewController;
+@protocol BNPresentableContext, SBUIPresentableHomeGestureContext;
 
-@interface SBNotificationPresentableViewController : NCNotificationPresentableViewController <SBBannerManagerPresentable>
+@interface SBNotificationPresentableViewController : NCNotificationPresentableViewController <SBBannerManagerPresentable, SBButtonEventsHandler, SBBarSwipeAffordanceObserver, SBUIPresentableLocalHomeGestureParticipant>
 {
+    id <SBUIPresentableHomeGestureContext> _homeGestureContext;
 }
 
-- (_Bool)shouldDismissForReason:(id)arg1;
+- (void).cxx_destruct;
+@property(nonatomic) __weak id <SBUIPresentableHomeGestureContext> homeGestureContext; // @synthesize homeGestureContext=_homeGestureContext;
+- (void)homeGesturePerformedForBarSwipeAffordanceView:(id)arg1;
+- (_Bool)shouldDismissForReason:(id)arg1 outReason:(id *)arg2;
 - (_Bool)shouldAcquireWindowLevelAssertion;
 - (_Bool)handleHeadsetButtonPress:(_Bool)arg1;
 - (_Bool)handleVolumeDownButtonPress;
 - (_Bool)handleVolumeUpButtonPress;
+- (_Bool)handleVoiceCommandButtonPress;
 - (_Bool)handleLockButtonPress;
 - (_Bool)handleHomeButtonLongPress;
 - (_Bool)handleHomeButtonDoublePress;
 - (_Bool)handleHomeButtonPress;
+- (void)longLookWillDismissForNotificationViewController:(id)arg1;
+- (void)longLookDidPresentForNotificationViewController:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
@@ -30,6 +41,7 @@
 @property(readonly, nonatomic, getter=isDraggingDismissalEnabled) _Bool draggingDismissalEnabled;
 @property(readonly, nonatomic, getter=isDraggingInteractionEnabled) _Bool draggingInteractionEnabled;
 @property(readonly) unsigned long long hash;
+@property(nonatomic) __weak id <BNPresentableContext> presentableContext;
 @property(readonly, nonatomic) long long presentableType;
 @property(readonly, copy, nonatomic) NSString *requestIdentifier;
 @property(readonly, copy, nonatomic) NSString *requesterIdentifier;

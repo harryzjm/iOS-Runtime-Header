@@ -21,6 +21,7 @@
 + (void)iterateLogsWithOptions:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 + (void)purgeLogs:(id)arg1;
 + (unsigned int)scanLogs:(id)arg1 from:(id)arg2;
++ (unsigned int)scanLogs:(id)arg1 from:(id)arg2 options:(id)arg3;
 + (id)scanProxies:(id)arg1;
 + (void)cleanupRetired:(id)arg1;
 + (void)markDescriptor:(int)arg1 withPairs:(id)arg2 andOptions:(id)arg3;

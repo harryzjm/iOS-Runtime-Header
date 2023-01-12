@@ -6,12 +6,13 @@
 
 #import <UIKitCore/UICollectionViewCell.h>
 
-@class NSArray, UIImageView, UILabel, UIView, UIVisualEffectView, _UIHostActivityProxy;
+@class NSArray, NSUUID, UIImageView, UILabel, UIView, UIVisualEffectView, _UIHostActivityProxy;
 
 @interface UIShareGroupActivityCell : UICollectionViewCell
 {
     _Bool _disabled;
     _Bool _longPressable;
+    NSUUID *_itemIdentifier;
     _UIHostActivityProxy *_activityProxy;
     UILabel *_titleLabel;
     UIImageView *_activityImageView;
@@ -37,6 +38,7 @@
 @property(retain, nonatomic) UIImageView *activityImageView; // @synthesize activityImageView=_activityImageView;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) _UIHostActivityProxy *activityProxy; // @synthesize activityProxy=_activityProxy;
+@property(retain, nonatomic) NSUUID *itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
 - (void)setSelected:(_Bool)arg1;
 - (void)setHighlighted:(_Bool)arg1;
 - (void)updateDarkening;

@@ -8,18 +8,18 @@
 
 @interface VNFaceLandmarkRegion3D
 {
-    const MISSING_TYPE **_points;
+    MISSING_TYPE **_points;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)defaultOriginatingRequestClassNameForRequestRevision:(unsigned long long)arg1;
 @property const MISSING_TYPE **points; // @synthesize points=_points;
 - (void)dealloc;
 - (MISSING_TYPE *)pointAtIndex:(unsigned long long)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithRequestRevision:(unsigned long long)arg1 faceBoundingBox:(struct CGRect)arg2 points:(MISSING_TYPE **)arg3 pointCount:(unsigned long long)arg4;
-- (id)initWithRequestRevision:(unsigned long long)arg1 faceBoundingBox:(struct CGRect)arg2;
+- (id)initWithOriginatingRequestSpecifier:(id)arg1 faceBoundingBox:(struct CGRect)arg2 points:(MISSING_TYPE **)arg3 pointCount:(unsigned long long)arg4;
+- (id)initWithOriginatingRequestSpecifier:(id)arg1 faceBoundingBox:(struct CGRect)arg2;
 
 @end
 

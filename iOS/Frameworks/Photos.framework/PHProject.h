@@ -19,9 +19,6 @@
 + (id)fetchProjectsWithOptions:(id)arg1;
 + (id)transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
 + (id)entityKeyMap;
-+ (_Bool)managedObjectSupportsRejectedState;
-+ (_Bool)managedObjectSupportsPendingState;
-+ (_Bool)managedObjectSupportsTrashedState;
 + (id)identifierCode;
 + (id)fetchType;
 + (id)localIdentifierWithUUID:(id)arg1;

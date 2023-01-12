@@ -12,7 +12,7 @@
 
 @interface TSTTableDataListSegment : TSPObject <TSPCopying>
 {
-    struct unordered_map<unsigned int, TSTTableDataObject *, std::__1::hash<unsigned int>, std::__1::equal_to<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, TSTTableDataObject *>>> _data;
+    struct unordered_map<unsigned int, TSTTableDataObject *, std::hash<unsigned int>, std::equal_to<unsigned int>, std::allocator<std::pair<const unsigned int, TSTTableDataObject *>>> _data;
     int _listType;
     unsigned long long _estimatedByteSize;
     NSMutableIndexSet *_keys;
@@ -25,8 +25,8 @@
 @property(nonatomic) struct _NSRange keyRange; // @synthesize keyRange=_keyRange;
 @property(readonly, nonatomic) unsigned long long estimatedByteSize; // @synthesize estimatedByteSize=_estimatedByteSize;
 @property(readonly, nonatomic) int listType; // @synthesize listType=_listType;
-- (void)encodeObjectsToDataListArchive:(struct TableDataList *)arg1 archiver:(id)arg2;
-- (void)loadObjectsFromDataListArchive:(const struct TableDataList *)arg1 unarchiver:(id)arg2;
+- (void)encodeObjectsToDataListArchive:(void *)arg1 archiver:(id)arg2;
+- (void)loadObjectsFromDataListArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)packageLocator;

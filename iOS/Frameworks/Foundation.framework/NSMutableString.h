@@ -8,6 +8,7 @@
 {
 }
 
++ (_Bool)_subclassesMustBeExplicitlyMentionedWhenDecoded;
 + (id)stringWithCapacity:(unsigned long long)arg1;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 - (id)initWithCapacity:(unsigned long long)arg1;

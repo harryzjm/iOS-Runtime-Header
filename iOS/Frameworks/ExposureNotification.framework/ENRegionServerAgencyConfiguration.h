@@ -19,18 +19,22 @@
     NSString *_agencyImageURL;
     unsigned long long _agencyHeaderStyle;
     NSURL *_agencyWebsiteURL;
+    NSURL *_agencyFAQWebsiteURL;
     ENRegionServerAgencyLocalizedConfiguration *_localizedConfiguration;
     NSString *_legalConsentVersion;
     NSURL *_revokedClassificationURL;
     NSURL *_verificationCodeLearnMoreURL;
+    NSURL *_webReportURL;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSURL *webReportURL; // @synthesize webReportURL=_webReportURL;
 @property(readonly, copy, nonatomic) NSURL *verificationCodeLearnMoreURL; // @synthesize verificationCodeLearnMoreURL=_verificationCodeLearnMoreURL;
 @property(readonly, copy, nonatomic) NSURL *revokedClassificationURL; // @synthesize revokedClassificationURL=_revokedClassificationURL;
 @property(copy, nonatomic) NSString *legalConsentVersion; // @synthesize legalConsentVersion=_legalConsentVersion;
 @property(copy, nonatomic) ENRegionServerAgencyLocalizedConfiguration *localizedConfiguration; // @synthesize localizedConfiguration=_localizedConfiguration;
+@property(readonly, copy, nonatomic) NSURL *agencyFAQWebsiteURL; // @synthesize agencyFAQWebsiteURL=_agencyFAQWebsiteURL;
 @property(readonly, copy, nonatomic) NSURL *agencyWebsiteURL; // @synthesize agencyWebsiteURL=_agencyWebsiteURL;
 @property(nonatomic) unsigned long long agencyHeaderStyle; // @synthesize agencyHeaderStyle=_agencyHeaderStyle;
 @property(copy, nonatomic) NSString *agencyImageURL; // @synthesize agencyImageURL=_agencyImageURL;

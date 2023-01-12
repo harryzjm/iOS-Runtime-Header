@@ -10,13 +10,15 @@
 {
     _Bool _displaysTransitionControl;
     _Bool _supportsFocusTransfer;
+    _Bool _supportsUIOutsideSafeArea;
     unsigned long long _statusBarEdge;
     struct CGRect _visibleFrame;
     struct CGRect _safeFrame;
     struct CGRect _unadjustedSafeFrame;
 }
 
-+ (struct NSEdgeInsets)insetsForOEMUIWithDisplaySize:(struct CGSize)arg1 originalFrame:(struct CGRect)arg2;
++ (struct NSEdgeInsets)insetsForOEMUIWithDisplaySize:(struct CGSize)arg1 safeFrame:(struct CGRect)arg2 viewAreaFrame:(struct CGRect)arg3;
+@property(nonatomic) _Bool supportsUIOutsideSafeArea; // @synthesize supportsUIOutsideSafeArea=_supportsUIOutsideSafeArea;
 @property(nonatomic) _Bool supportsFocusTransfer; // @synthesize supportsFocusTransfer=_supportsFocusTransfer;
 @property(nonatomic) struct CGRect unadjustedSafeFrame; // @synthesize unadjustedSafeFrame=_unadjustedSafeFrame;
 @property(nonatomic) unsigned long long statusBarEdge; // @synthesize statusBarEdge=_statusBarEdge;
@@ -26,7 +28,7 @@
 - (_Bool)isEqualToViewArea:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
-- (id)initWithPropertySupplier:(CDUnknownBlockType)arg1 additionalInsets:(struct NSEdgeInsets)arg2 scale:(double)arg3 viewAreaDictionary:(id)arg4 displayPixelSize:(struct CGSize)arg5 wantsCornerMasks:(_Bool)arg6;
+- (id)initWithPropertySupplier:(CDUnknownBlockType)arg1 additionalInsets:(struct NSEdgeInsets)arg2 viewAreaDictionary:(id)arg3 displayPixelSize:(struct CGSize)arg4 wantsCornerMasks:(_Bool)arg5;
 - (id)initWithPropertySupplier:(CDUnknownBlockType)arg1 additionalInsets:(struct NSEdgeInsets)arg2;
 - (id)initWithPropertySupplier:(CDUnknownBlockType)arg1;
 

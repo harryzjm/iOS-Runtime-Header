@@ -11,6 +11,7 @@
 @interface _TtC9ChronoKit30IOSEnvironmentProvidingFactory : _TtCs12_SwiftObject
 {
     MISSING_TYPE *extensionManager;
+    MISSING_TYPE *keybagStateProvider;
     MISSING_TYPE *_lock_mapValidBundleProviders;
     MISSING_TYPE *subscriptions;
     MISSING_TYPE *lock;

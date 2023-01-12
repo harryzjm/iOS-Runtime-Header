@@ -8,7 +8,7 @@
 
 #import <MediaMiningKit/CLSSocialServiceContactsDelegate-Protocol.h>
 
-@class CLSLRUMemoryCache, CLSPersonIdentity, CLSRoutineService, CLSSocialServiceCalendar, CLSSocialServiceContacts, CLSSocialServiceCoreDuet, CLSSocialServiceCoreNameParser, NSDateInterval, NSString, NSURL;
+@class CLSLRUMemoryCache, CLSPersonIdentity, CLSRoutineService, CLSSocialServiceCalendar, CLSSocialServiceContacts, CLSSocialServiceCoreDuet, CLSSocialServiceCoreNameParser, NSString, NSURL;
 
 @interface CLSServiceManager : NSObject <CLSSocialServiceContactsDelegate>
 {
@@ -20,7 +20,6 @@
     CLSSocialServiceCoreNameParser *_coreNameParserService;
     CLSPersonIdentity *_mePerson;
     NSObject *_routineServiceLockObject;
-    NSDateInterval *_validDateInterval;
     NSURL *_applicationDataURL;
 }
 
@@ -28,7 +27,6 @@
 + (id)sharedManager;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSURL *applicationDataURL; // @synthesize applicationDataURL=_applicationDataURL;
-@property(retain, nonatomic) NSDateInterval *validDateInterval; // @synthesize validDateInterval=_validDateInterval;
 @property(readonly, nonatomic) NSObject *routineServiceLockObject; // @synthesize routineServiceLockObject=_routineServiceLockObject;
 @property(retain, nonatomic) CLSPersonIdentity *mePerson; // @synthesize mePerson=_mePerson;
 - (void)flushSocialServicesAtURL:(id)arg1;
@@ -59,10 +57,7 @@
 - (void)enumeratePersonsForFullname:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)personForPersonHandle:(id)arg1;
 - (id)personLocalIdentifierMatchingContactPictureForContactIdentifier:(id)arg1 usingPersonsModel:(id)arg2;
-- (id)cachedPersonLocalIdentifierMatchingContactPictureForContactIdentifier:(id)arg1;
 - (void)enumeratePersonsAndRelationshipUsingBlock:(CDUnknownBlockType)arg1;
-- (void)enumeratePersonsAndBirthdayDateUsingBlock:(CDUnknownBlockType)arg1;
-- (void)enumeratePersonsAndHomeAddressUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateHomeAddressesForPersonWithContactIdentifier:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateAllPersonsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)coreDuetPersonSuggestionsOnDate:(id)arg1;

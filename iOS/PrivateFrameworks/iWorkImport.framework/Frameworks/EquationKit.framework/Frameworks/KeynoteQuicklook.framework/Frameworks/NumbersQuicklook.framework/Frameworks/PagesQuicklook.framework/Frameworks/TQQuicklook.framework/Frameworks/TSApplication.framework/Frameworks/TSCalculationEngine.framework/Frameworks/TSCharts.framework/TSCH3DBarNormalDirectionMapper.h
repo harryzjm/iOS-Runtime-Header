@@ -6,14 +6,14 @@
 
 @interface TSCH3DBarNormalDirectionMapper
 {
-    long long mWallOffset;
-    long long mCrossSectionCount;
-    long long mSpineCount;
-    long long mBeginLimit;
-    long long mEndLimit;
+    long long _wallOffset;
+    long long _crossSectionCount;
+    long long _spineCount;
+    long long _beginLimit;
+    long long _endLimit;
 }
 
-- (void)mapFromVertexArray:(const tvec3_17f03ce0 *)arg1 normalArray:(const tvec3_17f03ce0 *)arg2 normalMatrix:(const tmat3x3_b39cd897 *)arg3 numVertices:(long long)arg4 destination:(vector_aab22ae2 *)arg5;
+- (void)mapFromVertexArray:(const void *)arg1 normalArray:(const void *)arg2 normalMatrix:(const void *)arg3 numVertices:(long long)arg4 destination:(void *)arg5;
 - (id)initWithWallOffset:(long long)arg1 crossSectionCount:(long long)arg2 spineCount:(long long)arg3 beginLimit:(long long)arg4 endLimit:(long long)arg5;
 
 @end

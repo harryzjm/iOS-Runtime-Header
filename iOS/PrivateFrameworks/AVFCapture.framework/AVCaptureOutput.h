@@ -17,6 +17,8 @@
 + (long long)dataDroppedReasonFromSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
 + (id)availableVideoCodecTypesForSourceDevice:(id)arg1 sourceFormat:(id)arg2 outputDimensions:(CDStruct_79c71658)arg3 fileType:(id)arg4 videoCodecTypesWhiteList:(id)arg5;
 + (void)initialize;
+- (void)handleBackgroundBlurActiveChangedForDevice:(id)arg1;
+- (void)handleCenterStageActiveChangedForDevice:(id)arg1;
 - (_Bool)updateVideoSettingsForConnection:(id)arg1;
 - (id)recommendedOutputSettingsForConnection:(id)arg1 sourceSettings:(id)arg2 videoCodecType:(id)arg3 fileType:(id)arg4 isIris:(_Bool)arg5;
 - (id)_recommendedAudioOutputSettingsForConnection:(id)arg1 sourceSettings:(id)arg2 fileType:(id)arg3;

@@ -10,37 +10,40 @@
 #import <PhotosUICore/PXGSpriteTexture-Protocol.h>
 
 @class NSIndexSet, NSMutableIndexSet, NSString;
-@protocol OS_dispatch_queue;
 
 @interface PXGBaseTexture : NSObject <PXGSpriteTexture, PXGMutableSpriteTexture>
 {
     NSMutableIndexSet *_spriteIndexes;
-    NSObject<OS_dispatch_queue> *_syncQueue;
-    struct {
-        int _field1;
-        unsigned int _field2;
-    } *_syncQueue_pendingImageRequestInfo;
-    unsigned long long _syncQueue_pendingImageRequestInfoCount;
-    unsigned long long _syncQueue_pendingImageRequestInfoCapacity;
+    struct os_unfair_lock_s _lock;
+    CDStruct_f1d50d6b *_lock_pendingImageRequestInfo;
+    unsigned long long _lock_pendingImageRequestInfoCount;
+    unsigned long long _lock_pendingImageRequestInfoCapacity;
+    _Bool _isDegraded;
 }
 
 - (void).cxx_destruct;
+- (void)setIsDegraded:(_Bool)arg1;
+@property(readonly, nonatomic) _Bool isDegraded;
 @property(readonly, nonatomic) _Bool isOpaque;
 @property(readonly, nonatomic) struct CGSize pixelSize;
 @property(readonly, nonatomic) struct CGImage *imageRepresentation;
 @property(readonly, nonatomic) int presentationType;
 @property(readonly, nonatomic) long long estimatedByteSize;
-- (void)_syncQueue_resizeStorageIfNeeded;
+- (void)_lock_resizeStorageIfNeeded;
 - (_Bool)containsSpriteIndex:(unsigned int)arg1;
 - (void)applyChangeDetails:(id)arg1;
+- (void)_filterPendingTextureRequestIDsWithPredicate:(CDUnknownBlockType)arg1;
 - (void)processPendingTextureRequestIDsWithHandler:(CDUnknownBlockType)arg1;
+- (_Bool)hasPendingTextureRequestID:(int)arg1 deliveryOrder:(unsigned int)arg2;
 - (void)enumerateSpriteIndexes:(CDUnknownBlockType)arg1;
 - (void)getSpriteIndexes:(unsigned int *)arg1 maxSpriteCount:(unsigned int)arg2;
 - (void)removeAllSpriteIndexes;
 - (void)addSpriteIndexRange:(struct _NSRange)arg1;
 - (void)_addSpriteIndex:(unsigned int)arg1;
 - (void)removeSpriteIndex:(unsigned int)arg1;
+- (_Bool)removePendingSpriteWithTextureRequestID:(int)arg1 ifDeliveredBefore:(unsigned int)arg2;
 - (void)addSpriteWithTextureRequestID:(int)arg1 deliveryOrder:(unsigned int)arg2;
+@property(readonly, nonatomic) _Bool hasSprites;
 @property(readonly, nonatomic) unsigned int spriteCount;
 @property(readonly, nonatomic) NSIndexSet *spriteIndexes;
 @property(readonly, copy) NSString *description;

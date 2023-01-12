@@ -11,6 +11,9 @@
 @interface _TtC16NewsSubscription29SubscriptionOffersDataManager : _TtCs12_SwiftObject
 {
     MISSING_TYPE *purchaseManager;
+    MISSING_TYPE *hideMyEmailSignupConfigProvider;
+    MISSING_TYPE *hideMyEmailService;
+    MISSING_TYPE *account;
 }
 
 @end

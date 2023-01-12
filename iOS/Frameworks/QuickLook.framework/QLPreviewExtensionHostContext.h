@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 + (id)_extensionAuxiliaryVendorProtocol;
 - (void).cxx_destruct;
 @property(nonatomic) __weak QLRemoteItemViewController *remoteItemViewController; // @synthesize remoteItemViewController=_remoteItemViewController;
+- (void)generatePreviewForURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)invalidateService;
 - (void)getPrinterProxyWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

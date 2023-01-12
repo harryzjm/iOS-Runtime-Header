@@ -8,12 +8,14 @@
 
 @interface NETransparentProxyNetworkSettings
 {
+    _Bool _isFullyTransparent;
     NSArray *_includedNetworkRules;
     NSArray *_excludedNetworkRules;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property _Bool isFullyTransparent; // @synthesize isFullyTransparent=_isFullyTransparent;
 @property(copy) NSArray *excludedNetworkRules; // @synthesize excludedNetworkRules=_excludedNetworkRules;
 @property(copy) NSArray *includedNetworkRules; // @synthesize includedNetworkRules=_includedNetworkRules;
 - (id)descriptionWithIndent:(int)arg1 options:(unsigned long long)arg2;

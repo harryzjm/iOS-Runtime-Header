@@ -13,18 +13,27 @@
     NSString *_featuresModelId;
     NSString *_featuresVersion;
     unsigned long long _vectorLength;
+    unsigned long long _idVectorLength;
+    unsigned long long _extraIdOptions;
+    unsigned long long _vectorizerStrategy;
+    long long _vectorNormalization;
     struct _NSRange _characterNGramRange;
     struct _NSRange _tokenNGramRange;
 }
 
++ (unsigned long long)strategyForString:(id)arg1 modelTypeName:(id)arg2;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) long long vectorNormalization; // @synthesize vectorNormalization=_vectorNormalization;
+@property(readonly, nonatomic) unsigned long long vectorizerStrategy; // @synthesize vectorizerStrategy=_vectorizerStrategy;
+@property(readonly, nonatomic) unsigned long long extraIdOptions; // @synthesize extraIdOptions=_extraIdOptions;
+@property(readonly, nonatomic) unsigned long long idVectorLength; // @synthesize idVectorLength=_idVectorLength;
 @property(readonly, nonatomic) unsigned long long vectorLength; // @synthesize vectorLength=_vectorLength;
 @property(readonly, nonatomic) struct _NSRange tokenNGramRange; // @synthesize tokenNGramRange=_tokenNGramRange;
 @property(readonly, nonatomic) struct _NSRange characterNGramRange; // @synthesize characterNGramRange=_characterNGramRange;
 @property(readonly, copy, nonatomic) NSString *featuresVersion; // @synthesize featuresVersion=_featuresVersion;
 @property(readonly, copy, nonatomic) NSString *featuresModelId; // @synthesize featuresModelId=_featuresModelId;
 - (id)sessionDescriptorForLanguage:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
+- (id)initWithDictionary:(id)arg1 modelTypeName:(id)arg2;
 
 @end
 

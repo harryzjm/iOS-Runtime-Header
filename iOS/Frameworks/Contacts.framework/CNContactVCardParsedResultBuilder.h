@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (long long)personFlags;
 - (_Bool)setPersonFlags:(long long)arg1;
-- (long long)personFlagsByAddingContactType:(long long)arg1 toFlags:(long long)arg2;
+- (unsigned long long)personFlagsByAddingContactType:(long long)arg1 toFlags:(unsigned long long)arg2;
 - (long long)contactTypeFromPersonFlags:(long long)arg1;
 - (id)validCountryCodes;
 - (void)setUnknownProperties:(id)arg1;

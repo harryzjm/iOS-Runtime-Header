@@ -7,7 +7,7 @@
 #import <SpringBoard/NSObject-Protocol.h>
 
 @class NSArray, NSString;
-@protocol CSAppHostConfiguring, CSApplicationInforming, CSAuthenticationManaging, CSCarPlayStatusProviding, CSDeviceOrientationProviding, CSHomeAffordanceControlling, CSLegibilityProviding, CSMediaControlling, CSModalHomeAffordanceControlling, CSNotificationPresenting, CSOverlayProviding, CSPowerStatusProviding, CSProximitySensorProviding, CSReachabilityControlling, CSResetRestoreStatusProviding, CSScreenStateProviding, CSStatusBarControlling, CSSystemPointerInteractionManaging, CSTelephonyStatusProviding, CSThermalStatusProviding, CSTouchEnvironmentStatusProviding, CSUnlockRequesting, CSUserSessionControlling, CSWallpaperLogging, CSWallpaperViewProviding, SBFActionProviding, SBFAuthenticationAssertionProviding, SBFAuthenticationStatusProvider, SBFDateProviding, SBFLockOutStatusProvider, SBFPasscodeFieldChangeObserver, SBFScreenWakeAnimationControlling, SBUIBiometricResource;
+@protocol CSAppHostConfiguring, CSApplicationInforming, CSAuthenticationManaging, CSCarPlayStatusProviding, CSDeviceOrientationProviding, CSHomeAffordanceControlling, CSLegibilityProviding, CSMagSafeAccessoryStatusProviding, CSMediaControlling, CSModalHomeAffordanceControlling, CSNotificationPresenting, CSOverlayProviding, CSPlatterHomeGestureManaging, CSPowerStatusProviding, CSProximitySensorProviding, CSReachabilityControlling, CSResetRestoreStatusProviding, CSScreenStateProviding, CSStatusBarControlling, CSSystemPointerInteractionManaging, CSTelephonyStatusProviding, CSThermalStatusProviding, CSTouchEnvironmentStatusProviding, CSUnlockRequesting, CSUserSessionControlling, CSWallpaperLogging, CSWallpaperViewProviding, SBFActionProviding, SBFAuthenticationAssertionProviding, SBFAuthenticationStatusProvider, SBFDateProviding, SBFLockOutStatusProvider, SBFPasscodeFieldChangeObserver, SBFScreenWakeAnimationControlling, SBUIBiometricResource;
 
 @protocol CSCoverSheetContextProviding <NSObject>
 @property(readonly, nonatomic) id <CSDeviceOrientationProviding> deviceOrientationProvider;
@@ -26,6 +26,7 @@
 @property(readonly, nonatomic) id <CSUnlockRequesting> unlockRequester;
 @property(readonly, nonatomic) id <CSMediaControlling> mediaController;
 @property(readonly, nonatomic) id <CSStatusBarControlling> statusBarController;
+@property(readonly, nonatomic) id <CSPlatterHomeGestureManaging> platterHomeGestureManager;
 @property(readonly, nonatomic) id <CSModalHomeAffordanceControlling> modalHomeAffordanceController;
 @property(readonly, nonatomic) id <CSHomeAffordanceControlling> homeAffordanceController;
 @property(readonly, nonatomic) id <CSAuthenticationManaging> authenticationManager;
@@ -37,6 +38,10 @@
 @property(readonly, nonatomic) id <SBUIBiometricResource> biometricResource;
 @property(readonly, nonatomic) id <CSThermalStatusProviding> thermalStatusProvider;
 @property(readonly, nonatomic) id <CSResetRestoreStatusProviding> resetRestoreStatusProvider;
+@property(readonly, nonatomic) id <CSMagSafeAccessoryStatusProviding> accessoryStatusProvider;
+@property(readonly, copy, nonatomic) NSString *accessoryAnimationStatusChangedNotificationName;
+@property(readonly, copy, nonatomic) NSString *accessoryDetachedNotificationName;
+@property(readonly, copy, nonatomic) NSString *accessoryAttachedNotificationName;
 @property(readonly, copy, nonatomic) NSString *powerStatusChangeNotificationName;
 @property(readonly, nonatomic) id <CSPowerStatusProviding> powerStatusProvider;
 @property(readonly, nonatomic) id <CSLegibilityProviding> legibilityProvider;

@@ -22,11 +22,12 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property _Bool isDetecting; // @synthesize isDetecting=_isDetecting;
+@property(readonly, nonatomic) _Bool isDetecting; // @synthesize isDetecting=_isDetecting;
 @property(readonly, nonatomic) __weak HDSPEnvironment *environment; // @synthesize environment=_environment;
 @property(nonatomic) __weak id <HDSPWakeDetectorDelegate> wakeDetectorDelegate; // @synthesize wakeDetectorDelegate=_wakeDetectorDelegate;
 - (void)detectedOffWristOnDate:(id)arg1;
 - (void)detectedOnWristOnDate:(id)arg1;
+@property(readonly, nonatomic) unsigned long long detectionWindowMinutes;
 - (void)stopDetecting;
 - (void)startDetecting;
 - (id)onWristMonitor;

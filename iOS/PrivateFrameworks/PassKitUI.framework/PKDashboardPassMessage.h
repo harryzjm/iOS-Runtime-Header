@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, UIImage;
+@class NSDictionary, NSString, UIImage;
 
 @interface PKDashboardPassMessage : NSObject
 {
@@ -24,9 +24,11 @@
     CDUnknownBlockType _actionOnDismiss;
     UIImage *_image;
     NSString *_analyticsReporterSubject;
+    NSDictionary *_additionalEventAnalyticsOnButtonPress;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSDictionary *additionalEventAnalyticsOnButtonPress; // @synthesize additionalEventAnalyticsOnButtonPress=_additionalEventAnalyticsOnButtonPress;
 @property(nonatomic, getter=canReportToAnalytics) _Bool reportToAnalytics; // @synthesize reportToAnalytics=_reportToAnalytics;
 @property(nonatomic) NSString *analyticsReporterSubject; // @synthesize analyticsReporterSubject=_analyticsReporterSubject;
 @property(nonatomic) _Bool showSpinner; // @synthesize showSpinner=_showSpinner;

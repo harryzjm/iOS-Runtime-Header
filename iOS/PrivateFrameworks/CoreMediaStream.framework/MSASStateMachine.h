@@ -122,6 +122,7 @@
 - (void)checkForCommentChanges:(id)arg1 inAlbumWithGUID:(id)arg2;
 - (void)_checkForAssetCollectionUpdatesDisposition:(int)arg1 params:(id)arg2;
 - (void)checkForAssetCollectionUpdates:(id)arg1 inAlbum:(id)arg2 info:(id)arg3;
+- (void)validateInvitationToken:(id)arg1 albumName:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)acceptInvitationWithToken:(id)arg1 info:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)_markAsSpamInvitationForTokenDisposition:(int)arg1 params:(id)arg2;
 - (void)markAsSpamInvitationForToken:(id)arg1 info:(id)arg2;

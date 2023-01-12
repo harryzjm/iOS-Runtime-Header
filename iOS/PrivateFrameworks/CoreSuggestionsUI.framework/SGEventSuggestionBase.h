@@ -31,7 +31,9 @@
 - (id)suggestionCategoryTitle;
 - (id)suggestionCategoryImage;
 - (id)suggestionCategoryId;
+- (long long)suggestionActionButtonType;
 - (id)suggestionCategory;
+- (void)preloadPrimaryActionViewController;
 - (id)suggestionPrimaryAction;
 - (id)suggestionDismissAction;
 - (id)primaryActionTitle;

@@ -21,7 +21,7 @@
     NSString *_accessibilityLabel;
 }
 
-+ (id)gaugeProviderWithJSONObjectRepresentation:(id)arg1 bundle:(id)arg2;
++ (id)providerWithJSONObjectRepresentation:(id)arg1 bundle:(id)arg2;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool finalized; // @synthesize finalized=_finalized;

@@ -22,7 +22,7 @@
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)executeLocallyWithIntentDeliverer:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)executeRemotelyWithVendorRemote:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (_Bool)executeRemotelyWithVendorRemote:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithIntent:(id)arg1 parameterName:(id)arg2;
 - (id)initWithIntent:(id)arg1 parameterNames:(id)arg2;
 

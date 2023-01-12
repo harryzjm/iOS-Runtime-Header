@@ -48,6 +48,7 @@
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithLeadingAnchor:(id)arg1 topAnchor:(id)arg2 widthAnchor:(id)arg3 heightAnchor:(id)arg4;
 - (_Bool)nsli_isLegalConstraintItem;
 - (id)nsli_superitem;
 - (id)ruleContainingLayoutRect:(id)arg1;

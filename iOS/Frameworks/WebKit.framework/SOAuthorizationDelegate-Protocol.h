@@ -6,13 +6,14 @@
 
 #import <WebKit/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, NSError, NSHTTPURLResponse, SOAuthorization, UIViewController;
+@class NSData, NSDictionary, NSError, NSHTTPURLResponse, SOAuthorization, SOAuthorizationResult, UIViewController;
 
 @protocol SOAuthorizationDelegate <NSObject>
 
 @optional
 - (void)authorization:(SOAuthorization *)arg1 presentViewController:(UIViewController *)arg2 withCompletion:(void (^)(_Bool, NSError *))arg3;
 - (void)authorization:(SOAuthorization *)arg1 didCompleteWithError:(NSError *)arg2;
+- (void)authorization:(SOAuthorization *)arg1 didCompleteWithAuthorizationResult:(SOAuthorizationResult *)arg2;
 - (void)authorization:(SOAuthorization *)arg1 didCompleteWithHTTPResponse:(NSHTTPURLResponse *)arg2 httpBody:(NSData *)arg3;
 - (void)authorization:(SOAuthorization *)arg1 didCompleteWithHTTPAuthorizationHeaders:(NSDictionary *)arg2;
 - (void)authorizationDidComplete:(SOAuthorization *)arg1;

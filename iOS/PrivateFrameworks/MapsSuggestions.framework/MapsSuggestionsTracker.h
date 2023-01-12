@@ -50,6 +50,7 @@
 - (void)resetAllTitleFormatting;
 - (void)clearLocationAndETAs;
 - (void)unschedule;
+- (void)rescheduleRefreshOnlyIfAlreadyRunning;
 - (void)scheduleRefresh;
 - (void)setLocation:(id)arg1;
 - (void)trackSuggestionEntries:(id)arg1 transportType:(int)arg2;

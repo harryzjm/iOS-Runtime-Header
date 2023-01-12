@@ -11,7 +11,6 @@
 @class MKMapItem, MKPlaceAttributionCell, NSArray, NSAttributedString, NSString, _MKMapItemAttribution;
 @protocol _MKInfoCardAnalyticsDelegate;
 
-__attribute__((visibility("hidden")))
 @interface MKPlaceAttributionViewController <MKPlaceAttributionCellDelegate, MKStackingViewControllerFixedHeightAware, MKModuleViewControllerProtocol>
 {
     _Bool _resizableViewsDisabled;

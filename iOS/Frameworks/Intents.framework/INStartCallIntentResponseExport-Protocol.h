@@ -7,9 +7,10 @@
 #import <Intents/JSExport-Protocol.h>
 #import <Intents/NSObject-Protocol.h>
 
-@class INConnectedCall, NSNumber;
+@class INConnectedCall, NSArray, NSNumber;
 
 @protocol INStartCallIntentResponseExport <NSObject, JSExport>
+@property(copy, nonatomic) NSArray *restrictedContacts;
 @property(copy, nonatomic) INConnectedCall *startedCall;
 @property(nonatomic) long long confirmationReason;
 @property(copy, nonatomic) NSNumber *shouldDoEmergencyCountdown;

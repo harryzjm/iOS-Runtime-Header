@@ -21,6 +21,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *cloudRecordByZoneRecord; // @synthesize cloudRecordByZoneRecord=_cloudRecordByZoneRecord;
 - (long long)count;
+- (id)allRecordIDs;
 - (id)allRecordNames;
 - (id)allRecordsWithRecordType:(id)arg1;
 - (id)allObjects;

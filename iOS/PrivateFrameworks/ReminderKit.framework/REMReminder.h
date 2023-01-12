@@ -10,11 +10,12 @@
 #import <ReminderKit/REMDAChangedModelObjectResult-Protocol.h>
 #import <ReminderKit/REMExternalSyncMetadataProviding-Protocol.h>
 #import <ReminderKit/REMObjectIDProviding-Protocol.h>
+#import <ReminderKit/REMSupportedVersionProviding-Protocol.h>
 #import <ReminderKit/_REMDAChangeTrackableModel-Protocol.h>
 
-@class NSArray, NSAttributedString, NSData, NSDate, NSDateComponents, NSSet, NSString, NSURL, REMAccount, REMCRMergeableStringDocument, REMContactRepresentation, REMDisplayDate, REMList, REMObjectID, REMReminderAssignmentContext, REMReminderAttachmentContext, REMReminderFlaggedContext, REMReminderStorage, REMReminderSubtaskContext, REMResolutionTokenMap, REMStore, REMUserActivity;
+@class NSArray, NSAttributedString, NSData, NSDate, NSDateComponents, NSSet, NSString, NSURL, REMAccount, REMCRMergeableStringDocument, REMContactRepresentation, REMDisplayDate, REMList, REMObjectID, REMReminderAssignmentContext, REMReminderAttachmentContext, REMReminderFlaggedContext, REMReminderHashtagContext, REMReminderStorage, REMReminderSubtaskContext, REMResolutionTokenMap, REMStore, REMUserActivity;
 
-@interface REMReminder : NSObject <REMDAChangeTrackableFetchableModel, REMDAChangedModelObjectResult, _REMDAChangeTrackableModel, REMObjectIDProviding, REMExternalSyncMetadataProviding>
+@interface REMReminder : NSObject <REMDAChangeTrackableFetchableModel, REMDAChangedModelObjectResult, _REMDAChangeTrackableModel, REMObjectIDProviding, REMExternalSyncMetadataProviding, REMSupportedVersionProviding>
 {
     REMStore *_store;
     REMAccount *_account;
@@ -32,12 +33,12 @@
 + (id)fetchRequestWithPredicateDescriptor:(id)arg1 sortDescriptors:(id)arg2;
 + (_Bool)isChangeTrackableFetchableModel;
 + (_Bool)isChangeTrackableModel;
-+ (CDUnknownBlockType)rem_DA_deletedKeyFromLazyDeletedModelObjectBlock;
++ (CDUnknownBlockType)rem_DA_deletedKeyFromConcealedModelObjectBlock;
 + (CDUnknownBlockType)rem_DA_deletedKeyFromTombstoneBlock;
 + (CDUnknownBlockType)rem_DA_fetchByObjectIDsBlock;
 + (CDUnknownBlockType)rem_DA_fetchByObjectIDBlock;
-+ (id)rem_DA_lazyDeleteProperties;
-+ (_Bool)rem_DA_supportsLazyDelete;
++ (id)rem_DA_propertiesAffectingIsConcealed;
++ (_Bool)rem_DA_supportsConcealedObjects;
 + (_Bool)rem_DA_supportsFetching;
 - (void).cxx_destruct;
 @property(retain, nonatomic) REMReminder *parentReminder; // @synthesize parentReminder=_parentReminder;
@@ -45,7 +46,9 @@
 @property(readonly, nonatomic) REMList *list; // @synthesize list=_list;
 @property(readonly, nonatomic) REMAccount *account; // @synthesize account=_account;
 @property(readonly, nonatomic) REMStore *store; // @synthesize store=_store;
+- (_Bool)shouldUseExternalIdentifierAsDeletionKey;
 @property(readonly, nonatomic) NSString *externalIdentifierForMarkedForDeletionObject;
+- (_Bool)isUnsupported;
 @property(readonly, nonatomic) REMObjectID *remObjectID;
 - (_Bool)respondsToSelector:(SEL)arg1;
 - (id)forwardingTargetForSelector:(SEL)arg1;
@@ -62,11 +65,14 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
+@property(readonly, nonatomic) REMReminderHashtagContext *hashtagContext;
 @property(readonly, nonatomic) REMReminderAssignmentContext *assignmentContext;
 @property(readonly, nonatomic) REMReminderFlaggedContext *flaggedContext;
 @property(readonly, nonatomic) REMReminderAttachmentContext *attachmentContext;
 @property(readonly, nonatomic) REMReminderSubtaskContext *subtaskContext;
 - (_Bool)isSubtask;
+- (id)optionalObjectID;
+- (id)initWithStore:(id)arg1 account:(id)arg2 storage:(id)arg3;
 - (id)initWithStore:(id)arg1 storage:(id)arg2;
 - (id)initWithStore:(id)arg1 list:(id)arg2 storage:(id)arg3;
 
@@ -84,9 +90,12 @@
 @property(readonly, nonatomic) NSString *daSyncToken; // @dynamic daSyncToken;
 @property(readonly, copy, nonatomic) REMDisplayDate *displayDate; // @dynamic displayDate;
 @property(readonly, copy, nonatomic) NSDateComponents *dueDateComponents; // @dynamic dueDateComponents;
+@property(readonly, nonatomic) long long effectiveMinimumSupportedVersion; // @dynamic effectiveMinimumSupportedVersion;
 @property(readonly, nonatomic) NSString *externalIdentifier; // @dynamic externalIdentifier;
 @property(readonly, nonatomic) NSString *externalModificationTag; // @dynamic externalModificationTag;
 @property(readonly, nonatomic) long long flagged; // @dynamic flagged;
+@property(readonly, nonatomic) NSSet *hashtagIDsToUndelete; // @dynamic hashtagIDsToUndelete;
+@property(readonly, nonatomic) NSSet *hashtags; // @dynamic hashtags;
 @property(readonly, nonatomic) unsigned long long icsDisplayOrder; // @dynamic icsDisplayOrder;
 @property(readonly, nonatomic) NSURL *icsUrl; // @dynamic icsUrl;
 @property(readonly, nonatomic) NSData *importedICSData; // @dynamic importedICSData;
@@ -96,10 +105,12 @@
 @property(readonly, copy, nonatomic) NSDate *lastModifiedDate; // @dynamic lastModifiedDate;
 @property(readonly, copy, nonatomic) NSString *legacyNotificationIdentifier; // @dynamic legacyNotificationIdentifier;
 @property(retain, nonatomic) REMObjectID *listID; // @dynamic listID;
+@property(readonly, nonatomic) long long minimumSupportedVersion; // @dynamic minimumSupportedVersion;
 @property(readonly, nonatomic) REMCRMergeableStringDocument *notesDocument; // @dynamic notesDocument;
 @property(readonly, nonatomic) NSData *notesDocumentData; // @dynamic notesDocumentData;
 @property(readonly, nonatomic) REMObjectID *objectID; // @dynamic objectID;
 @property(readonly, nonatomic) REMObjectID *parentReminderID; // @dynamic parentReminderID;
+@property(readonly, nonatomic) NSString *primaryLocaleInferredFromLastUsedKeyboard; // @dynamic primaryLocaleInferredFromLastUsedKeyboard;
 @property(readonly, nonatomic) unsigned long long priority; // @dynamic priority;
 @property(readonly, nonatomic) NSArray *recurrenceRules; // @dynamic recurrenceRules;
 @property(readonly, nonatomic) REMResolutionTokenMap *resolutionTokenMap; // @dynamic resolutionTokenMap;

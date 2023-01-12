@@ -11,6 +11,7 @@
 @interface TSAppMonitor : NSObject
 {
     MISSING_TYPE *isActive;
+    MISSING_TYPE *isTracking;
     MISSING_TYPE *onWindowDidBecomeBackgroundBlock;
     MISSING_TYPE *onWindowWillBecomeForegroundBlock;
 }
@@ -20,6 +21,7 @@
 - (void)triggerWithEvent:(long long)arg1;
 - (id)onWindowWillBecomeForegroundWithBlock:(CDUnknownBlockType)arg1;
 - (id)onWindowDidBecomeBackgroundWithBlock:(CDUnknownBlockType)arg1;
+@property(nonatomic) _Bool isTracking; // @synthesize isTracking;
 @property(nonatomic) _Bool isActive; // @synthesize isActive;
 
 @end

@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_79ee9959)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_79ee9959)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) float timestamp;
 @property(readonly, nonatomic) unsigned int length;
 @property(readonly, nonatomic) unsigned int offset;

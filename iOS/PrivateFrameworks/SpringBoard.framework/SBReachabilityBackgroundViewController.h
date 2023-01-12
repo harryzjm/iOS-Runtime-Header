@@ -10,6 +10,7 @@
 {
 }
 
+- (unsigned long long)supportedInterfaceOrientations;
 - (_Bool)_canShowWhileLocked;
 - (_Bool)shouldAutorotate;
 - (id)view;

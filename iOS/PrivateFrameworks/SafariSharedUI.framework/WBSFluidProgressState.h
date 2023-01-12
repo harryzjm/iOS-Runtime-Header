@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSString, WBSFluidProgressAnimation;
 
 @interface WBSFluidProgressState : NSObject
 {
@@ -23,6 +23,8 @@
     _Bool _hasCanceledLoad;
     _Bool _hasCommittedLoad;
     _Bool _shouldAnimateUsingInitialPosition;
+    double _fluidProgressValue;
+    WBSFluidProgressAnimation *_nextFluidProgressAnimation;
     long long _fluidProgressType;
     NSString *_loadURL;
 }
@@ -35,10 +37,12 @@
 @property(nonatomic) _Bool hasCompletedLoad; // @synthesize hasCompletedLoad=_hasCompletedLoad;
 @property(copy, nonatomic) NSString *loadURL; // @synthesize loadURL=_loadURL;
 @property(nonatomic) long long fluidProgressType; // @synthesize fluidProgressType=_fluidProgressType;
+@property(readonly, nonatomic) WBSFluidProgressAnimation *nextFluidProgressAnimation; // @synthesize nextFluidProgressAnimation=_nextFluidProgressAnimation;
+@property(readonly, nonatomic) double fluidProgressValue; // @synthesize fluidProgressValue=_fluidProgressValue;
 - (double)secondsElapsedSinceLoadBegan;
-- (_Bool)isFluidProgressStalled;
-- (id)nextFluidProgressAnimation;
-- (double)fluidProgressValue;
+@property(readonly, nonatomic) _Bool isFluidProgressStalled;
+- (void)updateNextFluidProgressAnimation;
+- (void)updateFluidProgressValue;
 @property(nonatomic) double minProgressPosition;
 - (void)setWebKitProgressValue:(double)arg1;
 @property(nonatomic) long long fluidProgressAnimationPhase;

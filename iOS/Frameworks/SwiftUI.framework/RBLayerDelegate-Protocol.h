@@ -12,7 +12,6 @@
 
 @optional
 - (RBDevice *)RBLayerDefaultDevice:(RBLayer *)arg1;
-- (double)RBLayerPresentationTime:(RBLayer *)arg1;
 - (void)RBLayer:(RBLayer *)arg1 draw:(RBDisplayList *)arg2;
 @end
 

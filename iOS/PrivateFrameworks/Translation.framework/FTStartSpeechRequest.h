@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_b7f57b05)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_b7f57b05)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSString *metadata;
 @property(readonly, nonatomic) NSString *application_name;
 @property(readonly, nonatomic) NSString *fork_id;

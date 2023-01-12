@@ -15,10 +15,20 @@
     long long _errorCode;
     NSString *_errorDescription;
     NSString *_errorDomain;
+    NSString *_itemID;
+    NSString *_lastStep;
+    NSString *_operationType;
+    NSString *_reason;
     NSData *_zoneName;
+    _Bool _hasForegroundClients;
+    _Bool _isPCSChained;
+    _Bool _nonDiscretionary;
     _Bool _sharedZone;
     struct {
         unsigned int errorCode:1;
+        unsigned int hasForegroundClients:1;
+        unsigned int isPCSChained:1;
+        unsigned int nonDiscretionary:1;
         unsigned int sharedZone:1;
     } _has;
 }
@@ -33,6 +43,20 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasIsPCSChained;
+@property(nonatomic) _Bool isPCSChained;
+@property(nonatomic) _Bool hasHasForegroundClients;
+@property(nonatomic) _Bool hasForegroundClients;
+@property(nonatomic) _Bool hasNonDiscretionary;
+@property(nonatomic) _Bool nonDiscretionary;
+@property(retain, nonatomic) NSString *operationType;
+@property(readonly, nonatomic) _Bool hasOperationType;
+@property(retain, nonatomic) NSString *reason;
+@property(readonly, nonatomic) _Bool hasReason;
+@property(retain, nonatomic) NSString *itemID;
+@property(readonly, nonatomic) _Bool hasItemID;
+@property(retain, nonatomic) NSString *lastStep;
+@property(readonly, nonatomic) _Bool hasLastStep;
 @property(retain, nonatomic) NSString *errorDescription;
 @property(readonly, nonatomic) _Bool hasErrorDescription;
 @property(nonatomic) _Bool hasErrorCode;

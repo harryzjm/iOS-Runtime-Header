@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <BiomeStreams/NSCoding-Protocol.h>
 #import <BiomeStreams/NSObject-Protocol.h>
+#import <BiomeStreams/NSSecureCoding-Protocol.h>
 
-@protocol BMBookmark <NSCoding, NSObject>
+@protocol BMBookmark <NSObject, NSSecureCoding>
 @end
 

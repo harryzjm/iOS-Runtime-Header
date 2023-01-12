@@ -23,9 +23,9 @@
 - (void)handleGestureDidBegin:(id)arg1;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidEndWithTransitionContext:(id)arg2;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidBeginWithTransitionContext:(id)arg2;
-- (void)performTransitionWithContext:(id)arg1 animated:(_Bool)arg2 alongsideAnimationHandler:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)performTransitionWithContext:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)viewWillLayoutSubviews;
-- (id)initWithRootModifier:(id)arg1 liveContentOverlayCoordinator:(id)arg2 debugName:(id)arg3;
+- (id)initWithRootModifier:(id)arg1 liveContentOverlayCoordinator:(id)arg2 delegate:(id)arg3 dataSource:(id)arg4 debugName:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

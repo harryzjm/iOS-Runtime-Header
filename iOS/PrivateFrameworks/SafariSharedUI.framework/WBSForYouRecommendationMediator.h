@@ -32,7 +32,6 @@
 + (double)scoreForRecommendation:(id)arg1 weightManager:(id)arg2 simplifiedURLStringToLastVisitedDateMap:(id)arg3;
 + (id)_titleForRecommendationTopicSource:(unsigned long long)arg1;
 + (id)_titleForRecommendationSource:(unsigned long long)arg1;
-+ (_Bool)areSiriSuggestionsEnabled;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool suppressHistoryDeduplication; // @synthesize suppressHistoryDeduplication=_suppressHistoryDeduplication;
 @property(nonatomic) _Bool ignoreMinimumNumberOfRecommendationsPerTopic; // @synthesize ignoreMinimumNumberOfRecommendationsPerTopic=_ignoreMinimumNumberOfRecommendationsPerTopic;

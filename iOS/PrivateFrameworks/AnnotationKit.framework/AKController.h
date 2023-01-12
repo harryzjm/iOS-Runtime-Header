@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class AKActionController, AKAttributeController, AKFormFeatureDetectorController, AKHighlightAnnotationController, AKLegacyDoodleController, AKMainEventHandler, AKModelController, AKPageController, AKPeripheralAvailabilityManager_iOS, AKSidecarController, AKSignatureModelController, AKSparseMutableControllerArray, AKStatistics, AKTextEditorController, AKToolController, AKToolbarView, AKToolbarViewController, AKUndoController, NSArray, NSMapTable, NSString, PKToolPicker, UIView;
-@protocol AKControllerDelegateProtocol, PKRulerHostingDelegate;
+@protocol AKControllerDelegateProtocol, AKControllerOverlayInteractionProtocol, PKRulerHostingDelegate;
 
 @interface AKController : NSObject
 {
@@ -30,6 +30,7 @@
     unsigned long long _currentPageIndex;
     id <PKRulerHostingDelegate> _rulerHostingDelegate;
     NSString *_author;
+    NSString *_modifiedImageDescription;
     AKSparseMutableControllerArray *_pageControllers;
     NSMapTable *_pageModelControllersToPageControllers;
     AKActionController *_actionController;
@@ -54,9 +55,11 @@
     double _akModelToCanvasFixedPixelScaleOfFirstEncounteredPage;
     double _screenPixelsToCanvasPixelsDownscale;
     AKToolbarView *_modernToolbarView;
+    id <AKControllerOverlayInteractionProtocol> _overlayInteractionDelegate;
 }
 
 + (id)colorForHighlightAttributeWithTag:(long long)arg1;
++ (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
 + (void)adjustAnnotationBoundsToFitText:(id)arg1;
 + (void)renderAnnotation:(id)arg1 inContext:(struct CGContext *)arg2;
 + (id)markupBarButtonItemWithTarget:(id)arg1 action:(SEL)arg2;
@@ -69,6 +72,7 @@
 - (void).cxx_destruct;
 @property(readonly) _Bool _isInDFRAction; // @synthesize _isInDFRAction=__isInDFRAction;
 @property(nonatomic) _Bool useHighVisibilityDefaultInks; // @synthesize useHighVisibilityDefaultInks=_useHighVisibilityDefaultInks;
+@property(nonatomic) __weak id <AKControllerOverlayInteractionProtocol> overlayInteractionDelegate; // @synthesize overlayInteractionDelegate=_overlayInteractionDelegate;
 @property(nonatomic) __weak AKToolbarView *modernToolbarView; // @synthesize modernToolbarView=_modernToolbarView;
 @property(nonatomic) _Bool shapeDetectionEnabled; // @synthesize shapeDetectionEnabled=_shapeDetectionEnabled;
 @property(nonatomic) _Bool selectNewlyCreatedAnnotations; // @synthesize selectNewlyCreatedAnnotations=_selectNewlyCreatedAnnotations;
@@ -98,6 +102,7 @@
 @property(retain) NSMapTable *pageModelControllersToPageControllers; // @synthesize pageModelControllersToPageControllers=_pageModelControllersToPageControllers;
 @property(retain) AKSparseMutableControllerArray *pageControllers; // @synthesize pageControllers=_pageControllers;
 @property _Bool isTestingInstance; // @synthesize isTestingInstance=_isTestingInstance;
+@property(readonly, copy, nonatomic) NSString *modifiedImageDescription; // @synthesize modifiedImageDescription=_modifiedImageDescription;
 @property(copy) NSString *author; // @synthesize author=_author;
 @property(nonatomic) __weak id <PKRulerHostingDelegate> rulerHostingDelegate; // @synthesize rulerHostingDelegate=_rulerHostingDelegate;
 @property unsigned long long currentPageIndex; // @synthesize currentPageIndex=_currentPageIndex;
@@ -158,6 +163,9 @@
 - (_Bool)validateUndo:(id)arg1;
 - (void)undo:(id)arg1;
 - (void)delayedUndoControllerSetup;
+- (void)setModifiedImageDescription:(id)arg1;
+- (id)originalOrModifiedImageDescription;
+- (_Bool)supportsImageDescriptionEditing;
 - (void)clearUndoStack;
 - (void)applyCurrentCrop;
 - (void)resetToDefaultToolMode;
@@ -190,6 +198,7 @@
 - (void)enclosingScrollViewDidScroll:(id)arg1;
 - (void)_setupPageModelController:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)_didScrollPDFPage:(id)arg1;
 - (void)dealloc;
 - (void)teardown;
 - (id)initForTesting;

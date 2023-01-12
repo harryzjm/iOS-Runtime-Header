@@ -28,9 +28,9 @@
 - (id)changedPropertyNames:(id)arg1;
 - (id)styleDiffForTable:(unsigned long long)arg1 storage:(id)arg2 currentObject:(id)arg3;
 - (void)saveToArchiver:(id)arg1;
-- (void)saveToArchive:(struct StyleDiffArchive *)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)loadFromArchive:(const struct StyleDiffArchive *)arg1 unarchiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (id)initWithContext:(id)arg1 changeSet:(id)arg2;
 - (id)initWithContext:(id)arg1 style:(id)arg2;
 - (void)didInitFromSOS;

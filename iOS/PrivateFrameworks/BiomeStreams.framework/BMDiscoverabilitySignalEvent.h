@@ -6,20 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSDictionary, NSString;
 
 @interface BMDiscoverabilitySignalEvent : NSObject
 {
     NSString *_identifier;
     NSString *_bundleID;
     NSString *_context;
+    NSDictionary *_userInfo;
 }
 
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 @property(readonly, copy, nonatomic) NSString *context; // @synthesize context=_context;
 @property(readonly, copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)description;
+- (id)initWithIdentifier:(id)arg1 bundleID:(id)arg2 context:(id)arg3 userInfo:(id)arg4;
 - (id)initWithIdentifier:(id)arg1 bundleID:(id)arg2 context:(id)arg3;
 - (id)init;
 

@@ -12,6 +12,8 @@
 - (_Bool)shouldCoalesceItems;
 - (_Bool)restrictionEnabled;
 - (NSArray *)items;
+- (NSString *)subtitleText;
+- (NSString *)footerText;
 - (NSString *)rowTitle;
 - (NSString *)groupTitle;
 - (NSString *)identifier;

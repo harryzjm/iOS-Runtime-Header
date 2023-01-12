@@ -21,8 +21,8 @@
 - (id)_generateTitleWithEventNameForPublicEventNode:(id)arg1;
 - (id)_commonPublicEventNodeForMomentNodes:(id)arg1;
 - (id)_resolvedStringWithPublicEventNode:(id)arg1 inMomentNodes:(id)arg2;
-- (id)_resolvedStringWithMomentNodes:(id)arg1 features:(id)arg2;
-- (id)_resolvedStringWithMomentNodes:(id)arg1;
+- (id)_resolvedStringWithMomentNodes:(id)arg1 features:(id)arg2 argumentEvaluationContext:(id)arg3;
+- (id)_resolvedStringWithMomentNodes:(id)arg1 argumentEvaluationContext:(id)arg2;
 - (id)initWithPublicEventType:(unsigned long long)arg1 shouldUseLongPublicEventTitle:(_Bool)arg2;
 - (id)initWithPublicEventType:(unsigned long long)arg1;
 

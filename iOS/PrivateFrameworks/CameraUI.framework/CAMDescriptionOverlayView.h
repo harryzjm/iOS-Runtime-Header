@@ -23,6 +23,7 @@
     UILabel *__descriptionLabel;
     UILabel *__infoTitleLabel;
     UILabel *__infoLabel;
+    UIButton *__detailButton;
     UIButton *__acknowledgmentButton;
     double __descriptionFontSizeMultiplier;
     double __infoFontSizeMultiplier;
@@ -33,6 +34,7 @@
 @property(nonatomic, setter=_setInfoFontSizeMultiplier:) double _infoFontSizeMultiplier; // @synthesize _infoFontSizeMultiplier=__infoFontSizeMultiplier;
 @property(nonatomic, setter=_setDescriptionFontSizeMultiplier:) double _descriptionFontSizeMultiplier; // @synthesize _descriptionFontSizeMultiplier=__descriptionFontSizeMultiplier;
 @property(readonly, nonatomic) UIButton *_acknowledgmentButton; // @synthesize _acknowledgmentButton=__acknowledgmentButton;
+@property(readonly, nonatomic) UIButton *_detailButton; // @synthesize _detailButton=__detailButton;
 @property(readonly, nonatomic) UILabel *_infoLabel; // @synthesize _infoLabel=__infoLabel;
 @property(readonly, nonatomic) UILabel *_infoTitleLabel; // @synthesize _infoTitleLabel=__infoTitleLabel;
 @property(readonly, nonatomic) UILabel *_descriptionLabel; // @synthesize _descriptionLabel=__descriptionLabel;
@@ -46,14 +48,19 @@
 @property(nonatomic) struct CGRect viewportFrame; // @synthesize viewportFrame=_viewportFrame;
 @property(nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property(nonatomic) __weak id <CAMDescriptionOverlayViewDelegate> delegate; // @synthesize delegate=_delegate;
+- (double)_additionalSpacingForContentSize:(id)arg1;
 - (double)additionalSpacing;
+- (id)currentContentSize;
 - (double)maxInfoTextWidthForNarrowWidth:(_Bool)arg1 isLandscape:(_Bool)arg2 usingFontSizeMultiplier:(double)arg3;
 - (double)maxDescriptionTextWidthForNarrowWidth:(_Bool)arg1 isLandscape:(_Bool)arg2 usingFontSizeMultiplier:(double)arg3;
+- (double)maxTitleTextWidthForNarrowWidth:(_Bool)arg1 isLandscape:(_Bool)arg2;
 - (id)infoTextUsingNarrowWidth:(_Bool)arg1;
 - (id)infoTitleTextUsingNarrowWidth:(_Bool)arg1;
 - (id)descriptionTextUsingNarrowWidth:(_Bool)arg1;
 - (id)descriptionTitleTextUsingNarrowWidth:(_Bool)arg1;
 - (id)acknowledgmentTextUsingNarrowWidth:(_Bool)arg1;
+- (id)detailTextUsingNarrowWidth:(_Bool)arg1;
+- (_Bool)isTitleMultiline;
 - (id)titleTextUsingNarrowWidth:(_Bool)arg1;
 - (void)setVisible:(_Bool)arg1 animationDuration:(double)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)_isVisible;
@@ -61,10 +68,12 @@
 - (void)setOrientation:(long long)arg1 animated:(_Bool)arg2;
 - (void)_handleAcknowledgmentButtonTapped:(id)arg1;
 @property(nonatomic, getter=isAcknowledgmentButtonHighlighted) _Bool acknowledgmentButtonHighlighted;
+- (void)_handleDetailButtonTapped:(id)arg1;
+@property(nonatomic, getter=isDetailButtonHighlighted) _Bool detailButtonHighlighted;
 - (void)layoutSubviews;
 - (void)_updateTextUsingNarrowWidth:(_Bool)arg1;
 - (void)_updateFontsUsingNarrowWidth:(_Bool)arg1;
-- (void)updateToContentSize:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

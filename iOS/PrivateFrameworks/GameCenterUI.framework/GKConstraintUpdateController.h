@@ -14,6 +14,7 @@
 }
 
 + (id)sharedController;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSPointerArray *constraintsToUpdate; // @synthesize constraintsToUpdate=_constraintsToUpdate;
 - (void)registerConstraint:(id)arg1 leading:(double)arg2 forFontTextStyle:(id)arg3;
 - (void)_updateConstraints;

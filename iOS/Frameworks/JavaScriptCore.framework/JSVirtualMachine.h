@@ -6,15 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSMapTable;
-
 @interface JSVirtualMachine : NSObject
 {
     struct OpaqueJSContextGroup *m_group;
     struct Lock m_externalDataMutex;
-    NSMapTable *m_contextCache;
-    NSMapTable *m_externalObjectGraph;
-    NSMapTable *m_externalRememberedSet;
+    struct RetainPtr<NSMapTable> m_contextCache;
+    struct RetainPtr<NSMapTable> m_externalObjectGraph;
+    struct RetainPtr<NSMapTable> m_externalRememberedSet;
 }
 
 + (void)setCrashOnVMCreation:(_Bool)arg1;
@@ -22,6 +20,7 @@
 + (unsigned long long)setNumberOfDFGCompilerThreads:(unsigned long long)arg1;
 + (id)virtualMachineWithContextGroupRef:(struct OpaqueJSContextGroup *)arg1;
 - (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)removeManagedReference:(id)arg1 withOwner:(id)arg2;
 - (void)addManagedReference:(id)arg1 withOwner:(id)arg2;
 - (void)addExternalRememberedObject:(id)arg1;
@@ -34,7 +33,7 @@
 - (void)shrinkFootprintWhenIdle;
 - (id)externalRememberedSet;
 - (id)externalObjectGraph;
-- (struct Lock *)externalDataMutex;
+- (void *)externalDataMutex;
 - (void)addContext:(id)arg1 forGlobalContextRef:(struct OpaqueJSContext *)arg2;
 - (id)contextForGlobalContextRef:(struct OpaqueJSContext *)arg1;
 

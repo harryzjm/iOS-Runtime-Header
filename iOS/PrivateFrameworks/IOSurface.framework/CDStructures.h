@@ -36,7 +36,7 @@ typedef struct {
     unsigned char isAllocated;
     unsigned char isWired;
     unsigned char pad;
-    unsigned int morePad;
+    unsigned int parentSurfaceID;
     unsigned long long detachModeCode;
     unsigned long long initDetachModeCodeTime;
     unsigned long long protectionOptions;
@@ -44,5 +44,5 @@ typedef struct {
     unsigned int dirtySize;
     unsigned long long traceID;
     unsigned long long memDescID;
-} CDStruct_1cd98987;
+} CDStruct_6175285a;
 

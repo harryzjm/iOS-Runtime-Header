@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSData, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CNSharingProfileAvatarItem : NSObject
@@ -16,9 +16,11 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _originalImageProvider;
     long long _type;
     NSString *_variantIdentifier;
+    NSData *_memojiMetadata;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) NSData *memojiMetadata; // @synthesize memojiMetadata=_memojiMetadata;
 @property(nonatomic) _Bool wasSetFromFullPhotoPicker; // @synthesize wasSetFromFullPhotoPicker=_wasSetFromFullPhotoPicker;
 @property(copy, nonatomic) NSString *variantIdentifier; // @synthesize variantIdentifier=_variantIdentifier;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;

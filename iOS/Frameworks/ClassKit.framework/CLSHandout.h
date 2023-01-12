@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <ClassKit/CLSCollaborationStateRepresentable-Protocol.h>
 #import <ClassKit/CLSRelationable-Protocol.h>
 
 @class CLSClass, NSArray, NSDate, NSError, NSString;
 
-@interface CLSHandout <CLSRelationable>
+@interface CLSHandout <CLSRelationable, CLSCollaborationStateRepresentable>
 {
     NSString *_title;
     NSString *_instructions;

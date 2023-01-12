@@ -70,6 +70,9 @@
 - (_Bool)shouldPromptUserToIgnoreBudgets;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
 @property(readonly, nonatomic) PHMomentSharePreview *preview; // @dynamic preview;
+- (unsigned long long)estimatedVideosCount;
+- (unsigned long long)estimatedPhotosCount;
+- (unsigned long long)estimatedAssetCount;
 @property(readonly, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 - (Class)changeRequestClass;
 

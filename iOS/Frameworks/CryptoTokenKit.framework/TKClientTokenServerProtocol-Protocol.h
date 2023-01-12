@@ -10,6 +10,7 @@
 
 @protocol TKClientTokenServerProtocol <NSObject>
 - (void)ensureSlotWatcherRunningWithReply:(void (^)(void))arg1;
+- (void)getSEPKeyEndpoint:(void (^)(NSXPCListenerEndpoint *))arg1;
 - (void)getWatcherEndpoint:(void (^)(NSXPCListenerEndpoint *))arg1;
 - (void)getConfigurationEndpoint:(void (^)(NSXPCListenerEndpoint *))arg1;
 - (void)getTokenEndpointForTokenID:(NSString *)arg1 reply:(void (^)(NSXPCListenerEndpoint *, NSError *))arg2;

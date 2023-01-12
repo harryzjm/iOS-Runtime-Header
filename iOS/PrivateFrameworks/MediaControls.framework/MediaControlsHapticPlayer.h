@@ -6,16 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class AVHapticPlayer;
+@class CHHapticEngine;
+@protocol CHHapticPatternPlayer;
 
 __attribute__((visibility("hidden")))
 @interface MediaControlsHapticPlayer : NSObject
 {
-    AVHapticPlayer *_player;
+    CHHapticEngine *_engine;
+    id <CHHapticPatternPlayer> _expandedButtonChangedPlayer;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) AVHapticPlayer *player; // @synthesize player=_player;
+@property(retain, nonatomic) id <CHHapticPatternPlayer> expandedButtonChangedPlayer; // @synthesize expandedButtonChangedPlayer=_expandedButtonChangedPlayer;
+@property(retain, nonatomic) CHHapticEngine *engine; // @synthesize engine=_engine;
+- (void)setupExpandedButtonChanged;
 - (void)checkError:(id)arg1;
 - (void)expandedButtonChanged;
 - (void)dealloc;

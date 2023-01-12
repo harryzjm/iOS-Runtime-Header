@@ -10,6 +10,7 @@
 
 @class NSUUID;
 
+__attribute__((visibility("hidden")))
 @interface CRIndexElement : NSObject <NSCopying>
 {
     NSUUID *_replica;

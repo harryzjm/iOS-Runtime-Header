@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 
 - (unsigned long long)getHash;
 - (id)copyEndpoint;
-- (_Bool)isEqualToEndpoint:(id)arg1 matchInterface:(_Bool)arg2 matchParent:(_Bool)arg3;
+- (_Bool)isEqualToEndpoint:(id)arg1 matchFlags:(unsigned char)arg2;
 - (char *)createDescription:(_Bool)arg1;
 - (const char *)domainForPolicy;
 - (id)copyDictionary;

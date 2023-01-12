@@ -8,7 +8,7 @@
 
 #import <LinkPresentation/LPLinkPresentationPropertyProvider-Protocol.h>
 
-@class LPAudio, LPCaptionBarPresentationProperties, LPImage, LPImagePresentationProperties, LPInlineMediaPlaybackInformation, LPVideo, NSArray, NSNumber, NSString, UIColor;
+@class LPARAsset, LPAudio, LPCaptionBarPresentationProperties, LPImage, LPImagePresentationProperties, LPInlineMediaPlaybackInformation, LPVideo, NSArray, NSNumber, NSString, UIColor;
 
 @interface LPWebLinkPresentationProperties : NSObject <LPLinkPresentationPropertyProvider>
 {
@@ -23,7 +23,10 @@
     NSArray *_alternateImages;
     LPVideo *_video;
     LPAudio *_audio;
+    LPARAsset *_arAsset;
     UIColor *_backgroundColor;
+    LPImage *_backgroundImage;
+    LPImagePresentationProperties *_backgroundImageProperties;
     NSNumber *_minimumHeight;
     LPInlineMediaPlaybackInformation *_inlinePlaybackInformation;
     NSString *_domainNameForIndicator;
@@ -33,7 +36,10 @@
 @property(copy, nonatomic) NSString *domainNameForIndicator; // @synthesize domainNameForIndicator=_domainNameForIndicator;
 @property(retain, nonatomic) LPInlineMediaPlaybackInformation *inlinePlaybackInformation; // @synthesize inlinePlaybackInformation=_inlinePlaybackInformation;
 @property(retain, nonatomic) NSNumber *minimumHeight; // @synthesize minimumHeight=_minimumHeight;
+@property(retain, nonatomic) LPImagePresentationProperties *backgroundImageProperties; // @synthesize backgroundImageProperties=_backgroundImageProperties;
+@property(retain, nonatomic) LPImage *backgroundImage; // @synthesize backgroundImage=_backgroundImage;
 @property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property(retain, nonatomic) LPARAsset *arAsset; // @synthesize arAsset=_arAsset;
 @property(retain, nonatomic) LPAudio *audio; // @synthesize audio=_audio;
 @property(retain, nonatomic) LPVideo *video; // @synthesize video=_video;
 @property(retain, nonatomic) NSArray *alternateImages; // @synthesize alternateImages=_alternateImages;

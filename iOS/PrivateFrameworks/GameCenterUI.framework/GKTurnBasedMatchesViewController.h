@@ -5,16 +5,17 @@
 //
 
 #import <GameCenterUI/GKTurnBasedInviteViewControllerDelegate-Protocol.h>
+#import <GameCenterUI/GKTurnBasedInviteViewControllerDelegateObsolete-Protocol.h>
 #import <GameCenterUI/GKTurnBasedMatchDetailViewControllerDelegate-Protocol.h>
 #import <GameCenterUI/GKTurnBasedMatchesDataSourceDelegate-Protocol.h>
 #import <GameCenterUI/UIPopoverControllerDelegate-Protocol.h>
 #import <GameCenterUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 #import <GameCenterUI/UIStateRestoring-Protocol.h>
 
-@class GKCollectionViewController, GKGame, GKMatchRequest, GKTurnBasedInviteViewController, GKTurnBasedMatchesDataSource, NSString;
+@class GKCollectionViewController, GKGame, GKMatchRequest, GKTurnBasedInviteViewController, GKTurnBasedInviteViewControllerObsolete, GKTurnBasedMatchesDataSource, NSString, UIFocusGuide;
 @protocol GKTurnBasedMatchesViewControllerDelegate, UIStateRestoring;
 
-@interface GKTurnBasedMatchesViewController <GKTurnBasedInviteViewControllerDelegate, GKTurnBasedMatchDetailViewControllerDelegate, GKTurnBasedMatchesDataSourceDelegate, UIPopoverControllerDelegate, UIStateRestoring, UIPopoverPresentationControllerDelegate>
+@interface GKTurnBasedMatchesViewController <GKTurnBasedInviteViewControllerDelegateObsolete, GKTurnBasedInviteViewControllerDelegate, GKTurnBasedMatchDetailViewControllerDelegate, GKTurnBasedMatchesDataSourceDelegate, UIPopoverControllerDelegate, UIStateRestoring, UIPopoverPresentationControllerDelegate>
 {
     _Bool _showExistingMatches;
     _Bool _showPlay;
@@ -27,11 +28,15 @@
     long long _maxMatchesSeen;
     NSString *_matchIDWaitingForTurnEvent;
     GKTurnBasedInviteViewController *_inviteController;
+    GKTurnBasedInviteViewControllerObsolete *_inviteControllerObsolete;
     double _initialSectionHeaderHeight;
+    UIFocusGuide *_detailButtonFocusGuide;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIFocusGuide *detailButtonFocusGuide; // @synthesize detailButtonFocusGuide=_detailButtonFocusGuide;
 @property(nonatomic) double initialSectionHeaderHeight; // @synthesize initialSectionHeaderHeight=_initialSectionHeaderHeight;
+@property(retain, nonatomic) GKTurnBasedInviteViewControllerObsolete *inviteControllerObsolete; // @synthesize inviteControllerObsolete=_inviteControllerObsolete;
 @property(retain, nonatomic) GKTurnBasedInviteViewController *inviteController; // @synthesize inviteController=_inviteController;
 @property(retain, nonatomic) NSString *matchIDWaitingForTurnEvent; // @synthesize matchIDWaitingForTurnEvent=_matchIDWaitingForTurnEvent;
 @property(nonatomic) long long maxMatchesSeen; // @synthesize maxMatchesSeen=_maxMatchesSeen;
@@ -69,15 +74,20 @@
 - (void)turnBasedInviteViewControllerWasCancelled:(id)arg1;
 - (void)showInviteControllerAnimated:(_Bool)arg1;
 - (void)applicationDidEnterBackground;
+- (void)collectionView:(id)arg1 didUpdateFocusInContext:(id)arg2 withAnimationCoordinator:(id)arg3;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (void)didEnterNoContentState;
 - (_Bool)_gkShouldRefreshContentsForDataType:(unsigned int)arg1 userInfo:(id)arg2;
 - (void)loadDataWithCompletionHandlerAndError:(CDUnknownBlockType)arg1;
+- (_Bool)isLoadingOrRemovingPreloadedMatch;
+- (void)configureDetailButtonFocusGuide;
 - (void)updateUIBasedOnTraitCollection;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)configureCollectionViewFocusGuide;
+- (void)configureNavigationBarFocusGuide;
 - (void)viewDidLoad;
 - (void)configureHeader:(id)arg1 indexPath:(id)arg2;
 - (void)configureViewFactories;
@@ -86,6 +96,9 @@
 - (void)dealloc;
 - (id)initWithMatchRequest:(id)arg1;
 - (id)init;
+- (void)turnBasedInviteViewController:(id)arg1 didFailWithError:(id)arg2;
+- (void)turnBasedInviteViewController:(id)arg1 didCreateMatchID:(id)arg2;
+- (void)turnBasedInviteViewControllerWasCancelled:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

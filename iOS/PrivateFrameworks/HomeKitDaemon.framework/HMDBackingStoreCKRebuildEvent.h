@@ -13,7 +13,6 @@
     int _rebuildStatus;
 }
 
-+ (id)uuid;
 @property(readonly) int rebuildStatus; // @synthesize rebuildStatus=_rebuildStatus;
 - (id)initWithCloudZoneID:(id)arg1 rebuildStatus:(id)arg2;
 - (id)metricForAWD;

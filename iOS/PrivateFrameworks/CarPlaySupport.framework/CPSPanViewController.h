@@ -10,12 +10,13 @@
 #import <CarPlaySupport/CPSPanViewDelegate-Protocol.h>
 #import <CarPlaySupport/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CPSPanView, NSArray, NSString;
+@class CPSPanView, CPSTemplateEnvironment, NSArray, NSString;
 @protocol CPSPanEventDelegate;
 
 @interface CPSPanViewController : UIViewController <CPSPanViewDelegate, UIGestureRecognizerDelegate, CPSLinearFocusProviding>
 {
     _Bool _rightHandDrive;
+    CPSTemplateEnvironment *_environment;
     CPSPanView *_panView;
     id <CPSPanEventDelegate> _panDelegate;
     NSArray *_nudgeGestureRecognizers;
@@ -25,6 +26,7 @@
 @property(retain, nonatomic) NSArray *nudgeGestureRecognizers; // @synthesize nudgeGestureRecognizers=_nudgeGestureRecognizers;
 @property(nonatomic) __weak id <CPSPanEventDelegate> panDelegate; // @synthesize panDelegate=_panDelegate;
 @property(retain, nonatomic) CPSPanView *panView; // @synthesize panView=_panView;
+@property(readonly, nonatomic) __weak CPSTemplateEnvironment *environment; // @synthesize environment=_environment;
 @property(readonly, nonatomic) double sideButtonTopInset;
 - (_Bool)shouldUpdateFocusInContext:(id)arg1;
 - (id)_linearFocusItems;
@@ -39,6 +41,7 @@
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)loadView;
+- (id)initWithEnvironment:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

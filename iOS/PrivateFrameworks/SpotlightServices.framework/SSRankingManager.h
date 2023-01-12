@@ -21,11 +21,14 @@
 
 + (void)reloadRankingParametersFromTrial;
 + (id)getSuggestionsRankingThresholds;
++ (void)reloadLocaleSpecificMatchingParameters;
 + (void)reloadRecencyThresholds;
 + (id)keyForIntervalType:(long long)arg1;
 + (void)reloadSuggestionsRankingThresholds;
 + (void)reloadCommittedSearchParametersFromTrial;
 + (void)reloadTopHitsParametersFromTrial;
++ (void)prepareTopHitsParametersForLanguage:(id)arg1;
++ (void)extractThresholdABValues:(id)arg1 forLanguage:(id)arg2;
 + (void)determineTopHitsForSafariSection:(id)arg1 forQuery:(id)arg2;
 + (void)initialize;
 + (void)moveSafariTopHitsToTopOfSection:(id)arg1;
@@ -48,16 +51,19 @@
 - (void)updateServerScoresUsingBlockOrder:(id)arg1 bundleFeatures:(id)arg2;
 - (id)applyTopSectionPolicy:(id)arg1 withTopHitSection:(id)arg2 isPeopleSearch:(_Bool)arg3 queryKind:(unsigned long long)arg4 correction:(id)arg5 queryLength:(unsigned long long)arg6 ranker:(id)arg7;
 - (void)refineSectionShowingVisibleResultsWithBetterTextMatches:(id)arg1;
-- (id)rankSectionsUsingBundleIDToSectionMapping:(id)arg1 withRanker:(id)arg2 preferredBundleIds:(id)arg3 isPeopleSearch:(_Bool)arg4 isScopedAppSearch:(_Bool)arg5 queryId:(unsigned long long)arg6 isCJK:(_Bool)arg7 isBullseyeNonCommittedSearch:(_Bool)arg8 isBullseyeCommittedSearch:(_Bool)arg9;
+- (id)rankSectionsUsingBundleIDToSectionMapping:(id)arg1 withRanker:(id)arg2 preferredBundleIds:(id)arg3 isScopedSearch:(_Bool)arg4 queryId:(unsigned long long)arg5 isCJK:(_Bool)arg6 isBullseyeNonCommittedSearch:(_Bool)arg7 isBullseyeCommittedSearch:(_Bool)arg8 isPeopleSearch:(_Bool)arg9;
+- (id)suggestionResultScoreWithFeatures:(id)arg1 options:(id)arg2;
 - (long long)compareDate:(id)arg1 withDate:(id)arg2;
 - (id)initWithQuery:(id)arg1;
-- (id)removeBlackListedSectionsForMapping:(id)arg1;
+- (id)removeBlockListedSectionsForMapping:(id)arg1;
 - (id)makeTopHitSectionUsingSections:(id)arg1 withItemRanker:(id)arg2 sectionHeader:(id)arg3 shortcutResult:(id)arg4 isBullseyeNonCommittedSearch:(_Bool)arg5 isBullseyeCommittedSearch:(_Bool)arg6 parsecEnabled:(_Bool)arg7 maxNumAppsInTopHitSection:(unsigned long long)arg8;
+- (_Bool)sectionsContainsShortcutResult:(id)arg1 shortcutResult:(id)arg2;
 - (_Bool)sectionsContainsOnlyOneAppSection:(id)arg1;
+- (_Bool)sectionContainsOnlyStaleApps:(id)arg1 lastUsedDate:(id)arg2;
 - (_Bool)sectionContainsOnlyStaleApps:(id)arg1;
 - (void)applyTopHitRankingPolicyToSection:(id)arg1 topResultSection:(id)arg2 maxTopHitCount:(long long)arg3 isShortcut:(_Bool)arg4;
 - (id)relativeRankWithAbsRank:(id)arg1 numberValues:(unsigned long long)arg2;
-- (id)removeBlackListedSectionsForMapping:(id)arg1 withRankingConfiguration:(id)arg2;
+- (id)removeBlockListedSectionsForMapping:(id)arg1 withRankingConfiguration:(id)arg2;
 - (double)roundedValueForScore:(double)arg1;
 - (void)cancel;
 

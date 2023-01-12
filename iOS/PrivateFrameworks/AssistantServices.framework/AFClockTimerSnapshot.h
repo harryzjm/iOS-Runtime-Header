@@ -42,6 +42,7 @@
 - (id)ad_shortDescription;
 - (id)initWithSerializedBackingStore:(id)arg1;
 - (id)serializedBackingStore;
+- (id)firingTimers;
 - (id)mostRecentFiringTimer;
 - (_Bool)hasFiringTimers;
 

@@ -6,7 +6,7 @@
 
 #import <SiriUI/SiriUIAceObjectViewControllerDelegate-Protocol.h>
 
-@class NSArray, NSDate, NSSet, SiriUISnippetViewController, UIViewController;
+@class NSArray, NSDate, NSSet, NSUUID, SAStartLocalRequest, SiriUISashItem, SiriUISnippetViewController, UIViewController;
 @protocol SiriUIViewController;
 
 @protocol SiriUISnippetViewControllerDelegate <SiriUIAceObjectViewControllerDelegate>
@@ -22,7 +22,9 @@
 - (void)siriSnippetViewController:(id <SiriUIViewController>)arg1 pushSirilandSnippets:(NSArray *)arg2;
 
 @optional
+- (void)siriSnippetViewController:(id <SiriUIViewController>)arg1 performAceCommands:(NSArray *)arg2 sashItem:(SiriUISashItem *)arg3;
 - (void)userTouchedSnippet;
+- (void)siriSnippetViewController:(id <SiriUIViewController>)arg1 handleStartLocalRequest:(SAStartLocalRequest *)arg2 turnIdentifier:(NSUUID *)arg3;
 - (void)siriSnippetViewController:(id <SiriUIViewController>)arg1 setTypeToSiriViewHidden:(_Bool)arg2;
 - (unsigned long long)navigationIndexOfSnippetViewController:(SiriUISnippetViewController *)arg1;
 - (NSSet *)siriEnabledAppListForSiriViewController:(id <SiriUIViewController>)arg1;

@@ -23,6 +23,8 @@
 }
 
 + (struct UIEdgeInsets)edgeInsetsForSection:(id)arg1 fittingWidth:(double)arg2 environment:(id)arg3;
++ (double)requiredLabelSpaceForMaxLabelHeight:(double)arg1 cellEdgeLength:(double)arg2 sectionItemHeightRatio:(double)arg3;
++ (double)maxLabelHeightInSection:(id)arg1 fittingWidth:(double)arg2;
 + (struct CGSize)cellSizeForSectionItem:(id)arg1 inSection:(id)arg2 fittingWidth:(double)arg3 environment:(id)arg4;
 + (double)edgeLengthFittingWidth:(double)arg1 environment:(id)arg2;
 + (_Bool)supportsSelection;
@@ -34,6 +36,8 @@
 @property(retain, nonatomic) AVTAvatarAttributeEditorSection *section; // @synthesize section=_section;
 @property(nonatomic) __weak id <AVTAvatarAttributeEditorControllerSubSelectionDelegate> delegate; // @synthesize delegate;
 @property(nonatomic) long long selectedIndex; // @synthesize selectedIndex=_selectedIndex;
+- (void)attributeSection:(id)arg1 didChangeValueForSectionItem:(id)arg2;
+- (struct CGSize)sizeForFocusingItemAtIndex:(long long)arg1 fittingSize:(struct CGSize)arg2;
 - (_Bool)evaluateDisplayCondition:(id)arg1;
 - (void)didSelectItemAtIndex:(long long)arg1 cell:(id)arg2;
 - (void)didUnhighlightItemAtIndex:(long long)arg1 cell:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;

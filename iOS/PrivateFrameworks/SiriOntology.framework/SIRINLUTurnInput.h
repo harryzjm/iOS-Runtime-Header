@@ -8,19 +8,27 @@
 
 #import <SiriOntology/NSSecureCoding-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSString, SIRINLUTurnContext;
 
 @interface SIRINLUTurnInput : NSObject <NSSecureCoding>
 {
+    _Bool _tapToEdit;
     NSArray *_asrOutputs;
     NSArray *_systemDialogActs;
     NSArray *_activeTasks;
     NSArray *_executedTasks;
     NSArray *_salientEntities;
+    SIRINLUTurnContext *_turnContext;
+    NSString *_locale;
+    unsigned long long _startTimestamp;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long startTimestamp; // @synthesize startTimestamp=_startTimestamp;
+@property(nonatomic) _Bool tapToEdit; // @synthesize tapToEdit=_tapToEdit;
+@property(retain, nonatomic) NSString *locale; // @synthesize locale=_locale;
+@property(retain, nonatomic) SIRINLUTurnContext *turnContext; // @synthesize turnContext=_turnContext;
 @property(retain, nonatomic) NSArray *salientEntities; // @synthesize salientEntities=_salientEntities;
 @property(retain, nonatomic) NSArray *executedTasks; // @synthesize executedTasks=_executedTasks;
 @property(retain, nonatomic) NSArray *activeTasks; // @synthesize activeTasks=_activeTasks;
@@ -29,7 +37,9 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithAsrOutputs:(id)arg1 salientEntities:(id)arg2 turnContext:(id)arg3 locale:(id)arg4 tapToEdit:(_Bool)arg5 startTimestamp:(unsigned long long)arg6;
 - (id)initWithAsrOutputs:(id)arg1 systemDialogActs:(id)arg2 activeTasks:(id)arg3 executedTasks:(id)arg4 salientEntities:(id)arg5;
+- (id)initWithAsrOutputs:(id)arg1 salientEntities:(id)arg2 turnContext:(id)arg3;
 
 @end
 

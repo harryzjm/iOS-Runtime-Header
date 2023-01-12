@@ -8,30 +8,31 @@
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDHome, HMFMessage, NSString;
+@class HMDHome, HMFMessage, HMFMessageDispatcher, NSString;
 
 __attribute__((visibility("hidden")))
 @interface HMDHomeAdministratorConfigurationOperation : HMFOperation <HMFLogging>
 {
     _Bool _shouldSuspendSyncing;
-    HMFMessage *_message;
-    HMDHome *_home;
     CDUnknownBlockType _sendCompletionBlock;
     CDUnknownBlockType _responseHandler;
+    HMFMessage *_message;
+    HMDHome *_home;
+    HMFMessageDispatcher *_dispatcher;
 }
 
 + (id)logCategory;
 + (double)timeout;
 - (void).cxx_destruct;
+@property(readonly) HMFMessageDispatcher *dispatcher; // @synthesize dispatcher=_dispatcher;
+@property(readonly) __weak HMDHome *home; // @synthesize home=_home;
+@property(readonly) HMFMessage *message; // @synthesize message=_message;
 @property(copy) CDUnknownBlockType responseHandler; // @synthesize responseHandler=_responseHandler;
 @property(copy) CDUnknownBlockType sendCompletionBlock; // @synthesize sendCompletionBlock=_sendCompletionBlock;
 @property _Bool shouldSuspendSyncing; // @synthesize shouldSuspendSyncing=_shouldSuspendSyncing;
-@property(readonly) __weak HMDHome *home; // @synthesize home=_home;
-@property(readonly) HMFMessage *message; // @synthesize message=_message;
 - (id)logIdentifier;
 - (void)main;
-- (id)messageDispatcher;
-- (id)initWithMessage:(id)arg1 home:(id)arg2;
+- (id)initWithMessage:(id)arg1 home:(id)arg2 dispatcher:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

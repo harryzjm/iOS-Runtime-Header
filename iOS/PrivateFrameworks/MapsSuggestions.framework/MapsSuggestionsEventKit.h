@@ -27,8 +27,8 @@
 - (void).cxx_destruct;
 - (void)eventKitDidChange:(id)arg1;
 @property(readonly, nonatomic) NSString *uniqueName;
-- (void)removeObserver:(id)arg1;
-- (void)addObserver:(id)arg1;
+- (void)unregisterObserver:(id)arg1;
+- (void)registerObserver:(id)arg1;
 - (_Bool)deleteOrDeclineEntry:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (_Bool)entriesForEventsAtLocation:(id)arg1 period:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (_Bool)hasVisibleCalendars;

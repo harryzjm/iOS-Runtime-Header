@@ -6,22 +6,24 @@
 
 #import <TSPersistence/TSPObject.h>
 
+#import <PagesQuicklook/TSDReducibleImageContainer-Protocol.h>
+#import <PagesQuicklook/TSDReplaceableMediaContainer-Protocol.h>
 #import <PagesQuicklook/TSKDocumentObject-Protocol.h>
 #import <PagesQuicklook/TSKModel-Protocol.h>
 #import <PagesQuicklook/TSWPSection-Protocol.h>
 
-@class NSArray, NSString, NSURL, NSUUID, TPPageMaster, TPPageTemplate, TSDFill, TSWPStorage;
+@class NSArray, NSString, NSURL, NSUUID, TPPageTemplate, TPSectionTemplatePage, TSDFill, TSWPStorage;
 
-@interface TPSection : TSPObject <TSKDocumentObject, TSKModel, TSWPSection>
+@interface TPSection : TSPObject <TSDReducibleImageContainer, TSDReplaceableMediaContainer, TSKDocumentObject, TSKModel, TSWPSection>
 {
-    TPPageMaster *_pageMasters[3];
+    TPSectionTemplatePage *_sectionTemplatePages[3];
     TSWPStorage *_parentStorage;
     NSString *_name;
     NSUUID *_sectionHyperlinkUUID;
     _Bool _inheritPreviousHeaderFooter;
-    _Bool _pageMasterFirstPageDifferent;
-    _Bool _pageMasterFirstPageHidesHeaderFooter;
-    _Bool _pageMasterEvenOddPagesDifferent;
+    _Bool _sectionTemplateFirstPageDifferent;
+    _Bool _sectionTemplateFirstPageHidesHeaderFooter;
+    _Bool _sectionTemplateEvenOddPagesDifferent;
     unsigned int _sectionStartKind;
     unsigned int _sectionPageNumberKind;
     unsigned int _sectionPageNumberStart;
@@ -31,17 +33,21 @@
 + (_Bool)needsObjectUUID;
 - (void).cxx_destruct;
 @property(retain, nonatomic) TSDFill *backgroundFill; // @synthesize backgroundFill=_backgroundFill;
+@property(nonatomic) _Bool sectionTemplateEvenOddPagesDifferent; // @synthesize sectionTemplateEvenOddPagesDifferent=_sectionTemplateEvenOddPagesDifferent;
+@property(nonatomic) _Bool sectionTemplateFirstPageHidesHeaderFooter; // @synthesize sectionTemplateFirstPageHidesHeaderFooter=_sectionTemplateFirstPageHidesHeaderFooter;
+@property(nonatomic) _Bool sectionTemplateFirstPageDifferent; // @synthesize sectionTemplateFirstPageDifferent=_sectionTemplateFirstPageDifferent;
 - (id)allDrawables;
 - (void)p_addAllDrawablesFromInfo:(id)arg1 toMutableArray:(id)arg2;
-- (id)pageMasterOwningModel:(id)arg1;
-- (id)pageMasterForType:(long long)arg1;
-@property(readonly, nonatomic) NSArray *pageMasters;
+- (id)sectionTemplatePageOwningModel:(id)arg1;
+- (id)sectionTemplatePageForType:(long long)arg1;
+@property(readonly, nonatomic) NSArray *sectionTemplatePages;
 - (void)p_makeUserGuideStorage;
-- (void)p_upgradePageSizeAndMarginsFromParsedArchive:(const struct SectionArchive *)arg1;
-- (void)p_unarchiveAndUpgrade:(id)arg1 archive:(const struct SectionArchive *)arg2;
+- (void)p_upgradePageSizeAndMarginsFromParsedArchive:(const void *)arg1;
+- (void)p_unarchiveAndUpgrade:(id)arg1 archive:(const void *)arg2;
 - (void)i_clearPropertiesToDefaults;
 - (void)i_copyHeadersAndFootersFrom:(id)arg1 dolcContext:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)i_ensureHeaderFooterStoragesExistWithStylesheet:(id)arg1;
+- (struct CGSize)targetSizeForImageData:(id)arg1 associatedHint:(id)arg2;
 - (void)acceptVisitor:(id)arg1;
 - (id)childEnumerator;
 - (void)wasRemovedFromDocumentRoot:(id)arg1;
@@ -50,7 +56,7 @@
 - (void)willBeAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 @property(nonatomic) __weak TSWPStorage *parentStorage;
-- (void)setPageMasterForFirstPage:(id)arg1;
+- (void)setSectionTemplatePageForFirstPage:(id)arg1;
 - (id)copyWithContext:(id)arg1;
 @property(readonly, nonatomic) NSURL *url;
 @property(readonly, nonatomic) NSString *localizedPrettyDisplayStringLong;
@@ -66,9 +72,9 @@
 @property(nonatomic) unsigned int sectionPageNumberStart;
 @property(nonatomic) unsigned int sectionPageNumberKind;
 @property(nonatomic) unsigned int sectionStartKind;
-@property(nonatomic) _Bool pageMasterEvenOddPagesDifferent;
-@property(nonatomic) _Bool pageMasterFirstPageHidesHeaderFooter;
-@property(nonatomic) _Bool pageMasterFirstPageDifferent;
+- (_Bool)pageMasterEvenOddPagesDifferent;
+- (_Bool)pageMasterFirstPageHidesHeaderFooter;
+- (_Bool)pageMasterFirstPageDifferent;
 @property(nonatomic) _Bool inheritPreviousHeaderFooter;
 @property(copy, nonatomic) NSString *name;
 @property(readonly, nonatomic) NSArray *pageInfosForPropagation;

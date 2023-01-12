@@ -6,12 +6,14 @@
 
 #import <Foundation/NSOperation.h>
 
-@class City, NSArray, NSCalendar, NSData, NSDate, NSDictionary, NSError, NSLocale, NSString, WACurrentForecast, WAForecastModel, WFAggregateCommonRequest, WFAirQualityConditions, WFLocation, WFNextHourPrecipitation, WFServiceConnection, WFWeatherConditions;
+@class City, NSArray, NSCalendar, NSData, NSDate, NSDictionary, NSError, NSLocale, NSString, WACurrentForecast, WAForecastModel, WFAggregateCommonRequest, WFAirQualityConditions, WFLocation, WFNextHourPrecipitation, WFRequestOptions, WFServiceConnection, WFWeatherConditions;
 
 @interface WAForecastOperation : NSOperation
 {
     _Bool _isDay;
     _Bool _shouldAttachRawAPIData;
+    _Bool _canGeocode;
+    _Bool _isLocationInGeocodeSample;
     int _units;
     City *_city;
     WFLocation *_location;
@@ -34,11 +36,15 @@
     NSLocale *_locale;
     NSString *_trackingParameter;
     NSData *_rawAPIData;
+    WFRequestOptions *_requestOptions;
     WFServiceConnection *_connection;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isLocationInGeocodeSample; // @synthesize isLocationInGeocodeSample=_isLocationInGeocodeSample;
+@property(nonatomic) _Bool canGeocode; // @synthesize canGeocode=_canGeocode;
 @property(retain, nonatomic) WFServiceConnection *connection; // @synthesize connection=_connection;
+@property(retain, nonatomic) WFRequestOptions *requestOptions; // @synthesize requestOptions=_requestOptions;
 @property(nonatomic) int units; // @synthesize units=_units;
 @property(retain, nonatomic) NSData *rawAPIData; // @synthesize rawAPIData=_rawAPIData;
 @property(nonatomic) _Bool shouldAttachRawAPIData; // @synthesize shouldAttachRawAPIData=_shouldAttachRawAPIData;
@@ -67,10 +73,13 @@
 - (void)_mapReferralLinks;
 - (void)_determineSunriseAndSunset;
 - (void)_failWithError:(id)arg1;
+- (_Bool)shouldRequestChangeInConditions;
 - (void)cancel;
 - (void)main;
 - (_Bool)_needsGeolocation;
 - (id)initWithLocation:(id)arg1 onConnection:(id)arg2;
+- (id)initWithCity:(id)arg1 withUnits:(int)arg2 requestOptions:(id)arg3 canGeocode:(_Bool)arg4 onConnection:(id)arg5;
+- (id)initWithCity:(id)arg1 withUnits:(int)arg2 canGeocode:(_Bool)arg3 onConnection:(id)arg4;
 - (id)initWithCity:(id)arg1 withUnits:(int)arg2 onConnection:(id)arg3;
 - (id)initWithCity:(id)arg1 onConnection:(id)arg2;
 

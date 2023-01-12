@@ -34,13 +34,14 @@
 @property(readonly, nonatomic, getter=_isMonitoringLocation) _Bool _monitoringLocation; // @synthesize _monitoringLocation=__monitoringLocation;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *_authorizationQueue; // @synthesize _authorizationQueue=__authorizationQueue;
 @property(readonly, nonatomic) CLHeading *currentHeading; // @synthesize currentHeading=_currentHeading;
-@property(readonly, nonatomic) CLLocation *currentLocation; // @synthesize currentLocation=_currentLocation;
+@property(retain, nonatomic, setter=_setCurrentLocation:) CLLocation *currentLocation; // @synthesize currentLocation=_currentLocation;
 @property(nonatomic, getter=isHeadingEnabled) _Bool headingEnabled; // @synthesize headingEnabled=_headingEnabled;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 - (void)enqueueAssetForLocationUpdates:(id)arg1;
 - (void)_updateAssetsWaitingOnLocation;
+- (void)_performBlock:(CDUnknownBlockType)arg1 andLogIfExecutionExceeds:(double)arg2 logPrefix:(id)arg3;
 - (id)headingForOrientation:(long long)arg1;
-- (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
+- (void)locationManagerDidChangeAuthorization:(id)arg1;
 - (void)locationManager:(id)arg1 didUpdateHeading:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
 - (void)_resetDidRequestLocation;

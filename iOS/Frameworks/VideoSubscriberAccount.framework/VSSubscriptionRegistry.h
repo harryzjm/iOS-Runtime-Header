@@ -22,8 +22,10 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) VSSubscriptionPredicateFactory *predicateFactory; // @synthesize predicateFactory=_predicateFactory;
 @property(retain, nonatomic) VSSubscriptionPersistentContainer *persistentContainer; // @synthesize persistentContainer=_persistentContainer;
 @property(retain, nonatomic) VSRemoteNotifier *remoteNotifier; // @synthesize remoteNotifier=_remoteNotifier;
+- (void)removeSubscriptions:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)removeSubscriptions:(id)arg1;
 - (id)_predicateForPersistentAttributesOfSubscriptions:(id)arg1 withEntity:(id)arg2 forFiltering:(_Bool)arg3;
+- (void)registerSubscription:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)registerSubscription:(id)arg1;
 - (void)fetchActiveSubscriptionsWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_predicateForCurrentConnectionWithRequestKind:(long long)arg1;

@@ -27,6 +27,11 @@ struct _NSRange {
     unsigned long long length;
 };
 
+struct _opaque_pthread_mutex_t {
+    long long __sig;
+    char __opaque[56];
+};
+
 #pragma mark Typedef'd Structures
 
 typedef struct {

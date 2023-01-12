@@ -6,23 +6,25 @@
 
 #import <objc/NSObject.h>
 
-#import <DoNotDisturbServer/DNDSBackingStore-Protocol.h>
 #import <DoNotDisturbServer/DNDSBackingStoreDelegate-Protocol.h>
+#import <DoNotDisturbServer/DNDSCachedBackingStore-Protocol.h>
 
 @class NSString;
-@protocol DNDSBackingStore, DNDSBackingStoreDelegate, DNDSBackingStoreRecord;
+@protocol DNDSBackingStore, DNDSBackingStoreRecord, DNDSCachedBackingStoreDelegate;
 
-@interface DNDSMemoryCachedBackingStore : NSObject <DNDSBackingStoreDelegate, DNDSBackingStore>
+@interface DNDSMemoryCachedBackingStore : NSObject <DNDSBackingStoreDelegate, DNDSCachedBackingStore>
 {
     id <DNDSBackingStore> _underlyingBackingStore;
     id <DNDSBackingStoreRecord> _cache;
     struct os_unfair_lock_s _lock;
-    id <DNDSBackingStoreDelegate> _delegate;
+    id <DNDSCachedBackingStoreDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) __weak id <DNDSBackingStoreDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak id <DNDSCachedBackingStoreDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)backingStore:(id)arg1 migrateDictionaryRepresentation:(id)arg2 fromVersionNumber:(unsigned long long)arg3 toVersionNumber:(unsigned long long)arg4;
+- (void)purgeCache;
+- (unsigned long long)writeRecord:(id)arg1 writePartition:(_Bool)arg2 error:(id *)arg3;
 - (unsigned long long)writeRecord:(id)arg1 error:(id *)arg2;
 - (id)readRecordWithError:(id *)arg1;
 - (id)initWithUnderlyingBackingStore:(id)arg1;

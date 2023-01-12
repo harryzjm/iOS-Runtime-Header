@@ -10,7 +10,7 @@
 #import <CameraEditKit/CEKBadgeViewDelegate-Protocol.h>
 #import <CameraEditKit/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CEKAnimationGenerator, CEKLightingDialBackground, CEKLightingFrameCache, CEKLightingNameBadge, CEKSelectionFeedbackGenerator, NSArray, NSDate, NSDictionary, NSSet, NSString, NSTimer, UIImageView, UILongPressGestureRecognizer, UIPanGestureRecognizer, UITapGestureRecognizer;
+@class CEKAnimationGenerator, CEKLightingDialBackground, CEKLightingFrameCache, CEKLightingNameBadge, CEKMultiplyImageView, CEKSelectionFeedbackGenerator, NSArray, NSDate, NSDictionary, NSSet, NSString, NSTimer, UIImageView, UILongPressGestureRecognizer, UIPanGestureRecognizer, UITapGestureRecognizer;
 @protocol CEKLightingControlDelegate;
 
 @interface CEKLightingControl : UIView <UIGestureRecognizerDelegate, CEKBadgeViewDelegate, CAAnimationDelegate>
@@ -37,7 +37,7 @@
     NSDictionary *__itemShadowViewsForType;
     NSDictionary *__itemOutlineViewsForType;
     CEKLightingDialBackground *__backgroundView;
-    UIImageView *__selectionOverlay;
+    CEKMultiplyImageView *__selectionOverlay;
     UIImageView *__selectionUnderlay;
     CEKLightingNameBadge *__nameBadge;
     UIPanGestureRecognizer *__panGesture;
@@ -62,7 +62,7 @@
 @property(readonly, nonatomic) UIPanGestureRecognizer *_panGesture; // @synthesize _panGesture=__panGesture;
 @property(retain, nonatomic, setter=_setNameBadge:) CEKLightingNameBadge *_nameBadge; // @synthesize _nameBadge=__nameBadge;
 @property(retain, nonatomic, setter=_setSelectionUnderlay:) UIImageView *_selectionUnderlay; // @synthesize _selectionUnderlay=__selectionUnderlay;
-@property(retain, nonatomic, setter=_setSelectionOverlay:) UIImageView *_selectionOverlay; // @synthesize _selectionOverlay=__selectionOverlay;
+@property(retain, nonatomic, setter=_setSelectionOverlay:) CEKMultiplyImageView *_selectionOverlay; // @synthesize _selectionOverlay=__selectionOverlay;
 @property(retain, nonatomic, setter=_setBackgroundView:) CEKLightingDialBackground *_backgroundView; // @synthesize _backgroundView=__backgroundView;
 @property(retain, nonatomic, setter=_setItemOutlineViewsForType:) NSDictionary *_itemOutlineViewsForType; // @synthesize _itemOutlineViewsForType=__itemOutlineViewsForType;
 @property(retain, nonatomic, setter=_setItemShadowViewsForType:) NSDictionary *_itemShadowViewsForType; // @synthesize _itemShadowViewsForType=__itemShadowViewsForType;
@@ -82,7 +82,6 @@
 @property(nonatomic) long long selectedLightingType; // @synthesize selectedLightingType=_selectedLightingType;
 @property(nonatomic) long long lightingEffectSet; // @synthesize lightingEffectSet=_lightingEffectSet;
 @property(nonatomic) __weak id <CEKLightingControlDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)updateToContentSize:(id)arg1;
 - (void)_performFeedback;
 - (void)_prepareFeedback;
 - (void)_createNameBadgeIfNeeded;

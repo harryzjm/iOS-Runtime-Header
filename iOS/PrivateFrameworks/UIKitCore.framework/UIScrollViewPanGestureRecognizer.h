@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIScrollView, UIScrollViewDirectionalPressGestureRecognizer;
+#import <UIKitCore/_UIScrollEventAsyncDeliverable-Protocol.h>
+
+@class NSString, UIScrollView, UIScrollViewDirectionalPressGestureRecognizer;
 
 __attribute__((visibility("hidden")))
-@interface UIScrollViewPanGestureRecognizer
+@interface UIScrollViewPanGestureRecognizer <_UIScrollEventAsyncDeliverable>
 {
     UIScrollView *_scrollView;
     SEL _scrollViewAction;
@@ -36,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_isGestureType:(long long)arg1;
 - (_Bool)_allowsBounce;
 - (long long)_modifierFlags;
+- (id)_asyncDeliveryTargetForScrollEvent:(id)arg1;
 - (void)_scrollingChangedWithEvent:(id)arg1;
 - (_Bool)shouldReceiveEvent:(id)arg1;
 @property(readonly, nonatomic, getter=_beganCaughtDeceleratingScrollViewAndMoved) _Bool beganCaughtDeceleratingScrollViewAndMoved;
@@ -56,7 +59,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)translationInView:(id)arg1;
 - (struct CGPoint)_convertPoint:(struct CGPoint)arg1 fromSceneReferenceCoordinatesToView:(id)arg2;
 - (struct CGPoint)_convertPoint:(struct CGPoint)arg1 toSceneReferenceCoordinatesFromView:(id)arg2;
-- (void)_centroidMovedTo:(struct CGPoint)arg1 atTime:(double)arg2;
+- (void)_centroidMovedTo:(struct CGPoint)arg1 atTime:(double)arg2 affectingTranslation:(_Bool)arg3;
 - (struct CGPoint)_adjustSceneReferenceLocation:(struct CGPoint)arg1;
 - (void)_beginScroll;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
@@ -70,6 +73,12 @@ __attribute__((visibility("hidden")))
 - (void)setDelegate:(id)arg1;
 - (_Bool)delaysTouchesBegan;
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

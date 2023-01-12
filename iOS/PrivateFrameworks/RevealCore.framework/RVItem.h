@@ -8,7 +8,7 @@
 
 #import <RevealCore/NSSecureCoding-Protocol.h>
 
-@class DDScannerResult, NSString, NSURL;
+@class DDScannerResult, NSString, NSURL, RVQuery;
 
 @interface RVItem : NSObject <NSSecureCoding>
 {
@@ -16,7 +16,9 @@
     long long _normalizedType;
     NSURL *_url;
     DDScannerResult *_ddResult;
+    RVQuery *_query;
     NSString *_text;
+    NSString *_originalSelectedText;
     struct _NSRange _highlightRange;
     long long _contactPropertyType;
     NSString *_contactPropertyValue;
@@ -30,6 +32,7 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *originalSelectedText; // @synthesize originalSelectedText=_originalSelectedText;
 @property(retain, nonatomic) NSString *trailingText; // @synthesize trailingText=_trailingText;
 @property(retain, nonatomic) NSString *leadingText; // @synthesize leadingText=_leadingText;
 @property(readonly, nonatomic) long long selectionType; // @synthesize selectionType=_selectionType;
@@ -39,6 +42,7 @@
 @property(readonly, nonatomic) NSString *contactPropertyValue; // @synthesize contactPropertyValue=_contactPropertyValue;
 @property(readonly, nonatomic) struct _NSRange highlightRange; // @synthesize highlightRange=_highlightRange;
 @property(readonly, nonatomic) NSString *text; // @synthesize text=_text;
+@property(readonly, nonatomic) RVQuery *query; // @synthesize query=_query;
 @property(readonly, nonatomic) DDScannerResult *ddResult; // @synthesize ddResult=_ddResult;
 @property(readonly, nonatomic) NSURL *url; // @synthesize url=_url;
 @property(readonly, nonatomic) long long normalizedType; // @synthesize normalizedType=_normalizedType;
@@ -60,7 +64,7 @@
 - (id)initWithText:(id)arg1 clickedIndex:(unsigned long long)arg2 selectionRanges:(id)arg3 shouldUpdateSelection:(_Bool *)arg4;
 - (id)initWithDDResult:(id)arg1;
 - (id)initWithURL:(id)arg1 rangeInContext:(struct _NSRange)arg2;
-- (id)initEmpty;
+- (id)initWithSearchQuery:(id)arg1 rangeInContext:(struct _NSRange)arg2;
 
 @end
 

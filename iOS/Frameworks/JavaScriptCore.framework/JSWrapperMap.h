@@ -6,14 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSMapTable, NSMutableDictionary;
-
 __attribute__((visibility("hidden")))
 @interface JSWrapperMap : NSObject
 {
-    NSMutableDictionary *m_classMap;
-    struct unique_ptr<JSC::WeakGCMap<id, JSC::JSObject, WTF::DefaultHash<id>, WTF::HashTraits<id>>, std::__1::default_delete<JSC::WeakGCMap<id, JSC::JSObject, WTF::DefaultHash<id>, WTF::HashTraits<id>>>> m_cachedJSWrappers;
-    NSMapTable *m_cachedObjCWrappers;
+    struct RetainPtr<NSMutableDictionary> m_classMap;
+    struct unique_ptr<JSC::WeakGCMap<id, JSC::JSObject>, std::default_delete<JSC::WeakGCMap<id, JSC::JSObject>>> m_cachedJSWrappers;
+    struct RetainPtr<NSMapTable> m_cachedObjCWrappers;
 }
 
 - (id).cxx_construct;
@@ -21,7 +19,6 @@ __attribute__((visibility("hidden")))
 - (id)objcWrapperForJSValueRef:(struct OpaqueJSValue *)arg1 inContext:(id)arg2;
 - (id)jsWrapperForObject:(id)arg1 inContext:(id)arg2;
 - (id)classInfoForClass:(Class)arg1;
-- (void)dealloc;
 - (id)initWithGlobalContextRef:(struct OpaqueJSContext *)arg1;
 
 @end

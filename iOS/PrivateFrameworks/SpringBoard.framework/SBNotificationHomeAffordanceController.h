@@ -6,22 +6,26 @@
 
 #import <objc/NSObject.h>
 
+#import <SpringBoard/SBFZStackParticipantDelegate-Protocol.h>
 #import <SpringBoard/SBHomeGestureParticipantDelegate-Protocol.h>
 
 @class BSAnimationSettings, NSMapTable, NSString, SBHomeGesturePanGestureRecognizer, SBScreenEdgePanGestureRecognizer;
 @protocol UIViewSpringAnimationBehaviorDescribing;
 
-@interface SBNotificationHomeAffordanceController : NSObject <SBHomeGestureParticipantDelegate>
+@interface SBNotificationHomeAffordanceController : NSObject <SBHomeGestureParticipantDelegate, SBFZStackParticipantDelegate>
 {
-    NSMapTable *_clientsToParticipants;
+    NSMapTable *_clientsToHomeGestureParticipants;
+    NSMapTable *_clientsToZStackParticipants;
     SBHomeGesturePanGestureRecognizer *_screenEdgePanGesture;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)zStackParticipant:(id)arg1 updatePreferences:(id)arg2;
+- (void)zStackParticipantDidChange:(id)arg1;
 - (void)homeGestureParticipantOwningHomeGestureDidChange:(id)arg1;
-- (void)unregisterClient:(id)arg1 withIdentifier:(long long)arg2;
-- (void)registerClient:(id)arg1 withIdentifier:(long long)arg2;
+- (void)unregisterClient:(id)arg1 withHomeGestureIdentifier:(long long)arg2 zStackIdentifier:(long long)arg3;
+- (void)registerClient:(id)arg1 withHomeGestureIdentifier:(long long)arg2 zStackIdentifier:(long long)arg3;
 @property(readonly, nonatomic) id <UIViewSpringAnimationBehaviorDescribing> settleHomeAffordanceAnimationBehaviorDescription;
 @property(readonly, nonatomic) BSAnimationSettings *unhideHomeAffordanceAnimationSettings;
 @property(readonly, nonatomic) BSAnimationSettings *hideHomeAffordanceAnimationSettings;

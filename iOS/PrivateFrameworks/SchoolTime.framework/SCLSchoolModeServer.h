@@ -9,27 +9,31 @@
 #import <SchoolTime/SCLSchedulingEngineDelegate-Protocol.h>
 #import <SchoolTime/SCLSuppressSchoolModeAssertionManagerObserver-Protocol.h>
 
-@class NSHashTable, NSString, SCLSchedulingEngine, SCLState, SCLSuppressSchoolModeAssertionManager;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@class NSHashTable, NSString, SCLSchedulingEngine, SCLSchoolModeWakeScheduler, SCLState, SCLSuppressSchoolModeAssertionManager;
+@protocol OS_dispatch_queue, OS_dispatch_source, OS_os_transaction;
 
 @interface SCLSchoolModeServer : NSObject <SCLSchedulingEngineDelegate, SCLSuppressSchoolModeAssertionManagerObserver>
 {
     int _timeChangeToken;
     SCLSuppressSchoolModeAssertionManager *_suppressionManager;
+    SCLSchoolModeWakeScheduler *_wakeScheduler;
     NSHashTable *_observers;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_targetQueue;
     SCLSchedulingEngine *_schedulingEngine;
     NSObject<OS_dispatch_source> *_timerSource;
+    NSObject<OS_os_transaction> *_activeTransaction;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSObject<OS_os_transaction> *activeTransaction; // @synthesize activeTransaction=_activeTransaction;
 @property(retain, nonatomic) NSObject<OS_dispatch_source> *timerSource; // @synthesize timerSource=_timerSource;
 @property(retain) SCLSchedulingEngine *schedulingEngine; // @synthesize schedulingEngine=_schedulingEngine;
 @property(nonatomic) int timeChangeToken; // @synthesize timeChangeToken=_timeChangeToken;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *targetQueue; // @synthesize targetQueue=_targetQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
+@property(readonly, nonatomic) SCLSchoolModeWakeScheduler *wakeScheduler; // @synthesize wakeScheduler=_wakeScheduler;
 @property(readonly, nonatomic) SCLSuppressSchoolModeAssertionManager *suppressionManager; // @synthesize suppressionManager=_suppressionManager;
 - (void)configureParameters:(id)arg1 forSuppressionStatus:(unsigned long long)arg2;
 - (void)assertionManager:(id)arg1 didUpdateAssertionsStatus:(unsigned long long)arg2;
@@ -45,7 +49,7 @@
 - (void)invalidate;
 - (void)startWithScheduleSettings:(id)arg1 shouldStartManuallyActive:(_Bool)arg2;
 @property(readonly) SCLState *currentState;
-- (id)initWithQueue:(id)arg1 suppressionManager:(id)arg2;
+- (id)initWithQueue:(id)arg1 suppressionManager:(id)arg2 wakeScheduler:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

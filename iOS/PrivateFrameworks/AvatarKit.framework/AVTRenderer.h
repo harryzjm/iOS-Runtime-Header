@@ -7,11 +7,13 @@
 #import <SceneKit/SCNRenderer.h>
 
 #import <AvatarKit/SCNSceneRendererDelegate-Protocol.h>
+#import <AvatarKit/_SCNSceneCommandBufferStatusMonitor-Protocol.h>
 #import <AvatarKit/_SCNSceneRendererDelegateSPI-Protocol.h>
+#import <AvatarKit/_SCNSceneRendererResourceManagerMonitor-Protocol.h>
 
 @class AVTAvatar, AVTAvatarEnvironment, NSLock, NSString, SCNNode;
 
-@interface AVTRenderer : SCNRenderer <SCNSceneRendererDelegate, _SCNSceneRendererDelegateSPI>
+@interface AVTRenderer : SCNRenderer <_SCNSceneCommandBufferStatusMonitor, _SCNSceneRendererResourceManagerMonitor, SCNSceneRendererDelegate, _SCNSceneRendererDelegateSPI>
 {
     AVTAvatarEnvironment *_environment;
     AVTAvatar *_avatar;
@@ -24,6 +26,8 @@
 + (id)renderer;
 + (id)rendererWithDevice:(id)arg1 options:(id)arg2;
 - (void).cxx_destruct;
+- (void)renderer:(id)arg1 commandBufferDidCompleteWithError:(id)arg2;
+- (void)renderer:(id)arg1 didFallbackToDefaultTextureForSource:(id)arg2 message:(id)arg3;
 - (void)_renderer:(id)arg1 updateAtTime:(double)arg2;
 - (void)_renderer:(id)arg1 didBuildSubdivDataForHash:(id)arg2 dataProvider:(CDUnknownBlockType)arg3;
 - (id)_renderer:(id)arg1 subdivDataForHash:(id)arg2;
@@ -34,10 +38,11 @@
 - (void)__setAvatar:(id)arg1;
 @property(retain, nonatomic) AVTAvatar *avatar;
 @property(nonatomic) unsigned long long avt_antialiasingMode;
+@property(copy, nonatomic) NSString *framingMode;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
 - (void)_updateFocal;
 - (void)dealloc;
-- (void)_avtSetup;
+- (void)_avtSetupWithOptions:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

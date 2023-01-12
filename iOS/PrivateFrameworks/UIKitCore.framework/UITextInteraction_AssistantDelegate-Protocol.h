@@ -21,12 +21,13 @@
 @property(nonatomic) struct CGPoint loupeGestureEndPoint;
 @property(nonatomic) _Bool autoscrolled;
 - (void)lollipopGestureWithState:(long long)arg1 location:(struct CGPoint)arg2 locationOfFirstTouch:(struct CGPoint)arg3 forTouchType:(long long)arg4;
+- (_Bool)didPerformLoupeSelectionHandoff;
 - (void)endFloatingCursor;
 - (void)updateFloatingCursorAtPoint:(struct CGPoint)arg1 velocity:(struct CGPoint)arg2;
 - (void)beginFloatingCursorAtPoint:(struct CGPoint)arg1;
 - (void)willBeginFloatingCursor:(_Bool)arg1;
 - (void)resetWillHandoffLoupeMagnifier;
-- (void)scheduleReplacementsForRange:(UITextRange *)arg1 withOptions:(unsigned long long)arg2;
+- (_Bool)scheduleReplacementsForRange:(UITextRange *)arg1 withOptions:(unsigned long long)arg2;
 - (void)scheduleDictationReplacementsForAlternatives:(NSTextAlternatives *)arg1 range:(UITextRange *)arg2;
 - (void)setAutomaticSelectionCommandsSuppressedForPointerTouchType:(_Bool)arg1;
 - (void)showSelectionCommandsForSecondaryClickAtPoint:(struct CGPoint)arg1;
@@ -47,6 +48,7 @@
 - (void)clearStashedSelection;
 - (void)stashCurrentSelection;
 - (_Bool)supportsIndirectInteractions;
+- (_Bool)viewConformsToAsynchronousInteractionProtocol;
 - (_Bool)usesAsynchronousSelectionController;
 - (_Bool)didUseStashedSelection;
 - (void)canBeginDragCursor:(UIDragRecognizer *)arg1;

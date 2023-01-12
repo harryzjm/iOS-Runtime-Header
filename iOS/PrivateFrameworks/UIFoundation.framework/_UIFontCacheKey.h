@@ -15,6 +15,7 @@
 
 + (id)newFontCacheKeyWithFontDescriptor:(id)arg1 pointSize:(double)arg2 textStyleForScaling:(id)arg3 pointSizeForScaling:(double)arg4 maximumPointSizeAfterScaling:(double)arg5 textLegibility:(_Bool)arg6;
 + (id)newFontCacheKeyWithTextStyle:(id)arg1 contentSizeCategory:(id)arg2 textLegibility:(_Bool)arg3;
++ (id)newSystemFontCacheKeyWithDesign:(id)arg1 weight:(double)arg2 pointSize:(double)arg3 monospacedDigits:(_Bool)arg4;
 + (id)newSystemFontCacheKeyWithTraits:(int)arg1 pointSize:(double)arg2;
 + (id)newFontCacheKeyWithFontName:(id)arg1 traits:(int)arg2 pointSize:(double)arg3;
 - (void)_precalculateHash;

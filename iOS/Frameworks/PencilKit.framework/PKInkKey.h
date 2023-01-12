@@ -18,13 +18,9 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSString *variant; // @synthesize variant=_variant;
-@property(readonly, nonatomic) unsigned long long version; // @synthesize version=_version;
-@property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithIdentifier:(id)arg1 version:(unsigned long long)arg2 variant:(id)arg3;
 
 @end
 

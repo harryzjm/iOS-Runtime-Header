@@ -12,6 +12,7 @@
 + (id)complicationTypesBySlot;
 + (id)_legacyDefaultFacesForDevice:(id)arg1;
 + (id)_spring2020DefaultFacesForDevice:(id)arg1;
++ (id)_fall2021DefaultFacesForDevice:(id)arg1;
 + (id)facesForDevice:(id)arg1;
 - (id)title;
 

@@ -8,20 +8,21 @@
 
 #import <AuthKit/NSSecureCoding-Protocol.h>
 
-@class AKAnisetteData, AKAnisetteProvisioningController, AKAppleIDAuthenticationContext, AKAttestationData, AKDevice, NSArray, NSMutableDictionary, NSNumber, NSString;
+@class AKAnisetteData, AKAnisetteProvisioningController, AKAppleIDAuthenticationContext, AKAttestationData, AKDevice, NSArray, NSDictionary, NSNumber, NSString;
 @protocol AKAnisetteServiceProtocol;
 
 @interface AKAppleIDServerResourceLoadDelegate : NSObject <NSSecureCoding>
 {
     NSString *_altDSID;
     AKAnisetteProvisioningController *_proxiedProvisioningController;
-    NSMutableDictionary *_continuationHeaders;
+    NSDictionary *_continuationHeaders;
     AKAppleIDAuthenticationContext *_context;
     _Bool _shouldSendEphemeralAuthHeader;
     _Bool _shouldSendICSCIntentHeader;
     _Bool _shouldSendLocalUserHasAppleIDLoginHeader;
     _Bool _shouldSendPhoneNumber;
     _Bool _shouldOfferSecurityUpgrade;
+    _Bool _cliMode;
     _Bool _shouldSendSigningHeaders;
     NSString *_serviceToken;
     NSString *_phoneNumberCertificate;
@@ -40,12 +41,14 @@
     NSString *_securityUpgradeContext;
     NSString *_followupItems;
     NSString *_dataCenterIdentifier;
+    NSString *_custodianRecoveryToken;
     AKDevice *_proxiedDevice;
     NSString *_proxiedAltDSID;
     NSString *_proxiedIdentityToken;
     id <AKAnisetteServiceProtocol> _anisetteDataProvider;
     AKAnisetteData *_proxiedDeviceAnisetteData;
     AKAttestationData *_proxiedDeviceAttestationData;
+    NSString *_privateEmailKey;
 }
 
 + (unsigned long long)signalFromServerResponse:(id)arg1;
@@ -53,12 +56,15 @@
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool shouldSendSigningHeaders; // @synthesize shouldSendSigningHeaders=_shouldSendSigningHeaders;
+@property(copy, nonatomic) NSString *privateEmailKey; // @synthesize privateEmailKey=_privateEmailKey;
+@property(nonatomic) _Bool cliMode; // @synthesize cliMode=_cliMode;
 @property(retain, nonatomic) AKAttestationData *proxiedDeviceAttestationData; // @synthesize proxiedDeviceAttestationData=_proxiedDeviceAttestationData;
 @property(retain, nonatomic) AKAnisetteData *proxiedDeviceAnisetteData; // @synthesize proxiedDeviceAnisetteData=_proxiedDeviceAnisetteData;
 @property(retain, nonatomic) id <AKAnisetteServiceProtocol> anisetteDataProvider; // @synthesize anisetteDataProvider=_anisetteDataProvider;
 @property(retain, nonatomic) NSString *proxiedIdentityToken; // @synthesize proxiedIdentityToken=_proxiedIdentityToken;
 @property(retain, nonatomic) NSString *proxiedAltDSID; // @synthesize proxiedAltDSID=_proxiedAltDSID;
 @property(retain, nonatomic) AKDevice *proxiedDevice; // @synthesize proxiedDevice=_proxiedDevice;
+@property(copy, nonatomic) NSString *custodianRecoveryToken; // @synthesize custodianRecoveryToken=_custodianRecoveryToken;
 @property(copy, nonatomic) NSString *dataCenterIdentifier; // @synthesize dataCenterIdentifier=_dataCenterIdentifier;
 @property(copy, nonatomic) NSString *followupItems; // @synthesize followupItems=_followupItems;
 @property(copy, nonatomic) NSString *securityUpgradeContext; // @synthesize securityUpgradeContext=_securityUpgradeContext;
@@ -82,10 +88,13 @@
 @property(nonatomic) _Bool shouldSendICSCIntentHeader; // @synthesize shouldSendICSCIntentHeader=_shouldSendICSCIntentHeader;
 @property(nonatomic) _Bool shouldSendEphemeralAuthHeader; // @synthesize shouldSendEphemeralAuthHeader=_shouldSendEphemeralAuthHeader;
 @property(copy, nonatomic) NSString *serviceToken; // @synthesize serviceToken=_serviceToken;
-- (id)_retrieveContinuationHeaders;
+- (_Bool)_isResponseSuccessful:(id)arg1;
+- (id)_retrieveAndResetContinuationHeaders;
 - (void)_harvestContinuationHeadersFromHeaders:(id)arg1;
 - (void)updateWithAuthResults:(id)arg1;
 - (void)decorateWithContext:(id)arg1;
+- (void)decorateWithPrivateEmailContext:(id)arg1;
+- (_Bool)isResponseCompleteAndConflict:(id)arg1;
 - (_Bool)isResponseFinalForHSA2ServerFlow:(id)arg1;
 - (_Bool)isResponseActionable:(id)arg1;
 - (_Bool)isAuthenticationRequired:(id)arg1;
@@ -93,6 +102,7 @@
 - (void)processResponse:(id)arg1;
 - (void)_signWithFeatureOptInHeaders:(id)arg1;
 - (void)_signWithProxiedDeviceHeaders:(id)arg1;
+- (void)signRequestWithBasicHeaders:(id)arg1;
 - (void)signRequestWithCommonHeaders:(id)arg1;
 - (void)_signRequest:(id)arg1;
 - (id)signingController;
@@ -101,7 +111,6 @@
 - (void)signRequest:(id)arg1;
 @property(nonatomic) _Bool shouldSendAbsintheHeader;
 - (id)initWithAltDSID:(id)arg1 identityToken:(id)arg2;
-- (id)init;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

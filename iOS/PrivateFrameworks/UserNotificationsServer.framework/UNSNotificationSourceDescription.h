@@ -11,6 +11,10 @@
 @interface UNSNotificationSourceDescription : NSObject
 {
     _Bool _allowCriticalAlerts;
+    _Bool _allowTimeSensitive;
+    _Bool _allowCalls;
+    _Bool _allowIntercom;
+    _Bool _allowMessages;
     _Bool _allowPrivateProperties;
     _Bool _allowUnlimitedContentBody;
     _Bool _allowServiceExtensionFiltering;
@@ -31,10 +35,12 @@
     _Bool _wantsEphemeralNotifications;
     _Bool _allowUnlimitedPendingNotifications;
     NSString *_bundleIdentifier;
+    NSString *_intentsBundleIdentifier;
     NSString *_universalApplicationIdentifier;
     NSString *_displayName;
     NSString *_pushEnvironment;
     NSString *_defaultIconFile;
+    NSString *_subordinateIconFile;
     NSString *_settingsIconFile;
     NSString *_settingsSheetIconFile;
     NSString *_carPlayIconFile;
@@ -46,12 +52,19 @@
     NSString *_watchQuickLook448hIconFile;
     NSString *_watchList394hIconFile;
     NSString *_watchList448hIconFile;
+    NSString *_watchQuickLook430hIconFile;
+    NSString *_watchQuickLook484hIconFile;
+    NSString *_watchList430hIconFile;
+    NSString *_watchList484hIconFile;
+    NSString *_customSettingsBundle;
+    NSString *_customSettingsDetailControllerClass;
     NSURL *_bundleURL;
     NSURL *_dataContainerURL;
     NSDictionary *_groupContainerURLS;
     NSArray *_defaultCategories;
     UNSNotificationSourceSettingsDescription *_defaultSettings;
     NSArray *_defaultTopics;
+    NSArray *_activityTypes;
 }
 
 + (id)_validEnvironmentFromEnvironment:(id)arg1;
@@ -83,13 +96,24 @@
 @property(nonatomic) _Bool allowServiceExtensionFiltering; // @synthesize allowServiceExtensionFiltering=_allowServiceExtensionFiltering;
 @property(nonatomic) _Bool allowUnlimitedContentBody; // @synthesize allowUnlimitedContentBody=_allowUnlimitedContentBody;
 @property(nonatomic) _Bool allowPrivateProperties; // @synthesize allowPrivateProperties=_allowPrivateProperties;
+@property(nonatomic) _Bool allowMessages; // @synthesize allowMessages=_allowMessages;
+@property(nonatomic) _Bool allowIntercom; // @synthesize allowIntercom=_allowIntercom;
+@property(nonatomic) _Bool allowCalls; // @synthesize allowCalls=_allowCalls;
+@property(nonatomic) _Bool allowTimeSensitive; // @synthesize allowTimeSensitive=_allowTimeSensitive;
 @property(nonatomic) _Bool allowCriticalAlerts; // @synthesize allowCriticalAlerts=_allowCriticalAlerts;
+@property(copy, nonatomic) NSArray *activityTypes; // @synthesize activityTypes=_activityTypes;
 @property(retain, nonatomic) NSArray *defaultTopics; // @synthesize defaultTopics=_defaultTopics;
 @property(retain, nonatomic) UNSNotificationSourceSettingsDescription *defaultSettings; // @synthesize defaultSettings=_defaultSettings;
 @property(retain, nonatomic) NSArray *defaultCategories; // @synthesize defaultCategories=_defaultCategories;
 @property(copy, nonatomic) NSDictionary *groupContainerURLS; // @synthesize groupContainerURLS=_groupContainerURLS;
 @property(copy, nonatomic) NSURL *dataContainerURL; // @synthesize dataContainerURL=_dataContainerURL;
 @property(copy, nonatomic) NSURL *bundleURL; // @synthesize bundleURL=_bundleURL;
+@property(copy, nonatomic) NSString *customSettingsDetailControllerClass; // @synthesize customSettingsDetailControllerClass=_customSettingsDetailControllerClass;
+@property(copy, nonatomic) NSString *customSettingsBundle; // @synthesize customSettingsBundle=_customSettingsBundle;
+@property(copy, nonatomic) NSString *watchList484hIconFile; // @synthesize watchList484hIconFile=_watchList484hIconFile;
+@property(copy, nonatomic) NSString *watchList430hIconFile; // @synthesize watchList430hIconFile=_watchList430hIconFile;
+@property(copy, nonatomic) NSString *watchQuickLook484hIconFile; // @synthesize watchQuickLook484hIconFile=_watchQuickLook484hIconFile;
+@property(copy, nonatomic) NSString *watchQuickLook430hIconFile; // @synthesize watchQuickLook430hIconFile=_watchQuickLook430hIconFile;
 @property(copy, nonatomic) NSString *watchList448hIconFile; // @synthesize watchList448hIconFile=_watchList448hIconFile;
 @property(copy, nonatomic) NSString *watchList394hIconFile; // @synthesize watchList394hIconFile=_watchList394hIconFile;
 @property(copy, nonatomic) NSString *watchQuickLook448hIconFile; // @synthesize watchQuickLook448hIconFile=_watchQuickLook448hIconFile;
@@ -101,10 +125,12 @@
 @property(copy, nonatomic) NSString *carPlayIconFile; // @synthesize carPlayIconFile=_carPlayIconFile;
 @property(copy, nonatomic) NSString *settingsSheetIconFile; // @synthesize settingsSheetIconFile=_settingsSheetIconFile;
 @property(copy, nonatomic) NSString *settingsIconFile; // @synthesize settingsIconFile=_settingsIconFile;
+@property(copy, nonatomic) NSString *subordinateIconFile; // @synthesize subordinateIconFile=_subordinateIconFile;
 @property(copy, nonatomic) NSString *defaultIconFile; // @synthesize defaultIconFile=_defaultIconFile;
 @property(copy, nonatomic) NSString *pushEnvironment; // @synthesize pushEnvironment=_pushEnvironment;
 @property(copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property(copy, nonatomic) NSString *universalApplicationIdentifier; // @synthesize universalApplicationIdentifier=_universalApplicationIdentifier;
+@property(copy, nonatomic) NSString *intentsBundleIdentifier; // @synthesize intentsBundleIdentifier=_intentsBundleIdentifier;
 @property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 - (id)description;
 - (unsigned long long)hash;

@@ -13,10 +13,10 @@
 }
 
 + (id)indexPathForItem:(long long)arg1 inSection:(long long)arg2 fromSourceIndexPath:(id)arg3 withTag:(id)arg4;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSIndexPath *sourceIndexPath; // @synthesize sourceIndexPath=_sourceIndexPath;
 @property(retain, nonatomic) id tag; // @synthesize tag=_tag;
 - (id)description;
-- (void)dealloc;
 
 @end
 

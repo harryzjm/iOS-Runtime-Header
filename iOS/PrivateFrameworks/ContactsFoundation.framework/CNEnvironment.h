@@ -6,32 +6,46 @@
 
 #import <objc/NSObject.h>
 
-@class CNUserDefaults, NSFileManager, NSNumber, NSString;
+@class CNUserDefaults, NSMutableDictionary, NSNumber, NSString;
+@protocol CNEntitlementVerification, CNFileManager, CNLocalizationServices, CNSchedulerProvider, CNTimeProvider;
 
 @interface CNEnvironment : NSObject
 {
-    NSFileManager *_fileManager;
+    id <CNFileManager> _fileManager;
     CNUserDefaults *_userDefaults;
+    id <CNSchedulerProvider> _schedulerProvider;
+    id <CNTimeProvider> _timeProvider;
+    id <CNEntitlementVerification> _entitlementVerifier;
+    id <CNLocalizationServices> _localizationServices;
+    NSMutableDictionary *_storage;
     NSString *_mainBundleIdentifier;
     NSNumber *_isInternalBuildStorage;
     NSNumber *_isCommLimitsEnabledStorage;
     NSNumber *_isCommLimitsPersistenceAccessibleStorage;
 }
 
++ (id)defaultStack;
++ (id)effectiveWritingStack;
++ (id)effectiveReadingStack;
++ (id)defaultEnvironment;
 + (id)currentEnvironment;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSNumber *isCommLimitsPersistenceAccessibleStorage; // @synthesize isCommLimitsPersistenceAccessibleStorage=_isCommLimitsPersistenceAccessibleStorage;
-@property(readonly, nonatomic) NSNumber *isCommLimitsEnabledStorage; // @synthesize isCommLimitsEnabledStorage=_isCommLimitsEnabledStorage;
-@property(readonly, nonatomic) NSNumber *isInternalBuildStorage; // @synthesize isInternalBuildStorage=_isInternalBuildStorage;
-@property(readonly, nonatomic) NSString *mainBundleIdentifier; // @synthesize mainBundleIdentifier=_mainBundleIdentifier;
-@property(readonly, nonatomic) CNUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
-@property(readonly, nonatomic) NSFileManager *fileManager; // @synthesize fileManager=_fileManager;
+@property(readonly) NSString *mainBundleIdentifier; // @synthesize mainBundleIdentifier=_mainBundleIdentifier;
+@property(readonly) id <CNLocalizationServices> localizationServices; // @synthesize localizationServices=_localizationServices;
+@property(readonly) id <CNEntitlementVerification> entitlementVerifier; // @synthesize entitlementVerifier=_entitlementVerifier;
+@property(readonly) id <CNTimeProvider> timeProvider; // @synthesize timeProvider=_timeProvider;
+@property(readonly) id <CNSchedulerProvider> schedulerProvider; // @synthesize schedulerProvider=_schedulerProvider;
+@property(readonly) CNUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
+@property(readonly) id <CNFileManager> fileManager; // @synthesize fileManager=_fileManager;
+- (void)setValue:(id)arg1 forKey:(id)arg2;
+- (id)valueForKey:(id)arg1 onCacheMiss:(CDUnknownBlockType)arg2;
 - (_Bool)isCommLimitsEnabledImpl;
-- (_Bool)isCommLimitsEnabled;
+@property(readonly, getter=isCommLimitsEnabled) _Bool commLimitsEnabled;
 - (_Bool)isInternalBuildImpl;
-- (_Bool)isInternalBuild;
-- (id)initWithFileManager:(id)arg1 userDefaults:(id)arg2 mainBundleIdentifier:(id)arg3;
+@property(readonly, getter=isInternalBuild) _Bool internalBuild;
 - (id)init;
+- (void)resignCurrent;
+- (void)becomeCurrent;
 
 @end
 

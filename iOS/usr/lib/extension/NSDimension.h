@@ -6,17 +6,20 @@
 
 #import <Foundation/NSSecureCoding-Protocol.h>
 
-@class NSUnitConverter;
+@class NSString, NSUnitConverter;
 
 @interface NSDimension <NSSecureCoding>
 {
     unsigned long long _reserved;
     NSUnitConverter *_converter;
+    NSString *_icuSubtype;
 }
 
++ (id)icuType;
 + (_Bool)supportsSecureCoding;
 + (id)baseUnit;
 + (id)_measurementWithNaturalScale:(id)arg1 system:(unsigned long long)arg2;
+@property(readonly) NSString *icuSubtype; // @synthesize icuSubtype=_icuSubtype;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;

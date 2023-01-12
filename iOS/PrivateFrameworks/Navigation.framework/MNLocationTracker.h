@@ -7,11 +7,10 @@
 #import <objc/NSObject.h>
 
 #import <Navigation/MNNavigationSessionObserver-Protocol.h>
-#import <Navigation/MNSessionUpdateManagerDelegate-Protocol.h>
 
 @class GEOApplicationAuditToken, MNLocation, MNNavigationSession, MNObserverHashTable, NSString;
 
-@interface MNLocationTracker : NSObject <MNNavigationSessionObserver, MNSessionUpdateManagerDelegate>
+@interface MNLocationTracker : NSObject <MNNavigationSessionObserver>
 {
     MNObserverHashTable *_safeDelegate;
     int _state;
@@ -27,34 +26,28 @@
 @property(readonly, nonatomic) MNObserverHashTable *safeDelegate; // @synthesize safeDelegate=_safeDelegate;
 @property(readonly, nonatomic) MNLocation *lastMatchedLocation; // @synthesize lastMatchedLocation=_lastMatchedLocation;
 @property(nonatomic, setter=_setState:) int state; // @synthesize state=_state;
-- (id)userLocationForUpdateManager:(id)arg1;
-- (id)routeInfoForUpdateManager:(id)arg1;
-- (_Bool)wantsETAUpdates;
-- (void)updateManager:(id)arg1 didReceiveETAError:(id)arg2;
-- (void)updateManager:(id)arg1 didUpdateETAForRouteInfo:(id)arg2;
-- (void)updateManager:(id)arg1 didReceiveETAResponse:(id)arg2 toRequest:(id)arg3;
-- (void)updateManager:(id)arg1 willSendETARequest:(id)arg2;
-- (void)updateManager:(id)arg1 didReceiveTransitError:(id)arg2;
-- (void)updateManager:(id)arg1 didReceiveTransitUpdates:(id)arg2;
-- (void)updateManager:(id)arg1 willSendTransitUpdateRequestForRouteIDs:(id)arg2;
-- (void)updateManager:(id)arg1 didReceiveTransitUpdateResponse:(id)arg2;
-- (void)updateManager:(id)arg1 willSendTransitUpdateRequests:(id)arg2;
 - (void)_defaultsDidChange;
 - (void)_updateShouldLocalizeRoadNames;
-- (void)_roadFeaturesForFeature:(CDStruct_66740237 *)arg1 outRoadName:(id *)arg2 outShieldText:(id *)arg3 outShieldType:(long long *)arg4;
+- (void)_roadFeaturesForFeature:(id)arg1 outRoadName:(out id *)arg2 outShieldText:(out id *)arg3 outShieldType:(out long long *)arg4;
 - (void)_updateMatchedLocation:(id)arg1;
 - (id)_matchedLocationForLocation:(id)arg1;
 - (void)_setIsNavigatingInLowGuidance:(_Bool)arg1;
+- (void)monitoringDidFailForRegionWithId:(id)arg1 withError:(id)arg2;
+- (void)exitRegionWithId:(id)arg1;
+- (void)enterRegionWithId:(id)arg1;
 - (_Bool)paused;
 - (void)resume;
 - (void)pause;
 - (_Bool)shouldAllowPause;
+- (void)updateForETAUResponse:(id)arg1;
+- (void)updateRequestForETAUpdate:(id)arg1;
 - (void)updateVehicleHeading:(double)arg1 timestamp:(id)arg2;
 - (void)updateVehicleSpeed:(double)arg1 timestamp:(id)arg2;
 - (void)updateLocation:(id)arg1;
 - (void)_switchedToStepAtIndex:(unsigned long long)arg1;
 - (id)matchedLocationForLocation:(id)arg1;
 - (void)reroute:(id)arg1 reason:(unsigned long long)arg2;
+- (void)forceReroute;
 - (void)updateDestination:(id)arg1 finishedHandler:(CDUnknownBlockType)arg2;
 - (void)stopTracking;
 - (void)startTracking;

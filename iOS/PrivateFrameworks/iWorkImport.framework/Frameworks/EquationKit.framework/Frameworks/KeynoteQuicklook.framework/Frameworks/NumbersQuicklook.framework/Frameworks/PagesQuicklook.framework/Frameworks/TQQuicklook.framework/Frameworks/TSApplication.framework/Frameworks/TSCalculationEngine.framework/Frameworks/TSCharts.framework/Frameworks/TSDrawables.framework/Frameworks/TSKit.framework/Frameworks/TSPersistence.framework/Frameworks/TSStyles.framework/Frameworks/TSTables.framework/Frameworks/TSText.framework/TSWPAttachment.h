@@ -35,7 +35,6 @@
 @property(readonly, nonatomic) _Bool isVerticallyCentered;
 @property(readonly, nonatomic) _Bool isHorizontallyCentered;
 @property(readonly, nonatomic) _Bool isSearchable;
-@property(readonly, nonatomic) Class positionerClass;
 @property(readonly, nonatomic) _Bool isAttachedToBodyText;
 @property(readonly, nonatomic) _Bool isPartitioned;
 @property(readonly, nonatomic) _Bool isAnchored;
@@ -45,6 +44,7 @@
 - (void)migrateStyleWithDocumentRoot:(id)arg1;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 - (_Bool)supportsUUID;
+- (unsigned long long)findCharIndexWithHintIndex:(unsigned long long *)arg1;
 - (unsigned long long)findCharIndex;
 - (id)topLevelAttachment;
 - (_Bool)changesWithPageCount;

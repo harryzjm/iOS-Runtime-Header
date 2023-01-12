@@ -10,6 +10,7 @@
 @interface FCIssuesFetchOperation
 {
     FCCachePolicy *_cachePolicy;
+    CDUnknownBlockType _interestTokenHandler;
     CDUnknownBlockType _fetchCompletionHandler;
     id <FCContentContext> _context;
     NSArray *_issueIDs;
@@ -21,6 +22,7 @@
 @property(retain, nonatomic) NSArray *issueIDs; // @synthesize issueIDs=_issueIDs;
 @property(retain, nonatomic) id <FCContentContext> context; // @synthesize context=_context;
 @property(copy, nonatomic) CDUnknownBlockType fetchCompletionHandler; // @synthesize fetchCompletionHandler=_fetchCompletionHandler;
+@property(copy, nonatomic) CDUnknownBlockType interestTokenHandler; // @synthesize interestTokenHandler=_interestTokenHandler;
 @property(copy, nonatomic) FCCachePolicy *cachePolicy; // @synthesize cachePolicy=_cachePolicy;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;

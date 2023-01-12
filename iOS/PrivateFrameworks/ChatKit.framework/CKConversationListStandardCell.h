@@ -19,12 +19,14 @@
 @property(nonatomic) _Bool showTypingIndicator; // @synthesize showTypingIndicator=_showTypingIndicator;
 - (_Bool)_shouldShowAvatarForWidth:(double)arg1;
 - (id)chevronImageView;
-- (_Bool)shouldShowAvatarView;
 - (id)overrideImageDataForPreviewInteractionForAvatarView:(id)arg1;
 - (id)contactsForPreviewInteractionForAvatarView:(id)arg1 suggestedKeysToFetch:(id)arg2;
 - (_Bool)avatarView:(id)arg1 shouldShowContact:(id)arg2;
 - (id)avatarView:(id)arg1 orderedPropertiesForProperties:(id)arg2 category:(id)arg3;
 - (id)presentingViewControllerForAvatarView:(id)arg1;
+- (struct CGRect)_calculateIndicatorFrameForSize:(struct CGSize)arg1 trailing:(_Bool)arg2 displayScale:(double)arg3 insets:(struct UIEdgeInsets)arg4;
+- (struct CGRect)_calculateSummaryLabelFrameForColumn:(struct CGRect)arg1 summaryLabelCapFrameYOrigin:(double)arg2 displayScale:(double)arg3;
+- (struct CGRect)_calculateRectVerticallyCenteredWithFirstTextLineOfLabel:(id)arg1 horizontallyCenteredInColumn:(struct CGRect)arg2 size:(struct CGSize)arg3 offset:(struct CGPoint)arg4;
 - (void)_calculateLayoutFrames;
 - (void)_updateAvatarView;
 - (_Bool)_boundsShouldCollapseContent:(struct CGRect)arg1;
@@ -34,6 +36,7 @@
 - (id)avatarView;
 - (void)layoutSubviews;
 - (void)forceUnreadIndicatorVisibility:(_Bool)arg1 forConversation:(id)arg2 animated:(_Bool)arg3;
+- (void)setMuted:(_Bool)arg1;
 - (void)updateForEditing:(_Bool)arg1;
 - (void)updateUnreadIndicatorWithImage:(id)arg1 tintColor:(id)arg2;
 - (void)updateUnreadIndicatorWithImage:(id)arg1 tintColor:(id)arg2 animated:(_Bool)arg3;

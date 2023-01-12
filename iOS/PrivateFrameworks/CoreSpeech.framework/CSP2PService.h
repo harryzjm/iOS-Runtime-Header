@@ -35,6 +35,7 @@
 - (id)_spIdSiriDebugVTDataDirectory;
 - (void)_createDirectoryIfDoesNotExist:(id)arg1;
 - (id)_speakerRecognitionAudioLogsGradingDir;
+- (void)_sendAcousticGradingDataToPeerId:(id)arg1;
 - (void)_sendVoiceProfileUpdateTriggerToPeerId:(id)arg1 forLocale:(id)arg2;
 - (void)_processVoiceProfileUpdateTriggerFromPeerId:(id)arg1 requestInfo:(id)arg2 withReply:(CDUnknownBlockType)arg3;
 - (void)_processReverseTransferVoiceProfileCommandFromPeerId:(id)arg1 requestInfo:(id)arg2 withReply:(CDUnknownBlockType)arg3;
@@ -53,6 +54,7 @@
 - (void)_compressFilesInDirectory:(id)arg1 matchingPredicate:(id)arg2 compressedFileAvailable:(CDUnknownBlockType)arg3;
 - (void)_processParallelRecordingCommandWithRequest:(id)arg1 fromSenderID:(id)arg2 withReply:(CDUnknownBlockType)arg3;
 - (void)_processRemoteHeySiriCommandWithRequest:(id)arg1 fromSenderID:(id)arg2 withReply:(CDUnknownBlockType)arg3;
+- (void)sendAcousticGradingDataToNearbyPeer;
 - (void)sendVoiceProfileUpdatedMessageToNearbyPeerForLocale:(id)arg1;
 - (void)sendVTNearMissGradingDataToCompanion;
 - (void)sendCoreSpeechGradingDataToNearbyPeer;

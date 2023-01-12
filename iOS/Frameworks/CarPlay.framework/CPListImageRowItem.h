@@ -14,6 +14,7 @@
 
 @interface CPListImageRowItem : NSObject <CPListItemPrivate, NSSecureCoding, CPSelectableListItem>
 {
+    _Bool _enabled;
     NSString *_text;
     id _userInfo;
     CDUnknownBlockType _handler;
@@ -30,6 +31,7 @@
 @property(readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) NSArray *gridImagesSet; // @synthesize gridImagesSet=_gridImagesSet;
 @property(copy, nonatomic) CDUnknownBlockType listImageRowHandler; // @synthesize listImageRowHandler=_listImageRowHandler;
+@property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 @property(copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
 @property(retain, nonatomic) id userInfo; // @synthesize userInfo=_userInfo;
 @property(copy, nonatomic) NSString *text; // @synthesize text=_text;

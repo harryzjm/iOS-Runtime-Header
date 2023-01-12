@@ -4,20 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class BKSAnimationFenceHandle, BSAnimationSettings, NSArray, NSData, NSString, NSValue, UIFocusMovementAction, _UITextServiceSessionContext;
-@protocol UITimingCurveProvider;
+@class BKSAnimationFenceHandle, BSAnimationSettings, NSArray, NSData, NSString, NSValue, UIFocusMovementAction, _UITextServiceSessionContext, _UIViewAnimationAttributes;
 
 @protocol _UIRemoteViewController_ViewControllerOperatorInterface
 - (void)__handleFocusMovementAction:(UIFocusMovementAction *)arg1;
 - (void)__showEditAlertViewWithToken:(long long)arg1 canUndo:(_Bool)arg2 canRedo:(_Bool)arg3;
 - (void)__trampolineButtonPressData:(NSData *)arg1 canceled:(_Bool)arg2;
-- (void)__setServiceMaxFrameSize:(struct CGSize)arg1;
 - (void)__viewServiceDidUpdateMultitaskingDragExclusionRects:(NSArray *)arg1;
 - (void)__viewServiceDidUpdatePrefersPointerLocked:(_Bool)arg1;
 - (void)__viewServiceDidUpdatePreferredUserInterfaceStyle:(long long)arg1;
 - (void)__viewServiceDidUpdatePrefersHomeIndicatorAutoHidden:(_Bool)arg1;
 - (void)__viewServiceDidUpdatePreferredScreenEdgesDeferringSystemGestures:(unsigned long long)arg1;
-- (void)__viewServiceSheetInteractionDidChangeOffset:(struct CGPoint)arg1 dragging:(_Bool)arg2 dismissible:(_Bool)arg3 indexOfCurrentDetent:(unsigned long long)arg4 duration:(double)arg5 timingCurve:(id <UITimingCurveProvider>)arg6;
+- (void)__viewServiceSheetInteractionDraggingDidEnd;
+- (void)__viewServiceSheetInteractionDraggingDidChangeWithTranslation:(struct CGPoint)arg1 velocity:(struct CGPoint)arg2 animateChange:(_Bool)arg3 dismissible:(_Bool)arg4;
+- (void)__viewServiceSheetInteractionDraggingDidBeginWithRubberBandCoefficient:(double)arg1 dismissible:(_Bool)arg2 interruptedOffset:(struct CGPoint)arg3;
+- (void)__viewServiceSheetPresentationControllerDidChangeContainsFirstResponder:(_Bool)arg1 firstResponderRequiresKeyboard:(_Bool)arg2 keyboardFrame:(struct CGRect)arg3 attributes:(_UIViewAnimationAttributes *)arg4;
 - (void)__viewServiceDidUpdatePreferredWhitePointAdaptationStyle:(long long)arg1 animationSettings:(BSAnimationSettings *)arg2;
 - (void)__viewServiceDidUpdatePreferredStatusBarStyle:(long long)arg1 preferredStatusBarVisibility:(int)arg2 updateAnimation:(long long)arg3 currentAnimationSettings:(BSAnimationSettings *)arg4;
 - (void)__viewServiceInstrinsicContentSizeDidChange:(struct CGSize)arg1 fence:(BKSAnimationFenceHandle *)arg2;
@@ -30,9 +31,9 @@
 - (void)__showServiceForText:(NSString *)arg1 type:(long long)arg2 fromRectValue:(NSValue *)arg3 replyHandler:(void (^)(id, NSError *))arg4;
 - (void)__showServiceForType:(long long)arg1 withContext:(_UITextServiceSessionContext *)arg2 replyHandler:(void (^)(id, NSError *))arg3;
 - (void)__setSupportedInterfaceOrientations:(NSArray *)arg1;
-- (void)__viewServiceDidUnregisterScrollToTopView;
-- (void)__viewServiceDidRegisterScrollToTopView;
+- (void)__viewServiceDidChangeHasScrollToTopView:(_Bool)arg1;
 - (void)__viewServiceDidChangeKeyWindow:(_Bool)arg1;
-- (void)__viewServiceDidPromoteFirstResponder;
+- (void)__viewServiceDidPromoteFirstResponderWithCompletionHandler:(void (^)(void))arg1;
+- (void)__viewServiceWantsKeyboardEventEnvironmentDeferringWithoutFirstResponderAndCompletionHandler:(void (^)(void))arg1;
 @end
 

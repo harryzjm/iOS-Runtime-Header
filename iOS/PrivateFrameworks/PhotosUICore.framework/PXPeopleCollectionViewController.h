@@ -16,7 +16,7 @@
 #import <PhotosUICore/UIPopoverPresentationControllerDelegate-Protocol.h>
 #import <PhotosUICore/UIViewControllerTransitioningDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSIndexPath, NSMutableDictionary, NSString, PXPeopleDragAndDropCollectionViewLayout, PXPeopleMeViewController, PXPeopleProgressFooterView, PXPeopleProgressManager, PXPeopleSectionedDataSource, PXPeopleSwipeSelectionManager, UIBarButtonItem, UILongPressGestureRecognizer, UITapGestureRecognizer;
+@class NSArray, NSDictionary, NSIndexPath, NSMutableDictionary, NSString, PXPeopleDragAndDropCollectionViewLayout, PXPeopleMeViewController, PXPeopleProgressFooterView, PXPeopleProgressManager, PXPeopleSectionedDataSource, PXPeopleSwipeSelectionManager, UIBarButtonItem, UIFocusGuide, UILongPressGestureRecognizer, UITapGestureRecognizer;
 @protocol UIViewControllerAnimatedTransitioning;
 
 @interface PXPeopleCollectionViewController : UICollectionViewController <PXPeopleDragAndDropCollectionViewDelegate, UIGestureRecognizerDelegate, UICollectionViewDelegateFlowLayout, UIPopoverPresentationControllerDelegate, UIViewControllerTransitioningDelegate, PXPeopleSectionedDataSourceChangeObserver, PXPeopleDragAndDropCollectionViewDelegateLayout, PXPeopleCollectionViewCellDelegate, PXPeopleSwipeSelectionManagerDelegate>
@@ -25,6 +25,7 @@
     _Bool _needToCheckProgress;
     _Bool _shouldShowProgressFooter;
     _Bool _shouldShowMeHeader;
+    _Bool _isInSelectionOnlyMode;
     _Bool _pendingChanges;
     _Bool _progressFooterAvailable;
     _Bool _ppt_shouldRunPPTCode;
@@ -35,8 +36,11 @@
     UIBarButtonItem *_mergeToolbarItem;
     UIBarButtonItem *_selectItem;
     UIBarButtonItem *_debugMenuItem;
+    UIFocusGuide *_favoritesLeadingFocusGuide;
+    UIFocusGuide *_favoritesTrailingFocusGuide;
     PXPeopleProgressManager *_progressManager;
     PXPeopleProgressFooterView *_progressFooterView;
+    CDUnknownBlockType _selectionHandler;
     PXPeopleMeViewController *_meViewController;
     UITapGestureRecognizer *_statusDebugRecognizer;
     NSDictionary *_contactByPersonLocalIdentifier;
@@ -75,11 +79,15 @@
 @property(retain, nonatomic) NSDictionary *contactByPersonLocalIdentifier; // @synthesize contactByPersonLocalIdentifier=_contactByPersonLocalIdentifier;
 @property(retain, nonatomic) UITapGestureRecognizer *statusDebugRecognizer; // @synthesize statusDebugRecognizer=_statusDebugRecognizer;
 @property(retain, nonatomic) PXPeopleMeViewController *meViewController; // @synthesize meViewController=_meViewController;
+@property(copy, nonatomic) CDUnknownBlockType selectionHandler; // @synthesize selectionHandler=_selectionHandler;
+@property(nonatomic) _Bool isInSelectionOnlyMode; // @synthesize isInSelectionOnlyMode=_isInSelectionOnlyMode;
 @property(nonatomic) _Bool shouldShowMeHeader; // @synthesize shouldShowMeHeader=_shouldShowMeHeader;
 @property(nonatomic) _Bool shouldShowProgressFooter; // @synthesize shouldShowProgressFooter=_shouldShowProgressFooter;
 @property(retain, nonatomic) PXPeopleProgressFooterView *progressFooterView; // @synthesize progressFooterView=_progressFooterView;
 @property _Bool needToCheckProgress; // @synthesize needToCheckProgress=_needToCheckProgress;
 @property(retain, nonatomic) PXPeopleProgressManager *progressManager; // @synthesize progressManager=_progressManager;
+@property(retain, nonatomic) UIFocusGuide *favoritesTrailingFocusGuide; // @synthesize favoritesTrailingFocusGuide=_favoritesTrailingFocusGuide;
+@property(retain, nonatomic) UIFocusGuide *favoritesLeadingFocusGuide; // @synthesize favoritesLeadingFocusGuide=_favoritesLeadingFocusGuide;
 @property(retain, nonatomic) UIBarButtonItem *debugMenuItem; // @synthesize debugMenuItem=_debugMenuItem;
 @property(retain, nonatomic) UIBarButtonItem *selectItem; // @synthesize selectItem=_selectItem;
 @property(retain, nonatomic) UIBarButtonItem *mergeToolbarItem; // @synthesize mergeToolbarItem=_mergeToolbarItem;
@@ -92,6 +100,7 @@
 - (id)px_navigationDestination;
 - (void)navigateToDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (unsigned long long)routingOptionsForDestination:(id)arg1;
+- (void)toggleFavoriteForCell:(id)arg1;
 - (void)swipeSelectionManager:(id)arg1 didSelectIndexPaths:(id)arg2;
 - (id)swipeSelectionManager:(id)arg1 itemIndexPathAtLocation:(struct CGPoint)arg2;
 - (id)swipeSelectionManager:(id)arg1 indexPathSetFromIndexPath:(id)arg2 toIndexPath:(id)arg3;
@@ -111,6 +120,13 @@
 - (void)peopleSectionedDataSourceMembersChangedNonIncrementally:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)collectionViewDidLayout:(id)arg1;
+- (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
+- (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
+- (void)_updateFavoritesFocusGuidesForRemovedCell:(id)arg1 forItemAtIndexPath:(id)arg2;
+- (void)_updateFavoritesFocusGuidesForAddedCell:(id)arg1 forItemAtIndexPath:(id)arg2;
+- (void)_addFavoritesTrailingFocusGuideForCell:(id)arg1;
+- (void)_addFavoritesLeadingFocusGuideForCell:(id)arg1;
+- (_Bool)collectionView:(id)arg1 canFocusItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didDeselectItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (double)collectionView:(id)arg1 layout:(id)arg2 minimumInteritemSpacingForSectionAtIndex:(long long)arg3;
@@ -123,9 +139,11 @@
 - (void)_handleToolbarMergeAction:(id)arg1;
 - (void)_handleToolbarFavoriteAction:(id)arg1;
 - (void)_handleToolbarRemoveAction:(id)arg1;
+- (id)_alertControllerForRemovingPersonsAtIndexPaths:(id)arg1;
 - (void)_applyChangeDetailsArrayOnCollectionView:(id)arg1;
 - (void)_showFavoritingBootstrapForPersonIfApplicable:(id)arg1;
 - (void)_changeSelectedIndexesToPersonType:(long long)arg1;
+- (void)_changePersonsAtIndexPaths:(id)arg1 toPersonType:(long long)arg2;
 - (void)updateNavTitleForIndexes:(id)arg1;
 - (void)_updateToolbarItemsForIndexPaths:(id)arg1;
 - (id)_bestTargetIndexPathGivenMergeIndexPaths:(id)arg1;
@@ -135,27 +153,26 @@
 - (id)_toolBarItemsForMode:(unsigned long long)arg1;
 - (void)_selectAction:(id)arg1;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
-- (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (id)_detailViewControllerAtIndexPath:(id)arg1;
 - (void)showDetailsForMemberAtIndexPath:(id)arg1;
+- (void)showPerson:(id)arg1;
+- (void)removePerson:(id)arg1;
+- (void)toggleFavorite:(id)arg1;
+- (id)focusedIndexPath;
 - (void)contentSizeCategoryDidChangeNotification:(id)arg1;
-- (void)peopleCollectionViewCellDidToggleFavoriteState:(id)arg1;
 - (double)_bottomInsetForSection:(unsigned long long)arg1;
-- (double)_topInsetForSection:(unsigned long long)arg1;
 - (struct CGSize)_itemSizeForItemAtIndexPath:(id)arg1;
-- (double)_currentItemSpacing;
-- (double)_currentLineSpacing;
 - (long long)_verticalSizeClass;
 - (long long)_horizontalSizeClass;
 - (id)_changeMemberAtIndex:(id)arg1 toPersonType:(long long)arg2;
 - (unsigned long long)_fixedColumnCountForIndexPath:(id)arg1;
-- (_Bool)_favoritesEmpty;
 - (void)_updateVisibleCellsForSelectionMode:(unsigned long long)arg1;
 - (void)_updateMeHeaderVisibilityIfNeeded:(_Bool)arg1 animated:(_Bool)arg2;
 - (id)selectionModeTitle;
+- (void)enterSelectionModeWithSelectionHandler:(CDUnknownBlockType)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewDidDisappear:(_Bool)arg1;

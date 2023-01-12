@@ -23,6 +23,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) SBSRemoteContentDefinition *definition; // @synthesize definition=_definition;
 @property(nonatomic) __weak id <CSRemoteContentHostDelegate> delegate; // @synthesize delegate=_delegate;
+- (struct CGRect)_customContentBounds;
 - (void)_updateContentPreferences:(id)arg1;
 - (void)_fetchContentPreferences;
 - (_Bool)_canShowWhileLocked;

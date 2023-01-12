@@ -8,7 +8,6 @@
 
 #import <Contacts/ProgressiveResultsHandlerProtocol-Protocol.h>
 
-__attribute__((visibility("hidden")))
 @interface CNXPCDataMapperProgressiveHandler : NSObject <ProgressiveResultsHandlerProtocol>
 {
     CDUnknownBlockType _progressBlock;

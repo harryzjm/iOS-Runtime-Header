@@ -8,5 +8,8 @@
 {
 }
 
+- (_Bool)_requiresPerObjectAuthorization;
+- (id)initWithIdentifier:(id)arg1;
+
 @end
 

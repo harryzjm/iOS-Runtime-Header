@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)_connectWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (_Bool)_connectWithError:(id *)arg1;
 - (id)_getInternalReaderSession;
+- (void)_updateNdefStatusWithSession:(id)arg1;
 - (void)_setDelegateQueue:(id)arg1;
 - (void)_setSession:(id)arg1;
 - (void)_setTag:(id)arg1;

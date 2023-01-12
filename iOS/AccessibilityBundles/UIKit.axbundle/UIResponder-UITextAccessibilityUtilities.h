@@ -11,7 +11,6 @@
 - (_Bool)_accessibilityBeginUndoableTextInsertion;
 - (id)_accessibilityTextOperations;
 - (_Bool)_accessibilityHasTextOperations;
-- (_Bool)_accessibilitySupportsRichTextEditing;
 - (id)_accessibilityTextViewTextOperationResponder;
 @end
 

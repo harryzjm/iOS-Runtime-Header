@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *imagesOnPage;
     NSMutableArray *graphicsOnPage;
     NSMutableArray *columnsOnPage;
+    NSMutableArray *annotationsOnPage;
     struct CPPDFContext *pdfContext;
     _Bool contextOwner;
     struct CGPDFPage *pdfPage;
@@ -64,6 +65,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)hasZones;
 - (void)setHasZones:(_Bool)arg1;
 - (id)graphicsOnPage;
+- (id)annotationsOnPage;
+- (void)addAnnotation:(id)arg1;
 - (id)imagesOnPage;
 - (void)addImage:(id)arg1;
 - (id)shapesOnPage;

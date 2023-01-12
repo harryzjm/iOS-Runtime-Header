@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitMetrics/HMMLogEvent.h>
+
 #import <HomeKitDaemon/HMDAWDLogEvent-Protocol.h>
 
 @class CLLocation, NSArray, NSString;
 
-@interface HMDHomeLocationEvent <HMDAWDLogEvent>
+@interface HMDHomeLocationEvent : HMMLogEvent <HMDAWDLogEvent>
 {
     NSArray *_tuples;
     CLLocation *_selectedHomeLocation;
@@ -17,8 +19,6 @@
 }
 
 + (id)eventWithLocationTuples:(id)arg1 selectedHomeLocation:(id)arg2 numberOfIterations:(unsigned long long)arg3 nearestLOI:(id)arg4;
-+ (id)uuid;
-+ (void)initialize;
 - (void).cxx_destruct;
 @property(retain, nonatomic) CLLocation *nearestLOI; // @synthesize nearestLOI=_nearestLOI;
 @property(nonatomic) unsigned long long numOfIterations; // @synthesize numOfIterations=_numOfIterations;

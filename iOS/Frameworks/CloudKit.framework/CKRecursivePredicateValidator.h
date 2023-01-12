@@ -6,7 +6,6 @@
 
 @protocol CKObjectValidating;
 
-__attribute__((visibility("hidden")))
 @interface CKRecursivePredicateValidator
 {
     id <CKObjectValidating> _validator;

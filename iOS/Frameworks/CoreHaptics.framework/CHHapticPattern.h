@@ -8,28 +8,38 @@
 
 #import <CoreHaptics/CHHapticPlayable-Protocol.h>
 
-@class NSArray, NSMutableArray, NSNumber, NSString;
+@class NSArray, NSDictionary, NSMutableArray, NSNumber, NSString;
 
 @interface CHHapticPattern : NSObject <CHHapticPlayable>
 {
     NSNumber *_version;
-    NSMutableArray *_embeddedURLs;
+    NSString *_patternID;
+    NSDictionary *_configurationDictionary;
+    NSMutableArray *_embeddedResourceInfo;
     NSMutableArray *_events;
     NSMutableArray *_parameters;
     NSMutableArray *_parameterCurves;
 }
 
++ (id)patternForKey:(id)arg1 error:(id *)arg2;
 + (id)eventListFromEvents:(id)arg1 parameters:(id)arg2 parameterCurves:(id)arg3 engine:(id)arg4 privileged:(_Bool)arg5;
-+ (id)addHapticsForWheelsOfTime:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSDictionary *configurationDictionary; // @synthesize configurationDictionary=_configurationDictionary;
 - (id)eventListFromDictionary:(id)arg1 error:(id *)arg2;
 - (id)resolveExternalResources:(id)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) double duration;
+- (id)exportDictionaryWithConfigurationAndReturnError:(id *)arg1;
 - (id)exportDictionaryAndReturnError:(id *)arg1;
 - (id)initWithDictionary:(id)arg1 error:(id *)arg2;
 - (id)initWithEvents:(id)arg1 parameterCurves:(id)arg2 error:(id *)arg3;
 - (id)initWithEvents:(id)arg1 parameters:(id)arg2 error:(id *)arg3;
 - (id)init;
+@property(readonly) NSString *audioPowerUsage;
+@property(readonly) NSString *hapticPowerUsage;
+@property(readonly) NSString *priority;
+@property(readonly) NSString *locality;
+@property(readonly) float version;
+@property(readonly) NSString *patternID;
 @property(readonly) NSArray *parameterCurves;
 @property(readonly) NSArray *parameters;
 @property(readonly) NSArray *events;

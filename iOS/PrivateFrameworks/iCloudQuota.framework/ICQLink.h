@@ -17,6 +17,13 @@
     NSURL *_remoteUIURL;
 }
 
++ (void)addPOSTParams:(id)arg1 toRequest:(id)arg2;
++ (void)addHeadersToRequest:(id)arg1;
++ (void)startDataTaskWithRequest:(id)arg1;
++ (void)performHTTPGETCallWithParams:(id)arg1 options:(long long)arg2;
++ (void)performHTTPPOSTCallWithParams:(id)arg1 options:(long long)arg2;
++ (id)urlRequestWithParams:(id)arg1 options:(long long)arg2;
++ (id)urlSession;
 + (_Bool)performAction:(long long)arg1 parameters:(id)arg2 options:(long long)arg3;
 + (id)linkWithText:(id)arg1 options:(long long)arg2 action:(long long)arg3 parameters:(id)arg4;
 + (id)linkWithText:(id)arg1 action:(long long)arg2 parameters:(id)arg3;

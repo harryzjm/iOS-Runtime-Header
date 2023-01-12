@@ -14,6 +14,7 @@
     HDCloudSyncSequenceRecord *_sequenceRecord;
 }
 
++ (_Bool)shouldLogAtOperationStart;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool hasAppliedChange; // @synthesize hasAppliedChange=_hasAppliedChange;
 @property(readonly, nonatomic) HDCloudSyncSequenceRecord *sequenceRecord; // @synthesize sequenceRecord=_sequenceRecord;

@@ -14,6 +14,7 @@
 - (void)_createImageViews;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_axAnnotateImageViews;
+- (void)_axAnnotateViews;
 - (id)_axPhotoViews;
 
 @end

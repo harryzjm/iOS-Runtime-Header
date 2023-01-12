@@ -9,13 +9,15 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (_Bool)_isHostedInAnotherProcess;
 + (_Bool)_isSecure;
+- (double)keyboardWidthForCurrentDevice;
+- (struct CGSize)keyboardScreenReferenceSize;
 - (struct UIEdgeInsets)safeAreaInsets;
 - (_Bool)_isTextEffectsWindowHosting;
 - (long long)_orientationForSceneTransform;
 - (long long)_orientationForRootTransform;
 - (long long)_orientationForViewTransform;
-- (_Bool)_isHostedInAnotherProcess;
 - (double)_adjustedWindowLevelFromLevel:(double)arg1;
 
 @end

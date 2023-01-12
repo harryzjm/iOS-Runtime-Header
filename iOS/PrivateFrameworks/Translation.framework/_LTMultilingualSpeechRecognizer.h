@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 + (void)initialize;
 - (void).cxx_destruct;
+- (void)setLanguagesRecognized:(id)arg1;
 - (void)cancelRecognition;
 - (void)endAudio;
 - (void)addSpeechAudioData:(id)arg1;

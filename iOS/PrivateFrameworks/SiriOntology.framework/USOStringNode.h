@@ -6,10 +6,10 @@
 
 @interface USOStringNode
 {
-    struct UsoStringNode *_usoStringNode;
+    void *_usoStringNode;
 }
 
-- (id)initWithCppStringNode:(struct UsoStringNode *)arg1;
+- (id)initWithCppStringNode:(void *)arg1;
 
 @end
 

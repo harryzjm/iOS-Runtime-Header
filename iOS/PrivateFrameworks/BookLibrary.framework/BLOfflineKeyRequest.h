@@ -23,6 +23,7 @@
 - (void)_performOfflineKeyRequest;
 - (void)execute;
 - (void)performRequestWithResponseHandler:(CDUnknownBlockType)arg1;
+- (void)dealloc;
 - (id)initWithMediaItem:(id)arg1 identity:(id)arg2;
 
 @end

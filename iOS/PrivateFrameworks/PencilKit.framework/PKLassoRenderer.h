@@ -16,27 +16,14 @@
     CAShapeLayer *_lassoLayer;
     CAShapeLayer *_whiteLassoLayer;
     struct CGPoint _editMenuLocation;
+    UIBezierPath *_lassoPath;
     PKStrokeSelection *_strokeSelection;
     id <PKSelectionRenderingDelegate> _renderingDelegate;
     CDUnknownBlockType _calculateSelectionHullBlock;
-    UIBezierPath *_lassoPath;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) UIBezierPath *lassoPath; // @synthesize lassoPath=_lassoPath;
-@property(copy, nonatomic) CDUnknownBlockType calculateSelectionHullBlock; // @synthesize calculateSelectionHullBlock=_calculateSelectionHullBlock;
-@property(nonatomic) __weak id <PKSelectionRenderingDelegate> renderingDelegate; // @synthesize renderingDelegate=_renderingDelegate;
-@property(retain, nonatomic) PKStrokeSelection *strokeSelection; // @synthesize strokeSelection=_strokeSelection;
 - (id)_accessibilityUserTestingChildren;
-- (vector_2e7754b6)pointsOfInterestForStrokes:(id)arg1;
-- (void)addAnimationsToSelectionLayer:(id)arg1 whiteLayer:(id)arg2;
-- (void)_updateSelectionPath:(struct CGPath *)arg1;
-- (void)_setupLassoLayerAppearanceWithBezierPath:(id)arg1;
-- (struct CGColor *)_selectionColor;
-- (id)_expandBezierPathIfNecessary:(id)arg1;
-- (void)_setupAnimatedLassoForStrokes:(id)arg1 lassoLayer:(id)arg2 whiteLassoLayer:(id)arg3 isSelection:(_Bool)arg4 lassoStroke:(id)arg5;
-- (void)_setupAnimatedLasso;
-- (void)_setupLiveLasso;
 - (void)_renderLiveSelectionPath:(struct CGPath *)arg1 forStrokes:(id)arg2 inDrawing:(id)arg3 liveScrollOffset:(struct CGPoint)arg4;
 - (struct CGPoint)editMenuLocation;
 - (void)_didEndDraggingSelection;
@@ -44,7 +31,7 @@
 - (id)adornmentLayer;
 - (void)_setupSelectionAdornment;
 - (void)_updateLassoForAccessibility:(id)arg1;
-- (void)_setupAccessibilityObservers;
+- (id)lassoPath;
 - (void)dealloc;
 - (id)initForLiveSelectionWithRenderingDelegate:(id)arg1;
 - (id)initWithStrokeSelection:(id)arg1 renderingDelegate:(id)arg2;

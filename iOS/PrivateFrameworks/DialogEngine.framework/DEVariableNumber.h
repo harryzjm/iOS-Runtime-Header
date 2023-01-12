@@ -11,7 +11,7 @@
 - (void)setValue:(double)arg1;
 - (double)getValue;
 - (id)initWithName:(id)arg1 value:(double)arg2;
-- (id)initWithSharedPtr:(shared_ptr_695b9c0c *)arg1;
+- (id)initWithSharedPtr:(void *)arg1;
 - (id)init;
 
 @end

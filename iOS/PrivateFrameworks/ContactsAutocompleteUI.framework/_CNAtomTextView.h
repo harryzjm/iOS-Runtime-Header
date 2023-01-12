@@ -22,6 +22,7 @@
 - (_Bool)notifyDelegateWithSelector:(SEL)arg1 checkReturnValue:(_Bool)arg2;
 - (_Bool)notifyDelegateWithBooleanSelector:(SEL)arg1;
 - (_Bool)notifyDelegateWithVoidSelector:(SEL)arg1;
+- (void)commaPressed;
 - (void)tabPressed;
 - (void)returnPressed;
 - (void)rightArrowPressed;

@@ -27,23 +27,15 @@
 - (void)updateHistoricalDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateHistoricalData;
 - (id)_queue_processSensorDataBatched:(id)arg1 firstDatum:(id)arg2 lastSensorDatum:(id *)arg3;
-- (void)_queue_processSensorData:(id)arg1 lastSensorDatum:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_queue_fetchHistoricalDataForcedUpdate:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_queue_fetchHistoricalDataWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_queue_handleUpdatingHistoricalDataForcedUpdate:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_queue_handleUpdatingHistoricalDataWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_queue_handleCMDatabaseReset;
 - (void)_queue_updateLastReceivedSecondaryContext:(id)arg1;
 - (void)_queue_updateLastReceivedSensorDatum:(id)arg1;
 - (id)_queue_lastReceivedSecondaryContext;
 - (id)_queue_lastReceivedSensorDatum;
-- (void)_queue_beginUpdates;
 - (void)_queue_beginStreaming;
 @property(readonly, nonatomic) _Bool requiresSampleAggregation;
 - (double)_queue_maxDatumDuration;
 @property double maxDatumDuration;
 - (double)_queue_aggregationInterval;
-- (void)_queue_executeHistoricalFetchOperation;
 - (id)initWithProfile:(id)arg1;
 
 @end

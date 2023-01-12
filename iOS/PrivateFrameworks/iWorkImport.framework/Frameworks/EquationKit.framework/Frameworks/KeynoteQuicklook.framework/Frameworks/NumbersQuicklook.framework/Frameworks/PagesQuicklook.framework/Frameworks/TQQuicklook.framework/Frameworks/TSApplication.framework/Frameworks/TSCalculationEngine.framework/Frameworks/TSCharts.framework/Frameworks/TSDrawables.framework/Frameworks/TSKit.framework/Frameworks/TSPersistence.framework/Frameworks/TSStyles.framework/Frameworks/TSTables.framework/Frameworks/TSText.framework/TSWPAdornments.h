@@ -8,13 +8,13 @@
 
 @interface TSWPAdornments : NSObject
 {
-    vector_06e666a8 _charIndexes;
-    struct vector<unsigned short, std::__1::allocator<unsigned short>> _glyphs;
-    struct vector<unsigned short, std::__1::allocator<unsigned short>> _flippedGlyphs;
-    struct vector<CGPoint, std::__1::allocator<CGPoint>> _positions;
-    struct vector<CGPoint, std::__1::allocator<CGPoint>> _flippedPositions;
-    struct vector<CGRect, std::__1::allocator<CGRect>> _rects;
-    struct vector<TSWPAttachmentPosition, std::__1::allocator<TSWPAttachmentPosition>> _attachmentPositions;
+    vector_2056c7c2 _charIndexes;
+    struct vector<unsigned short, std::allocator<unsigned short>> _glyphs;
+    struct vector<unsigned short, std::allocator<unsigned short>> _flippedGlyphs;
+    struct vector<CGPoint, std::allocator<CGPoint>> _positions;
+    struct vector<CGPoint, std::allocator<CGPoint>> _flippedPositions;
+    struct vector<CGRect, std::allocator<CGRect>> _rects;
+    struct vector<TSWPAttachmentPosition, std::allocator<TSWPAttachmentPosition>> _attachmentPositions;
     _Bool _shouldRotate;
     int _type;
     int _location;

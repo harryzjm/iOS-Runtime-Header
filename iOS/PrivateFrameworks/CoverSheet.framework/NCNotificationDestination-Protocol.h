@@ -6,7 +6,7 @@
 
 #import <CoverSheet/NSObject-Protocol.h>
 
-@class BSServiceConnectionEndpoint, NCNotificationRequest, NCNotificationSectionSettings, NSString;
+@class BSServiceConnectionEndpoint, NCNotificationRequest, NCNotificationSectionSettings, NCNotificationSystemSettings, NSString;
 @protocol NCNotificationDestinationDelegate;
 
 @protocol NCNotificationDestination <NSObject>
@@ -20,6 +20,7 @@
 
 @optional
 - (void)notificationsLoadedForSectionIdentifier:(NSString *)arg1;
+- (void)updateNotificationSystemSettings:(NCNotificationSystemSettings *)arg1 previousSystemSettings:(NCNotificationSystemSettings *)arg2;
 - (void)updateNotificationSectionSettings:(NCNotificationSectionSettings *)arg1 previousSectionSettings:(NCNotificationSectionSettings *)arg2;
 - (_Bool)interceptsQueueRequest:(NCNotificationRequest *)arg1;
 @end

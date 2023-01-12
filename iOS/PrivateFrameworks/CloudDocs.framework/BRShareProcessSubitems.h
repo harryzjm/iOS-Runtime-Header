@@ -4,11 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSURL;
-
 @interface BRShareProcessSubitems
 {
-    NSURL *_url;
     CDUnknownBlockType _processSubitemsCompletionBlock;
     unsigned long long _maxSharedSubitemsBeforeFailure;
     unsigned long long _processType;

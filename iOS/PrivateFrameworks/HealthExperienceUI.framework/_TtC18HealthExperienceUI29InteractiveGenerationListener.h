@@ -16,6 +16,8 @@
 - (void).cxx_destruct;
 - (id)init;
 - (void)majorInteractionNotificationReceivedWithNote:(id)arg1;
+- (void)cancelInteractiveGenerationRequestNotificationWithNote:(id)arg1;
+- (void)generationRequestNotificationWithNote:(id)arg1;
 - (void)willResignActiveWithNote:(id)arg1;
 - (void)didBecomeActiveWithNote:(id)arg1;
 - (void)dealloc;

@@ -13,10 +13,18 @@
 
 @interface _SFPBSymbolImage : PBCodable <_SFPBSymbolImage, NSSecureCoding>
 {
+    _Bool _punchThroughBackground;
+    int _backgroundColor;
+    int _primaryColor;
+    int _secondaryColor;
     NSString *_symbolName;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) int secondaryColor; // @synthesize secondaryColor=_secondaryColor;
+@property(nonatomic) int primaryColor; // @synthesize primaryColor=_primaryColor;
+@property(nonatomic) int backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property(nonatomic) _Bool punchThroughBackground; // @synthesize punchThroughBackground=_punchThroughBackground;
 @property(copy, nonatomic) NSString *symbolName; // @synthesize symbolName=_symbolName;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;

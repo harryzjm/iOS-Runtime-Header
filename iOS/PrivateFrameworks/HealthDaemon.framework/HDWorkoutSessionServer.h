@@ -43,12 +43,8 @@
     NSDate *_stopDate;
 }
 
-+ (Class)_sessionControllerClassFromWorkoutConfiguration:(id)arg1 clientApplicationIdentifier:(id)arg2;
 + (void)unitTest_setDefaultStopEventGenerationWaitInterval:(double)arg1;
-+ (id)clientTargetStateMachineForConfiguration:(id)arg1 sessionUUID:(id)arg2;
-+ (id)workoutSessionServerStateMachineForConfiguration:(id)arg1 sessionUUID:(id)arg2;
 + (_Bool)finishAllWorkoutsExcludingSessions:(id)arg1 profile:(id)arg2 error:(id *)arg3;
-+ (_Bool)_finishSessionControllerForSessionEntity:(id)arg1 profile:(id)arg2 transaction:(id)arg3 error:(id *)arg4;
 + (_Bool)finishAllWorkoutSessionsForClient:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (id)sessionIdentifierForRecoveryInProfile:(id)arg1 error:(id *)arg2;
 + (id)recoveredSessionServerWithProfile:(id)arg1 sessionUUID:(id)arg2 workoutManager:(id)arg3 error:(id *)arg4;
@@ -62,31 +58,12 @@
 @property(readonly, copy, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
 @property(readonly, copy, nonatomic) HKWorkoutConfiguration *workoutConfiguration; // @synthesize workoutConfiguration=_workoutConfiguration;
 @property(readonly, copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
-- (void)_queue_latestActivityUpdateTimerDidFire;
-- (void)_queue_stopLatestActivityUpdateTimer;
-- (void)_queue_startLatestActivityUpdateTimer;
-- (void)_queue_setupSessionController;
-- (id)_queue_currentWorkoutSessionConfiguration;
-- (void)_queue_invalidationTimerDidFire;
-- (void)_queue_stopInvalidationTimer;
-- (void)_queue_startInvalidationTimer;
-- (void)_queue_cacheClientIdentifiers;
-- (void)_queue_processStopEvent:(id)arg1;
-- (void)_queue_generateConfigurationUpdate:(id)arg1;
-- (void)_queue_generateMetadata:(id)arg1;
-- (void)_queue_generateError:(id)arg1;
-- (void)_queue_generateEventWithType:(long long)arg1 date:(id)arg2;
-- (void)_queue_generateEvent:(id)arg1;
-- (void)_queue_deleteSessionAndFinishAssociatedBuilderAtDate:(id)arg1;
-- (void)_queue_evaluateRequestedTargetStateAtDate:(id)arg1;
 - (void)unitTest_setCMWorkoutManager:(id)arg1;
 - (_Bool)unitTest_updateLatestActivityDate:(id)arg1;
 - (void)unitTest_generateWorkoutConfigurationUpdate:(id)arg1;
 - (void)unitTest_generateStopEvent;
 - (void)unitTest_setStopEventGenerationWaitInterval:(double)arg1;
 - (void)unitTest_setSessionController:(id)arg1;
-- (_Bool)_persistenceQueue_storeSessionControllerState:(id)arg1 forRecoveryIdentifier:(id)arg2 error:(id *)arg3;
-- (id)_retrieveSessionControllerStateForRecoveryIdentifier:(id)arg1 error:(id *)arg2;
 - (_Bool)storeSessionControllerState:(id)arg1 forRecoveryIdentifier:(id)arg2 error:(id *)arg3;
 @property(readonly, nonatomic) id <HDWorkoutDataAccumulator> workoutDataAccumulator;
 - (void)generateConfigurationUpdate:(id)arg1;
@@ -106,9 +83,7 @@
 - (_Bool)prepareWithError:(id *)arg1;
 - (void)didResignCurrentWithError:(id)arg1;
 - (void)didBecomeCurrent;
-- (void)_queue_setTargetState:(long long)arg1 date:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)setTargetState:(long long)arg1 date:(id)arg2 error:(id *)arg3;
-- (_Bool)_enqueueEvent:(long long)arg1 stateMachine:(id)arg2 date:(id)arg3 error:(id *)arg4;
 - (void)stateMachine:(id)arg1 didTransition:(id)arg2 fromState:(id)arg3 toState:(id)arg4 date:(id)arg5 error:(id)arg6;
 - (void)stateMachine:(id)arg1 didEnterState:(id)arg2 date:(id)arg3 error:(id)arg4;
 - (void)stateMachine:(id)arg1 willEnterState:(id)arg2 date:(id)arg3 error:(id)arg4;
@@ -119,12 +94,9 @@
 - (void)workoutDataDestination:(id)arg1 requestsFinalDataFrom:(id)arg2 to:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)workoutDataDestination:(id)arg1 didChangeFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
 - (void)workoutDataDestination:(id)arg1 requestsDataFrom:(id)arg2 to:(id)arg3;
-- (_Bool)_persistenceQueue_resendWorkoutEventsToDataDestination:(id)arg1 error:(id *)arg2;
 @property(readonly, copy) NSUUID *workoutDataProcessorUUID;
 @property(readonly) HKDataFlowLink *workoutDataFlowLink;
 - (id)taskServerConfigurationForRecoveryWithError:(id *)arg1;
-- (_Bool)_recoverPersistedState;
-- (void)_loadOrCreatePersistentEntity;
 @property(readonly, nonatomic) _Bool shouldStopPreviousSession;
 @property(readonly, nonatomic) _Bool isFirstParty;
 - (id)currentWorkoutSnapshot;
@@ -134,8 +106,6 @@
 @property(readonly, nonatomic) _Bool isActive;
 @property(readonly, nonatomic) long long state;
 @property(readonly, copy) NSString *description;
-- (id)_detailedDescriptionString;
-- (id)_detailedDescriptionComponents;
 - (void)dealloc;
 - (id)initWithProfile:(id)arg1 configuration:(id)arg2 sessionUUID:(id)arg3 workoutManager:(id)arg4;
 

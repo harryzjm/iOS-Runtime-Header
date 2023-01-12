@@ -6,13 +6,18 @@
 
 #import <CoreParsec/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, NSString, _CPActionItemForFeedback, _CPPunchoutForFeedback, _CPStruct;
+@class NSData, NSDictionary, NSString, _CPActionItemForFeedback, _CPCardForFeedback, _CPPunchoutForFeedback, _CPStruct;
 
 @protocol _CPSearchResultForFeedback <NSObject>
 @property(readonly, nonatomic) unsigned long long whichApplicationbundleid;
 @property(readonly, nonatomic) unsigned long long whichSectionbundleid;
 @property(readonly, nonatomic) unsigned long long whichResultbundleidentifier;
 @property(readonly, nonatomic) NSData *jsonData;
+@property(retain, nonatomic) _CPCardForFeedback *compactCard;
+@property(retain, nonatomic) _CPCardForFeedback *inlineCard;
+@property(retain, nonatomic) _CPCardForFeedback *card;
+@property(nonatomic) _Bool shouldAutoNavigate;
+@property(nonatomic) _Bool isInstantAnswer;
 @property(nonatomic) _Bool usesCompactDisplay;
 @property(nonatomic) _Bool didTakeoverGo;
 @property(nonatomic) _Bool wasCompact;

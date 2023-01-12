@@ -11,11 +11,12 @@
 @interface _TtC16NewsSubscription19PaywallEventHandler : _TtCs12_SwiftObject
 {
     MISSING_TYPE *delegate;
+    MISSING_TYPE *tracker;
     MISSING_TYPE *interactor;
     MISSING_TYPE *router;
-    MISSING_TYPE *tracker;
     MISSING_TYPE *urlHandler;
     MISSING_TYPE *paywallModel;
+    MISSING_TYPE *purchaseSessionID;
 }
 
 @end

@@ -20,6 +20,7 @@
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)_profileForURLWithSSOIDScheme:(id)arg1;
 - (id)_profileForURLWithRealmScheme:(id)arg1;
 - (_Bool)_matchHost:(id)arg1 inCredentialProfile:(id)arg2;
 - (id)_profileForURLWithHostScheme:(id)arg1;

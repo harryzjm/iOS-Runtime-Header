@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class AMSMappedBundleInfo, AMSProcessInfo, NSString;
+@class AMSCoreOptionsBox, AMSMappedBundleInfo, AMSProcessInfo, NSString;
 
 @interface AMSUserAgent : NSObject
 {
     AMSMappedBundleInfo *_bundleInfo;
     AMSProcessInfo *_processInfo;
+    AMSCoreOptionsBox *_optionsBox;
 }
 
 + (id)userAgentForProcessInfo:(id)arg1;
@@ -19,6 +20,7 @@
 + (id)cachedUserAgentForBundleIdentifier:(id)arg1;
 + (id)_sharedCache;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) AMSCoreOptionsBox *optionsBox; // @synthesize optionsBox=_optionsBox;
 @property(readonly, nonatomic) AMSProcessInfo *processInfo; // @synthesize processInfo=_processInfo;
 @property(readonly, nonatomic) AMSMappedBundleInfo *bundleInfo; // @synthesize bundleInfo=_bundleInfo;
 - (id)_userAgentSuffix;

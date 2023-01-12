@@ -17,11 +17,12 @@
 
 + (id)calendarImage;
 - (void).cxx_destruct;
+- (void)preloadPrimaryActionViewController;
 - (id)suggestionImage;
 - (_Bool)eventViewControllerShouldAlwaysShowNavBar:(id)arg1;
 - (void)eventEditViewController:(id)arg1 didCompleteWithAction:(long long)arg2;
 - (void)eventViewController:(id)arg1 didCompleteWithAction:(long long)arg2;
-- (void)_dismissViewController:(id)arg1 andSignalCompletionWithResult:(_Bool)arg2;
+- (void)_dismissViewController:(id)arg1 retainBanner:(_Bool)arg2;
 - (id)suggestionPrimaryAction;
 - (id)suggestionAttributedSubtitle;
 

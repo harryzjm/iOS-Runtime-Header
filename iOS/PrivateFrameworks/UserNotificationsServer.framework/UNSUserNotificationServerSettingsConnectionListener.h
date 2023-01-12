@@ -25,6 +25,7 @@
 - (void)_handleClientConnectionInvalidated:(id)arg1;
 - (void)_handleClientConnectionInterrupted:(id)arg1;
 - (id)_currentConnection;
+- (void)resetScheduledDeliverySetting;
 - (void)setNotificationSystemSettings:(id)arg1;
 - (void)getNotificationSystemSettingsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)replaceNotificationTopicSettings:(id)arg1 forNotificationSourceIdentifier:(id)arg2 topicIdentifier:(id)arg3;

@@ -17,11 +17,13 @@ __attribute__((visibility("hidden")))
     id <VUILibraryShelfCollectionViewControllerDelegate> _delegate;
     NSArray *_fetchResults;
     VUIMediaEntitiesDataSource *_dataSource;
+    long long _shelfType;
     UICollectionViewDiffableDataSource *_diffableDataSource;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) UICollectionViewDiffableDataSource *diffableDataSource; // @synthesize diffableDataSource=_diffableDataSource;
+@property(nonatomic) long long shelfType; // @synthesize shelfType=_shelfType;
 @property(readonly, nonatomic) VUIMediaEntitiesDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property(copy, nonatomic) NSArray *fetchResults; // @synthesize fetchResults=_fetchResults;
 @property(nonatomic) __weak id <VUILibraryShelfCollectionViewControllerDelegate> delegate; // @synthesize delegate=_delegate;

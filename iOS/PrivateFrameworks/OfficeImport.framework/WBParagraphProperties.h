@@ -11,10 +11,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (struct WrdParagraphProperties *)createTrackedPropertiesIfNeeded:(id)arg1;
-+ (void)readFrom:(id)arg1 wrdProperties:(struct WrdParagraphProperties *)arg2 tracked:(struct WrdParagraphProperties *)arg3 document:(id)arg4 properties:(id)arg5;
++ (void *)createTrackedPropertiesIfNeeded:(id)arg1;
++ (void)readFrom:(id)arg1 wrdProperties:(void *)arg2 tracked:(void *)arg3 document:(id)arg4 properties:(id)arg5;
 + (id)formattingChangeDate:(const struct WrdDateTime *)arg1;
-+ (void)mapWordProperties:(struct WrdParagraphProperties *)arg1 reader:(id)arg2 toProperties:(id)arg3;
++ (void)mapWordProperties:(void *)arg1 reader:(id)arg2 toProperties:(id)arg3;
 
 @end
 

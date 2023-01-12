@@ -4,6 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <SpringBoardHome/SBFOverlayObserving-Protocol.h>
 #import <SpringBoardHome/SBFolderControllerDelegate-Protocol.h>
 #import <SpringBoardHome/SBHIconLibraryTableViewControllerObserver-Protocol.h>
 #import <SpringBoardHome/SBHLibraryCategoryMapProviderObserver-Protocol.h>
@@ -16,14 +17,14 @@
 #import <SpringBoardHome/SBNestingViewControllerDelegate-Protocol.h>
 #import <SpringBoardHome/UISearchBarDelegate-Protocol.h>
 
-@class BSEventQueue, NSArray, NSHashTable, NSMapTable, NSMutableArray, NSSet, NSString, NSTimer, SBFolderController, SBFolderIconImageCache, SBHIconImageCache, SBHIconLibraryTableViewController, SBHIconModel, SBHLibraryCategoriesRootFolder, SBHLibraryCategoryMap, SBHLibraryCategoryMapProvider, SBHLibraryPodFolderController, SBHLibrarySearchController, SBHSearchTextField, SBHomeScreenIconTransitionAnimator, SBRootFolder, UIView, _SBHLibraryCollectionOfModelThings, _UILegibilitySettings;
-@protocol SBHomeScreenIconTransitionAnimatorDelegate, SBIconListLayoutProvider, SBIconViewDelegate, SBIconViewProviding;
+@class BSEventQueue, NSArray, NSHashTable, NSMapTable, NSMutableArray, NSSet, NSString, NSTimer, SBFolderController, SBFolderIconImageCache, SBHIconImageCache, SBHIconLibraryTableViewController, SBHIconModel, SBHLibraryCategoriesRootFolder, SBHLibraryCategoryMap, SBHLibraryCategoryMapProvider, SBHLibraryPodFolderController, SBHLibrarySearchController, SBHSearchTextField, SBHomeScreenIconTransitionAnimator, SBRootFolder, UIView, UIViewController, _SBHLibraryCollectionOfModelThings, _UILegibilitySettings;
+@protocol BSInvalidatable, SBHomeScreenIconTransitionAnimatorDelegate, SBIconListLayoutProvider, SBIconViewDelegate, SBIconViewProviding;
 
-@interface SBHLibraryViewController <UISearchBarDelegate, SBHLibrarySearchControllerDelegate, SBHLibraryCategoryMapProviderObserver, SBHIconLibraryTableViewControllerObserver, SBIconViewProviding, SBIconViewDelegate, SBNestingViewControllerDelegate, SBHLibraryPodFolderControllerDelegate, SBFolderControllerDelegate, SBHLibraryProvider, SBHOccludable>
+@interface SBHLibraryViewController <UISearchBarDelegate, SBHLibrarySearchControllerDelegate, SBHLibraryCategoryMapProviderObserver, SBHIconLibraryTableViewControllerObserver, SBIconViewProviding, SBIconViewDelegate, SBNestingViewControllerDelegate, SBHLibraryPodFolderControllerDelegate, SBFolderControllerDelegate, SBHLibraryProvider, SBHOccludable, SBFOverlayObserving>
 {
     SBHLibraryCategoryMapProvider *_categoryMapProvider;
     NSArray *_containerViewControllerConstraints;
-    NSMutableArray *_iconViewControllersCache;
+    NSMapTable *_iconViewControllerForCategoryIdentifier;
     SBFolderIconImageCache *_folderIconImageCache;
     SBHLibraryCategoryMap *_pendingLibraryCategoryMap;
     _SBHLibraryCollectionOfModelThings *_model;
@@ -33,6 +34,7 @@
     NSHashTable *_observers;
     NSMapTable *_presentedFolderControllers;
     NSMapTable *_dismissingFolderControllers;
+    id <BSInvalidatable> _libraryPrewarmAssertion;
     _Bool _occluded;
     _Bool _allowsBadging;
     _Bool _suppressesEditingStateForListViews;
@@ -44,6 +46,8 @@
     id <SBHomeScreenIconTransitionAnimatorDelegate> _homeScreenIconTransitionAnimatorDelegate;
     SBHLibraryCategoryMap *_libraryCategoryMap;
     id <SBIconViewDelegate> _iconViewDelegate;
+    UIViewController *_barSwipeViewController;
+    UIView *_externalBackgroundView;
     BSEventQueue *_transitionEventQueue;
     SBHomeScreenIconTransitionAnimator *_currentTransitionAnimator;
     NSMutableArray *_currentExpandCompletions;
@@ -66,6 +70,8 @@
 @property(readonly, nonatomic) BSEventQueue *transitionEventQueue; // @synthesize transitionEventQueue=_transitionEventQueue;
 @property(nonatomic) _Bool suppressesEditingStateForListViews; // @synthesize suppressesEditingStateForListViews=_suppressesEditingStateForListViews;
 @property(nonatomic) _Bool allowsBadging; // @synthesize allowsBadging=_allowsBadging;
+@property(nonatomic) __weak UIView *externalBackgroundView; // @synthesize externalBackgroundView=_externalBackgroundView;
+@property(retain, nonatomic) UIViewController *barSwipeViewController; // @synthesize barSwipeViewController=_barSwipeViewController;
 @property(readonly, nonatomic) SBHLibraryCategoryMapProvider *categoryMapProvider; // @synthesize categoryMapProvider=_categoryMapProvider;
 @property(nonatomic) __weak id <SBIconViewDelegate> iconViewDelegate; // @synthesize iconViewDelegate=_iconViewDelegate;
 @property(readonly, nonatomic) SBHLibraryCategoryMap *libraryCategoryMap; // @synthesize libraryCategoryMap=_libraryCategoryMap;
@@ -76,7 +82,10 @@
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property(retain, nonatomic) SBHIconModel *iconModel; // @synthesize iconModel=_iconModel;
 @property(nonatomic) __weak id <SBIconViewProviding> iconViewProvider; // @synthesize iconViewProvider=_iconViewProvider;
+- (_Bool)_canPerformDropForDraggedIcon:(id)arg1;
+- (_Bool)_canPerformDropForAnyItemInSession:(id)arg1;
 - (id)_destinationFolderIconViewForDragItem:(id)arg1 folderRelativeIconIndexPath:(id *)arg2;
+- (id)_draggedItemIdentifiersInSession:(id)arg1;
 - (id)_iconIdentifierForDragItem:(id)arg1;
 - (id)folderController:(id)arg1 iconListView:(id)arg2 customSpringAnimationBehaviorForDroppingItem:(id)arg3;
 - (void)folderController:(id)arg1 iconListView:(id)arg2 springLoadedInteractionForIconDragDidCompleteOnIconView:(id)arg3;
@@ -102,6 +111,7 @@
 - (void)_dismissSearchIfNotInUseForReason:(id)arg1 sessionIdentifier:(id)arg2;
 - (void)_startAppLaunchResetTimer:(id)arg1;
 - (void)invalidateSearchControllerAppLaunchResetTimer;
+- (id)acquireLibrarySearchPrewarmAssertionForReason:(id)arg1;
 - (void)_dismissLibraryViewControllerForReason:(id)arg1 sessionIdentifier:(id)arg2;
 - (void)_startLibraryViewControllerDismissalTimer:(id)arg1;
 - (void)_invalidateLibraryViewControllerDismissalTimer;
@@ -113,12 +123,13 @@
 - (void)_updateLibraryCategoryMap:(id)arg1;
 - (void)libraryCategoryMapProvider:(id)arg1 categoryMapWasRefreshed:(unsigned long long)arg2 libraryCategoryMap:(id)arg3;
 - (void)_enumerateObservers:(CDUnknownBlockType)arg1;
+- (void)_notifyObserversOfAcceptedDrop:(id)arg1;
+- (void)_notifyObserversDataSourceDidChange;
 - (void)_notifyObserversOfAppLaunchOfIcon:(id)arg1 fromLocation:(id)arg2;
 - (void)_notifyObserversDidPresent;
 - (void)_notifyObserversWillPresent;
 - (void)_notifyObserversDidDismiss;
 - (void)_notifyObserversWillDismiss;
-- (void)_notifyObserversDidPresentFolderController:(id)arg1;
 - (void)_notifyObserversDidDismissFolderController:(id)arg1;
 - (void)_notifyObserversWillDismissFolderController:(id)arg1;
 - (void)_notifyObserversWillPresentFolderController:(id)arg1;
@@ -149,10 +160,15 @@
 - (void)enumerateViewControllersUsingBlock:(CDUnknownBlockType)arg1;
 - (CDUnknownBlockType)_wrappedCompletionBlockForNestedTransitionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_enqueueTransitionName:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)overlayController:(id)arg1 didChangePresentationProgress:(double)arg2 newPresentationProgress:(double)arg3 fromLeading:(_Bool)arg4;
+- (void)overlayController:(id)arg1 visibilityDidChange:(_Bool)arg2;
+- (void)overlayControllerDidBeginChangingPresentationProgress:(id)arg1;
 - (_Bool)iconView:(id)arg1 editingModeGestureRecognizerDidFire:(id)arg2;
 - (long long)closeBoxTypeForIconView:(id)arg1;
 - (id)_additionalItemsIndicatorIconViewForFolderController:(id)arg1;
-- (_Bool)iconViewDisplaysBadges:(id)arg1;
+- (unsigned long long)focusEffectTypeForIconView:(id)arg1;
+- (_Bool)iconViewCanBecomeFocused:(id)arg1;
+- (_Bool)iconViewDisplaysAccessories:(id)arg1;
 - (_Bool)iconViewDisplaysCloseBox:(id)arg1;
 - (void)iconCloseBoxTapped:(id)arg1;
 - (_Bool)iconShouldAllowCloseBoxTap:(id)arg1;
@@ -162,15 +178,22 @@
 - (id)shortcutsDelegateForIconView:(id)arg1;
 - (id)draggingDelegateForIconView:(id)arg1;
 - (void)iconViewWasRecycled:(id)arg1;
+- (id)_iconLocationForCategoryIdentifier:(id)arg1;
+- (void)_precacheIconViewControllersForCategories:(id)arg1;
+- (id)_createIconViewControllerForCategoryIdentifier:(id)arg1;
+- (id)_iconViewControllerForCategoryIdentifier:(id)arg1;
+- (id)_customImageViewControllerForCategoryPodIconView:(id)arg1 usingInternalCache:(_Bool)arg2;
 - (id)customImageViewControllerForIconView:(id)arg1;
 - (void)iconTapped:(id)arg1;
 - (_Bool)iconShouldAllowTap:(id)arg1;
 - (long long)iconViewComponentBackgroundViewTypeForIconView:(id)arg1;
+- (id)iconView:(id)arg1 labelImageWithParameters:(id)arg2;
 - (void)nestingViewController:(id)arg1 willPerformOperation:(long long)arg2 onViewController:(id)arg3 withTransitionCoordinator:(id)arg4;
 - (id)nestingViewController:(id)arg1 animationControllerForOperation:(long long)arg2 onViewController:(id)arg3 animated:(_Bool)arg4;
 - (void)popNestedViewControllerAnimated:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)pushNestedViewController:(id)arg1 animated:(_Bool)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)libraryPodFolderControllerRequestsDismissal:(id)arg1;
+- (void)libraryPodFolderController:(id)arg1 willLayoutDisplayedCategories:(unsigned long long)arg2;
 - (void)configureIconView:(id)arg1 forIcon:(id)arg2;
 - (_Bool)isIconViewRecycled:(id)arg1;
 - (void)recycleIconView:(id)arg1;
@@ -195,22 +218,28 @@
 @property(readonly, copy, nonatomic) NSSet *presentedIconLocations;
 - (_Bool)isPresentingIconLocation:(id)arg1;
 @property(readonly, nonatomic) SBRootFolder *categoriesRootFolder;
-- (void)layoutIconLists:(double)arg1 animationType:(long long)arg2 forceRelayout:(_Bool)arg3;
+- (void)forcedSearchTextFieldNoneditable:(_Bool)arg1;
+- (_Bool)presentPodWithCategoryIdentifier:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (_Bool)presentPodWithCategory:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_addBarSwipeView;
+- (void)layoutIconListsWithAnimationType:(long long)arg1 forceRelayout:(_Bool)arg2;
 - (void)noteIconViewWillZoomDown:(id)arg1;
 - (void)dismissSearch;
 @property(readonly, nonatomic, getter=isPresentingSearch) _Bool presentingSearch;
 @property(readonly, nonatomic) SBFolderIconImageCache *folderIconImageCache;
 @property(readonly, nonatomic) SBFolderController *folderController;
 @property(retain, nonatomic) UIView *searchDimmingView;
-- (void)_dismissExpandedPodsIfNecessary;
-- (void)viewSafeAreaInsetsDidChange;
+- (void)_expandPodAtIndex:(unsigned long long)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_dismissExpandedPods:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)overrideTraitCollectionForChildViewController:(id)arg1;
 - (id)contentScrollView;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(_Bool)arg2;
+- (void)viewWillLayoutSubviews;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
-- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)loadView;
 - (void)iconModelDidLayout:(id)arg1;

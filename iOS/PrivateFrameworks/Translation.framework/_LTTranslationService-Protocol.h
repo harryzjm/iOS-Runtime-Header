@@ -14,6 +14,8 @@
 - (void)availableLocalePairsForTask:(long long)arg1 completion:(void (^)(NSArray *))arg2;
 - (void)startInstallRequest:(_LTInstallRequest *)arg1;
 - (void)installedLocales:(void (^)(NSArray *))arg1;
+- (void)_deleteHotfix:(void (^)(NSError *))arg1;
+- (void)_updateHotfix:(void (^)(NSError *))arg1;
 - (void)_getAssetSize:(void (^)(long long, NSError *))arg1;
 - (void)_updateAllAssets:(void (^)(NSError *))arg1;
 - (void)_purgeAllAssets:(void (^)(NSError *))arg1;
@@ -22,6 +24,7 @@
 - (void)_offlineLanguageStatus:(void (^)(NSArray *))arg1;
 - (void)cleanup;
 - (void)speak:(NSString *)arg1 withContext:(_LTTranslationContext *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)languagesForText:(NSArray *)arg1 usingModel:(unsigned long long)arg2 completion:(void (^)(_LTTextLanguageDetectionResult *))arg3;
 - (void)languagesForText:(NSArray *)arg1 completion:(void (^)(_LTTextLanguageDetectionResult *))arg2;
 - (void)languageForText:(NSString *)arg1 completion:(void (^)(_LTLanguageDetectionResult *))arg2;
 - (void)clearCaches;

@@ -19,8 +19,6 @@
 - (void)_accessibilitySpeakSentence;
 - (void)_accessibilityItalic;
 - (void)_accessibilityBold;
-- (void)_accessibilityPostStyleOptionStatus:(id)arg1;
-- (_Bool)_accessibilityFontTraitEnabled:(id)arg1 enabledValue:(id)arg2;
 - (void)_accessibilityShare;
 - (void)_accessibilityDefine;
 - (void)_accessibilityPaste;

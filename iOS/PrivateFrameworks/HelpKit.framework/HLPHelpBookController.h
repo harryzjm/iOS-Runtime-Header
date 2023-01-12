@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HLPHelpLocale, HLPHelpSectionItem, HLPURLImageCacheController, NSMutableDictionary, NSString, NSURL;
+@class HLPHelpLocale, HLPHelpSectionItem, HLPURLImageCacheController, NSArray, NSMutableDictionary, NSString, NSURL;
 
 @interface HLPHelpBookController
 {
@@ -12,6 +12,7 @@
     _Bool _fullBookView;
     long long _contentFormatVersion;
     long long _serverType;
+    NSArray *_additionalSupportedLanguages;
     NSMutableDictionary *_helpItemMap;
     NSString *_contentVersion;
     NSString *_copyrightText;
@@ -43,6 +44,7 @@
 @property(retain, nonatomic) NSString *copyrightText; // @synthesize copyrightText=_copyrightText;
 @property(retain, nonatomic) NSString *contentVersion; // @synthesize contentVersion=_contentVersion;
 @property(retain, nonatomic) NSMutableDictionary *helpItemMap; // @synthesize helpItemMap=_helpItemMap;
+@property(copy, nonatomic) NSArray *additionalSupportedLanguages; // @synthesize additionalSupportedLanguages=_additionalSupportedLanguages;
 @property(nonatomic) _Bool fullBookView; // @synthesize fullBookView=_fullBookView;
 @property(nonatomic) _Bool hasSectionIcon; // @synthesize hasSectionIcon=_hasSectionIcon;
 @property(nonatomic) long long serverType; // @synthesize serverType=_serverType;
@@ -55,6 +57,7 @@
 - (id)helpTopicItemForID:(id)arg1;
 - (id)sectionsForChildrenIdentifiers:(id)arg1 level:(long long)arg2 parent:(id)arg3 sectionsMap:(id)arg4 topicsMap:(id)arg5;
 - (id)dynamicServerSectionsForIdentifiers:(id)arg1 level:(long long)arg2 parent:(id)arg3 tocMap:(id)arg4;
+- (id)systemLanguages;
 - (void)processData:(id)arg1 formattedData:(id)arg2;
 - (void)processFileURLWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)fetchDataWithDataType:(long long)arg1 identifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

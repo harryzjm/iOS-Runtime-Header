@@ -18,28 +18,30 @@
     NSString *_preferredLanguage;
     int _customResponsesStep;
     NSDate *_latestProcessedDate;
+    unsigned long long _batchSize;
     NSString *_modelFilePath;
     NSString *_modelConfigPath;
     NSMutableDictionary *_modelExistsForLanguage;
 }
 
-+ (void)runHarvestForTestingSkipMessageCollection:(_Bool)arg1 clearCheckpoint:(_Bool)arg2 reportMetrics:(_Bool)arg3;
++ (void)runHarvestSkipMessageCollection:(_Bool)arg1 clearCheckpoint:(_Bool)arg2 reportMetrics:(_Bool)arg3;
 + (void)clearCustomResponsesCheckpointForTesting;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSMutableDictionary *modelExistsForLanguage; // @synthesize modelExistsForLanguage=_modelExistsForLanguage;
 - (id)getCustomResponsesLatestProcessedDateForTesting;
 - (void)setCustomResponsesLatestProcessedDateForTesting:(id)arg1;
 - (int)getCustomResponsesStepForTesting;
 - (void)setCustomResponsesStepForTesting:(int)arg1;
 - (void)setPet2TrackerForTesting:(id)arg1;
-- (_Bool)deferAfterFilterWithStore:(id)arg1 forActivity:(id)arg2 andCustomResponseParameters:(id)arg3;
+- (_Bool)deferAfterWriteCheckpointForActivity:(id)arg1;
+- (unsigned long long)activityStateAfterFilterWithStore:(id)arg1 forActivity:(id)arg2 andCustomResponseParameters:(id)arg3;
 - (id)modelForLanguage:(id)arg1;
 - (_Bool)isSupportedLanguage:(id)arg1;
-- (_Bool)deferAfterWriteCheckpointForActivity:(id)arg1;
+- (void)writeCheckpoint;
 - (void)loadCustomResponsesCheckpoint;
 - (void)harvestWithActivity:(id)arg1;
 - (id)_getCustomResponseParameters;
-- (id)_customResponseParametersWithExperimentResolver:(id)arg1;
-- (id)customResponseParametersForTrial:(id)arg1;
+- (id)_customResponseParametersWithExperiment:(id)arg1;
 - (id)initWithActivityManager:(id)arg1;
 
 @end

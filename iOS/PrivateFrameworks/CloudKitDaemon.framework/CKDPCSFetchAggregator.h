@@ -6,14 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class CKDClientContext, NSMutableArray, NSOperationQueue;
+@class CKDContainer, NSMutableArray, NSOperationQueue;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-__attribute__((visibility("hidden")))
 @interface CKDPCSFetchAggregator : NSObject
 {
     _Bool _skipQueuedFetchCycleDetection;
-    CKDClientContext *_context;
+    CKDContainer *_container;
     NSObject<OS_dispatch_queue> *_opQueue;
     NSOperationQueue *_queue;
     NSMutableArray *_queuedFetches;
@@ -30,7 +29,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSMutableArray *queuedFetches; // @synthesize queuedFetches=_queuedFetches;
 @property(retain, nonatomic) NSOperationQueue *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *opQueue; // @synthesize opQueue=_opQueue;
-@property(nonatomic) __weak CKDClientContext *context; // @synthesize context=_context;
+@property(nonatomic) __weak CKDContainer *container; // @synthesize container=_container;
 - (void)cancelAllOperations;
 - (void)requestFetchOfZoneWithID:(id)arg1 forOperation:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)requestFetchOfShareWithID:(id)arg1 forOperation:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
@@ -41,7 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)_lockedTearDownFetchTimer;
 - (void)_lockedFetchesAreReady;
 - (void)dealloc;
-- (id)initWithContext:(id)arg1;
+- (id)initWithContainer:(id)arg1;
 - (id)init;
 
 @end

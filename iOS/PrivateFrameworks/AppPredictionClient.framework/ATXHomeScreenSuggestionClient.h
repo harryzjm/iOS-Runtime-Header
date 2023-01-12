@@ -6,67 +6,54 @@
 
 #import <objc/NSObject.h>
 
-#import <AppPredictionClient/ATXHomeScreenSuggestionXPCInterface-Protocol.h>
+#import <AppPredictionClient/ATXChronoServicesProviderDelegate-Protocol.h>
+#import <AppPredictionClient/ATXHomeScreenEventLoggerDelegate-Protocol.h>
+#import <AppPredictionClient/ATXHomeScreenEventLogging-Protocol.h>
+#import <AppPredictionClient/ATXHomeScreenSuggestionServerXPCInterface-Protocol.h>
 #import <AppPredictionClient/ATXWidgetDwellTrackerDelegate-Protocol.h>
 #import <AppPredictionClient/NSXPCListenerDelegate-Protocol.h>
 
-@class ATXActionPredictionClient, ATXBiomeUIStream, ATXEngagementRecordManager, ATXHomeScreenConfigCache, ATXUICacheManager, ATXWidgetDwellTracker, NSArray, NSMutableDictionary, NSString, NSUserDefaults, NSXPCListener, _PASQueueLock;
-@protocol ATXPETEventTracker2Protocol, OS_dispatch_queue;
+@class ATXActionPredictionClient, ATXChronoServicesProvider, ATXEngagementRecordManager, ATXHomeScreenConfigCache, ATXUICacheManager, ATXWidgetDwellTracker, NSString, NSUserDefaults, NSXPCConnection, NSXPCListener, _PASQueueLock;
+@protocol OS_dispatch_queue;
 
-@interface ATXHomeScreenSuggestionClient : NSObject <NSXPCListenerDelegate, ATXHomeScreenSuggestionXPCInterface, ATXWidgetDwellTrackerDelegate>
+@interface ATXHomeScreenSuggestionClient : NSObject <NSXPCListenerDelegate, ATXHomeScreenSuggestionServerXPCInterface, ATXChronoServicesProviderDelegate, ATXWidgetDwellTrackerDelegate, ATXHomeScreenEventLoggerDelegate, ATXHomeScreenEventLogging>
 {
-    NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_outputQueue;
     NSXPCListener *_xpcListener;
     _PASQueueLock *_lock;
-    double _postInteractionRotationSuppressionInterval;
-    double _postInteractionRotationSuppressionLeeway;
     ATXUICacheManager *_uiCacheManager;
     ATXHomeScreenConfigCache *_homeScreenConfigCache;
     ATXEngagementRecordManager *_engagementRecordManager;
     ATXWidgetDwellTracker *_widgetDwellTracker;
-    ATXBiomeUIStream *_biomeUIStream;
     ATXActionPredictionClient *_actionPredictionClient;
+    ATXChronoServicesProvider *_chronoServicesProvider;
     NSUserDefaults *_atxDefaults;
-    id <ATXPETEventTracker2Protocol> _tracker;
-    NSArray *_currentConfigurations;
-    NSMutableDictionary *_widgetUniqueIdToCachedWidgetData;
-    _Bool _hasAppPanelOnHomeScreen;
+    NSXPCConnection *_unsafeXPCConnection;
+    double _rotationSuppressionInterval;
+    double _layoutUpdateSuppressionInterval;
+    double _timerLeeway;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)_runAsyncOnQueueWhenUnlocked:(CDUnknownBlockType)arg1;
-- (void)_syncPASQueueLockForTests;
-- (void)_setHasAppPanelOnHomeScreen:(_Bool)arg1;
-- (void)_setCurrentAppPredictionPanelLayouts:(id)arg1;
-- (void)_setCurrentSuggestionWidgetLayouts:(id)arg1;
-- (void)_setBiomeUIStream:(id)arg1;
-- (void)_setStore:(id)arg1;
-- (_Bool)_widgetIdentifierIsSuggestionsWidget:(id)arg1 guardedData:(id)arg2;
-- (id)_eventWithDate:(id)arg1 eventTypeString:(id)arg2 stackIdentifier:(id)arg3 stackKind:(unsigned long long)arg4 stackLocation:(unsigned long long)arg5 reason:(id)arg6 widget:(id)arg7 blendingCacheIdentifier:(id)arg8;
-- (void)_refreshBlendingLayer;
+@property(nonatomic) double timerLeeway; // @synthesize timerLeeway=_timerLeeway;
+@property(nonatomic) double layoutUpdateSuppressionInterval; // @synthesize layoutUpdateSuppressionInterval=_layoutUpdateSuppressionInterval;
+@property(nonatomic) double rotationSuppressionInterval; // @synthesize rotationSuppressionInterval=_rotationSuppressionInterval;
+@property(retain) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_unsafeXPCConnection;
 - (id)_replaceSuggestionWithId:(id)arg1 fromSuggestionsArray:(id)arg2 suggestionLayoutType:(long long)arg3 usedFallbackIndexSet:(id)arg4 shouldSuggestionsBeDisjoint:(_Bool)arg5 guardedData:(id)arg6;
 - (void)_replaceSuggestionWithId:(id)arg1 shouldSuggestionsBeDisjoint:(_Bool)arg2 guardedData:(id)arg3;
-- (void)_logCaptureRateDiversionIfAppPredictionPanelExistsWithTappedWidgetUniqueId:(id)arg1 guardedData:(id)arg2;
-- (void)_logCaptureRateForAppPredictionPanelWithEngagedSuggestion:(id)arg1 isSuggestionsWidget:(_Bool)arg2 widgetIdentifier:(id)arg3;
 - (id)_newSuggestionLayoutForOldLayout:(id)arg1 replacedSuggestionId:(id)arg2 shouldSuggestionsBeDisjoint:(_Bool)arg3 usedFallbackIndexSet:(id)arg4 guardedData:(id)arg5;
-- (id)_proactiveSuggestionWithId:(id)arg1 fromLayoutOfWidgetWithId:(id)arg2 guardedData:(id)arg3;
 - (void)_toggleSiriSearchSettingsOffForAppSuggestion:(id)arg1;
 - (void)_replaceSuggestionForAllProactiveWidgets:(id)arg1 guardedData:(id)arg2;
-- (void)_handleProactiveWidgetEvent:(int)arg1 suggestionIdentifier:(id)arg2 widgetIdentifier:(id)arg3;
-- (void)_logProactiveWidgetEvent:(int)arg1 suggestionIdentifiers:(id)arg2 engagedSuggestion:(id)arg3 widget:(id)arg4 blendingCacheId:(id)arg5 date:(id)arg6;
-- (void)_populateStackKindAndLocation:(id)arg1;
-- (id)_stackIdentifierGivenWidgetUniqueId:(id)arg1;
-- (unsigned long long)_stackLocationGivenWidgetUniqueId:(id)arg1;
-- (unsigned long long)_stackKindGivenWidgetUniqueId:(id)arg1;
-- (id)_stackIdentifierGivenWidgetUniqueId:(id)arg1 widgetIdToWidgetDataDictionary:(id)arg2;
-- (unsigned long long)_stackLocationGivenWidgetUniqueId:(id)arg1 widgetIdToWidgetDataDictionary:(id)arg2;
-- (unsigned long long)_stackKindGivenWidgetUniqueId:(id)arg1 widgetIdToWidgetDataDictionary:(id)arg2;
-- (void)_updateCurrentConfigurationsAndLogDiff;
-- (void)_performCoalescedHomeScreenAndTodayConfigurationDiff;
+- (_Bool)_replaceSuggestionIfNeeded:(id)arg1 fromProactiveWidget:(id)arg2 guardedData:(id)arg3;
+- (void)logUserDidSwitchHomeScreenExperience:(unsigned long long)arg1;
+- (void)logUserDidEnterEditModeForWidgetOnboarding;
+- (void)logUserDidRejectWidgetOnboardingSuggestion:(id)arg1;
+- (void)logUserDidAcceptWidgetOnboardingSuggestion:(id)arg1;
+- (void)logUserDidStartWidgetOnboarding;
 - (void)logContextMenuNeverShowAgainForSuggestion:(id)arg1 widget:(id)arg2 blendingCacheId:(id)arg3;
 - (void)logContextMenuDismissOnceForSuggestion:(id)arg1 widget:(id)arg2 blendingCacheId:(id)arg3;
-- (id)_homeScreenPredictionWithBlendingCacheId:(id)arg1;
+- (void)_dismissSuggestions:(id)arg1 guardedData:(id)arg2 fromSuggestionsWidget:(id)arg3 dismissFromAllUIs:(_Bool)arg4 duration:(double)arg5;
 - (void)logDidTapSuggestion:(id)arg1 widget:(id)arg2 blendingCacheId:(id)arg3;
 - (void)logWidgetUnoccluded:(id)arg1 blendingCacheId:(id)arg2;
 - (void)logWidgetOccluded:(id)arg1 blendingCacheId:(id)arg2;
@@ -74,6 +61,7 @@
 - (void)logSuggestionsDidAppear:(id)arg1 widget:(id)arg2 blendingCacheId:(id)arg3;
 - (void)logWidgetDidDisappear:(id)arg1 blendingCacheId:(id)arg2;
 - (void)logWidgetDidAppear:(id)arg1 blendingCacheId:(id)arg2;
+- (void)logWidgetInsertionDidFailInStack:(id)arg1 prediction:(id)arg2;
 - (void)logDeviceUnlock;
 - (void)logDeviceLock;
 - (void)logUserDidDeleteStack:(id)arg1 stackKind:(unsigned long long)arg2 stackLocation:(unsigned long long)arg3;
@@ -81,55 +69,79 @@
 - (void)logUserDidDeleteWidgetOnStack:(id)arg1 stackIdentifier:(id)arg2 stackKind:(unsigned long long)arg3 stackLocation:(unsigned long long)arg4;
 - (void)logUserDidAddWidgetToStack:(id)arg1 stackIdentifier:(id)arg2 isSuggestion:(_Bool)arg3;
 - (void)logUserDidDeletePinnedWidget:(id)arg1 stackLocation:(unsigned long long)arg2;
-- (void)logUserDidAddPinnedWidget:(id)arg1 isSuggestion:(_Bool)arg2;
+- (void)logUserDidAddPinnedWidget:(id)arg1 defaultsComparator:(id)arg2;
 - (void)logUserDidChangeStackConfiguration:(id)arg1;
 - (void)logSupplementaryActionInContextMenu:(unsigned long long)arg1 stackId:(id)arg2 widgetOnTop:(id)arg3 prediction:(id)arg4;
 - (void)logStackDidTap:(id)arg1 widgetOnTop:(id)arg2 prediction:(id)arg3;
+- (void)logStackDidTap:(id)arg1 engagedUrl:(id)arg2 widgetOnTop:(id)arg3 prediction:(id)arg4;
 - (void)logStackStatusDidChange:(id)arg1 widgetOnTop:(id)arg2 reason:(unsigned long long)arg3 prediction:(id)arg4;
 - (void)logSpecialPageDidDisappear:(unsigned long long)arg1;
 - (void)logSpecialPageDidAppear:(unsigned long long)arg1 widgetsByStackId:(id)arg2 prediction:(id)arg3;
 - (void)logHomeScreenDidDisappearWithReason:(id)arg1;
 - (void)logHomeScreenPageDidAppear:(unsigned long long)arg1 topWidgetsByStackIdentifier:(id)arg2 prediction:(id)arg3;
-- (void)logStackDidDisappear:(id)arg1 topWidget:(id)arg2 prediction:(id)arg3;
 - (void)logStackDidAppear:(id)arg1 topWidget:(id)arg2 prediction:(id)arg3;
+- (void)logStackDidDisappear:(id)arg1 topWidget:(id)arg2 prediction:(id)arg3;
+- (void)logStackVisibilityChanged:(id)arg1 visibleRect:(struct CGRect)arg2 topWidget:(id)arg3 prediction:(id)arg4;
+- (void)logWidgetDidDisappear:(id)arg1 stackId:(id)arg2 prediction:(id)arg3;
+- (void)logWidgetDidAppear:(id)arg1 stackId:(id)arg2 prediction:(id)arg3;
+- (void)_recordSuggestedWidgetIfNecessaryInStacks:(id)arg1 guardedData:(id)arg2;
 - (void)writeTodayPageStacks:(id)arg1 appPredictionPanels:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)writeDockAppList:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)writeHomeScreenPageConfigurations:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)loadHomeScreenPageConfigurationsWithError:(id *)arg1;
 - (void)loadHomeScreenPageConfigurationsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)significantDwellDetectedForWidget:(id)arg1 date:(id)arg2;
+- (_Bool)hasWidgetBeenTapped:(id)arg1;
+- (_Bool)hasWidgetBeenSeen:(id)arg1;
+- (void)logWidgetAddedFeaturesInCoreAnalytics:(id)arg1 rankOfWidgetInGallery:(unsigned long long)arg2 galleryItems:(id)arg3;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)forceDebugRotationForStack:(id)arg1 extensionBundleId:(id)arg2 kind:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)synchronouslyRelinquishOnDiskResourcesAheadOfDataDeletionWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)getCurrentSuggestionsWidgetAndAppPredictionPanelLayoutsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)blendingLayerDidUpdateHomeScreenCachedSuggestions:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_updateLoggerStacksToStackSuggestionsFromHomeScreenCachedSuggestions:(id)arg1;
+- (void)chronoServiceProvider:(id)arg1 reloadDidCompleteForWidget:(id)arg2 success:(_Bool)arg3 widgetIsReadyForDisplay:(_Bool)arg4 error:(id)arg5;
+- (void)chronoServiceProvider:(id)arg1 finishedPrewarmingSuggestions:(id)arg2;
+- (void)userDidRemoveSuggestedWidget:(id)arg1 fromStackWithIdentifier:(id)arg2 prediction:(id)arg3;
+- (void)userDidAddSuggestedWidgetPermanently:(id)arg1 toStackWithIdentifier:(id)arg2 prediction:(id)arg3;
 - (void)homeScreenPredictionWithReply:(CDUnknownBlockType)arg1;
 - (id)homeScreenPrediction;
+- (void)setIsUserInteractingWithProactiveWidget:(_Bool)arg1;
 - (void)didFinishExecutingTappedSuggestion:(id)arg1 fromWidget:(id)arg2;
+- (void)markFallbackAppSuggestion:(id)arg1 asUsedForPage:(long long)arg2;
+- (void)markFallbackAppSuggestion:(id)arg1 asUnusedForPage:(long long)arg2;
+- (id)unusedFallbackAppSuggestionsForPage:(long long)arg1;
+- (_Bool)_isFallbackSuggestionUsed:(id)arg1 guardedData:(id)arg2;
 - (_Bool)isSuggestionReplacementAvailableForSuggestion:(id)arg1 inLayout:(id)arg2;
 - (long long)_layoutTypeOfSuggestion:(id)arg1 inLayout:(id)arg2;
-- (id)layoutForAppPredictionPanelWithIdentifier:(id)arg1;
-- (id)layoutForSuggestionWidgetWithIdentifier:(id)arg1;
+- (id)layoutForAppPredictionPanel:(id)arg1;
+- (id)layoutForSuggestionsWidget:(id)arg1;
 - (void)_alertUserIfNeededOfStackChange:(id)arg1 widgetOnTop:(id)arg2 reason:(unsigned long long)arg3;
 - (void)_handleStackSuggestionDidUpdate:(id)arg1;
+- (void)_clearRotationSuppressionTimerWithGuardedData:(id)arg1;
 - (void)_cleanupGuardedData:(id)arg1;
-- (id)_stackSuggestionForRegularWidgetFromLayout:(id)arg1 stackIdentifier:(id)arg2;
-- (id)_stackSuggestionForSuggestionWidgetWithLayout:(id)arg1 stackIdentifier:(id)arg2;
-- (id)_stackSuggestionFromLayout:(id)arg1 withStackIdentifier:(id)arg2;
-- (void)_notifyObserversAboutSuggestionRefreshToSuggestionsWidgetOnlyWithGuardedData:(id)arg1;
+- (void)_notifyObserversAboutLayoutUpdateWithGuardedData:(id)arg1;
 - (void)_notifyObserversAboutSuggestionRefreshWithGuardedData:(id)arg1;
 - (_Bool)_isWidgetEngaged:(id)arg1 kind:(id)arg2 afterMostRecentProactiveRotationToSuggestionWithIdentifier:(id)arg3 guardedData:(id)arg4;
-- (void)_setUpInformationStoreIfNecessaryWithGuardedData:(id)arg1;
 - (void)_refreshInferredEngagementStatusForWidgetSuggestions:(id)arg1;
-- (void)_updateGuardedData:(id)arg1 withCachedSuggestions:(id)arg2;
+- (void)_updateGuardedData:(id)arg1 withCachedSuggestions:(id)arg2 updateProactiveWidgetLayoutsOnly:(_Bool)arg3;
+- (id)_computePreviousSuggestedSuggestionWidgetLayoutsWithGuardedData:(id)arg1 cachedSuggestions:(id)arg2;
+- (void)_updateKnownWidgetUniqueIdsIfNecessaryWithGuardedData:(id)arg1;
 - (void)_readCachedSuggestionsFromDiskAndUpdateGuardedData:(id)arg1;
+- (id)_knownProactiveWidgetUniqueIdentifiersInPages:(id)arg1;
+- (id)_loadKnownTodayPageProactiveWidgetUniqueIds;
+- (id)_loadKnownHomeScreenProactiveWidgetUniqueIds;
+- (_Bool)_isSystemInitiatedLayoutUpdateAllowed:(id)arg1;
+- (void)_cancelAndReleaseLayoutUpdateSuppressionTimer:(id)arg1;
+- (void)_layoutUpdateSuppressionTimerFired;
+- (void)_startSuppressingSystemInitiatedLayoutUpdateForTimeInterval:(double)arg1 leeway:(double)arg2 guardedData:(id)arg3;
 - (void)_rotationSuppressionTimerFired;
 - (void)_startSuppressingRotationForTimeInterval:(double)arg1 leeway:(double)arg2 guardedData:(id)arg3;
 - (void)startSuppressingRotationForTimeInterval:(double)arg1 leeway:(double)arg2;
-- (void)setPostInteractionSuggestionSuppressionTimeInterval:(double)arg1 leeway:(double)arg2;
 - (void)removeObserver:(id)arg1;
-- (void)addObserver:(id)arg1;
+- (void)registerObserver:(id)arg1;
 - (void)dealloc;
-- (id)initWithHomeScreenConfigCache:(id)arg1 engagementRecordManager:(id)arg2 widgetDwellTracker:(id)arg3 uiCacheManager:(id)arg4 actionPredictionClient:(id)arg5 tracker:(id)arg6;
+- (id)initWithHomeScreenConfigCache:(id)arg1 engagementRecordManager:(id)arg2 widgetDwellTracker:(id)arg3 widgetDismissManager:(id)arg4 uiCacheManager:(id)arg5 actionPredictionClient:(id)arg6 chronoServicesProvider:(id)arg7 store:(id)arg8 logger:(id)arg9;
 - (id)init;
 
 // Remaining properties

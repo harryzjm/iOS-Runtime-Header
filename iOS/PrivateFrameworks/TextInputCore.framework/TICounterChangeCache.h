@@ -6,11 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSMutableSet;
+@class NSMutableDictionary, NSMutableSet, TIEventDescriptorRegistry, TIMetricDescriptorRegistry;
 @protocol OS_dispatch_queue;
 
 @interface TICounterChangeCache : NSObject
 {
+    TIEventDescriptorRegistry *_eventDescriptorRegistry;
+    TIMetricDescriptorRegistry *_metricDescriptorRegistry;
     NSMutableDictionary *_cache;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSMutableSet *_referencedCounters;
@@ -24,9 +26,9 @@
 - (void)keyboardDidSuspendForDate:(id)arg1;
 - (void)addStatisticChanges:(id)arg1 withContext:(id)arg2;
 - (void)close;
-- (void)addCounterReferencesForMetric:(id)arg1 withRegistry:(id)arg2;
+- (void)addCounterReferencesForMetric:(id)arg1;
 - (void)loadReferencedCounters;
-- (id)init;
+- (id)initWithEventDescriptorRegistry:(id)arg1 metricDescriptorRegistry:(id)arg2;
 
 @end
 

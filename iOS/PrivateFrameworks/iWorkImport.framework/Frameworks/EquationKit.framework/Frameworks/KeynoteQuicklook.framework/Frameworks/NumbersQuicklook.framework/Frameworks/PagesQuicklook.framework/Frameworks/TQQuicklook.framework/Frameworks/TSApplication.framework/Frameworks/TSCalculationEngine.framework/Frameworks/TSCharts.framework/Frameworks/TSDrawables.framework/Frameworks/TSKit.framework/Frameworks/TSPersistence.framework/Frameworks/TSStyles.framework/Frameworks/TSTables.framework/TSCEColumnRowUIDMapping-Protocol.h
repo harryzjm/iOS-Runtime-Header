@@ -4,33 +4,42 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSIndexSet, NSMutableIndexSet, TSUMutableUUIDSet, TSUUUIDSet;
+@class NSArray, NSIndexSet, NSMutableIndexSet, TSCEMutableUIDSet, TSCEUIDSet;
 
 @protocol TSCEColumnRowUIDMapping
 - (struct TSCERangeCoordinate)tableRangeCoordinate;
-- (UUIDRect_d701734b)cellUIDRangeForCellRange:(struct TSUCellRect)arg1;
-- (struct TSUCellRect)cellRangeForUIDRange:(const UUIDRect_d701734b *)arg1;
-- (vector_4dc5f307)prunedRowUIDsFromRowUIDs:(const vector_4dc5f307 *)arg1;
-- (vector_4dc5f307)prunedColumnUIDsFromColumnUIDs:(const vector_4dc5f307 *)arg1;
-- (NSMutableIndexSet *)mutableIndexesForUIDSet:(TSUUUIDSet *)arg1 isRows:(_Bool)arg2 notFoundUIDs:(TSUMutableUUIDSet *)arg3;
-- (NSMutableIndexSet *)mutableIndexesForUIDSet:(TSUUUIDSet *)arg1 isRows:(_Bool)arg2;
-- (TSUMutableUUIDSet *)UIDSetForIndexes:(NSIndexSet *)arg1 isRows:(_Bool)arg2;
+- (struct TSKUIDStructTract)cellUIDRangeForCellRange:(struct TSUCellRect)arg1;
+- (struct TSUCellRect)cellRangeForUIDRange:(const void *)arg1;
+- (TSKUIDStructVectorTemplate_de88e035)prunedRowUIDsFromRowUIDs:(const void *)arg1;
+- (TSKUIDStructVectorTemplate_de88e035)prunedColumnUIDsFromColumnUIDs:(const void *)arg1;
+- (struct TSKUIDStruct)firstUidFromUIDSet:(TSCEUIDSet *)arg1 isRows:(_Bool)arg2;
+- (NSMutableIndexSet *)mutableIndexesForUIDSet:(TSCEUIDSet *)arg1 isRows:(_Bool)arg2 notFoundUIDs:(TSCEMutableUIDSet *)arg3;
+- (NSMutableIndexSet *)mutableIndexesForUIDSet:(TSCEUIDSet *)arg1 isRows:(_Bool)arg2;
+- (TSCEMutableUIDSet *)UIDSetForIndexes:(NSIndexSet *)arg1 isRows:(_Bool)arg2;
+- (unsigned short)columnIndexForUUIDBytes:(unsigned char [16])arg1;
+- (unsigned int)rowIndexForUUIDBytes:(unsigned char [16])arg1;
+- (void)getUUIDBytes:(unsigned char [16])arg1 forColumnIndex:(unsigned short)arg2;
+- (void)getUUIDBytes:(unsigned char [16])arg1 forRowIndex:(unsigned int)arg2;
+- (NSArray *)rowUuids;
+- (NSArray *)columnUuids;
 - (struct TSUCellRect)range;
-- (vector_4dc5f307)rowUIDs;
-- (vector_4dc5f307)columnUIDs;
-- (struct _NSRange)rowRangeForUIDs:(const vector_4dc5f307 *)arg1;
-- (struct _NSRange)columnRangeForUIDs:(const vector_4dc5f307 *)arg1;
-- (vector_4dc5f307)rowUIDsForRowRange:(struct _NSRange)arg1;
-- (vector_4dc5f307)columnUIDsForColumnRange:(struct _NSRange)arg1;
-- (NSIndexSet *)rowIndexesForUIDs:(const vector_4dc5f307 *)arg1;
-- (NSIndexSet *)columnIndexesForUIDs:(const vector_4dc5f307 *)arg1;
-- (NSMutableIndexSet *)mutableRowIndexesForUIDs:(const vector_4dc5f307 *)arg1;
-- (NSMutableIndexSet *)mutableColumnIndexesForUIDs:(const vector_4dc5f307 *)arg1;
-- (vector_4dc5f307)rowUIDsForRowIndexes:(NSIndexSet *)arg1;
-- (vector_4dc5f307)columnUIDsForColumnIndexes:(NSIndexSet *)arg1;
-- (unsigned int)rowIndexForRowUID:(const UUIDData_5fbc143e *)arg1;
-- (unsigned short)columnIndexForColumnUID:(const UUIDData_5fbc143e *)arg1;
-- (UUIDData_5fbc143e)rowUIDForRowIndex:(unsigned int)arg1;
-- (UUIDData_5fbc143e)columnUIDForColumnIndex:(unsigned short)arg1;
+- (TSKUIDStructVectorTemplate_de88e035)orderedRowUidsFromUids:(const void *)arg1;
+- (TSKUIDStructVectorTemplate_de88e035)orderedColumnUidsFromUids:(const void *)arg1;
+- (const void *)rowUIDs;
+- (const void *)columnUIDs;
+- (struct _NSRange)rowRangeForUIDs:(const void *)arg1;
+- (struct _NSRange)columnRangeForUIDs:(const void *)arg1;
+- (TSKUIDStructVectorTemplate_de88e035)rowUIDsForRowRange:(struct _NSRange)arg1;
+- (TSKUIDStructVectorTemplate_de88e035)columnUIDsForColumnRange:(struct _NSRange)arg1;
+- (NSIndexSet *)rowIndexesForUIDs:(const void *)arg1;
+- (NSIndexSet *)columnIndexesForUIDs:(const void *)arg1;
+- (NSMutableIndexSet *)mutableRowIndexesForUIDs:(const void *)arg1;
+- (NSMutableIndexSet *)mutableColumnIndexesForUIDs:(const void *)arg1;
+- (TSKUIDStructVectorTemplate_de88e035)rowUIDsForRowIndexes:(NSIndexSet *)arg1;
+- (TSKUIDStructVectorTemplate_de88e035)columnUIDsForColumnIndexes:(NSIndexSet *)arg1;
+- (unsigned int)rowIndexForRowUID:(struct TSKUIDStruct)arg1;
+- (unsigned short)columnIndexForColumnUID:(struct TSKUIDStruct)arg1;
+- (struct TSKUIDStruct)rowUIDForRowIndex:(unsigned int)arg1;
+- (struct TSKUIDStruct)columnUIDForColumnIndex:(unsigned short)arg1;
 @end
 

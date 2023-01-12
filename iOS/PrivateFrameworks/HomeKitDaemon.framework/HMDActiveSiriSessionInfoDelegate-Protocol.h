@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMDActiveSiriSessionInfo, NSData, NSNumber;
+@class HMDActiveSiriSessionInfo, NSData, NSDictionary, NSNumber;
 
 @protocol HMDActiveSiriSessionInfoDelegate
+- (void)activeSiriSession:(HMDActiveSiriSessionInfo *)arg1 didReceiveFirstPassMetadata:(NSDictionary *)arg2;
+- (void)activeSiriSession:(HMDActiveSiriSessionInfo *)arg1 didReceiveButtonUpWithDuration:(NSNumber *)arg2;
 - (void)activeSiriSession:(HMDActiveSiriSessionInfo *)arg1 didCreateAudioFrame:(NSData *)arg2 sequenceNumber:(NSNumber *)arg3 gain:(NSNumber *)arg4;
 - (void)activeSiriSessionDidStop:(HMDActiveSiriSessionInfo *)arg1;
 @end

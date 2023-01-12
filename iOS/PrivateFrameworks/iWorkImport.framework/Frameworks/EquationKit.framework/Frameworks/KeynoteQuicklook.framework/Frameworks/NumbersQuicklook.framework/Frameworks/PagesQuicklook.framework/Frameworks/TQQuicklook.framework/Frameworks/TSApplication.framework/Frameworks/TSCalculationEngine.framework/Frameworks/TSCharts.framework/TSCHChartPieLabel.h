@@ -10,19 +10,19 @@
 
 @interface TSCHChartPieLabel : NSObject
 {
-    struct CGRect mRect;
-    struct CGRect mErasableFrame;
-    struct CGSize mSize;
-    struct CGAffineTransform mTransform;
-    NSString *mTitle;
+    struct CGRect _rect;
+    struct CGRect _erasableFrame;
+    struct CGSize _size;
+    struct CGAffineTransform _transform;
+    NSString *_title;
 }
 
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSString *title; // @synthesize title=mTitle;
-@property(readonly, nonatomic) struct CGAffineTransform transform; // @synthesize transform=mTransform;
-@property(readonly, nonatomic) struct CGSize size; // @synthesize size=mSize;
-@property(readonly, nonatomic) struct CGRect erasableFrame; // @synthesize erasableFrame=mErasableFrame;
-@property(readonly, nonatomic) struct CGRect rect; // @synthesize rect=mRect;
+@property(readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property(readonly, nonatomic) struct CGAffineTransform transform; // @synthesize transform=_transform;
+@property(readonly, nonatomic) struct CGSize size; // @synthesize size=_size;
+@property(readonly, nonatomic) struct CGRect erasableFrame; // @synthesize erasableFrame=_erasableFrame;
+@property(readonly, nonatomic) struct CGRect rect; // @synthesize rect=_rect;
 - (void)concatenateTransformWithCGAffineTransform:(struct CGAffineTransform)arg1;
 - (id)initWithRect:(struct CGRect)arg1 erasableFrame:(struct CGRect)arg2 size:(struct CGSize)arg3 transform:(struct CGAffineTransform)arg4 title:(id)arg5;
 @property(readonly, nonatomic) struct CGRect erasableFrameInCombinedLabelSpace;

@@ -7,6 +7,9 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (ICSWriter)
++ (_Bool)VCS_isValidURI:(id)arg1;
++ (id)VCS_URLForAddress:(id)arg1 scheme:(id)arg2 noAddress:(id)arg3;
++ (id)VCS_URLForMail:(id)arg1;
 - (void)_ICSStringWithOptions:(unsigned long long)arg1 appendingToString:(id)arg2;
 @end
 

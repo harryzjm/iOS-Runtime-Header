@@ -8,7 +8,7 @@
 
 #import <HealthDaemon/NSCopying-Protocol.h>
 
-@class NSData, NSString;
+@class HDCloudSyncCodableShardPredicate, NSData, NSString;
 
 @interface HDCloudSyncCodableStore : PBCodable <NSCopying>
 {
@@ -19,6 +19,7 @@
     NSString *_pendingOwnerIdentifier;
     NSString *_productType;
     int _requiredProtocolVersion;
+    HDCloudSyncCodableShardPredicate *_shardPredicate;
     NSData *_storeIdentifier;
     int _supportedProtocolVersion;
     NSString *_systemBuildVersion;
@@ -33,6 +34,7 @@
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) HDCloudSyncCodableShardPredicate *shardPredicate; // @synthesize shardPredicate=_shardPredicate;
 @property(retain, nonatomic) NSString *deviceName; // @synthesize deviceName=_deviceName;
 @property(retain, nonatomic) NSString *productType; // @synthesize productType=_productType;
 @property(retain, nonatomic) NSString *systemBuildVersion; // @synthesize systemBuildVersion=_systemBuildVersion;
@@ -50,6 +52,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasShardPredicate;
 @property(readonly, nonatomic) _Bool hasDeviceName;
 @property(readonly, nonatomic) _Bool hasProductType;
 @property(readonly, nonatomic) _Bool hasSystemBuildVersion;

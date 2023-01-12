@@ -6,20 +6,24 @@
 
 #import <objc/NSObject.h>
 
+#import <TSPersistence/TSPDataProviding-Protocol.h>
+#import <TSPersistence/TSPDataReferenceMapDelegate-Protocol.h>
 #import <TSPersistence/TSPFileCoordinatorDelegate-Protocol.h>
 #import <TSPersistence/TSPLazyReferenceDelegate-Protocol.h>
 #import <TSPersistence/TSPObjectDelegate-Protocol.h>
+#import <TSPersistence/TSPObjectUUIDMapDelegate-Protocol.h>
 #import <TSPersistence/TSPPassphraseConsumer-Protocol.h>
 #import <TSPersistence/TSPSupportDirectoryDelegate-Protocol.h>
 
-@class NSData, NSHashTable, NSMapTable, NSMutableArray, NSMutableDictionary, NSProgress, NSRecursiveLock, NSSet, NSString, NSURL, NSUUID, SFUCryptoKey, TSPCancellationState, TSPComponentManager, TSPDataDownloadManager, TSPDataManager, TSPDocumentMetadata, TSPDocumentProperties, TSPDocumentRevision, TSPDocumentSaveOperationState, TSPObject, TSPObjectContainer, TSPObjectUUIDMap, TSPPackage, TSPPackageWriteCoordinator, TSPRegistry, TSPResourceContext, TSPSupportManager, TSPSupportMetadata, TSPSupportPackageWriteCoordinator, TSUTemporaryDirectory;
+@class NSArray, NSData, NSHashTable, NSMapTable, NSMutableArray, NSMutableDictionary, NSProgress, NSRecursiveLock, NSSet, NSString, NSURL, NSUUID, SFUCryptoKey, TSPCancellationState, TSPComponentManager, TSPDataDownloadManager, TSPDataManager, TSPDataReferenceMap, TSPDocumentMetadata, TSPDocumentProperties, TSPDocumentRevision, TSPDocumentSaveOperationState, TSPDownloadObserverManager, TSPObject, TSPObjectContainer, TSPObjectUUIDMap, TSPPackage, TSPPackageWriteCoordinator, TSPRegistry, TSPResourceContext, TSPSupportManager, TSPSupportMetadata, TSPSupportPackageWriteCoordinator, TSUTemporaryDirectory;
 @protocol NSFilePresenter, OS_dispatch_group, OS_dispatch_queue, TSPObjectContextDelegate;
 
-@interface TSPObjectContext : NSObject <TSPFileCoordinatorDelegate, TSPLazyReferenceDelegate, TSPObjectDelegate, TSPSupportDirectoryDelegate, TSPPassphraseConsumer>
+@interface TSPObjectContext : NSObject <TSPDataReferenceMapDelegate, TSPObjectUUIDMapDelegate, TSPFileCoordinatorDelegate, TSPLazyReferenceDelegate, TSPObjectDelegate, TSPSupportDirectoryDelegate, TSPDataProviding, TSPPassphraseConsumer>
 {
     _Atomic long long _lastObjectIdentifier;
     _Atomic long long _modifyObjectToken;
     _Atomic int _modifyObjectCount;
+    _Atomic int _ignoreDataLifecycleErrorsCount;
     _Atomic _Bool _didClose;
     unsigned int _mode;
     SFUCryptoKey *_decryptionKey;
@@ -45,20 +49,19 @@
     NSObject<OS_dispatch_queue> *_dataAttributesQueue;
     NSObject<OS_dispatch_queue> *_loadObserversQueue;
     NSObject<OS_dispatch_queue> *_runLoadObserversQueue;
-    NSObject<OS_dispatch_queue> *_runLoadObserversForKnownObjectQueue;
+    _Atomic long long _runLoadObserversQueueSuspendCount;
     NSObject<OS_dispatch_queue> *_resourceAccessQueue;
     NSObject<OS_dispatch_queue> *_notificationQueue;
     NSProgress *_nextSaveProgress;
     TSPDocumentSaveOperationState *_saveOperationState;
     TSPPackageWriteCoordinator *_packageWriteCoordinator;
-    NSHashTable *_objectsToIgnoreModifications;
     NSHashTable *_objectModifyDelegates;
     _Bool _isWaitingForEndSave;
     NSObject<OS_dispatch_group> *_pendingEndSaveGroup;
     NSObject<OS_dispatch_group> *_outstandingReadsGroup;
     NSObject<OS_dispatch_queue> *_temporaryDirectoryQueue;
     TSUTemporaryDirectory *_temporaryDirectory;
-    struct unordered_map<const long long, NSMutableArray *, TSP::IdentifierHash, std::__1::equal_to<const long long>, std::__1::allocator<std::__1::pair<const long long, NSMutableArray *>>> _loadObservers;
+    struct IdentifierMap<NSMutableArray<TSPObjectContextObserver *>*> _loadObservers;
     NSObject<OS_dispatch_queue> *_asynchronousObjectModifierQueue;
     NSHashTable *_asynchronousObjectModifiers;
     NSMutableArray *_suspendedAsynchronousObjectModifierStack;
@@ -66,6 +69,10 @@
     TSPSupportPackageWriteCoordinator *_supportWriteCoordinator;
     NSHashTable *_objectProviders;
     NSObject<OS_dispatch_queue> *_objectProvidersQueue;
+    struct os_unfair_lock_s _dataObserversLock;
+    NSHashTable *_dataObservers;
+    struct os_unfair_lock_s _deferredInitialDataPropertiesBlocksLock;
+    NSMutableArray *_deferredInitialDataPropertiesBlocks;
     struct {
         unsigned int delegateRespondsToAdditionalDocumentPropertiesForWrite:1;
         unsigned int delegateRespondsToAdditionalDocumentSupportPropertiesForWrite:1;
@@ -78,13 +85,16 @@
         unsigned int delegateRespondsToFilePresenter:1;
         unsigned int delegateRespondsToSupportDirectoryURLReturningIsUnique:1;
         unsigned int delegateRespondsToSupportDirectoryURL:1;
-        unsigned int delegateRespondsToArchiveValidationMode:1;
+        unsigned int delegateRespondsToDocumentLoadValidationPolicy:1;
+        unsigned int delegateRespondsToDocumentSaveValidationPolicy:1;
         unsigned int delegateRespondsToIgnoreDocumentSupport:1;
         unsigned int delegateRespondsToIsDocumentSupportTemporary:1;
         unsigned int delegateRespondsToShouldLoadAllComponents:1;
         unsigned int delegateRespondsToIsInCollaborationMode:1;
         unsigned int delegateRespondsToIsInReadOnlyMode:1;
         unsigned int delegateRespondsToContextDidUpdateDocumentRevision:1;
+        unsigned int delegateRespondsToRetryUploadForData:1;
+        unsigned int delegateRespondsToShouldDisableCloneMode:1;
         unsigned int skipDocumentUpgrade:1;
     } _flags;
     _Bool _nested;
@@ -96,7 +106,9 @@
     TSPComponentManager *_componentManager;
     TSPResourceContext *_resourceContext;
     TSPDataManager *_dataManager;
+    TSPDataReferenceMap *_dataReferenceMap;
     TSPDataDownloadManager *_dataDownloadManager;
+    TSPDownloadObserverManager *_downloadObserverManager;
     TSPSupportManager *_supportManager;
     TSPObjectContainer *_documentObjectContainer;
     TSPObjectContainer *_supportObjectContainer;
@@ -107,10 +119,13 @@
 }
 
 + (void)waitForPendingEndSaveGroup:(id)arg1;
-+ (_Bool)dumpMessagesForDocument:(id)arg1 decryptionKey:(id)arg2 toURL:(id)arg3;
-+ (void)garbageCollectDocumentSupportWithKnownDocumentUUIDs:(id)arg1 delegate:(id)arg2;
++ (void)setShouldValidateCRCOnWrite:(_Bool)arg1;
++ (_Bool)shouldValidateCRCOnWrite;
++ (_Bool)validateCRCForDocumentAtURL:(id)arg1 error:(id *)arg2;
++ (_Bool)dumpMessagesForDocumentURL:(id)arg1 supportURL:(id)arg2 decryptionKey:(id)arg3 toURL:(id)arg4;
 + (id)supportBundleURLForDocumentUUID:(id)arg1 delegate:(id)arg2;
 + (void)removeDefaultSupportDirectory;
++ (id)contextForTransientObjects;
 + (id)documentRevisionAtURL:(id)arg1 passphrase:(id)arg2 error:(id *)arg3;
 + (_Bool)isTangierEditingFormatURL:(id)arg1;
 + (_Bool)isTangierEditingDirectoryFormatURL:(id)arg1;
@@ -119,6 +134,7 @@
 + (long long)documentTypeAtURL:(id)arg1 hasNativeUTI:(_Bool)arg2;
 + (long long)documentTypeAtURL:(id)arg1;
 + (id)releaseQueue;
++ (id)downloadURLForDataWithDigest:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSData *passwordVerifier; // @synthesize passwordVerifier=_passwordVerifier;
@@ -128,7 +144,9 @@
 @property(readonly, nonatomic) TSPObjectContainer *supportObjectContainer; // @synthesize supportObjectContainer=_supportObjectContainer;
 @property(readonly, nonatomic) TSPObjectContainer *documentObjectContainer; // @synthesize documentObjectContainer=_documentObjectContainer;
 @property(readonly, nonatomic) TSPSupportManager *supportManager; // @synthesize supportManager=_supportManager;
+@property(readonly, nonatomic) TSPDownloadObserverManager *downloadObserverManager; // @synthesize downloadObserverManager=_downloadObserverManager;
 @property(readonly, nonatomic) TSPDataDownloadManager *dataDownloadManager; // @synthesize dataDownloadManager=_dataDownloadManager;
+@property(readonly, nonatomic) TSPDataReferenceMap *dataReferenceMap; // @synthesize dataReferenceMap=_dataReferenceMap;
 @property(readonly, nonatomic) TSPDataManager *dataManager; // @synthesize dataManager=_dataManager;
 @property(readonly, nonatomic) TSPResourceContext *resourceContext; // @synthesize resourceContext=_resourceContext;
 @property(readonly, nonatomic) TSPComponentManager *componentManager; // @synthesize componentManager=_componentManager;
@@ -140,9 +158,12 @@
 @property(nonatomic) _Bool nested; // @synthesize nested=_nested;
 - (void)addLoadObserver:(id)arg1 action:(SEL)arg2 forLazyReference:(id)arg3;
 - (void)addLoadObserver:(id)arg1 action:(SEL)arg2 forObjectIdentifier:(long long)arg3 objectOrNil:(id)arg4;
-- (id)addLoadedObjectsAndEnqueueNotifications:(id)arg1;
+- (void)addLoadedObjectsAndEnqueueNotifications:(id)arg1;
+- (_Bool)endAddingLoadedObjects;
+- (void)beginAddingLoadedObjects;
 - (long long)updateModifyObjectToken;
 - (id)objectWithUUID:(id)arg1 onlyIfLoaded:(_Bool)arg2 validateNewObjects:(_Bool)arg3 identifier:(long long *)arg4;
+- (unsigned long long)fileFormatVersion;
 - (_Bool)isObjectInDocument:(id)arg1;
 - (id)objectUUIDMap;
 - (_Bool)canSetObjectUUIDForObject:(id)arg1;
@@ -160,13 +181,15 @@
 - (void)setDocumentObject:(id)arg1;
 - (_Bool)shouldLoadAllComponentsForDocumentURL:(id)arg1;
 @property(readonly, nonatomic) _Bool ignoreReferencesToUnknownObjects;
+@property(readonly, nonatomic) _Bool ignoreDataReferenceCountValidationWhileReading;
 @property(readonly, nonatomic) _Bool ignoreDocumentResourcesWhileReading;
 @property(readonly, nonatomic) _Bool ignoreVersionCheckingWhileReading;
 @property(readonly, nonatomic) _Bool ignoreUnknownContentWhileReading;
 @property(readonly, nonatomic) _Bool ignoreDocumentSupportVersioning;
 @property(readonly, nonatomic) _Bool isDocumentSupportTemporary;
 @property(readonly, nonatomic) _Bool ignoreDocumentSupport;
-- (long long)archiveValidationMode;
+- (id)documentSaveValidationPolicy;
+- (id)documentLoadValidationPolicy;
 - (void)enumerateObjectProvidersUsingBlock:(CDUnknownBlockType)arg1;
 - (void)registerObjectProvider:(id)arg1;
 - (id)supportDirectoryURLReturningIsBundleURL:(_Bool *)arg1;
@@ -182,6 +205,9 @@
 - (void)prepareForDocumentReplacementWithSuccess:(_Bool)arg1 forSafeSave:(_Bool)arg2;
 - (void)prepareForDocumentReplacement;
 - (void)waitForSaveToFinishIfNeeded;
+- (void)objectUUIDMap:(id)arg1 didUpdateWithObjectIdentifierAddedToDocument:(long long)arg2 objectIdentifierRemovedFromDocument:(long long)arg3;
+- (id)objectUUIDMap:(id)arg1 needsObjectForIdentifier:(long long)arg2 componentIdentifier:(long long)arg3 onlyIfLoaded:(_Bool)arg4;
+- (void)prepareForDocumentDumpWithDocumentPackage:(id)arg1 supportPackage:(id)arg2 documentRevision:(id)arg3 passphrase:(id)arg4;
 - (id)initWithPartialDocumentURL:(id)arg1 delegate:(id)arg2 passphrase:(id)arg3 error:(id *)arg4;
 - (id)initForQuickLookWithURL:(id)arg1 registry:(id)arg2 delegate:(id)arg3 passphrase:(id)arg4 error:(id *)arg5;
 - (id)initForSpotlightWithURL:(id)arg1 delegate:(id)arg2 registry:(id)arg3 error:(id *)arg4;
@@ -199,7 +225,8 @@
 - (_Bool)containsDataConformingToUTI:(id)arg1;
 @property(readonly, nonatomic) _Bool isInReadOnlyMode;
 @property(readonly, nonatomic) _Bool isInCollaborationMode;
-@property(readonly, nonatomic) SFUCryptoKey *decryptionKey;
+- (id)anonymousIdentifierForDigest:(id)arg1;
+@property(readonly) SFUCryptoKey *decryptionKey;
 @property(readonly, nonatomic) _Bool isPasswordProtected;
 @property(readonly) long long aggregateReadabilityForDocumentResources;
 - (void)enumerateDocumentResourcesUsingBlock:(CDUnknownBlockType)arg1;
@@ -217,38 +244,54 @@
 - (_Bool)readComponent:(id)arg1 isWeakReference:(_Bool)arg2 documentPackage:(id)arg3 supportPackage:(id)arg4 rootObject:(id *)arg5 allObjects:(id *)arg6 error:(id *)arg7;
 - (void)resumeLoadingModifiedFlushedComponents;
 - (void)suspendLoadingModifiedFlushedComponentsAndWait;
-- (void)prepareToReadSupportObjectExternalDataReferencesAllowed:(_Bool)arg1 accessor:(CDUnknownBlockType)arg2;
-@property(readonly, nonatomic) _Bool isSupportModified;
-@property(readonly, nonatomic) _Bool isDocumentModified;
+- (void)prepareToReadSupportObjectExternalDataReferencesAllowed:(_Bool)arg1 finalizeHandlerQueue:(id)arg2 objects:(id *)arg3 accessor:(CDUnknownBlockType)arg4;
 - (void)didReadSupportObject:(id)arg1;
 - (void)setSupportObjectImpl:(id)arg1;
 @property(retain, nonatomic) TSPObject *supportObject;
+- (void)enumerateDataInDocumentUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateAllDataUsingBlock:(CDUnknownBlockType)arg1;
+- (id)lazyReferenceDelegateForDataReferenceMap:(id)arg1;
+- (id)objectInDocumentContainingForDataReferenceMap:(id)arg1;
+- (id)dataManagingForDataReferenceMap:(id)arg1;
+- (void)dataInDocumentDidChangeForDataReferenceMap:(id)arg1;
+- (void)performBlockIgnoringDataLifecycleErrors:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) _Bool ignoreDataLifecycleErrors;
+@property(readonly, nonatomic) _Bool ignoreDataLifecycleNotifications;
+- (id)dataObserversConformingToProtocol:(id)arg1;
+- (void)removeDataObserver:(id)arg1;
+- (void)addDataObserver:(id)arg1;
+- (void)addDataPackageObserver:(id)arg1;
+- (void)addDataInDocumentObserver:(id)arg1;
 @property long long preferredPackageType;
 - (void)resetDocumentRevision;
 - (id)incrementDocumentRevisionWithIdentifier:(id)arg1;
 @property(retain) TSPDocumentRevision *documentRevision;
 - (void)didMoveSupportToURL:(id)arg1;
 - (void)didMoveToURL:(id)arg1;
+@property(readonly, nonatomic) NSURL *supportURL;
 @property(readonly, nonatomic) NSURL *documentURL;
 - (void)endIgnoringCachedObjectEviction;
 - (void)beginIgnoringCachedObjectEviction;
 - (id)dataWithContentsOfPackagePath:(id)arg1;
-- (void)checkforDataWarningsWithPackageURL:(id)arg1;
 - (id)temporaryDirectory;
 - (void)performReadOperationOnKnownObjects:(CDUnknownBlockType)arg1;
+- (void)ensureObject:(id)arg1 isKnownWithIdentifier:(long long)arg2;
 - (id)objectForIdentifier:(long long)arg1;
 - (_Bool)didFinishSuccessfullyReadingObjects:(id)arg1 readCoordinator:(id)arg2 finalizeHandlerQueue:(id)arg3;
+- (void)didEncounterValidationError:(id)arg1 forData:(id)arg2 timing:(long long)arg3;
 - (void)presentPersistenceError:(id)arg1;
 - (_Bool)readWithReadCoordinator:(id)arg1 finalizeHandlerQueue:(id)arg2 rootObject:(id *)arg3 error:(id *)arg4 readCompletion:(CDUnknownBlockType)arg5;
 - (_Bool)continueReadingDocumentObjectFromDatabasePackageURL:(id)arg1 error:(id *)arg2;
 - (_Bool)readDocumentObjectFromDatabasePackageURL:(id)arg1 error:(id *)arg2;
-- (_Bool)continueReadingDocumentObjectFromPackageURL:(id)arg1 areExternalDataReferencesAllowed:(_Bool)arg2 error:(id *)arg3;
+- (_Bool)continueReadingDocumentObjectFromPackageURL:(id)arg1 areExternalDataReferencesAllowed:(_Bool)arg2 finalizeHandlerQueue:(id)arg3 readCoordinator:(id *)arg4 objects:(id *)arg5 error:(id *)arg6;
 - (_Bool)readDocumentObjectFromPackageURL:(id)arg1 error:(id *)arg2;
+@property(readonly, nonatomic) unsigned long long reservedDocumentDataSize;
 @property(readonly, nonatomic) unsigned long long documentDataSize;
 - (unsigned long long)sizeOfComponentsWithLocator:(id)arg1;
 @property(readonly, nonatomic) unsigned long long documentObjectSize;
+@property(readonly, nonatomic) unsigned long long reservedDocumentSize;
 @property(readonly, nonatomic) unsigned long long documentSize;
-- (unsigned long long)estimatedProgressTotalUnitCountForURL:(id)arg1 packageType:(long long)arg2;
+- (unsigned long long)estimatedProgressTotalUnitCountForURL:(id)arg1 packageType:(long long)arg2 originalDocumentURL:(id)arg3;
 - (_Bool)copyIfAppropriateFromOriginalURL:(id)arg1 toURL:(id)arg2 cloneMode:(_Bool)arg3 originalPackage:(id)arg4 packageType:(long long)arg5 inheritAttributes:(_Bool)arg6;
 - (_Bool)shouldUseCloneModeToWriteToURL:(id)arg1 originalURL:(id)arg2;
 @property(readonly, nonatomic) long long packageType;
@@ -279,6 +322,7 @@
 - (void)beginSaveToURL:(id)arg1 updateType:(long long)arg2 packageType:(long long)arg3 documentUUID:(id)arg4;
 - (void)beginSaveToURL:(id)arg1 updateType:(long long)arg2 packageType:(long long)arg3;
 - (id)prepareSaveProgress;
+- (void)setProperties:(struct DataProperties)arg1 forData:(id)arg2;
 - (void)performAsynchronousWriteOperationOnDataAttributes:(CDUnknownBlockType)arg1;
 - (void)performReadOperationOnDataAttributes:(CDUnknownBlockType)arg1;
 - (void)performAsynchronousWriteOperationOnDocumentState:(CDUnknownBlockType)arg1;
@@ -290,18 +334,20 @@
 @property(readonly) _Bool closed;
 - (void)close;
 - (void)dealloc;
+- (void)applyDeferredInitialDataProperties;
 - (void)createInternalMetadataIfNeeded;
 @property(readonly, nonatomic) _Bool isReadCancelled;
+- (void)logDocumentStatistics;
 - (id)initWithURL:(id)arg1 delegate:(id)arg2 registry:(id)arg3 resourceContext:(id)arg4 mode:(unsigned int)arg5 passphrase:(id)arg6 skipDocumentUpgrade:(_Bool)arg7 error:(id *)arg8;
 - (id)initWithURL:(id)arg1 delegate:(id)arg2 resourceContext:(id)arg3 mode:(unsigned int)arg4 passphrase:(id)arg5 skipDocumentUpgrade:(_Bool)arg6 error:(id *)arg7;
 - (id)initWithURL:(id)arg1 delegate:(id)arg2 resourceContext:(id)arg3 passphrase:(id)arg4 skipDocumentUpgrade:(_Bool)arg5 error:(id *)arg6;
 - (id)initWithURL:(id)arg1 delegate:(id)arg2 passphrase:(id)arg3 error:(id *)arg4;
 - (id)initWithURL:(id)arg1 delegate:(id)arg2 error:(id *)arg3;
-- (id)initWithDelegate:(id)arg1 registry:(id)arg2 resourceContext:(id)arg3;
+- (id)initWithDelegate:(id)arg1 registry:(id)arg2 resourceContext:(id)arg3 mode:(unsigned int)arg4 isLoadingDocument:(_Bool)arg5 shouldCreateInternalMetadataObject:(_Bool)arg6;
 - (id)initWithDelegate:(id)arg1;
 - (id)init;
 - (id)dataWithLegacyDataIdentifier:(long long)arg1;
-- (id)dataWithDigest:(id)arg1 preferredFilename:(id)arg2 canDownload:(_Bool)arg3 isMissingFromServer:(_Bool)arg4 downloadPriority:(long long)arg5;
+- (id)dataWithDigest:(id)arg1 length:(unsigned long long)arg2 preferredFilename:(id)arg3 canDownload:(_Bool)arg4 isMissingFromServer:(_Bool)arg5 documentRevision:(id)arg6 downloadPriority:(long long)arg7 uploadStatus:(long long)arg8;
 - (id)dataWithDigest:(id)arg1;
 - (id)UUIDsFromObjects:(id)arg1;
 - (id)objectsFromUUIDs:(id)arg1;
@@ -309,6 +355,10 @@
 - (id)objectWithUUIDIfAvailableAndLoaded:(id)arg1;
 - (id)objectWithUUIDIfAvailable:(id)arg1;
 - (id)objectWithUUID:(id)arg1;
+- (id)allValidatedDataWithDigestMismatchCreatedPriorToVersion:(unsigned long long)arg1;
+@property(readonly, nonatomic) NSArray *allErasedDataWithLastDigestMismatch;
+@property(readonly, nonatomic) NSArray *allDataWithLastDigestMismatch;
+- (void)checkForDataWarnings;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

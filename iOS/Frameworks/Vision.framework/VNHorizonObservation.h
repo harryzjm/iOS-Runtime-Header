@@ -11,11 +11,12 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)defaultOriginatingRequestClassNameForRequestRevision:(unsigned long long)arg1;
 @property(nonatomic) double angle; // @synthesize angle=_angle;
 @property(nonatomic) struct CGAffineTransform transform; // @synthesize transform=_transform;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)vn_cloneObject;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

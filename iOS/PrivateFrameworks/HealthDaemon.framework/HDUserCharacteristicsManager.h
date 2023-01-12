@@ -9,12 +9,12 @@
 #import <HealthDaemon/HDDataObserver-Protocol.h>
 #import <HealthDaemon/HDDatabaseProtectedDataObserver-Protocol.h>
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
-#import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
+#import <HealthDaemon/HDProfileReadyObserver-Protocol.h>
 
 @class HDProfile, HKObserverSet, NSDate, NSDictionary, NSString, _HKDelayedOperation;
 @protocol HDUserCharacteristicsProfileObserver, OS_dispatch_queue;
 
-@interface HDUserCharacteristicsManager : NSObject <HDHealthDaemonReadyObserver, HDDatabaseProtectedDataObserver, HDDataObserver, HDDiagnosticObject>
+@interface HDUserCharacteristicsManager : NSObject <HDProfileReadyObserver, HDDatabaseProtectedDataObserver, HDDataObserver, HDDiagnosticObject>
 {
     HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_queue;
@@ -25,41 +25,21 @@
     NSDictionary *_lastUserProfile;
     _Bool _needsUpdateAfterUnlock;
     _HKDelayedOperation *_updateOperation;
-    NSDate *_unitTest_currentDate;
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSDate *unitTest_currentDate; // @synthesize unitTest_currentDate=_unitTest_currentDate;
-- (void)unitTest_setUpdateOperationDelay:(double)arg1;
-- (void)_queue_alertObserversDidUpdateUserProfile;
+- (void)unitTest_updateCharacteristicsAndUserProfileWithDate:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeProfileObserver:(id)arg1;
 - (void)addProfileObserver:(id)arg1;
-- (void)_unregisterTimeChangeNotifications;
-- (void)_registerForTimeChangeNotifications;
 - (void)didRecieveDayChangeNotification:(id)arg1;
 - (id)diagnosticDescription;
 - (void)samplesOfTypesWereRemoved:(id)arg1 anchor:(id)arg2;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(_Bool)arg2;
-- (void)daemonReady:(id)arg1;
-- (id)_getCardioFitnessMedicationsStatusWithError:(id *)arg1;
-- (id)_mostRecentSampleOfType:(id)arg1 beforeDate:(id)arg2 error:(id *)arg3;
-- (id)_mostRecentCategorySampleOfType:(id)arg1 beforeDate:(id)arg2 error:(id *)arg3;
-- (id)_mostRecentQuantitySampleOfType:(id)arg1 error:(id *)arg2;
-- (void)_queue_updateQuantityCharacteristics;
-- (void)_queue_updateUserProfile;
-- (void)_queue_updateActivityMoveModeDefaultAndNotifyIfNecessary;
-- (void)_queue_updateActivityMoveModeCharacteristic;
-- (id)_activityMoveModeActiveDate;
-- (void)_queue_updateCharacteristicsAndUserProfileWithDelay;
-- (void)_queue_updateCharacteristicsAndUserProfileIfNeeded;
-- (void)_queue_updateCharacteristicsAndUserProfile;
-- (void)_userCharacteristicsDidChangeShouldUpdateUserProfile:(_Bool)arg1 shouldSync:(_Bool)arg2;
+- (void)profileDidBecomeReady:(id)arg1;
 - (double)restingCaloriesFromTotalCalories:(double)arg1 timeInterval:(double)arg2 authorizedToRead:(_Bool)arg3;
-- (_Bool)_setUserCharacteristic:(id)arg1 forType:(id)arg2 shouldInsertSample:(_Bool)arg3 updateProfileAndSync:(_Bool)arg4 error:(id *)arg5;
 - (_Bool)setUserCharacteristic:(id)arg1 forType:(id)arg2 error:(id *)arg3;
 - (id)modificationDateForCharacteristicWithType:(id)arg1 error:(id *)arg2;
-- (id)_userCharacteristicForType:(id)arg1 entity:(id *)arg2 error:(id *)arg3;
 - (id)userCharacteristicForType:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (id)initWithProfile:(id)arg1;

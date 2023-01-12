@@ -12,16 +12,16 @@ __attribute__((visibility("hidden")))
 @interface InternalCustomTileLike : NSObject <MLCustomLayer>
 {
     unsigned long long _inputRank;
-    vector_06e666a8 _multiples;
-    vector_06e666a8 _inputShape;
-    vector_06e666a8 _outputShape;
+    vector_2056c7c2 _multiples;
+    vector_2056c7c2 _inputShape;
+    vector_2056c7c2 _outputShape;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) vector_06e666a8 outputShape; // @synthesize outputShape=_outputShape;
-@property(readonly, nonatomic) vector_06e666a8 inputShape; // @synthesize inputShape=_inputShape;
-@property(readonly, nonatomic) vector_06e666a8 multiples; // @synthesize multiples=_multiples;
+@property(readonly, nonatomic) vector_2056c7c2 outputShape; // @synthesize outputShape=_outputShape;
+@property(readonly, nonatomic) vector_2056c7c2 inputShape; // @synthesize inputShape=_inputShape;
+@property(readonly, nonatomic) vector_2056c7c2 multiples; // @synthesize multiples=_multiples;
 @property(readonly, nonatomic) unsigned long long inputRank; // @synthesize inputRank=_inputRank;
 - (_Bool)setWeightData:(id)arg1 error:(id *)arg2;
 - (id)outputShapesForInputShapes:(id)arg1 error:(id *)arg2;

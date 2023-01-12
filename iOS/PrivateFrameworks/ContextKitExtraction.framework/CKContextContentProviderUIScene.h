@@ -11,36 +11,47 @@
 @interface CKContextContentProviderUIScene <_UISceneComponentProviding>
 {
     UIButton *_debugButton;
-    _Bool _allowDebugControls;
+    UIButton *_recentsButton;
+    _Bool _allowAppSwitcherControls;
     NSTimer *_toolInstallationTimer;
     UIScene *__scene;
 }
 
 + (id)_handlePDFView:(id)arg1 withExecutor:(id)arg2;
++ (void)_extractContentFromWebViewPDFData:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
++ (void)_extractContentFromWebView:(id)arg1 includingSnapshot:(_Bool)arg2 includingUIBoundingBox:(_Bool)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 + (id)_handleWKWebView:(id)arg1 withExecutor:(id)arg2;
 + (id)_blocksFromText:(id)arg1;
 + (_Bool)_textBlockLooksLikeAListWithText:(id)arg1;
-+ (id)_bestContentStringForWebViewContentString:(id)arg1 andTitle:(id)arg2;
++ (id)_bestContentStringForWebViewUIElements:(id)arg1 andTitle:(id)arg2;
++ (id)_UIElementsForWebViewContentString:(id)arg1;
 + (id)_bestVisibleStringForView:(id)arg1 usingExecutor:(id)arg2;
++ (double)_fontSizeOfView:(id)arg1 usingExecutor:(id)arg2;
 + (unsigned char)_controlCodeForExecutor:(id)arg1;
 + (_Bool)_isSensitiveTextContentType:(id)arg1;
-+ (void)_donateText:(id)arg1 withDebugText:(id)arg2 debugUrlString:(id)arg3 usingContextFromExecutor:(id)arg4;
-+ (void)_donateContentsOfWindow:(id)arg1 usingExecutor:(id)arg2;
-+ (id)_descendantsRelevantForContentExtractionFromView:(id)arg1;
++ (void)_donateText:(id)arg1 withTitle:(id)arg2 withDebugText:(id)arg3 debugUrlString:(id)arg4 withLeadImage:(id)arg5 withSnapshot:(id)arg6 withUIElements:(id)arg7 usingContextFromExecutor:(id)arg8;
++ (id)_bestImageForView:(id)arg1;
++ (id)_getNotableSuperviewClassNamesForView:(id)arg1;
++ (id)_bestTitleFromWindow:(id)arg1 usingExecutor:(id)arg2;
++ (void)_donateContentsOfWindow:(id)arg1 usingExecutor:(id)arg2 withOptions:(unsigned long long)arg3;
++ (id)_descendantsRelevantForContentExtractionFromWindow:(id)arg1;
++ (void)_descendantsRelevantForContentExtractionFromView:(id)arg1 intoArray:(id)arg2;
 + (_Bool)_isRelevantForExtractionWithView:(id)arg1;
-+ (void)extractFromScene:(id)arg1 usingExecutor:(id)arg2;
++ (void)extractFromScene:(id)arg1 usingExecutor:(id)arg2 withOptions:(unsigned long long)arg3;
 + (void)initialize;
 - (void).cxx_destruct;
 @property(nonatomic, getter=_scene, setter=_setScene:) __weak UIScene *_scene; // @synthesize _scene=__scene;
 - (id)_descendantsRelevantForDebugControls:(id)arg1;
-- (id)_containerViewForDebugButton;
+- (id)_containerViewForDebugButtons;
 - (void)_didSelectDebugControl:(id)arg1;
+- (void)_didSelectRecentsControl:(id)arg1;
 - (void)_installDebuggingButton;
+- (void)_installRecentsButton;
 - (void)_setUpDebuggingControlsIfPossibleAfterDelay:(double)arg1;
 - (void)_installDebuggingControlsIfApplicable;
-- (_Bool)_shouldInstallDebugControls;
+- (_Bool)_shouldInstallAppSwitcherControls;
 - (_Bool)_determineIfDebuggingControlsShouldBeAllowed;
-- (void)extractUsingExecutor:(id)arg1;
+- (void)extractUsingExecutor:(id)arg1 withOptions:(unsigned long long)arg2;
 - (void)_sceneWillInvalidate:(id)arg1;
 - (id)initWithScene:(id)arg1;
 

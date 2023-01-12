@@ -32,7 +32,6 @@
 - (void)removePort:(id)arg1 forMode:(id)arg2;
 - (void)addPort:(id)arg1 forMode:(id)arg2;
 - (id)description;
-- (struct __CFRunLoop *)getCFRunLoop;
 - (void)dealloc;
 - (id)init;
 - (id)copyWithZone:(struct _NSZone *)arg1;

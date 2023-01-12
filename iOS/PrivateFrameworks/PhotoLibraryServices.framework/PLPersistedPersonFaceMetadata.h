@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <PhotoLibraryServices/NSSecureCoding-Protocol.h>
+#import <PhotoLibraryServices/PLDetectionAdditionalDescription-Protocol.h>
 #import <PhotoLibraryServices/PLFaceRebuildDescription-Protocol.h>
 
-@class NSString;
+@class NSArray, NSNumber, NSString;
 
-@interface PLPersistedPersonFaceMetadata : NSObject <NSSecureCoding, PLFaceRebuildDescription>
+@interface PLPersistedPersonFaceMetadata : NSObject <NSSecureCoding, PLFaceRebuildDescription, PLDetectionAdditionalDescription>
 {
     _Bool _isHidden;
     _Bool _manual;
@@ -25,6 +26,12 @@
     double _centerX;
     double _centerY;
     double _size;
+    double _bodyCenterX;
+    double _bodyCenterY;
+    double _bodyWidth;
+    double _bodyHeight;
+    NSNumber *_detectionType;
+    NSArray *_detectionTraits;
 }
 
 + (void)enumerateMatchedAssetsWithMetadata:(id)arg1 inContext:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
@@ -37,11 +44,17 @@
 - (void).cxx_destruct;
 @property(nonatomic, getter=isHidden) _Bool hidden; // @synthesize hidden=_hidden;
 @property(readonly, nonatomic, getter=isHidden) _Bool isHidden; // @synthesize isHidden=_isHidden;
+@property(retain, nonatomic) NSArray *detectionTraits; // @synthesize detectionTraits=_detectionTraits;
 @property(nonatomic) int cloudNameSource; // @synthesize cloudNameSource=_cloudNameSource;
 @property(nonatomic) int nameSource; // @synthesize nameSource=_nameSource;
 @property(nonatomic, getter=isClusterRejected) _Bool clusterRejected; // @synthesize clusterRejected=_clusterRejected;
 @property(nonatomic, getter=isRepresentative) _Bool representative; // @synthesize representative=_representative;
 @property(nonatomic, getter=isManual) _Bool manual; // @synthesize manual=_manual;
+@property(nonatomic) NSNumber *detectionType; // @synthesize detectionType=_detectionType;
+@property(nonatomic) double bodyHeight; // @synthesize bodyHeight=_bodyHeight;
+@property(nonatomic) double bodyWidth; // @synthesize bodyWidth=_bodyWidth;
+@property(nonatomic) double bodyCenterY; // @synthesize bodyCenterY=_bodyCenterY;
+@property(nonatomic) double bodyCenterX; // @synthesize bodyCenterX=_bodyCenterX;
 @property(nonatomic) double size; // @synthesize size=_size;
 @property(nonatomic) double centerY; // @synthesize centerY=_centerY;
 @property(nonatomic) double centerX; // @synthesize centerX=_centerX;
@@ -56,6 +69,7 @@
 @property(readonly, copy) NSString *description;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)additionalDescription;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

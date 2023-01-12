@@ -15,17 +15,28 @@
     NSDictionary *_requestTypeStatistics;
     unsigned long long _bytesTransmitted;
     unsigned long long _bytesReceived;
+    long long _durationUSeconds;
+    int _durationCount;
+    unsigned long long _usedInterfaces;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
-- (id)_formattedString;
+- (void)_appendFormattedCSVStringTo:(id)arg1 forAppId:(id)arg2;
+- (void)_appendFormattedStringTo:(id)arg1;
+@property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)nonZeroResultTypesForType:(CDStruct_d1a7ebee)arg1;
 - (unsigned long long)numberOfRequestsForType:(CDStruct_d1a7ebee)arg1 result:(unsigned char)arg2;
 - (void)enumerateRequestTypes:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSArray *requestTypes;
+- (unsigned long long)usedInterfacesForType:(CDStruct_d1a7ebee)arg1;
+- (unsigned long long)usedInterfaces;
+- (double)durationAverageForType:(CDStruct_d1a7ebee)arg1;
+- (double)durationAverage;
+- (double)durationTotalForType:(CDStruct_d1a7ebee)arg1;
+- (double)durationTotal;
 - (unsigned long long)recvBytesForType:(CDStruct_d1a7ebee)arg1;
 - (unsigned long long)recvBytes;
 - (unsigned long long)xmitBytesForType:(CDStruct_d1a7ebee)arg1;

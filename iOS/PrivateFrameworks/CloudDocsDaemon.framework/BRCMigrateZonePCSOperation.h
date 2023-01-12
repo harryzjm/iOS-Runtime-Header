@@ -8,7 +8,6 @@
 
 @class NSMutableArray, NSString;
 
-__attribute__((visibility("hidden")))
 @interface BRCMigrateZonePCSOperation <BRCOperationSubclass>
 {
     NSMutableArray *_interestingZoneIDs;

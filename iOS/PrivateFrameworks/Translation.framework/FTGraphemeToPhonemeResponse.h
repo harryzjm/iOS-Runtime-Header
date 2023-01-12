@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_184a929b)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_184a929b)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSArray *jit_token_prons;
 @property(readonly, nonatomic) NSArray *aot_token_prons;
 @property(readonly, nonatomic) NSString *phoneset_version;

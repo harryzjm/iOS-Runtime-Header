@@ -8,6 +8,7 @@
 
 @interface AUAudioUnitRemoteViewController : _UIRemoteViewController
 {
+    _Bool _sizePending;
 }
 
 + (void)_fetchViewController:(id)arg1 requestIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;

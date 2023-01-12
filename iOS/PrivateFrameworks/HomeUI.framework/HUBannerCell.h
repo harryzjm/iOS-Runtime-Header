@@ -8,19 +8,21 @@
 
 #import <HomeUI/HUBannerCellProtocol-Protocol.h>
 #import <HomeUI/HUGridCellProtocol-Protocol.h>
+#import <HomeUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class HFItem, HUGridStatusBannerCellLayoutOptions, NSArray, NSString, UIButton, UIImageView, UILabel, UIView;
+@class HFItem, HUGridStatusBannerCellLayoutOptions, HUIconView, NSArray, NSString, UIButton, UIImageView, UILabel, UIView;
 @protocol HUBannerCellDelegate, HUResizableCellDelegate;
 
-@interface HUBannerCell : UICollectionViewCell <HUGridCellProtocol, HUBannerCellProtocol>
+@interface HUBannerCell : UICollectionViewCell <UIGestureRecognizerDelegate, HUGridCellProtocol, HUBannerCellProtocol>
 {
     _Bool _cellContentsHidden;
     UIButton *_dismissButton;
     HUGridStatusBannerCellLayoutOptions *_layoutOptions;
     HFItem *_item;
-    id <HUBannerCellDelegate> _dismissButtonDelegate;
+    id <HUBannerCellDelegate> _delegate;
     UIButton *_continueButton;
     UIImageView *_iconImageView;
+    HUIconView *_iconView;
     UILabel *_titleLabel;
     UILabel *_descriptionLabel;
     UIView *_lineView;
@@ -38,14 +40,17 @@
 @property(retain, nonatomic) UIView *lineView; // @synthesize lineView=_lineView;
 @property(retain, nonatomic) UILabel *descriptionLabel; // @synthesize descriptionLabel=_descriptionLabel;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property(retain, nonatomic) HUIconView *iconView; // @synthesize iconView=_iconView;
 @property(retain, nonatomic) UIImageView *iconImageView; // @synthesize iconImageView=_iconImageView;
 @property(retain, nonatomic) UIButton *continueButton; // @synthesize continueButton=_continueButton;
-@property(nonatomic) __weak id <HUBannerCellDelegate> dismissButtonDelegate; // @synthesize dismissButtonDelegate=_dismissButtonDelegate;
+@property(nonatomic) __weak id <HUBannerCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) HFItem *item; // @synthesize item=_item;
 @property(retain, nonatomic) HUGridStatusBannerCellLayoutOptions *layoutOptions; // @synthesize layoutOptions=_layoutOptions;
 @property(nonatomic, getter=areCellContentsHidden) _Bool cellContentsHidden; // @synthesize cellContentsHidden=_cellContentsHidden;
 @property(retain, nonatomic) UIButton *dismissButton; // @synthesize dismissButton=_dismissButton;
-- (void)_dismissButtonPressed:(id)arg1;
+- (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
+- (void)_footerViewTapped:(id)arg1;
+- (void)_dismissButtonTapped:(id)arg1;
 - (void)setBackgroundColor;
 - (void)setupCustomCellAppearence;
 - (_Bool)isCellSizeSubclassSmallPhone;

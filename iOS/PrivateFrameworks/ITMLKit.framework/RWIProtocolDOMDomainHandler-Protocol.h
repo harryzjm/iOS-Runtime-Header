@@ -6,7 +6,7 @@
 
 #import <ITMLKit/NSObject-Protocol.h>
 
-@class NSArray, NSString, RWIProtocolDOMHighlightConfig;
+@class NSArray, NSString, RWIProtocolDOMHighlightConfig, RWIProtocolDOMRGBAColor;
 
 @protocol RWIProtocolDOMDomainHandler <NSObject>
 
@@ -21,6 +21,8 @@
 - (void)getAttributesWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSArray *))arg2 nodeId:(int)arg3;
 - (void)resolveNodeWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(RWIProtocolRuntimeRemoteObject *))arg2 nodeId:(int)arg3 objectGroup:(id *)arg4;
 - (void)pushNodeByPathToFrontendWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(int))arg2 path:(NSString *)arg3;
+- (void)hideGridOverlayWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 nodeId:(int *)arg3;
+- (void)showGridOverlayWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 nodeId:(int)arg3 gridColor:(RWIProtocolDOMRGBAColor *)arg4 showLineNames:(_Bool *)arg5 showLineNumbers:(_Bool *)arg6 showExtendedGridLines:(_Bool *)arg7 showTrackSizes:(_Bool *)arg8 showAreaNames:(_Bool *)arg9;
 - (void)highlightFrameWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 frameId:(NSString *)arg3 contentColor:(id *)arg4 contentOutlineColor:(id *)arg5;
 - (void)hideHighlightWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2;
 - (void)highlightNodeListWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 nodeIds:(NSArray *)arg3 highlightConfig:(RWIProtocolDOMHighlightConfig *)arg4;
@@ -38,7 +40,7 @@
 - (void)getOuterHTMLWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSString *))arg2 nodeId:(int)arg3;
 - (void)getAccessibilityPropertiesForNodeWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(RWIProtocolDOMAccessibilityProperties *))arg2 nodeId:(int)arg3;
 - (void)removeBreakpointForEventListenerWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 eventListenerId:(int)arg3;
-- (void)setBreakpointForEventListenerWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 eventListenerId:(int)arg3;
+- (void)setBreakpointForEventListenerWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 eventListenerId:(int)arg3 options:(id *)arg4;
 - (void)setEventListenerDisabledWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 eventListenerId:(int)arg3 disabled:(_Bool)arg4;
 - (void)getEventListenersForNodeWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSArray *))arg2 nodeId:(int)arg3;
 - (void)getSupportedEventNamesWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSArray *))arg2;

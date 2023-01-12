@@ -4,6 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <Home/HFAccessoryProfileVendor-Protocol.h>
 #import <Home/HFGroupableItemProtocol-Protocol.h>
 #import <Home/HFHomeKitSettingsVendorProvider-Protocol.h>
 #import <Home/HFItemBuilderItem-Protocol.h>
@@ -11,6 +12,6 @@
 #import <Home/HFServiceLikeItem-Protocol.h>
 #import <Home/HFSoftwareUpdatableItemProtocol-Protocol.h>
 
-@protocol HFMediaAccessoryLikeItem <HFServiceLikeItem, HFServiceLikeBuilderCreating, HFItemBuilderItem, HFGroupableItemProtocol, HFSoftwareUpdatableItemProtocol, HFHomeKitSettingsVendorProvider>
+@protocol HFMediaAccessoryLikeItem <HFServiceLikeItem, HFServiceLikeBuilderCreating, HFItemBuilderItem, HFGroupableItemProtocol, HFSoftwareUpdatableItemProtocol, HFHomeKitSettingsVendorProvider, HFAccessoryProfileVendor>
 @end
 

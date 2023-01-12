@@ -6,30 +6,33 @@
 
 #import <objc/NSObject.h>
 
+#import <Photos/CPAnalyticsDynamicPropertyProvider-Protocol.h>
 #import <Photos/CPAnalyticsPhotoKitPropertyProvider-Protocol.h>
 
 @class NSString, PHPhotoLibrary;
 
-@interface PHCPAnalyticsMediaPropertyProvider : NSObject <CPAnalyticsPhotoKitPropertyProvider>
+@interface PHCPAnalyticsMediaPropertyProvider : NSObject <CPAnalyticsPhotoKitPropertyProvider, CPAnalyticsDynamicPropertyProvider>
 {
     PHPhotoLibrary *_photoLibrary;
 }
 
++ (id)_wellKnownPhotoLibraryIdentifierDescription:(long long)arg1;
++ (id)_syndicationStateDescriptionForSyndicationState:(unsigned short)arg1;
 + (id)assetPropertySetsToFetch;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) __weak PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
-- (_Bool)_hasPeopleForSceneClassifications:(id)arg1 sceneAnalysisVersion:(unsigned long long)arg2;
-- (_Bool)_hasPetsForSceneClassifications:(id)arg1 sceneAnalysisVersion:(unsigned long long)arg2;
+- (_Bool)_hasPeopleForSceneClassifications:(id)arg1 sceneAnalysisVersion:(short)arg2;
+- (_Bool)_hasPetsForSceneClassifications:(id)arg1 sceneAnalysisVersion:(short)arg2;
 - (_Bool)_isPeopleSceneIdentifier:(unsigned int)arg1;
 - (id)_sceneSubjectForAsset:(id)arg1;
 - (id)_sceneLabelByClassificationIdentifier:(unsigned int)arg1;
 - (id)_sdConfidenceThresholdVersion51ForIdentifier:(unsigned int)arg1;
 - (id)_sdConfidenceThresholdVersion33ForIdentifier:(unsigned int)arg1;
-- (id)_sdConfidenceThresholdForIdentifier:(unsigned int)arg1 sceneAnalysisVersion:(unsigned long long)arg2;
+- (id)_sdConfidenceThresholdForIdentifier:(unsigned int)arg1 sceneAnalysisVersion:(short)arg2;
 - (id)_junkConfidenceThresholdVersion40ForIdentifier:(unsigned int)arg1;
-- (id)_junkConfidenceThresholdForIdentifier:(unsigned int)arg1 sceneAnalysisVersion:(unsigned long long)arg2;
-- (id)_sceneConfidenceThresholdByClassificationIdentifier:(unsigned int)arg1 sceneAnalysisVersion:(unsigned long long)arg2;
-- (_Bool)_isSceneConfidenceAboveThresholdForSceneClassification:(id)arg1 sceneAnalysisVersion:(unsigned long long)arg2;
+- (id)_junkConfidenceThresholdForIdentifier:(unsigned int)arg1 sceneAnalysisVersion:(short)arg2;
+- (id)_sceneConfidenceThresholdByClassificationIdentifier:(unsigned int)arg1 sceneAnalysisVersion:(short)arg2;
+- (_Bool)_isSceneConfidenceAboveThresholdForSceneClassification:(id)arg1 sceneAnalysisVersion:(short)arg2;
 - (id)_sceneForAsset:(id)arg1;
 - (id)_cameraTypeFromImportSource:(long long)arg1;
 - (id)_ageDescriptionForMediaDate:(id)arg1;

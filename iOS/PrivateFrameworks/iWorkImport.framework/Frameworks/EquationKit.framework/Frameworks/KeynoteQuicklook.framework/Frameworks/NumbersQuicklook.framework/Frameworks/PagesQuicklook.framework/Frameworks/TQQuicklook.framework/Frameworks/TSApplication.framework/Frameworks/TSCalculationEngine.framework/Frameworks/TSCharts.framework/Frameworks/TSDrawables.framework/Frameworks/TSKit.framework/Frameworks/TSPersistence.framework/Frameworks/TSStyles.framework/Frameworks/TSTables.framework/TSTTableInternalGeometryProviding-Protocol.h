@@ -7,8 +7,10 @@
 #import <TSTables/NSObject-Protocol.h>
 
 @protocol TSTTableInternalGeometryProviding <NSObject>
-@property(readonly, nonatomic) unsigned int numberOfHeaderColumns;
+@property(readonly, nonatomic) unsigned int numberOfFooterOrGrandTotalRows;
 @property(readonly, nonatomic) unsigned int numberOfFooterRows;
+@property(readonly, nonatomic) unsigned int numberOfGrandTotalColumns;
+@property(readonly, nonatomic) unsigned int numberOfHeaderColumns;
 @property(readonly, nonatomic) unsigned int numberOfHeaderRows;
 @property(readonly, nonatomic) unsigned short numberOfColumns;
 @property(readonly, nonatomic) unsigned int numberOfRows;

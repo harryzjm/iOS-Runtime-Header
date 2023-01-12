@@ -31,8 +31,8 @@
 - (id)initWithTimestamps:(id)arg1;
 - (id)initWithCapacity:(unsigned long long)arg1;
 - (id)serialize;
-- (void)saveToArchive:(VectorTimestamp_2287ec0f *)arg1;
-- (id)initWithArchive:(const VectorTimestamp_2287ec0f *)arg1 andCapacity:(unsigned long long)arg2;
+- (void)saveToArchive:(void *)arg1;
+- (id)initWithArchive:(const void *)arg1 andCapacity:(unsigned long long)arg2;
 - (id)initWithData:(id)arg1 andCapacity:(unsigned long long)arg2;
 
 @end

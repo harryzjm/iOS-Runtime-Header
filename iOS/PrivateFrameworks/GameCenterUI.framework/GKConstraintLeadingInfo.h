@@ -14,9 +14,9 @@
     double _leading;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) double leading; // @synthesize leading=_leading;
 @property(retain, nonatomic) NSString *fontTextStyle; // @synthesize fontTextStyle=_fontTextStyle;
-- (void)dealloc;
 
 @end
 

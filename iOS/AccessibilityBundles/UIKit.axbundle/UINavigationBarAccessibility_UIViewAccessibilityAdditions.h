@@ -21,7 +21,6 @@
 - (_Bool)isAccessibilityElement;
 - (unsigned long long)accessibilityTraits;
 - (id)_accessibilityAXAttributedLabel;
-- (_Bool)_accessibilityIsNavigationView;
 - (void)_accessibilitySetNavigationViewInfo:(id)arg1;
 - (id)_accessibilityNavigationViewInfo;
 

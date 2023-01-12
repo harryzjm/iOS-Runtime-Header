@@ -11,14 +11,15 @@
 + (unsigned int)minimumSnapshotPayloadVersion;
 + (unsigned int)payloadVersion;
 + (id)payloadClassID;
++ (id)persistedPropertyNamesForEntityNames;
 + (id)modelProperties;
++ (id)nonPersistedModelPropertiesDescription;
 + (id)modelPropertiesDescription;
 - (id)insertMigrationHistoryFromDataInManagedObjectContext:(id)arg1;
 - (_Bool)comparePayloadValue:(id)arg1 toObjectDictionaryValue:(id)arg2 forPayloadProperty:(id)arg3;
 - (void)applyPayloadProperty:(id)arg1 toManagedObject:(id)arg2 key:(id)arg3 payloadAttributesToUpdate:(id)arg4;
-- (void)updatePayloadAttributes:(id)arg1 withDecodedAttributes:(id)arg2 forPayloadProperty:(id)arg3;
-- (void)updateEncodableAttributes:(id)arg1 fromPayloadAttributes:(id)arg2 forPayloadProperty:(id)arg3;
-- (_Bool)updatePayloadAttributes:(id)arg1 withManagedObject:(id)arg2 forPayloadProperty:(id)arg3;
+- (void)appendAttributeKey:(id)arg1 value:(id)arg2 toDescriptionBuilder:(id)arg3;
+- (_Bool)updatePayloadAttributes:(id)arg1 andNilAttributes:(id)arg2 withManagedObject:(id)arg3 forPayloadProperty:(id)arg4;
 
 @end
 

@@ -6,9 +6,10 @@
 
 #import <PencilKit/NSObject-Protocol.h>
 
-@class PKPaletteContentView;
+@class PKPaletteContentView, UIMenu;
 
 @protocol PKPaletteContentViewInputAssistantDelegate <NSObject>
+- (UIMenu *)keyboardSelectionMenuForContentView:(PKPaletteContentView *)arg1;
 - (void)contentViewDidDismissInputAssistantView:(PKPaletteContentView *)arg1;
 - (void)contentViewDidSelectInputAssistantReturnKeyItem:(PKPaletteContentView *)arg1;
 - (void)contentViewDidSelectInputAssistantKeyboardItem:(PKPaletteContentView *)arg1;

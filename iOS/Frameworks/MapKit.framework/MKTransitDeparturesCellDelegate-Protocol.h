@@ -7,10 +7,11 @@
 #import <MapKit/NSObject-Protocol.h>
 
 @class MKTransitDeparturesCell, UIImage;
-@protocol GEOTransitLine;
+@protocol GEOTransitDepartureSequence, GEOTransitLine;
 
 @protocol MKTransitDeparturesCellDelegate <NSObject>
 - (UIImage *)imageForTransitLine:(id <GEOTransitLine>)arg1;
+- (UIImage *)imageForDepartureSequence:(id <GEOTransitDepartureSequence>)arg1;
 - (void)incidentButtonSelectedInDeparturesCell:(MKTransitDeparturesCell *)arg1;
 @end
 

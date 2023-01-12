@@ -8,7 +8,6 @@
 
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
 #import <PhotosUICore/PXDiagnosticsEnvironment-Protocol.h>
-#import <PhotosUICore/PXMovieProviderDelegate-Protocol.h>
 #import <PhotosUICore/PXPhotosDataSourceChangeObserver-Protocol.h>
 #import <PhotosUICore/PXPhotosDetailsHeaderTileLayoutDelegate-Protocol.h>
 #import <PhotosUICore/PXReusableObjectPoolDelegate-Protocol.h>
@@ -22,10 +21,10 @@
 #import <PhotosUICore/PXZoomAnimationObserverCoordinatorDelegate-Protocol.h>
 #import <PhotosUICore/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSMutableSet, NSString, OKPresentationViewController, PHAssetCollection, PHFetchResult, PXBasicUIViewTileAnimator, PXImageRequester, PXMovieProvider, PXOneUpPresentation, PXPhotoKitUIMediaProvider, PXPhotosDataSource, PXPhotosDetailsContext, PXPhotosDetailsHeaderSpec, PXPhotosDetailsHeaderSpecManager, PXPhotosDetailsLoadCoordinationToken, PXReusableObjectPool, PXSectionedSelectionManager, PXSlideshowSession, PXTilingController, PXTitleSubtitleUILabelTile, PXUIPlayButtonTile, PXUISlideshowViewTile, PXUITapGestureRecognizer, PXWidgetSpec;
-@protocol OS_dispatch_queue, PXAnonymousView, PXDisplayAsset, PXWidgetDelegate, PXWidgetEditingDelegate, PXWidgetUnlockDelegate;
+@class NSMutableSet, NSString, OKPresentationViewController, PHAssetCollection, PHFetchResult, PXAssetActionManager, PXBasicUIViewTileAnimator, PXImageRequester, PXMoviePresenter, PXOneUpPresentation, PXPhotoKitUIMediaProvider, PXPhotosDataSource, PXPhotosDetailsContext, PXPhotosDetailsHeaderSpec, PXPhotosDetailsHeaderSpecManager, PXPhotosDetailsLoadCoordinationToken, PXReusableObjectPool, PXSectionedSelectionManager, PXSlideshowSession, PXTilingController, PXTitleSubtitleUILabelTile, PXUIPlayButtonTile, PXUISlideshowViewTile, PXUITapGestureRecognizer, PXWidgetSpec;
+@protocol OS_dispatch_queue, PXAnonymousView, PXDisplayAsset, PXWidgetDelegate, PXWidgetEditingDelegate, PXWidgetInteractionDelegate, PXWidgetUnlockDelegate;
 
-@interface PXPhotosDetailsHeaderTileWidget : NSObject <PXTileSource, PXTilingControllerTransitionDelegate, PXReusableObjectPoolDelegate, UIGestureRecognizerDelegate, PXChangeObserver, PXPhotosDataSourceChangeObserver, PXPhotosDetailsHeaderTileLayoutDelegate, PXSlideshowSessionDelegate, PXTilingControllerZoomAnimationCoordinatorDelegate, PXUISlideshowViewTileDelegate, PXZoomAnimationObserverCoordinatorDelegate, PXMovieProviderDelegate, PXScrollViewControllerObserver, PXUIWidget, PXDiagnosticsEnvironment>
+@interface PXPhotosDetailsHeaderTileWidget : NSObject <PXTileSource, PXTilingControllerTransitionDelegate, PXReusableObjectPoolDelegate, UIGestureRecognizerDelegate, PXChangeObserver, PXPhotosDataSourceChangeObserver, PXPhotosDetailsHeaderTileLayoutDelegate, PXSlideshowSessionDelegate, PXTilingControllerZoomAnimationCoordinatorDelegate, PXUISlideshowViewTileDelegate, PXZoomAnimationObserverCoordinatorDelegate, PXScrollViewControllerObserver, PXUIWidget, PXDiagnosticsEnvironment>
 {
     NSObject<OS_dispatch_queue> *_internalWorkQueue;
     PXPhotosDetailsHeaderSpecManager *_specManager;
@@ -34,6 +33,8 @@
     PXReusableObjectPool *_tilePool;
     NSMutableSet *_tilesInUse;
     PXBasicUIViewTileAnimator *_tileAnimator;
+    PXUITapGestureRecognizer *_tapGestureRecognizer;
+    PXUITapGestureRecognizer *_pressGestureRecognizer;
     PXImageRequester *_primaryAssetImageRequester;
     struct CGRect _keyAssetCropRect;
     PXSlideshowSession *_slideshowSession;
@@ -56,7 +57,6 @@
     PXWidgetSpec *_spec;
     PXPhotosDataSource *__photosDataSource;
     PXPhotosDetailsHeaderSpec *__headerSpec;
-    PXMovieProvider *__movieProvider;
     OKPresentationViewController *__slideshowViewController;
     PXUISlideshowViewTile *__slideshowTile;
     PXUIPlayButtonTile *__playButtonTile;
@@ -67,15 +67,15 @@
     PHAssetCollection *__curatedAssetCollection;
     PHAssetCollection *__slideshowReferenceAssetCollection;
     long long __transitionAnimationsCount;
-    PXUITapGestureRecognizer *__tapGestureRecognizer;
+    PXMoviePresenter *_moviePresenter;
     struct CGSize __contentSize;
 }
 
-+ (_Bool)canShowMiroMovieHeaderForDataSource:(id)arg1;
++ (_Bool)canShowMovieHeaderForDataSource:(id)arg1;
 + (double)preferredHeaderContentHeightForWidth:(double)arg1 screen:(id)arg2;
 - (void).cxx_destruct;
+@property(retain, nonatomic) PXMoviePresenter *moviePresenter; // @synthesize moviePresenter=_moviePresenter;
 @property(nonatomic, setter=_setContentSize:) struct CGSize _contentSize; // @synthesize _contentSize=__contentSize;
-@property(retain, nonatomic, setter=_setTapGestureRecognizer:) PXUITapGestureRecognizer *_tapGestureRecognizer; // @synthesize _tapGestureRecognizer=__tapGestureRecognizer;
 @property(nonatomic, setter=_setHasLoadedContentData:) _Bool hasLoadedContentData; // @synthesize hasLoadedContentData=_hasLoadedContentData;
 @property(nonatomic, setter=_setTransitionAnimationsCount:) long long _transitionAnimationsCount; // @synthesize _transitionAnimationsCount=__transitionAnimationsCount;
 @property(retain, nonatomic, setter=_setSlideshowReferenceAssetCollection:) PHAssetCollection *_slideshowReferenceAssetCollection; // @synthesize _slideshowReferenceAssetCollection=__slideshowReferenceAssetCollection;
@@ -94,21 +94,18 @@
 @property(retain, nonatomic, setter=_setPlayButtonTile:) PXUIPlayButtonTile *_playButtonTile; // @synthesize _playButtonTile=__playButtonTile;
 @property(retain, nonatomic, setter=_setSlideshowTile:) PXUISlideshowViewTile *_slideshowTile; // @synthesize _slideshowTile=__slideshowTile;
 @property(retain, nonatomic, setter=_setSlideshowViewController:) OKPresentationViewController *_slideshowViewController; // @synthesize _slideshowViewController=__slideshowViewController;
-@property(retain, nonatomic, setter=_setMovieProvider:) PXMovieProvider *_movieProvider; // @synthesize _movieProvider=__movieProvider;
 @property(retain, nonatomic, setter=_setHeaderSpec:) PXPhotosDetailsHeaderSpec *_headerSpec; // @synthesize _headerSpec=__headerSpec;
 @property(retain, nonatomic, setter=_setPhotosDataSource:) PXPhotosDataSource *_photosDataSource; // @synthesize _photosDataSource=__photosDataSource;
 @property(retain, nonatomic) PXWidgetSpec *spec; // @synthesize spec=_spec;
 @property(nonatomic, getter=isUserInteractionEnabled) _Bool userInteractionEnabled; // @synthesize userInteractionEnabled=_userInteractionEnabled;
 @property(nonatomic) __weak id <PXWidgetDelegate> widgetDelegate; // @synthesize widgetDelegate=_widgetDelegate;
 @property(retain, nonatomic) PXPhotosDetailsContext *context; // @synthesize context=_context;
-- (void)ppt_navigateToMovieWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)zoomAnimationObserverCoordinator:(id)arg1 animationDidEndWithContext:(id)arg2;
 - (void)zoomAnimationObserverCoordinator:(id)arg1 animationWillBeginWithContext:(id)arg2;
 - (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (void)tilingControllerZoomAnimationCoordinator:(id)arg1 enumerateTilesToAnimateInLayerWithType:(long long)arg2 layout:(id)arg3 zoomAnimationContext:(id)arg4 usingBlock:(CDUnknownBlockType)arg5;
 - (id)slideshowViewTileHostViewController:(id)arg1;
-- (id)presentingViewControllerForMovieProvider:(id)arg1;
-- (void)playMiroMovieWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)playMovieWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (_Bool)containsPoint:(struct CGPoint)arg1 forCoordinateSpace:(id)arg2;
 - (id)zoomAnimationCoordinatorForContext:(id)arg1;
 - (void)preloadWithSourceRegionOfInterest:(id)arg1 forContext:(id)arg2;
@@ -134,7 +131,7 @@
 - (id)createHeaderSnapshotViewForMemoryCreationAnimation;
 - (id)_contentRegionOfInterestForTileWithIdentifier:(struct PXTileIdentifier)arg1;
 - (struct CGRect)_contentRectInCoordinateSpace:(id)arg1 withIdentifier:(struct PXTileIdentifier)arg2;
-- (id)_startMiroMovie;
+- (_Bool)_startMovie;
 - (void)_handleTapGesture:(id)arg1;
 - (id)_scrollViewController;
 - (id)extendedTraitCollection;
@@ -156,7 +153,6 @@
 - (void)_filterOutVideosFromAssetCollection:(id)arg1 filteredAssetCollection:(id *)arg2 assets:(id *)arg3;
 - (id)keyAsset;
 @property(readonly, nonatomic) id <PXDisplayAsset> presentedKeyAsset;
-- (void)_updateMovieProvider;
 - (void)unloadContentData;
 - (void)loadContentData;
 - (void)_updateBasicContent;
@@ -177,6 +173,7 @@
 
 // Remaining properties
 @property(readonly, nonatomic) _Bool allowUserInteractionWithSubtitle;
+@property(readonly, nonatomic) PXAssetActionManager *assetActionManager;
 @property(readonly, nonatomic) NSObject<PXAnonymousView> *contentView;
 @property(readonly, nonatomic) long long contentViewAnchoringType;
 @property(readonly, nonatomic) _Bool cursorInteractionEnabled;
@@ -193,11 +190,13 @@
 @property(retain, nonatomic) PXOneUpPresentation *oneUpPresentation;
 @property(nonatomic, getter=isSelecting) _Bool selecting;
 @property(readonly, nonatomic) PXSectionedSelectionManager *selectionManager;
+@property(readonly, nonatomic) NSString *snappableWidgetIdentifier;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) _Bool supportsFaceMode;
 @property(readonly, nonatomic) _Bool supportsSelection;
 @property(readonly, nonatomic) _Bool wantsFocus;
 @property(nonatomic) __weak id <PXWidgetEditingDelegate> widgetEditingDelegate;
+@property(nonatomic) __weak id <PXWidgetInteractionDelegate> widgetInteractionDelegate;
 @property(nonatomic) __weak id <PXWidgetUnlockDelegate> widgetUnlockDelegate;
 
 @end

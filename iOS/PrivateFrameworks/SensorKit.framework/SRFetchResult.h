@@ -15,19 +15,22 @@
     double _timestamp;
     NSData *_sampleData;
     NSDictionary *_metadata;
+    NSDictionary *_configuration;
     Class _sampleClass;
 }
 
 + (id)new;
 + (void)initialize;
 @property(retain) Class sampleClass; // @synthesize sampleClass=_sampleClass;
+@property(retain) NSDictionary *configuration; // @synthesize configuration=_configuration;
 @property(retain) NSDictionary *metadata; // @synthesize metadata=_metadata;
 @property(retain) NSData *sampleData; // @synthesize sampleData=_sampleData;
 @property(readonly) double timestamp; // @synthesize timestamp=_timestamp;
+- (id)_sensorConfiguration;
 @property(readonly, copy) id sample;
 - (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithData:(id)arg1 timestamp:(double)arg2 metadata:(id)arg3 sampleClass:(Class)arg4;
+- (id)initWithData:(id)arg1 timestamp:(double)arg2 metadata:(id)arg3 configuration:(id)arg4 sampleClass:(Class)arg5;
 - (id)init;
 
 @end

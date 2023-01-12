@@ -10,22 +10,22 @@
 {
     NSArray *_detectedPoints;
     NSArray *_projectedPoints;
+    double _movingAverageRadius;
     NSUUID *_requestUUID;
     MISSING_TYPE *_equationCoefficients;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSUUID *requestUUID; // @synthesize requestUUID=_requestUUID;
-@property(nonatomic) MISSING_TYPE *equationCoefficients; // @synthesize equationCoefficients=_equationCoefficients;
-@property(copy, nonatomic) NSArray *projectedPoints; // @synthesize projectedPoints=_projectedPoints;
-@property(copy, nonatomic) NSArray *detectedPoints; // @synthesize detectedPoints=_detectedPoints;
+@property(readonly, nonatomic) double movingAverageRadius; // @synthesize movingAverageRadius=_movingAverageRadius;
+@property(readonly, nonatomic) MISSING_TYPE *equationCoefficients; // @synthesize equationCoefficients=_equationCoefficients;
+@property(readonly, copy, nonatomic) NSArray *projectedPoints; // @synthesize projectedPoints=_projectedPoints;
+@property(readonly, copy, nonatomic) NSArray *detectedPoints; // @synthesize detectedPoints=_detectedPoints;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)vn_cloneObject;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithRequestRevision:(unsigned long long)arg1 requestUUID:(id)arg2 trajectoryUUID:(id)arg3 detectedPoints:(id)arg4 projectedPoints:(id)arg5 equationCoefficients:(float)arg6 confidence: /* Error: Ran out of types for this method. */;
 
 @end
 

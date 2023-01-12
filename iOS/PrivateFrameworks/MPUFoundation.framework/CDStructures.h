@@ -34,10 +34,7 @@ struct CGSize {
     double height;
 };
 
-struct EntriesContainer {
-    struct vector<MPU::LayoutInterpolator::Entry, std::__1::allocator<MPU::LayoutInterpolator::Entry>> _field1;
-    double _field2;
-};
+struct EntriesContainer;
 
 struct Entry {
     double _field1;
@@ -67,26 +64,18 @@ struct _NSRange {
     unsigned long long _field2;
 };
 
-struct vector<MPU::LayoutInterpolator::EntriesContainer, std::__1::allocator<MPU::LayoutInterpolator::EntriesContainer>> {
+struct vector<MPU::LayoutInterpolator::EntriesContainer, std::allocator<MPU::LayoutInterpolator::EntriesContainer>> {
     struct EntriesContainer *__begin_;
     struct EntriesContainer *__end_;
-    struct __compressed_pair<MPU::LayoutInterpolator::EntriesContainer *, std::__1::allocator<MPU::LayoutInterpolator::EntriesContainer>> {
+    struct __compressed_pair<MPU::LayoutInterpolator::EntriesContainer *, std::allocator<MPU::LayoutInterpolator::EntriesContainer>> {
         struct EntriesContainer *__value_;
     } __end_cap_;
 };
 
-struct vector<MPU::LayoutInterpolator::Entry, std::__1::allocator<MPU::LayoutInterpolator::Entry>> {
-    struct Entry *_field1;
-    struct Entry *_field2;
-    struct __compressed_pair<MPU::LayoutInterpolator::Entry *, std::__1::allocator<MPU::LayoutInterpolator::Entry>> {
-        struct Entry *_field1;
-    } _field3;
-};
-
-struct vector<MPU::Point3D, std::__1::allocator<MPU::Point3D>> {
+struct vector<MPU::Point3D, std::allocator<MPU::Point3D>> {
     struct Point3D *_field1;
     struct Point3D *_field2;
-    struct __compressed_pair<MPU::Point3D *, std::__1::allocator<MPU::Point3D>> {
+    struct __compressed_pair<MPU::Point3D *, std::allocator<MPU::Point3D>> {
         struct Point3D *_field1;
     } _field3;
 };
@@ -112,11 +101,11 @@ typedef struct {
 } CDStruct_b7523c42;
 
 // Template types
-typedef struct vector<MPU::Point3D, std::__1::allocator<MPU::Point3D>> {
+typedef struct vector<MPU::Point3D, std::allocator<MPU::Point3D>> {
     struct Point3D *_field1;
     struct Point3D *_field2;
-    struct __compressed_pair<MPU::Point3D *, std::__1::allocator<MPU::Point3D>> {
+    struct __compressed_pair<MPU::Point3D *, std::allocator<MPU::Point3D>> {
         struct Point3D *_field1;
     } _field3;
-} vector_c97e033f;
+} vector_524c7f2b;
 

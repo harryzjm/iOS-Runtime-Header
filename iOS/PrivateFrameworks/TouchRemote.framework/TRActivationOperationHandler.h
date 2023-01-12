@@ -13,12 +13,15 @@
 @interface TRActivationOperationHandler : NSObject <TROperationHandler>
 {
     CDUnknownBlockType _activationHandler;
+    CDUnknownBlockType _activationHandlerWithError;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType activationHandlerWithError; // @synthesize activationHandlerWithError=_activationHandlerWithError;
 @property(copy, nonatomic) CDUnknownBlockType activationHandler; // @synthesize activationHandler=_activationHandler;
 - (void)_handleActivationRequest:(id)arg1 withResponseHandler:(CDUnknownBlockType)arg2;
 - (void)registerMessageHandlersForSession:(id)arg1;
+- (id)initWithActivationHandlerWithError:(CDUnknownBlockType)arg1;
 - (id)initWithActivationHandler:(CDUnknownBlockType)arg1;
 
 // Remaining properties

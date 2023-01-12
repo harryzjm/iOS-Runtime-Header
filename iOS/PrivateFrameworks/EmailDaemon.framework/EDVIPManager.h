@@ -54,6 +54,7 @@
 - (_Bool)isVIPAddress:(id)arg1;
 - (id)_allVIPEmailAddresses;
 @property(readonly, copy, nonatomic) EAEmailAddressSet *allVIPEmailAddresses;
+- (void)getAllVIPsWithCompletion:(CDUnknownBlockType)arg1;
 @property(readonly, copy, nonatomic) NSSet *allVIPs;
 - (id)vipWithIdentifier:(id)arg1;
 @property(readonly, nonatomic) _Bool hasVIPs;

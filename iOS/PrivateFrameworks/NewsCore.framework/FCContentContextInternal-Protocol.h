@@ -8,12 +8,15 @@
 #import <NewsCore/NSObject-Protocol.h>
 
 @class FCAVAssetDownloadManager, FCArticleListRecordSource, FCArticleRecordSource, FCAudioConfigRecordSource, FCCKContentDatabase, FCChannelMembershipController, FCFeedDatabase, FCForYouConfigRecordSource, FCIssueListRecordSource, FCIssueRecordSource, FCPurchaseLookupRecordSource, FCResourceRecordSource, FCTagListRecordSource, FCTagRecordSource, FCWidgetSectionConfigRecordSource, NSArray;
-@protocol FCAVAssetFactoryType, FCAssetKeyManagerType;
+@protocol FCAVAssetCacheType, FCAVAssetFactoryType, FCAVAssetKeyCacheType, FCAssetKeyCacheType, FCAssetKeyManagerType;
 
 @protocol FCContentContextInternal <NSObject, FCCacheFlushing>
 @property(readonly, nonatomic) FCAVAssetDownloadManager *avAssetDownloadManager;
 @property(readonly, nonatomic) id <FCAVAssetFactoryType> avAssetFactory;
+@property(readonly, nonatomic) id <FCAVAssetKeyCacheType> avAssetKeyCache;
+@property(readonly, nonatomic) id <FCAVAssetCacheType> avAssetCache;
 @property(readonly, nonatomic) id <FCAssetKeyManagerType> assetKeyManager;
+@property(readonly, nonatomic) id <FCAssetKeyCacheType> assetKeyCache;
 @property(readonly, nonatomic) FCCKContentDatabase *contentDatabase;
 @property(readonly) FCFeedDatabase *feedDatabase;
 @property(readonly, nonatomic) NSArray *recordSources;

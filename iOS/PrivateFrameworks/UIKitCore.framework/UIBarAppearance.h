@@ -47,6 +47,7 @@
 - (id)_plainButtonAppearanceData;
 - (id)_backButtonAppearanceData;
 - (id)_barTitleData;
+@property(readonly) _Bool _hasTransparentBackground;
 - (id)_backgroundData;
 - (_Bool)_checkEqualTo:(id)arg1;
 - (unsigned long long)_hashInto:(unsigned long long)arg1;

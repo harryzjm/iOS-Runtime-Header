@@ -22,6 +22,7 @@
     NSObject<OS_dispatch_queue> *_queue;
 }
 
++ (void)reportNewIncomingVoIPPushPayload:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;

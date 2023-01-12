@@ -8,7 +8,6 @@
 
 @class BRCAccountSession, BRCAppLibrary, BRCLocalItem, BRCRelativePath, BRCServerZone, NSData;
 
-__attribute__((visibility("hidden")))
 @interface BRCBookmark : NSObject
 {
     BRCAccountSession *_session;

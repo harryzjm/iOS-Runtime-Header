@@ -19,15 +19,15 @@ __attribute__((visibility("hidden")))
     int mColumnCount;
     OABTableSortedIntArray *mXCoords;
     OABTableSortedIntArray *mYCoords;
-    struct OABTable2DArray<EshShape *> *mHorzLines;
-    struct OABTable2DArray<EshShape *> *mVertLines;
-    struct OABTable2DArray<OABTableCell> *mCells;
+    void *mHorzLines;
+    void *mVertLines;
+    void *mCells;
 }
 
 - (void).cxx_destruct;
 - (void)map;
 - (void)createTargetTableContents;
-- (id)readStrokeFromShape:(struct EshShape *)arg1;
+- (id)readStrokeFromShape:(void *)arg1;
 - (void)validateTable;
 - (void)readCellsAndLines;
 - (void)readCoordinates;

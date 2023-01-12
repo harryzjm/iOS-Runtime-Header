@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC8FMIPCore37FMIPEphemeralAuthenticationController : NSObject
 {
     MISSING_TYPE *authenticationController;

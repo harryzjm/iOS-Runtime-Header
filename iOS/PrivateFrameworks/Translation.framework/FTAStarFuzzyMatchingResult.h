@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_b48045e5)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_b48045e5)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSString *debug_information;
 @property(readonly, nonatomic) NSArray *match_ids;
 @property(readonly, nonatomic) int tm_score;

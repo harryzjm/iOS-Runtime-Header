@@ -8,25 +8,23 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEORPFilter, GEORPPageInfo, GEORPSortParameters, PBDataReader, PBUnknownFields;
+@class GEORPFeedbackComponentQueryParameters, GEORPFilter, PBDataReader, PBUnknownFields;
 
 @interface GEORPFeedbackQueryParameters : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _feedbackComponentTypes;
+    GEORPFeedbackComponentQueryParameters *_componentQueryParameters;
     GEORPFilter *_filter;
-    GEORPPageInfo *_pageInfo;
-    GEORPSortParameters *_sortParameters;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_feedbackComponentTypes:1;
+        unsigned int read_componentQueryParameters:1;
         unsigned int read_filter:1;
-        unsigned int read_pageInfo:1;
-        unsigned int read_sortParameters:1;
         unsigned int wrote_anyField:1;
     } _flags;
 }
@@ -48,6 +46,8 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) GEORPFeedbackComponentQueryParameters *componentQueryParameters;
+@property(readonly, nonatomic) _Bool hasComponentQueryParameters;
 @property(retain, nonatomic) GEORPFilter *filter;
 @property(readonly, nonatomic) _Bool hasFilter;
 - (int)StringAsFeedbackComponentTypes:(id)arg1;
@@ -58,10 +58,6 @@
 - (void)clearFeedbackComponentTypes;
 @property(readonly, nonatomic) int *feedbackComponentTypes;
 @property(readonly, nonatomic) unsigned long long feedbackComponentTypesCount;
-@property(retain, nonatomic) GEORPPageInfo *pageInfo;
-@property(readonly, nonatomic) _Bool hasPageInfo;
-@property(retain, nonatomic) GEORPSortParameters *sortParameters;
-@property(readonly, nonatomic) _Bool hasSortParameters;
 - (void)dealloc;
 - (id)initWithData:(id)arg1;
 - (id)init;

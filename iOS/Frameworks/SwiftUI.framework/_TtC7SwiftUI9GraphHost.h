@@ -17,6 +17,7 @@
     MISSING_TYPE *pendingTransactions;
     MISSING_TYPE *inTransaction;
     MISSING_TYPE *continuations;
+    MISSING_TYPE *mayDeferUpdate;
     MISSING_TYPE *removedState;
 }
 

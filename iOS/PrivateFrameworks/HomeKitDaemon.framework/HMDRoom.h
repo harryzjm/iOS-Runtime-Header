@@ -12,13 +12,14 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDApplicationData, HMDHome, HMFMessageDispatcher, NSObject, NSSet, NSString, NSUUID;
+@class HMDApplicationData, HMDHome, HMFMessageDispatcher, NSDictionary, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDRoom : HMFObject <HMFLogging, HMDHomeMessageReceiver, HMFDumpState, NSSecureCoding, HMDBackingStoreObjectProtocol>
 {
     NSString *_name;
     NSUUID *_uuid;
+    NSUUID *_spiClientIdentifier;
     HMDHome *_home;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMFMessageDispatcher *_msgDispatcher;
@@ -33,6 +34,7 @@
 @property(retain, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(nonatomic) __weak HMDHome *home; // @synthesize home=_home;
+@property(readonly, copy) NSUUID *spiClientIdentifier; // @synthesize spiClientIdentifier=_spiClientIdentifier;
 @property(readonly, copy, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property(retain, nonatomic) NSString *name; // @synthesize name=_name;
 - (id)attributeDescriptions;
@@ -46,8 +48,6 @@
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (void)logEvent:(unsigned long long)arg1;
-- (void)_logEventWithViewInformation:(id)arg1 source:(unsigned long long)arg2;
 - (void)_handleRemoveAppDataModel:(id)arg1 message:(id)arg2;
 - (void)_handleUpdateAppDataModel:(id)arg1 message:(id)arg2;
 - (void)_handleUpdateRoomModel:(id)arg1 message:(id)arg2;
@@ -58,8 +58,8 @@
 - (void)configure:(id)arg1 queue:(id)arg2;
 - (void)dealloc;
 - (id)initWithName:(id)arg1 uuid:(id)arg2 home:(id)arg3;
-- (id)assistantObject;
-- (id)urlString;
+@property(readonly, copy) NSDictionary *assistantObject;
+@property(readonly, copy) NSString *urlString;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

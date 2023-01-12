@@ -13,15 +13,13 @@
     _Bool _shouldResetPolicies;
     _Bool _started;
     NSPConfiguration *_configuration;
-    NEPolicySession *_policySession;
     NEFlowDivertFileHandle *_flowDivertControlHandle;
-    NEFlowDivertFileHandle *_flowDivertDataHandle;
+    NEPolicySession *_policySession;
 }
 
 - (void).cxx_destruct;
-@property(retain) NEFlowDivertFileHandle *flowDivertDataHandle; // @synthesize flowDivertDataHandle=_flowDivertDataHandle;
-@property(retain) NEFlowDivertFileHandle *flowDivertControlHandle; // @synthesize flowDivertControlHandle=_flowDivertControlHandle;
 @property(retain) NEPolicySession *policySession; // @synthesize policySession=_policySession;
+@property(retain, nonatomic) NEFlowDivertFileHandle *flowDivertControlHandle; // @synthesize flowDivertControlHandle=_flowDivertControlHandle;
 @property _Bool started; // @synthesize started=_started;
 @property(retain, nonatomic) NSPConfiguration *configuration; // @synthesize configuration=_configuration;
 @property _Bool shouldResetPolicies; // @synthesize shouldResetPolicies=_shouldResetPolicies;
@@ -40,7 +38,7 @@
 - (void)destroyPolicySession;
 - (id)createPolicySession;
 - (void)destroyFlowDivertSocketHandles;
-- (id)createFlowDivertSocketHandles;
+- (id)createFlowDivertSocketHandle;
 - (void)stop;
 - (void)startWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithDelegate:(id)arg1 providerClass:(Class)arg2 configuration:(id)arg3;

@@ -11,9 +11,10 @@
 
 @interface SONetworkIdentity : NSObject
 {
-    NSString *_networkFingerprint;
+    _Bool _perAppVPN;
     NSString *_realm;
     NSString *_bundleIdentifier;
+    NSString *_networkFingerprint;
     NSObject<OS_nw_path> *_lastpath;
     NSData *_auditToken;
 }
@@ -21,12 +22,17 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSData *auditToken; // @synthesize auditToken=_auditToken;
 @property(retain, nonatomic) NSObject<OS_nw_path> *lastpath; // @synthesize lastpath=_lastpath;
+@property(retain, nonatomic) NSString *networkFingerprint; // @synthesize networkFingerprint=_networkFingerprint;
 @property(retain, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(retain, nonatomic) NSString *realm; // @synthesize realm=_realm;
-@property(retain, nonatomic) NSString *networkFingerprint; // @synthesize networkFingerprint=_networkFingerprint;
+- (id)getInterfaceFingerprintForDynamicInterface:(const char *)arg1;
 - (id)getInterfaceSignature:(id)arg1;
 - (id)getVPNServerSignature:(id)arg1;
 - (void)determineNetworkFingerprint;
+- (void)evaluateVPNPath:(id)arg1;
+- (void)evaluateVPNPath;
+- (void)evaluateVPNPathForHost:(id)arg1 port:(id)arg2;
+@property(nonatomic, getter=isPerAppVPN) _Bool perAppVPN; // @synthesize perAppVPN=_perAppVPN;
 - (id)initForRealm:(id)arg1 bundleIdentifier:(id)arg2 auditToken:(id)arg3;
 
 @end

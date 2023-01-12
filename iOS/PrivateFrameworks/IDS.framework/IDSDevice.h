@@ -27,6 +27,7 @@
 @property(readonly, nonatomic) NSDate *lastActivityDate;
 @property(readonly, nonatomic) NSString *enclosureColor;
 @property(readonly, nonatomic) NSString *deviceColor;
+@property(readonly, nonatomic) long long deviceType;
 @property(readonly, nonatomic) _Bool supportsPhoneCalls;
 @property(readonly, nonatomic) _Bool supportsMMSRelay;
 @property(readonly, nonatomic) _Bool supportsSMSRelay;
@@ -34,6 +35,7 @@
 @property(readonly, nonatomic) _Bool supportsHandoff;
 @property(readonly, nonatomic) _Bool supportsTethering;
 @property(readonly, nonatomic) _Bool supportsiCloudPairing;
+@property(readonly, nonatomic) NSUUID *stableBluetoothIdentifier;
 @property(retain, nonatomic, setter=setNSUUID:) NSUUID *nsuuid;
 @property(readonly, nonatomic) NSArray *linkedUserURIs;
 @property(readonly, nonatomic) IDSDestination *destination;

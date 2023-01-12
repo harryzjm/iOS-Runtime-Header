@@ -15,7 +15,6 @@
 {
     NSObject<PLIndexMappingCache> *_derivedAlbumLists[5];
     _Bool isRegisteredForChanges;
-    _Bool didRegisteredWithUserInterfaceContext;
 }
 
 + (_Bool)restoreAlbumListFromPersistedDataAtPath:(id)arg1 library:(id)arg2;
@@ -48,7 +47,6 @@
 + (id)_singletonListWithType:(short)arg1 library:(id)arg2;
 + (void)initialize;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool didRegisteredWithUserInterfaceContext; // @synthesize didRegisteredWithUserInterfaceContext;
 @property(nonatomic) _Bool isRegisteredForChanges; // @synthesize isRegisteredForChanges;
 - (void)didSave;
 - (void)willSave;

@@ -47,6 +47,8 @@
 - (void)_notifyObserversDidUpdateOnNotification:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
+- (void)unregisterObserver:(id)arg1;
+- (void)registerObserver:(id)arg1;
 - (id)endOfRollingYear:(CDUnknownBlockType)arg1;
 - (id)startOfRollingYear:(CDUnknownBlockType)arg1;
 - (id)endOfRollingMonth:(CDUnknownBlockType)arg1;

@@ -14,18 +14,22 @@
     _Bool _cancelRequested;
     PHImageDecoder *_initialDecoder;
     unsigned long long _figRequestID;
-    struct FigPhotoDecompressionContainer *_figDecompressionContainer;
+    unsigned long long _figGainMapRequestID;
+    struct CMPhotoDecompressionContainer *_c;
+    struct CMPhotoDecompressionContainer *_figDecompressionContainer;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) struct FigPhotoDecompressionContainer *figDecompressionContainer; // @synthesize figDecompressionContainer=_figDecompressionContainer;
+@property(retain, nonatomic) struct CMPhotoDecompressionContainer *figDecompressionContainer; // @synthesize figDecompressionContainer=_figDecompressionContainer;
+@property(retain, nonatomic) struct CMPhotoDecompressionContainer *c; // @synthesize c=_c;
+@property(nonatomic) unsigned long long figGainMapRequestID; // @synthesize figGainMapRequestID=_figGainMapRequestID;
 @property(nonatomic) unsigned long long figRequestID; // @synthesize figRequestID=_figRequestID;
 @property(readonly, nonatomic) PHImageDecoder *initialDecoder; // @synthesize initialDecoder=_initialDecoder;
 - (void)dealloc;
 @property(readonly, nonatomic) _Bool cancelRequested;
 - (void)cancel;
 - (id)initWithImageIODecoder:(id)arg1;
-- (id)initWithFigRequestID:(unsigned long long)arg1 container:(struct FigPhotoDecompressionContainer *)arg2 figDecoder:(id)arg3;
+- (id)initWithFigRequestID:(unsigned long long)arg1 container:(struct CMPhotoDecompressionContainer *)arg2 figDecoder:(id)arg3;
 
 @end
 

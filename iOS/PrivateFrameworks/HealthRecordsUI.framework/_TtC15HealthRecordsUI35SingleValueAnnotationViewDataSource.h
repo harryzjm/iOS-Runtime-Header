@@ -8,7 +8,10 @@
 
 @interface _TtC15HealthRecordsUI35SingleValueAnnotationViewDataSource
 {
+    MISSING_TYPE *valueRangeGroup;
+    MISSING_TYPE *valueLabel;
     MISSING_TYPE *referenceRangeView;
+    MISSING_TYPE *constraints;
 }
 
 - (void).cxx_destruct;

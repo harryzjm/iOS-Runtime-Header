@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PassKit/PKTransitAppletState.h>
+#import <PassKitCore/PKTransitAppletState.h>
 
 @interface PKTransitAppletState (NanoPassKit)
 - (id)npk_processUpdateWithAppletHistory:(id)arg1 concreteTransactions:(id *)arg2 ephemeralTransaction:(id *)arg3 mutatedBalances:(id *)arg4 pass:(id)arg5;

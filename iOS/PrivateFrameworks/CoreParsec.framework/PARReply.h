@@ -8,7 +8,7 @@
 
 #import <CoreParsec/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSData, NSString, NSURLRequest, NSURLResponse, PARTask;
+@class NSArray, NSData, NSURLRequest, NSURLResponse, PARTask;
 
 @interface PARReply : NSObject <NSSecureCoding>
 {
@@ -18,14 +18,12 @@
     NSData *_data;
     PARTask *_task;
     double _scale;
-    NSString *_geoSessionEntityString;
-    NSArray *_localSuggestions;
+    NSArray *_previouslyEngagedSuggestions;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSArray *localSuggestions; // @synthesize localSuggestions=_localSuggestions;
-@property(copy, nonatomic) NSString *geoSessionEntityString; // @synthesize geoSessionEntityString=_geoSessionEntityString;
+@property(retain, nonatomic) NSArray *previouslyEngagedSuggestions; // @synthesize previouslyEngagedSuggestions=_previouslyEngagedSuggestions;
 @property(nonatomic) double scale; // @synthesize scale=_scale;
 @property(nonatomic) __weak PARTask *task; // @synthesize task=_task;
 @property(retain, nonatomic) NSData *data; // @synthesize data=_data;

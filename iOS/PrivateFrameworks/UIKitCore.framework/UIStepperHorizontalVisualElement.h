@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
 #import <UIKitCore/UIStepperVisualElement-Protocol.h>
-#import <UIKitCore/_UICursorInteractionDelegate-Protocol.h>
 
 @class NSMutableDictionary, NSString, NSTimer, UIButton, UIImageView, UIViewPropertyAnimator;
 @protocol UIStepperControl;
 
 __attribute__((visibility("hidden")))
-@interface UIStepperHorizontalVisualElement <_UICursorInteractionDelegate, UIStepperVisualElement>
+@interface UIStepperHorizontalVisualElement <UIPointerInteractionDelegate, UIStepperVisualElement>
 {
     _Bool _isRtoL;
     UIImageView *_leftBackground;
@@ -64,10 +64,10 @@ __attribute__((visibility("hidden")))
 - (id)backgroundImageForState:(unsigned long long)arg1;
 - (void)setBackgroundImage:(id)arg1 forState:(unsigned long long)arg2;
 - (void)layoutSubviews;
-- (void)cursorInteraction:(id)arg1 willExitRegion:(id)arg2;
-- (void)cursorInteraction:(id)arg1 willEnterRegion:(id)arg2;
-- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
-- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (void)pointerInteraction:(id)arg1 willExitRegion:(id)arg2 animator:(id)arg3;
+- (void)pointerInteraction:(id)arg1 willEnterRegion:(id)arg2 animator:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (void)_updateCount:(id)arg1;
 - (void)_stopTimer;
 - (void)_startTimer;

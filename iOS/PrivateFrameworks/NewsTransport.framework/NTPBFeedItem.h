@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleConversionStats, COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleScores, NSMutableArray, NSString;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleConversionStats, COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleScores, COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLLIVERPOOLTagMetadata, NSMutableArray, NSString;
 
 @interface NTPBFeedItem : PBCodable <NSCopying>
 {
@@ -21,17 +21,25 @@
     unsigned long long _publishDateMilliseconds;
     long long _publisherArticleVersion;
     NSString *_articleID;
+    COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *_channelConversionStats;
+    COMAPPLEFELDSPARPROTOCOLLIVERPOOLTagMetadata *_channelTagMetadata;
     NSString *_clusterID;
     COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleConversionStats *_conversionStats;
     NSString *_feedID;
+    COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *_globalCohorts;
+    COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *_globalConversionStats;
     NSString *_parentIssueID;
     COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleScores *_scores;
+    NSString *_sourceArticleListID;
+    COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *_sourceChannelCohorts;
     NSString *_sourceChannelID;
     NSMutableArray *_topicIDs;
+    NSMutableArray *_topics;
     _Bool _hasAudioTrack;
     _Bool _hasThumbnail;
     _Bool _hasVideo;
     _Bool _isBundlePaid;
+    _Bool _isEvergreen;
     _Bool _isExplicitContent;
     _Bool _isFeatured;
     _Bool _isFromBlockedStorefront;
@@ -50,6 +58,7 @@
         unsigned int hasThumbnail:1;
         unsigned int hasVideo:1;
         unsigned int isBundlePaid:1;
+        unsigned int isEvergreen:1;
         unsigned int isExplicitContent:1;
         unsigned int isFeatured:1;
         unsigned int isFromBlockedStorefront:1;
@@ -58,7 +67,16 @@
     } _has;
 }
 
++ (Class)topicsType;
 + (Class)topicIDsType;
+@property(retain, nonatomic) NSMutableArray *topics; // @synthesize topics=_topics;
+@property(retain, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLTagMetadata *channelTagMetadata; // @synthesize channelTagMetadata=_channelTagMetadata;
+@property(retain, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *globalConversionStats; // @synthesize globalConversionStats=_globalConversionStats;
+@property(retain, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *channelConversionStats; // @synthesize channelConversionStats=_channelConversionStats;
+@property(retain, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *globalCohorts; // @synthesize globalCohorts=_globalCohorts;
+@property(retain, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *sourceChannelCohorts; // @synthesize sourceChannelCohorts=_sourceChannelCohorts;
+@property(retain, nonatomic) NSString *sourceArticleListID; // @synthesize sourceArticleListID=_sourceArticleListID;
+@property(nonatomic) _Bool isEvergreen; // @synthesize isEvergreen=_isEvergreen;
 @property(retain, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleConversionStats *conversionStats; // @synthesize conversionStats=_conversionStats;
 @property(nonatomic) _Bool hasAudioTrack; // @synthesize hasAudioTrack=_hasAudioTrack;
 @property(nonatomic) _Bool isFeatured; // @synthesize isFeatured=_isFeatured;
@@ -92,6 +110,17 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)topicsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)topicsCount;
+- (void)addTopics:(id)arg1;
+- (void)clearTopics;
+@property(readonly, nonatomic) _Bool hasChannelTagMetadata;
+@property(readonly, nonatomic) _Bool hasGlobalConversionStats;
+@property(readonly, nonatomic) _Bool hasChannelConversionStats;
+@property(readonly, nonatomic) _Bool hasGlobalCohorts;
+@property(readonly, nonatomic) _Bool hasSourceChannelCohorts;
+@property(readonly, nonatomic) _Bool hasSourceArticleListID;
+@property(nonatomic) _Bool hasIsEvergreen;
 @property(readonly, nonatomic) _Bool hasConversionStats;
 @property(nonatomic) _Bool hasHasAudioTrack;
 @property(nonatomic) _Bool hasIsFeatured;

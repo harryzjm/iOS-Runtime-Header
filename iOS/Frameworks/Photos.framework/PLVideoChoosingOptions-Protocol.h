@@ -7,6 +7,8 @@
 #import <Photos/NSObject-Protocol.h>
 
 @protocol PLVideoChoosingOptions <NSObject>
+- (_Bool)isExplicitUserAction;
+- (_Bool)hasValidTimeRange;
 - (_Bool)isNetworkAccessAllowed;
 - (_Bool)isStreamingAllowed;
 - (_Bool)isMediumHighQualityAllowed;

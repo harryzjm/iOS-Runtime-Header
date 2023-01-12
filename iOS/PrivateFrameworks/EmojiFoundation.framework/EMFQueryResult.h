@@ -6,17 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class EMFQuery, EMFQueryResultOverride, NSArray, NSDictionary;
+@class EMFQuery, EMFQueryResultOverride, NSArray, NSDictionary, NSOrderedSet;
 
 @interface EMFQueryResult : NSObject
 {
-    NSArray *_matches;
+    NSOrderedSet *_sortedResultSet;
+    NSArray *_documentMatches;
     EMFQueryResultOverride *_resultOverride;
     EMFQuery *_query;
     NSDictionary *_matchingDocumentWeights;
 }
 
 + (id)_emojiStringForDocumentID:(id)arg1 usingLocaleData:(struct __EmojiLocaleDataWrapper *)arg2;
++ (const struct __EmojiTokenWrapper *)_emojiTokenForDocumentID:(id)arg1 usingLocaleData:(struct __EmojiLocaleDataWrapper *)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSDictionary *matchingDocumentWeights; // @synthesize matchingDocumentWeights=_matchingDocumentWeights;
 @property(readonly, nonatomic) EMFQuery *query; // @synthesize query=_query;
@@ -31,8 +33,8 @@
 - (id)description;
 - (id)emojiMatchesForOverriddenResultsUsingEmojiLocaleData:(struct __EmojiLocaleDataWrapper *)arg1;
 - (id)emojiMatchesAndDocumentWeightsUsingEmojiLocaleData:(struct __EmojiLocaleDataWrapper *)arg1;
-- (id)emojiMatchesUsingEmojiLocaleData:(const struct __EmojiLocaleDataWrapper *)arg1;
-@property(readonly, nonatomic) NSArray *matches; // @synthesize matches=_matches;
+- (id)emojiStringMatchesUsingEmojiLocaleData:(const struct __EmojiLocaleDataWrapper *)arg1;
+@property(readonly, nonatomic) NSArray *documentMatches; // @synthesize documentMatches=_documentMatches;
 - (id)initWithQuery:(id)arg1 matchingDocumentWeights:(id)arg2 resultOverride:(id)arg3;
 - (id)initWithQuery:(id)arg1 andMatchingDocumentWeights:(id)arg2;
 

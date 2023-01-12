@@ -14,6 +14,7 @@
 }
 
 - (void)cache:(id)arg1 forKey:(id)arg2;
+- (void)cache:(id)arg1 forKey:(id)arg2 immediately:(_Bool)arg3;
 - (id)fetchImageForKey:(id)arg1;
 - (void)pruneImagesOlderThan:(double)arg1;
 

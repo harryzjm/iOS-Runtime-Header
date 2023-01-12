@@ -6,16 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@interface AppAttestKeychainCleanupController : NSObject
+#import <AppAttestInternal/LSApplicationWorkspaceObserverProtocol-Protocol.h>
+
+@class LSApplicationWorkspace, NSString;
+
+@interface AppAttestKeychainCleanupController : NSObject <LSApplicationWorkspaceObserverProtocol>
 {
+    LSApplicationWorkspace *_workspace;
 }
 
-+ (id)_applicationIdentifierForApplicationProxy:(id)arg1;
-+ (id)_listOfInstalledAppHashes;
-+ (void)_removeAllKeychainItemsForMissingApps;
-+ (void)_updateActivityCriteria:(id *)arg1;
-+ (void)_registerActivity;
-+ (void)start;
++ (id)sharedInstance;
+- (void).cxx_destruct;
+- (void)applicationsDidUninstall:(id)arg1;
+- (void)_updateActivityCriteria:(id *)arg1;
+- (void)_registerActivity;
+- (void)dealloc;
+- (id)init;
+- (void)start;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

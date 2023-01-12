@@ -6,19 +6,36 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class NSString, UIView;
+@class NSString, UIView, UIWindow;
+@protocol SBSwitcherLiveContentOverlayDelegate;
 
 @protocol SBSwitcherLiveContentOverlay <NSObject>
+@property(readonly, nonatomic) _Bool requiresLegacyRotationSupport;
+@property(readonly, nonatomic, getter=isAsyncRenderingEnabled) _Bool asyncRenderingEnabled;
+@property(nonatomic, getter=isInsetForHomeAffordance) _Bool insetForHomeAffordance;
 @property(readonly, nonatomic) UIView *contentOverlayView;
+@property(nonatomic) __weak id <SBSwitcherLiveContentOverlayDelegate> delegate;
+- (double)currentStatusBarHeight;
+- (long long)trailingStatusBarStyle;
+- (long long)leadingStatusBarStyle;
+- (long long)preferredInterfaceOrientation;
+- (unsigned long long)_debugPostModernRotationSupportedInterfaceOrientations;
+- (unsigned long long)supportedInterfaceOrientations;
 - (void)disableAsynchronousRenderingForNextCommit;
-- (void)setRasterizationStyle:(long long)arg1 withMinificationFilterEnabled:(_Bool)arg2;
-- (long long)rasterizationStyle;
+- (void)setAsyncRenderingEnabled:(_Bool)arg1 withMinificationFilterEnabled:(_Bool)arg2;
+- (void)setBlurViewIconScale:(double)arg1;
+- (void)setLiveContentBlurEnabled:(_Bool)arg1 duration:(double)arg2 blurDelay:(double)arg3 iconViewScale:(double)arg4 began:(void (^)(void))arg5 completion:(void (^)(void))arg6;
 - (void)noteKeyboardFocusDidChangeToSceneID:(NSString *)arg1;
 - (void)setUsesBrightSceneViewBackgroundMaterial:(_Bool)arg1;
-- (void)setHomeGrabberHidden:(_Bool)arg1 animated:(_Bool)arg2;
+- (_Bool)isContentUpdating;
+- (void)setMatchMovedToScene:(_Bool)arg1;
+- (void)setDimmed:(_Bool)arg1;
 - (void)setStatusBarHidden:(_Bool)arg1 nubViewHidden:(_Bool)arg2 animator:(void (^)(void (^)(void), void (^)(_Bool, _Bool)))arg3;
 
 @optional
-- (void)noteNeedsLayoutUpdateFor180DegreeRotation;
+- (_Bool)hitTestedToTopAffordance:(struct CGPoint)arg1 window:(UIWindow *)arg2;
+- (long long)bestHomeAffordanceOrientationForOrientation:(long long)arg1;
+- (UIView *)newPortaledLiveContentOverlayView;
+- (void)setContentReferenceSize:(struct CGSize)arg1 interfaceOrientation:(long long)arg2;
 @end
 

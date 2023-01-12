@@ -16,6 +16,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSDateComponents *dateComponents; // @synthesize dateComponents=_dateComponents;
 - (id)description;
+- (id)dateString;
 - (unsigned long long)hash;
 - (_Bool)isEqualToDateComponents:(id)arg1;
 - (_Bool)isEqual:(id)arg1;

@@ -16,6 +16,7 @@
 {
 }
 
++ (_Bool)_subclassesMustBeExplicitlyMentionedWhenDecoded;
 + (_Bool)supportsSecureCoding;
 + (id)hashTableWithOptions:(unsigned long long)arg1;
 + (id)weakObjectsHashTable;

@@ -16,6 +16,7 @@
 
 + (id)entityNamesEligibleForDeletionByOtherDevices;
 + (id)notTombstonedPredicate;
++ (id)tombstonedPredicate;
 - (void)willChangeValueForKey:(id)arg1;
 - (void)awakeFromInsert;
 @property(copy, nonatomic) NSUUID *identifier;

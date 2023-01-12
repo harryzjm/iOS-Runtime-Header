@@ -25,14 +25,18 @@
 
 + (id)sharedCache;
 - (void).cxx_destruct;
+- (void)_favoritesEntriesChangedExternally;
 - (void)_didReceiveDeviceLockStateDidChangeNotification;
 - (void)_didReceiveFavoritesChangeRelatedNotification;
 - (void)_didReceiveContactStoreChangedNotification;
 - (void)_tearDownNotifications;
 - (void)_setupNotifications;
 - (void)_queue_findContactWithFullName:(id)arg1 block:(CDUnknownBlockType)arg2;
-- (void)_queue_loadAllContacts;
-- (void)_queue_loadFavoriteContacts;
+- (void)_queued_loadAllContacts;
+- (void)_queued_loadFavoriteContacts;
+- (void)_queued_flushCNFavorites;
+- (void)_locked_createFavorites;
+- (void)_queue_flushCNFavoritesReload;
 - (void)_queue_reloadContacts;
 - (id)computeNonFavoriteAllContactsWithCount:(unsigned long long)arg1;
 - (id)_mappedFavoriteContacts;

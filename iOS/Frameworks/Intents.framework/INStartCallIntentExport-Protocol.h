@@ -7,9 +7,12 @@
 #import <Intents/JSExport-Protocol.h>
 #import <Intents/NSObject-Protocol.h>
 
-@class INCallRecord, INCallRecordFilter, NSArray;
+@class INCallRecord, INCallRecordFilter, NSArray, NSNumber, NSString;
 
 @protocol INStartCallIntentExport <NSObject, JSExport>
+@property(copy, nonatomic) NSString *notificationThreadIdentifier;
+@property(copy, nonatomic) NSArray *callGroups;
+@property(copy, nonatomic) NSNumber *isGroupCall;
 @property(nonatomic) long long callCapability;
 @property(nonatomic, setter=setTTYType:) long long ttyType;
 @property(copy, nonatomic) NSArray *contacts;

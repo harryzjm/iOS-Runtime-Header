@@ -38,7 +38,7 @@
 @property(readonly, nonatomic) NSURL *url; // @synthesize url=_url;
 - (_Bool)_isEqualAccessToSecurityScopedResource:(id)arg1;
 - (void)stopAccessing;
-- (void)startAccessing;
+- (_Bool)startAccessing;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

@@ -50,8 +50,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) VUIFamilyMember *familyMember; // @synthesize familyMember=_familyMember;
 - (_Bool)vui_ppt_isLoading;
 - (void)showDetailViewController:(id)arg1 sender:(id)arg2;
-- (id)splitViewController:(id)arg1 separateSecondaryViewControllerFromPrimaryViewController:(id)arg2;
-- (_Bool)splitViewController:(id)arg1 collapseSecondaryViewController:(id)arg2 ontoPrimaryViewController:(id)arg3;
 - (void)setPageMetricsForCategory:(id)arg1 onLibraryGridCollectionViewController:(id)arg2;
 - (id)_deviceMediaLibrary;
 - (void)_removeNotificationObserversWithDeviceLibrary:(id)arg1;
@@ -62,10 +60,11 @@ __attribute__((visibility("hidden")))
 - (id)_entitiesDataSourceForGenre:(id)arg1;
 - (id)_entitiesDataSourceForCategoryType:(long long)arg1;
 - (void)_homeShareMediaLibrariesDidChange:(id)arg1;
-- (void)_setDisplayModeForLayoutType:(long long)arg1;
+- (void)_setMenuControllerPrimaryOnlyMode;
 - (_Bool)_menuDataSourceHasContent;
 - (_Bool)_shouldLeftBarButton;
 - (void)familyMemberViewController:(id)arg1 didSelectFamilyMember:(id)arg2;
+- (void)homeShareViewController:(id)arg1 didUpdateWith:(id)arg2;
 - (void)homeShareViewController:(id)arg1 didSelectHomeShare:(id)arg2;
 - (void)gridCollectionViewController:(id)arg1 didSelectMediaEntity:(id)arg2;
 - (void)menuCollectionViewControllerDidFinishLoading;

@@ -14,16 +14,16 @@ __attribute__((visibility("hidden")))
 {
     struct List _backingList;
     RLMRealm *_realm;
-    struct RLMClassInfo *_objectInfo;
-    struct RLMClassInfo *_ownerInfo;
-    struct unique_ptr<RLMObservationInfo, std::__1::default_delete<RLMObservationInfo>> _observationInfo;
+    void *_objectInfo;
+    void *_ownerInfo;
+    struct unique_ptr<RLMObservationInfo, std::default_delete<RLMObservationInfo>> _observationInfo;
 }
 
-+ (id)objectWithThreadSafeReference:(unique_ptr_d0e912ad)arg1 metadata:(id)arg2 realm:(id)arg3;
++ (id)objectWithThreadSafeReference:(unique_ptr_14b91335)arg1 metadata:(id)arg2 realm:(id)arg3;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id objectiveCMetadata;
-- (unique_ptr_d0e912ad)makeThreadSafeReference;
+- (unique_ptr_14b91335)makeThreadSafeReference;
 - (id)addNotificationBlock:(CDUnknownBlockType)arg1;
 - (id)fastEnumerator;
 - (struct TableView)tableView;
@@ -56,13 +56,13 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
-- (_Bool)isBackedByList:(const struct List *)arg1;
-@property(readonly, nonatomic) struct RLMClassInfo *objectInfo;
+- (_Bool)isBackedByList:(const void *)arg1;
+@property(readonly, nonatomic) void *objectInfo;
 - (_Bool)isInvalidated;
 @property(readonly, nonatomic) unsigned long long count;
 @property(readonly, nonatomic) RLMRealm *realm;
 - (id)initWithParent:(id)arg1 property:(id)arg2;
-- (id)initWithList:(struct List)arg1 realm:(id)arg2 parentInfo:(struct RLMClassInfo *)arg3 property:(id)arg4;
+- (id)initWithList:(struct List)arg1 realm:(id)arg2 parentInfo:(void *)arg3 property:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

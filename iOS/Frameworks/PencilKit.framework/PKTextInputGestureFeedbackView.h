@@ -18,22 +18,7 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool _needsRefresh; // @synthesize _needsRefresh=__needsRefresh;
-@property(nonatomic) struct CGRect _reserveSpaceCaretRect; // @synthesize _reserveSpaceCaretRect=__reserveSpaceCaretRect;
-@property(retain, nonatomic) UIView *_reserveSpaceView; // @synthesize _reserveSpaceView=__reserveSpaceView;
-@property(retain, nonatomic) NSArray *_highlightViews; // @synthesize _highlightViews=__highlightViews;
-@property(nonatomic) __weak PKTextInputFeedbackController *dataSourceController; // @synthesize dataSourceController=_dataSourceController;
-- (id)reserveSpaceRects;
-- (void)cancelShowingReserveSpaceIntro;
-- (void)beginShowingReserveSpaceIntro;
-- (void)_prepareForReserveSpaceAnimations;
-- (void)_updateHighlightViewsLookForFeedbackType:(long long)arg1 element:(id)arg2;
-- (void)_ensureHighlightViewsCount:(long long)arg1;
-- (struct UIEdgeInsets)_rectInsetsToApplyForFeedbackType:(long long)arg1;
-- (id)_highlightTextRectsToDisplayForElementContent:(id)arg1 range:(struct _NSRange)arg2 feedbackType:(long long)arg3;
-- (struct CGRect)_selectionClipRectForElement:(id)arg1;
 - (void)layoutSubviews;
-- (void)setNeedsRefreshFeedbackViews;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

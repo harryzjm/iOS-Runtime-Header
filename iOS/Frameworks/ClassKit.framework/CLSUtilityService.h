@@ -19,12 +19,16 @@
 + (Class)endpointClass;
 - (void).cxx_destruct;
 @property(retain, nonatomic) CLSEndpointConnection *endpointConnection; // @synthesize endpointConnection=_endpointConnection;
-- (void)setUserDefaultValue:(id)arg1 forDefaultNamed:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)getUserDefaultForDefaultNamed:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)userDefaultsConfigurationDictionaryWithCompletion:(CDUnknownBlockType)arg1;
+- (void)deleteOrganization:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)addOrganization:(id)arg1 withLocations:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)addAdminRequestor:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)authorizationStatusForHandoutAssignedItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)authorizationStatusForContextAtPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)removeAuthorizationStatus:(unsigned long long)arg1 forHandoutAssignedItem:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeAuthorizationStatus:(unsigned long long)arg1 forContextAtPath:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)addAuthorizationStatus:(unsigned long long)arg1 forHandoutAssignedItem:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)addAuthorizationStatus:(unsigned long long)arg1 forContextAtPath:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)renewCredentialsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)statusWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchReportsWithPredicate:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)syncFetchWithCompletion:(CDUnknownBlockType)arg1;
@@ -38,7 +42,6 @@
 - (void)setDevMode:(int)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)syncGetDevModeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getDevModeWithCompletion:(CDUnknownBlockType)arg1;
-- (void)addDevModePerson:(id)arg1 role:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)syncRecreateDevelopmentDatabaseWithCompletion:(CDUnknownBlockType)arg1;
 - (void)recreateDevelopmentDatabaseWithCompletion:(CDUnknownBlockType)arg1;
 - (void)recreateDatabase:(_Bool)arg1 andTerminateDaemonWithCompletion:(CDUnknownBlockType)arg2;

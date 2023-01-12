@@ -16,16 +16,21 @@
 {
     NSString *_identifier;
     NSString *_modeIdentifier;
+    NSDate *_modeConfigurationModifiedDate;
     DNDModeAssertionLifetime *_lifetime;
     NSDate *_userVisibleEndDate;
+    unsigned long long _reason;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)detailsWithIdentifier:(id)arg1 modeIdentifier:(id)arg2 lifetime:(id)arg3 reason:(unsigned long long)arg4;
 + (id)detailsWithIdentifier:(id)arg1 modeIdentifier:(id)arg2 lifetime:(id)arg3;
 + (id)userRequestedAssertionDetailsWithIdentifier:(id)arg1 modeIdentifier:(id)arg2 lifetime:(id)arg3;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSDate *userVisibleEndDate; // @synthesize userVisibleEndDate=_userVisibleEndDate;
+@property(readonly, nonatomic) unsigned long long reason; // @synthesize reason=_reason;
 @property(readonly, copy, nonatomic) DNDModeAssertionLifetime *lifetime; // @synthesize lifetime=_lifetime;
+@property(readonly, copy, nonatomic) NSDate *modeConfigurationModifiedDate; // @synthesize modeConfigurationModifiedDate=_modeConfigurationModifiedDate;
 @property(readonly, copy, nonatomic) NSString *modeIdentifier; // @synthesize modeIdentifier=_modeIdentifier;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (void)encodeWithCoder:(id)arg1;
@@ -35,7 +40,7 @@
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)_initWithIdentifier:(id)arg1 modeIdentifier:(id)arg2 lifetime:(id)arg3 userVisibleEndDate:(id)arg4;
+- (id)_initWithIdentifier:(id)arg1 modeIdentifier:(id)arg2 modeConfigurationModifiedDate:(id)arg3 lifetime:(id)arg4 reason:(unsigned long long)arg5 userVisibleEndDate:(id)arg6;
 - (id)_initWithDetails:(id)arg1;
 - (id)init;
 @property(readonly, nonatomic, getter=isUserRequested) _Bool userRequested; // @dynamic userRequested;

@@ -7,12 +7,17 @@
 #import <PassKitUI/PKPassPaymentPayStateViewDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentServiceDelegate-Protocol.h>
 
-@class NSDate, NSMutableDictionary, NSObject, NSString, PKExpressTransactionState, PKPassPaymentPayStateView, PKPaymentService, PKTransitBalanceModel, UIView;
+@class NSArray, NSDate, NSMutableDictionary, NSObject, NSString, PKExpressTransactionState, PKPassPaymentPayStateView, PKPassTileGroupView, PKPaymentService, PKTransitBalanceModel, UIView;
 @protocol OS_dispatch_source, PKPaymentDashboardCellActionHandleable;
 
 @interface PKPassPaymentConfirmationView <PKPassPaymentPayStateViewDelegate, PKPaymentServiceDelegate>
 {
     PKPassPaymentPayStateView *_payStateView;
+    UIView<PKPaymentDashboardCellActionHandleable> *_singleValueCellPrimary;
+    UIView<PKPaymentDashboardCellActionHandleable> *_singleValueCellSecondary;
+    UIView<PKPaymentDashboardCellActionHandleable> *_dualValueCellPrimary;
+    PKPassTileGroupView *_tileGroupView;
+    UIView *_displayedCellPrimary;
     _Bool _animated;
     PKExpressTransactionState *_expressState;
     _Bool _receivedTransaction;
@@ -22,16 +27,15 @@
     _Bool _showingSuccessResolution;
     _Bool _animatingResolution;
     _Bool _showingAlert;
+    _Bool _isStandaloneTransaction;
+    long long _transactionType;
     NSObject<OS_dispatch_source> *_activityResolutionTimer;
     unsigned long long _resolutionCounter;
     NSDate *_visibleDate;
     NSMutableDictionary *_registeredExpressObservers;
     PKPaymentService *_paymentService;
+    NSArray *_tiles;
     PKTransitBalanceModel *_transitBalanceModel;
-    UIView<PKPaymentDashboardCellActionHandleable> *_singleValueCellPrimary;
-    UIView<PKPaymentDashboardCellActionHandleable> *_singleValueCellSecondary;
-    UIView<PKPaymentDashboardCellActionHandleable> *_dualValueCellPrimary;
-    UIView<PKPaymentDashboardCellActionHandleable> *_displayedCellPrimary;
 }
 
 - (void).cxx_destruct;
@@ -43,6 +47,7 @@
 - (_Bool)_isRegisteredForAllExpressTransactionNotifications;
 - (id)_expressNotificationNames;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveBalanceUpdate:(id)arg2;
+- (void)passWithUniqueIdentifier:(id)arg1 didUpdateTiles:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithTransitPassProperties:(id)arg2;
 - (void)transactionSourceIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
 - (void)payStateView:(id)arg1 revealingCheckmark:(_Bool)arg2;
@@ -61,6 +66,7 @@
 - (void)_updateContentSecondaryView;
 - (void)_updateContentPrimaryView;
 - (_Bool)_shouldDisplaySecondaryView;
+- (_Bool)_canDisplaySecondaryView;
 - (_Bool)_shouldDisplayPrimaryView;
 - (id)_findOrCreateSecondaryView;
 - (id)_findOrCreatePrimaryFusedDoubleCellView;

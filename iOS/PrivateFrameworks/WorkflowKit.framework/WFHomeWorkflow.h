@@ -6,11 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class HFTriggerActionsSetsUISummary, NSArray, NSData, NSString, WFWorkflow;
+@class HFTriggerActionsSetsUISummary, NSArray, NSData, NSString, NSUUID, WFWorkflow;
 
 @interface WFHomeWorkflow : NSObject
 {
     WFWorkflow *_cachedWorkflow;
+    NSUUID *_homeIdentifier;
+    NSArray *_shortcutsDictionaryRepresentations;
     NSData *_data;
     HFTriggerActionsSetsUISummary *_actionSetsSummary;
 }
@@ -23,7 +25,10 @@
 - (id)workflowWithEnvironment:(long long)arg1 error:(id *)arg2;
 - (id)actionSetsFromTriggerActionSetsBuilders:(id)arg1;
 - (id)triggerActionSetsBuilders;
+@property(readonly, nonatomic) _Bool requiresDeviceUnlockEnsuringHomesAreLoaded;
 @property(readonly, nonatomic) _Bool requiresDeviceUnlock;
+@property(readonly, nonatomic) NSArray *shortcutsDictionaryRepresentations; // @synthesize shortcutsDictionaryRepresentations=_shortcutsDictionaryRepresentations;
+@property(readonly, nonatomic) NSUUID *homeIdentifier; // @synthesize homeIdentifier=_homeIdentifier;
 @property(readonly, copy, nonatomic) NSArray *summaryIconDescriptors;
 @property(readonly, copy, nonatomic) NSArray *summaryIconNames;
 @property(readonly, copy, nonatomic) NSString *summaryString;

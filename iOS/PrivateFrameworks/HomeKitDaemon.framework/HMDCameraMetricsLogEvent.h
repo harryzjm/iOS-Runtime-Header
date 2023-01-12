@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitMetrics/HMMLogEvent.h>
+
 @class HMDAccessory, HMDCameraSessionID;
 
-@interface HMDCameraMetricsLogEvent
+@interface HMDCameraMetricsLogEvent : HMMLogEvent
 {
     _Bool _isLocal;
     HMDCameraSessionID *_sessionID;
@@ -17,7 +19,7 @@
 @property(readonly) _Bool isLocal; // @synthesize isLocal=_isLocal;
 @property(readonly, nonatomic) __weak HMDAccessory *accessory; // @synthesize accessory=_accessory;
 @property(readonly, nonatomic) HMDCameraSessionID *sessionID; // @synthesize sessionID=_sessionID;
-- (id)initWithMetricUUID:(id)arg1 sessionID:(id)arg2 cameraAccessory:(id)arg3 isLocal:(_Bool)arg4;
+- (id)initWithSessionID:(id)arg1 cameraAccessory:(id)arg2 isLocal:(_Bool)arg3;
 
 @end
 

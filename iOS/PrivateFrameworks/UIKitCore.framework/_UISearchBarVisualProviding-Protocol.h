@@ -32,6 +32,7 @@
 @property(nonatomic) struct UIOffset searchFieldBackgroundPositionAdjustment;
 @property(retain, nonatomic) UIImage *scopeBarBackgroundImage;
 @property(retain, nonatomic) UIImage *separatorImage;
+@property(readonly, nonatomic, getter=isFrozenForDismissalCrossfade) _Bool frozenForDismissalCrossfade;
 @property(nonatomic, getter=isHostedByNavigationBar) _Bool hostedByNavigationBar;
 @property(nonatomic, getter=isInNavigationPalette) _Bool inNavigationPalette;
 @property(nonatomic, getter=isPlacedInToolbar) _Bool placedInToolbar;

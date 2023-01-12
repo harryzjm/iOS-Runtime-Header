@@ -16,7 +16,7 @@
     CDUnknownBlockType _invalidationHandler;
 }
 
-+ (id)assertionWithStatusBarStyleOverrides:(int)arg1 forPID:(int)arg2 exclusive:(_Bool)arg3 showsWhenForeground:(_Bool)arg4;
++ (id)assertionWithStatusBarStyleOverrides:(unsigned long long)arg1 forPID:(int)arg2 exclusive:(_Bool)arg3 showsWhenForeground:(_Bool)arg4;
 + (id)backgroundLocationAssertionForPID:(int)arg1;
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
@@ -34,10 +34,10 @@
 @property(readonly, nonatomic) _Bool showsWhenForeground;
 @property(readonly, nonatomic, getter=isExclusive) _Bool exclusive;
 @property(readonly, nonatomic) int pid;
-@property(readonly, nonatomic) int statusBarStyleOverrides;
+@property(readonly, nonatomic) unsigned long long statusBarStyleOverrides;
 - (void)dealloc;
 - (id)initWithStatusBarStyleOverridesAssertionData:(id)arg1;
-- (id)initWithStatusBarStyleOverrides:(int)arg1 forPID:(int)arg2 exclusive:(_Bool)arg3 showsWhenForeground:(_Bool)arg4;
+- (id)initWithStatusBarStyleOverrides:(unsigned long long)arg1 forPID:(int)arg2 exclusive:(_Bool)arg3 showsWhenForeground:(_Bool)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

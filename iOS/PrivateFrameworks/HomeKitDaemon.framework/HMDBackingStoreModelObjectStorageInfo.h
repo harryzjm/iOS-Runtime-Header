@@ -6,7 +6,7 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HMFVersion;
+@class HMFVersion, NSSet;
 
 @interface HMDBackingStoreModelObjectStorageInfo : HMFObject
 {
@@ -16,9 +16,11 @@
     HMFVersion *_readOnly;
     HMFVersion *_unavailable;
     id _defaultValue;
+    NSSet *_decodeClasses;
 }
 
 + (id)deprecatedField;
++ (id)infoWithClass:(Class)arg1 additionalDecodeClasses:(id)arg2;
 + (id)infoWithClass:(Class)arg1 defaultValue:(id)arg2 logging:(unsigned long long)arg3 readOnly:(id)arg4 unavailable:(id)arg5;
 + (id)infoWithClass:(Class)arg1 defaultValue:(id)arg2 logging:(unsigned long long)arg3 readOnly:(id)arg4;
 + (id)infoWithClass:(Class)arg1 defaultValue:(id)arg2 logging:(unsigned long long)arg3;
@@ -28,6 +30,7 @@
 + (id)infoWithClass:(Class)arg1 logging:(unsigned long long)arg2;
 + (id)infoWithClass:(Class)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSSet *decodeClasses; // @synthesize decodeClasses=_decodeClasses;
 @property(readonly, nonatomic) _Bool defaultValueSet; // @synthesize defaultValueSet=_defaultValueSet;
 @property(readonly, nonatomic) id defaultValue; // @synthesize defaultValue=_defaultValue;
 @property(retain, nonatomic) HMFVersion *unavailable; // @synthesize unavailable=_unavailable;
@@ -35,7 +38,7 @@
 @property(readonly, nonatomic) unsigned long long logging; // @synthesize logging=_logging;
 @property(readonly, nonatomic) Class classObj; // @synthesize classObj=_classObj;
 - (id)description;
-- (id)initWithClass:(Class)arg1 logging:(unsigned long long)arg2 readOnly:(id)arg3 unavailable:(id)arg4 defaultSet:(_Bool)arg5 defaultValue:(id)arg6;
+- (id)initWithClass:(Class)arg1 logging:(unsigned long long)arg2 readOnly:(id)arg3 unavailable:(id)arg4 defaultSet:(_Bool)arg5 defaultValue:(id)arg6 additonalDecodeClasses:(id)arg7;
 
 @end
 

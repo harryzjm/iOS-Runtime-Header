@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSOperation, NSOperationQueue, UIViewController, VSAppSettingsViewModel, VSIdentityProvider, VSOptional, VSPersistentStorage, VSRestrictionsCenter;
+@class NSArray, NSOperation, NSOperationQueue, UIViewController, VSAccountChannels, VSAppSettingsViewModel, VSIdentityProvider, VSPersistentStorage, VSRestrictionsCenter;
 
 @interface VSAppSettingsFacade : NSObject
 {
@@ -21,8 +21,7 @@
     NSOperation *_currentPresentationOperation;
     VSPersistentStorage *_storage;
     VSRestrictionsCenter *_restrictionsCenter;
-    VSOptional *_identityProviderID;
-    NSArray *_featuredAdamIDs;
+    VSAccountChannels *_accountChannels;
     NSArray *_knownAppBundles;
     NSArray *_unredeemedVouchers;
     VSAppSettingsViewModel *_mvpdAppSettingsViewModel;
@@ -37,8 +36,7 @@
 @property(nonatomic) _Bool needsUpdateApps; // @synthesize needsUpdateApps=_needsUpdateApps;
 @property(copy, nonatomic) NSArray *unredeemedVouchers; // @synthesize unredeemedVouchers=_unredeemedVouchers;
 @property(copy, nonatomic) NSArray *knownAppBundles; // @synthesize knownAppBundles=_knownAppBundles;
-@property(copy, nonatomic) NSArray *featuredAdamIDs; // @synthesize featuredAdamIDs=_featuredAdamIDs;
-@property(copy, nonatomic) VSOptional *identityProviderID; // @synthesize identityProviderID=_identityProviderID;
+@property(retain, nonatomic) VSAccountChannels *accountChannels; // @synthesize accountChannels=_accountChannels;
 @property(retain, nonatomic) VSRestrictionsCenter *restrictionsCenter; // @synthesize restrictionsCenter=_restrictionsCenter;
 @property(retain, nonatomic) VSPersistentStorage *storage; // @synthesize storage=_storage;
 @property(retain, nonatomic) NSOperation *currentPresentationOperation; // @synthesize currentPresentationOperation=_currentPresentationOperation;
@@ -51,8 +49,9 @@
 - (_Bool)shouldShowMVPDAppInstallPrompt;
 - (_Bool)shouldShowMVPDAppInstallPromptFromViewController:(id)arg1;
 - (void)_setNeedsUpdateApps;
+- (id)viewModelsForAppDescriptions:(id)arg1 bundleByBundleID:(id)arg2 vouchersForProvider:(id)arg3 restrictionsCenter:(id)arg4 privacyFacade:(id)arg5;
+- (id)viewModelsForChannelAppDescriptions:(id)arg1 andNonChannelAppDescriptions:(id)arg2;
 - (void)_updateApps;
-- (id)_fetchOperationForAdamIDs:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (id)initWithStorage:(id)arg1 restrictionsCenter:(id)arg2;

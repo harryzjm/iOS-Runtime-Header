@@ -12,6 +12,7 @@
 @interface CKPinnedConversationCollectionViewCell : UICollectionViewCell
 {
     _Bool _showsBackgroundViewWhenSelected;
+    _Bool _allowActivitySuppressionWhenSelected;
     _Bool _isShowingUnpinAccessory;
     _Bool _isShowingCheckboxAccessory;
     _Bool _isPreparingForReuse;
@@ -36,6 +37,7 @@
 @property(nonatomic, setter=setShowingCheckboxAccessory:) _Bool isShowingCheckboxAccessory; // @synthesize isShowingCheckboxAccessory=_isShowingCheckboxAccessory;
 @property(nonatomic, setter=setShowingUnpinAccessory:) _Bool isShowingUnpinAccessory; // @synthesize isShowingUnpinAccessory=_isShowingUnpinAccessory;
 @property(readonly, nonatomic) unsigned long long editingMode; // @synthesize editingMode=_editingMode;
+@property(nonatomic) _Bool allowActivitySuppressionWhenSelected; // @synthesize allowActivitySuppressionWhenSelected=_allowActivitySuppressionWhenSelected;
 @property(nonatomic) _Bool showsBackgroundViewWhenSelected; // @synthesize showsBackgroundViewWhenSelected=_showsBackgroundViewWhenSelected;
 @property(retain, nonatomic) CKConversationListAccessoryView *unpinAccessoryView; // @synthesize unpinAccessoryView=_unpinAccessoryView;
 @property(retain, nonatomic) CKPinnedConversationView *pinnedConversationView; // @synthesize pinnedConversationView=_pinnedConversationView;

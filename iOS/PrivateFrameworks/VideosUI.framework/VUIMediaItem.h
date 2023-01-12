@@ -35,6 +35,7 @@
 @property(readonly, copy, nonatomic) VUIMediaItemCredits *credits;
 @property(readonly, copy, nonatomic) NSString *studio;
 @property(readonly, copy, nonatomic) NSNumber *episodeIndexInSeries;
+@property(readonly, copy, nonatomic) NSNumber *fractionalEpisodeNumber;
 @property(readonly, copy, nonatomic) NSNumber *episodeNumber;
 @property(readonly, copy, nonatomic) NSObject<VUIMediaEntityIdentifier> *seasonIdentifier;
 @property(readonly, copy, nonatomic) NSString *seasonTitle;

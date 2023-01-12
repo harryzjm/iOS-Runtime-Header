@@ -22,7 +22,7 @@
 - (void)addLayer:(id)arg1;
 - (unsigned int)psdLayerBlendModeForCGBlendMode:(int)arg1;
 - (void)deleteLayoutMetricsChannelAtIndex:(unsigned int)arg1;
-- (struct PSDGradient *)newPSDGradientFromCUIPSDGradient:(id)arg1;
+- (void *)newPSDGradientFromCUIPSDGradient:(id)arg1;
 - (void)insertLayoutMetricsChannel:(id)arg1 atIndex:(unsigned int)arg2;
 - (void)addLayoutMetricsChannel:(id)arg1;
 - (id)initWithPixelWidth:(unsigned long long)arg1 pixelHeight:(unsigned long long)arg2;

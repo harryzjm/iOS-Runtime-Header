@@ -15,7 +15,11 @@
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)accessibilityElements;
 - (id)_axVLFElements;
+- (unsigned long long)accessibilityTraits;
+- (id)accessibilityHint;
+- (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
+- (_Bool)_axIsShowingVLFUI;
 - (_Bool)_axIsShowingVLFCallout;
 - (id)_axPuck;
 - (void)_accessibilityLoadAccessibilityInformation;

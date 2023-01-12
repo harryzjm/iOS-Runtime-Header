@@ -14,12 +14,12 @@
 + (id)p_prepareUnarchivedShadowPresetsByRemovingHiddenPresets:(id)arg1 duringUpgrade:(_Bool)arg2;
 + (id)p_prepareDefaultShadowPresetsForUpgrade:(_Bool)arg1;
 + (id)p_prepareShadowPresetsFromRawUnarchivedList:(id)arg1 fromVersion:(unsigned long long)arg2;
-+ (void)bootstrapPresetsOfKind:(id)arg1 inTheme:(id)arg2 alternate:(int)arg3;
++ (void)bootstrapPresetsOfKind:(id)arg1 inTheme:(id)arg2 alternate:(unsigned long long)arg3;
 + (id)presetKinds;
 + (void)tsdRegisterPresetSourceClasses;
 - (id)p_shadowPresetsToArchive;
-- (void)tsdSaveToArchive:(struct ThemeArchive *)arg1 archiver:(id)arg2;
-- (void)tsdLoadFromArchive:(const struct ThemeArchive *)arg1 unarchiver:(id)arg2;
+- (void)tsdSaveToArchive:(void *)arg1 archiver:(id)arg2;
+- (void)tsdLoadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)installMoviePresetsInStylesheet:(id)arg1;
 - (void)installDrawingLinePresetsInStylesheet:(id)arg1 forDocumentUpgrade:(_Bool)arg2;
 - (void)p_addStyleIfNotExisting:(id)arg1 inStylesheet:(id)arg2 withIdentifier:(id)arg3 presets:(id)arg4;

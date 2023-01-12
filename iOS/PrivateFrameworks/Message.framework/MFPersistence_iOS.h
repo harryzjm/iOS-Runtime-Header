@@ -8,7 +8,7 @@
 
 #import <Message/EFLoggable-Protocol.h>
 
-@class EDConversationPersistence, EDListUnsubscribeHandler, EDLocalActionPersistence, EDMailboxPersistence, EDMessageChangeManager, EDMessagePersistence, EDPersistenceDatabase, EDSearchableIndexManager, EDServerMessagePersistenceFactory, EDThreadPersistence, MFMailMessageLibrary, NSString;
+@class EDAttachmentPersistenceManager, EDConversationPersistence, EDListUnsubscribeHandler, EDLocalActionPersistence, EDMailboxPersistence, EDMessageChangeManager, EDMessagePersistence, EDPersistenceDatabase, EDRemoteContentCacheConfiguration, EDRemoteContentManager, EDRemoteContentPersistence, EDSearchableIndexManager, EDServerMessagePersistenceFactory, EDThreadPersistence, EMRemoteContentURLCache, EMRemoteContentURLSession, MFMailMessageLibrary, NSString;
 @protocol EDAccountsProvider, EDRemoteSearchProvider, EMUserProfileProvider;
 
 @interface MFPersistence_iOS : EDPersistence <EFLoggable>
@@ -24,6 +24,12 @@
     EDSearchableIndexManager *_searchableIndexManager;
     EDServerMessagePersistenceFactory *_serverMessagePersistenceFactory;
     EDThreadPersistence *_threadPersistence;
+    EDRemoteContentManager *_remoteContentManager;
+    EDRemoteContentPersistence *_remoteContentPersistence;
+    EDAttachmentPersistenceManager *_attachmentPersistenceManager;
+    EDRemoteContentCacheConfiguration *_remoteContentCacheConfiguration;
+    EMRemoteContentURLCache *_remoteContentURLCache;
+    EMRemoteContentURLSession *_remoteContentURLSession;
     id <EMUserProfileProvider> _userProfileProvider;
     EDListUnsubscribeHandler *_listUnsubscribeHandler;
     MFMailMessageLibrary *_library;
@@ -34,6 +40,14 @@
 @property(nonatomic) __weak MFMailMessageLibrary *library; // @synthesize library=_library;
 @property(retain, nonatomic) EDListUnsubscribeHandler *listUnsubscribeHandler; // @synthesize listUnsubscribeHandler=_listUnsubscribeHandler;
 @property(retain, nonatomic) id <EMUserProfileProvider> userProfileProvider; // @synthesize userProfileProvider=_userProfileProvider;
+- (void)setRemoteContentURLSession:(id)arg1;
+- (id)remoteContentURLSession;
+- (void)setRemoteContentURLCache:(id)arg1;
+- (id)remoteContentURLCache;
+- (id)remoteContentCacheConfiguration;
+- (id)attachmentPersistenceManager;
+- (id)remoteContentPersistence;
+- (id)remoteContentManager;
 - (id)threadPersistence;
 - (id)serverMessagePersistenceFactory;
 - (id)searchableIndexManager;
@@ -45,8 +59,10 @@
 - (id)database;
 - (id)conversationPersistence;
 @property(retain, nonatomic) id <EDAccountsProvider> accountsProvider; // @synthesize accountsProvider=_accountsProvider;
+- (id)diagnosticStringForIndexStatus;
 - (void)test_tearDown;
 - (void)scheduleRecurringActivity;
+- (void)_configureAttachmentPersistenceManager;
 - (void)_configureSearchableIndexManagerIfNecessary;
 - (void)setUpWithMailboxProvider:(id)arg1 remoteSearchProvider:(id)arg2;
 - (id)initWithPath:(id)arg1 inMemoryIdentifier:(id)arg2 library:(id)arg3 propertyMapper:(id)arg4;

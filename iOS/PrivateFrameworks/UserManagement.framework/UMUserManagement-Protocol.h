@@ -15,6 +15,7 @@
 @property(readonly, nonatomic) _Bool isLoginSession;
 @property(readonly, copy, nonatomic) UMUser *loginUser;
 @property(readonly, copy, nonatomic) UMUser *currentUser;
+@property(readonly, nonatomic) _Bool isSharedIPad;
 @property(readonly, nonatomic) _Bool isMultiUser;
 - (void)registerUserListUpdateObserver:(id <UMUserListUpdateObserver>)arg1;
 - (void)disableUser:(UMUser *)arg1 completionHandler:(void (^)(NSError *))arg2;

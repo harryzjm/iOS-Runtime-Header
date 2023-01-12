@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class BRCSyncOperationThrottleParams, NSArray, NSDictionary, NSMutableDictionary, NSSet, NSString;
+@class BRCSyncOperationThrottleParams, NSArray, NSDictionary, NSIndexSet, NSMutableDictionary, NSSet, NSString;
 @protocol OS_xpc_object;
 
 @interface BRCUserDefaults : NSObject
@@ -18,9 +18,9 @@
 }
 
 + (int)rampNumberWithSession:(id)arg1;
-+ (void)saveServerConfigToDB:(id)arg1;
-+ (void)loadCachedServerConfigFromDB:(id)arg1;
 + (void)reset;
++ (void)loadCachedServerConfiguration;
++ (id)cachedServerConfigurationPath;
 + (void)setServerConfigurationURL:(id)arg1 whenLoaded:(CDUnknownBlockType)arg2;
 + (id)defaultsForSideCar;
 + (id)defaultsForSharedZone;
@@ -28,7 +28,30 @@
 + (id)defaultsForMangledID:(id)arg1;
 + (id)_userDefaultsManager;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long lostItemUnderUnknownParentBeforeDeepScan;
+@property(readonly, nonatomic) double maxPauseFileTimeout;
+@property(readonly, nonatomic) _Bool skipContainerRecordsWithMissingAssets;
+@property(readonly, nonatomic) double syncConsistencyTimeout;
+@property(readonly, nonatomic) double syncConsistencyXPCActivityCheckLeeway;
+@property(readonly, nonatomic) double syncConsistencyXPCActivityDeferralCheckInterval;
+@property(readonly, nonatomic) NSObject<OS_xpc_object> *syncConsistencyCheckerXPCActivity;
+@property(readonly, nonatomic) _Bool syncConsistencyCheckerSnapshotting;
+@property(readonly, nonatomic) _Bool syncConsistencyCheckerEnabled;
+@property(readonly, nonatomic) unsigned int syncConsistencyMaxEventsCount;
+@property(readonly, nonatomic) unsigned int syncConsistencyPackageChecksumRate;
+@property(readonly, nonatomic) unsigned int syncConsistencyFileChecksumRate;
+@property(readonly, nonatomic) double operationTimeout;
+@property(readonly, nonatomic) _Bool supportsServerSideAssetCopies;
+@property(readonly, nonatomic) _Bool hasMultiAccountsHandling;
+@property(readonly, nonatomic) _Bool dbIntegrityCheckSyncUpJobs;
+@property(readonly, nonatomic) _Bool dbIntegrityCheckReaderJobs;
+@property(readonly, nonatomic) _Bool dbIntegrityCheckUploadJobs;
+@property(readonly, nonatomic) _Bool dbIntegrityCheckDownloadJobs;
+@property(readonly, nonatomic) _Bool dbIntegrityCheckApplyJobs;
+@property(readonly, nonatomic) _Bool integrityCheckBoosting;
+@property(readonly, nonatomic) NSObject<OS_xpc_object> *dbIntegrityCheckXPCActivity;
 @property(readonly, nonatomic) _Bool preventConcurrentModifyRecordsOperations;
+@property(readonly, nonatomic) NSSet *recordsToIgnoreOnSyncDown;
 @property(readonly, nonatomic) NSSet *healthErrorsToReport;
 @property(readonly, nonatomic) NSSet *healthErrorsForReset;
 - (id)_healthErrorSetForKey:(id)arg1 byDefault:(id)arg2;
@@ -41,9 +64,11 @@
 @property(readonly, nonatomic) NSSet *telemetryHeaderSupportedClasses;
 @property(readonly, nonatomic) double telemetryApplySchedulerTimeout;
 @property(readonly, nonatomic) long long telemetryRetryCountForPermenentFailure;
+@property(readonly, nonatomic) NSIndexSet *telemetryEventDisabledMessages;
 @property(readonly, nonatomic) long long telemetryEventReportBatchSize;
 @property(readonly, nonatomic) unsigned int telemetryEventQueueReductionAmount;
 @property(readonly, nonatomic) long long telemetryEventQueueSize;
+@property(readonly, nonatomic) _Bool shouldReportTelemetryEvents;
 @property(readonly, nonatomic) long long timeoutForCZMProcessing;
 @property(readonly, nonatomic) _Bool reportXPCErrorOnPCSChain;
 @property(readonly, nonatomic) double healthZoneTimeIntervalForMaxNumberOfResets;
@@ -60,9 +85,11 @@
 @property(readonly, nonatomic) _Bool useFailIfOutdatedForResets;
 @property(readonly, nonatomic) NSObject<OS_xpc_object> *appTelemetryGatherXPCActivity;
 @property(readonly, nonatomic) NSObject<OS_xpc_object> *analyticsReportXPCActivity;
+@property(readonly, nonatomic) unsigned long long readerRetryCountForFailure;
 @property(readonly, nonatomic) unsigned long long applyRetryCountForFailure;
 @property(readonly, nonatomic) unsigned long long downloadRetryCountForFailure;
 @property(readonly, nonatomic) unsigned long long uploadRetryCountForFailure;
+@property(readonly, nonatomic) unsigned long long syncUpRetryCountForFailure;
 @property(readonly, nonatomic) double syncDownDelayForFailure;
 @property(readonly, nonatomic) double syncUpDelayForFailure;
 @property(readonly, nonatomic) _Bool canSaveRecordsDirectlyForDeltaSync;
@@ -172,6 +199,7 @@
 @property(readonly, nonatomic) double markChildLostBackoff;
 @property(readonly, nonatomic) double readerLostItemBackoff;
 @property(readonly, nonatomic) int writerApplyBatchSize;
+@property(readonly, nonatomic) unsigned int applySchedulerJobMaxRetriesBeforeAssert;
 @property(readonly, nonatomic) double readerPackageProcessingDelay;
 @property(readonly, nonatomic) int readerScanBatchSize;
 @property(readonly, nonatomic) int writerMaxConcurrentIOs;
@@ -188,6 +216,7 @@
 @property(readonly, nonatomic) unsigned long long downloadBatchRecordsCount;
 @property(readonly, nonatomic) unsigned long long uploadBatchCount;
 @property(readonly, nonatomic) unsigned long long uploadBatchRecordsCount;
+@property(readonly, nonatomic) long long uploadMaxPkgFileSize;
 @property(readonly, nonatomic) long long uploadMaxInPkgFileSize;
 @property(readonly, nonatomic) long long uploadMaxFileSize;
 @property(readonly, nonatomic) unsigned long long maxNumberOfFilesInAFolder;
@@ -257,6 +286,7 @@
 @property(readonly, nonatomic) NSSet *nonEvictablePathComponents;
 @property(readonly, nonatomic) NSSet *nonEvictableExtensions;
 @property(readonly, nonatomic) NSSet *nonAutoEvictableExtensions;
+@property(readonly, nonatomic) NSSet *shouldBeGreedyExtensions;
 @property(readonly, nonatomic) NSSet *extensionsSkippingBundleBitFixup;
 @property(readonly, nonatomic) _Bool shouldFixupBundleBitOnPackages;
 @property(readonly, nonatomic) NSSet *iworkShareableExtensions;
@@ -277,6 +307,8 @@
 @property(readonly, nonatomic) unsigned long long maxPreservedXattrBlobSize;
 @property(readonly, nonatomic) unsigned long long maxXattrBlobSize;
 - (id)xpcActivityDictionaryForKey:(id)arg1 byDefault:(id)arg2;
+- (id)indexSetForKey:(id)arg1 inheritFromGlobal:(_Bool)arg2 byDefault:(id)arg3;
+- (id)indexSetForKey:(id)arg1 byDefault:(id)arg2;
 - (_Bool)boolForKey:(id)arg1 inheritFromGlobal:(_Bool)arg2 byDefault:(_Bool)arg3;
 - (_Bool)boolForKey:(id)arg1 byDefault:(_Bool)arg2;
 - (double)doubleForKey:(id)arg1 min:(double)arg2 max:(double)arg3 byDefault:(double)arg4;
@@ -285,6 +317,7 @@
 - (float)floatForKey:(id)arg1 min:(float)arg2 max:(float)arg3 byDefault:(float)arg4;
 - (float)floatForKey:(id)arg1 inheritFromGlobal:(_Bool)arg2 min:(float)arg3 max:(float)arg4 byDefault:(float)arg5;
 - (unsigned long long)unsignedLongLongForKey:(id)arg1 min:(unsigned long long)arg2 max:(unsigned long long)arg3 byDefault:(unsigned long long)arg4;
+- (unsigned int)unsignedIntForKey:(id)arg1 inheritFromGlobal:(_Bool)arg2 min:(unsigned int)arg3 max:(unsigned int)arg4 byDefault:(unsigned int)arg5;
 - (unsigned int)unsignedIntForKey:(id)arg1 min:(unsigned int)arg2 max:(unsigned int)arg3 byDefault:(unsigned int)arg4;
 - (int)intForKey:(id)arg1 min:(int)arg2 max:(int)arg3 byDefault:(int)arg4;
 - (id)objectForKey:(id)arg1 inheritFromGlobal:(_Bool)arg2 validateWithBlock:(CDUnknownBlockType)arg3;

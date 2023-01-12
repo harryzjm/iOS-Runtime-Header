@@ -9,7 +9,7 @@
 #import <Navigation/GEOServerFormatToken-Protocol.h>
 
 @class NSArray, NSString;
-@protocol GEOServerFormatTokenCountdownValue, GEOServerFormatTokenPriceValue, GEOTransitArtworkDataSource;
+@protocol GEOServerFormatTokenCountdownValue, GEOServerFormatTokenManeuverValue, GEOServerFormatTokenNumberData, GEOServerFormatTokenPriceValue, GEOServerFormatTokenUrlValue, GEOTransitArtworkDataSource;
 
 __attribute__((visibility("hidden")))
 @interface _TempToken : NSObject <GEOServerFormatToken>
@@ -26,9 +26,15 @@ __attribute__((visibility("hidden")))
     id <GEOTransitArtworkDataSource> _artworkValue;
     NSArray *_timeStampValues;
     id <GEOServerFormatTokenCountdownValue> _countdownValue;
+    id <GEOServerFormatTokenUrlValue> _urlValue;
+    id <GEOServerFormatTokenManeuverValue> _maneuverValue;
+    id <GEOServerFormatTokenNumberData> _numberData;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <GEOServerFormatTokenNumberData> numberData; // @synthesize numberData=_numberData;
+@property(retain, nonatomic) id <GEOServerFormatTokenManeuverValue> maneuverValue; // @synthesize maneuverValue=_maneuverValue;
+@property(retain, nonatomic) id <GEOServerFormatTokenUrlValue> urlValue; // @synthesize urlValue=_urlValue;
 @property(retain, nonatomic) id <GEOServerFormatTokenCountdownValue> countdownValue; // @synthesize countdownValue=_countdownValue;
 @property(retain, nonatomic) NSArray *timeStampValues; // @synthesize timeStampValues=_timeStampValues;
 @property(retain, nonatomic) id <GEOTransitArtworkDataSource> artworkValue; // @synthesize artworkValue=_artworkValue;

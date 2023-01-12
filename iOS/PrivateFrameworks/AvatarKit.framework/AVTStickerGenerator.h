@@ -7,54 +7,47 @@
 #import <objc/NSObject.h>
 
 #import <AvatarKit/SCNSceneRendererDelegate-Protocol.h>
+#import <AvatarKit/_SCNSceneCommandBufferStatusMonitor-Protocol.h>
 #import <AvatarKit/_SCNSceneRendererDelegateSPI-Protocol.h>
+#import <AvatarKit/_SCNSceneRendererResourceManagerMonitor-Protocol.h>
 
-@class AVTAvatar, AVTAvatarEnvironment, AVTStickerConfiguration, NSArray, NSString, SCNRenderer, SCNScene;
-@protocol OS_dispatch_queue;
+@class AVTAvatar, AVTAvatarEnvironment, AVTStickerConfigurationReversionContext, NSString, SCNRenderer, SCNScene;
 
-@interface AVTStickerGenerator : NSObject <SCNSceneRendererDelegate, _SCNSceneRendererDelegateSPI>
+@interface AVTStickerGenerator : NSObject <SCNSceneRendererDelegate, _SCNSceneRendererDelegateSPI, _SCNSceneCommandBufferStatusMonitor, _SCNSceneRendererResourceManagerMonitor>
 {
+    AVTStickerConfigurationReversionContext *_context;
     _Bool _async;
     AVTAvatar *_avatar;
-    NSObject<OS_dispatch_queue> *_callbackQueue;
     SCNScene *_scene;
     SCNRenderer *_renderer;
     AVTAvatarEnvironment *_environment;
-    AVTStickerConfiguration *_previousConfiguration;
-    NSArray *_overridenMorphers;
-    NSArray *_overridenPresets;
-    NSArray *_appliedShaderModifiers;
 }
 
 + (struct CGRect)clippingRectForBaseSize:(struct CGSize)arg1;
 + (id)createPropsParentNodeIfNeededInScene:(id)arg1;
-+ (id)findNodesNamed:(id)arg1 inAvatar:(id)arg2;
++ (id)findNodesNamed:(id)arg1 inHierarchy:(id)arg2;
 + (id)addCamera:(id)arg1 inScene:(id)arg2;
-+ (void)addProps:(id)arg1 toScene:(id)arg2 forAvatar:(id)arg3 withCamera:(id)arg4 forExport:(_Bool)arg5 async:(_Bool)arg6 callbackQueue:(id)arg7 completion:(CDUnknownBlockType)arg8;
-+ (void)applyConfiguration:(id)arg1 toScene:(id)arg2 withAvatar:(id)arg3 defaultCamera:(id)arg4 forExport:(_Bool)arg5 async:(_Bool)arg6 callbackQueue:(id)arg7 completion:(CDUnknownBlockType)arg8;
-+ (void)applyConfiguration:(id)arg1 toScene:(id)arg2 withAvatar:(id)arg3 defaultCamera:(id)arg4 forExport:(_Bool)arg5 completion:(CDUnknownBlockType)arg6 async:(_Bool)arg7;
-+ (void)removeConfiguration:(id)arg1 fromScene:(id)arg2 withAvatar:(id)arg3 appliedShaderModifier:(id)arg4;
-+ (void)removeConfiguration:(id)arg1 fromScene:(id)arg2 withAvatar:(id)arg3;
++ (void)addProps:(id)arg1 toScene:(id)arg2 forAvatar:(id)arg3 withCamera:(id)arg4 forExport:(_Bool)arg5 completion:(CDUnknownBlockType)arg6;
++ (void)applyConfiguration:(id)arg1 toScene:(id)arg2 withAvatar:(id)arg3 context:(id)arg4 defaultCamera:(id)arg5 forExport:(_Bool)arg6 completion:(CDUnknownBlockType)arg7;
++ (void)applyViewTransitionConfiguration:(id)arg1 toNewComponentAssetNode:(id)arg2;
++ (id)applyViewTransitionConfiguration:(id)arg1 toScene:(id)arg2 withAvatar:(id)arg3 context:(id)arg4;
 + (id)workQueue;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSArray *appliedShaderModifiers; // @synthesize appliedShaderModifiers=_appliedShaderModifiers;
-@property(retain, nonatomic) NSArray *overridenPresets; // @synthesize overridenPresets=_overridenPresets;
-@property(retain, nonatomic) NSArray *overridenMorphers; // @synthesize overridenMorphers=_overridenMorphers;
-@property(retain, nonatomic) AVTStickerConfiguration *previousConfiguration; // @synthesize previousConfiguration=_previousConfiguration;
 @property(retain, nonatomic) AVTAvatarEnvironment *environment; // @synthesize environment=_environment;
 @property(retain, nonatomic) SCNRenderer *renderer; // @synthesize renderer=_renderer;
 @property(retain, nonatomic) SCNScene *scene; // @synthesize scene=_scene;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property(nonatomic) _Bool async; // @synthesize async=_async;
 @property(retain, nonatomic) AVTAvatar *avatar; // @synthesize avatar=_avatar;
+- (void)renderer:(id)arg1 commandBufferDidCompleteWithError:(id)arg2;
+- (void)renderer:(id)arg1 didFallbackToDefaultTextureForSource:(id)arg2 message:(id)arg3;
 - (void)_renderer:(id)arg1 didBuildSubdivDataForHash:(id)arg2 dataProvider:(CDUnknownBlockType)arg3;
 - (id)_renderer:(id)arg1 subdivDataForHash:(id)arg2;
 - (void)renderer:(id)arg1 didApplyAnimationsAtTime:(double)arg2;
 - (void)stickerImageWithConfiguration:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_stickerImageWithConfiguration:(id)arg1 options:(id)arg2 startTime:(double)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)stickerImageWithConfiguration:(id)arg1 correctClipping:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)stickerImageWithConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)rendererWithConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)clearPreviousConfigurationBeforeNewConfiguration:(id)arg1;
 - (id)snapshotAtTime:(double)arg1 withRenderer:(id)arg2 configuration:(id)arg3 options:(id)arg4;
 - (void)setupRendererWithAvatar:(id)arg1;
 - (void)setupAvatar:(id)arg1;

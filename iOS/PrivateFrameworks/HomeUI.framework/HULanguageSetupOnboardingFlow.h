@@ -24,6 +24,7 @@
     NSString *_assistantDeviceIntendedRecognitionLanguage;
 }
 
++ (id)needsOnboardingForHome:(id)arg1 options:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *assistantDeviceIntendedRecognitionLanguage; // @synthesize assistantDeviceIntendedRecognitionLanguage=_assistantDeviceIntendedRecognitionLanguage;
 @property(retain, nonatomic) NSDictionary *usageOptions; // @synthesize usageOptions=_usageOptions;

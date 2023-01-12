@@ -9,6 +9,7 @@
 @interface PHAssetPhotosOneUpProperties
 {
     _Bool _reverseLocationDataIsValid;
+    _Bool _shiftedLocationIsValid;
     NSData *_reverseLocationData;
     unsigned long long _variationSuggestionStates;
 }
@@ -17,6 +18,7 @@
 + (id)propertySetName;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long variationSuggestionStates; // @synthesize variationSuggestionStates=_variationSuggestionStates;
+@property(readonly, nonatomic) _Bool shiftedLocationIsValid; // @synthesize shiftedLocationIsValid=_shiftedLocationIsValid;
 @property(readonly, nonatomic) NSData *reverseLocationData; // @synthesize reverseLocationData=_reverseLocationData;
 @property(readonly, nonatomic) _Bool reverseLocationDataIsValid; // @synthesize reverseLocationDataIsValid=_reverseLocationDataIsValid;
 - (id)placeNamesForLocalizedDetailedDescriptionIsHome:(_Bool *)arg1;

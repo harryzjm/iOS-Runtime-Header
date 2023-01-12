@@ -11,7 +11,7 @@
 
 @interface CARenderer : NSObject
 {
-    struct CARendererPriv *_priv;
+    void *_priv;
 }
 
 + (id)rendererWithEAGLContext:(id)arg1 options:(id)arg2;

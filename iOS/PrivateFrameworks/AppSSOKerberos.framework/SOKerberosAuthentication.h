@@ -6,32 +6,38 @@
 
 #import <objc/NSObject.h>
 
-@class LAContext, NSString, SORealmSettingManager;
+@class NSString, SOADSiteDiscovery, SOKerberosHelper, SOKeychainHelper;
 
 @interface SOKerberosAuthentication : NSObject
 {
     _Bool _siteDiscoveryInProgress;
     NSString *_realm;
-    SORealmSettingManager *_settingsManager;
-    LAContext *_myLAContext;
+    SOKerberosHelper *_kerberosHelper;
+    SOKeychainHelper *_keychainHelper;
+    SOADSiteDiscovery *_siteDiscovery;
 }
 
++ (void)savePacValues:(id)arg1 atLogin:(_Bool)arg2;
 + (void)saveValuesForPlugins:(id)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) LAContext *myLAContext; // @synthesize myLAContext=_myLAContext;
+@property(retain) SOADSiteDiscovery *siteDiscovery; // @synthesize siteDiscovery=_siteDiscovery;
+@property(retain) SOKeychainHelper *keychainHelper; // @synthesize keychainHelper=_keychainHelper;
+@property(retain) SOKerberosHelper *kerberosHelper; // @synthesize kerberosHelper=_kerberosHelper;
 @property _Bool siteDiscoveryInProgress; // @synthesize siteDiscoveryInProgress=_siteDiscoveryInProgress;
-@property(retain, nonatomic) SORealmSettingManager *settingsManager; // @synthesize settingsManager=_settingsManager;
 @property(retain, nonatomic) NSString *realm; // @synthesize realm=_realm;
 - (void)triggerVPNIfNeededUsingRealm:(id)arg1 bundleIdentifier:(id)arg2 auditToken:(id)arg3;
 - (unsigned long long)mapErrorToKnownError:(id)arg1;
+- (_Bool)refreshPacValuesWithContext:(id)arg1 credential:(struct gss_cred_id_t_desc_struct *)arg2 atLogin:(_Bool)arg3;
+- (_Bool)refreshPacValuesWithContext:(id)arg1 atLogin:(_Bool)arg2 error:(id *)arg3;
 - (_Bool)changePasswordWithContext:(id)arg1 withError:(id *)arg2;
 - (unsigned long long)findExistingCredentialUsingContext:(id)arg1 returningCredential:(struct gss_cred_id_t_desc_struct **)arg2 orError:(id *)arg3;
 - (unsigned long long)createNewCredentialUsingContext:(id)arg1 returningCredential:(struct gss_cred_id_t_desc_struct **)arg2 orError:(id *)arg3;
-- (void)determineSiteCodeUsingDispatchGroup:(id)arg1 andBundleIdentifier:(id)arg2 networkFingerprint:(id)arg3;
+- (void)_determineSiteCodeUsingDispatchGroup:(id)arg1 bundleIdentifier:(id)arg2 auditTokenData:(id)arg3 networkFingerprint:(id)arg4 requireTLSForLDAP:(_Bool)arg5;
+- (void)determineSiteCodeUsingContext:(id)arg1;
 - (id)retrieveCachedSiteCodeFromCacheForBundleIdentifier:(id)arg1 networkFingerprint:(id)arg2;
 - (void)setSiteCodeUsingContext:(id)arg1;
 - (unsigned long long)attemptKerberosWithContext:(id)arg1 returningToken:(id *)arg2 orError:(id *)arg3;
-- (id)initWithRealm:(id)arg1 andSettingsManager:(id)arg2;
+- (id)initWithRealm:(id)arg1;
 
 @end
 

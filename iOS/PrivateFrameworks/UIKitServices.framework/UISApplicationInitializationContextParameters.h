@@ -15,9 +15,15 @@
     unsigned long long _supportedInterfaceOrientations;
     NSArray *_deviceFamilies;
     _Bool _requiresFullScreen;
+    _Bool _supportsMultiwindow;
+    struct CGSize _usableDisplaySizeHint;
+    _Bool _preferSmallerDisplaySize;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool preferSmallerDisplaySize; // @synthesize preferSmallerDisplaySize=_preferSmallerDisplaySize;
+@property(nonatomic) struct CGSize usableDisplaySizeHint; // @synthesize usableDisplaySizeHint=_usableDisplaySizeHint;
+@property(nonatomic) _Bool supportsMultiwindow; // @synthesize supportsMultiwindow=_supportsMultiwindow;
 @property(nonatomic) _Bool requiresFullScreen; // @synthesize requiresFullScreen=_requiresFullScreen;
 @property(copy, nonatomic) NSArray *deviceFamilies; // @synthesize deviceFamilies=_deviceFamilies;
 @property(nonatomic) unsigned long long supportedInterfaceOrientations; // @synthesize supportedInterfaceOrientations=_supportedInterfaceOrientations;

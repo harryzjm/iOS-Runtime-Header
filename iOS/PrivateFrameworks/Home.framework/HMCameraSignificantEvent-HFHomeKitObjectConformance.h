@@ -11,7 +11,6 @@
 @class NSString, NSUUID;
 
 @interface HMCameraSignificantEvent (HFHomeKitObjectConformance) <HFHomeKitObject>
-- (id)hf_confidenceKey;
 - (id)hf_reasonKey;
 - (id)hf_faceClassificationName;
 

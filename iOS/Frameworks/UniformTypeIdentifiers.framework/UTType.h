@@ -29,6 +29,9 @@
 + (id)typeWithFilenameExtension:(id)arg1;
 + (id)typeWithIdentifier:(id)arg1;
 + (id)new;
++ (id)_typeWithDeviceModelCode:(id)arg1 enclosureColor:(struct UTHardwareColor)arg2;
++ (id)_typeWithDeviceModelCode:(id)arg1;
++ (id)_typeOfCurrentDevice;
 + (id)typesWithTag:(id)arg1 tagClass:(id)arg2 conformingToType:(id)arg3;
 + (id)typeWithTag:(id)arg1 tagClass:(id)arg2 conformingToType:(id)arg3;
 + (id)importedTypeWithIdentifier:(id)arg1 conformingToType:(id)arg2;
@@ -37,12 +40,10 @@
 + (id)exportedTypeWithIdentifier:(id)arg1;
 + (id)_importedTypeWithIdentifier:(id)arg1 bundle:(id)arg2 conformingToType:(id)arg3;
 + (id)_exportedTypeWithIdentifier:(id)arg1 bundle:(id)arg2 conformingToType:(id)arg3;
-+ (id)_typeWithDeviceModelCode:(id)arg1 enclosureColor:(struct UTHardwareColor)arg2;
-+ (id)_typeWithDeviceModelCode:(id)arg1;
-+ (id)_typeOfCurrentDevice;
 + (id)_typeWithIdentifier:(id)arg1 constantIndex:(long long)arg2 error:(id *)arg3;
 + (id)_typeForURLPropertyProviderWithTypeRecord:(id)arg1;
 + (id)_constantTypeForURLPropertyProviderWithIdentifier:(id)arg1;
++ (id)_typeWithIdentifier:(id)arg1 allowUndeclared:(_Bool)arg2;
 - (void).cxx_destruct;
 @property(readonly) UTTypeRecord *_typeRecord; // @synthesize _typeRecord;
 - (id)initWithCoder:(id)arg1;
@@ -79,12 +80,14 @@
 @property(readonly) NSString *preferredFilenameExtension;
 @property(readonly) NSString *identifier;
 - (id)init;
+- (_Bool)_getEnclosureColor:(struct UTHardwareColor *)arg1;
+- (unsigned long long)_getEnclosureColors:(struct UTHardwareColor *)arg1 count:(unsigned long long)arg2;
+- (_Bool)_getPreferredEnclosureColor:(struct UTHardwareColor *)arg1;
 @property(readonly) NSSet *supertypes;
 - (_Bool)isSubtypeOfType:(id)arg1;
 - (_Bool)isSupertypeOfType:(id)arg1;
 - (_Bool)conformsToType:(id)arg1;
 @property(readonly) NSDictionary *tags;
-- (_Bool)_getEnclosureColor:(struct UTHardwareColor *)arg1;
 - (_Bool)_shouldURLPropertyProviderEncodeTypeRecord;
 
 @end

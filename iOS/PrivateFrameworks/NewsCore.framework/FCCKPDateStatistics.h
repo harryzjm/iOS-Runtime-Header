@@ -10,26 +10,21 @@
 
 @class FCCKPDate;
 
+__attribute__((visibility("hidden")))
 @interface FCCKPDateStatistics : PBCodable <NSCopying>
 {
     FCCKPDate *_creation;
     FCCKPDate *_modification;
 }
 
-@property(retain, nonatomic) FCCKPDate *modification; // @synthesize modification=_modification;
-@property(retain, nonatomic) FCCKPDate *creation; // @synthesize creation=_creation;
-- (void)mergeFrom:(id)arg1;
+- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasModification;
-@property(readonly, nonatomic) _Bool hasCreation;
-- (void)dealloc;
 
 @end
 

@@ -4,19 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface BCSCopyActionPickerItem
 {
     NSString *_textToCopy;
+    NSURL *_urlToCopy;
 }
 
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSURL *urlToCopy; // @synthesize urlToCopy=_urlToCopy;
 @property(readonly, copy, nonatomic) NSString *textToCopy; // @synthesize textToCopy=_textToCopy;
 - (_Bool)isCopyActionItem;
-- (void)performAction;
+- (void)performActionWithFBOptions:(id)arg1;
 - (id)icon;
+- (id)initWithAction:(id)arg1 urlToCopy:(id)arg2;
 - (id)initWithAction:(id)arg1 textToCopy:(id)arg2;
 
 @end

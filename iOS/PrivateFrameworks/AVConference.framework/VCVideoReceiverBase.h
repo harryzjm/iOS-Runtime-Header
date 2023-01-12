@@ -9,7 +9,7 @@
 #import <AVConference/VCConnectionChangedHandler-Protocol.h>
 #import <AVConference/VCMediaStreamSyncDestination-Protocol.h>
 
-@class NSString;
+@class NSString, VCMediaStreamSynchronizer;
 @protocol VCMediaStreamSyncSource, VCVideoReceiverDelegate;
 
 __attribute__((visibility("hidden")))
@@ -21,8 +21,13 @@ __attribute__((visibility("hidden")))
     double _roundTripTime;
     double _lastReceivedVideoRTPPacketTime;
     double _lastReceivedVideoRTCPPacketTime;
+    float lastLastVideoStallDuration;
+    unsigned int _rtpTimestampRate;
+    VCMediaStreamSynchronizer *_mediaStreamSynchronizer;
+    float _lastLastVideoStallDuration;
 }
 
+@property(readonly) float lastLastVideoStallDuration; // @synthesize lastLastVideoStallDuration=_lastLastVideoStallDuration;
 @property(readonly) double lastReceivedVideoRTCPPacketTime; // @synthesize lastReceivedVideoRTCPPacketTime=_lastReceivedVideoRTCPPacketTime;
 @property(readonly) double lastReceivedVideoRTPPacketTime; // @synthesize lastReceivedVideoRTPPacketTime=_lastReceivedVideoRTPPacketTime;
 @property double roundTripTime; // @synthesize roundTripTime=_roundTripTime;
@@ -32,8 +37,9 @@ __attribute__((visibility("hidden")))
 - (void)handleActiveConnectionChange:(id)arg1;
 @property(readonly, nonatomic) unsigned int lastDisplayedFrameRTPTimestamp;
 - (void)setTargetStreamID:(unsigned short)arg1;
-- (void)collectChannelMetrics:(CDStruct_3ab08b48 *)arg1 interval:(float)arg2;
+- (void)collectChannelMetrics:(CDStruct_a4f8a7cd *)arg1 interval:(float)arg2;
 - (void)updateSourcePlayoutTimestamp:(CDStruct_1b6d18a9 *)arg1;
+- (void)setSynchronizer:(id)arg1;
 - (void)stopSynchronization;
 - (_Bool)startSynchronization:(id)arg1;
 - (void)rtcpSendIntervalElapsed;
@@ -42,6 +48,8 @@ __attribute__((visibility("hidden")))
 - (void)startVideo;
 - (void)setEnableRateAdaptation:(_Bool)arg1 maxBitrate:(unsigned int)arg2 minBitrate:(unsigned int)arg3 adaptationInterval:(double)arg4;
 - (void)setEnableCVO:(_Bool)arg1 cvoExtensionID:(unsigned long long)arg2;
+- (void)dealloc;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

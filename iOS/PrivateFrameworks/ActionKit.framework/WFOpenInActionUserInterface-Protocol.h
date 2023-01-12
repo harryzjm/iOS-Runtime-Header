@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ActionKit/WFRemoteUserInterface-Protocol.h>
+#import <ActionKit/WFActionRemoteUserInterface-Protocol.h>
 
 @class WFFileStorageServiceResult;
 
-@protocol WFOpenInActionUserInterface <WFRemoteUserInterface>
+@protocol WFOpenInActionUserInterface <WFActionRemoteUserInterface>
 - (void)showWithFile:(WFFileStorageServiceResult *)arg1 contentManaged:(_Bool)arg2 completionHandler:(void (^)(NSError *))arg3;
 @end
 

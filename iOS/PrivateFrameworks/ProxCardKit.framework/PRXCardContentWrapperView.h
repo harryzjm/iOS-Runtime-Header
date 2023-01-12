@@ -9,54 +9,43 @@
 #import <ProxCardKit/PRXCardContentViewDelegate-Protocol.h>
 #import <ProxCardKit/UIScrollViewDelegate-Protocol.h>
 
-@class NSArray, NSLayoutConstraint, NSString, PRXButton, PRXCardContentView, UILabel, UIScrollView;
+@class NSArray, NSString, PRXAction, PRXButton, PRXCardBottomTray, PRXCardContentView, UILabel, UIScrollView;
 
 __attribute__((visibility("hidden")))
 @interface PRXCardContentWrapperView : UIView <PRXCardContentViewDelegate, UIScrollViewDelegate>
 {
     PRXButton *_dismissButton;
-    NSArray *_actionButtons;
-    UIView *_activityIndicator;
     NSString *_title;
-    NSString *_bottomTrayTitle;
+    PRXAction *_infoButtonAction;
+    PRXCardBottomTray *_bottomTray;
     PRXCardContentView *_contentView;
     UIScrollView *_scrollView;
     UIView *_bottomKeyline;
-    UIView *_bottomTray;
-    UILabel *_bottomTrayLabel;
     UIView *_topKeyline;
     UIView *_titleContainer;
     UILabel *_scrolledTitleLabel;
-    NSArray *_buttonConstraints;
-    NSArray *_bottomTrayTitleConstraints;
-    NSLayoutConstraint *_scrollViewBottomAnchor;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSLayoutConstraint *scrollViewBottomAnchor; // @synthesize scrollViewBottomAnchor=_scrollViewBottomAnchor;
-@property(copy, nonatomic) NSArray *bottomTrayTitleConstraints; // @synthesize bottomTrayTitleConstraints=_bottomTrayTitleConstraints;
-@property(copy, nonatomic) NSArray *buttonConstraints; // @synthesize buttonConstraints=_buttonConstraints;
 @property(readonly, nonatomic) UILabel *scrolledTitleLabel; // @synthesize scrolledTitleLabel=_scrolledTitleLabel;
 @property(readonly, nonatomic) UIView *titleContainer; // @synthesize titleContainer=_titleContainer;
 @property(readonly, nonatomic) UIView *topKeyline; // @synthesize topKeyline=_topKeyline;
-@property(readonly, nonatomic) UILabel *bottomTrayLabel; // @synthesize bottomTrayLabel=_bottomTrayLabel;
-@property(readonly, nonatomic) UIView *bottomTray; // @synthesize bottomTray=_bottomTray;
 @property(readonly, nonatomic) UIView *bottomKeyline; // @synthesize bottomKeyline=_bottomKeyline;
 @property(readonly, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property(readonly, nonatomic) PRXCardContentView *contentView; // @synthesize contentView=_contentView;
-@property(copy, nonatomic) NSString *bottomTrayTitle; // @synthesize bottomTrayTitle=_bottomTrayTitle;
+@property(readonly, nonatomic) PRXCardBottomTray *bottomTray; // @synthesize bottomTray=_bottomTray;
+@property(retain, nonatomic) PRXAction *infoButtonAction; // @synthesize infoButtonAction=_infoButtonAction;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
-@property(retain, nonatomic) UIView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
-@property(copy, nonatomic) NSArray *actionButtons; // @synthesize actionButtons=_actionButtons;
 @property(retain, nonatomic) PRXButton *dismissButton; // @synthesize dismissButton=_dismissButton;
+@property(copy, nonatomic) NSArray *actionButtons;
+@property(readonly, copy, nonatomic) NSArray *auxiliaryViews;
 - (void)scrollViewDidScroll:(id)arg1;
+- (void)removeBottomTray;
 - (void)scrollToBottom;
 - (void)setContentOffset:(struct CGPoint)arg1 animated:(_Bool)arg2;
-- (void)_updateScrollViewBottomConstraint;
 - (struct CGSize)intrinsicContentSize;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
 - (void)layoutSubviews;
-- (void)updateConstraints;
 - (id)initWithContentView:(id)arg1;
 
 // Remaining properties

@@ -46,7 +46,8 @@
 - (void)eventSource:(id)arg1 userTouchedApplication:(id)arg2;
 - (_Bool)_shouldUpdateSwitcherModelBasedOnTimeOrUserInteraction;
 - (_Bool)shouldAddAppLayoutToFront:(id)arg1 forTransitionWithContext:(id)arg2 currentAppLayouts:(id)arg3 transitionCompleted:(_Bool)arg4;
-- (_Bool)shouldAddAppLayoutToFront:(id)arg1 whenBeginningGestureOfType:(long long)arg2;
+- (_Bool)shouldAddAppLayoutToFront:(id)arg1 whenEndingGestureOfType:(long long)arg2 layoutContext:(id)arg3;
+- (_Bool)shouldAddAppLayoutToFront:(id)arg1 whenBeginningGestureOfType:(long long)arg2 layoutContext:(id)arg3;
 @property(readonly, nonatomic) unsigned long long supportedOrientationsForGesture;
 @property(readonly, nonatomic) double secondsSinceLastTransitionCompletion;
 - (void)didEndTransitioningToLayoutStateWithContext:(id)arg1;

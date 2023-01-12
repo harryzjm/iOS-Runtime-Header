@@ -6,12 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <ContactsUICore/CNAvatarCacheChangeListenerDelegate-Protocol.h>
+#import <ContactsUICore/CNUILikenessCachingRenderer-Protocol.h>
 #import <ContactsUICore/CNUILikenessRendering-Protocol.h>
 
-@class CNCache, CNQueue, NSString, _CNUILikenessRenderer;
+@class CNAvatarCacheChangeListener, CNCache, CNQueue, NSPointerArray, NSString, _CNUILikenessRenderer;
 @protocol CNSchedulerProvider, OS_dispatch_source;
 
-@interface _CNUICachingLikenessRenderer : NSObject <CNUILikenessRendering>
+@interface _CNUICachingLikenessRenderer : NSObject <CNAvatarCacheChangeListenerDelegate, CNUILikenessRendering, CNUILikenessCachingRenderer>
 {
     struct os_unfair_lock_s _lock;
     _Bool _shouldRequireMainThread;
@@ -21,12 +23,16 @@
     CNQueue *_evictionQueue;
     NSObject<OS_dispatch_source> *_memoryMonitoringSource;
     id <CNSchedulerProvider> _mainThreadSchedulerProvider;
+    CNAvatarCacheChangeListener *_changeHistoryListener;
+    NSPointerArray *_delegates;
 }
 
 + (id)_cacheKeyForContacts:(id)arg1 scope:(id)arg2;
 + (id)createMainThreadSchedulerProviderWithSchedulerProvider:(id)arg1;
 + (id)descriptorForRequiredKeys;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSPointerArray *delegates; // @synthesize delegates=_delegates;
+@property(readonly, nonatomic) CNAvatarCacheChangeListener *changeHistoryListener; // @synthesize changeHistoryListener=_changeHistoryListener;
 @property(retain, nonatomic) id <CNSchedulerProvider> mainThreadSchedulerProvider; // @synthesize mainThreadSchedulerProvider=_mainThreadSchedulerProvider;
 @property(retain, nonatomic) NSObject<OS_dispatch_source> *memoryMonitoringSource; // @synthesize memoryMonitoringSource=_memoryMonitoringSource;
 @property(retain, nonatomic) CNQueue *evictionQueue; // @synthesize evictionQueue=_evictionQueue;
@@ -34,16 +40,22 @@
 @property(readonly, nonatomic) _Bool shouldRequireMainThread; // @synthesize shouldRequireMainThread=_shouldRequireMainThread;
 @property(readonly, nonatomic) id <CNSchedulerProvider> schedulerProvider; // @synthesize schedulerProvider=_schedulerProvider;
 @property(readonly, nonatomic) _CNUILikenessRenderer *renderer; // @synthesize renderer=_renderer;
+- (void)addDelegate:(id)arg1;
+- (void)invalidateCacheEntriesContainingIdentifiers:(id)arg1;
+- (void)updateContactsWithIdentifiers:(id)arg1;
 - (id)renderedBasicMonogramForString:(id)arg1 color:(id)arg2 scope:(id)arg3 prohibitedSources:(long long)arg4;
 - (id)renderedBasicMonogramFromString:(id)arg1 scope:(id)arg2;
 - (id)loadingPlaceholderForContactCount:(unsigned long long)arg1 scope:(id)arg2;
+- (id)renderedLikenessForBadge:(id)arg1 scope:(id)arg2 workScheduler:(id)arg3;
 - (void)refreshCacheKey:(id)arg1;
 - (id)resizeCacheEntry:(id)arg1 withScope:(id)arg2 workScheduler:(id)arg3;
 - (id)startCacheEntryWithObservable:(id)arg1 contacts:(id)arg2 scope:(id)arg3;
-- (id)initialRenderedLikenessesForContacts:(id)arg1 scope:(id)arg2 workScheduler:(id)arg3;
+- (id)initialRenderedLikenessesForContacts:(id)arg1 withBadges:(id)arg2 scope:(id)arg3 workScheduler:(id)arg4;
+- (id)renderedLikenessesForContacts:(id)arg1 withBadges:(id)arg2 scope:(id)arg3 workScheduler:(id)arg4;
 - (id)renderedLikenessesForContacts:(id)arg1 scope:(id)arg2 workScheduler:(id)arg3;
 - (void)emptyCache:(id)arg1;
 - (void)dealloc;
+- (id)initWithLikenessRenderer:(id)arg1 schedulerProvider:(id)arg2 capacity:(unsigned long long)arg3 shouldRequireMainThread:(_Bool)arg4 contactStore:(id)arg5;
 - (id)initWithLikenessRenderer:(id)arg1 schedulerProvider:(id)arg2 capacity:(unsigned long long)arg3 shouldRequireMainThread:(_Bool)arg4;
 - (id)initWithLikenessRenderer:(id)arg1 schedulerProvider:(id)arg2;
 

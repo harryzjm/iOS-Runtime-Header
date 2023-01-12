@@ -6,27 +6,34 @@
 
 #import <UIKit/UIView.h>
 
+#import <CoverSheet/BSDescriptionProviding-Protocol.h>
 #import <CoverSheet/MTMaterialGrouping-Protocol.h>
 
-@class NSString;
-@protocol CSAdjunctItemHosting, PLPlatter;
+@class NSString, PLPlatterView;
+@protocol CSAdjunctItemHosting;
 
-@interface CSAdjunctItemView : UIView <MTMaterialGrouping>
+@interface CSAdjunctItemView : UIView <BSDescriptionProviding, MTMaterialGrouping>
 {
     long long _recipe;
-    UIView<PLPlatter> *_platterView;
     _Bool _isContentHostPlatterView;
     NSString *_materialGroupNameBase;
     id <CSAdjunctItemHosting> _contentHost;
+    PLPlatterView *_platterView;
     struct CGSize _sizeToMimic;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) __weak PLPlatterView *platterView; // @synthesize platterView=_platterView;
 @property(nonatomic) __weak id <CSAdjunctItemHosting> contentHost; // @synthesize contentHost=_contentHost;
 @property(nonatomic) struct CGSize sizeToMimic; // @synthesize sizeToMimic=_sizeToMimic;
 @property(copy, nonatomic) NSString *materialGroupNameBase; // @synthesize materialGroupNameBase=_materialGroupNameBase;
 - (void)_setPlatterView:(id)arg1;
 - (void)_updateSizeToMimic;
+- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)descriptionWithMultilinePrefix:(id)arg1;
+- (id)succinctDescriptionBuilder;
+- (id)succinctDescription;
+@property(readonly, copy) NSString *description;
 - (void)layoutSubviews;
 - (struct CGSize)intrinsicContentSize;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
@@ -34,7 +41,6 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

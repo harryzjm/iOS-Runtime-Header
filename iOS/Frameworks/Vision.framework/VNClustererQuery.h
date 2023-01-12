@@ -31,7 +31,7 @@
 - (id)getAllClustersAndReturnError:(id *)arg1;
 - (id)clusteredFaceIdsForClusterContainingFaceId:(id)arg1 error:(id *)arg2;
 - (id)allClusteredFaceIdsAndReturnError:(id *)arg1;
-- (id)initWithType:(id)arg1 cachePath:(id)arg2 state:(id)arg3 threshold:(float)arg4 torsoThreshold:(float)arg5 requestRevision:(unsigned long long)arg6 error:(id *)arg7;
+- (id)initWithType:(id)arg1 cachePath:(id)arg2 state:(id)arg3 threshold:(float)arg4 torsoThreshold:(float)arg5 requestRevision:(unsigned long long)arg6 torsoprintRequestRevision:(unsigned long long)arg7 error:(id *)arg8;
 - (id)initWithType:(id)arg1 cachePath:(id)arg2 state:(id)arg3 threshold:(float)arg4 requestRevision:(unsigned long long)arg5 error:(id *)arg6;
 
 @end

@@ -7,23 +7,30 @@
 #import <UIKitCore/UIViewController.h>
 
 #import <ShareSheet/LPLinkViewDelegate-Protocol.h>
+#import <ShareSheet/SHSheetContentViewInterface-Protocol.h>
 #import <ShareSheet/UICollectionViewDelegate-Protocol.h>
 
-@class LPLinkMetadata, LPLinkView, NSArray, NSDictionary, NSDiffableDataSourceSnapshot, NSMutableDictionary, NSNumber, NSString, NSUUID, UIBarButtonItem, UICollectionViewDiffableDataSource, UIVisualEffectView, _UIActivityContentCollectionView, _UIActivityContentTitleView;
-@protocol UIActivityContentDelegate;
+@class LPLinkMetadata, LPLinkView, NSArray, NSDictionary, NSDiffableDataSourceSnapshot, NSMutableDictionary, NSMutableSet, NSNumber, NSString, NSUUID, UIBarButtonItem, UICollectionViewDiffableDataSource, UIVisualEffectView, _UIActivityContentCollectionView, _UIActivityContentTitleView;
+@protocol SHSheetContentPresenterInterface, UIActivityContentDelegate;
 
-@interface UIActivityContentViewController : UIViewController <UICollectionViewDelegate, LPLinkViewDelegate>
+@interface UIActivityContentViewController : UIViewController <UICollectionViewDelegate, LPLinkViewDelegate, SHSheetContentViewInterface>
 {
+    _Bool _didLayout;
     _Bool _configureForCloudSharing;
     _Bool _configureForPhotosEdit;
+    _Bool _hideHeaderView;
     _Bool _wantsObjectManipulation;
-    _Bool _sharingCollapsed;
+    _Bool _sharingExpanded;
+    _Bool _showHeroActionsHorizontally;
     _Bool _photosLandscapeMode;
     _Bool _contentInstalled;
     _Bool _ignorePersonTap;
+    id <SHSheetContentPresenterInterface> _presenter;
     id <UIActivityContentDelegate> _delegate;
+    NSString *_topContentSectionText;
     UIViewController *_photosCarouselViewController;
     NSArray *_applicationActivities;
+    NSArray *_heroActionActivityTypes;
     NSDictionary *_activitiesByUUID;
     NSMutableDictionary *_identifierToProgress;
     NSMutableDictionary *_identifierToPulse;
@@ -31,6 +38,7 @@
     _UIActivityContentCollectionView *_activityCollectionView;
     UICollectionViewDiffableDataSource *_dataSource;
     NSDiffableDataSourceSnapshot *_currentSnapshot;
+    NSArray *_sectionIdentifiers;
     LPLinkView *_headerLinkView;
     NSMutableDictionary *_headerMetadataObservers;
     _UIActivityContentTitleView *_headerTitleView;
@@ -38,6 +46,7 @@
     UIBarButtonItem *_nextButton;
     UIBarButtonItem *_closeButton;
     NSUUID *_photosCarouselUUID;
+    NSNumber *_customViewControllerVerticalInsetWrapper;
     NSArray *_airDropSlots;
     NSArray *_shareProxies;
     NSArray *_actionProxies;
@@ -45,15 +54,21 @@
     NSMutableDictionary *_peopleSlots;
     NSMutableDictionary *_shareSlots;
     NSMutableDictionary *_actionSlots;
+    NSMutableSet *_suggestLessIdentifiers;
     UIVisualEffectView *_backgroundView;
     NSUUID *_airDropUUID;
+    CDUnknownBlockType _pendingUpdate;
+    struct NSDirectionalEdgeInsets _topContentSectionHeaderInsets;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType pendingUpdate; // @synthesize pendingUpdate=_pendingUpdate;
+@property(nonatomic) struct NSDirectionalEdgeInsets topContentSectionHeaderInsets; // @synthesize topContentSectionHeaderInsets=_topContentSectionHeaderInsets;
 @property(nonatomic) _Bool ignorePersonTap; // @synthesize ignorePersonTap=_ignorePersonTap;
 @property(retain, nonatomic) NSUUID *airDropUUID; // @synthesize airDropUUID=_airDropUUID;
 @property(nonatomic) _Bool contentInstalled; // @synthesize contentInstalled=_contentInstalled;
 @property(retain, nonatomic) UIVisualEffectView *backgroundView; // @synthesize backgroundView=_backgroundView;
+@property(retain, nonatomic) NSMutableSet *suggestLessIdentifiers; // @synthesize suggestLessIdentifiers=_suggestLessIdentifiers;
 @property(retain, nonatomic) NSMutableDictionary *actionSlots; // @synthesize actionSlots=_actionSlots;
 @property(retain, nonatomic) NSMutableDictionary *shareSlots; // @synthesize shareSlots=_shareSlots;
 @property(retain, nonatomic) NSMutableDictionary *peopleSlots; // @synthesize peopleSlots=_peopleSlots;
@@ -61,6 +76,7 @@
 @property(retain, nonatomic) NSArray *actionProxies; // @synthesize actionProxies=_actionProxies;
 @property(retain, nonatomic) NSArray *shareProxies; // @synthesize shareProxies=_shareProxies;
 @property(retain, nonatomic) NSArray *airDropSlots; // @synthesize airDropSlots=_airDropSlots;
+@property(retain, nonatomic) NSNumber *customViewControllerVerticalInsetWrapper; // @synthesize customViewControllerVerticalInsetWrapper=_customViewControllerVerticalInsetWrapper;
 @property(nonatomic) _Bool photosLandscapeMode; // @synthesize photosLandscapeMode=_photosLandscapeMode;
 @property(retain, nonatomic) NSUUID *photosCarouselUUID; // @synthesize photosCarouselUUID=_photosCarouselUUID;
 @property(retain, nonatomic) UIBarButtonItem *closeButton; // @synthesize closeButton=_closeButton;
@@ -69,6 +85,7 @@
 @property(retain, nonatomic) _UIActivityContentTitleView *headerTitleView; // @synthesize headerTitleView=_headerTitleView;
 @property(retain, nonatomic) NSMutableDictionary *headerMetadataObservers; // @synthesize headerMetadataObservers=_headerMetadataObservers;
 @property(retain, nonatomic) LPLinkView *headerLinkView; // @synthesize headerLinkView=_headerLinkView;
+@property(retain, nonatomic) NSArray *sectionIdentifiers; // @synthesize sectionIdentifiers=_sectionIdentifiers;
 @property(retain, nonatomic) NSDiffableDataSourceSnapshot *currentSnapshot; // @synthesize currentSnapshot=_currentSnapshot;
 @property(retain, nonatomic) UICollectionViewDiffableDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property(retain, nonatomic) _UIActivityContentCollectionView *activityCollectionView; // @synthesize activityCollectionView=_activityCollectionView;
@@ -76,14 +93,21 @@
 @property(retain, nonatomic) NSMutableDictionary *identifierToPulse; // @synthesize identifierToPulse=_identifierToPulse;
 @property(retain, nonatomic) NSMutableDictionary *identifierToProgress; // @synthesize identifierToProgress=_identifierToProgress;
 @property(retain, nonatomic) NSDictionary *activitiesByUUID; // @synthesize activitiesByUUID=_activitiesByUUID;
+@property(nonatomic) _Bool showHeroActionsHorizontally; // @synthesize showHeroActionsHorizontally=_showHeroActionsHorizontally;
+@property(copy, nonatomic) NSArray *heroActionActivityTypes; // @synthesize heroActionActivityTypes=_heroActionActivityTypes;
 @property(retain, nonatomic) NSArray *applicationActivities; // @synthesize applicationActivities=_applicationActivities;
 @property(retain, nonatomic) UIViewController *photosCarouselViewController; // @synthesize photosCarouselViewController=_photosCarouselViewController;
-@property(nonatomic) _Bool sharingCollapsed; // @synthesize sharingCollapsed=_sharingCollapsed;
+@property(nonatomic) _Bool sharingExpanded; // @synthesize sharingExpanded=_sharingExpanded;
 @property(nonatomic) _Bool wantsObjectManipulation; // @synthesize wantsObjectManipulation=_wantsObjectManipulation;
+@property(copy, nonatomic) NSString *topContentSectionText; // @synthesize topContentSectionText=_topContentSectionText;
+@property(nonatomic) _Bool hideHeaderView; // @synthesize hideHeaderView=_hideHeaderView;
 @property(nonatomic) _Bool configureForPhotosEdit; // @synthesize configureForPhotosEdit=_configureForPhotosEdit;
 @property(nonatomic) _Bool configureForCloudSharing; // @synthesize configureForCloudSharing=_configureForCloudSharing;
 @property(nonatomic) __weak id <UIActivityContentDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak id <SHSheetContentPresenterInterface> presenter; // @synthesize presenter=_presenter;
+- (void)updateWithViewModel:(id)arg1;
 - (_Bool)_presentedInFormSheet;
+- (_Bool)_shouldUseNarrowLayoutForHeroActionsWithContainerWidth:(double)arg1;
 - (void)updateProgress:(double)arg1 withTopText:(id)arg2 bottomText:(id)arg3 forNodeWithIdentifier:(id)arg4 shouldPulse:(_Bool)arg5 animated:(_Bool)arg6;
 - (void)_editActionsTapped;
 - (void)scrollViewDidScroll:(id)arg1;
@@ -92,24 +116,37 @@
 - (void)_cancelButtonTapped;
 - (id)_activityWithActivityUUID:(id)arg1;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
+- (_Bool)collectionView:(id)arg1 shouldHighlightItemAtIndexPath:(id)arg2;
 - (id)_contextMenuPreviewForCollectionView:(id)arg1 collectionViewCell:(id)arg2;
 - (void)collectionView:(id)arg1 willEndContextMenuInteractionWithConfiguration:(id)arg2 animator:(id)arg3;
 - (id)collectionView:(id)arg1 previewForDismissingContextMenuWithConfiguration:(id)arg2;
 - (id)collectionView:(id)arg1 previewForHighlightingContextMenuWithConfiguration:(id)arg2;
 - (id)collectionView:(id)arg1 contextMenuConfigurationForItemAtIndexPath:(id)arg2 point:(struct CGPoint)arg3;
+- (void)reloadActivity:(id)arg1;
 - (void)refreshContent;
 - (void)layoutContentCollectionView:(_Bool)arg1;
-- (void)updateContentWithPeopleProxies:(id)arg1 shareProxies:(id)arg2 actionProxies:(id)arg3 activitiesByUUID:(id)arg4 nearbyCountSlotID:(id)arg5 animated:(_Bool)arg6;
+- (id)_customSectionIdentifiersForActionProxies:(id)arg1;
+- (id)_uniqueIdentifierForSectionIdentifier:(id)arg1;
+- (void)updateContentWithPeopleProxies:(id)arg1 shareProxies:(id)arg2 actionProxies:(id)arg3 activitiesByUUID:(id)arg4 nearbyCountSlotID:(id)arg5 animated:(_Bool)arg6 reloadData:(_Bool)arg7;
+@property(nonatomic) double customViewControllerVerticalInset;
 - (void)_updatePhotosCarouselViewContent;
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
+- (id)_activityTitleForHeroAction:(id)arg1;
+- (id)_activityImageSymbolConfiguration;
+- (id)_provideSupplementaryViewForCollectionView:(id)arg1 kind:(id)arg2 indexPath:(id)arg3;
+- (id)_provideCellForCollectionView:(id)arg1 indexPath:(id)arg2 itemIdentifier:(id)arg3;
 - (void)configureCollectionViewIfNeeded;
 - (void)overrideLayoutConfigurationWithSafeAreaInsets:(_Bool)arg1;
+- (id)_provideLayoutForSection:(long long)arg1 environment:(id)arg2;
 - (id)activityCollectionViewLayout;
 @property(readonly, nonatomic) LPLinkMetadata *headerMetadata;
+- (void)_updateWantsObjectManipulation;
 - (void)updateHeaderSize;
 - (void)linkViewNeedsResize:(id)arg1;
 - (void)updateHeaderMetadata;
 - (void)configureHeaderViewIfNeeded;
+- (id)_createLinkView;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;

@@ -12,7 +12,6 @@
 - (id)generateQuestionsWithLimit:(unsigned long long)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (long long)questionOptions;
 - (unsigned short)questionType;
-- (id)initWithManager:(id)arg1;
 
 @end
 

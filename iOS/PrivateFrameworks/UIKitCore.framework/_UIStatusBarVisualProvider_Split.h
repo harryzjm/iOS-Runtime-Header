@@ -7,7 +7,7 @@
 #import <UIKitCore/_UIStatusBarCellularItemTypeStringProvider-Protocol.h>
 #import <UIKitCore/_UIStatusBarFixedWidthVisualProvider-Protocol.h>
 
-@class NSDictionary, NSLayoutConstraint, NSString, NSTimer, UILayoutGuide, _UIStatusBar, _UIStatusBarDisplayItemPlacement, _UIStatusBarDisplayItemPlacementGroup;
+@class NSDictionary, NSLayoutConstraint, NSString, NSTimer, UIFont, UILayoutGuide, _UIStatusBar, _UIStatusBarDisplayItemPlacement, _UIStatusBarDisplayItemPlacementGroup;
 
 @interface _UIStatusBarVisualProvider_Split <_UIStatusBarCellularItemTypeStringProvider, _UIStatusBarFixedWidthVisualProvider>
 {
@@ -27,47 +27,21 @@
     NSTimer *_airplaneModeIgnoreChangesTimer;
 }
 
-+ (double)condensedPointSizeForCellularType:(long long)arg1 defaultPointSize:(double)arg2 baselineOffset:(double *)arg3;
 + (struct CGSize)intrinsicContentSizeForOrientation:(long long)arg1;
-+ (struct NSDirectionalEdgeInsets)expandedEdgeInsets;
-+ (struct NSDirectionalEdgeInsets)trailingEdgeInsets;
-+ (struct NSDirectionalEdgeInsets)leadingEdgeInsets;
-+ (struct NSDirectionalEdgeInsets)_edgeInsetsFromCenteringEdgeInset:(double)arg1 trailing:(_Bool)arg2;
-+ (long long)expandedIconSize;
-+ (long long)normalIconSize;
-+ (double)expandedIconScale;
-+ (double)normalIconScale;
-+ (double)bottomLeadingTopOffset;
-+ (double)bottomLeadingBaseline;
-+ (double)bottomLeadingSpace;
-+ (double)bottomLeadingWidth;
-+ (double)lowerExpandedBaselineOffset;
-+ (double)baselineBottomInset;
-+ (id)systemUpdateFont;
-+ (id)pillSmallFont;
-+ (id)pillFont;
-+ (id)smallFont;
-+ (id)emphasizedFont;
-+ (id)expandedFont;
-+ (id)normalFont;
-+ (struct CGSize)smallPillSize;
-+ (struct CGSize)pillSize;
-+ (double)pillCenteringEdgeInset;
-+ (double)trailingCenteringEdgeInset;
-+ (double)leadingCenteringEdgeInset;
-+ (double)leadingSmallPillSpacing;
-+ (double)leadingPillInset;
-+ (double)leadingPillSpacing;
-+ (double)leadingItemSpacing;
-+ (double)notchBottomCornerRadius;
-+ (double)notchTopCornerRadius;
-+ (struct CGSize)notchSize;
-+ (double)referenceScale;
-+ (double)referenceWidth;
-+ (double)nativeDisplayWidth;
-+ (double)cornerRadius;
++ (double)expandedEdgeInset;
++ (double)trailingEdgeInsetLeadingAdjustment;
++ (double)additionalBottomLeadingMargin;
++ (_Bool)shrinksSingleCharacterTypes;
++ (double)LTEAPlusFontSize;
++ (double)pillFontSize;
++ (double)expandedFontSize;
++ (double)baseFontSize;
++ (double)pillCenteringOffset;
++ (double)trailingCenteringOffset;
++ (double)leadingCenteringOffset;
 + (double)height;
-+ (Class)defaultFallbackVisualProviderSubclass;
++ (double)referenceWidthForScreen:(id)arg1;
++ (double)referenceScaleForScreen:(id)arg1;
 + (Class)visualProviderSubclassForScreen:(id)arg1 visualProviderInfo:(id)arg2;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool delayedSystemUpdateData; // @synthesize delayedSystemUpdateData=_delayedSystemUpdateData;
@@ -100,14 +74,14 @@
 - (struct CGAffineTransform)_expandedChargingBoltTransformForDisplayItem:(id)arg1;
 - (struct CGAffineTransform)_collapseChargingBoltTransformForDisplayItem:(id)arg1;
 - (void)_updateDataForBatteryCharging:(id)arg1;
+- (id)animationForProminentLocation;
 - (id)animationForAirplaneMode;
 - (double)airplaneObstacleFadeOutDuration;
 - (double)airplaneShouldFadeForAnimationType:(long long)arg1;
 - (double)airplaneSpeedForAnimationType:(long long)arg1;
 - (double)airplaneTravelOffsetInProposedPartWithIdentifier:(id *)arg1 animationType:(long long)arg2;
-- (id)animationForBackgroundActivityPillWithDuration:(double)arg1 scale:(double)arg2;
+- (id)animationForBackgroundActivityPillAnimation:(id)arg1 duration:(double)arg2 scale:(double)arg3;
 - (void)_updateSystemNavigationWithData:(id)arg1;
-- (void)updateDataForSystemNavigation:(id)arg1;
 - (void)updateDataForService:(id)arg1;
 @property(readonly, nonatomic) _Bool canFixupDisplayItemAttributes;
 - (id)displayItemIdentifiersForPartWithIdentifier:(id)arg1;
@@ -126,11 +100,49 @@
 - (id)willUpdateWithData:(id)arg1;
 - (id)condensedFontForCellularType:(long long)arg1 defaultFont:(id)arg2 baselineOffset:(double *)arg3;
 - (id)stringForCellularType:(long long)arg1 condensed:(_Bool)arg2;
+@property(readonly) _Bool supportsAnimatedCellularNetworkType;
+- (double)condensedPointSizeForCellularType:(long long)arg1 defaultPointSize:(double)arg2 baselineOffset:(double *)arg3;
 - (void)itemCreated:(id)arg1;
 - (id)overriddenStyleAttributesForDisplayItemWithIdentifier:(id)arg1;
 - (id)styleAttributesForStyle:(long long)arg1;
 - (id)orderedDisplayItemPlacementsInRegionWithIdentifier:(id)arg1;
 - (id)setupInContainerView:(id)arg1;
+- (double)cornerRadius;
+- (struct CGSize)notchSize;
+- (struct CGRect)notchRect;
+@property(readonly) struct NSDirectionalEdgeInsets expandedEdgeInsets;
+@property(readonly) struct NSDirectionalEdgeInsets trailingEdgeInsets;
+@property(readonly) struct NSDirectionalEdgeInsets leadingEdgeInsets;
+- (struct NSDirectionalEdgeInsets)_edgeInsetsFromCenteringEdgeInset:(double)arg1 trailing:(_Bool)arg2;
+@property(readonly) long long expandedIconSize;
+@property(readonly) long long normalIconSize;
+@property(readonly) double expandedIconScale;
+@property(readonly) double normalIconScale;
+@property(readonly) double bottomLeadingTopOffset;
+@property(readonly) double bottomLeadingBaseline;
+@property(readonly) double bottomLeadingSpace;
+@property(readonly) double bottomLeadingWidth;
+@property(readonly) double lowerExpandedBaselineOffset;
+@property(readonly) double baselineBottomInset;
+@property(readonly) UIFont *systemUpdateFont;
+@property(readonly) UIFont *pillSmallFont;
+@property(readonly) UIFont *pillFont;
+@property(readonly) UIFont *smallFont;
+@property(readonly) UIFont *emphasizedFont;
+@property(readonly) UIFont *expandedFont;
+@property(readonly) UIFont *normalFont;
+@property(readonly) struct CGSize smallPillSize;
+@property(readonly) struct CGSize pillSize;
+@property(readonly) double pillCenteringEdgeInset;
+@property(readonly) double trailingCenteringEdgeInset;
+@property(readonly) double leadingCenteringEdgeInset;
+@property(readonly) double leadingSmallPillSpacing;
+@property(readonly) double leadingPillInset;
+@property(readonly) double leadingPillSpacing;
+@property(readonly) double leadingItemSpacing;
+- (double)itemSpacing;
+- (double)referenceWidth;
+@property(readonly) double nativeDisplayWidth;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

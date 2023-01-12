@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSURLProtocol.h>
+#import <CFNetwork/NSURLProtocol.h>
 
 @class FCCKContentFetchOperation;
 
@@ -16,6 +16,8 @@
 + (_Bool)requestIsCacheEquivalent:(id)arg1 toRequest:(id)arg2;
 + (id)canonicalRequestForRequest:(id)arg1;
 + (_Bool)canInitWithRequest:(id)arg1;
++ (_Bool)canHandleURLWithComponents:(id)arg1;
++ (_Bool)canHandleURL:(id)arg1;
 + (id)URLForRecordID:(id)arg1 fieldName:(id)arg2;
 + (void)unregister;
 + (void)setupWithArticleDatabase:(id)arg1;

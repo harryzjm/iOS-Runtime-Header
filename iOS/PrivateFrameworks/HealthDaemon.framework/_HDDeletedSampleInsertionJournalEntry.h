@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HDDataOriginProvenance, NSArray;
+@class HDCodableObjectCollection, HDDataOriginProvenance, NSArray;
 
 __attribute__((visibility("hidden")))
 @interface _HDDeletedSampleInsertionJournalEntry
 {
+    HDCodableObjectCollection *_objectCollection;
     NSArray *_samples;
     HDDataOriginProvenance *_provenance;
 }
@@ -16,11 +17,8 @@ __attribute__((visibility("hidden")))
 + (_Bool)supportsSecureCoding;
 + (void)applyEntries:(id)arg1 withProfile:(id)arg2;
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) HDDataOriginProvenance *provenance; // @synthesize provenance=_provenance;
-@property(readonly, copy, nonatomic) NSArray *samples; // @synthesize samples=_samples;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithCodableDeletedSamples:(id)arg1 provenance:(id)arg2;
 
 @end
 

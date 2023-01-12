@@ -26,6 +26,7 @@
 - (id)mf_uncommentedAddressRespectingGroups;
 - (id)mf_uncommentedAddress;
 - (id)mf_copyUncommentedAddress;
+- (id)mf_applyTransform:(id)arg1;
 - (id)mf_copyDisplayString;
 - (id)mf_copyDisplayStringInRange:(struct _NSRange)arg1;
 - (id)mf_dataUsingEncoding:(unsigned long long)arg1 allowLossyConversion:(_Bool)arg2;

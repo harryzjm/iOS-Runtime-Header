@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NRDevice, NSLock, NSMutableDictionary, NSUUID;
+@class NRDevice, NSMutableDictionary, NSNumber, NSUUID;
 
 @interface CLKDevice : NSObject
 {
@@ -27,15 +27,18 @@
     _Bool _supportsUrsa;
     _Bool _supportsPolaris;
     int _pairedDeviceCapabilitiesChangeNotificationToken;
+    struct os_unfair_lock_s _capabilitiesLock;
     struct os_unfair_lock_s _protectedLock;
     unsigned long long _version;
     unsigned long long _sizeClass;
     double _screenScale;
     double _screenCornerRadius;
+    unsigned long long _deviceCategory;
     unsigned long long _collectionType;
     unsigned long long _materialType;
+    long long _productType;
+    NSNumber *_deviceBrand;
     NRDevice *_nrDevice;
-    NSLock *_capabilitiesLock;
     NSMutableDictionary *_supportedCapabilitiesCache;
     struct CGRect _screenBounds;
 }
@@ -47,10 +50,13 @@
 + (unsigned int)NRProductVersionForNRDevice:(id)arg1;
 + (id)deviceForNRDeviceUUID:(id)arg1;
 + (id)deviceForNRDevice:(id)arg1 forced:(_Bool)arg2;
++ (void)_removeCachedDeviceForUUID:(id)arg1;
 + (id)_cachedDeviceForUUID:(id)arg1;
 + (id)deviceForNRDevice:(id)arg1;
++ (void)_handleNRDeviceChanged:(id)arg1;
 + (void)_deviceDidBecomeActive:(id)arg1;
 + (void)initialize;
++ (void)enumerateSizeClasses:(CDUnknownBlockType)arg1;
 + (void)resetCurrentDevice;
 + (void)setCurrentDevice:(id)arg1;
 + (id)_createCurrentDeviceWithNRDevice:(id)arg1;
@@ -65,7 +71,7 @@
 @property(nonatomic) struct os_unfair_lock_s protectedLock; // @synthesize protectedLock=_protectedLock;
 @property(nonatomic) _Bool isTinker; // @synthesize isTinker=_isTinker;
 @property(retain, nonatomic) NSMutableDictionary *supportedCapabilitiesCache; // @synthesize supportedCapabilitiesCache=_supportedCapabilitiesCache;
-@property(readonly, nonatomic) NSLock *capabilitiesLock; // @synthesize capabilitiesLock=_capabilitiesLock;
+@property(readonly, nonatomic) struct os_unfair_lock_s capabilitiesLock; // @synthesize capabilitiesLock=_capabilitiesLock;
 @property(readonly, nonatomic) int pairedDeviceCapabilitiesChangeNotificationToken; // @synthesize pairedDeviceCapabilitiesChangeNotificationToken=_pairedDeviceCapabilitiesChangeNotificationToken;
 @property(readonly, nonatomic) _Bool limitedToPreHunter; // @synthesize limitedToPreHunter=_limitedToPreHunter;
 @property(readonly, nonatomic) _Bool limitedToPreGlory; // @synthesize limitedToPreGlory=_limitedToPreGlory;
@@ -73,11 +79,14 @@
 @property(readonly, nonatomic) _Bool isRunningGloryFOrLater; // @synthesize isRunningGloryFOrLater=_isRunningGloryFOrLater;
 @property(readonly, nonatomic) _Bool isRunningDaytonaOrLater; // @synthesize isRunningDaytonaOrLater=_isRunningDaytonaOrLater;
 @property(retain, nonatomic) NRDevice *nrDevice; // @synthesize nrDevice=_nrDevice;
+@property(readonly, nonatomic) NSNumber *deviceBrand; // @synthesize deviceBrand=_deviceBrand;
+@property(nonatomic) long long productType; // @synthesize productType=_productType;
 @property(nonatomic) unsigned long long materialType; // @synthesize materialType=_materialType;
 @property(nonatomic) unsigned long long collectionType; // @synthesize collectionType=_collectionType;
 @property(readonly, nonatomic) _Bool isZeusBlack; // @synthesize isZeusBlack=_isZeusBlack;
 @property(readonly, nonatomic) _Bool supportsTritium; // @synthesize supportsTritium=_supportsTritium;
 @property(nonatomic) _Bool isLuxo; // @synthesize isLuxo=_isLuxo;
+@property(readonly, nonatomic) unsigned long long deviceCategory; // @synthesize deviceCategory=_deviceCategory;
 @property(nonatomic) double screenCornerRadius; // @synthesize screenCornerRadius=_screenCornerRadius;
 @property(nonatomic) double screenScale; // @synthesize screenScale=_screenScale;
 @property(nonatomic) struct CGRect screenBounds; // @synthesize screenBounds=_screenBounds;
@@ -93,8 +102,11 @@
 - (_Bool)supportsCapability:(id)arg1;
 @property(readonly, nonatomic, getter=isRunningGraceOrLater) _Bool runningGraceOrLater; // @synthesize runningGraceOrLater=_runningGraceOrLater;
 @property(readonly, nonatomic) unsigned long long version; // @synthesize version=_version;
-- (_Bool)isM8SOCInDeviceOfProductType:(id)arg1;
-- (_Bool)isLimitedToPreGloryDeviceOfProductType:(id)arg1;
+- (_Bool)isM8SOCInDeviceOfProductType:(long long)arg1;
+- (_Bool)isLimitedToPreGloryDeviceOfProductType:(long long)arg1;
+@property(readonly, nonatomic) long long productFamilyType;
+- (long long)productTypeFromProductTypeString:(id)arg1;
+- (long long)retrieveProductType;
 - (void)_loadDeviceInfo;
 - (_Bool)isEqual:(id)arg1;
 - (void)updateTinkerState;
@@ -103,6 +115,7 @@
 - (void)customCompanionSetup;
 - (void)customWatchSetup;
 - (id)initWithNRDevice:(id)arg1;
+- (id)initWithSizeClass:(unsigned long long)arg1;
 
 @end
 

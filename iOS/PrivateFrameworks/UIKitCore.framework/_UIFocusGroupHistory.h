@@ -15,8 +15,9 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (void)setLastFocusedItem:(id)arg1 forGroup:(id)arg2;
-- (id)lastFocusedItemForGroup:(id)arg1;
+- (void)_uiktest_clearHistory;
+- (void)setLastFocusedItem:(id)arg1 forGroupIdentifier:(id)arg2;
+- (id)lastFocusedItemForGroupIdentifier:(id)arg1;
 - (id)init;
 
 @end

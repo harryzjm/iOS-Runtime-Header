@@ -12,5 +12,7 @@
 - (double)sb_yPositionForLabelWithContainerBounds:(struct CGRect)arg1 lineHeight:(double)arg2 baselineOffset:(double)arg3 font:(id)arg4;
 - (void)drawWithMetrics:(id)arg1 inContext:(struct CGContext *)arg2;
 - (id)stringMetricsForFirstLineWidth:(double)arg1;
+- (void)SBPIP_removeVibrancyEffect;
+- (void)SBPIP_updateVibrancyEffectForTintColorWithFilter:(id)arg1;
 @end
 

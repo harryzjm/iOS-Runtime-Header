@@ -6,7 +6,7 @@
 
 #import <PrototypeTools/PTSettings.h>
 
-@class SBFFluidBehaviorSettings;
+@class SBCornerPencilPanGestureSettings, SBFFluidBehaviorSettings;
 
 @interface SBInteractiveScreenshotSettings : PTSettings
 {
@@ -14,8 +14,7 @@
     _Bool _shouldAsynchronouslyRender;
     _Bool _shouldPreheat;
     _Bool _shouldInjectVelocity;
-    double _cornerHorizontalEdgeLength;
-    double _cornerVerticalEdgeLength;
+    SBCornerPencilPanGestureSettings *_gestureSettings;
     double _applicationTouchDelayHysteresis;
     double _cornerRadiusVisibleProgressThreshold;
     double _cropCornersVisibleProgressThreshold;
@@ -57,8 +56,7 @@
 @property(nonatomic) double applicationTouchDelayHysteresis; // @synthesize applicationTouchDelayHysteresis=_applicationTouchDelayHysteresis;
 @property(nonatomic) _Bool shouldPreheat; // @synthesize shouldPreheat=_shouldPreheat;
 @property(nonatomic) _Bool shouldAsynchronouslyRender; // @synthesize shouldAsynchronouslyRender=_shouldAsynchronouslyRender;
-@property(nonatomic) double cornerVerticalEdgeLength; // @synthesize cornerVerticalEdgeLength=_cornerVerticalEdgeLength;
-@property(nonatomic) double cornerHorizontalEdgeLength; // @synthesize cornerHorizontalEdgeLength=_cornerHorizontalEdgeLength;
+@property(retain, nonatomic) SBCornerPencilPanGestureSettings *gestureSettings; // @synthesize gestureSettings=_gestureSettings;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 - (void)setDefaultValues;
 

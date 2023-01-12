@@ -4,20 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class CLLocation, NSMutableArray;
 
-@interface HMDLocationClusterGroup : NSObject
+@interface HMDLocationClusterGroup : HMFObject
 {
     CLLocation *_center;
     NSMutableArray *_locations;
 }
 
-+ (id)groupWithCenter:(id)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableArray *locations; // @synthesize locations=_locations;
-@property(retain, nonatomic) CLLocation *center; // @synthesize center=_center;
+@property(readonly) NSMutableArray *locations; // @synthesize locations=_locations;
+@property(readonly, copy) CLLocation *center; // @synthesize center=_center;
+- (id)attributeDescriptions;
+- (id)initWithCenter:(id)arg1;
 
 @end
 

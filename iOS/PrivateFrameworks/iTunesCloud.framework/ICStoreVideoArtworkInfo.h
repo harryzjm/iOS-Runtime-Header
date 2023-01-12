@@ -26,6 +26,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)_aspectRatioKeyForAspectRatio:(double)arg1;
 - (id)previewFrameArtworkInfoMatchingAspectRatio:(double)arg1;

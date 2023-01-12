@@ -14,7 +14,7 @@
 @interface MXMSampleFilter : NSObject <NSCopying, NSSecureCoding>
 {
     NSSet *_tagFilters;
-    NSMutableDictionary *_attributetFilters;
+    NSMutableDictionary *_attributeFilters;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -24,7 +24,7 @@
 + (id)filterWithTagFilters:(id)arg1;
 + (id)filterWithTagFilter:(id)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableDictionary *attributetFilters; // @synthesize attributetFilters=_attributetFilters;
+@property(retain, nonatomic) NSMutableDictionary *attributeFilters; // @synthesize attributeFilters=_attributeFilters;
 @property(retain, nonatomic) NSSet *tagFilters; // @synthesize tagFilters=_tagFilters;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -37,6 +37,7 @@
 - (_Bool)matchesSample:(id)arg1;
 @property(readonly, nonatomic, getter=finite) _Bool isFinite;
 - (id)attributeFilterWithName:(id)arg1;
+- (void)addAttributeFilters:(id)arg1;
 - (id)initWithAttributeFilters:(id)arg1 tagFilters:(id)arg2;
 - (id)initWithAttributeFilter:(id)arg1 tagFilter:(id)arg2;
 - (id)initWithAttributeFilters:(id)arg1;

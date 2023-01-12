@@ -6,10 +6,11 @@
 
 #import <PhotosGraph/NSObject-Protocol.h>
 
-@class PGGraphUpdate;
+@class PGGraphBuilder, PGGraphUpdate;
 
 @protocol PGGraphIngestProcessor <NSObject>
 - (void)runWithGraphUpdate:(PGGraphUpdate *)arg1 progressBlock:(void (^)(double, _Bool *))arg2;
 - (_Bool)shouldRunWithGraphUpdate:(PGGraphUpdate *)arg1;
+- (void)setGraphBuilder:(PGGraphBuilder *)arg1;
 @end
 

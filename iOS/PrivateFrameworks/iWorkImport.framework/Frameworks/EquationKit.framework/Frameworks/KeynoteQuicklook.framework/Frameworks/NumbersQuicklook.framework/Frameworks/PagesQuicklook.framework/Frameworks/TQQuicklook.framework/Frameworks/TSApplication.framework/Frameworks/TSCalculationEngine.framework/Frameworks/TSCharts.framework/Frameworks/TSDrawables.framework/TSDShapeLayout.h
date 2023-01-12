@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, TSDEditableBezierPathSource, TSDFill, TSDInfoGeometry, TSDLineEnd, TSDMutableStroke, TSDPathSource, TSDShapeInfo, TSUBezierPath;
+@class NSArray, TSDEditableBezierPathSource, TSDFill, TSDInfoGeometry, TSDLineEnd, TSDMutableStroke, TSDPathSource, TSDShapeInfo, TSDStroke, TSUBezierPath;
 
 @interface TSDShapeLayout
 {
@@ -47,10 +47,13 @@
     TSDInfoGeometry *mResizeInfoGeometry;
     TSDInfoGeometry *mInitialInfoGeometry;
     TSDMutableStroke *mDynamicStroke;
+    TSDStroke *mInitialStroke;
     TSDFill *mDynamicFill;
     NSArray *mDynamicStrokeOffsetArray;
     _Bool mIsDynamicallyInvisible;
     struct CGSize mLastParentLimitedSize;
+    double mLastParentLimitedScale;
+    _Bool mOkayToSetGeometry;
 }
 
 - (void).cxx_destruct;
@@ -80,7 +83,9 @@
 @property(readonly, nonatomic) struct CGPoint unclippedTailPoint;
 @property(readonly, nonatomic) struct CGPoint unclippedHeadPoint;
 - (_Bool)supportsRotation;
+- (void)offsetGeometryBy:(struct CGPoint)arg1;
 - (struct CGSize)minimumSize;
+- (double)i_scaleFromClampedParentLayout;
 - (_Bool)p_isInlineInsideParentContainerDynamicallyChangingAvailableSpace;
 - (_Bool)supportsResize;
 - (void)invalidatePathBounds;
@@ -128,6 +133,7 @@
 - (struct CGRect)baseFrameForFrameForCullingWithAdditionalTransform:(struct CGAffineTransform)arg1;
 - (struct CGRect)alignmentFrame;
 - (void)setGeometry:(id)arg1;
+- (void)p_performBlockOkayToSetGeometry:(CDUnknownBlockType)arg1;
 - (struct CGAffineTransform)computeLayoutTransform;
 - (double)scaleForInlineClampingUnrotatedSize:(struct CGSize)arg1 withTransform:(struct CGAffineTransform)arg2;
 - (id)computeLayoutGeometry;

@@ -9,14 +9,14 @@
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
 @class HMSettingValue, NSString, NSUUID;
-@protocol HMSettingManager;
+@protocol HMSettingDataSource, HMSettingManager;
 
 @interface HMSetting : NSObject <NSSecureCoding>
 {
     id _value;
-    NSString *_keyPath;
     NSUUID *_identifier;
     Class _valueClass;
+    id <HMSettingDataSource> _dataSource;
     long long _type;
     id <HMSettingManager> _settingManager;
     NSString *_name;
@@ -29,9 +29,9 @@
 @property(copy) NSString *name; // @synthesize name=_name;
 @property __weak id <HMSettingManager> settingManager; // @synthesize settingManager=_settingManager;
 @property long long type; // @synthesize type=_type;
+@property __weak id <HMSettingDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property(retain) Class valueClass; // @synthesize valueClass=_valueClass;
 @property(readonly, copy) NSUUID *identifier; // @synthesize identifier=_identifier;
-@property(copy) NSString *keyPath; // @synthesize keyPath=_keyPath;
 @property(copy) id value; // @synthesize value=_value;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -43,6 +43,7 @@
 @property(readonly, getter=isWritable) _Bool writable;
 @property(readonly, copy) NSString *localizedTitle;
 - (id)description;
+@property(readonly, copy) NSString *keyPath;
 - (id)_initWithIdentifier:(id)arg1 name:(id)arg2 type:(long long)arg3 value:(id)arg4 properties:(unsigned long long)arg5;
 - (id)initWithIdentifier:(id)arg1 name:(id)arg2 type:(long long)arg3 value:(id)arg4 properties:(unsigned long long)arg5;
 - (id)initWithInternal;

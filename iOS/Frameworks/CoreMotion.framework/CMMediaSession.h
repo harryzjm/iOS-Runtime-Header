@@ -6,59 +6,76 @@
 
 #import <objc/NSObject.h>
 
-@class CMMotionActivityManager, NSOperationQueue;
+#import <CoreMotion/CMDistributedSensingDelegate-Protocol.h>
+
+@class CMMotionActivityManager, NSOperationQueue, NSString, NSUserDefaults;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-@interface CMMediaSession : NSObject
+@interface CMMediaSession : NSObject <CMDistributedSensingDelegate>
 {
-    struct unique_ptr<CMHeadTrackingService, std::__1::default_delete<CMHeadTrackingService>> _headTrackingService;
+    struct unique_ptr<CMHeadTrackingService, std::default_delete<CMHeadTrackingService>> _headTrackingService;
     struct Dispatcher *_deviceMotionDispatcher;
     struct Dispatcher *_accessoryDeviceMotionDispatcher;
     struct Dispatcher *_accessoryDeviceMotionConfigDispatcher;
     struct Dispatcher *_accessoryDeviceMotionInEarStatusDispatcher;
     NSObject<OS_dispatch_queue> *_clientQueue;
     CDUnknownBlockType _clientHandler;
+    int _clientMode;
     unsigned long long _predictionIntervalMicroseconds;
     int _scheme;
     struct CMOQuaternion _q_bf;
+    _Bool _disable2IMU;
+    double _lidAngle;
     struct UnTimesyncedAuxSampleHelper _unsyncedAuxHelper;
-    struct unique_ptr<CMMediaSessionAnalyticsTracker, std::__1::default_delete<CMMediaSessionAnalyticsTracker>> _analyticsTracker;
+    struct unique_ptr<CMMediaSessionAnalyticsTracker, std::default_delete<CMMediaSessionAnalyticsTracker>> _analyticsTracker;
     int _previousBTZState;
     double _lastInBTZTime;
     int _previousMotionActivityType;
     double _lastAccessoryDMTime;
     int _previousTracking1IMU;
     _Bool _previousCTState;
+    _Bool _previousCTBodyTurnState;
+    _Bool _previousHeadTurnState;
     double _lastExitCTTime;
     float _lastAngleBetweenCurrentBoresightToDefault;
     _Bool _previousTrackingEnabled;
     double _lastDistractedViewingStartTime;
+    double _lastDistractedViewingEndTime;
     _Bool _previousSrcMoving;
     _Bool _previousAuxMoving;
+    _Bool _previousSteadyStatePedestrian;
+    _Bool _previousKeepBoresightCentered;
+    int _lastTrackingDisableRoute;
     struct AudioAccessorySample _lastAudioAccessorySample;
     unsigned long long _lastAccessoryTimestamp;
-    unsigned long long _lastSourceTimestamp;
+    unsigned long long _lastSourceTimestampMicroSeconds;
     unsigned long long _lastStateTimestamp;
     _Bool _trackingEstimatesStagnated;
     _Bool _logForReplay;
     double _printPoseTimer;
+    _Bool _enableJBLThreshold;
+    _Bool _verboseLogging;
     double _accessorySampleTimer;
     int _accessorySamplesPerSecond;
     CMMotionActivityManager *_activityManager;
     NSOperationQueue *_activityQueue;
-    struct shared_ptr<CLIoHidInterface::Device> _ioHidTouch;
-    double _lastTouchEventTimestamp;
-    struct unique_ptr<CLSettings, std::__1::default_delete<CLSettings>> _motionSettings;
-    NSObject<OS_dispatch_source> *_defaultsPreferenceTimer;
+    struct unique_ptr<CLSettings, std::default_delete<CLSettings>> _motionSettings;
+    NSUserDefaults *_motionDefaults;
     double _minQuiescentPeriodForBTZ;
     int _notify50HzPoseDecimator;
     double _sessionStartTime;
     double _firstAccessoryDMTime;
     double _firstValidPoseTime;
     double _lastTimesyncLostTime;
-    struct unique_ptr<CMSpatialLogger, std::__1::default_delete<CMSpatialLogger>> _logger;
+    struct unique_ptr<CMSpatialLogger, std::default_delete<CMSpatialLogger>> _logger;
     int _inEarStatus;
     _Bool _inEarStatusGatingEnabled;
+    int _jitterBufferLevelNotificationToken;
+    NSObject<OS_dispatch_source> *_jitterBufferLevelInitialUpdateTimer;
+    unsigned short _jitterBufferLevel;
+    unsigned short _jitterBufferLevelThreshold;
+    _Bool _sitStandDetectorEnabled;
+    _Bool _userSettingFwdPredictorEnabled;
     _Bool _overrideDefaultHeadsetOrientation;
     _Bool _returnDefaultPose;
     _Bool _returnRandomPose;
@@ -89,24 +106,32 @@
 - (void)_logEvent:(id)arg1;
 - (int)_currentAudioListenerOrientation:(id *)arg1;
 - (struct AudioAccessorySample)_getLastAudioAccessorySample;
+- (void)_feedAdaptiveLatencyJitterBufferLevel;
 - (void)_feedAccessoryInEarStatus:(const int *)arg1;
 - (void)_feedPredictorEstimates;
-- (void)_feedAccessoryConfig:(const struct Config *)arg1;
-- (void)_feedAccessoryDeviceMotion:(const struct AudioAccessorySample *)arg1;
-- (unsigned long long)_getAuxSampleTimestamp:(const struct AudioAccessorySample *)arg1 currentTime:(double)arg2;
+- (void)_feedAccessoryConfig:(const void *)arg1;
+- (void)_feedAccessoryDeviceMotion:(const void *)arg1;
+- (unsigned long long)_getAuxSampleTimestamp:(const void *)arg1 currentTime:(double)arg2;
 - (void)feedPoseAnchorWithAttitude:(CDStruct_bf7dff04)arg1 position:(CMVector_75ea1f06)arg2 timestampUs:(unsigned long long)arg3;
 - (void)_feedPoseAnchor:(const struct Sample *)arg1 facePoseError:(CDStruct_a3d1096a *)arg2;
 - (void)_feedFacePose:(id)arg1 rotationMatrix:(id)arg2 timestamp:(double)arg3 error:(CDStruct_a3d1096a *)arg4;
+- (void)_feedLidAngle:(double)arg1;
 - (void)_feedSourceDeviceIMU:(const struct Sample *)arg1;
-- (void)_feedTouchEventTimestamp:(double)arg1;
 - (void)_notifyClientHandler;
+- (void)_stopJitterBufferLevelRetryTimer;
+- (void)_startJitterBufferLevelRetryTimer;
+- (void)_stopJitterBufferLevelMonitor;
+- (void)_startJitterBufferLevelMonitor;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_stopDefaultsPreferenceUpdater;
 - (void)_startDefaultsPreferenceUpdater;
 - (void)_updateUserSettings;
+- (void)_updateUseFwdPredictionUserSettings;
 - (void)_updateMinQuiescentPeriodForBTZ;
 - (void)_stop;
 - (void)_stopHeadTracking;
 - (_Bool)_startPoseUpdatesToQueue:(id)arg1 andHandler:(CDUnknownBlockType)arg2;
+- (void)_triggerUserInteractedWithDeviceEvent;
 - (void)_startHeadTracking;
 - (_Bool)_start;
 - (void)dealloc;
@@ -116,6 +141,12 @@
 - (int)_createPoseFromListenerOrientation:(const struct ListenerOrientation *)arg1 Pose:(id *)arg2;
 - (void)_disableLoggingForReplay;
 - (void)_enableLoggingForReplayWithFilenamePrefix:(id)arg1 filePath:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -4,12 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class PKTextInputLanguageSelectionToken, UIImage, UIMenu;
+
 @interface PKPaletteKeyboardButton
 {
+    UIImage *_indicatorImage;
+    PKTextInputLanguageSelectionToken *_observerToken;
+    _Bool _enableKeyboardToggle;
     long long _floatingKeyboardType;
+    UIMenu *_keyboardSelectionMenu;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIMenu *keyboardSelectionMenu; // @synthesize keyboardSelectionMenu=_keyboardSelectionMenu;
+@property(nonatomic) _Bool enableKeyboardToggle; // @synthesize enableKeyboardToggle=_enableKeyboardToggle;
 @property(nonatomic) long long floatingKeyboardType; // @synthesize floatingKeyboardType=_floatingKeyboardType;
+- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
+- (void)_updateKeyboardToggleState;
+- (void)_updateButtonImage;
+- (void)dealloc;
+- (id)initWithImage:(id)arg1;
 
 @end
 

@@ -9,21 +9,30 @@
 @interface _EARAppLmData
 {
     _Bool roundingEnabled;
+    long long inputType;
     shared_ptr_f52c68bb data;
 }
 
 + (void)initialize;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (long long)inputType;
 - (void)setRoundingEnabled:(_Bool)arg1;
 - (_Bool)roundingEnabled;
 @property(readonly, nonatomic) shared_ptr_f52c68bb data; // @synthesize data;
 - (id)metrics;
+- (id)supportedSlots;
+- (long long)lmeThreshold;
 - (void)generateLmeData:(id)arg1;
-- (void)setAsrProns:(id)arg1 forWord:(id)arg2;
-- (void)setXsampaProns:(id)arg1 forWord:(id)arg2;
-- (void)setProns:(id)arg1 forWord:(id)arg2 pronIsXsampa:(_Bool)arg3;
+- (_Bool)setAsrProns:(id)arg1 forWord:(id)arg2;
+- (_Bool)setXsampaProns:(id)arg1 forWord:(id)arg2;
+- (_Bool)setProns:(id)arg1 forWord:(id)arg2 pronIsXsampa:(_Bool)arg3;
+- (id)addOovTokensFromSentence:(id)arg1;
+- (void)setInputFormat:(long long)arg1;
+- (void)addNgramCountWithType:(unsigned long long)arg1 content:(id)arg2;
 - (void)addSentenceWithType:(unsigned long long)arg1 uuid:(id)arg2 content:(id)arg3;
+- (void)addSentenceWithType:(unsigned long long)arg1 uuid:(id)arg2 content:(id)arg3 hasWeights:(_Bool)arg4;
+- (void)addLineWithType:(unsigned long long)arg1 uuid:(id)arg2 content:(id)arg3;
 - (id)initWithConfiguration:(id)arg1 ncsRoot:(id)arg2 recognizerConfigPath:(id)arg3;
 @property(readonly, nonatomic) NSArray *orderedOovs;
 

@@ -4,28 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDate, PGGraphHighlightGroupNode;
-
 @interface PGTripMemoryGenerator
 {
-    unsigned long long _numberOfUntimelyRejects;
-    NSDate *_lowerBoundLocalDate;
-    PGGraphHighlightGroupNode *_tripNode;
-    unsigned long long _subcategory;
 }
 
-- (void).cxx_destruct;
-@property(readonly) unsigned long long subcategory; // @synthesize subcategory=_subcategory;
-@property(retain, nonatomic) PGGraphHighlightGroupNode *tripNode; // @synthesize tripNode=_tripNode;
-@property(retain, nonatomic) NSDate *lowerBoundLocalDate; // @synthesize lowerBoundLocalDate=_lowerBoundLocalDate;
-- (id)_potentialMemoriesForDryTesting;
-- (id)_tripNodeForPotentialMemory:(id)arg1;
-- (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
-- (id)curationOptionsWithKeyAsset:(id)arg1;
-- (unsigned long long)durationForCuration;
-- (void)_enumeratePotentialMemoriesUsingBlock:(CDUnknownBlockType)arg1;
-- (id)potentialMemoryWithTripNode:(id)arg1;
-- (id)initWithSubcategory:(unsigned long long)arg1 controller:(id)arg2;
+- (id)titleGeneratorForTriggeredMemory:(id)arg1 withKeyAsset:(id)arg2 curatedAssets:(id)arg3 extendedCuratedAssets:(id)arg4 titleGenerationContext:(id)arg5 inGraph:(id)arg6;
+- (id)curationOptionsWithRequiredAssetUUIDs:(id)arg1 eligibleAssetUUIDs:(id)arg2 triggeredMemory:(id)arg3;
+- (id)relevantKeyCurationFeederForTriggeredMemory:(id)arg1 inGraph:(id)arg2 allowGuestAsset:(_Bool)arg3 progressReporter:(id)arg4;
+- (id)generateAllPotentialMemoriesWithGraph:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 
 @end
 

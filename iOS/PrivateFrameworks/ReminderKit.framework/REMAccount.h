@@ -8,10 +8,12 @@
 
 #import <ReminderKit/REMExternalSyncMetadataProviding-Protocol.h>
 #import <ReminderKit/REMObjectIDProviding-Protocol.h>
+#import <ReminderKit/REMPersonIDProviding-Protocol.h>
+#import <ReminderKit/REMSupportedVersionProviding-Protocol.h>
 
 @class NSData, NSOrderedSet, NSSet, NSString, REMAccountCapabilities, REMAccountGroupContext, REMAccountStorage, REMCRMergeableOrderedSet, REMObjectID, REMResolutionTokenMap, REMStore;
 
-@interface REMAccount : NSObject <REMObjectIDProviding, REMExternalSyncMetadataProviding>
+@interface REMAccount : NSObject <REMPersonIDProviding, REMObjectIDProviding, REMExternalSyncMetadataProviding, REMSupportedVersionProviding>
 {
     _Bool _markedForRemoval;
     REMStore *_store;
@@ -30,7 +32,9 @@
 @property(retain, nonatomic) REMAccountCapabilities *capabilities; // @synthesize capabilities=_capabilities;
 @property(readonly, copy, nonatomic) REMAccountStorage *storage; // @synthesize storage=_storage;
 @property(retain, nonatomic) REMStore *store; // @synthesize store=_store;
+- (_Bool)shouldUseExternalIdentifierAsDeletionKey;
 - (id)externalIdentifierForMarkedForDeletionObject;
+- (_Bool)isUnsupported;
 @property(readonly, nonatomic) REMObjectID *remObjectID;
 @property(readonly, nonatomic) _Bool daSupportsPhoneNumbers;
 @property(readonly, nonatomic) NSOrderedSet *listIDsOrdering;
@@ -43,6 +47,7 @@
 - (id)fetchListsIncludingSpecialContainersWithError:(id *)arg1;
 - (_Bool)isConsideredEmptyWithResultPtr:(_Bool *)arg1 withError:(id *)arg2;
 - (_Bool)canCopyReminderLosslesslyToAccount:(id)arg1;
+- (id)fetchCustomSmartListsWithError:(id *)arg1;
 - (id)fetchListsWithError:(id *)arg1;
 @property(readonly, nonatomic) REMAccountGroupContext *groupContext;
 @property(readonly, nonatomic) _Bool supportsSharingLists;
@@ -50,6 +55,7 @@
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)optionalObjectID;
 - (id)initWithStore:(id)arg1 storage:(id)arg2;
 
 // Remaining properties
@@ -63,16 +69,22 @@
 @property(readonly, nonatomic) _Bool didChooseToMigrateLocally; // @dynamic didChooseToMigrateLocally;
 @property(readonly, nonatomic) _Bool didFinishMigration; // @dynamic didFinishMigration;
 @property(retain, nonatomic) NSString *displayName; // @dynamic displayName;
+@property(readonly, nonatomic) long long effectiveMinimumSupportedVersion; // @dynamic effectiveMinimumSupportedVersion;
 @property(readonly, nonatomic) NSString *externalIdentifier; // @dynamic externalIdentifier;
 @property(readonly, nonatomic) NSString *externalModificationTag; // @dynamic externalModificationTag;
 @property(readonly, nonatomic) _Bool inactive; // @dynamic inactive;
 @property(readonly, nonatomic) REMCRMergeableOrderedSet *listIDsMergeableOrdering; // @dynamic listIDsMergeableOrdering;
 @property(readonly, nonatomic) NSSet *listIDsToUndelete; // @dynamic listIDsToUndelete;
 @property(readonly, nonatomic) _Bool listsDADisplayOrderChanged; // @dynamic listsDADisplayOrderChanged;
+@property(readonly, nonatomic) long long minimumSupportedVersion; // @dynamic minimumSupportedVersion;
 @property(readonly, nonatomic) NSString *name; // @dynamic name;
 @property(readonly, nonatomic) REMObjectID *objectID; // @dynamic objectID;
+@property(readonly, nonatomic) long long persistenceCloudSchemaVersion; // @dynamic persistenceCloudSchemaVersion;
+@property(copy, nonatomic) NSString *personID; // @dynamic personID;
+@property(copy, nonatomic) NSData *personIDSalt; // @dynamic personIDSalt;
 @property(readonly, nonatomic) REMResolutionTokenMap *resolutionTokenMap; // @dynamic resolutionTokenMap;
 @property(readonly, nonatomic) NSData *resolutionTokenMapData; // @dynamic resolutionTokenMapData;
+@property(readonly, nonatomic) NSSet *smartListIDsToUndelete; // @dynamic smartListIDsToUndelete;
 @property(readonly, nonatomic) long long type; // @dynamic type;
 
 @end

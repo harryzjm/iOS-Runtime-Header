@@ -16,14 +16,18 @@ __attribute__((visibility("hidden")))
     QLPreviewController *_previewController;
     UIImage *_sourceViewSnapshotImage;
     _Bool _contextPreparedToSend;
+    _Bool _isSourceTransformed;
     _Bool _usingViewForZoomTransition;
     UIView *_sourceView;
     double _topNavigationOffset;
     double _hostNavigationOffset;
     UIView *_sourceViewSnapshot;
+    struct CGPoint _sourceCenter;
     struct CGSize _previewItemSize;
     struct CGRect _sourceFrame;
+    struct CGRect _sourceBounds;
     struct CGRect _uncroppedFrame;
+    struct CGAffineTransform _sourceTransform;
 }
 
 + (id)firstChildNavigationControllerFromViewController:(id)arg1;
@@ -38,6 +42,10 @@ __attribute__((visibility("hidden")))
 @property double hostNavigationOffset; // @synthesize hostNavigationOffset=_hostNavigationOffset;
 @property double topNavigationOffset; // @synthesize topNavigationOffset=_topNavigationOffset;
 @property struct CGRect uncroppedFrame; // @synthesize uncroppedFrame=_uncroppedFrame;
+@property struct CGAffineTransform sourceTransform; // @synthesize sourceTransform=_sourceTransform;
+@property struct CGPoint sourceCenter; // @synthesize sourceCenter=_sourceCenter;
+@property struct CGRect sourceBounds; // @synthesize sourceBounds=_sourceBounds;
+@property _Bool isSourceTransformed; // @synthesize isSourceTransformed=_isSourceTransformed;
 @property struct CGRect sourceFrame; // @synthesize sourceFrame=_sourceFrame;
 @property(retain, nonatomic) UIView *sourceView; // @synthesize sourceView=_sourceView;
 - (void)setUpTransitionSourceView;

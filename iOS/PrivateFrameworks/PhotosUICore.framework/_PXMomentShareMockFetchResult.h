@@ -26,6 +26,7 @@
 @property(readonly, nonatomic) id <PXDisplayAsset> firstObject;
 - (id)objectsAtIndexes:(id)arg1;
 - (_Bool)containsObject:(id)arg1;
+- (id)objectAtIndexedSubscript:(unsigned long long)arg1;
 - (id)objectAtIndex:(unsigned long long)arg1;
 - (id)initWithAssets:(id)arg1;
 

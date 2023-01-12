@@ -11,6 +11,8 @@
 @protocol HAPAccessoryDelegate <NSObject>
 
 @optional
+- (void)accessory:(HAPAccessory *)arg1 didUpdateConnectionState:(_Bool)arg2;
+- (void)accessory:(HAPAccessory *)arg1 didUpdateReachabilityState:(_Bool)arg2;
 - (void)accessoryDidBecomeUnreachable:(HAPAccessory *)arg1;
 - (void)accessoryDidBecomeReachable:(HAPAccessory *)arg1;
 @end

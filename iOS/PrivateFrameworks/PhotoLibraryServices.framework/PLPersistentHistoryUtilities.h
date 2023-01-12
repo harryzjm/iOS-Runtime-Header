@@ -10,13 +10,17 @@
 {
 }
 
++ (id)unarchiveTokenWithData:(id)arg1;
++ (id)archivedDataWithToken:(id)arg1;
 + (long long)fetchApproximateHistoryRecordCountInLibrary:(id)arg1 error:(id *)arg2;
 + (id)_executePersistentHistoryChangeRequest:(id)arg1 withContext:(id)arg2;
++ (_Bool)deleteHistoryBeforeDate:(id)arg1 whenHistoryPercentageOfStoreIsGreaterThan:(unsigned long long)arg2 withContext:(id)arg3 error:(id *)arg4;
++ (_Bool)deleteHistoryBeforeDate:(id)arg1 withContext:(id)arg2 error:(id *)arg3;
 + (_Bool)deleteHistoryBeforeToken:(id)arg1 withContext:(id)arg2 error:(id *)arg3;
++ (id)newestTransactionWithContext:(id)arg1;
++ (id)oldestTransactionWithContext:(id)arg1;
 + (id)fetchTransactionCountSinceToken:(id)arg1 withContext:(id)arg2 error:(id *)arg3;
-+ (id)fetchTransactionsSinceToken:(id)arg1 withContext:(id)arg2 error:(id *)arg3;
-+ (id)fetchTransactionsSinceToken:(id)arg1 withBatchSize:(unsigned long long)arg2 context:(id)arg3 error:(id *)arg4;
-+ (id)fetchTransactionsSinceToken:(id)arg1 withFetchLimit:(unsigned long long)arg2 context:(id)arg3 error:(id *)arg4;
++ (id)fetchTransactionsSinceMarker:(id)arg1 withFetchRequest:(id)arg2 batchSize:(unsigned long long)arg3 context:(id)arg4 error:(id *)arg5;
 
 @end
 

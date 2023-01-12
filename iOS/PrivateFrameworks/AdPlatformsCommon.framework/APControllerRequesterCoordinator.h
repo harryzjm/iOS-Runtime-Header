@@ -6,19 +6,19 @@
 
 #import <AdPlatformsCommon/APPCControllerClientInterface-Protocol.h>
 
-@class APUnfairLock, NSMutableDictionary;
+@class APUnfairRecursiveLock, NSMutableDictionary;
 
 @interface APControllerRequesterCoordinator <APPCControllerClientInterface>
 {
     NSMutableDictionary *_requestDelegates;
-    APUnfairLock *_lock;
+    APUnfairRecursiveLock *_lock;
 }
 
 + (id)machService;
 + (_Bool)canShareConnection;
 + (id)requestCoordinator;
 - (void).cxx_destruct;
-@property(retain, nonatomic) APUnfairLock *lock; // @synthesize lock=_lock;
+@property(retain, nonatomic) APUnfairRecursiveLock *lock; // @synthesize lock=_lock;
 @property(retain, nonatomic) NSMutableDictionary *requestDelegates; // @synthesize requestDelegates=_requestDelegates;
 - (void)extendCollectionClassesForExportedInterface:(id)arg1;
 - (id)exportedObject;

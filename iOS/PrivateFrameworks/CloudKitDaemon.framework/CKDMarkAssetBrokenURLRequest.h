@@ -6,7 +6,6 @@
 
 @class CKUploadRequestMetadata;
 
-__attribute__((visibility("hidden")))
 @interface CKDMarkAssetBrokenURLRequest
 {
     _Bool _writeRepairRecord;

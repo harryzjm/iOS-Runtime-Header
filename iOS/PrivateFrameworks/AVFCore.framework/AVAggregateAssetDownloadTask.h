@@ -6,9 +6,16 @@
 
 #import <CFNetwork/NSURLSessionTask.h>
 
+@class AVURLAsset, NSURLRequest, NSURLResponse;
+
 @interface AVAggregateAssetDownloadTask : NSURLSessionTask
 {
 }
+
+@property(readonly, copy) NSURLResponse *response;
+@property(readonly, copy) NSURLRequest *currentRequest;
+@property(readonly, copy) NSURLRequest *originalRequest;
+@property(readonly, nonatomic) AVURLAsset *URLAsset;
 
 @end
 

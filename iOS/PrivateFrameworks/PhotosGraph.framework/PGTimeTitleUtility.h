@@ -13,12 +13,12 @@
 + (long long)numberOfYearsFromDate:(id)arg1 toDate:(id)arg2;
 + (id)_locationNodesForTimeTitleFromLocationNodes:(id)arg1;
 + (id)significantDateNodesFromMomentNodes:(id)arg1 dateFormatterType:(unsigned long long)arg2;
-+ (id)_dateNodesFromMomentNodes:(id)arg1 momentsLocalStartDate:(id *)arg2 momentsLocalEndDate:(id *)arg3;
++ (id)_dateNodesFromMomentNodes:(id)arg1 featuredYearNodes:(id)arg2 momentsLocalStartDate:(id *)arg3 momentsLocalEndDate:(id *)arg4;
 + (id)_commonLocationLabelForLocationNodes:(id)arg1;
 + (_Bool)_hasReachedNumberVisitsPerYear:(unsigned long long)arg1 inEvents:(id)arg2 withLocationNodes:(id)arg3 startDateNode:(id)arg4 endDateNode:(id)arg5;
 + (_Bool)_hasReachedNumberVisitsPerMonth:(unsigned long long)arg1 inEvents:(id)arg2 withLocationNodes:(id)arg3 startDateNode:(id)arg4 endDateNode:(id)arg5;
 + (void)_enumerateNeighborMomentNodesOfMomentNodes:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
-+ (_Bool)_momentNodes:(id)arg1 coverCompleteTimeWithEdgeLabel:(id)arg2;
++ (_Bool)_momentNodes:(id)arg1 coverCompleteMonth:(_Bool)arg2 coverCompleteYear:(_Bool)arg3;
 + (_Bool)_eventNodesCoverCompleteYear:(id)arg1;
 + (_Bool)_eventNodesCoverCompleteMonth:(id)arg1;
 + (unsigned long long)_dateIntervalFormatterTypeWithEventNodes:(id)arg1 allowedFormats:(unsigned long long)arg2;
@@ -34,6 +34,7 @@
 + (id)splitTimeTitleWithDateInterval:(id)arg1 allowedFormats:(unsigned long long)arg2;
 + (id)splitTimeTitleWithOptions:(id)arg1;
 + (id)timeTitleWithDateInterval:(id)arg1 allowedFormats:(unsigned long long)arg2;
++ (id)_featuredDateNodesFromDateNodes:(id)arg1 featuredYearNodes:(id)arg2;
 + (id)timeTitleWithOptions:(id)arg1;
 
 @end

@@ -14,13 +14,15 @@
 {
     NSDictionary *_speechRecognitionFeatures;
     NSDictionary *_acousticFeatures;
+    double _snr;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) double snr; // @synthesize snr=_snr;
 @property(readonly, copy, nonatomic) NSDictionary *acousticFeatures; // @synthesize acousticFeatures=_acousticFeatures;
 @property(readonly, copy, nonatomic) NSDictionary *speechRecognitionFeatures; // @synthesize speechRecognitionFeatures=_speechRecognitionFeatures;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)_initWithSpeechRecognitionFeatures:(id)arg1 acousticFeatures:(id)arg2;
+- (id)_initWithSpeechRecognitionFeatures:(id)arg1 acousticFeatures:(id)arg2 snr:(double)arg3;
 
 @end
 

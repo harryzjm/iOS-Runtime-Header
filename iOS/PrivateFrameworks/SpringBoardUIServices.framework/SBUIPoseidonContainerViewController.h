@@ -8,11 +8,12 @@
 
 #import <SpringBoardUIServices/SBUIPoseidonIconViewDelegate-Protocol.h>
 
-@class NSString, _UILegibilitySettings;
+@class NSString, SBUIPoseidonIconView, _UILegibilitySettings;
 @protocol SBUIPoseidonContainerViewControllerDelegate, SBUIPoseidonContainerViewControllerLockStatusProvider;
 
 @interface SBUIPoseidonContainerViewController : UIViewController <SBUIPoseidonIconViewDelegate>
 {
+    SBUIPoseidonIconView *_testPoseidonIconView;
     _Bool _authenticated;
     _Bool _bioLockout;
     _Bool _screenOn;
@@ -34,9 +35,9 @@
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property(nonatomic) __weak id <SBUIPoseidonContainerViewControllerLockStatusProvider> authenticationInformationProvider; // @synthesize authenticationInformationProvider=_authenticationInformationProvider;
 @property(nonatomic) __weak id <SBUIPoseidonContainerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)setTestPoseidonIconView:(id)arg1;
+- (id)_testPoseidonIconView;
 - (void)poseidonIconViewCoachingStateDidChange:(id)arg1;
-- (double)poseidonIconViewRestToOpenIdleDuration:(id)arg1;
-- (double)poseidonIconViewIdleUntilShimmerDuration:(id)arg1;
 - (id)_poseidonIconView;
 - (void)showCoaching:(_Bool)arg1;
 - (_Bool)coachingActive;
@@ -47,7 +48,6 @@
 - (void)_setLocalTransformForOrientation:(long long)arg1;
 - (void)_setCounterTransformForOrientation:(long long)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
-- (void)viewDidLoad;
 - (void)loadView;
 - (id)initWithAuthenticationInformationProvider:(id)arg1;
 

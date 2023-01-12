@@ -29,12 +29,14 @@
     PKCurrencyAmount *_amount;
     long long _amountComparison;
     NSSet *_tags;
+    NSString *_panIdentifier;
     long long _limit;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(nonatomic) long long limit; // @synthesize limit=_limit;
+@property(retain, nonatomic) NSString *panIdentifier; // @synthesize panIdentifier=_panIdentifier;
 @property(retain, nonatomic) NSSet *tags; // @synthesize tags=_tags;
 @property(nonatomic) long long amountComparison; // @synthesize amountComparison=_amountComparison;
 @property(retain, nonatomic) PKCurrencyAmount *amount; // @synthesize amount=_amount;

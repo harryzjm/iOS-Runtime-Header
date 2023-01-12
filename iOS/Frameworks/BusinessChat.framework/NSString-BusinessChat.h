@@ -7,6 +7,5 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (BusinessChat)
-- (id)normalizedBase64Encoded;
 @end
 

@@ -26,6 +26,7 @@
 - (void)waitForFence:(id)arg1 beforeStages:(unsigned long long)arg2;
 - (void)useResources:(const id *)arg1 count:(unsigned long long)arg2 usage:(unsigned long long)arg3 stages:(unsigned long long)arg4;
 - (void)useResources:(const id *)arg1 count:(unsigned long long)arg2 usage:(unsigned long long)arg3;
+- (void)useResourceGroup:(id)arg1 usage:(unsigned long long)arg2 stages:(unsigned long long)arg3;
 - (void)useResource:(id)arg1 usage:(unsigned long long)arg2 stages:(unsigned long long)arg3;
 - (void)useResource:(id)arg1 usage:(unsigned long long)arg2;
 - (void)useHeaps:(const id *)arg1 count:(unsigned long long)arg2 stages:(unsigned long long)arg3;
@@ -36,6 +37,8 @@
 - (void)setVisibilityResultMode:(unsigned long long)arg1 offset:(unsigned long long)arg2;
 - (void)setViewportTransformEnabled:(_Bool)arg1;
 - (void)setViewport:(CDStruct_8727d297)arg1;
+- (void)setVertexVisibleFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setVertexVisibleFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
 - (void)setVertexTextures:(const id *)arg1 withRange:(struct _NSRange)arg2;
 - (void)setVertexTexture:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)setVertexSamplerStates:(const id *)arg1 withRange:(struct _NSRange)arg2;
@@ -43,6 +46,8 @@
 - (void)setVertexSamplerState:(id)arg1 lodMinClamp:(float)arg2 lodMaxClamp:(float)arg3 lodBias:(float)arg4 atIndex:(unsigned long long)arg5;
 - (void)setVertexSamplerState:(id)arg1 lodMinClamp:(float)arg2 lodMaxClamp:(float)arg3 atIndex:(unsigned long long)arg4;
 - (void)setVertexSamplerState:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)setVertexIntersectionFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setVertexIntersectionFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
 - (void)setVertexBytes:(const void *)arg1 length:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setVertexBuffers:(const id *)arg1 offsets:(const unsigned long long *)arg2 withRange:(struct _NSRange)arg3;
 - (void)setVertexBufferOffset:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
@@ -51,12 +56,16 @@
 - (void)setTriangleFrontFillMode:(unsigned long long)arg1 backFillMode:(unsigned long long)arg2;
 - (void)setTriangleFillMode:(unsigned long long)arg1;
 - (void)setTransformFeedbackState:(unsigned long long)arg1;
+- (void)setTileVisibleFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setTileVisibleFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
 - (void)setTileTextures:(const id *)arg1 withRange:(struct _NSRange)arg2;
 - (void)setTileTexture:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)setTileSamplerStates:(const id *)arg1 withRange:(struct _NSRange)arg2;
 - (void)setTileSamplerStates:(const id *)arg1 lodMinClamps:(const float *)arg2 lodMaxClamps:(const float *)arg3 withRange:(struct _NSRange)arg4;
 - (void)setTileSamplerState:(id)arg1 lodMinClamp:(float)arg2 lodMaxClamp:(float)arg3 atIndex:(unsigned long long)arg4;
 - (void)setTileSamplerState:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)setTileIntersectionFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setTileIntersectionFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
 - (void)setTileBytes:(const void *)arg1 length:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setTileBuffers:(const id *)arg1 offsets:(const unsigned long long *)arg2 withRange:(struct _NSRange)arg3;
 - (void)setTileBufferOffset:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
@@ -79,6 +88,8 @@
 - (void)setPointSize:(float)arg1;
 - (void)setLineWidth:(float)arg1;
 - (void)setFrontFacingWinding:(unsigned long long)arg1;
+- (void)setFragmentVisibleFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setFragmentVisibleFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
 - (void)setFragmentTextures:(const id *)arg1 withRange:(struct _NSRange)arg2;
 - (void)setFragmentTexture:(id)arg1 atTextureIndex:(unsigned long long)arg2 samplerState:(id)arg3 atSamplerIndex:(unsigned long long)arg4;
 - (void)setFragmentTexture:(id)arg1 atIndex:(unsigned long long)arg2;
@@ -87,6 +98,8 @@
 - (void)setFragmentSamplerState:(id)arg1 lodMinClamp:(float)arg2 lodMaxClamp:(float)arg3 lodBias:(float)arg4 atIndex:(unsigned long long)arg5;
 - (void)setFragmentSamplerState:(id)arg1 lodMinClamp:(float)arg2 lodMaxClamp:(float)arg3 atIndex:(unsigned long long)arg4;
 - (void)setFragmentSamplerState:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)setFragmentIntersectionFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setFragmentIntersectionFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
 - (void)setFragmentBytes:(const void *)arg1 length:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setFragmentBuffers:(const id *)arg1 offsets:(const unsigned long long *)arg2 withRange:(struct _NSRange)arg3;
 - (void)setFragmentBufferOffset:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
@@ -127,6 +140,7 @@
 - (void)drawIndexedPrimitives:(unsigned long long)arg1 indexCount:(unsigned long long)arg2 indexType:(unsigned long long)arg3 indexBuffer:(id)arg4 indexBufferOffset:(unsigned long long)arg5;
 - (void)drawIndexedPatches:(unsigned long long)arg1 patchStart:(unsigned long long)arg2 patchCount:(unsigned long long)arg3 patchIndexBuffer:(id)arg4 patchIndexBufferOffset:(unsigned long long)arg5 controlPointIndexBuffer:(id)arg6 controlPointIndexBufferOffset:(unsigned long long)arg7 instanceCount:(unsigned long long)arg8 baseInstance:(unsigned long long)arg9;
 - (void)drawIndexedPatches:(unsigned long long)arg1 patchIndexBuffer:(id)arg2 patchIndexBufferOffset:(unsigned long long)arg3 controlPointIndexBuffer:(id)arg4 controlPointIndexBufferOffset:(unsigned long long)arg5 indirectBuffer:(id)arg6 indirectBufferOffset:(unsigned long long)arg7;
+- (void)dispatchThreadsPerTile:(CDStruct_14f26992)arg1 inRegion:(CDStruct_4c83c94d)arg2;
 - (void)dispatchThreadsPerTile:(CDStruct_14f26992)arg1;
 @property(readonly) unsigned long long tileWidth;
 @property(readonly) unsigned long long tileHeight;
@@ -141,6 +155,9 @@
 @property(readonly) struct GTTraceContext *traceContext;
 - (void)touch;
 - (id)originalObject;
+- (void)setTileAccelerationStructure:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setFragmentAccelerationStructure:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setVertexAccelerationStructure:(id)arg1 atBufferIndex:(unsigned long long)arg2;
 - (void)setVertexAmplificationCount:(unsigned long long)arg1 viewMappings:(const CDStruct_c0454aff *)arg2;
 - (void)setViewports:(const CDStruct_8727d297 *)arg1 count:(unsigned long long)arg2;
 - (void)setScissorRects:(const CDStruct_33dcf794 *)arg1 count:(unsigned long long)arg2;

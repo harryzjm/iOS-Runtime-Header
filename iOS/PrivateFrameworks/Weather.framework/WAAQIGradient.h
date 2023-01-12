@@ -6,23 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableDictionary, NSMutableIndexSet;
+@class NSArray, NSMutableArray, NSMutableDictionary, NSMutableIndexSet;
 
 @interface WAAQIGradient : NSObject
 {
-    NSMutableArray *_colors;
-    NSMutableIndexSet *_indexes;
-    NSMutableDictionary *_colorsByIndex;
+    NSMutableArray *_internalStops;
+    NSMutableIndexSet *_locationStops;
+    NSMutableDictionary *_colorsByLocation;
     struct _NSRange _range;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSMutableDictionary *colorsByIndex; // @synthesize colorsByIndex=_colorsByIndex;
-@property(readonly, nonatomic) NSMutableIndexSet *indexes; // @synthesize indexes=_indexes;
-@property(copy, nonatomic) NSMutableArray *colors; // @synthesize colors=_colors;
+@property(readonly, nonatomic) NSMutableDictionary *colorsByLocation; // @synthesize colorsByLocation=_colorsByLocation;
+@property(readonly, nonatomic) NSMutableIndexSet *locationStops; // @synthesize locationStops=_locationStops;
+@property(retain, nonatomic) NSMutableArray *internalStops; // @synthesize internalStops=_internalStops;
 @property(readonly, nonatomic) struct _NSRange range; // @synthesize range=_range;
-- (id)colorForIndex:(unsigned long long)arg1;
-- (void)addColor:(id)arg1;
+- (id)gradientStopForLocation:(unsigned long long)arg1;
+@property(readonly, copy, nonatomic) NSArray *stops;
+- (void)addGradientStop:(id)arg1;
 - (id)initWithRange:(struct _NSRange)arg1;
 
 @end

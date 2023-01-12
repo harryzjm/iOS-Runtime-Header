@@ -17,12 +17,6 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSSet *resolutions; // @synthesize resolutions=_resolutions;
-@property(retain, nonatomic) NSSet *keyCommandsRegistrations; // @synthesize keyCommandsRegistrations=_keyCommandsRegistrations;
-@property(retain, nonatomic) NSArray *deferringRules; // @synthesize deferringRules=_deferringRules;
-@property(retain, nonatomic) NSArray *keyCommandDeliveryRoots; // @synthesize keyCommandDeliveryRoots=_keyCommandDeliveryRoots;
-@property(retain, nonatomic) NSArray *deliveryRoots; // @synthesize deliveryRoots=_deliveryRoots;
-@property(retain, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 
 @end
 

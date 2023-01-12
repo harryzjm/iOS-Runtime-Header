@@ -29,6 +29,7 @@
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) MPStoreItemMetadata *parentStoreItemMetadata; // @synthesize parentStoreItemMetadata=_parentStoreItemMetadata;
+- (id)_fetchValueFromStoreMusicAPIDictionary:(id)arg1;
 - (id)_storePlatformLastModifiedDateFormatter;
 - (id)_musicAPIDateFormatter;
 - (id)_storePlatformReleaseDateFormatter;
@@ -41,11 +42,14 @@
 - (id)tvShowArtworkRequestToken;
 - (id)tvEpisodeArtworkRequestToken;
 - (id)editorNotesWithStyle:(id)arg1;
+@property(readonly, copy, nonatomic) NSString *shortDescriptionText;
 - (id)descriptionTextWithStyle:(id)arg1;
 - (id)childStorePlatformDictionaryForStoreID:(id)arg1;
 - (id)childStorePlatformDictionaryForArtworkTrackID:(id)arg1;
 - (id)stationGlyphRequestTokenForStorePlatformDictionary:(id)arg1;
+- (id)stationGlyphRequestTokenForStoreMusicAPIDictionary;
 - (id)artworkRequestTokenForStorePlatformDictionary:(id)arg1;
+- (id)artworkRequestTokenForStoreMusicAPIDictionary;
 - (id)avatarArtworkRequestToken;
 - (id)artworkRequestTokenForUberArtworkKind:(id)arg1;
 - (id)artworkRequestTokenForScreenshotArtwork;
@@ -54,6 +58,7 @@
 @property(readonly, nonatomic, getter=isLive) _Bool live;
 @property(readonly, copy, nonatomic) NSString *radioStationProviderName;
 @property(readonly, nonatomic) _Bool isChart;
+@property(readonly, copy, nonatomic) NSString *radioStationSubtype;
 @property(readonly, nonatomic) long long radioStationTypeID;
 @property(readonly, nonatomic, getter=isVerifiedPerson) _Bool verifiedPerson;
 @property(readonly, nonatomic, getter=isPrivatePerson) _Bool privatePerson;
@@ -91,11 +96,13 @@
 @property(readonly, nonatomic) long long movementCount;
 @property(readonly, nonatomic) MPStoreArtworkRequestToken *latestAlbumArtworkRequestToken;
 @property(readonly, copy, nonatomic) NSString *iTunesBrandType;
+@property(readonly, copy, nonatomic) NSString *personalMixSortKey;
 @property(readonly, copy, nonatomic) NSString *playlistType;
 @property(readonly, copy, nonatomic) NSString *itemKind;
+@property(readonly, nonatomic) NSArray *audioTraits;
 @property(readonly, nonatomic, getter=isStoreRedownloadable) _Bool storeRedownloadable;
 @property(readonly, nonatomic) _Bool isPreorder;
-- (_Bool)isMasteredForITunes;
+@property(readonly, nonatomic, getter=isMasteredForiTunes) _Bool masteredForiTunes;
 @property(readonly, nonatomic, getter=isCompilation) _Bool compilation;
 @property(readonly, nonatomic) long long explicitRating;
 @property(readonly, nonatomic, getter=isExplicitContent) _Bool explicitContent;
@@ -116,6 +123,7 @@
 @property(readonly, nonatomic) long long discCount;
 @property(readonly, copy, nonatomic) NSString *descriptionText;
 @property(readonly, copy, nonatomic) id curatorID;
+@property(readonly, copy, nonatomic) NSString *curatorHandle;
 @property(readonly, copy, nonatomic) NSString *curatorName;
 @property(readonly, copy, nonatomic) NSString *copyrightText;
 @property(readonly, copy, nonatomic) NSString *composerName;
@@ -140,6 +148,7 @@
 - (id)initWithStorePlatformDictionary:(id)arg1 parentStoreItemMetadata:(id)arg2;
 - (id)initWithStorePlatformDictionary:(id)arg1 expirationDate:(id)arg2;
 - (id)initWithStorePlatformDictionary:(id)arg1;
+- (id)initWithStoreMusicAPIDictionary:(id)arg1 parentStoreItemMetadata:(id)arg2;
 - (id)initWithStoreMusicAPIDictionary:(id)arg1;
 - (id)initWithDownloadAssetDictionary:(id)arg1;
 - (_Bool)hasMetadataForRequestReason:(unsigned long long)arg1;

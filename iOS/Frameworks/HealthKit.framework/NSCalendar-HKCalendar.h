@@ -8,6 +8,8 @@
 
 @interface NSCalendar (HKCalendar)
 + (id)hk_canonicalDateOfBirthDateComponentsWithDate:(id)arg1;
++ (id)hk_localDateOfBirthDateComponentsWithDate:(id)arg1;
++ (id)hk_gregorianCalendarWithFirstWeekdayFromRegion;
 + (id)hk_gregorianCalendarWithCupertinoTimeZone;
 + (id)hk_gregorianCalendarWithLocalTimeZone;
 + (id)hk_gregorianCalendarWithUTCTimeZone;
@@ -33,6 +35,7 @@
 - (id)hk_firstDateWithHour:(long long)arg1 minute:(long long)arg2 afterDate:(id)arg3;
 - (id)hk_dateBySubtractingDays:(unsigned long long)arg1 fromDate:(id)arg2;
 - (id)hk_dateByAddingDays:(unsigned long long)arg1 toDate:(id)arg2;
+- (id)hk_sixMonthPeriodContaining:(id)arg1 dateBefore:(_Bool)arg2;
 - (id)hk_nearestStartOfMonthForDate:(id)arg1;
 - (id)hk_nearestStartOfWeekWithFirstWeekDay:(long long)arg1 date:(id)arg2;
 - (id)hk_nearestStartOfDayForDate:(id)arg1;
@@ -41,6 +44,7 @@
 - (id)hk_startOfMonthForDate:(id)arg1;
 - (id)hk_startOfHourForDate:(id)arg1 addingHours:(long long)arg2;
 - (id)hk_startOfMinuteForDate:(id)arg1 moduloMinutes:(long long)arg2 addingModuloCount:(long long)arg3;
+- (id)hk_weeksContainingInterval:(id)arg1 firstWeekday:(long long)arg2;
 - (id)hk_startOfWeekWithFirstWeekday:(long long)arg1 beforeDate:(id)arg2 addingWeeks:(long long)arg3;
 - (id)hk_startOfFitnessWeekBeforeDate:(id)arg1;
 - (id)hk_startOfDateByAddingDays:(long long)arg1 toDate:(id)arg2;

@@ -15,6 +15,7 @@
 
 + (id)_defaultCenterWithoutCreating;
 + (id)defaultCenter;
++ (void)load;
 - (id)debugDescription;
 - (_Bool)isEmpty;
 - (id)addObserverForName:(id)arg1 object:(id)arg2 queue:(id)arg3 usingBlock:(CDUnknownBlockType)arg4;

@@ -5,10 +5,11 @@
 //
 
 #import <ClassKit/CLSRelationable-Protocol.h>
+#import <ClassKit/NSFilePresenter-Protocol.h>
 
-@class NSError, NSMetadataQuery, NSMutableArray, NSString, NSURL;
+@class NSError, NSMetadataQuery, NSMutableArray, NSOperationQueue, NSProgress, NSSet, NSString, NSURL;
 
-@interface CLSAsset <CLSRelationable>
+@interface CLSAsset <CLSRelationable, NSFilePresenter>
 {
     NSURL *_url;
     _Bool _uploaded;
@@ -19,7 +20,11 @@
     long long _completedUnitCount;
     NSError *_sharingError;
     NSMetadataQuery *_query;
+    id _uploadProgressSubscriber;
+    NSProgress *_uploadProgress;
+    _Bool _addedToFilePresenter;
     _Bool _setupCKShare;
+    long long _schoolworkSyncStatus;
     _Bool _original;
     NSString *_ownerPersonID;
     double _fractionUploaded;
@@ -30,11 +35,13 @@
     NSString *_brShareName;
     NSString *_ubiquitousContainerName;
     NSString *_relativePathWithinContainer;
+    NSURL *_devModeURL;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)relations;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSURL *devModeURL; // @synthesize devModeURL=_devModeURL;
 @property(retain, nonatomic) NSString *relativePathWithinContainer; // @synthesize relativePathWithinContainer=_relativePathWithinContainer;
 @property(retain, nonatomic) NSString *ubiquitousContainerName; // @synthesize ubiquitousContainerName=_ubiquitousContainerName;
 @property(retain, nonatomic) NSString *brShareName; // @synthesize brShareName=_brShareName;
@@ -47,18 +54,22 @@
 @property(retain, nonatomic) NSString *ownerPersonID; // @synthesize ownerPersonID=_ownerPersonID;
 - (_Bool)deleteFile:(id *)arg1;
 - (void)deleteFileWithCompletion:(CDUnknownBlockType)arg1;
-- (_Bool)deleteFileAtURL:(id)arg1 error:(id *)arg2;
 - (void)urlSuitableForOpeningWithCompletion:(CDUnknownBlockType)arg1;
-- (void)fetchUsersAndAddToShare:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)checkForCKShare:(CDUnknownBlockType)arg1;
 - (void)createShareIfNeeded_Imp:(CDUnknownBlockType)arg1;
 - (void)createShareIfNeeded:(CDUnknownBlockType)arg1;
-- (void)processItems:(id)arg1;
-- (void)queryUpdated:(id)arg1;
-- (void)queryGatheredData:(id)arg1;
 - (void)queued_stopObservingUploadProgress;
 - (void)queued_startObservingUploadProgress;
 - (void)uploadStateChanged:(unsigned long long)arg1;
 - (id)uploadFileIfNeeded:(id *)arg1;
+- (void)presentedItemDidChangeUbiquityAttributes:(id)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)removeFromFilePresenter;
+- (void)addToFilePresenter;
+@property(readonly) NSSet *observedPresentedItemUbiquityAttributes;
+@property(readonly, retain) NSOperationQueue *presentedItemOperationQueue;
+@property(readonly, copy) NSURL *presentedItemURL;
+- (_Bool)devModeOn;
 - (void)queued_notifyUploadCompletion;
 - (void)queued_notifyUploadProgress;
 - (id)uploadObservers;
@@ -66,8 +77,12 @@
 - (void)addUploadObserver:(id)arg1;
 - (void)willSaveObject;
 - (_Bool)validateObject:(id *)arg1;
+@property(nonatomic) long long schoolworkSyncStatus;
 @property(nonatomic, getter=isUploaded) _Bool uploaded;
+@property(readonly, nonatomic) long long fileSize;
+@property(readonly, nonatomic) NSString *filenameExtension;
 @property(retain, nonatomic) NSURL *url;
+- (id)fileURL_deprecated;
 @property(readonly, nonatomic) NSURL *fileURL;
 - (void)mergeWithObject:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -82,6 +97,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, copy) NSURL *primaryPresentedItemURL;
 @property(readonly) Class superclass;
 
 @end

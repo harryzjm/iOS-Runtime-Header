@@ -7,15 +7,19 @@
 #import <UIKit/UIViewController.h>
 
 #import <SpringBoard/FBSceneManagerObserver-Protocol.h>
+#import <SpringBoard/SBDeviceApplicationSceneStatusBarStateObserver-Protocol.h>
 #import <SpringBoard/SBMultiplexedSpotlightDelegate-Protocol.h>
 #import <SpringBoard/SBScrollToTopSceneProxyViewDelegate-Protocol.h>
 
-@class NSString, SBMedusaHostedKeyboardWindowLevelAssertion, SBScrollToTopSceneProxyView, _UILegibilitySettings;
+@class NSString, SBAppStatusBarSettingsAssertion, SBDeviceApplicationSceneHandle, SBMedusaHostedKeyboardWindowLevelAssertion, SBScrollToTopSceneProxyView, _UILegibilitySettings;
 @protocol SPUIRemoteSearchViewDelegate;
 
-@interface SBSpotlightMultiplexingViewController : UIViewController <SBMultiplexedSpotlightDelegate, FBSceneManagerObserver, SBScrollToTopSceneProxyViewDelegate>
+@interface SBSpotlightMultiplexingViewController : UIViewController <SBMultiplexedSpotlightDelegate, FBSceneManagerObserver, SBScrollToTopSceneProxyViewDelegate, SBDeviceApplicationSceneStatusBarStateObserver>
 {
     SBScrollToTopSceneProxyView *_scrollToTopView;
+    SBDeviceApplicationSceneHandle *_sceneHandle;
+    SBAppStatusBarSettingsAssertion *_hideStatusBarAssertion;
+    _Bool _invalidated;
     _Bool _activeDelegate;
     _UILegibilitySettings *_legibilitySettings;
     id <SPUIRemoteSearchViewDelegate> _spotlightDelegate;
@@ -27,18 +31,25 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) SBMedusaHostedKeyboardWindowLevelAssertion *medusaHostedKeyboardWindowLevelAssertion; // @synthesize medusaHostedKeyboardWindowLevelAssertion=_medusaHostedKeyboardWindowLevelAssertion;
 @property(nonatomic, getter=isActiveDelegate) _Bool activeDelegate; // @synthesize activeDelegate=_activeDelegate;
+@property(nonatomic, getter=isInvalidated) _Bool invalidated; // @synthesize invalidated=_invalidated;
 @property(nonatomic) __weak id <SPUIRemoteSearchViewDelegate> spotlightDelegate; // @synthesize spotlightDelegate=_spotlightDelegate;
 @property(copy, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 - (unsigned long long)remoteSearchViewPresentationSource;
+- (unsigned long long)_appStatusBarSettingsLevelForSpotlightMultiplexingLevel:(unsigned long long)arg1;
+- (void)_clearStatusBarAssertion;
+- (void)_updateStatusBarAssertion;
+- (_Bool)_isStatusBarEffectivelyHidden;
+- (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarHiddenTo:(_Bool)arg2 withAnimation:(long long)arg3;
+- (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarAlphaTo:(double)arg2;
 - (void)_unregisterStatusBarScrollToTopViewWithWindow:(id)arg1;
 - (void)_unregisterStatusBarScrollToTopView;
 - (void)_registerStatusBarScrollToTopViewWithWindow:(id)arg1;
 - (void)_registerStatusBarScrollToTopView;
 - (void)_configureStatusBarScrollToTopView;
-- (id)_sceneHandle;
 - (id)_spotlightSceneIdentifier;
 - (void)scrollToTopSceneProxyViewWillExitViewHierarchy:(id)arg1 rootedAtWindow:(id)arg2;
 - (void)scrollToTopSceneProxyViewDidEnterViewHierarchy:(id)arg1 rootedAtWindow:(id)arg2;
+- (id)sceneHandle;
 - (void)sceneManager:(id)arg1 didDestroyScene:(id)arg2;
 - (void)sceneManager:(id)arg1 didCreateScene:(id)arg2;
 - (_Bool)shouldAutomaticallyForwardAppearanceMethods;
@@ -49,6 +60,7 @@
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)invalidate;
 @property(readonly, nonatomic) unsigned long long level;
 - (void)dealloc;
 

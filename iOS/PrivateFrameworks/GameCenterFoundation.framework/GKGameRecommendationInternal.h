@@ -13,10 +13,10 @@
 }
 
 + (id)secureCodedPropertyKeys;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *engineID; // @synthesize engineID=_engineID;
 @property(retain, nonatomic) NSString *reason; // @synthesize reason=_reason;
 - (id)serverRepresentation;
-- (void)dealloc;
 - (id)initWithGame:(id)arg1;
 
 @end

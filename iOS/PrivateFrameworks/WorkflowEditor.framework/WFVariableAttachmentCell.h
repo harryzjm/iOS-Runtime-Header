@@ -8,16 +8,17 @@
 
 #import <WorkflowEditor/NSTextAttachmentCell-Protocol.h>
 
-@class NSString, UIColor, UIFont, UIImage, WFVariableAttachment;
+@class NSString, UIColor, UIFont, WFImage, WFVariableAttachment;
 
 @interface WFVariableAttachmentCell : NSObject <NSTextAttachmentCell>
 {
     WFVariableAttachment *_attachment;
-    UIImage *_cachedImage;
+    WFImage *_cachedImage;
     unsigned long long _cachedImageControlState;
     UIFont *_cachedImageFont;
     UIColor *_cachedImageTintColor;
     NSString *_cachedImageVariableName;
+    struct CGSize _cachedImageSize;
 }
 
 - (void).cxx_destruct;
@@ -25,7 +26,8 @@
 @property(retain, nonatomic) UIColor *cachedImageTintColor; // @synthesize cachedImageTintColor=_cachedImageTintColor;
 @property(retain, nonatomic) UIFont *cachedImageFont; // @synthesize cachedImageFont=_cachedImageFont;
 @property(nonatomic) unsigned long long cachedImageControlState; // @synthesize cachedImageControlState=_cachedImageControlState;
-@property(retain, nonatomic) UIImage *cachedImage; // @synthesize cachedImage=_cachedImage;
+@property(nonatomic) struct CGSize cachedImageSize; // @synthesize cachedImageSize=_cachedImageSize;
+@property(retain, nonatomic) WFImage *cachedImage; // @synthesize cachedImage=_cachedImage;
 @property(nonatomic) __weak WFVariableAttachment *attachment; // @synthesize attachment=_attachment;
 - (void)clearCachedImage;
 - (id)attachmentImageForSize:(struct CGSize)arg1;
@@ -33,6 +35,7 @@
 - (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2;
 - (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2 characterIndex:(unsigned long long)arg3;
 - (void)drawWithFrame:(struct CGRect)arg1 inView:(id)arg2 characterIndex:(unsigned long long)arg3 layoutManager:(id)arg4;
+- (void)_drawWithFrame:(struct CGRect)arg1 inView:(id)arg2 characterIndex:(unsigned long long)arg3 layoutManager:(id)arg4;
 - (struct CGRect)cellFrameForTextContainer:(id)arg1 proposedLineFragment:(struct CGRect)arg2 glyphPosition:(struct CGPoint)arg3 characterIndex:(unsigned long long)arg4;
 - (struct CGPoint)cellBaselineOffset;
 - (struct CGSize)cellSize;

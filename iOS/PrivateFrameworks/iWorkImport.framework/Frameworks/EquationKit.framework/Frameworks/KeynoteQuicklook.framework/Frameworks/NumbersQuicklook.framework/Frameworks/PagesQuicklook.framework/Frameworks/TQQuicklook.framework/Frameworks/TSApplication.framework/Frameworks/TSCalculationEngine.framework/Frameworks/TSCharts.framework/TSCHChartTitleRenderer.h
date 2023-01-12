@@ -6,7 +6,7 @@
 
 @interface TSCHChartTitleRenderer
 {
-    struct CGRect mStartingEditingFrame;
+    struct CGRect _startingEditingFrame;
 }
 
 + (id)defaultParagraphStyleForCenteredTitleEllipsisWithChartInfo:(id)arg1 originalParagraphStyle:(id)arg2 scaleTextPercent:(double)arg3 titleRootedLayoutRect:(struct CGRect)arg4;
@@ -20,7 +20,6 @@
 - (void)renderIntoContext:(struct CGContext *)arg1 selection:(id)arg2;
 - (_Bool)canRenderSelectionPath:(id)arg1;
 - (void)p_renderIntoContext:(struct CGContext *)arg1 visible:(struct CGRect)arg2;
-- (void)p_debugRenderRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2 withColor:(id)arg3;
 - (void)p_drawTitle:(struct CGContext *)arg1 rangePtr:(struct _NSRange *)arg2;
 - (void)useEditedString:(id)arg1;
 

@@ -27,8 +27,10 @@
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (id)backingStoreObjectsForVersion:(long long)arg1;
-- (void)runTransactionWithModels:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)runTransactionWithModel:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)runTransactionWithModels:(id)arg1 options:(id)arg2 reason:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)runTransactionWithModel:(id)arg1 options:(id)arg2 reason:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)runTransactionWithModels:(id)arg1 reason:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)runTransactionWithModel:(id)arg1 reason:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)initWithIdentifier:(id)arg1 backingStore:(id)arg2;
 
 // Remaining properties

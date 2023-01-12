@@ -6,10 +6,9 @@
 
 #import <FileProviderDaemon/NSObject-Protocol.h>
 
-@class FPDDomainIndexer, NSArray, NSData, NSError;
+@class FPDDomainIndexer;
 
 @protocol FPDDomainIndexerDelegate <NSObject>
-- (void)extensionIndexer:(FPDDomainIndexer *)arg1 didIndexOneBatchWithError:(NSError *)arg2 updatedItems:(NSArray *)arg3 deletedIDs:(NSArray *)arg4 anchor:(NSData *)arg5 anchorPersisted:(void (^)(NSError *))arg6;
 - (void)extensionIndexer:(FPDDomainIndexer *)arg1 didChangeNeedsAuthentification:(_Bool)arg2;
 @end
 

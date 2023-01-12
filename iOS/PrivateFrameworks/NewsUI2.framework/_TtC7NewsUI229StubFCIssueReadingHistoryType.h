@@ -12,6 +12,7 @@
 {
 }
 
+- (void)prepareForUseWithCompletion:(CDUnknownBlockType)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
 @property(nonatomic, readonly) NSArray *allEngagedIssueIDs;

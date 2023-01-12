@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (void)cancel;
 - (void)_finishWithFinalLayout:(id)arg1 invalidLayout:(id)arg2;
 - (void)animate;
+- (_Bool)shouldPerformTwoPartCrossfadeTransition;
 - (void)_animateSearchBar;
 - (void)_animateLargeTitleView;
 - (void)_animateContentView;

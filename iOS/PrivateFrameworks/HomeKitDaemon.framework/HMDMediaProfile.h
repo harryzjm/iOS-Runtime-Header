@@ -7,7 +7,7 @@
 #import <HomeKitDaemon/HMFLocking-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDMediaSession, HMFUnfairLock, NSString;
+@class HMDMediaSession, HMFUnfairLock, NSDictionary, NSString;
 
 @interface HMDMediaProfile <HMFLogging, HMFLocking>
 {
@@ -33,7 +33,7 @@
 - (void)_handleSetValue:(id)arg1 withRequestProperty:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)handleSetValue:(id)arg1 withRequestProperty:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)_sessionPlaybackStateUpdated:(id)arg1 notifyXPCClients:(_Bool)arg2;
-- (void)updateWithResponses:(id)arg1 message:(id)arg2;
+- (void)updateWithResponses:(id)arg1 requestMessageInformation:(id)arg2;
 - (void)_handleMediaResponses:(id)arg1 message:(id)arg2;
 - (void)_handleMediaSessionSetAudioControl:(id)arg1;
 - (_Bool)_updateAudioControl:(id)arg1;
@@ -52,8 +52,9 @@
 - (void)performBlock:(CDUnknownBlockType)arg1;
 - (void)unlock;
 - (void)lock;
-- (id)assistantObject;
-- (id)urlString;
+@property(readonly, copy) NSString *mediaRouteID;
+@property(readonly, copy) NSDictionary *assistantObject;
+@property(readonly, copy) NSString *urlString;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

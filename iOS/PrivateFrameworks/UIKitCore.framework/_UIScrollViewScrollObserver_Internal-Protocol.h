@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIScrollViewScrollObserver-Protocol.h>
+#import <UIKitCore/_UIScrollViewScrollObserver_ForPUICOnly-Protocol.h>
 
 @class UIScrollView;
 
-@protocol _UIScrollViewScrollObserver_Internal <_UIScrollViewScrollObserver>
+@protocol _UIScrollViewScrollObserver_Internal <_UIScrollViewScrollObserver_ForPUICOnly>
 
 @optional
+- (void)_observeScrollViewGeometryAffectingContentBottomDidChange:(UIScrollView *)arg1;
 - (void)_observeScrollViewAlignedContentMarginDidChange:(UIScrollView *)arg1;
 - (void)_observeScrollView:(UIScrollView *)arg1 didBeginTransitionToDeferredContentOffset:(struct CGPoint)arg2;
 - (void)_didScroll;

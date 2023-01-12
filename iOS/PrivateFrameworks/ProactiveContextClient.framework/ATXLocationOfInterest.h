@@ -21,7 +21,7 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) struct CLLocationCoordinate2D coordinate; // @synthesize coordinate=_coordinate;
+@property(nonatomic) struct CLLocationCoordinate2D coordinate; // @synthesize coordinate=_coordinate;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
 @property(readonly, nonatomic) NSArray *visits; // @synthesize visits=_visits;
 @property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;

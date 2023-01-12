@@ -6,8 +6,14 @@
 
 @interface TLKFormattedTextItem
 {
+    _Bool _isBold;
+    _Bool _isEmphasized;
+    long long _color;
 }
 
+@property(nonatomic) long long color; // @synthesize color=_color;
+@property(nonatomic) _Bool isEmphasized; // @synthesize isEmphasized=_isEmphasized;
+@property(nonatomic) _Bool isBold; // @synthesize isBold=_isBold;
 - (unsigned long long)_itemType;
 - (_Bool)hasContent;
 

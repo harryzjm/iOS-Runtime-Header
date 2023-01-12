@@ -14,10 +14,13 @@
 }
 
 + (id)chatStyleCustomKey;
++ (id)chatAutoDonatingServerDateCustomKey;
++ (id)chatAutoDonatingCutomKey;
++ (id)resolvedURLCustomKey;
 + (id)sharedInstance;
 @property(retain, nonatomic) NSMutableOrderedSet *blocklistMessageGUIDs; // @synthesize blocklistMessageGUIDs=_blocklistMessageGUIDs;
-- (unsigned long long)_lastIndexedRowID;
 - (unsigned long long)_batchSizeForTargetBatchSize:(unsigned long long)arg1 lastIndexedRowID:(unsigned long long)arg2 lastBatch:(_Bool *)arg3;
+- (unsigned long long)_lastIndexedRowID;
 - (_Bool)_shouldIndexNextBatchForBatchSize:(unsigned long long)arg1;
 - (void)_setBypassIndexVersionCheck;
 - (void)_setCurrentIndexVersion:(unsigned long long)arg1;
@@ -43,7 +46,10 @@
 - (void)setNeedsMessageReindexingWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_chatDictionaryForChatGUID:(id)arg1;
 - (void)deleteChatSearchableItemForChatGUID:(id)arg1;
+- (void)addChatSearchableItemForChatGUID:(id)arg1;
 - (id)newChatSearchableItemForChatDictionary:(id)arg1 optionalLastMessageDate:(id)arg2;
+- (void)_resolvedURLForItems:(id)arg1;
+- (void)_updateItem:(id)arg1 withResolvedURL:(id)arg2;
 - (void)_updateItem:(id)arg1 withGeoMapItem:(id)arg2;
 - (void)_geocodeItems:(id)arg1;
 - (void)_postProcessIndexingForItem:(id)arg1 chatDictionary:(id)arg2 isReindexing:(_Bool)arg3;
@@ -52,9 +58,22 @@
 - (id)newSearchableItemsForMessageGUID:(id)arg1 reindexing:(_Bool)arg2;
 - (void)clearMessageGUIDFromScrutiny:(id)arg1;
 - (void)setMessageGUIDUnderScrutiny:(id)arg1;
-- (long long)maxRowID;
+- (id)_spotlightIndexingQueue;
 - (id)searchableIndex;
+- (long long)maxRowID;
 - (void)dealloc;
+- (void)setNeedsDonateAllMessagesWithCompletion:(CDUnknownBlockType)arg1;
+- (id)newCDInteractionForMessage:(struct _IMDMessageRecordStruct *)arg1;
+- (id)_newCDInteractionForMessages:(struct __CFArray *)arg1;
+- (void)_setLastDonatedRowID:(unsigned long long)arg1;
+- (void)_setNeedsDonation:(_Bool)arg1;
+- (unsigned long long)_lastDonatedRowID;
+- (_Bool)_shouldDonateNextBatchForBatchSize:(unsigned long long)arg1;
+- (void)donateNextMessageBatchIfNeeded:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)newCDContactForHandle:(struct _IMDHandleRecordStruct *)arg1 handle:(id)arg2;
+- (id)newCDInteractionForChat:(struct _IMDChatRecordStruct *)arg1 message:(struct _IMDMessageRecordStruct *)arg2;
+- (void)donateChat:(struct _IMDChatRecordStruct *)arg1 withMessage:(struct _IMDMessageRecordStruct *)arg2;
+- (_Bool)__im_ff_isInterstellarEnabled;
 
 @end
 

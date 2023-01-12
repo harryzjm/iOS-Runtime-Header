@@ -46,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (void)_updatePresentingViewControllerContentScrollViewWithOffsets:(struct CGSize)arg1 transitionCoordinator:(id)arg2;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)_layoutPresentationWithSize:(struct CGSize)arg1 transitionCoordinator:(id)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)containerViewWillLayoutSubviews;
 - (struct CGRect)frameOfPresentedViewInContainerView;
 - (_Bool)_shouldKeepCurrentFirstResponder;

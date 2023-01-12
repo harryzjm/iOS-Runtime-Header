@@ -6,18 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class CXCallObserver;
+@class CXCallObserver, Logger;
 
 __attribute__((visibility("hidden")))
 @interface PSUICoreTelephonyCallCache : NSObject
 {
+    Logger *_logger;
     CXCallObserver *_callObserver;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
 @property(retain, nonatomic) CXCallObserver *callObserver; // @synthesize callObserver=_callObserver;
+- (id)getLogger;
 - (id)localizedPhoneNumber:(id)arg1 context:(id)arg2;
+- (_Bool)isActiveCallSubtype:(struct __CFString *)arg1;
 - (_Bool)isActiveCallVoLTE;
 - (_Bool)isAnyCallActiveForProviderIdentifier:(id)arg1;
 - (_Bool)isAnyTelephonyCallActive;

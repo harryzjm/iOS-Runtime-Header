@@ -12,6 +12,7 @@
 }
 
 - (void).cxx_destruct;
+- (void)addRecipientToPasteboard:(id)arg1;
 - (id)childrenWithCompleteMatches;
 - (id)completelyMatchedAttributedStrings;
 - (_Bool)wasCompleteMatch;

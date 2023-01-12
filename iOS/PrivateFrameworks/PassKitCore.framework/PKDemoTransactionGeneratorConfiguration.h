@@ -13,18 +13,21 @@
     NSString *_accountIdentifier;
     NSString *_transactionSourceIdentifier;
     long long _accountType;
-    NSString *_merchantName;
-    NSString *_personName;
+    NSString *_altDSID;
+    long long _demoMerchant;
+    long long _demoPerson;
     long long _transactionCount;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) long long transactionCount; // @synthesize transactionCount=_transactionCount;
-@property(copy, nonatomic) NSString *personName; // @synthesize personName=_personName;
-@property(copy, nonatomic) NSString *merchantName; // @synthesize merchantName=_merchantName;
+@property(nonatomic) long long demoPerson; // @synthesize demoPerson=_demoPerson;
+@property(nonatomic) long long demoMerchant; // @synthesize demoMerchant=_demoMerchant;
+@property(copy, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
 @property(nonatomic) long long accountType; // @synthesize accountType=_accountType;
 @property(copy, nonatomic) NSString *transactionSourceIdentifier; // @synthesize transactionSourceIdentifier=_transactionSourceIdentifier;
 @property(copy, nonatomic) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
+- (id)init;
 
 @end
 

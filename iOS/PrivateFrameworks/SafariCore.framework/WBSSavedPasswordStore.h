@@ -31,8 +31,13 @@
 - (void)reset;
 - (unsigned long long)numberOfSavedPasswordForHighLevelDomain:(id)arg1;
 - (void)_postSavedPasswordStoreDidChangeNotification;
+- (void)removeTOTPGenerator:(id)arg1 forSavedPassword:(id)arg2;
+- (void)saveTOTPGenerator:(id)arg1 forSavedPassword:(id)arg2;
+- (void)_removeSidecarObjectsOnInternalQueueForSavedPassword:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)_saveSidecarObjectsOnInternalQueueForSavedPassword:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)saveUser:(id)arg1 password:(id)arg2 forProtectionSpace:(id)arg3 highLevelDomain:(id)arg4;
 - (_Bool)canSaveUser:(id)arg1 password:(id)arg2 forProtectionSpace:(id)arg3 highLevelDomain:(id)arg4;
+- (_Bool)changeSavedPasswordWithRequest:(id)arg1;
 - (_Bool)changeSavedPassword:(id)arg1 toUser:(id)arg2 password:(id)arg3;
 - (_Bool)canChangeSavedPassword:(id)arg1 toUser:(id)arg2 password:(id)arg3;
 - (void)removeSite:(id)arg1 fromPassword:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
@@ -42,6 +47,7 @@
 @property(readonly, nonatomic) NSArray *savedPasswords;
 @property(readonly, nonatomic) NSSet *highLevelDomainsOfAllSavedPasswordsExcludingNeverSaveMarkerPasswords;
 @property(readonly, nonatomic) NSArray *savedPasswordsExcludingNeverSaveMarkerPasswords;
+- (id)_allSidecarsFromKeychain;
 - (id)_allInternetPasswordEntriesFromKeychain;
 - (id)savedPasswordsForPersistentIdentifiers:(id)arg1;
 - (id)_savedPasswordForProtectionSpace:(id)arg1 user:(id)arg2 password:(id)arg3;

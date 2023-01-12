@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <ProactiveHarvesting/HVPathsBase.h>
 
-@interface SGPaths : NSObject
+@interface SGPaths : HVPathsBase
 {
 }
 
@@ -16,6 +16,7 @@
 + (id)suggestionsDirectoryFile:(id)arg1;
 + (id)suggestionsDirectoryAfterCreatingIfNeeded:(_Bool)arg1;
 + (id)suggestionsDirectory;
++ (id)topDirectoryCreateIfNeeded:(_Bool)arg1;
 
 @end
 

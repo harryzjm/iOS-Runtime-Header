@@ -16,6 +16,7 @@
 + (id)usage;
 + (id)persistence;
 + (id)contentPrivacy;
++ (id)communicationSafety;
 + (id)communication;
 + (id)alwaysAllowed;
 + (id)budgets;

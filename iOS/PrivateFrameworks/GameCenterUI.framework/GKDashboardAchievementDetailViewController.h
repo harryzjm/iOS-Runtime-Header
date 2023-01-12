@@ -19,6 +19,7 @@
     GKAchievement *_localAchievement;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) GKAchievement *localAchievement; // @synthesize localAchievement=_localAchievement;
 @property(retain, nonatomic) GKAchievement *achievement; // @synthesize achievement=_achievement;
 @property(nonatomic) UIButton *secondButton; // @synthesize secondButton=_secondButton;
@@ -33,7 +34,6 @@
 - (void)configureForAchievements;
 - (id)preferredFocusEnvironments;
 - (void)viewDidLoad;
-- (void)dealloc;
 - (id)initWithAchievement:(id)arg1 localAchievement:(id)arg2;
 
 @end

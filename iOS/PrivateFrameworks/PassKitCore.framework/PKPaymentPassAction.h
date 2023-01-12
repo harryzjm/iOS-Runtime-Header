@@ -8,7 +8,7 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate, NSDictionary, NSSet, NSString, PKEnteredValueActionItem, PKTransitCommutePlan;
+@class NSArray, NSDate, NSDictionary, NSSet, NSString, NSURL, PKEnteredValueActionItem, PKTransitCommutePlan;
 
 @interface PKPaymentPassAction : NSObject <NSSecureCoding>
 {
@@ -27,6 +27,7 @@
     NSString *_associatedPlanIdentifier;
     PKTransitCommutePlan *_associatedPlan;
     NSDate *_availableFrom;
+    double _availableFromOffsetFromUTC;
     NSDate *_availableUntil;
     NSString *_unavailableBeforeReason;
     NSString *_unavailableAfterReason;
@@ -35,18 +36,22 @@
     NSArray *_serviceProviderAcceptedNetworks;
     NSSet *_serviceProviderSupportedCountries;
     unsigned long long _serviceProviderCapabilities;
-    PKEnteredValueActionItem *_enteredValueItem;
+    NSDictionary *_vehicleFunctionActions;
+    NSURL *_externalURL;
     NSString *_headerText;
     NSString *_footerText;
     NSArray *_selectedActionItems;
+    PKEnteredValueActionItem *_enteredValueItem;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) PKEnteredValueActionItem *enteredValueItem; // @synthesize enteredValueItem=_enteredValueItem;
 @property(readonly, copy, nonatomic) NSArray *selectedActionItems; // @synthesize selectedActionItems=_selectedActionItems;
 @property(readonly, copy, nonatomic) NSString *footerText; // @synthesize footerText=_footerText;
 @property(readonly, copy, nonatomic) NSString *headerText; // @synthesize headerText=_headerText;
-@property(readonly, nonatomic) PKEnteredValueActionItem *enteredValueItem; // @synthesize enteredValueItem=_enteredValueItem;
+@property(readonly, nonatomic) NSURL *externalURL; // @synthesize externalURL=_externalURL;
+@property(readonly, nonatomic) NSDictionary *vehicleFunctionActions; // @synthesize vehicleFunctionActions=_vehicleFunctionActions;
 @property(readonly, nonatomic) unsigned long long serviceProviderCapabilities; // @synthesize serviceProviderCapabilities=_serviceProviderCapabilities;
 @property(readonly, copy, nonatomic) NSSet *serviceProviderSupportedCountries; // @synthesize serviceProviderSupportedCountries=_serviceProviderSupportedCountries;
 @property(readonly, copy, nonatomic) NSArray *serviceProviderAcceptedNetworks; // @synthesize serviceProviderAcceptedNetworks=_serviceProviderAcceptedNetworks;
@@ -55,6 +60,7 @@
 @property(readonly, copy, nonatomic) NSString *unavailableAfterReason; // @synthesize unavailableAfterReason=_unavailableAfterReason;
 @property(readonly, copy, nonatomic) NSString *unavailableBeforeReason; // @synthesize unavailableBeforeReason=_unavailableBeforeReason;
 @property(readonly, copy, nonatomic) NSDate *availableUntil; // @synthesize availableUntil=_availableUntil;
+@property(readonly, nonatomic) double availableFromOffsetFromUTC; // @synthesize availableFromOffsetFromUTC=_availableFromOffsetFromUTC;
 @property(readonly, copy, nonatomic) NSDate *availableFrom; // @synthesize availableFrom=_availableFrom;
 @property(copy, nonatomic) PKTransitCommutePlan *associatedPlan; // @synthesize associatedPlan=_associatedPlan;
 @property(copy, nonatomic) NSString *associatedPlanIdentifier; // @synthesize associatedPlanIdentifier=_associatedPlanIdentifier;

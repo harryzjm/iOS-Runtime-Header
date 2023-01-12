@@ -8,23 +8,27 @@
 
 #import <PhotosGraph/PGContextualRule-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString, PGGraph;
+@class NSArray, NSMutableDictionary, NSString, PGCurationManager, PGGraph, PHPhotoLibrary;
+@protocol OS_os_log;
 
 @interface PGBirthdayContextualRule : NSObject <PGContextualRule>
 {
     NSArray *_availablePersons;
     NSMutableDictionary *_personNodeByLocalIdentifier;
     PGGraph *_graph;
+    PHPhotoLibrary *_photoLibrary;
+    PGCurationManager *_curationManager;
+    NSObject<OS_os_log> *_loggingConnection;
 }
 
 - (void).cxx_destruct;
-- (id)_bestBirthdayCelebrationAssetForHighlightNode:(id)arg1 assetCollection:(id)arg2;
+- (id)_bestBirthdayCelebrationAssetForHighlightNode:(id)arg1 assetCollection:(id)arg2 curationContext:(id)arg3;
 - (id)_bestAssetInCuratedAssets:(id)arg1 forPerson:(id)arg2 contextualScore:(out double *)arg3;
 - (id)_fetchCuratedAssetsForHighlightItem:(id)arg1 intersectingAssets:(id)arg2;
 - (id)_filterCuratedAssets:(id)arg1 forHighlightItem:(id)arg2;
-- (void)enumerateContextualKeyAssetsForYearHighlight:(id)arg1 withOptions:(id)arg2 modelReader:(id)arg3 usingBlock:(CDUnknownBlockType)arg4;
+- (void)enumerateContextualKeyAssetsForYearHighlight:(id)arg1 withOptions:(id)arg2 modelReader:(id)arg3 curationContext:(id)arg4 usingBlock:(CDUnknownBlockType)arg5;
 - (_Bool)canProvideContextualKeyAssetsWithOptions:(id)arg1;
-- (id)initWithGraph:(id)arg1;
+- (id)initWithGraph:(id)arg1 photoLibrary:(id)arg2 curationManager:(id)arg3 loggingConnection:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

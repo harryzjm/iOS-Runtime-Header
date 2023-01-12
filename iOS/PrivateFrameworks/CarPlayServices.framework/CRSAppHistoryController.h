@@ -25,7 +25,6 @@
 - (void)invalidate;
 - (void)fetchSessionFeatureKeysWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setSessionFeatureKeys:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)setSessionUIContexts:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchSessionEchoContextsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchSessionUIContextsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchUIContextsWithCompletion:(CDUnknownBlockType)arg1;

@@ -10,6 +10,7 @@
 
 @interface _TtC16NewsSubscription28DynamicViewControllerFactory : NSObject
 {
+    MISSING_TYPE *clientIdentifier;
     MISSING_TYPE *dynamicViewControllerDelegate;
     MISSING_TYPE *metricsBuilder;
 }

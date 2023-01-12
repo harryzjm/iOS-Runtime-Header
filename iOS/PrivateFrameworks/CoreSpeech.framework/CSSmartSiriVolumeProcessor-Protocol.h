@@ -12,6 +12,9 @@
 - (void)didReceiveMusicVolumeChanged:(float)arg1;
 - (void)didReceiveTimerChanged:(long long)arg1;
 - (void)didReceiveAlarmChanged:(long long)arg1;
+- (void)setPermanentVolumeOffsetWithDirection:(_Bool)arg1;
+- (void)setSmartSiriVolumeDirection:(_Bool)arg1;
+- (void)setSmartSiriVolumePercentage:(float)arg1;
 - (CSSmartSiriVolumeEstimate *)getVolumeForTTSType:(unsigned long long)arg1 withOverrideMediaVolume:(NSNumber *)arg2 WithRequestTime:(unsigned long long)arg3;
 - (void)reset;
 - (void)setAsset:(CSAsset *)arg1;

@@ -9,7 +9,7 @@
 #import <CarPlaySupport/BNPresentable-Protocol.h>
 
 @class CPSBannerItem, CPSGuidanceBannerView, NSString, PLPlatterView;
-@protocol CPSBannerViewControllerDelegate;
+@protocol BNPresentableContext, CPSBannerViewControllerDelegate;
 
 @interface CPSBannerViewController : UIViewController <BNPresentable>
 {
@@ -45,6 +45,7 @@
 @property(readonly, nonatomic, getter=isDraggingDismissalEnabled) _Bool draggingDismissalEnabled;
 @property(readonly, nonatomic, getter=isDraggingInteractionEnabled) _Bool draggingInteractionEnabled;
 @property(readonly) unsigned long long hash;
+@property(nonatomic) __weak id <BNPresentableContext> presentableContext;
 @property(readonly, nonatomic) long long presentableType;
 @property(readonly) Class superclass;
 

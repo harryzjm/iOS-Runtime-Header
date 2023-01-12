@@ -24,31 +24,15 @@ __attribute__((visibility("hidden")))
     CDStruct_85060554 _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(retain, nonatomic) GEOPDAllCollectionsViewResultFilterTypeKeyword *filterKeyword;
-@property(readonly, nonatomic) _Bool hasFilterKeyword;
-@property(retain, nonatomic) GEOPDAllCollectionsViewResultFilterTypeAddress *filterAddress;
-@property(readonly, nonatomic) _Bool hasFilterAddress;
-- (int)StringAsFilterType:(id)arg1;
-- (id)filterTypeAsString:(int)arg1;
-@property(nonatomic) _Bool hasFilterType;
-@property(nonatomic) int filterType;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

@@ -8,7 +8,7 @@
 
 @interface MPModelStoreGroupingsMusicKitRequestOperation
 {
-    NSIndexSet *_whitelistedFCKinds;
+    NSIndexSet *_allowedFCKinds;
     NSDictionary *_storeBagDictionary;
 }
 

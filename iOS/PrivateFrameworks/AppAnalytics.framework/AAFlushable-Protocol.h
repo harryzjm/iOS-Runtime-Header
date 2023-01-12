@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class OS_dispatch_queue;
+@class AAAccessQueue;
 
 @protocol AAFlushable
-- (void)flushWithCallbackQueue:(OS_dispatch_queue *)arg1 completion:(void (^)(void))arg2;
+- (void)flushWithCallbackQueue:(AAAccessQueue *)arg1 completion:(void (^)(void))arg2;
 @end
 

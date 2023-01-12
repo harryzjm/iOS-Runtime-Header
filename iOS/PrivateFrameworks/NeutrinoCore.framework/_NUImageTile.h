@@ -29,8 +29,7 @@
 - (void)_markAsPurgeable;
 - (_Bool)_decrementAccessCount;
 - (_Bool)_incrementAccessCount;
-- (_Bool)decrementAccessAndUseCount;
-- (_Bool)decrementAccessAndUseCountButLeaveAccessedIfLastUse;
+- (void)decrementAccessCountButLeaveAccessedIfLastUse;
 - (_Bool)decrementAccessCount;
 - (_Bool)incrementAccessCount;
 - (int)useCount;

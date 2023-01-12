@@ -52,14 +52,6 @@
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
-- (void)addTemporarySmoothNodes;
-- (void)removeTemporaryNodes;
-- (void)updateSmoothNodes;
-- (void)updateSmoothNodes:(id)arg1 addTemporaryNodes:(_Bool)arg2;
-- (long long)updateSmoothNodes:(id)arg1 from:(long long)arg2 to:(long long)arg3 closed:(_Bool)arg4 addTemporaryNodes:(_Bool)arg5;
-- (void)morphWithMorphInfo:(id)arg1;
-- (struct CGPoint)calculateNewControlFromOriginalDelta:(struct CGPoint)arg1 currentDelta:(struct CGPoint)arg2 originalSmoothDelta:(struct CGPoint)arg3 node:(struct CGPoint)arg4;
-- (void)smoothAllNodes;
 
 @end
 

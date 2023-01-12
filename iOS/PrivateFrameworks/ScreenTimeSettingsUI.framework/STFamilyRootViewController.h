@@ -10,11 +10,14 @@
 __attribute__((visibility("hidden")))
 @interface STFamilyRootViewController
 {
+    _Bool _presentedAsModal;
     NSObject<STRootViewModelCoordinator> *_coordinator;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<STRootViewModelCoordinator> *coordinator; // @synthesize coordinator=_coordinator;
+@property(nonatomic) _Bool presentedAsModal; // @synthesize presentedAsModal=_presentedAsModal;
+- (id)initWithModalPresentation:(_Bool)arg1;
 - (id)init;
 
 @end

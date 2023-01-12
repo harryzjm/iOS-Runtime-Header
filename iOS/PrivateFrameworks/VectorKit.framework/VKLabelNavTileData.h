@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface VKLabelNavTileData : NSObject
 {
-    shared_ptr_702c344d _tile;
+    struct shared_ptr<md::LabelTile> _tile;
     NSMapTable *_geoJunctionToJunctionMap;
     NSMutableArray *_tileEdgeJunctions;
     _Bool _foundTileEdgeJunctions;
@@ -22,19 +22,19 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) const shared_ptr_702c344d *tile; // @synthesize tile=_tile;
+@property(readonly, nonatomic) const void *tile; // @synthesize tile=_tile;
 @property(readonly, retain, nonatomic) NSMutableArray *oppositeCarriagewayJunctions; // @synthesize oppositeCarriagewayJunctions=_oppositeCarriagewayJunctions;
 @property(nonatomic) _Bool oppositeCarriagewayJunctionsValid; // @synthesize oppositeCarriagewayJunctionsValid=_oppositeCarriagewayJunctionsValid;
-- (void)findOppositeCarriagewayJunctionsWithRouteFeatures:(unordered_map_0cbeac3c *)arg1 distanceThreshold:(double)arg2;
-- (void)appendNavJunctionsInWorldRect:(const Box_3d7e3c2c *)arg1 junctions:(id)arg2;
+- (void)findOppositeCarriagewayJunctionsWithRouteFeatures:(void *)arg1 distanceThreshold:(double)arg2;
+- (void)appendNavJunctionsInWorldRect:(const void *)arg1 junctions:(id)arg2;
 - (void)initializeJunctionInfos;
 - (id)findTileEdgeJunctionAtCoordinate:(Matrix_8746f91e)arg1;
 - (void)_findTileEdgeJunctions;
 - (void)addJunction:(id)arg1;
 - (id)junctionAtCoordinate:(Matrix_8746f91e)arg1;
-- (id)junctionForGeoJunction:(CDStruct_3b01f0aa *)arg1;
+- (id)junctionForGeoJunction:(struct GeoCodecsConnectivityJunction *)arg1;
 - (void)dealloc;
-- (id)initWithTile:(const shared_ptr_702c344d *)arg1;
+- (id)initWithTile:(const void *)arg1;
 
 @end
 

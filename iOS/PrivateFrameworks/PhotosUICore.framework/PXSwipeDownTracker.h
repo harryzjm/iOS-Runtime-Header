@@ -41,7 +41,7 @@
 @property(nonatomic) double dismissalProgress; // @synthesize dismissalProgress=_dismissalProgress;
 @property(readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 - (void)trackGestureTranslation:(struct CGPoint)arg1 velocity:(struct CGPoint)arg2;
-- (void)startTrackingCenter:(struct CGPoint)arg1 bounds:(struct CGRect)arg2 transform:(struct CGAffineTransform)arg3 withInitialGestureLocation:(struct CGPoint)arg4;
+- (void)startTrackingCenter:(struct CGPoint)arg1 bounds:(struct CGRect)arg2 transform:(struct CGAffineTransform)arg3 withInitialGestureLocation:(struct CGPoint)arg4 velocity:(struct CGPoint)arg5;
 - (id)initWithOptions:(unsigned long long)arg1;
 - (id)init;
 

@@ -24,6 +24,8 @@
 - (_Bool)sourcesFromConstituentDevice;
 @property(readonly, nonatomic) long long sourceDevicePosition;
 @property(readonly, nonatomic) NSString *sourceDeviceType;
+- (void)_updateBackgroundBlurUnavailableReasonsWithDevice:(id)arg1 deviceInput:(id)arg2;
+- (void)_updateCinematicFramingUnavailableReasonsWithDevice:(id)arg1 deviceInput:(id)arg2;
 - (void)_setClock:(struct OpaqueCMClock *)arg1;
 @property(readonly, nonatomic) struct OpaqueCMClock *clock;
 @property(nonatomic, getter=isEnabled) _Bool enabled;

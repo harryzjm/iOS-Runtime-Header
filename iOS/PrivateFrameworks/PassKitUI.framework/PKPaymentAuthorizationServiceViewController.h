@@ -9,6 +9,7 @@
 #import <PassKitUI/AKAppleIDAuthenticationInAppContextDelegate-Protocol.h>
 #import <PassKitUI/AKSignInViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKAuthenticatorDelegate-Protocol.h>
+#import <PassKitUI/PKPaymentAuthorizationCouponCodeEntryViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentAuthorizationFooterViewDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentAuthorizationServiceProtocol-Protocol.h>
 #import <PassKitUI/PKPaymentAuthorizationStateMachineDelegate-Protocol.h>
@@ -16,10 +17,10 @@
 #import <PassKitUI/UITableViewDataSource-Protocol.h>
 #import <PassKitUI/UITableViewDelegate-Protocol.h>
 
-@class CNContact, NSLayoutConstraint, NSMutableSet, NSString, PKAuthenticator, PKContactFormatValidator, PKPaymentAuthorizationFooterView, PKPaymentAuthorizationLayout, PKPaymentAuthorizationPasswordButtonView, PKPaymentAuthorizationStateMachine, PKPaymentAuthorizationSummaryItemsView, PKPaymentAuthorizationTotalView, PKPaymentPreferencesViewController, PKPeerPaymentAccount, UIBarButtonItem, UITableView, UIView;
+@class CNContact, NSLayoutConstraint, NSMutableSet, NSString, PKAuthenticator, PKContactFormatValidator, PKPaymentAuthorizationCouponCodeEntryViewController, PKPaymentAuthorizationFooterView, PKPaymentAuthorizationLayout, PKPaymentAuthorizationPasswordButtonView, PKPaymentAuthorizationStateMachine, PKPaymentAuthorizationSummaryItemsView, PKPaymentAuthorizationTotalView, PKPaymentPreferencesViewController, PKPeerPaymentAccount, UIBarButtonItem, UITableView, UIView;
 @protocol PKPaymentAuthorizationServiceViewControllerDelegate><PKPaymentAuthorizationHostProtocol;
 
-@interface PKPaymentAuthorizationServiceViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, PKPaymentAuthorizationFooterViewDelegate, PKAuthenticatorDelegate, PKPaymentAuthorizationStateMachineDelegate, AKSignInViewControllerDelegate, AKAppleIDAuthenticationInAppContextDelegate, PKPaymentAuthorizationServiceProtocol>
+@interface PKPaymentAuthorizationServiceViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, PKPaymentAuthorizationFooterViewDelegate, PKAuthenticatorDelegate, PKPaymentAuthorizationStateMachineDelegate, PKPaymentAuthorizationCouponCodeEntryViewControllerDelegate, AKSignInViewControllerDelegate, AKAppleIDAuthenticationInAppContextDelegate, PKPaymentAuthorizationServiceProtocol>
 {
     PKPaymentAuthorizationLayout *_layout;
     UIView *_contentView;
@@ -41,6 +42,7 @@
     PKPaymentPreferencesViewController *_shippingContactPreferencesController;
     PKPaymentPreferencesViewController *_paymentCardPreferencesController;
     PKPaymentPreferencesViewController *_bankAccountPreferencesController;
+    PKPaymentAuthorizationCouponCodeEntryViewController *_couponCodeEntryViewController;
     _Bool _viewAppeared;
     _Bool _visible;
     _Bool _authenticating;
@@ -118,6 +120,8 @@
 - (id)_compactNavigationController;
 - (long long)_totalViewStyle;
 - (void)_updatePreferredContentSize;
+- (void)_updateCouponCodeEntry;
+- (void)_setupCouponCodeEntry;
 - (void)_showUnservicableAddressAlertForErrors:(id)arg1;
 - (void)_updatePreferencesWithErrors:(id)arg1;
 - (void)_updateShippingMethods;
@@ -126,6 +130,7 @@
 - (void)_updateAvailableCardsPreferences;
 - (id)_unavailablePasses;
 - (long long)selectedPaymentApplicationIndexFromCardEntries:(id)arg1;
+- (id)_addCardEntry;
 - (id)_availablePasses;
 - (void)_updateBankAccounts;
 - (void)_setupBankAccounts;
@@ -139,7 +144,6 @@
 - (Class)_tableViewClassForDataItem:(id)arg1;
 - (void)_removePassphraseViewFromHierarchyWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_addPassphraseViewControllerToHierarchy:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)_updateFooterStateForBiometricMatchMissIfNecessary;
 - (void)resumeAndUpdateContentSize;
 - (void)cancelPressed:(id)arg1;
 - (void)_payWithPasswordPressed:(id)arg1;
@@ -151,6 +155,9 @@
 - (_Bool)_shouldShowSeparatorForRowAtIndexPath:(id)arg1;
 - (_Bool)signInViewController:(id)arg1 shouldContinueWithAuthenticationResults:(id)arg2 error:(id)arg3 forContext:(id)arg4;
 - (void)signInViewController:(id)arg1 didAuthenticateWithResults:(id)arg2 error:(id)arg3;
+- (void)paymentAuthorizationCouponCodeEntryViewControllerDidFinish:(id)arg1;
+- (void)paymentAuthorizationCouponCodeEntryViewController:(id)arg1 didChangeCouponCode:(id)arg2;
+- (id)dataItemForPaymentAuthorizationCouponCodeEntryViewController:(id)arg1;
 - (void)authorizationFooterViewDidChangeConstraints:(id)arg1;
 - (void)authorizationFooterViewWillChangeConstraints:(id)arg1;
 - (void)authorizationFooterViewPasscodeButtonPressed:(id)arg1;
@@ -160,9 +167,8 @@
 - (void)dismissPasscodeViewController;
 - (void)presentPasscodeViewController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)biometricAttemptFailed;
-- (void)authenticatorDidEncounterBiometricLockout:(id)arg1;
 - (void)authenticator:(id)arg1 didTransitionToCoachingState:(long long)arg2;
-- (void)authenticator:(id)arg1 didTransitionToEvaluationStateWithEvent:(CDStruct_912cb5d2)arg2;
+- (void)authenticator:(id)arg1 didTransitionToEvaluationStateWithEvent:(CDStruct_2a40740a)arg2;
 - (long long)_progressStateForAuthenticationWithBiometricFailure:(_Bool)arg1;
 - (void)_updatePendingTransaction:(id)arg1 withAuthorizationStateParam:(id)arg2;
 - (void)_didSucceedWithAuthorizationStateParam:(id)arg1;
@@ -170,6 +176,7 @@
 - (void)_didFailWithError:(id)arg1;
 - (void)_didCancel:(_Bool)arg1;
 - (void)_executeCompletionHandlers;
+- (void)authorizationDidChangeCouponCodeCompleteWithUpdate:(id)arg1;
 - (void)authorizationDidSelectPaymentMethodCompleteWithUpdate:(id)arg1;
 - (void)authorizationDidSelectShippingAddressCompleteWithUpdate:(id)arg1;
 - (void)authorizationDidSelectShippingMethodCompleteWithUpdate:(id)arg1;
@@ -196,7 +203,7 @@
 - (void)_suspendAuthenticationAndForceReset:(_Bool)arg1;
 - (void)_suspendAuthentication;
 - (void)_abandonPSD2StyleAMPBuy;
-- (void)_abandonActiveEnrollmentAttempts;
+- (_Bool)_abandonActiveEnrollmentAttempts;
 - (void)_resumeAuthenticationWithPreviousError:(id)arg1 animated:(_Bool)arg2;
 - (void)_invalidPaymentDataWithParam:(id)arg1;
 - (void)_processClientCallback:(id)arg1;

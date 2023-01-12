@@ -10,21 +10,22 @@
 
 @interface DEObjectProperty : NSObject
 {
-    struct ObjectProperty *_This;
+    void *_This;
     shared_ptr_7568151d _ThisShared;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property struct ObjectProperty *This; // @synthesize This=_This;
+@property void *This; // @synthesize This=_This;
 @property shared_ptr_7568151d ThisShared; // @synthesize ThisShared=_ThisShared;
+@property(readonly) NSString *semanticConcept;
 @property(readonly) NSString *description;
 @property(readonly) NSString *type;
 @property(readonly) NSString *name;
 @property(readonly) NSArray *sampleValueLocales;
 - (id)sampleValuesForLocale:(id)arg1;
-- (id)initWithSharedPtr:(shared_ptr_7568151d *)arg1;
-- (id)initWithPtr:(struct ObjectProperty *)arg1;
+- (id)initWithSharedPtr:(void *)arg1;
+- (id)initWithPtr:(void *)arg1;
 - (id)init;
 
 @end

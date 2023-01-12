@@ -32,42 +32,15 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
-+ (Class)extendedLocationType;
-+ (Class)locationType;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
-- (void)clearSensitiveFields;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (id)extendedLocationAtIndex:(unsigned long long)arg1;
-- (unsigned long long)extendedLocationsCount;
-- (void)addExtendedLocation:(id)arg1;
-- (void)clearExtendedLocations;
-@property(retain, nonatomic) NSMutableArray *extendedLocations;
-@property(nonatomic) _Bool hasPreserveOriginalLocation;
-@property(nonatomic) _Bool preserveOriginalLocation;
-- (int)StringAsPlaceTypeLimit:(id)arg1;
-- (id)placeTypeLimitAsString:(int)arg1;
-@property(nonatomic) _Bool hasPlaceTypeLimit;
-@property(nonatomic) int placeTypeLimit;
-- (id)locationAtIndex:(unsigned long long)arg1;
-- (unsigned long long)locationsCount;
-- (void)addLocation:(id)arg1;
-- (void)clearLocations;
-@property(retain, nonatomic) NSMutableArray *locations;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

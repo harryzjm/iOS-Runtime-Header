@@ -8,6 +8,6 @@
 
 @interface NSValue (MSVSignedRange)
 + (id)valueWithMSVSignedRange:(struct _MSVSignedRange)arg1;
-@property(readonly) struct _MSVSignedRange signedRangeValue;
+@property(readonly, nonatomic) struct _MSVSignedRange signedRangeValue;
 @end
 

@@ -39,8 +39,7 @@
 @property(retain, nonatomic) NSPredicate *evaluationCondition; // @synthesize evaluationCondition=_evaluationCondition;
 @property(retain, nonatomic) NSMutableArray *currentEvents; // @synthesize currentEvents=_currentEvents;
 @property(nonatomic) _Bool migratedEventsToRecords; // @synthesize migratedEventsToRecords=_migratedEventsToRecords;
-- (_Bool)containsRecurrences;
-- (id)generateAnalyticsDataDueToTriggerAddition:(_Bool)arg1;
+@property(readonly, nonatomic) _Bool containsRecurrences;
 - (void)timerFired:(id)arg1;
 - (id)emptyModelObject;
 - (id)backingStoreObjects:(long long)arg1;

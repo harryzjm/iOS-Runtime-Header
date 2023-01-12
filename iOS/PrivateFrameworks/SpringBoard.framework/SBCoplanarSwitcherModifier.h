@@ -8,6 +8,7 @@
 
 @interface SBCoplanarSwitcherModifier
 {
+    _Bool _usesContainerViewBoundsAsActiveFrame;
     double _scale;
     long long _spacingType;
     SBAppLayout *_activeAppLayout;
@@ -15,6 +16,7 @@
 
 - (void).cxx_destruct;
 @property(nonatomic) long long spacingType; // @synthesize spacingType=_spacingType;
+@property(nonatomic) _Bool usesContainerViewBoundsAsActiveFrame; // @synthesize usesContainerViewBoundsAsActiveFrame=_usesContainerViewBoundsAsActiveFrame;
 @property(nonatomic) double scale; // @synthesize scale=_scale;
 - (double)_offscreenSpacing;
 - (long long)_indexOfActiveAppLayout;

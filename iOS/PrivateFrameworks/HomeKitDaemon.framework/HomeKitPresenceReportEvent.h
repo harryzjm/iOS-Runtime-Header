@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitMetrics/HMMLogEvent.h>
+
 #import <HomeKitDaemon/HMDAWDLogEvent-Protocol.h>
 
 @class AWDHomeKitPresenceReport, NSString;
 
-@interface HomeKitPresenceReportEvent <HMDAWDLogEvent>
+@interface HomeKitPresenceReportEvent : HMMLogEvent <HMDAWDLogEvent>
 {
     AWDHomeKitPresenceReport *_metric;
 }
 
-+ (id)uuid;
-+ (void)initialize;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) AWDHomeKitPresenceReport *metric; // @synthesize metric=_metric;
 - (id)metricForAWD;

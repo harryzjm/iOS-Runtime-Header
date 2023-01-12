@@ -22,6 +22,7 @@
 - (double)sceneAnalysisProgressForPhotoLibrary:(id)arg1;
 - (double)faceAnalysisProgressForPhotoLibrary:(id)arg1;
 @property(readonly, nonatomic) _Bool isGroup;
+@property(readonly, nonatomic) _Bool isUpToDate;
 @property(readonly, nonatomic) PHAssetCollection *assetCollection;
 
 // Remaining properties

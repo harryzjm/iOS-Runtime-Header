@@ -4,11 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HealthUI/HKOnboardingBaseViewController.h>
+
 #import <HeartRhythmUI/HRStackedButtonViewDelegate-Protocol.h>
 
 @class HKAnchoredObjectQuery, HKElectrocardiogram, HKElectrocardiogramCardView, HRStackedButtonView, NSLayoutConstraint, NSLayoutYAxisAnchor, UIActivityIndicatorView, UILabel, UITapGestureRecognizer;
+@protocol HROnboardingElectrocardiogramSetupCompleteViewControllerDelegate;
 
-@interface HROnboardingElectrocardiogramSetupCompleteViewController <HRStackedButtonViewDelegate>
+@interface HROnboardingElectrocardiogramSetupCompleteViewController : HKOnboardingBaseViewController <HRStackedButtonViewDelegate>
 {
     _Bool _firstViewDidLayoutSubviews;
     _Bool _isSampleInteractive;
@@ -16,6 +19,7 @@
     HKAnchoredObjectQuery *_electrocardiogramQuery;
     HKElectrocardiogram *_electrocardiogram;
     UITapGestureRecognizer *_electrocardiogramCardTapGestureRecognizer;
+    id <HROnboardingElectrocardiogramSetupCompleteViewControllerDelegate> _electrocardiogramDelegate;
     UILabel *_titleLabel;
     UIActivityIndicatorView *_activityIndicatorView;
     UILabel *_classificationLabel;
@@ -37,6 +41,7 @@
 @property(retain, nonatomic) UILabel *classificationLabel; // @synthesize classificationLabel=_classificationLabel;
 @property(retain, nonatomic) UIActivityIndicatorView *activityIndicatorView; // @synthesize activityIndicatorView=_activityIndicatorView;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property(nonatomic) __weak id <HROnboardingElectrocardiogramSetupCompleteViewControllerDelegate> electrocardiogramDelegate; // @synthesize electrocardiogramDelegate=_electrocardiogramDelegate;
 @property(retain, nonatomic) UITapGestureRecognizer *electrocardiogramCardTapGestureRecognizer; // @synthesize electrocardiogramCardTapGestureRecognizer=_electrocardiogramCardTapGestureRecognizer;
 @property(retain, nonatomic) HKElectrocardiogram *electrocardiogram; // @synthesize electrocardiogram=_electrocardiogram;
 @property(retain, nonatomic) HKAnchoredObjectQuery *electrocardiogramQuery; // @synthesize electrocardiogramQuery=_electrocardiogramQuery;
@@ -59,8 +64,7 @@
 - (void)_setUpUI;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
-- (id)initForOnboarding:(_Bool)arg1 isSampleInteractive:(_Bool)arg2;
-- (id)initForOnboarding:(_Bool)arg1;
+- (id)initForOnboarding:(_Bool)arg1 isSampleInteractive:(_Bool)arg2 electrocardiogramDelegate:(id)arg3;
 
 @end
 

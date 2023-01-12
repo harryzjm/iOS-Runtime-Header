@@ -11,7 +11,7 @@
 
 @interface NEIKEv2IKESA : NSObject
 {
-    CDUnion_07c5b791 _dhECKey;
+    CDUnion_a1d6768c _dhECKey;
     _Bool _shouldSendStateUpdate;
     _Bool _isInitiator;
     _Bool _fragmentationSupported;

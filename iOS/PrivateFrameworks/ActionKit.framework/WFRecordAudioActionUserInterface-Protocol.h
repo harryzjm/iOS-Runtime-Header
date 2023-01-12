@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ActionKit/WFRemoteUserInterface-Protocol.h>
+#import <ActionKit/WFActionRemoteUserInterface-Protocol.h>
 
-@protocol WFRecordAudioActionUserInterface <WFRemoteUserInterface>
+@protocol WFRecordAudioActionUserInterface <WFActionRemoteUserInterface>
 - (void)showWithOutputFormat:(long long)arg1 startImmediately:(_Bool)arg2 recordingDuration:(double)arg3 completionHandler:(void (^)(WFFileRepresentation *, NSError *))arg4;
 @end
 

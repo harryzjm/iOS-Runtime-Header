@@ -11,6 +11,9 @@
 @interface STUsageDetailItem (UIAdditions)
 + (void)iconImageForBundleIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_didFindIconImage:(id)arg1;
+- (id)_monogramUsingDarkColors:(_Bool)arg1;
+@property(readonly) UIImage *darkColorsMonogram;
+@property(readonly) UIImage *lightColorsMonogram;
 @property(readonly) UIImage *iconImage;
 @property(readonly, copy) NSString *localizedDisplayName;
 @end

@@ -12,12 +12,13 @@ __attribute__((visibility("hidden")))
 
 + (id)espressoModelInputImageDimensionsBlobNameForConfigurationOptions:(id)arg1;
 + (id)espressoModelFileNameForConfigurationOptions:(id)arg1;
++ (unsigned long long)inputImageAspectRatioHandlingForConfigurationOptions:(id)arg1;
++ (unsigned int)networkRequiredInputImagePixelFormatForConfigurationOptions:(id)arg1;
 + (float)_faceSegmenterMaximumInputImageAspectRatio;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (_Bool)_fillFaceSegmentLabelToProbabilityMap:(id)arg1 error:(id *)arg2;
-- (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
-- (_Bool)supportsProcessingDevice:(id)arg1;
+- (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4 progressHandler:(CDUnknownBlockType)arg5;
 - (_Bool)_getNumberOfSupportedFaceSegments:(unsigned long long *)arg1 forRequestRevision:(unsigned long long)arg2 error:(id *)arg3;
 - (_Bool)_getFaceSegmenterInputImageSize:(struct CGSize *)arg1 forRequestRevision:(unsigned long long)arg2 error:(id *)arg3;
 - (_Bool)completeInitializationForSession:(id)arg1 error:(id *)arg2;

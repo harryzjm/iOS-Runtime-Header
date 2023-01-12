@@ -9,7 +9,6 @@
 
 @protocol BCApplePayManagerProtocol
 @property(nonatomic) __weak id <BCApplePayManagerDelegate> delegate;
-- (id)initWithMessage:(BCMessage *)arg1 delegate:(id <BCApplePayManagerDelegate>)arg2;
 - (BCMessage *)message;
 - (void)presentApplePayWithWindow:(UIWindow *)arg1;
 - (long long)applePayStatus;

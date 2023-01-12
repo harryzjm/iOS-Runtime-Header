@@ -9,13 +9,14 @@
 #import <ChatKit/CKSearchResultCell-Protocol.h>
 #import <ChatKit/CNAvatarViewDelegate-Protocol.h>
 
-@class CKAvatarView, CKConversation, NSString, UILabel;
+@class CKAvatarView, CKConversation, CKLabel, NSString;
 
 @interface CKConversationSearchResultCell : UICollectionViewCell <CNAvatarViewDelegate, CKSearchResultCell>
 {
     _Bool _ck_editing;
+    NSString *_resultIdentifier;
     CKAvatarView *_avatarView;
-    UILabel *_nameLabel;
+    CKLabel *_nameLabel;
     CKConversation *_conversation;
     struct UIEdgeInsets marginInsets;
 }
@@ -23,8 +24,9 @@
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
 @property(retain, nonatomic) CKConversation *conversation; // @synthesize conversation=_conversation;
-@property(retain, nonatomic) UILabel *nameLabel; // @synthesize nameLabel=_nameLabel;
+@property(retain, nonatomic) CKLabel *nameLabel; // @synthesize nameLabel=_nameLabel;
 @property(retain, nonatomic) CKAvatarView *avatarView; // @synthesize avatarView=_avatarView;
+@property(copy, nonatomic) NSString *resultIdentifier; // @synthesize resultIdentifier=_resultIdentifier;
 @property(nonatomic, getter=_ck_isEditing, setter=_ck_setEditing:) _Bool _ck_editing; // @synthesize _ck_editing;
 @property(nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets;
 - (void)_configureNameLabelForConversation:(id)arg1 searchText:(id)arg2;

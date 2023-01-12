@@ -8,11 +8,14 @@
 
 #import <UserNotifications/NSCopying-Protocol.h>
 #import <UserNotifications/NSSecureCoding-Protocol.h>
+#import <UserNotifications/UNNotificationSecurityScopeProviding-Protocol.h>
 
-@class NSString, NSURL, UNNotificationAttachmentOptions;
+@class NSString, NSURL, UNNotificationAttachmentOptions, UNSecurityScopedURL;
 
-@interface UNNotificationAttachment : NSObject <NSCopying, NSSecureCoding>
+@interface UNNotificationAttachment : NSObject <UNNotificationSecurityScopeProviding, NSCopying, NSSecureCoding>
 {
+    UNSecurityScopedURL *_securityScopedURL;
+    struct os_unfair_lock_s _securityScopeLock;
     NSString *_identifier;
     NSURL *_URL;
     NSString *_type;
@@ -30,12 +33,22 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
-- (unsigned long long)hash;
-- (id)description;
+@property(readonly) unsigned long long hash;
+@property(readonly, copy) NSString *description;
+- (void)leaveSecurityScope;
+- (void)enterSecurityScope;
+- (void)removeSecurityScope;
+- (id)_encodableURL;
+- (void)addSecurityScope:(id)arg1;
+- (void)_withSecurityScopeLock:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) unsigned long long family; // @dynamic family;
 - (id)initWithIdentifier:(id)arg1 family:(unsigned long long)arg2 URL:(id)arg3 type:(id)arg4 options:(id)arg5;
 - (id)initWithIdentifier:(id)arg1 URL:(id)arg2 type:(id)arg3 options:(id)arg4;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

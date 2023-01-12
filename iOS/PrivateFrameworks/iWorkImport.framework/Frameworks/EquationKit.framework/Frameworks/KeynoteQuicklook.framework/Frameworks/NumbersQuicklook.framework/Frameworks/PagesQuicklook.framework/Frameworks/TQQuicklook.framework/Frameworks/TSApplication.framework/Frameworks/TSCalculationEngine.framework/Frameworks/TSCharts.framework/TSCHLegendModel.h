@@ -10,20 +10,19 @@
 #import <TSCharts/TSCHPropertyMapsGeneratedProtocol-Protocol.h>
 #import <TSCharts/TSCHStyleOwnerCollaborationSupport-Protocol.h>
 #import <TSCharts/TSCHStyleOwning-Protocol.h>
-#import <TSCharts/TSCHUnretainedParent-Protocol.h>
 #import <TSCharts/TSDMixing-Protocol.h>
 
 @class NSString, TSCHChartInfo;
 
-@interface TSCHLegendModel : NSObject <TSCHPropertyMapsGeneratedProtocol, TSCHStyleOwnerCollaborationSupport, TSCHUnretainedParent, TSCHStyleOwning, TSDMixing, NSCopying>
+@interface TSCHLegendModel : NSObject <TSCHPropertyMapsGeneratedProtocol, TSCHStyleOwnerCollaborationSupport, TSCHStyleOwning, TSDMixing, NSCopying>
 {
-    TSCHChartInfo *mChartInfo;
-    struct CGRect mLegendFrame;
+    TSCHChartInfo *_chartInfo;
+    struct CGRect _legendFrame;
 }
 
 + (unsigned char)styleOwnerPathType;
 - (void).cxx_destruct;
-@property(nonatomic) __weak TSCHChartInfo *chartInfo; // @synthesize chartInfo=mChartInfo;
+@property(nonatomic) __weak TSCHChartInfo *chartInfo; // @synthesize chartInfo=_chartInfo;
 - (_Bool)isEquivalentForCrossDocumentPasteMasterComparison:(id)arg1;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
@@ -44,19 +43,17 @@
 - (id)operationPropertyNameFromGenericProperty:(int)arg1;
 - (id)defaultProperties;
 - (id)p_genericToDefaultPropertyMap;
-- (void)clearParent;
 @property(nonatomic) struct CGSize legendSize;
 @property(nonatomic) struct CGPoint legendOffset;
 - (id)model;
 - (void)willModify;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)init;
-- (void)loadFromPreUFFArchive:(const struct LegendModelArchive *)arg1;
+- (void)loadFromPreUFFArchive:(const void *)arg1;
 - (id)g_operationPropertyNameForGenericProperty:(int)arg1;
 - (id)g_genericToDefaultPropertyMap;
-- (void)saveToUnityArchive:(struct ChartArchive *)arg1;
-- (void)loadFromUnityArchive:(const struct ChartArchive *)arg1;
+- (void)saveToUnityArchive:(void *)arg1;
+- (void)loadFromUnityArchive:(const void *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -17,6 +17,12 @@
     MISSING_TYPE *randomSeed;
     MISSING_TYPE *currentTime;
     MISSING_TYPE *device;
+    MISSING_TYPE *currentDevice;
+    MISSING_TYPE *userSettings;
+    MISSING_TYPE *customPronunciations;
+    MISSING_TYPE *now;
+    MISSING_TYPE *unlockDevicePolicy;
+    MISSING_TYPE *interactionId;
 }
 
 @end

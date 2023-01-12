@@ -22,6 +22,7 @@
 - (void).cxx_destruct;
 - (void)presentAtTime:(double)arg1;
 - (void)present;
+- (void)trackPresent:(const struct GTTraceEncoder *)arg1;
 - (id)texture;
 - (id)layer;
 - (void)dealloc;
@@ -29,6 +30,7 @@
 - (_Bool)conformsToProtocol:(id)arg1;
 - (_Bool)respondsToSelector:(SEL)arg1;
 - (id)forwardingTargetForSelector:(SEL)arg1;
+- (unsigned long long)deviceRef;
 @property(readonly) unsigned long long streamReference;
 @property(readonly) struct GTTraceStream *traceStream;
 @property(readonly) struct GTTraceContext *traceContext;

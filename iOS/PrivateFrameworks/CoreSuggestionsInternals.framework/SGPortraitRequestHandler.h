@@ -18,6 +18,7 @@
 - (void).cxx_destruct;
 - (void)extractionsFromUserAction:(id)arg1 searchableItem:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)extractionsFromSearchableItems:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)_shouldUseNamedEntityToTopicAlgorithmWithSearchableItem:(id)arg1;
 - (id)_extractionsFromPipelineEntity:(id)arg1 pipeline:(id *)arg2;
 - (id)init;
 

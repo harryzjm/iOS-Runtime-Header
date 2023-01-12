@@ -9,7 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (_Bool)_isRoadEdgeEqual:(const CDStruct_91f75a7f *)arg1 other:(const CDStruct_91f75a7f *)arg2;
+- (_Bool)_isRoadEdgeEqual:(id)arg1 other:(id)arg2;
 - (void)_findConnections:(CDUnknownBlockType)arg1 incoming:(_Bool)arg2;
 - (void)_findConnectedEdges:(CDUnknownBlockType)arg1 incoming:(_Bool)arg2;
 

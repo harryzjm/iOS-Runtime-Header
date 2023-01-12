@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitMetrics/HMMLogEvent.h>
+
 @class NSString;
 
-@interface HMDAddActionSetLogEvent
+@interface HMDAddActionSetLogEvent : HMMLogEvent
 {
     NSString *_actionSetType;
 }
 
-+ (id)uuid;
 - (void).cxx_destruct;
 @property(readonly, copy) NSString *actionSetType; // @synthesize actionSetType=_actionSetType;
 - (id)initWithActionSetType:(id)arg1;

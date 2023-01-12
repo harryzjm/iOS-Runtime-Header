@@ -13,10 +13,11 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *columnOptions;
     MISSING_TYPE *layout;
-    MISSING_TYPE *result;
+    MISSING_TYPE *compilerResultOutputs;
     MISSING_TYPE *tableView;
     MISSING_TYPE *sections;
     MISSING_TYPE *editor;
+    MISSING_TYPE *filterToActiveDevice;
 }
 
 - (void).cxx_destruct;

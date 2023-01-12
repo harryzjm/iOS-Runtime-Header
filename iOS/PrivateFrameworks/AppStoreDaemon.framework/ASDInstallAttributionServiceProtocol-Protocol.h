@@ -4,9 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ASDInstallAttributionParamsConfig;
+@class ASDImpressionParamsConfig, ASDInstallAttributionParamsConfig, NSDictionary, NSNumber;
 
 @protocol ASDInstallAttributionServiceProtocol
+- (void)updateConversionValueForApp:(NSNumber *)arg1 conversionValue:(NSNumber *)arg2 completionHandler:(void (^)(NSError *))arg3;
+- (void)registerPingbackForApp:(NSNumber *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)createPingbackWithDictionary:(NSDictionary *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)startPingbackTaskWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)addInstallAttributionParamsWithConfig:(ASDInstallAttributionParamsConfig *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)endAdImpressionWithConfig:(ASDImpressionParamsConfig *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)startAdImpressionWithConfig:(ASDImpressionParamsConfig *)arg1 completionHandler:(void (^)(NSError *))arg2;
 @end
 

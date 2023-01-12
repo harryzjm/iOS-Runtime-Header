@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class _TtC19ComplicationDisplay23ComplicationHostingView;
+@class CDComplicationHostingView;
 @protocol OS_dispatch_semaphore;
 
 @interface _ClientRenderer : NSObject
 {
-    _TtC19ComplicationDisplay23ComplicationHostingView *_host;
+    CDComplicationHostingView *_host;
     double _renderTime;
     double _renderCost;
     NSObject<OS_dispatch_semaphore> *_sema;

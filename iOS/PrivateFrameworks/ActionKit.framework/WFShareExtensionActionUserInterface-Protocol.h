@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ActionKit/WFRemoteUserInterface-Protocol.h>
+#import <ActionKit/WFActionRemoteUserInterface-Protocol.h>
 
 @class NSData, NSDictionary, NSString;
 
-@protocol WFShareExtensionActionUserInterface <WFRemoteUserInterface>
+@protocol WFShareExtensionActionUserInterface <WFActionRemoteUserInterface>
 - (void)performActionWithInput:(NSData *)arg1 inputConfiguration:(NSDictionary *)arg2 socialServiceType:(NSString *)arg3 extensionBundleIdentifier:(NSString *)arg4 extensionUserInfo:(NSDictionary *)arg5 completionHandler:(void (^)(WFContentCollection *, NSError *))arg6;
 @end
 

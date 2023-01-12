@@ -14,10 +14,8 @@
     UIImageView *_accessoryImageView;
     double _alphaOverride;
     _Bool _routeLabelHidden;
-    _Bool _forcesUppercaseText;
     double _accessoryImageSpacing;
     UIFont *_font;
-    MPAVRoute *_route;
     NSString *_routeTitle;
     UIColor *_overrideColor;
     long long _routeLabelAxis;
@@ -27,14 +25,14 @@
 - (void).cxx_destruct;
 @property(nonatomic) long long routeLabelAxis; // @synthesize routeLabelAxis=_routeLabelAxis;
 @property(retain, nonatomic) UIColor *overrideColor; // @synthesize overrideColor=_overrideColor;
-@property(nonatomic) _Bool forcesUppercaseText; // @synthesize forcesUppercaseText=_forcesUppercaseText;
 @property(nonatomic, getter=isRouteLabelHidden) _Bool routeLabelHidden; // @synthesize routeLabelHidden=_routeLabelHidden;
 @property(readonly, copy, nonatomic) NSString *routeTitle; // @synthesize routeTitle=_routeTitle;
-@property(retain, nonatomic) MPAVRoute *route; // @synthesize route=_route;
 @property(nonatomic) struct UIEdgeInsets hitRectInsets; // @synthesize hitRectInsets=_hitRectInsets;
 @property(retain, nonatomic) UIFont *font; // @synthesize font=_font;
 @property(nonatomic) double accessoryImageSpacing; // @synthesize accessoryImageSpacing=_accessoryImageSpacing;
 - (void)_intrinsicContentSizeInvalidatedForChildView:(id)arg1;
+@property(nonatomic) _Bool forcesUppercaseText;
+@property(retain, nonatomic) MPAVRoute *route;
 @property(retain, nonatomic) UIImage *accessoryImage;
 - (void)tintColorDidChange;
 - (void)setAlpha:(double)arg1;

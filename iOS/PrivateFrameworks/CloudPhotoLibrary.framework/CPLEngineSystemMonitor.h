@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+#import <CloudPhotoLibrary/CPLBatteryMonitorDelegate-Protocol.h>
 #import <CloudPhotoLibrary/CPLEngineComponent-Protocol.h>
 #import <CloudPhotoLibrary/CPLNetworkWatcherDelegate-Protocol.h>
 #import <CloudPhotoLibrary/_CPLScheduledOverrideDelegate-Protocol.h>
@@ -13,7 +14,7 @@
 @class CPLEngineLibrary, CPLNetworkWatcher, NSMutableDictionary, NSString, NSURL;
 @protocol OS_dispatch_queue;
 
-@interface CPLEngineSystemMonitor : NSObject <CPLNetworkWatcherDelegate, _CPLScheduledOverrideDelegate, CPLEngineComponent>
+@interface CPLEngineSystemMonitor : NSObject <CPLNetworkWatcherDelegate, _CPLScheduledOverrideDelegate, CPLBatteryMonitorDelegate, CPLEngineComponent>
 {
     _Bool _closed;
     NSURL *_volumeURL;
@@ -26,24 +27,31 @@
     NSMutableDictionary *_scheduledOverrides;
     _Bool _allowOperationsBoost;
     _Bool _allowBackgroundOperationsBoost;
+    _Bool _hasSetupBatteryMonitor;
     CPLEngineLibrary *_engineLibrary;
 }
 
++ (double)nextOverrideTimeIntervalForSystemBudgets:(unsigned long long)arg1;
 + (void)enumerateSystemBudgets:(unsigned long long)arg1 withBlock:(CDUnknownBlockType)arg2;
 + (id)descriptionForBudgets:(unsigned long long)arg1;
 + (id)descriptionForBudget:(unsigned long long)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) __weak CPLEngineLibrary *engineLibrary; // @synthesize engineLibrary=_engineLibrary;
+- (void)batteryLevelDidChangeWithLevel:(double)arg1;
+- (double)_minimumBatteryLevelForAutoOverrideEnergyBudget;
 - (void)watcher:(id)arg1 stateDidChangeToNetworkState:(id)arg2;
+- (void)stopAutomaticOverridingSystemBudgets:(unsigned long long)arg1;
+- (void)startAutomaticOverridingSystemBudgets:(unsigned long long)arg1;
 - (void)scheduledOverrideDidEnd:(id)arg1;
+@property(readonly) _Bool hasEnoughPowerForAutomaticOverride;
 @property(readonly) _Bool isDataBudgetOverriden;
 - (void)stopOverridingSystemBudgetsForClient:(unsigned long long)arg1;
 - (void)startOverridingSystemBudgetsForClient:(unsigned long long)arg1;
-- (void)stopOverridingSystemBudgets:(unsigned long long)arg1 reason:(id)arg2;
-- (void)startOverridingSystemBudgets:(unsigned long long)arg1 reason:(id)arg2;
+- (void)stopOverridingSystemBudgets:(unsigned long long)arg1 reason:(unsigned long long)arg2;
+- (void)startOverridingSystemBudgets:(unsigned long long)arg1 reason:(unsigned long long)arg2;
 - (void)_withSystemBudgetOverride:(CDUnknownBlockType)arg1;
-- (void)_stopOverridingBudget:(unsigned long long)arg1 reason:(id)arg2;
-- (void)_startOverridingBudget:(unsigned long long)arg1 reason:(id)arg2;
+- (void)_stopOverridingBudget:(unsigned long long)arg1 reason:(unsigned long long)arg2;
+- (void)_startOverridingBudget:(unsigned long long)arg1 reason:(unsigned long long)arg2;
 @property(readonly) _Bool canBoostBackgroundOperations;
 @property(readonly) _Bool canBoostOperations;
 @property(readonly) _Bool isOnCellularOrUnknown;
@@ -57,6 +65,7 @@
 - (id)componentName;
 - (void)closeAndDeactivate:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)openWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_attemptScheduleRecoveryOverride:(unsigned long long)arg1 withReason:(unsigned long long)arg2;
 - (id)initWithEngineLibrary:(id)arg1;
 
 // Remaining properties

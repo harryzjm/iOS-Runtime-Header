@@ -8,7 +8,7 @@
 
 #import <NetworkExtension/NSCopying-Protocol.h>
 
-@class NEIKEv2AuthenticationProtocol, NEIKEv2ConfigurationMessage, NEIKEv2Identifier, NSArray, NSData, NSString;
+@class NEIKEv2AuthenticationProtocol, NEIKEv2ConfigurationMessage, NEIKEv2Identifier, NSArray, NSData, NSNumber, NSString;
 
 @interface NEIKEv2SessionConfiguration : NSObject <NSCopying>
 {
@@ -60,9 +60,11 @@
     NSArray *_customIKEAuthPayloads;
     NSArray *_customIKEAuthVendorPayloads;
     NSArray *_customIKEAuthPrivateNotifies;
+    NSNumber *_pduSessionID;
 }
 
 - (void).cxx_destruct;
+@property(retain) NSNumber *pduSessionID; // @synthesize pduSessionID=_pduSessionID;
 @property(retain, nonatomic) NSArray *customIKEAuthPrivateNotifies; // @synthesize customIKEAuthPrivateNotifies=_customIKEAuthPrivateNotifies;
 @property(retain) NSArray *customIKEAuthVendorPayloads; // @synthesize customIKEAuthVendorPayloads=_customIKEAuthVendorPayloads;
 @property(retain) NSArray *customIKEAuthPayloads; // @synthesize customIKEAuthPayloads=_customIKEAuthPayloads;

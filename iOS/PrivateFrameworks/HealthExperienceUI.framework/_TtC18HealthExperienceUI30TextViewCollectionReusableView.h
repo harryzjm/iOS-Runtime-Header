@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionReusableView.h>
+#import <UIKit/UICollectionViewCell.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC18HealthExperienceUI30TextViewCollectionReusableView : UICollectionReusableView
+@interface _TtC18HealthExperienceUI30TextViewCollectionReusableView : UICollectionViewCell
 {
+    MISSING_TYPE *parentViewController;
     MISSING_TYPE *item;
     MISSING_TYPE *textView;
 }

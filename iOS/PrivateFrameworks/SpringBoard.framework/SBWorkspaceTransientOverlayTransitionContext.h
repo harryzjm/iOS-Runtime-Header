@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SBTransientOverlayPresentationManager, SBWorkspaceTransientOverlay;
+@class BSProcessHandle, SBTransientOverlayPresentationManager, SBWorkspaceTransientOverlay;
 
 @interface SBWorkspaceTransientOverlayTransitionContext
 {
@@ -14,9 +14,11 @@
     SBTransientOverlayPresentationManager *_presentationManager;
     SBWorkspaceTransientOverlay *_transientOverlay;
     long long _transitionType;
+    BSProcessHandle *_originatingProcess;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) BSProcessHandle *originatingProcess; // @synthesize originatingProcess=_originatingProcess;
 @property(nonatomic) long long transitionType; // @synthesize transitionType=_transitionType;
 @property(retain, nonatomic) SBWorkspaceTransientOverlay *transientOverlay; // @synthesize transientOverlay=_transientOverlay;
 @property(retain, nonatomic) SBTransientOverlayPresentationManager *presentationManager; // @synthesize presentationManager=_presentationManager;

@@ -11,6 +11,7 @@
 @interface GKNotificationBannerView : UIView
 {
     _Bool _canTransitionToPlayerAvatar;
+    _Bool _useShortBanner;
     UIImageView *_imageView;
     UILabel *_titleLabel;
     UILabel *_messageLabel;
@@ -26,6 +27,7 @@
 
 + (_Bool)_preventsAppearanceProxyCustomization;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool useShortBanner; // @synthesize useShortBanner=_useShortBanner;
 @property(readonly, nonatomic) double preferredBannerWidth; // @synthesize preferredBannerWidth=_preferredBannerWidth;
 @property(retain, nonatomic) UIView *centeringView; // @synthesize centeringView=_centeringView;
 @property(retain, nonatomic) UILabel *actionLabel; // @synthesize actionLabel=_actionLabel;
@@ -50,11 +52,11 @@
 - (void)dealloc;
 - (void)transitionToPlayerAvatar;
 - (void)startLoadingPlayerAvatar;
-- (id)initWithTitle:(id)arg1 image:(id)arg2 message:(id)arg3;
-- (id)initWithTitle:(id)arg1 player:(id)arg2 imageView:(id)arg3 message:(id)arg4;
+- (id)initWithTitle:(id)arg1 image:(id)arg2 message:(id)arg3 useShortBanner:(_Bool)arg4;
+- (id)initWithTitle:(id)arg1 player:(id)arg2 imageView:(id)arg3 message:(id)arg4 useShortBanner:(_Bool)arg5;
 - (void)createMessageLabel:(id)arg1 withTextStyle:(id)arg2;
 - (void)createTitleLabel:(id)arg1 withTextStyle:(id)arg2;
-- (void)createBackdropView;
+- (void)createBackdropViewWithBlurStyle:(long long)arg1;
 - (void)awakeFromNib;
 
 @end

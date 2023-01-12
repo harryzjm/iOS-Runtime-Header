@@ -6,7 +6,7 @@
 
 #import <Navigation/NSObject-Protocol.h>
 
-@class MNLocationManager, NSDate, NSError;
+@class CLRegion, MNLocationManager, NSDate, NSError;
 
 @protocol MNLocationManagerObserver <NSObject>
 - (void)locationManager:(MNLocationManager *)arg1 didUpdateVehicleHeading:(double)arg2 timestamp:(NSDate *)arg3;
@@ -17,5 +17,10 @@
 - (void)locationManagerDidReset:(MNLocationManager *)arg1;
 - (void)locationManagerFailedToUpdateLocation:(MNLocationManager *)arg1 withError:(NSError *)arg2;
 - (void)locationManagerUpdatedLocation:(MNLocationManager *)arg1;
+
+@optional
+- (void)locationManager:(MNLocationManager *)arg1 monitoringDidFailForRegion:(CLRegion *)arg2 withError:(NSError *)arg3;
+- (void)locationManager:(MNLocationManager *)arg1 didExitRegion:(CLRegion *)arg2;
+- (void)locationManager:(MNLocationManager *)arg1 didEnterRegion:(CLRegion *)arg2;
 @end
 

@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *metrics;
     MISSING_TYPE *defaultTopic;
+    MISSING_TYPE *decorator;
 }
 
 @end

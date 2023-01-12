@@ -25,6 +25,7 @@
     CDUnknownBlockType MAIDSignInReplyBlock;
     CDUnknownBlockType passcodeReplyBlock;
     CDUnknownBlockType showWarningsReplyBlock;
+    CDUnknownBlockType waitForEnrollmentCompletionBlock;
     NSXPCConnection *_publicXPCConnection;
     NSXPCConnection *_xpcConnection;
 }
@@ -35,6 +36,8 @@
 - (void).cxx_destruct;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
+- (void)unregisterObserver:(id)arg1;
+- (void)registerObserver:(id)arg1;
 - (void)_effectiveSettingsDidChange:(id)arg1;
 - (void)_internalDefaultsDidChange;
 - (void)_defaultsDidChange;
@@ -57,14 +60,6 @@
 - (void)_createAndResumeXPCConnection;
 @property(readonly, nonatomic) NSXPCConnection *publicXPCConnection; // @synthesize publicXPCConnection=_publicXPCConnection;
 @property(readonly, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
-- (id)_soldToIdsFromDict:(id)arg1;
-- (id)_requestTypesFromDict:(id)arg1;
-- (id)_organizationFromDict:(id)arg1;
-- (id)_organizationsFromArray:(id)arg1;
-- (void)submitDeviceUploadRequest:(id)arg1 credentials:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
-- (void)retrieveDeviceUploadSoldToIdsForOrganization:(id)arg1 credentials:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
-- (void)retrieveDeviceUploadRequestTypesWithCredentials:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
-- (void)retrieveDeviceUploadOrganizationsInfoWithCredentials:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (_Bool)isClassroomRequestPermissionToLeaveClassesForced;
 - (_Bool)isClassroomUnpromptedAppAndDeviceLockForced;
 - (_Bool)isClassroomAutomaticClassJoiningForced;
@@ -98,6 +93,7 @@
 - (void)installProfileData:(id)arg1 options:(id)arg2 interactionDelegate:(id)arg3;
 - (void)installProfileData:(id)arg1 interactionDelegate:(id)arg2;
 - (void)_detectProfiledCrashes;
+- (_Bool)isProvisioningProfilesWithUUID:(id)arg1 managedByProfileWithIdentifier:(id)arg2;
 - (_Bool)removeProvisioningProfileWithUUID:(id)arg1 managingProfileIdentifier:(id)arg2 outError:(id *)arg3;
 - (_Bool)removeProvisioningProfileWithUUID:(id)arg1 outError:(id *)arg2;
 - (_Bool)installProvisioningProfileData:(id)arg1 managingProfileIdentifier:(id)arg2 outError:(id *)arg3;
@@ -124,11 +120,12 @@
 - (void)queueFileDataForAcceptance:(id)arg1 originalFileName:(id)arg2 forBundleID:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_queueDataForAcceptance:(id)arg1 originalFileName:(id)arg2 originatingBundleID:(id)arg3 transitionToUI:(_Bool)arg4 outError:(id *)arg5;
 - (void)_queueDataForAcceptance:(id)arg1 originalFileName:(id)arg2 originatingBundleID:(id)arg3 transitionToUI:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
-- (id)_handleQueueProfileError:(id)arg1 forTargetDevice:(unsigned long long)arg2;
+- (id)_handleQueueProfileError:(id)arg1 targetDevice:(unsigned long long)arg2;
 - (id)popProvisioningProfileDataFromHeadOfInstallationQueue;
 - (id)peekProfileDataFromPurgatoryForDeviceType:(unsigned long long)arg1;
 - (id)popProfileDataFromHeadOfInstallationQueue;
 - (void)allProfilesOutMDMProfileInfo:(id *)arg1 outConfigurationProfilesInfo:(id *)arg2 outUninstalledProfilesInfo:(id *)arg3 forDeviceType:(unsigned long long)arg4;
+- (_Bool)isProfileWithIdentifier:(id)arg1 managedByProfileWithIdentifier:(id)arg2;
 - (id)uninstalledProfileDataWithIdentifier:(id)arg1 targetDevice:(unsigned long long)arg2;
 - (id)installedUserProfileDataWithIdentifier:(id)arg1;
 - (id)installedSystemProfileDataWithIdentifier:(id)arg1;
@@ -285,15 +282,19 @@
 - (void)lockDeviceImmediately:(_Bool)arg1;
 - (id)skipSetupKeys;
 - (_Bool)isSelectedTextSharingAllowed;
+- (_Bool)isTranslationLookupAllowed;
 - (_Bool)isDefinitionLookupAllowed;
 - (id)managingOrganizationForFontAtURL:(id)arg1;
 - (long long)allowedGameCenterPlayerTypes;
+- (_Bool)isGameCenterFriendsSharingModificationAllowed;
 - (_Bool)isGameCenterProfileModificationAllowed;
 - (_Bool)isGameCenterProfilePrivacyModificationAllowed;
 - (_Bool)isGameCenterPrivateMessagingAllowed;
 - (_Bool)isNearbyMultiplayerGamingAllowed;
 - (_Bool)isGameCenterAllowed;
 - (void)createMDMUnlockTokenIfNeededWithPasscode:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)stopMonitoringEnrollmentState;
+- (void)startMonitoringEnrollmentStateWithPersonaID:(id)arg1;
 - (_Bool)isDeviceSleepAllowed;
 - (_Bool)isConferenceRoomDisplaySettingsUIAllowedOutAsk:(_Bool *)arg1;
 - (void)setConferenceRoomDisplaySettingsUIAllowed:(_Bool)arg1 ask:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
@@ -324,9 +325,11 @@
 - (id)activationLockBypassKey;
 - (_Bool)isSpotlightInternetResultsAllowed;
 - (_Bool)isCloudSyncAllowed:(id)arg1;
-- (_Bool)isAppDemotionAllowed:(id)arg1;
 - (id)defaultAppBundleIDForCommunicationServiceType:(id)arg1 forAccountWithIdentifier:(id)arg2;
 - (_Bool)communicationServiceRulesExistForBundleID:(id)arg1 forCommunicationServiceType:(id)arg2;
+- (_Bool)isTemporarySessionOnlyModeEnabled;
+- (double)temporarySessionTimeout;
+- (double)userSessionTimeout;
 - (id)deviceAssetTag;
 - (id)deviceProvisionalEnrollmentFootnote;
 - (id)deviceLockScreenFootnote;
@@ -338,7 +341,6 @@
 - (_Bool)isTodayViewModificationAllowed;
 - (_Bool)isTodayViewAllowed;
 - (_Bool)isLocalStorageAllowed;
-- (_Bool)isSharedDeviceAnonymousTemporaryUserAllowed;
 - (_Bool)isSharedDeviceTemporarySessionAllowed;
 - (_Bool)isUSBRestrictedModeAllowed;
 - (void)setDriverDoNotDisturbModificationsAllowed:(_Bool)arg1;
@@ -352,8 +354,11 @@
 - (_Bool)isTVProviderModificationAllowed;
 - (void)setRemoteAppPairingAllowed:(_Bool)arg1;
 - (_Bool)isRemoteAppPairingAllowed;
+- (_Bool)isGroupActivityAllowed;
+- (_Bool)isWiFiWithAllowedNetworksOnlyEnforced;
 - (_Bool)isWiFiWhitelistingEnforced;
 - (_Bool)isAutomaticDateAndTimeEnforced;
+- (long long)softwareUpdatePath;
 - (unsigned long long)enforcedSoftwareUpdateDelayInDays;
 - (_Bool)isSoftwareUpdateResisted;
 - (void)setTVAllowed:(_Bool)arg1;
@@ -363,6 +368,7 @@
 - (void)setMultitaskingAllowed:(_Bool)arg1;
 - (_Bool)isFeatureM1Allowed;
 - (_Bool)isMultitaskingAllowed;
+- (_Bool)isQuickNoteAllowed;
 - (_Bool)isSpotlightNewsAllowed;
 - (_Bool)isNewsTodayAllowed;
 - (_Bool)isNewsAllowed;
@@ -381,6 +387,7 @@
 - (_Bool)isPredictiveKeyboardAllowed;
 - (_Bool)isSmartPunctuationAllowed;
 - (_Bool)isAutoCorrectionAllowed;
+- (_Bool)isRadioServiceAllowed;
 - (_Bool)isMusicArtistActivityAllowed;
 - (_Bool)isMusicVideoViewingAllowed;
 - (_Bool)isMusicServiceAllowed;
@@ -392,6 +399,7 @@
 - (_Bool)isUSBDriveAccessAllowed;
 - (_Bool)isUSBDriveAccessInFilesAllowed;
 - (_Bool)isESIMModificationAllowed;
+- (_Bool)isNFCAllowed;
 - (_Bool)isWiFiPowerModificationAllowed;
 - (_Bool)isPersonalHotspotModificationAllowed;
 - (_Bool)isBluetoothModificationAllowed;
@@ -408,6 +416,8 @@
 - (void)setFindMyCarAllowed:(_Bool)arg1;
 - (_Bool)isFindMyCarAllowed;
 - (_Bool)isPodcastsAllowed;
+- (_Bool)isOnDeviceOnlyTranslationForced;
+- (_Bool)isOnDeviceOnlyDictationForced;
 - (_Bool)isSiriServerLoggingAllowed;
 - (void)setHandWashingDataSubmissionAllowed:(_Bool)arg1;
 - (_Bool)hasHandWashingDataSubmissionAllowedBeenSet;
@@ -428,6 +438,8 @@
 - (_Bool)isDiagnosticSubmissionAllowed;
 - (_Bool)isEnterpriseBookMetadataSyncAllowed;
 - (_Bool)isEnterpriseBookBackupAllowed;
+- (_Bool)isBookstoreEroticaAllowed;
+- (_Bool)isBookstoreAllowed;
 - (void)setActivityContinuationAllowed:(_Bool)arg1;
 - (_Bool)isActivityContinuationAllowed;
 - (_Bool)isWiFiPasswordSharingAllowed;
@@ -435,6 +447,7 @@
 - (_Bool)isAirPlayIncomingRequestsAllowed;
 - (_Bool)isAirPlayIncomingRequestsPairingPasswordRequired;
 - (_Bool)isAirPlayOutgoingRequestsPairingPasswordRequired;
+- (_Bool)isAutoUnlockAllowed;
 - (_Bool)isFingerprintUnlockAllowed;
 - (_Bool)isFingerprintModificationAllowed;
 - (_Bool)isAssistantUserGeneratedContentAllowed;
@@ -444,6 +457,7 @@
 - (_Bool)isLockScreenTodayViewAllowed;
 - (_Bool)isLockScreenNotificationsViewAllowed;
 - (_Bool)isiTunesAllowed;
+- (_Bool)isCameraAllowed;
 - (_Bool)isAirPrintTrustedTLSRequirementEnforced;
 - (_Bool)isAirPrintCredentialsStorageAllowed;
 - (_Bool)isAirPrintiBeaconDiscoveryAllowed;
@@ -472,6 +486,7 @@
 - (_Bool)isAutomaticAppDownloadsAllowed;
 - (_Bool)isOTAPKIUpdatesAllowed;
 - (_Bool)isVehicleUIAllowed;
+- (_Bool)isCloudPrivateRelayAllowed;
 - (_Bool)isCloudKeychainSyncAllowed;
 - (void)validateAppBundleIDs:(id)arg1 waitUntilCompleted:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)validateAppBundleIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -500,6 +515,7 @@
 - (void)recomputeProfileRestrictionsWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)invalidateRestrictionCache;
 - (id)managedWiFiNetworkNames;
+- (_Bool)checkApplicationIdentifierEntitlement;
 - (void)debugRescheduleBackgroundActivity:(long long)arg1 startDate:(id)arg2 gracePeriod:(id)arg3 repeatingInterval:(id)arg4;
 - (id)_transmogrifyRestrictionDictionaryForUserEnrollment:(id)arg1 outError:(id *)arg2;
 - (id)_disallowedRestrictionErrorForRestrictionKey:(id)arg1;
@@ -507,6 +523,7 @@
 - (id)_localizedRestrictionSourceDescriptionFromMDMName:(id)arg1 exchangeName:(id)arg2 exchangeCount:(long long)arg3 profileName:(id)arg4 profileCount:(long long)arg5;
 - (id)_localizedCertificateSourceDescriptionFromMDMName:(id)arg1 exchangeName:(id)arg2 exchangeCount:(long long)arg3 profileName:(id)arg4 profileCount:(long long)arg5;
 - (id)fetchActivationLockBypassKeyWithError:(id *)arg1;
+- (void)doMCICWaitForEnrollmentToFinishWithCompletion:(CDUnknownBlockType)arg1;
 - (void)doMCICDidFinishPreflightWithError:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)doMCICDidRequestShowUserWarnings:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)doMCICDidRequestMAIDSignIn:(id)arg1 personaID:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -517,7 +534,6 @@
 - (void)doMCICDidUpdateStatus:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)resetPasscodeMetadataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)rereadManagedAppAttributes;
-- (void)storeCertificateData:(id)arg1 forHostIdentifier:(id)arg2;
 - (void)removeExpiredProfiles;
 - (void)notifyKeybagUpdated;
 - (void)notifyDeviceUnlockedAndPasscodeRequired;
@@ -530,6 +546,7 @@
 - (id)defaultUserBookmarks;
 - (id)userBookmarks;
 - (void)setUserBookmarks:(id)arg1;
+- (_Bool)isUnpairedExternalBootToRecoveryAllowed;
 - (void)lockdownDidReceiveActivationRecord:(id)arg1;
 - (int)hostMayPairWithOptions:(id)arg1 challenge:(id)arg2;
 - (id)companionBundleIDToWatchBundleIDsMap;
@@ -541,14 +558,18 @@
 - (id)parentalControlsWhitelistedAppBundleIDs;
 - (_Bool)mayEnterPasscodeToAccessNonWhitelistedApps;
 - (_Bool)isPasscodeRequiredToAccessWhitelistedApps;
+- (_Bool)isEffectivelyInAppAllowListMode;
 - (_Bool)isInSingleAppMode;
 - (id)restrictionEnforcedWhitelistedAppBundleIDs;
 - (id)effectiveWhitelistedAppBundleIDs;
 - (int)appWhitelistState;
+- (void)setParentalControlsBlockedAppBundleIDs:(id)arg1;
+- (id)parentalControlsBlockedAppBundleIDs;
+- (id)restrictionEnforcedBlockedAppBundleIDs;
+- (id)effectiveBlockedAppBundleIDsExcludingRemovedSystemApps;
+- (id)effectiveBlockedAppBundleIDs;
 - (void)setParentalControlsBlacklistedAppBundleIDs:(id)arg1;
 - (id)parentalControlsBlacklistedAppBundleIDs;
-- (id)restrictionEnforcedBlacklistedAppBundleIDsExcludingRemovedSystemApps;
-- (id)restrictionEnforcedBlacklistedAppBundleIDs;
 - (id)effectiveBlacklistedAppBundleIDsExcludingRemovedSystemApps;
 - (id)effectiveBlacklistedAppBundleIDs;
 - (id)removedSystemAppBundleIDs;
@@ -556,8 +577,10 @@
 - (id)restrictedAppBundleIDs;
 - (id)restrictionEnforcedHomeScreenLayout;
 - (_Bool)isHomeScreenLayoutApplied;
+- (id)_lacksEntitlementError;
+- (_Bool)_checkRemoteProcessHasMDMEntitlement;
+- (void)storeCertificateData:(id)arg1 forHostIdentifier:(id)arg2;
 - (id)knownAirPrintIPPURLStrings;
-- (_Bool)isTeslaCloudConfigurationAvailable;
 - (id)managingOrganizationInformation;
 - (id)deviceOrganizationVendorID;
 - (id)deviceOrganizationCountry;
@@ -577,11 +600,13 @@
 - (id)diagnosticsUploadURL;
 - (_Bool)isEphemeralMultiUser;
 - (_Bool)isSupervised;
+- (void)setupAssistantDidFinishWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setupAssistantDidFinish;
 - (void)markStoredProfileForPurposeAsInstalled:(int)arg1;
 - (_Bool)shouldInstallStoredProfileForPurpose:(int)arg1;
 - (void)storeProfileData:(id)arg1 configurationSource:(int)arg2 purpose:(int)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)storeProfileData:(id)arg1 configurationSource:(int)arg2 purpose:(int)arg3;
+- (void)installProfileDataStoredForPurpose:(int)arg1 extraOptions:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)installProfileDataStoredForPurpose:(int)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)profileDataStoredForPurpose:(int)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (_Bool)shouldShowSetupAssistant;
@@ -592,10 +617,13 @@
 - (void)storeCloudConfigurationDetails:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)storeCloudConfigurationDetails:(id)arg1;
 - (void)cloudConfigurationUIDidCompleteWasApplied:(_Bool)arg1;
+- (void)restoreCloudConfigAndMDMProfileFromSetAsideDataWithCompletion:(CDUnknownBlockType)arg1;
+- (void)updateCloudConfigurationWithRMAccountIdentifier:(id)arg1;
 - (_Bool)isAwaitingDeviceConfigured;
 - (_Bool)wasTeslaCloudConfigurationApplied;
 - (_Bool)wasCloudConfigurationApplied;
 - (void)retrieveCloudConfigurationFromURL:(id)arg1 username:(id)arg2 password:(id)arg3 anchorCertificates:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
+- (id)getReducedMachineInfo;
 - (id)getMachineInfo;
 - (CDUnknownBlockType)_cloudConfigurationRetrievalBlockWithCompletion:(CDUnknownBlockType)arg1;
 - (void)retrieveAndStoreCloudConfigurationDetailsCompletionBlock:(CDUnknownBlockType)arg1;
@@ -609,6 +637,8 @@
 - (_Bool)_shouldApplyContactsFilterForBundleID:(id)arg1 sourceAccountManagement:(int)arg2 outAllowManagedAccounts:(_Bool *)arg3 outAllowUnmanagedAccounts:(_Bool *)arg4;
 - (_Bool)_managedMayWriteUnmanagedContacts;
 - (_Bool)_unmanagedMayReadManagedContacts;
+- (_Bool)isContinuityPasteboardWithManagedDataAllowed;
+- (_Bool)isManagedPasteboardRequired;
 - (void)allowedKeyboardBundleIDsAfterApplyingFilterToBundleIDs:(id)arg1 hostAppBundleID:(id)arg2 accountIsManaged:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)filteredOpenInOriginatingAccounts:(id)arg1 targetAppBundleID:(id)arg2 targetAccountManagement:(int)arg3;
 - (id)filteredOpenInAccounts:(id)arg1 originatingAppBundleID:(id)arg2 sourceAccountManagement:(int)arg3;
@@ -627,6 +657,7 @@
 - (long long)dragDropSourceManagementStateForBundleID:(id)arg1;
 - (long long)dragDropBidirectionalManagementStateForBaseBundleID:(id)arg1;
 - (_Bool)isBundleIDAccountBasedForDragDrop:(id)arg1;
+- (_Bool)isBidirectionalDataTransferAllowedWithBundleID:(id)arg1;
 - (id)managedAppBundleIDs;
 - (_Bool)isAppManaged:(id)arg1;
 - (id)allowedAppBundleIDsForBidirectionalDataMovementAfterApplyingFilterToBundleIDs:(id)arg1 localAppBundleID:(id)arg2 localAccountIsManaged:(_Bool)arg3;

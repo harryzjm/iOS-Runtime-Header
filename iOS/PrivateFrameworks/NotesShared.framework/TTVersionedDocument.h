@@ -6,36 +6,34 @@
 
 #import <objc/NSObject.h>
 
+@class NSUUID;
+
 @interface TTVersionedDocument : NSObject
 {
-    struct Document {
-        CDUnknownFunctionPointerType *;
-        basic_string_7c0a1c0b;
-        unsigned int [1];
-        int;
-        struct RepeatedPtrField<versioned_document::Version>;
-        unsigned int;
-    } *_documentArchive;
+    NSUUID *_replicaID;
+    void *_documentArchive;
 }
 
 + (unsigned int)versionedDocumentSerializationVersion;
 + (unsigned int)minimumSupportedVersion;
 + (unsigned int)serializationVersion;
-@property(nonatomic) struct Document *documentArchive; // @synthesize documentArchive=_documentArchive;
-- (void)saveToArchive:(Document_22a49c75 *)arg1;
+- (void).cxx_destruct;
+@property(nonatomic) void *documentArchive; // @synthesize documentArchive=_documentArchive;
+@property(readonly, nonatomic) NSUUID *replicaID; // @synthesize replicaID=_replicaID;
+- (void)saveToArchive:(void *)arg1;
 - (id)serialize;
 - (unsigned int)maxDocumentVersion;
 - (unsigned long long)mergeWithVersionedDocument:(id)arg1;
-- (void)saveCurrentVersion:(struct Version *)arg1;
+- (void)saveCurrentVersion:(void *)arg1;
 - (id)serializeCurrentVersion:(unsigned int *)arg1;
 - (void)mergeVersion:(unsigned int)arg1 fromData:(id)arg2;
 @property(readonly, nonatomic) unsigned long long futureVersionCount;
 - (void)dealloc;
-- (void)loadDocumentArchive:(Document_22a49c75 *)arg1;
-- (void)loadArchive:(const Document_22a49c75 *)arg1;
+- (void)loadDocumentArchive:(void *)arg1;
+- (void)loadArchive:(const void *)arg1;
 - (void)loadData:(id)arg1;
-- (id)initWithArchive:(const Document_22a49c75 *)arg1;
-- (id)initWithData:(id)arg1;
+- (id)initWithArchive:(const void *)arg1 replicaID:(id)arg2;
+- (id)initWithData:(id)arg1 replicaID:(id)arg2;
 
 @end
 

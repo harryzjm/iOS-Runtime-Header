@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-@class NPKPaymentBarcode, NSArray, NSString, PKPass, PKPaymentTransaction;
+@class NPKPaymentBarcode, NSArray, NSString, PKPass, PKPassTile, PKPaymentTransaction;
 
 @interface NPKContactlessPaymentSessionManagerTransactionContext : NSObject
 {
-    _Bool _redeemedTicket;
-    _Bool _enRoute;
     _Bool _authenticationRequested;
     PKPass *_transactionPass;
     PKPass *_valueAddedServicePass;
@@ -19,18 +17,23 @@
     PKPaymentTransaction *_paymentTransaction;
     unsigned long long _transactionStatus;
     unsigned long long _transactionType;
+    unsigned long long _action;
     NSString *_transactionDescription;
     NSArray *_displayablePassItems;
     NPKPaymentBarcode *_paymentBarcode;
+    unsigned long long _releaseDataStatus;
+    PKPassTile *_passTile;
 }
 
++ (id)_NPKTransactionContextActionDescriptionForNPKTransactionContextAction:(unsigned long long)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) PKPassTile *passTile; // @synthesize passTile=_passTile;
+@property(nonatomic) unsigned long long releaseDataStatus; // @synthesize releaseDataStatus=_releaseDataStatus;
 @property(nonatomic) _Bool authenticationRequested; // @synthesize authenticationRequested=_authenticationRequested;
 @property(retain, nonatomic) NPKPaymentBarcode *paymentBarcode; // @synthesize paymentBarcode=_paymentBarcode;
 @property(retain, nonatomic) NSArray *displayablePassItems; // @synthesize displayablePassItems=_displayablePassItems;
 @property(retain, nonatomic) NSString *transactionDescription; // @synthesize transactionDescription=_transactionDescription;
-@property(nonatomic) _Bool enRoute; // @synthesize enRoute=_enRoute;
-@property(nonatomic) _Bool redeemedTicket; // @synthesize redeemedTicket=_redeemedTicket;
+@property(nonatomic) unsigned long long action; // @synthesize action=_action;
 @property(nonatomic) unsigned long long transactionType; // @synthesize transactionType=_transactionType;
 @property(nonatomic) unsigned long long transactionStatus; // @synthesize transactionStatus=_transactionStatus;
 @property(retain, nonatomic) PKPaymentTransaction *paymentTransaction; // @synthesize paymentTransaction=_paymentTransaction;

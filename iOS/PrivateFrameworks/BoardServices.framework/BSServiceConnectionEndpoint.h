@@ -17,10 +17,10 @@
 @interface BSServiceConnectionEndpoint : NSObject <NSCopying, BSXPCCoding, BSXPCSecureCoding, NSSecureCoding>
 {
     NSString *_targetDescription;
+    int _targetPID;
     _Bool _nonLaunching;
     NSString *_service;
     NSString *_instance;
-    NSString *_machName;
     NSObject<OS_xpc_object> *_endpoint;
 }
 
@@ -33,6 +33,7 @@
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *instance; // @synthesize instance=_instance;
 @property(readonly, copy, nonatomic) NSString *service; // @synthesize service=_service;
+@property(readonly, nonatomic, getter=isNonLaunching) _Bool nonLaunching; // @synthesize nonLaunching=_nonLaunching;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
@@ -43,6 +44,7 @@
 - (id)initWithXPCDictionary:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)saveAsInjectorEndowmentForKey:(id)arg1;
 - (_Bool)isNullEndpoint;
 - (long long)compare:(id)arg1;
 - (_Bool)isEqualToServiceEndpoint:(id)arg1;

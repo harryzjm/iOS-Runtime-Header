@@ -10,7 +10,7 @@
 
 @interface _TtC15HealthRecordsUI37MedicalRecordChartableSeriesCollector : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *concept;
+    MISSING_TYPE *chartDefining;
     MISSING_TYPE *preferredColors;
     MISSING_TYPE *chartableQuantitySets;
 }

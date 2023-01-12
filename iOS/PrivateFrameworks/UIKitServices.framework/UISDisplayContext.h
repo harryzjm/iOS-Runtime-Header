@@ -10,7 +10,7 @@
 #import <UIKitServices/NSCopying-Protocol.h>
 #import <UIKitServices/NSMutableCopying-Protocol.h>
 
-@class FBSDisplayConfiguration, NSString, UISApplicationSupportDisplayEdgeInfo;
+@class FBSDisplayConfiguration, NSString, UISApplicationSupportDisplayEdgeInfo, UISDisplayShape;
 
 @interface UISDisplayContext : NSObject <BSXPCCoding, NSCopying, NSMutableCopying>
 {
@@ -18,10 +18,12 @@
     UISApplicationSupportDisplayEdgeInfo *_displayEdgeInfo;
     unsigned long long _artworkSubtype;
     unsigned long long _userInterfaceStyle;
+    UISDisplayShape *_exclusionArea;
 }
 
 + (id)defaultContext;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) UISDisplayShape *exclusionArea; // @synthesize exclusionArea=_exclusionArea;
 @property(readonly, nonatomic) unsigned long long userInterfaceStyle; // @synthesize userInterfaceStyle=_userInterfaceStyle;
 @property(readonly, nonatomic) unsigned long long artworkSubtype; // @synthesize artworkSubtype=_artworkSubtype;
 @property(readonly, nonatomic) UISApplicationSupportDisplayEdgeInfo *displayEdgeInfo; // @synthesize displayEdgeInfo=_displayEdgeInfo;
@@ -34,6 +36,7 @@
 - (id)initWithXPCDictionary:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)_initWithDisplayContext:(id)arg1;
+- (id)initWithDisplayConfiguration:(id)arg1 displayEdgeInfo:(id)arg2 exclusionArea:(id)arg3;
 - (id)initWithDisplayConfiguration:(id)arg1 displayEdgeInfo:(id)arg2;
 - (id)initWithDisplayConfiguration:(id)arg1;
 

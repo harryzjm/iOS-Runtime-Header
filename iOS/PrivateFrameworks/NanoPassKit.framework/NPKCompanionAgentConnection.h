@@ -43,11 +43,12 @@
 @property(nonatomic) _Bool queueAppropriateFailedActions; // @synthesize queueAppropriateFailedActions=_queueAppropriateFailedActions;
 - (void)remoteService:(id)arg1 didInterruptConnection:(id)arg2;
 - (void)remoteService:(id)arg1 didEstablishConnection:(id)arg2;
+- (void)presentStandaloneTransaction:(long long)arg1 forPassUniqueIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)markPendingTransactionAsProcessedForPassWithUniqueID:(id)arg1;
+- (void)fetchPendingTransactionForPassWithUniqueID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_installedCompanionApplicationBundleIDForPaymentPass:(id)arg1;
 - (void)beginPairedWatchInstallationOfApplicationForPaymentPass:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)beginPairedWatchInstallationOfApplicationWithBundleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)shouldShowWatchExtensionInstallationForPaymentPass:(id)arg1;
-- (_Bool)companionHasApplicationWithBundleID:(id)arg1;
 - (_Bool)pairedWatchHasApplicationWithBundleID:(id)arg1;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didEnableMessageService:(_Bool)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithCredentials:(id)arg2;
@@ -73,9 +74,9 @@
 - (id)_remoteObjectProxySynchronize:(_Bool)arg1 withFailureHandler:(CDUnknownBlockType)arg2;
 - (id)_remoteObjectProxyWithFailureHandler:(CDUnknownBlockType)arg1;
 - (void)_sharedPaymentWebServiceContextForDevice:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)provisionIdentityPassWithPassMetadata:(id)arg1 policyIdentifier:(id)arg2 targetDeviceIdentifier:(id)arg3 credentialIdentifier:(id)arg4 attestations:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)trustedDeviceEnrollmentSignatureWithAccountDSID:(id)arg1 sessionData:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)reloadPaymentPassesWithCompletion:(CDUnknownBlockType)arg1;
-- (_Bool)canAddSecureElementPassWithConfiguration:(id)arg1;
 - (void)noteForegroundVerificationObserverActive:(_Bool)arg1;
 - (void)startBackgroundVerificationObserverForPass:(id)arg1 verificationMethod:(id)arg2;
 - (void)setCommutePlanReminder:(id)arg1 forCommutePlan:(id)arg2 pass:(id)arg3 completion:(CDUnknownBlockType)arg4;

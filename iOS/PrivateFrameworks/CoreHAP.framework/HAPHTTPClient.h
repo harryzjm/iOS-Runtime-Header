@@ -24,10 +24,12 @@
     NSObject<OS_dispatch_queue> *_delegateQueue;
     id <HAPHTTPClientDebugDelegate> _debugDelegate;
     NSObject<OS_dispatch_queue> *_debugDelegateQueue;
+    NSString *_wakeAddress;
 }
 
 + (id)logCategory;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *wakeAddress; // @synthesize wakeAddress=_wakeAddress;
 @property(nonatomic) _Bool invalidateRequested; // @synthesize invalidateRequested=_invalidateRequested;
 @property(nonatomic) __weak NSObject<OS_dispatch_queue> *debugDelegateQueue; // @synthesize debugDelegateQueue=_debugDelegateQueue;
 @property(nonatomic) __weak id <HAPHTTPClientDebugDelegate> debugDelegate; // @synthesize debugDelegate=_debugDelegate;
@@ -52,12 +54,16 @@
 - (void)sendGETRequestToURL:(id)arg1 timeout:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)invalidate;
 - (_Bool)enableUAPSessionSecurityWithReadKey:(unsigned char [32])arg1 writeKey:(unsigned char [32])arg2 error:(id *)arg3;
+- (_Bool)_supportsWoL;
+- (id)_connectionDestination;
 - (int)_initializeCoreUtilsHTTPClientWithPort:(long long)arg1 withEventsEnabled:(_Bool)arg2;
 - (void)setDebugDelegate:(id)arg1 queue:(id)arg2;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
 @property(readonly, nonatomic) NSString *peerEndpointDescription;
 @property(readonly, nonatomic) HMFNetAddress *peerAddress;
+@property(readonly, nonatomic) HMFNetAddress *peerAddressEx;
 - (void)dealloc;
+- (id)initWithDNSName:(id)arg1 port:(long long)arg2 eventsEnabled:(_Bool)arg3 queue:(id)arg4 wakeAddress:(id)arg5;
 - (id)initWithDNSName:(id)arg1 port:(long long)arg2 eventsEnabled:(_Bool)arg3 queue:(id)arg4;
 - (id)initWithDNSName:(id)arg1 queue:(id)arg2;
 

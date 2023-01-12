@@ -6,14 +6,14 @@
 
 #import <DoNotDisturb/NSObject-Protocol.h>
 
-@class DNDModeAssertionDetails, DNDModeAssertionInvalidationDetails, DNDRequestDetails;
+@class DNDModeAssertionDetails, DNDModeAssertionInvalidationDetails, DNDRequestDetails, NSNumber;
 
 @protocol DNDRemoteServiceServerModeAssertionProtocol <NSObject>
-- (void)registerForAssertionUpdatesWithRequestDetails:(DNDRequestDetails *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
-- (void)invalidateAllActiveModeAssertionsWithRequestDetails:(DNDRequestDetails *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
+- (void)getAllModeAssertionsWithRequestDetails:(DNDRequestDetails *)arg1 completionHandler:(void (^)(NSArray<__DNDModeAssertion__> *, NSError *))arg2;
+- (void)invalidateAllActiveModeAssertionsWithRequestDetails:(DNDRequestDetails *)arg1 completionHandler:(void (^)(NSNumber *, NSError *))arg2;
 - (void)getLatestModeAssertionInvalidationWithRequestDetails:(DNDRequestDetails *)arg1 completionHandler:(void (^)(DNDModeAssertionInvalidation *, NSError *))arg2;
 - (void)getActiveModeAssertionWithRequestDetails:(DNDRequestDetails *)arg1 completionHandler:(void (^)(DNDModeAssertion *, NSError *))arg2;
-- (void)invalidateActiveModeAssertionWithDetails:(DNDModeAssertionInvalidationDetails *)arg1 reasonOverride:(unsigned long long)arg2 requestDetails:(DNDRequestDetails *)arg3 completionHandler:(void (^)(DNDModeAssertionInvalidation *, NSError *))arg4;
+- (void)invalidateActiveModeAssertionWithDetails:(DNDModeAssertionInvalidationDetails *)arg1 reasonOverride:(NSNumber *)arg2 requestDetails:(DNDRequestDetails *)arg3 completionHandler:(void (^)(DNDModeAssertionInvalidation *, NSError *))arg4;
 - (void)takeModeAssertionWithDetails:(DNDModeAssertionDetails *)arg1 requestDetails:(DNDRequestDetails *)arg2 completionHandler:(void (^)(DNDModeAssertion *, NSError *))arg3;
 @end
 

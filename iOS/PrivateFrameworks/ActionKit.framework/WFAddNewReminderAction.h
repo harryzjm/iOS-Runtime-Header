@@ -20,7 +20,8 @@
 - (void)updateHiddenParameters;
 - (_Bool)setParameterState:(id)arg1 forKey:(id)arg2;
 - (id)selectedListIfDeterministic;
-- (void)getTargetContentAttributionWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)smartPromptWithContentDescription:(id)arg1 contentDestination:(id)arg2 workflowName:(id)arg3;
+- (void)getContentDestinationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)selectedList;
 - (void)getSelectedListOrParentReminder:(CDUnknownBlockType)arg1;
 - (void)finishAddingReminderWithSaveRequest:(id)arg1 reminderChange:(id)arg2 reminderStore:(id)arg3;

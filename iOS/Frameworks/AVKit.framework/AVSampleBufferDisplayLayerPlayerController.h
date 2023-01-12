@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AVObservationController, AVPictureInPictureController, AVPictureInPicturePlaybackState;
+@class AVObservationController, AVPictureInPictureController, AVPictureInPicturePlaybackState, AVSampleBufferDisplayLayerPlaybackDelegateAdapter;
 @protocol AVPictureInPictureSampleBufferPlaybackDelegate;
 
 __attribute__((visibility("hidden")))
@@ -18,10 +18,12 @@ __attribute__((visibility("hidden")))
     id <AVPictureInPictureSampleBufferPlaybackDelegate> _playbackDelegate;
     AVPictureInPicturePlaybackState *_playbackState;
     AVObservationController *_sbdlObservationController;
+    AVSampleBufferDisplayLayerPlaybackDelegateAdapter *_playbackDelegateAdapter;
     struct CGSize _enqueuedBufferDimensions;
     CDStruct_e83c9415 _contentTimeRange;
 }
 
++ (id)keyPathsForValuesAffectingHasLiveStreamingContent;
 + (id)keyPathsForValuesAffectingContentDuration;
 + (id)keyPathsForValuesAffectingContentDurationWithinEndTimes;
 + (id)keyPathsForValuesAffectingCurrentTimeWithinEndTimes;
@@ -30,6 +32,7 @@ __attribute__((visibility("hidden")))
 + (id)keyPathsForValuesAffectingPictureInPicturePossible;
 + (id)keyPathsForValuesAffectingPlaying;
 - (void).cxx_destruct;
+@property(retain, nonatomic) AVSampleBufferDisplayLayerPlaybackDelegateAdapter *playbackDelegateAdapter; // @synthesize playbackDelegateAdapter=_playbackDelegateAdapter;
 @property(nonatomic) CDStruct_e83c9415 contentTimeRange; // @synthesize contentTimeRange=_contentTimeRange;
 @property(nonatomic, getter=isPaused) _Bool paused; // @synthesize paused=_paused;
 @property(retain, nonatomic) AVObservationController *sbdlObservationController; // @synthesize sbdlObservationController=_sbdlObservationController;
@@ -41,7 +44,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isPictureInPictureAvailable) _Bool pictureInPictureAvailable; // @synthesize pictureInPictureAvailable=_pictureInPictureAvailable;
 @property(nonatomic) long long status; // @synthesize status=_status;
 - (void)_startObservation;
+- (void)_updateBackgroundAudioPlaybackPolicy;
 - (void)_updateStatus;
+- (_Bool)hasSeekableLiveStreamingContent;
+- (_Bool)hasLiveStreamingContent;
 - (double)contentDuration;
 - (double)contentDurationWithinEndTimes;
 - (double)currentTimeWithinEndTimes;
@@ -51,11 +57,13 @@ __attribute__((visibility("hidden")))
 - (void)setPictureInPictureInterrupted:(_Bool)arg1;
 - (void)togglePlaybackEvenWhenInBackground:(id)arg1;
 - (void)seekByTimeInterval:(double)arg1 toleranceBefore:(double)arg2 toleranceAfter:(double)arg3;
+- (void)pauseForAllCoordinatedPlaybackParticipants:(_Bool)arg1;
 - (void)setPlaying:(_Bool)arg1;
 - (_Bool)isPlaying;
 - (void)invalidatePlaybackState;
 - (CDStruct_1b6d18a9)_currentSBDLTime;
 - (double)_effectiveRate;
+- (id)init;
 - (void)dealloc;
 
 @end

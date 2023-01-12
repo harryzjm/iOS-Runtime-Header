@@ -13,16 +13,20 @@
 
 @interface TSPObject : NSObject <TSPReferenceItem>
 {
+    id <TSPObjectDelegate> _delegate;
     _Atomic long long _identifier;
     _Atomic long long _modifyObjectToken;
     NSUUID *_UUID;
-    long long _unarchiverIdentifier;
+    struct {
+        unsigned int unarchiverSourceType:3;
+        unsigned int isTransientObject:1;
+    } _flags;
     TSPUnknownContent *_unknownContent;
     TSPComponent *_component;
-    id <TSPObjectDelegate> _delegate;
 }
 
 + (_Bool)tsp_isTransientObjectIdentifier:(long long)arg1;
++ (_Bool)tsp_isInternalObjectContainerClass;
 + (_Bool)needsObjectUUID;
 + (Class)classForUnarchiver:(id)arg1;
 + (_Bool)tsp_isPerformingUpgrade;
@@ -31,17 +35,18 @@
 + (id)tsp_deserializeFromURL:(id)arg1 options:(id)arg2 context:(id)arg3 isCrossDocumentPaste:(_Bool)arg4 isCrossAppPaste:(_Bool)arg5 completion:(CDUnknownBlockType)arg6;
 + (id)tsp_deserializeFromData:(id)arg1 options:(id)arg2 context:(id)arg3 error:(id *)arg4;
 - (void).cxx_destruct;
-@property(nonatomic) __weak id <TSPObjectDelegate> tsp_delegate; // @synthesize tsp_delegate=_delegate;
 @property(nonatomic) __weak TSPComponent *tsp_component; // @synthesize tsp_component=_component;
 @property(readonly, nonatomic) TSPUnknownContent *tsp_unknownContent; // @synthesize tsp_unknownContent=_unknownContent;
-@property(readonly, nonatomic) long long tsp_unarchiverIdentifier; // @synthesize tsp_unarchiverIdentifier=_unarchiverIdentifier;
 @property(readonly, nonatomic) _Bool needsArchiving;
+@property(readonly, nonatomic) _Bool tsp_isTransientObject;
 @property(nonatomic) long long tsp_modifyObjectToken;
 @property(nonatomic) long long tsp_identifier;
 @property(readonly, nonatomic) _Bool tsp_isLazyReference;
 @property(readonly, nonatomic) NSString *tsp_publicLoggingDescription;
 - (id)tsp_descriptionWithDepth:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSString *tsp_description;
+- (void)willRemoveReferenceToData:(id)arg1;
+- (void)didAddReferenceToData:(id)arg1;
 - (void)resetObjectUUIDWithoutUpdatingObjectUUIDMap;
 - (void)setObjectUUID:(id)arg1 updatingObjectUUIDMap:(_Bool)arg2;
 @property(copy, nonatomic) NSUUID *objectUUID;
@@ -82,6 +87,7 @@
 - (id)initWithContext:(id)arg1;
 - (void)dealloc;
 @property(readonly, nonatomic) TSPObjectContext *context;
+@property(nonatomic) __weak id <TSPObjectDelegate> tsp_delegate;
 - (id)init;
 - (id)tsp_serializeToURL:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)tsp_writeObjectNSDataRepresentation:(id)arg1 andData:(id)arg2 toURL:(id)arg3 options:(id)arg4 completion:(CDUnknownBlockType)arg5;

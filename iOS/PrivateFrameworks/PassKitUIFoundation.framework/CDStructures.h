@@ -89,19 +89,3 @@ typedef struct {
     _Bool isAnimating;
 } CDStruct_f50b3c6f;
 
-typedef struct {
-    double _field1;
-    unsigned long long _field2;
-    double *_field3;
-    struct {
-        CDStruct_14d5dc5e _field1;
-        CDStruct_14d5dc5e _field2;
-    } *_field4;
-    CDStruct_5cb32230 _field5;
-    unsigned long long _field6;
-    CDStruct_5cb32230 _field7[88];
-    unsigned long long _field8;
-    unsigned int _field9;
-    _Bool _field10;
-} CDStruct_2418b6b9;
-

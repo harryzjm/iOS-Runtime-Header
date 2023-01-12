@@ -7,6 +7,9 @@
 #import <SafariSharedUI/WBSAnalyticsLogger.h>
 
 @interface WBSAnalyticsLogger (_SFAnalyticsLogger)
+- (void)_sf_reportCapsuleLayoutStyle:(long long)arg1;
+- (void)_sf_performExtensionsReportIfNecessary;
+- (void)_sf_didAddFavoriteFromShareSheet;
 - (void)_sf_didCloseTabsAutomaticallyWithCount:(unsigned long long)arg1 tabClosingInterval:(id)arg2;
 - (void)_sf_reportAutomaticTabClosingInterval:(id)arg1;
 - (void)_sf_didChooseIntervalFromAutomaticTabClosingFirstTimeExperiencePrompt:(id)arg1;

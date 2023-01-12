@@ -16,7 +16,6 @@
 + (id)saveHUD;
 + (id)ignoreHUD;
 + (id)followHUD;
-+ (id)sidebar;
 + (id)iconArticleMarkingShare;
 + (id)iconArticleMarkingSaveSelected;
 + (id)iconArticleMarkingSave;
@@ -34,10 +33,10 @@
 + (id)iconFollowingDislike;
 + (id)iconFollowingLikeSelected;
 + (id)iconFollowingLike;
-+ (id)iconFeedDislikeSelectedWhite;
-+ (id)iconFeedDislikeWhite;
-+ (id)iconFeedDislikeSelected;
-+ (id)iconFeedDislike;
++ (id)iconMoreActionsSelectedWhite;
++ (id)iconMoreActionsWhite;
++ (id)iconMoreActionsSelected;
++ (id)iconMoreActions;
 + (id)iconFeedLikeSelectedWhite;
 + (id)iconFeedLikeWhite;
 + (id)iconFeedLikeSelected;

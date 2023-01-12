@@ -21,6 +21,7 @@
 
 + (void)removeAutosavedMessageWithIdentifier:(id)arg1;
 + (_Bool)hasAutosavedMessageWithIdentifier:(id)arg1;
++ (_Bool)_canSendMailInNewScene;
 + (_Bool)isMailDropConfigured;
 + (unsigned long long)maximumAttachmentSize;
 + (_Bool)canSendMailSourceAccountManagement:(int)arg1;
@@ -32,6 +33,7 @@
 - (void)setAutorotationDelegate:(id)arg1;
 - (void)autosaveWithHandler:(CDUnknownBlockType)arg1;
 - (void)recoverAutosavedMessageWithIdentifier:(id)arg1;
+- (void)_presentComposeInNewWindowWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setCaretPosition:(unsigned long long)arg1;
 - (void)addSetupAnimationBlock:(CDUnknownBlockType)arg1;
 - (void)finalizeCompositionValues;

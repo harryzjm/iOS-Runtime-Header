@@ -17,9 +17,6 @@ __attribute__((visibility("hidden")))
     NSString *_themePath;
 }
 
-+ (id)additionalGlobalOutOfLineStyleDeclarations;
-+ (id)ruleDictionaryForStyleWithDarkInterface:(id)arg1;
-+ (id)styleSet;
 + (id)ruleDictionaryForStyle:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *themePath; // @synthesize themePath=_themePath;

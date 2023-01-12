@@ -15,6 +15,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
+- (_Bool)isEqual:(id)arg1;
 - (id)initWithMastheadTextColor:(id)arg1;
 
 @end

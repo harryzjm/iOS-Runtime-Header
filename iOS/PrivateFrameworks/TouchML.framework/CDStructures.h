@@ -63,6 +63,13 @@ struct CLLocationCoordinate2D {
     double _field2;
 };
 
+struct NSDirectionalEdgeInsets {
+    double top;
+    double leading;
+    double bottom;
+    double trailing;
+};
+
 struct OpaqueJSClass;
 
 struct ProtobufCFieldDescriptor;
@@ -100,6 +107,11 @@ struct UIEdgeInsets {
     double left;
     double bottom;
     double right;
+};
+
+struct UIOffset {
+    double horizontal;
+    double vertical;
 };
 
 struct _NSRange {

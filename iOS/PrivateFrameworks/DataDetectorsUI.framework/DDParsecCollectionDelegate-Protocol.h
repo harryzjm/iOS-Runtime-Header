@@ -4,9 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class DDParsecCollectionViewController;
-
 @protocol DDParsecCollectionDelegate
-- (void)dismissParsecCollection:(DDParsecCollectionViewController *)arg1;
+- (void)interactionDidFinishAndRequiresDismissal:(_Bool)arg1;
 @end
 

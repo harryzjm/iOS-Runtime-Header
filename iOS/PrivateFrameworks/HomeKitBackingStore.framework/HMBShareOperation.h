@@ -4,27 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HMFoundation/HMFOperation.h>
-
 #import <HomeKitBackingStore/HMFLogging-Protocol.h>
 
-@class HMBCloudZone, NAFuture, NSString;
+@class HMBCloudZone, NSString;
 
 __attribute__((visibility("hidden")))
-@interface HMBShareOperation : HMFOperation <HMFLogging>
+@interface HMBShareOperation <HMFLogging>
 {
     HMBCloudZone *_cloudZone;
-    CDUnknownBlockType _block;
-    NAFuture *_future;
 }
 
 + (id)logCategory;
 - (void).cxx_destruct;
-@property(readonly) NAFuture *future; // @synthesize future=_future;
-@property(readonly, copy) CDUnknownBlockType block; // @synthesize block=_block;
 @property(readonly) HMBCloudZone *cloudZone; // @synthesize cloudZone=_cloudZone;
 - (void)main;
-- (void)cancelWithError:(id)arg1;
 - (id)initWithCloudZone:(id)arg1 block:(CDUnknownBlockType)arg2;
 
 // Remaining properties

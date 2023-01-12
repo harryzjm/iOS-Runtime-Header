@@ -6,12 +6,12 @@
 
 #import <Message/EFLoggable-Protocol.h>
 
-@class DAMailAccount, MFMessageLibrary, NSString;
+@class DAMailAccount, MFMailMessageLibrary, NSString;
 
 @interface MFDADelivery <EFLoggable>
 {
     DAMailAccount *_DAMailAccount;
-    MFMessageLibrary *_library;
+    MFMailMessageLibrary *_library;
     NSString *_folderID;
     NSString *_accountID;
     NSString *_originalMessageID;

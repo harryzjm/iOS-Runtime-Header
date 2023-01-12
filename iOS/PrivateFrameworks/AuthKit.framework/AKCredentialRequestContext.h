@@ -75,6 +75,7 @@
 @property(nonatomic) _Bool _requirePassword; // @synthesize _requirePassword;
 @property(retain, nonatomic) NSArray *credentialRequests;
 @property(readonly, nonatomic) _Bool _isEligibleForUpgradeFromPassword; // @synthesize _isEligibleForUpgradeFromPassword;
+- (id)initWithProxiedClientContext:(id)arg1;
 - (id)initWithUpgradeContext:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

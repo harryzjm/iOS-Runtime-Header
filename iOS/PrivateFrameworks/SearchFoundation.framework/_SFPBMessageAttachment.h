@@ -9,15 +9,19 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/_SFPBMessageAttachment-Protocol.h>
 
-@class NSData, NSString, _SFPBURL;
+@class NSData, NSString, _SFPBPhotosLibraryImage, _SFPBURL;
 
 @interface _SFPBMessageAttachment : PBCodable <_SFPBMessageAttachment, NSSecureCoding>
 {
     int _type;
     _SFPBURL *_url;
+    NSData *_linkMetadata;
+    _SFPBPhotosLibraryImage *_photosLibraryImage;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) _SFPBPhotosLibraryImage *photosLibraryImage; // @synthesize photosLibraryImage=_photosLibraryImage;
+@property(copy, nonatomic) NSData *linkMetadata; // @synthesize linkMetadata=_linkMetadata;
 @property(retain, nonatomic) _SFPBURL *url; // @synthesize url=_url;
 @property(nonatomic) int type; // @synthesize type=_type;
 - (id)initWithDictionary:(id)arg1;

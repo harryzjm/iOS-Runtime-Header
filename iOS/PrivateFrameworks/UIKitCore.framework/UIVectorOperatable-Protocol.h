@@ -23,7 +23,7 @@
 - (_Bool)isUndefined;
 - (_Bool)isApproximatelyEqualTo:(id <UIVectorOperatable>)arg1 withinEpsilon:(id <UIVectorOperatable>)arg2;
 - (_Bool)isApproximatelyEqualTo:(id <UIVectorOperatable>)arg1;
-- (void)integrateWithVelocity:(id <UIVectorOperatable>)arg1 target:(id <UIVectorOperatable>)arg2 intermediateTarget:(id <UIVectorOperatable>)arg3 intermediateTargetVelocity:(id <UIVectorOperatable>)arg4 parameters:(CDStruct_9e265dec)arg5 state:(CDStruct_289c5ec3)arg6 delta:(double)arg7;
+- (void)integrateWithVelocity:(id <UIVectorOperatable>)arg1 target:(id <UIVectorOperatable>)arg2 intermediateTarget:(id <UIVectorOperatable>)arg3 intermediateTargetVelocity:(id <UIVectorOperatable>)arg4 parameters:(CDStruct_500c0369)arg5 state:(CDStruct_289c5ec3)arg6 delta:(double)arg7;
 - (id <UIVectorOperatable>)interpolateTo:(id <UIVectorOperatable>)arg1 progress:(double)arg2;
 @end
 

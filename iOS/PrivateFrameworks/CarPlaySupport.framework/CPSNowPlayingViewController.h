@@ -17,6 +17,8 @@
 
 @interface CPSNowPlayingViewController : CPUINowPlayingViewController <CPSButtonDelegate, UIGestureRecognizerDelegate, CPNowPlayingTemplateProviding, CPBaseTemplateProviding, CPSBaseTemplateViewController>
 {
+    _Bool _isPopping;
+    _Bool _didDisappear;
     CPSAudioPlaybackManager *_audioPlaybackManager;
     CPTemplate *_associatedTemplate;
     id <CPTemplateDelegate> _templateDelegate;
@@ -25,6 +27,8 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool didDisappear; // @synthesize didDisappear=_didDisappear;
+@property(nonatomic) _Bool isPopping; // @synthesize isPopping=_isPopping;
 @property(nonatomic) __weak id <CPSTemplateViewControllerDelegate> viewControllerDelegate; // @synthesize viewControllerDelegate=_viewControllerDelegate;
 @property(retain, nonatomic) NAFuture *templateProviderFuture; // @synthesize templateProviderFuture=_templateProviderFuture;
 @property(retain, nonatomic) id <CPTemplateDelegate> templateDelegate; // @synthesize templateDelegate=_templateDelegate;
@@ -35,6 +39,7 @@
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)_cleanup;
 - (void)_cps_viewControllerWasPopped;
 - (void)setControl:(id)arg1 selected:(_Bool)arg2;
 - (void)updateNowPlayingTemplate:(id)arg1 withProxyDelegate:(id)arg2;

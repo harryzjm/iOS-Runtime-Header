@@ -10,12 +10,9 @@
 
 @interface _TtC16HealthArticlesUI21HealthArticleTileView : UIView
 {
-    MISSING_TYPE *highlightedDuration;
-    MISSING_TYPE *highlightedOverlayAlpha;
-    MISSING_TYPE *highlightedUnderlayAlpha;
     MISSING_TYPE *$__lazy_storage_$_backgroundImageView;
-    MISSING_TYPE *$__lazy_storage_$_selectedImageOverlay;
-    MISSING_TYPE *$__lazy_storage_$_selectedSashUnderlay;
+    MISSING_TYPE *$__lazy_storage_$_highlightedImageOverlay;
+    MISSING_TYPE *$__lazy_storage_$_highlightedSashUnderlay;
     MISSING_TYPE *$__lazy_storage_$_sashView;
 }
 

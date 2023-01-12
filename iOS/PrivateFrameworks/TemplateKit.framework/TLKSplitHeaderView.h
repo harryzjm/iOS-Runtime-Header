@@ -6,7 +6,7 @@
 
 #import <TemplateKit/NUIContainerViewDelegate-Protocol.h>
 
-@class NSString, NUIContainerGridView, NUIContainerStackView, TLKEmbossedLabel, TLKImage, TLKImageView, TLKLabel, TLKMultilineText;
+@class NSString, NUIContainerBoxView, NUIContainerGridView, NUIContainerStackView, TLKEmbossedLabel, TLKImage, TLKImageView, TLKLabel, TLKMultilineText, TLKStackView;
 
 @interface TLKSplitHeaderView <NUIContainerViewDelegate>
 {
@@ -14,6 +14,8 @@
     _Bool _shouldBadgeSubtitle;
     _Bool _useCompactWidth;
     TLKMultilineText *_title;
+    TLKMultilineText *_centerLeadingTitle;
+    TLKMultilineText *_centerTrailingTitle;
     TLKMultilineText *_subtitle1;
     TLKMultilineText *_subtitle2;
     TLKImage *_leadingImage;
@@ -29,6 +31,10 @@
     TLKLabel *_trailingTitleLabel;
     TLKLabel *_trailingSubtitleLabel;
     TLKLabel *_titleLabel;
+    TLKLabel *_centerLeadingTitleLabel;
+    TLKLabel *_centerTrailingTitleLabel;
+    TLKStackView *_titleStackView;
+    NUIContainerBoxView *_titleBoxView;
     NUIContainerStackView *_subtitleStackView;
     TLKLabel *_subtitle1Label;
     TLKEmbossedLabel *_subtitle2Label;
@@ -38,6 +44,10 @@
 @property(retain, nonatomic) TLKEmbossedLabel *subtitle2Label; // @synthesize subtitle2Label=_subtitle2Label;
 @property(retain, nonatomic) TLKLabel *subtitle1Label; // @synthesize subtitle1Label=_subtitle1Label;
 @property(retain, nonatomic) NUIContainerStackView *subtitleStackView; // @synthesize subtitleStackView=_subtitleStackView;
+@property(retain, nonatomic) NUIContainerBoxView *titleBoxView; // @synthesize titleBoxView=_titleBoxView;
+@property(retain, nonatomic) TLKStackView *titleStackView; // @synthesize titleStackView=_titleStackView;
+@property(retain, nonatomic) TLKLabel *centerTrailingTitleLabel; // @synthesize centerTrailingTitleLabel=_centerTrailingTitleLabel;
+@property(retain, nonatomic) TLKLabel *centerLeadingTitleLabel; // @synthesize centerLeadingTitleLabel=_centerLeadingTitleLabel;
 @property(retain, nonatomic) TLKLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) TLKLabel *trailingSubtitleLabel; // @synthesize trailingSubtitleLabel=_trailingSubtitleLabel;
 @property(retain, nonatomic) TLKLabel *trailingTitleLabel; // @synthesize trailingTitleLabel=_trailingTitleLabel;
@@ -56,6 +66,8 @@
 @property(nonatomic) _Bool useLargeTitle; // @synthesize useLargeTitle=_useLargeTitle;
 @property(retain, nonatomic) TLKMultilineText *subtitle2; // @synthesize subtitle2=_subtitle2;
 @property(retain, nonatomic) TLKMultilineText *subtitle1; // @synthesize subtitle1=_subtitle1;
+@property(retain, nonatomic) TLKMultilineText *centerTrailingTitle; // @synthesize centerTrailingTitle=_centerTrailingTitle;
+@property(retain, nonatomic) TLKMultilineText *centerLeadingTitle; // @synthesize centerLeadingTitle=_centerLeadingTitle;
 @property(retain, nonatomic) TLKMultilineText *title; // @synthesize title=_title;
 - (id)trailingImageInView;
 - (id)leadingImageInView;

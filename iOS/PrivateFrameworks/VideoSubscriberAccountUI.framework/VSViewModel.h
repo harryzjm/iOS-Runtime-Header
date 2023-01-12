@@ -17,9 +17,11 @@ __attribute__((visibility("hidden")))
     NSError *_error;
     NSString *_title;
     VSIdentityProvider *_identityProvider;
+    long long _userInterfaceStyle;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long userInterfaceStyle; // @synthesize userInterfaceStyle=_userInterfaceStyle;
 @property(retain, nonatomic) VSIdentityProvider *identityProvider; // @synthesize identityProvider=_identityProvider;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
@@ -27,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=shouldPreValidate) _Bool preValidate; // @synthesize preValidate=_preValidate;
 @property(nonatomic) unsigned long long viewState; // @synthesize viewState=_viewState;
 - (void)configureWithRequest:(id)arg1;
+- (id)init;
 
 @end
 

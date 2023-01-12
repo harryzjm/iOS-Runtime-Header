@@ -5,12 +5,11 @@
 //
 
 #import <HealthDaemon/HDConceptIndexManagerObserver-Protocol.h>
-#import <HealthDaemon/HDHealthOntologyManagerObserver-Protocol.h>
 #import <HealthDaemon/HKConceptStoreServerInterface-Protocol.h>
 
 @class NSString;
 
-@interface HDConceptStoreTaskServer <HDHealthOntologyManagerObserver, HDConceptIndexManagerObserver, HKConceptStoreServerInterface>
+@interface HDConceptStoreTaskServer <HDConceptIndexManagerObserver, HKConceptStoreServerInterface>
 {
 }
 
@@ -21,10 +20,7 @@
 - (void)conceptIndexManagerDidBecomeQuiescent:(id)arg1 samplesProcessedCount:(long long)arg2;
 - (void)conceptIndexManagerDidChangeExecutionState:(unsigned long long)arg1;
 - (void)remote_resetOntologyUsingAssetAtLocation:(id)arg1 rememberLocation:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)remote_cleanUpAfterUnitTestWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_queryCountOfConceptsAssociatedToUserRecordsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)remote_breakAssociationFromSample:(id)arg1 toConcept:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)remote_makeAssociationFromSample:(id)arg1 toConcept:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)remote_queryRelationshipsForNodeWithID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_queryConceptByIdentifier:(id)arg1 loadRelationships:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)remote_ontologyVersionWithCompletion:(CDUnknownBlockType)arg1;

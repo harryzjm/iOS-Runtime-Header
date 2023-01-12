@@ -25,12 +25,6 @@ struct IndirectArgumentBufferCapabilities {
     unsigned int :29;
 };
 
-struct MTLSerializerIndexGenerator {
-    unsigned int _field1;
-    struct stack<unsigned int, std::__1::deque<unsigned int, std::__1::allocator<unsigned int>>> _field2;
-    id _field3;
-};
-
 struct MTLSimConnection {
     NSObject *_connection;
     NSObject *_serialQueue;
@@ -54,87 +48,36 @@ struct _NSRange {
     unsigned long long _field2;
 };
 
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, void *>*> *__next_;
-};
-
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<MTLSimSharedEventNotification, std::__1::default_delete<MTLSimSharedEventNotification>>>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<MTLSimSharedEventNotification, std::__1::default_delete<MTLSimSharedEventNotification>>>, void *>*> *_field1;
-};
-
-struct deque<unsigned int, std::__1::allocator<unsigned int>> {
-    struct __split_buffer<unsigned int *, std::__1::allocator<unsigned int *>> {
-        unsigned int **_field1;
-        unsigned int **_field2;
-        unsigned int **_field3;
-        struct __compressed_pair<unsigned int **, std::__1::allocator<unsigned int *>> {
-            unsigned int **_field1;
-        } _field4;
-    } _field1;
-    unsigned long long _field2;
-    struct __compressed_pair<unsigned long, std::__1::allocator<unsigned int>> {
-        unsigned long long _field1;
-    } _field3;
-};
-
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
 
-struct stack<unsigned int, std::__1::deque<unsigned int, std::__1::allocator<unsigned int>>> {
-    struct deque<unsigned int, std::__1::allocator<unsigned int>> _field1;
-};
-
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, void *>*> **__value_;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, void *>*>*>> {
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, void *>*>*>> {
                 unsigned long long __value_;
             } __data_;
         } __value_;
     } __ptr_;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<MTLSimSharedEventNotification, std::__1::default_delete<MTLSimSharedEventNotification>>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<MTLSimSharedEventNotification, std::__1::default_delete<MTLSimSharedEventNotification>>>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<MTLSimSharedEventNotification, std::__1::default_delete<MTLSimSharedEventNotification>>>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<MTLSimSharedEventNotification, std::__1::default_delete<MTLSimSharedEventNotification>>>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<MTLSimSharedEventNotification, std::__1::default_delete<MTLSimSharedEventNotification>>>, void *>*> **_field1;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<MTLSimSharedEventNotification, std::__1::default_delete<MTLSimSharedEventNotification>>>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<MTLSimSharedEventNotification, std::__1::default_delete<MTLSimSharedEventNotification>>>, void *>*>*>> {
-                unsigned long long _field1;
-            } _field1;
-        } _field2;
-    } _field1;
-};
-
-struct unordered_map<unsigned int, MTLSimCommandBuffer *, std::__1::hash<unsigned int>, std::__1::equal_to<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, MTLSimCommandBuffer *>>> {
-    struct __hash_table<std::__1::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, std::__1::__unordered_map_hasher<unsigned int, std::__1::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, std::__1::hash<unsigned int>, true>, std::__1::__unordered_map_equal<unsigned int, std::__1::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, std::__1::equal_to<unsigned int>, true>, std::__1::allocator<std::__1::__hash_value_type<unsigned int, MTLSimCommandBuffer *>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, void *>*> __value_;
+struct unordered_map<unsigned int, MTLSimCommandBuffer *, std::hash<unsigned int>, std::equal_to<unsigned int>, std::allocator<std::pair<const unsigned int, MTLSimCommandBuffer *>>> {
+    struct __hash_table<std::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, std::__unordered_map_hasher<unsigned int, std::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, std::hash<unsigned int>, std::equal_to<unsigned int>, true>, std::__unordered_map_equal<unsigned int, std::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, std::equal_to<unsigned int>, std::hash<unsigned int>, true>, std::allocator<std::__hash_value_type<unsigned int, MTLSimCommandBuffer *>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, void *>*> {
+                void *__next_;
+            } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<unsigned int, std::__1::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, std::__1::hash<unsigned int>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<unsigned int, std::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, std::hash<unsigned int>, std::equal_to<unsigned int>, true>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<unsigned int, std::__1::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, std::__1::equal_to<unsigned int>, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<unsigned int, std::__hash_value_type<unsigned int, MTLSimCommandBuffer *>, std::equal_to<unsigned int>, std::hash<unsigned int>, true>> {
             float __value_;
         } __p3_;
     } __table_;
-};
-
-struct unordered_map<unsigned int, std::__1::unique_ptr<MTLSimSharedEventNotification, std::__1::default_delete<MTLSimSharedEventNotification>>, std::__1::hash<unsigned int>, std::__1::equal_to<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, std::__1::unique_ptr<MTLSimSharedEventNotification, std::__1::default_delete<MTLSimSharedEventNotification>>>>> {
-    struct __hash_table<std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<MTLSimSharedEventNotification, std::__1::default_delete<MTLSimSharedEventNotification>>>, std::__1::__unordered_map_hasher<unsigned int, std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<MTLSimSharedEventNotification, std::__1::default_delete<MTLSimSharedEventNotification>>>, std::__1::hash<unsigned int>, true>, std::__1::__unordered_map_equal<unsigned int, std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<MTLSimSharedEventNotification, std::__1::default_delete<MTLSimSharedEventNotification>>>, std::__1::equal_to<unsigned int>, true>, std::__1::allocator<std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<MTLSimSharedEventNotification, std::__1::default_delete<MTLSimSharedEventNotification>>>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<MTLSimSharedEventNotification, std::__1::default_delete<MTLSimSharedEventNotification>>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<MTLSimSharedEventNotification, std::__1::default_delete<MTLSimSharedEventNotification>>>, void *>*>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<MTLSimSharedEventNotification, std::__1::default_delete<MTLSimSharedEventNotification>>>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<MTLSimSharedEventNotification, std::__1::default_delete<MTLSimSharedEventNotification>>>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<MTLSimSharedEventNotification, std::__1::default_delete<MTLSimSharedEventNotification>>>, void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<unsigned int, std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<MTLSimSharedEventNotification, std::__1::default_delete<MTLSimSharedEventNotification>>>, std::__1::hash<unsigned int>, true>> {
-            unsigned long long _field1;
-        } _field3;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<unsigned int, std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<MTLSimSharedEventNotification, std::__1::default_delete<MTLSimSharedEventNotification>>>, std::__1::equal_to<unsigned int>, true>> {
-            float _field1;
-        } _field4;
-    } _field1;
 };
 
 #pragma mark Typedef'd Structures
@@ -208,8 +151,9 @@ typedef struct {
     unsigned int _field59;
     unsigned int _field60;
     unsigned int _field61;
-    unsigned long long _field62;
-} CDStruct_4a42450c;
+    unsigned int _field62;
+    unsigned long long _field63;
+} CDStruct_1825b841;
 
 typedef struct {
     unsigned int _field1;
@@ -286,6 +230,13 @@ typedef struct {
     double _field5;
     double _field6;
 } CDStruct_8727d297;
+
+typedef struct {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+} CDStruct_d2b197d1;
 
 typedef struct {
     float _field1;

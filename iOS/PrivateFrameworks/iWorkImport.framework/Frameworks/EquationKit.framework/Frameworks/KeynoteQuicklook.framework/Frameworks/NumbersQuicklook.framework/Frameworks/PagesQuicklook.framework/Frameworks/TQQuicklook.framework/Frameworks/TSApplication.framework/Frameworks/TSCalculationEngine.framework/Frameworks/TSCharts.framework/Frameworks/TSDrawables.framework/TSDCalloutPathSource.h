@@ -9,15 +9,20 @@
 
 @interface TSDCalloutPathSource <TSDSmartPathSource, TSDMixing>
 {
-    double mCornerRadius;
-    double mTailSize;
-    struct CGPoint mTailPosition;
-    struct CGSize mNaturalSize;
-    _Bool mIsTailAtCenter;
+    _Bool _isTailAtCenter;
+    double _tailSize;
+    double _cornerRadius;
+    struct CGPoint _tailPosition;
+    struct CGSize _naturalSize;
 }
 
 + (id)quoteBubbleWithTailPosition:(struct CGPoint)arg1 tailSize:(double)arg2 naturalSize:(struct CGSize)arg3;
 + (id)calloutWithCornerRadius:(double)arg1 tailPosition:(struct CGPoint)arg2 tailSize:(double)arg3 naturalSize:(struct CGSize)arg4;
+@property(readonly, nonatomic) _Bool isTailAtCenter; // @synthesize isTailAtCenter=_isTailAtCenter;
+- (struct CGSize)naturalSize;
+@property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
+@property(nonatomic) double tailSize; // @synthesize tailSize=_tailSize;
+@property(nonatomic) struct CGPoint rawTailPosition; // @synthesize rawTailPosition=_tailPosition;
 - (id)inferredAccessibilityDescription;
 - (struct CGPoint)p_getControlKnobPointForRoundedRect;
 - (void)p_setControlKnobPointForRoundedRect:(struct CGPoint)arg1;
@@ -33,33 +38,33 @@
 - (void)p_setCornerRadius:(double)arg1;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
+- (id)name;
 - (_Bool)isCircular;
 - (_Bool)isRectangular;
 - (id)interiorWrapPath;
 - (id)bezierPathWithoutFlips;
-@property(readonly, nonatomic) _Bool isTailAtCenter;
-@property(readonly, nonatomic) struct CGPoint tailCenter;
-- (struct CGSize)naturalSize;
+- (struct CGPoint)p_tailCenter;
 - (void)scaleToNaturalSize:(struct CGSize)arg1;
 - (void)setNaturalSize:(struct CGSize)arg1;
-- (id)valueForSetSelector:(SEL)arg1;
 @property(nonatomic) struct CGPoint tailKnobPosition;
 @property(nonatomic) struct CGPoint tailSizeKnobPosition;
+@property(readonly, nonatomic) double clampedCalloutTailSize;
 @property(readonly, nonatomic) double maxTailSize;
-@property(nonatomic) double tailSize;
+@property(readonly, nonatomic) double minTailSize;
+@property(readonly, nonatomic) double minCornerRadius;
 @property(readonly, nonatomic) double maxCornerRadius;
-@property(nonatomic) double cornerRadius;
+@property(readonly, nonatomic) double clampedCornerRadius;
 - (_Bool)isOval;
 - (struct CGPoint)getControlKnobPosition:(unsigned long long)arg1;
 - (unsigned long long)numberOfControlKnobs;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)copy;
 - (id)init;
 - (id)initWithCornerRadius:(double)arg1 tailPosition:(struct CGPoint)arg2 tailSize:(double)arg3 naturalSize:(struct CGSize)arg4 tailAtCenter:(_Bool)arg5;
-- (void)saveToArchive:(struct PathSourceArchive *)arg1;
-- (id)initWithArchive:(const struct PathSourceArchive *)arg1;
+- (void)saveToArchive:(void *)arg1;
+- (id)initWithArchive:(const void *)arg1;
 
 @end
 

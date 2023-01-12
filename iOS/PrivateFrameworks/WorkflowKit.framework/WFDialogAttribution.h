@@ -9,24 +9,29 @@
 #import <WorkflowKit/NSCopying-Protocol.h>
 #import <WorkflowKit/NSSecureCoding-Protocol.h>
 
-@class NSString, WFImage;
+@class NSString, WFIcon, WFImage;
 
 @interface WFDialogAttribution : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_title;
-    WFImage *_icon;
+    WFIcon *_icon;
+    WFImage *_image;
+    NSString *_associatedAppBundleIdentifier;
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)attributionWithTitle:(id)arg1 icon:(id)arg2;
++ (id)attributionWithAppBundleIdentifier:(id)arg1;
++ (id)attributionWithTitle:(id)arg1 icon:(id)arg2 image:(id)arg3 associatedAppBundleIdentifier:(id)arg4;
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) WFImage *icon; // @synthesize icon=_icon;
+@property(readonly, copy, nonatomic) NSString *associatedAppBundleIdentifier; // @synthesize associatedAppBundleIdentifier=_associatedAppBundleIdentifier;
+@property(readonly, copy, nonatomic) WFImage *image; // @synthesize image=_image;
+@property(readonly, nonatomic) WFIcon *icon; // @synthesize icon=_icon;
 @property(readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
-- (id)initWithTitle:(id)arg1 icon:(id)arg2;
+- (id)initWithTitle:(id)arg1 icon:(id)arg2 image:(id)arg3 associatedAppBundleIdentifier:(id)arg4;
 
 @end
 

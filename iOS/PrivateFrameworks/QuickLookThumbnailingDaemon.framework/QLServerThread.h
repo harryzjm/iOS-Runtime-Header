@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSMutableSet, NSOperationQueue, _QLCacheThread;
+@class NSMutableDictionary, NSMutableSet, NSOperationQueue, NSURL, _QLCacheThread;
 @protocol OS_dispatch_queue;
 
 @interface QLServerThread : NSObject
@@ -26,7 +26,11 @@
     NSOperationQueue *_uncachedThumbnailRetrievalQueue;
     NSOperationQueue *_downscaledThumbnailGenerationQueue;
     NSObject<OS_dispatch_queue> *_previewThumbnailGeneratorQueue;
+    NSURL *_overrideBasePersonaVolumesURLForTesting;
     _QLCacheThread *_cacheThread;
+    NSMutableDictionary *_domainsToCaches;
+    NSMutableDictionary *_volumesToCaches;
+    NSMutableDictionary *_fsidsToCaches;
 }
 
 + (void)updateThumbnailRequestThumbnailVersionWithThirdPartyGeneratorInformationIfNeeded:(id)arg1;
@@ -37,16 +41,25 @@
 @property(retain) NSMutableDictionary *externalThumbnailCacheAvailablePendingBlocks; // @synthesize externalThumbnailCacheAvailablePendingBlocks=_externalThumbnailCacheAvailablePendingBlocks;
 @property(retain) NSMutableDictionary *externalThumbnailCacheThumbnailURLs; // @synthesize externalThumbnailCacheThumbnailURLs=_externalThumbnailCacheThumbnailURLs;
 @property(retain) NSMutableDictionary *externalThumbnailCacheInboxURLs; // @synthesize externalThumbnailCacheInboxURLs=_externalThumbnailCacheInboxURLs;
+@property(retain) NSMutableDictionary *fsidsToCaches; // @synthesize fsidsToCaches=_fsidsToCaches;
+@property(retain) NSMutableDictionary *volumesToCaches; // @synthesize volumesToCaches=_volumesToCaches;
+@property(retain) NSMutableDictionary *domainsToCaches; // @synthesize domainsToCaches=_domainsToCaches;
+@property(retain) _QLCacheThread *cacheThread; // @synthesize cacheThread=_cacheThread;
 @property(retain) NSObject<OS_dispatch_queue> *completionBlocksQueue; // @synthesize completionBlocksQueue=_completionBlocksQueue;
 @property(retain) NSMutableDictionary *pendingRequests; // @synthesize pendingRequests=_pendingRequests;
+@property(copy) NSURL *overrideBasePersonaVolumesURLForTesting; // @synthesize overrideBasePersonaVolumesURLForTesting=_overrideBasePersonaVolumesURLForTesting;
 @property(retain) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain) NSMutableDictionary *currentFetchThumbnailsOperations; // @synthesize currentFetchThumbnailsOperations=_currentFetchThumbnailsOperations;
 @property(retain) NSMutableDictionary *queuedDownloadRequests; // @synthesize queuedDownloadRequests=_queuedDownloadRequests;
-@property(retain) _QLCacheThread *cacheThread; // @synthesize cacheThread=_cacheThread;
 @property(retain) NSMutableDictionary *externalThumbnailCaches; // @synthesize externalThumbnailCaches=_externalThumbnailCaches;
+- (id)allKnownDataSeparatedVolumes;
+- (id)cacheThreadForFileIdentifier:(id)arg1 atURL:(id)arg2;
+- (id)cacheThreadForVolume:(id)arg1;
+- (void)forEachCacheThread:(CDUnknownBlockType)arg1;
 - (void)setLastHitDateOfAllCachedThumbnailsToDate:(id)arg1;
 - (void)reset;
 - (_Bool)_canUseAdditionToProvideThumbnail:(id)arg1 forThumbnailRequest:(id)arg2 taggedLogicalURL:(id)arg3;
+- (void)removeCachedThumbnailsFromUninstalledFileProvidersWithIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeCachedThumbnailsFromUninstalledFileProvidersWithRemainingFileProviderIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_removeRequestFromPendingRequests:(id)arg1;
 - (void)_completeHandledThumbnailRequest:(id)arg1;
@@ -59,7 +72,7 @@
 - (void)completeThumbnailRequest:(id)arg1 bitmapData:(id)arg2 metadata:(id)arg3 contentRect:(struct CGRect)arg4 thumbnailRepresentation:(long long)arg5 iconFlavor:(int)arg6 format:(id)arg7 clientShouldTakeOwnership:(_Bool)arg8;
 - (void)completeThumbnailRequest:(id)arg1 thumbnailData:(id)arg2 updatedMetadata:(id)arg3;
 - (id)imageDataForImage:(struct CGImage *)arg1;
-- (void)addImageData:(id)arg1 withBitmapFormat:(id)arg2 contentRect:(struct CGRect)arg3 hasIconModeApplied:(_Bool)arg4 flavor:(int)arg5 metadata:(id)arg6 toCacheAndCompleteRequest:(id)arg7;
+- (void)addImageData:(id)arg1 withBitmapFormat:(id)arg2 contentRect:(struct CGRect)arg3 hasIconModeApplied:(_Bool)arg4 flavor:(int)arg5 extensionBadge:(id)arg6 metadata:(id)arg7 toCacheAndCompleteRequest:(id)arg8;
 - (void)addImageData:(id)arg1 toCacheForRequest:(id)arg2 withBitmapFormat:(id)arg3 contentRect:(struct CGRect)arg4 flavor:(int)arg5 metadata:(id)arg6;
 - (void)findUncachedThumbnailForThumbnailRequest:(id)arg1 downloadedItem:(id)arg2 atTaggedLogicalURL:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)findUncachedThumbnailForThumbnailRequest:(id)arg1 downloadedFileAtTaggedLogicalURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -79,6 +92,12 @@
 - (void)_callCompletionHandler:(CDUnknownBlockType)arg1 ofThumbnailRequestBatch:(id)arg2;
 - (void)_addThumbnailRequestBatchToQueue:(id)arg1 generationHandler:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)generateSuccessiveThumbnailRepresentationsForRequests:(id)arg1 generationHandler:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)cacheThreadForRequest:(id)arg1;
+- (id)cacheThreadForProviderDomainID:(id)arg1;
+- (id)uncachedCacheThreadForItem:(id)arg1;
+- (id)uncachedCacheThreadForFileAtURL:(id)arg1;
+- (id)uncachedCacheThreadForProviderDomainID:(id)arg1;
+- (id)makeCacheThreadForPersonaString:(id)arg1 containerURL:(id *)arg2;
 - (void)perform:(CDUnknownBlockType)arg1 afterDelay:(long long)arg2;
 - (void)perform:(CDUnknownBlockType)arg1;
 - (id)initWithCacheSize:(long long)arg1 location:(id)arg2;

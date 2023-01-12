@@ -23,6 +23,7 @@
 + (id)reverseAliasEnumeratorWithRelativePath:(id)arg1;
 + (id)reverseAliasEnumeratorWithUnsaltedBookmarkData:(id)arg1 session:(id)arg2;
 + (id)anyReverseAliasWithUnsaltedBookmarkData:(id)arg1 inAppLibrary:(id)arg2;
++ (_Bool)shouldDocumentBeGreedyWithName:(id)arg1;
 + (_Bool)isDocumentAutomaticallyEvictableWithName:(id)arg1;
 + (_Bool)isDocumentAutomaticallyEvictableWithExtension:(id)arg1;
 - (void).cxx_destruct;
@@ -47,6 +48,10 @@
 - (void)removeLiveConflictLoserEtag:(id)arg1;
 @property(readonly, nonatomic) NSDictionary *conflictLoserState;
 - (_Bool)contentRecordNeedsForceAllFieldsWhenDeadInServerTruth:(_Bool)arg1;
+- (void)markCrossZoneMovedForServerAssetCopyWithParentItem:(id)arg1 path:(id)arg2;
+- (_Bool)supportsServerSideAssetCopies;
+- (void)_insertTombstoneForPreviousZoneGlobalID;
+- (void)_markAsDeadTombstoneWithPreviousGlobalID;
 - (void)markOverQuotaWithError:(id)arg1;
 - (void)markNeedsUploadOrSyncingUp;
 - (void)markUploadedWithRecord:(id)arg1;
@@ -105,6 +110,7 @@
 @property(readonly, nonatomic) _Bool isVisibleIniCloudDrive;
 @property(readonly, nonatomic) _Bool isAutomaticallyEvictable;
 @property(readonly, nonatomic) _Bool isEvictable;
+- (_Bool)isDocumentBeingCopiedToNewZone;
 @property(readonly, nonatomic) _Bool hasLocalContent;
 - (id)asShareableItem;
 - (_Bool)isShareableItem;

@@ -7,40 +7,53 @@
 #import <objc/NSObject.h>
 
 #import <ProactiveSuggestionClientModel/ATXProactiveSuggestionClientModelProtocol-Protocol.h>
+#import <ProactiveSuggestionClientModel/ATXProactiveSuggestionRealTimeProviderDelegateProtocol-Protocol.h>
+#import <ProactiveSuggestionClientModel/NSXPCListenerDelegate-Protocol.h>
 
-@class NSString, NSXPCConnection;
-@protocol ATXProactiveSuggestionClientModelXPCInterface;
+@class NSString, NSXPCConnection, NSXPCListener;
+@protocol ATXProactiveSuggestionClientModelXPCInterface, ATXProactiveSuggestionRealTimeProviderDelegateProtocol;
 
-@interface ATXProactiveSuggestionClientModel : NSObject <ATXProactiveSuggestionClientModelProtocol>
+@interface ATXProactiveSuggestionClientModel : NSObject <ATXProactiveSuggestionClientModelProtocol, ATXProactiveSuggestionRealTimeProviderDelegateProtocol, NSXPCListenerDelegate>
 {
     NSString *_clientModelId;
-    NSString *_notificationId;
-    id <ATXProactiveSuggestionClientModelXPCInterface> _suggestionReceiver;
+    id <ATXProactiveSuggestionRealTimeProviderDelegateProtocol> _requestDelegate;
+    id <ATXProactiveSuggestionClientModelXPCInterface> _blendingLayerServer;
     NSXPCConnection *_xpcConnection;
+    NSXPCListener *_xpcListener;
+    id <ATXProactiveSuggestionClientModelXPCInterface> _suggestionReceiver;
 }
 
 + (long long)actionConversionTypeForClientModelType:(long long)arg1;
++ (_Bool)clientModelTypeIsShortcutConversion:(long long)arg1;
 + (_Bool)clientModelTypeIsEligibleForShortcutConversion:(long long)arg1;
 + (long long)clientModelTypeFromClientModelId:(id)arg1;
 + (id)clientModelIdsFromClientModelTypesArray:(id)arg1;
 + (id)clientModelIdFromClientModelType:(long long)arg1;
++ (void)refreshBlendingLayerWithReason:(id)arg1;
 + (void)refreshBlendingLayer;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <ATXProactiveSuggestionClientModelXPCInterface> suggestionReceiver; // @synthesize suggestionReceiver=_suggestionReceiver;
+- (id)emptyResponseForRequest:(id)arg1;
+- (void)pingWithCompletion:(CDUnknownBlockType)arg1;
+- (void)suggestionsForInteractionSuggestionRequest:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)retrieveCurrentSuggestionsWithReply:(CDUnknownBlockType)arg1;
 - (void)updateSuggestions:(id)arg1 feedbackMetadata:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)updateSuggestions:(id)arg1 feedbackMetadata:(id)arg2;
 - (void)updateSuggestions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateSuggestions:(id)arg1;
 - (void)transmitSuggestionsToReceiver:(id)arg1 feedbackMetadata:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)transmitNotificationIdToSuggestionReceiver:(id)arg1;
 @property(readonly, nonatomic) NSString *clientModelId;
-@property(readonly, nonatomic) id <ATXProactiveSuggestionClientModelXPCInterface> suggestionReceiver;
-- (id)remoteAsyncSuggestionReceiver;
+- (id)blendingLayerServer;
+- (id)remoteAsyncBlendingLayerServer;
+- (void)setupXPCListenerWithClientModelId:(id)arg1;
 - (void)setupRemoteClientXPCConnection;
 - (void)dealloc;
-- (id)initWithClientModelId:(id)arg1 notificationId:(id)arg2 suggestionReceiver:(id)arg3;
+- (id)initWithClientModelId:(id)arg1 requestDelegate:(id)arg2 blendingLayerServer:(id)arg3;
+- (id)initWithClientModelId:(id)arg1 blendingLayerServer:(id)arg2;
+- (id)initWithClientModelId:(id)arg1 notificationId:(id)arg2 blendingLayerServer:(id)arg3;
+- (id)initWithClientModelId:(id)arg1 requestDelegate:(id)arg2;
 - (id)initWithClientModelId:(id)arg1 notificationId:(id)arg2;
-- (void)retrieveAvailableCriterionIdentifiersWithReply:(CDUnknownBlockType)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

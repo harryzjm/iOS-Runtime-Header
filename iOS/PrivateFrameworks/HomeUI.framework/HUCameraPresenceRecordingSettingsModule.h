@@ -7,11 +7,12 @@
 #import <HomeUI/HUCameraSettingsModule-Protocol.h>
 #import <HomeUI/ICQUpgradeFlowManagerDelegate-Protocol.h>
 
-@class HFItem, HFStaticItemProvider, HMHome, HUCameraUsageOptionItemProvider, NSArray, NSSet, NSString, UIViewController;
+@class FeatureChangeObserver, HFItem, HFStaticItemProvider, HMHome, HUCameraUsageOptionItemProvider, NSArray, NSNumber, NSSet, NSString, UIViewController;
 
 @interface HUCameraPresenceRecordingSettingsModule <ICQUpgradeFlowManagerDelegate, HUCameraSettingsModule>
 {
     _Bool _didCompleteCloudUpgradeOffer;
+    _Bool _pendingUpgradeRequest;
     NSSet *_itemProviders;
     HFItem *_showOptionsItem;
     NSString *_longestCameraUsageOptionItemTitle;
@@ -26,9 +27,20 @@
     unsigned long long _offerState;
     unsigned long long _numCamerasSupportRecordingService;
     HMHome *_home;
+    NSNumber *_currentPlanCameraCount;
+    FeatureChangeObserver *_featureChangeObserver;
 }
 
++ (id)messageForHomeOwnerQuotaAlertForCameraCount:(id)arg1;
++ (id)stringFromNumber:(id)arg1;
++ (id)titleForHomeOwnerQuotaAlertForCameraCount:(id)arg1;
++ (id)messageForQuotaAlertForCameraCount:(id)arg1;
++ (id)titleForQuotaAlertForCameraCount:(id)arg1;
++ (id)upgradeURLForCameraCount:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool pendingUpgradeRequest; // @synthesize pendingUpgradeRequest=_pendingUpgradeRequest;
+@property(retain, nonatomic) FeatureChangeObserver *featureChangeObserver; // @synthesize featureChangeObserver=_featureChangeObserver;
+@property(retain, nonatomic) NSNumber *currentPlanCameraCount; // @synthesize currentPlanCameraCount=_currentPlanCameraCount;
 @property(retain, nonatomic) HMHome *home; // @synthesize home=_home;
 @property(nonatomic) unsigned long long numCamerasSupportRecordingService; // @synthesize numCamerasSupportRecordingService=_numCamerasSupportRecordingService;
 @property(nonatomic) unsigned long long offerState; // @synthesize offerState=_offerState;
@@ -42,6 +54,7 @@
 @property(readonly, nonatomic) unsigned long long presenceEventType; // @synthesize presenceEventType=_presenceEventType;
 @property(readonly, nonatomic) NSSet *cameraProfiles; // @synthesize cameraProfiles=_cameraProfiles;
 - (id)showOptionsItem;
+- (void)dealloc;
 - (void)sendCAMetricInfo;
 - (unsigned long long)countCameraProfilesWithRecordingService;
 - (void)upgradeFlowManagerDidComplete:(id)arg1;
@@ -56,8 +69,13 @@
 - (void)_clearItemsUpdating;
 - (void)presentMissingSupportedHubAlert;
 - (void)presentGenericError;
+- (void)presentSharedAdminQuotaAlertForCount:(unsigned long long)arg1;
+- (void)presentHomeOwnerQuotaAlertForOverflowCount:(long long)arg1;
 - (void)presentInsufficientPrivilegesAlert;
 - (void)presentCloudUpgradeFlowWithCameraCount:(unsigned long long)arg1;
+- (void)_presentCloudUpgradeFlowWithCameraCount:(unsigned long long)arg1;
+- (void)updatePlanCameraCount;
+- (void)clearLoadingIndicator;
 - (id)updateStreamingSetting:(unsigned long long)arg1 isRetry:(_Bool)arg2;
 @property(readonly, nonatomic) unsigned long long accessModeSetting;
 - (_Bool)isItemHeader:(id)arg1;

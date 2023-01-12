@@ -6,29 +6,39 @@
 
 #import <objc/NSObject.h>
 
+#import <VoiceShortcuts/NSXPCListenerDelegate-Protocol.h>
 #import <VoiceShortcuts/SBSRemoteAlertHandleObserver-Protocol.h>
 #import <VoiceShortcuts/WFDialogAlertPresenter-Protocol.h>
 
-@class NSString, SBSRemoteAlertHandle;
+@class BKSApplicationStateMonitor, NSString, NSXPCConnection, NSXPCListener, SBSRemoteAlertHandle;
 @protocol OS_dispatch_source, WFDialogAlertPresenterDelegate;
 
-@interface WFSpringBoardRemoteAlertPresenter : NSObject <SBSRemoteAlertHandleObserver, WFDialogAlertPresenter>
+@interface WFSpringBoardRemoteAlertPresenter : NSObject <SBSRemoteAlertHandleObserver, NSXPCListenerDelegate, WFDialogAlertPresenter>
 {
     id <WFDialogAlertPresenterDelegate> _delegate;
+    BKSApplicationStateMonitor *_monitor;
     SBSRemoteAlertHandle *_activeHandle;
     NSObject<OS_dispatch_source> *_deactivateTimer;
+    NSXPCListener *_listener;
+    NSXPCConnection *_activeConnection;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSXPCConnection *activeConnection; // @synthesize activeConnection=_activeConnection;
+@property(readonly, nonatomic) NSXPCListener *listener; // @synthesize listener=_listener;
 @property(retain, nonatomic) NSObject<OS_dispatch_source> *deactivateTimer; // @synthesize deactivateTimer=_deactivateTimer;
 @property(retain, nonatomic) SBSRemoteAlertHandle *activeHandle; // @synthesize activeHandle=_activeHandle;
+@property(retain, nonatomic) BKSApplicationStateMonitor *monitor; // @synthesize monitor=_monitor;
 @property(nonatomic) __weak id <WFDialogAlertPresenterDelegate> delegate; // @synthesize delegate=_delegate;
+- (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)remoteAlertHandle:(id)arg1 didInvalidateWithError:(id)arg2;
 - (void)remoteAlertHandleDidDeactivate:(id)arg1;
 - (void)remoteAlertHandleDidActivate:(id)arg1;
 - (void)deactivateAlert;
-- (void)activateAlert;
+- (void)activateAlertWithPresentationTarget:(id)arg1;
+- (void)activateAlertInMainSceneOfApplicationWithBundleIdentifier:(id)arg1;
 @property(readonly, nonatomic) _Bool alertIsActive;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

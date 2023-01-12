@@ -10,6 +10,7 @@
 
 @class NSMutableArray, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MRLanguageOptionProtobuf : PBCodable <NSCopying>
 {
     NSMutableArray *_characteristics;
@@ -22,30 +23,14 @@
     } _has;
 }
 
-+ (Class)characteristicsType;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property(retain, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
-@property(retain, nonatomic) NSMutableArray *characteristics; // @synthesize characteristics=_characteristics;
-@property(retain, nonatomic) NSString *languageTag; // @synthesize languageTag=_languageTag;
-@property(nonatomic) int type; // @synthesize type=_type;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasIdentifier;
-@property(readonly, nonatomic) _Bool hasDisplayName;
-- (id)characteristicsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)characteristicsCount;
-- (void)addCharacteristics:(id)arg1;
-- (void)clearCharacteristics;
-@property(readonly, nonatomic) _Bool hasLanguageTag;
-@property(nonatomic) _Bool hasType;
 
 @end
 

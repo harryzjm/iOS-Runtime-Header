@@ -10,6 +10,8 @@
 - (void)stripArrivedOrClosedTrip;
 - (CDUnknownBlockType)equalityTest;
 - (id)composedRoute;
+- (void)updateFromTraffic:(id)arg1;
+- (void)updateFromComposedRoute:(id)arg1;
 - (void)truncatePointDataForPrivacy;
 - (id)mspDescription;
 - (void)merge:(id)arg1;

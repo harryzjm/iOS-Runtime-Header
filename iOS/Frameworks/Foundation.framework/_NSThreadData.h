@@ -11,16 +11,16 @@
 __attribute__((visibility("hidden")))
 @interface _NSThreadData : NSObject
 {
+    id _target;
+    SEL _selector;
+    id _argument;
     id dict;
     id name;
-    id target;
-    SEL selector;
-    id argument;
     int seqNum;
     unsigned char qstate;
     BOOL qos;
     unsigned char cancel;
-    unsigned char status;
+    _Atomic unsigned char status;
     id performQ;
     NSMutableDictionary *performD;
     struct _opaque_pthread_attr_t {
@@ -35,6 +35,8 @@ __attribute__((visibility("hidden")))
     double pri;
     double defpri;
 }
+
+- (id)init;
 
 @end
 

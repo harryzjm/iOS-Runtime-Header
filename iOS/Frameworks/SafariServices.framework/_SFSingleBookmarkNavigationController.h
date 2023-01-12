@@ -18,9 +18,11 @@
     _Bool _delegateNotifiedOfResult;
     _Bool _bookmarkCollectionLocked;
     id <_SFSingleBookmarkNavigationControllerDelegate> _bookmarkNavDelegate;
+    CDUnknownBlockType _addBookmarkAnalyticsHandler;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType addBookmarkAnalyticsHandler; // @synthesize addBookmarkAnalyticsHandler=_addBookmarkAnalyticsHandler;
 @property(nonatomic) __weak id <_SFSingleBookmarkNavigationControllerDelegate> bookmarkNavDelegate; // @synthesize bookmarkNavDelegate=_bookmarkNavDelegate;
 - (_Bool)bookmarkInfoViewControllerCanSaveBookmarkChanges:(id)arg1;
 - (_Bool)bookmarkInfoViewControllerShouldUseTranslucentAppearance:(id)arg1;

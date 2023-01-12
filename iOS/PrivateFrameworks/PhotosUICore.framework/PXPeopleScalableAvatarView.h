@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIImageView;
+@class PHFace, UIImageView;
 @protocol PXPerson;
 
 @interface PXPeopleScalableAvatarView
@@ -14,11 +14,13 @@
     _Bool _useRoundAvatar;
     UIImageView *_imageView;
     id <PXPerson> _person;
+    PHFace *_face;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool useRoundAvatar; // @synthesize useRoundAvatar=_useRoundAvatar;
 @property(nonatomic) _Bool useCornerRadius; // @synthesize useCornerRadius=_useCornerRadius;
+@property(retain, nonatomic) PHFace *face; // @synthesize face=_face;
 @property(retain, nonatomic) id <PXPerson> person; // @synthesize person=_person;
 @property(retain) UIImageView *imageView; // @synthesize imageView=_imageView;
 - (void)_updateImageAndWait:(_Bool)arg1;

@@ -23,6 +23,8 @@
     GEOLocation *_currentUserLocation;
     NSMutableArray *_destinationWaypointTypeds;
     NSData *_directionsResponseID;
+    NSString *_displayedBannerId;
+    NSData *_etauResponseID;
     NSString *_requestingAppId;
     GEORouteAttributes *_routeAttributes;
     NSMutableArray *_routes;
@@ -65,6 +67,8 @@
         unsigned int read_currentUserLocation:1;
         unsigned int read_destinationWaypointTypeds:1;
         unsigned int read_directionsResponseID:1;
+        unsigned int read_displayedBannerId:1;
+        unsigned int read_etauResponseID:1;
         unsigned int read_requestingAppId:1;
         unsigned int read_routeAttributes:1;
         unsigned int read_routes:1;
@@ -109,7 +113,8 @@
 - (void)copyTo:(id)arg1;
 - (Class)responseClass;
 - (unsigned int)requestTypeCode;
-- (void)clearSensitiveFields;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
+- (void)clearSensitiveFields:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -133,6 +138,8 @@
 - (void)addServiceTag:(id)arg1;
 - (void)clearServiceTags;
 @property(retain, nonatomic) NSMutableArray *serviceTags;
+@property(retain, nonatomic) NSString *displayedBannerId;
+@property(readonly, nonatomic) _Bool hasDisplayedBannerId;
 @property(retain, nonatomic) GEOLocation *tripOrigin;
 @property(readonly, nonatomic) _Bool hasTripOrigin;
 @property(retain, nonatomic) NSString *requestingAppId;
@@ -164,6 +171,8 @@
 @property(nonatomic) double sessionRelativeTimestamp;
 @property(nonatomic) _Bool hasSessionID;
 @property(nonatomic) struct GEOSessionID sessionID;
+@property(retain, nonatomic) NSData *etauResponseID;
+@property(readonly, nonatomic) _Bool hasEtauResponseID;
 @property(retain, nonatomic) NSData *directionsResponseID;
 @property(readonly, nonatomic) _Bool hasDirectionsResponseID;
 @property(retain, nonatomic) GEOClientCapabilities *clientCapabilities;

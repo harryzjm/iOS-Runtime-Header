@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface OABShapeBaseManager <OABBasePropertiesManager>
 {
-    struct EshShapeBase *mShapeBase;
+    void *mShapeBase;
 }
 
 - (int)shadowSoftness;
@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (int)strokeStartArrowType;
 - (int)strokeJoinStyle;
 - (int)strokeCapStyle;
-- (const struct EshTablePropVal<int> *)strokeCustomDash;
+- (const void *)strokeCustomDash;
 - (int)strokePresetDash;
 - (int)strokeCompoundType;
 - (int)strokeMiterLimit;
@@ -42,7 +42,7 @@ __attribute__((visibility("hidden")))
 - (struct EshColor)strokeBgColor;
 - (struct EshColor)strokeFgColor;
 - (_Bool)isStroked;
-- (id)initWithShapeBase:(struct EshShapeBase *)arg1 shapeType:(int)arg2 masterShape:(struct EshShape *)arg3;
+- (id)initWithShapeBase:(void *)arg1 shapeType:(int)arg2 masterShape:(struct EshShape *)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

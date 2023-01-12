@@ -6,13 +6,11 @@
 
 @interface _UIBlurThroughEffect
 {
-    long long _style;
 }
 
 + (id)_blurThroughWithStyle:(long long)arg1;
-- (id)description;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (_Bool)isEqual:(id)arg1;
+- (_Bool)_indicatesMacSidebarBackground;
+- (long long)_expectedUsage;
 - (id)initWithStyle:(long long)arg1;
 
 @end

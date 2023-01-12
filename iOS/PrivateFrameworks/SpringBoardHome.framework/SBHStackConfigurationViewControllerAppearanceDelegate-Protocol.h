@@ -10,9 +10,9 @@
 @protocol SBHWidgetSheetViewControlling;
 
 @protocol SBHStackConfigurationViewControllerAppearanceDelegate <NSObject>
-- (void)stackConfigurationViewControllerViewDidDisappear:(UIViewController<SBHWidgetSheetViewControlling> *)arg1;
-- (void)stackConfigurationViewControllerViewWillDisappear:(UIViewController<SBHWidgetSheetViewControlling> *)arg1;
-- (void)stackConfigurationViewControllerViewDidAppear:(UIViewController<SBHWidgetSheetViewControlling> *)arg1;
-- (void)stackConfigurationViewControllerViewWillAppear:(UIViewController<SBHWidgetSheetViewControlling> *)arg1;
+- (void)stackConfigurationViewControllerDidDisappear:(UIViewController<SBHWidgetSheetViewControlling> *)arg1;
+- (void)stackConfigurationViewControllerWillDisappear:(UIViewController<SBHWidgetSheetViewControlling> *)arg1;
+- (void)stackConfigurationViewControllerDidAppear:(UIViewController<SBHWidgetSheetViewControlling> *)arg1;
+- (void)stackConfigurationViewControllerWillAppear:(UIViewController<SBHWidgetSheetViewControlling> *)arg1;
 @end
 

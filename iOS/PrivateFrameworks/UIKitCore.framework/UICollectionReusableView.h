@@ -16,6 +16,7 @@
     struct UIEdgeInsets _defaultLayoutMargins;
     struct {
         unsigned int wasDequeued:1;
+        unsigned int hasBeenReused:1;
         unsigned int preferredAttributesValid:1;
         unsigned int generatingPreferredAttributes:1;
         unsigned int didSetMasksToBounds:1;
@@ -31,10 +32,12 @@
     } _reusableViewFlags;
     _Bool _preferredAttributesValid;
     NSString *_reuseIdentifier;
+    NSString *_elementKind;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic, getter=_arePreferredAttributesValid) _Bool preferredAttributesValid; // @synthesize preferredAttributesValid=_preferredAttributesValid;
+@property(copy, nonatomic, getter=_elementKind, setter=_setElementKind:) NSString *elementKind; // @synthesize elementKind=_elementKind;
 @property(copy, nonatomic, setter=_setReuseIdentifier:) NSString *reuseIdentifier; // @synthesize reuseIdentifier=_reuseIdentifier;
 @property(nonatomic, getter=_shouldConstrainHeight, setter=_setShouldConstrainHeight:) _Bool shouldConstrainHeight;
 @property(nonatomic, getter=_shouldConstrainWidth, setter=_setShouldConstrainWidth:) _Bool shouldConstrainWidth;
@@ -43,6 +46,7 @@
 - (void)_invalidatePreferredAttributes;
 - (id)preferredLayoutAttributesFittingAttributes:(id)arg1;
 - (id)_preferredLayoutAttributesFittingAttributes:(id)arg1;
+@property(readonly, nonatomic, getter=_hasBeenReused) _Bool hasBeenReused;
 @property(nonatomic, getter=_isBeingReused, setter=_setIsBeingReused:) _Bool isBeingReused;
 - (_Bool)_disableRasterizeInAnimations;
 - (_Bool)_wasDequeued;
@@ -56,9 +60,13 @@
 - (struct UIEdgeInsets)_concreteDefaultLayoutMargins;
 - (void)_updateDefaultLayoutMarginsUsingAttributes:(id)arg1;
 - (_Bool)_isFocusableWhenStyledAsHeader;
-- (_Bool)_isStyledAsHeaderFromLayoutAttributes:(id)arg1;
+- (long long)_styleFromLayoutAttributes:(id)arg1;
+- (_Bool)_isStyledAsHeaderOrFooterFromLayoutAttributes:(id)arg1;
 - (void)_performBlocksForReuse;
 - (void)_performBlockWhenReused:(CDUnknownBlockType)arg1;
+- (void)_removeExistingBackdropViewForMasking;
+- (void)_addBackdropViewForMaskingIfNeeded;
+- (void)_setMaskView:(id)arg1;
 - (void)_updateMaskViewUsingAttributes:(id)arg1 previousRemoveMaskAfterAnimation:(_Bool)arg2;
 - (void)_updateMaskingUsingAttributes:(id)arg1;
 - (_Bool)_appliesLayoutAttributesMaskingToReusableView;
@@ -70,6 +78,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (void)setTranslatesAutoresizingMaskIntoConstraints:(_Bool)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

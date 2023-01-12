@@ -21,6 +21,7 @@
 - (void)didUpdatePreviewFormatDescription:(struct opaqueCMFormatDescription *)arg1;
 - (_Bool)_setVideoPreviewFilters:(id)arg1 checkForExceptionalInput:(_Bool)arg2 exceptionReason:(id *)arg3;
 - (_Bool)_filtersAreOptimized:(id)arg1 exceptionReason:(id *)arg2;
+- (void)_updateSemanticStyleRenderingSupported;
 - (void)_updateDepthDataDeliverySupported;
 - (void)_updatePreviewTransforms;
 - (struct CGAffineTransform)captureDeviceTransformForSensorSize:(struct CGSize)arg1 previewSize:(struct CGSize)arg2 sensorToPreviewVTScalingMode:(id)arg3;
@@ -49,6 +50,11 @@
 - (id)connectionMediaTypes;
 - (void)layerDidBecomeVisible:(_Bool)arg1;
 - (unsigned int)imageQueueSlot;
+- (void)setSemanticStyle:(id)arg1 animated:(_Bool)arg2;
+- (id)semanticStyle;
+- (void)setSemanticStyleRenderingEnabled:(_Bool)arg1;
+- (_Bool)isSemanticStyleRenderingEnabled;
+- (_Bool)isSemanticStyleRenderingSupported;
 - (void)setUnoptimizedFilterRenderingEnabled:(_Bool)arg1;
 - (_Bool)isUnoptimizedFilterRenderingEnabled;
 - (void)setVideoPreviewFilters:(id)arg1;

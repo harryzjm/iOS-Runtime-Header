@@ -4,10 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class PKPaymentPass;
+
 @interface PKAuxiliaryCapabilityWebServiceRequest
 {
+    PKPaymentPass *_pass;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
 - (id)_murlRequestWithServiceURL:(id)arg1 endpointComponents:(id)arg2 queryParameters:(id)arg3 appleAccountInformation:(id)arg4;
 
 @end

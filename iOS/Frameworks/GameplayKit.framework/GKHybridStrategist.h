@@ -14,7 +14,7 @@
 __attribute__((visibility("hidden")))
 @interface GKHybridStrategist : NSObject <GKStrategist>
 {
-    struct GKCHybridStrategist *_hybridStrategist;
+    void *_hybridStrategist;
 }
 
 - (id)bestMoveForActivePlayer;

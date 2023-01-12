@@ -25,8 +25,10 @@
 - (id)presentLicensesIfNeededForSoftwareUpdate:(id)arg1 home:(id)arg2 presentationDelegate:(id)arg3;
 - (_Bool)isLicensePresentationNecessaryForSoftwareUpdate:(id)arg1 home:(id)arg2 error:(out id *)arg3;
 - (id)startUpdateForAccessory:(id)arg1 update:(id)arg2 presentationDelegate:(id)arg3;
-- (id)startUpdatesForAccessories:(id)arg1 presentationDelegate:(id)arg2;
 - (id)startUpdatesForAllAccessoriesInHome:(id)arg1 presentationDelegate:(id)arg2;
+- (id)startUpdatesForAccessories:(id)arg1 presentationDelegate:(id)arg2;
+- (id)_fetchLatestSoftwareUpdateForAccessory:(id)arg1 targetVersion:(id)arg2;
+- (id)_softwareUpdateWithMostRecentVersionForAccessories:(id)arg1;
 - (long long)numberOfAccessoriesWithAvailableUpdatesInHome:(id)arg1;
 - (long long)numberOfAccessoriesWithAvailableUpdates:(id)arg1;
 - (id)fetchAvailableUpdatesForAccessories:(id)arg1;

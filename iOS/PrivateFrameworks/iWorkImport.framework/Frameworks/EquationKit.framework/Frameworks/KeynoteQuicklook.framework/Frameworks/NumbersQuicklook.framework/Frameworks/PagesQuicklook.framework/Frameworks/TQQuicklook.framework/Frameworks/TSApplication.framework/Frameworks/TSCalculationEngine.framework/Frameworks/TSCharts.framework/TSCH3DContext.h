@@ -12,7 +12,7 @@
 
 @interface TSCH3DContext : NSObject <NSCopying>
 {
-    struct FramebufferAttributes mCurrentFramebufferAttributes;
+    struct FramebufferAttributes _currentFramebufferAttributes;
 }
 
 - (id).cxx_construct;

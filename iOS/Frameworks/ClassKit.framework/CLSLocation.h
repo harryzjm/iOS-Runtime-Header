@@ -26,6 +26,7 @@
 @property(readonly, nonatomic) NSString *displayName;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithLocationID:(id)arg1 name:(id)arg2;
 - (id)_init;
 
 // Remaining properties

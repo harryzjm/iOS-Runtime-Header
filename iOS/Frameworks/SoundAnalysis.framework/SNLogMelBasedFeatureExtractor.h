@@ -22,8 +22,8 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(nonatomic) long long featurePrintType; // @synthesize featurePrintType=_featurePrintType;
-@property(readonly, nonatomic) struct Box *resultsBox;
-- (id)resultsFromBox:(struct Box *)arg1 renderedWithFrameCount:(int)arg2;
+@property(readonly, nonatomic) void *resultsBox;
+- (id)resultsFromBox:(void *)arg1 renderedWithFrameCount:(int)arg2;
 - (id)sharedProcessorConfiguration;
 - (_Bool)adaptToSystemConfiguration:(id)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) shared_ptr_f6ac7592 graph;

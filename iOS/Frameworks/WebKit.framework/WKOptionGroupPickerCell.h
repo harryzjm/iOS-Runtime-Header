@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 
 - (void)layoutSubviews;
 - (double)labelWidthForBounds:(struct CGRect)arg1;
-- (id)initWithOptionItem:(const struct OptionItem *)arg1;
+- (id)initWithOptionItem:(const void *)arg1;
 
 @end
 

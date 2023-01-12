@@ -27,7 +27,7 @@
 
 + (id)pngDataForImageWithIcon:(id)arg1 size:(struct CGSize)arg2;
 + (id)glyphImageWithIcon:(id)arg1 size:(struct CGSize)arg2;
-+ (id)imageWithIcon:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 glyphColor:(id)arg4 background:(_Bool)arg5;
++ (id)imageWithIcon:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 padding:(struct CGSize)arg4 glyphColor:(id)arg5 background:(_Bool)arg6;
 + (id)imageWithIcon:(id)arg1 size:(struct CGSize)arg2 background:(_Bool)arg3;
 + (id)imageWithIcon:(id)arg1 size:(struct CGSize)arg2;
 - (void).cxx_destruct;
@@ -44,6 +44,7 @@
 @property(retain, nonatomic) WFColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(nonatomic) unsigned short glyphCharacter; // @synthesize glyphCharacter=_glyphCharacter;
 @property(readonly, nonatomic) WFWorkflowIconDrawerContext *drawerContext; // @synthesize drawerContext=_drawerContext;
+- (id)imageWithSize:(struct CGSize)arg1 scale:(double)arg2 padding:(struct CGSize)arg3;
 - (id)imageWithSize:(struct CGSize)arg1 scale:(double)arg2;
 - (id)imageWithSize:(struct CGSize)arg1;
 - (void)drawInContext:(id)arg1 inRect:(struct CGRect)arg2;

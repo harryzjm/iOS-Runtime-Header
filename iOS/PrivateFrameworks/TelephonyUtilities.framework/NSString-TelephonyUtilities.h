@@ -7,12 +7,20 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (TelephonyUtilities)
++ (id)tu_stringWithTUConfigurationAnnounceCalls:(unsigned long long)arg1;
+- (id)tu_stringByAddingBase64Padding;
+- (id)tu_stringByStrippingBase64Padding;
 - (id)formattedDisplayID;
 - (id)normalizedDestination;
+- (id)normalizedTokenURI;
 - (id)IDSFormattedDestinationID;
 - (_Bool)destinationIdIsCallControlCode;
 - (_Bool)destinationIdIsPhoneNumber;
+- (_Bool)destinationIdIsTokenURI;
 - (_Bool)destinationIdIsEmailAddress;
+- (_Bool)destinationIdIsHardware;
+- (_Bool)destinationIdIsPseudonym;
+- (_Bool)destinationIdIsTemporary;
 - (id)RTLString;
 - (id)LTRString;
 @end

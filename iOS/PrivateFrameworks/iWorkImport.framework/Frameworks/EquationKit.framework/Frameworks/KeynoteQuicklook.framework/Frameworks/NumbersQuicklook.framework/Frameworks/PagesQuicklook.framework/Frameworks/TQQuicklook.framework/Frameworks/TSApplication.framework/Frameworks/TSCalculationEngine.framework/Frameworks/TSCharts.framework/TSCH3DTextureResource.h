@@ -5,17 +5,17 @@
 //
 
 #import <TSCharts/TSCH3DOptimizedTextureResource-Protocol.h>
-#import <TSCharts/TSCHUnretainedParent-Protocol.h>
 
 @class NSNumber, TSCH3DTexture, TSUOnce;
 
-@interface TSCH3DTextureResource <TSCHUnretainedParent, TSCH3DOptimizedTextureResource>
+@interface TSCH3DTextureResource <TSCH3DOptimizedTextureResource>
 {
-    TSCH3DTexture *mParent;
-    NSNumber *mCachedHash;
-    TSUOnce *mCachedHashOnce;
+    TSCH3DTexture *_parent;
+    NSNumber *_cachedHash;
+    TSUOnce *_cachedHashOnce;
 }
 
+- (void).cxx_destruct;
 - (id)databufferForDataCache:(id)arg1;
 - (id)optimizedMipmapBuffer;
 - (id)representativeColorBuffer;
@@ -23,9 +23,7 @@
 - (id)get;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (void)clearParent;
 - (id)p_parent;
-- (void)dealloc;
 - (id)initWithParent:(id)arg1;
 
 @end

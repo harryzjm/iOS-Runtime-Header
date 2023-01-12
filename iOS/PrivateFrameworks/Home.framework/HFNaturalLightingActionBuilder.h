@@ -21,6 +21,7 @@
 - (_Bool)hasSameTargetAsAction:(id)arg1;
 - (id)createNewAction;
 - (_Bool)updateWithActionBuilder:(id)arg1;
+- (_Bool)canUpdateWithActionBuilder:(id)arg1;
 - (id)description;
 - (id)copyForCreatingNewAction;
 - (id)initWithExistingObject:(id)arg1 inHome:(id)arg2;

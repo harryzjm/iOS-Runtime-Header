@@ -12,13 +12,15 @@
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HMDAssistantAccessControlModel, HMDUser, NSArray, NSMutableSet, NSObject, NSString, NSUUID;
-@protocol HMFLocking, OS_dispatch_queue;
+@protocol OS_dispatch_queue;
 
 @interface HMDAssistantAccessControl : HMFObject <HMFLogging, HMFObject, NSSecureCoding, HMDBackingStoreObjectProtocol>
 {
-    id <HMFLocking> _lock;
-    NSMutableSet *_accessories;
+    struct os_unfair_lock_s _lock;
+    NSMutableSet *_appleMediaAccessories;
+    NSMutableSet *_hapAccessoryIdentifiers;
     _Bool _enabled;
+    _Bool _activityNotificationsEnabledForPersonalRequests;
     HMDUser *_user;
     unsigned long long _cachedHash;
     unsigned long long _options;
@@ -46,8 +48,10 @@
 - (void)handleRemovedAccessory:(id)arg1;
 - (void)removeAccessory:(id)arg1;
 - (void)addAccessory:(id)arg1;
-- (void)setAccessories:(id)arg1;
+- (void)setAppleMediaAccessories:(id)arg1;
+- (void)setHapAccessoryIdentifiers:(id)arg1;
 @property(readonly, copy) NSArray *accessories;
+@property(getter=areActivityNotificationsEnabledForPersonalRequests) _Bool activityNotificationsEnabledForPersonalRequests; // @synthesize activityNotificationsEnabledForPersonalRequests=_activityNotificationsEnabledForPersonalRequests;
 @property unsigned long long options; // @synthesize options=_options;
 - (void)setEnabled:(_Bool)arg1;
 @property(readonly, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
@@ -59,7 +63,8 @@
 - (void)dealloc;
 - (void)configure;
 - (id)initWithUser:(id)arg1;
-- (id)initWithUser:(id)arg1 accessories:(id)arg2 enabled:(_Bool)arg3;
+- (id)initWithUser:(id)arg1 appleAccessories:(id)arg2 hapAccessoryIdentifiers:(id)arg3 enabled:(_Bool)arg4 activityNotificationsEnabledForPersonalRequests:(_Bool)arg5;
+- (id)initWithUser:(id)arg1 appleAccessories:(id)arg2 enabled:(_Bool)arg3;
 - (id)initWithUser:(id)arg1 model:(id)arg2;
 - (id)init;
 

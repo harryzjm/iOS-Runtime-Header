@@ -6,9 +6,10 @@
 
 #import <TSPersistence/NSObject-Protocol.h>
 
-@class TSPRemoteDataStorage, TSPTemporaryDataStorageURL;
+@class TSPData, TSPRemoteDataStorage, TSPTemporaryDataStorageURL;
 
 @protocol TSPRemoteDataStorageDelegate <NSObject>
+- (TSPData *)dataForRemoteDataStorage:(TSPRemoteDataStorage *)arg1;
 - (TSPTemporaryDataStorageURL *)temporaryDataStorageURLForRemoteDataStorage:(TSPRemoteDataStorage *)arg1;
 @end
 

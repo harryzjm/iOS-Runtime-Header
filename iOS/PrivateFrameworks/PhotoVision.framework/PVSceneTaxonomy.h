@@ -6,34 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class NSBundle, NSMapTable, NSString, NSURL, PVSceneTaxonomyNode;
+@class NSString, PFSceneTaxonomy, PVSceneTaxonomyNode;
 
 @interface PVSceneTaxonomy : NSObject
 {
-    PVSceneTaxonomyNode *_rootNode;
     NSString *_sha256Hash;
-    NSURL *_graphURL;
-    NSBundle *_localizationBundle;
-    NSString *_tableName;
-    NSMapTable *_sceneClassIndex;
-    NSMapTable *_nameIndex;
+    PFSceneTaxonomy *_taxonomy;
 }
 
 + (id)sharedTaxonomy;
 - (void).cxx_destruct;
-@property(retain) NSMapTable *nameIndex; // @synthesize nameIndex=_nameIndex;
-@property(retain) NSMapTable *sceneClassIndex; // @synthesize sceneClassIndex=_sceneClassIndex;
-@property(copy) NSString *tableName; // @synthesize tableName=_tableName;
-@property(retain) NSBundle *localizationBundle; // @synthesize localizationBundle=_localizationBundle;
-@property(copy) NSURL *graphURL; // @synthesize graphURL=_graphURL;
+@property(retain) PFSceneTaxonomy *taxonomy; // @synthesize taxonomy=_taxonomy;
 @property(readonly, copy) NSString *sha256Hash; // @synthesize sha256Hash=_sha256Hash;
-@property(readonly) PVSceneTaxonomyNode *rootNode; // @synthesize rootNode=_rootNode;
 - (id)description;
-- (id)buildNodesFromGraphURL:(id)arg1 sha256Hash:(id *)arg2;
-- (void)putNodeInIndex:(id)arg1;
 - (id)nodeForName:(id)arg1;
 - (id)nodeForSceneClassId:(unsigned int)arg1;
-- (void)dealloc;
+@property(readonly) PVSceneTaxonomyNode *rootNode;
 - (id)initWithGraphURL:(id)arg1 localizationBundle:(id)arg2 tableName:(id)arg3;
 - (id)init;
 

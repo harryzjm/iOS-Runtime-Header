@@ -10,10 +10,11 @@
 #import <ContentKit/WFContentItemClass-Protocol.h>
 #import <ContentKit/WFCopying-Protocol.h>
 
-@class NSExtensionItem, NSItemProvider, NSMutableDictionary, NSString, WFContentAttributionSet, WFImage, WFRepresentation, WFType;
+@class NSExtensionItem, NSItemProvider, NSMutableDictionary, NSString, NSUUID, WFContentAttributionSet, WFImage, WFRepresentation, WFType;
 
 @interface WFContentItem : NSObject <WFContentItemClass, WFCopying, NSSecureCoding>
 {
+    NSUUID *_cachingIdentifier;
     WFContentAttributionSet *_attributionSet;
     NSMutableDictionary *_representationsByType;
     NSMutableDictionary *_subItemsByClass;
@@ -37,12 +38,12 @@
 + (CDUnknownBlockType)contentPropertySubstitutor;
 + (id)supportedPropertyForProperty:(id)arg1;
 + (void)runQuery:(id)arg1 withItems:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (id)stringConversionBehavior;
 + (_Bool)hasLibrary;
 + (id)propertyForName:(id)arg1;
 + (id)allProperties;
 + (id)properties;
 + (id)propertyBuilders;
-+ (id)defaultSourceForRepresentation:(id)arg1;
 + (_Bool)canLowercaseTypeDescription;
 + (id)countDescription;
 + (id)localizedPluralFilterDescription;
@@ -57,24 +58,31 @@
 + (id)ownedPasteboardTypes;
 + (id)ownedTypes;
 + (_Bool)isAvailableOnPlatform:(long long)arg1;
-+ (id)itemWithSerializedItem:(id)arg1 forType:(id)arg2 named:(id)arg3 attributionSet:(id)arg4;
-+ (id)itemFromSerializedItem:(id)arg1 withItemClass:(Class)arg2 forType:(id)arg3 nameIfKnown:(id)arg4 sourceName:(id)arg5 attributionSet:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
++ (id)itemWithSerializedItem:(id)arg1 forType:(id)arg2 named:(id)arg3 attributionSet:(id)arg4 cachingIdentifier:(id)arg5;
++ (id)itemFromSerializedItem:(id)arg1 withItemClass:(Class)arg2 forType:(id)arg3 nameIfKnown:(id)arg4 sourceName:(id)arg5 attributionSet:(id)arg6 cachingIdentifier:(id)arg7 completionHandler:(CDUnknownBlockType)arg8;
 + (void)getContentItemFromSerializedItem:(id)arg1 sourceName:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (_Bool)supportsSecureCoding;
 + (_Bool)hasFileOutput;
 + (_Bool)hasStringOutput;
 + (_Bool)isContentItemSubclass;
++ (id)itemWithFile:(id)arg1 origin:(id)arg2 disclosureLevel:(unsigned long long)arg3;
++ (id)itemWithFile:(id)arg1 attributionSet:(id)arg2 cachingIdentifier:(id)arg3;
 + (id)itemWithFile:(id)arg1 attributionSet:(id)arg2;
 + (id)itemWithFile:(id)arg1;
 + (id)itemWithRepresentation:(id)arg1 attributionSet:(id)arg2 includesDefaultAttributionSet:(_Bool)arg3;
++ (id)itemWithRepresentation:(id)arg1 attributionSet:(id)arg2 cachingIdentifier:(id)arg3;
 + (id)itemWithRepresentation:(id)arg1 attributionSet:(id)arg2;
 + (id)itemWithRepresentation:(id)arg1;
++ (id)itemWithRepresentation:(id)arg1 forType:(id)arg2 attributionSet:(id)arg3 includesDefaultAttributionSet:(_Bool)arg4 cachingIdentifier:(id)arg5;
 + (id)itemWithRepresentation:(id)arg1 forType:(id)arg2 attributionSet:(id)arg3 includesDefaultAttributionSet:(_Bool)arg4;
++ (id)itemWithRepresentation:(id)arg1 forType:(id)arg2 attributionSet:(id)arg3 cachingIdentifier:(id)arg4;
 + (id)itemWithRepresentation:(id)arg1 forType:(id)arg2 attributionSet:(id)arg3;
 + (id)itemWithRepresentation:(id)arg1 forType:(id)arg2;
++ (id)itemWithObject:(id)arg1 named:(id)arg2 attributionSet:(id)arg3 cachingIdentifier:(id)arg4;
 + (id)itemWithObject:(id)arg1 named:(id)arg2 attributionSet:(id)arg3;
 + (id)itemWithObject:(id)arg1 named:(id)arg2;
 + (id)itemWithObject:(id)arg1 attributionSet:(id)arg2;
++ (id)itemWithObject:(id)arg1 origin:(id)arg2 disclosureLevel:(unsigned long long)arg3;
 + (id)itemWithObject:(id)arg1;
 + (id)badCoercionErrorForObjectClass:(Class)arg1;
 + (id)badCoercionErrorForType:(id)arg1;
@@ -103,8 +111,10 @@
 - (void)setRepresentations:(id)arg1 forType:(id)arg2;
 - (id)representationForType:(id)arg1;
 - (id)representationsForType:(id)arg1;
-- (id)initWithRepresentationsByType:(id)arg1 forType:(id)arg2 subItemsByClass:(id)arg3 attributionSet:(id)arg4 includesDefaultAttributionSet:(_Bool)arg5;
+- (id)initWithRepresentationsByType:(id)arg1 forType:(id)arg2 subItemsByClass:(id)arg3 attributionSet:(id)arg4 includesDefaultAttributionSet:(_Bool)arg5 cachingIdentifier:(id)arg6;
+- (id)initWithRepresentation:(id)arg1 forType:(id)arg2 attributionSet:(id)arg3 includesDefaultAttributionSet:(_Bool)arg4 cachingIdentifier:(id)arg5;
 - (id)initWithRepresentation:(id)arg1 forType:(id)arg2 attributionSet:(id)arg3 includesDefaultAttributionSet:(_Bool)arg4;
+- (id)initWithRepresentation:(id)arg1 forType:(id)arg2 attributionSet:(id)arg3 cachingIdentifier:(id)arg4;
 - (id)initWithRepresentation:(id)arg1 forType:(id)arg2 attributionSet:(id)arg3;
 - (id)description;
 - (id)allSupportedItemClasses;
@@ -118,6 +128,9 @@
 - (id)ownedTypes;
 - (void)getPreferredFileSize:(CDUnknownBlockType)arg1;
 - (void)getPreferredFileExtension:(CDUnknownBlockType)arg1;
+- (id)changeTransaction;
+@property(readonly, nonatomic) NSUUID *cachingIdentifier; // @synthesize cachingIdentifier=_cachingIdentifier;
+- (id)defaultSourceForRepresentation:(id)arg1;
 @property(readonly, nonatomic) WFImage *icon;
 - (id)preferredFileType;
 - (id)preferredObjectType;
@@ -146,6 +159,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (_Bool)canEncodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (void)copyStateToItem:(id)arg1;
 - (id)copyWithName:(id)arg1;
 - (id)copyWithName:(id)arg1 zone:(struct _NSZone *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;

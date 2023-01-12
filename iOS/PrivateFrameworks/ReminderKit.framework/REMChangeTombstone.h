@@ -20,10 +20,14 @@
     NSString *_shareeDisplayName;
     NSString *_shareeAddress;
     NSUUID *_assignmentOwningReminderIdentifier;
+    NSString *_hashtagName;
+    NSUUID *_hashtagReminderIdentifier;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSUUID *hashtagReminderIdentifier; // @synthesize hashtagReminderIdentifier=_hashtagReminderIdentifier;
+@property(readonly, nonatomic) NSString *hashtagName; // @synthesize hashtagName=_hashtagName;
 @property(readonly, nonatomic) NSUUID *assignmentOwningReminderIdentifier; // @synthesize assignmentOwningReminderIdentifier=_assignmentOwningReminderIdentifier;
 @property(readonly, nonatomic) NSString *shareeAddress; // @synthesize shareeAddress=_shareeAddress;
 @property(readonly, nonatomic) NSString *shareeDisplayName; // @synthesize shareeDisplayName=_shareeDisplayName;

@@ -8,9 +8,8 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-@class CKDPCodeFunctionInvokeRequestAttestationRequest, CKDPCodeFunctionInvokeRequestProtectedCloudComputeMetadata, NSData, NSString;
+@class CKCDPTrustedTargetCryptoMetadata, CKDPCodeFunctionInvokeRequestAttestationRequest, CKDPCodeFunctionInvokeRequestProtectedCloudComputeMetadata, NSData, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDPCodeFunctionInvokeRequest : PBRequest <NSCopying>
 {
     CKDPCodeFunctionInvokeRequestAttestationRequest *_attestationRequest;
@@ -18,10 +17,12 @@ __attribute__((visibility("hidden")))
     CKDPCodeFunctionInvokeRequestProtectedCloudComputeMetadata *_protectedCloudComputeMetadata;
     NSData *_serializedParameters;
     NSString *_serviceName;
+    CKCDPTrustedTargetCryptoMetadata *_trustedTargetCryptoMetadata;
 }
 
 + (id)options;
 - (void).cxx_destruct;
+@property(retain, nonatomic) CKCDPTrustedTargetCryptoMetadata *trustedTargetCryptoMetadata; // @synthesize trustedTargetCryptoMetadata=_trustedTargetCryptoMetadata;
 @property(retain, nonatomic) CKDPCodeFunctionInvokeRequestAttestationRequest *attestationRequest; // @synthesize attestationRequest=_attestationRequest;
 @property(retain, nonatomic) CKDPCodeFunctionInvokeRequestProtectedCloudComputeMetadata *protectedCloudComputeMetadata; // @synthesize protectedCloudComputeMetadata=_protectedCloudComputeMetadata;
 @property(retain, nonatomic) NSData *serializedParameters; // @synthesize serializedParameters=_serializedParameters;
@@ -38,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasTrustedTargetCryptoMetadata;
 @property(readonly, nonatomic) _Bool hasAttestationRequest;
 @property(readonly, nonatomic) _Bool hasProtectedCloudComputeMetadata;
 @property(readonly, nonatomic) _Bool hasSerializedParameters;

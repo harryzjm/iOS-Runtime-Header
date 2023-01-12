@@ -9,8 +9,8 @@
 #import <WorkflowEditor/UITextViewDelegate-Protocol.h>
 #import <WorkflowEditor/WFTagPickerViewControllerDelegate-Protocol.h>
 
-@class NSSet, NSString, UIButton, WFTagTextView, WFTextScrollView;
-@protocol WFTagFieldDelegate, WFTagFieldSuggestionsProvider, WFVariableProvider, WFVariableUIDelegate;
+@class NSArray, NSSet, NSString, UIButton, WFTagTextView, WFTextScrollView;
+@protocol WFTagFieldDelegate, WFVariableProvider, WFVariableUIDelegate;
 
 @interface WFTagField : UIView <UITextViewDelegate, WFTagPickerViewControllerDelegate>
 {
@@ -19,7 +19,7 @@
     NSString *_tags;
     NSString *_fieldTitle;
     id <WFTagFieldDelegate> _delegate;
-    id <WFTagFieldSuggestionsProvider> _suggestionsProvider;
+    NSArray *_suggestedTags;
     long long _autocorrectionType;
     long long _autocapitalizationType;
     CDUnknownBlockType _updateBlock;
@@ -41,7 +41,7 @@
 @property(nonatomic) _Bool allowsTextEntry; // @synthesize allowsTextEntry=_allowsTextEntry;
 @property(nonatomic) long long autocapitalizationType; // @synthesize autocapitalizationType=_autocapitalizationType;
 @property(nonatomic) long long autocorrectionType; // @synthesize autocorrectionType=_autocorrectionType;
-@property(nonatomic) __weak id <WFTagFieldSuggestionsProvider> suggestionsProvider; // @synthesize suggestionsProvider=_suggestionsProvider;
+@property(copy, nonatomic) NSArray *suggestedTags; // @synthesize suggestedTags=_suggestedTags;
 @property(nonatomic) __weak id <WFTagFieldDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic) NSString *fieldTitle; // @synthesize fieldTitle=_fieldTitle;
 @property(copy, nonatomic) NSString *tags; // @synthesize tags=_tags;
@@ -66,6 +66,7 @@
 @property(nonatomic) long long keyboardType;
 @property(copy, nonatomic) NSString *placeholder;
 - (void)layoutSubviews;
+- (id)initWithFrame:(struct CGRect)arg1 showsAddButton:(_Bool)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

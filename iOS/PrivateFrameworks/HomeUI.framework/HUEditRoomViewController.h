@@ -12,7 +12,7 @@
 #import <HomeUI/UINavigationControllerDelegate-Protocol.h>
 #import <HomeUI/UITextFieldDelegate-Protocol.h>
 
-@class HFRoomBuilder, HUEditRoomItemManager, HUEditableTextCell, HUWallpaperPickerInlineViewController, HUZoneModuleController, NSString, UIBarButtonItem;
+@class HFRoomBuilder, HUEditRoomItemManager, HUWallpaperPickerInlineViewController, HUZoneModuleController, NSString, UIBarButtonItem, UITextField;
 @protocol HUEditRoomViewControllerAddRoomDelegate, HUEditRoomViewControllerPresentationDelegate;
 
 @interface HUEditRoomViewController <UITextFieldDelegate, HUWallpaperPickerViewControllerDelegate, HUWallpaperEditingViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, HUWallpaperThumbnailCellDelegate, HUWallpaperPickerInlineViewControllerDelegate>
@@ -23,21 +23,19 @@
     HUZoneModuleController *_zoneModuleController;
     HUWallpaperPickerInlineViewController *_wallpaperPickerController;
     HUEditRoomItemManager *_roomItemManager;
-    HUEditableTextCell *_nameCell;
+    UITextField *_editingTextField;
     UIBarButtonItem *_savedButtonBarItem;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIBarButtonItem *savedButtonBarItem; // @synthesize savedButtonBarItem=_savedButtonBarItem;
-@property(nonatomic) __weak HUEditableTextCell *nameCell; // @synthesize nameCell=_nameCell;
+@property(nonatomic) __weak UITextField *editingTextField; // @synthesize editingTextField=_editingTextField;
 @property(nonatomic) __weak HUEditRoomItemManager *roomItemManager; // @synthesize roomItemManager=_roomItemManager;
 @property(retain, nonatomic) HUWallpaperPickerInlineViewController *wallpaperPickerController; // @synthesize wallpaperPickerController=_wallpaperPickerController;
 @property(retain, nonatomic) HUZoneModuleController *zoneModuleController; // @synthesize zoneModuleController=_zoneModuleController;
 @property(readonly, nonatomic) __weak id <HUEditRoomViewControllerAddRoomDelegate> addRoomDelegate; // @synthesize addRoomDelegate=_addRoomDelegate;
 @property(readonly, nonatomic) __weak id <HUEditRoomViewControllerPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
 @property(readonly, nonatomic) HFRoomBuilder *roomBuilder; // @synthesize roomBuilder=_roomBuilder;
-- (id)_allTextFields;
-- (void)_resignTextFieldFirstResponder;
 - (void)updateWallpaper:(id)arg1 image:(id)arg2;
 - (void)presentWallpaperEditingViewControllerWithImage:(id)arg1 wallpaper:(id)arg2;
 - (void)wallpaperEditingDidCancel:(id)arg1;
@@ -49,14 +47,12 @@
 - (void)wallpaperPickerDidFinish:(id)arg1 wallpaper:(id)arg2 image:(id)arg3;
 - (void)imagePickerController:(id)arg1 didFinishPickingMediaWithInfo:(id)arg2;
 - (_Bool)textFieldShouldReturn:(id)arg1;
-- (id)tableView:(id)arg1 trailingSwipeActionsConfigurationForRowAtIndexPath:(id)arg2;
-- (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
-- (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;
-- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (_Bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
+- (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
+- (id)trailingSwipeActionsConfigurationForRowAtIndexPath:(id)arg1;
+- (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
+- (_Bool)collectionView:(id)arg1 shouldHighlightItemAtIndexPath:(id)arg2;
 - (unsigned long long)automaticDisablingReasonsForItem:(id)arg1;
-- (void)updateCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3 animated:(_Bool)arg4;
-- (void)setupCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3;
+- (void)configureCell:(id)arg1 forItem:(id)arg2;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (id)itemModuleControllers;
 - (void)nameFieldTextChanged:(id)arg1;
@@ -64,7 +60,6 @@
 - (void)addButtonPressed:(id)arg1;
 - (void)cancelButtonPressed:(id)arg1;
 - (void)updateTitle;
-- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (id)initWithRoomBuilder:(id)arg1 presentationDelegate:(id)arg2 addRoomDelegate:(id)arg3;
 

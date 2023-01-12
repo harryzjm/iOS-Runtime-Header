@@ -13,9 +13,9 @@
 __attribute__((visibility("hidden")))
 @interface VKLabelNavJunction : NSObject <VKLabelNavFeature>
 {
-    shared_ptr_702c344d _tile;
+    struct shared_ptr<md::LabelTile> _tile;
     Matrix_8746f91e _tileCoordinate;
-    CDStruct_3b01f0aa *_geoJunction;
+    struct GeoCodecsConnectivityJunction *_geoJunction;
     struct PolylineCoordinate _routeOffset;
     NSMutableArray *_roads;
     VKLabelNavRoad *_incomingRoad;
@@ -29,39 +29,7 @@ __attribute__((visibility("hidden")))
     _Bool _isOverpass;
     _Bool _isRouteOverpass;
     int _largestRoadClass;
-    struct {
-        CDStruct_58d0ca89 _field1;
-        CDStruct_b2fbf00d _field2;
-        float _field3;
-        float _field4;
-        float _field5;
-        CDStruct_b2fbf00d _field6;
-        unsigned long long _field7;
-        unsigned long long _field8;
-        unsigned long long _field9;
-        unsigned long long _field10;
-        short _field11;
-        short _field12;
-        unsigned char _field13;
-        float _field14;
-        float _field15;
-        unsigned int _field16;
-        unsigned int _field17;
-        unsigned int _field18;
-        unsigned int _field19;
-        unsigned char _field20;
-        unsigned char _field21;
-        unsigned char _field22;
-        unsigned char _field23;
-        _Bool _field24;
-        _Bool _field25;
-        _Bool _field26;
-        _Bool _field27;
-        _Bool _field28;
-        _Bool _field29;
-        _Bool _field30;
-        _Bool _field31;
-    } *_labelFeature;
+    void *_labelFeature;
     NSString *_name;
     VKLabelNavRoadLabel *_junctionSign;
     _Bool _areLabelsDisabled;
@@ -72,14 +40,15 @@ __attribute__((visibility("hidden")))
     _Bool _isVisibilityCached[8];
     _Bool _isVisible;
     _Bool _isPicked;
-    Matrix_6e1d3589 _worldCoordinate;
+    Mercator3_d8bb135c _mercatorCoordinate;
     double _sortValue;
     _Bool _isRouteRefineJunction;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) const shared_ptr_702c344d *tile; // @synthesize tile=_tile;
+@property(readonly, nonatomic) const void *tile; // @synthesize tile=_tile;
+@property(readonly, nonatomic) const void *mercatorCoordinate; // @synthesize mercatorCoordinate=_mercatorCoordinate;
 @property(nonatomic) _Bool isPicked; // @synthesize isPicked=_isPicked;
 @property(readonly, nonatomic) VKLabelNavRoadLabel *junctionSign; // @synthesize junctionSign=_junctionSign;
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
@@ -97,20 +66,20 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) VKLabelNavRoad *outgoingRoad; // @synthesize outgoingRoad=_outgoingRoad;
 @property(nonatomic) struct PolylineCoordinate routeOffset; // @synthesize routeOffset=_routeOffset;
 @property(readonly, nonatomic) Matrix_8746f91e tileCoordinate; // @synthesize tileCoordinate=_tileCoordinate;
-@property(readonly, nonatomic) const CDStruct_3b01f0aa *geoJunction; // @synthesize geoJunction=_geoJunction;
+@property(readonly, nonatomic) const struct GeoCodecsConnectivityJunction *geoJunction; // @synthesize geoJunction=_geoJunction;
 @property(readonly, nonatomic) _Bool isTrafficCameraFeature;
 @property(readonly, nonatomic) _Bool isEtaFeature;
 @property(readonly, nonatomic) _Bool isGuidanceStepStart;
 @property(readonly, nonatomic) NSString *shieldDisplayGroup;
 @property(readonly, nonatomic) _Bool isInGuidance;
 @property(readonly, nonatomic) _Bool isStartOfRoadName;
-- (void)createLabelWithNavContext:(struct NavContext *)arg1 isDrivingSideRight:(_Bool)arg2 artworkCache:(struct VKLabelNavArtworkCache *)arg3;
+- (void)createLabelWithNavContext:(struct NavContext *)arg1 isDrivingSideRight:(_Bool)arg2 artworkCache:(void *)arg3;
 - (void)prepareStyleVarsWithContext:(struct NavContext *)arg1;
 @property(readonly, nonatomic) _Bool isVisible; // @synthesize isVisible=_isVisible;
 - (void)layoutWithNavContext:(struct NavContext *)arg1;
 - (void)_updateWithNavContext:(struct NavContext *)arg1;
 - (void)_updateWithNavContext:(struct NavContext *)arg1 threshold:(double)arg2;
-- (Matrix_6e1d3589)_anchorCoordinateForSignOrientation:(unsigned char)arg1;
+- (Mercator3_d8bb135c)_anchorCoordinateForSignOrientation:(unsigned char)arg1;
 - (unsigned char)_signOrientationWithDrivingSide:(_Bool)arg1;
 @property(readonly, nonatomic) double worldUnitsPerMeter; // @synthesize worldUnitsPerMeter=_worldUnitsPerMeter;
 @property(readonly, nonatomic) int requiredLabelPlacement;
@@ -133,8 +102,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)matchesLocationForJunction:(id)arg1;
 - (id)description;
 - (void)dealloc;
-- (id)initWithRoadEdge:(const CDStruct_91f75a7f *)arg1 atA:(_Bool)arg2 routeOffset:(struct PolylineCoordinate)arg3 tile:(const shared_ptr_702c344d *)arg4;
-- (id)initWithGEOJunction:(CDStruct_3b01f0aa *)arg1 routeOffset:(struct PolylineCoordinate)arg2 tile:(const shared_ptr_702c344d *)arg3;
+- (id)initWithRoadEdge:(const struct GeoCodecsRoadEdge *)arg1 atA:(_Bool)arg2 routeOffset:(struct PolylineCoordinate)arg3 tile:(const void *)arg4;
+- (id)initWithGEOJunction:(struct GeoCodecsConnectivityJunction *)arg1 routeOffset:(struct PolylineCoordinate)arg2 tile:(const void *)arg3;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import <iTunesCloud/NSProgressReporting-Protocol.h>
 
-@class ICRequestContext, ICURLResponseHandler, NSData, NSDictionary, NSError, NSMutableArray, NSMutableData, NSMutableDictionary, NSProgress, NSString, NSURL, NSURLRequest, NSURLResponse, NSURLSessionTask, NSURLSessionTaskTransactionMetrics;
+@class AVURLAsset, ICRequestContext, ICURLPerformanceMetrics, ICURLResponseHandler, NSData, NSDictionary, NSError, NSMutableArray, NSMutableData, NSMutableDictionary, NSProgress, NSString, NSURL, NSURLRequest, NSURLResponse, NSURLSessionTask;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface ICURLRequest : NSObject <NSProgressReporting>
@@ -37,26 +37,29 @@
     NSURL *_responseDataURL;
     NSError *_error;
     NSDictionary *_avDownloadOptions;
+    AVURLAsset *_avURLAsset;
     long long _handlingType;
     NSString *_retryReason;
     double _startTime;
     double _lastUpdateTime;
     double _lastProgressUpdateTime;
-    NSURLSessionTaskTransactionMetrics *_transactionMetrics;
+    ICURLPerformanceMetrics *_performanceMetrics;
     CDUnknownBlockType _completionHandler;
 }
 
 + (Class)_responseHandlerClass;
 + (Class)_responseClass;
++ (id)_nameForRequestType:(long long)arg1;
 + (unsigned long long)_defaultMaxRetryCountForReason:(id)arg1;
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
-@property(retain, nonatomic) NSURLSessionTaskTransactionMetrics *transactionMetrics; // @synthesize transactionMetrics=_transactionMetrics;
+@property(retain, nonatomic) ICURLPerformanceMetrics *performanceMetrics; // @synthesize performanceMetrics=_performanceMetrics;
 @property(nonatomic) double lastProgressUpdateTime; // @synthesize lastProgressUpdateTime=_lastProgressUpdateTime;
 @property(nonatomic) double lastUpdateTime; // @synthesize lastUpdateTime=_lastUpdateTime;
 @property(nonatomic) double startTime; // @synthesize startTime=_startTime;
 @property(retain, nonatomic) NSString *retryReason; // @synthesize retryReason=_retryReason;
 @property(nonatomic) long long handlingType; // @synthesize handlingType=_handlingType;
+@property(retain, nonatomic, setter=setAVURLAsset:) AVURLAsset *avURLAsset; // @synthesize avURLAsset=_avURLAsset;
 @property(retain, nonatomic, setter=setAVDownloadOptions:) NSDictionary *avDownloadOptions; // @synthesize avDownloadOptions=_avDownloadOptions;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
 @property(retain, nonatomic) NSURL *responseDataURL; // @synthesize responseDataURL=_responseDataURL;

@@ -6,12 +6,12 @@
 
 #import <HealthUI/HKTableViewController.h>
 
-#import <HealthRecordsUI/HKHealthRecordsStoreAccountStateChangeListener-Protocol.h>
+#import <HealthRecordsUI/HKClinicalAccountStoreStateChangeListener-Protocol.h>
 #import <HealthRecordsUI/HKSourceListDataSourceObserver-Protocol.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC15HealthRecordsUI22SettingsViewController : HKTableViewController <HKHealthRecordsStoreAccountStateChangeListener, HKSourceListDataSourceObserver>
+@interface _TtC15HealthRecordsUI22SettingsViewController : HKTableViewController <HKClinicalAccountStoreStateChangeListener, HKSourceListDataSourceObserver>
 {
     MISSING_TYPE *accounts;
     MISSING_TYPE *appSourceModels;
@@ -20,6 +20,7 @@
     MISSING_TYPE *accountLoadingToken;
     MISSING_TYPE *factory;
     MISSING_TYPE *profile;
+    MISSING_TYPE *$__lazy_storage_$_shouldEnableAddAccounts;
     MISSING_TYPE *sourceListDataSource;
 }
 
@@ -27,7 +28,7 @@
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithStyle:(long long)arg1;
 - (id)initWithUsingInsetStyling:(_Bool)arg1;
-- (void)healthRecordsStore:(id)arg1 accountDidChange:(id)arg2 changeType:(long long)arg3;
+- (void)clinicalAccountStore:(id)arg1 accountDidChange:(id)arg2 changeType:(long long)arg3;
 - (void)tapToRadar:(id)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;

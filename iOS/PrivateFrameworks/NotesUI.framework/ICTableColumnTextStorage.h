@@ -30,11 +30,13 @@
 @property(nonatomic) _Bool shouldPreventUndoCommands; // @synthesize shouldPreventUndoCommands=_shouldPreventUndoCommands;
 @property(nonatomic) __weak id <ICTableUndoHelping> undoHelper; // @synthesize undoHelper=_undoHelper;
 @property(readonly) NSUUID *columnID; // @synthesize columnID=_columnID;
+- (_Bool)wantsTimestampUpdates;
 - (void)tableCellWasEditedAtColumnID:(id)arg1 rowID:(id)arg2 edited:(unsigned long long)arg3 range:(struct _NSRange)arg4 changeInLength:(long long)arg5;
 - (void)restoreSelection:(id)arg1;
 - (id)savedSelectionWithSelectionAffinity:(unsigned long long)arg1;
 - (_Bool)wantsUndoCommands;
-- (id)mergeableStringReplicaUUIDAtIndex:(unsigned long long)arg1;
+- (void)enumerateEditsInRange:(struct _NSRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (id)editAtIndex:(unsigned long long)arg1;
 - (void)resetUndoManager;
 - (void)breakUndoCoalescing;
 - (void)closeUndoGroups;
@@ -57,7 +59,7 @@
 - (unsigned long long)indexOfRow:(id)arg1;
 - (struct _NSRange)characterRangeForRowID:(id)arg1;
 @property(readonly, nonatomic) NSArray *populatedRows;
-- (id)initWithTable:(id)arg1 columnID:(id)arg2;
+- (id)initWithTable:(id)arg1 columnID:(id)arg2 replicaID:(id)arg3;
 - (id)init;
 
 // Remaining properties

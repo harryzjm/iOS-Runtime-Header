@@ -17,18 +17,25 @@
     int _intValue;
     NSString *_jsonMeta;
     int _mode;
+    int _origin;
+    NSString *_originBundleId;
     NSString *_strValue;
     int _type;
     NSString *_uuid;
+    _Bool _isStart;
     struct {
         unsigned int endDate:1;
         unsigned int startDate:1;
         unsigned int intValue:1;
         unsigned int mode:1;
+        unsigned int origin:1;
+        unsigned int isStart:1;
     } _has;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isStart; // @synthesize isStart=_isStart;
+@property(retain, nonatomic) NSString *originBundleId; // @synthesize originBundleId=_originBundleId;
 @property(retain, nonatomic) NSString *jsonMeta; // @synthesize jsonMeta=_jsonMeta;
 @property(nonatomic) double endDate; // @synthesize endDate=_endDate;
 @property(nonatomic) double startDate; // @synthesize startDate=_startDate;
@@ -45,6 +52,12 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasIsStart;
+@property(readonly, nonatomic) _Bool hasOriginBundleId;
+- (int)StringAsOrigin:(id)arg1;
+- (id)originAsString:(int)arg1;
+@property(nonatomic) _Bool hasOrigin;
+@property(nonatomic) int origin; // @synthesize origin=_origin;
 @property(readonly, nonatomic) _Bool hasJsonMeta;
 @property(nonatomic) _Bool hasEndDate;
 @property(nonatomic) _Bool hasStartDate;

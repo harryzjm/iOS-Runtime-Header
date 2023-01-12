@@ -18,6 +18,7 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *syncQueue; // @synthesize syncQueue=_syncQueue;
 @property(copy, nonatomic) NSArray *cachedDevices; // @synthesize cachedDevices=_cachedDevices;
 @property(copy, nonatomic) NSArray *cachedPeers; // @synthesize cachedPeers=_cachedPeers;
+- (id)_bluetoothValidationForProductID:(unsigned int)arg1 deviceType:(long long)arg2;
 - (id)_validationForDeviceNumber:(long long)arg1;
 - (id)_validationsForDevices:(id)arg1;
 - (void)validateWithCompletion:(CDUnknownBlockType)arg1;

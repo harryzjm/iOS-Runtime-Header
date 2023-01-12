@@ -7,6 +7,7 @@
 @class CKShare, CKShareMetadata, NSArray, NSData, NSDictionary, NSString, REMDistributedEvaluationCollectionOptions, REMFetchRequest, REMObjectID, REMStoreInvocation, REMStoreSwiftInvocation;
 
 @protocol REMXPCStorePerformer
+- (void)requestToUpdateClientConnectionsWithShouldKeepAlive:(_Bool)arg1;
 - (void)MCIsManagedAccountWithObjectID:(REMObjectID *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
 - (void)uncachedSuggestedAttributesPerformerWithReason:(NSString *)arg1 completion:(void (^)(id <REMXPCSuggestedAttributesPerformer>, NSError *))arg2;
 - (void)requestToDeleteLocalDataWithCompletion:(void (^)(NSError *))arg1;
@@ -21,7 +22,7 @@
 - (void)acceptShareWithMetadata:(CKShareMetadata *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)stopShare:(CKShare *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)updateShare:(CKShare *)arg1 completion:(void (^)(NSError *))arg2;
-- (void)createShareForObjectWithID:(REMObjectID *)arg1 completion:(void (^)(CKShare *, NSError *))arg2;
+- (void)createShareForObjectWithID:(REMObjectID *)arg1 appIconData:(NSData *)arg2 completion:(void (^)(CKShare *, NSError *))arg3;
 - (void)fetchShareForObjectWithID:(REMObjectID *)arg1 completion:(void (^)(CKShare *, NSError *))arg2;
 - (void)saveAccountStorages:(NSArray *)arg1 listStorages:(NSArray *)arg2 smartListStorages:(NSArray *)arg3 reminderStorages:(NSArray *)arg4 changedKeys:(NSDictionary *)arg5 replicaManagers:(NSDictionary *)arg6 author:(NSString *)arg7 mode:(unsigned long long)arg8 synchronously:(_Bool)arg9 syncToCloudKit:(_Bool)arg10 completion:(void (^)(NSError *))arg11;
 - (void)compressedDistributedEvaluationDataWithOptions:(REMDistributedEvaluationCollectionOptions *)arg1 completion:(void (^)(NSData *, NSError *))arg2;

@@ -47,7 +47,6 @@
 @property(nonatomic) __weak HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 @property unsigned long long broadcastRate; // @synthesize broadcastRate=_broadcastRate;
 @property(retain, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
-- (id)logIdentifier;
 - (void)dumpDebug;
 - (void)_dumpDebug;
 - (id)dumpState;
@@ -58,7 +57,7 @@
 - (id)deviceForAccessory:(id)arg1 residentOrder:(unsigned long long)arg2 reachableResidents:(unsigned long long *)arg3;
 - (id)_residentMapForAccessories:(id)arg1;
 - (id)balancedResidentMapForAccessories:(id)arg1;
-- (id)residentsForCameraAccessory:(id)arg1 excludeResident:(CDUnknownBlockType)arg2 sortedBy:(CDUnknownBlockType)arg3;
+- (id)cameraRecordingAnalysisNodesForCameraAccessory:(id)arg1;
 - (id)bestResidentForAccessory:(id)arg1;
 - (void)_handleMeshUpdateMessage:(id)arg1;
 - (void)_handleMeshUpdateRequestMessage:(id)arg1;
@@ -74,13 +73,16 @@
 - (void)_buildResidentsWithElection:(id)arg1 device:(id)arg2;
 - (void)_deviceIsNotReachable:(id)arg1;
 - (void)_deviceIsReachable:(id)arg1;
+- (void)_handleResidentDeviceManagerAddOrUpdateNotification;
 - (void)_updateAccessoryLinkQuality;
 - (void)timerDidFire:(id)arg1;
 - (void)__deviceResidentChanged:(id)arg1;
 - (void)__rebuildResidents:(id)arg1;
-- (void)__rebuildResidentsViaElection:(id)arg1;
+- (void)__residentDeviceAddedOrUpdatedNotification:(id)arg1;
+- (void)__residentDeviceRemovedNotification:(id)arg1;
 - (void)__deviceIsNotReachable:(id)arg1;
 - (void)__deviceIsReachable:(id)arg1;
+- (void)__accessoryDidUpdateSuspendedState:(id)arg1;
 - (void)__accessoryIsNotReachable:(id)arg1;
 - (void)__accessoryIsReachable:(id)arg1;
 - (void)dealloc;

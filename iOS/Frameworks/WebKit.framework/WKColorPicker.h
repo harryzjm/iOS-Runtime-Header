@@ -6,38 +6,38 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/WKColorMatrixViewDelegate-Protocol.h>
+#import <WebKit/UIColorPickerViewControllerDelegate-Protocol.h>
+#import <WebKit/UIPopoverPresentationControllerDelegate-Protocol.h>
 #import <WebKit/WKFormControl-Protocol.h>
 
-@class WKColorPopover, WKContentView;
+@class NSString, WKContentView;
 
 __attribute__((visibility("hidden")))
-@interface WKColorPicker : NSObject <WKFormControl, WKColorMatrixViewDelegate>
+@interface WKColorPicker : NSObject <WKFormControl, UIColorPickerViewControllerDelegate, UIPopoverPresentationControllerDelegate>
 {
     WKContentView *_view;
-    WKColorPopover *_popover;
-    RetainPtr_1ac284e4 _colorPicker;
-    RetainPtr_1ac284e4 _colorSelectionIndicator;
-    struct RetainPtr<CAShapeLayer> _colorSelectionIndicatorBorder;
-    struct RetainPtr<WKColorMatrixView> _topColorMatrix;
-    struct RetainPtr<WKColorMatrixView> _mainColorMatrix;
-    struct WeakObjCPtr<WKColorButton> _selectedColorButton;
-    struct RetainPtr<UIPanGestureRecognizer> _colorPanGR;
+    struct RetainPtr<UIColorPickerViewController> _colorPickerViewController;
 }
 
-+ (id)defaultTopColorMatrix;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)didPanColors:(id)arg1;
-- (void)colorMatrixView:(id)arg1 didTapColorButton:(id)arg2;
-- (void)colorMatrixViewDidLayoutSubviews:(id)arg1;
+- (void)colorPickerViewControllerDidFinish:(id)arg1;
+- (void)colorPickerViewControllerDidSelectColor:(id)arg1;
+- (void)presentationControllerDidDismiss:(id)arg1;
 - (void)controlEndEditing;
 - (void)controlBeginEditing;
 - (id)controlView;
-- (void)setControlValueFromUIColor:(id)arg1;
-- (void)drawSelectionIndicatorForColorButton:(id)arg1;
-- (id)initWithView:(id)arg1 inPopover:(id)arg2;
+- (void)configurePresentation;
+- (void)updateColorPickerState;
+- (id)focusedElementSuggestedColors;
+- (void)selectColor:(id)arg1;
 - (id)initWithView:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

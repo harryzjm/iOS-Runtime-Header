@@ -4,9 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PassKit/PKPassFrontFaceImageSet.h>
+#import <PassKitCore/PKPassFrontFaceImageSet.h>
 
 @interface PKPassFrontFaceImageSet (NanoPassKit)
++ (id)_assetNamesForAssetOption:(unsigned long long)arg1;
++ (_Bool)_containsAssetForImageName:(id)arg1 fromBundle:(id)arg2;
++ (id)_bundleForPass:(id)arg1;
++ (_Bool)isDrawnUsingAssetOptions:(unsigned long long)arg1 fromBundle:(id)arg2;
++ (_Bool)isDrawnUsingAssetOptions:(unsigned long long)arg1 forPass:(id)arg2;
 - (void)memoryMapImageData;
 @end
 

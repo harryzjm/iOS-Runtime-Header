@@ -8,9 +8,10 @@
 {
 }
 
+- (void)p_addZeroToSinglePointWithState:(CDStruct_1cb6887c *)arg1 toPath:(struct CGPath *)arg2 withPointsArray:(CDStruct_460b8ffe *)arg3 withCount:(unsigned long long)arg4 lineType:(int)arg5;
 - (unsigned long long)countOfHitCheckRegionsInSeries:(id)arg1 forGroups:(id)arg2 forBodyLayout:(id)arg3 outNewElementPaths:(const struct CGPath ***)arg4 outSelectionKnobLocations:(id *)arg5;
 - (void)p_addKnobsForPoint:(struct CGPoint)arg1 strokedUnitSymbolRect:(struct CGRect)arg2 toKnobSet:(id)arg3 symbolsShowing:(_Bool)arg4 includePoint:(_Bool)arg5;
-- (void)p_addTopStroke:(CDStruct_e0d92598 *)arg1 toPath:(struct CGPath *)arg2 withPointsArray:(CDStruct_460b8ffe *)arg3 withCount:(unsigned long long)arg4 lineType:(int)arg5;
+- (void)p_addTopStroke:(CDStruct_1cb6887c *)arg1 toPath:(struct CGPath *)arg2 withPointsArray:(CDStruct_460b8ffe *)arg3 withCount:(unsigned long long)arg4 lineType:(int)arg5;
 - (_Bool)needsSeparateHitTestingPaths;
 
 @end

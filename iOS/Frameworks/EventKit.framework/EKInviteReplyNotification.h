@@ -23,6 +23,8 @@
 @property(copy, nonatomic) NSDate *creationDate;
 @property(nonatomic) unsigned long long shareeStatus;
 @property(copy, nonatomic) NSURL *shareeURL;
+- (void)setShareeURLString:(id)arg1;
+- (id)shareeURLString;
 @property(copy, nonatomic) NSString *shareeLastName;
 @property(copy, nonatomic) NSString *shareeFirstName;
 @property(copy, nonatomic) NSString *shareeDisplayName;

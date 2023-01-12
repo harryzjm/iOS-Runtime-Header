@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSSet;
+@class NSArray, NSDictionary, NSSet;
 
 @interface VSAppChannelsFilter : NSObject
 {
@@ -14,13 +14,16 @@
     NSArray *_allChannelMappings;
     NSSet *_personalAppAdamIDs;
     NSSet *_genericAppAdamIDs;
+    NSDictionary *_appsByChannelID;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSDictionary *appsByChannelID; // @synthesize appsByChannelID=_appsByChannelID;
 @property(copy, nonatomic) NSSet *genericAppAdamIDs; // @synthesize genericAppAdamIDs=_genericAppAdamIDs;
 @property(copy, nonatomic) NSSet *personalAppAdamIDs; // @synthesize personalAppAdamIDs=_personalAppAdamIDs;
 @property(copy, nonatomic) NSArray *allChannelMappings; // @synthesize allChannelMappings=_allChannelMappings;
 @property(copy, nonatomic) NSSet *personalChannelIDs; // @synthesize personalChannelIDs=_personalChannelIDs;
+@property(readonly, copy, nonatomic) NSArray *personalAppDescriptions;
 - (void)_updateAdamIDs;
 - (id)init;
 

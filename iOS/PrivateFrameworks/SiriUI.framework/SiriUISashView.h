@@ -24,9 +24,10 @@
 + (CDStruct_c3b3c0f9)_textContainerStyleForSashItem:(id)arg1;
 + (id)_font;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) UIButton *backNavigationButton; // @synthesize backNavigationButton=_backNavigationButton;
 @property(nonatomic, getter=isNavigating) _Bool navigating; // @synthesize navigating=_navigating;
 @property(readonly, nonatomic) SiriUISashItem *sashItem; // @synthesize sashItem=_sashItem;
+- (void)_setupBackNavigationButton;
+@property(readonly, nonatomic) UIButton *backNavigationButton; // @synthesize backNavigationButton=_backNavigationButton;
 - (void)setSashItem:(id)arg1 locale:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;

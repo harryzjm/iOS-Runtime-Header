@@ -32,6 +32,7 @@
     double _minimalUITopOffset;
     id <SFBrowserViewDelegate> _delegate;
     double _unscaledWebViewWidth;
+    UIView *_appInfoOverlay;
     SFNanoDomainContainerView *_nanoDomainContainerView;
     struct CGPoint _pinnableBannerOffset;
     struct UIEdgeInsets _obscuredInsets;
@@ -39,6 +40,7 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) SFNanoDomainContainerView *nanoDomainContainerView; // @synthesize nanoDomainContainerView=_nanoDomainContainerView;
+@property(retain, nonatomic) UIView *appInfoOverlay; // @synthesize appInfoOverlay=_appInfoOverlay;
 @property(nonatomic) struct UIEdgeInsets obscuredInsets; // @synthesize obscuredInsets=_obscuredInsets;
 @property(nonatomic) double unscaledWebViewWidth; // @synthesize unscaledWebViewWidth=_unscaledWebViewWidth;
 @property(nonatomic) __weak id <SFBrowserViewDelegate> delegate; // @synthesize delegate=_delegate;

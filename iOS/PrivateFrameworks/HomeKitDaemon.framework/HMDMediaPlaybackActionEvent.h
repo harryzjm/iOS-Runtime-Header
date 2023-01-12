@@ -4,36 +4,48 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeKitDaemon/HMDCoreAnalyticsLogging-Protocol.h>
+#import <HomeKitMetrics/HMMLogEvent.h>
+
+#import <HomeKitDaemon/HMDBiomeLogEvent-Protocol.h>
 #import <HomeKitDaemon/HMDCoreDuetLogEvent-Protocol.h>
+#import <HomeKitDaemon/HMDMicroLocationLogEvent-Protocol.h>
+#import <HomeKitDaemon/HMMCoreAnalyticsLogging-Protocol.h>
 
-@class NSArray, NSNumber, NSString;
+@class NSArray, NSDate, NSNumber, NSString;
 
-@interface HMDMediaPlaybackActionEvent <HMDCoreAnalyticsLogging, HMDCoreDuetLogEvent>
+@interface HMDMediaPlaybackActionEvent : HMMLogEvent <HMDBiomeLogEvent, HMDMicroLocationLogEvent, HMMCoreAnalyticsLogging, HMDCoreDuetLogEvent>
 {
     _Bool _isPlaybackArchivePresent;
     NSNumber *_playbackStateNumber;
     NSNumber *_volumeNumber;
     NSNumber *_sourceNumber;
+    NSString *_sourceClientName;
+    NSString *_clientMetricIdentifier;
     unsigned long long _numberOfMediaProfiles;
     NSArray *_accessories;
     unsigned long long _numAccessoriesInHome;
     unsigned long long _numNonEmptyScenesInHome;
 }
 
-+ (id)identifier;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long numNonEmptyScenesInHome; // @synthesize numNonEmptyScenesInHome=_numNonEmptyScenesInHome;
 @property(readonly, nonatomic) unsigned long long numAccessoriesInHome; // @synthesize numAccessoriesInHome=_numAccessoriesInHome;
 @property(readonly, copy) NSArray *accessories; // @synthesize accessories=_accessories;
 @property(readonly) unsigned long long numberOfMediaProfiles; // @synthesize numberOfMediaProfiles=_numberOfMediaProfiles;
+@property(readonly, copy) NSString *clientMetricIdentifier; // @synthesize clientMetricIdentifier=_clientMetricIdentifier;
+@property(readonly, copy) NSString *sourceClientName; // @synthesize sourceClientName=_sourceClientName;
 @property(readonly, copy) NSNumber *sourceNumber; // @synthesize sourceNumber=_sourceNumber;
 @property(readonly, copy) NSNumber *volumeNumber; // @synthesize volumeNumber=_volumeNumber;
 @property(readonly, copy) NSNumber *playbackStateNumber; // @synthesize playbackStateNumber=_playbackStateNumber;
 @property(readonly) _Bool isPlaybackArchivePresent; // @synthesize isPlaybackArchivePresent=_isPlaybackArchivePresent;
 @property(readonly, copy) NSString *sourceString;
 @property(readonly, copy) NSString *playbackStateString;
-- (id)initWithIsPlaybackArchivePresent:(_Bool)arg1 playbackStateNumber:(id)arg2 volumeNumber:(id)arg3 sourceNumber:(id)arg4 accessories:(id)arg5;
+- (id)initWithIsPlaybackArchivePresent:(_Bool)arg1 playbackStateNumber:(id)arg2 volumeNumber:(id)arg3 sourceNumber:(id)arg4 sourceClientName:(id)arg5 accessories:(id)arg6;
+- (id)biomeEventsRepresentationForLogObserver:(id)arg1;
+- (unsigned long long)microLocationScanTriggerTypeForLogEventObserver:(id)arg1;
+- (_Bool)shouldTriggerMicroLocationRecordingScanForLogEventObserver:(id)arg1;
+- (_Bool)shouldTriggerMicroLocationLocalizationScanForLogEventObserver:(id)arg1;
+- (id)microLocationMetadataForLogEventObserver:(id)arg1;
 - (id)serializedEvent;
 - (id)eventName;
 @property(readonly, copy) NSArray *eventDataToLog;
@@ -42,9 +54,12 @@
 @property(readonly) unsigned long long duetEventType;
 
 // Remaining properties
+@property(readonly, nonatomic) NSString *accessoryIdentifier;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, copy) NSDate *endDate;
 @property(readonly) unsigned long long hash;
+@property(readonly, copy) NSDate *startDate;
 @property(readonly) Class superclass;
 
 @end

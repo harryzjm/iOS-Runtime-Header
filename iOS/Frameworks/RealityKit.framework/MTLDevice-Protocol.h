@@ -6,10 +6,13 @@
 
 #import <RealityKit/NSObject-Protocol.h>
 
-@class MTLAccelerationStructureDescriptor, MTLBinaryArchiveDescriptor, MTLCompileOptions, MTLComputePipelineDescriptor, MTLCounterSampleBufferDescriptor, MTLDepthStencilDescriptor, MTLHeapDescriptor, MTLIndirectCommandBufferDescriptor, MTLRasterizationRateMapDescriptor, MTLRenderPipelineDescriptor, MTLSamplerDescriptor, MTLSharedEventHandle, MTLTextureDescriptor, MTLTileRenderPipelineDescriptor, NSArray, NSBundle, NSString, NSURL, OS_dispatch_data;
+@class MTLAccelerationStructureDescriptor, MTLBinaryArchiveDescriptor, MTLCompileOptions, MTLComputePipelineDescriptor, MTLCounterSampleBufferDescriptor, MTLDepthStencilDescriptor, MTLHeapDescriptor, MTLIndirectCommandBufferDescriptor, MTLRasterizationRateMapDescriptor, MTLRenderPipelineDescriptor, MTLSamplerDescriptor, MTLSharedEventHandle, MTLStitchedLibraryDescriptor, MTLTextureDescriptor, MTLTileRenderPipelineDescriptor, NSArray, NSBundle, NSString, NSURL, OS_dispatch_data;
 @protocol MTLAccelerationStructure, MTLArgumentEncoder, MTLBinaryArchive, MTLBuffer, MTLCommandQueue, MTLComputePipelineState, MTLCounterSampleBuffer, MTLDepthStencilState, MTLDynamicLibrary, MTLEvent, MTLFence, MTLFunction, MTLHeap, MTLIndirectCommandBuffer, MTLLibrary, MTLRasterizationRateMap, MTLRenderPipelineState, MTLSamplerState, MTLSharedEvent, MTLTexture;
 
 @protocol MTLDevice <NSObject>
+@property(nonatomic, readonly) _Bool supportsPrimitiveMotionBlur;
+@property(nonatomic, readonly) _Bool supportsRaytracingFromRender;
+@property(nonatomic, readonly) _Bool supportsFunctionPointersFromRender;
 @property(nonatomic, readonly) _Bool supportsFunctionPointers;
 - (id <MTLAccelerationStructure>)newAccelerationStructureWithDescriptor:(MTLAccelerationStructureDescriptor *)arg1;
 - (id <MTLAccelerationStructure>)newAccelerationStructureWithSize:(unsigned long long)arg1;
@@ -18,6 +21,7 @@
 - (id <MTLBinaryArchive>)newBinaryArchiveWithDescriptor:(MTLBinaryArchiveDescriptor *)arg1 error:(id *)arg2;
 - (id <MTLDynamicLibrary>)newDynamicLibraryWithURL:(NSURL *)arg1 error:(id *)arg2;
 - (id <MTLDynamicLibrary>)newDynamicLibrary:(id <MTLLibrary>)arg1 error:(id *)arg2;
+@property(nonatomic, readonly) _Bool supportsRenderDynamicLibraries;
 @property(nonatomic, readonly) _Bool supportsDynamicLibraries;
 - (_Bool)supportsVertexAmplificationCount:(unsigned long long)arg1;
 - (_Bool)supportsCounterSampling:(unsigned long long)arg1;
@@ -56,6 +60,8 @@
 - (void)newRenderPipelineStateWithDescriptor:(MTLRenderPipelineDescriptor *)arg1 completionHandler:(void (^)(id <MTLRenderPipelineState>, NSError *))arg2;
 - (id <MTLRenderPipelineState>)newRenderPipelineStateWithDescriptor:(MTLRenderPipelineDescriptor *)arg1 options:(unsigned long long)arg2 reflection:(id *)arg3 error:(id *)arg4;
 - (id <MTLRenderPipelineState>)newRenderPipelineStateWithDescriptor:(MTLRenderPipelineDescriptor *)arg1 error:(id *)arg2;
+- (void)newLibraryWithStitchedDescriptor:(MTLStitchedLibraryDescriptor *)arg1 completionHandler:(void (^)(id <MTLLibrary>, NSError *))arg2;
+- (id <MTLLibrary>)newLibraryWithStitchedDescriptor:(MTLStitchedLibraryDescriptor *)arg1 error:(id *)arg2;
 - (void)newLibraryWithSource:(NSString *)arg1 options:(MTLCompileOptions *)arg2 completionHandler:(void (^)(id <MTLLibrary>, NSError *))arg3;
 - (id <MTLLibrary>)newLibraryWithSource:(NSString *)arg1 options:(MTLCompileOptions *)arg2 error:(id *)arg3;
 - (id <MTLLibrary>)newLibraryWithData:(OS_dispatch_data *)arg1 error:(id *)arg2;
@@ -80,6 +86,7 @@
 - (_Bool)areBarycentricCoordsSupported;
 @property(nonatomic, readonly) _Bool supportsPullModelInterpolation;
 @property(nonatomic, readonly) _Bool supportsBCTextureCompression;
+@property(nonatomic, readonly) _Bool supportsQueryTextureLOD;
 @property(nonatomic, readonly) _Bool supports32BitMSAA;
 @property(nonatomic, readonly) _Bool supports32BitFloatFiltering;
 - (_Bool)areRasterOrderGroupsSupported;

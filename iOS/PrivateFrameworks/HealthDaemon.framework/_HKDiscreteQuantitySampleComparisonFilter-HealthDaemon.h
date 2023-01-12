@@ -7,7 +7,6 @@
 #import <HealthKit/_HKDiscreteQuantitySampleComparisonFilter.h>
 
 @interface _HKDiscreteQuantitySampleComparisonFilter (HealthDaemon)
-- (id)_comparisonQuantityAsNumber;
 - (id)predicateWithProfile:(id)arg1;
 @end
 

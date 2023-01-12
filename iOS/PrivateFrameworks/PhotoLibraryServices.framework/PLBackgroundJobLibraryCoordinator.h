@@ -8,11 +8,12 @@
 
 #import <PhotoLibraryServices/PLBackgroundJobWorkerCoordinatorDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, PLBackgroundJobWorkerCoordinator, PLPhotoLibraryBundlePriorityTuple;
+@class NSMutableArray, NSString, PLBackgroundJobStatusCenter, PLBackgroundJobWorkerCoordinator, PLPhotoLibraryBundlePriorityTuple;
 @protocol PLBackgroundJobLibraryCoordinatorDelegate;
 
 @interface PLBackgroundJobLibraryCoordinator : NSObject <PLBackgroundJobWorkerCoordinatorDelegate>
 {
+    PLBackgroundJobStatusCenter *_statusCenter;
     NSMutableArray *_pendingPhotoLibraryBundles;
     PLPhotoLibraryBundlePriorityTuple *_currentPhotoLibraryBundle;
     PLBackgroundJobWorkerCoordinator *_workerCoordinator;
@@ -27,10 +28,11 @@
 - (void)_handleAllBundlesCompleted;
 - (void)_handleBundleComplete:(id)arg1;
 - (void)_submitNextQueuedBundle;
-- (void)startBackgroundJobsOnBundles:(id)arg1 priority:(unsigned long long)arg2;
-- (_Bool)hasPendingJobsOnBundles:(id)arg1 priority:(unsigned long long)arg2;
+- (void)startBackgroundJobsOnBundles:(id)arg1 priority:(long long)arg2;
+- (_Bool)hasPendingJobsOnBundles:(id)arg1 priority:(long long)arg2;
+- (id)initWithWorkerCoordinator:(id)arg1 statusCenter:(id)arg2;
 - (id)initWithWorkerCoordinator:(id)arg1;
-- (id)init;
+- (id)initWithStatusCenter:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

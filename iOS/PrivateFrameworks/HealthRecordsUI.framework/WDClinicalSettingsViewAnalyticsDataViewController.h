@@ -6,16 +6,18 @@
 
 #import <UIKit/UITableViewController.h>
 
-@class HKHealthRecordsStore, NSArray;
+@class HKHealthRecordsStore, NSArray, _UIContentUnavailableView;
 
 __attribute__((visibility("hidden")))
 @interface WDClinicalSettingsViewAnalyticsDataViewController : UITableViewController
 {
     HKHealthRecordsStore *_healthRecordsStore;
     NSArray *_filePaths;
+    _UIContentUnavailableView *_noDataView;
 }
 
 - (void).cxx_destruct;
+@property(retain) _UIContentUnavailableView *noDataView; // @synthesize noDataView=_noDataView;
 @property(retain) NSArray *filePaths; // @synthesize filePaths=_filePaths;
 @property(retain, nonatomic) HKHealthRecordsStore *healthRecordsStore; // @synthesize healthRecordsStore=_healthRecordsStore;
 - (id)description;

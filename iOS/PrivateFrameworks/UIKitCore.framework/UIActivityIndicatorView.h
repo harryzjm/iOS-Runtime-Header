@@ -10,6 +10,7 @@
 
 @interface UIActivityIndicatorView <NSCoding>
 {
+    _Bool _wasAnimatingWhenAnimationsRemoved;
     _Bool _animating;
     _Bool _hidesWhenStopped;
     _Bool _restartAnimationOnNextLayout;
@@ -18,6 +19,7 @@
     _Bool _spinning;
     long long _activityIndicatorViewStyle;
     double _duration;
+    double _customWidth;
     UIColor *_color;
     UIImageView *_animatingImageView;
     _UIActivityIndicatorMessageLabel *_messageLabel;
@@ -56,6 +58,7 @@
 @property(readonly, nonatomic, getter=_messageLabel) _UIActivityIndicatorMessageLabel *messageLabel; // @synthesize messageLabel=_messageLabel;
 @property(readonly, nonatomic, getter=_animatingImageView) UIImageView *animatingImageView; // @synthesize animatingImageView=_animatingImageView;
 @property(nonatomic) _Bool hidesWhenStopped; // @synthesize hidesWhenStopped=_hidesWhenStopped;
+@property(nonatomic, setter=_setCustomWidth:) double _customWidth; // @synthesize _customWidth;
 @property(nonatomic) double animationDuration; // @synthesize animationDuration=_duration;
 - (void)stopAnimation;
 - (void)startAnimation;
@@ -96,10 +99,13 @@
 - (double)_spokeWidthForGearWidth:(double)arg1;
 - (void)tintColorDidChange;
 @property(retain, nonatomic) UIColor *color; // @synthesize color=_color;
+- (double)_effectiveCustomWidth;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (void)_applicationWillEnterForeground:(id)arg1;
 - (void)_applicationDidEnterBackground:(id)arg1;
 - (void)_removeAllAnimations:(_Bool)arg1;
+- (void)_restoreRemovedAnimationsIncludingSubviews;
+- (_Bool)_wantsAnimationRestoration;
 - (void)setHighlighted:(_Bool)arg1;
 - (_Bool)isHighlighted;
 - (void)stopAnimating;
@@ -111,6 +117,7 @@
 - (void)_updateMessageForStyle:(long long)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
+- (struct CGSize)_defaultSizeConsultingCustomWidthIfApplicable;
 - (_Bool)_contentHuggingDefault_isUsuallyFixedHeight;
 - (_Bool)_contentHuggingDefault_isUsuallyFixedWidth;
 - (void)encodeWithCoder:(id)arg1;

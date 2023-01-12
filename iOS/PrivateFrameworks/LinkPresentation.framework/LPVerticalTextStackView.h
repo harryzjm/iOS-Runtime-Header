@@ -19,12 +19,13 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (struct CGSize)_layoutTextStackForSize:(struct CGSize)arg1 applyingLayout:(_Bool)arg2;
+- (long long)computedNumberOfLines;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutComponentView;
 - (void)addArrangedSubview:(id)arg1;
 - (void)setContentInset:(struct UIEdgeInsets)arg1;
-- (id)initWithStyle:(id)arg1;
-- (id)init;
+- (id)initWithHost:(id)arg1 style:(id)arg2;
+- (id)initWithHost:(id)arg1;
 
 @end
 

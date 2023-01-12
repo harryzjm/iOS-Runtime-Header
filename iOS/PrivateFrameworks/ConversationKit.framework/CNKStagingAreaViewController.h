@@ -20,10 +20,10 @@
     MISSING_TYPE *constraintController;
     MISSING_TYPE *controlsDragController;
     MISSING_TYPE *effectsEnabled;
-    MISSING_TYPE *avcEffects;
     MISSING_TYPE *effectsCaptureInfo;
     MISSING_TYPE *effectsViewController;
     MISSING_TYPE *effectsBrowserViewController;
+    MISSING_TYPE *effectsControlsViewController;
     MISSING_TYPE *effectsLayoutController;
     MISSING_TYPE *conversationController;
     MISSING_TYPE *videoDeviceController;
@@ -43,7 +43,9 @@
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)hideEffectsBrowser;
 - (void)didTapSwapLocalParticipantCamera;
+- (void)toggleCinematicFraming;
 - (void)toggleVideoMute;
+- (void)muteVideo;
 - (void)didTapLeaveButton;
 - (void)didTapJoinButton;
 - (_Bool)_canShowWhileLocked;

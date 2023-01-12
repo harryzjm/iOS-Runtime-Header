@@ -17,7 +17,7 @@
     CLLocation *_location;
     NSArray *_peopleNames;
     NSArray *_existingMemories;
-    NSArray *_blacklistedMemories;
+    NSArray *_blockedMemories;
     NSDictionary *_extraParameters;
     PHPhotoLibrary *_photoLibrary;
 }
@@ -25,7 +25,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property(retain, nonatomic) NSDictionary *extraParameters; // @synthesize extraParameters=_extraParameters;
-@property(retain, nonatomic) NSArray *blacklistedMemories; // @synthesize blacklistedMemories=_blacklistedMemories;
+@property(retain, nonatomic) NSArray *blockedMemories; // @synthesize blockedMemories=_blockedMemories;
 @property(retain, nonatomic) NSArray *existingMemories; // @synthesize existingMemories=_existingMemories;
 @property(retain, nonatomic) NSArray *peopleNames; // @synthesize peopleNames=_peopleNames;
 @property(retain, nonatomic) CLLocation *location; // @synthesize location=_location;

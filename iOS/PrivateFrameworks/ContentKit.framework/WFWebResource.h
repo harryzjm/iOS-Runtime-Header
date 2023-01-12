@@ -39,6 +39,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithData:(id)arg1 URL:(id)arg2 MIMEType:(id)arg3 textEncodingName:(id)arg4 frameName:(id)arg5;
 - (id)loadInWKWebView:(id)arg1;
+- (id)containedImageFile;
 
 @end
 

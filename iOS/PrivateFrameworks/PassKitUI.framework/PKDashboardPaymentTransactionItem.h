@@ -8,28 +8,32 @@
 
 #import <PassKitUI/PKDashboardItem-Protocol.h>
 
-@class NSString, PKAccount, PKPaymentPass, PKPaymentTransaction, PKTransactionSource;
+@class NSString, PKAccount, PKAccountUserCollection, PKFamilyMemberCollection, PKPaymentPass, PKPaymentTransaction, PKTransactionSource, PKTransactionSourceCollection;
 
 @interface PKDashboardPaymentTransactionItem : NSObject <PKDashboardItem>
 {
     PKPaymentPass *_pass;
     PKPaymentTransaction *_transaction;
     _Bool _isFeaturedTransaction;
-    PKTransactionSource *_transactionSource;
+    PKTransactionSourceCollection *_transactionSourceCollection;
+    PKFamilyMemberCollection *_familyCollection;
     PKTransactionSource *_secondaryTransactionSource;
     PKAccount *_account;
+    PKAccountUserCollection *_accountUserCollection;
 }
 
 + (id)identifier;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool isFeaturedTransaction; // @synthesize isFeaturedTransaction=_isFeaturedTransaction;
+@property(retain, nonatomic) PKAccountUserCollection *accountUserCollection; // @synthesize accountUserCollection=_accountUserCollection;
 @property(retain, nonatomic) PKAccount *account; // @synthesize account=_account;
 @property(retain, nonatomic) PKTransactionSource *secondaryTransactionSource; // @synthesize secondaryTransactionSource=_secondaryTransactionSource;
-@property(readonly, nonatomic) PKTransactionSource *transactionSource; // @synthesize transactionSource=_transactionSource;
+@property(retain, nonatomic) PKFamilyMemberCollection *familyCollection; // @synthesize familyCollection=_familyCollection;
+@property(readonly, nonatomic) PKTransactionSourceCollection *transactionSourceCollection; // @synthesize transactionSourceCollection=_transactionSourceCollection;
 @property(readonly, nonatomic) PKPaymentTransaction *transaction; // @synthesize transaction=_transaction;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)initWithTransactionSource:(id)arg1 transaction:(id)arg2 account:(id)arg3;
+- (id)initWithTransactionSourceCollection:(id)arg1 familyCollection:(id)arg2 transaction:(id)arg3 account:(id)arg4 accountUserCollection:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

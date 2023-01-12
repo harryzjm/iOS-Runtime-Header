@@ -4,18 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProtocolBuffer/PBCodable.h>
-
 @class NSData, NSString, SISchemaLocation;
 
-@interface SISchemaDeviceDynamicContext : PBCodable
+@interface SISchemaDeviceDynamicContext
 {
     SISchemaLocation *_location;
     NSString *_countryCode;
     double _timeIntervalSince1970;
-    struct {
-        unsigned int timeIntervalSince1970:1;
-    } _has;
+    CDStruct_d90db296 _has;
     _Bool _hasLocation;
     _Bool _hasCountryCode;
 }

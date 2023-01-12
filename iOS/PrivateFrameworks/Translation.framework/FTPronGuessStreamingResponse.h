@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_47dc73e1)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_47dc73e1)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) FTPronGuessResponse *contentAsFTPronGuessResponse;
 @property(readonly, nonatomic) long long content_type;
 - (id)copyWithZone:(struct _NSZone *)arg1;

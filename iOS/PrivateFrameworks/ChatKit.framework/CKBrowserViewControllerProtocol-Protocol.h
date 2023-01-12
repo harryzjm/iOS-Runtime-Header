@@ -38,6 +38,7 @@
 @property(retain, nonatomic) NSNumber *adamID;
 @property(readonly, nonatomic) _Bool canReplaceDataSource;
 @property(readonly, nonatomic) struct CGRect horizontalSwipeExclusionRect;
+@property(nonatomic) _Bool shouldDisableSnapshotView;
 @property(readonly, nonatomic) UIViewController *remoteViewController;
 @property(nonatomic) long long currentBrowserConsumer;
 @property(readonly, nonatomic) CKBrowserDragManager *browserDragManager;

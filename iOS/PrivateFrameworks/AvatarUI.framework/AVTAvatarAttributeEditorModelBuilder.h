@@ -23,11 +23,18 @@
 + (id)filterPresets:(id)arg1 forRowRepresentingTags:(id)arg2 currentTagSelection:(id)arg3 fixedTags:(id)arg4 availableTags:(id)arg5 sortingOption:(unsigned long long)arg6;
 + (id)framingModeForRow:(id)arg1 selectedPreset:(id)arg2;
 + (unsigned long long)sectionDisplayModeForCoreModelDisplayMode:(unsigned long long)arg1;
-+ (id)sectionForModelRow:(id)arg1 fromModelPresets:(id)arg2 selectedModelPreset:(id)arg3 tagSelection:(id)arg4 fixedTags:(id)arg5 availableTags:(id)arg6 imageProvider:(id)arg7 configuration:(id)arg8 previousSection:(id)arg9 pairedCategory:(long long)arg10;
-+ (id)sectionColorItemsForColors:(id)arg1 selectedPreset:(id)arg2 configuration:(id)arg3 imageProvider:(id)arg4 colorLayerProvider:(id)arg5 colorVariationStore:(id)arg6 pairedCategory:(long long)arg7 editingColors:(id)arg8;
-+ (id)sectionForModelColorsRow:(id)arg1 configuration:(id)arg2 imageProvider:(id)arg3 colorLayerProvider:(id)arg4 colorVariationStore:(id)arg5 pairedCategory:(long long)arg6 destination:(long long)arg7 editingColors:(id)arg8;
++ (id)sectionForModelRow:(id)arg1 fromModelPresets:(id)arg2 selectedModelPreset:(id)arg3 tagSelection:(id)arg4 fixedTags:(id)arg5 availableTags:(id)arg6 category:(long long)arg7 imageProvider:(id)arg8 stickerRenderer:(id)arg9 configuration:(id)arg10 previousSection:(id)arg11 pairedCategory:(long long)arg12;
++ (id)sectionColorItemsForColors:(id)arg1 selectedPreset:(id)arg2 configuration:(id)arg3 modelManager:(id)arg4 additionalUpdateKind:(CDStruct_597dd055)arg5 imageProvider:(id)arg6 colorLayerProvider:(id)arg7 pairedCategory:(long long)arg8 editingColors:(id)arg9;
++ (id)selectedPresetForCoreModelColorsPicker:(id)arg1 isEnabled:(_Bool)arg2 fallbackToColorsPicker:(id)arg3 colorDefaultsProvider:(id)arg4 modelManager:(id)arg5;
++ (id)subtitleFromSubtitles:(id)arg1 forIndex:(long long)arg2 enabledIndex:(long long)arg3;
++ (id)multicolorSectionProviderForCoreMulticolorPicker:(id)arg1 platform:(unsigned long long)arg2 configuration:(id)arg3 imageProvider:(id)arg4 colorLayerProvider:(id)arg5 editingColors:(id)arg6 colorDefaultsProvider:(id)arg7 modelManager:(id)arg8 previousSectionMap:(id)arg9 pairingPickers:(id)arg10;
++ (id)sectionForModelColorsRow:(id)arg1 selectedColorPreset:(id)arg2 configuration:(id)arg3 modelManager:(id)arg4 additionalAvatarUpdateKind:(CDStruct_597dd055)arg5 imageProvider:(id)arg6 colorLayerProvider:(id)arg7 pairedCategory:(long long)arg8 destination:(long long)arg9 editingColors:(id)arg10 displaysTitle:(_Bool)arg11;
++ (id)sectionForModelColorsRow:(id)arg1 configuration:(id)arg2 modelManager:(id)arg3 imageProvider:(id)arg4 colorLayerProvider:(id)arg5 pairedCategory:(long long)arg6 destination:(long long)arg7 editingColors:(id)arg8 displaysTitle:(_Bool)arg9;
 + (id)selectedModelPresetForSelectedPreset:(id)arg1 inPresetsList:(id)arg2;
-+ (id)buildDataSourceCategoriesFromCoreModel:(id)arg1 selectingFromAvatarConfiguration:(id)arg2 imageProvider:(id)arg3 colorLayerProvider:(id)arg4 modelManager:(id)arg5 withSelectedCategory:(id)arg6 atIndex:(unsigned long long)arg7;
++ (id)previewModeForCoreModelGroup:(id)arg1;
++ (id)sectionProvidersForCoreModelCategory:(id)arg1 platform:(unsigned long long)arg2 modelManager:(id)arg3 pairingPickers:(id)arg4 editingColors:(id)arg5 colorDefaultsProvider:(id)arg6 previousSectionMap:(id)arg7 imageProvider:(id)arg8 colorLayerProvider:(id)arg9 stickerRenderer:(id)arg10 configuration:(id)arg11 displayConditionEvaluator:(CDUnknownBlockType)arg12;
++ (id)buildDataSourceCategoriesFromCoreModel:(id)arg1 selectingFromAvatarConfiguration:(id)arg2 imageProvider:(id)arg3 colorLayerProvider:(id)arg4 stickerRenderer:(id)arg5 modelManager:(id)arg6 withSelectedCategory:(id)arg7 atIndex:(unsigned long long)arg8;
++ (unsigned long long)destinationForPresetCategory:(long long)arg1 isPaired:(_Bool)arg2;
 
 @end
 

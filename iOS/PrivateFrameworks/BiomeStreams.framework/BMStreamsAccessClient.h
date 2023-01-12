@@ -6,22 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@class NSXPCListener;
+@class BMStreamsAccessAssertionCache, BMStreamsAccessTracker, NSMutableDictionary, NSXPCListenerEndpoint;
 
 @interface BMStreamsAccessClient : NSObject
 {
-    NSXPCListener *_listener;
-    long long _readExtensionHandle;
-    long long _writeExtensionHandle;
+    NSMutableDictionary *_accessAssertions;
+    BMStreamsAccessAssertionCache *_accessAssertionCache;
+    BMStreamsAccessTracker *_accessTracker;
+    NSXPCListenerEndpoint *_listenerEndpoint;
 }
 
 - (void).cxx_destruct;
-- (_Bool)requestWriteAccessTokenForStream:(long long)arg1;
-- (_Bool)requestReadAccessTokenForStream:(long long)arg1;
-- (_Bool)hasWriteAccessForStream:(long long)arg1;
-- (_Bool)hasReadAccessForStream:(long long)arg1;
-- (_Bool)hasAccessForStream:(long long)arg1 permission:(const char *)arg2;
+- (_Bool)_currentProcessIsSandboxed;
+- (_Bool)_requestAccess:(unsigned long long)arg1 toStreamType:(unsigned long long)arg2 streamIdentifier:(id)arg3;
+- (void)invalidateConnection:(id)arg1;
+- (id)newConnection;
+- (_Bool)requestDSLWriteAccess;
+- (_Bool)requestReadWriteAccessTokenForStreamIdentifier:(id)arg1 streamType:(unsigned long long)arg2;
+- (_Bool)requestReadAccessTokenForStreamIdentifier:(id)arg1 streamType:(unsigned long long)arg2;
 - (void)dealloc;
+- (id)initWithSandboxExtensionCache:(id)arg1 accessTracker:(id)arg2 listenerEndpoint:(id)arg3;
+- (id)init;
 
 @end
 

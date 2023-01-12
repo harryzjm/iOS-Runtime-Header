@@ -11,18 +11,17 @@
 #import <PencilKit/PKPalettePopoverDismissing-Protocol.h>
 #import <PencilKit/PKPalettePopoverPresenting-Protocol.h>
 #import <PencilKit/PKPaletteViewStateSubject-Protocol.h>
-#import <PencilKit/UIPencilInteractionDelegate-Protocol.h>
 
 @class MTMaterialView, NSLayoutConstraint, NSString, PKPaletteContainerView, PKPaletteScaleFactorPolicy, PKPaletteToolPreview, UIViewController;
 @protocol PKPaletteViewDelegate, PKPaletteViewHosting, PKPaletteViewInternalDelegate;
 
-@interface PKPaletteView : UIView <PKPaletteViewStateSubject, PKPaletteHostViewDelegate, UIPencilInteractionDelegate, PKPaletteHostingWindowSceneObserver, PKPalettePopoverPresenting, PKPalettePopoverDismissing>
+@interface PKPaletteView : UIView <PKPaletteViewStateSubject, PKPaletteHostViewDelegate, PKPaletteHostingWindowSceneObserver, PKPalettePopoverPresenting, PKPalettePopoverDismissing>
 {
     _Bool _autoHideEnabled;
     _Bool _shouldStartUpMinimized;
     _Bool _shouldExpandFromCorner;
     _Bool _shouldAdjustShadowRadiusForMinimized;
-    _Bool _shouldPauseBackgroundUpdates;
+    _Bool _ignoresSafeAreaInsetsInCompactSize;
     _Bool _toolPreviewMinimized;
     _Bool _paletteIsCompactSize;
     _Bool _paletteHasLayoutSubviews;
@@ -58,6 +57,7 @@
     unsigned long long _lastPaletteEdgePositionWhileDragging;
     struct UIEdgeInsets _palettePopoverLayoutSceneMargins;
     struct CGRect _adjustedWindowSceneBounds;
+    struct NSDirectionalEdgeInsets _edgeInsetsInCompactSize;
 }
 
 + (id)makeBackgroundView;
@@ -84,8 +84,9 @@
 @property(nonatomic) unsigned long long autoHideCorner; // @synthesize autoHideCorner=_autoHideCorner;
 @property(nonatomic) __weak id <PKPaletteViewInternalDelegate> internalDelegate; // @synthesize internalDelegate=_internalDelegate;
 @property(nonatomic) __weak id <PKPaletteViewHosting> paletteViewHosting; // @synthesize paletteViewHosting=_paletteViewHosting;
-@property(readonly, nonatomic) _Bool shouldPauseBackgroundUpdates; // @synthesize shouldPauseBackgroundUpdates=_shouldPauseBackgroundUpdates;
 @property(nonatomic) unsigned long long lastEdgeLocation; // @synthesize lastEdgeLocation=_lastEdgeLocation;
+@property(nonatomic) struct NSDirectionalEdgeInsets edgeInsetsInCompactSize; // @synthesize edgeInsetsInCompactSize=_edgeInsetsInCompactSize;
+@property(nonatomic) _Bool ignoresSafeAreaInsetsInCompactSize; // @synthesize ignoresSafeAreaInsetsInCompactSize=_ignoresSafeAreaInsetsInCompactSize;
 @property(readonly, nonatomic) _Bool shouldAdjustShadowRadiusForMinimized; // @synthesize shouldAdjustShadowRadiusForMinimized=_shouldAdjustShadowRadiusForMinimized;
 @property(readonly, nonatomic) double shadowRadius; // @synthesize shadowRadius=_shadowRadius;
 @property(readonly, nonatomic) double shadowOpacity; // @synthesize shadowOpacity=_shadowOpacity;
@@ -111,9 +112,10 @@
 - (struct CGSize)paletteSizeForEdge:(unsigned long long)arg1;
 - (struct CGSize)minimizedPaletteSize;
 - (void)didEndAppearanceAnimation;
-- (void)willStartAppearanceAnimation;
+- (void)willStartAppearanceAnimation:(_Bool)arg1;
 - (void)configureForDockedAtEdge:(unsigned long long)arg1;
 - (void)configureForDockedAtCorner;
+@property(readonly, nonatomic) _Bool toolPreviewMatchesExpandedTool;
 - (void)_updateToolPreviewScalingAnimated:(_Bool)arg1;
 - (void)setToolPreviewMinimized:(_Bool)arg1 animated:(_Bool)arg2;
 - (id)toolPreviewView;
@@ -155,7 +157,6 @@
 @property(nonatomic) double paletteContentAlpha;
 - (void)_didChangeAutoHideEnabled;
 @property(readonly, nonatomic) _Bool useCompactSize;
-@property(nonatomic, getter=isBackgroundMaterialUpdatingPaused) _Bool backgroundMaterialUpdatingPaused;
 - (_Bool)wantsToolPreviewForTraitCollection:(id)arg1;
 @property(readonly, nonatomic, getter=isToolPreviewInstalled) _Bool toolPreviewInstalled;
 - (void)_uninstallToolPreview;

@@ -14,16 +14,15 @@
 @interface NTKSimpleTextFaceViewComplicationFactory : NSObject <NTKFaceViewComplicationFactory>
 {
     NTKFaceView<NTKUtilityFlatComplicationViewDelegate> *_faceView;
+    double _verticalCenterOffset;
     CLKDevice *_device;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) CLKDevice *device; // @synthesize device=_device;
+@property(nonatomic) double verticalCenterOffset; // @synthesize verticalCenterOffset=_verticalCenterOffset;
 @property(nonatomic) __weak NTKFaceView<NTKUtilityFlatComplicationViewDelegate> *faceView; // @synthesize faceView=_faceView;
 - (long long)complicationPickerStyleForSlot:(id)arg1;
-- (unsigned long long)keylineLabelAlignmentForComplicationSlot:(id)arg1;
-- (id)pickerMaskForSlot:(id)arg1;
-- (id)complicationPickerKeylineViewForComplicationSlot:(id)arg1;
 - (id)keylineViewForComplicationSlot:(id)arg1;
 - (void)configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (id)newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;

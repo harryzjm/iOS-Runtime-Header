@@ -5,47 +5,62 @@
 //
 
 #import <CoverSheet/CSAdjunctListModelDelegate-Protocol.h>
+#import <CoverSheet/CSFocusActivityDelegate-Protocol.h>
 
-@class CSAdjunctListModel, CSContentActionInterpreter, CSNowPlayingController, NSMutableArray, NSMutableDictionary, NSString, UIStackView;
+@class CSAdjunctListActionManager, CSAdjunctListModel, CSContentActionInterpreter, CSFocusActivityManager, CSNowPlayingController, CSSessionManager, CSWidgetMetricsProvider, NSMutableDictionary, NSString, UIViewController;
 @protocol CSNotificationAdjunctListViewControllerDelegate, SBFActionProviding;
 
-@interface CSNotificationAdjunctListViewController <CSAdjunctListModelDelegate>
+@interface CSNotificationAdjunctListViewController <CSAdjunctListModelDelegate, CSFocusActivityDelegate>
 {
     CSAdjunctListModel *_model;
     _Bool _respondingToSubviewLayoutChange;
+    id <SBFActionProviding> _contentActionProvider;
+    UIViewController *_digestOnboardingSuggestionViewController;
     id <CSNotificationAdjunctListViewControllerDelegate> _delegate;
-    UIStackView *_stackView;
     NSMutableDictionary *_identifiersToItems;
-    NSMutableArray *_dismissingItems;
     CSNowPlayingController *_nowPlayingController;
     CSContentActionInterpreter *_actionInterpreter;
+    CSSessionManager *_sessionManager;
+    CSFocusActivityManager *_focusActivityManager;
+    CSAdjunctListActionManager *_actionManager;
 }
 
 + (Class)viewClass;
 - (void).cxx_destruct;
+@property(retain, nonatomic) CSAdjunctListActionManager *actionManager; // @synthesize actionManager=_actionManager;
+@property(retain, nonatomic) CSFocusActivityManager *focusActivityManager; // @synthesize focusActivityManager=_focusActivityManager;
+@property(retain, nonatomic) CSSessionManager *sessionManager; // @synthesize sessionManager=_sessionManager;
 @property(nonatomic) _Bool respondingToSubviewLayoutChange; // @synthesize respondingToSubviewLayoutChange=_respondingToSubviewLayoutChange;
 @property(retain, nonatomic) CSContentActionInterpreter *actionInterpreter; // @synthesize actionInterpreter=_actionInterpreter;
 @property(retain, nonatomic) CSNowPlayingController *nowPlayingController; // @synthesize nowPlayingController=_nowPlayingController;
-@property(retain, nonatomic) NSMutableArray *dismissingItems; // @synthesize dismissingItems=_dismissingItems;
 @property(retain, nonatomic) NSMutableDictionary *identifiersToItems; // @synthesize identifiersToItems=_identifiersToItems;
-@property(retain, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
 @property(nonatomic) __weak id <CSNotificationAdjunctListViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak UIViewController *digestOnboardingSuggestionViewController; // @synthesize digestOnboardingSuggestionViewController=_digestOnboardingSuggestionViewController;
+@property(nonatomic) __weak id <SBFActionProviding> contentActionProvider; // @synthesize contentActionProvider=_contentActionProvider;
+- (id)_stackView;
 - (struct CGAffineTransform)_disappearedTransformForContentWithHeight:(double)arg1;
 - (void)_didUpdateDisplay;
 - (id)_groupNameBase;
-- (id)_createPlatterForHost:(id)arg1 recipe:(long long)arg2;
+- (void)_updateItemsSizeToMimic;
+- (id)_createItemViewForHost:(id)arg1 recipe:(long long)arg2;
+- (unsigned long long)_preferredIndexForItem:(id)arg1;
 - (void)_removeItem:(id)arg1 animated:(_Bool)arg2;
-- (void)_insertItem:(id)arg1 animated:(_Bool)arg2;
+- (void)_insertItem:(id)arg1 atPreferredIndex:(long long)arg2 animated:(_Bool)arg3;
 - (_Bool)_canAnimate;
+- (void)focusActivityIndicatorDidChangeToVisible:(_Bool)arg1;
+- (void)adjunctListModel:(id)arg1 didUpdateItem:(id)arg2 withItem:(id)arg3;
 - (void)adjunctListModel:(id)arg1 didRemoveItem:(id)arg2;
 - (void)adjunctListModel:(id)arg1 didAddItem:(id)arg2;
-@property(nonatomic) __weak id <SBFActionProviding> contentActionProvider;
+@property(nonatomic) __weak CSWidgetMetricsProvider *widgetMetricsProvider;
 - (_Bool)handleEvent:(id)arg1;
 @property(readonly, nonatomic) double listViewContentAnimationDampingRatio;
 @property(readonly, nonatomic) double listViewContentAnimationDuration;
 @property(readonly, nonatomic) struct CGSize sizeToMimic;
+@property(readonly, nonatomic, getter=isPresentingTransientContent) _Bool presentingTransientContent;
 @property(readonly, nonatomic, getter=isPresentingContent) _Bool presentingContent;
 @property(readonly, nonatomic, getter=isShowingMediaControls) _Bool showingMediaControls;
+- (struct CGSize)stackViewContentSize;
+- (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(_Bool)arg1;

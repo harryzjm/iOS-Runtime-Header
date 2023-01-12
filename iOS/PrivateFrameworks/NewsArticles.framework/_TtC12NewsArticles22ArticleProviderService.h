@@ -18,6 +18,7 @@
     MISSING_TYPE *configurationManager;
     MISSING_TYPE *createdDate;
     MISSING_TYPE *cache;
+    MISSING_TYPE *cacheLock;
 }
 
 @end

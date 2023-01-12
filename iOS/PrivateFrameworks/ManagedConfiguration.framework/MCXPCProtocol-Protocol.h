@@ -26,8 +26,10 @@
 - (void)setUserBookmarks:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)storeActivationRecord:(NSDictionary *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)createActivationLockBypassCodeWithCompletion:(void (^)(NSString *, NSError *))arg1;
+- (void)restoreCloudConfigAndMDMProfileFromSetAsideDataWithCompletion:(void (^)(NSError *))arg1;
 - (void)cloudConfigurationStoreDetails:(NSDictionary *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)cloudConfigurationMachineInfoDataWithCompletion:(void (^)(NSData *, NSError *))arg1;
+- (void)reducedMachineInfoDataWithCompletion:(void (^)(NSData *, NSError *))arg1;
 - (void)rereadManagedAppAttributesWithCompletion:(void (^)(NSError *))arg1;
 - (void)markStoredProfileForPurposeAsInstalled:(int)arg1 completion:(void (^)(NSError *))arg2;
 - (void)profileDataStoredForPurpose:(int)arg1 completion:(void (^)(NSData *, NSError *))arg2;
@@ -66,6 +68,7 @@
 - (void)queueProfileDataForInstallation:(NSData *)arg1 originalFileName:(NSString *)arg2 originatingBundleID:(NSString *)arg3 transitionToUI:(_Bool)arg4 completion:(void (^)(NSString *, unsigned long long, NSError *))arg5;
 - (void)installProfileData:(NSData *)arg1 interactive:(_Bool)arg2 options:(NSDictionary *)arg3 completion:(void (^)(NSString *, NSError *))arg4;
 - (void)isProfileInstalledWithIdentifier:(NSString *)arg1 completion:(void (^)(NSError *, _Bool))arg2;
+- (void)monitorEnrollmentStateWithPersonaID:(NSString *)arg1;
 - (void)defaultAppBundleIDForCommunicationServiceType:(NSString *)arg1 forAccountWithIdentifier:(NSString *)arg2 completion:(void (^)(NSString *, NSError *))arg3;
 - (void)notifyDeviceUnlockedWithCompletion:(void (^)(NSError *))arg1;
 - (void)notifyDeviceUnlockedAndPasscodeRequiredWithCompletion:(void (^)(NSError *))arg1;

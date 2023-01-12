@@ -6,60 +6,52 @@
 
 #import <objc/NSObject.h>
 
-@class HMActionSet, HMHome, HMTrigger, HRETemplate, NSDictionary, NSMutableDictionary, NSMutableSet, NSSet, NSString;
-@protocol HFIconDescriptor;
+#import <HomeRecommendationEngine/NSCopying-Protocol.h>
 
-@interface HRERecommendation : NSObject
+@class HMCharacteristic, HMHome, HMRoom, HMZone, HREIdentifierBuilder, HRETemplate, NADescriptionBuilder, NSArray, NSDictionary, NSMutableDictionary, NSString;
+
+@interface HRERecommendation : NSObject <NSCopying>
 {
-    NSMutableDictionary *_configuration;
+    NSString *_uniqueIdentifier;
+    HREIdentifierBuilder *identifierBuilder;
     HMHome *_home;
     double _rankingConfidenceScore;
-    NSDictionary *_rankingConfig;
-    NSDictionary *_adjustedRatings;
+    double _sortingPriority;
+    NSMutableDictionary *_userInfo;
+    NSMutableDictionary *_defaultAnalyticsData;
+    double _rankModifier;
 }
 
-+ (id)_identifiersAndTypesForActions:(id)arg1;
-+ (id)_identifiersAndValuesForActions:(id)arg1 ignoringTypes:(id)arg2;
 + (id)highestRankInRecommendations:(id)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSDictionary *adjustedRatings; // @synthesize adjustedRatings=_adjustedRatings;
-@property(retain, nonatomic) NSDictionary *rankingConfig; // @synthesize rankingConfig=_rankingConfig;
-@property(nonatomic) double rankingConfidenceScore; // @synthesize rankingConfidenceScore=_rankingConfidenceScore;
-@property(nonatomic) __weak HMHome *home; // @synthesize home=_home;
-@property(retain, nonatomic) NSMutableDictionary *configuration; // @synthesize configuration=_configuration;
-- (id)debugDescription;
+@property(nonatomic) double rankModifier; // @synthesize rankModifier=_rankModifier;
+@property(retain, nonatomic) NSMutableDictionary *defaultAnalyticsData; // @synthesize defaultAnalyticsData=_defaultAnalyticsData;
+@property(readonly, nonatomic) NSMutableDictionary *userInfo; // @synthesize userInfo=_userInfo;
+@property(nonatomic) double sortingPriority; // @synthesize sortingPriority=_sortingPriority;
+@property(readonly, nonatomic) double rankingConfidenceScore; // @synthesize rankingConfidenceScore=_rankingConfidenceScore;
+@property(readonly, nonatomic) HMHome *home; // @synthesize home=_home;
+@property(retain, nonatomic) HREIdentifierBuilder *identifierBuilder; // @synthesize identifierBuilder;
+@property(readonly, nonatomic) NSDictionary *analyticsData;
+- (void)setRankingConfidenceScore:(double)arg1 rankVersion:(long long)arg2;
 - (id)description;
-- (void)safeSetObject:(id)arg1 forKey:(id)arg2;
-- (id)servicesInEvents;
-- (id)objectsInActions;
-@property(readonly, nonatomic, getter=isDerivedFromExistingConfiguration) _Bool derivedFromExistingConfiguration;
-@property(readonly, nonatomic) _Bool requiresFMFDeviceToRun;
-@property(readonly, nonatomic) _Bool triggerExistsInHome;
-@property(readonly, nonatomic) HMActionSet *existingActionSet;
-@property(readonly, nonatomic) NSString *uniqueIdentifier;
-- (id)actionSetType;
-@property(readonly, nonatomic) NSSet *actions;
-@property(retain, nonatomic) NSMutableSet *mutableActions;
-@property(readonly, nonatomic) HRETemplate *template;
-@property(readonly, nonatomic) long long sortKey;
-@property(readonly, nonatomic) HMTrigger *trigger;
-@property(readonly, nonatomic) id <HFIconDescriptor> iconDescriptor;
-@property(readonly, nonatomic) NSString *longDescription;
-@property(readonly, nonatomic) NSString *actionsSummary;
-@property(readonly, nonatomic) NSString *actionSetName;
-@property(readonly, nonatomic) NSString *title;
-- (_Bool)matchesTrigger:(id)arg1 allowingPredicateDifference:(_Bool)arg2 allowingVariance:(_Bool)arg3;
-- (_Bool)matchesTrigger:(id)arg1;
-- (void)calculateAdjustedAttributeRatings:(double)arg1;
-- (id)createBuilderItemWithBuilderContext:(id)arg1;
-- (_Bool)actionsOrEventsInvolveObjects:(id)arg1;
+@property(readonly) NADescriptionBuilder *descriptionBuilder;
+- (id)involvedObjects;
+- (id)changedInvolvedObjects;
+- (_Bool)includesObjects:(id)arg1;
+- (_Bool)containsRecommendableContent;
 - (_Bool)containsMeaningfulChanges;
-- (id)iconDescriptorWithServiceLikeItems:(id)arg1;
-- (id)naturalLanguageTitleWithObjectsInContext:(id)arg1 options:(id)arg2;
-- (id)analyticsSource;
-- (unsigned long long)recommendationSource;
-- (id)initWithConfiguration:(id)arg1 withHome:(id)arg2;
+@property(readonly, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithHome:(id)arg1;
+- (id)initWithHome:(id)arg1 uniqueIdentifier:(id)arg2;
+- (id)splitUsingSplitCharacteristics:(id)arg1;
+- (id)splitUsingSplitStrategy:(unsigned long long)arg1 inHome:(id)arg2;
+@property(nonatomic) unsigned long long numberOfEnabledRecommendationsForTemplate;
+@property(retain, nonatomic) HRETemplate *sourceTemplate;
+@property(retain, nonatomic) HMCharacteristic *splitCharacteristic;
+@property(readonly, nonatomic) NSArray *roomsToFilterHomeObjects;
+@property(retain, nonatomic) HMZone *zone;
+@property(retain, nonatomic) HMRoom *room;
 
 @end
 

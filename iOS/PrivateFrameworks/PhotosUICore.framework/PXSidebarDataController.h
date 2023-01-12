@@ -9,7 +9,7 @@
 #import <PhotosUICore/PXNavigationListDataSectionManagerObserver-Protocol.h>
 #import <PhotosUICore/PXOutlineDataSectionManagerDelegate-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSOperationQueue, NSString, PHPhotoLibrary, PXDataSectionManager, PXNavigationListItemDataSectionManager, PXOutlineDataSectionManager, PXPhotoLibraryLocalDefaults;
+@class NSArray, NSMapTable, NSMutableDictionary, NSOperationQueue, NSString, PHPhotoLibrary, PXDataSectionManager, PXNavigationListItemDataSectionManager, PXOutlineDataSectionManager, PXPhotoLibraryLocalDefaults;
 @protocol PXSidebarDataSourceControllerDelegate;
 
 @interface PXSidebarDataController : NSObject <PXOutlineDataSectionManagerDelegate, PXNavigationListDataSectionManagerObserver>
@@ -24,6 +24,7 @@
     NSOperationQueue *_workQueue;
     id <PXSidebarDataSourceControllerDelegate> _delegate;
     PXPhotoLibraryLocalDefaults *_localDefaults;
+    NSMapTable *_requestDetailsBySidebarImageRequestID;
 }
 
 + (id)prototypesDataSectionManagerForLibrary:(id)arg1 workQueue:(id)arg2 sectionEnablementProvider:(id)arg3;
@@ -33,6 +34,7 @@
 + (id)photosDataSectionManagerForLibrary:(id)arg1 workQueue:(id)arg2 sectionEnablementProvider:(id)arg3;
 + (id)dataSectionManagerForCollection:(id)arg1 workQueue:(id)arg2;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMapTable *requestDetailsBySidebarImageRequestID; // @synthesize requestDetailsBySidebarImageRequestID=_requestDetailsBySidebarImageRequestID;
 @property(readonly, nonatomic) PXPhotoLibraryLocalDefaults *localDefaults; // @synthesize localDefaults=_localDefaults;
 @property(nonatomic) __weak id <PXSidebarDataSourceControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) NSOperationQueue *workQueue; // @synthesize workQueue=_workQueue;
@@ -42,7 +44,9 @@
 - (_Bool)isItemExpanded:(id)arg1;
 - (id)dataSectionManagerForItem:(id)arg1;
 - (id)childDataSectionForItem:(id)arg1;
-- (void)requestImageForItem:(id)arg1 parentItem:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)appearanceDidChange;
+- (void)cancelImageRequest:(long long)arg1;
+- (long long)requestImageForItem:(id)arg1 parentItem:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)infoForItem:(id)arg1 childIndex:(long long)arg2;
 - (void)setExpanded:(_Bool)arg1 forItem:(id)arg2;
 - (_Bool)moveGroupItem:(id)arg1 afterGroupItem:(id)arg2;
@@ -50,11 +54,14 @@
 - (id)childrenOfListItem:(id)arg1;
 - (id)child:(long long)arg1 ofItem:(id)arg2;
 - (long long)numberOfChildrenOfItem:(id)arg1;
-- (id)_dataSectionManagerForListItem:(id)arg1;
+- (id)_childDataSectionManagerForListItem:(id)arg1;
 - (void)_updateMediaTypesItemManager;
 - (void)_updateDataSectionForRemovedItems:(id)arg1;
 - (void)_removeDataSectionManagerForKey:(id)arg1;
 - (void)_setDataSectionManager:(id)arg1 forKey:(id)arg2;
+- (void)cancelRequestDetails:(id)arg1;
+- (id)beginRequestForMediaProvider:(id)arg1 mediaRequestIDs:(id)arg2;
+- (void)setChangeProcessingPaused:(_Bool)arg1 forReason:(id)arg2;
 - (id)init;
 - (id)sectionManagersForLibrary:(id)arg1 workQueue:(id)arg2 sectionEnablementProvider:(id)arg3;
 @property(readonly, nonatomic) PXNavigationListItemDataSectionManager *mediaTypesItemManager; // @synthesize mediaTypesItemManager=_mediaTypesItemManager;

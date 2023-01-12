@@ -10,7 +10,7 @@
 
 @interface TSTLayoutValidationBundle : NSObject
 {
-    struct unordered_map<unsigned short, double, std::__1::hash<unsigned short>, std::__1::equal_to<unsigned short>, std::__1::allocator<std::__1::pair<const unsigned short, double>>> _columnToWidth;
+    struct unordered_map<unsigned short, double, std::hash<unsigned short>, std::equal_to<unsigned short>, std::allocator<std::pair<const unsigned short, double>>> _columnToWidth;
     struct os_unfair_lock_s _lock;
     NSMutableArray *_widthHeightCollections;
 }

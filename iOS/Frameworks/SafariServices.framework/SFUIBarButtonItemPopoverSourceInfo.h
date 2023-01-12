@@ -18,14 +18,18 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) UIBarButtonItem *barButtonItem;
+@property(readonly, copy) NSString *description;
 - (id)initWithItem:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(nonatomic) unsigned long long permittedArrowDirections;
 @property(readonly, nonatomic) struct CGRect popoverSourceRect;
 @property(readonly, nonatomic) UIView *popoverSourceView;
+@property(readonly, nonatomic) _Bool shouldDismissIfSourceRemovedAfterRepositioning;
+@property(nonatomic) _Bool shouldHideArrow;
+@property(nonatomic) _Bool shouldPassthroughSuperview;
 @property(readonly) Class superclass;
 
 @end

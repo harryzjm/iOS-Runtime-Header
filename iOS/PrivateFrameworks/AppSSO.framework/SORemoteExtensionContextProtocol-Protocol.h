@@ -9,6 +9,7 @@
 @class NSXPCListenerEndpoint, SOAuthorizationRequestParameters;
 
 @protocol SORemoteExtensionContextProtocol <SOExtensionContextProtocol>
+- (void)finishAuthorizationWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)cancelAuthorizationWithCompletion:(void (^)(SOAuthorizationCredential *, NSError *))arg1;
 - (void)beginAuthorizationWithServiceXPCEndpoint:(NSXPCListenerEndpoint *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)beginAuthorizationWithRequestParameters:(SOAuthorizationRequestParameters *)arg1 completion:(void (^)(_Bool, NSError *))arg2;

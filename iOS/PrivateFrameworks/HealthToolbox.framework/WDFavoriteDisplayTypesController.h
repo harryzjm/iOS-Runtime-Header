@@ -28,10 +28,9 @@
 - (void)_alertObserversDidFail;
 - (void)_alertObserversDidUpdate;
 - (void)_alertObserversControllerReady;
-- (void)removeObserver:(id)arg1;
-- (void)addObserver:(id)arg1 queue:(id)arg2;
-- (void)addObserver:(id)arg1;
-- (void)_reportFavoritedDisplayTypes;
+- (void)unregisterObserver:(id)arg1;
+- (void)registerObserver:(id)arg1 queue:(id)arg2;
+- (void)registerObserver:(id)arg1;
 - (id)_displayTypeIdentifiersFromDisplayTypes:(id)arg1;
 - (void)_persistFavoritedDisplayTypes;
 - (void)_handleFetchSuccess:(id)arg1;

@@ -48,7 +48,6 @@
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 - (id)_initializeContext;
 @property(readonly, copy) NSString *description;
-- (void)dealloc;
 - (id)initWithMediaSystem:(id)arg1;
 - (id)initWithHome:(id)arg1;
 - (id)init;

@@ -44,6 +44,7 @@
 - (void)dealloc;
 - (id)copyWithMaxCapacity:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithCapacity:(unsigned long long)arg1 maxCapacity:(unsigned long long)arg2;
 - (id)initWithMaxCapacity:(unsigned long long)arg1;
 - (id)initWithCapacity:(unsigned long long)arg1;
 - (id)init;

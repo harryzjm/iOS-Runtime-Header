@@ -8,7 +8,7 @@
 
 #import <QuickLook/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSNumber, NSString, QLItem, UIColor;
+@class NSDictionary, NSNumber, NSString, QLItem, QLTBitmapFormat, UIColor;
 @protocol QLItemThumbnailGeneratorProtocolInternal;
 
 @interface QLPreviewContext : NSObject <NSSecureCoding>
@@ -17,6 +17,7 @@
     _Bool _canBeShared;
     id <QLItemThumbnailGeneratorProtocolInternal> _thumbnailGenerator;
     NSString *_previewTitle;
+    NSString *_originalContentType;
     NSString *_contentType;
     unsigned long long _editedFileBehavior;
     NSString *_password;
@@ -26,10 +27,16 @@
     long long _processIdentifier;
     QLItem *_item;
     NSDictionary *_clientPreviewOptions;
+    unsigned long long _stringEncoding;
+    NSDictionary *_attachments;
+    QLTBitmapFormat *_bitmapFormat;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain) QLTBitmapFormat *bitmapFormat; // @synthesize bitmapFormat=_bitmapFormat;
+@property(retain) NSDictionary *attachments; // @synthesize attachments=_attachments;
+@property unsigned long long stringEncoding; // @synthesize stringEncoding=_stringEncoding;
 @property(retain) NSDictionary *clientPreviewOptions; // @synthesize clientPreviewOptions=_clientPreviewOptions;
 @property(retain) QLItem *item; // @synthesize item=_item;
 @property long long processIdentifier; // @synthesize processIdentifier=_processIdentifier;
@@ -41,6 +48,7 @@
 @property _Bool canBeShared; // @synthesize canBeShared=_canBeShared;
 @property _Bool canBeEdited; // @synthesize canBeEdited=_canBeEdited;
 @property(retain) NSString *contentType; // @synthesize contentType=_contentType;
+@property(retain) NSString *originalContentType; // @synthesize originalContentType=_originalContentType;
 @property(retain) NSString *previewTitle; // @synthesize previewTitle=_previewTitle;
 @property(retain) id <QLItemThumbnailGeneratorProtocolInternal> thumbnailGenerator; // @synthesize thumbnailGenerator=_thumbnailGenerator;
 - (id)initWithCoder:(id)arg1;

@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDate;
+@class NSDate, UIViewController;
 
 @protocol EKEventDetailTitleCellDelegate
+- (void)conferenceInformationUpdated;
+- (_Bool)showsDetectedConferenceItem;
+- (UIViewController *)owningViewController;
 - (_Bool)minimalMode;
 - (_Bool)hidesSeparator;
 - (NSDate *)proposedTime;

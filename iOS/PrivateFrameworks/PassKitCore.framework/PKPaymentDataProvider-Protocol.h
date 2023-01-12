@@ -6,7 +6,7 @@
 
 #import <PassKitCore/NSObject-Protocol.h>
 
-@class NSArray, NSCalendar, NSData, NSDate, NSSet, NSString, PKExpressPassInformation, PKMerchant, PKOSVersionRequirement, PKPass, PKPassUpgradeRequest, PKPaymentApplication, PKPaymentBalance, PKPaymentBalanceReminder, PKPaymentCommutePlanReminder, PKPaymentPass, PKPaymentTransactionRequest, PKPaymentWebService, PKTransitCommutePlan;
+@class NSArray, NSCalendar, NSData, NSDate, NSDictionary, NSSet, NSString, PKExpressPassInformation, PKMerchant, PKOSVersionRequirement, PKPass, PKPassUpgradeRequest, PKPaymentApplication, PKPaymentBalance, PKPaymentBalanceReminder, PKPaymentCommutePlanReminder, PKPaymentPass, PKPaymentTransactionRequest, PKPaymentWebService, PKTransitCommutePlan;
 @protocol PKPaymentDataProviderDelegate;
 
 @protocol PKPaymentDataProvider <NSObject>
@@ -27,6 +27,8 @@
 @optional
 - (void)removeDelegate:(id <PKPaymentDataProviderDelegate>)arg1;
 - (void)addDelegate:(id <PKPaymentDataProviderDelegate>)arg1;
+- (void)tilesForPassWithUniqueIdentifier:(NSString *)arg1 completion:(void (^)(NSArray *))arg2;
+- (void)dataElementsForCredentialIdentifier:(NSString *)arg1 partition:(NSString *)arg2 elementIdentifiers:(NSDictionary *)arg3 completion:(void (^)(PKISO18013DataElements *, NSError *))arg4;
 - (void)deletePaymentTransactionWithIdentifier:(NSString *)arg1;
 - (void)transactionsForPaymentPassWithUniqueIdentifier:(NSString *)arg1 withTransactionSource:(unsigned long long)arg2 withNotificationServiceData:(unsigned long long)arg3 limit:(long long)arg4 completion:(void (^)(NSSet *))arg5;
 - (_Bool)supportsAddingPaymentPasses;
@@ -38,6 +40,7 @@
 - (_Bool)supportsNotificationsForPass:(PKPass *)arg1;
 - (_Bool)supportsMessagesForPass:(PKPass *)arg1;
 - (_Bool)supportsTransactionsForPass:(PKPass *)arg1;
+- (void)featureApplicationsForAccountIdentifier:(NSString *)arg1 completion:(void (^)(NSArray *))arg2;
 - (void)photosForFamilyMembersWithDSIDs:(NSArray *)arg1 completion:(void (^)(NSDictionary *))arg2;
 - (void)familyMembersWithCompletion:(void (^)(NSArray *))arg1;
 - (void)transactionReceiptForTransactionWithIdentifier:(NSString *)arg1 updateIfNecessary:(_Bool)arg2 completion:(void (^)(PKTransactionReceipt *))arg3;
@@ -50,6 +53,7 @@
 - (void)commutePlanReminderForCommutePlan:(PKTransitCommutePlan *)arg1 pass:(PKPaymentPass *)arg2 withCompletion:(void (^)(PKPaymentCommutePlanReminder *))arg3;
 - (void)setBalanceReminder:(PKPaymentBalanceReminder *)arg1 forBalance:(PKPaymentBalance *)arg2 pass:(PKPaymentPass *)arg3 completion:(void (^)(_Bool))arg4;
 - (void)balanceReminderThresholdForBalance:(PKPaymentBalance *)arg1 pass:(PKPaymentPass *)arg2 withCompletion:(void (^)(PKPaymentBalanceReminder *))arg3;
+- (void)plansForPaymentPassWithUniqueIdentifier:(NSString *)arg1 completion:(void (^)(NSSet *))arg2;
 - (void)balancesForPaymentPassWithUniqueIdentifier:(NSString *)arg1 completion:(void (^)(NSSet *))arg2;
 - (void)mapsMerchantsWithCompletion:(void (^)(NSSet *))arg1;
 - (void)submitTransactionAnswerForTransaction:(NSString *)arg1 questionType:(unsigned long long)arg2 answer:(NSString *)arg3 completion:(void (^)(NSError *))arg4;

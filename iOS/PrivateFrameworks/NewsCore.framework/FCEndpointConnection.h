@@ -7,36 +7,32 @@
 #import <objc/NSObject.h>
 
 #import <NewsCore/FCCoreConfigurationObserving-Protocol.h>
+#import <NewsCore/FCEndpointConnectionType-Protocol.h>
 #import <NewsCore/NSURLSessionDelegate-Protocol.h>
 
-@class FCAsyncSerialQueue, NSString, NSURL, NSURLSession;
-@protocol FCCoreConfigurationManager;
+@class FCNetworkBehaviorMonitor, NSString, NSURLSession;
 
-@interface FCEndpointConnection : NSObject <NSURLSessionDelegate, FCCoreConfigurationObserving>
+@interface FCEndpointConnection : NSObject <NSURLSessionDelegate, FCCoreConfigurationObserving, FCEndpointConnectionType>
 {
-    id <FCCoreConfigurationManager> _configurationManager;
     NSURLSession *_session;
-    NSURL *_baseURL;
-    FCAsyncSerialQueue *_requestSerialQueue;
+    FCNetworkBehaviorMonitor *_networkBehaviorMonitor;
 }
 
-+ (_Bool)_hasOverrideCAPIBaseURL;
-+ (id)_overrideCAPIBaseURLString;
-+ (id)_fairPlayBaseURLStringFromConfiguration:(id)arg1;
-+ (id)_CAPIBaseURLStringFromConfiguration:(id)arg1;
-+ (id)_errorByUpdatingRetryStatusForError:(id)arg1;
-+ (id)_errorForStatus:(long long)arg1 url:(id)arg2;
++ (id)errorForStatus:(long long)arg1 url:(id)arg2;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) FCAsyncSerialQueue *requestSerialQueue; // @synthesize requestSerialQueue=_requestSerialQueue;
-@property(copy) NSURL *baseURL; // @synthesize baseURL=_baseURL;
+@property(readonly, nonatomic) FCNetworkBehaviorMonitor *networkBehaviorMonitor; // @synthesize networkBehaviorMonitor=_networkBehaviorMonitor;
 @property(retain, nonatomic) NSURLSession *session; // @synthesize session=_session;
-@property(retain, nonatomic) id <FCCoreConfigurationManager> configurationManager; // @synthesize configurationManager=_configurationManager;
+- (void)performAuthenticatedHTTPRequestWithURL:(id)arg1 valuesByHTTPHeaderField:(id)arg2 method:(id)arg3 data:(id)arg4 contentType:(id)arg5 priority:(float)arg6 reauthenticateIfNeeded:(_Bool)arg7 networkEventType:(int)arg8 callbackQueue:(id)arg9 completion:(CDUnknownBlockType)arg10;
 - (void)performAuthenticatedHTTPRequestWithURL:(id)arg1 valuesByHTTPHeaderField:(id)arg2 method:(id)arg3 data:(id)arg4 contentType:(id)arg5 priority:(float)arg6 reauthenticateIfNeeded:(_Bool)arg7 callbackQueue:(id)arg8 completion:(CDUnknownBlockType)arg9;
-- (void)performHTTPRequestWithURL:(id)arg1 valuesByHTTPHeaderField:(id)arg2 method:(id)arg3 data:(id)arg4 contentType:(id)arg5 priority:(float)arg6 requiresMescalSigning:(_Bool)arg7 requiresAuthKitHeaders:(_Bool)arg8 callbackQueue:(id)arg9 completion:(CDUnknownBlockType)arg10;
+- (void)performHTTPRequestWithURL:(id)arg1 valuesByHTTPHeaderField:(id)arg2 method:(id)arg3 data:(id)arg4 contentType:(id)arg5 priority:(float)arg6 requiresMescalSigning:(_Bool)arg7 requiresAuthKitHeaders:(_Bool)arg8 networkEventType:(int)arg9 callbackQueue:(id)arg10 completion:(CDUnknownBlockType)arg11;
+- (void)performHTTPRequestWithURL:(id)arg1 valuesByHTTPHeaderField:(id)arg2 method:(id)arg3 data:(id)arg4 contentType:(id)arg5 priority:(float)arg6 requiresMescalSigning:(_Bool)arg7 networkEventType:(int)arg8 callbackQueue:(id)arg9 completion:(CDUnknownBlockType)arg10;
 - (void)performHTTPRequestWithURL:(id)arg1 valuesByHTTPHeaderField:(id)arg2 method:(id)arg3 data:(id)arg4 contentType:(id)arg5 priority:(float)arg6 requiresMescalSigning:(_Bool)arg7 callbackQueue:(id)arg8 completion:(CDUnknownBlockType)arg9;
+- (void)performHTTPRequestWithURL:(id)arg1 method:(id)arg2 data:(id)arg3 contentType:(id)arg4 priority:(float)arg5 requiresMescalSigning:(_Bool)arg6 networkEventType:(int)arg7 callbackQueue:(id)arg8 completion:(CDUnknownBlockType)arg9;
 - (void)performHTTPRequestWithURL:(id)arg1 method:(id)arg2 data:(id)arg3 contentType:(id)arg4 priority:(float)arg5 requiresMescalSigning:(_Bool)arg6 callbackQueue:(id)arg7 completion:(CDUnknownBlockType)arg8;
-- (id)initWithConfigurationManager:(id)arg1 sourceApplicationBundleIdentifier:(id)arg2;
-- (id)initWithConfigurationManager:(id)arg1;
+- (id)initWithSourceApplicationBundleIdentifier:(id)arg1 networkBehaviorMonitor:(id)arg2;
+- (id)initWithNetworkBehaviorMonitor:(id)arg1;
+- (id)initWithSourceApplicationBundleIdentifier:(id)arg1;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -4,30 +4,43 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TVMLKit/TVViewLayout.h>
+#import <objc/NSObject.h>
 
-@class NSArray, TVImageLayout, VUITextLayout;
+@class NSArray, NSString, UIColor, VUITextLayout;
 
 __attribute__((visibility("hidden")))
-@interface VUIMediaTagsViewLayout : TVViewLayout
+@interface VUIMediaTagsViewLayout : NSObject
 {
+    _Bool _alignBadgeVertically;
+    _Bool _groupActivityTagEnabled;
     unsigned long long _type;
     VUITextLayout *_textLayout;
     VUITextLayout *_rentalExpirationTextLayout;
+    UIColor *_backgroundColor;
     NSArray *_groupedKeys;
-    TVImageLayout *_badgeImageLayout;
+    NSString *_compositingFilter;
+    double _badgeMaxHeight;
+    UIColor *_badgeTintColor;
+    struct UIEdgeInsets _margin;
     struct UIEdgeInsets _groupMargin;
     struct UIEdgeInsets _commonSenseMargin;
     struct UIEdgeInsets _tomatoMeterMargin;
+    struct UIEdgeInsets _badgeMargin;
 }
 
-+ (id)layoutWithLayout:(id)arg1 element:(id)arg2;
 - (void).cxx_destruct;
+@property(readonly, nonatomic, getter=isGroupActivityTagEnabled) _Bool groupActivityTagEnabled; // @synthesize groupActivityTagEnabled=_groupActivityTagEnabled;
+@property(retain, nonatomic) UIColor *badgeTintColor; // @synthesize badgeTintColor=_badgeTintColor;
+@property(nonatomic) struct UIEdgeInsets badgeMargin; // @synthesize badgeMargin=_badgeMargin;
+@property(nonatomic) double badgeMaxHeight; // @synthesize badgeMaxHeight=_badgeMaxHeight;
+@property(nonatomic) _Bool alignBadgeVertically; // @synthesize alignBadgeVertically=_alignBadgeVertically;
+@property(retain, nonatomic) NSString *compositingFilter; // @synthesize compositingFilter=_compositingFilter;
 @property(readonly, nonatomic) struct UIEdgeInsets tomatoMeterMargin; // @synthesize tomatoMeterMargin=_tomatoMeterMargin;
 @property(readonly, nonatomic) struct UIEdgeInsets commonSenseMargin; // @synthesize commonSenseMargin=_commonSenseMargin;
-@property(readonly, nonatomic) TVImageLayout *badgeImageLayout; // @synthesize badgeImageLayout=_badgeImageLayout;
 @property(readonly, nonatomic) struct UIEdgeInsets groupMargin; // @synthesize groupMargin=_groupMargin;
 @property(readonly, nonatomic) NSArray *groupedKeys; // @synthesize groupedKeys=_groupedKeys;
+@property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property(nonatomic) struct UIEdgeInsets margin; // @synthesize margin=_margin;
 @property(readonly, nonatomic) VUITextLayout *rentalExpirationTextLayout; // @synthesize rentalExpirationTextLayout=_rentalExpirationTextLayout;
 @property(readonly, nonatomic) VUITextLayout *textLayout; // @synthesize textLayout=_textLayout;
 @property(nonatomic) unsigned long long type; // @synthesize type=_type;

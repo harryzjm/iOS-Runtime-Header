@@ -11,7 +11,7 @@
 #import <PhotosUICore/PXMutableImportController-Protocol.h>
 
 @class NSArray, NSMutableDictionary, NSMutableSet, NSObject, NSProgress, NSString, NSTimer, PHAssetCollection, PHImportSource, PHPhotoLibrary, PXImportAssetsDataSourceManager, PXImportDeleteAction, PXImportMediaLoadingCoordinator, PXImportMediaProvider, PXImportSessionInfo, PXPowerController, PXSectionedSelectionManager, PXSelectionSnapshot;
-@protocol OS_dispatch_queue, PXImportControllerImportCompletionDelegate;
+@protocol OS_dispatch_queue, PXImportControllerTopLevelCompletionDelegate;
 
 @interface PXImportController <PXImportAssetsDataSourceManagerDelegate, PXMutableImportController, PHImportServiceImporterDelegate, PHImportSourceObserver, PXChangeObserver>
 {
@@ -32,7 +32,7 @@
     unsigned int _loadAssetsPowerAssertionIdentifier;
     PHImportSource *_importSource;
     PHPhotoLibrary *_photoLibrary;
-    NSObject<PXImportControllerImportCompletionDelegate> *_importCompletionDelegate;
+    NSObject<PXImportControllerTopLevelCompletionDelegate> *_importCompletionDelegate;
     PXImportMediaProvider *_importMediaProvider;
     PXImportAssetsDataSourceManager *_dataSourceManager;
     PXImportSessionInfo *_importSessionInfo;
@@ -53,8 +53,6 @@
     PXImportMediaLoadingCoordinator *_mediaLoadingCoordinator;
 }
 
-+ (void)unregisterPXImportControllerNotificationsReceiver:(id)arg1;
-+ (void)registerPXImportControllerNotificationsReceiver:(id)arg1;
 + (id)importFilesAtURLs:(id)arg1 photoLibrary:(id)arg2 collection:(id)arg3 checkDuplicates:(_Bool)arg4 referenced:(_Bool)arg5 delegate:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
 + (void)favoriteAssetsFromImportResults:(id)arg1 photoLibrary:(id)arg2;
 + (id)itemsConstrainedByAvailableDiskSpaceFromItems:(id)arg1 additionalBytesRequired:(inout long long *)arg2;
@@ -92,7 +90,7 @@
 @property(readonly, nonatomic, getter=isLoadingContent) _Bool loadingContent; // @synthesize loadingContent=_loadingContent;
 @property(readonly, nonatomic) PXImportAssetsDataSourceManager *dataSourceManager; // @synthesize dataSourceManager=_dataSourceManager;
 @property(readonly, nonatomic) PXImportMediaProvider *importMediaProvider; // @synthesize importMediaProvider=_importMediaProvider;
-@property(nonatomic) __weak NSObject<PXImportControllerImportCompletionDelegate> *importCompletionDelegate; // @synthesize importCompletionDelegate=_importCompletionDelegate;
+@property(nonatomic) __weak NSObject<PXImportControllerTopLevelCompletionDelegate> *importCompletionDelegate; // @synthesize importCompletionDelegate=_importCompletionDelegate;
 @property(readonly, nonatomic) unsigned short imageFormat; // @synthesize imageFormat=_imageFormat;
 @property(readonly, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property(readonly, nonatomic) PHImportSource *importSource; // @synthesize importSource=_importSource;

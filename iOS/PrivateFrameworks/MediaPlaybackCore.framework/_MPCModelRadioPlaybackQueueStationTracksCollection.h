@@ -9,6 +9,7 @@
 @class ICMutableRadioPlaybackHistory, MPCModelGenericAVItemUserIdentityPropertySet, MPCPlaybackRequestEnvironment, MPPropertySet, MPSectionedCollection, NSHashTable;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface _MPCModelRadioPlaybackQueueStationTracksCollection : NSObject
 {
     NSObject<OS_dispatch_queue> *_accessQueue;

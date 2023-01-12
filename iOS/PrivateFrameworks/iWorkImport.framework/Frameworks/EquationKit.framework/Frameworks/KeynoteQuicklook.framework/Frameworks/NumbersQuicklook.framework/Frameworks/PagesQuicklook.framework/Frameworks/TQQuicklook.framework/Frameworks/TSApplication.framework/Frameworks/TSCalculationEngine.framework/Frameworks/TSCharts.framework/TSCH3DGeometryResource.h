@@ -19,6 +19,7 @@
 + (id)resourceWithType:(int)arg1 resource:(id)arg2 arrays:(id)arg3 geometry:(id)arg4;
 + (id)resourceWithType:(int)arg1 resource:(id)arg2;
 + (id)resource;
+- (void).cxx_destruct;
 @property(readonly, retain, nonatomic) TSCH3DGeometry *geometry; // @synthesize geometry=_geometry;
 @property(readonly, copy, nonatomic) TSCH3DGeometryArrays *arrays; // @synthesize arrays=_arrays;
 @property(readonly, retain, nonatomic) TSCH3DResource *resource; // @synthesize resource=_resource;
@@ -28,7 +29,6 @@
 - (void)submitCapWithProcessor:(id)arg1;
 - (void)submitNoneWithProcessor:(id)arg1;
 @property(readonly, nonatomic) _Bool hasArrays;
-- (void)dealloc;
 - (id)initWithType:(int)arg1 resource:(id)arg2;
 - (id)initWithType:(int)arg1 resource:(id)arg2 arrays:(id)arg3 geometry:(id)arg4;
 

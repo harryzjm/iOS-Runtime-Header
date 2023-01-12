@@ -12,6 +12,7 @@
 
 + (id)appBackgroundPolicyWithActivityMonitor:(id)arg1 backgroundTaskable:(id)arg2;
 + (id)throttlePolicyWithDelay:(double)arg1;
++ (id)unthrottledPolicy;
 + (id)defaultPolicy;
 - (void)scheduleSaveOnQueue:(id)arg1 handler:(CDUnknownBlockType)arg2;
 

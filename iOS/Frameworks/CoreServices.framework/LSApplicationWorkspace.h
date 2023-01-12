@@ -26,6 +26,7 @@
 - (void)ls_resetTestingDatabase;
 - (_Bool)ls_injectUTTypeWithDeclaration:(id)arg1 inDatabase:(id)arg2 error:(id *)arg3;
 - (void *)ls_testWithCleanDatabaseWithError:(id *)arg1;
+- (void)acquireDatabase;
 - (void)_LSClearSchemaCaches;
 - (void)_LSFailedToOpenURL:(id)arg1 withBundle:(id)arg2;
 - (_Bool)_LSPrivateDatabaseNeedsRebuild;
@@ -39,6 +40,7 @@
 - (_Bool)installPhaseFinishedForProgress:(id)arg1;
 - (id)installProgressForApplication:(id)arg1 withPhase:(unsigned long long)arg2;
 - (id)installProgressForBundleID:(id)arg1 makeSynchronous:(unsigned char)arg2;
+- (id)deviceIdentifierForVendorSeedData;
 - (void)removeDeviceIdentifierForVendorName:(id)arg1 bundleIdentifier:(id)arg2;
 - (id)createDeviceIdentifierWithVendorName:(id)arg1 bundleIdentifier:(id)arg2;
 - (id)deviceIdentifierForVendor;
@@ -50,6 +52,8 @@
 - (_Bool)allowsAlternateIcons;
 - (_Bool)unregisterPlugin:(id)arg1;
 - (_Bool)registerPlugin:(id)arg1;
+- (_Bool)revertContainerizedApplicationWithIdentifier:(id)arg1 options:(id)arg2 returningRecordPromise:(id *)arg3 error:(id *)arg4 progressBlock:(CDUnknownBlockType)arg5;
+- (_Bool)revertContainerizedApplicationWithIdentifier:(id)arg1 options:(id)arg2 error:(id *)arg3 progressBlock:(CDUnknownBlockType)arg4;
 - (_Bool)updatePlaceholderWithBundleIdentifier:(id)arg1 withInstallType:(unsigned long long)arg2 error:(id *)arg3;
 - (_Bool)initiateProgressForApp:(id)arg1 withType:(unsigned long long)arg2;
 - (_Bool)updatePlaceholderMetadataForApp:(id)arg1 installType:(unsigned long long)arg2 failure:(unsigned long long)arg3 underlyingError:(id)arg4 source:(unsigned long long)arg5 outError:(id *)arg6;
@@ -69,6 +73,7 @@
 - (_Bool)uninstallApplication:(id)arg1 withOptions:(id)arg2;
 - (_Bool)downgradeApplicationToPlaceholder:(id)arg1 withOptions:(id)arg2 error:(id *)arg3;
 - (_Bool)uninstallContainerizedApplicationWithIdentifier:(id)arg1 options:(id)arg2 error:(id *)arg3 progressBlock:(CDUnknownBlockType)arg4;
+- (_Bool)installContainerizedApplicationArtifactAtURL:(id)arg1 withOptions:(id)arg2 returningRecordPromise:(id *)arg3 error:(id *)arg4 progressBlock:(CDUnknownBlockType)arg5;
 - (_Bool)installContainerizedApplicationArtifactAtURL:(id)arg1 withOptions:(id)arg2 error:(id *)arg3 progressBlock:(CDUnknownBlockType)arg4;
 - (_Bool)installApplication:(id)arg1 withOptions:(id)arg2 error:(id *)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (void)placeholderInstalledForIdentifier:(id)arg1 filterDowngrades:(_Bool)arg2;
@@ -87,6 +92,7 @@
 - (void)enumeratePluginsMatchingQuery:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)pluginsWithIdentifiers:(id)arg1 protocols:(id)arg2 version:(id)arg3 applyFilter:(CDUnknownBlockType)arg4;
 - (id)installedPlugins;
+- (void)openApplicationWithBundleIdentifier:(id)arg1 usingConfiguration:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)openApplicationWithBundleIdentifier:(id)arg1 configuration:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)openURL:(id)arg1 configuration:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)optionsFromOpenConfiguration:(id)arg1;

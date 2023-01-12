@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVCStatisticsCollector;
+@class AVCStatisticsCollector, VCConnectionHealthMonitor;
 
 __attribute__((visibility("hidden")))
 @interface AVCRateControlFeedbackController : NSObject
@@ -14,24 +14,28 @@ __attribute__((visibility("hidden")))
     unsigned int _mode;
     AVCStatisticsCollector *_statisticsCollector;
     unsigned int _feedbackMessageCount;
-    unsigned int _remoteTotalPacketReceivedCount;
+    unsigned int _currentMediaTimestamp;
     _Bool _isFeedbackReceived;
     _Bool _didRegisterPacketReceivedHandler;
+    VCConnectionHealthMonitor *_connectionHealthMonitor;
 }
 
+@property(retain, nonatomic) VCConnectionHealthMonitor *connectionHealthMonitor; // @synthesize connectionHealthMonitor=_connectionHealthMonitor;
 @property(nonatomic) unsigned int mode; // @synthesize mode=_mode;
 - (void)resetBurstyLossStatistics;
-- (_Bool)detectOutOfOrderFeedbackMessage:(CDStruct_de0ff4c0)arg1;
-- (_Bool)translateMediaControlInfo:(void *)arg1 feedbackMessage:(CDStruct_de0ff4c0 *)arg2;
-- (CDStruct_de0ff4c0)translateAFRCFeedbackMessage:(struct tagAFRCFB)arg1;
-- (CDStruct_de0ff4c0)translateRateControlFeedbackMessageFromData:(id)arg1;
-- (id)translateRateControlDataWithFeedbackMessage:(CDStruct_de0ff4c0)arg1;
+- (_Bool)detectOutOfOrderFeedbackMessage:(CDStruct_fdc6b4b3)arg1;
+- (_Bool)translateMediaControlInfo:(void *)arg1 feedbackMessage:(CDStruct_fdc6b4b3 *)arg2;
+- (CDStruct_fdc6b4b3)translateAFRCFeedbackMessage:(struct tagAFRCFB)arg1;
+- (CDStruct_fdc6b4b3)translateRateControlFeedbackMessageFromData:(id)arg1;
+- (id)translateRateControlDataWithFeedbackMessage:(CDStruct_fdc6b4b3)arg1;
 - (_Bool)processRateControlProbingMessage:(CDStruct_d30cff71)arg1 type:(unsigned int)arg2 error:(id *)arg3;
-- (_Bool)processRateControlFeedbackMessage:(CDStruct_de0ff4c0)arg1 type:(unsigned int)arg2 error:(id *)arg3 time:(double)arg4;
-- (_Bool)getVCStatisticsFeedbackMessage:(CDStruct_56e8fa21 *)arg1 time:(double)arg2;
+- (_Bool)processRateControlFeedbackMessage:(CDStruct_fdc6b4b3)arg1 type:(unsigned int)arg2 error:(id *)arg3 time:(double)arg4;
+- (unsigned int)getConnectionStatsBlob;
+- (_Bool)getVCStatisticsFeedbackMessage:(CDStruct_c0785916 *)arg1 time:(double)arg2;
 - (_Bool)getRateControlFeedbackMessage:(id *)arg1 type:(unsigned int)arg2 metaData:(id *)arg3 error:(id *)arg4;
 - (_Bool)processFeedbackMessage:(id)arg1 type:(unsigned int)arg2 metaData:(id)arg3 error:(id *)arg4;
 - (_Bool)getFeedbackMessage:(id *)arg1 type:(unsigned int)arg2 metaData:(id *)arg3 error:(id *)arg4;
+- (void)dealloc;
 - (id)initWithStatisticsCollector:(id)arg1;
 
 @end

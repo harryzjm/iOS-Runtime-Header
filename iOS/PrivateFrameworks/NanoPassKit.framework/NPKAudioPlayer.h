@@ -10,7 +10,11 @@
 {
 }
 
++ (void)_playSoundsWithFallbackHapticIfNecessaryForSoundIdentifier:(unsigned int)arg1;
 + (void)_playSoundsWithIdentifier:(unsigned int)arg1;
++ (void)playIdentityReaderConnectionCompleteHaptic;
++ (void)playIdentityReaderConnectionStartHaptic;
++ (void)playTransactionAuthenticationHaptic;
 + (void)playInAppPaymentFailureHaptic;
 + (void)playInAppPaymentSuccessHaptic;
 + (void)playWarsawHaptic;

@@ -8,6 +8,7 @@
 {
 }
 
+- (id)name;
 - (id)localizedActionStringForWedgeExplosion;
 - (id)localizedWedgeDragLabelWithPercent:(unsigned long long)arg1;
 - (id)alternateArchiveChartTypeAndReturnWriterVersion:(unsigned long long *)arg1 readerVersion:(unsigned long long *)arg2 featureID:(id *)arg3;

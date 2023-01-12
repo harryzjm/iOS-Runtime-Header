@@ -11,7 +11,6 @@
 + (Class)graphClass;
 - (_Bool)requiresReadOnly;
 - (void)closePersistentStore;
-- (void)precachePersonsInformationWithProgressBlock:(CDUnknownBlockType)arg1;
 
 @end
 

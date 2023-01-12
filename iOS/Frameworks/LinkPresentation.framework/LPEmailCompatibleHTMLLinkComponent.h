@@ -9,7 +9,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)styleSet;
 + (id)ruleDictionaryForStyle:(id)arg1;
 + (id)baseRules;
 - (id)initWithURL:(id)arg1 generator:(id)arg2;

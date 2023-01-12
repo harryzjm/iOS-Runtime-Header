@@ -24,8 +24,8 @@
 - (_Bool)synchronouslyCallBlock:(CDUnknownBlockType)arg1;
 - (_Bool)callBlock:(CDUnknownBlockType)arg1;
 - (unsigned long long)count;
-- (void)removeObserver:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)addObserver:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)unregisterObserver:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)registerObserver:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithName:(id)arg1;
 - (id)initWithCallbackQueue:(id)arg1 name:(id)arg2;

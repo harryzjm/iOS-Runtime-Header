@@ -6,15 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthExperienceUI/NSSecureCoding-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC18HealthExperienceUI12ChartContext : NSObject <NSSecureCoding>
+@interface _TtC18HealthExperienceUI12ChartContext : NSObject
 {
     MISSING_TYPE *date;
     MISSING_TYPE *dateInterval;
     MISSING_TYPE *preferredOverlayRawValue;
+    MISSING_TYPE *trendActiveRawValue;
 }
 
 + (_Bool)supportsSecureCoding;

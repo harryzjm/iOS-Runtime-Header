@@ -6,11 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsUI2/SNTestCaseScroll-Protocol.h>
-
 @class MISSING_TYPE, NSString;
 
-@interface _TtC7NewsUI223TodayFeedScrollTestCase : NSObject <SNTestCaseScroll>
+__attribute__((visibility("hidden")))
+@interface _TtC7NewsUI223TodayFeedScrollTestCase : NSObject
 {
     MISSING_TYPE *testName;
     MISSING_TYPE *timeoutInSeconds;

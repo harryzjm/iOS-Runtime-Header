@@ -16,7 +16,6 @@
     long long _camp;
 }
 
-+ (id)classSet;
 + (_Bool)supportsSecureCoding;
 @property(nonatomic) long long camp; // @synthesize camp=_camp;
 @property(nonatomic) double holdoutAllocation; // @synthesize holdoutAllocation=_holdoutAllocation;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVKit/NSCoding-Protocol.h>
-
 @class AVTimer;
 @protocol AVTimeControlling;
 
-@interface AVPlayerControllerTimeResolver : NSObject <NSCoding>
+@interface AVPlayerControllerTimeResolver : NSObject
 {
     id <AVTimeControlling> _playerController;
     double _interval;
@@ -24,7 +22,6 @@
 
 + (_Bool)automaticallyNotifiesObserversOfCurrentTime;
 + (id)keyPathsForValuesAffectingCurrentTimeAtEndOfSeekableTimeRanges;
-+ (id)keyPathsForValuesAffectingThirtySecondsBeforeCurrentTimeWithinSeekableTimeRanges;
 + (id)keyPathsForValuesAffectingSeekableTimeRangeDuration;
 + (id)keyPathsForValuesAffectingRemainingTimeWithinEndTimes;
 + (id)keyPathsForValuesAffectingRemainingTime;
@@ -40,12 +37,9 @@
 @property double resolution;
 @property double interval;
 @property(retain) id <AVTimeControlling> playerController;
-- (void)encodeWithCoder:(id)arg1;
 - (void)dealloc;
-- (id)initWithCoder:(id)arg1;
 - (id)init;
 @property(readonly, getter=isCurrentTimeAtEndOfSeekableTimeRanges) _Bool currentTimeAtEndOfSeekableTimeRanges;
-@property(readonly, getter=isThirtySecondsBeforeCurrentTimeWithinSeekableTimeRanges) _Bool thirtySecondsBeforeCurrentTimeWithinSeekableTimeRanges;
 @property(readonly) double seekableTimeRangeDuration;
 @property(readonly) double remainingTimeWithinEndTimes;
 @property(readonly) double remainingTime;

@@ -11,16 +11,27 @@
 #import <PhotoAnalysis/PVMomentProtocol-Protocol.h>
 #import <PhotoAnalysis/PVPersonProtocol-Protocol.h>
 
-@class NSData, NSDate, NSString;
+@class NSData, NSDate, NSDictionary, NSString;
 @protocol PVFaceProtocol;
 
 @interface PVLibraryGraphNode : MANode <PVMomentProtocol, PVFaceProtocol, PVPersonProtocol, PVAssetProtocol>
 {
+    unsigned short _domain;
+    float _weight;
+    NSString *_label;
+    NSDictionary *_properties;
 }
 
 + (id)dateForTimeInterval:(double)arg1;
 + (double)timeIntervalForDate:(id)arg1;
+- (void).cxx_destruct;
+- (id)properties;
+- (id)label;
+- (float)weight;
+- (unsigned short)domain;
+- (id)propertyDictionary;
 @property(readonly) NSString *localIdentifier;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3 properties:(id)arg4;
 @property(readonly, nonatomic) _Bool isCoarse;
 @property(readonly, nonatomic) NSDate *endDate;
 @property(readonly, nonatomic) NSDate *startDate;
@@ -28,10 +39,12 @@
 @property(readonly, nonatomic) unsigned long long estimatedAssetCount;
 - (_Bool)isDirty;
 - (unsigned long long)faceCountInFaceGroup;
+@property(readonly, nonatomic) unsigned short poseType;
 @property(readonly, nonatomic) unsigned short ageType;
 @property(nonatomic) long long qualityMeasure;
 @property(readonly, nonatomic) NSData *faceprintData;
 @property(readonly, nonatomic) long long clusterSequenceNumber;
+@property(readonly, nonatomic) double poseYaw;
 @property(readonly, nonatomic) double centerY;
 @property(readonly, nonatomic) double centerX;
 @property(readonly, nonatomic) double size;

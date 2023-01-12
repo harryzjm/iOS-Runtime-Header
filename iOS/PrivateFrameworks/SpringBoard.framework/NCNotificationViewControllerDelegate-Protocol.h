@@ -7,13 +7,14 @@
 #import <SpringBoard/NSObject-Protocol.h>
 
 @class BSAnimationSettings, NCNotificationAction, NCNotificationRequest, NCNotificationViewController, NSDictionary, UIDragInteraction, UIView, UIWindow;
-@protocol PLKeyboardHomeAffordanceAssertion, UIDragSession, UIViewSpringAnimationBehaviorDescribing;
+@protocol NCContainerViewProviding, PLKeyboardHomeAffordanceAssertion, UIDragSession, UIViewSpringAnimationBehaviorDescribing;
 
 @protocol NCNotificationViewControllerDelegate <NSObject>
 - (void)notificationViewController:(NCNotificationViewController *)arg1 executeAction:(NCNotificationAction *)arg2 withParameters:(NSDictionary *)arg3 completion:(void (^)(_Bool))arg4;
 - (void)notificationViewController:(NCNotificationViewController *)arg1 requestPermissionToExecuteAction:(NCNotificationAction *)arg2 withParameters:(NSDictionary *)arg3 completion:(void (^)(_Bool))arg4;
 
 @optional
+- (void)notificationViewController:(NCNotificationViewController *)arg1 didUpdatePreferredContentSize:(struct CGSize)arg2;
 - (void)notificationViewController:(NCNotificationViewController *)arg1 isPerformingHoverHighlighting:(_Bool)arg2;
 - (_Bool)notificationViewControllerShouldPerformHoverHighlighting:(NCNotificationViewController *)arg1;
 - (_Bool)notificationViewControllerIsCoalescedBundle:(NCNotificationViewController *)arg1;
@@ -30,9 +31,12 @@
 - (void)notificationViewController:(NCNotificationViewController *)arg1 shouldFinishLongLookTransitionForTrigger:(long long)arg2 withCompletionBlock:(void (^)(_Bool))arg3;
 - (struct CGRect)notificationViewController:(NCNotificationViewController *)arg1 finalFrameForDismissingLongLookFromView:(UIView *)arg2;
 - (struct CGRect)notificationViewController:(NCNotificationViewController *)arg1 initialFrameForPresentingLongLookFromView:(UIView *)arg2;
+- (id <NCContainerViewProviding>)notificationViewControllerContainerViewProviderForExpandedContent:(NCNotificationViewController *)arg1;
 - (_Bool)notificationViewControllerShouldAllowLongPressGesture:(NCNotificationViewController *)arg1;
 - (_Bool)notificationViewControllerShouldAllowDragInteraction:(NCNotificationViewController *)arg1;
+- (_Bool)notificationViewControllerShouldAllowExpandedPlatterInteraction:(NCNotificationViewController *)arg1;
 - (_Bool)notificationViewControllerShouldAllowClickPresentationInteraction:(NCNotificationViewController *)arg1;
+- (_Bool)notificationViewControllerShouldSupportExpandedPlatterInteraction:(NCNotificationViewController *)arg1;
 - (_Bool)notificationViewControllerShouldSupportClickPresentationInteraction:(NCNotificationViewController *)arg1;
 - (_Bool)notificationViewControllerShouldInterpretTapAsDefaultAction:(NCNotificationViewController *)arg1;
 - (_Bool)notificationViewControllerShouldPan:(NCNotificationViewController *)arg1;

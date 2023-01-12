@@ -10,15 +10,23 @@
 
 @interface NSURL (AppleMediaServices)
 + (id)ams_unescapedStringForString:(id)arg1;
-+ (id)ams_realHomeDirectory;
 + (id)ams_engagementDirectory;
 + (id)ams_cachesDirectory;
-- (id)ams_valueForQueryParameter:(id)arg1;
++ (_Bool)_isAppendWithUnmodifiedParametersFeatureFlagEnabled;
++ (id)ams_realHomeDirectory;
 - (id)ams_URLByReplaceingQueryParameters:(id)arg1;
+@property(readonly, nonatomic) NSDictionary *ams_parameters;
+@property(readonly, nonatomic) NSDictionary *ams_unmodifiedParameters;
+- (id)_sortedQueryStringFromParameters:(id)arg1;
+- (id)_ams_URLWithSortedParameters:(id)arg1;
+- (id)ams_valueForQueryParameter:(id)arg1;
+- (id)ams_URLByReplaceingQueryParameters:(id)arg1 withEncodedParameters:(_Bool)arg2;
+- (id)ams_URLBySortingQueryParameters;
 - (id)ams_URLByReplacingSchemeWithScheme:(id)arg1;
 - (id)ams_URLByDeletingTrailingSlash;
 - (id)ams_URLByAppendingQueryParameters:(id)arg1;
+- (id)ams_URLByAppendingQueryParameter:(id)arg1 name:(id)arg2;
+- (id)ams_URLQueryAllowedCharacterSet;
 - (id)ams_schemeSwizzledURL;
-@property(readonly, nonatomic) NSDictionary *ams_parameters;
 @end
 

@@ -8,8 +8,10 @@
 
 @interface UIViewController (MCUI)
 + (id)_MCUIUnwrapViewController:(id)arg1;
++ (void)MCUIPresentViewController:(id)arg1 fromViewController:(id)arg2;
 + (id)MCUITopViewController;
 - (void)MCUIReturnToSender:(_Bool)arg1 returnToAccountSettings:(_Bool)arg2 viewControllerDismissalBlock:(CDUnknownBlockType)arg3;
+- (_Bool)MCUIIsVisibleViewController;
 - (_Bool)MCUIIsShowingProgress;
 - (void)MCUIHideProgressInNavBarShowBackButton:(_Bool)arg1;
 - (void)MCUIShowProgressInNavBar;

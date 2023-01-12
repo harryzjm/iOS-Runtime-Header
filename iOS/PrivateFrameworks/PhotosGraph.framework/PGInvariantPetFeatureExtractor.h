@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <KnowledgeGraphKit/MARelationFeatureExtractor.h>
-
-@interface PGInvariantPetFeatureExtractor : MARelationFeatureExtractor
+@interface PGInvariantPetFeatureExtractor
 {
 }
 
+- (id)labelProcessingForPetNodeSpecies:(unsigned long long)arg1;
+- (id)nodeProcessingForVersion:(long long)arg1 node:(id)arg2;
+- (id)labelsForVersion:(long long)arg1;
+- (id)initWithVersion:(long long)arg1 error:(id *)arg2;
 - (id)initWithError:(id *)arg1;
 
 @end

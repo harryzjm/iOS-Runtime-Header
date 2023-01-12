@@ -8,7 +8,7 @@
 #import <WorkflowKit/WFDynamicResolveParameterDataSource-Protocol.h>
 #import <WorkflowKit/WFIntentDynamicResolverDataSource-Protocol.h>
 
-@class INIntentCodableDescription, INIntentExecutionInfo, INIntentResponseCodableDescription, INSchema, NSArray, NSDictionary, NSString, WFIntentDynamicResolutionRequest, WFIntentDynamicResolver;
+@class INIntentCodableDescription, INIntentDescriptor, INIntentResponseCodableDescription, INSchema, NSArray, NSDictionary, NSString, WFIntentDynamicResolutionRequest, WFIntentDynamicResolver;
 
 @interface WFHandleCustomIntentAction <WFCustomIntentDynamicEnumerationDataSource, WFDynamicResolveParameterDataSource, WFIntentDynamicResolverDataSource>
 {
@@ -22,7 +22,7 @@
     NSDictionary *_inputDictionary;
     NSDictionary *_outputDictionary;
     NSString *_appIdentifier;
-    INIntentExecutionInfo *_intentExecutionInfo;
+    INIntentDescriptor *_intentDescriptor;
     INSchema *_schema;
     WFIntentDynamicResolver *_dynamicResolver;
     WFIntentDynamicResolutionRequest *_lastDynamicResolutionRequest;
@@ -32,7 +32,8 @@
 @property(retain, nonatomic) WFIntentDynamicResolutionRequest *lastDynamicResolutionRequest; // @synthesize lastDynamicResolutionRequest=_lastDynamicResolutionRequest;
 @property(readonly, nonatomic) WFIntentDynamicResolver *dynamicResolver; // @synthesize dynamicResolver=_dynamicResolver;
 @property(readonly, nonatomic) INSchema *schema; // @synthesize schema=_schema;
-@property(readonly, copy, nonatomic) INIntentExecutionInfo *intentExecutionInfo; // @synthesize intentExecutionInfo=_intentExecutionInfo;
+- (void)setIntentDescriptor:(id)arg1;
+- (id)intentDescriptor;
 - (void)dynamicResolveParameterDidEndResolutionSession:(id)arg1;
 - (void)localizedDisambiguationPromptForItems:(id)arg1 intent:(id)arg2 dynamicResolveParameter:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)resolveOptionsForUserInput:(id)arg1 forDynamicResolveParameter:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -62,7 +63,8 @@
 - (id)slots;
 - (id)intentDescription;
 - (void)configureResourcesForParameter:(id)arg1;
-- (id)createResourceManager;
+- (id)generatedResourceNodes;
+- (_Bool)intentDescriptorIsSyncedFromOtherDevices;
 @property(readonly, copy, nonatomic) NSString *appIdentifier; // @synthesize appIdentifier=_appIdentifier;
 - (id)parameterKeysIgnoredForParameterSummary;
 - (_Bool)populatesInputFromInputParameter;
@@ -74,9 +76,8 @@
 - (id)serializedParametersForDonatedIntent:(id)arg1 allowDroppingUnconfigurableValues:(_Bool)arg2;
 - (id)parametersByIntentSlotName;
 - (id)requiredResourcesForIntentAvailableResource;
-- (_Bool)shouldCreateIntentAvailableResource;
 - (id)copyWithSerializedParameters:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 definition:(id)arg2 serializedParameters:(id)arg3 schema:(id)arg4 resolvedIntentExecutionInfo:(id)arg5 stringLocalizer:(id)arg6;
+- (id)initWithIdentifier:(id)arg1 definition:(id)arg2 serializedParameters:(id)arg3 schema:(id)arg4 resolvedIntentDescriptor:(id)arg5 stringLocalizer:(id)arg6;
 - (id)initWithIdentifier:(id)arg1 definition:(id)arg2 serializedParameters:(id)arg3 schema:(id)arg4 className:(id)arg5 bundleIdentifier:(id)arg6 stringLocalizer:(id)arg7;
 - (id)initWithIdentifier:(id)arg1 definition:(id)arg2 serializedParameters:(id)arg3 stringLocalizer:(id)arg4;
 

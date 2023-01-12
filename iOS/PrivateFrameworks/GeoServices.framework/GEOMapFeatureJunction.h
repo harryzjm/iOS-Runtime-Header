@@ -6,21 +6,24 @@
 
 #import <objc/NSObject.h>
 
+#import <GeoServices/NSCopying-Protocol.h>
+
 @class GEOVectorTile;
 
-@interface GEOMapFeatureJunction : NSObject
+@interface GEOMapFeatureJunction : NSObject <NSCopying>
 {
     CDStruct_2c43369c _coordinate;
     CDStruct_6e3f967a _tilePoint;
     GEOVectorTile *_tile;
 }
 
-+ (_Bool)_isPointOnTileBorder:(CDStruct_6e3f967a)arg1;
-+ (id)junctionForRoadFeature:(CDStruct_4da79865 *)arg1 startJunction:(_Bool)arg2;
++ (_Bool)_isPointOnTileBorder:(struct GeoCodecsVectorTilePoint)arg1;
++ (id)junctionForRoadFeature:(id)arg1 startJunction:(_Bool)arg2;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) CDStruct_c3b9c2ee coordinate;
 @property(readonly, nonatomic) _Bool isOnTileBorder;
-@property(readonly, nonatomic) CDStruct_3b01f0aa *connectivityJunction;
+@property(readonly, nonatomic) struct GeoCodecsConnectivityJunction *connectivityJunction;
 @property(readonly, nonatomic) CDStruct_6e3f967a tilePoint;
 @property(readonly, nonatomic) GEOVectorTile *tile;
 

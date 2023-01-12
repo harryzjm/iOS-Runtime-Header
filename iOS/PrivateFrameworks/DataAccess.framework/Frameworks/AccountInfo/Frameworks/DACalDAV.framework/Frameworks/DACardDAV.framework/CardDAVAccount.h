@@ -34,7 +34,7 @@
 - (id)logHandle;
 - (void)removeFromCoreDAVLoggingDelegates;
 - (void)addToCoreDAVLoggingDelegates;
-- (_Bool)handleTrustChallenge:(id)arg1;
+- (_Bool)handleTrustChallenge:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)promptUserForNewCoreDAVPasswordWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (unsigned long long)oauthVariant;
 - (id)spinnerIdentifiers;

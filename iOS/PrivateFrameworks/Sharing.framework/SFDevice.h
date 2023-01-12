@@ -19,6 +19,7 @@
     unsigned char _deviceModelCode;
     _Bool _duetSync;
     _Bool _hasProblem;
+    _Bool _idsIdentifierConflict;
     _Bool _needsAWDL;
     _Bool _needsKeyboard;
     _Bool _needsSetup;
@@ -68,6 +69,7 @@
 @property(copy, nonatomic) NSString *model; // @synthesize model=_model;
 @property(readonly, copy, nonatomic) NSString *mediaRouteID; // @synthesize mediaRouteID=_mediaRouteID;
 @property(readonly, copy, nonatomic) NSString *mediaRemoteID; // @synthesize mediaRemoteID=_mediaRemoteID;
+@property(readonly, nonatomic) _Bool idsIdentifierConflict; // @synthesize idsIdentifierConflict=_idsIdentifierConflict;
 @property(copy, nonatomic) NSString *idsIdentifier; // @synthesize idsIdentifier=_idsIdentifier;
 @property(copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property(nonatomic) unsigned int hotspotInfo; // @synthesize hotspotInfo=_hotspotInfo;
@@ -90,7 +92,6 @@
 - (void)updateWithPairedPeer:(id)arg1;
 - (void)updateWithBLEDevice:(id)arg1;
 @property(readonly, nonatomic) _Bool needsKeyboardOnly;
-@property(readonly, nonatomic) _Bool idsIdentifierConflictDetected;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

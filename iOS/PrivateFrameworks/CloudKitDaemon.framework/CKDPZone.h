@@ -10,7 +10,6 @@
 
 @class CKDPProtectionInfo, CKDPRecordStableUrl, CKDPRecordZoneIdentifier, CKDPShareIdentifier, NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface CKDPZone : PBCodable <NSCopying>
 {
     CKDPProtectionInfo *_protectionInfo;

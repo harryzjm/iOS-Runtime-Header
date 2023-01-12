@@ -29,8 +29,9 @@ __attribute__((visibility("hidden")))
 - (id)_generatePlainWeaveImagePointsForSize:(struct CGSize)arg1;
 - (id)_generatePointsForPlainWeaveSide:(double)arg1 containerRect:(struct CGRect)arg2 imageSize:(struct CGSize)arg3 direction:(unsigned long long)arg4;
 - (id)_generateSingleRowImagePoints;
+- (struct CGSize)_imageSizeForBannerStyle:(unsigned long long)arg1;
 - (void)setHighlighted:(_Bool)arg1;
-- (struct CGSize)imageSizeForBannerStyle:(unsigned long long)arg1;
+- (struct CGSize)imageSizeForBannerStyle:(unsigned long long)arg1 sizeClass:(long long)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)_layoutSubviewsWithSize:(struct CGSize)arg1 computationOnly:(_Bool)arg2;

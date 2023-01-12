@@ -9,25 +9,31 @@
 #import <VoiceShortcutClient/NSCopying-Protocol.h>
 #import <VoiceShortcutClient/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDate, NSString;
+@class NSDate, NSString, NSURL;
 
 @interface WFWorkflowRunningContext : NSObject <NSCopying, NSSecureCoding>
 {
-    _Bool _isShortcutsApp;
+    _Bool _allowsDialogNotifications;
     NSString *_identifier;
     NSString *_workflowIdentifier;
     NSDate *_creationDate;
     NSString *_automationType;
+    NSString *_runSource;
+    NSString *_originatingBundleIdentifier;
     NSString *_progressCategory;
-    NSData *_serializedWorkflowControllerState;
+    unsigned long long _outputBehavior;
+    NSURL *_outputRootIfRunningInFinder;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSData *serializedWorkflowControllerState; // @synthesize serializedWorkflowControllerState=_serializedWorkflowControllerState;
-@property(nonatomic) _Bool isShortcutsApp; // @synthesize isShortcutsApp=_isShortcutsApp;
+@property(retain, nonatomic) NSURL *outputRootIfRunningInFinder; // @synthesize outputRootIfRunningInFinder=_outputRootIfRunningInFinder;
+@property(nonatomic) unsigned long long outputBehavior; // @synthesize outputBehavior=_outputBehavior;
+@property(nonatomic) _Bool allowsDialogNotifications; // @synthesize allowsDialogNotifications=_allowsDialogNotifications;
 @property(readonly, copy, nonatomic) NSString *progressCategory; // @synthesize progressCategory=_progressCategory;
-@property(retain, nonatomic) NSString *automationType; // @synthesize automationType=_automationType;
+@property(copy, nonatomic) NSString *originatingBundleIdentifier; // @synthesize originatingBundleIdentifier=_originatingBundleIdentifier;
+@property(copy, nonatomic) NSString *runSource; // @synthesize runSource=_runSource;
+@property(copy, nonatomic) NSString *automationType; // @synthesize automationType=_automationType;
 @property(retain, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property(copy, nonatomic) NSString *workflowIdentifier; // @synthesize workflowIdentifier=_workflowIdentifier;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
@@ -40,6 +46,7 @@
 - (id)progressForPublishingWithTotalUnitCount:(long long)arg1 cancellationHandler:(CDUnknownBlockType)arg2;
 - (void)removeProgressSubscriber:(id)arg1;
 - (id)addProgressSubscriberUsingPublishingHandler:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) _Bool isShortcutsApp;
 - (id)initWithWorkflowIdentifier:(id)arg1;
 
 @end

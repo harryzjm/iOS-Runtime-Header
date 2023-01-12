@@ -10,12 +10,11 @@
 @protocol HMDCameraStreamControlManagerProtocol;
 
 @protocol HMDCameraStreamControlManagerDelegate <NSObject>
-- (void)streamControlManager:(id <HMDCameraStreamControlManagerProtocol>)arg1 didFail:(NSError *)arg2;
-- (void)streamControlManagerDidStopStreamForSessionID:(HMDCameraStreamSessionID *)arg1 error:(NSError *)arg2;
+- (void)streamControlManager:(id <HMDCameraStreamControlManagerProtocol>)arg1 didStopStreamWithSessionID:(HMDCameraStreamSessionID *)arg2 error:(NSError *)arg3;
 - (void)streamControlManagerDidReconfigureStream:(id <HMDCameraStreamControlManagerProtocol>)arg1;
-- (void)streamControlManagerDidReceiveFirstFrame:(id <HMDCameraStreamControlManagerProtocol>)arg1 audioStreamSetting:(unsigned long long)arg2 aspectRatio:(NSNumber *)arg3 slotIdentifier:(NSNumber *)arg4;
-- (void)streamControlManagerDidStartStream:(id <HMDCameraStreamControlManagerProtocol>)arg1 slotIdentifier:(NSNumber *)arg2;
-- (void)streamControlManagerDidSetupRemoteConnection:(id <HMDCameraStreamControlManagerProtocol>)arg1;
-- (void)streamControlManagerDidNegotiateStream:(id <HMDCameraStreamControlManagerProtocol>)arg1 selectedParameters:(NSDictionary *)arg2;
+- (void)streamControlManager:(id <HMDCameraStreamControlManagerProtocol>)arg1 didReceiveFirstFrameWithAudioStreamSetting:(unsigned long long)arg2 aspectRatio:(NSNumber *)arg3 slotIdentifier:(NSNumber *)arg4;
+- (void)streamControlManager:(id <HMDCameraStreamControlManagerProtocol>)arg1 didStartStreamWithSlotIdentifier:(NSNumber *)arg2;
+- (void)streamControlManagerDidSetUpRemoteConnection:(id <HMDCameraStreamControlManagerProtocol>)arg1;
+- (void)streamControlManager:(id <HMDCameraStreamControlManagerProtocol>)arg1 didNegotiateStreamWithSelectedParameters:(NSDictionary *)arg2;
 @end
 

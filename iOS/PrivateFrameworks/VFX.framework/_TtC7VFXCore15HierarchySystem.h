@@ -10,22 +10,11 @@
 
 @interface _TtC7VFXCore15HierarchySystem : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *rootP;
-    MISSING_TYPE *rootR;
-    MISSING_TYPE *rootS;
-    MISSING_TYPE *rootPR;
-    MISSING_TYPE *rootPS;
-    MISSING_TYPE *rootRS;
-    MISSING_TYPE *rootPRS;
-    MISSING_TYPE *child;
-    MISSING_TYPE *childP;
-    MISSING_TYPE *childR;
-    MISSING_TYPE *childS;
-    MISSING_TYPE *childPR;
-    MISSING_TYPE *childPS;
-    MISSING_TYPE *childRS;
-    MISSING_TYPE *childPRS;
+    MISSING_TYPE *allChildren;
+    MISSING_TYPE *roots;
     MISSING_TYPE *computeDepth;
+    MISSING_TYPE *dirtyParents;
+    MISSING_TYPE *computeInverse;
 }
 
 @end

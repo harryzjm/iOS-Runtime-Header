@@ -11,6 +11,7 @@
 }
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(nonatomic) unsigned long long weekdays; // @dynamic weekdays;
 @property(copy, nonatomic) DNDScheduleTime *endTime; // @dynamic endTime;
 @property(copy, nonatomic) DNDScheduleTime *startTime; // @dynamic startTime;
 

@@ -11,6 +11,7 @@
 @class CLLocation, NSDate, NSString;
 
 @interface PXForYouSuggestionDisplayAsset (PhotosUI) <PUDisplayAsset>
+@property(readonly, nonatomic) _Bool isGuestAsset;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 videoKeyFrameSourceTime;
 @property(readonly, nonatomic) unsigned long long deferredLogInfo;
 @property(readonly, nonatomic) unsigned long long pixelHeight;
@@ -39,6 +40,7 @@
 @property(readonly, nonatomic) unsigned short deferredProcessingNeeded;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic, getter=isFavorite) _Bool favorite;
+@property(readonly, nonatomic) _Bool hasSyndicationInformation;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) _Bool isAnimatedImage;
 @property(readonly, nonatomic) NSDate *localCreationDate;

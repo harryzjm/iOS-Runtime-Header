@@ -22,6 +22,10 @@
 + (id)_dispatchQueue;
 + (id)notificationNameForKey:(id)arg1;
 + (_Bool)_notifyDownloadUpdateForKey:(id)arg1 withState:(unsigned long long)arg2;
++ (id)immediateDownloadNotificationKeyForNamespaceNames:(id)arg1;
++ (_Bool)_errorIsInsufficientDiskSpaceCloudKitError:(id)arg1;
++ (_Bool)notifyDownloadStalledForKey:(id)arg1 withProgress:(unsigned long long)arg2;
++ (_Bool)notifyDownloadFailedForKey:(id)arg1 withCloudKitError:(id)arg2;
 + (_Bool)notifyDownloadFailedForKey:(id)arg1 withError:(unsigned long long)arg2;
 + (_Bool)notifyDownloadCompletedForKey:(id)arg1;
 + (_Bool)notifyDownloadProgressForKey:(id)arg1 withProgress:(unsigned long long)arg2;

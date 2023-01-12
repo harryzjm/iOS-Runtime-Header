@@ -10,5 +10,9 @@
 
 @protocol CHUISAvocadoHostViewControllerDelegate <NSObject>
 - (void)avocadoHostViewController:(CHUISAvocadoHostViewController *)arg1 requestsLaunchWithAction:(BSAction *)arg2;
+
+@optional
+- (_Bool)widgetViewControllerShouldTransitionSceneToBackground:(CHUISAvocadoHostViewController *)arg1;
+- (void)widgetViewControllerUsesSystemBackgroundMaterialDidChange:(CHUISAvocadoHostViewController *)arg1;
 @end
 

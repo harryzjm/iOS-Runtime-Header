@@ -10,10 +10,12 @@
 {
 }
 
++ (id)__traits_KEY;
 + (id)__downloadedDate_KEY;
 + (id)__playbackPosition_KEY;
 + (id)__volumeAdjustment_KEY;
 + (id)__gaplessInfo_KEY;
++ (id)__cloudStatus_KEY;
 + (id)__userRating_KEY;
 + (id)__storeAsset_KEY;
 + (id)__homeSharingAsset_KEY;
@@ -59,6 +61,7 @@
 + (id)requiredLibraryRemovalProperties;
 + (_Bool)supportsKeepLocalStatusObservation;
 + (id)requiredKeepLocalStatusObservationProperties;
++ (long long)genericObjectType;
 + (id)requiredStoreLibraryPersonalizationProperties;
 - (id)artworkCatalog;
 - (id)humanDescription;
@@ -80,6 +83,7 @@
 @property(nonatomic) long long classicalMovementCount; // @dynamic classicalMovementCount;
 @property(nonatomic) long long classicalMovementNumber; // @dynamic classicalMovementNumber;
 @property(copy, nonatomic) NSString *classicalWork; // @dynamic classicalWork;
+@property(nonatomic) long long cloudStatus; // @dynamic cloudStatus;
 @property(retain, nonatomic) MPModelComposer *composer; // @dynamic composer;
 @property(copy, nonatomic) NSString *copyrightText; // @dynamic copyrightText;
 @property(nonatomic) long long discNumber; // @dynamic discNumber;
@@ -108,6 +112,7 @@
 @property(copy, nonatomic) NSString *title; // @dynamic title;
 @property(nonatomic) long long trackCount; // @dynamic trackCount;
 @property(nonatomic) long long trackNumber; // @dynamic trackNumber;
+@property(nonatomic) unsigned long long traits; // @dynamic traits;
 @property(nonatomic) float userRating; // @dynamic userRating;
 @property(nonatomic) float volumeAdjustment; // @dynamic volumeAdjustment;
 @property(nonatomic) float volumeNormalization; // @dynamic volumeNormalization;

@@ -15,7 +15,7 @@
 
 - (void).cxx_destruct;
 - (void)action:(id)arg1 didDismissAlertController:(id)arg2;
-- (void)performAction;
+- (void)performActionWithFBOptions:(id)arg1;
 @property(readonly, nonatomic) NSString *icsString;
 @property(readonly, nonatomic) CNContact *contact;
 - (id)actionURL;

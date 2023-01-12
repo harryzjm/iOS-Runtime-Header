@@ -25,6 +25,7 @@
 - (struct __CFString *)_cfUUIDString;
 @property(readonly, copy) NSString *UUIDString;
 - (void)getUUIDBytes:(unsigned char [16])arg1;
+- (long long)compare:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithUUIDBytes:(unsigned char [16])arg1;

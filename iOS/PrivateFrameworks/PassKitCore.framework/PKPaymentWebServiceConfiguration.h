@@ -9,11 +9,10 @@
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
 @class NSDictionary, NSNumber, NSURL;
-@protocol OS_dispatch_queue;
 
 @interface PKPaymentWebServiceConfiguration : NSObject <NSSecureCoding>
 {
-    NSObject<OS_dispatch_queue> *_queue;
+    struct os_unfair_lock_s _lock;
     NSDictionary *_configuration;
     NSNumber *_version;
     NSURL *_configurationURL;
@@ -24,12 +23,13 @@
 @property(copy) NSURL *configurationURL; // @synthesize configurationURL=_configurationURL;
 @property(readonly) __weak NSNumber *version; // @synthesize version=_version;
 @property(copy) NSDictionary *configuration; // @synthesize configuration=_configuration;
-- (id)_queue_unsupported_region:(id)arg1;
-- (id)_queue_unsupported_regions;
-- (id)_queue_region:(id)arg1;
-- (id)_queue_regions;
-- (_Bool)_queue_supportedForOSVersion:(id)arg1 inRegion:(id)arg2 deviceClass:(id)arg3 platform:(id)arg4 suportedRegions:(_Bool)arg5;
+- (id)_lock_unsupported_region:(id)arg1;
+- (id)_lock_unsupported_regions;
+- (id)_lock_region:(id)arg1;
+- (id)_lock_regions;
+- (_Bool)_lock_supportedForOSVersion:(id)arg1 inRegion:(id)arg2 deviceClass:(id)arg3 platform:(id)arg4 suportedRegions:(_Bool)arg5;
 - (id)_regionsForOSVersion:(id)arg1 deviceClass:(id)arg2 platform:(id)arg3 supportedRegions:(_Bool)arg4;
+- (id)credentialTypesRequiringMetadata;
 - (id)contactFormatConfiguration;
 - (_Bool)shouldEnableTransitServiceCheckInForRegion:(id)arg1;
 - (_Bool)shouldPaymentSetupFeaturesUseStrictProductsCheckForRegion:(id)arg1;
@@ -37,7 +37,6 @@
 - (double)deviceCheckInIntervalForRegion:(id)arg1;
 - (id)marketGeoRegionNotificationNetworkThresholdsForRegion:(id)arg1;
 - (id)marketGeoRegionNotificationTimeRangeForRegion:(id)arg1;
-- (_Bool)browseProvisioningBankAppsManualEntryDisabledForRegion:(id)arg1;
 - (_Bool)browseProvisioningBankAppsEnabledForRegion:(id)arg1;
 - (id)numberOfDaysBetweenMapsReprocessingForRegion:(id)arg1;
 - (_Bool)AMPNonDefaultBehaviourDisabledForRegion:(id)arg1;
@@ -47,10 +46,10 @@
 - (_Bool)remotePaymentsRequiredForVoiceover;
 - (id)unsupportedWebPaymentConfigurations;
 - (id)featureWithType:(long long)arg1 inRegion:(id)arg2;
-- (id)_queue_featuresForRegion:(id)arg1 osVersion:(id)arg2 deviceClass:(id)arg3;
-- (id)_queue_featuresForRegion:(id)arg1;
+- (id)_lock_featuresForRegion:(id)arg1 osVersion:(id)arg2 deviceClass:(id)arg3;
+- (id)_lock_featuresForRegion:(id)arg1;
 - (id)featuresForRegion:(id)arg1;
-- (id)_queue_globalFeaturesForOSVersion:(id)arg1 deviceClass:(id)arg2;
+- (id)_lock_globalFeaturesForOSVersion:(id)arg1 deviceClass:(id)arg2;
 - (_Bool)hasFeatureRequiringRegistrationInRegion:(id)arg1 osVersion:(id)arg2 deviceClass:(id)arg3;
 - (_Bool)hasFeaturesSupportedForRegion:(id)arg1 osVersion:(id)arg2 deviceClass:(id)arg3;
 - (id)_featuresFromDictionary:(id)arg1 withRegion:(id)arg2 osVersion:(id)arg3 deviceClass:(id)arg4;

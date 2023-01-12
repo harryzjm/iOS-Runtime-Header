@@ -20,8 +20,7 @@
 @property(readonly, nonatomic) NSString *merchantIdentifier; // @synthesize merchantIdentifier=_merchantIdentifier;
 - (id)encode;
 - (id)init;
-- (id)initWithMerchantIdentifier:(id)arg1 applicationData:(id)arg2;
-- (id)initWithPaymentRequest:(id)arg1;
+- (id)initWithMerchantIdentifier:(id)arg1 applicationData:(id)arg2 merchantSession:(id)arg3;
 
 @end
 

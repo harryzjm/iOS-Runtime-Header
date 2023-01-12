@@ -13,6 +13,7 @@
 
 @interface FPAppMetadata : NSObject <NSSecureCoding, NSCopying>
 {
+    _Bool _isManaged;
     _Bool _useDefaultProviderDomainID;
     NSString *_bundleID;
     NSString *_displayName;
@@ -28,6 +29,7 @@
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool useDefaultProviderDomainID; // @synthesize useDefaultProviderDomainID=_useDefaultProviderDomainID;
+@property(readonly, nonatomic) _Bool isManaged; // @synthesize isManaged=_isManaged;
 @property(retain, nonatomic) NSString *providerDomainID; // @synthesize providerDomainID=_providerDomainID;
 @property(readonly, nonatomic) NSURL *documentsURL; // @synthesize documentsURL=_documentsURL;
 @property(retain, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;

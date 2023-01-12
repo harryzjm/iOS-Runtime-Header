@@ -8,10 +8,11 @@
 #import <CommunicationsSetupUI/CNFRegFirstRunDelegate-Protocol.h>
 #import <CommunicationsSetupUI/CNFRegViewAccountControllerDelegate-Protocol.h>
 #import <CommunicationsSetupUI/CNFRegWizardControllerDelegate-Protocol.h>
+#import <CommunicationsSetupUI/PSSystemPolicyForAppDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSNumber, NSString, PSSpecifier;
+@class NSArray, NSMutableArray, NSNumber, NSString, PSSpecifier, PSSystemPolicyForApp;
 
-@interface CNFRegSettingsController <CNFRegWizardControllerDelegate, CNFRegViewAccountControllerDelegate, CNFRegFirstRunDelegate, AKAppleIDAuthenticationDelegate>
+@interface CNFRegSettingsController <CNFRegWizardControllerDelegate, CNFRegViewAccountControllerDelegate, CNFRegFirstRunDelegate, AKAppleIDAuthenticationDelegate, PSSystemPolicyForAppDelegate>
 {
     PSSpecifier *_faceTimeEnabledGroupSpecifier;
     PSSpecifier *_faceTimeEnabledSpecifier;
@@ -24,6 +25,7 @@
     NSArray *_GFTProminenceGroupSpecifiers;
     NSArray *_faceTimePhotosGroupSpecifiers;
     NSArray *_faceTimeVPCGroupSpecifiers;
+    NSArray *_sharePlaySpecifiers;
     NSArray *_temporaryPhoneGroupSpecifiers;
     NSArray *_temporaryPhoneDescriptionGroupSpecifiers;
     NSArray *_temporaryPhoneRemoveGroupSpecifiers;
@@ -39,10 +41,12 @@
     _Bool _showDeviceAliases;
     _Bool _hideAppleIDLogin;
     _Bool _showReceiveRelayCalls;
+    PSSystemPolicyForApp *_systemPolicy;
 }
 
 + (_Bool)_shouldForwardViewWillTransitionToSize;
 - (void).cxx_destruct;
+@property(retain, nonatomic) PSSystemPolicyForApp *systemPolicy; // @synthesize systemPolicy=_systemPolicy;
 @property(readonly, nonatomic) _Bool showReceiveRelayCalls; // @synthesize showReceiveRelayCalls=_showReceiveRelayCalls;
 @property(nonatomic) _Bool hideAppleIDLogin; // @synthesize hideAppleIDLogin=_hideAppleIDLogin;
 @property(nonatomic) _Bool showDeviceAliases; // @synthesize showDeviceAliases=_showDeviceAliases;
@@ -84,6 +88,9 @@
 - (id)callerIdAliasSpecifiers;
 - (id)possibleCallerIdAliases;
 - (_Bool)showCallerId:(_Bool)arg1 animated:(_Bool)arg2;
+- (_Bool)shouldShowSharePlaySpecifiers;
+- (void)refreshSharePlaySettingsAnimated:(_Bool)arg1;
+- (void)showSharePlaySettings:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setGFTAudioProminenceEnabled:(id)arg1 specifier:(id)arg2;
 - (id)getGFTAudioProminenceEnabledForSpecifier:(id)arg1;
 - (_Bool)shouldShowGFTProminenceSpecifiers;

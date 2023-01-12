@@ -21,6 +21,7 @@
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_updateStatus;
+- (double)nextOverrideResumeTimeInterval;
 - (void)dealloc;
 - (id)init;
 

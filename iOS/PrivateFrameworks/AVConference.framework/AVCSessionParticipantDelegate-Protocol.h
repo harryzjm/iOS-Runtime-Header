@@ -17,8 +17,10 @@
 - (void)participant:(AVCSessionParticipant *)arg1 remoteAudioPausedDidChange:(_Bool)arg2;
 - (void)participant:(AVCSessionParticipant *)arg1 videoPaused:(_Bool)arg2 didSucceed:(_Bool)arg3 error:(NSError *)arg4;
 - (void)participant:(AVCSessionParticipant *)arg1 audioPaused:(_Bool)arg2 didSucceed:(_Bool)arg3 error:(NSError *)arg4;
+- (void)participant:(AVCSessionParticipant *)arg1 remoteScreenEnabledDidChange:(_Bool)arg2;
 - (void)participant:(AVCSessionParticipant *)arg1 remoteVideoEnabledDidChange:(_Bool)arg2;
 - (void)participant:(AVCSessionParticipant *)arg1 remoteAudioEnabledDidChange:(_Bool)arg2;
+- (void)participant:(AVCSessionParticipant *)arg1 screenEnabled:(_Bool)arg2 didSucceed:(_Bool)arg3 error:(NSError *)arg4;
 - (void)participant:(AVCSessionParticipant *)arg1 videoEnabled:(_Bool)arg2 didSucceed:(_Bool)arg3 error:(NSError *)arg4;
 - (void)participant:(AVCSessionParticipant *)arg1 audioEnabled:(_Bool)arg2 didSucceed:(_Bool)arg3 error:(NSError *)arg4;
 @end

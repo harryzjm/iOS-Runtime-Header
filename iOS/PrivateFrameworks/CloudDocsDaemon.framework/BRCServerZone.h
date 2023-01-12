@@ -20,7 +20,6 @@
     BRCZoneRowID *_dbRowID;
     BRCClientZone *_clientZone;
     unsigned int _state;
-    BRCSyncContext *_syncContext;
     BRCSyncContext *_metadataSyncContext;
     _Bool _needsSave;
     BRCPendingChangesStream *_pendingChanges;
@@ -103,7 +102,6 @@
 @property(readonly, nonatomic) NSString *ownerName;
 @property(readonly, nonatomic) BRCSyncContext *metadataSyncContextIfExists;
 @property(readonly, nonatomic) BRCSyncContext *metadataSyncContext;
-- (id)syncContext;
 - (id)asSharedZone;
 - (id)asPrivateZone;
 @property(readonly, nonatomic) _Bool isPrivateZone;

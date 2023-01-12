@@ -19,8 +19,9 @@
 @property(readonly, copy, nonatomic) UIColor *mostInterestingColor;
 @property(readonly, copy, nonatomic) UIColor *accentColor;
 @property(readonly, copy, nonatomic) UIColor *backgroundColor;
-@property(nonatomic) _Bool presenterWantsExtraLargeWidgetsHidden;
+@property(readonly, copy, nonatomic) NSString *sbh_galleryItemIdentifier;
 @property(readonly, nonatomic) id <SBLeafIconDataSource> sbh_iconDataSource;
+@property(readonly, nonatomic) _Bool sbh_canBeAddedToStack;
 @property(readonly, nonatomic) unsigned long long sbh_supportedSizeClasses;
 @property(readonly, copy, nonatomic) NSString *sbh_widgetDescription;
 @property(readonly, copy, nonatomic) NSString *sbh_widgetName;

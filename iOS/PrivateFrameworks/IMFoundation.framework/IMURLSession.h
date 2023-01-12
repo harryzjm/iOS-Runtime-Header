@@ -26,6 +26,7 @@
 - (void)URLSession:(id)arg1 didBecomeInvalidWithError:(id)arg2;
 - (void)performRequest:(id)arg1 completionBlockWithTimingData:(CDUnknownBlockType)arg2;
 - (void)performRequest:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)finishTasksAndInvalidate;
 - (id)initWithConfiguration:(id)arg1 queue:(id)arg2 requiresIDSHost:(_Bool)arg3;
 
 // Remaining properties

@@ -9,7 +9,7 @@
 #import <GameController/GCLogicalDeviceRegistry-Protocol.h>
 #import <GameController/GCPhysicalDeviceRegistry-Protocol.h>
 
-@class NSMutableDictionary, NSMutableSet, NSSet, NSString;
+@class NSMutableDictionary, NSMutableSet, NSSet, NSString, NSURL;
 @protocol GCDeviceConfigurationRegistry;
 
 @interface _GCControllerManagerServer <GCPhysicalDeviceRegistry, GCLogicalDeviceRegistry, GCDeviceRegistry, GCDeviceConfigurationRegistry>
@@ -26,15 +26,22 @@
     NSMutableSet *_hidServices;
     NSMutableDictionary *_hidServiceOwners;
     NSMutableDictionary *_pendingDriverConnections;
+    NSMutableDictionary *_pendingFilterConnections;
+    NSURL *_lastGeneratedURL;
     NSSet *_activeControllerDevices;
+    NSSet *_pidsWithKeyboardAndMouseSupport;
 }
 
 - (void).cxx_destruct;
+@property(copy) NSSet *pidsWithKeyboardAndMouseSupport; // @synthesize pidsWithKeyboardAndMouseSupport=_pidsWithKeyboardAndMouseSupport;
 @property(copy) NSSet *activeControllerDevices; // @synthesize activeControllerDevices=_activeControllerDevices;
+- (void)_hidqueue_pushPendingFilterConnection:(id)arg1 forRegistryID:(id)arg2;
+- (id)_hidqueue_popPendingFilterConnectionsForRegistryID:(id)arg1;
 - (void)_hidqueue_pushPendingDriverConnection:(id)arg1 forRegistryID:(id)arg2;
 - (id)_hidqueue_popPendingDriverConnectionsForRegistryID:(id)arg1;
 - (void)onHIDDeviceRemoved:(struct __IOHIDServiceClient *)arg1;
 - (void)onHIDDeviceAdded:(struct __IOHIDServiceClient *)arg1;
+- (id)makeHIDEventSource:(struct __IOHIDEventSystemClient *)arg1;
 - (void)refreshActiveConfigurations;
 - (void)refreshActiveConfigurationsWithCompletion:(CDUnknownBlockType)arg1;
 - (_Bool)removeConfigurationWithIdentifier:(id)arg1;
@@ -42,6 +49,7 @@
 - (_Bool)addConfiguration:(id)arg1 replaceExisting:(_Bool)arg2;
 - (id)configurationWithIdentifier:(id)arg1;
 - (_Bool)hasConfigurationWithIdentifier:(id)arg1;
+- (void)_onqueue_signalGameControllerFocusModeEvent;
 - (void)deviceManager:(id)arg1 deviceDidDisconnect:(id)arg2;
 - (void)deviceManager:(id)arg1 deviceDidConnect:(id)arg2;
 @property(readonly) id <GCDeviceConfigurationRegistry> deviceConfigurationRegistry;
@@ -54,8 +62,12 @@
 - (id)initWithControllerProfiles:(id)arg1;
 - (id)init;
 - (id)logicalDevices;
+- (id)lastGeneratedURL;
+- (void)setLastGeneratedURL:(id)arg1;
 - (void)driverCheckIn;
 - (_Bool)acceptIncomingDriverConnection:(id)arg1;
+- (void)disableKeyboardAndMouseSupportForPID:(id)arg1;
+- (void)enableKeyboardAndMouseSupportForPID:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

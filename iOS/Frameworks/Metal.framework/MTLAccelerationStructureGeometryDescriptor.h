@@ -8,16 +8,21 @@
 
 #import <Metal/NSCopying-Protocol.h>
 
+@class NSString;
+
 @interface MTLAccelerationStructureGeometryDescriptor : NSObject <NSCopying>
 {
     _Bool _opaque;
     _Bool _allowDuplicateIntersectionFunctionInvocation;
     unsigned long long _intersectionFunctionTableOffset;
+    NSString *_label;
 }
 
+@property(copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property(nonatomic) _Bool allowDuplicateIntersectionFunctionInvocation; // @synthesize allowDuplicateIntersectionFunctionInvocation=_allowDuplicateIntersectionFunctionInvocation;
 @property(nonatomic) _Bool opaque; // @synthesize opaque=_opaque;
 @property(nonatomic) unsigned long long intersectionFunctionTableOffset; // @synthesize intersectionFunctionTableOffset=_intersectionFunctionTableOffset;
+- (void)dealloc;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

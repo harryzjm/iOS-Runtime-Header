@@ -23,6 +23,7 @@
 @property(nonatomic) long long playingItemIndex; // @synthesize playingItemIndex=_playingItemIndex;
 @property(retain, nonatomic) MCDPCModel *model; // @synthesize model=_model;
 @property(nonatomic, getter=isSeeking) _Bool seeking; // @synthesize seeking=_seeking;
+- (_Bool)nowPlayingViewControllerIsRightHandDrive:(id)arg1;
 - (void)nowPlayingViewControllerMore:(id)arg1;
 - (_Bool)nowPlayingViewControllerCanShowMore:(id)arg1;
 - (void)nowPlayingViewControllerAddToLibrary:(id)arg1;

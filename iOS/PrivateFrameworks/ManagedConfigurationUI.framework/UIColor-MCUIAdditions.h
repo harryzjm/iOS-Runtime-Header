@@ -7,6 +7,7 @@
 #import <UIKit/UIColor.h>
 
 @interface UIColor (MCUIAdditions)
++ (id)MCUIDetailTextColorAttributes;
 + (id)MCUIVerifiedColor;
 @end
 

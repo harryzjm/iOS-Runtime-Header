@@ -21,8 +21,8 @@ __attribute__((visibility("hidden")))
 - (id)creationDate;
 - (void)setShareeStatus:(unsigned long long)arg1;
 - (unsigned long long)shareeStatus;
-- (void)setShareeURL:(id)arg1;
-- (id)shareeURL;
+- (void)setShareeURLString:(id)arg1;
+- (id)shareeURLString;
 - (void)setShareeLastName:(id)arg1;
 - (id)shareeLastName;
 - (void)setShareeFirstName:(id)arg1;

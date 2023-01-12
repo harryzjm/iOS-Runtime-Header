@@ -47,6 +47,7 @@
 - (_Bool)_handleMkCalTaskGroupError:(id)arg1 forCalendar:(id)arg2;
 - (id)_getMkcalendarTaskGroupForCalendar:(id)arg1;
 - (id)_generateTimeZoneString:(id)arg1;
+- (id)_getSetPropertiesTaskWithItemsToSet:(id)arg1 itemsToRemove:(id)arg2 atURL:(id)arg3;
 - (id)_getSetPropertyTaskWithCoreDAVItem:(id)arg1 atURL:(id)arg2;
 - (id)_getSetIsAffectingAvailabilityTask:(_Bool)arg1 forCalendar:(id)arg2 atURL:(id)arg3;
 - (id)_getIsAffectingAvailabilityCoreDAVItem:(id)arg1;

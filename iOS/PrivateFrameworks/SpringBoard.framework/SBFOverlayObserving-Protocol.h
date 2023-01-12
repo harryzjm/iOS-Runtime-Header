@@ -8,7 +8,7 @@
 
 @protocol SBFOverlayObserving
 - (void)overlayController:(id <SBFOverlayControlling>)arg1 visibilityDidChange:(_Bool)arg2;
-- (void)overlayController:(id <SBFOverlayControlling>)arg1 didChangePresentationProgress:(double)arg2 fromLeading:(_Bool)arg3;
+- (void)overlayController:(id <SBFOverlayControlling>)arg1 didChangePresentationProgress:(double)arg2 newPresentationProgress:(double)arg3 fromLeading:(_Bool)arg4;
 - (void)overlayControllerDidBeginChangingPresentationProgress:(id <SBFOverlayControlling>)arg1;
 @end
 

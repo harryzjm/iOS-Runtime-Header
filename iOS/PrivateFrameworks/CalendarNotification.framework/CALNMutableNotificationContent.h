@@ -11,6 +11,7 @@
 }
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(nonatomic) unsigned long long interruptionLevel; // @dynamic interruptionLevel;
 @property(nonatomic) unsigned long long summaryArgumentCount; // @dynamic summaryArgumentCount;
 @property(copy, nonatomic) NSString *summaryArgument; // @dynamic summaryArgument;
 @property(copy, nonatomic) NSString *threadIdentifier; // @dynamic threadIdentifier;
@@ -28,6 +29,7 @@
 @property(copy, nonatomic) NSString *body; // @dynamic body;
 @property(copy, nonatomic) NSString *subtitle; // @dynamic subtitle;
 @property(copy, nonatomic) NSString *title; // @dynamic title;
+- (id)init;
 - (void)setUserInfoValue:(id)arg1 forKey:(id)arg2;
 
 @end

@@ -8,7 +8,7 @@
 
 #import <IDSFoundation/NSCopying-Protocol.h>
 
-@class APSOutgoingMessageCheckpointTrace, NSArray, NSData, NSDate, NSDictionary, NSMutableArray, NSNumber, NSString, NSURL;
+@class NSArray, NSData, NSDate, NSDictionary, NSMutableArray, NSNumber, NSString, NSURL;
 @protocol IDSBaseMessageSigningSession;
 
 @interface IDSBaseMessage : NSObject <NSCopying>
@@ -52,7 +52,6 @@
     unsigned long long _receivedByteCount;
     NSNumber *_pushAckTimestamp;
     _Bool _isMultipleAuthCertCapable;
-    APSOutgoingMessageCheckpointTrace *_apsdCheckpointTrace;
     NSDictionary *_responseAlertInfo;
     NSNumber *_originalTimestamp;
     NSDate *_requestStart;
@@ -93,7 +92,6 @@
 @property long long deliveryMechanism; // @synthesize deliveryMechanism=_deliveryMechanism;
 @property long long importanceLevel; // @synthesize importanceLevel=_importanceLevel;
 @property(retain) NSNumber *pushAckTimestamp; // @synthesize pushAckTimestamp=_pushAckTimestamp;
-@property(retain) APSOutgoingMessageCheckpointTrace *apsdCheckpointTrace; // @synthesize apsdCheckpointTrace=_apsdCheckpointTrace;
 @property _Bool hasAttemptedAPSDelivery; // @synthesize hasAttemptedAPSDelivery=_hasAttemptedAPSDelivery;
 @property _Bool hasReceivedPushAck; // @synthesize hasReceivedPushAck=_hasReceivedPushAck;
 @property(retain) NSString *topic; // @synthesize topic=_topic;
@@ -124,6 +122,8 @@
 @property(readonly) _Bool requiresPushTokenKeys;
 @property(readonly) NSArray *requiredKeys;
 - (_Bool)hasRequiredKeys:(id *)arg1;
+@property(readonly, nonatomic) _Bool ignorePushSigHeaders;
+@property(readonly, nonatomic) _Bool wantsBodySigningOnly;
 - (_Bool)wantsUDID;
 - (_Bool)wantsClientInfo;
 - (_Bool)wantsGZip;
@@ -147,6 +147,7 @@
 @property(readonly) NSDictionary *messageBodyUsingCache;
 @property(readonly) _Bool isValidMessage;
 @property(readonly) _Bool payloadCanBeLogged;
+@property(readonly) _Bool wantsStatusCodeBasedRetries;
 - (_Bool)isIDSMessage;
 - (id)messageBodyDataOverride;
 @property(readonly) NSString *dataUsageBundleIdentifier;

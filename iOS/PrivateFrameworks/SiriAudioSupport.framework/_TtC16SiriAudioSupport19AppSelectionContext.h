@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *report;
     MISSING_TYPE *record;
+    MISSING_TYPE *intent;
 }
 
 @end

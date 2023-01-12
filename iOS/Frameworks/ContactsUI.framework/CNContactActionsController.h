@@ -16,6 +16,7 @@
 @interface CNContactActionsController : NSObject <CNAvatarCardActionListController, CNUINavigationListViewControllerDelegate, CNUIUserActionListConsumer>
 {
     _Bool _shouldUseOutlinedActionGlyphStyle;
+    _Bool _displayMenuIconAtTopLevel;
     CNContact *_contact;
     id <CNUIUserActionListDataSource> _actionsDataSource;
     NSDictionary *_modelsByActionTypes;
@@ -30,6 +31,7 @@
 + (id)descriptorForRequiredKeys;
 + (id)supportedActionTypes;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool displayMenuIconAtTopLevel; // @synthesize displayMenuIconAtTopLevel=_displayMenuIconAtTopLevel;
 @property(readonly, copy, nonatomic) NSArray *actionTypes; // @synthesize actionTypes=_actionTypes;
 @property(nonatomic) long long actionsOrder; // @synthesize actionsOrder=_actionsOrder;
 @property(nonatomic) __weak id <CNUINavigationListStyle> navigationListStyle; // @synthesize navigationListStyle=_navigationListStyle;

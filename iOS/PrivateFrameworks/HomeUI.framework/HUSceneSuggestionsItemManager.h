@@ -6,18 +6,21 @@
 
 #import <Home/HFItemManager.h>
 
-@class HFActionSetSuggestionItemProvider, HFItem;
+@class HFItem, HREActionSetRecommendationItemProvider;
 
 @interface HUSceneSuggestionsItemManager : HFItemManager
 {
     HFItem *_addCustomSceneItem;
-    HFActionSetSuggestionItemProvider *_suggestionItemProvider;
+    HREActionSetRecommendationItemProvider *_suggestionItemProvider;
 }
 
++ (id)computeNumberOfSuggestionsInHome:(id)arg1;
++ (id)suggestionsItemProviderInHome:(id)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) HFActionSetSuggestionItemProvider *suggestionItemProvider; // @synthesize suggestionItemProvider=_suggestionItemProvider;
+@property(retain, nonatomic) HREActionSetRecommendationItemProvider *suggestionItemProvider; // @synthesize suggestionItemProvider=_suggestionItemProvider;
 @property(retain, nonatomic) HFItem *addCustomSceneItem; // @synthesize addCustomSceneItem=_addCustomSceneItem;
 - (id)_currentSectionIdentifiers;
+- (id)currentSectionIdentifiersSnapshot;
 - (id)_sectionIdentifierForItem:(id)arg1;
 - (id)_titleForSectionWithIdentifier:(id)arg1;
 - (id)_identifierForSection:(unsigned long long)arg1;

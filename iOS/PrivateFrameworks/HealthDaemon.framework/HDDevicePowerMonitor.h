@@ -19,10 +19,6 @@
 
 - (void).cxx_destruct;
 @property(readonly) _Bool primarySourceIsCharging;
-- (void)_queue_updatePrimaryPowerSourceState:(int)arg1;
-- (void)powerSource:(id)arg1 changed:(unsigned int)arg2;
-- (void)powerSourceLost:(id)arg1;
-- (void)powerSourceFound:(id)arg1;
 - (void)removeDevicePowerObserver:(id)arg1;
 - (void)addDevicePowerObserver:(id)arg1 queue:(id)arg2;
 - (void)dealloc;

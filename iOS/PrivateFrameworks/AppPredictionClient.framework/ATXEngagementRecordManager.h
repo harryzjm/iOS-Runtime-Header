@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <AppPredictionClient/ATXEngagementRecordManagerProtocol-Protocol.h>
+
 @class ATXBiomeERMStream, ATXExecutableReferenceManager, NSString;
 @protocol OS_dispatch_queue;
 
-@interface ATXEngagementRecordManager : NSObject
+@interface ATXEngagementRecordManager : NSObject <ATXEngagementRecordManagerProtocol>
 {
     ATXExecutableReferenceManager *_referenceManager;
     NSString *_path;
@@ -28,7 +30,7 @@
 - (void)_addHiddenSuggestionNoSync:(id)arg1 duration:(double)arg2 engagementRecordType:(unsigned long long)arg3;
 - (void)_addEngagedSuggestionNoSync:(id)arg1 type:(unsigned long long)arg2;
 - (id)_engagedEntriesNoSync;
-- (void)_fetchEngagedEntriesWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)fetchEngagedEntriesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)_engagedEntriesNoSyncOfType:(unsigned long long)arg1 queryOptions:(unsigned long long)arg2;
 - (id)_identifiersFromEntries:(id)arg1;
 - (void)removeAllEngagementsWithCompletion:(CDUnknownBlockType)arg1;
@@ -46,9 +48,14 @@
 - (_Bool)hasEngagedWithSuggestion:(id)arg1 engagementRecordType:(unsigned long long)arg2;
 - (void)updateForClientModelCacheUpdate:(id)arg1 clientModelId:(id)arg2;
 - (id)jsonDict;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (id)initWithCacheDirectory:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

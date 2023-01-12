@@ -6,7 +6,7 @@
 
 #import <MTLSimDriver/MTLCommandEncoder-Protocol.h>
 
-@protocol MTLBuffer, MTLCounterSampleBuffer, MTLDepthStencilState, MTLFence, MTLHeap, MTLIndirectCommandBuffer, MTLRenderPipelineState, MTLResource, MTLSamplerState, MTLTexture;
+@protocol MTLAccelerationStructure, MTLBuffer, MTLCounterSampleBuffer, MTLDepthStencilState, MTLFence, MTLHeap, MTLIndirectCommandBuffer, MTLIntersectionFunctionTable, MTLRenderPipelineState, MTLResource, MTLSamplerState, MTLTexture, MTLVisibleFunctionTable;
 
 @protocol MTLRenderCommandEncoder <MTLCommandEncoder>
 @property(readonly) unsigned long long tileHeight;
@@ -26,6 +26,11 @@
 - (void)useResource:(id <MTLResource>)arg1 usage:(unsigned long long)arg2;
 - (void)setThreadgroupMemoryLength:(unsigned long long)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)dispatchThreadsPerTile:(CDStruct_da2e99ad)arg1;
+- (void)setTileAccelerationStructure:(id <MTLAccelerationStructure>)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setTileIntersectionFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setTileIntersectionFunctionTable:(id <MTLIntersectionFunctionTable>)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setTileVisibleFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setTileVisibleFunctionTable:(id <MTLVisibleFunctionTable>)arg1 atBufferIndex:(unsigned long long)arg2;
 - (void)setTileSamplerStates:(const id *)arg1 lodMinClamps:(const float *)arg2 lodMaxClamps:(const float *)arg3 withRange:(struct _NSRange)arg4;
 - (void)setTileSamplerState:(id <MTLSamplerState>)arg1 lodMinClamp:(float)arg2 lodMaxClamp:(float)arg3 atIndex:(unsigned long long)arg4;
 - (void)setTileSamplerStates:(const id *)arg1 withRange:(struct _NSRange)arg2;
@@ -64,6 +69,11 @@
 - (void)setStencilReferenceValue:(unsigned int)arg1;
 - (void)setDepthStencilState:(id <MTLDepthStencilState>)arg1;
 - (void)setBlendColorRed:(float)arg1 green:(float)arg2 blue:(float)arg3 alpha:(float)arg4;
+- (void)setFragmentAccelerationStructure:(id <MTLAccelerationStructure>)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setFragmentIntersectionFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setFragmentIntersectionFunctionTable:(id <MTLIntersectionFunctionTable>)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setFragmentVisibleFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setFragmentVisibleFunctionTable:(id <MTLVisibleFunctionTable>)arg1 atBufferIndex:(unsigned long long)arg2;
 - (void)setFragmentSamplerStates:(const id *)arg1 lodMinClamps:(const float *)arg2 lodMaxClamps:(const float *)arg3 withRange:(struct _NSRange)arg4;
 - (void)setFragmentSamplerState:(id <MTLSamplerState>)arg1 lodMinClamp:(float)arg2 lodMaxClamp:(float)arg3 atIndex:(unsigned long long)arg4;
 - (void)setFragmentSamplerStates:(const id *)arg1 withRange:(struct _NSRange)arg2;
@@ -84,6 +94,11 @@
 - (void)setFrontFacingWinding:(unsigned long long)arg1;
 - (void)setViewports:(const CDStruct_8727d297 *)arg1 count:(unsigned long long)arg2;
 - (void)setViewport:(CDStruct_8727d297)arg1;
+- (void)setVertexAccelerationStructure:(id <MTLAccelerationStructure>)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setVertexIntersectionFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setVertexIntersectionFunctionTable:(id <MTLIntersectionFunctionTable>)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setVertexVisibleFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setVertexVisibleFunctionTable:(id <MTLVisibleFunctionTable>)arg1 atBufferIndex:(unsigned long long)arg2;
 - (void)setVertexSamplerStates:(const id *)arg1 lodMinClamps:(const float *)arg2 lodMaxClamps:(const float *)arg3 withRange:(struct _NSRange)arg4;
 - (void)setVertexSamplerState:(id <MTLSamplerState>)arg1 lodMinClamp:(float)arg2 lodMaxClamp:(float)arg3 atIndex:(unsigned long long)arg4;
 - (void)setVertexSamplerStates:(const id *)arg1 withRange:(struct _NSRange)arg2;

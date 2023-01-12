@@ -6,16 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSSet, PGManager, PGSuggestionSession;
+@class NSDictionary, NSSet, PGSuggestionSession, PHPhotoLibrary;
 
 @interface PGPhotosChallengeMetricEventFetchHelper : NSObject
 {
+    PHPhotoLibrary *_photoLibrary;
     NSDictionary *_questionsByQuestionTypeByEntityType;
-    PGManager *_manager;
     PGSuggestionSession *_featuredPhotosSuggestionSession;
     NSDictionary *_assetByAssetIdentifier;
+    NSDictionary *_assetByAssetSyndicationIdentifier;
     NSDictionary *_momentUUIDByAssetIdentifier;
-    NSDictionary *_activePersonUUIDByPersonIdentifier;
+    NSDictionary *_activePersonUUIDByPersonUUID;
     NSDictionary *_memoryByMemoryIdentifier;
     NSSet *_tripKeyAssetIdentifiers;
 }
@@ -23,22 +24,23 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSSet *tripKeyAssetIdentifiers; // @synthesize tripKeyAssetIdentifiers=_tripKeyAssetIdentifiers;
 @property(retain, nonatomic) NSDictionary *memoryByMemoryIdentifier; // @synthesize memoryByMemoryIdentifier=_memoryByMemoryIdentifier;
-@property(retain, nonatomic) NSDictionary *activePersonUUIDByPersonIdentifier; // @synthesize activePersonUUIDByPersonIdentifier=_activePersonUUIDByPersonIdentifier;
+@property(retain, nonatomic) NSDictionary *activePersonUUIDByPersonUUID; // @synthesize activePersonUUIDByPersonUUID=_activePersonUUIDByPersonUUID;
 @property(retain, nonatomic) NSDictionary *momentUUIDByAssetIdentifier; // @synthesize momentUUIDByAssetIdentifier=_momentUUIDByAssetIdentifier;
+@property(retain, nonatomic) NSDictionary *assetByAssetSyndicationIdentifier; // @synthesize assetByAssetSyndicationIdentifier=_assetByAssetSyndicationIdentifier;
 @property(retain, nonatomic) NSDictionary *assetByAssetIdentifier; // @synthesize assetByAssetIdentifier=_assetByAssetIdentifier;
 @property(retain, nonatomic) PGSuggestionSession *featuredPhotosSuggestionSession; // @synthesize featuredPhotosSuggestionSession=_featuredPhotosSuggestionSession;
-@property(retain, nonatomic) PGManager *manager; // @synthesize manager=_manager;
 @property(retain, nonatomic) NSDictionary *questionsByQuestionTypeByEntityType; // @synthesize questionsByQuestionTypeByEntityType=_questionsByQuestionTypeByEntityType;
 - (void)_prefetchTripKeyAssetIdentifiers;
 - (void)_prefetchMemoryByMemoryIdentifier;
-- (void)_prefetchActivePersonUUIDByPersonIdentifier;
+- (void)_prefetchActivePersonUUIDByPersonUUID;
 - (void)_prefetchMomentUUIDByAssetIdentifier;
+- (void)_prefetchAssetByAssetSyndicationIdentifier;
 - (void)_prefetchAssetByAssetIdentifier;
 - (void)_buildQuestionsByQuestionTypeByEntityTypeFromQuestions:(id)arg1;
 - (void)_prefetchQuestions;
 - (id)questionsForQuestionType:(unsigned short)arg1 questionEntityType:(unsigned short)arg2;
 - (id)questionsForQuestionMetricType:(unsigned short)arg1;
-- (id)initForTestingWithQuestions:(id)arg1 assetsByAssetId:(id)arg2 momentUUIDByAssetIdentifier:(id)arg3 activePersonUUIDByPersonIdentifier:(id)arg4 tripKeyAssetIdentifiers:(id)arg5;
+- (id)initForTestingWithQuestions:(id)arg1 assetsByAssetId:(id)arg2 momentUUIDByAssetIdentifier:(id)arg3 activePersonUUIDByPersonUUID:(id)arg4 tripKeyAssetIdentifiers:(id)arg5;
 - (id)initWithGraphManager:(id)arg1;
 
 @end

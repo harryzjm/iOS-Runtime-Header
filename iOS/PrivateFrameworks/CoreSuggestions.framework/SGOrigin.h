@@ -19,6 +19,7 @@
     NSString *_contextSnippet;
     struct _NSRange _contextSnippetRange;
     CSPerson *_fromPerson;
+    NSArray *_toPeople;
     NSString *_bundleId;
     NSArray *_to;
     NSArray *_cc;
@@ -26,6 +27,7 @@
     NSDate *_date;
     NSString *_title;
     NSString *_operatingSystemVersion;
+    _Bool _isSent;
     _Bool _shouldShowOperatingSystemVersion;
     _Bool _fromForwardedMessage;
     NSString *_localizedApplicationName;
@@ -36,6 +38,7 @@
 + (id)originWithType:(unsigned long long)arg1 sourceKey:(id)arg2 externalKey:(id)arg3 bundleId:(id)arg4 fromForwardedMessage:(_Bool)arg5;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool isSent; // @synthesize isSent=_isSent;
 @property(readonly, nonatomic, getter=isFromForwardedMessage) _Bool fromForwardedMessage; // @synthesize fromForwardedMessage=_fromForwardedMessage;
 @property(readonly, nonatomic) NSString *title; // @synthesize title=_title;
 @property(readonly, nonatomic) NSDate *date; // @synthesize date=_date;
@@ -45,6 +48,7 @@
 @property(readonly, nonatomic) NSString *teamId; // @synthesize teamId=_teamId;
 @property(readonly, nonatomic) NSString *localizedApplicationName; // @synthesize localizedApplicationName=_localizedApplicationName;
 @property(readonly, nonatomic) NSString *bundleId; // @synthesize bundleId=_bundleId;
+@property(readonly, nonatomic) NSArray *toPeople; // @synthesize toPeople=_toPeople;
 @property(readonly, nonatomic) CSPerson *fromPerson; // @synthesize fromPerson=_fromPerson;
 @property(readonly, nonatomic) NSString *externalKey; // @synthesize externalKey=_externalKey;
 @property(readonly, nonatomic) NSString *sourceKey; // @synthesize sourceKey=_sourceKey;

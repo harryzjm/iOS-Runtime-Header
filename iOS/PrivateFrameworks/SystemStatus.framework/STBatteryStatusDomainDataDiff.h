@@ -15,6 +15,7 @@
     BSSettings *_changes;
 }
 
++ (void)_resolveCombinedChanges:(id)arg1 forObjectEntry:(unsigned long long)arg2 baseChanges:(id)arg3;
 + (_Bool)supportsSecureCoding;
 + (id)diffFromData:(id)arg1 toData:(id)arg2;
 - (void).cxx_destruct;
@@ -23,6 +24,7 @@
 - (void)encodeWithCoder:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)diffByApplyingDiff:(id)arg1;
 @property(readonly, nonatomic, getter=isEmpty) _Bool empty;
 - (void)applyToMutableData:(id)arg1;
 - (id)dataByApplyingToData:(id)arg1;

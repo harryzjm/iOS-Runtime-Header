@@ -20,6 +20,8 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSError *lastError; // @synthesize lastError=_lastError;
 @property(retain, nonatomic) NSObject<OS_dispatch_group> *addGroup; // @synthesize addGroup=_addGroup;
+- (id)smartPromptWithContentDescription:(id)arg1 contentDestination:(id)arg2 workflowName:(id)arg3;
+- (id)contentDestinationWithError:(id *)arg1;
 - (void)pocketAPI:(id)arg1 receivedResponse:(id)arg2 forAPIMethod:(id)arg3 error:(id)arg4;
 - (void)finishRunningWithError:(id)arg1;
 - (void)runAsynchronouslyWithInput:(id)arg1;

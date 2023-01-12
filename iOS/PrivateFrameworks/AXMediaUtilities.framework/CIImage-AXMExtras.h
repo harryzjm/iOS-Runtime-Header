@@ -9,6 +9,8 @@
 @interface CIImage (AXMExtras)
 - (void)saveToURL:(id)arg1 withOrientation:(unsigned int)arg2 metrics:(id)arg3;
 - (void)writeImageInAllOrientationsToDirectoryAtURL:(id)arg1 metrics:(id)arg2;
+- (id)addBorderWithBorderSize:(double)arg1;
+- (id)mergeWithImage:(id)arg1 withSize:(struct CGSize)arg2 withMetrics:(id)arg3;
 - (id)rotatedImageWithInterfaceOrientation:(long long)arg1 isMirrored:(_Bool)arg2 appliedImageOrientation:(unsigned int *)arg3;
 - (id)rotatedImageWithInterfaceOrientation:(long long)arg1 displayOrientation:(long long)arg2 appliedImageOrientation:(unsigned int *)arg3;
 - (unsigned int)_imageOrientationForInterfaceOrientation:(long long)arg1 isMirrored:(_Bool)arg2;

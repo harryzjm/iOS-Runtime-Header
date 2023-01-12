@@ -11,7 +11,7 @@
 #import <VideosUI/VUILibraryEpisodeShelfViewControllerDelegate-Protocol.h>
 #import <VideosUI/VUIProductLockupViewDelegate-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString, UICollectionViewDiffableDataSource, VUILibraryMediaCollectionViewModel, VUIMediaCollection, VUIMediaEntitiesDataSource, VUIViewControllerContentPresenter;
+@class NSArray, NSString, UICollectionViewDiffableDataSource, VUILibraryMediaCollectionViewModel, VUIMediaCollection, VUIMediaEntitiesDataSource, VUIViewControllerContentPresenter;
 
 __attribute__((visibility("hidden")))
 @interface VUILibraryMediaCollectionViewController <UICollectionViewDelegate, VUIProductLockupViewDelegate, TVShelfViewLayoutDelegate, VUILibraryEpisodeFooterCellDelegate, VUILibraryEpisodeShelfViewControllerDelegate, VUILibraryDataSourceDelegate>
@@ -25,7 +25,6 @@ __attribute__((visibility("hidden")))
     NSArray *_episodes;
     NSArray *_episodeGroups;
     VUILibraryMediaCollectionViewModel *_mediaCollectionViewModel;
-    NSMutableDictionary *_downloadButtonBySeasonIdentifier;
     NSString *_showTitle;
     VUIMediaEntitiesDataSource *_seasonsDataSource;
     VUIMediaEntitiesDataSource *_episodesDataSource;
@@ -39,7 +38,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) VUIMediaEntitiesDataSource *episodesDataSource; // @synthesize episodesDataSource=_episodesDataSource;
 @property(retain, nonatomic) VUIMediaEntitiesDataSource *seasonsDataSource; // @synthesize seasonsDataSource=_seasonsDataSource;
 @property(retain, nonatomic) NSString *showTitle; // @synthesize showTitle=_showTitle;
-@property(retain, nonatomic) NSMutableDictionary *downloadButtonBySeasonIdentifier; // @synthesize downloadButtonBySeasonIdentifier=_downloadButtonBySeasonIdentifier;
 @property(retain, nonatomic) VUILibraryMediaCollectionViewModel *mediaCollectionViewModel; // @synthesize mediaCollectionViewModel=_mediaCollectionViewModel;
 @property(retain, nonatomic) NSArray *episodeGroups; // @synthesize episodeGroups=_episodeGroups;
 @property(retain, nonatomic) NSArray *episodes; // @synthesize episodes=_episodes;

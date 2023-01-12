@@ -4,12 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <KnowledgeGraphKit/MARelationFeatureExtractor.h>
-
-@interface PGMeaningFeatureExtractor : MARelationFeatureExtractor
+@interface PGMeaningFeatureExtractor
 {
 }
 
++ (id)name;
+- (id)labelProcessingForVersion:(long long)arg1 label:(id)arg2;
+- (id)labelsForVersion:(long long)arg1;
+- (id)prefix;
+- (id)initWithVersion:(long long)arg1 error:(id *)arg2;
 - (id)initWithError:(id *)arg1;
 
 @end

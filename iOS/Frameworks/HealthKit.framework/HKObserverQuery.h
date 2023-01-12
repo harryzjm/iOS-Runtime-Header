@@ -14,6 +14,7 @@
     CDUnknownBlockType _updateHandler;
 }
 
++ (void)configureClientInterface:(id)arg1;
 + (id)clientInterfaceProtocol;
 + (Class)configurationClass;
 - (void).cxx_destruct;
@@ -24,7 +25,8 @@
 - (void)queue_validate;
 - (void)queue_queryDidDeactivate:(id)arg1;
 - (void)queue_populateConfiguration:(id)arg1;
-- (void)client_dataUpdatedInDatabaseWithAnchor:(id)arg1 query:(id)arg2;
+- (void)client_dataUpdatedInDatabaseForTypes:(id)arg1 withAnchor:(id)arg2 query:(id)arg3;
+- (id)initWithQueryDescriptors:(id)arg1 updateHandler:(CDUnknownBlockType)arg2;
 - (id)initWithSampleType:(id)arg1 predicate:(id)arg2 updateHandler:(CDUnknownBlockType)arg3;
 
 // Remaining properties

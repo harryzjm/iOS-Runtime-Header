@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProtocolBuffer/PBCodable.h>
-
 @class NSData;
 
-@interface SISchemaDictationEndPointStop : PBCodable
+@interface SISchemaDictationEndPointStop
 {
     int _dictationEndPointType;
     CDStruct_78ff2909 _has;

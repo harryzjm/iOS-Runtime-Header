@@ -25,6 +25,7 @@
 - (void)setPreferredFramesPerSecond:(long long)arg1;
 - (unsigned long long)preferredFramesPerSecond;
 - (void)_updatePausedState;
+- (long long)updateFrequencyForFPS:(long long)arg1;
 - (double)timestamp;
 - (void)_displayLinkFired:(id)arg1;
 - (id)initWithTarget:(id)arg1 synchronizeWithClockTimer:(_Bool)arg2;

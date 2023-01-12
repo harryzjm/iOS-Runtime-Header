@@ -22,8 +22,10 @@ __attribute__((visibility("hidden")))
 + (id)sharedManager;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)_removeResourceUser;
+- (void)_addResourceUser;
 - (id)resources;
-- (_Bool)hasResoruces;
+- (_Bool)hasResources;
 - (void)dealloc;
 - (id)init;
 

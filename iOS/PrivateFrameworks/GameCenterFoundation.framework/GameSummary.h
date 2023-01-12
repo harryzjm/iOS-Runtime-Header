@@ -6,7 +6,7 @@
 
 #import <CoreData/NSManagedObject.h>
 
-@class GamesPlayedSummaryList, NSNumber, NSSet, NSString;
+@class GamesPlayedSummaryList, NSDate, NSNumber, NSSet, NSString;
 
 @interface GameSummary : NSManagedObject
 {
@@ -20,6 +20,7 @@
 @property(retain, nonatomic) NSSet *compatiblePlatforms; // @dynamic compatiblePlatforms;
 @property(copy, nonatomic) NSNumber *isArcade; // @dynamic isArcade;
 @property(retain, nonatomic) GamesPlayedSummaryList *list; // @dynamic list;
+@property(copy, nonatomic) NSDate *playedAt; // @dynamic playedAt;
 
 @end
 

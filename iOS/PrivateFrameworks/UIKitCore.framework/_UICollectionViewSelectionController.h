@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableSet, NSSet;
+@class NSMutableSet;
 
 __attribute__((visibility("hidden")))
 @interface _UICollectionViewSelectionController : NSObject
@@ -18,30 +18,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool allowsMultipleSelection; // @synthesize allowsMultipleSelection=_allowsMultipleSelection;
-- (void)reset;
-- (id)highlightedIdentifiersForSnapshot:(id)arg1;
-- (id)selectedIdentifiersForSnapshot:(id)arg1;
-@property(readonly, copy, nonatomic) NSSet *highlightedIndexPaths;
-@property(readonly, copy, nonatomic) NSSet *selectedIndexPaths;
-@property(readonly, nonatomic) long long highlightedItemsCount;
-@property(readonly, nonatomic) long long selectedItemsCount;
-- (_Bool)isHighlightedAtIndexPath:(id)arg1;
-- (_Bool)isSelectedAtIndexPath:(id)arg1;
-- (id)rebaseIndexPath:(id)arg1 withTranslator:(id)arg2;
-- (id)rebaseIndexPath:(id)arg1 withDiffableTransaction:(id)arg2;
-- (void)rebaseItemsWithDiffableTransaction:(id)arg1;
-- (void)rebaseItemsWithTranslator:(id)arg1;
-- (void)unhighlightAllItems;
-- (void)unhighlightItemsAtIndexPaths:(id)arg1;
-- (void)unhighlightItemAtIndexPath:(id)arg1;
-- (void)highlightItemsAtIndexPaths:(id)arg1;
-- (void)highlightItemAtIndexPath:(id)arg1;
-- (void)deselectAllItems;
-- (void)deselectItemsAtIndexPaths:(id)arg1;
-- (void)deselectItemAtIndexPath:(id)arg1;
-- (void)selectItemsAtIndexPaths:(id)arg1;
-- (void)selectItemAtIndexPath:(id)arg1;
 - (id)init;
 
 @end

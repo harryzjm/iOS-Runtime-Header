@@ -16,12 +16,14 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *descriptorService;
     MISSING_TYPE *extensionService;
     MISSING_TYPE *configurationService;
-    MISSING_TYPE *keybagMonitor;
+    MISSING_TYPE *keybagStateProvider;
+    MISSING_TYPE *powerlogSuggestionService;
+    MISSING_TYPE *duetService;
     MISSING_TYPE *connectionListener;
-    MISSING_TYPE *clientConnections;
     MISSING_TYPE *subscriptions;
-    MISSING_TYPE *tasks;
     MISSING_TYPE *queue;
+    MISSING_TYPE *_clientsSetLock_clients;
+    MISSING_TYPE *_clientsSetLock;
     MISSING_TYPE *initialExtensionDiscoveryCompleteSubscription;
 }
 

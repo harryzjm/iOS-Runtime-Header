@@ -18,6 +18,7 @@
     NSString *_identifier;
     id <AVTAvatarAttributeEditorSectionSupplementalPicker> _supplementalPicker;
     AVTAvatarAttributeEditorSectionOptions *_options;
+    unsigned long long _intendedDestination;
     NSArray *_primaryItems;
     NSArray *_extendedItems;
     AVTAvatarColorVariationStore *_colorVariationStore;
@@ -28,15 +29,19 @@
 @property(readonly, nonatomic) AVTAvatarColorVariationStore *colorVariationStore; // @synthesize colorVariationStore=_colorVariationStore;
 @property(readonly, copy, nonatomic) NSArray *extendedItems; // @synthesize extendedItems=_extendedItems;
 @property(readonly, copy, nonatomic) NSArray *primaryItems; // @synthesize primaryItems=_primaryItems;
+@property(nonatomic) unsigned long long intendedDestination; // @synthesize intendedDestination=_intendedDestination;
 @property(readonly, nonatomic) AVTAvatarAttributeEditorSectionOptions *options; // @synthesize options=_options;
 @property(retain, nonatomic) id <AVTAvatarAttributeEditorSectionSupplementalPicker> supplementalPicker; // @synthesize supplementalPicker=_supplementalPicker;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(copy, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
+@property(readonly, copy, nonatomic) NSArray *sections;
+@property(readonly, nonatomic) struct UIEdgeInsets separatorInsets;
 - (_Bool)shouldDisplaySeparatorBeforeSection:(id)arg1;
 - (_Bool)shouldDisplayTitle;
 @property(readonly, copy) NSString *description;
 @property(readonly, copy, nonatomic) NSArray *sectionItems;
-- (id)initWithPrimaryItems:(id)arg1 extendedItems:(id)arg2 colorVariationStore:(id)arg3 localizedName:(id)arg4 identifier:(id)arg5 alwaysShowExtended:(_Bool)arg6 options:(id)arg7;
+- (id)copyWithoutTitle;
+- (id)initWithPrimaryItems:(id)arg1 extendedItems:(id)arg2 colorVariationStore:(id)arg3 localizedName:(id)arg4 identifier:(id)arg5 intendedDestination:(unsigned long long)arg6 alwaysShowExtended:(_Bool)arg7 options:(id)arg8;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -25,6 +25,7 @@
 - (void)willBeAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
 - (_Bool)isSearchable;
 - (id)stringEquivalent;
+- (unsigned long long)findCharIndexWithHintIndex:(unsigned long long *)arg1;
 - (unsigned long long)findCharIndex;
 - (void)setParentStorage:(id)arg1;
 - (void)setContainedStorageParentInfoToStorage:(id)arg1;

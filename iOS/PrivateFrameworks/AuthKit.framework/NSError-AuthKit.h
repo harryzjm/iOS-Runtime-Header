@@ -12,6 +12,9 @@
 + (id)ak_errorWithCode:(long long)arg1 userInfo:(id)arg2;
 + (id)ak_errorWithCode:(long long)arg1;
 - (_Bool)ak_isAuthenticationErrorWithCode:(long long)arg1;
+- (_Bool)ak_isIncompatibleDevicesError;
+- (_Bool)ak_isSurrogateAuthAlreadyInProgressError;
+- (_Bool)ak_isUnableToPromptError;
 - (_Bool)ak_isServiceError;
 - (_Bool)ak_isUserInitiatedError;
 - (_Bool)ak_isUserTryAgainError;

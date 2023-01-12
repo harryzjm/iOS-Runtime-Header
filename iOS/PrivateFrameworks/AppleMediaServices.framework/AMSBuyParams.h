@@ -23,17 +23,20 @@
 - (void)encodeWithCoder:(id)arg1;
 - (void)_parseBuyParams:(id)arg1;
 - (id)_normalizedDictionary;
+- (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
+- (id)objectForKeyedSubscript:(id)arg1;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)stringValue;
 - (id)requestDataWithError:(id *)arg1;
 - (void)setProperty:(id)arg1 forKey:(id)arg2;
+- (void)setParameter:(id)arg1 forKey:(id)arg2;
 - (id)propertyForKey:(id)arg1;
-- (void)importURLEncodedBuyParams:(id)arg1;
-@property(readonly) NSDictionary *dictionary;
+- (id)parameterForKey:(id)arg1;
+@property(readonly, copy) NSDictionary *dictionary;
 @property(readonly, nonatomic) double price;
 - (void)clear;
-- (id)buyParametersForRequest;
+@property(readonly, copy, nonatomic) NSDictionary *normalizedDictionary;
 - (id)initWithString:(id)arg1;
 - (id)init;
 

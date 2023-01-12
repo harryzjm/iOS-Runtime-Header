@@ -8,13 +8,13 @@
 
 #import <TSPersistence/TSPComponentWriteChannel-Protocol.h>
 
-@class NSString, TSUDispatchData;
-@protocol OS_dispatch_queue;
+@class NSString;
+@protocol OS_dispatch_data, OS_dispatch_queue;
 
 @interface TSPMemoryComponentWriteChannel : NSObject <TSPComponentWriteChannel>
 {
     NSObject<OS_dispatch_queue> *_streamQueue;
-    TSUDispatchData *_streamData;
+    NSObject<OS_dispatch_data> *_streamData;
     _Bool _isClosed;
 }
 
@@ -24,7 +24,6 @@
 - (void)close;
 - (void)writeData:(id)arg1;
 - (id)init;
-- (id)initWithAlwaysDefragmentData:(_Bool)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

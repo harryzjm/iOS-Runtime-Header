@@ -18,12 +18,10 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) __weak UIView<UIPointerInteractionDelegate> *view; // @synthesize view=_view;
 - (void)pointerInteraction:(id)arg1 willExitRegion:(id)arg2 animator:(id)arg3;
 - (void)pointerInteraction:(id)arg1 willEnterRegion:(id)arg2 animator:(id)arg3;
 - (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
-- (id)initWithView:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

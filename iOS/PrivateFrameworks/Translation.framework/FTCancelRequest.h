@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_3bf2f0a7)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_3bf2f0a7)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSString *reason;
 @property(readonly, nonatomic) NSString *session_id;
 @property(readonly, nonatomic) NSString *speech_id;

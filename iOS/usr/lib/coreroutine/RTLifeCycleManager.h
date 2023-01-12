@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableDictionary, NSMutableSet;
+@class NSMutableArray, NSMutableDictionary, NSMutableSet, RTWatchdogManager;
 @protocol OS_dispatch_queue;
 
 @interface RTLifeCycleManager : NSObject
@@ -14,11 +14,13 @@
     NSMutableArray *_signals;
     NSMutableDictionary *_listeners;
     NSMutableSet *_services;
+    RTWatchdogManager *_watchdogManager;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property(retain, nonatomic) RTWatchdogManager *watchdogManager; // @synthesize watchdogManager=_watchdogManager;
 @property(retain, nonatomic) NSMutableSet *services; // @synthesize services=_services;
 @property(retain, nonatomic) NSMutableDictionary *listeners; // @synthesize listeners=_listeners;
 @property(retain, nonatomic) NSMutableArray *signals; // @synthesize signals=_signals;
@@ -28,6 +30,7 @@
 - (void)_start;
 - (void)submitUptimeMetricsWithDefaultsMananger:(id)arg1;
 - (id)serviceWithClass:(Class)arg1;
+- (void)addListener:(id)arg1 machPort:(id)arg2;
 - (void)addService:(id)arg1;
 - (void)start;
 - (id)createSourceForSignal:(int)arg1 withBlock:(CDUnknownBlockType)arg2;

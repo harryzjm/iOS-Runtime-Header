@@ -9,13 +9,14 @@
 #import <SpotlightUIInternal/SPUITextFieldDelegate-Protocol.h>
 #import <SpotlightUIInternal/UITextPasteDelegate-Protocol.h>
 
-@class NSLayoutConstraint, NSString, SPSearchEntity, SPUITextField, UIButton, UIResponder, _UILegibilitySettings;
+@class NSLayoutConstraint, NSString, SPSearchEntity, SPSearchSuggestionResult, SPUITextField, UIButton, UIResponder, _UILegibilitySettings;
 @protocol SBIconListLayout, SPUIHeaderInteractionDelegate, SPUISearchHeaderDelegate;
 
 @interface SPUISearchHeader : UIView <SPUITextFieldDelegate, UITextPasteDelegate>
 {
     _Bool _isReturnKeyPressedInGoMode;
     _Bool _willClear;
+    _Bool _isInDictationModeFromSearchBar;
     _Bool _searchTextScheduledForProcessing;
     _Bool _offersCompletions;
     id <SPUIHeaderInteractionDelegate> _interactionDelegate;
@@ -28,11 +29,13 @@
     NSLayoutConstraint *_topConstraint;
     NSLayoutConstraint *_bottomConstraint;
     NSLayoutConstraint *_leadingConstraint;
+    SPSearchSuggestionResult *_engagedSuggestion;
     NSString *_lastSearchText;
     SPSearchEntity *_lastSearchEntity;
     unsigned long long _lastSearchHeaderQueryKind;
     unsigned long long _queryId;
     id <SBIconListLayout> _iconListLayout;
+    unsigned long long _invokeReason;
     id <SPUISearchHeaderDelegate> _delegate;
     unsigned long long _suggestionID;
     SPSearchEntity *_searchEntity;
@@ -40,6 +43,8 @@
     double _blurProgress;
 }
 
++ (void)logDismissalWithReason:(unsigned long long)arg1;
++ (void)logInvokeWithReason:(unsigned long long)arg1;
 + (id)tokenFromSearchEntity:(id)arg1;
 + (unsigned long long)committedSearchQueryKind;
 + (unsigned long long)asYouTypeSearchQueryKind;
@@ -50,12 +55,15 @@
 @property(retain, nonatomic) SPSearchEntity *searchEntity; // @synthesize searchEntity=_searchEntity;
 @property unsigned long long suggestionID; // @synthesize suggestionID=_suggestionID;
 @property __weak id <SPUISearchHeaderDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) unsigned long long invokeReason; // @synthesize invokeReason=_invokeReason;
 @property(retain) id <SBIconListLayout> iconListLayout; // @synthesize iconListLayout=_iconListLayout;
 @property unsigned long long queryId; // @synthesize queryId=_queryId;
 @property unsigned long long lastSearchHeaderQueryKind; // @synthesize lastSearchHeaderQueryKind=_lastSearchHeaderQueryKind;
 @property(retain) SPSearchEntity *lastSearchEntity; // @synthesize lastSearchEntity=_lastSearchEntity;
 @property(retain) NSString *lastSearchText; // @synthesize lastSearchText=_lastSearchText;
+@property(retain) SPSearchSuggestionResult *engagedSuggestion; // @synthesize engagedSuggestion=_engagedSuggestion;
 @property _Bool searchTextScheduledForProcessing; // @synthesize searchTextScheduledForProcessing=_searchTextScheduledForProcessing;
+@property _Bool isInDictationModeFromSearchBar; // @synthesize isInDictationModeFromSearchBar=_isInDictationModeFromSearchBar;
 @property _Bool willClear; // @synthesize willClear=_willClear;
 @property(retain) NSLayoutConstraint *leadingConstraint; // @synthesize leadingConstraint=_leadingConstraint;
 @property(retain) NSLayoutConstraint *bottomConstraint; // @synthesize bottomConstraint=_bottomConstraint;
@@ -84,18 +92,23 @@
 - (void)_dynamicUserInterfaceTraitDidChange;
 - (_Bool)isOnDarkBackground;
 - (void)clearSearchFieldWhyQuery:(unsigned long long)arg1 allowZKW:(_Bool)arg2;
+- (void)updateWithCommand:(id)arg1;
 - (void)performAction:(CDUnknownBlockType)arg1 afterCommit:(_Bool)arg2;
-- (void)unfocusSearchField;
+- (void)resignKeyboardForProcessState;
+- (void)unfocusSearchFieldWithReason:(unsigned long long)arg1;
 - (_Bool)isFirstResponder;
-- (void)focusSearchFieldAndBeginDictation:(_Bool)arg1 selectAll:(_Bool)arg2;
+- (void)focusSearchFieldAndBeginDictation:(_Bool)arg1 selectAll:(_Bool)arg2 withReason:(unsigned long long)arg3;
 - (void)beginDictation;
-- (void)focusSearchFieldAndSelectAll:(_Bool)arg1;
+- (void)focusSearchFieldAndSelectAll:(_Bool)arg1 withReason:(unsigned long long)arg2;
 - (void)textPasteConfigurationSupporting:(id)arg1 transformPasteItem:(id)arg2;
 - (id)_searchTextField:(id)arg1 itemProviderForCopyingToken:(id)arg2;
 - (void)_searchWithSearchEntity:(id)arg1 fromSuggestion:(_Bool)arg2;
 - (void)setSearchEntity:(id)arg1 fromSuggestion:(_Bool)arg2;
+- (void)setSuggestionResult:(id)arg1;
 - (id)currentQueryContextWithString:(id)arg1;
 @property(readonly, nonatomic) NSString *currentQuery;
+- (_Bool)currentlyPresentingWebEntity;
+- (void)textFieldDidReplaceTokensWithStringEquivalent:(id)arg1;
 - (void)switchToSuggestions;
 - (void)commitSearch;
 - (_Bool)lastQueryKindSupportsOptionKey;
@@ -118,8 +131,10 @@
 - (void)didMoveToSuperview;
 - (void)removeCompletionAndHighlightAsTyped:(_Bool)arg1;
 @property(readonly) _Bool optOutOfGoButton;
+- (void)highlightResultAfterUnmarkingText;
 - (void)returnKeyPressed;
 @property(nonatomic) __weak UIResponder *responderForKeyboardInput;
+- (void)clearLastSearchedText;
 - (id)init;
 
 // Remaining properties

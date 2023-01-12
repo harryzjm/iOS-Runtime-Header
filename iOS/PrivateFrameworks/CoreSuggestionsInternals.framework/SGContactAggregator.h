@@ -13,10 +13,11 @@
     _PASLRUCache *_cachedContacts;
 }
 
++ (id)replaceDetailsInContact:(id)arg1 onDiskContact:(id)arg2;
 + (id)mergeContact:(id)arg1 withContact:(id)arg2;
 + (id)messageIdentifiersGeneratingContact:(id)arg1;
 - (void).cxx_destruct;
-- (id)augmentSuggestedContactWithContact:(id)arg1 conversationId:(id)arg2 handle:(id)arg3;
+- (id)augmentSuggestedContactWithContact:(id)arg1 conversationId:(id)arg2 store:(id)arg3 handle:(id)arg4;
 - (void)removeContact:(id)arg1;
 - (void)clearContactsWithConversationIdentifier:(id)arg1;
 - (void)clear;

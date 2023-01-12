@@ -10,25 +10,27 @@
 {
 }
 
-+ (_Bool)isValidForPersistenceWithObjectDictionary:(id)arg1;
++ (_Bool)isValidForPersistenceWithObjectDictionary:(id)arg1 additionalEntityName:(id)arg2;
 + (unsigned int)minimumSnapshotPayloadVersion;
 + (unsigned int)payloadVersion;
 + (id)payloadClassID;
++ (id)persistedPropertyNamesForEntityNames;
 + (id)modelProperties;
 + (id)nonPersistedModelPropertiesDescription;
 + (id)modelPropertiesDescription;
 - (_Bool)comparePayloadValue:(id)arg1 toObjectDictionaryValue:(id)arg2 forPayloadProperty:(id)arg3;
 - (void)applyPayloadProperty:(id)arg1 toManagedObject:(id)arg2 key:(id)arg3 payloadAttributesToUpdate:(id)arg4;
-- (void)updatePayloadAttributes:(id)arg1 withDecodedAttributes:(id)arg2 forPayloadProperty:(id)arg3;
-- (void)updateEncodableAttributes:(id)arg1 fromPayloadAttributes:(id)arg2 forPayloadProperty:(id)arg3;
-- (_Bool)updatePayloadAttributes:(id)arg1 withManagedObject:(id)arg2 forPayloadProperty:(id)arg3;
-@property(retain, nonatomic) NSSet *representativeAssetUUIDs;
-@property(retain, nonatomic) NSSet *movieCuratedAssetUUIDs;
-@property(retain, nonatomic) NSString *keyAssetUUID;
-@property(retain, nonatomic) NSSet *extendedCuratedAssetUUIDs;
-@property(retain, nonatomic) NSSet *curatedAssetUUIDs;
+- (void)appendAttributeKey:(id)arg1 value:(id)arg2 toDescriptionBuilder:(id)arg3;
+- (_Bool)updatePayloadAttributes:(id)arg1 andNilAttributes:(id)arg2 withManagedObject:(id)arg3 forPayloadProperty:(id)arg4;
+@property(readonly, nonatomic) NSSet *representativeAssetUUIDs;
+@property(readonly, nonatomic) NSSet *userCuratedAssetUUIDs;
+@property(readonly, nonatomic) NSSet *movieCuratedAssetUUIDs;
+@property(readonly, nonatomic) NSString *keyAssetUUID;
+@property(readonly, nonatomic) NSSet *extendedCuratedAssetUUIDs;
+@property(readonly, nonatomic) NSSet *curatedAssetUUIDs;
 - (_Bool)hasAllAssetsAvailableInManagedObjectContext:(id)arg1 includePendingAssetChanges:(_Bool)arg2;
 - (_Bool)updateAssetsInMemory:(id)arg1 includePendingAssetChanges:(_Bool)arg2;
+- (id)initWithUserFeedback:(id)arg1 changedKeys:(id)arg2;
 - (id)insertMemoryFromDataInManagedObjectContext:(id)arg1;
 
 @end

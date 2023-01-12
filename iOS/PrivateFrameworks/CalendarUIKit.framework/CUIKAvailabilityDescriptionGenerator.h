@@ -18,6 +18,7 @@
 + (id)youProposedString;
 + (id)someInviteesCanAttendString;
 + (id)allInviteesCanAttendString;
++ (id)failedString;
 + (id)waitingForAvailabilityQueryString;
 
 @end

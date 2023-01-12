@@ -5,12 +5,11 @@
 //
 
 #import <PhotosUICore/PXImportAssetsDataSourceManagerObserver-Protocol.h>
-#import <PhotosUICore/PXImportMediaProviderNotificationsReceiver-Protocol.h>
 
 @class NSMutableArray, NSObject, NSString, PXImportAssetsDataSource, PXImportAssetsDataSourceManager, PXImportController;
 @protocol OS_dispatch_queue;
 
-@interface PXImportMediaLoadingCoordinator <PXImportAssetsDataSourceManagerObserver, PXImportMediaProviderNotificationsReceiver>
+@interface PXImportMediaLoadingCoordinator <PXImportAssetsDataSourceManagerObserver>
 {
     NSObject<OS_dispatch_queue> *_modelQueue;
     NSObject<OS_dispatch_queue> *_workerQueue;
@@ -19,17 +18,17 @@
     PXImportAssetsDataSourceManager *_dataSourceManager;
     NSMutableArray *_thumbnailWorkItemUuids;
     PXImportAssetsDataSource *_dataSource;
-    unsigned long long _completedDataSourceIdentifier;
+    long long _completedDataSourceIdentifier;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) unsigned long long completedDataSourceIdentifier; // @synthesize completedDataSourceIdentifier=_completedDataSourceIdentifier;
+@property(nonatomic) long long completedDataSourceIdentifier; // @synthesize completedDataSourceIdentifier=_completedDataSourceIdentifier;
 @property(retain, nonatomic) PXImportAssetsDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property(retain, nonatomic) NSMutableArray *thumbnailWorkItemUuids; // @synthesize thumbnailWorkItemUuids=_thumbnailWorkItemUuids;
 @property(readonly, nonatomic) PXImportAssetsDataSourceManager *dataSourceManager; // @synthesize dataSourceManager=_dataSourceManager;
 @property(readonly, nonatomic) __weak PXImportController *importController; // @synthesize importController=_importController;
 @property(nonatomic, setter=setPaused:) _Bool paused; // @synthesize paused=_paused;
-- (void)mediaProviderThumbnailingBecameIdle;
+- (void)mediaProviderThumbnailingBecameIdle:(id)arg1;
 - (void)_processItemIfPossible;
 - (id)dequeueNextThumbnailWorkItem;
 - (void)handleNewDataSource:(id)arg1;

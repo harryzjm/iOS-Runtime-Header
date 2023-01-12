@@ -6,11 +6,9 @@
 
 #import <NotesShared/ICAttachmentModel.h>
 
-#import <NotesUI/QLPreviewItem-Protocol.h>
+@class NSArray;
 
-@class NSArray, NSString, NSURL;
-
-@interface ICAttachmentModel (UI) <QLPreviewItem>
+@interface ICAttachmentModel (UI)
 + (id)fileIconForURL:(id)arg1 withPreferredSize:(struct CGSize)arg2 uti:(id)arg3;
 + (id)fileIconForURL:(id)arg1 withPreferredSize:(struct CGSize)arg2;
 - (void)drawPreviewInRect:(struct CGRect)arg1;
@@ -29,13 +27,6 @@
 - (void)classifyImageInOperation:(id)arg1;
 - (void)generateOCRInOperation:(id)arg1;
 - (_Bool)generatePreviewsInOperation:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly, nonatomic) NSString *previewItemTitle;
-@property(readonly, nonatomic) NSURL *previewItemURL;
-@property(readonly) Class superclass;
+- (id)itemProvider;
 @end
 

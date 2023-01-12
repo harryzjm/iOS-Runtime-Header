@@ -4,99 +4,51 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HealthKitUI/HKGLView.h>
+#import <UIKit/UIView.h>
 
+#import <ActivityAchievementsUI/AAUIBadgeViewDrawable-Protocol.h>
+#import <ActivityAchievementsUI/AAUIBadgeViewDrawableDelegate-Protocol.h>
 #import <ActivityAchievementsUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class AAUIBadge, AAUIBadgeModelConfiguration, GLKTextureInfo, NSAttributedString, NSDictionary, NSObject, NSString, UIImage, UILongPressGestureRecognizer, UIPanGestureRecognizer, UITapGestureRecognizer;
-@protocol AAUIBadgeViewDelegate, OS_dispatch_queue;
+@class AAUIBadge, AAUIBadgeModelConfiguration, NSAttributedString, NSDictionary, NSNumber, NSString, UIImage, UILongPressGestureRecognizer, UIPanGestureRecognizer, UITapGestureRecognizer;
+@protocol AAUIBadgeViewDelegate, AAUIBadgeViewDrawable;
 
-@interface AAUIBadgeView : HKGLView <UIGestureRecognizerDelegate>
+@interface AAUIBadgeView : UIView <UIGestureRecognizerDelegate, AAUIBadgeViewDrawableDelegate, AAUIBadgeViewDrawable>
 {
+    _Bool _useEarnedShader;
     AAUIBadge *_badge;
-    union _GLKMatrix4 _viewProjectionMatrix;
-    GLKTextureInfo *_colorTexture;
-    GLKTextureInfo *_envTexture;
-    GLKTextureInfo *_backTexture;
-    GLKTextureInfo *_fleckNormalTexture;
-    unsigned long long _shape;
     UIImage *_backAppleLogo;
     NSAttributedString *_backsideAttributedString;
-    _Bool _backTextureNeedsRegeneration;
-    unsigned int _program;
-    unsigned int _faceProgram;
-    unsigned int _inlayFaceProgram;
-    unsigned int _triColorFaceProgram;
-    unsigned int _vertexBuffer;
-    unsigned int _indexBuffer;
-    int _numGroups;
-    int *_groupTriangleCounts;
-    int *_materialIndices;
-    struct __UniformBindings _uniformBindings;
-    struct __UniformBindings _faceUniformBindings;
-    struct __UniformBindings _inlayFaceUniformBindings;
-    struct __UniformBindings _triColorFaceUniformBindings;
-    NSDictionary *_tweakableUniforms;
-    union _GLKMatrix4 _modelTransform;
-    double _spinRate;
     UIPanGestureRecognizer *_spinRecognizer;
     UITapGestureRecognizer *_tapRecognizer;
     UILongPressGestureRecognizer *_longPressRecognizer;
-    _Bool _magnetsEngaged;
-    union _GLKVector3 _modelBaseColor;
-    union _GLKVector3 _modelEnamelColor;
-    _Bool _modelUsesFullColorEnamel;
-    _Bool _modelUsesEarnedShader;
-    _Bool _modelFaceHasMetalInlay;
-    _Bool _modelUsesTriColorEnamel;
-    union _GLKVector3 _triColors[3];
+    NSDictionary *_tweakableUniforms;
+    double _lastUpdateTime;
+    double _spinRate;
     _Bool _verticalPanningDisabled;
-    AAUIBadgeModelConfiguration *_configuration;
+    _Bool _magnetsEngaged;
+    UIImage *_backTextureImage;
     CDUnknownBlockType _shortenedBadgeBacksideStringProvider;
     id <AAUIBadgeViewDelegate> _badgeDelegate;
-    NSObject<OS_dispatch_queue> *_pauseByNotificationQueueOverride;
+    id <AAUIBadgeViewDrawable> _drawable;
+    NSNumber *_useMetal;
+    NSNumber *_overrideEarnedShader;
 }
 
 + (double)badgeAspectRatio;
-+ (double)screenScaleMaximum;
-+ (double)screenScaleMultiple;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *pauseByNotificationQueueOverride; // @synthesize pauseByNotificationQueueOverride=_pauseByNotificationQueueOverride;
+@property(nonatomic) _Bool magnetsEngaged; // @synthesize magnetsEngaged=_magnetsEngaged;
+@property(retain, nonatomic) NSNumber *overrideEarnedShader; // @synthesize overrideEarnedShader=_overrideEarnedShader;
+@property(retain, nonatomic) NSNumber *useMetal; // @synthesize useMetal=_useMetal;
+@property(retain, nonatomic) id <AAUIBadgeViewDrawable> drawable; // @synthesize drawable=_drawable;
 @property(nonatomic) __weak id <AAUIBadgeViewDelegate> badgeDelegate; // @synthesize badgeDelegate=_badgeDelegate;
-@property(copy, nonatomic) CDUnknownBlockType shortenedBadgeBacksideStringProvider; // @synthesize shortenedBadgeBacksideStringProvider=_shortenedBadgeBacksideStringProvider;
-@property(retain, nonatomic) AAUIBadgeModelConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(nonatomic) _Bool verticalPanningDisabled; // @synthesize verticalPanningDisabled=_verticalPanningDisabled;
-- (void)_pauseByNotification:(id)arg1;
-- (void)render360RotationPNGSequenceWithNumberOfFrames:(unsigned long long)arg1;
-- (void)setFixedBadgeAngle:(double)arg1;
-- (double)playFlipOutAnimation;
-- (double)playFlipInAnimation;
-- (void)playRevealAnimationWithDuration:(double)arg1;
+@property(copy, nonatomic) CDUnknownBlockType shortenedBadgeBacksideStringProvider; // @synthesize shortenedBadgeBacksideStringProvider=_shortenedBadgeBacksideStringProvider;
+@property(retain, nonatomic) UIImage *backTextureImage; // @synthesize backTextureImage=_backTextureImage;
 - (_Bool)shouldAutorotate;
 - (unsigned long long)supportedInterfaceOrientations;
 - (_Bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (long long)preferredStatusBarStyle;
-- (void)dealloc;
-- (void)_context_destroyBuffers;
-- (void)_context_drawInRect:(struct CGRect)arg1;
-- (unsigned int)drawInRect:(struct CGRect)arg1 withContext:(id)arg2;
-- (void)_disengageMagnets;
-- (void)_engageMagnets;
-- (void)update;
-- (float)_normalizeAngle:(float)arg1;
-- (id)_valueForTweak:(id)arg1;
-- (void)resizeBadgeForCurrentViewSize;
-- (void)_context_loadUniformsAndAttributes;
-- (void)_generateBackTexture;
-- (void)_setBackTextureNeedsRegeneration;
-- (void)setBadgeBacksideIcon:(id)arg1;
-- (void)setBadgeBacksideAttributedString:(id)arg1;
-- (void)_context_loadBadgeModelWithConfiguration:(id)arg1;
-- (void)_context_loadBadgeModel;
-- (void)_context_loadShaders;
-- (void)_context_setupScene;
-- (void)_context_createBuffers;
-- (void)_context_setup;
 - (void)_applyImpulse:(double)arg1;
 - (void)_tapped:(id)arg1;
 - (void)_spin360Degrees;
@@ -105,12 +57,30 @@
 - (double)_attenuatedVelocity:(double)arg1;
 - (double)_attenuatedSpinRate:(double)arg1;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
-- (void)_forEachProgram:(CDUnknownBlockType)arg1;
+- (double)playFlipOutAnimation;
+- (double)playFlipInAnimation;
+- (void)setFixedBadgeAngle:(double)arg1;
+@property(nonatomic, getter=isPaused) _Bool paused;
+@property(retain, nonatomic) AAUIBadgeModelConfiguration *configuration;
+@property(readonly, nonatomic) UIView *view;
+- (void)cleanupAfterSnapshot;
+- (void)resizeBadgeForCurrentViewSize;
+- (id)snapshot;
+- (void)_generateBackTextureImage;
+- (void)_setBackTextureNeedsRegeneration;
+- (void)setBadgeBacksideIcon:(id)arg1;
+- (void)setBadgeBacksideAttributedString:(id)arg1;
+- (void)_invalidateLastUpdateTime;
+- (double)timeSinceLastUpdate;
+- (id)updateBadgeModelForDrawable:(id)arg1;
+- (float)_normalizeAngle:(float)arg1;
+- (id)tweakableUniformsForDrawable:(id)arg1;
+- (id)drawable:(id)arg1 valueForTweakableUniform:(id)arg2;
+- (id)_valueForTweak:(id)arg1;
 - (id)_unearnedShaderDefaultTweaks;
 - (id)_defaultTweaks;
-- (void)setBadgeModelPath:(id)arg1 texturePath:(id)arg2 plistPath:(id)arg3;
 - (id)initUsingEarnedShader:(_Bool)arg1;
-- (id)init;
+- (id)initUsingEarnedShader:(_Bool)arg1 delegate:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

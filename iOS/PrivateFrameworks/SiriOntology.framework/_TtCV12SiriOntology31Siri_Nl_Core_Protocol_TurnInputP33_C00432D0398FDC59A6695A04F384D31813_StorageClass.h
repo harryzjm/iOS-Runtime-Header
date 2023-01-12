@@ -15,6 +15,10 @@
     MISSING_TYPE *_activeTasks;
     MISSING_TYPE *_executedTasks;
     MISSING_TYPE *_asrOutputs;
+    MISSING_TYPE *_turnContext;
+    MISSING_TYPE *_locale;
+    MISSING_TYPE *_tapToEdit;
+    MISSING_TYPE *_startTimestamp;
 }
 
 @end

@@ -23,8 +23,8 @@
 - (id)_encodeDeviceInfo:(id)arg1;
 - (id)_processDeviceInfo:(id)arg1;
 - (id)_protocolMessageFromData:(id)arg1;
-- (id)messageQueue:(id)arg1 dataForMessage:(id)arg2;
-- (id)initWithInputStream:(id)arg1 outputStream:(id)arg2 runLoop:(id)arg3;
+- (id)dataForMessage:(id)arg1;
+- (id)initWithConnection:(id)arg1;
 
 @end
 

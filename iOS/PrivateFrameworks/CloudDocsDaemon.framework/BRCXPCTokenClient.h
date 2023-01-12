@@ -13,6 +13,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)fetchGroupContainerPathForCurrentPersonaWithReply:(CDUnknownBlockType)arg1;
+- (void)fetchContainerPathForCurrentPersonaWithReply:(CDUnknownBlockType)arg1;
 - (void)getPrimaryiCloudAccountStatus:(CDUnknownBlockType)arg1;
 - (void)currentAccountCopyTokenWithBundleID:(id)arg1 version:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)prepareFileProvidersWithReply:(CDUnknownBlockType)arg1;

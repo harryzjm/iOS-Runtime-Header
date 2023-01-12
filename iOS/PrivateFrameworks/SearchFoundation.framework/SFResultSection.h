@@ -10,7 +10,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFJSONSerializable-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString;
+@class NSArray, NSData, NSDictionary, NSString, SFCommandButtonItem;
 
 @interface SFResultSection : NSObject <SFJSONSerializable, NSSecureCoding, NSCopying>
 {
@@ -21,12 +21,14 @@
     NSString *_bundleIdentifier;
     NSString *_title;
     NSString *_moreText;
+    SFCommandButtonItem *_button;
     double _rankingScore;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(nonatomic) double rankingScore; // @synthesize rankingScore=_rankingScore;
+@property(copy, nonatomic) SFCommandButtonItem *button; // @synthesize button=_button;
 @property(copy, nonatomic) NSString *moreText; // @synthesize moreText=_moreText;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;

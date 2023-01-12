@@ -8,13 +8,15 @@
 
 #import <TSCalculationEngine/NSCopying-Protocol.h>
 
-@class NSDictionary, NSNumber, NSString;
+@class NSArray, NSMutableDictionary, NSNumber, NSString, TSCEAnyReference, TSCEWrappedRangeRef;
 
 @interface TSCEError : NSObject <NSCopying>
 {
-    NSDictionary *_errorDictionary;
+    long long _errorType;
+    NSMutableDictionary *_errorDictionary;
 }
 
++ (_Bool)errorForRichTextStorage:(id)arg1 outValue:(struct TSCEValue *)arg2;
 + (id)remoteDataUnavailableErrorWithAttribute:(id)arg1;
 + (id)remoteDataServerError;
 + (id)invalidCurrencyPairError;
@@ -54,7 +56,7 @@
 + (void)raiseNegativeVectorValueErrorForFunctionName:(id)arg1 argumentNumber:(int)arg2;
 + (void)raiseLinestMatrixUnderdeterminedError;
 + (void)raiseMultipleDurationsErrorForFunctionName:(id)arg1;
-+ (void)raiseComparisonTypeExceptionForLeftType:(int)arg1 rightType:(int)arg2;
++ (void)raiseComparisonTypeExceptionForLeftType:(BOOL)arg1 rightType:(BOOL)arg2;
 + (void)raiseLinestHighlyCorrelatedVariableError;
 + (void)raiseDurationDisallowedForNormdistPDFError;
 + (void)raiseCharInputOutOfBoundsError;
@@ -74,7 +76,7 @@
 + (void)raiseEmptyArrayError;
 + (void)raiseRangeSizeMismatchErrorForFunctionName:(id)arg1;
 + (void)raiseInvalidArgumentPairingsErrorForFunctionName:(id)arg1 hasInitialUnrelatedArgument:(_Bool)arg2;
-+ (void)raiseInvalidIntersectionError:(vector_99ef3555)arg1 hostTableUID:(const UUIDData_5fbc143e *)arg2 calcEngine:(id)arg3;
++ (void)raiseInvalidIntersectionError:(vector_790547e6)arg1 hostTableUID:(const struct TSKUIDStruct *)arg2 calcEngine:(id)arg3;
 + (void)raiseNotEnoughInputsErrorForFunctionName:(id)arg1 argumentNumber:(int)arg2 required:(int)arg3;
 + (void)raiseSumMixedDurationsAndUnitlessWithoutADateErrorForFunctionName:(id)arg1;
 + (id)sumMixedDurationsAndUnitlessWithoutADateErrorForFunctionName:(id)arg1;
@@ -116,7 +118,7 @@
 + (void)raiseInvalidIndexForChooseError:(int)arg1;
 + (void)raiseInvalidArgumentEqualityRelationshipErrorForFunctionName:(id)arg1 argIndex1:(int)arg2 argIndex2:(int)arg3;
 + (void)raiseInvalidArgumentRelationshipErrorForFunctionName:(id)arg1 argIndex1:(int)arg2 argIndex2:(int)arg3 argsAscending:(_Bool)arg4 equalityPermitted:(_Bool)arg5;
-+ (void)raiseNoSuitableArgumentsFoundErrorForFunctionName:(id)arg1 requiredType:(int)arg2;
++ (void)raiseNoSuitableArgumentsFoundErrorForFunctionName:(id)arg1 requiredType:(BOOL)arg2;
 + (void)raiseNotAReferenceErrorForFunctionName:(id)arg1;
 + (void)raiseCircularReferenceErrorWithReference:(id)arg1;
 + (void)raiseUnionInsideIntersectionError;
@@ -127,8 +129,8 @@
 + (void)raiseEmptyArgumentError;
 + (void)raiseInvalidTokenInFormulaError;
 + (void)raiseNoModeError;
-+ (void)raiseIndirectErrorForRangeReference:(struct TSCERangeRef)arg1 hostTableUID:(const UUIDData_5fbc143e *)arg2;
-+ (id)indirectErrorForRangeReference:(struct TSCERangeRef)arg1 hostTableUID:(const UUIDData_5fbc143e *)arg2;
++ (void)raiseIndirectErrorForRangeReference:(struct TSCERangeRef)arg1 hostTableUID:(const struct TSKUIDStruct *)arg2;
++ (id)indirectErrorForRangeReference:(struct TSCERangeRef)arg1 hostTableUID:(const struct TSKUIDStruct *)arg2;
 + (void)raiseInvalidArgumentsErrorForFunctionName:(id)arg1 argumentIndex:(int)arg2;
 + (void)raiseMixedTypeManipulationErrorForFunctionName:(id)arg1;
 + (void)raiseInvalidDateManipulationError;
@@ -140,9 +142,9 @@
 + (void)raiseOutOfBoundsArgumentErrorForArgument:(int)arg1 functionName:(id)arg2 lowerBound:(double)arg3 lowerBoundInclusive:(_Bool)arg4 upperBound:(double)arg5 upperBoundInclusive:(_Bool)arg6;
 + (void)raiseOutOfBoundsArgumentErrorForArgument:(int)arg1 functionName:(id)arg2 upperBound:(double)arg3 upperBoundInclusive:(_Bool)arg4;
 + (void)raiseOutOfBoundsArgumentErrorForArgument:(int)arg1 functionName:(id)arg2 lowerBound:(double)arg3 lowerBoundInclusive:(_Bool)arg4;
-+ (id)invalidMergeReference:(struct TSCERangeRef)arg1 contextEntityUID:(const UUIDData_5fbc143e *)arg2;
-+ (void)raiseErrorForInvalidReference:(struct TSCERangeRef)arg1 orString:(id)arg2 contextEntityUID:(const UUIDData_5fbc143e *)arg3 invalidMergeReference:(_Bool)arg4 disqualifiedFromEndCell:(_Bool)arg5;
-+ (void)raiseErrorForInvalidReference:(struct TSCERangeRef)arg1 orString:(id)arg2 contextEntityUID:(const UUIDData_5fbc143e *)arg3;
++ (id)invalidMergeReference:(struct TSCERangeRef)arg1 contextEntityUID:(const struct TSKUIDStruct *)arg2;
++ (void)raiseErrorForInvalidReference:(struct TSCERangeRef)arg1 orString:(id)arg2 contextEntityUID:(const struct TSKUIDStruct *)arg3 invalidMergeReference:(_Bool)arg4 disqualifiedFromEndCell:(_Bool)arg5;
++ (void)raiseErrorForInvalidReference:(struct TSCERangeRef)arg1 orString:(id)arg2 contextEntityUID:(const struct TSKUIDStruct *)arg3;
 + (id)invalidReferenceError;
 + (void)raiseErrorForInvalidReference;
 + (void)raiseArgumentSetUsedOutOfContextError;
@@ -155,6 +157,7 @@
 + (void)raiseNumberError;
 + (void)raiseUnknownFunctionErrorForString:(id)arg1;
 + (void)raiseTypeExceptionForValue:(struct TSCEValue)arg1 functionSpec:(id)arg2 argumentIndex:(int)arg3 locale:(id)arg4;
++ (id)typeErrorForValue:(struct TSCEValue)arg1 functionSpec:(id)arg2 argumentIndex:(int)arg3 locale:(id)arg4;
 + (void)raiseDisallowedStockModeError:(id)arg1;
 + (void)raiseNotReadyError;
 + (id)notReadyError;
@@ -162,13 +165,15 @@
 + (id)abortError;
 + (void)raiseValueErrorForFunctionName:(id)arg1;
 + (void)raiseInvalidArrayContentsError;
-+ (void)p_RaiseErrorForDictionary:(id)arg1;
 + (void)raiseErrorForError:(id)arg1;
 + (_Bool)exceptionIsInvalidMergeReference:(id)arg1;
 + (id)attachmentError;
 + (id)autoNumberAttachmentError;
-+ (id)badReferenceError;
-+ (id)referenceToNonexistentTableError:(const UUIDData_5fbc143e *)arg1;
++ (id)referenceToNonexistentTableError:(struct TSKUIDStruct)arg1;
++ (id)invalidGroupingColumnErrorForFunctionName:(id)arg1 argumentNumber:(int)arg2;
++ (id)invalidAggregateColumnErrorForFunctionName:(id)arg1 argumentNumber:(int)arg2;
++ (id)missingPivotTableErrorForFunctionName:(id)arg1 argumentNumber:(int)arg2;
++ (id)missingRunningTotalInFieldError;
 + (id)circularReferenceError;
 + (_Bool)p_DictionaryRepresentsInvalidMergeReference:(id)arg1;
 + (_Bool)exceptionIsRangeUsageError:(id)arg1;
@@ -176,33 +181,30 @@
 + (_Bool)exceptionIsFromCalcEngine:(id)arg1;
 + (id)syntaxError;
 + (id)errorForToken:(id)arg1;
-+ (id)errorDictionaryForType:(id)arg1 extraInfo:(id)arg2;
-+ (id)errorDictionaryForType:(id)arg1 functionName:(id)arg2;
-+ (id)errorDictionaryForType:(id)arg1 functionName:(id)arg2 extraInfo:(id)arg3;
-+ (id)errorDictionaryForType:(id)arg1;
-+ (id)errorDictionaryForType:(id)arg1 andClass:(id)arg2;
-+ (id)errorDictionaryForType:(id)arg1 andClass:(id)arg2 extraInfo:(id)arg3;
 + (id)errorWithDictionary:(id)arg1;
++ (id)errorForErrorType:(long long)arg1 functionName:(id)arg2 argIndex:(int)arg3;
++ (id)errorForErrorType:(long long)arg1 functionName:(id)arg2;
++ (id)errorForErrorType:(long long)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) long long errorType; // @synthesize errorType=_errorType;
 - (id)bakedString;
 - (_Bool)isNativelyEqual:(struct TSCEValue)arg1;
 - (struct TSCEReferenceValue *)referenceValue;
-- (struct TSCEVector *)vector;
+- (struct TSCEGrid *)vector;
 - (_Bool)boolean;
 - (id)string;
 - (id)date;
 - (struct TSCENumberValue *)number;
 - (struct TSCEReferenceValue *)referenceValueForFunction:(id)arg1 argumentIndex:(int)arg2 warningReportingContext:(struct TSCEWarningReportingContext *)arg3;
-- (struct TSCEVector)formattedVectorForFunction:(id)arg1 argumentIndex:(int)arg2 context:(struct TSCEEvaluationContext *)arg3 format:(const struct TSCEFormat *)arg4;
+- (struct TSCEGrid)formattedGridForFunction:(id)arg1 argumentIndex:(int)arg2 context:(struct TSCEEvaluationContext *)arg3 format:(const struct TSCEFormat *)arg4;
 - (_Bool)booleanForFunction:(id)arg1 argumentIndex:(int)arg2 warningReportingContext:(struct TSCEWarningReportingContext *)arg3;
 - (id)stringForFunction:(id)arg1 argumentIndex:(int)arg2 warningReportingContext:(struct TSCEWarningReportingContext *)arg3;
 - (id)dateForFunction:(id)arg1 argumentIndex:(int)arg2 warningReportingContext:(struct TSCEWarningReportingContext *)arg3;
 - (struct TSCENumberValue *)numberForFunction:(id)arg1 argumentIndex:(int)arg2 warningReportingContext:(struct TSCEWarningReportingContext *)arg3;
-- (int)deepType;
-- (int)nativeType;
-- (void)setErrorDictionary:(id)arg1;
+- (BOOL)deepType;
+- (BOOL)nativeType;
+- (_Bool)isInvalidReferenceError;
 - (id)errorDictionary;
-- (_Bool)isInvalidReference;
 - (struct TSCERangeRef)rangeRef;
 - (_Bool)isErrorReferenceError;
 - (_Bool)isUnsupportedFeatureError;
@@ -211,27 +213,55 @@
 - (_Bool)isAbortedError;
 - (_Bool)isInvalidMergeReference;
 - (_Bool)errorIsRangeUsageError;
+- (_Bool)isMismatchedUnitsError;
 - (_Bool)isCircularReferenceError;
 - (_Bool)isFromCalcEngine;
-- (_Bool)isSyntaxError;
 - (id)tokenString;
-- (id)displayStringWithCalculationEngine:(id)arg1 forTable:(const UUIDData_5fbc143e *)arg2 andCellID:(struct TSUCellCoord)arg3;
+- (id)displayStringWithCalculationEngine:(id)arg1 forTable:(struct TSKUIDStruct)arg2 andCellID:(struct TSUCellCoord)arg3;
 - (_Bool)isEqual:(id)arg1;
-- (_Bool)isOfType:(id)arg1;
 - (void)raiseException;
 - (id)stringValue;
 - (id)dateValue;
 - (double)doubleValue;
-@property(readonly, nonatomic) NSNumber *argIndex2;
-@property(readonly, nonatomic) NSNumber *argIndex;
-@property(readonly, nonatomic) NSString *functionName;
-@property(readonly, nonatomic) NSNumber *debugOnlyErrorNumber;
-@property(readonly, nonatomic) id extraInfo;
-@property(readonly, nonatomic) NSString *errorClass;
-@property(readonly, nonatomic) NSString *errorType;
+@property(retain, nonatomic) NSNumber *providedArgs;
+@property(retain, nonatomic) NSNumber *maxArgsAllowed;
+@property(retain, nonatomic) TSCEAnyReference *anyReference;
+@property(retain, nonatomic) NSArray *referenceArray;
+@property(retain, nonatomic) NSNumber *chooseIndex;
+@property(retain, nonatomic) NSString *unitName;
+@property(nonatomic) _Bool referenceEndCellInvalid;
+@property(nonatomic) _Bool invalidReferenceToMerge;
+@property(nonatomic) _Bool attachmentErrorRaisedInTextCell;
+@property(retain, nonatomic) TSCEWrappedRangeRef *wrappedRangeRef;
+@property(nonatomic) struct TSKUIDStruct ownerUID;
+@property(nonatomic) _Bool problemNodeIsCellReference;
+@property(retain, nonatomic) NSString *problemMode;
+@property(retain, nonatomic) NSString *problemExpressionString;
+@property(nonatomic) _Bool previousValueIsRegex;
+@property(retain, nonatomic) NSString *previousMatch;
+@property(retain, nonatomic) NSNumber *matchesFound;
+@property(retain, nonatomic) NSNumber *occurrence;
+@property(nonatomic) _Bool afterMatch;
+@property(nonatomic) _Bool equalityPermitted;
+@property(nonatomic) _Bool argsAscending;
+@property(retain, nonatomic) NSString *valueToMatch;
+@property(nonatomic) _Bool upperBoundInclusive;
+@property(nonatomic) _Bool lowerBoundInclusive;
+@property(retain, nonatomic) NSNumber *upperBound;
+@property(retain, nonatomic) NSNumber *lowerBound;
+@property(retain, nonatomic) NSNumber *argIndex2;
+@property(retain, nonatomic) NSNumber *argIndex1;
+@property(retain, nonatomic) NSNumber *argIndex;
+@property(retain, nonatomic) NSString *functionName;
+@property(retain, nonatomic) NSNumber *dateAsTimeInterval;
+@property(retain, nonatomic) NSNumber *extraInfoNumber;
+@property(retain, nonatomic) NSString *extraInfoString;
+@property(readonly, nonatomic) NSString *errorTypeKey;
 - (id)error;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithDictionary:(id)arg1;
+- (void)setObject:(id)arg1 forKey:(id)arg2;
+- (id)objectForKey:(id)arg1;
+- (id)initWithErrorType:(long long)arg1;
 
 @end
 

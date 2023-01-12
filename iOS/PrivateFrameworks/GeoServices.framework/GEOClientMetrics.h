@@ -14,10 +14,10 @@
 {
     PBUnknownFields *_unknownFields;
     GEOClientNetworkMetrics *_networkMetrics;
-    int _offlineReason;
+    double _queuedTime;
     int _responseSource;
     struct {
-        unsigned int has_offlineReason:1;
+        unsigned int has_queuedTime:1;
         unsigned int has_responseSource:1;
     } _flags;
 }
@@ -39,10 +39,8 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (int)StringAsOfflineReason:(id)arg1;
-- (id)offlineReasonAsString:(int)arg1;
-@property(nonatomic) _Bool hasOfflineReason;
-@property(nonatomic) int offlineReason;
+@property(nonatomic) _Bool hasQueuedTime;
+@property(nonatomic) double queuedTime;
 @property(retain, nonatomic) GEOClientNetworkMetrics *networkMetrics;
 @property(readonly, nonatomic) _Bool hasNetworkMetrics;
 - (int)StringAsResponseSource:(id)arg1;

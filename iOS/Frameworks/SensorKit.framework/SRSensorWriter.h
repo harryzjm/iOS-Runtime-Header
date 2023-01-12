@@ -6,19 +6,21 @@
 
 #import <objc/NSObject.h>
 
-#import <SensorKit/SRAuthorizationStoreDelegate-Protocol.h>
+#import <SensorKit/SRAuthorizationClientDelegate-Protocol.h>
+#import <SensorKit/SRAuthorizationStoreReaderAuthorizationDelegate-Protocol.h>
 #import <SensorKit/SRDaemonNotificationDelegate-Protocol.h>
 
-@class NSDictionary, NSString, NSXPCConnection, SRDaemonNotification, SRDefaults, SRSensorDatastore;
-@protocol SRSensorWriterDelegate;
+@class NSArray, NSDictionary, NSString, NSXPCConnection, SRAuthorizationStore, SRDaemonNotification, SRDatastore, SRDefaults;
+@protocol OS_dispatch_queue, SRSensorWriterDelegate, SRTCCStore;
 
-@interface SRSensorWriter : NSObject <SRAuthorizationStoreDelegate, SRDaemonNotificationDelegate>
+@interface SRSensorWriter : NSObject <SRAuthorizationStoreReaderAuthorizationDelegate, SRDaemonNotificationDelegate, SRAuthorizationClientDelegate>
 {
-    _Bool _monitoring;
     id <SRSensorWriterDelegate> _delegate;
     SRDaemonNotification *_daemonNotification;
     SRDefaults *_defaults;
-    SRSensorDatastore *_datastore;
+    SRDatastore *_datastore;
+    _Atomic _Bool _monitoring;
+    int _notifyToken;
     _Bool _requestNewSegmentInFlight;
     _Bool _authorized;
     _Bool _connectionDidInterrupt;
@@ -27,12 +29,24 @@
     NSString *_sensorIdentifier;
     NSDictionary *_nextDatastoreFiles;
     NSXPCConnection *_connection;
+    long long __writerAuthorizationStatus;
+    NSString *_writerAuthorizationService;
+    id <SRTCCStore> _tccStore;
+    NSObject<OS_dispatch_queue> *_writerAuthorizationUpdateQueue;
+    SRAuthorizationStore *_authStore;
+    NSArray *__requestedConfigurations;
 }
 
 + (id)connectionToDaemon;
 + (id)remoteInterface;
 + (id)clientInterface;
 + (void)initialize;
+@property(copy, nonatomic) NSArray *_requestedConfigurations; // @synthesize _requestedConfigurations=__requestedConfigurations;
+@property(retain, nonatomic) SRAuthorizationStore *authStore; // @synthesize authStore=_authStore;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *writerAuthorizationUpdateQueue; // @synthesize writerAuthorizationUpdateQueue=_writerAuthorizationUpdateQueue;
+@property(retain) id <SRTCCStore> tccStore; // @synthesize tccStore=_tccStore;
+@property(readonly, retain, nonatomic) NSString *writerAuthorizationService; // @synthesize writerAuthorizationService=_writerAuthorizationService;
+@property long long _writerAuthorizationStatus; // @synthesize _writerAuthorizationStatus=__writerAuthorizationStatus;
 @property _Bool retryGetMonitoring; // @synthesize retryGetMonitoring=_retryGetMonitoring;
 @property(retain) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property _Bool connectionDidInvalidate; // @synthesize connectionDidInvalidate=_connectionDidInvalidate;
@@ -41,14 +55,20 @@
 @property _Bool requestNewSegmentInFlight; // @synthesize requestNewSegmentInFlight=_requestNewSegmentInFlight;
 @property(retain) NSDictionary *nextDatastoreFiles; // @synthesize nextDatastoreFiles=_nextDatastoreFiles;
 @property(copy) NSString *sensorIdentifier; // @synthesize sensorIdentifier=_sensorIdentifier;
+- (void)authorizedServicesDidChange:(id)arg1 deniedServices:(id)arg2 dataCollectionEnabled:(_Bool)arg3 onboardingCompleted:(_Bool)arg4 lastModifiedTimes:(id)arg5 forBundleIdentifier:(id)arg6;
 - (void)flushDatabase;
+- (void)evaluateAuthorizationStateWithNewValue:(_Bool)arg1;
 - (void)evaluateAuthorizationState;
-- (void)authorizationStore:(id)arg1 resetAuthorizations:(id)arg2 forBundleId:(id)arg3;
-- (void)authorizationStore:(id)arg1 revokedAuthorizations:(id)arg2 forBundleId:(id)arg3;
-- (void)authorizationStore:(id)arg1 grantedAuthorizations:(id)arg2 forBundleId:(id)arg3;
+- (void)authorizationStore:(id)arg1 didUpdateAuthorizationsForBundleId:(id)arg2 sensors:(id)arg3;
 - (void)authorizationStore:(id)arg1 didDetermineInitialAuthorizationValues:(id)arg2;
+- (void)updateWriterAuthorizationStatus;
+- (void)startUpdatingAuthorizations;
+- (void)_requestWriterAuthorizationWithCompletion:(CDUnknownBlockType)arg1;
 @property __weak id <SRSensorWriterDelegate> delegate;
 @property(getter=isMonitoring) _Bool monitoring;
+- (void)didReceiveUpdateToConfigurationRequests;
+- (_Bool)_setSensorConfiguration:(id)arg1 continuousTimestamp:(unsigned long long)arg2 error:(id *)arg3;
+- (_Bool)_setSensorConfiguration:(id)arg1 error:(id *)arg2;
 - (void)setMetadata:(id)arg1 continuousTimestamp:(unsigned long long)arg2;
 - (void)setMetadata:(id)arg1;
 - (void)requestNewSegment;
@@ -65,10 +85,11 @@
 - (_Bool)provideSampleData:(id)arg1 error:(id *)arg2;
 - (void)provideSampleData:(id)arg1;
 - (_Bool)provideSample:(id)arg1 timestamp:(double)arg2 error:(id *)arg3;
+- (_Bool)provideSample:(id)arg1 continuousTimestamp:(unsigned long long)arg2 error:(id *)arg3;
 - (void)provideSample:(id)arg1 timestamp:(double)arg2;
 - (_Bool)provideSample:(id)arg1 error:(id *)arg2;
 - (void)provideSample:(id)arg1;
-@property(readonly, retain) SRSensorDatastore *datastore;
+@property(readonly, retain) SRDatastore *datastore;
 - (void)resetDatastoreFiles:(id)arg1;
 - (void)daemonForcedResetDatastoreFiles:(id)arg1;
 - (void)registerWithDaemonForWritingIfNeededWithReply:(CDUnknownBlockType)arg1;
@@ -77,8 +98,9 @@
 - (void)daemonNotificationDaemonDidResetDatastore:(id)arg1;
 - (void)daemonNotificationDaemonDidChangeTimeSignificantly:(id)arg1;
 - (void)daemonNotificationDaemonDidStart:(id)arg1;
+- (id)chooseAuthStore;
 - (void)dealloc;
-- (id)initWithIdentifier:(id)arg1 xpcConnection:(id)arg2 daemonNotification:(id)arg3;
+- (id)initWithIdentifier:(id)arg1 xpcConnection:(id)arg2 daemonNotification:(id)arg3 authStore:(id)arg4 tccStore:(id)arg5;
 - (id)initWithIdentifier:(id)arg1;
 - (id)init;
 

@@ -6,20 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <Notes/ICLegacyContext-Protocol.h>
+@class AccountUtilities, ICExclusiveLock, ICManagedObjectContextUpdater, ICSelectorDelayer, NSManagedObjectContext, NSMutableDictionary, NSNumber, NoteAccountObject, NoteStoreObject;
 
-@class AccountUtilities, CPExclusiveLock, ICManagedObjectContextUpdater, ICSelectorDelayer, NSManagedObjectContext, NSMutableDictionary, NSNumber, NoteAccountObject, NoteStoreObject;
-
-@interface NoteContext : NSObject <ICLegacyContext>
+@interface NoteContext : NSObject
 {
     NSManagedObjectContext *_managedObjectContext;
     NoteStoreObject *_localStore;
     NoteAccountObject *_localAccount;
     AccountUtilities *_accountUtilities;
     NSManagedObjectContext *_nextIdContext;
-    CPExclusiveLock *_nextIdLock;
+    ICExclusiveLock *_nextIdLock;
     NSNumber *_nextId;
-    CPExclusiveLock *_objectCreationLock;
+    ICExclusiveLock *_objectCreationLock;
     unsigned long long _notificationCount;
     _Bool _logChanges;
     _Bool _indexInBatches;
@@ -36,6 +34,10 @@
 + (id)newManagedObjectContext;
 + (id)persistentStoreCoordinator;
 + (id)managedObjectModel;
++ (_Bool)isDataProtectionError:(id)arg1;
++ (_Bool)isTooLowOnDiskSpace;
++ (void)backupPersistentStore:(id)arg1;
++ (id)backupsDirectoryURL;
 + (id)urlForPersistentStore;
 + (id)pathForIndex;
 + (id)pathForPersistentStore;
@@ -63,7 +65,8 @@
 + (void)setTestsNotesRootPath:(id)arg1;
 + (_Bool)databaseIsCorrupt:(id)arg1;
 + (_Bool)shouldLogIndexing;
-+ (id)newLegacyContext;
++ (id)mainContextObjectFromObject:(id)arg1;
++ (id)sharedContext;
 - (void).cxx_destruct;
 @property(retain, nonatomic) ICSelectorDelayer *externalChangeNotificationDelayer; // @synthesize externalChangeNotificationDelayer=_externalChangeNotificationDelayer;
 @property(retain, nonatomic) ICManagedObjectContextUpdater *mocUpdater; // @synthesize mocUpdater=_mocUpdater;
@@ -136,6 +139,7 @@
 - (id)storeForObjectID:(id)arg1;
 - (id)collectionForObjectID:(id)arg1;
 - (id)newlyAddedAttachment;
+- (id)newlyCreatedNoteFromDefaultStore;
 - (id)newlyAddedNoteWithGUID:(id)arg1;
 - (id)newlyAddedNote;
 - (void)batchFaultNotes:(id)arg1;
@@ -165,14 +169,6 @@
 - (_Bool)setUpLastIndexTid;
 - (_Bool)setUpLocalAccountAndStore;
 - (void)_createLocalAccount:(id *)arg1 andStore:(id *)arg2;
-- (void)reset;
-- (id)existingObjectWithID:(id)arg1 error:(id *)arg2;
-- (void)performBlockAndWait:(CDUnknownBlockType)arg1;
-- (void)performBlock:(CDUnknownBlockType)arg1;
-- (id)allVisibleNoteObjectIDsForAccountWithObjectID:(id)arg1;
-- (unsigned long long)countOfVisibleNotesForAccountWithObjectID:(id)arg1;
-- (id)allVisibleNotesForAccountWithObjectID:(id)arg1;
-- (_Bool)nonEmptyNoteExistsForLegacyAccountWithObjectID:(id)arg1;
 
 @end
 

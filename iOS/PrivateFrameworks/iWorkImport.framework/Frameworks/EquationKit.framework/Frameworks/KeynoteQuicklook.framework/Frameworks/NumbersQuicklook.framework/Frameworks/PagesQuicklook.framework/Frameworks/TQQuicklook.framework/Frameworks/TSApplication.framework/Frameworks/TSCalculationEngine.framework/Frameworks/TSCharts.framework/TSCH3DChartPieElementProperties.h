@@ -6,28 +6,28 @@
 
 @interface TSCH3DChartPieElementProperties
 {
-    vector_7584168e mPercentOfTotal;
-    vector_7584168e mRotation;
-    vector_7584168e mExplode;
+    struct vector<float, std::allocator<float>> _percentOfTotal;
+    struct vector<float, std::allocator<float>> _rotation;
+    struct vector<float, std::allocator<float>> _explode;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)reset;
 - (void)updateValues;
-- (_Bool)applyElementTransform:(struct ObjectTransforms *)arg1 series:(id)arg2 index:(tvec2_3b141483)arg3 propertyAccessor:(id)arg4;
+- (_Bool)applyElementTransform:(void *)arg1 series:(id)arg2 index:(tvec2_3b141483)arg3 propertyAccessor:(id)arg4;
 - (float)elementTransformDepthFromPropertyAccessor:(id)arg1;
-- (float)explosionAtElementIndex:(const tvec2_3b141483 *)arg1 propertyAccessor:(id)arg2;
+- (float)explosionAtElementIndex:(const void *)arg1 propertyAccessor:(id)arg2;
 - (_Bool)anyHasExplosion;
-- (void)setRotation:(float)arg1 atElementIndex:(const tvec2_3b141483 *)arg2;
-- (float)rotationAtElementIndex:(const tvec2_3b141483 *)arg1;
-- (void)setExplosion:(float)arg1 atElementIndex:(const tvec2_3b141483 *)arg2;
-- (float)explosionAtElementIndex:(const tvec2_3b141483 *)arg1;
-- (void)setPercentOfTotal:(float)arg1 atElementIndex:(const tvec2_3b141483 *)arg2;
-- (float)percentOfTotalAtElementIndex:(const tvec2_3b141483 *)arg1;
-- (long long)flatIndex:(const tvec2_3b141483 *)arg1;
+- (void)setRotation:(float)arg1 atElementIndex:(const void *)arg2;
+- (float)rotationAtElementIndex:(const void *)arg1;
+- (void)setExplosion:(float)arg1 atElementIndex:(const void *)arg2;
+- (float)explosionAtElementIndex:(const void *)arg1;
+- (void)setPercentOfTotal:(float)arg1 atElementIndex:(const void *)arg2;
+- (float)percentOfTotalAtElementIndex:(const void *)arg1;
+- (long long)flatIndex:(const void *)arg1;
 - (void)updateLabels;
-- (id)boundsGeometryForSeries:(id)arg1 index:(const tvec2_3b141483 *)arg2;
+- (id)boundsGeometryForSeries:(id)arg1 index:(const void *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class RBAssertionCollection, RBProcessIndex, RBProcessMap;
+@class NSMapTable, RBAssertionCollection, RBProcessIndex, RBProcessMap;
 @protocol RBBundlePropertiesManaging, RBDomainAttributeManaging, RBEntitlementManaging;
 
 @interface RBAssertionStateResolver : NSObject
@@ -17,9 +17,11 @@
     id <RBDomainAttributeManaging> _domainAttributeManager;
     id <RBBundlePropertiesManaging> _bundlePropertiesManager;
     id <RBEntitlementManaging> _entitlementManager;
+    NSMapTable *_savedEndowments;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMapTable *savedEndowments; // @synthesize savedEndowments=_savedEndowments;
 @property(retain, nonatomic) id <RBEntitlementManaging> entitlementManager; // @synthesize entitlementManager=_entitlementManager;
 @property(retain, nonatomic) id <RBBundlePropertiesManaging> bundlePropertiesManager; // @synthesize bundlePropertiesManager=_bundlePropertiesManager;
 @property(retain, nonatomic) id <RBDomainAttributeManaging> domainAttributeManager; // @synthesize domainAttributeManager=_domainAttributeManager;

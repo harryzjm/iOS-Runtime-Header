@@ -4,12 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSCharacterSet;
+
 @interface CHTransliterateHalfWidthPunctuationStep
 {
+    _Bool _shouldAddAlternatives;
+    NSCharacterSet *_contextInvariantCharacterSet;
+    NSCharacterSet *_forwardLookingCharacterSet;
+    NSCharacterSet *_backwardLookingCharacterSet;
+    NSCharacterSet *_widthAlternativeCharacterSet;
 }
 
-- (void)dealloc;
+@property(retain, nonatomic) NSCharacterSet *widthAlternativeCharacterSet; // @synthesize widthAlternativeCharacterSet=_widthAlternativeCharacterSet;
+@property(retain, nonatomic) NSCharacterSet *backwardLookingCharacterSet; // @synthesize backwardLookingCharacterSet=_backwardLookingCharacterSet;
+@property(retain, nonatomic) NSCharacterSet *forwardLookingCharacterSet; // @synthesize forwardLookingCharacterSet=_forwardLookingCharacterSet;
+@property(retain, nonatomic) NSCharacterSet *contextInvariantCharacterSet; // @synthesize contextInvariantCharacterSet=_contextInvariantCharacterSet;
+@property(nonatomic) _Bool shouldAddAlternatives; // @synthesize shouldAddAlternatives=_shouldAddAlternatives;
 - (id)process:(id)arg1;
+- (void)dealloc;
+- (id)initShouldAddAlternatives:(_Bool)arg1;
 
 @end
 

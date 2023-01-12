@@ -10,6 +10,7 @@
 
 @interface RTStoredLocationEnumerationOptions <NSCopying>
 {
+    int _type;
     NSDateInterval *_dateInterval;
     double _horizontalAccuracy;
     unsigned long long _batchSize;
@@ -18,6 +19,7 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) int type; // @synthesize type=_type;
 @property(copy, nonatomic) CLLocation *boundingBoxLocation; // @synthesize boundingBoxLocation=_boundingBoxLocation;
 @property(nonatomic) unsigned long long batchSize; // @synthesize batchSize=_batchSize;
 @property(nonatomic) double horizontalAccuracy; // @synthesize horizontalAccuracy=_horizontalAccuracy;
@@ -31,6 +33,7 @@
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithDateInterval:(id)arg1 horizontalAccuracy:(double)arg2 batchSize:(unsigned long long)arg3 boundingBoxLocation:(id)arg4 type:(int)arg5;
 - (id)initWithDateInterval:(id)arg1 horizontalAccuracy:(double)arg2 batchSize:(unsigned long long)arg3 boundingBoxLocation:(id)arg4;
 - (id)initWithDateInterval:(id)arg1 horizontalAccuracy:(double)arg2 batchSize:(unsigned long long)arg3;
 - (id)init;

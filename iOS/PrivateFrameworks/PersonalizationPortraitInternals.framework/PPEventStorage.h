@@ -12,28 +12,23 @@
 @interface PPEventStorage : NSObject
 {
     _PASLock *_lock;
-    struct atomic_flag _pendingReset;
     NSObject<OS_dispatch_queue> *_serialQueue;
 }
 
 + (id)defaultStorage;
 - (void).cxx_destruct;
-- (_Bool)_isSuggestedEvent:(id)arg1 guardedData:(id)arg2;
-- (_Bool)_isAllDayOrMultiDayEvent:(id)arg1 guardedData:(id)arg2;
-- (id)_predicateForRange:(struct _NSRange)arg1;
-- (void)_loadCalendars;
+- (void)setInvisibleCalendarIdentifiers:(id)arg1;
 - (void)clearCaches;
-- (void)resetAfterQueryWithCompletion:(CDUnknownBlockType)arg1;
 - (_Bool)shouldIngestEvent:(id)arg1;
 - (_Bool)eventKitChangeIsEvent:(id)arg1;
-- (void)setCalendarVisibilityChangeHandler:(CDUnknownBlockType)arg1;
 - (id)eventWithExternalID:(id)arg1;
 - (id)resolveEventFromEKChange:(id)arg1;
 - (void)iterateEventsFrom:(id)arg1 to:(id)arg2 inChunks:(int)arg3 withBlock:(CDUnknownBlockType)arg4;
-- (id)suggestedEventsInRange:(struct _NSRange)arg1;
+- (id)nlEventsInRange:(struct _NSRange)arg1;
+- (id)suggestedEventsInRange:(struct _NSRange)arg1 ekStore:(id)arg2;
 - (id)eventsInRange:(struct _NSRange)arg1;
 - (id)eventWithIdentifier:(id)arg1;
-- (id)_init;
+- (id)initWithEventStorePurger:(id)arg1;
 - (id)init;
 
 @end

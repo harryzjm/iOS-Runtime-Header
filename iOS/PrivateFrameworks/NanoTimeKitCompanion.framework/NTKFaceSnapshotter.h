@@ -15,6 +15,7 @@
     NTKFaceSnapshottingWindow *_snapshotWindow;
 }
 
++ (id)renderSnapshotAndTexture:(id *)arg1 fromWindow:(id)arg2;
 + (id)renderSnapshotFromWindow:(id)arg1;
 + (id)defaultModernSnapshotOptions;
 - (void).cxx_destruct;

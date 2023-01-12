@@ -12,8 +12,8 @@
 + (id)animationWithKeyPath:(id)arg1;
 - (void)setAnimId:(unsigned long long)arg1;
 @property(readonly) unsigned long long animId;
-- (_Bool)_setCARenderAnimation:(struct Animation *)arg1 layer:(id)arg2;
-- (struct Animation *)_copyRenderAnimationForLayer:(id)arg1;
+- (_Bool)_setCARenderAnimation:(void *)arg1 layer:(id)arg2;
+- (void *)_copyRenderAnimationForLayer:(id)arg1;
 - (void)applyForTime:(double)arg1 presentationObject:(id)arg2 modelObject:(id)arg3;
 @property(copy) CDUnknownBlockType presentationBlock; // @synthesize presentationBlock=_presentationBlock;
 - (void)dealloc;

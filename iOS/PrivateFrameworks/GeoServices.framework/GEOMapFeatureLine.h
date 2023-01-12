@@ -6,21 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@interface GEOMapFeatureLine : NSObject
+#import <GeoServices/NSCopying-Protocol.h>
+
+@interface GEOMapFeatureLine : NSObject <NSCopying>
 {
-    CDStruct_c3b9c2ee *_coordinates;
+    CDStruct_c3b9c2ee *_tempCoordinates2d;
+    CDStruct_39925896 *_coordinates3d;
     unsigned long long _coordinateCount;
     double _length;
     _Bool _isFlipped;
 }
 
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (float *)_elevationsForSection:(unsigned long long)arg1 outCount:(out unsigned long long *)arg2;
+- (struct GeoCodecsVectorTilePoint *)_tilePointsForSection:(unsigned long long)arg1 outCount:(out unsigned long long *)arg2;
+- (id)_containingTile;
+- (double)closestDistance2DFromCoordinate:(CDStruct_39925896)arg1;
 @property(readonly, nonatomic) double length;
 @property(readonly, nonatomic) unsigned long long coordinateCount;
+@property(readonly, nonatomic) CDStruct_39925896 *coordinates3d;
 @property(readonly, nonatomic) CDStruct_c3b9c2ee *coordinates;
 - (void)dealloc;
 - (id)init;
-- (CDStruct_6e3f967a *)_tilePointsForSection:(unsigned long long)arg1 withCount:(out unsigned long long *)arg2;
-- (id)_containingTile;
 
 @end
 

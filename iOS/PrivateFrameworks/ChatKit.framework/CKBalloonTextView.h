@@ -31,6 +31,7 @@
 @property(readonly, nonatomic) UITapGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
 @property(nonatomic) __weak id <CKBalloonTextViewInteractionDelegate> interactionDelegate; // @synthesize interactionDelegate=_interactionDelegate;
 @property(copy, nonatomic) NSAttributedString *attributedText; // @synthesize attributedText=_attributedText;
+- (_Bool)_showsEditMenu;
 - (void)setBalloonTextSelectedRange:(struct _NSRange)arg1;
 - (_Bool)becomeFirstResponder;
 - (_Bool)resignFirstResponder;

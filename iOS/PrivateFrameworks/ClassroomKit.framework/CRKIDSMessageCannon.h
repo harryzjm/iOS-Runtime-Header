@@ -18,6 +18,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) CRKIDSMessageFormatter *messageFormatter; // @synthesize messageFormatter=_messageFormatter;
 @property(readonly, nonatomic) id <CRKIDSPrimitives> IDSPrimitives; // @synthesize IDSPrimitives=_IDSPrimitives;
+- (void)sendIDSMessage:(id)arg1 destinationAddress:(id)arg2 sourceAppleID:(id)arg3 options:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)sendIDSMessage:(id)arg1 destinationAddress:(id)arg2 sourceAppleID:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)initWithIDSPrimitives:(id)arg1;
 

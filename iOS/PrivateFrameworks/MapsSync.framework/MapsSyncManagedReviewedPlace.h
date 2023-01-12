@@ -6,7 +6,7 @@
 
 #import <CoreData/NSManagedObject.h>
 
-@class MapsSyncManagedAnonymousCredential, NSDate, NSUUID;
+@class MapsSyncManagedAnonymousCredential, NSData, NSDate, NSNumber, NSUUID;
 
 __attribute__((visibility("hidden")))
 @interface MapsSyncManagedReviewedPlace : NSManagedObject
@@ -21,9 +21,16 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool hasUserReviewed; // @dynamic hasUserReviewed;
 @property(nonatomic, copy) NSUUID *identifier; // @dynamic identifier;
 @property(nonatomic, copy) NSDate *lastSuggestedReviewDate; // @dynamic lastSuggestedReviewDate;
+@property(nonatomic, retain) NSNumber *latitude; // @dynamic latitude;
+@property(nonatomic, retain) NSNumber *longitude; // @dynamic longitude;
+@property(nonatomic, copy) NSData *mapItemIdComparableRepresentation; // @dynamic mapItemIdComparableRepresentation;
 @property(nonatomic, copy) NSDate *modificationTime; // @dynamic modificationTime;
 @property(nonatomic) long long muid; // @dynamic muid;
 @property(nonatomic) long long positionIndex; // @dynamic positionIndex;
+@property(nonatomic, retain) NSNumber *rating; // @dynamic rating;
+@property(nonatomic, retain) NSNumber *resultProviderIdentifier; // @dynamic resultProviderIdentifier;
+@property(nonatomic) int uploadedPhotosCount; // @dynamic uploadedPhotosCount;
+@property(nonatomic) short version; // @dynamic version;
 
 @end
 

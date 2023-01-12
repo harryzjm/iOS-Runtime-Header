@@ -9,7 +9,7 @@
 #import <Rapport/NSSecureCoding-Protocol.h>
 #import <Rapport/RPAuthenticatable-Protocol.h>
 
-@class NSMutableDictionary, NSString, NSXPCConnection;
+@class NSArray, NSMutableDictionary, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 @interface RPRemoteDisplayServer : NSObject <NSSecureCoding, RPAuthenticatable>
@@ -24,6 +24,8 @@
     int _passwordType;
     int _passwordTypeActual;
     unsigned int _internalAuthFlags;
+    NSArray *_allowedMACAddresses;
+    NSArray *_pairSetupACL;
     NSString *_password;
     CDUnknownBlockType _authCompletionHandler;
     CDUnknownBlockType _showPasswordHandler;
@@ -53,6 +55,8 @@
 @property(copy, nonatomic) NSString *password; // @synthesize password=_password;
 @property(nonatomic) unsigned int pairVerifyFlags; // @synthesize pairVerifyFlags=_pairVerifyFlags;
 @property(nonatomic) unsigned int pairSetupFlags; // @synthesize pairSetupFlags=_pairSetupFlags;
+@property(retain, nonatomic) NSArray *pairSetupACL; // @synthesize pairSetupACL=_pairSetupACL;
+@property(retain, nonatomic) NSArray *allowedMACAddresses; // @synthesize allowedMACAddresses=_allowedMACAddresses;
 - (void)remoteDisplayHidePasswordWithFlags:(unsigned int)arg1;
 - (void)remoteDisplayShowPassword:(id)arg1 flags:(unsigned int)arg2;
 - (void)remoteDisplayReceivedRequestID:(id)arg1 request:(id)arg2 options:(id)arg3 responseHandler:(CDUnknownBlockType)arg4 sessionID:(id)arg5;

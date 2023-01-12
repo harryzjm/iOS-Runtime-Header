@@ -19,6 +19,7 @@
 - (void)backgroundSessionDidFinishAppWake:(NSString *)arg1 reply:(void (^)(void))arg2;
 - (void)backgroundSessionDidStartAppWake:(NSString *)arg1 reply:(void (^)(void))arg2;
 - (void)backgroundAVAssetDownloadTask:(unsigned long long)arg1 didFinishDownloadForMediaSelectionPropertyList:(NSDictionary *)arg2;
+- (void)backgroundAVAssetDownloadTask:(unsigned long long)arg1 willDownloadVariants:(NSArray *)arg2 reply:(void (^)(void))arg3;
 - (void)backgroundAVAssetDownloadTask:(unsigned long long)arg1 willDownloadToURL:(NSURL *)arg2;
 - (void)backgroundAVAssetDownloadTask:(unsigned long long)arg1 didResolveMediaSelectionProperyList:(id)arg2 reply:(void (^)(void))arg3;
 - (void)backgroundAVAssetDownloadTask:(unsigned long long)arg1 didLoadTimeRange:(NSValue *)arg2 totalTimeRangesLoaded:(NSArray *)arg3 timeRangeExpectedToLoad:(NSValue *)arg4 forMediaSelectionPropertyList:(NSDictionary *)arg5;

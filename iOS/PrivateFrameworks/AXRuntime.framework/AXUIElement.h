@@ -9,7 +9,7 @@
 #import <AXRuntime/NSCopying-Protocol.h>
 #import <AXRuntime/UIElementProtocol-Protocol.h>
 
-@class NSMutableDictionary, NSString;
+@class NSDictionary, NSMutableDictionary, NSString;
 
 @interface AXUIElement : NSObject <UIElementProtocol, NSCopying>
 {
@@ -58,11 +58,13 @@
 - (void)setAXAttribute:(long long)arg1 withLong:(long long)arg2;
 - (void)setAXAttribute:(long long)arg1 withString:(id)arg2;
 - (void)setAXAttribute:(long long)arg1 withBOOL:(_Bool)arg2;
-- (id)_elementsWithParameter:(long long)arg1 count:(unsigned long long)arg2 prefetchAttributes:(_Bool)arg3;
+- (id)_elementsWithParameter:(long long)arg1 parameters:(id)arg2 prefetchAttributes:(_Bool)arg3;
 - (id)childrenIncludingPrefetchedAttributesWithCount:(unsigned long long)arg1;
 - (id)previousElementsWithCount:(unsigned long long)arg1;
 - (id)nextElementsIncludingPrefetchedAttributesWithCount:(unsigned long long)arg1;
 - (id)nextElementsWithCount:(unsigned long long)arg1;
+- (id)previousElementsWithParameters:(id)arg1;
+- (id)nextElementsWithParameters:(id)arg1;
 - (id)uiElementsWithAttribute:(long long)arg1;
 - (id)uiElementsWithAttribute:(long long)arg1 parameter:(void *)arg2 fetchAttributes:(_Bool)arg3;
 - (id)uiElementsWithAttribute:(long long)arg1 parameter:(void *)arg2;
@@ -100,10 +102,12 @@
 - (int)pid;
 - (void)_setCachedValue:(void *)arg1 forAttribute:(long long)arg2;
 - (void *)_cachedValueForAttribute:(long long)arg1;
-@property(readonly, copy, nonatomic) NSMutableDictionary *cachedAttributes; // @dynamic cachedAttributes;
+@property(readonly, nonatomic) NSMutableDictionary *copyCachedAttributes;
+@property(readonly, nonatomic) NSDictionary *cachedAttributes; // @dynamic cachedAttributes;
 - (void)dealloc;
 - (id)initWithAXElement:(struct __AXUIElement *)arg1;
 - (id)initWithAXElement:(struct __AXUIElement *)arg1 cache:(id)arg2;
+- (unsigned int)_activeKeyboardContextId;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 // Remaining properties

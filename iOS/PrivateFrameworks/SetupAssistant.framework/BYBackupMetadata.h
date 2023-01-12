@@ -8,7 +8,7 @@
 
 #import <SetupAssistant/NSCopying-Protocol.h>
 
-@class NSData;
+@class NSData, NSString;
 
 @interface BYBackupMetadata : PBCodable <NSCopying>
 {
@@ -17,6 +17,9 @@
     unsigned int _deviceAnalyticsOptIn;
     unsigned int _homeButtonHapticKind;
     NSData *_nanoRegistryData;
+    NSString *_seedEnrollmentAssetAudience;
+    NSString *_seedEnrollmentProgram;
+    NSData *_universalData;
     unsigned int _version;
     NSData *_walletData;
     _Bool _autoDownloadEnabled;
@@ -25,6 +28,7 @@
     _Bool _findMyiPhoneOptIn;
     _Bool _locationServicesOptIn;
     _Bool _screenTimeEnabled;
+    _Bool _siriDataSharingOptIn;
     _Bool _siriOptIn;
     struct {
         unsigned int userInterfaceStyleMode:1;
@@ -37,11 +41,16 @@
         unsigned int findMyiPhoneOptIn:1;
         unsigned int locationServicesOptIn:1;
         unsigned int screenTimeEnabled:1;
+        unsigned int siriDataSharingOptIn:1;
         unsigned int siriOptIn:1;
     } _has;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *seedEnrollmentAssetAudience; // @synthesize seedEnrollmentAssetAudience=_seedEnrollmentAssetAudience;
+@property(retain, nonatomic) NSString *seedEnrollmentProgram; // @synthesize seedEnrollmentProgram=_seedEnrollmentProgram;
+@property(retain, nonatomic) NSData *universalData; // @synthesize universalData=_universalData;
+@property(nonatomic) _Bool siriDataSharingOptIn; // @synthesize siriDataSharingOptIn=_siriDataSharingOptIn;
 @property(nonatomic) _Bool autoDownloadEnabled; // @synthesize autoDownloadEnabled=_autoDownloadEnabled;
 @property(retain, nonatomic) NSData *walletData; // @synthesize walletData=_walletData;
 @property(nonatomic) long long userInterfaceStyleMode; // @synthesize userInterfaceStyleMode=_userInterfaceStyleMode;
@@ -65,6 +74,10 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasSeedEnrollmentAssetAudience;
+@property(readonly, nonatomic) _Bool hasSeedEnrollmentProgram;
+@property(readonly, nonatomic) _Bool hasUniversalData;
+@property(nonatomic) _Bool hasSiriDataSharingOptIn;
 @property(nonatomic) _Bool hasAutoDownloadEnabled;
 @property(readonly, nonatomic) _Bool hasWalletData;
 @property(nonatomic) _Bool hasUserInterfaceStyleMode;
@@ -78,6 +91,7 @@
 @property(nonatomic) _Bool hasDeviceAnalyticsOptIn;
 @property(nonatomic) _Bool hasHomeButtonHapticKind;
 @property(readonly, nonatomic) _Bool hasNanoRegistryData;
+- (id)expressSettings;
 
 @end
 

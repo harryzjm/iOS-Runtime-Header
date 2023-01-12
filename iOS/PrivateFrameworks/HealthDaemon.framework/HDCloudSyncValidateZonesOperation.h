@@ -9,8 +9,6 @@
 }
 
 + (_Bool)shouldLogAtOperationStart;
-- (void)_discardInvalidSharedZones;
-- (void)_checkForOrphanedSequenceRecords;
 - (void)main;
 
 @end

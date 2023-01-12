@@ -4,66 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <EmailDaemon/EDMailboxProvider.h>
 
-#import <Message/EDMailboxProvider-Protocol.h>
+@class MFMailboxUidTransformer;
 
-@class MFMailboxUidTransformer, NSArray, NSMapTable, NSSet, NSString;
-@protocol EDAccountsProvider, EDMailboxProviderDelegate, EFScheduler, OS_dispatch_queue;
-
-@interface MFMailboxProvider : NSObject <EDMailboxProvider>
+@interface MFMailboxProvider : EDMailboxProvider
 {
-    _Atomic int _deferringInvalidationCount;
-    _Bool _needsToInvalidate;
-    id <EDMailboxProviderDelegate> delegate;
-    id <EDAccountsProvider> _accountsProvider;
     MFMailboxUidTransformer *_mailboxUidTransformer;
-    NSMapTable *_uidToMailboxMap;
-    NSMapTable *_objectIDToUidMap;
-    NSArray *_allMailboxCache;
-    NSObject<OS_dispatch_queue> *_mailboxCacheQueue;
-    id <EFScheduler> _observerScheduler;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) id <EFScheduler> observerScheduler; // @synthesize observerScheduler=_observerScheduler;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *mailboxCacheQueue; // @synthesize mailboxCacheQueue=_mailboxCacheQueue;
-@property(retain) NSArray *allMailboxCache; // @synthesize allMailboxCache=_allMailboxCache;
-@property(retain) NSMapTable *objectIDToUidMap; // @synthesize objectIDToUidMap=_objectIDToUidMap;
-@property(retain) NSMapTable *uidToMailboxMap; // @synthesize uidToMailboxMap=_uidToMailboxMap;
 @property(retain, nonatomic) MFMailboxUidTransformer *mailboxUidTransformer; // @synthesize mailboxUidTransformer=_mailboxUidTransformer;
-@property(nonatomic) __weak id <EDAccountsProvider> accountsProvider; // @synthesize accountsProvider=_accountsProvider;
-@property(nonatomic) __weak id <EDMailboxProviderDelegate> delegate; // @synthesize delegate;
-- (long long)mailboxTypeForMailboxObjectID:(id)arg1;
-- (id)mailboxObjectIDsForMailboxType:(long long)arg1;
-@property(readonly, nonatomic) NSSet *allMailboxObjectIDs;
-- (void)invalidateMailboxes;
-- (void)_invalidateCache;
-- (void)_mailboxInvalidated:(id)arg1;
-- (void)_didFetchMailboxList:(id)arg1;
-- (void)_willFetchMailboxList:(id)arg1;
-- (void)_didChangeMailboxList:(id)arg1;
-- (void)_didReloadMailboxList:(id)arg1;
-- (void)_willReloadMailboxList:(id)arg1;
-- (_Bool)_isDeferringInvalidation;
-- (void)_endDeferringInvalidation;
-- (void)_beginDeferringInvalidation;
-- (id)legacyMailboxesForObjectIDs:(id)arg1;
 - (id)legacyMailboxForObjectID:(id)arg1;
-- (id)mailboxForObjectID:(id)arg1;
-- (id)mailboxesFromLegacyMailboxes:(id)arg1;
-- (id)mailboxFromLegacyMailbox:(id)arg1;
-- (void)fetchMailboxes;
-- (id)allMailboxes;
-- (void)_populateCache;
-- (void)enumerateAccountsWithBlock:(CDUnknownBlockType)arg1;
+- (void)_fetchMailboxesForAccount:(id)arg1;
+- (id)_transformMailbox:(id)arg1 legacyMailboxToMailboxMap:(id)arg2 objectIDToLegacyMailboxMap:(id)arg3;
 - (id)initWithAccountsProvider:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

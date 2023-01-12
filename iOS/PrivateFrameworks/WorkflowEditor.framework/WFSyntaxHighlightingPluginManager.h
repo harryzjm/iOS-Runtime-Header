@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class JSContext, JSManagedValue, NSMutableArray;
+@class JSContext, JSManagedValue, NSMutableArray, UIColor;
 
 @interface WFSyntaxHighlightingPluginManager : NSObject
 {
@@ -24,8 +24,8 @@
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long syntaxHighlightingAppearance; // @synthesize syntaxHighlightingAppearance=_syntaxHighlightingAppearance;
 @property(nonatomic) unsigned long long syntaxHighlightingType; // @synthesize syntaxHighlightingType=_syntaxHighlightingType;
-- (id)defaultForegroundColor;
-- (id)defaultBackgroundColor;
+@property(readonly, nonatomic) UIColor *defaultForegroundColor;
+@property(readonly, nonatomic) UIColor *defaultBackgroundColor;
 - (void)loadSyntaxPlugin;
 - (void)loadHighlightingPlugin;
 - (void)loadColorSchemePlugin;

@@ -4,25 +4,39 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MTLComputePipelineDescriptor, MTLComputePipelineReflection, MTLGPUDebugBuffer, MTLToolsFunction;
+@class MTLComputePipelineReflection, MTLGPUDebugBuffer, MTLGPUDebugImageData, NSArray, NSMutableArray;
 
 @interface MTLGPUDebugComputePipelineState
 {
-    MTLComputePipelineDescriptor *_descriptor;
+    MTLGPUDebugImageData *_kernelFunctionData;
     MTLComputePipelineReflection *_internalReflection;
     MTLComputePipelineReflection *_userReflection;
-    struct KeyBufferPair _globalConstants;
+    NSMutableArray *_binaryFunctionData;
+    unsigned long long _constantOffset;
+    unsigned int _threadgroupArgumentOffset;
+    unsigned int _activeThreadgroupMask;
+    MTLGPUDebugBuffer *_indirectStateBuffer;
+    _Bool _supportsIndirectCommandBuffers;
+    NSMutableArray *_retainedFunctions;
 }
 
-- (id).cxx_construct;
+@property(readonly, nonatomic) NSArray *binaryFunctionData; // @synthesize binaryFunctionData=_binaryFunctionData;
 - (void)dealloc;
+@property(readonly, nonatomic) MTLGPUDebugBuffer *indirectStateBuffer;
 @property(readonly) unsigned long long staticThreadgroupMemoryLength;
+@property(readonly, nonatomic) unsigned long long constantOffset;
 @property(readonly, nonatomic) MTLGPUDebugBuffer *globalConstantsBuffer;
-@property(readonly, nonatomic) MTLToolsFunction *computeFunction;
+@property(readonly, nonatomic) MTLGPUDebugImageData *kernelFunctionData;
+- (id)newComputePipelineStateWithAdditionalBinaryFunctions:(id)arg1 error:(id *)arg2;
+- (id)functionHandleWithFunction:(id)arg1;
+- (id)newIntersectionFunctionTableWithDescriptor:(id)arg1;
+- (id)newVisibleFunctionTableWithDescriptor:(id)arg1;
 @property(readonly, nonatomic) MTLComputePipelineReflection *userReflection;
 @property(readonly, nonatomic) MTLComputePipelineReflection *internalReflection;
 - (void)releaseReflection;
+- (id)initWithComputePipelineState:(id)arg1 binaryFunctions:(id)arg2 withState:(id)arg3 device:(id)arg4;
 - (id)initWithComputePipelineState:(id)arg1 descriptor:(id)arg2 unwrappedDescriptor:(id)arg3 reflection:(id)arg4 device:(id)arg5;
+- (void)_initConstantsBuffer:(id)arg1 device:(id)arg2;
 
 @end
 

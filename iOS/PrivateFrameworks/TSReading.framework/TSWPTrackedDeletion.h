@@ -19,7 +19,7 @@
 - (struct _NSRange)insertedRange;
 - (long long)delta;
 - (unsigned long long)targetCharIndex;
-- (void)performWithStorage:(id)arg1 delta:(long long)arg2 undoTransaction:(struct TSWPStorageTransaction *)arg3 replaceBlock:(CDUnknownBlockType)arg4;
+- (void)performWithStorage:(id)arg1 delta:(long long)arg2 undoTransaction:(void *)arg3 replaceBlock:(CDUnknownBlockType)arg4;
 - (void)dealloc;
 - (id)initWithRange:(struct _NSRange)arg1 changeSession:(id)arg2;
 

@@ -12,9 +12,10 @@
 @protocol TSCECalculationEngineRegistration <TSKModel>
 - (id <TSCEFormulaOwning>)formulaOwner;
 - (TSPObject<TSCECalculationEngineRegistration> *)objectToArchiveInDependencyTracker;
-- (UUIDData_5fbc143e)formulaOwnerUID;
+- (unsigned short)ownerKind;
+- (struct TSKUIDStruct)formulaOwnerUID;
 - (_Bool)registerLast;
 - (void)unregisterFromCalcEngine:(TSCECalculationEngine *)arg1;
-- (void)registerWithCalcEngineForDocumentLoad:(TSCECalculationEngine *)arg1;
+- (void)registerWithCalcEngineForDocumentLoad:(TSCECalculationEngine *)arg1 ownerKind:(unsigned short)arg2;
 @end
 

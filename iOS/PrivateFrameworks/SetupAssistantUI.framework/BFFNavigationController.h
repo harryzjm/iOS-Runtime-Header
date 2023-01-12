@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Preferences/PSRootController.h>
+#import <UIKit/UINavigationController.h>
 
 #import <SetupAssistantUI/UINavigationControllerDelegate-Protocol.h>
 
 @class NSMutableArray, NSMutableDictionary, NSString, UIColor;
 
-@interface BFFNavigationController : PSRootController <UINavigationControllerDelegate>
+@interface BFFNavigationController : UINavigationController <UINavigationControllerDelegate>
 {
     NSMutableArray *_observers;
     NSMutableDictionary *_appearanceHandlers;
@@ -32,7 +32,6 @@
 - (void)navigationController:(id)arg1 didShowViewController:(id)arg2 animated:(_Bool)arg3;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(_Bool)arg3;
 - (void)removeDelegateObserver:(id)arg1;
-- (_Bool)respondsToSelector:(SEL)arg1;
 - (void)addDelegateObserver:(id)arg1;
 - (void)_reapObservers;
 - (void)setDelegate:(id)arg1;

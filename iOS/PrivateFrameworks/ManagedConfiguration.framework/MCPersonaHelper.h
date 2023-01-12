@@ -20,7 +20,7 @@
 + (id)performBlockUnderPersona:(id)arg1 block:(CDUnknownBlockType)arg2;
 + (id)performBlockUnderPersonalPersona:(CDUnknownBlockType)arg1;
 + (id)appleAccountWithPersonaID:(id)arg1;
-+ (id)updateAccountDescriptionName:(id)arg1 forAppleAccountWithPersonaID:(id)arg2;
++ (id)updateManagementInformationForAppleAccountWithPersonaID:(id)arg1 descriptionName:(id)arg2 managingSourceName:(id)arg3;
 + (id)accountIdentifierForAppleAccountWithPersonaID:(id)arg1;
 + (id)managedAppleIDNameWithPersonaID:(id)arg1;
 + (void)signOutEnterpriseAccountWithPersonaID:(id)arg1;

@@ -17,11 +17,11 @@
 + (id)currentHandler;
 - (void).cxx_destruct;
 @property(retain) id <NUAssertionPolicyHandler> policy; // @synthesize policy=_policy;
-- (void)handleFailureInFunction:(id)arg1 file:(id)arg2 lineNumber:(long long)arg3 description:(id)arg4;
-- (void)handleFailureInMethod:(SEL)arg1 object:(id)arg2 file:(id)arg3 lineNumber:(long long)arg4 description:(id)arg5;
-- (void)continueAfterAssertInFunction:(id)arg1 file:(id)arg2 lineNumber:(unsigned long long)arg3 description:(id)arg4 arguments:(char *)arg5;
-- (void)handleFailureInFunction:(id)arg1 file:(id)arg2 lineNumber:(unsigned long long)arg3 description:(id)arg4 arguments:(char *)arg5;
-- (id)newAssertionInfoInMethod:(SEL)arg1 object:(id)arg2 function:(id)arg3 file:(id)arg4 lineNumber:(unsigned long long)arg5 description:(id)arg6 arguments:(char *)arg7;
+- (void)handleFailureInFunction:(id)arg1 file:(id)arg2 lineNumber:(long long)arg3 currentlyExecutingJobName:(id)arg4 description:(id)arg5;
+- (void)handleFailureInMethod:(SEL)arg1 object:(id)arg2 file:(id)arg3 lineNumber:(long long)arg4 currentlyExecutingJobName:(id)arg5 description:(id)arg6;
+- (void)continueAfterAssertInFunction:(id)arg1 file:(id)arg2 lineNumber:(unsigned long long)arg3 currentlyExecutingJobName:(id)arg4 description:(id)arg5 arguments:(char *)arg6;
+- (void)handleFailureInFunction:(id)arg1 file:(id)arg2 lineNumber:(unsigned long long)arg3 currentlyExecutingJobName:(id)arg4 description:(id)arg5 arguments:(char *)arg6;
+- (id)newAssertionInfoInMethod:(SEL)arg1 object:(id)arg2 function:(id)arg3 file:(id)arg4 lineNumber:(unsigned long long)arg5 currentlyExecutingJobName:(id)arg6 description:(id)arg7 arguments:(char *)arg8;
 - (id)defaultTestingPolicy;
 - (id)defaultPolicy;
 - (id)init;

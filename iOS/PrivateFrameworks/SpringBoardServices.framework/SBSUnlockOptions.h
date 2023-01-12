@@ -14,9 +14,14 @@
 @interface SBSUnlockOptions : NSObject <BSXPCCoding, BSXPCSecureCoding>
 {
     _Bool _aboveOtherContexts;
+    NSString *_title;
+    NSString *_subtitle;
 }
 
 + (_Bool)supportsBSXPCSecureCoding;
+- (void).cxx_destruct;
+@property(retain, nonatomic, setter=_setSubtitle:) NSString *subtitle; // @synthesize subtitle=_subtitle;
+@property(retain, nonatomic, setter=_setTitle:) NSString *title; // @synthesize title=_title;
 @property(nonatomic, setter=_setAboveOtherContexts:) _Bool _aboveOtherContexts; // @synthesize _aboveOtherContexts;
 - (id)initWithBSXPCCoder:(id)arg1;
 - (void)encodeWithBSXPCCoder:(id)arg1;

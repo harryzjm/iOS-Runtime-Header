@@ -12,13 +12,12 @@
 {
 }
 
-+ (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
-+ (id)descriptionForPrivateRevision:(unsigned long long)arg1;
-+ (_Bool)supportsPrivateRevision:(unsigned long long)arg1;
++ (const CDStruct_d47b9615 *)dependentRequestCompatibility;
 + (Class)configurationClass;
 + (const CDStruct_7d93034e *)revisionAvailability;
 - (_Bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
 - (void)_determineFacesToProcessFrom:(id)arg1 outputFacesThatNeedNoProcessing:(id)arg2 outputFacesThatNeedFaceQuality:(id)arg3;
+- (_Bool)resultsAreAssignedWithOriginatingRequestSpecifier;
 - (long long)dependencyProcessingOrdinality;
 - (_Bool)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 - (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
@@ -28,6 +27,7 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(copy, nonatomic) NSArray *inputFaceObservations;
+@property(readonly, copy) NSArray *results; // @dynamic results;
 @property(readonly) Class superclass;
 
 @end

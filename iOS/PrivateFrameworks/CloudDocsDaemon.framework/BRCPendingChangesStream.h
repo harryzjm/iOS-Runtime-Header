@@ -8,7 +8,6 @@
 
 @class BRCClientZone, BRCPQLConnection, CKServerChangeToken, NSError, NSURL;
 
-__attribute__((visibility("hidden")))
 @interface BRCPendingChangesStream : NSObject
 {
     NSURL *_databaseURL;

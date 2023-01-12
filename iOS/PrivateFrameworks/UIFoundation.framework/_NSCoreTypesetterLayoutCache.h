@@ -6,6 +6,8 @@
 
 #import <objc/NSObject.h>
 
+@class _NSTextAttachmentLayoutContext;
+
 __attribute__((visibility("hidden")))
 @interface _NSCoreTypesetterLayoutCache : NSObject
 {
@@ -16,6 +18,7 @@ __attribute__((visibility("hidden")))
     struct __CTFont *_resolvedFont;
     long long _textAlignment;
     struct __CTLine *_line;
+    _NSTextAttachmentLayoutContext *_textAttachmentLayoutContext;
     _Bool _lineValidForDrawing;
 }
 

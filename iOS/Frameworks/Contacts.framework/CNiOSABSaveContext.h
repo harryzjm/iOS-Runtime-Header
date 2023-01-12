@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CNMutableSaveResponse, CNSaveRequest, NSMapTable, NSMutableDictionary;
+@class CNMutableSaveResponse, CNSaveRequest, NSMapTable, NSMutableArray, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface CNiOSABSaveContext : NSObject
@@ -20,12 +20,14 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_abGroupsByIdentifier;
     NSMutableDictionary *_abSourcesByIdentifier;
     NSMutableDictionary *_abAccountsByIdentifier;
+    NSMutableArray *_contactIdentifiersNeedingMetadataPurge;
     CNSaveRequest *_saveRequest;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) CNMutableSaveResponse *saveResponse; // @synthesize saveResponse=_saveResponse;
 @property(readonly, nonatomic) CNSaveRequest *saveRequest; // @synthesize saveRequest=_saveRequest;
+@property(retain, nonatomic) NSMutableArray *contactIdentifiersNeedingMetadataPurge; // @synthesize contactIdentifiersNeedingMetadataPurge=_contactIdentifiersNeedingMetadataPurge;
 @property(retain, nonatomic) NSMutableDictionary *abAccountsByIdentifier; // @synthesize abAccountsByIdentifier=_abAccountsByIdentifier;
 @property(retain, nonatomic) NSMutableDictionary *abSourcesByIdentifier; // @synthesize abSourcesByIdentifier=_abSourcesByIdentifier;
 @property(retain, nonatomic) NSMutableDictionary *abGroupsByIdentifier; // @synthesize abGroupsByIdentifier=_abGroupsByIdentifier;

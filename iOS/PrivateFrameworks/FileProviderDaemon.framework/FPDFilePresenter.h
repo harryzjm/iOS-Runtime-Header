@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     NSData *_changeToken;
     FPItemID *_observedItemID;
     FPItem *_currentItem;
+    _Bool _isRunning;
     _Bool _isFetchingChanges;
     _Bool _shouldRefetchChanges;
     _Bool _presenterWantsUbiqitousAttributes;
@@ -55,7 +56,7 @@ __attribute__((visibility("hidden")))
 - (id)_newCoordinator;
 - (void)receiveUpdatedItems:(id)arg1 deletedItemsIdentifiers:(id)arg2;
 - (void)_destroyEnumerator;
-- (void)_enumeratorRequestDidFailWithXPCError:(id)arg1 section:(unsigned long long)arg2;
+- (void)_enumeratorRequestDidFailWithXPCError:(id)arg1;
 - (void)stop;
 - (void)start;
 - (id)enumerator;

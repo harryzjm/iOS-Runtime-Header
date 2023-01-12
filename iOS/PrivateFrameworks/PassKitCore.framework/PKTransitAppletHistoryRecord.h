@@ -27,6 +27,7 @@
     NSData *_startStation;
     NSData *_endStation;
     NSArray *_amounts;
+    NSArray *_plans;
     NSString *_transitDetail;
     long long _recordType;
 }
@@ -35,6 +36,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) long long recordType; // @synthesize recordType=_recordType;
 @property(copy, nonatomic) NSString *transitDetail; // @synthesize transitDetail=_transitDetail;
+@property(copy, nonatomic) NSArray *plans; // @synthesize plans=_plans;
 @property(copy, nonatomic) NSArray *amounts; // @synthesize amounts=_amounts;
 @property(copy, nonatomic) NSData *endStation; // @synthesize endStation=_endStation;
 @property(copy, nonatomic) NSData *startStation; // @synthesize startStation=_startStation;
@@ -58,10 +60,11 @@
 - (void)_setTransactionHistoryDetailsFromString:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 - (id)_transactionAmountsWithBalanceLabels:(id)arg1 unitDictionary:(id)arg2;
+- (id)_transactionCommutePlanUnitsWithPlanLabels:(id)arg1;
 @property(readonly, nonatomic) unsigned long long transitTransactionModifier;
 @property(readonly, nonatomic) long long transitTransactionSubtype;
 @property(readonly, nonatomic) long long paymentTransactionType;
-- (id)concreteTransactionWithCurrency:(id)arg1 balanceLabels:(id)arg2 unitDictionary:(id)arg3;
+- (id)concreteTransactionWithCurrency:(id)arg1 balanceLabels:(id)arg2 unitDictionary:(id)arg3 planLabels:(id)arg4;
 - (id)felicaHistoryRecord;
 
 @end

@@ -8,7 +8,7 @@
 
 #import <WorkflowUI/WFActionEventObserver-Protocol.h>
 
-@class NSString, UIButton, WFAction, WFModuleTitleButton;
+@class NSString, UIButton, UIImageView, UILabel, WFAction;
 @protocol WFModuleTitleViewDelegate;
 
 @interface WFModuleTitleView : UIView <WFActionEventObserver>
@@ -18,7 +18,9 @@
     WFAction *_action;
     unsigned long long _accessoryMode;
     unsigned long long _style;
-    WFModuleTitleButton *_titleButton;
+    UIImageView *_imageView;
+    UILabel *_titleLabel;
+    UILabel *_subtitleLabel;
     UIButton *_handoffButton;
     UIButton *_installButton;
 }
@@ -27,7 +29,9 @@
 - (void).cxx_destruct;
 @property(nonatomic) __weak UIButton *installButton; // @synthesize installButton=_installButton;
 @property(nonatomic) __weak UIButton *handoffButton; // @synthesize handoffButton=_handoffButton;
-@property(readonly, nonatomic) __weak WFModuleTitleButton *titleButton; // @synthesize titleButton=_titleButton;
+@property(readonly, nonatomic) __weak UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
+@property(readonly, nonatomic) __weak UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property(readonly, nonatomic) __weak UIImageView *imageView; // @synthesize imageView=_imageView;
 @property(nonatomic) _Bool hideSubtitle; // @synthesize hideSubtitle=_hideSubtitle;
 @property(nonatomic) unsigned long long style; // @synthesize style=_style;
 @property(nonatomic) unsigned long long accessoryMode; // @synthesize accessoryMode=_accessoryMode;
@@ -45,6 +49,11 @@
 - (void)installButtonPressed:(id)arg1;
 - (void)actionNameDidChange:(id)arg1;
 - (void)layoutSubviews;
+- (struct CGSize)sizeForLabel:(id)arg1 withMaxWidth:(double)arg2;
+- (double)titleSubtitlePadding;
+- (_Bool)isTitleLabelMultiline;
+- (double)iconTitlePadding;
+- (struct CGSize)iconSize;
 - (void)configureWithTitle:(id)arg1 subtitle:(id)arg2 applicationBundleIdentifer:(id)arg3;
 - (void)dealloc;
 - (void)updateFont;

@@ -6,10 +6,15 @@
 
 #import <UIKitCore/UILabel.h>
 
+@class NSString;
+
 @interface _UIActivityActionCellTitleLabel : UILabel
 {
+    NSString *_textStyle;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *textStyle; // @synthesize textStyle=_textStyle;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1 sizeCategory:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateFontWithSizeCategory:(id)arg1;

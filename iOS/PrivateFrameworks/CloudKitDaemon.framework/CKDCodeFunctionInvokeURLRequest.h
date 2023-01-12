@@ -4,9 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSData, NSString;
+@class CKDTrustedTargetWrappedKey, NSArray, NSData, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDCodeFunctionInvokeURLRequest
 {
     CDUnknownBlockType _serializedResultsCallback;
@@ -15,9 +14,11 @@ __attribute__((visibility("hidden")))
     NSData *_serializedParameters;
     NSData *_attestationEntropy;
     NSArray *_pccWrappedInvocationKeys;
+    CKDTrustedTargetWrappedKey *_trustedTargetWrappedInvocationKey;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) CKDTrustedTargetWrappedKey *trustedTargetWrappedInvocationKey; // @synthesize trustedTargetWrappedInvocationKey=_trustedTargetWrappedInvocationKey;
 @property(copy, nonatomic) NSArray *pccWrappedInvocationKeys; // @synthesize pccWrappedInvocationKeys=_pccWrappedInvocationKeys;
 @property(retain, nonatomic) NSData *attestationEntropy; // @synthesize attestationEntropy=_attestationEntropy;
 @property(retain, nonatomic) NSData *serializedParameters; // @synthesize serializedParameters=_serializedParameters;
@@ -31,7 +32,7 @@ __attribute__((visibility("hidden")))
 - (id)requestOperationClasses;
 - (long long)databaseScope;
 - (_Bool)allowsAnonymousAccount;
-- (id)initWithOperation:(id)arg1 serviceName:(id)arg2 functionName:(id)arg3 serializedParameters:(id)arg4 attestationEntropy:(id)arg5 pccWrappedInvocationKeys:(id)arg6;
+- (id)initWithOperation:(id)arg1 serviceName:(id)arg2 functionName:(id)arg3 serializedParameters:(id)arg4 attestationEntropy:(id)arg5 pccWrappedInvocationKeys:(id)arg6 trustedTargetWrappedInvocationKey:(id)arg7;
 
 @end
 

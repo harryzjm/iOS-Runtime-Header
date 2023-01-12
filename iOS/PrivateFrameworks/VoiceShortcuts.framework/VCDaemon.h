@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class VCCKShortcutSyncCoordinator, VCCoreDuetListener, VCDaemonDatabaseProvider, VCDaemonSyncDataEndpoint, VCDaemonXPCEventHandler, VCShareSheetWorkflowStatusUpdater, VCSpotlightSyncService, VCWatchSyncCoordinator, VCXPCServer, WFRemoteExecutionCoordinator, WFSiriWorkflowVocabularyUpdater;
+@class VCCKShortcutSyncCoordinator, VCDaemonDatabaseProvider, VCDaemonSyncDataEndpoint, VCDaemonXPCEventHandler, VCSpotlightSyncService, VCWatchSyncCoordinator, VCXPCServer, WFRemoteExecutionCoordinator, WFSiriWorkflowVocabularyUpdater, WFSystemSurfaceWorkflowStatusUpdater, WFTriggerRegistrar;
 
 @interface VCDaemon : NSObject
 {
@@ -14,10 +14,10 @@
     VCDaemonDatabaseProvider *_databaseProvider;
     VCDaemonXPCEventHandler *_xpcEventHandler;
     VCDaemonSyncDataEndpoint *_syncDataEndpoint;
-    VCCoreDuetListener *_coreDuetListener;
+    WFTriggerRegistrar *_triggerRegistrar;
     VCWatchSyncCoordinator *_watchSyncCoordinator;
     VCSpotlightSyncService *_spotlightLibrarySyncService;
-    VCShareSheetWorkflowStatusUpdater *_shareSheetStatusUpdater;
+    WFSystemSurfaceWorkflowStatusUpdater *_systemSurfaceWorkflowStatusUpdater;
     WFSiriWorkflowVocabularyUpdater *_vocabularyUpdater;
     WFRemoteExecutionCoordinator *_remoteExecutionCoordinator;
     VCCKShortcutSyncCoordinator *_shortcutSyncCoordinator;
@@ -28,10 +28,10 @@
 @property(retain, nonatomic) VCCKShortcutSyncCoordinator *shortcutSyncCoordinator; // @synthesize shortcutSyncCoordinator=_shortcutSyncCoordinator;
 @property(retain, nonatomic) WFRemoteExecutionCoordinator *remoteExecutionCoordinator; // @synthesize remoteExecutionCoordinator=_remoteExecutionCoordinator;
 @property(retain, nonatomic) WFSiriWorkflowVocabularyUpdater *vocabularyUpdater; // @synthesize vocabularyUpdater=_vocabularyUpdater;
-@property(retain, nonatomic) VCShareSheetWorkflowStatusUpdater *shareSheetStatusUpdater; // @synthesize shareSheetStatusUpdater=_shareSheetStatusUpdater;
+@property(retain, nonatomic) WFSystemSurfaceWorkflowStatusUpdater *systemSurfaceWorkflowStatusUpdater; // @synthesize systemSurfaceWorkflowStatusUpdater=_systemSurfaceWorkflowStatusUpdater;
 @property(readonly, nonatomic) VCSpotlightSyncService *spotlightLibrarySyncService; // @synthesize spotlightLibrarySyncService=_spotlightLibrarySyncService;
 @property(readonly, nonatomic) VCWatchSyncCoordinator *watchSyncCoordinator; // @synthesize watchSyncCoordinator=_watchSyncCoordinator;
-@property(readonly, nonatomic) VCCoreDuetListener *coreDuetListener; // @synthesize coreDuetListener=_coreDuetListener;
+@property(readonly, nonatomic) WFTriggerRegistrar *triggerRegistrar; // @synthesize triggerRegistrar=_triggerRegistrar;
 @property(readonly, nonatomic) VCDaemonSyncDataEndpoint *syncDataEndpoint; // @synthesize syncDataEndpoint=_syncDataEndpoint;
 @property(readonly, nonatomic) VCDaemonXPCEventHandler *xpcEventHandler; // @synthesize xpcEventHandler=_xpcEventHandler;
 @property(readonly, nonatomic) VCDaemonDatabaseProvider *databaseProvider; // @synthesize databaseProvider=_databaseProvider;

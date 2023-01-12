@@ -17,6 +17,7 @@
     float _activityProgress;
     long long _type;
     NSString *_assetsTitle;
+    NSString *_assetsSaveStatusTitle;
     NSString *_expirationTitle;
     NSString *_activityTitle;
     NSString *_idleTitle;
@@ -64,6 +65,7 @@
 @property(copy, nonatomic) NSString *idleTitle; // @synthesize idleTitle=_idleTitle;
 @property(copy, nonatomic) NSString *activityTitle; // @synthesize activityTitle=_activityTitle;
 @property(copy, nonatomic) NSString *expirationTitle; // @synthesize expirationTitle=_expirationTitle;
+@property(copy, nonatomic) NSString *assetsSaveStatusTitle; // @synthesize assetsSaveStatusTitle=_assetsSaveStatusTitle;
 @property(copy, nonatomic) NSString *assetsTitle; // @synthesize assetsTitle=_assetsTitle;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
 - (void)_updateCPLStatus;

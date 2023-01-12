@@ -17,6 +17,7 @@
 - (void)hf_updateDoorbellChime:(_Bool)arg1;
 @property(readonly, nonatomic) HMCharacteristic *hf_doorbellChimeMuteCharacteristic;
 @property(readonly, nonatomic) HMBulletinBoardNotification *hf_doorbellNotificationBulletin;
+@property(readonly, nonatomic) _Bool hf_hasDoorbellService;
 @property(readonly, nonatomic) _Bool hf_cameraIsNotSetToRecord;
 @property(readonly, nonatomic) NSString *hf_thermalShutdownModeErrorText;
 @property(readonly, nonatomic) _Bool hf_thermalShutdownModeActive;

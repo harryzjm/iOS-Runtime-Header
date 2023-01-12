@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AXUIElement, NSMutableDictionary, NSObject;
+@class AXUIElement, NSMutableArray, NSMutableDictionary, NSObject;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
+__attribute__((visibility("hidden")))
 @interface AXPTranslator_iOS
 {
     NSMutableDictionary *_translationCache;
     NSMutableDictionary *_backTranslationCache;
+    NSMutableArray *_cachedElements;
     NSObject<OS_dispatch_queue> *_cacheQueue;
     _Bool _axAppReadyFlag;
     NSObject<OS_dispatch_semaphore> *_threadSemaphore;
@@ -20,7 +22,6 @@
     AXUIElement *_systemWideElement;
 }
 
-+ (id)_iosParameterFromPlatformParameter:(id)arg1;
 + (id)translationObjectFromUIKitObject:(id)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;
@@ -39,6 +40,7 @@
 - (id)processApplicationObject:(id)arg1;
 - (id)processAttributeRequest:(id)arg1;
 - (id)_preprocessRequest:(long long)arg1 parameter:(id)arg2;
+- (id)processSupportsAttributes:(id)arg1;
 - (id)processSupportedActions:(id)arg1;
 - (id)processSetAttribute:(id)arg1;
 - (id)processCanSetAttribute:(id)arg1;
@@ -55,6 +57,7 @@
 - (id)_processStringForRangeAttributeRequest:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
 - (id)_processAttributedStringForRangeAttributeRequest:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
 - (id)_processAuditIssuesAttributeRequest:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
+- (id)_processVisisbleTextRangeAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
 - (id)_processBoundsForRangeAttributeRequest:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
 - (id)_processRoleDescriptionAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
 - (unsigned long long)_processRoleAttributeRequest:(id)arg1 traits:(unsigned long long)arg2 error:(unsigned long long *)arg3;
@@ -70,6 +73,9 @@
 - (id)_processPreviousLineRangeAttributeRequest:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
 - (id)_processNextLineRangeAttributeRequest:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
 - (id)_processLineRangeAttributeRequest:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
+- (id)_processLinkedUIElementsAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
+- (id)_processElementHelpAttributeResquest:(id)arg1 error:(unsigned long long *)arg2;
+- (id)_processCellWithIndexPathAttributeRequest:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
 - (id)_processClassNameAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
 - (id)_processChildrenAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
 - (id)_processUserInputLabelsAttributeRequest:(id)arg1 error:(unsigned long long *)arg2 axpAttribute:(unsigned long long)arg3;
@@ -100,6 +106,8 @@
 - (CDUnknownBlockType)attributedStringConversionBlock;
 - (id)backTranslationCache;
 - (id)translationCache;
+- (void)_removeCacheEntriesForElement:(id)arg1;
+- (void)_addCacheElement:(id)arg1 translationObject:(id)arg2;
 - (id)init;
 
 @end

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MISSING_TYPE;
+@class MISSING_TYPE, NSString;
 
 @interface _TtC14PagesQuicklook17TPPageLayoutCache : NSObject
 {
@@ -17,6 +17,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
+@property(nonatomic, readonly) NSString *description;
 - (id)pageLayoutsInRange:(struct _NSRange)arg1;
 - (id)pageLayoutsFromStartIndex:(unsigned long long)arg1 toEndIndex:(unsigned long long)arg2;
 - (id)pageLayoutsFromStartIndex:(unsigned long long)arg1;

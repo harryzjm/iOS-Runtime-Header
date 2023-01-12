@@ -10,7 +10,7 @@
 
 @interface GKPolygonObstacle <NSSecureCoding>
 {
-    struct GKCPolygonObstacle *_cPolygonObstacle;
+    void *_cPolygonObstacle;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -23,8 +23,8 @@
 - (void)dealloc;
 - (id)initWithPoints:(MISSING_TYPE **)arg1 count:(unsigned long long)arg2;
 - (id)init;
-- (struct GKCPolygonObstacle *)cPolygonObstacle;
-- (void)setCPolygonObstacle:(struct GKCPolygonObstacle *)arg1;
+- (void *)cPolygonObstacle;
+- (void)setCPolygonObstacle:(void *)arg1;
 
 @end
 

@@ -119,13 +119,13 @@ struct array<unsigned int, 64> {
 };
 
 struct atomic<bool> {
-    struct __cxx_atomic_impl<bool, std::__1::__cxx_atomic_base_impl<bool>> {
+    struct __cxx_atomic_impl<bool, std::__cxx_atomic_base_impl<bool>> {
         _Atomic _Bool __a_value;
     } __a_;
 };
 
 struct atomic<long long> {
-    struct __cxx_atomic_impl<long long, std::__1::__cxx_atomic_base_impl<long long>> {
+    struct __cxx_atomic_impl<long long, std::__cxx_atomic_base_impl<long long>> {
         _Atomic long long __a_value;
     } __a_;
 };
@@ -142,14 +142,6 @@ struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
 
-struct vector<_NSRange, std::__1::allocator<_NSRange>> {
-    struct _NSRange *_field1;
-    struct _NSRange *_field2;
-    struct __compressed_pair<_NSRange *, std::__1::allocator<_NSRange>> {
-        struct _NSRange *_field1;
-    } _field3;
-};
-
 #pragma mark Typedef'd Structures
 
 typedef struct {
@@ -163,13 +155,4 @@ typedef struct {
         unsigned int _field1[8];
     } _field5;
 } CDStruct_3d4d02d4;
-
-// Template types
-typedef struct vector<_NSRange, std::__1::allocator<_NSRange>> {
-    struct _NSRange *_field1;
-    struct _NSRange *_field2;
-    struct __compressed_pair<_NSRange *, std::__1::allocator<_NSRange>> {
-        struct _NSRange *_field1;
-    } _field3;
-} vector_7053a16b;
 

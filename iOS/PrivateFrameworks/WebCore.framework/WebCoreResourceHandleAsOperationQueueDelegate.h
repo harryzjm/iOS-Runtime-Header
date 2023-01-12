@@ -13,13 +13,13 @@
 __attribute__((visibility("hidden")))
 @interface WebCoreResourceHandleAsOperationQueueDelegate : NSObject <NSURLConnectionDelegate>
 {
-    struct ResourceHandle *m_handle;
+    struct Lock m_lock;
+    void *m_handle;
     struct BinarySemaphore m_semaphore;
-    RefPtr_99a3c709 m_messageQueue;
+    struct RefPtr<WebCore::SynchronousLoaderMessageQueue, WTF::RawPtrTraits<WebCore::SynchronousLoaderMessageQueue>, WTF::DefaultRefDerefTraits<WebCore::SynchronousLoaderMessageQueue>> m_messageQueue;
     struct RetainPtr<NSURLRequest> m_requestResult;
-    struct Lock m_mutex;
     struct RetainPtr<NSCachedURLResponse> m_cachedResponseResult;
-    struct Optional<WTF::HashSet<WTF::RefPtr<WTF::SchedulePair, WTF::DumbPtrTraits<WTF::SchedulePair>>, WTF::SchedulePairHash, WTF::HashTraits<WTF::RefPtr<WTF::SchedulePair, WTF::DumbPtrTraits<WTF::SchedulePair>>>>> m_scheduledPairs;
+    struct optional<WTF::HashSet<WTF::RefPtr<WTF::SchedulePair>, WTF::SchedulePairHash>> m_scheduledPairs;
     _Bool m_boolResult;
 }
 
@@ -36,8 +36,8 @@ __attribute__((visibility("hidden")))
 - (id)connection:(id)arg1 willSendRequest:(id)arg2 redirectResponse:(id)arg3;
 - (void)dealloc;
 - (void)detachHandle;
-- (id)initWithHandle:(struct ResourceHandle *)arg1 messageQueue:(RefPtr_99a3c709 *)arg2;
-- (void)callFunctionOnMainThread:(Function_15535652 *)arg1;
+- (id)initWithHandle:(void *)arg1 messageQueue:(void *)arg2;
+- (void)callFunctionOnMainThread:(void *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

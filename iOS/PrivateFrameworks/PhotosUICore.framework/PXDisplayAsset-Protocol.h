@@ -6,10 +6,13 @@
 
 #import <PhotosUICore/PXDisplayThumbnailAsset-Protocol.h>
 
-@class NSDate, NSNumber, NSString;
+@class NSData, NSDate, NSNumber, NSString;
 @protocol PXAssetdestinationAssetCopyProperties, PXDisplayAsset;
 
 @protocol PXDisplayAsset <PXDisplayThumbnailAsset>
+@property(readonly, nonatomic) struct CGRect faceAreaRect;
+@property(readonly, nonatomic) struct CGRect acceptableCropRect;
+@property(readonly, nonatomic) struct CGRect preferredCropRect;
 @property(readonly, nonatomic) Class defaultImageProviderClass;
 @property(readonly, nonatomic) unsigned long long pixelHeight;
 @property(readonly, nonatomic) unsigned long long pixelWidth;
@@ -24,6 +27,7 @@
 - (long long)isContentEqualTo:(id <PXDisplayAsset>)arg1;
 
 @optional
+@property(readonly, nonatomic) NSData *fetchColorNormalizationData;
 @property(readonly, nonatomic) _Bool isAutoPlaybackEligibilityEstimated;
 @property(readonly, nonatomic) NSDate *importDate;
 @property(readonly, nonatomic) NSString *localizedGeoDescription;
@@ -34,10 +38,13 @@
 @property(readonly, nonatomic) double aspectRatio;
 @property(readonly, nonatomic) long long playbackVariation;
 @property(readonly, nonatomic) long long playbackStyle;
+@property(readonly, nonatomic) CDStruct_1b6d18a9 livePhotoVideoDuration;
 @property(readonly, nonatomic) double duration;
 - (id <PXAssetdestinationAssetCopyProperties>)destinationAssetCopyProperties;
 - (NSString *)localizedDetailedGeoDescriptionForRTL:(_Bool)arg1;
+- (struct CGRect)suggestedCropForTargetSize:(struct CGSize)arg1 withOcclusionRegion:(struct CGRect)arg2 andOutputCropScore:(double *)arg3;
 - (struct CGRect)suggestedCropForTargetSize:(struct CGSize)arg1 withFocusRegion:(struct CGRect)arg2;
+- (struct CGRect)bestCropRectForAspectRatioV2:(double)arg1 verticalContentMode:(long long)arg2 cropMode:(long long)arg3;
 - (struct CGRect)bestCropRectForAspectRatio:(double)arg1 verticalContentMode:(long long)arg2 cropMode:(long long)arg3;
 - (struct CGRect)bestCropRectForAspectRatio:(double)arg1;
 @end

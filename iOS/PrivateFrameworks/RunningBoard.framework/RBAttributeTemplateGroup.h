@@ -6,22 +6,34 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, RBEntitlementPredicate;
+#import <RunningBoard/RBAttributeTemplateConfiguring-Protocol.h>
+
+@class NSArray, NSDictionary, NSString, RBDomainRestriction, RBEntitlementPredicate;
 
 __attribute__((visibility("hidden")))
-@interface RBAttributeTemplateGroup : NSObject
+@interface RBAttributeTemplateGroup : NSObject <RBAttributeTemplateConfiguring>
 {
     NSArray *_attributes;
     NSDictionary *_targetBundleProperties;
     RBEntitlementPredicate *_originatorEntitlements;
     RBEntitlementPredicate *_targetEntitlements;
     NSDictionary *_additionalRestrictions;
+    RBDomainRestriction *_restriction;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) RBDomainRestriction *restriction; // @synthesize restriction=_restriction;
+@property(copy, nonatomic) NSDictionary *additionalRestrictions; // @synthesize additionalRestrictions=_additionalRestrictions;
+@property(copy, nonatomic) RBEntitlementPredicate *targetEntitlements; // @synthesize targetEntitlements=_targetEntitlements;
+@property(copy, nonatomic) RBEntitlementPredicate *originatorEntitlements; // @synthesize originatorEntitlements=_originatorEntitlements;
 @property(copy, nonatomic) NSDictionary *targetBundleProperties; // @synthesize targetBundleProperties=_targetBundleProperties;
 @property(retain, nonatomic) NSArray *attributes; // @synthesize attributes=_attributes;
-- (id)description;
+@property(readonly, copy) NSString *description;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

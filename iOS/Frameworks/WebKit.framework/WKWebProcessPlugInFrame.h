@@ -15,6 +15,7 @@
     struct ObjectStorage<WebKit::WebFrame> _frame;
 }
 
++ (id)lookUpFrameFromJSContext:(id)arg1;
 + (id)lookUpFrameFromHandle:(id)arg1;
 @property(readonly) struct Object *_apiObject;
 - (id)_provisionalURL;
@@ -24,6 +25,7 @@
 - (id)_parentFrame;
 @property(readonly, nonatomic) NSArray *faviconURLs;
 @property(readonly, nonatomic) NSArray *appleTouchIconURLs;
+- (id)_securityOrigin;
 @property(readonly, nonatomic) _WKFrameHandle *handle;
 @property(readonly, nonatomic) _Bool isMainFrame;
 @property(readonly, nonatomic) _Bool containsAnyFormElements;
@@ -32,6 +34,7 @@
 - (id)_browserContextController;
 - (id)jsRangeForRangeHandle:(id)arg1 inWorld:(id)arg2;
 - (id)jsNodeForNodeHandle:(id)arg1 inWorld:(id)arg2;
+- (id)hitTest:(struct CGPoint)arg1 options:(unsigned long long)arg2;
 - (id)hitTest:(struct CGPoint)arg1;
 - (id)jsContextForWorld:(id)arg1;
 - (void)dealloc;

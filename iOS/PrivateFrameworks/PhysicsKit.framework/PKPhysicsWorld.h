@@ -13,7 +13,7 @@
 
 @interface PKPhysicsWorld : NSObject <NSSecureCoding>
 {
-    struct b2World *_world;
+    void *_world;
     struct b2Vec2 _gravity;
     _Bool _doSleep;
     double _accumulatedDt;
@@ -66,15 +66,15 @@
 - (void)enumerateBodiesAlongRayStart:(struct CGPoint)arg1 end:(struct CGPoint)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateBodiesInRect:(struct CGRect)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateBodiesAtPoint:(struct CGPoint)arg1 usingBlock:(CDUnknownBlockType)arg2;
-@property(readonly, nonatomic) struct PKCAether *aether;
-- (const struct PKDebugDrawPacket *)debugDrawPacket;
+@property(readonly, nonatomic) void *aether;
+- (const void *)debugDrawPacket;
 - (void)debugDraw:(float)arg1 matrix:(union _GLSKMatrix4)arg2 showsPhysics:(_Bool)arg3 showsOutlineInterior:(_Bool)arg4 showsFields:(_Bool)arg5;
 - (void)_runBlockOutsideOfTimeStep:(CDUnknownBlockType)arg1;
 - (_Bool)isEqualToWorld:(id)arg1;
 @property(nonatomic) _Bool _doSleep;
 @property(retain, nonatomic) NSMutableArray *_bodies;
 @property(nonatomic) struct b2Vec2 _gravity;
-@property(readonly, nonatomic) struct b2World *_world;
+@property(readonly, nonatomic) void *_world;
 
 @end
 

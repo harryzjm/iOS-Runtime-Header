@@ -53,7 +53,8 @@
 - (id)dataSource;
 - (id)delegate;
 @property(retain, nonatomic) UICollectionView *collectionView;
-- (id)contentScrollView;
+- (id)contentScrollViewForEdge:(unsigned long long)arg1;
+- (id)_shim_contentScrollView;
 - (id)_uiCollectionView;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;

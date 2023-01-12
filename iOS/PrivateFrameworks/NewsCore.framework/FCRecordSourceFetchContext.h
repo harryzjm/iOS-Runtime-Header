@@ -13,9 +13,5 @@
     double _maxCachedAge;
 }
 
-@property(nonatomic) double maxCachedAge; // @synthesize maxCachedAge=_maxCachedAge;
-@property(nonatomic) unsigned long long cachePolicy; // @synthesize cachePolicy=_cachePolicy;
-@property(nonatomic) _Bool refresh; // @synthesize refresh=_refresh;
-
 @end
 

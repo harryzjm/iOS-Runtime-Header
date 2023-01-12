@@ -13,6 +13,7 @@
 }
 
 + (id)_unzipWatchfaceFromURL:(id)arg1;
+- (void)removeFileAtPath:(id)arg1 withSandboxExtension:(char *)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)unzipWatchfaceFromURL:(id)arg1 withSandboxExtension:(char *)arg2 completionBlock:(CDUnknownBlockType)arg3;
 
 @end

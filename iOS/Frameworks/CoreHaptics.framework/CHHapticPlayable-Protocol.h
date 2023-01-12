@@ -6,10 +6,15 @@
 
 #import <CoreHaptics/NSObject-Protocol.h>
 
-@class CHHapticEngine, NSArray;
+@class CHHapticEngine, NSArray, NSString;
 
 @protocol CHHapticPlayable <NSObject>
+@property(readonly) NSString *audioPowerUsage;
+@property(readonly) NSString *hapticPowerUsage;
+@property(readonly) NSString *priority;
+@property(readonly) NSString *locality;
 @property(readonly) double duration;
+@property(readonly) NSString *patternID;
 @property(readonly) NSArray *parameterCurves;
 @property(readonly) NSArray *parameters;
 @property(readonly) NSArray *events;

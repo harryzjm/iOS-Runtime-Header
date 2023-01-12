@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
 - (void)willPresentPageModel:(id)arg1 appearance:(id)arg2;
 - (void)dynamicViewController:(id)arg1 didFinishWithPurchaseResult:(id)arg2 error:(id)arg3;
+- (void)dynamicViewController:(id)arg1 didFinishPurchaseWithResult:(id)arg2 error:(id)arg3;
 - (id)initWithContext:(id)arg1 URL:(id)arg2;
 
 // Remaining properties

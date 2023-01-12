@@ -35,9 +35,11 @@
     NSURL *_frontSwappingVideoRenderURL;
     NSURL *_backSwappingVideoRenderURL;
     PHAdjustmentData *_originalAdjustmentData;
+    NSString *_accessibilityDescription;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *accessibilityDescription; // @synthesize accessibilityDescription=_accessibilityDescription;
 @property(retain, nonatomic) PHAdjustmentData *originalAdjustmentData; // @synthesize originalAdjustmentData=_originalAdjustmentData;
 @property(copy, nonatomic) NSURL *backSwappingVideoRenderURL; // @synthesize backSwappingVideoRenderURL=_backSwappingVideoRenderURL;
 @property(copy, nonatomic) NSURL *frontSwappingVideoRenderURL; // @synthesize frontSwappingVideoRenderURL=_frontSwappingVideoRenderURL;

@@ -6,12 +6,11 @@
 
 #import <Preferences/PSListController.h>
 
-@class STStorageApp, STStoragePlugin, UIProgressHUD;
+@class STStoragePlugin, UIProgressHUD;
 
 __attribute__((visibility("hidden")))
 @interface CKCloudMessagesDetailController : PSListController
 {
-    STStorageApp *_messagesApp;
     STStoragePlugin *_plugin;
     UIProgressHUD *_cloudKitProgressView;
 }

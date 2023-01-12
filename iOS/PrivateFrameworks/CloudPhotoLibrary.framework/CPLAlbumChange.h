@@ -21,9 +21,12 @@
     NSString *_projectDocumentType;
     NSData *_projectData;
     NSData *_projectPreviewImageData;
+    NSString *_importedByBundleIdentifier;
 }
 
++ (Class)relatedRecordClass;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *importedByBundleIdentifier; // @synthesize importedByBundleIdentifier=_importedByBundleIdentifier;
 @property(copy, nonatomic) NSData *projectPreviewImageData; // @synthesize projectPreviewImageData=_projectPreviewImageData;
 @property(copy, nonatomic) NSData *projectData; // @synthesize projectData=_projectData;
 @property(copy, nonatomic) NSString *projectDocumentType; // @synthesize projectDocumentType=_projectDocumentType;
@@ -33,6 +36,7 @@
 @property(nonatomic) long long position; // @synthesize position=_position;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(nonatomic) unsigned long long albumType; // @synthesize albumType=_albumType;
+- (CDUnknownBlockType)checkDefaultValueBlockForPropertyWithSelector:(SEL)arg1;
 - (id)propertiesDescription;
 - (void)setRelatedIdentifier:(id)arg1;
 - (id)relatedIdentifier;

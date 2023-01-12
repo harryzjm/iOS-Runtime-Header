@@ -6,13 +6,13 @@
 
 #import <WorkflowKit/WFHomeManagerEventObserver-Protocol.h>
 
-@class HFTriggerActionSetsBuilder, NSString;
+@class HMHome, NSArray, NSString;
 
 @interface WFHomeAccessoryAction <WFHomeManagerEventObserver>
 {
 }
 
-+ (id)homeAccessoryActionWithHome:(id)arg1;
++ (id)homeAccessoryActionWithHome:(id)arg1 actionSets:(id)arg2;
 + (id)homeAccessoryActionWithTriggerActionSetsBuilder:(id)arg1;
 - (void)homeManagerDidUpdateHomes:(id)arg1;
 - (id)localizedSummaryText;
@@ -22,9 +22,12 @@
 - (id)localizedAttribution;
 - (id)localizedDescriptionSummary;
 - (id)localizedName;
-- (void)_performHomeAccessoryAction;
+- (void)performHomeAccessoryAction;
 - (void)runAsynchronouslyWithInput:(id)arg1;
-@property(readonly, nonatomic) HFTriggerActionSetsBuilder *triggerActionSetsBuilder;
+@property(readonly, nonatomic) NSArray *shortcutsDictionaryRepresentations;
+@property(readonly, nonatomic) NSString *homeIdentifier;
+@property(readonly, nonatomic) NSArray *actionSets;
+@property(readonly, nonatomic) HMHome *home;
 - (void)dealloc;
 - (void)initializeParameters;
 

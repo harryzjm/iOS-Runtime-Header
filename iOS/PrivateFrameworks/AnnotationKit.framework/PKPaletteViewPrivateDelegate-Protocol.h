@@ -6,14 +6,12 @@
 
 #import <AnnotationKit/PKPaletteViewDelegate-Protocol.h>
 
-@class PKPaletteView, UIColor, UIView;
+@class PKPaletteView, UIView;
 
 @protocol PKPaletteViewPrivateDelegate <PKPaletteViewDelegate>
 
 @optional
 - (UIView *)paletteViewColorPickerPopoverPresentationSourceView:(PKPaletteView *)arg1;
 - (struct CGRect)paletteViewColorPickerPopoverPresentationSourceRect:(PKPaletteView *)arg1;
-- (void)paletteView:(PKPaletteView *)arg1 didChangeColor:(UIColor *)arg2;
-- (_Bool)paletteView:(PKPaletteView *)arg1 shouldSetSelectedToolColor:(UIColor *)arg2;
 @end
 

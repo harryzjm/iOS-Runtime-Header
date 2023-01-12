@@ -10,8 +10,5 @@
 {
 }
 
-+ (double)randomGaussWithMean:(double)arg1 std:(double)arg2;
-+ (id)shuffleArray:(id)arg1;
-
 @end
 

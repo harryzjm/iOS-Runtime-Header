@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSURL;
+@class NSString, NSURL;
 
 @protocol NTKGreenfieldDecodingServiceProtocol
+- (void)removeFileAtPath:(NSString *)arg1 withSandboxExtension:(char *)arg2 completionBlock:(void (^)(NSError *))arg3;
 - (void)unzipWatchfaceFromURL:(NSURL *)arg1 withSandboxExtension:(char *)arg2 completionBlock:(void (^)(NSString *, NSError *))arg3;
 @end
 

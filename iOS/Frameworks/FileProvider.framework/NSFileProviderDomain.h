@@ -6,20 +6,27 @@
 
 #import <objc/NSObject.h>
 
+#import <FileProvider/NSCopying-Protocol.h>
 #import <FileProvider/NSSecureCoding-Protocol.h>
 
-@class NSError, NSString;
+@class NSData, NSError, NSString;
 
-@interface NSFileProviderDomain : NSObject <NSSecureCoding>
+@interface NSFileProviderDomain : NSObject <NSSecureCoding, NSCopying>
 {
+    NSData *_backingStoreIdentity;
+    _Bool _disconnected;
+    _Bool _userEnabled;
     _Bool _hidden;
     _Bool _containsPhotos;
     _Bool _isEnterpriseDomain;
-    _Bool _disconnected;
+    _Bool _isDataSeparatedDomain;
     NSString *_identifier;
     NSString *_displayName;
     NSString *_pathRelativeToDocumentStorage;
+    unsigned long long _testingModes;
     NSString *_symLinkName;
+    NSString *_disconnectionReason;
+    unsigned long long _disconnectionOptions;
     NSError *_error;
     NSString *_personaIdentifier;
 }
@@ -27,22 +34,30 @@
 + (id)domainFromPlistDictionary:(id)arg1 identifier:(id)arg2;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(getter=isDisconnected) _Bool disconnected; // @synthesize disconnected=_disconnected;
+@property(nonatomic) _Bool isDataSeparatedDomain; // @synthesize isDataSeparatedDomain=_isDataSeparatedDomain;
 @property(nonatomic) _Bool isEnterpriseDomain; // @synthesize isEnterpriseDomain=_isEnterpriseDomain;
 @property(retain, nonatomic) NSString *personaIdentifier; // @synthesize personaIdentifier=_personaIdentifier;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
+@property(nonatomic, getter=_disconnectionOptions, setter=_setDisconnectionOptions:) unsigned long long disconnectionOptions; // @synthesize disconnectionOptions=_disconnectionOptions;
+@property(retain, nonatomic, getter=_disconnectionReason, setter=_setDisconnectionReason:) NSString *disconnectionReason; // @synthesize disconnectionReason=_disconnectionReason;
 @property(nonatomic) _Bool containsPhotos; // @synthesize containsPhotos=_containsPhotos;
 @property(copy, nonatomic) NSString *symLinkName; // @synthesize symLinkName=_symLinkName;
-@property(nonatomic, getter=isHidden) _Bool hidden; // @synthesize hidden=_hidden;
+@property unsigned long long testingModes; // @synthesize testingModes=_testingModes;
+@property(getter=isHidden) _Bool hidden; // @synthesize hidden=_hidden;
+@property(nonatomic) _Bool userEnabled; // @synthesize userEnabled=_userEnabled;
+@property(nonatomic, getter=isDisconnected) _Bool disconnected; // @synthesize disconnected=_disconnected;
 @property(readonly, copy) NSString *pathRelativeToDocumentStorage; // @synthesize pathRelativeToDocumentStorage=_pathRelativeToDocumentStorage;
 @property(readonly, copy) NSString *displayName; // @synthesize displayName=_displayName;
 @property(readonly, copy) NSString *identifier; // @synthesize identifier=_identifier;
+- (void)copyValuesFromExistingDomain:(id)arg1;
 - (id)description;
 - (id)plistDictionary;
+@property(retain, nonatomic) NSData *backingStoreIdentity;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)sharedAccountStore;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithIdentifier:(id)arg1 displayName:(id)arg2 pathRelativeToDocumentStorage:(id)arg3 hidden:(_Bool)arg4;
+- (id)initWithIdentifier:(id)arg1 displayName:(id)arg2;
 - (id)initWithIdentifier:(id)arg1 displayName:(id)arg2 pathRelativeToDocumentStorage:(id)arg3;
 
 @end

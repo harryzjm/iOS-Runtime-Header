@@ -36,6 +36,7 @@
 - (void)didStartProvisionalLoadForFrame:(id)arg1;
 - (void)_willNavigateFrameWithUnsubmittedForm:(id)arg1;
 - (void)focusFormForStreamlinedLogin:(double)arg1 inFrame:(id)arg2;
+- (void)finishedAutoFillingOneTimeCodeInFrame:(id)arg1 shouldSubmit:(_Bool)arg2;
 - (void)finishedAutoFillingForm:(id)arg1 inFrame:(id)arg2 shouldSubmit:(_Bool)arg3;
 - (void)clearField:(id)arg1 inFrame:(id)arg2;
 - (void)removeAutomaticPasswordVisualTreatmentInFrame:(id)arg1 passwordControlUniqueIDs:(id)arg2;
@@ -51,7 +52,9 @@
 - (id)formAutoFillNodeForJSWrapper:(struct OpaqueJSValue *)arg1 inContext:(struct OpaqueJSContext *)arg2;
 - (void)clearScriptWorld;
 - (void)collectMetadataForTextField:(id)arg1 inFrame:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_collectFormMetadataWithRequestType:(unsigned long long)arg1 ignoreAutoFilledForms:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_collectFormMetadataForPreFilling:(_Bool)arg1;
+- (void)collectFormMetadataForPageLevelAutoFill;
 - (void)collectFormMetadataForPreFilling;
 - (_Bool)_formContainsAutoFilledElements:(id)arg1;
 - (void)collectURLsForPreFilling;

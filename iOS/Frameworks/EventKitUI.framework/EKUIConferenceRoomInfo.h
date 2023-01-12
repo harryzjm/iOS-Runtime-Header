@@ -17,8 +17,8 @@
 
 - (void).cxx_destruct;
 @property long long availabilityType; // @synthesize availabilityType=_availabilityType;
-@property(retain) NSArray *availabilitySpans; // @synthesize availabilitySpans=_availabilitySpans;
-@property(retain) EKRequestAvailabilityOperation *availabilityRequest; // @synthesize availabilityRequest=_availabilityRequest;
+@property(retain, nonatomic) NSArray *availabilitySpans; // @synthesize availabilitySpans=_availabilitySpans;
+@property(retain, nonatomic) EKRequestAvailabilityOperation *availabilityRequest; // @synthesize availabilityRequest=_availabilityRequest;
 - (id)init;
 
 @end

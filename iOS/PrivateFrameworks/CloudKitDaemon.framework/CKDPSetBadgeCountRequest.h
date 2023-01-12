@@ -8,7 +8,6 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-__attribute__((visibility("hidden")))
 @interface CKDPSetBadgeCountRequest : PBRequest <NSCopying>
 {
     unsigned int _badgeCount;

@@ -13,6 +13,8 @@
     id _internal;
 }
 
++ (id)virtualAlmondDevice;
++ (void)setVirtualAlmondDevice:(id)arg1;
 + (id)sharedManager;
 + (unsigned long long)availableAttitudeReferenceFrames;
 - (void)stopDeviceMotionLiteUpdatesForDeviceID:(id)arg1;

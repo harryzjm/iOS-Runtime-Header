@@ -25,6 +25,9 @@
 - (void)lookUpContentRuleListForIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)compileContentRuleListForIdentifier:(id)arg1 encodedContentRuleList:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dealloc;
+- (void)removeContentExtensionForIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)lookupContentExtensionForIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)compileContentExtensionForIdentifier:(id)arg1 encodedContentExtension:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_compileContentRuleListForIdentifier:(id)arg1 encodedContentRuleList:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_getContentRuleListSourceForIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_invalidateContentRuleListVersionForIdentifier:(id)arg1;

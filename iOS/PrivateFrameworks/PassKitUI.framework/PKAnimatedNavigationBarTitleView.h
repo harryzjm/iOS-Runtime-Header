@@ -9,9 +9,11 @@
 @interface PKAnimatedNavigationBarTitleView : UIView
 {
     UIView *_titleView;
+    int _viewState;
 }
 
 - (void).cxx_destruct;
+- (void)layoutSubviews;
 - (void)setTitleView:(id)arg1 animated:(_Bool)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)init;

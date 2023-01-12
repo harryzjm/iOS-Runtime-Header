@@ -11,6 +11,7 @@
 @protocol PKTiledCanvasViewDelegate <NSObject>
 
 @optional
+- (struct CGAffineTransform)canvasView:(PKTiledCanvasView *)arg1 transformForStroke:(PKStroke *)arg2;
 - (PKInk *)canvasView:(PKTiledCanvasView *)arg1 inkForStroke:(PKStroke *)arg2;
 - (void)replayCanvasViewDrawingMoved:(PKTiledCanvasView *)arg1 inputPoint:(CDStruct_6422aa5d)arg2;
 - (_Bool)canvasViewShouldDisableShapeRecognition:(PKTiledCanvasView *)arg1;
@@ -18,9 +19,10 @@
 - (void)canvasView:(PKTiledCanvasView *)arg1 didPresentWithCanvasOffset:(struct CGPoint)arg2;
 - (UIView *)canvasViewTouchView:(PKTiledCanvasView *)arg1;
 - (void)canvasView:(PKTiledCanvasView *)arg1 registerUndoCommands:(NSArray *)arg2;
+- (void)canvasView:(PKTiledCanvasView *)arg1 registerMultiStepUndoCommands:(NSArray *)arg2;
 - (void)_canvasViewDidEraseStrokes:(NSArray *)arg1;
 - (_Bool)canvasView:(PKTiledCanvasView *)arg1 shouldBeginDrawingWithTouch:(UITouch *)arg2;
-- (void)_canvasView:(PKTiledCanvasView *)arg1 didFinishRenderingStrokesOnRenderQueue:(NSArray *)arg2 inDrawing:(PKDrawing *)arg3;
+- (void)_canvasView:(PKTiledCanvasView *)arg1 didFinishRenderingNewStrokes:(NSArray *)arg2 inDrawing:(PKDrawing *)arg3;
 - (void)canvasViewHasVisibleStrokesChanged:(PKTiledCanvasView *)arg1;
 - (void)canvasViewDidFinishAnimatingStrokes:(PKTiledCanvasView *)arg1;
 - (void)canvasViewDidEndDrawing:(PKTiledCanvasView *)arg1;

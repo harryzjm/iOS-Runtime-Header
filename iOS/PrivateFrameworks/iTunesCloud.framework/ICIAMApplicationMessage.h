@@ -8,12 +8,13 @@
 
 #import <iTunesCloud/NSCopying-Protocol.h>
 
-@class ICIAMLocalNotification, ICIAMMessageRule, ICIAMMetricEvent, NSMutableArray, NSString;
+@class ICIAMApplicationBadge, ICIAMLocalNotification, ICIAMMessageRule, ICIAMMetricEvent, NSMutableArray, NSString;
 
 @interface ICIAMApplicationMessage : PBCodable <NSCopying>
 {
     double _endDate;
     double _startDate;
+    ICIAMApplicationBadge *_applicationBadge;
     int _assetPrefetchStrategy;
     NSMutableArray *_contentPages;
     int _globalPresentationPolicyGroup;
@@ -50,6 +51,7 @@
 + (Class)contentPagesType;
 + (Class)targetType;
 - (void).cxx_destruct;
+@property(retain, nonatomic) ICIAMApplicationBadge *applicationBadge; // @synthesize applicationBadge=_applicationBadge;
 @property(retain, nonatomic) NSMutableArray *presentationTriggers; // @synthesize presentationTriggers=_presentationTriggers;
 @property(retain, nonatomic) ICIAMMetricEvent *impressionEvent; // @synthesize impressionEvent=_impressionEvent;
 @property(retain, nonatomic) ICIAMLocalNotification *localNotification; // @synthesize localNotification=_localNotification;
@@ -73,6 +75,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasApplicationBadge;
 - (id)presentationTriggersAtIndex:(unsigned long long)arg1;
 - (unsigned long long)presentationTriggersCount;
 - (void)addPresentationTriggers:(id)arg1;

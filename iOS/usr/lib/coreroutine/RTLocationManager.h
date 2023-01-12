@@ -5,12 +5,13 @@
 //
 
 #import <coreroutine/CLLocationManagerDelegate-Protocol.h>
+#import <coreroutine/CLLocationManagerDelegateInternal-Protocol.h>
 #import <coreroutine/RTPurgable-Protocol.h>
 #import <coreroutine/RTStoreManager-Protocol.h>
 
-@class CLLocation, CLLocationManager, CLLocationManagerRoutine, NSMutableArray, NSMutableDictionary, NSString, RTAuthorizationManager, RTDefaultsManager, RTInvocationDispatcher, RTLocationStore, RTPlatform, RTPowerAssertion, RTTimer, RTTimerManager;
+@class CLLocation, CLLocationManager, CLLocationManagerRoutine, NSMutableArray, NSMutableDictionary, NSString, RTAuthorizationManager, RTDefaultsManager, RTInvocationDispatcher, RTLocationSmoother, RTLocationStore, RTPlatform, RTPowerAssertion, RTTimer, RTTimerManager;
 
-@interface RTLocationManager <CLLocationManagerDelegate, RTPurgable, RTStoreManager>
+@interface RTLocationManager <CLLocationManagerDelegateInternal, CLLocationManagerDelegate, RTPurgable, RTStoreManager>
 {
     _Bool _leechingLocations;
     _Bool _monitoringLocations;
@@ -27,6 +28,7 @@
     CLLocationManagerRoutine *_locationManagerRoutine;
     CLLocation *_lastLocation;
     RTAuthorizationManager *_authorizationManager;
+    RTLocationSmoother *_locationSmoother;
     RTLocationStore *_locationStore;
     RTPlatform *_platform;
     RTDefaultsManager *_defaultsManager;
@@ -52,6 +54,7 @@
 @property(retain, nonatomic) RTDefaultsManager *defaultsManager; // @synthesize defaultsManager=_defaultsManager;
 @property(retain, nonatomic) RTPlatform *platform; // @synthesize platform=_platform;
 @property(retain, nonatomic) RTLocationStore *locationStore; // @synthesize locationStore=_locationStore;
+@property(retain, nonatomic) RTLocationSmoother *locationSmoother; // @synthesize locationSmoother=_locationSmoother;
 @property(retain, nonatomic) RTAuthorizationManager *authorizationManager; // @synthesize authorizationManager=_authorizationManager;
 @property(retain, nonatomic) CLLocation *lastLocation; // @synthesize lastLocation=_lastLocation;
 @property(nonatomic) _Bool persistingLocations; // @synthesize persistingLocations=_persistingLocations;
@@ -71,8 +74,6 @@
 - (void)locationManager:(id)arg1 didDetermineState:(long long)arg2 forRegion:(id)arg3;
 - (void)locationManager:(id)arg1 didStartMonitoringForRegion:(id)arg2;
 - (void)locationManager:(id)arg1 monitoringDidFailForRegion:(id)arg2 withError:(id)arg3;
-- (void)locationManager:(id)arg1 didExitRegion:(id)arg2;
-- (void)locationManager:(id)arg1 didEnterRegion:(id)arg2;
 - (_Bool)_stopMonitoringAllRegionsForClientIdentifier:(id)arg1 error:(id *)arg2;
 - (_Bool)stopMonitoringAllRegionsForClientIdentifier:(id)arg1 error:(id *)arg2;
 - (_Bool)stopMonitoringForRegion:(id)arg1 clientIdentifier:(id)arg2 error:(id *)arg3;
@@ -98,6 +99,9 @@
 - (void)internalRemoveObserver:(id)arg1 name:(id)arg2;
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
 - (void)onStopUpdatingLocationTimerExpiry;
+- (void)_fetchStoredLocationsWithContext:(id)arg1 limit:(unsigned long long)arg2 referenceDate:(id)arg3 handler:(CDUnknownBlockType)arg4;
+- (void)_fetchEstimatedLocationAtDate:(id)arg1 options:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)fetchEstimatedLocationAtDate:(id)arg1 options:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)fetchStoredLocationsWithContext:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_fetchStoredLocationsWithContext:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)fetchStoredLocationsWithOptions:(id)arg1 handler:(CDUnknownBlockType)arg2;
@@ -107,6 +111,7 @@
 - (void)fetchCachedLocationWithHandler:(CDUnknownBlockType)arg1;
 - (void)fetchCurrentLocationWithHandler:(CDUnknownBlockType)arg1;
 - (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
+- (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
 - (void)_storeLocations:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)shouldPersistLocations;
@@ -114,12 +119,12 @@
 - (void)shouldLeechLocations;
 - (void)stopUpdatingLocation;
 - (void)startUpdatingLocation;
-- (void)_shutdown;
+- (void)_shutdownWithHandler:(CDUnknownBlockType)arg1;
 - (void)_setup;
 - (void)_createLocationManager;
 - (void)_unregisterNotifications;
 - (void)_registerNotifications;
-- (id)initWithAuthorizationManager:(id)arg1 defaultsManager:(id)arg2 locationStore:(id)arg3 platform:(id)arg4 routineLocationManager:(id)arg5 timerManager:(id)arg6;
+- (id)initWithAuthorizationManager:(id)arg1 defaultsManager:(id)arg2 locationSmoother:(id)arg3 locationStore:(id)arg4 platform:(id)arg5 routineLocationManager:(id)arg6 timerManager:(id)arg7;
 - (id)init;
 - (void)injectLocations:(id)arg1 handler:(CDUnknownBlockType)arg2;
 

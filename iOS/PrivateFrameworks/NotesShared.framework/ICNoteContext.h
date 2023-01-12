@@ -45,7 +45,6 @@
 + (_Bool)legacyNotesDisabled;
 + (_Bool)updateSharedStateFile:(id)arg1 toState:(_Bool)arg2 error:(id *)arg3;
 + (void)markOldTrashedNotesForDeletionInContext:(id)arg1;
-+ (_Bool)isSingleRunningNotesApp;
 + (void)resetAppContainer;
 + (void)resetAppState;
 + (void)enableLocalAccount;
@@ -129,7 +128,7 @@
 - (id)predicateForPinnedNotes;
 - (id)predicateForVisibleNotes;
 - (unsigned long long)visibleNotesCount;
-- (id)visibleNotes;
+@property(readonly, nonatomic) NSArray *visibleNotes;
 - (_Bool)noteIsVisible:(id)arg1;
 - (void)addOrDeleteLocalAccountIfNecessary;
 - (id)allICloudACAccounts;

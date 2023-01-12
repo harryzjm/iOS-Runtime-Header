@@ -23,6 +23,7 @@
 - (id)possibleUnits;
 - (void)action:(id)arg1 parameterStateDidChangeForKey:(id)arg2;
 - (_Bool)isHidden;
+- (id)localizedPrompt;
 - (id)localizedLabel;
 - (void)attributesDidChange;
 - (id)localizedLabelForPossibleUnit:(id)arg1 magnitude:(id)arg2 style:(unsigned long long)arg3;

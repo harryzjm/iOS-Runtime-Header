@@ -6,11 +6,13 @@
 
 #import <FMIPCore/NSObject-Protocol.h>
 
-@class GEOAddress, GEOAddressObject, GEOAppleRating, GEOAssociatedApp, GEOFeatureStyleAttributes, GEOMapItemAdditionalPlaceInfo, GEOMapItemClientAttributes, GEOMapItemContainedPlace, GEOMapItemDetourInfo, GEOMapItemIdentifier, GEOMapItemPhotosAttribution, GEOMapItemPlaceAttribution, GEOMapItemReviewsAttribution, GEOMapRegion, GEOMessageLink, GEOMuninViewState, GEOPDBusinessClaim, GEOPDFlyover, GEOPDPlace, GEOPlace, GEOPlaceQuestionnaire, GEOPlaceResult, GEOPlacecardLayoutConfiguration, GEOPriceDescription, GEORestaurantFeaturesLink, GEOStyleAttributes, NSArray, NSData, NSDate, NSDictionary, NSString, NSTimeZone, NSURL;
+@class GEOAddress, GEOAddressObject, GEOAppleRating, GEOAssociatedApp, GEOEnclosingPlace, GEOEnhancedPlacement, GEOExploreGuides, GEOFeatureStyleAttributes, GEOLabelGeometry, GEOMapItemAdditionalPlaceInfo, GEOMapItemClientAttributes, GEOMapItemContainedPlace, GEOMapItemDetourInfo, GEOMapItemIdentifier, GEOMapItemPhotosAttribution, GEOMapItemPlaceAttribution, GEOMapItemReviewsAttribution, GEOMapRegion, GEOMessageLink, GEOMiniBrowseCategories, GEOMuninViewState, GEOPDBusinessClaim, GEOPDFlyover, GEOPDPlace, GEOPlace, GEOPlaceQuestionnaire, GEOPlaceResult, GEOPlacecardLayoutData, GEOPriceDescription, GEORelatedPlaceList, GEORestaurantFeaturesLink, GEOStyleAttributes, GEOViewportFrame, NSArray, NSData, NSDate, NSDictionary, NSString, NSTimeZone, NSURL;
 @protocol GEOEncyclopedicInfo, GEOMapItem, GEOMapItemTransitInfo, GEOMapItemVenueInfo, GEOTransitAttribution, GEOTransitVehiclePosition;
 
 @protocol GEOMapItem <NSObject>
 - (NSArray *)_alternateSearchableNames;
+- (NSArray *)_captionedPhotoAlbums;
+- (_Bool)_hasCaptionedPhotoAlbum;
 - (unsigned long long)_totalPhotoCount;
 - (_Bool)_canDownloadMorePhotos;
 - (NSArray *)_identifierHistory;
@@ -54,23 +56,35 @@
 - (NSArray *)_localizedCategoryNamesForType:(unsigned int)arg1;
 - (GEOMapRegion *)_arrivalMapRegionForTransportType:(int)arg1;
 - (NSString *)_spokenAddressForLocale:(NSString *)arg1;
+- (GEOViewportFrame *)_viewportFrame;
+- (GEOLabelGeometry *)_labelGeometry;
+- (GEOEnhancedPlacement *)_enhancedPlacement;
 - (NSArray *)_linkedServices;
 - (_Bool)_hasLinkedServices;
 - (NSArray *)_businessHours;
 - (_Bool)_hasBusinessHours;
 - (_Bool)_hasCurrentOperatingHours;
 - (_Bool)_hasOperatingHours;
+- (GEOEnclosingPlace *)_enclosingPlace;
+- (_Bool)_hasEnclosingPlace;
 - (int)_placeDisplayStyle;
+- (GEOMiniBrowseCategories *)_miniBrowseCategories;
 - (NSArray *)_browseCategories;
 - (id <GEOMapItemVenueInfo>)_venueInfo;
 - (int)_venueFeatureType;
 - (_Bool)_hasVenueFeatureType;
 @property(nonatomic, readonly) _Bool hasExpiredComponents;
 @property(nonatomic, readonly) GEOMapItemDetourInfo *detourInfo;
+- (GEOPlacecardLayoutData *)_placecardLayoutData;
+- (GEORelatedPlaceList *)_firstRelatedPlaceListForType:(int)arg1;
+- (GEORelatedPlaceList *)_relatedPlaceListForComponentIdentifier:(int)arg1;
+- (NSArray *)_relatedPlaceLists;
 - (unsigned long long)_brandMUID;
 - (_Bool)_hasBrandMUID;
-- (GEOPlacecardLayoutConfiguration *)_placecardLayoutConfiguration;
+- (NSArray *)_placeCollectionPullQuotes;
+- (_Bool)_hasPlaceCollectionPullQuotes;
 - (NSArray *)_placeCollectionsIds;
+- (GEOExploreGuides *)_exploreGuides;
 - (NSArray *)_placeCollections;
 - (NSArray *)_secondaryQuickLinks;
 - (NSArray *)_quickLinks;
@@ -91,6 +105,7 @@
 - (GEOFeatureStyleAttributes *)_styleAttributes;
 - (NSString *)_poiCategory;
 - (GEOMapItemReviewsAttribution *)_reviewsAttribution;
+- (NSArray *)_allPhotoAttributions;
 - (GEOMapItemPhotosAttribution *)_photosAttribution;
 - (GEOMapItemPlaceAttribution *)_attribution;
 - (NSString *)_poiPinpointURLString;
@@ -104,15 +119,16 @@
 - (_Bool)_optsOutOfTelephoneAds;
 - (NSString *)_telephone;
 - (_Bool)_hasTelephone;
+- (NSString *)_placeDescription;
+- (_Bool)_hasPlaceDescription;
 - (id <GEOEncyclopedicInfo>)_encyclopedicInfo;
 - (_Bool)_hasEncyclopedicInfo;
-- (_Bool)valueForAmenityType:(int)arg1;
-- (_Bool)hasAmenityType:(int)arg1;
 - (NSArray *)_amenities;
 - (_Bool)_hasAnyAmenities;
 - (NSArray *)_childItems;
 - (unsigned int)_resultSnippetDistanceDisplayThreshold;
 - (NSString *)_resultSnippetLocationString;
+- (unsigned int)_maxScoreForPriceRange;
 - (unsigned int)_priceRange;
 - (_Bool)_hasPriceRange;
 - (float)_normalizedUserRatingScore;
@@ -182,6 +198,9 @@
 @property(nonatomic, readonly) NSString *name;
 
 @optional
+- (unsigned long long)_areaHighlightId;
+- (_Bool)_hasAreaHighlightId;
+- (NSString *)_bestAvailableCountryCode;
 - (NSString *)_iso3166SubdivisionCode;
 - (NSString *)_iso3166CountryCode;
 - (id <GEOMapItem>)_mapItemBySettingIsTransitDisplayFeature:(_Bool)arg1;
@@ -189,18 +208,22 @@
 // Remaining properties
 @property(nonatomic, readonly) NSArray *additionalPlaceInfos;
 @property(nonatomic, readonly) int addressGeocodeAccuracy;
+@property(nonatomic, readonly) NSArray *allPhotoAttributions;
 @property(nonatomic, readonly) NSArray *alternateSearchableNames;
 @property(nonatomic, readonly) NSArray *amenities;
 @property(nonatomic, readonly) NSArray *appleRatings;
+@property(nonatomic, readonly) unsigned long long areaHighlightId;
 @property(nonatomic, readonly) double areaInMeters;
 @property(nonatomic, readonly) GEOAssociatedApp *associatedApp;
 @property(nonatomic, readonly) GEOMapItemPlaceAttribution *attribution;
+@property(nonatomic, readonly) NSString *bestAvailableCountryCode;
 @property(nonatomic, readonly) unsigned long long brandMUID;
 @property(nonatomic, readonly) NSArray *browseCategories;
 @property(nonatomic, readonly) GEOPDBusinessClaim *businessClaim;
 @property(nonatomic, readonly) NSArray *businessHours;
 @property(nonatomic, readonly) NSString *businessURL;
 @property(nonatomic, readonly) _Bool canDownloadMorePhotos;
+@property(nonatomic, readonly) NSArray *captionedPhotoAlbums;
 @property(nonatomic, readonly) NSArray *childItems;
 @property(nonatomic, readonly) GEOMapItemClientAttributes *clientAttributes;
 @property(nonatomic, readonly) GEOMapItemContainedPlace *containedPlace;
@@ -208,17 +231,23 @@
 @property(nonatomic, readonly) NSString *disambiguationName;
 @property(nonatomic, readonly) _Bool disputed;
 @property(nonatomic, readonly) _Bool enableRAPLightweightFeedback;
+@property(nonatomic, readonly) GEOEnclosingPlace *enclosingPlace;
 @property(nonatomic, readonly) id <GEOEncyclopedicInfo> encyclopedicInfo;
+@property(nonatomic, readonly) GEOEnhancedPlacement *enhancedPlacement;
+@property(nonatomic, readonly) GEOExploreGuides *exploreGuides;
 @property(nonatomic, readonly) GEORestaurantFeaturesLink *featureLink;
 @property(nonatomic, readonly) GEOPDFlyover *flyover;
 @property(nonatomic, readonly) NSString *flyoverAnnouncementMessage;
 @property(nonatomic, readonly) unsigned long long groundViewLocationId;
 @property(nonatomic, readonly) _Bool hasAnyAmenities;
+@property(nonatomic, readonly) _Bool hasAreaHighlightId;
 @property(nonatomic, readonly) _Bool hasAreaInMeters;
 @property(nonatomic, readonly) _Bool hasBrandMUID;
 @property(nonatomic, readonly) _Bool hasBusinessClaim;
 @property(nonatomic, readonly) _Bool hasBusinessHours;
+@property(nonatomic, readonly) _Bool hasCaptionedPhotoAlbum;
 @property(nonatomic, readonly) _Bool hasCurrentOperatingHours;
+@property(nonatomic, readonly) _Bool hasEnclosingPlace;
 @property(nonatomic, readonly) _Bool hasEncyclopedicInfo;
 @property(nonatomic, readonly) _Bool hasFeatureLink;
 @property(nonatomic, readonly) _Bool hasFlyover;
@@ -226,6 +255,8 @@
 @property(nonatomic, readonly) _Bool hasLinkedServices;
 @property(nonatomic, readonly) _Bool hasMUID;
 @property(nonatomic, readonly) _Bool hasOperatingHours;
+@property(nonatomic, readonly) _Bool hasPlaceCollectionPullQuotes;
+@property(nonatomic, readonly) _Bool hasPlaceDescription;
 @property(nonatomic, readonly) _Bool hasPlaceQuestionnaire;
 @property(nonatomic, readonly) _Bool hasPriceRange;
 @property(nonatomic, readonly) _Bool hasResolvablePartialInformation;
@@ -244,9 +275,12 @@
 @property(nonatomic, readonly) _Bool isTransitDisplayFeature;
 @property(nonatomic, readonly) NSString *iso3166CountryCode;
 @property(nonatomic, readonly) NSString *iso3166SubdivisionCode;
+@property(nonatomic, readonly) GEOLabelGeometry *labelGeometry;
 @property(nonatomic, readonly) NSArray *linkedServices;
 @property(nonatomic, readonly) NSString *mapsCategoryId;
+@property(nonatomic, readonly) unsigned int maxScoreForPriceRange;
 @property(nonatomic, readonly) GEOMessageLink *messageLink;
+@property(nonatomic, readonly) GEOMiniBrowseCategories *miniBrowseCategories;
 @property(nonatomic, readonly) unsigned long long muid;
 @property(nonatomic, readonly) GEOMuninViewState *muninViewState;
 @property(nonatomic, readonly) _Bool needsAttribution;
@@ -258,16 +292,18 @@
 @property(nonatomic, readonly) NSArray *photos;
 @property(nonatomic, readonly) GEOMapItemPhotosAttribution *photosAttribution;
 @property(nonatomic, readonly) GEOPlace *place;
+@property(nonatomic, readonly) NSArray *placeCollectionPullQuotes;
 @property(nonatomic, readonly) NSArray *placeCollections;
 @property(nonatomic, readonly) NSArray *placeCollectionsIds;
 @property(nonatomic, readonly) GEOPDPlace *placeData;
 @property(nonatomic, readonly) NSData *placeDataAsData;
+@property(nonatomic, readonly) NSString *placeDescription;
 @property(nonatomic, readonly) int placeDisplayStyle;
 @property(nonatomic, readonly) int placeDisplayType;
 @property(nonatomic, readonly) GEOPlaceQuestionnaire *placeQuestionnaire;
 @property(nonatomic, readonly) GEOPlaceResult *placeResult;
 @property(nonatomic, readonly) int placeType;
-@property(nonatomic, readonly) GEOPlacecardLayoutConfiguration *placecardLayoutConfiguration;
+@property(nonatomic, readonly) GEOPlacecardLayoutData *placecardLayoutData;
 @property(nonatomic, readonly) NSString *poiCategory;
 @property(nonatomic, readonly) NSString *poiPinpointURLString;
 @property(nonatomic, readonly) NSString *poiSurveyURLString;
@@ -275,6 +311,7 @@
 @property(nonatomic, readonly) unsigned int priceRange;
 @property(nonatomic, readonly) NSURL *providerURL;
 @property(nonatomic, readonly) NSArray *quickLinks;
+@property(nonatomic, readonly) NSArray *relatedPlaceLists;
 @property(nonatomic, readonly) _Bool responseStatusIncomplete;
 @property(nonatomic, readonly) int resultProviderID;
 @property(nonatomic, readonly) unsigned int resultSnippetDistanceDisplayThreshold;
@@ -297,6 +334,7 @@
 @property(nonatomic, readonly) NSString *vendorID;
 @property(nonatomic, readonly) int venueFeatureType;
 @property(nonatomic, readonly) id <GEOMapItemVenueInfo> venueInfo;
+@property(nonatomic, readonly) GEOViewportFrame *viewportFrame;
 @property(nonatomic, readonly) NSString *walletCategoryIdentifier;
 @property(nonatomic, readonly) NSString *walletCategoryLocalizedString;
 @property(nonatomic, readonly) NSString *walletCategoryLocalizedStringLocale;

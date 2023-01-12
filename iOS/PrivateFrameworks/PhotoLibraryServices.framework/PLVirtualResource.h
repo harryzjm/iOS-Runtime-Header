@@ -9,8 +9,8 @@
 #import <PhotoLibraryServices/PLValidatesResourceModel-Protocol.h>
 #import <PhotoLibraryServices/PLWriteableResource-Protocol.h>
 
-@class NSDate, NSString, NSURL, PLVirtualResourceUniformTypeIdentifierProxy;
-@protocol PLAssetID, PLCodecIdentity, PLResourceDataStore, PLResourceDataStoreKey, PLUniformTypeIdentifierIdentity;
+@class NSDate, NSString, NSURL, PLUniformTypeIdentifier;
+@protocol PLAssetID, PLResourceDataStore, PLResourceDataStoreKey;
 
 @interface PLVirtualResource : NSObject <PLWriteableResource, PLValidatesResourceModel>
 {
@@ -30,8 +30,8 @@
     id <PLResourceDataStoreKey> _dataStoreKey;
     long long _unorientedWidth;
     long long _unorientedHeight;
-    id <PLCodecIdentity> _codecID;
-    id <PLUniformTypeIdentifierIdentity> _uniformTypeIdentifierID;
+    NSString *_codecFourCharCodeName;
+    PLUniformTypeIdentifier *_uniformTypeIdentifier;
     NSDate *_trashedDate;
 }
 
@@ -40,8 +40,8 @@
 @property(readonly, nonatomic) NSDate *trashedDate; // @synthesize trashedDate=_trashedDate;
 @property(nonatomic) float scale; // @synthesize scale=_scale;
 @property(nonatomic) int qualitySortValue; // @synthesize qualitySortValue=_qualitySortValue;
-@property(retain, nonatomic) id <PLUniformTypeIdentifierIdentity> uniformTypeIdentifierID; // @synthesize uniformTypeIdentifierID=_uniformTypeIdentifierID;
-@property(retain, nonatomic) id <PLCodecIdentity> codecID; // @synthesize codecID=_codecID;
+@property(retain, nonatomic) PLUniformTypeIdentifier *uniformTypeIdentifier; // @synthesize uniformTypeIdentifier=_uniformTypeIdentifier;
+@property(retain, nonatomic) NSString *codecFourCharCodeName; // @synthesize codecFourCharCodeName=_codecFourCharCodeName;
 @property(nonatomic) long long unorientedHeight; // @synthesize unorientedHeight=_unorientedHeight;
 @property(nonatomic) long long unorientedWidth; // @synthesize unorientedWidth=_unorientedWidth;
 @property(nonatomic) unsigned int orientation; // @synthesize orientation=_orientation;
@@ -59,8 +59,9 @@
 - (id)singleLineDescription;
 - (id)photosCTLJSONDict;
 @property(readonly, nonatomic) NSURL *fileURL;
+@property(readonly, nonatomic) short utiConformanceHint;
+- (_Bool)isInCloud;
 - (float)scaleGivenAssetHasAdjustments:(_Bool)arg1 currentWidth:(long long)arg2 currentHeight:(long long)arg3;
-@property(readonly, nonatomic) PLVirtualResourceUniformTypeIdentifierProxy *uniformTypeIdentifier;
 - (_Bool)isPlayableVideo;
 @property(readonly, nonatomic) long long orientedHeight; // @dynamic orientedHeight;
 @property(readonly, nonatomic) long long orientedWidth; // @dynamic orientedWidth;

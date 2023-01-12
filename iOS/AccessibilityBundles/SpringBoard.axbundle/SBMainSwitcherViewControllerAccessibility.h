@@ -11,16 +11,19 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (_Bool)_axFloatingSwitcherIsVisible;
+- (_Bool)_axIsShelfSwitcherVisible;
+- (_Bool)_axIsFloatingSwitcherVisible;
+- (_Bool)_axIsAppSwitcherPeekingSplitView;
+- (_Bool)_axIsAppSwitcherPeekingSlideOver;
+- (_Bool)_axIsAppSwitcherPeeking;
 - (_Bool)_axIsMainSwitcherVisible;
-- (id)_axMainSwitcherViewController;
+- (_Bool)_axIsTypeOfMainSwitcherVisible;
+- (id)_axFluidSwitcherViewController;
 - (void)_axSetUpSwitcherViewControllers;
 - (void)_axSetUpWrapperViews;
 - (void)_loadContentViewControllerIfNecessary;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)viewDidAppear:(_Bool)arg1;
-- (void)_axNotifyNeedsFocusUpdateWhenEnabled:(unsigned long long)arg1;
-- (void)switcherContentController:(id)arg1 deletedAppLayout:(id)arg2 forReason:(long long)arg3;
 
 @end
 

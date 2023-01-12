@@ -5,18 +5,20 @@
 //
 
 #import <LinkPresentation/LPLinkMetadataBackwardCompatibility-Protocol.h>
+#import <LinkPresentation/LPLinkMetadataFallbackIconTransformer-Protocol.h>
 #import <LinkPresentation/LPLinkMetadataPresentationTransformer-Protocol.h>
 #import <LinkPresentation/LPLinkMetadataPreviewTransformer-Protocol.h>
 #import <LinkPresentation/LPMultipleMetadataPresentationTransformer-Protocol.h>
 
 @class LPImage, NSDate, NSString;
 
-@interface LPFileMetadata <LPLinkMetadataPresentationTransformer, LPLinkMetadataPreviewTransformer, LPLinkMetadataBackwardCompatibility, LPMultipleMetadataPresentationTransformer>
+@interface LPFileMetadata <LPLinkMetadataPresentationTransformer, LPLinkMetadataPreviewTransformer, LPLinkMetadataFallbackIconTransformer, LPLinkMetadataBackwardCompatibility, LPMultipleMetadataPresentationTransformer>
 {
     NSString *_name;
     NSString *_type;
     unsigned long long _size;
     LPImage *_thumbnail;
+    LPImage *_smallThumbnail;
     LPImage *_icon;
     NSDate *_creationDate;
 }
@@ -26,6 +28,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property(retain, nonatomic) LPImage *icon; // @synthesize icon=_icon;
+@property(retain, nonatomic) LPImage *smallThumbnail; // @synthesize smallThumbnail=_smallThumbnail;
 @property(retain, nonatomic) LPImage *thumbnail; // @synthesize thumbnail=_thumbnail;
 @property(nonatomic) unsigned long long size; // @synthesize size=_size;
 @property(copy, nonatomic) NSString *type; // @synthesize type=_type;
@@ -38,6 +41,7 @@
 - (id)initWithCoder:(id)arg1;
 - (long long)summaryTypeForTransformer:(id)arg1;
 - (void)populateMetadataForBackwardCompatibility:(id)arg1;
+- (id)fallbackIconForTransformer:(id)arg1;
 - (id)previewImageForTransformer:(id)arg1;
 - (id)previewSummaryForTransformer:(id)arg1;
 - (_Bool)canGeneratePresentationPropertiesForURL:(id)arg1;

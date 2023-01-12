@@ -14,6 +14,7 @@
 + (_Bool)supportsSecureCoding;
 + (id)_allComplicationConfigurationsWithType:(unsigned long long)arg1;
 + (id)_allCities;
++ (long long)compareCompication:(id)arg1 toComplication:(id)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) WorldClockCity *city; // @synthesize city=_city;
 - (void)_handleAddedFromFaceSharing;
@@ -31,6 +32,7 @@
 - (id)localizedKeylineLabelText;
 - (id)localizedRichDetailText;
 - (id)_generateUniqueIdentifier;
+- (_Bool)isEqual:(id)arg1;
 
 @end
 

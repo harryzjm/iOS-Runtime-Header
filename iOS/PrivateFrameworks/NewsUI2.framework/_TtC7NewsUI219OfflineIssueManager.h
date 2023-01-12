@@ -8,16 +8,16 @@
 
 @class MISSING_TYPE;
 
+__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI219OfflineIssueManager : NSObject
 {
-    MISSING_TYPE *issueDownloadService;
     MISSING_TYPE *offlineIssueList;
+    MISSING_TYPE *offlineContentManager;
     MISSING_TYPE *storageLevelProvider;
     MISSING_TYPE *issueOfflineManager;
     MISSING_TYPE *networkReachability;
-    MISSING_TYPE *cachedIssuesPromise;
-    MISSING_TYPE *downloads;
-    MISSING_TYPE *downloadsLock;
+    MISSING_TYPE *backgroundAppRefreshEnabled;
+    MISSING_TYPE *backgroundAppRefreshChangeObserver;
     MISSING_TYPE *issueIDsAvailableOffline;
 }
 

@@ -6,11 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSCalendar, NSDateFormatter, NSDateIntervalFormatter;
+@class CNDateComponentsFormatter, NSCalendar, NSDateComponents, NSDateComponentsFormatter, NSDateFormatter, NSDateIntervalFormatter;
 
 @interface SSDateFormatManager : NSObject
 {
     NSCalendar *_calendar;
+    NSDateComponents *_oneDayComponents;
+    CNDateComponentsFormatter *_birthdayDateComponentsFormatter;
+    NSDateComponentsFormatter *_dateComponentsFormatter;
     NSDateFormatter *_shortRelativeDateFormatter;
     NSDateFormatter *_dayOfWeekFormatter;
     NSDateFormatter *_shortDateTimeFormatter;
@@ -24,10 +27,19 @@
     NSDateIntervalFormatter *_dateIntervalFormatter;
 }
 
++ (id)dateCompletedStringFormat;
++ (id)dateCreatedStringFormat;
++ (id)dateLastCalledStringFormat;
++ (id)dateLastPlayedStringFormat;
++ (id)dateLastOpenedStringFormat;
++ (id)dateDueStringFormat;
++ (id)dateModifiedStringFormat;
 + (id)dateIntervalFormatter;
 + (id)allDayDateFormatter;
 + (id)shortDateTimeFormatter;
 + (id)dateFormatter;
++ (id)stringFromTimeInterval:(double)arg1;
++ (id)stringFromBirthdayComponents:(id)arg1;
 + (id)stringFromDate:(id)arg1 toDate:(id)arg2 isAllDay:(_Bool)arg3;
 + (id)dynamicDateTimeStringsFromDate:(id)arg1;
 + (id)dyanmicStringFromDate:(id)arg1;
@@ -36,8 +48,9 @@
 + (_Bool)hasRelativeFormatForDate:(id)arg1;
 + (_Bool)isDateWithinMonthsTime:(id)arg1;
 + (_Bool)isDateWithinWeeksTime:(id)arg1;
-+ (_Bool)isDate:(id)arg1 withinTimeInterval:(double)arg2;
++ (_Bool)isDate:(id)arg1 withinTimeInterval:(double)arg2 includePast:(_Bool)arg3;
 + (_Bool)date:(id)arg1 isBetweenDate:(id)arg2 andDate:(id)arg3;
++ (id)tomorrow;
 + (id)calendar;
 + (void)initialize;
 - (void).cxx_destruct;
@@ -52,6 +65,9 @@
 @property(retain) NSDateFormatter *shortDateTimeFormatter; // @synthesize shortDateTimeFormatter=_shortDateTimeFormatter;
 @property(retain) NSDateFormatter *dayOfWeekFormatter; // @synthesize dayOfWeekFormatter=_dayOfWeekFormatter;
 @property(retain) NSDateFormatter *shortRelativeDateFormatter; // @synthesize shortRelativeDateFormatter=_shortRelativeDateFormatter;
+@property(retain) NSDateComponentsFormatter *dateComponentsFormatter; // @synthesize dateComponentsFormatter=_dateComponentsFormatter;
+@property(retain) CNDateComponentsFormatter *birthdayDateComponentsFormatter; // @synthesize birthdayDateComponentsFormatter=_birthdayDateComponentsFormatter;
+@property(retain) NSDateComponents *oneDayComponents; // @synthesize oneDayComponents=_oneDayComponents;
 @property(retain) NSCalendar *calendar; // @synthesize calendar=_calendar;
 - (void)setupFormattersWithTemplate;
 - (void)setupFormatters;

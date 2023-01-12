@@ -6,8 +6,11 @@
 
 #import <Foundation/NSSet.h>
 
-@interface NSSet (HFDebugging)
+#import <Home/InnerContentHash-Protocol.h>
+
+@interface NSSet (HFDebugging) <InnerContentHash>
 - (id)hf_prettyDescription;
+- (unsigned long long)computeHashFromContents;
 - (id)hf_homePodMediaProfiles;
 - (id)hf_appleTVMediaProfiles;
 @end

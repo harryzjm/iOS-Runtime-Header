@@ -6,30 +6,29 @@
 
 #import <objc/NSObject.h>
 
-#import <RecapPerformanceTesting/RPTBlockBasedScrollTestParameters-Protocol.h>
-#import <RecapPerformanceTesting/RPTScrollTestParameters-Protocol.h>
+#import <RecapPerformanceTesting/RPTTestParameters-Protocol.h>
+#import <RecapPerformanceTesting/_RPTCoordinateSpaces-Protocol.h>
 
-@class NSString, RCPSyntheticEventStream;
+@class NSString, RPTCoordinateSpaceConverter;
 
 __attribute__((visibility("hidden")))
-@interface RPTOscillationScrollTestParameters : NSObject <RPTBlockBasedScrollTestParameters, RPTScrollTestParameters>
+@interface RPTOscillationScrollTestParameters : NSObject <_RPTCoordinateSpaces, RPTTestParameters>
 {
     _Bool _shouldFlick;
     _Bool _preventDismissalGestures;
     _Bool _finishWithHalfIteration;
     NSString *_testName;
     CDUnknownBlockType _completionHandler;
+    RPTCoordinateSpaceConverter *_conversion;
     unsigned long long _iterations;
     double _amplitudeVariationPerIteration;
     double _initialAmplitude;
     long long _initialDirection;
     double _iterationDuration;
-    long long _realInitialDirection;
     struct CGRect _scrollingBounds;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) long long realInitialDirection; // @synthesize realInitialDirection=_realInitialDirection;
 @property(nonatomic) double iterationDuration; // @synthesize iterationDuration=_iterationDuration;
 @property(nonatomic) long long initialDirection; // @synthesize initialDirection=_initialDirection;
 @property(nonatomic) double initialAmplitude; // @synthesize initialAmplitude=_initialAmplitude;
@@ -39,20 +38,22 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool shouldFlick; // @synthesize shouldFlick=_shouldFlick;
 @property(nonatomic) struct CGRect scrollingBounds; // @synthesize scrollingBounds=_scrollingBounds;
 @property(nonatomic) unsigned long long iterations; // @synthesize iterations=_iterations;
+@property(retain, nonatomic) RPTCoordinateSpaceConverter *conversion; // @synthesize conversion=_conversion;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property(copy, nonatomic) NSString *testName; // @synthesize testName=_testName;
 - (struct CGPoint)finalFingerPosition;
 - (struct CGPoint)initialFingerPosition;
 - (void)scrollWithComposer:(id)arg1 fromPoint:(struct CGPoint)arg2 toPoint:(struct CGPoint)arg3 duration:(double)arg4;
-@property(readonly, nonatomic) RCPSyntheticEventStream *eventStream;
 - (CDUnknownBlockType)composerBlock;
 - (id)initWithTestName:(id)arg1 iterations:(unsigned long long)arg2 scrollingBounds:(struct CGRect)arg3 useFlicks:(_Bool)arg4 preventDismissalGestures:(_Bool)arg5 initialAmplitude:(double)arg6 amplitudeVariationPerIteration:(double)arg7 initialDirection:(long long)arg8 iterationDuration:(double)arg9 finishWithHalfIteration:(_Bool)arg10 completionHandler:(CDUnknownBlockType)arg11;
 - (id)initWithTestName:(id)arg1 iterations:(unsigned long long)arg2 scrollingBounds:(struct CGRect)arg3 useFlicks:(_Bool)arg4 preventDismissalGestures:(_Bool)arg5 initialAmplitude:(double)arg6 amplitudeVariationPerIteration:(double)arg7 initialDirection:(long long)arg8 iterationDuration:(double)arg9 finishWithHalfIteration:(_Bool)arg10;
+- (void)prepareWithComposer:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool managesTestStartAndEnd;
 @property(readonly) Class superclass;
 
 @end

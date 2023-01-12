@@ -8,7 +8,6 @@
 
 @class NSData;
 
-__attribute__((visibility("hidden")))
 @interface CKDFetchZoneChangesRequestOperationResult : NSObject
 {
     _Bool _hasPendingArchivedRecords;

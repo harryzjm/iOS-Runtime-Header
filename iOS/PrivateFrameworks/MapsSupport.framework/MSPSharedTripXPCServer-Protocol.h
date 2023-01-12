@@ -16,10 +16,9 @@
 - (void)fetchActiveHandlesWithCompletion:(void (^)(NSArray *))arg1;
 - (void)stopSharingTrip;
 - (void)stopSharingTripWithMessagesGroup:(NSString *)arg1;
-- (void)startSharingTripWithMessagesGroup:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
-- (void)stopSharingTripWithMessagesContacts:(NSArray *)arg1;
-- (void)startSharingTripWithMessagesContacts:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)stopSharingTripWithContacts:(NSArray *)arg1;
+- (void)startSharingTripWithMessagesGroup:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)startSharingTripWithMessagesContacts:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)startSharingTripWithContacts:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)reportUserConfirmationOfSharingIdentity:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)fetchRequiresUserConfirmationOfSharingIdentityWithCompletion:(void (^)(_Bool, NSString *, NSError *))arg1;

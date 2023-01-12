@@ -11,6 +11,7 @@
 - (void)_bindAndRegisterDefaults;
 
 // Remaining properties
+@property(nonatomic) _Bool appLibraryEnabled; // @dynamic appLibraryEnabled;
 @property(nonatomic) _Bool recentsEnabled; // @dynamic recentsEnabled;
 
 @end

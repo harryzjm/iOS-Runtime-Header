@@ -6,13 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class HKObserverSet, NSArray, NSDateComponents, NSString, NSUserDefaults;
+@class HKObserverSet, NSArray, NSDate, NSDateComponents, NSNumber, NSString, NSUserDefaults;
 
 @interface HKMCSettingsManager : NSObject
 {
     NSUserDefaults *_menstrualCyclesDefaults;
     HKObserverSet *_observers;
     NSArray *_allSettingsToObserve;
+    NSNumber *_unitTest_algorithmVersionMismatchOnWatch;
+    NSNumber *_unitTest_watchMenstruationPredictionAlgorithmAttributesSupported;
+    NSNumber *_unitTest_watchFertileWindowPredictionAlgorithmAttributesSupported;
+    NSNumber *_unitTest_useLocalizedTextForVersionMismatchAndDisabledProjections;
     int _hiddenDisplayTypesNotifyToken;
     int _analysisSettingsNotifyToken;
     int _notificationSettingsNotifyToken;
@@ -21,22 +25,33 @@
 
 - (void).cxx_destruct;
 - (void)resetAllSettings;
+- (void)_migrateTestResultHiddenDisplayTypesIfNeeded;
 - (_Bool)hiddenForDisplayTypeIdentifier:(id)arg1;
 - (void)setFertilityTrackingDisplayTypesHidden:(_Bool)arg1;
 - (void)setMenstruationTrackingDisplayTypesHidden:(_Bool)arg1;
 - (void)setHidden:(_Bool)arg1 forDisplayTypeIdentifier:(id)arg2;
 - (void)setHidden:(_Bool)arg1 forDisplayTypeIdentifiers:(id)arg2;
+@property(retain, nonatomic) NSDate *cycleTrackingOnboardingTileDismissedDate;
 @property(retain, nonatomic) NSDateComponents *fertileWindowNotificationTimeOfDay;
 @property(nonatomic) _Bool fertileWindowNotificationsEnabled;
 @property(retain, nonatomic) NSDateComponents *menstruationNotificationTimeOfDay;
 @property(nonatomic) _Bool menstruationNotificationsEnabled;
 @property(readonly, nonatomic) _Bool notificationsEnabled;
+@property(nonatomic) unsigned long long fertileWindowProjectionsAlgorithmAttributesPhone;
+@property(nonatomic) unsigned long long menstruationProjectionsAlgorithmAttributesPhone;
+@property(nonatomic) _Bool sensorBasedProjectionsEnabled;
 @property(retain, nonatomic) NSString *localizedTextForVersionMismatchAndDisabledProjections;
 @property(nonatomic) long long minimumAnalysisStartDayIndex;
 @property(nonatomic) _Bool fertileWindowProjectionsDisabledForVersionMismatch;
 @property(nonatomic) _Bool menstruationProjectionsDisabledForVersionMismatch;
 @property(nonatomic) _Bool fertileWindowProjectionsEnabled;
 @property(nonatomic) _Bool menstruationProjectionsEnabled;
+- (_Bool)algorithmVersionMismatchOnWatch;
+@property(nonatomic) unsigned long long fertileWindowProjectionsAlgorithmAttributesWatch;
+@property(nonatomic) unsigned long long menstruationProjectionsAlgorithmAttributesWatch;
+- (void)_unitTest_setWatchFertileWindowPredictionAlgorithmAttributesSupportedOverride:(id)arg1;
+- (void)_unitTest_setWatchMenstruationPredictionAlgorithmAttributesSupportedOverride:(id)arg1;
+- (void)_unitTest_setAlgorithmVersionMismatchOnWatchOverride:(id)arg1;
 - (void)_setTestDefaults:(id)arg1;
 - (void)_stopObservingNPSNotifications;
 - (void)_startObservingNPSNotifications;
@@ -51,6 +66,21 @@
 - (void)addObserver:(id)arg1 queue:(id)arg2;
 - (void)dealloc;
 - (id)init;
+@property(readonly, nonatomic) _Bool notificationsEnabledAndSupported;
+- (id)_localizedTextForVersionMismatchFromOnboardedCycleFactors:(_Bool)arg1 ongoingCycleFactors:(id)arg2 useHeartRateInput:(_Bool)arg3;
+- (_Bool)_forceDisableFertileWindowProjectionsFromOngoingCycleFactors:(id)arg1;
+- (_Bool)_forceDisableMenstruationProjectionsFromOngoingCycleFactors:(id)arg1;
+- (void)forceDisableProjectionsFromOnboardedCycleFactors:(_Bool)arg1 ongoingCycleFactors:(id)arg2 useHeartRateInput:(_Bool)arg3;
+- (void)_setFertileWindowProjectionsDisabledForVersionMismatchFromAlgorithmAttributes:(unsigned long long)arg1;
+- (void)_setMenstruationProjectionsDisabledForVersionMismatchFromAlgorithmAttributes:(unsigned long long)arg1;
+- (void)setProjectionAttributesOnWatchFromHeartRateInputOnboarded:(_Bool)arg1;
+@property(retain, nonatomic) NSString *localizedTextForVersionMismatchAndDisabledProjectionsFromAlgorithmAttributes;
+- (_Bool)areAnyFertileWindowPredictionAlgorithmAttributesUnsupported;
+- (_Bool)_areAlgorithmAttributesOnPhone:(unsigned long long)arg1 aheadOfAlgorithmAttributesOnWatch:(unsigned long long)arg2;
+- (_Bool)areAnyMenstruationPredictionAlgorithmAttributesUnsupported;
+@property(readonly, nonatomic) _Bool sensorBasedProjectionsEnabledAndMenstruationAndFertileWindowProjectionsEnabledAndSupported;
+@property(readonly, nonatomic) _Bool fertileWindowProjectionsEnabledAndSupported;
+@property(readonly, nonatomic) _Bool menstruationProjectionsEnabledAndSupported;
 
 @end
 

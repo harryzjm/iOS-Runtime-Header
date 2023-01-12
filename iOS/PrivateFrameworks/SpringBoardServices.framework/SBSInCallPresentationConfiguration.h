@@ -8,22 +8,31 @@
 
 #import <SpringBoardServices/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSString, NSUUID;
 
 @interface SBSInCallPresentationConfiguration : NSObject <NSSecureCoding>
 {
     _Bool _userInitiated;
+    _Bool _screenSharingPresentation;
     double _preferredBannerHeight;
     long long _preferredPresentationMode;
     NSString *_sceneBundleIdentifier;
+    NSUUID *_identifier;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property(nonatomic, getter=isScreenSharingPresentation) _Bool screenSharingPresentation; // @synthesize screenSharingPresentation=_screenSharingPresentation;
 @property(readonly, copy, nonatomic) NSString *sceneBundleIdentifier; // @synthesize sceneBundleIdentifier=_sceneBundleIdentifier;
 @property(nonatomic, getter=isUserInitiated) _Bool userInitiated; // @synthesize userInitiated=_userInitiated;
 @property(nonatomic) long long preferredPresentationMode; // @synthesize preferredPresentationMode=_preferredPresentationMode;
 @property(nonatomic) double preferredBannerHeight; // @synthesize preferredBannerHeight=_preferredBannerHeight;
+- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)descriptionWithMultilinePrefix:(id)arg1;
+- (id)succinctDescriptionBuilder;
+- (id)succinctDescription;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSceneBundleIdentifier:(id)arg1;

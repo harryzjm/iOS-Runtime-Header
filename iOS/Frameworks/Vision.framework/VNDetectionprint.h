@@ -8,24 +8,27 @@
 
 #import <Vision/NSCopying-Protocol.h>
 #import <Vision/NSSecureCoding-Protocol.h>
+#import <Vision/VNOriginatingRequestSpecifierProviding-Protocol.h>
 #import <Vision/VNRequestRevisionProviding-Protocol.h>
 
-@class NSDictionary;
+@class NSDictionary, VNRequestSpecifier;
 
-@interface VNDetectionprint : NSObject <NSCopying, NSSecureCoding, VNRequestRevisionProviding>
+@interface VNDetectionprint : NSObject <NSCopying, NSSecureCoding, VNRequestRevisionProviding, VNOriginatingRequestSpecifierProviding>
 {
     NSDictionary *_tensorsDictionary;
-    unsigned long long _requestRevision;
+    VNRequestSpecifier *_originatingRequestSpecifier;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)knownTensorKeysForRequestRevision:(unsigned long long)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
+@property(readonly) VNRequestSpecifier *originatingRequestSpecifier;
 @property(readonly, nonatomic) unsigned long long requestRevision;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithTensorsDictionary:(id)arg1 requestRevision:(unsigned long long)arg2;
+- (id)initWithTensorsDictionary:(id)arg1 originatingRequestSpecifier:(id)arg2;
 - (id)tensorForKey:(id)arg1 error:(id *)arg2;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

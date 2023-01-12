@@ -35,40 +35,14 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasLy;
-@property(nonatomic) double ly;
-@property(nonatomic) _Bool hasLx;
-@property(nonatomic) double lx;
-@property(nonatomic) _Bool hasCy;
-@property(nonatomic) double cy;
-@property(nonatomic) _Bool hasCx;
-@property(nonatomic) double cx;
-@property(nonatomic) _Bool hasK4;
-@property(nonatomic) double k4;
-@property(nonatomic) _Bool hasK3;
-@property(nonatomic) double k3;
-@property(nonatomic) _Bool hasK2;
-@property(nonatomic) double k2;
-@property(nonatomic) _Bool hasFovH;
-@property(nonatomic) double fovH;
-@property(nonatomic) _Bool hasFovS;
-@property(nonatomic) double fovS;
-@property(nonatomic) _Bool hasType;
-@property(nonatomic) int type;
 
 @end
 

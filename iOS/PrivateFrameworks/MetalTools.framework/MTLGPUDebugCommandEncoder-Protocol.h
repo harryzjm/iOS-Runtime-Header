@@ -6,7 +6,11 @@
 
 #import <MetalTools/NSObject-Protocol.h>
 
+@class MTLGPUDebugBuffer;
+
 @protocol MTLGPUDebugCommandEncoder <NSObject>
 @property(readonly) unsigned int encoderID;
+- (MTLGPUDebugBuffer *)temporaryBufferWithLength:(unsigned long long)arg1;
+- (MTLGPUDebugBuffer *)temporaryBufferWithBytes:(const void *)arg1 length:(unsigned long long)arg2;
 @end
 

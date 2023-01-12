@@ -14,20 +14,22 @@ __attribute__((visibility("hidden")))
     id <_HMCameraSnapshotControlDelegate> _delegate;
 }
 
++ (id)logCategory;
 - (void).cxx_destruct;
-- (void)_mergeNewSnapshot:(id)arg1 operations:(id)arg2;
+- (void)_handleMostRecentSnapshotUpdatedMessage:(id)arg1;
 - (void)_handleCreateSnapshotWithBulletinContext:(id)arg1 error:(id)arg2 cameraSessionID:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)_fetchCameraSnapshotForBulletinContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)fetchCameraSnapshotForBulletinContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_callMostRecentSnapshotUpdateDelegate;
-- (void)_callDelegate:(id)arg1 error:(id)arg2;
-- (void)_handleMostSnapshot:(id)arg1;
+- (void)_notifyDelegateOfMostRecentSnapshotUpdated;
+- (void)_notifyDelegateOfDidTakeSnapshot:(id)arg1 error:(id)arg2;
+- (void)_handleMostRecentSnapshot:(id)arg1;
 - (void)_handleSnapshot:(id)arg1 error:(id)arg2 cameraSessionID:(id)arg3 mostRecent:(_Bool)arg4;
+- (void)_fetchCameraSnapshotForBulletinContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_takeSnapshot;
-- (void)takeSnapshot;
-@property(retain, nonatomic) HMCameraSnapshot *mostRecentSnapshot; // @synthesize mostRecentSnapshot=_mostRecentSnapshot;
-@property(nonatomic) __weak id <_HMCameraSnapshotControlDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_registerNotificationHandlers;
+- (void)mergeNewSnapshot:(id)arg1 operations:(id)arg2;
+- (void)fetchCameraSnapshotForBulletinContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)takeSnapshot;
+@property(retain) HMCameraSnapshot *mostRecentSnapshot; // @synthesize mostRecentSnapshot=_mostRecentSnapshot;
+@property __weak id <_HMCameraSnapshotControlDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)initWithCameraProfile:(id)arg1 service:(id)arg2 profileUniqueIdentifier:(id)arg3 mostRecentSnapshot:(id)arg4;
 
 @end

@@ -10,7 +10,6 @@
 
 @class NSString, UILabel, UIStackView;
 
-__attribute__((visibility("hidden")))
 @interface MCProfileTitlePageOrganizationCell : UITableViewCell <MCUIScrollAnimationResponder>
 {
     NSString *_organizationName;

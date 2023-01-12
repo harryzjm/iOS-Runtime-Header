@@ -95,10 +95,10 @@
 - (_Bool)isMessageOkForSyncedMailboxes:(id)arg1;
 - (void)_stopTaks;
 - (void)_fastForwardToFullSyncVersion:(unsigned long long)arg1;
-- (void)_handleForwardNotificationPayload:(CDUnknownBlockType)arg1 forBulletin:(id)arg2;
-- (void)syncStateManager:(id)arg1 didAcknowledgeForwardNotificationPayload:(CDUnknownBlockType)arg2 forBulletin:(id)arg3;
+- (void)_shouldHandleForwardForNotification:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)syncStateManager:(id)arg1 handleForwardForNotification:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_bbSubsectionIdsForMessage:(id)arg1;
-- (void)_markConversationWithId:(id)arg1 forNotify:(_Bool)arg2 mailbox:(id)arg3;
+- (void)_markConversationWithId:(id)arg1 forState:(unsigned long long)arg2 include:(_Bool)arg3 mailbox:(id)arg4;
 - (void)_addMessages:(id)arg1 messagesAreNew:(_Bool)arg2 mailbox:(id)arg3;
 - (_Bool)_verifyDatabaseOkForFullSyncVersion:(unsigned long long)arg1;
 - (_Bool)_verifyDatabaseOkForFullSyncVersion:(unsigned long long)arg1 mailbox:(id)arg2;
@@ -149,6 +149,8 @@
 - (void)messageContentSyncServiceServer:(id)arg1 didFailSendingProtobufWithIDSIdentifier:(id)arg2 errorCode:(long long)arg3;
 - (void)messagesSyncServiceServer:(id)arg1 didRequestCompactMessages:(id)arg2;
 - (void)messagesSyncServiceServer:(id)arg1 didWarnMessagesFilteredOut:(id)arg2;
+- (void)messagesSyncServiceServer:(id)arg1 didRecieveAttachmentsAtURL:(id)arg2 composedMessageId:(id)arg3;
+- (void)messagesSyncServiceServer:(id)arg1 didMoveMessages:(id)arg2;
 - (void)messagesSyncServiceServer:(id)arg1 didUpdateMailboxSelection:(id)arg2;
 - (void)messagesSyncServiceServer:(id)arg1 didRequestSendMessage:(id)arg2;
 - (void)messagesSyncServiceServer:(id)arg1 didDeleteMessages:(id)arg2;
@@ -172,6 +174,7 @@
 - (_Bool)_isPaired;
 @property(readonly, nonatomic) _Bool isPaired;
 - (id)bulletinFlagsForMessageStatus:(unsigned long long)arg1 dateReceived:(id)arg2 messageWillBeAddedToSyncProvider:(_Bool)arg3 mailboxId:(id)arg4;
+- (void)notifyFetchCompletedForMailboxId:(id)arg1 error:(id)arg2;
 - (void)notifyFetchCompleted;
 - (void)_sendUpdatedMailboxSelection:(unsigned long long)arg1 resendInterval:(unsigned long long)arg2;
 - (void)_sendUpdatedMailboxSelection:(unsigned long long)arg1;
@@ -181,8 +184,9 @@
 - (void)updateMailboxSelection:(id)arg1;
 - (void)addUpdateOrDeleteAccounts:(id)arg1;
 - (void)reportWillDownloadFirstMessages;
-- (void)_addImageAttachment:(id)arg1 forMessageId:(id)arg2 contentId:(id)arg3 loadedProtected:(_Bool)arg4 mailbox:(id)arg5;
+- (void)_addAttachmentData:(id)arg1 forMessageId:(id)arg2 contentId:(id)arg3 loadedProtected:(_Bool)arg4 mailbox:(id)arg5;
 - (void)addImageAttachment:(id)arg1 forMessageId:(id)arg2 contentId:(id)arg3 loadedProtected:(_Bool)arg4;
+- (void)addAttachmentData:(id)arg1 forMessageId:(id)arg2 contentId:(id)arg3 loadedProtected:(_Bool)arg4;
 - (void)_reportMessageContentDownloadFailureForMessageId:(id)arg1 mailbox:(id)arg2;
 - (void)reportMessageContentDownloadFailureForMessageId:(id)arg1;
 - (void)_addMessageContent:(id)arg1 forMessage:(id)arg2 loadedProtected:(_Bool)arg3 mailbox:(id)arg4;
@@ -190,6 +194,8 @@
 - (void)markConversationIdForNotNotify:(id)arg1;
 - (void)_markConversationIdForNotify:(id)arg1 messages:(id)arg2 includesProtectedMessages:(_Bool)arg3 mailbox:(id)arg4;
 - (void)markConversationIdForNotify:(id)arg1 messages:(id)arg2 includesProtectedMessages:(_Bool)arg3;
+- (void)updateConversationId:(id)arg1 mute:(_Bool)arg2;
+- (void)updateConversationId:(id)arg1 notify:(_Bool)arg2 messages:(id)arg3;
 - (void)_deleteMessagesWithIds:(id)arg1 mailbox:(id)arg2;
 - (void)deleteMessagesWithIds:(id)arg1;
 - (void)_updateMessagesStatus:(id)arg1 mailbox:(id)arg2;

@@ -5,13 +5,14 @@
 //
 
 #import <LinkPresentation/CALayerDelegate-Protocol.h>
-#import <LinkPresentation/LPMediaPlayer-Protocol.h>
+#import <LinkPresentation/LPComponentMediaPlayable-Protocol.h>
+#import <LinkPresentation/LPInProcessMediaPlayable-Protocol.h>
 #import <LinkPresentation/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CATextLayer, LPFullScreenVideoController, LPImage, LPImageViewStyle, LPVideo, LPVideoViewConfiguration, LPVideoViewStyle, NSString, UIImageView, UIView;
+@class CATextLayer, LPFullScreenVideoController, LPImage, LPImageViewStyle, LPVideo, LPVideoViewConfiguration, LPVideoViewStyle, NSString, UIGestureRecognizer, UIImageView, UIView;
 
 __attribute__((visibility("hidden")))
-@interface LPVideoView <CALayerDelegate, UIGestureRecognizerDelegate, LPMediaPlayer>
+@interface LPVideoView <CALayerDelegate, UIGestureRecognizerDelegate, LPInProcessMediaPlayable, LPComponentMediaPlayable>
 {
     LPVideo *_video;
     LPVideoViewStyle *_style;
@@ -29,6 +30,8 @@ __attribute__((visibility("hidden")))
     UIView *_containerView;
     UIView *_playbackView;
     CATextLayer *_debugIndicator;
+    UIGestureRecognizer *_tapRecognizer;
+    UIGestureRecognizer *_playButtonTapRecognizer;
     LPFullScreenVideoController *_fullScreenController;
     _Bool _playing;
     _Bool _hasBuilt;
@@ -41,6 +44,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _playbackWatchdogTimerID;
     unsigned int _loggingID;
     _Bool _usesSharedAudioSession;
+    _Bool _allowsUserInteractionWithVideoPlayer;
     _Bool _waitingForPlayback;
     _Bool _fullScreen;
     double _volume;
@@ -54,7 +58,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool hasEverPlayed; // @synthesize hasEverPlayed=_hasEverPlayed;
 @property(nonatomic, getter=isFullScreen) _Bool fullScreen; // @synthesize fullScreen=_fullScreen;
 @property(nonatomic, getter=isWaitingForPlayback) _Bool waitingForPlayback; // @synthesize waitingForPlayback=_waitingForPlayback;
+@property(nonatomic) _Bool allowsUserInteractionWithVideoPlayer; // @synthesize allowsUserInteractionWithVideoPlayer=_allowsUserInteractionWithVideoPlayer;
 @property(readonly, nonatomic) _Bool usesSharedAudioSession; // @synthesize usesSharedAudioSession=_usesSharedAudioSession;
+- (id)playable;
 @property(nonatomic, getter=isActive) _Bool active;
 - (void)_muteButtonTapRecognized:(id)arg1;
 - (void)_muteButtonHighlightLongPressRecognized:(id)arg1;
@@ -65,6 +71,7 @@ __attribute__((visibility("hidden")))
 - (void)recreateFullScreenViewControllerIfNeeded;
 - (void)destroyFullScreenViewController;
 - (void)tapRecognized:(id)arg1;
+- (void)swapVideoPlaceholderForPlaybackIfNeeded;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (_Bool)shouldAllowHighlightToRecognizeSimultaneouslyWithGesture:(id)arg1;
 - (void)_buildVideoPlaceholderView;
@@ -93,6 +100,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) double unobscuredAreaFraction;
 @property(readonly, nonatomic) unsigned long long lastInteractionTimestamp;
 @property(readonly, nonatomic) _Bool shouldUnmuteWhenUserAdjustsVolume;
+- (void)resetPlaybackState;
+@property(readonly, nonatomic) _Bool hasMuteControl;
 @property(nonatomic, getter=isPlaying) _Bool playing;
 - (void)_swapVideoPlaceholderForVideoForAutoPlay:(_Bool)arg1;
 - (void)_startPlaybackWatchdogTimer;
@@ -103,12 +112,13 @@ __attribute__((visibility("hidden")))
 - (void)applicationWillEnterForeground:(id)arg1;
 - (void)applicationDidEnterBackground:(id)arg1;
 - (void)beginLoadingMediaForPreroll;
+- (void)buildSubviewsIfNeeded;
 - (void)componentViewDidMoveToWindow;
 - (_Bool)isParented;
 @property(readonly, copy, nonatomic) LPVideoViewConfiguration *configuration;
 - (void)dealloc;
-- (id)initWithVideo:(id)arg1 style:(id)arg2 posterFrame:(id)arg3 posterFrameStyle:(id)arg4 configuration:(id)arg5;
-- (id)init;
+- (id)initWithHost:(id)arg1 video:(id)arg2 style:(id)arg3 posterFrame:(id)arg4 posterFrameStyle:(id)arg5 configuration:(id)arg6;
+- (id)initWithHost:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

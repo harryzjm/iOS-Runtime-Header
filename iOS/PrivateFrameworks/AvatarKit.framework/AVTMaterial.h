@@ -10,19 +10,16 @@
 
 @interface AVTMaterial : NSObject
 {
-    UIColor *baseColor;
-    NSDictionary *secondaryColors;
+    UIColor *_baseColor;
+    NSDictionary *_additionalPropertyColors;
 }
 
-+ (id)materialWithColor:(id)arg1;
 - (void).cxx_destruct;
-@property(retain) NSDictionary *secondaryColors; // @synthesize secondaryColors;
-@property(retain) UIColor *baseColor; // @synthesize baseColor;
+@property(retain, nonatomic) NSDictionary *additionalPropertyColors; // @synthesize additionalPropertyColors=_additionalPropertyColors;
+@property(retain, nonatomic) UIColor *baseColor; // @synthesize baseColor=_baseColor;
+- (id)description;
 - (void)applyToSceneKitMaterial:(id)arg1;
-- (_Bool)_decode:(id)arg1;
-- (void)_encode:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)init;
 
 @end
 

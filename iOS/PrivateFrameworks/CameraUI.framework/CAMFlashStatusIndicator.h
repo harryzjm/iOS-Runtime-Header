@@ -14,9 +14,10 @@
 @property(nonatomic, getter=isFlashUnavailable) _Bool flashUnavailable; // @synthesize flashUnavailable=_flashUnavailable;
 @property(nonatomic, getter=isFlashActive) _Bool flashActive; // @synthesize flashActive=_flashActive;
 @property(nonatomic) long long flashMode; // @synthesize flashMode=_flashMode;
+- (id)imageNameForAXHUD;
 - (_Bool)shouldShowSlashForCurrentState;
 - (_Bool)shouldUseSlash;
-- (_Bool)shouldUseOutline;
+- (_Bool)shouldFillOutlineForCurrentState;
 - (_Bool)shouldUseActiveTintForCurrentState;
 - (id)imageNameForCurrentState;
 - (void)setFlashMode:(long long)arg1 animated:(_Bool)arg2;

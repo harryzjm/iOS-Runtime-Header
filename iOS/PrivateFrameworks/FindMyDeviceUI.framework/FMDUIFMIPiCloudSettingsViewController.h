@@ -38,6 +38,8 @@
 - (void)hideActivityInProgressUIWithDelay:(double)arg1;
 - (void)hideActivityInProgressUI;
 - (void)showActivityInProgressUIWithMessage:(id)arg1;
+- (void)hideActivityInProgress;
+- (void)showActivityInProgress;
 - (id)_clientInfoHeader;
 - (id)_userAgentHeader;
 - (void)_fmipSettingsCacheDidUpdate:(id)arg1;
@@ -57,6 +59,7 @@
 - (id)_specifierForSendLastLocation;
 - (void)presentHSA2UpgradeForOfflineFinding;
 - (void)showHSA2UpgradeAlert;
+- (_Bool)_doesDeviceSupportOfflineFindingLowPowerMode;
 - (id)_groupSpecifierForOfflineFinding;
 - (id)_specifierForOfflineFinding;
 - (id)_groupSpecifierForFMIP;

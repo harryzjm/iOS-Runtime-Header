@@ -9,7 +9,7 @@
 #import <BulletinBoard/NSCopying-Protocol.h>
 #import <BulletinBoard/NSSecureCoding-Protocol.h>
 
-@class BBSectionIcon, BBSectionInfoSettings, NSArray, NSData, NSDate, NSDictionary, NSString;
+@class BBMuteAssertion, BBSectionIcon, BBSectionInfoSettings, NSArray, NSData, NSDate, NSDictionary, NSString;
 
 @interface BBSectionInfo : NSObject <NSCopying, NSSecureCoding>
 {
@@ -35,12 +35,16 @@
     long long _subsectionPriority;
     unsigned long long _suppressedSettings;
     unsigned long long _version;
+    NSString *_customSettingsBundle;
+    NSString *_customSettingsDetailControllerClass;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)defaultSectionInfoForType:(long long)arg1;
 + (id)defaultSectionInfoForSection:(id)arg1;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *customSettingsDetailControllerClass; // @synthesize customSettingsDetailControllerClass=_customSettingsDetailControllerClass;
+@property(copy, nonatomic) NSString *customSettingsBundle; // @synthesize customSettingsBundle=_customSettingsBundle;
 @property(nonatomic) unsigned long long version; // @synthesize version=_version;
 @property(copy, nonatomic) NSArray *dataProviderIDs; // @synthesize dataProviderIDs=_dataProviderIDs;
 @property(copy, nonatomic) NSString *factorySectionID; // @synthesize factorySectionID=_factorySectionID;
@@ -76,6 +80,11 @@
 @property(nonatomic) _Bool enabled;
 @property(readonly, copy, nonatomic) NSDictionary *stateCapture;
 - (id)_suppressedSettingsList:(unsigned long long)arg1;
+- (_Bool)isBulletinMutedForThreadIdentifier:(id)arg1;
+- (void)unmuteThreadIdentifier:(id)arg1;
+- (void)muteThreadIdentifier:(id)arg1 untilDate:(id)arg2;
+- (void)unmuteSection;
+- (void)muteSectionUntilDate:(id)arg1;
 - (void)makeAuthorizationPermanent;
 - (void)deliverQuietly:(_Bool)arg1 changeAuthorizationStatus:(_Bool)arg2;
 - (void)deliverQuietly:(_Bool)arg1;
@@ -91,9 +100,9 @@
 - (void)_configureWithDefaultsForSectionType:(long long)arg1;
 - (id)initWithDefaultsForSectionType:(long long)arg1;
 - (id)init;
-- (id)effectiveSectionInfoWithFactoryInfo:(id)arg1 defaultContentPreviewSetting:(long long)arg2 globalSpokenNotificationSetting:(long long)arg3;
+- (id)effectiveSectionInfoWithFactoryInfo:(id)arg1 defaultContentPreviewSetting:(long long)arg2 globalAnnounceSetting:(long long)arg3 globalScheduledDeliverySetting:(long long)arg4 hasPairedVehiclesForCarPlay:(_Bool)arg5;
 - (long long)disabledSettingForSetting:(long long)arg1;
-- (id)effectiveSectionInfoWithDefaultContentPreviewSetting:(long long)arg1 globalSpokenNotificationSetting:(long long)arg2;
+- (id)effectiveSectionInfoWithDefaultContentPreviewSetting:(long long)arg1 globalAnnounceSetting:(long long)arg2 globalScheduledDeliverySetting:(long long)arg3 hasPairedVehiclesForCarPlay:(_Bool)arg4;
 - (void)updateWithDefaultSectionInfo:(id)arg1;
 - (id)copyFromManagedSettings;
 @property(readonly, nonatomic) BBSectionInfoSettings *writableSettings;
@@ -109,7 +118,13 @@
 - (_Bool)showsMessagePreview;
 @property(nonatomic) long long contentPreviewSetting;
 @property(nonatomic) _Bool showsOnExternalDevices;
+@property(nonatomic, getter=hasUserConfiguredDirectMessagesSetting) _Bool userConfiguredDirectMessagesSetting;
+@property(nonatomic) long long directMessagesSetting;
+@property(nonatomic) long long scheduledDeliverySetting;
+@property(nonatomic) long long announceSetting;
 @property(nonatomic) long long bulletinGroupingSetting;
+@property(nonatomic, getter=hasUserConfiguredTimeSensitiveSetting) _Bool userConfiguredTimeSensitiveSetting;
+@property(nonatomic) long long timeSensitiveSetting;
 @property(nonatomic) long long criticalAlertSetting;
 @property(nonatomic) long long spokenNotificationSetting;
 @property(nonatomic) long long carPlaySetting;
@@ -121,6 +136,7 @@
 - (void)setShowsInNotificationCenter:(_Bool)arg1;
 - (_Bool)showsInNotificationCenter;
 @property(nonatomic) long long notificationCenterSetting;
+@property(nonatomic) BBMuteAssertion *muteAssertion;
 @property(nonatomic) NSDate *lastUserGrantedAuthorizationDate;
 @property(nonatomic) long long authorizationStatus;
 @property(nonatomic) NSDate *authorizationExpirationDate;

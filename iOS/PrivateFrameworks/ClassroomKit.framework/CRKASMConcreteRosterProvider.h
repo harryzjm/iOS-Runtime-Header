@@ -9,13 +9,12 @@
 #import <ClassroomKit/CRKASMRosterProviding-Protocol.h>
 #import <ClassroomKit/CRKClassKitChangeNotifierDelegate-Protocol.h>
 
-@class CRKASMCertificateIngestor, CRKASMRosterProviderConfiguration, CRKASMRosterUpdater, CRKASMWorldBuildOperation, CRKClassKitChangeNotifier, NSArray, NSString;
+@class CRKASMCertificateIngestor, CRKASMRosterProviderEnvironment, CRKASMRosterUpdater, CRKASMWorldBuildOperation, CRKClassKitChangeNotifier, NSArray, NSString;
 @protocol CRKASMRoster, CRKASMUserFetching;
 
 @interface CRKASMConcreteRosterProvider : NSObject <CRKClassKitChangeNotifierDelegate, CRKASMRosterProviding>
 {
     _Bool _populated;
-    CRKASMRosterProviderConfiguration *_configuration;
     id <CRKASMRoster> _roster;
     NSArray *_locations;
     NSArray *_locationsWithManagePermissions;
@@ -23,11 +22,13 @@
     CRKClassKitChangeNotifier *_classKitChangeNotifier;
     CRKASMWorldBuildOperation *_worldBuildOperation;
     CRKASMRosterUpdater *_rosterUpdater;
+    CRKASMRosterProviderEnvironment *_environment;
 }
 
 + (id)instructorRosterProvider;
 + (id)studentRosterProvider;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) CRKASMRosterProviderEnvironment *environment; // @synthesize environment=_environment;
 @property(readonly, nonatomic) CRKASMRosterUpdater *rosterUpdater; // @synthesize rosterUpdater=_rosterUpdater;
 @property(retain, nonatomic) CRKASMWorldBuildOperation *worldBuildOperation; // @synthesize worldBuildOperation=_worldBuildOperation;
 @property(readonly, nonatomic) CRKClassKitChangeNotifier *classKitChangeNotifier; // @synthesize classKitChangeNotifier=_classKitChangeNotifier;
@@ -36,11 +37,10 @@
 @property(copy, nonatomic) NSArray *locations; // @synthesize locations=_locations;
 @property(nonatomic, getter=isPopulated) _Bool populated; // @synthesize populated=_populated;
 @property(retain, nonatomic) id <CRKASMRoster> roster; // @synthesize roster=_roster;
-@property(readonly, nonatomic) CRKASMRosterProviderConfiguration *configuration; // @synthesize configuration=_configuration;
 - (void)notifierDidObserveClassKitChange:(id)arg1;
 - (void)logDurationOfOperation:(id)arg1;
 - (void)updateManageableLocations:(id)arg1;
-- (void)updateRoster:(id)arg1;
+- (void)updateRoster:(id)arg1 outTrustedPersonIDsChanged:(_Bool *)arg2;
 - (void)processFinishedWorldBuild:(id)arg1;
 - (void)worldBuildDidFinish:(id)arg1;
 - (void)startNewWorldBuild;

@@ -16,7 +16,8 @@
 + (id)newTrialSession;
 - (void).cxx_destruct;
 @property(retain, nonatomic) TRIClient *trialClient; // @synthesize trialClient=_trialClient;
-- (id)_namespaceNameForNamespaceType:(unsigned short)arg1;
+- (id)namespaceNameForNamespaceType:(unsigned short)arg1;
+- (id)arrayForFactorName:(id)arg1 withNamespaceType:(unsigned short)arg2;
 - (id)dictionaryForFactorName:(id)arg1 withNamespaceType:(unsigned short)arg2;
 - (id)levelForFactorName:(id)arg1 withNamespaceType:(unsigned short)arg2;
 - (id)init;

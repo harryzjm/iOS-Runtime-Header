@@ -16,6 +16,7 @@
     _Bool _enabled;
     NSDictionary *_providerConfiguration;
     NSArray *_matchSSIDs;
+    NSArray *_matchPrivateLTENetworks;
     NSString *_pluginType;
     NSString *_providerBundleIdentifier;
 }
@@ -24,13 +25,19 @@
 - (void).cxx_destruct;
 @property(copy) NSString *providerBundleIdentifier; // @synthesize providerBundleIdentifier=_providerBundleIdentifier;
 @property(copy) NSString *pluginType; // @synthesize pluginType=_pluginType;
+@property(copy) NSArray *matchPrivateLTENetworks; // @synthesize matchPrivateLTENetworks=_matchPrivateLTENetworks;
 @property(copy) NSArray *matchSSIDs; // @synthesize matchSSIDs=_matchSSIDs;
 @property(copy) NSDictionary *providerConfiguration; // @synthesize providerConfiguration=_providerConfiguration;
 @property(getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 - (_Bool)overlapsWithConfiguration:(id)arg1;
+- (_Bool)checkPLTEArryOverLap:(id)arg1 right:(id)arg2;
+- (_Bool)checkPLTEArrayContainsPLTEObj:(id)arg1 plteObject:(id)arg2;
 - (id)description;
 - (id)descriptionWithIndent:(int)arg1 options:(unsigned long long)arg2;
 - (_Bool)checkValidityAndCollectErrors:(id)arg1;
+- (_Bool)isValidTAC:(id)arg1;
+- (_Bool)isValidMNC:(id)arg1;
+- (_Bool)isValidMCC:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

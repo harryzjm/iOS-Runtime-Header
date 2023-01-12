@@ -4,18 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HFConcreteTimeTriggerBuilder, HFEventBuilder, NSArray, NSTimeZone;
-@protocol HFTimeEventBuilder;
+@class HFEventBuilder, HFTriggerBuilder, NSArray, NSTimeZone;
+@protocol HFConcreteTimeTriggerBuilderLikeObject, HFTimeEventBuilder;
 
 @interface HFTimerTriggerBuilder
 {
+    HFTriggerBuilder *_concreteTriggerBuilder;
     unsigned long long _preferredHomeKitObjectType;
-    HFConcreteTimeTriggerBuilder *_concreteTriggerBuilder;
+    id <HFConcreteTimeTriggerBuilderLikeObject> _timeInterface;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) HFConcreteTimeTriggerBuilder *concreteTriggerBuilder; // @synthesize concreteTriggerBuilder=_concreteTriggerBuilder;
+@property(retain, nonatomic) id <HFConcreteTimeTriggerBuilderLikeObject> timeInterface; // @synthesize timeInterface=_timeInterface;
 @property(nonatomic) unsigned long long preferredHomeKitObjectType; // @synthesize preferredHomeKitObjectType=_preferredHomeKitObjectType;
+@property(retain, nonatomic) HFTriggerBuilder *concreteTriggerBuilder; // @synthesize concreteTriggerBuilder=_concreteTriggerBuilder;
 - (id)_performValidation;
 - (_Bool)_supportsEventBasedTimeTriggers;
 - (_Bool)_currentStateRequiresEventBasedTimeTriggers;
@@ -26,11 +28,14 @@
 @property(retain, nonatomic) HFEventBuilder<HFTimeEventBuilder> *eventBuilder;
 - (_Bool)supportsEndEvents;
 - (_Bool)supportsConditions;
+- (id)naturalLanguageDetailsWithOptions:(id)arg1;
+- (id)naturalLanguageNameWithOptions:(id)arg1;
 - (id)naturalLanguageNameOfType:(unsigned long long)arg1;
 - (id)commitEditTrigger;
 - (id)commitCreateTrigger;
 - (void)_createConcreteTriggerBuilder;
 - (id)initWithExistingObject:(id)arg1 inHome:(id)arg2 context:(id)arg3;
+- (id)compareToObject:(id)arg1;
 
 @end
 

@@ -17,13 +17,6 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableArray *resultRecordIDsEligibleForDeletion; // @synthesize resultRecordIDsEligibleForDeletion=_resultRecordIDsEligibleForDeletion;
-@property(retain, nonatomic) NSMutableArray *resultZoneIDsEligibleForDeletion; // @synthesize resultZoneIDsEligibleForDeletion=_resultZoneIDsEligibleForDeletion;
-@property(copy, nonatomic) CDUnknownBlockType migrationCompletionHandler; // @synthesize migrationCompletionHandler=_migrationCompletionHandler;
-@property(retain, nonatomic) id <FCCKDatabaseMigrator> migrator; // @synthesize migrator=_migrator;
-@property(retain, nonatomic) FCCKPrivateDatabase *database; // @synthesize database=_database;
-- (void)_migrateZoneID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_migrateZoneIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)operationWillFinishWithError:(id)arg1;
 - (_Bool)canRetryWithError:(id)arg1 retryAfter:(id *)arg2;
 - (void)performOperation;

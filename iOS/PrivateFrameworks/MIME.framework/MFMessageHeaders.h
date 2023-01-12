@@ -29,7 +29,6 @@
 @property(readonly, copy) NSString *description;
 - (void)appendHeaderData:(id)arg1 andRecipients:(id)arg2;
 - (id)encodedHeaders;
-- (_Bool)messageIsFromEntourage;
 - (id)_decodeHeaderKeysFromData:(id)arg1;
 - (id)copyFirstStringValueForKey:(id)arg1;
 - (id)copyFirstNonDecodedHeaderForKey:(id)arg1;
@@ -50,7 +49,6 @@
 - (id)headersForKey:(id)arg1;
 - (id)copyHeadersForKey:(id)arg1;
 - (_Bool)hasHeaderForKey:(id)arg1;
-- (id)_headerValueForKey:(id)arg1;
 - (id)_copyHeaderValueForKey:(id)arg1;
 - (id)_headerValueForKey:(id)arg1 offset:(unsigned long long *)arg2;
 - (id)_copyHeaderValueForKey:(id)arg1 offset:(unsigned long long *)arg2 decoded:(_Bool)arg3;
@@ -61,7 +59,6 @@
 - (id)headersDictionary;
 - (void)enumerateKeysAndBytesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)allHeaderKeys;
-- (_Bool)_isStructuredHeaderKey:(id)arg1;
 @property(nonatomic) unsigned int preferredEncoding;
 - (id)headersRequiringSMTPUTF8Support;
 - (id)headerData;

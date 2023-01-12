@@ -6,7 +6,7 @@
 
 #import <PhotosUI/NSObject-Protocol.h>
 
-@class NSArray, NSString, PHAsset, PHAssetCollection, PHCollection, PHCollectionList, PHFetchResult, PXPhotosUIViewController, UIViewController;
+@class NSArray, NSString, PHAsset, PHAssetCollection, PHCollection, PHCollectionList, PHFetchResult, PHPhotoLibrary, PXPhotosUIViewController, UIViewController;
 @protocol NSFastEnumeration, PXGridPresentationBarsUpdateDelegate;
 
 @protocol PXGridPresentation <NSObject>
@@ -21,6 +21,6 @@
 - (UIViewController *)createAlbumListViewControllerWithCollectionList:(PHCollectionList *)arg1;
 - (UIViewController *)createViewControllerForAssetCollection:(PHAssetCollection *)arg1 existingAssetsFetchResult:(PHFetchResult *)arg2;
 - (UIViewController *)createViewControllerForAssetCollection:(PHAssetCollection *)arg1;
-- (void)createGridViewControllerWithAssets:(id <NSFastEnumeration>)arg1 withTitle:(NSString *)arg2 hideTabBar:(_Bool)arg3 gridPresentationContext:(long long)arg4 containerViewController:(UIViewController *)arg5 barsUpdateDelegate:(id <PXGridPresentationBarsUpdateDelegate>)arg6 andCompletion:(void (^)(UIViewController *))arg7;
+- (void)createGridViewControllerWithAssets:(id <NSFastEnumeration>)arg1 photoLibrary:(PHPhotoLibrary *)arg2 withTitle:(NSString *)arg3 hideTabBar:(_Bool)arg4 gridPresentationContext:(long long)arg5 containerViewController:(UIViewController *)arg6 barsUpdateDelegate:(id <PXGridPresentationBarsUpdateDelegate>)arg7 andCompletion:(void (^)(UIViewController *))arg8;
 @end
 

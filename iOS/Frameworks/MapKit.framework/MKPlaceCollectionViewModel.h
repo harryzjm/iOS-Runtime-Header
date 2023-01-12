@@ -6,20 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class GEOPlaceCollection, NSAttributedString, NSRelativeDateTimeFormatter, UIColor, UIFont, UIImage;
+@class GEOPlaceCollection, NSAttributedString, UIColor, UIFont, UIImage;
 @protocol MKCuratedCollectionsSyncCoordinator, OS_dispatch_queue;
 
 @interface MKPlaceCollectionViewModel : NSObject
 {
-    NSRelativeDateTimeFormatter *_collectionDateFormatter;
     long long _context;
     UIFont *_titleFont;
+    double _screenScale;
     UIImage *_collectionImage;
+    NSObject<OS_dispatch_queue> *_imageLoadingQueue;
     NSObject<OS_dispatch_queue> *_publisherLogoImageQueue;
     _Bool _isSaved;
-    _Bool _shouldDisplayMetadata;
     UIColor *_backgroundColor;
     NSAttributedString *_collectionTitle;
+    NSAttributedString *_collectionLongTitle;
     NSAttributedString *_secondaryCollectionTitle;
     GEOPlaceCollection *_placeCollection;
     id <MKCuratedCollectionsSyncCoordinator> _syncCoordinator;
@@ -31,15 +32,17 @@
 @property(retain) UIImage *publisherLogoImage; // @synthesize publisherLogoImage=_publisherLogoImage;
 @property(nonatomic) struct CGSize photoSize; // @synthesize photoSize=_photoSize;
 @property(retain, nonatomic) id <MKCuratedCollectionsSyncCoordinator> syncCoordinator; // @synthesize syncCoordinator=_syncCoordinator;
-@property(retain, nonatomic) GEOPlaceCollection *placeCollection; // @synthesize placeCollection=_placeCollection;
-@property(nonatomic) _Bool shouldDisplayMetadata; // @synthesize shouldDisplayMetadata=_shouldDisplayMetadata;
+@property(readonly, nonatomic) GEOPlaceCollection *placeCollection; // @synthesize placeCollection=_placeCollection;
 @property(nonatomic) _Bool isSaved; // @synthesize isSaved=_isSaved;
 @property(retain, nonatomic) NSAttributedString *secondaryCollectionTitle; // @synthesize secondaryCollectionTitle=_secondaryCollectionTitle;
+@property(retain, nonatomic) NSAttributedString *collectionLongTitle; // @synthesize collectionLongTitle=_collectionLongTitle;
 @property(retain, nonatomic) NSAttributedString *collectionTitle; // @synthesize collectionTitle=_collectionTitle;
 @property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 - (void)publisherLogoImageWithCompletion:(CDUnknownBlockType)arg1;
-- (id)initWithGEOPlaceCollection:(id)arg1 usingSyncCoordinator:(id)arg2 inContext:(long long)arg3 usingTitleFont:(id)arg4 usingFormatter:(id)arg5;
-- (void)cancelCollectionImageDownload;
+- (void)publisherIconImageWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_publisherImageWithIdentifier:(unsigned int)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)shouldDisplayMetadata;
+- (id)initWithGEOPlaceCollection:(id)arg1 usingSyncCoordinator:(id)arg2 inContext:(long long)arg3 usingTitleFont:(id)arg4;
 - (void)collectionImageForSize:(struct CGSize)arg1 onCompletion:(CDUnknownBlockType)arg2;
 
 @end

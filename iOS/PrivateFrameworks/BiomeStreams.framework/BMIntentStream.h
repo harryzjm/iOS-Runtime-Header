@@ -7,17 +7,21 @@
 #import <objc/NSObject.h>
 
 #import <BiomeStreams/BMSourceStream-Protocol.h>
-#import <BiomeStreams/BMStream-Protocol.h>
+#import <BiomeStreams/BMTimeBasedPublisherStream-Protocol.h>
 
 @class BMStoreStream, NSString;
 
-@interface BMIntentStream : NSObject <BMSourceStream, BMStream>
+@interface BMIntentStream : NSObject <BMSourceStream, BMTimeBasedPublisherStream>
 {
     BMStoreStream *_storeStream;
 }
 
 - (void).cxx_destruct;
+- (void)deleteIntentsWithIdentifiers:(id)arg1 bundleID:(id)arg2;
 - (id)source;
+- (id)publisher;
+- (id)publisherWithStartTime:(id)arg1 endTime:(id)arg2 maxEvents:(id)arg3 lastN:(id)arg4 reversed:(_Bool)arg5;
+- (id)publisherWithStartTime:(id)arg1 endTime:(id)arg2 maxEvents:(id)arg3 reversed:(_Bool)arg4;
 - (id)publisherFromStartTime:(double)arg1;
 - (id)init;
 @property(readonly, nonatomic) NSString *identifier;

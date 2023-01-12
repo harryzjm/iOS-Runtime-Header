@@ -27,7 +27,7 @@
 + (id)_fetchUserActivityWithUUID:(id)arg1 intervalToWaitForDocumentSynchronizationToComplete:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)_userFacingErrorForLaunchServicesError:(id)arg1 userInfo:(id)arg2;
 - (void).cxx_destruct;
-@property(readonly, retain) UAUserActivity *_internalUserActivity; // @synthesize _internalUserActivity=_internal;
+@property(readonly, retain) UAUserActivity *_internalUserActivity;
 - (void)setWebPageURL:(id)arg1;
 - (id)webPageURL;
 - (id)initWithTypeIdentifier:(id)arg1;

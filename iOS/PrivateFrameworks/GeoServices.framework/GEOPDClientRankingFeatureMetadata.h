@@ -36,39 +36,15 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(retain, nonatomic) GEOPDClientRankingFeatureFunctionTypeDiscrete *functionTypeDiscrete;
-@property(readonly, nonatomic) _Bool hasFunctionTypeDiscrete;
-@property(retain, nonatomic) GEOPDClientRankingFeatureFunctionTypeLinear *functionTypeLinear;
-@property(readonly, nonatomic) _Bool hasFunctionTypeLinear;
-- (int)StringAsFunctionType:(id)arg1;
-- (id)functionTypeAsString:(int)arg1;
-@property(nonatomic) _Bool hasFunctionType;
-@property(nonatomic) int functionType;
-@property(retain, nonatomic) GEOPDClientRankingFeatureTypeResult *featureTypeResult;
-@property(readonly, nonatomic) _Bool hasFeatureTypeResult;
-@property(retain, nonatomic) GEOPDClientRankingFeatureTypeSource *featureTypeSource;
-@property(readonly, nonatomic) _Bool hasFeatureTypeSource;
-- (int)StringAsFeatureType:(id)arg1;
-- (id)featureTypeAsString:(int)arg1;
-@property(nonatomic) _Bool hasFeatureType;
-@property(nonatomic) int featureType;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

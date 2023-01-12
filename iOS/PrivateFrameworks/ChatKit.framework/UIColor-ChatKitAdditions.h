@@ -7,6 +7,7 @@
 #import <UIKit/UIColor.h>
 
 @interface UIColor (ChatKitAdditions)
++ (id)_ckColor:(id)arg1 forUserInterfaceStyle:(long long)arg2;
 + (id)_ckSecondarySystemGroupedBackgroundColor;
 + (id)_ckSystemGroupedBackgroundColor;
 + (id)_ckTertiarySystemBackgroundColor;

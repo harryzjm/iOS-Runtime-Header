@@ -8,13 +8,13 @@
 
 #import <SearchUI/UITextViewDelegate-Protocol.h>
 
-@class NSString;
+@class NSArray, NSString;
 @protocol SearchUIFirstTimeExperienceDelegate;
 
 @interface SearchUIFirstTimeExperienceViewController : UIViewController <UITextViewDelegate>
 {
     id <SearchUIFirstTimeExperienceDelegate> _delegate;
-    unsigned long long _supportedDomains;
+    NSArray *_supportedDomains;
     NSString *_explanationText;
     NSString *_learnMoreText;
     NSString *_continueButtonTitle;
@@ -26,7 +26,7 @@
 @property(retain, nonatomic) NSString *continueButtonTitle; // @synthesize continueButtonTitle=_continueButtonTitle;
 @property(retain, nonatomic) NSString *learnMoreText; // @synthesize learnMoreText=_learnMoreText;
 @property(retain, nonatomic) NSString *explanationText; // @synthesize explanationText=_explanationText;
-@property(nonatomic) unsigned long long supportedDomains; // @synthesize supportedDomains=_supportedDomains;
+@property(retain, nonatomic) NSArray *supportedDomains; // @synthesize supportedDomains=_supportedDomains;
 @property(nonatomic) __weak id <SearchUIFirstTimeExperienceDelegate> delegate; // @synthesize delegate=_delegate;
 - (_Bool)_canShowWhileLocked;
 - (void)showPrivacyView;
@@ -34,6 +34,7 @@
 - (void)continueButtonPressed;
 - (void)makeViews;
 - (void)traitCollectionDidChange:(id)arg1;
+- (id)initWithDomains:(id)arg1 explanationText:(id)arg2 learnMoreText:(id)arg3 continueButtonTitle:(id)arg4;
 - (id)initWithSupportedDomains:(unsigned long long)arg1 explanationText:(id)arg2 learnMoreText:(id)arg3 continueButtonTitle:(id)arg4;
 - (id)initWithStyle:(unsigned long long)arg1 supportedDomains:(unsigned long long)arg2 explanationText:(id)arg3 learnMoreText:(id)arg4 continueButtonTitle:(id)arg5;
 

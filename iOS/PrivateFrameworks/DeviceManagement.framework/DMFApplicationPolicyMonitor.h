@@ -17,6 +17,7 @@
 
 + (void)_fetchCategoriesForBundleIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)_fetchCategoriesForBundleIdentifiers:(id)arg1 withError:(id *)arg2;
++ (id)fetchParentBundleIdentifiersForBundleIdentifiers:(id)arg1;
 + (void)createPolicyMonitorWithPolicyChangeHandler:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) DMFPolicyRegistration *registration; // @synthesize registration=_registration;

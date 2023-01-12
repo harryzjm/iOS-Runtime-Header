@@ -16,8 +16,8 @@
 - (void)loadDictionaries;
 - (_Bool)shouldUpdateDictionary;
 - (_Bool)updateLanguageModelForKeyboardState;
-- (struct LanguageModelContainer *)languageModelContainer;
-- (vector_4dc11a9b)lexiconInformationVector;
+- (void *)languageModelContainer;
+- (vector_ce1a2964)lexiconInformationVector;
 - (CDStruct_69b8fb94)lexiconInfoForInputMode:(id)arg1;
 - (float)weightForInputMode:(id)arg1;
 - (unsigned int)lexiconIDForInputMode:(id)arg1;

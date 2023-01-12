@@ -9,6 +9,7 @@
 #import <MarkupUI/UIScrollViewDelegate-Protocol.h>
 
 @class AKPageController, AKRectAnnotation, NSArray, NSString, UIImage, UIImageView, UIScrollView, UITapGestureRecognizer, UIView;
+@protocol UIScrollViewDelegate;
 
 @interface MUImageContentViewController <AKControllerDelegateProtocol, UIScrollViewDelegate, MUContentViewControllerProtocol>
 {
@@ -22,10 +23,11 @@
     _Bool _zoomToFitRestoreValue;
     UIImage *_tentativePlaceholderImage;
     double _maxImageDimension;
+    UIView *_combinedContentView;
     unsigned long long _inkStyle;
+    id <UIScrollViewDelegate> _scrollViewDelegate;
     id _sourceContent;
     UIScrollView *_scrollView;
-    UIView *_combinedContentView;
     UIImageView *_imageView;
     double _downsampledImageScale;
     CDUnknownBlockType _loadCompletionBlock;
@@ -49,14 +51,17 @@
 @property double downsampledImageScale; // @synthesize downsampledImageScale=_downsampledImageScale;
 @property struct CGSize sourceImagePixelSize; // @synthesize sourceImagePixelSize=_sourceImagePixelSize;
 @property(retain, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
-@property(retain, nonatomic) UIView *combinedContentView; // @synthesize combinedContentView=_combinedContentView;
 @property(retain, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property(retain) id sourceContent; // @synthesize sourceContent=_sourceContent;
+@property __weak id <UIScrollViewDelegate> scrollViewDelegate; // @synthesize scrollViewDelegate=_scrollViewDelegate;
 @property(nonatomic) unsigned long long inkStyle; // @synthesize inkStyle=_inkStyle;
+@property(retain, nonatomic) UIView *combinedContentView; // @synthesize combinedContentView=_combinedContentView;
 @property double maxImageDimension; // @synthesize maxImageDimension=_maxImageDimension;
 @property(retain, nonatomic) UIImage *tentativePlaceholderImage; // @synthesize tentativePlaceholderImage=_tentativePlaceholderImage;
 @property(nonatomic) _Bool centersIgnoringContentInsets; // @synthesize centersIgnoringContentInsets=_centersIgnoringContentInsets;
 @property(nonatomic) struct UIEdgeInsets edgeInsets; // @synthesize edgeInsets=_edgeInsets;
+@property(readonly, copy, nonatomic) NSString *originalImageDescription;
+@property(readonly, nonatomic) _Bool supportsImageDescriptionEditing;
 - (void)controllerWillDismissSignatureManagerView:(id)arg1;
 - (void)controllerWillShowSignatureManagerView:(id)arg1;
 - (void)controllerWillDismissSignatureCaptureView:(id)arg1;
@@ -83,6 +88,8 @@
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromModelToOverlayWithPageIndex:(unsigned long long)arg2 forAnnotationController:(id)arg3;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromOverlayToModelWithPageIndex:(unsigned long long)arg2 forAnnotationController:(id)arg3;
 - (_Bool)scrollViewShouldScrollToTop:(id)arg1;
+- (void)scrollViewDidZoom:(id)arg1;
+- (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewWillBeginZooming:(id)arg1 withView:(id)arg2;
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (id)viewForZoomingInScrollView:(id)arg1;
@@ -130,6 +137,7 @@
 - (void)viewDidLoad;
 - (_Bool)_canShowWhileLocked;
 - (void)dealloc;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2 delegate:(id)arg3;
 - (id)initWithSourceContent:(id)arg1 archivedDataModel:(id)arg2 delegate:(id)arg3;
 
 // Remaining properties

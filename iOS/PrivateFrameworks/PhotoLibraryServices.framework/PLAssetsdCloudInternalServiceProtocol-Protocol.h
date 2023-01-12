@@ -9,6 +9,7 @@
 @class NSArray, NSDictionary, NSString, NSURL;
 
 @protocol PLAssetsdCloudInternalServiceProtocol <NSObject>
+- (void)markResourcesPurgeableWithUrgency:(long long)arg1 assetUuids:(NSArray *)arg2 reply:(void (^)(_Bool, NSError *))arg3;
 - (void)getResetSyncStatusWithReply:(void (^)(unsigned long long))arg1;
 - (void)queryUserIdentitiesWithEmails:(NSArray *)arg1 phoneNumbers:(NSArray *)arg2 reply:(void (^)(_Bool, NSDictionary *, NSError *))arg3;
 - (void)forceSyncMomentShareWithUUID:(NSString *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
@@ -24,6 +25,7 @@
 - (void)setCloudPhotoLibraryEnabledState:(_Bool)arg1;
 - (void)syncCloudPhotoLibrary;
 - (void)shouldAutoEnableiCPLOnOSXWithReply:(void (^)(_Bool, NSError *))arg1;
+- (void)isReadyForAnalysisWithReply:(void (^)(_Bool))arg1;
 - (void)isReadyForCloudPhotoLibraryWithReply:(void (^)(_Bool))arg1;
 - (void)setPersonInfoDictionary:(NSDictionary *)arg1 forPersonID:(NSString *)arg2;
 - (void)personInfoDictionaryForPersonID:(NSString *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;

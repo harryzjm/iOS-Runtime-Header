@@ -9,8 +9,10 @@
 @class NSArray, UIControl, UIScrollView;
 
 @protocol PLExpandedPlatter <PLPlatter>
-@property(nonatomic) double contentBottomInset;
+@property(nonatomic, getter=isHeaderEnabled) _Bool headerEnabled;
+@property(nonatomic, getter=isDismissControlEnabled) _Bool dismissControlEnabled;
 @property(nonatomic) _Bool clipsVisibleContentToBounds;
+@property(nonatomic) double contentBottomInset;
 @property(nonatomic) long long dismissControlPosition;
 @property(readonly, nonatomic) struct UIEdgeInsets dismissControlInsets;
 @property(readonly, nonatomic) UIControl *dismissControl;

@@ -19,6 +19,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) _BPSAbstractOrderedMerge *combiner; // @synthesize combiner=_combiner;
 @property(nonatomic) unsigned long long index; // @synthesize index=_index;
+- (void)cancel;
 - (void)receiveCompletion:(id)arg1;
 - (long long)receiveInput:(id)arg1;
 - (void)receiveSubscription:(id)arg1;

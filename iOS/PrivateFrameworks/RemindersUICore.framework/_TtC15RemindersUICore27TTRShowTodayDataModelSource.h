@@ -13,6 +13,7 @@
     MISSING_TYPE *store;
     MISSING_TYPE *countCompleted;
     MISSING_TYPE *showCompletedContextInstance;
+    MISSING_TYPE *tipKitContextInstance;
     MISSING_TYPE *dataViewMonitor;
     MISSING_TYPE *locationChangeSubscription;
     MISSING_TYPE *$__lazy_storage_$_locationMonitor;

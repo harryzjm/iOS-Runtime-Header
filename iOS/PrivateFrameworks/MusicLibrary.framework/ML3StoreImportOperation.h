@@ -14,8 +14,8 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (_Bool)_importPlaylistsUsingImportSession:(struct ML3ImportSession *)arg1;
-- (_Bool)_importTracksUsingImportSession:(struct ML3ImportSession *)arg1;
+- (_Bool)_importPlaylistsUsingImportSession:(void *)arg1;
+- (_Bool)_importTracksUsingImportSession:(void *)arg1;
 - (_Bool)_performImportWithTransaction:(id)arg1;
 - (void)main;
 - (unsigned long long)importSource;

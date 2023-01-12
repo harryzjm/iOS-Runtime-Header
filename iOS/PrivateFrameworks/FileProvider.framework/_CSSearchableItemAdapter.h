@@ -9,7 +9,6 @@
 #import <FileProvider/NSFileProviderItem_Private-Protocol.h>
 
 @class CSSearchableItem, CSSearchableItemAttributeSet, NSData, NSDate, NSDictionary, NSError, NSFileProviderItemVersion, NSNumber, NSPersonNameComponents, NSSet, NSString, NSURL, UTType;
-@protocol NSFileProviderItemFlags;
 
 __attribute__((visibility("hidden")))
 @interface _CSSearchableItemAdapter : NSObject <NSFileProviderItem_Private>
@@ -26,7 +25,6 @@ __attribute__((visibility("hidden")))
 - (id)fp_appContainerBundleIdentifier;
 - (id)sharingCurrentUserPermissions;
 @property(readonly, nonatomic, getter=isMostRecentVersionDownloaded) _Bool mostRecentVersionDownloaded;
-- (_Bool)isDataless;
 - (_Bool)isRecursivelyDownloaded;
 @property(readonly, nonatomic, getter=isDownloaded) _Bool downloaded;
 - (id)formerIdentifier;
@@ -84,14 +82,18 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=isExcludedFromSync) _Bool excludedFromSync;
 @property(readonly, nonatomic) NSDictionary *extendedAttributes;
 @property(readonly, copy) NSString *fileSystemFilename;
+@property(readonly, nonatomic) unsigned long long fileSystemFlags;
 @property(readonly, copy) NSURL *fileURL;
-@property(readonly, nonatomic) id <NSFileProviderItemFlags> flags;
 @property(readonly, copy) NSSet *fp_cloudContainerClientBundleIdentifiers;
 @property(readonly, copy) NSNumber *hasUnresolvedConflicts;
 @property(readonly) unsigned long long hash;
 @property(readonly, getter=isHidden) _Bool hidden;
+@property(readonly, copy, nonatomic) NSData *quarantineBlob;
 @property(readonly, copy) NSString *sharingPermissions;
 @property(readonly) Class superclass;
+@property(readonly, copy, nonatomic) NSString *symlinkTargetPath;
+@property(getter=isSyncRoot) _Bool syncRoot;
+@property(readonly, nonatomic) struct NSFileProviderTypeAndCreator typeAndCreator;
 
 @end
 

@@ -52,8 +52,8 @@
 - (void)addFetchTransformer:(CDUnknownBlockType)arg1;
 - (void)fetchModelForSources:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchSources;
-- (void)removeObserver:(id)arg1;
-- (void)addObserver:(id)arg1;
+- (void)unregisterObserver:(id)arg1;
+- (void)registerObserver:(id)arg1;
 - (void)invalidate;
 - (void)dealloc;
 - (id)initWithHealthStore:(id)arg1 sources:(id)arg2 queue:(id)arg3;

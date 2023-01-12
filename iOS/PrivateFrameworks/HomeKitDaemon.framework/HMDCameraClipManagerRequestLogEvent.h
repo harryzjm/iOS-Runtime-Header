@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitMetrics/HMMLogEvent.h>
+
 @class NSString;
 
-@interface HMDCameraClipManagerRequestLogEvent
+@interface HMDCameraClipManagerRequestLogEvent : HMMLogEvent
 {
     NSString *_requestName;
 }
 
-+ (id)uuid;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *requestName; // @synthesize requestName=_requestName;
 - (id)initWithRequestName:(id)arg1;

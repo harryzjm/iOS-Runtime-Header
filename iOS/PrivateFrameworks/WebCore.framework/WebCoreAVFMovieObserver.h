@@ -15,8 +15,7 @@
 __attribute__((visibility("hidden")))
 @interface WebCoreAVFMovieObserver : NSObject <AVPlayerItemLegibleOutputPushDelegate, AVPlayerItemMetadataOutputPushDelegate, AVPlayerItemMetadataCollectorPushDelegate>
 {
-    WeakPtr_be5c5e1c m_player;
-    struct GenericTaskQueue<WebCore::Timer> m_taskQueue;
+    struct WeakPtr<WebCore::MediaPlayerPrivateAVFoundationObjC, WTF::EmptyCounter> m_player;
     int m_delayCallbacks;
 }
 
@@ -30,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)didEnd:(id)arg1;
 - (void)metadataLoaded;
 - (void)disconnect;
-- (id)initWithPlayer:(WeakPtr_be5c5e1c *)arg1;
+- (id)initWithPlayer:(void *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class FPItemID, FPXDomainContext, FPXExtensionContext, NSFileProviderExtension;
-@protocol OS_dispatch_queue;
+@class FPItemID, FPXDomainContext, FPXExtensionContext, NSFileProviderRequest;
+@protocol NSFileProviderReplicatedExtension, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface FPXObserver : NSObject
@@ -15,8 +15,9 @@ __attribute__((visibility("hidden")))
     FPItemID *_observedItemID;
     FPXDomainContext *_domainContext;
     NSObject<OS_dispatch_queue> *_queue;
-    NSFileProviderExtension *_strongVendorInstance;
+    id <NSFileProviderReplicatedExtension> _strongVendorInstance;
     FPXExtensionContext *_strongExtensionContext;
+    NSFileProviderRequest *_nsFileProviderRequest;
     _Bool _invalidated;
 }
 
@@ -26,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)invalidate;
 - (id)updateForProviderItem:(id)arg1;
 - (void)_fixupFavoriteRank:(id)arg1;
-- (id)initWithObservedItemID:(id)arg1 domainContext:(id)arg2;
+- (id)initWithObservedItemID:(id)arg1 domainContext:(id)arg2 nsFileProviderRequest:(id)arg3;
 - (id)init;
 
 @end

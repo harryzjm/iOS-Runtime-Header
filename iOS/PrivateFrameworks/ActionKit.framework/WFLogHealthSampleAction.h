@@ -15,6 +15,7 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *currentDate; // @synthesize currentDate=_currentDate;
+- (id)localizedSmartPromptUsageSentenceWithcontentDescription:(id)arg1 contentDestination:(id)arg2 workflowName:(id)arg3;
 - (id)appIdentifier;
 - (void)saveObject:(id)arg1 withObjectType:(id)arg2 item:(id)arg3;
 - (void)forceUpdateSelectedUnit;
@@ -30,6 +31,8 @@
 - (void)handleWithQuantityType:(id)arg1;
 - (void)handleWithCategoryType:(id)arg1;
 - (id)accessResourcesToBeAuthorizedImplicitlyForUpdatedParameterState:(id)arg1 forParameter:(id)arg2;
+- (void)authorizeAccessResourcesImplicitlyForParameterState:(id)arg1 forParameter:(id)arg2;
+- (id)generatedResourceNodes;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 
 @end

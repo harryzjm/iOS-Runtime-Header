@@ -16,9 +16,9 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) id <NFLocking> underlyingLock; // @synthesize underlyingLock=_underlyingLock;
 - (void)unlock;
 - (void)lock;
+- (void)performWriteByUpgradingReadSync:(CDUnknownBlockType)arg1;
 - (void)performWriteSync:(CDUnknownBlockType)arg1;
 - (void)performReadSync:(CDUnknownBlockType)arg1;
 - (id)init;

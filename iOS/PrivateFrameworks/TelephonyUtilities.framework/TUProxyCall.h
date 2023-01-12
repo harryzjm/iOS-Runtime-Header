@@ -7,7 +7,7 @@
 #import <TelephonyUtilities/AVCRemoteVideoClientDelegate-Protocol.h>
 #import <TelephonyUtilities/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDictionary, NSMutableDictionary, NSSet, NSString, NSUUID, TUCallDisplayContext, TUCallProvider, TUHandle;
+@class NSData, NSDictionary, NSMutableDictionary, NSSet, NSString, NSUUID, TUCallDisplayContext, TUCallProvider, TUCallScreenShareAttributes, TUHandle;
 @protocol TUCallServicesProxyCallActions, TURemoteVideoClient;
 
 @interface TUProxyCall <AVCRemoteVideoClientDelegate, NSSecureCoding>
@@ -25,6 +25,7 @@
     _Bool _videoMirrored;
     _Bool _blocked;
     _Bool _emergency;
+    _Bool _failureExpected;
     _Bool _sos;
     _Bool _usingBaseband;
     _Bool _supportsTTYWithVoice;
@@ -37,6 +38,8 @@
     _Bool _shouldSuppressInCallUI;
     _Bool _mutuallyExclusiveCall;
     _Bool _wantsStagingArea;
+    _Bool _sharingScreen;
+    _Bool _conversation;
     int _callStatus;
     int _ttyType;
     int _callRelaySupport;
@@ -51,6 +54,7 @@
     NSString *_callerNameFromNetwork;
     long long _cameraType;
     long long _remoteCameraOrientation;
+    long long _bluetoothAudioFormat;
     NSString *_audioCategory;
     NSString *_audioMode;
     NSDictionary *_endedReasonUserInfo;
@@ -68,6 +72,7 @@
     NSSet *_remoteParticipantHandles;
     NSUUID *_localSenderIdentityUUID;
     NSUUID *_localSenderIdentityAccountUUID;
+    TUCallScreenShareAttributes *_screenShareAttributes;
     id <TUCallServicesProxyCallActions> _proxyCallActionsDelegate;
     id <TURemoteVideoClient> _localVideo;
     id <TURemoteVideoClient> _remoteVideo;
@@ -89,6 +94,9 @@
 @property(retain, nonatomic) id <TURemoteVideoClient> remoteVideo; // @synthesize remoteVideo=_remoteVideo;
 @property(retain, nonatomic) id <TURemoteVideoClient> localVideo; // @synthesize localVideo=_localVideo;
 @property(nonatomic) __weak id <TUCallServicesProxyCallActions> proxyCallActionsDelegate; // @synthesize proxyCallActionsDelegate=_proxyCallActionsDelegate;
+- (id)screenShareAttributes;
+@property(nonatomic, getter=isConversation) _Bool conversation; // @synthesize conversation=_conversation;
+@property(nonatomic, getter=isSharingScreen) _Bool sharingScreen; // @synthesize sharingScreen=_sharingScreen;
 @property(nonatomic) int originatingUIType; // @synthesize originatingUIType=_originatingUIType;
 @property(nonatomic) _Bool wantsStagingArea; // @synthesize wantsStagingArea=_wantsStagingArea;
 @property(nonatomic, getter=isMutuallyExclusiveCall) _Bool mutuallyExclusiveCall; // @synthesize mutuallyExclusiveCall=_mutuallyExclusiveCall;
@@ -120,9 +128,11 @@
 @property(copy, nonatomic) NSString *audioMode; // @synthesize audioMode=_audioMode;
 @property(copy, nonatomic) NSString *audioCategory; // @synthesize audioCategory=_audioCategory;
 @property(nonatomic) _Bool supportsTTYWithVoice; // @synthesize supportsTTYWithVoice=_supportsTTYWithVoice;
+@property(nonatomic) long long bluetoothAudioFormat; // @synthesize bluetoothAudioFormat=_bluetoothAudioFormat;
 @property(nonatomic) int ttyType; // @synthesize ttyType=_ttyType;
 @property(nonatomic, getter=isUsingBaseband) _Bool usingBaseband; // @synthesize usingBaseband=_usingBaseband;
 @property(nonatomic, getter=isSOS, setter=setSOS:) _Bool sos; // @synthesize sos=_sos;
+@property(nonatomic, getter=isFailureExpected) _Bool failureExpected; // @synthesize failureExpected=_failureExpected;
 @property(nonatomic, getter=isEmergency) _Bool emergency; // @synthesize emergency=_emergency;
 @property(nonatomic, getter=isBlocked) _Bool blocked; // @synthesize blocked=_blocked;
 @property(nonatomic) long long remoteCameraOrientation; // @synthesize remoteCameraOrientation=_remoteCameraOrientation;
@@ -156,6 +166,7 @@
 - (void)remoteVideoClient:(id)arg1 videoDidDegrade:(_Bool)arg2;
 - (void)remoteVideoClient:(id)arg1 remoteMediaDidStall:(_Bool)arg2;
 - (void)remoteVideoClient:(id)arg1 remoteVideoDidPause:(_Bool)arg2;
+- (void)setScreenShareAttributes:(id)arg1;
 - (void)setRemoteVideoPresentationState:(int)arg1;
 - (void)setRemoteVideoPresentationSize:(struct CGSize)arg1;
 - (struct CGSize)localAspectRatioForOrientation:(long long)arg1;
@@ -173,6 +184,7 @@
 - (void)sendHardPauseDigits;
 - (void)setCallDisconnectedDueToComponentCrash;
 - (void)updateProxyCallWithDaemon;
+- (void)setSharingScreen:(_Bool)arg1 attributes:(id)arg2;
 - (void)setIsSendingVideo:(_Bool)arg1;
 - (void)setDownlinkMuted:(_Bool)arg1;
 - (void)setUplinkMuted:(_Bool)arg1;

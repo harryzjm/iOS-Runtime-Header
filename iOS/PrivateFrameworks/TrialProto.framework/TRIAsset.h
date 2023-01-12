@@ -25,7 +25,7 @@
 @property(nonatomic) _Bool hasTreatmentId; // @dynamic hasTreatmentId;
 @property(copy, nonatomic) NSString *name; // @dynamic name;
 @property(nonatomic) _Bool signed_p; // @dynamic signed_p;
-@property(nonatomic) unsigned int size; // @dynamic size;
+@property(nonatomic) unsigned long long size; // @dynamic size;
 @property(copy, nonatomic) NSString *treatmentId; // @dynamic treatmentId;
 
 @end

@@ -9,7 +9,7 @@
 #import <PassKitCore/PKPaymentAuthorizationCoordinatorDelegate-Protocol.h>
 #import <PassKitCore/PKPaymentAuthorizationCoordinatorPrivateDelegate-Protocol.h>
 
-@class NSError, NSString, PKPaymentAuthorizationCoordinator, PKPaymentPass, PKPeerPaymentAccount, PKPeerPaymentContactResolver, PKPeerPaymentControllerInternalState, PKPeerPaymentPerformResponse, PKPeerPaymentQuote, PKPeerPaymentRecipient, PKPeerPaymentRequestToken, PKPeerPaymentWebService;
+@class NSError, NSString, PKContactResolver, PKPaymentAuthorizationCoordinator, PKPaymentPass, PKPeerPaymentAccount, PKPeerPaymentControllerInternalState, PKPeerPaymentPerformResponse, PKPeerPaymentQuote, PKPeerPaymentRecipient, PKPeerPaymentRequestToken, PKPeerPaymentWebService;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
 @interface PKPeerPaymentController : NSObject <PKPaymentAuthorizationCoordinatorDelegate, PKPaymentAuthorizationCoordinatorPrivateDelegate>
@@ -17,10 +17,11 @@
     PKPeerPaymentControllerInternalState *_is;
     PKPeerPaymentAccount *_account;
     PKPaymentPass *_peerPaymentPass;
-    PKPeerPaymentContactResolver *_contactResolver;
+    PKContactResolver *_contactResolver;
     PKPaymentAuthorizationCoordinator *_performQuoteAuthorizationCoordinator;
     NSObject<OS_dispatch_group> *_performQuoteGroup;
     NSObject<OS_dispatch_queue> *_performQuoteCallbackQueue;
+    NSObject<OS_dispatch_queue> *_queue;
     _Bool _performQuoteSuccess;
     NSError *_performQuoteError;
     PKPeerPaymentWebService *_webService;
@@ -90,6 +91,7 @@
 - (_Bool)_ensureState:(unsigned long long)arg1;
 - (void)_setState:(unsigned long long)arg1 notify:(_Bool)arg2;
 - (void)dealloc;
+- (id)initWithPeerPaymentWebService:(id)arg1 queue:(id)arg2;
 - (id)initWithPeerPaymentWebService:(id)arg1;
 - (id)init;
 - (void)requestTokenForAmount:(id)arg1 completion:(CDUnknownBlockType)arg2;

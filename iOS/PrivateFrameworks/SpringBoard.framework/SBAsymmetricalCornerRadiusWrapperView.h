@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+@class BSCornerRadiusConfiguration, NSArray, SBHitTestExtendedView;
 
-@class BSCornerRadiusConfiguration;
-
-@interface SBAsymmetricalCornerRadiusWrapperView : UIView
+@interface SBAsymmetricalCornerRadiusWrapperView
 {
     BSCornerRadiusConfiguration *_cornerRadiusConfiguration;
     unsigned long long _maskedCorners;
-    UIView *_trailingCornersMaskingView;
+    SBHitTestExtendedView *_trailingCornersMaskingView;
 }
 
 - (void).cxx_destruct;
@@ -23,6 +21,7 @@
 - (void)sendContentViewToBack:(id)arg1;
 - (void)bringContentViewToFront:(id)arg1;
 - (void)addContentView:(id)arg1;
+@property(readonly, copy, nonatomic) NSArray *contentViews;
 - (void)setClipsToBounds:(_Bool)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

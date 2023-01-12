@@ -33,9 +33,7 @@
     double dLatestFusedMotionCopied;
     double dLatestTimestamp;
     double dGyroUpdateInterval;
-    double timestampLatency;
     double dStartOfLogging;
-    _Bool gettingAttitudeChange;
     CDStruct_bf7dff04 previousQuaternion;
     CDStruct_bf7dff04 currentQuaternion;
     _Bool computingPosition;
@@ -61,7 +59,7 @@
 - (void)didUpdatePositionWithTimeStamp:(double)arg1;
 - (void)didUpdateVelocityWithAcceleration:(CDStruct_03942939 *)arg1 forTimeStamp:(double)arg2;
 - (void)didUpdatePositionWithAcceleration:(CDStruct_03942939 *)arg1 forTimeStamp:(double)arg2;
-- (void)didUpdateFusedMotionWithDeviceMotion:(CDStruct_69e6d857)arg1 time:(double)arg2 ifsync:(_Bool)arg3;
+- (void)didUpdateFusedMotionWithDeviceMotion:(CDStruct_227c825c)arg1 time:(double)arg2 ifsync:(_Bool)arg3;
 - (int)getFusedVectorX:(float *)arg1 y:(float *)arg2 z:(float *)arg3 forTimeStamp:(double)arg4;
 - (int)getGravityX:(float *)arg1 y:(float *)arg2 z:(float *)arg3 forTimeStamp:(double)arg4;
 - (int)getVectorX:(float *)arg1 y:(float *)arg2 z:(float *)arg3 forTimeStamp:(double)arg4;

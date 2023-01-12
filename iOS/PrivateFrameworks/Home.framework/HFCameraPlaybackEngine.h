@@ -11,7 +11,7 @@
 #import <Home/HMCameraRecordingEventManagerObserver-Protocol.h>
 
 @class AVPlayer, HFCameraAnalyticsCameraClipPlaybackSessionEvent, HFCameraPlaybackEngineCache, HFCameraPlaybackPosition, HMCameraClip, HMCameraClipManager, HMCameraProfile, HMCameraSource, HMHome, NADelegateDispatcher, NSArray, NSDate, NSError, NSMapTable, NSString, NSUUID;
-@protocol HFCameraClipPlaying, HFCameraClipScrubbing, HFCameraLiveStreamControlling, OS_dispatch_queue;
+@protocol HFCameraClipPlaying, HFCameraClipScrubbing, HFCameraLiveStreamControlling;
 
 @interface HFCameraPlaybackEngine : NSObject <HMCameraRecordingEventManagerObserver, HFCameraClipPlayerDelegate, HFCameraLiveStreamControllerDelegate>
 {
@@ -21,16 +21,17 @@
     _Bool _userScrubbing;
     _Bool _pictureInPictureModeActive;
     _Bool _shouldBypassVideoFetchRequest;
+    _Bool _shouldBypassHighQualityScrubbing;
     _Bool _wantsToPlay;
     _Bool _scrubbing;
     float _streamAudioVolume;
     unsigned long long _timelineState;
     HMCameraProfile *_cameraProfile;
     HMCameraSource *_liveCameraSource;
+    unsigned long long _scrubbingSpeed;
     unsigned long long _timeControlStatus;
     NSError *_playbackError;
     HMHome *_home;
-    CDUnknownBlockType _clipPlayerBuilder;
     id <HFCameraLiveStreamControlling> _liveStreamController;
     id <HFCameraClipScrubbing> _clipScrubber;
     NSMapTable *_observerStates;
@@ -39,7 +40,6 @@
     unsigned long long _engineMode;
     NSDate *_lastRequestedClipPlaybackDate;
     unsigned long long _scrubbingInProgressCount;
-    NSObject<OS_dispatch_queue> *_clipQueue;
     long long _lastPlayerTimeControlStatus;
     HFCameraAnalyticsCameraClipPlaybackSessionEvent *_playbackSessionEvent;
     unsigned long long _playbackRetryAttempts;
@@ -59,7 +59,6 @@
 @property(nonatomic) unsigned long long playbackRetryAttempts; // @synthesize playbackRetryAttempts=_playbackRetryAttempts;
 @property(retain, nonatomic) HFCameraAnalyticsCameraClipPlaybackSessionEvent *playbackSessionEvent; // @synthesize playbackSessionEvent=_playbackSessionEvent;
 @property(nonatomic) long long lastPlayerTimeControlStatus; // @synthesize lastPlayerTimeControlStatus=_lastPlayerTimeControlStatus;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *clipQueue; // @synthesize clipQueue=_clipQueue;
 @property(nonatomic, getter=isScrubbing) _Bool scrubbing; // @synthesize scrubbing=_scrubbing;
 @property(nonatomic) unsigned long long scrubbingInProgressCount; // @synthesize scrubbingInProgressCount=_scrubbingInProgressCount;
 @property(nonatomic) _Bool wantsToPlay; // @synthesize wantsToPlay=_wantsToPlay;
@@ -70,10 +69,11 @@
 @property(readonly, nonatomic) NSMapTable *observerStates; // @synthesize observerStates=_observerStates;
 @property(readonly, nonatomic) id <HFCameraClipScrubbing> clipScrubber; // @synthesize clipScrubber=_clipScrubber;
 @property(readonly, nonatomic) id <HFCameraLiveStreamControlling> liveStreamController; // @synthesize liveStreamController=_liveStreamController;
-@property(readonly, copy, nonatomic) CDUnknownBlockType clipPlayerBuilder; // @synthesize clipPlayerBuilder=_clipPlayerBuilder;
 @property(retain, nonatomic) HMHome *home; // @synthesize home=_home;
 @property(retain, nonatomic) NSError *playbackError; // @synthesize playbackError=_playbackError;
 @property(nonatomic) unsigned long long timeControlStatus; // @synthesize timeControlStatus=_timeControlStatus;
+@property(nonatomic) unsigned long long scrubbingSpeed; // @synthesize scrubbingSpeed=_scrubbingSpeed;
+@property(nonatomic) _Bool shouldBypassHighQualityScrubbing; // @synthesize shouldBypassHighQualityScrubbing=_shouldBypassHighQualityScrubbing;
 @property(nonatomic) _Bool shouldBypassVideoFetchRequest; // @synthesize shouldBypassVideoFetchRequest=_shouldBypassVideoFetchRequest;
 @property(nonatomic, getter=isPictureInPictureModeActive) _Bool pictureInPictureModeActive; // @synthesize pictureInPictureModeActive=_pictureInPictureModeActive;
 @property(nonatomic, getter=isUserScrubbing) _Bool userScrubbing; // @synthesize userScrubbing=_userScrubbing;
@@ -113,9 +113,9 @@
 @property(readonly, nonatomic) _Bool isCameraPortraitMode;
 @property(readonly, copy, nonatomic) NSArray *cameraClips;
 @property(readonly, copy, nonatomic) NSArray *cameraEvents;
-@property(readonly, copy, nonatomic) NSArray *datesContainingClips;
 @property(readonly, nonatomic) _Bool hasRecordingEvents;
 @property(nonatomic) unsigned long long timelineState; // @synthesize timelineState=_timelineState;
+@property(readonly, nonatomic) _Bool shouldDisplayVolumeControls;
 - (void)endScrubbing;
 - (void)beginScrubbing;
 @property(readonly, nonatomic) HMCameraClip *currentClip;
@@ -131,6 +131,7 @@
 @property(readonly, nonatomic) AVPlayer *player;
 - (void)updateConfiguration:(id)arg1;
 - (void)fetchCameraClipForNotificationUUID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)fetchCameraClipForUUID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)fetchCameraEventsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_setupTimeObservationForObserver:(id)arg1;
 - (void)_setupClipPlayerWithClipManager:(id)arg1;

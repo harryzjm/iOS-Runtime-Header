@@ -8,11 +8,12 @@
 #import <HealthDaemon/HDWorkoutDataSource-Protocol.h>
 #import <HealthDaemon/HKDataFlowLinkProcessor-Protocol.h>
 #import <HealthDaemon/HKGymKitDataSourceServerInterface-Protocol.h>
+#import <HealthDaemon/HKLiveWorkoutDataSourceServerInterface-Protocol.h>
 
 @class HDWorkoutBasicDataSource, HKDataFlowLink, HKWorkoutDataSourceConfiguration, NSSet, NSString, NSUUID;
 @protocol HDWorkoutDataAccumulator;
 
-@interface HDGymKitDataSource <HKGymKitDataSourceServerInterface, HKDataFlowLinkProcessor, HDWorkoutDataSource, HDWorkoutDataDestination>
+@interface HDGymKitDataSource <HKDataFlowLinkProcessor, HKGymKitDataSourceServerInterface, HKLiveWorkoutDataSourceServerInterface, HDWorkoutDataSource, HDWorkoutDataDestination>
 {
     HKWorkoutDataSourceConfiguration *_dataSourceConfiguration;
     HDWorkoutBasicDataSource *_basicDataSource;
@@ -26,8 +27,6 @@
 + (id)requiredEntitlements;
 + (id)taskIdentifier;
 - (void).cxx_destruct;
-- (_Bool)_shouldAddSample:(id)arg1;
-- (void)_setupTypes;
 @property(readonly, nonatomic) id <HDWorkoutDataAccumulator> workoutDataAccumulator;
 - (void)updateWorkoutConfiguration:(id)arg1 dataSource:(id)arg2;
 - (void)addMetadata:(id)arg1 dataSource:(id)arg2;

@@ -4,15 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSDate, NSURL;
+@class FCInterestToken, NSArray, NSData, NSDate, NSURL, NTPBAVAssetKey;
 @protocol FCAVAssetKeyType;
 
 @protocol FCAVAssetKeyCacheType
+@property(readonly, copy, nonatomic) NSData *keyServerCertificate;
+- (void)importAVAssetKey:(NTPBAVAssetKey *)arg1;
 - (void)clearKeyServerCertificate;
 - (void)saveKeyServerCertificate:(NSData *)arg1;
-- (NSData *)keyServerCertificate;
 - (void)removeAllAssetKeys;
 - (void)saveAssetKeyData:(NSData *)arg1 creationDate:(NSDate *)arg2 expirationDate:(NSDate *)arg3 forURI:(NSURL *)arg4;
+- (FCInterestToken *)interestTokenForKeyURIs:(NSArray *)arg1;
 - (id <FCAVAssetKeyType>)assetKeyForURI:(NSURL *)arg1;
 @end
 

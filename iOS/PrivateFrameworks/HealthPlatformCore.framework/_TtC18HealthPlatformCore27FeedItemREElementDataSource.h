@@ -11,6 +11,7 @@
 @interface _TtC18HealthPlatformCore27FeedItemREElementDataSource : REElementDataSource
 {
     MISSING_TYPE *store;
+    MISSING_TYPE *sourceProfiles;
 }
 
 + (id)contentAttributes;

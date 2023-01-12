@@ -6,37 +6,53 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+#import <HealthDaemon/NSCopying-Protocol.h>
 
-@interface HDHeartDailyAnalytics : NSObject
+@class NSDictionary, NSMutableDictionary;
+
+@interface HDHeartDailyAnalytics : NSObject <NSCopying>
 {
     NSMutableDictionary *_payload;
 }
 
 - (void).cxx_destruct;
-- (void)updateMobileAssetNamesDownloadedPast24Hours:(id)arg1;
+- (void)updateRespiratoryRateCountryCode:(id)arg1;
+- (void)updateIsRespiratoryRateEnabledInPrivacy:(id)arg1;
+- (void)updateIsRespiratoryRateDelivered:(_Bool)arg1;
+- (void)updateMenstrualCyclesHeartRateInputCountryCode:(id)arg1;
+- (void)updateIsMenstrualCyclesHeartRateInputDelivered:(_Bool)arg1;
+- (void)updateIsBradycardiaDetectionEnabled:(_Bool)arg1;
+- (void)updateIsTachycardiaDetectionEnabled:(_Bool)arg1;
+- (void)updateLowHeartRateNotificationThreshold:(id)arg1;
+- (void)updateHighHeartRateNotificationThreshold:(id)arg1;
+- (void)updateGlucoseEnhancedChartingCountryCode:(id)arg1;
+- (void)updateIsGlucoseEnhancedChartingDelivered:(_Bool)arg1;
+- (void)updateLastCountryMonitorFetchBuildNumber:(id)arg1;
+- (void)updateDaysSinceLastCountryMonitorFetch:(id)arg1;
+- (void)updateDaysSinceLastCountryMonitorCheck:(id)arg1;
+- (void)updateSex:(long long)arg1;
+- (void)updateAgeInYears:(id)arg1;
 - (void)updateCountMobileAssetsDownloadedPast24Hours:(long long)arg1;
 - (void)updateCountAnalyzedTachogramsPast24Hours:(long long)arg1;
 - (void)updateCountRecordedTachogramsPast24Hours:(long long)arg1;
 - (void)updateWasWatchWornPast24Hours:(_Bool)arg1;
+- (void)updateIsAtrialFibrillationEnabled:(id)arg1;
 - (void)updateIRNOnboardingCountryCode:(id)arg1;
 - (void)updateECGOnboardingCountryCode:(id)arg1;
 - (void)updateECGUpdateVersionWatch:(id)arg1;
 - (void)updateECGUpdateVersionPhone:(id)arg1;
 - (void)updateECGActiveAlgorithmVersion:(id)arg1;
-- (id)_ecgClassificationWithin24HoursPostIRNKeyFromClassification:(unsigned long long)arg1;
-- (id)_weeksBetweenStartDate:(id)arg1 endDate:(id)arg2;
-- (void)updateWithElectrocardiogramClassifications:(id)arg1;
-- (void)updateWeeksSinceElectrocardiogramOnboardedWithFirstOnboardingCompletedDate:(id)arg1;
-- (void)submit;
+- (void)updateWithElectrocardiogramClassifications:(id)arg1 isWithin24HoursPostIRN:(_Bool)arg2;
+- (void)updateWeeksSinceElectrocardiogramOnboarded:(id)arg1;
+- (void)updateActiveWatchSystemBuildVersion:(id)arg1;
 - (void)updateActiveWatchProductType:(id)arg1;
-- (void)updateIsBradycardiaDetectionEnabled:(_Bool)arg1;
-- (void)updateIsTachycardiaDetectionEnabled:(_Bool)arg1;
 - (void)updateIrregularRhythmNotificationClassificationCount:(long long)arg1;
 - (void)updateElectrocardiogramClassificationCount:(long long)arg1;
 - (void)updateIsImproveHealthAndActivityAllowed:(_Bool)arg1;
 - (void)updateIsIrnOnboarded:(_Bool)arg1;
 - (void)updateIsEcgOnboarded:(_Bool)arg1;
+@property(readonly, copy, nonatomic) NSDictionary *payload;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 
 @end

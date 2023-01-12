@@ -6,9 +6,11 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class EKUILabeledAvatarView, NSArray, UIActivityIndicatorView, UIImageView, UILabel, UIView;
+#import <EventKitUI/EKUILabeledAvatarViewDelegate-Protocol.h>
 
-@interface EKUIInviteesViewInviteesCell : UITableViewCell
+@class EKUILabeledAvatarView, NSArray, NSString, UIActivityIndicatorView, UIImageView, UILabel, UIView;
+
+@interface EKUIInviteesViewInviteesCell : UITableViewCell <EKUILabeledAvatarViewDelegate>
 {
     _Bool _hideStatus;
     _Bool _showSpinner;
@@ -37,12 +39,19 @@
 @property(retain, nonatomic) UILabel *commentLabel; // @synthesize commentLabel=_commentLabel;
 @property(retain, nonatomic) UILabel *nameLabel; // @synthesize nameLabel=_nameLabel;
 @property _Bool hideStatus; // @synthesize hideStatus=_hideStatus;
+- (void)avatarViewDidTapped:(id)arg1;
 - (id)_statusImageViewSymbolConfiguration;
 - (void)updateCommonElements:(id)arg1 statusImage:(id)arg2;
 - (void)updateWithParticipantForSorting:(id)arg1 availabilityType:(long long)arg2 showSpinner:(_Bool)arg3 animated:(_Bool)arg4;
 - (void)updateWithParticipantForSorting:(id)arg1;
 - (void)updateConstraints;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -12,15 +12,14 @@
 #import <FrontBoardServices/FBSSceneSnapshotRequestDelegate-Protocol.h>
 #import <FrontBoardServices/FBSSceneUpdaterDelegate-Protocol.h>
 
-@class FBSSceneClientSettings, FBSSceneIdentityToken, FBSSceneSettings, FBSSceneSpecification, FBSSerialQueue, NSMutableArray, NSOrderedSet, NSString;
+@class FBSSceneClientSettings, FBSSceneDefinition, FBSSceneIdentityToken, FBSSceneSettings, FBSSceneSpecification, FBSSerialQueue, NSMutableArray, NSOrderedSet, NSString;
 @protocol FBSSceneClientAgent, FBSSceneDelegate, FBSSceneUpdater;
 
 @interface FBSScene : NSObject <FBSSceneSnapshotRequestDelegate, FBSSceneHandle, FBSSceneAgentProxy, FBSSceneUpdaterDelegate, BSDescriptionProviding>
 {
     FBSSerialQueue *_callOutQueue;
     NSString *_identifier;
-    NSString *_group;
-    FBSSceneSpecification *_specification;
+    FBSSceneDefinition *_definition;
     _Bool _hasAgent;
     id <FBSSceneClientAgent> _callOutQueue_agent;
     NSMutableArray *_callOutQueue_agentSessions;
@@ -33,23 +32,24 @@
     NSOrderedSet *_lock_layers;
     id <FBSSceneDelegate> _lock_delegate;
     FBSSceneIdentityToken *_identityToken;
+    NSString *__groupID;
 }
 
 + (_Bool)_canHaveAgent;
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSString *_groupID; // @synthesize _groupID=_group;
+@property(readonly, copy, nonatomic) NSString *_groupID; // @synthesize _groupID=__groupID;
 - (_Bool)snapshotRequest:(id)arg1 performWithContext:(id)arg2;
 - (_Bool)snapshotRequestAllowSnapshot:(id)arg1;
 - (void)agent:(id)arg1 sendMessage:(id)arg2 withResponse:(CDUnknownBlockType)arg3;
 - (void)agent:(id)arg1 registerMessageHandler:(CDUnknownBlockType)arg2;
 - (void)closeSession:(id)arg1;
-- (id)sessionForIdentifier:(id)arg1;
 - (id)openSessionWithName:(id)arg1 executionPolicy:(id)arg2;
 - (id)clientProcess;
 - (id)hostProcess;
 - (id)counterpartAgent;
 - (id)callOutQueue;
 - (id)parameters;
+- (id)definition;
 - (void)updater:(id)arg1 didReceiveMessage:(id)arg2 withResponse:(CDUnknownBlockType)arg3;
 - (void)updater:(id)arg1 didReceiveActions:(id)arg2;
 - (void)updater:(id)arg1 didUpdateSettings:(id)arg2 withDiff:(id)arg3 transitionContext:(id)arg4 completion:(CDUnknownBlockType)arg5;
@@ -61,6 +61,7 @@
 - (void)_callOutQueue_agent_willDestroyWithTransitionContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_callOutQueue_agent_didCreateWithTransitionContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)_hasAgent;
+- (id)_group;
 - (void)_callOutQueue_invalidate;
 - (id)_initWithUpdater:(id)arg1 sceneID:(id)arg2 groupID:(id)arg3 specification:(id)arg4 settings:(id)arg5 initialClientSettings:(id)arg6;
 - (void)_callOutQueue_invalidateAgent;

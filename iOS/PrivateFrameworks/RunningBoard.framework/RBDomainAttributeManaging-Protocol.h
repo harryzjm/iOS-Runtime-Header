@@ -6,17 +6,18 @@
 
 #import <RunningBoard/NSObject-Protocol.h>
 
-@class NSArray, NSSet, NSString, RBEntitlementPredicate;
-@protocol RBBundleProperties;
+@class NSArray, NSSet, NSString, RBDomainRestriction, RBEntitlementPredicate;
+@protocol RBAssertionContextProviding;
 
 @protocol RBDomainAttributeManaging <NSObject>
-- (_Bool)areTargetPropertiesValid:(id <RBBundleProperties>)arg1 forAttributeWithDomain:(NSString *)arg2 andName:(NSString *)arg3;
+- (_Bool)areTargetPropertiesValidForContext:(id <RBAssertionContextProviding>)arg1 forAttributeWithDomain:(NSString *)arg2 andName:(NSString *)arg3;
 - (NSSet *)allEntitlements;
 - (_Bool)containsAttributeWithDomain:(NSString *)arg1 andName:(NSString *)arg2;
 - (NSString *)endowmentNamespaceForDomain:(NSString *)arg1 andName:(NSString *)arg2;
+- (RBDomainRestriction *)restrictionsForDomain:(NSString *)arg1 andName:(NSString *)arg2;
 - (NSSet *)additionalRestrictionsForDomain:(NSString *)arg1 andName:(NSString *)arg2;
 - (RBEntitlementPredicate *)targetEntitlementsForDomain:(NSString *)arg1 andName:(NSString *)arg2;
 - (RBEntitlementPredicate *)originatorEntitlementsForDomain:(NSString *)arg1 andName:(NSString *)arg2;
-- (NSArray *)attributesForDomain:(NSString *)arg1 andName:(NSString *)arg2 targetProperties:(id <RBBundleProperties>)arg3 withError:(id *)arg4;
+- (NSArray *)attributesForDomain:(NSString *)arg1 andName:(NSString *)arg2 context:(id <RBAssertionContextProviding>)arg3 withError:(id *)arg4;
 @end
 

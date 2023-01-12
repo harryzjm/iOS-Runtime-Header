@@ -40,7 +40,6 @@
 @property(readonly) NSXPCConnection *connection;
 - (id)initWithXPCClient:(id)arg1 configuration:(id)arg2 profile:(id)arg3;
 - (id)baseDataEntityEncodingOptions;
-- (id)_watchKitAvailabilityFilterForSampleType:(id)arg1;
 - (id)filterWithQueryFilter:(id)arg1 objectType:(id)arg2;
 
 @end

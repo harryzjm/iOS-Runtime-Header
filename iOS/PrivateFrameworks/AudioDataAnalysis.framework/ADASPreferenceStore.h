@@ -10,6 +10,7 @@
 
 @interface ADASPreferenceStore : NSObject
 {
+    struct os_unfair_lock_s _npsDomainLock;
     NSDictionary *_keyMap;
     NSDictionary *_defaultValues;
     NSDictionary *_specialDarwinKeys;
@@ -25,6 +26,7 @@
 @property(readonly, nonatomic) NSDictionary *defaultValues; // @synthesize defaultValues=_defaultValues;
 @property(readonly, nonatomic) NSDictionary *keyMap; // @synthesize keyMap=_keyMap;
 - (id)init;
+- (void)initNPSDomain;
 
 @end
 

@@ -20,9 +20,9 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)collectionWithItems:(id)arg1;
-+ (void)generateCollectionFromDragItems:(id)arg1 allowedItemClasses:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (void)generateCollectionFromPasteboard:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)getContentItemsForPasteboardItems:(id)arg1 resultBlock:(CDUnknownBlockType)arg2;
++ (void)generateCollectionFromDragItems:(id)arg1 allowedItemClasses:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSLock *itemWriteLock; // @synthesize itemWriteLock=_itemWriteLock;
 @property(retain, nonatomic) NSMutableArray *mutableItems; // @synthesize mutableItems=_mutableItems;

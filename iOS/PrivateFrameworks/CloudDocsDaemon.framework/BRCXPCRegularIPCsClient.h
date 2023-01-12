@@ -14,11 +14,14 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)getPausedFilesList:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)fetchLatestVersionForFileAtURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)resumeSyncForFileAtURL:(id)arg1 dropLocalChanges:(_Bool)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)pauseSyncForFileAtURL:(id)arg1 timeout:(double)arg2 options:(long long)arg3 appBundle:(id)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)scheduleDeepScanForContainer:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)checkIfItemIsShareableWithInode:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)capabilityWhenTryingToReparentItemAtURL:(id)arg1 toNewParent:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)moveBRSecurityBookmarkAtURL:(id)arg1 toURL:(id)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)currentSyncedRootURLsWithReply:(CDUnknownBlockType)arg1;
 - (oneway void)updatePrivilegesDescriptor;
 - (void)overwriteAccessTimeForItemAtURL:(id)arg1 atime:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)lookupMinFileSizeForThumbnailTransferWithReply:(CDUnknownBlockType)arg1;
@@ -39,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)getCreatorNameComponentsForURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)startOperation:(id)arg1 toCopyShareURLForShare:(id)arg2 appName:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)copyBulkShareIDsAtURLs:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)startOperation:(id)arg1 toAcceptShareLink:(id)arg2 skipAcceptDialogs:(_Bool)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)startOperation:(id)arg1 toProcessSubitemsAtURL:(id)arg2 maxSubsharesFailures:(unsigned long long)arg3 processType:(unsigned long long)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)startOperation:(id)arg1 toPrepFolderForSharingAt:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)startOperation:(id)arg1 toCopyEtagAtURL:(id)arg2 reply:(CDUnknownBlockType)arg3;
@@ -88,11 +92,18 @@ __attribute__((visibility("hidden")))
 - (void)setMigrationStatus:(BOOL)arg1 forDSID:(id)arg2 shouldUpdateAccount:(_Bool)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)getContainersNeedingUpload:(CDUnknownBlockType)arg1;
 - (void)jetsamCloudDocsAppsWithReply:(CDUnknownBlockType)arg1;
-- (void)currentAccountLogoutWithReply:(CDUnknownBlockType)arg1;
+- (void)invalidateAccountCacheWithReply:(CDUnknownBlockType)arg1;
+- (void)updateAccountDisplayName:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)logoutAccountWithACAccountID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)_unregisterPrematurely;
-- (void)currentAccountCreateWithID:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)launchTelemetryConsistencyChecksAtURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)createAccountWithACAccountID:(id)arg1 dsid:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)cancelTreeConsistencyCheckWithReply:(CDUnknownBlockType)arg1;
+- (void)resumeSyncConsistencyWithReply:(CDUnknownBlockType)arg1;
+- (void)pauseSyncConsistencyWithReply:(CDUnknownBlockType)arg1;
+- (void)launchSyncConsistencyChecksWithReply:(CDUnknownBlockType)arg1;
+- (void)launchItemCountMismatchChecksAtURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)readerThrottleBackoffForDocumentAtPath:(id)arg1 containerID:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)_readerThrottleBackoffForDocumentAtPath:(id)arg1 session:(id)arg2 containerID:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)dropSpotlightIndexWithReply:(CDUnknownBlockType)arg1;
 - (void)reclaimAmount:(long long)arg1 withUrgency:(int)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)purgeAmount:(long long)arg1 withUrgency:(int)arg2 reply:(CDUnknownBlockType)arg3;
@@ -108,6 +119,7 @@ __attribute__((visibility("hidden")))
 - (void)healthStatusStringForContainer:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)simulateHealthIssueWithContainer:(id)arg1 status:(id)arg2 brokenStructure:(_Bool)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)gatherInformationForPath:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)_gatherInformationForPath:(id)arg1 session:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)dumpCoordinationInfoTo:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)dumpDatabaseTo:(id)arg1 containerID:(id)arg2 includeAllItems:(_Bool)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)printStatus:(id)arg1 containerID:(id)arg2 reply:(CDUnknownBlockType)arg3;
@@ -119,8 +131,10 @@ __attribute__((visibility("hidden")))
 - (void)didReceiveHandoffRequestForBundleID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)resolveConflictWithName:(id)arg1 atURL:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)getContainerForURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)_getContainerForURL:(id)arg1 session:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)getContainersByID:(CDUnknownBlockType)arg1;
 - (void)addExternalDocumentReferenceTo:(id)arg1 inContainer:(id)arg2 underParent:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)_addExternalDocumentReferenceTo:(id)arg1 session:(id)arg2 inContainer:(id)arg3 underParent:(id)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)iCloudDesktopSettingsChangedWithAttributes:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)evictOldDocumentsWithReply:(CDUnknownBlockType)arg1;
 - (void)getEvictableSpaceWithReply:(CDUnknownBlockType)arg1;
@@ -128,6 +142,9 @@ __attribute__((visibility("hidden")))
 - (void)hasOptimizeStorageWithReply:(CDUnknownBlockType)arg1;
 - (void)getApplicationDocumentUsageInfoForBundleID:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)getTotalApplicationDocumentUsageWithReply:(CDUnknownBlockType)arg1;
+- (void)queryLoggedInAccountDescriptorsWithReply:(CDUnknownBlockType)arg1;
+- (void)querySyncedRootURLsForPersona:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)queryPathsForPersona:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getNonLocalVersionSenderWithReceiver:(id)arg1 documentURL:(id)arg2 includeCachedVersions:(_Bool)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)getItemUpdateSenderWithReceiver:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)thumbnailChangedForItemAtURL:(id)arg1 reply:(CDUnknownBlockType)arg2;

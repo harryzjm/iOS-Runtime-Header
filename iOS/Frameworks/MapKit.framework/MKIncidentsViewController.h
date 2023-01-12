@@ -4,20 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString;
+@class GEOComposedRouteAdvisory, NSArray, NSString;
 
 @interface MKIncidentsViewController
 {
     NSArray *_sections;
     NSArray *_transitIncidents;
     NSArray *_restrictionIncidents;
-    NSArray *_notices;
+    NSArray *_advisoryCards;
     NSString *_incidentsTitle;
+    GEOComposedRouteAdvisory *_advisory;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) GEOComposedRouteAdvisory *advisory; // @synthesize advisory=_advisory;
 @property(readonly, nonatomic) NSString *incidentsTitle; // @synthesize incidentsTitle=_incidentsTitle;
-@property(copy, nonatomic) NSArray *notices; // @synthesize notices=_notices;
+@property(copy, nonatomic) NSArray *advisoryCards; // @synthesize advisoryCards=_advisoryCards;
 @property(copy, nonatomic) NSArray *restrictionIncidents; // @synthesize restrictionIncidents=_restrictionIncidents;
 @property(copy, nonatomic) NSArray *transitIncidents; // @synthesize transitIncidents=_transitIncidents;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
@@ -33,6 +35,7 @@
 - (long long)_transitIncidentIndexForRow:(long long)arg1 section:(long long)arg2;
 - (unsigned long long)_transitIncidentsCount;
 - (unsigned long long)_incidentsCount;
+- (id)_advisoryItemCellForIndex:(long long)arg1;
 - (id)_noticeCellForIndex:(long long)arg1;
 - (id)_transitCellForIndex:(long long)arg1 inSection:(long long)arg2;
 - (id)_restrictionCellForIndex:(long long)arg1;
@@ -42,6 +45,7 @@
 - (void)reloadDataSource;
 - (void)_updateTitle;
 - (void)infoCardThemeChanged;
+- (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (id)initWithRestrictionIncidents:(id)arg1;
 - (id)initWithTransitIncidents:(id)arg1;

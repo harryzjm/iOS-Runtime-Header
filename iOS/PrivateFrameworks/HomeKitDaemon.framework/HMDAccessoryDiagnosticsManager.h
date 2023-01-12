@@ -41,8 +41,10 @@
 @property(readonly) __weak HMDHAPAccessory *accessory; // @synthesize accessory=_accessory;
 - (id)logIdentifier;
 - (void)_clearCurrentDiagnosticsSession:(id)arg1;
-- (void)_readDiagnosticsDataWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_handleDiagnosticsTransferRequestWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_readDiagnosticsDataWithCloudKitMetadataRequirement:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_handleDiagnosticsTransferRequestWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_readRequiredDiagnosticCharacteristicsIfNeededWithCompletion:(CDUnknownBlockType)arg1;
+- (_Bool)_isRequestSupported:(id)arg1;
 - (void)_notifyClientsOfDiagnosticsTransferSupportUpdated;
 - (void)_updateDiagnosticSettings;
 - (void)_registerForMessagesAndNotifications;

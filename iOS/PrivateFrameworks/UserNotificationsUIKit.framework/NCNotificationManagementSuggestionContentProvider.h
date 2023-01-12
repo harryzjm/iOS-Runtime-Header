@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UserNotificationsUIKit/NCNotificationManagementSuggestionContentProviding-Protocol.h>
+#import <UserNotificationsUIKit/NCSuggestionContentProviding-Protocol.h>
 
 @class NSString;
 @protocol NCNotificationManagementSuggestionDelegate;
 
-@interface NCNotificationManagementSuggestionContentProvider <NCNotificationManagementSuggestionContentProviding>
+@interface NCNotificationManagementSuggestionContentProvider <NCSuggestionContentProviding>
 {
     _Bool _auxiliaryOptionsVisible;
     NSString *_optionsSummaryText;

@@ -27,17 +27,17 @@
     NSArray *_collectionTileImageOverlaySpecs;
     NSArray *_collectionTileImageOverlaySpecsHighlighted;
     NSCache *__viewSpecCache;
-    PXExtendedTraitCollection *__extendedTraitCollection;
     PXLayoutMetricInterpolator *__horizontalContentGuideInsetsInterpolator;
+    PXExtendedTraitCollection *_extendedTraitCollection;
     struct CGSize _layoutReferenceSize;
     struct UIEdgeInsets _safeAreaInsets;
     struct UIEdgeInsets _layoutMargins;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) PXExtendedTraitCollection *extendedTraitCollection; // @synthesize extendedTraitCollection=_extendedTraitCollection;
 @property(readonly, nonatomic) _Bool _shouldUseMiniMargins; // @synthesize _shouldUseMiniMargins=__shouldUseMiniMargins;
 @property(readonly, nonatomic) PXLayoutMetricInterpolator *_horizontalContentGuideInsetsInterpolator; // @synthesize _horizontalContentGuideInsetsInterpolator=__horizontalContentGuideInsetsInterpolator;
-@property(readonly, nonatomic) PXExtendedTraitCollection *_extendedTraitCollection; // @synthesize _extendedTraitCollection=__extendedTraitCollection;
 @property(readonly, nonatomic) NSCache *_viewSpecCache; // @synthesize _viewSpecCache=__viewSpecCache;
 @property(readonly, nonatomic) _Bool shouldInsetAllPhotoDetailsContent; // @synthesize shouldInsetAllPhotoDetailsContent=_shouldInsetAllPhotoDetailsContent;
 @property(readonly, nonatomic) NSArray *collectionTileImageOverlaySpecsHighlighted; // @synthesize collectionTileImageOverlaySpecsHighlighted=_collectionTileImageOverlaySpecsHighlighted;
@@ -68,6 +68,7 @@
 @property(readonly, nonatomic) UIColor *defaultPlaceholderColor;
 @property(readonly, nonatomic) double defaultCornerRadius;
 @property(readonly, nonatomic) UIColor *defaultBackgroundColor;
+@property(readonly, nonatomic) PXExtendedTraitCollection *rootExtendedTraitCollection;
 - (id)fullscreenMiroViewSpecWithBoundingSize:(struct CGSize)arg1;
 - (id)fullscreenMiroViewSpec;
 - (struct UIEdgeInsets)_fullscreenContentInsetsForWidth:(double)arg1;

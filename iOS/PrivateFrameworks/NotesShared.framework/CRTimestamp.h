@@ -40,8 +40,8 @@
 - (void)mergeWith:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithReplica:(id)arg1 andCounter:(long long)arg2;
-- (void)encodeIntoProtobufTimestamp:(struct Timestamp *)arg1 coder:(id)arg2;
-- (id)initWithProtobufTimestamp:(const struct Timestamp *)arg1 decoder:(id)arg2;
+- (void)encodeIntoProtobufTimestamp:(void *)arg1 coder:(id)arg2;
+- (id)initWithProtobufTimestamp:(const void *)arg1 decoder:(id)arg2;
 - (void)encodeWithCRCoder:(id)arg1;
 - (id)initWithCRCoder:(id)arg1;
 

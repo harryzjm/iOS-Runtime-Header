@@ -10,7 +10,6 @@
 
 @class NSArray;
 
-__attribute__((visibility("hidden")))
 @interface CKDFetchRecordPCSDiagnosticsOperationInfo : CKDatabaseOperationInfo <NSSecureCoding>
 {
     NSArray *_recordZoneIDs;

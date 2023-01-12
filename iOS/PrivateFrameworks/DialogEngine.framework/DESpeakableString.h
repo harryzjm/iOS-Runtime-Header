@@ -10,10 +10,10 @@
 
 @interface DESpeakableString : NSObject
 {
-    struct SpeakableString *_This;
+    void *_This;
 }
 
-@property struct SpeakableString *This; // @synthesize This=_This;
+@property void *This; // @synthesize This=_This;
 - (_Bool)isEqual:(id)arg1;
 @property(retain) NSString *speak;
 @property(retain) NSString *print;

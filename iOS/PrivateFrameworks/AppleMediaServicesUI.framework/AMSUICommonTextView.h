@@ -8,7 +8,12 @@
 
 @interface AMSUICommonTextView : UITextView
 {
+    _Bool _centerText;
 }
+
+@property(nonatomic) _Bool centerText; // @synthesize centerText=_centerText;
+- (void)_centerTextIfNeeded;
+- (void)layoutSubviews;
 
 @end
 

@@ -10,6 +10,7 @@
 {
     _Bool _wantsHDREnvironmentTextures;
     _Bool _automaticImageScaleEstimationEnabled;
+    _Bool _appClipCodeTrackingEnabled;
     long long _environmentTexturing;
     unsigned long long _planeDetection;
     NSSet *_detectionImages;
@@ -17,10 +18,12 @@
     NSSet *_detectionObjects;
 }
 
++ (_Bool)supportsAppClipCodeTracking;
 + (void)checkAvailabilityAtCoordinate:(struct CLLocationCoordinate2D)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)checkAvailabilityWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (id)new;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool appClipCodeTrackingEnabled; // @synthesize appClipCodeTrackingEnabled=_appClipCodeTrackingEnabled;
 @property(copy, nonatomic) NSSet *detectionObjects; // @synthesize detectionObjects=_detectionObjects;
 @property(nonatomic) long long maximumNumberOfTrackedImages; // @synthesize maximumNumberOfTrackedImages=_maximumNumberOfTrackedImages;
 @property(nonatomic) _Bool automaticImageScaleEstimationEnabled; // @synthesize automaticImageScaleEstimationEnabled=_automaticImageScaleEstimationEnabled;

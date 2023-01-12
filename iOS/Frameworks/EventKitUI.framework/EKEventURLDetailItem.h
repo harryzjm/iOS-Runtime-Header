@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (_Bool)hasDetailViewControllerAtIndex:(unsigned long long)arg1;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
-- (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
+- (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2 forceUpdate:(_Bool)arg3;
 - (_Bool)configureWithCalendar:(id)arg1 preview:(_Bool)arg2;
 - (void)reset;
 

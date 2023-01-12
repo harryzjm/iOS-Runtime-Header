@@ -16,6 +16,10 @@
     NSOrderedSet *_orderedDomains;
 }
 
++ (id)activateManualDomain:(id)arg1;
++ (id)registerDynamicDomainsFromPlist:(id)arg1;
++ (id)extendAutomaticBootstrapCompletion;
++ (id)bootstrapConfiguration;
 + (id)defaultConfiguration;
 - (void).cxx_destruct;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;

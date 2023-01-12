@@ -24,11 +24,13 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)awaitQueue;
+- (id)contactNameForIdentifier:(id)arg1;
 - (BOOL)readMeCardAddressStringsWithHandler:(CDUnknownBlockType)arg1;
 - (void)contactsDidUpdate;
 - (BOOL)readMeCardWithHandler:(CDUnknownBlockType)arg1;
-- (void)removeMeCardObserver:(id)arg1;
-- (void)addMeCardObserver:(id)arg1;
+- (void)unregisterMeCardObserver:(id)arg1;
+- (void)registerMeCardObserver:(id)arg1;
 @property(readonly, nonatomic) NSString *uniqueName;
 - (void)dealloc;
 - (id)initFromResourceDepot:(id)arg1;

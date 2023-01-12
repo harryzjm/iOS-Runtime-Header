@@ -7,15 +7,19 @@
 #import <objc/NSObject.h>
 
 #import <iTunesCloud/ICDeveloperTokenProvider-Protocol.h>
+#import <iTunesCloud/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface ICDeveloperTokenDefaultProvider : NSObject <ICDeveloperTokenProvider>
+@interface ICDeveloperTokenDefaultProvider : NSObject <ICDeveloperTokenProvider, NSSecureCoding>
 {
 }
 
++ (_Bool)supportsSecureCoding;
 - (void)invalidateCachedDeveloperTokenForClientInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchDeveloperTokenForClientInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 

@@ -9,7 +9,7 @@
 #import <AssistantServices/NSCopying-Protocol.h>
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
-@class NSData;
+@class NSData, NSString;
 
 @interface AFAnalyticsEvent : NSObject <NSCopying, NSSecureCoding>
 {
@@ -18,11 +18,15 @@
     unsigned long long _timestamp;
     long long _contextDataType;
     NSData *_contextData;
+    NSString *_assistantId;
+    NSString *_speechId;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)eventsReferenceTime;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *speechId; // @synthesize speechId=_speechId;
+@property(copy, nonatomic) NSString *assistantId; // @synthesize assistantId=_assistantId;
 @property(readonly, copy, nonatomic) NSData *contextData; // @synthesize contextData=_contextData;
 @property(readonly, nonatomic) long long contextDataType; // @synthesize contextDataType=_contextDataType;
 @property(readonly, nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;

@@ -88,10 +88,9 @@
 + (id)anyInLibrary:(id)arg1 predicate:(id)arg2 options:(long long)arg3;
 + (id)anyInLibrary:(id)arg1 predicate:(id)arg2;
 + (id)aggregateQueryWithUnitQuery:(id)arg1 foreignPersistentIDProperty:(id)arg2;
-+ (id)replacerWithProperties:(id)arg1 library:(id)arg2;
 - (void).cxx_destruct;
-@property(readonly) long long persistentID; // @synthesize persistentID=_persistentID;
-@property __weak ML3MusicLibrary *library; // @synthesize library=_library;
+@property(readonly, nonatomic) long long persistentID; // @synthesize persistentID=_persistentID;
+@property(nonatomic) __weak ML3MusicLibrary *library; // @synthesize library=_library;
 - (void)incrementRevision;
 - (_Bool)deleteFromLibrary;
 - (void)didChangeValueForProperties:(id)arg1;
@@ -106,12 +105,11 @@
 - (void)getValues:(id *)arg1 forProperties:(const id *)arg2 count:(unsigned long long)arg3;
 - (id)URL;
 - (_Bool)matchesPredicate:(id)arg1;
-@property(readonly) _Bool existsInLibrary;
+@property(readonly, nonatomic) _Bool existsInLibrary;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)copyInLibrary:(id)arg1;
 - (id)initWithDictionary:(id)arg1 inLibrary:(id)arg2 cachedNameOrders:(id)arg3 usingConnection:(id)arg4;
 - (id)initWithDictionary:(id)arg1 inLibrary:(id)arg2 cachedNameOrders:(id)arg3;
 - (id)initWithPersistentID:(long long)arg1 inLibrary:(id)arg2;

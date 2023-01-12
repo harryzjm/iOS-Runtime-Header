@@ -14,9 +14,9 @@
 __attribute__((visibility("hidden")))
 @interface WebFramePolicyListener : NSObject <WebPolicyDecisionListener, WebFormSubmissionListener>
 {
-    struct RefPtr<WebCore::Frame, WTF::DumbPtrTraits<WebCore::Frame>> _frame;
+    struct RefPtr<WebCore::Frame, WTF::RawPtrTraits<WebCore::Frame>, WTF::DefaultRefDerefTraits<WebCore::Frame>> _frame;
     struct PolicyCheckIdentifier _identifier;
-    Function_b3117096 _policyFunction;
+    struct Function<void (WebCore::PolicyAction, WebCore::PolicyCheckIdentifier)> _policyFunction;
     struct RetainPtr<NSURL> _appLinkURL;
     unsigned char _defaultPolicy;
 }
@@ -31,8 +31,8 @@ __attribute__((visibility("hidden")))
 - (void)receivedPolicyDecision:(unsigned char)arg1;
 - (void)dealloc;
 - (void)invalidate;
-- (id)initWithFrame:(NakedPtr_4ac97545)arg1 identifier:(struct PolicyCheckIdentifier)arg2 policyFunction:(Function_b3117096 *)arg3 defaultPolicy:(unsigned char)arg4 appLinkURL:(id)arg5;
-- (id)initWithFrame:(NakedPtr_4ac97545)arg1 identifier:(struct PolicyCheckIdentifier)arg2 policyFunction:(Function_b3117096 *)arg3 defaultPolicy:(unsigned char)arg4;
+- (id)initWithFrame:(NakedPtr_4ac97545)arg1 identifier:(struct PolicyCheckIdentifier)arg2 policyFunction:(void *)arg3 defaultPolicy:(unsigned char)arg4 appLinkURL:(id)arg5;
+- (id)initWithFrame:(NakedPtr_4ac97545)arg1 identifier:(struct PolicyCheckIdentifier)arg2 policyFunction:(void *)arg3 defaultPolicy:(unsigned char)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

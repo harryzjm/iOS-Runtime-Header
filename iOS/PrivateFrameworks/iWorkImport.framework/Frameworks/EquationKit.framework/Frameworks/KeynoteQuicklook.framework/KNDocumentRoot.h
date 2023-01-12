@@ -45,8 +45,6 @@
 - (id)resolverContainerForName:(id)arg1 caseSensitive:(_Bool)arg2;
 - (id)nameForResolverContainer:(id)arg1;
 - (id)resolverContainerNameForResolver:(id)arg1;
-- (void)changeShowThemeUsingTemplate:(id)arg1 themeDocumentRoot:(id)arg2 toSize:(struct CGSize)arg3 keepChangesToThemeDefaults:(_Bool)arg4 commandGroupActionStringOverride:(id)arg5;
-- (void)changeShowSizeTo:(struct CGSize)arg1;
 - (id)slideNodeForClearedShow;
 - (id)stylesToNotResizeInStylesheet:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
@@ -75,8 +73,8 @@
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)p_hyperlinkAndBreadcrumbUpgradeForUnity20SlideNodes:(id)arg1;
-- (void)saveToArchive:(struct DocumentArchive *)arg1 archiver:(id)arg2;
-- (void)loadFromArchive:(const struct DocumentArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

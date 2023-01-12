@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <AssistantServices/AFDictionaryConvertible-Protocol.h>
 #import <AssistantServices/NSCopying-Protocol.h>
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface AFCallSiteInfo : NSObject <NSCopying, NSSecureCoding>
+@interface AFCallSiteInfo : NSObject <NSCopying, NSSecureCoding, AFDictionaryConvertible>
 {
     NSString *_imagePath;
     NSString *_symbolName;
@@ -22,15 +23,21 @@
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *symbolName; // @synthesize symbolName=_symbolName;
 @property(readonly, copy, nonatomic) NSString *imagePath; // @synthesize imagePath=_imagePath;
+- (id)buildDictionaryRepresentation;
+- (id)initWithDictionaryRepresentation:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (id)_descriptionWithIndent:(unsigned long long)arg1;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (id)initWithImagePath:(id)arg1 symbolName:(id)arg2;
 - (id)mutatedCopyWithMutator:(CDUnknownBlockType)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

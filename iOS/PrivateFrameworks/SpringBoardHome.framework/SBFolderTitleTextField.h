@@ -16,20 +16,20 @@
 }
 
 + (id)_clearButtonImage;
-+ (id)_editBackgroundImage;
 + (void)warmupIfNecessary;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool showingEditUI; // @synthesize showingEditUI=_showingEditUI;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property(nonatomic) _Bool allowsEditing; // @synthesize allowsEditing=_allowsEditing;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
-- (id)_clearButtonImage;
-- (id)_backgroundImage;
+- (_Bool)canBecomeFocused;
 - (void)_updateLegibility;
 - (struct CGRect)clearButtonRectForBounds:(struct CGRect)arg1;
 - (struct CGRect)editingRectForBounds:(struct CGRect)arg1;
 - (struct CGRect)textRectForBounds:(struct CGRect)arg1;
 - (struct CGRect)_textRectForBounds:(struct CGRect)arg1;
+- (struct CGRect)borderRectForBounds:(struct CGRect)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 @property(nonatomic) double fontSize;
 - (void)setShowsEditUI:(_Bool)arg1 animated:(_Bool)arg2;

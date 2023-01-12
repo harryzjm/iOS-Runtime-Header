@@ -21,6 +21,7 @@
     NSString *_identifier;
     long long __renderingMode;
     CDStruct_8caa76fc _imageSize;
+    CDStruct_8caa76fc _preferredScaledSize;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -37,6 +38,7 @@
 + (void)buildFromCachePayload:(id)arg1 identifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 @property(nonatomic, setter=_setRenderingMode:) long long _renderingMode; // @synthesize _renderingMode=__renderingMode;
+@property(nonatomic, setter=_setPreferredScaledSize:) CDStruct_8caa76fc _preferredScaledSize; // @synthesize _preferredScaledSize;
 @property(nonatomic, setter=_setImageSize:) CDStruct_8caa76fc _imageSize; // @synthesize _imageSize;
 @property(copy, nonatomic, setter=_setIdentifier:) NSString *_identifier; // @synthesize _identifier;
 - (id)initWithCoder:(id)arg1;
@@ -59,6 +61,7 @@
 @property(copy, nonatomic, setter=_setName:) NSString *_name;
 @property(copy, nonatomic, setter=_setUri:) NSURL *_uri;
 @property(copy, nonatomic, setter=_setImageData:) NSData *_imageData;
+- (id)_proxiedImageWithError:(id *)arg1;
 - (void)_requestProxy:(CDUnknownBlockType)arg1;
 - (void)_retrieveImageDataWithReply:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) _Bool _requiresRetrieval;

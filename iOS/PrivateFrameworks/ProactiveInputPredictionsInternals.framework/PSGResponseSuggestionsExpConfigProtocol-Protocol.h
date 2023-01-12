@@ -9,9 +9,11 @@
 @class NSString;
 
 @protocol PSGResponseSuggestionsExpConfigProtocol <PSGExpConfigProtocol>
+@property(readonly, nonatomic) _Bool isMLModelEnabled;
+@property(readonly, nonatomic) NSString *language;
 @property(readonly, nonatomic) NSString *espressoBinFilePath;
 @property(readonly, nonatomic) NSString *inferenceModelConfigPath;
 @property(readonly, nonatomic) NSString *inferenceModelFilePath;
-@property(readonly, nonatomic) _Bool isMLModelEnabled;
+@property(readonly, nonatomic) NSString *treatmentName;
 @end
 

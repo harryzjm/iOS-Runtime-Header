@@ -12,8 +12,6 @@
     unsigned long long _count;
 }
 
-@property(readonly) unsigned long long count; // @synthesize count=_count;
-@property(readonly) const unsigned int *storage; // @synthesize storage=_storage;
 - (id)init;
 - (id)initWithStorage:(const unsigned int *)arg1 count:(unsigned long long)arg2;
 

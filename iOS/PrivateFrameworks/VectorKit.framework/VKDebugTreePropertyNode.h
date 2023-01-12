@@ -6,16 +6,16 @@
 
 @interface VKDebugTreePropertyNode
 {
-    const struct DebugTreeProperty *_property;
+    const void *_property;
 }
 
-- (id)idValueForTreeValue:(const struct DebugTreeValue *)arg1;
+- (id)idValueForTreeValue:(const void *)arg1;
 - (void)searchNodes:(id)arg1 withParameter:(id)arg2;
 - (id)tagsColumn;
 - (id)valueColumn;
 - (id)propertyColumn;
 - (id)name;
-- (id)initWithDebugTreeProperty:(const struct DebugTreeProperty *)arg1 withParent:(id)arg2;
+- (id)initWithDebugTreeProperty:(const void *)arg1 withParent:(id)arg2;
 
 @end
 

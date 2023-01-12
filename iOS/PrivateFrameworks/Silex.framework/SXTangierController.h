@@ -100,7 +100,7 @@
 - (id)topLevelLayersForInteractiveCanvasController:(id)arg1;
 - (id)topLevelRepsForInteractiveCanvasController:(id)arg1;
 - (struct CGPoint)pointForCharacterAtIndex:(unsigned long long)arg1 inComponentWithIdentifier:(id)arg2;
-- (id)scrollPositionForRect:(struct CGRect)arg1 componentRect:(struct CGRect)arg2 componentIdentifier:(id)arg3 canvasWidth:(double)arg4 relativePageOffset:(double)arg5;
+- (id)scrollPositionForVisibleBounds:(struct CGRect)arg1 canvasWidth:(double)arg2;
 - (void)setUnscaledCanvasRect:(struct CGRect)arg1;
 - (void)updateCanvasSize:(struct CGSize)arg1 forComponentViews:(id)arg2;
 - (void)clearSelection;
@@ -111,7 +111,7 @@
 - (void)teardown;
 - (void)updatePresentationState;
 - (void)viewport:(id)arg1 appearStateChangedFromState:(unsigned long long)arg2;
-- (id)initWithViewport:(id)arg1 scrollView:(id)arg2 componentActionHandler:(id)arg3 dragItemProvider:(id)arg4 componentController:(id)arg5 componentInteractionManager:(id)arg6 DOMObjectProvider:(id)arg7;
+- (id)initWithViewport:(id)arg1 scrollView:(id)arg2 componentActionHandler:(id)arg3 dragItemProvider:(id)arg4 componentController:(id)arg5 componentInteractionManager:(id)arg6 DOMObjectProvider:(id)arg7 adIgnorableViewFactory:(id)arg8;
 
 // Remaining properties
 @property(readonly, nonatomic) _Bool allowEditMenuToAppear;

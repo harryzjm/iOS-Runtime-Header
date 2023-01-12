@@ -12,11 +12,15 @@
 }
 
 + (id)signpostLog;
++ (id)additionalNotificationTypes;
 - (void).cxx_destruct;
 - (id)initWithQueryDelegate:(id)arg1 predicate:(id)arg2;
+- (void)fetchQueryContentsWithCallbackQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchQueryContents:(CDUnknownBlockType)arg1;
 - (void)fetchContentsWithCallbackQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchContents:(CDUnknownBlockType)arg1;
 - (id)initWithDelegate:(id)arg1;
+- (id)initWithOptions:(id)arg1 delegate:(id)arg2;
 
 @end
 

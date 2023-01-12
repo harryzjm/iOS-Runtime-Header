@@ -14,6 +14,11 @@
     MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *configurationManager;
     MISSING_TYPE *subscriptionExpiryManager;
+    MISSING_TYPE *purchaseAdContextEntriesManager;
+    MISSING_TYPE *router;
+    MISSING_TYPE *sceneProvider;
+    MISSING_TYPE *networkReachability;
+    MISSING_TYPE *entitlementService;
 }
 
 @end

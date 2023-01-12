@@ -11,12 +11,12 @@
 @interface AVTStickerPagingCollectionViewCell : UICollectionViewCell
 {
     UIView *_pageContentView;
-    struct UIEdgeInsets _additionnalContentInsets;
+    struct UIEdgeInsets _additionalContentInsets;
 }
 
 + (id)cellIdentifier;
 - (void).cxx_destruct;
-@property(nonatomic) struct UIEdgeInsets additionnalContentInsets; // @synthesize additionnalContentInsets=_additionnalContentInsets;
+@property(nonatomic) struct UIEdgeInsets additionalContentInsets; // @synthesize additionalContentInsets=_additionalContentInsets;
 @property(retain, nonatomic) UIView *pageContentView; // @synthesize pageContentView=_pageContentView;
 - (void)prepareForReuse;
 - (void)layoutSubviews;

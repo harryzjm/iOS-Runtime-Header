@@ -8,10 +8,12 @@
 
 @interface _TtC15MediaFoundation11PausedState
 {
+    MISSING_TYPE *reason;
     MISSING_TYPE *metadata;
     MISSING_TYPE *playbackDidStopWasProcessed;
     MISSING_TYPE *signalOnEnter;
     MISSING_TYPE *fadeOut;
+    MISSING_TYPE *suppressed;
 }
 
 @end

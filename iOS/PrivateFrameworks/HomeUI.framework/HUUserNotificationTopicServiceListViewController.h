@@ -22,6 +22,7 @@
 - (_Bool)_shouldShowFaceRecognition;
 - (id)presentFaceRecognitionAddPersonSettingsForUnknownPersonEvent:(id)arg1 animated:(_Bool)arg2;
 - (id)presentFaceRecognitionPersonSettingsForPerson:(id)arg1 personManager:(id)arg2 animated:(_Bool)arg3;
+- (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (id)showNotificationSettingsForHomeKitObject:(id)arg1 animated:(_Bool)arg2;
 - (id)buildItemModuleControllerForModule:(id)arg1;
 - (id)initWithHome:(id)arg1 topic:(id)arg2;

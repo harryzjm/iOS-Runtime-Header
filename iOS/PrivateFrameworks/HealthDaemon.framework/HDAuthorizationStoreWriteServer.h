@@ -17,7 +17,7 @@
 + (_Bool)validateClient:(id)arg1 error:(id *)arg2;
 - (id)remoteInterface;
 - (id)exportedInterface;
-- (void)remote_setObjectAuthorizationStatuses:(id)arg1 forBundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)remote_setObjectAuthorizationStatuses:(id)arg1 forBundleIdentifier:(id)arg2 sessionIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)remote_setRequestedAuthorizationForBundleIdentifier:(id)arg1 shareTypes:(id)arg2 readTypes:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)remote_setAuthorizationStatuses:(id)arg1 authorizationModes:(id)arg2 forBundleIdentifier:(id)arg3 options:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
 

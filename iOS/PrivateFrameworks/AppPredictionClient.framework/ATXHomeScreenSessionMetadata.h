@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AppPredictionClient/NSSecureCoding-Protocol.h>
+#import <AppPredictionClient/ATXProactiveSuggestionUIFeedbackSessionMetadataProtocol-Protocol.h>
 
 @class NSString;
 
-@interface ATXHomeScreenSessionMetadata : NSObject <NSSecureCoding>
+@interface ATXHomeScreenSessionMetadata : NSObject <ATXProactiveSuggestionUIFeedbackSessionMetadataProtocol>
 {
     _Bool _isWidgetInTodayView;
     NSString *_widgetUniqueId;
@@ -24,10 +24,15 @@
 @property(retain, nonatomic) NSString *widgetUniqueId; // @synthesize widgetUniqueId=_widgetUniqueId;
 - (_Bool)isEqualToATXHomeScreenSessionMetadata:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+@property(readonly, copy) NSString *description;
 - (id)initWithWidgetUniqueId:(id)arg1 widgetBundleId:(id)arg2 isWidgetInTodayView:(_Bool)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

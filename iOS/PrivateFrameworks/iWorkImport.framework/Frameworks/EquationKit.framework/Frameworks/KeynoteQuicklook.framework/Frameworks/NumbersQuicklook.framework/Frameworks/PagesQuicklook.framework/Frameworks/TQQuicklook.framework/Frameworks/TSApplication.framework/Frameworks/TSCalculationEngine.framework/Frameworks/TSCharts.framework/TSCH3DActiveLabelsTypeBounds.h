@@ -15,6 +15,7 @@
     NSNumber *_activeType;
 }
 
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSNumber *activeType; // @synthesize activeType=_activeType;
 - (_Bool)resetIndex:(long long)arg1;
 - (_Bool)hasAnyCachedBoundsAtIndices:(id)arg1;
@@ -24,7 +25,6 @@
 - (void)addBounds:(id)arg1;
 - (_Bool)setActiveType:(long long)arg1;
 @property(readonly, retain, nonatomic) NSIndexSet *activeIndices;
-- (void)dealloc;
 - (id)init;
 
 @end

@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+@class CHDataDetectorQueryItem, DDScannerResult;
 
-@class CHDataDetectorQueryItem, DDScannerResult, NSSet, UIBezierPath;
-
-@interface PKDataDetectorQueryItem : NSObject
+@interface PKDataDetectorQueryItem
 {
     CHDataDetectorQueryItem *_coreHandwritingDataDetectorQueryItem;
 }
@@ -16,9 +14,9 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) CHDataDetectorQueryItem *coreHandwritingDataDetectorQueryItem; // @synthesize coreHandwritingDataDetectorQueryItem=_coreHandwritingDataDetectorQueryItem;
 - (_Bool)isEqual:(id)arg1;
-@property(readonly, nonatomic) UIBezierPath *baselinePath;
+- (id)baselinePath;
 @property(readonly, nonatomic) DDScannerResult *scannerResult;
-@property(readonly, nonatomic) NSSet *strokeIdentifiers;
+- (id)strokeIdentifiers;
 - (id)initWithCoreHandwritingDataDetectorQueryItem:(id)arg1;
 
 @end

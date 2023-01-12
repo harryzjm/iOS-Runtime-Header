@@ -9,13 +9,14 @@
 #import <WorkflowKit/IDSServiceDelegate-Protocol.h>
 #import <WorkflowKit/WFRemoteExecutionSessionDelegate-Protocol.h>
 
-@class IDSService, NSMutableArray, NSString;
+@class IDSService, NSMapTable, NSMutableArray, NSString;
 @protocol OS_dispatch_queue;
 
 @interface WFRemoteExecutionCoordinator : NSObject <WFRemoteExecutionSessionDelegate, IDSServiceDelegate>
 {
     _Bool _allowRunRequests;
     NSMutableArray *_activeSessions;
+    NSMapTable *_completionsForSessions;
     IDSService *_service;
     NSObject<OS_dispatch_queue> *_queue;
 }
@@ -25,6 +26,7 @@
 @property(readonly, nonatomic) _Bool allowRunRequests; // @synthesize allowRunRequests=_allowRunRequests;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) IDSService *service; // @synthesize service=_service;
+@property(retain, nonatomic) NSMapTable *completionsForSessions; // @synthesize completionsForSessions=_completionsForSessions;
 @property(retain, nonatomic) NSMutableArray *activeSessions; // @synthesize activeSessions=_activeSessions;
 - (void)mapSelectorsForIncomingProtobuf;
 - (id)defaultIDSOptions;
@@ -50,7 +52,7 @@
 - (void)handleStopRequest:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)handleAlertRequestResponse:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)sendAlertRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)sendRunRequestResponse:(id)arg1;
+- (void)sendRunRequestResponse:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handleRunRequest:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)handleAceCommandResponse:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)sendAceCommandDictionary:(id)arg1 completion:(CDUnknownBlockType)arg2;

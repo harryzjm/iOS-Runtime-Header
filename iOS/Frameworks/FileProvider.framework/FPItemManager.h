@@ -22,7 +22,7 @@
 + (id)defaultManager;
 - (void).cxx_destruct;
 - (id)servicesForItemAtURL:(id)arg1 error:(id *)arg2;
-- (void)fetchServicesForItemAtURL:(id)arg1 synchronously:(_Bool)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)fetchServicesWithName:(id)arg1 itemAtURL:(id)arg2 synchronously:(_Bool)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)fetchVendorServiceForProviderDomainID:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)fetchOperationServiceForProviderDomainID:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)fetchRemoteDomainForProviderDomainID:(id)arg1 handler:(CDUnknownBlockType)arg2;
@@ -35,8 +35,8 @@
 - (_Bool)_isValidDestination:(id)arg1;
 - (_Bool)_itemIsOfArchiveType:(id)arg1;
 - (id)eligibleActionsForItems:(id)arg1;
+- (void)fetchDefaultLocationForApplicationRecord:(id)arg1 defaultProviderDomain:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)fetchDefaultLocationForApplication:(id)arg1 defaultProviderDomain:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)fetchDefaultLocationForApplication:(id)arg1 defaultProvider:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)fetchRootItemForProviderDomain:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchRootItemForProvider:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchItemForItemID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

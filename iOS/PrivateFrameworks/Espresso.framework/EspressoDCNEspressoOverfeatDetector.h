@@ -13,7 +13,7 @@
     int tileSizeScaleFactor;
     int tileDimension;
     int localFaceMerging;
-    struct FaceList *face_list;
+    void *face_list;
     EspressoFDOverfeatNetwork *_enet;
     double _confidenceThreshold;
     double _minBoundingBoxThreshold;
@@ -31,7 +31,7 @@
 - (id)initWithOptions:(id)arg1;
 - (id)init;
 - (void)mergeFaceList;
-- (void)computeBBoxUsingProb:(shared_ptr_dc6ac1b7)arg1 box:(shared_ptr_dc6ac1b7)arg2 andScalefactor:(float)arg3 padX:(float)arg4 padY:(float)arg5;
+- (void)computeBBoxUsingProb:(shared_ptr_891d523c)arg1 box:(shared_ptr_891d523c)arg2 andScalefactor:(float)arg3 padX:(float)arg4 padY:(float)arg5;
 - (id)getFacesFromNetworkResultOriginalWidth:(float)arg1 originalHeight:(float)arg2;
 - (void)fillFaceList;
 

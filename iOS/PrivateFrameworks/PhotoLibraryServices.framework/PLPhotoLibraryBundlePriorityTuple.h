@@ -11,15 +11,16 @@
 @interface PLPhotoLibraryBundlePriorityTuple : NSObject
 {
     PLPhotoLibraryBundle *_bundle;
-    unsigned long long _priority;
+    long long _priority;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) unsigned long long priority; // @synthesize priority=_priority;
+@property(readonly, nonatomic) long long priority; // @synthesize priority=_priority;
 @property(readonly, nonatomic) PLPhotoLibraryBundle *bundle; // @synthesize bundle=_bundle;
-- (id)description;
+- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)initWithBundle:(id)arg1 priority:(unsigned long long)arg2;
+- (id)description;
+- (id)initWithBundle:(id)arg1 priority:(long long)arg2;
 
 @end
 

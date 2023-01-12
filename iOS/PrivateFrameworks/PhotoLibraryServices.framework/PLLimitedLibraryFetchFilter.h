@@ -17,11 +17,12 @@
 + (void)deleteAllLimitedLibraryFetchFiltersInManagedObjectContext:(id)arg1;
 + (void)deleteLimitedLibraryFetchFilterWithApplicationIdentifier:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)_decodeFetchFilterData:(id)arg1 withUUIDHandler:(CDUnknownBlockType)arg2 resultHandler:(CDUnknownBlockType)arg3;
-+ (id)entityNameToPredicateMapFromFetchFilterData:(id)arg1;
++ (id)entityNameToPredicateMapFromFetchFilterData:(id)arg1 withApplicationIdentifier:(id)arg2;
++ (id)entityNameToPredicateMapWithApplicationIdentifier:(id)arg1;
 + (id)_assetUUIDStringsFromFetchFilterData:(id)arg1;
 + (id)_fetchFiltersMatchingPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(long long)arg3 inManagedObjectContext:(id)arg4;
-+ (id)fetchLimitedLibraryFetchFilterWithClientBundleIdentifier:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)fetchLimitedLibraryFetchFilterWithApplicationIdentifier:(id)arg1 inManagedObjectContext:(id)arg2;
++ (id)fetchOrCreateLimitedLibraryFetchFilterWithApplicationIdentifier:(id)arg1 auditToken:(CDStruct_4c969caf)arg2 inManagedObjectContext:(id)arg3;
 + (id)insertIntoManagedObjectContext:(id)arg1 forApplicationIdentifier:(id)arg2;
 + (id)entityName;
 - (void).cxx_destruct;
@@ -35,9 +36,8 @@
 
 // Remaining properties
 @property(copy, nonatomic) NSString *applicationIdentifier; // @dynamic applicationIdentifier;
+@property(copy, nonatomic) NSString *designatedRequirement; // @dynamic designatedRequirement;
 @property(retain, nonatomic) NSData *fetchFilterData; // @dynamic fetchFilterData;
-@property(nonatomic) int lastKnownProcessIdentifier; // @dynamic lastKnownProcessIdentifier;
-@property(nonatomic) short state; // @dynamic state;
 
 @end
 

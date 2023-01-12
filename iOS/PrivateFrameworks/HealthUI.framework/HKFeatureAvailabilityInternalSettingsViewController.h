@@ -28,6 +28,8 @@
 - (id)_buttonCellForTableView:(id)arg1;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (void)_disableOverride:(_Bool)arg1;
+- (_Bool)_disabledOverriden;
 - (void)_enableFeature:(_Bool)arg1;
 - (_Bool)_featureEnabled;
 - (long long)_offsetSectionForSection:(long long)arg1;

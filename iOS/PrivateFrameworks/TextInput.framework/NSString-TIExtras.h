@@ -8,6 +8,7 @@
 
 @interface NSString (TIExtras)
 + (id)stringWithUnichar:(unsigned int)arg1;
++ (_Bool)_ti_string:(id)arg1 matchesStringIgnoringNullity:(id)arg2;
 + (_Bool)_string:(id)arg1 matchesString:(id)arg2;
 + (struct USet *)_fullwidthLettersAndSymbolsSet;
 + (struct USet *)_nonFullwidthLettersAndNumbersSet;
@@ -72,6 +73,8 @@
 - (_Bool)_containsBopomofoOnly;
 - (_Bool)_containsEmojiOnly;
 - (_Bool)_containsEmoji;
+- (id)_ti_keyEquivalentMirroring;
+- (_Bool)_ti_isKeyEquivalentMirroringCandidate;
 - (_Bool)_containsHiraganaKatakanaOrBopomofo;
 - (_Bool)_containsKatakanaOrKanji;
 - (_Bool)_containsHiraganaOrKatakana;
@@ -115,6 +118,7 @@
 - (struct _NSRange)_rangeOfLongCharacterAtIndex:(unsigned long long)arg1;
 - (unsigned int)_lastLongCharacter;
 - (unsigned int)_firstLongCharacter;
+- (unsigned short)_ti_supplementalPrefixOfLastToken:(id)arg1;
 - (unsigned short)_firstChar;
 @end
 

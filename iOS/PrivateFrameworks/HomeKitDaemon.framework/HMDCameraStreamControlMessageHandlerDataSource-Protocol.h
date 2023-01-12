@@ -6,14 +6,16 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMCameraStreamPreferences, HMDAccessory, HMDCameraLocalStreamControlManager, HMDCameraRemoteStreamControlManager, HMDCameraResidentMessageHandler, HMDCameraStreamManagerSession, HMDCameraStreamSessionID, HMDCameraStreamSnapshotHandler, HMDCameraSupportedConfigurationCache, HMDDevice, HMDDynamicActivityAttributionPublisher, HMDService, NSDictionary, NSObject, NSString, NSUUID;
+@class HMCameraStreamPreferences, HMDAccessory, HMDCameraLocalStreamControlManager, HMDCameraRemoteStreamControlManager, HMDCameraResidentMessageHandler, HMDCameraStreamManagerSession, HMDCameraStreamSessionID, HMDCameraStreamSnapshotHandler, HMDCameraSupportedConfigurationCache, HMDDevice, HMDDynamicActivityAttributionPublisher, HMDProcessInfo, HMDService, NSDictionary, NSObject, NSString, NSUUID;
 @protocol HMDCameraStreamControlManagerDelegate, HMDCameraStreamControlManagerProtocol, OS_dispatch_queue;
 
 @protocol HMDCameraStreamControlMessageHandlerDataSource <NSObject>
+@property(readonly) _Bool supportsBidirectionalAudioForCameraStreaming;
+@property(readonly, getter=isMacOSDevice) _Bool macOSDevice;
 @property(readonly) _Bool supportsReceivingRemoteCameraStream;
 - (HMDDynamicActivityAttributionPublisher *)createDynamicActivityAttributionPublisher;
-- (HMDCameraStreamManagerSession *)createStreamManagerSessionWithSessionID:(HMDCameraStreamSessionID *)arg1 destinationID:(NSString *)arg2 streamShowingAppIdentifier:(NSString *)arg3 controlManager:(id <HMDCameraStreamControlManagerProtocol>)arg4 setupWaitPeriod:(double)arg5 error:(id *)arg6;
-- (HMDCameraRemoteStreamControlManager *)createRemoteStreamControlManagerWithSessionID:(HMDCameraStreamSessionID *)arg1 workQueue:(NSObject<OS_dispatch_queue> *)arg2 streamSnapshotHandler:(HMDCameraStreamSnapshotHandler *)arg3 reachabilityPath:(unsigned long long)arg4 destinationID:(NSString *)arg5 delegate:(id <HMDCameraStreamControlManagerDelegate>)arg6 delegateQueue:(NSObject<OS_dispatch_queue> *)arg7 accessory:(HMDAccessory *)arg8 streamManagementService:(HMDService *)arg9 remoteCapabilities:(NSDictionary *)arg10 profileUniqueIdentifier:(NSUUID *)arg11 residentMessageHandler:(HMDCameraResidentMessageHandler *)arg12 streamPreference:(HMCameraStreamPreferences *)arg13;
+- (HMDCameraStreamManagerSession *)createStreamManagerSessionWithSessionID:(HMDCameraStreamSessionID *)arg1 destinationID:(NSString *)arg2 streamClientProcessInfo:(HMDProcessInfo *)arg3 streamControlManager:(id <HMDCameraStreamControlManagerProtocol>)arg4 setupWaitPeriod:(double)arg5;
+- (HMDCameraRemoteStreamControlManager *)createRemoteStreamControlManagerWithSessionID:(HMDCameraStreamSessionID *)arg1 workQueue:(NSObject<OS_dispatch_queue> *)arg2 streamSnapshotHandler:(HMDCameraStreamSnapshotHandler *)arg3 reachabilityPath:(unsigned long long)arg4 device:(HMDDevice *)arg5 delegate:(id <HMDCameraStreamControlManagerDelegate>)arg6 delegateQueue:(NSObject<OS_dispatch_queue> *)arg7 accessory:(HMDAccessory *)arg8 streamManagementService:(HMDService *)arg9 remoteCapabilities:(NSDictionary *)arg10 profileUniqueIdentifier:(NSUUID *)arg11 residentMessageHandler:(HMDCameraResidentMessageHandler *)arg12 remoteAccessDevice:(HMDDevice *)arg13 streamPreference:(HMCameraStreamPreferences *)arg14;
 - (HMDCameraLocalStreamControlManager *)createLocalStreamControlManagerWithSessionID:(HMDCameraStreamSessionID *)arg1 workQueue:(NSObject<OS_dispatch_queue> *)arg2 streamSnapshotHandler:(HMDCameraStreamSnapshotHandler *)arg3 reachabilityPath:(unsigned long long)arg4 device:(HMDDevice *)arg5 delegate:(id <HMDCameraStreamControlManagerDelegate>)arg6 delegateQueue:(NSObject<OS_dispatch_queue> *)arg7 accessory:(HMDAccessory *)arg8 streamManagementService:(HMDService *)arg9 remoteCapabilities:(NSDictionary *)arg10 supportedConfigCache:(HMDCameraSupportedConfigurationCache *)arg11 streamPreference:(HMCameraStreamPreferences *)arg12;
 @end
 

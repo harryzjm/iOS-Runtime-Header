@@ -116,10 +116,10 @@ struct TSUNumberOrDateLexer {
     unsigned short _timeSep;
     struct TSUIndexSet _additionalIdentChars;
     struct TSUIndexSet _identStartChars;
-    struct unordered_map<NSString *, unsigned long long, std::__1::hash<NSString *>, std::__1::equal_to<NSString *>, std::__1::allocator<std::__1::pair<NSString *const, unsigned long long>>> _identifierToClassificationMap;
-    struct unordered_map<unsigned short, std::__1::vector<NSString *, std::__1::allocator<NSString *>>, std::__1::hash<unsigned short>, std::__1::equal_to<unsigned short>, std::__1::allocator<std::__1::pair<const unsigned short, std::__1::vector<NSString *, std::__1::allocator<NSString *>>>>> _identifiersForStartChar;
+    struct unordered_map<NSString *, unsigned long long, std::hash<NSString *>, std::equal_to<NSString *>, std::allocator<std::pair<NSString *const, unsigned long long>>> _identifierToClassificationMap;
+    struct unordered_map<unsigned short, std::vector<NSString *>, std::hash<unsigned short>, std::equal_to<unsigned short>, std::allocator<std::pair<const unsigned short, std::vector<NSString *>>>> _identifiersForStartChar;
     unsigned long long _maxIdentifierLength;
-    struct unordered_map<unsigned short, TSUNumerAndDenom, std::__1::hash<unsigned short>, std::__1::equal_to<unsigned short>, std::__1::allocator<std::__1::pair<const unsigned short, TSUNumerAndDenom>>> _vulgarFractionMap;
+    struct unordered_map<unsigned short, TSUNumerAndDenom, std::hash<unsigned short>, std::equal_to<unsigned short>, std::allocator<std::pair<const unsigned short, TSUNumerAndDenom>>> _vulgarFractionMap;
     _Bool _loadInDateTimeSymbols;
     NSString *_localeIdentifier;
 };
@@ -133,91 +133,9 @@ struct TSUOpstat_s {
     struct timeval last_time;
 };
 
-struct UUIDData<TSP::UUIDData> {
-    union {
-        unsigned char _field1[16];
-        struct {
-            unsigned char _field1;
-            unsigned char _field2;
-            unsigned char _field3;
-            unsigned char _field4;
-            unsigned char _field5;
-            unsigned char _field6;
-            unsigned char _field7;
-            unsigned char _field8;
-            unsigned char _field9;
-            unsigned char _field10;
-            unsigned char _field11;
-            unsigned char _field12;
-            unsigned char _field13;
-            unsigned char _field14;
-            unsigned char _field15;
-            unsigned char _field16;
-        } _field2;
-        struct {
-            unsigned long long _field1;
-            unsigned long long _field2;
-        } _field3;
-    } _field1;
-};
-
-struct UUIDMap<TSP::UUIDMap> {
-    struct __hash_table<std::__1::__hash_value_type<TSU::UUIDData<TSP::UUIDData>, TSU::UUIDData<TSP::UUIDData>>, std::__1::__unordered_map_hasher<TSU::UUIDData<TSP::UUIDData>, std::__1::__hash_value_type<TSU::UUIDData<TSP::UUIDData>, TSU::UUIDData<TSP::UUIDData>>, std::__1::hash<TSUUUID>, true>, std::__1::__unordered_map_equal<TSU::UUIDData<TSP::UUIDData>, std::__1::__hash_value_type<TSU::UUIDData<TSP::UUIDData>, TSU::UUIDData<TSP::UUIDData>>, std::__1::equal_to<TSU::UUIDData<TSP::UUIDData>>, true>, std::__1::allocator<std::__1::__hash_value_type<TSU::UUIDData<TSP::UUIDData>, TSU::UUIDData<TSP::UUIDData>>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<TSU::UUIDData<TSP::UUIDData>, TSU::UUIDData<TSP::UUIDData>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<TSU::UUIDData<TSP::UUIDData>, TSU::UUIDData<TSP::UUIDData>>, void *>*>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<TSU::UUIDData<TSP::UUIDData>, TSU::UUIDData<TSP::UUIDData>>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<TSU::UUIDData<TSP::UUIDData>, TSU::UUIDData<TSP::UUIDData>>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<TSU::UUIDData<TSP::UUIDData>, TSU::UUIDData<TSP::UUIDData>>, void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<TSU::UUIDData<TSP::UUIDData>, std::__1::__hash_value_type<TSU::UUIDData<TSP::UUIDData>, TSU::UUIDData<TSP::UUIDData>>, std::__1::hash<TSUUUID>, true>> {
-            unsigned long long _field1;
-        } _field3;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<TSU::UUIDData<TSP::UUIDData>, std::__1::__hash_value_type<TSU::UUIDData<TSP::UUIDData>, TSU::UUIDData<TSP::UUIDData>>, std::__1::equal_to<TSU::UUIDData<TSP::UUIDData>>, true>> {
-            float _field1;
-        } _field4;
-    } _field1;
-};
-
-struct UUIDSet<TSP::UUIDSet> {
-    struct __hash_table<TSU::UUIDData<TSP::UUIDData>, std::__1::hash<TSUUUID>, std::__1::equal_to<TSU::UUIDData<TSP::UUIDData>>, std::__1::allocator<TSU::UUIDData<TSP::UUIDData>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<TSU::UUIDData<TSP::UUIDData>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<TSU::UUIDData<TSP::UUIDData>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<TSU::UUIDData<TSP::UUIDData>, void *>*>, std::__1::allocator<std::__1::__hash_node<TSU::UUIDData<TSP::UUIDData>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<TSU::UUIDData<TSP::UUIDData>, void *>*> __value_;
-        } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::hash<TSUUUID>> {
-            unsigned long long __value_;
-        } __p2_;
-        struct __compressed_pair<float, std::__1::equal_to<TSU::UUIDData<TSP::UUIDData>>> {
-            float __value_;
-        } __p3_;
-    } __table_;
-};
-
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;
-};
-
-struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<TSUFlushableObjectInfo *, void *>>> {
-    struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-};
-
-struct __hash_node_base<std::__1::__hash_node<TSU::UUIDData<TSP::UUIDData>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<TSU::UUIDData<TSP::UUIDData>, void *>*> *__next_;
-};
-
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSString *, unsigned long long>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSString *, unsigned long long>, void *>*> *__next_;
-};
-
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<TSU::UUIDData<TSP::UUIDData>, TSU::UUIDData<TSP::UUIDData>>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<TSU::UUIDData<TSP::UUIDData>, TSU::UUIDData<TSP::UUIDData>>, void *>*> *_field1;
-};
-
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned short, TSUNumerAndDenom>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned short, TSUNumerAndDenom>, void *>*> *__next_;
-};
-
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned short, std::__1::vector<NSString *, std::__1::allocator<NSString *>>>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned short, std::__1::vector<NSString *, std::__1::allocator<NSString *>>>, void *>*> *__next_;
 };
 
 struct __sFILE {
@@ -246,10 +164,6 @@ struct __sFILE {
 struct __sbuf {
     char *_field1;
     int _field2;
-};
-
-struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
-    struct __tree_node_base<void *> *_field1;
 };
 
 struct _xmlDoc {
@@ -284,7 +198,7 @@ struct _xmlDtd;
 struct _xmlNode;
 
 struct atomic<unsigned long> {
-    struct __cxx_atomic_impl<unsigned long, std::__1::__cxx_atomic_base_impl<unsigned long>> {
+    struct __cxx_atomic_impl<unsigned long, std::__cxx_atomic_base_impl<unsigned long>> {
         _Atomic unsigned long long __a_value;
     } __a_;
 };
@@ -305,28 +219,6 @@ struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
 
-struct set<TSUFlushableObjectInfo *, TSUFlushableObjectInfoPointerFlushingOrderLess, std::__1::allocator<TSUFlushableObjectInfo *>> {
-    struct __tree<TSUFlushableObjectInfo *, TSUFlushableObjectInfoPointerFlushingOrderLess, std::__1::allocator<TSUFlushableObjectInfo *>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<TSUFlushableObjectInfo *, void *>>> _field2;
-        struct __compressed_pair<unsigned long, TSUFlushableObjectInfoPointerFlushingOrderLess> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
-};
-
-struct set<TSUFlushableObjectInfo *, TSUFlushableObjectInfoPointerTimeStampLess, std::__1::allocator<TSUFlushableObjectInfo *>> {
-    struct __tree<TSUFlushableObjectInfo *, TSUFlushableObjectInfoPointerTimeStampLess, std::__1::allocator<TSUFlushableObjectInfo *>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<TSUFlushableObjectInfo *, void *>>> _field2;
-        struct __compressed_pair<unsigned long, TSUFlushableObjectInfoPointerTimeStampLess> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
-};
-
-struct shared_ptr<TSUStringChunk>;
-
 struct sockaddr_in {
     unsigned char _field1;
     unsigned char _field2;
@@ -344,135 +236,119 @@ struct tsuSaPage {
     CDUnknownFunctionPointerType *_field1;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<TSU::UUIDData<TSP::UUIDData>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<TSU::UUIDData<TSP::UUIDData>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<TSU::UUIDData<TSP::UUIDData>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<TSU::UUIDData<TSP::UUIDData>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<TSU::UUIDData<TSP::UUIDData>, void *>*> **__value_;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<TSU::UUIDData<TSP::UUIDData>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<TSU::UUIDData<TSP::UUIDData>, void *>*>*>> {
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<NSString *, unsigned long long>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<NSString *, unsigned long long>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<NSString *, unsigned long long>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<NSString *, unsigned long long>, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<NSString *, unsigned long long>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<NSString *, unsigned long long>, void *>*>*>> {
                 unsigned long long __value_;
             } __data_;
         } __value_;
     } __ptr_;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSString *, unsigned long long>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSString *, unsigned long long>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSString *, unsigned long long>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSString *, unsigned long long>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSString *, unsigned long long>, void *>*> **__value_;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSString *, unsigned long long>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSString *, unsigned long long>, void *>*>*>> {
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned short, TSUNumerAndDenom>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned short, TSUNumerAndDenom>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned short, TSUNumerAndDenom>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned short, TSUNumerAndDenom>, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned short, TSUNumerAndDenom>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned short, TSUNumerAndDenom>, void *>*>*>> {
                 unsigned long long __value_;
             } __data_;
         } __value_;
     } __ptr_;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<TSU::UUIDData<TSP::UUIDData>, TSU::UUIDData<TSP::UUIDData>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<TSU::UUIDData<TSP::UUIDData>, TSU::UUIDData<TSP::UUIDData>>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<TSU::UUIDData<TSP::UUIDData>, TSU::UUIDData<TSP::UUIDData>>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<TSU::UUIDData<TSP::UUIDData>, TSU::UUIDData<TSP::UUIDData>>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<TSU::UUIDData<TSP::UUIDData>, TSU::UUIDData<TSP::UUIDData>>, void *>*> **_field1;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<TSU::UUIDData<TSP::UUIDData>, TSU::UUIDData<TSP::UUIDData>>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<TSU::UUIDData<TSP::UUIDData>, TSU::UUIDData<TSP::UUIDData>>, void *>*>*>> {
-                unsigned long long _field1;
-            } _field1;
-        } _field2;
-    } _field1;
-};
-
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned short, TSUNumerAndDenom>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned short, TSUNumerAndDenom>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned short, TSUNumerAndDenom>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned short, TSUNumerAndDenom>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned short, TSUNumerAndDenom>, void *>*> **__value_;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned short, TSUNumerAndDenom>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned short, TSUNumerAndDenom>, void *>*>*>> {
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned short, std::vector<NSString *>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned short, std::vector<NSString *>>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned short, std::vector<NSString *>>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned short, std::vector<NSString *>>, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned short, std::vector<NSString *>>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned short, std::vector<NSString *>>, void *>*>*>> {
                 unsigned long long __value_;
             } __data_;
         } __value_;
     } __ptr_;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned short, std::__1::vector<NSString *, std::__1::allocator<NSString *>>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned short, std::__1::vector<NSString *, std::__1::allocator<NSString *>>>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned short, std::__1::vector<NSString *, std::__1::allocator<NSString *>>>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned short, std::__1::vector<NSString *, std::__1::allocator<NSString *>>>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned short, std::__1::vector<NSString *, std::__1::allocator<NSString *>>>, void *>*> **__value_;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned short, std::__1::vector<NSString *, std::__1::allocator<NSString *>>>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned short, std::__1::vector<NSString *, std::__1::allocator<NSString *>>>, void *>*>*>> {
-                unsigned long long __value_;
-            } __data_;
-        } __value_;
-    } __ptr_;
-};
-
-struct unordered_map<NSString *, unsigned long long, std::__1::hash<NSString *>, std::__1::equal_to<NSString *>, std::__1::allocator<std::__1::pair<NSString *const, unsigned long long>>> {
-    struct __hash_table<std::__1::__hash_value_type<NSString *, unsigned long long>, std::__1::__unordered_map_hasher<NSString *, std::__1::__hash_value_type<NSString *, unsigned long long>, std::__1::hash<NSString *>, true>, std::__1::__unordered_map_equal<NSString *, std::__1::__hash_value_type<NSString *, unsigned long long>, std::__1::equal_to<NSString *>, true>, std::__1::allocator<std::__1::__hash_value_type<NSString *, unsigned long long>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSString *, unsigned long long>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSString *, unsigned long long>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSString *, unsigned long long>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<NSString *, unsigned long long>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSString *, unsigned long long>, void *>*> __value_;
+struct unordered_map<NSString *, unsigned long long, std::hash<NSString *>, std::equal_to<NSString *>, std::allocator<std::pair<NSString *const, unsigned long long>>> {
+    struct __hash_table<std::__hash_value_type<NSString *, unsigned long long>, std::__unordered_map_hasher<NSString *, std::__hash_value_type<NSString *, unsigned long long>, std::hash<NSString *>, std::equal_to<NSString *>, true>, std::__unordered_map_equal<NSString *, std::__hash_value_type<NSString *, unsigned long long>, std::equal_to<NSString *>, std::hash<NSString *>, true>, std::allocator<std::__hash_value_type<NSString *, unsigned long long>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<NSString *, unsigned long long>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<NSString *, unsigned long long>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<NSString *, unsigned long long>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<NSString *, unsigned long long>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<NSString *, unsigned long long>, void *>*> {
+                void *__next_;
+            } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<NSString *, std::__1::__hash_value_type<NSString *, unsigned long long>, std::__1::hash<NSString *>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<NSString *, std::__hash_value_type<NSString *, unsigned long long>, std::hash<NSString *>, std::equal_to<NSString *>, true>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<NSString *, std::__1::__hash_value_type<NSString *, unsigned long long>, std::__1::equal_to<NSString *>, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<NSString *, std::__hash_value_type<NSString *, unsigned long long>, std::equal_to<NSString *>, std::hash<NSString *>, true>> {
             float __value_;
         } __p3_;
     } __table_;
 };
 
-struct unordered_map<unsigned short, TSUNumerAndDenom, std::__1::hash<unsigned short>, std::__1::equal_to<unsigned short>, std::__1::allocator<std::__1::pair<const unsigned short, TSUNumerAndDenom>>> {
-    struct __hash_table<std::__1::__hash_value_type<unsigned short, TSUNumerAndDenom>, std::__1::__unordered_map_hasher<unsigned short, std::__1::__hash_value_type<unsigned short, TSUNumerAndDenom>, std::__1::hash<unsigned short>, true>, std::__1::__unordered_map_equal<unsigned short, std::__1::__hash_value_type<unsigned short, TSUNumerAndDenom>, std::__1::equal_to<unsigned short>, true>, std::__1::allocator<std::__1::__hash_value_type<unsigned short, TSUNumerAndDenom>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned short, TSUNumerAndDenom>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned short, TSUNumerAndDenom>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned short, TSUNumerAndDenom>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<unsigned short, TSUNumerAndDenom>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned short, TSUNumerAndDenom>, void *>*> __value_;
+struct unordered_map<unsigned short, TSUNumerAndDenom, std::hash<unsigned short>, std::equal_to<unsigned short>, std::allocator<std::pair<const unsigned short, TSUNumerAndDenom>>> {
+    struct __hash_table<std::__hash_value_type<unsigned short, TSUNumerAndDenom>, std::__unordered_map_hasher<unsigned short, std::__hash_value_type<unsigned short, TSUNumerAndDenom>, std::hash<unsigned short>, std::equal_to<unsigned short>, true>, std::__unordered_map_equal<unsigned short, std::__hash_value_type<unsigned short, TSUNumerAndDenom>, std::equal_to<unsigned short>, std::hash<unsigned short>, true>, std::allocator<std::__hash_value_type<unsigned short, TSUNumerAndDenom>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned short, TSUNumerAndDenom>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned short, TSUNumerAndDenom>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned short, TSUNumerAndDenom>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<unsigned short, TSUNumerAndDenom>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<unsigned short, TSUNumerAndDenom>, void *>*> {
+                void *__next_;
+            } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<unsigned short, std::__1::__hash_value_type<unsigned short, TSUNumerAndDenom>, std::__1::hash<unsigned short>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<unsigned short, std::__hash_value_type<unsigned short, TSUNumerAndDenom>, std::hash<unsigned short>, std::equal_to<unsigned short>, true>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<unsigned short, std::__1::__hash_value_type<unsigned short, TSUNumerAndDenom>, std::__1::equal_to<unsigned short>, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<unsigned short, std::__hash_value_type<unsigned short, TSUNumerAndDenom>, std::equal_to<unsigned short>, std::hash<unsigned short>, true>> {
             float __value_;
         } __p3_;
     } __table_;
 };
 
-struct unordered_map<unsigned short, std::__1::vector<NSString *, std::__1::allocator<NSString *>>, std::__1::hash<unsigned short>, std::__1::equal_to<unsigned short>, std::__1::allocator<std::__1::pair<const unsigned short, std::__1::vector<NSString *, std::__1::allocator<NSString *>>>>> {
-    struct __hash_table<std::__1::__hash_value_type<unsigned short, std::__1::vector<NSString *, std::__1::allocator<NSString *>>>, std::__1::__unordered_map_hasher<unsigned short, std::__1::__hash_value_type<unsigned short, std::__1::vector<NSString *, std::__1::allocator<NSString *>>>, std::__1::hash<unsigned short>, true>, std::__1::__unordered_map_equal<unsigned short, std::__1::__hash_value_type<unsigned short, std::__1::vector<NSString *, std::__1::allocator<NSString *>>>, std::__1::equal_to<unsigned short>, true>, std::__1::allocator<std::__1::__hash_value_type<unsigned short, std::__1::vector<NSString *, std::__1::allocator<NSString *>>>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned short, std::__1::vector<NSString *, std::__1::allocator<NSString *>>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned short, std::__1::vector<NSString *, std::__1::allocator<NSString *>>>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned short, std::__1::vector<NSString *, std::__1::allocator<NSString *>>>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<unsigned short, std::__1::vector<NSString *, std::__1::allocator<NSString *>>>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned short, std::__1::vector<NSString *, std::__1::allocator<NSString *>>>, void *>*> __value_;
+struct unordered_map<unsigned short, std::vector<NSString *>, std::hash<unsigned short>, std::equal_to<unsigned short>, std::allocator<std::pair<const unsigned short, std::vector<NSString *>>>> {
+    struct __hash_table<std::__hash_value_type<unsigned short, std::vector<NSString *>>, std::__unordered_map_hasher<unsigned short, std::__hash_value_type<unsigned short, std::vector<NSString *>>, std::hash<unsigned short>, std::equal_to<unsigned short>, true>, std::__unordered_map_equal<unsigned short, std::__hash_value_type<unsigned short, std::vector<NSString *>>, std::equal_to<unsigned short>, std::hash<unsigned short>, true>, std::allocator<std::__hash_value_type<unsigned short, std::vector<NSString *>>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned short, std::vector<NSString *>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned short, std::vector<NSString *>>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned short, std::vector<NSString *>>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<unsigned short, std::vector<NSString *>>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<unsigned short, std::vector<NSString *>>, void *>*> {
+                void *__next_;
+            } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<unsigned short, std::__1::__hash_value_type<unsigned short, std::__1::vector<NSString *, std::__1::allocator<NSString *>>>, std::__1::hash<unsigned short>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<unsigned short, std::__hash_value_type<unsigned short, std::vector<NSString *>>, std::hash<unsigned short>, std::equal_to<unsigned short>, true>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<unsigned short, std::__1::__hash_value_type<unsigned short, std::__1::vector<NSString *, std::__1::allocator<NSString *>>>, std::__1::equal_to<unsigned short>, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<unsigned short, std::__hash_value_type<unsigned short, std::vector<NSString *>>, std::equal_to<unsigned short>, std::hash<unsigned short>, true>> {
             float __value_;
         } __p3_;
     } __table_;
 };
 
-struct vector<CGRect, std::__1::allocator<CGRect>> {
+struct vector<CGRect, std::allocator<CGRect>> {
     struct CGRect *__begin_;
     struct CGRect *__end_;
-    struct __compressed_pair<CGRect *, std::__1::allocator<CGRect>> {
+    struct __compressed_pair<CGRect *, std::allocator<CGRect>> {
         struct CGRect *__value_;
     } __end_cap_;
 };
 
-struct vector<TSU::UUIDData<TSP::UUIDData>, std::__1::allocator<TSU::UUIDData<TSP::UUIDData>>> {
-    UUIDData_60906e89 *__begin_;
-    UUIDData_60906e89 *__end_;
-    struct __compressed_pair<TSU::UUIDData<TSP::UUIDData>*, std::__1::allocator<TSU::UUIDData<TSP::UUIDData>>> {
-        UUIDData_60906e89 *__value_;
+struct vector<NSString *, std::allocator<NSString *>> {
+    id *__begin_;
+    id *__end_;
+    struct __compressed_pair<NSString *__strong *, std::allocator<NSString *>> {
+        id *__value_;
     } __end_cap_;
 };
 
-struct vector<_NSRange, std::__1::allocator<_NSRange>> {
+struct vector<_NSRange, std::allocator<_NSRange>> {
     struct _NSRange *__begin_;
     struct _NSRange *__end_;
-    struct __compressed_pair<_NSRange *, std::__1::allocator<_NSRange>> {
+    struct __compressed_pair<_NSRange *, std::allocator<_NSRange>> {
         struct _NSRange *__value_;
     } __end_cap_;
 };
 
-struct vector<std::__1::shared_ptr<TSUStringChunk>, std::__1::allocator<std::__1::shared_ptr<TSUStringChunk>>> {
-    struct shared_ptr<TSUStringChunk> *__begin_;
-    struct shared_ptr<TSUStringChunk> *__end_;
-    struct __compressed_pair<std::__1::shared_ptr<TSUStringChunk>*, std::__1::allocator<std::__1::shared_ptr<TSUStringChunk>>> {
-        struct shared_ptr<TSUStringChunk> *__value_;
+struct vector<std::shared_ptr<TSUStringChunk>, std::allocator<std::shared_ptr<TSUStringChunk>>> {
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<std::shared_ptr<TSUStringChunk>*, std::allocator<std::shared_ptr<TSUStringChunk>>> {
+        void *__value_;
     } __end_cap_;
 };
 
@@ -549,9 +425,9 @@ typedef struct {
         } mDateFormatStruct;
         struct {
             unsigned int mUseAutomaticUnits:1;
-            int mDurationUnitSmallest;
-            int mDurationUnitLargest;
-            int mDurationStyle;
+            unsigned char mDurationUnitSmallest;
+            unsigned char mDurationUnitLargest;
+            unsigned char mDurationStyle;
         } mDurationFormatStruct;
         struct {
             NSUUID *mCustomFormatKey;
@@ -560,80 +436,5 @@ typedef struct {
             unsigned char mAppliedConditionKey;
         } mCustomFormatStruct;
     } ;
-} CDStruct_4f52a90b;
-
-// Template types
-typedef struct UUIDData<TSP::UUIDData> {
-    union {
-        unsigned char _field1[16];
-        struct {
-            unsigned char _field1;
-            unsigned char _field2;
-            unsigned char _field3;
-            unsigned char _field4;
-            unsigned char _field5;
-            unsigned char _field6;
-            unsigned char _field7;
-            unsigned char _field8;
-            unsigned char _field9;
-            unsigned char _field10;
-            unsigned char _field11;
-            unsigned char _field12;
-            unsigned char _field13;
-            unsigned char _field14;
-            unsigned char _field15;
-            unsigned char _field16;
-        } _field2;
-        struct {
-            unsigned long long _field1;
-            unsigned long long _field2;
-        } _field3;
-    } _field1;
-} UUIDData_60906e89;
-
-typedef struct UUIDMap<TSP::UUIDMap> {
-    struct __hash_table<std::__1::__hash_value_type<TSU::UUIDData<TSP::UUIDData>, TSU::UUIDData<TSP::UUIDData>>, std::__1::__unordered_map_hasher<TSU::UUIDData<TSP::UUIDData>, std::__1::__hash_value_type<TSU::UUIDData<TSP::UUIDData>, TSU::UUIDData<TSP::UUIDData>>, std::__1::hash<TSUUUID>, true>, std::__1::__unordered_map_equal<TSU::UUIDData<TSP::UUIDData>, std::__1::__hash_value_type<TSU::UUIDData<TSP::UUIDData>, TSU::UUIDData<TSP::UUIDData>>, std::__1::equal_to<TSU::UUIDData<TSP::UUIDData>>, true>, std::__1::allocator<std::__1::__hash_value_type<TSU::UUIDData<TSP::UUIDData>, TSU::UUIDData<TSP::UUIDData>>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<TSU::UUIDData<TSP::UUIDData>, TSU::UUIDData<TSP::UUIDData>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<TSU::UUIDData<TSP::UUIDData>, TSU::UUIDData<TSP::UUIDData>>, void *>*>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<TSU::UUIDData<TSP::UUIDData>, TSU::UUIDData<TSP::UUIDData>>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<TSU::UUIDData<TSP::UUIDData>, TSU::UUIDData<TSP::UUIDData>>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<TSU::UUIDData<TSP::UUIDData>, TSU::UUIDData<TSP::UUIDData>>, void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<TSU::UUIDData<TSP::UUIDData>, std::__1::__hash_value_type<TSU::UUIDData<TSP::UUIDData>, TSU::UUIDData<TSP::UUIDData>>, std::__1::hash<TSUUUID>, true>> {
-            unsigned long long _field1;
-        } _field3;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<TSU::UUIDData<TSP::UUIDData>, std::__1::__hash_value_type<TSU::UUIDData<TSP::UUIDData>, TSU::UUIDData<TSP::UUIDData>>, std::__1::equal_to<TSU::UUIDData<TSP::UUIDData>>, true>> {
-            float _field1;
-        } _field4;
-    } _field1;
-} UUIDMap_71b9b5e2;
-
-typedef struct UUIDSet<TSP::UUIDSet> {
-    struct __hash_table<TSU::UUIDData<TSP::UUIDData>, std::__1::hash<TSUUUID>, std::__1::equal_to<TSU::UUIDData<TSP::UUIDData>>, std::__1::allocator<TSU::UUIDData<TSP::UUIDData>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<TSU::UUIDData<TSP::UUIDData>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<TSU::UUIDData<TSP::UUIDData>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<TSU::UUIDData<TSP::UUIDData>, void *>*>, std::__1::allocator<std::__1::__hash_node<TSU::UUIDData<TSP::UUIDData>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<TSU::UUIDData<TSP::UUIDData>, void *>*> __value_;
-        } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::hash<TSUUUID>> {
-            unsigned long long __value_;
-        } __p2_;
-        struct __compressed_pair<float, std::__1::equal_to<TSU::UUIDData<TSP::UUIDData>>> {
-            float __value_;
-        } __p3_;
-    } __table_;
-} UUIDSet_bcc2db41;
-
-typedef struct vector<TSU::UUIDData<TSP::UUIDData>, std::__1::allocator<TSU::UUIDData<TSP::UUIDData>>> {
-    UUIDData_60906e89 *__begin_;
-    UUIDData_60906e89 *__end_;
-    struct __compressed_pair<TSU::UUIDData<TSP::UUIDData>*, std::__1::allocator<TSU::UUIDData<TSP::UUIDData>>> {
-        UUIDData_60906e89 *__value_;
-    } __end_cap_;
-} vector_4dc5f307;
-
-typedef struct vector<_NSRange, std::__1::allocator<_NSRange>> {
-    struct _NSRange *__begin_;
-    struct _NSRange *__end_;
-    struct __compressed_pair<_NSRange *, std::__1::allocator<_NSRange>> {
-        struct _NSRange *__value_;
-    } __end_cap_;
-} vector_b5e32e34;
+} CDStruct_22002e88;
 

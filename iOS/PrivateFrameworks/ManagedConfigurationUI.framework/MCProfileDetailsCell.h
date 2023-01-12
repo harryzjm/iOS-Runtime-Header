@@ -4,31 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-__attribute__((visibility("hidden")))
-@interface MCProfileDetailsCell
+#import <UIKit/UITableViewCell.h>
+
+@interface MCProfileDetailsCell : UITableViewCell
 {
-    unsigned long long _cellStyle;
 }
 
-@property(nonatomic) unsigned long long cellStyle; // @synthesize cellStyle=_cellStyle;
-- (id)_combineSubtitleAndApplyAttributeWithSubtitle1:(id)arg1 subtitle2:(id)arg2 font:(id)arg3 defaultColor:(id)arg4 expirationColor:(id)arg5 nearExpiration:(_Bool)arg6;
-- (id)_attributedTextForSolitaryTitleLabel:(id)arg1 defaultColor:(id)arg2;
+- (id)_attributedSubtitleComboWithSubtitle1:(id)arg1 subtitle2:(id)arg2 nearExpiration:(_Bool)arg3;
+- (id)_attributes:(id)arg1 modifiedWithAttributes:(id)arg2;
 - (id)_textForLabel:(id)arg1 value:(id)arg2;
 - (id)_imageForApplicationIdentifier:(id)arg1;
-- (id)_detailImage;
-- (_Bool)_containsTitleLabelOnly;
-- (void)setCertificate:(struct __SecCertificate *)arg1;
-- (void)setPayloadInfo:(id)arg1;
-- (void)_setPayloadInfo:(id)arg1;
-- (void)setPayload:(id)arg1;
-- (void)setManagedBook:(id)arg1;
-- (void)setManagedApp:(id)arg1;
-- (void)setUnmanagedEnterpriseApp:(id)arg1;
-- (void)_setTitle:(id)arg1 subtitle1:(id)arg2 subtitle2:(id)arg3 nearExpiration:(_Bool)arg4;
-- (void)_setTitle:(id)arg1 subtitle1:(id)arg2 subtitle2:(id)arg3;
-- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
-- (void)prepareForReuse;
-- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+- (id)_expirationSubtitleForExpiry:(id)arg1 outNearExpiration:(_Bool *)arg2;
+- (id)_titleFromCertificate:(struct __SecCertificate *)arg1 outSubtitle1:(id *)arg2 outSubtitle2:(id *)arg3 outNearExpiration:(_Bool *)arg4;
+- (id)_titleFromPayloadInfo:(id)arg1 outSubtitle1:(id *)arg2 outSubtitle2:(id *)arg3 outNearExpiration:(_Bool *)arg4;
+- (void)setDetails:(id)arg1;
 
 @end
 

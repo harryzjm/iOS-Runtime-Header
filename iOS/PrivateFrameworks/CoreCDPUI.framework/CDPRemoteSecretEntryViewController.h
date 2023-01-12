@@ -26,20 +26,21 @@
 @property(readonly, nonatomic) CDPRemoteDeviceSecretValidator *validator; // @synthesize validator=_validator;
 - (void)enableUserInteractionAndStopSpinner;
 - (void)disableUserInteractionAndStartSpinner;
-- (void)didCancelEnteringPIN;
-- (void)didEnterValidRemoteSecret:(id)arg1;
-- (void)didAcceptEnteredPIN:(id)arg1;
 - (void)showIncorrectRemoteSecretAlertForPasscode:(id)arg1 withRecoveryError:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (_Bool)validatePIN:(id)arg1;
+- (void)_handleSecretValidationWithPasscode:(id)arg1;
 - (_Bool)simplePIN;
+- (void)didEnterValidRemoteSecret:(id)arg1;
+- (_Bool)validatePIN:(id)arg1;
+- (void)didCancelEnteringPIN;
+- (void)didAcceptEnteredPIN:(id)arg1;
 - (_Bool)pinIsAcceptable:(id)arg1 outError:(id *)arg2;
 - (id)pinInstructionsPrompt;
 - (id)title;
 - (void)setPane:(id)arg1;
 - (_Bool)useProgressiveDelays;
-- (id)initWithValidator:(id)arg1;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (id)initWithValidator:(id)arg1;
 - (id)initWithIsNumeric:(_Bool)arg1 numericLength:(id)arg2 validator:(id)arg3 delegate:(id)arg4;
 - (id)initWithDevice:(id)arg1 validator:(id)arg2 delegate:(id)arg3;
 

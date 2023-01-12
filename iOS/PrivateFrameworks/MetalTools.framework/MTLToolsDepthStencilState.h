@@ -19,6 +19,8 @@
 @property(readonly) _Bool readsDepth;
 @property(readonly) id <MTLDevice> device;
 @property(readonly) NSString *label;
+- (void)dealloc;
+- (id)initWithDepthStencilState:(id)arg1 descriptor:(id)arg2 device:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

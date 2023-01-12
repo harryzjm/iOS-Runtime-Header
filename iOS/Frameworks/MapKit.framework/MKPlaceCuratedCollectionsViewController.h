@@ -30,17 +30,20 @@
 @property(retain, nonatomic) NSArray *placeCollections; // @synthesize placeCollections=_placeCollections;
 @property(retain, nonatomic) MKCollectionsCarouselView *carouselView; // @synthesize carouselView=_carouselView;
 @property(retain, nonatomic) MKPlaceSectionHeaderView *headerView; // @synthesize headerView=_headerView;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)collectionsCarouselDidScrollBackward;
 - (void)collectionsCarouselDidScrollForward;
 - (void)collectionsCarouselDidRouteToCollectionId:(id)arg1 atIndex:(long long)arg2 isSaved:(_Bool)arg3;
+- (void)routeToGuidesHomeFromExploreGuides:(id)arg1;
 - (void)routeToCuratedCollection:(id)arg1;
 - (void)showMoreTapped;
 - (void)updateConstraintsForCarouselView;
+- (_Bool)shouldShowMoreButton;
 - (void)setUpHeaderView;
 - (void)refreshCollections;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
-- (id)initWithDelegate:(id)arg1 withPlaceCollections:(id)arg2 usingSyncCoordinator:(id)arg3 usingMapItem:(id)arg4 usingCollectionIds:(id)arg5;
+- (id)initWithDelegate:(id)arg1 withPlaceCollections:(id)arg2 usingSyncCoordinator:(id)arg3 usingMapItem:(id)arg4 usingCollectionIds:(id)arg5 exploreGuides:(id)arg6;
 - (_Bool)_canShowWhileLocked;
 
 // Remaining properties

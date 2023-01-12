@@ -28,6 +28,10 @@
 }
 
 + (_Bool)isValid:(id)arg1;
++ (id)bestStringForCurrentLocale:(id)arg1 fallbackToFirstAvailable:(_Bool)arg2;
++ (id)bestString:(id)arg1 forPreferredLanguages:(id)arg2 fallbackToFirstAvailable:(_Bool)arg3;
++ (id)bestLocalizedStringForCurrentLocale:(id)arg1 fallbackToFirstAvailable:(_Bool)arg2;
++ (id)bestLocalizedString:(id)arg1 forPreferredLanguages:(id)arg2 fallbackToFirstAvailable:(_Bool)arg3;
 - (void).cxx_destruct;
 - (void)clearUnknownFields:(_Bool)arg1;
 @property(readonly, nonatomic) PBUnknownFields *unknownFields;

@@ -46,9 +46,9 @@
 @property(nonatomic) unsigned long long timeSpanDensityAverageNumberOfObjects; // @synthesize timeSpanDensityAverageNumberOfObjects=_timeSpanDensityAverageNumberOfObjects;
 @property(nonatomic) double optimalDayDistributionThreshold; // @synthesize optimalDayDistributionThreshold=_optimalDayDistributionThreshold;
 @property(nonatomic) _Bool enableConcurrency; // @synthesize enableConcurrency=_enableConcurrency;
-- (id)adaptiveElection:(id)arg1 maximumNumberOfItemsToElect:(unsigned long long)arg2 debugInfo:(id)arg3 progressBlock:(CDUnknownBlockType)arg4;
-- (id)performWithItems:(id)arg1 maximumNumberOfItemsToElect:(unsigned long long)arg2 debugInfo:(id)arg3 progressBlock:(CDUnknownBlockType)arg4;
-- (id)performWithItems:(id)arg1 maximumNumberOfItemsToElect:(unsigned long long)arg2 progressBlock:(CDUnknownBlockType)arg3;
+- (id)adaptiveElection:(id)arg1 identifiersOfEligibleItems:(id)arg2 maximumNumberOfItemsToElect:(unsigned long long)arg3 debugInfo:(id)arg4 progressBlock:(CDUnknownBlockType)arg5;
+- (id)performWithItems:(id)arg1 identifiersOfEligibleItems:(id)arg2 maximumNumberOfItemsToElect:(unsigned long long)arg3 debugInfo:(id)arg4 progressBlock:(CDUnknownBlockType)arg5;
+- (id)performWithItems:(id)arg1 identifiersOfEligibleItems:(id)arg2 maximumNumberOfItemsToElect:(unsigned long long)arg3 progressBlock:(CDUnknownBlockType)arg4;
 - (id)_densityClustersWithItems:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (id)densityClustersWithItems:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (id)init;

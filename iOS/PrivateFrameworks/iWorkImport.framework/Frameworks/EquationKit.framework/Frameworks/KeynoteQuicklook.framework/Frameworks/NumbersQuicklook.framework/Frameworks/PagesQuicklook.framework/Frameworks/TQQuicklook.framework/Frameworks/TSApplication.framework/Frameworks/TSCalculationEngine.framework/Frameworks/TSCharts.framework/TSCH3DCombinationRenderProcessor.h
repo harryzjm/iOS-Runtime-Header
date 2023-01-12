@@ -8,26 +8,26 @@
 
 @interface TSCH3DCombinationRenderProcessor
 {
-    NSIndexSet *mEnabled;
-    struct StateStack<glm::detail::tmat4x4<float>, 8> mTransformStack;
-    tmat4x4_3074befe mProjection;
-    _Bool mTransformChanged;
-    _Bool mProjectionChanged;
-    StateStack_2a9a65b0 mObjectStateStack;
-    struct StateStack<TSCH3D::RenderState, 10> mRenderStateStack;
-    TSCH3DShaderEffects *mEffects;
-    NSMutableArray *mEffectsStatesStack;
+    NSIndexSet *_enabled;
+    struct StateStack<glm::detail::tmat4x4<float>, 8> _transformStack;
+    tmat4x4_3074befe _projection;
+    _Bool _transformChanged;
+    _Bool _projectionChanged;
+    struct StateStack<TSCH3D::ObjectState, 6> _objectStateStack;
+    struct StateStack<TSCH3D::RenderState, 10> _renderStateStack;
+    TSCH3DShaderEffects *_effects;
+    NSMutableArray *_effectsStatesStack;
 }
 
 + (id)processorWithOriginal:(id)arg1 enableTypes:(id)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableArray *effectsStatesStack; // @synthesize effectsStatesStack=mEffectsStatesStack;
-@property(readonly, nonatomic) _Bool projectionChanged; // @synthesize projectionChanged=mProjectionChanged;
-@property(readonly, nonatomic) _Bool transformChanged; // @synthesize transformChanged=mTransformChanged;
+@property(retain, nonatomic) NSMutableArray *effectsStatesStack; // @synthesize effectsStatesStack=_effectsStatesStack;
+@property(readonly, nonatomic) _Bool projectionChanged; // @synthesize projectionChanged=_projectionChanged;
+@property(readonly, nonatomic) _Bool transformChanged; // @synthesize transformChanged=_transformChanged;
 - (void)popRenderState;
 - (void)pushRenderState;
-- (void)setRenderState:(const struct RenderState *)arg1;
+- (void)setRenderState:(const void *)arg1;
 - (struct RenderState)renderState;
 @property(readonly, nonatomic) TSCH3DShaderEffectsStates *currentEffectsStates;
 - (id)effectsStates;
@@ -35,18 +35,18 @@
 - (void)resetBuffers;
 - (void)popState;
 - (void)pushState;
-- (StateStack_2a9a65b0 *)objectStateStack;
-- (void)projection:(tmat4x4_3074befe *)arg1;
+- (void *)objectStateStack;
+- (void)projection:(void *)arg1;
 - (void)popMatrix;
 - (void)pushMatrix;
-- (void)translate:(tvec3_17f03ce0 *)arg1;
-- (void)scale:(tvec3_17f03ce0 *)arg1;
-- (void)multiply:(tmat4x4_3074befe *)arg1;
-- (void)replace:(tmat4x4_3074befe *)arg1;
-- (void)copyTransformInto:(tmat4x4_3074befe *)arg1;
-- (void)copyProjectionInto:(tmat4x4_3074befe *)arg1;
-- (tmat4x4_3074befe *)projectionTransform;
-- (tmat4x4_3074befe *)currentTransform;
+- (void)translate:(void *)arg1;
+- (void)scale:(void *)arg1;
+- (void)multiply:(void *)arg1;
+- (void)replace:(void *)arg1;
+- (void)copyTransformInto:(void *)arg1;
+- (void)copyProjectionInto:(void *)arg1;
+- (void *)projectionTransform;
+- (void *)currentTransform;
 - (void)resetTransformChangeFlags;
 - (_Bool)renderStateEnabled;
 - (_Bool)shaderEnabled;

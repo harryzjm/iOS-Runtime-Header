@@ -23,6 +23,7 @@
 + (Class)getTrialLevelClass;
 + (Class)getTrialFactorLevelClass;
 + (Class)getTrialDownloadOptionsClass;
++ (Class)getTrialExperimentIdentifiersClass;
 + (Class)getTrialClientClass;
 + (void)endAccessingModelCollectionWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)beginAccessingModelCollectionWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

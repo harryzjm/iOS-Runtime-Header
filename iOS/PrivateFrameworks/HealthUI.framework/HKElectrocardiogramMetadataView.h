@@ -11,13 +11,19 @@
 
 @interface HKElectrocardiogramMetadataView : UIView
 {
+    _Bool _displayGraph;
+    _Bool _allowExportToPDF;
+    _Bool _isSharedData;
     HKElectrocardiogram *_sample;
     id <HKElectrocardiogramMetadataViewDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <HKElectrocardiogramMetadataViewDelegate> delegate; // @synthesize delegate=_delegate;
-@property(retain, nonatomic) HKElectrocardiogram *sample; // @synthesize sample=_sample;
+@property(readonly, nonatomic) _Bool isSharedData; // @synthesize isSharedData=_isSharedData;
+@property(readonly, nonatomic) _Bool allowExportToPDF; // @synthesize allowExportToPDF=_allowExportToPDF;
+@property(readonly, nonatomic) _Bool displayGraph; // @synthesize displayGraph=_displayGraph;
+@property(readonly, nonatomic) HKElectrocardiogram *sample; // @synthesize sample=_sample;
 - (id)_separatorLine;
 - (id)_footerLabel;
 - (id)_sharePDFControl;
@@ -26,7 +32,7 @@
 - (void)sharedPDFControlTapped:(id)arg1;
 - (void)detailButtonTapped:(id)arg1;
 - (void)_setupUIWithActiveAlgorithmVersion:(long long)arg1;
-- (id)initWithSample:(id)arg1 activeAlgorithmVersion:(long long)arg2 delegate:(id)arg3;
+- (id)initWithSample:(id)arg1 activeAlgorithmVersion:(long long)arg2 displayGraph:(_Bool)arg3 allowExportToPDF:(_Bool)arg4 isSharedData:(_Bool)arg5 delegate:(id)arg6;
 
 @end
 

@@ -11,6 +11,7 @@
 @interface _TtC9ChronoKit23DefaultPowerlogProvider : _TtCs12_SwiftObject
 {
     MISSING_TYPE *owner;
+    MISSING_TYPE *workQueue;
 }
 
 @end

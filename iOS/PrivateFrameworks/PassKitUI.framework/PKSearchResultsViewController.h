@@ -9,15 +9,16 @@
 #import <PassKitUI/CNAvatarViewDelegate-Protocol.h>
 #import <PassKitUI/PKAccountServiceObserver-Protocol.h>
 #import <PassKitUI/PKForegroundActiveArbiterObserver-Protocol.h>
+#import <PassKitUI/PKPaymentDataProviderDelegate-Protocol.h>
 #import <PassKitUI/PKSearchServiceObserver-Protocol.h>
 #import <PassKitUI/PKWorldRegionUpdaterObserver-Protocol.h>
 #import <PassKitUI/UICollectionViewDelegateFlowLayout-Protocol.h>
 #import <PassKitUI/UISearchResultsUpdating-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSMutableOrderedSet, NSObject, NSString, PKAccountService, PKDashboardPaymentTransactionItemPresenter, PKDashboardTitleHeaderView, PKPassLibrary, PKSearchQuery, PKSearchService, PKSearchSuggestionCollectionViewCell, PKTransactionGroupItemPresenter, PKTransactionGroupThumbnailPresenter, PKTransactionHistoryViewController, PKTransactionSource, PKWorldRegionUpdater, UILabel;
+@class NSArray, NSDictionary, NSMutableDictionary, NSMutableOrderedSet, NSObject, NSString, PKAccountService, PKDashboardPaymentTransactionItemPresenter, PKDashboardTitleHeaderView, PKFamilyMemberCollection, PKPassLibrary, PKSearchQuery, PKSearchResults, PKSearchService, PKSearchSuggestionCollectionViewCell, PKTransactionGroupItemPresenter, PKTransactionGroupThumbnailPresenter, PKTransactionHistoryViewController, PKTransactionSourceCollection, PKWorldRegionUpdater, UILabel;
 @protocol OS_dispatch_queue, OS_dispatch_source, PKPaymentDataProvider;
 
-@interface PKSearchResultsViewController : UICollectionViewController <CNAvatarViewDelegate, PKAccountServiceObserver, PKSearchServiceObserver, UICollectionViewDelegateFlowLayout, PKWorldRegionUpdaterObserver, PKForegroundActiveArbiterObserver, UISearchResultsUpdating>
+@interface PKSearchResultsViewController : UICollectionViewController <CNAvatarViewDelegate, PKAccountServiceObserver, PKSearchServiceObserver, UICollectionViewDelegateFlowLayout, PKWorldRegionUpdaterObserver, PKForegroundActiveArbiterObserver, PKPaymentDataProviderDelegate, UISearchResultsUpdating>
 {
     PKDashboardTitleHeaderView *_sampleHeaderView;
     PKSearchSuggestionCollectionViewCell *_sampleSuggestionCell;
@@ -25,16 +26,19 @@
     PKTransactionGroupItemPresenter *_transactionGroupPresenter;
     PKTransactionGroupThumbnailPresenter *_thumbnailPresenter;
     PKWorldRegionUpdater *_regionUpdater;
+    PKFamilyMemberCollection *_familyCollection;
     PKSearchService *_searchService;
     PKAccountService *_accountService;
     PKPassLibrary *_passLibrary;
     id <PKPaymentDataProvider> _paymentDataProvider;
-    NSMutableDictionary *_accountsPerIdentifier;
-    PKTransactionSource *_transactionSource;
+    NSDictionary *_accountsPerIdentifier;
+    NSDictionary *_accountUserCollectionsPerIdentifier;
+    PKTransactionSourceCollection *_transactionSourceCollection;
     struct os_unfair_lock_s _lockQuery;
     NSString *_currentQueryIdentifier;
     NSMutableOrderedSet *_lastQueries;
     PKSearchQuery *_queryForCurrentResults;
+    PKSearchResults *_currentResults;
     _Bool _queryInProgress;
     NSMutableDictionary *_lastResultsPerQueryIdentifier;
     NSObject<OS_dispatch_queue> *_queuePrepareResults;
@@ -67,7 +71,9 @@
 }
 
 - (void).cxx_destruct;
-- (void)_updateAccounts;
+- (void)didUpdateFamilyMembers:(id)arg1;
+- (void)_updateAccountsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)accountUsersChanged:(id)arg1 forAccountIdentifier:(id)arg2;
 - (void)accountChanged:(id)arg1;
 - (void)accountRemoved:(id)arg1;
 - (void)accountAdded:(id)arg1;
@@ -120,7 +126,7 @@
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;
-- (id)initWithPaymentDataProvider:(id)arg1 transactionSource:(id)arg2;
+- (id)initWithPaymentDataProvider:(id)arg1 transactionSourceCollection:(id)arg2 familyCollection:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

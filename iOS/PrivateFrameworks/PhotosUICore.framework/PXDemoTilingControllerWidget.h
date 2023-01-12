@@ -11,8 +11,8 @@
 #import <PhotosUICore/PXTilingControllerTransitionDelegate-Protocol.h>
 #import <PhotosUICore/PXWidget-Protocol.h>
 
-@class NSMutableSet, NSString, PXAssetsDataSourceManager, PXBasicUIViewTileAnimator, PXPhotoKitUIMediaProvider, PXPhotosDetailsContext, PXSectionedSelectionManager, PXTilingController, PXUIAssetsScene, PXWidgetSpec;
-@protocol PXAnonymousView, PXWidgetDelegate, PXWidgetEditingDelegate, PXWidgetUnlockDelegate;
+@class NSMutableSet, NSString, PXAssetActionManager, PXAssetsDataSourceManager, PXBasicUIViewTileAnimator, PXPhotoKitUIMediaProvider, PXPhotosDetailsContext, PXSectionedSelectionManager, PXTilingController, PXUIAssetsScene, PXWidgetSpec;
+@protocol PXAnonymousView, PXWidgetDelegate, PXWidgetEditingDelegate, PXWidgetInteractionDelegate, PXWidgetUnlockDelegate;
 
 @interface PXDemoTilingControllerWidget : NSObject <PXAssetsSceneDelegate, PXTileSource, PXTilingControllerTransitionDelegate, PXWidget>
 {
@@ -53,6 +53,7 @@
 
 // Remaining properties
 @property(readonly, nonatomic) _Bool allowUserInteractionWithSubtitle;
+@property(readonly, nonatomic) PXAssetActionManager *assetActionManager;
 @property(readonly, nonatomic) long long contentLayoutStyle;
 @property(readonly, nonatomic) NSObject<PXAnonymousView> *contentView;
 @property(readonly, nonatomic) long long contentViewAnchoringType;
@@ -67,6 +68,7 @@
 @property(nonatomic) struct CGSize maxVisibleSizeInEditMode;
 @property(nonatomic, getter=isSelecting) _Bool selecting;
 @property(readonly, nonatomic) PXSectionedSelectionManager *selectionManager;
+@property(readonly, nonatomic) NSString *snappableWidgetIdentifier;
 @property(retain, nonatomic) PXWidgetSpec *spec;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) _Bool supportsFaceMode;
@@ -74,6 +76,7 @@
 @property(nonatomic, getter=isUserInteractionEnabled) _Bool userInteractionEnabled;
 @property(readonly, nonatomic) _Bool wantsFocus;
 @property(nonatomic) __weak id <PXWidgetEditingDelegate> widgetEditingDelegate;
+@property(nonatomic) __weak id <PXWidgetInteractionDelegate> widgetInteractionDelegate;
 @property(nonatomic) __weak id <PXWidgetUnlockDelegate> widgetUnlockDelegate;
 
 @end

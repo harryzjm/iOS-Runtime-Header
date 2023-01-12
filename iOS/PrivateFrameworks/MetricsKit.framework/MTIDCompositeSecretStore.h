@@ -15,14 +15,16 @@
     NSMutableDictionary *_stores;
 }
 
-+ (id)defaultSecretStore;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *stores; // @synthesize stores=_stores;
 - (id)debugInfo;
 - (void)clearLocalData;
-- (id)resetSecretForScheme:(id)arg1 options:(id)arg2;
+- (id)maintainSchemes:(id)arg1 options:(id)arg2;
+- (id)resetSchemes:(id)arg1 options:(id)arg2;
 - (id)secretForScheme:(id)arg1 options:(id)arg2;
+- (id)schemesGroupedByStore:(id)arg1;
 - (id)secretStoreForScheme:(id)arg1;
+- (id)storeKeyForScheme:(id)arg1;
 - (id)init;
 
 // Remaining properties

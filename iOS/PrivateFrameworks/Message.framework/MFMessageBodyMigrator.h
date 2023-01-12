@@ -30,6 +30,7 @@
 - (id)legacyAttachmentDirectoryForMessage:(id)arg1;
 - (id)_filesForMessage:(id)arg1;
 - (void)_migrateAllFilesForMailbox:(id)arg1;
+- (id)_legacyAttachmentDataDirectoryURLForGlobalMessageID:(long long)arg1 basePath:(id)arg2 purgeable:(_Bool)arg3;
 - (_Bool)_mailboxHasUnmigratedFiles:(id)arg1;
 - (void)_migrateDataFilesForMessage:(id)arg1;
 - (void)migrateBodyForMessageIfNecessary:(id)arg1;

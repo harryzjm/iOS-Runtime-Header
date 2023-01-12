@@ -22,10 +22,13 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) __weak UIViewController *viewController; // @synthesize viewController=_viewController;
 @property(readonly, nonatomic) __weak id <_SFBrowserContentController> browserContentController; // @synthesize browserContentController=_browserContentController;
+- (void)presentModalViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)viewControllerForPresentationForItemController:(id)arg1;
+- (id)_manageWebExtensionsAlertItem;
 - (id)_sitePreferencesAlertItem;
 - (id)_contentBlockersToggleAlertItem;
 - (_Bool)_hasStartedTranslation;
+- (_Bool)_canShowChangeSearchFieldPosition;
 - (_Bool)_canHideToolbar;
 - (_Bool)_canToggleContentBlockers;
 - (id)_readerFontAlertItem;
@@ -33,15 +36,20 @@
 - (id)_readerTextSizeAlertItem;
 - (id)_pageZoomAlertItem;
 - (void)_translationAvailabilityDidChange:(id)arg1;
+- (id)_userFeedbackTranslationAlertItem;
 - (id)_internalTapToRadarTranslationAlertItem;
 - (id)_exitTranslationAlertItem;
 - (id)_translateAlertItemForLocaleIdentifier:(id)arg1;
 - (void)_buildTranslationAlertItemsWithSourceInfo:(id)arg1;
 - (void)_anchorInWindowCoordinatesForAlert:(id)arg1;
+- (id)_changeSearchFieldPositionAlertItem;
 - (id)_fullScreenAlertItem;
 - (id)_desktopMobileToggleAlertItemWithOrientation:(long long)arg1;
+- (id)_downloadsAlertItem;
+- (id)_mediaStateAlertItem;
 - (id)_readerAlertItem;
 - (void)_readerAvailabilityDidChange:(id)arg1;
+- (void)dismissMenu;
 - (void)presentMenuFromViewController:(id)arg1 withSourceInfo:(id)arg2;
 - (id)initWithBrowserContentController:(id)arg1;
 

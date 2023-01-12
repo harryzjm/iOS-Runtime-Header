@@ -9,11 +9,10 @@
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
 @class NSMutableDictionary;
-@protocol OS_dispatch_queue;
 
 @interface PKPaymentWebServiceBackgroundContext : NSObject <NSSecureCoding>
 {
-    NSObject<OS_dispatch_queue> *_queue;
+    struct os_unfair_lock_s _lock;
     NSMutableDictionary *_backgroundTaskRecordsByTaskIdentifier;
     NSMutableDictionary *_backgroundTaskRecordsByRecordName;
 }

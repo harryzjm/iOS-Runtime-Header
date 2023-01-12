@@ -8,9 +8,13 @@
 
 @interface NAEndOfArticleCollectionView : UICollectionView
 {
+    long long _boundsHandling;
 }
 
+@property(nonatomic) long long boundsHandling; // @synthesize boundsHandling=_boundsHandling;
 - (struct CGRect)_visibleBounds;
+- (id)initWithFrame:(struct CGRect)arg1 collectionViewLayout:(id)arg2;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

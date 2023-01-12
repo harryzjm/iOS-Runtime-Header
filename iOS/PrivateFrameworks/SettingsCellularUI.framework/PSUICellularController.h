@@ -6,11 +6,13 @@
 
 #import <Preferences/PSListController.h>
 
+#import <SettingsCellularUI/CoreTelephonyClientCellularPlanManagementDelegate-Protocol.h>
 #import <SettingsCellularUI/CoreTelephonyClientSubscriberDelegate-Protocol.h>
+#import <SettingsCellularUI/TSSIMSetupDelegate-Protocol.h>
 
-@class CoreTelephonyClient, NSString, PSSpecifier, PSUICarrierItemGroup, PSUICellularDataOptionsController, PSUICellularDataPlanDetailGroup, PSUICellularDataPlanListGroup, PSUICellularDataPlanSetupGroup, PSUICellularDataSpecifier, PSUICellularPlanListGroup, PSUICellularUsageSchedulingGroup, PSUISubscriptionContextMenusGroup;
+@class CoreTelephonyClient, NSString, PSBundleController, PSSpecifier, PSUIAddOnPlanGroup, PSUICarrierItemGroup, PSUICellularDataPlanDetailGroup, PSUICellularDataPlanListGroup, PSUICellularPlanListGroup, PSUICellularUsageSchedulingGroup, PSUIPlanPendingTransferListGroup, PSUISubscriptionContextMenusGroup, TSSIMSetupFlow;
 
-@interface PSUICellularController : PSListController <CoreTelephonyClientSubscriberDelegate>
+@interface PSUICellularController : PSListController <CoreTelephonyClientSubscriberDelegate, CoreTelephonyClientCellularPlanManagementDelegate, TSSIMSetupDelegate>
 {
     PSSpecifier *_viewAccount;
     PSSpecifier *_viewAccountGroup;
@@ -19,32 +21,36 @@
     _Bool _disabled;
     _Bool _ignoreNextEntitlementStatusChange;
     PSSpecifier *_personalHotspotSpecifier;
-    PSSpecifier *_fauxCardSpecifier;
+    PSBundleController *_personalHotspotBundleController;
+    PSSpecifier *_addCellularPlanSpecifier;
     _Bool _shouldCalculateDataUsage;
-    PSUICellularDataSpecifier *_cellularDataSpecifier;
-    PSUICellularDataOptionsController *_cellularDataOptionsController;
-    PSUICellularDataPlanSetupGroup *_cellularDataPlanSetupGroup;
     PSUICellularDataPlanListGroup *_cellularDataPlanListGroup;
     PSUICellularDataPlanDetailGroup *_cellularDataPlanDetailGroup;
     PSUICellularPlanListGroup *_cellularPlanListGroup;
-    PSUICarrierItemGroup *_cellularNewNetworkGroup;
+    PSUICarrierItemGroup *_carrierItemGroup;
+    PSUIAddOnPlanGroup *_addOnPlanGroup;
     PSUISubscriptionContextMenusGroup *_subscriptionContextMenus;
     PSUICellularUsageSchedulingGroup *_appUsageGroup;
+    PSUIPlanPendingTransferListGroup *_planPendingTransferGroup;
     CoreTelephonyClient *_coreTelephonyClient;
+    TSSIMSetupFlow *_flow;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) TSSIMSetupFlow *flow; // @synthesize flow=_flow;
 @property(retain, nonatomic) CoreTelephonyClient *coreTelephonyClient; // @synthesize coreTelephonyClient=_coreTelephonyClient;
+@property(retain, nonatomic) PSUIPlanPendingTransferListGroup *planPendingTransferGroup; // @synthesize planPendingTransferGroup=_planPendingTransferGroup;
 @property(retain, nonatomic) PSUICellularUsageSchedulingGroup *appUsageGroup; // @synthesize appUsageGroup=_appUsageGroup;
 @property(retain, nonatomic) PSUISubscriptionContextMenusGroup *subscriptionContextMenus; // @synthesize subscriptionContextMenus=_subscriptionContextMenus;
-@property(retain, nonatomic) PSUICarrierItemGroup *cellularNewNetworkGroup; // @synthesize cellularNewNetworkGroup=_cellularNewNetworkGroup;
+@property(retain, nonatomic) PSUIAddOnPlanGroup *addOnPlanGroup; // @synthesize addOnPlanGroup=_addOnPlanGroup;
+@property(retain, nonatomic) PSUICarrierItemGroup *carrierItemGroup; // @synthesize carrierItemGroup=_carrierItemGroup;
 @property(retain, nonatomic) PSUICellularPlanListGroup *cellularPlanListGroup; // @synthesize cellularPlanListGroup=_cellularPlanListGroup;
 @property(retain, nonatomic) PSUICellularDataPlanDetailGroup *cellularDataPlanDetailGroup; // @synthesize cellularDataPlanDetailGroup=_cellularDataPlanDetailGroup;
 @property(retain, nonatomic) PSUICellularDataPlanListGroup *cellularDataPlanListGroup; // @synthesize cellularDataPlanListGroup=_cellularDataPlanListGroup;
-@property(retain, nonatomic) PSUICellularDataPlanSetupGroup *cellularDataPlanSetupGroup; // @synthesize cellularDataPlanSetupGroup=_cellularDataPlanSetupGroup;
-@property(retain, nonatomic) PSUICellularDataOptionsController *cellularDataOptionsController; // @synthesize cellularDataOptionsController=_cellularDataOptionsController;
-@property(retain, nonatomic) PSUICellularDataSpecifier *cellularDataSpecifier; // @synthesize cellularDataSpecifier=_cellularDataSpecifier;
+- (void)simSetupFlowCompleted:(unsigned long long)arg1;
+- (void)launchWebsheet:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)selectSpecifier:(id)arg1;
+- (void)perAppNetworkDataAccessPolicyChanged;
 - (void)carrierItemsChanged;
 - (void)wirelessDataUsageCacheRefreshed;
 - (void)wirelessDataUsageChangedNotification;
@@ -62,6 +68,7 @@
 - (id)removePlanConfirmationMessage:(id)arg1;
 - (_Bool)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;
 - (id)getTetheringStatus:(id)arg1;
+- (void)setUpAccountPressed:(id)arg1;
 - (id)cellularDataOptionsDetailText:(id)arg1;
 - (_Bool)showDataPlanOnly;
 - (void)updatePaneWithCellularDataState:(_Bool)arg1;
@@ -70,9 +77,36 @@
 - (void)handleURL:(id)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (void)prefetchResourcesFor:(id)arg1;
+- (_Bool)shouldShowDataPlans;
+- (_Bool)shouldShowAddPlanButton;
+- (_Bool)deviceIsDualSIMCapableAndPlansExist;
+- (_Bool)shouldShowNoSIMsOrActivatePlansUI;
 - (id)activeDataPlanLabel;
 - (id)appUsageGroupTitle;
+- (void)configureAddOnPlanTurnOnWifi:(id)arg1;
+- (void)configureCarrierItemGroup:(id)arg1;
+- (void)createAddCellularPlanSpecifierIfNeeded;
+- (id)createCarrierItemGroupIfNeeded:(id)arg1;
+- (id)carrierItemGroupSpecifier;
+- (void)createOrUpdateSubscriptionContextMenuGroup:(id)arg1;
+- (id)createPersonalHotspotSpecifier;
+- (void)disableSpecifiersIfNeeded:(id)arg1;
+- (void)logSpecifiers:(id)arg1 origin:(id)arg2;
+- (void)setUpAppUsageGroup:(id)arg1;
+- (void)setUpFacetimeSetupGroup:(id)arg1;
+- (void)setUpAddPlanGroup:(id)arg1;
+- (void)setUpSubscriptionContextMenusGroup:(id)arg1;
+- (void)setSubscriptionContextAndPlanProperties;
+- (void)setUpDataOnlyPlanListGroupIfNeeded:(id)arg1;
+- (void)setUpCellularListGroup:(id)arg1;
+- (void)setUpPlanPendingTransferListGroup:(id)arg1;
+- (void)setUpViewAccountGroup:(id)arg1;
+- (void)setUpDefaultVoiceGroup:(id)arg1;
+- (void)setUpCellularDataOptionsGroup:(id)arg1;
+- (void)setUpActivationSpecifiers:(id)arg1;
+- (void)setUpSadPathSpecifiersIfNeeded:(id)arg1;
 - (id)specifiers;
+- (void)turnOnWifiPressed:(id)arg1;
 - (void)turnOnLocationServicesPressed:(id)arg1;
 - (void)retryCarrierListFetch:(id)arg1;
 - (id)_deadTelephonySpecifiers;

@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     _UIStatusBarImageView *_batteryImageView;
 }
 
++ (_Bool)alwaysShowRegulatoryBluetoothIndicator;
 + (id)batteryDisplayIdentifier;
 - (void).cxx_destruct;
 @property(retain, nonatomic) _UIStatusBarImageView *batteryImageView; // @synthesize batteryImageView=_batteryImageView;

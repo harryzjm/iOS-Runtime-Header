@@ -9,6 +9,7 @@
 @protocol SBSLockScreenServiceServerInterface
 - (oneway void)setPreventSpuriousScreenUndim:(NSNumber *)arg1;
 - (oneway void)setPreventPasscodeLock:(NSNumber *)arg1;
+- (oneway void)requestPasscodeCheckUIWithOptions:(SBSUnlockOptions *)arg1 withCompletion:(void (^)(NSError *))arg2;
 - (oneway void)requestPasscodeUnlockUIWithOptions:(SBSUnlockOptions *)arg1 withCompletion:(void (^)(NSError *))arg2;
 - (oneway void)launchEmergencyDialerWithCompletion:(void (^)(NSError *))arg1;
 @end

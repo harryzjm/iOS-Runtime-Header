@@ -8,13 +8,14 @@
 
 #import <iTunesCloud/NSCopying-Protocol.h>
 
-@class ICRequestContext, NSString, NSURL;
+@class ICRequestContext, NSNumber, NSString, NSURL;
 
 @interface ICSecureKeyDeliveryRequest : NSObject <NSCopying>
 {
     _Bool _skippedRentalCheckout;
     _Bool _ITunesStoreRequest;
     _Bool _shouldIncludeDeviceGUID;
+    _Bool _isOfflineDownload;
     NSURL *_certificateURL;
     NSString *_contentURI;
     NSURL *_keyServerURL;
@@ -23,10 +24,19 @@
     long long _rentalID;
     long long _qualityOfService;
     CDUnknownBlockType _serverPlaybackContextDataCreationHandler;
+    CDUnknownBlockType _asyncServerPlaybackContextDataCreationHandler;
+    long long _requestProtocolType;
+    NSNumber *_adamID;
+    NSString *_playbackToken;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *playbackToken; // @synthesize playbackToken=_playbackToken;
+@property(copy, nonatomic) NSNumber *adamID; // @synthesize adamID=_adamID;
+@property(nonatomic) _Bool isOfflineDownload; // @synthesize isOfflineDownload=_isOfflineDownload;
+@property(nonatomic) long long requestProtocolType; // @synthesize requestProtocolType=_requestProtocolType;
 @property(nonatomic) _Bool shouldIncludeDeviceGUID; // @synthesize shouldIncludeDeviceGUID=_shouldIncludeDeviceGUID;
+@property(copy, nonatomic) CDUnknownBlockType asyncServerPlaybackContextDataCreationHandler; // @synthesize asyncServerPlaybackContextDataCreationHandler=_asyncServerPlaybackContextDataCreationHandler;
 @property(copy, nonatomic) CDUnknownBlockType serverPlaybackContextDataCreationHandler; // @synthesize serverPlaybackContextDataCreationHandler=_serverPlaybackContextDataCreationHandler;
 @property(nonatomic) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
 @property(nonatomic, getter=isITunesStoreRequest) _Bool ITunesStoreRequest; // @synthesize ITunesStoreRequest=_ITunesStoreRequest;
@@ -38,6 +48,7 @@
 @property(copy, nonatomic) NSString *contentURI; // @synthesize contentURI=_contentURI;
 @property(copy, nonatomic) NSURL *certificateURL; // @synthesize certificateURL=_certificateURL;
 - (void)performWithResponseHandler:(CDUnknownBlockType)arg1;
+- (void)configureUsingContentKeyRequest:(id)arg1;
 - (void)configureUsingAssetResourceLoadingRequest:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;

@@ -8,6 +8,7 @@
 
 @interface TVImageScaleDecorator
 {
+    _Bool _centerGrowth;
     _Bool _cornerContinuous;
     _Bool _preservesAlpha;
     long long _scaleMode;
@@ -25,6 +26,7 @@
 @property(nonatomic) struct TVCornerRadii cornerRadii; // @synthesize cornerRadii=_cornerRadii;
 @property(nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
 @property(nonatomic) double focusedSizeIncrease; // @synthesize focusedSizeIncrease=_focusedSizeIncrease;
+@property(nonatomic) _Bool centerGrowth; // @synthesize centerGrowth=_centerGrowth;
 @property(nonatomic) long long scaleMode; // @synthesize scaleMode=_scaleMode;
 @property(nonatomic) struct CGSize scaleToSize; // @synthesize scaleToSize=_scaleToSize;
 - (void)_applyCornerMaskForRect:(struct CGRect)arg1 toContext:(struct CGContext *)arg2;

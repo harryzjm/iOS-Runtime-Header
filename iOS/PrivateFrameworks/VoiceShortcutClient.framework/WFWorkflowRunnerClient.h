@@ -7,25 +7,32 @@
 #import <objc/NSObject.h>
 
 @class WFWorkflowRunRequest, WFWorkflowRunningContext;
-@protocol WFWorkflowRunnerClientDelegate;
+@protocol OS_dispatch_queue, WFWorkflowRunnerClientDelegate;
 
 @interface WFWorkflowRunnerClient : NSObject
 {
     id <WFWorkflowRunnerClientDelegate> _delegate;
-    WFWorkflowRunRequest *_runRequest;
     WFWorkflowRunningContext *_context;
     id _progressSubscriber;
+    NSObject<OS_dispatch_queue> *_delegateQueue;
+    WFWorkflowRunRequest *_runRequest;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) WFWorkflowRunRequest *runRequest; // @synthesize runRequest=_runRequest;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property(retain, nonatomic) id progressSubscriber; // @synthesize progressSubscriber=_progressSubscriber;
 @property(retain, nonatomic) WFWorkflowRunningContext *context; // @synthesize context=_context;
-@property(readonly, nonatomic) WFWorkflowRunRequest *runRequest; // @synthesize runRequest=_runRequest;
 @property(nonatomic) __weak id <WFWorkflowRunnerClientDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)stopObservingRunProgress;
 - (void)beginObservingProgressForWorkflowWithRunningContext:(id)arg1;
+- (void)handleWorkflowRunResult:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)dispatchWorkflowResultHandlingWithResult:(id)arg1;
+- (id)runWorkflowWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)stop;
 - (void)start;
+@property(readonly, nonatomic, getter=isRunning) _Bool running;
+- (id)initWithRunRequest:(id)arg1 delegateQueue:(id)arg2;
 - (id)initWithRunRequest:(id)arg1;
 
 @end

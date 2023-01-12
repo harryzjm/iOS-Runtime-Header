@@ -12,13 +12,17 @@
     _SBGridFloorSwitcherModifier *_floorModifier;
     unsigned long long _ongoingAppLayoutRemovals;
     SBAppLayout *_activeAppLayoutInSwitcher;
+    struct CGRect _containerViewBounds_lastBounds;
 }
 
 - (void).cxx_destruct;
+- (id)topMostLayoutElements;
+- (struct CGRect)containerViewBounds;
 - (id)handleTapOutsideToDismissEvent:(id)arg1;
 - (id)handleTapAppLayoutEvent:(id)arg1;
+- (id)handleScrollEvent:(id)arg1;
 - (id)handleRemovalEvent:(id)arg1;
-- (id)handleMainTransitionEvent:(id)arg1;
+- (id)handleTransitionEvent:(id)arg1;
 - (unsigned long long)numberOfRows;
 - (id)gridLayoutModifier;
 - (void)didMoveToParentModifier:(id)arg1;

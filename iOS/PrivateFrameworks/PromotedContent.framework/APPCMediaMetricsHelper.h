@@ -10,7 +10,6 @@
 
 @interface APPCMediaMetricsHelper : NSObject
 {
-    MISSING_TYPE *visiblePercentage;
     MISSING_TYPE *contextIdentifier;
     MISSING_TYPE *promotedContentIdentifier;
     MISSING_TYPE *primitiveCreator;
@@ -18,11 +17,15 @@
     MISSING_TYPE *videoDuration;
     MISSING_TYPE *videoURL;
     MISSING_TYPE *videoQuality;
+    MISSING_TYPE *mediaHasStarted;
+    MISSING_TYPE *promotedContent;
+    MISSING_TYPE *$__lazy_storage_$_initialVolumeSender;
+    MISSING_TYPE *visiblePercentageChanged;
+    MISSING_TYPE *_visiblePercentage;
 }
 
 - (void).cxx_destruct;
 - (id)init;
-- (void)updateVisiblePercentage:(long long)arg1;
 - (void)mediaProgress:(long long)arg1;
 - (void)mediaFinished;
 - (void)mediaStarted;
@@ -33,11 +36,13 @@
 - (void)mediaSkippedAtPosition:(double)arg1;
 - (void)mediaPausedAtPosition:(double)arg1;
 - (void)mediaPlayedAtPosition:(double)arg1;
-- (void)mediaChosenWithVideoWidth:(float)arg1 videoHeight:(float)arg2;
+- (void)videoChosenWithVideoWidth:(float)arg1 videoHeight:(float)arg2;
 - (void)mediaLoaded;
 - (void)removeHandler;
 - (void)registerHandlerForAllMetricsWithClosure:(CDUnknownBlockType)arg1;
 - (id)initWithContextIdentifier:(id)arg1 promotedContentIdentifier:(id)arg2 primitiveCreator:(id)arg3 notificationOwner:(id)arg4;
+@property(nonatomic) long long visiblePercentage;
+@property(nonatomic, copy) CDUnknownBlockType visiblePercentageChanged;
 
 @end
 

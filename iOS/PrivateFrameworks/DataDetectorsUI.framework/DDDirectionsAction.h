@@ -9,14 +9,9 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (_Bool)actionAvailableForCachedEvent:(id)arg1;
-+ (_Bool)actionAvailableForContact:(id)arg1;
-- (_Bool)canBePerformedByOpeningURL;
-- (void)performFromView:(id)arg1;
 - (id)notificationURL;
-- (id)notificationIconBundleIdentifier;
 - (id)notificationTitle;
-- (id)icon;
+- (id)iconName;
 - (id)localizedName;
 
 @end

@@ -9,20 +9,24 @@
 #import <ClassroomKit/CRKCertificateConduit-Protocol.h>
 
 @class CATOperationQueue;
-@protocol CRKIDSAddressTranslator, CRKIDSPrimitives;
+@protocol CRKIDSAddressTranslator, CRKIDSPrimitives, CRKTimerPrimitives;
 
 @interface CRKPrimitiveBackedCertificateConduit : NSObject <CRKCertificateConduit>
 {
     id <CRKIDSPrimitives> _IDSPrimitives;
     id <CRKIDSAddressTranslator> _addressTranslator;
+    id <CRKTimerPrimitives> _timerPrimitives;
     CATOperationQueue *_operationQueue;
 }
 
++ (id)fetchOperationTimerIdentifier;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) CATOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
+@property(readonly, nonatomic) id <CRKTimerPrimitives> timerPrimitives; // @synthesize timerPrimitives=_timerPrimitives;
 @property(readonly, nonatomic) id <CRKIDSAddressTranslator> addressTranslator; // @synthesize addressTranslator=_addressTranslator;
 @property(readonly, nonatomic) id <CRKIDSPrimitives> IDSPrimitives; // @synthesize IDSPrimitives=_IDSPrimitives;
 - (id)operationToFetchCertificateForDestinationAppleID:(id)arg1 sourceAppleID:(id)arg2 destinationDeviceIdentifier:(id)arg3 controlGroupIdentifier:(id)arg4 sourceRole:(long long)arg5 destinationRole:(long long)arg6 requesterCertificate:(id)arg7 timeout:(double)arg8;
+- (id)initWithIDSPrimitives:(id)arg1 addressTranslator:(id)arg2 timerPrimitives:(id)arg3 operationQueue:(id)arg4;
 - (id)initWithIDSPrimitives:(id)arg1 addressTranslator:(id)arg2 operationQueue:(id)arg3;
 
 @end

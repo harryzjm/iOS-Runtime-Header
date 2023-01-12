@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <UIKitCore/BSXPCCoding-Protocol.h>
 #import <UIKitCore/NSCopying-Protocol.h>
 
-@class SBSApplicationShortcutIcon;
+@class NSString, SBSApplicationShortcutIcon;
 
-@interface UIApplicationShortcutIcon : NSObject <NSCopying>
+@interface UIApplicationShortcutIcon : NSObject <BSXPCCoding, NSCopying>
 {
     SBSApplicationShortcutIcon *_sbsShortcutIcon;
 }
@@ -20,13 +21,19 @@
 + (id)iconWithTemplateImageName:(id)arg1;
 + (id)iconWithSystemImageName:(id)arg1;
 + (id)iconWithType:(long long)arg1;
-+ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) SBSApplicationShortcutIcon *sbsShortcutIcon; // @synthesize sbsShortcutIcon=_sbsShortcutIcon;
-- (unsigned long long)hash;
+- (id)initWithXPCDictionary:(id)arg1;
+- (void)encodeWithXPCDictionary:(id)arg1;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithSBSApplicationShortcutIcon:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) Class superclass;
 
 @end
 

@@ -8,38 +8,28 @@
 
 #import <SleepDaemon/HDSPSleepScheduleStateCoordinatorStateMachineEventHandler-Protocol.h>
 
-@class HDSPSleepScheduleStateCoordinatorStateMachine, HKSPSleepScheduleModel, NSString;
+@class HDSPSleepScheduleStateCoordinatorStateMachine, NSString;
 
 __attribute__((visibility("hidden")))
 @interface HDSPSleepScheduleStateCoordinatorStateMachineState : HKSPPersistentStateMachineState <HDSPSleepScheduleStateCoordinatorStateMachineEventHandler>
 {
     unsigned long long _scheduleState;
-    HKSPSleepScheduleModel *_persistedModel;
 }
 
-- (void).cxx_destruct;
-@property(copy, nonatomic) HKSPSleepScheduleModel *persistedModel; // @synthesize persistedModel=_persistedModel;
 @property(readonly, nonatomic) unsigned long long scheduleState; // @synthesize scheduleState=_scheduleState;
-- (id)equalsBuilderWithObject:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
 - (void)wakeUpConfirmed;
 - (void)wakeTimeReached;
-- (void)bedtimeSkipped;
-- (void)bedtimeDelayed;
 - (void)bedtimeReached;
-- (void)windDownSkipped;
 - (void)windDownReached;
-- (_Bool)significantScheduleChangeOccurred;
-- (void)scheduleModelChanged;
+- (void)significantScheduleChangeOccurred:(unsigned long long)arg1;
+- (void)scheduleModelChanged:(id)arg1;
 - (void)timeZoneChange;
 - (void)significantTimeChange;
 - (id)determineNextStateFromTimeline;
 - (id)_timelineForDate:(id)arg1;
 - (_Bool)isAlarmEnabled;
 - (_Bool)isSleepScheduleDisabled;
-- (void)updateStateWithCheckExpiration:(_Bool)arg1;
+- (void)updateStateWithChangeReason:(unsigned long long)arg1;
 - (void)updateState;
 - (void)didEnterWithPreviousState:(id)arg1 context:(id)arg2;
 - (void)willEnterWithPreviousState:(id)arg1 context:(id)arg2;

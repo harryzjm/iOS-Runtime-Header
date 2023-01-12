@@ -16,7 +16,6 @@
     LSApplicationExtensionRecord *_appexRecord;
     NSString *_extensionPointID;
     _Bool _onSystemPartition;
-    NSString *_signerOrganization;
     NSString *_pluginIdentifier;
     NSString *_originalIdentifier;
     NSString *_protocol;
@@ -41,7 +40,6 @@
 @property(readonly, nonatomic) NSString *protocol; // @synthesize protocol=_protocol;
 @property(readonly, nonatomic) NSString *originalIdentifier; // @synthesize originalIdentifier=_originalIdentifier;
 @property(readonly, nonatomic) NSString *pluginIdentifier; // @synthesize pluginIdentifier=_pluginIdentifier;
-- (id)signerOrganization;
 - (void)detach;
 - (id)groupContainerURLs;
 - (id)dataContainerURL;
@@ -50,6 +48,8 @@
 - (id)description;
 - (id)_valueForEqualityTesting;
 @property(readonly, nonatomic) NSString *teamID; // @dynamic teamID;
+- (id)signerIdentity;
+- (id)signerOrganization;
 - (_Bool)freeProfileValidated;
 - (_Bool)UPPValidated;
 - (_Bool)profileValidated;
@@ -68,6 +68,7 @@
 - (id)_initWithUUID:(id)arg1 bundleIdentifier:(id)arg2 pluginIdentifier:(id)arg3 effectiveIdentifier:(id)arg4 version:(id)arg5 bundleURL:(id)arg6;
 - (id)_initWithPlugin:(unsigned int)arg1 andContext:(struct LSContext *)arg2 applicationExtensionRecord:(id)arg3 resolveAndDetach:(_Bool)arg4;
 - (id)_localizedNameWithPreferredLocalizations:(id)arg1 useShortNameOnly:(_Bool)arg2;
+- (id)correspondingApplicationExtensionRecord;
 
 @end
 

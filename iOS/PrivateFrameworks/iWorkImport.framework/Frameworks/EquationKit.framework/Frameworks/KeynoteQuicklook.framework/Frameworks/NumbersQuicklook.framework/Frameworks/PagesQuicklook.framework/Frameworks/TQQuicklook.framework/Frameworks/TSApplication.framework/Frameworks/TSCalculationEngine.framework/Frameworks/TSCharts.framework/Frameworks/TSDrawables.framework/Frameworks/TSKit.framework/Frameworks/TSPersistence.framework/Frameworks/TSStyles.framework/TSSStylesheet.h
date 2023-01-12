@@ -8,7 +8,7 @@
 
 #import <TSStyles/TSKTransformableObject-Protocol.h>
 
-@class NSMutableDictionary, NSSet, NSString, TSUMutableRetainedPointerSet, TSURetainedPointerKeyDictionary;
+@class NSArray, NSMutableDictionary, NSSet, NSString, TSUMutableRetainedPointerSet, TSURetainedPointerKeyDictionary;
 
 @interface TSSStylesheet : TSPObject <TSKTransformableObject>
 {
@@ -25,7 +25,7 @@
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak TSSStylesheet *child; // @synthesize child=mChild;
-@property(readonly, nonatomic) TSSStylesheet *parent; // @synthesize parent=mParent;
+@property(retain, nonatomic) TSSStylesheet *parent; // @synthesize parent=mParent;
 - (id)unusedStyleIdentifierWithPackageString:(id)arg1 styleDescriptor:(id)arg2 contentTag:(id)arg3;
 - (void)style:(id)arg1 didChangeUUIDToValue:(id)arg2 fromValue:(id)arg3;
 - (id)pVariationOfStyle:(id)arg1 propertyMap:(id)arg2 matchStyles:(id)arg3 context:(id)arg4;
@@ -39,7 +39,7 @@
 - (_Bool)p_shouldDoDOLCForStyle:(id)arg1;
 - (void)unlockStylesheetForDurationOfBlock:(CDUnknownBlockType)arg1;
 - (id)styleWithUUIDIfAvailable:(id)arg1;
-- (void)moveAllStylestoStylesheet:(id)arg1 stripIdentifiers:(_Bool)arg2;
+- (void)moveAllStylesToStylesheet:(id)arg1 stripIdentifiers:(_Bool)arg2;
 - (void)moveStyle:(id)arg1 toStylesheet:(id)arg2 stripIdentifiers:(_Bool)arg3 overwriteIdentifiers:(_Bool)arg4;
 - (void)didLoadChildObjectFromDocumentSupport:(id)arg1;
 - (id)variationOfStyle:(id)arg1 exactPropertyMap:(id)arg2;
@@ -59,14 +59,14 @@
 - (void)enumerateCascadedStylesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateStylesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)identifiedStylesOfClass:(Class)arg1;
-- (id)identifiedStyles;
+@property(readonly, nonatomic) NSArray *identifiedStyles;
 - (id)stylesOfClass:(Class)arg1;
 - (id)stylesWithName:(id)arg1;
 - (id)childrenOfStyle:(id)arg1;
 - (void)setParent:(id)arg1 ofStyle:(id)arg2;
 - (void)setIdentifier:(id)arg1 ofStyle:(id)arg2;
-- (id)cascadedStyleWithIdentifier:(id)arg1 componentMask:(int)arg2;
-- (id)styleWithIdentifier:(id)arg1 componentMask:(int)arg2;
+- (id)cascadedStyleWithIdentifier:(id)arg1 componentMask:(unsigned long long)arg2;
+- (id)styleWithIdentifier:(id)arg1 componentMask:(unsigned long long)arg2;
 - (id)cascadedStyleWithIdentifier:(id)arg1;
 - (id)styleWithIdentifier:(id)arg1;
 - (_Bool)cascadedContainsStyle:(id)arg1;
@@ -78,13 +78,12 @@
 - (void)addStyle:(id)arg1 withParent:(id)arg2;
 - (void)addStyle:(id)arg1 withIdentifier:(id)arg2;
 - (void)addStyle:(id)arg1;
-- (unsigned long long)descendantCount;
-- (id)rootAncestor;
+@property(readonly, nonatomic) unsigned long long descendantCount;
+@property(readonly, nonatomic) TSSStylesheet *rootAncestor;
 - (_Bool)isAncestorOf:(id)arg1;
 - (_Bool)isDescendentOf:(id)arg1;
 - (_Bool)isParentOf:(id)arg1;
 - (_Bool)isChildOf:(id)arg1;
-- (void)setParent:(id)arg1;
 @property(readonly, nonatomic) NSSet *styles;
 @property(nonatomic) _Bool canCullStyles;
 @property(nonatomic) _Bool isLocked;
@@ -92,8 +91,8 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithContext:(id)arg1;
 - (id)initWithContext:(id)arg1 canCullStyles:(_Bool)arg2;
-- (void)saveVersionedStylesToMessage:(struct StylesheetArchive_VersionedStyles *)arg1 archiver:(id)arg2 targetVersion:(unsigned long long)arg3;
-- (void)saveStylesToMessage:(struct StylesheetArchive *)arg1 archiver:(id)arg2 versions:(id *)arg3;
+- (void)saveVersionedStylesToMessage:(void *)arg1 archiver:(id)arg2 targetVersion:(unsigned long long)arg3;
+- (void)saveStylesToMessage:(void *)arg1 archiver:(id)arg2 versions:(id *)arg3;
 - (void)saveToArchiver:(id)arg1;
 - (void)saveStyles:(id)arg1 toArchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
@@ -101,7 +100,7 @@
 - (id)packageLocator;
 - (unsigned int)delayedArchivingPriority;
 - (_Bool)shouldDelayArchiving;
-- (set_713dd2e1 *)p_allFilteredIdentifiersInArchive:(const struct StylesheetArchive *)arg1 unarchiver:(id)arg2;
+- (void *)p_allFilteredIdentifiersInArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

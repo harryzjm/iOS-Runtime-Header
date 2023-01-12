@@ -28,6 +28,7 @@
 - (void)invalidate;
 - (void)suspend;
 - (void)resume;
+- (id)syncProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) id proxy;
 - (void)dealloc;
 - (id)initWithServiceDescription:(id)arg1;

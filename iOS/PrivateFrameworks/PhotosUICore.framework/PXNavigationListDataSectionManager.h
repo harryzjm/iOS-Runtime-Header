@@ -36,6 +36,7 @@
 - (void)expandListItem:(id)arg1 hintIndex:(long long)arg2;
 - (void)pauseBackgroundFetching;
 - (void)startBackgroundFetchingIfNeeded;
+- (void)setChangeProcessingPaused:(_Bool)arg1 forReason:(id)arg2;
 - (id)auxiliaryObjectForKey:(id)arg1 dataSectionObject:(id)arg2 hintIndex:(long long)arg3;
 - (_Bool)_isThumbnailAllowedForCollection:(id)arg1;
 - (id)createDataSection;

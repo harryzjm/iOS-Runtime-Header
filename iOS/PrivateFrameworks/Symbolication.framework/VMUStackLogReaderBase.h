@@ -19,9 +19,11 @@
     NSMutableDictionary *_binaryImagePathToIdentifierMap;
     _Bool _usesLiteMode;
     _Bool _coldestFrameIsNotThreadId;
+    struct _CSTypeRef _symbolicator;
 }
 
 - (void).cxx_destruct;
+@property(readonly) struct _CSTypeRef symbolicator; // @synthesize symbolicator=_symbolicator;
 @property(retain, nonatomic) NSSet *excludedFrames; // @synthesize excludedFrames=_excludedFrames;
 @property(readonly) VMUVMRegionTracker *regionTracker; // @synthesize regionTracker=_regionTracker;
 @property(readonly) _Bool coldestFrameIsNotThreadId; // @synthesize coldestFrameIsNotThreadId=_coldestFrameIsNotThreadId;

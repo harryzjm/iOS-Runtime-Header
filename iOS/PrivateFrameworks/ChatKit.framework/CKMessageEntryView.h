@@ -19,18 +19,20 @@
 #import <ChatKit/CKMessageEntryViewStyleProtocol-Protocol.h>
 #import <ChatKit/CKPaddleOverlayViewDelegate-Protocol.h>
 #import <ChatKit/CKTextEntryLayoutManagerMentionsDelegate-Protocol.h>
+#import <ChatKit/TUIInputAccessoryViewTraits-Protocol.h>
 #import <ChatKit/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CAMShutterButton, CKActionMenuController, CKActionMenuGestureRecognizerButton, CKAudioRecorder, CKBrowserSwitcherFooterView, CKComposition, CKConversation, CKEntryViewButton, CKInlineAudioReplyButtonController, CKMentionEntityNode, CKMentionSuggestionView, CKMessageEntryAudioHintView, CKMessageEntryContentView, CKMessageEntryRecordedAudioView, CKMessageEntryWaveformView, CKPaddleOverlayView, CKScheduledUpdater, NSArray, NSMutableDictionary, NSMutableSet, NSString, UIButton, UIInputContextHistory, UIKBVisualEffectView, UILabel, UISwipeGestureRecognizer, UITraitCollection, UIVisualEffectView, _UIClickInteraction;
-@protocol CKMessageEntryViewDelegate, CKMessageEntryViewInputDelegate, UITextInputTraits_Private, _UIClickInteractionDelegate;
+@class CAMShutterButton, CKActionMenuController, CKActionMenuGestureRecognizerButton, CKAudioRecorder, CKBrowserSwitcherFooterView, CKComposition, CKConversation, CKEntryViewButton, CKInlineAudioReplyButtonController, CKMentionEntityNode, CKMentionSuggestionView, CKMessageEntryAudioHintView, CKMessageEntryContentView, CKMessageEntryRecordedAudioView, CKMessageEntryWaveformView, CKPaddleOverlayView, CKScheduledUpdater, NSArray, NSMutableDictionary, NSMutableSet, NSString, UIButton, UIInputContextHistory, UIKBVisualEffectView, UILabel, UISwipeGestureRecognizer, UITraitCollection, UIVisualEffectView, _UIClickInteraction, _UISupplementalLexicon;
+@protocol CKExternalAppBrowserMenuHost, CKMessageEntryViewDelegate, CKMessageEntryViewInputDelegate, UITextInputTraits_Private, _UIClickInteractionDelegate;
 
-@interface CKMessageEntryView : UIView <CKMessageEntryContentViewDelegate, CKAudioRecorderDelegate, CKActionMenuControllerDelegate, CKMessageEntryRecordedAudioViewDelegate, CKActionMenuGestureRecognizerButtonDelegate, CKInlineAudioReplyButtonDelegate, UIGestureRecognizerDelegate, CKBrowserSwitcherFooterViewDelegate, CKMentionSuggestionViewDataSource, CKMentionSuggestionViewDelegate, CKPaddleOverlayViewDelegate, CKTextEntryLayoutManagerMentionsDelegate, CKAppSelectionInterface, CKMessageEntryViewStyleProtocol>
+@interface CKMessageEntryView : UIView <CKMessageEntryContentViewDelegate, CKAudioRecorderDelegate, CKActionMenuControllerDelegate, CKMessageEntryRecordedAudioViewDelegate, CKActionMenuGestureRecognizerButtonDelegate, CKInlineAudioReplyButtonDelegate, UIGestureRecognizerDelegate, CKBrowserSwitcherFooterViewDelegate, CKMentionSuggestionViewDataSource, CKMentionSuggestionViewDelegate, CKPaddleOverlayViewDelegate, CKTextEntryLayoutManagerMentionsDelegate, CKAppSelectionInterface, CKMessageEntryViewStyleProtocol, TUIInputAccessoryViewTraits>
 {
     _Bool _showAppStrip;
     _Bool _shouldShowSendButton;
     _Bool _shouldShowSubject;
     _Bool _shouldShowPluginButtons;
     _Bool _shouldShowCharacterCount;
+    _Bool _shouldDisableAttachments;
     _Bool _animatingLayoutChange;
     _Bool _keyboardVisible;
     _Bool _languageHasSpaces;
@@ -50,6 +52,8 @@
     _Bool _isUpdatingMentionAttributedText;
     _Bool _entryFieldUpdaterCollapsedValue;
     _Bool _entryFieldUpdaterAnimatedValue;
+    _Bool _isAudioActionMenuSuspended;
+    _Bool _isAudioActionMenuResizing;
     NSArray *_keyCommands;
     long long _style;
     NSString *_backdropGroupName;
@@ -63,25 +67,17 @@
     CKEntryViewButton *_photoButton;
     CKEntryViewButton *_sendButton;
     UITraitCollection *_entryViewTraitCollection;
+    id <CKExternalAppBrowserMenuHost> _externalAppBrowserMenuHost;
     UIView *_inputButtonContainerView;
     UIView *_buttonAndTextAreaContainerView;
     CKEntryViewButton *_cancelButton;
     CKEntryViewButton *_stopButton;
     CKEntryViewButton *_arrowButton;
-    CKEntryViewButton *_sendAudioButton;
     _UIClickInteraction *_sendButtonClickInteraction;
-    CKEntryViewButton *_audioButton;
-    CKActionMenuGestureRecognizerButton *_audioActionMenuGestureRecognizerButton;
-    CKInlineAudioReplyButtonController *_audioReplyButton;
     UILabel *_characterCountLabel;
     UIVisualEffectView *_backgroundView;
-    UIVisualEffectView *_knockoutView;
+    UIView *_knockoutView;
     UIView *_knockoutCoverView;
-    CKAudioRecorder *_recorder;
-    CKComposition *_audioComposition;
-    CKActionMenuController *_audioActionMenuController;
-    CKMessageEntryRecordedAudioView *_recordedAudioView;
-    CKMessageEntryAudioHintView *_audioHintView;
     unsigned long long _displayMode;
     UIView *_contentClipView;
     UIInputContextHistory *_inputContextHistory;
@@ -98,14 +94,28 @@
     NSMutableSet *_recipientNames;
     NSMutableDictionary *_entityDictionary;
     CKMentionEntityNode *_entityTree;
+    _UISupplementalLexicon *_mentionsLexicon;
+    unsigned long long _currentTappedCharacterIndex;
+    CDUnknownBlockType _didSelectEntityCompletionHandler;
     CAMShutterButton *_shutterButton;
     CKScheduledUpdater *_entryFieldCollapsedUpdater;
     UISwipeGestureRecognizer *_swipeGestureRecognizer;
+    CKAudioRecorder *_recorder;
+    CKComposition *_audioComposition;
+    CKComposition *_previousAudioComposition;
+    CKActionMenuController *_audioActionMenuController;
+    CKInlineAudioReplyButtonController *_audioReplyButton;
+    CKMessageEntryRecordedAudioView *_recordedAudioView;
+    CKMessageEntryAudioHintView *_audioHintView;
+    CKEntryViewButton *_audioButton;
+    CKEntryViewButton *_sendAudioButton;
+    CKActionMenuGestureRecognizerButton *_audioActionMenuGestureRecognizerButton;
     struct CGSize _inputButtonSize;
     struct CGSize _sendButtonSize;
     struct CGSize _characterCountSize;
-    struct CGSize _waveformViewSize;
     struct _NSRange _rangeOfTappedMention;
+    struct _NSRange _lastFoundMentionRange;
+    struct CGSize _waveformViewSize;
     struct UIEdgeInsets _marginInsets;
     struct UIEdgeInsets _coverInsets;
     struct CGRect _audioActionMenuFrame;
@@ -128,7 +138,7 @@
 + (void)configureAttributedString:(id)arg1 automaticMentionAttributeWithOriginalText:(id)arg2 entityNode:(id)arg3 forRange:(struct _NSRange)arg4;
 + (void)configureAttributedString:(id)arg1 inTextView:(id)arg2 forDirectMentionInRange:(struct _NSRange)arg3 forChildNode:(id)arg4 addingVisualStyling:(_Bool)arg5 shouldAddAutoComplete:(_Bool)arg6;
 + (void)configureAttributedString:(id)arg1 withFontColor:(id)arg2 forRange:(struct _NSRange)arg3;
-+ (void)configureAttributedStringForMentionsChecking:(id)arg1;
++ (void)configureAttributedStringForMentionsChecking:(id)arg1 excludingRange:(const struct _NSRange *)arg2;
 + (void)configureAttributedString:(id)arg1 inTextView:(id)arg2 boldingFont:(_Bool)arg3 inRange:(struct _NSRange)arg4;
 + (void)configureAttributedString:(id)arg1 withParagraphStyleInTextView:(id)arg2 inRange:(struct _NSRange)arg3;
 + (void)configureAttributedString:(id)arg1 inTextView:(id)arg2 forConfirmedMentionInRange:(struct _NSRange)arg3 needingAnimation:(_Bool)arg4;
@@ -138,11 +148,29 @@
 + (void)configureAttributedString:(id)arg1 inTextView:(id)arg2 forUnconfirmedMentionInRange:(struct _NSRange)arg3;
 + (void)configureAttributedString:(id)arg1 inTextView:(id)arg2 forNoMentionInRange:(struct _NSRange)arg3;
 - (void).cxx_destruct;
+@property(retain, nonatomic) CKActionMenuGestureRecognizerButton *audioActionMenuGestureRecognizerButton; // @synthesize audioActionMenuGestureRecognizerButton=_audioActionMenuGestureRecognizerButton;
+@property(retain, nonatomic) CKEntryViewButton *sendAudioButton; // @synthesize sendAudioButton=_sendAudioButton;
+@property(retain, nonatomic) CKEntryViewButton *audioButton; // @synthesize audioButton=_audioButton;
+@property(nonatomic) struct CGRect audioActionMenuFrame; // @synthesize audioActionMenuFrame=_audioActionMenuFrame;
+@property(nonatomic) struct CGSize waveformViewSize; // @synthesize waveformViewSize=_waveformViewSize;
+@property(retain, nonatomic) CKMessageEntryAudioHintView *audioHintView; // @synthesize audioHintView=_audioHintView;
+@property(retain, nonatomic) CKMessageEntryRecordedAudioView *recordedAudioView; // @synthesize recordedAudioView=_recordedAudioView;
+@property(retain, nonatomic) CKInlineAudioReplyButtonController *audioReplyButton; // @synthesize audioReplyButton=_audioReplyButton;
+@property(retain, nonatomic) CKActionMenuController *audioActionMenuController; // @synthesize audioActionMenuController=_audioActionMenuController;
+@property(retain, nonatomic) CKComposition *previousAudioComposition; // @synthesize previousAudioComposition=_previousAudioComposition;
+@property(retain, nonatomic) CKComposition *audioComposition; // @synthesize audioComposition=_audioComposition;
+@property(retain, nonatomic) CKAudioRecorder *recorder; // @synthesize recorder=_recorder;
+@property(nonatomic) _Bool isAudioActionMenuResizing; // @synthesize isAudioActionMenuResizing=_isAudioActionMenuResizing;
+@property(nonatomic) _Bool isAudioActionMenuSuspended; // @synthesize isAudioActionMenuSuspended=_isAudioActionMenuSuspended;
 @property(retain, nonatomic) UISwipeGestureRecognizer *swipeGestureRecognizer; // @synthesize swipeGestureRecognizer=_swipeGestureRecognizer;
 @property(nonatomic) _Bool entryFieldUpdaterAnimatedValue; // @synthesize entryFieldUpdaterAnimatedValue=_entryFieldUpdaterAnimatedValue;
 @property(nonatomic) _Bool entryFieldUpdaterCollapsedValue; // @synthesize entryFieldUpdaterCollapsedValue=_entryFieldUpdaterCollapsedValue;
 @property(retain, nonatomic) CKScheduledUpdater *entryFieldCollapsedUpdater; // @synthesize entryFieldCollapsedUpdater=_entryFieldCollapsedUpdater;
 @property(retain, nonatomic) CAMShutterButton *shutterButton; // @synthesize shutterButton=_shutterButton;
+@property(copy, nonatomic) CDUnknownBlockType didSelectEntityCompletionHandler; // @synthesize didSelectEntityCompletionHandler=_didSelectEntityCompletionHandler;
+@property(nonatomic) unsigned long long currentTappedCharacterIndex; // @synthesize currentTappedCharacterIndex=_currentTappedCharacterIndex;
+@property(nonatomic) struct _NSRange lastFoundMentionRange; // @synthesize lastFoundMentionRange=_lastFoundMentionRange;
+@property(retain, nonatomic) _UISupplementalLexicon *mentionsLexicon; // @synthesize mentionsLexicon=_mentionsLexicon;
 @property(retain, nonatomic) CKMentionEntityNode *entityTree; // @synthesize entityTree=_entityTree;
 @property(nonatomic) struct _NSRange rangeOfTappedMention; // @synthesize rangeOfTappedMention=_rangeOfTappedMention;
 @property(retain, nonatomic) NSMutableDictionary *entityDictionary; // @synthesize entityDictionary=_entityDictionary;
@@ -164,33 +192,23 @@
 @property(nonatomic, getter=isPerformingActionMenuSend) _Bool performingActionMenuSend; // @synthesize performingActionMenuSend=_performingActionMenuSend;
 @property(retain, nonatomic) UIView *contentClipView; // @synthesize contentClipView=_contentClipView;
 @property(nonatomic) unsigned long long displayMode; // @synthesize displayMode=_displayMode;
-@property(retain, nonatomic) CKMessageEntryAudioHintView *audioHintView; // @synthesize audioHintView=_audioHintView;
-@property(nonatomic) struct CGSize waveformViewSize; // @synthesize waveformViewSize=_waveformViewSize;
-@property(retain, nonatomic) CKMessageEntryRecordedAudioView *recordedAudioView; // @synthesize recordedAudioView=_recordedAudioView;
-@property(nonatomic) struct CGRect audioActionMenuFrame; // @synthesize audioActionMenuFrame=_audioActionMenuFrame;
-@property(retain, nonatomic) CKActionMenuController *audioActionMenuController; // @synthesize audioActionMenuController=_audioActionMenuController;
-@property(retain, nonatomic) CKComposition *audioComposition; // @synthesize audioComposition=_audioComposition;
-@property(retain, nonatomic) CKAudioRecorder *recorder; // @synthesize recorder=_recorder;
 @property(nonatomic) _Bool shouldAllowImpactSend; // @synthesize shouldAllowImpactSend=_shouldAllowImpactSend;
 @property(nonatomic) _Bool shouldCenterCharacterCount; // @synthesize shouldCenterCharacterCount=_shouldCenterCharacterCount;
 @property(nonatomic, getter=isCharacterCountHidden) _Bool characterCountHidden; // @synthesize characterCountHidden=_characterCountHidden;
 @property(retain, nonatomic) UIView *knockoutCoverView; // @synthesize knockoutCoverView=_knockoutCoverView;
-@property(retain, nonatomic) UIVisualEffectView *knockoutView; // @synthesize knockoutView=_knockoutView;
+@property(retain, nonatomic) UIView *knockoutView; // @synthesize knockoutView=_knockoutView;
 @property(retain, nonatomic) UIVisualEffectView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property(nonatomic) struct CGSize characterCountSize; // @synthesize characterCountSize=_characterCountSize;
 @property(nonatomic) struct CGSize sendButtonSize; // @synthesize sendButtonSize=_sendButtonSize;
 @property(nonatomic) struct CGSize inputButtonSize; // @synthesize inputButtonSize=_inputButtonSize;
 @property(retain, nonatomic) UILabel *characterCountLabel; // @synthesize characterCountLabel=_characterCountLabel;
-@property(retain, nonatomic) CKInlineAudioReplyButtonController *audioReplyButton; // @synthesize audioReplyButton=_audioReplyButton;
-@property(retain, nonatomic) CKActionMenuGestureRecognizerButton *audioActionMenuGestureRecognizerButton; // @synthesize audioActionMenuGestureRecognizerButton=_audioActionMenuGestureRecognizerButton;
-@property(retain, nonatomic) CKEntryViewButton *audioButton; // @synthesize audioButton=_audioButton;
 @property(retain, nonatomic) _UIClickInteraction *sendButtonClickInteraction; // @synthesize sendButtonClickInteraction=_sendButtonClickInteraction;
-@property(retain, nonatomic) CKEntryViewButton *sendAudioButton; // @synthesize sendAudioButton=_sendAudioButton;
 @property(retain, nonatomic) CKEntryViewButton *arrowButton; // @synthesize arrowButton=_arrowButton;
 @property(retain, nonatomic) CKEntryViewButton *stopButton; // @synthesize stopButton=_stopButton;
 @property(retain, nonatomic) CKEntryViewButton *cancelButton; // @synthesize cancelButton=_cancelButton;
 @property(retain, nonatomic) UIView *buttonAndTextAreaContainerView; // @synthesize buttonAndTextAreaContainerView=_buttonAndTextAreaContainerView;
 @property(retain, nonatomic) UIView *inputButtonContainerView; // @synthesize inputButtonContainerView=_inputButtonContainerView;
+@property(nonatomic) __weak id <CKExternalAppBrowserMenuHost> externalAppBrowserMenuHost; // @synthesize externalAppBrowserMenuHost=_externalAppBrowserMenuHost;
 @property(nonatomic, getter=isSendingMessage) _Bool sendingMessage; // @synthesize sendingMessage=_sendingMessage;
 @property(nonatomic, getter=hasUnreachableEmergencyRecipient) _Bool unreachableEmergencyRecipient; // @synthesize unreachableEmergencyRecipient=_unreachableEmergencyRecipient;
 @property(nonatomic, getter=hasFailedRecipients) _Bool failedRecipients; // @synthesize failedRecipients=_failedRecipients;
@@ -211,6 +229,7 @@
 @property(nonatomic) __weak id <CKMessageEntryViewInputDelegate> inputDelegate; // @synthesize inputDelegate=_inputDelegate;
 @property(nonatomic) __weak id <_UIClickInteractionDelegate> clickInteractionDelegate; // @synthesize clickInteractionDelegate=_clickInteractionDelegate;
 @property(nonatomic) __weak id <CKMessageEntryViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) _Bool shouldDisableAttachments; // @synthesize shouldDisableAttachments=_shouldDisableAttachments;
 @property(nonatomic) _Bool shouldShowCharacterCount; // @synthesize shouldShowCharacterCount=_shouldShowCharacterCount;
 @property(nonatomic) _Bool shouldShowPluginButtons; // @synthesize shouldShowPluginButtons=_shouldShowPluginButtons;
 @property(nonatomic) _Bool shouldShowSubject; // @synthesize shouldShowSubject=_shouldShowSubject;
@@ -231,19 +250,19 @@
 - (_Bool)_isRunningInMVS;
 - (_Bool)photoButtonEnabled;
 - (_Bool)pluginButtonsEnabled;
+- (_Bool)shouldAllowSendWhenSendButtonDisabled;
 - (_Bool)sendButtonEnabled;
 - (void)_initializeInputContextHistory;
 - (void)_addMessageToInputContextHistory:(id)arg1;
 - (void)_contactLimitsChanged:(id)arg1;
 - (void)_participantsDidChange:(id)arg1;
 - (BOOL)_sendButtonColor;
-- (_Bool)_isSURFInShelf;
+- (_Bool)_isApplePayCashInShelf;
 - (void)updateEntryView;
 - (_Bool)shouldRecordForService:(id)arg1;
 - (void)messageReceived:(id)arg1;
 - (void)conversationPreferredServiceChanged:(id)arg1;
 - (void)touchUpInsideSendButton:(id)arg1;
-- (void)keyCommandAppMenu:(id)arg1;
 - (void)keyCommandSend:(id)arg1;
 - (void)stopRecordingForRaiseGestureWithFailure:(_Bool)arg1;
 - (void)startRecordingForRaiseGesture;
@@ -273,6 +292,7 @@
 - (void)arrowButtonTapped:(id)arg1;
 - (void)browserButtonTapped:(id)arg1;
 - (void)photoButtonTapped:(id)arg1;
+- (void)photoButtonTouchUpOutside:(id)arg1;
 - (void)photoButtonTouchDown:(id)arg1;
 - (void)audioReplyButtonCancel:(id)arg1;
 - (void)audioReplyButtonStop:(id)arg1;
@@ -292,6 +312,7 @@
 - (void)audioRecorderDidUpdateAveragePower:(float)arg1;
 - (void)audioRecorderRecordingDidFail:(id)arg1;
 - (void)audioRecorderRecordingDidChange:(id)arg1;
+- (void)_showAudioRecordingUI;
 - (void)messageEntryContentViewDidTapHandwritingKey:(id)arg1;
 - (void)messageEntryContentView:(id)arg1 didPasteURL:(id)arg2;
 - (void)messageEntryContentViewWasTapped:(id)arg1 isLongPress:(_Bool)arg2;
@@ -307,6 +328,7 @@
 - (void)handleContentViewChangeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)messageEntryContentViewShelfDidChange:(id)arg1;
 - (void)messageEntryContentViewDidChange:(id)arg1;
+- (void)messageEntryContentView:(id)arg1 didStagePluginPayload:(id)arg2;
 - (void)messageEntryContentViewCancelWasTapped:(id)arg1 shelfPluginPayload:(id)arg2;
 - (void)messageEntryContentViewDidReturn:(id)arg1;
 - (void)didDismissPaddleOverlayView:(id)arg1;
@@ -315,6 +337,13 @@
 - (id)suggestionView:(id)arg1 indexPathOfEntityWithIdentifier:(id)arg2;
 - (id)suggestionView:(id)arg1 entityAtIndex:(unsigned long long)arg2;
 - (unsigned long long)numberOfSuggestionsInSuggestionView:(id)arg1 forSection:(unsigned long long)arg2;
+- (void)messageEntryContentViewCancelShowMentionSuggestions:(id)arg1;
+- (void)messageEntryContentView:(id)arg1 showMentionSuggestionsForEntities:(id)arg2 replacementRange:(struct _NSRange)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)messageEntryContentView:(id)arg1 insertMention:(id)arg2 entity:(id)arg3 replacementRange:(struct _NSRange)arg4;
+- (_Bool)messageEntryContentViewCanSuggestMentionForCurrentSelection:(id)arg1;
+- (void)messageEntryContentViewInsertionPointExitedRangeWithMention:(id)arg1;
+- (void)messageEntryContentView:(id)arg1 insertionPointEnteredRange:(struct _NSRange)arg2 forMention:(id)arg3 withEntities:(id)arg4;
+- (void)messageEntryContentView:(id)arg1 didTapCharacterAtIndex:(unsigned long long)arg2 isLongPress:(_Bool)arg3;
 - (void)messageEntryContentViewDidTapMention:(id)arg1 characterIndex:(double)arg2;
 - (void)messageEntryContentViewDidChangeSelection:(id)arg1;
 - (_Bool)messageEntryContentViewWillChangeText:(id)arg1 inRange:(struct _NSRange)arg2 withReplacementText:(id)arg3;
@@ -344,6 +373,13 @@
 - (_Bool)layoutIsCurrentlyCompact;
 @property(readonly, nonatomic) _Bool hasRecording;
 @property(readonly, nonatomic, getter=isRecording) _Bool recording;
+- (void)resumeAudioActionMenu;
+- (void)suspendAudioActionMenu;
+- (void)setAudioActionMenuEnabled:(_Bool)arg1;
+- (void)stopAudioActionMenuRecordingForResize;
+- (void)stopAudioActionMenuRecording;
+- (void)presentAudioActionMenuForResize;
+- (void)dismissAudioActionMenuForResize;
 - (void)dismissAudioActionMenuAnimated:(_Bool)arg1;
 - (_Bool)isAudioActionMenuVisible;
 @property(readonly, nonatomic) CKComposition *compositionWithAcceptedAutocorrection;
@@ -359,8 +395,8 @@
 - (void)showEffectPicker;
 - (void)optionDownArrowClicked:(id)arg1;
 - (void)optionUpArrowClicked:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 marginInsets:(struct UIEdgeInsets)arg2 shouldAllowImpact:(_Bool)arg3 shouldShowSendButton:(_Bool)arg4 shouldShowSubject:(_Bool)arg5 shouldShowPluginButtons:(_Bool)arg6 shouldShowCharacterCount:(_Bool)arg7 traitCollection:(id)arg8;
-- (id)initWithFrame:(struct CGRect)arg1 marginInsets:(struct UIEdgeInsets)arg2 shouldShowSendButton:(_Bool)arg3 shouldShowSubject:(_Bool)arg4 shouldShowPluginButtons:(_Bool)arg5 shouldShowCharacterCount:(_Bool)arg6 traitCollection:(id)arg7;
+- (id)initWithFrame:(struct CGRect)arg1 marginInsets:(struct UIEdgeInsets)arg2 shouldAllowImpact:(_Bool)arg3 shouldShowSendButton:(_Bool)arg4 shouldShowSubject:(_Bool)arg5 shouldShowPluginButtons:(_Bool)arg6 shouldShowCharacterCount:(_Bool)arg7 traitCollection:(id)arg8 shouldDisableAttachments:(_Bool)arg9;
+- (id)initWithFrame:(struct CGRect)arg1 marginInsets:(struct UIEdgeInsets)arg2 shouldShowSendButton:(_Bool)arg3 shouldShowSubject:(_Bool)arg4 shouldShowPluginButtons:(_Bool)arg5 shouldShowCharacterCount:(_Bool)arg6 traitCollection:(id)arg7 shouldDisableAttachments:(_Bool)arg8;
 - (struct CGRect)activeKeyboardHeight;
 - (struct CGPoint)sendButtonConvertPointToScreen:(struct CGPoint)arg1;
 - (struct CGRect)sendButtonFrameInScreenCoordinates;
@@ -382,11 +418,12 @@
 - (double)bottomInsetForAppStrip;
 - (void)updateAppStripFrame;
 - (void)configureAppStripBackgroundViewsIfNecessary;
+- (id)inputAccessoryViewBackdropColor;
 - (void)configureAppStripOrMentionSuggestionsIfNeeded;
 - (void)layoutSubviews;
 - (struct UIEdgeInsets)safeAreaInsets;
-- (void)safeAreaInsetsDidChange;
 - (void)dealloc;
+- (_Bool)__im_ff_supplementalLexiconMentionsEnabled;
 - (id)entitiesForKey:(id)arg1;
 - (void)associateEntity:(id)arg1 withKey:(id)arg2;
 - (void)updateTextInputContext;
@@ -397,6 +434,7 @@
 - (void)confirmAutomaticMention:(id)arg1 inTextView:(id)arg2 selectedRange:(struct _NSRange *)arg3;
 - (void)acceptAutomaticMentionConfirmation;
 - (void)suggestionViewDidSelectEntity:(id)arg1;
+- (void)insertMentionWithEntity:(id)arg1 replacementRange:(struct _NSRange)arg2 fallbackName:(id)arg3 source:(unsigned char)arg4;
 - (void)insertMentionByName:(id)arg1;
 - (_Bool)attributedString:(id)arg1 shouldAddAutoCompleteAttributeForRange:(struct _NSRange)arg2;
 - (_Bool)shouldUpdateMentionsInTextView:(id)arg1 inRange:(struct _NSRange)arg2 withReplacementText:(id)arg3;
@@ -404,6 +442,11 @@
 - (void)replaceAttributedText:(id)arg1 inTextView:(id)arg2 atIndex:(unsigned long long)arg3 updatedSelectedRange:(struct _NSRange *)arg4 replacementRange:(struct _NSRange *)arg5;
 - (void)configureAttributedString:(id)arg1 inTextView:(id)arg2 forMentionOverrideInRange:(struct _NSRange)arg3 shouldOverride:(_Bool)arg4;
 - (void)didTapMention:(id)arg1 characterIndex:(double)arg2;
+- (void)showMentionSuggestionsForEntities:(id)arg1 replacementRange:(struct _NSRange)arg2;
+- (_Bool)canSuggestMentionForCurrentSelection;
+- (void)insertionPointExitedRangeWithMention;
+- (void)insertionPointEnteredRange:(struct _NSRange)arg1 forMention:(id)arg2 withEntities:(id)arg3;
+- (void)resetStyleInAttributedString:(id)arg1 inTextView:(id)arg2 andApplyStyleUsingBlock:(CDUnknownBlockType)arg3;
 - (void)didFinishAnimatingMentionWithAnimationIdentifier:(id)arg1;
 - (void)updateTypingAttributesIfNeededForTextView:(id)arg1;
 - (void)updateTextViewIfNecessary:(id)arg1 withAttributedString:(id)arg2 selectedRange:(struct _NSRange)arg3;
@@ -413,6 +456,7 @@
 - (_Bool)allowsMentions;
 - (_Bool)isValidPrefixCharacter:(unsigned short)arg1;
 - (_Bool)range:(struct _NSRange)arg1 hasValidPrefixCharacterForString:(id)arg2;
+- (_Bool)__im_ff_systemImageAdoptionEnabled;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

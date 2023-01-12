@@ -17,6 +17,7 @@
 - (void)_updatePlatterColor;
 - (void)updateMonochromeColor;
 - (void)transitionToMonochromeWithFraction:(double)arg1;
+- (long long)tritiumUpdateMode;
 - (void)setPaused:(_Bool)arg1;
 - (void)layoutSubviews;
 - (id)initWithFamily:(long long)arg1;

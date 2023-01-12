@@ -7,22 +7,26 @@
 #import <objc/NSObject.h>
 
 #import <AssistantServices/AFContextDonation-Protocol.h>
+#import <AssistantServices/AFDeviceContextConnectionDelegate-Protocol.h>
 
-@class NSMapTable, NSString, NSXPCConnection;
-@protocol OS_dispatch_queue;
+@class AFDeviceContextConnection, NSMapTable, NSString;
+@protocol AFContextDonation, OS_dispatch_queue;
 
-@interface AFContextDonationService : NSObject <AFContextDonation>
+@interface AFContextDonationService : NSObject <AFDeviceContextConnectionDelegate, AFContextDonation>
 {
     NSMapTable *_transformersByType;
-    NSXPCConnection *_connection;
+    AFDeviceContextConnection *_connection;
+    id <AFContextDonation> _donationService;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
 + (id)defaultService;
 - (void).cxx_destruct;
+- (void)deviceContextConnectionDidInvalidate:(id)arg1;
+- (void)donateContext:(id)arg1 withMetadata:(id)arg2 pushToRemote:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)donateContext:(id)arg1 withMetadata:(id)arg2 pushToRemote:(_Bool)arg3;
 - (void)registerContextTransformer:(id)arg1 forType:(id)arg2;
-- (void)_clearConnection;
+- (void)setDonationService:(id)arg1;
 - (id)_connection;
 - (id)_init;
 

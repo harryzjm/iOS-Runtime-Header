@@ -9,10 +9,9 @@
 @class NSError;
 
 @protocol VCAudioIOControllerDelegate <VCBasebandCodecNotifications>
-- (void)spatialAudioSourceIDChanged:(unsigned long long)arg1;
 - (void)didResume;
 - (void)didSuspend;
-- (void)controllerFormatChanged:(struct AudioStreamBasicDescription)arg1;
+- (void)controllerFormatChanged:(const struct tagVCAudioFrameFormat *)arg1;
 - (void)didStop:(_Bool)arg1 error:(NSError *)arg2;
 - (void)didStart:(_Bool)arg1 error:(NSError *)arg2;
 @end

@@ -13,6 +13,7 @@
 @interface ATXPBSpotlightEventMetadata : PBCodable <NSCopying>
 {
     unsigned long long _searchEngagedActionType;
+    NSString *_engagedAppString;
     NSString *_queryAtEngagement;
     NSString *_searchEngagedBundleId;
     _Bool _didSearchDuringSession;
@@ -23,6 +24,7 @@
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *engagedAppString; // @synthesize engagedAppString=_engagedAppString;
 @property(nonatomic) unsigned long long searchEngagedActionType; // @synthesize searchEngagedActionType=_searchEngagedActionType;
 @property(retain, nonatomic) NSString *searchEngagedBundleId; // @synthesize searchEngagedBundleId=_searchEngagedBundleId;
 @property(nonatomic) _Bool didSearchDuringSession; // @synthesize didSearchDuringSession=_didSearchDuringSession;
@@ -36,6 +38,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasEngagedAppString;
 @property(nonatomic) _Bool hasSearchEngagedActionType;
 @property(readonly, nonatomic) _Bool hasSearchEngagedBundleId;
 @property(nonatomic) _Bool hasDidSearchDuringSession;

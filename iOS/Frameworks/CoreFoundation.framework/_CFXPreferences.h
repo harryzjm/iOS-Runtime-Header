@@ -38,7 +38,6 @@ __attribute__((visibility("hidden")))
 - (void)registerUserDefaultsInstance:(id)arg1 configurationURL:(struct __CFURL *)arg2;
 - (void)unregisterUserDefaultsInstance:(id)arg1;
 - (id)init;
-- (unsigned int)euid;
 - (void)assertEquivalence:(_Bool)arg1 ofIdentifiers:(struct __CFArray *)arg2 users:(struct __CFArray *)arg3 hosts:(struct __CFArray *)arg4 containers:(struct __CFArray *)arg5 managedFlags:(struct __CFArray *)arg6 cloudFlags:(struct __CFArray *)arg7;
 - (void)assertEquivalence:(_Bool)arg1 ofIdentifiers:(struct __CFArray *)arg2 containers:(struct __CFArray *)arg3 cloudConfigurationURLs:(struct __CFArray *)arg4;
 

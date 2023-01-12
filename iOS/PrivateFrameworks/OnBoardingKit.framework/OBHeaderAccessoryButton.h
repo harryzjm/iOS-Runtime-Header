@@ -8,10 +8,13 @@
 
 @interface OBHeaderAccessoryButton : UIButton
 {
+    _Bool _underlineLinks;
 }
 
 + (id)accessoryButton;
 + (id)buttonWithType:(long long)arg1;
+@property(nonatomic) _Bool underlineLinks; // @synthesize underlineLinks=_underlineLinks;
+- (void)tintColorDidChange;
 - (void)_updateText;
 - (id)_fontTextStyle;
 - (void)traitCollectionDidChange:(id)arg1;

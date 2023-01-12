@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface VNModelFilesCache : NSObject
 {
-    struct unique_ptr<cvml::util::model_file_cache, std::__1::default_delete<cvml::util::model_file_cache>> m_impl;
+    struct unique_ptr<cvml::util::model_file_cache, std::default_delete<cvml::util::model_file_cache>> m_impl;
 }
 
 + (_Bool)useFOpenForModelWithPath:(id)arg1;

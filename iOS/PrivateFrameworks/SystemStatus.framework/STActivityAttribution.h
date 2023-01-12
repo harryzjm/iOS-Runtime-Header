@@ -19,7 +19,7 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)attributionWithPID:(int)arg1;
-+ (id)attributionWithAuditToken:(CDStruct_6ad76789)arg1;
++ (id)attributionWithAuditToken:(CDStruct_4c969caf)arg1;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) BSAuditToken *bsAuditToken; // @synthesize bsAuditToken=_bsAuditToken;
 @property(readonly, nonatomic) int clientProvidedPID; // @synthesize clientProvidedPID=_clientProvidedPID;
@@ -33,10 +33,10 @@
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, nonatomic) int pid;
-@property(readonly, nonatomic) CDStruct_6ad76789 auditToken;
+@property(readonly, nonatomic) CDStruct_4c969caf auditToken;
 - (id)initWithBSAuditToken:(id)arg1 clientProvidedPID:(int)arg2;
 - (id)initWithPID:(int)arg1;
-- (id)initWithAuditToken:(CDStruct_6ad76789)arg1;
+- (id)initWithAuditToken:(CDStruct_4c969caf)arg1;
 - (id)init;
 
 // Remaining properties

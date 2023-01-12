@@ -4,8 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol _UIViewConfigurationStateReadonly
+#import <UIKitCore/NSObject-Protocol.h>
+
+@protocol _UIViewConfigurationStateReadonly <NSObject>
 @property(readonly, nonatomic) unsigned long long _viewConfigurationState;
+@property(readonly, nonatomic) _Bool _showingCompactContextMenu;
+@property(readonly, nonatomic, getter=isPinned) _Bool pinned;
 @property(readonly, nonatomic, getter=isFocused) _Bool focused;
 @property(readonly, nonatomic, getter=isSelected) _Bool selected;
 @property(readonly, nonatomic, getter=isHighlighted) _Bool highlighted;

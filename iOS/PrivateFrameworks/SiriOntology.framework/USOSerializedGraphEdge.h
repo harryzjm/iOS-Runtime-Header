@@ -21,7 +21,7 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(retain) NSString *edgeLabel; // @synthesize edgeLabel=_edgeLabel;
+@property(retain, nonatomic) NSString *edgeLabel; // @synthesize edgeLabel=_edgeLabel;
 @property unsigned int enumeration; // @synthesize enumeration=_enumeration;
 @property unsigned long long toVertex; // @synthesize toVertex=_toVertex;
 @property unsigned long long fromVertex; // @synthesize fromVertex=_fromVertex;

@@ -8,14 +8,18 @@
 
 @interface _EARLmModel : NSObject
 {
-    shared_ptr_986a598a _model;
+    shared_ptr_ae20c496 _model;
+    shared_ptr_6d392393 _buildConfig;
 }
 
 + (void)removeWithDirectory:(id)arg1;
 + (void)initialize;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) shared_ptr_986a598a model; // @synthesize model=_model;
+@property(readonly, nonatomic) shared_ptr_6d392393 buildConfig; // @synthesize buildConfig=_buildConfig;
+@property(readonly, nonatomic) shared_ptr_ae20c496 model; // @synthesize model=_model;
+- (id)deserializeModelData:(id)arg1;
+- (id)serializedModelWithLanguage:(id)arg1 modelData:(id)arg2 oovs:(id)arg3;
 - (double)age;
 - (float)weight;
 - (id)metrics;
@@ -27,7 +31,7 @@
 - (id)initFromDirectory:(id)arg1;
 - (id)initWithConfiguration:(id)arg1;
 - (id)initWithConfiguration:(id)arg1 root:(id)arg2;
-- (id)_initWithModel:(shared_ptr_986a598a)arg1;
+- (id)_initWithModel:(shared_ptr_ae20c496)arg1;
 
 @end
 

@@ -10,27 +10,31 @@
 #import <DiagnosticExtensionsDaemon/DEDSecureArchiving-Protocol.h>
 #import <DiagnosticExtensionsDaemon/NSSecureCoding-Protocol.h>
 
-@class DEDBugSession, NSArray, NSMutableArray, NSMutableDictionary, NSString;
+@class DEDBugSession, DEDCloudKitClient, ELSManager, NSMutableArray, NSMutableDictionary, NSString;
 @protocol OS_os_log;
 
 @interface DEDCloudKitFinisher : NSObject <DEDFinisher, NSSecureCoding, DEDSecureArchiving>
 {
+    int _successfulUploads;
+    int _failedUploads;
     DEDBugSession *_session;
     NSObject<OS_os_log> *_log;
     unsigned long long _totalUploadSize;
-    NSArray *_attachmentURLs;
-    NSMutableArray *_attachmentRecords;
     NSMutableArray *_attachments;
     NSMutableDictionary *_uploadedBytes;
+    DEDCloudKitClient *_cloudKitClient;
+    ELSManager *_elsManager;
 }
 
 + (id)archivedClasses;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) ELSManager *elsManager; // @synthesize elsManager=_elsManager;
+@property(retain, nonatomic) DEDCloudKitClient *cloudKitClient; // @synthesize cloudKitClient=_cloudKitClient;
 @property(retain) NSMutableDictionary *uploadedBytes; // @synthesize uploadedBytes=_uploadedBytes;
 @property(retain) NSMutableArray *attachments; // @synthesize attachments=_attachments;
-@property(retain) NSMutableArray *attachmentRecords; // @synthesize attachmentRecords=_attachmentRecords;
-@property(retain) NSArray *attachmentURLs; // @synthesize attachmentURLs=_attachmentURLs;
+@property(nonatomic) int failedUploads; // @synthesize failedUploads=_failedUploads;
+@property(nonatomic) int successfulUploads; // @synthesize successfulUploads=_successfulUploads;
 @property unsigned long long totalUploadSize; // @synthesize totalUploadSize=_totalUploadSize;
 @property(retain) NSObject<OS_os_log> *log; // @synthesize log=_log;
 @property __weak DEDBugSession *session; // @synthesize session=_session;
@@ -42,7 +46,14 @@
 - (void)didCancelCollectionOnExtension:(id)arg1;
 - (void)didStartCollectingDiagnosticExtensionWithIdentifier:(id)arg1;
 - (void)localCleanup;
-- (id)flattenDirectories:(id)arg1;
+- (id)getAttachmentURLs;
+- (void)logError:(id)arg1 forRecord:(id)arg2;
+- (void)postProcessRecord:(id)arg1 withError:(id)arg2 attachmentGroup:(id)arg3;
+- (void)processAttachmentsWithRecord:(id)arg1 withProgress:(double)arg2;
+- (void)createAttachmentGroupStatusForAttachmentGroup:(id)arg1;
+- (id)createAttachmentGroupWithData:(id)arg1;
+- (id)createAttachmentGroupStatusWithAttachmentGroupModel:(id)arg1;
+- (id)createAttachmentModelWithURL:(id)arg1 attachmentGroupModel:(id)arg2;
 - (void)finishSession:(id)arg1 withConfiguration:(id)arg2;
 - (id)initWithConfiguration:(id)arg1 session:(id)arg2;
 - (id)initWithCoder:(id)arg1;

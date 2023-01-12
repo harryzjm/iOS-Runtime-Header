@@ -13,6 +13,7 @@
 {
     HDProfile *_profile;
     Class _entityClass;
+    CDStruct_c12fb951 _entityVersion;
     HDDataProvenanceCache *_provenanceCache;
     HDEntityEncoder *_entityEncoder;
     id <HDSyncMessageHandler> _messageHandler;
@@ -27,14 +28,11 @@
 }
 
 - (void).cxx_destruct;
-- (long long)_addCodableRepresentation:(id)arg1 encodedSize:(long long)arg2 anchor:(long long)arg3 provenance:(id)arg4 error:(id *)arg5;
-- (_Bool)_sendCurrentCollectionIsFinal:(_Bool)arg1 error:(id *)arg2;
-- (long long)_addEntity:(id)arg1 row:(struct HDSQLiteRow *)arg2 anchor:(long long)arg3 provenance:(id)arg4;
 - (_Bool)finishAndFlushWithError:(id *)arg1;
 @property(readonly, copy, nonatomic) NSArray *orderedProperties;
 - (long long)addEntity:(id)arg1 row:(struct HDSQLiteRow *)arg2 anchor:(long long)arg3 error:(id *)arg4;
 - (id)description;
-- (id)initWithProfile:(id)arg1 transaction:(id)arg2 entityClass:(Class)arg3 provenanceCache:(id)arg4 encodingOptions:(id)arg5 messageHandler:(id)arg6 bytesPerChangeSet:(long long)arg7 bytesPerChange:(long long)arg8;
+- (id)initWithProfile:(id)arg1 transaction:(id)arg2 entityClass:(Class)arg3 version:(CDStruct_c12fb951)arg4 provenanceCache:(id)arg5 encodingOptions:(id)arg6 messageHandler:(id)arg7 bytesPerChangeSet:(long long)arg8 bytesPerChange:(long long)arg9;
 - (id)init;
 
 @end

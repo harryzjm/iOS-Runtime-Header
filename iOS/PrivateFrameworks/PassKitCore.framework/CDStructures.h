@@ -73,8 +73,20 @@ typedef struct {
 } CDStruct_3d581f42;
 
 typedef struct {
+    unsigned long long _field1;
+    id *_field2;
+    unsigned long long *_field3;
+    unsigned long long _field4[5];
+} CDStruct_70511ce9;
+
+typedef struct {
     unsigned int _field1[8];
 } CDStruct_6ad76789;
+
+typedef struct {
+    long long _field1;
+    unsigned long long _field2;
+} CDStruct_1dee9796;
 
 typedef struct {
     struct CLLocationCoordinate2D _field1;

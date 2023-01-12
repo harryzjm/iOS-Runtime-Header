@@ -6,25 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class NSNumber, PKTextInputElement;
+@class NSMutableSet, NSNumber, PKTextInputElement;
+@protocol PKTextInputWritingSessionDelegate;
 
 @interface PKTextInputWritingSession : NSObject
 {
     _Bool _isInvalidated;
+    NSMutableSet *_pendingWritingEndedElements;
     _Bool _didSuppressGesturesOverReservedSpace;
     NSNumber *_sessionIdentifier;
     PKTextInputElement *_currentTargetElement;
+    id <PKTextInputWritingSessionDelegate> _delegate;
     double _beginTimestamp;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) double beginTimestamp; // @synthesize beginTimestamp=_beginTimestamp;
-@property(readonly, nonatomic) _Bool didSuppressGesturesOverReservedSpace; // @synthesize didSuppressGesturesOverReservedSpace=_didSuppressGesturesOverReservedSpace;
-@property(retain, nonatomic) PKTextInputElement *currentTargetElement; // @synthesize currentTargetElement=_currentTargetElement;
-@property(readonly, nonatomic) NSNumber *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
 - (void)dealloc;
-- (void)invalidate;
-- (void)setDidSuppressGesturesOverReservedSpace;
 - (id)description;
 - (id)init;
 

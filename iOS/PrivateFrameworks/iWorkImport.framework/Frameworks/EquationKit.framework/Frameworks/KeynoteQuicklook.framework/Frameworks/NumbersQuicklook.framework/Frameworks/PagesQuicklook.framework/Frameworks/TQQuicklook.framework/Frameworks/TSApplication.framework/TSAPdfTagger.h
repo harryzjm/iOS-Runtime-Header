@@ -100,11 +100,11 @@
 - (_Bool)topOfContextStackIsParagraph;
 - (id)topmostTocChunkContext;
 - (void)endTextColumn:(id)arg1;
-- (void)beginTextColumn:(id)arg1;
+- (void)beginTextColumn:(id)arg1 limitSelection:(id)arg2;
 - (void)endOneColumnText:(id)arg1 column:(id)arg2;
-- (void)beginOneColumnText:(id)arg1 column:(id)arg2;
+- (void)beginOneColumnText:(id)arg1 column:(id)arg2 limitSelection:(id)arg3;
 - (void)endTextStorageChunk:(id)arg1;
-- (void)beginTextStorageChunk:(id)arg1;
+- (void)beginTextStorageChunk:(id)arg1 limitSelection:(id)arg2;
 - (_Bool)textStorageChunkIsFootnote:(id)arg1;
 - (void)endPage;
 - (void)beginPage;

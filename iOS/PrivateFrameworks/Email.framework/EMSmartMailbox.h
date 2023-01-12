@@ -40,6 +40,7 @@
 - (id)makePredicate;
 - (_Bool)supportsSelectAll;
 - (_Bool)isSmartMailbox;
+- (id)ef_publicDescription;
 - (id)initWithType:(long long)arg1 mailboxType:(long long)arg2 name:(id)arg3 mailboxScope:(id)arg4 predicateGenerator:(CDUnknownBlockType)arg5;
 
 @end

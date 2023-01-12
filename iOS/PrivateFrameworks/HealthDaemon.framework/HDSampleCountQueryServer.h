@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSSet;
+@class NSArray;
 
 @interface HDSampleCountQueryServer
 {
-    NSSet *_sampleQueryDescriptions;
+    NSArray *_queryDescriptors;
 }
 
 + (Class)queryClass;

@@ -10,7 +10,7 @@
 
 @interface CMStepCounterProxy : NSObject
 {
-    struct CLConnectionClient *fLocationdConnection;
+    void *fLocationdConnection;
     _Bool fStartedUpdates;
     NSObject<OS_dispatch_queue> *fInternalQueue;
     long long fStepCountFromStart;

@@ -4,18 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface SearchUICardSectionRowModel
 {
     _Bool _isInline;
-    Class _customCardSectionViewClass;
+    _Bool _isHorizontalInLayout;
+    _Bool _hasCustomCornerRounding;
+    unsigned long long _cornerMask;
+    NSString *_cardReuseIdentifier;
 }
 
 - (void).cxx_destruct;
-@property(readonly) Class customCardSectionViewClass; // @synthesize customCardSectionViewClass=_customCardSectionViewClass;
+@property(copy, nonatomic) NSString *cardReuseIdentifier; // @synthesize cardReuseIdentifier=_cardReuseIdentifier;
+@property(nonatomic) _Bool hasCustomCornerRounding; // @synthesize hasCustomCornerRounding=_hasCustomCornerRounding;
+@property(nonatomic) unsigned long long cornerMask; // @synthesize cornerMask=_cornerMask;
+@property(nonatomic) _Bool isHorizontalInLayout; // @synthesize isHorizontalInLayout=_isHorizontalInLayout;
 @property(nonatomic) _Bool isInline; // @synthesize isInline=_isInline;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (Class)collectionViewCellClass;
 - (id)accessibilityIdentifier;
-- (Class)cardSectionViewClass;
+@property(readonly, nonatomic) Class cardSectionViewClass;
 - (_Bool)supportsCustomUserReportRequestAfforance;
 - (_Bool)prefersNoSeparatorAbove;
 - (_Bool)hasLeadingImage;
@@ -35,6 +45,7 @@
 - (id)reuseIdentifier;
 - (id)punchouts;
 - (_Bool)anyInlineCardSectionsHavePunchouts;
+- (id)horizontalRowModel;
 - (id)initWithResult:(id)arg1 cardSection:(id)arg2 isInline:(_Bool)arg3 queryId:(unsigned long long)arg4;
 
 @end

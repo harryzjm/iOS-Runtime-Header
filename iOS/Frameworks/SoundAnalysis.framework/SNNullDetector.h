@@ -28,10 +28,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double computationalDutyCycle; // @synthesize computationalDutyCycle=_computationalDutyCycle;
 @property(nonatomic) unsigned int blockSize; // @synthesize blockSize=_blockSize;
 @property(nonatomic) double sampleRate; // @synthesize sampleRate=_sampleRate;
-@property(readonly, nonatomic) struct Box *resultsBox;
+@property(readonly, nonatomic) void *resultsBox;
 - (_Bool)adaptToSystemConfiguration:(id)arg1 error:(id *)arg2;
 - (id)sharedProcessorConfiguration;
-- (id)resultsFromBox:(struct Box *)arg1 renderedWithFrameCount:(int)arg2;
+- (id)resultsFromBox:(void *)arg1 renderedWithFrameCount:(int)arg2;
 @property(readonly, nonatomic) shared_ptr_f6ac7592 graph;
 - (id)initWithSampleRate:(double)arg1 blockSize:(unsigned int)arg2 computationalDutyCycle:(double)arg3 graphIsDeadEnded:(_Bool)arg4 shouldThrowException:(_Bool)arg5;
 

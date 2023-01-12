@@ -6,12 +6,7 @@
 
 #import <SAObjects/AceObject.h>
 
-#import <SiriUI/SiriUIUUFRSayable-Protocol.h>
-#import <SiriUI/SiriUIUUFRShowable-Protocol.h>
-
-@interface AceObject (CommandUserInfo) <SiriUIUUFRSayable, SiriUIUUFRShowable>
+@interface AceObject (CommandUserInfo)
 - (void)_siriui_applyUserInfoDictionary:(id)arg1;
-- (id)_uufrSaid;
-- (id)_uufrShownRequestedByInstrumentationManager:(id)arg1;
 @end
 

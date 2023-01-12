@@ -12,13 +12,18 @@
 {
 }
 
++ (void)logMLInteractions:(id)arg1 context:(id)arg2 mlDefaultExtraction:(_Bool)arg3;
 + (id)outputLogsForClassification:(id)arg1;
++ (id)jsMessageLogsDictionaryForPrivacyAwareLogs:(id)arg1;
 + (id)jsMessageLogsDictionaryForMailMessage:(id)arg1;
 + (void)logFailedExtractionWithClassification:(id)arg1 missingEntities:(id)arg2 mlSummary:(id)arg3 shadowExtraction:(_Bool)arg4 timingProcessingInMs:(unsigned long long)arg5 forMessage:(id)arg6 parentEntity:(id)arg7;
-+ (void)logShadowLoggingForSchema:(id)arg1 parentEntity:(id)arg2 timingProcessingInMs:(unsigned long long)arg3 eventClassification:(id)arg4 mailMessage:(id)arg5;
++ (void)logMLExtractionForSchema:(id)arg1 mergedSchemaAndDiff:(id)arg2 parentEntity:(id)arg3 timingProcessingInMs:(unsigned long long)arg4 eventClassification:(id)arg5 mailMessage:(id)arg6 shadowExtraction:(_Bool)arg7 mlDefaultExtraction:(_Bool)arg8;
++ (_Bool)eventEnrichmentContainsReverseMappedTags:(id)arg1;
 + (id)eventEnrichmentFromEntity:(id)arg1;
 + (id)addressDictionaryForAddressComponents:(id)arg1;
-+ (id)schemaPostalAddressForPostalAddressExtraction:(id)arg1;
++ (unsigned long long)tokenCount:(id)arg1;
++ (unsigned long long)tokenCountForPostalAddressComponents:(id)arg1;
++ (id)schemaPostalAddressForPostalAddressExtraction:(id)arg1 addressThreshold:(unsigned long long)arg2;
 + (id)schemaStringForEventStatus:(unsigned char)arg1;
 + (id)schemaStringForReservationStatus:(unsigned char)arg1;
 + (id)schemaStringForDateComponents:(id)arg1;
@@ -31,8 +36,10 @@
 + (id)nilEntities:(id)arg1;
 + (id)preprocessWithoutXPCForHTML:(id)arg1 subject:(id)arg2 epoch:(double)arg3 category:(id)arg4 labelsWithMatchingStrings:(id)arg5;
 + (id)preprocessDomParserResult:(id)arg1 subject:(id)arg2 epoch:(double)arg3 category:(id)arg4 labelsWithMatchingStrings:(id)arg5;
++ (id)schemaOrgAndMissingEntitiesForPreprocessed:(id)arg1 eventClassification:(id)arg2 fromSuggestTool:(_Bool)arg3 addressThreshold:(unsigned long long)arg4 pflTrainable:(_Bool)arg5 hasEvent:(_Bool)arg6;
 + (id)schemaOrgAndMissingEntitiesForPreprocessed:(id)arg1 eventClassification:(id)arg2 fromSuggestTool:(_Bool)arg3;
-+ (void)addSchemaAsEnrichment:(id)arg1 inMessage:(id)arg2 parentEntity:(id)arg3 eventClassification:(id)arg4;
++ (void)addSchemaAsEnrichment:(id)arg1 inMessage:(id)arg2 parentEntity:(id)arg3 eventClassification:(id)arg4 mlDefaultExtraction:(_Bool)arg5;
++ (id)mergeFallbackSchema:(id)arg1 parentEntity:(id)arg2;
 + (id)sharedInstance;
 - (id)tagsWithModelOutputFromEnrichedTaggedCharacterRanges:(id)arg1;
 - (id)preprocessHTML:(id)arg1 subject:(id)arg2 epoch:(double)arg3 category:(id)arg4 labelsWithMatchingStrings:(id)arg5;

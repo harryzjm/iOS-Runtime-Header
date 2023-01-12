@@ -14,6 +14,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (id)newWiringAssertion;
 - (unsigned long long)traceID;
 - (unsigned long long)registryID;
 - (unsigned long long)timestampAtIndex:(unsigned long long)arg1;

@@ -51,10 +51,9 @@
 - (void)displaySliderTime:(id)arg1;
 - (struct CGRect)strokeRectFromCropRect:(struct CGRect)arg1 originalImageRect:(struct CGRect)arg2 targetImageRect:(struct CGRect)arg3;
 - (void)displayTimelineEntry:(id)arg1;
-- (id)filteredContentInPhotoLibrary:(id)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;
-- (id)initWithWidgetSize:(struct CGSize)arg1;
+- (id)initWithWidgetSizeClass:(unsigned long long)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

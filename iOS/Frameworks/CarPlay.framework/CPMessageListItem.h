@@ -14,6 +14,7 @@
 
 @interface CPMessageListItem : NSObject <CPListItemPrivate, NSSecureCoding, CPListTemplateItem>
 {
+    _Bool _enabled;
     NSString *_text;
     NSString *_conversationIdentifier;
     NSString *_phoneOrEmailAddress;
@@ -31,6 +32,7 @@
 @property(nonatomic) __weak CPListTemplate *listTemplate; // @synthesize listTemplate=_listTemplate;
 @property(readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) id userInfo; // @synthesize userInfo=_userInfo;
+@property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 @property(copy, nonatomic) NSString *trailingText; // @synthesize trailingText=_trailingText;
 @property(copy, nonatomic) NSString *detailText; // @synthesize detailText=_detailText;
 @property(retain, nonatomic) CPMessageListItemTrailingConfiguration *trailingConfiguration; // @synthesize trailingConfiguration=_trailingConfiguration;

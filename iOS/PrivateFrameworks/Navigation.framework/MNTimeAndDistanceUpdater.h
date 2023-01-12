@@ -17,13 +17,9 @@ __attribute__((visibility("hidden")))
     NSArray *_routes;
     NSTimer *_minuteTimer;
     MNActiveRouteInfo *_mainRoute;
-    double _distanceToManeuverStart;
-    double _distanceToManeuverEnd;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) double distanceToManeuverEnd; // @synthesize distanceToManeuverEnd=_distanceToManeuverEnd;
-@property(readonly, nonatomic) double distanceToManeuverStart; // @synthesize distanceToManeuverStart=_distanceToManeuverStart;
 @property(nonatomic) __weak id <MNTimeAndDistanceUpdaterDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_startTimerToNextMinute;
 - (void)updateDisplayETAForRoute:(id)arg1 notificationType:(unsigned long long)arg2;

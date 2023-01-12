@@ -4,10 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class HFPinCodeManager;
+
 @interface HUUserNotificationTopicListModuleController
 {
+    HFPinCodeManager *_pinCodeManager;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) HFPinCodeManager *pinCodeManager; // @synthesize pinCodeManager=_pinCodeManager;
 - (id)showNotificationSettingsForHomeKitObject:(id)arg1 animated:(_Bool)arg2;
 - (id)presentNotificationSettingsForTopic:(id)arg1 animated:(_Bool)arg2;
 - (unsigned long long)didSelectItem:(id)arg1;

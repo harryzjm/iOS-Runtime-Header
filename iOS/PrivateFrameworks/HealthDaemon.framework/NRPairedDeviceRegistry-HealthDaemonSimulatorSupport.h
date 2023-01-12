@@ -7,7 +7,6 @@
 #import <NanoRegistry/NRPairedDeviceRegistry.h>
 
 @interface NRPairedDeviceRegistry (HealthDaemonSimulatorSupport)
-- (id)hd_deviceForIDSDeviceUniqueID:(id)arg1;
 - (id)hd_deviceForIDSDevice:(id)arg1;
 @end
 

@@ -10,6 +10,11 @@
 {
 }
 
++ (void)markAnalyticsForRedo;
++ (void)markAnalyticsForUndo;
++ (void)markAnalyticsForSelectionChange:(struct _NSRange)arg1 relativeRangeBefore:(struct _NSRange)arg2;
++ (void)markAnalyticsForDeletionCount:(unsigned long long)arg1 rangeToReplace:(struct _NSRange)arg2;
++ (void)markAnalyticsForInsertionWithTexts:(id)arg1 rangeToReplace:(struct _NSRange)arg2;
 + (long long)responderTextInputSource:(id)arg1;
 + (_Bool)isResponderSupportedTextInput:(id)arg1 outTextInputTraits:(id *)arg2;
 + (_Bool)isResponderSupportedTextInput:(id)arg1;

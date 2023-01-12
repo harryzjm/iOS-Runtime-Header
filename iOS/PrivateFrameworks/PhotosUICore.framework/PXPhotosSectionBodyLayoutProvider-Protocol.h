@@ -12,6 +12,7 @@
 @protocol PXPhotosSectionBodyLayoutProvider <NSObject>
 @property(nonatomic) __weak id <PXPhotosSectionBodyLayoutProviderInvalidationDelegate> invalidationDelegate;
 - (_Bool)shouldPreventFaultOutOfBodyLayout:(PXGLayout<PXPhotosSectionedLayoutBody> *)arg1 inAssetSectionLayout:(PXAssetsSectionLayout *)arg2;
+- (void)sectionedLayout:(PXPhotosSectionedLayout *)arg1 bodyLayout:(PXGLayout<PXPhotosSectionedLayoutBody> *)arg2 didChangeDataSource:(PXAssetsDataSource *)arg3 sectionIndexPath:(struct PXSimpleIndexPath)arg4 hasSectionChanges:(_Bool)arg5;
 - (void)configureSectionBodyLayout:(PXGLayout<PXPhotosSectionedLayoutBody> *)arg1 inAssetSectionLayout:(PXAssetsSectionLayout *)arg2 forSectionedLayout:(PXPhotosSectionedLayout *)arg3;
 - (PXGLayout<PXPhotosSectionedLayoutBody> *)createSectionBodyLayoutForSectionedLayout:(PXPhotosSectionedLayout *)arg1 dataSource:(PXAssetsDataSource *)arg2 sectionIndexPath:(struct PXSimpleIndexPath)arg3 spec:(PXPhotosLayoutSpec *)arg4 outWantsDecoration:(_Bool *)arg5;
 @end

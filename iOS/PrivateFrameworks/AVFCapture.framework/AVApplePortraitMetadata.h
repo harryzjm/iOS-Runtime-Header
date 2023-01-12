@@ -16,6 +16,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+@property(readonly) unsigned int SDOFRenderingVersion;
 @property(readonly) struct CGRect focusRectangle;
 @property(readonly) NSIndexSet *indexesOfShallowDepthOfFieldObservations;
 @property(readonly) NSData *faceObservationsData;

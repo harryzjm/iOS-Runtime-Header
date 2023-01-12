@@ -8,7 +8,7 @@
 
 #import <HealthDaemon/HDHealthDaemonExtension-Protocol.h>
 
-@class HDAlertSuppressor, HDAppLauncher, HDBackgroundWorkoutRunner, HDCarouselServicesManager, HDCoreMotionWorkoutInterface, HDDaemon, HDHeartRateRecoveryManager, HDPowerSavingModeManager, HDQuietModeManager, NSString;
+@class HDAlertSuppressor, HDAppLauncher, HDBackgroundWorkoutRunner, HDCarouselServicesManager, HDCoreMotionWorkoutInterface, HDDaemon, HDHeartRateRecoveryManager, HDPowerSavingModeManager, NSString;
 
 @interface HDWorkoutPluginDaemonExtension : NSObject <HDHealthDaemonExtension>
 {
@@ -20,11 +20,9 @@
     HDCoreMotionWorkoutInterface *_coreMotionWorkoutInterface;
     HDHeartRateRecoveryManager *_heartRateRecoveryManager;
     HDPowerSavingModeManager *_powerSavingModeManager;
-    HDQuietModeManager *_quietModeManager;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) HDQuietModeManager *quietModeManager; // @synthesize quietModeManager=_quietModeManager;
 @property(readonly, nonatomic) HDPowerSavingModeManager *powerSavingModeManager; // @synthesize powerSavingModeManager=_powerSavingModeManager;
 @property(readonly, nonatomic) HDHeartRateRecoveryManager *heartRateRecoveryManager; // @synthesize heartRateRecoveryManager=_heartRateRecoveryManager;
 @property(readonly, nonatomic) HDCoreMotionWorkoutInterface *coreMotionWorkoutInterface; // @synthesize coreMotionWorkoutInterface=_coreMotionWorkoutInterface;

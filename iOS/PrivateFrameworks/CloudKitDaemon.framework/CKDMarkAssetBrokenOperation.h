@@ -7,7 +7,6 @@
 @class CKDFetchRecordZonesOperation, CKDFetchRecordsOperation, CKDMarkAssetBrokenURLRequestWrapperOperation, CKDModifyRecordZonesOperation, CKDModifyRecordsOperation, CKRecord, CKRecordID, CKRecordZone, CKUploadRequestConfiguration, NSError, NSString;
 @protocol CKMarkAssetBrokenOperationCallbacks;
 
-__attribute__((visibility("hidden")))
 @interface CKDMarkAssetBrokenOperation
 {
     _Bool _touchRepairZone;
@@ -53,7 +52,7 @@ __attribute__((visibility("hidden")))
 - (void)main;
 - (id)checkPreconditions;
 - (id)assetOrPackageForFetchedRecord;
-- (id)repairContext;
+- (id)repairContainer;
 - (void)_markAssetBroken;
 - (int)operationType;
 - (void)_breakAsset;
@@ -63,7 +62,7 @@ __attribute__((visibility("hidden")))
 - (id)nameForState:(unsigned long long)arg1;
 - (_Bool)makeStateTransition;
 - (id)activityCreate;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 // Remaining properties
 @property(retain, nonatomic) id <CKMarkAssetBrokenOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;

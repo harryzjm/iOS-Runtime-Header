@@ -14,7 +14,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(copy, nonatomic) BKSHIDEventDeferringToken *token; // @dynamic token;
 @property(copy, nonatomic) BKSHIDEventDisplay *display; // @dynamic display;
-@property(retain, nonatomic) BKSHIDEventDeferringEnvironment *environment; // @dynamic environment;
+@property(copy, nonatomic) BKSHIDEventDeferringEnvironment *environment; // @dynamic environment;
 - (id)init;
 
 @end

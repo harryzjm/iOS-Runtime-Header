@@ -104,5 +104,8 @@
 @property(copy, nonatomic) id <NSCopying> userData;
 @property(nonatomic) struct CGRect clippingRect;
 
+// Remaining properties
+@property(readonly, nonatomic) _Bool shouldReuseWhenInvisible;
+
 @end
 

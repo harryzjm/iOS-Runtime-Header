@@ -14,6 +14,7 @@
     _Bool _grouped;
     _Bool _subviewPerformingGroupingAnimation;
     _Bool _performingContentRevealAnimation;
+    _Bool _hiddenBelowStack;
     _Bool _revealed;
     _Bool _leadingRevealView;
     _Bool _activeRevealTransitioning;
@@ -21,6 +22,7 @@
     _Bool _performingRevealAnimation;
     _Bool _performingHeaderReloadAnimation;
     _Bool _performingVisibleRectAdjustment;
+    _Bool _performingStackVisibilityAnimation;
     _Bool _performedFirstLayout;
     _Bool _cachedSizeValid;
     id <NCNotificationListViewDataSource> _dataSource;
@@ -35,11 +37,15 @@
     UILabel *_titleLabel;
     UIView *_headerView;
     UIView *_footerView;
+    double _insetHorizontalMargin;
     struct CGSize _cachedSize;
     struct CGRect _visibleRect;
+    struct CGAffineTransform _overrideTopViewDimmingTransform;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) double insetHorizontalMargin; // @synthesize insetHorizontalMargin=_insetHorizontalMargin;
+@property(nonatomic) struct CGAffineTransform overrideTopViewDimmingTransform; // @synthesize overrideTopViewDimmingTransform=_overrideTopViewDimmingTransform;
 @property(nonatomic) struct CGSize cachedSize; // @synthesize cachedSize=_cachedSize;
 @property(nonatomic, getter=isCachedSizeValid) _Bool cachedSizeValid; // @synthesize cachedSizeValid=_cachedSizeValid;
 @property(nonatomic, getter=hasPerformedFirstLayout) _Bool performedFirstLayout; // @synthesize performedFirstLayout=_performedFirstLayout;
@@ -47,6 +53,7 @@
 @property(retain, nonatomic) UIView *headerView; // @synthesize headerView=_headerView;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) NSMutableSet *viewsPerformingAnimation; // @synthesize viewsPerformingAnimation=_viewsPerformingAnimation;
+@property(nonatomic, getter=isPerformingStackVisibilityAnimation) _Bool performingStackVisibilityAnimation; // @synthesize performingStackVisibilityAnimation=_performingStackVisibilityAnimation;
 @property(nonatomic, getter=isPerformingVisibleRectAdjustment) _Bool performingVisibleRectAdjustment; // @synthesize performingVisibleRectAdjustment=_performingVisibleRectAdjustment;
 @property(nonatomic, getter=isPerformingHeaderReloadAnimation) _Bool performingHeaderReloadAnimation; // @synthesize performingHeaderReloadAnimation=_performingHeaderReloadAnimation;
 @property(nonatomic, getter=isPerformingRevealAnimation) _Bool performingRevealAnimation; // @synthesize performingRevealAnimation=_performingRevealAnimation;
@@ -60,12 +67,15 @@
 @property(nonatomic, getter=isActiveRevealTransitioning) _Bool activeRevealTransitioning; // @synthesize activeRevealTransitioning=_activeRevealTransitioning;
 @property(nonatomic, getter=isLeadingRevealView) _Bool leadingRevealView; // @synthesize leadingRevealView=_leadingRevealView;
 @property(nonatomic, getter=isRevealed) _Bool revealed; // @synthesize revealed=_revealed;
+@property(nonatomic, getter=isHiddenBelowStack) _Bool hiddenBelowStack; // @synthesize hiddenBelowStack=_hiddenBelowStack;
 @property(nonatomic, getter=isPerformingContentRevealAnimation) _Bool performingContentRevealAnimation; // @synthesize performingContentRevealAnimation=_performingContentRevealAnimation;
 @property(nonatomic, getter=isSubviewPerformingGroupingAnimation) _Bool subviewPerformingGroupingAnimation; // @synthesize subviewPerformingGroupingAnimation=_subviewPerformingGroupingAnimation;
 @property(nonatomic) double groupedTranslation; // @synthesize groupedTranslation=_groupedTranslation;
 @property(nonatomic, getter=isGrouped) _Bool grouped; // @synthesize grouped=_grouped;
 @property(nonatomic) struct CGRect visibleRect; // @synthesize visibleRect=_visibleRect;
 @property(nonatomic) __weak id <NCNotificationListViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
+- (void)_updateStackedViewsForGrouping:(_Bool)arg1;
+- (void)_setHiddenBelowStackForView:(id)arg1 hiddenBelowStack:(_Bool)arg2;
 @property(readonly, nonatomic, getter=isNotificationListViewCurrentlyVisible) _Bool notificationListViewCurrentlyVisible;
 - (struct CGAffineTransform)_scaleTransformForGroupingAnimationForViewAtIndex:(unsigned long long)arg1 leadingViewHeight:(double)arg2;
 - (void)_recycleViewIfNecessary:(id)arg1 withDataSource:(id)arg2;
@@ -84,11 +94,13 @@
 - (double)_verticalVelocityForSuperview;
 - (double)_adjustedFrictionForRevealAnimation;
 - (double)_adjustedTensionForRevealAnimation;
+- (void)_performRetargetableAnimationForView:(id)arg1 animationBlock:(CDUnknownBlockType)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)_performViewAnimationBlock:(CDUnknownBlockType)arg1 completionBlock:(CDUnknownBlockType)arg2 withTension:(double)arg3 friction:(double)arg4;
 - (void)_performAnimationForView:(id)arg1 atIndex:(unsigned long long)arg2 animationBlock:(CDUnknownBlockType)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)_performViewAnimationBlock:(CDUnknownBlockType)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)_performRemovalAnimationForView:(id)arg1;
 - (void)_performInsertionAnimationForView:(id)arg1;
+- (void)_setRevealAlphaForView:(id)arg1 desiredAlpha:(double)arg2;
 - (_Bool)_isTopSubviewHeightLessThanVisibleRect;
 - (void)_updateVisibleViewsForUpdatedVisibleRect:(struct CGRect)arg1;
 - (void)_removeAllStoredVisibleViews;
@@ -111,19 +123,21 @@
 - (void)_configureStackDimmingForGroupedView:(id)arg1 transform:(struct CGAffineTransform)arg2;
 - (void)revealNotificationContentBelowGroupedViewIfNecessary:(id)arg1;
 - (void)_setContentHiddenForGroupedView:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)_setContentHiddenForView:(id)arg1 contentHidden:(_Bool)arg2;
 - (void)_layoutGroupedViewForGroupingLayout:(id)arg1 atIndex:(unsigned long long)arg2 isExistingView:(_Bool)arg3 leadingViewHeight:(double)arg4;
 - (void)_layoutLeadingViewForGroupingLayoutIfNecessary:(id)arg1 hasShadow:(_Bool)arg2;
 - (struct CGRect)_frameForViewAtIndex:(unsigned long long)arg1;
 - (void)_layoutFooterViewForGroupingIfNecessary;
-- (void)_layoutHeaderViewForGroupingIfNecessary;
+- (void)_layoutHeaderViewForGroupingIfNecessaryWithMaxYOffset:(double)arg1;
 - (void)_layoutForGrouping;
 - (double)_positionOffsetForRevealHintingForItemAtIndex:(unsigned long long)arg1;
-- (double)_layoutViewIfNecessaryAtIndex:(unsigned long long)arg1 layoutOffset:(double)arg2;
+- (double)_layoutViewIfNecessaryAtIndex:(unsigned long long)arg1 layoutOffset:(double)arg2 startingLayoutOffset:(double)arg3;
 - (void)_layoutFooterViewIfNecessaryAtLayoutOffset:(double)arg1;
 - (void)_layoutHeaderViewIfNecessaryAtLayoutOffset:(double)arg1;
 - (void)_layoutForList;
 - (double)_positionOffsetForRevealHintingForHeaderView;
-- (void)_adjustContentSizeIfNecessaryForUpdatedHeight:(double)arg1;
+- (void)_adjustContentSizeHeightIfNecessaryForUpdatedHeight:(double)arg1;
+- (void)_adjustContentSizeWidthIfNecessary;
 - (_Bool)_isViewWithinVisibleRectForHeight:(double)arg1 layoutOffset:(double)arg2;
 - (void)didMoveToSuperview;
 - (void)setFrame:(struct CGRect)arg1;

@@ -17,6 +17,7 @@
 - (void)addLocation:(id)arg1;
 - (id)accessibilityLabel;
 - (id)accessibilityCustomContent;
+- (id)_addCustomActionToActionsArray:(id)arg1 forControl:(id)arg2 actionBlock:(CDUnknownBlockType)arg3;
 - (id)accessibilityCustomActions;
 - (_Bool)isAccessibilityElement;
 - (void)_accessibilityLoadAccessibilityInformation;

@@ -16,14 +16,12 @@ __attribute__((visibility("hidden")))
     double _heartRate;
     double _confidence;
     unsigned long long _confidenceLevel;
-    unsigned long long _mode;
     NSUUID *_uuid;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property(readonly) int context; // @synthesize context=_context;
-@property(readonly) unsigned long long mode; // @synthesize mode=_mode;
 @property(readonly) unsigned long long confidenceLevel; // @synthesize confidenceLevel=_confidenceLevel;
 @property(readonly) double confidence; // @synthesize confidence=_confidence;
 @property(nonatomic) double heartRate; // @synthesize heartRate=_heartRate;

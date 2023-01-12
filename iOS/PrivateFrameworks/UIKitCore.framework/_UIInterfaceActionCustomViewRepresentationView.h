@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)hasLayoutHeightConstraintsIdenticalToRepresentationView:(id)arg1;
 - (id)_fittingContentSizingView;
 - (void)setHighlighted:(_Bool)arg1;
+- (long long)_focusItemDeferralMode;
 - (id)description;
 - (id)initWithAction:(id)arg1;
 

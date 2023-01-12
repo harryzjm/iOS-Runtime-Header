@@ -11,7 +11,7 @@
 #import <HeartHealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
 #import <HeartHealthDaemon/HDHeartRateDataCollector-Protocol.h>
 
-@class CMCatherineFeeder, HDBradycardiaDataAggregator, HDDataCollectorConfiguration, HDDataCollectorState, HDDeviceEntity, HDHeartRateDataAggregator, HDHeartRateVariabilityDataAggregator, HDHeartbeatSequenceDataAggregator, HDProfile, HDTachycardiaDataAggregator, NSString;
+@class CMCatherineFeeder, HDBradycardiaDataAggregator, HDDataCollectorConfiguration, HDDataCollectorState, HDDeviceEntity, HDHeartRateDataAggregator, HDProfile, HDTachycardiaDataAggregator, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HDHRHealthLiteDataCollector : NSObject <HDDiagnosticObject, HDHealthDaemonReadyObserver, HDDataCollector, HDHeartRateDataCollector>
@@ -22,18 +22,12 @@
     int _privacyPreferencesNotificationToken;
     int _powerSavingModeNotificationToken;
     HDHeartRateDataAggregator *_heartRateAggregator;
-    HDHeartRateVariabilityDataAggregator *_heartRateVariabilityDataAggregator;
-    HDHeartbeatSequenceDataAggregator *_heartbeatSequenceAggregator;
     HDTachycardiaDataAggregator *_tachycardiaAggregator;
     HDBradycardiaDataAggregator *_bradycardiaAggregator;
     HDDataCollectorConfiguration *_heartRateCollectionConfiguration;
-    HDDataCollectorConfiguration *_heartRateVariabilityCollectionConfiguration;
-    HDDataCollectorConfiguration *_heartbeatSequenceCollectionConfiguration;
     HDDataCollectorConfiguration *_tachycardiaCollectionConfiguration;
     HDDataCollectorConfiguration *_bradycardiaCollectionConfiguration;
     HDDataCollectorState *_heartRateCollectionState;
-    HDDataCollectorState *_heartRateVariabilityCollectionState;
-    HDDataCollectorState *_heartbeatSequenceCollectionState;
     HDDataCollectorState *_tachycardiaCollectionState;
     HDDataCollectorState *_bradycardiaCollectionState;
     CMCatherineFeeder *_catherineFeeder;
@@ -54,8 +48,6 @@
 - (void)_queue_createHealthLiteManager;
 - (void)_queue_updateBradycardiaCollectionType;
 - (void)_queue_updateTachycardiaCollectionType;
-- (void)_queue_updateHeartbeatSequenceCollectionType;
-- (void)_queue_updateHeartRateVariabilityCollectionType;
 - (void)_queue_updateHeartRateCollectionType;
 - (void)_queue_updateAllCollectionTypes;
 - (void)dataCollector:(id)arg1 didCollectHeartRate:(id)arg2 device:(id)arg3 source:(id)arg4;

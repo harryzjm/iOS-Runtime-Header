@@ -6,7 +6,7 @@
 
 #import <UIKitCore/UITable-Protocol.h>
 
-@class NSIndexPath, NSString, UIView;
+@class NSIndexPath, NSString, UITableViewHeaderFooterView, UIView;
 @protocol UITableConstants;
 
 @protocol UITable_RowDataSource <UITable>
@@ -23,8 +23,10 @@
 @property(readonly, nonatomic, getter=_heightForTableHeader) double heightForTableHeader;
 @property(readonly, nonatomic, getter=_isTableHeaderAutohiding) _Bool isTableHeaderAutohiding;
 @property(readonly, nonatomic, getter=_rowSpacing) double rowSpacing;
-@property(readonly, nonatomic, getter=_sectionFooterPadding) double sectionFooterPadding;
-@property(readonly, nonatomic, getter=_sectionHeaderPadding) double sectionHeaderPadding;
+@property(readonly, nonatomic, getter=_useChromelessSectionHeaderFooterPinningBehavior) _Bool useChromelessSectionHeaderFooterPinningBehavior;
+@property(readonly, nonatomic, getter=_sectionFooterToLastRowPadding) double sectionFooterToLastRowPadding;
+@property(readonly, nonatomic, getter=_sectionHeaderToFirstRowPadding) double sectionHeaderToFirstRowPadding;
+@property(readonly, nonatomic, getter=_paddingAboveSectionHeaders) double paddingAboveSectionHeaders;
 @property(readonly, nonatomic, getter=_tableContentInset) struct UIEdgeInsets tableContentInset;
 @property(readonly, nonatomic, getter=_contentInset) struct UIEdgeInsets _contentInset;
 @property(readonly, nonatomic, getter=_sidePadding) double sidePadding;
@@ -54,5 +56,8 @@
 - (double)_heightForFooterInSection:(long long)arg1;
 - (double)_heightForHeaderInSection:(long long)arg1;
 - (double)_heightForRowAtIndexPath:(NSIndexPath *)arg1;
+
+@optional
+- (void)_configureTableHeaderFooterView:(UITableViewHeaderFooterView *)arg1 forHeader:(_Bool)arg2 section:(long long)arg3 floating:(_Bool)arg4 withTitle:(NSString *)arg5 detailText:(NSString *)arg6 textAlignment:(long long)arg7 fromClient:(_Bool)arg8;
 @end
 

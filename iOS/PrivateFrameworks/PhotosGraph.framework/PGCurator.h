@@ -25,12 +25,16 @@
 - (id)bestItemIdentifiersWithItems:(id)arg1 options:(id)arg2 debugInfo:(out id *)arg3;
 - (id)defaultItemSortDescriptors;
 - (id)completedItems:(id)arg1 withNumberOfItems:(unsigned long long)arg2 fromAllItems:(id)arg3 avoidingItems:(id)arg4 options:(id)arg5 debugInfo:(id)arg6 progressBlock:(CDUnknownBlockType)arg7;
-- (void)completeItems:(id)arg1 withItems:(id)arg2 forPersonsWithIdentifiers:(id)arg3 options:(id)arg4 nonRemovableItems:(id)arg5 debugInfo:(id)arg6 progressBlock:(CDUnknownBlockType)arg7;
+- (void)completeItems:(id)arg1 withItems:(id)arg2 forPersonLocalIdentifiers:(id)arg3 options:(id)arg4 nonRemovableItems:(id)arg5 debugInfo:(id)arg6 progressBlock:(CDUnknownBlockType)arg7;
 - (void)completeItems:(id)arg1 withFavoriteItemsFromItems:(id)arg2 upToNumberOfItems:(unsigned long long)arg3 debugInfo:(id)arg4 progressBlock:(CDUnknownBlockType)arg5;
 - (id)deduplicatedItems:(id)arg1 options:(id)arg2 debugInfo:(id)arg3 progressBlock:(CDUnknownBlockType)arg4;
 - (void)_checkRequiredItemsWithIdentifiers:(id)arg1 inItems:(id)arg2;
 - (id)bestItemsForFeeder:(id)arg1 options:(id)arg2 debugInfo:(id)arg3 progressBlock:(CDUnknownBlockType)arg4;
-- (id)interestingItemsInItems:(id)arg1;
+- (id)summarizedItemsFromCluster:(id)arg1 withBeautifier:(id)arg2 debugInfo:(id)arg3 progressBlock:(CDUnknownBlockType)arg4;
+- (double)maximumDurationWithItems:(id)arg1 options:(id)arg2;
+- (double)evaluatedDurationWithItems:(id)arg1 options:(id)arg2;
+- (unsigned long long)targetDurationBasedNumberOfItemsToElectFromItems:(id)arg1 options:(id)arg2;
+- (id)focusedItemsInItems:(id)arg1 withOptions:(id)arg2;
 - (id)init;
 
 @end

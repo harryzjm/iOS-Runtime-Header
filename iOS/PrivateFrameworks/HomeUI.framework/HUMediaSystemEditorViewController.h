@@ -32,6 +32,7 @@
 - (id)_checkIfAccessoriesNeedSoftwareUpdateToSupportPairing;
 - (CDUnknownBlockType)_authKitContextGenerator;
 - (id)_executeAppleMusicAccountReconcilationForMediaSystemBuilder:(id)arg1;
+- (id)_executePreferredMediaUserReconcilationForMediaSystemBuilder:(id)arg1;
 - (id)finishPresentation:(id)arg1 animated:(_Bool)arg2;
 - (void)_configureMediaSystemBuilderToMoveHomePodsToRoom:(id)arg1;
 - (id)_promptForRoomChange;

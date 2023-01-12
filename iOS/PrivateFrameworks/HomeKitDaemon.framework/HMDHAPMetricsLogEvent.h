@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitMetrics/HMMLogEvent.h>
+
 @class HMFUnfairLock;
 
-@interface HMDHAPMetricsLogEvent
+@interface HMDHAPMetricsLogEvent : HMMLogEvent
 {
     HMFUnfairLock *_lock;
     unsigned long long _sentHTTPRequests;
@@ -18,7 +20,6 @@
     unsigned long long _btleConnectionPerReasons;
 }
 
-+ (id)uuid;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long btleConnectionPerReasons; // @synthesize btleConnectionPerReasons=_btleConnectionPerReasons;
 @property(readonly, nonatomic) unsigned long long btleDiscoveries; // @synthesize btleDiscoveries=_btleDiscoveries;
@@ -28,7 +29,6 @@
 @property(readonly, nonatomic) unsigned long long receivedHTTPResponses; // @synthesize receivedHTTPResponses=_receivedHTTPResponses;
 @property(readonly, nonatomic) unsigned long long sentHTTPRequests; // @synthesize sentHTTPRequests=_sentHTTPRequests;
 - (void)updateWithHAPAccessoryServer:(id)arg1;
-- (id)initWithEventType:(id)arg1;
 - (id)init;
 
 @end

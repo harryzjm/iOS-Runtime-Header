@@ -10,12 +10,8 @@
 {
 }
 
-+ (_Bool)hasTransparencyAtPoint:(struct CGPoint)arg1 forCGImage:(struct CGImage *)arg2;
-+ (_Bool)checkTransparencyForImageAtCorners:(struct CGImage *)arg1 tlkImage:(id)arg2 uiImage:(id)arg3;
-+ (_Bool)imageIsProbablyOpaque:(id)arg1 tlkImage:(id)arg2;
-+ (void)executeBlock:(CDUnknownBlockType)arg1 async:(_Bool)arg2;
 + (unsigned long long)tlkCornerRoundingStyleForSFCornerRoundingStyle:(int)arg1;
-+ (id)imageForSFImage:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
++ (void)applySeachUIImage:(id)arg1 toTLKImage:(id)arg2;
 + (id)imageForSFImage:(id)arg1;
 + (id)imagesForSFImages:(id)arg1;
 

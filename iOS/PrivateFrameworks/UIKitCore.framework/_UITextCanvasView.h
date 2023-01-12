@@ -4,25 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIDrawsTextInRect-Protocol.h>
+#import <UIKitCore/_UITextCanvas-Protocol.h>
 #import <UIKitCore/_UITextTiledLayerDelegate-Protocol.h>
 
 @class NSArray, NSMutableSet, NSString, _UISceneDisplayLink, _UITextTiledLayer;
-@protocol _UITextCanvasViewContext;
+@protocol _UITextCanvasContext;
 
 __attribute__((visibility("hidden")))
-@interface _UITextCanvasView <_UITextTiledLayerDelegate, _UIDrawsTextInRect>
+@interface _UITextCanvasView <_UITextTiledLayerDelegate, _UITextCanvas>
 {
     NSMutableSet *_ghostedRanges;
     NSMutableSet *_invisibleRanges;
     NSArray *_maskedRects;
     _UISceneDisplayLink *_sceneDisplayLink;
-    id <_UITextCanvasViewContext> _context;
+    id <_UITextCanvasContext> _context;
 }
 
 + (Class)layerClass;
 - (void).cxx_destruct;
-@property(nonatomic) __weak id <_UITextCanvasViewContext> context; // @synthesize context=_context;
+@property(nonatomic) __weak id <_UITextCanvasContext> context; // @synthesize context=_context;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)drawTextInRect:(struct CGRect)arg1;
 - (void)setNeedsLayout;

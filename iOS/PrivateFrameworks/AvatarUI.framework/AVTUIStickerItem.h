@@ -8,29 +8,33 @@
 
 #import <AvatarUI/AVTDiscardableContent-Protocol.h>
 
-@class MSSticker, NSString;
+@class MSSticker, NSString, UIImage;
 
 @interface AVTUIStickerItem : NSObject <AVTDiscardableContent>
 {
     _Bool _hasBeenRendered;
     CDUnknownBlockType discardableContentHandler;
+    NSString *_identifier;
     NSString *_localizedName;
     MSSticker *_cachedMSSticker;
+    UIImage *_cachedImage;
     CDUnknownBlockType _resourceProvider;
     struct CGRect _clippingRect;
 }
 
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) CDUnknownBlockType resourceProvider; // @synthesize resourceProvider=_resourceProvider;
+@property(retain, nonatomic) UIImage *cachedImage; // @synthesize cachedImage=_cachedImage;
 @property(nonatomic) struct CGRect clippingRect; // @synthesize clippingRect=_clippingRect;
 @property(nonatomic) _Bool hasBeenRendered; // @synthesize hasBeenRendered=_hasBeenRendered;
 @property(retain, nonatomic) MSSticker *cachedMSSticker; // @synthesize cachedMSSticker=_cachedMSSticker;
 @property(readonly, copy, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
+@property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(copy, nonatomic) CDUnknownBlockType discardableContentHandler; // @synthesize discardableContentHandler;
 - (void)discardContent;
 @property(readonly, copy) NSString *description;
 - (void)clearCachedItems;
-- (id)initWithLocalizedName:(id)arg1 resourceProvider:(CDUnknownBlockType)arg2;
+- (id)initWithIdentifier:(id)arg1 localizedName:(id)arg2 resourceProvider:(CDUnknownBlockType)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

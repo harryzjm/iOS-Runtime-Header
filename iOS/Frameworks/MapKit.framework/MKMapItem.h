@@ -11,7 +11,7 @@
 #import <MapKit/NSItemProviderWriting-Protocol.h>
 #import <MapKit/NSSecureCoding-Protocol.h>
 
-@class GEOAddress, GEOBusinessHours, GEOFeatureStyleAttributes, GEOMapItemDetourInfo, GEOMapItemStorage, GEOMapItemStorageUserValues, GEOMapRegion, GEOModuleLayoutEntry, GEOMuninViewState, GEOPDBusinessClaim, GEOPDFlyover, GEOPlace, GEORelatedPlaceList, MKMapItemIdentifier, MKMapItemMetadata, MKPlacemark, NSArray, NSData, NSDate, NSDictionary, NSNumber, NSNumberFormatter, NSString, NSTimeZone, NSURL, UIColor, _MKMapItemPhotosAttribution, _MKMapItemPlaceAttribution, _MKMapItemReviewsAttribution, _MKPlaceReservationInfo;
+@class GEOAddress, GEOBusinessHours, GEOEnhancedPlacement, GEOExploreGuides, GEOFeatureStyleAttributes, GEOLabelGeometry, GEOMapItemDetourInfo, GEOMapItemStorage, GEOMapItemStorageUserValues, GEOMapRegion, GEOMiniBrowseCategories, GEOModuleLayoutEntry, GEOMuninViewState, GEOPDBusinessClaim, GEOPDFlyover, GEOPlace, GEOViewportFrame, MKMapItemIdentifier, MKMapItemMetadata, MKPlacemark, NSArray, NSData, NSDate, NSDictionary, NSNumber, NSNumberFormatter, NSString, NSTimeZone, NSURL, UIColor, _MKMapItemAttribution, _MKMapItemPhotosAttribution, _MKMapItemPlaceAttribution, _MKMapItemReviewsAttribution, _MKPlaceReservationInfo, geo_isolater;
 @protocol GEOAnnotatedItemList, GEOEncyclopedicInfo, GEOMapItem, GEOMapItemPrivate, GEOMapItemTransitInfo, GEOMapItemVenueInfo, GEOTransitAttribution, MKTransitInfoPreload, NSObject;
 
 @interface MKMapItem : NSObject <NSSecureCoding, NSItemProviderReading, NSItemProviderWriting, GEOURLSerializable>
@@ -26,18 +26,22 @@
     id <GEOMapItemTransitInfo> _defaultTransitInfo;
     id <GEOTransitAttribution> _updatedTransitAttribution;
     _MKMapItemPlaceAttribution *_attribution;
-    _MKMapItemPhotosAttribution *_photosAttribution;
+    NSArray *_allPhotoAttributions;
     _MKMapItemReviewsAttribution *_reviewsAttribution;
     GEOMapItemStorageUserValues *_userValues;
     id <NSObject> _didResolveAttributionToken;
+    _Bool _hasLoadedAttribution;
     NSString *_shortAddress;
     NSString *_firstLocalizedCategoryName;
     NSNumberFormatter *_numberFormatterForAdamId;
     NSString *_localizedSampleSizeForUserRatingScoreString;
     NSDictionary *_cachedHoursBuilder;
+    geo_isolater *_isolation;
     _Bool _isMapItemTypeTransit;
     MKMapItemMetadata *_metadata;
     GEOPlace *_place;
+    _MKMapItemPhotosAttribution *_photosAttribution;
+    _MKMapItemAttribution *_encyclopedicInfoAttribution;
     _MKPlaceReservationInfo *_reservationInfo;
     NSString *_pointOfInterestCategory;
     id <MKTransitInfoPreload> _preloadedTransitInfo;
@@ -66,8 +70,6 @@
 + (id)mapItemWithDictionary:(id)arg1;
 + (id)standardOptionsFromPlistCompatibleDictionary:(id)arg1;
 + (id)plistCompatibleDictionaryFromStandardOptions:(id)arg1;
-+ (void)_openHandleInMaps:(id)arg1 withLaunchOptions:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-+ (_Bool)_openHandleInMaps:(id)arg1 withLaunchOptions:(id)arg2;
 + (void)openMapsWithItems:(id)arg1 launchOptions:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (_Bool)openMapsWithItems:(id)arg1 launchOptions:(id)arg2;
 + (void)openMapsWithItems:(id)arg1 launchOptions:(id)arg2 fromScene:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -94,11 +96,11 @@
 @property(copy, nonatomic) NSString *pointOfInterestCategory; // @synthesize pointOfInterestCategory=_pointOfInterestCategory;
 @property(retain, nonatomic) _MKPlaceReservationInfo *reservationInfo; // @synthesize reservationInfo=_reservationInfo;
 @property(nonatomic, getter=_isMapItemTypeTransit) _Bool isMapItemTypeTransit; // @synthesize isMapItemTypeTransit=_isMapItemTypeTransit;
-@property(readonly, nonatomic, getter=_reviewsAttribution) _MKMapItemReviewsAttribution *reviewsAttribution; // @synthesize reviewsAttribution=_reviewsAttribution;
-@property(readonly, nonatomic, getter=_photosAttribution) _MKMapItemPhotosAttribution *photosAttribution; // @synthesize photosAttribution=_photosAttribution;
-@property(readonly, nonatomic, getter=_attribution) _MKMapItemPlaceAttribution *attribution; // @synthesize attribution=_attribution;
 @property(readonly, nonatomic) _Bool isPlaceHolder; // @synthesize isPlaceHolder=_isPlaceHolder;
 @property(nonatomic) _Bool isCurrentLocation; // @synthesize isCurrentLocation=_isCurrentLocation;
+@property(readonly, nonatomic, getter=_viewportFrame) GEOViewportFrame *viewportFrame;
+@property(readonly, nonatomic, getter=_labelGeometry) GEOLabelGeometry *labelGeometry;
+@property(readonly, nonatomic, getter=_enhancedPlacement) GEOEnhancedPlacement *enhancedPlacement;
 @property(readonly, nonatomic, getter=_hasCorrectedHomeWorkAddress) _Bool hasCorrectedHomeWorkAddress;
 @property(readonly, nonatomic, getter=_hasCorrectedHomeWorkCoordinate) _Bool hasCorrectedHomeWorkCoordinate;
 @property(readonly, nonatomic, getter=_externalTransitStationCode) NSData *externalTransitStationCode;
@@ -108,8 +110,11 @@
 @property(readonly, nonatomic) NSString *reviewsProviderDisplayName;
 @property(readonly, nonatomic, getter=_tips) NSArray *tips;
 @property(readonly, nonatomic, getter=_reviews) NSArray *reviews;
-@property(readonly, nonatomic, getter=_relatedPlaceList) GEORelatedPlaceList *relatedPlaceList;
+- (id)_firstRelatedPlaceListForType:(int)arg1;
+- (id)_relatedPlaceListForComponentIdentifier:(int)arg1;
+@property(readonly, nonatomic, getter=_relatedPlaceLists) NSArray *relatedPlaceLists;
 @property(readonly, nonatomic, getter=_placeCollectionIds) NSArray *collectionIds;
+@property(readonly, nonatomic, getter=_exploreGuides) GEOExploreGuides *exploreGuides;
 @property(readonly, nonatomic, getter=_placeCollections) NSArray *placeCollections;
 @property(readonly, nonatomic, getter=_secondaryQuickLinks) NSArray *secondaryQuickLinks;
 @property(readonly, nonatomic, getter=_quickLinks) NSArray *quickLinks;
@@ -146,6 +151,7 @@
 @property(readonly, nonatomic, getter=_preferedAppAdamID) NSNumber *preferedAppAdamID;
 - (id)venueLabelWithContext:(unsigned long long)arg1;
 - (id)_cnPostalAddress;
+- (id)_addressFormattedAsLocation;
 - (id)_addressFormattedAsTitlesForMapRect:(CDStruct_02837cd9)arg1;
 - (id)_addressFormattedAsWeatherLocationName;
 - (id)_addressFormattedAsWeatherDisplayName;
@@ -161,8 +167,7 @@
 - (id)_bestBrandIconURLForSize:(struct CGSize)arg1 allowSmaller:(_Bool)arg2;
 - (_Bool)_canGetDirections;
 - (id)_urlExtraStorage;
-- (id)_activityURLUsingWebPlaceCard:(_Bool)arg1 muninViewState:(id)arg2;
-- (id)_activityURLUsingWebPlaceCard:(_Bool)arg1;
+- (id)_activityURLWithMuninViewState:(id)arg1;
 - (id)_activityURL;
 - (id)_weatherLocationName;
 - (id)_weatherDisplayName;
@@ -187,6 +192,7 @@
 @property(readonly, nonatomic, getter=_messageBusinessHours) GEOBusinessHours *messageBusinessHours;
 - (id)_localizedNextOpeningStringShort:(_Bool)arg1;
 - (id)hoursBuilderForSearchResultCellForOptions:(unsigned long long)arg1;
+- (id)defaultHoursBuilderForSearchResultCell;
 @property(readonly, nonatomic, getter=_hasLocalizedOperatingHours) _Bool hasLocalizedOperatingHours;
 @property(readonly, nonatomic, getter=_hasOperatingHours) _Bool hasOperatingHours;
 @property(readonly, nonatomic, getter=_responseStatusIsIncomplete) _Bool responseStatusIncomplete;
@@ -219,6 +225,7 @@
 @property(readonly, nonatomic, getter=_hasMuninViewState) _Bool hasMuninViewState;
 @property(readonly, nonatomic, getter=_annotatedItemList) id <GEOAnnotatedItemList> annotatedItemList;
 @property(readonly, nonatomic, getter=_placeDisplayStyle) int placeDisplayStyle;
+@property(readonly, nonatomic, getter=_miniBrowseCategories) GEOMiniBrowseCategories *miniBrowseCategories;
 @property(readonly, nonatomic, getter=_browseCategories) NSArray *browseCategories;
 @property(readonly, nonatomic, getter=_venueInfo) id <GEOMapItemVenueInfo> venueInfo;
 @property(readonly, nonatomic, getter=_venueFeatureType) long long venueFeatureType;
@@ -258,9 +265,15 @@
 @property(readonly) unsigned long long hash;
 @property(readonly, copy) NSString *description;
 - (void)_refreshAttribution;
+@property(readonly, nonatomic, getter=_encyclopedicInfoAttribution) _MKMapItemAttribution *encyclopedicInfoAttribution; // @synthesize encyclopedicInfoAttribution=_encyclopedicInfoAttribution;
+@property(readonly, nonatomic, getter=_reviewsAttribution) _MKMapItemReviewsAttribution *reviewsAttribution; // @synthesize reviewsAttribution=_reviewsAttribution;
+@property(readonly, nonatomic, getter=_allPhotoAttributions) NSArray *allPhotoAttributions; // @synthesize allPhotoAttributions=_allPhotoAttributions;
+@property(readonly, nonatomic, getter=_photosAttribution) _MKMapItemPhotosAttribution *photosAttribution; // @synthesize photosAttribution=_photosAttribution;
+@property(readonly, nonatomic, getter=_attribution) _MKMapItemPlaceAttribution *attribution; // @synthesize attribution=_attribution;
 @property(readonly, nonatomic) MKPlacemark *placemark;
 @property(readonly, nonatomic) MKMapItemMetadata *metadata; // @synthesize metadata=_metadata;
 @property(readonly, nonatomic) GEOPlace *place; // @synthesize place=_place;
+- (id)_isolatedPlace;
 - (void)dealloc;
 - (id)initWithPlacemark:(id)arg1;
 - (id)initWithCLLocation:(id)arg1;
@@ -270,6 +283,7 @@
 - (id)initWithPlace:(id)arg1;
 - (id)initWithGeoMapItem:(id)arg1 isPlaceHolderPlace:(_Bool)arg2;
 - (id)initWithGeoMapItemAsCurrentLocation:(id)arg1;
+- (id)init;
 - (int)_browseCategory_placeCardType;
 - (_Bool)_browseCategory_isVenueItem;
 - (_Bool)_browseCategory_canDisplayBrowseCategoriesForPlace;
@@ -292,6 +306,14 @@
 - (void)_getFirstAvailableAppClipLinkFromQuickLinks:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_getFirstAvailableSecondaryAppClipLinkWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_getFirstAvailableAppClipLinkWithCompletion:(CDUnknownBlockType)arg1;
+- (_Bool)_mapkit_canAtLeastOneAttributionShowAddPhotosLocally;
+- (_Bool)_mapkit_canAtLeastOneAttributionShowPhotosLocally;
+- (id)_mapkit_resolvedFlatPhotoList;
+- (id)_mapkit_preferredFirstPhotoVendor;
+- (_Bool)_mapkit_hasMultiplePhotoVendors;
+- (_Bool)_mapkit_hasSinglePhotoVendor;
+- (_Bool)_mapkit_hasFlatListOfPhotos;
+- (_Bool)_mapkit_supportsFullScreenExperience;
 - (id)_restaurantLink_overridenBundleIDsForVendorIDs;
 - (id)_restaurantLink_firstProviderDisplayName;
 - (id)_restaurantLink_firstProviderPlaceIdentifier;

@@ -22,6 +22,8 @@
 }
 
 - (void).cxx_destruct;
+- (void)_myriadEventWithRequestInfo:(id)arg1 context:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_deliverButtonEventFromContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_deactivateForReason:(long long)arg1 options:(unsigned long long)arg2 context:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_activateWithRequestInfo:(id)arg1 context:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_prewarmWithRequestInfo:(id)arg1 context:(id)arg2 completion:(CDUnknownBlockType)arg3;

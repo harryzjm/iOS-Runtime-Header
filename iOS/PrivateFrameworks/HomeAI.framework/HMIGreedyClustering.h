@@ -18,12 +18,12 @@
 + (id)centermostFaceprintInCluster:(id)arg1 faceObservations:(id)arg2;
 + (float)faceDistanceFromDescriptor:(id)arg1 toDescriptor:(id)arg2;
 + (id)logCategory;
-+ (_Bool)addFaceObservations:(id)arg1 toFaceDescriptorBuffer:(struct ImageDescriptorBufferFloat32 *)arg2 error:(id *)arg3;
++ (_Bool)addFaceObservations:(id)arg1 toFaceDescriptorBuffer:(void *)arg2 error:(id *)arg3;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)convertToClusters:(vector_22dfb71c *)arg1;
+- (id)convertToClusters:(void *)arg1;
 - (id)getClustersWithFaces:(id)arg1 error:(id *)arg2;
-- (id)initWithFaceThreshold:(id)arg1 singleLinkThreshold:(id)arg2 percentConnectionsThreshold:(id)arg3 faceprintRevision:(long long)arg4 error:(id *)arg5;
+- (id)initWithFaceThreshold:(id)arg1 singleLinkThreshold:(id)arg2 percentConnectionsThreshold:(id)arg3 error:(id *)arg4;
 - (id)initWithError:(id *)arg1;
 
 // Remaining properties

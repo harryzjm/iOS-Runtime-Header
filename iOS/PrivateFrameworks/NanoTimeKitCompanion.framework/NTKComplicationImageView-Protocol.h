@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <NanoTimeKitCompanion/CLKComplicationImageView-Protocol.h>
 #import <NanoTimeKitCompanion/NTKColoringView-Protocol.h>
 
-@class CLKImageProvider;
-
-@protocol NTKComplicationImageView <NTKColoringView>
-@property(retain, nonatomic) CLKImageProvider *imageProvider;
+@protocol NTKComplicationImageView <CLKComplicationImageView, NTKColoringView>
 @end
 

@@ -6,9 +6,12 @@
 
 #import <AssistantUI/AFUISiriSessionListener-Protocol.h>
 
-@class AFUISiriSession, NSString, SAUIAppPunchOut, SAUIDelayedActionCancelCommand, SAUIDelayedActionCommand;
+@class AFUISiriSession, NSString, SAUIAppPunchOut, SAUIDelayedActionCancelCommand, SAUIDelayedActionCommand, SAUISetUpdateMask, SAUITakeScreenshot;
 
 @protocol AFUISiriSessionLocalDelegate <AFUISiriSessionListener>
+- (void)siriSessionDidReceiveSetUpdateMaskCommand:(SAUISetUpdateMask *)arg1 completion:(void (^)(AceObject<SAAceCommand> *))arg2;
+- (void)siriSessionDidReceiveTakeScreenshotCommand:(SAUITakeScreenshot *)arg1 completion:(void (^)(AceObject<SAAceCommand> *))arg2;
+- (void)siriSessionImmersiveExperienceRequested;
 - (void)siriSessionAudioOutputDidChangePowerLevel:(float)arg1;
 - (void)siriSessionAudioRecordingDidChangePowerLevel:(float)arg1;
 - (void)siriSessionShouldEndExtendAudioSessionForImminentPhoneCall;

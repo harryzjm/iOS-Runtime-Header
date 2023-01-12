@@ -9,6 +9,7 @@
 #import <CFNetwork/NSSecureCoding-Protocol.h>
 
 @class NSDate, NSNumber, NSString, NSURLRequest, NSURLResponse, NSUUID, __CFN_TransactionMetrics;
+@protocol OS_nw_data_transfer_report, OS_nw_establishment_report;
 
 @interface NSURLSessionTaskTransactionMetrics : NSObject <NSSecureCoding>
 {
@@ -61,6 +62,11 @@
 - (id)init;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+@property(readonly, copy) NSNumber *_proxyPort;
+@property(readonly, copy) NSString *_proxyAddress;
+@property(readonly, retain) NSObject<OS_nw_data_transfer_report> *_dataTransferReport;
+@property(readonly, retain) NSObject<OS_nw_establishment_report> *_establishmentReport;
+@property(readonly) int _privacyStance;
 @property(readonly, copy) NSString *_interfaceName;
 @property(readonly, copy) NSDate *_firstByteReceivedDate;
 @property(readonly) _Bool _usesMultipath;

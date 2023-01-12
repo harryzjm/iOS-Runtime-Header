@@ -24,9 +24,11 @@
     NSObject<OS_dispatch_group> *_itemProviderLoadGroup;
     NSObject<OS_dispatch_group> *_asynchronousLoadGroup;
     struct CGSize _pixelSize;
+    _Bool _isAnimated;
     _Bool _hasComputedPixelSize;
     _Bool _hasTransparency;
     _Bool _hasComputedHasTransparency;
+    _Bool _hasComputedIsAnimated;
     _Bool _fallbackIcon;
     NSArray *_remoteURLsForEmailCompatibleOutput;
     LPImage *_darkInterfaceAlternativeImage;
@@ -38,7 +40,7 @@
 + (id)_loadImageSubsampledToScreenSizeFromData:(id)arg1;
 + (_Bool)supportsSecureCoding;
 + (id)_PDFImageNamed:(id)arg1 template:(_Bool)arg2;
-+ (id)_PNGImageNamed:(id)arg1 template:(_Bool)arg2;
++ (id)_PNGImageNamed:(id)arg1 template:(_Bool)arg2 properties:(id)arg3;
 + (id)_PNGImageNamed:(id)arg1;
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType _alternateHTMLImageGenerator; // @synthesize _alternateHTMLImageGenerator=__alternateHTMLImageGenerator;
@@ -56,7 +58,7 @@
 @property(readonly, nonatomic, getter=_isAnimated) _Bool _animated;
 @property(readonly, nonatomic) _Bool _isImperceptible;
 @property(readonly, nonatomic) struct CGSize _pixelSize;
-- (_Bool)_shouldEncodeData;
+- (_Bool)_isSubstitute;
 @property(readonly, nonatomic) unsigned long long _encodedSize;
 - (void)_mapDataFromFileURL;
 - (void)_createDataFromPlatformImage;
@@ -70,7 +72,7 @@
 - (void)_waitForAsynchronouslyLoadedImageIfNeeded;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)_initWithPlatformImageGenerator:(CDUnknownBlockType)arg1;
+- (id)_initWithPlatformImageGenerator:(CDUnknownBlockType)arg1 properties:(id)arg2;
 - (id)_initWithCGImage:(struct CGImage *)arg1 properties:(id)arg2;
 - (id)_initWithCGImage:(struct CGImage *)arg1;
 - (id)initWithItemProvider:(id)arg1 properties:(id)arg2 placeholderImage:(id)arg3;

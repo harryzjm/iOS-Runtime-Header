@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     _Bool _skipInlineCandidate;
     _Bool _hidesPartialCandidates;
     UIFont *_candidateFont;
+    UIFont *_supplementalLexiconCandidateFont;
     UIFont *_annotationTextFont;
     UIFont *_alternativeTextFont;
     UIFont *_candidateNumberFont;
@@ -54,6 +55,8 @@ __attribute__((visibility("hidden")))
     UIImage *_leftEdgeSeparatorImage;
     UIImage *_rightEdgeSeparatorImage;
     UIImage *_arrowButtonSeparatorImage;
+    UIImage *_leftEdgeMaskImage;
+    UIImage *_rightEdgeMaskImage;
     UIImage *_cellBackgroundImage;
     UIImage *_highlightedCellBackgroundImage;
     UIImage *_transliterationCandidateBackgroundImage;
@@ -69,6 +72,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _maxNumberOfProactiveCells;
     double _minimumCellPadding;
     double _minimumCellWidth;
+    double _maximumIconWidth;
     double _singleSlottedCellMargin;
     long long _cellTextAlignment;
     long long _alternativeTextAlignment;
@@ -111,6 +115,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct UIEdgeInsets arrowButtonPadding; // @synthesize arrowButtonPadding=_arrowButtonPadding;
 @property(nonatomic) struct UIEdgeInsets extraCellPadding; // @synthesize extraCellPadding=_extraCellPadding;
 @property(nonatomic) double singleSlottedCellMargin; // @synthesize singleSlottedCellMargin=_singleSlottedCellMargin;
+@property(nonatomic) double maximumIconWidth; // @synthesize maximumIconWidth=_maximumIconWidth;
 @property(nonatomic) double minimumCellWidth; // @synthesize minimumCellWidth=_minimumCellWidth;
 @property(nonatomic) double minimumCellPadding; // @synthesize minimumCellPadding=_minimumCellPadding;
 @property(nonatomic) unsigned long long maxNumberOfProactiveCells; // @synthesize maxNumberOfProactiveCells=_maxNumberOfProactiveCells;
@@ -127,6 +132,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UIImage *transliterationCandidateBackgroundImage; // @synthesize transliterationCandidateBackgroundImage=_transliterationCandidateBackgroundImage;
 @property(retain, nonatomic) UIImage *highlightedCellBackgroundImage; // @synthesize highlightedCellBackgroundImage=_highlightedCellBackgroundImage;
 @property(retain, nonatomic) UIImage *cellBackgroundImage; // @synthesize cellBackgroundImage=_cellBackgroundImage;
+@property(retain, nonatomic) UIImage *rightEdgeMaskImage; // @synthesize rightEdgeMaskImage=_rightEdgeMaskImage;
+@property(retain, nonatomic) UIImage *leftEdgeMaskImage; // @synthesize leftEdgeMaskImage=_leftEdgeMaskImage;
 @property(retain, nonatomic) UIImage *arrowButtonSeparatorImage; // @synthesize arrowButtonSeparatorImage=_arrowButtonSeparatorImage;
 @property(retain, nonatomic) UIImage *rightEdgeSeparatorImage; // @synthesize rightEdgeSeparatorImage=_rightEdgeSeparatorImage;
 @property(retain, nonatomic) UIImage *leftEdgeSeparatorImage; // @synthesize leftEdgeSeparatorImage=_leftEdgeSeparatorImage;
@@ -154,6 +161,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIFont *candidateNumberFont; // @synthesize candidateNumberFont=_candidateNumberFont;
 @property(retain, nonatomic) UIFont *alternativeTextFont; // @synthesize alternativeTextFont=_alternativeTextFont;
 @property(retain, nonatomic) UIFont *annotationTextFont; // @synthesize annotationTextFont=_annotationTextFont;
+@property(retain, nonatomic) UIFont *supplementalLexiconCandidateFont; // @synthesize supplementalLexiconCandidateFont=_supplementalLexiconCandidateFont;
 @property(retain, nonatomic) UIFont *candidateFont; // @synthesize candidateFont=_candidateFont;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

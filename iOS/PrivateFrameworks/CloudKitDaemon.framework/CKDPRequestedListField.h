@@ -10,7 +10,6 @@
 
 @class CKDPRecordFieldIdentifier, NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface CKDPRequestedListField : PBCodable <NSCopying>
 {
     CKDPRecordFieldIdentifier *_fieldId;

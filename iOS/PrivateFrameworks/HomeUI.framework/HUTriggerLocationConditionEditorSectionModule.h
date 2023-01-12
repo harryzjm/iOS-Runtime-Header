@@ -27,7 +27,7 @@
 @property(retain, nonatomic) HFItem *anyLocationOptionItem; // @synthesize anyLocationOptionItem=_anyLocationOptionItem;
 - (id)_createConditionItemForPresenceEventType:(unsigned long long)arg1 userType:(unsigned long long)arg2;
 - (id)_conditionItemForPresenceEvent:(id)arg1;
-- (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
+- (void)locationManagerDidChangeAuthorization:(id)arg1;
 - (id)buildConditionOptionItems;
 - (_Bool)conditionIsDisabled;
 - (id)noConditionSummaryTitle;

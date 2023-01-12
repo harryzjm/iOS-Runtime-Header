@@ -42,6 +42,7 @@
 - (id)viewForFirstBaselineLayout;
 - (void)observedPropertiesChanged;
 - (void)layoutMarginsDidChange;
+- (struct UIEdgeInsets)effectiveLayoutMargins;
 - (struct UIEdgeInsets)defaultBaselineRelativeLayoutMargins;
 - (void)propertiesDidChange;
 @property(readonly) _Bool usesDefaultLayoutMargins;

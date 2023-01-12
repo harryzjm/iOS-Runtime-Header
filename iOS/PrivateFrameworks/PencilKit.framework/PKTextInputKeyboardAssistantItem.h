@@ -8,11 +8,14 @@
 
 #import <PencilKit/PKPaletteFloatingKeyboardControllerDelegate-Protocol.h>
 
-@class NSString, PKPaletteFloatingKeyboardController;
+@class NSString, PKPaletteFloatingKeyboardController, PKTextInputLanguageSelectionToken, UIImage;
 @protocol PKTextInputKeyboardAssistantItemDelegate;
 
 @interface PKTextInputKeyboardAssistantItem : UIBarButtonItem <PKPaletteFloatingKeyboardControllerDelegate>
 {
+    long long _floatingKeyboardType;
+    UIImage *_indicatorImage;
+    PKTextInputLanguageSelectionToken *_observerToken;
     id <PKTextInputKeyboardAssistantItemDelegate> _delegate;
     PKPaletteFloatingKeyboardController *_floatingKeyboardController;
 }
@@ -24,8 +27,11 @@
 - (void)floatingKeyboardControllerWillHide:(id)arg1;
 - (void)floatingKeyboardControllerWillShow:(id)arg1;
 - (id)responderForFloatingKeyboardController:(id)arg1;
+- (void)didDisplayAssistantItem;
+- (void)_updateImageAndNotify;
 - (void)floatingKeyboardController:(id)arg1 didChangeKeyboardType:(long long)arg2;
 - (void)didAction:(id)arg1;
+- (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)init;
 

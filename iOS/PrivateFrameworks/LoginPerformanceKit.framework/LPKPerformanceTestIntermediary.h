@@ -10,6 +10,7 @@
 {
 }
 
++ (id)_generateSharedipadTraceHelperCommand;
 + (long long)_dumpKtraceResult;
 + (long long)_disableKtrace;
 + (long long)_enableKtrace;
@@ -17,6 +18,7 @@
 + (void)disableRestrictionlessLoginWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (void)enableRestrictionlessLoginWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (_Bool)endUserSwitchTest;
++ (_Bool)_startUserSwitchTestForType:(unsigned long long)arg1 count:(long long)arg2 username:(id)arg3 password:(id)arg4 isPerformanceTest:(_Bool)arg5;
 + (_Bool)startUserSwitchTestForType:(unsigned long long)arg1 count:(long long)arg2 username:(id)arg3 password:(id)arg4;
 + (id)endPerformanceTestAndDumpResults;
 + (_Bool)startPerformanceTestForType:(unsigned long long)arg1 count:(long long)arg2 username:(id)arg3 password:(id)arg4;

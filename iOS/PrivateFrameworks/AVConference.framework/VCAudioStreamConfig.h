@@ -4,24 +4,36 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary, NSMutableDictionary, NSMutableSet;
+@class NSArray, NSDictionary, NSMutableDictionary, NSMutableOrderedSet;
 
 __attribute__((visibility("hidden")))
 @interface VCAudioStreamConfig
 {
-    unsigned long long _ptime;
-    unsigned long long _maxPtime;
     long long _audioStreamMode;
     NSMutableDictionary *_codecConfigurations;
     _Bool _redEnabled;
     unsigned char _numRedundantPayloads;
-    NSMutableSet *_supportedNumRedundantPayload;
+    NSMutableOrderedSet *_supportedNumRedundantPayload;
     _Bool _enableMaxBitrateOnNoChangeCMR;
     _Bool _forceEVSWideBand;
     float _volume;
     _Bool _shouldApplyRedAsBoolean;
+    _Bool _supportsAdaptation;
+    int _bundlingScheme;
+    _Bool _useExternalIO;
+    struct tagVCAudioFrameFormat _externalIOFormat;
+    int _oneToOneOperatingMode;
+    _Bool _useWifiTiers;
+    unsigned int _channelCount;
 }
 
++ (int)bundlingSchemeForAudioStreamMode:(long long)arg1 payloadType:(int)arg2;
+@property(nonatomic) _Bool useWifiTiers; // @synthesize useWifiTiers=_useWifiTiers;
+@property(readonly, nonatomic) _Bool useExternalIO; // @synthesize useExternalIO=_useExternalIO;
+@property(nonatomic) unsigned int channelCount; // @synthesize channelCount=_channelCount;
+@property(nonatomic) int oneToOneOperatingMode; // @synthesize oneToOneOperatingMode=_oneToOneOperatingMode;
+@property(nonatomic) int bundlingScheme; // @synthesize bundlingScheme=_bundlingScheme;
+@property(nonatomic) _Bool supportsAdaptation; // @synthesize supportsAdaptation=_supportsAdaptation;
 @property(nonatomic) _Bool shouldApplyRedAsBoolean; // @synthesize shouldApplyRedAsBoolean=_shouldApplyRedAsBoolean;
 @property(nonatomic) float volume; // @synthesize volume=_volume;
 @property(nonatomic) _Bool forceEVSWideBand; // @synthesize forceEVSWideBand=_forceEVSWideBand;
@@ -29,12 +41,11 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned char numRedundantPayloads; // @synthesize numRedundantPayloads=_numRedundantPayloads;
 @property(readonly, nonatomic, getter=isRedEnabled) _Bool redEnabled; // @synthesize redEnabled=_redEnabled;
 @property(readonly, nonatomic) NSDictionary *codecConfigurations; // @synthesize codecConfigurations=_codecConfigurations;
-@property(nonatomic) unsigned long long maxPtime; // @synthesize maxPtime=_maxPtime;
-@property(nonatomic) unsigned long long ptime; // @synthesize ptime=_ptime;
 @property(nonatomic) long long audioStreamMode; // @synthesize audioStreamMode=_audioStreamMode;
 @property(readonly, nonatomic) NSArray *supportedNumRedundantPayload;
 - (void)addSupportedNumRedundantPayload:(unsigned int)arg1;
 - (void)addCodecConfiguration:(id)arg1;
+@property(nonatomic) const struct tagVCAudioFrameFormat *externalIOFormat;
 - (_Bool)setupDTMFCodecWithClientDictionary:(id)arg1;
 - (_Bool)setupCNCodecWithClientDictionary:(id)arg1;
 - (void)setupRedWithRxPayload:(unsigned int)arg1 txPayload:(unsigned int)arg2;

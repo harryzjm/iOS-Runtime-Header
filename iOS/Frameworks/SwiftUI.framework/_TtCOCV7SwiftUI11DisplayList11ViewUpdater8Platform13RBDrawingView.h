@@ -9,13 +9,12 @@
 __attribute__((visibility("hidden")))
 @interface _TtCOCV7SwiftUI11DisplayList11ViewUpdater8Platform13RBDrawingView
 {
-    MISSING_TYPE *callback;
-    MISSING_TYPE *displayListRenderer;
     MISSING_TYPE *options;
+    MISSING_TYPE *_state;
 }
 
-- (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 
 @end

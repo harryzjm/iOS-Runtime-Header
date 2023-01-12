@@ -9,15 +9,15 @@
 #import <Silex/SXQuickLookModule-Protocol.h>
 
 @class NSString;
-@protocol NFResolver;
+@protocol TFResolver;
 
 @interface SXQuickLookModule : NSObject <SXQuickLookModule>
 {
-    id <NFResolver> _resolver;
+    id <TFResolver> _resolver;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) id <NFResolver> resolver; // @synthesize resolver=_resolver;
+@property(readonly, nonatomic) id <TFResolver> resolver; // @synthesize resolver=_resolver;
 - (id)createViewControllerWithFile:(id)arg1;
 - (id)initWithResolver:(id)arg1;
 

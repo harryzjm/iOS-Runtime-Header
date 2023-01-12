@@ -13,7 +13,7 @@
 @interface TSPPackageWriterComponentWriteChannel : NSObject <TSPComponentWriteChannel>
 {
     TSUZipFileWriter *_archiveWriter;
-    _Bool _isClosed;
+    _Atomic _Bool _isClosed;
 }
 
 - (void).cxx_destruct;

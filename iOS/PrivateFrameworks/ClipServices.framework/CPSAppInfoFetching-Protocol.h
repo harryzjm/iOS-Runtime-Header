@@ -6,9 +6,11 @@
 
 #import <ClipServices/NSObject-Protocol.h>
 
-@class NSString;
+@class NSString, NSURL;
 
 @protocol CPSAppInfoFetching <NSObject>
+- (void)evictCachedMetadataForClipBundleID:(NSString *)arg1;
+- (void)lookUpClipMetadataByBundleID:(NSString *)arg1 sourceBundleID:(NSString *)arg2 URL:(NSURL *)arg3 downloadIconIfNeeded:(_Bool)arg4 skipCaching:(_Bool)arg5 completionHandler:(void (^)(CPSClipMetadata *, NSError *))arg6;
 - (void)lookUpClipMetadataByBundleID:(NSString *)arg1 sourceBundleID:(NSString *)arg2 downloadIconIfNeeded:(_Bool)arg3 skipCaching:(_Bool)arg4 completionHandler:(void (^)(CPSClipMetadata *, NSError *))arg5;
 @end
 

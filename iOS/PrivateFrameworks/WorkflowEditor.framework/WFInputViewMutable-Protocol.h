@@ -9,7 +9,7 @@
 @class UIView;
 
 @protocol WFInputViewMutable <NSObject>
-@property(retain, nonatomic) UIView *inputAccessoryView;
-@property(retain, nonatomic) UIView *inputView;
+@property(nonatomic, retain) UIView *inputAccessoryView;
+@property(nonatomic, retain) UIView *inputView;
 @end
 

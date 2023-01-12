@@ -9,7 +9,7 @@
 #import <SiriVOX/SVXClientServiceConsuming-Protocol.h>
 #import <SiriVOX/SVXClientSpeechSynthesisServicing-Protocol.h>
 
-@class NSString;
+@class NSMutableDictionary, NSString;
 @protocol SVXClientServiceProviding, SVXPerforming;
 
 __attribute__((visibility("hidden")))
@@ -17,16 +17,22 @@ __attribute__((visibility("hidden")))
 {
     id <SVXPerforming> _performer;
     id <SVXClientServiceProviding> _clientServiceProvider;
+    NSMutableDictionary *_audioChunkHandlersByUUID;
 }
 
 - (void).cxx_destruct;
+- (_Bool)_handleSynthesizedBufferForHandlerUUID:(id)arg1 audioChunkData:(id)arg2 audioChunkIndex:(unsigned long long)arg3;
+- (void)_removeAudioChunkHandlerForUUID:(id)arg1;
+- (void)_addAudioChunkHandler:(CDUnknownBlockType)arg1 forUUID:(id)arg2;
 - (void)stopRequest:(id)arg1;
 - (void)cancelPendingRequest:(id)arg1;
 - (void)enqueueRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)synthesizeRequest:(id)arg1 audioChunkHandler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)synthesizeRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)prewarmRequest:(id)arg1;
-- (void)clientServiceDidChange;
-- (id)initWithClientServiceProvider:(id)arg1 performer:(id)arg2;
+- (void)clientServiceDidChange:(_Bool)arg1;
+- (id)initWithClientServiceProvider:(id)arg1 analytics:(id)arg2 performer:(id)arg3;
+- (void)handleSynthesizedBufferForHandlerUUID:(id)arg1 audioChunkData:(id)arg2 audioChunkIndex:(unsigned long long)arg3 reply:(CDUnknownBlockType)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

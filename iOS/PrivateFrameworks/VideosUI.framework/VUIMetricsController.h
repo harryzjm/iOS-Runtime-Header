@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MTMetricsKit, NSDictionary, NSHashTable, NSString, VUIMetricsPageEventData;
+@class MTMetricsKit, MTPerfKit, NSDictionary, NSHashTable, NSString, VUIMetricsPageEventData;
 @protocol OS_dispatch_queue;
 
 @interface VUIMetricsController : NSObject
@@ -17,17 +17,21 @@
     _Bool _isGDPRConsented;
     _Bool _shouldPostAppLaunchData;
     _Bool _isInDebugMode;
+    _Bool _shouldFlushMetrics;
     NSDictionary *_baseFields;
     NSDictionary *_cachedOpenUrlData;
     NSString *_currentTabIdentifier;
-    NSString *_exitEventDestinationUrl;
     VUIMetricsPageEventData *_lastRecordedPageEventData;
+    NSString *_exitEventDestinationUrl;
     MTMetricsKit *_activeMetricsKit;
     MTMetricsKit *_metricsKitMain;
     MTMetricsKit *_loggerKit;
     MTMetricsKit *_metricsKitUnidentified;
-    MTMetricsKit *_perfMetricsKit;
+    MTPerfKit *_perfMetricsKit;
     NSObject<OS_dispatch_queue> *_metricsDataDispatchSQ;
+    VUIMetricsPageEventData *_gdprCachedPageEvent;
+    NSDictionary *_cachedEnterEvent;
+    NSDictionary *_cachedMediaEvent;
     NSHashTable *_savedRecentEvents;
 }
 
@@ -35,14 +39,18 @@
 + (id)_baseToVPAFMapping;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSHashTable *savedRecentEvents; // @synthesize savedRecentEvents=_savedRecentEvents;
+@property(retain, nonatomic) NSDictionary *cachedMediaEvent; // @synthesize cachedMediaEvent=_cachedMediaEvent;
+@property(retain, nonatomic) NSDictionary *cachedEnterEvent; // @synthesize cachedEnterEvent=_cachedEnterEvent;
+@property(retain, nonatomic) VUIMetricsPageEventData *gdprCachedPageEvent; // @synthesize gdprCachedPageEvent=_gdprCachedPageEvent;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *metricsDataDispatchSQ; // @synthesize metricsDataDispatchSQ=_metricsDataDispatchSQ;
-@property(retain, nonatomic) MTMetricsKit *perfMetricsKit; // @synthesize perfMetricsKit=_perfMetricsKit;
+@property(retain, nonatomic) MTPerfKit *perfMetricsKit; // @synthesize perfMetricsKit=_perfMetricsKit;
 @property(retain, nonatomic) MTMetricsKit *metricsKitUnidentified; // @synthesize metricsKitUnidentified=_metricsKitUnidentified;
 @property(retain, nonatomic) MTMetricsKit *loggerKit; // @synthesize loggerKit=_loggerKit;
 @property(retain, nonatomic) MTMetricsKit *metricsKitMain; // @synthesize metricsKitMain=_metricsKitMain;
 @property(retain, nonatomic) MTMetricsKit *activeMetricsKit; // @synthesize activeMetricsKit=_activeMetricsKit;
-@property(retain, nonatomic) VUIMetricsPageEventData *lastRecordedPageEventData; // @synthesize lastRecordedPageEventData=_lastRecordedPageEventData;
 @property(retain, nonatomic) NSString *exitEventDestinationUrl; // @synthesize exitEventDestinationUrl=_exitEventDestinationUrl;
+@property(nonatomic) _Bool shouldFlushMetrics; // @synthesize shouldFlushMetrics=_shouldFlushMetrics;
+@property(retain, nonatomic) VUIMetricsPageEventData *lastRecordedPageEventData; // @synthesize lastRecordedPageEventData=_lastRecordedPageEventData;
 @property(readonly, copy, nonatomic) NSString *currentTabIdentifier; // @synthesize currentTabIdentifier=_currentTabIdentifier;
 @property(retain, nonatomic) NSDictionary *cachedOpenUrlData; // @synthesize cachedOpenUrlData=_cachedOpenUrlData;
 @property(copy, nonatomic) NSDictionary *baseFields; // @synthesize baseFields=_baseFields;
@@ -53,11 +61,13 @@
 - (id)getRecentEventsForDebuggerUI;
 - (void)_saveRecentEvents:(id)arg1;
 - (id)_getLocationAuthorizationStatus;
+- (void)_handleGroupActivitiesSessionStateChange:(id)arg1;
 - (void)_handleWLKLocationManagerChange:(id)arg1;
 - (void)_handleWLKAppLibChange:(id)arg1;
 - (void)_handleWLKSettingsDidChange:(id)arg1;
 - (void)_handleServerConfigChange:(id)arg1;
 - (void)_handleTabBarChange:(id)arg1;
+- (void)_removeBaseFieldsForKeys:(id)arg1;
 - (void)_updateBaseFieldsWithData:(id)arg1;
 - (void)_flushMetrics;
 - (void)flushMetrics;
@@ -69,18 +79,16 @@
 - (void)_initializeBaseFields;
 - (void)jsDelegateRecordLogEvent:(id)arg1;
 - (void)recordLog:(id)arg1;
-- (void)jsDelegateRecordPerfEvent:(id)arg1;
 - (void)recordPerfEvent:(id)arg1;
 - (void)_flushUnreportedEvents:(id)arg1;
 - (void)_recordEvent:(id)arg1 withEventData:(id)arg2;
-- (void)jsDelegateRecordEvent:(id)arg1;
 - (void)recordRawEvent:(id)arg1;
+- (void)recordSearch:(id)arg1;
 - (void)recordMedia:(id)arg1;
 - (void)recordImpressions:(id)arg1;
 - (void)recordClick:(id)arg1;
 - (void)recordDialog:(id)arg1;
 - (void)recordPage:(id)arg1;
-- (void)_invokeOnInactiveMethodInJs;
 - (void)_recordExit:(id)arg1;
 - (void)recordAppWillBackground;
 - (void)recordAppWillTerminate;
@@ -88,6 +96,7 @@
 - (void)recordOpenUrlLaunchWithExtURL:(id)arg1 andOptions:(id)arg2;
 - (void)recordAppBecameActive;
 - (void)recordAppLaunched;
+- (id)_createPerfKit;
 - (id)_createMetricsKitForTopic:(id)arg1;
 - (id)_getCurrentMetricsTopic;
 - (void)setupMetricsController;

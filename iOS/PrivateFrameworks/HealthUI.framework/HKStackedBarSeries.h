@@ -4,20 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+@class NSArray, NSIndexSet;
 
 @interface HKStackedBarSeries
 {
+    _Bool _shouldRoundBottomCorners;
     NSArray *_selectedFillStyles;
     NSArray *_unselectedFillStyles;
+    NSArray *_inactiveFillStyles;
+    NSIndexSet *_unseparatedSegmentIndices;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSIndexSet *unseparatedSegmentIndices; // @synthesize unseparatedSegmentIndices=_unseparatedSegmentIndices;
+@property(nonatomic) _Bool shouldRoundBottomCorners; // @synthesize shouldRoundBottomCorners=_shouldRoundBottomCorners;
+@property(copy, nonatomic) NSArray *inactiveFillStyles; // @synthesize inactiveFillStyles=_inactiveFillStyles;
 @property(copy, nonatomic) NSArray *unselectedFillStyles; // @synthesize unselectedFillStyles=_unselectedFillStyles;
 @property(copy, nonatomic) NSArray *selectedFillStyles; // @synthesize selectedFillStyles=_selectedFillStyles;
-- (void)_drawPaths:(id)arg1 withFillStyles:(id)arg2 strokeStyle:(id)arg3 axisRect:(struct CGRect)arg4 context:(struct CGContext *)arg5;
+- (void)_strokeSeparatorIfNecessaryAboveSegment:(id)arg1 belowSegment:(id)arg2 strokeStyle:(id)arg3 context:(struct CGContext *)arg4;
+- (void)_drawLevels:(id)arg1 withFillStyles:(id)arg2 strokeStyle:(id)arg3 axisRect:(struct CGRect)arg4 context:(struct CGContext *)arg5;
 - (void)drawWithBlockCoordinates:(id)arg1 visibleBarCount:(long long)arg2 pointTransform:(struct CGAffineTransform)arg3 context:(struct CGContext *)arg4 axisRect:(struct CGRect)arg5;
 - (id)coordinatesForBlock:(id)arg1 blockPath:(CDStruct_6ca94699)arg2 xAxis:(id)arg3 yAxis:(id)arg4;
+- (id)init;
 
 @end
 

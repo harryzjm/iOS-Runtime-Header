@@ -4,9 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <GameController/BKSHIDEventDeliveryPolicyObserving-Protocol.h>
+#import <GameController/GCAdaptiveTriggersXPCProxyServiceClient-Protocol.h>
+#import <GameController/GCAdaptiveTriggersXPCProxyServiceRemoteClientInterface-Protocol.h>
 #import <GameController/GCBatteryXPCProxyServiceClient-Protocol.h>
 #import <GameController/GCBatteryXPCProxyServiceRemoteClientInterface-Protocol.h>
 #import <GameController/GCControllerServiceRemoteClientInterface-Protocol.h>
+#import <GameController/GCGameIntentXPCProxyServiceClient-Protocol.h>
+#import <GameController/GCGameIntentXPCProxyServiceRemoteClientInterface-Protocol.h>
 #import <GameController/GCLightXPCProxyServiceClient-Protocol.h>
 #import <GameController/GCLightXPCProxyServiceRemoteClientInterface-Protocol.h>
 #import <GameController/GCMotionXPCProxyServiceClient-Protocol.h>
@@ -15,36 +20,57 @@
 #import <GameController/GCPlayerIndicatorXPCProxyServiceRemoteClientInterface-Protocol.h>
 #import <GameController/GCSettingsXPCProxyServiceClient-Protocol.h>
 #import <GameController/GCSettingsXPCProxyServiceRemoteClientInterface-Protocol.h>
+#import <GameController/GCSystemGestureXPCProxyServiceClient-Protocol.h>
+#import <GameController/GCSystemGestureXPCProxyServiceRemoteClientInterface-Protocol.h>
 #import <GameController/_GCAppClientInterface-Protocol.h>
 
-@class NSMutableDictionary, NSMutableSet, NSString;
-@protocol GCBatteryXPCProxyServiceRemoteServerInterface, GCControllerServiceRemoteServerInterface, GCLightXPCProxyServiceRemoteServerInterface, GCMotionXPCProxyServiceRemoteServerInterface, GCPhotoVideoXPCProxyServiceRemoteServerInterface, GCPlayerIndicatorXPCProxyServiceRemoteServerInterface, GCSettingsXPCProxyServiceRemoteServerInterface, _GCIPCEndpointConnection, _GCIPCOutgoingConnection;
+@class BKSHIDEventDeliveryPolicyObserver, GCVirtualController, NSDate, NSMutableDictionary, NSMutableSet, NSString;
+@protocol GCAdaptiveTriggersXPCProxyServiceRemoteServerInterface, GCBatteryXPCProxyServiceRemoteServerInterface, GCControllerServiceRemoteServerInterface, GCGameIntentXPCProxyServiceRemoteServerInterface, GCLightXPCProxyServiceRemoteServerInterface, GCMotionXPCProxyServiceRemoteServerInterface, GCPhotoVideoXPCProxyServiceRemoteServerInterface, GCPlayerIndicatorXPCProxyServiceRemoteServerInterface, GCSettingsXPCProxyServiceRemoteServerInterface, GCSystemGestureXPCProxyServiceRemoteServerInterface, _GCIPCEndpointConnection, _GCIPCOutgoingConnection;
 
-@interface _GCControllerManagerAppClient <GCControllerServiceRemoteClientInterface, GCPlayerIndicatorXPCProxyServiceClient, GCPlayerIndicatorXPCProxyServiceRemoteClientInterface, GCLightXPCProxyServiceClient, GCLightXPCProxyServiceRemoteClientInterface, GCMotionXPCProxyServiceClient, GCMotionXPCProxyServiceRemoteClientInterface, GCBatteryXPCProxyServiceClient, GCBatteryXPCProxyServiceRemoteClientInterface, GCSettingsXPCProxyServiceClient, GCSettingsXPCProxyServiceRemoteClientInterface, _GCAppClientInterface>
+@interface _GCControllerManagerAppClient <GCControllerServiceRemoteClientInterface, GCPlayerIndicatorXPCProxyServiceClient, GCPlayerIndicatorXPCProxyServiceRemoteClientInterface, GCLightXPCProxyServiceClient, GCLightXPCProxyServiceRemoteClientInterface, GCAdaptiveTriggersXPCProxyServiceClient, GCAdaptiveTriggersXPCProxyServiceRemoteClientInterface, GCMotionXPCProxyServiceClient, GCMotionXPCProxyServiceRemoteClientInterface, GCBatteryXPCProxyServiceClient, GCBatteryXPCProxyServiceRemoteClientInterface, GCSettingsXPCProxyServiceClient, GCSettingsXPCProxyServiceRemoteClientInterface, GCGameIntentXPCProxyServiceClient, GCGameIntentXPCProxyServiceRemoteClientInterface, GCSystemGestureXPCProxyServiceClient, GCSystemGestureXPCProxyServiceRemoteClientInterface, BKSHIDEventDeliveryPolicyObserving, _GCAppClientInterface>
 {
     NSMutableSet *_knownHIDServices;
     NSMutableDictionary *_publishedControllers;
     NSMutableSet *_pendingControllers;
     NSMutableSet *_serverValidControllerIdentifiers;
+    NSMutableSet *_customControllerIdentifiers;
     id <_GCIPCOutgoingConnection> _serverConnection;
     id _serverConnectionInvalidation;
     id _serverConnectionInterruption;
     id <GCControllerServiceRemoteServerInterface> _controllerService;
     id <GCPlayerIndicatorXPCProxyServiceRemoteServerInterface> _playerIndicatorXPCProxyService;
     id <GCLightXPCProxyServiceRemoteServerInterface> _lightXPCProxyService;
+    id <GCAdaptiveTriggersXPCProxyServiceRemoteServerInterface> _adaptiveTriggersXPCProxyService;
     id <GCSettingsXPCProxyServiceRemoteServerInterface> _settingsXPCProxyService;
     id <GCMotionXPCProxyServiceRemoteServerInterface> _motionXPCProxyService;
     id <GCBatteryXPCProxyServiceRemoteServerInterface> _batteryXPCProxyService;
     id <GCPhotoVideoXPCProxyServiceRemoteServerInterface> _photoVideoService;
+    id <GCGameIntentXPCProxyServiceRemoteServerInterface> _gameIntentXPCProxyService;
+    id <GCSystemGestureXPCProxyServiceRemoteServerInterface> _systemGestureXPCProxyService;
+    GCVirtualController *_forcedVirtualController;
+    BKSHIDEventDeliveryPolicyObserver *_hidEventObserver;
     _Bool _shouldResumeDaemonConnectionOnForeground;
+    _Bool _bufferingStartPending;
+    _Bool _bufferingStarted;
+    _Bool _shouldStartBufferingOnForeground;
+    NSDate *_recordingStart;
 }
 
 - (void).cxx_destruct;
 - (id)serviceClientForIPCService:(id)arg1;
+- (void)createVirtualControllerView;
 - (void)onScreenshotTriggeredWithController:(id)arg1;
-- (void)onVideoRecordingToggledWithController:(id)arg1;
+- (void)onVideoRecordingToggledWithController:(id)arg1 mode:(long long)arg2;
+- (void)stopVideoRecordingBuffering;
+- (void)startVideoRecordingBuffering;
+- (void)enableKeyboardAndMouseSupport;
+- (void)stopBuffering;
+- (void)startBuffering;
+- (void)stopVideoRecordingWithClipBuffering:(_Bool)arg1 controller:(id)arg2;
+- (void)startVideoRecording;
 - (_Bool)isScreenShotAllowedForController:(id)arg1;
 - (_Bool)isVideoRecordingAllowedForController:(id)arg1;
+- (void)setProperty:(id)arg1 forKey:(id)arg2 forHIDServiceClientWithRegistryID:(id)arg3;
 - (void)onHIDDeviceRemoved:(struct __IOHIDServiceClient *)arg1;
 - (void)onHIDDeviceAdded:(struct __IOHIDServiceClient *)arg1;
 - (id)_mostRecentlyActiveExtendedGamepadIgnoring:(id)arg1;
@@ -60,6 +86,9 @@
 - (void)setCurrentController:(id)arg1;
 - (id)currentController;
 - (void)updateCurrentControllerAndProfileForUnpublishedController:(id)arg1;
+- (void)updateEmulatedControllerEnabled;
+- (void)_onqueue_unpublishCustomController:(id)arg1;
+- (void)_onqueue_publishCustomController:(id)arg1;
 - (void)_onqueue_publishController:(id)arg1;
 - (void)_onqueue_unpublishController:(id)arg1;
 - (_Bool)_containsPublishedController:(id)arg1;
@@ -69,10 +98,13 @@
 - (id)controllers;
 - (void)handleMouseEventAsFrontmostApp:(id)arg1;
 - (void)handleKeyboardEventAsFrontmostApp:(id)arg1;
+- (void)CBApplicationWillResignActive;
 - (void)CBApplicationDidBecomeActive;
 - (void)_resumeDaemonConnection;
 - (void)_connectToDaemon;
+- (void)finalizeRecording;
 - (void)open;
+- (void)dealloc;
 - (id)init;
 - (void)refreshControllers;
 - (void)unpublishControllersWithIdentifiers:(id)arg1;
@@ -81,12 +113,19 @@
 @property(readonly) id <_GCIPCEndpointConnection> playerIndicatorXPCProxyServiceConnection;
 @property(readonly) id <GCLightXPCProxyServiceRemoteServerInterface> lightXPCProxyServiceRemoteServer;
 @property(readonly) id <_GCIPCEndpointConnection> lightXPCProxyServiceConnection;
+@property(readonly) id <GCAdaptiveTriggersXPCProxyServiceRemoteServerInterface> adaptiveTriggersXPCProxyServiceRemoteServer;
+@property(readonly) id <_GCIPCEndpointConnection> adaptiveTriggersXPCProxyServiceConnection;
 @property(readonly) id <GCMotionXPCProxyServiceRemoteServerInterface> motionXPCProxyServiceRemoteServer;
 @property(readonly) id <_GCIPCEndpointConnection> motionXPCProxyServiceConnection;
 @property(readonly) id <GCBatteryXPCProxyServiceRemoteServerInterface> batteryXPCProxyServiceRemoteServer;
 @property(readonly) id <_GCIPCEndpointConnection> batteryXPCProxyServiceConnection;
 @property(readonly) id <GCSettingsXPCProxyServiceRemoteServerInterface> settingsXPCProxyServiceRemoteServer;
 @property(readonly) id <_GCIPCEndpointConnection> settingsXPCProxyServiceConnection;
+@property(readonly) id <GCGameIntentXPCProxyServiceRemoteServerInterface> gameIntentXPCProxyServiceRemoteServer;
+@property(readonly) id <_GCIPCEndpointConnection> gameIntentXPCProxyServiceConnection;
+@property(readonly) id <GCSystemGestureXPCProxyServiceRemoteServerInterface> systemGestureXPCProxyServiceRemoteServer;
+@property(readonly) id <_GCIPCEndpointConnection> systemGestureXPCProxyServiceConnection;
+- (void)observerDeliveryPolicyDidChange:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -8,33 +8,36 @@
 
 #import <AccessibilityUtilities/AXIPCServerClientRegistrationDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSMutableSet, NSString;
+@class NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
 
 @interface AXIPCServer : NSObject <AXIPCServerClientRegistrationDelegate>
 {
     CDUnknownBlockType _defaultHandler;
     struct __CFRunLoopSource *_serverRunLoopSource;
     unsigned int _serverPort;
-    NSMutableDictionary *_validSecurityTokens;
     NSMutableSet *_connectedClients;
     CDUnknownBlockType _clientInvalidationHandler;
     NSMutableDictionary *_entitlements;
+    NSMutableDictionary *_validSecurityTokens;
     unsigned int _assignedServerPort;
     unsigned int _customQueueSize;
     _Bool _running;
     _Bool _perPidService;
     NSString *_serviceName;
     NSMutableDictionary *_handlers;
+    NSMutableArray *_delayedMessages;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool perPidService; // @synthesize perPidService=_perPidService;
+@property(retain, nonatomic) NSMutableArray *delayedMessages; // @synthesize delayedMessages=_delayedMessages;
 @property(readonly, nonatomic) unsigned int machPort; // @synthesize machPort=_serverPort;
 @property(retain, nonatomic) NSMutableDictionary *handlers; // @synthesize handlers=_handlers;
 @property(retain, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
 @property(nonatomic, getter=isRunning) _Bool running; // @synthesize running=_running;
 - (id)_clientIdentificationForAuditToken:(CDStruct_4c969caf)arg1;
 - (_Bool)_handleErrorWithMessage:(id)arg1 outError:(id *)arg2;
+- (void)_processValidatedMessage:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_handleIncomingMessage:(id)arg1 securityToken:(CDStruct_52eb0d21)arg2 auditToken:(CDStruct_4c969caf)arg3 clientPort:(unsigned int)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_handleClientRegistration:(id)arg1;
 - (void)serverClientRegistrationInvalidated:(id)arg1;
@@ -43,7 +46,7 @@
 - (void)_handleClientInvalidation:(unsigned int)arg1;
 - (void)setQueueSize:(unsigned int)arg1;
 - (_Bool)__slowpath__clientWithAuditToken:(CDStruct_4c969caf)arg1 hasRequiredEntitlementFromSet:(id)arg2;
-- (_Bool)_clientWithPort:(unsigned int)arg1 auditToken:(CDStruct_4c969caf)arg2 hasAnyEntitlementRequiredForMessage:(id)arg3;
+- (_Bool)_clientHasEntitlementWithPort:(unsigned int)arg1 auditToken:(CDStruct_4c969caf)arg2 message:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)removePossibleRequiredEntitlement:(id)arg1 forMessageWithKey:(int)arg2;
 - (void)addPossibleRequiredEntitlement:(id)arg1 forMessageWithKey:(int)arg2;
 - (void)removeAllHandlersForTarget:(id)arg1;

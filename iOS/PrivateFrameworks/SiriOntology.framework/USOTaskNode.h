@@ -6,10 +6,10 @@
 
 @interface USOTaskNode
 {
-    struct UsoTaskNode *_usoTaskNode;
+    void *_usoTaskNode;
 }
 
-- (id)initWithCppTaskNode:(struct UsoTaskNode *)arg1;
+- (id)initWithCppTaskNode:(void *)arg1;
 
 @end
 

@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (id)defaultAppearanceName;
 - (id)renditionInfoForIdentifier:(unsigned short)arg1;
 - (void)clearRenditionCache;
+- (void)removeImagesNamed:(id)arg1;
 - (void)removeImageNamed:(id)arg1 withDescription:(id)arg2;
 - (void)insertCGImage:(struct CGImage *)arg1 withName:(id)arg2 andDescription:(id)arg3;
 - (void)_removeRenditionInfoForImageWithName:(id)arg1;
@@ -35,6 +36,8 @@ __attribute__((visibility("hidden")))
 - (id)imagesWithName:(id)arg1;
 - (const struct _renditionkeytoken *)renditionKeyForName:(id)arg1;
 - (const struct _renditionkeytoken *)renditionKeyForName:(id)arg1 cursorHotSpot:(struct CGPoint *)arg2;
+- (id)path;
+- (id)themeStore;
 - (id)allImageNames;
 - (const struct _renditionkeyfmt *)keyFormat;
 - (_Bool)usesCUISystemThemeRenditionKey;

@@ -19,11 +19,13 @@ __attribute__((visibility("hidden")))
     GEOTileKeyList *_cacheMissStaleDataList;
     GEOTileKeyList *_cacheMissStaleUnusableDataList;
     unsigned char _loadReason;
+    _Bool _proactivelyLoadOnFailure;
     GEOTileRequester *_tileRequester;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) GEOTileRequester *tileRequester; // @synthesize tileRequester=_tileRequester;
+@property(nonatomic) _Bool proactivelyLoadOnFailure; // @synthesize proactivelyLoadOnFailure=_proactivelyLoadOnFailure;
 @property(nonatomic) unsigned char loadReason; // @synthesize loadReason=_loadReason;
 @property(retain, nonatomic) GEOTileKeyList *cacheMissStaleUnusableDataList; // @synthesize cacheMissStaleUnusableDataList=_cacheMissStaleUnusableDataList;
 @property(retain, nonatomic) GEOTileKeyList *cacheMissStaleDataList; // @synthesize cacheMissStaleDataList=_cacheMissStaleDataList;

@@ -4,16 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <coreroutine/RTPersistenceDelegate-Protocol.h>
 #import <coreroutine/RTPersistenceMetricsDelegate-Protocol.h>
 #import <coreroutine/RTPurgable-Protocol.h>
 
-@class NSString, RTAccount, RTAccountManager, RTDarwinNotificationHelper, RTDataProtectionManager, RTDefaultsManager, RTKeychainManager, RTLifeCycleManager, RTPersistenceManager, RTPersistenceResetSyncContext, RTPlatform;
-@protocol OS_dispatch_queue, OS_os_transaction, RTPersistenceMetricsDelegate;
+@class NSObject, NSString, RTAccount, RTAccountManager, RTDarwinNotificationHelper, RTDataProtectionManager, RTDefaultsManager, RTKeychainManager, RTLifeCycleManager, RTPersistenceManager, RTPersistenceResetSyncContext, RTPlatform;
+@protocol OS_os_transaction, RTPersistenceMetricsDelegate;
 
-@interface RTPersistenceDriver : NSObject <RTPersistenceMetricsDelegate, RTPersistenceDelegate, RTPurgable>
+@interface RTPersistenceDriver <RTPersistenceMetricsDelegate, RTPersistenceDelegate, RTPurgable>
 {
     _Bool _requiresDirtyTransaction;
     _Bool _requiresSetupTransaction;
@@ -24,7 +22,6 @@
     RTKeychainManager *_keychainManager;
     RTDefaultsManager *_defaultsManager;
     RTLifeCycleManager *_lifecycleManager;
-    NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_os_transaction> *_setupTransaction;
     long long _cloudSyncAuthorization;
     long long _encryptedDataAvailability;
@@ -44,7 +41,6 @@
 @property _Bool requiresSetupTransaction; // @synthesize requiresSetupTransaction=_requiresSetupTransaction;
 @property _Bool requiresDirtyTransaction; // @synthesize requiresDirtyTransaction=_requiresDirtyTransaction;
 @property(retain) NSObject<OS_os_transaction> *setupTransaction; // @synthesize setupTransaction=_setupTransaction;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain) RTLifeCycleManager *lifecycleManager; // @synthesize lifecycleManager=_lifecycleManager;
 @property(retain) RTDefaultsManager *defaultsManager; // @synthesize defaultsManager=_defaultsManager;
 @property(readonly) RTKeychainManager *keychainManager; // @synthesize keychainManager=_keychainManager;
@@ -88,8 +84,7 @@
 - (void)onCloudSyncAuthorizationChange:(id)arg1;
 - (void)_onDataProtectionChange:(id)arg1;
 - (void)onDataProtectionChange:(id)arg1;
-- (void)_shutdown;
-- (void)shutdown;
+- (void)_shutdownWithHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)start;
 - (id)initWithPersistenceManager:(id)arg1 dataProtectionManager:(id)arg2 accountManager:(id)arg3 platform:(id)arg4 keychainManager:(id)arg5 defaultsManager:(id)arg6 lifecycleManager:(id)arg7;

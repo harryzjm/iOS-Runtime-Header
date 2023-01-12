@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, PHAssetCollection, PHFetchOptions, PHFetchResult;
+@class CLSCurationContext, NSArray, PHAssetCollection, PHFetchOptions, PHFetchResult;
 
 @interface CLSInvestigationPhotoKitFeeder
 {
@@ -12,10 +12,12 @@
     PHFetchResult *_fetchResult;
     NSArray *_allItems;
     unsigned long long _numberOfAllPeople;
+    CLSCurationContext *_curationContext;
     PHAssetCollection *_assetCollection;
     PHFetchOptions *_assetFetchOptions;
 }
 
++ (id)feederForAssetCollection:(id)arg1 options:(id)arg2 feederPrefetchOptions:(id)arg3 curationContext:(id)arg4;
 + (id)feederForAssetCollection:(id)arg1 options:(id)arg2 feederPrefetchOptions:(id)arg3;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) PHFetchOptions *assetFetchOptions; // @synthesize assetFetchOptions=_assetFetchOptions;
@@ -41,8 +43,9 @@
 @property(readonly, nonatomic) _Bool hasPeople;
 - (unsigned long long)numberOfItems;
 - (_Bool)_shouldPrefetchCurationInformation;
+@property(readonly, nonatomic) PHFetchResult *assetFetchResult;
 - (id)initWithAssetFetchResult:(id)arg1;
-- (id)initWithAssetCollection:(id)arg1 assetFetchOptions:(id)arg2 feederPrefetchOptions:(id)arg3;
+- (id)initWithAssetCollection:(id)arg1 assetFetchOptions:(id)arg2 feederPrefetchOptions:(id)arg3 curationContext:(id)arg4;
 
 @end
 

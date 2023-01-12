@@ -13,12 +13,12 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *currentBindings;
     MISSING_TYPE *updatedBindings;
-    MISSING_TYPE *map;
+    MISSING_TYPE *shortcutMap;
+    MISSING_TYPE *isObservingPreferences;
 }
 
 - (void).cxx_destruct;
 - (id)init;
-- (void)_performShortcutKeyCommand:(id)arg1;
 
 @end
 

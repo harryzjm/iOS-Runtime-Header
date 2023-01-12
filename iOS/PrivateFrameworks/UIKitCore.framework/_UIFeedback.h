@@ -15,18 +15,19 @@
 @interface _UIFeedback : NSObject <NSCopying, NSSecureCoding>
 {
     _Bool _playing;
+    _Bool _wantsFullGamut;
     float _position;
     _UIFeedbackParameters *_audioParameters;
     _UIFeedbackParameters *_hapticParameters;
     long long _audioOutputMode;
     long long _hapticOutputMode;
     _UIFeedbackPattern *_parentPattern;
-    double _delay;
     NSDictionary *_debugDictionary;
     NSString *_name;
     NSString *_category;
     unsigned long long _eventToken;
     id <UICoordinateSpace> _coordinateSpace;
+    double _delay;
     id <_UIFeedbackPlayer> _player;
 }
 
@@ -37,12 +38,13 @@
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(retain, nonatomic, getter=_player, setter=_setPlayer:) id <_UIFeedbackPlayer> player; // @synthesize player=_player;
+@property(nonatomic, getter=_wantsFullGamut, setter=_setWantsFullGamut:) _Bool wantsFullGamut; // @synthesize wantsFullGamut=_wantsFullGamut;
+@property(nonatomic, getter=_delay, setter=_setDelay:) double delay; // @synthesize delay=_delay;
 @property(nonatomic, getter=_coordinateSpace, setter=_setCoordinateSpace:) __weak id <UICoordinateSpace> coordinateSpace; // @synthesize coordinateSpace=_coordinateSpace;
 @property(nonatomic, getter=_eventToken, setter=_setEventToken:) unsigned long long eventToken; // @synthesize eventToken=_eventToken;
 @property(retain, nonatomic, getter=_category, setter=_setCategory:) NSString *category; // @synthesize category=_category;
 @property(copy, nonatomic, getter=_name, setter=_setName:) NSString *name; // @synthesize name=_name;
 @property(readonly, nonatomic, getter=_debugDictionary) NSDictionary *debugDictionary; // @synthesize debugDictionary=_debugDictionary;
-@property(nonatomic, getter=_delay, setter=_setDelay:) double delay; // @synthesize delay=_delay;
 @property(nonatomic, getter=_parentPattern, setter=_setParentPattern:) __weak _UIFeedbackPattern *parentPattern; // @synthesize parentPattern=_parentPattern;
 @property(readonly, nonatomic, getter=isPlaying) _Bool playing; // @synthesize playing=_playing;
 @property(nonatomic) float position; // @synthesize position=_position;

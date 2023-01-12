@@ -8,19 +8,19 @@
 
 #import <GeoServices/GEOMapBuilding-Protocol.h>
 
-@class NSArray, NSString;
+@class GEOBuildingFootprintFeature, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface GEOMapAccessBuilding : NSObject <GEOMapBuilding>
 {
-    CDStruct_1d944ba4 *_buildingFeature;
+    GEOBuildingFootprintFeature *_buildingFeature;
     NSArray *_sections;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 - (void)dealloc;
-- (id)initWithBuildingFeature:(CDStruct_1d944ba4 *)arg1;
+- (id)initWithBuildingFeature:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

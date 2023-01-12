@@ -27,6 +27,7 @@
     long long _stationID;
     NSString *_stationStringID;
     NSURL *_stationURL;
+    NSString *_stationPlaybackAuthorizationToken;
     ICRadioContentReference *_seedContentReference;
     ICRadioContentReference *_nowPlayingContentReference;
     NSArray *_queueContentReferences;
@@ -36,6 +37,7 @@
 @property(copy, nonatomic) NSArray *queueContentReferences; // @synthesize queueContentReferences=_queueContentReferences;
 @property(copy, nonatomic) ICRadioContentReference *nowPlayingContentReference; // @synthesize nowPlayingContentReference=_nowPlayingContentReference;
 @property(copy, nonatomic) ICRadioContentReference *seedContentReference; // @synthesize seedContentReference=_seedContentReference;
+@property(copy, nonatomic) NSString *stationPlaybackAuthorizationToken; // @synthesize stationPlaybackAuthorizationToken=_stationPlaybackAuthorizationToken;
 @property(copy, nonatomic) NSURL *stationURL; // @synthesize stationURL=_stationURL;
 @property(copy, nonatomic) NSString *stationStringID; // @synthesize stationStringID=_stationStringID;
 @property(nonatomic) long long stationID; // @synthesize stationID=_stationID;

@@ -10,7 +10,7 @@
 @protocol MLBatchProvider, MLUpdatable, OS_dispatch_queue;
 
 @protocol MLUpdatable <MLWritable>
-+ (MLModel<MLUpdatable> *)loadModelFromCompiledArchive:(struct _MLModelInputArchiver *)arg1 modelVersionInfo:(MLVersionInfo *)arg2 compilerVersionInfo:(MLVersionInfo *)arg3 configuration:(MLModelConfiguration *)arg4 error:(id *)arg5;
++ (MLModel<MLUpdatable> *)loadModelFromCompiledArchive:(void *)arg1 modelVersionInfo:(MLVersionInfo *)arg2 compilerVersionInfo:(MLVersionInfo *)arg3 configuration:(MLModelConfiguration *)arg4 error:(id *)arg5;
 - (void)cancelUpdate;
 - (void)resumeUpdate;
 - (void)resumeUpdateWithParameters:(NSDictionary *)arg1;

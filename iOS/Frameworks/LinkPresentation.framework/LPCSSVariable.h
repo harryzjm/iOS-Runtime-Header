@@ -11,15 +11,12 @@
 __attribute__((visibility("hidden")))
 @interface LPCSSVariable : NSObject
 {
-    _Bool _important;
     NSString *_name;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic, getter=isImportant) _Bool important; // @synthesize important=_important;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 - (id)variableByResolvingWithThemePath:(id)arg1;
-- (id)initWithName:(id)arg1 important:(_Bool)arg2;
 - (id)initWithName:(id)arg1;
 
 @end

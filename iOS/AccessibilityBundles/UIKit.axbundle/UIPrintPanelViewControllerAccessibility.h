@@ -8,9 +8,10 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)dismissPrintPanel:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)dismissPrintPanelWithAction:(long long)arg1 animated:(_Bool)arg2;
 
 @end
 

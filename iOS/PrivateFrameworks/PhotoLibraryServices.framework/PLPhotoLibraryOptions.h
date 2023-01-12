@@ -11,6 +11,8 @@
 @interface PLPhotoLibraryOptions : NSObject <NSSecureCoding>
 {
     _Bool _automaticallyMergesContext;
+    _Bool _refreshesAfterSave;
+    _Bool _automaticallyPinToFirstFetch;
     _Bool _preventsWaitingForRequiredState;
     long long _requiredState;
     unsigned long long _libraryRole;
@@ -22,9 +24,12 @@
 @property(nonatomic) _Bool preventsWaitingForRequiredState; // @synthesize preventsWaitingForRequiredState=_preventsWaitingForRequiredState;
 @property(nonatomic) unsigned long long libraryRole; // @synthesize libraryRole=_libraryRole;
 @property(nonatomic) long long requiredState; // @synthesize requiredState=_requiredState;
+@property(nonatomic) _Bool automaticallyPinToFirstFetch; // @synthesize automaticallyPinToFirstFetch=_automaticallyPinToFirstFetch;
+@property(nonatomic) _Bool refreshesAfterSave; // @synthesize refreshesAfterSave=_refreshesAfterSave;
 @property(nonatomic) _Bool automaticallyMergesContext; // @synthesize automaticallyMergesContext=_automaticallyMergesContext;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 
 @end
 

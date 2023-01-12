@@ -13,8 +13,8 @@
 
 @interface MLNearestNeighborsSingleKdTreeIndex : NSObject <MLNearestNeighborsIndex, NSSecureCoding>
 {
-    vector_7584168e vData;
-    vector_06e666a8 vIndices;
+    vector_8ca568ff vData;
+    vector_2056c7c2 vIndices;
     unsigned long long _numDimensions;
     unsigned long long _leafSize;
     _KDNode *_root;
@@ -28,14 +28,14 @@
 @property(nonatomic) unsigned long long numDimensions; // @synthesize numDimensions=_numDimensions;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (void)findK:(unsigned long long)arg1 nearestNeighbors:(struct _KDPriorityQueue *)arg2 toQueryPoint:(const vector_7584168e *)arg3 inTree:(id)arg4;
-- (vector_392775c5)calculateDistancesForNodesBetweenLeft:(unsigned long long)arg1 andRight:(unsigned long long)arg2 toQueryPoint:(const vector_7584168e *)arg3;
-- (id)constructTreeForPointsBoundedBy:(struct _KDBoundingBox *)arg1 startingIndex:(unsigned long long)arg2 count:(unsigned long long)arg3;
+- (void)findK:(unsigned long long)arg1 nearestNeighbors:(void *)arg2 toQueryPoint:(const void *)arg3 inTree:(id)arg4;
+- (vector_7105b4ee)calculateDistancesForNodesBetweenLeft:(unsigned long long)arg1 andRight:(unsigned long long)arg2 toQueryPoint:(const void *)arg3;
+- (id)constructTreeForPointsBoundedBy:(void *)arg1 startingIndex:(unsigned long long)arg2 count:(unsigned long long)arg3;
 - (id)constructTree;
 - (unsigned long long)dataPointCount;
-- (_Bool)updateWithData:(const vector_7584168e *)arg1 error:(id *)arg2;
-- (vector_392775c5)findNearestNeighbors:(unsigned long long)arg1 toQueryPoint:(const vector_7584168e *)arg2;
-- (id)initWithDataset:(vector_7584168e *)arg1 numberOfDimensions:(unsigned long long)arg2 leafSize:(unsigned long long)arg3 error:(id *)arg4;
+- (_Bool)updateWithData:(const void *)arg1 error:(id *)arg2;
+- (vector_7105b4ee)findNearestNeighbors:(unsigned long long)arg1 toQueryPoint:(const void *)arg2;
+- (id)initWithDataset:(void *)arg1 numberOfDimensions:(unsigned long long)arg2 leafSize:(unsigned long long)arg3 error:(id *)arg4;
 
 @end
 

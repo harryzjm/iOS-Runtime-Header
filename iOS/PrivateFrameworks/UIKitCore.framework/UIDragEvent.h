@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_endingGestureRecognizers;
     NSMutableSet *_ignoredGestureRecognizers;
     NSMutableSet *_dynamicGestureRecognizers;
-    NSHashTable *_viewsQueriedForDynamicGestures;
+    NSHashTable *_ownersQueriedForDynamicGestures;
     NSMutableSet *_dynamicInteractions;
     _Bool _ignoreDragEnd;
     _Bool _needsHitTestReset;
@@ -54,6 +54,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool isPolicyDriven;
 @property(readonly, nonatomic) UIWindow *eventWindow;
 @property(readonly, nonatomic, getter=_hitTestedView) UIView *hitTestedView;
+- (void)_removeQueriedOwnerForDynamicGesturesIfNeeded:(id)arg1;
 - (void)_ignoreGestureRecognizer:(id)arg1;
 - (void)_removeGestureRecognizer:(id)arg1;
 - (_Bool)_shouldSendEvent;

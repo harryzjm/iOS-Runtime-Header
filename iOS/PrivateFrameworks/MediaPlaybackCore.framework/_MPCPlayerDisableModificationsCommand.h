@@ -8,6 +8,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MPCPlayerDisableModificationsCommand <MPCPlayerDisableModificationsCommand>
 {
     _Bool _disabled;

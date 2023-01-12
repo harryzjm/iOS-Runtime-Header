@@ -25,7 +25,9 @@
 + (id)cloudUUIDKeyForDeletion;
 + (id)validKindsForPersistence;
 + (id)sortDescriptorsForAlbumKind:(int)arg1;
++ (id)predicateForAlbumKind:(int)arg1 includeGuest:(_Bool)arg2;
 + (id)predicateForAlbumKind:(int)arg1;
++ (id)_predicateForVisibleAsset;
 + (id)_predicateForAssetSubtype:(short)arg1;
 + (_Bool)contextShouldIgnoreChangesForALAssetsGroupFilterPredicate;
 + (_Bool)contextShouldIgnoreChangesForFetchRequest;
@@ -73,7 +75,6 @@
 - (void)didTurnIntoFault;
 - (void)awakeFromInsert;
 - (void)awakeFromFetch;
-- (_Bool)validForPersistenceChangedForChangedKeys:(id)arg1;
 - (id)payloadForChangedKeys:(id)arg1;
 
 // Remaining properties

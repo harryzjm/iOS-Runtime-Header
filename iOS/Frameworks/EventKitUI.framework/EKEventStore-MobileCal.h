@@ -7,6 +7,7 @@
 #import <EventKit/EKEventStore.h>
 
 @interface EKEventStore (MobileCal)
+- (id)symbolicNameForColor:(id)arg1;
 - (id)stringForColor:(id)arg1;
 - (id)localizedStringForSymbolicColorName:(id)arg1;
 - (id)colorForCalendar:(id)arg1;

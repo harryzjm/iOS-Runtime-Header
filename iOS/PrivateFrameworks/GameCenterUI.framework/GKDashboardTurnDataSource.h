@@ -13,6 +13,7 @@
     NSArray *_matches;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *matches; // @synthesize matches=_matches;
 @property(nonatomic) _Bool shouldShowQuit; // @synthesize shouldShowQuit=_shouldShowQuit;
 @property(nonatomic) _Bool shouldShowPlay; // @synthesize shouldShowPlay=_shouldShowPlay;
@@ -26,7 +27,6 @@
 - (long long)itemCount;
 - (void)loadDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setupCollectionView:(id)arg1;
-- (void)dealloc;
 - (id)init;
 
 @end

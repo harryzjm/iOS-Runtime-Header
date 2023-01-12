@@ -13,10 +13,10 @@
 }
 
 - (id)protocol;
-- (void)willRemoveRows:(const vector_4dc5f307 *)arg1 tableUID:(const UUIDData_5fbc143e *)arg2;
-- (void)willApplyConcurrentCellMap:(id)arg1 tableUID:(const UUIDData_5fbc143e *)arg2;
-- (void)willApplyBaseCellMap:(id)arg1 tableUID:(const UUIDData_5fbc143e *)arg2;
-- (void)willApplyCell:(id)arg1 baseCellCoord:(struct TSUModelCellCoord)arg2 tableUID:(const UUIDData_5fbc143e *)arg3;
+- (void)willRemoveRows:(const void *)arg1 tableUID:(const struct TSKUIDStruct *)arg2;
+- (void)willApplyConcurrentCellMap:(id)arg1 tableUID:(const struct TSKUIDStruct *)arg2;
+- (void)willApplyBaseCellMap:(id)arg1 tableUID:(const struct TSKUIDStruct *)arg2;
+- (void)willApplyCell:(id)arg1 baseCellCoord:(struct TSUModelCellCoord)arg2 tableUID:(const struct TSKUIDStruct *)arg3;
 
 @end
 

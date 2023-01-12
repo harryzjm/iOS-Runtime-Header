@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 @interface LPImageView
 {
     LPImage *_image;
+    LPImage *_filteredImage;
     LPImagePresentationProperties *_properties;
     LPImageViewStyle *_style;
     LPImageViewStyle *_originalStyle;
@@ -33,10 +34,11 @@ __attribute__((visibility("hidden")))
 - (void)layoutComponentView;
 - (void)updateShadowPath;
 - (void)updateCornerRadius;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)ensureImageView;
 - (long long)_filter;
-- (id)initWithImage:(id)arg1 properties:(id)arg2 style:(id)arg3;
-- (id)init;
+- (id)initWithHost:(id)arg1 image:(id)arg2 properties:(id)arg3 style:(id)arg4;
+- (id)initWithHost:(id)arg1;
 
 @end
 

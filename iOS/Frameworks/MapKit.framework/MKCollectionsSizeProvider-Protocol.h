@@ -8,7 +8,6 @@
 
 @protocol MKCollectionsSizeProvider <NSObject>
 - (double)minimumInterItemSpacing;
-- (double)minimumLineSpacing;
 - (struct UIEdgeInsets)sectionInsets;
 - (struct CGSize)sizeForCollectionWithMaxCollectionsWidth:(double)arg1;
 @end

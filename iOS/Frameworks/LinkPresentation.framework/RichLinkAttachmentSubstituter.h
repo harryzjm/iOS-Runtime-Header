@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSArray *attachmentsForUnarchiving; // @synthesize attachmentsForUnarchiving=_attachmentsForUnarchiving;
 @property(readonly, copy, nonatomic) NSMutableArray *archivedAttachments; // @synthesize archivedAttachments=_archivedAttachments;
 - (id)unarchiver:(id)arg1 didDecodeObject:(id)arg2;
-- (_Bool)applyAttachmentSubstitutionForObject:(id)arg1;
+- (id)applyAttachmentSubstitutionForObject:(id)arg1;
 - (id)archiver:(id)arg1 willEncodeObject:(id)arg2;
 - (id)init;
 

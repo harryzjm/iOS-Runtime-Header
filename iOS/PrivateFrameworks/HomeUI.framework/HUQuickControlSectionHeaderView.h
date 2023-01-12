@@ -8,14 +8,17 @@
 
 #import <HomeUI/HFItemSectionAccessoryButtonHeader-Protocol.h>
 
-@class HFItemSection, NSArray, NSString, UIButton, UILabel;
+@class HFItemSection, NSArray, NSAttributedString, NSString, UIButton, UILabel;
 @protocol HFItemSectionAccessoryButtonHeaderDelegate;
 
 @interface HUQuickControlSectionHeaderView : UICollectionReusableView <HFItemSectionAccessoryButtonHeader>
 {
     _Bool _hideSeparator;
+    _Bool _hideAccessoryButton;
+    _Bool _hideHeaderText;
     HFItemSection *itemSection;
     NSString *_titleText;
+    NSAttributedString *_attributedTitleText;
     NSString *_accessoryButtonTitleText;
     id <HFItemSectionAccessoryButtonHeaderDelegate> _accessoryButtonTarget;
     UILabel *_titleLabel;
@@ -33,14 +36,18 @@
 @property(retain, nonatomic) NSArray *labelConstraints; // @synthesize labelConstraints=_labelConstraints;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(nonatomic) __weak id <HFItemSectionAccessoryButtonHeaderDelegate> accessoryButtonTarget; // @synthesize accessoryButtonTarget=_accessoryButtonTarget;
+@property(nonatomic) _Bool hideHeaderText; // @synthesize hideHeaderText=_hideHeaderText;
+@property(nonatomic) _Bool hideAccessoryButton; // @synthesize hideAccessoryButton=_hideAccessoryButton;
 @property(nonatomic) _Bool hideSeparator; // @synthesize hideSeparator=_hideSeparator;
 @property(retain, nonatomic) NSString *accessoryButtonTitleText; // @synthesize accessoryButtonTitleText=_accessoryButtonTitleText;
+@property(retain, nonatomic) NSAttributedString *attributedTitleText; // @synthesize attributedTitleText=_attributedTitleText;
 @property(retain, nonatomic) NSString *titleText; // @synthesize titleText=_titleText;
 @property(retain, nonatomic) HFItemSection *itemSection; // @synthesize itemSection;
 - (void)updateUIForReachabilityState:(unsigned long long)arg1;
 - (void)accessoryButtonTapped;
 - (void)updateConstraints;
 - (void)updateUIWithAnimation:(_Bool)arg1;
+- (void)setHidden:(_Bool)arg1;
 - (void)prepareForReuse;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

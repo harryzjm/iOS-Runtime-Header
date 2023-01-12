@@ -6,17 +6,14 @@
 
 #import <Foundation/NSUserDefaults.h>
 
-@class NSObject, PKHostPlugIn;
-@protocol OS_dispatch_queue;
+@class PKHostPlugIn;
 
 @interface PKHostDefaults : NSUserDefaults
 {
     PKHostPlugIn *_plugin;
-    NSObject<OS_dispatch_queue> *_queue;
 }
 
 - (void).cxx_destruct;
-@property(retain) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property __weak PKHostPlugIn *plugin; // @synthesize plugin=_plugin;
 - (void)registerDefaults:(id)arg1;
 - (_Bool)synchronize;

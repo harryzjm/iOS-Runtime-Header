@@ -27,8 +27,11 @@
 - (id)freeIdentityCountForUser:(unsigned int)arg1 error:(id *)arg2;
 - (id)maxIdentityCountWithError:(id *)arg1;
 - (id)identitiesForUser:(unsigned int)arg1 error:(id *)arg2;
+- (void)removeAllIdentitiesForUser:(unsigned int)arg1 reply:(CDUnknownBlockType)arg2;
 - (_Bool)removeAllIdentitiesForUser:(unsigned int)arg1 error:(id *)arg2;
+- (void)removeIdentity:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (_Bool)removeIdentity:(id)arg1 error:(id *)arg2;
+- (void)updateIdentity:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (_Bool)updateIdentity:(id)arg1 error:(id *)arg2;
 - (id)identityForUUID:(id)arg1 error:(id *)arg2;
 - (_Bool)forceBioLockoutIfLockedForUser:(unsigned int)arg1 error:(id *)arg2;
@@ -36,7 +39,9 @@
 - (_Bool)forceBioLockoutForAllUsersWithError:(id *)arg1;
 - (_Bool)dropAllUnlockTokensWithError:(id *)arg1;
 - (id)identitiesDatabaseUUIDForUser:(unsigned int)arg1 error:(id *)arg2;
+- (void)setSystemProtectedConfiguration:(id)arg1 credentialSet:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (_Bool)setSystemProtectedConfiguration:(id)arg1 credentialSet:(id)arg2 error:(id *)arg3;
+- (void)setProtectedConfiguration:(id)arg1 forUser:(unsigned int)arg2 credentialSet:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (_Bool)setProtectedConfiguration:(id)arg1 forUser:(unsigned int)arg2 credentialSet:(id)arg3 error:(id *)arg4;
 - (id)systemProtectedConfigurationWithError:(id *)arg1;
 - (id)effectiveProtectedConfigurationForUser:(unsigned int)arg1 error:(id *)arg2;
@@ -45,6 +50,7 @@
 - (id)createEnrollOperationWithError:(id *)arg1;
 - (id)createMatchOperationWithError:(id *)arg1;
 - (id)identitiesDatabaseHashForUser:(unsigned int)arg1 error:(id *)arg2;
+- (_Bool)expressModeState:(long long *)arg1 forUser:(unsigned int)arg2 error:(id *)arg3;
 - (_Bool)extendedBioLockoutState:(long long *)arg1 forUser:(unsigned int)arg2 error:(id *)arg3;
 - (_Bool)bioLockoutState:(long long *)arg1 forUser:(unsigned int)arg2 error:(id *)arg3;
 - (id)identitiesWithError:(id *)arg1;

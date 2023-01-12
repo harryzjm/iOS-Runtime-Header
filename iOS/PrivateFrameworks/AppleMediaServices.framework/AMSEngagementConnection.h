@@ -6,27 +6,34 @@
 
 #import <objc/NSObject.h>
 
-@class NSXPCConnection;
+#import <AppleMediaServices/AMSEngagementClientProtocol-Protocol.h>
+
+@class NSNotificationCenter, NSXPCConnection;
 @protocol AMSEngagementServiceProtocol, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface AMSEngagementConnection : NSObject
+@interface AMSEngagementConnection : NSObject <AMSEngagementClientProtocol>
 {
     id <AMSEngagementServiceProtocol> _proxy;
     CDUnknownBlockType _errorHandler;
     NSXPCConnection *_connection;
+    NSNotificationCenter *_notificationCenter;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property(retain, nonatomic) NSNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
 @property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property(copy, nonatomic) CDUnknownBlockType errorHandler; // @synthesize errorHandler=_errorHandler;
 @property(retain, nonatomic) id <AMSEngagementServiceProtocol> proxy; // @synthesize proxy=_proxy;
+- (void)handlePushedEvent:(id)arg1;
 - (void)_removeRemoteConnection;
 - (id)_newRemoteConnection;
+- (id)_makeExportedClientConnectionInterface;
+- (id)_makeRemoteConnectionInterface;
 - (void)dealloc;
-- (id)init;
+- (id)initWithNotificationCenter:(id)arg1;
 
 @end
 

@@ -4,10 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class WFAction;
+
 @interface WFMediaPickerParameter
 {
+    WFAction *_action;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) __weak WFAction *action; // @synthesize action=_action;
 - (_Bool)parameterStateIsValid:(id)arg1;
 - (id)localizedLabelForState:(id)arg1;
 - (Class)singleStateClass;

@@ -5,6 +5,7 @@
 //
 
 @protocol TRIXPCActivityManagementProtocol
+- (void)registerRecurrentRollbackActivityWithDelay:(double)arg1;
 - (void)postponeCellularActivity;
 - (void)registerActivities;
 @end

@@ -8,8 +8,10 @@
 
 @interface HAPAccessoryServerBrowserWiProxBTLE : HMFObject
 {
+    unsigned char _wholeHomeBluetooth;
 }
 
+@property(nonatomic) unsigned char wholeHomeBluetooth; // @synthesize wholeHomeBluetooth=_wholeHomeBluetooth;
 - (void)updateStateForIdentifier:(id)arg1 stateNumber:(id)arg2;
 - (void)retrieveStateForTrackedAccessoryWithIdentifier:(id)arg1 onQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)resetLastSeenForTrackedAccessories:(id)arg1;
@@ -17,7 +19,7 @@
 - (void)stopTrackingHAPBLEAccessoriesWithIdentifiers:(id)arg1;
 - (void)startTrackingHAPBLEAccessoriesWithIdentifiers:(id)arg1;
 - (void)pauseScans;
-- (void)stopBrowsingForHAPBLEAccessories;
+- (void)stopBrowsingForHAPBLEAccessories:(_Bool)arg1;
 - (void)startBrowsingForHAPBLEAccessories;
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2;
 

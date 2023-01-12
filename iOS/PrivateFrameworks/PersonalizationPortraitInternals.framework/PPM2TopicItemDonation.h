@@ -12,16 +12,18 @@
 
 @interface PPM2TopicItemDonation : PBCodable <NSCopying>
 {
+    long long _rank;
     NSString *_activeTreatments;
     int _algorithm;
     int _donationSource;
     NSString *_groupId;
     _Bool _newItem;
     _Bool _userCreated;
-    CDStruct_f1067582 _has;
+    CDStruct_9710aa02 _has;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long rank; // @synthesize rank=_rank;
 @property(nonatomic) _Bool userCreated; // @synthesize userCreated=_userCreated;
 @property(retain, nonatomic) NSString *activeTreatments; // @synthesize activeTreatments=_activeTreatments;
 @property(nonatomic) _Bool newItem; // @synthesize newItem=_newItem;
@@ -35,6 +37,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasRank;
 @property(nonatomic) _Bool hasUserCreated;
 @property(readonly, nonatomic) _Bool hasActiveTreatments;
 - (int)StringAsAlgorithm:(id)arg1;

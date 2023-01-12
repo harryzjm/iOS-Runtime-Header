@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class BKSProcessAssertion, NSURL, PQLConnection;
+@class NSURL, PQLConnection, RBSAssertion;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface DOCSmartFolderDatabase : NSObject
@@ -14,13 +14,13 @@
     NSURL *_url;
     PQLConnection *_connection;
     NSObject<OS_dispatch_source> *_watcher;
-    BKSProcessAssertion *_processAssertion;
+    RBSAssertion *_processAssertion;
     NSObject<OS_dispatch_queue> *_workingQueue;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *workingQueue; // @synthesize workingQueue=_workingQueue;
-@property(retain, nonatomic) BKSProcessAssertion *processAssertion; // @synthesize processAssertion=_processAssertion;
+@property(retain, nonatomic) RBSAssertion *processAssertion; // @synthesize processAssertion=_processAssertion;
 @property(retain, nonatomic) NSObject<OS_dispatch_source> *watcher; // @synthesize watcher=_watcher;
 @property(readonly, nonatomic) PQLConnection *connection; // @synthesize connection=_connection;
 @property(readonly, nonatomic) NSURL *url; // @synthesize url=_url;

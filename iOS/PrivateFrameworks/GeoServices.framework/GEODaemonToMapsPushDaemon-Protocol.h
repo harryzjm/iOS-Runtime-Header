@@ -6,8 +6,14 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
+@class NSData;
+
 @protocol GEODaemonToMapsPushDaemon <NSObject>
+- (void)deleteSyncedAnalyticsIdentifier:(NSData *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)setSyncedAnalyticsIdentifier:(NSData *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)fetchSyncedAnalyticsIdentifierWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)pingWithReply:(void (^)(void))arg1;
+- (void)geoDInternalError:(long long)arg1;
 - (void)proxyAuthFailed:(long long)arg1;
 @end
 

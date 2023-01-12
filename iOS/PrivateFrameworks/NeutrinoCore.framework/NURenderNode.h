@@ -29,11 +29,17 @@
     NUGeometrySpaceMap *_cached_geometrySpaceMap;
     NSString *_dominantInputKey;
     NSString *_spaceMapKey;
+    double _nodeCreationTime;
+    NSString *_nodeCreationJobName;
+    long long _cacheHitsCount;
 }
 
 + (id)nodeFromCache:(id)arg1 cache:(id)arg2;
 + (id)nodeFromCache:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) long long cacheHitsCount; // @synthesize cacheHitsCount=_cacheHitsCount;
+@property(retain, nonatomic) NSString *nodeCreationJobName; // @synthesize nodeCreationJobName=_nodeCreationJobName;
+@property(readonly, nonatomic) double nodeCreationTime; // @synthesize nodeCreationTime=_nodeCreationTime;
 @property(readonly, nonatomic) NSString *spaceMapKey; // @synthesize spaceMapKey=_spaceMapKey;
 @property(readonly, nonatomic) NSString *dominantInputKey; // @synthesize dominantInputKey=_dominantInputKey;
 @property(retain) NUGeometrySpaceMap *cached_geometrySpaceMap; // @synthesize cached_geometrySpaceMap=_cached_geometrySpaceMap;
@@ -68,6 +74,8 @@
 - (id)videoProperties:(out id *)arg1;
 - (id)_evaluateImageProperties:(out id *)arg1;
 - (id)imageProperties:(out id *)arg1;
+- (id)_evaluateVideoAttributes:(out id *)arg1;
+- (id)outputVideoAttributes:(out id *)arg1;
 - (id)_evaluateImageGeometry:(out id *)arg1;
 - (id)outputImageGeometry:(out id *)arg1;
 - (id)_evaluateGeometrySpaceMap:(out id *)arg1;
@@ -80,6 +88,8 @@
 - (_Bool)canPropagateOriginalAuxiliaryData;
 - (id)_evaluateImage:(out id *)arg1;
 - (id)debugQuickLookObject;
+- (id)_evaluateTimedMetadataSampleWithIdentifier:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 error:(out id *)arg3;
+- (id)outputTimedMetadataSampleWithIdentifier:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 error:(out id *)arg3;
 - (id)outputImage:(out id *)arg1;
 - (id)_evaluateAudioMix:(out id *)arg1;
 - (id)outputAudioMix:(out id *)arg1;

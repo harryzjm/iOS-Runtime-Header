@@ -10,7 +10,10 @@
 
 @interface _TtC15ConversationKit25GridViewConstraintManager : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *constraints;
+    MISSING_TYPE *organicConstraints;
+    MISSING_TYPE *fullScreenConstraints;
+    MISSING_TYPE *topAnchor;
+    MISSING_TYPE *trailingAnchor;
 }
 
 @end

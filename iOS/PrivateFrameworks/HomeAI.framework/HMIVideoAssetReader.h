@@ -18,6 +18,7 @@
 
 + (id)logCategory;
 - (void).cxx_destruct;
+- (_Bool)checkAndSaveCrashReportWithData:(id)arg1;
 - (struct opaqueCMSampleBuffer *)copyNextSampleBufferWithTrackIndexOutput:(unsigned long long *)arg1;
 - (struct opaqueCMSampleBuffer *)copyNextSampleBuffer;
 - (struct opaqueCMSampleBuffer *)_copyNextSampleBufferFromTrackOutput:(id)arg1;

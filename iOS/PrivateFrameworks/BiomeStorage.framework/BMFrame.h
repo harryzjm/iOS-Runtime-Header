@@ -18,13 +18,14 @@
     CDStruct_73a58082 _frameHeader;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long nextOffset; // @synthesize nextOffset=_nextOffset;
 @property(readonly, nonatomic) unsigned long long offset; // @synthesize offset=_offset;
 @property(readonly, nonatomic) NSData *data; // @synthesize data=_data;
 @property(readonly, nonatomic) NSString *storePath; // @synthesize storePath=_storePath;
 @property(readonly, nonatomic) CDStruct_73a58082 frameHeader; // @synthesize frameHeader=_frameHeader;
 @property(readonly, nonatomic) void *framePtr; // @synthesize framePtr=_framePtr;
-- (void)dealloc;
+@property(readonly, nonatomic) unsigned int state;
 @property(readonly, nonatomic) unsigned int dataVersion;
 @property(readonly, nonatomic) double modifiedTimestamp;
 @property(readonly, nonatomic) double creationTimestamp;

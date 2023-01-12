@@ -6,22 +6,20 @@
 
 #import <UIKit/UIMutableApplicationSceneSettings.h>
 
-@class CHSWidget, CHSWidgetMetrics, NSString;
+@class CHSWidget, CHSWidgetMetrics, CHUISWidgetVisibilitySettings, NSString;
 
 @interface CHUISMutableAvocadoSceneSettings : UIMutableApplicationSceneSettings
 {
-    _Bool _privateModeEnabled;
 }
 
-@property(nonatomic, getter=isPrivateModeEnabled) _Bool privateModeEnabled; // @synthesize privateModeEnabled=_privateModeEnabled;
 - (id)valueDescriptionForFlag:(long long)arg1 object:(id)arg2 ofSetting:(unsigned long long)arg3;
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;
 @property(nonatomic, getter=shouldVisibleEntrySnapshot) _Bool visibleEntryShouldSnapshot;
 @property(nonatomic, getter=areAnimationsDisabled) _Bool animationsDisabled;
-- (_Bool)privateMode;
 @property(nonatomic) unsigned long long style;
-@property(nonatomic, getter=isVisiblySettled) _Bool visiblySettled;
+@property(copy, nonatomic) CHUISWidgetVisibilitySettings *visibility;
 @property(copy, nonatomic) NSString *widgetConfigurationIdentifier;
+@property(copy, nonatomic) NSString *widgetHostIdentifier;
 @property(copy, nonatomic) CHSWidgetMetrics *metrics;
 @property(copy, nonatomic) CHSWidget *widget;
 - (id)copyWithZone:(struct _NSZone *)arg1;

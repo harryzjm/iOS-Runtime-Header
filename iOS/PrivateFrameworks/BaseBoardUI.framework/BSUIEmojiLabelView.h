@@ -17,9 +17,11 @@
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) UILabel *contentLabel; // @synthesize contentLabel=_contentLabel;
+@property(nonatomic, getter=_textAlignmentFollowsWritingDirection, setter=_setTextAlignmentFollowsWritingDirection:) _Bool _textAlignmentFollowsWritingDirection;
 @property(nonatomic) _Bool adjustsFontSizeToFitWidth;
 @property(nonatomic) long long lineBreakMode;
 @property(nonatomic) long long textAlignment;
+- (double)_baselineOffsetFromBottom;
 - (double)_firstLineBaselineOffsetFromBoundsTop;
 @property(nonatomic) long long numberOfLines;
 @property(retain, nonatomic) UIColor *textColor;

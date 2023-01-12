@@ -15,6 +15,7 @@
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <TUPageViewControllerScrollViewAccessibilityDelegate> accessibilityDelegate; // @synthesize accessibilityDelegate=_accessibilityDelegate;
+- (_Bool)canBecomeFocused;
 - (_Bool)accessibilityScroll:(long long)arg1;
 
 @end

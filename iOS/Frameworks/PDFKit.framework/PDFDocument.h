@@ -18,6 +18,7 @@
 
 + (_Bool)pdfDocumentAppendModeActiveForThisThread;
 + (void)setPDFDocumentAppendModeActiveForThisThread:(_Bool)arg1;
++ (_Bool)isValidPassword:(id)arg1;
 - (void).cxx_destruct;
 - (void)setPageChangeDelegate:(id)arg1;
 - (void)decrementRedactionCount;
@@ -35,6 +36,7 @@
 - (void)coreFindStrings:(id)arg1;
 - (void)coreFindString:(id)arg1;
 - (void)normalizeFindOptions:(unsigned long long)arg1;
+- (id)findStrings:(id)arg1 withinSelection:(id)arg2 withOptions:(unsigned long long)arg3;
 - (id)displayListCreationQueue;
 - (id)textExtractionQueue;
 - (id)selectionFromPage:(id)arg1 atPoint:(struct CGPoint)arg2 toPage:(id)arg3 atPoint:(struct CGPoint)arg4 type:(int)arg5;
@@ -92,6 +94,7 @@
 - (void)setPDFAKControllerDelegate:(id)arg1;
 @property(nonatomic) __weak id <PDFDocumentDelegate> delegate;
 @property(readonly, nonatomic) NSString *string;
+@property(readonly, nonatomic) unsigned long long accessPermissions;
 @property(readonly, nonatomic) long long permissionsStatus;
 @property(readonly, nonatomic) _Bool allowsFormFieldEntry;
 @property(readonly, nonatomic) _Bool allowsCommenting;
@@ -120,6 +123,7 @@
 - (id)initWithURL:(id)arg1;
 - (id)init;
 - (void)preloadDataOfPagesInRange:(struct _NSRange)arg1 onQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (_Bool)createdWithWithHighLatencyDataProvider;
 - (void)setHasHighLatencyDataProvider:(_Bool)arg1;
 - (_Bool)hasHighLatencyDataProvider;
 - (_Bool)isLinearized;

@@ -88,12 +88,12 @@
 - (struct CGImage *)imageRef;
 - (void)setCGImageRef:(struct CGImage *)arg1;
 @property(nonatomic) unsigned int drawMode;
-- (void)_drawImageEffectsForImage:(id)arg1 inRect:(struct CGRect)arg2 suppressColor:(_Bool)arg3;
+- (void)_drawImageEffectsForImage:(id)arg1 inRect:(struct CGRect)arg2 effectiveTintColor:(id)arg3;
 - (_Bool)_getDrawModeCompositeOperation:(int *)arg1 whiteComponent:(double *)arg2 drawingAlpha:(double *)arg3;
-- (_Bool)_needsImageEffectsForImage:(id)arg1 suppressColorizing:(_Bool)arg2;
+- (_Bool)_needsImageEffectsForImage:(id)arg1 symbolConfiguration:(id)arg2 suppressColorizing:(_Bool)arg3;
 - (_Bool)_needsImageEffectsForImage:(id)arg1;
 - (void)tintColorDidChange;
-- (id)_effectiveTintColorWithImage:(id)arg1;
+- (id)_effectiveTintColorWithImage:(id)arg1 symbolConfiguration:(id)arg2;
 - (id)_contentsMultiplyColorForEffectiveTintColor:(id)arg1;
 @property(nonatomic, setter=_setMasksTemplateImages:) _Bool _masksTemplateImages;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
@@ -104,7 +104,9 @@
 - (void)_templateSettingsDidChange;
 - (void)_invalidateTemplateSettings;
 - (void)_updateMasking;
+- (id)_symbolConfigurationForSource:(id)arg1;
 - (_Bool)_shouldTreatImageAsTemplate:(id)arg1;
+- (long long)_effectiveRenderingModeForSource:(id)arg1 symbolConfiguration:(id)arg2;
 - (id)_activeImage;
 - (void)setSemanticContentAttribute:(long long)arg1;
 - (id)_generateBackdropMaskImage;
@@ -113,9 +115,11 @@
 @property(nonatomic) long long animationRepeatCount;
 @property(nonatomic) double animationDuration;
 @property(readonly, nonatomic, getter=isAnimating) _Bool animating;
+- (_Bool)_hasInstalledContentsAnimation;
 - (void)stopAnimating;
 - (id)_currentAnimationKeyframeImage;
 - (void)_cleanUpForStopAnimating;
+- (void)_removeLayerAnimations;
 - (void)startAnimating;
 @property(copy, nonatomic) NSArray *highlightedAnimationImages;
 @property(copy, nonatomic) NSArray *animationImages;
@@ -126,6 +130,7 @@
 @property(retain, nonatomic) UIImageSymbolConfiguration *symbolConfiguration;
 @property(retain, nonatomic, setter=_setOverridingSymbolConfiguration:) UIImageSymbolConfiguration *_overridingSymbolConfiguration;
 @property(retain, nonatomic) UIImageSymbolConfiguration *preferredSymbolConfiguration;
+- (id)_colorSymbolConfigurationAddingTintColor:(id)arg1;
 - (id)_symbolConfigurationForImage:(id)arg1;
 @property(nonatomic, setter=_setSuppressPixelAlignment:) _Bool _suppressPixelAlignment;
 - (id)midlineGuide;
@@ -150,6 +155,7 @@
 @property(readonly, nonatomic) double preferredContentScaleFactor;
 - (void)setContentScaleFactor:(double)arg1;
 - (void)_setViewGeometry:(struct CGRect)arg1 forMetric:(int)arg2;
+- (_Bool)isTransparentFocusItem;
 @property(nonatomic, getter=isHighlighted) _Bool highlighted;
 @property(retain, nonatomic) UIImage *highlightedImage;
 @property(retain, nonatomic) UIImage *image;
@@ -160,11 +166,12 @@
 - (id)initWithImage:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)_updateState;
-- (id)_renditionForSource:(id)arg1 size:(struct CGSize)arg2 withCGImageProvider:(CDUnknownBlockType)arg3 lazy:(_Bool)arg4;
+- (id)_renditionForSource:(id)arg1 size:(struct CGSize)arg2 symbolConfiguration:(id)arg3 withCGImageProvider:(CDUnknownBlockType)arg4 lazy:(_Bool)arg5;
 - (id)_effectForRenderingSource:(id)arg1;
 - (_Bool)_setImageViewContentsForAnimatedImage:(id)arg1;
 - (void)_updateContentsMultiplyColorAndSwizzleFromLayout:(id)arg1;
 - (void)displayLayer:(id)arg1;
+- (void)_handlePendingImageLayout:(id)arg1;
 - (_Bool)_setImageViewContents:(id)arg1;
 - (void)_invalidateImageLayouts;
 - (id)_layoutForImage:(id)arg1 inSize:(struct CGSize)arg2 cachePerSize:(_Bool)arg3 forBaselineOffset:(_Bool)arg4;
@@ -176,6 +183,8 @@
 - (void)_applySettingsForLegibilityStyle:(long long)arg1;
 - (_Bool)scalesLargeContentImage;
 - (id)largeContentImage;
+- (void)_didStopBeingDisplayedInPointerContentEffect;
+- (void)_willBeginBeingDisplayedInPointerContentEffect;
 - (_Bool)useBlockyMagnificationInClassic;
 - (void)decodeRestorableStateWithCoder:(id)arg1;
 - (void)encodeRestorableStateWithCoder:(id)arg1;
@@ -194,6 +203,7 @@
 @property(readonly, nonatomic) long long semanticContentAttribute;
 @property(readonly) Class superclass;
 @property(retain, nonatomic) UIColor *tintColor; // @dynamic tintColor;
+@property(readonly, nonatomic) UITraitCollection *traitCollection;
 @property(nonatomic, getter=isUserInteractionEnabled) _Bool userInteractionEnabled; // @dynamic userInteractionEnabled;
 
 @end

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, UIImage;
+@class NSMutableArray, UIImage, _UIPageIndicatorStoreObject;
 @protocol _UIPageIndicatorStoreDelegate;
 
 __attribute__((visibility("hidden")))
@@ -15,16 +15,20 @@ __attribute__((visibility("hidden")))
     struct {
         unsigned int layout:1;
     } _update;
-    double _fittingWidth;
+    double _fittingLength;
     struct CGSize _cachedSize;
+    UIImage *_defaultImage;
+    _UIPageIndicatorStoreObject *_defaultObject;
     id <_UIPageIndicatorStoreDelegate> _delegate;
     UIImage *_preferredImage;
     double _indicatorSpacing;
+    long long _direction;
     NSMutableArray *_store;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *store; // @synthesize store=_store;
+@property(nonatomic) long long direction; // @synthesize direction=_direction;
 @property(nonatomic) double indicatorSpacing; // @synthesize indicatorSpacing=_indicatorSpacing;
 @property(retain, nonatomic) UIImage *preferredImage; // @synthesize preferredImage=_preferredImage;
 @property(nonatomic) __weak id <_UIPageIndicatorStoreDelegate> delegate; // @synthesize delegate=_delegate;
@@ -35,17 +39,19 @@ __attribute__((visibility("hidden")))
 - (void)_removeImageForPage:(long long)arg1;
 - (void)_insertImage:(id)arg1 forPage:(long long)arg2;
 - (double)indicatorPositionForContinuousPage:(double)arg1;
-- (double)indicatorContentWidthForRange:(struct _NSRange)arg1;
+- (double)indicatorContentLengthForRange:(struct _NSRange)arg1;
 - (struct CGSize)indicatorSize;
 - (void)updateImage:(id)arg1 forPage:(long long)arg2;
 - (void)updateStoreForNumberOfPages:(long long)arg1;
 - (struct CGSize)contentSizeForNumberOfPages:(long long)arg1;
-- (struct CGSize)sizeForMaximumContentSizeFittingWidth:(double)arg1;
-- (long long)numberOfVisibleIndicatorsForStartIndex:(long long)arg1 fittingWidth:(double)arg2;
+- (struct CGSize)sizeForMaximumContentSizeFittingLength:(double)arg1;
+- (long long)numberOfVisibleIndicatorsForStartIndex:(long long)arg1 fittingLength:(double)arg2;
+- (struct CGSize)_indicatorSizeForObject:(id)arg1;
 - (struct CGSize)indicatorSizeForPage:(long long)arg1;
 - (void)invalidateLayoutCache;
 - (id)indicatorImageForPage:(long long)arg1;
 - (id)customIndicatorImageForPage:(long long)arg1;
+- (id)_defaultIndicatorImage;
 @property(readonly, nonatomic) UIImage *indicatorImage;
 - (long long)lastPage;
 - (id)init;

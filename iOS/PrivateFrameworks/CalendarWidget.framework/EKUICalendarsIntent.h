@@ -17,6 +17,7 @@
 
 // Remaining properties
 @property(nonatomic, copy) NSArray *calendars; // @dynamic calendars;
+@property(nonatomic, retain) NSNumber *hideAllDayEvents; // @dynamic hideAllDayEvents;
 @property(nonatomic, retain) NSNumber *mirrorCalendarApp; // @dynamic mirrorCalendarApp;
 
 @end

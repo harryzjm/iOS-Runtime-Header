@@ -9,6 +9,7 @@
 @class NSArray, PRXButton;
 
 @protocol PRXCardContentViewDelegate <NSObject>
+@property(readonly, copy, nonatomic) NSArray *auxiliaryViews;
 @property(copy, nonatomic) NSArray *actionButtons;
 @property(retain, nonatomic) PRXButton *dismissButton;
 @end

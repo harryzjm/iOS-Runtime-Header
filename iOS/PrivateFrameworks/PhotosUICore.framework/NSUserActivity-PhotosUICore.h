@@ -8,6 +8,8 @@
 
 @interface NSUserActivity (PhotosUICore)
 + (_Bool)px_allowsDonationsForCurrentProcess;
+- (void)px_setPersistentIdentifierFromAssetCollection:(id)arg1;
+- (void)px_setPersistentIdentifierFromAsset:(id)arg1;
 - (_Bool)px_isCurrent;
 @end
 

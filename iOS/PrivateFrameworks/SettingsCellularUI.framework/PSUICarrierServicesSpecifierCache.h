@@ -25,15 +25,13 @@ __attribute__((visibility("hidden")))
 - (void)simStatusDidChange:(id)arg1 status:(id)arg2;
 - (void)carrierBundleChange:(id)arg1;
 - (void)openURLWithSpecifier:(id)arg1;
-- (void)_allowClicks;
 - (void)dialCarrierServiceNumber:(id)arg1;
 - (id)readPreference:(id)arg1;
 - (id)specifiers:(id)arg1;
 - (void)fetchSpecifiers;
 - (id)newMMSInfoSpecifierWithTarget:(id)arg1 context:(id)arg2;
 - (id)newMyAccountSpecifierWithTarget:(id)arg1 context:(id)arg2;
-- (void)willEnterForeground;
-- (void)_clearCache;
+- (void)clearCache;
 - (void)dealloc;
 - (id)init;
 - (id)initPrivate;

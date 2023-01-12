@@ -8,7 +8,6 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-__attribute__((visibility("hidden")))
 @interface CKCDPStopAllContainerResponse : PBCodable <NSCopying>
 {
     _Bool _success;

@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <ContactsFoundation/NSCopying-Protocol.h>
 #import <ContactsFoundation/NSSecureCoding-Protocol.h>
 
 @class CNPair;
 
-@interface CNEither : NSObject <NSSecureCoding>
+@interface CNEither : NSObject <NSCopying, NSSecureCoding>
 {
     CNPair *_pair;
 }
@@ -26,6 +27,7 @@
 @property(retain, nonatomic) CNPair *pair; // @synthesize pair=_pair;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)description;

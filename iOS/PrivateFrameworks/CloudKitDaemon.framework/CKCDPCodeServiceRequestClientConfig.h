@@ -10,7 +10,6 @@
 
 @class CKCDPCodeServiceRequestServiceClientConfig;
 
-__attribute__((visibility("hidden")))
 @interface CKCDPCodeServiceRequestClientConfig : PBCodable <NSCopying>
 {
     CKCDPCodeServiceRequestServiceClientConfig *_config;

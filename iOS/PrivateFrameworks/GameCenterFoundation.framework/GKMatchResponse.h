@@ -21,6 +21,7 @@
 }
 
 + (id)secureCodedPropertyKeys;
+- (void).cxx_destruct;
 @property(readonly) int sequence; // @synthesize sequence=_sequence;
 @property GKDispatchGroup *matchingGroup; // @synthesize matchingGroup=_matchingGroup;
 @property(retain) GKMatchRequestInternal *matchRequest; // @synthesize matchRequest=_matchRequest;
@@ -37,7 +38,6 @@
 - (_Bool)isCancelled;
 - (_Bool)isFinished;
 - (int)_incrementSequence;
-- (void)dealloc;
 
 @end
 

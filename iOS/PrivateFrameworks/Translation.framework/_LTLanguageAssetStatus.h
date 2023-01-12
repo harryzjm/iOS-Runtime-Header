@@ -6,16 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class MAProgressNotification, NSArray, NSError, NSString, VSVoiceAsset;
+@class MAProgressNotification, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _LTLanguageAssetStatus : NSObject
 {
+    _Bool _finished;
     long long _progress;
     unsigned long long _status;
-    VSVoiceAsset *_voiceAsset;
     NSString *_identifier;
-    NSError *_error;
     NSArray *_localIdentifiers;
     MAProgressNotification *_update;
 }
@@ -23,11 +22,10 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) MAProgressNotification *update; // @synthesize update=_update;
 @property(retain, nonatomic) NSArray *localIdentifiers; // @synthesize localIdentifiers=_localIdentifiers;
-@property(retain, nonatomic) NSError *error; // @synthesize error=_error;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property(retain, nonatomic) VSVoiceAsset *voiceAsset; // @synthesize voiceAsset=_voiceAsset;
 @property(nonatomic) unsigned long long status; // @synthesize status=_status;
 @property(nonatomic) long long progress; // @synthesize progress=_progress;
+@property(nonatomic) _Bool finished; // @synthesize finished=_finished;
 - (id)description;
 - (id)_LTAssetStateString;
 

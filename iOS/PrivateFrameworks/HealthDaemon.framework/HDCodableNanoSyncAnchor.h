@@ -6,11 +6,12 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
+#import <HealthDaemon/HDNanoSyncDescription-Protocol.h>
 #import <HealthDaemon/NSCopying-Protocol.h>
 
-@class HDCodableEntityIdentifier;
+@class HDCodableEntityIdentifier, NSString;
 
-@interface HDCodableNanoSyncAnchor : PBCodable <NSCopying>
+@interface HDCodableNanoSyncAnchor : PBCodable <HDNanoSyncDescription, NSCopying>
 {
     long long _anchor;
     HDCodableEntityIdentifier *_entityIdentifier;
@@ -25,14 +26,14 @@
 @property(retain, nonatomic) HDCodableEntityIdentifier *entityIdentifier; // @synthesize entityIdentifier=_entityIdentifier;
 @property(nonatomic) long long anchor; // @synthesize anchor=_anchor;
 - (void)mergeFrom:(id)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
-- (id)description;
+@property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) _Bool hasEntityIdentifier;
 @property(nonatomic) _Bool hasAnchor;
 - (int)StringAsObjectType:(id)arg1;
@@ -40,6 +41,10 @@
 @property(nonatomic) _Bool hasObjectType;
 @property(nonatomic) int objectType; // @synthesize objectType=_objectType;
 - (id)nanoSyncDescription;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

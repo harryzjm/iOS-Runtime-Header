@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AKAuthorizationCredentialStateRequest, AKAuthorizationRevokeUpgradeContext, AKAuthorizationUserResponse, AKCredentialRequestContext, NSDictionary, NSString, NSXPCListenerEndpoint;
+@class AKAuthorization, AKAuthorizationCredentialStateRequest, AKAuthorizationRevokeUpgradeContext, AKAuthorizationUserResponse, AKCredentialRequestContext, NSDictionary, NSString, NSXPCListenerEndpoint;
 
 @protocol AKAuthorizationDaemonProtocol
+- (void)storeAuthorization:(AKAuthorization *)arg1 forProxiedRequest:(AKCredentialRequestContext *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)startDiscoveryWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)establishConnectionWithStateBroadcastHandlerEndpoint:(NSXPCListenerEndpoint *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)establishConnectionWithNotificationHandlerEndpoint:(NSXPCListenerEndpoint *)arg1 completion:(void (^)(_Bool, NSError *))arg2;

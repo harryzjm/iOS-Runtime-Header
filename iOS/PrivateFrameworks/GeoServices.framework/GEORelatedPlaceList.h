@@ -6,17 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class GEOPDRelatedPlace, NSArray;
+@class NSArray;
 
 @interface GEORelatedPlaceList : NSObject
 {
-    GEOPDRelatedPlace *_relatedPlace;
+    NSArray *_placeTemplates;
+    int _type;
+    _Bool _hasInitialData;
+    unsigned long long _numberOfInlineItems;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long numberOfInlineItems; // @synthesize numberOfInlineItems=_numberOfInlineItems;
+@property(readonly, nonatomic) _Bool hasInitialData; // @synthesize hasInitialData=_hasInitialData;
+@property(readonly, nonatomic) NSArray *placeTemplates;
 @property(readonly, nonatomic) int type;
 @property(readonly, nonatomic) NSArray *mapIdentifiers;
+- (id)initWithTemplatePlace:(id)arg1 attributedMap:(id)arg2;
 - (id)initWithRelatedPlace:(id)arg1;
+- (id)initWithTemplates:(id)arg1 type:(int)arg2 hasInitialData:(_Bool)arg3 numberOfInlineItem:(unsigned long long)arg4;
 
 @end
 

@@ -6,9 +6,9 @@
 
 #import <WorkflowUI/NSObject-Protocol.h>
 
-@class NSArray, WFTreeNode;
+@class NSArray, WFTableDataSourceTreeNode, WFTreeNode;
 
 @protocol WFTreeObserver <NSObject>
-- (void)treeNode:(WFTreeNode *)arg1 flattenedDescendentsDidChangeFrom:(NSArray *)arg2 to:(NSArray *)arg3 changeSource:(WFTreeNode *)arg4;
+- (void)treeNode:(WFTableDataSourceTreeNode *)arg1 flattenedDescendentsDidChangeFrom:(NSArray *)arg2 to:(NSArray *)arg3 changeSource:(WFTreeNode *)arg4;
 @end
 

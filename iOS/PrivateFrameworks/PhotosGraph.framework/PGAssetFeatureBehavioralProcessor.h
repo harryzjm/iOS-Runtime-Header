@@ -8,11 +8,12 @@
 
 #import <PhotosGraph/PGBehavioralAlgorithm-Protocol.h>
 
-@class NSDictionary, NSSet, PGGraph;
+@class NSDictionary, NSSet;
+@protocol OS_os_log;
 
 @interface PGAssetFeatureBehavioralProcessor : NSObject <PGBehavioralAlgorithm>
 {
-    PGGraph *_graph;
+    NSObject<OS_os_log> *_loggingConnection;
     NSSet *_goldAssets;
     NSDictionary *_personFeatures;
     NSDictionary *_sceneFeatures;
@@ -24,15 +25,14 @@
 @property(retain, nonatomic) NSDictionary *sceneFeatures; // @synthesize sceneFeatures=_sceneFeatures;
 @property(retain, nonatomic) NSDictionary *personFeatures; // @synthesize personFeatures=_personFeatures;
 @property(retain, nonatomic) NSSet *goldAssets; // @synthesize goldAssets=_goldAssets;
-@property(retain, nonatomic) PGGraph *graph; // @synthesize graph=_graph;
 - (id)dataToPersist;
 - (void)personAndSceneFeaturesFromGoldAssetsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)_semanticScoreByAssetUUIDForAssets:(id)arg1 normalize:(_Bool)arg2;
 - (float)semanticScoreForAsset:(id)arg1;
 - (id)semanticScoreByAssetUUIDForAssets:(id)arg1;
 - (void)preprocessWithProgressBlock:(CDUnknownBlockType)arg1;
-- (id)initWithGoldAssets:(id)arg1 graph:(id)arg2 persistedData:(id)arg3;
-- (id)initWithGoldAssets:(id)arg1 graph:(id)arg2;
+- (id)initWithGoldAssets:(id)arg1 persistedData:(id)arg2 loggingConnection:(id)arg3;
+- (id)initWithGoldAssets:(id)arg1 loggingConnection:(id)arg2;
 
 @end
 

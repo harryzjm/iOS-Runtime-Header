@@ -7,18 +7,24 @@
 #import <Home/HFItemManager.h>
 
 #import <HomeUI/HFAccessorySettingSiriLanguageAdapterObserver-Protocol.h>
+#import <HomeUI/HFSiriLanguageOptionsManagerObserver-Protocol.h>
 
-@class HFAccessorySettingGroupItem, HFAccessorySettingSiriLanguageAdapter, HUSiriLanguageOptionItemProvider, NSString;
+@class HFAccessorySettingGroupItem, HFAccessorySettingSiriLanguageAdapter, HFItem, HFSiriLanguageOptionsManager, HUSiriLanguageOptionItemProvider, NSString;
+@protocol HFServiceLikeItem;
 
-@interface HUAccessorySettingsSiriRecognitionLanguageItemManager : HFItemManager <HFAccessorySettingSiriLanguageAdapterObserver>
+@interface HUAccessorySettingsSiriRecognitionLanguageItemManager : HFItemManager <HFAccessorySettingSiriLanguageAdapterObserver, HFSiriLanguageOptionsManagerObserver>
 {
     HFAccessorySettingSiriLanguageAdapter *_adapter;
     HUSiriLanguageOptionItemProvider *_optionItemProvider;
+    HFItem<HFServiceLikeItem> *_accessoryItem;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) HFItem<HFServiceLikeItem> *accessoryItem; // @synthesize accessoryItem=_accessoryItem;
 @property(retain, nonatomic) HUSiriLanguageOptionItemProvider *optionItemProvider; // @synthesize optionItemProvider=_optionItemProvider;
 @property(readonly, nonatomic) HFAccessorySettingSiriLanguageAdapter *adapter; // @synthesize adapter=_adapter;
+- (void)siriLanguageOptionsManager:(id)arg1 availableLanguageOptionsDidChange:(id)arg2;
+- (void)siriLanguageOptionsManager:(id)arg1 selectedLanguageOptionDidChange:(id)arg2;
 - (void)siriLanguageAdapter:(id)arg1 availableLanguageOptionsDidChange:(id)arg2;
 - (void)siriLanguageAdapter:(id)arg1 selectedLanguageOptionDidChange:(id)arg2;
 - (void)_unregisterForExternalUpdates;
@@ -26,6 +32,8 @@
 - (id)_buildSectionsWithDisplayedItems:(id)arg1;
 - (id)_buildItemProvidersForHome:(id)arg1;
 - (id)updateSelectionWithOptionItem:(id)arg1;
+@property(readonly, nonatomic) HFSiriLanguageOptionsManager *siriLanguageOptionsManager;
+- (id)initWithDelegate:(id)arg1 accessorySettingItem:(id)arg2 accessoryItem:(id)arg3;
 @property(readonly, copy, nonatomic) HFAccessorySettingGroupItem *groupItem;
 - (id)initWithDelegate:(id)arg1 groupItem:(id)arg2;
 - (id)initWithDelegate:(id)arg1;

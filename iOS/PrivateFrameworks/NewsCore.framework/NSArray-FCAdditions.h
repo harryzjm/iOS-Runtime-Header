@@ -6,9 +6,12 @@
 
 #import <Foundation/NSArray.h>
 
+#import <NewsCore/FCContentArchivable-Protocol.h>
 #import <NewsCore/FCOrderedCollectionAdditions-Protocol.h>
 
-@interface NSArray (FCAdditions) <FCOrderedCollectionAdditions>
+@class FCContentArchive;
+
+@interface NSArray (FCAdditions) <FCOrderedCollectionAdditions, FCContentArchivable>
 + (void)fc_walkArray:(id)arg1 andArray:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 + (id)fc_generatedArrayWithCount:(unsigned long long)arg1 generator:(CDUnknownBlockType)arg2;
 + (id)fc_array:(CDUnknownBlockType)arg1;
@@ -82,6 +85,7 @@
 - (_Bool)fc_containsObjectsAtFront:(id)arg1;
 - (_Bool)fc_containsObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)fc_randomObject;
+- (id)fc_lastObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)fc_firstObjectOfClass:(Class)arg1;
 - (id)fc_firstObjectWithValue:(id)arg1 forKey:(id)arg2;
 - (id)fc_firstObjectFromIndex:(unsigned long long)arg1 passingTest:(CDUnknownBlockType)arg2;
@@ -96,10 +100,12 @@
 - (id)fc_dictionaryWithKeySelector:(SEL)arg1;
 - (id)fc_randomlyMergeWithArray:(id)arg1;
 - (void)fc_enumerateSideBySideWithArray:(id)arg1 reverse:(_Bool)arg2 block:(CDUnknownBlockType)arg3;
+- (id)fc_objectInSortedOrderedCollectionWithFeature:(id)arg1 usingFeatureProvider:(CDUnknownBlockType)arg2 comparator:(CDUnknownBlockType)arg3;
 - (id)fc_diffAgainstSortedOrderedCollection:(id)arg1 usingComparator:(CDUnknownBlockType)arg2;
 - (_Bool)fc_isSortedUsingComparator:(CDUnknownBlockType)arg1;
 - (void)fc_enumerateObjectsFromIndex:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)fc_enumerateObjectsInReverse:(_Bool)arg1 usingSkipAheadBlock:(CDUnknownBlockType)arg2;
 - (void)fc_enumerateObjectsPairwiseUsingBlock:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) FCContentArchive *contentArchive;
 @end
 

@@ -23,7 +23,7 @@
 @property(retain, nonatomic) UIFont *majorFont; // @synthesize majorFont=_majorFont;
 - (id)_formattedStringForValue:(id)arg1;
 - (id)attributedStringForValue:(id)arg1;
-- (id)_formattedStringWithValue:(double)arg1 unit:(id)arg2 showUnit:(_Bool)arg3;
+- (id)attributedStringWithValue:(double)arg1 unit:(id)arg2 showUnit:(_Bool)arg3;
 - (id)_unitNameFromUnit:(id)arg1 number:(id)arg2;
 - (id)formattedStringWithValue:(double)arg1 unitString:(id)arg2 showUnit:(_Bool)arg3;
 - (id)formattedValueStringForChartData:(id)arg1 options:(long long)arg2;

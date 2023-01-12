@@ -22,6 +22,7 @@
 - (_Bool)shouldEnableActionType:(id)arg1 onAsset:(id)arg2;
 - (id)actionPerformerForActionType:(id)arg1;
 - (_Bool)canPerformAssetVariationActions;
+- (void)setAdditionalPropertiesFromActionManager:(id)arg1;
 - (id)init;
 - (id)initWithSelectedObjectReference:(id)arg1 dataSourceManager:(id)arg2;
 - (id)initWithSelectionManager:(id)arg1;

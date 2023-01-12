@@ -13,23 +13,29 @@
 
 @interface AVTAvatarAttributeEditorSection : NSObject <AVTAvatarAttributeEditorSection>
 {
+    _Bool _shouldDisplayInsetSeparatorAfterSection;
     NSArray *_sectionItems;
     NSString *_localizedName;
     NSString *_identifier;
     id <AVTAvatarAttributeEditorSectionSupplementalPicker> _supplementalPicker;
     AVTAvatarAttributeEditorSectionOptions *_options;
+    unsigned long long _intendedDestination;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldDisplayInsetSeparatorAfterSection; // @synthesize shouldDisplayInsetSeparatorAfterSection=_shouldDisplayInsetSeparatorAfterSection;
+@property(nonatomic) unsigned long long intendedDestination; // @synthesize intendedDestination=_intendedDestination;
 @property(readonly, nonatomic) AVTAvatarAttributeEditorSectionOptions *options; // @synthesize options=_options;
 @property(retain, nonatomic) id <AVTAvatarAttributeEditorSectionSupplementalPicker> supplementalPicker; // @synthesize supplementalPicker=_supplementalPicker;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(copy, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property(readonly, copy, nonatomic) NSArray *sectionItems; // @synthesize sectionItems=_sectionItems;
+@property(readonly, copy, nonatomic) NSArray *sections;
+@property(readonly, nonatomic) struct UIEdgeInsets separatorInsets;
 - (_Bool)shouldDisplaySeparatorBeforeSection:(id)arg1;
 - (_Bool)shouldDisplayTitle;
 @property(readonly, copy) NSString *description;
-- (id)initWithSectionItems:(id)arg1 localizedName:(id)arg2 identifier:(id)arg3 options:(id)arg4;
+- (id)initWithSectionItems:(id)arg1 localizedName:(id)arg2 identifier:(id)arg3 intendedDestination:(unsigned long long)arg4 options:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

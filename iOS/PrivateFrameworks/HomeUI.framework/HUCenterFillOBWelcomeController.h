@@ -35,6 +35,7 @@
 @property(readonly, nonatomic) UIView *centerFillContentView; // @synthesize centerFillContentView=_centerFillContentView;
 - (void)_updateContentViewInsetConstraints;
 - (void)_updateContentViewContainerConstraints;
+- (_Bool)_limitToNonScrollingContentHeight;
 - (void)_viewDidUpdateContent;
 - (double)_contentAspectRatio;
 - (void)viewWillLayoutSubviews;

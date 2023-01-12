@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (void)_saveToCameraRoll;
 - (void)_copyImage;
 - (id)contextMenuConfiguration;
-- (id)defaultAction;
+- (id)defaultActionWithContextMenuInteraction:(id)arg1;
 - (id)initWithTextAttachment:(id)arg1;
 
 // Remaining properties

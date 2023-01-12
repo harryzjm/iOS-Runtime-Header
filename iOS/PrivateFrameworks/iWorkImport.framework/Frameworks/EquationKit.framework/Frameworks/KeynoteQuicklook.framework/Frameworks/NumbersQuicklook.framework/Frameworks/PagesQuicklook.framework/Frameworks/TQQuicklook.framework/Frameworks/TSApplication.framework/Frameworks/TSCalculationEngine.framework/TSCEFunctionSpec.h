@@ -14,20 +14,22 @@
     short _minArguments;
     short _maxArguments;
     short _repeatingGroupSize;
-    vector_2a3fe66d _arguments;
-    vector_2a3fe66d _repeatingArguments;
+    struct vector<TSCEFunctionArgSpec, std::allocator<TSCEFunctionArgSpec>> _arguments;
+    struct vector<TSCEFunctionArgSpec, std::allocator<TSCEFunctionArgSpec>> _repeatingArguments;
     _Bool _isOperator;
     int _shipVersion;
-    int _functionIndex;
+    unsigned short _functionIndex;
 }
 
 + (id)unsupportedFunctionNameForLocale:(id)arg1;
 + (_Bool)isModeEnabled:(short)arg1 functionIndex:(short)arg2;
 + (id)functionSpecForFunctionName:(id)arg1;
-+ (id)functionSpecForFunctionIndex:(int)arg1;
-+ (id)specWithFunctionName:(id)arg1 minArgs:(int)arg2 maxArgs:(int)arg3 repeatingGroupSize:(short)arg4 isOperator:(int)arg5 shipVersion:(int)arg6 arguments:(const vector_2a3fe66d *)arg7 functionIndex:(int)arg8;
-+ (_Bool)hasAnyDateArgumentsToFunction:(int)arg1;
-+ (id)specDictionary;
++ (id)englishFunctionNameFromFunctionIndex:(unsigned short)arg1;
++ (id)functionSpecForFunctionIndex:(unsigned short)arg1;
++ (void)loadSpecDictionary;
++ (id)specWithFunctionName:(id)arg1 minArgs:(int)arg2 maxArgs:(int)arg3 repeatingGroupSize:(short)arg4 isOperator:(_Bool)arg5 shipVersion:(int)arg6 arguments:(const void *)arg7 functionIndex:(unsigned short)arg8;
++ (id)functionSpecList;
++ (_Bool)hasAnyDateArgumentsToFunction:(unsigned short)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) short repeatingGroupSize; // @synthesize repeatingGroupSize=_repeatingGroupSize;
@@ -35,20 +37,20 @@
 @property(readonly, nonatomic) _Bool isOperator; // @synthesize isOperator=_isOperator;
 @property(readonly, nonatomic) short maxArguments; // @synthesize maxArguments=_maxArguments;
 @property(readonly, nonatomic) short minArguments; // @synthesize minArguments=_minArguments;
-@property(readonly) int functionIndex; // @synthesize functionIndex=_functionIndex;
+@property(readonly) unsigned short functionIndex; // @synthesize functionIndex=_functionIndex;
 - (long long)modeNumberForLocalizedString:(id)arg1 argumentSpecIndex:(unsigned long long)arg2 attributeMax:(long long)arg3 locale:(id)arg4;
 - (id)nativeSyntaxStringForArgument:(int)arg1;
-- (int)preferredTypeForArgumentIndex:(unsigned long long)arg1;
+- (BOOL)preferredTypeForArgumentIndex:(unsigned long long)arg1;
 - (int)accessorModeForArgumentIndex:(unsigned long long)arg1;
-- (struct TSCEFunctionArgSpec *)argumentSpecForIndex:(unsigned long long)arg1;
+- (void *)argumentSpecForIndex:(unsigned long long)arg1;
 - (void)loadRepeatingArguments;
 @property(readonly, nonatomic) unsigned long long numArguments;
-@property(readonly) const vector_2a3fe66d *arguments;
+@property(readonly) const void *arguments;
 - (id)displayStringForLocale:(id)arg1;
 - (id)localizedToolTipStringForLocale:(id)arg1;
 - (id)localizedFunctionNameForLocale:(id)arg1;
 @property(readonly) NSString *functionName;
-- (id)initWithFunctionName:(id)arg1 minArgs:(int)arg2 maxArgs:(int)arg3 repeatingGroupSize:(short)arg4 isOperator:(_Bool)arg5 shipVersion:(int)arg6 arguments:(const vector_2a3fe66d *)arg7 functionIndex:(int)arg8;
+- (id)initWithFunctionName:(id)arg1 minArgs:(int)arg2 maxArgs:(int)arg3 repeatingGroupSize:(short)arg4 isOperator:(_Bool)arg5 shipVersion:(int)arg6 arguments:(const void *)arg7 functionIndex:(unsigned short)arg8;
 - (id)description;
 - (void)p_ValidateArguments;
 

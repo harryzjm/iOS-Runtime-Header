@@ -10,7 +10,7 @@
 
 @protocol CNContactSuggestionViewControllerDataSource <NSObject>
 @property(readonly, nonatomic) NSURL *url;
-@property(readonly, nonatomic) NSString *from;
+@property(readonly, nonatomic) NSString *with;
 @property(readonly, nonatomic) NSString *date;
 @property(readonly, nonatomic) NSString *title;
 @property(readonly, nonatomic) NSAttributedString *formattedSnippet;

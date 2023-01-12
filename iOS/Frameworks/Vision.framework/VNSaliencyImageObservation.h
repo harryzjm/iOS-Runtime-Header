@@ -25,10 +25,10 @@
 - (struct __CVBuffer *)createSaliencyImageAndReturnError:(id *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)vn_cloneObject;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithRequestRevision:(unsigned long long)arg1 rawSaliencyImage:(struct __CVBuffer *)arg2 originalImageSize:(struct CGSize)arg3 salientObjectBoundingBoxes:(id)arg4;
+- (id)initWithOriginatingRequestSpecifier:(id)arg1 rawSaliencyImage:(struct __CVBuffer *)arg2 originalImageSize:(struct CGSize)arg3 salientObjectBoundingBoxes:(id)arg4;
 
 @end
 

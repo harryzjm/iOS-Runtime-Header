@@ -27,6 +27,14 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)_removeComponent:(id)arg1;
+- (void)removeAllComponents;
+- (void)removeComponentWithIdentifier:(id)arg1;
+- (void)removeComponentAtIndex:(unsigned long long)arg1;
+- (void)setComponents:(id)arg1;
+- (void)replaceComponent:(id)arg1 withComponent:(id)arg2;
+- (void)replaceComponentAtIndex:(unsigned long long)arg1 withComponent:(id)arg2;
+- (void)insertComponent:(id)arg1 afterComponent:(id)arg2;
 - (void)insertComponent:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)addComponent:(id)arg1;
 - (void)addComponentsFromArray:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/NSTextAttachment.h>
+#import <UIFoundation/NSTextAttachment.h>
 
 #import <WorkflowEditor/NSCopying-Protocol.h>
 #import <WorkflowEditor/WFVariableDelegate-Protocol.h>
@@ -19,6 +19,7 @@
     UIFont *_font;
     UIColor *_tintColor;
     WFVariable *_variable;
+    UIFont *_surroundingTextFont;
     NSString *_overrideVariableName;
     WFVariableAttachmentCell *_wf_attachmentCell;
 }
@@ -26,6 +27,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) WFVariableAttachmentCell *wf_attachmentCell; // @synthesize wf_attachmentCell=_wf_attachmentCell;
 @property(copy, nonatomic) NSString *overrideVariableName; // @synthesize overrideVariableName=_overrideVariableName;
+@property(retain, nonatomic) UIFont *surroundingTextFont; // @synthesize surroundingTextFont=_surroundingTextFont;
 @property(nonatomic, getter=isHighlighted) _Bool highlighted; // @synthesize highlighted=_highlighted;
 @property(nonatomic, getter=isSelected) _Bool selected; // @synthesize selected=_selected;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;

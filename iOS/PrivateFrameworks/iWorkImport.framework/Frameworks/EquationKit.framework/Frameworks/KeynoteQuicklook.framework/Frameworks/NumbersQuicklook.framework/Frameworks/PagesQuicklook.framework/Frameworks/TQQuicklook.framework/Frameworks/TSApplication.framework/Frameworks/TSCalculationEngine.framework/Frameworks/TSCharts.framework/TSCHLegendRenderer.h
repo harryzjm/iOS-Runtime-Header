@@ -21,6 +21,7 @@
 - (void)p_drawPieBadgeIntoContext:(struct CGContext *)arg1 forCell:(id)arg2;
 - (void)p_drawLineAreaBadgeIntoContext:(struct CGContext *)arg1 forCell:(id)arg2;
 - (void)p_drawDefaultBadgeIntoContext:(struct CGContext *)arg1 forCell:(id)arg2;
+- (id)legendLayoutItem;
 - (id)p_selectionPathForCell:(id)arg1;
 
 @end

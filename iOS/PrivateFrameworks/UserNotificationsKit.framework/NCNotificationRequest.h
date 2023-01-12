@@ -10,7 +10,7 @@
 #import <UserNotificationsKit/NSCopying-Protocol.h>
 #import <UserNotificationsKit/NSMutableCopying-Protocol.h>
 
-@class NCNotificationAction, NCNotificationContent, NCNotificationOptions, NCNotificationSound, NSArray, NSDate, NSDictionary, NSSet, NSString, UNNotification;
+@class NCNotificationAction, NCNotificationAlertOptions, NCNotificationContent, NCNotificationOptions, NCNotificationSound, NSArray, NSDate, NSDictionary, NSSet, NSString, NSUUID, UNNotification;
 
 @interface NCNotificationRequest : NSObject <BSDescriptionProviding, NSCopying, NSMutableCopying>
 {
@@ -23,11 +23,12 @@
     NSArray *_intentIdentifiers;
     NSArray *_peopleIdentifiers;
     NSString *_parentSectionIdentifier;
-    _Bool _uniqueThreadIdentifier;
+    _Bool _threadIdentifierUnique;
     NSDate *_timestamp;
     NSSet *_requestDestinations;
     NCNotificationContent *_content;
     NCNotificationOptions *_options;
+    NCNotificationAlertOptions *_alertOptions;
     NSDictionary *_context;
     NSSet *_settingsSections;
     NCNotificationSound *_sound;
@@ -42,8 +43,12 @@
     unsigned long long _collapsedNotificationsCount;
     NSDictionary *_sourceInfo;
     _Bool _criticalAlert;
+    unsigned long long _interruptionLevel;
+    NSUUID *_uuid;
+    float _relevanceScore;
 }
 
++ (id)notificationRequestWithNotificationId:(id)arg1 requestDestinations:(id)arg2 alertOptionsSuppression:(unsigned long long)arg3;
 + (id)notificationRequestWithNotificationId:(id)arg1 requestDestinations:(id)arg2 lockScreenPersistence:(unsigned long long)arg3;
 + (id)notificationRequestWithSectionId:(id)arg1 notificationId:(id)arg2 subSectionIds:(id)arg3 requestDestinations:(id)arg4;
 + (id)notificationRequestWithSectionId:(id)arg1 subSectionIds:(id)arg2;
@@ -71,10 +76,14 @@
 + (id)notificationRequestWithSectionId:(id)arg1 threadId:(id)arg2 notificationId:(id)arg3 requestDestinations:(id)arg4;
 + (id)notificationRequestWithSectionId:(id)arg1 threadId:(id)arg2 notificationId:(id)arg3 requestDestination:(id)arg4;
 + (id)notificationRequestWithSectionId:(id)arg1 notificationId:(id)arg2 threadId:(id)arg3 timestamp:(id)arg4;
++ (id)notificationRequestWithSectionId:(id)arg1 notificationId:(id)arg2 threadId:(id)arg3 subSectionIds:(id)arg4 title:(id)arg5 message:(id)arg6 timestamp:(id)arg7 destinations:(id)arg8 options:(id)arg9 alertOptions:(id)arg10;
 + (id)notificationRequestWithSectionId:(id)arg1 notificationId:(id)arg2 threadId:(id)arg3 subSectionIds:(id)arg4 title:(id)arg5 message:(id)arg6 timestamp:(id)arg7 destinations:(id)arg8 options:(id)arg9;
 + (id)notificationRequestWithSectionId:(id)arg1 notificationId:(id)arg2 threadId:(id)arg3 title:(id)arg4 message:(id)arg5 timestamp:(id)arg6 destinations:(id)arg7;
 + (id)notificationRequestWithSectionId:(id)arg1 notificationId:(id)arg2 threadId:(id)arg3 title:(id)arg4 message:(id)arg5 timestamp:(id)arg6 destination:(id)arg7;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) float relevanceScore; // @synthesize relevanceScore=_relevanceScore;
+@property(readonly, copy, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
+@property(readonly, nonatomic) unsigned long long interruptionLevel; // @synthesize interruptionLevel=_interruptionLevel;
 @property(readonly, nonatomic, getter=isCriticalAlert) _Bool criticalAlert; // @synthesize criticalAlert=_criticalAlert;
 @property(readonly, copy, nonatomic) NSDictionary *sourceInfo; // @synthesize sourceInfo=_sourceInfo;
 @property(readonly, nonatomic) unsigned long long collapsedNotificationsCount; // @synthesize collapsedNotificationsCount=_collapsedNotificationsCount;
@@ -89,11 +98,12 @@
 @property(readonly, nonatomic) NCNotificationSound *sound; // @synthesize sound=_sound;
 @property(readonly, copy, nonatomic) NSSet *settingsSections; // @synthesize settingsSections=_settingsSections;
 @property(readonly, copy, nonatomic) NSDictionary *context; // @synthesize context=_context;
+@property(readonly, nonatomic) NCNotificationAlertOptions *alertOptions; // @synthesize alertOptions=_alertOptions;
 @property(readonly, nonatomic) NCNotificationOptions *options; // @synthesize options=_options;
 @property(readonly, nonatomic) NCNotificationContent *content; // @synthesize content=_content;
 @property(readonly, copy, nonatomic) NSSet *requestDestinations; // @synthesize requestDestinations=_requestDestinations;
 @property(readonly, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
-@property(readonly, nonatomic, getter=isUniqueThreadIdentifier) _Bool uniqueThreadIdentifier; // @synthesize uniqueThreadIdentifier=_uniqueThreadIdentifier;
+@property(readonly, nonatomic, getter=isUniqueThreadIdentifier) _Bool threadIdentifierUnique; // @synthesize threadIdentifierUnique=_threadIdentifierUnique;
 @property(readonly, copy, nonatomic) NSString *parentSectionIdentifier; // @synthesize parentSectionIdentifier=_parentSectionIdentifier;
 @property(readonly, copy, nonatomic) NSArray *peopleIdentifiers; // @synthesize peopleIdentifiers=_peopleIdentifiers;
 @property(readonly, copy, nonatomic) NSArray *intentIdentifiers; // @synthesize intentIdentifiers=_intentIdentifiers;
@@ -112,6 +122,8 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, copy, nonatomic) NSString *uniqueThreadIdentifier;
+@property(readonly, copy, nonatomic) NSString *topLevelSectionIdentifier;
 - (_Bool)matchesThreadForRequest:(id)arg1;
 - (_Bool)matchesRequest:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
@@ -119,6 +131,7 @@
 - (_Bool)isCollapsibleWithNotificationRequest:(id)arg1;
 - (id)_actionsDescriptionForEnvironment:(id)arg1;
 - (id)_actionsLoggingDescription;
+- (id)_interruptionLevelLoggingDescription;
 - (id)loggingDescription;
 
 // Remaining properties

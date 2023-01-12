@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NPKButtonListener, NPKQuickPaymentSessionLocalAuthenticationCoordinator, NSDictionary, PKPass;
-@protocol NPKQuickPaymentSessionDelegate, NPKQuickPaymentSessionSourceDelegate, OS_dispatch_queue;
+@protocol NPKQuickPaymentSessionSourceDelegate, OS_dispatch_queue;
 
 @interface NPKQuickPaymentSessionSource : NSObject
 {
@@ -18,7 +18,6 @@
     _Bool _delegateHandlingButtonEvents;
     _Bool _deferAuthorization;
     _Bool _requireFirstInQueue;
-    id <NPKQuickPaymentSessionDelegate> _sessionDelegate;
     unsigned long long _preconditionState;
     PKPass *_initialPass;
     NSDictionary *_vasPasses;
@@ -32,7 +31,6 @@
 - (void)setVasPasses:(id)arg1;
 - (void)setInitialPass:(id)arg1;
 - (void)setPreconditionState:(unsigned long long)arg1;
-- (void)setSessionDelegate:(id)arg1;
 - (void)setRequireFirstInQueue:(_Bool)arg1;
 - (void)setDeferAuthorization:(_Bool)arg1;
 - (void)setDelegateHandlingButtonEvents:(_Bool)arg1;

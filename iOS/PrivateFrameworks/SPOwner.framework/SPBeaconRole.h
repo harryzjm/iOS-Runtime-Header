@@ -9,17 +9,24 @@
 #import <SPOwner/NSCopying-Protocol.h>
 #import <SPOwner/NSSecureCoding-Protocol.h>
 
+@class NSString;
+
 @interface SPBeaconRole : NSObject <NSCopying, NSSecureCoding>
 {
     long long _roleId;
+    NSString *_role;
+    NSString *_roleEmoji;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *roleEmoji; // @synthesize roleEmoji=_roleEmoji;
+@property(copy, nonatomic) NSString *role; // @synthesize role=_role;
 @property(nonatomic) long long roleId; // @synthesize roleId=_roleId;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithRoleId:(long long)arg1;
+- (id)initWithRoleId:(long long)arg1 role:(id)arg2 roleEmoji:(id)arg3;
 
 @end
 

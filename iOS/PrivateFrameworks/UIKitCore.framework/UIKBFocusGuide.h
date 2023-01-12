@@ -15,6 +15,10 @@ __attribute__((visibility("hidden")))
 
 @property(nonatomic) id <UIKBFocusGuideDelegate> keyboardDelegate; // @synthesize keyboardDelegate=_keyboardDelegate;
 @property(nonatomic) unsigned long long focusHeading; // @synthesize focusHeading;
+- (id)focusGuideRegion:(id)arg1 preferredFocusEnvironmentsForMovementRequest:(id)arg2;
+- (_Bool)_ignoresSpeedBumpEdges;
+- (double)_focusPriority;
+- (_Bool)_isUnclippable;
 - (_Bool)_isUnoccludable;
 - (void)_didUpdateFocusToPreferredFocusedView;
 

@@ -14,8 +14,6 @@
 + (_Bool)isPhoneNumber:(id)arg1 equivalentToExistingPhoneNumber:(id)arg2;
 - (_Bool)_legacy_isPhoneNumberEmergencyNumber:(id)arg1;
 - (_Bool)isPhoneNumberEmergencyNumber:(id)arg1;
-- (id)_legacy_carrierBundleValueForKey:(id)arg1 ofType:(Class)arg2;
-- (id)selectedPhoneNumberRegistrationRegistrationCarrierBundleValueForKey:(id)arg1 ofType:(Class)arg2 withFallbackValue:(id)arg3;
 - (id)_reevaluateCachedSelectedPhoneNumberWithContext:(id)arg1 error:(id *)arg2;
 - (id)_reevaluateCachedSelectedPhoneNumberRegistrationWithSubscription:(id)arg1 activeContexts:(id)arg2 fallbackProhibited:(_Bool)arg3 persistUpdate:(_Bool)arg4 error:(id *)arg5;
 - (id)_firstPresentSubscriptionFromAvailableSubscriptions:(id)arg1;

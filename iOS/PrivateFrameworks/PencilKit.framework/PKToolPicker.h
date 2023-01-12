@@ -6,14 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <PencilKit/PKPaletteViewDelegate-Protocol.h>
+#import <PencilKit/PKDrawingPaletteViewDelegate-Protocol.h>
 #import <PencilKit/PKPaletteViewInteractionDelegate-Protocol.h>
+#import <PencilKit/PKToolPickerPopoverPresentationConfiguring-Protocol.h>
+#import <PencilKit/PKToolPickerSelectionContext-Protocol.h>
 
-@class NSArray, NSHashTable, NSString, PKDrawingPaletteView, PKPaletteHostView, PKPaletteViewInteraction, PKTool, UIViewController;
-@protocol PKPaletteViewAnnotationDelegate, PKPaletteViewDelegate, PKToolPickerPrivateDelegate;
+@class NSArray, NSHashTable, NSMutableArray, NSString, PKDrawingPaletteView, PKPaletteHostView, PKPaletteViewInteraction, PKTool, UIViewController;
+@protocol PKPaletteViewAnnotationDelegate, PKToolPickerPopoverPresentationConfiguring, PKToolPickerPrivateDelegate, PKToolPickerSelectionContext;
 
-@interface PKToolPicker : NSObject <PKPaletteViewDelegate, PKPaletteViewInteractionDelegate>
+@interface PKToolPicker : NSObject <PKDrawingPaletteViewDelegate, PKPaletteViewInteractionDelegate, PKToolPickerPopoverPresentationConfiguring, PKToolPickerSelectionContext>
 {
+    NSMutableArray *_mutableTools;
     _Bool __showsHandwritingTool;
     _Bool _wasVisibleBeforeResponderChanges;
     _Bool _didCalculateVisibleBeforeResponderChanges;
@@ -22,8 +25,18 @@
     _Bool __paletteWasCompact;
     _Bool __pencilInteractionEnabledWhenNotVisible;
     _Bool __inputViewVisible;
-    _Bool __wantsClearBackgroundColorInCompactSize;
+    _Bool __toolPickerVisible;
     _Bool __animatingToVisible;
+    _Bool __showsPlusButton;
+    _Bool __wantsClearBackgroundColorInCompactSize;
+    _Bool __wantsUndoRedoButtonsVisibleInCompactSize;
+    _Bool __canShowEllipsisButtonInCompactSize;
+    _Bool __wantsEllipsisButtonVisibleInCompactSize;
+    _Bool __wantsBottomLineDividerVisibleInCompactSize;
+    _Bool __ignoresSafeAreaInsetsInCompactSize;
+    _Bool __useEqualSpacingLayoutInCompactSize;
+    _Bool __showsRuler;
+    unsigned long long _selectionMask;
     PKTool *_selectedTool;
     NSString *_stateAutosaveName;
     long long _overrideUserInterfaceStyle;
@@ -31,12 +44,12 @@
     NSHashTable *__observers;
     NSHashTable *__firstRespondersForVisibleUI;
     PKPaletteViewInteraction *__interaction;
-    NSArray *__toolIdentifiers;
-    NSArray *__toolProperties;
     UIViewController *__presentationController;
     id <PKPaletteViewAnnotationDelegate> __annotationDelegate;
-    id <PKPaletteViewDelegate> __additionalPaletteViewDelegate;
     id <PKToolPickerPrivateDelegate> __delegate;
+    double __interItemToolsSpacingInCompactSize;
+    double __interItemUndoRedoButtonsSpacingInCompactSize;
+    struct NSDirectionalEdgeInsets __edgeInsetsInCompactSize;
 }
 
 + (_Bool)_canShowHandwritingTool;
@@ -50,16 +63,25 @@
 + (id)_toolPickerForWindow:(id)arg1;
 + (void)_setPrefersPencilOnlyDrawingForiWork:(_Bool)arg1;
 - (void).cxx_destruct;
+@property(nonatomic, setter=_setShowsRuler:) _Bool _showsRuler; // @synthesize _showsRuler=__showsRuler;
+@property(nonatomic, setter=_setUseEqualSpacingLayoutInCompactSize:) _Bool _useEqualSpacingLayoutInCompactSize; // @synthesize _useEqualSpacingLayoutInCompactSize=__useEqualSpacingLayoutInCompactSize;
+@property(nonatomic, setter=_setInterItemUndoRedoButtonsSpacingInCompactSize:) double _interItemUndoRedoButtonsSpacingInCompactSize; // @synthesize _interItemUndoRedoButtonsSpacingInCompactSize=__interItemUndoRedoButtonsSpacingInCompactSize;
+@property(nonatomic, setter=_setInterItemToolsSpacingInCompactSize:) double _interItemToolsSpacingInCompactSize; // @synthesize _interItemToolsSpacingInCompactSize=__interItemToolsSpacingInCompactSize;
+@property(nonatomic, setter=_setEdgeInsetsInCompactSize:) struct NSDirectionalEdgeInsets _edgeInsetsInCompactSize; // @synthesize _edgeInsetsInCompactSize=__edgeInsetsInCompactSize;
+@property(nonatomic, setter=_setIgnoresSafeAreaInsetsInCompactSize:) _Bool _ignoresSafeAreaInsetsInCompactSize; // @synthesize _ignoresSafeAreaInsetsInCompactSize=__ignoresSafeAreaInsetsInCompactSize;
+@property(nonatomic, setter=_setWantsBottomLineDividerVisibleInCompactSize:) _Bool _wantsBottomLineDividerVisibleInCompactSize; // @synthesize _wantsBottomLineDividerVisibleInCompactSize=__wantsBottomLineDividerVisibleInCompactSize;
+@property(nonatomic, setter=_setWantsEllipsisButtonVisibleInCompactSize:) _Bool _wantsEllipsisButtonVisibleInCompactSize; // @synthesize _wantsEllipsisButtonVisibleInCompactSize=__wantsEllipsisButtonVisibleInCompactSize;
+@property(readonly, nonatomic) _Bool _canShowEllipsisButtonInCompactSize; // @synthesize _canShowEllipsisButtonInCompactSize=__canShowEllipsisButtonInCompactSize;
+@property(nonatomic, setter=_setWantsUndoRedoButtonsVisibleInCompactSize:) _Bool _wantsUndoRedoButtonsVisibleInCompactSize; // @synthesize _wantsUndoRedoButtonsVisibleInCompactSize=__wantsUndoRedoButtonsVisibleInCompactSize;
+@property(nonatomic, setter=_setWantsClearBackgroundColorInCompactSize:) _Bool _wantsClearBackgroundColorInCompactSize; // @synthesize _wantsClearBackgroundColorInCompactSize=__wantsClearBackgroundColorInCompactSize;
+@property(nonatomic, setter=_setShowsPlusButton:) _Bool _showsPlusButton; // @synthesize _showsPlusButton=__showsPlusButton;
 @property(readonly, nonatomic, getter=_isAnimatingToVisible) _Bool _animatingToVisible; // @synthesize _animatingToVisible=__animatingToVisible;
 @property(nonatomic) __weak id <PKToolPickerPrivateDelegate> _delegate; // @synthesize _delegate=__delegate;
-@property(nonatomic, setter=_setWantsClearBackgroundColorInCompactSize:) _Bool _wantsClearBackgroundColorInCompactSize; // @synthesize _wantsClearBackgroundColorInCompactSize=__wantsClearBackgroundColorInCompactSize;
-@property(nonatomic, setter=_setAdditionalPaletteViewDelegate:) __weak id <PKPaletteViewDelegate> _additionalPaletteViewDelegate; // @synthesize _additionalPaletteViewDelegate=__additionalPaletteViewDelegate;
 @property(nonatomic, setter=_setAnnotationDelegate:) __weak id <PKPaletteViewAnnotationDelegate> _annotationDelegate; // @synthesize _annotationDelegate=__annotationDelegate;
 @property(nonatomic, setter=_setPresentationController:) __weak UIViewController *_presentationController; // @synthesize _presentationController=__presentationController;
+@property(nonatomic) _Bool _toolPickerVisible; // @synthesize _toolPickerVisible=__toolPickerVisible;
 @property(nonatomic, getter=_isInputViewVisible, setter=_setInputViewVisible:) _Bool _inputViewVisible; // @synthesize _inputViewVisible=__inputViewVisible;
 @property(nonatomic, getter=_isPencilInteractionEnabledWhenNotVisible) _Bool _pencilInteractionEnabledWhenNotVisible; // @synthesize _pencilInteractionEnabledWhenNotVisible=__pencilInteractionEnabledWhenNotVisible;
-@property(retain, nonatomic) NSArray *_toolProperties; // @synthesize _toolProperties=__toolProperties;
-@property(retain, nonatomic) NSArray *_toolIdentifiers; // @synthesize _toolIdentifiers=__toolIdentifiers;
 @property(nonatomic) _Bool _paletteWasCompact; // @synthesize _paletteWasCompact=__paletteWasCompact;
 @property(retain, nonatomic, setter=_setInteraction:) PKPaletteViewInteraction *_interaction; // @synthesize _interaction=__interaction;
 @property(retain, nonatomic) NSHashTable *_firstRespondersForVisibleUI; // @synthesize _firstRespondersForVisibleUI=__firstRespondersForVisibleUI;
@@ -70,48 +92,80 @@
 @property(copy, nonatomic) NSString *stateAutosaveName; // @synthesize stateAutosaveName=_stateAutosaveName;
 @property(nonatomic, getter=isRulerActive) _Bool rulerActive; // @synthesize rulerActive=_rulerActive;
 @property(retain, nonatomic) PKTool *selectedTool; // @synthesize selectedTool=_selectedTool;
+@property(nonatomic) unsigned long long selectionMask; // @synthesize selectionMask=_selectionMask;
 @property(nonatomic) _Bool _didCalculateVisibleBeforeResponderChanges; // @synthesize _didCalculateVisibleBeforeResponderChanges;
 @property(nonatomic) _Bool _wasVisibleBeforeResponderChanges; // @synthesize _wasVisibleBeforeResponderChanges;
 @property(nonatomic, setter=_setShowsHandwritingTool:) _Bool _showsHandwritingTool; // @synthesize _showsHandwritingTool=__showsHandwritingTool;
-- (void)setIsEditingStrokeSelection:(_Bool)arg1;
+@property(readonly, nonatomic) id <PKToolPickerSelectionContext> _selectionContext;
+- (void)_performPencilPreferredActionShowColorPalette;
+- (void)_performPencilPreferredActionSwitchPrevious;
+- (void)_performPencilPreferredActionSwitchEraser;
+- (_Bool)_canResetToolsFrom:(id)arg1;
+- (void)_resetTools:(id)arg1 selectedTool:(id)arg2;
+- (_Bool)_canRemoveTool:(id)arg1;
+- (void)_removeTool:(id)arg1 updateUI:(_Bool)arg2;
+- (void)_removeTool:(id)arg1;
+- (_Bool)_canInsertTool:(id)arg1;
+- (void)_insertTool:(id)arg1 atIndex:(unsigned long long)arg2 updateUI:(_Bool)arg3;
+- (void)_insertTool:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)_addTool:(id)arg1 updateUI:(_Bool)arg2;
+- (void)_addTool:(id)arg1;
+@property(readonly, nonatomic) NSArray *_tools;
 @property(readonly, nonatomic, getter=_isHandwritingToolSelected) _Bool _handwritingToolSelected;
+- (id)_handwritingTool;
+@property(readonly, nonatomic) struct UIEdgeInsets layoutSceneMargins;
+@property(readonly, nonatomic) unsigned long long permittedArrowDirections;
+@property(readonly, nonatomic) NSArray *passthroughViews;
+@property(readonly, nonatomic) __weak id <PKToolPickerPopoverPresentationConfiguring> _popoverPresentationConfiguration;
 - (void)_tellDelegateToHideToolPicker;
-- (id)_internalClassesAcceptingFirstResponder;
+- (_Bool)_internalClassesAcceptingFirstResponderContainsObject:(id)arg1;
 - (void)_updatePaletteUserInterfaceStyle:(long long)arg1;
 - (void)_updatePaletteTraitCollection:(id)arg1;
 @property(readonly, nonatomic) PKPaletteHostView *_paletteHostView;
-@property(nonatomic, getter=_isBackgroundMaterialUpdatingPaused, setter=_setBackgroundMaterialUpdatingPaused:) _Bool _backgroundMaterialUpdatingPaused;
 - (void)_hasSeenPencilPairingUIDidChange:(id)arg1;
 - (void)_recognitionLocaleIdentifierDidChange:(id)arg1;
 - (void)paletteViewInteractionWillEnterForeground:(id)arg1;
 - (void)paletteViewInteractionDidActivate:(id)arg1;
-- (void)inputResponderController:(id)arg1 inputViewSetVisibilityDidChange:(_Bool)arg2 includedReset:(_Bool)arg3;
+- (void)keyboardSceneDelegate:(id)arg1 inputViewSetVisibilityDidChange:(_Bool)arg2 includedReset:(_Bool)arg3;
 - (_Bool)shouldHandlePencilInteractionWhenNotVisible:(id)arg1;
 - (id)paletteViewColorPickerPopoverPresentationSourceView:(id)arg1;
 - (struct CGRect)paletteViewColorPickerPopoverPresentationSourceRect:(id)arg1;
 - (void)paletteView:(id)arg1 didChangeColor:(id)arg2;
 - (void)paletteViewDidChangePosition:(id)arg1;
 - (void)paletteViewDidToggleRuler:(id)arg1;
-- (void)paletteViewSelectedToolInkDidChange:(id)arg1;
-- (_Bool)paletteView:(id)arg1 shouldSetSelectedToolColor:(id)arg2;
+- (void)paletteViewToolsDidChange:(id)arg1;
+- (void)paletteView:(id)arg1 didSelectTool:(id)arg2 atIndex:(unsigned long long)arg3;
+- (_Bool)paletteView:(id)arg1 shouldChangeSelectedToolColor:(id)arg2;
 - (id)paletteViewUndoManager:(id)arg1;
 - (void)paletteViewFirstResponderDidUpdate:(id)arg1;
 - (id)paletteViewCurrentFirstResponder:(id)arg1;
-- (void)_savePaletteViewState;
+- (id)_toolsState;
+- (void)_saveToolPickerState;
+- (_Bool)_canRestoreToolWithIdentifier:(id)arg1;
 - (void)_restoreToolPickerState;
 @property(readonly, nonatomic) NSString *_paletteViewStateRestorationDefaultsKey;
 - (void)dealloc;
 - (id)init;
 - (void)_enableTapInteractionForWindow:(id)arg1;
 - (struct CGRect)frameObscuredInView:(id)arg1;
+@property(readonly, nonatomic) long long _palettePosition;
+- (_Bool)_hasToolPassingTest:(CDUnknownBlockType)arg1;
+- (_Bool)_hasLassoTool;
+- (_Bool)_hasEraserTool;
+- (_Bool)_hasHandwritingTool;
+- (id)_paletteAccessibilityIdentifier;
 - (void)_updateUI;
 - (id)_configuredPaletteViewInteractionForWindow:(id)arg1;
+- (void)_notifyVisibilityDidChangeIsAnimationFinished:(_Bool)arg1;
+- (void)_setVisibleInWindow:(id)arg1 animated:(_Bool)arg2 notify:(_Bool)arg3;
 - (void)_setVisibleInWindow:(id)arg1;
 - (void)_updateToolPickerVisibility;
 @property(readonly, nonatomic) _Bool isVisible;
 @property(readonly, nonatomic) _Bool _interactionIsValid;
 - (void)calculateIsVisibleBeforeResponderChangesForCurrentRunLoopIfNecessary;
-- (void)_setSelectedTool:(id)arg1 saveOptions:(_Bool)arg2 updateUI:(_Bool)arg3;
+- (_Bool)_canSelectTool:(id)arg1;
+- (void)_notifySelectedToolDidChange;
+- (void)_setSelectedTool:(id)arg1 saveState:(_Bool)arg2 updateUI:(_Bool)arg3;
 @property(readonly, nonatomic) PKDrawingPaletteView *_paletteView;
 - (void)_updateVisibilityForFirstResponder:(id)arg1;
 - (void)setVisible:(_Bool)arg1 forFirstResponder:(id)arg2;

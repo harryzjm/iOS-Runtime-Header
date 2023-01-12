@@ -13,6 +13,7 @@
     NSLayoutConstraint *_widthConstraint;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSLayoutConstraint *widthConstraint; // @synthesize widthConstraint=_widthConstraint;
 @property(nonatomic) id target; // @synthesize target=_target;
 @property(retain, nonatomic) UISegmentedControl *segmentedControl; // @synthesize segmentedControl=_segmentedControl;
@@ -20,7 +21,6 @@
 - (void)prepareForReuse;
 - (_Bool)drawsUnderline;
 - (void)applyLayoutAttributes:(id)arg1;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

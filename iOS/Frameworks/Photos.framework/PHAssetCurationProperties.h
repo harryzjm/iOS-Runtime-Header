@@ -14,9 +14,11 @@
     float _behavioralScore;
     float _semanticScore;
     float _interactionScore;
-    NSString *_creatorBundleID;
+    NSString *_importedByBundleIdentifier;
+    NSString *_importedByDisplayName;
     NSDate *_addedDate;
     NSDate *_lastSharedDate;
+    NSString *_syndicationIdentifier;
 }
 
 + (id)propertiesToFetch;
@@ -25,13 +27,15 @@
 + (id)entityName;
 + (id)propertySetName;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *syndicationIdentifier; // @synthesize syndicationIdentifier=_syndicationIdentifier;
 @property(readonly, nonatomic) NSDate *lastSharedDate; // @synthesize lastSharedDate=_lastSharedDate;
 @property(readonly, nonatomic) float interactionScore; // @synthesize interactionScore=_interactionScore;
 @property(readonly, nonatomic) float semanticScore; // @synthesize semanticScore=_semanticScore;
 @property(readonly, nonatomic) float behavioralScore; // @synthesize behavioralScore=_behavioralScore;
 @property(readonly, nonatomic) float interestingSubjectScore; // @synthesize interestingSubjectScore=_interestingSubjectScore;
 @property(readonly, nonatomic) NSDate *addedDate; // @synthesize addedDate=_addedDate;
-@property(readonly, nonatomic) NSString *creatorBundleID; // @synthesize creatorBundleID=_creatorBundleID;
+@property(readonly, nonatomic) NSString *importedByDisplayName; // @synthesize importedByDisplayName=_importedByDisplayName;
+@property(readonly, nonatomic) NSString *importedByBundleIdentifier; // @synthesize importedByBundleIdentifier=_importedByBundleIdentifier;
 - (float)_semanticScoreFromBehavioralScore:(double)arg1;
 @property(readonly, nonatomic) NSArray *objectSaliencyRects;
 - (id)initWithFetchDictionary:(id)arg1 asset:(id)arg2 prefetched:(_Bool)arg3;

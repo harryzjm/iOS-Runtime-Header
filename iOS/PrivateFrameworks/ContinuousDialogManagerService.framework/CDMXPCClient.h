@@ -19,11 +19,14 @@
 }
 
 - (void).cxx_destruct;
+- (void)handleServiceErrorResponse:(id)arg1;
+- (void)handleServiceNLUResponse:(id)arg1;
 - (void)handleServiceAceUpdate:(id)arg1;
+- (void)handleClientListGraphs:(CDUnknownBlockType)arg1;
+- (void)handleClientSetGraph:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)handleClientSetupRequest:(id)arg1;
+- (void)handleClientNLURequest:(id)arg1;
 - (void)handleClientAceUpdate:(id)arg1;
-- (id)_remoteObjectProxy;
-- (void)_clearConnectionWithError:(id)arg1;
-- (id)_connection;
 - (void)disconnect;
 - (void)connect;
 - (id)initWithDelegate:(id)arg1;

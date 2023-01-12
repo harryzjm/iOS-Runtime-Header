@@ -13,14 +13,14 @@
 
 @interface TSCH3DSharegroupPool : NSObject <TSCH3DSharegroupDelayCheckerParent, TSUiOSMemoryWarningFlushable>
 {
-    long long mSize;
-    long long mNumAlive;
-    long long mDisableLevel;
-    NSMutableArray *mSharegroups;
-    NSCondition *mCondition;
-    _Bool mBusy;
-    TSCH3DSharegroupDelayChecker *mChecker;
-    unsigned long long mApplicationState;
+    long long _size;
+    long long _numAlive;
+    long long _disableLevel;
+    NSMutableArray *_sharegroups;
+    NSCondition *_condition;
+    _Bool _busy;
+    TSCH3DSharegroupDelayChecker *_checker;
+    unsigned long long _applicationState;
 }
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
@@ -52,7 +52,6 @@
 - (void)applicationWillEnterForeground;
 - (void)applicationWillResignActive;
 - (void)p_lockAndPerformBlock:(CDUnknownBlockType)arg1;
-- (void)dealloc;
 - (id)init;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 

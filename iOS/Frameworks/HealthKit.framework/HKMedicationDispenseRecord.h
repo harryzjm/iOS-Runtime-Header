@@ -27,10 +27,11 @@
 + (_Bool)_isConcreteObjectClass;
 + (_Bool)supportsEquivalence;
 + (_Bool)supportsSecureCoding;
-+ (id)_newMedicationDispenseRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(_Bool)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 country:(id)arg11 state:(unsigned long long)arg12 medicationCodings:(id)arg13 quantityDispensed:(id)arg14 preparationDate:(id)arg15 handOverDate:(id)arg16 dosages:(id)arg17 earliestDosageDate:(id)arg18 statusCoding:(id)arg19 daysSupplyQuantity:(id)arg20 config:(CDUnknownBlockType)arg21;
-+ (id)medicationDispenseRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(_Bool)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 country:(id)arg11 state:(unsigned long long)arg12 medicationCodings:(id)arg13 quantityDispensed:(id)arg14 preparationDate:(id)arg15 handOverDate:(id)arg16 dosages:(id)arg17 earliestDosageDate:(id)arg18 statusCoding:(id)arg19 daysSupplyQuantity:(id)arg20;
-+ (id)medicationDispenseRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(_Bool)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 country:(id)arg10 state:(unsigned long long)arg11 medicationCodings:(id)arg12 quantityDispensed:(id)arg13 preparationDate:(id)arg14 handOverDate:(id)arg15 dosages:(id)arg16 earliestDosageDate:(id)arg17 statusCoding:(id)arg18 daysSupplyQuantity:(id)arg19;
++ (id)_newMedicationDispenseRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(_Bool)arg3 modifiedDate:(id)arg4 originIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 country:(id)arg11 state:(unsigned long long)arg12 medicationCodings:(id)arg13 quantityDispensed:(id)arg14 preparationDate:(id)arg15 handOverDate:(id)arg16 dosages:(id)arg17 earliestDosageDate:(id)arg18 statusCoding:(id)arg19 daysSupplyQuantity:(id)arg20 config:(CDUnknownBlockType)arg21;
++ (id)medicationDispenseRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(_Bool)arg3 modifiedDate:(id)arg4 originIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 country:(id)arg11 state:(unsigned long long)arg12 medicationCodings:(id)arg13 quantityDispensed:(id)arg14 preparationDate:(id)arg15 handOverDate:(id)arg16 dosages:(id)arg17 earliestDosageDate:(id)arg18 statusCoding:(id)arg19 daysSupplyQuantity:(id)arg20;
++ (id)medicationDispenseRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(_Bool)arg3 modifiedDate:(id)arg4 originIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 country:(id)arg10 state:(unsigned long long)arg11 medicationCodings:(id)arg12 quantityDispensed:(id)arg13 preparationDate:(id)arg14 handOverDate:(id)arg15 dosages:(id)arg16 earliestDosageDate:(id)arg17 statusCoding:(id)arg18 daysSupplyQuantity:(id)arg19;
 + (id)defaultDisplayString;
++ (_Bool)groupsByUserDomainConcept;
 + (id)cachedConceptRelationshipKeyPaths;
 + (id)indexableConceptKeyPaths;
 - (void).cxx_destruct;
@@ -65,6 +66,7 @@
 @property(readonly, copy) NSString *description;
 - (id)init;
 - (id)medicalRecordCodings;
+@property(readonly, nonatomic) long long recordCategoryType;
 - (_Bool)applyConcepts:(id)arg1 forKeyPath:(id)arg2 error:(id *)arg3;
 - (id)codingsForKeyPath:(id)arg1 error:(id *)arg2;
 

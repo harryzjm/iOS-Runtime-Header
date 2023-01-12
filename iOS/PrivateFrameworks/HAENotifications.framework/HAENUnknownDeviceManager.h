@@ -14,22 +14,31 @@
     struct __CFUserNotification *_notification;
     NSString *_deviceName;
     struct os_unfair_lock_s _lock;
-    int _sessionCnt;
+    int _connectionCnt;
+    _Bool _alertPending;
+    unsigned long long _adamSessionID;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (_Bool)_isUnknownWiredHeadset:(id)arg1;
 - (void)_resetWiredStatus;
-- (void)wiredDeviceSessionDestroyed:(id)arg1;
+- (void)_wiredDeviceSessionDestroyed:(id)arg1;
+- (void)deviceSessionDestroyed:(id)arg1 isWired:(_Bool)arg2;
 - (_Bool)_shouldSurfaceAlert:(id)arg1;
 - (_Bool)_isAlertSupported;
 - (void)surfaceAlertBox;
 - (void)_updateMXVolumeLimitStatus:(id)arg1;
 - (void)_processPrompt:(id)arg1;
+- (void)unknownWiredConnectionDidChange:(_Bool)arg1;
+- (_Bool)isDeviceHeadphoneJack:(id)arg1;
+- (id)getDeviceName;
+- (_Bool)unknownWiredHeadsetConnectedThroughB204;
 - (void)updateWiredDeviceStatus;
 - (void)_processWiredDevice:(id)arg1;
 - (void)_wiredDeviceSessionInit:(id)arg1;
-- (void)wiredDeviceSessionCreated:(id)arg1;
+- (void)_wiredDeviceSessionCreated:(id)arg1 SessionID:(unsigned long long)arg2;
+- (void)deviceSessionCreated:(id)arg1 SessionID:(unsigned long long)arg2;
 - (id)init;
 
 @end

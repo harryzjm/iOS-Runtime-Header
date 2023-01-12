@@ -6,7 +6,6 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface BRCSharingCopyShareURLOperation
 {
     NSString *_appName;

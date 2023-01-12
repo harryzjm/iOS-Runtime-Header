@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_2bafd346)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_2bafd346)addObjectToBuffer:(void *)arg1;
 - (void)blob:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSData *blob;
 @property(readonly, nonatomic) NSString *orthography;

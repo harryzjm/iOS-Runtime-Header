@@ -8,6 +8,7 @@
 {
 }
 
++ (id)compatibleAssetsFromRefreshedAssets:(id)arg1;
 - (_Bool)shouldCopyLocally;
 - (id)launchActivityIdentifier;
 - (id)assetType;

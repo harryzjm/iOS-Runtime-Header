@@ -15,15 +15,24 @@ __attribute__((visibility("hidden")))
 {
     unsigned long long _bytesTransmitted;
     unsigned long long _bytesReceived;
+    long long _durationUSeconds;
+    int _durationCount;
     NSMutableDictionary *_resultCounts;
+    unsigned long long _usedInterfaces;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long usedInterfaces; // @synthesize usedInterfaces=_usedInterfaces;
+@property(readonly, nonatomic) int durationCount; // @synthesize durationCount=_durationCount;
+@property(readonly, nonatomic) long long durationUSecondsTotal; // @synthesize durationUSecondsTotal=_durationUSeconds;
 @property(readonly, nonatomic) unsigned long long bytesReceived; // @synthesize bytesReceived=_bytesReceived;
 @property(readonly, nonatomic) unsigned long long bytesTransmitted; // @synthesize bytesTransmitted=_bytesTransmitted;
+- (id)description;
 - (unsigned long long)countForResult:(unsigned char)arg1;
-- (void)incrementCount:(unsigned long long)arg1 forResult:(unsigned char)arg2;
+- (void)addUsedInterfaces:(unsigned long long)arg1;
+- (void)incrementCountForResult:(unsigned char)arg1;
+- (void)incrementDuration:(double)arg1;
 - (void)incrementBytesReceived:(unsigned long long)arg1;
 - (void)incrementBytesTransmitted:(unsigned long long)arg1;
 - (_Bool)isEqual:(id)arg1;

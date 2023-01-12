@@ -17,6 +17,7 @@
 - (_Bool)saveNamespaceStatus:(id)arg1 toURL:(id)arg2;
 - (id)loadNamespaceStatusFromURL:(id)arg1;
 - (_Bool)deleteStatusForNamespaceWithName:(id)arg1;
+- (_Bool)updateStatusForNamespaceWithName:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (_Bool)saveStatus:(id)arg1;
 - (id)statusForNamespaceWithName:(id)arg1;
 - (id)urlForStatusWithNamespaceName:(id)arg1;

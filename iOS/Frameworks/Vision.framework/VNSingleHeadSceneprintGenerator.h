@@ -9,17 +9,18 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (unsigned long long)inputImageAspectRatioHandlingForConfigurationOptions:(id)arg1;
++ (unsigned int)networkRequiredInputImagePixelFormatForConfigurationOptions:(id)arg1;
 + (id)espressoModelInputImageDimensionsBlobNameForConfigurationOptions:(id)arg1;
 + (id)espressoModelFileNameForConfigurationOptions:(id)arg1;
 + (id)configurationOptionKeysForDetectorKey;
 + (void)fullyPopulateConfigurationOptions:(id)arg1;
 + (void)recordDefaultConfigurationOptionsInDictionary:(id)arg1;
-- (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
+- (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4 progressHandler:(CDUnknownBlockType)arg5;
 - (_Bool)completeInitializationForSession:(id)arg1 error:(id *)arg2;
-- (_Bool)supportsProcessingDevice:(id)arg1;
-- (id)_observationsForSceneprintOutput:(const CDStruct_cf098810 *)arg1 requestRevision:(unsigned long long)arg2 error:(id *)arg3;
-- (_Bool)_analyzeRegionOfInterest:(struct CGRect)arg1 sceneprintOutputBuffer:(CDStruct_cf098810 *)arg2 options:(id)arg3 warningRecorder:(id)arg4 error:(id *)arg5;
-- (_Bool)_analyzePixelBuffer:(struct __CVBuffer *)arg1 sceneprintOutputBuffer:(CDStruct_cf098810 *)arg2 options:(id)arg3 error:(id *)arg4;
+- (id)_observationsForSceneprintOutput:(const CDStruct_0a65202a *)arg1 originatingRequestSpecifier:(id)arg2 error:(id *)arg3;
+- (_Bool)_analyzeRegionOfInterest:(struct CGRect)arg1 sceneprintOutputBuffer:(CDStruct_0a65202a *)arg2 options:(id)arg3 warningRecorder:(id)arg4 error:(id *)arg5;
+- (_Bool)_analyzePixelBuffer:(struct __CVBuffer *)arg1 sceneprintOutputBuffer:(CDStruct_0a65202a *)arg2 options:(id)arg3 error:(id *)arg4;
 
 @end
 

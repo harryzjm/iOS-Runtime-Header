@@ -13,6 +13,7 @@
 @interface PKPaymentMarket : NSObject <NSSecureCoding>
 {
     NSDictionary *_localizedNames;
+    NSString *_notificationAssetIdentifier;
     NSDictionary *_renotifyCampaigns;
     NSSet *_geoFences;
     _Bool _productsRequiredForRegion;
@@ -48,6 +49,8 @@
 - (_Bool)isEqual:(id)arg1;
 - (double)shortestDistanceFromLocation:(id)arg1;
 - (_Bool)containsLocation:(id)arg1;
+@property(readonly, copy) NSString *notificationAssetIdentifier;
+@property(readonly, copy) NSString *renotifyDCICampaignIdentifier;
 @property(readonly, copy) NSString *renotifyOpenLoopCampaignIdentifier;
 @property(readonly, copy) NSString *name; // @dynamic name;
 - (id)description;

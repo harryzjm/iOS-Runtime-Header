@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <IconServices/NSObject-Protocol.h>
+
 @class ISLayer;
 
-@protocol ISCompositorRecipe
+@protocol ISCompositorRecipe <NSObject>
 - (ISLayer *)layerTreeForSize:(struct CGSize)arg1 scale:(double)arg2;
 @end
 

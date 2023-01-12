@@ -6,11 +6,17 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class _UIViewServiceViewControllerOperator;
+@class NSString, NSUUID, UIViewController, _UIViewServiceViewControllerOperator;
 
 @protocol _UIViewServiceViewControllerOperatorDelegate <NSObject>
 
 @optional
+- (NSString *)mainStoryboardNameForViewControllerOperator:(_UIViewServiceViewControllerOperator *)arg1;
+- (NSString *)containingViewControllerClassNameForViewControllerOperator:(_UIViewServiceViewControllerOperator *)arg1;
+- (NSString *)viewControllerClassNameForViewControllerOperator:(_UIViewServiceViewControllerOperator *)arg1;
+- (_Bool)requiresExtensionContextForViewControllerOperator:(_UIViewServiceViewControllerOperator *)arg1;
+- (_Bool)isExtensionServiceViewControllerOperator:(_UIViewServiceViewControllerOperator *)arg1;
+- (void)viewControllerOperator:(_UIViewServiceViewControllerOperator *)arg1 didCreateServiceViewController:(UIViewController *)arg2 contextToken:(NSUUID *)arg3;
 - (void)viewControllerOperator:(_UIViewServiceViewControllerOperator *)arg1 didCreateServiceViewControllerOfClass:(Class)arg2;
 @end
 

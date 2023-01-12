@@ -7,6 +7,7 @@
 #import <NewsUI/SXEmbedDataProvider-Protocol.h>
 
 @protocol NUEmbedDataManager <SXEmbedDataProvider>
+@property(readonly, nonatomic) _Bool hasLoaded;
 - (void)loadEmbedDataWithCompletion:(void (^)(void))arg1;
 @end
 

@@ -11,17 +11,17 @@
 __attribute__((visibility("hidden")))
 @interface ASCDefaults : NSObject
 {
-    _Bool _enableWebInspector;
     NSString *_bundleID;
 }
 
 + (id)daemonDefaults;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool enableWebInspector; // @synthesize enableWebInspector=_enableWebInspector;
 @property(readonly, copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
+@property(nonatomic) _Bool forceStandaloneWatch;
+@property(nonatomic) _Bool enableWebInspector;
 @property(copy, nonatomic) NSNumber *overlaysLoadTimeout;
 @property(copy, nonatomic) NSNumber *overlaysRateLimitTimeWindow;
 @property(copy, nonatomic) NSNumber *overlaysRateLimitRequestsPerSecond;

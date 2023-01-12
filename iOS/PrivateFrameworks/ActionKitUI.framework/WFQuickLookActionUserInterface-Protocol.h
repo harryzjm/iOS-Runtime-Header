@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ActionKitUI/WFRemoteUserInterface-Protocol.h>
+#import <ActionKitUI/WFActionRemoteUserInterface-Protocol.h>
 
 @class NSData;
 
-@protocol WFQuickLookActionUserInterface <WFRemoteUserInterface>
+@protocol WFQuickLookActionUserInterface <WFActionRemoteUserInterface>
 - (void)showWithItems:(NSData *)arg1 fullScreen:(_Bool)arg2 completionHandler:(void (^)(NSError *))arg3;
 @end
 

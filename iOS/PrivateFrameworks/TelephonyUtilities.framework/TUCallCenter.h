@@ -8,17 +8,19 @@
 
 #import <TelephonyUtilities/TUCallContainer-Protocol.h>
 
-@class CNContactStore, NSArray, NSString, TUAudioDeviceController, TUCall, TUCallFilterController, TUCallProviderManager, TUCallServicesInterface, TUConversationManager, TURouteController, TUVideoDeviceController;
-@protocol OS_dispatch_queue, TUCallContainerPrivate;
+@class CNContactStore, NSArray, NSString, TUAudioDeviceController, TUCall, TUCallFilterController, TUCallProviderManager, TUCallServicesInterface, TUConversationManager, TUNeighborhoodActivityConduit, TURouteController, TUVideoDeviceController;
+@protocol OS_dispatch_queue, TUCallContainerPrivate, TUFeatureFlags;
 
 @interface TUCallCenter : NSObject <TUCallContainer>
 {
+    id <TUFeatureFlags> _featureFlags;
     TUCallServicesInterface *_callServicesInterface;
     TUAudioDeviceController *_audioDeviceController;
     TUVideoDeviceController *_videoDeviceController;
     TURouteController *_routeController;
     TURouteController *_pairedHostDeviceRouteController;
     TUCallFilterController *_callFilterController;
+    TUNeighborhoodActivityConduit *_neighborhoodActivityConduit;
     CNContactStore *_contactStore;
     TUCallProviderManager *_providerManager;
     TUConversationManager *_conversationManager;
@@ -41,12 +43,17 @@
 @property(retain, nonatomic) TUConversationManager *conversationManager; // @synthesize conversationManager=_conversationManager;
 @property(retain, nonatomic) TUCallProviderManager *providerManager; // @synthesize providerManager=_providerManager;
 @property(retain, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
+@property(retain, nonatomic) TUNeighborhoodActivityConduit *neighborhoodActivityConduit; // @synthesize neighborhoodActivityConduit=_neighborhoodActivityConduit;
 @property(retain, nonatomic) TUCallFilterController *callFilterController; // @synthesize callFilterController=_callFilterController;
 @property(retain, nonatomic) TURouteController *pairedHostDeviceRouteController; // @synthesize pairedHostDeviceRouteController=_pairedHostDeviceRouteController;
 @property(retain, nonatomic) TURouteController *routeController; // @synthesize routeController=_routeController;
 @property(retain, nonatomic) TUVideoDeviceController *videoDeviceController; // @synthesize videoDeviceController=_videoDeviceController;
 @property(retain, nonatomic) TUAudioDeviceController *audioDeviceController; // @synthesize audioDeviceController=_audioDeviceController;
 @property(retain, nonatomic) TUCallServicesInterface *callServicesInterface; // @synthesize callServicesInterface=_callServicesInterface;
+@property(readonly, nonatomic) id <TUFeatureFlags> featureFlags; // @synthesize featureFlags=_featureFlags;
+- (id)_splitSessionErrorWithCode:(long long)arg1 underlyingError:(id)arg2;
+- (void)disconnectDeviceFromSplitSessionUsingMediaRouteIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)createSplitSessionWithDeviceMediaRouteIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)_callGroupCountForCall:(id)arg1 withCall:(id)arg2;
 - (_Bool)canGroupCall:(id)arg1 withCall:(id)arg2;
 @property(readonly, nonatomic, getter=isHoldAndAnswerAllowed) _Bool holdAndAnswerAllowed;
@@ -60,6 +67,7 @@
 - (_Bool)isHoldAllowed;
 - (_Bool)isMergeable;
 - (_Bool)isSwappable;
+- (void)sendUserScoreToRTCReporting:(id)arg1 withScore:(int)arg2;
 - (void)shouldAllowRingingCallStatusIndicator:(_Bool)arg1;
 - (void)shouldSuppressInCallStatusBar:(_Bool)arg1;
 - (id)activeConversationForCall:(id)arg1;
@@ -79,7 +87,7 @@
 - (void)setTTYType:(int)arg1 forCall:(id)arg2;
 - (void)activateInCallUIWithActivityContinuationIdentifier:(id)arg1;
 - (void)handleActionForWiredHeadsetMiddleButtonLongPress;
-- (void)handleActionForWiredHeadsetMiddleButtonPressWithSourceIdentifier:(id)arg1 allowBluetoothAnswerWithoutDowngrade:(_Bool)arg2;
+- (void)handleActionForWiredHeadsetMiddleButtonPressWithSourceIdentifier:(id)arg1 allowBluetoothAnswerWithoutDowngrade:(_Bool)arg2 shouldForceDowngradeToAudio:(_Bool)arg3;
 - (void)handleActionForWiredHeadsetMiddleButtonPress;
 - (void)disconnectAllCalls;
 - (void)disconnectCurrentCallAndActivateHeld;
@@ -91,6 +99,7 @@
 - (void)swapCalls;
 - (void)resumeCall:(id)arg1;
 - (void)unholdCall:(id)arg1;
+- (void)requestVideoUpgradeForCall:(id)arg1;
 - (void)holdCall:(id)arg1;
 - (void)updateCall:(id)arg1 withAnswerRequest:(id)arg2;
 - (void)answerWithRequest:(id)arg1;
@@ -102,6 +111,7 @@
 - (void)answerCall:(id)arg1 withSourceIdentifier:(id)arg2 wantsHoldMusic:(_Bool)arg3;
 - (void)answerCallWithHoldMusic:(id)arg1;
 - (void)answerCall:(id)arg1 withSourceIdentifier:(id)arg2;
+- (void)answerOrJoinCall:(id)arg1;
 - (void)answerCall:(id)arg1;
 - (void)sendFieldModeDigits:(id)arg1 forProvider:(id)arg2;
 - (void)launchAppForDialRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -115,6 +125,7 @@
 - (_Bool)_isCallingAvailableOnSecondaryDeviceWithRelayCallingAvailability:(int)arg1 isProviderAvailable:(_Bool)arg2 isRelayAllowed:(_Bool)arg3 isEmergency:(_Bool)arg4 supportsBasebandCalling:(_Bool)arg5 shouldUseRelay:(_Bool *)arg6;
 - (_Bool)_existingCallsAllowDialRequest:(id)arg1 allowVoiceWithData:(_Bool)arg2;
 @property(readonly, copy, nonatomic) NSArray *callGroupsOnDefaultPairedDevice;
+@property(readonly, copy, nonatomic) NSArray *currentAudioAndVideoCallGroups;
 @property(readonly, copy, nonatomic) NSArray *currentCallGroups;
 - (_Bool)allCallsAreOfService:(int)arg1;
 - (_Bool)allCallsPassTest:(CDUnknownBlockType)arg1;
@@ -166,12 +177,14 @@
 - (_Bool)shouldPreferRelayOverDirectSecondaryCallingForProvider:(id)arg1 isVideo:(_Bool)arg2;
 - (_Bool)isDirectCallingCurrentlyAvailableForProvider:(id)arg1 isVideo:(_Bool)arg2;
 - (_Bool)isRelayCallingSupportedForProvider:(id)arg1 isVideo:(_Bool)arg2;
+- (id)lastDaemonConnectTime;
 - (id)callServicesClientCapabilities;
 @property(readonly, nonatomic) id <TUCallContainerPrivate> callContainer;
 - (void)fetchCurrentCalls;
 - (void)dealloc;
 - (void)registerWithCompletionHandler:(CDUnknownBlockType)arg1;
 @property(readonly, copy) NSString *debugDescription;
+- (id)initWithQueue:(id)arg1 featureFlags:(id)arg2;
 - (id)initWithQueue:(id)arg1;
 - (id)init;
 

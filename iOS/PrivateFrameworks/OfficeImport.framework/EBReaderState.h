@@ -9,8 +9,8 @@
 __attribute__((visibility("hidden")))
 @interface EBReaderState
 {
-    struct XlBinaryReader *mXlReader;
-    struct XlSheetInfoTable *mXlSheetInfoTable;
+    void *mXlReader;
+    void *mXlSheetInfoTable;
     ECColumnWidthConvertor *mColumnWidthConvertor;
     struct XlEshObjectFactory *mXlEshObjectFactory;
     OABReaderState *mOAState;
@@ -22,13 +22,13 @@ __attribute__((visibility("hidden")))
 - (void)reportWarning:(id)arg1;
 - (id)oaState;
 - (id)columnWidthConvertor;
-- (struct XlSheetInfoTable *)xlSheetInfoTable;
+- (void *)xlSheetInfoTable;
 - (void)readGlobalXlObjects;
-- (struct XlBinaryReader *)xlReader;
+- (void *)xlReader;
 - (void)resumeReading;
 - (void)pauseReading;
 - (void)dealloc;
-- (id)initWithXlReader:(struct XlBinaryReader *)arg1 cancelDelegate:(id)arg2;
+- (id)initWithXlReader:(void *)arg1 cancelDelegate:(id)arg2;
 
 @end
 

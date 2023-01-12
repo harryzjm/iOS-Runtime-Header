@@ -6,7 +6,10 @@
 
 #import <CoreRE/NSObject-Protocol.h>
 
+@class NSError, NSString, RESharedResourcePayload;
+
 @protocol REResourceFetchService <NSObject>
+- (void)resourceAtAssetPath:(NSString *)arg1 payloadDidUpdate:(RESharedResourcePayload *)arg2 error:(NSError *)arg3;
 - (void)associateConnectionWithPeerID:(unsigned long long)arg1;
 @end
 

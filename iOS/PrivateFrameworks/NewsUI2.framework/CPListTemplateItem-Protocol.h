@@ -9,6 +9,8 @@
 @class NSString;
 
 @protocol CPListTemplateItem <NSObject>
+@property(nonatomic) _Bool enabled;
+- (_Bool)isEnabled;
 @property(nonatomic, copy) id userInfo;
 @property(nonatomic, readonly) NSString *text;
 @end

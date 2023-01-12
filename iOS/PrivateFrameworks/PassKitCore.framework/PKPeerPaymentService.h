@@ -31,9 +31,6 @@
 - (void)_postAccountChangeNotificationIfNecessaryForAccount:(id)arg1 previousAccount:(id)arg2;
 - (void)_preferencesChanged:(id)arg1;
 - (void)_accountChanged:(id)arg1;
-- (void)_sharedPeerPaymentWebServiceContextWithCompletion:(CDUnknownBlockType)arg1;
-- (void)didReceiveAppleCashSharingRecipientCapabilities:(id)arg1 forHandle:(id)arg2;
-- (void)sendAppleCashCapabilitiesRequestForHandle:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remoteRegistrationRequest:(id)arg1 forHandle:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)resetApplePayManateeViewWithCompletion:(CDUnknownBlockType)arg1;
 - (void)checkTLKsMissingWithCompletion:(CDUnknownBlockType)arg1;
@@ -50,7 +47,6 @@
 - (void)updateMockAccountBalanceByAddingAmount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateMessageReceivedDate:(id)arg1 forTransactionWithIdentifier:(id)arg2;
 - (void)receivedPeerPaymentMessageData:(id)arg1;
-- (void)noteAccountDeleted;
 - (void)presentPeerPaymentTermsAndConditionsWithAccount:(id)arg1 orientation:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentRegistrationFlowWithAccount:(id)arg1 orientation:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentRegistrationFlowWithAccount:(id)arg1 amount:(id)arg2 state:(unsigned long long)arg3 senderAddress:(id)arg4 orientation:(id)arg5 completion:(CDUnknownBlockType)arg6;

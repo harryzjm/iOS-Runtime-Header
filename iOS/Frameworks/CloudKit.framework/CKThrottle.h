@@ -6,45 +6,42 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSString;
+#import <CloudKit/NSSecureCoding-Protocol.h>
 
-@interface CKThrottle : NSObject
+@class NSDate, NSNumber, NSString;
+
+@interface CKThrottle : NSObject <NSSecureCoding>
 {
     int _operationType;
-    NSString *_defaultsKey;
+    NSNumber *_rowID;
     NSString *_label;
     NSString *_containerIdentifier;
     long long _databaseScope;
     NSString *_zoneName;
     NSString *_serviceName;
     NSString *_functionName;
+    NSString *_bundleID;
+    NSString *_operationGroupNamePrefix;
     NSDate *_throttleStartDate;
     unsigned long long _intervalLengthSeconds;
+    unsigned long long _repeatEverySeconds;
     unsigned long long _allowedRequestCount;
     NSDate *_expirationDate;
     unsigned long long _sentRequestCount;
     unsigned long long _currentRequestWindowIndex;
 }
 
-+ (id)enforcedThrottleForCriteria:(id)arg1 willSendRequest:(_Bool)arg2 outThrottleError:(id *)arg3;
-+ (id)throttlingErrorWithRetry:(double)arg1;
-+ (id)CKStatusReportArray;
-+ (void)setThrottleList:(id)arg1;
-+ (id)allThrottles;
-+ (void)removeThrottle:(id)arg1;
-+ (void)removeThrottles:(id)arg1;
-+ (void)locked_removeThrottles:(id)arg1;
-+ (_Bool)addThrottle:(id)arg1;
-+ (void)resetThrottles;
-+ (void)throttleWillBeRemoved:(id)arg1;
-+ (void)setThrottleObserver:(id)arg1;
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long currentRequestWindowIndex; // @synthesize currentRequestWindowIndex=_currentRequestWindowIndex;
 @property(nonatomic) unsigned long long sentRequestCount; // @synthesize sentRequestCount=_sentRequestCount;
 @property(retain, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property(nonatomic) unsigned long long allowedRequestCount; // @synthesize allowedRequestCount=_allowedRequestCount;
+@property(nonatomic) unsigned long long repeatEverySeconds; // @synthesize repeatEverySeconds=_repeatEverySeconds;
 @property(nonatomic) unsigned long long intervalLengthSeconds; // @synthesize intervalLengthSeconds=_intervalLengthSeconds;
 @property(retain, nonatomic) NSDate *throttleStartDate; // @synthesize throttleStartDate=_throttleStartDate;
+@property(copy, nonatomic) NSString *operationGroupNamePrefix; // @synthesize operationGroupNamePrefix=_operationGroupNamePrefix;
+@property(copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property(copy, nonatomic) NSString *functionName; // @synthesize functionName=_functionName;
 @property(copy, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
 @property(nonatomic) int operationType; // @synthesize operationType=_operationType;
@@ -52,19 +49,23 @@
 @property(nonatomic) long long databaseScope; // @synthesize databaseScope=_databaseScope;
 @property(copy, nonatomic) NSString *containerIdentifier; // @synthesize containerIdentifier=_containerIdentifier;
 @property(copy, nonatomic) NSString *label; // @synthesize label=_label;
-@property(copy, nonatomic) NSString *defaultsKey; // @synthesize defaultsKey=_defaultsKey;
-- (void)setThrottles:(id)arg1;
+@property(copy, nonatomic) NSNumber *rowID; // @synthesize rowID=_rowID;
+- (void)incrementSentRequestCount;
 - (double)delayUntilNextOperationAllowed;
 - (_Bool)appliesToCriteria:(id)arg1;
 - (_Bool)isExpired;
-- (void)throttleDataWasChanged;
 - (_Bool)canTestInClientProcess;
-- (void)takeValuesFromThrottleDictionary:(id)arg1;
-- (id)throttleDictionaryBlockingUntilNextRequestWindow;
+- (id)throttleBlockingUntilNextRequestWindow;
+- (id)dictionaryRepresentationForJSON:(_Bool)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (id)initWithDictionaryRepresentation:(id)arg1;
-- (id)initWithDefaultsKey:(id)arg1;
+- (id)initWithSqliteRepresentation:(id)arg1;
+- (id)sqliteRepresentation;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 
 @end

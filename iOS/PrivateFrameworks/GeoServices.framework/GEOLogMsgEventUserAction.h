@@ -8,11 +8,12 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString, PBDataReader;
+@class GEOLogMsgEventUserActionModuleInfo, NSString, PBDataReader;
 
 @interface GEOLogMsgEventUserAction : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
+    GEOLogMsgEventUserActionModuleInfo *_moduleInfo;
     NSString *_userActionEventKey;
     NSString *_userActionEventValue;
     unsigned int _readerMarkPos;
@@ -23,6 +24,7 @@
     struct {
         unsigned int has_userActionEventAction:1;
         unsigned int has_userActionEventTarget:1;
+        unsigned int read_moduleInfo:1;
         unsigned int read_userActionEventKey:1;
         unsigned int read_userActionEventValue:1;
         unsigned int wrote_anyField:1;
@@ -44,6 +46,8 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) GEOLogMsgEventUserActionModuleInfo *moduleInfo;
+@property(readonly, nonatomic) _Bool hasModuleInfo;
 - (int)StringAsUserActionEventAction:(id)arg1;
 - (id)userActionEventActionAsString:(int)arg1;
 @property(nonatomic) _Bool hasUserActionEventAction;

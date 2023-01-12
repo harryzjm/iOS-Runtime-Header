@@ -6,8 +6,8 @@
 
 #import <NotesUI/NSObject-Protocol.h>
 
-@class NSManagedObjectContext, NSManagedObjectID, NSSet, NSString, NoteContext;
-@protocol ICLegacyAccount, ICLegacyFolder, ICLegacyNote;
+@class NSManagedObjectContext, NSManagedObjectID, NSSet, NSString;
+@protocol ICLegacyAccount, ICLegacyContext, ICLegacyFolder, ICLegacyNote;
 
 @protocol ICLegacyFolder <NSObject>
 @property(readonly, nonatomic) _Bool isTrashFolder;
@@ -22,6 +22,6 @@
 @property(readonly, copy, nonatomic) NSString *name;
 @property(readonly, nonatomic) id <ICLegacyAccount> account;
 - (void)addNotesObject:(id <ICLegacyNote>)arg1;
-- (id <ICLegacyNote>)newNoteInContext:(NoteContext *)arg1;
+- (id <ICLegacyNote>)newNoteInContext:(id <ICLegacyContext>)arg1;
 @end
 

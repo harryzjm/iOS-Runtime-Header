@@ -8,6 +8,7 @@
 
 @class WebBookmark, WebBookmarkCollection;
 
+__attribute__((visibility("hidden")))
 @interface BAChangeRecord : NSObject
 {
     WebBookmarkCollection *_collection;

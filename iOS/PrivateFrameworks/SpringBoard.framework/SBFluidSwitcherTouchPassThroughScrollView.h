@@ -6,19 +6,13 @@
 
 #import <UIKit/UIScrollView.h>
 
-@class SBAppLayout;
-
 @interface SBFluidSwitcherTouchPassThroughScrollView : UIScrollView
 {
-    SBAppLayout *_appLayout;
 }
 
-- (void).cxx_destruct;
-@property(retain, nonatomic) SBAppLayout *appLayout; // @synthesize appLayout=_appLayout;
-- (_Bool)cancelTouchTracking;
-- (void)handlePan:(id)arg1;
-- (_Bool)_gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
-- (void)_gestureRecognizerFailed:(id)arg1;
++ (_Bool)superclassRespondsToSetVelocityScaleFactor;
++ (_Bool)superclassRespondsToVelocityScaleFactor;
+@property(nonatomic) double velocityScaleFactor;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 
 @end

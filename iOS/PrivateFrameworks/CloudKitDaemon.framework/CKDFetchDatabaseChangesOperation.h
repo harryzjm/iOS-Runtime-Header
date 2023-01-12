@@ -9,13 +9,13 @@
 @class CKServerChangeToken, NSMutableArray, NSObject, NSString;
 @protocol CKFetchDatabaseChangesOperationCallbacks, OS_dispatch_group, OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface CKDFetchDatabaseChangesOperation <CKDOperationPipelining>
 {
     _Bool _fetchAllChanges;
     CDUnknownBlockType _recordZoneWithIDChangedBlock;
     CDUnknownBlockType _recordZoneWithIDWasDeletedBlock;
     CDUnknownBlockType _recordZoneWithIDWasPurgedBlock;
+    CDUnknownBlockType _recordZoneWithIDWasDeletedDueToEncryptedDataResetBlock;
     CDUnknownBlockType _serverChangeTokenUpdatedBlock;
     CKServerChangeToken *_serverChangeToken;
     long long _status;
@@ -36,18 +36,21 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long status; // @synthesize status=_status;
 @property(retain, nonatomic) CKServerChangeToken *serverChangeToken; // @synthesize serverChangeToken=_serverChangeToken;
 @property(copy, nonatomic) CDUnknownBlockType serverChangeTokenUpdatedBlock; // @synthesize serverChangeTokenUpdatedBlock=_serverChangeTokenUpdatedBlock;
+@property(copy, nonatomic) CDUnknownBlockType recordZoneWithIDWasDeletedDueToEncryptedDataResetBlock; // @synthesize recordZoneWithIDWasDeletedDueToEncryptedDataResetBlock=_recordZoneWithIDWasDeletedDueToEncryptedDataResetBlock;
 @property(copy, nonatomic) CDUnknownBlockType recordZoneWithIDWasPurgedBlock; // @synthesize recordZoneWithIDWasPurgedBlock=_recordZoneWithIDWasPurgedBlock;
 @property(copy, nonatomic) CDUnknownBlockType recordZoneWithIDWasDeletedBlock; // @synthesize recordZoneWithIDWasDeletedBlock=_recordZoneWithIDWasDeletedBlock;
 @property(copy, nonatomic) CDUnknownBlockType recordZoneWithIDChangedBlock; // @synthesize recordZoneWithIDChangedBlock=_recordZoneWithIDChangedBlock;
 - (id)analyticsPayload;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)main;
+- (void)_handleAnonymousZoneDataObjects:(id)arg1 schedulerInfo:(id)arg2;
 - (void)_sendFetchDatabaseChangesRequestWithChangeToken:(id)arg1 previousRequestSchedulerInfo:(id)arg2;
 - (int)operationType;
 - (void)_handleFetchDatabaseChangesRequestFinishedWithSchedulerInfo:(id)arg1;
 - (id)activityCreate;
 @property(readonly, nonatomic) NSString *pipeliningDescription;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (_Bool)shouldReturnServerChangeTokensToAdopter;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 // Remaining properties
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue;

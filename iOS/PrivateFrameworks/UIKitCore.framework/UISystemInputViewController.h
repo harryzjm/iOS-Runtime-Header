@@ -6,7 +6,7 @@
 
 #import <UIKitCore/UIRecentsInputViewControllerDelegate-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString, UIButton, UICompatibilityInputViewController, UIKBSystemLayoutViewController, UIKeyboard, UILabel, UILexicon, UIRecentsInputViewController, UIResponder, UITextInputTraits, UIView, UIViewController;
+@class NSArray, NSMutableDictionary, NSString, NSUUID, UIButton, UICompatibilityInputViewController, UIKBSystemLayoutViewController, UIKeyboard, UILabel, UILexicon, UIRecentsInputViewController, UIResponder, UITextInputTraits, UIView, UIViewController;
 @protocol UISystemInputViewControllerDelegate, UITextInput, UITraitEnvironment;
 
 @interface UISystemInputViewController <UIRecentsInputViewControllerDelegate>
@@ -15,10 +15,13 @@
     NSMutableDictionary *_accessoryConstraints;
     _Bool _needsSetupAgain;
     _Bool _isVisible;
+    _Bool _requiresLinearStyleForActiveInputModes;
     UIResponder<UITraitEnvironment> *_containingResponder;
+    NSUUID *_remoteInputSessionIdentifier;
     _Bool _supportsTouchInput;
     _Bool _supportsRecentInputsIntegration;
     _Bool _isAutomaticResponderTransition;
+    _Bool _notifyKeyboardOnScreenOnFocusOnly;
     _Bool _willPresentFullscreen;
     _Bool _willUpdateBackgroundEffectOnInputModeChange;
     _Bool _didDisplayRecents;
@@ -39,6 +42,7 @@
     UILexicon *_cachedRecents;
     UILabel *_promptLabel;
     unsigned long long _requestedInteractionModel;
+    long long _resolvedKeyboardStyle;
     UIView *_containingView;
     UIView *_contentLayoutView;
     long long _blurEffectStyle;
@@ -58,7 +62,9 @@
 @property(nonatomic) _Bool didDisplayRecents; // @synthesize didDisplayRecents=_didDisplayRecents;
 @property(nonatomic) _Bool willUpdateBackgroundEffectOnInputModeChange; // @synthesize willUpdateBackgroundEffectOnInputModeChange=_willUpdateBackgroundEffectOnInputModeChange;
 @property(nonatomic) _Bool willPresentFullscreen; // @synthesize willPresentFullscreen=_willPresentFullscreen;
+@property(nonatomic) long long resolvedKeyboardStyle; // @synthesize resolvedKeyboardStyle=_resolvedKeyboardStyle;
 @property(nonatomic) unsigned long long requestedInteractionModel; // @synthesize requestedInteractionModel=_requestedInteractionModel;
+@property(nonatomic) _Bool notifyKeyboardOnScreenOnFocusOnly; // @synthesize notifyKeyboardOnScreenOnFocusOnly=_notifyKeyboardOnScreenOnFocusOnly;
 @property(retain, nonatomic) UILabel *_promptLabel; // @synthesize _promptLabel;
 @property(retain, nonatomic) UILexicon *cachedRecents; // @synthesize cachedRecents=_cachedRecents;
 @property(retain, nonatomic) UITextInputTraits *textInputTraits; // @synthesize textInputTraits=_textInputTraits;
@@ -78,6 +84,7 @@
 @property(nonatomic) id <UISystemInputViewControllerDelegate> systemInputViewControllerDelegate; // @synthesize systemInputViewControllerDelegate=_systemInputViewControllerDelegate;
 @property(nonatomic) _Bool supportsRecentInputsIntegration; // @synthesize supportsRecentInputsIntegration=_supportsRecentInputsIntegration;
 @property(nonatomic) _Bool supportsTouchInput; // @synthesize supportsTouchInput=_supportsTouchInput;
+- (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(_Bool)arg2;
 - (void)_willResume:(id)arg1;
 - (void)_didSuspend:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
@@ -126,10 +133,11 @@
 - (void)configureRecentsVCIfNecessary;
 - (void)switchToKeyboard;
 - (void)didSelectRecentInput;
-- (void)_windowDidBecomeKey:(id)arg1;
-- (void)_windowWillBecomeKey:(id)arg1;
+- (void)_windowDidBecomeApplicationKey:(id)arg1;
+- (void)_windowWillBecomeApplicationKey:(id)arg1;
 - (void)_createKeyboardIfNecessary;
 - (void)_updateRemoteTextEditingSession;
+- (id)_remoteInputSessionIdentifier;
 - (void)_addChildInputViewController;
 - (void)_setNonInputViewVisibility:(_Bool)arg1;
 - (id)traitCollection;

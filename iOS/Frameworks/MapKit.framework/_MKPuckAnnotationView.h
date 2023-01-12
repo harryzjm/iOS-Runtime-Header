@@ -6,7 +6,7 @@
 
 #import <MapKit/VKPuckAnimatorTarget-Protocol.h>
 
-@class CALayer, CLLocation, NSString, UIImage, VKNavigationPuck, _MKPuckAccuracyLayer;
+@class CAGradientLayer, CALayer, CLLocation, NSArray, NSString, UIColor, UIImage, VKNavigationPuck, _MKPuckAccuracyLayer;
 @protocol MKUserLocationHeadingIndicator;
 
 @interface _MKPuckAnnotationView <VKPuckAnimatorTarget>
@@ -16,12 +16,23 @@
     _Bool _shouldInnerPulse;
     _Bool _shouldShowOuterRing;
     _Bool _shouldShowDynamicLocationAnimations;
+    UIImage *_glyphImage;
+    UIColor *_glyphTintColor;
+    CALayer *_glyphLayer;
     UIImage *_innerImageMask;
     _Bool _rotateInnerImageToMatchCourse;
+    CALayer *_puckContainerLayer;
+    CALayer *_shadowLayer;
     CALayer *_baseLayer;
     double _accuracyRingAlpha;
+    CALayer *_puckTransitionContainer;
     CALayer *_puckTransitionLayer;
     double _puckScale;
+    _Bool _faux3DEnabled;
+    CAGradientLayer *_faux3DFaceLayer;
+    CAGradientLayer *_faux3DBaseBottomLayer;
+    CALayer *_faux3DHighlightMask;
+    NSArray *_faux3DHighlightMaskRings;
     CALayer *_innerCircleLayer;
     _Bool _isShowingStaleColor;
     _Bool _displaysPuckAsAccuracy;
@@ -38,15 +49,18 @@
     _Bool _shouldDisplayInaccurateHeading;
     _Bool _forceHeadingUp;
     _Bool _hasValidHeading;
+    _Bool _useDarkAppearance;
     double _mapRotation;
     double _heading;
     double _headingAccuracy;
+    double _mapCameraDistance;
     CALayer<MKUserLocationHeadingIndicator> *_headingLayer;
     _Bool _headingLayerTracksAccuracy;
     _Bool _allowsAccuracyRing;
     _Bool _stale;
     _Bool _effectsEnabled;
     double _maxRadiusToShowAccuracyRing;
+    double _accuracyRingStrokeOpacityThreshold;
     double _presentationCourse;
     double _locationAccuracy;
     CLLocation *_lastLocation;
@@ -55,9 +69,12 @@
     double _presentationAccuracy;
     id _minAccuracyConfigListener;
     id _newPuckConfigListener;
+    id _faux3DPuckConfigListener;
+    id _shelbyvilleConfigListener;
     double _minimumAccuracyRadius;
     id _minUncertaintyConfigListener;
     double _minimumAccuracyUncertainty;
+    _Bool _overrideIsStale;
     _Bool _forcesConeIndicator;
     long long _headingIndicatorStyle;
 }
@@ -73,6 +90,8 @@
 @property(nonatomic, getter=_forceHeadingUp, setter=_setForceHeadingUp:) _Bool forceHeadingUp; // @synthesize forceHeadingUp=_forceHeadingUp;
 @property(nonatomic) _Bool rotateInnerImageToMatchCourse; // @synthesize rotateInnerImageToMatchCourse=_rotateInnerImageToMatchCourse;
 @property(retain, nonatomic) UIImage *innerImageMask; // @synthesize innerImageMask=_innerImageMask;
+@property(copy, nonatomic) UIColor *glyphTintColor; // @synthesize glyphTintColor=_glyphTintColor;
+@property(retain, nonatomic) UIImage *glyphImage; // @synthesize glyphImage=_glyphImage;
 @property(nonatomic) _Bool shouldShowOuterRing; // @synthesize shouldShowOuterRing=_shouldShowOuterRing;
 @property(nonatomic) _Bool shouldInnerPulse; // @synthesize shouldInnerPulse=_shouldInnerPulse;
 @property(nonatomic) _Bool forcesConeIndicator; // @synthesize forcesConeIndicator=_forcesConeIndicator;
@@ -84,7 +103,9 @@
 @property(readonly, nonatomic) double locationAccuracy; // @synthesize locationAccuracy=_locationAccuracy;
 @property(nonatomic) double presentationCourse; // @synthesize presentationCourse=_presentationCourse;
 @property(nonatomic, getter=isEffectsEnabled) _Bool effectsEnabled; // @synthesize effectsEnabled=_effectsEnabled;
+@property(nonatomic, getter=isOverrideStale) _Bool overrideIsStale; // @synthesize overrideIsStale=_overrideIsStale;
 @property(nonatomic, getter=isStale, setter=setStale:) _Bool stale; // @synthesize stale=_stale;
+@property(nonatomic, getter=_accuracyRingStrokeOpacityThreshold, setter=_setAccuracyRingStrokeOpacityThreshold:) double accuracyRingStrokeOpacityThreshold; // @synthesize accuracyRingStrokeOpacityThreshold=_accuracyRingStrokeOpacityThreshold;
 @property(nonatomic) double maxRadiusToShowAccuracyRing; // @synthesize maxRadiusToShowAccuracyRing=_maxRadiusToShowAccuracyRing;
 @property(nonatomic) _Bool allowsAccuracyRing; // @synthesize allowsAccuracyRing=_allowsAccuracyRing;
 @property(nonatomic) double headingAccuracy; // @synthesize headingAccuracy=_headingAccuracy;
@@ -95,6 +116,7 @@
 @property(nonatomic) _Bool allowsPulse; // @synthesize allowsPulse=_allowsPulse;
 @property(nonatomic) long long zoomDirection; // @synthesize zoomDirection=_zoomDirection;
 - (void)_updateLegacyConfiguration;
+@property(readonly, nonatomic) struct CGSize collisionSize;
 - (void)_setPresentationCourse:(double)arg1;
 - (void)_setAnimatingToCoordinate:(_Bool)arg1;
 - (void)setAnimatingToCoordinate:(_Bool)arg1;
@@ -136,6 +158,9 @@
 - (_Bool)_shouldShowAccuracyRing;
 - (_Bool)_hideLargeAccuracyRing;
 - (void)_updateAccuracyOpacityForRadius:(double)arg1 duration:(double)arg2;
+- (void)_updateFaux3DLayers;
+- (void)_createOrRemoveFaux3DRingsIfNecessary;
+- (void)_updateFaux3DColors;
 - (void)_updateAccuracyColors;
 @property(nonatomic, getter=_minimumAccuracyUncertainty, setter=_setMinimumAccuracyUncertainty:) double minimumAccuracyUncertainty;
 - (void)locationManagerFailedToUpdateLocation;
@@ -143,12 +168,15 @@
 - (_Bool)_isLocationStale:(id)arg1;
 - (void)setZoomDirection:(long long)arg1 deltaScale:(double)arg2;
 - (void)_updateLayers;
+- (void)_updateGlyphImage;
 - (void)_updateInnerImage;
 - (id)_currentInnerColor;
 - (void)_updateBaseImage;
+- (void)_updateShadowImage;
 - (void)_updateInnerMaskLayer;
 - (id)_baseLayer;
 - (void)_setupLayers;
+- (struct UIEdgeInsets)_defaultCollisionAlignmentRectInsets;
 - (void)setPuckScale:(double)arg1;
 @property(nonatomic) double puckAlpha;
 @property(nonatomic) float opacity;

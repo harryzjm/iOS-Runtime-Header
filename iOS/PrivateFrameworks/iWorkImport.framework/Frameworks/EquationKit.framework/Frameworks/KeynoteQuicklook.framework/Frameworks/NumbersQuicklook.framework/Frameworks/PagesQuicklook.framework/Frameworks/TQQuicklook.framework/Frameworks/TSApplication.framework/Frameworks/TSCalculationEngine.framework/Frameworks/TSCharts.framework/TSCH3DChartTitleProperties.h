@@ -10,20 +10,20 @@
 
 @interface TSCH3DChartTitleProperties : NSObject
 {
-    TSCHChartInfo *mInfo;
-    TSCH3DLabelResources *mLabels;
-    _Bool mHidden;
-    TSCH3DChartTitlePositioner *mCachedPositioner;
+    TSCHChartInfo *_info;
+    TSCH3DLabelResources *_labels;
+    _Bool _hidden;
+    TSCH3DChartTitlePositioner *_cachedPositioner;
 }
 
-+ (id)propertiesWithInfo:(id)arg1 styleIndex:(unsigned long long)arg2;
-@property(retain, nonatomic) TSCH3DChartTitlePositioner *cachedPositioner; // @synthesize cachedPositioner=mCachedPositioner;
-@property(nonatomic) _Bool hidden; // @synthesize hidden=mHidden;
-@property(readonly, nonatomic) TSCHChartInfo *chartInfo; // @synthesize chartInfo=mInfo;
-@property(readonly, nonatomic) TSCH3DLabelResources *labels; // @synthesize labels=mLabels;
++ (id)propertiesWithInfo:(id)arg1 styleIndex:(unsigned long long)arg2 styleProvidingSource:(id)arg3;
+- (void).cxx_destruct;
+@property(retain, nonatomic) TSCH3DChartTitlePositioner *cachedPositioner; // @synthesize cachedPositioner=_cachedPositioner;
+@property(nonatomic) _Bool hidden; // @synthesize hidden=_hidden;
+@property(readonly, nonatomic) TSCHChartInfo *chartInfo; // @synthesize chartInfo=_info;
+@property(readonly, nonatomic) TSCH3DLabelResources *labels; // @synthesize labels=_labels;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (id)initWithInfo:(id)arg1 styleIndex:(unsigned long long)arg2;
+- (id)initWithInfo:(id)arg1 styleIndex:(unsigned long long)arg2 styleProvidingSource:(id)arg3;
 
 @end
 

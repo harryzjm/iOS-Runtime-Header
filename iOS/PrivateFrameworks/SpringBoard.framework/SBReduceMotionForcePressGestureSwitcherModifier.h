@@ -17,7 +17,7 @@
 - (unsigned long long)_indexOfSelectedAppLayout;
 - (double)_effectivePanProgress;
 - (double)initialPanThreshold;
-- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
+- (struct SBSwitcherAsyncRenderingAttributes)asyncRenderingAttributesForAppLayout:(id)arg1;
 - (id)keyboardSuppressionMode;
 - (id)appLayoutsToResignActive;
 - (id)appLayoutsToCacheSnapshots;
@@ -29,9 +29,9 @@
 - (_Bool)isContentStatusBarVisibleForIndex:(unsigned long long)arg1;
 - (_Bool)isContainerStatusBarVisible;
 - (long long)homeScreenBackdropBlurType;
-- (double)darkeningAlphaForIndex:(unsigned long long)arg1;
-- (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
-- (double)opacityForIndex:(unsigned long long)arg1;
+- (double)dimmingAlphaForLayoutRole:(long long)arg1 inAppLayout:(id)arg2;
+- (struct UIRectCornerRadii)cornerRadiiForIndex:(unsigned long long)arg1;
+- (double)opacityForLayoutRole:(long long)arg1 inAppLayout:(id)arg2 atIndex:(unsigned long long)arg3;
 - (id)_layoutSettings;
 - (id)animationAttributesForLayoutElement:(id)arg1;
 - (id)visibleAppLayouts;

@@ -10,9 +10,12 @@
 }
 
 @property(nonatomic) double duration; // @synthesize duration=_duration;
+- (id)comparisonKey;
+- (id)eventType;
 - (id)description;
-- (id)buildNewEventFromCurrentState;
+- (id)buildNewEventsFromCurrentState;
 - (id)initWithEvent:(id)arg1;
+- (id)compareToObject:(id)arg1;
 
 @end
 

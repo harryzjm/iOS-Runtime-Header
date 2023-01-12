@@ -7,12 +7,13 @@
 #import <MapKit/NSObject-Protocol.h>
 
 @class NSArray;
-@protocol MKPlaceBatchGuideConsumer, MKPlaceBatchGuideFetcher;
+@protocol MKPlaceBatchConsumer, MKPlaceBatchFetcher;
 
 @protocol MKCollectionUpdater <NSObject>
+- (void)dismissedCollections;
 - (void)appendBatchOfCollections:(NSArray *)arg1;
-- (void)updateUsingBatchedIdentifiers:(NSArray *)arg1 usingCollectionFetcher:(id <MKPlaceBatchGuideFetcher>)arg2 usingBatchSize:(unsigned long long)arg3;
-- (void)updateCollectionsWithoutPreparingSnapshot:(NSArray *)arg1 usingBatchedIdentifiers:(NSArray *)arg2 usingCollectionFetcher:(id <MKPlaceBatchGuideFetcher>)arg3 usingGuideConsumer:(id <MKPlaceBatchGuideConsumer>)arg4 usingBatchSize:(unsigned long long)arg5;
-- (void)updateCollections:(NSArray *)arg1 usingBatchedIdentifiers:(NSArray *)arg2 usingCollectionFetcher:(id <MKPlaceBatchGuideFetcher>)arg3 usingBatchSize:(unsigned long long)arg4;
+- (void)updateUsingBatchedIdentifiers:(NSArray *)arg1 usingCollectionFetcher:(id <MKPlaceBatchFetcher>)arg2 usingBatchSize:(unsigned long long)arg3;
+- (void)updateCollectionsWithoutPreparingSnapshot:(NSArray *)arg1 usingBatchedIdentifiers:(NSArray *)arg2 usingCollectionFetcher:(id <MKPlaceBatchFetcher>)arg3 usingGuideConsumer:(id <MKPlaceBatchConsumer>)arg4 usingBatchSize:(unsigned long long)arg5;
+- (void)updateCollections:(NSArray *)arg1 usingBatchedIdentifiers:(NSArray *)arg2 usingCollectionFetcher:(id <MKPlaceBatchFetcher>)arg3 usingBatchSize:(unsigned long long)arg4;
 @end
 

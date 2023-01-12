@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (id)_highContrastDynamicColor;
 - (id)colorWithAlphaComponent:(double)arg1;
 - (id)_resolvedColorWithTraitCollection:(id)arg1;
+- (_Bool)_isDynamicTintColor;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

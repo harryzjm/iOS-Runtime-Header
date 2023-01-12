@@ -16,8 +16,6 @@
     BKSHIDEventObserver *_observer;
     struct os_unfair_lock_s _focusDataLock;
     BKSHIDEventDeliveryManager *_focusDataLock_manager;
-    _Bool _focusDataLock_adjustsFocusTargetPID;
-    int _focusDataLock_adjustedFocusTargetPID;
     id <BSInvalidatable> _queue_keyCommandRulesAssertion;
     NSMutableSet *_focusDataLock_currentState;
     NSMutableDictionary *_focusDataLock_pendingStatesByPriority;
@@ -47,8 +45,6 @@
 - (void)flush;
 - (void)_focusDataLock_rebuildPendingStatesByPriority;
 - (void)_pruneSet:(id)arg1 ofDeferralsPassingTest:(CDUnknownBlockType)arg2;
-- (void)_focusDataLock_updateFocusTargetOverride;
-- (void)_focusDataLock_updateKeyCommandDispatching;
 - (id)_queryDeferralResolutions;
 - (void)_focusClientQueue_deferringResolutionsChanged;
 - (void)setForegroundApplicationOnMainDisplay:(id)arg1 pid:(int)arg2;

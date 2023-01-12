@@ -10,7 +10,7 @@
 #import <VoiceShortcuts/WFDatabaseObjectObserver-Protocol.h>
 
 @class CSSearchableIndex, NSString, VCDaemonXPCEventHandler, VCSpotlightSyncOperation, WFDatabaseResult, WFDebouncer;
-@protocol OS_dispatch_queue, VCDatabaseProvider;
+@protocol OS_dispatch_queue, OS_os_transaction, WFDatabaseProvider;
 
 @interface VCSpotlightSyncService : NSObject <WFDatabaseObjectObserver, VCSpotlightSyncOperationDelegate>
 {
@@ -20,17 +20,19 @@
     WFDebouncer *_debouncer;
     VCDaemonXPCEventHandler *_eventHandler;
     VCSpotlightSyncOperation *_syncOperation;
-    id <VCDatabaseProvider> _databaseProvider;
+    id <WFDatabaseProvider> _databaseProvider;
     CSSearchableIndex *_index;
     NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_os_transaction> *_transaction;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool hasAddedXPCEventHandlerObserver; // @synthesize hasAddedXPCEventHandlerObserver=_hasAddedXPCEventHandlerObserver;
 @property(nonatomic) _Bool isFetchingClientState; // @synthesize isFetchingClientState=_isFetchingClientState;
+@property(readonly, nonatomic) NSObject<OS_os_transaction> *transaction; // @synthesize transaction=_transaction;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly, nonatomic) CSSearchableIndex *index; // @synthesize index=_index;
-@property(readonly, nonatomic) id <VCDatabaseProvider> databaseProvider; // @synthesize databaseProvider=_databaseProvider;
+@property(readonly, nonatomic) id <WFDatabaseProvider> databaseProvider; // @synthesize databaseProvider=_databaseProvider;
 @property(retain, nonatomic) VCSpotlightSyncOperation *syncOperation; // @synthesize syncOperation=_syncOperation;
 @property(readonly, nonatomic) VCDaemonXPCEventHandler *eventHandler; // @synthesize eventHandler=_eventHandler;
 @property(readonly, nonatomic) WFDebouncer *debouncer; // @synthesize debouncer=_debouncer;

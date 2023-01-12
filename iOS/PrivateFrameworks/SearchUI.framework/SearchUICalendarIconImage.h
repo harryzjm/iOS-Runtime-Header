@@ -17,7 +17,7 @@
 @property(retain, nonatomic) NSDate *date; // @synthesize date=_date;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)loadImage;
+- (id)loadImageWithScale:(double)arg1 isDarkStyle:(_Bool)arg2;
 - (void)invalidateAppIcon;
 - (_Bool)shouldInvalidateAppIconForChangedBundleIdentifier:(id)arg1;
 - (id)initWithDate:(id)arg1 variant:(unsigned long long)arg2;

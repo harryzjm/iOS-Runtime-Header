@@ -7,6 +7,7 @@
 __attribute__((visibility("hidden")))
 @interface _UIPageIndicatorView
 {
+    struct CGSize _cachedSize;
     long long _page;
 }
 

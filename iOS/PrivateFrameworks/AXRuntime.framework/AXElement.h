@@ -27,6 +27,7 @@
 }
 
 + (id)elementWithData:(id)arg1;
++ (id)systemEventDispatchElement;
 + (id)applicationAtCoordinate:(struct CGPoint)arg1;
 + (id)systemWideElement;
 + (id)elementAtCoordinate:(struct CGPoint)arg1 withVisualPadding:(_Bool)arg2;
@@ -55,6 +56,7 @@
 @property(readonly, nonatomic) NSArray *children;
 - (_Bool)isGroup;
 - (id)highestAncestorGroup;
+@property(readonly, nonatomic) NSArray *customContent;
 - (_Bool)pressTVMicButton;
 - (_Bool)pressTVDataOnScreenButton;
 - (_Bool)pressTVSkipBackwardsButton;
@@ -85,6 +87,7 @@
 @property(readonly, nonatomic) _Bool canPerformEscape;
 @property(readonly, nonatomic) long long scannerActivateBehavior;
 @property(readonly, nonatomic) _Bool isScannerElement;
+@property(readonly, nonatomic) _Bool respondsToUserInteraction;
 @property(readonly, nonatomic) AXElement *elementForTextInsertionAndDeletion;
 - (id)alternativesForTextAtPosition:(unsigned long long)arg1;
 - (void)deleteText;
@@ -212,6 +215,7 @@
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 toContextId:(unsigned int)arg2;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromContextId:(unsigned int)arg2;
 - (struct CGRect)convertRect:(struct CGRect)arg1 fromContextId:(unsigned int)arg2;
+- (struct CGRect)convertRect:(struct CGRect)arg1 toContextId:(unsigned int)arg2;
 - (_Bool)systemPressTVSiriButton;
 - (_Bool)systemLongPressTVHomeButton;
 - (_Bool)systemPressTVHomeButton;

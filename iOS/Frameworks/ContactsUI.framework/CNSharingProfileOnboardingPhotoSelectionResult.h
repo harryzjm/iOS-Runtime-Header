@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, UIImage;
+@class NSData, NSString, UIImage;
 
 __attribute__((visibility("hidden")))
 @interface CNSharingProfileOnboardingPhotoSelectionResult : NSObject
@@ -16,9 +16,11 @@ __attribute__((visibility("hidden")))
     UIImage *_compositedImage;
     NSString *_variantName;
     long long _avatarType;
+    NSData *_memojiMetadata;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) NSData *memojiMetadata; // @synthesize memojiMetadata=_memojiMetadata;
 @property(nonatomic) _Bool wasSelectedInFullPhotoPicker; // @synthesize wasSelectedInFullPhotoPicker=_wasSelectedInFullPhotoPicker;
 @property(nonatomic) long long avatarType; // @synthesize avatarType=_avatarType;
 @property(copy, nonatomic) NSString *variantName; // @synthesize variantName=_variantName;

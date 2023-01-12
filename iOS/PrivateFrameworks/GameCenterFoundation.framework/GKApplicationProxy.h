@@ -15,6 +15,7 @@
 }
 
 + (id)metadataForBundleURL:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
 @property(retain, nonatomic) LSApplicationProxy *lsProxy; // @synthesize lsProxy=_lsProxy;
 @property(readonly, retain, nonatomic) NSString *bundleShortVersion;
@@ -28,7 +29,6 @@
 @property(readonly, retain, nonatomic) NSNumber *adamID;
 @property(readonly, retain, nonatomic) NSString *bundleID;
 @property(readonly, retain, nonatomic) NSBundle *bundle;
-- (void)dealloc;
 - (id)initWithBundleID:(id)arg1;
 - (id)initWithProxy:(id)arg1;
 

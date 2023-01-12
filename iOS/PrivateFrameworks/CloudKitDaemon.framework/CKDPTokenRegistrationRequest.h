@@ -10,7 +10,6 @@
 
 @class CKDPTokenRegistrationBody;
 
-__attribute__((visibility("hidden")))
 @interface CKDPTokenRegistrationRequest : PBRequest <NSCopying>
 {
     CKDPTokenRegistrationBody *_tokenRegistrationBody;

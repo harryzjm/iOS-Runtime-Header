@@ -6,10 +6,16 @@
 
 #import <UIKit/UIScrollView.h>
 
+@protocol SBSearchScrollViewDelegate;
+
 @interface SBSearchScrollView : UIScrollView
 {
+    id <SBSearchScrollViewDelegate> _searchDelegate;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) __weak id <SBSearchScrollViewDelegate> searchDelegate; // @synthesize searchDelegate=_searchDelegate;
+- (_Bool)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 

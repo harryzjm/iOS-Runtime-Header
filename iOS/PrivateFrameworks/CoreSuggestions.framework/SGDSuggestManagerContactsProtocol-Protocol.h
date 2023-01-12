@@ -7,13 +7,14 @@
 #import <CoreSuggestions/_SGDSuggestManagerBaseProtocol-Protocol.h>
 #import <CoreSuggestions/_SGDSuggestManagerContactsConfirmRejectProtocol-Protocol.h>
 
-@class CNContact, NSArray, NSString, SGRecordId;
+@class CNContact, NSArray, NSString, SGRecordId, SGSocialProfile;
 
 @protocol SGDSuggestManagerContactsProtocol <_SGDSuggestManagerBaseProtocol, _SGDSuggestManagerContactsConfirmRejectProtocol>
 - (void)allContactsWithSnippets:(_Bool)arg1 limitTo:(unsigned long long)arg2 withCompletion:(void (^)(SGXPCResponse1 *))arg3;
 - (void)originFromRecordId:(SGRecordId *)arg1 completion:(void (^)(SGXPCResponse1 *))arg2;
 - (void)namesForDetailCacheSnapshotsWithCompletion:(void (^)(SGXPCResponse3 *))arg1;
 - (void)namesForDetail:(NSString *)arg1 limitTo:(unsigned long long)arg2 prependMaybe:(_Bool)arg3 onlySignificant:(_Bool)arg4 withCompletion:(void (^)(SGXPCResponse1 *))arg5;
+- (void)contactMatchesBySocialProfile:(SGSocialProfile *)arg1 withCompletion:(void (^)(SGXPCResponse1 *))arg2;
 - (void)contactMatchesByEmailAddress:(NSString *)arg1 withCompletion:(void (^)(SGXPCResponse1 *))arg2;
 - (void)contactMatchesByPhoneNumber:(NSString *)arg1 withCompletion:(void (^)(SGXPCResponse1 *))arg2;
 - (void)cnContactMatchesForRecordIds:(NSArray *)arg1 withCompletion:(void (^)(SGXPCResponse1 *))arg2;

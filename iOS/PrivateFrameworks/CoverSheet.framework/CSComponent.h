@@ -27,6 +27,7 @@
     struct CGPoint _offset;
 }
 
++ (id)background;
 + (id)whitePoint;
 + (id)poseidon;
 + (id)statusBarGradient;
@@ -72,6 +73,7 @@
 - (void)resetAllProperties;
 - (_Bool)hasValueForProperty:(unsigned long long)arg1;
 - (id)offset:(struct CGPoint)arg1;
+- (id)color:(id)arg1;
 - (id)legibilitySettings:(id)arg1;
 - (id)view:(id)arg1;
 - (id)value:(id)arg1;

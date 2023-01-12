@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
     _Bool _played;
     BOOL _color;
     float _progress;
-    int _style;
     IMManualUpdater *_displayUpdater;
 }
 
@@ -23,7 +22,6 @@ __attribute__((visibility("hidden")))
 + (float)progressForTime:(double)arg1 duration:(double)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) IMManualUpdater *displayUpdater; // @synthesize displayUpdater=_displayUpdater;
-@property(nonatomic) int style; // @synthesize style=_style;
 @property(nonatomic) BOOL color; // @synthesize color=_color;
 @property(nonatomic, getter=isPlayed) _Bool played; // @synthesize played=_played;
 @property(nonatomic, getter=isPlaying) _Bool playing; // @synthesize playing=_playing;
@@ -33,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)prepareForDisplay;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (_Bool)__im_ff_systemImageAdoptionEnabled;
 
 @end
 

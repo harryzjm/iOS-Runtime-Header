@@ -10,7 +10,7 @@
 #import <Silex/SXLayoutInvalidationManagerDelegate-Protocol.h>
 #import <Silex/SXLayoutPipelineDelegate-Protocol.h>
 
-@class NSString, SXDOMObjectProvider, SXLayoutBlueprintProvider, SXLayoutOptions, SXLayoutParametersManager;
+@class NSString, SXDOMObjectProvider, SXDelayed, SXLayoutBlueprintProvider, SXLayoutOptions, SXLayoutParametersManager;
 @protocol SXDocumentProviding, SXLayoutCoordinatorDelegate, SXLayoutInstructionFactory, SXLayoutIntegrator, SXLayoutInvalidationManager, SXLayoutPipeline, SXLayoutPolicyManager;
 
 @interface SXLayoutCoordinator : NSObject <SXLayoutPipelineDelegate, SXLayoutInvalidationManagerDelegate, SXLayoutCoordinator>
@@ -26,9 +26,11 @@
     id <SXDocumentProviding> _documentProvider;
     id <SXLayoutPolicyManager> _layoutPolicyManager;
     SXLayoutOptions *_layoutOptions;
+    SXDelayed *_debouncer;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) SXDelayed *debouncer; // @synthesize debouncer=_debouncer;
 @property(retain, nonatomic) SXLayoutOptions *layoutOptions; // @synthesize layoutOptions=_layoutOptions;
 @property(readonly, nonatomic) id <SXLayoutPolicyManager> layoutPolicyManager; // @synthesize layoutPolicyManager=_layoutPolicyManager;
 @property(readonly, nonatomic) id <SXDocumentProviding> documentProvider; // @synthesize documentProvider=_documentProvider;

@@ -26,6 +26,7 @@
 + (id)previewViewControllerWebView:(id)arg1 url:(id)arg2 handler:(id)arg3;
 + (void)invalidateLinkPreviewHelperForWebView:(id)arg1;
 + (id)linkPreviewHelperForWebView:(id)arg1;
++ (id)contextMenuContentPreviewForWebView:(id)arg1 elementInfo:(id)arg2 handler:(id)arg3;
 + (id)contextMenuConfigurationForWebView:(id)arg1 elementInfo:(id)arg2 handler:(id)arg3;
 + (void)setOpenInNewTabAnalyticsHandler:(CDUnknownBlockType)arg1;
 + (CDUnknownBlockType)openInNewTabAnalyticsHandler;
@@ -37,12 +38,15 @@
 - (id)downloadActionForURL:(id)arg1;
 - (id)addToReadingListActionForURL:(id)arg1;
 - (id)openInNewWindowActionForURL:(id)arg1;
+- (id)openInTabGroupActionForURL:(id)arg1 shouldPerformActionHandler:(CDUnknownBlockType)arg2;
 - (id)openInNewTabActionForURL:(id)arg1 preActionHandler:(CDUnknownBlockType)arg2;
+- (id)openActionForSettingUpOneTimeCodeGeneratorWithExternalNavigationResult:(id)arg1;
 - (id)openActionForRedirectToExternalNavigationResult:(id)arg1;
 - (id)openActionForAlternateURL:(id)arg1;
 - (id)menuElementsForSuggestedActions:(id)arg1;
 - (id)previewViewControllerForURL:(id)arg1;
 - (_Bool)_previewViewControllerIsLinkPreview;
+- (void)adaptivePreviewViewControllerWillDisableLinkPreview:(id)arg1;
 - (double)headerViewHeightForAdaptivePreviewViewController:(id)arg1;
 - (id)adaptivePreviewViewController:(id)arg1 requestLinkPreviewViewControllerWithURL:(id)arg2;
 - (id)menuWithSuggestedActions:(id)arg1;
@@ -53,7 +57,7 @@
 - (void)dealloc;
 - (void)invalidateElementInfo;
 - (void)invalidate;
-- (void)openURL:(id)arg1 forAction:(long long)arg2;
+- (void)openURL:(id)arg1 forAction:(long long)arg2 withTabOrder:(long long)arg3;
 - (void)commitPreviewViewController;
 @property(readonly, nonatomic) NSURL *url;
 - (id)initWithWebView:(id)arg1 elementInfo:(id)arg2 orURL:(id)arg3 handler:(id)arg4;

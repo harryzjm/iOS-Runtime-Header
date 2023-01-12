@@ -26,6 +26,8 @@
     TKTonePickerTableViewCellLayoutManager *_tableViewCellLayoutManagerForUnindentedRows;
     long long _tonePickerTableViewStyle;
     _Bool _showsToneStoreWasSetExplicitly;
+    _Bool _allowsAutoScrollingToSelectedTone;
+    _Bool _allowsAutoScrollingToSelectedToneWasSetExplicitly;
     _Bool _needsScrollPositionReset;
     UIBarButtonItem *_storeBarButtonItem;
     NSMutableDictionary *_toneSectionHeaderViews;
@@ -147,6 +149,8 @@
 @property(nonatomic) _Bool showsVibrations;
 - (void)_handleSwitchControlValueChanged:(id)arg1;
 @property(nonatomic) _Bool ignoreMute;
+@property(copy, nonatomic, setter=_setOverrideFirstToneSectionTitle:) NSString *_overrideFirstToneSectionTitle;
+@property(nonatomic, setter=_setAllowsAutoScrollingToSelectedTone:) _Bool _allowsAutoScrollingToSelectedTone;
 @property(copy, nonatomic) NSString *selectedToneIdentifier;
 @property(nonatomic) _Bool showsNothingSelected;
 @property(copy, nonatomic) NSString *noneString;

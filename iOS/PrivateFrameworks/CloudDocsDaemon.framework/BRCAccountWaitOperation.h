@@ -9,7 +9,6 @@
 @class CKContainer, NSObject, NSString;
 @protocol OS_dispatch_source;
 
-__attribute__((visibility("hidden")))
 @interface BRCAccountWaitOperation <BRCOperationSubclass>
 {
     NSObject<OS_dispatch_source> *_source;

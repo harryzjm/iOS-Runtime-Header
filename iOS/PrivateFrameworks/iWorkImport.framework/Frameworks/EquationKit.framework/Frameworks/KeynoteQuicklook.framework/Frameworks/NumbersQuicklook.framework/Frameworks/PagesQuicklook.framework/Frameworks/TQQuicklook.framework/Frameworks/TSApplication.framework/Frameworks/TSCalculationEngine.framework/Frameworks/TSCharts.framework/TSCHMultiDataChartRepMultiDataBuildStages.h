@@ -6,37 +6,33 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCHUnretainedParent-Protocol.h>
-
 @class TSCHMultiDataChartRep;
 
-@interface TSCHMultiDataChartRepMultiDataBuildStages : NSObject <TSCHUnretainedParent>
+@interface TSCHMultiDataChartRepMultiDataBuildStages : NSObject
 {
-    TSCHMultiDataChartRep *mRep;
-    struct _NSRange mStages;
-    double mTotalDuration;
-    double mDuration;
-    unsigned long long mCurrentStage;
+    TSCHMultiDataChartRep *_rep;
+    struct _NSRange _stages;
+    double _totalDuration;
+    double _duration;
+    unsigned long long _currentStage;
 }
 
 + (id)buildStagesWithRep:(id)arg1 stages:(struct _NSRange)arg2 totalDuration:(double)arg3;
 + (unsigned long long)dataSetIndexForRep:(id)arg1 buildStage:(unsigned long long)arg2;
 + (unsigned long long)numberOfFadingBuildStages;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) double duration; // @synthesize duration=mDuration;
-@property(readonly, nonatomic) unsigned long long currentStage; // @synthesize currentStage=mCurrentStage;
-- (_Bool)hasStage;
+@property(readonly, nonatomic) double duration; // @synthesize duration=_duration;
+@property(readonly, nonatomic) unsigned long long currentStage; // @synthesize currentStage=_currentStage;
+@property(readonly, nonatomic) _Bool hasStage;
 - (void)advanceStage;
 - (unsigned long long)dataSetIndexForStage:(unsigned long long)arg1;
-- (_Bool)isFadingInLayers;
-- (_Bool)isLastStageBackgroundOnly;
-- (_Bool)isBackgroundOnly;
+@property(readonly, nonatomic) _Bool isFadingInLayers;
+@property(readonly, nonatomic) _Bool isLastStageBackgroundOnly;
+@property(readonly, nonatomic) _Bool isBackgroundOnly;
 - (_Bool)isBackgroundOnlyStage:(unsigned long long)arg1;
 - (id)chartLayout;
 - (void)setupLayoutDataSetIndexForNextStage;
 - (void)setupLayoutDataSetIndexForCurrentStage;
-- (void)clearParent;
-- (void)dealloc;
 - (id)initWithRep:(id)arg1 stages:(struct _NSRange)arg2 totalDuration:(double)arg3;
 
 @end

@@ -4,20 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSMutableSet;
+
 @interface HDSeriesQuantityDataAggregator
 {
+    struct os_unfair_lock_s _lock;
+    NSMutableSet *_lock_failedSeriesUUIDs;
 }
 
-+ (id)_anySampleThatOverlapsWithSeries:(id)arg1 lastDatum:(id)arg2 provenance:(id)arg3 profile:(id)arg4 error:(id *)arg5;
-+ (void)_checkForOverlapWithSeries:(id)arg1 lastDatum:(id)arg2 provenance:(id)arg3 profile:(id)arg4;
+- (void).cxx_destruct;
 - (_Bool)shouldFreezeCurrentSeries:(id)arg1 lastDatum:(id)arg2 seriesLength:(long long)arg3 configuration:(id)arg4 aggregationInterval:(double)arg5;
 - (id)initialAggregationState;
-- (id)_startSeriesWithDatum:(id)arg1 device:(id)arg2;
 - (id)aggregateForState:(id)arg1 collector:(id)arg2 device:(id)arg3 requestedAggregationDate:(id)arg4 mode:(long long)arg5 options:(unsigned long long)arg6 error:(id *)arg7;
-- (id)_validatedState:(id)arg1;
-- (id)_codableDatumsFromData:(id)arg1;
 - (void)addDatum:(id)arg1 toAccumulatedData:(id)arg2;
 - (_Bool)requiresNewSeriesForDatum:(id)arg1 lastDatum:(id)arg2 seriesLength:(long long)arg3 currentSeries:(id)arg4 configuration:(id)arg5 aggregationInterval:(double)arg6;
+- (id)initForQuantityType:(id)arg1 dataCollectionManager:(id)arg2;
 
 @end
 

@@ -32,36 +32,15 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
-+ (Class)externalTransitStationCodeType;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
-- (void)clearSensitiveFields;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (id)externalTransitStationCodeAtIndex:(unsigned long long)arg1;
-- (unsigned long long)externalTransitStationCodesCount;
-- (void)addExternalTransitStationCode:(id)arg1;
-- (void)clearExternalTransitStationCodes;
-@property(retain, nonatomic) NSMutableArray *externalTransitStationCodes;
-@property(retain, nonatomic) NSString *sourceId;
-@property(readonly, nonatomic) _Bool hasSourceId;
-@property(retain, nonatomic) GEOLocation *transactionLocation;
-@property(readonly, nonatomic) _Bool hasTransactionLocation;
-@property(nonatomic) _Bool hasTransactionTimestamp;
-@property(nonatomic) double transactionTimestamp;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

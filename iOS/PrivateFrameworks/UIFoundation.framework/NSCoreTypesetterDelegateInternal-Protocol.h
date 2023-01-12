@@ -6,11 +6,11 @@
 
 #import <UIFoundation/NSCoreTypesetterDelegate-Protocol.h>
 
-@class NSCoreTypesetter, _NSTextAttachmentLayoutContext;
+@class _NSTextAttachmentLayoutContext;
 
 @protocol NSCoreTypesetterDelegateInternal <NSCoreTypesetterDelegate>
 
 @optional
-- (_NSTextAttachmentLayoutContext *)coreTypesetter:(NSCoreTypesetter *)arg1 layoutContextForTextAttachmentAtCharacterIndex:(long long)arg2;
+@property(readonly) _NSTextAttachmentLayoutContext *textAttachmentLayoutContext;
 @end
 

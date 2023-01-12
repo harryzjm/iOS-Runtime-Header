@@ -8,11 +8,11 @@
 {
 }
 
-+ (id)instanceWithArchive:(const struct CellSpecArchive *)arg1 unarchiver:(id)arg2;
++ (id)instanceWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 + (id)cellSpecFromTSKFormat:(id)arg1;
 + (id)toggleControlSpec;
-- (void)saveToArchive:(struct CellSpecArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct CellSpecArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (_Bool)validateFormatAndValue:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

@@ -6,22 +6,23 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKit/NSCopying-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
 @class NSData;
 
-@interface HMAccessoryOwnershipToken : NSObject <NSSecureCoding>
+@interface HMAccessoryOwnershipToken : NSObject <NSCopying, NSSecureCoding>
 {
     NSData *_internalData;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSData *internalData; // @synthesize internalData=_internalData;
+@property(readonly, copy) NSData *internalData; // @synthesize internalData=_internalData;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (_Bool)isEqual:(id)arg1;
 - (id)initWithData:(id)arg1;
 
 @end

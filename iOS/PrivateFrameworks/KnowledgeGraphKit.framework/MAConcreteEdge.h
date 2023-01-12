@@ -19,19 +19,13 @@
 - (float)weight;
 - (unsigned short)domain;
 - (unsigned long long)memoryFootprint:(id)arg1;
-- (void)setWeight:(float)arg1;
-- (void)mergeProperties:(id)arg1;
-- (void)setLocalProperties:(id)arg1;
-- (void)setPropertyValue:(id)arg1 forKey:(id)arg2;
-- (void)removeAllProperties;
-- (void)removePropertyForKey:(id)arg1;
 - (void)enumeratePropertiesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)propertyDictionary;
 - (id)propertyKeys;
 - (unsigned long long)propertiesCount;
 - (_Bool)hasProperties;
 - (id)propertyForKey:(id)arg1;
-- (id)initWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5;
+- (id)initWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5 properties:(id)arg6;
 
 @end
 

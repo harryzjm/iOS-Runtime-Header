@@ -14,17 +14,18 @@
 {
 }
 
-+ (id)defaultSourceForRepresentation:(id)arg1;
 + (id)countDescription;
 + (id)pluralTypeDescription;
 + (id)typeDescription;
 + (id)contentCategories;
 + (id)outputTypes;
 + (id)ownedTypes;
++ (id)stringConversionBehavior;
 + (id)propertyBuilders;
+- (id)defaultSourceForRepresentation:(id)arg1;
 - (_Bool)getListThumbnail:(CDUnknownBlockType)arg1 forSize:(struct CGSize)arg2;
 - (_Bool)getListSubtitle:(CDUnknownBlockType)arg1;
-- (id)generateFileRepresentationForType:(id)arg1 options:(id)arg2 error:(id *)arg3;
+- (void)generateFileRepresentation:(CDUnknownBlockType)arg1 options:(id)arg2 forType:(id)arg3;
 - (id)generateObjectRepresentationForClass:(Class)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)folderName;
 - (id)actionCount;

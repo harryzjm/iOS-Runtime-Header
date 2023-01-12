@@ -4,8 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSRegularExpression;
+
 @protocol LPTextStyleable
-- (void)setOverrideMaximumNumberOfLines:(long long)arg1;
+@property(copy, nonatomic) NSRegularExpression *emphasizedTextExpression;
+@property(nonatomic) long long overrideMaximumNumberOfLines;
 - (long long)computedNumberOfLines;
 - (double)descender;
 - (double)ascender;

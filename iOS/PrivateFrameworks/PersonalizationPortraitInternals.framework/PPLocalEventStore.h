@@ -8,40 +8,30 @@
 
 #import <PersonalizationPortraitInternals/PPFeedbackAccepting-Protocol.h>
 
-@class PPEventCache, PPEventStorage, _PASNotificationToken;
+@class PPEventCache, PPEventStorage, PPTrialWrapper, _PASNotificationToken;
 
 @interface PPLocalEventStore : NSObject <PPFeedbackAccepting>
 {
     PPEventCache *_eventCache;
     PPEventStorage *_storage;
     _PASNotificationToken *_assetUpdateNotificationToken;
+    PPTrialWrapper *_trialWrapper;
 }
 
 + (id)defaultStore;
 - (void).cxx_destruct;
 - (void)registerFeedback:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)tripEventsWithQuery:(id)arg1;
-- (id)highlightedEventsWithQuery:(id)arg1;
-- (id)suggestedEventsWithQuery:(id)arg1;
 - (id)scoredEventsWithQuery:(id)arg1;
+- (id)nlEventsFromDate:(id)arg1 toDate:(id)arg2;
 - (id)eventsFromDate:(id)arg1 toDate:(id)arg2;
-- (id)eventMetaDataFromDate:(id)arg1 toDate:(id)arg2;
-- (id)eventHighlightForEvent:(id)arg1 usingScorer:(id)arg2 date:(id)arg3 rankingOptions:(int)arg4 loadedFromEventKit:(_Bool *)arg5;
 - (id)eventHighlightsFrom:(id)arg1 to:(id)arg2 options:(int)arg3;
-- (void)_setupCalendarVisibilityManager;
-- (void)_clearAndReloadAllCachesAndData;
-- (void)_registerForNotifications;
-- (double)_scoreForSecondsRelativeToNow:(double)arg1;
-- (void)_preloadEvents;
-- (id)_recordForDeletedEKEventWithChangeIdentifier:(id)arg1;
-- (id)_recordForEvent:(id)arg1;
-- (id)_recordForEKEvent:(id)arg1;
+- (id)eventWithIdentifier:(id)arg1;
 - (id)eventWithExternalID:(id)arg1;
-- (id)eventsInRange:(struct _NSRange)arg1;
 - (id)resolveEventNameRecordChanges:(id)arg1 client:(id)arg2 error:(id *)arg3;
 - (id)eventNameRecordsForClient:(id)arg1 error:(id *)arg2;
 - (_Bool)iterEventNameRecordsForClient:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
 - (id)init;
+- (id)initWithTrialWrapper:(id)arg1 eventStorage:(id)arg2;
 - (void)clearCaches;
 
 @end

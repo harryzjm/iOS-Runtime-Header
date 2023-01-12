@@ -8,7 +8,7 @@
 
 #import <DoNotDisturb/DNDRemoteServiceConnectionEventListener-Protocol.h>
 
-@class NSHashTable, NSString;
+@class DNDGlobalConfigurationService, DNDModeConfigurationService, NSHashTable, NSString;
 @protocol OS_dispatch_queue;
 
 @interface DNDSettingsService : NSObject <DNDRemoteServiceConnectionEventListener>
@@ -17,6 +17,8 @@
     NSObject<OS_dispatch_queue> *_calloutQueue;
     NSHashTable *_settingsUpdateListeners;
     _Bool _registeredForUpdates;
+    DNDModeConfigurationService *_modeConfigurationService;
+    DNDGlobalConfigurationService *_globalConfigurationService;
     NSString *_clientIdentifier;
 }
 
@@ -24,15 +26,14 @@
 + (void)initialize;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
-- (void)_handleLostXPCConnectionWithRetry:(_Bool)arg1;
 - (_Bool)_queue_registerForSettingsUpdatesIfRequired;
 - (void)remoteService:(id)arg1 didReceiveUpdatedScheduleSettings:(id)arg2;
 - (void)remoteService:(id)arg1 didReceiveUpdatedPhoneCallBypassSettings:(id)arg2;
 - (void)remoteService:(id)arg1 didReceiveUpdatedBehaviorSettings:(id)arg2;
-- (void)didReceiveConnectionInvalidatedEventForRemoteService:(id)arg1;
-- (void)didReceiveConnectionInterruptedEventForRemoteService:(id)arg1;
 - (void)removeSettingsUpdateListener:(id)arg1;
 - (void)addSettingsUpdateListener:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (_Bool)setConfiguration:(id)arg1 forModeIdentifier:(id)arg2 error:(id *)arg3;
+- (id)configurationForModeIdentifier:(id)arg1 error:(id *)arg2;
 - (_Bool)setScheduleSettings:(id)arg1 error:(id *)arg2;
 - (id)scheduleSettingsReturningError:(id *)arg1;
 - (_Bool)setPhoneCallBypassSettings:(id)arg1 error:(id *)arg2;

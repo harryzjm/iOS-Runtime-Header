@@ -6,19 +6,22 @@
 
 #import <AppleMediaServices/AMSLookup.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface LPiTunesMediaLookupTask : AMSLookup
 {
-    NSString *_identifier;
+    NSArray *_identifiers;
+    NSArray *_bundleIdentifiers;
     NSString *_storefrontCountryCode;
 }
 
 - (void).cxx_destruct;
 - (void)start:(CDUnknownBlockType)arg1;
 - (id)_compileQueryParametersWithBundleIds:(id)arg1 itemIds:(id)arg2;
+- (id)initWithBundleIdentifier:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 storefrontCountryCode:(id)arg2;
+- (id)init;
 - (id)callerID;
 - (id)sharedBag;
 

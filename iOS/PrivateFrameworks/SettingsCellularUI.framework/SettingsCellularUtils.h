@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 + (id)singleSIMUIServiceDescriptor;
 + (id)singleSIMUISubscriptionContext;
++ (_Bool)shouldShowPendingTransferPlanOnPad;
 + (_Bool)isUISingleSIM;
 + (_Bool)isUIDualSIM;
 + (_Bool)supportsWiFiCalling:(id)arg1;

@@ -18,7 +18,7 @@
 }
 
 + (id)sharedDataSession;
-+ (void)asynchronousGetURL:(id)arg1 kind:(CDStruct_d1a7ebee)arg2 auditToken:(id)arg3 requestCounterTicket:(id)arg4 queue:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
++ (id)asynchronousGetURL:(id)arg1 kind:(CDStruct_d1a7ebee)arg2 auditToken:(id)arg3 requestCounterTicket:(id)arg4 queue:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) GEODataURLSession *urlSession; // @synthesize urlSession=_urlSession;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *sessionIsolation; // @synthesize sessionIsolation=_sessionIsolation;
@@ -28,7 +28,7 @@
 - (id)manifestManager;
 - (id)initWithUrlSession:(id)arg1;
 - (id)init;
-- (void)asynchronousGetURL:(id)arg1 kind:(CDStruct_d1a7ebee)arg2 auditToken:(id)arg3 requestCounterTicket:(id)arg4 queue:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (id)asynchronousGetURL:(id)arg1 kind:(CDStruct_d1a7ebee)arg2 auditToken:(id)arg3 requestCounterTicket:(id)arg4 queue:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

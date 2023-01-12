@@ -32,6 +32,7 @@
 - (id)_clientIdentifier;
 - (id)userInterfaceClient:(id)arg1 processMessageFromServer:(id)arg2 withIdentifier:(unsigned long long)arg3 error:(id *)arg4;
 - (void)connectionWithServiceWasInterruptedForUserInterfaceClient:(id)arg1;
+- (void)updateSpeakingRateTo:(long long)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (void)keyboardFrameWillUpdate:(id)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (void)hideSpeechController:(CDUnknownBlockType)arg1;
 - (void)showSpeechController:(CDUnknownBlockType)arg1;
@@ -43,6 +44,8 @@
 - (void)resumeSpeaking:(CDUnknownBlockType)arg1;
 - (void)pauseSpeaking:(CDUnknownBlockType)arg1;
 - (void)didCancelSpeakThisErrorHandler:(CDUnknownBlockType)arg1;
+- (void)speakThisWithOptions:(long long)arg1 forSceneID:(id)arg2 errorHandler:(CDUnknownBlockType)arg3;
+- (void)speakThisWithOptions:(long long)arg1 forAppWithBundleID:(id)arg2 errorHandler:(CDUnknownBlockType)arg3;
 - (void)speakThisWithOptions:(long long)arg1 useAppAtPoint:(struct CGPoint)arg2 errorHandler:(CDUnknownBlockType)arg3;
 - (void)speakThisWithOptions:(long long)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (void)_checkSpringBoardStarted;

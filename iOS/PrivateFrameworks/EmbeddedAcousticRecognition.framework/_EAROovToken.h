@@ -10,16 +10,16 @@
 
 @interface _EAROovToken : NSObject
 {
-    int _frequency;
     NSString *_orthography;
     NSSet *_prons;
+    long long _frequency;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) int frequency; // @synthesize frequency=_frequency;
+@property(readonly, nonatomic) long long frequency; // @synthesize frequency=_frequency;
 @property(readonly, nonatomic) NSSet *prons; // @synthesize prons=_prons;
 @property(readonly, nonatomic) NSString *orthography; // @synthesize orthography=_orthography;
-- (id)initWithOrthography:(id)arg1 prons:(id)arg2 frequency:(int)arg3;
+- (id)initWithOrthography:(id)arg1 prons:(id)arg2 frequency:(long long)arg3;
 
 @end
 

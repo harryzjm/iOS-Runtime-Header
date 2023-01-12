@@ -5,38 +5,51 @@
 //
 
 #import <UIKitCore/_UIContextBinderContextCreationPolicyHolding-Protocol.h>
+#import <UIKitCore/_UIEventDeferringRuleOwning-Protocol.h>
 #import <UIKitCore/_UIFallbackEnvironment-Protocol.h>
+#import <UIKitCore/_UISceneUIWindowEventRouting-Protocol.h>
 #import <UIKitCore/_UISceneUIWindowHosting-Protocol.h>
 
-@class FBSDisplayConfigurationRequest, FBSScene, NSArray, NSPointerArray, NSString, UIAlertControllerStackManager, UIInputResponderController, UISceneSizeRestrictions, UIScreen, UIScreenshotService, UIStatusBarManager, UITraitCollection, UIWindow, _UIBannerManager, _UICanvasDefinition, _UIContextBinder, _UISystemAppearanceManager;
-@protocol UICoordinateSpace, _UIDisplayInfoProviding, _UISceneMetricsCalculating;
+@class FBSDisplayConfigurationRequest, FBSScene, NSArray, NSPointerArray, NSSet, NSString, UIAlertControllerStackManager, UIFocusSystem, UIInputResponderController, UIKeyboardSceneDelegate, UIScene, UISceneSizeRestrictions, UIScreen, UIScreenshotService, UIStatusBarManager, UITraitCollection, UIWindow, _UIBannerManager, _UICanvasDefinition, _UIContextBinder, _UIEventDeferringOwnershipToken, _UISystemAppearanceManager;
+@protocol UIActivityItemsConfigurationProviding, UIActivityItemsConfigurationReading, UICoordinateSpace, _UIDisplayInfoProviding, _UISceneMetricsCalculating, _UISceneUIWindowEventRouting;
 
-@interface UIWindowScene <_UIFallbackEnvironment, _UISceneUIWindowHosting, _UIContextBinderContextCreationPolicyHolding>
+@interface UIWindowScene <_UIFallbackEnvironment, _UISceneUIWindowHosting, _UISceneUIWindowEventRouting, _UIContextBinderContextCreationPolicyHolding, _UIEventDeferringRuleOwning>
 {
     UIScreen *_screen;
     UITraitCollection *_traitCollection;
     _UIContextBinder *_contextBinder;
     NSPointerArray *_keyWindowHistory;
+    UIWindow *_keyWindow;
+    _UIEventDeferringOwnershipToken *_keyboardEventDeferringToken;
     _Bool _isPerformingSystemSnapshot;
     id <_UIDisplayInfoProviding> _displayEdgeInfoProvider;
     id <UICoordinateSpace> _coordinateSpace;
     _Bool _shouldDisableTouchCancellationOnRotation;
     _Bool _windowWasInitializedWithDefaultStoryboard;
     _Bool _didMakeKeyAndVisible;
+    NSSet *_componentsWithTraitOverrides;
+    int _reachabilitySupportedCounter;
+    struct {
+        unsigned int delegateSupportsWindowWillAttach:1;
+        unsigned int delegateSupportsWindowWillDetach:1;
+        unsigned int delegateSupportsWindowWillBecomeVisible:1;
+        unsigned int delegateSupportsWindowDidBecomeVisible:1;
+        unsigned int delegateSupportsWindowWillBecomeHidden:1;
+        unsigned int delegateSupportsWindowLevelOverride:1;
+        unsigned int delegateSupportsOrientationMaskUpdates:1;
+    } _springBoardDelegateFlags;
     id <_UISceneMetricsCalculating> _metricsCalculator;
     _Bool __isKeyWindowScene;
     _Bool _excludedFromWindowsMenu;
     long long _screenRequestedOverscanCompensation;
     long long _avkitRequestedOverscanCompensation;
+    id <UIActivityItemsConfigurationProviding> _activityItemsConfigurationSource;
 }
 
-+ (id)_findNewKeyWindowSceneOnScreen:(id)arg1;
-+ (void)_setShouldRestoreKeyWindowSceneOnActivation:(_Bool)arg1;
-+ (_Bool)_shouldRestoreKeyWindowSceneOnActivation;
-+ (id)_keyWindowScene;
 + (id)_placeholderWindowSceneForScreen:(id)arg1 create:(_Bool)arg2;
 + (id)_keyboardWindowSceneForScreen:(id)arg1 create:(_Bool)arg2;
 + (id)_unassociatedWindowSceneForScreen:(id)arg1 create:(_Bool)arg2;
++ (_Bool)_supportsEventUIWindowRouting;
 + (void)_updateVisibleSceneAndWindowOrderWithTest:(CDUnknownBlockType)arg1;
 + (_Bool)_hostsWindows;
 + (void)initialize;
@@ -45,13 +58,15 @@
 - (void).cxx_destruct;
 @property(nonatomic, getter=isExcludedFromWindowsMenu) _Bool excludedFromWindowsMenu; // @synthesize excludedFromWindowsMenu=_excludedFromWindowsMenu;
 @property(nonatomic) _Bool _isKeyWindowScene; // @synthesize _isKeyWindowScene=__isKeyWindowScene;
+@property(nonatomic) __weak id <UIActivityItemsConfigurationProviding> activityItemsConfigurationSource; // @synthesize activityItemsConfigurationSource=_activityItemsConfigurationSource;
 @property(nonatomic, getter=_avkitRequestedOverscanCompensation, setter=_setAVKitRequestedOverscanCompensation:) long long _avkitRequestedOverscanCompensation; // @synthesize _avkitRequestedOverscanCompensation;
 @property(readonly, nonatomic) _Bool _isPerformingSystemSnapshot; // @synthesize _isPerformingSystemSnapshot;
 - (void)_showProgressWhenFetchingUserActivityForTypes:(id)arg1;
+@property(readonly, nonatomic) NSArray *_overrideTraitCollectionForWindows;
 - (id)_inheritingWindowsIncludingInvisible:(_Bool)arg1;
 - (id)_windowSceneDelegate;
 @property(readonly, copy) NSString *description;
-- (_Bool)_permitContextCreationForBindingDescription:(CDStruct_a002d41c)arg1;
+- (_Bool)_permitContextCreationForBindingDescription:(CDStruct_98d137ef)arg1;
 - (void)_applySnapshotSettings:(id)arg1 forActions:(CDUnknownBlockType)arg2;
 - (void)_noteDisplayIdentityDidChangeWithConfiguration:(id)arg1;
 @property(retain, nonatomic, getter=_displayConfigurationRequest, setter=_setDisplayConfigurationRequest:) FBSDisplayConfigurationRequest *_displayConfigurationRequest; // @dynamic _displayConfigurationRequest;
@@ -60,11 +75,14 @@
 - (long long)_resolvedOverscanCompensation;
 @property(nonatomic, getter=_screenRequestedDisplayNativePixelSize, setter=_setScreenRequestedDisplayNativePixelSize:) struct CGSize _screenRequestedDisplayNativePixelSize; // @dynamic _screenRequestedDisplayNativePixelSize;
 @property(readonly, nonatomic) UISceneSizeRestrictions *sizeRestrictions;
+- (void)_registerSceneComponent:(id)arg1 forKey:(id)arg2;
+- (void)_componentDidUpdateTraitOverrides:(id)arg1;
 - (_Bool)_windowsIgnoreSceneClientOrientation;
 - (void)_updateClientSettingsToInterfaceOrientation:(long long)arg1 withAnimationDuration:(double)arg2;
 - (id)_disableTouchCancellationOnRotation;
 - (void)_setShouldDisableTouchCancellationOnRotation:(_Bool)arg1;
 - (unsigned long long)_currentlySupportedInterfaceOrientations;
+- (_Bool)_canDynamicallySpecifySupportedInterfaceOrientations;
 @property(readonly, nonatomic) id <_UIDisplayInfoProviding> _displayInfoProvider;
 - (double)_systemMinimumMargin;
 - (struct UIEdgeInsets)_safeAreaInsetsForInterfaceOrientation:(long long)arg1;
@@ -76,14 +94,14 @@
 - (void)_computeMetrics:(_Bool)arg1;
 - (void)_prepareForSuspend;
 - (void)_prepareForResume;
+@property(readonly, nonatomic) UIWindow *keyWindow;
+- (long long)interfaceElementCategory;
 - (void)_recycleAttachmentForWindow:(id)arg1;
 - (id)_fbsSceneLayerForWindow:(id)arg1;
 - (void)_enumerateWindowsIncludingInternalWindows:(_Bool)arg1 onlyVisibleWindows:(_Bool)arg2 asCopy:(_Bool)arg3 stopped:(_Bool *)arg4 withBlock:(CDUnknownBlockType)arg5;
 @property(readonly, nonatomic) _Bool _canReceiveDeviceOrientationEvents;
 - (id)_allWindows;
 - (id)_visibleWindows;
-@property(readonly, nonatomic) UIWindow *_keyWindow;
-- (void)_windowDidBecomeKey:(id)arg1;
 - (id)_topVisibleWindowPassingTest:(CDUnknownBlockType)arg1;
 - (_Bool)_windowIsFront:(id)arg1;
 @property(readonly, nonatomic) _UIContextBinder *_contextBinder;
@@ -92,6 +110,10 @@
 - (void)_loadWindowWithStoryboardIfNeeded:(id)arg1;
 - (_Bool)_shouldLoadStoryboard;
 - (void)_readySceneForConnection;
+@property(nonatomic, setter=_setActivityItemsConfigurationSource:) __weak id <UIActivityItemsConfigurationProviding> _activityItemsConfigurationSource;
+@property(readonly, nonatomic) id <UIActivityItemsConfigurationReading> _activityItemsConfiguration;
+@property(readonly, nonatomic) UIScene<_UISceneUIWindowEventRouting> *_sceneForKeyboardDisplay;
+@property(readonly, nonatomic) _Bool _allowsEventUIWindowRouting;
 - (id)_allWindowsIncludingInternalWindows:(_Bool)arg1 onlyVisibleWindows:(_Bool)arg2;
 - (void)_windowUpdatedProperties:(id)arg1;
 - (void)_windowUpdatedVisibility:(id)arg1;
@@ -104,6 +126,16 @@
 @property(readonly, nonatomic) id <UICoordinateSpace> _coordinateSpace;
 @property(readonly, nonatomic) long long _interfaceOrientation;
 @property(readonly, nonatomic) UIScreen *_screen;
+@property(readonly, nonatomic) CDUnknownBlockType _windowSupportedOrientationsObserver;
+- (double)_adjustedLevelForWindow:(id)arg1 preferredLevel:(double)arg2;
+- (void)_delegate_windowWillBecomeHidden:(id)arg1;
+- (void)_delegate_windowDidBecomeVisible:(id)arg1;
+- (void)_delegate_windowWillBecomeVisible:(id)arg1;
+- (void)_delegate_windowWillDetach:(id)arg1;
+- (void)_delegate_windowWillAttach:(id)arg1;
+- (void)_updateSpringBoardDelegateFlags;
+- (void)setDelegate:(id)arg1;
+- (void)_setReachabilitySupported:(_Bool)arg1 forReason:(id)arg2;
 - (void)_setSystemVolumeHUDEnabled:(_Bool)arg1;
 - (void)_setSystemVolumeHUDEnabled:(_Bool)arg1 forAudioCategory:(id)arg2;
 @property(nonatomic, getter=_keepContextAssociationInBackground, setter=_setKeepContextAssociationInBackground:) _Bool keepContextAssociationInBackground;
@@ -130,11 +162,15 @@
 @property(readonly, nonatomic) long long state;
 @property(readonly, nonatomic) UIStatusBarManager *statusBarManager;
 @property(readonly, nonatomic) _UISystemAppearanceManager *_systemAppearanceManager;
-@property(readonly, nonatomic) UIInputResponderController *inputResponderController;
+@property(readonly, nonatomic) UIKeyboardSceneDelegate *keyboardSceneDelegate;
+@property(readonly, nonatomic) UIFocusSystem *focusSystem;
 - (id)_screenshotServiceIfPresent;
 @property(readonly, nonatomic) UIScreenshotService *screenshotService;
+@property(readonly, nonatomic) UIInputResponderController *inputResponderController;
+- (id)_playbackControlsStateManager;
 - (id)_fallbackTraitCollection;
 @property(readonly, nonatomic, getter=_bannerManager) _UIBannerManager *_bannerManager;
+- (void)_willRestoreInteractionStateForUserActivityManager:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

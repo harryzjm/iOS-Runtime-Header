@@ -23,6 +23,7 @@
 @property(nonatomic) __weak PKPaymentAuthorizationRemoteAlertViewController *controller; // @synthesize controller=_controller;
 @property(nonatomic) __weak id <PKPaymentAuthorizationServiceProtocol> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) NSMutableSet *completionHandlers; // @synthesize completionHandlers=_completionHandlers;
+- (void)authorizationDidChangeCouponCodeCompleteWithUpdate:(id)arg1;
 - (void)authorizationDidSelectPaymentMethodCompleteWithPaymentSummaryItems:(id)arg1;
 - (void)authorizationDidSelectPaymentMethodCompleteWithUpdate:(id)arg1;
 - (void)authorizationDidSelectShippingAddressCompleteWithUpdate:(id)arg1;

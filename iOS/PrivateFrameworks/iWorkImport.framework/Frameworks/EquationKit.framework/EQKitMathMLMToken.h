@@ -31,7 +31,7 @@
 - (int)scriptContext;
 - (int)scriptVariant;
 - (void)dealloc;
-- (const set_c5c159f9 *)mathMLAttributes;
+- (const void *)mathMLAttributes;
 - (id)initFromXMLNode:(struct _xmlNode *)arg1 parser:(id)arg2;
 - (id)initWithContent:(id)arg1;
 - (id)initWithString:(id)arg1 environment:(id)arg2;

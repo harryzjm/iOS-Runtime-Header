@@ -12,11 +12,8 @@
 {
 }
 
-+ (_Bool)calculatePerimeter:(double *)arg1 forContourWithSIMDPoints:(const MISSING_TYPE **)arg2 pointCount:(long long)arg3 closedContour:(_Bool)arg4 error:(id *)arg5;
 + (_Bool)calculatePerimeter:(double *)arg1 forContour:(id)arg2 error:(id *)arg3;
-+ (_Bool)calculateArea:(double *)arg1 forContourWithSIMDPoints:(const MISSING_TYPE **)arg2 pointCount:(long long)arg3 orientedArea:(_Bool)arg4 error:(id *)arg5;
 + (_Bool)calculateArea:(double *)arg1 forContour:(id)arg2 orientedArea:(_Bool)arg3 error:(id *)arg4;
-+ (id)boundingCircleForSIMDPoints:(const MISSING_TYPE **)arg1 pointCount:(long long)arg2 aspectRatioForCentroid:(float)arg3 error:(id *)arg4;
 + (id)boundingCircleForSIMDPoints:(const MISSING_TYPE **)arg1 pointCount:(long long)arg2 error:(id *)arg3;
 + (id)boundingCircleForPoints:(id)arg1 error:(id *)arg2;
 + (id)boundingCircleForContour:(id)arg1 error:(id *)arg2;

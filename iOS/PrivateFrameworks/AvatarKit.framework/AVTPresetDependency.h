@@ -6,19 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class AVTPreset, NSString;
+@class AVTPreset, NSDictionary, NSString;
 
 @interface AVTPresetDependency : NSObject
 {
+    float _morphVariantIntensity;
     long long _category;
     AVTPreset *_preset;
     NSString *_morphVariant;
     NSString *_imageVariant;
     NSString *_materialVariant;
+    NSDictionary *_visibilityRules;
 }
 
 - (void).cxx_destruct;
-- (id)debugDescription;
+- (id)description;
 
 @end
 

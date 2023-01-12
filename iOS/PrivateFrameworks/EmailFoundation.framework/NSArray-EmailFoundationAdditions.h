@@ -8,12 +8,21 @@
 
 #import <EmailFoundation/EFSQLValueCollectionExpressable-Protocol.h>
 
-@class NSString;
+@class NSNumber, NSString;
 
 @interface NSArray (EmailFoundationAdditions) <EFSQLValueCollectionExpressable>
+@property(readonly, nonatomic) NSNumber *ef_standardDeviation;
+@property(readonly, copy, nonatomic) NSArray *ef_mode;
+@property(readonly, nonatomic) NSNumber *ef_median;
+@property(readonly, nonatomic) NSNumber *ef_mean;
+@property(readonly, nonatomic) NSNumber *ef_max;
+@property(readonly, nonatomic) NSNumber *ef_min;
+@property(readonly, nonatomic) NSNumber *ef_sum;
 @property(readonly, nonatomic) NSArray *ef_reverse;
 @property(readonly, nonatomic) NSArray *ef_permutations;
 - (id)ef_subarraysOfSize:(unsigned long long)arg1;
+- (id)ef_groupByObject:(CDUnknownBlockType)arg1 keyOptions:(unsigned long long)arg2 valueOptions:(unsigned long long)arg3;
+- (id)ef_groupByObject:(CDUnknownBlockType)arg1;
 - (id)ef_groupBy:(CDUnknownBlockType)arg1;
 - (id)ef_partition:(CDUnknownBlockType)arg1;
 - (id)ef_reduce:(CDUnknownBlockType)arg1;

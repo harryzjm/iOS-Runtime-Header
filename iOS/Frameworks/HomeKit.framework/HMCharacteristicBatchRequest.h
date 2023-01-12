@@ -6,23 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
+@class HMBatchRequest;
 
 @interface HMCharacteristicBatchRequest : NSObject
 {
-    CDUnknownBlockType _progressHandler;
     CDUnknownBlockType _completionHandler;
-    NSArray *_requests;
+    CDUnknownBlockType _progressHandler;
+    HMBatchRequest *_batchRequest;
 }
 
 + (id)characteristicBatchRequestWithWriteRequests:(id)arg1;
 + (id)characteristicBatchRequestWithReadRequests:(id)arg1;
-+ (_Bool)validateRequestTypes:(id)arg1 requestClass:(Class)arg2;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSArray *requests; // @synthesize requests=_requests;
-@property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+@property(retain, nonatomic) HMBatchRequest *batchRequest; // @synthesize batchRequest=_batchRequest;
 @property(copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
-- (id)initWithRequests:(id)arg1 requestClass:(Class)arg2;
+@property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+- (id)requests;
+- (id)initWithBatchRequest:(id)arg1;
 
 @end
 

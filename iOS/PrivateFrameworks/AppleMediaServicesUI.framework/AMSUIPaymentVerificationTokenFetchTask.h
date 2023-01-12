@@ -20,6 +20,7 @@
     AMSProcessInfo *_clientInfo;
     NSString *_displayName;
     unsigned long long _mode;
+    NSDictionary *_userInfo;
     UIViewController *_viewController;
     AMSUIPaymentVerificationMetrics *_metrics;
     AMSPromise *_resultPromise;
@@ -32,6 +33,7 @@
 + (id)bagKeySet;
 + (id)_tokenFromDictionary:(id)arg1;
 + (id)accountForNetworkingFromAccount:(id)arg1 accountParameters:(id)arg2 accountStore:(id)arg3;
++ (id)_contextCombining:(id)arg1 with:(id)arg2;
 + (id)performCardOnFileTask:(id)arg1;
 + (id)performApplePayTask:(id)arg1;
 + (id)_promiseToTryNextFlowWithResult:(id)arg1 error:(id)arg2 continuationBlock:(CDUnknownBlockType)arg3;
@@ -40,6 +42,7 @@
 @property(retain, nonatomic) AMSPromise *resultPromise; // @synthesize resultPromise=_resultPromise;
 @property(retain, nonatomic) AMSUIPaymentVerificationMetrics *metrics; // @synthesize metrics=_metrics;
 @property(readonly, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
+@property(retain, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 @property(readonly, nonatomic) unsigned long long mode; // @synthesize mode=_mode;
 @property(readonly, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property(retain, nonatomic) AMSProcessInfo *clientInfo; // @synthesize clientInfo=_clientInfo;

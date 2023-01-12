@@ -16,6 +16,12 @@
 }
 
 + (id)sharedInstance;
++ (_Bool)isPageManagementTest:(id)arg1;
++ (id)_operationToUnstashStashedPIP;
++ (id)_operationToStashPIP;
++ (id)_operationToRestoreVideoFromPIP;
++ (id)_operationToPutVideoInPIP;
++ (_Bool)isAppLibraryTest:(id)arg1;
 - (_Bool)runTestWithName:(id)arg1 options:(id)arg2;
 - (void)prepareForControlCenterPPTHostState:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_runFloatingDockDismissTestWithOptions:(id)arg1;
@@ -31,6 +37,8 @@
 - (void)assistantDidAppear:(id)arg1;
 - (void)assistantWillAppear:(id)arg1;
 - (void)_runSiriTestWithName:(id)arg1 options:(id)arg2;
+- (void)_runPageManagementPresentTestWithName:(id)arg1 options:(id)arg2;
+- (void)_runPageManagementTestWithName:(id)arg1 options:(id)arg2;
 - (void)_setCoverSheetPresentationManagerTransitionCallbacksForTestName:(id)arg1 operation:(id)arg2;
 - (id)_operationToDismissCoverSheetForTestWithName:(id)arg1;
 - (id)_operationToPresentCoverSheetForTestWithName:(id)arg1;
@@ -38,6 +46,26 @@
 - (void)_runCoverSheetPresentOverSafariTestWithOptions:(id)arg1;
 - (void)_runCoverSheetDismissTestWithOptions:(id)arg1;
 - (void)_runCoverSheetPresentTestWithOptions:(id)arg1;
+- (_Bool)_runCoverSheetTestWithName:(id)arg1 options:(id)arg2;
+- (void)_runPiPAutoUnstashAndRestoreByExitingSwitcherBackToAppTestWithOptions:(id)arg1;
+- (void)_runPiPAutoStashByEnteringSwitcherTestWithOptions:(id)arg1;
+- (void)_runPiPManualUnstashTestWithOptions:(id)arg1;
+- (void)_runPiPManualStashTestWithOptions:(id)arg1;
+- (void)_runPiPBasicRestoreTestWithOptions:(id)arg1;
+- (void)_runPIPAutoUnstashAndRestoreByExitingSwitcherBackToAppTestWithOptions:(id)arg1;
+- (void)_runPIPAutoStashByEnteringSwitcherTestWithOptions:(id)arg1;
+- (void)_runPIPManualUnstashTestWithOptions:(id)arg1;
+- (void)_runPIPManualStashTestWithOptions:(id)arg1;
+- (void)_runPIPBasicRestoreTestWithOptions:(id)arg1;
+- (void)_configureParams:(id)arg1 forScrollView:(id)arg2;
+- (void)_runPullToAppLibrarySearchTest;
+- (void)_runScrollWithinExpandedPodTest;
+- (void)_runLibrarySearchTest;
+- (void)_runScrollDeweyTest;
+- (void)_runSwipeFromDeweyTest;
+- (void)_runSwipeToDeweyTest;
+- (void)_runAppLibraryPadPresent;
+- (void)_runAppLibraryTestWithName:(id)arg1 options:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -17,9 +17,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
-@property(nonatomic) _Bool expectResponse; // @synthesize expectResponse=_expectResponse;
-@property(retain, nonatomic) HDHealthServiceCharacteristic *characteristic; // @synthesize characteristic=_characteristic;
 
 @end
 

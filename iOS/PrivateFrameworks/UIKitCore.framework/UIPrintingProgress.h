@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     UIPrintingProgressViewController *_viewController;
     _Bool _donePrinting;
     _Bool _forceDisplayAsAlert;
+    _Bool _presentingAlert;
     _Bool _creatingPDF;
     double _lastPageUpdate;
     double _progressAlertDelay;

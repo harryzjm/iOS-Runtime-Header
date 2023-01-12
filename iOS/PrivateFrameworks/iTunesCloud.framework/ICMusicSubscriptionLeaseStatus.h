@@ -16,6 +16,7 @@
     _Bool _hasOnlinePlaybackKeys;
     _Bool _hasOfflinePlaybackKeys;
     _Bool _hasPendingLeaseAcquisition;
+    _Bool _takenDueToLeasePrevention;
     long long _leaseState;
     ICStoreDialogResponse *_stateReasonDialog;
     NSDictionary *_stateReasonDialogMetricsDictionary;
@@ -25,6 +26,7 @@
 @property(copy, nonatomic) NSDictionary *stateReasonDialogMetricsDictionary; // @synthesize stateReasonDialogMetricsDictionary=_stateReasonDialogMetricsDictionary;
 @property(copy, nonatomic) ICStoreDialogResponse *stateReasonDialog; // @synthesize stateReasonDialog=_stateReasonDialog;
 @property(nonatomic) long long leaseState; // @synthesize leaseState=_leaseState;
+@property(nonatomic, getter=isTakenDueToLeasePrevention) _Bool takenDueToLeasePrevention; // @synthesize takenDueToLeasePrevention=_takenDueToLeasePrevention;
 @property(nonatomic) _Bool hasPendingLeaseAcquisition; // @synthesize hasPendingLeaseAcquisition=_hasPendingLeaseAcquisition;
 @property(nonatomic) _Bool hasOfflinePlaybackKeys; // @synthesize hasOfflinePlaybackKeys=_hasOfflinePlaybackKeys;
 @property(nonatomic) _Bool hasOnlinePlaybackKeys; // @synthesize hasOnlinePlaybackKeys=_hasOnlinePlaybackKeys;

@@ -12,11 +12,11 @@
 @class MKMapItem, MKTransitDeparturesDataSource, NSString;
 @protocol MKTransitDepaturesViewControllerDelegate;
 
-__attribute__((visibility("hidden")))
 @interface MKTransitDeparturesViewController <MKTransitDeparturesDataSourceHosting, MKStackingViewControllerPreferredSizeUse, MKModuleViewControllerProtocol, _MKInfoCardChildViewControllerAnalyticsDelegate>
 {
     _Bool _allowTransitLineSelection;
     struct CGRect _lastMaxWidthBounds;
+    _Bool _showNewUI;
     _Bool _isInSiri;
     MKMapItem *_mapItem;
     id <MKTransitDepaturesViewControllerDelegate> _delegate;
@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool isInSiri; // @synthesize isInSiri=_isInSiri;
 @property(nonatomic) __weak id <MKTransitDepaturesViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
+- (_Bool)_newStationCardUIEnabled;
 - (int)currentTransitCategory;
 - (id)infoCardChildUnactionableUIElements;
 - (id)infoCardChildPossibleActions;

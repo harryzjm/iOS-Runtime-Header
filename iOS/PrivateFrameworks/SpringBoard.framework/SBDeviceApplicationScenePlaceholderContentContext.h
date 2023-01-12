@@ -20,9 +20,11 @@
     NSURL *_url;
     _Bool _prefersLiveXIB;
     unsigned long long _preferredContentType;
+    _Bool _hasOrientationMismatchForClassicApp;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool hasOrientationMismatchForClassicApp; // @synthesize hasOrientationMismatchForClassicApp=_hasOrientationMismatchForClassicApp;
 @property(nonatomic) unsigned long long preferredContentType; // @synthesize preferredContentType=_preferredContentType;
 @property(nonatomic) _Bool prefersLiveXIB; // @synthesize prefersLiveXIB=_prefersLiveXIB;
 @property(copy, nonatomic) NSURL *url; // @synthesize url=_url;

@@ -10,58 +10,81 @@
 #import <VoiceShortcuts/WFDialogPresentationManagerDelegate-Protocol.h>
 #import <VoiceShortcuts/WFOutOfProcessWorkflowControllerDelegate-Protocol.h>
 
-@class NSHashTable, NSMutableArray, NSMutableDictionary, NSString, WFDialogPresentationManager, WFUserNotificationManager;
-@protocol OS_dispatch_queue;
+@class NSHashTable, NSMutableDictionary, NSString, WFApplicationTerminationMonitor, WFDialogPresentationManager, WFLSApplicationStateObserver, WFUIPresenter, WFUserNotificationManager, WFWorkflowRunQueue;
+@protocol OS_dispatch_queue, WFDatabaseProvider;
 
 @interface WFWorkflowRunCoordinator : NSObject <WFDialogPresentationManagerDelegate, WFOutOfProcessWorkflowControllerDelegate, UNUserNotificationCenterDelegate>
 {
     WFUserNotificationManager *_userNotificationManager;
+    WFUIPresenter *_userInterfacePresenter;
+    id <WFDatabaseProvider> _databaseProvider;
+    WFWorkflowRunQueue *_runRequestQueue;
     NSMutableDictionary *_runningWorkflowCompletionHandlers;
     NSMutableDictionary *_runningWorkflowControllers;
-    NSMutableArray *_queuedPersistentRunRequests;
+    NSMutableDictionary *_runEvents;
+    NSMutableDictionary *_runRequests;
     WFDialogPresentationManager *_dialogPresentationManager;
     NSHashTable *_observers;
     NSObject<OS_dispatch_queue> *_queue;
+    NSMutableDictionary *_parentRunningContexts;
+    WFApplicationTerminationMonitor *_terminationMonitor;
+    WFLSApplicationStateObserver *_applicationStateObserver;
 }
 
 + (long long)outOfProcessWorkflowControllerPresentationModeFromVCShortcutPresentationMode:(unsigned long long)arg1;
 + (id)errorWithActionCategory;
 + (id)errorCategory;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) WFLSApplicationStateObserver *applicationStateObserver; // @synthesize applicationStateObserver=_applicationStateObserver;
+@property(readonly, nonatomic) WFApplicationTerminationMonitor *terminationMonitor; // @synthesize terminationMonitor=_terminationMonitor;
+@property(readonly, nonatomic) NSMutableDictionary *parentRunningContexts; // @synthesize parentRunningContexts=_parentRunningContexts;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property(readonly, nonatomic) WFDialogPresentationManager *dialogPresentationManager; // @synthesize dialogPresentationManager=_dialogPresentationManager;
-@property(readonly, nonatomic) NSMutableArray *queuedPersistentRunRequests; // @synthesize queuedPersistentRunRequests=_queuedPersistentRunRequests;
+@property(readonly, nonatomic) NSMutableDictionary *runRequests; // @synthesize runRequests=_runRequests;
+@property(readonly, nonatomic) NSMutableDictionary *runEvents; // @synthesize runEvents=_runEvents;
 @property(readonly, nonatomic) NSMutableDictionary *runningWorkflowControllers; // @synthesize runningWorkflowControllers=_runningWorkflowControllers;
 @property(readonly, nonatomic) NSMutableDictionary *runningWorkflowCompletionHandlers; // @synthesize runningWorkflowCompletionHandlers=_runningWorkflowCompletionHandlers;
+@property(readonly, nonatomic) WFWorkflowRunQueue *runRequestQueue; // @synthesize runRequestQueue=_runRequestQueue;
+@property(readonly, nonatomic) id <WFDatabaseProvider> databaseProvider; // @synthesize databaseProvider=_databaseProvider;
+@property(readonly, nonatomic) WFUIPresenter *userInterfacePresenter; // @synthesize userInterfacePresenter=_userInterfacePresenter;
 @property(readonly, nonatomic) WFUserNotificationManager *userNotificationManager; // @synthesize userNotificationManager=_userNotificationManager;
 - (void)userNotificationCenter:(id)arg1 didReceiveNotificationResponse:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (id)queue_contextForWorkflowController:(id)arg1;
 - (id)queue_workflowControllerWithContext:(id)arg1;
+- (void)stopAllRunningWorkflows;
 - (_Bool)shortcutWithIdentifierIsRunning:(id)arg1;
 - (id)allRunningWorkflows;
-- (void)postNotificationAboutFailure:(id)arg1 inWorkflow:(id)arg2 dialogAttribution:(id)arg3;
-- (id)bestErrorFromError:(id)arg1;
+- (void)postNotificationAboutFailure:(id)arg1 inWorkflow:(id)arg2 dialogAttributions:(id)arg3;
+- (void)presentationManager:(id)arg1 updateSmartPromptStateData:(id)arg2 actionUUID:(id)arg3 context:(id)arg4 reference:(id)arg5;
+- (void)presentationManager:(id)arg1 updateStateData:(id)arg2 forAccessResourceWithIdentifier:(id)arg3 context:(id)arg4 reference:(id)arg5;
 - (void)presentationManager:(id)arg1 pauseExecutionOfWorkflowWithContext:(id)arg2;
 - (void)presentationManager:(id)arg1 cancelExecutionOfWorkflowWithContext:(id)arg2;
-- (void)queue_notifyObserversWorkflowDidFinishRunningWithError:(id)arg1 context:(id)arg2 cancelled:(_Bool)arg3;
-- (_Bool)queue_callWorkflowCompletionForContext:(id)arg1 withError:(id)arg2 cancelled:(_Bool)arg3;
-- (void)queue_finishWorkflowWithContext:(id)arg1 error:(id)arg2 cancelled:(_Bool)arg3;
-- (void)outOfProcessWorkflowController:(id)arg1 didFinishWithError:(id)arg2 cancelled:(_Bool)arg3 reference:(id)arg4 dialogAttribution:(id)arg5;
-- (void)outOfProcessWorkflowController:(id)arg1 didStartFromWorkflowReference:(id)arg2 dialogAttribution:(id)arg3;
-- (void)runNextPersistentWorkflowIfAvailable;
-- (void)dismissPresentedContentWithCompletion:(CDUnknownBlockType)arg1;
+- (void)presentationManager:(id)arg1 didEnqueueDialogRequest:(id)arg2 withContext:(id)arg3;
+- (unsigned long long)presentationManager:(id)arg1 dialogPresentationModeForRequest:(id)arg2 withContext:(id)arg3;
+- (id)presentationManager:(id)arg1 runningContextForContext:(id)arg2;
 - (id)unsupportedDialogResponseWithRequest:(id)arg1;
-- (void)enqueueDialog:(id)arg1 runningContext:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)presentationManager:(id)arg1 responseForDialogRequest:(id)arg2 withContext:(id)arg3;
+- (void)queue_notifyObserversWorkflowDidFinishRunningWithResult:(id)arg1 context:(id)arg2;
+- (_Bool)queue_callWorkflowCompletionForContext:(id)arg1 withResult:(id)arg2;
+- (void)queue_finishWorkflowWithContext:(id)arg1 result:(id)arg2;
+- (void)outOfProcessWorkflowController:(id)arg1 didFinishWithResult:(id)arg2 reference:(id)arg3 dialogAttributions:(id)arg4;
+- (void)outOfProcessWorkflowController:(id)arg1 didStartFromWorkflowReference:(id)arg2 dialogAttributions:(id)arg3;
+- (void)queue_runNextQueuedRequestWithType:(unsigned long long)arg1 inQueue:(id)arg2;
+- (void)showSingleStepCompletionWithWebClipMetadata:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)stopRunningWorkflowWithRunningContext:(id)arg1;
-- (void)resumeWorkflowFromContext:(id)arg1 presentationMode:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)resumeWorkflowFromContext:(id)arg1 withRequest:(id)arg2 presentationMode:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)queue_runWorkflowWithRequest:(id)arg1 context:(id)arg2 error:(out id *)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)runWorkflowWithRequest:(id)arg1 context:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)runWorkflowWithRequest:(id)arg1 context:(id)arg2;
+- (_Bool)queue_shouldQueueRunRequest:(id)arg1 queueType:(unsigned long long *)arg2;
+- (unsigned long long)queueTypeForRunRequest:(id)arg1;
+- (_Bool)shortcutShouldShowRunningProgress:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
+- (id)contextForDialogPresentationForContext:(id)arg1;
 - (void)removeStaleNotifications;
-- (id)initWithUserNotificationManager:(id)arg1;
+- (id)initWithUserNotificationManager:(id)arg1 databaseProvider:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

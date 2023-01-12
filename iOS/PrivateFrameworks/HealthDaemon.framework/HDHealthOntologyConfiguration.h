@@ -15,7 +15,6 @@
 
 + (id)bundledHealthOntologyConfiguration;
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSDictionary *countryConfigurations; // @synthesize countryConfigurations=_countryConfigurations;
 @property(readonly, copy, nonatomic) NSArray *allCountryConfigurations;
 - (id)configurationForCountryCode:(id)arg1;
 - (id)initWithCountryConfigurations:(id)arg1;

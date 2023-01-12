@@ -29,9 +29,11 @@
     NSArray *_editingLeftBarItems;
     NSArray *_leftBarItems;
     UIResponder *_responderToRestore;
+    long long _signatureImageContentMode;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long signatureImageContentMode; // @synthesize signatureImageContentMode=_signatureImageContentMode;
 @property(nonatomic) __weak UIResponder *responderToRestore; // @synthesize responderToRestore=_responderToRestore;
 @property(retain, nonatomic) NSArray *leftBarItems; // @synthesize leftBarItems=_leftBarItems;
 @property(retain, nonatomic) NSArray *editingLeftBarItems; // @synthesize editingLeftBarItems=_editingLeftBarItems;
@@ -54,11 +56,12 @@
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (void)_updateSignatureCellLayout;
 - (void)_deleteSignature:(id)arg1;
 - (id)_signatures;
 - (void)_cancelPicker:(id)arg1;
 - (void)_continueToCreateSignature:(id)arg1;
-- (void)viewWillLayoutSubviews;
+- (void)viewDidLayoutSubviews;
 - (void)_configureUI;
 - (_Bool)_canShowWhileLocked;
 @property(readonly, nonatomic) double idealHeight;

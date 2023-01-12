@@ -14,6 +14,7 @@
 {
     BOOL _balloonColor;
     _Bool _allowCalloutActions;
+    _Bool _disableAttachments;
     NSMutableDictionary *_mediaObjects;
     NSMutableDictionary *_pluginDisplayContainers;
     NSMutableDictionary *_composeImages;
@@ -22,6 +23,7 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool disableAttachments; // @synthesize disableAttachments=_disableAttachments;
 @property(nonatomic) _Bool allowCalloutActions; // @synthesize allowCalloutActions=_allowCalloutActions;
 @property(retain, nonatomic) UILongPressGestureRecognizer *longPressGestureRecognizer; // @synthesize longPressGestureRecognizer=_longPressGestureRecognizer;
 @property(retain, nonatomic) UITapGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
@@ -29,6 +31,13 @@
 @property(retain, nonatomic) NSMutableDictionary *pluginDisplayContainers; // @synthesize pluginDisplayContainers=_pluginDisplayContainers;
 @property(retain, nonatomic) NSMutableDictionary *mediaObjects; // @synthesize mediaObjects=_mediaObjects;
 @property(nonatomic) BOOL balloonColor; // @synthesize balloonColor=_balloonColor;
+- (void)_cancelChooseSupplementalItemToInsert;
+- (void)_chooseSupplementalItemToInsert:(id)arg1 replacementRange:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_insertSupplementalItem:(id)arg1 forString:(id)arg2 replacementRange:(id)arg3;
+- (_Bool)_canSuggestSupplementalItemsForCurrentSelection;
+- (void)_insertionPointExitedRangeWithSupplementalItems;
+- (void)_insertionPointEnteredRange:(id)arg1 string:(id)arg2 supplementalItems:(id)arg3;
+- (struct _NSRange)_rangeFromUITextRange:(id)arg1;
 - (void)handleTapOrLongPress:(id)arg1;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (id)attributedTextForCompositionText:(id)arg1;
@@ -39,17 +48,21 @@
 - (void)textStorage:(id)arg1 willProcessEditing:(unsigned long long)arg2 range:(struct _NSRange)arg3 changeInLength:(long long)arg4;
 - (id)compositionText;
 - (void)setCompositionText:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 textContainer:(id)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 textContainer:(id)arg2 shouldDisableAttachments:(_Bool)arg3;
 - (void)_showCustomInputView;
+- (id)cachedMediaObjectForTransferGUID:(id)arg1;
+- (id)cachedPluginDisplayContainerForGUID:(id)arg1;
 - (void)paste:(id)arg1;
 - (void)handlePastedString:(id)arg1 toRange:(id)arg2;
 - (id)_compositionFromSelection;
 - (void)cut:(id)arg1;
 - (void)copy:(id)arg1;
+- (_Bool)isSingleLineDocument;
 - (id)pasteboard;
 - (id)targetForAction:(SEL)arg1 withSender:(id)arg2;
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)dealloc;
+- (_Bool)__im_ff_supplementalLexiconMentionsEnabled;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

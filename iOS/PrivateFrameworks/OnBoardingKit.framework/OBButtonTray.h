@@ -25,10 +25,16 @@
     NSLayoutConstraint *_buttonViewBottomConstraint;
     NSLayoutConstraint *_buttonViewLeadingConstraint;
     NSLayoutConstraint *_buttonViewTrailingConstraint;
+    NSLayoutConstraint *_privacyLinkControllerLeadingConstraint;
+    NSLayoutConstraint *_privacyLinkControllerTrailingConstraint;
+    UIView *_privacyContainer;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic, getter=isDetached) _Bool detached; // @synthesize detached=_detached;
+@property(retain, nonatomic) UIView *privacyContainer; // @synthesize privacyContainer=_privacyContainer;
+@property(retain, nonatomic) NSLayoutConstraint *privacyLinkControllerTrailingConstraint; // @synthesize privacyLinkControllerTrailingConstraint=_privacyLinkControllerTrailingConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *privacyLinkControllerLeadingConstraint; // @synthesize privacyLinkControllerLeadingConstraint=_privacyLinkControllerLeadingConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *buttonViewTrailingConstraint; // @synthesize buttonViewTrailingConstraint=_buttonViewTrailingConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *buttonViewLeadingConstraint; // @synthesize buttonViewLeadingConstraint=_buttonViewLeadingConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *buttonViewBottomConstraint; // @synthesize buttonViewBottomConstraint=_buttonViewBottomConstraint;
@@ -43,6 +49,7 @@
 @property(nonatomic) long long backdropStyle; // @synthesize backdropStyle=_backdropStyle;
 @property(nonatomic) __weak UIViewController *parentViewController; // @synthesize parentViewController=_parentViewController;
 @property(retain, nonatomic) OBPrivacyLinkController *privacyLinkController; // @synthesize privacyLinkController=_privacyLinkController;
+- (struct CGSize)detachedSize;
 - (_Bool)_shouldHandleLandscapeiPhoneLayout;
 - (struct CGSize)intrinsicContentSize;
 - (void)_updateTrayVisibility;
@@ -50,16 +57,20 @@
 - (double)bottomPadding;
 - (double)topPadding;
 - (void)_updateButtonConstraints;
+- (void)didMoveToSuperview;
 - (void)_updateCaptionTextAppearance;
 - (void)setCaptionText:(id)arg1 style:(long long)arg2;
 - (void)setCaptionText:(id)arg1;
 - (void)addCaptionText:(id)arg1;
+- (_Bool)hasContent;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)setPrivacyLinkForBundles:(id)arg1;
 - (void)addPrivacyLinkForBundles:(id)arg1;
 - (void)removeAllButtons;
 - (void)removeButton:(id)arg1;
 - (void)addButton:(id)arg1;
+- (void)showButtonsAvailable;
+- (void)showButtonsBusy;
 - (void)layoutSubviews;
 - (void)removeFromSuperview;
 - (id)initWithFrame:(struct CGRect)arg1;

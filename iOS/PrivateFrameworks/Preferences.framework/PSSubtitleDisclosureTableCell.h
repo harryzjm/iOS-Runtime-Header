@@ -13,13 +13,13 @@
 
 + (long long)cellStyle;
 - (void).cxx_destruct;
-@property(retain, nonatomic) UILabel *valueLabel; // @synthesize valueLabel=_valueLabel;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)refreshCellContentsWithSpecifier:(id)arg1;
 - (_Bool)canReload;
 - (void)layoutSubviews;
 - (void)_valueLabelForSpecifier:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 specifier:(id)arg3;
+@property(retain, nonatomic) UILabel *valueLabel;
 
 @end
 

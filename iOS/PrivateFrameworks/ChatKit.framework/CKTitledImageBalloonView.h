@@ -4,16 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, UIImageView, UILabel;
+@class NSString, UIImageView, UILabel, UIVisualEffectView;
 @protocol CKTitledImageBalloonViewDelegate;
 
 @interface CKTitledImageBalloonView
 {
     UIImageView *_chevron;
     UILabel *_titleLabel;
+    UIVisualEffectView *_effectView;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIVisualEffectView *effectView; // @synthesize effectView=_effectView;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) UIImageView *chevron; // @synthesize chevron=_chevron;
 @property(copy, nonatomic) NSString *title;
@@ -21,6 +23,7 @@
 - (void)tapGestureRecognized:(id)arg1;
 - (void)prepareForReuse;
 - (struct UIEdgeInsets)alignmentRectInsets;
+- (void)prepareForDisplay;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)configureForMediaObject:(id)arg1 previewWidth:(double)arg2 orientation:(BOOL)arg3 hasInvisibleInkEffect:(_Bool)arg4;

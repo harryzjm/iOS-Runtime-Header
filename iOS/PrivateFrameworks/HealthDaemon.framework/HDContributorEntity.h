@@ -10,11 +10,6 @@
 
 + (id)propertyForSyncAnchor;
 + (id)propertyForSyncProvenance;
-+ (id)_contributorReferenceForEntityMatchingPredicate:(id)arg1 profile:(id)arg2 error:(id *)arg3;
-+ (id)_nextSyncAnchorInDatabase:(id)arg1 error:(id *)arg2;
-+ (id)_predicateForContributorReference:(id)arg1;
-+ (id)_predicateForNonDeletedContributor;
-+ (id)_predicateForContributorWithUUID:(id)arg1;
 + (id)noneContributorUUID;
 + (id)externalReferenceForContributorReference:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (id)contributorForReference:(id)arg1 profile:(id)arg2 error:(id *)arg3;
@@ -23,7 +18,6 @@
 + (id)contributorEntityForNoContributorWithProfile:(id)arg1 error:(id *)arg2;
 + (id)contributorEntityWithUUID:(id)arg1 profile:(id)arg2 includeDeleted:(_Bool)arg3 error:(id *)arg4;
 + (_Bool)deleteContributorWithUUID:(id)arg1 profile:(id)arg2 error:(id *)arg3;
-+ (id)_insertWithUUID:(id)arg1 appleID:(id)arg2 callerID:(id)arg3 deleted:(_Bool)arg4 modificationDate:(double)arg5 syncAnchor:(unsigned long long)arg6 syncProvenance:(long long)arg7 primaryUser:(_Bool)arg8 database:(id)arg9 error:(id *)arg10;
 + (id)insertPrimaryUserWithAppleID:(id)arg1 callerID:(id)arg2 database:(id)arg3 error:(id *)arg4;
 + (id)insertWithUUID:(id)arg1 appleID:(id)arg2 callerID:(id)arg3 primaryUser:(_Bool)arg4 syncProvenance:(long long)arg5 transaction:(id)arg6 error:(id *)arg7;
 + (id)insertWithUUID:(id)arg1 appleID:(id)arg2 callerID:(id)arg3 primaryUser:(_Bool)arg4 profile:(id)arg5 error:(id *)arg6;

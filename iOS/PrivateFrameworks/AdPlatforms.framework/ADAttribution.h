@@ -15,6 +15,7 @@
 + (id)sharedInstance;
 @property(nonatomic) unsigned char numRetries; // @synthesize numRetries=_numRetries;
 @property(nonatomic) _Bool hasCompletedResponse; // @synthesize hasCompletedResponse=_hasCompletedResponse;
+- (void)setServerToTest:(long long)arg1;
 - (void)setStocksAdEnabled:(_Bool)arg1;
 - (void)requestAttributionDetailsWithBlock:(CDUnknownBlockType)arg1;
 - (void)initiateRequestOnConnection:(id)arg1 withBlock:(CDUnknownBlockType)arg2;

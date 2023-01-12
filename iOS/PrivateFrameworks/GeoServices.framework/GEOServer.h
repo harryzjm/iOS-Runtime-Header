@@ -13,7 +13,7 @@
     GEODaemon *_daemon;
 }
 
-+ (_Bool)shouldStartImmediately;
++ (unsigned long long)launchMode;
 + (Class)peerClass;
 + (id)identifier;
 - (void).cxx_destruct;

@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <CloudKit/CKPropertiesDescription-Protocol.h>
 #import <CloudKit/NSCopying-Protocol.h>
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
 @class CKRecordID, CKUserIdentityLookupInfo, NSArray, NSData, NSPersonNameComponents, NSString;
 
-@interface CKUserIdentity : NSObject <NSSecureCoding, NSCopying>
+@interface CKUserIdentity : NSObject <CKPropertiesDescription, NSSecureCoding, NSCopying>
 {
     _Bool _hasiCloudAccount;
     _Bool _isCached;
@@ -43,17 +44,21 @@
 @property(copy, nonatomic) CKUserIdentityLookupInfo *lookupInfo; // @synthesize lookupInfo=_lookupInfo;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)ckShortDescription;
-- (id)description;
-- (id)CKDescriptionPropertiesWithPublic:(_Bool)arg1 private:(_Bool)arg2 shouldExpand:(_Bool)arg3;
+- (id)redactedDescription;
+@property(readonly, copy) NSString *description;
+- (void)CKDescribePropertiesUsing:(id)arg1;
 - (_Bool)isEquivalentToUserIdentityOrPublicKey:(id)arg1;
 - (_Bool)isEquivalentToUserIdentity:(id)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isOutOfNetwork;
 - (id)initWithUserRecordID:(id)arg1;
 - (id)_init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

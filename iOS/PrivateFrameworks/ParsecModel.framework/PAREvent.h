@@ -12,10 +12,12 @@
 {
 }
 
-+ (id)fetchRequest;
+- (void).cxx_destruct;
+- (void).cxx_construct;
+- (id)initWithEntity:(id)arg1 insertIntoManagedObjectContext:(id)arg2;
 
 // Remaining properties
-@property(copy, nonatomic) NSDate *timestamp; // @dynamic timestamp;
+@property(nonatomic, copy) NSDate *timestamp; // @dynamic timestamp;
 
 @end
 

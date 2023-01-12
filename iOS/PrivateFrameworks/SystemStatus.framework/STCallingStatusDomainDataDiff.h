@@ -8,25 +8,26 @@
 
 #import <SystemStatus/STStatusDomainDataDiff-Protocol.h>
 
-@class NSString, STActivityAttributionCatalogDiff;
+@class NSString, STListDataDiff;
 
 @interface STCallingStatusDomainDataDiff : NSObject <STStatusDomainDataDiff>
 {
-    STActivityAttributionCatalogDiff *_attributionCatalogDiff;
+    STListDataDiff *_callDescriptorListDataDiff;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)diffFromData:(id)arg1 toData:(id)arg2;
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) STActivityAttributionCatalogDiff *attributionCatalogDiff; // @synthesize attributionCatalogDiff=_attributionCatalogDiff;
+@property(readonly, copy, nonatomic) STListDataDiff *callDescriptorListDataDiff; // @synthesize callDescriptorListDataDiff=_callDescriptorListDataDiff;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)diffByApplyingDiff:(id)arg1;
 @property(readonly, nonatomic, getter=isEmpty) _Bool empty;
 - (void)applyToMutableData:(id)arg1;
 - (id)dataByApplyingToData:(id)arg1;
-- (id)initWithAttributionCatalogDiff:(id)arg1;
+- (id)initWithCallDescriptorListDataDiff:(id)arg1;
 - (id)init;
 
 // Remaining properties

@@ -10,6 +10,7 @@
 {
 }
 
+@property(nonatomic) unsigned long long hitTestInformationMask; // @dynamic hitTestInformationMask;
 @property(nonatomic) unsigned long long authenticationMessageContext; // @dynamic authenticationMessageContext;
 @property(nonatomic) unsigned int slotID; // @dynamic slotID;
 @property(copy, nonatomic) NSSet *displays; // @dynamic displays;

@@ -9,11 +9,13 @@
 #import <IconServices/CALayerDelegate-Protocol.h>
 #import <IconServices/ISScalableCompositorResource-Protocol.h>
 
-@class ISIconManager, NSArray, NSString;
+@class IFSymbol, ISIconManager, NSArray, NSMutableDictionary, NSString;
 @protocol ISIconIdentity;
 
 @interface ISIcon : NSObject <ISScalableCompositorResource, CALayerDelegate>
 {
+    struct os_unfair_lock_s _lock;
+    NSMutableDictionary *prepareISIconDigestToSignpostIDs;
 }
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
@@ -21,19 +23,41 @@
 + (id)genericDocumentIcon;
 + (id)genericApplicationIcon;
 + (id)applicationIcon;
++ (unsigned long long)behaviourRevision;
++ (_Bool)writeCustomIcon:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
++ (const char *)_AttachedResourceInfoKey;
 + (id)layerUpdateQueue;
-+ (struct _LIIconVariantInfo)variantInfoForVariant:(int)arg1;
++ (_Bool)variant:(int)arg1 isMemberOfSet:(unsigned long long)arg2;
 + (id)sizesFromSet:(unsigned long long)arg1;
 + (int)findVariantFromSet:(unsigned long long)arg1 deviceIdiom:(unsigned long long)arg2 size:(struct CGSize)arg3 scale:(double)arg4;
 + (struct _LIIconVariantInfo *)variantInfoForSet:(unsigned long long)arg1 count:(unsigned long long *)arg2;
++ (id)templateTypeForTag:(id)arg1 tagClass:(id)arg2;
++ (id)templateTypeForType:(id)arg1;
+- (void).cxx_destruct;
+@property(retain) NSMutableDictionary *prepareISIconDigestToSignpostIDs; // @synthesize prepareISIconDigestToSignpostIDs;
+- (id)imageForDescriptor:(id)arg1;
+- (id)_imageForSymbolImageDescriptor:(id)arg1;
+- (id)imageForImageDescriptor:(id)arg1;
+- (id)prepareImageForDescriptor:(id)arg1;
+- (void)prepareImagesForDescriptors:(id)arg1;
+- (void)prepareImagesForImageDescriptors:(id)arg1;
+- (void)_prepareImagesForImageDescriptors:(id)arg1;
+- (void)_endPrepareISIconSignpost:(id)arg1;
+- (void)_eventPrepareISIconSignpost:(id)arg1 message:(id)arg2;
+- (id)_beginPrepareISIconSignpost:(id)arg1 funcName:(const char *)arg2;
 - (double)_aspectRatio;
+- (void)getCGImageForImageDescriptor:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (struct CGImage *)CGImageForDescriptor:(id)arg1;
+- (struct CGImage *)CGImageForImageDescriptor:(id)arg1;
 - (id)iconWithDecorations:(id)arg1;
+@property(readonly, nonatomic) IFSymbol *symbol; // @dynamic symbol;
 @property(readonly, nonatomic) NSArray *decorations;
 - (unsigned long long)badgeOptions;
 - (unsigned long long)variantOptions;
 @property(readonly) ISIconManager *manager;
 - (id)_init;
 @property(readonly) id <ISIconIdentity> _identity;
+- (id)_prepareImageForImageDescriptor:(id)arg1;
 - (id)imageForSize:(struct CGSize)arg1 scale:(double)arg2;
 - (void)displayLayer:(id)arg1;
 

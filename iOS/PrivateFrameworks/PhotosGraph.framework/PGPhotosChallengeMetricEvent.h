@@ -4,18 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+@class NSDictionary, NSString, PGManagerWorkingContext, PGPhotosChallengeMetricEventFetchHelper, PGPrecisionRecallEvaluation;
 
-#import <PhotosGraph/PLMetricEvent-Protocol.h>
-
-@class NSDictionary, NSString, PGManager, PGPhotosChallengeMetricEventFetchHelper, PGPrecisionRecallEvaluation;
-
-@interface PGPhotosChallengeMetricEvent : NSObject <PLMetricEvent>
+@interface PGPhotosChallengeMetricEvent
 {
+    PGManagerWorkingContext *_workingContext;
     unsigned short _questionMetricType;
-    NSString *_identifier;
     NSDictionary *_payload;
-    PGManager *_manager;
     PGPhotosChallengeMetricEventFetchHelper *_metricsCache;
     unsigned long long _algorithmVersion;
     unsigned long long _graphSchemaVersion;
@@ -31,6 +26,7 @@
 + (unsigned short)questionTypeFromQuestionMetricType:(unsigned short)arg1;
 + (unsigned long long)algorithmVersionFromQuestionMetricType:(unsigned short)arg1;
 + (id)relationshipLabelFromRelationshipQuestionMetricType:(unsigned short)arg1;
++ (id)personActivityMeaningLabelFromMeaningQuestionMetricType:(unsigned short)arg1;
 + (id)meaningLabelFromMeaningQuestionMetricType:(unsigned short)arg1;
 + (id)allMetricEventsWithGraphManager:(id)arg1;
 - (void).cxx_destruct;
@@ -43,25 +39,27 @@
 @property(nonatomic) unsigned long long graphSchemaVersion; // @synthesize graphSchemaVersion=_graphSchemaVersion;
 @property(nonatomic) unsigned long long algorithmVersion; // @synthesize algorithmVersion=_algorithmVersion;
 @property(retain, nonatomic) PGPhotosChallengeMetricEventFetchHelper *metricsCache; // @synthesize metricsCache=_metricsCache;
-@property(retain, nonatomic) PGManager *manager; // @synthesize manager=_manager;
-@property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)memoryCategorySubCategoryByQuestionMetricType;
-@property(readonly, copy) NSString *description;
 - (id)payloadForVerification;
-@property(readonly, nonatomic) NSDictionary *payload; // @synthesize payload=_payload;
-- (id)_groundTruthByPersonIdentifiersFromQuestions:(id)arg1;
+- (id)payload;
+- (id)_groundTruthByPersonUUIDFromQuestions:(id)arg1;
 - (id)_groundTruthByAssetIdentifiersFromQuestions:(id)arg1;
+- (id)_syndicatedAssetFromQuestion:(id)arg1;
+- (id)_reasonResultByAssetSyndicationIdentifierForQuestions:(id)arg1;
+- (id)_syndicatedAssetsInferenceResultsForAssetSyndicationIdentifiers:(id)arg1;
+- (id)_syndicatedAssetsGroundTruthByAssetIdentifiersFromQuestions:(id)arg1;
+- (void)_gatherMetricsForSyndicatedAssetsQuestions:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (id)_featuredPhotoInferenceResultsForAnswerDateByAssetIds:(id)arg1 questionMetricType:(unsigned short)arg2;
 - (id)_groundTruthForFeaturedPhotoFromQuestions:(id)arg1;
 - (void)_gatherMetricsForFeaturedPhotoQuestions:(id)arg1 questionMetricType:(unsigned short)arg2 progressBlock:(CDUnknownBlockType)arg3;
-- (void)_gatherMetricsForMemoryQuestions:(id)arg1 fromGraph:(id)arg2 questionMetricType:(unsigned short)arg3 progressBlock:(CDUnknownBlockType)arg4;
+- (void)_gatherMetricsForMemoryQuestions:(id)arg1 questionMetricType:(unsigned short)arg2 progressBlock:(CDUnknownBlockType)arg3;
 - (void)_gatherMetricsForPetKnowledgeQuestions:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (id)_petInferenceResultsForAssetIds:(id)arg1;
 - (void)_gatherMetricsForPetQuestions:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
-- (id)_ageCategoryInferenceResultsForAgeCategoryByPersonIds:(id)arg1;
+- (id)_ageCategoryInferenceResultsForAgeCategoryByPersonUUIDs:(id)arg1;
 - (id)_groundTruthForAgeCategoryFromQuestions:(id)arg1;
 - (void)_gatherMetricsForAgeCategoryQuestions:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
-- (id)_namingInferenceResultsForContactIdByPersonIds:(id)arg1;
+- (id)_namingInferenceResultsForContactIdentifierByPersonUUIDs:(id)arg1;
 - (id)_groundTruthForNamingFromQuestions:(id)arg1;
 - (void)_gatherMetricsForNamingQuestions:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (id)_frequentLocationInferenceResultsForLocationByAssetIds:(id)arg1 locationType:(id)arg2;
@@ -77,17 +75,15 @@
 - (id)_businessInferenceResultsForBusinessIdByAssetIds:(id)arg1;
 - (id)_groundTruthForBusinessFromQuestions:(id)arg1;
 - (void)_gatherMetricsForBusinessQuestions:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
-- (id)_relationshipInferenceResultsForQuestionMetricType:(unsigned short)arg1 personIds:(id)arg2;
+- (id)_relationshipInferenceResultsForQuestionMetricType:(unsigned short)arg1 personUUIDs:(id)arg2;
 - (void)_gatherMetricsForRelationshipQuestions:(id)arg1 questionMetricType:(unsigned short)arg2 progressBlock:(CDUnknownBlockType)arg3;
+- (id)_personActivityMeaningInferenceResultsForPersonActivityMeaningLabel:(id)arg1 assetIds:(id)arg2;
+- (void)_gatherMetricsForPersonActivityMeaningQuestions:(id)arg1 questionMetricType:(unsigned short)arg2 progressBlock:(CDUnknownBlockType)arg3;
 - (id)_meaningInferenceResultsForMeaningLabel:(id)arg1 assetIds:(id)arg2;
 - (void)_gatherMetricsForMeaningQuestions:(id)arg1 questionMetricType:(unsigned short)arg2 progressBlock:(CDUnknownBlockType)arg3;
 - (void)gatherMetricsWithProgressBlock:(CDUnknownBlockType)arg1;
-- (id)initWithGraphManager:(id)arg1 questionMetricType:(unsigned short)arg2 metricEventFetchHelper:(id)arg3;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)identifier;
+- (id)initWithWorkingContext:(id)arg1 questionMetricType:(unsigned short)arg2 metricEventFetchHelper:(id)arg3;
 
 @end
 

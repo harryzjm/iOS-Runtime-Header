@@ -9,9 +9,11 @@
 @class NSDate, NSString;
 
 @protocol FCMutableReadingHistoryItem <FCReadingHistoryItem>
+@property(nonatomic, getter=isPruningDisabled) _Bool pruningDisabled;
 @property(nonatomic) unsigned long long articleLikingStatus;
 @property(nonatomic) _Bool hasArticleBeenConsumed;
 @property(nonatomic) _Bool hasArticleBeenMarkedOffensive;
+@property(nonatomic) _Bool hasArticleCompletedReading;
 @property(nonatomic) _Bool hasArticleCompletedListening;
 @property(nonatomic) _Bool hasArticleBeenSeen;
 @property(nonatomic) _Bool hasArticleBeenRead;

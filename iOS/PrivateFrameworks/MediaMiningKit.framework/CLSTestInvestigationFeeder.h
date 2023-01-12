@@ -18,6 +18,10 @@
 - (id)itemAtIndex:(unsigned long long)arg1;
 - (id)allItems;
 - (id)approximateLocation;
+- (id)universalEndDate;
+- (id)universalStartDate;
+- (id)localEndDate;
+- (id)localStartDate;
 - (id)localEndDateComponents;
 - (id)localStartDateComponents;
 - (unsigned long long)numberOfItems;

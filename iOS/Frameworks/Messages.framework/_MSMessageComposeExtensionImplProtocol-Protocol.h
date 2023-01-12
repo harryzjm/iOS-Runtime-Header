@@ -17,6 +17,7 @@
 @property(nonatomic) unsigned long long presentationContext;
 @property(nonatomic) unsigned long long presentationStyle;
 @property(readonly, nonatomic) MSConversation *activeConversation;
+- (void)presentAlertWithTitle:(NSString *)arg1 message:(NSString *)arg2 buttonTitle:(NSString *)arg3 destructiveButtonTitle:(NSString *)arg4 completion:(void (^)(_Bool))arg5;
 - (void)presentAlertWithTitle:(NSString *)arg1 message:(NSString *)arg2 buttonTitle:(NSString *)arg3 completion:(void (^)(void))arg4;
 - (void)contentDidLoad;
 - (void)requestResize;

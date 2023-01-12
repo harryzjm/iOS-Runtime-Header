@@ -8,21 +8,35 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString, PBUnknownFields;
+@class NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOPDAmenityValue : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    NSString *_amenityId;
+    NSMutableArray *_names;
+    NSString *_symbolImageName;
     NSString *_vendorId;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _amenityType;
     _Bool _amenityPresent;
     struct {
         unsigned int has_amenityType:1;
         unsigned int has_amenityPresent:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_amenityId:1;
+        unsigned int read_names:1;
+        unsigned int read_symbolImageName:1;
+        unsigned int read_vendorId:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
 + (_Bool)isValid:(id)arg1;
++ (Class)nameType;
 - (void).cxx_destruct;
 - (void)clearUnknownFields:(_Bool)arg1;
 @property(readonly, nonatomic) PBUnknownFields *unknownFields;
@@ -39,6 +53,15 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) NSString *symbolImageName;
+@property(readonly, nonatomic) _Bool hasSymbolImageName;
+- (id)nameAtIndex:(unsigned long long)arg1;
+- (unsigned long long)namesCount;
+- (void)addName:(id)arg1;
+- (void)clearNames;
+@property(retain, nonatomic) NSMutableArray *names;
+@property(retain, nonatomic) NSString *amenityId;
+@property(readonly, nonatomic) _Bool hasAmenityId;
 @property(retain, nonatomic) NSString *vendorId;
 @property(readonly, nonatomic) _Bool hasVendorId;
 @property(nonatomic) _Bool hasAmenityPresent;
@@ -47,6 +70,9 @@
 - (id)amenityTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasAmenityType;
 @property(nonatomic) int amenityType;
+- (id)initWithData:(id)arg1;
+- (id)init;
+- (id)displayTitle;
 
 @end
 

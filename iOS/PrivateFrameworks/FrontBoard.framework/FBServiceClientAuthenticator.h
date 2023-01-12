@@ -38,8 +38,8 @@
 - (_Bool)authenticateClient:(id)arg1 error:(out id *)arg2;
 - (_Bool)authenticateClient:(id)arg1;
 - (id)initWithEntitlement:(id)arg1 additionalCredentials:(unsigned long long)arg2;
-- (id)initWithCredentials:(unsigned long long)arg1;
 - (id)initWithEntitlement:(id)arg1;
+- (id)initWithCredentials:(unsigned long long)arg1;
 - (id)init;
 
 // Remaining properties

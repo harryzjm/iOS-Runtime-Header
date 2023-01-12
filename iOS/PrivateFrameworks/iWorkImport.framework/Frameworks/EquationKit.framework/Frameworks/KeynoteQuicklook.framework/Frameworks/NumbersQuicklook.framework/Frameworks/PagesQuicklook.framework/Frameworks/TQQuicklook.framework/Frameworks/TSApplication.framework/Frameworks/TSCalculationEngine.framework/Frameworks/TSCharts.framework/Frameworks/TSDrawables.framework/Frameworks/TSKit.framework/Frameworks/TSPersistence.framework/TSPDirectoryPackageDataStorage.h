@@ -10,24 +10,26 @@
 @interface TSPDirectoryPackageDataStorage
 {
     NSString *_path;
-    id <TSPCryptoInfo> _decryptionInfo;
     unsigned char _packageIdentifier;
     _Atomic _Bool _didCalculateEncodedLength;
     _Atomic unsigned long long _encodedLength;
     _Atomic _Bool _isMissingData;
-    _Bool _gilligan_isRemote;
+    _Bool _isUnmaterializedDueToPartiallyDownloadedDocument;
+    id <TSPCryptoInfo> _decryptionInfo;
     TSPDirectoryPackage *_package;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) __weak TSPDirectoryPackage *package; // @synthesize package=_package;
-- (void)setGilligan_isRemote:(_Bool)arg1;
-- (_Bool)gilligan_isRemote;
+- (void)setIsUnmaterializedDueToPartiallyDownloadedDocument:(_Bool)arg1;
+- (_Bool)isUnmaterializedDueToPartiallyDownloadedDocument;
 - (_Bool)linkOrCopyToURL:(id)arg1 encryptionInfo:(id)arg2 canLink:(_Bool)arg3;
+- (_Bool)isLengthPrecise;
 - (_Bool)isInPackage:(id)arg1;
-- (id)writeData:(id)arg1 toPackageWriter:(id)arg2 infoMessage:(struct DataInfo *)arg3 preferredFilename:(id)arg4 error:(id *)arg5;
+- (id)writeData:(id)arg1 toPackageWriter:(id)arg2 infoMessage:(void *)arg3 preferredFilename:(id)arg4 shouldRemoveData:(_Bool)arg5 error:(id *)arg6;
 - (void)performIOChannelReadWithAccessor:(CDUnknownBlockType)arg1;
 - (void)performReadWithAccessor:(CDUnknownBlockType)arg1;
+- (unsigned long long)fileFormatVersion;
 - (void)setEncodedLength:(unsigned long long)arg1 isMissingData:(_Bool)arg2;
 - (_Bool)isMissingData;
 - (id)decryptionInfo;

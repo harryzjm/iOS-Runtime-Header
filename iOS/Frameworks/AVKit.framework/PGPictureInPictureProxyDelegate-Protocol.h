@@ -11,8 +11,13 @@
 @protocol PGPictureInPictureProxyDelegate <NSObject>
 
 @optional
+- (_Bool)pictureInPictureProxySupportsPrewarming:(PGPictureInPictureProxy *)arg1;
+- (_Bool)pictureInPictureProxyCanIssueOptionalCommand:(PGCommand *)arg1;
+- (long long)pictureInPictureProxyContentType:(PGPictureInPictureProxy *)arg1;
+- (void)pictureInPictureProxy:(PGPictureInPictureProxy *)arg1 didReceiveTestingCommand:(PGCommand *)arg2;
 - (void)pictureInPictureProxy:(PGPictureInPictureProxy *)arg1 didRequestFaceTimeAction:(long long)arg2;
 - (void)pictureInPictureProxy:(PGPictureInPictureProxy *)arg1 didUpdateResourcesUsageReductionReasons:(unsigned long long)arg2 oldReasons:(unsigned long long)arg3;
+- (void)pictureInPictureProxy:(PGPictureInPictureProxy *)arg1 didUpdateStashedOrUnderLockState:(_Bool)arg2;
 - (void)pictureInPictureProxy:(PGPictureInPictureProxy *)arg1 didReceivePlaybackCommand:(PGCommand *)arg2;
 - (void)pictureInPictureProxyPictureInPictureInterruptionEnded:(PGPictureInPictureProxy *)arg1;
 - (void)pictureInPictureProxyPictureInPictureInterruptionBegan:(PGPictureInPictureProxy *)arg1;

@@ -9,15 +9,17 @@
 #import <WorkflowKit/NSCopying-Protocol.h>
 #import <WorkflowKit/WFVariableSerialization-Protocol.h>
 
-@class NSString, WFPropertyListParameterValue, WFVariableString;
+@class NSString, NSUUID, WFPropertyListParameterValue, WFVariableString;
 
 @interface WFDictionaryParameterKeyValuePair : NSObject <WFVariableSerialization, NSCopying>
 {
     WFVariableString *_key;
     WFPropertyListParameterValue *_value;
+    NSUUID *_identity;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSUUID *identity; // @synthesize identity=_identity;
 @property(readonly, nonatomic) WFPropertyListParameterValue *value; // @synthesize value=_value;
 @property(readonly, nonatomic) WFVariableString *key; // @synthesize key=_key;
 - (_Bool)isEqual:(id)arg1;
@@ -26,6 +28,7 @@
 - (id)initWithSerializedRepresentation:(id)arg1 variableProvider:(id)arg2 parameter:(id)arg3;
 - (id)containedVariables;
 - (void)getProcessedPair:(CDUnknownBlockType)arg1 context:(id)arg2 userInputRequiredHandler:(CDUnknownBlockType)arg3;
+- (id)initWithKey:(id)arg1 value:(id)arg2 identity:(id)arg3;
 - (id)initWithKey:(id)arg1 value:(id)arg2;
 
 // Remaining properties

@@ -43,11 +43,9 @@
 @property(retain, nonatomic) HFItem *item; // @synthesize item=_item;
 - (id)_visibleMessageTextViewConstraints;
 - (id)_hiddenMessageTextViewConstraints;
-- (void)_updateRequiredHeightIfNeeded;
 - (void)_updateErrorLabelConstraints;
 - (void)_configureConstraints;
 - (void)updateUIWithAnimation:(_Bool)arg1;
-- (void)layoutSubviews;
 - (void)_setCornerRadius:(double)arg1;
 - (void)_setContinuousCornerRadius:(double)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;

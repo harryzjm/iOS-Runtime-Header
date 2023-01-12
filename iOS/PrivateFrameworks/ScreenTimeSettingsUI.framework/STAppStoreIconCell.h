@@ -4,23 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIButton, UIImageView, UILabel;
+@class UIImageView, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface STAppStoreIconCell
 {
     UIImageView *_appIconView;
     UILabel *_nameLabel;
-    UIButton *_viewButton;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) UIButton *viewButton; // @synthesize viewButton=_viewButton;
 @property(readonly, nonatomic) UILabel *nameLabel; // @synthesize nameLabel=_nameLabel;
 @property(readonly, nonatomic) UIImageView *appIconView; // @synthesize appIconView=_appIconView;
 - (void)_didFetchAppInfoOrIcon:(id)arg1;
 - (void)refreshCellContentsWithSpecifier:(id)arg1;
-- (void)viewAppInStore:(id)arg1;
 - (void)setValue:(id)arg1;
 - (id)value;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 specifier:(id)arg3;

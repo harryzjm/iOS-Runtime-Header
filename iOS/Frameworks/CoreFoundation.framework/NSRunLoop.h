@@ -6,6 +6,8 @@
 
 #import <objc/NSObject.h>
 
+@class NSString;
+
 @interface NSRunLoop : NSObject
 {
     id _rl;
@@ -14,7 +16,17 @@
     id _info;
     id _ports;
     void *_reserved[6];
+    NSString *_currentMode;
 }
+
+@property(readonly, copy) NSString *currentMode; // @synthesize currentMode=_currentMode;
+- (void)_deallocHelper;
+- (id)_ports;
+- (id)_info;
+- (id)_perft;
+- (id)_dperf;
+- (struct __CFRunLoop *)getCFRunLoop;
+- (id)_initWithRl:(id)arg1 dperf:(id)arg2 perft:(id)arg3 info:(id)arg4 ports:(id)arg5;
 
 @end
 

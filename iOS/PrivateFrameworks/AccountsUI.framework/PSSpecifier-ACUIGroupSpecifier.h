@@ -13,11 +13,15 @@
 + (id)groupSpecifierWithFooterText:(id)arg1 linkButton:(id)arg2;
 + (id)groupSpecifierWithFooterLinkButton:(id)arg1;
 + (id)acui_specifierForAppWithBundleID:(id)arg1 target:(id)arg2 set:(SEL)arg3 get:(SEL)arg4;
++ (id)acui_linkListCellSpecifierForDataclass:(id)arg1 account:(id)arg2 target:(id)arg3 set:(SEL)arg4 get:(SEL)arg5 detail:(Class)arg6;
 + (id)acui_linkListCellSpecifierForDataclass:(id)arg1 target:(id)arg2 set:(SEL)arg3 get:(SEL)arg4 detail:(Class)arg5;
++ (id)acui_specifierForDataclass:(id)arg1 account:(id)arg2 target:(id)arg3 set:(SEL)arg4 get:(SEL)arg5;
 + (id)acui_specifierForDataclass:(id)arg1 target:(id)arg2 set:(SEL)arg3 get:(SEL)arg4;
 + (id)acui_specifierIconForAccountTypeIdentifier:(id)arg1;
++ (id)circularImageFromCGImage:(struct CGImage *)arg1 size:(struct CGSize)arg2 scale:(double)arg3;
 + (id)acui_iconForDataclass:(id)arg1;
 + (id)_bundle;
+- (id)_switchSpinnerTimer;
 - (id)acui_appBundleID;
 - (id)acui_dataclass;
 @end

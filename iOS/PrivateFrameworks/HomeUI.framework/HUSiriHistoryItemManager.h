@@ -17,10 +17,12 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) HFStaticItem *deleteSiriHistoryItem; // @synthesize deleteSiriHistoryItem=_deleteSiriHistoryItem;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 - (id)didUpdateItemAtIndexPath:(id)arg1;
 - (id)didSelectItemAtIndexPath:(id)arg1;
 - (id)_buildSectionsWithDisplayedItems:(id)arg1;
 - (id)_buildItemProvidersForHome:(id)arg1;
+- (id)initWithDelegate:(id)arg1 accessorySettingItem:(id)arg2;
 - (id)initWithDelegate:(id)arg1 groupItem:(id)arg2;
 
 @end

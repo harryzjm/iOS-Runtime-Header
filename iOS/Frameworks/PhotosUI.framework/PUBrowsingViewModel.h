@@ -33,6 +33,7 @@
     _Bool _presentingOverOneUp;
     _Bool _lowMemoryMode;
     PUAssetsDataSource *_assetsDataSource;
+    PUAssetReference *_lastViewedAssetReference;
     double _currentAssetTransitionProgress;
     NSString *_transitionDriverIdentifier;
     long long _browsingSpeedRegime;
@@ -40,6 +41,7 @@
     long long _lastChromeVisibilityChangeReason;
     id _lastChromeVisibilityChangeContext;
     NSDate *_lastChromeVisibilityChangeDate;
+    long long _horizontalSizeClass;
     PUAssetReference *_trailingAssetReference;
     PUAssetReference *_leadingAssetReference;
     NSString *_navigationBarTitle;
@@ -57,7 +59,7 @@
 
 + (_Bool)autoplayVideoMuted;
 + (void)setAutoplayVideoMuted:(_Bool)arg1;
-+ (void)_handleWillResignActiveNotification:(id)arg1;
++ (void)_handleSceneWillDeactivateNotification:(id)arg1;
 + (void)initialize;
 - (void).cxx_destruct;
 @property(retain, nonatomic) id <PXAssetImportStatusManager> importStatusManager; // @synthesize importStatusManager=_importStatusManager;
@@ -74,6 +76,7 @@
 @property(retain, nonatomic, setter=_setLeadingAssetReference:) PUAssetReference *leadingAssetReference; // @synthesize leadingAssetReference=_leadingAssetReference;
 @property(retain, nonatomic, setter=_setTrailingAssetReference:) PUAssetReference *trailingAssetReference; // @synthesize trailingAssetReference=_trailingAssetReference;
 @property(nonatomic) struct CGSize secondScreenSize; // @synthesize secondScreenSize=_secondScreenSize;
+@property(nonatomic) long long horizontalSizeClass; // @synthesize horizontalSizeClass=_horizontalSizeClass;
 @property(nonatomic, getter=isPresentingOverOneUp) _Bool presentingOverOneUp; // @synthesize presentingOverOneUp=_presentingOverOneUp;
 @property(readonly, nonatomic) NSDate *lastChromeVisibilityChangeDate; // @synthesize lastChromeVisibilityChangeDate=_lastChromeVisibilityChangeDate;
 @property(retain, nonatomic, setter=_setLastChromeVisibilityChangeContext:) id lastChromeVisibilityChangeContext; // @synthesize lastChromeVisibilityChangeContext=_lastChromeVisibilityChangeContext;
@@ -88,6 +91,7 @@
 @property(nonatomic, setter=_setBrowsingSpeedRegime:) long long browsingSpeedRegime; // @synthesize browsingSpeedRegime=_browsingSpeedRegime;
 @property(readonly, copy, nonatomic) NSString *transitionDriverIdentifier; // @synthesize transitionDriverIdentifier=_transitionDriverIdentifier;
 @property(readonly, nonatomic) double currentAssetTransitionProgress; // @synthesize currentAssetTransitionProgress=_currentAssetTransitionProgress;
+@property(readonly, nonatomic) PUAssetReference *lastViewedAssetReference; // @synthesize lastViewedAssetReference=_lastViewedAssetReference;
 @property(retain, nonatomic) PUAssetsDataSource *assetsDataSource; // @synthesize assetsDataSource=_assetsDataSource;
 - (id)debugDetailedDescription;
 - (void)assetImportStatusManager:(id)arg1 didChangeStatusForAssetReference:(id)arg2;

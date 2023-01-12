@@ -10,6 +10,7 @@
 
 @class MPCMediaRemoteController, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPCMediaRemoteArtworkRemoteDataSource : NSObject <MPArtworkDataSource>
 {
     MPCMediaRemoteController *_controller;

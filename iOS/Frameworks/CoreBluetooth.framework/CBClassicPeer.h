@@ -4,24 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSHashTable, NSNumber, NSString;
+@class NSArray, NSData, NSHashTable, NSNumber, NSString, NSUUID;
 
 @interface CBClassicPeer
 {
+    unsigned char _deviceType;
     _Bool _isDevFused;
     unsigned char _colorID;
     _Bool _isConnectedOverUSB;
+    _Bool _isAppleAccessoryServer;
     unsigned char _batteryPercentSingle;
     unsigned char _batteryPercentLeft;
     unsigned char _batteryPercentRight;
     unsigned char _batteryPercentCase;
     unsigned char _batteryPercentCombined;
+    _Bool _panEnabled;
+    _Bool _browsingEnabled;
+    _Bool _objectPushEnabled;
     unsigned char _listeningMode;
     _Bool _LRDetectionEnabled;
     _Bool _EQConfigEnabled;
     unsigned char _EQConfigTreble;
     unsigned char _EQConfigMid;
     unsigned char _EQConfigBass;
+    _Bool _autoAnswerCalls;
+    unsigned char _crownRotationDirection;
     unsigned char _singleClickMode;
     unsigned char _doubleClickMode;
     unsigned char _clickHoldModeLeft;
@@ -31,7 +38,7 @@
     unsigned char _doubleTapCapability;
     unsigned char _micMode;
     _Bool _inEarDetectionEnabled;
-    _Bool _smartRoutingEnabled;
+    unsigned char _smartRoutingEnabled;
     _Bool _remoteTimeSyncEnabled;
     unsigned char _primaryInEarStatus;
     unsigned char _secondaryInEarStatus;
@@ -47,12 +54,10 @@
     unsigned short _doubleTapActionLeft;
     unsigned short _doubleTapActionRight;
     unsigned short _connectionHandle;
-    int _deviceType;
     unsigned int _listeningModeConfigs;
     unsigned int _doubleClickInterval;
     unsigned int _clickHoldInterval;
     unsigned int _appleFeatureBitMask;
-    long long _state;
     NSString *_name;
     CDUnknownBlockType _connectL2CAPCallback;
     CDUnknownBlockType _disconnectL2CAPCallback;
@@ -60,11 +65,15 @@
     CDUnknownBlockType _disconnectRFCOMMCallback;
     NSString *_appleModelIdentifier;
     NSArray *_syncGroups;
-    unsigned long long _timeSyncID;
     NSArray *_services;
+    NSData *_sdpRecordData;
+    unsigned long long _appleExtendedFeatureBitMask;
+    NSUUID *_trustedUID;
+    NSString *_serialNumber;
     NSNumber *_RSSI;
     NSHashTable *_L2CAPChannels;
     NSHashTable *_RFCOMMChannels;
+    long long _state;
     long long _internalState;
     NSString *_addressString;
 }
@@ -75,17 +84,21 @@
 @property(copy, nonatomic) NSString *addressString; // @synthesize addressString=_addressString;
 @property(nonatomic) unsigned short connectionHandle; // @synthesize connectionHandle=_connectionHandle;
 @property(nonatomic) long long internalState; // @synthesize internalState=_internalState;
+@property(nonatomic) long long state; // @synthesize state=_state;
 @property(nonatomic) _Bool isIncoming; // @synthesize isIncoming=_isIncoming;
 @property(retain, nonatomic) NSHashTable *RFCOMMChannels; // @synthesize RFCOMMChannels=_RFCOMMChannels;
 @property(retain, nonatomic) NSHashTable *L2CAPChannels; // @synthesize L2CAPChannels=_L2CAPChannels;
 @property(retain, nonatomic) NSNumber *RSSI; // @synthesize RSSI=_RSSI;
+@property(retain, nonatomic) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;
+@property(retain, nonatomic) NSUUID *trustedUID; // @synthesize trustedUID=_trustedUID;
+@property(nonatomic) unsigned long long appleExtendedFeatureBitMask; // @synthesize appleExtendedFeatureBitMask=_appleExtendedFeatureBitMask;
 @property(nonatomic) unsigned int appleFeatureBitMask; // @synthesize appleFeatureBitMask=_appleFeatureBitMask;
+@property(retain, nonatomic) NSData *sdpRecordData; // @synthesize sdpRecordData=_sdpRecordData;
 @property(retain, nonatomic) NSArray *services; // @synthesize services=_services;
 @property(nonatomic) unsigned char secondaryInEarStatus; // @synthesize secondaryInEarStatus=_secondaryInEarStatus;
 @property(nonatomic) unsigned char primaryInEarStatus; // @synthesize primaryInEarStatus=_primaryInEarStatus;
-@property(nonatomic) unsigned long long timeSyncID; // @synthesize timeSyncID=_timeSyncID;
 @property(nonatomic) _Bool remoteTimeSyncEnabled; // @synthesize remoteTimeSyncEnabled=_remoteTimeSyncEnabled;
-@property(nonatomic) _Bool smartRoutingEnabled; // @synthesize smartRoutingEnabled=_smartRoutingEnabled;
+@property(nonatomic) unsigned char smartRoutingEnabled; // @synthesize smartRoutingEnabled=_smartRoutingEnabled;
 @property(nonatomic) _Bool inEarDetectionEnabled; // @synthesize inEarDetectionEnabled=_inEarDetectionEnabled;
 @property(nonatomic) unsigned char micMode; // @synthesize micMode=_micMode;
 @property(nonatomic) unsigned char doubleTapCapability; // @synthesize doubleTapCapability=_doubleTapCapability;
@@ -100,6 +113,8 @@
 @property(nonatomic) unsigned char clickHoldModeLeft; // @synthesize clickHoldModeLeft=_clickHoldModeLeft;
 @property(nonatomic) unsigned char doubleClickMode; // @synthesize doubleClickMode=_doubleClickMode;
 @property(nonatomic) unsigned char singleClickMode; // @synthesize singleClickMode=_singleClickMode;
+@property(nonatomic) unsigned char crownRotationDirection; // @synthesize crownRotationDirection=_crownRotationDirection;
+@property(nonatomic) _Bool autoAnswerCalls; // @synthesize autoAnswerCalls=_autoAnswerCalls;
 @property(nonatomic) unsigned char EQConfigBass; // @synthesize EQConfigBass=_EQConfigBass;
 @property(nonatomic) unsigned char EQConfigMid; // @synthesize EQConfigMid=_EQConfigMid;
 @property(nonatomic) unsigned char EQConfigTreble; // @synthesize EQConfigTreble=_EQConfigTreble;
@@ -107,6 +122,9 @@
 @property(nonatomic) _Bool LRDetectionEnabled; // @synthesize LRDetectionEnabled=_LRDetectionEnabled;
 @property(nonatomic) unsigned int listeningModeConfigs; // @synthesize listeningModeConfigs=_listeningModeConfigs;
 @property(nonatomic) unsigned char listeningMode; // @synthesize listeningMode=_listeningMode;
+@property(nonatomic) _Bool objectPushEnabled; // @synthesize objectPushEnabled=_objectPushEnabled;
+@property(nonatomic) _Bool browsingEnabled; // @synthesize browsingEnabled=_browsingEnabled;
+@property(nonatomic) _Bool panEnabled; // @synthesize panEnabled=_panEnabled;
 @property(nonatomic) unsigned char batteryPercentCombined; // @synthesize batteryPercentCombined=_batteryPercentCombined;
 @property(nonatomic) unsigned char batteryPercentCase; // @synthesize batteryPercentCase=_batteryPercentCase;
 @property(nonatomic) unsigned char batteryPercentRight; // @synthesize batteryPercentRight=_batteryPercentRight;
@@ -114,6 +132,7 @@
 @property(nonatomic) unsigned char batteryPercentSingle; // @synthesize batteryPercentSingle=_batteryPercentSingle;
 @property(nonatomic) unsigned short syncSettings; // @synthesize syncSettings=_syncSettings;
 @property(retain, nonatomic) NSArray *syncGroups; // @synthesize syncGroups=_syncGroups;
+@property(nonatomic) _Bool isAppleAccessoryServer; // @synthesize isAppleAccessoryServer=_isAppleAccessoryServer;
 @property(nonatomic) _Bool isConnectedOverUSB; // @synthesize isConnectedOverUSB=_isConnectedOverUSB;
 @property(copy, nonatomic) NSString *appleModelIdentifier; // @synthesize appleModelIdentifier=_appleModelIdentifier;
 @property(nonatomic) unsigned char colorID; // @synthesize colorID=_colorID;
@@ -127,17 +146,17 @@
 @property(copy) CDUnknownBlockType disconnectL2CAPCallback; // @synthesize disconnectL2CAPCallback=_disconnectL2CAPCallback;
 @property(copy) CDUnknownBlockType connectL2CAPCallback; // @synthesize connectL2CAPCallback=_connectL2CAPCallback;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property(nonatomic) long long state; // @synthesize state=_state;
-@property(nonatomic) int deviceType; // @synthesize deviceType=_deviceType;
+@property(nonatomic) unsigned char deviceType; // @synthesize deviceType=_deviceType;
 - (_Bool)isRFCOMMServiceSupported:(id)arg1;
-- (void)closeRFCOMMChannel:(id)arg1;
-- (void)openRFCOMMChannel:(id)arg1;
-- (void)closeL2CAPChannel:(id)arg1;
-- (void)openL2CAPChannel:(id)arg1;
+- (void)closeRFCOMMChannel:(unsigned char)arg1;
+- (void)openRFCOMMChannel:(unsigned char)arg1;
+- (void)closeL2CAPChannel:(unsigned short)arg1;
+- (void)openL2CAPChannel:(unsigned short)arg1;
 - (_Bool)isServiceSupported:(id)arg1;
-- (void)openRFCOMMChannel:(id)arg1 options:(id)arg2;
-- (void)openL2CAPChannel:(id)arg1 options:(id)arg2;
+- (void)configureRFCOMMPortParams:(id)arg1;
+- (void)openRFCOMMChannel:(unsigned char)arg1 options:(id)arg2;
 - (_Bool)isAppleFeatureSupported:(unsigned int)arg1;
+- (_Bool)isNintendoGameController;
 - (_Bool)isXboxGameController;
 - (_Bool)isSonyGameController;
 - (_Bool)isGameController;

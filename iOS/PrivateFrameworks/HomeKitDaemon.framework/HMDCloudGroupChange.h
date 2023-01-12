@@ -6,7 +6,7 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HMDCloudChangeTree, HMDCloudGroup, NSArray, NSMutableArray;
+@class HMDCloudChangeTree, HMDCloudGroup, HMDCloudManagerMetricsDispatcher, NSArray, NSMutableArray;
 
 @interface HMDCloudGroupChange : HMFObject
 {
@@ -19,10 +19,12 @@
     NSMutableArray *_cloudChanges;
     NSMutableArray *_processingCloudChanges;
     NSMutableArray *_processedCloudChanges;
+    HMDCloudManagerMetricsDispatcher *_metricsDispatcher;
 }
 
 + (id)shortDescription;
 - (void).cxx_destruct;
+@property(readonly) HMDCloudManagerMetricsDispatcher *metricsDispatcher; // @synthesize metricsDispatcher=_metricsDispatcher;
 @property(retain, nonatomic) NSMutableArray *processedCloudChanges; // @synthesize processedCloudChanges=_processedCloudChanges;
 @property(retain, nonatomic) NSMutableArray *processingCloudChanges; // @synthesize processingCloudChanges=_processingCloudChanges;
 @property(retain, nonatomic) NSMutableArray *cloudChanges; // @synthesize cloudChanges=_cloudChanges;
@@ -71,6 +73,7 @@
 @property(readonly, nonatomic) NSArray *allTransactionStoreRowIDs;
 - (id)description;
 - (id)shortDescription;
+- (id)initWithGroup:(id)arg1 temporaryCache:(_Bool)arg2 metricsDispatcher:(id)arg3;
 - (id)initWithGroup:(id)arg1 temporaryCache:(_Bool)arg2;
 - (id)init;
 

@@ -8,7 +8,7 @@
 
 #import <Metal/MTLRenderPipelineState-Protocol.h>
 
-@class MTLDebugInstrumentationData, MTLIndirectArgumentBufferEmulationData, NSString;
+@class MTLDebugInstrumentationData, NSString;
 @protocol MTLDevice;
 
 @interface _MTLRenderPipelineState : NSObject <MTLRenderPipelineState>
@@ -16,8 +16,6 @@
     NSString *_label;
     id <MTLDevice> _device;
     _Bool _threadgroupSizeMatchesTileSize;
-    MTLIndirectArgumentBufferEmulationData *_vertexIABEmulationData;
-    MTLIndirectArgumentBufferEmulationData *_fragmentIABEmulationData;
     MTLDebugInstrumentationData *_vertexDebugInstrumentationData;
     MTLDebugInstrumentationData *_fragmentDebugInstrumentationData;
     MTLDebugInstrumentationData *_tileDebugInstrumentationData;
@@ -35,10 +33,24 @@
 @property(retain, nonatomic) MTLDebugInstrumentationData *tileDebugInstrumentationData; // @synthesize tileDebugInstrumentationData=_tileDebugInstrumentationData;
 @property(retain, nonatomic) MTLDebugInstrumentationData *fragmentDebugInstrumentationData; // @synthesize fragmentDebugInstrumentationData=_fragmentDebugInstrumentationData;
 @property(retain, nonatomic) MTLDebugInstrumentationData *vertexDebugInstrumentationData; // @synthesize vertexDebugInstrumentationData=_vertexDebugInstrumentationData;
-@property(retain, nonatomic) MTLIndirectArgumentBufferEmulationData *fragmentIABEmulationData; // @synthesize fragmentIABEmulationData=_fragmentIABEmulationData;
-@property(retain, nonatomic) MTLIndirectArgumentBufferEmulationData *vertexIABEmulationData; // @synthesize vertexIABEmulationData=_vertexIABEmulationData;
 @property(readonly) id <MTLDevice> device; // @synthesize device=_device;
 @property(readonly) NSString *label; // @synthesize label=_label;
+- (id)newIntersectionFunctionTableWithDescriptor:(id)arg1 stage:(unsigned long long)arg2;
+- (id)newTileIntersectionFunctionTableWithDescriptor:(id)arg1;
+- (id)newFragmentIntersectionFunctionTableWithDescriptor:(id)arg1;
+- (id)newVertexIntersectionFunctionTableWithDescriptor:(id)arg1;
+- (id)newRenderPipelineStateWithAdditionalBinaryFunctions:(id)arg1 error:(id *)arg2;
+- (id)newTileRenderPipelineStateWithAdditionalBinaryFunctions:(id)arg1 error:(id *)arg2;
+- (id)newRenderPipelineStateWithAdditionalBinaryFunctions:(id)arg1 fragmentAdditionalBinaryFunctions:(id)arg2 error:(id *)arg3;
+- (id)newVisibleFunctionTableWithDescriptor:(id)arg1 stage:(unsigned long long)arg2;
+- (id)newVisibleFunctionTableFromTileStageWithDescriptor:(id)arg1;
+- (id)newVisibleFunctionTableFromFragmentStageWithDescriptor:(id)arg1;
+- (id)newVisibleFunctionTableFromVertexStageWithDescriptor:(id)arg1;
+- (id)functionHandleWithFunction:(id)arg1 stage:(unsigned long long)arg2;
+- (id)tileFunctionHandleWithFunction:(id)arg1;
+- (id)fragmentFunctionHandleWithFunction:(id)arg1;
+- (id)vertexFunctionHandleWithFunction:(id)arg1;
+@property(readonly, nonatomic) unsigned long long allocatedSize;
 - (long long)textureWriteFPRoundingMode;
 @property(readonly) long long textureWriteRoundingMode;
 @property(readonly) unsigned long long uniqueIdentifier;
@@ -47,6 +59,8 @@
 @property(readonly) unsigned long long imageblockSampleLength;
 - (unsigned long long)imageblockMemoryLengthForDimensions:(CDStruct_da2e99ad)arg1;
 - (void)dealloc;
+- (id)initWithTileParent:(id)arg1;
+- (id)initWithParent:(id)arg1;
 - (id)initWithDeviceAndTileDesc:(id)arg1 tilePipelineStateDescriptor:(id)arg2;
 - (id)initWithDevice:(id)arg1 pipelineStateDescriptor:(id)arg2;
 

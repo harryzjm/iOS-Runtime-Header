@@ -18,6 +18,7 @@
     id <NUSurfaceStorage> _minimumAccumulationStorage;
     id <NUSurfaceStorage> _maximumAccumulationStorage;
     long long _frameCount;
+    unsigned long long _jobNumber;
     NSObject<OS_dispatch_queue> *_stateQueue;
     NSObject<OS_dispatch_queue> *_accumQueue;
     NSObject<OS_dispatch_semaphore> *_accumSemaphore;
@@ -54,7 +55,7 @@
 - (void)cancel;
 - (id)workingColorSpace;
 - (void)dealloc;
-- (id)initWithSize:(CDStruct_912cb5d2)arg1 renderer:(id)arg2;
+- (id)initWithSize:(CDStruct_912cb5d2)arg1 renderer:(id)arg2 jobNumber:(unsigned long long)arg3;
 
 @end
 

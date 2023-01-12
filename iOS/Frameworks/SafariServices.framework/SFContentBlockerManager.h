@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSMutableSet, NSSet, WKUserContentController;
+@class NSMutableDictionary, NSMutableSet, NSSet;
 @protocol OS_dispatch_queue;
 
 @interface SFContentBlockerManager : NSObject
 {
     id _extensionMatchingContext;
-    WKUserContentController *_userContentController;
     NSSet *_extensions;
     NSMutableSet *_observers;
     _Bool _lastExtensionDiscoveryHadError;
@@ -28,6 +27,7 @@
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (void)_loadContentBlockerWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)loadDeclarativeNetRequestContentBlockerWithIdentifier:(id)arg1 rules:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)displayNameForExtension:(id)arg1;
 - (void)setExtension:(id)arg1 isEnabled:(_Bool)arg2;
 - (_Bool)extensionIsEnabled:(id)arg1;
@@ -37,12 +37,16 @@
 - (void)_saveContentBlockerRecompilationInformation;
 - (void)_loadContentBlockerRecompilationInformationIfNeeded;
 - (id)_findNewExtensionsAdded:(id)arg1 toExistingExtensions:(id)arg2;
+- (void)informObserversThatContentBlockerManagerExtensionListDidChange;
 - (void)_beginContentBlockerDiscovery;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
 @property(readonly, nonatomic) NSSet *extensions;
+- (void)_removeAllContentRuleLists;
+- (void)_addContentRuleList:(id)arg1;
+- (void)_loadDeclarativeNetRequestContentBlockers;
 - (void)reloadUserContentController;
-@property(readonly, nonatomic) WKUserContentController *userContentController;
+- (void)addContentRuleList:(id)arg1;
 - (id)init;
 
 @end

@@ -6,19 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSXPCConnection;
-@protocol OS_dispatch_queue;
-
 @interface MCMDMClient : NSObject
 {
-    NSXPCConnection *_xpcConnection;
-    NSObject<OS_dispatch_queue> *_xpcConnectionSyncQueue;
 }
 
 + (id)sharedClient;
-- (void).cxx_destruct;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *xpcConnectionSyncQueue; // @synthesize xpcConnectionSyncQueue=_xpcConnectionSyncQueue;
-@property(retain, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
+- (int)_MDMAccessFlagToMCMDMAccessFlag:(int)arg1;
+- (int)_MCMigrationContextToMDMMigrationContext:(int)arg1;
 - (void)getAssertionDescriptionsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)processDeviceRequest:(id)arg1 encodeResponse:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (int)accessRights;
@@ -33,13 +27,7 @@
 - (void)scheduleTokenUpdate;
 - (void)notifyNewConfiguration;
 - (_Bool)checkOutCheckInURL:(id)arg1 identity:(struct __SecIdentity *)arg2 pinnedSecCertificateRefs:(id)arg3 pinningRevocationCheckRequired:(_Bool)arg4 topic:(id)arg5 signMessage:(_Bool)arg6 isUserEnrollment:(_Bool)arg7 enrollmentID:(id)arg8 outError:(id *)arg9;
-- (id)deviceEnrollmentAuthenticationDict;
-- (id)userEnrollmentAuthenticationDictWithEnrollmentID:(id)arg1;
 - (_Bool)authenticateWithCheckInURL:(id)arg1 identity:(struct __SecIdentity *)arg2 pinnedSecCertificateRefs:(id)arg3 pinningRevocationCheckRequired:(_Bool)arg4 topic:(id)arg5 useDevelopmentAPNS:(_Bool)arg6 signMessage:(_Bool)arg7 isUserEnrollment:(_Bool)arg8 enrollmentID:(id)arg9 outError:(id *)arg10;
-- (void)_queue_createAndStartMDMXPCConnection;
-- (void)_destroyXPCConnectionAndInvalidate:(_Bool)arg1;
-- (void)dealloc;
-- (id)init;
 
 @end
 

@@ -11,5 +11,6 @@
 @interface UIColor (SBWallpaper)
 + (id)sb_colorWithRGBHexString:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *sb_RGBHexString;
+@property(readonly, nonatomic) _Bool SBPIP_wantsVibrancyEffect;
 @end
 

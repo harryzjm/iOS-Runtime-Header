@@ -17,28 +17,30 @@
 }
 
 + (id)_mostSpecificLabelForMeaning:(unsigned long long)arg1;
++ (unsigned long long)_extendedMeaningForActivityMeaningLabel:(id)arg1;
++ (unsigned long long)_extendedMeaningForActivityEvent:(id)arg1;
++ (unsigned long long)_extendedMeaningForRestaurantMeaningLabel:(id)arg1;
++ (unsigned long long)_extendedMeaningForRestaurantEvent:(id)arg1;
++ (unsigned long long)_extendedMeaningForMeaning:(unsigned long long)arg1 meaningfulEvent:(id)arg2;
++ (id)extraFeatureNodesFromMeaningfulEvent:(id)arg1 meaning:(unsigned long long)arg2 featureType:(unsigned long long)arg3;
++ (id)_nodesWithFeaturesOfType:(unsigned long long)arg1 fromMeaningfulEvent:(id)arg2;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long meaning; // @synthesize meaning=_meaning;
 @property(nonatomic) unsigned long long eventType; // @synthesize eventType=_eventType;
 @property(retain, nonatomic) NSDate *lowerBoundLocalDate; // @synthesize lowerBoundLocalDate=_lowerBoundLocalDate;
-- (id)_filterAssets:(id)arg1 inMomentNode:(id)arg2 forAreaNode:(id)arg3;
-- (id)_filterAssets:(id)arg1 inMomentNode:(id)arg2 forCityNode:(id)arg3;
-- (id)_filterAssets:(id)arg1 withPositiveLocations:(id)arg2 negativeLocations:(id)arg3 maximumDistance:(double)arg4;
-- (id)_filterAssets:(id)arg1 withLocation:(id)arg2;
-- (_Bool)_computeRelevantAssetsForPotentialMemory:(id)arg1;
+- (id)relevantFeederForPotentialMemory:(id)arg1 inGraph:(id)arg2;
+- (id)keyAssetCurationOptionsWithPotentialMemory:(id)arg1 inGraph:(id)arg2;
+- (id)_filteredAssetsFromAssetCollection:(id)arg1 throughCriteria:(id)arg2;
+- (_Bool)_computeRelevantAssetsForPotentialMemory:(id)arg1 withGraph:(id)arg2;
 - (id)_potentialMemoriesForDryTesting;
-- (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
-- (void)_enumeratePotentialMemoriesUsingBlock:(CDUnknownBlockType)arg1;
-- (id)_expandedPotentialMemoriesFromPotentialMemory:(id)arg1;
-- (id)_potentialOverTheYearsMemoriesForMeaning:(unsigned long long)arg1;
+- (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2 andGraph:(id)arg3;
+- (void)_enumeratePotentialMemoriesWithGraph:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (id)_expandedPotentialMemoriesFromPotentialMemory:(id)arg1 withGraph:(id)arg2;
+- (id)_potentialOverTheYearsMemoriesForMeaning:(unsigned long long)arg1 withGraph:(id)arg2;
 - (_Bool)_canMakeMemoryWithMeaningfulEvents:(id)arg1 forMeaning:(unsigned long long)arg2 isOverTheYears:(_Bool)arg3;
 - (id)_stringForExtendedMeaning:(unsigned long long)arg1;
 - (_Bool)_supportsAggregationsForMeaning:(unsigned long long)arg1 primaryFeatureType:(unsigned long long)arg2 secondaryFeatureType:(unsigned long long)arg3;
-- (unsigned long long)_extendedMeaningForActivityEvent:(id)arg1;
-- (unsigned long long)_extendedMeaningForRestaurantEvent:(id)arg1;
-- (unsigned long long)_extendedMeaningForMeaning:(unsigned long long)arg1 meaningfulEvent:(id)arg2;
 - (id)_extraFeatureNodesFromMeaningfulEvent:(id)arg1 meaning:(unsigned long long)arg2 featureType:(unsigned long long)arg3;
-- (id)_nodesWithFeaturesOfType:(unsigned long long)arg1 fromMeaningfulEvent:(id)arg2;
 
 @end
 

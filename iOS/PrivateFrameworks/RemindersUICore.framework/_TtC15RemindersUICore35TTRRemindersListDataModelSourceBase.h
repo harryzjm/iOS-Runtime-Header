@@ -10,6 +10,8 @@
 
 @interface _TtC15RemindersUICore35TTRRemindersListDataModelSourceBase : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *canChangeSortingStyle;
+    MISSING_TYPE *sortingStyle;
     MISSING_TYPE *reminderFetchManager;
 }
 

@@ -10,10 +10,12 @@
 {
     NSString *_input;
     unsigned long long _endpoint;
+    unsigned long long _triggerEvent;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long triggerEvent; // @synthesize triggerEvent=_triggerEvent;
 @property(nonatomic) unsigned long long endpoint; // @synthesize endpoint=_endpoint;
 @property(copy, nonatomic) NSString *input; // @synthesize input=_input;
 - (void)encodeWithCoder:(id)arg1;

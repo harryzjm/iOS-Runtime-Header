@@ -6,7 +6,7 @@
 
 #import <PDFKit/NSObject-Protocol.h>
 
-@class AKAnnotation, AKController, AKPageModelController, CALayer, NSArray, NSData, NSIndexSet, NSUndoManager, UIGestureRecognizer, UIView, UIViewController;
+@class AKAnnotation, AKController, AKPageModelController, CALayer, NSArray, NSData, NSIndexSet, NSString, NSUndoManager, UIGestureRecognizer, UIView, UIViewController;
 
 @protocol AKControllerDelegateProtocol <NSObject>
 - (void)updateDrawingGestureRecognizer:(UIGestureRecognizer *)arg1 forPageAtIndex:(unsigned long long)arg2 withPriority:(_Bool)arg3 forAnnotationController:(AKController *)arg4;
@@ -20,6 +20,9 @@
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromOverlayToModelWithPageIndex:(unsigned long long)arg2 forAnnotationController:(AKController *)arg3;
 
 @optional
+@property(readonly, copy, nonatomic) NSString *originalImageDescription;
+@property(readonly, nonatomic) _Bool supportsImageDescriptionEditing;
+- (UIView *)contentSnapshot;
 - (NSIndexSet *)characterIndexesForQuadPoints:(NSArray *)arg1 onPageAtIndex:(unsigned long long)arg2 forAnnotationController:(AKController *)arg3;
 - (NSArray *)quadPointsForCharacterIndexes:(NSIndexSet *)arg1 onPageAtIndex:(unsigned long long)arg2 forAnnotationController:(AKController *)arg3;
 - (void)setAllowsNativeRenderingOfHighlightableSelection:(_Bool)arg1 forAnnotationController:(AKController *)arg2;

@@ -5,10 +5,13 @@
 //
 
 #import <PersonalizationPortraitInternals/PPFeedbackAccepting-Protocol.h>
+#import <PersonalizationPortraitInternals/PPUniversalSearchSpotlightFeedbackAccepting-Protocol.h>
 
 @class NSString, PPTopicQuery;
 
-@protocol PPTopicReadOnlyServerProtocol <PPFeedbackAccepting>
+@protocol PPTopicReadOnlyServerProtocol <PPFeedbackAccepting, PPUniversalSearchSpotlightFeedbackAccepting>
+- (void)topicCacheSandboxExtensionToken:(void (^)(NSString *, NSError *))arg1;
+- (void)cachePath:(void (^)(NSString *, NSError *))arg1;
 - (void)unmapMappedTopicIdentifier:(NSString *)arg1 mappingIdentifier:(NSString *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)scoresForTopicMapping:(NSString *)arg1 query:(PPTopicQuery *)arg2 queryId:(unsigned long long)arg3;
 - (void)topicExtractionsFromText:(NSString *)arg1 queryId:(unsigned long long)arg2;

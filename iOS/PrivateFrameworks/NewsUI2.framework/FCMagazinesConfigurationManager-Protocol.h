@@ -6,12 +6,10 @@
 
 #import <NewsUI2/NSObject-Protocol.h>
 
-@class NSArray, NSData, OS_dispatch_queue;
+@class NSData, NSString, OS_dispatch_queue;
 
 @protocol FCMagazinesConfigurationManager <NSObject>
-- (void)fetchMagazinesConfigurationIfNeededWithCompletionQueue:(OS_dispatch_queue *)arg1 completion:(void (^)(NSData *, NSError *))arg2;
-@property(nonatomic, readonly) NSArray *segmentSetIDs;
-@property(nonatomic, readonly) NSArray *treatmentIDs;
+- (void)fetchMagazinesConfigurationIfNeededWithCompletionQueue:(OS_dispatch_queue *)arg1 formatVersion:(NSString *)arg2 completion:(void (^)(NSData *, NSError *))arg3;
 @property(nonatomic, readonly) NSData *magazinesConfigurationData;
 @end
 

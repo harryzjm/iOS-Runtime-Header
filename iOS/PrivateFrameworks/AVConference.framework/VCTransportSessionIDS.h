@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
     int _socket;
     NSString *_destination;
     _Bool _requireEncryptionInfo;
-    _Bool _isIDSDCEventUsageErrorReported;
 }
 
 @property(nonatomic) int socket; // @synthesize socket=_socket;
@@ -21,9 +20,10 @@ __attribute__((visibility("hidden")))
 - (void)setQuickRelayServerProvider:(int)arg1;
 - (void)handleChannelInfoReport:(id)arg1;
 - (void)setConnectionSetupTime;
+- (void)handleLinkConstrainsChanged:(id)arg1;
 - (void)handleCellularSoMaskChanged:(id)arg1;
 - (void)handleProbingResponse:(id)arg1;
-- (void)handleUpdateRemoteSessionInfo:(id)arg1;
+- (void)handleSessionInfoResponse:(id)arg1;
 - (void)handleIDSMembershipChangeInfoEvent:(id)arg1;
 - (void)handleIDSEncryptionInfoEvent:(id)arg1;
 - (void)handleCellularMTUChanged:(id)arg1;
@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (id)connectionSetupPiggybackBlob;
 - (void)setPiggybackBlobPreference;
 - (void)setConnectionSetupPiggybackBlob:(id)arg1;
+- (void)startMKMRecoveryForParticipantIDs:(id)arg1;
 - (void)cleanupDatagramChannel;
 - (void)stop;
 - (void)start;

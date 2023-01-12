@@ -18,6 +18,7 @@
 @property(nonatomic) _Bool hasOfflinePlaybackKeys; // @synthesize hasOfflinePlaybackKeys=_hasOfflinePlaybackKeys;
 @property(nonatomic) _Bool hasOnlinePlaybackKeys; // @synthesize hasOnlinePlaybackKeys=_hasOnlinePlaybackKeys;
 @property(nonatomic) unsigned long long accountUniqueIdentifier; // @synthesize accountUniqueIdentifier=_accountUniqueIdentifier;
+- (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 

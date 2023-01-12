@@ -14,26 +14,29 @@
 {
     unsigned int _capacity;
     unsigned int _count;
-    CDStruct_3ab912e1 *_geometries;
-    CDStruct_506f5052 *_styles;
+    CDStruct_6238c8e0 *_entities;
+    CDStruct_4f725fed *_geometries;
+    CDStruct_76b550e2 *_styles;
     CDStruct_9d1ebe49 *_infos;
 }
 
 + (id)newSpriteDataStore;
 @property(readonly, nonatomic) CDStruct_9d1ebe49 *infos; // @synthesize infos=_infos;
-@property(readonly, nonatomic) CDStruct_506f5052 *styles; // @synthesize styles=_styles;
-@property(readonly, nonatomic) CDStruct_3ab912e1 *geometries; // @synthesize geometries=_geometries;
+@property(readonly, nonatomic) CDStruct_76b550e2 *styles; // @synthesize styles=_styles;
+@property(readonly, nonatomic) CDStruct_4f725fed *geometries; // @synthesize geometries=_geometries;
+@property(readonly, nonatomic) CDStruct_6238c8e0 *entities; // @synthesize entities=_entities;
 @property(nonatomic) unsigned int count; // @synthesize count=_count;
 @property(readonly, copy, nonatomic) NSString *diagnosticDescription;
 @property(readonly, copy) NSString *description;
 - (id)spriteAtIndexes:(id)arg1 inRect:(struct CGRect)arg2;
 - (void)_collectSpriteIndexes:(id)arg1 inRange:(struct _PXGSpriteIndexRange)arg2 inRect:(struct CGRect)arg3;
-- (id)spriteIndexesWithMediaFlags:(unsigned char)arg1;
+- (id)spriteIndexesWithSpriteInfoFlags:(unsigned char)arg1;
 - (id)spriteIndexesInRect:(struct CGRect)arg1;
 - (void)enumerateSpritesInRange:(struct _PXGSpriteIndexRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateSpritesInRect:(struct CGRect)arg1 usingBlock:(CDUnknownBlockType)arg2;
-@property(nonatomic) CDStruct_92550dd7 sprites;
-- (CDStruct_92550dd7)spritesInRange:(struct _PXGSpriteIndexRange)arg1;
+- (void)clearEntities;
+@property(nonatomic) CDStruct_d5f63e8f sprites;
+- (CDStruct_d5f63e8f)spritesInRange:(struct _PXGSpriteIndexRange)arg1;
 - (void)applyChangeDetails:(id)arg1;
 - (void)moveSpritesInRange:(struct _PXGSpriteIndexRange)arg1 toRange:(struct _PXGSpriteIndexRange)arg2;
 - (void)moveSpritesFromIndexes:(struct __CFArray *)arg1 toIndexes:(id)arg2;

@@ -13,6 +13,7 @@
 @interface ATXPBAction : PBCodable <NSCopying>
 {
     long long _actionType;
+    unsigned long long _cachedHash;
     long long _userActivityHash;
     NSString *_activityString;
     NSString *_bundleId;
@@ -31,6 +32,7 @@
     _Bool _isFutureMedia;
     struct {
         unsigned int actionType:1;
+        unsigned int cachedHash:1;
         unsigned int userActivityHash:1;
         unsigned int isFutureMedia:1;
     } _has;
@@ -38,6 +40,7 @@
 
 + (Class)heuristicMetadataType;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long cachedHash; // @synthesize cachedHash=_cachedHash;
 @property(retain, nonatomic) NSMutableArray *heuristicMetadatas; // @synthesize heuristicMetadatas=_heuristicMetadatas;
 @property(retain, nonatomic) ATXPBAVRouteInfo *routeInfo; // @synthesize routeInfo=_routeInfo;
 @property(retain, nonatomic) ATXPBActionCriteria *criteria; // @synthesize criteria=_criteria;
@@ -64,6 +67,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasCachedHash;
 - (id)heuristicMetadataAtIndex:(unsigned long long)arg1;
 - (unsigned long long)heuristicMetadatasCount;
 - (void)addHeuristicMetadata:(id)arg1;

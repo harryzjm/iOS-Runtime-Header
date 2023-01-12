@@ -17,7 +17,6 @@
     _Bool _classroomLockScreenVisible;
 }
 
-+ (id)sharedMonitor;
 @property(nonatomic, getter=isClassroomLockScreenVisible) _Bool classroomLockScreenVisible; // @synthesize classroomLockScreenVisible=_classroomLockScreenVisible;
 - (void)endObserving;
 - (void)startObserving;

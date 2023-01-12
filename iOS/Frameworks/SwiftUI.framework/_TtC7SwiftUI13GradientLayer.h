@@ -6,22 +6,14 @@
 
 #import <QuartzCore/CALayer.h>
 
-@class MISSING_TYPE;
-
 __attribute__((visibility("hidden")))
 @interface _TtC7SwiftUI13GradientLayer : CALayer
 {
-    MISSING_TYPE *function;
-    MISSING_TYPE *gradientBounds;
-    MISSING_TYPE *gradient;
-    MISSING_TYPE *$__lazy_storage_$_gradientLayer;
 }
 
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithLayer:(id)arg1;
 - (id)init;
-- (void)layoutSublayers;
 
 @end
 

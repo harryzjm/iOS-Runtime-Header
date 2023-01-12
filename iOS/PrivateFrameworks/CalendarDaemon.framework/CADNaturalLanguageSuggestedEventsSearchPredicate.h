@@ -7,12 +7,13 @@
 #import <CalendarDaemon/EKDefaultPropertiesLoading-Protocol.h>
 #import <CalendarDaemon/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSDate, NSString;
 
 @interface CADNaturalLanguageSuggestedEventsSearchPredicate <EKDefaultPropertiesLoading, NSSecureCoding>
 {
     NSString *_searchString;
     _Bool _allNLEvents;
+    NSDate *_startDate;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -24,8 +25,9 @@
 @property(readonly, copy) NSString *description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithSearchString:(id)arg1 allNLEvents:(_Bool)arg2;
-- (id)initWithSearchString:(id)arg1;
+- (id)initWithSearchString:(id)arg1 allNLEvents:(_Bool)arg2 startDate:(id)arg3 timeZone:(id)arg4;
+- (id)initWithSearchString:(id)arg1 startDate:(id)arg2 timeZone:(id)arg3;
+- (id)initWithSearchString:(id)arg1 timeZone:(id)arg2;
 - (id)copyMatchingItemsWithDatabase:(struct CalDatabase *)arg1;
 
 // Remaining properties

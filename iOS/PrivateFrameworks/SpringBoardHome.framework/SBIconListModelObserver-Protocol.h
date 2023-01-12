@@ -11,8 +11,10 @@
 @protocol SBIconListModelObserver <NSObject>
 
 @optional
+- (void)iconList:(SBIconListModel *)arg1 didInvalidateLayoutWithGridCellInfoOptions:(unsigned long long)arg2;
 - (void)iconListIconStateDidDirty:(SBIconListModel *)arg1;
 - (void)iconListHiddenDidChange:(SBIconListModel *)arg1;
+- (void)iconListHiddenWillChange:(SBIconListModel *)arg1;
 - (void)iconList:(SBIconListModel *)arg1 didMoveIcon:(SBIcon *)arg2;
 - (void)iconList:(SBIconListModel *)arg1 didRemoveIcon:(SBIcon *)arg2;
 - (void)iconList:(SBIconListModel *)arg1 didReplaceIcon:(SBIcon *)arg2 withIcon:(SBIcon *)arg3;

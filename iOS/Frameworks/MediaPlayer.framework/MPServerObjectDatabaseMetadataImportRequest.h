@@ -9,7 +9,7 @@
 }
 
 + (id)_relationshipKeyForObject:(id)arg1;
-- (_Bool)performWithDatabaseOperations:(id)arg1 augmentingPayload:(id *)arg2 error:(id *)arg3;
+- (_Bool)performWithDatabaseOperations:(id)arg1 augmentingPayload:(id *)arg2 playableAssetIdentifiers:(id *)arg3 error:(id *)arg4;
 
 @end
 

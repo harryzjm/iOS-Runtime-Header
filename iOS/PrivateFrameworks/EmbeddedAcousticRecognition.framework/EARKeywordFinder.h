@@ -8,7 +8,7 @@
 
 @interface EARKeywordFinder : NSObject
 {
-    struct unique_ptr<quasar::KeywordFinder, std::__1::default_delete<quasar::KeywordFinder>> _kwf;
+    struct unique_ptr<quasar::KeywordFinder, std::default_delete<quasar::KeywordFinder>> _kwf;
 }
 
 + (void)initialize;

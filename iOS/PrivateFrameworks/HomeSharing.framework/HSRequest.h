@@ -12,7 +12,6 @@
 {
     NSDictionary *_arguments;
     _Bool _concurrent;
-    _Bool _acceptsGzipEncoding;
     NSString *_action;
     long long _method;
     NSData *_bodyData;
@@ -20,11 +19,11 @@
 
 + (id)request;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool acceptsGzipEncoding; // @synthesize acceptsGzipEncoding=_acceptsGzipEncoding;
 @property(copy, nonatomic) NSData *bodyData; // @synthesize bodyData=_bodyData;
 @property(nonatomic) long long method; // @synthesize method=_method;
 @property(readonly, nonatomic, getter=isConcurrent) _Bool concurrent; // @synthesize concurrent=_concurrent;
 @property(readonly, nonatomic) NSString *action; // @synthesize action=_action;
+@property(readonly, nonatomic) _Bool acceptsGzipEncoding;
 - (id)canonicalResponseForResponse:(id)arg1;
 - (id)URLRequestForBaseURL:(id)arg1 sessionID:(unsigned int)arg2;
 - (id)requestURLForBaseURL:(id)arg1 sessionID:(unsigned int)arg2;

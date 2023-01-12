@@ -31,6 +31,7 @@
 - (id)initWithProtobuf:(id)arg1;
 
 // Remaining properties
+@property(copy, nonatomic) NSString *accessibilityLabel;
 @property(copy, nonatomic) NSString *contentType;
 @property(nonatomic) double cornerRadius;
 @property(nonatomic) int cornerRoundingStyle;

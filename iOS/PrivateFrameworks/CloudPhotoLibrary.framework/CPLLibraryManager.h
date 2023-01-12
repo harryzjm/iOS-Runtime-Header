@@ -51,6 +51,12 @@
 + (id)descriptionForProvideContentResult:(unsigned long long)arg1;
 + (id)stateDescriptionForState:(unsigned long long)arg1;
 + (void)useCloudPhotoDaemonImplementation;
++ (id)allLibraryOptionsDescriptions;
++ (unsigned long long)optionsFromDescription:(id)arg1;
++ (id)descriptionForLibraryOptions:(unsigned long long)arg1;
++ (id)_reversMappingForLibraryOptions;
++ (id)_mappingForLibraryOptions;
++ (double)nextOverrideTimeIntervalForSystemBudgets:(unsigned long long)arg1;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *effectiveClientBundleIdentifier; // @synthesize effectiveClientBundleIdentifier=_effectiveClientBundleIdentifier;
 @property(copy, nonatomic) NSString *userOverride; // @synthesize userOverride=_userOverride;
@@ -75,6 +81,7 @@
 @property(readonly, copy, nonatomic) NSURL *cloudLibraryStateStorageURL; // @synthesize cloudLibraryStateStorageURL=_cloudLibraryStateStorageURL;
 @property(readonly, copy, nonatomic) NSURL *clientLibraryBaseURL; // @synthesize clientLibraryBaseURL=_clientLibraryBaseURL;
 @property(readonly, nonatomic) CPLPlatformObject *platformObject; // @synthesize platformObject=_platformObject;
+- (void)addDropDerivativesRecipe:(id)arg1 writeToUserDefaults:(_Bool)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)provideCloudResource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)provideRecordWithCloudScopeIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)provideScopeChangeForScopeWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -90,7 +97,8 @@
 - (void)deleteResourcesIfSafe:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)checkResourcesAreSafeToPrune:(id)arg1 checkServerIfNecessary:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)deleteResources:(id)arg1 checkServerIfNecessary:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
-@property(nonatomic) _Bool diagnosticsEnabled;
+- (void)markLibraryManagerAsInvalid;
+- (void)testKey:(id)arg1 value:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)takeStatisticsSnapshotSinceDate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)enableMingling;
 - (void)disableMingling;
@@ -132,14 +140,17 @@
 - (void)publishMomentShare:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)acceptSharedScope:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchSharedScopeFromShareURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)updateShareForScope:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)createScope:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)beginInMemoryDownloadOfResource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)rampingRequestForResourceType:(unsigned long long)arg1 numRequested:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)publishResource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getStreamingURLForResource:(id)arg1 intent:(unsigned long long)arg2 hints:(id)arg3 timeRange:(CDStruct_e83c9415)arg4 clientBundleID:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)getStreamingURLForResource:(id)arg1 intent:(unsigned long long)arg2 hints:(id)arg3 clientBundleID:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)getStreamingURLForResource:(id)arg1 intent:(unsigned long long)arg2 hints:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)beginDownloadForResource:(id)arg1 highPriority:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)beginDownloadForResource:(id)arg1 clientBundleID:(id)arg2 highPriority:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)beginDownloadForResource:(id)arg1 clientBundleID:(id)arg2 options:(id)arg3 proposedTaskIdentifier:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)beginDownloadForResource:(id)arg1 clientBundleID:(id)arg2 intent:(unsigned long long)arg3 proposedTaskIdentifier:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)beginDownloadForResource:(id)arg1 clientBundleID:(id)arg2 highPriority:(_Bool)arg3 proposedTaskIdentifier:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)beginPullChangeSessionWithKnownLibraryVersion:(id)arg1 resetTracker:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -165,6 +176,7 @@
 - (void)openWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)barrier;
+- (id)initForManagementWithLibraryIdentifier:(id)arg1;
 - (id)initForManagement;
 - (id)initWithClientLibraryBaseURL:(id)arg1 cloudLibraryStateStorageURL:(id)arg2 cloudLibraryResourceStorageURL:(id)arg3 libraryIdentifier:(id)arg4;
 - (id)initWithClientLibraryBaseURL:(id)arg1 cloudLibraryStateStorageURL:(id)arg2 cloudLibraryResourceStorageURL:(id)arg3 libraryIdentifier:(id)arg4 options:(unsigned long long)arg5;

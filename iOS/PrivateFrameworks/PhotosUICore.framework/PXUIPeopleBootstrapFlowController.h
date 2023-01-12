@@ -15,7 +15,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) PXPeopleBootstrapFinalViewController *finalViewController; // @synthesize finalViewController=_finalViewController;
 @property(retain, nonatomic) PXPeopleBootstrapConfirmationViewController *confirmationViewController; // @synthesize confirmationViewController=_confirmationViewController;
-- (id)_postNamingViewController;
+- (id)_postNamingViewControllers;
 @property(readonly, nonatomic) PHPerson *sourcePerson;
 - (void)done:(id)arg1;
 - (void)recomputeViewControllersForChangeInKeyPath:(id)arg1;

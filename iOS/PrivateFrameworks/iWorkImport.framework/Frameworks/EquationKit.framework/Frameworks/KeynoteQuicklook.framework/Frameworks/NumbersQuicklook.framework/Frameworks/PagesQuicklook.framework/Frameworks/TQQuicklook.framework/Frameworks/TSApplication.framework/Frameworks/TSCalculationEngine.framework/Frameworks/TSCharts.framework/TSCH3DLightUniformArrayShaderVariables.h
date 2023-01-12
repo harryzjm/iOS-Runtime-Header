@@ -10,14 +10,14 @@
 
 @interface TSCH3DLightUniformArrayShaderVariables : NSObject
 {
-    TSCH3DUniformArrayShaderVariables *mVariables;
+    TSCH3DUniformArrayShaderVariables *_variables;
 }
 
+- (void).cxx_destruct;
 - (id)variableAtIndex:(unsigned long long)arg1 name:(id)arg2;
 - (void)addUniformsToShaderProgram:(id)arg1 size:(unsigned long long)arg2;
 - (unsigned long long)arraySize;
 - (void)initializeArrayVariables;
-- (void)dealloc;
 - (void)initializePrefix:(id)arg1;
 
 @end

@@ -9,7 +9,6 @@
 @class NSArray, NSString;
 
 @interface TSUBezierPath (Distortion)
-+ (id)tracedPathForInstantAlphaBinaryBitmap:(id)arg1 pointSpacing:(double)arg2;
 + (id)tracedPathForImage:(struct CGImage *)arg1 alphaThreshold:(double)arg2 pointSpacing:(double)arg3;
 + (CDStruct_46b2202e)lineEndPositioningOnPath:(id)arg1 atHead:(_Bool)arg2 headPoint:(struct CGPoint)arg3 tailPoint:(struct CGPoint)arg4 headLineEnd:(id)arg5 tailLineEnd:(id)arg6 stroke:(id)arg7;
 + (id)createClippedPath:(id)arg1 headPositioning:(CDStruct_46b2202e)arg2 tailPositioning:(CDStruct_46b2202e)arg3 stroke:(id)arg4;
@@ -35,9 +34,9 @@
 + (_Bool)p_allPathsAreFlat:(id)arg1;
 + (id)p_usingLivarotStrokeBezierPath:(id)arg1 withThreshold:(double)arg2;
 + (id)p_usingLivarotBooleanBezierPaths:(id)arg1 operation:(int)arg2;
-+ (struct CGRect)p_pathToBounds:(Path_1b135553 *)arg1;
-+ (id)p_pathToBezier:(Path_1b135553 *)arg1;
-+ (Path_1b135553 *)p_bezierToPath:(id)arg1;
++ (struct CGRect)p_pathToBounds:(struct Path *)arg1;
++ (id)p_pathToBezier:(struct Path *)arg1;
++ (struct Path *)p_bezierToPath:(id)arg1;
 - (id)chisel;
 - (void)recursiveSubdivideOntoPath:(id)arg1 withScaling:(CDStruct_c3b9c2ee)arg2 inElementRange:(struct _NSRange)arg3 into:(id)arg4;
 - (void)recursiveSubdivideOntoPath:(id)arg1 withScaling:(CDStruct_c3b9c2ee)arg2 into:(id)arg3;
@@ -48,9 +47,7 @@
 - (struct CGPoint)myGradientAt:(double)arg1;
 - (struct CGPoint)rawGradientAt:(double)arg1 fromElement:(long long)arg2;
 - (double)elementPercentageFromElement:(long long)arg1 forOverallPercentage:(double)arg2;
-- (struct CGPoint)transformedTotalCoordinate:(struct CGPoint)arg1 betweenElement:(long long)arg2 andElement:(long long)arg3 withPressure:(id)arg4 getElement:(long long *)arg5 getPercentage:(double *)arg6;
-- (struct CGPoint)transformedTotalCoordinate:(struct CGPoint)arg1 inElement:(long long)arg2 withPressure:(id)arg3;
-- (struct CGPoint)transformedCoordinate:(struct CGPoint)arg1 withPressure:(id)arg2;
+- (struct CGPoint)transformedTotalCoordinate:(struct CGPoint)arg1 betweenElement:(long long)arg2 andElement:(long long)arg3 getElement:(long long *)arg4 getPercentage:(double *)arg5;
 - (struct CGPoint)gradientAt:(double)arg1;
 - (struct CGPoint)gradientAt:(double)arg1 fromElement:(long long)arg2;
 - (struct CGPoint)pointAt:(double)arg1;
@@ -66,8 +63,10 @@
 - (void)addIntersectionsWithPath:(id)arg1 to:(id)arg2;
 - (void)addIntersectionsWithPath:(id)arg1 to:(id)arg2 allIntersections:(_Bool)arg3 reversed:(_Bool)arg4;
 - (void)getStartPoint:(struct CGPoint *)arg1 andEndPoint:(struct CGPoint *)arg2;
-- (void)saveToArchive:(Path_a116956f *)arg1;
-- (id)initWithArchive:(const Path_a116956f *)arg1;
+- (void)saveToArchive:(void *)arg1;
+- (id)initWithArchive:(const void *)arg1;
+- (_Bool)p_equalWidthAndHeightForSize:(struct CGSize)arg1;
+- (id)labelForSize:(struct CGSize)arg1;
 @property(readonly, nonatomic) NSString *inferredAccessibilityDescription;
 @property(readonly, nonatomic) double flattenedArea;
 - (id)copyWithPointsInRange:(struct _NSRange)arg1;
@@ -119,7 +118,5 @@
 - (id)pathBySplittingAtPointOnPath:(struct CGPoint)arg1 controlPointDistanceEqual:(_Bool)arg2;
 - (id)p_pathBySplittingAtPointGuaranteedToBeOnPath:(struct CGPoint)arg1 controlPointDistanceEqual:(_Bool)arg2 elementIndex:(long long)arg3 parametricValue:(double)arg4;
 - (double)yValueFromXValue:(double)arg1 elementIndex:(long long *)arg2 parametricValue:(double *)arg3;
-- (id)bezierPathByFittingCurve:(id)arg1;
-- (id)bezierPathByFittingCurve;
 @end
 

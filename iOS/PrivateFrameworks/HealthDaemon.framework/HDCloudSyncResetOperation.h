@@ -12,8 +12,6 @@
 }
 
 - (void).cxx_destruct;
-- (id)_fetchDatabaseChangesOperationForDeleteOperation:(id)arg1;
-- (id)_deleteZonesOperation;
 - (void)main;
 - (id)initWithConfiguration:(id)arg1 cloudState:(id)arg2 container:(id)arg3;
 

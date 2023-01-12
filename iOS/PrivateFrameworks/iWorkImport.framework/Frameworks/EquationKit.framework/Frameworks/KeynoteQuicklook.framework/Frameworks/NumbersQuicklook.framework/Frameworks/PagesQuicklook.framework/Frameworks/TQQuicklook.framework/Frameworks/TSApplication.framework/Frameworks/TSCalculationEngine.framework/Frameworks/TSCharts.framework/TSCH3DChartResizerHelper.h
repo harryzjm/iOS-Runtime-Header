@@ -10,31 +10,31 @@
 
 @interface TSCH3DChartResizerHelper : NSObject
 {
-    TSCHChartInfo *mChartInfo;
-    tvec2_3b141483 mContainingViewport;
-    tvec2_3b141483 mOriginalContainingViewport;
-    TSCH3DChartBoundsLayout *mBoundsLayout;
-    CDStruct_b1c75024 mLayoutSettings;
+    TSCHChartInfo *_chartInfo;
+    tvec2_3b141483 _containingViewport;
+    tvec2_3b141483 _originalContainingViewport;
+    TSCH3DChartBoundsLayout *_boundsLayout;
+    CDStruct_c48db077 _layoutSettings;
 }
 
 + (id)helperWithInfo:(id)arg1;
-+ (id)vectorForContainingViewport:(const tvec2_3b141483 *)arg1;
++ (id)vectorForContainingViewport:(const void *)arg1;
 + (tvec2_3b141483)containingViewportForVector:(id)arg1;
 - (id).cxx_construct;
-@property(nonatomic) CDStruct_b1c75024 layoutSettings; // @synthesize layoutSettings=mLayoutSettings;
-@property(readonly, nonatomic) tvec2_3b141483 originalContainingViewport; // @synthesize originalContainingViewport=mOriginalContainingViewport;
-@property(nonatomic) tvec2_3b141483 containingViewport; // @synthesize containingViewport=mContainingViewport;
-@property(readonly, nonatomic) TSCHChartInfo *chartInfo; // @synthesize chartInfo=mChartInfo;
+- (void).cxx_destruct;
+@property(nonatomic) CDStruct_c48db077 layoutSettings; // @synthesize layoutSettings=_layoutSettings;
+@property(readonly, nonatomic) tvec2_3b141483 originalContainingViewport; // @synthesize originalContainingViewport=_originalContainingViewport;
+@property(nonatomic) tvec2_3b141483 containingViewport; // @synthesize containingViewport=_containingViewport;
+@property(readonly, nonatomic) TSCHChartInfo *chartInfo; // @synthesize chartInfo=_chartInfo;
 - (void)invalidateLabelsBoundsForSceneObjectClass:(Class)arg1 boundsIndex:(long long)arg2;
 - (void)invalidateBounds;
-- (tvec2_84d5962d)layoutSizeByResizingScene:(id)arg1 toChartBodyLayoutSize:(const tvec2_84d5962d *)arg2 resizeStartingSize:(tvec2_84d5962d *)arg3 returningChartBodyLayoutBoundsInChartAreaLayoutSpace:(box_80622335 *)arg4;
-- (tvec2_84d5962d)chartBodySizeByResizingScene:(id)arg1 toLayoutSize:(const tvec2_84d5962d *)arg2 resizeStartingSize:(tvec2_84d5962d *)arg3 returningChartBodyLayoutOffsetInChartAreaLayoutSpace:(tvec2_84d5962d *)arg4 resultLayoutSize:(tvec2_84d5962d *)arg5;
-- (tvec2_84d5962d)chartBodyLayoutOffsetInChartAreaLayoutSpaceUsingConverter:(const struct ChartProjectedBoundsConverter *)arg1;
-- (id)boundsLayoutResizedForScene:(id)arg1 bounds:(const box_80622335 *)arg2 resizeStartingSize:(tvec2_84d5962d *)arg3 mode:(int)arg4 returningResultSize:(tvec2_84d5962d *)arg5;
+- (tvec2_84d5962d)layoutSizeByResizingScene:(id)arg1 toChartBodyLayoutSize:(const void *)arg2 resizeStartingSize:(void *)arg3 returningChartBodyLayoutBoundsInChartAreaLayoutSpace:(void *)arg4;
+- (tvec2_84d5962d)chartBodySizeByResizingScene:(id)arg1 toLayoutSize:(const void *)arg2 resizeStartingSize:(void *)arg3 returningChartBodyLayoutOffsetInChartAreaLayoutSpace:(void *)arg4 resultLayoutSize:(void *)arg5;
+- (tvec2_84d5962d)chartBodyLayoutOffsetInChartAreaLayoutSpaceUsingConverter:(const void *)arg1;
+- (id)boundsLayoutResizedForScene:(id)arg1 bounds:(const void *)arg2 resizeStartingSize:(void *)arg3 mode:(int)arg4 returningResultSize:(void *)arg5;
 - (id)boundsLayoutForScene:(id)arg1 mode:(int)arg2;
 @property(readonly, nonatomic) TSCH3DVector *containingViewportVector;
 - (void)initializeOriginalContainingViewport;
-- (void)dealloc;
 - (id)initWithInfo:(id)arg1;
 
 @end

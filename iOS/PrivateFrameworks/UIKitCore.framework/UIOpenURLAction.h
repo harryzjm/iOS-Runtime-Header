@@ -4,21 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <BaseBoard/BSAction.h>
+#import <UIKitServices/UISOpenURLAction.h>
 
-@class BSProcessHandle, NSURL;
-
-@interface UIOpenURLAction : BSAction
+@interface UIOpenURLAction : UISOpenURLAction
 {
 }
-
-- (id)keyDescriptionForSetting:(unsigned long long)arg1;
-- (long long)UIActionType;
-@property(readonly, copy, nonatomic) NSURL *url;
-@property(readonly, nonatomic) BSProcessHandle *workspaceOriginatingProcess;
-- (id)initWithInfo:(id)arg1 timeout:(double)arg2 forResponseOnQueue:(id)arg3 withHandler:(CDUnknownBlockType)arg4;
-- (id)initWithURL:(id)arg1 workspaceOriginatingProcess:(id)arg2;
-- (id)initWithURL:(id)arg1;
 
 @end
 

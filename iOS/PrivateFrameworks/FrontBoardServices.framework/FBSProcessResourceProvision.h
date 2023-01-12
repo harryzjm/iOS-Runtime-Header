@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class BSTimer, NSObject, RBSProcessHandle;
+@class BSAbsoluteMachTimer, NSObject, RBSProcessHandle;
 @protocol OS_dispatch_queue;
 
 @interface FBSProcessResourceProvision
@@ -13,8 +13,10 @@
     unsigned long long _baselineValue;
     unsigned long long _consumedValue;
     NSObject<OS_dispatch_queue> *_queue;
-    BSTimer *_timer;
+    BSAbsoluteMachTimer *_timer;
     RBSProcessHandle *_processHandle;
+    double _timerFireInterval;
+    unsigned long long _timerFireCount;
 }
 
 + (id)provisionWithResourceType:(long long)arg1 timeInterval:(double)arg2;
@@ -26,7 +28,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)_queue_calculateValueConsumed:(out unsigned long long *)arg1;
 - (_Bool)_queue_updateConsumption;
-- (void)_queue_evaluateConsumption;
+- (void)_queue_evaluateConsumptionFromTimer:(_Bool)arg1;
 - (void)_queue_noteAllowanceExhausted;
 - (void)_queue_stopMonitoring;
 - (void)_prepareForReuse;

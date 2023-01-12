@@ -4,7 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSObject, NSString;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface _MTLFunctionInternal
@@ -13,12 +14,16 @@ __attribute__((visibility("hidden")))
     unsigned char _publicMetadataInitialized;
     unsigned char _privateMetadataInitialized;
     unsigned char _sourceArchiveMetadataInitialized;
-    struct MTLProgramObject *_programObject;
+    unsigned char _stitchableFunctionMetadataInitialized;
+    void *_programObject;
     NSString *_filePath;
     long long _lineNumber;
+    NSObject<OS_dispatch_queue> *_functionQueue;
 }
 
 - (id).cxx_construct;
+- (id)relocations;
+- (void)setRelocations:(id)arg1;
 - (id)functionInputs;
 - (unsigned long long)renderTargetArrayIndexType;
 - (long long)lineNumber;
@@ -30,8 +35,8 @@ __attribute__((visibility("hidden")))
 - (void)setFilePath:(id)arg1;
 - (void)initializePrivateMetadata;
 - (id)newFunctionWithPluginData:(id)arg1 bitcodeType:(unsigned char)arg2;
-- (id)newSpecializedFunctionWithRequestType:(int)arg1 llvmTargetVersion:(unsigned int)arg2 constants:(id)arg3 functionCache:(id)arg4 originalRequest:(const struct MTLCompilerFunctionRequest *)arg5 specializedName:(id)arg6 error:(id *)arg7;
-- (void)newSpecializedFunctionWithRequestType:(int)arg1 llvmTargetVersion:(unsigned int)arg2 constants:(id)arg3 functionCache:(id)arg4 originalRequest:(const struct MTLCompilerFunctionRequest *)arg5 sync:(_Bool)arg6 specializedName:(id)arg7 completionHandler:(CDUnknownBlockType)arg8;
+- (id)newSpecializedFunctionWithDescriptor:(id)arg1 destinationArchive:(id)arg2 functionCache:(id)arg3 error:(id *)arg4;
+- (void)newSpecializedFunctionWithDescriptor:(id)arg1 destinationArchive:(id)arg2 functionCache:(id)arg3 sync:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (_Bool)specializedFunctionHash:(CDStruct_41a22ec7 *)arg1 requestData:(id *)arg2 constants:(id)arg3 specializedName:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)setOptions:(unsigned long long)arg1;
 - (void)setSourceArchiveOffset:(unsigned long long)arg1;
@@ -53,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (void)setReturnType:(id)arg1;
 - (void)setVertexAttributes:(id)arg1;
 - (id)vertexAttributes;
+- (void)initializeStitchableFunctionMetadata;
 - (void)initializePublicMetadata;
 - (long long)patchControlPointCount;
 - (unsigned long long)patchType;
@@ -61,8 +67,10 @@ __attribute__((visibility("hidden")))
 - (void)setBitcodeType:(unsigned char)arg1;
 - (unsigned char)bitcodeType;
 - (unsigned long long)bitCodeOffset;
+- (id)importedLibraries;
+- (id)importedSymbols;
 - (const struct MTLFunctionData *)functionData;
-- (struct MTLProgramObject *)programObject;
+- (void *)programObject;
 - (void)dealloc;
 - (id)initWithName:(id)arg1 type:(unsigned long long)arg2 libraryData:(struct MTLLibraryData *)arg3 functionData:(struct MTLFunctionData *)arg4 device:(id)arg5;
 

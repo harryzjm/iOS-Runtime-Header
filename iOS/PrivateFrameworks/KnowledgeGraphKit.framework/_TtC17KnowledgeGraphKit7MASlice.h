@@ -10,7 +10,7 @@
 
 @interface _TtC17KnowledgeGraphKit7MASlice : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *graph;
+    MISSING_TYPE *graphReference;
     MISSING_TYPE *nodes;
     MISSING_TYPE *weight;
     MISSING_TYPE *projectionPaths;

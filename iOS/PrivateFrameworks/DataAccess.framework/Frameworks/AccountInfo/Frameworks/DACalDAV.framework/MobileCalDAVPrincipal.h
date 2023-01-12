@@ -17,6 +17,9 @@
 {
     NSMutableDictionary *_calendarUserAddressesPerCalendar;
     _Bool _calendarsAreDirty;
+    _Bool _needsDefaultTimedAlarmUpdate;
+    _Bool _needsDefaultAllDayAlarmUpdate;
+    _Bool _alarmsDirty;
     _Bool _isDelegate;
     _Bool _isWritable;
     _Bool _isEnabled;
@@ -37,6 +40,8 @@
     NSURL *_outboxURL;
     NSURL *_dropBoxURL;
     NSURL *_defaultCalendarURL;
+    NSString *_defaultTimedAlarms;
+    NSString *_defaultAllDayAlarms;
     NSString *_uid;
     id <CalDAVAccount> _account;
     NSSet *_preferredCalendarUserAddresses;
@@ -59,6 +64,7 @@
     AKAppleIDSession *_appleIDSession;
 }
 
++ (id)alarmICSStringFromOffset:(long long)arg1;
 + (_Bool)compareAddressURL:(id)arg1 localString:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) AKAppleIDSession *appleIDSession; // @synthesize appleIDSession=_appleIDSession;
@@ -91,8 +97,11 @@
 @property(retain, nonatomic) NSString *principalPath; // @synthesize principalPath=_principalPath;
 @property(retain, nonatomic) NSString *fullName; // @synthesize fullName=_fullName;
 @property(retain, nonatomic) NSSet *preferredCalendarUserAddresses; // @synthesize preferredCalendarUserAddresses=_preferredCalendarUserAddresses;
-@property(nonatomic) id <CalDAVAccount> account; // @synthesize account=_account;
+@property(nonatomic) __weak id <CalDAVAccount> account; // @synthesize account=_account;
 @property(retain, nonatomic) NSString *uid; // @synthesize uid=_uid;
+@property(nonatomic) _Bool alarmsDirty; // @synthesize alarmsDirty=_alarmsDirty;
+@property(nonatomic) _Bool needsDefaultAllDayAlarmUpdate; // @synthesize needsDefaultAllDayAlarmUpdate=_needsDefaultAllDayAlarmUpdate;
+@property(nonatomic) _Bool needsDefaultTimedAlarmUpdate; // @synthesize needsDefaultTimedAlarmUpdate=_needsDefaultTimedAlarmUpdate;
 @property(retain, nonatomic) NSMutableSet *deletedCalendarURLs; // @synthesize deletedCalendarURLs=_deletedCalendarURLs;
 - (void)noteTimeSpentInNetworking:(double)arg1;
 - (void)noteFailedProtocolRequest;
@@ -105,7 +114,7 @@
 - (_Bool)shouldHandleHTTPCookiesForURL:(id)arg1;
 - (_Bool)shouldFailAllTasks;
 - (_Bool)handleCertificateError:(id)arg1;
-- (_Bool)handleTrustChallenge:(id)arg1;
+- (_Bool)handleTrustChallenge:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)webLoginRequestedAtURL:(id)arg1 reasonString:(id)arg2 inQueue:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)clientTokenRequestedByServer;
 - (id)clientToken;
@@ -145,7 +154,9 @@
 - (id)defaultEventCalendarTitle;
 - (id)calendarOfType:(int)arg1 atURL:(id)arg2 withOptions:(id)arg3;
 - (_Bool)clearCalendarChanges;
+- (void)updateAddedOrModifiedSubscribedCalendars:(id)arg1;
 - (void)prepareCalendarsForSyncWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)updatePropertiesFromCalStore:(void *)arg1;
 @property(readonly, nonatomic) NSSet *calendars;
 @property(readonly, nonatomic) NSDateComponents *eventFilterEndDate;
 @property(readonly, nonatomic) NSDateComponents *eventFilterStartDate;
@@ -155,6 +166,8 @@
 @property(readonly, nonatomic) _Bool isEnabledForTodos;
 @property(readonly, nonatomic) _Bool isEnabledForEvents;
 @property(readonly, nonatomic) _Bool isMergeSync;
+@property(retain, nonatomic) NSString *defaultAllDayAlarms; // @synthesize defaultAllDayAlarms=_defaultAllDayAlarms;
+@property(retain, nonatomic) NSString *defaultTimedAlarms; // @synthesize defaultTimedAlarms=_defaultTimedAlarms;
 @property(retain, nonatomic) NSURL *dropBoxURL; // @synthesize dropBoxURL=_dropBoxURL;
 @property(retain, nonatomic) NSURL *outboxURL; // @synthesize outboxURL=_outboxURL;
 @property(retain, nonatomic) NSURL *inboxURL; // @synthesize inboxURL=_inboxURL;

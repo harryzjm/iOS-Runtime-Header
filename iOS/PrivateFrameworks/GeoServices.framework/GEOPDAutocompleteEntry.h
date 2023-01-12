@@ -10,7 +10,6 @@
 
 @class GEOPDAutocompleteEntryAddress, GEOPDAutocompleteEntryBrandProfile, GEOPDAutocompleteEntryBusiness, GEOPDAutocompleteEntryCategory, GEOPDAutocompleteEntryClientResolved, GEOPDAutocompleteEntryCollection, GEOPDAutocompleteEntryDirectionIntent, GEOPDAutocompleteEntryHighlightLine, GEOPDAutocompleteEntryOfflineArea, GEOPDAutocompleteEntryPublisher, GEOPDAutocompleteEntryQuery, GEOPDParsecRankingFeatures, GEOPDRetainedSearchMetadata, GEOPDServerResultScoreMetadata, NSString, PBDataReader, PBUnknownFields;
 
-__attribute__((visibility("hidden")))
 @interface GEOPDAutocompleteEntry : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
@@ -73,7 +72,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
-- (void)clearSensitiveFields;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
+- (void)clearSensitiveFields:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;

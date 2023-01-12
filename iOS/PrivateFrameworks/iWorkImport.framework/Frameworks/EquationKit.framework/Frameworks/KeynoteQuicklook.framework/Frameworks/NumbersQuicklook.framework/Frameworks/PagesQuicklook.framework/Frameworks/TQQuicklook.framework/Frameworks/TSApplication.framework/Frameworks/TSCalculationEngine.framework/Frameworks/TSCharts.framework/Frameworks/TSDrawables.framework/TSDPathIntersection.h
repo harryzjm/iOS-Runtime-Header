@@ -9,8 +9,8 @@
 @interface TSDPathIntersection : NSObject
 {
     long long mSegment;
-    long long mSegmentB;
     double mT;
+    long long mSegmentB;
     double mTB;
     struct CGPoint mPoint;
 }

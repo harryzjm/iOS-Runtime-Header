@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
         struct _retain_objc _retain;
         struct _release_objc _release;
     } _auditToken;
-    struct unordered_map<_GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob>, GEOTileKeyHashFunc, GEOTileKeyEqualsFunc, std::__1::allocator<std::__1::pair<const _GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob>>>> _keyToJobMap;
+    struct unordered_map<_GEOTileKey, std::shared_ptr<altitude::GeoServicesLoadJob>, GEOTileKeyHashFunc, GEOTileKeyEqualsFunc, std::allocator<std::pair<const _GEOTileKey, std::shared_ptr<altitude::GeoServicesLoadJob>>>> _keyToJobMap;
     struct Mutex _mutex;
     unsigned int _numDownloads;
     NSString *_tileLoaderClientIdentifier;
@@ -35,9 +35,9 @@ __attribute__((visibility("hidden")))
 - (void)purgeExpired:(double)arg1;
 - (void)reportCorruptTile:(const struct _GEOTileKey *)arg1;
 - (void)cancelRequests;
-- (void)updateJobPriority:(shared_ptr_97fa0047 *)arg1;
-- (void)cancelJob:(shared_ptr_97fa0047 *)arg1;
-- (void)fetchDataForJob:(shared_ptr_97fa0047 *)arg1;
+- (void)updateJobPriority:(void *)arg1;
+- (void)cancelJob:(void *)arg1;
+- (void)fetchDataForJob:(void *)arg1;
 - (shared_ptr_97fa0047)getJobForKey:(const struct _GEOTileKey *)arg1;
 - (void)dealloc;
 - (id)initWithToken:(id)arg1;

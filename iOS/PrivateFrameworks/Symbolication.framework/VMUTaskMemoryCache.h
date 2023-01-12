@@ -11,16 +11,24 @@
     struct mapped_memory_t *_memoryRegions;
     unsigned int _task;
     _Bool _taskIs64Bit;
+    _Bool _taskIsTranslated;
     _Bool _stopped;
+    CDUnknownBlockType _regionInfoBlock;
 }
 
 + (id)taskMemoryCacheForTask:(unsigned int)arg1;
 + (_Bool)taskIs64Bit:(unsigned int)arg1;
+- (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType regionInfoBlock; // @synthesize regionInfoBlock=_regionInfoBlock;
+@property(readonly, nonatomic) struct mapped_memory_t *memoryRegions; // @synthesize memoryRegions=_memoryRegions;
 - (_Bool)copyRange:(struct _VMURange)arg1 to:(void *)arg2;
 - (int)readPointerAt:(unsigned long long)arg1 value:(unsigned long long *)arg2;
 - (int)peekAtAddress:(unsigned long long)arg1 size:(unsigned long long)arg2 returnsBuf:(void **)arg3;
+- (int)unmapAddress:(unsigned long long)arg1 size:(unsigned long long)arg2;
 - (int)mapAddress:(unsigned long long)arg1 size:(unsigned long long)arg2 returnedAddress:(unsigned long long *)arg3 returnedSize:(unsigned long long *)arg4;
 - (int)mapAddress:(unsigned long long)arg1 size:(unsigned long long)arg2;
+- (const struct mapped_region_node_t *)findMappedAddress:(unsigned long long)arg1 size:(unsigned long long)arg2;
+- (_Bool)taskIsTranslated;
 - (int)stopPeeking;
 - (int)startPeeking;
 - (void)enumerateMemoryCache:(CDUnknownBlockType)arg1;

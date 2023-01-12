@@ -6,56 +6,9 @@
 
 #pragma mark Named Structures
 
-struct OntologyEdgeName {
-    CDUnknownFunctionPointerType *_field1;
-    int _field2;
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field3;
-    int _field4;
-};
+struct OntologyNodeName;
 
-struct OntologyNodeName {
-    CDUnknownFunctionPointerType *_field1;
-    int _field2;
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field3;
-    int _field4;
-    struct unordered_map<int, int, std::__1::hash<int>, std::__1::equal_to<int>, std::__1::allocator<std::__1::pair<const int, int>>> _field5;
-    struct unordered_set<int, std::__1::hash<int>, std::__1::equal_to<int>, std::__1::allocator<int>> _field6;
-    struct unordered_set<int, std::__1::hash<int>, std::__1::equal_to<int>, std::__1::allocator<int>> _field7;
-    struct unordered_set<int, std::__1::hash<int>, std::__1::equal_to<int>, std::__1::allocator<int>> _field8;
-    struct unordered_set<int, std::__1::hash<int>, std::__1::equal_to<int>, std::__1::allocator<int>> _field9;
-};
-
-struct OntologyVerbName {
-    CDUnknownFunctionPointerType *_field1;
-    int _field2;
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field3;
-    int _field4;
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field5;
-    struct unordered_map<int, int, std::__1::hash<int>, std::__1::equal_to<int>, std::__1::allocator<std::__1::pair<const int, int>>> _field6;
-};
-
-struct OntologyVersion {
-    unsigned int _field1;
-    unsigned int _field2;
-    unsigned int _field3;
-};
-
-struct UsoEntityNode {
-    CDUnknownFunctionPointerType *_field1;
-    struct UsoGraph *_field2;
-    unsigned long long _field3;
-    struct OntologyNodeName *_field4;
-    struct vector<std::__1::unique_ptr<siri::ontology::UsoIdentifier, std::__1::default_delete<siri::ontology::UsoIdentifier>>, std::__1::allocator<std::__1::unique_ptr<siri::ontology::UsoIdentifier, std::__1::default_delete<siri::ontology::UsoIdentifier>>>> _field5;
-    struct unique_ptr<siri::ontology::UsoUtteranceAlignment, std::__1::default_delete<siri::ontology::UsoUtteranceAlignment>> _field6;
-};
-
-struct UsoGraph {
-    struct adjacency_list<boost::vecS, boost::vecS, boost::bidirectionalS, siri::ontology::UsoGraphNode *, siri::ontology::UsoGraphEdge, boost::no_property, boost::listS> _field1;
-    struct OntologyVersion _field2;
-    struct vector<std::__1::unique_ptr<siri::ontology::UsoGraphNode, std::__1::default_delete<siri::ontology::UsoGraphNode>>, std::__1::allocator<std::__1::unique_ptr<siri::ontology::UsoGraphNode, std::__1::default_delete<siri::ontology::UsoGraphNode>>>> _field3;
-    struct unordered_set<const siri::ontology::UsoGraphNode *, std::__1::hash<const siri::ontology::UsoGraphNode *>, std::__1::equal_to<const siri::ontology::UsoGraphNode *>, std::__1::allocator<const siri::ontology::UsoGraphNode *>> _field4;
-    struct UsoRootNode *_field5;
-};
+struct UsoGraph;
 
 struct UsoGraphNode {
     CDUnknownFunctionPointerType *_field1;
@@ -63,14 +16,12 @@ struct UsoGraphNode {
     unsigned long long _field3;
 };
 
-struct UsoIntNode {
-    CDUnknownFunctionPointerType *_field1;
-    struct UsoGraph *_field2;
-    unsigned long long _field3;
-    struct OntologyNodeName *_field4;
-    struct vector<std::__1::unique_ptr<siri::ontology::UsoIdentifier, std::__1::default_delete<siri::ontology::UsoIdentifier>>, std::__1::allocator<std::__1::unique_ptr<siri::ontology::UsoIdentifier, std::__1::default_delete<siri::ontology::UsoIdentifier>>>> _field5;
-    struct unique_ptr<siri::ontology::UsoUtteranceAlignment, std::__1::default_delete<siri::ontology::UsoUtteranceAlignment>> _field6;
-    struct optional<long long> _field7;
+struct UsoIdentifier {
+    basic_string_05660eb3 _field1;
+    basic_string_05660eb3 _field2;
+    struct optional<std::string> _field3;
+    optional_4f9e39db _field4;
+    optional_3f5a7c99 _field5;
 };
 
 struct UsoOperatorNode {
@@ -80,64 +31,10 @@ struct UsoOperatorNode {
     struct OntologyNodeName *_field4;
 };
 
-struct UsoRootNode {
-    CDUnknownFunctionPointerType *_field1;
-    struct UsoGraph *_field2;
-    unsigned long long _field3;
-    struct OntologyNodeName *_field4;
-    struct vector<std::__1::unique_ptr<siri::ontology::UsoIdentifier, std::__1::default_delete<siri::ontology::UsoIdentifier>>, std::__1::allocator<std::__1::unique_ptr<siri::ontology::UsoIdentifier, std::__1::default_delete<siri::ontology::UsoIdentifier>>>> _field5;
-    struct unique_ptr<siri::ontology::UsoUtteranceAlignment, std::__1::default_delete<siri::ontology::UsoUtteranceAlignment>> _field6;
-};
-
-struct UsoStringNode {
-    CDUnknownFunctionPointerType *_field1;
-    struct UsoGraph *_field2;
-    unsigned long long _field3;
-    struct OntologyNodeName *_field4;
-    struct vector<std::__1::unique_ptr<siri::ontology::UsoIdentifier, std::__1::default_delete<siri::ontology::UsoIdentifier>>, std::__1::allocator<std::__1::unique_ptr<siri::ontology::UsoIdentifier, std::__1::default_delete<siri::ontology::UsoIdentifier>>>> _field5;
-    struct unique_ptr<siri::ontology::UsoUtteranceAlignment, std::__1::default_delete<siri::ontology::UsoUtteranceAlignment>> _field6;
-    struct optional<std::__1::basic_string<char>> _field7;
-};
-
-struct UsoTaskNode {
-    CDUnknownFunctionPointerType *_field1;
-    struct UsoGraph *_field2;
-    unsigned long long _field3;
-    struct OntologyNodeName *_field4;
-    struct vector<std::__1::unique_ptr<siri::ontology::UsoIdentifier, std::__1::default_delete<siri::ontology::UsoIdentifier>>, std::__1::allocator<std::__1::unique_ptr<siri::ontology::UsoIdentifier, std::__1::default_delete<siri::ontology::UsoIdentifier>>>> _field5;
-    struct unique_ptr<siri::ontology::UsoUtteranceAlignment, std::__1::default_delete<siri::ontology::UsoUtteranceAlignment>> _field6;
-    struct OntologyVerbName *_field7;
-};
-
-struct UsoUtteranceAlignment;
-
 struct UsoVocabManager;
 
-struct __hash_node_base<std::__1::__hash_node<const siri::ontology::UsoGraphNode *, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<const siri::ontology::UsoGraphNode *, void *>*> *_field1;
-};
-
-struct __hash_node_base<std::__1::__hash_node<int, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<int, void *>*> *_field1;
-};
-
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, int>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, int>, void *>*> *_field1;
-};
-
-struct __list_node_base<boost::list_edge<unsigned long, siri::ontology::UsoGraphEdge>, void *> {
-    struct __list_node_base<boost::list_edge<unsigned long, siri::ontology::UsoGraphEdge>, void *> *_field1;
-    struct __list_node_base<boost::list_edge<unsigned long, siri::ontology::UsoGraphEdge>, void *> *_field2;
-};
-
-struct adjacency_list<boost::vecS, boost::vecS, boost::bidirectionalS, siri::ontology::UsoGraphNode *, siri::ontology::UsoGraphEdge, boost::no_property, boost::listS> {
-    struct list<boost::list_edge<unsigned long, siri::ontology::UsoGraphEdge>, std::__1::allocator<boost::list_edge<unsigned long, siri::ontology::UsoGraphEdge>>> _field1;
-    struct vector<boost::detail::adj_list_gen<boost::adjacency_list<boost::vecS, boost::vecS, boost::bidirectionalS, siri::ontology::UsoGraphNode *, siri::ontology::UsoGraphEdge, boost::no_property, boost::listS>, boost::vecS, boost::vecS, boost::bidirectionalS, siri::ontology::UsoGraphNode *, siri::ontology::UsoGraphEdge, boost::no_property, boost::listS>::config::stored_vertex, std::__1::allocator<boost::detail::adj_list_gen<boost::adjacency_list<boost::vecS, boost::vecS, boost::bidirectionalS, siri::ontology::UsoGraphNode *, siri::ontology::UsoGraphEdge, boost::no_property, boost::listS>, boost::vecS, boost::vecS, boost::bidirectionalS, siri::ontology::UsoGraphNode *, siri::ontology::UsoGraphEdge, boost::no_property, boost::listS>::config::stored_vertex>> _field2;
-    struct scoped_ptr<boost::no_property> _field3;
-};
-
-struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
-    struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__rep, std::__1::allocator<char>> {
+struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
+    struct __compressed_pair<std::basic_string<char>::__rep, std::allocator<char>> {
         struct __rep {
             union {
                 struct __long {
@@ -159,33 +56,28 @@ struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>
     } _field1;
 };
 
-struct list<boost::list_edge<unsigned long, siri::ontology::UsoGraphEdge>, std::__1::allocator<boost::list_edge<unsigned long, siri::ontology::UsoGraphEdge>>> {
-    struct __list_node_base<boost::list_edge<unsigned long, siri::ontology::UsoGraphEdge>, void *> _field1;
-    struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<boost::list_edge<unsigned long, siri::ontology::UsoGraphEdge>, void *>>> {
-        unsigned long long _field1;
-    } _field2;
-};
-
-struct no_property;
-
-struct optional<long long> {
+struct optional<double> {
     union {
         char _field1;
-        long long _field2;
+        double _field2;
     } _field1;
     _Bool _field2;
 };
 
-struct optional<std::__1::basic_string<char>> {
+struct optional<siri::ontology::UsoIdentifier::NluComponent> {
     union {
         char _field1;
-        struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field2;
+        int _field2;
     } _field1;
     _Bool _field2;
 };
 
-struct scoped_ptr<boost::no_property> {
-    struct no_property *_field1;
+struct optional<std::string> {
+    union {
+        char _field1;
+        basic_string_05660eb3 _field2;
+    } _field1;
+    _Bool _field2;
 };
 
 struct shared_ptr<siri::ontology::UsoVocabManager> {
@@ -193,137 +85,90 @@ struct shared_ptr<siri::ontology::UsoVocabManager> {
     struct __shared_weak_count *_field2;
 };
 
-struct stored_vertex;
-
-struct unique_ptr<siri::ontology::UsoGraph, std::__1::default_delete<siri::ontology::UsoGraph>> {
-    struct __compressed_pair<siri::ontology::UsoGraph *, std::__1::default_delete<siri::ontology::UsoGraph>> {
+struct unique_ptr<siri::ontology::UsoGraph, std::default_delete<siri::ontology::UsoGraph>> {
+    struct __compressed_pair<siri::ontology::UsoGraph *, std::default_delete<siri::ontology::UsoGraph>> {
         struct UsoGraph *__value_;
     } __ptr_;
 };
 
-struct unique_ptr<siri::ontology::UsoGraphNode, std::__1::default_delete<siri::ontology::UsoGraphNode>>;
-
-struct unique_ptr<siri::ontology::UsoIdentifier, std::__1::default_delete<siri::ontology::UsoIdentifier>>;
-
-struct unique_ptr<siri::ontology::UsoUtteranceAlignment, std::__1::default_delete<siri::ontology::UsoUtteranceAlignment>> {
-    struct __compressed_pair<siri::ontology::UsoUtteranceAlignment *, std::__1::default_delete<siri::ontology::UsoUtteranceAlignment>> {
-        struct UsoUtteranceAlignment *_field1;
+struct unique_ptr<siri::ontology::UsoIdentifier, std::default_delete<siri::ontology::UsoIdentifier>> {
+    struct __compressed_pair<siri::ontology::UsoIdentifier *, std::default_delete<siri::ontology::UsoIdentifier>> {
+        struct UsoIdentifier *_field1;
     } _field1;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<const siri::ontology::UsoGraphNode *, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<const siri::ontology::UsoGraphNode *, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<const siri::ontology::UsoGraphNode *, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<const siri::ontology::UsoGraphNode *, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<const siri::ontology::UsoGraphNode *, void *>*> **_field1;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<const siri::ontology::UsoGraphNode *, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<const siri::ontology::UsoGraphNode *, void *>*>*>> {
-                unsigned long long _field1;
-            } _field1;
-        } _field2;
-    } _field1;
-};
-
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<int, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<int, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<int, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<int, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<int, void *>*> **_field1;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<int, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<int, void *>*>*>> {
-                unsigned long long _field1;
-            } _field1;
-        } _field2;
-    } _field1;
-};
-
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, int>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, int>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, int>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, int>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, int>, void *>*> **_field1;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, int>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, int>, void *>*>*>> {
-                unsigned long long _field1;
-            } _field1;
-        } _field2;
-    } _field1;
-};
-
-struct unordered_map<int, int, std::__1::hash<int>, std::__1::equal_to<int>, std::__1::allocator<std::__1::pair<const int, int>>> {
-    struct __hash_table<std::__1::__hash_value_type<int, int>, std::__1::__unordered_map_hasher<int, std::__1::__hash_value_type<int, int>, std::__1::hash<int>, true>, std::__1::__unordered_map_equal<int, std::__1::__hash_value_type<int, int>, std::__1::equal_to<int>, true>, std::__1::allocator<std::__1::__hash_value_type<int, int>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, int>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, int>, void *>*>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, int>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<int, int>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<int, int>, void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<int, std::__1::__hash_value_type<int, int>, std::__1::hash<int>, true>> {
-            unsigned long long _field1;
-        } _field3;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<int, std::__1::__hash_value_type<int, int>, std::__1::equal_to<int>, true>> {
-            float _field1;
-        } _field4;
-    } _field1;
-};
-
-struct unordered_set<const siri::ontology::UsoGraphNode *, std::__1::hash<const siri::ontology::UsoGraphNode *>, std::__1::equal_to<const siri::ontology::UsoGraphNode *>, std::__1::allocator<const siri::ontology::UsoGraphNode *>> {
-    struct __hash_table<const siri::ontology::UsoGraphNode *, std::__1::hash<const siri::ontology::UsoGraphNode *>, std::__1::equal_to<const siri::ontology::UsoGraphNode *>, std::__1::allocator<const siri::ontology::UsoGraphNode *>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<const siri::ontology::UsoGraphNode *, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<const siri::ontology::UsoGraphNode *, void *>*>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<const siri::ontology::UsoGraphNode *, void *>*>, std::__1::allocator<std::__1::__hash_node<const siri::ontology::UsoGraphNode *, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<const siri::ontology::UsoGraphNode *, void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::hash<const siri::ontology::UsoGraphNode *>> {
-            unsigned long long _field1;
-        } _field3;
-        struct __compressed_pair<float, std::__1::equal_to<const siri::ontology::UsoGraphNode *>> {
-            float _field1;
-        } _field4;
-    } _field1;
-};
-
-struct unordered_set<int, std::__1::hash<int>, std::__1::equal_to<int>, std::__1::allocator<int>> {
-    struct __hash_table<int, std::__1::hash<int>, std::__1::equal_to<int>, std::__1::allocator<int>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<int, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<int, void *>*>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<int, void *>*>, std::__1::allocator<std::__1::__hash_node<int, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<int, void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::hash<int>> {
-            unsigned long long _field1;
-        } _field3;
-        struct __compressed_pair<float, std::__1::equal_to<int>> {
-            float _field1;
-        } _field4;
-    } _field1;
-};
-
-struct vector<boost::detail::adj_list_gen<boost::adjacency_list<boost::vecS, boost::vecS, boost::bidirectionalS, siri::ontology::UsoGraphNode *, siri::ontology::UsoGraphEdge, boost::no_property, boost::listS>, boost::vecS, boost::vecS, boost::bidirectionalS, siri::ontology::UsoGraphNode *, siri::ontology::UsoGraphEdge, boost::no_property, boost::listS>::config::stored_vertex, std::__1::allocator<boost::detail::adj_list_gen<boost::adjacency_list<boost::vecS, boost::vecS, boost::bidirectionalS, siri::ontology::UsoGraphNode *, siri::ontology::UsoGraphEdge, boost::no_property, boost::listS>, boost::vecS, boost::vecS, boost::bidirectionalS, siri::ontology::UsoGraphNode *, siri::ontology::UsoGraphEdge, boost::no_property, boost::listS>::config::stored_vertex>> {
-    struct stored_vertex *_field1;
-    struct stored_vertex *_field2;
-    struct __compressed_pair<boost::detail::adj_list_gen<boost::adjacency_list<boost::vecS, boost::vecS, boost::bidirectionalS, siri::ontology::UsoGraphNode *, siri::ontology::UsoGraphEdge, boost::no_property, boost::listS>, boost::vecS, boost::vecS, boost::bidirectionalS, siri::ontology::UsoGraphNode *, siri::ontology::UsoGraphEdge, boost::no_property, boost::listS>::config::stored_vertex *, std::__1::allocator<boost::detail::adj_list_gen<boost::adjacency_list<boost::vecS, boost::vecS, boost::bidirectionalS, siri::ontology::UsoGraphNode *, siri::ontology::UsoGraphEdge, boost::no_property, boost::listS>, boost::vecS, boost::vecS, boost::bidirectionalS, siri::ontology::UsoGraphNode *, siri::ontology::UsoGraphEdge, boost::no_property, boost::listS>::config::stored_vertex>> {
-        struct stored_vertex *_field1;
-    } _field3;
-};
-
-struct vector<std::__1::unique_ptr<siri::ontology::UsoGraphNode, std::__1::default_delete<siri::ontology::UsoGraphNode>>, std::__1::allocator<std::__1::unique_ptr<siri::ontology::UsoGraphNode, std::__1::default_delete<siri::ontology::UsoGraphNode>>>> {
-    struct unique_ptr<siri::ontology::UsoGraphNode, std::__1::default_delete<siri::ontology::UsoGraphNode>> *_field1;
-    struct unique_ptr<siri::ontology::UsoGraphNode, std::__1::default_delete<siri::ontology::UsoGraphNode>> *_field2;
-    struct __compressed_pair<std::__1::unique_ptr<siri::ontology::UsoGraphNode, std::__1::default_delete<siri::ontology::UsoGraphNode>>*, std::__1::allocator<std::__1::unique_ptr<siri::ontology::UsoGraphNode, std::__1::default_delete<siri::ontology::UsoGraphNode>>>> {
-        struct unique_ptr<siri::ontology::UsoGraphNode, std::__1::default_delete<siri::ontology::UsoGraphNode>> *_field1;
-    } _field3;
-};
-
-struct vector<std::__1::unique_ptr<siri::ontology::UsoIdentifier, std::__1::default_delete<siri::ontology::UsoIdentifier>>, std::__1::allocator<std::__1::unique_ptr<siri::ontology::UsoIdentifier, std::__1::default_delete<siri::ontology::UsoIdentifier>>>> {
-    struct unique_ptr<siri::ontology::UsoIdentifier, std::__1::default_delete<siri::ontology::UsoIdentifier>> *_field1;
-    struct unique_ptr<siri::ontology::UsoIdentifier, std::__1::default_delete<siri::ontology::UsoIdentifier>> *_field2;
-    struct __compressed_pair<std::__1::unique_ptr<siri::ontology::UsoIdentifier, std::__1::default_delete<siri::ontology::UsoIdentifier>>*, std::__1::allocator<std::__1::unique_ptr<siri::ontology::UsoIdentifier, std::__1::default_delete<siri::ontology::UsoIdentifier>>>> {
-        struct unique_ptr<siri::ontology::UsoIdentifier, std::__1::default_delete<siri::ontology::UsoIdentifier>> *_field1;
+struct vector<std::pair<std::reference_wrapper<siri::ontology::UsoGraphNode>, std::reference_wrapper<const siri::ontology::UsoGraphEdge>>, std::allocator<std::pair<std::reference_wrapper<siri::ontology::UsoGraphNode>, std::reference_wrapper<const siri::ontology::UsoGraphEdge>>>> {
+    void *_field1;
+    void *_field2;
+    struct __compressed_pair<std::pair<std::reference_wrapper<siri::ontology::UsoGraphNode>, std::reference_wrapper<const siri::ontology::UsoGraphEdge>>*, std::allocator<std::pair<std::reference_wrapper<siri::ontology::UsoGraphNode>, std::reference_wrapper<const siri::ontology::UsoGraphEdge>>>> {
+        void *_field1;
     } _field3;
 };
 
 #pragma mark Typedef'd Structures
 
 // Template types
+typedef struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
+    struct __compressed_pair<std::basic_string<char>::__rep, std::allocator<char>> {
+        struct __rep {
+            union {
+                struct __long {
+                    char *_field1;
+                    unsigned long long _field2;
+                    unsigned long long _field3;
+                } _field1;
+                struct __short {
+                    char _field1[23];
+                    struct {
+                        unsigned char _field1;
+                    } _field2;
+                } _field2;
+                struct __raw {
+                    unsigned long long _field1[3];
+                } _field3;
+            } _field1;
+        } _field1;
+    } _field1;
+} basic_string_05660eb3;
+
+typedef struct optional<double> {
+    union {
+        char _field1;
+        double _field2;
+    } _field1;
+    _Bool _field2;
+} optional_4f9e39db;
+
+typedef struct optional<siri::ontology::UsoIdentifier::NluComponent> {
+    union {
+        char _field1;
+        int _field2;
+    } _field1;
+    _Bool _field2;
+} optional_3f5a7c99;
+
 typedef struct shared_ptr<siri::ontology::UsoVocabManager> {
     struct UsoVocabManager *_field1;
     struct __shared_weak_count *_field2;
 } shared_ptr_de47c0c1;
 
-typedef struct unique_ptr<siri::ontology::UsoGraph, std::__1::default_delete<siri::ontology::UsoGraph>> {
-    struct __compressed_pair<siri::ontology::UsoGraph *, std::__1::default_delete<siri::ontology::UsoGraph>> {
+typedef struct unique_ptr<siri::ontology::UsoGraph, std::default_delete<siri::ontology::UsoGraph>> {
+    struct __compressed_pair<siri::ontology::UsoGraph *, std::default_delete<siri::ontology::UsoGraph>> {
         struct UsoGraph *__value_;
     } __ptr_;
-} unique_ptr_1f6b481a;
+} unique_ptr_e8bae616;
+
+typedef struct unique_ptr<siri::ontology::UsoIdentifier, std::default_delete<siri::ontology::UsoIdentifier>> {
+    struct __compressed_pair<siri::ontology::UsoIdentifier *, std::default_delete<siri::ontology::UsoIdentifier>> {
+        struct UsoIdentifier *_field1;
+    } _field1;
+} unique_ptr_191f5ca4;
+
+typedef struct vector<std::pair<std::reference_wrapper<siri::ontology::UsoGraphNode>, std::reference_wrapper<const siri::ontology::UsoGraphEdge>>, std::allocator<std::pair<std::reference_wrapper<siri::ontology::UsoGraphNode>, std::reference_wrapper<const siri::ontology::UsoGraphEdge>>>> {
+    void *_field1;
+    void *_field2;
+    struct __compressed_pair<std::pair<std::reference_wrapper<siri::ontology::UsoGraphNode>, std::reference_wrapper<const siri::ontology::UsoGraphEdge>>*, std::allocator<std::pair<std::reference_wrapper<siri::ontology::UsoGraphNode>, std::reference_wrapper<const siri::ontology::UsoGraphEdge>>>> {
+        void *_field1;
+    } _field3;
+} vector_43a3655f;
 

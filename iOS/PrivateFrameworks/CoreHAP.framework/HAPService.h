@@ -35,7 +35,7 @@
 - (_Bool)_validateMandatoryCharacteristics;
 - (_Bool)_validateServiceCharacteristics;
 - (_Bool)_updateCharacteristic:(id)arg1;
-- (_Bool)_updateAndValidateCharacteristics;
+- (_Bool)updateAndValidateCharacteristics;
 - (id)propertiesDescription;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqualToService:(id)arg1;

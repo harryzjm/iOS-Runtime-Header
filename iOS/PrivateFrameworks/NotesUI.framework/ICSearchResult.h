@@ -17,6 +17,7 @@
     id <ICSearchIndexable> _object;
     ICSearchResultConfiguration *_configuration;
     NSRegularExpression *_highlightPatternRegex;
+    NSRegularExpression *_tipKitCheckRegex;
     NSValue *_firstMatchingRangeInNote;
     id <ICSearchIndexable> _currentContextObject;
     NSString *_displayingTitle;
@@ -54,6 +55,7 @@
 @property(retain, nonatomic) NSString *displayingTitle; // @synthesize displayingTitle=_displayingTitle;
 @property(retain, nonatomic) id <ICSearchIndexable> currentContextObject; // @synthesize currentContextObject=_currentContextObject;
 @property(retain, nonatomic) NSValue *firstMatchingRangeInNote; // @synthesize firstMatchingRangeInNote=_firstMatchingRangeInNote;
+@property(retain, nonatomic) NSRegularExpression *tipKitCheckRegex; // @synthesize tipKitCheckRegex=_tipKitCheckRegex;
 @property(retain, nonatomic) NSRegularExpression *highlightPatternRegex; // @synthesize highlightPatternRegex=_highlightPatternRegex;
 @property(readonly, nonatomic) ICSearchResultConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(readonly, nonatomic) id <ICSearchIndexable> object; // @synthesize object=_object;

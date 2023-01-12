@@ -35,6 +35,8 @@ __attribute__((visibility("hidden")))
         unsigned int endWithLargeTitle:1;
         unsigned int observedScrollViewOffsetIsApplicable:1;
         unsigned int sharesContentViewLayouts:1;
+        unsigned int beginWithTransparencyAllowed:1;
+        unsigned int endWithTransparencyAllowed:1;
     } _navigationBarTransitionContextFlags;
     NSMutableSet *_clippingViews;
     struct CGPoint _startingContentOffsetForObservedScrollView;
@@ -70,11 +72,14 @@ __attribute__((visibility("hidden")))
 - (void)setAllLargeTitleLayoutsVisible;
 - (void)animate;
 - (void)_animateBackgroundView;
+- (_Bool)shouldPerformTwoPartCrossfadeTransition;
 - (void)_animateFromBottomPaletteAtEdge:(unsigned long long)arg1;
 - (void)_prepareToBottomPaletteAtEdge:(unsigned long long)arg1;
 - (void)prepare;
 - (void)recordUpdates:(CDUnknownBlockType)arg1;
 - (id)description;
+@property(nonatomic) _Bool endWithTransparencyAllowed;
+@property(nonatomic) _Bool beginWithTransparencyAllowed;
 @property(nonatomic) _Bool sharesContentViewLayouts;
 @property(nonatomic) _Bool observedScrollViewOffsetIsApplicable;
 @property(nonatomic) _Bool endWithLargeTitle;

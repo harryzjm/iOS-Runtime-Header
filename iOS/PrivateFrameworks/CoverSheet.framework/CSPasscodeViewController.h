@@ -51,9 +51,11 @@
 - (id)_effectiveAverageWallpaperColor;
 - (void)_updateReduceTransparencyBackingColor;
 - (_Bool)_shouldUseLightStylePasscodeView;
-- (void)_passcodeLockViewPasscodeEntered:(id)arg1 viaMesa:(_Bool)arg2;
+- (void)_passcodeLockViewPasscodeEntered:(id)arg1 authenticationType:(unsigned long long)arg2;
 - (void)_setBiometricAuthenticationEnabledForTransientAppearanceTransition:(_Bool)arg1;
 - (_Bool)handleEvent:(id)arg1;
+- (unsigned int)presentationFrameRateRangeReason;
+- (struct CAFrameRateRange)presentationPreferredFrameRateRange;
 - (long long)presentationTransition;
 - (long long)presentationPriority;
 - (long long)presentationType;

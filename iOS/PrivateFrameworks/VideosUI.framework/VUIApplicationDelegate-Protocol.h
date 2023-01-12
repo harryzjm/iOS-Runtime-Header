@@ -6,9 +6,6 @@
 
 #import <VideosUI/UIApplicationDelegate-Protocol.h>
 
-@class TVApplicationController;
-
 @protocol VUIApplicationDelegate <UIApplicationDelegate>
-@property(readonly, nonatomic) TVApplicationController *appController;
 @end
 

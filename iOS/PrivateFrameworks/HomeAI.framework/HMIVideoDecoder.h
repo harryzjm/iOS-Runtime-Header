@@ -6,33 +6,42 @@
 
 #import <HomeAI/HMFLogging-Protocol.h>
 
-@class NSObject, NSString;
-@protocol HMIVideoDecoderDelegate, OS_dispatch_queue, OS_dispatch_semaphore;
+@class HMFWeakObject, NSObject, NSString;
+@protocol HMIVideoDecoderDelegate, OS_dispatch_queue;
 
 @interface HMIVideoDecoder <HMFLogging>
 {
+    id <HMIVideoDecoderDelegate> _delegate;
+    NSString *_logIdentifier;
+    unsigned long long _reorderBufferSize;
+    struct opaqueCMBufferQueue *_buffer;
+    struct OpaqueVTDecompressionSession *_session;
+    HMFWeakObject *_weakDecoder;
+    NSObject<OS_dispatch_queue> *_workQueue;
     CDStruct_1b6d18a9 _lastSampleBufferPTS;
     CDStruct_1b6d18a9 _lastSampleBufferDTS;
-    struct OpaqueVTDecompressionSession *_session;
-    NSObject<OS_dispatch_queue> *_queue;
-    struct opaqueCMBufferQueue *_buffer;
-    NSObject<OS_dispatch_semaphore> *_semaphore;
-    id <HMIVideoDecoderDelegate> _delegate;
 }
 
 + (id)logCategory;
 - (void).cxx_destruct;
+@property(readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+@property(retain) HMFWeakObject *weakDecoder; // @synthesize weakDecoder=_weakDecoder;
+@property struct OpaqueVTDecompressionSession *session; // @synthesize session=_session;
+@property struct opaqueCMBufferQueue *buffer; // @synthesize buffer=_buffer;
+@property(readonly) unsigned long long reorderBufferSize; // @synthesize reorderBufferSize=_reorderBufferSize;
+@property CDStruct_1b6d18a9 lastSampleBufferDTS; // @synthesize lastSampleBufferDTS=_lastSampleBufferDTS;
+@property CDStruct_1b6d18a9 lastSampleBufferPTS; // @synthesize lastSampleBufferPTS=_lastSampleBufferPTS;
+@property(retain) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
 @property __weak id <HMIVideoDecoderDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_failWithDescription:(id)arg1;
+- (void)_didDecodeSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
+- (void)_evictSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
+- (_Bool)_createSessionWithFormatDescription:(const struct opaqueCMFormatDescription *)arg1;
+- (void)dealloc;
+- (void)flush;
 - (_Bool)handleSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 outputFrame:(_Bool)arg2;
 - (void)handleSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
-- (void)flush;
-- (void)dealloc;
-- (void)_invalidateSession:(_Bool)arg1;
-- (_Bool)_createSessionWithFormatDescription:(const struct opaqueCMFormatDescription *)arg1;
-- (void)_drainBuffer:(_Bool)arg1;
-- (void)_reorderBufferDidBecomeFull;
-- (void)_didDecodeSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
+- (id)initWithFrameReordering:(_Bool)arg1;
 - (id)init;
 
 // Remaining properties

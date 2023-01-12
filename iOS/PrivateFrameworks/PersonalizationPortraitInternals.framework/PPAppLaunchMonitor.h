@@ -17,7 +17,6 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)_registerForAppChangesIfNeededWithGuardedData:(id)arg1;
 - (void)deregisterForAppLaunchWithToken:(id)arg1;
 - (id)registerForAppLaunchWithBundleId:(id)arg1 queue:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)_init;

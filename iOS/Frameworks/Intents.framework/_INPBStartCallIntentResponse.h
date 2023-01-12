@@ -10,7 +10,7 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBStartCallIntentResponse-Protocol.h>
 
-@class NSString, _INPBConnectedCall;
+@class NSArray, NSString, _INPBConnectedCall;
 
 @interface _INPBStartCallIntentResponse : PBCodable <_INPBStartCallIntentResponse, NSSecureCoding, NSCopying>
 {
@@ -20,13 +20,16 @@
     } _has;
     _Bool _shouldDoEmergencyCountdown;
     int _confirmationReason;
+    NSArray *_restrictedContacts;
     _INPBConnectedCall *_startedCall;
 }
 
 + (_Bool)supportsSecureCoding;
++ (Class)restrictedContactsType;
 - (void).cxx_destruct;
 @property(retain, nonatomic) _INPBConnectedCall *startedCall; // @synthesize startedCall=_startedCall;
 @property(nonatomic) _Bool shouldDoEmergencyCountdown; // @synthesize shouldDoEmergencyCountdown=_shouldDoEmergencyCountdown;
+@property(copy, nonatomic) NSArray *restrictedContacts; // @synthesize restrictedContacts=_restrictedContacts;
 @property(nonatomic) int confirmationReason; // @synthesize confirmationReason=_confirmationReason;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
@@ -38,6 +41,10 @@
 - (_Bool)readFrom:(id)arg1;
 @property(readonly, nonatomic) _Bool hasStartedCall;
 @property(nonatomic) _Bool hasShouldDoEmergencyCountdown;
+- (id)restrictedContactsAtIndex:(unsigned long long)arg1;
+@property(readonly, nonatomic) unsigned long long restrictedContactsCount;
+- (void)addRestrictedContacts:(id)arg1;
+- (void)clearRestrictedContacts;
 - (int)StringAsConfirmationReason:(id)arg1;
 - (id)confirmationReasonAsString:(int)arg1;
 @property(nonatomic) _Bool hasConfirmationReason;

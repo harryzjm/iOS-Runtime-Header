@@ -8,9 +8,10 @@
 #import <PhotosUICore/PXMediaTypeAggregating-Protocol.h>
 
 @class NSDate, NSString, PXAssetCollectionActionManager, PXCMMContext;
-@protocol PXCMMInvitationParticipant, PXDisplayAsset, PXUIImageProvider;
+@protocol PXCMMInvitationParticipant, PXDisplayAsset, PXDisplayAssetCollection, PXUIImageProvider;
 
 @protocol PXCMMInvitation <NSObject, PXMediaTypeAggregating>
+@property(readonly, nonatomic) id <PXDisplayAssetCollection> assetCollection;
 @property(readonly, nonatomic) PXAssetCollectionActionManager *assetCollectionActionManager;
 @property(readonly, nonatomic) id <PXUIImageProvider> posterMediaProvider;
 @property(readonly, nonatomic) id <PXDisplayAsset> posterAsset;

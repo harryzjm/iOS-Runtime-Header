@@ -74,6 +74,7 @@
 - (void)handleClientMessage:(id)arg1 filloutReply:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)updateFlow:(id)arg1 withVerdict:(id)arg2 forDirection:(long long)arg3;
 - (void)resumeFlow:(id)arg1 withVerdict:(id)arg2;
+- (id)findFlowWithFlow:(id)arg1;
 - (void)applySettings:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)sendSocketContentFilterRequest;
 - (void)sendBrowserContentFilterServerRequest;

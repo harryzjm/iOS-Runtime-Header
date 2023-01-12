@@ -34,8 +34,8 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithInteractiveInfos:(id)arg1 nonInteractiveInfos:(id)arg2;
 - (id)initWithInfos:(id)arg1;
-- (void)saveToArchive:(struct DrawableSelectionArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct DrawableSelectionArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 @end
 

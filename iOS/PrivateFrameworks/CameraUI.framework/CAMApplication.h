@@ -26,6 +26,8 @@
 - (_Bool)runTakePicturePortraitTest:(id)arg1 options:(id)arg2 prototype:(id)arg3;
 - (_Bool)runTakePictureTestWithFrontCamera:(id)arg1 options:(id)arg2 prototype:(id)arg3 forCaptureMode:(long long)arg4;
 - (_Bool)runTakePictureTestWithTestName:(id)arg1 options:(id)arg2 prototype:(id)arg3 forCaptureMode:(long long)arg4;
+- (_Bool)runNewPPTUICaptureTestWithTestName:(id)arg1 options:(id)arg2;
+- (_Bool)runTakeVideoTestWithTestName:(id)arg1 options:(id)arg2 userPreferencesOverrides:(id)arg3;
 - (void)didChangeToMode:(long long)arg1 device:(long long)arg2;
 - (void)didOpenViewfinderForReason:(long long)arg1;
 - (void)willOpenViewfinderForReason:(long long)arg1;

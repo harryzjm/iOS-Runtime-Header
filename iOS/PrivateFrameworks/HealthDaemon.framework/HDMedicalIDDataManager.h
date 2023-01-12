@@ -7,12 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <HealthDaemon/HDAnalyticsSubmissionCoordinatorDelegate-Protocol.h>
-#import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
+#import <HealthDaemon/HDProfileReadyObserver-Protocol.h>
 
 @class HDProfile, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HDMedicalIDDataManager : NSObject <HDAnalyticsSubmissionCoordinatorDelegate, HDHealthDaemonReadyObserver>
+@interface HDMedicalIDDataManager : NSObject <HDAnalyticsSubmissionCoordinatorDelegate, HDProfileReadyObserver>
 {
     NSObject<OS_dispatch_queue> *_queue;
     HDProfile *_profile;
@@ -20,24 +20,12 @@
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 - (void)reportDailyAnalyticsWithCoordinator:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)daemonReady:(id)arg1;
+- (void)profileDidBecomeReady:(id)arg1;
 - (_Bool)unitTest_persistMedicalIDData:(id)arg1;
 - (id)unitTest_medicalIDData;
 - (void)badgeHealthAppForEmergencyContactConsolidationWithCompletion:(CDUnknownBlockType)arg1;
-- (_Bool)_isDateSavedEarlierForMedicalID:(id)arg1 originalMedicalID:(id)arg2;
-- (_Bool)_migrateMedicalIDLocationIfNecessary:(id *)arg1;
-- (id)_medicalIDURLWithDirectoryPath:(id)arg1;
-- (id)_medicalIDURL;
-- (void)_setAllowedToMessageSOSContactsIfApplicableForMedicalID:(id)arg1;
-- (void)_updateShowMedicalIdOnWatch:(_Bool)arg1;
-- (id)_unarchiveMedicalIDDataWithRawData:(id)arg1 error:(id *)arg2;
 - (_Bool)obliterateMedicalIDDataWithReason:(id)arg1 error:(id *)arg2;
-- (void)_triggerSyncForSuccessfulMedicalIDUpdate;
-- (_Bool)_persistMedicalIDDataFileToDisk:(id)arg1 error:(id *)arg2;
-- (_Bool)_persistMedicalIDData:(id)arg1 originalData:(id)arg2 provenance:(id)arg3 error:(id *)arg4;
-- (id)_fetchMedicalIDDataFromDiskWithError:(id *)arg1;
 - (_Bool)deleteMedicalIDDataWithError:(id *)arg1;
 - (_Bool)updateMedicalIDWithLocalData:(id)arg1 error:(id *)arg2;
 - (_Bool)updateMedicalIDWithSyncedData:(id)arg1 provenance:(id)arg2 error:(id *)arg3;

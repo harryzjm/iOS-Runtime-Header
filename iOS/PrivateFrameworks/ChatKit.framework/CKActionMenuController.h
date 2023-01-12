@@ -11,15 +11,15 @@
 
 @interface CKActionMenuController : NSObject
 {
+    _Bool _shouldDismissOnTap;
     unsigned long long _defaultActionIndex;
     id <CKActionMenuControllerDelegate> _delegate;
-    NSArray *_passthroughViews;
     CKActionMenuView *_actionMenuView;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) CKActionMenuView *actionMenuView; // @synthesize actionMenuView=_actionMenuView;
-@property(copy, nonatomic) NSArray *passthroughViews; // @synthesize passthroughViews=_passthroughViews;
+@property(nonatomic) _Bool shouldDismissOnTap; // @synthesize shouldDismissOnTap=_shouldDismissOnTap;
 @property(nonatomic) __weak id <CKActionMenuControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) unsigned long long defaultActionIndex; // @synthesize defaultActionIndex=_defaultActionIndex;
 - (struct CGRect)convertActionMenuFrameToView:(id)arg1;

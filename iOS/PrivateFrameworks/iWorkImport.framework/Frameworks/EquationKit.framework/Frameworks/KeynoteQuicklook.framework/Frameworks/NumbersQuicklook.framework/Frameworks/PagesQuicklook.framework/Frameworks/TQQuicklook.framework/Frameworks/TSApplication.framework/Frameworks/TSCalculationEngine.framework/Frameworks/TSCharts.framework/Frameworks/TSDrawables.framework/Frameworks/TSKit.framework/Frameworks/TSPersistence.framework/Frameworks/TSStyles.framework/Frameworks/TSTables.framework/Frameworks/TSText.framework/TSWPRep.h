@@ -49,7 +49,6 @@
     NSArray *_searchReferences;
     CAShapeLayer *_floatingCaretLayer;
     TSUColor *_overrideCaretColor;
-    struct CGAffineTransform _transformToConvertNaturalToScaledRoot;
 }
 
 + (void)initialize;
@@ -59,13 +58,13 @@
 @property(nonatomic) _Bool dragAndDropCaretLayerIsForCaret; // @synthesize dragAndDropCaretLayerIsForCaret=_dragAndDropCaretLayerIsForCaret;
 @property(retain, nonatomic) CAShapeLayer *floatingCaretLayer; // @synthesize floatingCaretLayer=_floatingCaretLayer;
 @property(retain, nonatomic) NSArray *searchReferences; // @synthesize searchReferences=_searchReferences;
-@property(readonly, nonatomic) struct CGAffineTransform transformToConvertNaturalToScaledRoot; // @synthesize transformToConvertNaturalToScaledRoot=_transformToConvertNaturalToScaledRoot;
 @property(nonatomic) _Bool useKeyboardWhenEditing; // @synthesize useKeyboardWhenEditing=_useKeyboardWhenEditing;
 @property(nonatomic) struct _NSRange dragRange; // @synthesize dragRange=_dragRange;
 @property(nonatomic) _Bool suppressSelectionControls; // @synthesize suppressSelectionControls=_suppressSelectionControls;
 @property(nonatomic, getter=isSelectionHighlightSuppressed) _Bool suppressSelectionHighlight; // @synthesize suppressSelectionHighlight=_suppressSelectionHighlight;
 @property(nonatomic) _Bool findIsShowing; // @synthesize findIsShowing=_findIsShowing;
 @property(retain, nonatomic) TSWPSearchReference *primaryFindResultSearchReference; // @synthesize primaryFindResultSearchReference=_primaryFindResultSearchReference;
+@property(readonly, nonatomic) struct CGAffineTransform transformToConvertNaturalToScaledRoot;
 - (void)p_drawTextInLayer:(id)arg1 context:(struct CGContext *)arg2 limitSelection:(id)arg3 rubyGlyphRange:(struct _NSRange)arg4 renderMode:(unsigned long long)arg5 suppressInvisibles:(_Bool)arg6;
 - (void)p_teardown;
 @property(readonly, nonatomic) _Bool textIsVertical;

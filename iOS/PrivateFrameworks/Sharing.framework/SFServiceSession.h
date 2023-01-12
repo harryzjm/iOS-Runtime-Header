@@ -21,8 +21,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long sendLastTicks; // @synthesize sendLastTicks=_sendLastTicks;
 - (int)_pairVerifyCompleted:(int)arg1;
 - (void)pairVerify:(id)arg1 start:(_Bool)arg2;
+- (void)tryPIN:(id)arg1;
 - (int)_pairSetupCompleted:(int)arg1;
 - (void)pairSetup:(id)arg1 start:(_Bool)arg2;
+- (void)pairSetupWithFlags:(unsigned int)arg1;
 - (id)pairingDeriveKeyForIdentifier:(id)arg1 keyLength:(unsigned long long)arg2;
 - (_Bool)pairingContainsACL:(id)arg1;
 - (void)sessionReceivedFrameType:(unsigned char)arg1 data:(id)arg2;

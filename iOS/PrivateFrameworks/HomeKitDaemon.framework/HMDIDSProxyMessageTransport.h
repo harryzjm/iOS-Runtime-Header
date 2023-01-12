@@ -12,6 +12,7 @@
     HMDCompanionManager *_companionManager;
 }
 
++ (id)logCategory;
 + (_Bool)transportSupportsDevice:(id)arg1;
 + (long long)priorityForMessage:(id)arg1;
 + (unsigned long long)restriction;
@@ -22,7 +23,7 @@
 - (id)sendMessage:(id)arg1 fromHandle:(id)arg2 destination:(id)arg3 priority:(long long)arg4 timeout:(double)arg5 options:(unsigned long long)arg6 error:(id *)arg7;
 - (_Bool)isDeviceConnected:(id)arg1;
 - (_Bool)canSendMessage:(id)arg1;
-- (int)awdTransportType;
+- (int)transportType;
 - (id)watchDeviceForDevice:(id)arg1;
 - (id)deviceForHandle:(id)arg1;
 - (id)deviceForSenderContext:(id)arg1;

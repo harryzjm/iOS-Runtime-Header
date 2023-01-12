@@ -12,7 +12,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)_stringForAlarmProximity:(long long)arg1;
-+ (id)semanticIdentifierForAlarmIsDefault:(_Bool)arg1 absoluteDate:(id)arg2 relativeOffset:(id)arg3 locationSemanticIdentifier:(id)arg4 proximity:(long long)arg5;
++ (id)semanticIdentifierForAlarmIsDefault:(_Bool)arg1 absoluteDate:(id)arg2 relativeOffset:(id)arg3 emailAddress:(id)arg4 url:(id)arg5;
++ (id)semanticIdentifierForAlarm:(id)arg1;
 
 @end
 

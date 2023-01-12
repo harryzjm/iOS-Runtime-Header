@@ -7,7 +7,6 @@
 #import <Foundation/NSComparisonPredicate.h>
 
 @interface NSComparisonPredicate (SQLitePredicate)
-- (id)_checkTypeForValue:(id)arg1 inKeyPath:(id)arg2;
 - (id)hd_sqlPredicateForSelect;
 @end
 

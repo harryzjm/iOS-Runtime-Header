@@ -9,6 +9,7 @@
 @class NSNumber;
 
 @protocol AFLocationSnapshotMutating <NSObject>
+- (void)setAccessState:(long long)arg1;
 - (void)setPreciseLocationEnabled:(_Bool)arg1;
 - (void)setHorizontalAccuracy:(NSNumber *)arg1;
 - (void)setVerticalAccuracy:(NSNumber *)arg1;

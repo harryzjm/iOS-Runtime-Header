@@ -11,13 +11,13 @@
 __attribute__((visibility("hidden")))
 @interface SNDSPGraphBox : NSObject
 {
-    struct Box *_box;
+    void *_box;
     shared_ptr_f6ac7592 _graph;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) struct Box *box; // @synthesize box=_box;
+@property(readonly, nonatomic) void *box; // @synthesize box=_box;
 - (_Bool)setParameter:(float)arg1 forID:(unsigned int)arg2 scope:(unsigned int)arg3 element:(unsigned int)arg4 bufferOffset:(long long)arg5;
 - (_Bool)hasParameter:(unsigned int)arg1 scope:(unsigned int)arg2 element:(unsigned int)arg3;
 - (_Bool)getParameter:(float *)arg1 forID:(unsigned int)arg2 scope:(unsigned int)arg3 element:(unsigned int)arg4;
@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)startInjectingPort:(long long)arg1 toFile:(id)arg2 shouldLoop:(_Bool)arg3;
 - (_Bool)stopRecordingPort:(long long)arg1;
 - (_Bool)startRecordingPort:(long long)arg1 toFile:(id)arg2;
-- (id)initWithBox:(struct Box *)arg1 fromGraph:(shared_ptr_f6ac7592)arg2;
+- (id)initWithBox:(void *)arg1 fromGraph:(shared_ptr_f6ac7592)arg2;
 - (id)init;
 
 @end

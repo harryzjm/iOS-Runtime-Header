@@ -46,6 +46,7 @@
 - (void)noteRemoteThumbnailPresentForItems:(id)arg1;
 - (void)noteRemoteThumbnailMissingForItems:(id)arg1;
 - (_Bool)setLastHitDateOfAllCachedThumbnailsToDate:(id)arg1;
+- (_Bool)removeCachedThumbnailsFromUninstalledFileProvidersWithIdentifiers:(id)arg1;
 - (_Bool)removeCachedThumbnailsFromUninstalledFileProvidersWithRemainingFileProviderIdentifiers:(id)arg1;
 - (id)lastResetWithDate:(id *)arg1;
 - (id)lastCrapWithDate:(id *)arg1;
@@ -80,6 +81,7 @@
 - (void)checkpoint;
 - (unsigned long long)cleanupDeletedFiles;
 - (unsigned long long)cleanup;
+- (void)logCacheSizeBeforeCleanup;
 - (unsigned long long)freeDiskSpaceForNewThumbnails;
 - (unsigned long long)removeThumbnailsOlderThanDate:(id)arg1;
 - (unsigned long long)_deleteBlobArrayFromDatabase:(id)arg1;

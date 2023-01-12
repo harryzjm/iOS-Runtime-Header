@@ -61,10 +61,14 @@
 - (void)forceMMS;
 - (void)forceCancelComposition;
 - (void)disableCameraAttachments;
+- (void)setNavBarTitle:(id)arg1;
+- (void)setShouldIgnoreEmailsWhenSending:(_Bool)arg1;
 - (void)setShouldDisableEntryField:(_Bool)arg1;
 - (void)setCanEditRecipients:(_Bool)arg1;
 - (void)setPendingAddresses:(id)arg1;
+- (void)setText:(id)arg1 subject:(id)arg2 addresses:(id)arg3 shouldHideClearPluginButton:(_Bool)arg4;
 - (void)setText:(id)arg1 subject:(id)arg2 addresses:(id)arg3 chatGUID:(id)arg4 groupName:(id)arg5;
+- (void)displaySubscriptionSwitchIfAvailable:(_Bool)arg1;
 - (void)setText:(id)arg1 subject:(id)arg2 addresses:(id)arg3;
 - (_Bool)insertMessage:(id)arg1;
 - (_Bool)canInsertMessage;

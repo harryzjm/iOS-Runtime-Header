@@ -4,23 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class LPButtonStyle, NSString, UIButton;
+@class LPButtonStyle, LPCaptionButtonPresentationProperties, UIButton;
 
 __attribute__((visibility("hidden")))
 @interface LPCaptionBarButtonView
 {
-    NSString *_caption;
+    LPCaptionButtonPresentationProperties *_properties;
     LPButtonStyle *_style;
     UIButton *_button;
+    UIButton *_collapsedButton;
+    _Bool _collapsed;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic, getter=isCollapsed) _Bool collapsed; // @synthesize collapsed=_collapsed;
+- (id)_createCollapsedButton;
+- (id)_createButton;
 - (void)removeTarget:(id)arg1 action:(SEL)arg2;
 - (void)addTarget:(id)arg1 action:(SEL)arg2;
+- (struct CGSize)collapsedSizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutComponentView;
-- (id)initWithCaption:(id)arg1 style:(id)arg2;
-- (id)init;
+- (id)initWithHost:(id)arg1 properties:(id)arg2 style:(id)arg3;
+- (id)initWithHost:(id)arg1;
 
 @end
 

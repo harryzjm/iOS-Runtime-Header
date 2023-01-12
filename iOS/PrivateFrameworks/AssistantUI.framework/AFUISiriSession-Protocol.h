@@ -6,10 +6,18 @@
 
 #import <AssistantUI/NSObject-Protocol.h>
 
-@class AFMetrics, AFUserUtteranceSelectionResults, AceObject, NSDictionary, NSString, NSUUID, SABaseClientBoundCommand, SASRequestOptions;
+@class AFMetrics, AFSpeechSynthesisRecord, AFUserUtteranceSelectionResults, AceObject, NSDictionary, NSString, NSUUID, SABaseClientBoundCommand, SASRequestOptions;
 @protocol SAAceCommand;
 
 @protocol AFUISiriSession <NSObject>
+- (void)notifyStateManagerTransactionEnded;
+- (void)notifyStateManagerTransactionBegan;
+- (void)notifyStateManagerSpeakingEnded;
+- (void)notifyStateManagerSpeakingBegan;
+- (void)notifyStateManagerPresentationTransitionEnded;
+- (void)notifyStateManagerPresentationTransitionBegan;
+- (void)speechSynthesisDidUpdatePowerLevelTo:(float)arg1;
+- (void)speechSynthesisDidFinish:(AFSpeechSynthesisRecord *)arg1;
 - (void)audioRoutePickerWillDismiss;
 - (void)audioRoutePickerWillShow;
 - (void)recordMetricsContext:(NSString *)arg1 forDisambiguatedAppWIthBundleIdentifier:(NSString *)arg2;
@@ -20,8 +28,7 @@
 - (void)resultDidChangeForAceCommand:(AceObject<SAAceCommand> *)arg1 completion:(void (^)(AceObject<SAAceCommand> *))arg2;
 - (void)resultDidChangeForAceCommand:(AceObject<SAAceCommand> *)arg1;
 - (void)siriUIDidPresentDynamicSnippetWithInfo:(NSDictionary *)arg1;
-- (void)performAceCommand:(AceObject<SAAceCommand> *)arg1;
-- (void)performAceCommand:(AceObject<SAAceCommand> *)arg1 conflictHandler:(void (^)(void))arg2;
+- (void)performAceCommand:(AceObject<SAAceCommand> *)arg1 turnIdentifier:(NSUUID *)arg2;
 - (void)startCorrectedRequestWithText:(NSString *)arg1 correctionIdentifier:(id)arg2 userSelectionResults:(AFUserUtteranceSelectionResults *)arg3 turnIdentifier:(NSUUID *)arg4;
 - (void)cancelSpeechRequest;
 - (void)stopRecordingSpeech;
@@ -39,9 +46,10 @@
 - (void)clearContext;
 - (void)resumeInterruptedAudioPlaybackIfNeeded;
 - (void)forceAudioSessionInactive;
-- (void)forceAudioSessionActiveForReason:(long long)arg1;
+- (void)forceAudioSessionActiveWithCompletion:(void (^)(unsigned int, NSError *))arg1;
 - (void)forceAudioSessionActive;
 - (void)preheat;
+- (void)setAnnouncementRequestsPermittedByPresentationWhileActive:(_Bool)arg1;
 - (void)setLockState:(unsigned long long)arg1;
 - (void)setCarDNDActive:(_Bool)arg1;
 - (void)setDeviceInStarkMode:(_Bool)arg1;

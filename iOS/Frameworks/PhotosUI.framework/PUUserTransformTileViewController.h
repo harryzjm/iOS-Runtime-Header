@@ -15,6 +15,8 @@
         _Bool respondsToDidChangeModelTileTransform;
         _Bool respondsToDidChangeIsUserInteracting;
         _Bool respondsToShouldReceiveTouchAtLocationFromProvider;
+        _Bool respondsToSpotlightTextsToHighlight;
+        _Bool respondsToViewControllerPresentingImageTileView;
     } _delegateFlags;
     _Bool _userInteractionEnabled;
     id <PUUserTransformTileViewControllerDelegate> _delegate;

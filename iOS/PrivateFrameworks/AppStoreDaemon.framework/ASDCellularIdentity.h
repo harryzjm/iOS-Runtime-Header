@@ -16,6 +16,7 @@
 }
 
 + (id)_digestMD5:(id)arg1;
++ (id)nullIdentity;
 + (id)identityForSubscription:(id)arg1 usingClient:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 @property(readonly) NSString *simIdentity; // @synthesize simIdentity=_simIdentity;

@@ -6,7 +6,7 @@
 
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
 
-@class NSString, PXCPLActionManager, PXCPLUIStatus, PXObservable;
+@class NSDate, NSString, PXCPLActionManager, PXCPLUIStatus, PXObservable;
 @protocol PXCPLStatusProvider;
 
 @interface PXCPLUIStatusProvider <PXChangeObserver>
@@ -14,9 +14,11 @@
     PXCPLActionManager *_actionManager;
     PXObservable<PXCPLStatusProvider> *_statusProvider;
     PXCPLUIStatus *_status;
+    NSDate *_currentDateForTesting;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSDate *currentDateForTesting; // @synthesize currentDateForTesting=_currentDateForTesting;
 @property(readonly, nonatomic) PXCPLUIStatus *status; // @synthesize status=_status;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)_updateStatus;

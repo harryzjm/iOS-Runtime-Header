@@ -28,6 +28,8 @@
 @property(nonatomic) int addTasksIntentTargetTaskListMembersUnsupportedReason;
 @property(nonatomic) _Bool hasSaveHealthSampleIntentRecordDateUnsupportedReason;
 @property(nonatomic) int saveHealthSampleIntentRecordDateUnsupportedReason;
+@property(nonatomic) _Bool hasSendAnnouncementIntentRecipientsUnsupportedReason;
+@property(nonatomic) int sendAnnouncementIntentRecipientsUnsupportedReason;
 @property(nonatomic) _Bool hasSendMessageIntentRecipientUnsupportedReason;
 @property(nonatomic) int sendMessageIntentRecipientUnsupportedReason;
 @property(nonatomic) _Bool hasStopShareETAIntentRecipientUnsupportedReason;
@@ -56,6 +58,10 @@
 @property(nonatomic) int addMediaIntentMediaDestinationUnsupportedReason;
 @property(nonatomic) _Bool hasCreateTimerIntentLabelUnsupportedReason;
 @property(nonatomic) int createTimerIntentLabelUnsupportedReason;
+@property(nonatomic) _Bool hasReportIncidentIntentIncidentTypeUnsupportedReason;
+@property(nonatomic) int reportIncidentIntentIncidentTypeUnsupportedReason;
+@property(nonatomic) _Bool hasJoinCallIntentGroupConversationUnsupportedReason;
+@property(nonatomic) int joinCallIntentGroupConversationUnsupportedReason;
 @property(nonatomic) _Bool hasFindDeviceAndPlaySoundIntentDeviceUnsupportedReason;
 @property(nonatomic) int findDeviceAndPlaySoundIntentDeviceUnsupportedReason;
 @property(nonatomic) _Bool hasCustomUnsupportedReason;
@@ -76,6 +82,8 @@
 @property(nonatomic) int startCallIntentCallRecordToCallBackUnsupportedReason;
 @property(nonatomic) _Bool hasStartCallIntentCallCapabilityUnsupportedReason;
 @property(nonatomic) int startCallIntentCallCapabilityUnsupportedReason;
+@property(nonatomic) _Bool hasSendAnnouncementIntentAnnouncementUnsupportedReason;
+@property(nonatomic) int sendAnnouncementIntentAnnouncementUnsupportedReason;
 @property(nonatomic) _Bool hasSnoozeAlarmIntentAlarmsUnsupportedReason;
 @property(nonatomic) int snoozeAlarmIntentAlarmsUnsupportedReason;
 @property(nonatomic) _Bool hasSearchAlarmIntentAlarmsUnsupportedReason;
@@ -104,6 +112,8 @@
 - (NSString *)addTasksIntentTargetTaskListMembersUnsupportedReasonAsString:(int)arg1;
 - (int)StringAsSaveHealthSampleIntentRecordDateUnsupportedReason:(NSString *)arg1;
 - (NSString *)saveHealthSampleIntentRecordDateUnsupportedReasonAsString:(int)arg1;
+- (int)StringAsSendAnnouncementIntentRecipientsUnsupportedReason:(NSString *)arg1;
+- (NSString *)sendAnnouncementIntentRecipientsUnsupportedReasonAsString:(int)arg1;
 - (int)StringAsSendMessageIntentRecipientUnsupportedReason:(NSString *)arg1;
 - (NSString *)sendMessageIntentRecipientUnsupportedReasonAsString:(int)arg1;
 - (int)StringAsStopShareETAIntentRecipientUnsupportedReason:(NSString *)arg1;
@@ -132,6 +142,10 @@
 - (NSString *)addMediaIntentMediaDestinationUnsupportedReasonAsString:(int)arg1;
 - (int)StringAsCreateTimerIntentLabelUnsupportedReason:(NSString *)arg1;
 - (NSString *)createTimerIntentLabelUnsupportedReasonAsString:(int)arg1;
+- (int)StringAsReportIncidentIntentIncidentTypeUnsupportedReason:(NSString *)arg1;
+- (NSString *)reportIncidentIntentIncidentTypeUnsupportedReasonAsString:(int)arg1;
+- (int)StringAsJoinCallIntentGroupConversationUnsupportedReason:(NSString *)arg1;
+- (NSString *)joinCallIntentGroupConversationUnsupportedReasonAsString:(int)arg1;
 - (int)StringAsFindDeviceAndPlaySoundIntentDeviceUnsupportedReason:(NSString *)arg1;
 - (NSString *)findDeviceAndPlaySoundIntentDeviceUnsupportedReasonAsString:(int)arg1;
 - (int)StringAsSendPaymentIntentCurrencyAmountUnsupportedReason:(NSString *)arg1;
@@ -151,6 +165,8 @@
 - (NSString *)startCallIntentCallRecordToCallBackUnsupportedReasonAsString:(int)arg1;
 - (int)StringAsStartCallIntentCallCapabilityUnsupportedReason:(NSString *)arg1;
 - (NSString *)startCallIntentCallCapabilityUnsupportedReasonAsString:(int)arg1;
+- (int)StringAsSendAnnouncementIntentAnnouncementUnsupportedReason:(NSString *)arg1;
+- (NSString *)sendAnnouncementIntentAnnouncementUnsupportedReasonAsString:(int)arg1;
 - (int)StringAsSnoozeAlarmIntentAlarmsUnsupportedReason:(NSString *)arg1;
 - (NSString *)snoozeAlarmIntentAlarmsUnsupportedReasonAsString:(int)arg1;
 - (int)StringAsSearchAlarmIntentAlarmsUnsupportedReason:(NSString *)arg1;

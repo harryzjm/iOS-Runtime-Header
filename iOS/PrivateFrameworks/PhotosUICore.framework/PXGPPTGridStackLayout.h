@@ -25,6 +25,7 @@
 }
 
 - (void).cxx_destruct;
+- (long long)overallSelectionOrderAtSpriteIndex:(unsigned int)arg1 inLayout:(id)arg2;
 - (id)selectedSpriteIndexesInLayout:(id)arg1;
 - (unsigned long long)selectionDecorationAdditionsInLayout:(id)arg1;
 - (long long)selectionDecorationStyleInLayout:(id)arg1;
@@ -36,7 +37,7 @@
 - (struct CGSize)layout:(id)arg1 estimatedContentSizeForSublayoutAtIndex:(long long)arg2 referenceSize:(struct CGSize)arg3;
 - (void)_initializeBadgeInfos;
 - (void)_initializeSelectedItems;
-- (id)initWithSetting:(id)arg1;
+- (id)initWithSettings:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

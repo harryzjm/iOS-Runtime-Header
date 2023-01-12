@@ -18,10 +18,10 @@ __attribute__((visibility("hidden")))
     unsigned long long gradMapH;
     MISSING_TYPE **gradMapBmp;
     unsigned long long gradMapRb;
-    struct vector<CI::Perspective::Line, std::__1::allocator<CI::Perspective::Line>> vLines;
-    struct vector<CI::Perspective::Line, std::__1::allocator<CI::Perspective::Line>> hLines;
-    struct vector<CI::Perspective::Line, std::__1::allocator<CI::Perspective::Line>> vLineCluster;
-    struct vector<CI::Perspective::Line, std::__1::allocator<CI::Perspective::Line>> hLineCluster;
+    struct vector<CI::Perspective::Line, std::allocator<CI::Perspective::Line>> vLines;
+    struct vector<CI::Perspective::Line, std::allocator<CI::Perspective::Line>> hLines;
+    struct vector<CI::Perspective::Line, std::allocator<CI::Perspective::Line>> vLineCluster;
+    struct vector<CI::Perspective::Line, std::allocator<CI::Perspective::Line>> hLineCluster;
     _Bool vGuidesValid;
     _Bool hGuidesValid;
     float vGuidesAOE;

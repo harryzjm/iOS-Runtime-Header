@@ -16,7 +16,6 @@
     NSArray *_stringsAndVariables;
 }
 
-+ (_Bool)dictionaryIsSerializedVariableString:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *stringsAndVariables; // @synthesize stringsAndVariables=_stringsAndVariables;
 @property(readonly, copy) NSString *description;
@@ -37,6 +36,7 @@
 - (id)initWithVariable:(id)arg1;
 - (void)removeVariableDelegate:(id)arg1;
 - (void)addVariableDelegate:(id)arg1;
+@property(readonly, nonatomic, getter=isEmpty) _Bool empty;
 - (_Bool)representsSingleContentVariable;
 - (id)variablesOfType:(id)arg1;
 

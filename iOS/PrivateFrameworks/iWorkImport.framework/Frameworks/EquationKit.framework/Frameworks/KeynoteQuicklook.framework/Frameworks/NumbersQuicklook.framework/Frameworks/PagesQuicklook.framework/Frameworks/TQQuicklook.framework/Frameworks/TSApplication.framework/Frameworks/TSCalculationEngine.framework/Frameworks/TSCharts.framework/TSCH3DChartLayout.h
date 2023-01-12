@@ -21,7 +21,7 @@
 - (void)p_resetSeriesStorage;
 - (void)p_resetSceneProperties;
 @property(readonly, nonatomic) TSCH3DScene *scene;
-@property(readonly, nonatomic) const struct ChartProjectedBoundsSpaces *projectedBounds;
+@property(readonly, nonatomic) const void *projectedBounds;
 - (id)infoChartScale;
 - (id)containingViewportVector;
 @property(readonly, nonatomic) _Bool hasProjectedBounds;
@@ -30,8 +30,8 @@
 - (struct CGRect)boundsForResize;
 - (void)p_ensureValidForInwardLayout;
 - (id)p_layoutTree;
-- (void)setLayoutSettings:(CDStruct_b1c75024)arg1;
-- (_Bool)p_shouldClearSceneForLayoutSettings:(CDStruct_b1c75024)arg1;
+- (void)setLayoutSettings:(CDStruct_c48db077)arg1;
+- (_Bool)p_shouldClearSceneForLayoutSettings:(CDStruct_c48db077)arg1;
 - (void)dealloc;
 - (id)initWithChartInfo:(id)arg1;
 

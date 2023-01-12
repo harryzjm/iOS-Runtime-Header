@@ -12,15 +12,14 @@
 
 @interface UIImageAsset : NSObject <NSSecureCoding>
 {
-    _UIAssetManager *_assetManager;
+    struct os_unfair_lock_s _lock;
     NSBundle *_containingBundle;
-    _Bool _cacheContents;
     UITraitCollection *_defaultTraitCollection;
     struct {
         unsigned int hasRegisteredImages:1;
         unsigned int supportsBlockGeneration:1;
-        unsigned int disconnectedFromAssetManager:1;
     } _assetFlags;
+    _UIAssetManager *_assetManager;
     CUINamedLayerStack *_layerStack;
     id _unpinObserver;
     CDUnknownBlockType _rebuildStackImage;
@@ -35,27 +34,33 @@
 @property(copy, nonatomic) CDUnknownBlockType creationBlock; // @synthesize creationBlock=_creationBlock;
 @property(copy, nonatomic, setter=_setRebuildStackImage:) CDUnknownBlockType _rebuildStackImage; // @synthesize _rebuildStackImage;
 @property(nonatomic, setter=_setUnpinObserver:) __weak id _unpinObserver; // @synthesize _unpinObserver;
-@property(readonly, nonatomic) __weak _UIAssetManager *_assetManager; // @synthesize _assetManager;
+@property(readonly, nonatomic) UITraitCollection *_defaultTraitCollection; // @synthesize _defaultTraitCollection;
+@property __weak _UIAssetManager *_assetManager; // @synthesize _assetManager;
 - (id)_cachedRenditionWithSize:(struct CGSize)arg1 tintColor:(id)arg2 traitCollection:(id)arg3 bold:(_Bool)arg4 letterpress:(_Bool)arg5 drawMode:(unsigned int)arg6;
 - (void)_cacheRendition:(id)arg1 forSize:(struct CGSize)arg2 tintColor:(id)arg3 traitCollection:(id)arg4 bold:(_Bool)arg5 letterpress:(_Bool)arg6 drawMode:(unsigned int)arg7;
 - (id)_renditionCache:(_Bool)arg1;
-- (id)_registeredAppearanceNames;
-- (id)_lookUpRegisteredObjectForTraitCollection:(id)arg1 withAccessorWithAppearanceName:(CDUnknownBlockType)arg2;
+- (id)_withLock_registeredAppearanceNames;
+- (id)_withLock_lookUpRegisteredObjectForTraitCollection:(id)arg1 withAccessorWithAppearanceName:(CDUnknownBlockType)arg2;
 - (void)_disconnectFromAssetManager;
 - (_Bool)_containsImagesInPath:(id)arg1;
 - (void)_clearResolvedImageResources;
-@property(readonly, nonatomic) UITraitCollection *_defaultTraitCollection;
-- (id)_mutableCatalog;
-- (id)_updateAssetFromBlockGenerationWithConfiguration:(id)arg1 resolvedCatalogImage:(id)arg2;
+- (id)_unsafe_mutableCatalog;
+- (id)_withLock_mutableCatalog;
+- (id)_withLock_updateAssetFromBlockGenerationWithConfiguration:(id)arg1 resolvedCatalogImage:(id)arg2;
+- (void)_unsafe_registerImage:(id)arg1 withConfiguration:(id)arg2;
+- (void)_withLock_registerImage:(id)arg1 withConfiguration:(id)arg2;
 - (void)_registerImage:(id)arg1 withConfiguration:(id)arg2;
-- (void)_registerImage:(id)arg1 withTraitCollection:(id)arg2;
 - (id)_nameForStoringRuntimeRegisteredImagesInMutableCatalog;
 @property(retain, nonatomic, setter=_setLayerStack:) CUINamedLayerStack *_layerStack; // @synthesize _layerStack;
 - (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
 - (void)unregisterImageWithTraitCollection:(id)arg1;
 - (void)unregisterImageWithConfiguration:(id)arg1;
+- (void)_withLock_unregisterImageWithDescription:(id)arg1;
+- (void)_unregisterImageWithDescription:(id)arg1;
 - (void)registerImage:(id)arg1 withConfiguration:(id)arg2;
 - (void)registerImage:(id)arg1 withTraitCollection:(id)arg2;
+- (id)_withLock_imageWithConfiguration:(id)arg1;
 - (id)imageWithConfiguration:(id)arg1;
 - (id)imageWithTraitCollection:(id)arg1;
 - (id)_symbolConfiguration;

@@ -24,6 +24,7 @@
 + (void)reportScores:(id)arg1 whileScreeningChallenges:(_Bool)arg2 withEligibleChallenges:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 + (void)reportScores:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) GKGame *game; // @synthesize game=_game;
 @property(nonatomic) _Bool shouldSetDefaultLeaderboard; // @synthesize shouldSetDefaultLeaderboard=_shouldSetDefaultLeaderboard;
 @property(retain) GKScoreInternal *internal; // @synthesize internal=_internal;
@@ -49,7 +50,6 @@
 - (id)initWithInternalRepresentation:(id)arg1 playerID:(id)arg2;
 - (id)initWithInternalRepresentation:(id)arg1 playerInternal:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 
 // Remaining properties
 @property(copy, nonatomic) NSString *category; // @dynamic category;

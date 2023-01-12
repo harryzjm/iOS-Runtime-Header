@@ -4,8 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
-
 #import <AppPredictionUIWidget/APUIAppIconGridViewDelegate-Protocol.h>
 #import <AppPredictionUIWidget/ATXHomeScreenSuggestionClientObserver-Protocol.h>
 #import <AppPredictionUIWidget/LSApplicationWorkspaceObserverProtocol-Protocol.h>
@@ -14,40 +12,33 @@
 #import <AppPredictionUIWidget/SBIconLocationPresenting-Protocol.h>
 #import <AppPredictionUIWidget/SBIconViewQuerying-Protocol.h>
 
-@class APUIAppIconGridView, ATXHomeScreenSuggestionClient, ATXHomeScreenWidgetIdentifiable, ATXSuggestionLayout, NSArray, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSSet, NSString, _UILegibilitySettings;
+@class APUIAppIconGridView, NSArray, NSMutableDictionary, NSMutableSet, NSSet, NSString, _UILegibilitySettings;
 @protocol APUIAppPredictionViewControllerDelegate;
 
-@interface APUIAppPredictionViewController : UIViewController <ATXHomeScreenSuggestionClientObserver, APUIAppIconGridViewDelegate, SBIconViewQuerying, SBIconLocationPresenting, SBHWidgetContextMenuControlling, SBHLegibility, LSApplicationWorkspaceObserverProtocol>
+@interface APUIAppPredictionViewController <ATXHomeScreenSuggestionClientObserver, APUIAppIconGridViewDelegate, SBIconViewQuerying, SBIconLocationPresenting, SBHWidgetContextMenuControlling, SBHLegibility, LSApplicationWorkspaceObserverProtocol>
 {
-    ATXHomeScreenWidgetIdentifiable *_widgetIdentifiable;
     APUIAppIconGridView *_gridView;
     NSMutableDictionary *_bundleIdSuggestionMap;
     NSMutableSet *_installingBundleIds;
-    ATXSuggestionLayout *_layout;
     NSString *_selectedBundleId;
     NSString *_selectedAppLocalizedName;
-    ATXHomeScreenSuggestionClient *_suggestionClient;
-    NSMutableOrderedSet *_suggestionIds;
-    NSString *_identifier;
+    NSMutableSet *_usedFallbacks;
     _Bool _showingContextMenu;
     _Bool _occluded;
-    _Bool _viewVisible;
-    _Bool _stackVisible;
-    _Bool _effectiveViewVisibility;
+    _Bool _userInteracting;
+    _Bool _showingAlert;
     unsigned long long _mode;
     _UILegibilitySettings *_legibilitySettings;
     id <APUIAppPredictionViewControllerDelegate> _delegate;
     struct UIEdgeInsets _parentLayoutInsets;
 }
 
-+ (id)imageForIconSize:(struct CGSize)arg1 scale:(double)arg2;
 + (id)_bundleIdentifierSetFromApplicationProxies:(id)arg1;
-+ (id)previewIdentifierWithIdentifier:(id)arg1 layoutSize:(unsigned long long)arg2;
++ (id)_bundleIdentifierSetFromApplicationRecords:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) _Bool effectiveViewVisibility; // @synthesize effectiveViewVisibility=_effectiveViewVisibility;
-@property(nonatomic) _Bool stackVisible; // @synthesize stackVisible=_stackVisible;
-@property(nonatomic, getter=isViewVisible) _Bool viewVisible; // @synthesize viewVisible=_viewVisible;
+@property(nonatomic, getter=isShowingAlert) _Bool showingAlert; // @synthesize showingAlert=_showingAlert;
 @property(nonatomic) __weak id <APUIAppPredictionViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic, getter=isUserInteracting) _Bool userInteracting; // @synthesize userInteracting=_userInteracting;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property(nonatomic, getter=isOccluded) _Bool occluded; // @synthesize occluded=_occluded;
 @property(nonatomic) unsigned long long mode; // @synthesize mode=_mode;
@@ -59,8 +50,10 @@
 - (void)applicationsDidInstall:(id)arg1;
 - (void)applicationInstallsDidStart:(id)arg1;
 - (void)didSelectApplicationShortcutItem:(id)arg1;
+- (_Bool)_canDismissSelectedSuggestion;
 @property(readonly, copy, nonatomic) NSArray *applicationShortcutItems;
 - (void)willShowContextMenuAtLocation:(struct CGPoint)arg1;
+- (void)_updateUserInteractingState;
 @property(readonly, copy, nonatomic) NSSet *presentedIconLocations;
 - (_Bool)isPresentingIconLocation:(id)arg1;
 - (void)enumerateDisplayedIconViewsUsingBlock:(CDUnknownBlockType)arg1;
@@ -77,21 +70,15 @@
 - (id)appIconGridView:(id)arg1 iconForApplicationWithBundleIdentifier:(id)arg2;
 - (_Bool)appIconGridView:(id)arg1 shouldDisplayBadgeWithBundleIdentifier:(id)arg2;
 - (_Bool)appIconGridView:(id)arg1 launchAppFromIcon:(id)arg2;
-- (void)logChangeWithNewSuggestionIds:(id)arg1 previousSuggestionIds:(id)arg2 suggestionClient:(id)arg3;
 - (void)_loadAppsInGridView:(id)arg1;
 - (id)_fallbackBundleIds;
-- (void)suggestionClientDidRefreshSuggestionsForSuggestionsWidget:(id)arg1;
-- (void)suggestionClientDidRefreshSuggestions:(id)arg1;
+- (void)suggestionClientDidRefreshProactiveWidgetLayouts:(id)arg1;
 @property(nonatomic) unsigned long long layoutSize;
-- (void)viewDidDisappear:(_Bool)arg1;
-- (void)viewDidAppear:(_Bool)arg1;
-- (void)_updateViewVisibility;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)dealloc;
 - (_Bool)_canShowWhileLocked;
-- (void)_topWidgetDidDisappear:(id)arg1;
-- (void)_topWidgetDidAppear:(id)arg1;
+- (_Bool)matchesWidgetUniqueID:(id)arg1 stackID:(id)arg2;
 - (id)initWithIdentifier:(id)arg1 layoutSize:(unsigned long long)arg2 mode:(unsigned long long)arg3;
 - (id)initWithIdentifier:(id)arg1 layoutSize:(unsigned long long)arg2;
 

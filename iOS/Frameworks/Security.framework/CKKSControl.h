@@ -22,6 +22,12 @@
 @property(retain) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property(retain) NSObject<OS_xpc_object> *endpoint; // @synthesize endpoint=_endpoint;
 @property _Bool synchronous; // @synthesize synchronous=_synchronous;
+- (void)toggleHavoc:(CDUnknownBlockType)arg1;
+- (void)deleteSEView:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)modifyTLKSharesForSEView:(id)arg1 adding:(id)arg2 deleting:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)fetchSEViewKeyHierarchy:(id)arg1 forceFetch:(_Bool)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)fetchSEViewKeyHierarchy:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)proposeTLKForSEView:(id)arg1 proposedTLK:(id)arg2 wrappedOldTLK:(id)arg3 tlkShares:(id)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)rpcKnownBadState:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)rpcTLKMissing:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)rpcGetCKDeviceIDWithReply:(CDUnknownBlockType)arg1;
@@ -29,8 +35,11 @@
 - (void)rpcCKMetric:(id)arg1 attributes:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)rpcPushOutgoingChanges:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)rpcFetchAndProcessClassAChanges:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)rpcFetchAndProcessChangesIfNoRecentFetch:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)rpcFetchAndProcessChanges:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)rpcFetchAndProcessChanges:(id)arg1 classA:(_Bool)arg2 onlyIfNoRecentFetch:(_Bool)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)rpcResync:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)rpcResyncLocal:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)rpcResetCloudKit:(id)arg1 reason:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)rpcResetLocal:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)rpcFastStatus:(id)arg1 reply:(CDUnknownBlockType)arg2;

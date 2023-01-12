@@ -8,7 +8,6 @@
 
 @class BRCAccountSession, NSArray, NSMutableDictionary;
 
-__attribute__((visibility("hidden")))
 @interface BRCProgress : NSProgress
 {
     NSMutableDictionary *_progressByAliasContainerID;

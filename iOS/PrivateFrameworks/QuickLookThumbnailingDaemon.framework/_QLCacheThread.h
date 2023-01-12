@@ -8,7 +8,7 @@
 
 #import <QuickLookThumbnailingDaemon/QLDiskCacheDelegate-Protocol.h>
 
-@class NSLock, NSOperationQueue, NSString, QLCacheCleanUpDatabaseThread, QLDiskCache, QLDiskCacheQueryOperation, QLMemoryCache, QLServerThread;
+@class NSLock, NSOperationQueue, NSString, NSURL, QLCacheCleanUpDatabaseThread, QLDiskCache, QLDiskCacheQueryOperation, QLMemoryCache, QLServerThread;
 @protocol OS_dispatch_queue, OS_dispatch_source, OS_os_transaction;
 
 @interface _QLCacheThread : NSObject <QLDiskCacheDelegate>
@@ -35,6 +35,7 @@
     NSObject<OS_dispatch_source> *_drainTimer;
     NSObject<OS_os_transaction> *_writeTransaction;
     QLServerThread *_serverThread;
+    NSURL *_diskCacheURL;
 }
 
 + (long long)defaultCacheSize;
@@ -48,6 +49,7 @@
 @property(retain) NSLock *modeLock; // @synthesize modeLock=_modeLock;
 @property(retain) NSObject<OS_dispatch_queue> *lowDiskSpaceSourceQueue; // @synthesize lowDiskSpaceSourceQueue=_lowDiskSpaceSourceQueue;
 @property(retain) NSObject<OS_dispatch_source> *lowDiskSpaceSource; // @synthesize lowDiskSpaceSource=_lowDiskSpaceSource;
+@property(retain) NSURL *diskCacheURL; // @synthesize diskCacheURL=_diskCacheURL;
 @property __weak QLServerThread *serverThread; // @synthesize serverThread=_serverThread;
 @property unsigned long long missedCount; // @synthesize missedCount=_missedCount;
 @property unsigned long long hitCount; // @synthesize hitCount=_hitCount;
@@ -59,7 +61,8 @@
 - (void)noteRemoteThumbnailPresentForItems:(id)arg1;
 - (void)noteRemoteThumbnailMissingForItems:(id)arg1;
 - (_Bool)setLastHitDateOfAllCachedThumbnailsToDate:(id)arg1;
-- (_Bool)removeCachedThumbnailsFromUninstalledFileProvidersWithRemainingFileProviderIdentifiers:(id)arg1;
+- (_Bool)locked_removeCachedThumbnailsFromUninstalledFileProvidersWithIdentifiers:(id)arg1;
+- (_Bool)locked_removeCachedThumbnailsFromUninstalledFileProvidersWithRemainingFileProviderIdentifiers:(id)arg1;
 - (id)allThumbnailsForFileIdentifier:(id)arg1;
 - (id)allThumbnailsForFPItemID:(id)arg1;
 - (id)allThumbnailsForIno:(unsigned long long)arg1 fsid:(struct fsid)arg2;
@@ -100,7 +103,7 @@
 - (void)_updateLowDisk;
 - (unsigned long long)hitToSaveCount;
 - (unsigned long long)thumbnailInMemoryToSaveCount;
-- (_Bool)addThumbnailIntoCache:(id)arg1 width:(unsigned long long)arg2 height:(unsigned long long)arg3 bitsPerComponent:(unsigned long long)arg4 bitsPerPixel:(unsigned long long)arg5 bytesPerRow:(unsigned long long)arg6 bitmapInfo:(unsigned int)arg7 bitmapData:(id)arg8 metadata:(id)arg9 flavor:(int)arg10 contentRect:(struct CGRect)arg11 badgeType:(unsigned long long)arg12 externalGeneratorDataHash:(unsigned long long)arg13;
+- (_Bool)addThumbnailIntoCache:(id)arg1 bitmapFormat:(id)arg2 bitmapData:(id)arg3 metadata:(id)arg4 flavor:(int)arg5 contentRect:(struct CGRect)arg6 badgeType:(unsigned long long)arg7 externalGeneratorDataHash:(unsigned long long)arg8;
 - (_Bool)addNoThumbnailIntoCache:(id)arg1;
 - (_Bool)addThumbnailRequest:(id)arg1;
 - (void)enqueueWriting:(CDUnknownBlockType)arg1;

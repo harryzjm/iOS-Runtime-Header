@@ -8,14 +8,24 @@
 
 @class MISSING_TYPE;
 
+__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI226MagazineGridViewController : TUViewController
 {
+    MISSING_TYPE *viewControllerConfig;
     MISSING_TYPE *styler;
     MISSING_TYPE *eventHandler;
     MISSING_TYPE *blueprintViewController;
     MISSING_TYPE *offlineAlertControllerFactory;
-    MISSING_TYPE *alertPresenter;
     MISSING_TYPE *toolbarManager;
+    MISSING_TYPE *$__lazy_storage_$_selectAllBarButtonItem;
+    MISSING_TYPE *$__lazy_storage_$_doneBarButtonItem;
+    MISSING_TYPE *$__lazy_storage_$_downloadBarButtonItem;
+    MISSING_TYPE *$__lazy_storage_$_removeIssuesAndDownloadsBarButtonItem;
+    MISSING_TYPE *$__lazy_storage_$_removeDownloadsBarButtonItem;
+    MISSING_TYPE *$__lazy_storage_$_selectionCountBarButtonItem;
+    MISSING_TYPE *$__lazy_storage_$_selectionCountLabel;
+    MISSING_TYPE *editSelection;
+    MISSING_TYPE *commandCenterWithTracker;
 }
 
 - (void).cxx_destruct;

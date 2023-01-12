@@ -8,7 +8,7 @@
 
 #import <EventKitUI/EKMutableDayOccurrenceState-Protocol.h>
 
-@class EKEvent, NSString, UIColor, UIFont, UIImage, UITraitCollection;
+@class EKEvent, NSAttributedString, NSString, UIColor, UIFont, UIImage, UITraitCollection;
 
 @interface EKDayOccurrenceState : NSObject <EKMutableDayOccurrenceState>
 {
@@ -23,6 +23,7 @@
     UIColor *_displayColor;
     UITraitCollection *_traitCollection;
     long long _birthdayCount;
+    NSString *_participants;
     double _travelTime;
     long long _colorBackgroundStyle;
     double _travelTimeHeight;
@@ -47,6 +48,7 @@
 @property(nonatomic) struct CGRect backgroundRect; // @synthesize backgroundRect=_backgroundRect;
 @property(nonatomic) long long colorBackgroundStyle; // @synthesize colorBackgroundStyle=_colorBackgroundStyle;
 @property(nonatomic) double travelTime; // @synthesize travelTime=_travelTime;
+@property(readonly, nonatomic) NSString *participants; // @synthesize participants=_participants;
 @property(nonatomic) long long birthdayCount; // @synthesize birthdayCount=_birthdayCount;
 @property(nonatomic) _Bool isVibrant; // @synthesize isVibrant=_isVibrant;
 @property(nonatomic) _Bool isDimmed; // @synthesize isDimmed=_isDimmed;
@@ -74,13 +76,14 @@
 - (double)_verticalContentInset;
 @property(readonly, nonatomic) UIColor *backgroundColor;
 @property(readonly, nonatomic) UIColor *strikethroughColor;
+@property(readonly, nonatomic) UIColor *participantsTextColor;
 @property(readonly, nonatomic) UIColor *statusTextColor;
 @property(readonly, nonatomic) UIColor *locationTextColor;
 @property(readonly, nonatomic) UIColor *timeTextColor;
 @property(readonly, nonatomic) UIColor *titleTextColor;
 @property(readonly, nonatomic) NSString *status;
 @property(readonly, nonatomic) NSString *time;
-@property(readonly, nonatomic) NSString *location;
+@property(readonly, nonatomic) NSAttributedString *location;
 @property(readonly, nonatomic) NSString *title;
 @property(readonly, nonatomic) double colorBarThickness;
 @property(readonly, nonatomic) _Bool hasNewTimeProposed;
@@ -96,6 +99,8 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(nonatomic) _Bool includesDropoff;
+@property(nonatomic) _Bool includesPickup;
 @property(readonly) Class superclass;
 
 @end

@@ -18,24 +18,24 @@
     _Bool _producedAssetMetadataChanges;
     _Bool _isGraphUpdateJob;
     _Bool _ignoreFurtherResults;
-    _Bool _treatMissingResultsAsFailures;
     _Bool _isReactionJob;
+    _Bool _treatMissingResultsAsFailures;
     short _workerType;
     unsigned long long _scenario;
-    PHPhotoLibrary *_photoLibrary;
-    unsigned long long _countOfFailedStarts;
-    id <PHAWorkerJobDelegate> _delegate;
     double _lastReportTimeAsInterval;
+    PHPhotoLibrary *_photoLibrary;
+    id <PHAWorkerJobDelegate> _delegate;
+    unsigned long long _countOfFailedStarts;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic, setter=setIsReactionJob:) _Bool isReactionJob; // @synthesize isReactionJob=_isReactionJob;
 @property(nonatomic) _Bool treatMissingResultsAsFailures; // @synthesize treatMissingResultsAsFailures=_treatMissingResultsAsFailures;
-@property double lastReportTimeAsInterval; // @synthesize lastReportTimeAsInterval=_lastReportTimeAsInterval;
-@property(nonatomic) __weak id <PHAWorkerJobDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic, setter=setIsReactionJob:) _Bool isReactionJob; // @synthesize isReactionJob=_isReactionJob;
 @property(nonatomic) unsigned long long countOfFailedStarts; // @synthesize countOfFailedStarts=_countOfFailedStarts;
-@property(retain, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property(nonatomic) _Bool ignoreFurtherResults; // @synthesize ignoreFurtherResults=_ignoreFurtherResults;
+@property(nonatomic) __weak id <PHAWorkerJobDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
+@property double lastReportTimeAsInterval; // @synthesize lastReportTimeAsInterval=_lastReportTimeAsInterval;
 @property _Bool isGraphUpdateJob; // @synthesize isGraphUpdateJob=_isGraphUpdateJob;
 @property _Bool producedAssetMetadataChanges; // @synthesize producedAssetMetadataChanges=_producedAssetMetadataChanges;
 @property(nonatomic) _Bool disableReactionCheck; // @synthesize disableReactionCheck=_disableReactionCheck;

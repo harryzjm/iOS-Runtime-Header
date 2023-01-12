@@ -18,17 +18,9 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSString *iv; // @synthesize iv=_iv;
-@property(readonly, nonatomic) NSString *keyFormatVersions; // @synthesize keyFormatVersions=_keyFormatVersions;
-@property(readonly, nonatomic) NSString *keyFormat; // @synthesize keyFormat=_keyFormat;
-@property(readonly, nonatomic) NSURL *url; // @synthesize url=_url;
-@property(readonly, nonatomic) long long method; // @synthesize method=_method;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (_Bool)isEqualToHLSKey:(id)arg1;
 - (id)description;
-- (_Bool)isFormatSupported;
-- (void)setPropertiesFromAttributeList:(id)arg1;
 
 @end
 

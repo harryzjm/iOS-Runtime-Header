@@ -34,6 +34,7 @@
 - (id)associatedAccessories;
 - (_Bool)isAssociatedWithAccessory:(id)arg1;
 - (unsigned long long)entitlementsForNotification;
+- (_Bool)isUnsecuringAction;
 - (_Bool)requiresDeviceUnlock;
 - (_Bool)isActionForCharacteristic:(id)arg1;
 - (_Bool)isSecureAction;

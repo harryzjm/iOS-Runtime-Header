@@ -29,7 +29,7 @@
 @property(readonly, nonatomic) CKTextKitShadower *shadower; // @synthesize shadower=_shadower;
 @property(readonly, nonatomic) id <CKTextKitTruncating> truncater; // @synthesize truncater=_truncater;
 @property(readonly, nonatomic) CKTextKitContext *context; // @synthesize context=_context;
-- (vector_b5e32e34)visibleRanges;
+- (vector_d2213b4e)visibleRanges;
 - (unsigned long long)lineCount;
 - (void)drawInContext:(struct CGContext *)arg1 bounds:(struct CGRect)arg2;
 - (struct CGSize)size;

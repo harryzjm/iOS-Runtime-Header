@@ -15,8 +15,8 @@
     unsigned long long mSheetIndex;
     unsigned long long mPageIndex;
     NSMapTable *mPageCountCache;
-    vector_06e666a8 mSheetPageCountArray;
-    vector_06e666a8 mSheetPageStartArray;
+    vector_2056c7c2 mSheetPageCountArray;
+    vector_2056c7c2 mSheetPageStartArray;
     TNPageController *mPageController;
     TNPdfHyperlinkController *mHyperlinkController;
     NSMutableArray *mCanvasBasedSheets;
@@ -77,8 +77,8 @@
 - (void)dealloc;
 - (id)initWithDocumentRoot:(id)arg1;
 - (id)pageController;
-- (vector_06e666a8)p_pageStartArray;
-- (vector_06e666a8)p_pageCountArray;
+- (vector_2056c7c2)p_pageStartArray;
+- (vector_2056c7c2)p_pageCountArray;
 - (double)progressForCurrentPage;
 - (_Bool)drawCurrentPageInContext:(struct CGContext *)arg1 viewScale:(double)arg2 unscaledClipRect:(struct CGRect)arg3 createPage:(_Bool)arg4;
 - (void)processHyperlinksForCanvas:(id)arg1 withContext:(struct CGContext *)arg2 andImager:(id)arg3 isFitToSheet:(_Bool)arg4;

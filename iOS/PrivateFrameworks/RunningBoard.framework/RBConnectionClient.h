@@ -11,7 +11,7 @@
 #import <RunningBoard/RBStateCapturing-Protocol.h>
 
 @class NSMutableSet, NSString, RBClientInheritanceManager, RBConnectionListener, RBProcess, RBProcessMonitorObserver, RBSAssertionIdentifier, RBSProcessHandle, RBSProcessIdentifier, RBSProcessIdentity;
-@protocol OS_xpc_object, RBAssertionManaging, RBEntitlementManaging, RBEntitlementPossessing, RBProcessManaging, RBProcessMonitoring, RBStateCaptureManaging;
+@protocol OS_xpc_object, RBAssertionManaging, RBDaemonContextProviding, RBEntitlementManaging, RBEntitlementPossessing, RBProcessManaging, RBProcessMonitoring, RBStateCaptureManaging;
 
 __attribute__((visibility("hidden")))
 @interface RBConnectionClient : NSObject <RBClientInheritanceManagerDelegate, RBEntitlementPossessing, RBStateCapturing>
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     id <RBProcessManaging> _processManager;
     id <RBProcessMonitoring> _processMonitor;
     id <RBStateCaptureManaging> _stateCaptureManager;
+    id <RBDaemonContextProviding> _daemonContext;
     RBConnectionListener *_listener;
     RBProcess *_containingProcess;
     _Bool _ready;

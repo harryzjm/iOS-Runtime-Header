@@ -20,6 +20,8 @@
     double _lock_storedDuration;
     double _lock_delay;
     double _lock_frameInterval;
+    struct CAFrameRateRange _lock_frameRange;
+    unsigned int _lock_highFrameRateReason;
     CAMediaTimingFunction *_lock_timingFunction;
     double _lock_mass;
     double _lock_stiffness;
@@ -43,6 +45,8 @@
 - (_Bool)isSpringAnimation;
 - (void)applyToCAAnimation:(id)arg1;
 @property(readonly, nonatomic) float speed;
+@property(readonly, nonatomic) unsigned int highFrameRateReason;
+@property(readonly, nonatomic) struct CAFrameRateRange preferredFrameRateRange;
 @property(readonly, nonatomic) double frameInterval;
 @property(readonly, nonatomic) CAMediaTimingFunction *timingFunction;
 @property(readonly, nonatomic) double delay;

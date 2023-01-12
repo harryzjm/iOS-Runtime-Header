@@ -8,30 +8,37 @@
 
 #import <VideoSubscriberAccount/VSRemoteNotifierDelegate-Protocol.h>
 
-@class MCProfileConnection, NSOperationQueue, NSString, VSRemoteNotifier;
+@class NSOperationQueue, NSString, VSRemoteNotifier;
 @protocol VSDeviceDelegate;
 
 @interface VSDevice : NSObject <VSRemoteNotifierDelegate>
 {
     id <VSDeviceDelegate> _delegate;
+    NSString *_productVersionString;
     CDUnknownFunctionPointerType _copyAnswer;
     NSOperationQueue *_privateQueue;
     VSRemoteNotifier *_setTopBoxStateRemoteNotifier;
-    MCProfileConnection *_profileConnection;
 }
 
++ (id)_productVersionWithCopyAnswer:(CDUnknownFunctionPointerType)arg1;
 + (unsigned long long)_deviceTypeWithCopyAnswer:(CDUnknownFunctionPointerType)arg1;
 + (_Bool)_getMobileGestaltBoolean:(struct __CFString *)arg1 withCopyAnswer:(CDUnknownFunctionPointerType)arg2;
 + (_Bool)_runningACustomerBuildWithCopyAnswer:(CDUnknownFunctionPointerType)arg1;
 + (_Bool)_runningAnInternalBuildWithCopyAnswer:(CDUnknownFunctionPointerType)arg1;
 + (id)currentDevice;
 - (void).cxx_destruct;
-@property(retain, nonatomic) MCProfileConnection *profileConnection; // @synthesize profileConnection=_profileConnection;
 @property(retain, nonatomic) VSRemoteNotifier *setTopBoxStateRemoteNotifier; // @synthesize setTopBoxStateRemoteNotifier=_setTopBoxStateRemoteNotifier;
 @property(retain, nonatomic) NSOperationQueue *privateQueue; // @synthesize privateQueue=_privateQueue;
 @property(nonatomic) CDUnknownFunctionPointerType copyAnswer; // @synthesize copyAnswer=_copyAnswer;
+@property(retain, nonatomic) NSString *productVersionString; // @synthesize productVersionString=_productVersionString;
 @property(nonatomic) __weak id <VSDeviceDelegate> delegate; // @synthesize delegate=_delegate;
+- (id)stringForAMSDeviceFamilies;
+- (id)stringForAMSPlatformAttributes;
+- (id)stringForAMSPlatform;
 - (void)cloudConfigurationDidChange;
+- (id)managedProfileConnection;
+- (id)developerSettingsFetchOperation;
+- (id)productVersion;
 - (void)refreshSetTopBoxProfile:(CDUnknownBlockType)arg1;
 - (_Bool)setIgnoreSetTopBoxProfile:(_Bool)arg1;
 @property(readonly, nonatomic) unsigned long long deviceType;

@@ -38,6 +38,7 @@
 - (id)_descriptionWithIndent:(unsigned long long)arg1;
 @property(readonly, copy) NSString *description;
 - (id)initWithGeneration:(unsigned long long)arg1 date:(id)arg2 alarmsByID:(id)arg3 notifiedFiringAlarmIDs:(id)arg4;
+- (id)firingAlarms;
 - (id)mostRecentFiringAlarm;
 - (_Bool)hasFiringAlarms;
 - (id)mutatedCopyWithMutator:(CDUnknownBlockType)arg1;

@@ -4,13 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-#import <MetalPerformanceShadersGraph/NSCopying-Protocol.h>
-
 @class NSArray;
 
-@interface MPSGraphShapedType : NSObject <NSCopying>
+@interface MPSGraphShapedType
 {
     unsigned int _dataType;
     NSArray *_shape;

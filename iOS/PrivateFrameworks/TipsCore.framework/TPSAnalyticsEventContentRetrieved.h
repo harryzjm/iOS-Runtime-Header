@@ -8,26 +8,28 @@
 
 @interface TPSAnalyticsEventContentRetrieved
 {
-    NSString *_contentID;
+    NSString *_tipID;
+    NSString *_correlationID;
     NSString *_bundleID;
     NSString *_context;
     NSString *_serviceError;
 }
 
-+ (id)eventWithContentID:(id)arg1 bundleID:(id)arg2 context:(id)arg3 serviceError:(id)arg4;
-+ (id)eventWithContentID:(id)arg1 serviceError:(id)arg2;
++ (id)eventWithTipID:(id)arg1 correlationID:(id)arg2 bundleID:(id)arg3 context:(id)arg4 serviceError:(id)arg5;
++ (id)eventWithTipID:(id)arg1 correlationID:(id)arg2 serviceError:(id)arg3;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *serviceError; // @synthesize serviceError=_serviceError;
 @property(retain, nonatomic) NSString *context; // @synthesize context=_context;
 @property(retain, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
-@property(retain, nonatomic) NSString *contentID; // @synthesize contentID=_contentID;
+@property(retain, nonatomic) NSString *correlationID; // @synthesize correlationID=_correlationID;
+@property(retain, nonatomic) NSString *tipID; // @synthesize tipID=_tipID;
 - (id)mutableAnalyticsEventRepresentation;
 - (id)eventName;
 - (void)encodeWithCoder:(id)arg1;
 - (void)setDataProvider:(id)arg1;
-- (id)_initWithContentID:(id)arg1 serviceError:(id)arg2;
-- (id)_initWithContentID:(id)arg1 bundleID:(id)arg2 context:(id)arg3 serviceError:(id)arg4;
+- (id)_initWithTipID:(id)arg1 correlationID:(id)arg2 serviceError:(id)arg3;
+- (id)_initWithTipID:(id)arg1 correlationID:(id)arg2 bundleID:(id)arg3 context:(id)arg4 serviceError:(id)arg5;
 - (id)initWithCoder:(id)arg1;
 
 @end

@@ -10,7 +10,7 @@
 
 @interface TSCEReferenceSetWrapper : NSObject <NSCopying>
 {
-    struct TSCEReferenceSet *_referenceSet;
+    void *_referenceSet;
 }
 
 - (void)foreachSpanningRangeRef:(CDUnknownBlockType)arg1;
@@ -23,12 +23,12 @@
 - (void)insertRangeRef:(const struct TSCERangeRef *)arg1;
 - (void)insertCellRef:(const struct TSCECellRef *)arg1;
 - (void)insertAnyRef:(const struct TSCEAnyRef *)arg1;
-@property(readonly, nonatomic) struct TSCEReferenceSet *referenceSet;
+@property(readonly, nonatomic) void *referenceSet;
 @property(readonly, nonatomic) _Bool isEmpty;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)initWithReferenceSet:(const struct TSCEReferenceSet *)arg1;
-- (id)initWithDependencyTracker:(struct TSCEDependencyTracker *)arg1;
+- (id)initWithReferenceSet:(const void *)arg1;
+- (id)initWithDependencyTracker:(void *)arg1;
 - (id)init;
 
 @end

@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
     _Bool _transmitROC;
     _Bool _needsPacketThread;
     int _operatingMode;
-    struct AudioStreamBasicDescription _inputFormat;
+    struct tagVCAudioFrameFormat _inputFormat;
     struct opaqueRTCReporting *_reportingAgent;
     int _reportingParentID;
     VCTransportSession *_transportSession;
@@ -54,9 +54,13 @@ __attribute__((visibility("hidden")))
     _Bool _cellularAllowRedLowBitratesEnabled;
     _Bool _wifiAllowRedLowBitratesEnabled;
     unsigned long long _remoteIDSParticipantID;
+    _Bool _useWifiTiers;
+    struct tagVCCryptor *_sframeCryptor;
     _Bool _shouldApplyRedAsBoolean;
 }
 
+@property(nonatomic) struct tagVCCryptor *sframeCryptor; // @synthesize sframeCryptor=_sframeCryptor;
+@property(nonatomic) _Bool useWifiTiers; // @synthesize useWifiTiers=_useWifiTiers;
 @property(nonatomic) unsigned int qualityIndex; // @synthesize qualityIndex=_qualityIndex;
 @property(nonatomic) _Bool shouldApplyRedAsBoolean; // @synthesize shouldApplyRedAsBoolean=_shouldApplyRedAsBoolean;
 @property(nonatomic) _Bool useChannelDataFormat; // @synthesize useChannelDataFormat=_useChannelDataFormat;
@@ -83,7 +87,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isRedEnabled) _Bool redEnabled; // @synthesize redEnabled=_redEnabled;
 @property(retain, nonatomic) VCTransportSession *transportSession; // @synthesize transportSession=_transportSession;
 @property(nonatomic) struct opaqueRTCReporting *reportingAgent; // @synthesize reportingAgent=_reportingAgent;
-@property(nonatomic) struct AudioStreamBasicDescription inputFormat; // @synthesize inputFormat=_inputFormat;
+@property(nonatomic) struct tagVCAudioFrameFormat inputFormat; // @synthesize inputFormat=_inputFormat;
 @property(nonatomic) int operatingMode; // @synthesize operatingMode=_operatingMode;
 @property(nonatomic) _Bool supportsAdaptation; // @synthesize supportsAdaptation=_supportsAdaptation;
 @property(nonatomic) _Bool allowAudioSwitching; // @synthesize allowAudioSwitching=_allowAudioSwitching;

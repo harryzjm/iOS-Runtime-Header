@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSDictionary, NSMutableArray, NSURLRequest, NSURLSessionTask;
+@class NSData, NSDictionary, NSError, NSMutableArray, NSURLRequest, NSURLSessionTask;
 
 @interface AMSMockURLResponse : NSObject
 {
     _Bool _performActualRequest;
+    NSError *_error;
     unsigned long long _statusCode;
     NSDictionary *_headers;
     NSData *_body;
@@ -21,6 +22,7 @@
 
 + (id)responseWithHARFile:(id)arg1;
 + (id)responseWithStatus:(unsigned long long)arg1 headers:(id)arg2 body:(id)arg3;
++ (id)responseWithError:(id)arg1;
 + (id)responseFromActualResponse;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSURLSessionTask *runningTask; // @synthesize runningTask=_runningTask;
@@ -30,6 +32,7 @@
 @property(retain, nonatomic) NSData *body; // @synthesize body=_body;
 @property(retain, nonatomic) NSDictionary *headers; // @synthesize headers=_headers;
 @property(nonatomic) unsigned long long statusCode; // @synthesize statusCode=_statusCode;
+@property(retain, nonatomic) NSError *error; // @synthesize error=_error;
 - (void)stopRunningTasks;
 - (void)addResponseHandler:(CDUnknownBlockType)arg1;
 - (CDStruct_0f015c83)handleReceivedRequest:(id)arg1;

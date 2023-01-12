@@ -11,7 +11,8 @@
 
 @interface TPSDuetDataProvider : NSObject
 {
-    id <_DKKnowledgeSaving><_DKKnowledgeDeleting><_DKKnowledgeQuerying> _store;
+    id <_DKKnowledgeSaving><_DKKnowledgeDeleting><_DKKnowledgeQuerying> _systemStore;
+    id <_DKKnowledgeSaving><_DKKnowledgeDeleting><_DKKnowledgeQuerying> _userStore;
     _CDClientContext *_context;
     NSMutableDictionary *_contextualRegistrations;
     NSObject<OS_dispatch_queue> *_registrationQueue;
@@ -19,16 +20,22 @@
 
 - (void).cxx_destruct;
 - (void)_deregisterWakingDuetRegistration:(id)arg1;
-- (id)_executeQueryWithPredicate:(id)arg1 streams:(id)arg2 limit:(unsigned long long)arg3 sortDescriptors:(id)arg4 error:(id *)arg5;
-- (void)_executeQueryWithPredicate:(id)arg1 streams:(id)arg2 limit:(unsigned long long)arg3 sortDescriptors:(id)arg4 withCompletion:(CDUnknownBlockType)arg5;
-- (void)_executeHistogramQueryWithPredicate:(id)arg1 stream:(id)arg2 interval:(id)arg3 groupByKeyPaths:(id)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)deleteEventsWithPredicate:(id)arg1 streams:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)deleteEvents:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)saveEvents:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_executeQueryWithPredicate:(id)arg1 streams:(id)arg2 limit:(unsigned long long)arg3 sortDescriptors:(id)arg4 userStore:(_Bool)arg5 deviceIDs:(id)arg6 error:(id *)arg7;
+- (id)_executeQueryWithPredicate:(id)arg1 streams:(id)arg2 limit:(unsigned long long)arg3 sortDescriptors:(id)arg4 userStore:(_Bool)arg5 error:(id *)arg6;
+- (void)_executeQueryWithPredicate:(id)arg1 streams:(id)arg2 limit:(unsigned long long)arg3 sortDescriptors:(id)arg4 userStore:(_Bool)arg5 deviceIDs:(id)arg6 withCompletion:(CDUnknownBlockType)arg7;
+- (void)_executeQueryWithPredicate:(id)arg1 streams:(id)arg2 limit:(unsigned long long)arg3 sortDescriptors:(id)arg4 userStore:(_Bool)arg5 withCompletion:(CDUnknownBlockType)arg6;
+- (void)_executeHistogramQueryWithPredicate:(id)arg1 stream:(id)arg2 interval:(id)arg3 groupByKeyPaths:(id)arg4 userStore:(_Bool)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)deleteEventsWithPredicate:(id)arg1 streams:(id)arg2 userStore:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)deleteEvents:(id)arg1 userStore:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)saveEvents:(id)arg1 userStore:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)deregisterWakingForRegistrationID:(id)arg1;
+- (_Bool)deregisterWakingForAllRegistrations;
 - (_Bool)registerWakingForPredicate:(id)arg1 registrationID:(id)arg2 clientIdentifier:(id)arg3 callback:(CDUnknownBlockType)arg4;
-- (void)countsForPredicate:(id)arg1 stream:(id)arg2 interval:(id)arg3 groupByKeyPaths:(id)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)observationDatesForPredicate:(id)arg1 streams:(id)arg2 limit:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)countsForPredicate:(id)arg1 stream:(id)arg2 interval:(id)arg3 groupByKeyPaths:(id)arg4 userStore:(_Bool)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)observationDatesForPredicate:(id)arg1 streams:(id)arg2 limit:(unsigned long long)arg3 userStore:(_Bool)arg4 deviceIDs:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)observationDatesForPredicate:(id)arg1 streams:(id)arg2 limit:(unsigned long long)arg3 userStore:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
+@property(readonly, nonatomic) id <_DKKnowledgeSaving><_DKKnowledgeDeleting><_DKKnowledgeQuerying> userStore;
+@property(readonly, nonatomic) id <_DKKnowledgeSaving><_DKKnowledgeDeleting><_DKKnowledgeQuerying> systemStore;
 - (id)_initWithDirectory:(id)arg1;
 - (id)_initWithStore:(id)arg1 context:(id)arg2;
 - (id)init;

@@ -54,6 +54,7 @@
 @property(retain, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 - (id)messageTargetUUID;
 - (void)updatePlaybackState:(id)arg1;
+- (void)_unconfigure;
 - (void)configure:(id)arg1 messageTargetUUID:(id)arg2;
 - (id)initWithUUID:(id)arg1 routeUID:(id)arg2 playbackState:(long long)arg3 shuffleState:(long long)arg4 repeatState:(long long)arg5 mediaUniqueIdentifier:(id)arg6;
 

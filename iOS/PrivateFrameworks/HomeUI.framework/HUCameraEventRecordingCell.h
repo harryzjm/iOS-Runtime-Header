@@ -34,7 +34,6 @@
 @property(retain, nonatomic) CALayer *badgeLayer; // @synthesize badgeLayer=_badgeLayer;
 @property(nonatomic) __weak HMCameraClip *recordingEvent; // @synthesize recordingEvent=_recordingEvent;
 @property(nonatomic) unsigned long long displayMode; // @synthesize displayMode=_displayMode;
-- (id)_accessibilityStringForSignificantEvents;
 - (id)accessibilityLabel;
 - (void)prepareForReuse;
 - (void)preparePosterFrameViewsForReuse;
@@ -43,7 +42,6 @@
 - (void)updateFamiliarFaces;
 - (void)drawEventMarkers;
 - (void)displayReachabilityErrorUI;
-- (void)synchronizeLoadingIndicators;
 - (void)addDayBoundaryIfNeeded;
 - (void)addPosterFrameViews;
 - (unsigned long long)numberOfFramesNeeded;

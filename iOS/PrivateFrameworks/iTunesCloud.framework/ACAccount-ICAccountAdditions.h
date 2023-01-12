@@ -10,6 +10,9 @@
 
 @interface ACAccount (ICAccountAdditions)
 - (_Bool)_updateAutomaticDownloadKindsByAddingMediaKindMusic:(_Bool)arg1 error:(id *)arg2;
+@property(readonly, copy, nonatomic) NSDictionary *ic_privacyAcknowledgementVersions;
+@property(readonly, nonatomic) _Bool ic_isITunesAccount;
+@property(readonly, copy, nonatomic) NSArray *ic_activeMediaTypes;
 @property(copy, nonatomic, setter=ic_setPrivateListeningEnabledForHomeUsers:) NSDictionary *ic_privateListeningEnabledForHomeUsers;
 @property(copy, nonatomic, setter=ic_setPrivateListeningEnabled:) NSNumber *ic_privateListeningEnabled;
 - (void)ic_updateAutomaticDownloadKindsByAddingMediaKindMusic:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;

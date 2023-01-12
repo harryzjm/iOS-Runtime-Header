@@ -6,18 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSDate, NSDictionary, NSSet, NSString, NSURL, PLMemory;
+@class NSArray, NSData, NSDate, NSDictionary, NSSet, NSString, NSURL, PLMemory;
 
 @interface PLPersistedMemoryMetadata : NSObject
 {
     _Bool _rejected;
     _Bool _favorite;
-    _Bool _pending;
-    _Bool _userCreated;
+    short _pendingState;
+    short _userActionOptions;
     short _category;
     short _subcategory;
     short _notificationState;
-    unsigned short _featuredState;
+    short _featuredState;
     NSString *_uuid;
     NSString *_title;
     NSString *_subtitle;
@@ -27,6 +27,7 @@
     NSSet *_curatedAssetUUIDs;
     NSSet *_extendedCuratedAssetUUIDs;
     NSSet *_movieCuratedAssetUUIDs;
+    NSSet *_userCuratedAssetUUIDs;
     NSData *_movieData;
     NSDictionary *_movieAssetState;
     long long _photosGraphVersion;
@@ -41,6 +42,8 @@
     long long _pendingPlayCount;
     long long _pendingShareCount;
     long long _pendingViewCount;
+    NSSet *_userFeedbacks;
+    NSArray *_userFeedbacksDictionaryArray;
     PLMemory *_memory;
     NSURL *_metadataURL;
 }
@@ -49,7 +52,9 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSURL *metadataURL; // @synthesize metadataURL=_metadataURL;
 @property(retain, nonatomic) PLMemory *memory; // @synthesize memory=_memory;
-@property(nonatomic) unsigned short featuredState; // @synthesize featuredState=_featuredState;
+@property(retain, nonatomic) NSArray *userFeedbacksDictionaryArray; // @synthesize userFeedbacksDictionaryArray=_userFeedbacksDictionaryArray;
+@property(retain, nonatomic) NSSet *userFeedbacks; // @synthesize userFeedbacks=_userFeedbacks;
+@property(nonatomic) short featuredState; // @synthesize featuredState=_featuredState;
 @property(nonatomic) long long pendingViewCount; // @synthesize pendingViewCount=_pendingViewCount;
 @property(nonatomic) long long pendingShareCount; // @synthesize pendingShareCount=_pendingShareCount;
 @property(nonatomic) long long pendingPlayCount; // @synthesize pendingPlayCount=_pendingPlayCount;
@@ -65,6 +70,7 @@
 @property(nonatomic) long long photosGraphVersion; // @synthesize photosGraphVersion=_photosGraphVersion;
 @property(retain, nonatomic) NSDictionary *movieAssetState; // @synthesize movieAssetState=_movieAssetState;
 @property(retain, nonatomic) NSData *movieData; // @synthesize movieData=_movieData;
+@property(retain, nonatomic) NSSet *userCuratedAssetUUIDs; // @synthesize userCuratedAssetUUIDs=_userCuratedAssetUUIDs;
 @property(retain, nonatomic) NSSet *movieCuratedAssetUUIDs; // @synthesize movieCuratedAssetUUIDs=_movieCuratedAssetUUIDs;
 @property(retain, nonatomic) NSSet *extendedCuratedAssetUUIDs; // @synthesize extendedCuratedAssetUUIDs=_extendedCuratedAssetUUIDs;
 @property(retain, nonatomic) NSSet *curatedAssetUUIDs; // @synthesize curatedAssetUUIDs=_curatedAssetUUIDs;
@@ -72,8 +78,8 @@
 @property(retain, nonatomic) NSString *keyAssetUUID; // @synthesize keyAssetUUID=_keyAssetUUID;
 @property(nonatomic) short subcategory; // @synthesize subcategory=_subcategory;
 @property(nonatomic) short category; // @synthesize category=_category;
-@property(nonatomic, getter=isUserCreated) _Bool userCreated; // @synthesize userCreated=_userCreated;
-@property(nonatomic, getter=isPending) _Bool pending; // @synthesize pending=_pending;
+@property(nonatomic) short userActionOptions; // @synthesize userActionOptions=_userActionOptions;
+@property(nonatomic) short pendingState; // @synthesize pendingState=_pendingState;
 @property(nonatomic, getter=isFavorite) _Bool favorite; // @synthesize favorite=_favorite;
 @property(nonatomic, getter=isRejected) _Bool rejected; // @synthesize rejected=_rejected;
 @property(retain, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;

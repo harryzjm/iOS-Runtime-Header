@@ -15,6 +15,7 @@
     _Bool _hasSession;
     _Bool _sessionStarted;
     _Bool _sessionWaitingToStart;
+    _Bool _isSwitchingSessionType;
     _Bool _doublePressReceived;
     _Bool _sessionAuthorized;
     _Bool _passActivating;
@@ -23,6 +24,7 @@
     _Bool _inServiceMode;
     NSDate *_timestamp;
     PKPass *_currentPass;
+    unsigned long long _sessionType;
     NSDate *_doublePressTimestamp;
     PKPass *_serviceModeRequestedPass;
     unsigned long long _expressTransactionStatus;
@@ -45,11 +47,15 @@
 @property(nonatomic) _Bool sessionAuthorized; // @synthesize sessionAuthorized=_sessionAuthorized;
 @property(retain, nonatomic) NSDate *doublePressTimestamp; // @synthesize doublePressTimestamp=_doublePressTimestamp;
 @property(nonatomic) _Bool doublePressReceived; // @synthesize doublePressReceived=_doublePressReceived;
+@property(nonatomic) _Bool isSwitchingSessionType; // @synthesize isSwitchingSessionType=_isSwitchingSessionType;
 @property(nonatomic) _Bool sessionWaitingToStart; // @synthesize sessionWaitingToStart=_sessionWaitingToStart;
 @property(nonatomic) _Bool sessionStarted; // @synthesize sessionStarted=_sessionStarted;
+@property(nonatomic) unsigned long long sessionType; // @synthesize sessionType=_sessionType;
 @property(nonatomic) _Bool hasSession; // @synthesize hasSession=_hasSession;
 @property(retain, nonatomic) PKPass *currentPass; // @synthesize currentPass=_currentPass;
 @property(retain, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
+- (double)validityInterval;
+- (_Bool)isSessionStateValid;
 - (id)stateForNonModalDisplay;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;

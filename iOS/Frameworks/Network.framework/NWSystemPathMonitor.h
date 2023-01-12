@@ -15,6 +15,7 @@
     _Bool _ethernetPrimary;
     _Bool _vpnActive;
     int _vpnNotifyToken;
+    int _symptomsNotifyToken;
     NWMonitor *_vpnMonitor;
     NWPathEvaluator *_primaryEvaluator;
     NSMutableDictionary *_perAppVPNEvaluators;
@@ -29,12 +30,15 @@
 @property void *fallbackWatcher; // @synthesize fallbackWatcher=_fallbackWatcher;
 @property(retain) NSObject<OS_dispatch_source> *smoothingTimer; // @synthesize smoothingTimer=_smoothingTimer;
 @property(retain) NSMutableDictionary *perAppVPNEvaluators; // @synthesize perAppVPNEvaluators=_perAppVPNEvaluators;
+@property int symptomsNotifyToken; // @synthesize symptomsNotifyToken=_symptomsNotifyToken;
 @property int vpnNotifyToken; // @synthesize vpnNotifyToken=_vpnNotifyToken;
 @property(retain) NWPathEvaluator *primaryEvaluator; // @synthesize primaryEvaluator=_primaryEvaluator;
 @property(retain) NWMonitor *vpnMonitor; // @synthesize vpnMonitor=_vpnMonitor;
 @property(nonatomic, getter=isVPNActive) _Bool vpnActive; // @synthesize vpnActive=_vpnActive;
 @property(nonatomic, getter=isEthernetPrimary) _Bool ethernetPrimary; // @synthesize ethernetPrimary=_ethernetPrimary;
 @property(nonatomic, getter=isWiFiPrimary) _Bool wifiPrimary; // @synthesize wifiPrimary=_wifiPrimary;
+- (_Bool)getSymptomsFallback;
+- (void)registerForSymptomsFallbackNotification;
 - (void)updateVPNMonitor;
 - (void)registerForVPNNotifications;
 - (void)stopWatchingApplicationStates;

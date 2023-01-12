@@ -10,7 +10,7 @@
 
 @interface MPSMatrix : NSObject
 {
-    struct MPSDevice *_device;
+    void *_device;
     unsigned long long _rows;
     unsigned long long _columns;
     unsigned long long _matrices;
@@ -41,7 +41,7 @@
 - (id)initWithDevice:(id)arg1 descriptor:(id)arg2;
 - (id)initWithBuffer:(id)arg1 offset:(unsigned long long)arg2 descriptor:(id)arg3;
 - (id)initWithBuffer:(id)arg1 descriptor:(id)arg2;
-- (id)initPrivateWithDescriptor:(id)arg1 device:(struct MPSDevice *)arg2;
+- (id)initPrivateWithDescriptor:(id)arg1 device:(void *)arg2;
 - (id)init;
 @property(readonly, retain, nonatomic) id <MTLDevice> device;
 

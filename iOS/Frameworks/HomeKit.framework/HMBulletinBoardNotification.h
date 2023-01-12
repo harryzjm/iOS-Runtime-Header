@@ -48,7 +48,6 @@
 @property(readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property(readonly, copy, nonatomic) NSUUID *targetUUID; // @synthesize targetUUID=_targetUUID;
 - (void)_handleBulletinBoardNotificationUpdateNotification:(id)arg1;
-- (void)dealloc;
 - (void)_unconfigure;
 - (void)_unconfigureContext;
 - (void)__configureWithContext:(id)arg1;

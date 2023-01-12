@@ -23,8 +23,11 @@
     NSNumber *_cacheSizeForFetchNumber;
     NSNumber *_reverseSortOrderNumber;
     NSNumber *_includeDuplicateAssetsNumber;
+    NSNumber *_includeGuestAssetsNumber;
+    NSNumber *_includePlaceholderAssetsNumber;
     NSNumber *_includePendingMemoriesNumber;
     NSNumber *_includeRejectedMemoriesNumber;
+    NSNumber *_includeGraphEphemeralMemoriesNumber;
     NSNumber *_personContextNumber;
     NSNumber *_includeTrashedAssetsNumber;
     NSNumber *_includeTrashedSharesNumber;
@@ -34,6 +37,7 @@
     NSNumber *_includeAllPhotosSmartAlbumNumber;
     NSNumber *_includeRecentlyEditedSmartAlbumNumber;
     NSNumber *_includeScreenRecordingsSmartAlbumNumber;
+    NSNumber *_includeCinematicVideoSmartAlbumNumber;
     NSNumber *_includeTrashBinAlbumNumber;
     NSNumber *_includeRootFolderNumber;
     NSNumber *_excludeMontageAssetsNumber;
@@ -52,19 +56,24 @@
     NSNumber *_includeUserSmartAlbumsNumber;
     NSNumber *_includeOnlyAssetsAllowedForAnalysisNumber;
     NSNumber *_includeOnlyContentContributedByCurrentUserNumber;
+    NSArray *_includedDetectionTypes;
+    NSNumber *_includeTorsoOnlyDetectionDataNumber;
+    NSNumber *_includeTorsoOnlyPersonNumber;
     NSPredicate *_predicate;
     NSArray *_sortDescriptors;
-    NSArray *_customObjectIDSortOrder;
     PHQueryChangeDetectionCriteria *_changeDetectionCriteria;
     NSString *_transientIdentifier;
     NSPredicate *_internalPredicate;
     NSArray *_internalSortDescriptors;
     NSPredicate *_internalInclusionPredicate;
+    NSArray *_customObjectIDSortOrder;
     NSSet *_verifiedPersonTypes;
     PHPhotoLibrary *_photoLibrary;
     NSString *_importantFetchName;
 }
 
++ (id)defaultDetectionTypes;
++ (id)fetchOptionsCopyFromNullableFetchOptions:(id)arg1 photoLibrary:(id)arg2;
 + (id)effectivePhotoLibraryForFetchOptions:(id)arg1 object:(id)arg2;
 + (id)fetchOptionsWithPhotoLibrary:(id)arg1 orObject:(id)arg2;
 + (id)fetchOptionsWithInclusiveDefaultsForPhotoLibrary:(id)arg1;
@@ -72,15 +81,17 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *importantFetchName; // @synthesize importantFetchName=_importantFetchName;
 @property(retain, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
+@property(retain, nonatomic) NSArray *includedDetectionTypes; // @synthesize includedDetectionTypes=_includedDetectionTypes;
 @property(copy, nonatomic) NSSet *verifiedPersonTypes; // @synthesize verifiedPersonTypes=_verifiedPersonTypes;
+@property(retain, nonatomic) NSArray *customObjectIDSortOrder; // @synthesize customObjectIDSortOrder=_customObjectIDSortOrder;
 @property(retain, nonatomic) NSPredicate *internalInclusionPredicate; // @synthesize internalInclusionPredicate=_internalInclusionPredicate;
 @property(retain, nonatomic) NSArray *internalSortDescriptors; // @synthesize internalSortDescriptors=_internalSortDescriptors;
 @property(retain, nonatomic) NSPredicate *internalPredicate; // @synthesize internalPredicate=_internalPredicate;
 @property(retain, nonatomic) NSString *transientIdentifier; // @synthesize transientIdentifier=_transientIdentifier;
 @property(copy) PHQueryChangeDetectionCriteria *changeDetectionCriteria; // @synthesize changeDetectionCriteria=_changeDetectionCriteria;
-@property(retain, nonatomic) NSArray *customObjectIDSortOrder; // @synthesize customObjectIDSortOrder=_customObjectIDSortOrder;
 @property(retain, nonatomic) NSArray *sortDescriptors; // @synthesize sortDescriptors=_sortDescriptors;
 @property(retain, nonatomic) NSPredicate *predicate; // @synthesize predicate=_predicate;
+@property(readonly, nonatomic) NSString *shortDescription;
 - (id)description;
 @property(nonatomic) _Bool includeOnlyContentContributedByCurrentUser;
 @property(nonatomic) _Bool includeOnlyAssetsAllowedForAnalysis;
@@ -92,6 +103,8 @@
 @property(nonatomic) _Bool includeOnlyFacesInFaceGroups;
 @property(nonatomic) _Bool includeOnlyFacesWithFaceprints;
 @property(nonatomic) _Bool includeOnlyFacesNeedingFaceCrop;
+@property(nonatomic) _Bool includeTorsoOnlyPerson;
+@property(nonatomic) _Bool includeTorsoOnlyDetectionData;
 @property(nonatomic) _Bool includeOnlyPersonsWithVisibleKeyFaces;
 @property(nonatomic) _Bool includeNonvisibleFaces;
 @property(nonatomic) unsigned long long minimumUnverifiedFaceCount;
@@ -99,6 +112,7 @@
 @property(nonatomic) _Bool excludeMontageAssets;
 @property(nonatomic) _Bool includeRootFolder;
 @property(nonatomic) _Bool includeTrashBinAlbum;
+@property(nonatomic) _Bool includeCinematicVideoSmartAlbum;
 @property(nonatomic) _Bool includeScreenRecordingsSmartAlbum;
 @property(nonatomic) _Bool includeRecentlyEditedSmartAlbum;
 @property(nonatomic) _Bool includeAllPhotosSmartAlbum;
@@ -109,8 +123,11 @@
 @property(nonatomic) _Bool includeTrashedAssets;
 @property(nonatomic) long long personContext;
 @property(nonatomic) long long curationType;
+@property(nonatomic) _Bool includeGraphEphemeralMemories;
 @property(nonatomic) _Bool includeRejectedMemories;
 @property(nonatomic) _Bool includePendingMemories;
+@property(nonatomic) _Bool includePlaceholderAssets;
+@property(nonatomic) _Bool includeGuestAssets;
 @property(nonatomic) _Bool includeDuplicateAssets;
 @property(nonatomic) _Bool reverseSortOrder;
 @property(nonatomic) long long cacheSizeForFetch;

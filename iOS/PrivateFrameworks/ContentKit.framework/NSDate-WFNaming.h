@@ -16,7 +16,7 @@
 + (id)objectWithWFSerializedRepresentation:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *wfName;
 - (id)wfSerializedRepresentation;
-- (id)wf_formattedStringWithDateStyle:(id)arg1 timeStyle:(id)arg2 relativeDateStyle:(id)arg3 customDateFormat:(id)arg4 includeTimeForISO8601:(_Bool)arg5;
+- (id)wf_formattedStringWithDateStyle:(id)arg1 timeStyle:(id)arg2 relativeDateStyle:(id)arg3 customDateFormat:(id)arg4 includeTimeForISO8601:(_Bool)arg5 timeZone:(id)arg6 locale:(id)arg7;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

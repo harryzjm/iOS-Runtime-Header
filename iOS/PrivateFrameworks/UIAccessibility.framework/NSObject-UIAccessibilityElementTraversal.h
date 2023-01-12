@@ -55,6 +55,8 @@
 - (id)_accessibilityDragSourceDescriptorDictionaryRepresentations;
 - (id)_accessibilityAllDragSourceDescriptors;
 - (id)_accessibilityFilterInteractionLocationDescriptorsForVisible:(id)arg1;
+- (_Bool)_accessibilityShouldIncludeParentCustomActions;
+- (_Bool)_accessibilityShouldIncludeParentCustomContent;
 - (_Bool)_accessibilityRealtimeHasUnread;
 - (_Bool)_accessibilityRealtimeCompleted;
 - (_Bool)accessibilityIsMediaPlaying;
@@ -63,6 +65,8 @@
 - (_Bool)_accessibilityIsDraggableElementAttribute;
 - (_Bool)_accessibilityHasDragDestinations;
 - (_Bool)_accessibilityHasDragSources;
+- (_Bool)_accessibilityShouldIncludeRegionDescription;
+- (_Bool)_accessibilityShouldIncludeRemoteParentCustomActions;
 - (_Bool)_accessibilityScannerShouldUseActivateInPointMode;
 - (_Bool)_accessibilityShouldPerformIncrementOrDecrement;
 - (void)_accessibilityPostPasteboardTextForOperation:(id)arg1;
@@ -78,7 +82,9 @@
 - (void)_accessibilityRemoveRecentlyActivatedBundleIdFromSwitcher:(id)arg1;
 - (void)_accessibilityAddRecentlyActivatedBundleIdFromSwitcher:(id)arg1;
 - (_Bool)_accessibilityApplicationIsRTL;
+- (_Bool)_accessibilityHierarchyIsRTL;
 - (_Bool)_accessibilityIsRTL;
+- (void)_accessibilitySetVoiceOverRTLOverride:(long long)arg1;
 - (id)_accessibilitySupportedLanguages;
 - (_Bool)accessibilityRequired;
 - (long long)_accessibilityMapFeatureType;
@@ -108,6 +114,7 @@
 - (id)accessibilitySpeechHint;
 - (id)_accessibilityWebAreaURL;
 - (id)accessibilityURL;
+- (id)accessibilityVisibleText;
 - (id)accessibilityDatetimeValue;
 - (_Bool)_accessibilityShouldApplySemanticGroupContainerType;
 - (id)_accessibilityUserTestingActionIdentifiers;
@@ -133,6 +140,7 @@
 - (_Bool)accessibilityIsInDescriptionListDefinition;
 - (_Bool)accessibilityIsInDescriptionListTerm;
 - (void)_accessibilityIncreaseSelection:(id)arg1;
+- (id)_accessibilitySupplementaryViewSectionHeaderIdentifiers;
 - (_Bool)_accessibilityIsRealtimeElement;
 - (id)accessibilityExpandedTextValue;
 - (id)accessibilitySortDirection;
@@ -200,6 +208,7 @@
 - (id)_accessibilityValueForRange:(struct _NSRange *)arg1;
 - (_Bool)__accessibilityReadAllOnFocus;
 - (_Bool)_accessibilityReadAllOnFocus;
+- (id)_accessibilitySupportsReadingContent;
 - (id)_accessibilityMarkerLineEndsForMarkers:(id)arg1;
 - (id)_accessibilityMarkersForRange:(struct _NSRange)arg1;
 - (id)_accessibilityMarkersForPoints:(id)arg1;
@@ -207,6 +216,7 @@
 - (struct CGRect)_accessibilityTextCursorFrame;
 - (void)_setAccessibilityPhotoDescription:(id)arg1;
 - (id)_accessibilityPhotoDescription;
+- (id)accessibilityImageOverlayElements;
 - (_Bool)_accessibilityKeyboardSupportsGestureMode;
 - (_Bool)_accessibilityBookShowsDualPages;
 - (_Bool)_accessibilityKeyboardKeyAllowsTouchTyping;
@@ -239,6 +249,7 @@
 - (id)_accessibilityLineNumberAndColumnForPoint:(struct CGPoint)arg1;
 - (long long)_accessibilityLineStartPosition;
 - (long long)_accessibilityLineEndPosition;
+- (struct _NSRange)_accessibilityVisibleTextRange;
 - (struct _NSRange)_accessibilitySelectedTextRange;
 - (void)_accessibilitySetSelectedTextRange:(struct _NSRange)arg1;
 - (_Bool)_accessibilityTriggerDictationFromPath:(id)arg1;
@@ -258,9 +269,7 @@
 - (void)_accessibilitySetAnimationsInProgress:(_Bool)arg1;
 - (_Bool)_accessibilityAnimationsInProgress;
 - (void)_accessibilityUnregister;
-- (void)_cleanupRotorCache;
 - (void)_accessibilityCleanupContainerElementReferences;
-- (void)__accessibilityUnregister:(void *)arg1 shouldRelease:(_Bool)arg2;
 - (id)accessibilityAssistiveTechnologyFocusedIdentifiers;
 - (_Bool)accessibilityElementIsFocused;
 - (_Bool)_accessibilityShouldReleaseAfterUnregistration;
@@ -304,6 +313,7 @@
 - (void)accessibilityIncreaseTrackingDetail;
 - (void)accessibilityZoomOutAtPoint:(struct CGPoint)arg1;
 - (void)accessibilityZoomInAtPoint:(struct CGPoint)arg1;
+- (unsigned long long)_accessibilityBoundaryEdges;
 - (_Bool)_accessibilityPerformCustomActionWithIdentifier:(id)arg1;
 - (_Bool)accessibilityPerformCustomAction:(long long)arg1;
 - (void)_accessibilitySetCurrentGesture:(id)arg1;
@@ -316,6 +326,7 @@
 - (void)_accessibilitySetApplicationOrientation:(long long)arg1;
 - (long long)_accessibilityApplicationOrientation;
 - (id)_accessibilityFocusRingTintColor;
+- (void)_accessibilitySetFocusRingTintColor:(id)arg1;
 - (_Bool)_accessibilityFKAShouldBeProcessed;
 - (_Bool)_accessibilityIsFrameOutOfBoundsConsideringScrollParents:(_Bool)arg1;
 - (struct CGRect)_axFrameForBoundsCheck:(_Bool)arg1;
@@ -331,6 +342,7 @@
 - (void)_accessibilitySetSortPriority:(long long)arg1;
 - (struct CGRect)_accessibilityCompareFrameForScrollParent:(id)arg1 frame:(struct CGRect)arg2 fromOrientation:(long long)arg3 toOrientation:(long long)arg4;
 - (id)_accessibilityScrollParentForComparingByXAxis;
+- (void)_accessibilitySetOnlyComparesByXAxis:(_Bool)arg1;
 - (_Bool)_accessibilityOnlyComparesByXAxis;
 - (struct CGRect)_accessibilityContentFrame;
 - (void)_accessibilitySetVisibleContentInset:(struct UIEdgeInsets)arg1;
@@ -375,6 +387,8 @@
 - (id)_accessibilityControlDescendantWithTarget:(id)arg1;
 - (id)_accessibilityFindUnsortedDescendantsPassingTest:(CDUnknownBlockType)arg1;
 - (id)_accessibilityFindUnsortedSubviewDescendantsPassingTest:(CDUnknownBlockType)arg1;
+- (id)_accessibilityFindViewControllerDescendantOfType:(Class)arg1;
+- (id)_accessibilityFindViewControllerDescendant:(CDUnknownBlockType)arg1;
 - (id)_accessibilityFindSubviewDescendantsPassingTest:(CDUnknownBlockType)arg1;
 - (id)_accessibilityFindSubviewDescendant:(CDUnknownBlockType)arg1;
 - (id)_accessibilityFindDescendant:(CDUnknownBlockType)arg1;
@@ -393,15 +407,17 @@
 - (id)_accessibilityUnignoredDescendant;
 - (_Bool)_accessibilityHasDescendantOfType:(Class)arg1;
 - (id)_accessibilityDescendantOfType:(Class)arg1;
-- (id)_accessibilityVisibleOpaqueElementsHonoringGroups:(_Bool)arg1;
+- (id)_accessibilityVisibleOpaqueElementsHonoringGroups:(_Bool)arg1 sorted:(_Bool)arg2;
 - (id)_accessibilityVisibleOpaqueElements;
 - (id)_accessibilitySearchSubtreesAfterChildElement:(id)arg1 direction:(long long)arg2 searchType:(long long)arg3 allowOutOfBoundsChild:(_Bool)arg4 range:(struct _NSRange)arg5 shouldScrollToVisible:(_Bool)arg6 honorGroups:(_Bool)arg7 updatedContainer:(id *)arg8;
 - (id)_accessibilityFocusAbsoluteFirstLastOpaqueElement:(_Bool)arg1 technology:(id)arg2 honorsGroups:(_Bool)arg3 shouldAlwaysScroll:(_Bool)arg4;
+- (_Bool)_accessibilityElementServesAsHeadingLandmark;
 - (id)_accessibilitySortedElementsWithinWithOptions:(id)arg1;
 - (id)_accessibilitySortedElementsWithin;
 - (void)_accessibilityOpaqueElementScrollToDirection:(long long)arg1;
 - (id)_accessibilityFindElementInDirection:(long long)arg1 searchType:(long long)arg2 allowOutOfBoundsChild:(_Bool)arg3 startingTouchContainer:(id)arg4 honorGroups:(_Bool)arg5;
 - (id)_accessibilityFindElementInDirection:(long long)arg1 searchType:(long long)arg2 allowOutOfBoundsChild:(_Bool)arg3;
+- (_Bool)_accessibilityUsesFixFor72070946;
 - (void)_accessibilityOpaqueElementScrollCleanup;
 - (double)_accessibilityLeftOpaqueScrollViewContentOffsetLimit;
 - (double)_accessibilityRightOpaqueScrollViewContentOffsetLimit;
@@ -444,8 +460,11 @@
 - (id)accessibilityTitleElement;
 - (id)_accessibilityHeaderElement;
 - (_Bool)_accessibilityDescendantElementAtIndexPathIsValid:(id)arg1;
+- (_Bool)_accessibilityCollectionViewCellScrollShouldInformScrollDelegate;
 - (_Bool)_accessibilityShouldAvoidScrollingCollectionViewCells;
 - (_Bool)_accessibilitySortCollectionViewLogically;
+- (_Bool)_accessibilitySupportsAudiographs;
+- (void)_accessibilitySonificationPlaybackStatusChanged:(unsigned long long)arg1;
 - (void)_accessibilityDidChangeSonificationPlaybackPosition:(double)arg1;
 - (_Bool)_accessibilityDataSeriesIncludesTrendlineInSonification;
 - (_Bool)_accessibilityDataSeriesSupportsSonification;
@@ -461,6 +480,14 @@
 - (long long)_accessibilityDataSeriesType;
 - (id)_accessibilityDataSeriesValuesForAxis:(long long)arg1;
 - (id)_accessibilityDataSeriesName;
+- (id)_accessibilityChartStructureDescription;
+- (id)_accessibilityChartDescriptor;
+- (_Bool)_accessibilityIsChartElement;
+- (id)_accessibilityChartElement;
+- (void)_accessibilitySetStoredChartDescriptor:(id)arg1;
+- (id)_accessibilityStoredChartDescriptor;
+- (_Bool)_accessibilityShouldAttemptToAddDismissalElement;
+- (_Bool)_accessibilityIsSupportedGestureRecognizer;
 - (id)_accessibilityFocusRingAncestor;
 - (id)_accessibilityElementToFocusForAppearanceScreenChange;
 - (void)_fkaMoveRight;
@@ -473,10 +500,9 @@
 - (_Bool)_accessibilityKeyCommandsShouldOverrideKeyCommands;
 - (id)_accessibilityKeyCommands;
 - (_Bool)_accessibilityIsVerticalAdjustableElement;
-- (id)_focusGroupDescriptor;
-- (id)_accessibilityDefaultFocusGroupDescriptor;
-- (void)_axSetStoredDefaultFocusGroupDescriptor:(id)arg1;
-- (id)_axGetStoredDefaultFocusGroupDescriptor;
+- (id)focusGroupIdentifier;
+- (id)_accessibilityDefaultFocusGroupIdentifier;
+- (void)_accessibilitySetFKAShouldProcessChildren:(_Bool)arg1;
 - (_Bool)_accessibilityFKAShouldProcessChildren;
 - (_Bool)_accessibilityIsFKARunningForFocusItem;
 - (long long)_accessibilityInterfaceOrientationForScreenCoordinates;
@@ -493,6 +519,8 @@
 - (id)_accessibilityApplicationWindowContextIDs;
 - (unsigned int)_accessibilityContextId;
 - (id)_accessibilityParentView;
+- (id)_accessibilityWindowSceneIdentifier;
+- (_Bool)accessibilityIsWindow;
 - (id)_accessibilityWindow;
 - (_Bool)_accessibilityUsesSpecialKeyboardDismiss;
 - (id)_accessibilityRemoteApplication;
@@ -501,8 +529,10 @@
 - (void)_setAccessibilityTableCellUsesDetailTextAsValue:(_Bool)arg1;
 - (_Bool)_accessibilityTableCellUsesDetailTextAsValue;
 - (_Bool)_accessibilityAlternateActionForURL:(id)arg1;
+- (_Bool)_accessibilityIsKeyboardPassthroughInputAccessoryView;
 - (id)_accessibilityHitTestingObscuredScreenAllowedViews;
 - (id)_accessibilityObscuredScreenAllowedViews;
+- (void)_accessibilitySetObscuredScreenAllowedViews:(CDUnknownBlockType)arg1;
 - (void)_accessibilityChangeToKeyplane:(id)arg1;
 - (id)_accessibilityKeyboardKeyForString:(id)arg1;
 - (id)_accessibilityCellWithRowIndex:(long long)arg1 column:(long long)arg2 containingView:(id)arg3;
@@ -534,6 +564,8 @@
 - (id)_accessibilityAdditionalElements;
 - (void)_accessibilitySetUserDefinedAdditionalElements:(id)arg1;
 - (id)_accessibilityUserDefinedAdditionalElements;
+- (void)_accessibilitySetSupplementaryHeaderViews:(id)arg1;
+- (void)_accessibilitySetSupplementaryFooterViews:(id)arg1;
 - (id)_accessibilitySupplementaryFooterViews;
 - (id)_accessibilitySupplementaryHeaderViews;
 - (_Bool)_accessibilityIsFirstElementForFocus;
@@ -541,6 +573,9 @@
 - (unsigned long long)_accessibilityRowCount;
 - (_Bool)_accessibilityImplementsDefaultRowRange;
 - (_Bool)_accessibilityShouldIncludeRowRangeInElementDescription;
+- (void)_accessibilitySetShouldIncludeRowRangeInElementDescription:(_Bool)arg1;
+- (void)_accessibilitySetUserDefinedShouldIncludeRowRangeInElementDescription:(id)arg1;
+- (id)_accessibilityUserDefinedShouldIncludeRowRangeInElementDescription;
 - (struct _NSRange)_accessibilityRowRange;
 - (struct _NSRange)_accessibilityRowRangeFromTableOrCollectionView:(_Bool *)arg1;
 - (struct _NSRange)_accessibilityColumnRange;
@@ -557,6 +592,7 @@
 - (id)accessibilityElementForRow:(unsigned long long)arg1 andColumn:(unsigned long long)arg2;
 - (void)_accessibilitySetContextDescriptors:(id)arg1;
 - (id)_accessibilityContextDescriptors;
+- (_Bool)_accessibilityIsNonDismissableStatusBarElement;
 - (_Bool)_accessibilityRetainsFocusOnScreenChange;
 - (id)_accessibilityCustomContent;
 - (id)accessibilityCustomContent;
@@ -568,6 +604,8 @@
 - (_Bool)_accessibilityCanBeFirstResponderWhenNotAnElement;
 - (_Bool)_accessibilityShouldSuppressCustomActionsHint;
 - (_Bool)_accessibilityViewIsMacIdiom;
+- (void)_accessibilitySetSupportsChartsV2:(_Bool)arg1;
+- (_Bool)_accessibilitySupportsChartsV2;
 - (_Bool)_accessibilityIsRemoteElement;
 - (id)_accessibilityPreferredScrollActions;
 - (id)_accessibilityTraitsInspectorHumanReadable;
@@ -592,9 +630,13 @@
 - (id)_accessibilityProcessElementsInDirection:(long long)arg1 forParameter:(id)arg2;
 - (id)_accessibilityProcessChildrenForParameter:(id)arg1;
 - (id)_accessibilityGroupedParent;
+- (id)_axNavigationalGroupParentOfChild:(id)arg1;
 - (id)_accessibilityElementHelp;
 - (void)_accessibilitySetElementHelp:(id)arg1;
 - (_Bool)_accessibilityIsGroupedParent;
+- (_Bool)_accessibilityIncludeRoleDescription;
+- (_Bool)_accessibilityIncludeRoleInGroupNavigationOnly;
+- (unsigned long long)accessibilitySemanticGroupChildrentCount;
 - (id)_accessibilityAXAttributedUserInputLabelsIncludingFallbacks;
 - (id)_accessibilityAXAttributedUserInputLabels;
 - (id)_accessibilityAXAttributedHint;
@@ -647,6 +689,7 @@
 - (id)_accessibilityNextElementsForSpeakThis;
 - (id)_accessibilitySpeakThisLeafDescendants;
 - (id)_accessibilityFirstElementsForSpeakThis;
+- (id)_accessibilityFirstContainedElementForTechnology:(id)arg1 honoringGroups:(_Bool)arg2 shouldAlwaysScroll:(_Bool)arg3;
 - (id)_accessibilityFirstElement;
 - (id)_accessibilityFirstElementForFocusWithOptions:(id)arg1;
 - (id)_accessibilityFirstElementForFocus;
@@ -657,6 +700,7 @@
 - (void)_setAccessibilityServesAsFirstElement:(_Bool)arg1;
 - (_Bool)_accessibilityServesAsFirstElement;
 - (_Bool)_accessibilityIsStarkElement;
+- (_Bool)_accessibilityIsVisibleByCompleteHitTest:(_Bool)arg1;
 - (_Bool)_accessibilityIsVisibleByCompleteHitTest;
 - (struct CGPoint)_accessibilityVisiblePointHitTestingAnyElement:(_Bool)arg1;
 - (void)_accessibilityMarkElementForVisiblePointHitTest:(_Bool)arg1;
@@ -677,6 +721,8 @@
 - (_Bool)_accessibilityIsTouchContainer;
 - (void)_accessibilityAddTrait:(unsigned long long)arg1;
 - (void)_accessibilityRemoveTrait:(unsigned long long)arg1;
+- (_Bool)_accessibilityRespondsToUserInteractionForElement:(id)arg1;
+- (_Bool)_accessibilityRespondsToUserInteraction;
 - (id)_accessibilityCustomActions;
 - (id)_retrieveCustomActionsForElement:(id)arg1;
 - (_Bool)_accessibilityPerformLegacyCustomAction:(id)arg1;
@@ -707,6 +753,7 @@
 - (_Bool)_accessibilityOverridesInstructionsHint;
 - (_Bool)_accessibilityOpaqueElementProvider;
 - (unsigned long long)accessibilityBlockquoteLevel;
+- (id)accessibilityErrorMessageElements;
 - (id)accessibilityFlowToElements;
 - (_Bool)_accessibilityShouldAvoidAnnouncing;
 - (_Bool)_accessibilityLastHitTestNearBorder;
@@ -717,6 +764,7 @@
 - (id)accessibilityMathMLSource;
 - (id)accessibilitySecondaryLabel;
 - (float)_accessibilityActivationDelay;
+- (_Bool)_acceessibilityUIKitIsUserInteractionDisabled;
 - (_Bool)_accessibilityIsUserInteractionEnabled;
 - (_Bool)_allowCustomActionHintSpeakOverride;
 - (_Bool)_accessibilitySupportsMultipleCustomRotorTitles;
@@ -786,9 +834,10 @@
 - (void)_accessibilityResetContainerElements;
 - (_Bool)_accessibilityUsesScrollParentForOrdering;
 - (void)_accessibilitySetUsesScrollParentForOrdering:(_Bool)arg1;
-- (_Bool)_accessibilityServesAsContainingParentForOrdering;
 - (id)_accessibilityContainerForAccumulatingCustomRotorItems;
 - (id)accessibilityContainerElements;
+- (_Bool)_accessibilityIsPHAssetLocallyAvailable;
+- (id)_accessibilityPHAssetLocalIdentifier;
 - (id)_accessibilityMediaAnalysisElement;
 - (struct CGRect)_accessibilityMediaAnalysisFrame;
 - (unsigned int)_accessibilityEffectiveMediaAnalysisOptions;
@@ -815,7 +864,7 @@
 - (struct CGPoint)_accessibilityScrollRectToVisible:(struct CGRect)arg1;
 - (void)_accessibilityScrollToPoint:(struct CGPoint)arg1;
 - (_Bool)_accessibilityAdjustScrollOffset:(struct CGPoint)arg1;
-- (_Bool)_animateScrollViewWithFenceHandle:(id)arg1 amount:(double)arg2 point:(struct CGPoint)arg3;
+- (_Bool)_animateScrollViewWithScrollAmount:(double)arg1 point:(struct CGPoint)arg2;
 - (_Bool)_accessibilitySavePhotoLabel:(id)arg1;
 - (_Bool)_accessibilityShouldAttemptScrollToFrameOnParentView;
 - (_Bool)_accessibilityBaseScrollToVisible;
@@ -880,6 +929,7 @@
 - (_Bool)accessibilityScrollDownPage;
 - (_Bool)accessibilityScrollUpPage;
 - (struct CGRect)accessibilityFrameForScrolling;
+- (_Bool)_accessibilityShouldIncludeKeyboardInRemoteSubstituteChildren;
 - (_Bool)_accessibilityIgnoresStatusBarFrame;
 - (struct _NSRange)_accessibilityRawRangeForUITextRange:(id)arg1;
 - (id)_accessibilityTextRangeFromNSRange:(struct _NSRange)arg1;
@@ -908,8 +958,6 @@
 - (_Bool)_accessibilityHitTestReverseOrder;
 - (_Bool)accessibilityStartStopToggle;
 - (_Bool)_accessibilitySecondaryActivate;
-- (void)accessibilityDecrement;
-- (void)accessibilityIncrement;
 - (id)accessibilityHitTest:(struct CGPoint)arg1;
 - (void)accessibilitySetValue:(id)arg1 forAttribute:(long long)arg2;
 - (_Bool)accessibilityPerformAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
@@ -957,8 +1005,10 @@
 - (id)_accessibilityRemoteSceneID;
 - (int)_accessibilityRemotePid;
 - (_Bool)_accessibilityHandlesRemoteFocusMovement;
+- (void)_accessibilityClearLastFocusedChild;
 - (void)_accessibilitySetFocusOnElement:(_Bool)arg1;
 - (_Bool)_accessibilityMoveFocusWithHeading:(unsigned long long)arg1 toElementMatchingQuery:(id)arg2;
+- (_Bool)_accessibilityMoveFocusWithHeading:(unsigned long long)arg1 byGroup:(_Bool)arg2;
 - (_Bool)_accessibilityMoveFocusWithHeading:(unsigned long long)arg1;
 - (_Bool)_drawsFocusRingWhenChildrenFocused;
 - (double)_axScaleTransformForFocusLayerLineWidth;
@@ -979,6 +1029,7 @@
 - (_Bool)_accessibilityFullscreenVideoViewIsVisible;
 - (_Bool)_accessibilityUIKitHasNativeFocus;
 - (_Bool)_accessibilityHasNativeFocus;
+- (id)_accessibilityRemoteElementForSceneID:(id)arg1;
 - (id)_accessibilitySpeakThisViews;
 - (id)_accessibilitySpeakThisViewController;
 - (id)_accessibilitySpeakThisPreferredUnderlineColor;
@@ -1003,9 +1054,14 @@
 - (struct CGPoint)_accessibilityScreenPointForSceneReferencePoint:(struct CGPoint)arg1;
 - (_Bool)_accessibilityHandleMagicTap;
 - (_Bool)_accessibilityHandleMagicTapForPronunciation;
+- (void)_setAccessibilityChartDescriptorBlock:(CDUnknownBlockType)arg1;
+- (void)_accessibilitySetFocusRingStyle:(long long)arg1;
+- (long long)_accessibilityFocusRingStyle;
+- (void)_setAccessibilityCustomContentBlock:(CDUnknownBlockType)arg1;
 - (void)_setAccessibilityHeadingLevelBlock:(CDUnknownBlockType)arg1;
 - (void)_setAccessibilityActivateParagraphInTextViewRangeBlock:(CDUnknownBlockType)arg1;
 - (void)_setAccessibilityFrameForSortingBlock:(CDUnknownBlockType)arg1;
+- (void)_setAccessibilitySupplementaryViewSectionHeaderIdentifiersBlock:(CDUnknownBlockType)arg1;
 - (void)_setAccessibilityCustomActionsBlock:(CDUnknownBlockType)arg1;
 - (void)_setAccessibilityIsRealtimeElementBlock:(CDUnknownBlockType)arg1;
 - (void)_setAccessibilityPerformEscapeBlock:(CDUnknownBlockType)arg1;
@@ -1068,6 +1124,7 @@
 - (id)_accessibilityUserTestingSnapshotAncestorsWithAttributes:(id)arg1 maxDepth:(unsigned long long)arg2 maxChildren:(unsigned long long)arg3 maxArrayCount:(unsigned long long)arg4 honorsModalViews:(_Bool)arg5;
 - (id)_accessibilityUserTestingSnapshotDescendantsWithAttributes:(id)arg1 maxDepth:(unsigned long long)arg2 maxChildren:(unsigned long long)arg3 maxArrayCount:(unsigned long long)arg4 honorsModalViews:(_Bool)arg5;
 - (_Bool)_accessibilityUserTestingIsElementClassAcceptable;
+- (id)_accessibilityBaseImplementationUserTestingChildren;
 - (id)_accessibilityUserTestingChildren;
 - (_Bool)_accessibilityFauxTableViewCellsDisabled;
 - (void)_setAccessibilityFauxTableViewCellsDisabled:(_Bool)arg1;

@@ -10,6 +10,7 @@
 {
 }
 
++ (_Bool)isSystemRemoteAutomationEnabled;
 @property(nonatomic) _Bool allowsRemoteAutomation;
 
 @end

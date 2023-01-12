@@ -6,7 +6,7 @@
 
 #import <VoiceShortcuts/NSObject-Protocol.h>
 
-@class CKRecord, CKRecordID, CKRecordZone, CKRecordZoneID, CKSyncEngine, CKSyncEngineBatch, NSArray, NSData, NSError, NSString;
+@class CKRecord, CKRecordID, CKRecordZone, CKRecordZoneID, CKSyncEngine, NSData, NSError, NSString;
 
 @protocol CKSyncEngineDataSource <NSObject>
 - (void)syncEngine:(CKSyncEngine *)arg1 didUpdateMetadata:(NSData *)arg2;
@@ -24,9 +24,8 @@
 - (void)syncEngine:(CKSyncEngine *)arg1 zoneWithIDChanged:(CKRecordZoneID *)arg2;
 - (void)syncEngine:(CKSyncEngine *)arg1 failedToDeleteRecordZoneWithID:(CKRecordZoneID *)arg2 error:(NSError *)arg3;
 - (void)syncEngine:(CKSyncEngine *)arg1 failedToSaveRecordZone:(CKRecordZone *)arg2 error:(NSError *)arg3;
+- (void)syncEngine:(CKSyncEngine *)arg1 failedToFetchChangesForRecordZoneID:(CKRecordZoneID *)arg2 error:(NSError *)arg3;
 - (void)syncEngine:(CKSyncEngine *)arg1 didDeleteRecordZoneWithID:(CKRecordZoneID *)arg2;
 - (void)syncEngine:(CKSyncEngine *)arg1 didSaveRecordZone:(CKRecordZone *)arg2;
-- (void)syncEngine:(CKSyncEngine *)arg1 didCompleteModifyRecordsBatch:(CKSyncEngineBatch *)arg2 withSavedRecords:(NSArray *)arg3 deletedRecordIDs:(NSArray *)arg4 error:(NSError *)arg5;
-- (CKSyncEngineBatch *)syncEngine:(CKSyncEngine *)arg1 nextBatchOfRecordsToModifyWithRecordIDsPendingSave:(NSArray *)arg2 recordIDsPendingDelete:(NSArray *)arg3;
 @end
 

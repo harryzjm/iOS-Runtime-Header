@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PKPaymentPass, PKPeerPaymentAccount, UIColor, UILabel, UIView;
+@class PKPaymentPass, PKPeerPaymentAccount, PKTransitBalanceModel, UIColor, UILabel, UIView;
 
 @interface PKPaymentPassTableViewCell
 {
@@ -17,12 +17,14 @@
     UIColor *_subTextLabelColor;
     UIColor *_disabledMainLabelColor;
     UIColor *_disabledSubTextLabelColor;
+    PKTransitBalanceModel *_transitBalanceModel;
 }
 
 + (double)heightForCellWithMinimum:(double)arg1 hasSubTitle:(_Bool)arg2;
 + (id)subTitleFont;
 + (id)titleFont;
 - (void).cxx_destruct;
+@property(retain, nonatomic) PKTransitBalanceModel *transitBalanceModel; // @synthesize transitBalanceModel=_transitBalanceModel;
 @property(retain, nonatomic) UIColor *disabledSubTextLabelColor; // @synthesize disabledSubTextLabelColor=_disabledSubTextLabelColor;
 @property(retain, nonatomic) UIColor *disabledMainLabelColor; // @synthesize disabledMainLabelColor=_disabledMainLabelColor;
 @property(retain, nonatomic) UIColor *subTextLabelColor; // @synthesize subTextLabelColor=_subTextLabelColor;

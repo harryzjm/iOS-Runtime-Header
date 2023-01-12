@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSData, NSString, PFCameraMetadata, VNImageAestheticsObservation;
+@class NSArray, NSData, NSDictionary, NSString, PFCameraMetadata, VNImageAestheticsObservation;
 
 @interface _PLIngestJobCameraMetadata : NSObject
 {
@@ -18,6 +18,7 @@
     NSData *_sceneprintData;
     NSArray *_junkImageClassificationObservations;
     VNImageAestheticsObservation *_imageAestheticsObservation;
+    NSDictionary *_smartCamInfo;
     PFCameraMetadata *_cameraMetadata;
     PFCameraMetadata *_overCaptureCameraMetadata;
 }

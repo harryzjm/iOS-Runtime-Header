@@ -10,7 +10,9 @@
 
 @protocol GCControllerProductInfo <GCControllerComponent>
 @property(readonly, copy, getter=isAttachedToDevice) NSNumber *attachedToDevice;
+@property(readonly, copy) NSString *anonymizedIdentifier;
 @property(readonly, copy) NSString *vendorName;
+@property(readonly, copy) NSString *detailedProductCategory;
 @property(readonly, copy) NSString *productCategory;
 @end
 

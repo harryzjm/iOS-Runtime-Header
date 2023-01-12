@@ -15,7 +15,8 @@
 + (id)suggestedEventInfoWithOpaqueKey:(id)arg1 uniqueKey:(id)arg2;
 - (id)semanticIdentifier;
 @property(nonatomic) EKPersistentEvent *owner; // @dynamic owner;
-@property(copy, nonatomic) NSDate *timestamp; // @dynamic timestamp;
+- (void)setTimestampAsDate:(id)arg1;
+- (id)timestampAsDate;
 @property(nonatomic) _Bool changesAcknowledged; // @dynamic changesAcknowledged;
 @property(nonatomic) unsigned long long changedFields; // @dynamic changedFields;
 @property(copy, nonatomic) NSString *extractionGroupIdentifier; // @dynamic extractionGroupIdentifier;
@@ -23,6 +24,9 @@
 @property(copy, nonatomic) NSString *opaqueKey; // @dynamic opaqueKey;
 - (int)entityType;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+
+// Remaining properties
+@property(copy, nonatomic) NSDate *timestamp; // @dynamic timestamp;
 
 @end
 

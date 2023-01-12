@@ -22,22 +22,22 @@
     id <WBSURLCompletionDataSource> _dataSource;
 }
 
-+ (_Bool)_matchIsNotURLMatchAndTitleLooksLikeURLForBookmarkAndHistoryCompletionMatch:(const struct BookmarkAndHistoryCompletionMatch *)arg1;
++ (_Bool)_matchIsNotURLMatchAndTitleLooksLikeURLForBookmarkAndHistoryCompletionMatch:(const void *)arg1;
 + (void)initializeURLCompletionOnMainThread;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <WBSURLCompletionDataSource> dataSource; // @synthesize dataSource=_dataSource;
-- (void)_getUnsortedPrefixMatchesForTypedString:(id)arg1 historyMatches:(Vector_3aefaf4b *)arg2 bookmarkMatches:(Vector_3aefaf4b *)arg3;
-- (void)_getUnsortedFullTextMatchesForTypedString:(id)arg1 historyMatches:(Vector_3aefaf4b *)arg2 bookmarkMatches:(Vector_3aefaf4b *)arg3 dataTypes:(unsigned int)arg4;
-- (void)_getSortedMatchesForTypedString:(id)arg1 topHits:(Vector_3aefaf4b *)arg2 historyMatches:(Vector_3aefaf4b *)arg3 historyLimit:(unsigned long long)arg4 bookmarkMatches:(Vector_3aefaf4b *)arg5 bookmarkLimit:(unsigned long long)arg6 prefixMatchesOnly:(_Bool)arg7;
-- (void)_removeMatchesWithTitlesThatLookLikeURLsRemovedFromMatches:(Vector_3aefaf4b *)arg1;
-- (void)_getSortedPrefixMatchesForTypedString:(id)arg1 topHits:(Vector_3aefaf4b *)arg2 historyMatches:(Vector_3aefaf4b *)arg3 historyLimit:(unsigned long long)arg4 bookmarkMatches:(Vector_3aefaf4b *)arg5 bookmarkLimit:(unsigned long long)arg6;
-- (void)_getSortedFullTextMatchesForTypedString:(id)arg1 topHits:(Vector_3aefaf4b *)arg2 historyMatches:(Vector_3aefaf4b *)arg3 historyLimit:(unsigned long long)arg4 bookmarkMatches:(Vector_3aefaf4b *)arg5 bookmarkLimit:(unsigned long long)arg6;
+- (void)_getUnsortedPrefixMatchesForTypedString:(id)arg1 historyMatches:(void *)arg2 bookmarkMatches:(void *)arg3;
+- (void)_getUnsortedFullTextMatchesForTypedString:(id)arg1 historyMatches:(void *)arg2 bookmarkMatches:(void *)arg3 dataTypes:(unsigned int)arg4;
+- (void)_getSortedMatchesForTypedString:(id)arg1 topHits:(void *)arg2 historyMatches:(void *)arg3 historyLimit:(unsigned long long)arg4 bookmarkMatches:(void *)arg5 bookmarkLimit:(unsigned long long)arg6 searchParameters:(id)arg7 prefixMatchesOnly:(_Bool)arg8;
+- (void)_removeMatchesWithTitlesThatLookLikeURLsRemovedFromMatches:(void *)arg1;
+- (void)_getSortedPrefixMatchesForTypedString:(id)arg1 topHits:(void *)arg2 historyMatches:(void *)arg3 historyLimit:(unsigned long long)arg4 bookmarkMatches:(void *)arg5 bookmarkLimit:(unsigned long long)arg6 searchParameters:(id)arg7;
+- (void)_getSortedFullTextMatchesForTypedString:(id)arg1 topHits:(void *)arg2 historyMatches:(void *)arg3 historyLimit:(unsigned long long)arg4 bookmarkMatches:(void *)arg5 bookmarkLimit:(unsigned long long)arg6 searchParameters:(id)arg7;
 - (void)clearMatchesCaches;
 - (void)clearHistoryMatchesCache;
 - (void)clearBookmarkMatchesCaches;
 - (void)clearBookmarkMatchesCachesKeepingEmptyValues:(_Bool)arg1;
-- (void)getBestMatchesForTypedString:(id)arg1 topHits:(id *)arg2 matches:(id *)arg3 limit:(unsigned long long)arg4 forQueryID:(long long)arg5;
+- (void)getBestMatchesForTypedString:(id)arg1 topHits:(id *)arg2 matches:(id *)arg3 limit:(unsigned long long)arg4 forQueryID:(long long)arg5 withSearchParameters:(id)arg6;
 - (id)init;
 
 @end

@@ -8,7 +8,6 @@
 
 @class CKDPCSData;
 
-__attribute__((visibility("hidden")))
 @interface CKDPCSMemoryCacheEntry : NSObject
 {
     CKDPCSData *_pcsData;

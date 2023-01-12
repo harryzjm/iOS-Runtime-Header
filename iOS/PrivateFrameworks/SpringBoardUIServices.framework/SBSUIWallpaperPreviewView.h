@@ -6,12 +6,12 @@
 
 #import <UIKit/UIView.h>
 
-#import <SpringBoardUIServices/SBFIrisWallpaperViewDelegate-Protocol.h>
+#import <SpringBoardUIServices/SBFIrisWallpaperPlayerDelegate-Protocol.h>
 
 @class NSString, SBFLockScreenDateView, SBFWallpaperView, UIButton, UILabel, UIViewPropertyAnimator, _SBUIWallpaperInstructionView, _UILegibilityLabel;
 @protocol SBSUIWallpaperPreviewViewDelegate;
 
-@interface SBSUIWallpaperPreviewView : UIView <SBFIrisWallpaperViewDelegate>
+@interface SBSUIWallpaperPreviewView : UIView <SBFIrisWallpaperPlayerDelegate>
 {
     UIViewPropertyAnimator *_cropInstructionsAnimator;
     UIViewPropertyAnimator *_effectInstructionsAnimator;
@@ -40,7 +40,7 @@
 @property(readonly, nonatomic) SBFWallpaperView *wallpaperView; // @synthesize wallpaperView=_wallpaperView;
 @property(retain, nonatomic) SBFLockScreenDateView *dateView; // @synthesize dateView=_dateView;
 @property(nonatomic) __weak id <SBSUIWallpaperPreviewViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)irisWallpaperViewPlaybackStateDidChange:(id)arg1;
+- (void)irisWallpaperPlayerPlaybackStateDidChange:(id)arg1;
 - (void)_layoutSetButton;
 - (void)_layoutCancelButton;
 - (void)_layoutParallaxButton;

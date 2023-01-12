@@ -6,24 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class NSExtension, NSUUID;
-@protocol PKPlugIn;
+@class NSString, NSUUID;
 
 @interface _UIRemoteViewService : NSObject
 {
-    _Bool _overridesHostAppearance;
-    NSExtension *_extension;
-    NSUUID *_contextToken;
 }
 
-- (void).cxx_destruct;
-@property(copy, nonatomic) NSUUID *contextToken; // @synthesize contextToken=_contextToken;
-@property(readonly, nonatomic) _Bool overridesHostAppearance; // @synthesize overridesHostAppearance=_overridesHostAppearance;
-@property(retain, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
-- (void)updateOverridesHostAppearance;
-@property(retain, nonatomic) id <PKPlugIn> plugin;
++ (id)allocWithZone:(struct _NSZone *)arg1;
+- (void)endUsing:(CDUnknownBlockType)arg1;
+- (void)beginUsing:(CDUnknownBlockType)arg1;
+- (id)init;
 - (id)initWithExtension:(id)arg1 andContextToken:(id)arg2;
 - (id)initWithPlugIn:(id)arg1 andContextToken:(id)arg2;
+- (id)_init;
+
+// Remaining properties
+@property(readonly, copy, nonatomic) NSUUID *contextToken; // @dynamic contextToken;
+@property(readonly, nonatomic) NSString *identifier; // @dynamic identifier;
+@property(readonly, nonatomic) NSUUID *multipleInstanceUUID; // @dynamic multipleInstanceUUID;
+@property(readonly, nonatomic) _Bool multipleInstances; // @dynamic multipleInstances;
+@property(readonly, nonatomic) _Bool overridesHostAppearance; // @dynamic overridesHostAppearance;
+@property(readonly, nonatomic) int processIdentifier; // @dynamic processIdentifier;
+@property(readonly, nonatomic) NSString *viewControllerClassName; // @dynamic viewControllerClassName;
+@property(readonly, nonatomic) NSString *xpcServiceNameRoot; // @dynamic xpcServiceNameRoot;
 
 @end
 

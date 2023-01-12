@@ -8,7 +8,7 @@
 
 #import <NewsCore/FCHeadlineProviding-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, FCArticleAudioTrack, FCCoverArt, FCFeedPersonalizedItemScoreProfile, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCIssue, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSSet, NSString, NSURL;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLLIVERPOOLTagMetadata, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, FCArticleAudioTrack, FCColor, FCCoverArt, FCFeedPersonalizedItemScoreProfile, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCIssue, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSSet, NSString, NSURL;
 @protocol FCChannelProviding, FCHeadlineMetadata, FCHeadlineProviding, FCHeadlineStocksFields, FCNativeAdProviding;
 
 @interface FCProxyHeadline : NSProxy <FCHeadlineProviding>
@@ -26,6 +26,7 @@
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (_Bool)respondsToSelector:(SEL)arg1;
 - (_Bool)conformsToProtocol:(id)arg1;
+@property(readonly, copy, nonatomic) id <FCHeadlineMetadata> appliedOverrideMetadata;
 @property(readonly, copy, nonatomic) NSString *shortExcerpt;
 @property(readonly, nonatomic) FCTopStoriesStyleConfiguration *storyStyle;
 @property(readonly, nonatomic) unsigned long long storyType;
@@ -42,6 +43,7 @@
 @property(readonly, copy, nonatomic) NSString *articleID;
 @property(readonly, nonatomic) NSString *articleRecirculationConfigJSON;
 @property(readonly, nonatomic) id <FCNativeAdProviding> associatedAd;
+@property(readonly, copy, nonatomic) NSArray *authors;
 @property(readonly, nonatomic) long long backendArticleVersion;
 @property(readonly, nonatomic) NSData *backingArticleRecordData;
 @property(readonly, copy, nonatomic) NSArray *blockedStorefrontIDs;
@@ -56,11 +58,12 @@
 @property(readonly, nonatomic) FCCoverArt *coverArt;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, nonatomic, getter=isDeleted) _Bool deleted;
+@property(readonly, nonatomic) _Bool disableBookmarking;
 @property(readonly, nonatomic, getter=isDisplayingAsNativeAd) _Bool displayAsNativeAd;
+@property(readonly, copy, nonatomic) NSString *excerpt;
 @property(readonly, copy, nonatomic) FCHeadlineExperimentalTitleMetadata *experimentalTitleMetadata;
 @property(readonly, nonatomic, getter=isExplicitContent) _Bool explicitContent;
 @property(readonly, nonatomic, getter=isFeatureCandidate) _Bool featureCandidate;
-@property(readonly, nonatomic) long long feedElementType;
 @property(readonly, nonatomic) unsigned long long feedHalfLifeMilliseconds;
 @property(readonly, copy, nonatomic) NSString *feedID;
 @property(readonly, nonatomic) unsigned long long feedOrder;
@@ -82,6 +85,7 @@
 @property(readonly, copy, nonatomic) NSString *identifier;
 @property(readonly, nonatomic) _Bool isBlockedExplicitContent;
 @property(readonly, nonatomic) _Bool isDraft;
+@property(readonly, nonatomic) _Bool isEvergreen;
 @property(readonly, nonatomic) _Bool isFeatured;
 @property(readonly, nonatomic) _Bool isFullTrackAvailableToAll;
 @property(readonly, nonatomic) _Bool isLocalDraft;
@@ -91,6 +95,8 @@
 @property(readonly, copy, nonatomic) NSString *language;
 @property(readonly, copy, nonatomic) NSDate *lastFetchedDate;
 @property(readonly, copy, nonatomic) NSDate *lastModifiedDate;
+@property(readonly, nonatomic) double layeredThumbnailAspectRatio;
+@property(readonly, nonatomic) NSString *layeredThumbnailJSON;
 @property(readonly, copy, nonatomic) NSArray *linkedArticleIDs;
 @property(readonly, copy, nonatomic) NSArray *linkedIssueIDs;
 @property(readonly, copy, nonatomic) NSString *localDraftPath;
@@ -100,6 +106,8 @@
 @property(readonly, nonatomic) FCArticleAudioTrack *narrativeTrack;
 @property(readonly, nonatomic) FCArticleAudioTrack *narrativeTrackSample;
 @property(readonly, nonatomic) NSString *narrativeTrackTextRanges;
+@property(readonly, copy, nonatomic) NSArray *narrators;
+@property(readonly, copy, nonatomic) NSString *nativeAdCampaignData;
 @property(readonly, nonatomic) _Bool needsRapidUpdates;
 @property(readonly, nonatomic) unsigned long long order;
 @property(readonly, nonatomic, getter=isPaid) _Bool paid;
@@ -113,6 +121,7 @@
 @property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *publisherConversionStats;
 @property(readonly, copy, nonatomic) NSString *publisherID;
 @property(readonly, nonatomic) NSArray *publisherSpecifiedArticleIDs;
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLTagMetadata *publisherTagMetadata;
 @property(readonly, copy, nonatomic) NSString *referencedArticleID;
 @property(readonly, copy, nonatomic) NSArray *relatedArticleIDs;
 @property(readonly, nonatomic) unsigned long long role;
@@ -129,6 +138,7 @@
 @property(readonly, copy, nonatomic) NSString *sponsoredBy;
 @property(readonly, nonatomic) id <FCHeadlineStocksFields> stocksFields;
 @property(readonly) Class superclass;
+@property(readonly, copy, nonatomic) NSString *surfacedByArticleListID;
 @property(readonly, copy, nonatomic) NSString *surfacedByBinID;
 @property(readonly, copy, nonatomic) NSString *surfacedByChannelID;
 @property(readonly, copy, nonatomic) NSString *surfacedBySectionID;
@@ -137,6 +147,10 @@
 @property(readonly, nonatomic) FCHeadlineThumbnail *thumbnail;
 @property(readonly, nonatomic) struct CGRect thumbnailFocalFrame;
 @property(readonly, nonatomic) FCHeadlineThumbnail *thumbnailHQ;
+@property(readonly, nonatomic) FCColor *thumbnailImageAccentColor;
+@property(readonly, nonatomic) FCColor *thumbnailImageBackgroundColor;
+@property(readonly, nonatomic) FCColor *thumbnailImagePrimaryColor;
+@property(readonly, nonatomic) FCColor *thumbnailImageTextColor;
 @property(readonly, nonatomic) FCHeadlineThumbnail *thumbnailLQ;
 @property(readonly, nonatomic) FCHeadlineThumbnail *thumbnailMedium;
 @property(readonly, nonatomic) FCHeadlineThumbnail *thumbnailUltraHQ;

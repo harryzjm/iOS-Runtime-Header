@@ -7,6 +7,7 @@
 #import <PhotosUICore/PXActivityActionDelegate-Protocol.h>
 
 @class NSMapTable, NSMutableDictionary, NSString, PHPerson, PXAssetActionPerformer, PXPhotoKitAssetsDataSourceManager, PXPhotoKitImportStatusManager, PXPhotosDataSource;
+@protocol PXRadarConfigurationProvider;
 
 @interface PXPhotoKitAssetActionManager <PXActivityActionDelegate>
 {
@@ -14,6 +15,7 @@
     PXPhotoKitImportStatusManager *_importStatusManager;
     NSString *_importSessionID;
     PHPerson *_person;
+    id <PXRadarConfigurationProvider> _radarConfigurationProvider;
     NSMutableDictionary *__performerClassByType;
     NSMapTable *__actionTypeByBarButtonItem;
     PXAssetActionPerformer *__activePerformer;
@@ -23,28 +25,34 @@
 @property(retain, nonatomic, setter=_setActivePerformer:) PXAssetActionPerformer *_activePerformer; // @synthesize _activePerformer=__activePerformer;
 @property(readonly, nonatomic) NSMapTable *_actionTypeByBarButtonItem; // @synthesize _actionTypeByBarButtonItem=__actionTypeByBarButtonItem;
 @property(readonly, nonatomic) NSMutableDictionary *_performerClassByType; // @synthesize _performerClassByType=__performerClassByType;
+@property(retain, nonatomic) id <PXRadarConfigurationProvider> radarConfigurationProvider; // @synthesize radarConfigurationProvider=_radarConfigurationProvider;
 @property(retain, nonatomic) PHPerson *person; // @synthesize person=_person;
-@property(retain, nonatomic) NSString *importSessionID; // @synthesize importSessionID=_importSessionID;
+@property(copy, nonatomic) NSString *importSessionID; // @synthesize importSessionID=_importSessionID;
 @property(retain, nonatomic) PXPhotoKitImportStatusManager *importStatusManager; // @synthesize importStatusManager=_importStatusManager;
 @property(retain, nonatomic) PXPhotoKitAssetsDataSourceManager *dataSourceManager; // @synthesize dataSourceManager=_dataSourceManager;
 - (void)_handleActionPerformerComplete:(id)arg1 success:(_Bool)arg2 error:(id)arg3;
 - (void)executeActionForActionType:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)_handleBarButtonItem:(id)arg1;
 - (void)_handlePreviewAction:(id)arg1 actionType:(id)arg2;
+- (id)systemImageNameForActionType:(id)arg1;
 - (id)localizedTitleForActionType:(id)arg1 useCase:(unsigned long long)arg2;
 - (void)performActivity:(id)arg1;
 - (_Bool)canPerformWithActivityItems:(id)arg1 forActivity:(id)arg2;
 - (id)activityForActionType:(id)arg1;
 - (id)alertActionForActionType:(id)arg1;
+- (id)standardActionForActionType:(id)arg1;
 - (id)previewActionForActionType:(id)arg1 image:(id)arg2;
 - (id)barButtonItemForActionType:(id)arg1;
 - (id)actionPerformerForActionType:(id)arg1;
 - (_Bool)canPerformAssetVariationActions;
 - (_Bool)shouldEnableActionType:(id)arg1 onAsset:(id)arg2;
+- (_Bool)supportsActionType:(id)arg1;
 - (_Bool)canPerformActionType:(id)arg1;
 - (void)registerPerformerClass:(Class)arg1 forType:(id)arg2;
-- (id)_selectionSnapshotForPerfomerClass:(Class)arg1 applySubsetIfNeeded:(_Bool)arg2;
+- (id)_selectionSnapshotForPerformerClass:(Class)arg1 applySubsetIfNeeded:(_Bool)arg2;
 @property(readonly, nonatomic) PXPhotosDataSource *_dataSourceSnapshot;
+@property(readonly, nonatomic) unsigned long long presentationSource;
+- (void)setAdditionalPropertiesFromActionManager:(id)arg1;
 - (id)initWithSelectedObjectReference:(id)arg1 dataSourceManager:(id)arg2;
 - (id)initWithSelectionManager:(id)arg1;
 

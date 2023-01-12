@@ -10,11 +10,13 @@
 
 @interface WFCompactThumbnailViewController : UIViewController
 {
+    _Bool _contentHeightLikelyToChange;
     id <WFCompactThumbnailViewControllerDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <WFCompactThumbnailViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) _Bool contentHeightLikelyToChange; // @synthesize contentHeightLikelyToChange=_contentHeightLikelyToChange;
 - (_Bool)_canShowWhileLocked;
 - (void)invalidateContentSize;
 - (double)contentHeightForWidth:(double)arg1;

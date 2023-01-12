@@ -10,31 +10,31 @@
 
 @interface TSCEFormulaRewrite_Uids : NSObject
 {
-    vector_4dc5f307 _uids;
+    TSKUIDStructVectorTemplate_de88e035 _uids;
     NSIndexSet *_indexes;
-    struct unordered_map<TSU::UUIDData<TSP::UUIDData>, unsigned int, std::__1::hash<TSUUUID>, std::__1::equal_to<TSU::UUIDData<TSP::UUIDData>>, std::__1::allocator<std::__1::pair<const TSU::UUIDData<TSP::UUIDData>, unsigned int>>> _indexesForUids;
-    struct unordered_map<unsigned int, TSU::UUIDData<TSP::UUIDData>, std::__1::hash<unsigned int>, std::__1::equal_to<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, TSU::UUIDData<TSP::UUIDData>>>> _uidsForIndexes;
-    vector_4dc5f307 _viewOrderUids;
+    struct unordered_map<TSKUIDStruct, unsigned int, std::hash<TSKUIDStruct>, std::equal_to<TSKUIDStruct>, std::allocator<std::pair<const TSKUIDStruct, unsigned int>>> _indexesForUids;
+    struct unordered_map<unsigned int, TSKUIDStruct, std::hash<unsigned int>, std::equal_to<unsigned int>, std::allocator<std::pair<const unsigned int, TSKUIDStruct>>> _uidsForIndexes;
+    TSKUIDStructVectorTemplate_de88e035 _viewOrderUids;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly) NSIndexSet *indexes; // @synthesize indexes=_indexes;
-@property(readonly) const vector_4dc5f307 *viewOrderUids; // @synthesize viewOrderUids=_viewOrderUids;
-@property(readonly) const vector_4dc5f307 *uids; // @synthesize uids=_uids;
-- (void)saveToMessage:(struct IndexedUidsArchive *)arg1;
-- (id)initFromMessage:(const struct IndexedUidsArchive *)arg1;
+@property(readonly) const void *viewOrderUids; // @synthesize viewOrderUids=_viewOrderUids;
+@property(readonly) const void *uids; // @synthesize uids=_uids;
+- (void)saveToMessage:(void *)arg1;
+- (id)initFromMessage:(const void *)arg1;
 - (id)description;
 - (id)indexSetBySubtractingOurIndexesFromIndexSet:(id)arg1;
-- (vector_4dc5f307)uidsForIndexes:(id)arg1;
-- (unsigned short)columnIndexForUid:(const UUIDData_5fbc143e *)arg1;
-- (unsigned int)rowIndexForUid:(const UUIDData_5fbc143e *)arg1;
-- (UUIDData_5fbc143e)uidForIndex:(unsigned int)arg1;
+- (TSKUIDStructVectorTemplate_de88e035)uidsForIndexes:(id)arg1;
+- (unsigned short)columnIndexForUid:(const struct TSKUIDStruct *)arg1;
+- (unsigned int)rowIndexForUid:(const struct TSKUIDStruct *)arg1;
+- (struct TSKUIDStruct)uidForIndex:(unsigned int)arg1;
 - (_Bool)containsIndex:(unsigned int)arg1;
 - (void)unloadIndexes;
 - (void)loadIndexesForTable:(id)arg1 isRows:(_Bool)arg2 shuffleMap:(id)arg3;
-- (id)initWithUids:(const vector_4dc5f307 *)arg1 atIndexes:(const vector_f672cb0f *)arg2;
-- (id)initWithUids:(const vector_4dc5f307 *)arg1;
+- (id)initWithUids:(const void *)arg1 atIndexes:(const void *)arg2;
+- (id)initWithUids:(const void *)arg1;
 
 @end
 

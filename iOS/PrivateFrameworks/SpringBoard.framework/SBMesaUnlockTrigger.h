@@ -29,6 +29,7 @@
 - (void)menuButtonDown;
 - (void)significantUserInteractionOccurred;
 - (void)screenOff;
+- (void)screenOn;
 - (_Bool)bioUnlock;
 
 @end

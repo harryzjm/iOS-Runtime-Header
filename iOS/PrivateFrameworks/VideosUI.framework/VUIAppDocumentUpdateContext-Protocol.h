@@ -6,11 +6,11 @@
 
 #import <VideosUI/NSObject-Protocol.h>
 
-@class IKAppContext, IKUpdateServiceRequest, NSOrderedSet, NSString;
+@class IKUpdateServiceRequest, NSOrderedSet, NSString, VUIAppContext;
 
 @protocol VUIAppDocumentUpdateContext <NSObject>
 @property(readonly, nonatomic) IKUpdateServiceRequest *currentUpdateRequest;
-- (void)updateCurrentUpdateRequestWithAppContext:(IKAppContext *)arg1 documentRef:(NSString *)arg2;
+- (void)updateCurrentUpdateRequestWithAppContext:(VUIAppContext *)arg1 documentRef:(NSString *)arg2;
 - (void)updateRequestCompletedWithViewElements:(NSOrderedSet *)arg1 documentRef:(NSString *)arg2;
 @end
 

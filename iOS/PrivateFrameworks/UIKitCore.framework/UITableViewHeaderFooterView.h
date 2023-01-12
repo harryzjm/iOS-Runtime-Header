@@ -49,6 +49,7 @@
         unsigned int automaticallyUpdatesBackgroundViewConfiguration:1;
     } _headerFooterFlags;
     id <UITable> _table;
+    CDUnknownBlockType _configurationUpdateHandler;
 }
 
 + (double)defaultFooterHeightForStyle:(long long)arg1;
@@ -58,6 +59,7 @@
 + (id)_defaultFontForHeaderFooterView:(id)arg1;
 + (id)_defaultFontForTableViewStyle:(long long)arg1 isSectionHeader:(_Bool)arg2;
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType configurationUpdateHandler; // @synthesize configurationUpdateHandler=_configurationUpdateHandler;
 @property(retain, nonatomic) UIImage *backgroundImage; // @synthesize backgroundImage=_backgroundImage;
 @property(nonatomic) double maxTitleWidth; // @synthesize maxTitleWidth=_maxTitleWidth;
 @property(nonatomic) __weak id <UITable> table; // @synthesize table=_table;
@@ -73,6 +75,7 @@
 - (void)_tableViewDidUpdateMarginWidth;
 - (void)setTintColor:(id)arg1;
 - (_Bool)_hostsLayoutEngineAllowsTAMIC_NO;
+- (void)setTranslatesAutoresizingMaskIntoConstraints:(_Bool)arg1;
 - (void)setNeedsUpdateConstraints;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
 - (struct CGRect)_updatedContentViewFrameForTargetWidth:(double)arg1;
@@ -102,7 +105,6 @@
 - (struct CGRect)_backgroundRectForWidth:(double)arg1;
 @property(retain, nonatomic) UIView *backgroundView;
 - (void)_setupBackgroundView;
-- (void)_updateBackgroundImage;
 - (void)updateConfigurationUsingState:(id)arg1;
 - (void)_updateViewConfigurationsWithState:(unsigned long long)arg1;
 - (void)_layoutSystemBackgroundView;

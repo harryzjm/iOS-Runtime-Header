@@ -10,7 +10,6 @@
 
 @class CKDPUserPrivacySettings, NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface CKDPUserPrivacySettingsRetrieveResponse : PBCodable <NSCopying>
 {
     NSMutableArray *_applicationBundles;

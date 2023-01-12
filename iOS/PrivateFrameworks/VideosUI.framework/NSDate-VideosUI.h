@@ -7,6 +7,7 @@
 #import <Foundation/NSDate.h>
 
 @interface NSDate (VideosUI)
++ (id)vui_startOfDateInGMT:(id)arg1;
 @property(readonly, nonatomic) _Bool vui_isInTheFuture;
 @property(readonly, nonatomic) _Bool vui_isInThePast;
 @end

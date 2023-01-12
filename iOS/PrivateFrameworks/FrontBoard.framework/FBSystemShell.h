@@ -6,24 +6,24 @@
 
 #import <objc/NSObject.h>
 
-#import <FrontBoard/BKSSystemApplicationDelegate-Protocol.h>
 #import <FrontBoard/BSDescriptionProviding-Protocol.h>
 
-@class FBSystemShellInitializationContext, NSMutableArray, NSMutableSet, NSString, RBSAssertion;
+@class BKSSystemShellService, BSCompoundAssertion, FBSystemShellInitializationContext, NSMutableArray, NSMutableSet, NSString, RBSAssertion;
 
-@interface FBSystemShell : NSObject <BSDescriptionProviding, BKSSystemApplicationDelegate>
+@interface FBSystemShell : NSObject <BSDescriptionProviding>
 {
     FBSystemShellInitializationContext *_initializationContext;
     unsigned long long _state;
     id _observerToken;
     RBSAssertion *_runningAssertion;
+    BKSSystemShellService *_systemShellService;
     struct os_unfair_lock_s _lock;
     RBSAssertion *_lock_preventSleepAssertion;
     NSMutableSet *_lock_preventIdleSleepReasons;
     NSMutableArray *_lock_blocksToRunWhenReady;
+    BSCompoundAssertion *_lock_temporaryWatchdogAssertion;
 }
 
-+ (_Bool)systemApplicationIsAliveForWatchdog:(id)arg1;
 + (id)sharedInstance;
 + (id)_createSingletonWithOptions:(id)arg1;
 - (void).cxx_destruct;
@@ -36,9 +36,11 @@
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 @property(readonly, copy) NSString *description;
+- (void)_informSystemShellServiceDidFinishLaunching;
+- (void)_startSystemShellService;
 - (void)_addBlockToExecuteWhenReady:(CDUnknownBlockType)arg1;
-- (id)_bksSystemApplication;
 - (void)_initializationComplete;
+- (id)assertWatchdogEnabledForLimitedDurationForReason:(id)arg1;
 - (void)sendActionsToBackBoard:(id)arg1;
 - (void)readyForInteraction;
 - (id)_initWithOptions:(id)arg1;

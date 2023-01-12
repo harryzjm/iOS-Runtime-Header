@@ -10,40 +10,41 @@
 
 @interface TSCH3DChartResizer : NSObject
 {
-    TSCH3DChartBoundsLayout *mLayout;
-    TSCH3DChartType *mChartType;
-    TSCH3DScene *mScene;
-    TSCH3DChartScenePropertyAccessor *mAccessor;
-    float mMinStep;
-    float mPrecision;
-    struct ResizeData mPrevious;
-    struct ResizeData mCurrent;
-    tvec2_84d5962d mTarget;
-    unsigned long long mIndex;
-    CDStruct_b1c75024 mLayoutSettings;
+    TSCH3DChartBoundsLayout *_layout;
+    TSCH3DChartType *_chartType;
+    TSCH3DScene *_scene;
+    TSCH3DChartScenePropertyAccessor *_accessor;
+    float _minStep;
+    float _precision;
+    struct ResizeData _previous;
+    struct ResizeData _current;
+    tvec2_84d5962d _target;
+    unsigned long long _index;
+    CDStruct_c48db077 _layoutSettings;
 }
 
 + (id)resizerWithLayout:(id)arg1 chartType:(id)arg2;
 + (float)perspectiveness;
 + (float)minimumSize;
-+ (tvec2_84d5962d)adjustLabelWrapSize:(const tvec2_84d5962d *)arg1;
-+ (tvec2_84d5962d)adjustLabelWrapSize:(const tvec2_84d5962d *)arg1 forScene:(id)arg2;
++ (tvec2_84d5962d)adjustLabelWrapSize:(const void *)arg1;
++ (tvec2_84d5962d)adjustLabelWrapSize:(const void *)arg1 forScene:(id)arg2;
 - (id).cxx_construct;
-@property(nonatomic) float precision; // @synthesize precision=mPrecision;
-@property(nonatomic) float minStep; // @synthesize minStep=mMinStep;
-- (tvec2_84d5962d)resize:(const tvec2_84d5962d *)arg1 startingSize:(tvec2_84d5962d *)arg2;
-- (tvec2_84d5962d)updateResizerFromRequestedSize:(const tvec2_84d5962d *)arg1 startingSize:(tvec2_84d5962d *)arg2;
+- (void).cxx_destruct;
+@property(nonatomic) float precision; // @synthesize precision=_precision;
+@property(nonatomic) float minStep; // @synthesize minStep=_minStep;
+- (tvec2_84d5962d)resize:(const void *)arg1 startingSize:(void *)arg2;
+- (tvec2_84d5962d)updateResizerFromRequestedSize:(const void *)arg1 startingSize:(void *)arg2;
 - (float)containingViewportThreshold;
 - (void)readjustContainingViewport;
 - (void)adjustContainingViewport;
 - (tvec2_3b141483)containingViewportFromCurrentSize;
-- (void)initializeResizing:(tvec2_84d5962d *)arg1;
-- (void)setContainingViewport:(tvec2_3b141483 *)arg1;
-- (tvec2_3b141483)containingViewportFromSize:(tvec2_84d5962d *)arg1;
+- (void)initializeResizing:(void *)arg1;
+- (void)setContainingViewport:(void *)arg1;
+- (tvec2_3b141483)containingViewportFromSize:(void *)arg1;
 - (float)perspectiveness;
 - (void)loop;
 - (_Bool)resize1;
-- (void)setScale:(tvec3_17f03ce0 *)arg1;
+- (void)setScale:(void *)arg1;
 - (_Bool)currentCanImprove;
 - (tvec2_01ee4891)canImprove;
 - (void)seedResizeCondition;
@@ -51,11 +52,10 @@
 - (_Bool)checkImprovement;
 - (void)updateSteps;
 - (tvec3_17f03ce0)adjustedScale;
-- (tvec3_17f03ce0)clampDepthRatio:(tvec3_17f03ce0 *)arg1;
-- (tvec3_17f03ce0)clamp:(tvec3_17f03ce0 *)arg1;
-- (tvec3_17f03ce0)adjust:(tvec3_17f03ce0 *)arg1;
-- (tvec3_17f03ce0)adjust:(tvec3_17f03ce0 *)arg1 by:(float)arg2;
-- (void)gingerClamp;
+- (tvec3_17f03ce0)clampDepthRatio:(void *)arg1;
+- (tvec3_17f03ce0)clamp:(void *)arg1;
+- (tvec3_17f03ce0)adjust:(void *)arg1;
+- (tvec3_17f03ce0)adjust:(void *)arg1 by:(float)arg2;
 - (_Bool)allConverges;
 - (tvec2_01ee4891)converges;
 - (void)setStep:(float)arg1;

@@ -14,11 +14,10 @@
 + (unsigned int)minimumSupportedVersion;
 + (unsigned int)serializationVersion;
 - (void).cxx_destruct;
-@property(retain, nonatomic) ICDrawing *drawing; // @synthesize drawing=_drawing;
 - (id)serializeCurrentVersion:(unsigned int *)arg1;
 - (void)mergeVersion:(unsigned int)arg1 fromData:(id)arg2;
 - (unsigned long long)mergeWithDrawingVersionedDocument:(id)arg1;
-- (id)initWithData:(id)arg1 andReplicaID:(id)arg2;
+@property(readonly, nonatomic) ICDrawing *drawing; // @synthesize drawing=_drawing;
 
 @end
 

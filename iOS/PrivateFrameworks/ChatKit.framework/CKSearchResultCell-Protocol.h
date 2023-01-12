@@ -12,6 +12,7 @@
 + (NSString *)reuseIdentifier;
 @property(nonatomic, getter=_ck_isEditing, setter=_ck_setEditing:) _Bool _ck_editing;
 @property(nonatomic) struct UIEdgeInsets marginInsets;
+@property(readonly, copy, nonatomic) NSString *resultIdentifier;
 - (void)refreshForSearchTextIfNeeded:(NSString *)arg1;
 - (void)configureWithQueryResult:(CKSpotlightQueryResult *)arg1 searchText:(NSString *)arg2 mode:(unsigned long long)arg3;
 @end

@@ -6,7 +6,6 @@
 
 @class NSArray, NSData, NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface CKDFetchNotificationChangesURLRequest
 {
     NSMutableArray *_resultChangedNotifications;

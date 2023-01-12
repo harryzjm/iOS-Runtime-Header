@@ -7,40 +7,54 @@
 #import <StoreKit/NSObject-Protocol.h>
 
 @class NSArray, NSData, NSDate, NSDictionary, NSNumber, NSSet, NSString;
+@protocol ASDStoreKitPaymentProtocol, ASDStoreKitTransactionReceiverProtocol;
 
 @protocol ASDStoreKitServiceProtocol <NSObject>
+- (void)endAdImpressionWithConfig:(NSDictionary *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)startAdImpressionWithConfig:(NSDictionary *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)updateConversionValue:(NSNumber *)arg1;
 - (void)registerForInstallAttribution;
 - (void)repairArcadeApp;
 - (void)arcadeSubscriptionStatusWithNonce:(unsigned long long)arg1 resultHandler:(void (^)(NSData *, unsigned int, NSData *, unsigned int, NSError *))arg2;
 - (void)registerArcadeAppWithRandomFromLib:(NSData *)arg1 randomFromLibLength:(unsigned int)arg2 resultHandler:(void (^)(NSData *, unsigned int, NSData *, unsigned int, NSError *))arg3;
-- (void)handleInvalidReceipt:(void (^)(void))arg1;
+- (void)xcodeTestServerPortWithReplyBlock:(void (^)(long long))arg1;
+- (void)xcodeTestCertificatesWithReply:(void (^)(NSArray *, NSError *))arg1;
+- (void)manageSubscriptionsRequestWithReply:(void (^)(NSError *, NSData *))arg1;
+- (void)refundRequestForTransactionId:(NSNumber *)arg1 replyBlock:(void (^)(NSError *, NSData *))arg2;
 - (void)useAppStoreDaemonWithReplyBlock:(void (^)(_Bool))arg1;
 - (void)storefrontWithReplyBlock:(void (^)(NSString *, NSString *))arg1;
-- (void)renewReceiptWithOptions:(NSDictionary *)arg1 client:(NSDictionary *)arg2 replyBlock:(void (^)(_Bool, NSError *))arg3;
-- (void)deleteContentForProductID:(NSString *)arg1;
+- (void)statusForSubscriptionGroupID:(NSString *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)setPromotionInfo:(NSDictionary *)arg1 forClient:(NSDictionary *)arg2 reply:(void (^)(NSError *))arg3;
+- (void)setClientOverrides:(NSDictionary *)arg1 forBundleIdentifier:(NSString *)arg2 untilDate:(NSDate *)arg3 reply:(void (^)(NSError *))arg4;
 - (void)resumeDownloadWithID:(NSNumber *)arg1;
-- (void)pauseDownloadWithID:(NSNumber *)arg1;
-- (void)cancelDownloadWithID:(NSNumber *)arg1;
-- (void)addDownloadWithID:(NSNumber *)arg1;
-- (void)restoreCompletedTransactionsForUsername:(NSString *)arg1 client:(NSDictionary *)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
 - (void)restoreCompletedTransactionsToQueue:(NSString *)arg1 forUsername:(NSString *)arg2 withClient:(NSDictionary *)arg3 replyBlock:(void (^)(_Bool, NSError *))arg4;
+- (void)restoreCompletedTransactionsForUsername:(NSString *)arg1 client:(NSDictionary *)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
+- (void)requestProductsWithIdentifiers:(NSArray *)arg1 client:(NSDictionary *)arg2 replyBlock:(void (^)(NSArray *, NSArray *, NSError *))arg3;
+- (void)requestProductReviewWithInterfaceOrientation:(unsigned long long)arg1 bundleIdentifier:(NSString *)arg2 replyBlock:(void (^)(_Bool))arg3;
+- (void)requestProductReview;
+- (void)renewReceiptWithOptions:(NSDictionary *)arg1 client:(NSDictionary *)arg2 replyBlock:(void (^)(_Bool, NSError *))arg3;
 - (void)purchaseIntentsForClient:(NSDictionary *)arg1 clearOnRetrieval:(_Bool)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
 - (void)purchaseIntentAppInstallSheetOpenForBundleIdentifier:(NSString *)arg1 reply:(void (^)(void))arg2;
-- (void)setPromotionInfo:(NSDictionary *)arg1 forClient:(NSDictionary *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)promotionInfoForProductIdentifiers:(NSSet *)arg1 client:(NSDictionary *)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
-- (void)processPayment:(NSDictionary *)arg1 forClient:(NSDictionary *)arg2 reply:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)processPaymentWithBuyParamsString:(NSString *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
-- (void)finishPaymentWithIdentifier:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
-- (void)finishPaymentWithIdentifier:(NSString *)arg1;
-- (void)addPaymentToQueue:(NSString *)arg1 withInfo:(NSDictionary *)arg2 client:(NSDictionary *)arg3;
-- (void)requestProductsWithIdentifiers:(NSArray *)arg1 client:(NSDictionary *)arg2 replyBlock:(void (^)(NSArray *, NSArray *, NSError *))arg3;
-- (void)requestProductReview;
+- (void)processPayment:(NSDictionary *)arg1 forClient:(NSDictionary *)arg2 paymentDelegate:(id <ASDStoreKitPaymentProtocol>)arg3 reply:(void (^)(NSDictionary *, NSError *))arg4;
+- (void)presentCodeRedemptionSheet;
+- (void)pauseDownloadWithID:(NSNumber *)arg1;
+- (void)invalidateTransactionsAndStatusCacheWithReply:(void (^)(void))arg1;
+- (void)handleInvalidReceipt:(void (^)(void))arg1;
 - (void)forceSandboxForBundleIdentifier:(NSString *)arg1 untilDate:(NSDate *)arg2;
+- (void)finishPaymentWithIdentifier:(NSString *)arg1;
+- (void)finishPaymentWithIdentifier:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)enumerateUnfinishedTransactionsWithReceiver:(id <ASDStoreKitTransactionReceiverProtocol>)arg1 reply:(void (^)(NSError *))arg2;
+- (void)enumerateReceiptsForProductID:(NSString *)arg1 withReceiver:(id <ASDStoreKitTransactionReceiverProtocol>)arg2 reply:(void (^)(NSError *))arg3;
+- (void)enumerateCurrentReceiptsForProductID:(NSString *)arg1 withReceiver:(id <ASDStoreKitTransactionReceiverProtocol>)arg2 reply:(void (^)(NSError *))arg3;
+- (void)deleteContentForProductID:(NSString *)arg1;
 - (void)checkServerQueueForQueue:(NSString *)arg1 withClient:(NSDictionary *)arg2;
 - (void)checkServerQueueForClient:(NSDictionary *)arg1 reply:(void (^)(NSArray *, NSError *))arg2;
-- (void)presentCodeRedemptionSheet;
 - (void)checkForMessages;
+- (void)cancelDownloadWithID:(NSNumber *)arg1;
+- (void)authenticateAndSyncTransactionsAndStatusWithReply:(void (^)(NSError *))arg1;
 - (void)addPurchaseIntent:(NSDictionary *)arg1 reply:(void (^)(void))arg2;
+- (void)addDownloadWithID:(NSNumber *)arg1;
 @end
 

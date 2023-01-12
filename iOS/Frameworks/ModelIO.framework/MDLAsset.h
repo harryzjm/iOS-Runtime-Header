@@ -91,6 +91,7 @@
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 - (void)setComponent:(id)arg1 forProtocol:(id)arg2;
 @property(readonly, nonatomic) struct MDLAABB _bounds;
+@property(retain, nonatomic) id <MDLObjectContainerComponent> originals;
 @property(readonly, retain, nonatomic) NSURL *URL;
 
 @end

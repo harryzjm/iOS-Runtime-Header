@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *encoded;
     MISSING_TYPE *subsequence;
-    MISSING_TYPE *decodeContext;
+    MISSING_TYPE *decoder;
 }
 
 - (void).cxx_destruct;
@@ -24,10 +24,10 @@ __attribute__((visibility("hidden")))
 - (long long)substringChildCount;
 - (unsigned int)substringLength;
 - (unsigned int)substringAddedByCounter:(long long)arg1;
-- (unsigned int)substringAddedByReplica:(long long)arg1;
+- (id)substringAddedByReplica:(long long)arg1 withError:(id *)arg2;
 - (long long)substringAddedByCount;
 - (unsigned int)substringCharClock;
-- (unsigned int)substringCharReplica;
+- (id)substringCharReplicaWithError:(id *)arg1;
 - (void)decodeSubstring:(long long)arg1;
 - (long long)substringCount;
 - (id)addedByVersionWithError:(id *)arg1;

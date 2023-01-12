@@ -6,10 +6,10 @@
 
 #import <ContactsUI/NSObject-Protocol.h>
 
-@class CNPhotoPickerActionsModel, CNPhotoPickerProviderItem, NSIndexPath;
+@class CNPhotoPickerActionsModel, CNPhotoPickerProviderItem, NSIndexPath, UIView;
 
 @protocol CNPhotoPickerActionsDelegate <NSObject>
-- (void)actionsModel:(CNPhotoPickerActionsModel *)arg1 didDelete:(CNPhotoPickerProviderItem *)arg2 atIndexPath:(NSIndexPath *)arg3;
+- (void)actionsModel:(CNPhotoPickerActionsModel *)arg1 didDelete:(CNPhotoPickerProviderItem *)arg2 atIndexPath:(NSIndexPath *)arg3 withSourceView:(UIView *)arg4;
 - (void)actionsModel:(CNPhotoPickerActionsModel *)arg1 didDuplicate:(CNPhotoPickerProviderItem *)arg2 atIndexPath:(NSIndexPath *)arg3 completionBlock:(void (^)(void))arg4;
 - (void)actionsModel:(CNPhotoPickerActionsModel *)arg1 didEdit:(CNPhotoPickerProviderItem *)arg2 atIndexPath:(NSIndexPath *)arg3;
 - (void)actionsModel:(CNPhotoPickerActionsModel *)arg1 didAssignToContact:(CNPhotoPickerProviderItem *)arg2 atIndexPath:(NSIndexPath *)arg3;

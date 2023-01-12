@@ -12,7 +12,7 @@
 #import <RemoteUI/UINavigationControllerDelegate-Protocol.h>
 #import <RemoteUI/UIViewControllerTransitioningDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableDictionary, NSString, NSURLSessionConfiguration, NSUUID, RUILoader, RUINavigationController, RUIPage, RUIStyle, UINavigationController, UIViewController;
+@class NSArray, NSMutableArray, NSMutableDictionary, NSString, NSURLSessionConfiguration, NSUUID, RUILoader, RUINavigationController, RUIPage, RUIStyle, UIActivityIndicatorView, UINavigationController, UIViewController;
 @protocol RemoteUIControllerDelegate;
 
 @interface RemoteUIController : NSObject <RUILoaderDelegate, RUIObjectModelDelegate, RUIParserDelegate, UINavigationControllerDelegate, UIViewControllerTransitioningDelegate>
@@ -25,6 +25,7 @@
     NSString *_listeningForSMSIdentifier;
     NSString *_SMSAutoFillToken;
     _Bool _testMode;
+    UIActivityIndicatorView *_spinner;
     UIViewController *_hostViewController;
     RUILoader *_loader;
     NSString *_userAgentString;
@@ -101,6 +102,10 @@
 - (void)loadURL:(id)arg1 postBody:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_loadURL:(id)arg1 postBody:(id)arg2 fromObjectModel:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)loadRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_showPartialScreenModal:(id)arg1;
+- (void)presentLoadingSheet:(id)arg1;
+- (void)handleCancel:(id)arg1;
+- (void)modalNavigationWasDismissed;
 - (_Bool)_shouldAnimate;
 - (void)_enableTestMode;
 - (void)dealloc;

@@ -27,22 +27,16 @@
 
 + (_Bool)reportsProgress;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) unsigned char flags; // @synthesize flags=_flags;
 @property(readonly, nonatomic) GEODataRequestThrottlerToken *throttleToken; // @synthesize throttleToken=_throttleToken;
 @property(retain, nonatomic) GEOApplicationAuditToken *preferredAuditToken; // @synthesize preferredAuditToken=_auditToken;
-@property(retain, nonatomic) NSProgress *progress; // @synthesize progress=_progressToMirrorOverXPC;
 @property(readonly, nonatomic) GEOMapServiceTraits *traits; // @synthesize traits=_traits;
 @property(retain, nonatomic) GEOPeer *peer; // @synthesize peer=_peer;
 @property(retain, nonatomic) NSString *method; // @synthesize method=_method;
 @property(retain, nonatomic) NSString *service; // @synthesize service=_service;
-@property(retain, nonatomic) NSObject<OS_xpc_object> *object; // @synthesize object=_object;
 @property(readonly, copy) NSString *description;
 - (id)sendSync:(id)arg1 error:(id *)arg2;
 - (void)send:(id)arg1 withReply:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)send:(id)arg1;
-- (id)_prepareRequest;
-- (id)_createConnectionWithQueue:(id)arg1;
-@property(readonly, nonatomic) NSObject<OS_xpc_object> *replyDictionary;
 - (void)encodeToXPCDictionary:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1 error:(id *)arg2;
 - (id)initWithMessage:(id)arg1 traits:(id)arg2 auditToken:(id)arg3 throttleToken:(id)arg4;

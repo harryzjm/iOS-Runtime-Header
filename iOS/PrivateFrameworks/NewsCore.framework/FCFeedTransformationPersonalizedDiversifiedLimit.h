@@ -9,18 +9,18 @@
 #import <NewsCore/FCLimitAwareFeedTransforming-Protocol.h>
 
 @class NSString;
-@protocol FCFeedPersonalizing;
+@protocol FCPersonalizationFunctionProviding;
 
 @interface FCFeedTransformationPersonalizedDiversifiedLimit : NSObject <FCLimitAwareFeedTransforming>
 {
     unsigned long long _limit;
-    id <FCFeedPersonalizing> _feedPersonalizer;
+    id <FCPersonalizationFunctionProviding> _functionProvider;
 }
 
-+ (id)transformationWithPersonalizer:(id)arg1 limit:(unsigned long long)arg2;
-+ (id)transformationWithPersonalizer:(id)arg1;
++ (id)transformationWithFunctionProvider:(id)arg1 limit:(unsigned long long)arg2;
++ (id)transformationWithFunctionProvider:(id)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) id <FCFeedPersonalizing> feedPersonalizer; // @synthesize feedPersonalizer=_feedPersonalizer;
+@property(retain, nonatomic) id <FCPersonalizationFunctionProviding> functionProvider; // @synthesize functionProvider=_functionProvider;
 @property(nonatomic) unsigned long long limit; // @synthesize limit=_limit;
 - (id)transformFeedItems:(id)arg1 withRespectToLimit:(unsigned long long)arg2;
 - (id)transformFeedItems:(id)arg1;

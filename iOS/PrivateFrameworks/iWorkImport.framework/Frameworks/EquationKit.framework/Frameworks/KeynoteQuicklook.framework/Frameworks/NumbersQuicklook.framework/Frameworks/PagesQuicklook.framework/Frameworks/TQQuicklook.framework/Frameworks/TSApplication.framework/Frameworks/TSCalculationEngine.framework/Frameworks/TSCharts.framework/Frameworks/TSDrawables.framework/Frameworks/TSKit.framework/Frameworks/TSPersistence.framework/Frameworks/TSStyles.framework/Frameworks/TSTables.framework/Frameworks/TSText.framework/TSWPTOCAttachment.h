@@ -12,8 +12,8 @@
 
 - (void)wasRemovedFromDocumentRoot:(id)arg1;
 - (void)willBeAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
-- (void)saveTOCAttachmentMessage:(struct TOCAttachmentArchive *)arg1 archiver:(id)arg2;
-- (void)loadTOCAttachmentMessage:(const struct TOCAttachmentArchive *)arg1 fromUnarchiver:(id)arg2;
+- (void)saveTOCAttachmentMessage:(void *)arg1 archiver:(id)arg2;
+- (void)loadTOCAttachmentMessage:(const void *)arg1 fromUnarchiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
 @property(readonly, retain, nonatomic) TSWPTOCInfo *tocInfo;

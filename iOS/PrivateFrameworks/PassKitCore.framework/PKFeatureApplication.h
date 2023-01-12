@@ -9,7 +9,7 @@
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSString, NSURL, PKFeatureApplicationDeclineDetails, PKFeatureApplicationOfferDetails;
+@class NSData, NSDate, NSString, NSURL, PKFeatureApplicationDeclineDetails, PKFeatureApplicationInvitationDetails, PKFeatureApplicationOfferDetails;
 
 @interface PKFeatureApplication : NSObject <NSSecureCoding, NSCopying>
 {
@@ -17,6 +17,9 @@
     NSString *_applicationIdentifier;
     NSURL *_applicationBaseURL;
     unsigned long long _feature;
+    unsigned long long _featureProduct;
+    long long _applicationType;
+    NSString *_referenceIdentifier;
     unsigned long long _applicationState;
     unsigned long long _applicationStateReason;
     PKFeatureApplicationOfferDetails *_applicationOfferDetails;
@@ -25,10 +28,14 @@
     NSDate *_lastUpdated;
     NSString *_businessChatIdentifier;
     NSString *_coreIDVServiceProviderName;
+    NSString *_accountIdentifier;
+    PKFeatureApplicationInvitationDetails *_invitationDetails;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) PKFeatureApplicationInvitationDetails *invitationDetails; // @synthesize invitationDetails=_invitationDetails;
+@property(copy, nonatomic) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
 @property(copy, nonatomic) NSString *coreIDVServiceProviderName; // @synthesize coreIDVServiceProviderName=_coreIDVServiceProviderName;
 @property(copy, nonatomic) NSString *businessChatIdentifier; // @synthesize businessChatIdentifier=_businessChatIdentifier;
 @property(retain, nonatomic) NSDate *lastUpdated; // @synthesize lastUpdated=_lastUpdated;
@@ -38,6 +45,9 @@
 @property(retain, nonatomic) PKFeatureApplicationOfferDetails *applicationOfferDetails; // @synthesize applicationOfferDetails=_applicationOfferDetails;
 @property(nonatomic) unsigned long long applicationStateReason; // @synthesize applicationStateReason=_applicationStateReason;
 @property(nonatomic) unsigned long long applicationState; // @synthesize applicationState=_applicationState;
+@property(copy, nonatomic) NSString *referenceIdentifier; // @synthesize referenceIdentifier=_referenceIdentifier;
+@property(nonatomic) long long applicationType; // @synthesize applicationType=_applicationType;
+@property(nonatomic) unsigned long long featureProduct; // @synthesize featureProduct=_featureProduct;
 @property(nonatomic) unsigned long long feature; // @synthesize feature=_feature;
 @property(copy, nonatomic) NSURL *applicationBaseURL; // @synthesize applicationBaseURL=_applicationBaseURL;
 @property(copy, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
@@ -47,6 +57,8 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+@property(readonly, nonatomic) NSData *authenticationSignaturePayload;
+@property(readonly, nonatomic) _Bool supportsAuthentication;
 - (_Bool)hasSufficientOTBForInstallmentConfiguration:(id)arg1;
 @property(readonly, nonatomic) _Bool isActive;
 - (id)initWithDictionary:(id)arg1;

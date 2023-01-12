@@ -42,7 +42,6 @@
 - (void)_configureCell:(id)arg1 withGenericIntent:(id)arg2 cellType:(long long)arg3 genericParameterTitle:(id)arg4;
 - (void)_configureCell:(id)arg1 withDonation:(id)arg2 cellType:(long long)arg3;
 - (void)mediaPicker:(id)arg1 didPickMediaItems:(id)arg2;
-- (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (void)showPodcastPicker;
 - (void)showMusicPicker;

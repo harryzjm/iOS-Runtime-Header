@@ -9,7 +9,6 @@
 @interface NCNotificationViewController (SBPPTRunnerAdditions)
 - (void)_recapDismissLongLookViaTapOutside;
 - (void)_recapDismissLongLookViaPullDown;
-- (void)_recapDismissLongLookViaDismissButton;
 - (id)_dismissControlOfPresentedLongLook;
 - (void)_recapSwipePresentLongLook;
 @property(copy, nonatomic, setter=setPPTLongLookDidDismissBlock:) CDUnknownBlockType pptLongLookDidDismissBlock;

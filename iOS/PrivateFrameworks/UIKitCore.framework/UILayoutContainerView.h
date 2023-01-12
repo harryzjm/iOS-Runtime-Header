@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool usesRoundedCorners; // @synthesize usesRoundedCorners=_usesRoundedCorners;
 @property(nonatomic) _Bool usesInnerShadow; // @synthesize usesInnerShadow=_usesInnerShadow;
 @property(nonatomic) __weak id <UILayoutContainerViewDelegate> delegate; // @synthesize delegate=_delegate;
+- (id)_systemDefaultFocusGroupIdentifier;
 - (void)dealloc;
 - (void)setSemanticContentAttribute:(long long)arg1;
 - (void)addSubview:(id)arg1;

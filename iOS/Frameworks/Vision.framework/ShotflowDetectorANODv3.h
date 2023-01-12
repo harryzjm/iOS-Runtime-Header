@@ -10,13 +10,15 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)filterThresholds;
++ (float)defaultFaceDetectionPrecisionRecallThreshold;
 + (Class)shotflowNetworkClass;
 + (id)supportedLabelKeys;
 - (id)nmsBoxes:(id)arg1;
 - (id)getIndexBoxes:(id)arg1 filterThresholdIndex:(unsigned long long)arg2;
 - (id)processBoxes:(id)arg1 withHeight:(float)arg2 andWidth:(float)arg3;
 - (id)initWithNetwork:(id)arg1;
-- (id)initWithNetwork:(id)arg1 filterThreshold:(id)arg2;
+- (id)initWithNetwork:(id)arg1 filterThresholds:(id)arg2;
+@property(nonatomic) float faceDetectionPrecisionRecallThreshold;
 
 @end
 

@@ -6,6 +6,7 @@
 
 #import <UIKit/UIButton.h>
 
+__attribute__((visibility("hidden")))
 @interface _TtCC7NewsUI211WelcomeView14ContinueButton : UIButton
 {
 }

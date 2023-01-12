@@ -10,12 +10,13 @@
 {
     SKScene *_preVisualizeScene;
     SKFieldNode *_noiseField;
-    struct vector<CGPoint, std::__1::allocator<CGPoint>> _points;
-    struct vector<double, std::__1::allocator<double>> _times;
+    struct vector<CGPoint, std::allocator<CGPoint>> _points;
+    struct vector<double, std::allocator<double>> _times;
     NSMutableArray *_colors;
     double _baseTime;
     NSTimer *_soundTimer;
     unsigned long long _soundIndex;
+    struct os_unfair_lock_s _noiseFieldLock;
 }
 
 + (unsigned short)messageType;

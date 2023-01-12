@@ -22,10 +22,10 @@ __attribute__((visibility("hidden")))
 @property(readonly) double decisionDelay;
 @property(readonly, nonatomic) _Bool hardVAD;
 - (float)softVAD;
-@property(readonly, nonatomic) struct Box *resultsBox;
+@property(readonly, nonatomic) void *resultsBox;
 - (_Bool)adaptToSystemConfiguration:(id)arg1 error:(id *)arg2;
 - (id)sharedProcessorConfiguration;
-- (id)resultsFromBox:(struct Box *)arg1 renderedWithFrameCount:(int)arg2;
+- (id)resultsFromBox:(void *)arg1 renderedWithFrameCount:(int)arg2;
 @property(readonly, nonatomic) shared_ptr_f6ac7592 graph;
 - (id)initWithRequestType:(long long)arg1;
 - (id)init;

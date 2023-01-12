@@ -4,30 +4,41 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableDictionary, NSNumber;
-@protocol VCControlChannelTransactionDelegate;
+@class NSMutableArray, NSMutableDictionary, NSNumber, NSObject;
+@protocol OS_dispatch_queue, VCControlChannelTransactionDelegate;
 
 __attribute__((visibility("hidden")))
 @interface VCControlChannelDialog
 {
+    _Bool _handshakeEnabled;
+    _Bool _isHandshakeMode;
+    _Bool _isHandshakeCommenced;
     unsigned int _sessionID;
-    unsigned int _transactionID;
-    NSNumber *_participantID;
     id <VCControlChannelTransactionDelegate> _weakTransactionDelegate;
+    _Bool _shouldFinishHandshake;
+    double _handshakeStartTime;
+    NSNumber *_participantID;
     NSMutableDictionary *_transactions;
+    NSMutableArray *_cachedMessages;
+    NSObject<OS_dispatch_queue> *_handshakeOperationQueue;
 }
 
-+ (_Bool)processMessageFromParticipant:(id)arg1 transactionID:(id)arg2 status:(unsigned int)arg3 sessionID:(unsigned int)arg4 transactionDelegate:(id)arg5;
-+ (void)sendConfirmationToParticipantID:(id)arg1 transactionID:(id)arg2 sessionID:(unsigned int)arg3 transactionDelegate:(id)arg4;
-+ (_Bool)sendUnreliableMessage:(id)arg1 sessionID:(unsigned int)arg2 participantID:(id)arg3 transactionDelegate:(id)arg4;
-+ (id)newEncryptedMessageFromMessage:(id)arg1 sequenceNumber:(unsigned short)arg2 transactionDelegate:(id)arg3;
-+ (_Bool)encryptMessage:(id)arg1 buffer:(char *)arg2 size:(unsigned int)arg3 sequenceNumber:(unsigned short)arg4 transactionDelegate:(id)arg5;
-- (_Bool)processMessageFromParticipant:(id)arg1 transactionID:(id)arg2 status:(unsigned int)arg3;
-- (_Bool)sendReliableMessage:(id)arg1 transactionDelegate:(id)arg2 timeout:(id)arg3;
+- (void)confirmTransaction:(id)arg1;
+- (id)newDataFromMessage:(id)arg1 topic:(id)arg2 transactionID:(unsigned long long)arg3 isReliable:(_Bool)arg4 transactionDelegate:(id)arg5;
+- (_Bool)sendUnreliableMessage:(id)arg1 withTopic:(id)arg2 sessionID:(unsigned int)arg3 participantID:(id)arg4 transactionDelegate:(id)arg5;
+- (_Bool)sendReliableMessageInternal:(id)arg1 withTopic:(id)arg2 timeout:(id)arg3 useFastRetries:(_Bool)arg4;
+- (_Bool)sendReliableMessage:(id)arg1 withTopic:(id)arg2 timeout:(id)arg3;
+- (void)cacheOutgoingMessage:(id)arg1 topic:(id)arg2 timeout:(id)arg3;
+- (void)startHandshakeWithMessage:(id)arg1 topic:(id)arg2;
+- (void)sendAllCachedMessagesAndDisableHandshakeWhenDone;
+- (void)checkForSignificantHandshakeDelayWithDelegate:(id)arg1;
+- (void)doHandshakeWithMessage:(id)arg1 topic:(id)arg2 afterDelay:(double)arg3;
+- (id)processMessageData:(id)arg1 participantID:(id)arg2 topic:(id *)arg3 transactionID:(id *)arg4 messageStatus:(unsigned int *)arg5 isInternalMessage:(_Bool *)arg6;
 - (void)removeTransactionForTransactionID:(int)arg1;
-- (void)flushActiveDialogs;
+- (void)flushActiveTransactions;
+- (void)resetHandshake;
 - (void)dealloc;
-- (id)initWithSessionID:(unsigned int)arg1 participantID:(id)arg2 transactionDelegate:(id)arg3;
+- (id)initWithSessionID:(unsigned int)arg1 participantID:(id)arg2 participantConfig:(CDStruct_c24deb19 *)arg3 transactionDelegate:(id)arg4;
 
 @end
 

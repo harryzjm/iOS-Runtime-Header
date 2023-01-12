@@ -34,6 +34,7 @@
     NSMutableDictionary *_registeredEvents;
     NSMutableDictionary *_registeredRequests;
     RPIdentity *_selfIdentity;
+    NSString *_serviceType;
     CUTCPServer *_tcpServer;
     struct LogCategory *_ucat;
     CUWiFiManager *_wifiManager;
@@ -111,6 +112,7 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property(nonatomic) unsigned long long debugFlags; // @synthesize debugFlags=_debugFlags;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+@property(retain, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
 - (_Bool)_writeFD:(int)arg1 buffer:(const char *)arg2 size:(unsigned long long)arg3 error:(id *)arg4;
 - (_Bool)_readFD:(int)arg1 buffer:(char *)arg2 size:(unsigned long long)arg3 error:(id *)arg4;
 - (id)_readFD:(int)arg1 size:(unsigned long long)arg2 error:(id *)arg3;

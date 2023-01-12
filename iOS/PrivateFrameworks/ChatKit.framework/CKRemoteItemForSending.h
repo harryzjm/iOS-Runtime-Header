@@ -50,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithRichLinkWithURL:(id)arg1 data:(id)arg2;
 - (id)initWithAttachmentURL:(id)arg1 description:(id)arg2 blockOnPreviewCreation:(_Bool)arg3;
 - (id)initWithAttachmentURL:(id)arg1 description:(id)arg2 previewImage:(id)arg3 blockOnPreviewCreation:(_Bool)arg4;
+- (_Bool)isAttachmentTooLarge:(id)arg1;
 
 @end
 

@@ -8,14 +8,16 @@
 
 #import <CoreFollowUpUI/FLSpecifierTapHandlerDelegate-Protocol.h>
 
-@class FLPreferencesFollowUpItemListViewController, NSSet, NSString, PSListController;
-@protocol FLViewModel;
+@class FLPreferencesFollowUpItemListViewController, NSArray, NSSet, NSString, PSListController;
+@protocol FLGroupViewModel, FLViewModel;
 
 @interface FLPreferencesController : NSObject <FLSpecifierTapHandlerDelegate>
 {
     id <FLViewModel> _topViewModel;
     FLPreferencesFollowUpItemListViewController *_spyglassController;
-    NSSet *_spyglassWhitelist;
+    FLPreferencesFollowUpItemListViewController *_topLevelItemList;
+    NSArray<FLGroupViewModel> *_groups;
+    NSSet *_spyglassAllowList;
     _Bool _activityIndicatorActive;
     PSListController *_listViewController;
     CDUnknownBlockType _itemChangeObserver;
@@ -38,7 +40,10 @@
 - (id)_urlBasedSpecifierWithName:(id)arg1;
 - (id)_deferredLoadSpecifierWithName:(id)arg1;
 - (id)_specifierForGroup:(id)arg1;
-- (id)_specifierForItem:(id)arg1 group:(id)arg2;
+- (id)_specifiersForItem:(id)arg1 group:(id)arg2;
+- (id)_topLevelSpecifiersForGroup:(unsigned long long)arg1;
+- (id)_specifierGroupString:(unsigned long long)arg1;
+- (id)topLevelSpecifiersForGroup:(unsigned long long)arg1;
 - (id)topLevelSpecifiers;
 - (id)initWithViewModel:(id)arg1;
 - (id)init;

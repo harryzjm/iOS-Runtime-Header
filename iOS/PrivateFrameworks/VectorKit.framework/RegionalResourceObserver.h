@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface RegionalResourceObserver : NSObject
 {
-    struct GeoResourceProvider *_resourceProvider;
+    void *_resourceProvider;
     struct mutex _resourceProviderLock;
     id _observer;
 }
@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)clearProvider;
-- (id)initWithResourceProvider:(struct GeoResourceProvider *)arg1;
+- (id)initWithResourceProvider:(void *)arg1;
 
 @end
 

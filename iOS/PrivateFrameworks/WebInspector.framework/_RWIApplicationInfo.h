@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 
 + (id)identifierForPID:(int)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) int hostApplicationPID; // @synthesize hostApplicationPID=_hostApplicationPID;
 @property(readonly, nonatomic) _Bool hasUpdatedFromListing; // @synthesize hasUpdatedFromListing=_hasUpdatedFromListing;
 @property(readonly, nonatomic) _Bool hasRemoteDebugSession; // @synthesize hasRemoteDebugSession=_hasRemoteDebugSession;
 @property(readonly, nonatomic) long long automationAvailability; // @synthesize automationAvailability=_automationAvailability;
@@ -36,7 +37,6 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(copy, nonatomic) NSString *bundleId; // @synthesize bundleId=_bundleId;
 @property(readonly, nonatomic) int pid; // @synthesize pid=_pid;
-- (void)setHostApplicationPID:(int)arg1;
 - (_Bool)updateFromListing:(id)arg1;
 - (id)dictionaryRepresentation;
 @property(readonly, nonatomic) NSString *identifier; // @dynamic identifier;

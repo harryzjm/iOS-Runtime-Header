@@ -29,6 +29,8 @@
 - (_Bool)_handlePhysicalButton:(unsigned long long)arg1 event:(unsigned long long)arg2;
 - (_Bool)_wheelChangedWithEvent:(id)arg1;
 - (_Bool)isTransitioningBetweenEditPages;
+- (id)editingColorForColor:(id)arg1;
+- (void)reloadColorPicker;
 - (void)setForEditMode:(long long)arg1 gestureDiscreteScrollHandler:(CDUnknownBlockType)arg2;
 - (void)setForEditMode:(long long)arg1 gestureDidScrollHandler:(CDUnknownBlockType)arg2;
 - (void)setForEditMode:(long long)arg1 gestureDidStopHandler:(CDUnknownBlockType)arg2;
@@ -49,7 +51,10 @@
 - (void)willDeactivate;
 - (void)activate;
 - (void)willActivate;
+- (void)restartBreathing;
 - (struct CGRect)colorPickerFrame;
+- (void)applyEditorPresentationProgress:(double)arg1 fromFrame:(struct CGRect)arg2 toEditMode:(long long)arg3 scaled:(_Bool)arg4;
+- (void)applyEditorPresentationProgress:(double)arg1 toEditMode:(long long)arg2 scaled:(_Bool)arg3;
 - (void)applyTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (void)applyTransformForCurrentPageView:(struct CGAffineTransform)arg1;
 - (struct CGPoint)pageOffsetFromCenter:(long long)arg1;

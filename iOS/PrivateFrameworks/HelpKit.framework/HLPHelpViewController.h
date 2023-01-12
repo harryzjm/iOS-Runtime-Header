@@ -34,8 +34,9 @@
     NSString *_version;
     NSString *_subpath;
     NSURL *_localHelpBookFileURL;
-    NSString *_selectedHelpTopicID;
     NSArray *_preferredLanguagesOverride;
+    NSArray *_additionalSupportedLanguages;
+    NSString *_selectedHelpTopicID;
     NSString *_selectedHelpTopicName;
     NSMutableDictionary *_localHelpBookNameIDMap;
     NSURL *_helpBookURL;
@@ -63,8 +64,9 @@
 @property(retain, nonatomic) NSURL *helpBookURL; // @synthesize helpBookURL=_helpBookURL;
 @property(retain, nonatomic) NSMutableDictionary *localHelpBookNameIDMap; // @synthesize localHelpBookNameIDMap=_localHelpBookNameIDMap;
 @property(copy, nonatomic) NSString *selectedHelpTopicName; // @synthesize selectedHelpTopicName=_selectedHelpTopicName;
-@property(copy, nonatomic) NSArray *preferredLanguagesOverride; // @synthesize preferredLanguagesOverride=_preferredLanguagesOverride;
 @property(copy, nonatomic) NSString *selectedHelpTopicID; // @synthesize selectedHelpTopicID=_selectedHelpTopicID;
+@property(copy, nonatomic) NSArray *additionalSupportedLanguages; // @synthesize additionalSupportedLanguages=_additionalSupportedLanguages;
+@property(copy, nonatomic) NSArray *preferredLanguagesOverride; // @synthesize preferredLanguagesOverride=_preferredLanguagesOverride;
 @property(copy, nonatomic) NSURL *localHelpBookFileURL; // @synthesize localHelpBookFileURL=_localHelpBookFileURL;
 @property(copy, nonatomic) NSString *subpath; // @synthesize subpath=_subpath;
 @property(copy, nonatomic) NSString *version; // @synthesize version=_version;
@@ -112,6 +114,7 @@
 - (void)updateChildViewConstraints;
 - (void)setupFullBookView;
 - (void)_setFullBookView:(_Bool)arg1;
+- (id)localHelpBookAnalyticIdentifier;
 - (void)_setContext:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidAppear:(_Bool)arg1;

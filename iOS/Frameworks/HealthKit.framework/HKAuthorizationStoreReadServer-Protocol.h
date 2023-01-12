@@ -6,12 +6,14 @@
 
 #import <HealthKit/NSObject-Protocol.h>
 
-@class HKDocumentType, HKObjectType, NSSet, NSString, NSUUID;
+@class HKDocumentType, HKObjectAuthorizationPromptSession, HKObjectType, HKRecalibrateEstimatesRequestRecord, NSSet, NSString, NSUUID;
 
 @protocol HKAuthorizationStoreReadServer <NSObject>
+- (void)remote_validateRecalibrateEstimatesRequestRecord:(HKRecalibrateEstimatesRequestRecord *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)remote_fetchAuthorizationStatusesForSampleUUID:(NSUUID *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)remote_fetchAuthorizationStatusesForDocumentType:(HKDocumentType *)arg1 sourceBundleIdentifier:(NSString *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)remote_fetchSourcesRequestingAuthorizationForTypes:(NSSet *)arg1 completion:(void (^)(NSSet *, NSError *))arg2;
+- (void)remote_fetchAuthorizationContextForPromptSession:(HKObjectAuthorizationPromptSession *)arg1 completion:(void (^)(HKObjectAuthorizationPromptSessionContext *, NSError *))arg2;
 - (void)remote_fetchAuthorizationRecordsForType:(HKObjectType *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)remote_fetchAuthorizationRecordsForSourceBundleIdentifier:(NSString *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 @end

@@ -98,6 +98,9 @@
 - (id)propertyForKey:(id)arg1;
 - (id)initWithName:(id)arg1 target:(id)arg2 set:(SEL)arg3 get:(SEL)arg4 detail:(Class)arg5 cell:(long long)arg6 edit:(Class)arg7;
 - (id)init;
+- (void)_addLinkSpec:(id)arg1;
+- (void)addFooterHyperlinkWithRange:(struct _NSRange)arg1 target:(id)arg2 action:(SEL)arg3;
+- (void)addFooterHyperlinkWithRange:(struct _NSRange)arg1 url:(id)arg2;
 
 @end
 

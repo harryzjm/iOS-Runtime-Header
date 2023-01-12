@@ -24,7 +24,6 @@
 @property(readonly, nonatomic) NSString *topic; // @synthesize topic=_topic;
 @property(readonly, nonatomic) NSNumber *identifier; // @synthesize identifier=_identifier;
 - (unsigned long long)hash;
-- (_Bool)matchesResponseHeader:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 protocol:(id)arg2 topic:(id)arg3 payload:(id)arg4 callback:(CDUnknownBlockType)arg5;
 

@@ -12,11 +12,14 @@
 {
     MISSING_TYPE *siriLocale;
     MISSING_TYPE *siriVoiceGender;
+    MISSING_TYPE *interactionId;
     MISSING_TYPE *isMultiUserEnabled;
     MISSING_TYPE *requiresUserGrounding;
     MISSING_TYPE *randomSeed;
     MISSING_TYPE *currentTime;
+    MISSING_TYPE *customPronunciations;
     MISSING_TYPE *globalParameters;
+    MISSING_TYPE *userSettings;
 }
 
 - (void).cxx_destruct;

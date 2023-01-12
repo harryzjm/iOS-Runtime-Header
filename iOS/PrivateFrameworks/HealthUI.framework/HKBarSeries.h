@@ -16,6 +16,9 @@
     struct CGSize _cornerRadii;
 }
 
++ (id)barSeriesRoundedRect:(struct CGRect)arg1 cornerRadius:(double)arg2;
++ (id)barSeriesRoundedRect:(struct CGRect)arg1 byRoundingCorners:(unsigned long long)arg2 cornerRadii:(struct CGSize)arg3;
++ (id)_approximateRoundedRect:(struct CGRect)arg1 byRoundingCorners:(unsigned long long)arg2 cornerRadii:(struct CGSize)arg3;
 - (void).cxx_destruct;
 @property(nonatomic) struct CGSize cornerRadii; // @synthesize cornerRadii=_cornerRadii;
 @property(retain, nonatomic) HKStrokeStyle *tiledStrokeStyle; // @synthesize tiledStrokeStyle=_tiledStrokeStyle;
@@ -38,6 +41,7 @@
 - (double)barWidthForVisibleBarCount:(long long)arg1 axisRect:(struct CGRect)arg2 minimumSpacing:(double)arg3;
 - (long long)visibleBarCountWithZoomLevelConfiguration:(id)arg1;
 - (void)drawSeriesWithBlockCoordinates:(id)arg1 axisRect:(struct CGRect)arg2 zoomLevelConfiguration:(id)arg3 pointTransform:(struct CGAffineTransform)arg4 renderContext:(struct CGContext *)arg5 secondaryRenderContext:(id)arg6;
+@property(retain, nonatomic) HKFillStyle *inactiveFillStyle;
 @property(retain, nonatomic) HKFillStyle *selectedFillStyle;
 @property(retain, nonatomic) HKFillStyle *unselectedFillStyle;
 - (void)clearCaches;

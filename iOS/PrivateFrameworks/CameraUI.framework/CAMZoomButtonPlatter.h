@@ -6,29 +6,27 @@
 
 #import <UIKit/UIView.h>
 
-@class CAMZoomButton, NSArray, NSString, UIImageView;
+@class CAMZoomButton, NSArray, UIImageView;
 
 @interface CAMZoomButtonPlatter : UIView
 {
+    unsigned long long _buttonCount;
     double _zoomFactor;
     NSArray *_zoomFactors;
-    NSString *_contentSizeCategory;
+    double __zoomButtonPlatterMargin;
     UIImageView *__platterBackgroundView;
     NSArray *__allButtons;
-    CAMZoomButton *__zoomButton1;
-    CAMZoomButton *__zoomButton2;
-    CAMZoomButton *__zoomButton3;
+    CAMZoomButton *__defaultZoomButton;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) CAMZoomButton *_zoomButton3; // @synthesize _zoomButton3=__zoomButton3;
-@property(readonly, nonatomic) CAMZoomButton *_zoomButton2; // @synthesize _zoomButton2=__zoomButton2;
-@property(readonly, nonatomic) CAMZoomButton *_zoomButton1; // @synthesize _zoomButton1=__zoomButton1;
+@property(readonly, nonatomic) CAMZoomButton *_defaultZoomButton; // @synthesize _defaultZoomButton=__defaultZoomButton;
 @property(readonly, nonatomic) NSArray *_allButtons; // @synthesize _allButtons=__allButtons;
 @property(readonly, nonatomic) UIImageView *_platterBackgroundView; // @synthesize _platterBackgroundView=__platterBackgroundView;
-@property(copy, nonatomic) NSString *contentSizeCategory; // @synthesize contentSizeCategory=_contentSizeCategory;
+@property(readonly, nonatomic) double _zoomButtonPlatterMargin; // @synthesize _zoomButtonPlatterMargin=__zoomButtonPlatterMargin;
 @property(copy, nonatomic) NSArray *zoomFactors; // @synthesize zoomFactors=_zoomFactors;
 @property(nonatomic) double zoomFactor; // @synthesize zoomFactor=_zoomFactor;
+@property(readonly, nonatomic) unsigned long long buttonCount; // @synthesize buttonCount=_buttonCount;
 - (void)setOrientation:(long long)arg1 animated:(_Bool)arg2;
 @property(nonatomic) long long orientation;
 - (id)_createPlatterImageForContentSize:(id)arg1;
@@ -36,11 +34,12 @@
 - (void)_updateForContentSize;
 - (double)baseZoomFactorForButton:(id)arg1;
 - (id)nearestZoomButtonForTouch:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 @property(readonly, nonatomic) CAMZoomButton *zoomFactorButton;
 - (void)setZoomFactor:(double)arg1 animated:(_Bool)arg2;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithButtonCount:(unsigned long long)arg1;
 
 @end
 

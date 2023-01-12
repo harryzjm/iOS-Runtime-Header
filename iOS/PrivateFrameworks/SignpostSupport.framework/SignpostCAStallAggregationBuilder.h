@@ -35,6 +35,7 @@
 - (_Bool)_isOverThreshold:(id)arg1;
 @property(readonly, copy, nonatomic) SignpostCAStallAggregation *stallAggregationSnapshot;
 - (void)_processDurationNs:(unsigned long long)arg1 type:(unsigned char)arg2 processExecutablePath:(id)arg3 pid:(int)arg4 aggregateForSystem:(_Bool)arg5;
+- (void)addSubsystemCategoriesOfInterestToAllowlist:(id)arg1;
 - (void)addSubsystemCategoriesOfInterestToWhitelist:(id)arg1;
 - (void)handleDeviceReboot;
 - (id)init;

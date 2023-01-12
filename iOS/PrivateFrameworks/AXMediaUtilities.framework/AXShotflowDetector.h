@@ -23,7 +23,7 @@
     NSArray *_filterThreshold;
 }
 
-+ (id)gpuDetectorWithModelPath:(id)arg1 configuration:(id)arg2 preferredMetalDeviceID:(int)arg3 version:(int)arg4;
++ (id)gpuDetectorWithModelPath:(id)arg1 configuration:(id)arg2 preferredMetalDeviceID:(int)arg3 version:(int)arg4 modelType:(long long)arg5;
 + (id)cpuDetectorWithModelPath:(id)arg1 configuration:(id)arg2 version:(int)arg3;
 - (void).cxx_destruct;
 @property(nonatomic) float smartDistanceFactor; // @synthesize smartDistanceFactor=_smartDistanceFactor;

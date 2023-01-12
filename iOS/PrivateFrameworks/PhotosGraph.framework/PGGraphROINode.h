@@ -4,25 +4,37 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PhotosGraph/PGAssetCollectionFeature-Protocol.h>
 #import <PhotosGraph/PGGraphLocalizable-Protocol.h>
 #import <PhotosGraph/PGGraphPortraitTopic-Protocol.h>
 #import <PhotosGraph/PGGraphSynonymSupport-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, PGGraphROINodeCollection;
 
-@interface PGGraphROINode <PGGraphPortraitTopic, PGGraphLocalizable, PGGraphSynonymSupport>
+@interface PGGraphROINode <PGGraphPortraitTopic, PGGraphLocalizable, PGGraphSynonymSupport, PGAssetCollectionFeature>
 {
     NSString *_label;
 }
 
++ (id)momentOfROI;
 + (id)_localizationKeyForROINode:(id)arg1;
 + (id)validROILabels;
++ (id)waterFilter;
++ (id)natureFilter;
++ (id)mountainFilter;
++ (id)beachFilter;
++ (id)urbanFilter;
++ (id)filterForTypes:(id)arg1;
++ (id)filter;
 - (void).cxx_destruct;
 - (id)label;
+@property(readonly, nonatomic) NSString *featureIdentifier;
+@property(readonly, nonatomic) unsigned long long featureType;
+@property(readonly, nonatomic) PGGraphROINodeCollection *collection;
 @property(readonly, nonatomic) NSArray *localizedSynonyms;
 @property(readonly, nonatomic) NSString *localizedName;
 - (unsigned short)domain;
-- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3 properties:(id)arg4;
 - (id)initWithLabel:(id)arg1;
 @property(readonly, nonatomic) NSString *pg_topic;
 

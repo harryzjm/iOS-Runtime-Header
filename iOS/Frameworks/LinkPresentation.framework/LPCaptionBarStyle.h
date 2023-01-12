@@ -6,39 +6,47 @@
 
 #import <objc/NSObject.h>
 
-@class LPButtonStyle, LPCaptionBarAccessoryStyle, LPImageViewStyle, LPMusicPlayButtonStyle, LPPadding, LPPointUnit, LPVerticalTextStackViewStyle;
+@class LPAudioPlayButtonStyle, LPButtonStyle, LPCaptionBarAccessoryStyle, LPIconBadgeStyle, LPImageViewStyle, LPPadding, LPPointUnit, LPVerticalTextStackViewStyle, UIColor;
 
 __attribute__((visibility("hidden")))
 @interface LPCaptionBarStyle : NSObject
 {
+    _Bool _usesOutOfLineButton;
+    unsigned int _minimumNumberOfLinesToVerticallyCenter;
     LPImageViewStyle *_leadingIcon;
     LPImageViewStyle *_trailingIcon;
+    LPIconBadgeStyle *_leadingIconBadge;
+    LPIconBadgeStyle *_trailingIconBadge;
     LPCaptionBarAccessoryStyle *_leadingAccessory;
     LPCaptionBarAccessoryStyle *_trailingAccessory;
     LPVerticalTextStackViewStyle *_textStack;
     LPPointUnit *_minimumWidth;
-    LPImageViewStyle *_placeholderIcon;
-    LPMusicPlayButtonStyle *_playButton;
+    LPAudioPlayButtonStyle *_playButton;
     LPPadding *_playButtonPadding;
     LPButtonStyle *_button;
+    UIColor *_backgroundColor;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned int minimumNumberOfLinesToVerticallyCenter; // @synthesize minimumNumberOfLinesToVerticallyCenter=_minimumNumberOfLinesToVerticallyCenter;
+@property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property(nonatomic) _Bool usesOutOfLineButton; // @synthesize usesOutOfLineButton=_usesOutOfLineButton;
 @property(retain, nonatomic) LPButtonStyle *button; // @synthesize button=_button;
 @property(readonly, retain, nonatomic) LPPadding *playButtonPadding; // @synthesize playButtonPadding=_playButtonPadding;
-@property(readonly, nonatomic) LPMusicPlayButtonStyle *playButton; // @synthesize playButton=_playButton;
-@property(readonly, nonatomic) LPImageViewStyle *placeholderIcon; // @synthesize placeholderIcon=_placeholderIcon;
+@property(readonly, nonatomic) LPAudioPlayButtonStyle *playButton; // @synthesize playButton=_playButton;
 @property(retain, nonatomic) LPPointUnit *minimumWidth; // @synthesize minimumWidth=_minimumWidth;
 @property(readonly, nonatomic) LPVerticalTextStackViewStyle *textStack; // @synthesize textStack=_textStack;
 @property(readonly, nonatomic) LPCaptionBarAccessoryStyle *trailingAccessory; // @synthesize trailingAccessory=_trailingAccessory;
 @property(readonly, nonatomic) LPCaptionBarAccessoryStyle *leadingAccessory; // @synthesize leadingAccessory=_leadingAccessory;
+@property(readonly, nonatomic) LPIconBadgeStyle *trailingIconBadge; // @synthesize trailingIconBadge=_trailingIconBadge;
+@property(readonly, nonatomic) LPIconBadgeStyle *leadingIconBadge; // @synthesize leadingIconBadge=_leadingIconBadge;
 @property(readonly, nonatomic) LPImageViewStyle *trailingIcon; // @synthesize trailingIcon=_trailingIcon;
 @property(readonly, nonatomic) LPImageViewStyle *leadingIcon; // @synthesize leadingIcon=_leadingIcon;
 - (id)rightAccessory;
 - (id)leftAccessory;
 - (id)rightIcon;
 - (id)leftIcon;
-- (id)initWithPlatform:(long long)arg1 sizeClass:(unsigned long long)arg2;
+- (id)initWithPlatform:(long long)arg1 sizeClass:(unsigned long long)arg2 fontScalingFactor:(double)arg3;
 
 @end
 

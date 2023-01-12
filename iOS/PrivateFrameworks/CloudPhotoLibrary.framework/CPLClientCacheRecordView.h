@@ -17,6 +17,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id <CPLEngineIDMapping> idMapping; // @synthesize idMapping=_idMapping;
 @property(readonly, nonatomic) CPLRecordChange *cloudRecord; // @synthesize cloudRecord=_cloudRecord;
+- (id)recordChangeData;
 - (id)redactedDescription;
 - (id)description;
 - (id)synthesizedRecord;

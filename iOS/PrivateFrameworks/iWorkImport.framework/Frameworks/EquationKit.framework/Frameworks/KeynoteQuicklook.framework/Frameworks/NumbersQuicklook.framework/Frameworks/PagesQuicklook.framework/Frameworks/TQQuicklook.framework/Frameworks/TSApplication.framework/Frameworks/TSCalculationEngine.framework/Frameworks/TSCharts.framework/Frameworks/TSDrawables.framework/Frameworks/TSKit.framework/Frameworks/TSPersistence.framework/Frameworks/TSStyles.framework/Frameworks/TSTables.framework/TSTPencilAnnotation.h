@@ -20,9 +20,9 @@
 - (void).cxx_destruct;
 @property(nonatomic) __weak TSTTableInfo *table; // @synthesize table=_table;
 @property(readonly, nonatomic) TSDPencilAnnotationStorage *pencilAnnotationStorage; // @synthesize pencilAnnotationStorage=_pencilAnnotationStorage;
-- (void)saveToArchive:(struct PencilAnnotationArchive *)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
-- (void)loadFromArchive:(const struct PencilAnnotationArchive *)arg1 unarchiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (struct TSUCellRect)_cellRange;
 @property(readonly, nonatomic) NSString *uuid;

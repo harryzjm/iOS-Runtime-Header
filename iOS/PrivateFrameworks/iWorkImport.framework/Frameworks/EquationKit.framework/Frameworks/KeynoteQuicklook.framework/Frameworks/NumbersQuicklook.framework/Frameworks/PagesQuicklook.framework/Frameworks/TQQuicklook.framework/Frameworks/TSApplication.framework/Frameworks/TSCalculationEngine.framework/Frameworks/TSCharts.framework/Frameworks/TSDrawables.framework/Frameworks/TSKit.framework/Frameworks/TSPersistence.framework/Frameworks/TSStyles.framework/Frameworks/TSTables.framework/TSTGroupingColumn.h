@@ -12,17 +12,52 @@
 
 @interface TSTGroupingColumn : TSKSosBase <NSCopying>
 {
-    UUIDData_5fbc143e _groupingColumnUid;
-    UUIDData_5fbc143e _columnUid;
-    int _groupingType;
+    struct UUIDData<TSP::UUIDData> _groupingColumnUid;
+    struct UUIDData<TSP::UUIDData> _columnUid;
+    long long _groupingType;
     struct TSCEFunctor _groupingFunctor;
     TSKFormat *_groupingFormat;
     _Bool _groupingFormatComputed;
     TSULocale *_docLocale;
+    struct TSKUIDStruct _uniqueObjectUID;
 }
 
-+ (_Bool)groupingTypeIsAnyDateType:(int)arg1;
-+ (id)stringForGroupingType:(int)arg1;
++ (long long)finerGroupingTypeFor:(long long)arg1 groupTypesToAvoid:(id)arg2;
++ (long long)finerGroupingTypeFor:(long long)arg1;
++ (long long)coarserGroupingTypeFor:(long long)arg1 groupTypesToAvoid:(id)arg2;
++ (long long)coarserGroupingTypeFor:(long long)arg1;
++ (_Bool)groupingTypeIsAnyDateType:(long long)arg1;
++ (id)shortStringForGroupingType:(long long)arg1 locale:(id)arg2;
++ (id)stringForGroupingType:(long long)arg1 locale:(id)arg2;
++ (id)stringForGroupingType:(long long)arg1;
++ (id)shortStringForGroupingType:(long long)arg1;
++ (id)shortStringForQuarterOfYearTypeForLocale:(id)arg1;
++ (id)shortStringForMonthOfYearTypeForLocale:(id)arg1;
++ (id)shortStringForYearQuarterTypeForLocale:(id)arg1;
++ (id)shortStringForYearWeekTypeForLocale:(id)arg1;
++ (id)shortStringForDayTypeForLocale:(id)arg1;
++ (id)shortStringForDayOfWeekTypeForLocale:(id)arg1;
++ (id)shortStringForMonthTypeForLocale:(id)arg1;
++ (id)shortStringForYearTypeForLocale:(id)arg1;
++ (id)stringForQuarterOfYearTypeForLocale:(id)arg1;
++ (id)stringForMonthOfYearTypeForLocale:(id)arg1;
++ (id)stringForYearQuarterTypeForLocale:(id)arg1;
++ (id)stringForYearWeekTypeForLocale:(id)arg1;
++ (id)stringForDayTypeForLocale:(id)arg1;
++ (id)stringForDayOfWeekTypeForLocale:(id)arg1;
++ (id)stringForMonthTypeForLocale:(id)arg1;
++ (id)stringForYearTypeForLocale:(id)arg1;
++ (id)stringForUniqueTypeForLocale:(id)arg1;
++ (id)shortStringForQuarterOfYearType;
++ (id)shortStringForMonthOfYearType;
++ (id)shortStringForYearQuarterType;
++ (id)shortStringForYearWeekType;
++ (id)shortStringForDayType;
++ (id)shortStringForDayOfWeekType;
++ (id)shortStringForMonthType;
++ (id)shortStringForYearType;
++ (id)stringForQuarterOfYearType;
++ (id)stringForMonthOfYearType;
 + (id)stringForYearQuarterType;
 + (id)stringForYearWeekType;
 + (id)stringForDayType;
@@ -32,21 +67,24 @@
 + (id)stringForUniqueType;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) struct TSKUIDStruct uniqueObjectUID; // @synthesize uniqueObjectUID=_uniqueObjectUID;
 @property(readonly, nonatomic) const struct TSCEFunctor *groupingFunctor; // @synthesize groupingFunctor=_groupingFunctor;
-@property(readonly, nonatomic) int groupingType; // @synthesize groupingType=_groupingType;
-@property(readonly, nonatomic) const UUIDData_5fbc143e *columnUid; // @synthesize columnUid=_columnUid;
-@property(readonly, nonatomic) const UUIDData_5fbc143e *groupingColumnUid; // @synthesize groupingColumnUid=_groupingColumnUid;
-- (void)encodeToArchive:(struct GroupColumnArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct GroupColumnArchive *)arg1;
+@property(readonly, nonatomic) long long groupingType; // @synthesize groupingType=_groupingType;
+- (void)encodeToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1;
 - (id)groupValueForValue:(id)arg1 calcEngine:(id)arg2;
 - (id)p_groupingFormatWithLocale:(id)arg1;
 - (void)setFunctorForType;
+- (void)getUUIDBytesForColumnUid:(unsigned char [16])arg1;
+- (void)getUUIDBytesForGroupingColumnUid:(unsigned char [16])arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithColumnIndex:(struct TSUModelColumnIndex)arg1 groupingType:(int)arg2 inTableInfo:(id)arg3;
-- (id)initWithColumnUid:(const UUIDData_5fbc143e *)arg1 groupingType:(int)arg2;
-- (id)initWithGroupingColumnUid:(const UUIDData_5fbc143e *)arg1 columnUid:(const UUIDData_5fbc143e *)arg2 groupingType:(int)arg3;
+@property(readonly, nonatomic) struct TSKUIDStruct columnUid;
+@property(readonly, nonatomic) struct TSKUIDStruct groupingColumnUid;
+- (id)initWithColumnIndex:(struct TSUModelColumnIndex)arg1 groupingType:(long long)arg2 inTableInfo:(id)arg3;
+- (id)initWithColumnUid:(struct TSKUIDStruct)arg1 groupingType:(long long)arg2;
+- (id)initWithGroupingColumnUid:(struct TSKUIDStruct)arg1 columnUid:(struct TSKUIDStruct)arg2 groupingType:(long long)arg3;
 
 @end
 

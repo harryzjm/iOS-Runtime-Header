@@ -8,7 +8,6 @@
 {
 }
 
-- (_Bool)shouldShowVotingView;
 - (_Bool)showActionMenu;
 
 @end

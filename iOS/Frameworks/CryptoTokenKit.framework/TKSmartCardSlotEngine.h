@@ -25,6 +25,7 @@
     NSXPCListener *_listener;
     NSHashTable *_clients;
     NSMutableArray *_sessionRequests;
+    NSMapTable *_stateRequests;
     NSMapTable *_reservations;
     TKPowerMonitor *_powerMonitor;
     NSObject<OS_os_log> *_log;
@@ -71,6 +72,7 @@
 - (void)powerDownWithEject:(_Bool)arg1;
 - (_Bool)setProtocol:(unsigned long long)arg1;
 - (_Bool)reset;
+- (void)waitForNextState:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)changeStateTo:(long long)arg1 powerState:(long long)arg2;
 - (id)dictionaryForState:(long long)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

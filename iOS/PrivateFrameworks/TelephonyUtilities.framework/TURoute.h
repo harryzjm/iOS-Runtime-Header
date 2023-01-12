@@ -14,6 +14,8 @@
 
 @interface TURoute : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
 {
+    _Bool _A2DPRoute;
+    _Bool _carPlayConnected;
     _Bool _currentlyPicked;
     _Bool _defaultRoute;
     _Bool _receiver;
@@ -26,9 +28,12 @@
     _Bool _guest;
     _Bool _bluetooth;
     _Bool _bluetoothLE;
+    _Bool _bluetoothManaged;
+    _Bool _inEarDetectionEnabled;
+    _Bool _inEarDetectionSupported;
     _Bool _preferred;
     _Bool _preferredAndActive;
-    _Bool _supportsPreferredAndActive;
+    _Bool _supportsHighQualityVoiceWithMedia;
     _Bool _supportsRelay;
     NSString *_uniqueIdentifier;
     NSString *_name;
@@ -38,13 +43,18 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (CDUnknownBlockType)predicateForPreferredRoute;
++ (CDUnknownBlockType)predicateForCarPlayOrInEarTriangleRoute;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool supportsRelay; // @synthesize supportsRelay=_supportsRelay;
 @property(copy, nonatomic) NSArray *identifiersOfOtherConnectedDevices; // @synthesize identifiersOfOtherConnectedDevices=_identifiersOfOtherConnectedDevices;
-@property(nonatomic) _Bool supportsPreferredAndActive; // @synthesize supportsPreferredAndActive=_supportsPreferredAndActive;
+@property(nonatomic) _Bool supportsHighQualityVoiceWithMedia; // @synthesize supportsHighQualityVoiceWithMedia=_supportsHighQualityVoiceWithMedia;
 @property(nonatomic, getter=isPreferredAndActive) _Bool preferredAndActive; // @synthesize preferredAndActive=_preferredAndActive;
 @property(nonatomic, getter=isPreferred) _Bool preferred; // @synthesize preferred=_preferred;
+@property(nonatomic, getter=isInEarDetectionSupported) _Bool inEarDetectionSupported; // @synthesize inEarDetectionSupported=_inEarDetectionSupported;
+@property(nonatomic, getter=isInEarDetectionEnabled) _Bool inEarDetectionEnabled; // @synthesize inEarDetectionEnabled=_inEarDetectionEnabled;
 @property(nonatomic) long long bluetoothEndpointType; // @synthesize bluetoothEndpointType=_bluetoothEndpointType;
+@property(nonatomic, getter=isBluetoothManaged) _Bool bluetoothManaged; // @synthesize bluetoothManaged=_bluetoothManaged;
 @property(nonatomic, getter=isBluetoothLE) _Bool bluetoothLE; // @synthesize bluetoothLE=_bluetoothLE;
 @property(nonatomic, getter=isBluetooth) _Bool bluetooth; // @synthesize bluetooth=_bluetooth;
 @property(nonatomic, getter=isGuest) _Bool guest; // @synthesize guest=_guest;
@@ -57,18 +67,27 @@
 @property(nonatomic, getter=isReceiver) _Bool receiver; // @synthesize receiver=_receiver;
 @property(nonatomic, getter=isDefaultRoute) _Bool defaultRoute; // @synthesize defaultRoute=_defaultRoute;
 @property(nonatomic, getter=isCurrentlyPicked) _Bool currentlyPicked; // @synthesize currentlyPicked=_currentlyPicked;
+@property(nonatomic, getter=isCarPlayConnected) _Bool carPlayConnected; // @synthesize carPlayConnected=_carPlayConnected;
+@property(nonatomic, getter=isA2DPRoute) _Bool A2DPRoute; // @synthesize A2DPRoute=_A2DPRoute;
 @property(nonatomic) long long deviceType; // @synthesize deviceType=_deviceType;
-@property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property(readonly, copy, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
+@property(copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property(copy, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
+- (_Bool)isEqualToRoute:(id)arg1;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (unsigned long long)hash;
-- (_Bool)isEqualToRoute:(id)arg1;
-- (_Bool)isEqual:(id)arg1;
+@property(readonly, nonatomic) _Bool supportsPreferredAndActive;
+@property(readonly, nonatomic, getter=isTriangleParticipant) _Bool triangleParticipant;
+@property(readonly, nonatomic, getter=isTipiParticipant) _Bool tipiParticipant;
+@property(readonly, nonatomic, getter=isCarPlayParticipant) _Bool carPlayParticipant;
+@property(readonly, nonatomic, getter=isInEarDetected) _Bool inEarDetected;
+@property(readonly, nonatomic, getter=isHomePodFamily) _Bool homePodFamily;
 - (id)customDescription;
-- (id)description;
+- (id)initWithRoute:(id)arg1;
 - (id)initWithUniqueIdentifier:(id)arg1 name:(id)arg2;
 
 @end

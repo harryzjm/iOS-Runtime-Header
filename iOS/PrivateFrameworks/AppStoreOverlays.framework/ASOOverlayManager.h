@@ -22,6 +22,8 @@
 @property(readonly, retain, nonatomic) ASOOverlayWindow *window; // @synthesize window=_window;
 @property(nonatomic, getter=_scene, setter=_setScene:) __weak UIScene *_scene; // @synthesize _scene;
 - (id)makeViewControllerIfNeeded;
+- (void)didFinishDismissingOverlay;
+- (void)willStartPresentingOverlay;
 - (void)dismissOverlay;
 - (void)presentOverlay:(id)arg1;
 - (id)initWithWindowScene:(id)arg1;

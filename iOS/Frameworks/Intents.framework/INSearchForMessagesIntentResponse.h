@@ -20,6 +20,7 @@
 - (void)setPropertiesByName:(id)arg1;
 - (id)propertiesByName;
 - (id)_dictionaryRepresentation;
+- (id)_redactedDictionaryRepresentation;
 @property(copy, nonatomic) NSArray *messages;
 - (long long)_codeWithName:(id)arg1;
 - (long long)_intentResponseCode;

@@ -11,6 +11,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (long long)_accessibilitySortPriority;
+- (_Bool)_accessibilityIsPHAssetLocallyAvailable;
+- (id)_accessibilityPHAssetLocalIdentifier;
 - (id)accessibilityURL;
 - (id)_accessibilityPhotoDescription;
 - (id)accessibilityValue;

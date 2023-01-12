@@ -7,6 +7,5 @@
 #import <Foundation/NSNotificationCenter.h>
 
 @interface NSNotificationCenter (BCSError)
-- (void)postNotificationName:(id)arg1 object:(id)arg2 error:(id)arg3;
 @end
 

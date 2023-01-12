@@ -14,9 +14,9 @@
 - (void).cxx_destruct;
 @property(retain) NSDate *localDate; // @synthesize localDate=_localDate;
 - (id)_potentialMemoriesForDryTesting;
-- (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
-- (void)_enumeratePotentialMemoriesUsingBlock:(CDUnknownBlockType)arg1;
-- (id)_oldWeekInHistoryMomentNodesForLocalDate:(id)arg1;
+- (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2 andGraph:(id)arg3;
+- (void)_enumeratePotentialMemoriesWithGraph:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (id)_oldWeekInHistoryMomentNodesForLocalDate:(id)arg1 inGraph:(id)arg2;
 
 @end
 

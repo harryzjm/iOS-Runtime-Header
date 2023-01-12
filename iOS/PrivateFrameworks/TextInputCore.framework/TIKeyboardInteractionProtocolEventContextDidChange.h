@@ -10,17 +10,25 @@
 
 @interface TIKeyboardInteractionProtocolEventContextDidChange <TIKeyboardInteractionProtocolEvent>
 {
-    TIDocumentState *_documentState;
     _Bool _wordDelete;
     _Bool _cursorMoved;
     _Bool _extendsPriorWord;
+    TIDocumentState *_documentState;
     NSString *_word;
-    struct _NSRange _inWordRange;
     unsigned long long _selectionLocation;
+    struct _NSRange _inWordRange;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long selectionLocation; // @synthesize selectionLocation=_selectionLocation;
+@property(readonly, nonatomic) struct _NSRange inWordRange; // @synthesize inWordRange=_inWordRange;
+@property(readonly, nonatomic) NSString *word; // @synthesize word=_word;
+@property(readonly, nonatomic) _Bool extendsPriorWord; // @synthesize extendsPriorWord=_extendsPriorWord;
+@property(readonly, nonatomic) _Bool cursorMoved; // @synthesize cursorMoved=_cursorMoved;
+@property(readonly, nonatomic) _Bool wordDelete; // @synthesize wordDelete=_wordDelete;
+@property(readonly, nonatomic) TIDocumentState *documentState; // @synthesize documentState=_documentState;
+@property(readonly, copy) NSString *description;
 - (void)sendTo:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -28,7 +36,6 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

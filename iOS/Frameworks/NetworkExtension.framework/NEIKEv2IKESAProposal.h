@@ -26,6 +26,7 @@
     NEIKEv2AuthenticationProtocol *_authenticationProtocol;
 }
 
++ (id)chooseSAProposalFromLocalProposals:(id)arg1 remoteProposals:(id)arg2 preferRemoteProposals:(_Bool)arg3;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NEIKEv2AuthenticationProtocol *authenticationProtocol; // @synthesize authenticationProtocol=_authenticationProtocol;
 @property(retain) NEIKEv2DHProtocol *chosenDHProtocol; // @synthesize chosenDHProtocol=_chosenDHProtocol;
@@ -43,7 +44,7 @@
 - (unsigned long long)lifetimeSecondsBeyondSoftLifetimeForInitiator:(_Bool)arg1;
 - (unsigned long long)softLifetimeSecondsForInitiator:(_Bool)arg1;
 - (_Bool)matchesProposal:(id)arg1;
-- (id)copyFromRemote:(id)arg1;
+- (id)copyFromRemote:(id)arg1 preferRemoteProposal:(_Bool)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly) _Bool hasEAPMethods;
 @property(readonly) NEIKEv2DHProtocol *dhProtocol;

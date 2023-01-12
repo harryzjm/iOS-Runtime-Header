@@ -6,20 +6,19 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessChatService/BCSShardItemIdentifying-Protocol.h>
+#import <BusinessChatService/BCSFilterShardItemIdentifying-Protocol.h>
 #import <BusinessChatService/NSCopying-Protocol.h>
 
 @class NSString;
 
-@interface BCSShardIdentifier : NSObject <BCSShardItemIdentifying, NSCopying>
+__attribute__((visibility("hidden")))
+@interface BCSShardIdentifier : NSObject <BCSFilterShardItemIdentifying, NSCopying>
 {
     long long _type;
     long long _startIndex;
     long long _shardCount;
 }
 
-+ (id)identifierFromShardIdentifying:(id)arg1;
-+ (id)identifierWithType:(long long)arg1 startIndex:(long long)arg2 shardCount:(long long)arg3;
 @property(nonatomic) long long shardCount; // @synthesize shardCount=_shardCount;
 @property(nonatomic) long long startIndex; // @synthesize startIndex=_startIndex;
 @property(nonatomic) long long type; // @synthesize type=_type;
@@ -27,7 +26,6 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)_initWithType:(long long)arg1 startIndex:(long long)arg2 shardCount:(long long)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

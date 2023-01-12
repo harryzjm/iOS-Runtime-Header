@@ -10,6 +10,7 @@
 @protocol MTLTexture;
 
 @protocol MTLTextureSPI <MTLTexture, MTLResourceSPI>
+@property(readonly, nonatomic) unsigned long long compressionFootprint;
 @property(readonly) _Bool isDrawable;
 @property(readonly) unsigned long long numFaces;
 @property(readonly) unsigned int swizzleKey;

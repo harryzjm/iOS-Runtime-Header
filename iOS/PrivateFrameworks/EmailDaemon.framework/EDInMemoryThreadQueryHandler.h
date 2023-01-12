@@ -101,7 +101,7 @@
 - (void)dealloc;
 @property(readonly, nonatomic) id <EMMessageListItemQueryResultsObserver> resultsObserverIfNotPaused;
 - (void)cancel;
-- (void)start;
+- (_Bool)start;
 - (void)tearDown;
 - (void)test_tearDown;
 - (id)initWithQuery:(id)arg1 messagePersistence:(id)arg2 hookRegistry:(id)arg3 vipManager:(id)arg4 remoteSearchProvider:(id)arg5 observer:(id)arg6 observationIdentifier:(id)arg7 observationResumer:(id)arg8;

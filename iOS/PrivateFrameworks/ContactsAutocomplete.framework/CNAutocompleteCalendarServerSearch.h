@@ -17,6 +17,7 @@
     CNStringTokenizer *_tokenizer;
 }
 
++ (_Bool)isSupported;
 - (void).cxx_destruct;
 @property(retain, nonatomic) CNStringTokenizer *tokenizer; // @synthesize tokenizer=_tokenizer;
 @property(readonly, nonatomic) CNAutocompleteCalendarServerOperationFactory *operationFactory; // @synthesize operationFactory=_operationFactory;

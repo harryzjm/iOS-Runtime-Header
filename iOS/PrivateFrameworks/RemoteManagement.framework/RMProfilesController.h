@@ -6,27 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSURLSession, RMProfilesAdapter;
+@class NSString, RMProfilesAdapter;
 
 @interface RMProfilesController : NSObject
 {
     RMProfilesAdapter *_profilesAdapter;
-    NSURLSession *_URLSession;
     NSString *_profileIdentifierPrefix;
 }
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *profileIdentifierPrefix; // @synthesize profileIdentifierPrefix=_profileIdentifierPrefix;
-@property(retain, nonatomic) NSURLSession *URLSession; // @synthesize URLSession=_URLSession;
 @property(retain, nonatomic) RMProfilesAdapter *profilesAdapter; // @synthesize profilesAdapter=_profilesAdapter;
+- (id)profileNameForProfileIdentifier:(id)arg1;
 - (id)profileNameForConfiguration:(id)arg1;
+- (id)profileIdentifierForDeclaration:(id)arg1 store:(id)arg2;
 - (id)profileIdentifierForConfiguration:(id)arg1;
 - (void)uninstallProfileWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_installProfileData:(id)arg1 configuration:(id)arg2 deviceChannel:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)_installProfileAtPath:(id)arg1 identifier:(id)arg2 deviceChannel:(_Bool)arg3 configuration:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)_overrideProfileIdentifierInProfileData:(id)arg1 profileIdentifier:(id)arg2 error:(id *)arg3;
+- (void)_installProfileData:(id)arg1 profileIdentifier:(id)arg2 store:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_installProfileAtPath:(id)arg1 identifier:(id)arg2 store:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)downloadAndInstallProfileDeclaration:(id)arg1 store:(id)arg2 fromURL:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)downloadAndInstallProfileConfiguration:(id)arg1 fromURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)installedProfileIdentifiers;
-- (id)initWithURLSession:(id)arg1 profilesAdapter:(id)arg2 profileIdentifierPrefix:(id)arg3;
+- (id)initWithProfilesAdapter:(id)arg1 profileIdentifierPrefix:(id)arg2;
 - (id)initWithProfileIdentifierPrefix:(id)arg1;
 
 @end

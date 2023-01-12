@@ -26,15 +26,17 @@
 @property(retain) NSString *applicationID; // @synthesize applicationID=_applicationID;
 @property(retain) TransparencyManagedDataStore *dataStore; // @synthesize dataStore=_dataStore;
 @property(retain) KTApplicationPublicKeyStore *applicationKeyStore; // @synthesize applicationKeyStore=_applicationKeyStore;
-- (void)checkHeadEpoch:(id)arg1 isMapHead:(_Bool)arg2;
-- (_Bool)verifyRevisionLogInclusionProofResponse:(id)arg1 error:(id *)arg2;
+- (void)processSTHsFromGossipPeers:(id)arg1 error:(id *)arg2;
+- (void)checkHeadEpoch:(id)arg1;
+- (_Bool)verifyRevisionLogInclusionProofResponse:(id)arg1 receivedRevisions:(id)arg2 error:(id *)arg3;
 - (unsigned long long)verifyRevisionLogTopLevelProof:(id)arg1 patSTH:(id)arg2 error:(id *)arg3;
 - (unsigned long long)verifyRevisionLogProofLogEntry:(id)arg1 patSTH:(id *)arg2 error:(id *)arg3;
 - (_Bool)setInclusionVerifiedState:(unsigned long long)arg1 logEntry:(id)arg2 failure:(id)arg3 error:(id *)arg4;
 - (_Bool)setInclusionVerifiedState:(unsigned long long)arg1 topLevelTreeLogEntry:(id)arg2 failure:(id)arg3 error:(id *)arg4;
 - (_Bool)setInclusionVerifiedState:(unsigned long long)arg1 perApplicationTreeLogEntry:(id)arg2 failure:(id)arg3 error:(id *)arg4;
 - (void)verifySTHs:(id)arg1;
-- (unsigned long long)verifyConsistencyProofResponse:(id)arg1 startRevision:(long long)arg2 error:(id *)arg3;
+- (unsigned long long)verifyConsistencyProofResponse:(id)arg1 startRevision:(long long)arg2 receivedRevisions:(id)arg3 error:(id *)arg4;
+- (unsigned long long)verifyLogConsistencyResponse:(id)arg1 startRevision:(long long)arg2 receivedRevisions:(id)arg3 forwards:(_Bool)arg4 serverHint:(id)arg5 error:(id *)arg6;
 - (unsigned long long)verifyInclusionProof:(id)arg1 mapLeaf:(id *)arg2 error:(id *)arg3;
 - (_Bool)verifyResponseAccountId:(id)arg1 requestAccountId:(id)arg2 error:(id *)arg3;
 - (unsigned long long)verifyUriWitness:(id)arg1 uri:(id)arg2 error:(id *)arg3;
@@ -51,6 +53,7 @@
 - (id)createErrorFromSMTFailure:(id)arg1 underlyingError:(id)arg2;
 - (_Bool)areSMTsOverMMD:(id)arg1;
 - (void)reportVerifySMTFailure:(id)arg1 serverHint:(id)arg2 error:(id)arg3;
+- (void)reportVerifySMTFailure:(id)arg1 serverHint:(id)arg2 uri:(id)arg3 accountId:(id)arg4 error:(id)arg5;
 - (unsigned long long)verifySMTs:(id)arg1 request:(id)arg2 error:(id *)arg3;
 - (id)initWithApplicationKeyStore:(id)arg1 dataStore:(id)arg2 applicationID:(id)arg3;
 

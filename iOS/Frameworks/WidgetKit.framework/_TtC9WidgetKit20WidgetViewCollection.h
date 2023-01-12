@@ -11,6 +11,7 @@
 @interface _TtC9WidgetKit20WidgetViewCollection : _TtCs12_SwiftObject
 {
     MISSING_TYPE *environment;
+    MISSING_TYPE *originatingBundle;
     MISSING_TYPE *widget;
     MISSING_TYPE *reloadPolicy;
     MISSING_TYPE *requiresReload;

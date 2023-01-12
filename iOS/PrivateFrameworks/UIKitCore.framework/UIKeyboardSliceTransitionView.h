@@ -50,7 +50,6 @@ __attribute__((visibility("hidden")))
 - (void)rebuildShadows;
 - (void)rebuildTopEdgeHighlightTransition;
 - (id)crossfadeOpacityAnimation;
-- (void)rebuildPositionTransition;
 - (double)adjustedRightWidthAtMergePoint;
 - (double)adjustedLeftWidthAtMergePoint;
 - (struct CGImage *)splitKeyboardImage;

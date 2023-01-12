@@ -4,12 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FPExtensionEnumerationSettings, FPItemID;
+@class FPExtensionEnumerationSettings, FPItemID, NSURL;
 
 @interface FPExtensionCollection
 {
     FPExtensionEnumerationSettings *_settings;
     FPItemID *_alternateID;
+    id _providerDomainMonitoringContext;
+    id _dsCopySubscriber;
+    NSURL *_dsCopySubscriberURL;
+    _Bool _dsCopyShouldStopAccessingSubscriberURL;
 }
 
 + (_Bool)_item:(id)arg1 isCollectionRootForObservedItemID:(id)arg2;
@@ -17,6 +21,15 @@
 - (void).cxx_destruct;
 @property(copy) FPExtensionEnumerationSettings *settings; // @synthesize settings=_settings;
 - (id)description;
+- (_Bool)shouldRetryError:(id)arg1;
+- (_Bool)recoverFromError:(id)arg1;
+- (void)startObserving;
+- (void)stopObserving;
+- (void)_stopMonitoringDSCopyProgress;
+- (void)_startMonitoringDSCopyProgress;
+- (void)_stopMonitoringDomains;
+- (void)_startMonitoringDomains;
+- (void)_failMonitoringWithError:(id)arg1;
 - (id)enumeratedItemID;
 - (id)scopedSearchQuery;
 - (id)createDataSourceWithSortDescriptors:(id)arg1;

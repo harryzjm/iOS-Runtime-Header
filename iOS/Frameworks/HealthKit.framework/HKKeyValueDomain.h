@@ -21,7 +21,7 @@
 
 + (id)clientInterface;
 + (id)serverInterface;
-+ (id)heartRhythmDefaultsDomainWithhealthStore:(id)arg1;
++ (id)heartRhythmDefaultsDomainWithHealthStore:(id)arg1;
 + (id)safetyDefaultsDomainWithHealthStore:(id)arg1;
 + (id)healthArticlesDefaultsDomainWithHealthStore:(id)arg1;
 + (id)healthAppDefaultsDomainWithHealthStore:(id)arg1;
@@ -41,6 +41,8 @@
 - (id)stringForKey:(id)arg1 error:(id *)arg2;
 - (void)dateForKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)dateForKey:(id)arg1 error:(id *)arg2;
+- (void)dataForKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)dataForKey:(id)arg1 error:(id *)arg2;
 - (void)numberForKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)numberForKey:(id)arg1 error:(id *)arg2;
 - (void)setValueForAllKeys:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -52,12 +54,17 @@
 - (_Bool)setString:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
 - (void)setDate:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)setDate:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
+- (void)setData:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (_Bool)setData:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
 - (void)setNumber:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)setNumber:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
-- (CDUnknownBlockType)_objectCompletionOnClientQueue:(CDUnknownBlockType)arg1;
-- (CDUnknownBlockType)_actionCompletionOnClientQueue:(CDUnknownBlockType)arg1;
 - (void)invalidate;
 - (id)initWithCategory:(long long)arg1 domainName:(id)arg2 healthStore:(id)arg3;
+- (id)_propertyListValueWithErrorNoDataForKey:(id)arg1 error:(id *)arg2;
+- (id)_numberWithErrorNoDataForKey:(id)arg1 error:(id *)arg2;
+- (id)_stringWithErrorNoDataForKey:(id)arg1 error:(id *)arg2;
+- (id)_dateWithErrorNoDataForKey:(id)arg1 error:(id *)arg2;
+- (id)_dataWithErrorNoDataForKey:(id)arg1 error:(id *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -13,10 +13,9 @@
 
 - (void).cxx_destruct;
 - (_Bool)wantsAsynchronousSurfaceRetentionAssertion;
-- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
+- (struct SBSwitcherAsyncRenderingAttributes)asyncRenderingAttributesForAppLayout:(id)arg1;
 - (id)keyboardSuppressionMode;
 - (id)appLayoutsToResignActive;
-- (_Bool)isHomeGrabberVisibleForIndex:(unsigned long long)arg1;
 - (id)initWithActiveAppLayout:(id)arg1;
 
 @end

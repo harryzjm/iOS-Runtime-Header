@@ -11,12 +11,16 @@
     _Bool _isOnLockScreen;
     _Bool _isOverApp;
     _Bool _readerTextAvailable;
+    _Bool _isUsingLoweredSearchBar;
     unsigned long long _viewAppearEvent;
     NSString *_preexistingInput;
+    NSString *_originatingApp;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isUsingLoweredSearchBar; // @synthesize isUsingLoweredSearchBar=_isUsingLoweredSearchBar;
+@property(copy, nonatomic) NSString *originatingApp; // @synthesize originatingApp=_originatingApp;
 @property(copy, nonatomic) NSString *preexistingInput; // @synthesize preexistingInput=_preexistingInput;
 @property(nonatomic) _Bool readerTextAvailable; // @synthesize readerTextAvailable=_readerTextAvailable;
 @property(nonatomic) _Bool isOverApp; // @synthesize isOverApp=_isOverApp;

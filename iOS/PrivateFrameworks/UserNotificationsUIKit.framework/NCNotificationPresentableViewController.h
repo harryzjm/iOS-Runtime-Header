@@ -10,9 +10,9 @@
 #import <UserNotificationsUIKit/NCNotificationViewControllerObserving-Protocol.h>
 
 @class NCNotificationViewController, NSString;
-@protocol BNPanGestureProxy, NCNotificationPresentableViewControllerDelegate;
+@protocol BNPanGestureProxy, BNPresentableContext, NCNotificationPresentableViewControllerDelegate;
 
-@interface NCNotificationPresentableViewController : UIViewController <NCNotificationViewControllerObserving, BNPresentable>
+@interface NCNotificationPresentableViewController : UIViewController <BNPresentable, NCNotificationViewControllerObserving>
 {
     _Bool _readyForPanGestureProxy;
     _Bool _canPan;
@@ -20,7 +20,6 @@
     int _bannerAppearState;
     id <NCNotificationPresentableViewControllerDelegate> _delegate;
     NCNotificationViewController *_notificationViewController;
-    UIViewController *_contextDefiningViewController;
     id <BNPanGestureProxy> _panGestureProxy;
     long long _presentationState;
     struct CGRect _initialBannerFrame;
@@ -33,16 +32,18 @@
 @property(nonatomic, getter=_initialBannerFrame, setter=_setInitialBannerFrame:) struct CGRect initialBannerFrame; // @synthesize initialBannerFrame=_initialBannerFrame;
 @property(nonatomic, getter=_isReadyForPanGestureProxy, setter=_setReadyForPanGestureProxy:) _Bool readyForPanGestureProxy; // @synthesize readyForPanGestureProxy=_readyForPanGestureProxy;
 @property(nonatomic, getter=_panGestureProxy, setter=_setPanGestureProxy:) __weak id <BNPanGestureProxy> panGestureProxy; // @synthesize panGestureProxy=_panGestureProxy;
-@property(retain, nonatomic, getter=_contextDefiningViewController, setter=_setContextDefiningViewController:) UIViewController *contextDefiningViewController; // @synthesize contextDefiningViewController=_contextDefiningViewController;
 @property(readonly, nonatomic) int bannerAppearState; // @synthesize bannerAppearState=_bannerAppearState;
 @property(readonly, nonatomic) NCNotificationViewController *notificationViewController; // @synthesize notificationViewController=_notificationViewController;
 @property(nonatomic) __weak id <NCNotificationPresentableViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (_Bool)_isAppearingOrAppeared;
 - (id)customBackgroundContainerViewForExpandedPlatterPresentationController:(id)arg1;
+- (void)longLookDidDismissForNotificationViewController:(id)arg1;
+- (void)longLookWillDismissForNotificationViewController:(id)arg1;
 - (void)longLookDidPresentForNotificationViewController:(id)arg1;
 - (void)longLookWillPresentForNotificationViewController:(id)arg1;
 - (void)userInteractionDidEndForBannerForPresentable:(id)arg1;
 - (void)userInteractionWillBeginForBannerForPresentable:(id)arg1;
+- (void)presentableWillNotAppearAsBanner:(id)arg1 withReason:(id)arg2;
 - (void)presentableDidDisappearAsBanner:(id)arg1 withReason:(id)arg2;
 - (void)presentableWillDisappearAsBanner:(id)arg1 withReason:(id)arg2;
 - (void)presentableDidAppearAsBanner:(id)arg1;
@@ -55,6 +56,7 @@
 @property(readonly, copy, nonatomic) NSString *requestIdentifier;
 @property(readonly, copy, nonatomic) NSString *requesterIdentifier;
 @property(readonly, copy) NSString *description;
+- (_Bool)bn_shouldAnimateViewTransitionToSize:(struct CGSize)arg1;
 - (struct CGSize)preferredContentSizeWithPresentationSize:(struct CGSize)arg1 containerSize:(struct CGSize)arg2;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
@@ -73,6 +75,7 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
+@property(nonatomic) __weak id <BNPresentableContext> presentableContext;
 @property(readonly, nonatomic) long long presentableType;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic, getter=isTouchOutsideDismissalEnabled) _Bool touchOutsideDismissalEnabled;

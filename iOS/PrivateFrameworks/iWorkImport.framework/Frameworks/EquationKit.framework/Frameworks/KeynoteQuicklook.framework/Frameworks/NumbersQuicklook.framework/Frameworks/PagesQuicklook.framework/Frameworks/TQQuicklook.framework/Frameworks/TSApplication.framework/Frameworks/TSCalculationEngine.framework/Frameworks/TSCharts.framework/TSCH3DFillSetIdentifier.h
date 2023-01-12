@@ -15,8 +15,8 @@
     int _fillPropertyType;
 }
 
-+ (id)instanceWithDEPRECATEDArchive:(const struct DEPRECATEDChart3DFillArchive *)arg1 unarchiver:(id)arg2;
-+ (id)instanceWithArchive:(const struct Chart3DFillArchive *)arg1 unarchiver:(id)arg2;
++ (id)instanceWithDEPRECATEDArchive:(const void *)arg1 unarchiver:(id)arg2;
++ (id)instanceWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 + (id)identifierWithContentsOfDictionary:(id)arg1;
 + (id)identifierWithFillPropertyType:(int)arg1 seriesIndex:(unsigned long long)arg2 textureSetID:(id)arg3;
 + (id)identifierWithFillName:(id)arg1 seriesName:(id)arg2 textureSetID:(id)arg3;
@@ -39,8 +39,8 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)init;
-- (void)saveToArchive:(struct Chart3DFillArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct Chart3DFillArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (unsigned long long)countOfSeriesInFillSet;
 - (id)loadPropertiesDictionary;
 - (_Bool)isSageCompatible;

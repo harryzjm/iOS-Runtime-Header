@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface VUILoadingView : UIView
 {
+    double _delay;
     VUILabel *_loadingLabel;
     UIActivityIndicatorView *_indicatorView;
 }
@@ -18,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIActivityIndicatorView *indicatorView; // @synthesize indicatorView=_indicatorView;
 @property(retain, nonatomic) VUILabel *loadingLabel; // @synthesize loadingLabel=_loadingLabel;
+@property(nonatomic) double delay; // @synthesize delay=_delay;
 - (void)layoutSubviews;
 - (void)startTimer;
 - (id)initWithFrame:(struct CGRect)arg1 loadingString:(id)arg2;

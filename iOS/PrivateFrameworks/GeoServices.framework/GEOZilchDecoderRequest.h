@@ -10,7 +10,7 @@
 __attribute__((visibility("hidden")))
 @interface GEOZilchDecoderRequest
 {
-    struct unique_ptr<geo::ZilchMapModel, std::__1::default_delete<geo::ZilchMapModel>> _mapModel;
+    struct unique_ptr<geo::ZilchMapModel, std::default_delete<geo::ZilchMapModel>> _mapModel;
     GEOZilchDecoder *_decoder;
     shared_ptr_27244a92 _message;
     CDUnknownBlockType _pathHandler;
@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 @property(copy) CDUnknownBlockType pathHandler; // @synthesize pathHandler=_pathHandler;
 - (void)cancel;
 - (void)decodeWithPathHandler:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
-- (void)_finishedDecodingWithPath:(Path_7969893c)arg1;
+- (void)_finishedDecodingWithPath:(Path_3f73a495)arg1;
 - (id)initWithDecoder:(id)arg1 message:(shared_ptr_27244a92)arg2;
 
 @end

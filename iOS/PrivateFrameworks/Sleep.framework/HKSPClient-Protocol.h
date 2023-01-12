@@ -5,6 +5,7 @@
 //
 
 @protocol HKSPClient
+- (void)clientShouldCheckInWithCompletion:(void (^)(id <HKSPSyncAnchor>, NSError *))arg1;
 - (void)getClientIdentifierWithCompletion:(void (^)(NSString *, NSError *))arg1;
 @end
 

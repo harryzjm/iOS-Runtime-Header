@@ -11,7 +11,7 @@
 
 @interface CRKValidXPCConnectionProvider : NSObject
 {
-    NSXPCConnection *_connection;
+    NSXPCConnection *_backingConnection;
     CDUnknownBlockType _builder;
     NSObject<OS_dispatch_queue> *_queue;
 }
@@ -19,13 +19,14 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly, nonatomic) CDUnknownBlockType builder; // @synthesize builder=_builder;
+@property(retain, nonatomic) NSXPCConnection *backingConnection; // @synthesize backingConnection=_backingConnection;
 - (id)captureConnection;
 - (void)tearDownConnection;
 - (void)connectionDied:(id)arg1;
 - (id)invokeBuilder;
 - (id)makeConnection;
 - (id)unprotectedConnection;
-@property(readonly) NSXPCConnection *connection; // @synthesize connection=_connection;
+@property(readonly) NSXPCConnection *connection;
 - (id)initWithBuilder:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 

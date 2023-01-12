@@ -6,17 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSString, NSURL;
 
 @interface TFBetaApplicationProxy : NSObject
 {
+    NSURL *_bundleURL;
     NSString *_bundleIdentifier;
+    long long _bundleAppPlatform;
     NSString *_logKey;
 }
 
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *logKey; // @synthesize logKey=_logKey;
+@property(nonatomic) long long bundleAppPlatform; // @synthesize bundleAppPlatform=_bundleAppPlatform;
 @property(readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property(readonly, copy, nonatomic) NSURL *bundleURL; // @synthesize bundleURL=_bundleURL;
+- (long long)_asdAppPlatform;
 - (void)overwriteMetadataForInstalledVersion:(id)arg1 build:(id)arg2 withLocalizedDisplayNames:(id)arg3 localizedTestNotes:(id)arg4 primaryLocaleKey:(id)arg5 developerName:(id)arg6 expirationDate:(id)arg7 iconUrlTemplate:(id)arg8 testerEmail:(id)arg9;
 - (void)updateLocalizedTestNotes:(id)arg1 forVersion:(id)arg2 build:(id)arg3;
 - (void)setBetaAppLaunchScreenEnabled:(_Bool)arg1 forVersion:(id)arg2 build:(id)arg3;
@@ -25,7 +30,9 @@
 - (_Bool)isBetaAppLaunchScreenEnabledForInstalledVersion;
 - (_Bool)isProactiveFeedbackEnabledForInstalledVersion;
 @property(readonly, copy, nonatomic) NSString *preferredLocalizedDisplayNameForInstalledVersion;
+- (id)initForAppWithIdentifier:(id)arg1 appPlatform:(long long)arg2;
 - (id)initForAppWithIdentifier:(id)arg1;
+- (id)initForAppWithBundleURL:(id)arg1;
 
 @end
 

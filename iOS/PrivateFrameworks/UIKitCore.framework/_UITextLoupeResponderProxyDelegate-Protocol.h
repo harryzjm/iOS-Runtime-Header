@@ -5,7 +5,6 @@
 //
 
 @protocol _UITextLoupeResponderProxyDelegate
-- (void)selectToHere:(id)arg1;
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 @end
 

@@ -21,17 +21,7 @@
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSString *guardianAccountIdentifier; // @synthesize guardianAccountIdentifier=_guardianAccountIdentifier;
-@property(retain, nonatomic) HDTinkerProfile *profile; // @synthesize profile=_profile;
-@property(nonatomic) long long stage; // @synthesize stage=_stage;
-@property(readonly, copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
-@property(readonly, nonatomic) HKSecondaryPairedDeviceConfiguration *configuration; // @synthesize configuration=_configuration;
-@property(readonly, nonatomic) HKDaemonTransaction *transaction; // @synthesize transaction=_transaction;
-@property(readonly, nonatomic) double startTime; // @synthesize startTime=_startTime;
-- (void)finishWithSuccess:(_Bool)arg1 error:(id)arg2;
-- (id)codablePairingRequest;
 - (void)dealloc;
-- (id)initWithConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

@@ -15,9 +15,11 @@ __attribute__((visibility("hidden")))
     NSString *_title;
     NSDictionary *_properties;
     WDClinicalSampleAccountProviderGateway *_gateway;
+    long long _minCompatibleAPIVersion;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long minCompatibleAPIVersion; // @synthesize minCompatibleAPIVersion=_minCompatibleAPIVersion;
 @property(retain, nonatomic) WDClinicalSampleAccountProviderGateway *gateway; // @synthesize gateway=_gateway;
 @property(copy, nonatomic) NSDictionary *properties; // @synthesize properties=_properties;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;

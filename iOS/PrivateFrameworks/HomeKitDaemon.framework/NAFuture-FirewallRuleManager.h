@@ -7,6 +7,7 @@
 #import <NetAppsUtilities/NAFuture.h>
 
 @interface NAFuture (FirewallRuleManager)
++ (id)futureWithRetries:(long long)arg1 timeInterval:(double)arg2 workQueue:(id)arg3 block:(CDUnknownBlockType)arg4;
 - (id)blockAndWaitForCompletionWithError:(id *)arg1;
 @end
 

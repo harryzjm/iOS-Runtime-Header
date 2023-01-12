@@ -25,6 +25,8 @@
 - (_Bool)_changedSchedule:(id)arg1 withinNumberOfDays:(unsigned long long)arg2 currentDate:(id)arg3 calendar:(id)arg4;
 - (_Bool)_didInteractWithWindDownActionsWithinLastTwoDays;
 - (id)_windDownEvents;
+- (_Bool)_woreWatchToSleepLastNight;
+- (id)_daysWhereUserWoreWatchToSleepOverLastSevenDaysWithCalendar:(id)arg1;
 - (id)_dailyReportEvent;
 - (id)analyticsStore;
 - (id)sleepSettings;

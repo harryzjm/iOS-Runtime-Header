@@ -32,6 +32,7 @@
     NSDictionary *_screenInfoResponse;
     struct CGSize _physicalSize;
     struct CGSize _pixelSize;
+    struct CGSize _squaredPixelSize;
 }
 
 - (void).cxx_destruct;
@@ -48,6 +49,7 @@
 @property(retain, nonatomic) CARScreenViewArea *adjacentViewArea; // @synthesize adjacentViewArea=_adjacentViewArea;
 @property(retain, nonatomic) CARScreenViewArea *currentViewArea; // @synthesize currentViewArea=_currentViewArea;
 @property(readonly, copy, nonatomic) NSArray *viewAreas; // @synthesize viewAreas=_viewAreas;
+@property(readonly, nonatomic) struct CGSize squaredPixelSize; // @synthesize squaredPixelSize=_squaredPixelSize;
 @property(readonly, nonatomic) struct CGSize pixelSize; // @synthesize pixelSize=_pixelSize;
 @property(readonly, nonatomic) struct CGSize physicalSize; // @synthesize physicalSize=_physicalSize;
 @property(readonly, nonatomic) unsigned long long maxFramesPerSecond; // @synthesize maxFramesPerSecond=_maxFramesPerSecond;

@@ -6,9 +6,9 @@
 
 #import <DoNotDisturbServer/NSObject-Protocol.h>
 
-@class DNDSScheduleManager, DNDSScheduleSettings;
+@class DNDSScheduleManager, NSDictionary;
 
 @protocol DNDSScheduleManagerDataSource <NSObject>
-- (DNDSScheduleSettings *)scheduleSettingsForScheduleManager:(DNDSScheduleManager *)arg1;
+- (NSDictionary *)scheduleSettingsByModeIdentifierForScheduleManager:(DNDSScheduleManager *)arg1;
 @end
 

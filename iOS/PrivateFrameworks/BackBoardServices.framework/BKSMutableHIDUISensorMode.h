@@ -4,18 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSSet, NSString;
 
 @interface BKSMutableHIDUISensorMode
 {
 }
 
+- (void)_setSettingKey:(id)arg1 enabled:(_Bool)arg2;
 @property(nonatomic) _Bool estimatedProximityMode; // @dynamic estimatedProximityMode;
 @property(nonatomic) long long versionedPID; // @dynamic versionedPID;
 @property(nonatomic) _Bool postEventWithCurrentDetectionMask; // @dynamic postEventWithCurrentDetectionMask;
 @property(nonatomic) _Bool alwaysOnGesturesEnabled; // @dynamic alwaysOnGesturesEnabled;
 @property(nonatomic) _Bool coverGestureEnabled; // @dynamic coverGestureEnabled;
 @property(nonatomic) _Bool tapToWakeEnabled; // @dynamic tapToWakeEnabled;
+@property(copy, nonatomic) NSSet *multitouchHostStateKeys; // @dynamic multitouchHostStateKeys;
 @property(nonatomic) _Bool pocketTouchesExpected; // @dynamic pocketTouchesExpected;
 @property(nonatomic) _Bool digitizerEnabled; // @dynamic digitizerEnabled;
 @property(nonatomic) int proximityDetectionMode; // @dynamic proximityDetectionMode;

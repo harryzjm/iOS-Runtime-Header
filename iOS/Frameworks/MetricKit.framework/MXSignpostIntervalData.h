@@ -16,14 +16,14 @@
     NSMeasurement *_cumulativeCPUTime;
     MXAverage *_averageMemory;
     NSMeasurement *_cumulativeLogicalWrites;
+    NSMeasurement *_cumulativeHitchTimeRatio;
     NSMeasurementFormatter *_measurementFormatter;
-    NSMeasurement *_peakMemory;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(readonly) NSMeasurement *peakMemory; // @synthesize peakMemory=_peakMemory;
 @property(retain) NSMeasurementFormatter *measurementFormatter; // @synthesize measurementFormatter=_measurementFormatter;
+@property(readonly) NSMeasurement *cumulativeHitchTimeRatio; // @synthesize cumulativeHitchTimeRatio=_cumulativeHitchTimeRatio;
 @property(readonly) NSMeasurement *cumulativeLogicalWrites; // @synthesize cumulativeLogicalWrites=_cumulativeLogicalWrites;
 @property(readonly) MXAverage *averageMemory; // @synthesize averageMemory=_averageMemory;
 @property(readonly) NSMeasurement *cumulativeCPUTime; // @synthesize cumulativeCPUTime=_cumulativeCPUTime;
@@ -32,6 +32,7 @@
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithHistogramDurationData:(id)arg1 withCumulativeCPUTime:(id)arg2 withPeakMemory:(id)arg3 withAverageMemory:(id)arg4 withCumulativeLogicalWrites:(id)arg5;
+- (id)initWithHistogramDurationData:(id)arg1 withCumulativeCPUTime:(id)arg2 withAverageMemory:(id)arg3 withCumulativeLogicalWrites:(id)arg4 withCumulativeHitchTimeRatio:(id)arg5;
 - (id)initWithHistogramDurationData:(id)arg1 withCumulativeCPUTime:(id)arg2 withAverageMemory:(id)arg3 withCumulativeLogicalWrites:(id)arg4;
 
 @end

@@ -8,6 +8,9 @@
 
 @interface NSString (IMEngramUtilities)
 - (id)__im_engramDataRepresentation;
+- (id)im_livePhotoBundlePath;
+- (void)im_markFileAsPurgeable;
+- (id)im_livePhotoVideoPath;
 - (id)im_lastPathComponent;
 - (id)im_stripCategoryLabel;
 - (_Bool)isArchivable_im;

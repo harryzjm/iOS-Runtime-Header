@@ -12,21 +12,21 @@
 
 @interface TSCH3DChartElementProperties : NSObject <NSCopying>
 {
-    TSCH3DTexturePool *mPool;
+    TSCH3DTexturePool *_pool;
 }
 
 + (id)properties;
-@property(readonly, nonatomic) TSCH3DTexturePool *pool; // @synthesize pool=mPool;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) TSCH3DTexturePool *pool; // @synthesize pool=_pool;
 - (id)renderingLightingModelForSeries:(id)arg1;
-- (_Bool)applyElementTransform:(struct ObjectTransforms *)arg1 series:(id)arg2 index:(tvec2_3b141483)arg3 propertyAccessor:(id)arg4;
+- (_Bool)applyElementTransform:(void *)arg1 series:(id)arg2 index:(tvec2_3b141483)arg3 propertyAccessor:(id)arg4;
 - (float)elementTransformDepthFromPropertyAccessor:(id)arg1;
-- (void)applyChartElementsTransform:(struct ObjectTransforms *)arg1;
+- (void)applyChartElementsTransform:(void *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)init;
-- (void)addTexcoordsToProcessor:(id)arg1 series:(id)arg2 index:(const tvec2_3b141483 *)arg3;
-- (_Bool)applyCombinedTransform:(struct ObjectTransforms *)arg1 series:(id)arg2 index:(const tvec2_3b141483 *)arg3 propertyAccessor:(id)arg4;
-- (_Bool)applyElementTransformToProcessor:(id)arg1 series:(id)arg2 index:(const tvec2_3b141483 *)arg3 propertyAccessor:(id)arg4;
+- (void)addTexcoordsToProcessor:(id)arg1 series:(id)arg2 index:(const void *)arg3;
+- (_Bool)applyCombinedTransform:(void *)arg1 series:(id)arg2 index:(const void *)arg3 propertyAccessor:(id)arg4;
+- (_Bool)applyElementTransformToProcessor:(id)arg1 series:(id)arg2 index:(const void *)arg3 propertyAccessor:(id)arg4;
 - (void)applyChartElementsTransformToProcessor:(id)arg1;
 - (id)getPropertiesOfType:(Class)arg1;
 

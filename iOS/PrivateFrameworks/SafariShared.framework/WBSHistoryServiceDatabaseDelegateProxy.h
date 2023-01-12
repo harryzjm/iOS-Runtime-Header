@@ -21,7 +21,6 @@
 - (void)reportSevereError:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)reportPermanentIDsForVisits:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)reportPermanentIDsForItems:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (CDUnknownBlockType)_defaultProxyErrorHandlerWithSimpleReplyCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithProxy:(id)arg1;
 - (id)init;
 

@@ -35,6 +35,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)infoSuggestionFromProactiveSuggestion:(id)arg1;
 + (id)_uiSpecForInfoSuggestion:(id)arg1;
 + (id)_executableSpecificationForInfoSuggestion:(id)arg1;
 + (id)proactiveSuggestionForInfoSuggestion:(id)arg1 withClientModelId:(id)arg2 clientModelVersion:(id)arg3 rawScore:(double)arg4 confidenceCategory:(long long)arg5;
@@ -46,11 +47,11 @@
 @property(copy, nonatomic) NSString *clientModelId; // @synthesize clientModelId=_clientModelId;
 @property(copy, nonatomic) NSString *sourceIdentifier; // @synthesize sourceIdentifier=_sourceIdentifier;
 @property(copy, nonatomic) NSString *suggestionIdentifier; // @synthesize suggestionIdentifier=_suggestionIdentifier;
-@property(readonly, nonatomic) unsigned long long layouts; // @synthesize layouts=_layouts;
+@property(nonatomic) unsigned long long layouts; // @synthesize layouts=_layouts;
 @property(readonly, nonatomic) NSNumber *relevanceScore; // @synthesize relevanceScore=_relevanceScore;
 @property(nonatomic) long long confidenceLevel; // @synthesize confidenceLevel=_confidenceLevel;
 @property(readonly, nonatomic) NSString *criterion; // @synthesize criterion=_criterion;
-@property(copy, nonatomic) NSString *widgetKind; // @synthesize widgetKind=_widgetKind;
+@property(readonly, nonatomic) NSString *widgetKind; // @synthesize widgetKind=_widgetKind;
 @property(readonly, nonatomic) NSString *widgetBundleIdentifier; // @synthesize widgetBundleIdentifier=_widgetBundleIdentifier;
 @property(readonly, nonatomic) NSString *appBundleIdentifier; // @synthesize appBundleIdentifier=_appBundleIdentifier;
 @property(readonly) unsigned long long hash;
@@ -71,6 +72,7 @@
 - (id)data;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, copy) NSString *description;
+- (id)_dictionaryRepresentationAvoidingLoadingIntentIfPossible:(_Bool)arg1;
 - (id)dictionaryRepresentation;
 @property(readonly, nonatomic) _Bool isFallback;
 - (id)initWithData:(id)arg1;

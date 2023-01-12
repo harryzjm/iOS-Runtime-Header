@@ -9,6 +9,8 @@
 @interface PRXCardContentViewController (HUAdditions)
 - (void)_handleSubtitleTouchForOpenURL:(id)arg1;
 - (void)openURL:(id)arg1;
+- (void)appendButtonWithKey:(id)arg1 target:(id)arg2 action:(SEL)arg3 userInfo:(id)arg4;
+- (void)addMoreOptionsButtonWithTarget:(id)arg1 action:(SEL)arg2 userInfo:(id)arg3;
 - (void)addLearnMoreButtonWithTarget:(id)arg1 action:(SEL)arg2 userInfo:(id)arg3;
 - (void)addLearnMoreButtonWithURL:(id)arg1;
 @end

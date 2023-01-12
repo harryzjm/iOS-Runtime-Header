@@ -20,6 +20,7 @@
 
 + (id)secureCodedPropertyKeys;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property unsigned long long loginStatus; // @synthesize loginStatus=_loginStatus;
 - (void)setNumberOfChallenges:(unsigned short)arg1;
 - (unsigned short)numberOfChallenges;
@@ -44,6 +45,8 @@
 - (_Bool)isFindable;
 - (void)setUnderage:(_Bool)arg1;
 - (_Bool)isUnderage;
+- (void)setGlobalFriendListAccess:(int)arg1;
+- (int)globalFriendListAccess;
 - (void)setDefaultPrivacyVisibility:(_Bool)arg1;
 - (_Bool)isDefaultPrivacyVisibility;
 - (void)setDefaultNickname:(_Bool)arg1;
@@ -51,7 +54,6 @@
 - (void)setPurpleBuddyAccount:(_Bool)arg1;
 - (_Bool)isPurpleBuddyAccount;
 - (id)minimalInternal;
-- (void)dealloc;
 
 @end
 

@@ -17,6 +17,8 @@
         unsigned int centralDidSubscribeToCharacteristic:1;
         unsigned int centralDidUnsubscribeFromCharacteristic:1;
         unsigned int didStartAdvertising:1;
+        unsigned int didStartPeriodicAdvertising:1;
+        unsigned int didStopPeriodicAdvertising:1;
         unsigned int isReadyToUpdate:1;
         unsigned int centralDidConnect:1;
         unsigned int centralDidUpdateConnectionParameters:1;
@@ -25,6 +27,8 @@
         unsigned int didOpenL2CAPChannel:1;
         unsigned int didStopAdvertisingWithError:1;
         unsigned int didUpdateANCSAuthorization:1;
+        unsigned int didUpdateControllerBTClock:1;
+        unsigned int didRequestOfflineAdvPayloadRequestedWithReason:1;
     } _delegateFlags;
     _Bool _observingKeyPaths;
     _Bool _isAdvertising;
@@ -57,6 +61,8 @@
 - (void)handleMsg:(unsigned short)arg1 args:(id)arg2;
 - (_Bool)isMsgAllowedAlways:(unsigned short)arg1;
 - (_Bool)isMsgAllowedWhenOff:(unsigned short)arg1;
+- (void)HandleOfflineAdvPayloadRequestedWithReason:(id)arg1;
+- (void)HandleControllerPeripheralBTClockUpdateMsg:(id)arg1;
 - (void)handleCentralDidUpdateANCSAuthorization:(id)arg1;
 - (void)handleL2CAPChannelUnpublished:(id)arg1;
 - (void)handleL2CAPChannelPublished:(id)arg1;
@@ -67,6 +73,8 @@
 - (void)handleConnectionParametersUpdated:(id)arg1;
 - (void)handleSolicitedServicesFound:(id)arg1;
 - (void)handleReadyForUpdates:(id)arg1;
+- (void)handlePeriodicAdvertisingStopped:(id)arg1;
+- (void)handlePeriodicAdvertisingStarted:(id)arg1;
 - (void)handleAdvertisingStopped:(id)arg1;
 - (void)handleAdvertisingStarted:(id)arg1;
 - (void)handleNotificationRemoved:(id)arg1;
@@ -75,6 +83,7 @@
 - (void)handleGetAttributeValue:(id)arg1;
 - (void)handleServiceAdded:(id)arg1;
 - (void)handleRestoringState:(id)arg1;
+- (void)setOfflineAdvertisingParamsAndData:(id)arg1;
 @property(readonly, nonatomic, getter=supportsMultipleAdvertising) _Bool isSupportingMultipleAdvertising;
 - (_Bool)updateValue:(id)arg1 forCharacteristic:(id)arg2 onSubscribedCentrals:(id)arg3;
 - (void)respondToTransaction:(id)arg1 value:(id)arg2 attributeID:(id)arg3 result:(long long)arg4;
@@ -82,6 +91,8 @@
 - (void)removeAllServices;
 - (void)removeService:(id)arg1;
 - (void)addService:(id)arg1;
+- (void)stopPeriodicAdvertising:(id)arg1;
+- (void)startPeriodicAdvertising:(id)arg1;
 - (void)stopAdvertising;
 - (void)startAdvertising:(id)arg1;
 - (void)setDesiredConnectionLatency:(long long)arg1 forCentral:(id)arg2;
@@ -96,6 +107,8 @@
 - (void)publishL2CAPChannel:(unsigned short)arg1 requiresEncryption:(_Bool)arg2 options:(id)arg3;
 - (void)publishL2CAPChannel:(unsigned short)arg1 requiresEncryption:(_Bool)arg2;
 - (void)publishL2CAPChannelWithEncryption:(_Bool)arg1;
+- (void)publishL2CAPChannelWithEncryption:(_Bool)arg1 priority:(long long)arg2;
+- (void)publishL2CAPChannel:(unsigned short)arg1 requiresEncryption:(_Bool)arg2 priority:(long long)arg3;
 - (id)centralWithIdentifier:(id)arg1;
 - (void)dealloc;
 - (void)forEachCentral:(CDUnknownBlockType)arg1;

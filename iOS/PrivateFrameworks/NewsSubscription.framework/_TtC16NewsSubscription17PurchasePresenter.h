@@ -14,6 +14,9 @@
     MISSING_TYPE *familySharingLandingPageLauncher;
     MISSING_TYPE *purchasingSpinnerViewControllerFactory;
     MISSING_TYPE *$__lazy_storage_$_spinnerViewController;
+    MISSING_TYPE *urlHandler;
+    MISSING_TYPE *purchaseController;
+    MISSING_TYPE *bundleSubscriptionManager;
 }
 
 @end

@@ -12,8 +12,10 @@ __attribute__((visibility("hidden")))
     double timestamp;
     _Bool pressed;
     _Bool consumed;
+    _Bool tentativeSinglePress;
     _Bool ignoredByLongPressRecognizer;
-    _Bool ignoredByMultiPressRecognizer;
+    _Bool ignoredByDoublePressRecognizer;
+    _Bool ignoredBySinglePressRecognizer;
 }
 
 @end

@@ -32,12 +32,12 @@
 + (_Bool)_rescanDirectoryInPackage:(id)arg1 error:(id *)arg2;
 + (_Bool)_deleteSnapshotAtPath:(id)arg1 error:(id *)arg2;
 + (_Bool)updateSignaturesForFilesInItem:(id)arg1 fromCKPackage:(id)arg2 error:(id *)arg3;
-+ (long long)aggregatePackageSizeForPackageID:(unsigned int)arg1 session:(id)arg2;
++ (long long)aggregatePackageSizeForPackageID:(unsigned int)arg1 db:(id)arg2;
 + (id)packageItemsForItem:(id)arg1 order:(unsigned long long)arg2;
-+ (id)packageItemsForDocumentID:(unsigned int)arg1 order:(unsigned long long)arg2 session:(id)arg3;
++ (id)packageItemsForDocumentID:(unsigned int)arg1 order:(unsigned long long)arg2 db:(id)arg3;
 + (long long)largestPackageItemSizeInDocumentID:(unsigned int)arg1 session:(id)arg2;
 + (id)packageItemForRelpath:(id)arg1;
-+ (id)packageItemWithDocumentID:(unsigned int)arg1 relativePath:(id)arg2 session:(id)arg3;
++ (id)packageItemWithDocumentID:(unsigned int)arg1 relativePath:(id)arg2 db:(id)arg3;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSData *xattrs; // @synthesize xattrs=_xattrs;
 @property(readonly, nonatomic) NSData *quarantineInfo; // @synthesize quarantineInfo=_quarantineInfo;
@@ -52,7 +52,7 @@
 @property(readonly, nonatomic) int type; // @synthesize type=_type;
 - (_Bool)setDirty:(_Bool)arg1 session:(id)arg2;
 - (_Bool)saveToDBWithSession:(id)arg1;
-- (id)initFromPQLResultSet:(id)arg1 session:(id)arg2 error:(id *)arg3;
+- (id)initFromPQLResultSet:(id)arg1 error:(id *)arg2;
 - (id)initWithPBItem:(id)arg1 forLocalItem:(id)arg2;
 - (id)initWithRelativePath:(id)arg1 markDirty:(_Bool)arg2;
 - (id)description;

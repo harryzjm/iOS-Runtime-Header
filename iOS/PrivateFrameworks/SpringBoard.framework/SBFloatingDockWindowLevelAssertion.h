@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <SpringBoard/BSDescriptionProviding-Protocol.h>
+#import <SpringBoard/BSInvalidatable-Protocol.h>
 
 @class NSString;
 
-@interface SBFloatingDockWindowLevelAssertion : NSObject <BSDescriptionProviding>
+@interface SBFloatingDockWindowLevelAssertion : NSObject <BSDescriptionProviding, BSInvalidatable>
 {
     unsigned long long _priority;
     double _level;

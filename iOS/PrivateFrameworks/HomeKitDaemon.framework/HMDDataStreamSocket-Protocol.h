@@ -10,10 +10,13 @@
 @protocol HMDDataStreamSocketDelegate;
 
 @protocol HMDDataStreamSocket <NSObject>
+@property unsigned long long trafficClass;
 @property(readonly) NSString *applicationProtocolName;
 @property(readonly, getter=isClosed) _Bool closed;
+@property(readonly, getter=isClosing) _Bool closing;
 @property __weak id <HMDDataStreamSocketDelegate> delegate;
 - (NSData *)readData;
+- (void)writeData:(NSData *)arg1 completion:(void (^)(NSError *))arg2;
 - (_Bool)writeData:(NSData *)arg1 error:(id *)arg2;
 - (void)close;
 @end

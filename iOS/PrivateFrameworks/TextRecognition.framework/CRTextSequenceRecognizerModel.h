@@ -8,7 +8,7 @@
 
 #import <TextRecognition/CRTextRecognizerModel-Protocol.h>
 
-@class CRRecognizerConfiguration, NSDictionary, NSNumber, NSString, NSURL;
+@class CRNeuralRecognizerConfiguration, NSDictionary, NSNumber, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface CRTextSequenceRecognizerModel : NSObject <CRTextRecognizerModel>
@@ -19,21 +19,23 @@ __attribute__((visibility("hidden")))
     NSDictionary *_outputShape;
     NSNumber *_outputWidthDownscale;
     NSNumber *_outputWidthOffset;
-    CRRecognizerConfiguration *_configuration;
+    CRNeuralRecognizerConfiguration *_configuration;
 }
 
 + (id)defaultURLOfModelInThisBundle;
 - (void).cxx_destruct;
-@property(readonly) CRRecognizerConfiguration *configuration; // @synthesize configuration=_configuration;
+@property(readonly) CRNeuralRecognizerConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(retain, nonatomic) NSNumber *outputWidthOffset; // @synthesize outputWidthOffset=_outputWidthOffset;
 @property(retain, nonatomic) NSNumber *outputWidthDownscale; // @synthesize outputWidthDownscale=_outputWidthDownscale;
 @property(retain, nonatomic) NSDictionary *outputShape; // @synthesize outputShape=_outputShape;
 @property(nonatomic) long long ctcBlankLabelIndex; // @synthesize ctcBlankLabelIndex=_ctcBlankLabelIndex;
 @property(nonatomic) unsigned long long codemapSize; // @synthesize codemapSize=_codemapSize;
 @property(nonatomic) int *codemapArray; // @synthesize codemapArray=_codemapArray;
+- (_Bool)preheatWithError:(id *)arg1;
 - (id)inputBatchFromTextFeatures:(id)arg1 image:(id)arg2 featureWidth:(double)arg3 configuration:(id)arg4;
 - (id)predictFromInputs:(id)arg1 error:(id *)arg2;
 - (id)initWithConfiguration:(id)arg1 error:(id *)arg2;
+- (_Bool)supportCharacterBoxes;
 @property(readonly) NSURL *modelURL;
 - (id)populateInputBatchData:(float *)arg1 textFeatures:(id)arg2 image:(id)arg3 batchSize:(long long)arg4 width:(double)arg5 configuration:(id)arg6;
 - (void)dealloc;

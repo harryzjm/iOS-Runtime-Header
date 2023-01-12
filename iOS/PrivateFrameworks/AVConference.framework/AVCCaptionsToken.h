@@ -6,21 +6,23 @@
 
 #import <objc/NSObject.h>
 
+#import <AVConference/VCCaptionsTranscriptionSegment-Protocol.h>
+
 @class NSString;
 
-@interface AVCCaptionsToken : NSObject
+@interface AVCCaptionsToken : NSObject <VCCaptionsTranscriptionSegment>
 {
     NSString *_text;
     double _confidence;
-    _Bool _hasSpaceAfter;
+    struct _NSRange _range;
 }
 
-@property(readonly, nonatomic) _Bool hasSpaceAfter; // @synthesize hasSpaceAfter=_hasSpaceAfter;
+@property(readonly, nonatomic) struct _NSRange range; // @synthesize range=_range;
 @property(readonly, nonatomic) double confidence; // @synthesize confidence=_confidence;
 @property(readonly, nonatomic) NSString *text; // @synthesize text=_text;
 - (id)description;
 - (void)dealloc;
-- (id)initWithText:(id)arg1 confidence:(double)arg2 spaceAfter:(_Bool)arg3;
+- (id)initWithText:(id)arg1 confidence:(double)arg2 range:(struct _NSRange)arg3;
 
 @end
 

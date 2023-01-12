@@ -9,57 +9,46 @@
 #import <NanoTimeKitCompanion/UICollectionViewDataSource-Protocol.h>
 #import <NanoTimeKitCompanion/UICollectionViewDelegateFlowLayout-Protocol.h>
 
-@class NSArray, NSLayoutConstraint, NSString, NTKCGalleryCollection, UICollectionView, UICollectionViewFlowLayout, UILabel, UIStackView, _NTKCAddNewFace;
+@class NSArray, NSLayoutConstraint, NSString, NTKGalleryCollection, UICollectionView, UICollectionViewFlowLayout, UILabel, UIStackView, _NTKCAddNewFace;
 @protocol NTKCGalleryCellDelegate;
 
 @interface NTKCGalleryCell : UITableViewCell <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
 {
-    _Bool _hasCalloutName;
-    _Bool _hasCalloutImage;
     _Bool _allSnapshotsLoaded;
-    NTKCGalleryCollection *_collection;
+    _Bool _showFooterInCollectionView;
+    NTKGalleryCollection *_collection;
     id <NTKCGalleryCellDelegate> _delegate;
     long long _selectedIndex;
     UILabel *_title;
     UICollectionView *_collectionView;
     UICollectionViewFlowLayout *_layout;
-    NSLayoutConstraint *_titleBaselineConstraint;
-    NSLayoutConstraint *_faceContainerTopConstraint;
-    NSLayoutConstraint *_leadingInsetConstraint;
     NSLayoutConstraint *_cvHeightConstraint;
+    UIStackView *_contentStack;
     UIStackView *_titleStack;
-    UIStackView *_collectionViewFooterStack;
+    UIStackView *_footerStack;
     UILabel *_footer;
     NSArray *_snapshotRequests;
     _NTKCAddNewFace *_addNewFace;
-    struct CGSize _itemSize;
 }
 
-+ (double)rowHeightForCollection:(id)arg1;
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool showFooterInCollectionView; // @synthesize showFooterInCollectionView=_showFooterInCollectionView;
 @property(nonatomic) _Bool allSnapshotsLoaded; // @synthesize allSnapshotsLoaded=_allSnapshotsLoaded;
 @property(retain, nonatomic) _NTKCAddNewFace *addNewFace; // @synthesize addNewFace=_addNewFace;
 @property(copy, nonatomic) NSArray *snapshotRequests; // @synthesize snapshotRequests=_snapshotRequests;
 @property(retain, nonatomic) UILabel *footer; // @synthesize footer=_footer;
-@property(retain, nonatomic) UIStackView *collectionViewFooterStack; // @synthesize collectionViewFooterStack=_collectionViewFooterStack;
+@property(retain, nonatomic) UIStackView *footerStack; // @synthesize footerStack=_footerStack;
 @property(retain, nonatomic) UIStackView *titleStack; // @synthesize titleStack=_titleStack;
+@property(retain, nonatomic) UIStackView *contentStack; // @synthesize contentStack=_contentStack;
 @property(retain, nonatomic) NSLayoutConstraint *cvHeightConstraint; // @synthesize cvHeightConstraint=_cvHeightConstraint;
-@property(retain, nonatomic) NSLayoutConstraint *leadingInsetConstraint; // @synthesize leadingInsetConstraint=_leadingInsetConstraint;
-@property(retain, nonatomic) NSLayoutConstraint *faceContainerTopConstraint; // @synthesize faceContainerTopConstraint=_faceContainerTopConstraint;
-@property(retain, nonatomic) NSLayoutConstraint *titleBaselineConstraint; // @synthesize titleBaselineConstraint=_titleBaselineConstraint;
-@property(nonatomic) _Bool hasCalloutImage; // @synthesize hasCalloutImage=_hasCalloutImage;
-@property(nonatomic) _Bool hasCalloutName; // @synthesize hasCalloutName=_hasCalloutName;
-@property(nonatomic) struct CGSize itemSize; // @synthesize itemSize=_itemSize;
 @property(retain, nonatomic) UICollectionViewFlowLayout *layout; // @synthesize layout=_layout;
 @property(retain, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property(retain, nonatomic) UILabel *title; // @synthesize title=_title;
 @property(nonatomic) long long selectedIndex; // @synthesize selectedIndex=_selectedIndex;
 @property(nonatomic) __weak id <NTKCGalleryCellDelegate> delegate; // @synthesize delegate=_delegate;
-@property(retain, nonatomic) NTKCGalleryCollection *collection; // @synthesize collection=_collection;
+@property(retain, nonatomic) NTKGalleryCollection *collection; // @synthesize collection=_collection;
 - (void)_fontSizeDidChange;
-- (_Bool)shouldShowFooterTextInCollectionView;
-- (_Bool)hasFooterText;
 - (_Bool)_shouldShowAddNewFace;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 referenceSizeForFooterInSection:(long long)arg3;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
@@ -73,14 +62,11 @@
 - (void)updateFaceAtIndex:(unsigned long long)arg1;
 - (struct CGPoint)_contentInsetPoint;
 @property(nonatomic) struct CGPoint contentOffset;
-- (void)showFooterTextIfNeeded;
-- (void)calculateHeightForCollection;
-- (void)didMoveToSuperview;
 - (void)layoutSubviews;
-- (void)ensureCorrectTitleViewOrientation;
 - (void)dealloc;
 - (void)_resetSnapshotRequests;
 - (void)prepareForReuse;
+- (void)_configureViews;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (id)init;
 

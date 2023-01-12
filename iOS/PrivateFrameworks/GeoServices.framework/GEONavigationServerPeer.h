@@ -12,11 +12,16 @@ __attribute__((visibility("hidden")))
 @interface GEONavigationServerPeer <GEONavigationServerRequestStateXPCInterface>
 {
     GEONavigationServer *_delegate;
+    _Bool _hasEntitlement;
+    _Bool _wantsRoutes;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool wantsRoutes; // @synthesize wantsRoutes=_wantsRoutes;
+@property(nonatomic) _Bool hasEntitlement; // @synthesize hasEntitlement=_hasEntitlement;
 @property(nonatomic) __weak GEONavigationServer *delegate; // @synthesize delegate=_delegate;
 - (void)dealloc;
+- (void)setWantsRoutes:(_Bool)arg1;
 - (void)requestUpdates;
 - (void)requestNavigationVoiceVolume;
 - (void)requestPositionFromDestination;
@@ -29,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)requestGuidanceState;
 - (void)requestTransitSummary;
 - (void)requestRouteSummary;
+- (void)requestRoute;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

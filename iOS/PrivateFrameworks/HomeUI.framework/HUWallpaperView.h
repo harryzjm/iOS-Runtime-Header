@@ -13,6 +13,7 @@
 @interface HUWallpaperView : UIView <HUBackgroundEffectViewGrouping>
 {
     HFWallpaperSlice *_wallpaperSlice;
+    NSString *_blurGroupName;
     UIView *_wallpaperContentView;
     UIVisualEffectView *_visualEffectView;
 }
@@ -21,6 +22,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIVisualEffectView *visualEffectView; // @synthesize visualEffectView=_visualEffectView;
 @property(retain, nonatomic) UIView *wallpaperContentView; // @synthesize wallpaperContentView=_wallpaperContentView;
+@property(retain, nonatomic) NSString *blurGroupName; // @synthesize blurGroupName=_blurGroupName;
 @property(retain, nonatomic) HFWallpaperSlice *wallpaperSlice; // @synthesize wallpaperSlice=_wallpaperSlice;
 - (void)_updateVisualEffectView;
 - (struct CGRect)normalizedWallpaperRectForFrameInWindowSpace:(struct CGRect)arg1;

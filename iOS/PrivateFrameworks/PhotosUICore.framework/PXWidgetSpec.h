@@ -23,6 +23,7 @@
     double _distanceBetweenHeaderBaselineAndHeaderBottom;
     double _distanceBetweenFooterTopAndFooterBaseline;
     double _distanceBetweenFooterBaselineAndFooterBottom;
+    struct CGSize _interWidgetSpacing;
     struct UIEdgeInsets _contentGuideInsets;
 }
 
@@ -41,6 +42,7 @@
 @property(nonatomic) double distanceBetweenTopAndHeaderlessWidgetContentTop; // @synthesize distanceBetweenTopAndHeaderlessWidgetContentTop=_distanceBetweenTopAndHeaderlessWidgetContentTop;
 @property(nonatomic) double distanceBetweenTopAndFirstHeaderBaseline; // @synthesize distanceBetweenTopAndFirstHeaderBaseline=_distanceBetweenTopAndFirstHeaderBaseline;
 @property(readonly, nonatomic) unsigned long long detailsOptions; // @synthesize detailsOptions=_detailsOptions;
+@property(readonly, nonatomic) struct CGSize interWidgetSpacing; // @synthesize interWidgetSpacing=_interWidgetSpacing;
 @property(readonly, nonatomic) double distanceBetweenMapViewAndAddressTop; // @synthesize distanceBetweenMapViewAndAddressTop=_distanceBetweenMapViewAndAddressTop;
 @property(readonly, nonatomic) double distanceBetweenMainContentBottomAndCaptionBaseline; // @synthesize distanceBetweenMainContentBottomAndCaptionBaseline=_distanceBetweenMainContentBottomAndCaptionBaseline;
 @property(nonatomic) struct UIEdgeInsets contentGuideInsets; // @synthesize contentGuideInsets=_contentGuideInsets;

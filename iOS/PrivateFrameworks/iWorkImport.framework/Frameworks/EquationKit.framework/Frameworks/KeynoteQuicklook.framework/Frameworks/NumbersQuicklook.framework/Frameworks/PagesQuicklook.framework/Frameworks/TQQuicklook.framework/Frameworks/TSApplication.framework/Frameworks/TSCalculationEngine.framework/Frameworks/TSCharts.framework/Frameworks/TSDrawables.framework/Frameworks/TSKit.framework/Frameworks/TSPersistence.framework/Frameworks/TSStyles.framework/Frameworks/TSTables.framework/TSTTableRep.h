@@ -11,7 +11,7 @@
 #import <TSTables/TSWPRepParent-Protocol.h>
 #import <TSTables/UITextFieldDelegate-Protocol.h>
 
-@class CALayer, CAShapeLayer, NSMutableArray, NSObject, NSSet, NSString, TSDTilingLayer, TSTAnimation, TSTCellRegionGatherer, TSTCellSelection, TSTLayout, TSTMasterLayout, TSTSelectionDragController, TSTTableInfo, TSTTableReferences;
+@class CAShapeLayer, NSMutableArray, NSObject, NSSet, NSString, TSTAnimation, TSTCellRegionGatherer, TSTCellSelection, TSTLayout, TSTLayoutEngine, TSTSelectionDragController, TSTTableInfo, TSTTableReferences;
 @protocol TSDContainerInfo, TSTCanvasReferenceController, TSTTableAnimationController, TSTTableChromeProvider, TSTTableRepDelegate;
 
 @interface TSTTableRep : TSWPTextHostRep <TSWPRepParent, TSTTableRepInternal, UITextFieldDelegate, CALayerDelegate>
@@ -37,14 +37,6 @@
     id <TSTTableRepDelegate> _delegate;
     id <TSTTableChromeProvider> _tableChrome;
     id <TSTCanvasReferenceController> _canvasReferenceController;
-    TSDTilingLayer *_overlayTableName;
-    TSDTilingLayer *_overlayFrozenHeaderCorner;
-    TSDTilingLayer *_overlayFrozenHeaderRows;
-    TSDTilingLayer *_overlayFrozenHeaderColumns;
-    CALayer *_overlayFrozenHeaderRowsMask;
-    CALayer *_overlayFrozenHeaderColumnsMask;
-    CALayer *_overlayFrozenHeaderTableBodyMask;
-    CALayer *_overlayFrozenHeaderTableNameMask;
     double _currentScreenScale;
     TSTCellRegionGatherer *_dirtyCellRegionGatherer;
     NSMutableArray *_animationStack;
@@ -66,14 +58,6 @@
 @property(nonatomic, getter=isRecursivelyDrawingInContext) _Bool recursivelyDrawingInContext; // @synthesize recursivelyDrawingInContext=_recursivelyDrawingInContext;
 @property(retain, nonatomic) TSTCellRegionGatherer *dirtyCellRegionGatherer; // @synthesize dirtyCellRegionGatherer=_dirtyCellRegionGatherer;
 @property(nonatomic) double currentScreenScale; // @synthesize currentScreenScale=_currentScreenScale;
-@property(retain, nonatomic) CALayer *overlayFrozenHeaderTableNameMask; // @synthesize overlayFrozenHeaderTableNameMask=_overlayFrozenHeaderTableNameMask;
-@property(retain, nonatomic) CALayer *overlayFrozenHeaderTableBodyMask; // @synthesize overlayFrozenHeaderTableBodyMask=_overlayFrozenHeaderTableBodyMask;
-@property(retain, nonatomic) CALayer *overlayFrozenHeaderColumnsMask; // @synthesize overlayFrozenHeaderColumnsMask=_overlayFrozenHeaderColumnsMask;
-@property(retain, nonatomic) CALayer *overlayFrozenHeaderRowsMask; // @synthesize overlayFrozenHeaderRowsMask=_overlayFrozenHeaderRowsMask;
-@property(retain, nonatomic) TSDTilingLayer *overlayFrozenHeaderColumns; // @synthesize overlayFrozenHeaderColumns=_overlayFrozenHeaderColumns;
-@property(retain, nonatomic) TSDTilingLayer *overlayFrozenHeaderRows; // @synthesize overlayFrozenHeaderRows=_overlayFrozenHeaderRows;
-@property(retain, nonatomic) TSDTilingLayer *overlayFrozenHeaderCorner; // @synthesize overlayFrozenHeaderCorner=_overlayFrozenHeaderCorner;
-@property(retain, nonatomic) TSDTilingLayer *overlayTableName; // @synthesize overlayTableName=_overlayTableName;
 @property(nonatomic) _Bool zoomOperationIsInProgress; // @synthesize zoomOperationIsInProgress=_zoomOperationIsInProgress;
 @property(nonatomic) _Bool aspectOperationIsInProgress; // @synthesize aspectOperationIsInProgress=_aspectOperationIsInProgress;
 @property(nonatomic) _Bool zoomToEditOperationIsInProgress; // @synthesize zoomToEditOperationIsInProgress=_zoomToEditOperationIsInProgress;
@@ -94,21 +78,40 @@
 @property(nonatomic) struct TSUCellCoord ratingsDragCellID; // @synthesize ratingsDragCellID=_ratingsDragCellID;
 @property(nonatomic) struct CGRect searchSelectionBounds; // @synthesize searchSelectionBounds=_searchSelectionBounds;
 @property _Bool tableRepIsBeingRemovedFromBackgroundLayout; // @synthesize tableRepIsBeingRemovedFromBackgroundLayout=_tableRepIsBeingRemovedFromBackgroundLayout;
+- (_Bool)tappedStockCellAtUnscaledPoint:(struct CGPoint)arg1;
+- (_Bool)tappedControlCellAtUnscaledPoint:(struct CGPoint)arg1;
+- (id)p_cellAtUnscaledPoint:(struct CGPoint)arg1;
+- (struct CGRect)p_getImageFrameForAnimation:(id)arg1;
+- (void)p_drawAnimation:(id)arg1 inContext:(struct CGContext *)arg2;
+- (void)p_drawGroupingArrowInContext:(struct CGContext *)arg1 contentFrame:(struct CGRect)arg2 cell:(id)arg3 cellID:(struct TSUCellCoord)arg4 groupingArrowState:(long long)arg5 alignedClipFrame:(struct CGRect)arg6 verticalAlignment:(int)arg7 wpColumn:(id)arg8;
+- (void)p_drawCheckboxOrRatingInContext:(struct CGContext *)arg1 viewScale:(double)arg2 contentFrame:(struct CGRect)arg3 cell:(id)arg4 cellID:(struct TSUCellCoord)arg5;
+- (_Bool)p_drawingCheckboxOrRatingInCell:(id)arg1 cellID:(struct TSUCellCoord)arg2;
+- (id)p_fontColorAtCellID:(struct TSUCellCoord)arg1 cell:(id)arg2;
+- (void)p_deleteEmptyPivotMessage;
+- (void)p_positionEmptyPivotMessage;
+- (struct CGRect)p_scaledCanvasFrame;
+- (void)p_manageEmptyPivotMessage;
 - (void)drawInContext:(struct CGContext *)arg1;
 - (void)recursivelyDrawInContext:(struct CGContext *)arg1 keepingChildrenPassingTest:(CDUnknownBlockType)arg2;
 - (_Bool)canDrawInParallel;
 - (_Bool)mustDrawOnMainThreadForInteractiveCanvas;
 - (_Bool)canDrawInBackgroundDuringScroll;
+- (void)p_lockAndDrawLayoutSpace:(id)arg1 checkFrameHasWidthAndHeight:(_Bool)arg2 dirtyRect:(struct CGRect)arg3 inContext:(struct CGContext *)arg4;
+- (void)p_drawLayoutSpace:(id)arg1 dirtyRect:(struct CGRect)arg2 inContext:(struct CGContext *)arg3;
+- (void)p_drawLayoutSpace:(id)arg1 range:(struct TSUCellRect)arg2 inContext:(struct CGContext *)arg3;
 - (void)p_drawFinalElements:(id)arg1 inContext:(struct CGContext *)arg2;
+- (void)p_drawBackgroundFillInLayoutSpace:(id)arg1 gridRange:(CDStruct_58eae27c)arg2 context:(struct CGContext *)arg3;
 - (void)invalidateFrozenHeaders;
 - (void)validateFrozenHeaderTableBodyMask;
 - (void)validateFrozenHeaderColumns;
 - (void)validateFrozenHeaderRows;
 - (void)validateFrozenHeaderCorner;
 - (struct CGRect)p_alignedLayerFrameForLayoutSpace:(id)arg1 transform:(struct CGAffineTransform)arg2;
+- (void)p_drawTableNameInContext:(struct CGContext *)arg1 animation:(id)arg2;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 - (void)drawLayer:(id)arg1 inContext:(struct CGContext *)arg2;
 - (id)textureForDescription:(id)arg1;
+- (void)p_addTexture:(id)arg1 forAnimationStage:(unsigned long long)arg2 isFinal:(_Bool)arg3 description:(id)arg4;
 - (void)popAnimation;
 - (void)pushAnimation:(id)arg1;
 @property(readonly, nonatomic) TSTAnimation *currentAnimation;
@@ -156,10 +159,9 @@
 @property(readonly, nonatomic) struct CGRect canvasVisibleRect;
 @property(readonly, nonatomic) struct CGAffineTransform transformFromCanvas;
 @property(readonly, nonatomic) struct CGAffineTransform transformToCanvas;
-@property(readonly, nonatomic) TSTMasterLayout *masterLayout;
+@property(readonly, nonatomic) TSTLayoutEngine *layoutEngine;
 @property(readonly, nonatomic) _Bool layoutDirectionIsLeftToRight;
 @property(readonly, nonatomic) TSTLayout *tableLayout;
-@property(readonly, nonatomic) TSTTableInfo *tableModel;
 @property(readonly, nonatomic) TSTTableInfo *tableInfo;
 
 // Remaining properties

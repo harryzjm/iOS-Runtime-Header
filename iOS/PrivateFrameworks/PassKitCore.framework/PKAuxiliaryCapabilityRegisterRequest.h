@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSData, PKPaymentPass;
+@class NSArray, NSData, PKSecureElementSignatureInfo;
 
 @interface PKAuxiliaryCapabilityRegisterRequest
 {
@@ -12,16 +12,19 @@
     NSData *_deviceSignatureKeyAttestation;
     NSData *_deviceDecryptionKeyAttestation;
     NSArray *_validCertificatesOnDevice;
-    PKPaymentPass *_pass;
+    NSData *_signatureData;
+    PKSecureElementSignatureInfo *_signatureInfo;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
+@property(retain, nonatomic) PKSecureElementSignatureInfo *signatureInfo; // @synthesize signatureInfo=_signatureInfo;
+@property(copy, nonatomic) NSData *signatureData; // @synthesize signatureData=_signatureData;
 @property(copy, nonatomic) NSArray *validCertificatesOnDevice; // @synthesize validCertificatesOnDevice=_validCertificatesOnDevice;
 @property(copy, nonatomic) NSData *deviceDecryptionKeyAttestation; // @synthesize deviceDecryptionKeyAttestation=_deviceDecryptionKeyAttestation;
 @property(copy, nonatomic) NSData *deviceSignatureKeyAttestation; // @synthesize deviceSignatureKeyAttestation=_deviceSignatureKeyAttestation;
 @property(copy, nonatomic) NSArray *dpanIdentifiers; // @synthesize dpanIdentifiers=_dpanIdentifiers;
-- (void)_urlRequestWithServiceURL:(id)arg1 deviceIdentifier:(id)arg2 appleAccountInformation:(id)arg3 webService:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (id)_dataToSign;
+- (id)_urlRequestWithServiceURL:(id)arg1 deviceIdentifier:(id)arg2 appleAccountInformation:(id)arg3;
 
 @end
 

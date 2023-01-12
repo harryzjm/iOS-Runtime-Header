@@ -33,6 +33,8 @@
 - (void)messageComposeViewController:(id)arg1 didFinishWithResult:(long long)arg2;
 - (void)_prepareActivity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithItemSource:(id)arg1;
+- (id)_recipientAlreadyInFamily:(id)arg1 emailOnly:(_Bool)arg2;
+- (void)_showAlreadyFamilyMember:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

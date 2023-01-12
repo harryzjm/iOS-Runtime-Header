@@ -17,43 +17,48 @@
 #import <SpringBoard/SBHomeScreenOverlayViewControllerDelegate-Protocol.h>
 #import <SpringBoard/UIGestureRecognizerDelegate-Protocol.h>
 
-@class FBDisplayLayoutElement, NSCountedSet, NSHashTable, NSString, SBAppStatusBarContentAssertion, SBBarSwipeAffordanceViewController, SBHomeScreenOverlayViewController, SBMainScreenActiveInterfaceOrientationWindow, UIPanGestureRecognizer, UITapGestureRecognizer, UIViewController;
-@protocol SBFOverlayDismissalDelegate, SBHOccludable, SBHWidgetSheetViewControllerPresenter, SBHomeScreenOverlayControllerDelegate;
+@class FBDisplayLayoutElement, NSCountedSet, NSHashTable, NSString, SBBarSwipeAffordanceViewController, SBFFrameRateAssertion, SBHomeScreenOverlayViewController, SBMainScreenActiveInterfaceOrientationWindow, UIPanGestureRecognizer, UITapGestureRecognizer, UIViewController;
+@protocol SBFOverlayDismissalDelegate, SBHOccludable, SBHWidgetSheetViewControllerPresenter, SBHomeScreenOverlayControllerDelegate, SBIconListLayoutProvider;
 
 @interface SBHomeScreenOverlayController : NSObject <SBBarSwipeAffordanceDelegate, SBBarSwipeAffordanceObserver, SBHomeScreenOverlayViewControllerDelegate, UIGestureRecognizerDelegate, SBFOverlayControlling, SBFIdleTimerBehaviorProviding, CSExternalBehaviorProviding, CSExternalEventHandling, BSDescriptionProviding, SBFOverlayDismissalDelegate>
 {
     NSHashTable *_observers;
     NSCountedSet *_reasonsToDisablePanGestureRecognizer;
+    SBFFrameRateAssertion *_frameRateAssertion;
     _Bool _dismissing;
     _Bool _animatingPresentationProgress;
+    _Bool _overlayAppearing;
     id <SBFOverlayDismissalDelegate> _dismissalDelegate;
     id <SBHomeScreenOverlayControllerDelegate> _delegate;
     UITapGestureRecognizer *_dismissTapGestureRecognizer;
+    id <SBIconListLayoutProvider> _listLayoutProvider;
     SBMainScreenActiveInterfaceOrientationWindow *_window;
     SBBarSwipeAffordanceViewController *_homeAffordanceViewController;
     SBHomeScreenOverlayViewController *_overlayViewController;
     FBDisplayLayoutElement *_displayLayoutElement;
-    SBAppStatusBarContentAssertion *_statusBarContentAssertion;
     unsigned long long _screenEdgeSystemGestureType;
     UIPanGestureRecognizer *_dismissPanGestureRecognizer;
     unsigned long long _indirectScreenEdgeSystemGestureType;
     unsigned long long _scrunchSystemGestureType;
+    UIViewController *_existingAvocadoVC;
     double _initialPresentationProgress;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) double initialPresentationProgress; // @synthesize initialPresentationProgress=_initialPresentationProgress;
+@property(nonatomic) __weak UIViewController *existingAvocadoVC; // @synthesize existingAvocadoVC=_existingAvocadoVC;
+@property(nonatomic, getter=isOverlayAppearing) _Bool overlayAppearing; // @synthesize overlayAppearing=_overlayAppearing;
 @property(nonatomic, getter=isAnimatingPresentationProgress) _Bool animatingPresentationProgress; // @synthesize animatingPresentationProgress=_animatingPresentationProgress;
 @property(readonly, nonatomic) unsigned long long scrunchSystemGestureType; // @synthesize scrunchSystemGestureType=_scrunchSystemGestureType;
 @property(readonly, nonatomic) unsigned long long indirectScreenEdgeSystemGestureType; // @synthesize indirectScreenEdgeSystemGestureType=_indirectScreenEdgeSystemGestureType;
 @property(retain, nonatomic) UIPanGestureRecognizer *dismissPanGestureRecognizer; // @synthesize dismissPanGestureRecognizer=_dismissPanGestureRecognizer;
 @property(readonly, nonatomic) unsigned long long screenEdgeSystemGestureType; // @synthesize screenEdgeSystemGestureType=_screenEdgeSystemGestureType;
 @property(nonatomic, getter=isDismissing) _Bool dismissing; // @synthesize dismissing=_dismissing;
-@property(retain, nonatomic) SBAppStatusBarContentAssertion *statusBarContentAssertion; // @synthesize statusBarContentAssertion=_statusBarContentAssertion;
 @property(retain, nonatomic) FBDisplayLayoutElement *displayLayoutElement; // @synthesize displayLayoutElement=_displayLayoutElement;
 @property(readonly, nonatomic) SBHomeScreenOverlayViewController *overlayViewController; // @synthesize overlayViewController=_overlayViewController;
 @property(readonly, nonatomic) SBBarSwipeAffordanceViewController *homeAffordanceViewController; // @synthesize homeAffordanceViewController=_homeAffordanceViewController;
 @property(readonly, nonatomic) SBMainScreenActiveInterfaceOrientationWindow *window; // @synthesize window=_window;
+@property(readonly, nonatomic) id <SBIconListLayoutProvider> listLayoutProvider; // @synthesize listLayoutProvider=_listLayoutProvider;
 @property(readonly, nonatomic) UITapGestureRecognizer *dismissTapGestureRecognizer; // @synthesize dismissTapGestureRecognizer=_dismissTapGestureRecognizer;
 @property(nonatomic) __weak id <SBHomeScreenOverlayControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak id <SBFOverlayDismissalDelegate> dismissalDelegate; // @synthesize dismissalDelegate=_dismissalDelegate;
@@ -62,6 +67,7 @@
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 @property(readonly, copy) NSString *description;
+- (id)acquireUseSnapshotAsBackgroundViewAssertionForReason:(id)arg1;
 - (void)homeScreenOverlayViewController:(id)arg1 setSuppressesEditingStateForListView:(_Bool)arg2;
 - (_Bool)isEditingForHomeScreenOverlayViewController:(id)arg1;
 - (_Bool)showsDoneButtonWhileEditingForHomeScreenOverlayViewController:(id)arg1;
@@ -105,6 +111,7 @@
 - (id)_rootViewController;
 - (void)_setDisplayLayoutElementActive:(_Bool)arg1;
 - (void)_enumerateHomeScreenOverlayObserversUsingBlock:(CDUnknownBlockType)arg1;
+- (_Bool)_effectivelyFinishedAnimationToPresentationProgress:(double)arg1 finished:(_Bool)arg2 retargeted:(_Bool)arg3;
 @property(nonatomic, getter=isOccluded) _Bool occluded;
 - (void)updateExtraButtonVisibilityAnimated:(_Bool)arg1;
 - (void)removeReasonToDisableDismissGestureRecognizer:(id)arg1;
@@ -112,6 +119,7 @@
 - (void)dismissUsingViewControllerTransitionCoordinator:(id)arg1;
 - (void)dismissAnimated:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_dismissLevelAnimated:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)presentAnimated:(_Bool)arg1 fromLeading:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)presentAnimated:(_Bool)arg1 fromLeading:(_Bool)arg2;
 - (void)presentAnimated:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)presentAnimated:(_Bool)arg1;
@@ -130,13 +138,14 @@
 @property(nonatomic) _Bool shouldUseReducedMotionAnimation;
 - (void)animatePresentationProgress:(double)arg1 withGestureLiftOffVelocity:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic) UIViewController *activeSidebarViewController;
-@property(retain, nonatomic) UIViewController<SBHOccludable> *rightSidebarViewController;
-@property(retain, nonatomic) UIViewController<SBHOccludable> *leftSidebarViewController;
+@property(retain, nonatomic) UIViewController<SBHOccludable> *trailingSidebarViewController;
+@property(retain, nonatomic) UIViewController<SBHOccludable> *leadingSidebarViewController;
 @property(readonly, nonatomic) UIViewController<SBHWidgetSheetViewControllerPresenter> *viewController;
 - (void)_configureDismissGestureRecognizer;
 - (void)_configureOverlayViewController;
 - (id)init;
-- (id)initWithWindowLevel:(double)arg1 homeGestureParticipantIdentifier:(long long)arg2 screenEdgeSystemGestureType:(unsigned long long)arg3 indirectScreenEdgeSystemGestureType:(unsigned long long)arg4 scrunchSystemGestureType:(unsigned long long)arg5 secure:(_Bool)arg6;
+- (id)initWithListLayoutProvider:(id)arg1;
+- (id)initWithListLayoutProvider:(id)arg1 windowLevel:(double)arg2 homeGestureParticipantIdentifier:(long long)arg3 zStackParticipantIdentifier:(long long)arg4 screenEdgeSystemGestureType:(unsigned long long)arg5 indirectScreenEdgeSystemGestureType:(unsigned long long)arg6 scrunchSystemGestureType:(unsigned long long)arg7 secure:(_Bool)arg8;
 
 // Remaining properties
 @property(readonly, nonatomic) double customIdleExpirationTimeout;

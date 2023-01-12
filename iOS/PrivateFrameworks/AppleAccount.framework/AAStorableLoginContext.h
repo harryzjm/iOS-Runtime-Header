@@ -10,6 +10,7 @@
 
 @interface AAStorableLoginContext : NSObject
 {
+    _Bool _beneficiaryLogin;
     NSString *_appleID;
     NSString *_altDSID;
     NSString *_DSID;
@@ -17,9 +18,16 @@
     NSString *_continuationKey;
     NSString *_passwordResetKey;
     NSString *_cloudKitToken;
+    NSString *_firstName;
+    NSString *_middleName;
+    NSString *_lastName;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *lastName; // @synthesize lastName=_lastName;
+@property(copy, nonatomic) NSString *middleName; // @synthesize middleName=_middleName;
+@property(copy, nonatomic) NSString *firstName; // @synthesize firstName=_firstName;
+@property(nonatomic, getter=isBeneficiaryLogin) _Bool beneficiaryLogin; // @synthesize beneficiaryLogin=_beneficiaryLogin;
 @property(copy, nonatomic) NSString *cloudKitToken; // @synthesize cloudKitToken=_cloudKitToken;
 @property(copy, nonatomic) NSString *passwordResetKey; // @synthesize passwordResetKey=_passwordResetKey;
 @property(copy, nonatomic) NSString *continuationKey; // @synthesize continuationKey=_continuationKey;

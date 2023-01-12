@@ -47,6 +47,8 @@
 - (id)description;
 - (void)dealloc;
 - (id)init;
+- (void)trackFuture:(id)arg1;
+- (void)trackFuture:(id)arg1 cancel:(_Bool)arg2 error:(_Bool)arg3;
 
 @end
 

@@ -10,6 +10,7 @@
 {
 }
 
++ (_Bool)shouldUseExternalIdentifierAsDeletionKeyWithAccountType:(long long)arg1;
 + (id)decodeExternalIdentifierForMarkedForDeletionObject:(id)arg1;
 + (id)encodeExternalIdentifierForMarkedForDeletionObject:(id)arg1;
 

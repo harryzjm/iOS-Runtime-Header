@@ -27,6 +27,7 @@
     MISSING_TYPE *heapsUnused;
     MISSING_TYPE *smallBufferLock;
     MISSING_TYPE *currentSmallBuffer;
+    MISSING_TYPE *smallBufferPreferredSize;
 }
 
 @end

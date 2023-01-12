@@ -7,6 +7,7 @@
 @class CTServiceDescriptor, CTSubscriberAuthDataHolder, CTSubscriberAuthRequest, CTXPCServiceSubscriptionContext, NSObject, NSString;
 
 @protocol CTXPCServiceSubscriberInterface
+- (void)getLastKnownSimDeactivationInfoFor:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(CTSimDeactivationInfo *, NSError *))arg2;
 - (void)getUserDefaultVoiceSubscriptionContext:(void (^)(CTXPCServiceSubscriptionContext *, NSError *))arg1;
 - (void)refreshUserAuthToken:(CTServiceDescriptor *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)getUserAuthToken:(CTServiceDescriptor *)arg1 completion:(void (^)(NSData *, NSError *))arg2;
@@ -17,6 +18,7 @@
 - (void)setLabel:(CTXPCServiceSubscriptionContext *)arg1 label:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)generateAuthenticationInfoUsingSim:(CTXPCServiceSubscriptionContext *)arg1 authParams:(CTSubscriberAuthDataHolder *)arg2 completion:(void (^)(CTSubscriberAuthDataHolder *, NSError *))arg3;
 - (void)copyLabel:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
+- (void)getSubscriptionUserFacingName:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)getShortLabel:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)getSimLabel:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(CTSimLabel *, NSError *))arg2;
 - (void)getRemainingPUKAttemptCount:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
@@ -33,7 +35,7 @@
 - (void)copyMobileSubscriberNetworkCode:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)copyLastKnownMobileSubscriberCountryCode:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)getMobileSubscriberHomeCountryList:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
-- (void)isEsimFor:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(long long, NSError *))arg2;
+- (void)getSimHardwareInfo:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(CTSimHardwareInfo *, NSError *))arg2;
 - (void)copyMobileSubscriberIsoSubregionCode:(NSString *)arg1 MNC:(NSString *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 - (void)copyMobileSubscriberIsoCountryCode:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)copyMobileSubscriberCountryCode:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;

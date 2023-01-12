@@ -7,6 +7,8 @@
 #import <UIKit/UILabel.h>
 
 @interface UILabel (IC)
+@property(readonly, nonatomic) unsigned long long ic_numberOfLinesNeededForFullText;
+- (_Bool)ic_requiresTruncationWithNumberOfLines:(unsigned long long)arg1;
 @property(readonly, nonatomic) _Bool ic_requiresLineBreaks;
 @end
 

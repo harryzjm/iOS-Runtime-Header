@@ -9,6 +9,7 @@
 @protocol UserFontManagerProtocol
 - (void)_removeAllUserFonts;
 - (void)reset;
+- (void)synchronizeProfileFonts:(void (^)(_Bool))arg1;
 - (void)synchronizeFontAssets:(void (^)(_Bool))arg1;
 - (void)suspendedFontProviders:(void (^)(NSArray *))arg1;
 - (void)suspendFontProvider:(NSString *)arg1 completionHandler:(void (^)(void))arg2;

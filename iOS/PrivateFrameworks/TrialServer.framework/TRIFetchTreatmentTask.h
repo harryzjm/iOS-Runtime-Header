@@ -11,12 +11,14 @@
 
 @interface TRIFetchTreatmentTask <TRIRetryableTask>
 {
+    _Bool wasDeferred;
     int retryCount;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)parseFromData:(id)arg1;
 + (id)taskWithExperiment:(id)arg1 treatmentId:(id)arg2 taskAttributing:(id)arg3;
+@property(nonatomic) _Bool wasDeferred; // @synthesize wasDeferred;
 @property(nonatomic) int retryCount; // @synthesize retryCount;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -26,7 +28,11 @@
 - (id)_asPersistedTask;
 - (id)runUsingContext:(id)arg1 withTaskQueue:(id)arg2;
 - (id)_nextTasksForRunStatus:(int)arg1;
-- (int)_processTreatment:(id)arg1 database:(id)arg2 paths:(id)arg3;
+- (id)_fetchAssetsWithArtifactProvider:(id)arg1 recordId:(id)arg2 experimentRecord:(id)arg3 assetIndexes:(id)arg4 downloadOptions:(id)arg5 context:(id)arg6 assetURLs:(id *)arg7 treatmentFetchError:(id *)arg8;
+- (id)_fetchTreatmentWithArtifactProvider:(id)arg1 experimentRecord:(id)arg2 downloadOptions:(id)arg3 context:(id)arg4 treatment:(id *)arg5 treatmentSize:(unsigned long long *)arg6 recordId:(id *)arg7 treatmentFetchError:(id *)arg8;
+- (id)_namespaceDescriptorForNamespaceName:(id)arg1 fromExperimentRecord:(id)arg2 referencingFactorsURL:(id)arg3;
+- (unsigned int)_ncvForNamespaceName:(id)arg1 inExperimentRecord:(id)arg2;
+- (id)_saveTreatment:(id)arg1 experimentRecord:(id)arg2 assetURLs:(id)arg3 assetMetadata:(id)arg4 context:(id)arg5 paths:(id)arg6 downloadOptions:(id)arg7;
 - (void)runDequeueHandlerUsingContext:(id)arg1;
 - (void)runEnqueueHandlerUsingContext:(id)arg1;
 @property(readonly, nonatomic) NSArray *dependencies;

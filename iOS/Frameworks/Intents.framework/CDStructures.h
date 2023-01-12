@@ -20,6 +20,20 @@ struct _NSRange {
     unsigned long long length;
 };
 
+struct map<std::string, INSystemApp, std::less<std::string>, std::allocator<std::pair<const std::string, INSystemApp>>> {
+    struct __tree<std::__value_type<std::string, INSystemApp>, std::__map_value_compare<std::string, std::__value_type<std::string, INSystemApp>, std::less<std::string>, true>, std::allocator<std::__value_type<std::string, INSystemApp>>> {
+        void *__begin_node_;
+        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<std::string, INSystemApp>, void *>>> {
+            struct __tree_end_node<std::__tree_node_base<void *>*> {
+                void *__left_;
+            } __value_;
+        } __pair1_;
+        struct __compressed_pair<unsigned long, std::__map_value_compare<std::string, std::__value_type<std::string, INSystemApp>, std::less<std::string>, true>> {
+            unsigned long long __value_;
+        } __pair3_;
+    } __tree_;
+};
+
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
@@ -107,6 +121,10 @@ typedef struct {
 typedef struct {
     unsigned int searchResultsCount:1;
 } CDStruct_a60b8694;
+
+typedef struct {
+    unsigned int soundType:1;
+} CDStruct_13553b0f;
 
 typedef struct {
     unsigned int statusCode:1;

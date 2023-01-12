@@ -15,8 +15,8 @@
 - (_Bool)readOnly;
 - (unsigned long long)encodedLength;
 - (_Bool)isReadable;
-- (id)writeData:(id)arg1 toPackageWriter:(id)arg2 infoMessage:(struct DataInfo *)arg3 preferredFilename:(id)arg4 error:(id *)arg5;
-- (_Bool)archiveInfoMessage:(struct DataInfo *)arg1 archiver:(id)arg2 packageWriter:(id)arg3;
+- (id)writeData:(id)arg1 toPackageWriter:(id)arg2 infoMessage:(void *)arg3 preferredFilename:(id)arg4 shouldRemoveData:(_Bool)arg5 error:(id *)arg6;
+- (_Bool)archiveInfoMessage:(void *)arg1 archiver:(id)arg2 packageWriter:(id)arg3;
 - (id)NSDataWithOptions:(unsigned long long)arg1;
 - (void)performIOChannelReadWithAccessor:(CDUnknownBlockType)arg1;
 - (id)initWithNSData:(id)arg1;

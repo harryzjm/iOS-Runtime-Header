@@ -14,6 +14,7 @@
 {
 }
 
++ (id)_indepthErrorFromError:(id)arg1;
 - (id)getDynamicProperty:(id)arg1 forEventName:(id)arg2 payloadForSystemPropertyExtraction:(id)arg3;
 - (void)registerSystemProperties:(id)arg1;
 

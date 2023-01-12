@@ -8,12 +8,12 @@
 
 @class KTRequest, NSData, NSString, NSUUID;
 
-__attribute__((visibility("hidden")))
 @interface DownloadRecord : NSManagedObject
 {
 }
 
 + (id)fetchRequest;
+- (_Bool)expired;
 
 // Remaining properties
 @property(copy, nonatomic) NSString *application; // @dynamic application;

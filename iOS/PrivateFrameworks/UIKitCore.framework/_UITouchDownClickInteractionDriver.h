@@ -50,6 +50,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long behavior;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(nonatomic) unsigned long long driverStyle;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

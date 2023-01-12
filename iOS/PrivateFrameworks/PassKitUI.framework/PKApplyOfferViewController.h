@@ -6,7 +6,7 @@
 
 #import <PassKitUI/PKApplyFlowControllerProtocol-Protocol.h>
 
-@class CLInUseAssertion, NSString, PKAccountFlowController, PKApplyOfferCreditCardView, PKPaymentInstallmentConfiguration;
+@class CLInUseAssertion, NSString, PKAccountFlowController, PKApplyOfferCreditCardView, PKPaymentInstallmentConfiguration, UIImage;
 
 @interface PKApplyOfferViewController <PKApplyFlowControllerProtocol>
 {
@@ -14,18 +14,24 @@
     PKApplyOfferCreditCardView *_offerView;
     NSString *_offerTermsIdentifier;
     CLInUseAssertion *_inUseAssertion;
+    unsigned long long _layout;
     _Bool _useCompactLayout;
     PKPaymentInstallmentConfiguration *_installmentConfiguration;
     _Bool _hasSufficientOTBForInstallment;
+    UIImage *_heroImage;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIImage *heroImage; // @synthesize heroImage=_heroImage;
 - (void)_termsAccepted:(_Bool)arg1;
 - (void)_terminateApplyFlowWithoutDeclining;
 - (void)_openTermsAndConditions;
 - (void)_setupForBroadwayApplication:(id)arg1;
+- (id)analyticsAdditionalValues;
+- (id)analyticsPageTag;
 - (void)explanationViewDidSelectSetupLater:(id)arg1;
 - (void)explanationViewDidSelectContinue:(id)arg1;
+- (void)preflightWithCompletion:(CDUnknownBlockType)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;

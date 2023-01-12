@@ -10,7 +10,7 @@
 #import <NanoTimeKitCompanion/NSSecureCoding-Protocol.h>
 #import <NanoTimeKitCompanion/NTKEditModeMapping-Protocol.h>
 
-@class CLKDevice, NSArray, NSDate, NSDictionary, NSHashTable, NSMutableDictionary, NSNumber, NSString, NTKFaceConfiguration;
+@class CLKDevice, NSArray, NSDate, NSDictionary, NSHashTable, NSMutableDictionary, NSNumber, NSString, NTKArgonKeyDescriptor, NTKFaceConfiguration, NTKPigmentEditOptionProvider;
 @protocol NTKFaceComplicationConfiguration;
 
 @interface NTKFace : NSObject <NSSecureCoding, NSCopying, NTKEditModeMapping>
@@ -26,22 +26,28 @@
     _Bool _resourceDirectoryIsOwned;
     NSString *_cachedDefaultName;
     NSArray *_cachedDynamicEditOptions;
+    NSString *_cachedResourceDirectorySnapshotKey;
+    NSArray *_externalAssets;
+    NSString *_analyticsIdentifier;
     _Bool _editOptionsPrepared;
     _Bool _isLibraryFace;
+    _Bool _forceUsingLegacyColorOptions;
     _Bool _beingEdited;
     long long _faceStyle;
     NSString *_bundleIdentifier;
     CLKDevice *_device;
     NSString *_resourceDirectory;
     id <NTKFaceComplicationConfiguration> _complicationConfiguration;
+    NTKPigmentEditOptionProvider *_pigmentOptionProvider;
     long long _mostRecentEditMode;
 }
 
 + (id)PPTBlankFace;
 + (_Bool)isRestrictedForDevice:(id)arg1;
 + (_Bool)isFaceStyleAvailableInternal:(long long)arg1 forDevice:(id)arg2;
-+ (id)availableInternalFaceStylesForDevice:(id)arg1;
++ (id)availableInternalFaceDescriptorsForDevice:(id)arg1;
 + (Class)_faceClassForStyle:(long long)arg1;
++ (id)keyDescriptor;
 + (id)faceWithJSONObjectRepresentation:(id)arg1 forDevice:(id)arg2 forMigration:(_Bool)arg3 allowFallbackFromInvalidFaceStyle:(_Bool)arg4;
 + (id)faceWithJSONObjectRepresentation:(id)arg1 forDevice:(id)arg2;
 + (_Bool)supportsSecureCoding;
@@ -68,9 +74,12 @@
 + (id)_initialDefaultComplicationForSlot:(id)arg1 forDevice:(id)arg2;
 + (unsigned long long)maximumRemoteComplicationsOnAnyFaceForDevice:(id)arg1;
 + (unsigned long long)maximumRemoteComplicationsOnAnyFace;
++ (id)defaultAnalyticsIdentifierForBundleIdentifier:(id)arg1;
++ (id)bundledFaceWithIdentifier:(id)arg1 analyticsIdentifier:(id)arg2 forDevice:(id)arg3 initCustomization:(CDUnknownBlockType)arg4;
 + (id)bundledFaceWithIdentifier:(id)arg1 forDevice:(id)arg2 initCustomization:(CDUnknownBlockType)arg3;
 + (id)defaultFaceOfStyle:(long long)arg1 forDevice:(id)arg2 initCustomization:(CDUnknownBlockType)arg3;
 + (id)defaultFaceOfStyle:(long long)arg1 forDevice:(id)arg2;
++ (id)_complicationTypeMigrations;
 + (id)possibleComplicationTypesForSlot:(id)arg1;
 + (void)enumerateComplicationSlotsWithBlock:(CDUnknownBlockType)arg1;
 + (void)enumerateComplicationSlots:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
@@ -83,11 +92,22 @@
 + (id)_linkedResourceRootDirectory;
 + (id)richComplicationSlotsForDevice:(id)arg1;
 + (id)complicationConfiguration;
++ (id)allPigmentFaceDomains;
++ (id)additionalPigmentFaceDomains;
++ (id)pigmentFaceDomain;
 + (void)initialize;
++ (id)faceWithInstanceDescriptor:(id)arg1;
++ (_Bool)needsAppleNeuralEngine;
++ (id)sortableFaceWithAssets:(id)arg1;
++ (_Bool)supportsExternalAssets;
++ (void)argon_cleanupOverlayAssets;
++ (id)argon_overlayAssetURL;
 + (id)defaultFaceFromFaceDescriptor:(id)arg1 forDevice:(id)arg2;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool beingEdited; // @synthesize beingEdited=_beingEdited;
 @property(nonatomic) long long mostRecentEditMode; // @synthesize mostRecentEditMode=_mostRecentEditMode;
+@property(readonly, nonatomic) NTKPigmentEditOptionProvider *pigmentOptionProvider; // @synthesize pigmentOptionProvider=_pigmentOptionProvider;
+@property(nonatomic) _Bool forceUsingLegacyColorOptions; // @synthesize forceUsingLegacyColorOptions=_forceUsingLegacyColorOptions;
 @property(retain, nonatomic) id <NTKFaceComplicationConfiguration> complicationConfiguration; // @synthesize complicationConfiguration=_complicationConfiguration;
 @property(nonatomic) _Bool isLibraryFace; // @synthesize isLibraryFace=_isLibraryFace;
 @property(readonly, nonatomic) _Bool editOptionsPrepared; // @synthesize editOptionsPrepared=_editOptionsPrepared;
@@ -100,11 +120,15 @@
 - (void)_selectDefaultSlots;
 - (id)_sortedComplicationSlots;
 - (_Bool)_verifyCompatibilityOfConfiguration:(id)arg1;
+- (id)replacedOptionWithFulfilledOption:(id)arg1 forEditMode:(long long)arg2 slot:(id)arg3;
+- (id)_validOptionForOption:(id)arg1 mode:(long long)arg2 slot:(id)arg3 configuration:(id)arg4;
 - (_Bool)_applyConfiguration:(id)arg1 allowFailure:(_Bool)arg2;
+- (Class)legacyEditOptionClassFromCustomEditMode:(long long)arg1 resourceDirectoryExists:(_Bool)arg2;
 - (Class)editOptionClassFromEditMode:(long long)arg1 resourceDirectoryExists:(_Bool)arg2;
+@property(readonly, copy, nonatomic) NTKArgonKeyDescriptor *keyDescriptor;
 - (id)JSONObjectRepresentation;
 - (id)deepCopy;
-- (void)_notifyAppsOfSharedComplicationDescriptors;
+- (void)prepareForSharing;
 - (_Bool)_sanitizeFaceConfiguration:(id *)arg1;
 - (_Bool)sanitizeFaceConfiguration:(id *)arg1;
 - (_Bool)_shouldSanitizeFaceConfigurationWhenAddingSharedFace;
@@ -115,6 +139,8 @@
 - (_Bool)shouldIncludeResourceDirectoryForSharing;
 - (void)_handleSharingMetadata:(id)arg1;
 - (void)handleSharingMetadata:(id)arg1;
+- (_Bool)_shouldPresentAlertForSharingUnreleasedFace;
+- (_Bool)shouldPresentAlertForSharingUnreleasedFace;
 - (id)_createSharingMetadata;
 - (id)createSharingMetadata;
 - (id)faceSharingName;
@@ -122,8 +148,10 @@
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)copyFromGalleryFace;
 - (void)_customizeWithJSONDescription:(id)arg1;
 - (id)_resourceDirectorySnapshotKey;
+- (id)_cachedResourceDirectorySnapshotKey;
 - (id)_defaultName;
 - (id)_localizedNameForComplicationSlot:(id)arg1;
 - (id)_orderedComplicationSlots;
@@ -135,8 +163,9 @@
 - (_Bool)_hasCustomSwitcherSelectionAction;
 - (void)didMoveToLibrary;
 - (_Bool)_allowsEditing;
-- (_Bool)_option:(id)arg1 migratesToValidOption:(id *)arg2 forCustomEditMode:(long long)arg3;
-- (_Bool)option:(id)arg1 migratesToValidOption:(id *)arg2 forCustomEditMode:(long long)arg3;
+- (_Bool)_option:(id)arg1 migratesToValidOption:(id *)arg2 forCustomEditMode:(long long)arg3 slot:(id)arg4;
+- (_Bool)option:(id)arg1 migratesToValidOption:(id *)arg2 forCustomEditMode:(long long)arg3 slot:(id)arg4;
+- (_Bool)_option:(id)arg1 isValidForCustomEditMode:(long long)arg2 slot:(id)arg3 configuration:(id)arg4;
 - (_Bool)_option:(id)arg1 isValidForCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_noteOptionChangedFrom:(id)arg1 to:(id)arg2 forCustomEditMode:(long long)arg3 slot:(id)arg4;
 - (_Bool)_hasOptionsForCustomEditMode:(long long)arg1;
@@ -172,12 +201,15 @@
 - (id)slotsForCustomEditMode:(long long)arg1;
 - (void)enumerateSlotsForCustomEditMode:(long long)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateCustomEditModesWithBlock:(CDUnknownBlockType)arg1;
+- (_Bool)containsEditOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (unsigned long long)indexOfOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (id)optionAtIndex:(unsigned long long)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (unsigned long long)numberOfOptionsForCustomEditMode:(long long)arg1 slot:(id)arg2;
+- (_Bool)hasPrideEditOptions;
 - (void)cleanupEditOptions;
 - (void)prepareEditOptions;
 - (void)applyUniqueConfigurationWithExistingFaces:(id)arg1;
+- (id)_uniqueOptionForCustomEditMode:(long long)arg1 slot:(id)arg2 withExistingOptions:(id)arg3;
 - (void)applyDefaultComplicationConfiguration;
 - (void)applyDefaultConfiguration;
 - (_Bool)applyConfiguration:(id)arg1;
@@ -188,8 +220,10 @@
 @property(readonly, nonatomic, getter=isEditable) _Bool editable;
 @property(readonly, nonatomic) long long editModeForCustomEditViewController;
 @property(readonly, nonatomic) NSArray *editModes;
+@property(readonly, copy, nonatomic) NSString *analyticsIdentifier;
 - (void)performCustomSwitcherSelectionAction;
 - (_Bool)hasCustomSwitcherSelectionAction;
+- (void)performComplicationTypeMigration;
 - (void)_updateComplicationTombstones;
 - (void)_complicationsDidChange;
 - (void)_handleSingleComplicationDidChangeNotification:(id)arg1;
@@ -256,17 +290,17 @@
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (id)_initWithFaceStyle:(long long)arg1 forDevice:(id)arg2;
+@property(readonly, nonatomic, getter=isValidConfigurationToAddToLibrary) _Bool validConfigurationToAddToLibrary;
 - (void)_commonInit;
 - (id)complicationSlotsHiddenByEditOption:(id)arg1;
 - (id)editOptionThatHidesAllComplications;
-- (_Bool)_faceGalleryIsRestricted;
-- (id)_faceGalleryCalloutName;
-- (_Bool)_faceGalleryDidUpdateFaceColorForColorEditOptionClass:(Class)arg1 availableHardwareSpecificColorOptions:(id)arg2 availableColorOptions:(id)arg3;
-- (void)_setFaceGalleryComplicationTypesForSlots:(id)arg1 canRepeat:(_Bool)arg2;
-- (void)_setFaceGalleryComplicationTypesForSlots:(id)arg1;
-- (id)faceDescriptor;
-- (id)_complicationMigrationPaths;
-- (long long)_editModeForOldEncodingIndex:(long long)arg1;
+- (_Bool)requiresPigmentEditOption;
+- (_Bool)supportsPigmentEditOption;
+- (_Bool)deviceSupportsPigmentEditOption;
+- (_Bool)supportsPigmentUI;
+- (void)handleColorEditOptionsChanged;
+- (id)instanceDescriptor;
+- (id)_localizedStringForExternal:(id)arg1 comment:(id)arg2;
 - (id)_faceDescriptionKeyForExternal;
 - (id)_faceDescriptionForExternal;
 - (id)faceDescriptionForExternal;
@@ -276,6 +310,21 @@
 - (id)_faceDescriptionKey;
 - (id)_faceDescription;
 - (id)faceDescription;
+- (_Bool)_faceGalleryIsRestricted;
+- (id)_faceGalleryCalloutName;
+- (_Bool)_faceGalleryDidUpdateFaceColorForColorEditOptionClass:(Class)arg1 availableHardwareSpecificColorOptions:(id)arg2 availableColorOptions:(id)arg3;
+- (void)_setFaceGalleryComplicationTypesForSlots:(id)arg1 canRepeat:(_Bool)arg2;
+- (void)_setFaceGalleryComplicationTypesForSlots:(id)arg1;
+- (id)addFaceDetailViewController;
+- (id)libraryDetailViewController;
+- (void)companionEditorWithAssets:(id)arg1 completion:(CDUnknownBlockType)arg2;
+@property(copy, nonatomic) NSArray *externalAssets;
+- (void)argon_notificationOverlayImageWithCompletion:(CDUnknownBlockType)arg1;
+- (void)argon_compositedSnapshotWithCompletion:(CDUnknownBlockType)arg1;
+- (void)argon_notificationContentWithCompletion:(CDUnknownBlockType)arg1;
+- (id)faceDescriptor;
+- (id)_complicationMigrationPaths;
+- (long long)_editModeForOldEncodingIndex:(long long)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

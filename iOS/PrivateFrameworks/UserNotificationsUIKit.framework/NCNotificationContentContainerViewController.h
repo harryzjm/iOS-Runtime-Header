@@ -7,36 +7,44 @@
 #import <UIKit/UIViewController.h>
 
 #import <UserNotificationsUIKit/NCNotificationCustomContent-Protocol.h>
-#import <UserNotificationsUIKit/NCNotificationCustomContentDelegate-Protocol.h>
 #import <UserNotificationsUIKit/NCNotificationTextInputViewDelegate-Protocol.h>
+#import <UserNotificationsUIKit/_UNNotificationContentExtensionHostContainerViewControllerDelegate-Protocol.h>
 
-@class NCNotificationRequest, NCNotificationTextInputView, NSString;
-@protocol NCNotificationCustomContent, NCNotificationCustomContentDelegate;
+@class NCNotificationRequest, NCNotificationTextInputView, NSMutableArray, NSString, _UNNotificationContentExtensionHostContainerViewController;
+@protocol NCNotificationCustomContentDelegate;
 
-@interface NCNotificationContentContainerViewController : UIViewController <NCNotificationCustomContentDelegate, NCNotificationTextInputViewDelegate, NCNotificationCustomContent>
+@interface NCNotificationContentContainerViewController : UIViewController <_UNNotificationContentExtensionHostContainerViewControllerDelegate, NCNotificationTextInputViewDelegate, NCNotificationCustomContent>
 {
     id <NCNotificationCustomContentDelegate> _delegate;
     NCNotificationRequest *_notificationRequest;
-    UIViewController<NCNotificationCustomContent> *_contentViewController;
+    _UNNotificationContentExtensionHostContainerViewController *_extensionContainerViewController;
     NCNotificationTextInputView *_inputAccessoryView;
+    unsigned long long _customContentLocation;
+    NSMutableArray *_updatedActions;
 }
 
++ (id)_defaultUIExtensionForNotificationRequest:(id)arg1 visibleAttachment:(out id *)arg2;
++ (id)_visibleAttachmentForNotificationRequest:(id)arg1;
++ (id)extensionForNotificationRequest:(id)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *updatedActions; // @synthesize updatedActions=_updatedActions;
+@property(nonatomic) unsigned long long customContentLocation; // @synthesize customContentLocation=_customContentLocation;
 @property(retain, nonatomic) NCNotificationTextInputView *inputAccessoryView; // @synthesize inputAccessoryView=_inputAccessoryView;
-@property(retain, nonatomic) UIViewController<NCNotificationCustomContent> *contentViewController; // @synthesize contentViewController=_contentViewController;
+@property(retain, nonatomic) _UNNotificationContentExtensionHostContainerViewController *extensionContainerViewController; // @synthesize extensionContainerViewController=_extensionContainerViewController;
 @property(readonly, nonatomic) NCNotificationRequest *notificationRequest; // @synthesize notificationRequest=_notificationRequest;
 @property(nonatomic) __weak id <NCNotificationCustomContentDelegate> delegate; // @synthesize delegate=_delegate;
+- (id)_responseForAction:(id)arg1 notification:(id)arg2 userInfo:(id)arg3;
+- (void)_forwardActionToExtension:(id)arg1 forNotification:(id)arg2 withUserInfo:(id)arg3;
 - (void)_removeInputAccessoryView:(id)arg1;
 - (id)_textInputActionInNotification:(id)arg1;
 - (void)_setupQuickReplyForNotificationAction:(id)arg1;
 - (void)_setupQuickReplyForNotificationRequest:(id)arg1;
-- (void)_loadContentViewControllerForNotificationRequest:(id)arg1;
-- (void)_setupContentViewController:(id)arg1;
+- (void)_loadExtensionContainerViewControllerForNotificationRequest:(id)arg1;
+- (void)_setupExtensionContainerViewControllerController:(id)arg1;
 - (void)notificationTextInputView:(id)arg1 didConfirmText:(id)arg2 forAction:(id)arg3;
 - (id)cancelTouches;
 - (void)playMedia;
 @property(readonly, nonatomic) NSString *contentExtensionIdentifier;
-- (unsigned long long)customContentLocation;
 - (_Bool)userInteractionEnabled;
 - (_Bool)allowManualDismiss;
 - (_Bool)restoreInputViews;
@@ -46,18 +54,18 @@
 - (_Bool)performAction:(id)arg1 forNotification:(id)arg2;
 - (_Bool)performAction:(id)arg1 forNotification:(id)arg2 withUserInfo:(id)arg3;
 - (_Bool)didReceiveNotificationRequest:(id)arg1;
-- (void)customContent:(id)arg1 didUpdateUserNotificationActions:(id)arg2;
-- (void)customContentDidUpdateTitle:(id)arg1;
-- (void)customContentDidLoadExtension:(id)arg1;
-- (void)customContentRequestsDismiss:(id)arg1;
-- (void)customContentRequestsDefaultAction:(id)arg1;
-- (void)customContent:(id)arg1 forwardAction:(id)arg2 forNotification:(id)arg3 withUserInfo:(id)arg4;
-- (void)customContent:(id)arg1 requestPermissionToExecuteAction:(id)arg2 forNotification:(id)arg3 withUserInfo:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)extensionViewControllerRequestsDismiss:(id)arg1;
+- (void)extensionViewControllerRequestsDefaultAction:(id)arg1;
+- (void)extensionViewControllerDidUpdateActions:(id)arg1;
+- (void)extensionViewControllerDidUpdateTitle:(id)arg1;
+- (void)extensionViewControllerDidLoadExtension:(id)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (_Bool)_canShowWhileLocked;
 @property(readonly, copy, nonatomic) NSString *title;
+- (void)viewDidDisappear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;

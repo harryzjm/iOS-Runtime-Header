@@ -15,7 +15,7 @@
 @interface TSTTableDataList : TSPObject <TSPCopying, TSTCompatibilityVersionProviding>
 {
     NSMutableArray *_segments;
-    struct unordered_map<NSObject<TSTTableDataPayloadHashing>*, TSTTableDataObject *, TSTTableDataPayloadHash, TSTTableDataPayloadEqual, std::__1::allocator<std::__1::pair<NSObject<TSTTableDataPayloadHashing>*const, TSTTableDataObject *>>> _payloadToObjectMap;
+    struct unordered_map<NSObject<TSTTableDataPayloadHashing>*, TSTTableDataObject *, TSTTableDataPayloadHash, TSTTableDataPayloadEqual, std::allocator<std::pair<NSObject<TSTTableDataPayloadHashing>*const, TSTTableDataObject *>>> _payloadToObjectMap;
     NSMutableIndexSet *_unusedKeySet;
     _Bool _isNewForBraveNewCell;
     _Bool _useReverseMap;
@@ -97,7 +97,7 @@
 - (id)allRichTextStorages;
 - (id)getRefCountsFromDataList;
 - (id)reassignCustomFormatUIDForPaste:(id)arg1;
-- (void)upgradeConditionalStylesToLinkedRefWithTableUID:(const UUIDData_5fbc143e *)arg1;
+- (void)upgradeConditionalStylesToLinkedRefWithTableUID:(const struct TSKUIDStruct *)arg1;
 - (void)upgradeCellFormatsU2_0;
 - (_Bool)hasDuplicatedElements;
 

@@ -18,7 +18,6 @@
 - (id)birthdayIconColor;
 - (id)cancelledDeclinedColorBarColor;
 - (id)invitationPrimaryTextColor;
-- (id)prefixTextColor;
 - (id)primaryStrikethroughTextColor;
 - (id)secondaryStrikethroughTextColor;
 - (id)colorBarColor;

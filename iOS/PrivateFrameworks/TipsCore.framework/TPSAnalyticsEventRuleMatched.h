@@ -8,19 +8,21 @@
 
 @interface TPSAnalyticsEventRuleMatched
 {
-    NSString *_contentID;
+    NSString *_tipID;
+    NSString *_correlationID;
     NSString *_ruleID;
 }
 
-+ (id)eventWithContentID:(id)arg1 ruleID:(id)arg2;
++ (id)eventWithTipID:(id)arg1 correlationID:(id)arg2 ruleID:(id)arg3;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *ruleID; // @synthesize ruleID=_ruleID;
-@property(readonly, nonatomic) NSString *contentID; // @synthesize contentID=_contentID;
+@property(readonly, nonatomic) NSString *correlationID; // @synthesize correlationID=_correlationID;
+@property(readonly, nonatomic) NSString *tipID; // @synthesize tipID=_tipID;
 - (id)mutableAnalyticsEventRepresentation;
 - (id)eventName;
 - (void)encodeWithCoder:(id)arg1;
-- (id)_initWithContentID:(id)arg1 ruleID:(id)arg2;
+- (id)_initWithTipID:(id)arg1 correlationID:(id)arg2 ruleID:(id)arg3;
 - (id)initWithCoder:(id)arg1;
 
 @end

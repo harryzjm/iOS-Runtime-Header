@@ -22,8 +22,6 @@
 + (id)requiredEntitlements;
 + (id)taskIdentifier;
 - (void).cxx_destruct;
-- (id)_metadataFromMetrics:(id)arg1;
-- (void)_stopObservingMetrics;
 - (void)_startObservingMetrics;
 - (void)metricsCollector:(id)arg1 didCollectMetrics:(id)arg2;
 - (void)remote_startTaskServerIfNeeded;

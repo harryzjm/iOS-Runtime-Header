@@ -9,7 +9,7 @@
 #import <CoreSpeech/CSAudioStreamProvidingDelegate-Protocol.h>
 #import <CoreSpeech/CSSPGEndpointAnalyzerDelegate-Protocol.h>
 
-@class CSAudioRecordContext, CSAudioStream, CSPlainAudioFileWriter, CSSPGEndpointAnalyzer, NSMutableArray, NSString;
+@class CSAudioRecordContext, CSAudioStream, CSAudioTimeConverter, CSPlainAudioFileWriter, CSSPGEndpointAnalyzer, NSMutableArray, NSString;
 @protocol CSAudioSessionProviding, CSAudioStreamProviding, CSOpportuneSpeakListenerDelegate, OS_dispatch_queue;
 
 @interface CSOpportuneSpeakListener : NSObject <CSAudioStreamProvidingDelegate, CSSPGEndpointAnalyzerDelegate>
@@ -26,9 +26,13 @@
     unsigned long long _remoteVADAlignCount;
     NSObject<OS_dispatch_queue> *_alignBufferQueue;
     CSPlainAudioFileWriter *_audioFileWriter;
+    unsigned long long _runningSampleCount;
+    CSAudioTimeConverter *_audioTimeConverter;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) CSAudioTimeConverter *audioTimeConverter; // @synthesize audioTimeConverter=_audioTimeConverter;
+@property(nonatomic) unsigned long long runningSampleCount; // @synthesize runningSampleCount=_runningSampleCount;
 @property(retain, nonatomic) CSPlainAudioFileWriter *audioFileWriter; // @synthesize audioFileWriter=_audioFileWriter;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *alignBufferQueue; // @synthesize alignBufferQueue=_alignBufferQueue;
 @property(nonatomic) unsigned long long remoteVADAlignCount; // @synthesize remoteVADAlignCount=_remoteVADAlignCount;
@@ -41,7 +45,7 @@
 @property(retain, nonatomic) CSSPGEndpointAnalyzer *spgEndpointAnalyzer; // @synthesize spgEndpointAnalyzer=_spgEndpointAnalyzer;
 @property(retain, nonatomic) CSAudioStream *audioStream; // @synthesize audioStream=_audioStream;
 @property(nonatomic) __weak id <CSOpportuneSpeakListenerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)spgEndpointAnalyzer:(id)arg1 hasSilenceScoreEstimate:(double)arg2;
+- (void)spgEndpointAnalyzer:(id)arg1 hasSilenceScoreEstimate:(double)arg2 clientProcessedAudioTimeMS:(float)arg3;
 - (void)audioStreamProvider:(id)arg1 audioChunkForTVAvailable:(id)arg2;
 - (_Bool)_shouldReportBoron;
 - (_Bool)_popRemoteVADSignal;

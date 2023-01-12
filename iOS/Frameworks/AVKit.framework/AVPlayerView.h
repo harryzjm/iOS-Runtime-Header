@@ -4,20 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AVPlayerViewControllerContentView;
+@class UIView;
 
 __attribute__((visibility("hidden")))
 @interface AVPlayerView
 {
     _Bool _needsInitialLayout;
-    AVPlayerViewControllerContentView *_contentView;
+    UIView *_contentView;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool needsInitialLayout; // @synthesize needsInitialLayout=_needsInitialLayout;
-@property(readonly, nonatomic) AVPlayerViewControllerContentView *contentView; // @synthesize contentView=_contentView;
+@property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
+- (void)_stopManagingContentView;
+- (void)_beginManagingContentViewIfNeeded;
 - (void)layoutSubviews;
-- (void)beginManagingContentView;
 - (id)initWithFrame:(struct CGRect)arg1 contentView:(id)arg2;
 
 @end

@@ -10,28 +10,28 @@
 
 @interface TSCH3DPrefilteredLineSetting : NSObject
 {
-    _Bool mDisableColorOutput;
-    _Bool mCullBackfaces;
-    _Bool mUseNormals;
-    tvec4_ac57c72d mFilterRadius;
-    float mLineWidth;
-    tvec4_ac57c72d mStrokeColor;
-    TSDStroke *mStroke;
+    _Bool _disableColorOutput;
+    _Bool _cullBackfaces;
+    _Bool _useNormals;
+    tvec4_ac57c72d _filterRadius;
+    float _lineWidth;
+    tvec4_ac57c72d _strokeColor;
+    TSDStroke *_stroke;
 }
 
 + (id)setting;
 - (id).cxx_construct;
-@property(copy, nonatomic) TSDStroke *stroke; // @synthesize stroke=mStroke;
-@property(nonatomic) tvec4_ac57c72d strokeColor; // @synthesize strokeColor=mStrokeColor;
-@property(nonatomic) float lineWidth; // @synthesize lineWidth=mLineWidth;
-@property(nonatomic) tvec4_ac57c72d filterRadius; // @synthesize filterRadius=mFilterRadius;
-@property(nonatomic) _Bool cullBackfaces; // @synthesize cullBackfaces=mCullBackfaces;
-@property(nonatomic) _Bool disableColorOutput; // @synthesize disableColorOutput=mDisableColorOutput;
-@property(nonatomic) _Bool useNormals; // @synthesize useNormals=mUseNormals;
+- (void).cxx_destruct;
+@property(copy, nonatomic) TSDStroke *stroke; // @synthesize stroke=_stroke;
+@property(nonatomic) tvec4_ac57c72d strokeColor; // @synthesize strokeColor=_strokeColor;
+@property(nonatomic) float lineWidth; // @synthesize lineWidth=_lineWidth;
+@property(nonatomic) tvec4_ac57c72d filterRadius; // @synthesize filterRadius=_filterRadius;
+@property(nonatomic) _Bool cullBackfaces; // @synthesize cullBackfaces=_cullBackfaces;
+@property(nonatomic) _Bool disableColorOutput; // @synthesize disableColorOutput=_disableColorOutput;
+@property(nonatomic) _Bool useNormals; // @synthesize useNormals=_useNormals;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)init;
 
 @end

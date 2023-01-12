@@ -4,29 +4,34 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <PhotosFormats/PFCachingArchiveIndex-Protocol.h>
 
 @class NSString;
 
-@interface PFTimeZoneLookup : NSObject
+@interface PFTimeZoneLookup <PFCachingArchiveIndex>
 {
-    struct unique_ptr<boost::interprocess::basic_managed_mapped_file<char, boost::interprocess::rbtree_best_fit<boost::interprocess::null_mutex_family, boost::interprocess::offset_ptr<void, long, unsigned long, 0>, 0>, bipc::iset_index>, std::__1::default_delete<boost::interprocess::basic_managed_mapped_file<char, boost::interprocess::rbtree_best_fit<boost::interprocess::null_mutex_family, boost::interprocess::offset_ptr<void, long, unsigned long, 0>, 0>, bipc::iset_index>>> _backingFile;
-    const struct vector<boost::container::basic_string<char, std::__1::char_traits<char>, boost::interprocess::allocator<char, boost::interprocess::segment_manager<char, boost::interprocess::rbtree_best_fit<boost::interprocess::null_mutex_family, boost::interprocess::offset_ptr<void, long, unsigned long, 0>, 0>, iset_index>>>, boost::interprocess::allocator<boost::container::basic_string<char, std::__1::char_traits<char>, boost::interprocess::allocator<char, boost::interprocess::segment_manager<char, boost::interprocess::rbtree_best_fit<boost::interprocess::null_mutex_family, boost::interprocess::offset_ptr<void, long, unsigned long, 0>, 0>, iset_index>>>, boost::interprocess::segment_manager<char, boost::interprocess::rbtree_best_fit<boost::interprocess::null_mutex_family, boost::interprocess::offset_ptr<void, long, unsigned long, 0>, 0>, iset_index>>> *_timezones;
-    const struct rtree<std::__1::pair<boost::geometry::model::point<float, 2, boost::geometry::cs::cartesian>, unsigned short>, boost::geometry::index::quadratic<32, 8>, boost::geometry::index::indexable<std::__1::pair<boost::geometry::model::point<float, 2, boost::geometry::cs::cartesian>, unsigned short>>, boost::geometry::index::equal_to<std::__1::pair<boost::geometry::model::point<float, 2, boost::geometry::cs::cartesian>, unsigned short>>, boost::interprocess::allocator<std::__1::pair<boost::geometry::model::point<float, 2, boost::geometry::cs::cartesian>, unsigned short>, boost::interprocess::segment_manager<char, boost::interprocess::rbtree_best_fit<boost::interprocess::null_mutex_family, boost::interprocess::offset_ptr<void, long, unsigned long, 0>, 0>, iset_index>>> *_rtree;
-    _Bool _loaded;
-    NSString *_cacheDirectory;
-    NSString *_indexFile;
+    struct unique_ptr<boost::interprocess::basic_managed_mapped_file<char, boost::interprocess::rbtree_best_fit<boost::interprocess::null_mutex_family, boost::interprocess::offset_ptr<void, long, unsigned long, 0>, 0>, bipc::iset_index>, std::default_delete<boost::interprocess::basic_managed_mapped_file<char, boost::interprocess::rbtree_best_fit<boost::interprocess::null_mutex_family, boost::interprocess::offset_ptr<void, long, unsigned long, 0>, 0>, bipc::iset_index>>> _backingFile;
+    const void *_timezones;
+    const void *_rtree;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (_Bool)createIndexFromArchiveFile:(id)arg1 tempIndexFile:(id)arg2;
-- (_Bool)loadIndexFile;
-- (void)loadOrCreateIndex;
-- (_Bool)makeTimeZoneLookupCacheFile;
+- (_Bool)indexSupported;
+- (_Bool)loadOrCreateIndex;
+- (_Bool)loadIndexFile:(const char *)arg1;
+- (unsigned long long)indexFileVersion;
+- (id)indexName;
+- (const char *)indexLabel;
+- (unique_ptr_d41df5a5)archiveLineParserForIndexPath:(id)arg1;
 - (struct CLLocationCoordinate2D)anyCoordinateForTimeZoneName:(id)arg1;
 - (id)timeZoneNameForCoordinate:(struct CLLocationCoordinate2D)arg1;
-- (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

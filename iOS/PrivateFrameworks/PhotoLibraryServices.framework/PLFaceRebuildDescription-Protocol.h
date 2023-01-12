@@ -6,6 +6,8 @@
 
 #import <PhotoLibraryServices/NSObject-Protocol.h>
 
+@protocol PLDetectionAdditionalDescription;
+
 @protocol PLFaceRebuildDescription <NSObject>
 @property(readonly, nonatomic, getter=isClusterRejected) _Bool clusterRejected;
 @property(readonly, nonatomic) int cloudNameSource;
@@ -16,5 +18,6 @@
 @property(readonly, nonatomic) double size;
 @property(readonly, nonatomic) double centerY;
 @property(readonly, nonatomic) double centerX;
+- (id <PLDetectionAdditionalDescription>)additionalDescription;
 @end
 

@@ -15,7 +15,6 @@
     double _vOffset;
 }
 
-+ (void)setPositionerClass:(Class)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) double vOffset; // @synthesize vOffset=_vOffset;
 @property(nonatomic) int vOffsetType; // @synthesize vOffsetType=_vOffsetType;
@@ -38,7 +37,6 @@
 - (void)infoChanged;
 - (_Bool)specifiesEnabledKnobMask;
 - (_Bool)isSearchable;
-- (Class)positionerClass;
 - (_Bool)isAnchored;
 - (_Bool)isPartitioned;
 - (_Bool)isDrawable;
@@ -53,10 +51,10 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithContext:(id)arg1;
-- (void)saveMessage:(struct DrawableAttachmentArchive *)arg1 toArchiver:(id)arg2;
+- (void)saveMessage:(void *)arg1 toArchiver:(id)arg2;
 - (void)didFinalizeUnarchivingFromWPStorage:(id)arg1;
 - (void)saveToArchiver:(id)arg1;
-- (void)loadMessage:(const struct DrawableAttachmentArchive *)arg1 fromUnarchiver:(id)arg2;
+- (void)loadMessage:(const void *)arg1 fromUnarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)initWithContext:(id)arg1 drawable:(id)arg2;
 - (void)dealloc;

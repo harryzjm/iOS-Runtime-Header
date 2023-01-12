@@ -14,12 +14,15 @@ __attribute__((visibility("hidden")))
 @interface WebCoreAVFPullDelegate : NSObject <AVPlayerItemOutputPullDelegate>
 {
     struct BinarySemaphore m_semaphore;
+    struct WeakPtr<WebCore::MediaPlayerPrivateAVFoundationObjC, WTF::EmptyCounter> _player;
 }
 
 - (id).cxx_construct;
-@property(readonly, nonatomic) struct BinarySemaphore *semaphore; // @synthesize semaphore=m_semaphore;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) void *semaphore; // @synthesize semaphore=m_semaphore;
 - (void)outputSequenceWasFlushed:(id)arg1;
 - (void)outputMediaDataWillChange:(id)arg1;
+- (id)initWithPlayer:(void *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

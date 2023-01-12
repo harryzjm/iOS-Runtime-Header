@@ -29,6 +29,8 @@
 @property(retain, nonatomic) UIImageView *thumbnailImageView; // @synthesize thumbnailImageView=_thumbnailImageView;
 - (void)setThumbnailImage:(id)arg1;
 - (struct CGSize)thumbnailImageViewPixelSize;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
+- (void)updateContentColors;
 - (void)prepareForReuse;
 - (void)_preferredContentSizeChanged:(id)arg1;
 @property(readonly, nonatomic) NSString *accessibilityLabel;

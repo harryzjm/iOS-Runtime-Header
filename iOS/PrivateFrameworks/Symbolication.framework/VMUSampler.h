@@ -89,8 +89,6 @@
 - (unsigned long long)recordSampleTo:(id)arg1 beginTime:(double)arg2 endTime:(double)arg3 thread:(unsigned int)arg4 recordFramePointers:(_Bool)arg5 clearMemoryCache:(_Bool)arg6;
 - (void)_checkDispatchThreadLimits;
 - (void)initializeSamplingContextWithOptions:(int)arg1;
-- (void)_makeTimeshare;
-- (void)_makeHighPriority;
 - (void)dealloc;
 - (id)initWithTask:(unsigned int)arg1 options:(unsigned long long)arg2;
 - (id)initWithPID:(int)arg1 options:(unsigned long long)arg2;

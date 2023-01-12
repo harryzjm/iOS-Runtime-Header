@@ -6,7 +6,6 @@
 
 @class NSMutableDictionary;
 
-__attribute__((visibility("hidden")))
 @interface BRCDownloadVersionsBatchOperation
 {
     NSMutableDictionary *_readers;

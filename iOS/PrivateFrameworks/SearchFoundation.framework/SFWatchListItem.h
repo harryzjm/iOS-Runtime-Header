@@ -14,6 +14,10 @@
 
 @interface SFWatchListItem : NSObject <SFWatchListItem, NSSecureCoding, NSCopying>
 {
+    struct {
+        unsigned int isMediaContainer:1;
+    } _has;
+    _Bool _isMediaContainer;
     NSString *_watchListIdentifier;
     NSString *_seasonEpisodeTextFormat;
     NSString *_continueInTextFormat;
@@ -28,6 +32,7 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isMediaContainer; // @synthesize isMediaContainer=_isMediaContainer;
 @property(copy, nonatomic) NSString *watchLiveTextFormat; // @synthesize watchLiveTextFormat=_watchLiveTextFormat;
 @property(copy, nonatomic) NSString *addedToUpNextText; // @synthesize addedToUpNextText=_addedToUpNextText;
 @property(copy, nonatomic) NSString *addToUpNextText; // @synthesize addToUpNextText=_addToUpNextText;
@@ -43,6 +48,7 @@
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (_Bool)hasIsMediaContainer;
 - (id)initWithProtobuf:(id)arg1;
 
 // Remaining properties

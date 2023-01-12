@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_62b9d662)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_62b9d662)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) _Bool disable_cache;
 @property(readonly, nonatomic) _Bool force_use_tts_service;
 - (id)copyWithZone:(struct _NSZone *)arg1;

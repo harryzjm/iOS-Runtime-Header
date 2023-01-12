@@ -4,11 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface NTKFaceColorEditOption
+#import <NanoTimeKitCompanion/NTKPigmentEditOptionConvertible-Protocol.h>
+
+@class NSString;
+
+@interface NTKFaceColorEditOption <NTKPigmentEditOptionConvertible>
 {
 }
 
-+ (id)_localizedNameForValue:(unsigned long long)arg1 forDevice:(id)arg2;
 + (id)_snapshotKeyForValue:(unsigned long long)arg1 forDevice:(id)arg2;
 + (id)__orderedValuesForDevice:(id)arg1;
 + (id)__allOrderedColors;
@@ -22,11 +25,20 @@
 + (id)optionByValidatingValueOfInvalidOption:(id)arg1;
 + (id)_optionByValidatingValueOfInvalidOption:(id)arg1;
 + (id)optionWithFaceColor:(unsigned long long)arg1 forDevice:(id)arg2;
++ (id)pigmentFaceDomain;
+- (id)pigmentEditOption;
 - (id)_valueToFaceBundleStringDict;
+- (id)localizedName;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)optionExistsInDevice:(id)arg1;
 @property(readonly, nonatomic) unsigned long long faceColor;
 - (long long)swatchStyle;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -16,6 +16,7 @@
     NSURL *_URL;
 }
 
++ (_Bool)extractArchiveFromURL:(id)arg1 toURL:(id)arg2 options:(unsigned long long)arg3 error:(id *)arg4;
 + (id)zipArchiveFromURL:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 + (void)readArchiveFromURL:(id)arg1 options:(unsigned long long)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (_Bool)isZipArchiveAtFD:(int)arg1;

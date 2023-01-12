@@ -79,6 +79,9 @@ __attribute__((visibility("hidden")))
 - (struct UIOffset)titlePositionAdjustmentForState:(long long)arg1;
 - (id)titleTextAttributesForState:(long long)arg1;
 - (long long)_currentItemState;
+- (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;
+- (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
+- (void)pressesChanged:(id)arg1 withEvent:(id)arg2;
 - (void)pressesBegan:(id)arg1 withEvent:(id)arg2;
 - (long long)_focusTouchSensitivityStyle;
 - (struct CGRect)_responderSelectionRect;
@@ -90,9 +93,11 @@ __attribute__((visibility("hidden")))
 - (void)_sendFocusAction;
 - (_Bool)_isEligibleForFocusInteraction;
 - (_Bool)canBecomeFocused;
+- (id)_systemDefaultFocusGroupIdentifier;
 - (void)_setCustomSelectedIndicatorImage:(id)arg1;
 - (void)layoutSubviews;
 - (void)_ios_layoutSubviews;
+- (void)_showBoundsViewAt:(struct CGRect)arg1 alignmentViewAt:(double)arg2 forSymbolImage:(_Bool)arg3;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)_horizontalLayout_sizeThatFits:(struct CGSize)arg1;
 - (void)_appleTV_layoutSubviews;

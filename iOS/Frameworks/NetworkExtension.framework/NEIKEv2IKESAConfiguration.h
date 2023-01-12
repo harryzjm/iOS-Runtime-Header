@@ -20,6 +20,7 @@
     _Bool _allowTCPEncapsulation;
     _Bool _useTLSForTCPEncapsulation;
     _Bool _forceUDPEncapsulation;
+    _Bool _preferInitiatorProposalOrder;
     unsigned short _tcpEncapsulationPort;
     unsigned int _nonceSize;
     NWEndpoint *_localEndpoint;
@@ -38,6 +39,7 @@
 @property(retain) NWAddressEndpoint *redirectedFromServer; // @synthesize redirectedFromServer=_redirectedFromServer;
 @property unsigned int nonceSize; // @synthesize nonceSize=_nonceSize;
 @property unsigned short tcpEncapsulationPort; // @synthesize tcpEncapsulationPort=_tcpEncapsulationPort;
+@property _Bool preferInitiatorProposalOrder; // @synthesize preferInitiatorProposalOrder=_preferInitiatorProposalOrder;
 @property _Bool forceUDPEncapsulation; // @synthesize forceUDPEncapsulation=_forceUDPEncapsulation;
 @property _Bool useTLSForTCPEncapsulation; // @synthesize useTLSForTCPEncapsulation=_useTLSForTCPEncapsulation;
 @property _Bool allowTCPEncapsulation; // @synthesize allowTCPEncapsulation=_allowTCPEncapsulation;

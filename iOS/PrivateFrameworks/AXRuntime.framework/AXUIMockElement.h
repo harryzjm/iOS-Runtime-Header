@@ -13,6 +13,7 @@
     NSMutableDictionary *_writableAttributes;
     NSMutableDictionary *_performActionLog;
     _Bool _usesCarriageReturnAsLinesSeparator;
+    _Bool _isApplication;
     NSMutableDictionary *_attributes;
     CDUnknownBlockType _handleActionBlock;
     CDUnknownBlockType _cacheUpdatedCallback;
@@ -23,6 +24,7 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType cacheUpdatedCallback; // @synthesize cacheUpdatedCallback=_cacheUpdatedCallback;
 @property(copy, nonatomic) CDUnknownBlockType handleActionBlock; // @synthesize handleActionBlock=_handleActionBlock;
+@property(nonatomic) _Bool isApplication; // @synthesize isApplication=_isApplication;
 @property(retain, nonatomic) NSMutableDictionary *attributes; // @synthesize attributes=_attributes;
 @property(nonatomic) _Bool usesCarriageReturnAsLinesSeparator; // @synthesize usesCarriageReturnAsLinesSeparator=_usesCarriageReturnAsLinesSeparator;
 - (unsigned long long)hash;
@@ -47,6 +49,8 @@
 - (_Bool)isValidForApplication:(id)arg1;
 - (_Bool)isValid;
 - (id)uiElementsWithAttribute:(long long)arg1 parameter:(void *)arg2 fetchAttributes:(_Bool)arg3;
+- (id)previousElementsWithParameters:(id)arg1;
+- (id)nextElementsWithParameters:(id)arg1;
 - (id)nextElementsWithCount:(unsigned long long)arg1;
 - (id)previousElementsWithCount:(unsigned long long)arg1;
 - (_Bool)performAXAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
@@ -54,6 +58,7 @@
 - (_Bool)performAXAction:(int)arg1;
 - (id)uiElementsWithAttribute:(long long)arg1 parameter:(void *)arg2;
 - (id)uiElementsWithAttribute:(long long)arg1;
+- (id)copyCachedAttributes;
 - (id)cachedAttributes;
 - (id)objectWithAXAttribute:(long long)arg1 parameter:(void *)arg2;
 - (void)fillStaticCache;

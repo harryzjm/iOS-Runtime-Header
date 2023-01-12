@@ -8,7 +8,7 @@
 
 @interface SKVideoNode
 {
-    struct SKCVideoNode *_skcVideoNode;
+    void *_skcVideoNode;
     _Bool _isUsingKVO;
     NSString *_videoFileName;
     NSURL *_videoFileURL;
@@ -30,7 +30,7 @@
 - (void)play;
 - (void)setPaused:(_Bool)arg1;
 - (void)_didMakeBackingNode;
-- (struct SKCNode *)_makeBackingNode;
+- (void *)_makeBackingNode;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)description;
 - (_Bool)isEqualToNode:(id)arg1;

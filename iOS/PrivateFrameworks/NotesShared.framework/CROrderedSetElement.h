@@ -33,8 +33,8 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
-- (void)encodeIntoProtobufSetElement:(struct Dictionary_Element *)arg1 coder:(id)arg2;
-- (id)initWithProtobufSetElement:(const struct Dictionary_Element *)arg1 decoder:(id)arg2;
+- (void)encodeIntoProtobufSetElement:(void *)arg1 coder:(id)arg2;
+- (id)initWithProtobufSetElement:(const void *)arg1 decoder:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

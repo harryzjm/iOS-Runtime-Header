@@ -18,6 +18,7 @@
 @property(readonly, nonatomic) CDStruct_912cb5d2 imageSize; // @synthesize imageSize=_imageSize;
 - (_Bool)isEqualToLayout:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
 - (CDStruct_912cb5d2)tileCounts;
 - (CDStruct_912cb5d2)borderSize;
 - (CDStruct_912cb5d2)tileSize;

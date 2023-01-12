@@ -11,6 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)_tintedSymbolNamed:(id)arg1;
++ (id)_tintedAppleTVPlusImage;
 + (id)_tintedVUIGlyphNamed:(id)arg1;
 + (id)_appImage;
 + (id)_disclaimerFeature;

@@ -16,6 +16,7 @@
 + (id)ohms;
 + (id)kiloohms;
 + (id)megaohms;
++ (id)icuType;
 + (id)baseUnit;
 + (void)initialize;
 

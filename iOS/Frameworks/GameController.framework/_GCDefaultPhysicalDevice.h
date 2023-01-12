@@ -6,8 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <GameController/GCAdaptiveTriggersServiceClientInterface-Protocol.h>
 #import <GameController/GCBatteryServiceClientInterface-Protocol.h>
+#import <GameController/GCGameIntentServiceClientInterface-Protocol.h>
+#import <GameController/_GCDeviceAdaptiveTriggersComponent-Protocol.h>
 #import <GameController/_GCDeviceBatteryComponent-Protocol.h>
+#import <GameController/_GCDeviceGameIntentComponent-Protocol.h>
 #import <GameController/_GCDeviceGamepadComponent-Protocol.h>
 #import <GameController/_GCDeviceHapticCapabilitiesComponent-Protocol.h>
 #import <GameController/_GCDeviceLightComponent-Protocol.h>
@@ -16,32 +20,42 @@
 #import <GameController/_GCPhysicalDevice-Protocol.h>
 
 @class GCDeviceBattery, GCDeviceLight, GCHapticCapabilityGraph, NSArray, NSSet, NSString, _GCCControllerHIDServiceInfo;
-@protocol GCBatteryServiceServerInterface, GCLightServiceServerInterface, GCMotionServiceServerInterface, NSObject><NSCopying><NSSecureCoding, _GCDefaultPhysicalDeviceDelegate, _GCDeviceDriverConnection, _GCDeviceManager, _GCGamepadEventSourceDescription, _GCMotionEventSourceDescription;
+@protocol GCAdaptiveTriggersServiceServerInterface, GCBatteryServiceServerInterface, GCGameIntentServiceServerInterface, GCLightServiceServerInterface, GCMotionServiceServerInterface, NSObject><NSCopying><NSSecureCoding, _GCDefaultPhysicalDeviceDelegate, _GCDeviceDriverConnection, _GCDeviceManager, _GCGamepadEventSourceDescription, _GCMotionEventSourceDescription;
 
 __attribute__((visibility("hidden")))
-@interface _GCDefaultPhysicalDevice : NSObject <_GCDeviceGamepadComponent, _GCDeviceMotionComponent, _GCDevicePlayerIndexIndicatorComponent, _GCDeviceLightComponent, _GCDeviceBatteryComponent, GCBatteryServiceClientInterface, _GCDeviceHapticCapabilitiesComponent, _GCPhysicalDevice>
+@interface _GCDefaultPhysicalDevice : NSObject <_GCDeviceGamepadComponent, _GCDeviceMotionComponent, _GCDevicePlayerIndexIndicatorComponent, _GCDeviceLightComponent, _GCDeviceAdaptiveTriggersComponent, GCAdaptiveTriggersServiceClientInterface, _GCDeviceBatteryComponent, GCBatteryServiceClientInterface, _GCDeviceHapticCapabilitiesComponent, _GCDeviceGameIntentComponent, GCGameIntentServiceClientInterface, _GCPhysicalDevice>
 {
     id <_GCDeviceDriverConnection> _driverConnection;
     id _driverConnectionInvalidationRegistration;
+    id <_GCDeviceDriverConnection> _filterConnection;
+    id _filterConnectionInvalidationRegistration;
     CDUnknownBlockType _lightComponentServiceConnectedHandler;
+    CDUnknownBlockType _adaptiveTriggersComponentServiceConnectedHandler;
+    CDUnknownBlockType _adaptiveTriggersComponentStatusUpdatedHandler;
     CDUnknownBlockType _motionComponentServiceConnectedHandler;
     CDUnknownBlockType _batteryComponentServiceConnectedHandler;
     CDUnknownBlockType _batteryComponentBatteryUpdatedHandler;
+    long long _cachedIntentEvent;
+    CDUnknownBlockType _gameIntentComponentGameIntentTriggeredHandler;
     id <NSObject><NSCopying><NSSecureCoding> _identifier;
     id <_GCDeviceManager> _manager;
     id <_GCDefaultPhysicalDeviceDelegate> _delegate;
+    id <GCAdaptiveTriggersServiceServerInterface> _adaptiveTriggersServiceServer;
     id <GCLightServiceServerInterface> _lightServiceServer;
     id <GCMotionServiceServerInterface> _motionServiceServer;
     id <GCBatteryServiceServerInterface> _batteryServiceServer;
+    id <GCGameIntentServiceServerInterface> _gameIntentServiceServer;
     _GCCControllerHIDServiceInfo *_serviceInfo;
 }
 
 + (id)identifierForService:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _GCCControllerHIDServiceInfo *serviceInfo; // @synthesize serviceInfo=_serviceInfo;
+@property(readonly, nonatomic) id <GCGameIntentServiceServerInterface> gameIntentServiceServer; // @synthesize gameIntentServiceServer=_gameIntentServiceServer;
 @property(readonly, nonatomic) id <GCBatteryServiceServerInterface> batteryServiceServer; // @synthesize batteryServiceServer=_batteryServiceServer;
 @property(readonly, nonatomic) id <GCMotionServiceServerInterface> motionServiceServer; // @synthesize motionServiceServer=_motionServiceServer;
 @property(readonly, nonatomic) id <GCLightServiceServerInterface> lightServiceServer; // @synthesize lightServiceServer=_lightServiceServer;
+@property(readonly, nonatomic) id <GCAdaptiveTriggersServiceServerInterface> adaptiveTriggersServiceServer; // @synthesize adaptiveTriggersServiceServer=_adaptiveTriggersServiceServer;
 @property(nonatomic) __weak id <_GCDefaultPhysicalDeviceDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly) __weak id <_GCDeviceManager> manager; // @synthesize manager=_manager;
 @property(readonly, copy) id <NSObject><NSCopying><NSSecureCoding> identifier; // @synthesize identifier=_identifier;
@@ -49,6 +63,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) NSSet *components;
 - (id)driverConnection;
 - (void)setDriverConnection:(id)arg1;
+- (void)setFilterConnection:(id)arg1;
 @property(readonly, copy) NSString *debugDescription;
 - (id)redactedDescription;
 @property(readonly, copy) NSString *description;
@@ -66,6 +81,12 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) GCDeviceLight *light;
 @property(copy, nonatomic) CDUnknownBlockType deviceLightServiceConnectedHandler;
 - (_Bool)supportsLight;
+@property(readonly, nonatomic) NSArray *triggerStatuses;
+@property(copy, nonatomic) CDUnknownBlockType deviceAdaptiveTriggersComponentStatusUpdatedHandler;
+- (void)setAdaptiveTriggersPayload:(id)arg1 forIndex:(int)arg2;
+@property(copy, nonatomic) CDUnknownBlockType deviceAdaptiveTriggersServiceConnectedHandler;
+- (_Bool)supportsAdaptiveTriggers;
+- (void)updateAdaptiveTriggerStatusWithLeftMode:(unsigned char)arg1 leftStatus:(unsigned char)arg2 leftArmPosition:(unsigned char)arg3 rightMode:(unsigned char)arg4 rightStatus:(unsigned char)arg5 rightArmPosition:(unsigned char)arg6;
 @property(readonly, nonatomic) GCDeviceBattery *battery;
 @property(copy, nonatomic) CDUnknownBlockType deviceBatteryComponentBatteryUpdatedHandler;
 @property(copy, nonatomic) CDUnknownBlockType deviceBatteryServiceConnectedHandler;
@@ -74,6 +95,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) GCHapticCapabilityGraph *hapticCapabilityGraph;
 @property(readonly, nonatomic) NSArray *hapticEngines;
 - (_Bool)supportsHapticCapabilities;
+@property(copy, nonatomic) CDUnknownBlockType deviceGameIntentComponentGameIntentTriggeredHandler;
+- (void)setEnableGlobalGameControllerFunctionality:(_Bool)arg1;
+- (void)triggerGameIntentWithEvent:(long long)arg1;
 
 // Remaining properties
 @property(readonly) unsigned long long hash;

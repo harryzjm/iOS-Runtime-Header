@@ -8,7 +8,7 @@
 
 #import <TSApplication/TSPObjectContextDelegate-Protocol.h>
 
-@class NSDictionary, NSString, NSURL, NSUUID, TSADocumentRoot, TSPObjectContext, TSUTemporaryDirectory;
+@class NSDictionary, NSString, NSURL, NSUUID, SFUCryptoKey, TSADocumentRoot, TSPDocumentLoadValidationPolicy, TSPDocumentSaveValidationPolicy, TSPObjectContext, TSUTemporaryDirectory;
 @protocol NSFilePresenter;
 
 @interface TSACirrusDocument : NSObject <TSPObjectContextDelegate>
@@ -42,11 +42,13 @@
 // Remaining properties
 @property(readonly, nonatomic) NSDictionary *additionalDocumentPropertiesForWrite;
 @property(readonly, nonatomic) NSDictionary *additionalDocumentSupportPropertiesForWrite;
-@property(readonly, nonatomic) long long archiveValidationMode;
 @property(readonly, nonatomic) _Bool areNewExternalReferencesToDataAllowed;
 @property(readonly, nonatomic) NSUUID *baseUUIDForObjectUUID;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) TSPDocumentLoadValidationPolicy *documentLoadValidationPolicy;
+@property(readonly, nonatomic) TSPDocumentSaveValidationPolicy *documentSaveValidationPolicy;
+@property(readonly) SFUCryptoKey *encryptionKey;
 @property(readonly, nonatomic) id <NSFilePresenter> filePresenter;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) _Bool ignoreDocumentSupport;

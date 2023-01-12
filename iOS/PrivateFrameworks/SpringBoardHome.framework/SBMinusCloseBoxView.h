@@ -8,7 +8,7 @@
 {
 }
 
-+ (id)defaultContentImage;
+- (id)defaultContentImage;
 
 @end
 

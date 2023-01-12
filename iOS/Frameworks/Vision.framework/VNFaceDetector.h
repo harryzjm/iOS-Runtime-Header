@@ -13,11 +13,12 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (void)printDebugInfo:(id)arg1 facesDataRaw:(vector_41a7cb1a *)arg2 faceDetectorBGRAImage:(struct __CVBuffer *)arg3 tempImage:(struct vImage_Buffer)arg4;
++ (void)printDebugInfo:(id)arg1 facesDataRaw:(void *)arg2 faceDetectorBGRAImage:(struct __CVBuffer *)arg3 tempImage:(struct vImage_Buffer)arg4;
 + (_Bool)shouldDumpDebugIntermediates;
 + (Class)detectorClassForConfigurationOptions:(id)arg1 error:(id *)arg2;
 + (void)fullyPopulateConfigurationOptions:(id)arg1;
 + (void)recordDefaultConfigurationOptionsInDictionary:(id)arg1;
++ (id)configurationOptionKeysForDetectorKey;
 - (void)purgeIntermediates;
 
 // Remaining properties

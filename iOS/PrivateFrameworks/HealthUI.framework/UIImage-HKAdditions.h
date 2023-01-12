@@ -15,7 +15,6 @@
 + (id)hk_transparentInterfaceImageWithSize:(struct CGSize)arg1;
 - (id)hk_resizedInterfaceImageWithSize:(struct CGSize)arg1;
 - (id)hk_watchIconImage;
-- (id)hk_resizedImageWithSize:(struct CGSize)arg1;
 - (id)hk_croppedImageWithRect:(struct CGRect)arg1;
 - (double)hk_scaledImageViewHeightWithScaledWidth:(double)arg1;
 @end

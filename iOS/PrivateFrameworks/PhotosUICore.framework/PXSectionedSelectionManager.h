@@ -5,22 +5,23 @@
 //
 
 #import <PhotosUICore/PXSectionedDataSourceManagerObserver-Protocol.h>
-#import <PhotosUICore/PXUIKeyCommandNamespace-Protocol.h>
 
-@class NSString, PXAssetSelectionTypeCounter, PXMutableIndexPathSet, PXSectionedDataSource, PXSectionedDataSourceManager, PXSelectionSnapshot;
+@class NSOrderedSet, NSString, PXAssetSelectionTypeCounter, PXMutableIndexPathSet, PXSectionedDataSource, PXSectionedDataSourceManager, PXSelectionSnapshot;
 @protocol PXSectionedSelectionManagerSnapshotValidator;
 
-@interface PXSectionedSelectionManager <PXUIKeyCommandNamespace, PXSectionedDataSourceManagerObserver>
+@interface PXSectionedSelectionManager <PXSectionedDataSourceManagerObserver>
 {
     struct {
         _Bool selectionSnapshot;
     } _needsUpdateFlags;
     _Bool _selectionLimitReached;
+    _Bool _emptySelectionAvoided;
     _Bool _disableAssetTypeCounting;
     PXSectionedDataSourceManager *_dataSourceManager;
     PXSelectionSnapshot *_selectionSnapshot;
     PXSectionedDataSource *_dataSource;
     PXMutableIndexPathSet *_selectedIndexPaths;
+    NSOrderedSet *_overallSelectionOrder;
     id <PXSectionedSelectionManagerSnapshotValidator> _snapshotValidator;
     struct PXSimpleIndexPath _cursorIndexPath;
     struct PXSimpleIndexPath _pendingIndexPath;
@@ -29,6 +30,8 @@
 - (void).cxx_destruct;
 @property(nonatomic) _Bool disableAssetTypeCounting; // @synthesize disableAssetTypeCounting=_disableAssetTypeCounting;
 @property(nonatomic) __weak id <PXSectionedSelectionManagerSnapshotValidator> snapshotValidator; // @synthesize snapshotValidator=_snapshotValidator;
+@property(retain, nonatomic, setter=_setOverallSelectionOrder:) NSOrderedSet *overallSelectionOrder; // @synthesize overallSelectionOrder=_overallSelectionOrder;
+@property(nonatomic, setter=_setEmptySelectionAvoided:) _Bool emptySelectionAvoided; // @synthesize emptySelectionAvoided=_emptySelectionAvoided;
 @property(nonatomic, setter=_setSelectionLimitReached:) _Bool selectionLimitReached; // @synthesize selectionLimitReached=_selectionLimitReached;
 @property(nonatomic, setter=_setPendingIndexPath:) struct PXSimpleIndexPath pendingIndexPath; // @synthesize pendingIndexPath=_pendingIndexPath;
 @property(nonatomic, setter=_setCursorIndexPath:) struct PXSimpleIndexPath cursorIndexPath; // @synthesize cursorIndexPath=_cursorIndexPath;
@@ -38,6 +41,7 @@
 @property(readonly, nonatomic) PXSectionedDataSourceManager *dataSourceManager; // @synthesize dataSourceManager=_dataSourceManager;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (id)sectionedDataSourceManagerInterestingObjectReferences:(id)arg1;
+- (void)setOverallSelectionOrder:(id)arg1;
 - (void)setSelectionLimitReached:(_Bool)arg1;
 - (void)setPendingIndexPath:(struct PXSimpleIndexPath)arg1;
 - (void)setCursorIndexPath:(struct PXSimpleIndexPath)arg1;
@@ -73,14 +77,6 @@
 - (struct PXSimpleIndexPath)extendSelectionToItemIndexPath:(struct PXSimpleIndexPath)arg1 withDelegate:(id)arg2;
 - (struct PXSimpleIndexPath)_extendSelectionFromIndexPath:(struct PXSimpleIndexPath)arg1 toIndexPath:(struct PXSimpleIndexPath)arg2 inDirection:(unsigned long long)arg3 withDelegate:(id)arg4;
 - (struct PXSimpleIndexPath)startingIndexPathForMoveInDirection:(unsigned long long)arg1;
-- (void)_performUnselectAll;
-- (void)_performSelectAll;
-- (void)_performExtendInDirection:(unsigned long long)arg1 withDelegate:(id)arg2;
-- (void)_performMoveInDirection:(unsigned long long)arg1 withDelegate:(id)arg2;
-- (long long)_performCommand:(long long)arg1 withDelegate:(id)arg2;
-- (long long)performKeyCommand:(id)arg1 withDelegate:(id)arg2;
-- (id)uiKeyCommandsWithDelegate:(id)arg1;
-@property(readonly, nonatomic) NSString *namespaceIdentifier;
 - (void)selectNonCopiedAssetsWithImportStatusManager:(id)arg1;
 
 // Remaining properties

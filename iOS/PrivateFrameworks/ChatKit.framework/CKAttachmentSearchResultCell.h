@@ -6,15 +6,14 @@
 
 #import <ChatKit/CKSearchResultCell-Protocol.h>
 
-@class CKSearchAvatarSupplementryView, NSString, UIDateLabel, UIImageView, UILabel;
+@class CKSearchAvatarSupplementryView, NSString, UIDateLabel, UILabel;
 
 @interface CKAttachmentSearchResultCell <CKSearchResultCell>
 {
     _Bool _suppressAvatars;
-    UIImageView *_imageView;
     UILabel *_titleLabel;
     UIDateLabel *_dateLabel;
-    NSString *_identifier;
+    NSString *_resultIdentifier;
     CKSearchAvatarSupplementryView *_avatarView;
     struct UIEdgeInsets marginInsets;
 }
@@ -22,12 +21,12 @@
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
 @property(retain, nonatomic) CKSearchAvatarSupplementryView *avatarView; // @synthesize avatarView=_avatarView;
-@property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(copy, nonatomic) NSString *resultIdentifier; // @synthesize resultIdentifier=_resultIdentifier;
 @property(retain, nonatomic) UIDateLabel *dateLabel; // @synthesize dateLabel=_dateLabel;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property(retain, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property(nonatomic) _Bool suppressAvatars; // @synthesize suppressAvatars=_suppressAvatars;
 @property(nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets;
+- (void)setSelected:(_Bool)arg1;
 - (void)_thumbnailGenerated:(id)arg1;
 - (void)refreshForSearchTextIfNeeded:(id)arg1;
 - (void)configureWithQueryResult:(id)arg1 searchText:(id)arg2 mode:(unsigned long long)arg3;

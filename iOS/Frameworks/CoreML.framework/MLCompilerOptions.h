@@ -6,13 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSNumber, NSString;
+@class NSData, NSNumber, NSString, NSURL;
 
 @interface MLCompilerOptions : NSObject
 {
     _Bool _dryRun;
     _Bool _containerIsCloud;
+    _Bool _allowsPixelBufferDirectBinding;
+    _Bool _trainWithMLCompute;
     _Bool _encryptModel;
+    _Bool _usesCodeSigningIdentityForEncryption;
     NSString *_platform;
     NSString *_platformVersion;
     NSNumber *_keyInfoVersion;
@@ -21,17 +24,22 @@
     NSData *_iv;
     NSData *_sinf;
     NSData *_mlsinf;
+    NSURL *_specURL;
 }
 
 + (id)defaultOptions;
 - (void).cxx_destruct;
+@property(copy) NSURL *specURL; // @synthesize specURL=_specURL;
 @property(copy) NSData *mlsinf; // @synthesize mlsinf=_mlsinf;
 @property(copy) NSData *sinf; // @synthesize sinf=_sinf;
 @property(copy) NSData *iv; // @synthesize iv=_iv;
+@property _Bool usesCodeSigningIdentityForEncryption; // @synthesize usesCodeSigningIdentityForEncryption=_usesCodeSigningIdentityForEncryption;
 @property(copy) NSData *key; // @synthesize key=_key;
 @property(copy) NSString *keyID; // @synthesize keyID=_keyID;
 @property(copy) NSNumber *keyInfoVersion; // @synthesize keyInfoVersion=_keyInfoVersion;
 @property _Bool encryptModel; // @synthesize encryptModel=_encryptModel;
+@property _Bool trainWithMLCompute; // @synthesize trainWithMLCompute=_trainWithMLCompute;
+@property _Bool allowsPixelBufferDirectBinding; // @synthesize allowsPixelBufferDirectBinding=_allowsPixelBufferDirectBinding;
 @property _Bool containerIsCloud; // @synthesize containerIsCloud=_containerIsCloud;
 @property(retain) NSString *platformVersion; // @synthesize platformVersion=_platformVersion;
 @property(retain) NSString *platform; // @synthesize platform=_platform;

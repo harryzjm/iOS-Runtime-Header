@@ -8,13 +8,15 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPlaceActionDetails, NSString, PBDataReader;
+@class GEOPlaceActionDetails, NSMutableArray, NSString, PBDataReader;
 
 @interface GEOLogMsgStatePlaceCard : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
+    CDStruct_62a50c50 _containedChildrenPois;
     CDStruct_95bda58d _possibleActions;
     CDStruct_95bda58d _unactionableUiElements;
+    NSMutableArray *_modules;
     GEOPlaceActionDetails *_placeActionDetails;
     NSString *_placecardCategory;
     unsigned int _readerMarkPos;
@@ -25,8 +27,10 @@
     struct {
         unsigned int has_placecardType:1;
         unsigned int has_transitAdvisoryBanner:1;
+        unsigned int read_containedChildrenPois:1;
         unsigned int read_possibleActions:1;
         unsigned int read_unactionableUiElements:1;
+        unsigned int read_modules:1;
         unsigned int read_placeActionDetails:1;
         unsigned int read_placecardCategory:1;
         unsigned int wrote_anyField:1;
@@ -34,6 +38,7 @@
 }
 
 + (_Bool)isValid:(id)arg1;
++ (Class)modulesType;
 - (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
@@ -48,6 +53,17 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)modulesAtIndex:(unsigned long long)arg1;
+- (unsigned long long)modulesCount;
+- (void)addModules:(id)arg1;
+- (void)clearModules;
+@property(retain, nonatomic) NSMutableArray *modules;
+- (void)setContainedChildrenPois:(unsigned long long *)arg1 count:(unsigned long long)arg2;
+- (unsigned long long)containedChildrenPoisAtIndex:(unsigned long long)arg1;
+- (void)addContainedChildrenPois:(unsigned long long)arg1;
+- (void)clearContainedChildrenPois;
+@property(readonly, nonatomic) unsigned long long *containedChildrenPois;
+@property(readonly, nonatomic) unsigned long long containedChildrenPoisCount;
 @property(nonatomic) _Bool hasTransitAdvisoryBanner;
 @property(nonatomic) _Bool transitAdvisoryBanner;
 - (int)StringAsPlacecardType:(id)arg1;

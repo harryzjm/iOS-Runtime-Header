@@ -6,14 +6,13 @@
 
 #import <UIKit/UIView.h>
 
-#import <UserNotificationsUIKit/MTVisualStylingRequiring-Protocol.h>
-#import <UserNotificationsUIKit/PLContentSizeCategoryAdjusting-Protocol.h>
+#import <UserNotificationsUIKit/NCNotificationContentDisplaying-Protocol.h>
 #import <UserNotificationsUIKit/UITextViewDelegate-Protocol.h>
 
-@class BSUIEmojiLabelView, BSUIFontProvider, MTVisualStylingProvider, NSArray, NSMutableDictionary, NSString, NSStringDrawingContext, UIImage, UIImageView, UILabel, UITextView;
+@class BSUIEmojiLabelView, BSUIFontProvider, MTVisualStylingProvider, NSArray, NSAttributedString, NSDate, NSMutableDictionary, NSString, NSStringDrawingContext, NSTimeZone, UIImage, UIImageConfiguration, UIImageView, UILabel, UITextView;
 @protocol NCNotificationContentViewDelegate;
 
-@interface NCNotificationContentView : UIView <UITextViewDelegate, MTVisualStylingRequiring, PLContentSizeCategoryAdjusting>
+@interface NCNotificationContentView : UIView <UITextViewDelegate, NCNotificationContentDisplaying>
 {
     long long _lookStyle;
     struct UIEdgeInsets _contentInsets;
@@ -24,17 +23,18 @@
     MTVisualStylingProvider *_visualStylingProvider;
     _Bool _hasUpdatedContent;
     _Bool _adjustsFontForContentSizeCategory;
+    _Bool _thumbnailIsContactImage;
     _Bool _useSmallTopMargin;
+    unsigned long long _maximumNumberOfSecondaryTextLines;
     UILabel *_secondaryLabel;
     UITextView *_secondaryTextView;
+    BSUIFontProvider *_fontProvider;
     NSString *_preferredContentSizeCategory;
     id <NCNotificationContentViewDelegate> _delegate;
     UIView *_accessoryView;
     unsigned long long _maximumNumberOfPrimaryTextLines;
     unsigned long long _maximumNumberOfPrimaryLargeTextLines;
-    unsigned long long _maximumNumberOfSecondaryTextLines;
     unsigned long long _maximumNumberOfSecondaryLargeTextLines;
-    BSUIFontProvider *_fontProvider;
     UILabel *_primaryLabel;
     UILabel *_primarySubtitleLabel;
     BSUIEmojiLabelView *_summaryLabel;
@@ -44,18 +44,18 @@
 @property(retain, nonatomic, getter=_summaryLabel, setter=_setSummaryLabel:) BSUIEmojiLabelView *summaryLabel; // @synthesize summaryLabel=_summaryLabel;
 @property(retain, nonatomic, getter=_primarySubtitleLabel, setter=_setPrimarySubtitleLabel:) UILabel *primarySubtitleLabel; // @synthesize primarySubtitleLabel=_primarySubtitleLabel;
 @property(retain, nonatomic, getter=_primaryLabel, setter=_setPrimaryLabel:) UILabel *primaryLabel; // @synthesize primaryLabel=_primaryLabel;
-@property(retain, nonatomic, getter=_fontProvider, setter=_setFontProvider:) BSUIFontProvider *fontProvider; // @synthesize fontProvider=_fontProvider;
 @property(nonatomic) _Bool useSmallTopMargin; // @synthesize useSmallTopMargin=_useSmallTopMargin;
 @property(nonatomic) unsigned long long maximumNumberOfSecondaryLargeTextLines; // @synthesize maximumNumberOfSecondaryLargeTextLines=_maximumNumberOfSecondaryLargeTextLines;
-@property(nonatomic) unsigned long long maximumNumberOfSecondaryTextLines; // @synthesize maximumNumberOfSecondaryTextLines=_maximumNumberOfSecondaryTextLines;
 @property(nonatomic) unsigned long long maximumNumberOfPrimaryLargeTextLines; // @synthesize maximumNumberOfPrimaryLargeTextLines=_maximumNumberOfPrimaryLargeTextLines;
 @property(nonatomic) unsigned long long maximumNumberOfPrimaryTextLines; // @synthesize maximumNumberOfPrimaryTextLines=_maximumNumberOfPrimaryTextLines;
 @property(retain, nonatomic) UIView *accessoryView; // @synthesize accessoryView=_accessoryView;
+@property(nonatomic, getter=isThumbnailContactImage) _Bool thumbnailIsContactImage; // @synthesize thumbnailIsContactImage=_thumbnailIsContactImage;
 @property(nonatomic) __weak id <NCNotificationContentViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic) NSString *preferredContentSizeCategory; // @synthesize preferredContentSizeCategory=_preferredContentSizeCategory;
 @property(nonatomic) _Bool adjustsFontForContentSizeCategory; // @synthesize adjustsFontForContentSizeCategory=_adjustsFontForContentSizeCategory;
 @property(readonly, nonatomic, getter=_secondaryTextView) UITextView *secondaryTextView; // @synthesize secondaryTextView=_secondaryTextView;
 @property(readonly, nonatomic, getter=_secondaryLabel) UILabel *secondaryLabel; // @synthesize secondaryLabel=_secondaryLabel;
+@property(nonatomic) unsigned long long maximumNumberOfSecondaryTextLines; // @synthesize maximumNumberOfSecondaryTextLines=_maximumNumberOfSecondaryTextLines;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 @property(readonly, copy) NSString *debugDescription;
@@ -67,16 +67,18 @@
 - (id)visualStylingProviderForCategory:(long long)arg1;
 - (void)_layoutSubviews;
 - (void)layoutSubviews;
+- (void)_configureThumbnailAsContactImage:(_Bool)arg1;
 - (struct CGRect)_frameForThumbnailInRect:(struct CGRect)arg1 withContentViewInsets:(struct UIEdgeInsets)arg2;
+@property(retain, nonatomic) BSUIFontProvider *fontProvider; // @synthesize fontProvider=_fontProvider;
 - (void)_updateStyleForThumbnailImage:(id)arg1 withStyle:(long long)arg2;
 - (void)_updateContentModeForThumbnailImage:(id)arg1;
-@property(retain, nonatomic) UIImage *thumbnail;
-@property(retain, nonatomic) NSString *summaryText;
+@property(copy, nonatomic) UIImage *thumbnail;
+@property(copy, nonatomic) NSString *summaryText;
 - (id)_lazySummaryLabel;
 - (id)_newSummaryLabel;
 - (void)_updateStyleForSummaryLabel:(id)arg1 withStyle:(long long)arg2;
 - (void)_updateTextAttributesForSummaryLabel:(id)arg1 withStyle:(long long)arg2;
-@property(retain, nonatomic) NSString *secondaryText;
+@property(copy, nonatomic) NSString *secondaryText;
 - (id)_lazySecondaryTextSupportingView;
 - (id)_lazySecondaryTextView;
 - (id)_lazySecondaryLabel;
@@ -88,9 +90,9 @@
 - (unsigned long long)_secondaryTextNumberOfLines;
 - (void)_updateTextAttributesForSecondaryTextSupportingView:(id)arg1 withStyle:(long long)arg2;
 - (id)_lazyThumbnailImageView;
-@property(retain, nonatomic) NSString *primarySubtitleText;
+@property(copy, nonatomic) NSString *primarySubtitleText;
 - (id)_lazyPrimarySubtitleLabel;
-@property(retain, nonatomic) NSString *primaryText;
+@property(copy, nonatomic) NSString *primaryText;
 - (id)_lazyPrimaryLabel;
 - (id)_newPrimaryLabel;
 - (void)_updateStyleForPrimaryLabel:(id)arg1 withStyle:(long long)arg2;
@@ -130,9 +132,21 @@
 - (id)initWithStyle:(long long)arg1;
 
 // Remaining properties
+@property(copy, nonatomic) NSDate *date;
+@property(nonatomic, getter=isDateAllDay) _Bool dateAllDay;
+@property(nonatomic) long long dateFormatStyle;
 @property(readonly, copy) NSString *description;
+@property(copy, nonatomic) NSString *footerText;
 @property(readonly) unsigned long long hash;
+@property(copy, nonatomic) NSAttributedString *importantAttributedText;
+@property(copy, nonatomic) NSString *importantText;
+@property(readonly, copy, nonatomic) UIImageConfiguration *importantTextImageConfiguration;
+@property(copy, nonatomic) MTVisualStylingProvider *importantTextVisualStylingProvider;
+@property(copy, nonatomic) UIImage *prominentIcon;
+@property(copy, nonatomic) UIView *prominentIconView;
+@property(copy, nonatomic) UIImage *subordinateIcon;
 @property(readonly) Class superclass;
+@property(copy, nonatomic) NSTimeZone *timeZone;
 
 @end
 

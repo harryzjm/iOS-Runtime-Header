@@ -42,6 +42,7 @@
 - (_Bool)_updateForOldResponse:(id)arg1 route:(id)arg2;
 - (_Bool)_prepareForOldRequest:(id)arg1 route:(id)arg2 startRouteCoordinate:(CDStruct_3f2a7a20)arg3;
 - (double)_travelDurationFromStepID:(unsigned long long)arg1 toStepID:(unsigned long long)arg2 currentStepRemainingDistance:(double)arg3;
+- (id)evChargingStationInfos;
 - (id)evStepInfos;
 - (id)navigabilityInfo;
 - (id)geoTrafficBannerText;

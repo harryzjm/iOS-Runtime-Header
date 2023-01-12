@@ -13,6 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)_childFocusRegionsInRect:(struct CGRect)arg1 inCoordinateSpace:(id)arg2;
 - (_Bool)resetScrollViewToMainPageAnimated:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (_Bool)accessibilityScrollUpPage;
 - (_Bool)accessibilityScroll:(long long)arg1;
 - (void)setModalPresentationView:(id)arg1;
 - (void)scrollViewDidEndScrolling:(id)arg1;

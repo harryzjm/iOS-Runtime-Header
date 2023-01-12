@@ -8,12 +8,13 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, GEOLocation, NSArray, NSData, PBDataReader;
+@class GEOCompanionTransitAlightMessage, GEOLatLng, GEOLocation, NSArray, NSData, PBDataReader;
 
 @interface GEOCompanionRouteStatus : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
     CDStruct_9f2792e4 _selectedRideIndexs;
+    GEOCompanionTransitAlightMessage *_alightMessage;
     GEOLocation *_location;
     NSData *_routeID;
     GEOLatLng *_routeMatchCoordinate;
@@ -48,6 +49,7 @@
         unsigned int has_isConnectedToCarplay:1;
         unsigned int has_lowGuidanceNavigation:1;
         unsigned int read_selectedRideIndexs:1;
+        unsigned int read_alightMessage:1;
         unsigned int read_location:1;
         unsigned int read_routeID:1;
         unsigned int read_routeMatchCoordinate:1;
@@ -62,6 +64,8 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
+- (void)clearSensitiveFields:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -70,6 +74,8 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) GEOCompanionTransitAlightMessage *alightMessage;
+@property(readonly, nonatomic) _Bool hasAlightMessage;
 @property(nonatomic) _Bool hasIsConnectedToCarplay;
 @property(nonatomic) _Bool isConnectedToCarplay;
 - (int)StringAsHapticsType:(id)arg1;

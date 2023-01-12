@@ -6,12 +6,13 @@
 
 #import <PassKitUI/PKApplyFlowControllerProtocol-Protocol.h>
 
-@class NSString, PKApplyController;
+@class NSString, PKApplyController, PKBusinessChatController;
 @protocol PKPaymentSetupViewControllerDelegate;
 
 @interface PKApplyExplanationViewController <PKApplyFlowControllerProtocol>
 {
     _Bool _isLoading;
+    PKBusinessChatController *_businessChatController;
     PKApplyController *_controller;
     id <PKPaymentSetupViewControllerDelegate> _setupDelegate;
     CDUnknownBlockType _continueAction;
@@ -26,7 +27,9 @@
 @property(copy, nonatomic) CDUnknownBlockType auxiliaryAction; // @synthesize auxiliaryAction=_auxiliaryAction;
 @property(copy, nonatomic) CDUnknownBlockType continueAction; // @synthesize continueAction=_continueAction;
 @property(nonatomic) __weak id <PKPaymentSetupViewControllerDelegate> setupDelegate; // @synthesize setupDelegate=_setupDelegate;
-@property(nonatomic) __weak PKApplyController *controller; // @synthesize controller=_controller;
+@property(retain, nonatomic) PKApplyController *controller; // @synthesize controller=_controller;
+- (void)_presentInvitationContactSupport;
+- (void)_presentTermsWithIdentifier:(id)arg1;
 - (void)_bodyButtonAction;
 - (void)_featureApplicationUpdated;
 - (void)showNavigationBarSpinner:(_Bool)arg1;
@@ -37,13 +40,17 @@
 - (void)_performDoneAction:(_Bool)arg1;
 - (void)_performLearnMoreAction;
 - (void)_performActionForBlock:(CDUnknownBlockType)arg1;
+- (void)_analyticsReportButtonTap:(id)arg1;
 - (void)_cancel;
 - (void)_done;
 - (void)_learnMore;
 - (void)_auxiliary;
 - (void)_continue;
+- (id)analyticsAdditionalValues;
+- (id)analyticsPageTag;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
+- (void)viewDidLoad;
 - (id)initWithController:(id)arg1 setupDelegate:(id)arg2 context:(long long)arg3 applyPage:(id)arg4;
 
 // Remaining properties

@@ -11,13 +11,20 @@
 @interface _TtC3ECS13EntityManager : _TtCs12_SwiftObject
 {
     MISSING_TYPE *name;
+    MISSING_TYPE *clientID;
     MISSING_TYPE *entityFamilies;
     MISSING_TYPE *allEntityClasses;
+    MISSING_TYPE *freedEntityClassesIndices;
     MISSING_TYPE *workerComponentStorage;
     MISSING_TYPE *sceneComponentStorage;
     MISSING_TYPE *groupsCount;
     MISSING_TYPE *copyQueue;
     MISSING_TYPE *copyGroup;
+    MISSING_TYPE *dependencyGraph;
+    MISSING_TYPE *transactionDepth;
+    MISSING_TYPE *hasRunloopTransaction;
+    MISSING_TYPE *didBeginTransactionAtLastFrame;
+    MISSING_TYPE *signpostID;
     MISSING_TYPE *_entries;
     MISSING_TYPE *entityCapacity;
     MISSING_TYPE *entityCount;
@@ -29,16 +36,28 @@
     MISSING_TYPE *globalCommandQueue;
     MISSING_TYPE *commandQueueByWorkerIndex;
     MISSING_TYPE *updateQueue;
-    MISSING_TYPE *didLoadBlocks;
     MISSING_TYPE *nextFrameBlocks;
     MISSING_TYPE *nextFrameBlocksLock;
-    MISSING_TYPE *invokeDidLoadBeforeFirstFrame;
     MISSING_TYPE *runtimeThread;
+    MISSING_TYPE *imguiEnabled;
+    MISSING_TYPE *syncLock;
+    MISSING_TYPE *asyncQueue;
+    MISSING_TYPE *backgroundingSignalLock;
+    MISSING_TYPE *applicationInBackground;
+    MISSING_TYPE *sceneInBackground;
     MISSING_TYPE *stateDidChangeFn;
     MISSING_TYPE *userLogger;
     MISSING_TYPE *clock;
+    MISSING_TYPE *updateHandlerIndex;
+    MISSING_TYPE *activeStatesPerEffects;
+    MISSING_TYPE *lastNonIdleState;
     MISSING_TYPE *currentState;
 }
+
+- (void)_sceneWillEnterForeground:(id)arg1;
+- (void)_sceneDidEnterBackground:(id)arg1;
+- (void)_applicationWillEnterForeground:(id)arg1;
+- (void)_applicationDidEnterBackground:(id)arg1;
 
 @end
 

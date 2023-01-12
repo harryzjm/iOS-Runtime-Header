@@ -16,12 +16,14 @@
     long long _source;
     NSString *_sourceIdentifier;
     NSString *_variant;
+    NSData *_poseConfigurationData;
     NSString *_displayString;
     struct CGRect _cropRect;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *displayString; // @synthesize displayString=_displayString;
+@property(retain, nonatomic) NSData *poseConfigurationData; // @synthesize poseConfigurationData=_poseConfigurationData;
 @property(retain, nonatomic) NSString *variant; // @synthesize variant=_variant;
 @property(retain, nonatomic) NSString *sourceIdentifier; // @synthesize sourceIdentifier=_sourceIdentifier;
 @property(nonatomic) long long source; // @synthesize source=_source;

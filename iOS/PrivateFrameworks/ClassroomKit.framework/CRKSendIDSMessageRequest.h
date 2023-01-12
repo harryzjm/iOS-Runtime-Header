@@ -6,17 +6,19 @@
 
 #import <DeviceManagement/CATTaskRequest.h>
 
-@class NSDictionary, NSString;
+@class CRKIDSMessageOptions, NSDictionary, NSString;
 
 @interface CRKSendIDSMessageRequest : CATTaskRequest
 {
     NSString *_sourceAppleID;
     NSString *_destinationAddress;
     NSDictionary *_message;
+    CRKIDSMessageOptions *_options;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) CRKIDSMessageOptions *options; // @synthesize options=_options;
 @property(copy, nonatomic) NSDictionary *message; // @synthesize message=_message;
 @property(copy, nonatomic) NSString *destinationAddress; // @synthesize destinationAddress=_destinationAddress;
 @property(copy, nonatomic) NSString *sourceAppleID; // @synthesize sourceAppleID=_sourceAppleID;

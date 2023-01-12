@@ -33,6 +33,7 @@
 @property(readonly, nonatomic) PXRoundedCornerOverlayView *imageCornerOverlayView; // @synthesize imageCornerOverlayView=_imageCornerOverlayView;
 @property(retain, nonatomic) UILabel *textLabel; // @synthesize textLabel=_textLabel;
 @property(retain, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
+- (id)focusEffect;
 - (void)prepareForReuse;
 - (id)initWithFrame:(struct CGRect)arg1;
 

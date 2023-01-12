@@ -20,12 +20,13 @@
 + (id)sectionIdentifier;
 + (id)relativeDateFormatter;
 + (id)sectionTitle;
++ (_Bool)supportsMacSelection;
 + (_Bool)supportsQuicklookForResult:(id)arg1;
 @property(nonatomic) unsigned long long contentMode; // @synthesize contentMode=_contentMode;
 - (struct NSDirectionalEdgeInsets)additionalGroupInsets;
 - (void)saveAttachmentForResult:(id)arg1;
 - (id)_activityItemProviderForResult:(id)arg1;
-- (id)_pasteboardItemsForResult:(id)arg1;
+- (id)itemProviderForSearchResult:(id)arg1;
 - (id)previewViewControllerForResult:(id)arg1;
 - (id)_additionalMenuElementsForResult:(id)arg1;
 - (id)layoutGroupWithEnvironment:(id)arg1;
@@ -43,6 +44,7 @@
 - (id)sectionSubtitle;
 - (id)queryResultsForItems:(id)arg1;
 - (id)detailsFilterQueriesForChatGUIDs:(id)arg1;
+- (id)filterQueriesBase;
 - (id)filterQueries;
 - (id)queryAttributesForText:(id)arg1;
 - (id)fetchAttributes;

@@ -9,6 +9,7 @@
 @class CNContact, CNPostalAddress, MapsSuggestionsContacts, NSArray, NSString;
 
 @protocol MapsSuggestionsContactsConnector <MapsSuggestionsObject>
+- (CNContact *)contactForIdentifier:(NSString *)arg1;
 - (NSString *)singleLineStringFromPostalAddress:(CNPostalAddress *)arg1 addCountryName:(_Bool)arg2;
 - (CNContact *)_crossPlatformUnifiedMeContactWithKeysToFetch:(NSArray *)arg1 error:(id *)arg2;
 - (void)stopListeningForChanges;

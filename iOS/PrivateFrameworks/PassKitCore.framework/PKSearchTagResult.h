@@ -8,15 +8,16 @@
 
 #import <PassKitCore/PKSearchAutocompleteToken-Protocol.h>
 
-@class NSString;
+@class NSString, PKPaymentTransactionTag;
 
 @interface PKSearchTagResult : NSObject <PKSearchAutocompleteToken>
 {
-    unsigned long long _tag;
+    PKPaymentTransactionTag *_tag;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic) unsigned long long tag; // @synthesize tag=_tag;
+- (void).cxx_destruct;
+@property(retain, nonatomic) PKPaymentTransactionTag *tag; // @synthesize tag=_tag;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, copy) NSString *description;

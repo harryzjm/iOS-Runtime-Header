@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOCoarseLocationPolygon, PBDataReader;
+@class GEOCoarseLocationPolygon, NSString, PBDataReader;
 
 __attribute__((visibility("hidden")))
 @interface GEOCoarseLocationTerritoryInfo : PBCodable <NSCopying>
@@ -18,9 +18,11 @@ __attribute__((visibility("hidden")))
     struct GEOCoarseLocationLatLng _representativePoint;
     double _areaDegrees;
     double _areaRatio;
+    NSString *_countryNameStr;
     unsigned long long _featureId;
     double _maxDistanceMeters;
     GEOCoarseLocationPolygon *_polygon;
+    NSString *_regionNameStr;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
@@ -45,62 +47,22 @@ __attribute__((visibility("hidden")))
         unsigned int has_precise:1;
         unsigned int has_shouldRandomize:1;
         unsigned int read_coordinates:1;
+        unsigned int read_countryNameStr:1;
         unsigned int read_polygon:1;
+        unsigned int read_regionNameStr:1;
         unsigned int wrote_anyField:1;
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasShouldRandomize;
-@property(nonatomic) _Bool shouldRandomize;
-- (int)StringAsRepresentativePointQuality:(id)arg1;
-- (id)representativePointQualityAsString:(int)arg1;
-@property(nonatomic) _Bool hasRepresentativePointQuality;
-@property(nonatomic) int representativePointQuality;
-@property(retain, nonatomic) GEOCoarseLocationPolygon *polygon;
-@property(readonly, nonatomic) _Bool hasPolygon;
-@property(nonatomic) _Bool hasMaxDistanceMeters;
-@property(nonatomic) double maxDistanceMeters;
-@property(nonatomic) _Bool hasAreaRatio;
-@property(nonatomic) double areaRatio;
-@property(nonatomic) _Bool hasRevgeoRank;
-@property(nonatomic) unsigned int revgeoRank;
-@property(nonatomic) _Bool hasAreaDegrees;
-@property(nonatomic) double areaDegrees;
-@property(nonatomic) _Bool hasRepresentativePoint;
-@property(nonatomic) struct GEOCoarseLocationLatLng representativePoint;
-@property(nonatomic) _Bool hasFeatureId;
-@property(nonatomic) unsigned long long featureId;
-@property(nonatomic) _Bool hasPrecise;
-@property(nonatomic) _Bool precise;
-- (void)setCoordinates:(unsigned int *)arg1 count:(unsigned long long)arg2;
-- (unsigned int)coordinatesAtIndex:(unsigned long long)arg1;
-- (void)addCoordinates:(unsigned int)arg1;
-- (void)clearCoordinates;
-@property(readonly, nonatomic) unsigned int *coordinates;
-@property(readonly, nonatomic) unsigned long long coordinatesCount;
-@property(nonatomic) _Bool hasCountryName;
-@property(nonatomic) unsigned int countryName;
-@property(nonatomic) _Bool hasRegionName;
-@property(nonatomic) unsigned int regionName;
-- (int)StringAsTerritoryType:(id)arg1;
-- (id)territoryTypeAsString:(int)arg1;
-@property(nonatomic) _Bool hasTerritoryType;
-@property(nonatomic) int territoryType;
 - (void)dealloc;
 - (id)initWithData:(id)arg1;
 - (id)init;

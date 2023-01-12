@@ -15,6 +15,7 @@
 __attribute__((visibility("hidden")))
 @interface VUILibraryGridCollectionViewController : UICollectionViewController <VUILibraryDataSourceDelegate, VUIFamilySharingContentProtocol>
 {
+    double _lastAppearWidth;
     _Bool _requiresRelayout;
     struct CGSize _cellSize;
     NSMutableDictionary *_cellMetrics;
@@ -25,8 +26,6 @@ __attribute__((visibility("hidden")))
     VUIFamilyMember *_familyMember;
     id <VUILibraryGridCollectionViewControllerDelegate> _delegate;
     long long _gridFilter;
-    long long _gridStyle;
-    long long _gridType;
     UIBarButtonItem *_libraryBarButton;
     NSString *_pageType;
     VUIMediaEntitiesDataSource *_entitiesDataSource;
@@ -37,9 +36,13 @@ __attribute__((visibility("hidden")))
     VUIViewControllerContentPresenter *_contentPresenter;
     UICollectionViewDiffableDataSource *_diffableDataSource;
     NSArray *_mediaEntities;
+    long long _gridStyle;
+    long long _gridType;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long gridType; // @synthesize gridType=_gridType;
+@property(nonatomic) long long gridStyle; // @synthesize gridStyle=_gridStyle;
 @property(retain, nonatomic) NSArray *mediaEntities; // @synthesize mediaEntities=_mediaEntities;
 @property(nonatomic) _Bool waitingForFetch; // @synthesize waitingForFetch=_waitingForFetch;
 @property(retain, nonatomic) UICollectionViewDiffableDataSource *diffableDataSource; // @synthesize diffableDataSource=_diffableDataSource;
@@ -53,8 +56,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool forceBackButton; // @synthesize forceBackButton=_forceBackButton;
 @property(retain, nonatomic) UIBarButtonItem *libraryBarButton; // @synthesize libraryBarButton=_libraryBarButton;
 @property(nonatomic) _Bool hideLockupTitles; // @synthesize hideLockupTitles=_hideLockupTitles;
-@property(nonatomic) long long gridType; // @synthesize gridType=_gridType;
-@property(nonatomic) long long gridStyle; // @synthesize gridStyle=_gridStyle;
 @property(nonatomic) long long gridFilter; // @synthesize gridFilter=_gridFilter;
 @property(nonatomic) __weak id <VUILibraryGridCollectionViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) VUIFamilyMember *familyMember; // @synthesize familyMember=_familyMember;
@@ -84,7 +85,6 @@ __attribute__((visibility("hidden")))
 - (void)viewDidLayoutSubviews;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidAppear:(_Bool)arg1;
-- (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)loadView;
 - (void)updateWithLatestMediaEntities:(id)arg1;

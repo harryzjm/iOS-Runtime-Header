@@ -9,11 +9,13 @@
 @class NSDictionary, NSString, PFVideoAVObjectBuilder, PHContentEditingInputRequestOptions;
 
 @protocol PUEditableAsset <PUDisplayAsset>
+@property(readonly, copy, nonatomic) NSString *accessibilityDescription;
 @property(readonly, copy, nonatomic) NSString *pathForTrimmedVideoFile;
 @property(readonly, copy, nonatomic) NSString *pathForOriginalVideoFile;
 @property(readonly, copy, nonatomic) NSString *pathForOriginalImageFile;
 @property(readonly, nonatomic, getter=isCloudPhotoLibraryEnabled) _Bool cloudPhotoLibraryEnabled;
 @property(readonly, nonatomic, getter=isResourceDownloadPossible) _Bool resourceDownloadPossible;
+@property(readonly, nonatomic) _Bool containsAllMetadata;
 @property(readonly, nonatomic) int originalEXIFOrientation;
 @property(readonly, nonatomic) NSDictionary *imageProperties;
 @property(readonly, nonatomic) unsigned long long reframeVariation;

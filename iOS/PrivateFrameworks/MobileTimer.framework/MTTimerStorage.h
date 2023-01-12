@@ -10,11 +10,12 @@
 #import <MobileTimer/MTTimerSchedulerDelegate-Protocol.h>
 #import <MobileTimer/MTTimerStorage-Protocol.h>
 
-@class MTObserverStore, MTTimer, MTTimerMigrator, MTTimerScheduler, NSArray, NSDate, NSMutableArray, NSString;
+@class MTMetrics, MTObserverStore, MTTimer, MTTimerMigrator, MTTimerScheduler, NSArray, NSDate, NSMutableArray, NSString;
 @protocol MTPersistence, NAScheduler;
 
 @interface MTTimerStorage : NSObject <MTTimerSchedulerDelegate, MTAgentDiagnosticDelegate, MTTimerStorage>
 {
+    MTMetrics *_metrics;
     MTTimerScheduler *_scheduler;
     NSMutableArray *_orderedTimers;
     NSDate *_lastModifiedDate;

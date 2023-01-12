@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PassKit/PKAddPaymentPassController.h>
+#import <PassKitCore/PKAddPaymentPassController.h>
 
 #import <NanoPassKit/NPKAddPaymentPassControllerClientProtocol-Protocol.h>
 #import <NanoPassKit/PKXPCServiceDelegate-Protocol.h>

@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)scrollView;
 - (void)showDate:(id)arg1 animated:(_Bool)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (id)accessibilityScrollStatusForScrollView:(id)arg1;
 - (void)viewDidLoad;

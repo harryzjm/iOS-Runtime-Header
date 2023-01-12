@@ -18,6 +18,7 @@
 - (void)endAppSession:(CDUnknownBlockType)arg1;
 - (void)startAppSession;
 - (id)createSessionManager;
+- (id)initWithTrackingConsent:(id)arg1;
 - (id)init;
 
 @end

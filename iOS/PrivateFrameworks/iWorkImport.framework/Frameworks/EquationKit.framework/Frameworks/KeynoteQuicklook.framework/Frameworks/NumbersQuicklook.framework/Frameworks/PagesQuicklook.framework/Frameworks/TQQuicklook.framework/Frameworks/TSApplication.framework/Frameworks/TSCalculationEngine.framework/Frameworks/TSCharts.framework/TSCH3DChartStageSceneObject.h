@@ -8,10 +8,11 @@
 
 @interface TSCH3DChartStageSceneObject
 {
-    TSCH3DSceneObject *mMain;
+    TSCH3DSceneObject *_main;
 }
 
 + (id)objectWithMain:(id)arg1;
+- (void).cxx_destruct;
 - (void)postGetBounds:(id)arg1;
 - (void)postrender:(id)arg1;
 - (void)getSceneObjectElementsBounds:(id)arg1;
@@ -19,9 +20,8 @@
 - (void)rayPick:(id)arg1;
 - (void)getBounds:(id)arg1;
 - (void)render:(id)arg1;
-- (void)render:(id)arg1 selector:(SEL)arg2;
+- (void)renderScene:(id)arg1 usingProcessor:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (void)prerender:(id)arg1;
-- (void)dealloc;
 - (id)initWithMain:(id)arg1;
 
 @end

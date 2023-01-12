@@ -6,14 +6,14 @@
 
 @interface TSPKnownFieldStringValue
 {
-    basic_string_90719d97 _value;
+    struct basic_string<char, std::char_traits<char>, std::allocator<char>> _value;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)debugDescription;
 - (void)mergeToMessage:(struct Message *)arg1 reflection:(const struct Reflection *)arg2;
-- (id)initWithFieldDescriptor:(const struct FieldDescriptor *)arg1 fieldInfo:(const struct FieldInfo *)arg2 message:(const struct Message *)arg3 reflection:(const struct Reflection *)arg4;
+- (id)initWithFieldDescriptor:(const void *)arg1 fieldInfo:(const void *)arg2 message:(const struct Message *)arg3 reflection:(const struct Reflection *)arg4;
 
 @end
 

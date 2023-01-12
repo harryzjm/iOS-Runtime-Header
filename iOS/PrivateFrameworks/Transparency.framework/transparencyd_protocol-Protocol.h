@@ -33,6 +33,8 @@
 - (void)forceConfigUpdate:(void (^)(NSError *))arg1;
 - (void)resetRequestToPending:(NSUUID *)arg1 block:(void (^)(NSError *))arg2;
 - (void)forceValidateUUID:(NSUUID *)arg1 uri:(NSString *)arg2 block:(void (^)(unsigned long long, NSError *))arg3;
+- (void)sthsReceivedFromPeers:(NSArray *)arg1 completionBlock:(void (^)(NSError *))arg2;
+- (void)retrieveCurrentVerifiedTLTSTH:(void (^)(NSData *, NSError *))arg1;
 - (void)convertToSelfRequest:(NSUUID *)arg1 serverDatas:(NSArray *)arg2 syncedDatas:(NSArray *)arg3 queryRequest:(NSData *)arg4 queryResponse:(NSData *)arg5 updateCompletionBlock:(void (^)(NSUUID *, NSError *))arg6;
 - (void)validateEnrollmentUriResult:(NSString *)arg1 uuid:(NSUUID *)arg2 completionBlock:(void (^)(NSString *, unsigned long long, KTTransparentData *, NSError *))arg3;
 - (void)validateEnrollmentUri:(NSString *)arg1 application:(NSString *)arg2 accountID:(NSData *)arg3 loggableData:(KTLoggableData *)arg4 queryRequest:(NSData *)arg5 queryResponse:(NSData *)arg6 promiseCompletionBlock:(void (^)(NSString *, NSUUID *, NSError *))arg7;

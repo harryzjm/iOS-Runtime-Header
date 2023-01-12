@@ -18,6 +18,7 @@
 - (void)persistenceWillChangeConversationID:(long long)arg1 messages:(NSArray *)arg2;
 - (void)persistenceDidAddLabels:(NSSet *)arg1 removeLabels:(NSSet *)arg2 messages:(NSArray *)arg3 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg4;
 - (void)persistenceDidChangeConversationNotificationLevel:(long long)arg1 conversationID:(long long)arg2 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg3;
+- (void)persistenceDidChangeVIPStatus:(_Bool)arg1 messages:(NSArray *)arg2;
 - (void)persistenceDidChangeFlags:(ECMessageFlagChange *)arg1 messages:(NSArray *)arg2 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg3;
 - (void)persistenceIsChangingFlags:(ECMessageFlagChange *)arg1 messages:(NSArray *)arg2 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg3;
 - (void)persistenceWillChangeFlags:(ECMessageFlagChange *)arg1 messages:(NSArray *)arg2;
@@ -25,6 +26,7 @@
 - (void)persistenceIsDeletingAllMessagesInMailboxWithURL:(NSURL *)arg1 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg2;
 - (void)persistenceDidDeleteMessages:(NSArray *)arg1 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg2;
 - (void)persistenceIsDeletingMessages:(NSArray *)arg1 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg2;
+- (void)persistenceWillDeleteMessages:(NSArray *)arg1;
 - (void)persistenceDidUpdateProperties:(NSArray *)arg1 message:(id <EDPersistedMessage>)arg2 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg3;
 - (void)persistenceDidUpdateData:(NSData *)arg1 message:(id <EDPersistedMessage>)arg2;
 - (void)persistenceDidReconcileJournaledMessages:(NSArray *)arg1 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg2;

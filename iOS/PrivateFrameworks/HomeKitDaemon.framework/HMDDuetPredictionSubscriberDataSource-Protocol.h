@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMDDuetPredictionSubscriber, NSArray;
+@class HMDDuetPredictionSubscriber, NSArray, NSUUID;
 
 @protocol HMDDuetPredictionSubscriberDataSource
+- (NSUUID *)updateMessageTargetForDuetPredictionSubscriber:(HMDDuetPredictionSubscriber *)arg1;
 - (NSArray *)homesForDuetPredictionSubscriber:(HMDDuetPredictionSubscriber *)arg1;
 @end
 

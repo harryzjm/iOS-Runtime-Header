@@ -4,17 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <TemplateKit/NUIContainerViewDelegate-Protocol.h>
 #import <TemplateKit/TLKTextAreaViewTesting-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, NUIContainerStackView, TLKEmbossedLabel, TLKImage, TLKLabel, TLKRichText, TLKRichTextField, TLKStackView, TLKTextButton, TLKTitleContainerView;
+@class NSArray, NSMutableArray, NSString, NUIContainerStackView, TLKEmbossedLabel, TLKImage, TLKLabel, TLKRichText, TLKRichTextField, TLKStackView, TLKTextButton, TLKTitleContainerView, UIView;
 @protocol TLKTextAreaViewDelegate;
 
-@interface TLKTextAreaView <TLKTextAreaViewTesting>
+@interface TLKTextAreaView <NUIContainerViewDelegate, TLKTextAreaViewTesting>
 {
     _Bool _truncateTitleMiddle;
     _Bool _secondaryTitleIsDetached;
+    _Bool _isAccessoryViewBottomAligned;
     _Bool _useCompactMode;
     _Bool _disableAllObservers;
+    _Bool _isHorizontallyCompressed;
     id <TLKTextAreaViewDelegate> _buttonDelegate;
     TLKRichText *_bannerText;
     TLKRichText *_title;
@@ -23,8 +26,11 @@
     NSArray *_detailTexts;
     TLKRichText *_footnote;
     NSString *_footnoteButtonText;
+    UIView *_accessoryView;
     TLKEmbossedLabel *_bannerBadgeView;
     TLKTitleContainerView *_titleContainer;
+    NUIContainerStackView *_detailFieldFootnoteAndAccessoryStackView;
+    NUIContainerStackView *_detailFieldAndFootnoteStackView;
     NUIContainerStackView *_detailFieldStackView;
     NSMutableArray *_detailsFields;
     NSMutableArray *_bulletFields;
@@ -36,6 +42,7 @@
 
 + (id)footNoteLabelFont;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isHorizontallyCompressed; // @synthesize isHorizontallyCompressed=_isHorizontallyCompressed;
 @property(nonatomic) _Bool disableAllObservers; // @synthesize disableAllObservers=_disableAllObservers;
 @property(retain, nonatomic) NUIContainerStackView *footnoteContainer; // @synthesize footnoteContainer=_footnoteContainer;
 @property(retain, nonatomic) TLKTextButton *footnoteButton; // @synthesize footnoteButton=_footnoteButton;
@@ -44,9 +51,13 @@
 @property(retain, nonatomic) NSMutableArray *bulletFields; // @synthesize bulletFields=_bulletFields;
 @property(retain, nonatomic) NSMutableArray *detailsFields; // @synthesize detailsFields=_detailsFields;
 @property(retain, nonatomic) NUIContainerStackView *detailFieldStackView; // @synthesize detailFieldStackView=_detailFieldStackView;
+@property(retain, nonatomic) NUIContainerStackView *detailFieldAndFootnoteStackView; // @synthesize detailFieldAndFootnoteStackView=_detailFieldAndFootnoteStackView;
+@property(retain, nonatomic) NUIContainerStackView *detailFieldFootnoteAndAccessoryStackView; // @synthesize detailFieldFootnoteAndAccessoryStackView=_detailFieldFootnoteAndAccessoryStackView;
 @property(retain, nonatomic) TLKTitleContainerView *titleContainer; // @synthesize titleContainer=_titleContainer;
 @property(retain, nonatomic) TLKEmbossedLabel *bannerBadgeView; // @synthesize bannerBadgeView=_bannerBadgeView;
 @property(nonatomic) _Bool useCompactMode; // @synthesize useCompactMode=_useCompactMode;
+@property(nonatomic) _Bool isAccessoryViewBottomAligned; // @synthesize isAccessoryViewBottomAligned=_isAccessoryViewBottomAligned;
+@property(retain, nonatomic) UIView *accessoryView; // @synthesize accessoryView=_accessoryView;
 @property(retain, nonatomic) NSString *footnoteButtonText; // @synthesize footnoteButtonText=_footnoteButtonText;
 @property(retain, nonatomic) TLKRichText *footnote; // @synthesize footnote=_footnote;
 @property(retain, nonatomic) NSArray *detailTexts; // @synthesize detailTexts=_detailTexts;
@@ -65,12 +76,12 @@
 - (id)titleView;
 - (id)viewForLastBaselineLayout;
 - (id)viewForFirstBaselineLayout;
-- (_Bool)noFootNote;
-- (_Bool)noRichTextFields;
 - (void)updateFootnote;
 - (void)internalTextFieldsInBatchUpdate:(_Bool)arg1;
 - (void)performBatchUpdates:(CDUnknownBlockType)arg1;
+- (void)updateDetailFieldStackViewVisibility;
 - (void)updateDetails;
+- (void)insertDetailsStackViewIfNeeded;
 - (void)updateBannerBadge;
 - (void)propertiesDidChange;
 - (id)setupContentView;

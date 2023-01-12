@@ -13,7 +13,6 @@
 }
 
 + (id)appIconForImage:(id)arg1 variant:(unsigned long long)arg2;
-+ (double)cornerRadiusForVariant:(unsigned long long)arg1;
 + (struct CGSize)sizeForVariant:(unsigned long long)arg1;
 + (int)iconFormatForVariant:(unsigned long long)arg1;
 + (id)descriptorNameForVariant:(unsigned long long)arg1;
@@ -26,8 +25,8 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)uniqueIdentifier;
-- (id)generateImageWithFormat:(int)arg1;
-- (id)loadImage;
+- (id)generateImageWithFormat:(int)arg1 scale:(double)arg2;
+- (id)loadImageWithScale:(double)arg1 isDarkStyle:(_Bool)arg2;
 - (_Bool)needsTinting;
 - (void)invalidateAppIcon;
 - (_Bool)shouldInvalidateAppIconForChangedBundleIdentifier:(id)arg1;

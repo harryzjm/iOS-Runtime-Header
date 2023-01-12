@@ -16,15 +16,20 @@
 - (long long)iconViewComponentBackgroundViewTypeForIconView:(SBIconView *)arg1;
 - (UIColor *)accessibilityTintColorForIconView:(SBIconView *)arg1;
 - (unsigned long long)supportedGridSizeClassesForIconView:(SBIconView *)arg1;
-- (struct SBHIconGridSize)gridSizeForIconView:(SBIconView *)arg1;
+- (long long)iconView:(SBIconView *)arg1 accessoryTypeWithProposedAccessoryType:(long long)arg2;
 - (long long)closeBoxTypeForIconView:(SBIconView *)arg1;
 - (SBFParallaxSettings *)parallaxSettingsForComponentsOfIconView:(SBIconView *)arg1;
 - (UIViewController<SBIconViewCustomImageViewControlling> *)customImageViewControllerForIconView:(SBIconView *)arg1;
 - (_Bool)iconView:(SBIconView *)arg1 editingModeGestureRecognizerDidFire:(UIGestureRecognizer *)arg2;
 - (double)scale;
+- (unsigned long long)focusEffectTypeForIconView:(SBIconView *)arg1;
+- (_Bool)iconViewCanBecomeFocused:(SBIconView *)arg1;
+- (_Bool)iconViewDisplaysLabel:(SBIconView *)arg1;
 - (_Bool)iconViewDisplaysCloseBox:(SBIconView *)arg1;
+- (_Bool)iconViewDisplaysAccessories:(SBIconView *)arg1;
 - (_Bool)iconViewDisplaysBadges:(SBIconView *)arg1;
 - (_Bool)iconShouldAllowCloseBoxTap:(SBIconView *)arg1;
+- (_Bool)iconShouldAllowAccessoryTap:(SBIconView *)arg1;
 - (_Bool)icon:(SBIconView *)arg1 canReceiveGrabbedIcon:(SBIcon *)arg2;
 - (_Bool)iconShouldAllowTap:(SBIconView *)arg1;
 @end

@@ -11,6 +11,8 @@
 @protocol PGPictureInPictureControllerDelegate <NSObject>
 
 @optional
+- (_Bool)pictureInPictureControllerCanBackgroundStartForFaceTimeVideoCall:(PGPictureInPictureController *)arg1;
+- (_Bool)pictureInPictureController:(PGPictureInPictureController *)arg1 shouldAuthorizeBackgroundPIPForAppWithBundleIdentifier:(NSString *)arg2;
 - (_Bool)pictureInPictureController:(PGPictureInPictureController *)arg1 shouldDenyNewConnection:(NSXPCConnection *)arg2;
 - (_Bool)pictureInPictureController:(PGPictureInPictureController *)arg1 shouldCancelPictureInPictureForApplication:(PGPictureInPictureApplication *)arg2 whenStartingPictureInPictureForApplication:(PGPictureInPictureApplication *)arg3;
 - (void)pictureInPictureController:(PGPictureInPictureController *)arg1 didRequestStopForPictureInPictureViewController:(PGPictureInPictureViewController *)arg2 sourceSceneSessionIdentifier:(NSString *)arg3 animated:(_Bool)arg4;

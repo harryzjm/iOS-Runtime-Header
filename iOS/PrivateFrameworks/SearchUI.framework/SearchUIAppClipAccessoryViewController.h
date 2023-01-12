@@ -11,7 +11,6 @@
 }
 
 + (_Bool)supportsRowModel:(id)arg1;
-- (_Bool)shouldTopAlignForAccessibilityContentSizes;
 - (unsigned long long)type;
 - (void)updateWithRowModel:(id)arg1;
 - (id)setupView;

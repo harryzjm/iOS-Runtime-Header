@@ -6,61 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class CKEntitlements, NSString;
 
 @interface CKDApplicationMetadata : NSObject
 {
-    _Bool _isCKSystemService;
-    _Bool _canMasquerade;
-    _Bool _canSetEnvironment;
-    _Bool _allowCustomAccounts;
-    _Bool _canAccessProtectionData;
-    _Bool _canAccessZoneProtectionData;
-    _Bool _canSetDeviceIdentifier;
-    _Bool _hasAccessDuringBuddy;
-    _Bool _hasLightweightPCS;
-    _Bool _hasTCCAuthorization;
-    _Bool _allowsPowerNapScheduling;
-    _Bool _isOOPUI;
-    _Bool _allowsParticipantPII;
-    _Bool _displaysSystemAcceptPrompt;
-    _Bool _canUseNonLegacyShareURL;
-    _Bool _allowUnverifiedAccount;
-    NSString *_apsEnvironmentString;
-    long long _contextType;
-    NSString *_entitlementSpecifiedPCSServiceName;
-    NSString *_applicationIdentifier;
-    NSString *_clientPrefix;
-    NSString *_pushBundleID;
-    NSString *_associatedApplicationBundleID;
+    _Bool _isClientMainBundleAppleExecutable;
+    unsigned int _clientSDKVersion;
+    long long _adopterProcessType;
+    NSString *_containingBundleID;
     NSString *_applicationContainerPath;
+    CKEntitlements *_entitlements;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool allowUnverifiedAccount; // @synthesize allowUnverifiedAccount=_allowUnverifiedAccount;
-@property(nonatomic) _Bool canUseNonLegacyShareURL; // @synthesize canUseNonLegacyShareURL=_canUseNonLegacyShareURL;
+@property(nonatomic) _Bool isClientMainBundleAppleExecutable; // @synthesize isClientMainBundleAppleExecutable=_isClientMainBundleAppleExecutable;
+@property(nonatomic) unsigned int clientSDKVersion; // @synthesize clientSDKVersion=_clientSDKVersion;
+@property(retain, nonatomic) CKEntitlements *entitlements; // @synthesize entitlements=_entitlements;
 @property(retain, nonatomic) NSString *applicationContainerPath; // @synthesize applicationContainerPath=_applicationContainerPath;
-@property(retain, nonatomic) NSString *associatedApplicationBundleID; // @synthesize associatedApplicationBundleID=_associatedApplicationBundleID;
-@property(retain, nonatomic) NSString *pushBundleID; // @synthesize pushBundleID=_pushBundleID;
-@property(retain, nonatomic) NSString *clientPrefix; // @synthesize clientPrefix=_clientPrefix;
-@property(retain, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
-@property(retain, nonatomic) NSString *entitlementSpecifiedPCSServiceName; // @synthesize entitlementSpecifiedPCSServiceName=_entitlementSpecifiedPCSServiceName;
-@property(nonatomic) _Bool displaysSystemAcceptPrompt; // @synthesize displaysSystemAcceptPrompt=_displaysSystemAcceptPrompt;
-@property(nonatomic) _Bool allowsParticipantPII; // @synthesize allowsParticipantPII=_allowsParticipantPII;
-@property(nonatomic) _Bool isOOPUI; // @synthesize isOOPUI=_isOOPUI;
-@property(nonatomic) _Bool allowsPowerNapScheduling; // @synthesize allowsPowerNapScheduling=_allowsPowerNapScheduling;
-@property(nonatomic) _Bool hasTCCAuthorization; // @synthesize hasTCCAuthorization=_hasTCCAuthorization;
-@property(nonatomic) _Bool hasLightweightPCS; // @synthesize hasLightweightPCS=_hasLightweightPCS;
-@property(nonatomic) _Bool hasAccessDuringBuddy; // @synthesize hasAccessDuringBuddy=_hasAccessDuringBuddy;
-@property(nonatomic) _Bool canSetDeviceIdentifier; // @synthesize canSetDeviceIdentifier=_canSetDeviceIdentifier;
-@property(nonatomic) _Bool canAccessZoneProtectionData; // @synthesize canAccessZoneProtectionData=_canAccessZoneProtectionData;
-@property(nonatomic) _Bool canAccessProtectionData; // @synthesize canAccessProtectionData=_canAccessProtectionData;
-@property(nonatomic) _Bool allowCustomAccounts; // @synthesize allowCustomAccounts=_allowCustomAccounts;
-@property(nonatomic) _Bool canSetEnvironment; // @synthesize canSetEnvironment=_canSetEnvironment;
-@property(nonatomic) _Bool canMasquerade; // @synthesize canMasquerade=_canMasquerade;
-@property(nonatomic) _Bool isCKSystemService; // @synthesize isCKSystemService=_isCKSystemService;
-@property(nonatomic) long long contextType; // @synthesize contextType=_contextType;
-@property(retain, nonatomic) NSString *apsEnvironmentString; // @synthesize apsEnvironmentString=_apsEnvironmentString;
+@property(retain, nonatomic) NSString *containingBundleID; // @synthesize containingBundleID=_containingBundleID;
+@property(nonatomic) long long adopterProcessType; // @synthesize adopterProcessType=_adopterProcessType;
 - (id)init;
 
 @end

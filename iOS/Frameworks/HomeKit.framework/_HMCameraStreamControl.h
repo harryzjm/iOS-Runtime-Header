@@ -11,7 +11,6 @@
 
 @interface _HMCameraStreamControl <HMFLogging>
 {
-    _Bool _shouldResetStateOnHomedRestart;
     unsigned long long _streamState;
     HMCameraStream *_cameraStream;
     id <_HMCameraStreamControlDelegate> _delegate;
@@ -20,8 +19,6 @@
 
 + (id)logCategory;
 - (void).cxx_destruct;
-@property _Bool shouldResetStateOnHomedRestart; // @synthesize shouldResetStateOnHomedRestart=_shouldResetStateOnHomedRestart;
-- (id)logIdentifier;
 - (void)_callVideoStoppedDelegate:(id)arg1;
 - (void)_callVideoStartedDelegate;
 - (void)_handleVideoStopResponse:(id)arg1 error:(id)arg2 sessionID:(id)arg3;
@@ -40,8 +37,6 @@
 @property(readonly, nonatomic) HMCameraStream *cameraStream; // @synthesize cameraStream=_cameraStream;
 @property(nonatomic) __weak id <_HMCameraStreamControlDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)dealloc;
-- (void)homedInterrupted:(id)arg1;
-- (void)homedRestarted:(id)arg1;
 - (id)initWithCameraProfile:(id)arg1 service:(id)arg2 profileUniqueIdentifier:(id)arg3;
 
 // Remaining properties

@@ -16,7 +16,7 @@
 - (id)_timeTitle;
 - (id)_locationTitle;
 - (void)_generateTitleAndSubtitleWithResult:(CDUnknownBlockType)arg1;
-- (id)initWithLocationNodes:(id)arg1;
+- (id)initWithLocationNodes:(id)arg1 titleGenerationContext:(id)arg2;
 
 @end
 

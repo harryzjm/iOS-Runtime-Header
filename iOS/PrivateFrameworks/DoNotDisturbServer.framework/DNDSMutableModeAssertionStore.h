@@ -14,6 +14,8 @@
 @property(copy, nonatomic) NSArray *invalidationRequests; // @dynamic invalidationRequests;
 @property(copy, nonatomic) NSArray *invalidations; // @dynamic invalidations;
 @property(copy, nonatomic) NSArray *assertions; // @dynamic assertions;
+- (void)downgradeAssertionsIfNeededForSyncToPairedDevice:(id)arg1 dataSource:(id)arg2 syncManager:(id)arg3;
+- (void)updateConfigurationModificationDatesWithDataSource:(id)arg1 syncManager:(id)arg2;
 - (void)resolveSourcesForSyncFromPairedDevice:(id)arg1;
 - (void)unresolveSourcesForSyncToPairedDevice:(id)arg1;
 - (void)filterForSyncToPairedDevice:(id)arg1 clientDetailsProvider:(id)arg2;

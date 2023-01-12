@@ -15,7 +15,6 @@
 
 + (unsigned long long)precedenceLevel;
 - (void).cxx_destruct;
-- (id)persistentUniqueIdentifier;
 - (id)fileWrapperForcingDownload:(_Bool)arg1;
 - (void)inlineDisplayData:(id *)arg1 mimeType:(id *)arg2;
 - (_Bool)isPlaceholder;

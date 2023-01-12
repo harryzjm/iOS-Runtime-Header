@@ -30,7 +30,7 @@
 @property(copy, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
 - (void)performBlockOnDataProviders:(CDUnknownBlockType)arg1;
 - (void)removeDataProvider:(id)arg1;
-- (id)dataProviderForUniversalSectionID:(id)arg1;
+- (id)dataProvidersForUniversalSectionID:(id)arg1;
 - (id)dataProviderForSectionID:(id)arg1;
 - (void)loadAllDataProviders;
 - (void)clientIsReady:(CDUnknownBlockType)arg1;

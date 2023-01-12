@@ -13,6 +13,8 @@
 + (id)dictionaryForClass:(Class)arg1;
 + (id)dictionaryForResource:(id)arg1 ofType:(id)arg2 specifiedABGroup:(id)arg3;
 + (id)rawDictionaryForResource:(id)arg1 ofType:(id)arg2;
++ (id)rawDictionaryUsingMobileAssetsForResource:(id)arg1 ofType:(id)arg2;
++ (id)rawDictionaryUsingTrialForResource:(id)arg1 ofType:(id)arg2;
 + (void)updateMobileAssetMetadata;
 + (id)pathForResource:(id)arg1 ofType:(id)arg2;
 + (void)onUpdateRestartThisProcess;

@@ -6,7 +6,6 @@
 
 @class AMSBiometricsSignatureRequest;
 
-__attribute__((visibility("hidden")))
 @interface AMSBiometricsSignatureTask
 {
     AMSBiometricsSignatureRequest *_request;
@@ -15,6 +14,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) AMSBiometricsSignatureRequest *request; // @synthesize request=_request;
 - (_Bool)_performCardEnrollmentCheck:(id *)arg1;
+- (id)_performSignatureInProcess;
+- (id)_performSignatureOutOfProcess;
 - (id)performSignature;
 - (id)initWithRequest:(id)arg1;
 

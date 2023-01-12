@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthMenstrualCycles/HKRedactedDescription-Protocol.h>
 #import <HealthMenstrualCycles/NSCopying-Protocol.h>
 #import <HealthMenstrualCycles/NSSecureCoding-Protocol.h>
 
-@class HKMCStatistics, HKQuantity, NSArray, NSNumber;
+@class HKMCStatistics, HKQuantity, NSArray, NSNumber, NSString;
 
-@interface HKMCAnalysis : NSObject <NSSecureCoding, NSCopying>
+@interface HKMCAnalysis : NSObject <HKRedactedDescription, NSSecureCoding, NSCopying>
 {
     HKMCStatistics *_statistics;
     NSArray *_menstruationProjections;
@@ -21,12 +22,18 @@
     HKQuantity *_recentBasalBodyTemperature;
     NSNumber *_lastLoggedDayIndex;
     NSNumber *_lastMenstrualFlowDayIndex;
+    NSArray *_ongoingCycleFactors;
+    long long _numberOfDailySleepHeartRateStatisticsForPast100Days;
+    long long _numberOfDailyAwakeHeartRateStatisticsForPast100Days;
     NSNumber *_anchor;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSNumber *anchor; // @synthesize anchor=_anchor;
+@property(readonly, nonatomic) long long numberOfDailyAwakeHeartRateStatisticsForPast100Days; // @synthesize numberOfDailyAwakeHeartRateStatisticsForPast100Days=_numberOfDailyAwakeHeartRateStatisticsForPast100Days;
+@property(readonly, nonatomic) long long numberOfDailySleepHeartRateStatisticsForPast100Days; // @synthesize numberOfDailySleepHeartRateStatisticsForPast100Days=_numberOfDailySleepHeartRateStatisticsForPast100Days;
+@property(readonly, nonatomic) NSArray *ongoingCycleFactors; // @synthesize ongoingCycleFactors=_ongoingCycleFactors;
 @property(readonly, copy, nonatomic) NSNumber *lastMenstrualFlowDayIndex; // @synthesize lastMenstrualFlowDayIndex=_lastMenstrualFlowDayIndex;
 @property(readonly, copy, nonatomic) NSNumber *lastLoggedDayIndex; // @synthesize lastLoggedDayIndex=_lastLoggedDayIndex;
 @property(readonly, nonatomic) HKQuantity *recentBasalBodyTemperature; // @synthesize recentBasalBodyTemperature=_recentBasalBodyTemperature;
@@ -37,11 +44,13 @@
 @property(readonly, nonatomic) HKMCStatistics *statistics; // @synthesize statistics=_statistics;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)redactedDescription;
+@property(readonly, copy) NSString *hk_redactedDescription;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)initWithStatistics:(id)arg1 menstruationProjections:(id)arg2 fertileWindowProjections:(id)arg3 cycles:(id)arg4 recentSymptoms:(unsigned long long)arg5 recentBasalBodyTemperature:(id)arg6 lastLoggedDayIndex:(id)arg7 lastMenstrualFlowDayIndex:(id)arg8 ongoingCycleFactors:(id)arg9 numberOfDailySleepHeartRateStatisticsForPast100Days:(long long)arg10 numberOfDailyAwakeHeartRateStatisticsForPast100Days:(long long)arg11;
+- (id)initWithStatistics:(id)arg1 menstruationProjections:(id)arg2 fertileWindowProjections:(id)arg3 cycles:(id)arg4 recentSymptoms:(unsigned long long)arg5 recentBasalBodyTemperature:(id)arg6 lastLoggedDayIndex:(id)arg7 lastMenstrualFlowDayIndex:(id)arg8 ongoingCycleFactors:(id)arg9;
 - (id)initWithStatistics:(id)arg1 menstruationProjections:(id)arg2 fertileWindowProjections:(id)arg3 cycles:(id)arg4 recentSymptoms:(unsigned long long)arg5 recentBasalBodyTemperature:(id)arg6 lastLoggedDayIndex:(id)arg7 lastMenstrualFlowDayIndex:(id)arg8;
 
 @end

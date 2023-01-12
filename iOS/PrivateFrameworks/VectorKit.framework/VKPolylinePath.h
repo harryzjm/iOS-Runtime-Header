@@ -6,45 +6,42 @@
 
 #import <objc/NSObject.h>
 
-@class GEOComposedRouteSection, GEOSnappedRoutePath, VKPolylineOverlay;
+@class GEOComposedRouteSection, NSArray, VKPolylineOverlay;
 
 __attribute__((visibility("hidden")))
 @interface VKPolylinePath : NSObject
 {
     VKPolylineOverlay *_overlay;
     GEOComposedRouteSection *_section;
-    GEOSnappedRoutePath *_snappedPath;
-    vector_d9a07fc0 _points;
-    struct optional<std::__1::vector<double, std::__1::allocator<double>>> _distances;
+    NSArray *_matchedPathSegments;
+    struct vector<gm::Matrix<float, 3, 1>, std::allocator<gm::Matrix<float, 3, 1>>> _points;
     _Bool _distanceSnapping;
     struct PolylineCoordinate _routeStart;
     struct PolylineCoordinate _routeEnd;
     double _startDistance;
     unsigned char _trafficSpeed;
     double _sectionLengthScaleFactor;
+    struct GradientTraffic _gradientTraffic;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(nonatomic) double startDistance; // @synthesize startDistance=_startDistance;
-@property(nonatomic) unsigned char trafficSpeed; // @synthesize trafficSpeed=_trafficSpeed;
+@property(readonly, nonatomic) NSArray *matchedPathSegments; // @synthesize matchedPathSegments=_matchedPathSegments;
 @property(readonly, nonatomic) GEOComposedRouteSection *section; // @synthesize section=_section;
-@property(readonly, nonatomic) GEOSnappedRoutePath *snappedPath; // @synthesize snappedPath=_snappedPath;
 @property(nonatomic) struct PolylineCoordinate routeEnd; // @synthesize routeEnd=_routeEnd;
 @property(nonatomic) struct PolylineCoordinate routeStart; // @synthesize routeStart=_routeStart;
-- (void)splitTrafficSegmentationAndAddTo:(id)arg1 with:(struct TrafficSegmentsAlongRoute *)arg2 shouldSnap:(_Bool)arg3;
-- (void)assignTo:(id)arg1 withSegment:(const struct TrafficSegment *)arg2;
-- (void)updateDistances:(_Bool)arg1;
-- (void)assignPoints:(Matrix_8746f91e *)arg1 count:(unsigned int)arg2;
 - (id)description;
+- (Matrix_811b2232)convertCoordinateToTile:(const CDStruct_071ac149 *)arg1;
 @property(readonly) _Bool isMapMatched;
 @property(readonly) _Bool hasCompletedMapMatching;
-@property(readonly, nonatomic) Matrix_8746f91e *points;
+- (float)laneHalfWidthAtIndex:(unsigned int)arg1;
+@property(readonly, nonatomic) void *points;
 @property(readonly, nonatomic) unsigned int pointCount;
+- (const struct GradientTraffic *)gradientTrafficAtIndex:(unsigned int)arg1;
 - (void)dealloc;
-- (id)initWithOverlay:(id)arg1 snappedPath:(id)arg2;
-- (id)initWithOverlay:(id)arg1 section:(id)arg2 routeStartIndex:(unsigned int)arg3 routeEndIndex:(unsigned int)arg4;
-- (id)initWithOverlay:(id)arg1 section:(id)arg2;
+- (id)initWithOverlay:(id)arg1 section:(id)arg2 routeStartIndex:(unsigned int)arg3 routeEndIndex:(unsigned int)arg4 matchedPathSegments:(id)arg5;
+- (id)initWithOverlay:(id)arg1 section:(id)arg2 matchedPathSegments:(id)arg3;
 
 @end
 

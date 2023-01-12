@@ -11,7 +11,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)_axElementWithinFocused;
+- (id)_accessibilityMultitaskingButtonContainer;
 - (id)accessibilityElements;
+- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

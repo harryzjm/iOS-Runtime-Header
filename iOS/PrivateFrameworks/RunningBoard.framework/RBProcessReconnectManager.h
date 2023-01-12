@@ -7,13 +7,11 @@
 #import <objc/NSObject.h>
 
 @class NSMutableSet, RBProcess;
-@protocol OS_dispatch_queue, RBAssertionManaging, RBAssertionOriginatorPidPersisting, RBDomainAttributeManaging;
+@protocol OS_dispatch_queue, RBDaemonContextProviding;
 
 @interface RBProcessReconnectManager : NSObject
 {
-    id <RBAssertionManaging> _assertionManager;
-    id <RBDomainAttributeManaging> _domainAttributeManager;
-    id <RBAssertionOriginatorPidPersisting> _assertionOriginatorPidStore;
+    id <RBDaemonContextProviding> _daemonContext;
     RBProcess *_originatorProcess;
     NSMutableSet *_currentAssertionIdentifiers;
     NSMutableSet *_pendingProcesses;
@@ -22,9 +20,10 @@
 }
 
 - (void).cxx_destruct;
+- (id)debugDescription;
 - (void)didInvalidateAssertion:(id)arg1;
 - (void)reconnectProcesses:(id)arg1;
-- (id)initWithAssertionManager:(id)arg1 domainAttributeManager:(id)arg2 assertionOriginatorPidStore:(id)arg3 originatorProcess:(id)arg4;
+- (id)initWithDaemonContext:(id)arg1 originatorProcess:(id)arg2;
 - (id)init;
 
 @end

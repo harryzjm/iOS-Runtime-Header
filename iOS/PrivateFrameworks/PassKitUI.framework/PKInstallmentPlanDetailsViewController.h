@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, PKAccount, PKAccountService, PKInstallmentPlan, PKPaymentTransactionDetailAmountLineItemGenerator, PKPaymentTransactionDetailHeaderView, PKTransactionSource;
+@class NSArray, PKAccount, PKAccountService, PKAccountUserCollection, PKCreditInstallmentPlan, PKFamilyMemberCollection, PKPaymentTransactionDetailAmountLineItemGenerator, PKPaymentTransactionDetailHeaderView, PKTransactionSourceCollection;
 
 @interface PKInstallmentPlanDetailsViewController
 {
     PKAccount *_account;
     PKAccountService *_accountService;
-    PKInstallmentPlan *_installmentPlan;
-    PKTransactionSource *_transactionSource;
+    PKAccountUserCollection *_accountUserCollection;
+    PKFamilyMemberCollection *_familyMemberCollection;
+    PKCreditInstallmentPlan *_installmentPlan;
+    PKTransactionSourceCollection *_transactionSourceCollection;
     PKPaymentTransactionDetailAmountLineItemGenerator *_lineItemGenerator;
     NSArray *_lineItems;
     PKPaymentTransactionDetailHeaderView *_headerView;
@@ -28,7 +30,7 @@
 - (_Bool)shouldMapSection:(unsigned long long)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;
-- (id)initWithAccount:(id)arg1 installmentPlan:(id)arg2 accountService:(id)arg3 transactionSource:(id)arg4;
+- (id)initWithAccount:(id)arg1 installmentPlan:(id)arg2 accountService:(id)arg3 accountUserCollection:(id)arg4 familyMemberCollection:(id)arg5 transactionSourceCollection:(id)arg6;
 
 @end
 

@@ -4,36 +4,34 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableDictionary, TSDPathManipulation;
+@class TSDVaryWidthPathManipulation;
 
 @interface TSDManipulatedStroke
 {
-    TSDPathManipulation *mManipulation;
-    NSMutableDictionary *mArrows;
-    unsigned int mRandomSeed;
+    unsigned int _randomSeed;
+    TSDVaryWidthPathManipulation *_manipulation;
 }
 
 + (Class)mutableClass;
-@property(retain, nonatomic) TSDPathManipulation *pathManipulation; // @synthesize pathManipulation=mManipulation;
-@property(nonatomic) unsigned int randomSeed; // @synthesize randomSeed=mRandomSeed;
+- (void).cxx_destruct;
+@property(retain, nonatomic) TSDVaryWidthPathManipulation *pathManipulation; // @synthesize pathManipulation=_manipulation;
+@property(nonatomic) unsigned int randomSeed; // @synthesize randomSeed=_randomSeed;
 - (double)renderedWidth;
-- (void)saveToArchive:(struct StrokeArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct StrokeArchive *)arg1 unarchiver:(id)arg2;
-- (const struct CGPath *)pathToStrokeFromCGPath:(struct CGPath *)arg1;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
+- (const struct CGPath *)pathToStrokeFromCGPath:(const struct CGPath *)arg1;
 - (_Bool)prefersToApplyToShapeRenderableDuringManipulation;
 - (_Bool)canApplyToShapeRenderable;
-- (void)paintPath:(struct CGPath *)arg1 wantsInteriorStroke:(_Bool)arg2 inContext:(struct CGContext *)arg3 useFastDrawing:(_Bool)arg4 parameterized:(_Bool)arg5 shouldReverseDrawOrder:(_Bool)arg6;
-- (struct CGPath *)manipulatePath:(struct CGPath *)arg1 withLineWidth:(double)arg2;
+- (void)paintPath:(const struct CGPath *)arg1 wantsInteriorStroke:(_Bool)arg2 inContext:(struct CGContext *)arg3 useFastDrawing:(_Bool)arg4 parameterized:(_Bool)arg5 shouldReverseDrawOrder:(_Bool)arg6;
+- (const struct CGPath *)manipulatePath:(const struct CGPath *)arg1 withLineWidth:(double)arg2;
 - (id)strokeLineEnd:(id)arg1;
-- (struct CGPath *)strokedPath:(struct CGPath *)arg1 withLineWidth:(double)arg2 insideStroke:(_Bool)arg3;
+- (const struct CGPath *)strokedPath:(const struct CGPath *)arg1 withLineWidth:(double)arg2 insideStroke:(_Bool)arg3;
 - (void)seedRandom;
-- (void)applyInteriorWrapPropertiesInContext:(struct CGContext *)arg1 insideStroke:(_Bool)arg2;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)drawsOutsideStrokeBounds;
-- (void)dealloc;
-- (id)initWithName:(id)arg1 color:(id)arg2 width:(double)arg3 cap:(int)arg4 join:(int)arg5 pattern:(id)arg6 miterLimit:(double)arg7;
 - (void)p_setupDoodlesManipulation;
+- (id)initWithName:(id)arg1 color:(id)arg2 width:(double)arg3 cap:(int)arg4 join:(int)arg5 pattern:(id)arg6 miterLimit:(double)arg7;
 
 @end
 

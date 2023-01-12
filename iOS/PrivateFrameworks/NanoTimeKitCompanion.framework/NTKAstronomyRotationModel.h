@@ -7,14 +7,14 @@
 #import <objc/NSObject.h>
 
 @class CADisplayLink, MISSING_TYPE;
-@protocol NTKAstronomyRotationModelObserver, NURotatable;
+@protocol NTKAstronomyRotationModelObserver, NUNIRotatable;
 
 @interface NTKAstronomyRotationModel : NSObject
 {
     CADisplayLink *_displayLink;
     const struct NTKAstronomyInteractionSettings *_interactionSettings;
     id <NTKAstronomyRotationModelObserver> _observer;
-    id <NURotatable> _rotatable;
+    id <NUNIRotatable> _rotatable;
     long long _state;
     struct CLLocationCoordinate2D _landingCoordinate;
     MISSING_TYPE *_accumulatedPushVector;
@@ -30,7 +30,7 @@
 @property(nonatomic, getter=isPulling) _Bool pulling; // @synthesize pulling=_isPulling;
 @property(readonly, nonatomic) const struct NTKAstronomyInteractionSettings *interactionSettings; // @synthesize interactionSettings=_interactionSettings;
 @property(nonatomic) __weak id <NTKAstronomyRotationModelObserver> observer; // @synthesize observer=_observer;
-@property(nonatomic) __weak id <NURotatable> rotatable; // @synthesize rotatable=_rotatable;
+@property(nonatomic) __weak id <NUNIRotatable> rotatable; // @synthesize rotatable=_rotatable;
 - (void)push: /* Error: Ran out of types for this method. */;
 - (void)_update;
 - (void)_handleDisplayLink;

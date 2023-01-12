@@ -32,6 +32,7 @@
 - (void)insertSectionsWithIdentifiers:(id)arg1 afterSectionWithIdentifier:(id)arg2;
 - (void)insertSectionsWithIdentifiers:(id)arg1 beforeSectionWithIdentifier:(id)arg2;
 - (void)appendSectionsWithIdentifiers:(id)arg1;
+- (void)reconfigureItemsWithIdentifiers:(id)arg1;
 - (void)reloadItemsWithIdentifiers:(id)arg1;
 - (void)moveItemWithIdentifier:(id)arg1 afterItemWithIdentifier:(id)arg2;
 - (void)moveItemWithIdentifier:(id)arg1 beforeItemWithIdentifier:(id)arg2;
@@ -46,14 +47,19 @@
 - (id)sectionIdentifierForSectionContainingItemIdentifier:(id)arg1;
 - (id)itemIdentifiersInSectionWithIdentifier:(id)arg1;
 - (long long)numberOfItemsInSection:(id)arg1;
+@property(readonly, nonatomic) NSArray *reconfiguredItemIdentifiers;
+@property(readonly, nonatomic) NSArray *reloadedItemIdentifiers;
+@property(readonly, nonatomic) NSArray *reloadedSectionIdentifiers;
 @property(readonly, nonatomic) NSArray *itemIdentifiers;
 @property(readonly, nonatomic) NSArray *sectionIdentifiers;
 @property(readonly, nonatomic) long long numberOfSections;
 @property(readonly, nonatomic) long long numberOfItems;
 - (id)description;
-- (id)init;
+- (id)_initWithImpl:(id)arg1;
 - (id)initWithState:(id)arg1;
 - (id)initWithDataSource:(id)arg1;
+- (id)init;
+- (void)validateIdentifiers;
 
 @end
 

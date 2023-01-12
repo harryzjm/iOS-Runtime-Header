@@ -11,6 +11,7 @@
 }
 
 + (_Bool)_isSecure;
+- (_Bool)_accessibilityWindowUsesOwnOrientationForComparingGeometry;
 - (struct UIEdgeInsets)_normalizedSafeAreaInsets;
 - (void)_didUpdateOrientation:(id)arg1;
 - (id)init;

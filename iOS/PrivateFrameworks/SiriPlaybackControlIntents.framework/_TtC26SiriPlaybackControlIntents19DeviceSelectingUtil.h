@@ -13,7 +13,10 @@
     MISSING_TYPE *deviceSelector;
     MISSING_TYPE *deviceState;
     MISSING_TYPE *contextUtil;
+    MISSING_TYPE *groupingUtil;
     MISSING_TYPE *analyticsService;
+    MISSING_TYPE *aceService;
+    MISSING_TYPE *localizationProvider;
 }
 
 @end

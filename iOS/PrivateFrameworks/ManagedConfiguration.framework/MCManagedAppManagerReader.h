@@ -10,6 +10,7 @@
 {
 }
 
++ (int)_MCMAMManagementFlagsToMDMManagedAppFlag:(int)arg1;
 + (id)attributesByAppID;
 + (id)managedAppIDsWithFlags:(int)arg1;
 

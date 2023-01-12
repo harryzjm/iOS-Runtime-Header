@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 @class NSString, WFContentAttributionTracker, WFParameter;
-@protocol WFVariableDataSource;
+@protocol WFActionSandboxExtensionProvider, WFVariableDataSource;
 
 @interface WFParameterStateProcessingContext : NSObject
 {
     _Bool _isInputParameter;
     id <WFVariableDataSource> _variableSource;
+    id <WFActionSandboxExtensionProvider> _actionSandboxExtensionProvider;
     WFParameter *_parameter;
     long long _environment;
     WFContentAttributionTracker *_contentAttributionTracker;
@@ -27,9 +28,11 @@
 @property(readonly, nonatomic) long long environment; // @synthesize environment=_environment;
 @property(readonly, nonatomic) _Bool isInputParameter; // @synthesize isInputParameter=_isInputParameter;
 @property(readonly, nonatomic) WFParameter *parameter; // @synthesize parameter=_parameter;
+@property(readonly, nonatomic) id <WFActionSandboxExtensionProvider> actionSandboxExtensionProvider; // @synthesize actionSandboxExtensionProvider=_actionSandboxExtensionProvider;
 @property(readonly, nonatomic) id <WFVariableDataSource> variableSource; // @synthesize variableSource=_variableSource;
+- (void)requestRunningActionSandboxExtensionForAccessResources:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addContentAttributionSet:(id)arg1;
-- (id)initWithVariableSource:(id)arg1 parameter:(id)arg2 isInputParameter:(_Bool)arg3 environment:(long long)arg4 contentAttributionTracker:(id)arg5 widgetSizeClass:(id)arg6;
+- (id)initWithVariableSource:(id)arg1 actionSandboxExtensionProvider:(id)arg2 parameter:(id)arg3 isInputParameter:(_Bool)arg4 environment:(long long)arg5 contentAttributionTracker:(id)arg6 widgetSizeClass:(id)arg7;
 
 @end
 

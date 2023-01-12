@@ -8,7 +8,6 @@
 
 @class CKContainer, CKDatabase, CKSubscription;
 
-__attribute__((visibility("hidden")))
 @interface CKSubscriptionInfo : NSObject
 {
     CKSubscription *_subscription;
@@ -18,10 +17,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
-@property(retain, nonatomic) CKContainer *container; // @synthesize container=_container;
-@property(retain, nonatomic) CKDatabase *database; // @synthesize database=_database;
-@property(retain, nonatomic) CKSubscription *subscription; // @synthesize subscription=_subscription;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

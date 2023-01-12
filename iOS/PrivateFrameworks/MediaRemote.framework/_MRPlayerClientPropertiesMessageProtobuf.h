@@ -10,6 +10,7 @@
 
 @class _MRNowPlayingPlayerPathProtobuf;
 
+__attribute__((visibility("hidden")))
 @interface _MRPlayerClientPropertiesMessageProtobuf : PBCodable <NSCopying>
 {
     double _lastPlayingTimestamp;
@@ -18,19 +19,13 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) double lastPlayingTimestamp; // @synthesize lastPlayingTimestamp=_lastPlayingTimestamp;
-@property(retain, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasLastPlayingTimestamp;
-@property(readonly, nonatomic) _Bool hasPlayerPath;
 
 @end
 

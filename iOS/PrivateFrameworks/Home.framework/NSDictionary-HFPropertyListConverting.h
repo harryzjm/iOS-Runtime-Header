@@ -7,10 +7,12 @@
 #import <Foundation/NSDictionary.h>
 
 #import <Home/HFPropertyListConvertible-Protocol.h>
+#import <Home/InnerContentHash-Protocol.h>
 
 @class NSString;
 
-@interface NSDictionary (HFPropertyListConverting) <HFPropertyListConvertible>
+@interface NSDictionary (HFPropertyListConverting) <HFPropertyListConvertible, InnerContentHash>
+- (unsigned long long)computeHashFromContents;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

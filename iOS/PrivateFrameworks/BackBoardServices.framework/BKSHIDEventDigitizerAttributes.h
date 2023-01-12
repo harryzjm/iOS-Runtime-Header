@@ -12,10 +12,9 @@
     _Bool _systemGesturesPossible;
     _Bool _systemGestureStateChange;
     float _maximumForce;
-    double _digitizerSurfaceWidth;
-    double _digitizerSurfaceHeight;
     NSArray *_pathAttributes;
     double _initialTouchTimestamp;
+    struct CGSize _digitizerSurfaceSize;
 }
 
 + (id)protobufSchema;
@@ -25,10 +24,11 @@
 @property(nonatomic) unsigned char touchStreamIdentifier; // @synthesize touchStreamIdentifier=_touchStreamIdentifier;
 @property(nonatomic) double initialTouchTimestamp; // @synthesize initialTouchTimestamp=_initialTouchTimestamp;
 @property(retain, nonatomic) NSArray *pathAttributes; // @synthesize pathAttributes=_pathAttributes;
-@property(nonatomic) double digitizerSurfaceHeight; // @synthesize digitizerSurfaceHeight=_digitizerSurfaceHeight;
-@property(nonatomic) double digitizerSurfaceWidth; // @synthesize digitizerSurfaceWidth=_digitizerSurfaceWidth;
+@property(nonatomic) struct CGSize digitizerSurfaceSize; // @synthesize digitizerSurfaceSize=_digitizerSurfaceSize;
 @property(nonatomic) float maximumForce; // @synthesize maximumForce=_maximumForce;
 - (void)appendDescriptionToFormatter:(id)arg1;
+@property(nonatomic) double digitizerSurfaceHeight; // @dynamic digitizerSurfaceHeight;
+@property(nonatomic) double digitizerSurfaceWidth; // @dynamic digitizerSurfaceWidth;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 

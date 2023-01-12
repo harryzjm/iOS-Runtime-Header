@@ -8,7 +8,8 @@
 
 @interface BSMachPortTaskNameRight
 {
-    BSAuditToken *_critical_auditToken;
+    BSAuditToken *_lock_auditToken;
+    struct os_unfair_lock_s _lock;
     int _pid;
 }
 

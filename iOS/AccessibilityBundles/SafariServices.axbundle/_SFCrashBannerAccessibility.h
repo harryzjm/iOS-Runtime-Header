@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (_Bool)_accessibilityServesAsContainingParentForOrdering;
+- (_Bool)shouldGroupAccessibilityChildren;
 - (_Bool)_accessibilityOnlyComparesByXAxis;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;

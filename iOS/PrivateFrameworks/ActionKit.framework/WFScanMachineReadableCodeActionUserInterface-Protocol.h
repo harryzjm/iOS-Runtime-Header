@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ActionKit/WFRemoteUserInterface-Protocol.h>
+#import <ActionKit/WFActionRemoteUserInterface-Protocol.h>
 
-@protocol WFScanMachineReadableCodeActionUserInterface <WFRemoteUserInterface>
+@protocol WFScanMachineReadableCodeActionUserInterface <WFActionRemoteUserInterface>
 - (void)showWithCompletionHandler:(void (^)(WFMachineReadableCode *, NSError *))arg1;
 @end
 

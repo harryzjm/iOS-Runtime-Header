@@ -6,11 +6,21 @@
 
 #import <Metal/MTLBinaryArchive-Protocol.h>
 
-@class MTLBinaryEntry, MTLBinaryKey, MTLComputePipelineDescriptor, MTLRenderPipelineDescriptor, MTLTileRenderPipelineDescriptor, NSArray, NSString, NSURL;
+@class MTLBinaryEntry, MTLBinaryKey, MTLComputePipelineDescriptor, MTLRenderPipelineDescriptor, MTLStitchedLibraryDescriptor, MTLTileRenderPipelineDescriptor, NSArray, NSObject, NSString, NSURL;
+@protocol OS_dispatch_data;
 
 @protocol MTLBinaryArchiveSPI <MTLBinaryArchive>
 @property(readonly) NSArray *keys;
 @property(readonly) unsigned long long options;
+- (_Bool)enumerateArchivesFromPipelineCollection:(_Bool (^)(struct *, NSObject<OS_dispatch_data> *))arg1;
+- (_Bool)enumerateArchivesFromBackingFile:(_Bool (^)(struct *, NSObject<OS_dispatch_data> *))arg1;
+- (void *)pipelineCollection;
+- (_Bool)storeTileRenderPipelineDescriptor:(MTLTileRenderPipelineDescriptor *)arg1;
+- (_Bool)storeRenderPipelineDescriptor:(MTLRenderPipelineDescriptor *)arg1;
+- (_Bool)storeComputePipelineDescriptor:(MTLComputePipelineDescriptor *)arg1;
+- (_Bool)addLibraryWithDescriptor:(MTLStitchedLibraryDescriptor *)arg1 error:(id *)arg2;
+- (NSObject<OS_dispatch_data> *)getArchiveDataForKey:(const CDStruct_41a22ec7 *)arg1;
+- (void)addArchiveEntry:(NSObject<OS_dispatch_data> *)arg1 forKey:(const CDStruct_41a22ec7 *)arg2;
 - (_Bool)addTileRenderPipelineFunctionsWithDescriptor:(MTLTileRenderPipelineDescriptor *)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (_Bool)addRenderPipelineFunctionsWithDescriptor:(MTLRenderPipelineDescriptor *)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (_Bool)addComputePipelineFunctionsWithDescriptor:(MTLComputePipelineDescriptor *)arg1 options:(unsigned long long)arg2 error:(id *)arg3;

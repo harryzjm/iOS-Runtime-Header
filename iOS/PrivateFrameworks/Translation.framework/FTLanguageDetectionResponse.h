@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_401827d8)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_401827d8)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSArray *predictions;
 @property(readonly, nonatomic) NSString *detected_locale;
 @property(readonly, nonatomic) NSString *return_string;

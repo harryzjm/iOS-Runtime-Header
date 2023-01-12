@@ -12,6 +12,8 @@ __attribute__((visibility("hidden")))
 @interface _TtC8NewsFeed31DebugFormatUploadViewController : UIViewController
 {
     MISSING_TYPE *editor;
+    MISSING_TYPE *dataSource;
+    MISSING_TYPE *diffViewController;
     MISSING_TYPE *tableView;
     MISSING_TYPE *sections;
     MISSING_TYPE *$__lazy_storage_$_selectBarButtonItem;

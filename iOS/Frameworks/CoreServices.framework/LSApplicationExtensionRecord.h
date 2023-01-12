@@ -13,6 +13,7 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)_propertyClasses;
++ (id)applicationExtensionRecordsForUUIDs:(id)arg1 outContainingBundleRecords:(id *)arg2 error:(id *)arg3;
 + (id)enumeratorWithExtensionPointRecord:(id)arg1 options:(unsigned long long)arg2;
 + (id)enumeratorWithOptions:(unsigned long long)arg1;
 - (void).cxx_destruct;

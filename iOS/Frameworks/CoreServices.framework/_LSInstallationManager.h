@@ -12,8 +12,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedInstance;
-- (void)install:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
-- (void)uninstall:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
+- (id)install:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
+- (id)uninstall:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 
 @end
 

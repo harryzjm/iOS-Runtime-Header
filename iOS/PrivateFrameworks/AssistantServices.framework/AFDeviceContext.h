@@ -9,7 +9,7 @@
 #import <AssistantServices/NSCopying-Protocol.h>
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
-@class AFClockAlarmSnapshot, AFClockTimerSnapshot, AFDeviceContextMetadata, AFLocationSnapshot, AFMediaPlaybackStateSnapshot, AFMultiUserStateSnapshot, AFPeerInfo, NSData, NSMutableDictionary, NSString, NSUUID;
+@class AFCallStateSnapshot, AFClockAlarmSnapshot, AFClockTimerSnapshot, AFDeviceContextMetadata, AFHomeAnnouncementSnapshot, AFLocationSnapshot, AFMediaPlaybackStateSnapshot, AFMultiUserStateSnapshot, AFPeerInfo, AFSystemStateSnapshot, NSData, NSMutableDictionary, NSString, NSUUID;
 
 @interface AFDeviceContext : NSObject <NSCopying, NSSecureCoding>
 {
@@ -19,6 +19,8 @@
     long long _privacyClass;
     NSMutableDictionary *_serializedBackingStore;
     long long _dirtyFlags;
+    NSString *_cachedDescription;
+    struct os_unfair_lock_s _cachedDescriptionLock;
     NSString *_contextCollectorSource;
 }
 
@@ -29,24 +31,37 @@
 @property(readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property(readonly, nonatomic) NSString *contextCollectorSource; // @synthesize contextCollectorSource=_contextCollectorSource;
 @property(readonly, nonatomic) _Bool fromLocalDevice; // @synthesize fromLocalDevice=_fromLocalDevice;
+- (id)buildDescription;
 - (_Bool)isValid;
+- (id)updatedContextWithSerializedContextByKey:(id)arg1 metadata:(id)arg2;
 - (id)partialSerializedBackingStoreIncludingKeys:(id)arg1 excludingMandatoryKeys:(id)arg2;
 - (id)deviceContextForDeviceContextKeys:(id)arg1 excludingMandatoryKeys:(id)arg2;
 - (id)partiallyUpdatedContextForDeviceContextKeys:(id)arg1 excludingMandatoryKeys:(id)arg2 fromDeviceContext:(id)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)allContextKeys;
+- (id)historicalContextMetadataForKey:(id)arg1;
 - (id)contextMetadataForKey:(id)arg1;
 - (id)_safeContextDictionary;
+- (id)serializedHistoricalContextForKey:(id)arg1;
 - (id)serializedContextForKey:(id)arg1;
 - (id)serializedBackingStore;
 - (id)_serializedBackingStoreIncludingKeys:(id)arg1 excludingMandatoryKeys:(id)arg2;
 - (id)initWithSerializedBackingStore:(id)arg1 fromLocalDevice:(_Bool)arg2 contextCollectorSource:(id)arg3;
 - (id)init;
-- (id)description;
+- (id)buildBuiltInContextsDescriptions;
+- (id)historicalSiriClientStateMetadata;
+- (id)historicalSiriClientStates;
+@property(readonly, nonatomic) AFDeviceContextMetadata *siriClientStateMetadata;
+@property(readonly, nonatomic) unsigned long long siriClientState;
+@property(readonly, nonatomic) AFDeviceContextMetadata *systemStateMetadata;
+@property(readonly, nonatomic) AFSystemStateSnapshot *systemStateSnapshot;
+@property(readonly, nonatomic) AFDeviceContextMetadata *callStateMetadata;
+@property(readonly, nonatomic) AFCallStateSnapshot *callStateSnapshot;
 @property(readonly, nonatomic) AFDeviceContextMetadata *locationMetadata;
 @property(readonly, nonatomic) AFLocationSnapshot *locationSnapshot;
 @property(readonly, nonatomic) AFDeviceContextMetadata *multiUserStateMetadata;
@@ -54,14 +69,17 @@
 @property(readonly, nonatomic) NSData *myriadAdvertisementContext;
 @property(readonly, nonatomic) AFDeviceContextMetadata *heardVoiceTriggerMetadata;
 @property(readonly, nonatomic) long long heardVoiceTrigger;
+@property(readonly, nonatomic) AFDeviceContextMetadata *homeAnnouncementSnapshotMetadata;
+@property(readonly, nonatomic) AFHomeAnnouncementSnapshot *homeAnnouncementSnapshot;
 @property(readonly, nonatomic) AFDeviceContextMetadata *playbackStateMetadata;
 @property(readonly, nonatomic) AFMediaPlaybackStateSnapshot *playbackStateSnapshot;
 @property(readonly, nonatomic) AFDeviceContextMetadata *timerSnapshotMetadata;
 @property(readonly, nonatomic) AFClockTimerSnapshot *timerSnapshot;
 @property(readonly, nonatomic) AFDeviceContextMetadata *alarmSnapshotMetadata;
 @property(readonly, nonatomic) AFClockAlarmSnapshot *alarmSnapshot;
+- (id)af_validFlowContext;
 - (_Bool)af_didHearVoiceTrigger;
-- (id)af_serviceDeviceContextForKeys:(id)arg1 excludeContextExpiredBefore:(id)arg2;
+- (id)af_serviceDeviceContextForKeys:(id)arg1 excludeContextExpiredBefore:(id)arg2 proximity:(long long)arg3;
 - (id)af_serviceDeviceContextForKeys:(id)arg1;
 
 @end

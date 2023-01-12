@@ -14,6 +14,7 @@
     CDUnknownBlockType _doneHandler;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType doneHandler; // @synthesize doneHandler=_doneHandler;
 @property(retain, nonatomic) NSArray *players; // @synthesize players=_players;
 @property(retain, nonatomic) NSString *defaultMessage; // @synthesize defaultMessage=_defaultMessage;
@@ -23,7 +24,6 @@
 - (void)pushOntoNavigationController:(id)arg1 withDoneHandler:(CDUnknownBlockType)arg2;
 - (void)setupSendButton;
 - (void)loadView;
-- (void)dealloc;
 
 @end
 

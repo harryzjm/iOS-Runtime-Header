@@ -19,13 +19,15 @@
 + (_Bool)createInternalResourcesForExistingAssetsWithNoExistingResourcesInStore:(id)arg1 migrator:(id)arg2;
 + (_Bool)resetInternalResourcesInStore:(id)arg1 resetUTIs:(_Bool)arg2 resetCodecs:(_Bool)arg3 resetMasters:(_Bool)arg4 migrator:(id)arg5;
 + (_Bool)reconsiderSavedAssetTypeInStore:(id)arg1 migrator:(id)arg2;
-+ (_Bool)resetImageRequestHintsInStore:(id)arg1 migrator:(id)arg2;
++ (_Bool)resetImageRequestHintsInContext:(id)arg1;
 + (id)_validatedExternalResourcesFromSharedStreamAsset:(id)arg1;
 + (id)generateVideoResourcesFromVideoAsset:(id)arg1 referencedVideoPath:(id)arg2;
 + (id)validatedExternalResourceForLocalVideoIfPresentAtPath:(id)arg1 context:(id)arg2;
 + (id)_validatedExternalResourcesFromLocalImageOrVideoAsset:(id)arg1 referencedResourceURLs:(id)arg2;
 + (id)_speculativePathForPenultimateFullsizeRenderImageFileForAsset:(id)arg1;
 + (id)generateAdjustedFullSizeRenderResourceForFilePath:(id)arg1 requireFileToBePresent:(_Bool)arg2 basedOnFullSizeWidth:(long long)arg3 andHeight:(long long)arg4 context:(id)arg5;
++ (id)onDemand_installOriginalVideoComplementForSyndicationAsset:(id)arg1 contentType:(id)arg2;
++ (id)onDemand_installOriginalResourceForSyndicationAsset:(id)arg1;
 + (id)onDemand_installLocalVideoKeyFrameForAsset:(id)arg1;
 + (id)onDemand_installOriginalSOCVideoComplementPresentForAsset:(id)arg1 referencedResourceURLs:(id)arg2;
 + (id)onDemand_installOriginalSOCVideoPresentForAsset:(id)arg1 referencedResourceURLs:(id)arg2;
@@ -35,6 +37,7 @@
 + (id)onDemand_installAdjustedFullSizeVideoComplementResourceIfPresentForAsset:(id)arg1;
 + (id)onDemand_installOriginalVideoComplementResourceIfPresentForAsset:(id)arg1;
 + (void)onDemand_installAdjustedFullSizeRenderResourceAtFilePath:(id)arg1 forAsset:(id)arg2;
++ (id)onDemand_installPrimaryImageResourceWithRecipe:(id)arg1 version:(unsigned int)arg2 forAsset:(id)arg3 requireFileToBePresent:(_Bool)arg4;
 + (id)onDemand_installPrimaryImageResourceWithRecipe:(id)arg1 version:(unsigned int)arg2 forAsset:(id)arg3;
 + (id)_predicateForUnrecoverableResources;
 + (void)_applyImageIOMetadataToExternalResource:(id)arg1 fromFileURL:(id)arg2 assumedWidth:(long long)arg3 assumedHeight:(long long)arg4 recipe:(id)arg5 assetKind:(short)arg6 context:(id)arg7;

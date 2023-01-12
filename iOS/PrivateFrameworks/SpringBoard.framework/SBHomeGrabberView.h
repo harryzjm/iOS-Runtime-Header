@@ -9,12 +9,13 @@
 #import <SpringBoard/MTLumaDodgePillBackgroundLuminanceObserver-Protocol.h>
 #import <SpringBoard/PTSettingsKeyPathObserver-Protocol.h>
 #import <SpringBoard/SBAttentionAwarenessClientDelegate-Protocol.h>
+#import <SpringBoard/SBMousePointerHardwareConnectionObserver-Protocol.h>
 #import <SpringBoard/SBSystemPointerInteractionDelegate-Protocol.h>
 
 @class MTLumaDodgePillSettings, MTLumaDodgePillView, NSMutableSet, NSString, SBAttentionAwarenessClient, SBFHomeGrabberSettings;
 @protocol SBHomeGrabberDelegate, SBHomeGrabberPointerClickDelegate;
 
-@interface SBHomeGrabberView : UIView <PTSettingsKeyPathObserver, SBAttentionAwarenessClientDelegate, MTLumaDodgePillBackgroundLuminanceObserver, SBSystemPointerInteractionDelegate>
+@interface SBHomeGrabberView : UIView <PTSettingsKeyPathObserver, SBAttentionAwarenessClientDelegate, MTLumaDodgePillBackgroundLuminanceObserver, SBSystemPointerInteractionDelegate, SBMousePointerHardwareConnectionObserver>
 {
     SBFHomeGrabberSettings *_settings;
     MTLumaDodgePillSettings *_pillSettings;
@@ -47,6 +48,7 @@
 @property(nonatomic, getter=isEdgeProtectEnabled) _Bool edgeProtectEnabled; // @synthesize edgeProtectEnabled=_edgeProtectEnabled;
 @property(nonatomic) _Bool autoHides; // @synthesize autoHides=_autoHides;
 @property(nonatomic) __weak id <SBHomeGrabberDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)mousePointerManager:(id)arg1 hardwarePointingDeviceAttachedDidChange:(_Bool)arg2;
 - (id)styleForRegion:(id)arg1 forView:(id)arg2;
 - (id)regionAtLocation:(struct CGPoint)arg1 forView:(id)arg2;
 - (_Bool)shouldBeginPointerInteractionAtLocation:(struct CGPoint)arg1 forView:(id)arg2;
@@ -73,6 +75,7 @@
 - (long long)_calculateLumaStyle;
 - (long long)_calculatePresence;
 - (id)_newPillView;
+- (id)_effectiveLumaDodgePillSettings;
 - (void)setHidden:(_Bool)arg1 forReason:(id)arg2 withAnimationSettings:(id)arg3;
 - (void)setHidden:(_Bool)arg1;
 - (_Bool)isHidden;

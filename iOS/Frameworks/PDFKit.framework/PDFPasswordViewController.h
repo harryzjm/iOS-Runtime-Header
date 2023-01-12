@@ -8,20 +8,23 @@
 
 #import <PDFKit/UIDocumentPasswordViewDelegate-Protocol.h>
 
-@class PDFView, UIView;
+@class NSObject, UIDocumentPasswordView;
+@protocol PDFPasswordViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface PDFPasswordViewController : UIViewController <UIDocumentPasswordViewDelegate>
 {
-    UIView *_passwordView;
-    PDFView *_pdfView;
+    NSObject<PDFPasswordViewControllerDelegate> *_delegate;
+    UIDocumentPasswordView *_uiDocPasswordView;
 }
 
 - (void).cxx_destruct;
-- (void)_commonInit;
+- (void)viewDidLoad;
 - (void)userDidEnterPassword:(id)arg1 forPasswordView:(id)arg2;
-- (void)setPDFView:(id)arg1;
-- (void)loadView;
+- (void)presentInvalidPasswordAlertWithParentViewController:(id)arg1;
+- (void)focusOnPasswordField;
+- (void)clearPasswordField;
+- (id)initWithDelegate:(id)arg1;
 
 @end
 

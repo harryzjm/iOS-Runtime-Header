@@ -10,7 +10,7 @@
 
 @interface CKLinkSearchResultCell <CKSearchResultCell>
 {
-    NSString *_identifier;
+    NSString *_resultIdentifier;
     LPLinkView *_linkView;
     LPLinkMetadata *_linkMetadata;
     struct UIEdgeInsets marginInsets;
@@ -20,14 +20,14 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) LPLinkMetadata *linkMetadata; // @synthesize linkMetadata=_linkMetadata;
 @property(retain, nonatomic) LPLinkView *linkView; // @synthesize linkView=_linkView;
-@property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(copy, nonatomic) NSString *resultIdentifier; // @synthesize resultIdentifier=_resultIdentifier;
 @property(nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets;
 - (void)prepareForReuse;
 - (void)layoutSubviews;
 - (void)didMoveToWindow;
 - (void)_metadataGenerated:(id)arg1;
 - (void)refreshForSearchTextIfNeeded:(id)arg1;
-- (void)_updateForLinkMetadataWithResult:(id)arg1;
+- (void)setLinkMetadata:(id)arg1 forSearchResult:(id)arg2;
 - (void)configureWithQueryResult:(id)arg1 searchText:(id)arg2 mode:(unsigned long long)arg3;
 - (id)initWithFrame:(struct CGRect)arg1;
 

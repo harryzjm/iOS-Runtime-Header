@@ -4,22 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, QLURLHandler;
+@class NSArray, QLURLHandler, UTType;
 
 @interface QLURLExtensionPreview
 {
     QLURLHandler *_urlHandler;
+    UTType *_contentType;
     NSArray *_additionalURLsAccessed;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(retain) NSArray *additionalURLsAccessed; // @synthesize additionalURLsAccessed=_additionalURLsAccessed;
+@property(retain) UTType *contentType; // @synthesize contentType=_contentType;
 @property(retain) QLURLHandler *urlHandler; // @synthesize urlHandler=_urlHandler;
+- (id)description;
+- (id)debugDescription;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithURL:(id)arg1 previewDescription:(id)arg2;
-- (id)initWithURLHandler:(id)arg1 previewDescription:(id)arg2;
+- (void)updateForExternalResourceAccessWithExtension:(id)arg1 context:(id)arg2;
+- (id)initWithURL:(id)arg1 contentType:(id)arg2;
+- (id)initWithURLHandler:(id)arg1 contentType:(id)arg2;
 
 @end
 

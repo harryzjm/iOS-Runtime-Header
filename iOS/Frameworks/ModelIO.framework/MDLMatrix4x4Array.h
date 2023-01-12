@@ -23,8 +23,8 @@
 - (void)setFloat4x4Array:(const CDStruct_14d5dc5e *)arg1 count:(unsigned long long)arg2;
 - (id)initWithElementCount:(unsigned long long)arg1;
 - (void)clear;
-- (void)resetWithUsdAttribute:(const struct UsdAttribute *)arg1 time:(double)arg2;
-- (void)resetWithUsdAttribute:(const struct UsdAttribute *)arg1;
+- (void)resetWithUsdAttribute:(const void *)arg1 time:(double)arg2;
+- (void)resetWithUsdAttribute:(const void *)arg1;
 - (struct VtValue)defaultVtValue;
 @property(readonly, nonatomic) unsigned long long precision;
 - (id)copyWithZone:(struct _NSZone *)arg1;

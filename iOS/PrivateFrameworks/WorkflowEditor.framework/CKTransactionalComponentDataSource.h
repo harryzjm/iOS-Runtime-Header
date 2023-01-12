@@ -16,8 +16,8 @@
 {
     CKTransactionalComponentDataSourceState *_state;
     CKTransactionalComponentDataSourceListenerAnnouncer *_announcer;
-    unordered_map_097a8478 _pendingAsynchronousStateUpdates;
-    unordered_map_097a8478 _pendingSynchronousStateUpdates;
+    struct unordered_map<int, std::unordered_multimap<int, id (^)(id)>, std::hash<int>, std::equal_to<int>, std::allocator<std::pair<const int, std::unordered_multimap<int, id (^)(id)>>>> _pendingAsynchronousStateUpdates;
+    struct unordered_map<int, std::unordered_multimap<int, id (^)(id)>, std::hash<int>, std::equal_to<int>, std::allocator<std::pair<const int, std::unordered_multimap<int, id (^)(id)>>>> _pendingSynchronousStateUpdates;
     NSMutableArray *_pendingAsynchronousModifications;
     NSThread *_workThreadOverride;
     NSObject<OS_dispatch_queue> *_workQueue;

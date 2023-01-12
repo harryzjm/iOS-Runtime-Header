@@ -8,6 +8,7 @@
 
 @interface PICompositionExportAuxiliaryResult
 {
+    _Bool _canPropagateOriginalAuxiliaryData;
     NSData *_companionImageData;
     NSURL *_companionVideoURL;
     NSDictionary *_auxiliaryImages;
@@ -16,6 +17,7 @@
 
 - (void).cxx_destruct;
 @property(copy) NSDictionary *properties; // @synthesize properties=_properties;
+@property _Bool canPropagateOriginalAuxiliaryData; // @synthesize canPropagateOriginalAuxiliaryData=_canPropagateOriginalAuxiliaryData;
 @property(retain) NSDictionary *auxiliaryImages; // @synthesize auxiliaryImages=_auxiliaryImages;
 @property(retain) NSURL *companionVideoURL; // @synthesize companionVideoURL=_companionVideoURL;
 @property(retain) NSData *companionImageData; // @synthesize companionImageData=_companionImageData;

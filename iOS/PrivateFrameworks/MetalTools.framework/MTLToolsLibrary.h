@@ -6,7 +6,7 @@
 
 #import <MetalTools/MTLLibrarySPI-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSData, NSString, NSUUID;
 @protocol MTLDevice;
 
 @interface MTLToolsLibrary <MTLLibrarySPI>
@@ -15,8 +15,10 @@
 
 @property(readonly) NSString *installName;
 @property(readonly) long long type;
+@property(readonly) NSData *bitcodeData;
 @property(readonly) NSArray *externFunctionNames;
 @property(readonly) NSArray *functionNames;
+- (id)newFunctionWithDescriptor:(id)arg1 destinationArchive:(id)arg2 error:(id *)arg3;
 - (void)newFunctionWithName:(id)arg1 constantValues:(id)arg2 pipelineLibrary:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)newIntersectionFunctionWithDescriptor:(id)arg1 error:(id *)arg2;
 - (void)newIntersectionFunctionWithDescriptor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -27,9 +29,13 @@
 - (id)newFunctionWithName:(id)arg1 constantValues:(id)arg2 error:(id *)arg3;
 - (id)newExternFunctionWithName:(id)arg1;
 - (id)newFunctionWithName:(id)arg1;
+- (_Bool)serializeToURL:(id)arg1 error:(id *)arg2;
+@property(readonly, copy) NSUUID *libraryIdentifier;
 @property(readonly) id <MTLDevice> device;
 @property(copy) NSString *label;
 @property(copy) NSString *overrideTriple;
+@property(nonatomic) _Bool shaderValidationEnabled;
+- (void)dealloc;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

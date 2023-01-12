@@ -10,7 +10,9 @@
 @protocol BCUOperation;
 
 @protocol BCUImageFilter <NSObject>
+@property(readonly, nonatomic) _Bool supportsOptions;
 @property(readonly, nonatomic) NSString *identifier;
+- (struct UIEdgeInsets)insetsForSize:(struct CGSize)arg1 contentsScale:(double)arg2 options:(NSDictionary *)arg3;
 - (id <BCUOperation>)newOperationWithImage:(struct CGImage *)arg1 size:(struct CGSize)arg2 contentsScale:(double)arg3 priority:(float)arg4 options:(NSDictionary *)arg5 waitForCPUSynchronization:(_Bool)arg6 completion:(void (^)(id <BCUOperation>, id <BCUPurgeableImage>, struct UIEdgeInsets, id))arg7;
 @end
 

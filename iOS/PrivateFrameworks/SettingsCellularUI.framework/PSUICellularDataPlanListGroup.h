@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (void)selectPlanWithSpecifier:(id)arg1;
 - (void)addNewPlanPressed:(id)arg1;
 - (void)listController:(id)arg1 didSelectSpecifier:(id)arg2;
+- (void)setUpPendingTransferPlanSpecifiers:(id)arg1;
 - (id)specifiers;
 - (id)initWithListController:(id)arg1 groupSpecifier:(id)arg2;
 

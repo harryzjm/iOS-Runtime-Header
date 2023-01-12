@@ -8,16 +8,18 @@
 
 #import <HealthUI/HKZoomScale-Protocol.h>
 
-@class HKValueRange, NSString;
+@class HKValueRange, NSCalendar, NSString;
 
 @interface HKDateZoomScale : NSObject <HKZoomScale>
 {
     double _previousZoomScale;
     long long _previousZoom;
     HKValueRange *_unitZoomScaleValueRange;
+    NSCalendar *_currentCalendar;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSCalendar *currentCalendar; // @synthesize currentCalendar=_currentCalendar;
 - (void)setUnitZoomScaleValueRangeForTimeInterval:(double)arg1;
 - (id)unitZoomScaleValueRange;
 - (double)zoomScaleForRange:(struct HKRange)arg1;
@@ -26,6 +28,7 @@
 - (id)minDate;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
+- (id)initWithCurrentCalendar:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

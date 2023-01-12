@@ -6,16 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class PGManager, PGMoodGeneratorOptions, PGMoodVector, PHAssetCollection;
+@class NSArray, PGEnrichedMemory, PGMoodGeneratorOptions, PGMoodVector, PHAssetCollection, PHPhotoLibrary;
 
 @interface PGMoodGenerator : NSObject
 {
     PHAssetCollection *_assetCollection;
-    PGManager *_graphManager;
+    PHPhotoLibrary *_photoLibrary;
     unsigned long long _suggestedMood;
     PGMoodVector *_positiveMoodVector;
     PGMoodVector *_negativeMoodVector;
     PGMoodVector *_historyWeightedPositiveMoodVector;
+    PGEnrichedMemory *_enrichedMemory;
+    NSArray *_extendedCuratedAssets;
     PGMoodGeneratorOptions *_options;
     double _positiveThreshold;
     double _negativeThreshold;
@@ -25,15 +27,16 @@
 @property double negativeThreshold; // @synthesize negativeThreshold=_negativeThreshold;
 @property double positiveThreshold; // @synthesize positiveThreshold=_positiveThreshold;
 @property(retain) PGMoodGeneratorOptions *options; // @synthesize options=_options;
-- (void)_processMoodSources;
-- (id)historyWeightedPositiveMoodVector;
-- (id)negativeMoodVector;
-- (id)positiveMoodVector;
-- (unsigned long long)forbiddenMoods;
-- (unsigned long long)recommendedMoods;
-- (unsigned long long)suggestedMood;
+- (void)_processMoodSourcesWithGraph:(id)arg1;
+- (id)historyWeightedPositiveMoodVectorWithGraph:(id)arg1;
+- (id)negativeMoodVectorWithGraph:(id)arg1;
+- (id)positiveMoodVectorWithGraph:(id)arg1;
+- (unsigned long long)forbiddenMoodsWithGraph:(id)arg1;
+- (unsigned long long)recommendedMoodsWithGraph:(id)arg1;
+- (unsigned long long)suggestedMoodWithGraph:(id)arg1;
 - (id)_moodSources;
-- (id)initWithAssetCollection:(id)arg1 graphManager:(id)arg2 options:(id)arg3;
+- (id)initWithEnrichedMemory:(id)arg1 photoLibrary:(id)arg2 options:(id)arg3;
+- (id)initWithAssetCollection:(id)arg1 photoLibrary:(id)arg2 options:(id)arg3;
 
 @end
 

@@ -8,17 +8,23 @@
 
 #import <PassKitCore/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, PKProtobufCustomPrecisionAmount, PKProtobufDeferredPaymentSummaryItem, PKProtobufRecurringPaymentSummaryItem;
 
 @interface PKProtobufPaymentSummaryItem : PBCodable <NSCopying>
 {
     long long _amount;
+    PKProtobufCustomPrecisionAmount *_customPrecisionAmount;
+    PKProtobufDeferredPaymentSummaryItem *_deferredPaymentSummaryItem;
     NSString *_label;
+    PKProtobufRecurringPaymentSummaryItem *_recurringPaymentSummaryItem;
     unsigned int _type;
     CDStruct_9fb36b4c _has;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) PKProtobufCustomPrecisionAmount *customPrecisionAmount; // @synthesize customPrecisionAmount=_customPrecisionAmount;
+@property(retain, nonatomic) PKProtobufDeferredPaymentSummaryItem *deferredPaymentSummaryItem; // @synthesize deferredPaymentSummaryItem=_deferredPaymentSummaryItem;
+@property(retain, nonatomic) PKProtobufRecurringPaymentSummaryItem *recurringPaymentSummaryItem; // @synthesize recurringPaymentSummaryItem=_recurringPaymentSummaryItem;
 @property(nonatomic) unsigned int type; // @synthesize type=_type;
 @property(retain, nonatomic) NSString *label; // @synthesize label=_label;
 @property(nonatomic) long long amount; // @synthesize amount=_amount;
@@ -31,6 +37,9 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasCustomPrecisionAmount;
+@property(readonly, nonatomic) _Bool hasDeferredPaymentSummaryItem;
+@property(readonly, nonatomic) _Bool hasRecurringPaymentSummaryItem;
 @property(nonatomic) _Bool hasType;
 @property(readonly, nonatomic) _Bool hasLabel;
 @property(nonatomic) _Bool hasAmount;

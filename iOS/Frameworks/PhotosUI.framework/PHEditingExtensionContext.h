@@ -8,12 +8,12 @@
 
 #import <PhotosUI/PUEditingExtensionVendor-Protocol.h>
 
-@class NSUndoManager, PUEditingExtensionUndoAdapter, PUEditingInitialPayload;
+@class NSNumber, NSUndoManager, PUEditingExtensionUndoAdapter, PUEditingInitialPayload;
 
 @interface PHEditingExtensionContext : NSExtensionContext <PUEditingExtensionVendor>
 {
-    long long _fullSizeImageExtensionHandle;
-    long long _videoPathExtensionHandle;
+    NSNumber *_fullSizeImageSandboxExtensionHandleWrapper;
+    NSNumber *_videoPathSandboxExtensionHandleWrapper;
     _Bool _attemptUndoManagerAutoSetup;
     PUEditingInitialPayload *__initialPayload;
     PUEditingExtensionUndoAdapter *_undoAdapter;

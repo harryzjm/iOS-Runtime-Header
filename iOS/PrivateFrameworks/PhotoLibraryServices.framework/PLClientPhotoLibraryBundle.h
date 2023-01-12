@@ -20,6 +20,7 @@
 - (id)clientSandboxExtensionCache;
 - (void)_initClientSandboxExtensionCache;
 - (void)close;
+- (id)transferAssets:(id)arg1 toBundle:(id)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)newBoundAssetsdServicesTable;
 - (id)newLibraryServicesManager;
 - (id)newChangePublisher;

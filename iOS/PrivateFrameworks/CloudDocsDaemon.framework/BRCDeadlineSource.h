@@ -9,7 +9,6 @@
 @class BRCDeadlineScheduler, NSString;
 @protocol OS_dispatch_workloop;
 
-__attribute__((visibility("hidden")))
 @interface BRCDeadlineSource : NSObject
 {
     long long _deadline;

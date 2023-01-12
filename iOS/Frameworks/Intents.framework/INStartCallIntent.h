@@ -5,15 +5,17 @@
 //
 
 #import <Intents/INStartCallIntentExport-Protocol.h>
+#import <Intents/UNNotificationContentProviding-Protocol.h>
 
-@class INCallRecord, INCallRecordFilter, NSArray, NSString;
+@class INCallRecord, INCallRecordFilter, NSArray, NSNumber, NSString;
 
-@interface INStartCallIntent <INStartCallIntentExport>
+@interface INStartCallIntent <UNNotificationContentProviding, INStartCallIntentExport>
 {
 }
 
 + (id)_ignoredParameters;
 - (id)_spotlightContentType;
+- (_Bool)configureAttributeSet:(id)arg1 includingData:(_Bool)arg2;
 - (void)setParametersByName:(id)arg1;
 - (id)parametersByName;
 - (void)setVerb:(id)arg1;
@@ -24,6 +26,9 @@
 - (id)_validParameterCombinationsWithSchema:(id)arg1;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
 - (id)_dictionaryRepresentation;
+@property(copy, nonatomic) NSString *notificationThreadIdentifier;
+@property(copy, nonatomic) NSArray *callGroups;
+@property(copy, nonatomic) NSNumber *isGroupCall;
 - (void)setCallCapability:(long long)arg1;
 @property(readonly, nonatomic) long long callCapability;
 @property(nonatomic, setter=setTTYType:) long long ttyType;
@@ -46,7 +51,6 @@
 - (void)_setMetadata:(id)arg1;
 - (id)_metadata;
 - (id)_typedBackingStore;
-- (_Bool)_isGroupFaceTime;
 - (id)_subtitleWithLocalizer:(id)arg1 fromBundleURL:(id)arg2;
 - (id)_titleWithLocalizer:(id)arg1 fromBundleURL:(id)arg2;
 @property(nonatomic) long long recordTypeForRedialing;

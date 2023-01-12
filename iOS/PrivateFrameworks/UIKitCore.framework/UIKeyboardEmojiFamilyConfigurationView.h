@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     double _metachronalRhythmAnimationStartTime;
     _Bool _usesDarkStyle;
+    _Bool _hasSplitFontSupport;
     NSMutableArray *_familyMemberStackViews;
     UIView *_separatorView;
     UIStackView *_previewWellStackView;
@@ -22,13 +23,16 @@ __attribute__((visibility("hidden")))
     NSString *_baseEmojiString;
     NSMutableArray *_selectedVariantIndices;
     NSArray *_skinToneVariantRows;
+    NSArray *_variantDisplayRows;
     UIKBTree *_representedKey;
 }
 
 + (struct CGSize)preferredContentViewSizeForKey:(id)arg1 withTraits:(id)arg2;
 + (id)_selectionAndSeparatorColorForDarkMode:(_Bool)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool hasSplitFontSupport; // @synthesize hasSplitFontSupport=_hasSplitFontSupport;
 @property(retain, nonatomic) UIKBTree *representedKey; // @synthesize representedKey=_representedKey;
+@property(retain, nonatomic) NSArray *variantDisplayRows; // @synthesize variantDisplayRows=_variantDisplayRows;
 @property(retain, nonatomic) NSArray *skinToneVariantRows; // @synthesize skinToneVariantRows=_skinToneVariantRows;
 @property(retain, nonatomic) NSMutableArray *selectedVariantIndices; // @synthesize selectedVariantIndices=_selectedVariantIndices;
 @property(retain, nonatomic) NSString *baseEmojiString; // @synthesize baseEmojiString=_baseEmojiString;
@@ -51,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateBottomRowForSelections:(id)arg1;
 - (void)_setCurrentlySelectedSkinToneConfiguration:(id)arg1;
 - (id)_currentlySelectedSkinToneConfiguration;
+- (unsigned long long)_silhouetteFromCurrentSelections;
 - (id)_wellViewForSection:(long long)arg1 item:(long long)arg2;
 - (void)_configureFamilyMemberWellStackViews;
 - (void)_configureSkinToneVariantSpecifiersForBaseString:(id)arg1;

@@ -8,7 +8,6 @@
 
 @class CKServerChangeToken, NSString;
 
-__attribute__((visibility("hidden")))
 @interface BRCSideCarSyncDownOperation <BRCOperationSubclass>
 {
     CKServerChangeToken *_serverChangeToken;

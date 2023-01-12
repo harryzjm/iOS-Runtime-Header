@@ -12,7 +12,6 @@
 @class HKDisplayType, NSDate, NSString, UIActivityIndicatorView, UIBarButtonItem, UITapGestureRecognizer, WDProfile, _UIContentUnavailableView;
 @protocol WDDataListViewControllerDataProvider;
 
-__attribute__((visibility("hidden")))
 @interface WDDataListViewController : HKTableViewController <HKMonthViewControllerDelegate, WDUserActivityResponder>
 {
     WDProfile *_profile;

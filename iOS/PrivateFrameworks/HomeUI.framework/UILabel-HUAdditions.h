@@ -6,7 +6,15 @@
 
 #import <UIKit/UILabel.h>
 
-@interface UILabel (HUAdditions)
+#import <HomeUI/HUActsAsLabel-Protocol.h>
+
+@class NSAttributedString, NSString;
+
+@interface UILabel (HUAdditions) <HUActsAsLabel>
 + (id)labelWithText:(id)arg1 font:(id)arg2;
+
+// Remaining properties
+@property(copy, nonatomic) NSAttributedString *attributedText;
+@property(copy, nonatomic) NSString *text;
 @end
 

@@ -7,9 +7,10 @@
 #import <PhotosGraph/NSObject-Protocol.h>
 
 @class NSArray, NSDate, NSDictionary, NSSet, NSString, PGGraphHighlightGroupNode, PGGraphNode;
-@protocol PGEventEnrichment, PGGraphBusinessedEvent, PGGraphLocatedEvent, PGGraphMeaningfulEvent, PGGraphPeopledEvent, PGGraphRelatableEvent, PGGraphScenedEvent, PGGraphTimedEvent;
+@protocol PGEventEnrichment, PGGraphBusinessedEvent, PGGraphEventCollection, PGGraphLocatedEvent, PGGraphMeaningfulEvent, PGGraphPeopledEvent, PGGraphRelatableEvent, PGGraphScenedEvent, PGGraphTimedEvent;
 
 @protocol PGGraphEvent <NSObject>
+@property(readonly) id <PGGraphEventCollection> eventCollection;
 @property(readonly) PGGraphHighlightGroupNode *highlightGroupNode;
 @property(readonly) _Bool isSmartInteresting;
 @property(readonly) _Bool isInterestingWithAlternateJunking;
@@ -38,11 +39,7 @@
 - (id <PGGraphLocatedEvent>)locatedEvent;
 - (id <PGGraphTimedEvent>)timedEvent;
 - (NSSet *)naturalLanguageFeatures;
-- (void)eventEnumerateMomentNodesUsingBlock:(void (^)(PGGraphMomentNode *, _Bool *))arg1;
-- (NSArray *)sortedMomentNodes;
-- (NSSet *)momentNodes;
-- (unsigned long long)numberOfMoments;
-- (unsigned long long)numberOfAssets;
+- (NSArray *)eventSortedMomentNodes;
 - (_Bool)endsBeforeLocalDate:(NSDate *)arg1;
 - (_Bool)startsAfterLocalDate:(NSDate *)arg1;
 @end

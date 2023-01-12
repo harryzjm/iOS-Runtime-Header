@@ -6,7 +6,7 @@
 
 #import <UserNotificationsUIKit/NSObject-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSDictionary;
 @protocol BNConsideringDelegate, BNPresentable;
 
 @protocol BNConsidering <NSObject>
@@ -15,5 +15,6 @@
 
 @optional
 @property(nonatomic) __weak id <BNConsideringDelegate> delegate;
+- (long long)shouldPostPresentable:(id <BNPresentable>)arg1 userInfo:(NSDictionary *)arg2 reason:(out id *)arg3;
 @end
 

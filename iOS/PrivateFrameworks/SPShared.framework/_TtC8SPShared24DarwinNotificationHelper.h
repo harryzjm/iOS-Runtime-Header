@@ -10,7 +10,8 @@
 
 @interface _TtC8SPShared24DarwinNotificationHelper : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *notificationHandlers;
+    MISSING_TYPE *listener;
+    MISSING_TYPE *poster;
 }
 
 @end

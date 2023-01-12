@@ -9,8 +9,8 @@
 @class RLMRealm;
 
 @protocol RLMThreadConfined_Private <NSObject>
-+ (id)objectWithThreadSafeReference:(unique_ptr_d0e912ad)arg1 metadata:(id)arg2 realm:(RLMRealm *)arg3;
++ (id)objectWithThreadSafeReference:(unique_ptr_14b91335)arg1 metadata:(id)arg2 realm:(RLMRealm *)arg3;
 @property(readonly, nonatomic) id objectiveCMetadata;
-- (unique_ptr_d0e912ad)makeThreadSafeReference;
+- (unique_ptr_14b91335)makeThreadSafeReference;
 @end
 

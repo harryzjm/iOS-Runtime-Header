@@ -15,8 +15,6 @@
     MISSING_TYPE *pendingDirtyPropagationQueue;
     MISSING_TYPE *deferredOperations;
     MISSING_TYPE *immediateOperations;
-    MISSING_TYPE *_multiFrameAllocator;
-    MISSING_TYPE *_stackAllocator;
     MISSING_TYPE *frameAllocator;
     MISSING_TYPE *stackAllocator;
     MISSING_TYPE *stats;

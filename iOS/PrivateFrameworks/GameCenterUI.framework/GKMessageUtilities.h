@@ -11,6 +11,7 @@
 }
 
 + (id)predicateWithPhoneNumberOrEmail:(id)arg1;
++ (id)playerWithPhoneNumberOrEmail:(id)arg1 givenName:(id)arg2;
 + (id)playerWithPhoneNumberOrEmail:(id)arg1;
 + (void)linkMetadataWithPlayerRange:(struct _NSRange)arg1 shareURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)messagesRecipientHandleForContact:(id)arg1;

@@ -4,18 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitMetrics/HMMLogEvent.h>
+
 #import <HomeKitDaemon/HMDAWDLogEvent-Protocol.h>
 
 @class HMDAnalyticsEventTriggerUserConfirmationReceiverSessionData, NSDate, NSString;
 
-@interface HomeKitEventTriggerUserConfirmationReceiverSessionLogEvent <HMDAWDLogEvent>
+@interface HomeKitEventTriggerUserConfirmationReceiverSessionLogEvent : HMMLogEvent <HMDAWDLogEvent>
 {
     HMDAnalyticsEventTriggerUserConfirmationReceiverSessionData *_analyticsData;
     NSDate *_startTime;
 }
 
-+ (id)uuid;
-+ (void)initialize;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSDate *startTime; // @synthesize startTime=_startTime;
 @property(readonly, nonatomic) HMDAnalyticsEventTriggerUserConfirmationReceiverSessionData *analyticsData; // @synthesize analyticsData=_analyticsData;

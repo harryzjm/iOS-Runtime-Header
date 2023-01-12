@@ -4,10 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+#import <NewsUI2/NSObject-Protocol.h>
 
-@protocol NSSNewsAnalyticsSessionManagerObserving
-- (void)sessionWillEnd;
-- (void)sessionDidStartWithSessionID:(NSString *)arg1;
+@class NSNumber, NSString;
+
+@protocol NSSNewsAnalyticsSessionManagerObserving <NSObject>
+- (void)sessionWillEndWithEndReason:(NSNumber *)arg1;
+- (void)sessionWillResignActive;
+- (void)sessionDidStartWithSessionID:(NSString *)arg1 sourceApplication:(NSString *)arg2;
+@property(nonatomic, readonly) NSString *sceneSessionIdentifier;
 @end
 

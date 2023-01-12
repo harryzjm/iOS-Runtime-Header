@@ -19,6 +19,8 @@
     NSTimer *_statusTimer;
 }
 
++ (_Bool)hasSubstantialProcessingRemainingUsingMinAssetCount:(_Bool)arg1 prioritizedProcessedCount:(unsigned long long)arg2 prioritizedTotalAllowedCount:(unsigned long long)arg3 pendingAssetCount:(unsigned long long)arg4 totalAssetCount:(unsigned long long)arg5;
++ (_Bool)hasSubstantialProcessingRemainingUsingMinAssetCount:(_Bool)arg1 pendingAssetCount:(unsigned long long)arg2 totalAssetCount:(unsigned long long)arg3;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSTimer *statusTimer; // @synthesize statusTimer=_statusTimer;
 @property(nonatomic) unsigned long long processingStatus; // @synthesize processingStatus=_processingStatus;
@@ -31,8 +33,7 @@
 - (void)_updateStatusForProgress:(double)arg1 processCount:(unsigned long long)arg2;
 - (void)_scheduleNextUpdate;
 - (void)updateProgressWithForce:(_Bool)arg1;
-- (void)_updateWithStatus:(unsigned long long)arg1 progress:(double)arg2;
-- (_Bool)hasSubstantialProcessingUsingMinAssetCount:(_Bool)arg1;
+- (_Bool)hasSubstantialProcessingRemainingUsingMinAssetCount:(_Bool)arg1;
 @property(readonly) _Bool shouldUseProgressFooter;
 @property(readonly) _Bool shouldUseInterstitial;
 @property(readonly) _Bool featureUnlocked;

@@ -6,15 +6,32 @@
 
 #import <objc/NSObject.h>
 
+@class NSDictionary, TRIClient, _PASLock;
+
 @interface PSGExperimentResolver : NSObject
 {
+    _PASLock *_responseSuggestionsConfigLock;
+    _PASLock *_wordBoundaryConfigLock;
+    NSDictionary *_zkwLockPerLanguage;
+    NSDictionary *_wbLockPerLanguage;
+    TRIClient *_trialClient;
+    NSDictionary *_zkwLangAndNamespaces;
+    NSDictionary *_wordBoundaryLangAndNamespaces;
 }
 
 + (id)sharedInstance;
++ (id)_locksWithCount:(unsigned long long)arg1;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSDictionary *wordBoundaryLangAndNamespaces; // @synthesize wordBoundaryLangAndNamespaces=_wordBoundaryLangAndNamespaces;
+@property(readonly, nonatomic) NSDictionary *zkwLangAndNamespaces; // @synthesize zkwLangAndNamespaces=_zkwLangAndNamespaces;
 - (id)_getDefaultWordBoundarySuggestionsExperimentConfig:(id)arg1;
 - (id)_getDefaultResponseSuggestionsExperimentConfig:(id)arg1;
+- (id)getResponseSuggestionsExperimentConfig:(id)arg1 shouldDownloadAssets:(_Bool)arg2;
 - (id)getResponseSuggestionsExperimentConfig:(id)arg1;
+- (id)getWordBoundarySuggestionsExperimentConfig:(id)arg1 shouldDownloadAssets:(_Bool)arg2;
 - (id)getWordBoundarySuggestionsExperimentConfig:(id)arg1;
+- (void)warmupForLocale:(id)arg1;
+- (id)init;
 
 @end
 

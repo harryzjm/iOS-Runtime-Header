@@ -20,15 +20,7 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) FCAsyncSerialQueue *serialQueue; // @synthesize serialQueue=_serialQueue;
-@property(retain, nonatomic) NSDictionary *ckRecordZonesByID; // @synthesize ckRecordZonesByID=_ckRecordZonesByID;
-@property(retain, nonatomic) NSDictionary *fcRecordZonesByName; // @synthesize fcRecordZonesByName=_fcRecordZonesByName;
-@property(retain, nonatomic) NSArray *recordZoneIDs; // @synthesize recordZoneIDs=_recordZoneIDs;
-@property(retain, nonatomic) FCCKPrivateDatabase *database; // @synthesize database=_database;
 - (void)ensureRecordZoneExistsWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)prepareRecordZonesForUseWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)recordZoneWithName:(id)arg1;
-- (id)initWithDatabase:(id)arg1 recordZoneNames:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

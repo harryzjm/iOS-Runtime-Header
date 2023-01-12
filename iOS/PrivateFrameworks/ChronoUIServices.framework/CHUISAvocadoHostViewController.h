@@ -7,87 +7,123 @@
 #import <UIKit/UIViewController.h>
 
 #import <ChronoUIServices/BSInvalidatable-Protocol.h>
+#import <ChronoUIServices/CHSAvocadoDescriptorProviderObserver-Protocol.h>
 #import <ChronoUIServices/FBSceneDelegate-Protocol.h>
 #import <ChronoUIServices/FBSceneLayerManagerObserver-Protocol.h>
 #import <ChronoUIServices/LSApplicationWorkspaceObserverProtocol-Protocol.h>
 
-@class CHSScreenshotManager, CHSWidget, CHSWidgetMetrics, FBApplicationUpdateScenesTransaction, FBScene, NSMutableDictionary, NSString, UIImageView, UILabel;
+@class CHSAvocadoDescriptor, CHSAvocadoDescriptorProvider, CHSScreenshotManager, CHSWidget, CHSWidgetMetrics, CHUISPreferences, CHUISWidgetVisibilitySettings, FBScene, NSMutableArray, NSMutableDictionary, NSString, UIImageView, UILabel, UIView, UIVisualEffectView, _UICAPackageView;
 @protocol CHUISAvocadoHostViewControllerDelegate, UIScenePresenter;
 
-@interface CHUISAvocadoHostViewController : UIViewController <FBSceneDelegate, FBSceneLayerManagerObserver, LSApplicationWorkspaceObserverProtocol, BSInvalidatable>
+@interface CHUISAvocadoHostViewController : UIViewController <FBSceneDelegate, FBSceneLayerManagerObserver, LSApplicationWorkspaceObserverProtocol, CHSAvocadoDescriptorProviderObserver, BSInvalidatable>
 {
     id <UIScenePresenter> _scenePresenter;
     FBScene *_scene;
     NSMutableDictionary *_touchDeliveryPolicyAssertions;
-    FBApplicationUpdateScenesTransaction *_updateScenesTransaction;
     _Bool _invalidated;
-    UIImageView *_snapshotImageView;
+    UIView *_liveSceneSnapshotView;
+    _UICAPackageView *_persistedWidgetSnapshotCaarView;
+    UIImageView *_persistedWidgetSnapshotImageView;
+    UIView *_persistedWidgetSnapshotViewContainer;
     UILabel *_snapshotDebugLabel;
+    UIView *_snapshotDebugView;
     unsigned long long _signpostID;
     CHSScreenshotManager *_screenshotManager;
-    _Bool _hasSentForegroundMessage;
     _Bool _isInViewDidDisappear;
-    _Bool _visiblySettled;
-    _Bool _avocadoViewShouldShareTouchesWithHost;
-    _Bool _privateModeEnabled;
+    CHUISWidgetVisibilitySettings *_visibilitySettings;
+    unsigned long long _foregroundState;
+    NSString *_cachedSceneLogDigest;
+    CHSAvocadoDescriptor *_descriptor;
+    UIVisualEffectView *_materialView;
+    NSMutableArray *_preventBackgroundingAssertions;
+    unsigned long long _snapshotHidingSequence;
+    CHUISPreferences *_preferences;
+    CHSAvocadoDescriptorProvider *_descriptorProvider;
+    _Bool _usesSystemBackgroundMaterial;
+    _Bool _drawSystemBackgroundMaterialIfNecessary;
+    _Bool _isInvalidatingBackgroundAssertion;
     _Bool _animationsDisabled;
     _Bool _visibleEntryShouldSnapshot;
+    _Bool _avocadoViewShouldShareTouchesWithHost;
+    id <CHUISAvocadoHostViewControllerDelegate> _delegate;
     CHSWidget *_widget;
-    CHSWidgetMetrics *_metrics;
     unsigned long long _style;
     unsigned long long _mode;
+    CHSWidgetMetrics *_metrics;
     NSString *_widgetConfigurationIdentifier;
-    id <CHUISAvocadoHostViewControllerDelegate> _delegate;
 }
 
 + (id)_compatibilityMetrics;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool avocadoViewShouldShareTouchesWithHost; // @synthesize avocadoViewShouldShareTouchesWithHost=_avocadoViewShouldShareTouchesWithHost;
+@property(nonatomic) _Bool drawSystemBackgroundMaterialIfNecessary; // @synthesize drawSystemBackgroundMaterialIfNecessary=_drawSystemBackgroundMaterialIfNecessary;
 @property(nonatomic, getter=shouldVisibleEntrySnapshot) _Bool visibleEntryShouldSnapshot; // @synthesize visibleEntryShouldSnapshot=_visibleEntryShouldSnapshot;
 @property(nonatomic, getter=areAnimationsDisabled) _Bool animationsDisabled; // @synthesize animationsDisabled=_animationsDisabled;
-@property(nonatomic, getter=isPrivateModeEnabled) _Bool privateModeEnabled; // @synthesize privateModeEnabled=_privateModeEnabled;
-@property(nonatomic) _Bool avocadoViewShouldShareTouchesWithHost; // @synthesize avocadoViewShouldShareTouchesWithHost=_avocadoViewShouldShareTouchesWithHost;
-@property(nonatomic, getter=isVisiblySettled) _Bool visiblySettled; // @synthesize visiblySettled=_visiblySettled;
-@property(nonatomic) __weak id <CHUISAvocadoHostViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, copy, nonatomic) NSString *widgetConfigurationIdentifier; // @synthesize widgetConfigurationIdentifier=_widgetConfigurationIdentifier;
+@property(readonly, copy, nonatomic) CHSWidgetMetrics *metrics; // @synthesize metrics=_metrics;
 @property(nonatomic) unsigned long long mode; // @synthesize mode=_mode;
 @property(nonatomic) unsigned long long style; // @synthesize style=_style;
-@property(readonly, copy, nonatomic) CHSWidgetMetrics *metrics; // @synthesize metrics=_metrics;
 @property(copy, nonatomic) CHSWidget *widget; // @synthesize widget=_widget;
+@property(nonatomic) __weak id <CHUISAvocadoHostViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)sceneLayerManagerDidStopTrackingLayers:(id)arg1;
+- (void)sceneLayerManagerDidUpdateLayers:(id)arg1;
 - (void)sceneLayerManagerDidStartTrackingLayers:(id)arg1;
+- (id)_logDigest;
+- (void)_resetLogDigests;
 - (void)sceneContentStateDidChange:(id)arg1;
-- (void)sceneDidInvalidate:(id)arg1;
+- (void)sceneDidDeactivate:(id)arg1 withError:(id)arg2;
 - (void)scene:(id)arg1 didReceiveActions:(id)arg2;
+- (void)descriptorsDidChangeForDescriptorProvider:(id)arg1;
 - (_Bool)_isAppearingOrAppeared;
 - (void)_clearTouchDeliveryPolicies;
 - (void)_updateTouchDeliveryPolicies;
 - (void)_tearDownScene;
 - (void)_updateSceneToForeground:(_Bool)arg1;
+- (void)_invalidateBackgroundingAssertion:(id)arg1;
 - (void)_updateActiveUI;
-- (id)_containingApplicationProxyForExtensionBundleIdentifier:(id)arg1;
+- (void)_updateDescriptorIfNecessary;
+- (void)_updateBackgroundMaterialAndColor;
+- (void)setBackgroundViewMode:(int)arg1;
+- (int)_expectedBackgroundViewMode;
+- (int)_actualBackgroundViewMode;
 - (void)invalidate;
-- (void)_modifySnapshotViewForSceneReady;
-- (void)_modifySnapshotViewForSceneInitialization;
-- (void)_createSnapshotView;
-- (id)_snapshotImage;
+- (void)_hideSnapshotViewsAnimated:(_Bool)arg1;
+- (void)_ensureSnapshotView;
+- (void)_applyLiveSnapshotContentsFromSnapshot:(id)arg1;
+- (_Bool)_canLiveSnapshot;
+- (void)_updateSnapshotDebugLabelText:(id)arg1;
+- (void)_createWidgetSnapshotViews;
+- (id)_snapshotImageFromURL:(id)arg1;
+- (id)_newPersistedSnapshotView;
+- (id)_persistedSnapshotContext;
+- (void)viewWillLayoutSubviews;
 - (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(_Bool)arg2;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
-- (id)sceneSnapshotView;
+@property(readonly, nonatomic) UIView *sceneSnapshotView;
+@property(readonly, nonatomic) _Bool usesSystemBackgroundMaterial;
 - (id)cancelTouchesForCurrentEventInHostedContent;
+@property(nonatomic) struct CGRect visibleBounds;
+- (void)_modifyVisibilitySettings:(CDUnknownBlockType)arg1;
+@property(retain, nonatomic, getter=_visibilitySettings, setter=_setVisibilitySettings:) CHUISWidgetVisibilitySettings *visibilitySettings;
+@property(nonatomic) unsigned long long visibility;
+- (id)acquirePreventSceneBackgroundingAssertionForReason:(id)arg1;
+- (void)requestLaunch;
 - (void)prewarmContent;
-- (id)screenshotManager;
-- (void)setScreenshotManager:(id)arg1;
+@property(retain, nonatomic) CHSScreenshotManager *screenshotManager;
 - (_Bool)_canShowWhileLocked;
 - (void)dealloc;
+- (id)initWithWidget:(id)arg1 metrics:(id)arg2 widgetConfigurationIdentifier:(id)arg3 descriptorProvider:(id)arg4;
 - (id)initWithWidget:(id)arg1 metrics:(id)arg2 widgetConfigurationIdentifier:(id)arg3;
-- (id)initWithWidget:(id)arg1 metrics:(id)arg2 widgetConfigurationIdentifier:(id)arg3 style:(unsigned long long)arg4 mode:(unsigned long long)arg5 privateModeEnabled:(_Bool)arg6;
-- (id)initWithWidget:(id)arg1 metrics:(id)arg2 widgetConfigurationIdentifier:(id)arg3 style:(unsigned long long)arg4 privateModeEnabled:(_Bool)arg5;
+@property(nonatomic, getter=isVisiblySettled) _Bool visiblySettled;
 @property(readonly, nonatomic) long long sizeClass;
 @property(readonly, copy, nonatomic) NSString *extensionBundleIdentifier;
 @property(readonly, copy, nonatomic) NSString *avocadoKind;
 @property(readonly, copy, nonatomic) NSString *avocadoIdentifier;
+@property(nonatomic, getter=isPrivateModeEnabled) _Bool privateModeEnabled;
+- (id)initWithWidget:(id)arg1 metrics:(id)arg2 widgetConfigurationIdentifier:(id)arg3 style:(unsigned long long)arg4 mode:(unsigned long long)arg5 privateModeEnabled:(_Bool)arg6;
+- (id)initWithWidget:(id)arg1 metrics:(id)arg2 widgetConfigurationIdentifier:(id)arg3 style:(unsigned long long)arg4 privateModeEnabled:(_Bool)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

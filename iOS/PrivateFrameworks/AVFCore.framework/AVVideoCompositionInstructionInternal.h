@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     NSArray *layerInstructions;
     _Bool enablePostProcessing;
     NSString *blendingTransferFunction;
+    NSArray *requiredSourceSampleDataTrackIDs;
 }
 
 @end

@@ -4,16 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-__attribute__((visibility("hidden")))
 @interface CKDBackingPlatformAccount
 {
 }
 
-+ (id)primaryAccountInStore:(id)arg1;
-+ (id)accountWithIdentifier:(id)arg1 inStore:(id)arg2;
-- (void)updateAccountPropertiesAndSaveAccountInStore:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)updateAccountPropertiesAndSaveAccount:(CDUnknownBlockType)arg1;
 - (id)ckAccount;
-- (id)_initWithParentAccount:(id)arg1 inStore:(id)arg2;
+- (id)_initWithParentAccount:(id)arg1;
 
 @end
 

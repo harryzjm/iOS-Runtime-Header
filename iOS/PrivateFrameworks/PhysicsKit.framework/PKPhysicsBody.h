@@ -19,7 +19,7 @@
     struct b2Body *_body;
     struct PKCField *_field;
     int _dynamicType;
-    vector_8416aa54 _shapes;
+    struct vector<PKPhysicsShape *, std::allocator<PKPhysicsShape *>> _shapes;
     PKPhysicsWorld *_world;
     NSMutableArray *_joints;
     _Bool _inUse;
@@ -49,7 +49,7 @@
 + (id)bodyWithCircleOfRadius:(double)arg1 center:(struct CGPoint)arg2;
 + (id)bodyWithCircleOfRadius:(double)arg1;
 + (id)bodyWithBodies:(id)arg1;
-+ (id)initWithMarchingCubes:(struct PKCGrid *)arg1 pixelFrame:(struct CGRect)arg2;
++ (id)initWithMarchingCubes:(void *)arg1 pixelFrame:(struct CGRect)arg2;
 + (id)initWithQuadTree:(id)arg1;
 + (id)bodyWithOutline:(shared_ptr_2aaf3a07)arg1 offset:(struct CGPoint)arg2;
 + (_Bool)supportsSecureCoding;
@@ -116,7 +116,7 @@
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)clearBox2DData;
-@property(readonly, nonatomic) struct PKPath *volume;
+@property(readonly, nonatomic) void *volume;
 @property(nonatomic) shared_ptr_2aaf3a07 outline;
 @property(nonatomic) struct b2Body *_body;
 @property(nonatomic) struct b2BodyDef _bodyDef;
@@ -129,7 +129,7 @@
 - (void)set_world:(id)arg1;
 - (void)setActive:(_Bool)arg1;
 - (_Bool)active;
-@property(readonly, nonatomic) vector_8416aa54 *_shapes;
+@property(readonly, nonatomic) void *_shapes;
 
 @end
 

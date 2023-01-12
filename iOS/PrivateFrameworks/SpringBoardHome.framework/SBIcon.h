@@ -22,10 +22,10 @@
     _Bool _uninstalled;
     id _overrideBadgeNumberOrString;
     id <SBIconDelegate> _delegate;
+    NSString *_iconImageCacheIdentifier;
     unsigned long long _gridSizeClass;
 }
 
-+ (Class)downloadingIconClass;
 + (_Bool)hasIconImage;
 + (_Bool)forcesBackgroundIconGeneration;
 + (_Bool)canGenerateIconsInBackground;
@@ -34,6 +34,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long gridSizeClass; // @synthesize gridSizeClass=_gridSizeClass;
 @property(readonly, nonatomic, getter=isUninstalled) _Bool uninstalled; // @synthesize uninstalled=_uninstalled;
+@property(copy, nonatomic) NSString *iconImageCacheIdentifier; // @synthesize iconImageCacheIdentifier=_iconImageCacheIdentifier;
 @property(nonatomic) __weak id <SBIconDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic) id overrideBadgeNumberOrString; // @synthesize overrideBadgeNumberOrString=_overrideBadgeNumberOrString;
 - (void)_notifyLaunchEnabledDidChange;
@@ -78,6 +79,7 @@
 @property(readonly, nonatomic) id badgeNumberOrString;
 @property(readonly, nonatomic) long long badgeValue;
 - (void)reloadIconImage;
+@property(readonly, nonatomic) _Bool canGenerateIconsInBackground;
 - (id)genericIconImageWithInfo:(struct SBIconImageInfo)arg1;
 - (id)unmaskedIconImageWithInfo:(struct SBIconImageInfo)arg1;
 - (id)iconImageWithInfo:(struct SBIconImageInfo)arg1;
@@ -88,11 +90,11 @@
 @property(readonly, nonatomic, getter=isLaunchDisabledForObscuredReason) _Bool launchDisabledForObscuredReason;
 @property(readonly, nonatomic, getter=isLaunchEnabled) _Bool launchEnabled;
 @property(readonly, copy, nonatomic) NSArray *tags;
+- (id)statusDescriptionForLocation:(id)arg1;
 - (long long)localizedCompareDisplayNames:(id)arg1;
 @property(readonly, nonatomic) _Bool canTightenLabel;
 @property(readonly, nonatomic) _Bool canTruncateLabel;
 @property(readonly, copy, nonatomic) NSString *displayName;
-- (id)descriptionForLocation:(id)arg1;
 - (id)displayNameForLocation:(id)arg1;
 - (void)localeChanged;
 @property(readonly, nonatomic) _Bool shouldWarmUp;
@@ -114,22 +116,29 @@
 - (Class)iconImageViewClassForLocation:(id)arg1;
 - (id)iconLibraryQueryingFilterStrings;
 - (id)iconLibraryQueryingAlphaSortString;
-- (_Bool)assumesAppInstallFinishedForFolderProgress;
-- (id)downloadingIconDataSource;
-- (_Bool)isDownloadingIcon;
 - (id)_sbhIconLibraryOverrideCollationSectionTitle;
 - (id)_sbhIconLibraryCollationString;
 - (_Bool)isWidgetStackIcon;
 - (_Bool)isWidgetIcon;
 - (_Bool)isCategoryIcon;
+- (_Bool)hasApplicationPlaceholder;
+- (_Bool)hasApplication;
+- (id)applicationPlaceholder;
+- (id)application;
+- (_Bool)isApplicationIcon;
 - (id)representedSceneIdentifier;
 - (id)applicationBundleID;
 - (id)leafIdentifier;
 - (_Bool)isLeafIcon;
+- (_Bool)isDebugIcon;
 - (id)parentFolderIcon;
 - (id)folder;
 - (_Bool)isFolderIcon;
+- (_Bool)isLibraryPodIcon;
 - (_Bool)isAdditionalItemsIndicatorIcon;
+- (_Bool)isAppClipIcon;
+- (_Bool)isBookmarkIcon;
+- (_Bool)isClusteredIconPlaceholder;
 - (_Bool)isGrabbedIconPlaceholder;
 - (_Bool)isPlaceholder;
 

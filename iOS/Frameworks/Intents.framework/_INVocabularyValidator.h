@@ -12,8 +12,9 @@
 
 + (void)initialize;
 - (unsigned long long)maximumNumberOfVocabularyStringsForType:(long long)arg1;
-- (void)determineIfBundle:(id)arg1 canProvideVocabularyOfType:(long long)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_determineIfBundle:(id)arg1 canProvideVocabularyOfType:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)determineIfBundleID:(id)arg1 canProvideVocabularyOfType:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)_pathToAppWithBundleID:(id)arg1;
+- (void)_determineIfBundleID:(id)arg1 appPath:(id)arg2 canProvideVocabularyOfType:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_confirmExistenceOfWatchAppForCompanionBundleID:(id)arg1 handlingIntents:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)_bundleID:(id)arg1 isWhitelistedForVocabularyType:(long long)arg2;
 - (id)_validatedItemsFromVocabularyObject:(id)arg1 ofType:(long long)arg2 loggingWarnings:(_Bool)arg3 withItemFactory:(CDUnknownBlockType)arg4;

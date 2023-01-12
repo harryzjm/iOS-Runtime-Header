@@ -16,10 +16,10 @@
 }
 
 + (id)variablesWithTexture:(id)arg1 texcoords:(id)arg2 textureMatrix:(id)arg3;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) TSCH3DShaderVariable *textureMatrix; // @synthesize textureMatrix=_textureMatrix;
 @property(readonly, copy, nonatomic) TSCH3DShaderVariable *texcoords; // @synthesize texcoords=_texcoords;
 @property(readonly, copy, nonatomic) TSCH3DShaderVariable *texture; // @synthesize texture=_texture;
-- (void)dealloc;
 - (id)initWithTexture:(id)arg1 texcoords:(id)arg2 textureMatrix:(id)arg3;
 
 @end

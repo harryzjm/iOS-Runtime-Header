@@ -9,17 +9,21 @@
 #import <ScreenshotServices/BSXPCCoding-Protocol.h>
 #import <ScreenshotServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, SSUIServiceOptionsAssetMetadata;
 
 @interface SSUIServiceOptions : NSObject <BSXPCCoding, NSCopying>
 {
     unsigned long long _flashStyle;
     unsigned long long _saveLocation;
+    SSUIServiceOptionsAssetMetadata *_assetMetadata;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(copy, nonatomic) SSUIServiceOptionsAssetMetadata *assetMetadata; // @synthesize assetMetadata=_assetMetadata;
 @property(nonatomic) unsigned long long saveLocation; // @synthesize saveLocation=_saveLocation;
 @property(nonatomic) unsigned long long flashStyle; // @synthesize flashStyle=_flashStyle;
+- (_Bool)isEqual:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -10,6 +10,7 @@
 
 @class MPSectionedCollection;
 
+__attribute__((visibility("hidden")))
 @interface MPCModelRadioPersonalizationRequest : MPModelRequest <NSCopying>
 {
     MPSectionedCollection *_radioStationTracks;

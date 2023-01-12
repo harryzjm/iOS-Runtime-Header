@@ -12,12 +12,13 @@
     NSString *_bundleID;
     NSArray *_eligibleContext;
     unsigned long long _displayType;
+    unsigned long long _usageFlags;
 }
 
-+ (id)eventWithContentID:(id)arg1 bundleID:(id)arg2 eligibleContext:(id)arg3 displayType:(unsigned long long)arg4 date:(id)arg5;
++ (id)eventWithContentID:(id)arg1 bundleID:(id)arg2 eligibleContext:(id)arg3 displayType:(unsigned long long)arg4 usageFlags:(unsigned long long)arg5 date:(id)arg6;
 + (_Bool)supportsSecureCoding;
-+ (id)classSet;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long usageFlags; // @synthesize usageFlags=_usageFlags;
 @property(readonly, nonatomic) unsigned long long displayType; // @synthesize displayType=_displayType;
 @property(readonly, nonatomic) NSArray *eligibleContext; // @synthesize eligibleContext=_eligibleContext;
 @property(readonly, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
@@ -25,7 +26,7 @@
 - (id)mutableAnalyticsEventRepresentation;
 - (id)duetEvent;
 - (id)eventName;
-- (id)_initWithContentID:(id)arg1 bundleID:(id)arg2 eligibleContext:(id)arg3 displayType:(unsigned long long)arg4 date:(id)arg5;
+- (id)_initWithContentID:(id)arg1 bundleID:(id)arg2 eligibleContext:(id)arg3 displayType:(unsigned long long)arg4 usageFlags:(unsigned long long)arg5 date:(id)arg6;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

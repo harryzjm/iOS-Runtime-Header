@@ -10,6 +10,7 @@
 @protocol OS_dispatch_queue;
 
 @protocol AVQueuedSampleBufferRendering <NSObject>
+@property(readonly, nonatomic) _Bool hasSufficientMediaDataForReliablePlaybackStart;
 @property(readonly, getter=isReadyForMoreMediaData) _Bool readyForMoreMediaData;
 @property(readonly, retain) struct OpaqueCMTimebase *timebase;
 - (void)stopRequestingMediaData;

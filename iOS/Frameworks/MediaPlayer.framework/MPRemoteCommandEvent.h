@@ -15,19 +15,22 @@
     NSString *_commandID;
     MPRemoteCommand *_command;
     double _timestamp;
+    double _timeout;
 }
 
 + (id)eventWithCommand:(id)arg1 mediaRemoteType:(unsigned int)arg2 options:(id)arg3;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) double timeout; // @synthesize timeout=_timeout;
 @property(readonly, nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 @property(readonly, nonatomic) MPRemoteCommand *command; // @synthesize command=_command;
-- (long long)playbackQueueOffset;
-- (id)contentItemID;
-- (id)sourceID;
-- (id)interfaceID;
-- (id)commandID;
-- (id)contextID;
-- (id)mediaRemoteOptions;
+@property(readonly, nonatomic) long long playbackQueueOffset;
+@property(readonly, nonatomic) NSString *contentItemID;
+@property(readonly, nonatomic) NSString *sourceID;
+@property(readonly, nonatomic) NSString *interfaceID;
+@property(readonly, nonatomic) NSString *commandID;
+@property(readonly, nonatomic) NSString *contextID;
+@property(readonly, nonatomic) NSDictionary *mediaRemoteOptions;
+@property(readonly, nonatomic) unsigned int mediaRemoteCommandType;
 - (id)description;
 - (id)initWithCommand:(id)arg1 mediaRemoteType:(unsigned int)arg2 options:(id)arg3;
 - (id)init;

@@ -6,9 +6,10 @@
 
 #import <HealthKit/NSObject-Protocol.h>
 
-@class HKCloudSyncObserverStatus;
+@class HKCloudSyncObserverStatus, NSError;
 
 @protocol HKCloudSyncObserverClientInterface <NSObject>
+- (void)clientRemote_didFailToPopulateStatusWithError:(NSError *)arg1;
 - (void)clientRemote_didUpdateObserverWithSyncStatus:(HKCloudSyncObserverStatus *)arg1;
 - (void)clientRemote_syncDidStart;
 @end

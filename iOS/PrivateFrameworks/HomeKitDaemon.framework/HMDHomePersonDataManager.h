@@ -31,7 +31,6 @@
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;
 - (id)logIdentifier;
-- (void)handleFetchSettingsMessage:(id)arg1;
 - (void)handleUpdateSettingsMessage:(id)arg1;
 - (void)configurePersonManager;
 - (void)handleUpdatedSettingsModel:(id)arg1 previousSettingsModel:(id)arg2 message:(id)arg3;

@@ -52,7 +52,6 @@
 @property(copy, setter=setSFDeviceIdentifier:) NSUUID *sfDeviceIdentifier; // @synthesize sfDeviceIdentifier=_sfDeviceIdentifier;
 @property __weak id <HMSymptomsHandlerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, copy) NSSet *symptoms;
-- (void)dealloc;
 - (void)_unconfigure;
 - (void)_unconfigureContext;
 - (void)__configureWithContext:(id)arg1;

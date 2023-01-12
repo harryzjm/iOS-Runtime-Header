@@ -6,11 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <PencilKit/PKEdgeLocatable-Protocol.h>
+#import <PencilKit/PKPaletteEdgeLocating-Protocol.h>
 
 @class NSString, PKDragIndicatorView;
 
-@interface PKAccessoryView : UIView <PKEdgeLocatable>
+@interface PKAccessoryView : UIView <PKPaletteEdgeLocating>
 {
     unsigned long long _edgeLocation;
     PKDragIndicatorView *_dragIndicatorView;

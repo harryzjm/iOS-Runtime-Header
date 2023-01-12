@@ -11,8 +11,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (_Bool)_accessibilityOpaqueElementScrollsContentIntoView;
-- (void)_accessibilityStartInteraction;
+- (_Bool)_accessibilityStartInteractionAnimated:(_Bool)arg1;
 - (id)_accessibilityLastOpaqueElement;
 - (id)_accessibilityFirstOpaqueElement;
 - (struct CGRect)_accessibilityFrameForSorting;

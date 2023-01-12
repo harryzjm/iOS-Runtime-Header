@@ -32,7 +32,6 @@
 @property(retain, nonatomic) MKPinAnnotationView *pinAnnotationView; // @synthesize pinAnnotationView=_pinAnnotationView;
 @property(retain, nonatomic) TLKLabel *footnoteLabel; // @synthesize footnoteLabel=_footnoteLabel;
 @property(retain, nonatomic) TLKLabel *footnoteDescriptorLabel; // @synthesize footnoteDescriptorLabel=_footnoteDescriptorLabel;
-- (id)_uiColorFromSFColor:(id)arg1;
 - (id)_clLocationFromSFLatLng:(id)arg1;
 - (void)sendMapFeedbackWithTriggerEvent:(unsigned long long)arg1 placemarkData:(id)arg2;
 - (void)_mapButtonPressed;

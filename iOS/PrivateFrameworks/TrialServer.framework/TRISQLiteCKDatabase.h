@@ -9,7 +9,7 @@
 #import <TrialServer/_PASDatabaseMigrationProtocol-Protocol.h>
 
 @class NSString, _PASSqliteDatabase;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, TRISQLiteCKDatabaseDelegate;
 
 @interface TRISQLiteCKDatabase : NSObject <_PASDatabaseMigrationProtocol>
 {
@@ -18,10 +18,12 @@
     NSString *_assetCacheDir;
     _PASSqliteDatabase *_db;
     NSObject<OS_dispatch_queue> *_opQueue;
+    id <TRISQLiteCKDatabaseDelegate> _delegate;
 }
 
 + (id)mockContainerWithIdentifier:(id)arg1 database:(id)arg2;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <TRISQLiteCKDatabaseDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)queriesToSkipFromEmptyToVersion:(unsigned int *)arg1;
 - (id)migrations;
 - (id)_createTableForArrayFieldWithKey:(id)arg1 attachedToRecordType:(id)arg2 sqliteContainedType:(id)arg3;
@@ -29,10 +31,13 @@
 - (id)databaseHandle;
 - (_Bool)migrateToVersion:(unsigned int)arg1;
 - (id)_errorWithCode:(long long)arg1 message:(id)arg2;
-- (void)_bindParam:(int)arg1 toScalarValue:(id)arg2 forStatement:(id)arg3;
+- (void)_bindParam:(int)arg1 toScalarValue:(id)arg2 forStatement:(id)arg3 recordId:(id)arg4;
 - (id)_keysForFieldsOfRecordType:(id)arg1;
 - (id)_valueTypesForFieldsOfRecordType:(id)arg1;
+- (id)_allRecordTypes;
 - (_Bool)_replaceArrayFieldWithKey:(id)arg1 recordType:(id)arg2 recordId:(id)arg3 values:(id)arg4 txn:(id)arg5 error:(id *)arg6;
+- (id)_assetForLocallyStoredAssetWithFilename:(id)arg1 forRecordId:(id)arg2 error:(id *)arg3;
+- (id)_filenameForLocallyCopiedAsset:(id)arg1 forRecordId:(id)arg2 error:(id *)arg3;
 - (_Bool)_upsertRecord:(id)arg1 txn:(id)arg2 error:(id *)arg3;
 - (void)_deleteRecordsWithRecordIds:(id)arg1 recordType:(id)arg2 txn:(id)arg3;
 - (void)_processModifyRecordsOperation:(id)arg1;
@@ -60,6 +65,7 @@
 - (void)deleteRecordZoneWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)saveRecordZone:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addOperation:(id)arg1;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *operationQueue;
 - (id)initWithParentDir:(id)arg1 assetCacheDir:(id)arg2;
 - (id)init;
 

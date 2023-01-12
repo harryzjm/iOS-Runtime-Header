@@ -37,11 +37,15 @@
         unsigned int explicitlyShowsSearchResultsController:1;
         unsigned int searchFieldIsBeginningEditing:1;
     } _controllerFlags;
+    UIScrollView *_noResultsContentScrollViewTop;
+    UIScrollView *_noResultsContentScrollViewBottom;
+    UIScrollView *_tvObservingScrollView;
     struct UIEdgeInsets _previousObservedScrollViewGradientMaskLengths;
     _Bool _previousObservedScrollViewShouldPreventFocusScrollPastContentSize;
     _Bool _obscuresBackgroundDuringPresentation;
     _Bool _hidesNavigationBarDuringPresentation;
     _Bool __tabBarHidden;
+    _Bool __shouldLogAppearance;
     _Bool __gridKeyboardVisible;
     _Bool __shouldHideGridKeyboardUnfocused;
     _Bool __shouldDisplayDefaultSuggestion;
@@ -86,6 +90,7 @@
 @property(nonatomic, setter=_setShouldHideGridKeyboardUnfocused:) _Bool _shouldHideGridKeyboardUnfocused; // @synthesize _shouldHideGridKeyboardUnfocused=__shouldHideGridKeyboardUnfocused;
 @property(nonatomic, getter=_isGridKeyboardVisible, setter=_setGridKeyboardVisible:) _Bool _gridKeyboardVisible; // @synthesize _gridKeyboardVisible=__gridKeyboardVisible;
 @property(retain, nonatomic) UIView *_suggestionContainerView; // @synthesize _suggestionContainerView=__suggestionContainerView;
+@property(nonatomic) _Bool _shouldLogAppearance; // @synthesize _shouldLogAppearance=__shouldLogAppearance;
 @property(retain, nonatomic) UIFocusGuide *searchResultsToHiddenKeyboardFocusGuide; // @synthesize searchResultsToHiddenKeyboardFocusGuide=_searchResultsToHiddenKeyboardFocusGuide;
 @property(retain, nonatomic) UIFocusGuide *keyboardToSearchResultsFocusGuide; // @synthesize keyboardToSearchResultsFocusGuide=_keyboardToSearchResultsFocusGuide;
 @property(nonatomic) double _topResultsViewEdgeInset; // @synthesize _topResultsViewEdgeInset=__topResultsViewEdgeInset;
@@ -119,6 +124,8 @@
 - (void)_adjustTVSearchContainerViewForContentScrollView:(id)arg1;
 - (void)_displayDefaultHelperPlaceholderMessage;
 @property(readonly, nonatomic) _Bool _tvShouldScrollWithObservedScrollViewIfPossible;
+- (void)_didCreateSystemInputViewController;
+- (_Bool)_isSearchController;
 - (void)_navigationControllerWillShowViewController:(id)arg1;
 - (void)_endWatchingPresentingController;
 - (void)_beginWatchingPresentingController;
@@ -179,8 +186,9 @@
 - (void)_searchBarCancelButtonClicked:(id)arg1;
 - (void)_searchBarSearchButtonClicked:(id)arg1;
 - (void)_searchBarTextDidBeginEditing:(id)arg1;
+- (void)_performDidBeginEditingForSearchBar:(id)arg1;
 - (void)_searchBarTokensDidChange:(id)arg1;
-- (void)_searchBar:(id)arg1 textDidChange:(id)arg2;
+- (void)_searchBar:(id)arg1 textDidChange:(id)arg2 programatically:(_Bool)arg3;
 - (void)_searchBar:(id)arg1 selectedScopeButtonIndexDidChange:(long long)arg2;
 - (_Bool)_searchBarShouldFinalizeBecomingFirstResponder;
 @property(readonly, nonatomic) _Bool _searchFieldIsBeginningEditing;
@@ -220,6 +228,7 @@
 - (id)_createAnimationCoordinator;
 - (void)applicationDidEnterBackground:(id)arg1;
 - (void)applicationWillEnterForeground:(id)arg1;
+- (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)loadView;

@@ -9,12 +9,12 @@
 __attribute__((visibility("hidden")))
 @interface REDisplayLinkTarget : NSObject
 {
-    struct DisplayLinkClock *_clock;
+    void *_clock;
 }
 
 - (void)updateOnQueue;
 - (void)update;
-- (id)initWithClock:(struct DisplayLinkClock *)arg1;
+- (id)initWithClock:(void *)arg1;
 
 @end
 

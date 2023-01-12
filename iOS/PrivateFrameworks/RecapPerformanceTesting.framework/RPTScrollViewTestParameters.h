@@ -6,15 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <RecapPerformanceTesting/RPTBlockBasedScrollTestParameters-Protocol.h>
-#import <RecapPerformanceTesting/RPTScrollTestParameters-Protocol.h>
+#import <RecapPerformanceTesting/RPTTestParameters-Protocol.h>
+#import <RecapPerformanceTesting/_RPTCoordinateSpaces-Protocol.h>
 
-@class NSString, RCPSyntheticEventStream;
+@class NSString, RPTCoordinateSpaceConverter;
 
-@interface RPTScrollViewTestParameters : NSObject <RPTScrollTestParameters, RPTBlockBasedScrollTestParameters>
+@interface RPTScrollViewTestParameters : NSObject <_RPTCoordinateSpaces, RPTTestParameters>
 {
     _Bool _preventSheetDismissal;
     _Bool _shouldFlick;
+    RPTCoordinateSpaceConverter *_conversion;
     NSString *_testName;
     double _amplitude;
     long long _direction;
@@ -34,13 +35,17 @@
 @property(nonatomic) double amplitude; // @synthesize amplitude=_amplitude;
 @property(nonatomic) struct CGRect scrollingBounds; // @synthesize scrollingBounds=_scrollingBounds;
 @property(copy, nonatomic) NSString *testName; // @synthesize testName=_testName;
-@property(readonly, nonatomic) RCPSyntheticEventStream *eventStream;
+@property(retain, nonatomic) RPTCoordinateSpaceConverter *conversion; // @synthesize conversion=_conversion;
 @property(readonly, copy, nonatomic) CDUnknownBlockType composerBlock;
+- (id)initWithTestName:(id)arg1 scrollBounds:(struct CGRect)arg2 amplitude:(double)arg3 direction:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)initWithTestName:(id)arg1 scrollView:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)prepareWithComposer:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool managesTestStartAndEnd;
 @property(readonly) Class superclass;
 
 @end

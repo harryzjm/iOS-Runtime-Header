@@ -8,17 +8,31 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields;
+@class NSMutableArray, PBDataReader, PBUnknownFields;
 
 @interface GEOPDAmenities : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    NSMutableArray *_amenityV2s;
     NSMutableArray *_amenitys;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_amenityV2s:1;
+        unsigned int read_amenitys:1;
+        unsigned int wrote_anyField:1;
+    } _flags;
 }
 
 + (_Bool)isValid:(id)arg1;
++ (Class)amenityV2Type;
 + (Class)amenityType;
 + (id)amentiesForPlaceData:(id)arg1;
++ (id)enumBasedAmenityValuesForPlaceData:(id)arg1;
++ (id)stringBasedAmenityValuesForPlaceData:(id)arg1;
 - (void).cxx_destruct;
 - (void)clearUnknownFields:(_Bool)arg1;
 @property(readonly, nonatomic) PBUnknownFields *unknownFields;
@@ -35,13 +49,18 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)amenityV2AtIndex:(unsigned long long)arg1;
+- (unsigned long long)amenityV2sCount;
+- (void)addAmenityV2:(id)arg1;
+- (void)clearAmenityV2s;
+@property(retain, nonatomic) NSMutableArray *amenityV2s;
 - (id)amenityAtIndex:(unsigned long long)arg1;
 - (unsigned long long)amenitysCount;
 - (void)addAmenity:(id)arg1;
 - (void)clearAmenitys;
 @property(retain, nonatomic) NSMutableArray *amenitys;
-- (_Bool)valueForAmenityType:(int)arg1;
-- (_Bool)hasAmenityType:(int)arg1;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

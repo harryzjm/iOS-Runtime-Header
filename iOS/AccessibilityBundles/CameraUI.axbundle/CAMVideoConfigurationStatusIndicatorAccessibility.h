@@ -11,8 +11,21 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)accessibilityValue;
+- (id)_axSeparatorLabel;
+- (id)_axFramerateLabel;
+- (id)_axResolutionLabel;
+- (void)_handleTouchAtLocation:(struct CGPoint)arg1;
+- (_Bool)_togglesFramerateForTouchAtLocation:(struct CGPoint)arg1;
+- (_Bool)_togglesResolutionForTouchAtLocation:(struct CGPoint)arg1;
+- (void)layoutSubviews;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (long long)accessibilityContainerType;
 - (id)accessibilityLabel;
+- (_Bool)isAccessibilityElement;
+- (void)_axSetFramerateTapped:(_Bool)arg1;
+- (_Bool)_axFramerateTapped;
+- (void)_axSetResolutionTapped:(_Bool)arg1;
+- (_Bool)_axResolutionTapped;
 
 @end
 

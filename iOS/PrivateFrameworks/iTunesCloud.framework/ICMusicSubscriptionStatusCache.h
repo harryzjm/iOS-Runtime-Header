@@ -26,6 +26,7 @@
 - (void)_loadPersistedCacheWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_getCacheKeyForRequestContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_handleSubscriptionStatusChangedDistributedNotification:(id)arg1;
+- (void)_handleActiveAccountDidChangeNotification:(id)arg1;
 - (void)_handleUserIdentityStoreDidChangeNotification:(id)arg1;
 - (void)_handlePhoneNumberDidChangeNotification:(id)arg1;
 - (void)updateBaseCacheKey;

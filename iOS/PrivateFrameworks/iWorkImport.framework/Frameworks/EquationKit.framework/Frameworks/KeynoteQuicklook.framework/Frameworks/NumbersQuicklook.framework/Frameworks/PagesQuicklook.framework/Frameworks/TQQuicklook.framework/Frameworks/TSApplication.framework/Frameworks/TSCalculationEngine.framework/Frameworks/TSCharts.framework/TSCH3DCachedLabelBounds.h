@@ -13,18 +13,18 @@
     tvec2_84d5962d _offset2D;
     NSString *_string;
     tvec3_17f03ce0 _position;
-    box_80622335 _labelBox;
+    box_c88174d1 _labelBox;
 }
 
-+ (id)boundsWithPosition:(tvec3_17f03ce0)arg1 labelBox:(box_80622335)arg2 offset2D:(tvec2_84d5962d)arg3 string:(id)arg4;
++ (id)boundsWithPosition:(tvec3_17f03ce0)arg1 labelBox:(box_c88174d1)arg2 offset2D:(tvec2_84d5962d)arg3 string:(id)arg4;
 - (id).cxx_construct;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *string; // @synthesize string=_string;
 @property(readonly, nonatomic) tvec2_84d5962d offset2D; // @synthesize offset2D=_offset2D;
-@property(readonly, nonatomic) box_80622335 labelBox; // @synthesize labelBox=_labelBox;
+@property(readonly, nonatomic) box_c88174d1 labelBox; // @synthesize labelBox=_labelBox;
 @property(readonly, nonatomic) tvec3_17f03ce0 position; // @synthesize position=_position;
-- (box_a3bd9649)normalizedBoundsWithOffset:(tvec3_17f03ce0)arg1 transforms:(id)arg2 viewport:(box_0260e9b3)arg3;
-- (void)dealloc;
-- (id)initWithPosition:(tvec3_17f03ce0)arg1 labelBox:(box_80622335)arg2 offset2D:(tvec2_84d5962d)arg3 string:(id)arg4;
+- (box_c9ef104e)normalizedBoundsWithOffset:(tvec3_17f03ce0)arg1 transforms:(id)arg2 viewport:(box_ce64ce81)arg3;
+- (id)initWithPosition:(tvec3_17f03ce0)arg1 labelBox:(box_c88174d1)arg2 offset2D:(tvec2_84d5962d)arg3 string:(id)arg4;
 
 @end
 

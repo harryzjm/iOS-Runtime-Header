@@ -4,88 +4,117 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
+#import <UIKitCore/UIPopoverPresentationControllerDelegate-Protocol.h>
 #import <UIKitCore/UIPrintPanelAppearanceDelegate-Protocol.h>
-#import <UIKitCore/UIPrinterBrowserOwner-Protocol.h>
 
-@class NSArray, NSString, PKPrinter, UINavigationController, UIPopoverController, UIPrintInteractionController, UIPrintPanelTableViewController, UIPrintPaper, UIViewController, UIWindow;
+@class NSArray, NSLayoutConstraint, NSObject, NSString, NSURL, UIActivityViewController, UINavigationController, UIPopoverController, UIPrintInfo, UIPrintInteractionController, UIPrintOptionsTableViewController, UIPrintPanelNavigationController, UIPrintPanelWindow, UIPrintPaper, UIPrintPreviewInfo, UIPrintPreviewViewController, UIPrinter, UITableView, UIView, UIViewController, _UIPrintMessageAndSpinnerView;
+@protocol OS_dispatch_queue, UIPrintAppExtensionProtocol;
 
 __attribute__((visibility("hidden")))
-@interface UIPrintPanelViewController : NSObject <UIPrinterBrowserOwner, UIPrintPanelAppearanceDelegate>
+@interface UIPrintPanelViewController <UIPopoverPresentationControllerDelegate, UIPrintPanelAppearanceDelegate>
 {
-    UIPrintInteractionController *_printInteractionController;
-    int _lastUsedPrinterIndex;
-    UINavigationController *_navigationController;
-    UIPrintPanelTableViewController *_tableViewController;
-    UIViewController *_parentController;
-    UIPopoverController *_poverController;
-    UIWindow *_window;
-    PKPrinter *_printer;
+    NSObject<OS_dispatch_queue> *_lookupPrinterQueue;
     _Bool _dismissed;
     _Bool _animated;
-    _Bool _observingRotation;
-    _Bool _canShowColor;
-    CDUnknownBlockType _previewCompletionHandler;
-    _Bool _contentLargerThanRollPaper;
+    _Bool _showingPreview;
+    UIPrinter *_printer;
+    UIPrintInfo *_printInfo;
+    UINavigationController *_printOptionsNavController;
+    UITableView *_printOptionsTableView;
+    UIViewController<UIPrintAppExtensionProtocol> *_appPrintExtensionController;
+    UIPrintInteractionController *_printInteractionController;
+    CDUnknownBlockType _previewUpdateCompletionHandler;
+    UIPrintPanelWindow *_printPanelWindow;
+    UIPrintPanelNavigationController *_printPanelNavigationController;
+    UIViewController *_parentController;
+    UIView *_previewSeparatorView;
+    UIPrintPreviewViewController *_previewViewController;
+    UIView *_previewPanelView;
+    _UIPrintMessageAndSpinnerView *_messageAndSpinner;
+    NSLayoutConstraint *_previewHeightConstraint;
+    UIPrintOptionsTableViewController *_printOptionsTableViewController;
+    NSLayoutConstraint *_printOptionsWidthConstraint;
+    long long _lastUsedPrinterIndex;
     NSArray *_lastUsedPrinterArray;
+    NSArray *_vertScrollPrintPanelConstraints;
+    NSArray *_horizScrollPrintPanelConstraints;
+    UIPopoverController *_poverController;
+    UIActivityViewController *_activityViewController;
+    NSURL *_pdfURL;
+    UIPrintPreviewInfo *_previewInfo;
 }
 
++ (_Bool)_preventsAppearanceProxyCustomization;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool showingPreview; // @synthesize showingPreview=_showingPreview;
+@property(nonatomic) _Bool animated; // @synthesize animated=_animated;
+@property(nonatomic) _Bool dismissed; // @synthesize dismissed=_dismissed;
+@property(retain, nonatomic) UIPrintPreviewInfo *previewInfo; // @synthesize previewInfo=_previewInfo;
+@property(retain, nonatomic) NSURL *pdfURL; // @synthesize pdfURL=_pdfURL;
+@property(retain, nonatomic) UIActivityViewController *activityViewController; // @synthesize activityViewController=_activityViewController;
+@property(retain, nonatomic) UIPopoverController *poverController; // @synthesize poverController=_poverController;
+@property(retain, nonatomic) NSArray *horizScrollPrintPanelConstraints; // @synthesize horizScrollPrintPanelConstraints=_horizScrollPrintPanelConstraints;
+@property(retain, nonatomic) NSArray *vertScrollPrintPanelConstraints; // @synthesize vertScrollPrintPanelConstraints=_vertScrollPrintPanelConstraints;
 @property(retain) NSArray *lastUsedPrinterArray; // @synthesize lastUsedPrinterArray=_lastUsedPrinterArray;
-@property(readonly, nonatomic) _Bool contentLargerThanRollPaper; // @synthesize contentLargerThanRollPaper=_contentLargerThanRollPaper;
-@property(retain, nonatomic) PKPrinter *printer; // @synthesize printer=_printer;
-- (void)lookupLastUsedPrinter;
-- (id)localizedPageRangeText;
-- (_Bool)filtersPrinters;
-@property(readonly, nonatomic) _Bool isJobAccountIDRequired;
-@property(readonly, nonatomic) _Bool showAnnotationSwitch;
-@property(readonly, nonatomic) _Bool showJobAccountID;
-- (_Bool)testIfContentLargerThanRollPaper:(id)arg1;
-@property(readonly, nonatomic) _Bool showScaleUp;
-@property(readonly, nonatomic) _Bool showPunch;
-@property(readonly, nonatomic) _Bool showStaple;
-@property(readonly, nonatomic) _Bool showMoreOptions;
-@property(readonly, nonatomic) _Bool showPreview;
-@property(readonly, nonatomic) _Bool showPaperSelection;
-@property(readonly, nonatomic) _Bool showPaper;
-@property(readonly, nonatomic) _Bool showCopies;
-@property(readonly, nonatomic) _Bool showPageRange;
-@property(readonly, nonatomic) _Bool showColor;
-@property(readonly, nonatomic) _Bool showDuplex;
-@property(readonly, nonatomic) _Bool hasJobAccountID;
-@property(retain, nonatomic) NSString *jobAccountID;
-@property(retain, nonatomic) UIPrintPaper *paper;
-@property(readonly, nonatomic) NSArray *paperList;
-- (id)_removeRollsFrom:(id)arg1;
-@property(nonatomic) _Bool annotationsImaged;
-@property(nonatomic) _Bool scaleUpDocument;
-@property(nonatomic) _Bool punch;
-@property(nonatomic) _Bool staple;
-@property(nonatomic) long long copies;
-@property(retain, nonatomic) NSArray *pageRanges;
-@property(readonly, nonatomic) long long pageCount;
-@property(nonatomic) _Bool grayscale;
-@property(nonatomic) _Bool duplex;
-- (id)printInfo;
-- (void)printMoreOptionsViewDidDisappear;
-- (void)printRangeViewDidDisappear;
-- (void)printPaperViewDidDisappear;
-- (void)printerBrowserViewDidDisappear;
-- (void)printPanelDidDisappear;
-- (void)printNavigationConrollerDidDismiss;
-- (void)cancelPrinting;
-- (void)startPrinting;
-- (void)popoverControllerDidDismissPopover:(id)arg1;
-- (unsigned long long)supportedInterfaceOrientations;
-- (_Bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;
+@property(nonatomic) long long lastUsedPrinterIndex; // @synthesize lastUsedPrinterIndex=_lastUsedPrinterIndex;
+@property(retain, nonatomic) NSLayoutConstraint *printOptionsWidthConstraint; // @synthesize printOptionsWidthConstraint=_printOptionsWidthConstraint;
+@property(retain, nonatomic) UIPrintOptionsTableViewController *printOptionsTableViewController; // @synthesize printOptionsTableViewController=_printOptionsTableViewController;
+@property(retain, nonatomic) NSLayoutConstraint *previewHeightConstraint; // @synthesize previewHeightConstraint=_previewHeightConstraint;
+@property(retain, nonatomic) _UIPrintMessageAndSpinnerView *messageAndSpinner; // @synthesize messageAndSpinner=_messageAndSpinner;
+@property(retain, nonatomic) UIView *previewPanelView; // @synthesize previewPanelView=_previewPanelView;
+@property(retain, nonatomic) UIPrintPreviewViewController *previewViewController; // @synthesize previewViewController=_previewViewController;
+@property(retain, nonatomic) UIView *previewSeparatorView; // @synthesize previewSeparatorView=_previewSeparatorView;
+@property(nonatomic) __weak UIViewController *parentController; // @synthesize parentController=_parentController;
+@property(retain, nonatomic) UIPrintPanelNavigationController *printPanelNavigationController; // @synthesize printPanelNavigationController=_printPanelNavigationController;
+@property(retain, nonatomic) UIPrintPanelWindow *printPanelWindow; // @synthesize printPanelWindow=_printPanelWindow;
+@property(copy, nonatomic) CDUnknownBlockType previewUpdateCompletionHandler; // @synthesize previewUpdateCompletionHandler=_previewUpdateCompletionHandler;
+@property(retain, nonatomic) UIPrintInteractionController *printInteractionController; // @synthesize printInteractionController=_printInteractionController;
+@property(retain, nonatomic) UIViewController<UIPrintAppExtensionProtocol> *appPrintExtensionController; // @synthesize appPrintExtensionController=_appPrintExtensionController;
+@property(retain, nonatomic) UITableView *printOptionsTableView; // @synthesize printOptionsTableView=_printOptionsTableView;
+@property(retain, nonatomic) UINavigationController *printOptionsNavController; // @synthesize printOptionsNavController=_printOptionsNavController;
+@property(retain, nonatomic) UIPrintInfo *printInfo; // @synthesize printInfo=_printInfo;
+@property(retain, nonatomic) UIPrinter *printer; // @synthesize printer=_printer;
 - (void)dismissAnimated:(_Bool)arg1;
-- (void)dismissPrintPanel:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)dismissPrintPanelWithAction:(long long)arg1 animated:(_Bool)arg2;
 - (void)presentPrintPanelFromBarButtonItem:(id)arg1 animated:(_Bool)arg2;
 - (void)presentPrintPanelFromRect:(struct CGRect)arg1 inView:(id)arg2 animated:(_Bool)arg3;
 - (void)presentPrintPanelAnimated:(_Bool)arg1 hostingScene:(id)arg2;
-- (void)_keyWindowWillRotate:(id)arg1;
 - (void)_presentInParentAnimated:(_Bool)arg1;
+- (void)cancelPrinting;
+- (void)startPrinting;
+- (void)_generatePDFForQuickLookCompletion:(CDUnknownBlockType)arg1;
+- (struct _NSRange)previewVisibleRange;
+- (void)printPanelDidDisappear;
+- (void)printNavigationConrollerDidDismiss;
+- (void)updatePreveiw;
+@property(retain, nonatomic) UIPrintPaper *printPaper;
+- (void)lookupLastUsedPrinter;
+- (id)printerDisplayName:(id)arg1;
+- (void)addPrintLongPressGestureToNavItem:(id)arg1;
+- (void)addCanelButtonToNavItem:(id)arg1;
+- (void)addPrintButtonToNavItem:(id)arg1;
+- (void)printButtonLongPress:(id)arg1;
+- (void)cancelButtonPressed:(id)arg1;
+- (void)printButtonPressed:(id)arg1;
+- (void)backButtonPressed:(id)arg1;
+- (id)keyCommands;
+- (void)updatePageRange;
+- (_Bool)showPageRange;
+- (void)updatePDFAnnotations;
+- (_Bool)canShowAnnotations;
+- (void)readPrintOptions;
+- (void)updatePrintPreviewInfo;
+- (void)setPdfFileURL:(id)arg1 shouldRenderOnChosenPaper:(_Bool)arg2 completed:(_Bool)arg3 pdfPassword:(id)arg4;
+- (void)viewDidLayoutSubviews;
+- (void)viewWillLayoutSubviews;
+- (void)updateViewConstraints;
+- (_Bool)showingVerticalPreview;
+- (void)viewDidDisappear:(_Bool)arg1;
+- (void)viewWillAppear:(_Bool)arg1;
+- (void)viewDidLoad;
+- (void)setShowPreviewGenerating:(_Bool)arg1;
+- (void)showPreviewGenerating;
+- (void)loadView;
 - (void)dealloc;
 - (id)initWithPrintInterationController:(id)arg1 inParentController:(id)arg2;
 

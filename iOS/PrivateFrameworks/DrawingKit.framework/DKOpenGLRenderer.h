@@ -22,11 +22,11 @@ __attribute__((visibility("hidden")))
     unsigned int mAttributes;
     unsigned int mVbo;
     struct _NSRange mVertexRange;
-    vector_b8c3c0c5 mContiguousVertexStorage;
-    struct vector<VertexGroup, std::__1::allocator<VertexGroup>> mVertexHistory;
-    struct vector<std::__1::pair<float __attribute__((ext_vector_type(2))), float __attribute__((ext_vector_type(2)))>, std::__1::allocator<std::__1::pair<float __attribute__((ext_vector_type(2))), float __attribute__((ext_vector_type(2)))>>> mNonCollisionSegments;
+    vector_f3c59865 mContiguousVertexStorage;
+    struct vector<VertexGroup, std::allocator<VertexGroup>> mVertexHistory;
+    struct vector<std::pair<float __attribute__((ext_vector_type(2))), float __attribute__((ext_vector_type(2)))>, std::allocator<std::pair<float __attribute__((ext_vector_type(2))), float __attribute__((ext_vector_type(2)))>>> mNonCollisionSegments;
     MISSING_TYPE *U_COLOR;
-    struct vector<Page, std::__1::allocator<Page>> mPages;
+    struct vector<Page, std::allocator<Page>> mPages;
     unsigned int mWetPaintBufferFBO;
     unsigned int mWetPaintBufferT;
     MISSING_TYPE *mWetPaintBufferSize;
@@ -76,7 +76,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIColor *inkColor; // @synthesize inkColor=_inkColor;
 @property(nonatomic) __weak id <DKOpenGLRendererDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)snapshotImage;
-- (void)updateVertexControllerWithData:(vector_b8c3c0c5)arg1 range:(struct _NSRange)arg2 allowWet:(_Bool)arg3;
+- (void)updateVertexControllerWithData:(vector_f3c59865)arg1 range:(struct _NSRange)arg2 allowWet:(_Bool)arg3;
 - (void)updateVertexControllerWithDataRange:(struct _NSRange)arg1 allowWet:(_Bool)arg2;
 - (void)didBeginNewStroke;
 - (void)didCompleteStroke;
@@ -98,7 +98,7 @@ __attribute__((visibility("hidden")))
 - (void)updateDryCycleIncludingComposite:(_Bool)arg1;
 - (void)updateWet;
 - (struct CGRect)getVertexBounds;
-- (struct CGRect)regionWithVertices:(vector_b8c3c0c5)arg1 withInflationAmount:(float)arg2;
+- (struct CGRect)regionWithVertices:(vector_f3c59865)arg1 withInflationAmount:(float)arg2;
 - (void)update;
 - (_Bool)detectCollision:: /* Error: Ran out of types for this method. */;
 - (void)addPoints:(id)arg1 withSegmentLength:(unsigned long long)arg2;

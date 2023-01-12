@@ -53,6 +53,7 @@
 - (void)prepareForReuse;
 - (void)prepareForDisplay;
 - (struct UIEdgeInsets)alignmentRectInsets;
+- (struct UIEdgeInsets)targetTextContainerInsets;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 @property(readonly, copy) NSString *description;

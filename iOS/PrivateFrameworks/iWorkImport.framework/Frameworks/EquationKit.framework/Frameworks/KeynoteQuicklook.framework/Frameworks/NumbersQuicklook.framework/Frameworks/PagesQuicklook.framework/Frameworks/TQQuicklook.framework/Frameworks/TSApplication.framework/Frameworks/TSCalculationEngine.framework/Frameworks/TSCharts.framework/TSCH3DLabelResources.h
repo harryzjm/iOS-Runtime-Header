@@ -5,21 +5,24 @@
 //
 
 @class NSMutableDictionary, TSCH3DTextureAtlas;
+@protocol TSWPStyleProviding;
 
 @interface TSCH3DLabelResources
 {
-    NSMutableDictionary *mCache;
-    TSCH3DTextureAtlas *mAtlas;
+    NSMutableDictionary *_cache;
+    TSCH3DTextureAtlas *_atlas;
+    id <TSWPStyleProviding> _styleProvidingSource;
 }
 
-@property(readonly, nonatomic) TSCH3DTextureAtlas *atlas; // @synthesize atlas=mAtlas;
-- (id)resourceAtIndex:(const tvec2_3b141483 *)arg1 string:(id)arg2 bitmapContextInfo:(id)arg3 labelWidth:(double)arg4;
-- (void)setParagraphStyle:(id)arg1 forKey:(unsigned long long)arg2 atIndex:(const tvec2_3b141483 *)arg3;
-- (void)setParagraphStyle:(id)arg1 atIndex:(const tvec2_3b141483 *)arg2;
+- (void).cxx_destruct;
+@property(nonatomic) __weak id <TSWPStyleProviding> styleProvidingSource; // @synthesize styleProvidingSource=_styleProvidingSource;
+@property(readonly, nonatomic) TSCH3DTextureAtlas *atlas; // @synthesize atlas=_atlas;
+- (id)resourceAtIndex:(const void *)arg1 string:(id)arg2 bitmapContextInfo:(id)arg3 labelWidth:(double)arg4;
+- (void)setParagraphStyle:(id)arg1 forKey:(unsigned long long)arg2 atIndex:(const void *)arg3;
+- (void)setParagraphStyle:(id)arg1 atIndex:(const void *)arg2;
 - (id)paragraphStyleForKey:(unsigned long long)arg1 defaultStyle:(id)arg2;
 - (id)prepareTextureAtlasWithSamples:(float)arg1;
-- (void)dealloc;
-- (id)initWithSize:(const tvec2_3b141483 *)arg1;
+- (id)initWithSize:(const void *)arg1;
 
 @end
 

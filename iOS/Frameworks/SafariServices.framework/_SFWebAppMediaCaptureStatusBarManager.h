@@ -9,7 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (int)overrideStyleForAudioOnly:(_Bool)arg1;
+- (unsigned long long)overrideStyleForAudioOnly:(_Bool)arg1;
 - (id)statusFormatString;
 
 @end

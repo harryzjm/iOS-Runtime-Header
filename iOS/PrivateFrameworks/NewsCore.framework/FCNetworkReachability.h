@@ -8,7 +8,7 @@
 
 #import <NewsCore/FCNetworkReachabilityType-Protocol.h>
 
-@class NFLazy, NSHashTable, NSString;
+@class NSHashTable, NSString;
 
 @interface FCNetworkReachability : NSObject <FCNetworkReachabilityType>
 {
@@ -22,14 +22,13 @@
     _Bool _accessRestrictedBecauseOfOSVersion;
     _Bool _accessRestrictedBecauseOfCountry;
     _Bool _accessRestrictedBecauseOfDeviceAbandoned;
+    long long _cellularRadioAccessTechnology;
     long long _offlineReason;
     NSHashTable *_observers;
-    NFLazy *_networkInfo;
 }
 
 + (id)sharedNetworkReachability;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NFLazy *networkInfo; // @synthesize networkInfo=_networkInfo;
 @property(nonatomic) _Bool accessRestrictedBecauseOfDeviceAbandoned; // @synthesize accessRestrictedBecauseOfDeviceAbandoned=_accessRestrictedBecauseOfDeviceAbandoned;
 @property(nonatomic) _Bool accessRestrictedBecauseOfCountry; // @synthesize accessRestrictedBecauseOfCountry=_accessRestrictedBecauseOfCountry;
 @property(nonatomic) _Bool accessRestrictedBecauseOfOSVersion; // @synthesize accessRestrictedBecauseOfOSVersion=_accessRestrictedBecauseOfOSVersion;
@@ -39,10 +38,12 @@
 @property(retain, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property(nonatomic) long long offlineReason; // @synthesize offlineReason=_offlineReason;
 @property(nonatomic) _Bool isNetworkUsageExpensive; // @synthesize isNetworkUsageExpensive=_isNetworkUsageExpensive;
+@property(nonatomic) long long cellularRadioAccessTechnology; // @synthesize cellularRadioAccessTechnology=_cellularRadioAccessTechnology;
 @property(nonatomic) _Bool isLowDataModeEnabled; // @synthesize isLowDataModeEnabled=_isLowDataModeEnabled;
 @property(nonatomic) _Bool isNetworkReachableViaWiFi; // @synthesize isNetworkReachableViaWiFi=_isNetworkReachableViaWiFi;
 @property(nonatomic) _Bool isNetworkReachable; // @synthesize isNetworkReachable=_isNetworkReachable;
 - (long long)_cellularRadioAccessTechnologyFromString:(id)arg1;
+- (long long)_cellularRadioAccessTechnology;
 @property(readonly, nonatomic) _Bool isCloudKitReachable;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
@@ -51,7 +52,7 @@
 - (void)_reachabilityChanged:(id)arg1;
 - (void)_updateReachability;
 @property(readonly, nonatomic) _Bool isNetworkOnlyReachableViaCellular;
-@property(readonly, nonatomic) long long cellularRadioAccessTechnology;
+@property(readonly, nonatomic) _Bool isNetworkUsageInexpensive;
 - (void)dealloc;
 - (id)init;
 

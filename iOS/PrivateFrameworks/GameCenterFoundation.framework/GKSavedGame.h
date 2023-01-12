@@ -18,6 +18,7 @@
     NSURL *_fileURL;
 }
 
+- (void).cxx_destruct;
 @property(retain) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 @property(retain) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
 @property(retain) NSString *deviceName; // @synthesize deviceName=_deviceName;
@@ -25,7 +26,6 @@
 - (id)description;
 - (void)loadDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 
 @end
 

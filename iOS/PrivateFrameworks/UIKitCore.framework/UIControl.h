@@ -10,7 +10,7 @@
 #import <UIKitCore/_UICursorInteractionDelegate-Protocol.h>
 #import <UIKitCore/_UIVariableGestureContextMenuInteractionDelegate-Protocol.h>
 
-@class NSMutableArray, NSSet, NSString, UIContextMenuInteraction, UIPointerInteraction, _UICursorInteraction;
+@class NSMutableArray, NSSet, NSString, UIContextMenuInteraction, UIPointerInteraction, UIToolTipInteraction, _UICursorInteraction;
 
 @interface UIControl <_UIVariableGestureContextMenuInteractionDelegate, UIPointerInteractionDelegate, UIContextMenuInteractionDelegate_Private, _UICursorInteractionDelegate, UIContextMenuInteractionDelegate>
 {
@@ -38,12 +38,14 @@
         unsigned int highlightForMenuPresentation:1;
     } _controlFlags;
     long long _requiredButtonMask;
+    _UICursorInteraction *_cursorInteraction;
 }
 
 + (_Bool)_cursorInteractionEnabled;
 + (unsigned long long)_primaryStateForState:(unsigned long long)arg1;
 + (_Bool)_allowActionsToQueue;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _UICursorInteraction *cursorInteraction; // @synthesize cursorInteraction=_cursorInteraction;
 @property(nonatomic, setter=_setRequiredButtonMask:) long long _requiredButtonMask; // @synthesize _requiredButtonMask;
 - (long long)_sceneDraggingBehaviorOnPan;
 - (void)_contextMenuInteraction:(id)arg1 willBeginWithConfiguration:(id)arg2;
@@ -63,18 +65,12 @@
 - (id)_contextMenuInteraction;
 @property(readonly, nonatomic) UIContextMenuInteraction *contextMenuInteraction;
 - (void)_installCursorInteractionIfNeeded;
-- (void)cursorInteraction:(id)arg1 willExitRegion:(id)arg2 withAnimator:(id)arg3;
-- (void)cursorInteraction:(id)arg1 willEnterRegion:(id)arg2 withAnimator:(id)arg3;
-- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
-- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
 @property(readonly, nonatomic) _UICursorInteraction *_cursorInteraction;
-@property(readonly, nonatomic) _UICursorInteraction *cursorInteraction;
+@property(readonly, nonatomic) UIToolTipInteraction *toolTipInteraction;
+@property(copy, nonatomic) NSString *toolTip;
 - (void)_invalidatePointerInteraction;
 @property(retain, nonatomic, setter=_setProxyPointerInteraction:) UIPointerInteraction *_proxyPointerInteraction;
 @property(readonly, nonatomic) UIPointerInteraction *_pointerInteraction;
-- (void)pointerInteraction:(id)arg1 willExitRegion:(id)arg2 animator:(id)arg3;
-- (void)pointerInteraction:(id)arg1 willEnterRegion:(id)arg2 animator:(id)arg3;
-- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 @property(nonatomic, getter=isPointerInteractionEnabled) _Bool pointerInteractionEnabled;
 @property(readonly, nonatomic) UIPointerInteraction *pointerInteraction;
@@ -83,7 +79,7 @@
 - (unsigned long long)_stateForFocusUpdateContext:(id)arg1;
 - (long long)_focusedSound;
 - (void)_diagnoseFocusabilityForReport:(id)arg1;
-- (id)_systemDefaultFocusGroupDescriptor;
+- (id)_systemDefaultFocusGroupIdentifier;
 - (_Bool)canBecomeFocused;
 - (void)_sendDelayedActions:(_Bool)arg1;
 - (void)_unhighlight;
@@ -138,6 +134,7 @@
 @property(nonatomic) long long contentHorizontalAlignment; // @dynamic contentHorizontalAlignment;
 @property(readonly, nonatomic) long long effectiveContentVerticalAlignment;
 @property(nonatomic) long long contentVerticalAlignment; // @dynamic contentVerticalAlignment;
+- (_Bool)_hasActiveMenuPresentation;
 @property(nonatomic, getter=isHighlighted) _Bool highlighted; // @dynamic highlighted;
 - (void)cancelTrackingWithEvent:(id)arg1;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
@@ -154,6 +151,7 @@
 - (id)initWithFrame:(struct CGRect)arg1 primaryAction:(id)arg2;
 - (void)_commonInitForPrimaryAction:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)_activateForAccessibilityHUDLiftAtPoint:(struct CGPoint)arg1;
 - (void)_connectInterfaceBuilderEventConnection:(id)arg1;
 - (void)_commitInteractionDurationStatisticMeasurements;
 - (void)_beginInteractionDurationStatisticMeasurements;

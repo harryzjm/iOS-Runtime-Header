@@ -17,6 +17,7 @@
 }
 
 + (Class)categoriesType;
++ (id)TPPBPolicyCategoriesByViewWithView:(id)arg1 categories:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *categories; // @synthesize categories=_categories;
 @property(retain, nonatomic) NSString *view; // @synthesize view=_view;

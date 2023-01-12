@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIFoundation/NSTextStorageController-Protocol.h>
+#import <UIFoundation/NSTextStorageObserving-Protocol.h>
 
 @class NSAttributedString, NSCountableTextRange, NSRunStorage, NSStorage, NSString, NSTextStorage;
+@protocol NSTextContentStorageDelegate;
 
-@interface NSTextContentStorage <NSTextStorageController>
+@interface NSTextContentStorage <NSTextStorageObserving>
 {
     NSAttributedString *_attributedString;
     NSTextStorage *_textStorage;
@@ -20,6 +21,7 @@
     long long _modifiedDocumentLengthDelta;
     struct _NSRange _editedRange;
     long long _editedDelta;
+    unsigned long long _editedMask;
     _Bool _notifyingToFixSelection;
     struct {
         id *_field1;
@@ -30,30 +32,36 @@
         unsigned long long _field6;
         long long _field7;
         _Bool _field8;
+        _Bool _field9;
     } *_activeEnumerationCache;
 }
 
 + (_Bool)supportsSecureCoding;
 - (_Bool)isCountableDataSource;
-- (id)adjustedRangeFromRange:(id)arg1 inEditingTextSelection:(_Bool)arg2;
+- (id)adjustedRangeFromRange:(id)arg1 forEditingTextSelection:(_Bool)arg2;
 - (long long)offsetFromLocation:(id)arg1 toLocation:(id)arg2;
 - (id)locationFromLocation:(id)arg1 offset:(long long)arg2;
-- (_Bool)synchronizeToBackingStore:(CDUnknownBlockType)arg1;
-- (void)replaceCharactersInRange:(id)arg1 withTextElements:(id)arg2;
-- (id)enumerateTextElementsFromLocation:(id)arg1 options:(long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (id)locationFromLocation:(id)arg1 withOffset:(long long)arg2;
+- (void)synchronizeToBackingStore:(CDUnknownBlockType)arg1;
+- (void)replaceContentsInRange:(id)arg1 withTextElements:(id)arg2;
+- (id)enumerateTextElementsFromLocation:(id)arg1 options:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 @property(readonly) NSCountableTextRange *documentRange;
-- (_Bool)synchronizeTextLayoutManagers:(CDUnknownBlockType)arg1;
+- (void)synchronizeTextLayoutManagers:(CDUnknownBlockType)arg1;
 - (void)performEditingTransactionForTextStorage:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)performEditingTransactionForTextStorage:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)endEditingTransaction;
 - (void)beginEditingTransaction;
 - (void)processEditingForTextStorage:(id)arg1 edited:(unsigned long long)arg2 range:(struct _NSRange)arg3 changeInLength:(long long)arg4 invalidatedRange:(struct _NSRange)arg5;
 - (void)updateRangesForTextElement:(id)arg1 locationDelta:(long long)arg2;
-@property(retain) NSTextStorage *textStorage; // @dynamic textStorage;
+@property(retain, nonatomic) NSTextStorage *textStorage; // @dynamic textStorage;
+- (_Bool)_supportsTextAttributesInRange:(struct _NSRange)arg1;
+- (_Bool)_supportsTextAttributes:(id)arg1;
 - (id)textElementsForAttributedString:(id)arg1;
 - (id)attributedStringForTextElements:(id)arg1;
 - (id)textElementForAttributedString:(id)arg1;
 - (id)attributedStringForTextElement:(id)arg1;
 @property(copy) NSAttributedString *attributedString; // @dynamic attributedString;
+@property __weak id <NSTextContentStorageDelegate> delegate; // @dynamic delegate;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;

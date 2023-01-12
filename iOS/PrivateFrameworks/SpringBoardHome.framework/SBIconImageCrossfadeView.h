@@ -20,6 +20,7 @@
     id <SBCrossfadingIconImageSource> _iconImageSource;
     UIView *_iconImageView;
     UIView *_crossfadeView;
+    UIView *_backgroundView;
     UIView *_crossfadeContainerView;
     double _morphFraction;
     struct CGPoint _stretchAnchorPoint;
@@ -29,6 +30,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) double morphFraction; // @synthesize morphFraction=_morphFraction;
 @property(readonly, nonatomic) UIView *crossfadeContainerView; // @synthesize crossfadeContainerView=_crossfadeContainerView;
+@property(readonly, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property(readonly, nonatomic) UIView *crossfadeView; // @synthesize crossfadeView=_crossfadeView;
 @property(readonly, nonatomic) UIView *iconImageView; // @synthesize iconImageView=_iconImageView;
 @property(readonly, nonatomic) id <SBCrossfadingIconImageSource> iconImageSource; // @synthesize iconImageSource=_iconImageSource;
@@ -37,12 +39,13 @@
 @property(nonatomic) struct CGPoint stretchAnchorPoint; // @synthesize stretchAnchorPoint=_stretchAnchorPoint;
 @property(nonatomic) _Bool performsTrueCrossfade; // @synthesize performsTrueCrossfade=_performsTrueCrossfade;
 @property(nonatomic) _Bool masksCorners; // @synthesize masksCorners=_masksCorners;
-@property(readonly, nonatomic) _Bool reparentsSourceView;
 - (void)_applyCornerRadius:(double)arg1;
 - (void)_setCornerRadiusEnabled:(_Bool)arg1;
 - (void)_updateCornerMask;
 - (void)_applyCrossfadeScaleX:(double)arg1 scaleY:(double)arg2;
 - (void)cleanup;
+- (void)setCrossfadeViewFadeFraction:(double)arg1;
+- (void)setSourceFadeFraction:(double)arg1;
 - (void)setMorphFraction:(double)arg1;
 - (void)setAppSnapshotCornerRadius:(double)arg1;
 - (void)setCrossfadeFraction:(double)arg1;

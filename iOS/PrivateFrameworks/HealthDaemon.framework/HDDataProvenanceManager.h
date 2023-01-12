@@ -28,31 +28,12 @@
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSString *localProductType; // @synthesize localProductType=_localProductType;
-@property(copy, nonatomic) NSString *localSystemBuild; // @synthesize localSystemBuild=_localSystemBuild;
-@property(retain, nonatomic) HDDatabaseValueCache *originProvenanceByPersistentID; // @synthesize originProvenanceByPersistentID=_originProvenanceByPersistentID;
-@property(retain, nonatomic) HDDatabaseValueCache *persistentIDsByProvenanceKey; // @synthesize persistentIDsByProvenanceKey=_persistentIDsByProvenanceKey;
 - (id)diagnosticDescription;
-- (void)setPrimaryUserContributorReference:(id)arg1;
-@property(readonly, copy, nonatomic) HDContributorReference *primaryUserContributorReference;
-- (void)setNoneContributorReference:(id)arg1;
-@property(readonly, copy, nonatomic) HDContributorReference *noneContributorReference;
-- (void)setDeviceNoneID:(id)arg1;
-@property(readonly, copy, nonatomic) NSNumber *deviceNoneID;
-- (void)setLocalDeviceID:(id)arg1;
-@property(readonly, copy, nonatomic) NSNumber *localDeviceID;
-- (void)setLocalSourceID:(id)arg1;
-@property(readonly, copy, nonatomic) NSNumber *localSourceID;
-- (void)checkDefaultsLoaded;
 @property(readonly, copy) NSString *description;
-- (id)_localTimeZoneName;
-- (void)_loadDefaults;
 - (id)originProvenanceForPersistentID:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
-- (id)_localDataProvenanceWithSourceID:(id)arg1 sourceVersion:(id)arg2 deviceID:(id)arg3 contributorReference:(id)arg4;
 - (id)localDataProvenanceForSourceEntity:(id)arg1 version:(id)arg2 deviceEntity:(id)arg3;
 - (id)defaultLocalDataProvenanceWithDeviceEntity:(id)arg1;
 - (id)defaultLocalDataProvenance;
-- (id)_lookupOrInsertProvenance:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
 - (id)provenanceEntityForProvenance:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
 - (id)provenanceEntityForProvenance:(id)arg1 error:(id *)arg2;
 - (id)initWithProfile:(id)arg1;

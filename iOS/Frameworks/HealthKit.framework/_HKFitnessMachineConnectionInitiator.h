@@ -14,6 +14,7 @@
 
 @interface _HKFitnessMachineConnectionInitiator : NSObject <HKFitnessMachineConnectionInitiatorClientInterface, _HKXPCExportable>
 {
+    _Atomic _Bool _requiresRegistration;
     HKTaskServerProxyProvider *_proxyProvider;
     id <_HKFitnessMachineConnectionInitiatorDelegate> _delegate;
 }
@@ -31,7 +32,7 @@
 - (void)_fetchProxyWithHandler:(CDUnknownBlockType)arg1;
 - (void)forbidConnectionForFitnessMachineSessionUUID:(id)arg1;
 - (void)permitConnectionForFitnessMachineSessionUUID:(id)arg1 activityType:(unsigned long long)arg2;
-- (void)registerClient;
+- (void)registerClientIfNeeded;
 - (void)connectionInvalidated;
 - (void)connectionInterrupted;
 - (id)remoteInterface;

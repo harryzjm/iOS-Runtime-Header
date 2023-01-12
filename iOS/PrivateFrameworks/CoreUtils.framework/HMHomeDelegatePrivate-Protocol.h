@@ -6,11 +6,18 @@
 
 #import <CoreUtils/HMHomeDelegate-Protocol.h>
 
-@class CLLocation, HMAccessory, HMAccessoryNetworkProtectionGroup, HMActionSet, HMHome, HMHomePersonManagerSettings, HMMediaSystem, HMResidentDevice, HMRoom, HMServiceGroup, HMUser, NSArray, NSString;
+@class CLLocation, HMAccessory, HMAccessoryNetworkProtectionGroup, HMActionSet, HMHome, HMHomePersonManagerSettings, HMMediaSystem, HMResidentDevice, HMRoom, HMServiceGroup, HMUser, NSArray, NSError, NSString;
 
 @protocol HMHomeDelegatePrivate <HMHomeDelegate>
 
 @optional
+- (void)homeDidUpdateToROAR:(HMHome *)arg1;
+- (void)homeDidUpdateAssistantIdentifiers:(HMHome *)arg1;
+- (void)home:(HMHome *)arg1 didUpdateHasOnboardedForWalletKey:(_Bool)arg2;
+- (void)homeDidRemoveWalletKey:(HMHome *)arg1;
+- (void)homeDidAddWalletKey:(HMHome *)arg1;
+- (void)homeDidSetHasOnboardedForAccessCode:(HMHome *)arg1;
+- (void)home:(HMHome *)arg1 didFailAccessorySetupWithError:(NSError *)arg2;
 - (void)home:(HMHome *)arg1 didUpdatePersonManagerSettings:(HMHomePersonManagerSettings *)arg2;
 - (void)homeDidSetEnableDoorbellChime:(HMHome *)arg1;
 - (void)home:(HMHome *)arg1 didUpdateAccessoryNetworkProtectionGroup:(HMAccessoryNetworkProtectionGroup *)arg2;

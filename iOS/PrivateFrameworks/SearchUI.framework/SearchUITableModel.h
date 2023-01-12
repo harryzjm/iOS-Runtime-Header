@@ -15,6 +15,7 @@
     NSArray *_sections;
 }
 
++ (_Bool)shouldDisplayChevronForRowModel:(id)arg1 previousRowModel:(id)arg2 nextRowModel:(id)arg3 nextCardsEnabled:(_Bool)arg4;
 + (id)rowModelsForResult:(id)arg1;
 + (id)resultsForMultiResultRowInSection:(id)arg1 startingAtIndex:(unsigned long long)arg2;
 + (id)gridLayoutsForCardSections:(id)arg1;
@@ -24,20 +25,22 @@
 + (id)combinedRowModelsForRowModels:(id)arg1 result:(id)arg2;
 + (id)tableModelWithResults:(id)arg1;
 + (id)tableModelWithResult:(id)arg1;
++ (id)tableModelWithCardSections:(id)arg1 result:(id)arg2 isInline:(_Bool)arg3 queryId:(unsigned long long)arg4 shouldCombine:(_Bool)arg5;
 + (id)tableModelWithCardSections:(id)arg1 isInline:(_Bool)arg2 queryId:(unsigned long long)arg3;
-+ (_Bool)resultHasHorizontallyScrollingCardSections:(id)arg1;
++ (_Bool)resultHasHorizontallyGroupedCardSections:(id)arg1;
 + (id)tableModelWithSections:(id)arg1 expandedSections:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 @property(retain, nonatomic) NSArray *tableRowModel; // @synthesize tableRowModel=_tableRowModel;
 @property(readonly) unsigned long long queryId; // @synthesize queryId=_queryId;
+- (void)enumerateRowModels:(CDUnknownBlockType)arg1;
 - (id)description;
 - (id)indexPathForResultInFirstTwoSections:(id)arg1;
 - (id)indexPathForRowModel:(id)arg1;
 - (_Bool)rowWillFillBackgroundWithContentAtIndexPath:(id)arg1;
 - (int)separatorStyleForIndexPath:(id)arg1;
 - (_Bool)shouldLeaveSpaceForChevronForIndexPath:(id)arg1;
-- (_Bool)shouldDisplayChevronForIndexPath:(id)arg1;
+- (_Bool)shouldDisplayChevronForIndexPath:(id)arg1 nextCardsEnabled:(_Bool)arg2;
 - (id)cardSectionForIndexPath:(id)arg1;
 - (unsigned long long)indexOfSection:(id)arg1;
 - (id)sectionForIndex:(unsigned long long)arg1;
@@ -48,6 +51,7 @@
 - (id)removeRowModel:(id)arg1;
 - (void)replaceResult:(id)arg1 withResult:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (unsigned long long)numberOfSections;
+- (id)updatedTableModelByDeletingSectionIndex:(unsigned long long)arg1;
 - (id)updatedTableModelWithExpandedSections:(id)arg1 hiddenSections:(id)arg2 atSectionIndex:(unsigned long long)arg3;
 - (id)initWithQueryId:(unsigned long long)arg1;
 

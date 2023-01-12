@@ -20,7 +20,7 @@
 - (void)setExternalIDTag:(id)arg1;
 - (void)setExternalID:(id)arg1;
 - (void)setSource:(id)arg1;
-- (_Bool)commit:(id *)arg1;
+- (_Bool)save:(id *)arg1;
 - (_Bool)validate:(id *)arg1;
 - (void)removeNotification:(id)arg1;
 - (void)addNotification:(id)arg1;

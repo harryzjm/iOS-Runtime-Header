@@ -11,12 +11,15 @@
 @class NSString;
 
 @interface CALayer (PXGReusableViewAdoption) <PXGInternalReusableView>
+- (_Bool)shouldReloadForUserData:(id)arg1;
+@property(readonly, nonatomic) _Bool shouldReuseWhenInvisible;
 - (void)pxg_shiftPosition:(struct CGPoint)arg1;
-- (void)pxg_configureWithTexture:(id)arg1 geometry:(CDStruct_3ab912e1 *)arg2 info:(CDStruct_9d1ebe49 *)arg3 style:(CDStruct_506f5052 *)arg4 textureInfo:(CDStruct_183601bc *)arg5 resizableCapInsets:(CDStruct_0054b44d)arg6;
+- (void)pxg_configureWithTexture:(id)arg1 geometry:(CDStruct_4f725fed *)arg2 info:(CDStruct_9d1ebe49 *)arg3 style:(CDStruct_76b550e2 *)arg4 textureInfo:(CDStruct_183601bc *)arg5 resizableCapInsets:(CDStruct_0054b44d)arg6 reusableViewInfo:(id)arg7 screenScale:(double)arg8;
 - (void)pxg_prepareForReuse;
 - (void)pxg_becomeReusable;
 - (void)pxg_removeFromSuperview;
 - (void)pxg_addToScrollViewController:(id)arg1;
+- (void)px_setAnchorPoint:(struct CGPoint)arg1;
 @property(readonly, nonatomic) _Bool px_supportsAlphaBlending;
 
 // Remaining properties

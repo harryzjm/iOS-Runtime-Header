@@ -18,7 +18,7 @@
     TPSAssetSizes *_assetSizes;
 }
 
-+ (id)classSet;
++ (id)identifierFromMetadataDictionary:(id)arg1;
 + (id)metadataFromDictionary:(id)arg1;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;

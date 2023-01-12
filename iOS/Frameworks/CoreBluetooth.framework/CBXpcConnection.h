@@ -12,16 +12,19 @@
 __attribute__((visibility("hidden")))
 @interface CBXpcConnection : NSObject
 {
-    id <CBXpcConnectionDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_eventQueue;
     NSMutableDictionary *_options;
     int _sessionType;
     NSObject<OS_dispatch_queue> *_xpcQueue;
     NSObject<OS_xpc_object> *_xpcConnection;
     _Bool _uiAppIsBackgrounded;
+    CDUnknownBlockType _whbReplyHandler;
+    NSMutableDictionary *_whbRemoteToLocalUuidMap;
+    id <CBXpcConnectionDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <CBXpcConnectionDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_applicationWillEnterForegroundNotification;
 - (void)_applicationDidEnterBackgroundNotification;
 - (void)_handleConnectionEvent:(id)arg1;
@@ -36,8 +39,17 @@ __attribute__((visibility("hidden")))
 - (void)_checkIn;
 - (void)setTargetQueue:(id)arg1;
 - (void)disconnect;
+- (void)removeWhbRemoteId:(id)arg1;
+- (id)getWhbLocalIdForRemoteId:(id)arg1;
+- (void)setWhbLocalId:(id)arg1 forRemoteId:(id)arg2;
+- (void)setWhbReplyHandler:(CDUnknownBlockType)arg1;
+- (void)didReceiveForwardedDelegateCallbackMessage:(id)arg1;
+- (void)didReceiveForwardedMessage:(id)arg1;
+- (void)forwardWhbMsg:(unsigned short)arg1 args:(id)arg2 cnx:(id)arg3;
+- (void)sendMsgWithReply:(unsigned short)arg1 args:(id)arg2 replyBlock:(CDUnknownBlockType)arg3;
 - (id)sendSyncMsg:(unsigned short)arg1 args:(id)arg2;
 - (void)sendMsg:(unsigned short)arg1 args:(id)arg2;
+- (id)getEventQueue;
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2 options:(id)arg3 sessionType:(int)arg4;
 
 @end

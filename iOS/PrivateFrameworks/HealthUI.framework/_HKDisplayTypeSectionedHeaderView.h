@@ -6,17 +6,19 @@
 
 #import <UIKit/UICollectionReusableView.h>
 
-@class NSString, UILabel, UIView;
+@class NSLayoutConstraint, NSString, UILabel, UIView;
 
 @interface _HKDisplayTypeSectionedHeaderView : UICollectionReusableView
 {
     UIView *_contentView;
     NSString *_title;
     UILabel *_titleLabel;
+    NSLayoutConstraint *_titleTrailingConstraint;
 }
 
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSLayoutConstraint *titleTrailingConstraint; // @synthesize titleTrailingConstraint=_titleTrailingConstraint;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
 @property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;

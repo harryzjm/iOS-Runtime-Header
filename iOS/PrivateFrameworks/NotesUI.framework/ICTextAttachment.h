@@ -4,8 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
-
 @interface ICTextAttachment
 {
 }
@@ -20,16 +18,10 @@
 - (double)availableWidthForTextContainer:(id)arg1;
 - (struct CGSize)attachmentSizeForTextContainer:(id)arg1 proposedLineFragment:(struct CGRect)arg2;
 - (struct CGSize)attachmentSizeForTextContainer:(id)arg1;
-@property(readonly, nonatomic) NSString *viewIdentifier;
-- (Class)attachmentViewControllerClass;
-- (Class)attachmentViewClass;
-- (id)newlyCreatedViewControllerForManualRendering:(_Bool)arg1 layoutManager:(id)arg2;
-- (id)newlyCreatedViewForManualRendering;
-- (id)newlyCreatedView;
-@property(readonly, nonatomic) _Bool containsFindableText;
 - (_Bool)supportsMultipleThumbnailsOnSameLine;
 - (_Bool)supportsThumbnailView;
 - (_Bool)requiresSpaceAfterAttachmentForPrinting;
+- (_Bool)isUnsupported;
 - (id)attachmentAsNSTextAttachment;
 - (id)attachmentFileWrapper;
 - (id)initWithData:(id)arg1 ofType:(id)arg2;

@@ -10,9 +10,7 @@
 - (void)VoiceShortcutsShortcutsMigrator;
 - (void)accountsobsolescencemigrator;
 - (void)VideosMigrator;
-- (void)HomeKitMigrator;
 - (void)iTunesStoremigrator;
-- (void)Weather;
 - (void)vibrationmigrator;
 - (void)tonemigrator;
 - (void)StocksMigrator;
@@ -56,9 +54,6 @@
 - (void)messageLegacyAccountsMigrator;
 - (void)appleaccountmigrator;
 - (void)appleaccountmergebuddyprovisioningresponsemigrator;
-- (void)appleaccountappleidaccountmigrator;
-- (void)appleaccountlegacymigrator;
-- (void)appleaccountmergeandremovemobilemeaccountsmigrator;
 - (void)MobileSafarimigrator;
 - (void)WebBookmarksmigrator;
 - (void)accountsettingsmigrator;

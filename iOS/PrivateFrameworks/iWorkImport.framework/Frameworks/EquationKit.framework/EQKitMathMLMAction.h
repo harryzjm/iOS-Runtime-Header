@@ -16,7 +16,7 @@
 - (id)operatorCore;
 - (_Bool)isEmbellishedOperator;
 - (struct Schemata)layoutSchemata;
-- (const set_c5c159f9 *)mathMLAttributes;
+- (const void *)mathMLAttributes;
 - (void)dealloc;
 - (id)initFromXMLNode:(struct _xmlNode *)arg1 parser:(id)arg2;
 

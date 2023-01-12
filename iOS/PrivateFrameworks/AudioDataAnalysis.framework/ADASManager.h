@@ -14,10 +14,10 @@
 }
 
 - (void).cxx_destruct;
+- (void)_donateSignalToTipsKit:(_Bool)arg1;
 - (_Bool)nanoSettingsAvailable;
 - (_Bool)_isAlertSupported;
 - (_Bool)_featureFlagEnabled;
-- (_Bool)_softwareVersionEnabled;
 - (_Bool)_isDeviceMandatoryForHAENotification:(_Bool)arg1;
 - (id)_getDefaultsKey:(id)arg1;
 - (id)_error:(long long)arg1;

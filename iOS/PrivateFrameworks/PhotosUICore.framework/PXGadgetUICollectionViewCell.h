@@ -16,7 +16,10 @@
 + (Class)_contentViewClass;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIView *gadgetContentView; // @synthesize gadgetContentView=_gadgetContentView;
+- (id)focusEffect;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)prepareForReuse;
+- (void)_updateFocusRing;
 
 @end
 

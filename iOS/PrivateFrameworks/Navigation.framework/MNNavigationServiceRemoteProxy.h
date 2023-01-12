@@ -8,7 +8,7 @@
 
 #import <Navigation/MNNavigationServiceProxy-Protocol.h>
 
-@class MNSettings, MNStartNavigationDetails, NSHashTable, NSMutableArray, NSString, NSXPCConnection, geo_isolater;
+@class MNStartNavigationDetails, MNUserOptions, NSArray, NSHashTable, NSMutableArray, NSString, NSXPCConnection, geo_isolater;
 @protocol MNNavigationServiceClientInterface, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -16,13 +16,13 @@ __attribute__((visibility("hidden")))
 {
     _Bool _applicationActive;
     NSXPCConnection *_connection;
-    MNSettings *_settings;
+    MNUserOptions *_userOptions;
     geo_isolater *_clientsLock;
     NSHashTable *_clients;
     MNStartNavigationDetails *_startNavigationDetails;
     NSMutableArray *_interruptionDates;
     _Bool _isReconnecting;
-    CDUnknownBlockType _predictionHandler;
+    NSArray *_announcementsToIgnore;
     NSObject<OS_dispatch_queue> *_serialQueue;
     long long _sandboxHandle;
     id <MNNavigationServiceClientInterface> _delegate;
@@ -43,26 +43,25 @@ __attribute__((visibility("hidden")))
 - (void)setTracePlaybackSpeed:(double)arg1;
 - (void)setTraceIsPlaying:(_Bool)arg1;
 - (void)acceptReroute:(_Bool)arg1 forTrafficIncidentAlert:(id)arg2;
+- (void)enableNavigationCapability:(unsigned long long)arg1;
+- (void)disableNavigationCapability:(unsigned long long)arg1;
 - (void)setJunctionViewImageWidth:(double)arg1 height:(double)arg2;
 - (void)setRideIndex:(unsigned long long)arg1 forSegmentIndex:(unsigned long long)arg2;
 - (void)setDisplayedStepIndex:(unsigned long long)arg1;
 - (void)setIsConnectedToCarplay:(_Bool)arg1;
 - (void)setGuidancePromptsEnabled:(_Bool)arg1;
 - (void)setHeadingOrientation:(int)arg1;
-- (void)setCurrentAudioOutputSetting:(id)arg1;
-- (void)setHFPPreference:(_Bool)arg1 forSetting:(id)arg2;
 - (void)stopCurrentGuidancePrompt;
 - (void)vibrateForPrompt:(unsigned long long)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)repeatCurrentTrafficAlertWithReply:(CDUnknownBlockType)arg1;
 - (void)repeatCurrentGuidanceWithReply:(CDUnknownBlockType)arg1;
-- (void)changeSettings:(id)arg1;
-- (void)setFullGuidanceMode:(_Bool)arg1;
+- (void)changeUserOptions:(id)arg1;
+- (void)setGuidanceType:(unsigned long long)arg1;
 - (void)switchToRoute:(id)arg1;
+- (void)forceReroute;
 - (void)resumeOriginalDestination;
 - (void)updateDestination:(id)arg1;
-- (void)stopPredictingDestinations;
-- (void)startPredictingDestinationsWithHandler:(CDUnknownBlockType)arg1;
-- (void)stopNavigation;
+- (void)stopNavigationWithReason:(unsigned long long)arg1;
 - (void)startNavigationWithDetails:(id)arg1 activeBlock:(CDUnknownBlockType)arg2;
 - (void)setRoutesForPreview:(id)arg1 selectedRouteIndex:(unsigned long long)arg2;
 - (id)methodSignatureForSelector:(SEL)arg1;
@@ -75,12 +74,13 @@ __attribute__((visibility("hidden")))
 - (_Bool)_shouldReconnectWithInterruptionOnDate:(id)arg1;
 - (void)_restoreIdleConnection;
 - (void)_restoreNavigationSession;
-- (void)_restorePredictionSession;
 - (void)_handleInterruption;
+- (_Bool)_hasNavigationServiceEntitlement;
 - (void)_openConnection;
 - (void)_updateConnection;
 @property(readonly, nonatomic) unsigned long long clientCount;
 @property(readonly, nonatomic) unsigned long long interruptionCount;
+@property(readonly, nonatomic) NSArray *interruptionDates;
 - (_Bool)isOpenForClient:(id)arg1;
 - (void)closeForClient:(id)arg1;
 - (void)openForClient:(id)arg1;

@@ -12,6 +12,8 @@
 {
     MISSING_TYPE *name;
     MISSING_TYPE *startDate;
+    MISSING_TYPE *contentType;
+    MISSING_TYPE *count;
 }
 
 - (void).cxx_destruct;

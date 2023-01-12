@@ -14,8 +14,8 @@
 - (void).cxx_destruct;
 - (id)debugDescription;
 - (void)mergeToMessage:(struct Message *)arg1 reflection:(const struct Reflection *)arg2;
-- (id)initSubclassWithFieldDescriptor:(const struct FieldDescriptor *)arg1 fieldInfo:(const struct FieldInfo *)arg2 message:(const struct Message *)arg3 reflection:(const struct Reflection *)arg4;
-- (id)initWithFieldDescriptor:(const struct FieldDescriptor *)arg1 fieldInfo:(const struct FieldInfo *)arg2 message:(const struct Message *)arg3 reflection:(const struct Reflection *)arg4;
+- (id)initSubclassWithFieldDescriptor:(const void *)arg1 fieldInfo:(const void *)arg2 message:(const struct Message *)arg3 reflection:(const struct Reflection *)arg4;
+- (id)initWithFieldDescriptor:(const void *)arg1 fieldInfo:(const void *)arg2 message:(const struct Message *)arg3 reflection:(const struct Reflection *)arg4;
 
 @end
 

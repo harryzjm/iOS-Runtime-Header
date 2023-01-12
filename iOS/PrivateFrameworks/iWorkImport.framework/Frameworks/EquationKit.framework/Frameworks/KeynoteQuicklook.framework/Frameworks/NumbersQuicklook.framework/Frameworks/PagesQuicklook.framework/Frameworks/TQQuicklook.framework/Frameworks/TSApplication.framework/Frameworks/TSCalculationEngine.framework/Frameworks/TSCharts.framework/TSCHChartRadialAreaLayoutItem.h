@@ -4,14 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class _TtC8TSCharts23TSCHChartGridLayoutItem;
+
 @interface TSCHChartRadialAreaLayoutItem
 {
+    _TtC8TSCharts23TSCHChartGridLayoutItem *_gridLayoutItem;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) _TtC8TSCharts23TSCHChartGridLayoutItem *gridLayoutItem; // @synthesize gridLayoutItem=_gridLayoutItem;
 - (struct CGRect)titleFrame;
 - (id)renderersWithRep:(id)arg1;
-- (void)p_layoutOutward;
-- (void)p_layoutInward;
+- (void)layoutOutward;
+- (void)layoutInward;
 - (Class)bodyLayoutItemClass;
 - (void)buildSubTree;
 - (id)seriesIndexedPieNormalizedLabelDistancesFromWedgeTips;

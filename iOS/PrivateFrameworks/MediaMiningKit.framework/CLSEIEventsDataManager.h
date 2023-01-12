@@ -44,7 +44,7 @@
 - (_Bool)_save;
 @property(readonly, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator; // @synthesize persistentStoreCoordinator=_persistentStoreCoordinator;
 @property(readonly, nonatomic) NSManagedObjectModel *managedObjectModel; // @synthesize managedObjectModel=_managedObjectModel;
-@property(readonly, nonatomic) NSManagedObjectContext *managedObjectContext; // @synthesize managedObjectContext=_managedObjectContext;
+- (id)managedObjectContext;
 - (id)initWithDiskCacheURL:(id)arg1;
 
 @end

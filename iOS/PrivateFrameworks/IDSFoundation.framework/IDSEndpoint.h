@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <IDSFoundation/IDSDestinationProtocol-Protocol.h>
 #import <IDSFoundation/NSCopying-Protocol.h>
 #import <IDSFoundation/NSSecureCoding-Protocol.h>
 
-@class IDSEndpointCapabilities, IDSMPPublicDeviceIdentityContainer, IDSURI, NSData, NSDate, NSError, NSString;
+@class IDSEndpointCapabilities, IDSFamilyEndpointData, IDSMPPublicDeviceIdentityContainer, IDSURI, NSData, NSDate, NSError, NSString;
 
-@interface IDSEndpoint : NSObject <NSSecureCoding, NSCopying>
+@interface IDSEndpoint : NSObject <NSSecureCoding, NSCopying, IDSDestinationProtocol>
 {
     BOOL _legacyVersion;
     _Bool _mismatchedAccountFlag;
@@ -32,10 +33,12 @@
     NSString *_anonymizedSenderID;
     NSString *_senderCorrelationIdentifier;
     double _queryTimeInterval;
+    IDSFamilyEndpointData *_familyEndpointData;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) IDSFamilyEndpointData *familyEndpointData; // @synthesize familyEndpointData=_familyEndpointData;
 @property(readonly, nonatomic) double queryTimeInterval; // @synthesize queryTimeInterval=_queryTimeInterval;
 @property(readonly, nonatomic) NSString *senderCorrelationIdentifier; // @synthesize senderCorrelationIdentifier=_senderCorrelationIdentifier;
 @property(readonly, nonatomic) _Bool verifiedBusiness; // @synthesize verifiedBusiness=_verifiedBusiness;
@@ -58,14 +61,19 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (unsigned long long)hash;
+- (id)destinationURIs;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqualToEndpoint:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
-- (id)description;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) NSData *serializedPublicLegacyIdentity;
-- (id)initWithURI:(id)arg1 capabilities:(id)arg2 ngmVersion:(short)arg3 legacyVersion:(BOOL)arg4 KTLoggableData:(id)arg5 mismatchedAccountFlag:(_Bool)arg6 pushToken:(id)arg7 sessionToken:(id)arg8 expireDate:(id)arg9 refreshDate:(id)arg10 anonymizedSenderID:(id)arg11 verifiedBusiness:(_Bool)arg12 serializedPublicMessageProtectionIdentity:(id)arg13 senderCorrelationIdentifier:(id)arg14 queryTimeInterval:(double)arg15 serializedNGMDeviceIdentity:(id)arg16 serializedNGMDevicePrekey:(id)arg17;
-- (id)initWithURI:(id)arg1 clientData:(id)arg2 KTLoggableData:(id)arg3 mismatchedAccountFlag:(_Bool)arg4 pushToken:(id)arg5 sessionToken:(id)arg6 expireDate:(id)arg7 refreshDate:(id)arg8 anonymizedSenderID:(id)arg9 verifiedBusiness:(_Bool)arg10 serializedPublicMessageProtectionIdentity:(id)arg11 senderCorrelationIdentifier:(id)arg12 queryTimeInterval:(double)arg13 serializedNGMDeviceIdentity:(id)arg14 serializedNGMDevicePrekey:(id)arg15;
+- (id)initWithURI:(id)arg1 capabilities:(id)arg2 ngmVersion:(short)arg3 legacyVersion:(BOOL)arg4 KTLoggableData:(id)arg5 mismatchedAccountFlag:(_Bool)arg6 pushToken:(id)arg7 sessionToken:(id)arg8 expireDate:(id)arg9 refreshDate:(id)arg10 anonymizedSenderID:(id)arg11 verifiedBusiness:(_Bool)arg12 serializedPublicMessageProtectionIdentity:(id)arg13 senderCorrelationIdentifier:(id)arg14 queryTimeInterval:(double)arg15 serializedNGMDeviceIdentity:(id)arg16 serializedNGMDevicePrekey:(id)arg17 familyEndpointData:(id)arg18;
+- (id)initWithURI:(id)arg1 clientData:(id)arg2 KTLoggableData:(id)arg3 mismatchedAccountFlag:(_Bool)arg4 pushToken:(id)arg5 sessionToken:(id)arg6 expireDate:(id)arg7 refreshDate:(id)arg8 anonymizedSenderID:(id)arg9 verifiedBusiness:(_Bool)arg10 serializedPublicMessageProtectionIdentity:(id)arg11 senderCorrelationIdentifier:(id)arg12 queryTimeInterval:(double)arg13 serializedNGMDeviceIdentity:(id)arg14 serializedNGMDevicePrekey:(id)arg15 familyEndpointData:(id)arg16;
 - (id)initWithURI:(id)arg1 clientData:(id)arg2 pushToken:(id)arg3 sessionToken:(id)arg4 expireDate:(id)arg5 refreshDate:(id)arg6;
+
+// Remaining properties
+@property(readonly) Class superclass;
 
 @end
 

@@ -6,9 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class AVWeakReference, NSMutableArray, NSMutableDictionary, NSSet;
+#import <AVFCapture/VISProcessorDelegate-Protocol.h>
 
-@interface AVOfflineVideoStabilizer : NSObject
+@class AVWeakReference, NSMutableArray, NSMutableDictionary, NSSet, NSString;
+@protocol VISProcessor;
+
+@interface AVOfflineVideoStabilizer : NSObject <VISProcessorDelegate>
 {
     CDStruct_1b6d18a9 _targetFrameDuration;
     int _metadataPrimingCount;
@@ -28,16 +31,18 @@
     struct OpaqueFigSampleBufferProcessor *_gvsProcessor;
     _Bool _stabilizationEnabled;
     _Bool _isFirstFrame;
+    id <VISProcessor> _visProcessor;
 }
 
 + (id)offlineVideoStabilizerWithTargetFrameDuration:(CDStruct_1b6d18a9)arg1 dataProvider:(id)arg2 destinationBufferPool:(struct __CVPixelBufferPool *)arg3 stabilizationEnabled:(_Bool)arg4;
 + (void)initialize;
 @property(readonly, nonatomic) NSMutableArray *outputSampleBuffers; // @synthesize outputSampleBuffers=_outputSampleBuffers;
+- (void)didCompleteProcessingOfBuffer:(struct opaqueCMSampleBuffer *)arg1 withStatus:(int)arg2;
 - (struct opaqueCMSampleBuffer *)_createSampleBufferWithPixelBuffer:(struct __CVBuffer *)arg1 sampleTime:(CDStruct_1b6d18a9)arg2 futureMetadata:(id)arg3 status:(int *)arg4;
 - (int)_validateSourcePixelBuffer:(struct __CVBuffer *)arg1 withSampleTime:(CDStruct_1b6d18a9)arg2 metadata:(id)arg3 isEndOfData:(_Bool *)arg4;
 - (int)_validateStabilizationMetadata:(id)arg1 withSampleTime:(CDStruct_1b6d18a9)arg2 isEndOfData:(_Bool *)arg3;
 - (void)_teardownVISProcessor;
-- (int)_setupGVSProcessor;
+- (int)_setupVISProcessor;
 - (unsigned long long)_extendedRowsOfOutputBuffer;
 - (struct opaqueCMSampleBuffer *)_copyStabilizedSampleBuffer:(id *)arg1;
 @property(readonly, nonatomic) int preferredSourceStabilizationMetadataPrimingCount;
@@ -45,6 +50,12 @@
 - (struct opaqueCMSampleBuffer *)copyStabilizedSampleBuffer:(id *)arg1;
 - (void)dealloc;
 - (id)initWithTargetFrameDuration:(CDStruct_1b6d18a9)arg1 dataProvider:(id)arg2 destinationBufferPool:(struct __CVPixelBufferPool *)arg3 stabilizationEnabled:(_Bool)arg4;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

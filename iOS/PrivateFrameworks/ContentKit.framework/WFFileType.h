@@ -39,6 +39,7 @@
 @property(readonly, nonatomic) NSArray *typesConformedTo;
 @property(readonly, nonatomic) NSDictionary *typeDeclaration;
 @property(readonly, nonatomic) NSString *typeDescription;
+@property(readonly, nonatomic, getter=isCoreType) _Bool coreType;
 @property(readonly, nonatomic, getter=isDynamic) _Bool dynamic;
 @property(readonly, nonatomic, getter=isDeclared) _Bool declared;
 - (id)conformingTypesWithMIMEType:(id)arg1;

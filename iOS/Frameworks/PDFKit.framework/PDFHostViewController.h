@@ -6,12 +6,13 @@
 
 #import <UIKit/_UIRemoteViewController.h>
 
+#import <PDFKit/PDFPasswordViewControllerDelegate-Protocol.h>
 #import <PDFKit/UIDocumentPasswordViewDelegate-Protocol.h>
 #import <PDFKit/UIGestureRecognizerDelegate-Protocol.h>
 
 @class NSString, PDFHostViewControllerPrivate;
 
-@interface PDFHostViewController : _UIRemoteViewController <UIGestureRecognizerDelegate, UIDocumentPasswordViewDelegate>
+@interface PDFHostViewController : _UIRemoteViewController <PDFPasswordViewControllerDelegate, UIGestureRecognizerDelegate, UIDocumentPasswordViewDelegate>
 {
     PDFHostViewControllerPrivate *_private;
 }
@@ -40,7 +41,7 @@
 - (void)didLongPressPageIndex:(long long)arg1 atLocation:(struct CGPoint)arg2 withAnnotationRect:(struct CGRect)arg3;
 - (void)didLongPressURL:(id)arg1 atLocation:(struct CGPoint)arg2 withAnnotationRect:(struct CGRect)arg3;
 - (void)updateDocumentIsLocked:(_Bool)arg1;
-- (void)userDidEnterPassword:(id)arg1 forPasswordView:(id)arg2;
+- (_Bool)userDidEnterPassword:(id)arg1 forPasswordViewController:(id)arg2;
 - (void)_appendPasswordUI;
 - (void)didCopyData:(id)arg1;
 - (void)didCopyString:(id)arg1;

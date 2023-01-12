@@ -10,19 +10,19 @@
 #import <SearchUI/UIDragInteractionDelegate_Private-Protocol.h>
 
 @class NSString, SearchUIRowModel, UIView;
-@protocol SearchUIFeedbackDelegate;
+@protocol SearchUIFeedbackDelegateInternal;
 
 @interface SearchUIDragSource : NSObject <UIDragInteractionDelegate, UIDragInteractionDelegate_Private>
 {
     SearchUIRowModel *_dragObject;
     UIView *_overrideDragPreviewView;
     UIView *_dragSourceView;
-    id <SearchUIFeedbackDelegate> _feedbackDelegate;
+    id <SearchUIFeedbackDelegateInternal> _feedbackDelegate;
 }
 
 + (id)dragSourceForView:(id)arg1 dragObject:(id)arg2 feedbackDelegate:(id)arg3;
 - (void).cxx_destruct;
-@property __weak id <SearchUIFeedbackDelegate> feedbackDelegate; // @synthesize feedbackDelegate=_feedbackDelegate;
+@property __weak id <SearchUIFeedbackDelegateInternal> feedbackDelegate; // @synthesize feedbackDelegate=_feedbackDelegate;
 @property __weak UIView *dragSourceView; // @synthesize dragSourceView=_dragSourceView;
 @property(retain, nonatomic) UIView *overrideDragPreviewView; // @synthesize overrideDragPreviewView=_overrideDragPreviewView;
 @property(retain, nonatomic) SearchUIRowModel *dragObject; // @synthesize dragObject=_dragObject;

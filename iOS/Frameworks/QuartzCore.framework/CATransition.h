@@ -17,8 +17,8 @@
 @property(copy) NSString *subtype;
 @property(copy) NSString *type;
 - (unsigned int)_propertyFlagsForLayer:(id)arg1;
-- (struct Animation *)_copyRenderAnimationForLayer:(id)arg1;
-- (_Bool)_setCARenderAnimation:(struct Animation *)arg1 layer:(id)arg2;
+- (void *)_copyRenderAnimationForLayer:(id)arg1;
+- (_Bool)_setCARenderAnimation:(void *)arg1 layer:(id)arg2;
 @property unsigned int transitionFlags;
 @property(copy) NSDictionary *options;
 

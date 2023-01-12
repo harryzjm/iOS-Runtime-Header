@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class ASCompetitionParticipantScoreView, ASCompetitionScoreViewConfiguration, NSNumber, UIImageView, UILabel;
+@class ASCompetitionParticipantScoreView, ASCompetitionScoreViewConfiguration, UIImageView, UILabel;
 
 @interface ASCompetitionScoreView : UIView
 {
@@ -15,7 +15,6 @@
     ASCompetitionParticipantScoreView *_opponentScoreView;
     UIImageView *_achievementThumbnailView;
     UILabel *_scoreTypeHeaderLabel;
-    NSNumber *_previousLayoutWidth;
     _Bool _isRTLLayout;
 }
 

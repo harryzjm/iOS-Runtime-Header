@@ -13,9 +13,13 @@
     double _pullGestureBeganFromTopLeeway;
     double _fluidBehaviorDampingRatio;
     double _fluidBehaviorResponse;
+    double _libraryFluidBehaviorDampingRatio;
+    double _libraryFluidBehaviorResponse;
 }
 
 + (id)settingsControllerModule;
+@property(nonatomic) double libraryFluidBehaviorResponse; // @synthesize libraryFluidBehaviorResponse=_libraryFluidBehaviorResponse;
+@property(nonatomic) double libraryFluidBehaviorDampingRatio; // @synthesize libraryFluidBehaviorDampingRatio=_libraryFluidBehaviorDampingRatio;
 @property(nonatomic) double fluidBehaviorResponse; // @synthesize fluidBehaviorResponse=_fluidBehaviorResponse;
 @property(nonatomic) double fluidBehaviorDampingRatio; // @synthesize fluidBehaviorDampingRatio=_fluidBehaviorDampingRatio;
 @property(nonatomic) double pullGestureBeganFromTopLeeway; // @synthesize pullGestureBeganFromTopLeeway=_pullGestureBeganFromTopLeeway;

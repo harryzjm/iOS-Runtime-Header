@@ -20,6 +20,10 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (id)_makeTimestampedAudioLogFilenameWithPrefix:(id)arg1 suffix:(id)arg2;
+- (id)_nowString;
+- (id)_getOrCreateAudioLogDirectory;
+- (id)_audioLogDirectory;
 - (void)stopRecording;
 - (void)appendAudioData:(id)arg1;
 - (void)startRecording;

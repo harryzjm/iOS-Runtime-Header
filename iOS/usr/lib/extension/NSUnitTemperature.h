@@ -13,6 +13,7 @@
 + (id)kelvin;
 + (id)fahrenheit;
 + (id)celsius;
++ (id)icuType;
 + (id)baseUnit;
 + (void)initialize;
 

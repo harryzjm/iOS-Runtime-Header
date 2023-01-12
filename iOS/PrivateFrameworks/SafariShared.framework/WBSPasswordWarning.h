@@ -11,26 +11,30 @@
 @interface WBSPasswordWarning : NSObject
 {
     WBSPasswordEvaluation *_weakPasswordEvaluation;
-    NSArray *_localizedLongDescriptionStrings;
-    WBSSavedPassword *_password;
+    NSArray *_domainsWithReusedPassword;
+    WBSSavedPassword *_savedPassword;
     unsigned long long _issueTypes;
     unsigned long long _severityScore;
-    NSString *_localizedShortDescription;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSString *localizedShortDescription; // @synthesize localizedShortDescription=_localizedShortDescription;
 @property(nonatomic) unsigned long long severityScore; // @synthesize severityScore=_severityScore;
 @property(readonly, nonatomic) unsigned long long issueTypes; // @synthesize issueTypes=_issueTypes;
-@property(readonly, nonatomic) WBSSavedPassword *password; // @synthesize password=_password;
+@property(readonly, nonatomic) WBSSavedPassword *savedPassword; // @synthesize savedPassword=_savedPassword;
 @property(readonly, nonatomic) unsigned long long hashForUserAcknowlegement;
 - (long long)compare:(id)arg1;
 @property(readonly, nonatomic) NSString *localizedInformationTextForWarningWhenLoggingIn;
-@property(readonly, nonatomic) NSString *localizedTitleForWarningWhenLoggingIn;
 - (id)localizedLongDescriptionForClient:(unsigned long long)arg1;
+- (id)_localizedLongWarningStringsForClient:(unsigned long long)arg1;
+- (unsigned long long)_passwordVisibilityForClient:(unsigned long long)arg1;
+- (id)_localizedShortDescriptionWithFullDescriptivePhrase:(_Bool)arg1;
+@property(readonly, nonatomic) NSString *localizedShortDescriptionOfProblemType;
+@property(readonly, nonatomic) NSString *localizedShortDescriptivePhrase;
 @property(readonly, nonatomic) _Bool shouldShowWarningsWhenLoggingIn;
 @property(readonly, nonatomic) unsigned long long severity;
-- (id)initWithPassword:(id)arg1 issueTypes:(unsigned long long)arg2 weakPasswordEvaluation:(id)arg3 longDescriptionStrings:(id)arg4 shortDescription:(id)arg5;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
+- (id)initWithPassword:(id)arg1 issueTypes:(unsigned long long)arg2 weakPasswordEvaluation:(id)arg3 domainsWithReusedPassword:(id)arg4;
 
 @end
 

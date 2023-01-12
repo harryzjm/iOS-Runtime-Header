@@ -7,11 +7,15 @@
 #import <objc/NSObject.h>
 
 @class NSArray;
+@protocol FCFetchedValueDescriptorObserving;
 
 @interface FCFetchedValueDescriptor : NSObject
 {
+    id <FCFetchedValueDescriptorObserving> _observer;
 }
 
+- (void).cxx_destruct;
+@property __weak id <FCFetchedValueDescriptorObserving> observer; // @synthesize observer=_observer;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) NSArray *inputManagers;
 - (_Bool)isValue:(id)arg1 equalToValue:(id)arg2;

@@ -30,12 +30,14 @@
     NSDate *_waitTimerScheduledFireTime;
     NSObject<OS_dispatch_source> *_waitForNextEventTimer;
     NSCalendar *_calendar;
+    _Bool _ignoreScreenState;
 }
 
 + (void)_forceDate:(id)arg1;
 + (id)now;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool ignoreScreenState; // @synthesize ignoreScreenState=_ignoreScreenState;
 - (void)_dumpIndentificationLogs;
 - (void)pause;
 - (void)unpause;
@@ -55,11 +57,8 @@
 - (id)start60fpsUpdatesWithHandler:(CDUnknownBlockType)arg1 identificationLog:(CDUnknownBlockType)arg2;
 - (id)start30fpsUpdatesWithHandler:(CDUnknownBlockType)arg1 identificationLog:(CDUnknownBlockType)arg2;
 - (id)start15fpsUpdatesWithHandler:(CDUnknownBlockType)arg1 identificationLog:(CDUnknownBlockType)arg2;
-- (id)start15fpsUpdatesWithHandler:(CDUnknownBlockType)arg1;
 - (id)startSecondUpdatesWithHandler:(CDUnknownBlockType)arg1 identificationLog:(CDUnknownBlockType)arg2;
-- (id)startSecondUpdatesWithHandler:(CDUnknownBlockType)arg1;
 - (id)startMinuteUpdatesWithHandler:(CDUnknownBlockType)arg1 identificationLog:(CDUnknownBlockType)arg2;
-- (id)startMinuteUpdatesWithHandler:(CDUnknownBlockType)arg1;
 - (void)setHandler:(id)arg1 wantsCommit:(_Bool)arg2;
 - (id)_nextTokenWithUpdateFrequency:(long long)arg1 wantsCommit:(_Bool)arg2 wantsHighAccuracy:(_Bool)arg3 identificationLog:(CDUnknownBlockType)arg4 handler:(CDUnknownBlockType)arg5;
 - (void)stopUpdatesForToken:(id)arg1;

@@ -8,6 +8,7 @@
 
 @interface TIPinyinDisambiguationCandidate
 {
+    _Bool _generatedByChoosePinyin;
     NSString *_label;
 }
 
@@ -15,6 +16,7 @@
 + (id)candidateWithPinyinSyllable:(id)arg1;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic, getter=isGeneratedByChoosePinyin) _Bool generatedByChoosePinyin; // @synthesize generatedByChoosePinyin=_generatedByChoosePinyin;
 - (void)setLabel:(id)arg1;
 - (id)label;
 - (void)encodeWithCandidateResultSetCoder:(id)arg1;

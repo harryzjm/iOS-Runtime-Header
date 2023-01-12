@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PhotosUICore/PXChangeObserver-Protocol.h>
 #import <PhotosUICore/PXPhotoLibraryUIChangeObserver-Protocol.h>
 
 @class NSString, PXSuggestionsDataSource;
 
-@interface PXSuggestionsDataSourceManager <PXPhotoLibraryUIChangeObserver>
+@interface PXSuggestionsDataSourceManager <PXChangeObserver, PXPhotoLibraryUIChangeObserver>
 {
     unsigned short _dataSourceType;
 }
@@ -18,8 +19,10 @@
 + (id)baseFetchPredicate;
 @property(readonly, nonatomic) unsigned short dataSourceType; // @synthesize dataSourceType=_dataSourceType;
 - (void)_handleChangeWithDetails:(id)arg1;
+- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1;
 - (id)createInitialDataSource;
+- (id)_createNewDataSource;
 - (id)initWithDataSourceType:(unsigned short)arg1;
 - (id)init;
 

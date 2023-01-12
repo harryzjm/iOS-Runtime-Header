@@ -18,6 +18,8 @@
 + (_Bool)outputIsExemptFromTaintTrackingInheritance;
 - (void).cxx_destruct;
 @property(retain, nonatomic) CLAPIEngine *engine; // @synthesize engine=_engine;
+- (id)smartPromptWithContentDescription:(id)arg1 contentDestination:(id)arg2 workflowName:(id)arg3;
+- (id)contentDestinationWithError:(id *)arg1;
 - (void)requestDidFailWithError:(id)arg1 connectionIdentifier:(id)arg2 userInfo:(id)arg3;
 - (void)fileUploadDidSucceedWithResultingItem:(id)arg1 connectionIdentifier:(id)arg2 userInfo:(id)arg3;
 - (void)fileUploadDidProgress:(double)arg1 connectionIdentifier:(id)arg2 userInfo:(id)arg3;

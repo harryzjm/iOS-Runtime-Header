@@ -11,6 +11,8 @@
 }
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(nonatomic) unsigned int highFrameRateReason; // @dynamic highFrameRateReason;
+@property(nonatomic) struct CAFrameRateRange frameRateRange; // @dynamic frameRateRange;
 @property(copy, nonatomic) id <CCUIAnimationTimingFunctionDescription> timingFunction; // @dynamic timingFunction;
 @property(nonatomic) double damping; // @dynamic damping;
 @property(nonatomic) double stiffness; // @dynamic stiffness;

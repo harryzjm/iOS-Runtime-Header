@@ -7,6 +7,7 @@
 #import <Foundation/NSBundle.h>
 
 @interface NSBundle (DoNotDisturb)
++ (id)dnd_doNotDisturbLocalizationBundle;
 + (id)dnd_locationBundle;
 @end
 

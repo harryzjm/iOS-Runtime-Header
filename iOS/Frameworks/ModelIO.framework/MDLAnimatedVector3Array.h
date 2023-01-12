@@ -20,8 +20,8 @@
 - (unsigned long long)getFloat3Array:(MISSING_TYPE **)arg1 maxCount:(unsigned long long)arg2 atTime:(double)arg3;
 - (void)setDouble3Array:(const MISSING_TYPE **)arg1 count:(unsigned long long)arg2 atTime:(double)arg3;
 - (void)setFloat3Array:(const MISSING_TYPE **)arg1 count:(unsigned long long)arg2 atTime:(double)arg3;
-- (void)resetWithUsdAttribute:(const struct UsdAttribute *)arg1 timeScale:(double)arg2 time:(double)arg3;
-- (void)resetWithUsdAttribute:(const struct UsdAttribute *)arg1 timeScale:(double)arg2;
+- (void)resetWithUsdAttribute:(const void *)arg1 timeScale:(double)arg2 time:(double)arg3;
+- (void)resetWithUsdAttribute:(const void *)arg1 timeScale:(double)arg2;
 - (struct VtValue)defaultVtValue;
 - (unsigned long long)precision;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -7,5 +7,8 @@
 #import <ChronoCore/UIWindowSceneDelegate-Protocol.h>
 
 @protocol CHUISAvocadoWindowSceneDelegate <UIWindowSceneDelegate>
+
+@optional
+- (void)applicationDidReceiveMemoryWarning;
 @end
 

@@ -15,25 +15,24 @@
     unsigned long long _options;
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSMutableOrderedSet *_components;
-    struct map<long long, TSP::DescriptionPrinterMessage, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, TSP::DescriptionPrinterMessage>>> _messageMap;
+    struct map<long long, TSP::DescriptionPrinterMessage, std::less<long long>, std::allocator<std::pair<const long long, TSP::DescriptionPrinterMessage>>> _messageMap;
     NSMutableDictionary *_objects;
     NSMutableDictionary *_uuidMap;
     NSMutableDictionary *_inverseUUIDMap;
     NSMutableDictionary *_dataMap;
     CDUnknownBlockType _objectIdentifierForUUIDHandler;
     CDUnknownBlockType _printerCustomPropertiesHandler;
-    CDUnknownBlockType _dataDigestHandler;
+    CDUnknownBlockType _dataIdentifierHandler;
+    CDUnknownBlockType _digestHandler;
 }
 
-+ (_Bool)dumpMessagesForDocument:(id)arg1 packageIdentifier:(unsigned char)arg2 decryptionKey:(id)arg3 toURL:(id)arg4;
-+ (_Bool)dumpMessagesForSupport:(id)arg1 decryptionKey:(id)arg2 toURL:(id)arg3;
-+ (_Bool)dumpMessagesForDocument:(id)arg1 decryptionKey:(id)arg2 toURL:(id)arg3;
++ (_Bool)dumpMessagesForDocumentURL:(id)arg1 supportURL:(id)arg2 decryptionKey:(id)arg3 toURL:(id)arg4;
 + (id)filenameForPackageIdentifier:(unsigned char)arg1;
 + (id)directoryForDocumentUUID:(id)arg1 versionUUID:(id)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)descriptionForIdentifier:(long long)arg1;
-- (_Bool)dumpComponentMessages:(id)arg1 printNewLine:(_Bool)arg2 withPrinter:(struct ReferencePrinter *)arg3 outputStream:(struct FileOutputStream *)arg4;
+- (_Bool)dumpComponentMessages:(id)arg1 printNewLine:(_Bool)arg2 withPrinter:(void *)arg3 outputStream:(void *)arg4;
 - (void)performPrintOperationBlock:(CDUnknownBlockType)arg1;
 - (_Bool)dumpMessagesToFilePath:(id)arg1;
 - (_Bool)dumpMessagesForDocumentUUID:(id)arg1 versionUUID:(id)arg2 packageIdentifier:(unsigned char)arg3;
@@ -41,10 +40,10 @@
 - (void)addComponent:(id)arg1;
 - (void)addObject:(id)arg1;
 - (void)processPackageMetadataMessage:(shared_ptr_cd1ed623)arg1;
-- (void)addMessage:(const struct Message *)arg1 withStrongReferencesMap:(unordered_map_38045d47 *)arg2 forObjectIdentifier:(long long)arg3;
+- (void)addMessage:(const struct Message *)arg1 withStrongReferencesMap:(void *)arg2 forObjectIdentifier:(long long)arg3;
 - (void)addArchiver:(id)arg1;
-- (map_4bea934e *)_messageAlternateMapFromArchivableContent:(id)arg1;
-- (unordered_map_38045d47 *)_strongReferencesFromArchiver:(id)arg1;
+- (void *)_messageAlternateMapFromArchivableContent:(id)arg1;
+- (void *)_strongReferencesFromArchiver:(id)arg1;
 - (id)initWithContext:(id)arg1 options:(unsigned long long)arg2;
 - (id)init;
 

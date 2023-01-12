@@ -14,6 +14,7 @@
 
 + (_Bool)isAvailableOnPlatform:(long long)arg1;
 + (_Bool)hasLibrary;
++ (id)countDescription;
 + (id)pluralFilterDescription;
 + (id)filterDescription;
 + (id)pluralTypeDescription;
@@ -22,6 +23,7 @@
 + (id)outputTypes;
 + (id)ownedTypes;
 + (void)runQuery:(id)arg1 withItems:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (id)stringConversionBehavior;
 + (id)propertyBuilders;
 - (id)generateObjectRepresentationForClass:(Class)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)preferredFileType;

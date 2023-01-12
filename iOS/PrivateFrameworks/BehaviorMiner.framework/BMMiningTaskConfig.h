@@ -22,8 +22,6 @@
 - (_Bool)loadBMMiningTaskConfig:(id)arg1;
 - (void)loadDefaultConfig;
 - (void)updateFactorLevelsFromFilePath:(id)arg1;
-- (id)initWithConfigFilePath:(id)arg1;
-- (id)initWithDefaultConfig;
 - (id)init;
 
 @end

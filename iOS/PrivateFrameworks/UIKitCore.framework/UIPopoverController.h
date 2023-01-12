@@ -137,6 +137,7 @@
 - (_Bool)_gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
 - (_Bool)_gestureRecognizerShouldBegin:(id)arg1;
 - (id)_gestureRecognizerForPresentationFromEdge:(unsigned long long)arg1;
+- (_Bool)_allowsFocusBehindDimmingView;
 - (void)dimmingViewWasTapped:(id)arg1;
 - (void)_dismissPopoverAnimated:(_Bool)arg1 stateOnly:(_Bool)arg2 notifyDelegate:(_Bool)arg3;
 - (void)popoverPresentationController:(id)arg1 willRepositionPopoverToRect:(inout struct CGRect *)arg2 inView:(inout id *)arg3;

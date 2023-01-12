@@ -6,13 +6,14 @@
 
 #import <UIKit/UIView.h>
 
+#import <TSReading/UITextInputTraits-Protocol.h>
 #import <TSReading/UITextLinkInteraction-Protocol.h>
 #import <TSReading/_UITextInputRevealSupportProviding-Protocol.h>
 
-@class TSDCanvasLayer, TSDInteractiveCanvasController, TSKScrollView;
+@class NSString, TSDCanvasLayer, TSDInteractiveCanvasController, TSKScrollView, UITextInputPasswordRules;
 @protocol TSDCanvasLayerHosting, UITextLinkInteraction;
 
-@interface TSDCanvasView : UIView <UITextLinkInteraction, _UITextInputRevealSupportProviding>
+@interface TSDCanvasView : UIView <UITextLinkInteraction, _UITextInputRevealSupportProviding, UITextInputTraits>
 {
     TSDInteractiveCanvasController *mController;
     id <TSDCanvasLayerHosting> mLayerHost;
@@ -30,6 +31,7 @@
 - (void)_requestTextItemConstrainedToLineAtPoint:(struct CGPoint)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (_Bool)willInteractWithLinkAtPoint:(struct CGPoint)arg1;
 - (void)startLongInteractionWithLinkAtPoint:(struct CGPoint)arg1;
+- (void)didAddSubview:(id)arg1;
 - (void)cancelInteractionWithLink;
 - (void)validateInteractionWithLinkAtPoint:(struct CGPoint)arg1;
 - (void)updateInteractionWithLinkAtPoint:(struct CGPoint)arg1;
@@ -41,6 +43,25 @@
 @property(readonly) TSKScrollView *enclosingScrollView;
 @property(readonly, nonatomic) TSDCanvasLayer *canvasLayer;
 - (void)teardown;
+
+// Remaining properties
+@property(nonatomic) long long autocapitalizationType;
+@property(nonatomic) long long autocorrectionType;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(nonatomic) _Bool enablesReturnKeyAutomatically;
+@property(readonly) unsigned long long hash;
+@property(nonatomic) long long keyboardAppearance;
+@property(nonatomic) long long keyboardType;
+@property(copy, nonatomic) UITextInputPasswordRules *passwordRules;
+@property(nonatomic) long long returnKeyType;
+@property(nonatomic, getter=isSecureTextEntry) _Bool secureTextEntry;
+@property(nonatomic) long long smartDashesType;
+@property(nonatomic) long long smartInsertDeleteType;
+@property(nonatomic) long long smartQuotesType;
+@property(nonatomic) long long spellCheckingType;
+@property(readonly) Class superclass;
+@property(copy, nonatomic) NSString *textContentType;
 
 @end
 

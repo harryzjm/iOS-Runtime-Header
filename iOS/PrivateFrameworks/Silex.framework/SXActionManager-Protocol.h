@@ -12,7 +12,7 @@
 @protocol SXActionManager <NSObject>
 - (void)commitPreviewViewController:(UIViewController *)arg1;
 - (UIViewController *)previewViewControllerForAction:(id <SXAction>)arg1;
-- (UIContextMenuConfiguration *)contextMenuConfigurationForAction:(id <SXAction>)arg1;
+- (UIContextMenuConfiguration *)contextMenuConfigurationForAction:(id <SXAction>)arg1 sourceView:(UIView *)arg2 sourceRect:(struct CGRect)arg3;
 - (void)performAction:(id <SXAction>)arg1 postActionHandlers:(NSArray *)arg2 sourceView:(UIView *)arg3 sourceRect:(struct CGRect)arg4 mode:(unsigned long long)arg5;
 - (void)performAction:(id <SXAction>)arg1 postActionHandlers:(NSArray *)arg2;
 @end

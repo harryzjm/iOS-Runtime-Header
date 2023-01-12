@@ -6,29 +6,26 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCHUnretainedParent-Protocol.h>
-
 @class TSCH3DTSPImageDataTexture, TSPData;
 
-@interface TSCH3DTSPImageData : NSObject <TSCHUnretainedParent>
+@interface TSCH3DTSPImageData : NSObject
 {
-    TSCH3DTSPImageDataTexture *mParent;
-    TSPData *mData;
+    TSCH3DTSPImageDataTexture *_parent;
+    TSPData *_data;
 }
 
 + (id)dataWithTSPImageData:(id)arg1;
-@property(retain, nonatomic) TSPData *data; // @synthesize data=mData;
+- (void).cxx_destruct;
+@property(retain, nonatomic) TSPData *data; // @synthesize data=_data;
 - (id)uniqueFilename;
 - (id)databufferForDataCache:(id)arg1;
 - (_Bool)canLoadCachedDataForDataCache:(id)arg1;
 - (id)p_generateMipmapsBuffer;
-- (id)p_decodeCachedData:(id)arg1 imageSize:(tvec4_f99fd489 *)arg2;
-- (id)p_encodeImageSize:(tvec4_f99fd489 *)arg1 andMipmapData:(id)arg2;
+- (id)p_decodeCachedData:(id)arg1 imageSize:(void *)arg2;
+- (id)p_encodeImageSize:(void *)arg1 andMipmapData:(id)arg2;
 - (struct CGImage *)newCGImage;
 - (_Bool)hasCompleteData;
-- (void)clearParent;
 - (void)setParent:(id)arg1;
-- (void)dealloc;
 - (id)initWithTSPImageData:(id)arg1;
 
 @end

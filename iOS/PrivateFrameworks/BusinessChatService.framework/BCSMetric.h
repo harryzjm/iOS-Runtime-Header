@@ -15,12 +15,10 @@
     long long _metricType;
 }
 
++ (_Bool)isUsingExpensiveNetwork;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) long long metricType; // @synthesize metricType=_metricType;
-@property(readonly, nonatomic) id context; // @synthesize context=_context;
-@property(readonly, nonatomic) NSArray *postProcessingMetricHandlers; // @synthesize postProcessingMetricHandlers=_postProcessingMetricHandlers;
 - (void)submitForPostProcessing;
-- (id)_initWithType:(long long)arg1 context:(id)arg2 postProcessingMetricHandlers:(id)arg3;
 
 @end
 

@@ -7,11 +7,12 @@
 __attribute__((visibility("hidden")))
 @interface _LSExtensionPointRecordEnumerator
 {
-    vector_12da65de _extensionIDs;
+    struct vector<unsigned int, std::allocator<unsigned int>> _extensionIDs;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)_getObject:(id *)arg1 atIndex:(unsigned long long)arg2 context:(struct LSContext *)arg3;
 - (_Bool)_prepareWithContext:(struct LSContext *)arg1 error:(id *)arg2;
 

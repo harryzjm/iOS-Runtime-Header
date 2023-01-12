@@ -12,7 +12,7 @@
 @interface TILanguageSelectionController : NSObject
 {
     id <TILanguageLikelihoodModeling> _languageLikelihoodModel;
-    vector_5bda1073 m_buffered_tokens;
+    struct vector<TITokenID, std::allocator<TITokenID>> m_buffered_tokens;
     id <TILanguageSelectionControllerDelegate> _delegate;
     TILanguageModelAdaptationContext *_adaptationContext;
     NSArray *_activeInputModes;
@@ -26,7 +26,7 @@
     NSMutableArray *_bufferedTokenStrings;
 }
 
-+ (void)reportTypedTokens:(const vector_5bda1073 *)arg1 activeInputModes:(id)arg2;
++ (void)reportTypedTokens:(const void *)arg1 activeInputModes:(id)arg2;
 + (id)inputModesForLanguageIdentifiers:(id)arg1;
 + (id)inputModeForLanguageIdentifier:(id)arg1;
 + (id)inferInputModeForLanguage:(id)arg1 enabled:(id)arg2;

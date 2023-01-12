@@ -16,7 +16,7 @@
 - (id)transitionChildModifierForMainTransitionEvent:(id)arg1 activeGestureModifier:(id)arg2;
 - (id)gestureChildModifierForGestureEvent:(id)arg1 activeTransitionModifier:(id)arg2;
 - (long long)gestureType;
-- (id)handleMainTransitionEvent:(id)arg1;
+- (id)handleTransitionEvent:(id)arg1;
 - (id)initWithInitialFloatingConfiguration:(long long)arg1 interfaceOrientation:(long long)arg2;
 
 @end

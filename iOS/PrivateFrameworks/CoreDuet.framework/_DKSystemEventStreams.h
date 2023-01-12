@@ -10,6 +10,7 @@
 {
 }
 
++ (id)gameCenterSuggestionsFeedbackStream;
 + (id)familyPredictionStream;
 + (id)peopleSuggesterOutputForSiriNLStream;
 + (id)behavioralRuleFeaturesStream;

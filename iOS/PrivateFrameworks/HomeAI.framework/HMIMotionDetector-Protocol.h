@@ -7,7 +7,7 @@
 @class NSArray;
 
 @protocol HMIMotionDetector
-- (NSArray *)detectWithGlobalMotionScore:(float *)arg1;
+- (NSArray *)detectWithGlobalMotionScore:(float *)arg1 activityZones:(NSArray *)arg2 detectorMode:(unsigned long long)arg3;
 - (void)appendFramePixelBuffer:(struct __CVBuffer *)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 - (id)initWithSize:(struct CGSize)arg1;
 @end

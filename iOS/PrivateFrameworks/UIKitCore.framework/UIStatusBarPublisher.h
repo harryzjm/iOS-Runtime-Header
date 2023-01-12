@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface UIStatusBarPublisher : NSObject
 {
     struct __CFMachPort *_machPort;
-    int _styleOverrides;
+    unsigned long long _styleOverrides;
     NSMutableSet *_statusBarItems;
 }
 
@@ -20,9 +20,9 @@ __attribute__((visibility("hidden")))
 - (void)removeStatusBarItem:(int)arg1;
 - (void)addStatusBarItem:(int)arg1;
 - (id)statusBarItems;
-- (int)removeStyleOverrides:(int)arg1;
-- (int)addStyleOverrides:(int)arg1;
-- (int)styleOverrides;
+- (unsigned long long)removeStyleOverrides:(unsigned long long)arg1;
+- (unsigned long long)addStyleOverrides:(unsigned long long)arg1;
+- (unsigned long long)styleOverrides;
 - (unsigned int)publisherPort;
 - (void)dealloc;
 - (id)initWithCFMachPort:(struct __CFMachPort *)arg1;

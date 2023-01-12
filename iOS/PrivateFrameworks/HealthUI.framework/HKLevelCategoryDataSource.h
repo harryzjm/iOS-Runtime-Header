@@ -19,7 +19,10 @@
 @property(copy, nonatomic) CDUnknownBlockType pointStyleBlock; // @synthesize pointStyleBlock=_pointStyleBlock;
 @property(copy, nonatomic) CDUnknownBlockType userInfoCreationBlock; // @synthesize userInfoCreationBlock=_userInfoCreationBlock;
 @property(retain, nonatomic) HKSampleType *sampleType; // @synthesize sampleType=_sampleType;
-- (void)_handleSamples:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)chartPointsFromQueryData:(id)arg1 dataIsFromRemoteSource:(_Bool)arg2;
+- (CDUnknownBlockType)queryDataForStartDate:(id)arg1 endDate:(id)arg2 statisticsInterval:(id)arg3 healthStore:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (_Bool)supportsChartQueryDataGeneration;
+- (id)_chartPointsWithSamples:(id)arg1 sourceTimeZone:(id)arg2;
 - (id)queriesForStartDate:(id)arg1 endDate:(id)arg2 statisticsInterval:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)queryDescription;
 

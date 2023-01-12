@@ -16,6 +16,7 @@
 + (id)contentCategories;
 + (id)outputTypes;
 + (id)ownedTypes;
+- (id)formattedConcentration;
 - (id)generateObjectRepresentationForClass:(Class)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)concentration;
 - (id)localizedDescription;

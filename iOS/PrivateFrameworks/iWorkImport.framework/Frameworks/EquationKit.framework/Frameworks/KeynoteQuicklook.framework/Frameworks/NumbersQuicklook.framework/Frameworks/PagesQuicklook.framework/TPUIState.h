@@ -13,12 +13,15 @@
 
 @interface TPUIState : NSObject <NSCopying, TSAUIState>
 {
-    _Bool _masterDrawablesSelectable;
+    _Bool _sectionTemplateDrawablesSelectable;
+    long long _viewScaleMode;
     _Bool _wordCountHUDVisible;
     int _wordCountHUDType;
     struct CGPoint _wordCountHUDPosition;
     _Bool _shouldShowCommentSidebar;
     struct CGRect _windowFrame;
+    NSString *_selectedInspectorSwitchSegmentIdentifier;
+    _Bool _inspectorHidden;
     _Bool _editingDisabled;
     _Bool _rulersVisible;
     _Bool _layoutBordersVisible;
@@ -28,18 +31,16 @@
     _Bool _hasShowsCTDeletions;
     _Bool _showsCTDeletions;
     _Bool _changeTrackingPaused;
+    _Bool _showsFlowMode;
     _Bool _showsPageNavigator;
     _Bool _showsTOCNavigator;
     _Bool _pencilAnnotationsHidden;
-    _Bool _inspectorHidden;
     _Bool _showUserDefinedGuides;
-    _Bool _showUserDefinedMasterGuides;
+    _Bool _showUserDefinedPageTemplateGuides;
     TSKSelectionPath *_selectionPath;
     NSDictionary *_chartUIState;
-    long long _viewScaleMode;
     long long _pageViewState;
     double _viewScale;
-    NSString *_selectedInspectorSwitchSegmentIdentifier;
     NSString *_authorForFilteringName;
     TSKAnnotationAuthor *_authorForFiltering;
     TSDFreehandDrawingToolkitUIState *_freehandDrawingToolkitUIState;
@@ -50,7 +51,7 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool showUserDefinedMasterGuides; // @synthesize showUserDefinedMasterGuides=_showUserDefinedMasterGuides;
+@property(nonatomic) _Bool showUserDefinedPageTemplateGuides; // @synthesize showUserDefinedPageTemplateGuides=_showUserDefinedPageTemplateGuides;
 @property(nonatomic) double presentationAutoScrollSpeed; // @synthesize presentationAutoScrollSpeed=_presentationAutoScrollSpeed;
 @property(nonatomic) long long viewScaleModeiOS; // @synthesize viewScaleModeiOS=_viewScaleModeiOS;
 @property(retain, nonatomic) TSKPencilAnnotationUIState *pencilAnnotationUIState; // @synthesize pencilAnnotationUIState=_pencilAnnotationUIState;
@@ -58,14 +59,12 @@
 @property(retain, nonatomic) TSKAnnotationAuthor *authorForFiltering; // @synthesize authorForFiltering=_authorForFiltering;
 @property(copy, nonatomic) NSString *authorForFilteringName; // @synthesize authorForFilteringName=_authorForFilteringName;
 @property(nonatomic) _Bool showUserDefinedGuides; // @synthesize showUserDefinedGuides=_showUserDefinedGuides;
-@property(nonatomic) _Bool inspectorHidden; // @synthesize inspectorHidden=_inspectorHidden;
-@property(copy, nonatomic) NSString *selectedInspectorSwitchSegmentIdentifier; // @synthesize selectedInspectorSwitchSegmentIdentifier=_selectedInspectorSwitchSegmentIdentifier;
 @property(nonatomic) double viewScale; // @synthesize viewScale=_viewScale;
 @property(nonatomic) long long pageViewState; // @synthesize pageViewState=_pageViewState;
-@property(nonatomic) long long viewScaleMode; // @synthesize viewScaleMode=_viewScaleMode;
 @property(nonatomic) _Bool pencilAnnotationsHidden; // @synthesize pencilAnnotationsHidden=_pencilAnnotationsHidden;
 @property(nonatomic) _Bool showsTOCNavigator; // @synthesize showsTOCNavigator=_showsTOCNavigator;
 @property(nonatomic) _Bool showsPageNavigator; // @synthesize showsPageNavigator=_showsPageNavigator;
+@property(nonatomic) _Bool showsFlowMode; // @synthesize showsFlowMode=_showsFlowMode;
 @property(nonatomic) _Bool changeTrackingPaused; // @synthesize changeTrackingPaused=_changeTrackingPaused;
 @property(nonatomic) _Bool showsCTDeletions; // @synthesize showsCTDeletions=_showsCTDeletions;
 @property(readonly, nonatomic) _Bool hasShowsCTDeletions; // @synthesize hasShowsCTDeletions=_hasShowsCTDeletions;
@@ -82,8 +81,8 @@
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)saveToArchive:(struct UIStateArchive *)arg1 archiver:(id)arg2 context:(id)arg3;
-- (id)initWithArchive:(const struct UIStateArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2 context:(id)arg3;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (id)archivedUIStateInContext:(id)arg1;
 - (_Bool)isEqualToUIState:(id)arg1;
 - (void)setUIState:(id)arg1 forChart:(id)arg2;

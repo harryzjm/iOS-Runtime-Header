@@ -12,7 +12,6 @@
 @class NSMutableArray, NSObject, NSString, OSLogPersistence;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface CKLTailLog : OSActivityStream <OSLogPersistenceDelegate, OSActivityStreamDelegate>
 {
     _Bool _stillReadingFromArchive;

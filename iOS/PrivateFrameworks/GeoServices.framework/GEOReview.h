@@ -38,37 +38,15 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasIsChinaSuppressed;
-@property(nonatomic) _Bool isChinaSuppressed;
-@property(retain, nonatomic) NSString *languageCode;
-@property(readonly, nonatomic) _Bool hasLanguageCode;
-@property(retain, nonatomic) NSString *uid;
-@property(readonly, nonatomic) _Bool hasUid;
-@property(retain, nonatomic) GEOUser *reviewer;
-@property(readonly, nonatomic) _Bool hasReviewer;
-@property(nonatomic) _Bool hasReviewTime;
-@property(nonatomic) double reviewTime;
-@property(nonatomic) _Bool hasScore;
-@property(nonatomic) double score;
-@property(retain, nonatomic) NSString *snippet;
-@property(readonly, nonatomic) _Bool hasSnippet;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

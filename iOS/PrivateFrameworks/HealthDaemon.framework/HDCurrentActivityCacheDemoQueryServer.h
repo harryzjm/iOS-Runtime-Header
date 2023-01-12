@@ -8,8 +8,6 @@
 {
 }
 
-- (id)_demoStatisticsForStandHours;
-- (id)_demoStatisticsForDataTypeIdentifier:(id)arg1 unit:(id)arg2;
 - (void)_queue_start;
 - (_Bool)shouldObserveActivityCache;
 - (_Bool)_shouldExecuteWhenProtectedDataIsUnavailable;

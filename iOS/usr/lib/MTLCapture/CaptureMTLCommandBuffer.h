@@ -25,7 +25,7 @@
     NSMutableArray *_scheduledDispatchArray;
     NSMutableArray *_completedDispatchArray;
     _Bool _presentDrawableUsed;
-    _Bool _isCommitted;
+    unsigned long long _layer;
     _Bool _isCapturing;
     _Bool _isCommited;
     NSMutableSet *_retainedObjects;
@@ -42,6 +42,8 @@
 - (id)sampledRenderCommandEncoderWithDescriptor:(id)arg1 programInfoBuffer:(CDUnion_c6e49ed4 *)arg2 capacity:(unsigned long long)arg3;
 - (id)sampledComputeCommandEncoderWithProgramInfoBuffer:(CDUnion_c6e49ed4 *)arg1 capacity:(unsigned long long)arg2;
 - (id)sampledComputeCommandEncoderWithDispatchType:(unsigned long long)arg1 programInfoBuffer:(CDUnion_c6e49ed4 *)arg2 capacity:(unsigned long long)arg3;
+- (id)sampledComputeCommandEncoderWithDescriptor:(id)arg1 programInfoBuffer:(CDUnion_c6e49ed4 *)arg2 capacity:(unsigned long long)arg3;
+- (id)resourceStateCommandEncoderWithDescriptor:(id)arg1;
 - (id)resourceStateCommandEncoder;
 - (id)renderCommandEncoderWithDescriptor:(id)arg1;
 - (void)pushDebugGroup:(id)arg1;
@@ -53,8 +55,9 @@
 - (void)dropResourceGroups:(const id *)arg1 count:(unsigned long long)arg2;
 - (void *)debugBufferContentsWithLength:(unsigned long long *)arg1;
 - (id)computeCommandEncoderWithDispatchType:(unsigned long long)arg1;
+- (id)computeCommandEncoderWithDescriptor:(id)arg1;
 - (id)computeCommandEncoder;
-- (void)commitAndHold;
+- (id)blitCommandEncoderWithDescriptor:(id)arg1;
 - (id)blitCommandEncoder;
 - (void)addPurgedResource:(id)arg1;
 - (void)addPurgedHeap:(id)arg1;
@@ -67,11 +70,15 @@
 @property(readonly) id <MTLLogContainer> logs;
 @property(readonly, nonatomic, getter=getListIndex) unsigned long long listIndex;
 @property(copy) NSString *label;
+@property(readonly) double kernelStartTime;
+@property(readonly) double kernelEndTime;
 @property(readonly) unsigned long long globalTraceObjectID;
 @property(readonly) unsigned long long errorOptions;
 @property(readonly) NSError *error;
 @property(readonly) id <MTLDevice> device;
 @property(readonly) id <MTLCommandQueue> commandQueue;
+@property(readonly) double GPUStartTime;
+@property(readonly) double GPUEndTime;
 - (_Bool)conformsToProtocol:(id)arg1;
 - (_Bool)respondsToSelector:(SEL)arg1;
 @property(readonly, copy) NSString *description;
@@ -81,21 +88,19 @@
 @property(readonly) struct GTTraceContext *traceContext;
 - (void)touch;
 - (id)originalObject;
-- (id)resourceStateCommandEncoderWithDescriptor:(id)arg1;
-- (id)sampledComputeCommandEncoderWithDescriptor:(id)arg1 programInfoBuffer:(CDUnion_c6e49ed4 *)arg2 capacity:(unsigned long long)arg3;
-- (id)computeCommandEncoderWithDescriptor:(id)arg1;
-- (id)blitCommandEncoderWithDescriptor:(id)arg1;
 - (id)debugCommandEncoder;
 - (void)addCompletedHandler:(CDUnknownBlockType)arg1;
 - (void)presentDrawable:(id)arg1 atTime:(double)arg2;
 - (void)presentDrawable:(id)arg1;
+- (void)trackPresent:(id)arg1;
 - (void)addScheduledHandler:(CDUnknownBlockType)arg1;
 - (_Bool)commitAndWaitUntilSubmitted;
+- (void)commitAndHold;
 - (void)commit;
 - (void)enqueue;
 - (_Bool)isEnqueued;
-- (unsigned char)_frameBoundaryFlag;
 - (void)addRequestsToDownloadQueue:(id)arg1;
+- (void)_postCommit:(const struct GTTraceFunc *)arg1;
 - (void)_preCommitWithIndex:(unsigned long long)arg1;
 - (void)encodeWaitForEvent:(id)arg1 value:(unsigned long long)arg2;
 - (void)encodeWaitForEvent:(id)arg1 value:(unsigned long long)arg2 timeout:(unsigned int)arg3;
@@ -106,12 +111,8 @@
 @property(readonly) id <MTLCommandBuffer> baseObject;
 
 // Remaining properties
-@property(readonly) double GPUEndTime;
-@property(readonly) double GPUStartTime;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
-@property(readonly) double kernelEndTime;
-@property(readonly) double kernelStartTime;
 @property(readonly) Class superclass;
 
 @end

@@ -13,11 +13,13 @@
 @interface TRIFetchMultipleExperimentNotificationsTask <TRIRetryableTask, TRIMetricsProviding>
 {
     NSMutableArray *_metrics;
+    NSMutableArray *_dimensions;
     NSMutableArray *_nextTasks;
     NSDate *_startingFetchDateOverride;
     _Bool _rollbacksOnly;
     id <TRITaskAttributing> _taskAttributing;
     NSSet *_namespaceNames;
+    _Bool wasDeferred;
     int retryCount;
 }
 
@@ -25,14 +27,17 @@
 + (id)parseFromData:(id)arg1;
 + (id)taskWithStartingFetchDateOverride:(id)arg1 namespaceNames:(id)arg2 taskAttributing:(id)arg3 rollbacksOnly:(_Bool)arg4;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool wasDeferred; // @synthesize wasDeferred;
 @property(nonatomic) int retryCount; // @synthesize retryCount;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (unsigned long long)requiredCapabilities;
 - (id)serialize;
 - (id)_asPersistedTask;
+- (id)trialSystemTelemetry;
 - (id)dimensions;
 - (id)metrics;
+- (void)_addDimension:(id)arg1;
 - (void)_addMetric:(id)arg1;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
@@ -47,6 +52,7 @@
 - (void)_addNextTask:(id)arg1;
 - (id)initWithStartingFetchDateOverride:(id)arg1 container:(int)arg2 team:(id)arg3 rollbacksOnly:(_Bool)arg4 withNamespaceNames:(id)arg5;
 - (id)initWithStartingFetchDateOverride:(id)arg1 namespaceNames:(id)arg2 taskAttributing:(id)arg3 rollbacksOnly:(_Bool)arg4;
+@property(readonly, nonatomic) NSArray *tags;
 @property(readonly, nonatomic) NSString *taskName;
 @property(readonly, nonatomic) int taskType;
 
@@ -56,7 +62,6 @@
 @property(copy, nonatomic) NSDate *startTime;
 @property(nonatomic) __weak id <TRITaskQueueStateProviding> stateProvider;
 @property(readonly) Class superclass;
-@property(readonly, nonatomic) NSArray *tags;
 
 @end
 

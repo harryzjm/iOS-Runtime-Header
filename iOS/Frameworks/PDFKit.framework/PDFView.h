@@ -6,12 +6,13 @@
 
 #import <UIKit/UIView.h>
 
+#import <PDFKit/PDFPasswordViewControllerDelegate-Protocol.h>
 #import <PDFKit/UIGestureRecognizerDelegate-Protocol.h>
 
 @class NSArray, NSString, PDFDestination, PDFDocument, PDFPage, PDFSelection, PDFViewPrivate, UIColor;
 @protocol PDFViewDelegate;
 
-@interface PDFView : UIView <UIGestureRecognizerDelegate>
+@interface PDFView : UIView <PDFPasswordViewControllerDelegate, UIGestureRecognizerDelegate>
 {
     PDFViewPrivate *_private;
 }
@@ -155,6 +156,7 @@
 - (void)gestureInit;
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (_Bool)canBecomeFirstResponder;
+- (_Bool)userDidEnterPassword:(id)arg1 forPasswordViewController:(id)arg2;
 - (void)_updatePasswordView;
 - (void)_removePasswordView;
 - (void)_setupPasswordView;

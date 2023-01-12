@@ -4,27 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PencilKit/UIPointerInteractionDelegate-Protocol.h>
 #import <PencilKit/UITextInteractionDelegate-Protocol.h>
-#import <PencilKit/_UICursorInteractionDelegate-Protocol.h>
 
-@class NSString, PKAttachmentView, UIButton;
+@class NSString, UIButton, UIView;
+@protocol PKTextAttachmentDrawingViewProviderView;
 
-@interface PKTiledTextView <UITextInteractionDelegate, _UICursorInteractionDelegate>
+@interface PKTiledTextView <UITextInteractionDelegate, UIPointerInteractionDelegate>
 {
-    PKAttachmentView *_standInEndAttachmentView;
+    UIView<PKTextAttachmentDrawingViewProviderView> *_standInEndAttachmentView;
     UIButton *_tapToRadarButton;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIButton *tapToRadarButton; // @synthesize tapToRadarButton=_tapToRadarButton;
-@property(retain, nonatomic) PKAttachmentView *standInEndAttachmentView; // @synthesize standInEndAttachmentView=_standInEndAttachmentView;
-- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+@property(retain, nonatomic) UIView<PKTextAttachmentDrawingViewProviderView> *standInEndAttachmentView; // @synthesize standInEndAttachmentView=_standInEndAttachmentView;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (id)saveTempData:(id)arg1 name:(id)arg2;
 - (void)appendPath:(id)arg1 attachmentString:(id)arg2;
 - (void)_tapToRadarButtonTapped:(id)arg1;
 - (void)_setupTapToRadarButton;
 - (_Bool)interactionShouldBegin:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)viewForAttachmentAtBlankSpace;
 - (struct CGRect)frameOfEndAttachment;
 - (_Bool)insertAttachmentIfInBlankSpace:(struct CGPoint)arg1;
 - (_Bool)hasEndAttachment;
@@ -41,9 +43,12 @@
 - (void)textDidEndEditing:(id)arg1;
 - (void)textDidBeginEditing:(id)arg1;
 - (void)textDidChange:(id)arg1;
+- (_Bool)_shouldExpandBottomAttachmentForDragAndDrop;
+- (void)_addStandInEndAttachmentView;
+- (void)setDefaultDrawingClass:(Class)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)dealloc;
-- (id)initInScrollView:(id)arg1;
+- (id)initInScrollView:(id)arg1 sixChannelBlending:(_Bool)arg2 defaultDrawingClass:(Class)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -7,13 +7,15 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/NSCopying-Protocol.h>
+#import <UIKitCore/_UIContentEffectDescriptor-Protocol.h>
 
-@class UIPointerEffect, UIPointerShape, UITargetedPreview;
+@class NSArray, NSString, UIPointerEffect, UIPointerShape, UITargetedPreview;
 
-@interface UIPointerStyle : NSObject <NSCopying>
+@interface UIPointerStyle : NSObject <_UIContentEffectDescriptor, NSCopying>
 {
     _Bool _determineScaleAutomatically;
     _Bool _suppressesMirroring;
+    NSArray *_accessories;
     long long _type;
     unsigned long long _options;
     unsigned long long _constrainedAxes;
@@ -21,6 +23,7 @@
     UIPointerShape *_pointerShape;
 }
 
++ (id)systemPointerStyle;
 + (id)_systemPointerStyle;
 + (id)hiddenPointerStyle;
 + (id)styleWithShape:(id)arg1 constrainedAxes:(unsigned long long)arg2;
@@ -31,20 +34,26 @@
 @property(nonatomic) unsigned long long constrainedAxes; // @synthesize constrainedAxes=_constrainedAxes;
 @property(nonatomic) unsigned long long options; // @synthesize options=_options;
 @property(nonatomic) long long type; // @synthesize type=_type;
+@property(copy, nonatomic) NSArray *accessories; // @synthesize accessories=_accessories;
 @property(nonatomic) _Bool _suppressesMirroring; // @synthesize _suppressesMirroring;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
+- (_Bool)canTransitionInPlaceToEffectWithDescriptor:(id)arg1;
+@property(readonly, nonatomic) NSArray *compatibleDescriptors;
+@property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) _Bool pointerUnderlapsContent;
 - (double)_pointerIntensityForMaterialLuminance:(unsigned long long)arg1;
-- (_Bool)_canTransitionInPlaceToStyle:(id)arg1;
 @property(readonly, nonatomic) double contentScale;
 - (struct CGPoint)_pointerSlipMappedToRegionSize:(struct CGSize)arg1;
 - (struct CGPoint)_contentSlipMappedToRegionSize:(struct CGSize)arg1;
 - (struct CGPoint)_contentSlipFactor;
 - (struct CGPoint)_pointerSlipFactor;
 @property(readonly, nonatomic) UITargetedPreview *targetedPreview;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

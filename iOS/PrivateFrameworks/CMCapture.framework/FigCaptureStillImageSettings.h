@@ -67,9 +67,12 @@
     NSArray *_bravoConstituentImageDeliveryDeviceTypes;
     NSDictionary *_spatialOverCaptureMetadata;
     NSDictionary *_spatialOverCaptureMetadataForOriginalImage;
+    _Bool _prefersStillImageShiftedToMatchSpatialOverCapturePreview;
     _Bool _autoDeferredProcessingEnabled;
     int _qualityPrioritization;
+    int _clientQualityPrioritization;
     int _bravoImageFusionMode;
+    _Bool _autoIntelligentDistortionCorrectionEnabled;
     NSDictionary *_vtCompressionProperties;
     int _bracketType;
     unsigned int _bracketImageCount;
@@ -93,7 +96,6 @@
 + (_Bool)supportsSecureCoding;
 @property(nonatomic) NSString *imageGroupIdentifier; // @synthesize imageGroupIdentifier=_imageGroupIdentifier;
 @property(nonatomic) _Bool autoDeferredProcessingEnabled; // @synthesize autoDeferredProcessingEnabled=_autoDeferredProcessingEnabled;
-@property(copy, nonatomic) NSDictionary *spatialOverCaptureMetadataForOriginalImage; // @synthesize spatialOverCaptureMetadataForOriginalImage=_spatialOverCaptureMetadataForOriginalImage;
 @property(nonatomic) float videoStabilizationOverscanCropMultiplier; // @synthesize videoStabilizationOverscanCropMultiplier=_videoStabilizationOverscanCropMultiplier;
 @property(nonatomic, getter=isBeginMomentCaptureSettings) _Bool beginMomentCaptureSettings; // @synthesize beginMomentCaptureSettings=_beginMomentCaptureSettings;
 @property(nonatomic, getter=isUserInitiatedRequestSettings) _Bool userInitiatedRequestSettings; // @synthesize userInitiatedRequestSettings=_userInitiatedRequestSettings;
@@ -111,8 +113,12 @@
 @property(readonly, nonatomic) unsigned int bracketImageCount; // @synthesize bracketImageCount=_bracketImageCount;
 @property(readonly, nonatomic) int bracketType; // @synthesize bracketType=_bracketType;
 @property(copy, nonatomic) NSDictionary *vtCompressionProperties; // @synthesize vtCompressionProperties=_vtCompressionProperties;
+@property(nonatomic) _Bool autoIntelligentDistortionCorrectionEnabled; // @synthesize autoIntelligentDistortionCorrectionEnabled=_autoIntelligentDistortionCorrectionEnabled;
 @property(nonatomic) int bravoImageFusionMode; // @synthesize bravoImageFusionMode=_bravoImageFusionMode;
+@property(nonatomic) int clientQualityPrioritization; // @synthesize clientQualityPrioritization=_clientQualityPrioritization;
 @property(nonatomic) int qualityPrioritization; // @synthesize qualityPrioritization=_qualityPrioritization;
+@property(nonatomic) _Bool prefersStillImageShiftedToMatchSpatialOverCapturePreview; // @synthesize prefersStillImageShiftedToMatchSpatialOverCapturePreview=_prefersStillImageShiftedToMatchSpatialOverCapturePreview;
+@property(copy, nonatomic) NSDictionary *spatialOverCaptureMetadataForOriginalImage; // @synthesize spatialOverCaptureMetadataForOriginalImage=_spatialOverCaptureMetadataForOriginalImage;
 @property(copy, nonatomic) NSDictionary *spatialOverCaptureMetadata; // @synthesize spatialOverCaptureMetadata=_spatialOverCaptureMetadata;
 @property(copy, nonatomic) NSArray *bravoConstituentImageDeliveryDeviceTypes; // @synthesize bravoConstituentImageDeliveryDeviceTypes=_bravoConstituentImageDeliveryDeviceTypes;
 @property(nonatomic) _Bool providesOriginalImage; // @synthesize providesOriginalImage=_providesOriginalImage;
@@ -166,7 +172,6 @@
 @property(nonatomic) int settingsProvider; // @synthesize settingsProvider=_settingsProvider;
 @property(nonatomic) int payloadType; // @synthesize payloadType=_payloadType;
 @property(readonly, nonatomic) long long settingsID; // @synthesize settingsID=_settingsID;
-- (void)_teardownBracketStorage;
 - (id)figCaptureIrisPreparedSettingsRepresentation;
 - (void)setBracketType:(int)arg1 imageCount:(unsigned int)arg2;
 @property(readonly, nonatomic) NSDictionary *previewPixelBufferAttributes;
@@ -179,7 +184,6 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
-- (id)_initWithSettingsID:(long long)arg1 captureRequestIdentifier:(id)arg2 imageGroupIdentifier:(id)arg3;
 - (id)initWithSettingsID:(long long)arg1;
 
 @end

@@ -16,6 +16,10 @@
 - (id)accessibilityValue;
 - (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
+- (_Bool)_accessibilityIsPHAssetLocallyAvailable;
+- (id)_accessibilityPHAssetLocalIdentifier;
+- (id)accessibilityURL;
+- (id)accessibilityCustomContent;
 - (_Bool)isAccessibilityElement;
 - (void)_axSetSelectionManager:(id)arg1;
 - (void)_setAXSelectionManager:(id)arg1;

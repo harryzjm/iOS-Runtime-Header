@@ -31,12 +31,12 @@
 - (_Bool)navigateToGadgetWithIdDeferIfNeeded:(id)arg1 animated:(_Bool)arg2 nestedNavigationBlock:(CDUnknownBlockType)arg3;
 - (_Bool)navigateToFirstGadgetWithTypeDeferIfNeeded:(unsigned long long)arg1 animated:(_Bool)arg2 nestedNavigationBlock:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic) _Bool hasPendingNavigation;
-- (void)navigateToGadgetWithTypeSurveyCongratulations;
+- (void)navigateToGadgetWithTypeSurveyCongratulationsWithGadgetType:(unsigned long long)arg1;
 - (void)navigateToSectionWithGadgetType:(unsigned long long)arg1 andGadget:(id)arg2 animated:(_Bool)arg3;
 - (void)navigateToGadgetForCMMSuggestions;
 - (void)navigateToGadgetForCMMInvitationWithIdentifier:(id)arg1;
-- (void)navigateToFeaturedPhotoWithSuggestionIdentifier:(id)arg1 animated:(_Bool)arg2;
-- (void)navigateToSuggestionGadget:(id)arg1 animated:(_Bool)arg2;
+- (void)navigateToFeaturedPhotoWithSuggestionIdentifier:(id)arg1 animated:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)navigateToGadgetInHorizontalGadget:(id)arg1 animated:(_Bool)arg2;
 - (void)navigateToInvitationCMMWithUUID:(id)arg1 animated:(_Bool)arg2;
 - (void)navigateToSuggestedCMMWithUUID:(id)arg1 animated:(_Bool)arg2;
 - (void)navigateToRevealTheMostRecentMemoryAnimated:(_Bool)arg1;

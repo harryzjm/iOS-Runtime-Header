@@ -80,7 +80,6 @@
 @property(nonatomic) _Bool hasValueInOriginalUnit;
 @property(nonatomic) _Bool hasValueInCanonicalUnit;
 @property(readonly, nonatomic) _Bool hasSample;
-- (_Bool)_applyToDiscreteQuantitySeriesSample:(id)arg1;
 - (_Bool)isSeries;
 - (_Bool)applyToObject:(id)arg1;
 

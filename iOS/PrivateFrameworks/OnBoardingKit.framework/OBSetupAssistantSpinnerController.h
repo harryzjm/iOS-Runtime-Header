@@ -6,7 +6,7 @@
 
 #import <OnBoardingKit/OBSetupAssistantSupport-Protocol.h>
 
-@class NSString, OBPrivacyLinkController, UIActivityIndicatorView, UILabel;
+@class NSString, OBPrivacyLinkController, UIActivityIndicatorView, UILabel, UIScrollView, UIView;
 
 @interface OBSetupAssistantSpinnerController <OBSetupAssistantSupport>
 {
@@ -14,20 +14,27 @@
     OBPrivacyLinkController *_privacyLinkController;
     UILabel *_label;
     UIActivityIndicatorView *_activityIndicator;
+    UIScrollView *_scrollView;
+    UIView *_scrollContentView;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIView *scrollContentView; // @synthesize scrollContentView=_scrollContentView;
+@property(retain, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property(retain, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
 @property(retain, nonatomic) UILabel *label; // @synthesize label=_label;
 @property(retain, nonatomic) OBPrivacyLinkController *privacyLinkController; // @synthesize privacyLinkController=_privacyLinkController;
 @property(nonatomic, getter=isActivityIndicatorHidden) _Bool activityIndicatorHidden; // @synthesize activityIndicatorHidden=_activityIndicatorHidden;
+- (_Bool)_shouldUseScrollView;
 - (long long)_activityIndicatorViewStyle;
 - (void)_updateLayout;
 - (void)_updateTextColor;
 - (id)_textStyle;
+- (void)updateDirectionalLayoutMargins;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)loadView;
 - (id)initWithSpinnerText:(id)arg1;
 

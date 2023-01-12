@@ -8,6 +8,7 @@
 
 @interface SBRemovalSwitcherModifierEvent
 {
+    long long _layoutRole;
     SBAppLayout *_appLayout;
     long long _reason;
     unsigned long long _phase;
@@ -17,10 +18,11 @@
 @property(readonly, nonatomic) unsigned long long phase; // @synthesize phase=_phase;
 @property(readonly, nonatomic) long long reason; // @synthesize reason=_reason;
 @property(readonly, nonatomic) SBAppLayout *appLayout; // @synthesize appLayout=_appLayout;
+@property(readonly, nonatomic) long long layoutRole; // @synthesize layoutRole=_layoutRole;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (long long)type;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithAppLayout:(id)arg1 reason:(long long)arg2 phase:(unsigned long long)arg3;
+- (id)initWithLayoutRole:(long long)arg1 inAppLayout:(id)arg2 reason:(long long)arg3 phase:(unsigned long long)arg4;
 
 @end
 

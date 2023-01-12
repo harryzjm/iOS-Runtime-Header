@@ -14,9 +14,12 @@ __attribute__((visibility("hidden")))
 
 + (void)_asynchronouslyEnumerateItemSet:(id)arg1 itemsCompletionHandler:(CDUnknownBlockType)arg2 usingItemBlock:(CDUnknownBlockType)arg3;
 + (void)_detectValuesForPatterns:(id)arg1 atIndex:(unsigned long long)arg2 itemCollection:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
++ (id)clientValueForValue:(id)arg1 pattern:(id)arg2;
 + (void)_detectPatternsForPatterns:(id)arg1 atIndex:(unsigned long long)arg2 itemCollection:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (id)_pasteboardWithUniqueName;
 + (id)_pasteboardWithName:(id)arg1 create:(_Bool)arg2;
++ (id)_remoteContentForLayerContextWithId:(unsigned long long)arg1 slotStyle:(id)arg2 pasteButtonTag:(id)arg3;
++ (void)_attemptAuthenticationWithMessage:(id)arg1;
 + (void)_clearPinnedItemProvidersForPasteboardNamed:(id)arg1;
 + (void)_pinItemProviders:(id)arg1 forPasteboardNamed:(id)arg2 withExpirationDate:(id)arg3;
 + (void)removePasteboardWithName:(id)arg1;
@@ -52,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (void)_setItemsAndSaveFromObjects:(id)arg1 ofClass:(Class)arg2;
 - (id)strings;
 - (void)setString:(id)arg1;
+- (void)_clearItems;
 - (id)string;
 - (id)_itemsCoercibleToClass:(Class)arg1;
 - (void)setData:(id)arg1 forPasteboardType:(id)arg2;
@@ -64,6 +68,7 @@ __attribute__((visibility("hidden")))
 - (void)addItems:(id)arg1;
 - (void)_setItemsAndSave:(id)arg1 options:(id)arg2;
 - (void)_setItemsAndSave:(id)arg1 options:(id)arg2 coerceStringsToURLs:(_Bool)arg3;
+- (void)_setItemsAndSave:(id)arg1 options:(id)arg2 coerceStringsToURLs:(_Bool)arg3 dataOwner:(long long)arg4;
 - (void)setItems:(id)arg1 options:(id)arg2;
 - (void)setItems:(id)arg1;
 - (id)items;

@@ -10,6 +10,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface ICPAPlayActivityEnqueuerProperties : PBCodable <NSCopying>
 {
     unsigned long long _storeAccountID;
@@ -30,35 +31,13 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool privateListeningEnabled; // @synthesize privateListeningEnabled=_privateListeningEnabled;
-@property(retain, nonatomic) NSString *storeFrontID; // @synthesize storeFrontID=_storeFrontID;
-@property(nonatomic) unsigned long long storeAccountID; // @synthesize storeAccountID=_storeAccountID;
-@property(nonatomic) _Bool sBEnabled; // @synthesize sBEnabled=_sBEnabled;
-@property(retain, nonatomic) NSString *timeZoneName; // @synthesize timeZoneName=_timeZoneName;
-@property(retain, nonatomic) NSString *deviceName; // @synthesize deviceName=_deviceName;
-@property(retain, nonatomic) NSString *deviceGUID; // @synthesize deviceGUID=_deviceGUID;
-@property(retain, nonatomic) NSString *buildVersion; // @synthesize buildVersion=_buildVersion;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasPrivateListeningEnabled;
-@property(readonly, nonatomic) _Bool hasStoreFrontID;
-@property(nonatomic) _Bool hasStoreAccountID;
-@property(nonatomic) _Bool hasSBEnabled;
-- (int)StringAsSystemReleaseType:(id)arg1;
-- (id)systemReleaseTypeAsString:(int)arg1;
-@property(nonatomic) _Bool hasSystemReleaseType;
-@property(nonatomic) int systemReleaseType; // @synthesize systemReleaseType=_systemReleaseType;
-@property(readonly, nonatomic) _Bool hasTimeZoneName;
-@property(readonly, nonatomic) _Bool hasDeviceName;
-@property(readonly, nonatomic) _Bool hasDeviceGUID;
-@property(readonly, nonatomic) _Bool hasBuildVersion;
 
 @end
 

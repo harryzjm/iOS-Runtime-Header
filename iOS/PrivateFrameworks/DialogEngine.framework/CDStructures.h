@@ -12,77 +12,15 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct Arena;
-
-struct ArenaStringPtr {
-    basic_string_7c0a1c0b *_field1;
-};
-
-struct Asset {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArenaLite _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct ArenaStringPtr _field5;
-    struct ArenaStringPtr _field6;
-    struct ArenaStringPtr _field7;
-    unsigned long long _field8;
-    int _field9;
-};
-
 struct CC_SHA256state_st {
     unsigned int count[2];
     unsigned int hash[8];
     unsigned int wbuf[16];
 };
 
-struct CachedSize {
-    struct atomic<int> _field1;
-};
-
-struct Condition;
-
-struct ConditionEntry;
-
-struct Context {
-    CDUnknownFunctionPointerType *_field1;
-    struct RequestInfo _field2;
-    shared_ptr_ab06ee6d _field3;
-    struct map<std::__1::basic_string<char>, std::__1::shared_ptr<siri::dialogengine::Variable>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::shared_ptr<siri::dialogengine::Variable>>>> _field4;
-    struct map<std::__1::basic_string<char>, std::__1::shared_ptr<siri::dialogengine::Variable>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::shared_ptr<siri::dialogengine::Variable>>>> _field5;
-    struct map<std::__1::basic_string<char>, siri::dialogengine::Parameter, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, siri::dialogengine::Parameter>>> _field6;
-    struct vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>> _field7;
-    struct map<std::__1::basic_string<char>, std::__1::basic_string<char>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::basic_string<char>>>> _field8;
-    basic_string_7c0a1c0b _field9;
-    basic_string_7c0a1c0b _field10;
-    struct ElapsedTimer _field11;
-    CDUnknownBlockType _field12;
-    struct DialogStateUseCase _field13;
-    struct DialogStateFamily _field14;
-    _Bool _field15;
-    _Bool _field16;
-    struct shared_ptr<siri::dialogengine::ExecutionState> _field17;
-    _Bool _field18;
-    struct RandomNumberGenerator _field19;
-};
-
-struct CountAndTimestamp {
-    unsigned long long _field1;
-    double _field2;
-};
+struct Context;
 
 struct Dialog;
-
-struct DialogStateFamily {
-    struct CountAndTimestamp _field1;
-};
-
-struct DialogStateUseCase {
-    struct CountAndTimestamp _field1;
-    basic_string_7c0a1c0b _field2;
-    struct set<std::__1::basic_string<char>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::basic_string<char>>> _field3;
-    struct map<std::__1::basic_string<char>, siri::dialogengine::GroundingInfo, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, siri::dialogengine::GroundingInfo>>> _field4;
-};
 
 struct ElapsedTimer {
     double _field1;
@@ -90,291 +28,73 @@ struct ElapsedTimer {
     unsigned long long _field3;
 };
 
-struct Encrypted {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArenaLite _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct ArenaStringPtr _field5;
-    struct ArenaStringPtr _field6;
-    struct ArenaStringPtr _field7;
-    struct ArenaStringPtr _field8;
-    struct ArenaStringPtr _field9;
-    struct ArenaStringPtr _field10;
-    struct ArenaStringPtr _field11;
-    _Bool _field12;
-};
-
-struct ExecutionState;
-
 struct File;
 
-struct Filter {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArenaLite _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct MatchCriteria *_field5;
-    struct MatchCriteria *_field6;
+struct GrammarFeature {
+    int mType;
+    basic_string_0ec669f3 mName;
+    struct set<std::string, std::less<std::string>, std::allocator<std::string>> mValues;
 };
 
 struct Group;
 
-struct HasBits<1> {
-    unsigned int _field1[1];
-};
-
-struct InternalMetadataWithArenaLite {
-    void *_field1;
-};
-
-struct MatchCriteria {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArenaLite _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct RepeatedPtrField<std::__1::basic_string<char>> _field5;
-    struct RepeatedPtrField<std::__1::basic_string<char>> _field6;
-};
-
 struct Node;
 
-struct ObjectInput {
-    basic_string_7c0a1c0b _field1;
-    basic_string_7c0a1c0b _field2;
-    basic_string_7c0a1c0b _field3;
-    basic_string_7c0a1c0b _field4;
-    int _field5;
-    _Bool _field6;
-};
-
-struct ObjectProperty {
-    CDUnknownFunctionPointerType *_field1;
-    basic_string_7c0a1c0b _field2;
-    basic_string_7c0a1c0b _field3;
-    basic_string_7c0a1c0b _field4;
-    basic_string_7c0a1c0b _field5;
-    basic_string_7c0a1c0b _field6;
-    basic_string_7c0a1c0b _field7;
-    _Bool _field8;
-    _Bool _field9;
-};
-
-struct ObjectSchema {
-    basic_string_7c0a1c0b _field1;
-    basic_string_7c0a1c0b _field2;
-    basic_string_7c0a1c0b _field3;
-    basic_string_7c0a1c0b _field4;
-    struct map<std::__1::basic_string<char>, siri::dialogengine::ObjectProperty, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, siri::dialogengine::ObjectProperty>>> _field5;
-    struct map<std::__1::basic_string<char>, siri::dialogengine::ObjectInput, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, siri::dialogengine::ObjectInput>>> _field6;
-};
+struct ObjectProperty;
 
 struct Parameter;
-
-struct RandomNumberGenerator {
-    unsigned int _field1;
-    struct mersenne_twister_engine<unsigned int, 32, 624, 397, 31, 2567483615, 11, 4294967295, 7, 2636928640, 15, 4022730752, 18, 1812433253> _field2;
-};
-
-struct Rep;
-
-struct RepeatedPtrField<std::__1::basic_string<char>> {
-    struct Arena *_field1;
-    int _field2;
-    int _field3;
-    struct Rep *_field4;
-};
-
-struct RequestInfo {
-    int _field1;
-    basic_string_7c0a1c0b _field2;
-    basic_string_7c0a1c0b _field3;
-    basic_string_7c0a1c0b _field4;
-    basic_string_7c0a1c0b _field5;
-    basic_string_7c0a1c0b _field6;
-    unsigned int _field7;
-    long long _field8;
-    basic_string_7c0a1c0b _field9;
-    basic_string_7c0a1c0b _field10;
-    struct vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>> _field11;
-    basic_string_7c0a1c0b _field12;
-    int _field13;
-    _Bool _field14;
-    _Bool _field15;
-    int _field16;
-    int _field17;
-    basic_string_7c0a1c0b _field18;
-    basic_string_7c0a1c0b _field19;
-    struct vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>> _field20;
-    basic_string_7c0a1c0b _field21;
-};
-
-struct SpeakableString {
-    basic_string_7c0a1c0b _field1;
-    basic_string_7c0a1c0b _field2;
-};
-
-struct State {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArenaLite _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct ArenaStringPtr _field5;
-    struct ArenaStringPtr _field6;
-    struct ArenaStringPtr _field7;
-    struct ArenaStringPtr _field8;
-    struct ArenaStringPtr _field9;
-    struct ArenaStringPtr _field10;
-    struct Filter *_field11;
-    _Bool _field12;
-};
 
 struct Variable;
 
 struct __shared_weak_count;
 
-struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
-    struct __tree_node_base<void *> *_field1;
-};
-
-struct atomic<int> {
-    struct __cxx_atomic_impl<int, std::__1::__cxx_atomic_base_impl<int>> {
-        _Atomic int _field1;
-    } _field1;
-};
-
-struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
-    struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__rep, std::__1::allocator<char>> {
+struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
+    struct __compressed_pair<std::basic_string<char>::__rep, std::allocator<char>> {
         struct __rep {
             union {
                 struct __long {
-                    char *_field1;
-                    unsigned long long _field2;
-                    unsigned long long _field3;
-                } _field1;
+                    char *__data_;
+                    unsigned long long __size_;
+                    unsigned long long __cap_;
+                } __l;
                 struct __short {
-                    char _field1[23];
+                    char __data_[23];
                     struct {
-                        unsigned char _field1;
-                    } _field2;
-                } _field2;
+                        unsigned char __size_;
+                    } ;
+                } __s;
                 struct __raw {
-                    unsigned long long _field1[3];
-                } _field3;
-            } _field1;
-        } _field1;
-    } _field1;
+                    unsigned long long __words[3];
+                } __r;
+            } ;
+        } __value_;
+    } __r_;
 };
 
 struct internal_state;
 
-struct map<std::__1::basic_string<char>, siri::dialogengine::GroundingInfo, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, siri::dialogengine::GroundingInfo>>> {
-    struct __tree<std::__1::__value_type<std::__1::basic_string<char>, siri::dialogengine::GroundingInfo>, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, siri::dialogengine::GroundingInfo>, std::__1::less<std::__1::basic_string<char>>, true>, std::__1::allocator<std::__1::__value_type<std::__1::basic_string<char>, siri::dialogengine::GroundingInfo>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<std::__1::basic_string<char>, siri::dialogengine::GroundingInfo>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, siri::dialogengine::GroundingInfo>, std::__1::less<std::__1::basic_string<char>>, true>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
+struct set<std::string, std::less<std::string>, std::allocator<std::string>> {
+    struct __tree<std::string, std::less<std::string>, std::allocator<std::string>> {
+        void *__begin_node_;
+        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::string, void *>>> {
+            struct __tree_end_node<std::__tree_node_base<void *>*> {
+                void *__left_;
+            } __value_;
+        } __pair1_;
+        struct __compressed_pair<unsigned long, std::less<std::string>> {
+            unsigned long long __value_;
+        } __pair3_;
+    } __tree_;
 };
 
-struct map<std::__1::basic_string<char>, siri::dialogengine::ObjectInput, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, siri::dialogengine::ObjectInput>>> {
-    struct __tree<std::__1::__value_type<std::__1::basic_string<char>, siri::dialogengine::ObjectInput>, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, siri::dialogengine::ObjectInput>, std::__1::less<std::__1::basic_string<char>>, true>, std::__1::allocator<std::__1::__value_type<std::__1::basic_string<char>, siri::dialogengine::ObjectInput>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<std::__1::basic_string<char>, siri::dialogengine::ObjectInput>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, siri::dialogengine::ObjectInput>, std::__1::less<std::__1::basic_string<char>>, true>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
-};
-
-struct map<std::__1::basic_string<char>, siri::dialogengine::ObjectProperty, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, siri::dialogengine::ObjectProperty>>> {
-    struct __tree<std::__1::__value_type<std::__1::basic_string<char>, siri::dialogengine::ObjectProperty>, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, siri::dialogengine::ObjectProperty>, std::__1::less<std::__1::basic_string<char>>, true>, std::__1::allocator<std::__1::__value_type<std::__1::basic_string<char>, siri::dialogengine::ObjectProperty>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<std::__1::basic_string<char>, siri::dialogengine::ObjectProperty>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, siri::dialogengine::ObjectProperty>, std::__1::less<std::__1::basic_string<char>>, true>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
-};
-
-struct map<std::__1::basic_string<char>, siri::dialogengine::Parameter, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, siri::dialogengine::Parameter>>> {
-    struct __tree<std::__1::__value_type<std::__1::basic_string<char>, siri::dialogengine::Parameter>, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, siri::dialogengine::Parameter>, std::__1::less<std::__1::basic_string<char>>, true>, std::__1::allocator<std::__1::__value_type<std::__1::basic_string<char>, siri::dialogengine::Parameter>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<std::__1::basic_string<char>, siri::dialogengine::Parameter>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, siri::dialogengine::Parameter>, std::__1::less<std::__1::basic_string<char>>, true>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
-};
-
-struct map<std::__1::basic_string<char>, std::__1::basic_string<char>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::basic_string<char>>>> {
-    struct __tree<std::__1::__value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>, std::__1::less<std::__1::basic_string<char>>, true>, std::__1::allocator<std::__1::__value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>, std::__1::less<std::__1::basic_string<char>>, true>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
-};
-
-struct map<std::__1::basic_string<char>, std::__1::shared_ptr<siri::dialogengine::Variable>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::shared_ptr<siri::dialogengine::Variable>>>> {
-    struct __tree<std::__1::__value_type<std::__1::basic_string<char>, std::__1::shared_ptr<siri::dialogengine::Variable>>, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, std::__1::shared_ptr<siri::dialogengine::Variable>>, std::__1::less<std::__1::basic_string<char>>, true>, std::__1::allocator<std::__1::__value_type<std::__1::basic_string<char>, std::__1::shared_ptr<siri::dialogengine::Variable>>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<std::__1::basic_string<char>, std::__1::shared_ptr<siri::dialogengine::Variable>>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, std::__1::shared_ptr<siri::dialogengine::Variable>>, std::__1::less<std::__1::basic_string<char>>, true>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
-};
-
-struct mersenne_twister_engine<unsigned int, 32, 624, 397, 31, 2567483615, 11, 4294967295, 7, 2636928640, 15, 4022730752, 18, 1812433253> {
-    unsigned int _field1[624];
-    unsigned long long _field2;
-};
-
-struct set<std::__1::basic_string<char>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::basic_string<char>>> {
-    struct __tree<std::__1::basic_string<char>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::basic_string<char>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::basic_string<char>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::less<std::__1::basic_string<char>>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
-};
-
-struct shared_ptr<siri::dialogengine::Condition> {
-    struct Condition *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-};
-
-struct shared_ptr<siri::dialogengine::ConditionEntry> {
-    struct ConditionEntry *__ptr_;
+struct shared_ptr<siri::dialogengine::Context> {
+    struct Context *__ptr_;
     struct __shared_weak_count *__cntrl_;
 };
 
 struct shared_ptr<siri::dialogengine::Dialog> {
     struct Dialog *__ptr_;
     struct __shared_weak_count *__cntrl_;
-};
-
-struct shared_ptr<siri::dialogengine::ExecutionState> {
-    struct ExecutionState *_field1;
-    struct __shared_weak_count *_field2;
 };
 
 struct shared_ptr<siri::dialogengine::File> {
@@ -407,14 +127,6 @@ struct shared_ptr<siri::dialogengine::Variable> {
     struct __shared_weak_count *__cntrl_;
 };
 
-struct vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>> {
-    basic_string_7c0a1c0b *_field1;
-    basic_string_7c0a1c0b *_field2;
-    struct __compressed_pair<std::__1::basic_string<char>*, std::__1::allocator<std::__1::basic_string<char>>> {
-        basic_string_7c0a1c0b *_field1;
-    } _field3;
-};
-
 struct z_stream_s {
     char *next_in;
     unsigned int avail_in;
@@ -439,38 +151,33 @@ typedef struct {
 } CDStruct_43cfb2c2;
 
 // Template types
-typedef struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
-    struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__rep, std::__1::allocator<char>> {
+typedef struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
+    struct __compressed_pair<std::basic_string<char>::__rep, std::allocator<char>> {
         struct __rep {
             union {
                 struct __long {
-                    char *_field1;
-                    unsigned long long _field2;
-                    unsigned long long _field3;
-                } _field1;
+                    char *__data_;
+                    unsigned long long __size_;
+                    unsigned long long __cap_;
+                } __l;
                 struct __short {
-                    char _field1[23];
+                    char __data_[23];
                     struct {
-                        unsigned char _field1;
-                    } _field2;
-                } _field2;
+                        unsigned char __size_;
+                    } ;
+                } __s;
                 struct __raw {
-                    unsigned long long _field1[3];
-                } _field3;
-            } _field1;
-        } _field1;
-    } _field1;
-} basic_string_7c0a1c0b;
+                    unsigned long long __words[3];
+                } __r;
+            } ;
+        } __value_;
+    } __r_;
+} basic_string_0ec669f3;
 
-typedef struct shared_ptr<siri::dialogengine::Condition> {
-    struct Condition *__ptr_;
+typedef struct shared_ptr<siri::dialogengine::Context> {
+    struct Context *__ptr_;
     struct __shared_weak_count *__cntrl_;
-} shared_ptr_92af2b80;
-
-typedef struct shared_ptr<siri::dialogengine::ConditionEntry> {
-    struct ConditionEntry *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-} shared_ptr_64765223;
+} shared_ptr_3beef14e;
 
 typedef struct shared_ptr<siri::dialogengine::Dialog> {
     struct Dialog *__ptr_;

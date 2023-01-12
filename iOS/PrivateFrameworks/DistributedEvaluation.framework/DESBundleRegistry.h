@@ -6,26 +6,33 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary;
+#import <DistributedEvaluation/DESBundleRegistryManaging-Protocol.h>
 
-@interface DESBundleRegistry : NSObject
+@class NSDictionary, NSSet, NSString;
+
+@interface DESBundleRegistry : NSObject <DESBundleRegistryManaging>
 {
     NSDictionary *_bundleMap;
+    NSSet *_lowMemoryExtensions;
+    NSSet *_highMemoryExtensions;
 }
 
++ (id)_extensionsWithEndpointName:(id)arg1;
 + (id)sharedInstance;
 + (void)initialize;
 - (void).cxx_destruct;
+- (id)infoDictionaryForBundleID:(id)arg1;
+- (long long)pluginTypeForBundleId:(id)arg1;
 - (_Bool)containsBundleId:(id)arg1;
 - (id)allBundleIds;
-- (id)coreDuetEventQueryForBundleId:(id)arg1;
-- (id)supportedCoreDuetEventStreamNamesForBundleId:(id)arg1;
-- (id)supportedRecordTypesForBundleId:(id)arg1;
-- (unsigned long long)daysToExpirationOfRecordsForBundleId:(id)arg1;
-- (unsigned long long)maximumNumberOfRecordsForBundleId:(id)arg1;
-- (id)evaluatorForBundleId:(id)arg1 error:(id *)arg2;
 - (id)_init;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

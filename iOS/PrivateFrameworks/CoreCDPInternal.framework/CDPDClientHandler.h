@@ -24,9 +24,12 @@
 - (_Bool)_allowRecoveryKey;
 - (_Bool)_allowDataRecovery;
 - (_Bool)_allowFollowUps;
+- (oneway void)updateDataPrivacyWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (oneway void)statusForDataPrivacyWithCompletion:(CDUnknownBlockType)arg1;
 - (void)generateRandomRecoveryKeyWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)deleteRecoveryKeyWithContext:(id)arg1 uiProvider:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)generateNewRecoveryKeyWithContext:(id)arg1 uiProvider:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (oneway void)isRecoveryKeyAvailableWithCompletion:(CDUnknownBlockType)arg1;
 - (void)recoverSquirrelWithContext:(id)arg1 uiProvider:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)recoverAndSynchronizeSquirrelWithContext:(id)arg1 uiProvider:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeNonViewAwarePeersFromCircleWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -36,8 +39,11 @@
 - (void)isICDPEnabledForDSID:(id)arg1 checkWithServer:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_performRecoveryWithContext:(id)arg1 uiProvider:(id)arg2 authProvider:(id)arg3 errorProviuder:(id)arg4 resultParser:(id)arg5 secureBackUpController:(id)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)performRecoveryWithContext:(id)arg1 uiProvider:(id)arg2 authProvider:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)fetchTermsAcceptanceForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)saveTermsAcceptance:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)postFollowUpWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)clearFollowUpWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)finishCyrusFlowAfterTermsAgreementWithContext:(id)arg1 uiProvider:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)finishOfflineLocalSecretChangeWithContext:(id)arg1 uiProvider:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)localSecretChangedTo:(id)arg1 secretType:(unsigned long long)arg2 context:(id)arg3 uiProvider:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)attemptToEscrowPreRecord:(id)arg1 context:(id)arg2 completion:(CDUnknownBlockType)arg3;

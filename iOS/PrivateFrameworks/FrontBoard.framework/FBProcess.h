@@ -12,7 +12,7 @@
 #import <FrontBoard/RBSProcessMatching-Protocol.h>
 
 @class BSAuditToken, BSMachPortTaskNameRight, BSProcessHandle, FBProcessCPUStatistics, FBProcessExecutionContext, FBProcessExitContext, FBProcessState, FBProcessWatchdog, FBProcessWatchdogEventContext, FBSApplicationInfo, FBSProcessExecutionProvision, FBSProcessTerminationRequest, FBSProcessWatchdogPolicy, FBWorkspace, NSError, NSMutableArray, NSMutableSet, NSString, RBSAssertion, RBSProcessHandle, RBSProcessIdentity, RBSProcessState, RBSTarget;
-@protocol BSInvalidatable, FBProcessDelegate;
+@protocol FBProcessDelegate, FBProcessWatchdogProviding;
 
 @interface FBProcess : NSObject <FBProcessBootstrapping, FBSProcessInternal, RBSProcessMatching, FBSProcess>
 {
@@ -29,12 +29,10 @@
     struct os_unfair_recursive_lock_s _lock;
     struct os_unfair_lock_s _observerLock;
     struct os_unfair_lock_s _bootstrapLock;
+    struct os_unfair_lock_s _watchdogProviderLock;
     NSString *_description;
     NSError *_bootstrapError;
     NSMutableSet *_observerLock_observers;
-    id <BSInvalidatable> _lock_workspaceAssertion;
-    RBSAssertion *_lock_launchAssertion;
-    RBSAssertion *_lock_continuousAssertion;
     RBSAssertion *_lock_gracefulExitAssertion;
     NSMutableArray *_lock_launchCompletionBlocks;
     FBSApplicationInfo *_lock_applicationInfo;
@@ -46,6 +44,7 @@
     FBProcessWatchdogEventContext *_lock_terminationWatchdogContext;
     long long _terminationReason;
     NSMutableArray *_lock_terminateRequestCompletionBlocks;
+    id <FBProcessWatchdogProviding> _watchdogProvider;
     FBProcessWatchdog *_lock_watchdog;
     FBSProcessWatchdogPolicy *_sceneCreateWatchdogPolicy;
     FBSProcessExecutionProvision *_lock_latestViolatedProvision;
@@ -57,10 +56,9 @@
     _Bool _lock_didExit;
     _Bool _lock_launchFinalized;
     _Bool _lock_launchSuccess;
-    _Bool _lock_submittedLaunchRequest;
     long long _lock_executableLivesOnSystemPartition;
     long long _lock_platformBinary;
-    long long _lock_backgroundingPolicy;
+    _Bool _calloutQueue_sentWillExit;
     _Bool _calloutQueue_sentDidExit;
     _Bool _calloutQueue_sentAppWillLaunch;
     _Bool _calloutQueue_sentAppDidLaunch;
@@ -70,6 +68,9 @@
     RBSTarget *_target;
 }
 
++ (id)createProcessWithExecutionContext:(id)arg1;
++ (id)createProcessWithHandle:(id)arg1;
++ (id)createCurrentProcess;
 + (id)calloutQueue;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) long long versionedPID; // @synthesize versionedPID=_versionedPID;
@@ -92,8 +93,6 @@
 - (_Bool)matchesProcess:(id)arg1;
 - (_Bool)_watchdog:(id)arg1 shouldTerminateWithDeclineReason:(out id *)arg2;
 - (id)_watchdog:(id)arg1 terminationRequestForViolatedProvision:(id)arg2 error:(id)arg3;
-- (void)_watchdogStopped:(id)arg1;
-- (void)_watchdogStarted:(id)arg1;
 - (void)_terminateWithRequest:(id)arg1 forWatchdog:(id)arg2;
 @property(readonly, retain, nonatomic) BSMachPortTaskNameRight *taskNameRight;
 - (void)_lock_consumeLock_performGracefulKill;
@@ -104,19 +103,18 @@
 - (_Bool)_shouldWatchdogWithDeclineReason:(id *)arg1;
 - (_Bool)_startWatchdogTimerForContext:(id)arg1;
 - (id)_newWatchdogForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_launchDidComplete:(_Bool)arg1;
+- (void)_launchDidComplete:(_Bool)arg1 finalizeBlock:(CDUnknownBlockType)arg2;
 - (void)_noteProcessDidExit:(id)arg1;
-- (void)_noteLaunchDidComplete;
 - (void)_bootstrapDidComplete;
 - (id)_createBootstrapContext;
 - (void)_finishInit;
 - (void)_rebuildState:(id)arg1;
 - (void)_rebuildState;
+- (void)_noteAssertionStateDidChange;
 - (void)_processDidExitWithContext:(id)arg1;
 - (id)_observers;
 - (id)_watchdogProvider;
 - (void)_noteStateDidUpdate:(id)arg1;
-- (_Bool)_wantsStateUpdates;
 - (void)_setSceneLifecycleState:(unsigned char)arg1;
 - (void)_configureIntrinsicsFromHandle:(id)arg1;
 - (void)_bootstrapAndExec;
@@ -125,6 +123,7 @@
 - (void)_executeBlockAfterLaunchCompletes:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic, getter=isPlatformBinary) _Bool platformBinary;
 @property(readonly, nonatomic) _Bool executableLivesOnSystemPartition;
+@property(readonly, nonatomic) unsigned char assertionState;
 @property(readonly, nonatomic) __weak id <FBProcessDelegate> delegate; // @synthesize delegate=_lock_delegate;
 - (long long)visibility;
 - (long long)taskState;
@@ -132,6 +131,7 @@
 - (void)noteProcessPublished;
 - (void)bootstrapWithDelegate:(id)arg1;
 - (void)bootstrapLock:(CDUnknownBlockType)arg1;
+- (void)setWatchdogProvider:(id)arg1;
 - (id)valueForEntitlement:(id)arg1;
 - (_Bool)hasEntitlement:(id)arg1;
 - (void)removeObserver:(id)arg1;
@@ -150,9 +150,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
-- (id)_initWithHandle:(id)arg1 identity:(id)arg2 executionContext:(id)arg3;
-- (id)initWithIdentity:(id)arg1 executionContext:(id)arg2;
-- (id)initWithHandle:(id)arg1;
+- (id)_initWithIdentity:(id)arg1 handle:(id)arg2 executionContext:(id)arg3;
 - (id)init;
 - (_Bool)isExtensionProcess;
 - (_Bool)isSystemApplicationProcess;

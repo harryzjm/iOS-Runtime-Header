@@ -11,7 +11,6 @@
 @class BRReachabilityMonitor, NSDate, NSHashTable, NSMapTable, NSMutableDictionary, NSMutableSet, NSString, br_pacer;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-__attribute__((visibility("hidden")))
 @interface BRCSystemResourcesManager : NSObject <BRReachabilityObserver>
 {
     NSObject<OS_dispatch_queue> *_notificationQueue;

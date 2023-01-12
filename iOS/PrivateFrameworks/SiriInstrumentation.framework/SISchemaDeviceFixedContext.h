@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProtocolBuffer/PBCodable.h>
+@class NSData, NSString, SISchemaSiriUISettings, SISchemaVoiceSettings;
 
-@class NSData, NSString, SISchemaSiriUISettings;
-
-@interface SISchemaDeviceFixedContext : PBCodable
+@interface SISchemaDeviceFixedContext
 {
     NSString *_deviceType;
     NSString *_systemBuild;
@@ -19,6 +17,7 @@
     NSString *_speechID;
     SISchemaSiriUISettings *_siriUISettings;
     _Bool _isSatellitePaired;
+    SISchemaVoiceSettings *_voiceSettings;
     struct {
         unsigned int isSatellitePaired:1;
     } _has;
@@ -30,9 +29,11 @@
     _Bool _hasSiriDeviceID;
     _Bool _hasSpeechID;
     _Bool _hasSiriUISettings;
+    _Bool _hasVoiceSettings;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool hasVoiceSettings; // @synthesize hasVoiceSettings=_hasVoiceSettings;
 @property(nonatomic) _Bool hasSiriUISettings; // @synthesize hasSiriUISettings=_hasSiriUISettings;
 @property(nonatomic) _Bool hasSpeechID; // @synthesize hasSpeechID=_hasSpeechID;
 @property(nonatomic) _Bool hasSiriDeviceID; // @synthesize hasSiriDeviceID=_hasSiriDeviceID;
@@ -41,6 +42,7 @@
 @property(nonatomic) _Bool hasSiriInputLanguage; // @synthesize hasSiriInputLanguage=_hasSiriInputLanguage;
 @property(nonatomic) _Bool hasSystemBuild; // @synthesize hasSystemBuild=_hasSystemBuild;
 @property(nonatomic) _Bool hasDeviceType; // @synthesize hasDeviceType=_hasDeviceType;
+@property(retain, nonatomic) SISchemaVoiceSettings *voiceSettings; // @synthesize voiceSettings=_voiceSettings;
 @property(nonatomic) _Bool isSatellitePaired; // @synthesize isSatellitePaired=_isSatellitePaired;
 @property(retain, nonatomic) SISchemaSiriUISettings *siriUISettings; // @synthesize siriUISettings=_siriUISettings;
 @property(copy, nonatomic) NSString *speechID; // @synthesize speechID=_speechID;

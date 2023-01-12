@@ -17,19 +17,26 @@ __attribute__((visibility("hidden")))
     unsigned char unique_identifier[16];
     int variant;
     CDUnknownFunctionPointerType allocate_globals;
+    CDUnknownFunctionPointerType allocate_context_globals;
     CDUnknownFunctionPointerType deallocate_globals;
     CDUnknownFunctionPointerType allocate_instance_state;
     CDUnknownFunctionPointerType deallocate_instance_state;
     CDUnknownFunctionPointerType allocate_flow_state;
     CDUnknownFunctionPointerType deallocate_flow_state;
+    CDUnknownFunctionPointerType replace_flow_state;
     CDUnknownFunctionPointerType allocate_options;
     CDUnknownFunctionPointerType copy_options;
     CDUnknownFunctionPointerType deallocate_options;
     CDUnknownFunctionPointerType check_equality_options;
+    CDUnknownFunctionPointerType compare_options;
+    CDUnknownFunctionPointerType serialize_options;
+    CDUnknownFunctionPointerType deserialize_options;
     CDUnknownFunctionPointerType allocate_metadata;
     CDUnknownFunctionPointerType deallocate_metadata;
     CDUnknownFunctionPointerType initialize_metadata;
     CDUnknownFunctionPointerType finalize_metadata;
+    CDUnknownFunctionPointerType serialize_metadata;
+    CDUnknownFunctionPointerType deserialize_metadata;
     CDUnknownFunctionPointerType create_reply;
     CDUnknownFunctionPointerType copy_original;
     CDUnknownFunctionPointerType set_original;
@@ -48,10 +55,13 @@ __attribute__((visibility("hidden")))
     CDUnknownFunctionPointerType start;
     CDUnknownFunctionPointerType stop;
     CDUnknownFunctionPointerType link_state;
+    CDUnknownFunctionPointerType traffic_mgmt;
+    CDUnknownFunctionPointerType max_message_size;
     CDUnknownFunctionPointerType copy_metadata;
     CDUnknownFunctionPointerType copy_establishment_report;
     CDUnknownFunctionPointerType copy_data_transfer_snapshot;
     CDUnknownFunctionPointerType path_changed_handler;
+    CDUnknownFunctionPointerType fallback_changed_handler;
     CDUnknownFunctionPointerType message_size_handler;
     CDUnknownFunctionPointerType framer_create;
     CDUnknownBlockType framer_start;
@@ -64,7 +74,8 @@ __attribute__((visibility("hidden")))
     unsigned int multipath:1;
     unsigned int supports_discontiguous_data:1;
     unsigned int has_global_definition:1;
-    unsigned int __pad_bits:1;
+    unsigned int is_proxy:1;
+    unsigned int serialize_in_parameters:1;
 }
 
 - (void).cxx_destruct;

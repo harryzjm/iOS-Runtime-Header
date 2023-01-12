@@ -8,13 +8,15 @@
 
 #import <VirtualGarage/VGExternalAccessory-Protocol.h>
 
-@class EAAccessory, NSString, VGExternalAccessoryState, VGVehicle, VGVehicleState;
-@protocol VGExternalAccessoryUpdating;
+@class NSMutableDictionary, NSString, VGExternalAccessoryState, VGVehicle, VGVehicleState;
+@protocol OS_dispatch_queue, VGExternalAccessoryUpdating;
 
 __attribute__((visibility("hidden")))
 @interface VGExternalAccessory : NSObject <VGExternalAccessory>
 {
-    EAAccessory *_accessory;
+    NSObject<OS_dispatch_queue> *_workQueue;
+    NSObject<OS_dispatch_queue> *_delegateQueue;
+    NSMutableDictionary *_trackedAccessoriesByConnectionId;
     VGExternalAccessoryState *_accessoryState;
     VGVehicleState *_currentVehicleState;
     VGVehicle *_currentVehicle;
@@ -25,17 +27,25 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <VGExternalAccessoryUpdating> accessoryUpdateDelegate; // @synthesize accessoryUpdateDelegate=_accessoryUpdateDelegate;
 - (void)listCarsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getStateOfChargeForVehicle:(id)arg1 completion:(CDUnknownBlockType)arg2;
-@property(readonly, nonatomic) NSString *bluetoothIdentifier;
-@property(readonly, nonatomic) NSString *identifier;
-@property(readonly, nonatomic) _Bool isConnectedToElectricVehicle;
-@property(readonly, nonatomic) _Bool isConnected;
-@property(readonly, nonatomic) VGExternalAccessoryState *currentState;
+- (_Bool)isConnectedToCarPlayAccessory;
+- (_Bool)isConnectedToAccessoryWithIdentifier:(id)arg1;
+- (_Bool)isConnectedToVehicle:(id)arg1;
+- (id)_bluetoothIdentifier;
+- (id)_identifier;
+- (_Bool)_isConnectedToCarPlayAccessory;
+- (_Bool)_isConnectedToElectricVehicle;
+- (id)_vehicleStateForCurrentState;
+- (id)_vehicleForCurrentState;
+- (void)_notifyDelegateWithCurrentVehicle;
 - (void)_updateFromVehicleInfo:(id)arg1;
-- (void)_loadInitialAccessoryState;
-- (void)_accessoryDidDisconnect:(id)arg1;
-- (void)_accessoryDidUpdate:(id)arg1;
 - (void)_accessoryDidUpdateVehicle:(id)arg1;
+- (void)_accessoryDidDisconnect:(id)arg1;
 - (void)_accessoryDidConnect:(id)arg1;
+- (_Bool)_isAccessoryTracked:(id)arg1;
+- (void)_removeCarPlayAccessory:(id)arg1;
+- (void)_addNewCarPlayAccessory:(id)arg1;
+- (void)_checkAvailableAccessoriesAndAttachIfNeeded;
+- (void)dealloc;
 - (id)init;
 
 // Remaining properties

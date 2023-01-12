@@ -4,20 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSText/CALayerDelegate-Protocol.h>
+@class TSWPEquationInfo, TSWPEquationInlineLayout;
 
-@class CALayer, NSString, TSWPEquationInfo, TSWPEquationInlineLayout;
-
-@interface TSWPEquationInlineRep <CALayerDelegate>
+@interface TSWPEquationInlineRep
 {
-    _Bool _layerContentsAreFlipped;
-    CALayer *_equationLayer;
 }
 
 + (double)magicMoveAttributeMatchPercentBetweenOutgoingObject:(id)arg1 incomingObject:(id)arg2 mixingTypeContext:(id)arg3;
-- (void).cxx_destruct;
-@property(retain, nonatomic) CALayer *equationLayer; // @synthesize equationLayer=_equationLayer;
-@property(nonatomic) _Bool layerContentsAreFlipped; // @synthesize layerContentsAreFlipped=_layerContentsAreFlipped;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 - (id)resizedGeometryForTransform:(struct CGAffineTransform)arg1;
 - (void)p_drawInContext:(struct CGContext *)arg1 withContent:(_Bool)arg2 strokeDrawOptions:(unsigned long long)arg3 withOpacity:(double)arg4 withMask:(_Bool)arg5 forLayer:(_Bool)arg6 forShadow:(_Bool)arg7 forHitTest:(_Bool)arg8;
@@ -36,12 +29,6 @@
 @property(readonly, nonatomic) TSWPEquationInlineLayout *equationLayout;
 @property(readonly, nonatomic) TSWPEquationInfo *equationInfo;
 - (id)initWithLayout:(id)arg1 canvas:(id)arg2;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

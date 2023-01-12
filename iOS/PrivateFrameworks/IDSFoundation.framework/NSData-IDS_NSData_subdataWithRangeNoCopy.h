@@ -7,6 +7,7 @@
 #import <Foundation/NSData.h>
 
 @interface NSData (IDS_NSData_subdataWithRangeNoCopy)
++ (id)_IDSDataFromBase64String:(id)arg1;
 - (id)subdataWithRangeNoCopy:(struct _NSRange)arg1;
 - (id)truncatedDescription;
 @end

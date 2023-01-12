@@ -24,7 +24,6 @@
 - (void)setPaymentSetupField:(id)arg1;
 - (void)setEnabled:(_Bool)arg1;
 - (_Bool)isEnabled;
-- (void)_dynamicUserInterfaceTraitDidChange;
 - (void)dealloc;
 - (id)init;
 - (void)pk_applyAppearance:(id)arg1;

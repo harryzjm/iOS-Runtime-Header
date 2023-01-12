@@ -78,7 +78,7 @@
 - (void)_hideBackButton:(_Bool)arg1;
 - (void)_updateDebugStateLabel:(id)arg1 isGoodState:(_Bool)arg2 showTiming:(_Bool)arg3;
 - (void)_updateDebugStateLabel:(id)arg1 isGoodState:(_Bool)arg2;
-- (void)_logAndAggDDurations;
+- (void)_logAndSendDurations;
 - (void)viewWillLayoutSubviews;
 - (void)loadView;
 - (void)_setIdleTimerDisabled:(_Bool)arg1;

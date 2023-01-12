@@ -10,6 +10,7 @@
 
 @class NSString, _MRLyricsTokenProtobuf;
 
+__attribute__((visibility("hidden")))
 @interface _MRLyricsItemProtobuf : PBCodable <NSCopying>
 {
     NSString *_lyrics;
@@ -21,21 +22,13 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) _MRLyricsTokenProtobuf *token; // @synthesize token=_token;
-@property(nonatomic) _Bool userProvided; // @synthesize userProvided=_userProvided;
-@property(retain, nonatomic) NSString *lyrics; // @synthesize lyrics=_lyrics;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasToken;
-@property(nonatomic) _Bool hasUserProvided;
-@property(readonly, nonatomic) _Bool hasLyrics;
 
 @end
 

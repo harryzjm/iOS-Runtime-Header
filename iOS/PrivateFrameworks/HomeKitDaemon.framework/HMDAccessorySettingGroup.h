@@ -56,6 +56,10 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
+- (id)_settingWithKeys:(id)arg1;
+- (id)settingWithKeyPath:(id)arg1;
+- (id)settingWithName:(id)arg1;
+- (id)subGroupWithName:(id)arg1;
 - (id)initWithName:(id)arg1 identifier:(id)arg2 parentIdentifier:(id)arg3;
 - (id)initWithModel:(id)arg1;
 - (id)init;

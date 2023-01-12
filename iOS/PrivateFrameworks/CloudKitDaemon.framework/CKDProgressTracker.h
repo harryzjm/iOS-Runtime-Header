@@ -8,7 +8,6 @@
 
 @class NSMapTable, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDProgressTracker : NSObject
 {
     _Bool _hasCachedTotalBytes;

@@ -8,20 +8,18 @@
 
 #import <Vision/NSCopying-Protocol.h>
 #import <Vision/NSSecureCoding-Protocol.h>
-#import <Vision/VNRequestRevisionProviding-Protocol.h>
 
-@class NSDictionary;
+@class NSDictionary, VNRequestSpecifier;
 
 __attribute__((visibility("hidden")))
-@interface VNRecognizedPointsSpecifier : NSObject <NSSecureCoding, NSCopying, VNRequestRevisionProviding>
+@interface VNRecognizedPointsSpecifier : NSObject <NSSecureCoding, NSCopying>
 {
-    unsigned long long _requestRevision;
+    VNRequestSpecifier *_originatingRequestSpecifier;
     NSDictionary *_allRecognizedPoints;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) unsigned long long requestRevision;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -33,7 +31,8 @@ __attribute__((visibility("hidden")))
 - (id)pointKeyGroupLabelsMapping;
 - (id)availableGroupKeys;
 - (id)availableKeys;
-- (id)initWithRequestRevision:(unsigned long long)arg1 allRecognizedPoints:(id)arg2;
+- (id)originatingRequestSpecifier;
+- (id)initWithOriginatingRequestSpecifier:(id)arg1 allRecognizedPoints:(id)arg2;
 
 @end
 

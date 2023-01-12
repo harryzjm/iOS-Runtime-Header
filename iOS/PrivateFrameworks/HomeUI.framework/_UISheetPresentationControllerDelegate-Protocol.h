@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
+#import <HomeUI/UISheetPresentationControllerDelegatePrivate-Protocol.h>
 
 @class UIView, _UISheetPresentationController;
 
-@protocol _UISheetPresentationControllerDelegate <UIAdaptivePresentationControllerDelegate>
+@protocol _UISheetPresentationControllerDelegate <UISheetPresentationControllerDelegatePrivate>
 
 @optional
+- (void)_sheetPresentationControllerDidInvalidateCurrentPresentedViewFrame:(_UISheetPresentationController *)arg1;
+- (void)_sheetPresentationControllerDidInvalidateDetentValues:(_UISheetPresentationController *)arg1;
 - (UIView *)_sheetPresentationControllerViewForTouchContinuation:(_UISheetPresentationController *)arg1;
 - (void)_sheetPresentationController:(_UISheetPresentationController *)arg1 didChangeIndexOfCurrentDetent:(long long)arg2;
 @end

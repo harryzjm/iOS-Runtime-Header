@@ -7,13 +7,15 @@
 #import <objc/NSObject.h>
 
 #import <PDSAgent/IDSPushHandlerDelegate-Protocol.h>
+#import <PDSAgent/IMSystemMonitorListener-Protocol.h>
 #import <PDSAgent/PDSEntryStoreDelegate-Protocol.h>
+#import <PDSAgent/PDSHeartbeatTrackerDelegate-Protocol.h>
 #import <PDSAgent/PDSRequestQueueDelegate-Protocol.h>
 
-@class CUTDeferredTaskQueue, IDSPushHandler, IMTimer, NSDate, NSString, PDSBag, PDSRequestQueue;
+@class CUTDeferredTaskQueue, IDSPushHandler, NSDate, NSString, PDSBag, PDSHeartbeatTracker, PDSRequestQueue;
 @protocol OS_dispatch_queue;
 
-@interface PDSCoordinator : NSObject <PDSRequestQueueDelegate, IDSPushHandlerDelegate, PDSEntryStoreDelegate>
+@interface PDSCoordinator : NSObject <PDSRequestQueueDelegate, IDSPushHandlerDelegate, IMSystemMonitorListener, PDSHeartbeatTrackerDelegate, PDSEntryStoreDelegate>
 {
     _Bool _requestPending;
     _Bool _disabled;
@@ -27,16 +29,16 @@
     IDSPushHandler *_pushHandler;
     CDUnknownBlockType _pushTokenBlock;
     PDSRequestQueue *_requestQueue;
-    IMTimer *_heartbeatTimer;
     long long _bagLoadRetries;
+    PDSHeartbeatTracker *_heartbeatTracker;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) PDSHeartbeatTracker *heartbeatTracker; // @synthesize heartbeatTracker=_heartbeatTracker;
 @property(nonatomic) long long bagLoadRetries; // @synthesize bagLoadRetries=_bagLoadRetries;
 @property(nonatomic) _Bool tokenChanged; // @synthesize tokenChanged=_tokenChanged;
 @property(nonatomic) _Bool disabled; // @synthesize disabled=_disabled;
 @property(nonatomic) _Bool requestPending; // @synthesize requestPending=_requestPending;
-@property(retain, nonatomic) IMTimer *heartbeatTimer; // @synthesize heartbeatTimer=_heartbeatTimer;
 @property(retain, nonatomic) PDSRequestQueue *requestQueue; // @synthesize requestQueue=_requestQueue;
 @property(copy, nonatomic) CDUnknownBlockType pushTokenBlock; // @synthesize pushTokenBlock=_pushTokenBlock;
 @property(retain, nonatomic) IDSPushHandler *pushHandler; // @synthesize pushHandler=_pushHandler;
@@ -46,6 +48,8 @@
 @property(retain, nonatomic) PDSBag *serverBag; // @synthesize serverBag=_serverBag;
 @property(retain, nonatomic) NSDate *pendingRequestDate; // @synthesize pendingRequestDate=_pendingRequestDate;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+- (void)heartbeatFiredForTracker:(id)arg1;
+- (_Bool)shouldScheduleHeartbeatForTracker:(id)arg1;
 - (void)_updateAllHeartbeatEntriesWithState:(unsigned char)arg1 inEntryStore:(id)arg2;
 - (void)_pushTokenChangedWithEntryStore:(id)arg1;
 - (void)_markSandboxPushToken:(id)arg1;
@@ -54,27 +58,10 @@
 - (_Bool)_lastPushTokenDiffersFrom:(id)arg1;
 - (void)_comparePushTokensWithEntryStore:(id)arg1;
 - (void)handler:(id)arg1 pushTokenChanged:(id)arg2;
-- (id)_userDefaults;
-- (void)_markNextCheckpointTimeWithTTL:(double)arg1;
-- (id)_nextCheckpointTime;
-- (_Bool)_needsToHeartbeat;
-- (void)_scheduleHeartbeatWithTTL:(double)arg1;
 - (_Bool)_disabledForAnyReason;
+- (void)systemDidLeaveFirstDataProtectionLock;
 - (void)_bagReloaded:(id)arg1;
 - (double)_timeToDelayRequestForTopics:(id)arg1;
-- (_Bool)_topicAvoidsCoalescing:(id)arg1;
-- (id)_nonCoalescingTopicsFromBag;
-- (_Bool)_valuesDefinedAsNumbersInBagForKeys:(id)arg1;
-- (_Bool)_allRequiredBagTTLValuesPresent;
-- (_Bool)_allRequiredBagCoalescingValuesPresent;
-- (id)_minEnabledVersion;
-- (_Bool)_bagKillSwitchActive;
-- (double)_coalesceMaxPeriodFromBag;
-- (double)_coalescePeriodFromBag;
-- (double)_coalesceDelayFromBag;
-- (long long)_ttlGracePeriodFromBag;
-- (long long)_ttlWindowFromBag;
-- (long long)_ttlFromBag;
 - (_Bool)_matchingEntryExistsFor:(id)arg1 inStore:(id)arg2;
 - (_Bool)_requestMatchesPreviousRequest:(id)arg1;
 - (void)_markLastRequest:(id)arg1;
@@ -85,10 +72,10 @@
 - (void)_processEntryStore;
 - (long long)ttlForRequest:(id)arg1;
 - (void)requestQueue:(id)arg1 processedRequest:(id)arg2 withResponse:(id)arg3;
-- (void)entryStore:(id)arg1 didUpdatePendingTopics:(id)arg2;
+- (void)entryStore:(id)arg1 didUpdatePendingTopics:(id)arg2 forceImmediateUpdate:(_Bool)arg3;
 - (void)registerIfNeeded;
 - (void)dealloc;
-- (id)initWithQueue:(id)arg1 serverBag:(id)arg2 requestQueue:(id)arg3 kvStoreBlock:(CDUnknownBlockType)arg4 entryStoreBlock:(CDUnknownBlockType)arg5 pushTokenBlock:(CDUnknownBlockType)arg6;
+- (id)initWithQueue:(id)arg1 serverBag:(id)arg2 requestQueue:(id)arg3 kvStoreBlock:(CDUnknownBlockType)arg4 entryStoreBlock:(CDUnknownBlockType)arg5 pushTokenBlock:(CDUnknownBlockType)arg6 systemMonitor:(id)arg7 pushHandler:(id)arg8;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

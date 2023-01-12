@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (id)availableGroupKeys;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithVCPPersonObservation:(id)arg1 requestRevision:(unsigned long long)arg2;
+- (id)initWithVCPPersonObservation:(id)arg1 originatingRequestSpecifier:(id)arg2;
 
 @end
 

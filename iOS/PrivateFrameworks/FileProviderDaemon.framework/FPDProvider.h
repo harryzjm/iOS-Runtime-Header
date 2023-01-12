@@ -13,8 +13,9 @@
 {
     NSObject<OS_dispatch_queue> *_domainQueue;
     _Bool _invalidated;
+    NSObject<OS_dispatch_queue> *_presentersQueue;
     FPDProviderDescriptor *_descriptor;
-    NSSet *_blacklistedProcessNames;
+    NSSet *_blockedProcessNames;
     NSURL *_supportURL;
     NSURL *_domainsPlistURL;
     NSURL *_providerPlistURL;
@@ -25,6 +26,9 @@
     NSObject<OS_dispatch_queue> *_queue;
 }
 
++ (void)_garbageCollectFoldersWithNoRelatedDomain:(id)arg1 supportDir:(id)arg2;
++ (id)onDiskProvidersForServer:(id)arg1;
++ (id)fpfsDomainXattrForURL:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) NSArray *requestedExtendedAttributes; // @synthesize requestedExtendedAttributes=_requestedExtendedAttributes;
@@ -34,25 +38,26 @@
 @property(readonly, nonatomic) NSURL *providerPlistURL; // @synthesize providerPlistURL=_providerPlistURL;
 @property(readonly, nonatomic) NSURL *domainsPlistURL; // @synthesize domainsPlistURL=_domainsPlistURL;
 @property(readonly, nonatomic) NSURL *supportURL; // @synthesize supportURL=_supportURL;
-@property(retain, nonatomic) NSSet *blacklistedProcessNames; // @synthesize blacklistedProcessNames=_blacklistedProcessNames;
+@property(copy, nonatomic) NSSet *blockedProcessNames; // @synthesize blockedProcessNames=_blockedProcessNames;
 @property(readonly, nonatomic) _Bool invalidated; // @synthesize invalidated=_invalidated;
 @property(readonly, nonatomic) FPDProviderDescriptor *descriptor; // @synthesize descriptor=_descriptor;
-- (void)dumpStateTo:(id)arg1 limitNumberOfItems:(_Bool)arg2;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *presentersQueue; // @synthesize presentersQueue=_presentersQueue;
+- (void)dumpStateTo:(id)arg1 providerFilter:(id)arg2 limitNumberOfItems:(_Bool)arg3;
 - (void)dumpValue:(id)arg1 forKey:(id)arg2 to:(id)arg3;
+- (void)setDomainUserInfo:(id)arg1 forDomainIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setEjectable:(_Bool)arg1 forDomainIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)enableAllDomainsIfNoUserElection;
 - (void)setEnabled:(_Bool)arg1 forDomainIdentifier:(id)arg2 request:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 @property(readonly, nonatomic) NSDictionary *nsDomainsByID;
 @property(readonly, nonatomic) NSDictionary *relevantDomainsByID;
 - (void)reloadDomain:(id)arg1 unableToStartup:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)removeDomain:(id)arg1 options:(unsigned long long)arg2 request:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)removeDomain:(id)arg1 mode:(unsigned long long)arg2 request:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)removeAllDomainsForRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addDomain:(id)arg1 byImportingDirectoryAtURL:(id)arg2 unableToStartup:(_Bool)arg3 reloadDomain:(_Bool)arg4 request:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)addDomain:(id)arg1 byImportingDirectoryAtURL:(id)arg2 request:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_createSymlinkForDomain:(id)arg1;
-- (void)importDomainsFromDisk;
+- (void)importDomainsFromDiskAndUpdatePList:(_Bool)arg1;
 - (void)_startOrClearDomain:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_markDomainIfIndexShouldBeDropped:(id)arg1;
 - (id)newDomainFromNSDomain:(id)arg1;
 - (id)defaultNSDomain;
 - (id)_recreateDefaultDomainIfNeeded;
@@ -64,18 +69,17 @@
 @property(readonly, nonatomic) NSString *bundleVersion;
 @property(readonly, nonatomic) NSString *purposeIdentifier;
 @property(readonly, nonatomic) NSString *identifier;
-@property(readonly, nonatomic) FPDProvider *providerIfNotDisabledByFPFSSettings;
-@property(readonly, nonatomic, getter=isDisabledByFPFSSettings) _Bool disabledByFPFSSettings;
 - (id)domainForIdentifier:(id)arg1;
+- (id)domainForRealPathURL:(id)arg1;
 - (id)domainForURL:(id)arg1;
 @property(readonly, nonatomic) NSArray *providedItemsURLs;
 @property(readonly, nonatomic) _Bool supportsFPFS;
 - (_Bool)_supportsFPFS;
 @property(readonly, nonatomic) FPDExtension *asAppExtensionBackedProvider;
 @property(readonly, nonatomic) _Bool isAppExtensionReachable;
-- (id)providerDomainForNSDomain:(id)arg1;
+- (id)providerDomainForNSDomain:(id)arg1 domain:(id)arg2;
 - (id)description;
-- (void)invalidate;
+- (void)invalidateWithReason:(id)arg1;
 - (void)startWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithDescriptor:(id)arg1 server:(id)arg2;
 

@@ -4,20 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface FCNewsletterSubscribeCommand
 {
     NSString *_newsletter;
+    NSArray *_includeArray;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *includeArray; // @synthesize includeArray=_includeArray;
 @property(copy, nonatomic) NSString *newsletter; // @synthesize newsletter=_newsletter;
 - (void)executeWithContext:(id)arg1 delegate:(id)arg2 qualityOfService:(long long)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithNewsletter:(id)arg1;
+- (id)initWithNewsletter:(id)arg1 includeArray:(id)arg2;
 
 @end
 

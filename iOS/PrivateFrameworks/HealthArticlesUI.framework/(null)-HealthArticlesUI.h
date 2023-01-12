@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HealthArticlesUI/UITextViewDelegate-Protocol.h>
+#import <HealthArticlesUI/UINavigationControllerDelegate-Protocol.h>
 
-@interface (null) (HealthArticlesUI) <UITextViewDelegate>
-- (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
+@interface (null) (HealthArticlesUI) <UINavigationControllerDelegate>
+- (unsigned long long)navigationControllerSupportedInterfaceOrientations:(id)arg1;
 @end
 

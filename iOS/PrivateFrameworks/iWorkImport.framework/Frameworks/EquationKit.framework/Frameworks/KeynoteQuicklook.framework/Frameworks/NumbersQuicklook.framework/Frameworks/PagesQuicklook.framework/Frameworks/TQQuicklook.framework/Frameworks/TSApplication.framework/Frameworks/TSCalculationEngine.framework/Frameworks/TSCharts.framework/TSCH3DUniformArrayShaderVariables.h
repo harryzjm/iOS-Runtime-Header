@@ -10,20 +10,20 @@
 
 @interface TSCH3DUniformArrayShaderVariables : NSObject
 {
-    NSString *mPrefix;
-    NSMutableDictionary *mVariables;
-    unsigned long long mArraySize;
+    NSString *_prefix;
+    NSMutableDictionary *_variables;
+    unsigned long long _arraySize;
 }
 
 + (id)variablesWithPrefix:(id)arg1 arraySize:(unsigned long long)arg2;
-@property(readonly, nonatomic) unsigned long long arraySize; // @synthesize arraySize=mArraySize;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long arraySize; // @synthesize arraySize=_arraySize;
 - (void)addUniformsToShaderProgram:(id)arg1 size:(unsigned long long)arg2;
 - (id)variableAtIndex:(unsigned long long)arg1 name:(id)arg2;
 - (void)addArrayName:(id)arg1 type:(id)arg2;
 - (id)p_formatVariableName:(id)arg1;
 - (void)setVariable:(id)arg1 forName:(id)arg2;
 - (id)variableForName:(id)arg1;
-- (void)dealloc;
 - (id)initWithPrefix:(id)arg1 arraySize:(unsigned long long)arg2;
 
 @end

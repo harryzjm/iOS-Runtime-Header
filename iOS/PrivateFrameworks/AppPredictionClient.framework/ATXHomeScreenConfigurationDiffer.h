@@ -17,19 +17,22 @@
     NSArray *_configuredStackedWidgets;
     NSArray *_addedPinnedWidgets;
     NSArray *_deletedPinnedWidgets;
-    NSArray *_widgetsAddedToStacks;
-    NSArray *_widgetsDeletedFromStacks;
+    NSArray *_widgetsAddedToStacksByUser;
+    NSArray *_widgetsDeletedFromStacksByUser;
 }
 
 + (_Bool)_widget:(id)arg1 hasSamePersonalityAsOtherWidget:(id)arg2;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSArray *widgetsDeletedFromStacks; // @synthesize widgetsDeletedFromStacks=_widgetsDeletedFromStacks;
-@property(readonly, nonatomic) NSArray *widgetsAddedToStacks; // @synthesize widgetsAddedToStacks=_widgetsAddedToStacks;
+@property(readonly, nonatomic) NSArray *widgetsDeletedFromStacksByUser; // @synthesize widgetsDeletedFromStacksByUser=_widgetsDeletedFromStacksByUser;
+@property(readonly, nonatomic) NSArray *widgetsAddedToStacksByUser; // @synthesize widgetsAddedToStacksByUser=_widgetsAddedToStacksByUser;
 @property(readonly, nonatomic) NSArray *deletedPinnedWidgets; // @synthesize deletedPinnedWidgets=_deletedPinnedWidgets;
 @property(readonly, nonatomic) NSArray *addedPinnedWidgets; // @synthesize addedPinnedWidgets=_addedPinnedWidgets;
+- (_Bool)currentConfigContainsWidgetWithBundleId:(id)arg1 kind:(id)arg2 size:(unsigned long long)arg3;
 - (id)stackInCurrentConfigurationsForStackedWidget:(id)arg1;
 - (id)stackInPreviousConfigurationsForStackedWidget:(id)arg1;
 @property(readonly, nonatomic) NSArray *configuredWidgets;
+@property(readonly, nonatomic) NSArray *suggestedWidgetsRemoved;
+@property(readonly, nonatomic) NSArray *suggestedWidgetsAddedPermanentlyByUser;
 @property(readonly, nonatomic) NSArray *deletedStacks;
 @property(readonly, nonatomic) NSArray *addedStacks;
 - (void)_calculateStackedWidgetChanges;

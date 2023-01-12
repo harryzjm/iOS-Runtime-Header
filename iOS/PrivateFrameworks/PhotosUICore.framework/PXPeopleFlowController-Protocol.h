@@ -6,7 +6,7 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class UIViewController;
+@class UIBarButtonItem, UIViewController;
 @protocol PXPeopleFlowViewController;
 
 @protocol PXPeopleFlowController <NSObject>
@@ -16,5 +16,9 @@
 @property(readonly, nonatomic) _Bool hasNextViewController;
 - (void)cancel:(id)arg1;
 - (void)done:(id)arg1;
+
+@optional
+@property(readonly, nonatomic) UIBarButtonItem *leftBarButton;
+@property(readonly, nonatomic) _Bool wantsCancelButton;
 @end
 

@@ -6,14 +6,16 @@
 
 #import <UIKit/UIControl.h>
 
+#import <CoreSuggestionsUI/SGBannerProtocol-Protocol.h>
 #import <CoreSuggestionsUI/SGTappableTextViewDelegate-Protocol.h>
 
-@class NSArray, NSAttributedString, NSLayoutConstraint, NSLayoutXAxisAnchor, NSString, SGTappableTextView, UIButton, UIImageView, UILabel;
+@class NSArray, NSAttributedString, NSLayoutConstraint, NSLayoutXAxisAnchor, NSString, SGSuggestionStore, SGTappableTextView, UIButton, UIImageView, UILabel;
+@protocol SGSuggestion, SGSuggestionDelegate;
 
-@interface SGBanner : UIControl <SGTappableTextViewDelegate>
+@interface SGBanner : UIControl <SGTappableTextViewDelegate, SGBannerProtocol>
 {
     SGTappableTextView *_subtitleLabel;
-    NSString *_action;
+    NSString *_actionTitle;
     _Bool _needsSubtitleUpdate;
     NSString *_subtitle;
     NSAttributedString *_attributedSubtitle;
@@ -52,7 +54,7 @@
 - (void)_onDismiss:(id)arg1;
 - (void)_onAction:(id)arg1;
 @property(readonly, nonatomic) struct CGRect popoverSourceRect;
-@property(copy, nonatomic) NSString *action;
+@property(copy, nonatomic) NSString *actionTitle;
 @property(copy, nonatomic) NSAttributedString *attributedSubtitle;
 @property(copy, nonatomic) NSString *subtitle;
 @property(copy, nonatomic) NSString *title;
@@ -71,9 +73,13 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties
+@property(nonatomic) long long actionButtonType;
 @property(readonly, copy) NSString *debugDescription;
+@property(nonatomic) __weak id <SGSuggestionDelegate> delegate;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(copy, nonatomic) id <SGSuggestion> suggestion;
+@property(copy, nonatomic) SGSuggestionStore *suggestionStore;
 @property(readonly) Class superclass;
 
 @end

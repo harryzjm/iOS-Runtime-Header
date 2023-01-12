@@ -17,6 +17,7 @@
 - (void)executeTerminateRequest:(RBSTerminateRequest *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (RBSProcessHandle *)executeLaunchRequest:(RBSLaunchRequest *)arg1 withError:(out id *)arg2;
 - (_Bool)isActiveProcess:(RBProcess *)arg1;
+- (RBProcess *)processForIdentifierWithoutStartingTracking:(id <RBSProcessIdentifier>)arg1;
 - (NSSet *)processesMatchingPredicate:(RBSProcessPredicate *)arg1;
 - (RBProcess *)processForInstance:(RBSProcessInstance *)arg1;
 - (RBProcess *)processForIdentity:(RBSProcessIdentity *)arg1;

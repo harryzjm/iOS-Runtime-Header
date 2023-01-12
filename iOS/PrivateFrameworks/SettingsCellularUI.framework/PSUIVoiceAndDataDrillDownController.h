@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)getLogger;
+- (void)nrDisableStatusChanged:(id)arg1 status:(id)arg2;
 - (void)airplaneModeChanged;
 - (void)handleMaxDataRateChanged;
 - (void)context:(id)arg1 capabilitiesChanged:(id)arg2;
@@ -31,20 +32,24 @@ __attribute__((visibility("hidden")))
 - (id)identifierForRATMode:(int)arg1;
 - (int)RATModeForSpecifier:(id)arg1;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
+- (_Bool)shouldShow5GSASwitch:(id)arg1;
 - (_Bool)shouldShowFooterTextWithVoiceExplanation;
 - (_Bool)shouldShowVoLTESwitch;
 - (id)getSwitchSpecifiers;
 - (void)updateCurrentRATModeFromSpecifier:(id)arg1;
+- (void)set5GRATModeSpecifierEnabledState:(id)arg1;
+- (void)configure5GRATModeSpecifiersEnabledState;
+- (_Bool)shouldEnable5GRATModeSpecifiers;
 - (void)setRATGroupFooterText;
 - (void)configureSpecifiers;
 - (void)setUpRATModeSpecifierIdentifiers:(id)arg1;
 - (void)prepareSpecifiers:(id)arg1;
+- (void)reloadSpecifier:(id)arg1;
 - (id)specifiers;
 - (void)setSpecifier:(id)arg1;
 - (void)startObservingNotifications;
 - (id)init;
-- (void)setSA:(_Bool)arg1 andReload:(_Bool)arg2;
-- (void)setVoLTE:(_Bool)arg1 andReload:(_Bool)arg2;
+- (id)initWithCTClient:(id)arg1 switchFactory:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

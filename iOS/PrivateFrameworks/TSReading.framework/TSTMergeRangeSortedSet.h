@@ -10,9 +10,9 @@
 
 @interface TSTMergeRangeSortedSet : NSObject
 {
-    struct set<TSTMergeRangeElem, TSTMergeRangeElemCompare, std::__1::allocator<TSTMergeRangeElem>> *mSet;
-    struct __tree_const_iterator<TSTMergeRangeElem, std::__1::__tree_node<TSTMergeRangeElem, void *>*, long> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__ptr_;
+    void *mSet;
+    struct __tree_const_iterator<TSTMergeRangeElem, std::__tree_node<TSTMergeRangeElem, void *>*, long> {
+        void *__ptr_;
     } mIter;
     NSObject<OS_dispatch_semaphore> *mSem;
 }

@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(copy, nonatomic) CNContactKeyVector *keyDescriptorToMakeAvailable; // @synthesize keyDescriptorToMakeAvailable=_keyDescriptorToMakeAvailable;
 @property(nonatomic) _Bool mutableResults; // @synthesize mutableResults=_mutableResults;
-- (id)contactsFromBuffer:(id)arg1;
+- (_Bool)decodeContactsFromBuffer:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;
 @property(readonly) _Bool hasPendingContacts;
 - (id)initWithKeyDescriptorToMakeAvailable:(id)arg1 mutableResults:(_Bool)arg2;
 

@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <Message/NSSecureCoding-Protocol.h>
+
 @class NSData, NSString;
 
-@interface MFAttachmentRaw : NSObject
+@interface MFAttachmentRaw : NSObject <NSSecureCoding>
 {
     NSData *_data;
     NSString *_fileName;
@@ -16,6 +18,7 @@
     NSString *_contentID;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)attachmentData:(id)arg1 fileName:(id)arg2 mimeType:(id)arg3 contentID:(id)arg4;
 + (id)attachmentData:(id)arg1 fileName:(id)arg2 mimeType:(id)arg3;
 - (void).cxx_destruct;
@@ -23,6 +26,8 @@
 @property(retain, nonatomic) NSString *mimeType; // @synthesize mimeType=_mimeType;
 @property(retain, nonatomic) NSString *fileName; // @synthesize fileName=_fileName;
 @property(retain, nonatomic) NSData *data; // @synthesize data=_data;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

@@ -17,11 +17,7 @@ __attribute__((visibility("hidden")))
     long long _index;
     long long _ttl;
     NSData *_filter;
-    struct {
-        unsigned int count:1;
-        unsigned int index:1;
-        unsigned int ttl:1;
-    } _has;
+    CDStruct_db572d93 _has;
 }
 
 - (void).cxx_destruct;

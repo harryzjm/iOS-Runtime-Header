@@ -39,6 +39,7 @@
 - (void)makeAuthorizationPermanentForSectionID:(id)arg1;
 - (void)setNotificationsLevel:(unsigned long long)arg1 sectionID:(id)arg2 mirror:(_Bool)arg3 fromRemote:(_Bool)arg4;
 - (void)removeSectionWithSectionID:(id)arg1;
+- (void)setSectionInfo:(id)arg1 keypaths:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setSectionInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)settingsDescriptionForSectionIDs:(id)arg1;
 - (id)overriddenSettings;
@@ -60,7 +61,6 @@
 - (void)handleAllSyncComplete;
 - (void)_sendSiriAppListWithInstalled:(id)arg1 removed:(id)arg2;
 - (void)_sendSpooledSyncWithCompletion:(CDUnknownBlockType)arg1 withProgress:(CDUnknownBlockType)arg2;
-- (void)_logNotificationSettings;
 - (void)_spoolInitialSync;
 - (unsigned long long)performSyncIfNeededForSectionID:(id)arg1 gizmoSectionInfo:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)performInitialSyncWithProgress:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;

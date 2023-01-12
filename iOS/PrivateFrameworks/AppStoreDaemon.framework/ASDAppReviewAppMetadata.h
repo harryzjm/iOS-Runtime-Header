@@ -24,6 +24,7 @@
     NSNumber *_itemID;
     NSString *_itemName;
     NSURL *_messagesArtworkURL;
+    NSData *_onDemandResourceManifest;
     NSData *_packageDPInfo;
     NSData *_packageSINF;
     NSURL *_packageURL;
@@ -40,6 +41,7 @@
 @property(copy, nonatomic) NSURL *packageURL; // @synthesize packageURL=_packageURL;
 @property(copy, nonatomic) NSData *packageSINF; // @synthesize packageSINF=_packageSINF;
 @property(copy, nonatomic) NSData *packageDPInfo; // @synthesize packageDPInfo=_packageDPInfo;
+@property(copy, nonatomic) NSData *onDemandResourceManifest; // @synthesize onDemandResourceManifest=_onDemandResourceManifest;
 @property(copy, nonatomic) NSURL *messagesArtworkURL; // @synthesize messagesArtworkURL=_messagesArtworkURL;
 @property(nonatomic, getter=isLaunchProhibited) _Bool launchProhibited; // @synthesize launchProhibited=_launchProhibited;
 @property(copy, nonatomic) NSString *itemName; // @synthesize itemName=_itemName;

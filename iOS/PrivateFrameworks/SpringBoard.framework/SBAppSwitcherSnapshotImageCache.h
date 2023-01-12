@@ -72,6 +72,7 @@
 - (void)_cacheSnapshotForRequest:(id)arg1 withDisplayItem:(id)arg2 inAppLayout:(id)arg3;
 - (void)_updateObserversForDisplayItem:(id)arg1 inAppLayout:(id)arg2 withCacheEntry:(id)arg3;
 - (void)_snapshotChanged:(id)arg1;
+- (void)reloadSnapshotForDisplayItem:(id)arg1;
 - (void)reloadSnapshotsForInterfaceStyleChange:(long long)arg1;
 - (void)_setShouldPurgeNilEntry:(_Bool)arg1;
 - (id)_representedApplicationSceneEntityForDisplayItem:(id)arg1;

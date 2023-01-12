@@ -6,7 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableDictionary, NSMutableSet, NSSet;
+@class NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet;
+@protocol FFFileReader, FFFileWriter;
 
 @interface FFConfiguration : NSObject
 {
@@ -15,10 +16,24 @@
     NSMutableSet *_domains;
     NSMutableDictionary *configByLevel[2][4];
     NSMutableDictionary *metaByLevel[4];
+    NSMutableSet *disclosuresByLevel[4];
+    id <FFFileWriter> _filewriter;
+    id <FFFileReader> _filereader;
+    NSMutableArray *_profilePayloads;
 }
 
++ (_Bool)isValidDisclosureName:(id)arg1;
++ (_Bool)isValidName:(id)arg1;
++ (id)configurationForTestingWithFileWriter:(id)arg1;
++ (id)configurationForTestingWithFileReader:(id)arg1;
++ (id)configurationForTestingWithFileReader:(id)arg1 fileWriter:(id)arg2;
++ (id)_configurationForTestingWithFileReader:(id)arg1 fileWriter:(id)arg2;
 + (id)shared;
++ (id)configurationForProfileManagement;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *profilePayloads; // @synthesize profilePayloads=_profilePayloads;
+@property(retain, nonatomic) id <FFFileReader> filereader; // @synthesize filereader=_filereader;
+@property(retain, nonatomic) id <FFFileWriter> filewriter; // @synthesize filewriter=_filewriter;
 - (_Bool)reset:(id *)arg1;
 - (_Bool)resetDomain:(id)arg1 error:(id *)arg2;
 - (_Bool)isValidName:(id)arg1;
@@ -35,16 +50,18 @@
 - (id)stateForFeature:(id)arg1 domain:(id)arg2;
 - (id)featuresForDomain:(id)arg1;
 @property(readonly, nonatomic) NSSet *domains;
+- (_Bool)writeDisclosureUpdates:(id *)arg1;
+- (_Bool)writeDisclosureUpdatesAtlevel:(long long)arg1 error:(id *)arg2;
 - (_Bool)writeCombinedUpdates:(id *)arg1;
+- (_Bool)writeCombinedUpdatesAtLevel:(long long)arg1 error:(id *)arg2;
 - (_Bool)writeDomainUpdates:(id *)arg1;
-- (_Bool)writeData:(id)arg1 toFile:(id)arg2 error:(id *)arg3;
 - (void)populateDictionary:(id)arg1 withFeatures:(id)arg2;
-- (_Bool)createDirectoryAtURL:(id)arg1 error:(id *)arg2;
 - (void)setFeaturesMatchingAttribute:(id)arg1 level:(long long)arg2 value:(long long)arg3;
 - (void)setValue:(long long)arg1 feature:(id)arg2 domain:(id)arg3 level:(long long)arg4;
 - (void)createMutableDomainConfig:(id)arg1 level:(long long)arg2;
 - (_Bool)isFeatureHidden:(id)arg1 domain:(id)arg2;
 - (id)resolvedStateForFeature:(id)arg1 domain:(id)arg2;
+- (_Bool)resolvedStateForDisclosure:(id)arg1;
 - (id)effectiveStateForFeature:(id)arg1 domain:(id)arg2 level:(long long)arg3;
 - (void)loadAllData;
 - (void)loadAllLevelsForDomain:(id)arg1;
@@ -52,11 +69,22 @@
 - (void)addFeaturesForDomain:(id)arg1 pathIndex:(int)arg2 fromURL:(id)arg3;
 - (void)loadCombinedDataForLevel:(long long)arg1;
 - (id)makeFeatureDictionaryFrom:(id)arg1 forDomain:(id)arg2;
+- (id)disclosureFileURLForLevel:(long long)arg1 pathIndex:(int)arg2;
 - (id)fileURLForLevel:(long long)arg1 pathIndex:(int)arg2;
 - (id)fileURLForDomain:(id)arg1 pathIndex:(int)arg2;
 - (void)validateName:(id)arg1;
 - (void)clearCachedData;
 - (id)initPrivate;
+- (_Bool)isValidDisclosureName:(id)arg1;
+- (id)currentDisclosures;
+- (id)currentDisclosuresAtLevel:(long long)arg1;
+- (void)removeAllDisclosuresAtLevel:(long long)arg1;
+- (void)removeDisclosure:(id)arg1 atLevel:(long long)arg2;
+- (void)addDisclosure:(id)arg1 atLevel:(long long)arg2;
+- (id)mutableDisclosureSetAtLevel:(long long)arg1;
+- (_Bool)commitProfilePayloadsAndReturnError:(id *)arg1;
+- (_Bool)addProfilePayload:(id)arg1 error:(id *)arg2;
+- (void)prepareToAddProfilePayloads;
 
 @end
 

@@ -7,11 +7,7 @@
 #import <Foundation/NSDateComponents.h>
 
 @interface NSDateComponents (HKSPSleep)
-+ (id)hkspTestDateComponentsWithHour:(unsigned long long)arg1 minute:(unsigned long long)arg2 month:(unsigned long long)arg3 day:(unsigned long long)arg4 year:(unsigned long long)arg5;
-+ (id)hkspTestDSTEndDateComponentsWithHour:(unsigned long long)arg1 minute:(unsigned long long)arg2;
-+ (id)hkspTestDSTStartDateComponentsWithHour:(unsigned long long)arg1 minute:(unsigned long long)arg2;
-+ (id)hkspTestWeekendDateComponentsWithHour:(unsigned long long)arg1 minute:(unsigned long long)arg2;
-+ (id)hkspTestDateComponentsWithHour:(unsigned long long)arg1 minute:(unsigned long long)arg2;
+- (id)hksp_timeComponents;
 - (long long)hksp_compareHourAndMinuteComponents:(id)arg1;
 - (id)hksp_description;
 @end

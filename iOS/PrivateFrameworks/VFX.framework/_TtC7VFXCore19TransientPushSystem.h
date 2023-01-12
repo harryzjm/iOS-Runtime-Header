@@ -10,8 +10,8 @@
 
 @interface _TtC7VFXCore19TransientPushSystem : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *colorSave;
-    MISSING_TYPE *colorRestore;
+    MISSING_TYPE *colorQuery;
+    MISSING_TYPE *scaleQuery;
     MISSING_TYPE *scale1Save;
     MISSING_TYPE *scale1Restore;
     MISSING_TYPE *scale2Save;

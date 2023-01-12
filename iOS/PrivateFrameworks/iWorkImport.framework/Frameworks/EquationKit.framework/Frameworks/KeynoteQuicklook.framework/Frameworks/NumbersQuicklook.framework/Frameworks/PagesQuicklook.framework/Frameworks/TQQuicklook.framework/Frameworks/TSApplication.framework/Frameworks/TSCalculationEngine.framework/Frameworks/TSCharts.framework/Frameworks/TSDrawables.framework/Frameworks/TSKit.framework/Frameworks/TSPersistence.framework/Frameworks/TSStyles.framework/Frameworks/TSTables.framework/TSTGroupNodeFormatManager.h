@@ -10,20 +10,20 @@
 
 @interface TSTGroupNodeFormatManager : NSObject
 {
-    NSMutableDictionary *_dict;
+    NSMutableDictionary *_rowLookupKeysForFormat;
     _Bool _noFormatMergingNeeded;
     TSCECellValue *_cellValue;
 }
 
 - (void).cxx_destruct;
 @property(readonly, retain, nonatomic) TSCECellValue *cellValue; // @synthesize cellValue=_cellValue;
-- (void)encodeToArchive:(struct CategoryOwnerArchive_GroupByArchive_GroupNodeArchive_FormatManagerArchive *)arg1;
-- (id)initWithArchive:(const struct CategoryOwnerArchive_GroupByArchive_GroupNodeArchive_FormatManagerArchive *)arg1;
+- (void)encodeToArchive:(void *)arg1 forGroupBy:(id)arg2 backwardCompat:(_Bool)arg3;
+- (id)initWithArchive:(const void *)arg1 forGroupBy:(id)arg2;
 - (void)updateWithDocumentRoot:(id)arg1;
 - (id)description;
-- (_Bool)mergedFormatChangedByRemovingRowUID:(const UUIDData_5fbc143e *)arg1;
-- (_Bool)mergedFormatChangedByAddingRowUID:(const UUIDData_5fbc143e *)arg1 andCellValue:(id)arg2;
-- (void)p_recalculateMergedFormat;
+- (_Bool)mergedFormatChangedByRemovingRowUID:(const struct TSKUIDStruct *)arg1 groupBy:(id)arg2;
+- (_Bool)mergedFormatChangedByAddingRowUID:(const struct TSKUIDStruct *)arg1 andCellValue:(id)arg2 groupBy:(id)arg3;
+- (void)p_recalculateMergedFormatWithGroupBy:(id)arg1;
 - (void)reset;
 - (id)initWithCellValue:(id)arg1;
 

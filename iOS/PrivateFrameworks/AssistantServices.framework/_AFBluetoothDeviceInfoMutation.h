@@ -23,6 +23,7 @@
     _Bool _supportsSpokenNotification;
     _Bool _supportsListeningModeANC;
     _Bool _supportsListeningModeTransparency;
+    _Bool _supportsAnnounceCall;
     struct _mutationFlags {
         unsigned int isDirty:1;
         unsigned int hasAddress:1;
@@ -35,11 +36,13 @@
         unsigned int hasSupportsSpokenNotification:1;
         unsigned int hasSupportsListeningModeANC:1;
         unsigned int hasSupportsListeningModeTransparency:1;
+        unsigned int hasSupportsAnnounceCall:1;
     } _mutationFlags;
 }
 
 - (void).cxx_destruct;
 - (id)generate;
+- (void)setSupportsAnnounceCall:(_Bool)arg1;
 - (void)setSupportsListeningModeTransparency:(_Bool)arg1;
 - (void)setSupportsListeningModeANC:(_Bool)arg1;
 - (void)setSupportsSpokenNotification:(_Bool)arg1;

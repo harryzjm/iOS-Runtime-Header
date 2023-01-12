@@ -28,10 +28,11 @@
 @property(readonly, nonatomic) _Bool isCongested;
 @property(readonly, nonatomic) unsigned int rateChangeCounter;
 @property(readonly, nonatomic) unsigned int targetBitrate;
+@property(readonly, nonatomic) struct VCRateControlAlgorithmConfig config;
 @property(retain, nonatomic) VCRateControlMediaController *mediaController;
 - (void)enableBasebandDump:(void *)arg1;
 - (void)enableLogDump:(void *)arg1 enablePeriodicLogging:(_Bool)arg2;
-- (_Bool)doRateControlWithStatistics:(CDStruct_56e8fa21)arg1;
+- (_Bool)doRateControlWithStatistics:(CDStruct_c0785916)arg1;
 - (void)configure:(struct VCRateControlAlgorithmConfig)arg1 restartRequired:(_Bool)arg2;
 @end
 

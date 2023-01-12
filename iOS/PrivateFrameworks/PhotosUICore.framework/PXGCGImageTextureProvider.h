@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSCache, NSObject;
+@class NSCache, NSMapTable, NSObject;
 @protocol OS_dispatch_queue;
 
 @interface PXGCGImageTextureProvider
 {
     NSCache *_imageCache;
     NSCache *_additionalInfoCache;
+    NSMapTable *_aliveImagesCache;
 }
 
 - (void).cxx_destruct;

@@ -8,7 +8,7 @@
 
 #import <ChatKit/NSItemProviderWriting-Protocol.h>
 
-@class CKComposition, CKEntity, CNGroupIdentity, IMChat, IMService, NSArray, NSAttributedString, NSDate, NSNumber, NSSet, NSString;
+@class CKComposition, CKEntity, CNGroupIdentity, IMChat, IMHandle, IMService, NSArray, NSAttributedString, NSDate, NSNumber, NSSet, NSString;
 
 @interface CKConversation : NSObject <NSItemProviderWriting>
 {
@@ -41,7 +41,8 @@
     NSSet *_pendingRecipients;
     NSAttributedString *_groupName;
     NSString *_groupIdentityUpdateHandleID;
-    NSString *_previewText;
+    NSAttributedString *_previewText;
+    IMHandle *_businessHandle;
     NSNumber *_businessConversation;
     NSDate *_dateLastViewed;
     CNGroupIdentity *__conversationVisualIdentity;
@@ -79,9 +80,10 @@
 @property(nonatomic) _Bool wasKnownSender; // @synthesize wasKnownSender=_wasKnownSender;
 @property(retain, nonatomic) NSDate *dateLastViewed; // @synthesize dateLastViewed=_dateLastViewed;
 @property(retain, nonatomic) NSNumber *businessConversation; // @synthesize businessConversation=_businessConversation;
+@property(retain, nonatomic) IMHandle *businessHandle; // @synthesize businessHandle=_businessHandle;
 @property(nonatomic) _Bool isReportedAsSpam; // @synthesize isReportedAsSpam=_isReportedAsSpam;
 @property(nonatomic) _Bool hasLoadedAllMessages; // @synthesize hasLoadedAllMessages=_hasLoadedAllMessages;
-@property(copy, nonatomic) NSString *previewText; // @synthesize previewText=_previewText;
+@property(copy, nonatomic) NSAttributedString *previewText; // @synthesize previewText=_previewText;
 @property(retain, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
 @property(retain, nonatomic) NSString *groupIdentityUpdateHandleID; // @synthesize groupIdentityUpdateHandleID=_groupIdentityUpdateHandleID;
 @property(nonatomic) _Bool shouldShowGroupNameUpdateBanner; // @synthesize shouldShowGroupNameUpdateBanner=_shouldShowGroupNameUpdateBanner;
@@ -194,6 +196,7 @@
 - (id)entityMatchingHandle:(id)arg1;
 - (void)removeRecipientHandles:(id)arg1;
 - (void)addRecipientHandles:(id)arg1;
+@property(readonly, nonatomic) _Bool canShareFocusStatus;
 - (void)setSendReadReceipts:(_Bool)arg1;
 @property(readonly, nonatomic, getter=shouldSendReadReceipts) _Bool sendReadReceipts;
 - (void)setMutedUntilDate:(id)arg1;

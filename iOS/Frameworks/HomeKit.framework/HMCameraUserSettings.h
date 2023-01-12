@@ -30,7 +30,8 @@
 @property(retain, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property __weak id <HMCameraUserSettingsDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_mergeNewSettings:(id)arg1 operations:(id)arg2;
-- (void)_callSettingsDidUpdateDelegate;
+- (void)_notifyDelegatesOfUpdatedSettings;
+- (void)_updateSettings:(id)arg1 shouldNotifyDelegate:(_Bool)arg2 mergeOperations:(id)arg3;
 @property(readonly, getter=isReachabilityEventNotificationEnabled) _Bool reachabilityEventNotificationEnabled;
 @property(readonly, getter=isReachabilityChangeNotificationEnabled) _Bool reachabilityChangeNotificationEnabled;
 @property(readonly, getter=areActivityZonesIncludedForSignificantEventDetection) _Bool activityZonesIncludedForSignificantEventDetection;
@@ -46,7 +47,6 @@
 @property(readonly) unsigned long long currentAccessMode;
 - (unsigned long long)accessModeNotAtHome;
 - (unsigned long long)accessModeAtHome;
-- (void)updateWithSettings:(id)arg1;
 @property(readonly) NSUUID *uniqueIdentifier;
 @property(retain) HMCameraBulletinBoardSmartNotification *smartNotificationBulletin; // @synthesize smartNotificationBulletin=_smartNotificationBulletin;
 @property(copy) _HMCameraUserSettings *cameraUserSettings; // @synthesize cameraUserSettings=_cameraUserSettings;

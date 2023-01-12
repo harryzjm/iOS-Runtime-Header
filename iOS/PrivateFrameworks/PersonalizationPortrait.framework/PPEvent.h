@@ -33,6 +33,7 @@
 }
 
 + (id)descriptionForSuggestedEventCategory:(unsigned char)arg1;
++ (unsigned char)suggestedEventCategoryFromMetadata:(id)arg1;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned char suggestedEventCategory; // @synthesize suggestedEventCategory=_suggestedEventCategory;
@@ -52,7 +53,6 @@
 @property(readonly, nonatomic) NSString *location; // @synthesize location=_location;
 @property(readonly, nonatomic) NSString *title; // @synthesize title=_title;
 @property(readonly, nonatomic) NSString *eventIdentifier; // @synthesize eventIdentifier=_eventIdentifier;
-- (unsigned char)_suggestedEventCategoryFromMetaData:(id)arg1;
 - (_Bool)isNLEvent;
 - (_Bool)isStructuredEvent;
 - (_Bool)isEqualToEvent:(id)arg1;

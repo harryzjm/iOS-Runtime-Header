@@ -15,6 +15,7 @@
 
 // Remaining properties
 @property(retain, nonatomic) NSDate *dateIrisWallpaperLastPlayed; // @dynamic dateIrisWallpaperLastPlayed;
+@property(retain, nonatomic) NSDate *dateWallpaperLastChanged; // @dynamic dateWallpaperLastChanged;
 @property(nonatomic) _Bool enableWallpaperDimming; // @dynamic enableWallpaperDimming;
 @property(nonatomic) NSDictionary *homeScreenWallpapers; // @dynamic homeScreenWallpapers;
 @property(nonatomic) unsigned long long irisWallpaperPlayCount; // @dynamic irisWallpaperPlayCount;

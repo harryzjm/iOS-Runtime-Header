@@ -22,16 +22,9 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSObject<OS_dispatch_group> *operationExecutionGroup; // @synthesize operationExecutionGroup=_operationExecutionGroup;
-@property(retain, nonatomic) NSMutableDictionary *cancelHandlersByKey; // @synthesize cancelHandlersByKey=_cancelHandlersByKey;
-@property(nonatomic) long long maxConcurrentOperationCount; // @synthesize maxConcurrentOperationCount=_maxConcurrentOperationCount;
-@property(retain, nonatomic) NSMutableSet *keysForExecutingOperations; // @synthesize keysForExecutingOperations=_keysForExecutingOperations;
-@property(retain, nonatomic) NSMutableOrderedSet *mutableKeyQueue; // @synthesize mutableKeyQueue=_mutableKeyQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *executionQueue; // @synthesize executionQueue=_executionQueue;
 @property(nonatomic, getter=isSuspended) _Bool suspended; // @synthesize suspended=_suspended;
-@property(nonatomic) __weak id <FCKeyedOperationQueueDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)_enqueueOperationIfNeeded;
-- (void)_cancelOperationsIfNeeded;
+@property(readonly, nonatomic) __weak id <FCKeyedOperationQueueDelegate> delegate;
 - (void)notifyWhenAllOperationsAreFinishedUsingBlock:(CDUnknownBlockType)arg1;
 @property(copy, nonatomic) NSOrderedSet *keyQueue;
 - (id)initWithDelegate:(id)arg1 maxConcurrentOperationCount:(long long)arg2;

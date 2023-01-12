@@ -12,7 +12,7 @@
 
 @interface HAECGExporter : NSObject <SRMultiSampleExporting>
 {
-    struct unique_ptr<CinnAlgs::CnAlgs, std::__1::default_delete<CinnAlgs::CnAlgs>> _cinAlgs;
+    struct unique_ptr<CinnAlgs::CnAlgs, std::default_delete<CinnAlgs::CnAlgs>> _cinAlgs;
     NSMutableArray *_currentLiveWaveform;
     _Bool _fromRightWrist;
 }

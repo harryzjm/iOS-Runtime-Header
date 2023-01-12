@@ -13,7 +13,7 @@
 + (float)chartSeriesDepth;
 + (id)chartSeriesType;
 - (_Bool)shouldRenderSeries:(id)arg1;
-- (void)updateTilingEffect:(struct TexCoordTilingShaderEffectState *)arg1 properties:(id)arg2 textureTiling:(id)arg3 size:(const tvec3_17f03ce0 *)arg4;
+- (void)updateTilingEffect:(void *)arg1 properties:(id)arg2 textureTiling:(id)arg3 size:(const void *)arg4;
 - (struct EdgeDetectionParameters)edgeDetectionParameters;
 
 @end

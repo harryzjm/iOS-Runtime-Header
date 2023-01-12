@@ -33,8 +33,8 @@
 - (_Bool)processEtaDictionary:(id)arg1;
 - (unsigned long long)capabilityLevelForContact:(id)arg1;
 - (void)notifyObservers;
-- (void)removeObserver:(id)arg1;
-- (void)addObserver:(id)arg1;
+- (void)unregisterObserver:(id)arg1;
+- (void)registerObserver:(id)arg1;
 - (id)init;
 
 // Remaining properties

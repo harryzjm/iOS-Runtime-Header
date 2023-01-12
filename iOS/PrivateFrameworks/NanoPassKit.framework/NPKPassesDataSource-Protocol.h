@@ -16,9 +16,12 @@
 - (void)suppressRemoteUpdates;
 - (void)setDefaultPaymentPass:(PKPaymentPass *)arg1;
 - (void)removePass:(PKPass *)arg1;
+- (void)unarchivePass:(PKPass *)arg1;
 - (void)movePassAtIndex:(unsigned long long)arg1 toIndex:(unsigned long long)arg2;
 - (_Bool)shouldAllowMovingItemAtIndex:(unsigned long long)arg1 toIndex:(unsigned long long)arg2;
 - (PKPass *)passForUniqueID:(NSString *)arg1;
+- (NSArray *)expiredPasses;
+- (NSArray *)secureElementPasses;
 - (NSArray *)paymentPasses;
 - (NSArray *)passes;
 - (void)unregisterObserver:(id <NPKPassesDataSourceObserver>)arg1;

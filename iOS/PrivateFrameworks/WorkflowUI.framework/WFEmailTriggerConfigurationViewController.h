@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <WorkflowEditor/WFTriggerConfigurationViewController.h>
+
 #import <WorkflowUI/UITableViewDataSource-Protocol.h>
 #import <WorkflowUI/UITableViewDelegate-Protocol.h>
 #import <WorkflowUI/WFRecipientFieldViewControllerDelegate-Protocol.h>
@@ -11,7 +13,7 @@
 
 @class NSArray, NSString, UITableView, UIViewController;
 
-@interface WFEmailTriggerConfigurationViewController <UITableViewDataSource, UITableViewDelegate, WFRecipientFieldViewControllerDelegate, WFTriggerTableViewControllerDelegate>
+@interface WFEmailTriggerConfigurationViewController : WFTriggerConfigurationViewController <UITableViewDataSource, UITableViewDelegate, WFRecipientFieldViewControllerDelegate, WFTriggerTableViewControllerDelegate>
 {
     _Bool _showingAccounts;
     _Bool _showingRecipients;
@@ -48,7 +50,7 @@
 - (void)updateUI;
 - (void)setUpAccounts;
 - (id)supportedAccountTypeIdentifiers;
-- (id)initWithTrigger:(id)arg1 triggerManager:(id)arg2 mode:(unsigned long long)arg3;
+- (id)initWithTrigger:(id)arg1 mode:(unsigned long long)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

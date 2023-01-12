@@ -15,13 +15,13 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) TSDFrameRep *frameRep; // @synthesize frameRep=mFrameRep;
+- (_Bool)i_shouldRenderStroke:(id)arg1;
+- (void)updateFrameRep;
 - (_Bool)isPlaceholder;
 - (void)willBeRemoved;
 @property(readonly, nonatomic) TSDMediaLayout *mediaLayout;
 @property(readonly, nonatomic) TSDMediaInfo *mediaInfo;
 - (void)dealloc;
-- (_Bool)i_shouldRenderStroke:(id)arg1;
-- (void)i_updateFrameRep;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

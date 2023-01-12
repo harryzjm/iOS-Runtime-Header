@@ -6,7 +6,7 @@
 
 #import <TSApplication/TSKPdfTagger-Protocol.h>
 
-@class TSWPColumn, TSWPDropCapAdornment, TSWPRep, TSWPText;
+@class TSWPColumn, TSWPDropCapAdornment, TSWPRep, TSWPSelection, TSWPText;
 
 @protocol TSWPPdfTagger <TSKPdfTagger>
 - (void)handleDropCapAdornment:(TSWPDropCapAdornment *)arg1;
@@ -26,10 +26,10 @@
 - (void)endLineFragmentWithRange:(struct _NSRange)arg1;
 - (void)beginLineFragmentWithRange:(struct _NSRange)arg1;
 - (void)endTextColumn:(TSWPColumn *)arg1;
-- (void)beginTextColumn:(TSWPColumn *)arg1;
+- (void)beginTextColumn:(TSWPColumn *)arg1 limitSelection:(TSWPSelection *)arg2;
 - (void)endOneColumnText:(TSWPText *)arg1 column:(TSWPColumn *)arg2;
-- (void)beginOneColumnText:(TSWPText *)arg1 column:(TSWPColumn *)arg2;
+- (void)beginOneColumnText:(TSWPText *)arg1 column:(TSWPColumn *)arg2 limitSelection:(TSWPSelection *)arg3;
 - (void)endTextStorageChunk:(TSWPRep *)arg1;
-- (void)beginTextStorageChunk:(TSWPRep *)arg1;
+- (void)beginTextStorageChunk:(TSWPRep *)arg1 limitSelection:(id)arg2;
 @end
 

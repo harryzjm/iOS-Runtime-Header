@@ -17,6 +17,7 @@
     id <EFCancelable> _cancelable;
 }
 
++ (id)log;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id <EFCancelable> cancelable; // @synthesize cancelable=_cancelable;
 @property(readonly, nonatomic) EFObservable<EFObserver> *observable; // @synthesize observable=_observable;

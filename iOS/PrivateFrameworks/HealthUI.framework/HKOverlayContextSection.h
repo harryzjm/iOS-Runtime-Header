@@ -8,7 +8,7 @@
 
 #import <HealthUI/HKDisplayTypeContextItemSection-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, UIAction;
 
 @interface HKOverlayContextSection : NSObject <HKDisplayTypeContextItemSection>
 {
@@ -16,14 +16,17 @@
     NSArray *items;
     NSString *_localizedSectionTitle;
     NSArray *_overlayContextItems;
+    UIAction *_accessoryButtonAction;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) UIAction *accessoryButtonAction; // @synthesize accessoryButtonAction=_accessoryButtonAction;
 @property(readonly, nonatomic) NSArray *overlayContextItems; // @synthesize overlayContextItems=_overlayContextItems;
 @property(readonly, nonatomic) NSString *localizedSectionTitle; // @synthesize localizedSectionTitle=_localizedSectionTitle;
 @property(retain, nonatomic) NSArray *items; // @synthesize items;
 @property(retain, nonatomic) NSString *title; // @synthesize title;
 - (id)initWithSectionTitle:(id)arg1 overlayContextItems:(id)arg2;
+- (id)initWithSectionTitle:(id)arg1 overlayContextItems:(id)arg2 accessoryButtonAction:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

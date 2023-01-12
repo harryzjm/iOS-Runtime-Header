@@ -25,14 +25,20 @@
     int _maxQualityPrioritization;
     _Bool _deferredProcessingEnabled;
     _Bool _digitalFlashCaptureEnabled;
+    _Bool _intelligentDistortionCorrectionEnabled;
+    _Bool _demosaicedRawEnabled;
     _Bool _previewQualityAdjustedPhotoFilterRenderingEnabled;
     _Bool _fastCapturePrioritizationEnabled;
+    _Bool _semanticStyleRenderingEnabled;
     _Bool _irisFrameHarvestingEnabled;
 }
 
 @property(nonatomic) _Bool irisFrameHarvestingEnabled; // @synthesize irisFrameHarvestingEnabled=_irisFrameHarvestingEnabled;
+@property(nonatomic) _Bool semanticStyleRenderingEnabled; // @synthesize semanticStyleRenderingEnabled=_semanticStyleRenderingEnabled;
 @property(nonatomic) _Bool fastCapturePrioritizationEnabled; // @synthesize fastCapturePrioritizationEnabled=_fastCapturePrioritizationEnabled;
 @property(nonatomic) _Bool previewQualityAdjustedPhotoFilterRenderingEnabled; // @synthesize previewQualityAdjustedPhotoFilterRenderingEnabled=_previewQualityAdjustedPhotoFilterRenderingEnabled;
+@property(nonatomic) _Bool demosaicedRawEnabled; // @synthesize demosaicedRawEnabled=_demosaicedRawEnabled;
+@property(nonatomic) _Bool intelligentDistortionCorrectionEnabled; // @synthesize intelligentDistortionCorrectionEnabled=_intelligentDistortionCorrectionEnabled;
 @property(nonatomic) _Bool digitalFlashCaptureEnabled; // @synthesize digitalFlashCaptureEnabled=_digitalFlashCaptureEnabled;
 @property(nonatomic) _Bool deferredProcessingEnabled; // @synthesize deferredProcessingEnabled=_deferredProcessingEnabled;
 @property(nonatomic) int maxQualityPrioritization; // @synthesize maxQualityPrioritization=_maxQualityPrioritization;

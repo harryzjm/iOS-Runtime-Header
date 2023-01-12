@@ -6,18 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class ATXModeClassifier, NSUserDefaults;
+@class ATXModeClassifier;
 
 @interface _CDModeClassifier : NSObject
 {
-    NSUserDefaults *_userDefaults;
     ATXModeClassifier *_modeClassifier;
 }
 
 - (void).cxx_destruct;
 @property(retain) ATXModeClassifier *modeClassifier; // @synthesize modeClassifier=_modeClassifier;
-- (void)dealloc;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_enableFocusModesIfPossible;
 - (id)init;
 

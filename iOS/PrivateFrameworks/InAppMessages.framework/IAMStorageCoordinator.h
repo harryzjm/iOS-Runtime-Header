@@ -30,6 +30,7 @@
 - (void)_fetchMessageEntries:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) IAMICStorageProvider *iTunesCloudStorageProvider; // @synthesize iTunesCloudStorageProvider=_iTunesCloudStorageProvider;
 - (void)messageEntriesDidChange:(id)arg1;
+- (void)removeApplicationBadgeFromMessageEntry:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateLastDisplayTimeGlobalPresentationPolicyGroupRestricted:(id)arg1;
 - (void)updateLastDisplayTimeGlobalPresentationPolicyGroupNormal:(id)arg1;
 - (void)fetchGlobalPresentationPolicyGroupDisplayTimes:(CDUnknownBlockType)arg1;

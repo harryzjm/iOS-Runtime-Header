@@ -8,7 +8,8 @@
 
 #import <CFNetwork/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSURLRequest, NSURLResponse, NSUUID, __CFN_ConnectionMetrics, __CFN_SessionMetrics, __CFN_TaskMetrics;
+@class NSData, NSDictionary, NSURLRequest, NSURLResponse, NSUUID, __CFN_ConnectionMetrics, __CFN_SessionMetrics, __CFN_TaskMetrics;
+@protocol OS_nw_data_transfer_report;
 
 @interface __CFN_TransactionMetrics : NSObject <NSSecureCoding>
 {
@@ -17,6 +18,7 @@
     _Bool _pushed;
     _Bool _APSRelayAttempted;
     _Bool _APSRelaySucceeded;
+    int _pidForHAR;
     __CFN_TaskMetrics *_taskMetrics;
     __CFN_SessionMetrics *_sessionMetrics;
     long long _lastResponseHeaderSize;
@@ -45,17 +47,23 @@
     unsigned long long _endReason;
     long long _schedulingTier;
     long long _options;
+    NSData *_cachedResponseBody;
     NSDictionary *_tcpInfoBegin;
     NSDictionary *_tcpInfoEnd;
     NSDictionary *_subflowCountsBegin;
     NSDictionary *_subflowCountsEnd;
+    NSObject<OS_nw_data_transfer_report> *_dataTransferReport;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-@property(retain, nonatomic) __CFN_ConnectionMetrics *_daemon_connectionMetrics;
+@property(readonly, nonatomic) long long _daemon_responseBodyTransferSize;
+@property(readonly, nonatomic) long long _daemon_responseHeaderSize;
+@property(readonly, nonatomic) long long _daemon_requestBodyTransferSize;
+@property(readonly, nonatomic) long long _daemon_requestHeaderSize;
+@property(readonly, nonatomic) __CFN_ConnectionMetrics *_daemon_connectionMetrics;
 
 @end
 

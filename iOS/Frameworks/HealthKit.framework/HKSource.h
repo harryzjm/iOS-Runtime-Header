@@ -22,10 +22,11 @@
     unsigned long long _options;
 }
 
++ (_Bool)isAppleDeviceBundleIdentifier:(id)arg1;
 + (_Bool)supportsSecureCoding;
 + (unsigned long long)_sourceOptionsForAppEntitlements:(id)arg1;
 + (id)_sourceWithBundleIdentifier:(id)arg1 defaultBundleIdentifier:(id)arg2 appEntitlements:(id)arg3 name:(id)arg4;
-+ (id)_publicSourceForGatewayExternalIdentifier:(id)arg1 name:(id)arg2;
++ (id)_publicSourceForClinicalExternalIdentifier:(id)arg1 name:(id)arg2;
 + (id)_privateSourceForClinicalAccountIdentifier:(id)arg1 name:(id)arg2;
 + (id)_sourceWithBundleIdentifier:(id)arg1 name:(id)arg2 productType:(id)arg3 options:(unsigned long long)arg4;
 + (id)_researchStudiesDirectoryURL;
@@ -65,6 +66,7 @@
 - (id)init;
 - (id)_fetchBundleWithError:(id *)arg1;
 - (id)_deducedClinicalAccountIdentifier;
+- (_Bool)_isAllowedBackgroundDelivery;
 - (_Bool)_isResearchStudy;
 - (_Bool)_isClinicalSource;
 - (_Bool)_isHidden;

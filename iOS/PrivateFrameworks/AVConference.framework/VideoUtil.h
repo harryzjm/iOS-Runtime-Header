@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (struct CGSize)computeVisibleAspectRatioWithRemoteScreenAspectRatio:(struct CGSize)arg1 remoteExpectedAspectRatio:(struct CGSize)arg2 encodeWidth:(int)arg3 encodeHeight:(int)arg4;
 + (unsigned int)videoCodecForPayload:(int)arg1;
 + (struct __CFString *)typeIdentifierForImageType:(int)arg1;
 + (long long)compareVideoAspectRatioSizeA:(struct CGSize)arg1 toSizeB:(struct CGSize)arg2;

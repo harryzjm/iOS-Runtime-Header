@@ -12,6 +12,7 @@
 {
     NSMutableDictionary *_attributes;
     _Bool _enabled;
+    _Bool _wantsInlineActivityIndicator;
     NSString *_identifier;
     RUIStyle *_style;
     NSString *_body;
@@ -19,6 +20,7 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool wantsInlineActivityIndicator; // @synthesize wantsInlineActivityIndicator=_wantsInlineActivityIndicator;
 @property(readonly, nonatomic) __weak RUIElement *parent; // @synthesize parent=_parent;
 @property(nonatomic) _Bool enabled; // @synthesize enabled=_enabled;
 @property(copy, nonatomic) NSString *body; // @synthesize body=_body;

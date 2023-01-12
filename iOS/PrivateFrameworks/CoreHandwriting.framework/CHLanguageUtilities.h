@@ -10,6 +10,10 @@
 {
 }
 
++ (id)mecabraTokenizationAndKanaConversionForString:(id)arg1 mecabraEngine:(struct __Mecabra *)arg2 contextRef:(struct __MecabraContext *)arg3 leftCandidateRef:(void *)arg4 alternativeCandidateLimit:(long long)arg5;
++ (_Bool)isMecabraConversionCandidateAllowed:(id)arg1;
++ (double)characterLMLogProbabilityForString:(id)arg1 characterLM:(id)arg2;
++ (unsigned int)tokenIDForString:(id)arg1 withLexicon:(struct _LXLexicon *)arg2;
 + (id)transliterateStringUsingICUTransliterator:(id)arg1 _icuTransliterator:(void **)arg2;
 + (_Bool)findPartialMatchInPhraseLexicon:(struct _LXLexicon *)arg1 token:(id)arg2 contextBeforeToken:(id)arg3;
 + (id)splitStringIntoSubtokensForLexicon:(id)arg1 minLength:(long long)arg2;

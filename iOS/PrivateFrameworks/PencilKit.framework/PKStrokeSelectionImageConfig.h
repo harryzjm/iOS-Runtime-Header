@@ -12,12 +12,16 @@
 {
     _Bool _invertedColors;
     _Bool _rotated;
+    _Bool _sixChannel;
+    _Bool _highlighted;
     double _scale;
     struct CGSize _imageSize;
     struct CGRect _strokeBounds;
     struct CGRect _imageViewBounds;
 }
 
+@property(readonly, nonatomic) _Bool highlighted; // @synthesize highlighted=_highlighted;
+@property(readonly, nonatomic) _Bool sixChannel; // @synthesize sixChannel=_sixChannel;
 @property(readonly, nonatomic) _Bool rotated; // @synthesize rotated=_rotated;
 @property(readonly, nonatomic) _Bool invertedColors; // @synthesize invertedColors=_invertedColors;
 @property(readonly, nonatomic) struct CGSize imageSize; // @synthesize imageSize=_imageSize;
@@ -27,7 +31,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithStrokeBounds:(struct CGRect)arg1 imageViewBounds:(struct CGRect)arg2 scale:(double)arg3 imageSize:(struct CGSize)arg4 invertedColors:(_Bool)arg5 rotated:(_Bool)arg6;
+- (id)initWithStrokeBounds:(struct CGRect)arg1 imageViewBounds:(struct CGRect)arg2 scale:(double)arg3 imageSize:(struct CGSize)arg4 invertedColors:(_Bool)arg5 rotated:(_Bool)arg6 sixChannel:(_Bool)arg7 highlighted:(_Bool)arg8;
 
 @end
 

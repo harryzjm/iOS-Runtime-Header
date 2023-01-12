@@ -15,6 +15,7 @@
     PSIStatement *_checkStatement;
     PSIStatement *_selectMatchesStatement;
     PSIStatement *_selectStatement;
+    void *_embeddingRef;
     struct __CFLocale *_locale;
     _Bool _localeIsGerman;
 }

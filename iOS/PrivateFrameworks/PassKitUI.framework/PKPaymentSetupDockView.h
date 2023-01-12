@@ -17,6 +17,7 @@
     _Bool _requiresAdditionalContinuousButtonPadding;
     long long _context;
     OBPrivacyLinkController *_privacyLink;
+    UIView *_additionalLinkView;
     NSString *_buttonExplanationText;
     ASCLockupView *_lockUpView;
 }
@@ -24,6 +25,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) ASCLockupView *lockUpView; // @synthesize lockUpView=_lockUpView;
 @property(retain, nonatomic) NSString *buttonExplanationText; // @synthesize buttonExplanationText=_buttonExplanationText;
+@property(retain, nonatomic) UIView *additionalLinkView; // @synthesize additionalLinkView=_additionalLinkView;
 @property(retain, nonatomic) OBPrivacyLinkController *privacyLink; // @synthesize privacyLink=_privacyLink;
 @property(readonly, nonatomic) long long context; // @synthesize context=_context;
 @property(nonatomic) _Bool requiresAdditionalContinuousButtonPadding; // @synthesize requiresAdditionalContinuousButtonPadding=_requiresAdditionalContinuousButtonPadding;

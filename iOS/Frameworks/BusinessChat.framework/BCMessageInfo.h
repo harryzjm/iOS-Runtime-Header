@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessChat/BCDictionaryImageSerializable-Protocol.h>
+#import <BusinessChat/BCDictionarySerializable-Protocol.h>
 #import <BusinessChat/BSDescriptionProviding-Protocol.h>
 
 @class NSDictionary, NSString, UIImage;
 
-@interface BCMessageInfo : NSObject <BSDescriptionProviding, BCDictionaryImageSerializable>
+@interface BCMessageInfo : NSObject <BSDescriptionProviding, BCDictionarySerializable>
 {
     NSString *_title;
     NSString *_subtitle;
@@ -23,7 +23,6 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) NSString *_style; // @synthesize _style=__style;
 @property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
 @property(retain, nonatomic) NSString *imageDescription; // @synthesize imageDescription=_imageDescription;
 @property(retain, nonatomic) NSString *imageIdentifier; // @synthesize imageIdentifier=_imageIdentifier;

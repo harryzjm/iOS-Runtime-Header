@@ -4,11 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AVMediaSelection, AVURLAsset, NSArray, NSData, NSDictionary, NSString, NSURL;
+@class AVMediaSelection, AVURLAsset, NSArray, NSData, NSDictionary, NSProgress, NSString, NSURL;
 
 @interface __NSCFBackgroundAVAssetDownloadTask
 {
     unsigned long long _downloadToken;
+    struct os_unfair_lock_s _progressLock;
+    _Bool _didCleanupProgress;
+    _Bool _enableSPIDelegateCallbacks;
+    NSProgress *_progress;
     unsigned long long _AVAssetDownloadToken;
     NSURL *_URL;
     NSURL *_destinationURL;
@@ -27,11 +31,14 @@
 @property(copy) NSURL *destinationURL; // @synthesize destinationURL=_destinationURL;
 @property(copy) NSURL *URL; // @synthesize URL=_URL;
 @property unsigned long long AVAssetDownloadToken; // @synthesize AVAssetDownloadToken=_AVAssetDownloadToken;
+- (void)_finishProgressReporting;
+- (id)progress;
 - (_Bool)_isAVAssetTask;
 - (id)response;
 - (id)currentRequest;
 - (id)originalRequest;
 - (_Bool)isKindOfClass:(Class)arg1;
+- (void)_onqueue_willDownloadVariants:(id)arg1;
 - (void)_onqueue_didFinishDownloadforMediaSelectionPropertyList:(id)arg1;
 - (void)_onqueue_didFinishWithError:(id)arg1;
 - (void)_onqueue_willDownloadToURL:(id)arg1;
@@ -41,7 +48,7 @@
 - (void)_onqueue_didReceiveProgressUpdateWithTotalBytesWritten:(long long)arg1 totalBytesExpectedToWrite:(long long)arg2;
 - (void)dealloc;
 - (id)initWithTaskInfo:(id)arg1 taskGroup:(id)arg2 ident:(unsigned long long)arg3;
-- (id)initWithTaskGroup:(id)arg1 URLAsset:(id)arg2 URL:(id)arg3 destinationURL:(id)arg4 temporaryDestinationURL:(id)arg5 assetTitle:(id)arg6 assetArtworkData:(id)arg7 ident:(unsigned long long)arg8;
+- (id)initWithTaskGroup:(id)arg1 URLAsset:(id)arg2 URL:(id)arg3 destinationURL:(id)arg4 temporaryDestinationURL:(id)arg5 assetTitle:(id)arg6 assetArtworkData:(id)arg7 ident:(unsigned long long)arg8 enableSPIDelegateCallbacks:(_Bool)arg9;
 
 @end
 

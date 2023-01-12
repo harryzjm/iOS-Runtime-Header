@@ -18,6 +18,7 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) TIKeyboardTouchEvent *touchEvent; // @synthesize touchEvent=_touchEvent;
 @property(readonly, copy) NSString *description;
 - (void)sendTo:(id)arg1;
 - (id)initWithCoder:(id)arg1;

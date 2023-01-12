@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)_cacheEntriesBeforeTimeStamp:(double)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)_cacheEntryForNextRefreshWithHandler:(CDUnknownBlockType)arg1;
 - (void)_openDBIfNotAlreadyOpen;
+- (void)_closeDB;
 - (void)_openDB;
 - (void)dealloc;
 

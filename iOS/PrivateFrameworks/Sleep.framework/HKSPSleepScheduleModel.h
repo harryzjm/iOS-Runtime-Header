@@ -19,15 +19,8 @@
     HKSPSleepEventRecord *_sleepEventRecord;
 }
 
++ (id)templateModelForSchedule:(id)arg1;
 + (id)sleepScheduleModelWithSleepSchedule:(id)arg1 sleepSettings:(id)arg2 sleepEventRecord:(id)arg3;
-+ (id)testSleepScheduleModelForMigratedUserPriorToOnboardingWithSingularWaketime;
-+ (id)testSleepScheduleModelForFullyOnboardedUserWithSingularBedtime;
-+ (id)testSleepScheduleModelForMigratedUserPriorToOnboarding;
-+ (id)testSleepScheduleModelForFullyOnboardedUser;
-+ (id)testSleepScheduleModelWithSchedule:(id)arg1 settings:(id)arg2;
-+ (id)testSleepScheduleModelWithSchedule:(id)arg1;
-+ (id)testSleepScheduleModelWithAlarmEnabled:(_Bool)arg1;
-+ (id)testSleepScheduleModel;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) HKSPSleepEventRecord *sleepEventRecord; // @synthesize sleepEventRecord=_sleepEventRecord;
 @property(readonly, copy, nonatomic) HKSPSleepSettings *sleepSettings; // @synthesize sleepSettings=_sleepSettings;
@@ -38,6 +31,7 @@
 - (id)succinctDescription;
 @property(readonly) unsigned long long hash;
 @property(readonly, copy) NSString *description;
+- (id)modelByApplyingChangesFromOccurrence:(id)arg1;
 - (long long)alarmStatusForOccurrence:(id)arg1;
 - (id)_upcomingResolvedOccurrencesDueAfterDate:(id)arg1 searchBackwards:(_Bool)arg2;
 - (id)_timelineResultsDueAfterDate:(id)arg1;
@@ -60,6 +54,8 @@
 - (_Bool)isEquivalentTo:(id)arg1;
 @property(readonly, nonatomic) NSDate *lastModifiedDate;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)computeConfirmedWakeUpUntilDateForOverrideWakeUpDate:(id)arg1;
+- (id)computeConfirmedWakeUpUntilDateForEarlyWakeUpDate:(id)arg1;
 - (_Bool)chargingRemindersEnabledWithLogObject:(id)arg1;
 @property(readonly, nonatomic) _Bool chargingRemindersEnabled;
 - (_Bool)goodMorningScreenEnabledWithLogObject:(id)arg1;

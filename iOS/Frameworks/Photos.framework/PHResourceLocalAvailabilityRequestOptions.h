@@ -6,13 +6,18 @@
 
 #import <objc/NSObject.h>
 
+@protocol OS_dispatch_queue;
+
 @interface PHResourceLocalAvailabilityRequestOptions : NSObject
 {
     _Bool _treatLivePhotoAsStill;
     _Bool _dontAllowRAW;
     _Bool _includeAllAssetResources;
+    NSObject<OS_dispatch_queue> *_resultHandlerQueue;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *resultHandlerQueue; // @synthesize resultHandlerQueue=_resultHandlerQueue;
 @property(nonatomic) _Bool includeAllAssetResources; // @synthesize includeAllAssetResources=_includeAllAssetResources;
 @property(nonatomic) _Bool dontAllowRAW; // @synthesize dontAllowRAW=_dontAllowRAW;
 @property(nonatomic) _Bool treatLivePhotoAsStill; // @synthesize treatLivePhotoAsStill=_treatLivePhotoAsStill;

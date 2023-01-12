@@ -7,12 +7,11 @@
 #import <objc/NSObject.h>
 
 @class ACAccountStore, NSArray, NSSet, NSString;
-@protocol OS_dispatch_queue;
 
 @interface ACPersonaManager : NSObject
 {
-    NSObject<OS_dispatch_queue> *_backgroundPersonaUpdate;
-    _Bool _registered;
+    unsigned long long _personaGenerationID;
+    struct os_unfair_lock_s _personaStorageLock;
     NSString *_enterprisePersonaUID;
     NSString *_personalPersonaUID;
     NSSet *_guestPersonasUID;

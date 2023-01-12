@@ -23,6 +23,8 @@
 }
 
 + (void)setActiveClientInfo:(id)arg1;
++ (void)setDelegate:(id)arg1;
++ (id)delegate;
 + (id)activeClientInfo;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -39,6 +41,7 @@
 - (void)updateActiveClientInfo;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)jsonRepresentationWithOptions:(unsigned long long)arg1;
 
 @end
 

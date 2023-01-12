@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSPersistence/TSPObject.h>
+#import <TSKit/TSKViewStateRoot.h>
 
 @class KNUIState;
 
-@interface KNArchivedUIState : TSPObject
+@interface KNArchivedUIState : TSKViewStateRoot
 {
     KNUIState *_uiState;
 }
@@ -17,9 +17,6 @@
 @property(readonly, nonatomic) KNUIState *uiState; // @synthesize uiState=_uiState;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
-- (_Bool)p_validateViewStateWithDocumentRoot:(id)arg1 documentRevision:(id)arg2;
-- (_Bool)validateDesktopViewStateWithDocumentRoot:(id)arg1 documentRevision:(id)arg2;
-- (_Bool)validateMobileViewStateWithDocumentRoot:(id)arg1 documentRevision:(id)arg2;
 - (id)initWithUIState:(id)arg1 context:(id)arg2;
 
 @end

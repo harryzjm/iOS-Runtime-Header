@@ -22,12 +22,12 @@
 @property(readonly, nonatomic) IDSNGMPublicDeviceIdentity *ngmPublicDeviceIdentity; // @synthesize ngmPublicDeviceIdentity=_ngmPublicDeviceIdentity;
 @property(readonly, nonatomic) IDSMPPublicLegacyIdentity *legacyPublicIdentity; // @synthesize legacyPublicIdentity=_legacyPublicIdentity;
 - (id)dataRepresentationWithError:(id *)arg1;
-- (id)_ngmSealMessage:(id)arg1 signedWithFullIdentity:(id)arg2 error:(id *)arg3;
+- (id)_ngmSealMessage:(id)arg1 withEncryptedAttributes:(id)arg2 signedWithFullIdentity:(id)arg3 error:(id *)arg4;
 - (id)_legacySealMessage:(id)arg1 signedWithFullIdentity:(id)arg2 error:(id *)arg3;
 - (id)debugDescription;
 - (id)description;
-- (id)sealMessage:(id)arg1 signedByFullIdentity:(id)arg2 usedIdentityWithIdentifier:(id *)arg3 error:(id *)arg4;
-- (id)sealMessage:(id)arg1 signedByFullIdentity:(id)arg2 usingIdentitiesWithIdentifier:(id)arg3 error:(id *)arg4;
+- (id)sealMessage:(id)arg1 withEncryptedAttributes:(id)arg2 signedByFullIdentity:(id)arg3 usedIdentityWithIdentifier:(id *)arg4 error:(id *)arg5;
+- (id)sealMessage:(id)arg1 withEncryptedAttributes:(id)arg2 signedByFullIdentity:(id)arg3 usingIdentitiesWithIdentifier:(id)arg4 error:(id *)arg5;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithLegacyPublicIdentity:(id)arg1 ngmPublicDeviceIdentity:(id)arg2 ngmVersion:(id)arg3;

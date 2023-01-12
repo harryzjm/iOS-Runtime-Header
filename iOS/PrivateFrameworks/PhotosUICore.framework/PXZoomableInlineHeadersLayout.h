@@ -11,7 +11,7 @@
 
 @interface PXZoomableInlineHeadersLayout <PXSectionedDataSourceManagerObserver>
 {
-    CDStruct_d97c9657 _updateFlags;
+    CDStruct_af00bf4e _updateFlags;
     PXInlineHeadersSpriteLayout *_yearsLayout;
     PXInlineHeadersSpriteLayout *_monthsLayout;
     PXZoomableInlineHeadersDataSourceManager *_dataSourceManager;

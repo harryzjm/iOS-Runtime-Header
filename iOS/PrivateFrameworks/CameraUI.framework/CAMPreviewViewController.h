@@ -12,13 +12,15 @@
 #import <CameraUI/CAMFocusIndicatorViewDelegate-Protocol.h>
 #import <CameraUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CAMBurstIndicatorView, CAMCaptureGraphConfiguration, CAMExposureResult, CAMFocusIndicatorView, CAMFocusResult, CAMMachineReadableCodeResult, CAMMotionController, CAMPreviewView, CAMStageLightOverlayView, CAMSubjectIndicatorView, CAMTimelapseController, CUCaptureController, NSArray, NSDate, NSMutableDictionary, NSString, UILongPressGestureRecognizer, UIPanGestureRecognizer, UITapGestureRecognizer;
+@class CAMBurstIndicatorView, CAMCaptureGraphConfiguration, CAMExposureResult, CAMFocusIndicatorView, CAMFocusResult, CAMMachineReadableCodeResult, CAMMotionController, CAMPreviewView, CAMStageLightOverlayView, CAMTextRegionResult, CAMTimelapseController, CEKSubjectIndicatorView, CUCaptureController, NSArray, NSDate, NSMapTable, NSMutableDictionary, NSString, UIImage, UILongPressGestureRecognizer, UIPanGestureRecognizer, UITapGestureRecognizer;
 @protocol CAMPreviewViewControllerDelegate;
 
 @interface CAMPreviewViewController : UIViewController <UIGestureRecognizerDelegate, CAMFocusDelegate, CAMExposureDelegate, CAMFocusIndicatorViewDelegate, CAMFacesDelegate>
 {
     _Bool __changingGraphConfiguration;
     _Bool __userLockedFocusAndExposure;
+    _Bool __cinematicSubjectIsTrackingLocked;
+    _Bool __cinematicIsFixedFocusLocked;
     _Bool __shouldSuppressExistingFaceIndicators;
     _Bool _showingStandardControls;
     float _baselineExposureBias;
@@ -30,6 +32,10 @@
     long long _stagePreviewStatus;
     CAMMachineReadableCodeResult *_cachedSignificantMRCResult;
     NSArray *_cachedMRCResults;
+    NSString *_significantMRCTitle;
+    UIImage *_significantMRCIcon;
+    CAMTextRegionResult *_cachedSignificantTextRegionResult;
+    NSArray *_cachedTextRegionResults;
     long long _lightingType;
     CUCaptureController *__captureController;
     CAMTimelapseController *__timelapseController;
@@ -38,6 +44,7 @@
     CAMFocusIndicatorView *__continuousIndicator;
     CAMFocusIndicatorView *__pointIndicator;
     NSMutableDictionary *__indicatorViewsByType;
+    NSMapTable *__metadataObjectsForView;
     NSDate *__lastFocusIndictorStartTime;
     CAMFocusResult *__lastFocusResult;
     CAMExposureResult *__lastExposureResult;
@@ -50,7 +57,7 @@
     double __exposureBiasVirtualSliderExponent;
     double __exposureBiasVirtualSliderPointsForFirstStop;
     NSDate *__lastExposureBiasModificationTime;
-    CAMSubjectIndicatorView *__portraitModeCenteredIndicatorView;
+    CEKSubjectIndicatorView *__portraitModeCenteredIndicatorView;
     CAMStageLightOverlayView *__stageLightOverlayView;
     CAMMotionController *__motionController;
 }
@@ -59,7 +66,7 @@
 @property(nonatomic, getter=isShowingStandardControls) _Bool showingStandardControls; // @synthesize showingStandardControls=_showingStandardControls;
 @property(readonly, nonatomic) CAMMotionController *_motionController; // @synthesize _motionController=__motionController;
 @property(readonly, nonatomic) CAMStageLightOverlayView *_stageLightOverlayView; // @synthesize _stageLightOverlayView=__stageLightOverlayView;
-@property(readonly, nonatomic) CAMSubjectIndicatorView *_portraitModeCenteredIndicatorView; // @synthesize _portraitModeCenteredIndicatorView=__portraitModeCenteredIndicatorView;
+@property(readonly, nonatomic) CEKSubjectIndicatorView *_portraitModeCenteredIndicatorView; // @synthesize _portraitModeCenteredIndicatorView=__portraitModeCenteredIndicatorView;
 @property(retain, nonatomic, setter=_setLastExposureBiasModifiedTime:) NSDate *_lastExposureBiasModificationTime; // @synthesize _lastExposureBiasModificationTime=__lastExposureBiasModificationTime;
 @property(nonatomic, setter=_setExposureBiasVirtualSliderPointsForFirstStop:) double _exposureBiasVirtualSliderPointsForFirstStop; // @synthesize _exposureBiasVirtualSliderPointsForFirstStop=__exposureBiasVirtualSliderPointsForFirstStop;
 @property(nonatomic, setter=_setExposureBiasVirtualSliderExponent:) double _exposureBiasVirtualSliderExponent; // @synthesize _exposureBiasVirtualSliderExponent=__exposureBiasVirtualSliderExponent;
@@ -73,8 +80,11 @@
 @property(retain, nonatomic, setter=_setLastTapToFocusTime:) NSDate *_lastTapToFocusTime; // @synthesize _lastTapToFocusTime=__lastTapToFocusTime;
 @property(retain, nonatomic, setter=_setLastExposureResult:) CAMExposureResult *_lastExposureResult; // @synthesize _lastExposureResult=__lastExposureResult;
 @property(retain, nonatomic, setter=_setLastFocusResult:) CAMFocusResult *_lastFocusResult; // @synthesize _lastFocusResult=__lastFocusResult;
+@property(nonatomic, setter=_setCinematicIsFixedFocusLocked:) _Bool _cinematicIsFixedFocusLocked; // @synthesize _cinematicIsFixedFocusLocked=__cinematicIsFixedFocusLocked;
+@property(nonatomic, setter=_setCinematicSubjectIsTrackingLocked:) _Bool _cinematicSubjectIsTrackingLocked; // @synthesize _cinematicSubjectIsTrackingLocked=__cinematicSubjectIsTrackingLocked;
 @property(nonatomic, setter=_setUserLockedFocusAndExposure:) _Bool _userLockedFocusAndExposure; // @synthesize _userLockedFocusAndExposure=__userLockedFocusAndExposure;
 @property(retain, nonatomic, setter=_setLastFocusIndictorStartTime:) NSDate *_lastFocusIndictorStartTime; // @synthesize _lastFocusIndictorStartTime=__lastFocusIndictorStartTime;
+@property(readonly, nonatomic) NSMapTable *_metadataObjectsForView; // @synthesize _metadataObjectsForView=__metadataObjectsForView;
 @property(readonly, nonatomic) NSMutableDictionary *_indicatorViewsByType; // @synthesize _indicatorViewsByType=__indicatorViewsByType;
 @property(readonly, nonatomic) CAMFocusIndicatorView *_pointIndicator; // @synthesize _pointIndicator=__pointIndicator;
 @property(readonly, nonatomic) CAMFocusIndicatorView *_continuousIndicator; // @synthesize _continuousIndicator=__continuousIndicator;
@@ -84,6 +94,10 @@
 @property(readonly, nonatomic) __weak CAMTimelapseController *_timelapseController; // @synthesize _timelapseController=__timelapseController;
 @property(readonly, nonatomic) CUCaptureController *_captureController; // @synthesize _captureController=__captureController;
 @property(nonatomic) long long lightingType; // @synthesize lightingType=_lightingType;
+@property(retain, nonatomic) NSArray *cachedTextRegionResults; // @synthesize cachedTextRegionResults=_cachedTextRegionResults;
+@property(retain, nonatomic) CAMTextRegionResult *cachedSignificantTextRegionResult; // @synthesize cachedSignificantTextRegionResult=_cachedSignificantTextRegionResult;
+@property(readonly, nonatomic) UIImage *significantMRCIcon; // @synthesize significantMRCIcon=_significantMRCIcon;
+@property(readonly, copy, nonatomic) NSString *significantMRCTitle; // @synthesize significantMRCTitle=_significantMRCTitle;
 @property(retain, nonatomic) NSArray *cachedMRCResults; // @synthesize cachedMRCResults=_cachedMRCResults;
 @property(retain, nonatomic) CAMMachineReadableCodeResult *cachedSignificantMRCResult; // @synthesize cachedSignificantMRCResult=_cachedSignificantMRCResult;
 @property(nonatomic) long long stagePreviewStatus; // @synthesize stagePreviewStatus=_stagePreviewStatus;
@@ -112,7 +126,6 @@
 - (void)_captureOrientationChanged:(id)arg1;
 - (void)_handleAspectRatioToggleDoubleTap:(id)arg1;
 - (_Bool)_shouldDisableAspectRatioToggle;
-- (_Bool)_shouldAllowAspectRatioToggleForMode:(long long)arg1;
 - (void)_updatePreviewViewAspectMode;
 - (id)focusIndicatorViewBoundingViewForClippingFocusIndicatorView:(id)arg1;
 - (double)captureControllerDelayBeforeResettingFocusAndExposureAfterCapture:(id)arg1;
@@ -129,6 +142,10 @@
 @property(readonly, nonatomic, getter=isExposureLockedByUser) _Bool exposureLockedByUser;
 @property(readonly, nonatomic, getter=isFocusLockedByUser) _Bool focusLockedByUser;
 - (void)_setUserLockedFocusAndExposure:(_Bool)arg1 shouldAnimate:(_Bool)arg2;
+- (void)_setCinematicIsFixedFocusLocked:(_Bool)arg1 shouldAnimate:(_Bool)arg2;
+@property(readonly, nonatomic, getter=isFocusLockedOnCinematicSubject) _Bool focusLockedOnCinematicSubject;
+- (void)_setCinematicSubjectIsTrackingLocked:(_Bool)arg1 shouldAnimate:(_Bool)arg2;
+- (void)_hideAllCinematicIndicatorsAnimated:(_Bool)arg1;
 - (float)baselineExposureValueForCaptureController:(id)arg1;
 - (_Bool)captureControllerUserHasAdjustedExposureTargetBiasFromBaseline:(id)arg1;
 - (void)captureController:(id)arg1 didOutputExposureResult:(id)arg2;
@@ -158,34 +175,49 @@
 - (void)_lockFocusAndExposureAfterDelay:(double)arg1;
 - (void)_handleLongPressToLock:(id)arg1;
 - (void)_handleTapToFocusAndExpose:(id)arg1;
-- (void)_focusOnPoint:(struct CGPoint)arg1;
+- (void)_setCinematicFocusForMetadataObject:(id)arg1 atPoint:(struct CGPoint)arg2 useFixedOpticalFocus:(_Bool)arg3 useHardFocus:(_Bool)arg4;
+- (void)_focusOnPoint:(struct CGPoint)arg1 shouldShowFocusAndExposureIndicator:(_Bool)arg2;
 - (_Bool)_allowUserToChangeFocusAndExposure;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
-- (void)_updateMRCIndicators;
-- (void)_updateMRCIndicatorsIfNecessary;
+- (void)_updateTextRegionIndicators;
+- (_Bool)_shouldAllowTextRegionIndicators;
+- (void)_updateTextRegionIndicatorsIfNecessary;
+- (_Bool)_mrcIndicatorButtonContainsTouch:(id)arg1;
+- (void)_handleSignificantMRCIndicatorButtonTapped:(id)arg1;
+- (void)setSignificantMRCTitle:(id)arg1 icon:(id)arg2;
+- (void)_updateMRCIndicatorsAnimated:(_Bool)arg1;
+- (void)_updateMRCIndicatorsIfNecessaryAnimated:(_Bool)arg1;
 - (_Bool)_shouldAllowMRCIndicators;
 - (void)_hidePortraitModeTrackedSubjectIndicatorsAnimated:(_Bool)arg1;
 - (_Bool)_shouldUpdateIndicatorSizeFrom:(struct CGSize)arg1 to:(struct CGSize)arg2 minimumAreaChangeThreshold:(double)arg3 minimumAreaFractionChangeThreshold:(double)arg4;
 - (void)_resetFaceTracking;
 - (void)_updatePortraitModeViewsForResults:(id)arg1;
+- (void)_updateCinematicModeViewsForTrackingChange;
+- (id)_cinematicModeIndicatorViewAtPoint:(struct CGPoint)arg1;
+- (id)_groupIDForMetadataObject:(id)arg1;
+- (void)_subjectGroupResultsFromMetadataObjects:(id)arg1 nonFixedFocusResults:(id *)arg2 fixedFocusResults:(id *)arg3;
+- (void)_updateCinematicModeViewsForResults:(id)arg1;
+- (_Bool)_shouldShowCinematicModeIndicatorViews;
 - (_Bool)_shouldAllowFaceIndicators;
 - (void)_updateFaceIndicatorsForResults:(id)arg1;
-- (void)captureController:(id)arg1 didOutputFaceResults:(id)arg2 bodyResults:(id)arg3;
+- (void)captureController:(id)arg1 didOutputFaceResults:(id)arg2 headResults:(id)arg3 bodyResults:(id)arg4 salientObjectResults:(id)arg5;
 - (_Bool)_shouldSuppressNewFaces;
 - (void)_hideIndicatorsOfViewType:(id)arg1 animated:(_Bool)arg2;
 - (void)_fadeOutIndicatorsOfViewType:(id)arg1;
 - (void)_cancelDelayedFadeOutOfViewType:(id)arg1;
 - (void)_fadeOutIndicatorsOfViewType:(id)arg1 afterDelay:(double)arg2;
 - (_Bool)_isShowingIndicatorsOfType:(id)arg1;
-- (void)_updateIndicatorsForMetadataObjectResults:(id)arg1 viewType:(id)arg2 viewClass:(Class)arg3 frameCallback:(CDUnknownBlockType)arg4 minimumAreaChangeThreshold:(double)arg5 minimumAreaFractionChangeThreshold:(double)arg6;
+- (void)_updateIndicatorsForMetadataObjectResults:(id)arg1 viewType:(id)arg2 viewClass:(Class)arg3 geometryCallback:(CDUnknownBlockType)arg4 minimumAreaChangeThreshold:(double)arg5 minimumAreaFractionChangeThreshold:(double)arg6;
 - (void)_fadeOutAndRemoveIndicatorViewsOfType:(id)arg1 withDuration:(double)arg2;
 - (void)_fadeOutAndRemoveIndicatorView:(id)arg1 forType:(id)arg2 identifier:(id)arg3 withDuration:(double)arg4;
 - (void)_removeIndicatorViewForType:(id)arg1 identifier:(id)arg2;
-- (void)_addIndicatorView:(id)arg1 forType:(id)arg2 identifier:(id)arg3;
+- (void)_addIndicatorView:(id)arg1 forType:(id)arg2 identifier:(id)arg3 underlyingMetadataObject:(id)arg4;
 - (void)_updatePreviewIndicatorClippingStyleForGraphConfiguration:(id)arg1;
-- (void)_animateView:(id)arg1 withCenter:(struct CGPoint)arg2 bounds:(struct CGRect)arg3;
+- (void)_animateView:(id)arg1 type:(id)arg2 withCenter:(struct CGPoint)arg3 bounds:(struct CGRect)arg4 transform:(struct CGAffineTransform)arg5;
+- (double)_boundsAnimationDurationForViewType:(id)arg1;
+- (double)_centerAnimationDurationForViewType:(id)arg1;
 - (void)_fadeOutView:(id)arg1 withDuration:(double)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_fadeInView:(id)arg1 withDuration:(double)arg2;
 - (void)_scaleDownLockedPointOfInterest;
@@ -194,9 +226,13 @@
 - (long long)_largeStyleForPointIndicator;
 - (long long)_styleForPointIndicator;
 - (void)_showIndicatorAtPointOfInterest:(struct CGPoint)arg1;
+@property(readonly, nonatomic) struct CGPoint pointOfInterestInNormalizedCaptureDeviceSpace;
 - (void)_deactivateFocusIndicator:(id)arg1;
 - (void)_deactivateFocusIndicator:(id)arg1 afterDelay:(double)arg2;
 - (void)_activateFocusIndicator:(id)arg1;
+@property(readonly, nonatomic, getter=_isShowingPointIndicator) _Bool _showingPointIndicator;
+@property(readonly, nonatomic, getter=_isShowingContinuousIndicator) _Bool _showingContinuousIndicator;
+- (_Bool)_isShowingFocusIndicator:(id)arg1;
 - (void)_hideAllFocusIndicatorsAnimated:(_Bool)arg1;
 - (void)_cancelDelayedHideOrDeactivateForFocusIndicator:(id)arg1;
 - (void)_hideFocusIndicator:(id)arg1 animated:(_Bool)arg2;
@@ -221,6 +257,7 @@
 - (void)_willChangeGraphConfiguration;
 - (void)didChangeToGraphConfiguration:(id)arg1 animated:(_Bool)arg2;
 - (void)willChangeToGraphConfiguration:(id)arg1;
+@property(readonly, nonatomic) long long _devicePosition;
 @property(readonly, nonatomic) long long _device;
 @property(readonly, nonatomic) long long _mode;
 - (void)_createStageLightOverlayViewIfNeededWillAnimate:(_Bool)arg1;

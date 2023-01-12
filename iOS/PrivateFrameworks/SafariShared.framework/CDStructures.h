@@ -12,93 +12,47 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct BookmarkAndHistoryCompletionMatch {
-    unsigned int _field1;
-    long long _field2;
-    long long _field3;
-    unsigned long long _field4;
-    unsigned long long _field5;
-    id _field6;
-    float _field7;
+struct BookmarkAndHistoryCompletionMatch;
+
+struct HashMap<OpaqueFormAutoFillFrame *, std::unique_ptr<SafariShared::FrameMetadata>, WTF::DefaultHash<OpaqueFormAutoFillFrame *>, WTF::HashTraits<OpaqueFormAutoFillFrame *>, WTF::HashTraits<std::unique_ptr<SafariShared::FrameMetadata>>, WTF::HashTableTraits> {
+    struct HashTable<OpaqueFormAutoFillFrame *, WTF::KeyValuePair<OpaqueFormAutoFillFrame *, std::unique_ptr<SafariShared::FrameMetadata>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<OpaqueFormAutoFillFrame *, std::unique_ptr<SafariShared::FrameMetadata>>>, WTF::DefaultHash<OpaqueFormAutoFillFrame *>, WTF::HashMap<OpaqueFormAutoFillFrame *, std::unique_ptr<SafariShared::FrameMetadata>>::KeyValuePairTraits, WTF::HashTraits<OpaqueFormAutoFillFrame *>> m_impl;
 };
 
-struct DeletionPlan {
-    unordered_map_fcbaed0a _field1;
-    unordered_set_da619913 _field2;
-    unordered_set_da619913 _field3;
-    unordered_set_da619913 _field4;
-    id _field5;
-    id _field6;
-};
-
-struct FrameMetadata {
-    CDUnknownFunctionPointerType *_field1;
-    struct Vector<OpaqueJSValue *, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _field2;
-    struct OpaqueJSValue *_field3;
-    struct OpaqueJSValue *_field4;
-    struct OpaqueJSContext *_field5;
-    id _field6;
-    id _field7;
-};
-
-struct HashMap<OpaqueFormAutoFillFrame *, std::__1::unique_ptr<SafariShared::FrameMetadata, std::__1::default_delete<SafariShared::FrameMetadata>>, WTF::DefaultHash<OpaqueFormAutoFillFrame *>, WTF::HashTraits<OpaqueFormAutoFillFrame *>, WTF::HashTraits<std::__1::unique_ptr<SafariShared::FrameMetadata, std::__1::default_delete<SafariShared::FrameMetadata>>>> {
-    struct HashTable<OpaqueFormAutoFillFrame *, WTF::KeyValuePair<OpaqueFormAutoFillFrame *, std::__1::unique_ptr<SafariShared::FrameMetadata, std::__1::default_delete<SafariShared::FrameMetadata>>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<OpaqueFormAutoFillFrame *, std::__1::unique_ptr<SafariShared::FrameMetadata, std::__1::default_delete<SafariShared::FrameMetadata>>>>, WTF::DefaultHash<OpaqueFormAutoFillFrame *>, WTF::HashMap<OpaqueFormAutoFillFrame *, std::__1::unique_ptr<SafariShared::FrameMetadata, std::__1::default_delete<SafariShared::FrameMetadata>>, WTF::DefaultHash<OpaqueFormAutoFillFrame *>, WTF::HashTraits<OpaqueFormAutoFillFrame *>, WTF::HashTraits<std::__1::unique_ptr<SafariShared::FrameMetadata, std::__1::default_delete<SafariShared::FrameMetadata>>>>::KeyValuePairTraits, WTF::HashTraits<OpaqueFormAutoFillFrame *>> m_impl;
-};
-
-struct HashTable<OpaqueFormAutoFillFrame *, WTF::KeyValuePair<OpaqueFormAutoFillFrame *, std::__1::unique_ptr<SafariShared::FrameMetadata, std::__1::default_delete<SafariShared::FrameMetadata>>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<OpaqueFormAutoFillFrame *, std::__1::unique_ptr<SafariShared::FrameMetadata, std::__1::default_delete<SafariShared::FrameMetadata>>>>, WTF::DefaultHash<OpaqueFormAutoFillFrame *>, WTF::HashMap<OpaqueFormAutoFillFrame *, std::__1::unique_ptr<SafariShared::FrameMetadata, std::__1::default_delete<SafariShared::FrameMetadata>>, WTF::DefaultHash<OpaqueFormAutoFillFrame *>, WTF::HashTraits<OpaqueFormAutoFillFrame *>, WTF::HashTraits<std::__1::unique_ptr<SafariShared::FrameMetadata, std::__1::default_delete<SafariShared::FrameMetadata>>>>::KeyValuePairTraits, WTF::HashTraits<OpaqueFormAutoFillFrame *>> {
-    struct KeyValuePair<OpaqueFormAutoFillFrame *, std::__1::unique_ptr<SafariShared::FrameMetadata, std::__1::default_delete<SafariShared::FrameMetadata>>> *m_table;
+struct HashTable<OpaqueFormAutoFillFrame *, WTF::KeyValuePair<OpaqueFormAutoFillFrame *, std::unique_ptr<SafariShared::FrameMetadata>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<OpaqueFormAutoFillFrame *, std::unique_ptr<SafariShared::FrameMetadata>>>, WTF::DefaultHash<OpaqueFormAutoFillFrame *>, WTF::HashMap<OpaqueFormAutoFillFrame *, std::unique_ptr<SafariShared::FrameMetadata>>::KeyValuePairTraits, WTF::HashTraits<OpaqueFormAutoFillFrame *>> {
+    union {
+        void *m_table;
+        unsigned int *m_tableForLLDB;
+    } ;
 };
 
 struct HashTable<SafariShared::URLCompletionEntryKey, SafariShared::URLCompletionEntry, SafariShared::URLCompletionEntryKeyExtractor, SafariShared::URLCompletionEntryHash, SafariShared::URLCompletionEntryValueTraits, SafariShared::URLCompletionEntryKeyTraits> {
-    struct URLCompletionEntry *m_table;
+    union {
+        struct URLCompletionEntry *m_table;
+        unsigned int *m_tableForLLDB;
+    } ;
 };
 
-struct HistoryURLCompletionItem {
-    struct atomic<unsigned int> _field1;
-    long long _field2;
-    long long _field3;
-    long long _field4;
-    struct vector<WTF::RefPtr<SafariShared::HistoryURLCompletionItem, WTF::DumbPtrTraits<SafariShared::HistoryURLCompletionItem>>, std::__1::allocator<WTF::RefPtr<SafariShared::HistoryURLCompletionItem, WTF::DumbPtrTraits<SafariShared::HistoryURLCompletionItem>>>> _field5;
-    struct HistoryURLCompletionItem *_field6;
-    id _field7;
-    id _field8;
-    double _field9;
-    int _field10;
-    struct vector<int, std::__1::allocator<int>> _field11;
-    struct vector<int, std::__1::allocator<int>> _field12;
-    id _field13;
-    _Bool _field14;
-    _Bool _field15;
-    _Bool _field16;
-};
+struct HistoryURLCompletionItem;
 
 struct JSRetainPtr<OpaqueJSContext *> {
     struct OpaqueJSContext *m_ptr;
 };
 
-struct KeyValuePair<OpaqueFormAutoFillFrame *, std::__1::unique_ptr<SafariShared::FrameMetadata, std::__1::default_delete<SafariShared::FrameMetadata>>>;
-
 struct LatestVisitInformationMap {
-    struct unordered_map<long long, SafariShared::LatestVisitInformation, std::__1::hash<long long>, std::__1::equal_to<long long>, std::__1::allocator<std::__1::pair<const long long, SafariShared::LatestVisitInformation>>> _map;
+    struct unordered_map<long long, SafariShared::LatestVisitInformation, std::hash<long long>, std::equal_to<long long>, std::allocator<std::pair<const long long, SafariShared::LatestVisitInformation>>> _map;
 };
 
 struct OpaqueJSContext;
 
-struct OpaqueJSValue;
-
-struct Ref<SafariShared::BookmarkAndHistoryCompletionMatch, WTF::DumbPtrTraits<SafariShared::BookmarkAndHistoryCompletionMatch>> {
-    struct BookmarkAndHistoryCompletionMatch *_field1;
-};
-
-struct Ref<SafariShared::HistoryURLCompletionItem, WTF::DumbPtrTraits<SafariShared::HistoryURLCompletionItem>> {
+struct Ref<SafariShared::HistoryURLCompletionItem, WTF::RawPtrTraits<SafariShared::HistoryURLCompletionItem>> {
     struct HistoryURLCompletionItem *_field1;
 };
 
-struct RefPtr<SafariShared::BookmarkAndHistoryCompletionMatch, WTF::DumbPtrTraits<SafariShared::BookmarkAndHistoryCompletionMatch>> {
+struct RefPtr<SafariShared::BookmarkAndHistoryCompletionMatch, WTF::RawPtrTraits<SafariShared::BookmarkAndHistoryCompletionMatch>, WTF::DefaultRefDerefTraits<SafariShared::BookmarkAndHistoryCompletionMatch>> {
     struct BookmarkAndHistoryCompletionMatch *m_ptr;
 };
 
-struct RefPtr<SafariShared::HistoryURLCompletionItem, WTF::DumbPtrTraits<SafariShared::HistoryURLCompletionItem>> {
+struct RefPtr<SafariShared::HistoryURLCompletionItem, WTF::RawPtrTraits<SafariShared::HistoryURLCompletionItem>, WTF::DefaultRefDerefTraits<SafariShared::HistoryURLCompletionItem>> {
     struct HistoryURLCompletionItem *m_ptr;
 };
 
@@ -124,19 +78,7 @@ struct URLCompletionEntry;
 
 struct URLCompletionEntryMap {
     struct HashTable<SafariShared::URLCompletionEntryKey, SafariShared::URLCompletionEntry, SafariShared::URLCompletionEntryKeyExtractor, SafariShared::URLCompletionEntryHash, SafariShared::URLCompletionEntryValueTraits, SafariShared::URLCompletionEntryKeyTraits> _map;
-    struct unordered_map<WTF::RetainPtr<NSString>, std::__1::unique_ptr<SafariShared::URLCompletionEntryExtras, std::__1::default_delete<SafariShared::URLCompletionEntryExtras>>, std::__1::hash<RetainPtr<NSString>>, std::__1::equal_to<RetainPtr<NSString>>, std::__1::allocator<std::__1::pair<const WTF::RetainPtr<NSString>, std::__1::unique_ptr<SafariShared::URLCompletionEntryExtras, std::__1::default_delete<SafariShared::URLCompletionEntryExtras>>>>> _extras;
-};
-
-struct Vector<OpaqueJSValue *, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> {
-    struct OpaqueJSValue **_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-};
-
-struct Vector<WTF::RefPtr<SafariShared::BookmarkAndHistoryCompletionMatch, WTF::DumbPtrTraits<SafariShared::BookmarkAndHistoryCompletionMatch>>, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> {
-    struct RefPtr<SafariShared::BookmarkAndHistoryCompletionMatch, WTF::DumbPtrTraits<SafariShared::BookmarkAndHistoryCompletionMatch>> *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
+    struct unordered_map<WTF::RetainPtr<NSString>, std::unique_ptr<SafariShared::URLCompletionEntryExtras>, std::hash<RetainPtr<NSString>>, std::equal_to<RetainPtr<NSString>>, std::allocator<std::pair<const WTF::RetainPtr<NSString>, std::unique_ptr<SafariShared::URLCompletionEntryExtras>>>> _extras;
 };
 
 struct Vector<double, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> {
@@ -151,12 +93,6 @@ struct Vector<id<WBSURLCompletionMatchData>, 0, WTF::CrashOnOverflow, 16, WTF::F
     unsigned int m_size;
 };
 
-struct Vector<int, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> {
-    int *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-};
-
 struct WBSHistoryItemVisitCountScoresStorage;
 
 struct _CCECCryptor;
@@ -167,11 +103,12 @@ struct _HistoryStreamedItem {
     long long _field3;
     long long _field4;
     long long _field5;
-    char *_field6;
-    int *_field7;
-    unsigned long long _field8;
-    int *_field9;
-    unsigned long long _field10;
+    long long _field6;
+    char *_field7;
+    int *_field8;
+    unsigned long long _field9;
+    int *_field10;
+    unsigned long long _field11;
 };
 
 struct _HistoryStreamedMatchData {
@@ -180,8 +117,10 @@ struct _HistoryStreamedMatchData {
     void *_field3;
     long long _field4;
     int _field5;
-    unsigned char _field6;
+    long long _field6;
     unsigned char _field7;
+    unsigned char _field8;
+    unsigned char _field9;
 };
 
 struct _HistoryStreamedMatchEntry {
@@ -189,6 +128,7 @@ struct _HistoryStreamedMatchEntry {
     char *_field2;
     char *_field3;
     float _field4;
+    long long _field5;
 };
 
 struct _HistoryStreamedTombstone {
@@ -226,56 +166,22 @@ struct _NSRange {
     unsigned long long length;
 };
 
-struct __hash_node_base<std::__1::__hash_node<long long, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<long long, void *>*> *__next_;
-};
-
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>, void *>*> *__next_;
-};
-
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<WTF::RetainPtr<NSString>, std::__1::unique_ptr<SafariShared::URLCompletionEntryExtras, std::__1::default_delete<SafariShared::URLCompletionEntryExtras>>>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<WTF::RetainPtr<NSString>, std::__1::unique_ptr<SafariShared::URLCompletionEntryExtras, std::__1::default_delete<SafariShared::URLCompletionEntryExtras>>>, void *>*> *__next_;
-};
-
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, SafariShared::LatestVisitInformation>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, SafariShared::LatestVisitInformation>, void *>*> *__next_;
-};
-
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, WBSHistoryItem *>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, WBSHistoryItem *>, void *>*> *__next_;
-};
-
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, WBSHistoryVisit *__weak>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, WBSHistoryVisit *__weak>, void *>*> *__next_;
-};
-
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, long long>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, long long>, void *>*> *__next_;
-};
-
 struct atomic<LoadingStatus> {
-    struct __cxx_atomic_impl<LoadingStatus, std::__1::__cxx_atomic_base_impl<LoadingStatus>> {
+    struct __cxx_atomic_impl<LoadingStatus, std::__cxx_atomic_base_impl<LoadingStatus>> {
         _Atomic long long __a_value;
     } __a_;
 };
 
 struct atomic<WBSHistoryServiceStoreState> {
-    struct __cxx_atomic_impl<WBSHistoryServiceStoreState, std::__1::__cxx_atomic_base_impl<WBSHistoryServiceStoreState>> {
+    struct __cxx_atomic_impl<WBSHistoryServiceStoreState, std::__cxx_atomic_base_impl<WBSHistoryServiceStoreState>> {
         _Atomic long long __a_value;
     } __a_;
 };
 
 struct atomic<bool> {
-    struct __cxx_atomic_impl<bool, std::__1::__cxx_atomic_base_impl<bool>> {
+    struct __cxx_atomic_impl<bool, std::__cxx_atomic_base_impl<bool>> {
         _Atomic _Bool __a_value;
     } __a_;
-};
-
-struct atomic<unsigned int> {
-    struct __cxx_atomic_impl<unsigned int, std::__1::__cxx_atomic_base_impl<unsigned int>> {
-        _Atomic unsigned int _field1;
-    } _field1;
 };
 
 struct cc_blinding_keys_ctx {
@@ -284,11 +190,11 @@ struct cc_blinding_keys_ctx {
     struct _CCECCryptor *_field3;
 };
 
-struct duration<long long, std::__1::ratio<1, 1000000000>> {
+struct duration<long long, std::ratio<1, 1000000000>> {
     long long __rep_;
 };
 
-struct duration<long long, std::__1::ratio<1, 1000>> {
+struct duration<long long, std::ratio<1, 1000>> {
     long long __rep_;
 };
 
@@ -296,236 +202,234 @@ struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
 
-struct time_point<std::__1::chrono::steady_clock, std::__1::chrono::duration<long long, std::__1::ratio<1, 1000000000>>> {
-    struct duration<long long, std::__1::ratio<1, 1000000000>> __d_;
+struct time_point<std::chrono::steady_clock, std::chrono::duration<long long, std::ratio<1, 1000000000>>> {
+    struct duration<long long, std::ratio<1, 1000000000>> __d_;
 };
 
-struct unique_ptr<SafariShared::SuddenTerminationDisabler, std::__1::default_delete<SafariShared::SuddenTerminationDisabler>> {
-    struct __compressed_pair<SafariShared::SuddenTerminationDisabler *, std::__1::default_delete<SafariShared::SuddenTerminationDisabler>> {
+struct unique_ptr<SafariShared::SuddenTerminationDisabler, std::default_delete<SafariShared::SuddenTerminationDisabler>> {
+    struct __compressed_pair<SafariShared::SuddenTerminationDisabler *, std::default_delete<SafariShared::SuddenTerminationDisabler>> {
         struct SuddenTerminationDisabler *__value_;
     } __ptr_;
 };
 
-struct unique_ptr<SafariShared::_HistoryStreamedMatchData, std::__1::default_delete<SafariShared::_HistoryStreamedMatchData>> {
-    struct __compressed_pair<SafariShared::_HistoryStreamedMatchData *, std::__1::default_delete<SafariShared::_HistoryStreamedMatchData>> {
+struct unique_ptr<SafariShared::_HistoryStreamedMatchData, std::default_delete<SafariShared::_HistoryStreamedMatchData>> {
+    struct __compressed_pair<SafariShared::_HistoryStreamedMatchData *, std::default_delete<SafariShared::_HistoryStreamedMatchData>> {
         struct _HistoryStreamedMatchData *__value_;
     } __ptr_;
 };
 
-struct unique_ptr<SafariShared::_HistoryStreamedMatchEntry, std::__1::default_delete<SafariShared::_HistoryStreamedMatchEntry>> {
-    struct __compressed_pair<SafariShared::_HistoryStreamedMatchEntry *, std::__1::default_delete<SafariShared::_HistoryStreamedMatchEntry>> {
+struct unique_ptr<SafariShared::_HistoryStreamedMatchEntry, std::default_delete<SafariShared::_HistoryStreamedMatchEntry>> {
+    struct __compressed_pair<SafariShared::_HistoryStreamedMatchEntry *, std::default_delete<SafariShared::_HistoryStreamedMatchEntry>> {
         struct _HistoryStreamedMatchEntry *__value_;
     } __ptr_;
 };
 
-struct unique_ptr<WBSHistoryItemVisitCountScoresStorage, std::__1::default_delete<WBSHistoryItemVisitCountScoresStorage>> {
-    struct __compressed_pair<WBSHistoryItemVisitCountScoresStorage *, std::__1::default_delete<WBSHistoryItemVisitCountScoresStorage>> {
+struct unique_ptr<WBSHistoryItemVisitCountScoresStorage, std::default_delete<WBSHistoryItemVisitCountScoresStorage>> {
+    struct __compressed_pair<WBSHistoryItemVisitCountScoresStorage *, std::default_delete<WBSHistoryItemVisitCountScoresStorage>> {
         struct WBSHistoryItemVisitCountScoresStorage *__value_;
     } __ptr_;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<long long, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<long long, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<long long, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<long long, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<long long, void *>*> **__value_;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<long long, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<long long, void *>*>*>> {
+struct unique_ptr<std::__hash_node_base<std::__hash_node<long long, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<long long, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<long long, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<long long, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<long long, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<long long, void *>*>*>> {
                 unsigned long long __value_;
             } __data_;
         } __value_;
     } __ptr_;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>, void *>*> **__value_;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>, void *>*>*>> {
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>, void *>*>*>> {
                 unsigned long long __value_;
             } __data_;
         } __value_;
     } __ptr_;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<WTF::RetainPtr<NSString>, std::__1::unique_ptr<SafariShared::URLCompletionEntryExtras, std::__1::default_delete<SafariShared::URLCompletionEntryExtras>>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<WTF::RetainPtr<NSString>, std::__1::unique_ptr<SafariShared::URLCompletionEntryExtras, std::__1::default_delete<SafariShared::URLCompletionEntryExtras>>>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<WTF::RetainPtr<NSString>, std::__1::unique_ptr<SafariShared::URLCompletionEntryExtras, std::__1::default_delete<SafariShared::URLCompletionEntryExtras>>>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<WTF::RetainPtr<NSString>, std::__1::unique_ptr<SafariShared::URLCompletionEntryExtras, std::__1::default_delete<SafariShared::URLCompletionEntryExtras>>>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<WTF::RetainPtr<NSString>, std::__1::unique_ptr<SafariShared::URLCompletionEntryExtras, std::__1::default_delete<SafariShared::URLCompletionEntryExtras>>>, void *>*> **__value_;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<WTF::RetainPtr<NSString>, std::__1::unique_ptr<SafariShared::URLCompletionEntryExtras, std::__1::default_delete<SafariShared::URLCompletionEntryExtras>>>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<WTF::RetainPtr<NSString>, std::__1::unique_ptr<SafariShared::URLCompletionEntryExtras, std::__1::default_delete<SafariShared::URLCompletionEntryExtras>>>, void *>*>*>> {
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<WTF::RetainPtr<NSString>, std::unique_ptr<SafariShared::URLCompletionEntryExtras>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<WTF::RetainPtr<NSString>, std::unique_ptr<SafariShared::URLCompletionEntryExtras>>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<WTF::RetainPtr<NSString>, std::unique_ptr<SafariShared::URLCompletionEntryExtras>>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<WTF::RetainPtr<NSString>, std::unique_ptr<SafariShared::URLCompletionEntryExtras>>, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<WTF::RetainPtr<NSString>, std::unique_ptr<SafariShared::URLCompletionEntryExtras>>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<WTF::RetainPtr<NSString>, std::unique_ptr<SafariShared::URLCompletionEntryExtras>>, void *>*>*>> {
                 unsigned long long __value_;
             } __data_;
         } __value_;
     } __ptr_;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, SafariShared::LatestVisitInformation>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, SafariShared::LatestVisitInformation>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, SafariShared::LatestVisitInformation>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, SafariShared::LatestVisitInformation>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, SafariShared::LatestVisitInformation>, void *>*> **__value_;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, SafariShared::LatestVisitInformation>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, SafariShared::LatestVisitInformation>, void *>*>*>> {
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, SafariShared::LatestVisitInformation>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, SafariShared::LatestVisitInformation>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, SafariShared::LatestVisitInformation>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, SafariShared::LatestVisitInformation>, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, SafariShared::LatestVisitInformation>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, SafariShared::LatestVisitInformation>, void *>*>*>> {
                 unsigned long long __value_;
             } __data_;
         } __value_;
     } __ptr_;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, WBSHistoryItem *>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, WBSHistoryItem *>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, WBSHistoryItem *>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, WBSHistoryItem *>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, WBSHistoryItem *>, void *>*> **__value_;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, WBSHistoryItem *>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, WBSHistoryItem *>, void *>*>*>> {
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, WBSHistoryItem *>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, WBSHistoryItem *>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, WBSHistoryItem *>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, WBSHistoryItem *>, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, WBSHistoryItem *>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, WBSHistoryItem *>, void *>*>*>> {
                 unsigned long long __value_;
             } __data_;
         } __value_;
     } __ptr_;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, WBSHistoryVisit *__weak>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, WBSHistoryVisit *__weak>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, WBSHistoryVisit *__weak>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, WBSHistoryVisit *__weak>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, WBSHistoryVisit *__weak>, void *>*> **__value_;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, WBSHistoryVisit *__weak>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, WBSHistoryVisit *__weak>, void *>*>*>> {
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, WBSHistoryVisit *__weak>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, WBSHistoryVisit *__weak>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, WBSHistoryVisit *__weak>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, WBSHistoryVisit *__weak>, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, WBSHistoryVisit *__weak>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, WBSHistoryVisit *__weak>, void *>*>*>> {
                 unsigned long long __value_;
             } __data_;
         } __value_;
     } __ptr_;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, long long>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, long long>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, long long>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, long long>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, long long>, void *>*> **__value_;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, long long>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, long long>, void *>*>*>> {
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, long long>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, long long>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, long long>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, long long>, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, long long>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, long long>, void *>*>*>> {
                 unsigned long long __value_;
             } __data_;
         } __value_;
     } __ptr_;
 };
 
-struct unique_ptr<std::__1::vector<WTF::RefPtr<SafariShared::HistoryURLCompletionItem, WTF::DumbPtrTraits<SafariShared::HistoryURLCompletionItem>>, std::__1::allocator<WTF::RefPtr<SafariShared::HistoryURLCompletionItem, WTF::DumbPtrTraits<SafariShared::HistoryURLCompletionItem>>>>, std::__1::default_delete<std::__1::vector<WTF::RefPtr<SafariShared::HistoryURLCompletionItem, WTF::DumbPtrTraits<SafariShared::HistoryURLCompletionItem>>, std::__1::allocator<WTF::RefPtr<SafariShared::HistoryURLCompletionItem, WTF::DumbPtrTraits<SafariShared::HistoryURLCompletionItem>>>>>> {
-    struct __compressed_pair<std::__1::vector<WTF::RefPtr<SafariShared::HistoryURLCompletionItem, WTF::DumbPtrTraits<SafariShared::HistoryURLCompletionItem>>, std::__1::allocator<WTF::RefPtr<SafariShared::HistoryURLCompletionItem, WTF::DumbPtrTraits<SafariShared::HistoryURLCompletionItem>>>>*, std::__1::default_delete<std::__1::vector<WTF::RefPtr<SafariShared::HistoryURLCompletionItem, WTF::DumbPtrTraits<SafariShared::HistoryURLCompletionItem>>, std::__1::allocator<WTF::RefPtr<SafariShared::HistoryURLCompletionItem, WTF::DumbPtrTraits<SafariShared::HistoryURLCompletionItem>>>>>> {
-        struct vector<WTF::RefPtr<SafariShared::HistoryURLCompletionItem, WTF::DumbPtrTraits<SafariShared::HistoryURLCompletionItem>>, std::__1::allocator<WTF::RefPtr<SafariShared::HistoryURLCompletionItem, WTF::DumbPtrTraits<SafariShared::HistoryURLCompletionItem>>>> *__value_;
+struct unique_ptr<std::vector<WTF::RefPtr<SafariShared::HistoryURLCompletionItem>>, std::default_delete<std::vector<WTF::RefPtr<SafariShared::HistoryURLCompletionItem>>>> {
+    struct __compressed_pair<std::vector<WTF::RefPtr<SafariShared::HistoryURLCompletionItem>>*, std::default_delete<std::vector<WTF::RefPtr<SafariShared::HistoryURLCompletionItem>>>> {
+        void *__value_;
     } __ptr_;
 };
 
-struct unordered_map<WTF::RetainPtr<NSString>, std::__1::unique_ptr<SafariShared::URLCompletionEntryExtras, std::__1::default_delete<SafariShared::URLCompletionEntryExtras>>, std::__1::hash<RetainPtr<NSString>>, std::__1::equal_to<RetainPtr<NSString>>, std::__1::allocator<std::__1::pair<const WTF::RetainPtr<NSString>, std::__1::unique_ptr<SafariShared::URLCompletionEntryExtras, std::__1::default_delete<SafariShared::URLCompletionEntryExtras>>>>> {
-    struct __hash_table<std::__1::__hash_value_type<WTF::RetainPtr<NSString>, std::__1::unique_ptr<SafariShared::URLCompletionEntryExtras, std::__1::default_delete<SafariShared::URLCompletionEntryExtras>>>, std::__1::__unordered_map_hasher<WTF::RetainPtr<NSString>, std::__1::__hash_value_type<WTF::RetainPtr<NSString>, std::__1::unique_ptr<SafariShared::URLCompletionEntryExtras, std::__1::default_delete<SafariShared::URLCompletionEntryExtras>>>, std::__1::hash<RetainPtr<NSString>>, true>, std::__1::__unordered_map_equal<WTF::RetainPtr<NSString>, std::__1::__hash_value_type<WTF::RetainPtr<NSString>, std::__1::unique_ptr<SafariShared::URLCompletionEntryExtras, std::__1::default_delete<SafariShared::URLCompletionEntryExtras>>>, std::__1::equal_to<RetainPtr<NSString>>, true>, std::__1::allocator<std::__1::__hash_value_type<WTF::RetainPtr<NSString>, std::__1::unique_ptr<SafariShared::URLCompletionEntryExtras, std::__1::default_delete<SafariShared::URLCompletionEntryExtras>>>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<WTF::RetainPtr<NSString>, std::__1::unique_ptr<SafariShared::URLCompletionEntryExtras, std::__1::default_delete<SafariShared::URLCompletionEntryExtras>>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<WTF::RetainPtr<NSString>, std::__1::unique_ptr<SafariShared::URLCompletionEntryExtras, std::__1::default_delete<SafariShared::URLCompletionEntryExtras>>>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<WTF::RetainPtr<NSString>, std::__1::unique_ptr<SafariShared::URLCompletionEntryExtras, std::__1::default_delete<SafariShared::URLCompletionEntryExtras>>>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<WTF::RetainPtr<NSString>, std::__1::unique_ptr<SafariShared::URLCompletionEntryExtras, std::__1::default_delete<SafariShared::URLCompletionEntryExtras>>>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<WTF::RetainPtr<NSString>, std::__1::unique_ptr<SafariShared::URLCompletionEntryExtras, std::__1::default_delete<SafariShared::URLCompletionEntryExtras>>>, void *>*> __value_;
+struct unordered_map<WTF::RetainPtr<NSString>, std::unique_ptr<SafariShared::URLCompletionEntryExtras>, std::hash<RetainPtr<NSString>>, std::equal_to<RetainPtr<NSString>>, std::allocator<std::pair<const WTF::RetainPtr<NSString>, std::unique_ptr<SafariShared::URLCompletionEntryExtras>>>> {
+    struct __hash_table<std::__hash_value_type<WTF::RetainPtr<NSString>, std::unique_ptr<SafariShared::URLCompletionEntryExtras>>, std::__unordered_map_hasher<WTF::RetainPtr<NSString>, std::__hash_value_type<WTF::RetainPtr<NSString>, std::unique_ptr<SafariShared::URLCompletionEntryExtras>>, std::hash<RetainPtr<NSString>>, std::equal_to<RetainPtr<NSString>>, true>, std::__unordered_map_equal<WTF::RetainPtr<NSString>, std::__hash_value_type<WTF::RetainPtr<NSString>, std::unique_ptr<SafariShared::URLCompletionEntryExtras>>, std::equal_to<RetainPtr<NSString>>, std::hash<RetainPtr<NSString>>, true>, std::allocator<std::__hash_value_type<WTF::RetainPtr<NSString>, std::unique_ptr<SafariShared::URLCompletionEntryExtras>>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<WTF::RetainPtr<NSString>, std::unique_ptr<SafariShared::URLCompletionEntryExtras>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<WTF::RetainPtr<NSString>, std::unique_ptr<SafariShared::URLCompletionEntryExtras>>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<WTF::RetainPtr<NSString>, std::unique_ptr<SafariShared::URLCompletionEntryExtras>>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<WTF::RetainPtr<NSString>, std::unique_ptr<SafariShared::URLCompletionEntryExtras>>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<WTF::RetainPtr<NSString>, std::unique_ptr<SafariShared::URLCompletionEntryExtras>>, void *>*> {
+                void *__next_;
+            } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<WTF::RetainPtr<NSString>, std::__1::__hash_value_type<WTF::RetainPtr<NSString>, std::__1::unique_ptr<SafariShared::URLCompletionEntryExtras, std::__1::default_delete<SafariShared::URLCompletionEntryExtras>>>, std::__1::hash<RetainPtr<NSString>>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<WTF::RetainPtr<NSString>, std::__hash_value_type<WTF::RetainPtr<NSString>, std::unique_ptr<SafariShared::URLCompletionEntryExtras>>, std::hash<RetainPtr<NSString>>, std::equal_to<RetainPtr<NSString>>, true>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<WTF::RetainPtr<NSString>, std::__1::__hash_value_type<WTF::RetainPtr<NSString>, std::__1::unique_ptr<SafariShared::URLCompletionEntryExtras, std::__1::default_delete<SafariShared::URLCompletionEntryExtras>>>, std::__1::equal_to<RetainPtr<NSString>>, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<WTF::RetainPtr<NSString>, std::__hash_value_type<WTF::RetainPtr<NSString>, std::unique_ptr<SafariShared::URLCompletionEntryExtras>>, std::equal_to<RetainPtr<NSString>>, std::hash<RetainPtr<NSString>>, true>> {
             float __value_;
         } __p3_;
     } __table_;
 };
 
-struct unordered_map<long long, SafariShared::LatestVisitInformation, std::__1::hash<long long>, std::__1::equal_to<long long>, std::__1::allocator<std::__1::pair<const long long, SafariShared::LatestVisitInformation>>> {
-    struct __hash_table<std::__1::__hash_value_type<long long, SafariShared::LatestVisitInformation>, std::__1::__unordered_map_hasher<long long, std::__1::__hash_value_type<long long, SafariShared::LatestVisitInformation>, std::__1::hash<long long>, true>, std::__1::__unordered_map_equal<long long, std::__1::__hash_value_type<long long, SafariShared::LatestVisitInformation>, std::__1::equal_to<long long>, true>, std::__1::allocator<std::__1::__hash_value_type<long long, SafariShared::LatestVisitInformation>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, SafariShared::LatestVisitInformation>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, SafariShared::LatestVisitInformation>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, SafariShared::LatestVisitInformation>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<long long, SafariShared::LatestVisitInformation>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, SafariShared::LatestVisitInformation>, void *>*> __value_;
+struct unordered_map<long long, SafariShared::LatestVisitInformation, std::hash<long long>, std::equal_to<long long>, std::allocator<std::pair<const long long, SafariShared::LatestVisitInformation>>> {
+    struct __hash_table<std::__hash_value_type<long long, SafariShared::LatestVisitInformation>, std::__unordered_map_hasher<long long, std::__hash_value_type<long long, SafariShared::LatestVisitInformation>, std::hash<long long>, std::equal_to<long long>, true>, std::__unordered_map_equal<long long, std::__hash_value_type<long long, SafariShared::LatestVisitInformation>, std::equal_to<long long>, std::hash<long long>, true>, std::allocator<std::__hash_value_type<long long, SafariShared::LatestVisitInformation>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, SafariShared::LatestVisitInformation>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, SafariShared::LatestVisitInformation>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, SafariShared::LatestVisitInformation>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<long long, SafariShared::LatestVisitInformation>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<long long, SafariShared::LatestVisitInformation>, void *>*> {
+                void *__next_;
+            } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<long long, std::__1::__hash_value_type<long long, SafariShared::LatestVisitInformation>, std::__1::hash<long long>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<long long, std::__hash_value_type<long long, SafariShared::LatestVisitInformation>, std::hash<long long>, std::equal_to<long long>, true>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<long long, std::__1::__hash_value_type<long long, SafariShared::LatestVisitInformation>, std::__1::equal_to<long long>, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<long long, std::__hash_value_type<long long, SafariShared::LatestVisitInformation>, std::equal_to<long long>, std::hash<long long>, true>> {
             float __value_;
         } __p3_;
     } __table_;
 };
 
-struct unordered_map<long long, WBSHistoryItem *, std::__1::hash<long long>, std::__1::equal_to<long long>, std::__1::allocator<std::__1::pair<const long long, WBSHistoryItem *>>> {
-    struct __hash_table<std::__1::__hash_value_type<long long, WBSHistoryItem *>, std::__1::__unordered_map_hasher<long long, std::__1::__hash_value_type<long long, WBSHistoryItem *>, std::__1::hash<long long>, true>, std::__1::__unordered_map_equal<long long, std::__1::__hash_value_type<long long, WBSHistoryItem *>, std::__1::equal_to<long long>, true>, std::__1::allocator<std::__1::__hash_value_type<long long, WBSHistoryItem *>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, WBSHistoryItem *>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, WBSHistoryItem *>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, WBSHistoryItem *>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<long long, WBSHistoryItem *>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, WBSHistoryItem *>, void *>*> __value_;
+struct unordered_map<long long, WBSHistoryItem *, std::hash<long long>, std::equal_to<long long>, std::allocator<std::pair<const long long, WBSHistoryItem *>>> {
+    struct __hash_table<std::__hash_value_type<long long, WBSHistoryItem *>, std::__unordered_map_hasher<long long, std::__hash_value_type<long long, WBSHistoryItem *>, std::hash<long long>, std::equal_to<long long>, true>, std::__unordered_map_equal<long long, std::__hash_value_type<long long, WBSHistoryItem *>, std::equal_to<long long>, std::hash<long long>, true>, std::allocator<std::__hash_value_type<long long, WBSHistoryItem *>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, WBSHistoryItem *>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, WBSHistoryItem *>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, WBSHistoryItem *>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<long long, WBSHistoryItem *>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<long long, WBSHistoryItem *>, void *>*> {
+                void *__next_;
+            } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<long long, std::__1::__hash_value_type<long long, WBSHistoryItem *>, std::__1::hash<long long>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<long long, std::__hash_value_type<long long, WBSHistoryItem *>, std::hash<long long>, std::equal_to<long long>, true>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<long long, std::__1::__hash_value_type<long long, WBSHistoryItem *>, std::__1::equal_to<long long>, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<long long, std::__hash_value_type<long long, WBSHistoryItem *>, std::equal_to<long long>, std::hash<long long>, true>> {
             float __value_;
         } __p3_;
     } __table_;
 };
 
-struct unordered_map<long long, WBSHistoryVisit *__weak, std::__1::hash<long long>, std::__1::equal_to<long long>, std::__1::allocator<std::__1::pair<const long long, WBSHistoryVisit *__weak>>> {
-    struct __hash_table<std::__1::__hash_value_type<long long, WBSHistoryVisit *__weak>, std::__1::__unordered_map_hasher<long long, std::__1::__hash_value_type<long long, WBSHistoryVisit *__weak>, std::__1::hash<long long>, true>, std::__1::__unordered_map_equal<long long, std::__1::__hash_value_type<long long, WBSHistoryVisit *__weak>, std::__1::equal_to<long long>, true>, std::__1::allocator<std::__1::__hash_value_type<long long, WBSHistoryVisit *__weak>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, WBSHistoryVisit *__weak>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, WBSHistoryVisit *__weak>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, WBSHistoryVisit *__weak>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<long long, WBSHistoryVisit *__weak>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, WBSHistoryVisit *__weak>, void *>*> __value_;
+struct unordered_map<long long, WBSHistoryVisit *__weak, std::hash<long long>, std::equal_to<long long>, std::allocator<std::pair<const long long, WBSHistoryVisit *__weak>>> {
+    struct __hash_table<std::__hash_value_type<long long, WBSHistoryVisit *__weak>, std::__unordered_map_hasher<long long, std::__hash_value_type<long long, WBSHistoryVisit *__weak>, std::hash<long long>, std::equal_to<long long>, true>, std::__unordered_map_equal<long long, std::__hash_value_type<long long, WBSHistoryVisit *__weak>, std::equal_to<long long>, std::hash<long long>, true>, std::allocator<std::__hash_value_type<long long, WBSHistoryVisit *__weak>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, WBSHistoryVisit *__weak>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, WBSHistoryVisit *__weak>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, WBSHistoryVisit *__weak>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<long long, WBSHistoryVisit *__weak>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<long long, WBSHistoryVisit *__weak>, void *>*> {
+                void *__next_;
+            } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<long long, std::__1::__hash_value_type<long long, WBSHistoryVisit *__weak>, std::__1::hash<long long>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<long long, std::__hash_value_type<long long, WBSHistoryVisit *__weak>, std::hash<long long>, std::equal_to<long long>, true>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<long long, std::__1::__hash_value_type<long long, WBSHistoryVisit *__weak>, std::__1::equal_to<long long>, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<long long, std::__hash_value_type<long long, WBSHistoryVisit *__weak>, std::equal_to<long long>, std::hash<long long>, true>> {
             float __value_;
         } __p3_;
     } __table_;
 };
 
-struct unordered_map<long long, long long, std::__1::hash<long long>, std::__1::equal_to<long long>, std::__1::allocator<std::__1::pair<const long long, long long>>> {
-    struct __hash_table<std::__1::__hash_value_type<long long, long long>, std::__1::__unordered_map_hasher<long long, std::__1::__hash_value_type<long long, long long>, std::__1::hash<long long>, true>, std::__1::__unordered_map_equal<long long, std::__1::__hash_value_type<long long, long long>, std::__1::equal_to<long long>, true>, std::__1::allocator<std::__1::__hash_value_type<long long, long long>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, long long>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, long long>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, long long>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<long long, long long>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, long long>, void *>*> __value_;
+struct unordered_map<long long, long long, std::hash<long long>, std::equal_to<long long>, std::allocator<std::pair<const long long, long long>>> {
+    struct __hash_table<std::__hash_value_type<long long, long long>, std::__unordered_map_hasher<long long, std::__hash_value_type<long long, long long>, std::hash<long long>, std::equal_to<long long>, true>, std::__unordered_map_equal<long long, std::__hash_value_type<long long, long long>, std::equal_to<long long>, std::hash<long long>, true>, std::allocator<std::__hash_value_type<long long, long long>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, long long>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, long long>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, long long>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<long long, long long>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<long long, long long>, void *>*> {
+                void *__next_;
+            } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<long long, std::__1::__hash_value_type<long long, long long>, std::__1::hash<long long>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<long long, std::__hash_value_type<long long, long long>, std::hash<long long>, std::equal_to<long long>, true>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<long long, std::__1::__hash_value_type<long long, long long>, std::__1::equal_to<long long>, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<long long, std::__hash_value_type<long long, long long>, std::equal_to<long long>, std::hash<long long>, true>> {
             float __value_;
         } __p3_;
     } __table_;
 };
 
-struct unordered_multimap<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>, std::__1::hash<RetainPtr<NSString>>, std::__1::equal_to<RetainPtr<NSString>>, std::__1::allocator<std::__1::pair<const WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>>> {
-    struct __hash_table<std::__1::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>, std::__1::__unordered_map_hasher<WTF::RetainPtr<NSString>, std::__1::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>, std::__1::hash<RetainPtr<NSString>>, true>, std::__1::__unordered_map_equal<WTF::RetainPtr<NSString>, std::__1::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>, std::__1::equal_to<RetainPtr<NSString>>, true>, std::__1::allocator<std::__1::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>, void *>*> __value_;
+struct unordered_multimap<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>, std::hash<RetainPtr<NSString>>, std::equal_to<RetainPtr<NSString>>, std::allocator<std::pair<const WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>>> {
+    struct __hash_table<std::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>, std::__unordered_map_hasher<WTF::RetainPtr<NSString>, std::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>, std::hash<RetainPtr<NSString>>, std::equal_to<RetainPtr<NSString>>, true>, std::__unordered_map_equal<WTF::RetainPtr<NSString>, std::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>, std::equal_to<RetainPtr<NSString>>, std::hash<RetainPtr<NSString>>, true>, std::allocator<std::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>, void *>*> {
+                void *__next_;
+            } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<WTF::RetainPtr<NSString>, std::__1::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>, std::__1::hash<RetainPtr<NSString>>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<WTF::RetainPtr<NSString>, std::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>, std::hash<RetainPtr<NSString>>, std::equal_to<RetainPtr<NSString>>, true>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<WTF::RetainPtr<NSString>, std::__1::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>, std::__1::equal_to<RetainPtr<NSString>>, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<WTF::RetainPtr<NSString>, std::__hash_value_type<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>, std::equal_to<RetainPtr<NSString>>, std::hash<RetainPtr<NSString>>, true>> {
             float __value_;
         } __p3_;
     } __table_;
 };
 
-struct unordered_set<long long, std::__1::hash<long long>, std::__1::equal_to<long long>, std::__1::allocator<long long>> {
-    struct __hash_table<long long, std::__1::hash<long long>, std::__1::equal_to<long long>, std::__1::allocator<long long>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<long long, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<long long, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<long long, void *>*>, std::__1::allocator<std::__1::__hash_node<long long, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<long long, void *>*> __value_;
+struct unordered_set<long long, std::hash<long long>, std::equal_to<long long>, std::allocator<long long>> {
+    struct __hash_table<long long, std::hash<long long>, std::equal_to<long long>, std::allocator<long long>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<long long, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<long long, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<long long, void *>*>, std::allocator<std::__hash_node<long long, void *>>> {
+            struct __hash_node_base<std::__hash_node<long long, void *>*> {
+                void *__next_;
+            } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::hash<long long>> {
+        struct __compressed_pair<unsigned long, std::hash<long long>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__1::equal_to<long long>> {
+        struct __compressed_pair<float, std::equal_to<long long>> {
             float __value_;
         } __p3_;
     } __table_;
-};
-
-struct vector<WTF::RefPtr<SafariShared::HistoryURLCompletionItem, WTF::DumbPtrTraits<SafariShared::HistoryURLCompletionItem>>, std::__1::allocator<WTF::RefPtr<SafariShared::HistoryURLCompletionItem, WTF::DumbPtrTraits<SafariShared::HistoryURLCompletionItem>>>> {
-    RefPtr_ed2a6bdb *_field1;
-    RefPtr_ed2a6bdb *_field2;
-    struct __compressed_pair<WTF::RefPtr<SafariShared::HistoryURLCompletionItem, WTF::DumbPtrTraits<SafariShared::HistoryURLCompletionItem>>*, std::__1::allocator<WTF::RefPtr<SafariShared::HistoryURLCompletionItem, WTF::DumbPtrTraits<SafariShared::HistoryURLCompletionItem>>>> {
-        RefPtr_ed2a6bdb *_field1;
-    } _field3;
-};
-
-struct vector<int, std::__1::allocator<int>> {
-    int *_field1;
-    int *_field2;
-    struct __compressed_pair<int *, std::__1::allocator<int>> {
-        int *_field1;
-    } _field3;
 };
 
 #pragma mark Typedef'd Structures
@@ -552,12 +456,6 @@ typedef struct {
 } CDStruct_497cfc99;
 
 typedef struct {
-    long long _field1;
-    long long _field2;
-    long long _field3;
-} CDStruct_2ec95fd7;
-
-typedef struct {
     struct {
         unsigned short _field1;
         unsigned short _field2;
@@ -566,89 +464,48 @@ typedef struct {
 } CDStruct_f2b84ca7;
 
 // Template types
-typedef struct Ref<SafariShared::BookmarkAndHistoryCompletionMatch, WTF::DumbPtrTraits<SafariShared::BookmarkAndHistoryCompletionMatch>> {
-    struct BookmarkAndHistoryCompletionMatch *_field1;
-} Ref_a2762e75;
-
-typedef struct Ref<SafariShared::HistoryURLCompletionItem, WTF::DumbPtrTraits<SafariShared::HistoryURLCompletionItem>> {
+typedef struct Ref<SafariShared::HistoryURLCompletionItem, WTF::RawPtrTraits<SafariShared::HistoryURLCompletionItem>> {
     struct HistoryURLCompletionItem *_field1;
-} Ref_acc025bb;
+} Ref_2d03f7f4;
 
-typedef struct RefPtr<SafariShared::HistoryURLCompletionItem, WTF::DumbPtrTraits<SafariShared::HistoryURLCompletionItem>> {
+typedef struct RefPtr<SafariShared::HistoryURLCompletionItem, WTF::RawPtrTraits<SafariShared::HistoryURLCompletionItem>, WTF::DefaultRefDerefTraits<SafariShared::HistoryURLCompletionItem>> {
     struct HistoryURLCompletionItem *m_ptr;
-} RefPtr_ed2a6bdb;
+} RefPtr_4f332d87;
 
 typedef struct RetainPtr<const __CTFontDescriptor *> {
     void *_field1;
 } RetainPtr_887fe677;
 
-typedef struct Vector<WTF::RefPtr<SafariShared::BookmarkAndHistoryCompletionMatch, WTF::DumbPtrTraits<SafariShared::BookmarkAndHistoryCompletionMatch>>, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> {
-    struct RefPtr<SafariShared::BookmarkAndHistoryCompletionMatch, WTF::DumbPtrTraits<SafariShared::BookmarkAndHistoryCompletionMatch>> *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-} Vector_3aefaf4b;
-
-typedef struct Vector<int, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> {
-    int *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-} Vector_b217f6ec;
-
-typedef struct duration<long long, std::__1::ratio<1, 1000>> {
+typedef struct duration<long long, std::ratio<1, 1000>> {
     long long __rep_;
-} duration_6174cf92;
+} duration_15f873c1;
 
-typedef struct time_point<std::__1::chrono::steady_clock, std::__1::chrono::duration<long long, std::__1::ratio<1, 1000000000>>> {
-    struct duration<long long, std::__1::ratio<1, 1000000000>> __d_;
-} time_point_e708cccf;
+typedef struct time_point<std::chrono::steady_clock, std::chrono::duration<long long, std::ratio<1, 1000000000>>> {
+    struct duration<long long, std::ratio<1, 1000000000>> __d_;
+} time_point_ee75d146;
 
-typedef struct unique_ptr<SafariShared::_HistoryStreamedMatchData, std::__1::default_delete<SafariShared::_HistoryStreamedMatchData>> {
-    struct __compressed_pair<SafariShared::_HistoryStreamedMatchData *, std::__1::default_delete<SafariShared::_HistoryStreamedMatchData>> {
-        struct _HistoryStreamedMatchData *__value_;
+typedef struct unique_ptr<std::vector<WTF::RefPtr<SafariShared::HistoryURLCompletionItem>>, std::default_delete<std::vector<WTF::RefPtr<SafariShared::HistoryURLCompletionItem>>>> {
+    struct __compressed_pair<std::vector<WTF::RefPtr<SafariShared::HistoryURLCompletionItem>>*, std::default_delete<std::vector<WTF::RefPtr<SafariShared::HistoryURLCompletionItem>>>> {
+        void *__value_;
     } __ptr_;
-} unique_ptr_3ff2d08e;
+} unique_ptr_5d7d1a42;
 
-typedef struct unique_ptr<SafariShared::_HistoryStreamedMatchEntry, std::__1::default_delete<SafariShared::_HistoryStreamedMatchEntry>> {
-    struct __compressed_pair<SafariShared::_HistoryStreamedMatchEntry *, std::__1::default_delete<SafariShared::_HistoryStreamedMatchEntry>> {
-        struct _HistoryStreamedMatchEntry *__value_;
-    } __ptr_;
-} unique_ptr_1250213a;
-
-typedef struct unique_ptr<std::__1::vector<WTF::RefPtr<SafariShared::HistoryURLCompletionItem, WTF::DumbPtrTraits<SafariShared::HistoryURLCompletionItem>>, std::__1::allocator<WTF::RefPtr<SafariShared::HistoryURLCompletionItem, WTF::DumbPtrTraits<SafariShared::HistoryURLCompletionItem>>>>, std::__1::default_delete<std::__1::vector<WTF::RefPtr<SafariShared::HistoryURLCompletionItem, WTF::DumbPtrTraits<SafariShared::HistoryURLCompletionItem>>, std::__1::allocator<WTF::RefPtr<SafariShared::HistoryURLCompletionItem, WTF::DumbPtrTraits<SafariShared::HistoryURLCompletionItem>>>>>> {
-    struct __compressed_pair<std::__1::vector<WTF::RefPtr<SafariShared::HistoryURLCompletionItem, WTF::DumbPtrTraits<SafariShared::HistoryURLCompletionItem>>, std::__1::allocator<WTF::RefPtr<SafariShared::HistoryURLCompletionItem, WTF::DumbPtrTraits<SafariShared::HistoryURLCompletionItem>>>>*, std::__1::default_delete<std::__1::vector<WTF::RefPtr<SafariShared::HistoryURLCompletionItem, WTF::DumbPtrTraits<SafariShared::HistoryURLCompletionItem>>, std::__1::allocator<WTF::RefPtr<SafariShared::HistoryURLCompletionItem, WTF::DumbPtrTraits<SafariShared::HistoryURLCompletionItem>>>>>> {
-        struct vector<WTF::RefPtr<SafariShared::HistoryURLCompletionItem, WTF::DumbPtrTraits<SafariShared::HistoryURLCompletionItem>>, std::__1::allocator<WTF::RefPtr<SafariShared::HistoryURLCompletionItem, WTF::DumbPtrTraits<SafariShared::HistoryURLCompletionItem>>>> *__value_;
-    } __ptr_;
-} unique_ptr_91c700ae;
-
-typedef struct unordered_map<long long, long long, std::__1::hash<long long>, std::__1::equal_to<long long>, std::__1::allocator<std::__1::pair<const long long, long long>>> {
-    struct __hash_table<std::__1::__hash_value_type<long long, long long>, std::__1::__unordered_map_hasher<long long, std::__1::__hash_value_type<long long, long long>, std::__1::hash<long long>, true>, std::__1::__unordered_map_equal<long long, std::__1::__hash_value_type<long long, long long>, std::__1::equal_to<long long>, true>, std::__1::allocator<std::__1::__hash_value_type<long long, long long>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, long long>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, long long>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, long long>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<long long, long long>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, long long>, void *>*> __value_;
+typedef struct unordered_map<long long, long long, std::hash<long long>, std::equal_to<long long>, std::allocator<std::pair<const long long, long long>>> {
+    struct __hash_table<std::__hash_value_type<long long, long long>, std::__unordered_map_hasher<long long, std::__hash_value_type<long long, long long>, std::hash<long long>, std::equal_to<long long>, true>, std::__unordered_map_equal<long long, std::__hash_value_type<long long, long long>, std::equal_to<long long>, std::hash<long long>, true>, std::allocator<std::__hash_value_type<long long, long long>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, long long>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, long long>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long long, long long>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<long long, long long>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<long long, long long>, void *>*> {
+                void *__next_;
+            } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<long long, std::__1::__hash_value_type<long long, long long>, std::__1::hash<long long>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<long long, std::__hash_value_type<long long, long long>, std::hash<long long>, std::equal_to<long long>, true>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<long long, std::__1::__hash_value_type<long long, long long>, std::__1::equal_to<long long>, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<long long, std::__hash_value_type<long long, long long>, std::equal_to<long long>, std::hash<long long>, true>> {
             float __value_;
         } __p3_;
     } __table_;
-} unordered_map_fcbaed0a;
-
-typedef struct unordered_set<long long, std::__1::hash<long long>, std::__1::equal_to<long long>, std::__1::allocator<long long>> {
-    struct __hash_table<long long, std::__1::hash<long long>, std::__1::equal_to<long long>, std::__1::allocator<long long>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<long long, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<long long, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<long long, void *>*>, std::__1::allocator<std::__1::__hash_node<long long, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<long long, void *>*> __value_;
-        } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::hash<long long>> {
-            unsigned long long __value_;
-        } __p2_;
-        struct __compressed_pair<float, std::__1::equal_to<long long>> {
-            float __value_;
-        } __p3_;
-    } __table_;
-} unordered_set_da619913;
+} unordered_map_86398ced;
 
 #pragma mark Typedef'd Unions
 
@@ -669,6 +526,7 @@ typedef union {
         unsigned int looksLikeIgnoredDataTypeField:1;
         unsigned int looksLikePasswordCredentialField:1;
         unsigned int looksLikeOneTimeCodeField:1;
+        unsigned int oneTimeCodeIsEligibleForAutomaticLogin:1;
         unsigned int visible:1;
         unsigned int active:1;
         unsigned int disabled:1;
@@ -680,5 +538,5 @@ typedef union {
         unsigned int labeledUsernameField:1;
     } flags;
     long long asInteger;
-} CDUnion_a3b3b741;
+} CDUnion_4ebc605d;
 

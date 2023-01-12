@@ -20,7 +20,6 @@
 - (struct _NSRange)accessibilityRowRange;
 - (id)accessibilityValue;
 - (id)accessibilityLabel;
-- (id)_axLabelFromInfoObject:(id)arg1;
 - (_Bool)isAccessibilityElement;
 - (id)accessibilityLanguage;
 

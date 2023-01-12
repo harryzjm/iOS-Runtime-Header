@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 + (unsigned char)tileProviderIdentifier;
 - (void).cxx_destruct;
 - (void)dealloc;
+- (void)cancelKey:(const struct _GEOTileKey *)arg1;
 - (void)cancel;
 - (_Bool)isRunning;
 - (void)_startOnWorkQueue;

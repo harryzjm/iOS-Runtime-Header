@@ -13,11 +13,11 @@
     MISSING_TYPE *resolver;
     MISSING_TYPE *tracker;
     MISSING_TYPE *contextBuilder;
+    MISSING_TYPE *mastheadModelProvider;
 }
 
 - (void).cxx_destruct;
 - (id)init;
-- (id)createViewController;
 
 @end
 

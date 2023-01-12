@@ -13,7 +13,7 @@
 
 @interface ACHEarnedInstance : NSObject <NSCopying, NSSecureCoding>
 {
-    CDStruct_1bc457c2 _smallEarnedDateComponents;
+    CDStruct_1bc457c2 _packedEarnedDateComponents;
     unsigned char _creatorDevice;
     unsigned long long _uniqueNameIndex;
     unsigned long long _key;
@@ -36,8 +36,10 @@
 - (id)debugDescription;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (long long)compareEarnedDateWithEarnedInstance:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)init;
 
 @end
 

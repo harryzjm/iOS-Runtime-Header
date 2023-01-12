@@ -20,7 +20,10 @@ __attribute__((visibility("hidden")))
     NSNumber *_computeUnits;
     NSNumber *_modelOrigin;
     NSNumber *_modelLoadError;
+    NSString *_bundleIdentifier;
     NSString *_modelName;
+    NSNumber *_firstPartyExecutable;
+    NSNumber *_modelIsEncrypted;
     NSString *_modelHash;
     NSString *_nnModelNetHash;
     NSString *_nnModelShapeHash;
@@ -34,7 +37,10 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *nnModelShapeHash; // @synthesize nnModelShapeHash=_nnModelShapeHash;
 @property(copy, nonatomic) NSString *nnModelNetHash; // @synthesize nnModelNetHash=_nnModelNetHash;
 @property(copy, nonatomic) NSString *modelHash; // @synthesize modelHash=_modelHash;
+@property(copy, nonatomic) NSNumber *modelIsEncrypted; // @synthesize modelIsEncrypted=_modelIsEncrypted;
+@property(copy, nonatomic) NSNumber *firstPartyExecutable; // @synthesize firstPartyExecutable=_firstPartyExecutable;
 @property(copy, nonatomic) NSString *modelName; // @synthesize modelName=_modelName;
+@property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(copy, nonatomic) NSNumber *modelLoadError; // @synthesize modelLoadError=_modelLoadError;
 @property(copy, nonatomic) NSNumber *modelOrigin; // @synthesize modelOrigin=_modelOrigin;
 @property(copy, nonatomic) NSNumber *computeUnits; // @synthesize computeUnits=_computeUnits;
@@ -43,7 +49,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSNumber *modelLoadTime; // @synthesize modelLoadTime=_modelLoadTime;
 @property(copy, nonatomic) NSNumber *modelType; // @synthesize modelType=_modelType;
 - (id)numberFromCString:(const char *)arg1;
-- (void)extractAndSetModelDetailsFromArchive:(struct _MLModelInputArchiver *)arg1;
+- (void)extractAndSetModelDetailsFromArchive:(void *)arg1;
 @property(readonly) NSDictionary *dictionaryRepresentation;
 @property(readonly) NSString *name;
 

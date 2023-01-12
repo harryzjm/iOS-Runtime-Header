@@ -6,7 +6,7 @@
 
 #import <CoreData/NSManagedObjectContext.h>
 
-@class NSError, NSMutableDictionary, NSMutableSet, PLChangeHandlingContainer, PLDelayedFiledSystemDeletions, PLDelayedSaveActions, PLMergePolicy, PLPhotoLibrary, PLPhotoLibraryPathManager;
+@class NSError, NSMutableDictionary, NSMutableSet, PLChangeHandlingContainer, PLDelayedFiledSystemDeletions, PLDelayedSaveActions, PLPhotoLibrary, PLPhotoLibraryPathManager;
 @protocol PLManagedObjectContextPTPNotificationDelegate;
 
 @interface PLManagedObjectContext : NSManagedObjectContext
@@ -19,7 +19,6 @@
     _Bool _isBackingALAssetsLibrary;
     _Bool _isObservingChangesForPTPNotificationDelegate;
     _Bool _needsBackgroundJobProcessing;
-    PLMergePolicy *_mergePolicy;
     PLDelayedFiledSystemDeletions *_delayedDeletions;
     NSMutableSet *_avalancheUUIDsForUpdate;
     NSMutableDictionary *_uuidsForCloudDeletion;
@@ -32,6 +31,7 @@
     PLChangeHandlingContainer *_changeHandlingContainer;
     struct os_unfair_lock_s _invalidationStateLock;
     NSError *_invalidationReason;
+    double _lastResetTimestamp;
     _Bool _regenerateVideoThumbnails;
     int _changeSource;
     id <PLManagedObjectContextPTPNotificationDelegate> _ptpNotificationDelegate;
@@ -66,9 +66,8 @@
 + (_Bool)shouldHavePhotoLibrary;
 + (void)removePhotosDatabaseWithPathManager:(id)arg1;
 + (_Bool)canMergeRemoteChanges;
-+ (id)contextForManagedObjectLookupItemCache:(id)arg1 coordinator:(id)arg2;
 + (id)contextForRepairingSingletonObjects:(const char *)arg1 libraryURL:(id)arg2 error:(id *)arg3;
-+ (id)contextForPhotoLibrary:(id)arg1 automaticallyMerges:(_Bool)arg2 name:(const char *)arg3;
++ (id)contextForPhotoLibrary:(id)arg1 automaticallyMerges:(_Bool)arg2 automaticallyPinToFirstFetch:(_Bool)arg3 name:(const char *)arg4;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool isBackingALAssetsLibrary; // @synthesize isBackingALAssetsLibrary=_isBackingALAssetsLibrary;
 @property(nonatomic) _Bool isInitializingSingletons; // @synthesize isInitializingSingletons=_isInitializingSingletons;
@@ -111,9 +110,12 @@
 - (void)recordManagedObjectWillSave:(id)arg1;
 - (void)disconnectFromChangeHandling;
 - (void)connectToChangeHandling;
+- (double)lastResetTimestamp;
 - (_Bool)pl_performWithOptions:(unsigned long long)arg1 andBlock:(CDUnknownBlockType)arg2;
 - (void)setName:(id)arg1;
 - (void)breakRetainCycles;
+- (void)refreshAllObjects;
+- (void)reset;
 - (void)_simulateCrashIfNotAssetsd;
 - (_Bool)obtainPermanentIDsForObjects:(id)arg1 error:(id *)arg2;
 - (_Bool)save:(id *)arg1;

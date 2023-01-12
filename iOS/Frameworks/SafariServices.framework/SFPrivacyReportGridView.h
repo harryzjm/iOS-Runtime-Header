@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)_gridPositionForItemAtIndexPath:(id)arg1;
 @property(readonly, nonatomic) double interItemSpacing;
 - (void)didUpdateInterItemSpacing:(double)arg1;
+- (_Bool)itemViewIsLineBreak:(id)arg1;
 - (_Bool)itemViewCanUseCompactWidth:(id)arg1;
 - (void)layoutMarginsDidChange;
 - (void)_rebuildRowLayoutInfoIfNeeded;

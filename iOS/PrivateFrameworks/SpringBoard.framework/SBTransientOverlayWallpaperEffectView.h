@@ -20,8 +20,8 @@
 - (void)_updateWallpaperGeometry;
 - (struct CATransform3D)_currentWallpaperTransform;
 @property(nonatomic) long long wallpaperStyle;
-- (void)setTransitionState:(CDStruct_059c2b36)arg1;
-- (_Bool)prepareToAnimateToTransitionState:(inout CDStruct_059c2b36 *)arg1;
+- (void)setTransitionState:(CDStruct_8ff95007)arg1;
+- (_Bool)prepareToAnimateToTransitionState:(inout CDStruct_8ff95007 *)arg1;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1 wallpaperVariant:(long long)arg2;
 

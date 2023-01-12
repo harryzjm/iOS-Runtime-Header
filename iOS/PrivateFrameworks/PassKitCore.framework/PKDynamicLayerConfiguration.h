@@ -9,7 +9,7 @@
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class PKDynamicLayerEmitterConfiguration, PKDynamicLayerTransactionEffectConfiguration;
+@class PKDynamicLayerCrossDissolveConfiguration, PKDynamicLayerEmitterConfiguration, PKDynamicLayerTransactionEffectConfiguration;
 
 @interface PKDynamicLayerConfiguration : NSObject <NSSecureCoding, NSCopying>
 {
@@ -21,10 +21,12 @@
     PKDynamicLayerEmitterConfiguration *_foregroundParallaxEmitter;
     PKDynamicLayerEmitterConfiguration *_staticOverlayEmitter;
     PKDynamicLayerTransactionEffectConfiguration *_transactionEffect;
+    PKDynamicLayerCrossDissolveConfiguration *_crossDissolve;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) PKDynamicLayerCrossDissolveConfiguration *crossDissolve; // @synthesize crossDissolve=_crossDissolve;
 @property(retain, nonatomic) PKDynamicLayerTransactionEffectConfiguration *transactionEffect; // @synthesize transactionEffect=_transactionEffect;
 @property(retain, nonatomic) PKDynamicLayerEmitterConfiguration *staticOverlayEmitter; // @synthesize staticOverlayEmitter=_staticOverlayEmitter;
 @property(retain, nonatomic) PKDynamicLayerEmitterConfiguration *foregroundParallaxEmitter; // @synthesize foregroundParallaxEmitter=_foregroundParallaxEmitter;

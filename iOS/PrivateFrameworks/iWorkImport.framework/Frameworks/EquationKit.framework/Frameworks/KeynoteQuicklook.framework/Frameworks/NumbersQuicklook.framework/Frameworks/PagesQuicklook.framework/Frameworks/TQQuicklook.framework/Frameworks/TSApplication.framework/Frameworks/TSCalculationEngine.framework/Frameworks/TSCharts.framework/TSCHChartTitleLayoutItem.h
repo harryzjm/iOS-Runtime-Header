@@ -8,19 +8,19 @@
 
 @interface TSCHChartTitleLayoutItem
 {
-    double mChartBodyWidth;
-    NSString *mEditedString;
-    double mMinHitSize;
+    double _chartBodyWidth;
+    NSString *_editedString;
+    double _minHitSize;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) double minHitSize; // @synthesize minHitSize=mMinHitSize;
-@property(copy, nonatomic) NSString *editedString; // @synthesize editedString=mEditedString;
-@property(nonatomic) double chartBodyWidth; // @synthesize chartBodyWidth=mChartBodyWidth;
-- (struct CGPath *)newDragAndDropHighlightPathForSelection:(id)arg1;
+@property(nonatomic) double minHitSize; // @synthesize minHitSize=_minHitSize;
+@property(copy, nonatomic) NSString *editedString; // @synthesize editedString=_editedString;
+@property(nonatomic) double chartBodyWidth; // @synthesize chartBodyWidth=_chartBodyWidth;
+- (const struct CGPath *)newDragAndDropHighlightPathForSelection:(id)arg1;
 - (id)subselectionHaloPositionsForSelections:(id)arg1;
 - (id)subselectionKnobPositionsForSelection:(id)arg1;
-- (void)protected_iterateHitChartElements:(struct CGPoint)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)iterateHitChartElements:(struct CGPoint)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (_Bool)pointHitsTitleRect:(struct CGPoint)arg1;
 - (struct CGAffineTransform)searchSelectionTransformForRenderingRange:(struct _NSRange)arg1 outElementSize:(struct CGSize *)arg2 outClipRect:(struct CGRect *)arg3;
 - (struct CGAffineTransform)transformForRenderingRange:(struct _NSRange)arg1 outElementSize:(struct CGSize *)arg2 outClipRect:(struct CGRect *)arg3;

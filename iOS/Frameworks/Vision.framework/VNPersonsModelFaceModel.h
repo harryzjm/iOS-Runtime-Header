@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)supportsSecureCoding;
 + (id)modelBuiltFromConfiguration:(id)arg1 dataProvider:(id)arg2 canceller:(id)arg3 error:(id *)arg4;
-+ (shared_ptr_099ccdd3)_concatenateFaceprintImageDescriptorBuffer:(shared_ptr_099ccdd3)arg1 withFaceprints:(id)arg2 forIdentityWithSerialNumber:(int)arg3 faceprintLabels:(vector_3203cf93 *)arg4;
++ (shared_ptr_099ccdd3)_concatenateFaceprintImageDescriptorBuffer:(shared_ptr_099ccdd3)arg1 withFaceprints:(id)arg2 forIdentityWithSerialNumber:(int)arg3 faceprintLabels:(void *)arg4;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
@@ -33,8 +33,8 @@ __attribute__((visibility("hidden")))
 - (id)personUniqueIdentifiers;
 - (unsigned long long)personCount;
 - (unsigned long long)faceprintRequestRevision;
-- (id)personPredictionsForFace:(id)arg1 withDescriptor:(const struct ImageDescriptorBufferFloat32 *)arg2 limit:(unsigned long long)arg3 canceller:(id)arg4 error:(id *)arg5;
-- (id)_personPredictionsForFace:(id)arg1 withDescriptor:(const struct ImageDescriptorBufferFloat32 *)arg2 limit:(unsigned long long)arg3 faceIDCanceller:(struct CVMLCanceller *)arg4 error:(id *)arg5;
+- (id)personPredictionsForFace:(id)arg1 withDescriptor:(const void *)arg2 limit:(unsigned long long)arg3 canceller:(id)arg4 error:(id *)arg5;
+- (id)_personPredictionsForFace:(id)arg1 withDescriptor:(const void *)arg2 limit:(unsigned long long)arg3 faceIDCanceller:(struct CVMLCanceller *)arg4 error:(id *)arg5;
 - (_Bool)_getSerialNumber:(int *)arg1 forPersonUniqueIdentifier:(id)arg2 error:(id *)arg3;
 - (id)initWithFaceIDModel:(shared_ptr_8c39738b)arg1 faceprintRequestRevision:(unsigned long long)arg2 maximumElementsPerID:(unsigned long long)arg3 personUniqueIdentifierToSerialNumberMapping:(id)arg4;
 

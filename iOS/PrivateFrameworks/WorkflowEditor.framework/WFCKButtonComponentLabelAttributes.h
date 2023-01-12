@@ -8,7 +8,7 @@
 
 @interface WFCKButtonComponentLabelAttributes : NSObject
 {
-    unordered_map_b2cee720 _attributes;
+    struct unordered_map<CKComponentViewAttribute, CKBoxedValue, std::hash<CKComponentViewAttribute>, std::equal_to<CKComponentViewAttribute>, std::allocator<std::pair<const CKComponentViewAttribute, CKBoxedValue>>> _attributes;
 }
 
 - (id).cxx_construct;

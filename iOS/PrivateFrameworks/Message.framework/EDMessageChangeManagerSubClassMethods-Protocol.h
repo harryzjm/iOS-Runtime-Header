@@ -20,6 +20,7 @@
 - (void)setRemoteID:(NSString *)arg1 onMessageWithDatabaseID:(long long)arg2;
 - (NSArray *)addLabels:(NSSet *)arg1 removeLabels:(NSSet *)arg2 toMessagesInDatabase:(NSArray *)arg3;
 - (void)resetStatusCountsForMailboxWithURL:(NSURL *)arg1;
+- (void)applyVIPStatus:(_Bool)arg1 toMessagesInDatabase:(NSArray *)arg2;
 - (NSArray *)applyFlagChange:(ECMessageFlagChange *)arg1 toMessagesInDatabase:(NSArray *)arg2;
 - (_Bool)haveCompleteMIMEForMessage:(id <ECMessage>)arg1;
 - (void)deletePersistedMessages:(NSArray *)arg1;

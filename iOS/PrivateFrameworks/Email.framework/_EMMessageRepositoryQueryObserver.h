@@ -9,8 +9,8 @@
 #import <Email/EMMessageListItemQueryResultsObserver-Protocol.h>
 #import <Email/EMRecoverableObserver-Protocol.h>
 
-@class EFCancelationToken, EFQuery, EMMessageRepository, EMObjectID, NSDate, NSString;
-@protocol EMQueryResultsObserver;
+@class EFCancelationToken, EFQuery, EMMessageRepository, EMObjectID, NSString;
+@protocol EFCancelable, EFScheduler, EMQueryResultsObserver;
 
 __attribute__((visibility("hidden")))
 @interface _EMMessageRepositoryQueryObserver : NSObject <EMMessageListItemQueryResultsObserver, EMRecoverableObserver>
@@ -20,8 +20,11 @@ __attribute__((visibility("hidden")))
     EMObjectID *_observationIdentifier;
     id <EMQueryResultsObserver> _observer;
     EFCancelationToken *_token;
-    NSDate *_lastRecoveryAttemptDate;
+    id <EFCancelable> _remoteCancelable;
+    id <EFScheduler> _recoveryScheduler;
+    struct os_unfair_lock_s _recoveryLock;
     long long _recoveryAttempt;
+    _Bool _recoveryIsScheduled;
 }
 
 - (void).cxx_destruct;
@@ -39,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)observer:(id)arg1 wasUpdated:(id)arg2;
 - (void)_performQueryWithRemoteConnection:(id)arg1 forRecovery:(_Bool)arg2;
 - (void)recoverQueryWithRemoteConnection:(id)arg1;
+- (void)refreshQueryWithRemoteConnection:(id)arg1;
 - (void)performQueryWithRemoteConnection:(id)arg1;
 - (void)cancel;
 - (void)dealloc;

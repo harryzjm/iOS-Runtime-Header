@@ -31,6 +31,7 @@
 - (_Bool)_canShowWhileLocked;
 - (_Bool)shouldAutomaticallyForwardAppearanceMethods;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)loadView;
 - (void)dealloc;
 - (id)initWithLevel:(double)arg1 identifier:(id)arg2;
 

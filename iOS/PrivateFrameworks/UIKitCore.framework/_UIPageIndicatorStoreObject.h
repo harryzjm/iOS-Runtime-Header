@@ -14,15 +14,18 @@ __attribute__((visibility("hidden")))
     UIImage *_customImage;
     long long _startIndex;
     long long _endIndex;
+    struct CGSize _indicatorSize;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) long long endIndex; // @synthesize endIndex=_endIndex;
 @property(nonatomic) long long startIndex; // @synthesize startIndex=_startIndex;
+@property(nonatomic) struct CGSize indicatorSize; // @synthesize indicatorSize=_indicatorSize;
 @property(retain, nonatomic) UIImage *customImage; // @synthesize customImage=_customImage;
 - (id)description;
 - (id)splitAtIndex:(long long)arg1 withImage:(id)arg2;
 - (_Bool)validPageWithinBound:(long long)arg1;
+- (void)invalidateIndicatorSize;
 - (id)initWithImage:(id)arg1 startIndex:(long long)arg2 endIndex:(long long)arg3;
 
 @end

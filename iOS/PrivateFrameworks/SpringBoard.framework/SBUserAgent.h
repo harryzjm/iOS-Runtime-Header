@@ -20,7 +20,6 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic, setter=_setIdleTimerPolicyAggregator:) SBIdleTimerPolicyAggregator *_idleTimerPolicyAggregator; // @synthesize _idleTimerPolicyAggregator;
-@property(nonatomic) long long softwareUpdatePasscodePolicyType;
 - (id)topSuspendedEventsOnlyDisplayID;
 - (_Bool)isInternalInstall;
 - (struct __CFRunLoop *)wifiRunLoopRef;

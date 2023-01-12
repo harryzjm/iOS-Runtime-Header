@@ -10,10 +10,11 @@
 {
 }
 
-+ (void)_sendCoreAnalyticsEvent:(id)arg1 withCompatiblePayload:(id)arg2;
 + (id)_buildCACompatiblePayload:(id)arg1;
++ (_Bool)_isValidCoreAnalyticsValueType:(id)arg1;
 + (id)_caCompatiblePayloadKey:(id)arg1;
-+ (void)sendCoreAnalyticsEvent:(id)arg1 withPayload:(id)arg2;
++ (void)_analyticsSendEventLazy:(id)arg1 payload:(CDUnknownBlockType)arg2;
++ (void)sendCoreAnalyticsEvent:(id)arg1 withPayload:(id)arg2 shouldSanitize:(_Bool)arg3;
 
 @end
 

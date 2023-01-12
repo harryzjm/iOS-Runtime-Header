@@ -15,17 +15,19 @@ __attribute__((visibility("hidden")))
     NSRunLoop *_runLoop;
     unsigned long long _state;
     NSObject<OS_dispatch_semaphore> *_waitToRunSemaphore;
+    CDUnknownBlockType _handler;
 }
 
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)displayLinkTick:(id)arg1;
 - (void)runDisplayLinkThreadWithStopRequested:(_Bool *)arg1;
 - (void)dealloc;
 - (void)deactivate;
 - (void)handleWaitToRunTimeout;
 - (_Bool)activate;
 - (_Bool)ensureDisplayIsReady;
-- (id)initWithTarget:(id)arg1 selector:(SEL)arg2 threadPriority:(unsigned int)arg3 threadOptions:(unsigned int)arg4 threadIdentifier:(id)arg5;
-- (id)initWithTarget:(id)arg1 selector:(SEL)arg2;
+- (id)initWithHandler:(CDUnknownBlockType)arg1 threadPriority:(unsigned int)arg2 threadOptions:(unsigned int)arg3 threadIdentifier:(id)arg4;
+- (id)initWithHandler:(CDUnknownBlockType)arg1;
 
 @end
 

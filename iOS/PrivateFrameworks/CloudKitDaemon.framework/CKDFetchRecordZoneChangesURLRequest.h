@@ -8,7 +8,6 @@
 
 @class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSSet, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDFetchRecordZoneChangesURLRequest <CKDURLRequestPipelining>
 {
     _Bool _shouldFetchAssetContent;
@@ -39,8 +38,9 @@ __attribute__((visibility("hidden")))
 - (void)requestDidComplete;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
-- (id)_handleRecordChanges:(id)arg1;
+- (id)_handleRecordChanges:(id)arg1 forZoneID:(id)arg2;
 - (id)generateRequestOperations;
+- (_Bool)handlesAnonymousCKUserIDPropagation;
 - (_Bool)requestGETPreAuth;
 - (id)requestOperationClasses;
 - (id)zoneIDsToLock;

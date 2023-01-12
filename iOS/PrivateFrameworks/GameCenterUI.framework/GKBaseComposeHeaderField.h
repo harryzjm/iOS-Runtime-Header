@@ -16,6 +16,7 @@
     SEL _actionWhenTouched;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) SEL actionWhenTouched; // @synthesize actionWhenTouched=_actionWhenTouched;
 @property(nonatomic) unsigned long long maxLineCount; // @synthesize maxLineCount=_maxLineCount;
 @property(retain, nonatomic) GKHairlineView *separatorView; // @synthesize separatorView=_separatorView;
@@ -27,7 +28,6 @@
 @property(readonly, nonatomic) struct CGRect valueFrame;
 @property(retain, nonatomic) NSString *nameText;
 - (void)addConstraintsForValueView:(id)arg1;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

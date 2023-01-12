@@ -13,31 +13,25 @@
 
 @interface IMCTSubscriptionUtilities : NSObject <CoreTelephonyClientCarrierBundleDelegate, CoreTelephonyClientDelegate>
 {
+    IMCTXPCServiceSubscriptionInfo *_ctSubscriptionInfo;
     CoreTelephonyClient *_coreTelephonyClient;
     NSMutableDictionary *_cachedCarrierSettings;
-    IMCTXPCServiceSubscriptionInfo *_ctSubscriptionInfo;
     IDSPhoneSubscriptionSelector *_phoneSubscriptionSelector;
-    NSArray *_registeredSIMIDs;
-    NSArray *_registeredPhoneNumbers;
-    NSArray *_registeredSubscriptions;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSArray *registeredSubscriptions; // @synthesize registeredSubscriptions=_registeredSubscriptions;
-@property(copy, nonatomic) NSArray *registeredPhoneNumbers; // @synthesize registeredPhoneNumbers=_registeredPhoneNumbers;
-@property(copy, nonatomic) NSArray *registeredSIMIDs; // @synthesize registeredSIMIDs=_registeredSIMIDs;
 @property(retain, nonatomic) IDSPhoneSubscriptionSelector *phoneSubscriptionSelector; // @synthesize phoneSubscriptionSelector=_phoneSubscriptionSelector;
-@property(retain, nonatomic) IMCTXPCServiceSubscriptionInfo *ctSubscriptionInfo; // @synthesize ctSubscriptionInfo=_ctSubscriptionInfo;
 @property(retain, nonatomic) NSMutableDictionary *cachedCarrierSettings; // @synthesize cachedCarrierSettings=_cachedCarrierSettings;
 @property(retain, nonatomic) CoreTelephonyClient *coreTelephonyClient; // @synthesize coreTelephonyClient=_coreTelephonyClient;
+@property(retain, nonatomic) IMCTXPCServiceSubscriptionInfo *ctSubscriptionInfo; // @synthesize ctSubscriptionInfo=_ctSubscriptionInfo;
 - (void)subscriptionInfoDidChange;
-- (void)_resetSubscriptionInfo;
+- (void)resetCacheSubscriptionInfo;
 - (_Bool)deviceSupportsMultipleSubscriptions;
 - (void)carrierBundleChange:(id)arg1;
 - (unsigned long long)numberOfSubscriptions;
 @property(readonly, copy, nonatomic) NSString *ctPhoneNumber;
-- (id)ctSubscriptionInfoWithError:(id)arg1;
+- (id)ctSubscriptionInfoWithError:(id *)arg1;
 @property(readonly, nonatomic) NSArray *ctServiceSubscriptions;
 - (id)copyBundleValueForSubscriptionContext:(id)arg1 keyHierarchy:(id)arg2 bundleType:(long long)arg3 defaultValue:(id)arg4 valueIfError:(id)arg5;
 - (id)copyCarrierBundleValueForSubscriptionContext:(id)arg1 keyHierarchy:(id)arg2 defaultValue:(id)arg3 valueIfError:(id)arg4;
@@ -52,9 +46,14 @@
 - (void)_resetCachedCarrierSettingsForUniqueID:(id)arg1;
 - (id)_createSettingsDictionaryForUniqueID:(id)arg1;
 - (id)_cachedCarrierSettingsUniqueIDKeyForSubscriptionContext:(id)arg1;
+@property(readonly, copy, nonatomic) NSArray *registeredPhoneNumbers;
+@property(readonly, copy, nonatomic) NSArray *registeredSIMIDs;
+@property(readonly, copy, nonatomic) NSArray *registeredSubscriptionSlotIDs;
+- (id)_CTSIMSFromPhoneSubscriptions:(id)arg1;
+- (id)_iMessageService;
+- (id)init;
 - (id)newSubscriptionContextWithPhoneNumber:(id)arg1 labelID:(id)arg2 isDefaultVoice:(id)arg3 isDefaultData:(id)arg4 slot:(long long)arg5;
 - (id)newSubscriptionContextWithSlot:(long long)arg1;
-- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

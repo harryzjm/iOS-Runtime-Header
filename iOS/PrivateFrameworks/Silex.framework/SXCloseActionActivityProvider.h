@@ -17,9 +17,7 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) id <SXViewControllerPresenting> viewControllerPresenting; // @synthesize viewControllerPresenting=_viewControllerPresenting;
 - (id)activityGroupForAction:(id)arg1;
-- (id)initWithViewControllerPresenting:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

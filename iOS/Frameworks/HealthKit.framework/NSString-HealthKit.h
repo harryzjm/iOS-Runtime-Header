@@ -16,6 +16,7 @@
 - (id)hk_SHA224Hash;
 - (_Bool)hk_isBetweenLowerBuildVersion:(id)arg1 upperBuildVersion:(id)arg2;
 - (long long)hk_compareBuildVersionWithString:(id)arg1;
+- (id)hk_stringIndentedBy:(unsigned long long)arg1 prefix:(id)arg2;
 - (id)hk_stringIndentedBy:(unsigned long long)arg1;
 - (_Bool)hk_isBase64;
 - (id)hk_localizedFirstWordCapitalizedString;

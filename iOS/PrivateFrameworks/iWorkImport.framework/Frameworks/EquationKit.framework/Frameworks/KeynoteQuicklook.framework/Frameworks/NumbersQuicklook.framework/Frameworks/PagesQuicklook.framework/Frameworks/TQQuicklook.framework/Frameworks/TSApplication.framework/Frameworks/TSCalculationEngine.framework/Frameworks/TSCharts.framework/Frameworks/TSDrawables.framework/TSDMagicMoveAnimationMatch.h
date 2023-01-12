@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <TSDrawables/NSSecureCoding-Protocol.h>
+
 @class NSDictionary, NSLock, TSDTextureSet;
 
-@interface TSDMagicMoveAnimationMatch : NSObject
+@interface TSDMagicMoveAnimationMatch : NSObject <NSSecureCoding>
 {
     TSDTextureSet *_morphTexture;
     TSDTextureSet *_morphQueuedTexture;
@@ -27,6 +29,7 @@
     NSDictionary *_outgoingTextureActionBuildFinalAttributes;
 }
 
++ (_Bool)supportsSecureCoding;
 + (unsigned long long)magicMoveMorphTexturesPerSecond;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool shouldTearDownTextures; // @synthesize shouldTearDownTextures=_shouldTearDownTextures;
@@ -37,6 +40,8 @@
 @property(nonatomic) _Bool isMorphMatch; // @synthesize isMorphMatch=_isMorphMatch;
 @property(retain, nonatomic) TSDTextureSet *incomingTexture; // @synthesize incomingTexture=_incomingTexture;
 @property(retain, nonatomic) TSDTextureSet *outgoingTexture; // @synthesize outgoingTexture=_outgoingTexture;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (void)unlockCurrentMorphTexture;
 - (id)lockCurrentMorphTexture;
 - (void)clearMorphTexture;

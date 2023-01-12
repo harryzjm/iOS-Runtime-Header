@@ -15,11 +15,13 @@
 {
     _Bool _readerAvailable;
     _Bool _isSameDocumentNavigation;
+    _Bool _doesPageUseSearchEngineOptimizationMetadata;
     NSArray *_textSamples;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool doesPageUseSearchEngineOptimizationMetadata; // @synthesize doesPageUseSearchEngineOptimizationMetadata=_doesPageUseSearchEngineOptimizationMetadata;
 @property(copy, nonatomic) NSArray *textSamples; // @synthesize textSamples=_textSamples;
 @property(nonatomic) _Bool isSameDocumentNavigation; // @synthesize isSameDocumentNavigation=_isSameDocumentNavigation;
 @property(nonatomic, getter=isReaderAvailable) _Bool readerAvailable; // @synthesize readerAvailable=_readerAvailable;

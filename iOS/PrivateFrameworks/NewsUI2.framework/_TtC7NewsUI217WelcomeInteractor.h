@@ -8,6 +8,7 @@
 
 @class MISSING_TYPE;
 
+__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI217WelcomeInteractor : NSObject
 {
     MISSING_TYPE *delegate;

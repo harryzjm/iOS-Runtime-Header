@@ -18,6 +18,7 @@
     _Bool _needHostScore;
     _Bool _hostScoreForQuery;
     _Bool _recentlyBecameActive;
+    _Bool _fastStartStateActive;
     unsigned int _packetSequenceNumber;
     GKThreadsafeDictionary *_playersByIdentifier;
     NSMutableSet *_connectedPlayerIDs;
@@ -39,9 +40,14 @@
     NSDictionary *_networkStatistics;
     NSMutableDictionary *_hostScores;
     CDUnknownBlockType _chooseHostCompletion;
+    NSString *_groupIdentifier;
+    NSMutableDictionary *_playersByJoinType;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableDictionary *playersByJoinType; // @synthesize playersByJoinType=_playersByJoinType;
+@property(retain, nonatomic) NSString *groupIdentifier; // @synthesize groupIdentifier=_groupIdentifier;
+@property(nonatomic) _Bool fastStartStateActive; // @synthesize fastStartStateActive=_fastStartStateActive;
 @property(nonatomic) _Bool recentlyBecameActive; // @synthesize recentlyBecameActive=_recentlyBecameActive;
 @property(copy, nonatomic) CDUnknownBlockType chooseHostCompletion; // @synthesize chooseHostCompletion=_chooseHostCompletion;
 @property(nonatomic) _Bool hostScoreForQuery; // @synthesize hostScoreForQuery=_hostScoreForQuery;
@@ -90,6 +96,7 @@
 - (void)session:(id)arg1 didFailWithError:(id)arg2;
 - (void)session:(id)arg1 connectionWithPeerFailed:(id)arg2 withError:(id)arg3;
 - (void)session:(id)arg1 peer:(id)arg2 didChangeState:(int)arg3;
+- (void)addPlayerToGroup:(id)arg1;
 - (id)stringForGKPeerConnectionState:(int)arg1;
 - (id)stringForGKPlayerConnectionState:(long long)arg1;
 - (void)sendHostScoreAsQuery:(_Bool)arg1;
@@ -106,6 +113,7 @@
 - (void)reinviteeDeclinedNotification:(id)arg1;
 - (void)reinviteeAcceptedNotification:(id)arg1;
 - (void)sendConnectingStateCallbackToDelegate:(id)arg1 forPlayers:(id)arg2;
+- (id)connectedPlayers;
 - (void)sendStateCallbackToDelegate:(id)arg1 forPlayer:(id)arg2 state:(long long)arg3;
 - (void)sendStateCallbackForPlayer:(id)arg1 state:(long long)arg2;
 - (void)updateStateForPlayer:(id)arg1 state:(long long)arg2;
@@ -119,12 +127,15 @@
 - (id)playerFromPeer:(id)arg1;
 - (void)addPlayers:(id)arg1;
 - (id)voiceChatWithName:(id)arg1;
+- (void)putMultiplayerGroup;
 - (void)clearSession;
 - (void)disconnect;
 - (void)disconnectGuestSessions;
 - (void)sendVersionData:(unsigned char)arg1 toPeer:(id)arg2;
 - (void)sendVersionData:(unsigned char)arg1;
 - (_Bool)sendInviteData:(id)arg1 error:(id *)arg2;
+- (void)receivedPlayerSyncData:(id)arg1;
+- (void)syncPlayers:(id)arg1 forJoinType:(int)arg2 toInvitees:(id)arg3;
 - (_Bool)sendDataToAllPlayers:(id)arg1 withDataMode:(long long)arg2 error:(id *)arg3;
 - (_Bool)sendData:(id)arg1 toPlayers:(id)arg2 withDataMode:(long long)arg3 error:(id *)arg4;
 - (_Bool)sendData:(id)arg1 toPlayers:(id)arg2 dataMode:(long long)arg3 error:(id *)arg4;
@@ -133,6 +144,7 @@
 - (void)connectToNearbyPlayer:(id)arg1 withConnectionData:(id)arg2;
 - (void)connectToGuestPlayer:(id)arg1 withHostPlayer:(id)arg2;
 - (void)connectToPlayers:(id)arg1 withPeerDictionaries:(id)arg2 version:(unsigned char)arg3 sessionToken:(id)arg4 cdxTicket:(id)arg5;
+- (void)updateJoinedPlayer:(id)arg1 joinType:(int)arg2;
 - (void)updateRematchID;
 - (void)preLoadInviter:(id)arg1 sessionToken:(id)arg2;
 - (void)withEventQueueForPlayer:(id)arg1 create:(CDUnknownBlockType)arg2 perform:(CDUnknownBlockType)arg3;

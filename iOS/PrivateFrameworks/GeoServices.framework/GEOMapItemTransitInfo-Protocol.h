@@ -7,9 +7,10 @@
 #import <GeoServices/GEOMapItemTransitSchedule-Protocol.h>
 
 @class GEOComposedRoute, NSArray, NSString;
-@protocol GEOTransitSystem;
+@protocol GEOTransitNearbySchedule, GEOTransitSystem;
 
 @protocol GEOMapItemTransitInfo <GEOMapItemTransitSchedule>
+@property(readonly, nonatomic) id <GEOTransitNearbySchedule> nearbySchedule;
 @property(readonly, nonatomic) GEOComposedRoute *composedRoute;
 @property(readonly, nonatomic) NSArray *transitTripStops;
 @property(readonly, nonatomic) NSString *displayName;

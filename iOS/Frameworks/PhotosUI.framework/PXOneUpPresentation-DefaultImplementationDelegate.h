@@ -7,6 +7,7 @@
 #import <PhotosUICore/PXOneUpPresentation.h>
 
 @interface PXOneUpPresentation (DefaultImplementationDelegate)
++ (id)implementationDelegateNavigationControllerWithRootViewController:(id)arg1;
 - (id)defaultImplementationDelegate;
 @end
 

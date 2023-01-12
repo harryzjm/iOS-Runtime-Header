@@ -18,6 +18,7 @@
 
 + (id)eventEmitterForProtocols:(id)arg1 shouldQueue:(_Bool)arg2;
 + (id)eventEmitterForProtocols:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *queuedEvents; // @synthesize queuedEvents=_queuedEvents;
 @property(nonatomic) _Bool shouldQueue; // @synthesize shouldQueue=_shouldQueue;
 @property(retain, nonatomic) NSMutableArray *supportedProtocols; // @synthesize supportedProtocols=_supportedProtocols;
@@ -31,7 +32,6 @@
 - (void)unregisterListener:(id)arg1;
 - (void)registerListener:(id)arg1;
 - (void)dispatchQueuedEventsToListener:(id)arg1;
-- (void)dealloc;
 - (id)initWithSupportedProtocols:(id)arg1 shouldQueue:(_Bool)arg2;
 
 @end

@@ -6,7 +6,6 @@
 
 @class CKDDiscoverUserIdentitiesURLRequest, NSArray, NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface CKDPublicIdentityLookupRequest
 {
     CDUnknownBlockType _perLookupInfoProgressBlock;

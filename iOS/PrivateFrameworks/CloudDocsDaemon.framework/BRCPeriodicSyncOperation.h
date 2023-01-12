@@ -8,7 +8,6 @@
 
 @class BRCContainerScheduler, CKServerChangeToken, NSString;
 
-__attribute__((visibility("hidden")))
 @interface BRCPeriodicSyncOperation <BRCOperationSubclass>
 {
     BRCContainerScheduler *_scheduler;

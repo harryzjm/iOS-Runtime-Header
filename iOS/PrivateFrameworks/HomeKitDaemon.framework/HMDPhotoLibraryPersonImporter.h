@@ -11,8 +11,8 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDCloudPhotosSettingObserver, HMDLogEventDispatcher, HMDPhotoLibrary, HMFTimer, HMIExternalPersonManager, HMIHomePersonManager, NSObject, NSString, NSUUID;
-@protocol HMDPersonDataSource, OS_dispatch_queue;
+@class HMDCloudPhotosSettingObserver, HMDPhotoLibrary, HMFTimer, HMIExternalPersonManager, HMIHomePersonManager, NSObject, NSString, NSUUID;
+@protocol HMDPersonDataSource, HMMLogEventSubmitting, OS_dispatch_queue;
 
 @interface HMDPhotoLibraryPersonImporter : HMFObject <HMDPhotoLibraryChangeDelegate, HMFTimerDelegate, HMFLogging, HMDPersonDataReceiver>
 {
@@ -25,12 +25,12 @@
     HMDCloudPhotosSettingObserver *_cloudPhotosSettingObserver;
     CDUnknownBlockType _frequentUpdateTimerFactory;
     CDUnknownBlockType _infrequentUpdateTimerFactory;
-    HMDLogEventDispatcher *_logEventDispatcher;
+    id <HMMLogEventSubmitting> _logEventSubmitter;
 }
 
 + (id)logCategory;
 - (void).cxx_destruct;
-@property(retain) HMDLogEventDispatcher *logEventDispatcher; // @synthesize logEventDispatcher=_logEventDispatcher;
+@property(retain) id <HMMLogEventSubmitting> logEventSubmitter; // @synthesize logEventSubmitter=_logEventSubmitter;
 @property(copy) CDUnknownBlockType infrequentUpdateTimerFactory; // @synthesize infrequentUpdateTimerFactory=_infrequentUpdateTimerFactory;
 @property(copy) CDUnknownBlockType frequentUpdateTimerFactory; // @synthesize frequentUpdateTimerFactory=_frequentUpdateTimerFactory;
 @property(readonly) HMDCloudPhotosSettingObserver *cloudPhotosSettingObserver; // @synthesize cloudPhotosSettingObserver=_cloudPhotosSettingObserver;

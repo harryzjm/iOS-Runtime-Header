@@ -6,9 +6,9 @@
 
 #import <IconServices/ISCompositorResource-Protocol.h>
 
-@class ISImage;
+@class IFImage;
 
 @protocol ISScalableCompositorResource <ISCompositorResource>
-- (ISImage *)imageForSize:(struct CGSize)arg1 scale:(double)arg2;
+- (IFImage *)imageForSize:(struct CGSize)arg1 scale:(double)arg2;
 @end
 

@@ -17,9 +17,17 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (id)voiceSimilarToVoice:(id)arg1 inSiriSessionLanguage:(id)arg2;
+- (CDUnknownBlockType)outputVoiceComparator;
+- (id)voiceNamesForOutputLanguageCode:(id)arg1 gender:(long long)arg2;
+- (CDStruct_89ddc8e1)_voiceMaps;
+- (id)_getVoiceOrdering;
+- (id)_voicesFromVoiceMapWithLanguage:(id)arg1;
 - (id)loadInfoForVoicesWithLanguageCode:(id)arg1;
 - (id)defaultOutputVoiceForSiriSessionLanguage:(id)arg1;
 - (id)allOutputVoiceIdentifiersForSiriLanguage:(id)arg1;
+- (id)dialectsMap;
+- (id)outputVoiceColorDescriptorForOutputLanguageCode:(id)arg1 voiceName:(id)arg2;
 - (id)localizedNameOfVoiceGender:(long long)arg1 inDisplayLanguage:(id)arg2;
 - (id)localizedGenderOfOutputVoice:(id)arg1 inDisplayLanguage:(id)arg2;
 - (id)localizedNameOfOutputVoice:(id)arg1 inDisplayLanguage:(id)arg2;

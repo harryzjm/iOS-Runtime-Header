@@ -7,6 +7,7 @@
 #import <UIKit/UIGestureRecognizer.h>
 
 @interface UIGestureRecognizer (WKContentViewHelpers)
+- (_Bool)_wk_isTapAndAHalf;
 - (void)_wk_cancel;
 @end
 

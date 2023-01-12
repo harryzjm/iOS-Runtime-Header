@@ -6,11 +6,10 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-@class MISSING_TYPE, UIFont;
+@class UIFont;
 
 @interface _TtC7NewsUI218FeedNavImageStyler : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *topicColorProvider;
 }
 
 @property(nonatomic, readonly) double padding;

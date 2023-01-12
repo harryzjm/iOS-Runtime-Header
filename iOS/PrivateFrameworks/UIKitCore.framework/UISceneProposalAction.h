@@ -16,7 +16,9 @@
 - (long long)UIActionType;
 @property(readonly, copy, nonatomic) BSAction *action;
 @property(readonly, copy, nonatomic) NSString *sceneIdentifier;
+@property(readonly, copy, nonatomic) NSString *persistentIdentifier;
 - (id)initWithSceneIdentifier:(id)arg1 action:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)initWithPersistentIdentifier:(id)arg1 action:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end
 

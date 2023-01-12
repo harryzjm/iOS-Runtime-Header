@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ActionKitUI/WFRemoteUserInterface-Protocol.h>
+#import <ActionKitUI/WFActionRemoteUserInterface-Protocol.h>
 
 @class NSString, WFSendEmailContent;
 
-@protocol WFSendEmailActionUserInterface <WFRemoteUserInterface>
+@protocol WFSendEmailActionUserInterface <WFActionRemoteUserInterface>
 - (void)showWithEmailContent:(WFSendEmailContent *)arg1 preferredSendingEmailAddress:(NSString *)arg2 isManaged:(_Bool)arg3 completionHandler:(void (^)(WFSendUserInterfaceResult *, NSError *))arg4;
 @end
 

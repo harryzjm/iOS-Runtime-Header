@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CADObjectID, NSString;
+@class CADObjectID, NSArray, NSDate, NSString;
 
 @protocol CADNotificationMonitorInterface
-- (void)CADEventSetInvitationStatus:(int)arg1 forEvent:(CADObjectID *)arg2 error:(void (^)(int))arg3;
+- (void)CADEventSetInvitationStatus:(int)arg1 forEvents:(NSArray *)arg2 error:(void (^)(int))arg3;
 - (void)CADInviteReplyNotification:(CADObjectID *)arg1 setAlertedWithError:(void (^)(int))arg2;
 - (void)CADResourceChange:(CADObjectID *)arg1 setAlertedWithError:(void (^)(int))arg2;
 - (void)CADCalendar:(CADObjectID *)arg1 setAlertedWithError:(void (^)(int))arg2;
 - (void)CADEvent:(CADObjectID *)arg1 setAlertedWithError:(void (^)(int))arg2;
 - (void)CADDatabaseGetInboxRepliedSectionItems:(void (^)(int, NSArray *, NSArray *))arg1;
 - (void)CADDatabaseGetNotificationCountForSourceWithExternalIdentifier:(NSString *)arg1 excludingDelegateSources:(_Bool)arg2 filteredByShowsNotificationsFlag:(_Bool)arg3 reply:(void (^)(int, unsigned long long, NSArray *))arg4;
-- (void)CADDatabaseGetEventNotificationItemsFilteredByShowsNotificationsFlag:(_Bool)arg1 calculateEarliestExpirationDate:(_Bool)arg2 reply:(void (^)(int, NSArray *, NSArray *, NSArray *, NSDate *))arg3;
+- (void)CADDatabaseGetEventNotificationItemsAfterDate:(NSDate *)arg1 filteredByShowsNotificationsFlag:(_Bool)arg2 calculateEarliestExpirationDate:(_Bool)arg3 reply:(void (^)(int, NSArray *, NSArray *, NSArray *, NSDate *))arg4;
 - (void)CADDatabaseGetInviteReplyNotifications:(void (^)(int, NSArray *))arg1;
 - (void)CADDatabaseGetResourceChanges:(void (^)(int, NSArray *))arg1;
 - (void)CADCalendarSetClearedFromNotificationCenter:(CADObjectID *)arg1 error:(void (^)(int))arg2;

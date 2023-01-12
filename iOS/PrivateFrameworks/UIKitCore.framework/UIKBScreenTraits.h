@@ -17,13 +17,19 @@
     _Bool _touchpadInput;
     _Bool _isKeyboardMinorEdgeWidth;
     _Bool _isInPopover;
+    _Bool _isSplit;
+    _Bool _supportsSplit;
+    _Bool _centerFilled;
+    _Bool _isFloating;
     UIScreen *_screen;
     long long _orientation;
     double _keyboardWidth;
     double _keyboardBarHeight;
+    struct CGSize _stretchFactor;
     struct CGRect _bounds;
 }
 
++ (id)_activeKeyboardWindowForScreen:(id)arg1;
 + (void)setMockIdiom:(long long)arg1;
 + (id)traitsForPopoverEmulatingWidth:(double)arg1 minorEdge:(_Bool)arg2 orientation:(long long)arg3 idiom:(long long)arg4;
 + (id)fullScreenTraitsWithScreen:(id)arg1 orientation:(long long)arg2;
@@ -31,6 +37,11 @@
 + (id)traitsWithScreen:(id)arg1 orientation:(long long)arg2;
 + (id)traitsForInputModeWithScreen:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool isFloating; // @synthesize isFloating=_isFloating;
+@property(nonatomic) _Bool centerFilled; // @synthesize centerFilled=_centerFilled;
+@property(nonatomic) _Bool supportsSplit; // @synthesize supportsSplit=_supportsSplit;
+@property(nonatomic) _Bool isSplit; // @synthesize isSplit=_isSplit;
+@property(nonatomic) struct CGSize stretchFactor; // @synthesize stretchFactor=_stretchFactor;
 @property(readonly, nonatomic) _Bool isInPopover; // @synthesize isInPopover=_isInPopover;
 @property(nonatomic) double keyboardBarHeight; // @synthesize keyboardBarHeight=_keyboardBarHeight;
 @property(readonly, nonatomic) _Bool isKeyboardMinorEdgeWidth; // @synthesize isKeyboardMinorEdgeWidth=_isKeyboardMinorEdgeWidth;
@@ -44,6 +55,7 @@
 - (id)description;
 - (void)updateForTextInputTraits:(id)arg1 supportedInteractionModel:(unsigned long long)arg2;
 @property(readonly, nonatomic) long long idiom;
+@property(readonly, nonatomic) struct CGSize keyboardScreenReferenceSize;
 - (id)initWithScreen:(id)arg1 orientation:(long long)arg2 allowFloating:(_Bool)arg3 ignoreRemoteKeyboard:(_Bool)arg4;
 - (id)initForInputModeWithScreen:(id)arg1;
 

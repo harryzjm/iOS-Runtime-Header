@@ -22,7 +22,6 @@
 @property(readonly, nonatomic) struct _SXConvertibleValue bottom; // @synthesize bottom=_bottom;
 @property(readonly, nonatomic) struct _SXConvertibleValue right; // @synthesize right=_right;
 @property(readonly, nonatomic) struct _SXConvertibleValue top; // @synthesize top=_top;
-- (id)initWithTop:(struct _SXConvertibleValue)arg1 bottom:(struct _SXConvertibleValue)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

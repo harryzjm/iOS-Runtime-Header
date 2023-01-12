@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_fbc62bac)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_fbc62bac)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSString *meta_info;
 @property(readonly, nonatomic) _Bool do_not_translate;
 @property(readonly, nonatomic) int end_index;

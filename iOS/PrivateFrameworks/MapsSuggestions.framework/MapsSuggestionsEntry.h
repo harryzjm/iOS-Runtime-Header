@@ -61,6 +61,7 @@
 - (_Bool)_wasEverOfType:(long long)arg1;
 - (void)_overrideType:(long long)arg1;
 - (id)objectForJSON;
+- (id)nameForJSON;
 @property(readonly, copy, nonatomic) NSString *serializedBase64String;
 @property(readonly, copy, nonatomic) NSString *serializedHexString;
 - (void)resetAvailableRemovalBehavior:(long long)arg1;

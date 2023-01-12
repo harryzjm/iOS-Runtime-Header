@@ -12,7 +12,7 @@
 {
     MISSING_TYPE *name;
     MISSING_TYPE *serialQueue;
-    MISSING_TYPE *$__lazy_storage_$_listenerTrampoline;
+    MISSING_TYPE *listenerTrampoline;
     MISSING_TYPE *listeners;
 }
 

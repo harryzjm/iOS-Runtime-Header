@@ -6,19 +6,30 @@
 
 #import <objc/NSObject.h>
 
-@class AVAudioDeviceList;
+@class AVAudioDevice, AVAudioDeviceList;
+@protocol OS_dispatch_queue;
 
 @interface AVAudioClient : NSObject
 {
     AVAudioDeviceList *deviceList;
+    CDUnknownBlockType _mutedTalkerNotificationHandler;
+    NSObject<OS_dispatch_queue> *_clientAudioSessionQueue;
+    int _processId;
 }
 
++ (void)registerSecureMicrophoneEngagedHandler:(CDUnknownBlockType)arg1;
++ (int)unregisterFromMutedTalkerNotifications;
++ (int)registerForMutedTalkerNotifications:(CDUnknownBlockType)arg1;
++ (void)setFollowSystemOutputEnabled:(_Bool)arg1;
++ (void)setFollowSystemInputEnabled:(_Bool)arg1;
 + (_Bool)setOutputDevice:(id)arg1;
 + (_Bool)setInputDevice:(id)arg1;
 + (id)currentOutputDevice;
 + (id)currentInputDevice;
 + (id)defaultOutputDevice;
 + (id)defaultInputDevice;
++ (_Bool)isMixingVoiceWithMediaEnabled;
++ (void)setMixingVoiceWithMediaEnabled:(_Bool)arg1;
 + (_Bool)isMicrophoneMuted;
 + (void)setMicrophoneMuted:(_Bool)arg1;
 + (_Bool)hasActiveAudioSession;
@@ -27,14 +38,38 @@
 + (void)setAudioSessionProperties:(id)arg1;
 + (void)startAudioSession;
 + (void)startAudioSessionWithCompletionHandler:(CDUnknownBlockType)arg1;
-+ (void)initializeAudioSessionQ;
++ (id)sharedInstance;
 @property(retain, nonatomic) AVAudioDeviceList *deviceList; // @synthesize deviceList;
 - (id)outputDevices;
 - (id)inputDevices;
 - (id)devices;
 @property(nonatomic) CDUnknownBlockType changeListener;
+- (void)unregisterBlocksForDelegateNotifications;
+- (void)registerBlocksForDelegateNotifications;
+- (void)registerSecureMicrophoneEngagedHandler:(CDUnknownBlockType)arg1;
+- (void)cleanupSecureMicrophoneEngagedHandler;
+- (void)handleMutedTalkerNotificationWithXPCArguments:(id)arg1;
+- (int)unregisterFromMutedTalkerNotifications;
+- (int)registerForMutedTalkerNotifications:(CDUnknownBlockType)arg1;
+- (void)setFollowSystemOutputEnabled:(_Bool)arg1;
+- (void)setFollowSystemInputEnabled:(_Bool)arg1;
+- (_Bool)setOutputDevice:(id)arg1;
+- (_Bool)setInputDevice:(id)arg1;
+@property(readonly, nonatomic) AVAudioDevice *currentOutputDevice;
+@property(readonly, nonatomic) AVAudioDevice *currentInputDevice;
+@property(nonatomic, getter=isMixingVoiceWithMediaEnabled) _Bool mixingVoiceWithMediaEnabled;
+@property(nonatomic, getter=isMicrophoneMuted) _Bool microphoneMuted;
+- (_Bool)hasActiveAudioSession;
+- (void)resetAudioSessionOutputPortOverride;
+- (void)stopAudioSession;
+- (void)setAudioSessionProperties:(id)arg1;
+- (void)startAudioSessionWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)cleanupXPCConnection;
+- (void)cleanupMutedTalkerNotificationHandler;
+- (_Bool)setupXPCConnection;
 - (void)dealloc;
 - (id)init;
+- (id)initSharedInstance;
 
 @end
 

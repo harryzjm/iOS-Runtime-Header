@@ -17,6 +17,7 @@
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType availabilityChangedNotificationBlock; // @synthesize availabilityChangedNotificationBlock;
+@property(readonly, nonatomic, getter=isLikelyAvailable) _Bool likelyAvailable;
 @property(readonly, nonatomic, getter=isAvailable) _Bool available;
 @property(readonly, nonatomic) Class todayResultsFetchDescriptorClass;
 - (id)init;

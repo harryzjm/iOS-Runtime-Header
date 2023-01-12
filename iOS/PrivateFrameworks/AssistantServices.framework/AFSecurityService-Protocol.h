@@ -9,6 +9,10 @@
 @class NSData, NSDictionary, NSString;
 
 @protocol AFSecurityService <NSObject>
+- (oneway void)setInternalAuthSessionToken:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
+- (oneway void)internalAuthSessionToken:(void (^)(NSString *, NSError *))arg1;
+- (oneway void)setInternalAuthAppleConnectServiceTicket:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
+- (oneway void)internalAuthAppleConnectServiceTicket:(void (^)(NSString *, NSError *))arg1;
 - (oneway void)setKeychainValue:(NSData *)arg1 forKey:(NSString *)arg2 accountIdentifier:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
 - (oneway void)processDataMap:(NSDictionary *)arg1 usingProcedure:(long long)arg2 completion:(void (^)(NSDictionary *, NSDictionary *))arg3;
 - (oneway void)processData:(NSData *)arg1 usingProcedure:(long long)arg2 completion:(void (^)(NSData *, NSError *))arg3;

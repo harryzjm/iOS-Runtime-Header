@@ -17,6 +17,10 @@
 - (void).cxx_destruct;
 @property(retain) EKFrozenReminderSource *reminderSource; // @synthesize reminderSource=_reminderSource;
 - (id)description;
+- (void)setOwnerName:(id)arg1;
+- (id)ownerName;
+- (void)setDisplayOrder:(int)arg1;
+- (int)displayOrder;
 - (void)setDelegatedAccountOwnerStoreID:(id)arg1;
 - (id)delegatedAccountOwnerStoreID;
 - (void)setLastSyncErrorData:(id)arg1;
@@ -44,6 +48,8 @@
 - (id)constraintsName;
 @property(copy, nonatomic) NSString *externalID; // @dynamic externalID;
 @property(retain, nonatomic) NSString *UUID;
+- (void)setDefaultAllDayAlarmOffset:(id)arg1;
+- (id)defaultAllDayAlarmOffset;
 @property(copy, nonatomic) NSNumber *defaultAlarmOffset; // @dynamic defaultAlarmOffset;
 @property(copy, nonatomic) NSString *title; // @dynamic title;
 - (void)setStrictestEventPrivateValueRaw:(int)arg1;
@@ -52,6 +58,7 @@
 - (int)preferredEventPrivateValueRaw;
 @property(nonatomic) long long sourceType; // @dynamic sourceType;
 - (int)entityType;
+- (id)propertyKeyForUniqueIdentifier;
 - (id)constraints;
 
 // Remaining properties

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <IBFoundation/IBImageRepInfo.h>
+#import <AssetCatalogFoundation/IBImageRepInfo.h>
 
 @interface IBImageRepInfo (IBCTTSupport)
 + (id)imageRepCache;

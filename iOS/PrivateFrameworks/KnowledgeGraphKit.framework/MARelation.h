@@ -20,18 +20,14 @@
 - (id)repeatWithMinCount:(unsigned long long)arg1 maxCount:(unsigned long long)arg2;
 - (id)repeatWithCount:(unsigned long long)arg1;
 @property(readonly, nonatomic) MARelation *inverse;
+@property(readonly, nonatomic) MARelation *excludeSource;
 @property(readonly, nonatomic) MARelation *optionalStep;
 @property(readonly, nonatomic) MARelation *transitiveClosure;
 - (id)description;
 @property(readonly, nonatomic) NSString *visualString;
-- (id)adjacencySetFromSourceNodeIdentifiers:(id)arg1 graphStore:(id)arg2 error:(id *)arg3;
-- (id)adjacencySetFromSourceNodeIdentifier:(unsigned long long)arg1 graphStore:(id)arg2 error:(id *)arg3;
-- (_Bool)unionAdjacencySetFromSourceNodeIdentifiers:(id)arg1 toTargetNodeIdentifiers:(id)arg2 graphStore:(id)arg3 error:(id *)arg4;
-- (_Bool)unionAdjacencySetFromSourceNodeIdentifier:(unsigned long long)arg1 toTargetNodeIdentifiers:(id)arg2 graphStore:(id)arg3 error:(id *)arg4;
-- (id)adjacencyListFromSources:(id)arg1;
-- (id)adjacencyListFromSource:(id)arg1;
-- (void)unionAdjacencyListFromSources:(id)arg1 toTargets:(id)arg2;
-- (void)unionAdjacencyListFromSource:(id)arg1 toTargets:(id)arg2;
+- (id)adjacencyByJoiningWithAdjacency:(id)arg1 graph:(id)arg2;
+- (id)adjacencyWithStartNodeIdentifiers:(id)arg1 graph:(id)arg2;
+- (void)unionAdjacencySetFromSourceNodeIdentifiers:(id)arg1 toTargetNodeIdentifiers:(id)arg2 graph:(id)arg3;
 - (id)initForSubclassing;
 
 @end

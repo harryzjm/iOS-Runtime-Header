@@ -19,12 +19,13 @@ __attribute__((visibility("hidden")))
     MLMultiArray *_input;
 }
 
++ (id)shapeFromMultiArrayConstraint:(id)arg1 lastDimensionCountIfFlexible:(int)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) MLMultiArray *input; // @synthesize input=_input;
 - (void)setFeatureValue:(id)arg1 forFeatureName:(id)arg2;
 - (id)featureValueForName:(id)arg1;
 @property(readonly, nonatomic) NSSet *featureNames;
-- (id)initWithFeatureDescription:(id)arg1 allInputFeatureNames:(id)arg2;
+- (id)initWithFeatureDescription:(id)arg1 allInputFeatureNames:(id)arg2 elementCountPerChannel:(unsigned int)arg3 channelCount:(unsigned int)arg4;
 
 @end
 

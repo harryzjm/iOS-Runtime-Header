@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (void)setAudioConfiguration:(id)arg1;
 - (void)stop;
 - (void)start;
 - (void)removeAllRequests;

@@ -17,7 +17,10 @@
     id <AMSBagProtocol> _bag;
 }
 
-+ (id)_sortedTargets;
++ (_Bool)_openURL:(id)arg1 inApp:(id)arg2;
++ (_Bool)_openURLWithLaunchServices:(id)arg1;
++ (unsigned long long)_openModeForStandardURL:(id)arg1 inApp:(id)arg2 withLinks:(id)arg3;
++ (_Bool)_shouldOpenStandardURL:(id)arg1 inApp:(id)arg2 withLinks:(id)arg3;
 + (id)_modifiedURLFromURL:(id)arg1 bundleInfo:(id)arg2;
 + (id)openURL:(id)arg1 clientInfo:(id)arg2 bag:(id)arg3;
 + (void)openURL:(id)arg1 account:(id)arg2 preferredClient:(id)arg3;

@@ -9,7 +9,7 @@
 #import <HealthKit/HKDataCollectorClientInterface-Protocol.h>
 #import <HealthKit/_HKXPCExportable-Protocol.h>
 
-@class HKDataCollectorCollectionConfiguration, HKDevice, HKHealthStore, HKQuantityType, HKRetryableOperation, HKTaskServerProxyProvider, NSMutableArray, NSMutableDictionary, NSString, NSUUID;
+@class HKDataCollectorCollectionConfiguration, HKDevice, HKQuantityType, HKRetryableOperation, HKTaskServerProxyProvider, NSMutableArray, NSMutableDictionary, NSString, NSUUID;
 @protocol HKDataCollectorDelegate, OS_dispatch_queue, OS_dispatch_source;
 
 @interface HKDataCollector : NSObject <_HKXPCExportable, HKDataCollectorClientInterface>
@@ -17,7 +17,6 @@
     NSObject<OS_dispatch_queue> *_queue;
     long long _state;
     HKDevice *_device;
-    HKHealthStore *_healthStore;
     NSUUID *_identifier;
     HKTaskServerProxyProvider *_proxyProvider;
     NSString *_bundleIdentifier;
@@ -40,6 +39,7 @@
     _Bool _invalidated;
     CDUnknownBlockType _resumeCompletion;
     CDUnknownBlockType _finishCompletion;
+    double _lastLogTime;
     HKQuantityType *_quantityType;
     id <HKDataCollectorDelegate> _delegate;
 }

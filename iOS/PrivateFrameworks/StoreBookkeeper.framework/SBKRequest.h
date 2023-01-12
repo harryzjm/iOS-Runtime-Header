@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long method; // @synthesize method=_method;
 @property(readonly, nonatomic, getter=isConcurrent) _Bool concurrent; // @synthesize concurrent=_concurrent;
 @property(retain, nonatomic) SBKTransaction *transaction; // @synthesize transaction=_transaction;
+- (id)newURLOperationWithDelegate:(id)arg1;
 - (id)newURLOperation;
 - (id)_defaultHeaderFields;
 - (_Bool)acceptsGzipEncoding;

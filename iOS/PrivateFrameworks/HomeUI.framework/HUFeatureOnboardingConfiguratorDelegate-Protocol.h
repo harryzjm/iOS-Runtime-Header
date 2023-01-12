@@ -6,11 +6,10 @@
 
 #import <HomeUI/HUConfiguratorDelegate-Protocol.h>
 
-@class NSDictionary, UIViewController;
-@protocol HUConfigurationViewController;
+@class NAFuture, NSDictionary;
 
 @protocol HUFeatureOnboardingConfiguratorDelegate <HUConfiguratorDelegate>
 - (void)restartCurrentOnboarding;
-- (UIViewController<HUConfigurationViewController> *)getNextViewControllerForOnboardingInput:(NSDictionary *)arg1;
+- (NAFuture *)getNextViewControllerForOnboardingInput:(NSDictionary *)arg1;
 @end
 

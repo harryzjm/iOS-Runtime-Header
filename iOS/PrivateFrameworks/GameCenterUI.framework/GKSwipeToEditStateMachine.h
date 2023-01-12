@@ -23,6 +23,7 @@
     _UIDynamicAnimation *_openAnimation;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) _UIDynamicAnimation *openAnimation; // @synthesize openAnimation=_openAnimation;
 @property(nonatomic) double startTrackingX; // @synthesize startTrackingX=_startTrackingX;
 @property(retain, nonatomic) GKCollectionViewCell *editingCell; // @synthesize editingCell=_editingCell;
@@ -46,7 +47,6 @@
 - (double)xPositionForTranslation:(struct CGPoint)arg1;
 - (void)setDelegate:(id)arg1;
 @property(readonly, nonatomic) NSIndexPath *trackedIndexPath;
-- (void)dealloc;
 - (id)initWithCollectionView:(id)arg1;
 
 // Remaining properties

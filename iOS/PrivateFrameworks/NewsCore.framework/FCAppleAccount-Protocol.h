@@ -6,10 +6,13 @@
 
 #import <NewsCore/NSObject-Protocol.h>
 
-@class ACAccount, NFPromise, NSString;
+@class ACAccount, NFPromise, NSArray, NSString;
 @protocol FCAppleAccountObserver;
 
 @protocol FCAppleAccount <NSObject>
+@property(readonly, nonatomic) NSArray *allEmailAddresses;
+@property(readonly, nonatomic) NSString *appStoreEmailAddress;
+@property(readonly, nonatomic) NSString *primaryEmailAddress;
 @property(readonly, nonatomic) ACAccount *activeiTunesAccount;
 @property(readonly, nonatomic) NSString *endpointConnectionClientID;
 @property(readonly, nonatomic, getter=isUserSignedInToiCloud) _Bool userSignedInToiCloud;

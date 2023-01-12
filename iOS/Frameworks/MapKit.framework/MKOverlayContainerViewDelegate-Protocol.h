@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, VKMapView;
+@class MKOverlayContainerView, NSArray, VKMapView;
 @protocol MKOverlay, MKOverlayDrawable;
 
 @protocol MKOverlayContainerViewDelegate
 - (VKMapView *)vk_mapLayer;
-- (CDStruct_02837cd9)visibleMapRect;
+- (CDStruct_02837cd9)overlayContainerVisibleMapRect:(MKOverlayContainerView *)arg1;
 - (id <MKOverlayDrawable>)createDrawableForOverlay:(id <MKOverlay>)arg1;
 - (void)overlayContainerAddedDrawables:(NSArray *)arg1;
 @end

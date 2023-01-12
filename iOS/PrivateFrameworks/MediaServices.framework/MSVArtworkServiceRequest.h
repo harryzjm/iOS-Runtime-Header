@@ -8,15 +8,24 @@
 
 #import <MediaServices/NSSecureCoding-Protocol.h>
 
+@class NSMutableArray, NSMutableDictionary;
+
 @interface MSVArtworkServiceRequest : NSObject <NSSecureCoding>
 {
+    NSMutableDictionary *_sandboxExtensions;
+    NSMutableArray *_sandboxHandles;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) long long operationPriority;
 @property(readonly, nonatomic) Class operationClass;
+- (void)releaseSandboxExtensions;
+- (void)consumeSandboxExtensions;
+- (void)addSandboxExtensionIfNeededForURL:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)init;
 
 @end
 

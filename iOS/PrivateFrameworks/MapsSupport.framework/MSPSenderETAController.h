@@ -41,7 +41,6 @@ __attribute__((visibility("hidden")))
 - (void)navigationListenerETAUpdated:(id)arg1;
 - (void)navigationListenerIsReady:(id)arg1;
 - (void)navigationListenerDestinationUpdated:(id)arg1;
-- (void)navigationListener:(id)arg1 didFailWithError:(id)arg2;
 - (void)touchedRules;
 - (id)rulesForParticipant:(id)arg1;
 - (_Bool)_validateNavigationState:(id *)arg1;
@@ -55,7 +54,6 @@ __attribute__((visibility("hidden")))
 - (void)stopSharing;
 - (void)stopSharingWithGroup:(id)arg1;
 - (_Bool)startSharingWithGroup:(id)arg1 error:(id *)arg2;
-- (void)stopSharingWithMessages:(id)arg1;
 - (_Bool)startSharingWithMessages:(id)arg1 error:(id *)arg2;
 - (void)stopSharingWith:(id)arg1;
 - (_Bool)startSharingWith:(id)arg1 error:(id *)arg2;

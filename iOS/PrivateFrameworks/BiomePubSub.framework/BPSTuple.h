@@ -15,6 +15,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id second; // @synthesize second=_second;
 @property(readonly, nonatomic) id first; // @synthesize first=_first;
+- (id)description;
 - (id)initWithFirst:(id)arg1 second:(id)arg2;
 - (id)init;
 

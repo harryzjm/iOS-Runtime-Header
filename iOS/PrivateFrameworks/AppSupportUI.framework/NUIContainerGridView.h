@@ -13,7 +13,7 @@
     NSMutableArray *_viewRows;
     struct _NUIGridArrangement _arrangement;
     CDStruct_0d6b4eb6 _visibleCount;
-    struct map<UIView *, const std::__1::pair<_NSRange, _NSRange>, std::__1::less<UIView *>, std::__1::allocator<std::__1::pair<UIView *const, const std::__1::pair<_NSRange, _NSRange>>>> _viewRanges;
+    struct map<UIView *, const std::pair<_NSRange, _NSRange>, std::less<UIView *>, std::allocator<std::pair<UIView *const, const std::pair<_NSRange, _NSRange>>>> _viewRanges;
     struct CGSize _spacing;
     NSMutableArray *_rows;
     NSMutableArray *_columns;
@@ -32,8 +32,8 @@
 - (void).cxx_destruct;
 @property(nonatomic) double columnWidth; // @synthesize columnWidth=_columnWidth;
 @property(nonatomic) double rowHeight; // @synthesize rowHeight=_rowHeight;
-- (void)populateGridArrangementDimension:(vector_b8a5df6e *)arg1 withCells:(const vector_f8404f95 *)arg2 axis:(long long)arg3;
-- (void)populateGridArrangementCells:(vector_f8404f95 *)arg1;
+- (void)populateGridArrangementDimension:(void *)arg1 withCells:(const void *)arg2 axis:(long long)arg3;
+- (void)populateGridArrangementCells:(void *)arg1;
 - (void)didRemoveArrangedSubview:(id)arg1 atIndex:(long long)arg2;
 - (void)didInsertArrangedSubview:(id)arg1 atIndex:(long long)arg2;
 - (_Bool)setNeedsInvalidation:(long long)arg1;

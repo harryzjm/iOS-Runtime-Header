@@ -11,7 +11,7 @@
 + (id)_URLStringForCoverImageKey:(id)arg1 inRecord:(id)arg2;
 + (_Bool)_useTaggedImages;
 - (id)recordFromCKRecord:(id)arg1 base:(id)arg2;
-- (id)recordIDPrefix;
+- (id)recordIDPrefixes;
 - (unsigned long long)highThresholdDataSizeLimit;
 - (unsigned long long)lowThresholdDataSizeLimit;
 - (unsigned long long)storeVersion;

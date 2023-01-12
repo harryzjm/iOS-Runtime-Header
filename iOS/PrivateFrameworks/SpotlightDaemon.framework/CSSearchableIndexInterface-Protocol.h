@@ -10,6 +10,10 @@
 
 @protocol CSSearchableIndexInterface <NSObject>
 - (void)indexFromBundle:(NSString *)arg1 protectionClass:(NSString *)arg2 personaID:(NSString *)arg3 options:(long long)arg4 items:(NSData *)arg5 itemsText:(NSData *)arg6 itemsHTML:(NSData *)arg7 clientState:(NSData *)arg8 clientStateName:(NSString *)arg9 deletes:(NSData *)arg10 completionHandler:(void (^)(NSError *))arg11;
+- (void)provideFileURLForBundle:(NSString *)arg1 itemIdentifier:(NSString *)arg2 typeIdentifier:(NSString *)arg3 options:(long long)arg4 completionHandler:(void (^)(NSURL *, NSError *))arg5;
+- (void)provideDataForBundle:(NSString *)arg1 itemIdentifier:(NSString *)arg2 typeIdentifier:(NSString *)arg3 options:(long long)arg4 completionHandler:(void (^)(NSData *, NSError *))arg5;
+- (void)provideFileURLForBundle:(NSString *)arg1 itemIdentifier:(NSString *)arg2 typeIdentifier:(NSString *)arg3 inPlace:(_Bool)arg4 allowDownload:(_Bool)arg5 completionHandler:(void (^)(NSURL *, NSError *))arg6;
+- (void)provideDataForBundle:(NSString *)arg1 itemIdentifier:(NSString *)arg2 typeIdentifier:(NSString *)arg3 allowDownload:(_Bool)arg4 completionHandler:(void (^)(NSData *, NSError *))arg5;
 - (void)provideFileURLForBundle:(NSString *)arg1 identifier:(NSString *)arg2 type:(NSString *)arg3 completionHandler:(void (^)(NSURL *, NSError *))arg4;
 - (void)provideDataForBundle:(NSString *)arg1 identifier:(NSString *)arg2 type:(NSString *)arg3 completionHandler:(void (^)(NSData *, NSError *))arg4;
 - (void)fetchLastClientStateWithProtectionClass:(NSString *)arg1 forBundleID:(NSString *)arg2 clientStateName:(NSString *)arg3 options:(long long)arg4 completionHandler:(void (^)(NSData *, NSError *))arg5;

@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <MessageUI/NSObject-Protocol.h>
+
 @class NSArray;
 
-@protocol MFMailCompositionAdditionalDonating
+@protocol MFMailCompositionAdditionalDonating <NSObject>
 @property(copy, nonatomic) NSArray *contentURLs;
 @property(copy, nonatomic) NSArray *contentText;
 @property(copy, nonatomic) NSArray *cloudPhotoIDs;

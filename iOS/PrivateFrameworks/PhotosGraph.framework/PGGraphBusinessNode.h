@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PhotosGraph/PGAssetCollectionFeature-Protocol.h>
 #import <PhotosGraph/PGGraphPortraitNamedEntity-Protocol.h>
 
-@class NSSet, NSString, PPNamedEntity;
+@class NSSet, NSString, PGGraphBusinessNodeCollection, PPNamedEntity;
 
-@interface PGGraphBusinessNode <PGGraphPortraitNamedEntity>
+@interface PGGraphBusinessNode <PGGraphPortraitNamedEntity, PGAssetCollectionFeature>
 {
     NSString *_name;
     NSString *_uuid;
@@ -18,7 +19,10 @@
     double _radius;
 }
 
++ (id)momentOfBusiness;
++ (id)publicEventOfBusiness;
 + (id)categoryOfBusiness;
++ (id)filter;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) double radius; // @synthesize radius=_radius;
 @property(readonly, nonatomic) double longitude; // @synthesize longitude=_longitude;
@@ -26,11 +30,14 @@
 @property(readonly, nonatomic) long long venueCapacity; // @synthesize venueCapacity=_venueCapacity;
 @property(readonly, nonatomic) NSString *UUID; // @synthesize UUID=_uuid;
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
+@property(readonly, nonatomic) NSString *featureIdentifier;
+@property(readonly, nonatomic) unsigned long long featureType;
+@property(readonly, nonatomic) PGGraphBusinessNodeCollection *collection;
 - (id)associatedNodesForRemoval;
+@property(readonly, nonatomic) struct CLLocationCoordinate2D coordinate;
 - (id)keywordDescription;
-@property(readonly, nonatomic) NSSet *momentNodes;
 @property(readonly, nonatomic) NSSet *publicEventNodes;
-- (void)enumerateMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateMomentEdgesAndNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateBusinessCategoryNodesUsingBlock:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSSet *businessCategories;
 - (unsigned short)domain;
@@ -38,9 +45,8 @@
 @property(readonly, copy) NSString *description;
 - (id)propertyDictionary;
 - (_Bool)hasProperties:(id)arg1;
-- (void)setLocalProperties:(id)arg1;
-- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
-- (id)init;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3 properties:(id)arg4;
+- (id)initWithName:(id)arg1 uuid:(id)arg2 venueCapacity:(long long)arg3 latitude:(double)arg4 longitude:(double)arg5 radius:(double)arg6;
 @property(readonly, nonatomic) PPNamedEntity *pg_namedEntity;
 
 // Remaining properties

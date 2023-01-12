@@ -23,6 +23,7 @@
     NSString *_phoneticFamilyName;
     NSString *_iCloudUserID;
     NSString *_orgID;
+    NSString *_personNumber;
     long long _passcodeType;
     long long _axmAccountStatus;
     NSString *_emailAddress;
@@ -31,6 +32,7 @@
     NSString *_searchText;
 }
 
++ (id)_propertyNames;
 + (unsigned long long)roleFromString:(id)arg1;
 + (id)stringForRole:(unsigned long long)arg1;
 + (_Bool)supportsSecureCoding;
@@ -45,6 +47,7 @@
 @property(nonatomic, getter=isFederatedAccount) _Bool federatedAccount; // @synthesize federatedAccount=_federatedAccount;
 @property(nonatomic, getter=isProgressTrackingAllowed) _Bool progressTrackingAllowed; // @synthesize progressTrackingAllowed=_progressTrackingAllowed;
 @property(nonatomic) long long passcodeType; // @synthesize passcodeType=_passcodeType;
+@property(copy, nonatomic) NSString *personNumber; // @synthesize personNumber=_personNumber;
 @property(copy, nonatomic) NSString *orgID; // @synthesize orgID=_orgID;
 @property(copy, nonatomic) NSString *iCloudUserID; // @synthesize iCloudUserID=_iCloudUserID;
 @property(copy, nonatomic) NSString *phoneticFamilyName; // @synthesize phoneticFamilyName=_phoneticFamilyName;
@@ -57,6 +60,7 @@
 @property(readonly, nonatomic) NSPersonNameComponents *nameComponents;
 @property(readonly, nonatomic) NSString *displayName;
 - (id)dictionaryRepresentation;
+- (void)mergeWithObject:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)_init;

@@ -10,7 +10,7 @@
 #import <TextInputUI/TUISystemInputAssistantPageViewDelegate-Protocol.h>
 
 @class NSString, TUIAssistantButtonBarView, TUICandidateView, TUIPredictionView, TUISystemInputAssistantLayout, TUISystemInputAssistantLayoutStandard, TUISystemInputAssistantPageView, UIKBRenderConfig, UIKBVisualEffectView, UITextInputAssistantItem;
-@protocol TUISystemInputAssistantViewDelegate;
+@protocol TUISystemInputAssistantStyle, TUISystemInputAssistantViewDelegate, _UIButtonBarAppearanceDelegate;
 
 @interface TUISystemInputAssistantView : UIView <TUIAssistantButtonBarViewDelegate, TUISystemInputAssistantPageViewDelegate>
 {
@@ -22,38 +22,46 @@
     _Bool _showsExpandableButtonBarItems;
     _Bool _hidesExpandableButton;
     _Bool _showsButtonBarItemsInline;
+    _Bool _isTransitioning;
     UIKBRenderConfig *_renderConfig;
     UIKBVisualEffectView *_backdropView;
+    TUIAssistantButtonBarView *_leftButtonBar;
+    TUIAssistantButtonBarView *_rightButtonBar;
     id <TUISystemInputAssistantViewDelegate> _delegate;
     TUISystemInputAssistantLayout *_layout;
+    id <TUISystemInputAssistantStyle> _style;
     UIView *_centerView;
     double _centerViewWidth;
     UITextInputAssistantItem *_inputAssistantItem;
     UITextInputAssistantItem *_systemInputAssistantItem;
-    TUIAssistantButtonBarView *_leftButtonBar;
-    TUIAssistantButtonBarView *_rightButtonBar;
     TUIAssistantButtonBarView *_unifiedButtonBar;
     TUISystemInputAssistantPageView *_centerPageView;
     TUISystemInputAssistantLayoutStandard *_defaultLayout;
+    id <_UIButtonBarAppearanceDelegate> _appearanceDelegate;
+    struct CGRect _containerFrame;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <_UIButtonBarAppearanceDelegate> appearanceDelegate; // @synthesize appearanceDelegate=_appearanceDelegate;
 @property(retain, nonatomic) TUISystemInputAssistantLayoutStandard *defaultLayout; // @synthesize defaultLayout=_defaultLayout;
 @property(retain, nonatomic) TUISystemInputAssistantPageView *centerPageView; // @synthesize centerPageView=_centerPageView;
 @property(retain, nonatomic) TUIAssistantButtonBarView *unifiedButtonBar; // @synthesize unifiedButtonBar=_unifiedButtonBar;
-@property(retain, nonatomic) TUIAssistantButtonBarView *rightButtonBar; // @synthesize rightButtonBar=_rightButtonBar;
-@property(retain, nonatomic) TUIAssistantButtonBarView *leftButtonBar; // @synthesize leftButtonBar=_leftButtonBar;
+@property(readonly, nonatomic) _Bool isTransitioning; // @synthesize isTransitioning=_isTransitioning;
 @property(retain, nonatomic) UITextInputAssistantItem *systemInputAssistantItem; // @synthesize systemInputAssistantItem=_systemInputAssistantItem;
 @property(retain, nonatomic) UITextInputAssistantItem *inputAssistantItem; // @synthesize inputAssistantItem=_inputAssistantItem;
 @property(nonatomic) _Bool showsButtonBarItemsInline; // @synthesize showsButtonBarItemsInline=_showsButtonBarItemsInline;
 @property(nonatomic) _Bool hidesExpandableButton; // @synthesize hidesExpandableButton=_hidesExpandableButton;
 @property(nonatomic) _Bool showsExpandableButtonBarItems; // @synthesize showsExpandableButtonBarItems=_showsExpandableButtonBarItems;
+@property(readonly, nonatomic) struct CGRect containerFrame; // @synthesize containerFrame=_containerFrame;
 @property(nonatomic) double centerViewWidth; // @synthesize centerViewWidth=_centerViewWidth;
 @property(nonatomic) _Bool centerViewHidden; // @synthesize centerViewHidden=_centerViewHidden;
 @property(retain, nonatomic) UIView *centerView; // @synthesize centerView=_centerView;
 @property(nonatomic) _Bool backgroundVisible; // @synthesize backgroundVisible=_backgroundVisible;
+@property(retain, nonatomic) id <TUISystemInputAssistantStyle> style; // @synthesize style=_style;
 @property(retain, nonatomic) TUISystemInputAssistantLayout *layout; // @synthesize layout=_layout;
 @property(nonatomic) __weak id <TUISystemInputAssistantViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property(retain, nonatomic) TUIAssistantButtonBarView *rightButtonBar; // @synthesize rightButtonBar=_rightButtonBar;
+@property(retain, nonatomic) TUIAssistantButtonBarView *leftButtonBar; // @synthesize leftButtonBar=_leftButtonBar;
 @property(retain, nonatomic) UIKBVisualEffectView *backdropView; // @synthesize backdropView=_backdropView;
 @property(retain, nonatomic) UIKBRenderConfig *renderConfig; // @synthesize renderConfig=_renderConfig;
 - (id)_hostedCenterView;
@@ -66,13 +74,18 @@
 - (_Bool)shouldSkipValidation;
 - (void)validateIfNeeded;
 - (void)setNeedsValidation;
+- (void)transitionToLayout:(id)arg1 withStyle:(id)arg2 start:(CDUnknownBlockType)arg3;
 - (void)_setRenderConfig:(id)arg1;
+@property(readonly, nonatomic) _Bool isInputAssistantItemHidden;
 - (void)_setButtonBarItemsExpanded:(_Bool)arg1 animationType:(unsigned long long)arg2;
 - (void)setButtonBarItemsExpanded:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)_didTapExpandButton:(id)arg1;
 - (void)_updateExpandableButtonBarItems;
 - (id)_createUnifiedButtonBarIfNecessary;
+@property(readonly, nonatomic) _Bool showsCenterView;
+- (void)_updateStyle;
 - (void)_updateBarButtonGroups;
+- (void)_updateBarButtonGroupsIfNeeded;
 - (id)_currentLayoutViewSet;
 - (void)_updateVisualProvider;
 - (_Bool)_areButtonBarItemsVisible;

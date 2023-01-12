@@ -6,21 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class AVTEditingModelColors, NSArray;
+@class AVTAvatarEditorColorDefaultsProvider, AVTEditingModelColors, NSArray;
 
 @interface AVTCoreModel : NSObject
 {
     NSArray *_groups;
     AVTEditingModelColors *_colors;
+    AVTAvatarEditorColorDefaultsProvider *_colorDefaultsProvider;
     unsigned long long _platform;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long platform; // @synthesize platform=_platform;
+@property(readonly, copy, nonatomic) AVTAvatarEditorColorDefaultsProvider *colorDefaultsProvider; // @synthesize colorDefaultsProvider=_colorDefaultsProvider;
 @property(readonly, copy, nonatomic) AVTEditingModelColors *colors; // @synthesize colors=_colors;
 @property(readonly, copy, nonatomic) NSArray *groups; // @synthesize groups=_groups;
 - (id)description;
-- (id)initWithGroups:(id)arg1 colors:(id)arg2 forPlatform:(unsigned long long)arg3;
+- (id)initWithGroups:(id)arg1 colors:(id)arg2 colorDefaultsProvider:(id)arg3 forPlatform:(unsigned long long)arg4;
 
 @end
 

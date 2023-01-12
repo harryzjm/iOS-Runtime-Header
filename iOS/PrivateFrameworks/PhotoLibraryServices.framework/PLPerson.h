@@ -7,15 +7,18 @@
 #import <PhotoLibraryServices/PLCloudDeletable-Protocol.h>
 #import <PhotoLibraryServices/PLFileSystemMetadataPersistence-Protocol.h>
 #import <PhotoLibraryServices/PLSyncablePerson-Protocol.h>
+#import <PhotoLibraryServices/PLUserFeedbackSupporting-Protocol.h>
 
 @class NSDictionary, NSSet, NSString, PLDetectedFace, PLDetectedFaceGroup;
 
-@interface PLPerson <PLSyncablePerson, PLCloudDeletable, PLFileSystemMetadataPersistence>
+@interface PLPerson <PLSyncablePerson, PLCloudDeletable, PLFileSystemMetadataPersistence, PLUserFeedbackSupporting>
 {
 }
 
 + (id)fetchFinalMergeTargetPersonForPersonWithUUID:(id)arg1 context:(id)arg2 predicate:(id)arg3;
 + (_Bool)resetAllInLibrary:(id)arg1 error:(id *)arg2;
++ (id)predicateToExcludeTorsoOnlyPerson;
++ (id)predicateForIncludedDetectionTypes:(id)arg1;
 + (id)predicateForPersistence;
 + (id)predicateForVisibleKeyFace;
 + (id)predicateForPersonsNeedingFaceCropGenerationForFaceObjectID:(id)arg1;
@@ -45,6 +48,7 @@
 + (void)resetCloudStateInPhotoLibrary:(id)arg1;
 + (id)personsToPrefetchInManagedObjectContext:(id)arg1;
 + (id)personsToUploadInManagedObjectContext:(id)arg1 limit:(long long)arg2;
++ (id)_predicateForSupportedDetectionTypesForUpload;
 + (id)_predicateForSupportedVerifiedTypesForUpload;
 + (id)listOfSyncedProperties;
 - (_Bool)dedupeGraphPersons:(id)arg1 error:(id *)arg2;
@@ -83,7 +87,7 @@
 @property(readonly, copy) NSString *cloudUUIDForDeletion;
 @property(readonly) long long cloudDeletionType;
 - (void)prepareForDeletion;
-- (_Bool)shouldIndexForSearch;
+@property(readonly, nonatomic) _Bool shouldIndexForSearch;
 - (_Bool)validForPersistenceChangedForChangedKeys:(id)arg1;
 - (id)payloadIDForTombstone:(id)arg1;
 - (id)payloadForChangedKeys:(id)arg1;
@@ -98,6 +102,7 @@
 - (void)setCPLSyncedMergeTarget:(id)arg1;
 - (id)cplPersonChange;
 - (id)momentShare;
+- (void)applyCPLChangeForContactMatchingDictionary:(id)arg1;
 - (id)cplFullRecord;
 - (_Bool)isSyncableChange;
 - (_Bool)supportsCloudUpload;
@@ -113,6 +118,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(retain, nonatomic) NSSet *detectedFaces; // @dynamic detectedFaces;
+@property(nonatomic) short detectionType; // @dynamic detectionType;
 @property(retain, nonatomic) NSString *displayName; // @dynamic displayName;
 @property(readonly, nonatomic) int faceCount; // @dynamic faceCount;
 @property(retain, nonatomic) NSSet *faceCrops; // @dynamic faceCrops;
@@ -136,6 +142,7 @@
 @property(nonatomic) unsigned short suggestedForClientType; // @dynamic suggestedForClientType;
 @property(readonly) Class superclass;
 @property(nonatomic) int type; // @dynamic type;
+@property(retain, nonatomic) NSSet *userFeedbacks; // @dynamic userFeedbacks;
 @property(nonatomic) int verifiedType; // @dynamic verifiedType;
 
 @end

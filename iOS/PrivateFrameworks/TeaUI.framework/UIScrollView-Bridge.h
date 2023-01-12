@@ -15,6 +15,7 @@
 - (_Bool)ts_scrollToTop:(_Bool)arg1;
 @property(readonly, nonatomic) double ts_verticalVelocity;
 @property(readonly, nonatomic) _Bool ts_isAnimatingScroll;
+@property(readonly, nonatomic) _Bool ts_isVerticalBouncing;
 @property(readonly, nonatomic) _Bool ts_isScrolling;
 @end
 

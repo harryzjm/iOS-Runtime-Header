@@ -22,7 +22,7 @@
 }
 
 - (void).cxx_destruct;
-@property _Bool endEvent; // @synthesize endEvent=_endEvent;
+@property(nonatomic) _Bool endEvent; // @synthesize endEvent=_endEvent;
 @property(retain, nonatomic) HMDAnalyticsCharacteristicThresholdEventData *thresholdEvent; // @synthesize thresholdEvent=_thresholdEvent;
 @property(retain, nonatomic) HMDAnalyticsSignificantTimeEventData *significantTimeEvent; // @synthesize significantTimeEvent=_significantTimeEvent;
 @property(retain, nonatomic) HMDAnalyticsPresenceEventData *presenceEvent; // @synthesize presenceEvent=_presenceEvent;

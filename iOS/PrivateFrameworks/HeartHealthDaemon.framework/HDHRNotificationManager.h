@@ -20,6 +20,7 @@
 }
 
 - (void).cxx_destruct;
+- (_Bool)_queue_fakeCardioFitnessNotificationWithData:(_Bool)arg1 repeat:(_Bool)arg2 error:(id *)arg3;
 - (void)_unsubscribeToFakingNotifications;
 - (void)_subscribeToFakingNotification:(id)arg1 type:(id)arg2 withData:(_Bool)arg3;
 - (void)_subscribeToFakingNotifications;

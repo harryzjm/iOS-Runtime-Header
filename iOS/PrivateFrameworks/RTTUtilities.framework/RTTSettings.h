@@ -29,10 +29,15 @@
 @property(nonatomic) _Bool internalOverrideTTYAvailability;
 - (void)resetCannedResponses;
 @property(retain, nonatomic) NSArray *cannedResponses;
+@property(nonatomic) _Bool isRelayCallingEnabled;
+@property(nonatomic) _Bool supportsRelayCalling;
 @property(nonatomic) _Bool continuityRTTIsSupported;
+@property(readonly, nonatomic) _Bool rttCallHoldEnabled;
 @property(nonatomic) _Bool rttInlineAbbreviationBarEnabled;
 @property(nonatomic) _Bool rttNotificationsEnabled;
 @property(nonatomic) _Bool hasReceivedRTTCall;
+- (void)setAnswerRTTCallsAsMuted:(_Bool)arg1 forContext:(id)arg2;
+- (_Bool)answerRTTCallsAsMutedForContext:(id)arg1;
 - (void)setPreferredRelayNumber:(id)arg1 forContext:(id)arg2;
 - (id)preferredRelayNumberForContext:(id)arg1;
 - (void)setTTYShouldBeRealtime:(_Bool)arg1 forContext:(id)arg2;
@@ -43,6 +48,7 @@
 - (_Bool)TTYSoftwareEnabledForContext:(id)arg1;
 - (void)setTTYHardwareEnabled:(_Bool)arg1 forContext:(id)arg2;
 - (_Bool)TTYHardwareEnabledForContext:(id)arg1;
+@property(nonatomic) _Bool answerRTTCallsAsMuted;
 @property(retain, nonatomic) NSString *preferredRelayNumber;
 @property(nonatomic) _Bool ttyShouldBeRealtime;
 @property(nonatomic) double lastDBVacuum;

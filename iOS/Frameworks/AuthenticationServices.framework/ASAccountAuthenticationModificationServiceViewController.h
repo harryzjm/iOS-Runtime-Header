@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)presentUIForAccountModificationHostViewController:(id)arg1;
 - (void)accountModificationHostViewController:(id)arg1 didFinishWithCredential:(id)arg2 userInfo:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)accountModificationHostViewControllerDidCompleteUpgradeToSignInWithApple:(id)arg1 userInfo:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (_Bool)_isKeychainSyncEnabled;
 - (void)_updateKeychainWithNewCredential:(id)arg1;
 - (void)_deleteExistingKeychainCredentialIfPossible;
 - (_Bool)_ensureHostHasAccountModificationEntitlement;

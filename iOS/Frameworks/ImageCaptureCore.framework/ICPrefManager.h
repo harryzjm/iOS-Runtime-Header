@@ -20,6 +20,8 @@ __attribute__((visibility("hidden")))
 
 + (id)defaultAuthManager;
 @property(retain, nonatomic) NSXPCConnection *authConnection; // @synthesize authConnection=_authConnection;
+- (void)resetControlAuthorizationWithCompletion:(CDUnknownBlockType)arg1;
+- (void)resetContentsAuthorizationWithCompletion:(CDUnknownBlockType)arg1;
 - (_Bool)getGoodNewsStatus;
 - (void)requestControlAuthorizationShouldPrompt:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)getControlAuthorizationStatus;

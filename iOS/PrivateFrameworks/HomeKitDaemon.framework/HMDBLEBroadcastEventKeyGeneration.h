@@ -4,19 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitMetrics/HMMLogEvent.h>
+
 #import <HomeKitDaemon/HMDAWDLogEvent-Protocol.h>
 
 @class HMDAccessory, NSString;
 
-@interface HMDBLEBroadcastEventKeyGeneration <HMDAWDLogEvent>
+@interface HMDBLEBroadcastEventKeyGeneration : HMMLogEvent <HMDAWDLogEvent>
 {
     int _reason;
     HMDAccessory *_accessory;
 }
 
 + (id)broadcastKeyGenerationEventForAccessory:(id)arg1 reason:(int)arg2;
-+ (id)uuid;
-+ (void)initialize;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) int reason; // @synthesize reason=_reason;
 @property(readonly, nonatomic) HMDAccessory *accessory; // @synthesize accessory=_accessory;

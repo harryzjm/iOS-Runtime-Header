@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_d926c39e)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_d926c39e)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) _Bool enable_geo_location_features;
 @property(readonly, nonatomic) double longitude;
 @property(readonly, nonatomic) double latitude;

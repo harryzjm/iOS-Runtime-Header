@@ -31,7 +31,7 @@
     NSMutableSet *_runningBundleIdentifiers;
     NSMutableSet *_userNotificationEnabledBundleIdentifiers;
     NSMutableSet *_visibleUserNotificationEnabledBundleIdentifiers;
-    NSSet *_backgroundAppRefreshBlackList;
+    NSSet *_backgroundAppRefreshDisabledList;
     NSMutableDictionary *_bundleIdentifierToRegistration;
     NSMutableDictionary *_environmentsToConnections;
     NSMutableSet *_bundleIdentifiersNeedingToken;
@@ -44,6 +44,7 @@
 - (void)_queue_performMigration;
 - (void)_queue_didCompleteInitialization;
 - (void)_queue_removeRegistrationForBundleIdentifier:(id)arg1;
+- (void)_queue_setPushRegistration:(id)arg1 forBundleIdentifier:(id)arg2;
 - (void)_queue_invalidateTokenForBundleIdentifier:(id)arg1;
 - (_Bool)allowsRemoteNotificationsForBundleIdentifier:(id)arg1;
 - (void)backgroundRefreshApplicationsDidChange;
@@ -67,7 +68,7 @@
 - (void)_queue_didChangeApplicationState:(unsigned int)arg1 forBundleIdentifier:(id)arg2;
 - (void)_queue_moveTopicsForApplication:(id)arg1 fromList:(unsigned long long)arg2 toList:(unsigned long long)arg3;
 - (void)_queue_backgroundRefreshApplicationsDidChange;
-- (void)_queue_reloadBackgroundAppRefreshBlackList;
+- (void)_queue_reloadBackgroundAppRefreshDisabledList;
 - (void)_queue_reloadRegistrations;
 - (void)notificationSourcesDidUninstall:(id)arg1;
 - (void)notificationSourcesDidInstall:(id)arg1;

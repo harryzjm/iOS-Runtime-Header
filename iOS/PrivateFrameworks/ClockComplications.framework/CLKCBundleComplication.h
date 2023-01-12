@@ -4,22 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class CLKComplicationDescriptor, NSString;
 
 @interface CLKCBundleComplication
 {
     NSString *_bundleIdentifier;
     NSString *_appBundleIdentifier;
+    CLKComplicationDescriptor *_complicationDescriptor;
 }
 
 + (id)complicationWithBundleIdentifier:(id)arg1 appBundleIdentifier:(id)arg2;
++ (id)complicationWithBundleIdentifier:(id)arg1 appBundleIdentifier:(id)arg2 complicationDescriptor:(id)arg3;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) CLKComplicationDescriptor *complicationDescriptor; // @synthesize complicationDescriptor=_complicationDescriptor;
 @property(readonly, copy, nonatomic) NSString *appBundleIdentifier; // @synthesize appBundleIdentifier=_appBundleIdentifier;
 @property(readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
-- (id)initWithBundleIdentifier:(id)arg1 appBundleIdentifier:(id)arg2;
+- (id)initWithBundleIdentifier:(id)arg1 appBundleIdentifier:(id)arg2 complicationDescriptor:(id)arg3;
 
 @end
 

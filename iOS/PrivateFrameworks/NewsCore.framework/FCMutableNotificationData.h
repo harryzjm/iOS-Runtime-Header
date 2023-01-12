@@ -12,6 +12,7 @@
 {
 }
 
+@property(nonatomic) int deviceDigestMode;
 @property(copy, nonatomic) NSString *storefrontID;
 @property(copy, nonatomic) NSString *deviceToken;
 @property(copy, nonatomic) NSString *notificationUserID;

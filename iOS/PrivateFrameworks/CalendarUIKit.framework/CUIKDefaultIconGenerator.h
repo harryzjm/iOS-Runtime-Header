@@ -8,17 +8,39 @@
 
 #import <CalendarUIKit/CUIKIconGenerator-Protocol.h>
 
-@class NSString;
+@class NSCalendar, NSDateComponents, NSString;
 
 @interface CUIKDefaultIconGenerator : NSObject <CUIKIconGenerator>
 {
+    NSCalendar *_calendar;
+    NSDateComponents *_dateComponents;
+    long long _iconFormat;
+    double _canvasScale;
+    struct CGSize _canvasSize;
 }
 
-+ (id)_dateNameFromDateComponents:(id)arg1 calendar:(id)arg2 type:(long long)arg3;
++ (_Bool)_isBlackDayOfWeekRequiredForLocale:(id)arg1;
++ (id)_countriesRequiringBlackDayOfWeek;
++ (id)_dateNameFromDateComponents:(id)arg1 calendar:(id)arg2 type:(long long)arg3 forceAbbreviated:(_Bool)arg4;
 + (id)_dayNumberStringFromDateComponents:(id)arg1 calendar:(id)arg2;
-+ (void)_drawIconInContext:(struct CGContext *)arg1 imageSize:(struct CGSize)arg2 scale:(double)arg3 iconBase:(id)arg4 dateComponents:(id)arg5 calendar:(id)arg6 format:(long long)arg7;
 + (id)_whiteImageWithSize:(struct CGSize)arg1 scale:(double)arg2;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) double canvasScale; // @synthesize canvasScale=_canvasScale;
+@property(readonly, nonatomic) struct CGSize canvasSize; // @synthesize canvasSize=_canvasSize;
+@property(readonly, nonatomic) long long iconFormat; // @synthesize iconFormat=_iconFormat;
+@property(readonly, copy, nonatomic) NSDateComponents *dateComponents; // @synthesize dateComponents=_dateComponents;
+@property(readonly, copy, nonatomic) NSCalendar *calendar; // @synthesize calendar=_calendar;
+- (id)_colorForDayOfWeek;
+- (id)_iconRedColor;
+- (id)_iconBlackColor;
+- (id)_dayNumberFont;
+- (id)_dateNameFont;
+- (double)_roundSpecToActual:(double)arg1;
+- (void)_drawDateName;
+- (void)_drawDayNumber;
+- (void)_drawIconInContext:(struct CGContext *)arg1 iconBase:(id)arg2;
 - (struct CGImage *)iconImageWithDateComponents:(id)arg1 calendar:(id)arg2 format:(long long)arg3 size:(struct CGSize)arg4 scale:(double)arg5;
+- (id)initWithForceNoTextEffects:(_Bool)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

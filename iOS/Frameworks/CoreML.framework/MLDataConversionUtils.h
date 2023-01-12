@@ -10,6 +10,11 @@
 {
 }
 
++ (unsigned long long)sizeFromShape:(id)arg1;
++ (unsigned long long)mlComputeDataTypeSize:(long long)arg1;
++ (id)batchProviderFromMLComputeDataProvider:(id)arg1 neuralNetworkEngine:(id)arg2 options:(id)arg3 error:(id *)arg4;
++ (id)featureProviderFomMLComputeDataProvider:(id)arg1 neuralNetworkEngine:(id)arg2 options:(id)arg3 error:(id *)arg4;
++ (id)mlComputeDataProviderFromBatchProvider:(id)arg1 batchSize:(unsigned long long)arg2 forPrediction:(_Bool)arg3 neuralNetworkEngine:(id)arg4 error:(id *)arg5;
 + (id)batchProviderFromEspressoDataProvider:(id)arg1 neuralNetworkEngine:(id)arg2 options:(id)arg3 error:(id *)arg4;
 + (id)featureProviderFromEspressoDataProvider:(id)arg1 neuralNetworkEngine:(id)arg2 options:(id)arg3 error:(id *)arg4;
 + (id)espressoDataProviderFromBatchProvider:(id)arg1 forPrediction:(_Bool)arg2 neuralNetworkEngine:(id)arg3 error:(id *)arg4;

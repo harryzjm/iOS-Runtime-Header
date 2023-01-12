@@ -14,9 +14,12 @@
 }
 
 - (void).cxx_destruct;
+- (void)_startObservingSystemControllerLifecycle;
+- (void)_systemControllerDied:(id)arg1;
 - (void)_notifyHearstConnectionState:(_Bool)arg1;
 - (_Bool)_fetchHearstConnectionState;
 - (void)_stopMonitoring;
+- (void)_startObservingAudioRouteChange;
 - (void)_startMonitoringWithQueue:(id)arg1;
 - (void)activeAudioRouteDidChange:(id)arg1;
 - (_Bool)jarvisConnected;

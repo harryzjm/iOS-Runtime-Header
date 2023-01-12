@@ -10,12 +10,14 @@
 @protocol GGLRenderQueueSource;
 
 @protocol MDRenderTarget <NSObject>
-@property(readonly, nonatomic) struct RenderTarget *linearRenderTarget;
+@property(readonly, nonatomic) const struct RenderTargetFormat *blitFormat;
+@property(readonly, nonatomic) void *blitRenderTarget;
+@property(readonly, nonatomic) void *linearRenderTarget;
 @property(readonly, nonatomic) const struct RenderTargetFormat *linearFormat;
-@property(readonly, nonatomic) struct RenderTarget *finalRenderTarget;
+@property(readonly, nonatomic) void *finalRenderTarget;
 @property(readonly, nonatomic) struct CGSize sizeInPixels;
 @property(readonly, nonatomic) _Bool shouldRasterize;
-@property(readonly, nonatomic) struct Renderer *renderer;
+@property(readonly, nonatomic) void *renderer;
 @property(readonly, nonatomic) const struct RenderTargetFormat *format;
 @property(readonly, nonatomic) _Bool supportsFramebufferFetch;
 @property(readonly, nonatomic) _Bool multiSample;
@@ -24,7 +26,8 @@
 @property(nonatomic) double contentScale;
 @property(nonatomic) struct CGSize size;
 - (shared_ptr_fa6aa836)bitmapData;
-- (void)renderWithTimestamp:(double)arg1 completion:(function_84aba934)arg2;
+- (struct __IOSurface *)flipImage;
+- (void)renderWithTimestamp:(double)arg1 completion:(function_ffe40f9b)arg2;
 - (_Bool)hasRenderTarget;
 - (void)destroyRenderTarget;
 - (void)createRenderTarget;

@@ -14,6 +14,9 @@
 {
 }
 
++ (id)writePushPayloadsToDiskPath;
++ (_Bool)isWritePushPayloadsToDiskEnabled;
++ (_Bool)trustAnyCredential;
 + (_Bool)isLiveDeliveryWarmUpEnabled;
 + (void)setEnableLiveDeliveryWarmUp:(_Bool)arg1;
 + (id)phoneNumberValidationPreflightTestData;

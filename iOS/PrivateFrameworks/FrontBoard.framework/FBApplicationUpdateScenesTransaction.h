@@ -30,7 +30,6 @@
 - (void)_executeSceneUpdatesIfAppropriate;
 - (void)_noteDidCommitUpdateForScene:(id)arg1;
 - (void)_noteWillCommitUpdateForScene:(id)arg1;
-- (void)_performSynchronizedCommit:(id)arg1;
 - (id)_customizedDescriptionProperties;
 - (void)_didComplete;
 - (void)_willFailWithReason:(id)arg1;

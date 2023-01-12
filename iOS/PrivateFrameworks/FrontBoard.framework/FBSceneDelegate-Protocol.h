@@ -6,9 +6,12 @@
 
 #import <FrontBoard/FBSceneObserver-Protocol.h>
 
-@class FBScene, NSSet;
+@class FBScene, NSError, NSSet;
 
 @protocol FBSceneDelegate <FBSceneObserver>
+
+@optional
+- (void)sceneDidDeactivate:(FBScene *)arg1 withError:(NSError *)arg2;
 - (void)scene:(FBScene *)arg1 didReceiveActions:(NSSet *)arg2;
 @end
 

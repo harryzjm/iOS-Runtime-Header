@@ -11,6 +11,10 @@
 @protocol SBPasscodeEntryTransientOverlayViewControllerDelegate <NSObject>
 
 @optional
+- (NSString *)passcodeEntryTransientOverlayViewControllerStatusSubtitleText;
+- (NSString *)passcodeEntryTransientOverlayViewControllerStatusText;
+- (_Bool)passcodeEntryTransientOverlayViewControllerDidDetectBottomFaceOcclusionsSinceScreenOn:(SBPasscodeEntryTransientOverlayViewController *)arg1;
+- (_Bool)passcodeEntryTransientOverlayViewControllerDidDetectFaceOcclusionsSinceScreenOn:(SBPasscodeEntryTransientOverlayViewController *)arg1;
 - (void)passcodeEntryTransientOverlayViewControllerRequestsEmergencyCall:(SBPasscodeEntryTransientOverlayViewController *)arg1;
 - (void)passcodeEntryTransientOverlayViewControllerRequestsDismissal:(SBPasscodeEntryTransientOverlayViewController *)arg1;
 - (void)passcodeEntryTransientOverlayViewControllerDidDisappear:(SBPasscodeEntryTransientOverlayViewController *)arg1;

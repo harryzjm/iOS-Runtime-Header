@@ -7,6 +7,8 @@
 #import <SearchFoundation/SFVerticalLayoutCardSection.h>
 
 @interface SFVerticalLayoutCardSection (SearchUIViewClass)
+- (Class)_searchUIViewClass;
 - (Class)_searchUIHorizontallyScrollingButtonControllerClass;
+- (double)searchUIHorizontallyScrollingSectionModel_widthDimensionMultiplier;
 @end
 

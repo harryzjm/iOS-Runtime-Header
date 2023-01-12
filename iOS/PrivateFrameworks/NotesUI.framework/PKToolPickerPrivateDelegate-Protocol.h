@@ -6,9 +6,13 @@
 
 #import <NotesUI/NSObject-Protocol.h>
 
-@class PKToolPicker, UIView;
+@class NSUndoManager, PKToolPicker, UIColor, UIView;
 
 @protocol PKToolPickerPrivateDelegate <NSObject>
+
+@optional
+- (_Bool)_toolPicker:(PKToolPicker *)arg1 shouldChangeSelectedToolColor:(UIColor *)arg2;
+- (NSUndoManager *)_toolPickerUndoManager:(PKToolPicker *)arg1;
 - (void)_toolPicker:(PKToolPicker *)arg1 shouldSetVisible:(_Bool)arg2;
 - (UIView *)_colorPickerPopoverPresentationSourceView:(PKToolPicker *)arg1;
 - (struct CGRect)_colorPickerPopoverPresentationSourceRect:(PKToolPicker *)arg1;

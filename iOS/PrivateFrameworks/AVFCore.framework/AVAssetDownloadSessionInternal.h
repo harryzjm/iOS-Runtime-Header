@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class AVURLAsset, AVWeakReference, AVWeakReferencingDelegateStorage, NSArray, NSError, NSNumber, NSURL;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
 @interface AVAssetDownloadSessionInternal : NSObject
@@ -16,13 +16,12 @@ __attribute__((visibility("hidden")))
     struct OpaqueFigPlayer *player;
     struct OpaqueFigPlaybackItem *playbackItem;
     struct OpaqueFigAsset *figAsset;
-    NSObject<OS_dispatch_queue> *readWriteQueue;
     long long assetTypeLoadingStatus;
     long long status;
     _Bool didStartLoadingMetadata;
     NSError *error;
     AVWeakReferencingDelegateStorage *delegateStorage;
-    NSObject<OS_dispatch_queue> *figCallbackQueue;
+    NSObject<OS_dispatch_queue> *stateQueue;
     NSArray *mediaSelections;
     long long priority;
     NSURL *URL;
@@ -31,6 +30,8 @@ __attribute__((visibility("hidden")))
     NSNumber *cachePrimingDownloadTokenNum;
     AVURLAsset *asset;
     struct CMBaseObject *assetDownloader;
+    NSObject<OS_dispatch_source> *fileDownloadProgressTimer;
+    _Bool fileDownloadProgressTimerRunning;
 }
 
 @end

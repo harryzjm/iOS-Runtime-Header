@@ -32,21 +32,27 @@ struct CalDatabase {
     int _field14;
     int _field15;
     struct __CFString *_field16;
-    struct __CFString *_field17;
+    struct __CFURL *_field17;
     struct __CFString *_field18;
-    int _field19;
-    CDUnknownBlockType _field20;
-    struct _opaque_pthread_mutex_t _field21;
-    _Bool _field22;
-    struct __CFArray *_field23;
+    struct __CFString *_field19;
+    int _field20;
+    CDUnknownBlockType _field21;
+    struct _opaque_pthread_mutex_t _field22;
+    _Bool _field23;
     struct __CFArray *_field24;
     struct __CFArray *_field25;
-    id _field26;
-    _Bool _field27;
-    _Bool _field28;
-    struct __CFSet *_field29;
-    id _field30;
+    struct __CFArray *_field26;
+    struct __CFArray *_field27;
+    id _field28;
+    _Bool _field29;
+    _Bool _field30;
     _Bool _field31;
+    struct __CFSet *_field32;
+    id _field33;
+    id _field34;
+    int _field35;
+    _Bool _field36;
+    _Bool _field37;
 };
 
 struct CalEventOccurrenceCache;
@@ -67,6 +73,23 @@ struct _opaque_pthread_mutex_t {
 #pragma mark Typedef'd Structures
 
 typedef struct {
+    unsigned long long inLast1Day;
+    unsigned long long inNext1Day;
+    unsigned long long inNext7Days;
+    unsigned long long inNext28Days;
+    unsigned long long inNext365Days;
+} CDStruct_de1511da;
+
+typedef struct {
     unsigned int val[8];
 } CDStruct_4c969caf;
+
+typedef struct {
+    long long thresholds[9];
+    unsigned long long inLast1Day[10];
+    unsigned long long inNext1Day[10];
+    unsigned long long inNext7Days[10];
+    unsigned long long inNext28Days[10];
+    unsigned long long inNext365Days[10];
+} CDStruct_f8fc10c1;
 

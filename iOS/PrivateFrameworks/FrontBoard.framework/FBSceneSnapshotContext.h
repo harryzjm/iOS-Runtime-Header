@@ -8,19 +8,20 @@
 
 #import <FrontBoard/BSDescriptionProviding-Protocol.h>
 
-@class BSSettings, FBSSceneSettings, NSDate, NSSet, NSString;
+@class BSSettings, FBSSceneClientSettings, FBSSceneSettings, NSDate, NSSet, NSString;
 
 @interface FBSceneSnapshotContext : NSObject <BSDescriptionProviding>
 {
-    NSString *_sceneID;
-    struct CGRect _frame;
     _Bool _opaque;
-    NSSet *_layersToExclude;
+    NSString *_sceneID;
     FBSSceneSettings *_settings;
+    FBSSceneClientSettings *_clientSettings;
+    NSSet *_layersToExclude;
     long long _orientation;
     NSDate *_expirationDate;
     double _scale;
     BSSettings *_clientExtendedData;
+    struct CGRect _frame;
 }
 
 + (id)contextWithFBSContext:(id)arg1;
@@ -30,6 +31,7 @@
 @property(retain, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property(nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property(copy, nonatomic) NSSet *layersToExclude; // @synthesize layersToExclude=_layersToExclude;
+@property(copy, nonatomic) FBSSceneClientSettings *clientSettings; // @synthesize clientSettings=_clientSettings;
 @property(copy, nonatomic) FBSSceneSettings *settings; // @synthesize settings=_settings;
 @property(nonatomic, getter=isOpaque) _Bool opaque; // @synthesize opaque=_opaque;
 @property(nonatomic) struct CGRect frame; // @synthesize frame=_frame;

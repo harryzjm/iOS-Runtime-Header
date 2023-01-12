@@ -8,6 +8,9 @@
 {
 }
 
++ (void)_axTrimAndInterpolateValues:(id *)arg1 withXvalues:(id *)arg2;
++ (void)_axConfigureGraphAccessibilityFromData:(id)arg1 forGraphView:(id)arg2;
++ (void)_axConfigureGraphViewInfoFromData:(id)arg1 forGraphView:(id)arg2;
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;

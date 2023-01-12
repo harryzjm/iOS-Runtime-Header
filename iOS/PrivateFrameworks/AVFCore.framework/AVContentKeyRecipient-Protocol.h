@@ -4,7 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class AVContentKey, AVContentKeySession;
+
 @protocol AVContentKeyRecipient
 @property(readonly, nonatomic) _Bool mayRequireContentKeysForMediaDataProcessing;
+
+@optional
+- (void)contentKeySession:(AVContentKeySession *)arg1 didProvideContentKey:(AVContentKey *)arg2;
 @end
 

@@ -12,17 +12,26 @@
 {
     NSMutableDictionary *_imageCache;
     NSURL *_resourcesURL;
-    NSURL *_componentsURL;
+    NSURL *_environmentResourcesURL;
+    NSURL *_memojiResourcesURL;
+    NSURL *_animojiResourcesURL;
+    NSURL *_stickerResourcesURL;
+    NSURL *_poseResourcesURL;
+    NSURL *_memojiAssetsURL;
+    NSURL *_rootCacheURL;
+    NSURL *_subdivDataCacheURL;
 }
 
 + (id)_resourcePathInDirectoryURL:(id)arg1 subDirectory:(id)arg2 name:(id)arg3 ofType:(id)arg4;
 + (id)sharedResourceLocator;
 - (void).cxx_destruct;
+- (void)deleteLegacyCache;
+- (void)deleteObsoleteVersionsInCache:(id)arg1 currentVersion:(unsigned long long)arg2;
+@property(readonly) NSURL *subdivDataCacheURL;
+@property(readonly) NSURL *rootCacheURL;
+- (void)initCaches;
 - (struct CGImage *)imageWithPath:(id)arg1;
-@property(readonly) NSURL *propsURL;
-@property(readonly) NSURL *presetThumbnailsURL;
-@property(readonly) NSURL *materialsURL;
-@property(readonly) NSURL *componentsURL; // @synthesize componentsURL=_componentsURL;
+@property(readonly) NSURL *memojiAssetsURL;
 - (id)pathForPoseResource:(id)arg1 ofType:(id)arg2 inDirectory:(id)arg3;
 - (id)pathForPoseResource:(id)arg1 ofType:(id)arg2;
 - (id)pathForStickerResource:(id)arg1 ofType:(id)arg2 inDirectory:(id)arg3;
@@ -31,12 +40,13 @@
 - (id)pathForAnimojiResource:(id)arg1 ofType:(id)arg2;
 - (id)pathForMemojiResource:(id)arg1 ofType:(id)arg2 inDirectory:(id)arg3;
 - (id)pathForMemojiResource:(id)arg1 ofType:(id)arg2;
+- (id)pathForEnvironmentResource:(id)arg1 ofType:(id)arg2 inDirectory:(id)arg3;
+- (id)pathForEnvironmentResource:(id)arg1 ofType:(id)arg2;
 @property(readonly) NSURL *poseResourcesURL;
 @property(readonly) NSURL *stickerResourcesURL;
 @property(readonly) NSURL *animojiResourcesURL;
 @property(readonly) NSURL *memojiResourcesURL;
-- (id)resourcesURLForPathComponent:(id)arg1;
-@property(readonly) NSURL *resourcesURL; // @synthesize resourcesURL=_resourcesURL;
+@property(readonly) NSURL *resourcesURL;
 - (id)init;
 
 @end

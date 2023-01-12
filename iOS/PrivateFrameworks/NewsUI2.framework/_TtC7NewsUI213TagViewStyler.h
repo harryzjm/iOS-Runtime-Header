@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *headlineFontMetrics;
     MISSING_TYPE *subtitleFontMetrics;
+    MISSING_TYPE *feedNavImageStyler;
 }
 
 @end

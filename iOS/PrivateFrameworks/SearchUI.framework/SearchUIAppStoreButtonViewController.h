@@ -4,23 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class TLKStoreButton;
+#import <SearchUI/ASCLockupViewDelegate-Protocol.h>
 
-@interface SearchUIAppStoreButtonViewController
+@class ASCLockupView, NSString;
+
+@interface SearchUIAppStoreButtonViewController <ASCLockupViewDelegate>
 {
-    _Bool _appIsInstalled;
-    TLKStoreButton *_appStoreButton;
+    ASCLockupView *_lockupView;
 }
 
++ (id)lockupViewGroup;
++ (id)lockupCache;
++ (id)storeIdentifierForRowModel:(id)arg1;
 + (_Bool)supportsRowModel:(id)arg1;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool appIsInstalled; // @synthesize appIsInstalled=_appIsInstalled;
-@property(retain, nonatomic) TLKStoreButton *appStoreButton; // @synthesize appStoreButton=_appStoreButton;
+@property(retain, nonatomic) ASCLockupView *lockupView; // @synthesize lockupView=_lockupView;
+- (id)metricsActivityForLockupView:(id)arg1 toPerformActionOfOffer:(id)arg2;
+- (void)lockupViewDidInvalidateIntrinsicContentSize:(id)arg1;
+- (void)lockupViewDidFinishRequest:(id)arg1;
+- (id)presentingViewControllerForLockupView:(id)arg1;
 - (unsigned long long)type;
-- (_Bool)shouldTopAlignForAccessibilityContentSizes;
-- (void)buttonPressed;
 - (void)updateWithRowModel:(id)arg1;
+- (void)tlk_updateForAppearance:(id)arg1;
 - (id)setupView;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class AVCaptureDevice, AVCaptureInputPort, AVWeakReference, NSArray, NSMutableArray, NSString;
+@class AVCaptureDevice, AVCaptureDeviceInput, AVCaptureInputPort, AVWeakReference, NSArray, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface AVCaptureConnectionInternal : NSObject
 {
     NSMutableArray *inputPorts;
+    AVCaptureDeviceInput *sourceDeviceInput;
     AVCaptureDevice *sourceDevice;
     AVWeakReference *outputWeakReference;
     AVWeakReference *videoPreviewLayerWeakReference;

@@ -32,7 +32,7 @@
 - (void)_configureRootLayer:(id)arg1 sceneTransformLayer:(id)arg2 transformLayer:(id)arg3;
 - (_Bool)_transformLayerIncludesScreenRotation;
 - (void)_configureContextOptions:(id)arg1;
-- (CDStruct_a002d41c)_bindingDescription;
+- (CDStruct_98d137ef)_bindingDescription;
 - (id)_layerForCoordinateSpaceConversion;
 - (_Bool)_touchesInsideShouldHideCalloutBar;
 - (_Bool)_isWindowServerHostingManaged;

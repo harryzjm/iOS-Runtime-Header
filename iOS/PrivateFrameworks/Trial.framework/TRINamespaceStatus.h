@@ -13,15 +13,17 @@
 
 @interface TRINamespaceStatus : NSObject <NSCopying, NSSecureCoding>
 {
+    _Bool _lastFetchWasSuccess;
     unsigned int _compatibilityVersion;
     NSString *_namespaceName;
     NSDate *_lastFetchAttempt;
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)statusWithNamespaceName:(id)arg1 compatibilityVersion:(unsigned int)arg2 lastFetchAttempt:(id)arg3;
++ (id)statusWithNamespaceName:(id)arg1 compatibilityVersion:(unsigned int)arg2 lastFetchAttempt:(id)arg3 lastFetchWasSuccess:(_Bool)arg4;
 + (id)statusFromData:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool lastFetchWasSuccess; // @synthesize lastFetchWasSuccess=_lastFetchWasSuccess;
 @property(readonly, nonatomic) NSDate *lastFetchAttempt; // @synthesize lastFetchAttempt=_lastFetchAttempt;
 @property(readonly, nonatomic) unsigned int compatibilityVersion; // @synthesize compatibilityVersion=_compatibilityVersion;
 @property(readonly, nonatomic) NSString *namespaceName; // @synthesize namespaceName=_namespaceName;
@@ -33,10 +35,11 @@
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToStatus:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)copyWithReplacementLastFetchWasSuccess:(_Bool)arg1;
 - (id)copyWithReplacementLastFetchAttempt:(id)arg1;
 - (id)copyWithReplacementCompatibilityVersion:(unsigned int)arg1;
 - (id)copyWithReplacementNamespaceName:(id)arg1;
-- (id)initWithNamespaceName:(id)arg1 compatibilityVersion:(unsigned int)arg2 lastFetchAttempt:(id)arg3;
+- (id)initWithNamespaceName:(id)arg1 compatibilityVersion:(unsigned int)arg2 lastFetchAttempt:(id)arg3 lastFetchWasSuccess:(_Bool)arg4;
 - (id)asData;
 
 @end

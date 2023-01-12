@@ -8,7 +8,7 @@
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDHomeManager, NSArray, NSObject, NSString, NSUUID;
+@class HMDHomeManager, NSArray, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HMDAssistantGather : HMFObject <HMFLogging>
@@ -26,9 +26,9 @@
 - (void)getSyncEntityObjectsWithCompletionHandler:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSArray *homeKitObjects;
 - (void)gatherHomeKitObjectsWithCompletion:(CDUnknownBlockType)arg1;
-@property(readonly, nonatomic) NSUUID *currentHomeUUID;
+@property(readonly, nonatomic) NSString *currentHomeAssistantIdentifier;
 @property(readonly, nonatomic) NSString *currentHomeName;
-@property(readonly, nonatomic) NSUUID *primaryHomeUUID;
+@property(readonly, nonatomic) NSString *primaryHomeAssistantIdentifier;
 @property(readonly, nonatomic) NSString *primaryHomeName;
 @property(readonly, nonatomic) long long homeCount;
 - (id)_getCurrentHome;

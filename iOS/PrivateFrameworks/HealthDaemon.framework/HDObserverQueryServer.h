@@ -6,25 +6,27 @@
 
 #import <HealthDaemon/HDQuantitySeriesObserver-Protocol.h>
 
-@class NSNumber, NSString;
+@class NSArray, NSDictionary, NSNumber, NSSet, NSString;
 
 @interface HDObserverQueryServer <HDQuantitySeriesObserver>
 {
     _Bool _deliverOnUnlock;
     _Bool _observeUnfrozenSeries;
     NSNumber *_anchor;
+    NSSet *_updatedSampleTypes;
+    NSArray *_queryDescriptors;
+    NSDictionary *_sampleTypeToFilterMap;
 }
 
 + (_Bool)supportsAnchorBasedAuthorization;
 + (id)requiredEntitlements;
 + (Class)queryClass;
 - (void).cxx_destruct;
-- (void)_deliverDataWasUpdatedWithAnchor:(id)arg1;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(_Bool)arg2;
 - (_Bool)_shouldExecuteWhenProtectedDataIsUnavailable;
 - (_Bool)_shouldListenForUpdates;
+- (id)objectTypes;
 - (void)profile:(id)arg1 didDiscardSeriesOfType:(id)arg2;
-- (void)profile:(id)arg1 didInsertQuantity:(id)arg2 type:(id)arg3 dateInterval:(id)arg4 series:(id)arg5 anchor:(id)arg6;
 - (CDUnknownBlockType)transactionalQuantityInsertHandlerForProfile:(id)arg1 journaled:(_Bool)arg2 count:(long long)arg3;
 - (void)samplesOfTypesWereRemoved:(id)arg1 anchor:(id)arg2;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;

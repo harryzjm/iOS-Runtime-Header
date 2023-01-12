@@ -13,7 +13,6 @@
 @optional
 @property(copy, nonatomic) NSDictionary *previewOptions;
 @property(readonly) NSString *MIMEType;
-@property(readonly) _Bool wantsDefaultMediaPlayer;
 @property(readonly) UIColor *backgroundColorOverride;
 @property(readonly) double autoPlaybackPosition;
 @property(readonly, nonatomic) _Bool isPromisedItem;

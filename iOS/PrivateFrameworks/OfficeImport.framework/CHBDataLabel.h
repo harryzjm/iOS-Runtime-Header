@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)chdDataLabelFromXlChartCustomLabelText:(struct XlChartCustomLabelText *)arg1 state:(id)arg2;
++ (id)chdDataLabelFromXlChartCustomLabelText:(void *)arg1 state:(id)arg2;
 + (id)chdDataLabelFromXlChartSeriesFormat:(const struct XlChartSeriesFormat *)arg1 state:(id)arg2;
 + (int)xlLabelPositionEnumFromCHDDataLabelPosition:(int)arg1;
 + (int)chdLabelPositionEnumFromXlLabelPosition:(int)arg1;

@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_256a1c65)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_256a1c65)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) FTTextToSpeechResource *resource;
 @property(readonly, nonatomic) FTTextToSpeechVoice *voice;
 - (id)copyWithZone:(struct _NSZone *)arg1;

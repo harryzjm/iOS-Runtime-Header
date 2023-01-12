@@ -15,12 +15,16 @@
 }
 
 + (id)requestWithCommandRequests:(id)arg1;
++ (void)performRequest:(id)arg1 options:(unsigned long long)arg2 extendedStatusCompletion:(CDUnknownBlockType)arg3;
++ (void)performRequest:(id)arg1 extendedStatusCompletion:(CDUnknownBlockType)arg2;
 + (void)performRequest:(id)arg1 options:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)performRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *commands; // @synthesize commands=_commands;
 @property(nonatomic) unsigned long long options; // @synthesize options=_options;
+- (void)performWithExtendedStatusCompletion:(CDUnknownBlockType)arg1;
 - (void)performWithCompletion:(CDUnknownBlockType)arg1;
+- (id)description;
 - (id)initWithCommandRequests:(id)arg1;
 
 @end

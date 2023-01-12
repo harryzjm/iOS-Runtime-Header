@@ -39,6 +39,7 @@
 @property(readonly, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 - (id)wfSerializedRepresentation;
 @property(readonly, copy, nonatomic) NSString *wfName;
+- (_Bool)isEquivalentToParticipant:(id)arg1;
 - (id)initWithEKParticipant:(id)arg1;
 - (id)initWithURL:(id)arg1 name:(id)arg2 emailAddress:(id)arg3 status:(long long)arg4 role:(long long)arg5 type:(long long)arg6 sourceIdentifier:(id)arg7 isManaged:(_Bool)arg8 isCurrentUser:(_Bool)arg9 contactPredicate:(id)arg10;
 

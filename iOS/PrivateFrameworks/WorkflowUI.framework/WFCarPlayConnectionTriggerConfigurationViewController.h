@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <WorkflowEditor/WFTriggerConfigurationViewController.h>
+
 #import <WorkflowUI/UITableViewDataSource-Protocol.h>
 #import <WorkflowUI/UITableViewDelegate-Protocol.h>
 #import <WorkflowUI/WFTriggerMultiSelectCellDelegate-Protocol.h>
 
 @class NSArray, NSString, UITableView;
 
-@interface WFCarPlayConnectionTriggerConfigurationViewController <UITableViewDelegate, UITableViewDataSource, WFTriggerMultiSelectCellDelegate>
+@interface WFCarPlayConnectionTriggerConfigurationViewController : WFTriggerConfigurationViewController <UITableViewDelegate, UITableViewDataSource, WFTriggerMultiSelectCellDelegate>
 {
     UITableView *_tableView;
     NSArray *_sections;
@@ -29,7 +31,7 @@
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
 - (void)updateUI;
-- (id)initWithTrigger:(id)arg1 triggerManager:(id)arg2 mode:(unsigned long long)arg3;
+- (id)initWithTrigger:(id)arg1 mode:(unsigned long long)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -16,6 +16,7 @@
     double _scrollStepIntegral;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) double scrollStepIntegral; // @synthesize scrollStepIntegral=_scrollStepIntegral;
 @property(retain, nonatomic) NSDictionary *headerAttributes; // @synthesize headerAttributes=_headerAttributes;
 @property(retain, nonatomic) NSDictionary *itemAttributes; // @synthesize itemAttributes=_itemAttributes;
@@ -33,7 +34,6 @@
 - (double)maxHeaderHeight;
 - (_Bool)shouldInvalidateLayoutForBoundsChange:(struct CGRect)arg1;
 - (void)applyDefaults;
-- (void)dealloc;
 
 @end
 

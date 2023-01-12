@@ -13,7 +13,7 @@
     struct os_unfair_lock_s _tileLock;
     NSString *_firstFragment;
     NSString *_lastFragment;
-    struct map<NSString *, TSTHeaderNameMgrEntry *, std::__1::less<NSString *>, std::__1::allocator<std::__1::pair<NSString *const, TSTHeaderNameMgrEntry *>>> _nameFragmentToEntry;
+    struct map<NSString *, TSTHeaderNameMgrEntry *, std::less<NSString *>, std::allocator<std::pair<NSString *const, TSTHeaderNameMgrEntry *>>> _nameFragmentToEntry;
     TSTHeaderNameMgr *_headerNameMgr;
 }
 
@@ -23,7 +23,7 @@
 @property(retain, nonatomic) NSString *lastFragment; // @synthesize lastFragment=_lastFragment;
 @property(retain, nonatomic) NSString *firstFragment; // @synthesize firstFragment=_firstFragment;
 - (id)splitTile;
-- (struct TSTHeaderNameMgrEntry *)fragmentEntryForString:(id)arg1 createIfMissing:(_Bool)arg2;
+- (void *)fragmentEntryForString:(id)arg1 createIfMissing:(_Bool)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)unpackAfterUnarchive:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;

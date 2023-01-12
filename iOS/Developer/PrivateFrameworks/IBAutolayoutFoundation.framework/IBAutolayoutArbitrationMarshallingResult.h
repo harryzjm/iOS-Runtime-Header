@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <IBFoundation/IBObjectBasedMarshallingResult.h>
-
 @class IBAutolayoutArbitrationResult;
 
-@interface IBAutolayoutArbitrationMarshallingResult : IBObjectBasedMarshallingResult
+@interface IBAutolayoutArbitrationMarshallingResult
 {
     IBAutolayoutArbitrationResult *_arbitrationResult;
 }

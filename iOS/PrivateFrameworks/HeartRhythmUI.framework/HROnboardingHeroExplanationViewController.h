@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HealthUI/HKOnboardingBaseViewController.h>
+
 #import <HeartRhythmUI/HRStackedButtonViewDelegate-Protocol.h>
 
 @class HRStackedButtonView, NSLayoutConstraint, NSString, UILabel, UIView;
 
-@interface HROnboardingHeroExplanationViewController <HRStackedButtonViewDelegate>
+@interface HROnboardingHeroExplanationViewController : HKOnboardingBaseViewController <HRStackedButtonViewDelegate>
 {
     long long _textAlignment;
     UIView *_heroView;

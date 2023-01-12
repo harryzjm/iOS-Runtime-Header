@@ -11,7 +11,7 @@
 @interface TSTCellDictionary : NSObject
 {
     struct os_unfair_lock_s _lock;
-    struct map<TSUCellCoord, TSTCell *, std::__1::less<TSUCellCoord>, std::__1::allocator<std::__1::pair<const TSUCellCoord, TSTCell *>>> _cellsByCoord;
+    struct map<TSUCellCoord, TSTCell *, std::less<TSUCellCoord>, std::allocator<std::pair<const TSUCellCoord, TSTCell *>>> _cellsByCoord;
     TSPTemporaryObjectContextDelegate *_temporaryObjectContextDelegate;
     TSPObjectContext *_temporaryContext;
     struct TSCECellCoordSet _cellCoordsToStyleUpgradeForFormulatext;
@@ -26,6 +26,7 @@
 - (struct TSCECellCoordSet)allCellCoords;
 - (id)allCells;
 - (void)removeAllCells;
+- (_Bool)hasCellAtCellID:(struct TSUCellCoord)arg1;
 - (id)cellAtCellID:(struct TSUCellCoord)arg1;
 - (void)setCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2;
 - (id)init;

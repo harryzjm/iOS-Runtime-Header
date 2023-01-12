@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, NSData, NSMutableArray, NSString, NTPBDate, NTPBRecordBase;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLLIVERPOOLTagMetadata, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, NSData, NSMutableArray, NSString, NTPBDate, NTPBRecordBase;
 
 @interface NTPBArticleRecord : PBCodable <NSCopying>
 {
@@ -16,6 +16,7 @@
     long long _behaviorFlags;
     long long _bodyTextLength;
     unsigned long long _halfLifeMilliseconds;
+    double _layeredCoverAspectRatio;
     long long _minimumNewsVersion;
     long long _publisherArticleVersion;
     long long _thumbnailFocalFrame;
@@ -30,9 +31,11 @@
     NSString *_accessoryText;
     NSMutableArray *_allowedStorefrontIDs;
     NSData *_articleRecirculationConfiguration;
+    NSMutableArray *_authors;
     NTPBRecordBase *_base;
     NSMutableArray *_blockedStorefrontIDs;
     COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *_channelConversionStats;
+    COMAPPLEFELDSPARPROTOCOLLIVERPOOLTagMetadata *_channelTagMetadata;
     NSString *_clusterID;
     int _contentType;
     NSString *_contentURL;
@@ -47,6 +50,7 @@
     NSMutableArray *_iAdKeywords;
     NSMutableArray *_iAdSectionIDs;
     NSString *_language;
+    NSString *_layeredCover;
     NSMutableArray *_linkedArticleIDs;
     NSMutableArray *_linkedIssueIDs;
     NSMutableArray *_moreFromPublisherArticleIDs;
@@ -73,9 +77,13 @@
     NSString *_stocksScores;
     int _storyType;
     NSString *_subtitle;
+    NSString *_thumbnailAccentColor;
+    NSString *_thumbnailBackgroundColor;
     NSString *_thumbnailHQURL;
     NSString *_thumbnailLQURL;
     NSString *_thumbnailMediumURL;
+    NSString *_thumbnailPrimaryColor;
+    NSString *_thumbnailTextColor;
     NSString *_thumbnailURL;
     NSString *_thumbnailUltraHQURL;
     NSString *_thumbnailWidgetHQTaggedURL;
@@ -101,6 +109,7 @@
         unsigned int behaviorFlags:1;
         unsigned int bodyTextLength:1;
         unsigned int halfLifeMilliseconds:1;
+        unsigned int layeredCoverAspectRatio:1;
         unsigned int minimumNewsVersion:1;
         unsigned int publisherArticleVersion:1;
         unsigned int thumbnailFocalFrame:1;
@@ -124,6 +133,7 @@
     } _has;
 }
 
++ (Class)authorsType;
 + (Class)linkedIssueIDsType;
 + (Class)linkedArticleIDsType;
 + (Class)experimentalTitlesType;
@@ -137,6 +147,14 @@
 + (Class)iAdKeywordsType;
 + (Class)iAdCategoriesType;
 + (Class)flintFontResourceIDsType;
+@property(retain, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLTagMetadata *channelTagMetadata; // @synthesize channelTagMetadata=_channelTagMetadata;
+@property(retain, nonatomic) NSMutableArray *authors; // @synthesize authors=_authors;
+@property(retain, nonatomic) NSString *thumbnailAccentColor; // @synthesize thumbnailAccentColor=_thumbnailAccentColor;
+@property(retain, nonatomic) NSString *thumbnailTextColor; // @synthesize thumbnailTextColor=_thumbnailTextColor;
+@property(retain, nonatomic) NSString *thumbnailBackgroundColor; // @synthesize thumbnailBackgroundColor=_thumbnailBackgroundColor;
+@property(retain, nonatomic) NSString *thumbnailPrimaryColor; // @synthesize thumbnailPrimaryColor=_thumbnailPrimaryColor;
+@property(nonatomic) double layeredCoverAspectRatio; // @synthesize layeredCoverAspectRatio=_layeredCoverAspectRatio;
+@property(retain, nonatomic) NSString *layeredCover; // @synthesize layeredCover=_layeredCover;
 @property(retain, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *globalConversionStats; // @synthesize globalConversionStats=_globalConversionStats;
 @property(retain, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *channelConversionStats; // @synthesize channelConversionStats=_channelConversionStats;
 @property(retain, nonatomic) NSString *narrativeTrackTextRanges; // @synthesize narrativeTrackTextRanges=_narrativeTrackTextRanges;
@@ -226,6 +244,17 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasChannelTagMetadata;
+- (id)authorsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)authorsCount;
+- (void)addAuthors:(id)arg1;
+- (void)clearAuthors;
+@property(readonly, nonatomic) _Bool hasThumbnailAccentColor;
+@property(readonly, nonatomic) _Bool hasThumbnailTextColor;
+@property(readonly, nonatomic) _Bool hasThumbnailBackgroundColor;
+@property(readonly, nonatomic) _Bool hasThumbnailPrimaryColor;
+@property(nonatomic) _Bool hasLayeredCoverAspectRatio;
+@property(readonly, nonatomic) _Bool hasLayeredCover;
 @property(readonly, nonatomic) _Bool hasGlobalConversionStats;
 @property(readonly, nonatomic) _Bool hasChannelConversionStats;
 @property(readonly, nonatomic) _Bool hasNarrativeTrackTextRanges;

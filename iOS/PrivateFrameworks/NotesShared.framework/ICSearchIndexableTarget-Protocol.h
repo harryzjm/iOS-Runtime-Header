@@ -9,6 +9,6 @@
 @protocol ICSearchIndexable;
 
 @protocol ICSearchIndexableTarget <NSObject>
-- (id <ICSearchIndexable>)targetSearchIndexable;
+@property(readonly, nonatomic) id <ICSearchIndexable> targetSearchIndexable;
 @end
 

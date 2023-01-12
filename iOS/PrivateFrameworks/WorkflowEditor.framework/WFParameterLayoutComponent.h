@@ -19,7 +19,7 @@
 }
 
 + (id)newWithLabel:(id)arg1 labelsToAlignTo:(id)arg2 selectionAction:(CKTypedComponentAction_789af415)arg3 selectionEnabled:(_Bool)arg4 traitCollection:(id)arg5 style:(const struct WFParameterLayoutComponentStyle *)arg6 accessibility:(const struct WFParameterLayoutComponentAccessibility *)arg7 controlResistance:(const struct WFCompressionResistance *)arg8 controlComponent:(id)arg9;
-+ (id)newWithView:(const struct CKComponentViewConfiguration *)arg1 size:(const struct CKComponentSize *)arg2;
++ (id)newWithView:(const void *)arg1 size:(const struct CKComponentSize *)arg2;
 + (struct UIEdgeInsets)edgeInsets;
 - (id).cxx_construct;
 - (void).cxx_destruct;

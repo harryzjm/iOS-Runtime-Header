@@ -24,6 +24,7 @@
 - (long long)verifyTypeAtIndex:(long long)arg1;
 - (unsigned long long)faceCount:(long long)arg1;
 - (id)personNameAtIndex:(long long)arg1;
+- (void)imageAtIndex:(unsigned long long)arg1 targetSize:(struct CGSize)arg2 displayScale:(double)arg3 resultHandler:(CDUnknownBlockType)arg4;
 - (void)imageAtIndex:(unsigned long long)arg1 targetSize:(struct CGSize)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic) unsigned long long numberOfItems;
 @property(readonly, nonatomic) _Bool hasMoreDetails;

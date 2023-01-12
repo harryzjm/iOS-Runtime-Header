@@ -31,7 +31,6 @@
 @property(retain, nonatomic) PETScalarEventTracker *dismissalTracker; // @synthesize dismissalTracker=_dismissalTracker;
 @property(retain, nonatomic) PETGoalConversionEventTracker *conversionTracker; // @synthesize conversionTracker=_conversionTracker;
 @property(retain, nonatomic) PETScalarEventTracker *opportunityTracker; // @synthesize opportunityTracker=_opportunityTracker;
-- (id)privacyFriendlyBundleIdentifierWith:(id)arg1;
 - (void)trackPasteboardItemFromBundleId:(id)arg1 hasAddress:(_Bool)arg2 isEligible:(_Bool)arg3;
 - (void)trackDonationFromBundleId:(id)arg1 source:(id)arg2 hasLatLon:(_Bool)arg3 isEligible:(_Bool)arg4;
 - (void)trackTimingForConsumer:(id)arg1 time:(unsigned long long)arg2;

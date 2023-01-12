@@ -4,11 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HealthUI/HKOnboardingBaseViewController.h>
+
 #import <HeartRhythmUI/HRStackedButtonViewDelegate-Protocol.h>
+#import <HeartRhythmUI/UIScrollViewDelegate-Protocol.h>
 
-@class HRSpeedBumpItem, HRStackedButtonView, NSArray, NSLayoutConstraint, UILabel, UIView;
+@class HRSpeedBumpItem, HRStackedButtonView, NSArray, NSLayoutConstraint, NSString, UILabel, UIView;
 
-@interface HRSpeedBumpViewController <HRStackedButtonViewDelegate>
+@interface HRSpeedBumpViewController : HKOnboardingBaseViewController <HRStackedButtonViewDelegate, UIScrollViewDelegate>
 {
     _Bool _stateAnimating;
     HRSpeedBumpItem *_item;
@@ -45,10 +48,17 @@
 - (void)_setUpTitleLabel;
 - (void)_updateUIWithLatestVisibleBubbleView:(id)arg1 animated:(_Bool)arg2;
 - (void)stackedButtonView:(id)arg1 didTapButtonAtIndex:(long long)arg2;
+- (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)viewDidLoad;
 - (void)setUpConstraints;
 - (void)setUpUI;
-- (id)initWithSpeedBumpItem:(id)arg1 onboarding:(_Bool)arg2;
+- (id)initWithSpeedBumpItem:(id)arg1 onboarding:(_Bool)arg2 upgradingFromAlgorithmVersion:(long long)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

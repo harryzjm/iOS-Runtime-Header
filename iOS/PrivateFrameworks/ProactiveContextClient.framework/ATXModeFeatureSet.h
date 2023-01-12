@@ -19,11 +19,15 @@
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)description;
 - (id)dictionaryRepresentation;
 - (void)mergeWithFeatures:(id)arg1;
-- (void)enumerateFeaturesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)_enumerateFeaturesUsingBlock:(CDUnknownBlockType)arg1;
+- (id)stringForFeatureType:(int)arg1;
 - (id)valueForFeatureType:(int)arg1;
 - (_Bool)boolValueForFeatureType:(int)arg1;
+- (void)setString:(id)arg1 forFeatureType:(int)arg2;
+- (void)setNullForFeatureType:(int)arg1;
 - (void)setValue:(id)arg1 forFeatureType:(int)arg2;
 - (void)setValue:(_Bool)arg1 forBinaryFeatureOfType:(int)arg2;
 - (id)initWithDictionary:(id)arg1;

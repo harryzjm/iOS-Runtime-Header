@@ -4,42 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-#import <UIKitCore/NSCopying-Protocol.h>
-#import <UIKitCore/NSSecureCoding-Protocol.h>
-
 @class UIColor;
 
-@interface _UIListSeparatorConfiguration : NSObject <NSCopying, NSSecureCoding>
+@interface _UIListSeparatorConfiguration
 {
     _Bool _adjustColorForMultipleSelection;
-    UIColor *_color;
-    UIColor *_multipleSelectionColor;
     long long _hidingBehavior;
     long long _insetAdjustmentBehavior;
-    struct NSDirectionalEdgeInsets _insets;
     struct NSDirectionalEdgeInsets _insetsForBoundarySeparators;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)_configurationForAppearanceStyle:(long long)arg1 inLayoutEnvironment:(id)arg2;
-- (void).cxx_destruct;
+@property(nonatomic, getter=_insetsForBoundarySeparators, setter=_setInsetsForBoundarySeparators:) struct NSDirectionalEdgeInsets _insetsForBoundarySeparators; // @synthesize _insetsForBoundarySeparators;
+@property(nonatomic, getter=_shouldAdjustColorForMultipleSelection, setter=_setAdjustColorForMultipleSelection:) _Bool _adjustColorForMultipleSelection; // @synthesize _adjustColorForMultipleSelection;
 @property(nonatomic, getter=_insetAdjustmentBehaviour, setter=_setInsetAdjustmentBehavior:) long long _insetAdjustmentBehavior; // @synthesize _insetAdjustmentBehavior;
 @property(nonatomic, getter=_hidingBehavior, setter=_setHidingBehavior:) long long _hidingBehavior; // @synthesize _hidingBehavior;
-@property(nonatomic, getter=_shouldAdjustColorForMultipleSelection, setter=_setAdjustColorForMultipleSelection:) _Bool _adjustColorForMultipleSelection; // @synthesize _adjustColorForMultipleSelection;
-@property(retain, nonatomic, getter=_multipleSelectionColor, setter=_setMultipleSelectionColor:) UIColor *_multipleSelectionColor; // @synthesize _multipleSelectionColor;
-@property(retain, nonatomic, getter=_color, setter=_setColor:) UIColor *_color; // @synthesize _color;
-@property(nonatomic, getter=_insetsForBoundarySeparators, setter=_setInsetsForBoundarySeparators:) struct NSDirectionalEdgeInsets _insetsForBoundarySeparators; // @synthesize _insetsForBoundarySeparators;
-@property(nonatomic, getter=_insets, setter=_setInsets:) struct NSDirectionalEdgeInsets _insets; // @synthesize _insets;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (_Bool)isEqual:(id)arg1;
-- (unsigned long long)hash;
-- (id)_init;
-- (id)_initWithAppearanceStyle:(long long)arg1 layoutEnvironment:(id)arg2;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+@property(retain, nonatomic, getter=_multipleSelectionColor, setter=_setMultipleSelectionColor:) UIColor *_multipleSelectionColor;
+@property(retain, nonatomic, getter=_color, setter=_setColor:) UIColor *_color;
+@property(nonatomic, getter=_insets, setter=_setInsets:) struct NSDirectionalEdgeInsets _insets;
 
 @end
 

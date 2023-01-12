@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 @interface VNRecognizedHandPointsSpecifier
 {
     NSArray *_orderedHandKeypoints;
+    long long _chirality;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -21,7 +22,8 @@ __attribute__((visibility("hidden")))
 - (id)availableGroupKeys;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithVCPHandObservation:(id)arg1 requestRevision:(unsigned long long)arg2;
+@property(readonly) long long chirality;
+- (id)initWithVCPHandObservation:(id)arg1 originatingRequestSpecifier:(id)arg2;
 
 @end
 

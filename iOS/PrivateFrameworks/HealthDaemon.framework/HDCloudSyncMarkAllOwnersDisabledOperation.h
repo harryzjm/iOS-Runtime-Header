@@ -15,9 +15,6 @@
 
 - (void).cxx_destruct;
 - (void)synchronousTaskGroup:(id)arg1 didFinishWithSuccess:(_Bool)arg2 errors:(id)arg3;
-- (id)_updatedRegistryRecordForZone:(id)arg1 container:(id)arg2 disabledOwnerIdentifiers:(id)arg3;
-- (id)_updatedMasterRecordForZone:(id)arg1 container:(id)arg2 disabledOwnerIdentifiers:(id)arg3;
-- (id)_updatedRecordsForContainer:(id)arg1 disabledOwnerIdentifiers:(id)arg2;
 - (void)main;
 
 // Remaining properties

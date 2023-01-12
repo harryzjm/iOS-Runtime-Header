@@ -28,13 +28,13 @@ __attribute__((visibility("hidden")))
     NSDictionary *_mapIconStyleAttributes;
     NSNumber *_mapItemMUID;
     NSArray *_businessLinkContentItemModels;
+    NSDictionary *_debugInfo;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)linkItemModelsFromRecords:(id)arg1;
 + (id)linkItemModelsFromLinkJSONObj:(id)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSArray *businessLinkContentItemModels; // @synthesize businessLinkContentItemModels=_businessLinkContentItemModels;
 @property(readonly, retain, nonatomic) NSDictionary *mapIconStyleAttributes; // @synthesize mapIconStyleAttributes=_mapIconStyleAttributes;
 @property(readonly, retain, nonatomic) NSNumber *mapItemMUID; // @synthesize mapItemMUID=_mapItemMUID;
 @property(readonly, nonatomic) _Bool isPoweredBy; // @synthesize isPoweredBy=_isPoweredBy;
@@ -48,7 +48,6 @@ __attribute__((visibility("hidden")))
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
-@property(readonly, nonatomic, getter=_linkItemIdentifier) BCSLinkItemIdentifier *linkItemIdentifier;
 - (_Bool)matchesItemIdentifying:(id)arg1;
 @property(readonly, nonatomic) long long type;
 @property(readonly, nonatomic) long long truncatedHash;
@@ -59,7 +58,6 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-- (id)initWithLinkURL:(id)arg1 bundleID:(id)arg2 heroImageURLString:(id)arg3 iconImageURLString:(id)arg4 redirectURL:(id)arg5 action:(long long)arg6 mapIconStyleAttributes:(id)arg7 mapItemMUID:(id)arg8 businessLinkContentItemModels:(id)arg9 isPoweredBy:(_Bool)arg10;
 - (id)initWithLinkMessage:(id)arg1 bucketID:(id)arg2;
 
 // Remaining properties

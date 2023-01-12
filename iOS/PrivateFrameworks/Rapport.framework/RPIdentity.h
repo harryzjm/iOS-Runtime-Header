@@ -8,7 +8,7 @@
 
 #import <Rapport/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSString;
+@class NSArray, NSData, NSDate, NSDictionary, NSString, NSUUID;
 
 @interface RPIdentity : NSObject <NSSecureCoding>
 {
@@ -19,6 +19,7 @@
     unsigned int _revisionID;
     NSArray *_accessGroups;
     NSString *_accountID;
+    NSDictionary *_acl;
     NSString *_contactID;
     NSDate *_dateAdded;
     NSDate *_dateRemoved;
@@ -26,6 +27,7 @@
     NSData *_edPKData;
     NSData *_edSKData;
     unsigned long long _featureFlags;
+    NSUUID *_homeKitUserIdentifier;
     NSString *_identifier;
     NSString *_idsDeviceID;
     NSString *_mediaRemoteID;
@@ -54,6 +56,7 @@
 @property(copy, nonatomic) NSString *mediaRemoteID; // @synthesize mediaRemoteID=_mediaRemoteID;
 @property(copy, nonatomic) NSString *idsDeviceID; // @synthesize idsDeviceID=_idsDeviceID;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(copy, nonatomic) NSUUID *homeKitUserIdentifier; // @synthesize homeKitUserIdentifier=_homeKitUserIdentifier;
 @property(nonatomic) unsigned long long featureFlags; // @synthesize featureFlags=_featureFlags;
 @property(copy, nonatomic) NSData *edSKData; // @synthesize edSKData=_edSKData;
 @property(copy, nonatomic) NSData *edPKData; // @synthesize edPKData=_edPKData;
@@ -61,6 +64,7 @@
 @property(copy, nonatomic) NSDate *dateRemoved; // @synthesize dateRemoved=_dateRemoved;
 @property(copy, nonatomic) NSDate *dateAdded; // @synthesize dateAdded=_dateAdded;
 @property(copy, nonatomic) NSString *contactID; // @synthesize contactID=_contactID;
+@property(copy, nonatomic) NSDictionary *acl; // @synthesize acl=_acl;
 @property(copy, nonatomic) NSString *accountID; // @synthesize accountID=_accountID;
 @property(copy, nonatomic) NSArray *accessGroups; // @synthesize accessGroups=_accessGroups;
 - (_Bool)verifySignaturePtr:(const void *)arg1 signatureLen:(unsigned long long)arg2 dataPtr:(const void *)arg3 dataLen:(unsigned long long)arg4 error:(id *)arg5;

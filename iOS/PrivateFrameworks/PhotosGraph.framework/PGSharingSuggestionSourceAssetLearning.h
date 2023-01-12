@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class _TtC17KnowledgeGraphKit21MALearningStreamUtils;
+@class MALearningStreamUtils;
 
 @interface PGSharingSuggestionSourceAssetLearning
 {
-    _TtC17KnowledgeGraphKit21MALearningStreamUtils *_learningStreamUtils;
+    MALearningStreamUtils *_learningStreamUtils;
 }
 
 - (void).cxx_destruct;

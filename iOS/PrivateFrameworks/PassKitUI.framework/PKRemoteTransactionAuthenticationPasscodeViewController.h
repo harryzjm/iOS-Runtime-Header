@@ -23,6 +23,8 @@
 @property(nonatomic) __weak id <PKRemoteTransactionAuthenticationPasscodeViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)passcodeViewControllerDidGenerateEncryptedPasscode:(id)arg1;
 - (void)passcodeViewControllerDidCancel;
+- (void)passcodeViewControllerDidEndSessionExchange;
+- (void)passcodeViewControllerRequestSessionExchangeTokenWithHandler:(CDUnknownBlockType)arg1;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
 - (_Bool)_canShowWhileLocked;
 

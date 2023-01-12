@@ -8,16 +8,16 @@
 
 #import <ChatKit/QLPreviewItem-Protocol.h>
 
-@class NSData, NSDate, NSDictionary, NSString, NSURL, UITraitCollection;
+@class CKMessageContext, NSData, NSDate, NSDictionary, NSString, NSURL, UITraitCollection;
 @protocol CKFileTransfer, OS_dispatch_group;
 
 @interface CKMediaObject : NSObject <QLPreviewItem>
 {
-    _Bool _isFromMe;
-    _Bool _suppressPreviewForUnknownSender;
+    _Bool _supportsUnknownSenderPreview;
     _Bool _forceInlinePreviewGeneration;
     _Bool _cachedValidPreviewExists;
     id <CKFileTransfer> _transfer;
+    CKMessageContext *_messageContext;
     UITraitCollection *_transcriptTraitCollection;
     NSDate *_time;
     NSURL *_cachedHighQualityFileURL;
@@ -41,20 +41,25 @@
 @property(nonatomic) _Bool forceInlinePreviewGeneration; // @synthesize forceInlinePreviewGeneration=_forceInlinePreviewGeneration;
 @property(retain, nonatomic) NSObject<OS_dispatch_group> *highQualityFetchInProgressGroup; // @synthesize highQualityFetchInProgressGroup=_highQualityFetchInProgressGroup;
 @property(retain, nonatomic) NSURL *cachedHighQualityFileURL; // @synthesize cachedHighQualityFileURL=_cachedHighQualityFileURL;
+@property(readonly, nonatomic) _Bool supportsUnknownSenderPreview; // @synthesize supportsUnknownSenderPreview=_supportsUnknownSenderPreview;
 @property(retain, nonatomic) NSDate *time; // @synthesize time=_time;
 @property(retain, nonatomic) UITraitCollection *transcriptTraitCollection; // @synthesize transcriptTraitCollection=_transcriptTraitCollection;
-@property(nonatomic) _Bool suppressPreviewForUnknownSender; // @synthesize suppressPreviewForUnknownSender=_suppressPreviewForUnknownSender;
-@property(nonatomic) _Bool isFromMe; // @synthesize isFromMe=_isFromMe;
+@property(copy, nonatomic) CKMessageContext *messageContext; // @synthesize messageContext=_messageContext;
 @property(retain, nonatomic) id <CKFileTransfer> transfer; // @synthesize transfer=_transfer;
 - (_Bool)isPromisedItem;
 @property(readonly, nonatomic) NSURL *previewItemURL;
 @property(readonly, nonatomic) _Bool canShareItem;
+@property(readonly, nonatomic) _Bool shouldSuppressPreview;
+@property(readonly, nonatomic) _Bool isFromMe;
+@property(readonly, nonatomic) NSString *syndicationIdentifier;
 - (void)fetchHighQualityFile:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) _Bool isPhotosCompatible;
 @property(readonly, nonatomic) _Bool validatePreviewFormat;
 @property(readonly, nonatomic) _Bool generatePreviewOutOfProcess;
 @property(readonly, nonatomic) _Bool needsAnimation;
 @property(readonly, nonatomic) int mediaType;
-- (id)pasteboardItem;
+- (id)rtfDocumentItemsWithFormatString:(id)arg1 selectedTextRange:(struct _NSRange)arg2;
+- (id)pasteboardItemProvider;
 @property(readonly, nonatomic) NSString *metricsCollectorMediaType;
 @property(readonly, copy, nonatomic) NSString *UTIType;
 - (_Bool)isDirectory;
@@ -66,7 +71,7 @@
 @property(readonly, copy, nonatomic) NSData *data;
 @property(readonly, copy, nonatomic) NSString *transferGUID;
 - (_Bool)isEqual:(id)arg1;
-- (id)initWithTransfer:(id)arg1 isFromMe:(_Bool)arg2 suppressPreview:(_Bool)arg3 forceInlinePreview:(_Bool)arg4;
+- (id)initWithTransfer:(id)arg1 context:(id)arg2 forceInlinePreview:(_Bool)arg3;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (id)composeImagesForEntryContentViewWidth:(double)arg1;
@@ -80,6 +85,7 @@
 - (id)generateThumbnailForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (struct CGSize)bbSize;
 - (id)bbPreviewFillToSize:(struct CGSize)arg1;
+@property(readonly, copy, nonatomic) id previewMetadata;
 - (_Bool)validPreviewExistsAtURL:(id)arg1;
 - (id)savedPreviewFromURL:(id)arg1 forOrientation:(BOOL)arg2;
 - (void)savePreview:(id)arg1 toURL:(id)arg2 forOrientation:(BOOL)arg3;
@@ -103,22 +109,24 @@
 - (_Bool)transcoderPreviewGenerationFailed;
 - (_Bool)shouldShowDisclosure;
 - (id)previewCachesFileURLWithOrientation:(BOOL)arg1 extension:(id)arg2 generateIntermediaries:(_Bool)arg3;
+- (double)defaultPreviewWidth;
 - (id)previewCacheKeyWithOrientation:(BOOL)arg1;
-- (void)export:(id)arg1;
+- (_Bool)canQuickSave;
 - (_Bool)canExport;
 - (_Bool)shouldBeQuickLooked;
 - (_Bool)shouldShowViewer;
 - (id)location;
 - (id)_qlThumbnailGeneratorSharedGenerator;
 - (id)richIcon;
-- (_Bool)_shouldBlacklistFromRichIcon;
+- (_Bool)_shouldDenyUTITypeFromRichIcon;
 - (id)generateIconWithURL:(id)arg1;
 - (id)icon;
 - (id)subtitle;
 - (id)title;
 - (Class)inlineStickerBalloonViewClass;
+- (Class)placeholderBalloonViewClass;
 - (Class)previewBalloonViewClass;
-- (Class)coloredBalloonViewClass;
+- (Class)balloonViewClass;
 - (Class)balloonViewClassForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (_Bool)isPreviewable;
 

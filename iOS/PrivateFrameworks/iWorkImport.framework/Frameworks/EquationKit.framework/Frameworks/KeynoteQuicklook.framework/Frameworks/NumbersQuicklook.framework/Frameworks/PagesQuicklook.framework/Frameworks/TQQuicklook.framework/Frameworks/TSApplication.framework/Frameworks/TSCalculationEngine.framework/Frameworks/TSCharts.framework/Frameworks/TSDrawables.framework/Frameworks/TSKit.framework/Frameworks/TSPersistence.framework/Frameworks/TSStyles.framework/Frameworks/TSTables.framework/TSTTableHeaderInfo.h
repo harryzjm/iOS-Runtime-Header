@@ -24,8 +24,8 @@
 @property(retain, nonatomic) TSWPParagraphStyle *textStyle; // @synthesize textStyle=_textStyle;
 @property(retain, nonatomic) TSTCellStyle *cellStyle; // @synthesize cellStyle=_cellStyle;
 - (void)updateFromMetadata:(id)arg1;
-- (void)encodeToArchive:(struct HeaderStorageBucket_Header *)arg1 archiver:(id)arg2 index:(unsigned int)arg3;
-- (id)initFromArchive:(const struct HeaderStorageBucket_Header *)arg1 unarchiver:(id)arg2 outIndex:(unsigned int *)arg3;
+- (void)encodeToArchive:(void *)arg1 archiver:(id)arg2 index:(unsigned int)arg3;
+- (id)initFromArchive:(const void *)arg1 unarchiver:(id)arg2 outIndex:(unsigned int *)arg3;
 @property(readonly, nonatomic) _Bool hasContent;
 - (id)description;
 

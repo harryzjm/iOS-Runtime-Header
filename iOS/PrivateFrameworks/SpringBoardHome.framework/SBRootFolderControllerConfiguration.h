@@ -5,7 +5,7 @@
 //
 
 @class CHSAvocadoDescriptorProvider, UIViewController;
-@protocol SBHLegibility, SBHLibraryProvider, SBHSidebarProvider;
+@protocol SBHLegibility, SBHRootFolderCustomViewPresenting, SBHSidebarProvider;
 
 @interface SBRootFolderControllerConfiguration
 {
@@ -13,12 +13,12 @@
     _Bool _dockExternal;
     _Bool _dockPinnedForRotation;
     _Bool _showsDoneButtonWhileEditing;
-    _Bool _showsAddWidgetButtonWhileEditing;
     _Bool _sidebarVisible;
     _Bool _sidebarPinned;
+    unsigned long long _showsAddWidgetButtonWhileEditingAllowedOrientations;
     UIViewController *_pullDownSearchViewController;
-    UIViewController<SBHLegibility> *_todayViewController;
-    UIViewController<SBHLibraryProvider> *_trailingCustomViewController;
+    UIViewController<SBHRootFolderCustomViewPresenting> *_leadingCustomViewController;
+    UIViewController<SBHRootFolderCustomViewPresenting> *_trailingCustomViewController;
     UIViewController<SBHSidebarProvider> *_sidebarViewController;
     unsigned long long _sidebarAllowedOrientations;
     unsigned long long _ignoresOverscrollOnFirstPageOrientations;
@@ -36,14 +36,15 @@
 @property(nonatomic, getter=isSidebarPinned) _Bool sidebarPinned; // @synthesize sidebarPinned=_sidebarPinned;
 @property(nonatomic, getter=isSidebarVisible) _Bool sidebarVisible; // @synthesize sidebarVisible=_sidebarVisible;
 @property(retain, nonatomic) UIViewController<SBHSidebarProvider> *sidebarViewController; // @synthesize sidebarViewController=_sidebarViewController;
-@property(retain, nonatomic) UIViewController<SBHLibraryProvider> *trailingCustomViewController; // @synthesize trailingCustomViewController=_trailingCustomViewController;
-@property(retain, nonatomic) UIViewController<SBHLegibility> *todayViewController; // @synthesize todayViewController=_todayViewController;
+@property(retain, nonatomic) UIViewController<SBHRootFolderCustomViewPresenting> *trailingCustomViewController; // @synthesize trailingCustomViewController=_trailingCustomViewController;
+@property(retain, nonatomic) UIViewController<SBHRootFolderCustomViewPresenting> *leadingCustomViewController; // @synthesize leadingCustomViewController=_leadingCustomViewController;
 @property(retain, nonatomic) UIViewController *pullDownSearchViewController; // @synthesize pullDownSearchViewController=_pullDownSearchViewController;
-@property(nonatomic) _Bool showsAddWidgetButtonWhileEditing; // @synthesize showsAddWidgetButtonWhileEditing=_showsAddWidgetButtonWhileEditing;
+@property(nonatomic) unsigned long long showsAddWidgetButtonWhileEditingAllowedOrientations; // @synthesize showsAddWidgetButtonWhileEditingAllowedOrientations=_showsAddWidgetButtonWhileEditingAllowedOrientations;
 @property(nonatomic) _Bool showsDoneButtonWhileEditing; // @synthesize showsDoneButtonWhileEditing=_showsDoneButtonWhileEditing;
 @property(nonatomic, getter=isDockPinnedForRotation) _Bool dockPinnedForRotation; // @synthesize dockPinnedForRotation=_dockPinnedForRotation;
 @property(nonatomic, getter=isDockExternal) _Bool dockExternal; // @synthesize dockExternal=_dockExternal;
 @property(nonatomic, getter=isForSnapshot) _Bool forSnapshot; // @synthesize forSnapshot=_forSnapshot;
+@property(retain, nonatomic) UIViewController<SBHLegibility> *todayViewController;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)initWithConfiguration:(id)arg1;
 - (id)init;

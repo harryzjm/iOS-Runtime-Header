@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_rebuildLayersForReason:(id)arg1;
+- (void)_rebuildLayersForReason:(id)arg1 withFence:(id)arg2;
 
 @end
 

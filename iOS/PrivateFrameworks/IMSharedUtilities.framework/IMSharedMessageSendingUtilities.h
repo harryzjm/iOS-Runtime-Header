@@ -23,7 +23,7 @@
 - (_Bool)isiMessageEnabled;
 - (_Bool)isMMSEnabled;
 - (_Bool)canSendText;
-- (id)_managedConfigAppWhitelist;
+- (id)_managedConfigAppAllowlist;
 - (void)_updateServiceAvailability;
 - (_Bool)_canSendText;
 - (_Bool)_hasSMSCapability;

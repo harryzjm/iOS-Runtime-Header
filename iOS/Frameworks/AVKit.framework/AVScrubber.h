@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
     _Bool _scrubsWhenTappedAnywhere;
     _Bool _canChangeScrubbingSpeed;
     _Bool _hasChangedLocationAtLeastOnce;
+    _Bool _scrubberEnabledStatus;
     float _estimatedFrameRate;
     float _rate;
     UISelectionFeedbackGenerator *_feedbackGenerator;
@@ -42,16 +43,22 @@ __attribute__((visibility("hidden")))
     NSArray *_loadedTimeRanges;
     long long _scrubbingSpeed;
     double _resolution;
+    double _scrubberParentHeight;
     UIScrollView *_scrollView;
     UIImageView *_currentThumbView;
     NSTimer *_updateSlowKnobMovementDetectedTimer;
     double _timestampWhenTrackingEnded;
+    double _currentScrubberParentHeight;
+    double _newScrubberParentHeight;
     struct CGSize _extrinsicContentSize;
     struct NSDirectionalEdgeInsets _hitRectInsets;
 }
 
 + (id)keyPathsForValuesAffectingLocalizedScrubbingSpeedName;
 - (void).cxx_destruct;
+@property(nonatomic) double newScrubberParentHeight; // @synthesize newScrubberParentHeight=_newScrubberParentHeight;
+@property(nonatomic) double currentScrubberParentHeight; // @synthesize currentScrubberParentHeight=_currentScrubberParentHeight;
+@property(nonatomic) _Bool scrubberEnabledStatus; // @synthesize scrubberEnabledStatus=_scrubberEnabledStatus;
 @property(nonatomic) _Bool hasChangedLocationAtLeastOnce; // @synthesize hasChangedLocationAtLeastOnce=_hasChangedLocationAtLeastOnce;
 @property(nonatomic) _Bool canChangeScrubbingSpeed; // @synthesize canChangeScrubbingSpeed=_canChangeScrubbingSpeed;
 @property(nonatomic) _Bool scrubsWhenTappedAnywhere; // @synthesize scrubsWhenTappedAnywhere=_scrubsWhenTappedAnywhere;
@@ -63,6 +70,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isScrollScrubbing) _Bool scrollScrubbing; // @synthesize scrollScrubbing=_scrollScrubbing;
 @property(retain, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property(nonatomic) float rate; // @synthesize rate=_rate;
+@property(nonatomic, setter=setScrubberParentHeight:) double scrubberParentHeight; // @synthesize scrubberParentHeight=_scrubberParentHeight;
 @property(nonatomic) struct NSDirectionalEdgeInsets hitRectInsets; // @synthesize hitRectInsets=_hitRectInsets;
 @property(nonatomic) double resolution; // @synthesize resolution=_resolution;
 @property(nonatomic) float estimatedFrameRate; // @synthesize estimatedFrameRate=_estimatedFrameRate;
@@ -113,6 +121,8 @@ __attribute__((visibility("hidden")))
 - (float)clampedEstimatedFrameRate;
 @property(readonly, nonatomic) UIView *loadedTrackOverlayView; // @synthesize loadedTrackOverlayView=_loadedTrackOverlayView;
 @property(readonly, nonatomic) UISelectionFeedbackGenerator *feedbackGenerator; // @synthesize feedbackGenerator=_feedbackGenerator;
+- (id)createScrubberTicTacImage;
+- (void)setScrubberThumbImage:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

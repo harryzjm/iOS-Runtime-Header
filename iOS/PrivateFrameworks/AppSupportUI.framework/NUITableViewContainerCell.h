@@ -17,6 +17,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NUIContainerView *containerView; // @synthesize containerView=_containerView;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 @end

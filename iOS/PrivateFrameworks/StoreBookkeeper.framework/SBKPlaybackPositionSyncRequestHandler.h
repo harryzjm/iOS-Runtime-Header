@@ -31,19 +31,19 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(retain) NSString *overrideSyncAnchor; // @synthesize overrideSyncAnchor=_overrideSyncAnchor;
-@property(retain) NSError *fatalSyncError; // @synthesize fatalSyncError=_fatalSyncError;
-@property _Bool canceled; // @synthesize canceled=_canceled;
-@property _Bool syncInProgress; // @synthesize syncInProgress=_syncInProgress;
-@property(retain) SBKSyncTransaction *currentKVSTransaction; // @synthesize currentKVSTransaction=_currentKVSTransaction;
-@property(retain) NSMutableDictionary *responseMetadataItemsMergedToCommitBackToKVSStorage; // @synthesize responseMetadataItemsMergedToCommitBackToKVSStorage=_responseMetadataItemsMergedToCommitBackToKVSStorage;
-@property(retain) NSMutableDictionary *responseMetadataItemsToCommitToDataSource; // @synthesize responseMetadataItemsToCommitToDataSource=_responseMetadataItemsToCommitToDataSource;
-@property(retain) NSDictionary *metadataItemsToCommitToKVSStorage; // @synthesize metadataItemsToCommitToKVSStorage=_metadataItemsToCommitToKVSStorage;
-@property(retain) NSDictionary *metadataItemsToCommitToDataSource; // @synthesize metadataItemsToCommitToDataSource=_metadataItemsToCommitToDataSource;
-@property(retain) NSMutableDictionary *metadataItemsFromDataSource; // @synthesize metadataItemsFromDataSource=_metadataItemsFromDataSource;
-@property(retain) id <SBKUniversalPlaybackPositionTransactionContext> dataSourceTransactionContext; // @synthesize dataSourceTransactionContext=_dataSourceTransactionContext;
-@property(retain) SBKTransactionController *kvsController; // @synthesize kvsController=_kvsController;
-@property(retain) id <SBKUniversalPlaybackPositionDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property(retain, nonatomic) NSString *overrideSyncAnchor; // @synthesize overrideSyncAnchor=_overrideSyncAnchor;
+@property(retain, nonatomic) NSError *fatalSyncError; // @synthesize fatalSyncError=_fatalSyncError;
+@property(nonatomic) _Bool canceled; // @synthesize canceled=_canceled;
+@property(nonatomic) _Bool syncInProgress; // @synthesize syncInProgress=_syncInProgress;
+@property(retain, nonatomic) SBKSyncTransaction *currentKVSTransaction; // @synthesize currentKVSTransaction=_currentKVSTransaction;
+@property(retain, nonatomic) NSMutableDictionary *responseMetadataItemsMergedToCommitBackToKVSStorage; // @synthesize responseMetadataItemsMergedToCommitBackToKVSStorage=_responseMetadataItemsMergedToCommitBackToKVSStorage;
+@property(retain, nonatomic) NSMutableDictionary *responseMetadataItemsToCommitToDataSource; // @synthesize responseMetadataItemsToCommitToDataSource=_responseMetadataItemsToCommitToDataSource;
+@property(retain, nonatomic) NSDictionary *metadataItemsToCommitToKVSStorage; // @synthesize metadataItemsToCommitToKVSStorage=_metadataItemsToCommitToKVSStorage;
+@property(retain, nonatomic) NSDictionary *metadataItemsToCommitToDataSource; // @synthesize metadataItemsToCommitToDataSource=_metadataItemsToCommitToDataSource;
+@property(retain, nonatomic) NSMutableDictionary *metadataItemsFromDataSource; // @synthesize metadataItemsFromDataSource=_metadataItemsFromDataSource;
+@property(retain, nonatomic) id <SBKUniversalPlaybackPositionTransactionContext> dataSourceTransactionContext; // @synthesize dataSourceTransactionContext=_dataSourceTransactionContext;
+@property(retain, nonatomic) SBKTransactionController *kvsController; // @synthesize kvsController=_kvsController;
+@property(retain, nonatomic) id <SBKUniversalPlaybackPositionDataSource> dataSource; // @synthesize dataSource=_dataSource;
 - (id)transaction:(id)arg1 conflictDetectionOrdinalForKey:(id)arg2;
 - (id)transaction:(id)arg1 syncAnchorForTransactionSyncAnchor:(id)arg2;
 - (id)transaction:(id)arg1 keyValuePairForUpdatedKey:(id)arg2;
@@ -68,6 +68,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_synchronize:(id *)arg1;
 - (void)_dataSourceCancelTransaction;
 - (void)clearTransactionResponseData;
+- (id)initWithDataSource:(id)arg1 bagContext:(id)arg2 accountIdentifier:(id)arg3;
 - (id)initWithDataSource:(id)arg1 bagContext:(id)arg2;
 
 // Remaining properties

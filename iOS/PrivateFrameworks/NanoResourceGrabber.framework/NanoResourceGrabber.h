@@ -17,7 +17,6 @@
     NSObject<OS_dispatch_queue> *_iconCacheQueue;
 }
 
-+ (id)iconDataForBundleID:(id)arg1 variant:(int)arg2 proxy:(id)arg3;
 + (id)liIconVariants;
 + (id)nrgIconVariants;
 + (id)_iconVariant:(int)arg1 fromURL:(id)arg2;
@@ -27,6 +26,7 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property _Bool connectionMayBeValid; // @synthesize connectionMayBeValid=_connectionMayBeValid;
 @property(retain, nonatomic) NSXPCConnection *nrgdConnection; // @synthesize nrgdConnection=_nrgdConnection;
+- (void)getAppViewListImage:(struct CGSize)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getCachedIconForBundleID:(id)arg1 iconVariant:(int)arg2 outIconImage:(id *)arg3 queue:(id)arg4 updateBlock:(CDUnknownBlockType)arg5 timeout:(double)arg6;
 - (void)getCachedIconForBundleID:(id)arg1 iconVariant:(int)arg2 outIconImage:(id *)arg3 updateBlock:(CDUnknownBlockType)arg4;
 - (id)_getCachedIconForBundleID:(id)arg1 iconVariant:(int)arg2;

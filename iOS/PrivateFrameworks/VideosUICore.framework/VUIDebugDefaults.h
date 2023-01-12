@@ -11,6 +11,7 @@
     _Bool _debugUIEnabled;
     _Bool _metricsLoggingEnabled;
     _Bool _metricsExpandedLoggingEnabled;
+    _Bool _metricsLogLocationAndImpressions;
     _Bool _metricsPageRenderLoggingEnabled;
     _Bool _enableDemoMode;
     _Bool _gdprFirstTimeFlowEnabled;
@@ -24,6 +25,7 @@
 @property(nonatomic) _Bool gdprFirstTimeFlowEnabled; // @synthesize gdprFirstTimeFlowEnabled=_gdprFirstTimeFlowEnabled;
 @property(nonatomic) _Bool enableDemoMode; // @synthesize enableDemoMode=_enableDemoMode;
 @property(nonatomic) _Bool metricsPageRenderLoggingEnabled; // @synthesize metricsPageRenderLoggingEnabled=_metricsPageRenderLoggingEnabled;
+@property(nonatomic) _Bool metricsLogLocationAndImpressions; // @synthesize metricsLogLocationAndImpressions=_metricsLogLocationAndImpressions;
 @property(nonatomic) _Bool metricsExpandedLoggingEnabled; // @synthesize metricsExpandedLoggingEnabled=_metricsExpandedLoggingEnabled;
 @property(nonatomic) _Bool metricsLoggingEnabled; // @synthesize metricsLoggingEnabled=_metricsLoggingEnabled;
 @property(nonatomic) _Bool debugUIEnabled; // @synthesize debugUIEnabled=_debugUIEnabled;

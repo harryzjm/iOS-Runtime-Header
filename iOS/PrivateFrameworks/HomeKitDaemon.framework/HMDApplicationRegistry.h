@@ -22,6 +22,7 @@
 + (id)logCategory;
 + (id)sharedRegistry;
 - (void).cxx_destruct;
+- (void)applicationsDidInstall:(id)arg1;
 - (void)applicationsDidUninstall:(id)arg1;
 - (id)applicationInfoForBundleIdentifier:(id)arg1;
 - (id)applicationInfoForBundleURL:(id)arg1;

@@ -13,15 +13,19 @@
 #import <PassKitUI/UICollectionViewDelegateFlowLayout-Protocol.h>
 #import <PassKitUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSArray, NSCalendar, NSDate, NSDateFormatter, NSString, PKAccount, PKAccountService, PKAccountServiceAccountResolutionController, PKDashboardFooterTextView, PKDashboardTitleHeaderView, PKSpendingSummary, PKSpendingSummaryFooterView, PKSpendingSummaryLayout, PKSpendingSummaryPresenter, PKTransactionGroupItemPresenter, PKTransactionSource, UIGestureRecognizer;
+@class NSArray, NSCalendar, NSDate, NSDateFormatter, NSString, PKAccount, PKAccountService, PKAccountServiceAccountResolutionController, PKAccountUserCollection, PKContactAvatarManager, PKDashboardAvatarPresenter, PKDashboardFooterTextView, PKDashboardTitleHeaderView, PKFamilyMemberCollection, PKSpendingSummary, PKSpendingSummaryAccountUserPresenter, PKSpendingSummaryFooterView, PKSpendingSummaryLayout, PKSpendingSummaryPresenter, PKTransactionGroupItemPresenter, PKTransactionSourceCollection, UIGestureRecognizer;
 @protocol PKSpendingSingleSummaryViewControllerDelegate;
 
 @interface PKSpendingSingleSummaryViewController : UICollectionViewController <PKPaymentDataProviderDelegate, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate, PKSpendingSummaryFooterViewDelegate, PKAccountServiceAccountResolutionControllerDelegate, PKSpendingSummaryResponder>
 {
-    PKTransactionSource *_transactionSource;
+    PKTransactionSourceCollection *_transactionSourceCollection;
+    PKContactAvatarManager *_avatarManager;
     PKAccount *_account;
+    PKAccountUserCollection *_accountUserCollection;
     PKAccountService *_accountService;
     unsigned long long _feature;
+    unsigned long long _displayType;
+    PKFamilyMemberCollection *_familyCollection;
     PKSpendingSummaryFooterView *_currentFooter;
     _Bool _footerNeedsConfiguration;
     PKSpendingSummary *_summary;
@@ -30,19 +34,20 @@
     NSDate *_endDate;
     _Bool _hasTransactions;
     NSCalendar *_currentCalendar;
-    NSString *_navTitle;
     double _transitionAlpha;
     NSArray *_currentMonthTransactions;
     NSArray *_upcomingScheduledPayments;
     NSDateFormatter *_formatterMonth;
     NSDateFormatter *_formatterFullMonth;
-    NSDateFormatter *_formatterMonthNoYear;
     NSDateFormatter *_formatterDay;
-    NSDateFormatter *_formatterShortMonthNoYear;
+    NSDateFormatter *_formatterYear;
     PKTransactionGroupItemPresenter *_transactionGroupPresenter;
     PKSpendingSummaryPresenter *_summaryPresenter;
     PKDashboardTitleHeaderView *_sampleHeaderView;
     PKDashboardFooterTextView *_sampleFooterView;
+    PKDashboardAvatarPresenter *_avatarPresenter;
+    PKSpendingSummaryAccountUserPresenter *_summaryUsersPresenter;
+    NSArray *_sortedAccountUsers;
     PKAccountServiceAccountResolutionController *_resolutionController;
     PKSpendingSummaryLayout *_layout;
     _Bool _isLowEndDevice;
@@ -50,13 +55,13 @@
     id <PKSpendingSingleSummaryViewControllerDelegate> _scrollingDelegate;
     UIGestureRecognizer *_gestureRecognizerRequiredToFail;
     long long _contentInsetAdjustmentBehavior;
-    unsigned long long _selectionType;
+    unsigned long long _categorization;
     struct UIEdgeInsets _contentInset;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic, getter=isVisible) _Bool visible; // @synthesize visible=_visible;
-@property(nonatomic) unsigned long long selectionType; // @synthesize selectionType=_selectionType;
+@property(nonatomic) unsigned long long categorization; // @synthesize categorization=_categorization;
 @property(nonatomic) struct UIEdgeInsets contentInset; // @synthesize contentInset=_contentInset;
 @property(nonatomic) long long contentInsetAdjustmentBehavior; // @synthesize contentInsetAdjustmentBehavior=_contentInsetAdjustmentBehavior;
 @property(retain, nonatomic) UIGestureRecognizer *gestureRecognizerRequiredToFail; // @synthesize gestureRecognizerRequiredToFail=_gestureRecognizerRequiredToFail;
@@ -66,8 +71,8 @@
 - (void)buttonTappedInFooterView:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)footer;
-- (id)navigationTitle;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
+- (void)didUpdateFamilyMembers:(id)arg1;
 - (void)_accountsChanged:(id)arg1;
 - (void)_configureFooterView:(id)arg1 inSection:(unsigned long long)arg2;
 - (_Bool)_hasFooterForSection:(unsigned long long)arg1;
@@ -90,12 +95,15 @@
 - (void)scrollViewDidScroll:(id)arg1;
 - (id)indexPathForSummary;
 - (unsigned long long)_aggregateCellAtIndex:(unsigned long long)arg1;
+- (void)_configureFooterForAccountUsers;
+- (void)_configureDefaultFooter;
 - (void)_configureFooter;
 - (void)setSummary:(id)arg1 swap:(_Bool)arg2;
+- (id)_sortedAccountUsersForSummary:(id)arg1;
 - (void)setAlphaForTransition:(double)arg1;
 - (void)viewDidLoad;
 - (void)dealloc;
-- (id)initWithTransationSource:(id)arg1 account:(id)arg2 transactionGroupPresenter:(id)arg3 summaryPresenter:(id)arg4 currentMonthTransactions:(id)arg5 upcomingScheduledPayments:(id)arg6;
+- (id)initWithTransationSourceCollection:(id)arg1 familyCollection:(id)arg2 avatarManager:(id)arg3 account:(id)arg4 accountUserCollection:(id)arg5 transactionGroupPresenter:(id)arg6 summaryPresenter:(id)arg7 currentMonthTransactions:(id)arg8 upcomingScheduledPayments:(id)arg9 displayType:(unsigned long long)arg10;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

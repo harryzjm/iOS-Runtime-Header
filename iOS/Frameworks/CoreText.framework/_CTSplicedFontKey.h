@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     _Bool _ignoreLegibilityWeight;
     unsigned int _grade;
     unsigned int _platform;
+    unsigned int _modifier;
     NSString *_name;
     NSString *_language;
     double _lineHeightRatio;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
     double _width;
 }
 
+@property(nonatomic) unsigned int modifier; // @synthesize modifier=_modifier;
 @property(nonatomic) unsigned int platform; // @synthesize platform=_platform;
 @property(nonatomic) unsigned int grade; // @synthesize grade=_grade;
 @property(nonatomic) double width; // @synthesize width=_width;

@@ -11,10 +11,12 @@
 
 @interface SBFDeviceBlockTimer : NSObject
 {
+    _Bool _userRequestedEraseEnabled;
     _Bool _enabled;
     CDUnknownBlockType _handler;
     NSString *_titleText;
     NSString *_subtitleText;
+    NSString *_primaryActionButtonText;
     id <SBFBlockStatusProvider> _blockStatusProvider;
     NSTimer *_timer;
 }
@@ -23,6 +25,8 @@
 @property(nonatomic, getter=_isEnabled, setter=_setEnabled:) _Bool enabled; // @synthesize enabled=_enabled;
 @property(retain, nonatomic, setter=_setTimer:) NSTimer *timer; // @synthesize timer=_timer;
 @property(retain, nonatomic, setter=_setBlockStatusProvider:) id <SBFBlockStatusProvider> blockStatusProvider; // @synthesize blockStatusProvider=_blockStatusProvider;
+@property(copy, nonatomic) NSString *primaryActionButtonText; // @synthesize primaryActionButtonText=_primaryActionButtonText;
+@property(nonatomic, getter=isUserRequestedEraseEnabled) _Bool userRequestedEraseEnabled; // @synthesize userRequestedEraseEnabled=_userRequestedEraseEnabled;
 @property(copy, nonatomic) NSString *subtitleText; // @synthesize subtitleText=_subtitleText;
 @property(copy, nonatomic) NSString *titleText; // @synthesize titleText=_titleText;
 @property(copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;

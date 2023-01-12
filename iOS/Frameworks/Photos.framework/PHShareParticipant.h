@@ -17,7 +17,7 @@
     NSString *_phoneNumber;
 }
 
-+ (void)queryParticipantsWithEmails:(id)arg1 phoneNumbers:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (void)queryParticipantsWithEmails:(id)arg1 phoneNumbers:(id)arg2 photoLibrary:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (id)fetchContributorForAsset:(id)arg1 options:(id)arg2;
 + (id)fetchParticipantsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)fetchParticipantsInShare:(id)arg1 options:(id)arg2;

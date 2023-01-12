@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProtocolBuffer/PBCodable.h>
-
 @class NSData, NSString;
 
-@interface LCServiceBlackListedField : PBCodable
+@interface LCServiceBlackListedField
 {
-    _Bool _hasFullyQualifiedPath;
     NSString *_fullyQualifiedPath;
+    _Bool _hasFullyQualifiedPath;
 }
 
 - (void).cxx_destruct;

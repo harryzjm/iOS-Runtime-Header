@@ -11,8 +11,8 @@
     struct sqlite3_stmt *_statementHandle;
 }
 
-- (void)bindJSONValue:(id)arg1 toParameterNamed:(id)arg2 error:(id *)arg3;
-- (void)bindJSONValue:(id)arg1 toParameterAtIndex:(long long)arg2 error:(id *)arg3;
+- (_Bool)bindJSONValue:(id)arg1 toParameterNamed:(id)arg2 error:(id *)arg3;
+- (_Bool)bindJSONValue:(id)arg1 toParameterAtIndex:(long long)arg2 error:(id *)arg3;
 - (void)bindDateValue:(id)arg1 toParameterNamed:(id)arg2;
 - (void)bindDateValue:(id)arg1 toParameterAtIndex:(long long)arg2;
 - (void)bindFloatValue:(float)arg1 toParameterNamed:(id)arg2;

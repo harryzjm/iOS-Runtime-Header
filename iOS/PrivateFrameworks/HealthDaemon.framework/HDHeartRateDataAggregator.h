@@ -9,9 +9,6 @@
 }
 
 - (void)dataCollector:(id)arg1 didCollectSensorData:(id)arg2 device:(id)arg3;
-- (id)_metadataForSensorDatum:(id)arg1 collector:(id)arg2;
-- (void)_notifyForSensorDatum:(id)arg1 collector:(id)arg2 device:(id)arg3 source:(id)arg4;
-- (_Bool)_shouldRequestActiveCollectionForConfiguration:(id)arg1;
 - (id)configurationForCollector:(id)arg1;
 - (void)workoutManagerStateChanged:(id)arg1;
 - (id)objectType;

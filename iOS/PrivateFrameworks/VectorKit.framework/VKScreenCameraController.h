@@ -35,7 +35,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) CDStruct_c3b9c2ee centerCoordinateDistanceRange; // @synthesize centerCoordinateDistanceRange=_centerCoordinateDistanceRange;
 @property(nonatomic) long long annotationTrackingHeadingAnimationDisplayRate; // @synthesize annotationTrackingHeadingAnimationDisplayRate=_annotationTrackingHeadingAnimationDisplayRate;
 @property(nonatomic) CDStruct_211b8904 annotationTrackingBehavior; // @synthesize annotationTrackingBehavior=_annotationTrackingBehavior;
-- (void)setCamera:(id)arg1;
+- (void)updateWithTimestamp:(double)arg1 withContext:(void *)arg2;
+- (void)setCamera:(shared_ptr_46708168)arg1;
+- (void)setVkCamera:(id)arg1;
 - (_Bool)canEnter3DMode;
 - (void)exit3DMode;
 - (void)enter3DMode;
@@ -64,6 +66,7 @@ __attribute__((visibility("hidden")))
 - (void)zoom:(double)arg1 withFocusPoint:(struct CGPoint)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setRegionRestriction:(id)arg1 duration:(double)arg2 timingFunction:(CDUnknownBlockType)arg3;
 - (void)setCenterCoordinateDistanceRange:(CDStruct_c3b9c2ee)arg1 duration:(double)arg2 timingFunction:(CDUnknownBlockType)arg3;
+- (void)updateState;
 - (void)clampZoomLevelIfNecessary;
 - (_Bool)snapMapIfNecessary:(_Bool)arg1;
 - (_Bool)isAnimating;

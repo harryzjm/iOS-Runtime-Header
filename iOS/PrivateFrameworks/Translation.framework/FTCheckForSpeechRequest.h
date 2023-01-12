@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_5f33d03a)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_5f33d03a)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) long long end_speech_time;
 @property(readonly, nonatomic) long long start_speech_time;
 - (id)copyWithZone:(struct _NSZone *)arg1;

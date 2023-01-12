@@ -14,6 +14,8 @@
     NSMutableDictionary *__eventMap;
 }
 
++ (double)bucketedPowerOf2ForValue:(double)arg1 allowZero:(_Bool)arg2 minPositiveValue:(double)arg3 maxValue:(double)arg4;
++ (id)durationRangeStringForDuration:(double)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableDictionary *_eventMap; // @synthesize _eventMap=__eventMap;
 @property(readonly, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;

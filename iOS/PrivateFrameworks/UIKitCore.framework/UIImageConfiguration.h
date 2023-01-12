@@ -26,6 +26,7 @@
 - (void)_applyConfigurationValuesTo:(id)arg1;
 - (_Bool)_shouldApplyConfiguration:(id)arg1;
 - (id)configurationByApplyingConfiguration:(id)arg1;
+- (_Bool)_hasColorConfigurationWithTintColor;
 - (_Bool)_isUnspecified;
 - (_Bool)isEquivalentToConfiguration:(id)arg1;
 @property(readonly, copy) NSString *description;

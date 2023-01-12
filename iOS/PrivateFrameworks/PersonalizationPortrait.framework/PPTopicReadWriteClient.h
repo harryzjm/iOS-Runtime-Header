@@ -15,6 +15,7 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (_Bool)computeAndCacheTopicScores:(id *)arg1;
 - (_Bool)clearWithError:(id *)arg1 deletedCount:(unsigned long long *)arg2;
 - (_Bool)cloudSyncWithError:(id *)arg1;
 - (_Bool)deleteAllTopicsFromSourcesWithBundleId:(id)arg1 groupId:(id)arg2 olderThanDate:(id)arg3 deletedCount:(unsigned long long *)arg4 error:(id *)arg5;

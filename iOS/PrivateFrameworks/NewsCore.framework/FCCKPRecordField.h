@@ -16,20 +16,19 @@
     FCCKPRecordFieldValue *_value;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) FCCKPRecordFieldValue *value; // @synthesize value=_value;
 @property(retain, nonatomic) FCCKPRecordFieldIdentifier *identifier; // @synthesize identifier=_identifier;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(readonly, nonatomic) _Bool hasValue;
 @property(readonly, nonatomic) _Bool hasIdentifier;
-- (void)dealloc;
 
 @end
 

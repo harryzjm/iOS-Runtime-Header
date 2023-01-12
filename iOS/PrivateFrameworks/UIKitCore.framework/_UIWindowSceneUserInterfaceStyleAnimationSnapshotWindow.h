@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)_isSecure;
+- (id)_roleHint;
 - (double)_adjustedWindowLevelFromLevel:(double)arg1;
 - (_Bool)_ignoresHitTest;
 

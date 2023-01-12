@@ -19,7 +19,7 @@
 @property(retain, nonatomic) NSDictionary *lastKnownOptions; // @synthesize lastKnownOptions=_lastKnownOptions;
 @property(retain, nonatomic) NSSet *lastKnownDestinations; // @synthesize lastKnownDestinations=_lastKnownDestinations;
 @property(retain, nonatomic) WFOutOfProcessWorkflowController *controller; // @synthesize controller=_controller;
-- (void)outOfProcessWorkflowController:(id)arg1 didFinishWithError:(id)arg2 cancelled:(_Bool)arg3 reference:(id)arg4 dialogAttribution:(id)arg5;
+- (void)outOfProcessWorkflowController:(id)arg1 didFinishWithResult:(id)arg2 reference:(id)arg3 dialogAttributions:(id)arg4;
 - (void)finishWithError:(id)arg1;
 - (void)finish;
 - (double)timeoutLimitInSeconds;

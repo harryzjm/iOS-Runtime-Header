@@ -10,6 +10,7 @@
 @protocol HFCameraClipPlayerDelegate, HFCameraClipScrubbing;
 
 @protocol HFCameraClipPlaying <NSObject>
+@property(nonatomic) _Bool shouldBypassScrubbing;
 @property(nonatomic, getter=isScrubbing) _Bool scrubbing;
 @property(readonly, nonatomic) _Bool hasFatalError;
 @property(readonly, nonatomic) NSError *error;

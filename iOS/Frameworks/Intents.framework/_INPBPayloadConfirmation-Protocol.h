@@ -17,11 +17,15 @@
 @property(nonatomic) int startCallIntentContactsConfirmationReason;
 @property(readonly, nonatomic) _Bool hasConfirmationItem;
 @property(retain, nonatomic) _INPBSelectionItem *confirmationItem;
+@property(nonatomic) _Bool hasSendAnnouncementIntentAnnouncementConfirmationReason;
+@property(nonatomic) int sendAnnouncementIntentAnnouncementConfirmationReason;
 - (int)StringAsAddTasksIntentTargetTaskListConfirmationReason:(NSString *)arg1;
 - (NSString *)addTasksIntentTargetTaskListConfirmationReasonAsString:(int)arg1;
 - (int)StringAsReason:(NSString *)arg1;
 - (NSString *)reasonAsString:(int)arg1;
 - (int)StringAsStartCallIntentContactsConfirmationReason:(NSString *)arg1;
 - (NSString *)startCallIntentContactsConfirmationReasonAsString:(int)arg1;
+- (int)StringAsSendAnnouncementIntentAnnouncementConfirmationReason:(NSString *)arg1;
+- (NSString *)sendAnnouncementIntentAnnouncementConfirmationReasonAsString:(int)arg1;
 @end
 

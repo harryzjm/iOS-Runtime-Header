@@ -10,29 +10,32 @@
 #import <SensorKit/SRSampleExporting-Protocol.h>
 #import <SensorKit/SRSampling-Protocol.h>
 
-@class NSString;
+@class NSMutableSet, NSString;
 
 @interface SRMessagesUsageReport : NSObject <SRSampleExporting, NSSecureCoding, SRSampling>
 {
+    long long _totalUniqueContacts;
     double _duration;
     long long _totalOutgoingMessages;
     long long _totalIncomingMessages;
-    long long _totalUniqueContacts;
     double _startTime;
+    NSMutableSet *_uniqueContacts;
 }
 
 + (id)usageReportWithInterval:(id)arg1;
 + (_Bool)supportsSecureCoding;
+@property(retain) NSMutableSet *uniqueContacts; // @synthesize uniqueContacts=_uniqueContacts;
 @property double startTime; // @synthesize startTime=_startTime;
-@property long long totalUniqueContacts; // @synthesize totalUniqueContacts=_totalUniqueContacts;
 @property long long totalIncomingMessages; // @synthesize totalIncomingMessages=_totalIncomingMessages;
 @property long long totalOutgoingMessages; // @synthesize totalOutgoingMessages=_totalOutgoingMessages;
 @property double duration; // @synthesize duration=_duration;
+@property(readonly) long long totalUniqueContacts;
 - (id)sr_dictionaryRepresentation;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (id)initWithBinarySampleRepresentation:(id)arg1 metadata:(id)arg2 timestamp:(double)arg3;
 - (id)binarySampleRepresentation;
+- (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 

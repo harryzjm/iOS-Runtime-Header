@@ -31,8 +31,8 @@ __attribute__((visibility("hidden")))
 - (void)shouldPostDarwinNotificationForNextUpdate:(_Bool)arg1;
 - (void)statusWithCallback:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) id <GEONavdXPCInterface> remoteObjectProxyThreadUnsafe;
-- (void)removeObserver:(id)arg1;
-- (void)addObserver:(id)arg1;
+- (void)unregisterObserver:(id)arg1;
+- (void)registerObserver:(id)arg1;
 - (void)_connectToDaemonIfNeededThreadUnsafe;
 - (void)close;
 - (void)open;

@@ -18,18 +18,13 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *allowablePluginDirectoryPaths; // @synthesize allowablePluginDirectoryPaths=_allowablePluginDirectoryPaths;
 @property(nonatomic) __weak HDDaemon *daemon; // @synthesize daemon=_daemon;
-- (Class)_loadPrincipalClassConformingToProtocols:(id)arg1 fromBundleAtPath:(id)arg2;
-- (id)_loadPrincipalClassesConformingToProtocols:(id)arg1 fromBundlesInDirectoryAtPath:(id)arg2 error:(id *)arg3;
 - (id)pluginsConformingToProtocol:(id)arg1;
+- (void)notifyPluginsOfDatabaseObliteration;
 - (id)createExtensionsForProfile:(id)arg1;
 - (id)createExtensionsForDaemon:(id)arg1;
-- (void)_loadPlugins;
 - (id)_createPluginsFromClasses:(id)arg1;
 - (id)_pluginClasses;
-- (id)_principalClassProtocols;
 - (id)_pluginDirectoryPaths;
-- (id)_internalPluginsDirectoryPaths;
-- (id)_pluginsDirectoryPath;
 - (id)initWithDaemon:(id)arg1;
 - (id)_builtInPluginClasses;
 

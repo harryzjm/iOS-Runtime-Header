@@ -10,11 +10,17 @@
 {
 }
 
+- (id)smartPromptWithContentDescription:(id)arg1 contentDestination:(id)arg2 workflowName:(id)arg3;
+- (id)contentDestinationWithError:(id *)arg1;
+- (_Bool)isRunningOniPad;
+- (id)supportedIdentifiers;
+- (id)intentDescriptorFromParameterState;
 - (_Bool)shouldOpenAppThroughSiriForIntent:(id)arg1 intentResponse:(id)arg2;
 - (id)generatedIntentWithIdentifier:(id)arg1 input:(id)arg2 processedParameters:(id)arg3 error:(id *)arg4;
 - (void)resolveSlot:(id)arg1 withProcessedValue:(id)arg2 parameter:(id)arg3 input:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)errorFromHandleResponse:(id)arg1 intent:(id)arg2;
 - (id)errorFromConfirmResponse:(id)arg1 intent:(id)arg2;
+- (id)icon;
 - (_Bool)skipsProcessingHiddenParameters;
 - (id)errorFromStartCallResponse:(id)arg1 intent:(id)arg2;
 - (id)errorFromResolutionResult:(id)arg1 forSlot:(id)arg2 onIntent:(id)arg3;
@@ -24,7 +30,6 @@
 - (id)appConfigurationRequiredError;
 - (id)localizedKeyParameterDisplayName;
 - (id)localizedCallServiceName;
-- (id)displayableAppIdentifierForBundleIdentifier:(id)arg1;
 - (long long)preferredCallProvider;
 - (long long)callCapability;
 - (id)serializedParametersForDonatedIntent:(id)arg1 allowDroppingUnconfigurableValues:(_Bool)arg2;

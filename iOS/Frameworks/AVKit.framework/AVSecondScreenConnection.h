@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_currentItemIsReadyToPlayVideoOrLoadingWhileActive;
 - (_Bool)_allowsNonAirPlayExternalPlayback;
 - (_Bool)_determineIsReadyToConnect;
+- (void)_updateReadyToConnect;
 - (void)_updatePreferredDisplayCriteriaFromPreparedAssetIfNeeded:(id)arg1;
 - (void)_updatePreferredDisplayCriteria;
 - (void)_startObservingPlayer;

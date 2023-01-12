@@ -6,18 +6,24 @@
 
 #import <Intents/INIntentResponse.h>
 
-@class NSURL;
+@class MISSING_TYPE, NSString, NSURL;
 
 @interface PlayVideoIntentResponse : INIntentResponse
 {
-    long long _code;
+    MISSING_TYPE *code;
 }
 
-@property(nonatomic) long long code; // @synthesize code=_code;
+- (id)initWithPropertiesByName:(id)arg1;
+- (id)initWithBackingStore:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithCode:(long long)arg1 userActivity:(id)arg2;
+@property(nonatomic) long long code; // @synthesize code;
 
 // Remaining properties
-@property(copy, nonatomic) NSURL *urlToLaunch; // @dynamic urlToLaunch;
+@property(nonatomic, copy) NSString *appBundleIdentifier; // @dynamic appBundleIdentifier;
+@property(nonatomic, copy) NSString *searchTerm; // @dynamic searchTerm;
+@property(nonatomic, copy) NSURL *urlToLaunch; // @dynamic urlToLaunch;
 
 @end
 

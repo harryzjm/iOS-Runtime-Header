@@ -12,14 +12,14 @@
 
 @interface TSCH3DFramebuffer : NSObject <TSCH3DPipelineLinkable>
 {
-    struct FramebufferAttributes mFramebufferAttributes;
+    struct FramebufferAttributes _framebufferAttributes;
     unsigned long long _uniqueIdentifier;
 }
 
 + (id)framebufferWithFramebufferAttributes:(const struct FramebufferAttributes *)arg1;
 - (id).cxx_construct;
 @property(readonly, nonatomic) unsigned long long uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
-- (id)pixelBufferFromViewport:(const box_0260e9b3 *)arg1 components:(unsigned long long)arg2 flipped:(_Bool)arg3 forProcessor:(id)arg4 session:(id)arg5;
+- (id)pixelBufferFromViewport:(const void *)arg1 components:(unsigned long long)arg2 flipped:(_Bool)arg3 forProcessor:(id)arg4 session:(id)arg5;
 - (id)output;
 - (id)resolvingFramebuffer;
 - (const struct FramebufferAttributes *)framebufferAttributes;

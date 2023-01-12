@@ -9,6 +9,7 @@
 #import <UIKitCore/_UIDisplayInfoProviding-Protocol.h>
 
 @class FBSDisplayConfiguration, NSString;
+@protocol _UIDisplayInfoShape;
 
 @interface UISDisplayContext (DisplayInfoProviding) <_UIDisplayInfoProviding>
 @property(readonly, nonatomic) double systemMinimumMargin;
@@ -24,6 +25,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) FBSDisplayConfiguration *displayConfiguration;
+@property(readonly, nonatomic) id <_UIDisplayInfoShape> exclusionArea; // @dynamic exclusionArea;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 @end

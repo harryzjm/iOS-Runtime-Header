@@ -27,7 +27,6 @@ __attribute__((visibility("hidden")))
     _Bool _isDebugging;
     CALayer *_imageLayer;
     CALayer *_mediaSuperlayer;
-    CALayer *_liveImageLayer;
     CALayer *_mediaLayer;
     CALayer *_debugLayer;
     CAShapeLayer *_debugViewRectLayer;
@@ -42,10 +41,14 @@ __attribute__((visibility("hidden")))
     struct CGPoint _lastModelCropCenter;
     struct CGPoint _lastViewCropCenter;
     double _lastUICroppingRectToImageScale;
+    float _gainMapValue;
+    struct CGImage *_gainMapImage;
     struct CGRect _imageCropRect;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) float gainMapValue; // @synthesize gainMapValue=_gainMapValue;
+@property(retain, nonatomic) struct CGImage *gainMapImage; // @synthesize gainMapImage=_gainMapImage;
 @property(readonly, nonatomic) struct CGRect imageCropRect; // @synthesize imageCropRect=_imageCropRect;
 - (void)handlePinchGesture:(id)arg1;
 - (void)handlePanGesture:(id)arg1;
@@ -73,7 +76,7 @@ __attribute__((visibility("hidden")))
 - (void)_invalidateImageModulationManager;
 - (struct CGSize)_sizeRotatedIfNeeded:(struct CGSize)arg1;
 - (void)mediaViewDidFinishRendering:(id)arg1;
-- (void)setImageModulationOptions:(CDStruct_0b004a15)arg1;
+- (void)setImageModulationOptions:(CDStruct_910f5d27)arg1;
 - (void)_setupMediaWithComposition:(id)arg1;
 - (void)tearDownMediaViewAndLayers;
 - (void)setVideoComposition:(id)arg1 withSeekTime:(CDStruct_1b6d18a9)arg2;

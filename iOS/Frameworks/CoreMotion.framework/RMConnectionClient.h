@@ -26,29 +26,10 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic, getter=isValid) _Bool valid; // @synthesize valid=_valid;
-@property(nonatomic) unsigned long long connectionTimerDelay; // @synthesize connectionTimerDelay=_connectionTimerDelay;
-@property(retain, nonatomic) NSObject<OS_dispatch_source> *connectionTimer; // @synthesize connectionTimer=_connectionTimer;
-@property(retain, nonatomic) NSMutableArray *messageCache; // @synthesize messageCache=_messageCache;
-@property(copy, nonatomic) CDUnknownBlockType messageHandler; // @synthesize messageHandler=_messageHandler;
-@property(copy, nonatomic) CDUnknownBlockType streamingDataCallback; // @synthesize streamingDataCallback=_streamingDataCallback;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property(retain, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
-@property(retain, nonatomic) RMConnectionEndpoint *endpoint; // @synthesize endpoint=_endpoint;
 - (void)endpoint:(id)arg1 didReceiveMessage:(id)arg2 withData:(id)arg3 replyBlock:(CDUnknownBlockType)arg4;
 - (void)endpoint:(id)arg1 didReceiveStreamedData:(id)arg2;
 - (void)endpointWasInvalidated:(id)arg1;
 - (void)endpointWasInterrupted:(id)arg1;
-- (void)handleDaemonStart;
-- (void)invalidate;
-- (void)stopStreaming;
-- (void)stopStreamingInternal;
-- (void)requestStreamingWithMessage:(id)arg1 data:(id)arg2 callback:(CDUnknownBlockType)arg3;
-- (void)sendCachedMessage:(id)arg1 withData:(id)arg2;
-- (void)sendMessage:(id)arg1 withData:(id)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)connect;
-- (void)replayCache;
-- (id)initWithQueue:(id)arg1 serviceName:(id)arg2 messageHandler:(CDUnknownBlockType)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

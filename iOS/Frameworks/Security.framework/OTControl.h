@@ -21,6 +21,13 @@
 @property _Bool sync; // @synthesize sync=_sync;
 @property(retain) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property _Bool synchronous; // @synthesize synchronous=_synchronous;
+- (void)waitForPriorityViewKeychainDataRecovery:(id)arg1 contextID:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)fetchAccountWideSettings:(id)arg1 contextID:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)fetchAccountSettings:(id)arg1 contextID:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)fetchTrustedSecureElementIdentities:(id)arg1 contextID:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)removeLocalSecureElementIdentityPeerID:(id)arg1 contextID:(id)arg2 secureElementIdentityPeerID:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)setLocalSecureElementIdentity:(id)arg1 contextID:(id)arg2 secureElementIdentity:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)resetAccountCDPContents:(id)arg1 contextID:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)invalidateEscrowCache:(id)arg1 contextID:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)fetchUserControllableViewsSyncStatus:(id)arg1 contextID:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)setUserControllableViewsSyncStatus:(id)arg1 contextID:(id)arg2 enabled:(_Bool)arg3 reply:(CDUnknownBlockType)arg4;
@@ -32,6 +39,14 @@
 - (void)postCDPFollowupResult:(_Bool)arg1 type:(id)arg2 error:(id)arg3 containerName:(id)arg4 contextName:(id)arg5 reply:(CDUnknownBlockType)arg6;
 - (void)waitForOctagonUpgrade:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)healthCheck:(id)arg1 context:(id)arg2 skipRateLimitingCheck:(_Bool)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)removeInheritanceKey:(id)arg1 contextID:(id)arg2 uuid:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)preflightJoinWithInheritanceKey:(id)arg1 contextID:(id)arg2 inheritanceKey:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)joinWithInheritanceKey:(id)arg1 contextID:(id)arg2 inheritanceKey:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)createInheritanceKey:(id)arg1 contextID:(id)arg2 uuid:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)removeCustodianRecoveryKey:(id)arg1 contextID:(id)arg2 uuid:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)preflightJoinWithCustodianRecoveryKey:(id)arg1 contextID:(id)arg2 custodianRecoveryKey:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)joinWithCustodianRecoveryKey:(id)arg1 contextID:(id)arg2 custodianRecoveryKey:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)createCustodianRecoveryKey:(id)arg1 contextID:(id)arg2 uuid:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)joinWithRecoveryKey:(id)arg1 contextID:(id)arg2 recoveryKey:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)createRecoveryKey:(id)arg1 contextID:(id)arg2 recoveryKey:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)fetchEscrowContents:(id)arg1 contextID:(id)arg2 reply:(CDUnknownBlockType)arg3;
@@ -54,7 +69,6 @@
 - (void)rpcVoucherWithConfiguration:(id)arg1 peerID:(id)arg2 permanentInfo:(id)arg3 permanentInfoSig:(id)arg4 stableInfo:(id)arg5 stableInfoSig:(id)arg6 reply:(CDUnknownBlockType)arg7;
 - (void)rpcPrepareIdentityAsApplicantWithConfiguration:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)rpcEpochWithConfiguration:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)handleIdentityChangeForSigningKey:(id)arg1 ForEncryptionKey:(id)arg2 ForPeerID:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)notifyIDMSTrustLevelChangeForContainer:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)signOut:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)signIn:(id)arg1 container:(id)arg2 context:(id)arg3 reply:(CDUnknownBlockType)arg4;

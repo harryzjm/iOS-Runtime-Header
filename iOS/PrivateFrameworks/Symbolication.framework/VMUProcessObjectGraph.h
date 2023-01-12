@@ -6,7 +6,7 @@
 
 #import <Symbolication/VMUCommonGraphInterface-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, VMUClassInfoMap, VMUDebugTimer, VMUGraphStackLogReader, VMUNodeToStringMap, VMURangeToStringMap, VMUTaskMemoryScanner;
+@class NSArray, NSDictionary, NSString, VMUClassInfoMap, VMUDebugTimer, VMUGraphStackLogReader, VMUNodeToStringMap, VMURangeToStringMap, VMUSymbolStore, VMUTaskMemoryScanner;
 @protocol VMUStackLogReader;
 
 @interface VMUProcessObjectGraph <VMUCommonGraphInterface>
@@ -21,6 +21,7 @@
     NSArray *_zoneNames;
     NSString *_processName;
     NSString *_processDescriptionString;
+    _Bool _isTranslatedByRosetta;
     NSString *_executablePath;
     NSString *_binaryImagesDescription;
     VMURangeToStringMap *_threadNameRanges;
@@ -29,7 +30,6 @@
     _Bool _gotObjcClassStructureRanges;
     _Bool _showRawClassNames;
     NSDictionary *_pthreadOffsets;
-    VMUNodeToStringMap *_nodeLabels;
     void *_userMarked;
     VMUGraphStackLogReader *_stackLogReader;
     VMUDebugTimer *_debugTimer;
@@ -39,14 +39,21 @@
     unsigned int _objectContentLevel;
     unsigned int _objectContentLevelForNodeLabels;
     NSDictionary *_srcAddressToExtraAutoreleaseCountDict;
+    NSArray *_backtraces;
+    VMUSymbolStore *_symbolStore;
+    VMUNodeToStringMap *_nodeLabels;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) unsigned int objectContentLevelForNodeLabels; // @synthesize objectContentLevelForNodeLabels=_objectContentLevelForNodeLabels;
+@property(readonly, nonatomic) VMUNodeToStringMap *nodeLabels; // @synthesize nodeLabels=_nodeLabels;
+@property(retain, nonatomic) VMUSymbolStore *symbolStore; // @synthesize symbolStore=_symbolStore;
+@property(copy, nonatomic) NSArray *backtraces; // @synthesize backtraces=_backtraces;
 @property(retain, nonatomic) NSDictionary *srcAddressToExtraAutoreleaseCountDict; // @synthesize srcAddressToExtraAutoreleaseCountDict=_srcAddressToExtraAutoreleaseCountDict;
 @property(nonatomic) unsigned int objectContentLevel; // @synthesize objectContentLevel=_objectContentLevel;
 @property(nonatomic) _Bool showsPhysFootprint; // @synthesize showsPhysFootprint=_showsPhysFootprint;
 @property(readonly, nonatomic) NSString *executablePath; // @synthesize executablePath=_executablePath;
+@property(nonatomic) _Bool isTranslatedByRosetta; // @synthesize isTranslatedByRosetta=_isTranslatedByRosetta;
 @property(nonatomic) unsigned long long physicalFootprintPeak; // @synthesize physicalFootprintPeak=_physicalFootprintPeak;
 @property(nonatomic) unsigned long long physicalFootprint; // @synthesize physicalFootprint=_physicalFootprint;
 @property(nonatomic) _Bool showRawClassNames; // @synthesize showRawClassNames=_showRawClassNames;
@@ -58,6 +65,13 @@
 @property(readonly, nonatomic) unsigned int vmPageSize; // @synthesize vmPageSize=_vmPageSize;
 @property(nonatomic) __weak VMUTaskMemoryScanner *scanner; // @synthesize scanner=_scanner;
 @property(readonly, nonatomic) int pid; // @synthesize pid=_pid;
+- (void)_generateSymbolStoreFromExistingGraph;
+- (struct _CSArchitecture)parseMacOSArchitectureFromProcessDescription;
+- (_Bool)resymbolicateWithDsymPath:(id)arg1 libraryNames:(id)arg2 all:(_Bool)arg3 progress:(id)arg4 showDebugInfo:(_Bool)arg5 error:(id *)arg6;
+- (void)resymbolicatePrivateMaps;
+- (void)markLeafNodes:(void *)arg1;
+- (void)markRootNodes:(void *)arg1;
+- (void)removeWeakEdges;
 - (_Bool)nodeDetailIsAutoreleasePoolContentPage:(CDStruct_599faf0f)arg1;
 - (_Bool)nodeIsAutoreleasePoolContentPage:(unsigned int)arg1;
 - (void)markReachableNodesFromRoots:(void *)arg1 inMap:(void *)arg2 options:(unsigned int)arg3;
@@ -75,6 +89,7 @@
 - (id)vmuVMRegionForNode:(unsigned int)arg1;
 - (id)vmuVMRegionForAddress:(unsigned long long)arg1;
 - (id)_descriptionForRegionAddress:(unsigned long long)arg1 withOffset:(unsigned long long)arg2 showSegment:(_Bool)arg3;
+- (id)sampleBacktracesString;
 @property(readonly, nonatomic) _Bool is64bit;
 - (void)setProcessName:(id)arg1;
 @property(readonly, nonatomic) NSString *processName;
@@ -85,6 +100,7 @@
 - (void)setUserMarked:(void *)arg1;
 - (void *)copyUserMarked;
 - (void)_renameWithNodeMap:(unsigned int *)arg1 nodeNamespace:(unsigned int)arg2 edgeMap:(unsigned int *)arg3 edgeNamespace:(unsigned int)arg4;
+- (void)_reorderLabelsWithNodeNameMap:(unsigned int *)arg1;
 - (unsigned int)enumerateRegionsWithBlock:(CDUnknownBlockType)arg1;
 - (id)zoneNameForIndex:(unsigned int)arg1;
 @property(readonly, nonatomic) unsigned int zoneCount;

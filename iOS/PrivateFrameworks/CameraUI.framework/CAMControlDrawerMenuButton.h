@@ -50,8 +50,6 @@
 - (void)_updateHighlightedView;
 - (void)selectedByAccessibilityHUDManager:(id)arg1;
 - (id)hudItemForAccessibilityHUDManager:(id)arg1;
-- (id)hudItemForMenuItem:(id)arg1;
-- (id)hudItemForMenuHeader;
 - (_Bool)_shouldTrackView:(id)arg1 forTouchAtLocation:(struct CGPoint)arg2;
 - (unsigned long long)_indexOfItemToTrackForTouchAtLocation:(struct CGPoint)arg1;
 - (void)cancelTrackingWithEvent:(id)arg1;

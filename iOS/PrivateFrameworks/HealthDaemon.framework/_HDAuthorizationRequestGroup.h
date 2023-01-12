@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HKSource, NSMutableArray, NSMutableSet, NSSet, NSString, NSUUID;
+@class HKSource, NSMutableArray, NSMutableSet, NSUUID;
 @protocol OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
@@ -24,26 +24,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) CDUnknownBlockType promptHandler; // @synthesize promptHandler=_promptHandler;
-@property(nonatomic, getter=isInTransaction) _Bool inTransaction; // @synthesize inTransaction=_inTransaction;
-@property(readonly, nonatomic) NSUUID *promptSessionIdentifier; // @synthesize promptSessionIdentifier=_promptSessionIdentifier;
-@property(readonly, copy, nonatomic) NSSet *typesToRead; // @synthesize typesToRead=_typesToRead;
-@property(readonly, copy, nonatomic) NSSet *typesToWrite; // @synthesize typesToWrite=_typesToWrite;
-@property(readonly, copy, nonatomic) HKSource *source; // @synthesize source=_source;
-@property(retain, nonatomic) NSObject<OS_dispatch_source> *sessionTimeoutSource; // @synthesize sessionTimeoutSource=_sessionTimeoutSource;
-@property(retain, nonatomic) NSMutableArray *completions; // @synthesize completions=_completions;
-@property(retain, nonatomic) NSMutableArray *requests; // @synthesize requests=_requests;
 - (id)description;
-- (void)_cancelTimeoutSource;
-- (void)beginTransaction;
-- (void)finishRequestsWithError:(id)arg1;
-- (_Bool)promptIfNecessaryWithTimeout:(double)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)cancelRequestsWithIdentifiers:(id)arg1 error:(id)arg2;
-- (void)addCompletion:(CDUnknownBlockType)arg1;
-- (void)addRequest:(id)arg1;
-@property(readonly, nonatomic) unsigned long long requestCount;
-@property(readonly, copy, nonatomic) NSString *bundleIdentifier;
-- (id)initWithSource:(id)arg1;
 
 @end
 

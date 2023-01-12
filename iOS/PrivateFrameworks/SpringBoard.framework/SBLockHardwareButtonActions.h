@@ -49,6 +49,7 @@
 - (_Bool)disallowsDoublePressForReason:(id *)arg1;
 - (_Bool)disallowsSinglePressForReason:(id *)arg1;
 - (_Bool)_shouldWaitForDoublePress;
+- (void)performKeyboardShortcut;
 - (void)performLongPressCancelledActions;
 - (void)performSOSActionsWithUUID:(id)arg1 triggerMechanism:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)performTriplePressActions;

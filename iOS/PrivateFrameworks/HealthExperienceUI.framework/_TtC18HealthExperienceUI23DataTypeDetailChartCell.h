@@ -13,14 +13,12 @@
     MISSING_TYPE *parentViewController;
     MISSING_TYPE *chartViewController;
     MISSING_TYPE *item;
-    MISSING_TYPE *separatorView;
-    MISSING_TYPE *separatorViewHeightConstraint;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic, readonly) NSString *description;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+@property(nonatomic, readonly) NSString *description;
 
 @end
 

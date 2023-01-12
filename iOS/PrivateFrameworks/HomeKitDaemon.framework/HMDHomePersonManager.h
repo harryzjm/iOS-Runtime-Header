@@ -11,19 +11,15 @@
 
 @interface HMDHomePersonManager <HMFLogging, HMDDatabaseZoneManagerDataSource>
 {
-    HMHomePersonManagerSettings *_dataUnavailableHomeSettings;
     HMDHome *_home;
 }
 
 + (id)logCategory;
 - (void).cxx_destruct;
 @property __weak HMDHome *home; // @synthesize home=_home;
-@property(readonly, copy) HMHomePersonManagerSettings *dataUnavailableHomeSettings; // @synthesize dataUnavailableHomeSettings=_dataUnavailableHomeSettings;
-- (id)updateSettingsUsingMessagePayload:(id)arg1;
 - (_Bool)zoneManager:(id)arg1 shouldRequestShareInvitationFromUser:(id)arg2;
 - (_Bool)manager:(id)arg1 shouldGrantWriteAccessToUser:(id)arg2;
 - (_Bool)manager:(id)arg1 shouldShareWithUser:(id)arg2;
-- (id)logIdentifier;
 - (void)handleUserRemoteAccessDidChangeNotification:(id)arg1;
 - (void)handleUserCamerasAccessLevelDidChangeNotification:(id)arg1;
 - (void)handleUpdatedSettings:(id)arg1;

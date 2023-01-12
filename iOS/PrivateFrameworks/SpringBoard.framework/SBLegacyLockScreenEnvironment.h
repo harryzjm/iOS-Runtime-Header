@@ -10,7 +10,7 @@
 #import <SpringBoard/SBLockScreenEnvironment-Protocol.h>
 
 @class NSString, SBLockScreenViewControllerBase, UIViewController;
-@protocol SBApplicationHosting, SBAutoUnlockRule, SBBiometricUnlockBehavior, SBButtonEventsHandler, SBFScreenWakeAnimationTarget, SBIdleTimerProviding, SBLockScreenApplicationLaunching, SBLockScreenBacklightControlling, SBLockScreenBehaviorSuppressing, SBLockScreenBlockedStateObserving, SBLockScreenButtonObserving, SBLockScreenCallHandling, SBLockScreenContentStateProviding, SBLockScreenCustomActionStoring, SBLockScreenIdleTimerControlling, SBLockScreenLockingAndUnlocking, SBLockScreenMediaControlsPresenting, SBLockScreenPasscodeViewPresenting, SBLockScreenPluginPresenting, SBLockScreenProximityBehaviorProviding, SBLockScreenStatusBarTransitioning;
+@protocol SBApplicationHosting, SBAutoUnlockRule, SBBiometricUnlockBehavior, SBButtonEventsHandler, SBFScreenWakeAnimationTarget, SBIdleTimerProviding, SBLockScreenApplicationLaunching, SBLockScreenBacklightControlling, SBLockScreenBehaviorSuppressing, SBLockScreenBlockedStateObserving, SBLockScreenButtonObserving, SBLockScreenCallHandling, SBLockScreenContentStateProviding, SBLockScreenCustomActionStoring, SBLockScreenIdleTimerControlling, SBLockScreenLockingAndUnlocking, SBLockScreenMediaControlsPresenting, SBLockScreenPasscodeViewPresenting, SBLockScreenPluginPresenting, SBLockScreenProximityBehaviorProviding, SBLockScreenSpotlightPresenting, SBLockScreenStatusBarTransitioning, SBSWidgetMetricsProviding;
 
 @interface SBLegacyLockScreenEnvironment : NSObject <BSDescriptionProviding, SBLockScreenEnvironment>
 {
@@ -23,6 +23,8 @@
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) id <SBLockScreenSpotlightPresenting> spotlightPresenter;
+@property(readonly, nonatomic) id <SBSWidgetMetricsProviding> widgetMetricsProvider;
 @property(readonly, nonatomic) id <SBLockScreenStatusBarTransitioning> statusBarTransitionController;
 @property(readonly, nonatomic) id <SBLockScreenProximityBehaviorProviding> proximityBehaviorProvider;
 @property(readonly, nonatomic) id <SBLockScreenPluginPresenting> pluginPresenter;

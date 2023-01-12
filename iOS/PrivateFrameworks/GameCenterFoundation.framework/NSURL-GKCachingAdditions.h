@@ -7,6 +7,7 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (GKCachingAdditions)
++ (id)_gkGenerateFriendRequestURL:(id)arg1;
 - (id)cacheKeyRepresentation;
 - (id)_gkQueryDictionary;
 - (id)_gkURLByReplacingSchemeWithScheme:(id)arg1;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class IMConnectionMonitor, IMRemoteURLConnection, NSArray, NSData, NSDate, NSDictionary, NSMutableURLRequest, NSNumber, NSString, NSURL;
+@class IMConnectionMonitor, IMRemoteURLConnection, NSArray, NSData, NSDate, NSDictionary, NSMutableDictionary, NSMutableURLRequest, NSNumber, NSString, NSURL;
 @protocol OS_dispatch_queue;
 
 @interface IDSServerBag : NSObject
@@ -35,6 +35,7 @@
     NSData *_serverGivenBag;
     CDUnknownBlockType _remoteURLCreationBlock;
     CDUnknownBlockType _connectionMonitorCreationBlock;
+    NSMutableDictionary *_overrideValues;
 }
 
 + (id)_bagCreationLock;
@@ -44,6 +45,7 @@
 + (id)_sharedInstanceForClass:(Class)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(retain) NSMutableDictionary *overrideValues; // @synthesize overrideValues=_overrideValues;
 @property(copy) CDUnknownBlockType connectionMonitorCreationBlock; // @synthesize connectionMonitorCreationBlock=_connectionMonitorCreationBlock;
 @property(copy) CDUnknownBlockType remoteURLCreationBlock; // @synthesize remoteURLCreationBlock=_remoteURLCreationBlock;
 @property BOOL hashAlgorithm; // @synthesize hashAlgorithm=_hashAlgorithm;
@@ -69,7 +71,12 @@
 @property(retain) NSURL *bagURL; // @synthesize bagURL=_bagURL;
 @property(retain) IMConnectionMonitor *_connectionMonitor; // @synthesize _connectionMonitor;
 - (void)connectionMonitorDidUpdate:(id)arg1;
+- (_Bool)_allowedToLoadBag;
 @property(readonly) _Bool isServerAvailable;
+- (_Bool)_forceAllowBagLoading;
+- (id)_overrideValues;
+- (void)_setOverrideValue:(id)arg1 forKey:(id)arg2;
+- (void)_clearOverrideValues;
 - (id)urlWithKey:(id)arg1;
 - (id)objectForKey:(id)arg1;
 @property(readonly) _Bool requiresIDSConnection;

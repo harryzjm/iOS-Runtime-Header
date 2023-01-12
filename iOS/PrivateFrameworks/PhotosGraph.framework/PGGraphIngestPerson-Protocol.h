@@ -20,7 +20,7 @@
 @property(readonly, nonatomic) _Bool isUserCreated;
 @property(readonly, nonatomic) _Bool isFavorite;
 @property(readonly, nonatomic) NSString *contactID;
-@property(readonly, nonatomic) NSString *UUID;
+@property(readonly, nonatomic) NSString *localIdentifier;
 @property(readonly, nonatomic) NSString *fullName;
 @end
 

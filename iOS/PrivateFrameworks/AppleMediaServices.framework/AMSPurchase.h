@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <AppleMediaServices/NSCopying-Protocol.h>
+#import <AppleMediaServices/NSSecureCoding-Protocol.h>
 
 @class ACAccount, AMSBuyParams, AMSProcessInfo, NSDictionary, NSNumber, NSString;
 
-@interface AMSPurchase : NSObject <NSCopying>
+@interface AMSPurchase : NSObject <NSCopying, NSSecureCoding>
 {
     _Bool _ignoreRequirePasswordRestriction;
     _Bool _requiresAccount;
@@ -18,20 +19,25 @@
     _Bool _useJSONContentType;
     NSString *_logUUID;
     ACAccount *_account;
-    NSNumber *_accountId;
     NSDictionary *_additionalHeaders;
     AMSBuyParams *_buyParams;
-    NSString *_callerBundleId;
-    NSString *_clientId;
+    NSString *_clientCorrelationKey;
     AMSProcessInfo *_clientInfo;
     NSNumber *_ownerAccountId;
     NSDictionary *_metricsOverlay;
     long long _purchaseType;
     NSString *_storefront;
     NSNumber *_uniqueIdentifier;
+    NSNumber *_accountId;
+    NSString *_callerBundleId;
+    NSString *_clientId;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *clientId; // @synthesize clientId=_clientId;
+@property(copy, nonatomic) NSString *callerBundleId; // @synthesize callerBundleId=_callerBundleId;
+@property(copy, nonatomic) NSNumber *accountId; // @synthesize accountId=_accountId;
 @property(nonatomic) _Bool useJSONContentType; // @synthesize useJSONContentType=_useJSONContentType;
 @property(nonatomic, getter=isUserInitiated) _Bool userInitiated; // @synthesize userInitiated=_userInitiated;
 @property(readonly, nonatomic) NSNumber *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
@@ -42,15 +48,15 @@
 @property(copy, nonatomic) NSNumber *ownerAccountId; // @synthesize ownerAccountId=_ownerAccountId;
 @property(nonatomic) _Bool ignoreRequirePasswordRestriction; // @synthesize ignoreRequirePasswordRestriction=_ignoreRequirePasswordRestriction;
 @property(copy, nonatomic) AMSProcessInfo *clientInfo; // @synthesize clientInfo=_clientInfo;
-@property(copy, nonatomic) NSString *clientId; // @synthesize clientId=_clientId;
-@property(copy, nonatomic) NSString *callerBundleId; // @synthesize callerBundleId=_callerBundleId;
-@property(readonly, nonatomic) AMSBuyParams *buyParams; // @synthesize buyParams=_buyParams;
+@property(readonly, copy, nonatomic) NSString *clientCorrelationKey; // @synthesize clientCorrelationKey=_clientCorrelationKey;
+@property(readonly, copy, nonatomic) AMSBuyParams *buyParams; // @synthesize buyParams=_buyParams;
 @property(copy, nonatomic) NSDictionary *additionalHeaders; // @synthesize additionalHeaders=_additionalHeaders;
-@property(copy, nonatomic) NSNumber *accountId; // @synthesize accountId=_accountId;
 @property(retain, nonatomic) ACAccount *account; // @synthesize account=_account;
 - (id)_generateIdentifier;
 - (unsigned long long)hash;
 - (id)description;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(copy, nonatomic) NSString *logUUID; // @synthesize logUUID=_logUUID;
 - (id)initWithPurchaseType:(long long)arg1 buyParams:(id)arg2;

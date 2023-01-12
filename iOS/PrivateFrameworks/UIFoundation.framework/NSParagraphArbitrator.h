@@ -38,6 +38,7 @@
 @property(readonly) struct __CFStringTokenizer *tokenizer; // @synthesize tokenizer=_tokenizer;
 - (unsigned long long)adjustedLineBreakIndexForProposedIndex:(unsigned long long)arg1;
 - (CDStruct_f03de906)lineBreakContextBeforeIndex:(unsigned long long)arg1 lineFragmentWidth:(double)arg2 range:(struct _NSRange)arg3;
+- (double)raggednessWithCharIndexAsLineBreak:(unsigned long long)arg1 inRange:(struct _NSRange)arg2;
 - (_Bool)prepareTokenizerForPreferredLanguage:(id)arg1;
 - (_Bool)prepareBreakIteratorForAttributedString:(id)arg1 characterIndex:(unsigned long long)arg2;
 - (void)reset;

@@ -22,6 +22,7 @@
 - (void)didUseEmoji:(id)arg1 usageMode:(id)arg2 typingName:(id)arg3;
 - (void)didUseEmoji:(id)arg1 usageMode:(id)arg2;
 - (void)didUseEmoji:(id)arg1;
+- (void)writeEmojiDefaultsAndNotify:(_Bool)arg1;
 - (void)writeEmojiDefaults;
 - (void)createConnectionIfNecessary;
 - (void)dealloc;

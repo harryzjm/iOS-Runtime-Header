@@ -8,19 +8,33 @@
 
 #import <CarPlay/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString;
+@class CPButton, CPListTemplate, NSArray, NSString, NSUUID, UIImage;
 
 @interface CPListSection : NSObject <NSSecureCoding>
 {
     NSString *_header;
+    NSString *_headerSubtitle;
+    UIImage *_headerImage;
+    CPButton *_headerButton;
     NSString *_sectionIndexTitle;
     NSArray *_items;
+    CPListTemplate *_listTemplate;
+    NSUUID *_identifier;
+    long long _index;
+    unsigned long long _sectionHeaderStyle;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long sectionHeaderStyle; // @synthesize sectionHeaderStyle=_sectionHeaderStyle;
+@property(nonatomic) long long index; // @synthesize index=_index;
+@property(readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property(nonatomic) __weak CPListTemplate *listTemplate; // @synthesize listTemplate=_listTemplate;
 @property(readonly, copy, nonatomic) NSArray *items; // @synthesize items=_items;
 @property(readonly, copy, nonatomic) NSString *sectionIndexTitle; // @synthesize sectionIndexTitle=_sectionIndexTitle;
+@property(readonly, copy, nonatomic) CPButton *headerButton; // @synthesize headerButton=_headerButton;
+@property(copy, nonatomic) UIImage *headerImage; // @synthesize headerImage=_headerImage;
+@property(readonly, copy, nonatomic) NSString *headerSubtitle; // @synthesize headerSubtitle=_headerSubtitle;
 @property(readonly, copy, nonatomic) NSString *header; // @synthesize header=_header;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -30,6 +44,8 @@
 - (id)itemAtIndex:(unsigned long long)arg1;
 - (long long)numberOfItems;
 - (id)initWithItems:(id)arg1;
+- (void)_commonInitWithItems:(id)arg1 header:(id)arg2 headerSubtitle:(id)arg3 headerImage:(id)arg4 headerButton:(id)arg5 sectionIndexTitle:(id)arg6;
+- (id)initWithItems:(id)arg1 header:(id)arg2 headerSubtitle:(id)arg3 headerImage:(id)arg4 headerButton:(id)arg5 sectionIndexTitle:(id)arg6;
 - (id)initWithItems:(id)arg1 header:(id)arg2 sectionIndexTitle:(id)arg3;
 
 @end

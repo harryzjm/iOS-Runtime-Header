@@ -6,13 +6,11 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class NSSet, NSString, UIColor, _UILegibilitySettings;
+@class NSSet, NSString, _UILegibilitySettings;
 
 @protocol CSAppearanceProviding <NSObject>
-@property(readonly, nonatomic) UIColor *backgroundColor;
 @property(readonly, nonatomic) _UILegibilitySettings *legibilitySettings;
 @property(readonly, copy, nonatomic) NSSet *components;
-@property(readonly, nonatomic) long long backgroundStyle;
 @property(readonly, copy, nonatomic) NSString *appearanceIdentifier;
 - (void)conformsToCSAppearanceProviding;
 @end

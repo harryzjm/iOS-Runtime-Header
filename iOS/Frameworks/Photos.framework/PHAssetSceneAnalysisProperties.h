@@ -8,7 +8,7 @@
 
 @interface PHAssetSceneAnalysisProperties
 {
-    unsigned long long _sceneAnalysisVersion;
+    short _sceneAnalysisVersion;
     NSDate *_sceneAnalysisTimestamp;
     NSData *_distanceIdentity;
 }
@@ -18,7 +18,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSData *distanceIdentity; // @synthesize distanceIdentity=_distanceIdentity;
 @property(readonly, nonatomic) NSDate *sceneAnalysisTimestamp; // @synthesize sceneAnalysisTimestamp=_sceneAnalysisTimestamp;
-@property(readonly, nonatomic) unsigned long long sceneAnalysisVersion; // @synthesize sceneAnalysisVersion=_sceneAnalysisVersion;
+@property(readonly, nonatomic) short sceneAnalysisVersion; // @synthesize sceneAnalysisVersion=_sceneAnalysisVersion;
 - (id)initWithFetchDictionary:(id)arg1 asset:(id)arg2 prefetched:(_Bool)arg3;
 
 @end

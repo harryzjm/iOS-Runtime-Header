@@ -6,11 +6,10 @@
 
 #import <NewsArticles/NSObject-Protocol.h>
 
-@class FCArticle, FCIssue, NUArticleViewController;
+@class FCArticle, FCIssue, NUArticleContext, NUArticleHostViewController, NUArticleViewController;
 
 @protocol NUArticleViewControllerFactory <NSObject>
-- (NUArticleViewController *)createArticleViewControllerWithArticle:(FCArticle *)arg1 issue:(FCIssue *)arg2;
-- (NUArticleViewController *)createArticleViewControllerWithArticle:(FCArticle *)arg1;
+- (NUArticleViewController *)createArticleViewControllerWithArticle:(FCArticle *)arg1 issue:(FCIssue *)arg2 context:(NUArticleContext *)arg3 articleHostViewController:(NUArticleHostViewController *)arg4;
 @property(nonatomic, readonly) id loadingListeners;
 @end
 

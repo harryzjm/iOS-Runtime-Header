@@ -12,8 +12,7 @@
 
 + (long long)alignedRowBytesForWidth:(long long)arg1 bytesPerPixel:(long long)arg2;
 + (void)renderImage:(id)arg1 toSurface:(id)arg2 atPoint:(CDStruct_912cb5d2)arg3 withContext:(id)arg4 andColorSpace:(id)arg5;
-+ (void)copyTexture:(id)arg1 fromRect:(CDStruct_996ac03c)arg2 toSurfaceImage:(id)arg3 atPoint:(CDStruct_912cb5d2)arg4 withContext:(id)arg5;
-+ (void)copySurface:(id)arg1 fromRect:(CDStruct_996ac03c)arg2 toSurfaceImage:(id)arg3 atPoint:(CDStruct_912cb5d2)arg4;
++ (void)copyTexture:(id)arg1 fromRect:(CDStruct_996ac03c)arg2 toSurfaceImage:(id)arg3 atPoint:(CDStruct_912cb5d2)arg4 withDevice:(id)arg5;
 + (void)copySurfaceImage:(id)arg1 toImage:(id)arg2;
 + (void)copyPixelsFromImage:(id)arg1 srcRect:(CDStruct_996ac03c)arg2 destImage:(id)arg3 destOrigin:(CDStruct_912cb5d2)arg4;
 + (void)fillPixelsInBuffer:(id)arg1 rect:(CDStruct_996ac03c)arg2 srcPixel:(const void *)arg3;

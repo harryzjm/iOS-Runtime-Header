@@ -11,19 +11,16 @@
 #import <EventKitUI/PKScribbleInteractionElementSource-Protocol.h>
 #import <EventKitUI/UITextFieldDelegate-Protocol.h>
 
-@class EKCalendarItemEditor, NSMutableArray, NSMutableDictionary, NSString;
+@class EKCalendarItemEditor, EKLocationEditItemViewController, EKUILocationEditItemModel, NSString;
 
 __attribute__((visibility("hidden")))
 @interface EKCalendarItemLocationInlineEditItem <UITextFieldDelegate, EKEditItemViewControllerDelegate, EKEventDetailPredictedLocationCellDelegate, PKScribbleInteractionDelegate, PKScribbleInteractionElementSource, EKCalendarItemInlineEditItem>
 {
-    NSMutableArray *_locationsAndCells;
+    EKUILocationEditItemModel *_viewModel;
     EKCalendarItemEditor *_editor;
-    _Bool _sourceSupportsAvailabilityRequests;
-    NSMutableDictionary *_conferenceRoomInfos;
+    EKLocationEditItemViewController *_currentLocationEditController;
 }
 
-+ (id)_locationPlaceholder;
-+ (id)conferenceRoomNameForLocation:(id)arg1;
 - (void).cxx_destruct;
 - (void)_scribbleInteraction:(id)arg1 focusElement:(id)arg2 initialFocusSelectionReferencePoint:(struct CGPoint)arg3 completion:(CDUnknownBlockType)arg4;
 - (struct CGRect)_scribbleInteraction:(id)arg1 frameForElement:(id)arg2;
@@ -31,9 +28,6 @@ __attribute__((visibility("hidden")))
 - (void)_scribbleInteraction:(id)arg1 didFinishWritingInElement:(id)arg2;
 - (void)_scribbleInteraction:(id)arg1 willBeginWritingInElement:(id)arg2;
 - (_Bool)_scribbleInteraction:(id)arg1 focusWillTransformElement:(id)arg2;
-- (id)participantForConferenceRoomName:(id)arg1;
-- (_Bool)_showSuggestedLocation:(id)arg1;
-- (_Bool)_showConferenceLocation:(id)arg1;
 - (id)searchStringForEventAutocomplete;
 - (_Bool)textFieldShouldClear:(id)arg1;
 - (_Bool)textFieldShouldReturn:(id)arg1;
@@ -42,31 +36,27 @@ __attribute__((visibility("hidden")))
 - (void)textFieldDidBeginEditing:(id)arg1;
 - (void)eventDetailPredictedLocationCellAcceptedPrediction:(id)arg1 disambiguatedLocation:(id)arg2;
 - (void)eventDetailPredictedLocationCellRejectedPrediction:(id)arg1;
+- (void)editItemPendingVideoConferenceCompleted:(id)arg1;
 - (_Bool)editItemViewControllerSave:(id)arg1;
 - (_Bool)isSubitemAtIndexSaveable:(unsigned long long)arg1;
+- (_Bool)forceRefreshURLItemOnSave;
 - (_Bool)forceRefreshStartAndEndDatesOnSave;
 - (_Bool)forceTableReloadOnSave;
 - (_Bool)saveAndDismissWithForce:(_Bool)arg1;
-- (void)_clearLocation:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)_clearLocationAtIndex:(unsigned long long)arg1;
 - (void)_clearButtonTapped:(id)arg1;
-- (void)_updateAvailabilityInformation;
 - (id)_clearButtonView:(unsigned long long)arg1;
-- (void)_refreshConferenceRoomCell:(id)arg1;
-- (id)locationCellPairForCell:(id)arg1;
-- (void)_updateLocation:(id)arg1 withConferenceRoom:(id)arg2;
-- (void)_updateLocation:(id)arg1 withStructuredLocation:(id)arg2;
-- (void)_updateCalendarItemLocation;
-- (void)_updateAuxiliaryLocationsForNewLocation:(id)arg1;
+- (unsigned long long)_supportedSearchTypesForSubitemAtIndex:(unsigned long long)arg1;
 - (id)detailViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;
 - (_Bool)usesDetailViewControllerForSubitem:(unsigned long long)arg1;
 - (_Bool)editor:(id)arg1 canSelectSubitem:(unsigned long long)arg2;
-- (void)_setEditor:(id)arg1 andAddScribbleInteractionToCellIfNecessary:(id)arg2;
-- (void)_updateCell:(id)arg1 index:(unsigned long long)arg2 location:(id)arg3;
+- (void)_setEditor:(id)arg1 andUpdateScribbleInteractionOnCell:(id)arg2 addScribbleInteraction:(_Bool)arg3;
+- (void)_updateVirtualConferenceCell:(id)arg1 index:(unsigned long long)arg2 virtualConference:(id)arg3;
+- (void)_updateMapLocationCell:(id)arg1 index:(unsigned long long)arg2 location:(id)arg3;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1 inEditor:(id)arg2;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (_Bool)isSaveable;
 - (void)addStylingToCell:(id)arg1 forSubitemAtIndex:(unsigned long long)arg2;
-- (void)_contentSizeCategoryChanged:(id)arg1;
 - (unsigned long long)numberOfSubitems;
 - (void)reset;
 - (_Bool)isInline;

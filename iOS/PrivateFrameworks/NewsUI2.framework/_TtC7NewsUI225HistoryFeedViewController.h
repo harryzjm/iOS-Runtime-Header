@@ -8,6 +8,7 @@
 
 @class MISSING_TYPE;
 
+__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI225HistoryFeedViewController : UIViewController
 {
     MISSING_TYPE *styler;
@@ -15,6 +16,7 @@
     MISSING_TYPE *blueprintViewController;
     MISSING_TYPE *sharingActivityProviderFactory;
     MISSING_TYPE *toolbarManager;
+    MISSING_TYPE *newsActivityManager;
     MISSING_TYPE *clearButton;
 }
 

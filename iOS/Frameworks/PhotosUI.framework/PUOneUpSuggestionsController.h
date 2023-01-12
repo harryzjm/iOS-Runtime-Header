@@ -7,13 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <PhotosUI/PUBrowsingViewModelChangeObserver-Protocol.h>
-#import <PhotosUI/PXContextualNotificationDelegate-Protocol.h>
 
 @class NSMutableDictionary, NSString, PUAssetReference, PUBrowsingViewModel, PUOneUpSuggestionsProvider;
 @protocol PUOneUpSuggestionsControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface PUOneUpSuggestionsController : NSObject <PXContextualNotificationDelegate, PUBrowsingViewModelChangeObserver>
+@interface PUOneUpSuggestionsController : NSObject <PUBrowsingViewModelChangeObserver>
 {
     _Bool _willPerformUpdates;
     _Bool _isPerformingUpdates;
@@ -23,9 +22,7 @@ __attribute__((visibility("hidden")))
         _Bool activeSuggestionsWindow;
     } _needsUpdateFlags;
     struct {
-        _Bool frameForAssetReferenceInCoordinateSpace;
-        _Bool viewController;
-        _Bool didSelectSuggestionForAssetReference;
+        _Bool suggestionAvailable;
         _Bool canShowSuggestion;
     } _delegateRespondsTo;
     _Bool _viewVisible;
@@ -50,13 +47,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) PUBrowsingViewModel *browsingViewModel; // @synthesize browsingViewModel=_browsingViewModel;
 @property(readonly, nonatomic) PUOneUpSuggestionsProvider *suggestionsProvider; // @synthesize suggestionsProvider=_suggestionsProvider;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
-- (void)contextualNotificationDidDisappear:(id)arg1;
-- (void)contextualNotificationWasDiscarded:(id)arg1;
-- (void)contextualNotificationWasTapped:(id)arg1;
-- (_Bool)contextualNotification:(id)arg1 shouldPassthroughPoint:(struct CGPoint)arg2 inCoordinateSpace:(id)arg3;
-- (long long)preferredAnimationForContextualNotification:(id)arg1;
-- (id)preferredContainerViewForContextualNotification:(id)arg1;
-- (struct CGRect)contextualNotification:(id)arg1 containingFrameInCoordinateSpace:(id)arg2;
 - (void)_dismissSuggestionInfo:(id)arg1;
 - (void)_invalidateSuggestionsVisibility;
 - (void)_updateInFocus;
@@ -70,16 +60,13 @@ __attribute__((visibility("hidden")))
 - (void)_updateIfNeeded;
 - (_Bool)_needsUpdate;
 - (void)_setNeedsUpdate;
-- (id)_assetReferenceForContextualNotification:(id)arg1;
-- (void)_handleSuggestion:(id)arg1 error:(id)arg2 forAssetReference:(id)arg3;
+- (void)_handleSuggestionForAssetReference:(id)arg1;
 - (void)_requestSuggestionForAssetReference:(id)arg1;
 - (_Bool)_canKeepDisplayingSuggestionsForAssetReference:(id)arg1;
 - (_Bool)_canBeginDisplayingSuggestionsForAssetReference:(id)arg1;
 - (void)_handleDataSourceChange:(id)arg1;
 - (void)_removeSuggestionInfoForAssetReference:(id)arg1;
 - (id)_suggestionInfoForAssetReference:(id)arg1 createIfNeeded:(_Bool)arg2;
-- (void)markSuggestionAsSeenForAssetReference:(id)arg1;
-- (void)hideSuggestionForAssetReference:(id)arg1;
 - (void)invalidateLayoutForAssetReference:(id)arg1;
 - (void)invalidateLayout;
 - (void)_updateSuggestions;

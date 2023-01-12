@@ -11,5 +11,8 @@
 @protocol CSModalHomeGestureParticipating <NSObject>
 - (void)addGrabberView:(UIView *)arg1;
 - (void)homeGestureParticipantOwningHomeGestureDidChange:(_Bool)arg1;
+
+@optional
+- (double)additionalEdgeSpacingForGrabberView:(UIView *)arg1;
 @end
 

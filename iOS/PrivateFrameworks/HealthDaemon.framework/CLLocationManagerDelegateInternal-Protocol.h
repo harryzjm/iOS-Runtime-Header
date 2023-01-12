@@ -11,6 +11,8 @@
 @protocol CLLocationManagerDelegateInternal <CLLocationManagerDelegate>
 
 @optional
+- (void)locationManager:(CLLocationManager *)arg1 didReportVisit:(CLVisit *)arg2;
+- (void)locationManager:(CLLocationManager *)arg1 didUpdateLocations:(NSArray *)arg2 completion:(void (^)(void))arg3;
 - (void)locationManager:(CLLocationManager *)arg1 didDepart:(CLVisit *)arg2 completion:(void (^)(void))arg3;
 - (void)locationManager:(CLLocationManager *)arg1 didArrive:(CLVisit *)arg2 completion:(void (^)(void))arg3;
 - (void)locationManager:(CLLocationManager *)arg1 didExit:(CLRegion *)arg2 completion:(void (^)(void))arg3;

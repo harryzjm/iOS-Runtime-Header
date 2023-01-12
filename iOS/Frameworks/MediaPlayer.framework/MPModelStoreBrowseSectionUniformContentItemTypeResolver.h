@@ -10,7 +10,7 @@ __attribute__((visibility("hidden")))
 @interface MPModelStoreBrowseSectionUniformContentItemTypeResolver : NSObject
 {
     _Bool _hasValidUniformContentItemType;
-    struct map<MPModelStoreBrowseDetailedContentItemType, unsigned long, std::__1::less<MPModelStoreBrowseDetailedContentItemType>, std::__1::allocator<std::__1::pair<const MPModelStoreBrowseDetailedContentItemType, unsigned long>>> _contentItemTypeOccurrences;
+    struct map<MPModelStoreBrowseDetailedContentItemType, unsigned long, std::less<MPModelStoreBrowseDetailedContentItemType>, std::allocator<std::pair<const MPModelStoreBrowseDetailedContentItemType, unsigned long>>> _contentItemTypeOccurrences;
     unsigned long long _totalNumberOfOccurrences;
     long long _uniformContentItemType;
 }

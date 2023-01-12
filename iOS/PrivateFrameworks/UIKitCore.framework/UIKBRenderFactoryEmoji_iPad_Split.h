@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (id)thinKeycapsFontName;
 - (id)lightKeycapsFontName;
 - (_Bool)shouldClearBaseDisplayStringForVariants:(id)arg1;
+- (long long)assetIdiom;
 
 @end
 

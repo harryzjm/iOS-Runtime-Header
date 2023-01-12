@@ -10,6 +10,10 @@
 @protocol EMContentItemRequestDelegate, EMMessageListItemQueryResultsObserver, EMMessageRepositoryCountQueryObserver_xpc, EMMessageRepositoryMailboxPredictionObserver_xpc;
 
 @protocol EMMessageRepositoryInterface <NSObject>
+- (void)parseRemoteContentURLsFromMessageWithObjectID:(EMMessageObjectID *)arg1 requestID:(unsigned long long)arg2 completionHandler:(void (^)(NSArray *, NSError *))arg3;
+- (void)getRemoteContentURLInfoOrderedBy:(long long)arg1 inReverseOrder:(_Bool)arg2 limit:(long long)arg3 completionHandler:(void (^)(NSArray *, NSArray *, NSError *))arg4;
+- (void)noteViewOfRemoteContentLinks:(NSArray *)arg1;
+- (void)getURLCacheInformationWithCompletion:(void (^)(EFSandboxedURLWrapper *, unsigned long long))arg1;
 - (void)messageObjectIDsForSearchableItemIdentifiers:(NSArray *)arg1 completionHandler:(void (^)(NSArray *, NSError *))arg2;
 - (void)messageObjectIDForURL:(NSURL *)arg1 completionHandler:(void (^)(EMMessageObjectID *, NSError *))arg2;
 - (void)loadOlderMessagesForMailboxes:(NSArray *)arg1;
@@ -24,5 +28,6 @@
 - (void)performQuery:(EFQuery *)arg1 withObserver:(id <EMMessageListItemQueryResultsObserver>)arg2 observationIdentifier:(EMObjectID *)arg3 completionHandler:(void (^)(id <EFCancelable>))arg4;
 - (void)performCountQuery:(EFQuery *)arg1 completionHandler:(void (^)(NSNumber *, NSError *))arg2;
 - (void)performQuery:(EFQuery *)arg1 limit:(long long)arg2 completionHandler:(void (^)(NSArray *, NSError *))arg3;
+- (void)isDataAccessible:(void (^)(_Bool))arg1;
 @end
 

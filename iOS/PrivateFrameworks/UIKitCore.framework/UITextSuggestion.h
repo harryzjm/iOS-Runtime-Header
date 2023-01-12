@@ -8,22 +8,22 @@
 
 #import <UIKitCore/NSCopying-Protocol.h>
 
-@class NSString, TIKeyboardCandidate;
+@class NSString, TIKeyboardCandidate, UIImage;
 
 @interface UITextSuggestion : NSObject <NSCopying>
 {
     _Bool _displayStylePlain;
-    _Bool __shouldPersist;
     NSString *_inputText;
     NSString *_searchText;
     NSString *_displayText;
     NSString *_headerText;
+    UIImage *_image;
 }
 
 + (id)textSuggestionWithInputText:(id)arg1 searchText:(id)arg2;
 + (id)textSuggestionWithInputText:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) _Bool _shouldPersist; // @synthesize _shouldPersist=__shouldPersist;
+@property(copy, nonatomic) UIImage *image; // @synthesize image=_image;
 @property(nonatomic) _Bool displayStylePlain; // @synthesize displayStylePlain=_displayStylePlain;
 @property(copy, nonatomic) NSString *headerText; // @synthesize headerText=_headerText;
 @property(copy, nonatomic) NSString *displayText; // @synthesize displayText=_displayText;

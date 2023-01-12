@@ -10,26 +10,45 @@
 #import <HomeAI/HMFTimerDelegate-Protocol.h>
 #import <HomeAI/HMISystemResourceUsageMonitorDelegate-Protocol.h>
 
-@class HMFTimer, HMFUnfairLock, HMISystemResourceUsageMonitor, NSPointerArray, NSString;
+@class HMFTimer, HMISystemResourceUsageMonitor, NSArray, NSPointerArray, NSString;
 
 @interface HMIVideoAnalyzerScheduler : HMFObject <HMFLogging, HMFTimerDelegate, HMISystemResourceUsageMonitorDelegate>
 {
-    HMFUnfairLock *_lock;
+    struct os_unfair_lock_s _lock;
+    struct os_unfair_lock_s _registerLock;
     HMFTimer *_tick;
-    NSPointerArray *_internalAnalyzers;
     HMISystemResourceUsageMonitor *_usageMonitor;
     long long _usageLevel;
+    _Bool _ignoreThermalAndSystemResourceUsageLevel;
+    unsigned long long _maxH264VideoDecoders;
+    unsigned long long _maxH264VideoEncoders;
+    unsigned long long _maxH265VideoEncoders;
+    NSPointerArray *_internalAnalyzers;
+    long long _logStateCount;
 }
 
 + (id)sharedInstance;
 + (id)logCategory;
 - (void).cxx_destruct;
-- (id)_getAnalyzers;
+@property long long logStateCount; // @synthesize logStateCount=_logStateCount;
+@property(readonly) NSPointerArray *internalAnalyzers; // @synthesize internalAnalyzers=_internalAnalyzers;
+@property unsigned long long maxH265VideoEncoders; // @synthesize maxH265VideoEncoders=_maxH265VideoEncoders;
+@property unsigned long long maxH264VideoEncoders; // @synthesize maxH264VideoEncoders=_maxH264VideoEncoders;
+@property unsigned long long maxH264VideoDecoders; // @synthesize maxH264VideoDecoders=_maxH264VideoDecoders;
+@property _Bool ignoreThermalAndSystemResourceUsageLevel; // @synthesize ignoreThermalAndSystemResourceUsageLevel=_ignoreThermalAndSystemResourceUsageLevel;
+@property(readonly) NSArray *analyzers;
 - (void)_logState;
+- (_Bool)_shouldSkipLogState;
 - (void)_updateAnalyzer:(id)arg1 withIndex:(unsigned long long)arg2;
 - (void)systemResourceUsageDidChangeTo:(long long)arg1;
 - (void)timerDidFire:(id)arg1;
 - (void)_compactInternalAnalyzers;
+- (id)reducedConfiguration:(id)arg1 configurations:(id)arg2;
+- (id)reducedConfiguration:(id)arg1 states:(id)arg2;
+- (id)reducedConfiguration:(id)arg1;
+@property(readonly) NSArray *analyzerStates;
+@property(readonly) NSArray *analyzerConfigurations;
+- (id)analyzerWithConfiguration:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)registerAnalyzer:(id)arg1;
 - (id)init;
 

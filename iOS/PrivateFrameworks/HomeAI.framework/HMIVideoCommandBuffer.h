@@ -6,34 +6,40 @@
 
 #import <HomeAI/HMFLogging-Protocol.h>
 
-@class HMFUnfairLock, HMITimeIntervalAverage, NSObject, NSString;
-@protocol HMIVideoCommandBufferDelegate, OS_dispatch_queue, OS_dispatch_semaphore;
+@class HMITimeIntervalAverage, NSCondition, NSObject, NSString;
+@protocol HMIVideoCommandBufferDelegate, OS_dispatch_queue;
 
 @interface HMIVideoCommandBuffer <HMFLogging>
 {
-    HMFUnfairLock *_lock;
-    NSObject<OS_dispatch_queue> *_queue;
-    NSObject<OS_dispatch_semaphore> *_semaphore;
-    long long _count;
     CDStruct_1b6d18a9 _duration;
-    CDStruct_1b6d18a9 _maxDuration;
-    HMITimeIntervalAverage *_delay;
+    unsigned long long _size;
+    unsigned long long _capacity;
+    NSCondition *_condition;
+    HMITimeIntervalAverage *_sampleBufferDelay;
     id <HMIVideoCommandBufferDelegate> _delegate;
+    NSObject<OS_dispatch_queue> *_delegateQueue;
+    CDStruct_1b6d18a9 _videoDuration;
 }
 
 + (id)logCategory;
 - (void).cxx_destruct;
+@property(readonly) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property __weak id <HMIVideoCommandBufferDelegate> delegate; // @synthesize delegate=_delegate;
-@property(readonly) double videoDelay;
-@property(readonly) CDStruct_1b6d18a9 videoDuration;
-@property(readonly) unsigned long long videoSampleCount;
+@property(readonly) HMITimeIntervalAverage *sampleBufferDelay; // @synthesize sampleBufferDelay=_sampleBufferDelay;
+@property(readonly) NSCondition *condition; // @synthesize condition=_condition;
+@property(readonly) unsigned long long capacity; // @synthesize capacity=_capacity;
+@property unsigned long long size; // @synthesize size=_size;
+@property(readonly) CDStruct_1b6d18a9 videoDuration; // @synthesize videoDuration=_videoDuration;
+@property(readonly) double delay;
 - (void)handleBlock:(CDUnknownBlockType)arg1;
-- (void)finish;
 - (void)flush;
 - (void)flushAsync;
-- (void)handleVideoSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
-- (void)handleAudioSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
-- (id)initWithMaxDuration:(CDStruct_1b6d18a9)arg1;
+- (void)handleSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
+@property(readonly) _Bool isEmpty;
+@property(readonly) _Bool isFull;
+@property(readonly) float fillRatio;
+- (void)setDelegate:(id)arg1 queue:(id)arg2;
+- (id)initWithMaxCapacity:(unsigned long long)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

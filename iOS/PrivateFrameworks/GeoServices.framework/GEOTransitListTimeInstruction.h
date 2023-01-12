@@ -55,7 +55,8 @@
 @property(readonly, nonatomic) _Bool hasPrimaryText;
 - (id)initWithData:(id)arg1;
 - (id)init;
-- (void)_transit_prepareForDeepMergeFrom:(id)arg1;
+- (void)_transit_mergeFrom:(id)arg1;
+- (_Bool)_transit_hasAnyFieldSet;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

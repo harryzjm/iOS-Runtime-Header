@@ -8,6 +8,7 @@
 {
 }
 
++ (id)diagnosticInfoForService:(id)arg1;
 + (id)diagnosticDescriptionForService:(id)arg1 withIndent:(id)arg2;
 + (id)iokitMatchingDictionaryForInterfaceName:(id)arg1 andMACAddress:(char *)arg2;
 - (int)portType;

@@ -4,25 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDateInterval, NSSet, PGGraphLocationNode;
+@class NSDateInterval, NSSet, PGGraphLocationNode, PGGraphLocationNodeCollection;
 
 @interface PGPotentialPastSupersetMemory
 {
     PGGraphLocationNode *_supersetLocationNode;
     NSDateInterval *_supersetDateInterval;
     NSSet *_interestingMomentNodes;
-    NSArray *_interestingAssetLocalIdentifiersInSuperset;
-    NSArray *_assetLocalIdentifiersInSuperset;
-    NSSet *_supersetLocationNodes;
+    PGGraphLocationNodeCollection *_supersetLocationNodes;
 }
 
 - (void).cxx_destruct;
-@property(retain) NSSet *supersetLocationNodes; // @synthesize supersetLocationNodes=_supersetLocationNodes;
-@property(retain) NSArray *assetLocalIdentifiersInSuperset; // @synthesize assetLocalIdentifiersInSuperset=_assetLocalIdentifiersInSuperset;
-@property(retain) NSArray *interestingAssetLocalIdentifiersInSuperset; // @synthesize interestingAssetLocalIdentifiersInSuperset=_interestingAssetLocalIdentifiersInSuperset;
+@property(retain) PGGraphLocationNodeCollection *supersetLocationNodes; // @synthesize supersetLocationNodes=_supersetLocationNodes;
 @property(readonly) NSSet *interestingMomentNodes; // @synthesize interestingMomentNodes=_interestingMomentNodes;
 @property(readonly) NSDateInterval *supersetDateInterval; // @synthesize supersetDateInterval=_supersetDateInterval;
 @property(readonly) PGGraphLocationNode *supersetLocationNode; // @synthesize supersetLocationNode=_supersetLocationNode;
+- (id)memoryFeatureNodesInGraph:(id)arg1;
+- (unsigned long long)memoryCategorySubcategory;
+- (unsigned long long)memoryCategory;
 - (id)initWithSupersetLocationNode:(id)arg1 supersetDateInterval:(id)arg2 interestingMomentNodes:(id)arg3 momentNodes:(id)arg4;
 
 @end

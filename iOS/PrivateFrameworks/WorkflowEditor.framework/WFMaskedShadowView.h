@@ -6,11 +6,9 @@
 
 #import <UIKit/UIView.h>
 
-#import <WorkflowEditor/WFActionEventObserver-Protocol.h>
+@class CAShapeLayer, NSProgress, UIColor, WFAction;
 
-@class CAShapeLayer, NSString, UIColor, WFAction;
-
-@interface WFMaskedShadowView : UIView <WFActionEventObserver>
+@interface WFMaskedShadowView : UIView
 {
     _Bool _attributesChanged;
     _Bool _actionRunning;
@@ -22,9 +20,13 @@
     double _borderWidth;
     CAShapeLayer *_borderLayer;
     WFAction *_action;
+    long long _actionIndex;
+    NSProgress *_workflowRunningProgress;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) __weak NSProgress *workflowRunningProgress; // @synthesize workflowRunningProgress=_workflowRunningProgress;
+@property(nonatomic) long long actionIndex; // @synthesize actionIndex=_actionIndex;
 @property(nonatomic) __weak WFAction *action; // @synthesize action=_action;
 @property(nonatomic) __weak CAShapeLayer *borderLayer; // @synthesize borderLayer=_borderLayer;
 @property(nonatomic) double borderWidth; // @synthesize borderWidth=_borderWidth;
@@ -33,17 +35,16 @@
 @property(retain, nonatomic) UIColor *shadowColor; // @synthesize shadowColor=_shadowColor;
 @property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property(nonatomic) long long mode; // @synthesize mode=_mode;
-- (void)actionRunningStateDidChange:(id)arg1;
 - (void)layoutSubviews;
 - (void)updateShadowColorAnimated:(_Bool)arg1;
 - (void)applyAttributes;
 - (void)attributesDidChange;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)updateRunningIndicator;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)dealloc;
+- (void)initializeInstance;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

@@ -5,26 +5,30 @@
 //
 
 #import <HomeKitDaemon/AVCAudioStreamDelegate-Protocol.h>
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class AVCAudioStream, NSNumber, NSString;
-@protocol HMDAudioStreamInterfaceDelegate;
+@class NSNumber, NSString;
+@protocol HMDAVCAudioStream, HMDAudioStreamInterfaceDataSource, HMDAudioStreamInterfaceDelegate;
 
-@interface HMDAudioStreamInterface <AVCAudioStreamDelegate>
+@interface HMDAudioStreamInterface <HMFLogging, AVCAudioStreamDelegate>
 {
     _Bool _streamStarted;
-    AVCAudioStream *_audioStream;
     id <HMDAudioStreamInterfaceDelegate> _delegate;
     unsigned long long _audioStreamSetting;
-    double _rtcpSendIntervalSec;
+    id <HMDAVCAudioStream> _audioStream;
+    id <HMDAudioStreamInterfaceDataSource> _dataSource;
+    CDUnknownBlockType _stopStreamCompletionHandler;
 }
 
 + (id)logCategory;
 - (void).cxx_destruct;
-@property(nonatomic) double rtcpSendIntervalSec; // @synthesize rtcpSendIntervalSec=_rtcpSendIntervalSec;
-@property(nonatomic) unsigned long long audioStreamSetting; // @synthesize audioStreamSetting=_audioStreamSetting;
-@property(nonatomic) _Bool streamStarted; // @synthesize streamStarted=_streamStarted;
-@property(readonly) __weak id <HMDAudioStreamInterfaceDelegate> delegate; // @synthesize delegate=_delegate;
-@property(retain, nonatomic) AVCAudioStream *audioStream; // @synthesize audioStream=_audioStream;
+@property(copy) CDUnknownBlockType stopStreamCompletionHandler; // @synthesize stopStreamCompletionHandler=_stopStreamCompletionHandler;
+@property(readonly) id <HMDAudioStreamInterfaceDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property(readonly) id <HMDAVCAudioStream> audioStream; // @synthesize audioStream=_audioStream;
+@property unsigned long long audioStreamSetting; // @synthesize audioStreamSetting=_audioStreamSetting;
+@property _Bool streamStarted; // @synthesize streamStarted=_streamStarted;
+@property __weak id <HMDAudioStreamInterfaceDelegate> delegate; // @synthesize delegate=_delegate;
+- (id)logIdentifier;
 - (void)streamDidRTCPTimeOut:(id)arg1;
 - (void)streamDidRTPTimeOut:(id)arg1;
 - (void)streamDidServerDie:(id)arg1;
@@ -32,33 +36,35 @@
 - (void)stream:(id)arg1 didPause:(_Bool)arg2 error:(id)arg3;
 - (void)streamDidStop:(id)arg1;
 - (void)stream:(id)arg1 didStart:(_Bool)arg2 error:(id)arg3;
-- (void)setRtcpSendInterval:(double)arg1;
-@property(nonatomic) double rtcpTimeOutIntervalSec;
-@property(nonatomic) double rtpTimeOutIntervalSec;
-@property(nonatomic, getter=isRTCPTimeOutEnabled) _Bool rtcpTimeOutEnabled;
-@property(nonatomic, getter=isRTPTimeOutEnabled) _Bool rtpTimeOutEnabled;
-@property(nonatomic, getter=isRTCPEnabled) _Bool rtcpEnabled;
+@property double rtcpSendIntervalSec;
+@property double rtcpTimeOutIntervalSec;
+@property double rtpTimeOutIntervalSec;
+@property(getter=isRTCPTimeOutEnabled) _Bool rtcpTimeOutEnabled;
+@property(getter=isRTPTimeOutEnabled) _Bool rtpTimeOutEnabled;
+@property(getter=isRTCPEnabled) _Bool rtcpEnabled;
 - (void)_callStopped:(id)arg1;
 - (void)_callResumed:(id)arg1;
 - (void)_callPaused:(id)arg1;
 - (void)_callStarted:(id)arg1;
-@property(nonatomic, getter=isMuted) _Bool muted;
+@property(getter=isMuted) _Bool muted;
+- (void)startSynchronizationWithVideoStreamToken:(long long)arg1;
 - (void)_resumeStream;
 - (void)_pauseStream;
+- (void)_stopStreamWithCompletion:(CDUnknownBlockType)arg1;
 - (void)stopStream;
 - (void)updateAudioVolume:(id)arg1 callback:(CDUnknownBlockType)arg2;
 - (void)_updateAudioSetting:(unsigned long long)arg1;
 - (void)updateAudioSetting:(unsigned long long)arg1;
-- (void)_startStream:(id)arg1;
-- (void)startStream:(id)arg1;
-- (_Bool)_initializeStreamRemoteLocal;
-- (_Bool)_initializeStreamRemoteSender:(id)arg1;
-- (_Bool)_initializeStreamRemoteSocketReceiver:(id)arg1;
-- (_Bool)_initializeStreamRemoteDestinationReceiver:(id)arg1;
-- (_Bool)_createLocalSocket;
-@property(readonly, nonatomic) NSNumber *syncSource;
+- (void)_startStreamWithConfig:(id)arg1;
+- (void)startStreamWithConfig:(id)arg1;
+- (id)_createLocalStreamAndRTPSocket:(int *)arg1 localNetworkConfig:(id)arg2;
+- (int)_createLocalRTPSocketWithRemoteSender:(id)arg1 localNetworkConfig:(id)arg2;
+- (id)_createStreamWithRemoteSocketReceiver:(id)arg1;
+- (id)_createStreamWithRemoteDestinationReceiver:(id)arg1;
+- (id)_createAudioStreamWithSessionHandler:(id)arg1 localNetworkConfig:(id)arg2 localRTPSocket:(int *)arg3;
+@property(readonly, copy) NSNumber *syncSource;
 - (void)dealloc;
-- (id)logIdentifier;
+- (id)initWithSessionID:(id)arg1 workQueue:(id)arg2 delegate:(id)arg3 delegateQueue:(id)arg4 sessionHandler:(id)arg5 audioStream:(id)arg6 localRTPSocket:(int)arg7 dataSource:(id)arg8;
 - (id)initWithSessionID:(id)arg1 workQueue:(id)arg2 delegate:(id)arg3 delegateQueue:(id)arg4 sessionHandler:(id)arg5 localNetworkConfig:(id)arg6;
 
 // Remaining properties

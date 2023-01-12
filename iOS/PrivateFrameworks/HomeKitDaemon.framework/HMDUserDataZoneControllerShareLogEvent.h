@@ -4,20 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeKitDaemon/HMDCoreAnalyticsLogging-Protocol.h>
+#import <HomeKitMetrics/HMMLogEvent.h>
 
-@interface HMDUserDataZoneControllerShareLogEvent <HMDCoreAnalyticsLogging>
+#import <HomeKitDaemon/HMMCoreAnalyticsLogging-Protocol.h>
+
+@class NSString;
+
+@interface HMDUserDataZoneControllerShareLogEvent : HMMLogEvent <HMMCoreAnalyticsLogging>
 {
     _Bool _didAccept;
     unsigned long long _result;
 }
 
-+ (id)uuid;
 @property(readonly) _Bool didAccept; // @synthesize didAccept=_didAccept;
 @property(readonly) unsigned long long result; // @synthesize result=_result;
 - (id)initWithResult:(unsigned long long)arg1 didAccept:(_Bool)arg2;
 - (id)serializedEvent;
 - (id)eventName;
+
+// Remaining properties
+@property(readonly, nonatomic) NSString *accessoryIdentifier;
 
 @end
 

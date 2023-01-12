@@ -33,6 +33,7 @@
 - (void)updateSceneActivationConditions;
 - (void)scene:(id)arg1 continueUserActivity:(id)arg2;
 - (id)stateRestorationActivityForScene:(id)arg1;
+- (void)_setFrameNameForWindowIfNeeded;
 - (void)windowSceneDidBecomeVisible:(id)arg1;
 - (void)scene:(id)arg1 openURLContexts:(id)arg2;
 - (void)sceneDidEnterBackground:(id)arg1;

@@ -106,8 +106,18 @@ struct task_vm_info {
 #pragma mark Typedef'd Structures
 
 typedef struct {
+    unsigned int _field1[8];
+} CDStruct_6ad76789;
+
+typedef struct {
     unsigned int timestamp:1;
 } CDStruct_b5306035;
+
+typedef struct {
+    long long _field1;
+    long long _field2;
+    long long _field3;
+} CDStruct_2ec95fd7;
 
 // Ambiguous groups
 typedef struct {

@@ -11,7 +11,7 @@
 }
 
 + (id)intersectionFeatureForPayloadRestrictionKey:(id)arg1;
-+ (id)intersectionPayloadRestrictionKeyForFeature:(id)arg1;
++ (id)intersectionPayloadRestrictionKeysForFeature:(id)arg1;
 + (id)intersectionFeaturesWithPayloadRestictionKeyAlias;
 
 @end

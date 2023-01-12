@@ -4,16 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class PXGShader, PXGUniform;
+
 @interface PXGPinchEffect
 {
+    PXGShader *_shader;
+    PXGUniform *_normalizedCenter;
+    PXGUniform *_scale;
 }
 
-@property(nonatomic) struct CGRect sampleRect;
+- (void).cxx_destruct;
+- (id)shader;
 @property(nonatomic) double scale;
 @property(nonatomic) struct CGPoint normalizedCenter;
-- (int)shaderFlags;
-- (unsigned short)type;
-- (id)initWithMetadataStore:(id)arg1;
+- (id)initWithEntityManager:(id)arg1;
 
 @end
 

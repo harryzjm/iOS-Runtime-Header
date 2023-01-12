@@ -12,6 +12,7 @@
 
 @property(nonatomic, getter=isDisabled) _Bool disabled; // @synthesize disabled=_disabled;
 @property(nonatomic, getter=isOn) _Bool on; // @synthesize on=_on;
+- (id)imageNameForAXHUD;
 - (_Bool)adjustsImageWhenDisabled;
 - (_Bool)shouldShowSlashForCurrentState;
 - (_Bool)shouldUseSlash;

@@ -17,13 +17,13 @@
     TSCH3DResource *_resource;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) TSCH3DResource *resource; // @synthesize resource=_resource;
 @property(retain, nonatomic) TSCH3DResourceHandle *handle; // @synthesize handle=_handle;
 @property(nonatomic) _Bool failed; // @synthesize failed=_failed;
 @property(nonatomic) _Bool uploaded; // @synthesize uploaded=_uploaded;
 @property(nonatomic) _Bool generated; // @synthesize generated=_generated;
 - (_Bool)exists;
-- (void)dealloc;
 - (id)init;
 
 @end

@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
     id _object;
     id _userInfo;
     _Bool _fouSemantics;
-    _Bool _dyingObject;
 }
 
 - (void)dealloc;

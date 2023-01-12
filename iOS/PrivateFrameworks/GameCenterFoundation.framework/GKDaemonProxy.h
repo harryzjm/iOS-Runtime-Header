@@ -14,6 +14,7 @@
 {
     int _hostPID;
     NSObject<OS_dispatch_queue> *_invocationQueue;
+    NSObject<OS_dispatch_queue> *_authenticationQueue;
     NSObject<OS_dispatch_semaphore> *_concurrentRequestSemaphore;
     NSDictionary *_interfaceLookup;
     NSXPCConnection *_connection;
@@ -22,6 +23,9 @@
     NSHashTable *_dataUpdateDelegates;
 }
 
++ (oneway void)getActiveFriendRequestCount:(CDUnknownBlockType)arg1;
++ (oneway void)messagesDidReceiveGameCenterURL:(id)arg1;
++ (oneway void)messagesDidReceiveGameCenterURL:(id)arg1 senderHandle:(id)arg2 contactID:(id)arg3;
 + (id)proxyForPlayer:(id)arg1;
 + (void)removeProxyForPlayer:(id)arg1;
 + (id)proxiesForPlayer;
@@ -34,6 +38,7 @@
 @property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property(retain, nonatomic) NSDictionary *interfaceLookup; // @synthesize interfaceLookup=_interfaceLookup;
 @property(retain, nonatomic) NSObject<OS_dispatch_semaphore> *concurrentRequestSemaphore; // @synthesize concurrentRequestSemaphore=_concurrentRequestSemaphore;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *authenticationQueue; // @synthesize authenticationQueue=_authenticationQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *invocationQueue; // @synthesize invocationQueue=_invocationQueue;
 - (void)connection:(id)arg1 handleInvocation:(id)arg2 isReply:(_Bool)arg3;
 - (id)replyQueueForRequestSelector:(SEL)arg1;
@@ -54,8 +59,13 @@
 - (oneway void)didReceiveData:(id)arg1 reliably:(_Bool)arg2 forRecipients:(id)arg3 fromSender:(id)arg4;
 - (oneway void)didDisconnectFromParticipantWithID:(id)arg1;
 - (oneway void)didConnectToParticipantWithID:(id)arg1;
+- (id)userInfoForPlayerID:(id)arg1 deviceID:(id)arg2 data:(id)arg3 discoveryInfo:(id)arg4;
+- (oneway void)nearbyDataReceivedForPlayerID:(id)arg1 deviceID:(id)arg2 data:(id)arg3;
+- (oneway void)nearbyPlayerLostForPlayerID:(id)arg1 deviceID:(id)arg2;
+- (oneway void)nearbyPlayerFoundForPlayerID:(id)arg1 deviceID:(id)arg2 discoveryInfo:(id)arg3;
 - (oneway void)relayPushNotification:(id)arg1;
 - (oneway void)cancelGameInvite:(id)arg1;
+- (oneway void)cancelInviteWithNotification:(id)arg1;
 - (oneway void)declineInviteWithNotification:(id)arg1;
 - (oneway void)acceptInviteWithNotification:(id)arg1;
 - (oneway void)acceptMultiplayerGameInvite;

@@ -15,14 +15,17 @@
     _Bool _requestScreenshotPermission;
     CDUnknownBlockType _fileRadarHandler;
     NSArray *_routes;
+    NSString *_routesDescription;
     _PXFeedbackTapToRadarViewController *_feedbackViewController;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) _PXFeedbackTapToRadarViewController *feedbackViewController; // @synthesize feedbackViewController=_feedbackViewController;
+@property(copy, nonatomic) NSString *routesDescription; // @synthesize routesDescription=_routesDescription;
 @property(copy, nonatomic) NSArray *routes; // @synthesize routes=_routes;
 @property(nonatomic) _Bool requestScreenshotPermission; // @synthesize requestScreenshotPermission=_requestScreenshotPermission;
 @property(copy, nonatomic) CDUnknownBlockType fileRadarHandler; // @synthesize fileRadarHandler=_fileRadarHandler;
+- (id)availableRoutesDescription;
 - (id)availableRoutes;
 - (_Bool)shouldRequestScreenshotPermission;
 - (void)didSelectFileRadarButtonWithScreenshotAllowed:(_Bool)arg1 attachDiagnose:(_Bool)arg2 selectedRoute:(id)arg3;

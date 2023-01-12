@@ -10,6 +10,7 @@
 @class NSString;
 
 @protocol FCNotificationDropboxData <NSObject, NSMutableCopying>
+@property(readonly, nonatomic) int deviceDigestMode;
 @property(readonly, copy, nonatomic) NSString *storefrontID;
 @property(readonly, copy, nonatomic) NSString *deviceToken;
 @property(readonly, copy, nonatomic) NSString *notificationUserID;

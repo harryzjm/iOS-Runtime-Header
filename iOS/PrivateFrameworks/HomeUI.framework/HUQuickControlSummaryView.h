@@ -6,16 +6,19 @@
 
 #import <UIKit/UIView.h>
 
-@class HUIconView, NSArray, NSString, UILabel, UIStackView, UIVisualEffectView;
+@class HUIconView, NSAttributedString, NSMutableArray, NSString, UIImage, UIImageView, UILabel, UIStackView, UIVisualEffectView;
 
 @interface HUQuickControlSummaryView : UIView
 {
     NSString *_primaryText;
     NSString *_secondaryText;
+    NSAttributedString *_microphoneStatusText;
     HUIconView *_iconView;
+    UIImage *_image;
+    UIImageView *_imageView;
     UILabel *_primaryLabel;
     UILabel *_secondaryLabel;
-    NSArray *_contentConstraints;
+    NSMutableArray *_contentConstraints;
     UIVisualEffectView *_secondaryLabelEffectView;
     UIStackView *_verticalStackView;
 }
@@ -24,10 +27,13 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIStackView *verticalStackView; // @synthesize verticalStackView=_verticalStackView;
 @property(retain, nonatomic) UIVisualEffectView *secondaryLabelEffectView; // @synthesize secondaryLabelEffectView=_secondaryLabelEffectView;
-@property(retain, nonatomic) NSArray *contentConstraints; // @synthesize contentConstraints=_contentConstraints;
+@property(retain, nonatomic) NSMutableArray *contentConstraints; // @synthesize contentConstraints=_contentConstraints;
 @property(retain, nonatomic) UILabel *secondaryLabel; // @synthesize secondaryLabel=_secondaryLabel;
 @property(retain, nonatomic) UILabel *primaryLabel; // @synthesize primaryLabel=_primaryLabel;
+@property(readonly, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
+@property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
 @property(readonly, nonatomic) HUIconView *iconView; // @synthesize iconView=_iconView;
+@property(copy, nonatomic) NSAttributedString *microphoneStatusText; // @synthesize microphoneStatusText=_microphoneStatusText;
 @property(copy, nonatomic) NSString *secondaryText; // @synthesize secondaryText=_secondaryText;
 @property(copy, nonatomic) NSString *primaryText; // @synthesize primaryText=_primaryText;
 - (void)updateConstraints;

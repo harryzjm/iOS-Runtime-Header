@@ -7,14 +7,16 @@
 #import <objc/NSObject.h>
 
 #import <Speech/AFDictationDelegate-Protocol.h>
+#import <Speech/SFLocalSpeechRecognitionDelegate-Protocol.h>
 #import <Speech/SFSpeechRecognitionBufferDelegate-Protocol.h>
 
-@class AFDictationConnection, NSError, NSOperationQueue, NSString, SFSpeechRecognitionRequest;
+@class AFDictationConnection, NSError, NSOperationQueue, NSString, SFLocalSpeechRecognitionClient, SFSpeechRecognitionRequest;
 @protocol OS_dispatch_queue;
 
-@interface SFSpeechRecognitionTask : NSObject <AFDictationDelegate, SFSpeechRecognitionBufferDelegate>
+@interface SFSpeechRecognitionTask : NSObject <AFDictationDelegate, SFSpeechRecognitionBufferDelegate, SFLocalSpeechRecognitionDelegate>
 {
     AFDictationConnection *_dictationConnection;
+    SFLocalSpeechRecognitionClient *_sflsrClient;
     NSOperationQueue *_externalQueue;
     NSString *_languageCode;
     SFSpeechRecognitionRequest *_request;
@@ -28,8 +30,6 @@
     NSString *_requestIdentifier;
 }
 
-+ (id)recognizedResultFromPackage:(id)arg1;
-+ (id)transcriptionsWithTokens:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *requestIdentifier; // @synthesize requestIdentifier=_requestIdentifier;
 @property(readonly, copy, nonatomic) NSError *error; // @synthesize error=_error;
@@ -38,12 +38,17 @@
 @property(readonly, nonatomic) long long _taskHint; // @synthesize _taskHint;
 - (void)stopSpeech;
 - (void)addRecordedSpeechSampleData:(id)arg1;
+- (void)localSpeechRecognitionClientSpeechRecognitionDidSucceed:(id)arg1;
+- (void)localSpeechRecognitionClient:(id)arg1 speechRecognitionDidFail:(id)arg2;
+- (void)localSpeechRecognitionClient:(id)arg1 speechRecordingDidFail:(id)arg2;
+- (void)localSpeechRecognitionClientSpeechRecordingDidCancel:(id)arg1;
 - (void)dictationConnectionSpeechRecognitionDidSucceed:(id)arg1;
 - (void)dictationConnection:(id)arg1 speechRecognitionDidFail:(id)arg2;
 - (void)dictationConnection:(id)arg1 speechRecordingDidFail:(id)arg2;
 - (void)dictationConnectionSpeechRecordingDidCancel:(id)arg1;
 - (void)dictationConnectionSpeechRecordingDidEnd:(id)arg1;
 - (void)dictationConnectionSpeechRecordingDidBegin:(id)arg1;
+- (void)handleSpeechRecognitionDidFailWithError:(id)arg1;
 - (float)averagePower;
 - (float)peakPower;
 - (void)cancel;

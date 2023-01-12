@@ -13,8 +13,8 @@ __attribute__((visibility("hidden")))
 {
     id _strongBuffer[16];
     RLMRealm *_realm;
-    struct RLMClassInfo *_info;
-    struct Results *_results;
+    void *_info;
+    void *_results;
     struct Results _snapshot;
     id _collection;
 }
@@ -24,8 +24,8 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 count:(unsigned long long)arg2;
 - (void)detach;
 - (void)dealloc;
-- (id)initWithResults:(struct Results *)arg1 collection:(id)arg2 realm:(id)arg3 classInfo:(struct RLMClassInfo *)arg4;
-- (id)initWithList:(struct List *)arg1 collection:(id)arg2 realm:(id)arg3 classInfo:(struct RLMClassInfo *)arg4;
+- (id)initWithResults:(void *)arg1 collection:(id)arg2 realm:(id)arg3 classInfo:(void *)arg4;
+- (id)initWithList:(void *)arg1 collection:(id)arg2 realm:(id)arg3 classInfo:(void *)arg4;
 
 @end
 

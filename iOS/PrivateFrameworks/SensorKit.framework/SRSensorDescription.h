@@ -6,9 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString;
+@class NSArray, NSDictionary, NSSet, NSString;
 
-__attribute__((visibility("hidden")))
 @interface SRSensorDescription : NSObject
 {
     NSString *_name;
@@ -18,13 +17,40 @@ __attribute__((visibility("hidden")))
     NSString *_publicEntitlementValue;
     NSString *_localizedAdditionalSampleDataNote;
     NSString *_infoPlistAuthorizationCategory;
+    NSString *_writerAuthorizationService;
+    long long _authorizationVersion;
+    NSString *_onDemandWriterService;
+    NSString *_authorizationStoreCohort;
     NSString *_sampleClass;
     NSString *_exportingSampleClass;
+    NSSet *_additions;
+    NSDictionary *_supportedPlatforms;
 }
 
++ (id)sensorDescriptionsForAuthorizationService:(id)arg1;
++ (id)sensorDescriptionForDeletionRecordFromDescription:(id)arg1;
++ (id)sensorDescriptionForSensor:(id)arg1;
 + (void)initialize;
+@property(readonly, copy) NSString *authorizationStoreCohort; // @synthesize authorizationStoreCohort=_authorizationStoreCohort;
+@property(readonly, copy) NSString *onDemandWriterService; // @synthesize onDemandWriterService=_onDemandWriterService;
+@property(readonly) long long authorizationVersion; // @synthesize authorizationVersion=_authorizationVersion;
+@property(readonly, copy) NSString *writerAuthorizationService; // @synthesize writerAuthorizationService=_writerAuthorizationService;
+@property(readonly, copy) NSString *infoPlistAuthorizationCategory; // @synthesize infoPlistAuthorizationCategory=_infoPlistAuthorizationCategory;
+@property(readonly, copy) NSString *localizedAdditionalSampleDataNote; // @synthesize localizedAdditionalSampleDataNote=_localizedAdditionalSampleDataNote;
+@property(readonly, copy) NSString *publicEntitlementValue; // @synthesize publicEntitlementValue=_publicEntitlementValue;
+@property(readonly, copy) NSArray *relatedSettingsCategories; // @synthesize relatedSettingsCategories=_relatedSettingsCategories;
+@property(readonly, copy) NSString *writerBundleIdentifier; // @synthesize writerBundleIdentifier=_writerBundleIdentifier;
+@property(readonly, copy) NSString *authorizationService; // @synthesize authorizationService=_authorizationService;
+@property(readonly, copy) NSString *name; // @synthesize name=_name;
 - (id)description;
 - (void)dealloc;
+@property(readonly) _Bool supportsCurrentPlatform;
+- (_Bool)supportsPlatform:(id)arg1;
+@property(readonly) _Bool sensorConfigurationEnabled;
+@property(readonly) _Bool metadataEnabled;
+@property(readonly, copy) NSString *exportingSampleClass;
+@property(readonly, copy) NSString *sampleClass;
+- (id)initWithDictionary:(id)arg1;
 
 @end
 

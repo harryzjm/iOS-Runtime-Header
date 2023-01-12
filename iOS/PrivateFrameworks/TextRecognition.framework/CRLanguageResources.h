@@ -26,14 +26,14 @@
 + (_Bool)isCustomWordsSupportedForLanguageIdentifier:(id)arg1;
 - (void).cxx_destruct;
 @property(retain) CVNLPLanguageResourceBundle *_cvnlpLanguageResourceBundle; // @synthesize _cvnlpLanguageResourceBundle=__cvnlpLanguageResourceBundle;
-@property(nonatomic) void *wordLanguageModel; // @synthesize wordLanguageModel=_wordLanguageModel;
-@property(nonatomic) const struct _LXLexicon *staticLexicon; // @synthesize staticLexicon=_staticLexicon;
-@property(nonatomic) struct CVNLPLanguageModel *cvnlpCharacterLanguageModel; // @synthesize cvnlpCharacterLanguageModel=_cvnlpCharacterLanguageModel;
-@property(nonatomic) void *lmCharacterLanguageModel; // @synthesize lmCharacterLanguageModel=_lmCharacterLanguageModel;
+@property(readonly, nonatomic) void *wordLanguageModel; // @synthesize wordLanguageModel=_wordLanguageModel;
+@property(readonly, nonatomic) const struct _LXLexicon *staticLexicon; // @synthesize staticLexicon=_staticLexicon;
+@property(readonly, nonatomic) struct CVNLPLanguageModel *cvnlpCharacterLanguageModel; // @synthesize cvnlpCharacterLanguageModel=_cvnlpCharacterLanguageModel;
+@property(readonly, nonatomic) void *lmCharacterLanguageModel; // @synthesize lmCharacterLanguageModel=_lmCharacterLanguageModel;
 @property(readonly, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 - (void)dealloc;
 - (id)cvnlpLanguageResourceBundle:(id)arg1;
-- (id)initWithLanguageIdentifier:(id)arg1;
+- (id)initWithLanguageIdentifier:(id)arg1 type:(long long)arg2;
 
 @end
 

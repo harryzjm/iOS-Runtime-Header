@@ -8,7 +8,6 @@
 
 @class CKDKeyValueDiskCache, CKDOperation, CKDPublicIdentityLookupService;
 
-__attribute__((visibility("hidden")))
 @interface CKDCacheBasedRequest : NSObject
 {
     _Bool _isCancelled;

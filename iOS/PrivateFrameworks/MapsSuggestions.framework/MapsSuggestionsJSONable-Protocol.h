@@ -6,9 +6,11 @@
 
 #import <MapsSuggestions/MapsSuggestionsAnyJSON-Protocol.h>
 
+@class NSString;
 @protocol MapsSuggestionsNativeJSON;
 
 @protocol MapsSuggestionsJSONable <MapsSuggestionsAnyJSON>
 - (id <MapsSuggestionsNativeJSON>)objectForJSON;
+- (NSString *)nameForJSON;
 @end
 

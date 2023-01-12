@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) id <PXNavigationListItem> itemToReorder; // @synthesize itemToReorder=_itemToReorder;
 @property(readonly, nonatomic) PXSidebarOutlineSectionController *sidebarOutlineSectionController; // @synthesize sidebarOutlineSectionController=_sidebarOutlineSectionController;
 @property(readonly, nonatomic) UICollectionViewDiffableDataSource *dataSource; // @synthesize dataSource=_dataSource;
-- (void)performReorderOfItems:(id)arg1 transaction:(id)arg2;
+- (void)performReorderWithTransaction:(id)arg1;
 - (id)targetIndexPathForMoveFromItemAtIndexPath:(id)arg1 toProposedIndexPath:(id)arg2;
 - (_Bool)canReorderItem:(id)arg1;
 - (id)initWithDataSource:(id)arg1 outlineSectionController:(id)arg2;

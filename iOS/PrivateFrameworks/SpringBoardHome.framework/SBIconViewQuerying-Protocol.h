@@ -22,11 +22,12 @@
 - (SBIconView *)iconViewForIcon:(SBIcon *)arg1 location:(NSString *)arg2;
 
 @optional
-- (void)enumerateIconViewQueryableChildrenWithOptions:(unsigned long long)arg1 usingBlock:(void (^)(id <SBIconViewQuerying><SBIconLocationPresenting>, _Bool *))arg2;
+- (void)enumerateIconViewQueryableChildrenWithOptions:(unsigned long long)arg1 usingBlock:(void (^)(id <SBIconViewQuerying><SBIconLocationPresenting>, unsigned long long, _Bool *))arg2;
 - (void)enumerateDisplayedIconViewsWithOptions:(unsigned long long)arg1 usingBlock:(void (^)(SBIconView *, _Bool *))arg2;
 - (_Bool)isDisplayingIconView:(SBIconView *)arg1 options:(unsigned long long)arg2;
 - (_Bool)isDisplayingIcon:(SBIcon *)arg1 inLocation:(NSString *)arg2 options:(unsigned long long)arg3;
 - (_Bool)isDisplayingIcon:(SBIcon *)arg1 options:(unsigned long long)arg2;
+- (SBIconView *)firstIconViewWithOptions:(unsigned long long)arg1 iconPassingTest:(_Bool (^)(SBIcon *))arg2;
 - (SBIconView *)iconViewForIcon:(SBIcon *)arg1 location:(NSString *)arg2 options:(unsigned long long)arg3;
 - (SBIconView *)firstIconViewForIcon:(SBIcon *)arg1 options:(unsigned long long)arg2;
 @end

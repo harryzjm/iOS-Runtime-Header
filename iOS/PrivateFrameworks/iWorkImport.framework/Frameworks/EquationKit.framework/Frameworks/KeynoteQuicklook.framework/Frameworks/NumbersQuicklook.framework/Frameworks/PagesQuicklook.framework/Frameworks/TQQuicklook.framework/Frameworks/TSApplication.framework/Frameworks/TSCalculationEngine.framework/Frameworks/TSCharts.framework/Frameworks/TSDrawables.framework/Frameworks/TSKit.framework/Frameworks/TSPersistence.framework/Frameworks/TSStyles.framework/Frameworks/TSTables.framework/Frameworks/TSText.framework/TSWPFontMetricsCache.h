@@ -8,8 +8,8 @@
 
 @interface TSWPFontMetricsCache : NSObject
 {
-    struct list<unsigned long, std::__1::allocator<unsigned long>> _fontHashList;
-    struct map<unsigned long, TSWPFontMetricsCacheEntry, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, TSWPFontMetricsCacheEntry>>> _fontHashToInfoMap;
+    struct list<unsigned long, std::allocator<unsigned long>> _fontHashList;
+    struct map<unsigned long, TSWPFontMetricsCacheEntry, std::less<unsigned long>, std::allocator<std::pair<const unsigned long, TSWPFontMetricsCacheEntry>>> _fontHashToInfoMap;
     unsigned int _cacheSize;
     unsigned int _maxCacheSize;
     struct _opaque_pthread_rwlock_t {

@@ -14,6 +14,7 @@
 }
 
 + (void)initializeJSContext:(id)arg1;
++ (id)createBlockWithValueForJSFunction:(id)arg1 argumentsEncoding:(id)arg2;
 + (id)createBlockForJSFunction:(id)arg1 argumentsEncoding:(id)arg2;
 + (void)callBlock:(id)arg1 arguments:(id)arg2;
 + (id)blockWithFunction:(id)arg1 argumentsEncoding:(id)arg2;
@@ -21,6 +22,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id blockValue;
 - (void)dealloc;
+- (id)initWithFunctionWithValue:(id)arg1 argumentsEncoding:(id)arg2;
 - (id)initWithFunction:(id)arg1 argumentsEncoding:(id)arg2;
 
 @end

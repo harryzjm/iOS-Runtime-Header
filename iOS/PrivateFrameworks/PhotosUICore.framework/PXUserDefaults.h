@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSNumber;
+@class NSDate, NSNumber, NSString;
 @protocol PXUserDefaultsDataSource, PXZoomablePhotosUserDefaults;
 
 @interface PXUserDefaults : NSObject
@@ -24,20 +24,34 @@
     NSNumber *_photosGridAspectFitInCompact;
     NSNumber *_didShowCurationFooter;
     NSNumber *_didShowCompletedCurationFooterAnimation;
+    NSNumber *_allPhotosLibraryAssetSource;
     NSNumber *_lastRadarPromptAnsweredQuestionCount;
     NSDate *_lastSurveyQuestionsRadarPromptDate;
     NSDate *_surveyQuestionsHideDate;
+    NSNumber *_hubbleLastRadarPromptAnsweredQuestionCount;
+    NSDate *_hubbleLastSurveyQuestionsRadarPromptDate;
+    NSDate *_hubbleSurveyQuestionsHideDate;
     NSNumber *_axExposeAllVisibleElements;
+    NSString *_infoPanelLastSnappedWidgetIdentifier;
+    NSNumber *_infoPanelLastSnappedPosition;
+    NSNumber *_storyTitleStyleNextIndex;
     id <PXUserDefaultsDataSource> _dataSource;
 }
 
 + (id)standardUserDefaults;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) __weak id <PXUserDefaultsDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property(copy, nonatomic) NSNumber *storyTitleStyleNextIndex; // @synthesize storyTitleStyleNextIndex=_storyTitleStyleNextIndex;
+@property(copy, nonatomic) NSNumber *infoPanelLastSnappedPosition; // @synthesize infoPanelLastSnappedPosition=_infoPanelLastSnappedPosition;
+@property(copy, nonatomic) NSString *infoPanelLastSnappedWidgetIdentifier; // @synthesize infoPanelLastSnappedWidgetIdentifier=_infoPanelLastSnappedWidgetIdentifier;
 @property(copy, nonatomic) NSNumber *axExposeAllVisibleElements; // @synthesize axExposeAllVisibleElements=_axExposeAllVisibleElements;
+@property(copy, nonatomic) NSDate *hubbleSurveyQuestionsHideDate; // @synthesize hubbleSurveyQuestionsHideDate=_hubbleSurveyQuestionsHideDate;
+@property(copy, nonatomic) NSDate *hubbleLastSurveyQuestionsRadarPromptDate; // @synthesize hubbleLastSurveyQuestionsRadarPromptDate=_hubbleLastSurveyQuestionsRadarPromptDate;
+@property(copy, nonatomic) NSNumber *hubbleLastRadarPromptAnsweredQuestionCount; // @synthesize hubbleLastRadarPromptAnsweredQuestionCount=_hubbleLastRadarPromptAnsweredQuestionCount;
 @property(copy, nonatomic) NSDate *surveyQuestionsHideDate; // @synthesize surveyQuestionsHideDate=_surveyQuestionsHideDate;
 @property(copy, nonatomic) NSDate *lastSurveyQuestionsRadarPromptDate; // @synthesize lastSurveyQuestionsRadarPromptDate=_lastSurveyQuestionsRadarPromptDate;
 @property(copy, nonatomic) NSNumber *lastRadarPromptAnsweredQuestionCount; // @synthesize lastRadarPromptAnsweredQuestionCount=_lastRadarPromptAnsweredQuestionCount;
+@property(copy, nonatomic) NSNumber *allPhotosLibraryAssetSource; // @synthesize allPhotosLibraryAssetSource=_allPhotosLibraryAssetSource;
 @property(copy, nonatomic) NSNumber *didShowCompletedCurationFooterAnimation; // @synthesize didShowCompletedCurationFooterAnimation=_didShowCompletedCurationFooterAnimation;
 @property(copy, nonatomic) NSNumber *didShowCurationFooter; // @synthesize didShowCurationFooter=_didShowCurationFooter;
 @property(copy, nonatomic) NSNumber *photosGridAspectFitInCompact; // @synthesize photosGridAspectFitInCompact=_photosGridAspectFitInCompact;
@@ -51,8 +65,7 @@
 @property(copy, nonatomic) NSNumber *daysMarginScale; // @synthesize daysMarginScale=_daysMarginScale;
 @property(copy, nonatomic) NSNumber *curatedLibraryZoomLevel; // @synthesize curatedLibraryZoomLevel=_curatedLibraryZoomLevel;
 @property(copy, nonatomic) NSNumber *allPhotosColumns; // @synthesize allPhotosColumns=_allPhotosColumns;
-- (void)setNumberOfAnsweredQuestionsFromLastRadarPrompt:(id)arg1;
-- (void)setSurveyQuestionsRadarPromptDate:(id)arg1;
+- (long long)generateNextStoryTitleStyleIndex;
 - (void)setallPhotosAspectFitInCompact:(id)arg1;
 - (id)initWithDataSource:(id)arg1;
 - (id)init;

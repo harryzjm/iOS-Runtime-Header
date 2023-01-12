@@ -17,7 +17,7 @@
 - (_Bool)_accessibilityShouldOverrideScrollViewContentOffsetLimits;
 - (double)_accessibilityLeftOpaqueScrollViewContentOffsetLimit;
 - (double)_accessibilityRightOpaqueScrollViewContentOffsetLimit;
-- (id)_accessibilitySortedElementsWithin;
+- (id)_accessibilitySortedElementsWithinWithOptions:(id)arg1;
 - (_Bool)_accessibilityUseXRightOffsetForScrollOpaqueElementIntoViewDirection:(long long)arg1;
 - (id)_accessibilityScrollStatus;
 - (void)_accessibilityLoadAccessibilityInformation;

@@ -11,7 +11,7 @@
 @interface _TtC7NewsUI234AudioPlaybackOptionsAlertPresenter : _TtCs12_SwiftObject
 {
     MISSING_TYPE *headlineProviderFactory;
-    MISSING_TYPE *actionSheetProvider;
+    MISSING_TYPE *audioActionSheetProvider;
 }
 
 @end

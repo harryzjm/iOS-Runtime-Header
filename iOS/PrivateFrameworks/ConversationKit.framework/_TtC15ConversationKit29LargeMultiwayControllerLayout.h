@@ -16,6 +16,9 @@
     MISSING_TYPE *currentConstraints;
     MISSING_TYPE *currentSize;
     MISSING_TYPE *currentDeviceOrientation;
+    MISSING_TYPE *participantLabelsView;
+    MISSING_TYPE *bannerViewConstraintManager;
+    MISSING_TYPE *localParticipantViewConstraintManager;
 }
 
 @end

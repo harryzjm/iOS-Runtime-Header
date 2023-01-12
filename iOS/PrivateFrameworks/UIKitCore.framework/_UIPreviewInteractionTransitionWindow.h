@@ -10,9 +10,10 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)_isSystemWindow;
+- (id)_roleHint;
 - (_Bool)_canAffectStatusBarAppearance;
 - (_Bool)_canActAsKeyWindowForScreen:(id)arg1;
-- (_Bool)_canBecomeKeyWindow;
+- (_Bool)canBecomeKeyWindow;
 - (void)_setFirstResponder:(id)arg1;
 - (_Bool)_isSettingFirstResponder;
 - (_Bool)isInternalWindow;

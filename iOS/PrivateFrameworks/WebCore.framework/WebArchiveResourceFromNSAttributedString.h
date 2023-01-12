@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface WebArchiveResourceFromNSAttributedString : NSObject
 {
-    struct RefPtr<WebCore::ArchiveResource, WTF::DumbPtrTraits<WebCore::ArchiveResource>> resource;
+    struct RefPtr<WebCore::ArchiveResource, WTF::RawPtrTraits<WebCore::ArchiveResource>, WTF::DefaultRefDerefTraits<WebCore::ArchiveResource>> resource;
 }
 
 - (id).cxx_construct;

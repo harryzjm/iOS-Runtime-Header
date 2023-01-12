@@ -52,6 +52,7 @@
 @property(readonly, nonatomic) NSString *parentPath; // @synthesize parentPath=_parentPath;
 @property(readonly, nonatomic) NSString *filename; // @synthesize filename=_filename;
 @property(readonly, nonatomic) BRCRelativePath *parentRelpath; // @synthesize parentRelpath=_parentRelpath;
+@property(readonly, nonatomic) BRCAccountSession *session; // @synthesize session=_session;
 @property(readonly, nonatomic) NSURL *url; // @synthesize url=_url;
 @property(readonly, nonatomic) BRCPQLConnection *db; // @synthesize db=_db;
 - (void)clearReservedItem;
@@ -107,8 +108,6 @@
 - (void)tryToUpdateItemInNamespace:(unsigned char)arg1 withDstLookup:(id)arg2;
 - (_Bool)copyItemAtURLToGenstore:(id)arg1 forItem:(id)arg2 error:(id *)arg3;
 - (_Bool)_bouncePathMatchIfNecessaryWithLookup:(id)arg1 localItem:(id)arg2 serverItem:(id)arg3 bounceNamespace:(unsigned char)arg4 applyNamespace:(unsigned char)arg5;
-- (_Bool)_shouldBounceSourceItemWithLookup:(id)arg1 localItem:(id)arg2 serverItem:(id)arg3 bounceNamespace:(unsigned char)arg4 applyNamespace:(unsigned char)arg5 urlMatch:(CDStruct_177058d5 *)arg6;
-- (int)_computeURLMatchWithLookup:(id)arg1 localItem:(id)arg2 serverItem:(id)arg3 bounceNamespace:(unsigned char)arg4 applyNamespace:(unsigned char)arg5 urlMatch:(CDStruct_177058d5 *)arg6;
 - (_Bool)_canUpdatePathMatch:(const CDStruct_177058d5 *)arg1 hasAdditionsToApply:(_Bool)arg2;
 - (_Bool)_removeDirectory:(id)arg1 atPath:(id)arg2 error:(id *)arg3;
 - (void)_moveMissingItemAsideInNamespace:(unsigned char)arg1;

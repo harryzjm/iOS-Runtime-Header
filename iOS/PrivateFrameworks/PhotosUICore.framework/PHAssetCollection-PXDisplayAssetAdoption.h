@@ -14,6 +14,7 @@
 @interface PHAssetCollection (PXDisplayAssetAdoption) <PXDisplayAssetCollection, PXMediaTypeAggregating>
 + (id)px_fetchAssetCollectionsWithAlbumSubtypes:(id)arg1 photoLibrary:(id)arg2;
 + (id)px_fetchSmartAlbumCollectionsBySubtypeForAlbumSubtypes:(id)arg1 photoLibrary:(id)arg2;
++ (id)px_contentSyndicationVirtualCollection;
 + (id)px_searchResultsVirtualCollection;
 + (id)px_importHistoryAssetCollection;
 + (id)px_sharedActivityVirtualCollection;
@@ -31,18 +32,37 @@
 + (id)px_smartAlbumWithSubtype:(long long)arg1;
 + (id)px_otherAlbumsSubtypes;
 + (id)px_mediaTypeSmartAlbumSubtypes;
+@property(readonly, nonatomic) _Bool px_isMacSyncedFacesAlbum;
+@property(readonly, nonatomic) _Bool px_isMacSyncedRegularAlbum;
 @property(readonly, nonatomic) _Bool px_isMacSyncedAlbum;
 @property(readonly, nonatomic) _Bool px_isCloudMultipleContributorsEnabled;
 @property(readonly, nonatomic) _Bool px_isOwnedSharedAlbum;
 @property(readonly, nonatomic) _Bool px_isSharedAlbum;
+@property(readonly, nonatomic) _Bool px_isContentSyndicationAlbum;
+@property(readonly, nonatomic) _Bool px_isMomentShare;
 @property(readonly, nonatomic) _Bool px_isSuggestion;
 @property(readonly, nonatomic) _Bool px_isHighlight;
 @property(readonly, nonatomic) _Bool px_isMoment;
+@property(readonly, nonatomic) _Bool px_isUnableToUploadSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isPanoramasSmartAlbum;
+@property(readonly, nonatomic) _Bool px_isCinematicSmartAlbum;
+@property(readonly, nonatomic) _Bool px_isRAWSmartAlbum;
+@property(readonly, nonatomic) _Bool px_isLongExposuresSmartAlbum;
+@property(readonly, nonatomic) _Bool px_isAnimatedSmartAlbum;
+@property(readonly, nonatomic) _Bool px_isLivePhotosSmartAlbum;
+@property(readonly, nonatomic) _Bool px_isDepthEffectSmartAlbum;
+@property(readonly, nonatomic) _Bool px_isScreenshotsSmartAlbum;
+@property(readonly, nonatomic) _Bool px_isSelfPortraitsSmartAlbum;
+@property(readonly, nonatomic) _Bool px_isSlomoVideosSmartAlbum;
+@property(readonly, nonatomic) _Bool px_isBurstsSmartAlbum;
+@property(readonly, nonatomic) _Bool px_isTimelapsesSmartAlbum;
+@property(readonly, nonatomic) _Bool px_isVideosSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isScreenRecordingsSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isRecentlyEditedSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isRecentsSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isImportSessionCollection;
+@property(readonly, nonatomic) _Bool px_isContentSyndicationAllPhotosAlbum;
+@property(readonly, nonatomic) _Bool px_isContentSyndicationVirtualCollection;
 @property(readonly, nonatomic) _Bool px_isSharedAlbumsVirtualCollection;
 @property(readonly, nonatomic) _Bool px_isMyAlbumsVirtualCollection;
 @property(readonly, nonatomic) _Bool px_isImportHistoryCollection;
@@ -79,6 +99,7 @@
 @property(readonly, nonatomic) _Bool isEnrichmentComplete;
 @property(readonly, nonatomic) _Bool isEnriched;
 @property(readonly, nonatomic) long long aggregateMediaType;
+- (void)px_assignStoryTitleCategoryIfNeeded;
 - (_Bool)px_isTransientCollectionWithIdentifier:(id)arg1;
 @property(readonly, nonatomic) unsigned long long px_estimatedCuratedAssetsCount;
 @property(readonly, nonatomic) unsigned short px_curationType;
@@ -101,8 +122,13 @@
 @property(readonly, nonatomic) NSString *localizedSubtitle;
 @property(readonly, nonatomic) NSString *localizedTitle;
 @property(readonly, nonatomic) _Bool px_canAddContent;
+@property(readonly, nonatomic) _Bool px_canCreateContent;
+@property(readonly, nonatomic) _Bool px_canDeleteContent;
 @property(readonly, nonatomic) _Bool px_canRearrangeContent;
+@property(readonly, nonatomic) _Bool px_canRemoveContent;
 @property(readonly, nonatomic) id px_cheapLogIdentifier;
+@property(readonly, nonatomic) _Bool px_isContentSyndicationFolder;
+@property(readonly, nonatomic) _Bool px_isDeletable;
 @property(readonly, nonatomic) _Bool px_isFavoriteMemoriesSmartFolder;
 @property(readonly, nonatomic) _Bool px_isFolder;
 @property(readonly, nonatomic) _Bool px_isInReadWriteCloudLibrary;
@@ -112,6 +138,7 @@
 @property(readonly, nonatomic) _Bool px_isProject;
 @property(readonly, nonatomic) _Bool px_isProjectsFolder;
 @property(readonly, nonatomic) _Bool px_isRegularFolder;
+@property(readonly, nonatomic) _Bool px_isRenamable;
 @property(readonly, nonatomic) _Bool px_isSharedAlbumsAndActivityFolder;
 @property(readonly, nonatomic) _Bool px_isSharedAlbumsFolder;
 @property(readonly, nonatomic) _Bool px_isSmartFolder;
@@ -120,5 +147,6 @@
 @property(readonly, nonatomic) _Bool px_isUserCreated;
 @property(readonly, nonatomic) NSDate *startDate;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) NSString *uuid;
 @end
 

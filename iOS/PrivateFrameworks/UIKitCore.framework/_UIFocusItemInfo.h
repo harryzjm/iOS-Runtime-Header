@@ -8,7 +8,7 @@
 
 #import <UIKitCore/NSCopying-Protocol.h>
 
-@class NSArray, UIScreen, UIView, _UIFocusRegion;
+@class NSArray, UIView, _UIFocusRegion;
 @protocol UIFocusItem;
 
 __attribute__((visibility("hidden")))
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
         unsigned int hasResolvedFocusTouchSensitivityStyle:1;
         unsigned int hasResolvedFocusMovementFlippedHorizontally:1;
         unsigned int hasResolvedFocusedRegion:1;
+        unsigned int useFallbackAncestorScroller:1;
     } _flags;
     _Bool _focusMovementFlippedHorizontally;
     NSArray *_ancestorScrollableContainers;
@@ -33,14 +34,17 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)infoWithView:(id)arg1;
++ (id)infoWithItem:(id)arg1 useFallbackAncestorScroller:(_Bool)arg2;
 + (id)infoWithItem:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) __weak UIView *containingView; // @synthesize containingView=_containingView;
 @property(readonly, nonatomic) __weak id <UIFocusItem> item; // @synthesize item=_item;
+- (id)description;
 - (void)invalidateFocusedRegion;
 - (struct CGRect)focusedRectInCoordinateSpace:(id)arg1;
 - (id)_focusedRegionInCoordinateSpace:(id)arg1;
 @property(readonly, nonatomic) _UIFocusRegion *focusedRegion; // @synthesize focusedRegion=_focusedRegion;
+- (id)_defaultCoordinateSpace;
 @property(readonly, nonatomic, getter=isFocusMovementFlippedHorizontally) _Bool focusMovementFlippedHorizontally; // @synthesize focusMovementFlippedHorizontally=_focusMovementFlippedHorizontally;
 @property(readonly, nonatomic) long long focusTouchSensitivityStyle; // @synthesize focusTouchSensitivityStyle=_focusTouchSensitivityStyle;
 @property(readonly, nonatomic) double focusSoundPan; // @synthesize focusSoundPan=_focusSoundPan;
@@ -48,9 +52,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) long long inheritedFocusMovementStyle; // @synthesize inheritedFocusMovementStyle=_inheritedFocusMovementStyle;
 @property(readonly, copy, nonatomic) NSArray *ancestorScrollableContainers; // @synthesize ancestorScrollableContainers=_ancestorScrollableContainers;
 @property(readonly, nonatomic) _Bool itemIsKindOfView;
-@property(readonly, nonatomic) __weak UIScreen *screen;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)_initWithItem:(id)arg1 containingView:(id)arg2;
+- (id)_initWithItem:(id)arg1 containingView:(id)arg2 useFallbackAncestorScroller:(_Bool)arg3;
 - (id)init;
 
 @end

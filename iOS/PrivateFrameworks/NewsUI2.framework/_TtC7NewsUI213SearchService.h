@@ -4,17 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import <objc/NSObject.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC7NewsUI213SearchService : _TtCs12_SwiftObject
+__attribute__((visibility("hidden")))
+@interface _TtC7NewsUI213SearchService : NSObject
 {
-    MISSING_TYPE *context;
-    MISSING_TYPE *tagService;
-    MISSING_TYPE *headlineModelFactory;
-    MISSING_TYPE *feedContextFactory;
+    MISSING_TYPE *connection;
+    MISSING_TYPE *configManager;
+    MISSING_TYPE *configPromise;
+    MISSING_TYPE *purchaseProvider;
+    MISSING_TYPE *bundleSubscriptionProvider;
+    MISSING_TYPE *userInterfaceIdiom;
+    MISSING_TYPE *storefrontID;
+    MISSING_TYPE *queryContextManager;
+    MISSING_TYPE *locationRegionManager;
+    MISSING_TYPE *queryContext;
+    MISSING_TYPE *localAreas;
+    MISSING_TYPE *logger;
+    MISSING_TYPE *featureAvailability;
 }
+
+- (void).cxx_destruct;
+- (id)init;
 
 @end
 

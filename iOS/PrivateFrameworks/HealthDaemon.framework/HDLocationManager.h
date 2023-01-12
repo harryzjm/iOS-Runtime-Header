@@ -24,7 +24,6 @@
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <HDLocationManagerUnitTestDelegate> unitTestDelegate; // @synthesize unitTestDelegate=_unitTestDelegate;
-@property(copy, nonatomic) CDUnknownBlockType locationManagerConfiguration; // @synthesize locationManagerConfiguration=_locationManagerConfiguration;
 - (void)_unitTest_didInvalidateAssertion:(id)arg1;
 - (void)_unitTest_didTakeAssertion:(id)arg1;
 - (id)_unitTest_locationManager;

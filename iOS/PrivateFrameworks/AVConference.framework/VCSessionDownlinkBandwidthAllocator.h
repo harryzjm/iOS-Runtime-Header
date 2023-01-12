@@ -6,33 +6,32 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableDictionary, NSMutableSet;
+@class NSMutableArray, NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface VCSessionDownlinkBandwidthAllocator : NSObject
 {
+    NSMutableDictionary *_allocatedMediaEntriesForClients;
+    unsigned int _maxConcurrentVideoClients;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSMutableArray *_clients;
     NSMutableDictionary *_selectedMediaEntriesForClients;
-    NSMutableDictionary *_allocatedMediaEntriesForClients;
-    NSMutableSet *_decoderConstrainedClients;
-    NSMutableSet *_bandwidthConstrainedClients;
     NSMutableArray *_sortedMediaEntries;
     struct opaqueRTCReporting *_reportingAgent;
-    unsigned int _maxConcurrentVideoClients;
+    _Bool _forceFullBandwidth;
 }
 
-- (void)actualNetworkBitrateVideoDidChangeForClient:(id)arg1;
++ (id)sortMediaEntriesGroupIds:(id)arg1;
+@property(nonatomic) _Bool forceFullBandwidth; // @synthesize forceFullBandwidth=_forceFullBandwidth;
+- (void)client:(id)arg1 didActualNetworkBitrateChangeForStreamGroupID:(unsigned int)arg2;
 - (void)deregisterForBandwidthAllocationWithClient:(id)arg1;
-- (void)actualNetworkBitrateAudioDidChangeForClient:(id)arg1;
-- (void)reportingSessionParticipantEventBitrateChanged:(id)arg1 optedInNetworkBitrate:(unsigned int)arg2 actualNetworkBitrate:(unsigned int)arg3 optedInStreamID:(unsigned short)arg4 actualStreamID:(unsigned short)arg5;
+- (void)reportingSessionParticipantEventBitrateChanged:(id)arg1 optedInNetworkBitrate:(unsigned int)arg2 actualNetworkBitrate:(unsigned int)arg3 optedInStreamID:(id)arg4 actualStreamID:(id)arg5;
 - (void)registerForBandwidthAllocationWithClient:(id)arg1;
 - (void)reset;
 - (void)updateSelectedMediaEntriesForClientWithUUID:(id)arg1;
 - (id)distributeBitrate:(unsigned int)arg1;
 @property(readonly, nonatomic) unsigned long long simultaneousTalkers;
-- (void)updateClient:(id)arg1 bandwidthConstrained:(_Bool)arg2 decoderConstrained:(_Bool)arg3;
 - (void)updateHighestAudioBitrates:(id)arg1 bitrate:(unsigned int)arg2;
 - (unsigned int)requiredAudioBitrate:(unsigned int)arg1 highestAudioBitrates:(id)arg2;
 - (void)sortMediaEntries;

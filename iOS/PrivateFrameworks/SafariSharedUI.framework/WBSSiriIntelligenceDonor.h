@@ -29,13 +29,14 @@
 - (void)removeAllCoreSpotlightHistoryDataDonatedBySafari;
 - (void)processRemovedHistoryItems:(id)arg1;
 - (void)_removeCoreSpotlightDataWithIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_indexCoreSpotlightData:(id)arg1;
+- (void)_indexCoreSpotlightData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_searchableItemsForIDs:(id)arg1 allBookmarks:(id)arg2;
 - (void)donateSafariBookmarksToCoreSpotlight:(id)arg1;
 - (void)export30DaysWorthOfHistoryToCoreSpotlightWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_donateDataForPageWithURL:(id)arg1 fullPageText:(id)arg2 readerText:(id)arg3 autocompleteTriggers:(id)arg4;
 - (void)donateDataForPageWithURL:(id)arg1 fullPageText:(id)arg2 readerText:(id)arg3;
 - (id)init;
+- (_Bool)donateTextInWebView:(id)arg1 extractedReaderText:(id)arg2 canDonateFullPageText:(_Bool)arg3 extractInnerText:(CDUnknownBlockType)arg4;
 
 @end
 

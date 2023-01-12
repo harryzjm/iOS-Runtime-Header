@@ -10,7 +10,7 @@
 #import <Rapport/RPAuthenticatable-Protocol.h>
 #import <Rapport/RPCompanionLinkXPCClientInterface-Protocol.h>
 
-@class NSString, NSXPCConnection;
+@class NSArray, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 @interface RPServer : NSObject <NSSecureCoding, RPCompanionLinkXPCClientInterface, RPAuthenticatable>
@@ -26,6 +26,8 @@
     int _passwordType;
     int _passwordTypeActual;
     unsigned int _internalAuthFlags;
+    NSArray *_allowedMACAddresses;
+    NSArray *_pairSetupACL;
     NSString *_password;
     CDUnknownBlockType _authCompletionHandler;
     CDUnknownBlockType _showPasswordHandler;
@@ -61,6 +63,8 @@
 @property(copy, nonatomic) NSString *password; // @synthesize password=_password;
 @property(nonatomic) unsigned int pairVerifyFlags; // @synthesize pairVerifyFlags=_pairVerifyFlags;
 @property(nonatomic) unsigned int pairSetupFlags; // @synthesize pairSetupFlags=_pairSetupFlags;
+@property(retain, nonatomic) NSArray *pairSetupACL; // @synthesize pairSetupACL=_pairSetupACL;
+@property(retain, nonatomic) NSArray *allowedMACAddresses; // @synthesize allowedMACAddresses=_allowedMACAddresses;
 - (void)xpcServerHidePassword:(unsigned int)arg1;
 - (void)xpcServerShowPassword:(id)arg1 flags:(unsigned int)arg2;
 - (void)xpcServerAcceptSession:(id)arg1 completion:(CDUnknownBlockType)arg2;

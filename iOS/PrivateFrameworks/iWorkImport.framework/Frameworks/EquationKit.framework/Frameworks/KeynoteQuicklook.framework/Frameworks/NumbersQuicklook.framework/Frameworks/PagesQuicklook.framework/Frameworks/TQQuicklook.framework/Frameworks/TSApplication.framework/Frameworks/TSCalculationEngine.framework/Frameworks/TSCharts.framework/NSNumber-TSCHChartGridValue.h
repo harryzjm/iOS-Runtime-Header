@@ -11,14 +11,14 @@
 @class NSString;
 
 @interface NSNumber (TSCHChartGridValue) <TSCHChartGridValue>
-+ (id)tsch_optionalNumberWithArchive:(const struct ChartsNSNumberDoubleArchive *)arg1 unarchiver:(id)arg2;
-+ (void)tsch_saveOptionalNumber:(id)arg1 toArchive:(struct ChartsNSNumberDoubleArchive *)arg2 archiver:(id)arg3;
-+ (id)tsch_instanceWithArchive:(const struct ChartsNSNumberDoubleArchive *)arg1 unarchiver:(id)arg2;
++ (id)tsch_optionalNumberWithArchive:(const void *)arg1 unarchiver:(id)arg2;
++ (void)tsch_saveOptionalNumber:(id)arg1 toArchive:(void *)arg2 archiver:(id)arg3;
++ (id)tsch_instanceWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 + (id)tsch_numberWithStyleProperty:(int)arg1;
 + (id)tsch_numberWithStyleInt:(int)arg1;
 @property(readonly, nonatomic) int chartGridValueType;
-- (id)tsch_initWithArchive:(const struct ChartsNSNumberDoubleArchive *)arg1 unarchiver:(id)arg2;
-- (void)tsch_saveToArchive:(struct ChartsNSNumberDoubleArchive *)arg1 archiver:(id)arg2;
+- (id)tsch_initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
+- (void)tsch_saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (int)tsch_stylePropertyValue;
 - (int)tsch_styleIntValue;
 

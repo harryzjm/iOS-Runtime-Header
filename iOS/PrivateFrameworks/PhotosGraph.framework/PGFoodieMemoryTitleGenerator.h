@@ -15,17 +15,18 @@
     PGGraphPersonNode *_personNode;
     PGGraphAddressNode *_addressNode;
     PGGraphNode<PGGraphLocationOrArea> *_tripLocationNode;
+    unsigned long long _tripTitleLocationType;
 }
 
 - (void).cxx_destruct;
 - (id)_typeString;
 - (id)_timeTitleForTripAndWeekend;
 - (void)_generateTitleAndSubtitleWithResult:(CDUnknownBlockType)arg1;
-- (id)initWithMomentNodes:(id)arg1 tripLocationNode:(id)arg2;
-- (id)initWithMomentNodes:(id)arg1 addressNode:(id)arg2;
-- (id)initWithMomentNodes:(id)arg1 personNode:(id)arg2;
-- (id)initWithMomentNodes:(id)arg1 businessNode:(id)arg2;
-- (id)initWithMomentNodes:(id)arg1 cityNode:(id)arg2;
+- (id)initWithMomentNodes:(id)arg1 tripLocationNode:(id)arg2 tripTitleLocationType:(unsigned long long)arg3 titleGenerationContext:(id)arg4;
+- (id)initWithMomentNodes:(id)arg1 addressNode:(id)arg2 titleGenerationContext:(id)arg3;
+- (id)initWithMomentNodes:(id)arg1 personNode:(id)arg2 titleGenerationContext:(id)arg3;
+- (id)initWithMomentNodes:(id)arg1 businessNode:(id)arg2 titleGenerationContext:(id)arg3;
+- (id)initWithMomentNodes:(id)arg1 cityNode:(id)arg2 titleGenerationContext:(id)arg3;
 
 @end
 

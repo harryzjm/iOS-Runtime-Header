@@ -50,8 +50,8 @@
 @property(readonly, copy) NSIndexSet *insertedSections;
 @property(readonly, copy) NSIndexSet *deletedSections;
 @property(readonly) _Bool hasIncrementalChanges;
-- (id)initWithIncrementalChanges:(id)arg1 assetCollectionChangeDetails:(id)arg2 sectionsWithKeyAssetChanges:(id)arg3 previousCollectionsCount:(long long)arg4 assetCollectionToSectionCache:(id)arg5 originatingPhotoLibraryChange:(id)arg6 fromIdentifier:(unsigned long long)arg7 toIdentifier:(unsigned long long)arg8;
-- (id)initWithFromIdentifier:(unsigned long long)arg1 toIdentifier:(unsigned long long)arg2;
+- (id)initWithIncrementalChanges:(id)arg1 assetCollectionChangeDetails:(id)arg2 sectionsWithKeyAssetChanges:(id)arg3 previousCollectionsCount:(long long)arg4 assetCollectionToSectionCache:(id)arg5 originatingPhotoLibraryChange:(id)arg6 fromIdentifier:(long long)arg7 toIdentifier:(long long)arg8;
+- (id)initWithFromIdentifier:(long long)arg1 toIdentifier:(long long)arg2;
 
 @end
 

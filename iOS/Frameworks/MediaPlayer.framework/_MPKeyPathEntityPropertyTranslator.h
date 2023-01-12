@@ -10,6 +10,7 @@
 
 @class NSArray, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MPKeyPathEntityPropertyTranslator : NSObject <MPEntityPropertyTranslator>
 {
     NSArray *_sourceKeyPaths;

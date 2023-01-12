@@ -11,6 +11,8 @@
 @protocol BCSUserDefaultsProviding <NSObject>
 - (void)setDouble:(double)arg1 forKey:(NSString *)arg2;
 - (double)doubleForKey:(NSString *)arg1;
+- (void)setInteger:(long long)arg1 forKey:(NSString *)arg2;
+- (long long)integerForKey:(NSString *)arg1;
 - (NSData *)dataForKey:(NSString *)arg1;
 - (_Bool)boolForKey:(NSString *)arg1;
 - (NSString *)stringForKey:(NSString *)arg1;

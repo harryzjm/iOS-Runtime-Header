@@ -5,6 +5,6 @@
 //
 
 @protocol MLModelSpecificationSaver
-- (struct _MLModelSpecification *)saveModelToSpecification:(id *)arg1;
+- (void *)saveModelToSpecification:(id *)arg1;
 @end
 

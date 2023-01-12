@@ -7,6 +7,7 @@
 #import <UIKit/UIViewController.h>
 
 @interface UIViewController (NUScrollView)
+- (void)nu_adjustInsetsForScrollView:(id)arg1 transparentNavigationBar:(_Bool)arg2 withEdgeInsets:(struct UIEdgeInsets)arg3;
 - (void)nu_adjustInsetsForScrollView:(id)arg1 withEdgeInsets:(struct UIEdgeInsets)arg2;
 - (void)nu_adjustInsetsForScrollView:(id)arg1;
 - (id)navigationControl;

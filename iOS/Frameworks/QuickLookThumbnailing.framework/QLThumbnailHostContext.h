@@ -23,7 +23,7 @@
 @property(nonatomic) __weak id <QLThumbnailSurfaceGeneratorProtocol> ioSurfaceGenerator; // @synthesize ioSurfaceGenerator=_ioSurfaceGenerator;
 @property(retain, nonatomic) NSOperationQueue *thumbnailGenerationConcurrenQueue; // @synthesize thumbnailGenerationConcurrenQueue=_thumbnailGenerationConcurrenQueue;
 - (void)ioSurfaceWithSize:(struct CGSize)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)generateThumbnailOfSize:(struct CGSize)arg1 minimumSize:(double)arg2 scale:(double)arg3 badgeType:(unsigned long long)arg4 withItem:(id)arg5 ioSurfaceGenerator:(id)arg6 generatorData:(id)arg7 completionHandler:(CDUnknownBlockType)arg8;
+- (void)generateThumbnailOfSize:(struct CGSize)arg1 minimumSize:(double)arg2 scale:(double)arg3 badgeType:(unsigned long long)arg4 iconFlavor:(int)arg5 withItem:(id)arg6 ioSurfaceGenerator:(id)arg7 generatorData:(id)arg8 interpolationQuality:(int)arg9 completionHandler:(CDUnknownBlockType)arg10;
 - (id)protocolServiceWithErrorHandler:(CDUnknownBlockType)arg1;
 
 // Remaining properties

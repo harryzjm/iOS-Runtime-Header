@@ -9,6 +9,18 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)setThreadgroupMemoryLength:(unsigned long long)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
+- (void)dispatchThreadsPerTile:(CDStruct_14f26992)arg1;
+- (void)setTileSamplerStates:(const id *)arg1 lodMinClamps:(const float *)arg2 lodMaxClamps:(const float *)arg3 withRange:(struct _NSRange)arg4;
+- (void)setTileSamplerState:(id)arg1 lodMinClamp:(float)arg2 lodMaxClamp:(float)arg3 atIndex:(unsigned long long)arg4;
+- (void)setTileSamplerStates:(const id *)arg1 withRange:(struct _NSRange)arg2;
+- (void)setTileSamplerState:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)setTileTextures:(const id *)arg1 withRange:(struct _NSRange)arg2;
+- (void)setTileTexture:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)setTileBuffers:(const id *)arg1 offsets:(const unsigned long long *)arg2 withRange:(struct _NSRange)arg3;
+- (void)setTileBufferOffset:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
+- (void)setTileBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
+- (void)setTileBytes:(const void *)arg1 length:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)memoryBarrierWithResources:(const id *)arg1 count:(unsigned long long)arg2 afterStages:(unsigned long long)arg3 beforeStages:(unsigned long long)arg4;
 - (void)memoryBarrierWithScope:(unsigned long long)arg1 afterStages:(unsigned long long)arg2 beforeStages:(unsigned long long)arg3;
 - (void)useResources:(const id *)arg1 count:(unsigned long long)arg2 usage:(unsigned long long)arg3 stages:(unsigned long long)arg4;

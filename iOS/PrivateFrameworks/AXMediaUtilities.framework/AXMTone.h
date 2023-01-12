@@ -6,28 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@class AXMADSREnvelope;
+@class AXMADSREnvelope, AXMSynthPatch;
 
 @interface AXMTone : NSObject
 {
     unsigned long long _sampleRate;
     double _frequency;
     AXMADSREnvelope *_envelope;
-    unsigned long long _waveform;
     double _gain;
     double _aWeighting;
+    AXMSynthPatch *_patch;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) AXMSynthPatch *patch; // @synthesize patch=_patch;
 @property(readonly, nonatomic) double aWeighting; // @synthesize aWeighting=_aWeighting;
 @property(nonatomic) double gain; // @synthesize gain=_gain;
-@property(nonatomic) unsigned long long waveform; // @synthesize waveform=_waveform;
 @property(readonly, nonatomic) AXMADSREnvelope *envelope; // @synthesize envelope=_envelope;
 @property(readonly, nonatomic) double frequency; // @synthesize frequency=_frequency;
 @property(nonatomic) unsigned long long sampleRate; // @synthesize sampleRate=_sampleRate;
 - (double)_rawValueForTonePhase:(double)arg1;
 - (void)_setFrequency:(double)arg1;
-- (void)renderInBuffer:(vector_12bd641b *)arg1 atFrame:(unsigned long long)arg2;
+- (void)renderInBuffer:(void *)arg1 atFrame:(unsigned long long)arg2;
 - (id)initWithSampleRate:(double)arg1 envelope:(id)arg2;
 - (id)init;
 

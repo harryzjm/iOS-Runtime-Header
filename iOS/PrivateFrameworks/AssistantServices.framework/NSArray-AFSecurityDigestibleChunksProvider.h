@@ -13,11 +13,11 @@
 @interface NSArray (AFSecurityDigestibleChunksProvider) <AFSecurityDigestibleChunksProviding>
 - (void)af_enumerateDigestibleChunksWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)af_objectsPassingTest:(CDUnknownBlockType)arg1;
-- (id)af_mappedDictionary:(CDUnknownBlockType)arg1;
+- (id)af_firstObjectPassingTest:(CDUnknownBlockType)arg1;
+- (id)af_lenientMappedDictionary:(CDUnknownBlockType)arg1;
 - (id)_af_lenient:(_Bool)arg1 map:(CDUnknownBlockType)arg2;
 - (id)af_lenientMappedArray:(CDUnknownBlockType)arg1;
 - (id)af_mappedArray:(CDUnknownBlockType)arg1;
-- (id)af_arrayByMappingWithBlock:(CDUnknownBlockType)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

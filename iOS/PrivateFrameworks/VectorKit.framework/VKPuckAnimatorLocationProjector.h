@@ -14,11 +14,13 @@ __attribute__((visibility("hidden")))
     GEORouteMatch *_routeMatch;
     GEORouteMatch *_projectedRouteMatch;
     Matrix_6e1d3589 _projectedPosition;
+    double _elevationInProjectedPosition;
     double _projectedCourse;
 }
 
 - (id).cxx_construct;
 @property(readonly, nonatomic) double projectedCourse; // @synthesize projectedCourse=_projectedCourse;
+@property(readonly, nonatomic) double elevationInProjectedPostion; // @synthesize elevationInProjectedPostion=_elevationInProjectedPosition;
 @property(readonly, nonatomic) Matrix_6e1d3589 projectedPosition; // @synthesize projectedPosition=_projectedPosition;
 @property(retain, nonatomic) GEORouteMatch *projectedRouteMatch; // @synthesize projectedRouteMatch=_projectedRouteMatch;
 @property(retain, nonatomic) GEORouteMatch *routeMatch; // @synthesize routeMatch=_routeMatch;

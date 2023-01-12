@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <AMSUIDynamicViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)dynamicViewController:(id)arg1 didFinishWithPurchaseResult:(id)arg2 error:(id)arg3;
 - (void)dynamicViewController:(id)arg1 didFinishPurchaseWithResult:(id)arg2 error:(id)arg3;
+- (void)dynamicViewController:(id)arg1 didFinishCarrierLinkingWithResult:(id)arg2 error:(id)arg3;
 - (id)dynamicViewController:(id)arg1 contentViewWithDictionary:(id)arg2 frame:(struct CGRect)arg3;
 - (id)dynamicViewController:(id)arg1 contentViewControllerWithDictionary:(id)arg2;
 - (id)initWithDynamicViewController:(id)arg1;

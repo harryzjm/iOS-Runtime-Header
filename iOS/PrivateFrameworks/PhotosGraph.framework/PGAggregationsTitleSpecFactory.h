@@ -10,7 +10,8 @@
 {
 }
 
-+ (id)_buildSpecCollectionForMeaningLabel:(id)arg1 withSpecDefinition:(id)arg2;
++ (id)_buildSpecCollectionForMeaningLabel:(id)arg1 withSpecDefinition:(id)arg2 features:(id)arg3;
++ (id)_featureTypesFromFeatureKey:(id)arg1;
 + (id)_specCollectionForGathering;
 + (id)_specDefinitionForDinner;
 + (id)_specDefinitionForLunch;
@@ -26,6 +27,7 @@
 + (id)_specDefinitionForNightOut;
 + (id)_specDefinitionForEntertainment;
 + (id)_specCollectionForBirthday;
++ (id)specCollectionForMeaningLabel:(id)arg1 features:(id)arg2;
 + (id)specCollectionForMeaningLabel:(id)arg1;
 
 @end

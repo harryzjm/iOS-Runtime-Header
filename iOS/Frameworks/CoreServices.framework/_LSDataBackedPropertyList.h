@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)detach;
+- (void)prewarm;
 - (_Bool)_getValue:(id *)arg1 forPropertyListKey:(id)arg2;
 - (_Bool)_getPropertyList:(id *)arg1;
 - (id)uncheckedObjectsForKeys:(id)arg1;

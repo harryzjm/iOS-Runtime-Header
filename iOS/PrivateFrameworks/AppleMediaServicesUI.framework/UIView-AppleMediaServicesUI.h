@@ -11,5 +11,7 @@
 - (void)ams_layout;
 - (void)ams_setBackgroundColor:(id)arg1;
 - (id)ams_backgroundColor;
+- (void)ams_setAlpha:(double)arg1;
+- (double)ams_alpha;
 @end
 

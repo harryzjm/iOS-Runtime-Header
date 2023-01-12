@@ -11,5 +11,7 @@
 - (id)_ICSStringForParameterValue;
 - (id)_ICSStringForProperyValue;
 - (void)_ICSStringWithOptions:(unsigned long long)arg1 appendingToString:(id)arg2;
+- (_Bool)VCS_isPhoneNumber;
+- (id)VCS_uncommentedAddress;
 @end
 

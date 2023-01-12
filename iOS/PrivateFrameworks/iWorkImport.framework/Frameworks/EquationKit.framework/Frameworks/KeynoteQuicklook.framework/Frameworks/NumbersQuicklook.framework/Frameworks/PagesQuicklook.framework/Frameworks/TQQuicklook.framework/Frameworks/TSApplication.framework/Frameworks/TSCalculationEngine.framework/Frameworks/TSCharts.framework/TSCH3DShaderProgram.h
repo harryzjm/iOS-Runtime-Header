@@ -10,34 +10,35 @@
 
 @interface TSCH3DShaderProgram : NSObject
 {
-    NSMutableDictionary *mLinks;
-    NSMutableArray *mDeclarationSection;
-    NSMutableArray *mTemporarySection;
-    NSMutableArray *mStatementSection;
-    NSMutableArray *mResolutionSection;
-    NSMutableArray *mOutcomeSection;
-    NSMutableArray *mConclusionSection;
-    NSMutableArray *mSections[6];
-    NSMutableArray *mFunctions;
-    NSMutableSet *mFunctionNames;
-    NSMutableString *mAccumulator;
-    _Bool mIsLinked;
-    NSString *mVertex;
-    NSString *mFragment;
-    TSCH3DVersion *mVersion;
-    TSCH3DOrderedDictionary *mTypeDeclarations;
-    NSMutableArray *mSortedLinks;
-    NSMutableDictionary *mVariableToVertexAttributeLocation;
-    NSMutableDictionary *mLinkedInputVariables;
+    NSMutableDictionary *_links;
+    NSMutableArray *_declarationSection;
+    NSMutableArray *_temporarySection;
+    NSMutableArray *_statementSection;
+    NSMutableArray *_resolutionSection;
+    NSMutableArray *_outcomeSection;
+    NSMutableArray *_conclusionSection;
+    NSMutableArray *_sections[6];
+    NSMutableArray *_functions;
+    NSMutableSet *_functionNames;
+    NSMutableString *_accumulator;
+    _Bool _isLinked;
+    NSString *_vertex;
+    NSString *_fragment;
+    TSCH3DVersion *_version;
+    TSCH3DOrderedDictionary *_typeDeclarations;
+    NSMutableArray *_sortedLinks;
+    NSMutableDictionary *_variableToVertexAttributeLocation;
+    NSMutableDictionary *_linkedInputVariables;
     NSSet *_variablesWithBackingResources;
     NSSet *_interleavedAttributeVariables;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSSet *interleavedAttributeVariables; // @synthesize interleavedAttributeVariables=_interleavedAttributeVariables;
 @property(copy, nonatomic) NSSet *variablesWithBackingResources; // @synthesize variablesWithBackingResources=_variablesWithBackingResources;
-@property(retain, nonatomic) NSMutableDictionary *variableToVertexAttributeLocation; // @synthesize variableToVertexAttributeLocation=mVariableToVertexAttributeLocation;
-@property(retain, nonatomic) NSMutableArray *sortedLinks; // @synthesize sortedLinks=mSortedLinks;
-@property(readonly, nonatomic) TSCH3DVersion *version; // @synthesize version=mVersion;
+@property(retain, nonatomic) NSMutableDictionary *variableToVertexAttributeLocation; // @synthesize variableToVertexAttributeLocation=_variableToVertexAttributeLocation;
+@property(retain, nonatomic) NSMutableArray *sortedLinks; // @synthesize sortedLinks=_sortedLinks;
+@property(readonly, nonatomic) TSCH3DVersion *version; // @synthesize version=_version;
 - (unsigned long long)vertexAttributeLocationForVariable:(id)arg1;
 - (id)usedAttributeNameForVariable:(id)arg1;
 - (id)usedUniformNameForVariable:(id)arg1;
@@ -186,7 +187,6 @@
 @property(readonly, nonatomic) unsigned long long attributeBindingsCount;
 - (id)existingLinkageOfVariable:(id)arg1;
 - (_Bool)isMetal;
-- (void)dealloc;
 - (id)initWithVersion:(id)arg1;
 - (id)init;
 

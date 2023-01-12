@@ -10,21 +10,23 @@
 #import <BusinessChatService/NSCopying-Protocol.h>
 #import <BusinessChatService/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSNumber, NSString;
+@class NSDate, NSNumber, NSString, NSURL;
 
+__attribute__((visibility("hidden")))
 @interface BCSConfigItem : NSObject <BCSExpiring, NSCopying, NSSecureCoding>
 {
     long long _buckets;
     long long _shards;
     NSDate *_expirationDate;
     NSNumber *_itemTTL;
+    NSURL *_filterMegaShardURL;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)keysRequestedForCloudKitFetch;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSURL *filterMegaShardURL; // @synthesize filterMegaShardURL=_filterMegaShardURL;
 @property(readonly, nonatomic) NSNumber *itemTTL; // @synthesize itemTTL=_itemTTL;
-@property(readonly, nonatomic) long long shards; // @synthesize shards=_shards;
 @property(readonly, nonatomic) long long buckets; // @synthesize buckets=_buckets;
 @property(readonly, copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 - (id)initWithCoder:(id)arg1;
@@ -32,7 +34,8 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic, getter=isExpired) _Bool expired;
 @property(readonly, copy) NSString *description;
-- (id)initWithBuckets:(long long)arg1 shards:(long long)arg2 expirationDate:(id)arg3 itemTTL:(id)arg4;
+@property(readonly, nonatomic) long long filterShardCount;
+- (id)initWithBuckets:(long long)arg1 shards:(long long)arg2 expirationDate:(id)arg3 filterMegaShardURL:(id)arg4 itemTTL:(id)arg5;
 - (id)initWithBuckets:(long long)arg1 shards:(long long)arg2 expirationDate:(id)arg3;
 - (id)_extractItemTTLFromConfigRecord:(id)arg1;
 - (id)initWithRecord:(id)arg1;

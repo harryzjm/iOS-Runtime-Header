@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_1484d7f9)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_1484d7f9)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSArray *word_phonemes;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithFlatbuffData:(id)arg1 root:(const struct TTSPhonemeSequence *)arg2 verify:(_Bool)arg3;

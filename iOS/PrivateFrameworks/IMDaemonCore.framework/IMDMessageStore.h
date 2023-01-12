@@ -32,9 +32,12 @@
 - (void)deleteMessagesFromTombStoneTableWithRecordIDs:(id)arg1;
 - (id)copyMessagesThatNeedToBeDeletedInCloudKitWithLimit:(unsigned long long)arg1;
 - (void)markAllMessagesAsNeedingCloudKitSync;
-- (id)messagesThatNeedSyncWithCloudKitWithLimit:(long long)arg1;
+- (id)_messagesPendingUpdateT2ToCloudKitWithLimit:(long long)arg1 attemptCount:(unsigned long long)arg2;
+- (id)messagesPendingUpdateT2ToCloudKitWithLimit:(long long)arg1;
+- (id)_messagesPendingUpdateT1ToCloudKitWithLimit:(long long)arg1 attemptCount:(unsigned long long)arg2;
+- (id)messagesPendingUpdateT1ToCloudKitWithLimit:(long long)arg1;
 - (id)_messagesThatNeedSyncWithCloudKitWithLimit:(long long)arg1 attemptCount:(unsigned long long)arg2;
-- (_Bool)_isUsingStingRay;
+- (id)messagesThatNeedSyncWithCloudKitWithLimit:(long long)arg1;
 - (_Bool)_itemClassShouldUpdateTransferForItem:(id)arg1;
 - (void)loadConsumedSessionPayloadsForItems:(id)arg1;
 - (id)replaceMessageAcknowledgmentsWithNewMessageAcknowledgment:(id)arg1 associatedMessageGUID:(id)arg2 sender:(id)arg3;
@@ -47,6 +50,7 @@
 - (void)updateStamp;
 - (void)_postDBUpdate;
 - (void)__postDBUpdate;
+- (void)postUrgentNotificationsForMessageGUIDs:(id)arg1;
 - (void)retractPostedNotificationsForMessageGUIDs:(id)arg1;
 - (void)setSuppressDatabaseUpdates:(_Bool)arg1;
 - (void)_suppressDBUpdateTimerFired;
@@ -82,6 +86,7 @@
 - (id)messageActionItemsForOriginalMessageGUID:(id)arg1;
 - (id)attachmentsWithRoomNames:(id)arg1 onServices:(id)arg2;
 - (id)attachmentsWithHandles:(id)arg1 onServices:(id)arg2;
+- (id)lastMessageForChatWithRowID:(long long)arg1;
 - (id)lastMessageWithRoomNames:(id)arg1 onServices:(id)arg2;
 - (id)unreadMessagesWithRoomNames:(id)arg1 onServices:(id)arg2 limit:(unsigned long long)arg3 fallbackGUID:(id)arg4;
 - (id)unreadMessagesWithHandles:(id)arg1 onServices:(id)arg2 limit:(unsigned long long)arg3 fallbackGUID:(id)arg4;
@@ -119,6 +124,9 @@
 - (id)storeMessage:(id)arg1 forceReplace:(_Bool)arg2 modifyError:(_Bool)arg3 modifyFlags:(_Bool)arg4 flagMask:(unsigned long long)arg5 updateMessageCache:(_Bool)arg6 calculateUnreadCount:(_Bool)arg7 reindexMessage:(_Bool)arg8;
 - (id)storeMessage:(id)arg1 forceReplace:(_Bool)arg2 modifyError:(_Bool)arg3 modifyFlags:(_Bool)arg4 flagMask:(unsigned long long)arg5 updateMessageCache:(_Bool)arg6 calculateUnreadCount:(_Bool)arg7;
 - (id)storeMessage:(id)arg1 forceReplace:(_Bool)arg2 modifyError:(_Bool)arg3 modifyFlags:(_Bool)arg4 flagMask:(unsigned long long)arg5;
+- (_Bool)updateSyndicatedMessageWithMessageItem:(id)arg1 newRange:(id)arg2;
+- (id)updateSyndicatedMessageWithMessageGUID:(id)arg1 newRange:(id)arg2;
+- (id)updateSyndicatedMessageWithSyndicationMessageAction:(id)arg1;
 - (id)storeItem:(id)arg1 forceReplace:(_Bool)arg2;
 - (void)updateFileTransfer:(id)arg1;
 - (void)_storeAttachmentsForMessage:(id)arg1;

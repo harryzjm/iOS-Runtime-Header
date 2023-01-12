@@ -4,26 +4,37 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <Vision/VNDetectedObjectObservationAccepting-Protocol.h>
 #import <Vision/VNFaceObservationAccepting-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface VNCreateTorsoprintRequest <VNFaceObservationAccepting>
+@interface VNCreateTorsoprintRequest <VNFaceObservationAccepting, VNDetectedObjectObservationAccepting>
 {
 }
 
-+ (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
-+ (const CDStruct_d47b9615 *)dependentRequestCompatability;
++ (const CDStruct_d47b9615 *)dependentRequestCompatibility;
++ (Class)configurationClass;
++ (id)descriptionForPrivateRevision:(unsigned long long)arg1;
++ (id)supportedPrivateRevisions;
++ (const CDStruct_7d93034e *)revisionAvailability;
 - (_Bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
+- (void)_determineHumanBodiesToProcessFrom:(id)arg1 outputHumanBodiesThatNeedNoProcessing:(id)arg2 tputHumanBodiesThatNeedTorsoprints:(id)arg3;
+- (_Bool)_processHumanBodyBasedInputInContext:(id)arg1 torsosThatNeedNoProcessing:(id)arg2 torsosThatNeedTorsoprints:(id)arg3 error:(id *)arg4;
 - (void)_determineFacesToProcessFrom:(id)arg1 outputFacesThatNeedNoProcessing:(id)arg2 outputFacesThatNeedAlignment:(id)arg3 outputFacesThatNeedTorsoprints:(id)arg4;
+- (_Bool)_processFaceBasedInputInContext:(id)arg1 torsosThatNeedNoProcessing:(id)arg2 torsosThatNeedTorsoprints:(id)arg3 error:(id *)arg4;
 - (long long)dependencyProcessingOrdinality;
 - (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
+- (_Bool)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
+- (_Bool)resultsAreAssignedWithOriginatingRequestSpecifier;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(copy, nonatomic) NSArray *inputDetectedObjectObservations;
 @property(copy, nonatomic) NSArray *inputFaceObservations;
+@property(readonly, copy) NSArray *results; // @dynamic results;
 @property(readonly) Class superclass;
 
 @end

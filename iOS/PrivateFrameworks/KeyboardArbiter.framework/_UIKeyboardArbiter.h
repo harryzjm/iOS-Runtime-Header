@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <KeyboardArbiter/NSXPCListenerDelegate-Protocol.h>
+#import <KeyboardArbiter/_UIKeyboardArbiterAdvisor-Protocol.h>
 
-@class BKSApplicationStateMonitor, FBSScene, FBSSceneIdentityToken, FBSSceneLayer, FBSWorkspace, NSMutableArray, NSString, NSXPCListener, _UIKeyboardArbiterHandle, _UIKeyboardChangedInformation;
-@protocol OS_dispatch_queue, _UIKeyboardArbiterLink;
+@class BKSApplicationStateMonitor, FBSScene, FBSSceneIdentityToken, FBSSceneLayer, FBSWorkspace, NSMutableArray, NSMutableOrderedSet, NSString, NSXPCListener, _UIKeyboardArbiterHandle, _UIKeyboardChangedInformation;
+@protocol OS_dispatch_queue, _UIKeyboardArbiterLink, _UIKeyboardArbiterOmniscientDelegate;
 
-@interface _UIKeyboardArbiter : NSObject <NSXPCListenerDelegate>
+@interface _UIKeyboardArbiter : NSObject <NSXPCListenerDelegate, _UIKeyboardArbiterAdvisor>
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSXPCListener *_listener;
@@ -22,7 +23,7 @@
     FBSSceneIdentityToken *_currentFocusSceneIdentity;
     _UIKeyboardArbiterHandle *_keyboardFocusHandle;
     _UIKeyboardArbiterHandle *_commandFocusHandle;
-    _UIKeyboardArbiterHandle *_savedHandle;
+    NSMutableOrderedSet *_recentlyActiveSceneIdentities;
     FBSWorkspace *_workspace;
     FBSScene *_scene;
     int _updateCounter;
@@ -31,19 +32,24 @@
     FBSSceneLayer *_sceneLayer;
     _UIKeyboardArbiterHandle *_disablingHandle;
     id <_UIKeyboardArbiterLink> _sceneLink;
+    id <_UIKeyboardArbiterOmniscientDelegate> _omniscientDelegate;
     _UIKeyboardChangedInformation *_lastUpdate;
-    _UIKeyboardChangedInformation *_savedUpdate;
 }
 
 - (void).cxx_destruct;
 @property(readonly) __weak _UIKeyboardArbiterHandle *commandFocusHandle; // @synthesize commandFocusHandle=_commandFocusHandle;
 @property(readonly) __weak _UIKeyboardArbiterHandle *activeHandle; // @synthesize activeHandle=_activeHandle;
-@property(retain, nonatomic) _UIKeyboardChangedInformation *savedUpdate; // @synthesize savedUpdate=_savedUpdate;
 @property(retain, nonatomic) _UIKeyboardChangedInformation *lastUpdate; // @synthesize lastUpdate=_lastUpdate;
+@property(nonatomic) __weak id <_UIKeyboardArbiterOmniscientDelegate> omniscientDelegate; // @synthesize omniscientDelegate=_omniscientDelegate;
 @property(readonly, nonatomic) id <_UIKeyboardArbiterLink> sceneLink; // @synthesize sceneLink=_sceneLink;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
+@property(readonly, nonatomic) int presentingKeyboardProcessIdentifier;
+- (void)reevaluateFocusedSceneIdentityForKeyboardFocusWithChangeInformation:(id)arg1;
+- (id)preferredSceneIdentityForKeyboardFocusWithChangeInformation:(id)arg1;
+- (id)_activeFocusHandle;
 - (void)signalEventSourceChanged:(long long)arg1 fromHandler:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setKeyboardTotalDisable:(_Bool)arg1 withFence:(id)arg2 fromHandler:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)handlerRequestedForcedClientSceneIdentityUpdate:(id)arg1;
 - (void)handlerRequestedFocus:(id)arg1 shouldStealKeyboard:(_Bool)arg2;
 - (void)transition:(id)arg1 eventStage:(unsigned long long)arg2 withInfo:(id)arg3 fromHandler:(id)arg4;
 - (void)processWithPID:(int)arg1 foreground:(_Bool)arg2 suspended:(_Bool)arg3;
@@ -53,22 +59,27 @@
 - (id)handlerForPID:(int)arg1;
 - (void)activateClients;
 - (void)reevaluateSceneClientSettings;
-- (void)updateSuppression:(_Bool)arg1 ofPIDs:(id)arg2;
+- (void)updateSuppression:(_Bool)arg1 ofPIDs:(id)arg2 active:(_Bool)arg3;
 - (void)setSuppressionCount:(int)arg1 ofPIDs:(id)arg2;
-- (void)updateSuppression:(_Bool)arg1 ofPID:(id)arg2;
+- (void)updateSuppression:(_Bool)arg1 ofPID:(id)arg2 active:(_Bool)arg3;
 - (void)updateKeyboardSceneSettings;
-- (id)remoteScene;
+- (id)remoteSceneIdentity;
 - (void)updateSceneClientSettings:(id)arg1;
 - (void)handleUnexpectedDeallocForHandler:(id)arg1;
 - (_Bool)deactivateHandle:(id)arg1;
 - (void)checkHostingState;
 - (_Bool)activateHandle:(id)arg1;
+@property(readonly) FBSSceneLayer *sceneLayer;
 - (void)newClientConnected:(id)arg1 withExpectedState:(id)arg2 onConnected:(CDUnknownBlockType)arg3;
 - (void)notifyHeightUpdated:(id)arg1;
 - (void)_findForHandle:(id)arg1 deepestHandleHandler:(CDUnknownBlockType)arg2;
 - (void)_findForHandle:(id)arg1 deepestHandleHandler:(CDUnknownBlockType)arg2 checklist:(id)arg3;
 - (void)completeKeyboardStatusChangedFromHandler:(id)arg1;
 - (void)updateKeyboardStatus:(id)arg1 fromHandler:(id)arg2;
+- (void)_trackRecentlyActiveArbiterHandle:(id)arg1;
+- (void)_cullRecentlyActiveSceneIdentities;
+- (id)hostBundleIdentifierForHandle:(id)arg1 hosts:(id)arg2;
+- (id)hostForHandle:(id)arg1 hosts:(id)arg2;
 - (void)scheduleWindowTimeout;
 - (void)reevaluateHardwareKeyboardClient;
 - (void)runOperations:(CDUnknownBlockType)arg1 onHandler:(id)arg2;

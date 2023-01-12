@@ -4,25 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMHome;
 @protocol WFHomeComposeViewControllerDelegate;
 
 @interface WFHomeComposeViewController
 {
-    HMHome *_home;
 }
 
 + (void)preloadActionRegistryIfNeeded;
 + (void)preloadHomeManager;
-- (void).cxx_destruct;
-@property(retain, nonatomic) HMHome *home; // @synthesize home=_home;
 - (unsigned long long)navigationUpdateBehavior;
 - (void)didTapDone;
 - (id)doneBarButtonItem;
 - (void)dismissForTutorial:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
-- (id)initWithWorkflow:(id)arg1;
+- (id)initWithWorkflow:(id)arg1 home:(id)arg2;
 - (id)initWithHomeWorkflow:(id)arg1 actionSetBuilder:(id)arg2;
 - (id)initWithHomeWorkflow:(id)arg1 actionSetBuilder:(id)arg2 home:(id)arg3;
 

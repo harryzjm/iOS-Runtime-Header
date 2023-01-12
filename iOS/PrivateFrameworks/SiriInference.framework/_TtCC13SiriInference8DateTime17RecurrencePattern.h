@@ -16,6 +16,7 @@
     MISSING_TYPE *recurrenceDateTimes;
     MISSING_TYPE *fromDateTime;
     MISSING_TYPE *toDateTime;
+    MISSING_TYPE *definedValue;
 }
 
 @end

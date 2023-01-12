@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
++ (id)_allowedItemPayloadClasses;
 - (void)firstPayloadFromExtensionItems:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)principalObject;
 - (void)invalidateContext;

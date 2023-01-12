@@ -11,7 +11,7 @@
 
 @interface MPSState : NSObject
 {
-    struct MPSStateResource *_resources;
+    void *_resources;
     unsigned long long _resourceCount;
     unsigned long long _readCount;
     NSString *_label;

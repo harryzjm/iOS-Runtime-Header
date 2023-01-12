@@ -10,6 +10,7 @@
 
 @class FCCKPRecordIdentifier, FCCKPRequestedFields, NSString;
 
+__attribute__((visibility("hidden")))
 @interface FCCKPRecordRetrieveRequest : PBRequest <NSCopying>
 {
     NSString *_clientVersionETag;
@@ -19,26 +20,16 @@
 }
 
 + (id)options;
-@property(retain, nonatomic) NSString *clientVersionETag; // @synthesize clientVersionETag=_clientVersionETag;
-@property(retain, nonatomic) NSString *versionETag; // @synthesize versionETag=_versionETag;
-@property(retain, nonatomic) FCCKPRequestedFields *requestedFields; // @synthesize requestedFields=_requestedFields;
-@property(retain, nonatomic) FCCKPRecordIdentifier *recordIdentifier; // @synthesize recordIdentifier=_recordIdentifier;
-- (void)mergeFrom:(id)arg1;
+- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (Class)responseClass;
 - (unsigned int)requestTypeCode;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasClientVersionETag;
-@property(readonly, nonatomic) _Bool hasVersionETag;
-@property(readonly, nonatomic) _Bool hasRequestedFields;
-@property(readonly, nonatomic) _Bool hasRecordIdentifier;
-- (void)dealloc;
 
 @end
 

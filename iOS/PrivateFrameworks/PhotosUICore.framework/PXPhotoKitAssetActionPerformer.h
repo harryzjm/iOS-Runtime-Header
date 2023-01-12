@@ -5,6 +5,7 @@
 //
 
 @class NSArray, NSDictionary, NSString, PHPerson, PXPhotoKitAssetsDataSourceManager, PXPhotoKitImportStatusManager, PXPhotosDataSource, PXSectionedObjectReference;
+@protocol PXRadarConfigurationProvider;
 
 @interface PXPhotoKitAssetActionPerformer
 {
@@ -16,19 +17,25 @@
     PXSectionedObjectReference *_objectReference;
     PXPhotoKitImportStatusManager *_importStatusManager;
     NSString *_importSessionID;
+    unsigned long long _presentationSource;
+    id <PXRadarConfigurationProvider> _radarConfigurationProvider;
 }
 
++ (id)systemImageNameForActionManager:(id)arg1;
 + (id)localizedTitleForUseCase:(unsigned long long)arg1 actionManager:(id)arg2;
 + (id)createActivityWithActionManager:(id)arg1;
 + (id)createAlertActionWithTitle:(id)arg1 handler:(CDUnknownBlockType)arg2;
++ (id)createStandardActionWithTitle:(id)arg1 image:(id)arg2 handler:(CDUnknownBlockType)arg3;
 + (id)createPreviewActionWithTitle:(id)arg1 image:(id)arg2 handler:(CDUnknownBlockType)arg3;
 + (id)createBarButtonItemWithTarget:(id)arg1 action:(SEL)arg2 actionManager:(id)arg3;
 + (_Bool)canPerformOnAsset:(id)arg1 inAssetCollection:(id)arg2 person:(id)arg3;
-+ (_Bool)canPerformOnImplicitSelection;
++ (_Bool)canPerformOnImplicitSelectionInContainerCollection:(id)arg1;
 + (_Bool)canPerformOnSubsetOfSelection;
 + (_Bool)canPerformWithSelectionSnapshot:(id)arg1 person:(id)arg2;
 + (_Bool)canPerformWithActionManager:(id)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <PXRadarConfigurationProvider> radarConfigurationProvider; // @synthesize radarConfigurationProvider=_radarConfigurationProvider;
+@property(nonatomic) unsigned long long presentationSource; // @synthesize presentationSource=_presentationSource;
 @property(retain, nonatomic) NSString *importSessionID; // @synthesize importSessionID=_importSessionID;
 @property(retain, nonatomic) PXPhotoKitImportStatusManager *importStatusManager; // @synthesize importStatusManager=_importStatusManager;
 @property(nonatomic) _Bool shouldSkipUserConfirmation; // @synthesize shouldSkipUserConfirmation=_shouldSkipUserConfirmation;

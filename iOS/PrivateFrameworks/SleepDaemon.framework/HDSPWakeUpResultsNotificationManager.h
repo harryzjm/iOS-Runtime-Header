@@ -64,7 +64,7 @@ __attribute__((visibility("hidden")))
 - (id)upcomingEventsDueAfterDate:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *providerIdentifier;
 - (void)sleepScheduleStateDidChange:(unsigned long long)arg1 previousState:(unsigned long long)arg2 reason:(unsigned long long)arg3;
-- (void)sleepScheduleModelManager:(id)arg1 source:(id)arg2 didUpdateSleepScheduleModel:(id)arg3;
+- (void)sleepScheduleModelManager:(id)arg1 didUpdateSleepScheduleModel:(id)arg2;
 - (void)significantTimeChangeDetected:(id)arg1;
 - (id)notificationListener:(id)arg1 didReceiveNotificationWithName:(id)arg2;
 - (void)environmentDidBecomeReady:(id)arg1;

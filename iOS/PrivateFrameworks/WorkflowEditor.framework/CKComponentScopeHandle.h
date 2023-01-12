@@ -34,7 +34,7 @@
 - (void)dealloc;
 @property(readonly, nonatomic) CKComponentController *controller;
 - (id)newHandleToBeReacquiredDueToScopeCollision;
-- (id)newHandleWithStateUpdates:(const unordered_multimap_8347d0c8 *)arg1 componentScopeRoot:(id)arg2;
+- (id)newHandleWithStateUpdates:(const void *)arg1 componentScopeRoot:(id)arg2;
 - (id)initWithListener:(id)arg1 globalIdentifier:(int)arg2 rootIdentifier:(int)arg3 componentClass:(Class)arg4 state:(id)arg5 controller:(id)arg6;
 - (id)initWithListener:(id)arg1 rootIdentifier:(int)arg2 componentClass:(Class)arg3 initialStateCreator:(CDUnknownBlockType)arg4;
 

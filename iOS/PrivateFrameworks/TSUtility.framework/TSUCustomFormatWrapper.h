@@ -8,15 +8,15 @@
 
 @interface TSUCustomFormatWrapper : NSObject
 {
-    struct TSUCustomFormat *mCustomFormat;
+    void *mCustomFormat;
 }
 
 - (const CDStruct_8acff13f *)conditionalFormatDataForValue:(double)arg1;
 - (const CDStruct_8acff13f *)defaultFormatData;
 - (int)formatType;
 - (id)formatName;
-- (const struct TSUCustomFormat *)pointerToTSUCustomFormat;
-- (id)initWithCustomFormat:(struct TSUCustomFormat *)arg1;
+- (const void *)pointerToTSUCustomFormat;
+- (id)initWithCustomFormat:(void *)arg1;
 
 @end
 

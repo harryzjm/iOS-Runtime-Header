@@ -27,13 +27,6 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) __weak id <FCTagsFetchOperationDelegate> delegate; // @synthesize delegate=_delegate;
-@property(retain, nonatomic) FCAssetManager *assetManager; // @synthesize assetManager=_assetManager;
-@property(retain, nonatomic) FCTagRecordSource *tagRecordSource; // @synthesize tagRecordSource=_tagRecordSource;
-@property(retain, nonatomic) FCHeldRecords *heldChildTagRecords; // @synthesize heldChildTagRecords=_heldChildTagRecords;
-@property(retain, nonatomic) FCHeldRecords *heldParentTagRecords; // @synthesize heldParentTagRecords=_heldParentTagRecords;
-@property(retain, nonatomic) FCHeldRecords *heldTagRecords; // @synthesize heldTagRecords=_heldTagRecords;
-@property(copy, nonatomic) NSArray *tagIDs; // @synthesize tagIDs=_tagIDs;
 @property double childrenMaximumCachedAge; // @synthesize childrenMaximumCachedAge=_childrenMaximumCachedAge;
 @property unsigned long long childrenCachePolicy; // @synthesize childrenCachePolicy=_childrenCachePolicy;
 @property _Bool overrideChildrenCachePolicy; // @synthesize overrideChildrenCachePolicy=_overrideChildrenCachePolicy;

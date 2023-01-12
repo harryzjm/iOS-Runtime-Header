@@ -40,13 +40,13 @@
 - (id)initWithStarting:(_Bool)arg1 bundleId:(id)arg2 absoluteTimeStamp:(double)arg3 launchReason:(id)arg4 launchType:(unsigned long long)arg5;
 
 // Remaining properties
-@property(nonatomic) double absoluteTimestamp;
-@property(copy, nonatomic) NSString *bundleID;
-@property(copy, nonatomic) NSDateInterval *dateInterval;
+@property(nonatomic) double absoluteTimestamp; // @dynamic absoluteTimestamp;
+@property(copy, nonatomic) NSString *bundleID; // @dynamic bundleID;
+@property(copy, nonatomic) NSDateInterval *dateInterval; // @dynamic dateInterval;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(nonatomic) double duration;
-@property(nonatomic, getter=isStarting) _Bool starting;
+@property(nonatomic) double duration; // @dynamic duration;
+@property(nonatomic, getter=isStarting) _Bool starting; // @dynamic starting;
 @property(readonly) Class superclass;
 
 @end

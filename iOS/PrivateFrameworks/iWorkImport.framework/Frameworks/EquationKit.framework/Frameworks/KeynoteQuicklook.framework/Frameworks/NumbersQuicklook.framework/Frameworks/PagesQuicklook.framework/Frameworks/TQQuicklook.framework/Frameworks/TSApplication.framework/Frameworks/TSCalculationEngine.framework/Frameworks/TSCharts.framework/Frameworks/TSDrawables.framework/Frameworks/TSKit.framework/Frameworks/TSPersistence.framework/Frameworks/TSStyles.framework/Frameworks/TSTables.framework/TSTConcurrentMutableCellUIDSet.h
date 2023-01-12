@@ -10,14 +10,14 @@
 
 @interface TSTConcurrentMutableCellUIDSet : NSObject
 {
-    struct unordered_map<TSU::UUIDData<TSP::UUIDData>, TSUMutableUUIDSet *, std::__1::hash<TSUUUID>, std::__1::equal_to<TSU::UUIDData<TSP::UUIDData>>, std::__1::allocator<std::__1::pair<const TSU::UUIDData<TSP::UUIDData>, TSUMutableUUIDSet *>>> _rowUIDToColumnUIDSetMap;
+    struct unordered_map<TSKUIDStruct, TSCEMutableUIDSet *, std::hash<TSKUIDStruct>, std::equal_to<TSKUIDStruct>, std::allocator<std::pair<const TSKUIDStruct, TSCEMutableUIDSet *>>> _rowUIDToColumnUIDSetMap;
     NSObject<OS_dispatch_semaphore> *_sem;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)reapAccumulatedCellRegionWithTable:(id)arg1;
-- (void)addCellUID:(const struct TSTCellUID *)arg1;
+- (void)addCellUID:(const struct TSKUIDStructCoord *)arg1;
 - (id)init;
 
 @end

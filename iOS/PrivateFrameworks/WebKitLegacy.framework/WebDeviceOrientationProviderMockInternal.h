@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface WebDeviceOrientationProviderMockInternal : NSObject
 {
-    struct unique_ptr<WebCore::DeviceOrientationClientMock, std::__1::default_delete<WebCore::DeviceOrientationClientMock>> m_core;
+    struct unique_ptr<WebCore::DeviceOrientationClientMock, std::default_delete<WebCore::DeviceOrientationClientMock>> m_core;
 }
 
 - (id).cxx_construct;

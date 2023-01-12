@@ -6,7 +6,7 @@
 
 #import <PhotoLibraryServices/PLAssetsdSyncServiceProtocol-Protocol.h>
 
-@class NSObject, NSString, PLFileSystemAssetImporter, PLLibraryServicesManager, PLXPCTransaction;
+@class NSObject, NSString, PLLibraryServicesManager, PLXPCTransaction;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
 @interface PLAssetsdSyncService <PLAssetsdSyncServiceProtocol>
@@ -14,19 +14,18 @@
     NSObject<OS_dispatch_queue> *_isolationQueue;
     NSObject<OS_dispatch_group> *_updateGroup;
     PLXPCTransaction *_libraryTransaction;
-    PLFileSystemAssetImporter *_importer;
     PLLibraryServicesManager *_libraryServicesManager;
     _Bool _didFinalizeRestore;
 }
 
 - (void).cxx_destruct;
-- (void)_addAsset:(id)arg1 toAlbumsForUUID:(id)arg2;
+- (void)_addAsset:(id)arg1 toAlbumsForUUID:(id)arg2 inLibrary:(id)arg3;
 - (id)_readRestoreAlbumMetadataForAlbum:(id)arg1;
 - (id)_fileRestoreExclusionPaths;
 - (void)_cleanupAlbumMetadataAsideFilesAfterRestore;
 - (void)_recoverAsideFiles:(id)arg1;
 - (void)_linkPathsAside:(id)arg1;
-- (void)_updatePendingCountForMissingAsset:(id)arg1;
+- (void)_updatePendingCountForMissingAsset:(id)arg1 inLibrary:(id)arg2;
 - (void)_updateRestoredAssetWithUUID:(id)arg1 paths:(id)arg2 fixAddedDate:(_Bool)arg3;
 - (void)_finalizeOTARestoreEndedAndRecreateAlbums:(_Bool)arg1;
 - (void)finalizeOTARestoreRecreatingAlbums:(_Bool)arg1;

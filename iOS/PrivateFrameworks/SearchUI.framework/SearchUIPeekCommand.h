@@ -4,15 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIViewController;
+@class SearchUIActionProvider, UIViewController;
 
 @interface SearchUIPeekCommand
 {
     UIViewController *_viewController;
+    SearchUIActionProvider *_actions;
 }
 
 + (id)urlMatchingScheme:(id)arg1 inPunchout:(id)arg2;
++ (_Bool)supportsRowModel:(id)arg1 environment:(id)arg2;
 - (void).cxx_destruct;
+@property(retain, nonatomic) SearchUIActionProvider *actions; // @synthesize actions=_actions;
 @property(retain, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
 - (CDUnknownBlockType)actionProvider;
 - (id)generateViewController;

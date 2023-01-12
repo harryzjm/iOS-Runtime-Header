@@ -6,13 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class AVMediaDataRequester, AVScheduledAudioParameters, AVWeakReference, NSError, NSString;
+@class AVMediaDataRequester, AVOutputContext, AVScheduledAudioParameters, AVWeakReference, NSError, NSString;
 
 __attribute__((visibility("hidden")))
 @interface AVSampleBufferAudioRendererInternal : NSObject
 {
     NSString *audioOutputDeviceUniqueID;
     NSString *audioTimePitchAlgorithm;
+    unsigned long long allowedAudioSpatializationFormats;
+    struct opaqueMTAudioProcessingTap *audioProcessingTap;
     struct {
         struct OpaqueFigSimpleMutex *mutex;
         AVMediaDataRequester *requester;
@@ -27,6 +29,7 @@ __attribute__((visibility("hidden")))
     long long status;
     NSError *error;
     struct OpaqueFigSampleBufferAudioRenderer *figAudioRenderer;
+    AVOutputContext *outputContext;
 }
 
 @end

@@ -8,7 +8,7 @@
 
 @protocol RLMFastEnumerable
 @property(readonly, nonatomic) unsigned long long count;
-@property(readonly, nonatomic) struct RLMClassInfo *objectInfo;
+@property(readonly, nonatomic) void *objectInfo;
 @property(readonly, nonatomic) RLMRealm *realm;
 - (RLMFastEnumerator *)fastEnumerator;
 - (struct TableView)tableView;

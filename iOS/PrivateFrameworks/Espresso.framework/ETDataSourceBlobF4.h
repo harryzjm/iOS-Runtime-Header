@@ -10,7 +10,7 @@
 
 @interface ETDataSourceBlobF4 : NSObject <ETDataSource>
 {
-    struct map<std::__1::basic_string<char>, std::__1::shared_ptr<Espresso::blob<float, 4>>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::shared_ptr<Espresso::blob<float, 4>>>>> blobs;
+    struct map<std::string, std::shared_ptr<Espresso::blob<float, 4>>, std::less<std::string>, std::allocator<std::pair<const std::string, std::shared_ptr<Espresso::blob<float, 4>>>>> blobs;
 }
 
 - (id).cxx_construct;

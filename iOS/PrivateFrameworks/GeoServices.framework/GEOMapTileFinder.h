@@ -31,9 +31,9 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType tileHandler; // @synthesize tileHandler=_tileHandler;
 - (struct _GEOTileKey)_adjacentTileKey:(const struct _GEOTileKey *)arg1 dirX:(int)arg2 dirY:(int)arg3;
 - (void)findTiles:(CDUnknownBlockType)arg1;
-- (void)findTilesAdjacentToTile:(const struct _GEOTileKey *)arg1 containingPoint:(const Matrix_8746f91e *)arg2 tileHandler:(CDUnknownBlockType)arg3;
+- (void)findTilesAdjacentToTile:(const struct _GEOTileKey *)arg1 containingPoint:(const void *)arg2 tileHandler:(CDUnknownBlockType)arg3;
 - (void)findTiles:(CDUnknownBlockType)arg1 excludingKey:(const struct _GEOTileKey *)arg2;
-- (void)_fetchDataForKeys:(const unordered_set_684af1c2 *)arg1;
+- (void)_fetchDataForKeys:(const void *)arg1;
 @property(readonly, nonatomic) GEOMapAccess *map;
 - (void)cancel;
 - (void)dealloc;

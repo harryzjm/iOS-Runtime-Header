@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMapTable, NSTimer;
+@class NSArray, NSMapTable, NSString, NSTimer, UIImage;
 @protocol _SFBarManagerDelegate;
 
 @interface _SFBarManager : NSObject
@@ -18,36 +18,49 @@
     double _lastCoalescedUpdatesTime;
     CDUnknownBlockType _coalescedUpdatesBlock;
     NSArray *_itemConfigurationMap;
-    _Bool _bookmarksItemSelected;
+    UIImage *_customActivityImage;
+    NSString *_customActivityAccessibilityLabel;
     id <_SFBarManagerDelegate> _delegate;
+    long long _contentMode;
+    long long _state;
     double _downloadsItemProgress;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) double downloadsItemProgress; // @synthesize downloadsItemProgress=_downloadsItemProgress;
-@property(nonatomic, getter=isBookmarksItemSelected) _Bool bookmarksItemSelected; // @synthesize bookmarksItemSelected=_bookmarksItemSelected;
+@property(nonatomic) long long state; // @synthesize state=_state;
+@property(nonatomic) long long contentMode; // @synthesize contentMode=_contentMode;
 @property(nonatomic) __weak id <_SFBarManagerDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)test_registrationForBar:(id)arg1;
 - (unsigned long long)test_numberOfRegistrations;
-- (void)_updateRegistration:(id)arg1;
+- (void)_updateRegistrationWithToken:(id)arg1 animated:(_Bool)arg2;
+- (void)_updateAllRegistrationsAnimated:(_Bool)arg1;
 - (void)_updateAllRegistrations;
 - (void)barRegistration:(id)arg1 didReceiveTouchDownForBarItem:(long long)arg2;
 - (void)barRegistration:(id)arg1 didReceiveLongPressForBarItem:(long long)arg2;
 - (_Bool)barRegistration:(id)arg1 canHandleLongPressForBarItem:(long long)arg2;
 - (void)barRegistration:(id)arg1 didReceiveTapForBarItem:(long long)arg2;
 - (struct CGRect)frameForBarItem:(long long)arg1 inCoordinateSpace:(id)arg2;
+- (void)registerUnifiedBar:(id)arg1 withPersona:(unsigned long long)arg2;
+- (void)registerBar:(id)arg1 withToken:(id)arg2;
 - (void)registerToolbar:(id)arg1 withLayout:(long long)arg2 persona:(unsigned long long)arg3;
 - (void)_invalidateCoalescedUpdatesTimer;
-- (void)_performCoalescedUpdatesNow;
+- (void)performCoalescedUpdatesNowAnimated:(_Bool)arg1;
+- (void)performCoalescedUpdatesAnimated:(_Bool)arg1 updates:(CDUnknownBlockType)arg2;
 - (void)performCoalescedUpdates:(CDUnknownBlockType)arg1;
 - (void)setDownloadsItemNeedsLayout;
 - (void)pulseDownloadsItem;
+- (void)setBadge:(long long)arg1 forBarItem:(long long)arg2;
+- (void)setBarItem:(long long)arg1 title:(id)arg2;
 - (void)setBarItem:(long long)arg1 menuProvider:(CDUnknownBlockType)arg2;
 - (void)visibleBarItemsNeedUpdate;
+- (void)setBarItem:(long long)arg1 selected:(_Bool)arg2;
+- (_Bool)isBarItemSelected:(long long)arg1;
 - (void)setBarItem:(long long)arg1 hidden:(_Bool)arg2;
 - (_Bool)isBarItemHidden:(long long)arg1;
 - (void)setBarItem:(long long)arg1 enabled:(_Bool)arg2;
 - (_Bool)isBarItemEnabled:(long long)arg1;
+- (void)setCustomActivityImage:(id)arg1 accessibilityLabel:(id)arg2;
 - (id)init;
 
 @end

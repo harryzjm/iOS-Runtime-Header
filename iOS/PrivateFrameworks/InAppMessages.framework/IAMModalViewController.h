@@ -28,7 +28,7 @@
 @property(copy, nonatomic) CDUnknownBlockType viewControllerWillDismissBlock; // @synthesize viewControllerWillDismissBlock=_viewControllerWillDismissBlock;
 @property(nonatomic) __weak id <IAMViewControllerMetricsDelegate> metricsDelegate; // @synthesize metricsDelegate=_metricsDelegate;
 @property(retain, nonatomic) UIViewController *contentViewController; // @synthesize contentViewController=_contentViewController;
-- (void)presentationControllerDidDismiss:(id)arg1;
+- (void)presentationControllerWillDismiss:(id)arg1;
 - (id)_presentationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (long long)preferredStatusBarStyle;
 - (_Bool)shouldAutorotate;

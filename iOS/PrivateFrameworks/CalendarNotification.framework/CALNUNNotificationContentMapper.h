@@ -24,6 +24,8 @@
 + (void)_setSoundForUNMutableNotificationContent:(id)arg1 usingCALNNotificationContent:(id)arg2;
 + (void)_setPeopleIdentifiersForUNMutableNotificationContent:(id)arg1 usingCALNNotificationContent:(id)arg2;
 + (void)_setBodyForUNMutableNotificationContent:(id)arg1 usingCALNNotificationContent:(id)arg2;
++ (void)_setInterruptionLevelForUNMutableNotificationContent:(id)arg1 usingCALNNotificationContent:(id)arg2;
++ (void)_setInterruptionLevelForCALNMutableNotificationContent:(id)arg1 usingUNNotificationContent:(id)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) CALNUNNotificationIconMapper *notificationIconMapper; // @synthesize notificationIconMapper=_notificationIconMapper;
 - (id)_iconIdentifierFromUNNotificationContent:(id)arg1;

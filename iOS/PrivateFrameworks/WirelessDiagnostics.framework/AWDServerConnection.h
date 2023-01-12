@@ -8,7 +8,7 @@
 
 @interface AWDServerConnection : NSObject
 {
-    struct AWDServerConnection *fServerConnection;
+    void *fServerConnection;
 }
 
 - (void)flushToQueue:(struct dispatch_queue_s *)arg1 block:(CDUnknownBlockType)arg2;

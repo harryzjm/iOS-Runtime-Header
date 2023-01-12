@@ -11,16 +11,22 @@
     void *_shmem;
     unsigned long long _capacity;
     unsigned long long _count;
+    unsigned int _localId;
 }
 
 + (id)groupWithCapacity:(unsigned long long)arg1;
+- (void)_setLocalContextId:(unsigned int)arg1;
+- (void *)_renderShmem;
+- (void)flushWithTransaction;
 - (void)flush;
+- (void)flushLocally;
 @property(readonly) unsigned long long count;
 @property(readonly) unsigned long long capacity;
-- (struct Shmem *)shmem;
+- (void *)shmem;
 - (void)markWritten:(unsigned long long)arg1;
 - (void)resetBitMask;
 - (unsigned long long)nextSlot;
+@property(nonatomic) _Bool updatesAsynchronously;
 - (void)dealloc;
 - (id)initWithCapacity:(unsigned long long)arg1;
 

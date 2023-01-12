@@ -20,6 +20,7 @@
 - (_Bool)isValid;
 - (void)encodeToXPCDictionary:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1 error:(id *)arg2;
+- (id)initWithTraits:(id)arg1 auditToken:(id)arg2 throttleToken:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -17,9 +17,11 @@
 + (id)indexableKeyPathsWithPrefix:(id)arg1;
 - (id)hk_dataForAllUUIDs;
 - (_Bool)hk_enumerateUUIDsWithError:(id *)arg1 block:(CDUnknownBlockType)arg2;
+- (id)hk_splitWithBucketCount:(long long)arg1;
 - (id)hk_mutableSubarrayWithRange:(struct _NSRange)arg1;
 - (_Bool)_permutationsWithCount:(long long)arg1 permutation:(id)arg2 depth:(long long)arg3 block:(CDUnknownBlockType)arg4;
 - (void)hk_enumeratePermutationsOfSubsetsOfLength:(long long)arg1 block:(CDUnknownBlockType)arg2;
+- (id)hk_shuffled;
 - (id)hk_reversed;
 - (void)hk_enumeratePermutationsWithBlock:(CDUnknownBlockType)arg1;
 - (id)hk_mapToSet:(CDUnknownBlockType)arg1;

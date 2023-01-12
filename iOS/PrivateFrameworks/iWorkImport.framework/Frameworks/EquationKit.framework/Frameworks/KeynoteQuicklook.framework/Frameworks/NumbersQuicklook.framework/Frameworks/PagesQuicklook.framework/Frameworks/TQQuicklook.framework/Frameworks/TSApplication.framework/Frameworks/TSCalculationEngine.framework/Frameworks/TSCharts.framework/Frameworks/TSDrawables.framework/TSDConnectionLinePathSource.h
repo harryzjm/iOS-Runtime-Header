@@ -31,8 +31,8 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)bend;
 - (id)initWithBezierPath:(id)arg1;
-- (void)saveToArchive:(struct PathSourceArchive *)arg1;
-- (id)initWithArchive:(const struct PathSourceArchive *)arg1;
+- (void)saveToArchive:(void *)arg1;
+- (id)initWithArchive:(const void *)arg1;
 
 @end
 

@@ -43,6 +43,7 @@
 - (id)p_brushStrokeFromStroke:(id)arg1;
 - (_Bool)p_hasFreehandDrawingBrushStroke;
 - (_Bool)p_isNormalShapeInsideFreehandDrawing;
+- (unsigned long long)p_bitmapContextOptionsForContextDestinedToDrawIntoCALayerContextForDrawingStroke:(id)arg1;
 - (unsigned long long)p_bitmapContextOptionsForDrawingStroke:(id)arg1;
 - (_Bool)p_shouldDrawStrokeWide:(id)arg1;
 - (void)p_drawLineEndForHead:(_Bool)arg1 withDelta:(struct CGPoint)arg2 andStroke:(id)arg3 inContext:(struct CGContext *)arg4 useFastDrawing:(_Bool)arg5;

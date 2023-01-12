@@ -4,21 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PCPersistentTimer;
+@class NSCalendar, NSDate;
 @protocol DNDSScheduleLifetimeMonitorDataSource;
 
 @interface DNDSScheduleLifetimeMonitor
 {
-    PCPersistentTimer *_lifetimeTimer;
+    NSDate *_lifetimeTimerFireDate;
+    NSCalendar *_calendar;
 }
 
 + (Class)lifetimeClass;
 - (void).cxx_destruct;
-- (void)_timerFired:(id)arg1;
+@property(retain, nonatomic) NSCalendar *calendar; // @synthesize calendar=_calendar;
 - (id)updateForModeAssertions:(id)arg1 date:(id)arg2;
 - (id)_activeDateIntervalForScheduleLifetime:(id)arg1 assertionStartDate:(id)arg2 date:(id)arg3 scheduleSettings:(id)arg4 calendar:(id)arg5 ignoreMatchScheduleStartDate:(_Bool)arg6;
-- (id)nextActiveDateIntervalForScheduleLifetime:(id)arg1 assertionStartDate:(id)arg2 date:(id)arg3;
-- (id)activeDateIntervalForScheduleLifetime:(id)arg1 assertionStartDate:(id)arg2 date:(id)arg3;
+- (id)_activeDateIntervalForScheduleLifetime:(id)arg1 assertion:(id)arg2 date:(id)arg3 ignoreMatchScheduleStartDate:(_Bool)arg4;
+- (id)nextActiveDateIntervalForScheduleLifetime:(id)arg1 assertion:(id)arg2 date:(id)arg3;
+- (id)activeDateIntervalForScheduleLifetime:(id)arg1 assertion:(id)arg2 date:(id)arg3;
+- (void)setDelegate:(id)arg1;
 
 // Remaining properties
 @property(nonatomic) __weak id <DNDSScheduleLifetimeMonitorDataSource> dataSource; // @dynamic dataSource;

@@ -33,7 +33,7 @@
 - (id)_buildMonitoringSampleType;
 - (id)contextItemForLastUpdate;
 - (_Bool)_obsoleteDateRange:(id)arg1;
-- (void)updateContextItemForDateInterval:(id)arg1 timeScope:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)updateContextItemForDateInterval:(id)arg1 overlayController:(id)arg2 timeScope:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)overlayDisplayTypeForTimeScope:(long long)arg1;
 - (id)sampleTypeForDateRangeUpdates;
 - (id)valueContextString:(id)arg1 applicationItems:(id)arg2 representativeDisplayType:(id)arg3;

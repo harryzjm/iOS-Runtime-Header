@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class AXMADSREnvelope, AXMAudioDataSource, AXMAudioDataSourceMixer, AXMLiveContinuousTone, NSPointerArray, NSTimer;
+@class AXMAudioDataSource, AXMAudioDataSourceMixer, AXMChartDescriptor, AXMDataSeriesDescriptor, AXMLiveContinuousTone, AXMSynthPatch, NSMutableOrderedSet, NSPointerArray, NSTimer;
 
 @interface AXMDataSonifier : NSObject
 {
     struct OpaqueAudioComponentInstance *_audioUnit;
-    CDStruct_79de6ffd _xData;
-    CDStruct_79de6ffd _yData;
     _Bool _usesBinauralPanning;
     _Bool _playing;
     _Bool _paused;
@@ -24,10 +22,11 @@
     double _minimumPlaybackFrequency;
     double _maximumPlaybackFrequency;
     double _playbackDuration;
-    AXMADSREnvelope *_ampEnvelope;
-    unsigned long long _toneWaveform;
     CDUnknownBlockType _function;
     AXMLiveContinuousTone *_continuousScrubbingTone;
+    AXMSynthPatch *_patch;
+    AXMChartDescriptor *_currentChartDescriptor;
+    long long _currentSeriesIndex;
     NSTimer *_playbackObserverUpdateTimer;
     AXMAudioDataSourceMixer *_playbackMixerDataSource;
     AXMAudioDataSource *_playbackChartDataAudioDataSource;
@@ -42,18 +41,28 @@
     AXMLiveContinuousTone *_trendlineScrubbingTone;
     AXMLiveContinuousTone *_liveContinuousDataTone;
     CDUnknownBlockType _trendlineFunction;
-    vector_12bd641b *_scrubbingDiscreteDataRenderingContext;
-    vector_12bd641b *_scrubbingPlaybackCallbackRenderingContext;
-    vector_12bd641b *_liveTonePlaybackCallbackRenderingContext;
+    void *_scrubbingDiscreteDataRenderingContext;
+    void *_scrubbingPlaybackCallbackRenderingContext;
+    void *_liveTonePlaybackCallbackRenderingContext;
     unsigned long long _playbackSampleCount;
+    NSMutableOrderedSet *_dataCategories;
+    double _minimumDiscreteToneLength;
+    double _maximumDiscreteToneLength;
+    double _minimumToneVolume;
+    double _maximumToneVolume;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(nonatomic) double maximumToneVolume; // @synthesize maximumToneVolume=_maximumToneVolume;
+@property(nonatomic) double minimumToneVolume; // @synthesize minimumToneVolume=_minimumToneVolume;
+@property(nonatomic) double maximumDiscreteToneLength; // @synthesize maximumDiscreteToneLength=_maximumDiscreteToneLength;
+@property(nonatomic) double minimumDiscreteToneLength; // @synthesize minimumDiscreteToneLength=_minimumDiscreteToneLength;
+@property(readonly, nonatomic) NSMutableOrderedSet *dataCategories; // @synthesize dataCategories=_dataCategories;
 @property(readonly, nonatomic) unsigned long long playbackSampleCount; // @synthesize playbackSampleCount=_playbackSampleCount;
-@property(readonly, nonatomic) vector_12bd641b *liveTonePlaybackCallbackRenderingContext; // @synthesize liveTonePlaybackCallbackRenderingContext=_liveTonePlaybackCallbackRenderingContext;
-@property(readonly, nonatomic) vector_12bd641b *scrubbingPlaybackCallbackRenderingContext; // @synthesize scrubbingPlaybackCallbackRenderingContext=_scrubbingPlaybackCallbackRenderingContext;
-@property(readonly, nonatomic) vector_12bd641b *scrubbingDiscreteDataRenderingContext; // @synthesize scrubbingDiscreteDataRenderingContext=_scrubbingDiscreteDataRenderingContext;
+@property(readonly, nonatomic) void *liveTonePlaybackCallbackRenderingContext; // @synthesize liveTonePlaybackCallbackRenderingContext=_liveTonePlaybackCallbackRenderingContext;
+@property(readonly, nonatomic) void *scrubbingPlaybackCallbackRenderingContext; // @synthesize scrubbingPlaybackCallbackRenderingContext=_scrubbingPlaybackCallbackRenderingContext;
+@property(readonly, nonatomic) void *scrubbingDiscreteDataRenderingContext; // @synthesize scrubbingDiscreteDataRenderingContext=_scrubbingDiscreteDataRenderingContext;
 @property(copy, nonatomic) CDUnknownBlockType trendlineFunction; // @synthesize trendlineFunction=_trendlineFunction;
 @property(readonly, nonatomic) AXMLiveContinuousTone *liveContinuousDataTone; // @synthesize liveContinuousDataTone=_liveContinuousDataTone;
 @property(readonly, nonatomic) AXMLiveContinuousTone *trendlineScrubbingTone; // @synthesize trendlineScrubbingTone=_trendlineScrubbingTone;
@@ -68,6 +77,9 @@
 @property(retain, nonatomic) AXMAudioDataSource *playbackChartDataAudioDataSource; // @synthesize playbackChartDataAudioDataSource=_playbackChartDataAudioDataSource;
 @property(retain, nonatomic) AXMAudioDataSourceMixer *playbackMixerDataSource; // @synthesize playbackMixerDataSource=_playbackMixerDataSource;
 @property(retain, nonatomic) NSTimer *playbackObserverUpdateTimer; // @synthesize playbackObserverUpdateTimer=_playbackObserverUpdateTimer;
+@property(nonatomic) long long currentSeriesIndex; // @synthesize currentSeriesIndex=_currentSeriesIndex;
+@property(retain, nonatomic) AXMChartDescriptor *currentChartDescriptor; // @synthesize currentChartDescriptor=_currentChartDescriptor;
+@property(retain, nonatomic) AXMSynthPatch *patch; // @synthesize patch=_patch;
 @property(readonly, nonatomic) _Bool isInLiveContinuousToneSession; // @synthesize isInLiveContinuousToneSession=_isInLiveContinuousToneSession;
 @property(readonly, nonatomic) AXMLiveContinuousTone *continuousScrubbingTone; // @synthesize continuousScrubbingTone=_continuousScrubbingTone;
 @property(readonly, nonatomic) int interpolationMode; // @synthesize interpolationMode=_interpolationMode;
@@ -78,34 +90,36 @@
 @property(readonly, nonatomic) CDUnknownBlockType function; // @synthesize function=_function;
 @property(readonly, nonatomic) int dataMode; // @synthesize dataMode=_dataMode;
 @property(nonatomic) _Bool usesBinauralPanning; // @synthesize usesBinauralPanning=_usesBinauralPanning;
-@property(nonatomic) unsigned long long toneWaveform; // @synthesize toneWaveform=_toneWaveform;
-@property(retain, nonatomic) AXMADSREnvelope *ampEnvelope; // @synthesize ampEnvelope=_ampEnvelope;
 @property(nonatomic) double playbackDuration; // @synthesize playbackDuration=_playbackDuration;
 @property(nonatomic) double maximumPlaybackFrequency; // @synthesize maximumPlaybackFrequency=_maximumPlaybackFrequency;
 @property(nonatomic) double minimumPlaybackFrequency; // @synthesize minimumPlaybackFrequency=_minimumPlaybackFrequency;
+@property(readonly, nonatomic) AXMDataSeriesDescriptor *currentSeries;
+- (void)_regenerateTimeEncodingValuesForDataPoints;
 - (id)_newContinuousToneEnvelope;
-- (void)_peakNormalizeBuffer:(vector_12bd641b *)arg1 length:(unsigned long long)arg2 level:(double)arg3;
+- (void)_peakNormalizeBuffer:(void *)arg1 length:(unsigned long long)arg2 level:(double)arg3;
 - (void)setLiveContinuousToneNormalizedFrequency:(double)arg1;
 - (void)endLiveContinuousToneSession;
 - (void)beginLiveContinuousToneSession;
-- (_Bool)hasContinuousDataForXPosition:(double)arg1;
-- (double)frequencyForYAxisValue:(double)arg1;
+- (_Bool)series:(id)arg1 hasContinuousPitchDataForTimePosition:(double)arg2;
+- (double)durationForDurationEncodingValue:(double)arg1;
+- (double)volumeForVolumeEncodingValue:(double)arg1;
+- (double)frequencyForPitchEncodingValue:(double)arg1;
 - (unsigned long long)sampleIndexForTimeOffset:(double)arg1;
-- (unsigned long long)sampleIndexForXAxisValue:(double)arg1;
-- (double)timeOffsetForXAxisValue:(double)arg1;
-- (double)interpolatedYAxisValueForNormalizedPosition:(double)arg1;
-- (double)xAxisValueForPosition:(double)arg1;
-- (double)normalizedYAxisValueForValue:(double)arg1;
-- (double)normalizedXAxisValueForValue:(double)arg1;
+- (double)timeOffsetForTimeEncodingValue:(id)arg1;
+- (double)interpolatedPitchValueForNormalizedTimePosition:(double)arg1 inSeries:(id)arg2;
+- (double)valueFromNormalizedValue:(double)arg1 min:(double)arg2 max:(double)arg3;
+- (double)normalizedValueForValue:(double)arg1 min:(double)arg2 max:(double)arg3;
+- (double)normalizedTimeEncodingValueForValue:(id)arg1;
 - (_Bool)_setOutputCallback;
 - (_Bool)_setAudioFormat;
 - (_Bool)_initializeAudioComponent;
 - (_Bool)_uninitializeAudioUnit;
 - (_Bool)_initializeAudioUnit;
 - (void)_renderUnivariateFunctionAudio;
-- (void)_renderContinuousAudio;
-- (void)_renderDiscreteAudio;
-- (void)loadDataAndRenderAudioForXAxis:(double *)arg1 yAxis:(double *)arg2 numValues:(unsigned long long)arg3 axisMinimumX:(double)arg4 axisMaximumX:(double)arg5 axisMinimumY:(double)arg6 axisMaximumY:(double)arg7 interpolationMode:(int)arg8 trendline:(CDUnknownBlockType)arg9;
+- (void)_renderContinuousAudioForSeries:(id)arg1;
+- (void)_renderDiscreteAudioForSeries:(id)arg1;
+- (void)_renderSeries:(id)arg1;
+- (void)renderSonification;
 - (void)scrubToPlaybackFrame:(unsigned long long)arg1;
 - (void)stopScrubbing;
 - (void)endScrubbing;
@@ -116,6 +130,8 @@
 - (void)stopPlaying;
 - (void)pause;
 - (void)play;
+- (void)setMasterVolume:(double)arg1 fadeDuration:(double)arg2;
+@property(nonatomic) double masterVolume;
 @property(readonly, nonatomic) double currentPlaybackPosition;
 - (void)_initializeLiveToneDataSource;
 - (void)_initializeAXMAudioDataSources;

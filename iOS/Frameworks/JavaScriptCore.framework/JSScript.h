@@ -14,7 +14,7 @@
     struct String m_source;
     struct RetainPtr<NSURL> m_sourceURL;
     struct RetainPtr<NSURL> m_cachePath;
-    RefPtr_cd332c91 m_cachedBytecode;
+    RefPtr_ba104a63 m_cachedBytecode;
 }
 
 + (id)scriptOfType:(long long)arg1 memoryMappedFromASCIIFile:(id)arg2 withSourceURL:(id)arg3 andBytecodeCache:(id)arg4 inVirtualMachine:(id)arg5 error:(out id *)arg6;
@@ -26,11 +26,11 @@
 - (_Bool)isUsingBytecodeCache;
 - (_Bool)cacheBytecodeWithError:(id *)arg1;
 - (void)readCache;
-- (_Bool)writeCache:(struct String *)arg1;
-- (struct JSSourceCode *)jsSourceCode;
+- (_Bool)writeCache:(void *)arg1;
+- (void *)jsSourceCode;
 - (struct SourceCode)sourceCode;
-- (RefPtr_cd332c91)cachedBytecode;
-- (const struct String *)source;
+- (RefPtr_ba104a63)cachedBytecode;
+- (const void *)source;
 - (unsigned int)hash;
 - (id)init;
 

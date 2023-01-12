@@ -32,6 +32,7 @@
 - (void)mobileAssetController:(id)arg1 didFailDownload:(id)arg2;
 - (void)mobileAssetController:(id)arg1 didBecomeAvailable:(id)arg2;
 - (void)mobileAssetController:(id)arg1 didDownload:(id)arg2;
+- (void)mobileAssetController:(id)arg1 willPerformQuery:(id)arg2;
 - (id)_createConfigurationControllerWithDefaultConfigurationURL:(id)arg1 updateConfiguration:(id)arg2 defaultsKey:(id)arg3;
 - (void)_configurationWasUpdated:(id)arg1;
 - (_Bool)_sendAssetToDelegateIfPossible:(id)arg1;

@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <CloudKit/CKContainerAssignment-Protocol.h>
+#import <CloudKit/CKPropertiesDescription-Protocol.h>
 #import <CloudKit/NSCopying-Protocol.h>
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
 @class CKContainerID, CKRecordZoneID, CKReference, CKServerChangeToken, NSArray, NSData, NSDate, NSString;
 
-@interface CKRecordZone : NSObject <CKContainerAssignment, NSSecureCoding, NSCopying>
+@interface CKRecordZone : NSObject <CKPropertiesDescription, CKContainerAssignment, NSSecureCoding, NSCopying>
 {
     _Bool _needsZoneishPCSRolled;
     _Bool _zoneKeyRollAllowed;
@@ -20,6 +21,7 @@
     int _deviceCount;
     CKRecordZoneID *_zoneID;
     unsigned long long _capabilities;
+    CKReference *_share;
     CKContainerID *_containerID;
     CKServerChangeToken *_currentServerChangeToken;
     NSData *_clientChangeToken;
@@ -28,7 +30,6 @@
     NSData *_zoneishProtectionData;
     NSData *_pcsKeyID;
     NSData *_zoneishKeyID;
-    CKReference *_share;
     NSString *_zonePCSLastModifierDevice;
     NSString *_previousProtectionEtag;
     long long _assetQuotaUsage;
@@ -38,6 +39,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)systemRecordZone;
 + (id)defaultRecordZone;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *invitedKeysToRemove; // @synthesize invitedKeysToRemove=_invitedKeysToRemove;
@@ -49,7 +51,6 @@
 @property(retain, nonatomic) NSString *zonePCSLastModifierDevice; // @synthesize zonePCSLastModifierDevice=_zonePCSLastModifierDevice;
 @property(nonatomic) _Bool zoneKeyRollAllowed; // @synthesize zoneKeyRollAllowed=_zoneKeyRollAllowed;
 @property(nonatomic) _Bool needsZoneishPCSRolled; // @synthesize needsZoneishPCSRolled=_needsZoneishPCSRolled;
-@property(retain, nonatomic) CKReference *share; // @synthesize share=_share;
 @property(retain, nonatomic) NSData *zoneishKeyID; // @synthesize zoneishKeyID=_zoneishKeyID;
 @property(retain, nonatomic) NSData *pcsKeyID; // @synthesize pcsKeyID=_pcsKeyID;
 @property(retain, nonatomic) NSData *zoneishProtectionData; // @synthesize zoneishProtectionData=_zoneishProtectionData;
@@ -58,19 +59,23 @@
 @property(retain, nonatomic) NSData *clientChangeToken; // @synthesize clientChangeToken=_clientChangeToken;
 @property(retain, nonatomic) CKServerChangeToken *currentServerChangeToken; // @synthesize currentServerChangeToken=_currentServerChangeToken;
 @property(nonatomic) int deviceCount; // @synthesize deviceCount=_deviceCount;
-@property(copy, nonatomic) CKContainerID *containerID; // @synthesize containerID=_containerID;
+@property(copy, nonatomic) CKReference *share; // @synthesize share=_share;
 @property(nonatomic) unsigned long long capabilities; // @synthesize capabilities=_capabilities;
 @property(copy, nonatomic) CKRecordZoneID *zoneID; // @synthesize zoneID=_zoneID;
-- (id)description;
-- (id)CKDescriptionPropertiesWithPublic:(_Bool)arg1 private:(_Bool)arg2 shouldExpand:(_Bool)arg3;
-- (id)CKPropertiesDescription;
+- (id)redactedDescription;
+@property(readonly, copy) NSString *description;
+- (void)CKDescribePropertiesUsing:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)CKAssignToContainerWithID:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithZoneID:(id)arg1;
 - (id)initWithZoneName:(id)arg1;
-- (id)_initZoneWithIdentifier:(id)arg1 capabilities:(unsigned long long)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

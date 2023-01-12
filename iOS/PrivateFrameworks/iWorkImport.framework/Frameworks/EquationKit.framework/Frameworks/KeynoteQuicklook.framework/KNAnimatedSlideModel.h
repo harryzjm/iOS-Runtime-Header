@@ -75,6 +75,7 @@
 - (long long)outEventForInfo:(id)arg1;
 - (long long)inEventForInfo:(id)arg1;
 - (long long)p_lastEventNumberForInfo:(id)arg1 animationType:(long long)arg2 defaultResult:(long long)arg3;
+- (id)visibleInfosDuringEvent:(long long)arg1;
 - (_Bool)info:(id)arg1 isVisibleDuringEvent:(long long)arg2;
 - (void)enumerateAnimatedBuildsAndTimeRangesAtIndex:(unsigned long long)arg1 ignoreInitialDelay:(_Bool)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateAnimatedBuildsAndTimeRangesAtIndex:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;

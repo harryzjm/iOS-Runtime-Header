@@ -29,7 +29,7 @@
 @property(readonly, nonatomic) _Bool columnsAreLeftToRight;
 @property(readonly, nonatomic) unsigned long long columnCount;
 @property(readonly, nonatomic) TSWPPadding *layoutMargins;
-- (struct CGSize)adjustedInsetsForTarget:(id)arg1;
+- (struct UIEdgeInsets)adjustedInsetsForTarget:(id)arg1;
 - (unsigned long long)pageNumber;
 - (unsigned long long)pageCount;
 - (void)invalidateForAutosizingTextLayout:(id)arg1;

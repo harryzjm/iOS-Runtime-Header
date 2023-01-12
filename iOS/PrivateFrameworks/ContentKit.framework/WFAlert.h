@@ -11,7 +11,6 @@
 
 @interface WFAlert : NSObject
 {
-    _Bool _prefersItemPickerSheetPresentation;
     NSString *_title;
     NSString *_message;
     long long _preferredStyle;
@@ -22,13 +21,14 @@
     id <WFAlertPresenter> _presenter;
     NSMutableArray *_mutableButtons;
     NSMutableArray *_mutableTextFieldConfigurationHandlers;
+    unsigned long long _dialogAttributionMode;
 }
 
 + (id)alertWithPreferredStyle:(long long)arg1;
 + (id)alertWithError:(id)arg1 confirmationHandler:(CDUnknownBlockType)arg2;
 + (id)alertWithError:(id)arg1;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool prefersItemPickerSheetPresentation; // @synthesize prefersItemPickerSheetPresentation=_prefersItemPickerSheetPresentation;
+@property(nonatomic) unsigned long long dialogAttributionMode; // @synthesize dialogAttributionMode=_dialogAttributionMode;
 @property(retain, nonatomic) NSMutableArray *mutableTextFieldConfigurationHandlers; // @synthesize mutableTextFieldConfigurationHandlers=_mutableTextFieldConfigurationHandlers;
 @property(retain, nonatomic) NSMutableArray *mutableButtons; // @synthesize mutableButtons=_mutableButtons;
 @property(nonatomic) __weak id <WFAlertPresenter> presenter; // @synthesize presenter=_presenter;

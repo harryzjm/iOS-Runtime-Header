@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVTAvatarPhysicalizedPose, AVTAvatarPoseAnimation, AVTStickerCamera, NSArray, NSDictionary, NSString;
+@class AVTAvatarBodyPose, AVTAvatarPhysicalizedPose, AVTAvatarPoseAnimation, AVTStickerCamera, NSArray, NSDictionary, NSString;
 
 @interface AVTStickerConfiguration : NSObject
 {
@@ -16,6 +16,7 @@
     NSString *_name;
     NSString *_localizedName;
     AVTAvatarPhysicalizedPose *_physicalizedPose;
+    AVTAvatarBodyPose *_bodyPose;
     NSArray *_props;
     NSArray *_shaderModifiers;
     AVTStickerCamera *_camera;
@@ -57,6 +58,7 @@
 @property(retain, nonatomic) AVTStickerCamera *camera; // @synthesize camera=_camera;
 @property(retain, nonatomic) NSArray *shaderModifiers; // @synthesize shaderModifiers=_shaderModifiers;
 @property(retain, nonatomic) NSArray *props; // @synthesize props=_props;
+@property(retain, nonatomic) AVTAvatarBodyPose *bodyPose; // @synthesize bodyPose=_bodyPose;
 @property(retain, nonatomic) AVTAvatarPhysicalizedPose *physicalizedPose; // @synthesize physicalizedPose=_physicalizedPose;
 @property(readonly, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
@@ -68,8 +70,9 @@
 @property(readonly, nonatomic) NSString *emojiRepresentation;
 - (void)setupOptions:(id)arg1;
 @property(readonly, nonatomic) AVTAvatarPoseAnimation *poseAnimation;
+- (id)initWithName:(id)arg1 pose:(id)arg2 bodyPose:(id)arg3 props:(id)arg4 shaders:(id)arg5 camera:(id)arg6 options:(id)arg7;
 - (id)initWithName:(id)arg1 pose:(id)arg2 props:(id)arg3 shaders:(id)arg4 camera:(id)arg5 options:(id)arg6;
-- (id)initWithName:(id)arg1 poseAnimation:(id)arg2 props:(id)arg3 shaders:(id)arg4 camera:(id)arg5 options:(id)arg6;
+- (id)initWithName:(id)arg1 poseAnimation:(id)arg2 bodyPose:(id)arg3 props:(id)arg4 shaders:(id)arg5 camera:(id)arg6 options:(id)arg7;
 - (id)initWithConfigDictionary:(id)arg1 assetsPath:(id)arg2 forStickerPack:(id)arg3;
 - (id)initWithConfigurationAtPath:(id)arg1 forStickerPack:(id)arg2;
 - (id)initWithConfigurationAtPath:(id)arg1;

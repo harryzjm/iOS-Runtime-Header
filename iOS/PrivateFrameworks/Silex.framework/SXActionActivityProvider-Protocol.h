@@ -6,12 +6,15 @@
 
 #import <Silex/NSObject-Protocol.h>
 
+@class UIView;
 @protocol SXAction, SXActionActivityGroup, SXActionPreviewActivity;
 
 @protocol SXActionActivityProvider <NSObject>
-- (id <SXActionActivityGroup>)activityGroupForAction:(id <SXAction>)arg1;
 
 @optional
+- (id <SXActionPreviewActivity>)previewActivityForAction:(id <SXAction>)arg1 sourceView:(UIView *)arg2 sourceRect:(struct CGRect)arg3;
 - (id <SXActionPreviewActivity>)previewActivityForAction:(id <SXAction>)arg1;
+- (id <SXActionActivityGroup>)activityGroupForAction:(id <SXAction>)arg1 sourceView:(UIView *)arg2 sourceRect:(struct CGRect)arg3;
+- (id <SXActionActivityGroup>)activityGroupForAction:(id <SXAction>)arg1;
 @end
 

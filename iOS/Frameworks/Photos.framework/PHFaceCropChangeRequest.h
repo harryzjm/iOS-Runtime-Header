@@ -12,6 +12,7 @@
 @interface PHFaceCropChangeRequest <PHInsertChangeRequest, PHUpdateChangeRequest>
 {
     NSString *_originatingFaceUUID;
+    NSString *_originatingFaceCropUUID;
     PHRelationshipChangeRequestHelper *_faceHelper;
     PHRelationshipChangeRequestHelper *_personHelper;
 }
@@ -20,10 +21,12 @@
 + (id)creationRequestsForFaceCropsWithOriginatingFace:(id)arg1 resourceData:(id)arg2;
 + (id)_creationRequestForFaceCropWithOriginatingFace:(id)arg1 resourceData:(id)arg2 person:(id)arg3;
 + (id)_creationRequestForFaceCropWithOriginatingFace:(id)arg1 resourceData:(id)arg2 personLocalIdentifier:(id)arg3;
++ (id)creationRequestForFaceCropCopyFromFaceCrop:(id)arg1 withType:(short)arg2 onPerson:(id)arg3;
 + (id)changeRequestForFaceCrop:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) PHRelationshipChangeRequestHelper *personHelper; // @synthesize personHelper=_personHelper;
 @property(readonly, nonatomic) PHRelationshipChangeRequestHelper *faceHelper; // @synthesize faceHelper=_faceHelper;
+@property(copy, nonatomic) NSString *originatingFaceCropUUID; // @synthesize originatingFaceCropUUID=_originatingFaceCropUUID;
 @property(copy, nonatomic) NSString *originatingFaceUUID; // @synthesize originatingFaceUUID=_originatingFaceUUID;
 - (_Bool)applyMutationsToManagedObject:(id)arg1 photoLibrary:(id)arg2 error:(id *)arg3;
 - (id)createManagedObjectForInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
@@ -31,6 +34,7 @@
 @property(readonly, nonatomic) NSString *managedEntityName;
 - (void)encodeToXPCDict:(id)arg1;
 - (id)initWithXPCDict:(id)arg1 request:(id)arg2 clientAuthorization:(id)arg3;
+@property(nonatomic) short type;
 @property(nonatomic) short state;
 @property(retain, nonatomic) NSData *resourceData;
 - (void)setFace:(id)arg1;

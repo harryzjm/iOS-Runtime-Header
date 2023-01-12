@@ -69,7 +69,6 @@
 @property(copy, nonatomic) id value; // @synthesize value=_value;
 @property(copy, nonatomic) NSArray *properties; // @synthesize properties=_properties;
 @property(copy, nonatomic) NSString *characteristicType; // @synthesize characteristicType=_characteristicType;
-- (void)dealloc;
 - (void)_unconfigure;
 - (void)_unconfigureContext;
 - (void)__configureWithContext:(id)arg1 service:(id)arg2;

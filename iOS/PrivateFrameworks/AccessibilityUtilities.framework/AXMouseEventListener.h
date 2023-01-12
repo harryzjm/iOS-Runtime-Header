@@ -23,12 +23,13 @@
 + (id)sharedInstance;
 + (id)_mouseMatching;
 - (void).cxx_destruct;
-- (void)_handleMouseButtonEvent:(id)arg1;
+- (void)_finishHandlingMouseButtonEvent:(id)arg1 buttonMask:(double)arg2 creatorHIDServiceClient:(struct __IOHIDServiceClient *)arg3;
+- (_Bool)_handleMouseButtonEvent:(id)arg1;
 - (void)deviceMonitorDidDetectDeviceEvent:(id)arg1;
 - (void)mouseSettingsDidChange;
 @property(readonly, nonatomic) _Bool currentDevicesHaveAssistiveTouchCustomActions;
-- (void)endFilteringEvents;
-- (void)beginFilteringEvents;
+- (void)endFilteringButtonEvents;
+- (void)beginFilteringButtonEvents;
 - (id)discoveredMouseDevices;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;

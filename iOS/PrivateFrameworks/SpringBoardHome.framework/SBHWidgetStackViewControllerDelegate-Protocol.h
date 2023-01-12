@@ -12,6 +12,7 @@
 @protocol SBHWidgetStackViewControllerDelegate <NSObject>
 
 @optional
+- (void)widgetStackViewControllerWidgetCountDidChange:(SBHWidgetStackViewController *)arg1;
 - (void)widgetStackViewController:(SBHWidgetStackViewController *)arg1 didRemoveViewController:(UIViewController *)arg2;
 - (void)widgetStackViewController:(SBHWidgetStackViewController *)arg1 didActivateDataSource:(id <SBLeafIconDataSource>)arg2 fromUserInteraction:(_Bool)arg3;
 @end

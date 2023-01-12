@@ -16,11 +16,13 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (void)setLowLatency:(_Bool)arg1;
 - (int)setBitrate:(unsigned int)arg1 framerate:(unsigned int)arg2;
 - (long long)encode:(id)arg1 codecSpecificInfo:(id)arg2 frameTypes:(id)arg3;
 - (long long)startEncodeWithSettings:(id)arg1 numberOfCores:(int)arg2;
 - (long long)releaseEncoder;
 - (void)setCallback:(CDUnknownBlockType)arg1;
+- (int)codecType;
 - (id)initWithCodecInfo:(id)arg1;
 
 @end

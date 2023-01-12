@@ -11,7 +11,7 @@
 #import <IDS/IDSDaemonListenerProtocol-Protocol.h>
 #import <IDS/IDSGroupContextControllerDelegate-Protocol.h>
 
-@class IDSAccount, IDSAccountController, IDSGroupContextController, IDSQuickSwitchAcknowledgementTracker, IDSServiceProperties, NSArray, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString;
+@class CUTDeferredTaskQueue, IDSAccount, IDSAccountController, IDSGroupContextController, IDSQuickSwitchAcknowledgementTracker, IDSServiceProperties, NSArray, NSDictionary, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 
 @interface _IDSService : NSObject <IDSGroupContextControllerDelegate, IDSAccountControllerDelegate, IDSConnectionDelegatePrivate, IDSDaemonListenerProtocol>
 {
@@ -36,11 +36,19 @@
     IDSQuickSwitchAcknowledgementTracker *_acknowledgementTracker;
     IDSServiceProperties *_serviceProperties;
     CDUnknownBlockType _pendingRegisteredIdentitiesBlock;
+    _Bool _wantsPseudonymUpdates;
+    NSDictionary *_cachedPseudonymURIMap;
+    CUTDeferredTaskQueue *_pseudonymUpdateTaskQueue;
+    NSMutableDictionary *_completionBlocksByRequestID;
 }
 
 + (id)deviceForFromID:(id)arg1 fromDevices:(id)arg2;
 + (void)serviceWithIdentifier:(id)arg1 commands:(id)arg2 manuallyAckMessages:(_Bool)arg3 delegateContext:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableDictionary *completionBlocksByRequestID; // @synthesize completionBlocksByRequestID=_completionBlocksByRequestID;
+@property(retain, nonatomic) CUTDeferredTaskQueue *pseudonymUpdateTaskQueue; // @synthesize pseudonymUpdateTaskQueue=_pseudonymUpdateTaskQueue;
+@property(retain, nonatomic) NSDictionary *cachedPseudonymURIMap; // @synthesize cachedPseudonymURIMap=_cachedPseudonymURIMap;
+@property(nonatomic) _Bool wantsPseudonymUpdates; // @synthesize wantsPseudonymUpdates=_wantsPseudonymUpdates;
 @property(readonly, retain, nonatomic) IDSGroupContextController *groupContextController; // @synthesize groupContextController=_groupContextController;
 @property(nonatomic) _Bool manuallyAckMessages; // @synthesize manuallyAckMessages=_manuallyAckMessages;
 - (void)_enforceSandboxPolicy;
@@ -78,6 +86,8 @@
 - (_Bool)cancelIdentifier:(id)arg1 error:(id *)arg2;
 - (_Bool)sendServerMessage:(id)arg1 command:(id)arg2 fromAccount:(id)arg3;
 - (_Bool)sendData:(id)arg1 priority:(long long)arg2 options:(id)arg3 identifier:(id *)arg4 error:(id *)arg5;
+- (_Bool)sendInvitationUpdate:(id)arg1 fromAccount:(id)arg2 toDestination:(id)arg3 options:(id)arg4 identifier:(id *)arg5 error:(id *)arg6;
+- (_Bool)sendInvitation:(id)arg1 fromAccount:(id)arg2 toDestination:(id)arg3 options:(id)arg4 identifier:(id *)arg5 error:(id *)arg6;
 - (_Bool)sendAccessoryData:(id)arg1 toAccessoryID:(id)arg2 accessToken:(id)arg3 options:(id)arg4 identifier:(id *)arg5 error:(id *)arg6;
 - (_Bool)_sendSimulatorData:(id)arg1 fromAccount:(id)arg2 toDestinations:(id)arg3 priority:(long long)arg4 options:(id)arg5 identifier:(id *)arg6 error:(id *)arg7;
 - (_Bool)sendData:(id)arg1 fromAccount:(id)arg2 toDestinations:(id)arg3 priority:(long long)arg4 options:(id)arg5 identifier:(id *)arg6 error:(id *)arg7;
@@ -91,15 +101,36 @@
 - (_Bool)_canAccount:(id)arg1 sendWithFromID:(id)arg2;
 - (id)_sendingAccountForAccount:(id)arg1 destination:(id)arg2 fromID:(id)arg3;
 - (id)_sendingAccountForAccount:(id)arg1;
+- (id)_preferredURIForAccount:(id)arg1;
 - (_Bool)canSendMessageWithAccount:(id)arg1 toDestination:(id)arg2;
 - (SEL)protobufActionForType:(unsigned short)arg1 isResponse:(_Bool)arg2;
 - (void)setProtobufAction:(SEL)arg1 forProtobufType:(unsigned short)arg2 isResponse:(_Bool)arg3;
 - (void)resendSubServicesToDaemonForCurrentDevice;
 - (_Bool)updateSubServices:(id)arg1 forDevice:(id)arg2;
+- (void)finishedReportingRequestUUID:(id)arg1 withError:(id)arg2;
+- (void)reportAction:(long long)arg1 ofTempURI:(id)arg2 fromURI:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
+- (void)finishedRevokingPseudonymWithSuccess:(_Bool)arg1 error:(id)arg2 requestUUID:(id)arg3;
+- (void)finishedRenewingPseudonym:(id)arg1 success:(_Bool)arg2 error:(id)arg3 requestUUID:(id)arg4;
+- (void)finishedProvisioningPseudonym:(id)arg1 success:(_Bool)arg2 error:(id)arg3 forRequestUUID:(id)arg4;
+- (id)pseudonymPropertiesWithFeatureID:(id)arg1 scopeID:(id)arg2 expiryDurationInSeconds:(double)arg3;
+- (void)revokePseudonym:(id)arg1 requestProperties:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)renewPseudonym:(id)arg1 forUpdatedExpiryEpoch:(double)arg2 requestProperties:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)provisionPseudonymForURI:(id)arg1 withProperties:(id)arg2 requestProperties:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)provisionPseudonymWithProperties:(id)arg1 requestProperties:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_calloutPseudonymsDidUpdate;
+- (void)account:(id)arg1 pseudonymsChanged:(id)arg2;
+- (id)_accountWithURI:(id)arg1 orPseudonym:(id)arg2;
+- (id)pseudonymsForMaskedURI:(id)arg1 matchingProperties:(id)arg2;
+- (id)pseudonymsForMaskedURI:(id)arg1;
+- (id)pseudonymForPseudonymURI:(id)arg1;
+@property(readonly, nonatomic) NSDictionary *pseudonymURIMap;
+@property(readonly, nonatomic) long long maxEffectivePayloadSize;
+@property(readonly, nonatomic) NSArray *URIs;
 - (id)linkedDevicesWithRelationship:(long long)arg1;
 - (void)_updateLinkedDevicesWithDevicesInfo:(id)arg1;
 - (void)_loadCachedLinkedDevices;
 - (void)_reloadCachedLinkedDevices;
+@property(readonly, copy, nonatomic) IDSServiceProperties *serviceProperties;
 @property(readonly, copy, nonatomic) NSArray *devices;
 @property(readonly, copy, nonatomic) NSSet *internalAccounts;
 @property(readonly, copy, nonatomic) NSSet *accounts;
@@ -128,6 +159,8 @@
 - (void)connection:(id)arg1 incomingTopLevelMessage:(id)arg2 fromID:(id)arg3 messageContext:(id)arg4;
 - (void)connection:(id)arg1 incomingProtobuf:(id)arg2 fromID:(id)arg3 context:(id)arg4;
 - (void)connection:(id)arg1 incomingMessage:(id)arg2 fromID:(id)arg3 context:(id)arg4;
+- (void)connection:(id)arg1 incomingInvitationUpdate:(id)arg2 fromID:(id)arg3 context:(id)arg4;
+- (void)connection:(id)arg1 incomingInvitation:(id)arg2 fromID:(id)arg3 context:(id)arg4;
 - (void)connection:(id)arg1 incomingAccessoryReportMessage:(id)arg2 accessoryID:(id)arg3 controllerID:(id)arg4 context:(id)arg5;
 - (void)connection:(id)arg1 incomingAccessoryData:(id)arg2 fromID:(id)arg3 context:(id)arg4;
 - (void)connection:(id)arg1 incomingGroupData:(id)arg2 fromID:(id)arg3 context:(id)arg4;
@@ -153,6 +186,7 @@
 - (id)_activeDeviceForUniqueID:(id)arg1;
 - (void)didSwitchActivePairedDevice:(id)arg1 forService:(id)arg2 wasHandled:(_Bool *)arg3;
 - (void)OTRTestCallback:(id)arg1 time:(double)arg2 error:(id)arg3;
+- (void)daemonDisconnected;
 - (void)daemonConnected;
 - (void)_callDelegatesRespondingToSelector:(SEL)arg1 withPreCallbacksBlock:(CDUnknownBlockType)arg2 callbackBlock:(CDUnknownBlockType)arg3 postCallbacksBlock:(CDUnknownBlockType)arg4 group:(id)arg5;
 - (void)_callDelegatesRespondingToSelector:(SEL)arg1 withPreCallbacksBlock:(CDUnknownBlockType)arg2 callbackBlock:(CDUnknownBlockType)arg3 postCallbacksBlock:(CDUnknownBlockType)arg4;

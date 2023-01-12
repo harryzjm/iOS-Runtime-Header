@@ -12,6 +12,7 @@
 
 
 // Remaining properties
+@property(nonatomic) _Bool hasOrientationMismatchForClassicApp; // @dynamic hasOrientationMismatchForClassicApp;
 @property(nonatomic) long long layoutEnvironment; // @dynamic layoutEnvironment;
 @property(nonatomic) unsigned long long preferredContentType; // @dynamic preferredContentType;
 @property(nonatomic) _Bool prefersLiveXIB; // @dynamic prefersLiveXIB;

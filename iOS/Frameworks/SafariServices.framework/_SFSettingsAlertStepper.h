@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)_resetTapped:(id)arg1;
 - (void)_decrementTapped:(id)arg1;
 - (void)_incrementTapped:(id)arg1;
-- (id)initUsingResetButton:(_Bool)arg1;
+- (id)initUsingResetButton:(_Bool)arg1 usingTopSeparator:(_Bool)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

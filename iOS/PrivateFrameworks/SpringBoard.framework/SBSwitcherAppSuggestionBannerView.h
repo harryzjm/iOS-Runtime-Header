@@ -30,6 +30,7 @@
 - (id)_meCardShortName;
 - (id)_appTitleForSuggestion:(id)arg1;
 - (void)_createAppLabelForSuggestion:(id)arg1;
+- (id)_borderView;
 - (void)_configureConstraints;
 - (_Bool)_isSingleLine;
 - (id)_descriptionFont;

@@ -18,6 +18,9 @@
 + (double)defaultNetworkTimeout;
 + (_Bool)allowsInternalSecurityPolicies;
 + (_Bool)getBool:(id)arg1;
++ (unsigned long long)getEnvironment;
++ (id)getIMEnvironmentName;
++ (_Bool)isAccountsInQA;
 - (void).cxx_destruct;
 @property(retain) NSDictionary *settings; // @synthesize settings=_settings;
 

@@ -10,21 +10,30 @@
 #import <SpringBoard/BNConsideringDelegate-Protocol.h>
 
 @class NSMutableDictionary, NSString;
-@protocol BNConsideringDelegate;
+@protocol BNConsideringDelegate, OS_dispatch_queue;
 
 @interface SBBannerAuthority : NSObject <BNConsideringDelegate, BNConsidering>
 {
     NSMutableDictionary *_requesterIDsToAuthorities;
+    NSMutableDictionary *_sinks;
+    NSObject<OS_dispatch_queue> *_biomeQueue;
+    _Bool _screenSharingActive;
     id <BNConsideringDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
+@property(getter=_isScreenSharingActive, setter=_setScreenSharingActive:) _Bool screenSharingActive; // @synthesize screenSharingActive=_screenSharingActive;
 @property(nonatomic) __weak id <BNConsideringDelegate> delegate; // @synthesize delegate=_delegate;
+- (_Bool)_shouldDropPresentableDuringScreenSharing:(id)arg1 userInfo:(id)arg2;
+- (_Bool)_shouldDropPresentablesDuringScreenSharing;
+- (void)_configureSinksIfNecessary;
+- (long long)_mediatedDecisionFromDecisions:(id)arg1 defaultDecision:(long long)arg2;
 - (void)bannerAuthority:(id)arg1 mayChangeDecisionForResponsiblePresentable:(id)arg2;
 - (long long)shouldOverlapPresentable:(id)arg1 withPresentable:(id)arg2;
 - (long long)shouldPresentPresentable:(id)arg1 withPresentedPresentables:(id)arg2 responsiblePresentable:(out id *)arg3;
-- (long long)_mediatedDecisionFromDecisions:(id)arg1 defaultDecision:(long long)arg2;
+- (long long)shouldPostPresentable:(id)arg1 userInfo:(id)arg2 reason:(out id *)arg3;
 - (void)registerAuthority:(id)arg1 forRequesterIdentifier:(id)arg2;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -10,6 +10,8 @@
 @protocol PXGAXGroup;
 
 @protocol PXGAXGroupSource <NSObject>
+@property(readonly, nonatomic) _Bool axShouldBeConsideredAsSubgroup;
+@property(readonly, nonatomic) _Bool axShouldSearchLeafsInSubgroups;
 @property(readonly, nonatomic) struct CGRect axVisibleRect;
 @property(readonly, nonatomic) struct CGRect axFrame;
 @property(readonly, nonatomic) NSString *axLocalizedLabel;

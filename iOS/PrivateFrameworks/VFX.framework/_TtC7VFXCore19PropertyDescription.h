@@ -11,28 +11,29 @@
 @interface _TtC7VFXCore19PropertyDescription : _TtCs12_SwiftObject
 {
     MISSING_TYPE *name;
-    MISSING_TYPE *unavailableStartingFromVersion;
-    MISSING_TYPE *remappedTo;
-    MISSING_TYPE *min;
-    MISSING_TYPE *max;
-    MISSING_TYPE *step;
-    MISSING_TYPE *minFractionDigit;
-    MISSING_TYPE *maxFractionDigit;
     MISSING_TYPE *accessorCreator;
-    MISSING_TYPE *isHidden;
+    MISSING_TYPE *componentType;
     MISSING_TYPE *getset;
     MISSING_TYPE *keyPath;
     MISSING_TYPE *visibility;
-    MISSING_TYPE *offset;
-    MISSING_TYPE *size;
-    MISSING_TYPE *stride;
-    MISSING_TYPE *alignment;
-    MISSING_TYPE *allowDirectAliasing;
-    MISSING_TYPE *flags;
+    MISSING_TYPE *unavailableStartingFromVersion;
+    MISSING_TYPE *lookupReplacementProperty;
+    MISSING_TYPE *cachedResolvedReplacementProperty;
     MISSING_TYPE *semantic;
     MISSING_TYPE *type;
     MISSING_TYPE *defaultValues;
     MISSING_TYPE *userManual;
+    MISSING_TYPE *_min;
+    MISSING_TYPE *_max;
+    MISSING_TYPE *_step;
+    MISSING_TYPE *_minFractionDigit;
+    MISSING_TYPE *_maxFractionDigit;
+    MISSING_TYPE *_offset;
+    MISSING_TYPE *_size;
+    MISSING_TYPE *_stride;
+    MISSING_TYPE *_alignment;
+    MISSING_TYPE *flags;
+    MISSING_TYPE *_scriptingProperty;
 }
 
 @end

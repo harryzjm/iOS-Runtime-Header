@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ACAccountStore, NSCache, NSString;
+@class ACAccountStore, NSCache, NSDictionary, NSString;
 
 @interface DOCManagedPermission : NSObject
 {
@@ -20,6 +20,7 @@
     _Bool _didLoadSharedConnectionValues;
     NSString *_hostIdentifier;
     unsigned long long _hostAccountDataOwnerState;
+    NSDictionary *_personaStringForDomainID;
     NSCache *_cache;
     NSCache *_appContainerIDCache;
     ACAccountStore *_accountStore;
@@ -30,8 +31,17 @@
 @property(retain, nonatomic) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
 @property(retain, nonatomic) NSCache *appContainerIDCache; // @synthesize appContainerIDCache=_appContainerIDCache;
 @property(retain, nonatomic) NSCache *cache; // @synthesize cache=_cache;
+@property(copy, nonatomic) NSDictionary *personaStringForDomainID; // @synthesize personaStringForDomainID=_personaStringForDomainID;
 @property(nonatomic) unsigned long long hostAccountDataOwnerState; // @synthesize hostAccountDataOwnerState=_hostAccountDataOwnerState;
 @property(copy, nonatomic) NSString *hostIdentifier; // @synthesize hostIdentifier=_hostIdentifier;
+- (void)cachePersonaStringForProviders:(id)arg1;
+- (id)personaStringFromItem:(id)arg1;
+- (_Bool)adoptPersona:(id)arg1 andPerformBlock:(CDUnknownBlockType)arg2;
+- (_Bool)isCurrentPersonaEnterprise;
+- (_Bool)adoptPersonaliCloudPersonaAndPerformBlock:(CDUnknownBlockType)arg1;
+- (_Bool)adoptPersonaFromDomain:(id)arg1 andPerformBlock:(CDUnknownBlockType)arg2;
+- (_Bool)adoptPersonaFromItems:(id)arg1 andPerformBlock:(CDUnknownBlockType)arg2;
+- (_Bool)adoptPersonaFromItem:(id)arg1 andPerformBlock:(CDUnknownBlockType)arg2;
 - (id)allowedFileProviderBundleIdentifiersForHostBundleIdentifier:(id)arg1;
 - (void)cleanAppContainerBundleIDCache;
 - (id)appContainerBundleIDForFPItem:(id)arg1;
@@ -41,12 +51,17 @@
 - (id)queueFileDataForAcceptance:(id)arg1 originalFileName:(id)arg2 forBundleID:(id)arg3 outError:(id *)arg4;
 - (id)defaultFileProviderForAppBundle:(id)arg1;
 - (unsigned long long)dataOwnerStateForAccountIdentifier:(id)arg1;
+- (unsigned long long)dataOwnerStateForiCloudDomain:(id)arg1;
+- (unsigned long long)dataOwnerStateForFPDomain:(id)arg1;
 - (unsigned long long)dataOwnerStateForBundleIdentifier:(id)arg1;
+- (unsigned long long)dataOwnerStateForItems:(id)arg1;
 - (unsigned long long)dataOwnerStateForItem:(id)arg1;
 - (_Bool)canAppWithDataOwnerState:(unsigned long long)arg1 performAction:(unsigned long long)arg2 dataOwnerState:(unsigned long long)arg3;
 - (_Bool)canAppWithBundleIdentifier:(id)arg1 performAction:(unsigned long long)arg2 accountIdentifier:(id)arg3;
 - (_Bool)canAppWithBundleIdentifier:(id)arg1 performAction:(unsigned long long)arg2 bundleIdentifier:(id)arg3;
+- (_Bool)canAppWithBundleIdentifier:(id)arg1 performAction:(unsigned long long)arg2 item:(id)arg3;
 - (_Bool)canAppWithDataOwnerState:(unsigned long long)arg1 performAction:(unsigned long long)arg2 item:(id)arg3;
+- (_Bool)canItems:(id)arg1 performAction:(unsigned long long)arg2 fileProviderDomain:(id)arg3;
 - (_Bool)canItem:(id)arg1 performAction:(unsigned long long)arg2 item:(id)arg3;
 - (_Bool)canHostAppPerformAction:(unsigned long long)arg1 accountIdentifier:(id)arg2;
 - (_Bool)canHostAppPerformAction:(unsigned long long)arg1 bundleIdentifier:(id)arg2;

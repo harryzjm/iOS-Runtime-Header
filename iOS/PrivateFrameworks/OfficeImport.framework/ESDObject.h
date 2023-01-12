@@ -27,8 +27,8 @@ __attribute__((visibility("hidden")))
 - (id)initWithType:(unsigned short)arg1;
 - (id)initWithEshObject:(struct EshObject *)arg1;
 - (int)shapeID;
-- (struct EshGroup *)eshGroup;
-- (struct EshShape *)eshShape;
+- (void *)eshGroup;
+- (void *)eshShape;
 - (id)initForExcelBinaryWithType:(unsigned short)arg1 version:(unsigned short)arg2 state:(id)arg3;
 - (id)initPBWithType:(unsigned short)arg1 version:(unsigned short)arg2 state:(id)arg3;
 

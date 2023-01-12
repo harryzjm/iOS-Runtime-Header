@@ -15,7 +15,7 @@
 
 - (id)titleGenerator:(id)arg1 inputForArgument:(id)arg2;
 - (void)_generateTitleAndSubtitleWithResult:(CDUnknownBlockType)arg1;
-- (id)initWithMomentNode:(id)arg1 numberOfYearsAgo:(long long)arg2;
+- (id)initWithMomentNode:(id)arg1 numberOfYearsAgo:(long long)arg2 titleGenerationContext:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

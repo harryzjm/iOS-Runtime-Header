@@ -9,21 +9,22 @@
 #import <NewsCore/FCAVAssetKeyType-Protocol.h>
 #import <NewsCore/FCKeyValueStoreCoding-Protocol.h>
 
-@class NSData, NSDate, NSString;
+@class FCContentArchive, NSData, NSDate, NSString;
 
 @interface NTPBAVAssetKey (Conformance) <FCAVAssetKeyType, FCKeyValueStoreCoding>
 + (id)readValueFromKeyValuePair:(id)arg1;
 + (int)keyValuePairType;
+@property(readonly, nonatomic) FCContentArchive *contentArchive;
 @property(readonly, nonatomic) _Bool isExpired;
 @property(readonly, nonatomic) NSDate *expirationDate;
 @property(readonly, nonatomic) NSDate *creationDate;
 - (void)writeToKeyValuePair:(id)arg1;
 
 // Remaining properties
-@property(readonly, nonatomic) NSData *data;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) NSData *keyData;
 @property(readonly) Class superclass;
 @end
 

@@ -15,10 +15,10 @@
     unsigned long long _position;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long position; // @synthesize position=_position;
 @property(nonatomic) Class classOfNextMessage; // @synthesize classOfNextMessage=_classOfNextMessage;
 - (id)nextMessage;
-- (void)dealloc;
 - (id)initWithStream:(id)arg1;
 
 @end

@@ -22,7 +22,7 @@
 @property(readonly, nonatomic) NSAttributedString *attributedString; // @synthesize attributedString=mAttributedString;
 - (void)p_cacheDimensions;
 - (id)description;
-- (_Bool)appendOpticalAlignToSpec:(struct Spec *)arg1 offset:(struct CGPoint)arg2;
+- (_Bool)appendOpticalAlignToSpec:(void *)arg1 offset:(struct CGPoint)arg2;
 - (double)positionOfCharacterAtIndex:(unsigned long long)arg1;
 - (void)renderIntoContext:(struct CGContext *)arg1 offset:(struct CGPoint)arg2;
 @property(readonly, nonatomic) struct __CTLine *line;

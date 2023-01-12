@@ -8,6 +8,8 @@
 {
 }
 
++ (id)domain;
++ (id)pigmentFaceDomain;
 + (id)_orderedValuesForDevice:(id)arg1;
 - (_Bool)optionExistsInDevice:(id)arg1;
 

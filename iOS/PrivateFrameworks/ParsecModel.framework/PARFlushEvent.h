@@ -4,13 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface PARFlushEvent
+#import <ParsecModel/NSFetchRequestResult-Protocol.h>
+
+@interface PARFlushEvent <NSFetchRequestResult>
 {
-    int type;
 }
 
-+ (id)fetchRequest;
-@property(nonatomic) int type; // @synthesize type;
+- (void).cxx_destruct;
+- (void).cxx_construct;
+- (id)initWithEntity:(id)arg1 insertIntoManagedObjectContext:(id)arg2;
+
+// Remaining properties
+@property(nonatomic) int type; // @dynamic type;
 
 @end
 

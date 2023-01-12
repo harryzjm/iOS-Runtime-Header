@@ -8,7 +8,7 @@
 
 #import <NeutrinoCore/NUAuxiliaryImageProperties-Protocol.h>
 
-@class NSDictionary, NSString;
+@class AVCameraCalibrationData, NSDictionary, NSString;
 @protocol NUAuxiliaryImage;
 
 @interface NUCGAuxiliaryImageProperties : NSObject <NUAuxiliaryImageProperties>
@@ -17,17 +17,23 @@
     NSString *_auxiliaryImageTypeCGIdentifier;
     NSDictionary *_auxCoreGraphicsInfoDictionary;
     id <NUAuxiliaryImage> _auxImage;
+    AVCameraCalibrationData *_depthCamCalibrationData;
+    id _auxDataInfoMetadata;
     CDStruct_d58201db _size;
 }
 
 - (void).cxx_destruct;
+@property(retain) id auxDataInfoMetadata; // @synthesize auxDataInfoMetadata=_auxDataInfoMetadata;
+@property(retain) AVCameraCalibrationData *depthCamCalibrationData; // @synthesize depthCamCalibrationData=_depthCamCalibrationData;
 @property(retain) id <NUAuxiliaryImage> auxImage; // @synthesize auxImage=_auxImage;
 @property(retain) NSDictionary *auxCoreGraphicsInfoDictionary; // @synthesize auxCoreGraphicsInfoDictionary=_auxCoreGraphicsInfoDictionary;
 @property CDStruct_912cb5d2 size; // @synthesize size=_size;
 @property(readonly) NSString *auxiliaryImageTypeCGIdentifier; // @synthesize auxiliaryImageTypeCGIdentifier=_auxiliaryImageTypeCGIdentifier;
 @property(readonly, copy) NSString *description;
+- (id)depthCameraCalibrationData;
 - (id)auxiliaryImage:(out id *)arg1;
 - (id)auxiliaryCoreGraphicsInfoDictionary:(out id *)arg1;
+- (const struct CGImageMetadata *)auxiliaryDataInfoMetadata;
 - (id)initWithCGProperties:(id)arg1 imageSource:(struct CGImageSource *)arg2;
 
 // Remaining properties

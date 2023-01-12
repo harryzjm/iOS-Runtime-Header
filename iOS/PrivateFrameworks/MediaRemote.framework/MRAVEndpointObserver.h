@@ -16,15 +16,21 @@
     _Bool _didBegin;
     NSString *_outputDeviceUID;
     MRAVEndpoint *_endpoint;
+    NSString *_label;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *label; // @synthesize label=_label;
 @property(readonly, nonatomic) MRAVEndpoint *endpoint; // @synthesize endpoint=_endpoint;
 @property(readonly, nonatomic) NSString *outputDeviceUID; // @synthesize outputDeviceUID=_outputDeviceUID;
 - (void)_handleOutputContextDidChangeNotification;
 - (void)end;
 - (void)begin;
 @property(copy, nonatomic) CDUnknownBlockType endpointChangedCallback;
+- (id)debugDescription;
+- (id)description;
+- (void)dealloc;
+- (id)initWithOutputDeviceUID:(id)arg1 label:(id)arg2 callback:(CDUnknownBlockType)arg3;
 - (id)initWithOutputDeviceUID:(id)arg1;
 
 @end

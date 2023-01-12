@@ -9,7 +9,7 @@
 @class DNDRequestDetails;
 
 @protocol DNDRemoteServiceServerStateProtocol <NSObject>
-- (void)registerForStateUpdatesWithRequestDetails:(DNDRequestDetails *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
+- (void)queryStateForUpdateWithRequestDetails:(DNDRequestDetails *)arg1 completionHandler:(void (^)(DNDState *, NSError *))arg2;
 - (void)queryStateWithRequestDetails:(DNDRequestDetails *)arg1 completionHandler:(void (^)(DNDState *, NSError *))arg2;
 @end
 

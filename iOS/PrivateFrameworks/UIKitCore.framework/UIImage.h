@@ -13,10 +13,11 @@
 #import <UIKitCore/UIItemProviderPresentationSizeProviding-Protocol.h>
 #import <UIKitCore/UIItemProviderReading-Protocol.h>
 #import <UIKitCore/UIItemProviderWriting-Protocol.h>
+#import <UIKitCore/_UIMenuImageOrName-Protocol.h>
 
 @class CIImage, NSArray, NSMapTable, NSString, UIGraphicsImageRendererFormat, UIImageAsset, UIImageConfiguration, UIImageSymbolConfiguration, UITraitCollection, _UIImageContent;
 
-@interface UIImage : NSObject <NSItemProviderReading, NSItemProviderWriting, UIItemProviderPresentationSizeProviding, UIItemProviderReading, UIItemProviderWriting, NSCopying, NSSecureCoding>
+@interface UIImage : NSObject <NSItemProviderReading, NSItemProviderWriting, UIItemProviderPresentationSizeProviding, UIItemProviderReading, UIItemProviderWriting, _UIMenuImageOrName, NSCopying, NSSecureCoding>
 {
     NSMapTable *_siblingImages;
     UIImageConfiguration *_configuration;
@@ -79,7 +80,9 @@
 + (id)_imageWithCGPDFPage:(struct CGPDFPage *)arg1 scale:(double)arg2 orientation:(long long)arg3;
 + (id)_imageWithCGPDFPage:(struct CGPDFPage *)arg1;
 + (long long)_mirroredImageOrientationForOrientation:(long long)arg1;
++ (struct CGSize)_applyOrientation:(long long)arg1 toContentSizeInPixels:(struct CGSize)arg2;
 + (_Bool)supportsSecureCoding;
++ (void)_loadImageFromURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)imageWithCIImage:(id)arg1 scale:(double)arg2 orientation:(long long)arg3;
 + (id)imageWithCIImage:(id)arg1;
 + (id)imageWithCGImage:(struct CGImage *)arg1 scale:(double)arg2 orientation:(long long)arg3;
@@ -142,6 +145,11 @@
 + (id)_systemCameraImage;
 + (id)_systemCloseImageWithConfiguration:(id)arg1;
 + (id)_systemCloseImage;
++ (id)_systemImageNamed:(id)arg1 shape:(long long)arg2 fill:(long long)arg3 withConfiguration:(id)arg4;
++ (id)_systemImageNamed:(id)arg1 shape:(long long)arg2 fill:(long long)arg3;
++ (id)_systemImageNamed:(id)arg1 shape:(long long)arg2;
++ (id)_systemImageNamed:(id)arg1 variant:(unsigned long long)arg2 withConfiguration:(id)arg3;
++ (id)_systemImageNamed:(id)arg1 variant:(unsigned long long)arg2;
 + (id)_cachedImageForKey:(id)arg1 fromBlock:(CDUnknownBlockType)arg2;
 + (id)_tintedImageForSize:(struct CGSize)arg1 withTint:(id)arg2 maskImage:(id)arg3 effectsImage:(id)arg4 style:(int)arg5 edgeInsets:(struct UIEdgeInsets)arg6;
 + (id)_tintedImageForSize:(struct CGSize)arg1 withTint:(id)arg2 maskImage:(id)arg3 effectsImage:(id)arg4 style:(int)arg5;
@@ -152,8 +160,18 @@
 + (id)readableTypeIdentifiersForItemProvider;
 - (void).cxx_destruct;
 @property(retain, nonatomic, setter=_setImageAsset:) UIImageAsset *imageAsset; // @synthesize imageAsset=_imageAsset;
+- (void)_imageByCreatingBitmapRepresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)_imageWithBitmapRepresentation;
+- (void)_prepareForScreen:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)_imagePreparedForScreen:(id)arg1;
+- (id)_imageByResizingToSize:(struct CGSize)arg1;
+- (void)prepareThumbnailOfSize:(struct CGSize)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)imageByPreparingThumbnailOfSize:(struct CGSize)arg1;
+- (void)prepareForDisplayWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)imageByPreparingForDisplay;
 - (_Bool)_suppressesAccessibilityHairlineThickening;
 - (id)_imageThatSuppressesAccessibilityHairlineThickening;
+- (id)_imageWithSize:(struct CGSize)arg1 content:(id)arg2;
 - (id)_imageWithSize:(struct CGSize)arg1;
 - (id)_rasterizedImage;
 - (id)_imagePaddedByInsets:(struct UIEdgeInsets)arg1;
@@ -246,6 +264,11 @@
 - (double)__baselineOffsetFromBottom;
 - (double)_baselineOffsetFromBottom;
 @property(readonly, nonatomic) double baselineOffsetFromBottom;
+- (id)_outlinePath;
+- (unsigned long long)_numberOfHierarchyLayers;
+- (_Bool)_isHierarchicalColorSymbolImage;
+- (_Bool)_isMultiColorSymbolImage;
+- (_Bool)_isColoredSymbolImage;
 @property(readonly, nonatomic, getter=isSymbolImage) _Bool symbolImage;
 - (_Bool)_isSymbolImage;
 - (_Bool)_hasExplicitAlignmentRectInsets;
@@ -258,7 +281,7 @@
 - (struct CGSize)_sizeWithHairlineThickening:(_Bool)arg1 renderingEffects:(unsigned long long)arg2 forTraitCollection:(id)arg3;
 - (id)_imageWithStylePresets:(id)arg1 tintColor:(id)arg2 traitCollection:(id)arg3;
 @property(readonly, nonatomic) UIGraphicsImageRendererFormat *imageRendererFormat;
-- (long long)_effectiveRenderingMode;
+- (long long)_effectiveRenderingModeWithSymbolConfiguration:(id)arg1;
 @property(readonly, nonatomic) long long renderingMode;
 - (void)_setRenderingMode:(long long)arg1;
 - (id)imageWithRenderingMode:(long long)arg1;
@@ -279,6 +302,8 @@
 - (id)_initWithCGPDFPage:(struct CGPDFPage *)arg1 scale:(double)arg2 orientation:(long long)arg3;
 - (id)_initWithCGPDFPage:(struct CGPDFPage *)arg1;
 - (void)_setAlwaysStretches:(_Bool)arg1;
+@property(nonatomic, setter=_setSubimageInsets:) struct UIEdgeInsets _subimageInsets;
+- (void)_setCapInsets:(struct UIEdgeInsets)arg1;
 - (_Bool)_isTiledWhenStretchedToSize:(struct CGSize)arg1;
 - (_Bool)_isResizable;
 - (_Bool)_isSubimage;
@@ -294,7 +319,6 @@
 - (void)setFlipsForRightToLeftLayoutDirection:(_Bool)arg1;
 @property(readonly, nonatomic) _Bool flipsForRightToLeftLayoutDirection;
 - (struct CGSize)_sizeInPixels;
-- (struct CGSize)_contentSize;
 @property(readonly, nonatomic) struct CGSize size;
 @property(readonly, nonatomic) CIImage *CIImage;
 @property(readonly, nonatomic) struct CGImage *CGImage;
@@ -352,6 +376,8 @@
 - (id)_doubleBezeledImageWithExteriorShadowRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4 interiorShadowRed:(double)arg5 green:(double)arg6 blue:(double)arg7 alpha:(double)arg8 fillRed:(double)arg9 green:(double)arg10 blue:(double)arg11 alpha:(double)arg12;
 - (id)_bezeledImageWithShadowRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4 fillRed:(double)arg5 green:(double)arg6 blue:(double)arg7 alpha:(double)arg8 drawShadow:(_Bool)arg9;
 - (id)_flatImageWithWhite:(double)arg1 alpha:(double)arg2;
+- (_Bool)_probeIsSeeThrough;
+- (_Bool)_hasVisibleContentInRect:(struct CGRect)arg1 atScale:(double)arg2;
 - (_Bool)_isInvisibleAndGetIsTranslucent:(_Bool *)arg1;
 - (_Bool)_isNamed;
 - (void)_setNamed:(_Bool)arg1;
@@ -364,6 +390,7 @@
 - (id)_applicationIconImageForFormat:(int)arg1 precomposed:(_Bool)arg2 scale:(double)arg3;
 - (id)_applicationIconImageForFormat:(int)arg1 precomposed:(_Bool)arg2;
 - (void)_preheatBitmapData;
+- (id)_imageByApplyingVariant:(unsigned long long)arg1 allowNone:(_Bool)arg2;
 - (id)_applyBackdropViewStyle:(long long)arg1 includeTints:(_Bool)arg2 includeBlur:(_Bool)arg3 graphicsQuality:(long long)arg4 allowImageResizing:(_Bool)arg5;
 - (id)_applyBackdropViewStyle:(long long)arg1 includeTints:(_Bool)arg2 includeBlur:(_Bool)arg3 graphicsQuality:(long long)arg4;
 - (id)_applyBackdropViewStyle:(long long)arg1 includeTints:(_Bool)arg2 includeBlur:(_Bool)arg3;
@@ -382,6 +409,8 @@
 - (id)loadDataWithTypeIdentifier:(id)arg1 forItemProviderCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 error:(id *)arg3;
 @property(readonly, nonatomic, getter=isFromStatusBarImageProvider) _Bool fromStatusBarImageProvider;
+@property(readonly, nonatomic) NSString *_asMenuElementImageName;
+@property(readonly, nonatomic) UIImage *_asMenuElementImage;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

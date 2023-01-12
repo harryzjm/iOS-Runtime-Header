@@ -6,7 +6,7 @@
 
 #import <PhotosGraph/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, PGCurationCriteria, PGCurationOptions, PGDejunkerDeduperOptions, PGHighlightTailorContext, PGMoodGenerationContext, PGTitleTuple, PHAsset;
+@class NSArray, NSDictionary, NSString, PGCurationCriteria, PGCurationOptions, PGDejunkerDeduperOptions, PGGraph, PGHighlightTailorContext, PGHighlightTailorHighlightInfo, PGTitleTuple, PHAsset;
 @protocol PGHighlightModel;
 
 @protocol PGEnrichmentProfile <NSObject>
@@ -14,22 +14,20 @@
 @property(readonly) NSDictionary *debugInfos;
 @property(nonatomic) _Bool collectsDebugInfo;
 @property(readonly, nonatomic) NSString *identifier;
-- (PGCurationCriteria *)keyAssetCurationCriteriaWithHighlightTailorContext:(PGHighlightTailorContext *)arg1;
-- (PGCurationOptions *)curationOptionsForForHighlightTailorContext:(PGHighlightTailorContext *)arg1;
-- (unsigned short)enrichmentStateWithHighlightTailorContext:(PGHighlightTailorContext *)arg1;
-- (NSDictionary *)curationsWithHighlightTailorContext:(PGHighlightTailorContext *)arg1 progressBlock:(void (^)(double, _Bool *))arg2;
-- (NSArray *)extendedCurationWithHighlightTailorContext:(PGHighlightTailorContext *)arg1 progressBlock:(void (^)(double, _Bool *))arg2;
-- (PHAsset *)keyAssetWithHighlightTailorContext:(PGHighlightTailorContext *)arg1 progressBlock:(void (^)(double, _Bool *))arg2;
-- (NSDictionary *)momentTitleByMomentUUIDWithHighlightTailorContext:(PGHighlightTailorContext *)arg1;
-- (PGTitleTuple *)titleWithHighlightTailorContext:(PGHighlightTailorContext *)arg1 curatedAssets:(NSArray *)arg2 keyAsset:(PHAsset *)arg3 createVerboseTitle:(_Bool)arg4;
-- (unsigned long long)moodWithHighlightTailorContext:(PGHighlightTailorContext *)arg1 moodGenerationContext:(PGMoodGenerationContext *)arg2;
-- (double)promotionScoreWithHighlightTailorContext:(PGHighlightTailorContext *)arg1;
-- (PGHighlightTailorContext *)highlightTailorContextForHighlight:(id <PGHighlightModel>)arg1;
+- (PGCurationCriteria *)keyAssetCurationCriteriaWithHighlightInfo:(PGHighlightTailorHighlightInfo *)arg1 graph:(PGGraph *)arg2;
+- (PGCurationOptions *)curationOptionsForForHighlightInfo:(PGHighlightTailorHighlightInfo *)arg1;
+- (unsigned short)enrichmentStateWithHighlightInfo:(PGHighlightTailorHighlightInfo *)arg1;
+- (NSDictionary *)curationsWithHighlightInfo:(PGHighlightTailorHighlightInfo *)arg1 progressBlock:(void (^)(double, _Bool *))arg2;
+- (NSArray *)extendedCurationWithHighlightInfo:(PGHighlightTailorHighlightInfo *)arg1 progressBlock:(void (^)(double, _Bool *))arg2;
+- (PHAsset *)keyAssetWithHighlightInfo:(PGHighlightTailorHighlightInfo *)arg1 graph:(PGGraph *)arg2 progressBlock:(void (^)(double, _Bool *))arg3;
+- (NSDictionary *)momentTitleByMomentUUIDWithHighlightInfo:(PGHighlightTailorHighlightInfo *)arg1;
+- (PGTitleTuple *)titleWithHighlightInfo:(PGHighlightTailorHighlightInfo *)arg1 curatedAssets:(NSArray *)arg2 keyAsset:(PHAsset *)arg3 createVerboseTitle:(_Bool)arg4;
+- (double)promotionScoreWithHighlightInfo:(PGHighlightTailorHighlightInfo *)arg1;
+- (PGHighlightTailorHighlightInfo *)highlightInfoWithHighlight:(id <PGHighlightModel>)arg1 graph:(PGGraph *)arg2 highlightTailorContext:(PGHighlightTailorContext *)arg3;
 - (_Bool)canEnrichHighlight:(id <PGHighlightModel>)arg1 withOptions:(unsigned long long)arg2;
-- (_Bool)canUseLocationInformationForHighlightTailorContext:(PGHighlightTailorContext *)arg1;
+- (_Bool)canUseLocationInformationWithHighlightInfo:(PGHighlightTailorHighlightInfo *)arg1 graph:(PGGraph *)arg2;
 
 @optional
 @property(readonly, nonatomic) unsigned short targetEnrichmentState;
-- (PHAsset *)legacyKeyAssetWithHighlightTailorContext:(PGHighlightTailorContext *)arg1;
 @end
 

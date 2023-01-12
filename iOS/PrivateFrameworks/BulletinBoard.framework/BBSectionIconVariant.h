@@ -13,33 +13,37 @@
 
 @interface BBSectionIconVariant : NSObject <NSCopying, NSSecureCoding>
 {
+    id _imageInfo;
+    long long _imageInfoType;
     _Bool _precomposed;
     long long _format;
-    NSData *_imageData;
-    NSString *_imagePath;
-    NSString *_imageName;
     NSString *_bundlePath;
-    NSString *_applicationIdentifier;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)variantWithFormat:(long long)arg1 systemImageName:(id)arg2;
++ (id)variantWithFormat:(long long)arg1 imageName:(id)arg2 inBundleAtPath:(id)arg3;
 + (id)variantWithFormat:(long long)arg1 imageName:(id)arg2 inBundle:(id)arg3;
 + (id)variantWithFormat:(long long)arg1 imagePath:(id)arg2;
++ (id)variantWithFormat:(long long)arg1 applicationIdentifier:(id)arg2;
 + (id)variantWithFormat:(long long)arg1 imageData:(id)arg2;
-+ (id)_variantWithFormat:(long long)arg1;
 - (void).cxx_destruct;
 @property(nonatomic, getter=isPrecomposed) _Bool precomposed; // @synthesize precomposed=_precomposed;
-@property(copy, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
 @property(copy, nonatomic) NSString *bundlePath; // @synthesize bundlePath=_bundlePath;
-@property(copy, nonatomic) NSString *imageName; // @synthesize imageName=_imageName;
-@property(copy, nonatomic) NSString *imagePath; // @synthesize imagePath=_imagePath;
-@property(copy, nonatomic) NSData *imageData; // @synthesize imageData=_imageData;
 @property(nonatomic) long long format; // @synthesize format=_format;
+- (void)_setImageInfo:(id)arg1 ofType:(long long)arg2;
+- (id)_processImageInfo:(id)arg1 imageInfoType:(long long)arg2;
+- (id)_initWithFormat:(long long)arg1 imageInfo:(id)arg2 imageInfoType:(long long)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
+@property(copy, nonatomic) NSString *systemImageName;
+@property(copy, nonatomic) NSString *applicationIdentifier;
+@property(copy, nonatomic) NSString *imageName;
+@property(copy, nonatomic) NSString *imagePath;
+@property(copy, nonatomic) NSData *imageData;
 
 @end
 

@@ -6,23 +6,26 @@
 
 #import <objc/NSObject.h>
 
+#import <SpringBoard/SBFZStackParticipantDelegate-Protocol.h>
 #import <SpringBoard/SBHomeGestureParticipantDelegate-Protocol.h>
 #import <SpringBoard/SBSystemGestureRecognizerDelegate-Protocol.h>
 
-@class NSHashTable, NSMutableSet, NSString, SBHomeGestureParticipant, SBReachabilityGestureRecognizer, SBReachabilityWindow, SBScreenEdgePanGestureRecognizer, UIPanGestureRecognizer, UITapGestureRecognizer, UITransform;
+@class NSHashTable, NSMutableSet, NSString, SBFZStackParticipant, SBHomeGestureParticipant, SBReachabilityGestureRecognizer, SBReachabilityWindow, SBScreenEdgePanGestureRecognizer, UIPanGestureRecognizer, UITapGestureRecognizer, UITransform;
 
-@interface SBReachabilityManager : NSObject <SBSystemGestureRecognizerDelegate, SBHomeGestureParticipantDelegate>
+@interface SBReachabilityManager : NSObject <SBSystemGestureRecognizerDelegate, SBHomeGestureParticipantDelegate, SBFZStackParticipantDelegate>
 {
     NSHashTable *_observers;
     _Bool _reachabilityModeActive;
     unsigned long long _reachabilityExtensionGenerationCount;
     _Bool _reachabilityModeEnabled;
+    NSMutableSet *_temporaryEnabledReasons;
     NSMutableSet *_temporaryDisabledReasons;
     SBReachabilityWindow *_reachabilityWindow;
     UITransform *_reachabilityTransform;
     UITransform *_inverseReachabilityTransform;
     UITapGestureRecognizer *_dismissTapGestureRecognizer;
     SBHomeGestureParticipant *_homeGestureParticipant;
+    SBFZStackParticipant *_zStackParticipant;
     NSHashTable *_ignoredWindows;
     long long _animationsInFlight;
     SBReachabilityGestureRecognizer *_reachabilityGestureRecognizer;
@@ -39,6 +42,8 @@
 @property(readonly, nonatomic) _Bool reachabilityModeActive; // @synthesize reachabilityModeActive=_reachabilityModeActive;
 @property(readonly, nonatomic) double effectiveReachabilityYOffset; // @synthesize effectiveReachabilityYOffset=_effectiveReachabilityYOffset;
 @property(readonly, nonatomic) SBReachabilityGestureRecognizer *reachabilityGestureRecognizer; // @synthesize reachabilityGestureRecognizer=_reachabilityGestureRecognizer;
+- (void)zStackParticipant:(id)arg1 updatePreferences:(id)arg2;
+- (void)zStackParticipantDidChange:(id)arg1;
 - (void)homeGestureParticipantOwningHomeGestureDidChange:(id)arg1;
 - (id)viewForSystemGestureRecognizer:(id)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
@@ -72,6 +77,7 @@
 - (void)toggleReachability;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
+- (void)setReachabilityTemporarilyEnabled:(_Bool)arg1 forReason:(id)arg2;
 - (void)setReachabilityTemporarilyDisabled:(_Bool)arg1 forReason:(id)arg2;
 @property(readonly, nonatomic) double reachabilityYOffset;
 @property(nonatomic) _Bool reachabilityEnabled;

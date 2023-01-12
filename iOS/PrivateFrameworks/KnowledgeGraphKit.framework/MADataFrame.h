@@ -25,6 +25,7 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)csvString;
+- (id)dataFrameByAppendingColumnsOfDataFrame:(id)arg1 withName:(id)arg2;
 - (id)numberAtRow:(id)arg1 column:(id)arg2;
 - (float)floatAtRowIndex:(long long)arg1 columnIndex:(long long)arg2;
 - (long long)indexOfColumnWithLabel:(id)arg1;

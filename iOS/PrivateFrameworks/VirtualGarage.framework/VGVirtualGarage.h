@@ -46,7 +46,7 @@
 - (void)virtualGarageAddVehicle:(id)arg1;
 - (void)dataCoordinatorDidUpdateInstalledApps:(id)arg1;
 - (void)dataCoordinator:(id)arg1 didUpdateUnpairedVehicles:(id)arg2;
-- (void)dataCoordinator:(id)arg1 wantsToSelectVehicle:(id)arg2;
+- (void)dataCoordinator:(id)arg1 didUpdateCarPlayConnection:(_Bool)arg2 associatedVehicle:(id)arg3;
 - (void)dataCoordinator:(id)arg1 wantsToUpdateVehicle:(id)arg2 syncAcrossDevices:(_Bool)arg3;
 - (void)valueChangedForGEOConfigKey:(CDStruct_35640fce)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -67,6 +67,7 @@
 - (void)_addVehicle:(id)arg1;
 - (void)_setDataCoordintorRunning:(_Bool)arg1;
 - (void)_setupDataCoordinatorIfNeeded;
+- (_Bool)_persisterHasStaleStateForVehicle:(id)arg1;
 - (id)_vehicleWithIdentifier:(id)arg1;
 @property(readonly, nonatomic) VGVehicle *selectedVehicle;
 @property(readonly, nonatomic) NSArray *vehicles;

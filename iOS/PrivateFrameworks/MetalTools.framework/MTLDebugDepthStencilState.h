@@ -12,13 +12,12 @@
     MTLDepthStencilDescriptor *_descriptor;
 }
 
-+ (id)newDepthStencilStateWithBaseObject:(id)arg1 device:(id)arg2 descriptor:(id)arg3;
 @property(readonly, nonatomic) unsigned char attachmentWriteMask; // @synthesize attachmentWriteMask=_attachmentWriteMask;
 @property(readonly, nonatomic) MTLDepthStencilDescriptor *descriptor; // @synthesize descriptor=_descriptor;
 - (id)description;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (void)dealloc;
-- (id)_initWithBaseDepthStencilState:(id)arg1 device:(id)arg2 descriptor:(id)arg3;
+- (id)initWithDepthStencilState:(id)arg1 descriptor:(id)arg2 device:(id)arg3;
 
 @end
 

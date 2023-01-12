@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class BKSApplicationStateMonitor, NSCountedSet, NSMutableDictionary, NSMutableSet, NSSet;
+@class NSCountedSet, NSMutableDictionary, NSMutableSet, NSSet, RBSProcessMonitor;
 @protocol FPDProcessMonitorDelegate, OS_dispatch_queue;
 
 @interface FPDProcessMonitor : NSObject
 {
     NSObject<OS_dispatch_queue> *_notificationQueue;
-    BKSApplicationStateMonitor *_monitor;
+    RBSProcessMonitor *_monitor;
     NSMutableDictionary *_bundleIDForPID;
     NSCountedSet *_bundleIDs;
     NSCountedSet *_pids;
@@ -25,14 +25,20 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *notificationQueue; // @synthesize notificationQueue=_notificationQueue;
 @property __weak id <FPDProcessMonitorDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)invalidate;
-- (void)_updateMonitoredBundleIDs;
 - (void)removePIDToObserve:(int)arg1;
 - (void)_removePIDToObserve:(int)arg1;
 - (void)addPIDToObserve:(int)arg1;
 - (void)process:(int)arg1 didBecomeForeground:(_Bool)arg2;
 - (void)_addPIDToObserve:(int)arg1;
-- (id)_createAppMonitor;
-- (void)_handleAppStateChange:(id)arg1;
+- (void)_invalidate;
+- (void)_stopMonitoringPID:(int)arg1;
+- (void)_startMonitoringAndSendInitialNotificationForPID:(int)arg1;
+- (id)_bundleIDForPID:(int)arg1;
+- (void)_updateMonitoredBundleIDs;
+- (void)_createMonitor;
+- (void)_configureAppMonitor:(id)arg1;
+- (void)_handleProcessStateUpdate:(id)arg1;
+- (_Bool)_isProcessForeground:(id)arg1;
 - (_Bool)isForeground;
 - (id)prettyDescription;
 - (id)description;

@@ -10,7 +10,6 @@
 
 @class CKDPSubscriptionNotificationAlert, NSMutableArray, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDPSubscriptionNotification : PBCodable <NSCopying>
 {
     NSMutableArray *_additionalFields;

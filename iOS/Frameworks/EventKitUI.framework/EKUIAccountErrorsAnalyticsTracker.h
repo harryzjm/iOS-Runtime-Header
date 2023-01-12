@@ -10,7 +10,6 @@
 {
 }
 
-+ (void)trackRefreshedWhileOffline;
 + (void)trackCalendarListInteractedWithError;
 + (void)_trackErrorShown:(unsigned long long)arg1;
 + (void)trackCalendarListDisplayedOtherError;

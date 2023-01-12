@@ -35,7 +35,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, copy) NSString *description;
 @property(readonly, retain, nonatomic) NSString *type;
-- (id)replyContextPreviewChatItemForReply:(id)arg1;
+- (id)replyContextPreviewChatItemForReply:(id)arg1 chatContext:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

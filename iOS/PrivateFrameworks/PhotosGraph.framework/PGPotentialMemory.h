@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class CLLocation, NSDate, NSDictionary, NSSet, NSString, PGGraphMomentNode, PGMemoryGenerator, PHAssetCollection;
+#import <PhotosGraph/PGGraphMemoryProtocol-Protocol.h>
 
-@interface PGPotentialMemory : NSObject
+@class CLLocation, NSDate, NSDictionary, NSSet, NSString, PGGraphMomentNode, PGGraphMomentNodeCollection, PGMemoryGenerator, PHAssetCollection;
+
+@interface PGPotentialMemory : NSObject <PGGraphMemoryProtocol>
 {
     PHAssetCollection *_assetCollection;
     PGGraphMomentNode *_momentNode;
@@ -27,6 +29,7 @@
     NSDate *_universalStartDate;
     NSDate *_universalEndDate;
     NSSet *_features;
+    unsigned long long _memoryCategorySubcategory;
     NSSet *_momentIDs;
     NSDictionary *_numberOfAssetsByMomentIDs;
     PGPotentialMemory *_upgradedPotentialMemory;
@@ -38,7 +41,8 @@
 @property(retain, nonatomic) PGPotentialMemory *upgradedPotentialMemory; // @synthesize upgradedPotentialMemory=_upgradedPotentialMemory;
 @property(readonly) NSDictionary *numberOfAssetsByMomentIDs; // @synthesize numberOfAssetsByMomentIDs=_numberOfAssetsByMomentIDs;
 @property(readonly) NSSet *momentIDs; // @synthesize momentIDs=_momentIDs;
-@property(retain) NSSet *features; // @synthesize features=_features;
+@property(readonly, nonatomic) unsigned long long memoryCategorySubcategory; // @synthesize memoryCategorySubcategory=_memoryCategorySubcategory;
+@property(retain, nonatomic) NSSet *features; // @synthesize features=_features;
 @property double contentScore; // @synthesize contentScore=_contentScore;
 @property(retain) NSString *eventName; // @synthesize eventName=_eventName;
 @property(retain) NSSet *peopleUUIDs; // @synthesize peopleUUIDs=_peopleUUIDs;
@@ -48,9 +52,12 @@
 @property unsigned long long subcategory; // @synthesize subcategory=_subcategory;
 @property unsigned long long category; // @synthesize category=_category;
 @property long long sourceType; // @synthesize sourceType=_sourceType;
-@property(retain) NSSet *momentNodes; // @synthesize momentNodes=_momentNodes;
+@property(retain, nonatomic) NSSet *momentNodes; // @synthesize momentNodes=_momentNodes;
 @property(retain) PGGraphMomentNode *momentNode; // @synthesize momentNode=_momentNode;
 @property(retain) PHAssetCollection *assetCollection; // @synthesize assetCollection=_assetCollection;
+@property(readonly, nonatomic) PGGraphMomentNodeCollection *memoryMomentNodes;
+- (id)memoryFeatureNodesInGraph:(id)arg1;
+@property(readonly, nonatomic) unsigned long long memoryCategory;
 - (id)buildAssetCollectionUsingMemoryController:(id)arg1 withMinimumNumberOfAssets:(unsigned long long)arg2;
 - (double)computeContentScoreUsingMemoryController:(id)arg1;
 - (void)_resetOverlapCheck;
@@ -62,6 +69,12 @@
 - (id)initWithCategory:(unsigned long long)arg1 subcategory:(unsigned long long)arg2 momentNodes:(id)arg3 sourceType:(long long)arg4;
 - (id)initWithCategory:(unsigned long long)arg1 subcategory:(unsigned long long)arg2 momentNode:(id)arg3;
 - (id)initWithCategory:(unsigned long long)arg1 subcategory:(unsigned long long)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

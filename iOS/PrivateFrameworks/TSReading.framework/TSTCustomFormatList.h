@@ -18,9 +18,9 @@
 - (unsigned int)maxKey;
 - (long long)count;
 - (id)customFormatWrapperForKey:(unsigned int)arg1;
-- (struct TSUCustomFormat *)customFormatForKey:(unsigned int)arg1;
-- (unsigned int)addCustomFormat:(struct TSUCustomFormat *)arg1 withOldKey:(unsigned int)arg2;
-- (unsigned int)addCustomFormat:(struct TSUCustomFormat *)arg1 duringImport:(_Bool)arg2;
+- (void *)customFormatForKey:(unsigned int)arg1;
+- (unsigned int)addCustomFormat:(void *)arg1 withOldKey:(unsigned int)arg2;
+- (unsigned int)addCustomFormat:(void *)arg1 duringImport:(_Bool)arg2;
 - (_Bool)supportsIDMapForType:(int)arg1;
 - (void)dealloc;
 - (id)initWithContext:(id)arg1;

@@ -6,19 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class HKStatistics;
+@class HKStatistics, NSDate;
 
 @interface HDHeadphoneAudioExposureStatisticsSnapshot : NSObject
 {
     _Bool _includesPrunableData;
     HKStatistics *_statistics;
+    NSDate *_previousNotificationDate;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSDate *previousNotificationDate; // @synthesize previousNotificationDate=_previousNotificationDate;
 @property(readonly, nonatomic) _Bool includesPrunableData; // @synthesize includesPrunableData=_includesPrunableData;
 @property(readonly, nonatomic) HKStatistics *statistics; // @synthesize statistics=_statistics;
 - (id)unitTesting_hearingSevenDayDoseCategorySampleWithNow:(id)arg1 error:(id *)arg2;
-- (id)initWithStatistics:(id)arg1 includesPrunableData:(_Bool)arg2;
+- (id)initWithStatistics:(id)arg1 includesPrunableData:(_Bool)arg2 previousNotificationDate:(id)arg3;
 
 @end
 

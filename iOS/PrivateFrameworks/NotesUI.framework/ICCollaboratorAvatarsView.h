@@ -10,8 +10,11 @@
 
 @interface ICCollaboratorAvatarsView : UIView
 {
+    _Bool _reverseZIndexing;
+    _Bool _useImageRenderer;
     double _borderWidth;
     double _dimension;
+    NSArray *_participants;
     CKShare *_share;
     double _shadowOpacity;
     double _shadowRadius;
@@ -24,13 +27,18 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIStackView *avatarStackView; // @synthesize avatarStackView=_avatarStackView;
 @property(retain, nonatomic) NSArray *avatarContainerViews; // @synthesize avatarContainerViews=_avatarContainerViews;
+@property(nonatomic) _Bool useImageRenderer; // @synthesize useImageRenderer=_useImageRenderer;
+@property(nonatomic) _Bool reverseZIndexing; // @synthesize reverseZIndexing=_reverseZIndexing;
 @property(nonatomic) double spacing; // @synthesize spacing=_spacing;
 @property(nonatomic) double shadowRadius; // @synthesize shadowRadius=_shadowRadius;
 @property(nonatomic) double shadowOpacity; // @synthesize shadowOpacity=_shadowOpacity;
 @property(nonatomic) struct CGSize shadowOffset; // @synthesize shadowOffset=_shadowOffset;
 @property(nonatomic) __weak CKShare *share; // @synthesize share=_share;
+@property(retain, nonatomic) NSArray *participants; // @synthesize participants=_participants;
 @property(nonatomic) double dimension; // @synthesize dimension=_dimension;
 @property(nonatomic) double borderWidth; // @synthesize borderWidth=_borderWidth;
+- (id)avatarsFromRendererWithParticipants:(id)arg1;
+- (id)avatarViewsWithShare:(id)arg1;
 - (void)updateUI;
 - (void)updateShadows;
 - (void)setUpAvatarContainerViews;

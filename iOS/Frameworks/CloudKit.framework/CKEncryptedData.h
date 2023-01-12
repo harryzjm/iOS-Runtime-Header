@@ -24,8 +24,6 @@
 @property(copy, nonatomic) NSData *data; // @synthesize data=_data;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-@property(readonly, nonatomic) _Bool needsDecryption;
-@property(readonly, nonatomic) _Bool needsEncryption;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, copy) NSString *description;
 - (id)CKPropertiesDescription;

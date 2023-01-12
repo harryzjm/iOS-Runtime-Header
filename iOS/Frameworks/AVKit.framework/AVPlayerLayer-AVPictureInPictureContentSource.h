@@ -11,6 +11,7 @@
 @class NSString, UIWindow;
 
 @interface AVPlayerLayer (AVPictureInPictureContentSource) <AVPictureInPictureContentSource>
+- (long long)avkit_contentSourceType;
 - (id)avkit_makePictureInPicturePlatformAdapterContentPlaceholderLayer;
 - (id)avkit_pictureInPictureViewController;
 @property(readonly, nonatomic) struct CGRect avkit_videoRectInWindow;

@@ -7,6 +7,9 @@
 #import <Accounts/ACAccountStore.h>
 
 @interface ACAccountStore (RemoteManagement)
++ (id)rm_defaultStore;
+- (id)rm_remoteManagementAccountForProfileIdentifier:(id)arg1;
+- (id)rm_remoteManagementAccountForEnrollmentURL:(id)arg1;
 - (id)rm_remoteManagementAccountForIdentifier:(id)arg1;
 - (id)rm_remoteManagementAccountForDSID:(id)arg1;
 - (id)rm_remoteManagementAccountForAltDSID:(id)arg1;

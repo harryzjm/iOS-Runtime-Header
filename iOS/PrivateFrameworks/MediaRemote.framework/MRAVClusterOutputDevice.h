@@ -13,11 +13,14 @@
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *memberOutputDevices; // @synthesize memberOutputDevices=_memberOutputDevices;
+- (_Bool)anyDeviceSupportsMultiplayer;
+- (id)primaryID;
 - (id)clusterComposition;
 - (unsigned int)deviceSubtype;
 - (unsigned int)deviceType;
 - (id)uid;
 - (id)initWithPrimaryOutputDevice:(id)arg1 members:(id)arg2 sourceInfo:(id)arg3;
+- (id)initWithDevices:(id)arg1 sourceInfo:(id)arg2;
 
 @end
 

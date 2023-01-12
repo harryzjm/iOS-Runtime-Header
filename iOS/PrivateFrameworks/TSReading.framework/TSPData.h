@@ -17,11 +17,11 @@
     id <TSPDataStorage> _storage;
     NSString *_filename;
     TSPDataManager *_manager;
-    array_019f9a10 _digest;
+    struct array<unsigned char, 20> _digest;
     _Bool _isDeallocating;
 }
 
-+ (_Bool)updateDigest:(array_019f9a10 *)arg1 withProtobufString:(const basic_string_7c0a1c0b *)arg2;
++ (_Bool)updateDigest:(void *)arg1 withProtobufString:(const void *)arg2;
 + (id)requiredAVAssetOptions;
 + (id)cullingListeners;
 + (void)removeCullingListener:(id)arg1;
@@ -41,11 +41,11 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) long long identifier; // @synthesize identifier=_identifier;
 - (_Bool)isStorageInPackage:(id)arg1;
-- (const array_019f9a10 *)digest;
+- (const void *)digest;
 - (id)preferredFilename;
 - (void)setFilename:(id)arg1 storage:(id)arg2;
 @property(retain, nonatomic) id <TSPDataStorage> storage;
-- (id)initWithIdentifier:(long long)arg1 digest:(const array_019f9a10 *)arg2 filename:(id)arg3 storage:(id)arg4 manager:(id)arg5;
+- (id)initWithIdentifier:(long long)arg1 digest:(const void *)arg2 filename:(id)arg3 storage:(id)arg4 manager:(id)arg5;
 @property(readonly, nonatomic) unsigned long long encodedLength;
 - (_Bool)isLengthLikelyToBeGreaterThan:(unsigned long long)arg1;
 - (_Bool)writeToURL:(id)arg1 error:(id *)arg2;

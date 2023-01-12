@@ -10,6 +10,7 @@
 
 @class BCSBusinessItem, NSData;
 
+__attribute__((visibility("hidden")))
 @interface BCSBusinessItemMemoryCache : NSObject <BCSItemCaching>
 {
     BCSBusinessItem *_lastFetchedBusinessItem;
@@ -17,19 +18,12 @@
     NSData *_lastFetchedBusinessItemIconData;
 }
 
-+ (id)sharedCache;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSData *lastFetchedBusinessItemIconData; // @synthesize lastFetchedBusinessItemIconData=_lastFetchedBusinessItemIconData;
-@property(retain, nonatomic) BCSBusinessItem *bizItemForLastFetchedIcon; // @synthesize bizItemForLastFetchedIcon=_bizItemForLastFetchedIcon;
-@property(retain, nonatomic) BCSBusinessItem *lastFetchedBusinessItem; // @synthesize lastFetchedBusinessItem=_lastFetchedBusinessItem;
 - (void)deleteExpiredItemsOfType:(long long)arg1;
 - (void)deleteItemsOfType:(long long)arg1;
 - (void)deleteItemMatching:(id)arg1;
 - (void)updateItem:(id)arg1 withItemIdentifier:(id)arg2;
 - (id)itemMatching:(id)arg1;
-- (void)deleteCache;
-- (void)setLastFetchedBusinesIconData:(id)arg1 withMatchingBusinessItem:(id)arg2;
-- (id)lastFetchedBusinessItemIconDataForBizItem:(id)arg1;
 
 @end
 

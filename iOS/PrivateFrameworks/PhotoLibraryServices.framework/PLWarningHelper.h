@@ -11,7 +11,8 @@
 @interface PLWarningHelper : NSObject
 {
     NSArray *__assets;
-    NSArray *__additionalPhotoStreamAssets;
+    long long __duplicatePhotoStreamCount;
+    long long __syndicationAssetCount;
     NSString *__clientName;
     long long __style;
     PLPhotoLibrary *_photoLibrary;
@@ -21,17 +22,18 @@
 @property(retain, nonatomic) PLPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property(nonatomic) long long _style; // @synthesize _style=__style;
 @property(retain, nonatomic) NSString *_clientName; // @synthesize _clientName=__clientName;
-@property(retain, nonatomic) NSArray *_additionalPhotoStreamAssets; // @synthesize _additionalPhotoStreamAssets=__additionalPhotoStreamAssets;
+@property(nonatomic) long long _syndicationAssetCount; // @synthesize _syndicationAssetCount=__syndicationAssetCount;
+@property(nonatomic) long long _duplicatePhotoStreamCount; // @synthesize _duplicatePhotoStreamCount=__duplicatePhotoStreamCount;
 @property(retain, nonatomic) NSArray *_assets; // @synthesize _assets=__assets;
 - (id)allWarningMessageCombinations;
 - (void)getDeletionWarningTitle:(id *)arg1 message:(id *)arg2 buttonTitle:(id *)arg3 forAlbums:(id)arg4 folders:(id)arg5 clientName:(id)arg6 style:(long long)arg7;
-- (id)_usedElsewhereWarningTextForAssetCount:(long long)arg1 inLibraryScopeCount:(long long)arg2 inPhotoStreamCount:(long long)arg3 iniPhotoCount:(long long)arg4 inSomeAlbumCount:(long long)arg5 affectedLocalAlbumsCount:(long long)arg6 itemKindSuffix:(id)arg7 actualDeletionCount:(long long)arg8;
-- (id)_usedElsewhereWarningTextForAssets:(id)arg1 additionalPhotoStreamAssets:(id)arg2 actualDeletionCount:(long long)arg3;
+- (id)_usedElsewhereWarningTextForAssetCount:(long long)arg1 inLibraryScopeCount:(long long)arg2 inPhotoStreamCount:(long long)arg3 iniPhotoCount:(long long)arg4 inSomeAlbumCount:(long long)arg5 affectedLocalAlbumsCount:(long long)arg6 itemKindSuffix:(id)arg7 actualDeletionCount:(long long)arg8 syndicationAssetCount:(long long)arg9;
+- (id)_usedElsewhereWarningTextForAssets:(id)arg1 duplicatePhotoStreamCount:(long long)arg2 actualDeletionCount:(long long)arg3;
 - (id)_cloudSharedWarningTextForAssets:(id)arg1;
 - (void)getAvalancheDeleteWarning:(id *)arg1 actualDeletionCount:(long long *)arg2 forAssets:(id)arg3;
 - (void)getExpungeWarningMessage:(id *)arg1 buttonTitle:(id *)arg2 forAssets:(id)arg3;
 - (void)_getDeletionWarningTitle:(id *)arg1 message:(id *)arg2 buttonTitle:(id *)arg3;
-- (void)getDeletionWarningTitle:(id *)arg1 message:(id *)arg2 buttonTitle:(id *)arg3 forAssets:(id)arg4 additionalPhotoStreamAssets:(id)arg5 clientName:(id)arg6 style:(long long)arg7;
+- (void)getDeletionWarningTitle:(id *)arg1 message:(id *)arg2 buttonTitle:(id *)arg3 forAssets:(id)arg4 duplicatePhotoStreamCount:(long long)arg5 syndicationAssetCount:(long long)arg6 clientName:(id)arg7 style:(long long)arg8;
 - (void)_getWarningTitle:(id *)arg1 message:(id *)arg2 buttonTitle:(id *)arg3 forItemSuffix:(id)arg4 count:(unsigned long long)arg5 operation:(long long)arg6 clientName:(id)arg7;
 - (void)getWarningTitle:(id *)arg1 message:(id *)arg2 buttonTitle:(id *)arg3 forAssets:(id)arg4 operation:(long long)arg5 clientName:(id)arg6;
 - (id)initWithPhotoLibrary:(id)arg1;

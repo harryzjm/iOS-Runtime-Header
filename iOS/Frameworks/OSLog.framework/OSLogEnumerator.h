@@ -6,24 +6,9 @@
 
 #import <Foundation/NSEnumerator.h>
 
-@class NSObject, OSLogEntry, OSLogEventStream;
-@protocol OS_dispatch_semaphore;
-
 @interface OSLogEnumerator : NSEnumerator
 {
-    OSLogEventStream *_stream;
-    OSLogEntry *_next;
-    _Bool _done;
-    NSObject<OS_dispatch_semaphore> *_pushDone;
-    NSObject<OS_dispatch_semaphore> *_handlerDone;
 }
-
-- (void).cxx_destruct;
-- (void)_handleInvalidation;
-- (void)_handleEventProxy:(id)arg1;
-- (id)nextObject;
-- (void)dealloc;
-- (id)initWithEventStream:(id)arg1 options:(unsigned long long)arg2 position:(id)arg3;
 
 @end
 

@@ -6,11 +6,12 @@
 
 #import <Home/HFActionBuilderFactory-Protocol.h>
 #import <Home/HFMediaAccessoryLikeItem-Protocol.h>
+#import <Home/HFMediaAccessoryProtocol-Protocol.h>
 
-@class HMHome, NSSet, NSString;
+@class HFMediaAccessoryCommonSettingsManager, HMHome, NSSet, NSString;
 @protocol HFCharacteristicValueSource, HFHomeKitObject, HFHomeKitSettingsVendor, HFMediaProfileContainer, HFMediaValueSource;
 
-@interface HFMediaAccessoryItem <HFMediaAccessoryLikeItem, HFActionBuilderFactory>
+@interface HFMediaAccessoryItem <HFMediaAccessoryProtocol, HFMediaAccessoryLikeItem, HFActionBuilderFactory>
 {
     _Bool _isItemInActionBuilder;
     id <HFHomeKitObject> _homeKitObject;
@@ -35,6 +36,7 @@
 - (id)serviceNameComponents;
 - (_Bool)_isInstallingSoftwareUpdate;
 - (id)performStandardUpdateWithOptions:(id)arg1;
+- (void)_decorateWithSiriEndpointProfileSpecificKeys:(id)arg1;
 - (void)_decorateWithMediaSystemSpecificKeys:(id)arg1;
 - (void)_decorateServiceLikeItemKeys:(id)arg1;
 - (void)_decorateSettingsSyncKeys:(id)arg1;
@@ -55,6 +57,7 @@
 - (_Bool)isHomePodAndIsInMediaSystem;
 - (_Bool)isStandaloneHomePod;
 - (_Bool)supportsMultiUser;
+- (unsigned long long)homePodVariant;
 - (_Bool)isHomePod;
 - (_Bool)isHomePodMediaSystem;
 @property(readonly, nonatomic) _Bool supportsMediaAction;
@@ -72,6 +75,12 @@
 - (unsigned long long)_effectiveLoadingStateForSuggestedLoadingState:(unsigned long long)arg1;
 - (id)copyWithValueSource:(id)arg1;
 - (id)settings;
+- (id)profiles;
+- (id)setEnableAnnounce:(_Bool)arg1;
+- (_Bool)isAnnounceEnabled;
+- (_Bool)_hasOnboarded;
+- (_Bool)isSiriEndpointAccessory;
+@property(readonly, nonatomic) HFMediaAccessoryCommonSettingsManager *commonSettingsManager;
 - (id)room;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)createControlItems;

@@ -8,7 +8,7 @@
 
 #import <UIKitCore/UIApplicationSceneSettings-Protocol.h>
 
-@class BSCornerRadiusConfiguration, NSNumber, NSString;
+@class BSCornerRadiusConfiguration, NSNumber, NSSet, NSString;
 
 @interface UIMutableApplicationSceneSettings : FBSMutableSceneSettings <UIApplicationSceneSettings>
 {
@@ -18,6 +18,9 @@
 - (id)valueDescriptionForFlag:(long long)arg1 object:(id)arg2 ofSetting:(unsigned long long)arg3;
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(nonatomic, setter=_setDebugValidationOrientationMaskEnabled:) _Bool _debugValidationOrientationMaskEnabled;
+@property(retain, nonatomic) NSSet *targetOfEventDeferringEnvironments;
+@property(nonatomic) long long interfaceOrientationMode;
 @property(nonatomic) long long pointerLockStatus;
 @property(nonatomic) long long accessibilityContrast;
 @property(nonatomic) unsigned long long scenePresenterRenderIdentifierForSnapshotting;
@@ -45,7 +48,7 @@
 @property(retain, nonatomic) NSNumber *forcedStatusBarStyle;
 @property(nonatomic) long long userInterfaceStyle;
 @property(nonatomic) unsigned long long deactivationReasons;
-@property(nonatomic) int statusBarStyleOverridesToSuppress;
+@property(nonatomic) unsigned long long statusBarStyleOverridesToSuppress;
 @property(nonatomic) _Bool underLock;
 @property(retain, nonatomic) NSString *persistenceIdentifier;
 

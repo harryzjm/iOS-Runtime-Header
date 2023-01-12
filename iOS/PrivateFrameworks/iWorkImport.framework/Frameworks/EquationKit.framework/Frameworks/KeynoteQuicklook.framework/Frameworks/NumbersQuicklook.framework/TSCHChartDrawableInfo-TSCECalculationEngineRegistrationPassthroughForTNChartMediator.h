@@ -14,10 +14,11 @@
 - (id)objectToArchiveInDependencyTracker;
 - (id)componentRootObject;
 - (_Bool)registerLast;
-- (UUIDData_5fbc143e)formulaOwnerUID;
+- (unsigned short)ownerKind;
+- (struct TSKUIDStruct)formulaOwnerUID;
 - (id)formulaOwner;
 - (void)unregisterFromCalcEngine:(id)arg1;
-- (void)registerWithCalcEngineForDocumentLoad:(id)arg1;
+- (void)registerWithCalcEngineForDocumentLoad:(id)arg1 ownerKind:(unsigned short)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

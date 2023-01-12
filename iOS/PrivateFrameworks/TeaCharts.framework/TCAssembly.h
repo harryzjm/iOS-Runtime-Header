@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <TeaCharts/NFFrameworkAssembly-Protocol.h>
+#import <TeaCharts/TFFrameworkAssembly-Protocol.h>
 
 @class MISSING_TYPE, NSArray;
 
-@interface TCAssembly : NSObject <NFFrameworkAssembly>
+@interface TCAssembly : NSObject <TFFrameworkAssembly>
 {
     MISSING_TYPE *assemblies;
 }

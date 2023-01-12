@@ -8,7 +8,6 @@
 
 @class CKUploadRequestMetadata;
 
-__attribute__((visibility("hidden")))
 @interface CKRequestAssetOperation : NSOperation
 {
     long long _state;

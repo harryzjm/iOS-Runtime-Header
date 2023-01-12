@@ -10,7 +10,7 @@
 #import <UIKitCore/UITextInputTraits-Protocol.h>
 #import <UIKitCore/UITextInputTraits_Private-Protocol.h>
 
-@class NSIndexSet, NSString, UIColor, UIImage, UIInputContextHistory, UITextInputPasswordRules;
+@class NSIndexSet, NSString, UIColor, UIImage, UIInputContextHistory, UITextInputPasswordRules, UITextRange, _UISupplementalLexicon;
 
 @interface UITextInputTraits : NSObject <UITextInputTraits, UITextInputTraits_Private, NSCopying>
 {
@@ -71,6 +71,14 @@
     struct _NSRange validTextRange;
     long long textScriptType;
     UIInputContextHistory *inputContextHistory;
+    _UISupplementalLexicon *supplementalLexicon;
+    UIImage *supplementalLexiconAmbiguousItemIcon;
+    _Bool disableHandwritingKeyboard;
+    struct {
+        unsigned int customizedSelectionBarColor:1;
+        unsigned int customizedSelectionHighlightColor:1;
+        unsigned int customizedInsertionPointColor:1;
+    } _privateInputTraitFlags;
     _Bool manageRecentInputs;
     _Bool hasDefaultContents;
     _Bool acceptsPayloads;
@@ -78,8 +86,16 @@
     _Bool displaySecureEditsUsingPlainText;
     _Bool hidePrediction;
     _Bool loadKeyboardsForSiriLanguage;
+    UIColor *_insertionPointColor;
+    UIColor *_selectionBarColor;
+    UIColor *_selectionHighlightColor;
+    UIColor *_selectionBorderColor;
+    double _selectionBorderWidth;
+    double _selectionCornerRadius;
     NSIndexSet *PINEntrySeparatorIndexes;
     long long forceDictationKeyboardType;
+    long long _preferredKeyboardStyle;
+    struct UIEdgeInsets _selectionEdgeInsets;
 }
 
 + (_Bool)keyboardTypeRequiresASCIICapable:(long long)arg1;
@@ -98,6 +114,10 @@
 + (long long)translateToUIAutocorrectionType:(unsigned long long)arg1;
 + (long long)translateToUIAutocapitalizationType:(unsigned long long)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) long long preferredKeyboardStyle; // @synthesize preferredKeyboardStyle=_preferredKeyboardStyle;
+@property(nonatomic) _Bool disableHandwritingKeyboard; // @synthesize disableHandwritingKeyboard;
+@property(retain, nonatomic) UIImage *supplementalLexiconAmbiguousItemIcon; // @synthesize supplementalLexiconAmbiguousItemIcon;
+@property(retain, nonatomic) _UISupplementalLexicon *supplementalLexicon; // @synthesize supplementalLexicon;
 @property(nonatomic) _Bool loadKeyboardsForSiriLanguage; // @synthesize loadKeyboardsForSiriLanguage;
 @property(nonatomic) long long textScriptType; // @synthesize textScriptType;
 @property(nonatomic) _Bool isCarPlayIdiom; // @synthesize isCarPlayIdiom;
@@ -141,12 +161,16 @@
 @property(retain, nonatomic) UIColor *underlineColorForSpelling; // @synthesize underlineColorForSpelling;
 @property(retain, nonatomic) UIColor *underlineColorForTextAlternatives; // @synthesize underlineColorForTextAlternatives;
 @property(retain, nonatomic) UIImage *selectionDragDotImage; // @synthesize selectionDragDotImage;
-@property(retain, nonatomic) UIColor *selectionHighlightColor; // @synthesize selectionHighlightColor;
-@property(retain, nonatomic) UIColor *selectionBarColor; // @synthesize selectionBarColor;
-@property(retain, nonatomic) UIColor *insertionPointColor; // @synthesize insertionPointColor;
 @property(copy, nonatomic) NSIndexSet *PINEntrySeparatorIndexes; // @synthesize PINEntrySeparatorIndexes;
 @property(nonatomic) struct _NSRange validTextRange; // @synthesize validTextRange;
 @property(nonatomic) _Bool manageRecentInputs; // @synthesize manageRecentInputs;
+@property(nonatomic) struct UIEdgeInsets selectionEdgeInsets; // @synthesize selectionEdgeInsets=_selectionEdgeInsets;
+@property(nonatomic) double selectionCornerRadius; // @synthesize selectionCornerRadius=_selectionCornerRadius;
+@property(nonatomic) double selectionBorderWidth; // @synthesize selectionBorderWidth=_selectionBorderWidth;
+@property(retain, nonatomic) UIColor *selectionBorderColor; // @synthesize selectionBorderColor=_selectionBorderColor;
+@property(retain, nonatomic) UIColor *selectionHighlightColor; // @synthesize selectionHighlightColor=_selectionHighlightColor;
+@property(retain, nonatomic) UIColor *selectionBarColor; // @synthesize selectionBarColor=_selectionBarColor;
+@property(retain, nonatomic) UIColor *insertionPointColor; // @synthesize insertionPointColor=_insertionPointColor;
 @property(copy, nonatomic) UITextInputPasswordRules *passwordRules; // @synthesize passwordRules;
 @property(nonatomic) long long smartDashesType; // @synthesize smartDashesType;
 @property(nonatomic) long long smartQuotesType; // @synthesize smartQuotesType;
@@ -175,6 +199,7 @@
 - (void)setToDefaultValues;
 - (void)dealloc;
 - (id)init;
+@property(readonly, nonatomic) _Bool allowsSuggestionsOnlyMode;
 @property(readonly, nonatomic) long long dictationInfoKeyboardType;
 @property(readonly, nonatomic) long long dictationKeyboardType;
 @property(nonatomic) id textSuggestionDelegate; // @dynamic textSuggestionDelegate;
@@ -188,6 +213,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) UITextRange *textRangeForServicesInteraction;
 
 @end
 

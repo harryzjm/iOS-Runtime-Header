@@ -91,6 +91,7 @@
 @property(readonly, nonatomic) __weak id <IKAppContextDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) unsigned long long mode; // @synthesize mode=_mode;
 @property(readonly, nonatomic) __weak id <IKApplication> app; // @synthesize app=_app;
+- (void)willPerformXhrRequest:(id)arg1;
 - (void)_networkPropertiesChanged:(id)arg1;
 - (void)handleCacheUpdate;
 - (void)appCache:(id)arg1 didUpdateWithChecksum:(id)arg2;

@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeUI/HUSceneEditorDelegate-Protocol.h>
 #import <HomeUI/HUServiceGridItemManagerDelegate-Protocol.h>
 
 @class HFItem, HUAccessorySceneListContentItemManager, NSSet, NSString;
 @protocol HFServiceLikeItem, HUAccessorySceneListContentViewControllerDelegate;
 
-@interface HUAccessorySceneListContentViewController <HUServiceGridItemManagerDelegate>
+@interface HUAccessorySceneListContentViewController <HUServiceGridItemManagerDelegate, HUSceneEditorDelegate>
 {
     _Bool _includeTopMargin;
     _Bool _persistAddedSuggestions;
@@ -17,16 +18,21 @@
     unsigned long long _contentSource;
     unsigned long long _selectionType;
     HFItem<HFServiceLikeItem> *_serviceLikeItem;
+    NSString *_analyticsPresentationContext;
+    HFItem *_currentlyOpenedItem;
 }
 
 + (id)computeNumberOfItemsToDisplayForContentSource:(unsigned long long)arg1 serviceLikeItem:(id)arg2 home:(id)arg3;
 - (void).cxx_destruct;
+@property(retain, nonatomic) HFItem *currentlyOpenedItem; // @synthesize currentlyOpenedItem=_currentlyOpenedItem;
 @property(nonatomic) _Bool persistAddedSuggestions; // @synthesize persistAddedSuggestions=_persistAddedSuggestions;
 @property(nonatomic) _Bool includeTopMargin; // @synthesize includeTopMargin=_includeTopMargin;
+@property(retain, nonatomic) NSString *analyticsPresentationContext; // @synthesize analyticsPresentationContext=_analyticsPresentationContext;
 @property(readonly, copy, nonatomic) HFItem<HFServiceLikeItem> *serviceLikeItem; // @synthesize serviceLikeItem=_serviceLikeItem;
 @property(readonly, nonatomic) unsigned long long selectionType; // @synthesize selectionType=_selectionType;
 @property(readonly, nonatomic) unsigned long long contentSource; // @synthesize contentSource=_contentSource;
 @property(nonatomic) __weak id <HUAccessorySceneListContentViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)sceneEditor:(id)arg1 didCommitActionSet:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (_Bool)collectionView:(id)arg1 shouldHighlightItemAtIndexPath:(id)arg2;
 - (_Bool)presentationCoordinator:(id)arg1 shouldBeginInteractivePresentationWithTouchLocation:(struct CGPoint)arg2;

@@ -13,10 +13,12 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityParentForFindingScrollParent;
 @property(readonly, nonatomic) _Bool _axSwitcherIsVisible;
 - (void)_axSetElementsArray:(id)arg1 dictionary:(id)arg2;
 @property(readonly, nonatomic) NSMutableDictionary *_axAppElementsDictionary;
 @property(readonly, nonatomic) NSArray *_axAppElements;
+- (id)_axMainSwitcher;
 @property(readonly, nonatomic) SBFluidSwitcherViewControllerAccessibility *_axSwitcherViewController;
 - (_Bool)_axScrollToAppElement:(id)arg1;
 - (id)_axElementForAppLayout:(id)arg1;

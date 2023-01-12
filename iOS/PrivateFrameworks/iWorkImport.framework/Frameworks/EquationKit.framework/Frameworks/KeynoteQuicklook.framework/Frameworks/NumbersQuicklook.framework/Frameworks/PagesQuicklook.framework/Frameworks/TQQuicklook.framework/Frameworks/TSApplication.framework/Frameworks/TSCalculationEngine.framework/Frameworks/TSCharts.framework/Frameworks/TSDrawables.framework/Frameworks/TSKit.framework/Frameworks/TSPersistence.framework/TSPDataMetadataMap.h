@@ -12,9 +12,9 @@
 }
 
 - (void).cxx_destruct;
-- (void)saveToMessage:(struct DataMetadataMap *)arg1 archiver:(id)arg2;
+- (void)saveToMessage:(void *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
-- (void)loadFromMessage:(const struct DataMetadataMap *)arg1 unarchiver:(id)arg2;
+- (void)loadFromMessage:(const void *)arg1 unarchiver:(id)arg2;
 - (id)dataMetadataForDataIdentifier:(long long)arg1;
 - (void)setDataMetadata:(id)arg1 forDataIdentifier:(long long)arg2;
 - (void)loadFromUnarchiver:(id)arg1;

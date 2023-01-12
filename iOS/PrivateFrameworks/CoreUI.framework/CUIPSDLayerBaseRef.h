@@ -29,7 +29,7 @@
 - (_Bool)isLayerGroup;
 - (id)name;
 - (id)_psdImageRef;
-- (struct CPSDLayerRecord *)_psdLayerRecord;
+- (void *)_psdLayerRecord;
 - (void)dealloc;
 
 @end

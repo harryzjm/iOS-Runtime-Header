@@ -6,9 +6,10 @@
 
 #import <AVFCore/NSObject-Protocol.h>
 
-@class NSData;
+@class AVOutputDeviceCommunicationChannel, NSData;
 
 @protocol AVOutputDeviceCommunicationChannelImpl <NSObject>
+@property __weak AVOutputDeviceCommunicationChannel *parentChannel;
 - (void)close;
 - (void)sendData:(NSData *)arg1 completionHandler:(void (^)(NSError *))arg2;
 @end

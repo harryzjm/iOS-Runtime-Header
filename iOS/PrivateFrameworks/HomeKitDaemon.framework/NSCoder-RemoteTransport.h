@@ -6,32 +6,32 @@
 
 #import <Foundation/NSCoder.h>
 
-@class HMFMessage;
+@class HMDUser, HMFMessage, NSArray, NSString;
 
 @interface NSCoder (RemoteTransport)
-- (id)supportedFeatures;
-- (_Bool)isAtLeastDataVersion4;
-- (long long)dataVersion;
-@property(readonly, getter=isSharedUser) _Bool sharedUser;
-- (id)user;
-- (_Bool)isForNonAdminSharedUser;
-- (_Bool)isRemoteUserAdministrator;
-- (_Bool)isRemoteGatewayCoder;
-- (_Bool)isRemoteTransportOnSameAccount;
-- (_Bool)isRemoteTransport;
-- (_Bool)isLocalStore;
-- (id)decodeSetOfConditionalObjects:(Class)arg1 forKey:(id)arg2;
-- (void)encodeSetOfConditionalObjects:(id)arg1 forKey:(id)arg2;
-- (id)decodeArrayOfConditionalObjects:(Class)arg1 forKey:(id)arg2;
-- (void)encodeArrayOfConditionalObjects:(id)arg1 forKey:(id)arg2;
-- (_Bool)isEntitledToProvideAccessorySetupPayload;
-- (_Bool)isEntitledForHomeLocationAccess;
-- (_Bool)isAuthorizedForLocationAccess;
-- (_Bool)isEntitledForSPIAccess;
-- (id)applicationBundleIdentifier;
+@property(readonly, copy) NSArray *hmd_supportedFeatures;
+@property(readonly) long long hmd_dataVersion;
+@property(readonly, getter=hmd_isForSharedUser) _Bool hmd_forSharedUser;
+@property(readonly) HMDUser *hmd_user;
+@property(readonly, getter=hmd_isForNonAdminSharedUser) _Bool hmd_forNonAdminSharedUser;
+@property(readonly, getter=hmd_isForRemoteUserAdministrator) _Bool hmd_forRemoteUserAdministrator;
+@property(readonly, getter=hmd_isForRemoteGatewayCoder) _Bool hmd_forRemoteGatewayCoder;
+@property(readonly, getter=hmd_isForRemoteTransportOnSameAccount) _Bool hmd_forRemoteTransportOnSameAccount;
+@property(readonly, getter=hmd_isForRemoteTransport) _Bool hmd_forRemoteTransport;
+@property(readonly, getter=hmd_isForLocalStore) _Bool hmd_forLocalStore;
+- (id)hm_decodeSetOfConditionalObjects:(Class)arg1 forKey:(id)arg2;
+- (void)hm_encodeSetOfConditionalObjects:(id)arg1 forKey:(id)arg2;
+- (id)hm_decodeArrayOfConditionalObjects:(Class)arg1 forKey:(id)arg2;
+- (void)hm_encodeArrayOfConditionalObjects:(id)arg1 forKey:(id)arg2;
+@property(readonly, getter=hmd_isForXPCTransportEntitledForHomeLocationFeedbackAccess) _Bool hmd_isForXPCTransportEntitledForHomeLocationFeedbackAccess;
+@property(readonly, getter=hmd_isForXPCTransportEntitledForAssistantIdentifiers) _Bool hmd_forXPCTransportEntitledForAssistantIdentifiers;
+@property(readonly, getter=hmd_isForXPCTransportEntitledForHomeLocationAccess) _Bool hmd_forXPCTransportEntitledForHomeLocationAccess;
+@property(readonly, getter=hmd_isForXPCTransportAuthorizedForLocationAccess) _Bool hmd_forXPCTransportAuthorizedForLocationAccess;
+@property(readonly, getter=hmd_isForXPCTransportEntitledForSPIAccess) _Bool hmd_forXPCTransportEntitledForSPIAccess;
+@property(readonly, copy) NSString *hmd_applicationBundleIdentifier;
 @property(readonly) unsigned long long hmd_entitlements;
 @property(readonly) unsigned long long hmd_homeManagerOptions;
 @property(readonly) HMFMessage *hmd_message;
-@property(readonly, getter=isXPCTransport) _Bool xpcTransport;
+@property(readonly, getter=hmd_isForXPCTransport) _Bool hmd_forXPCTransport;
 @end
 

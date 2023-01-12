@@ -12,7 +12,6 @@
 __attribute__((visibility("hidden")))
 @interface UIEventFetcher : NSObject
 {
-    NSMutableArray *_incomingHIDEvents;
     NSMutableArray *_incomingHIDEventsFiltered;
     struct __CFRunLoop *_cfRunLoop;
     CDUnknownBlockType _receiveBlock;
@@ -40,6 +39,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_latestMoveDragEventsBySessionID;
     double _latestMoveDragEventTimestamp;
     double _latestMoveDragEventResendTimestamp;
+    struct __CFRunLoopTimer *_resendDragEventsTimer;
     NSMutableSet *_contextIDsNeedingHoverEventResend;
     NSMutableDictionary *_latestHoverEventsByContextID;
     id <UIEventFetcherSink> _eventFetcherSink;
@@ -49,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)_receiveHIDEvent:(struct __IOHIDEvent *)arg1;
 - (void)threadMain;
 - (void)displayLinkDidFire:(id)arg1;
+- (void)resendDragMoveEventsOnTimer:(struct __CFRunLoopTimer *)arg1 withInterval:(double)arg2;
 - (id)init;
 
 @end

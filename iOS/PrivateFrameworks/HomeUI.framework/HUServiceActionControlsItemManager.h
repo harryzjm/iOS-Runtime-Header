@@ -22,6 +22,7 @@
 - (id)_sectionIdentifierForControlPanelItem:(id)arg1;
 - (id)_sectionIdentifiers;
 - (id)_actionControlsDelegate;
+- (id)currentSectionIdentifiersSnapshot;
 - (id)_sectionIdentifierForItem:(id)arg1;
 - (id)_titleForSectionWithIdentifier:(id)arg1;
 - (id)_identifierForSection:(unsigned long long)arg1;

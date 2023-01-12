@@ -13,8 +13,8 @@
     GKHairlineView *_hairlineView;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) GKHairlineView *hairlineView; // @synthesize hairlineView=_hairlineView;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

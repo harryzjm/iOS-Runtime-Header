@@ -6,14 +6,15 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKit/HMFLogging-Protocol.h>
 #import <HomeKit/HMFMessageReceiver-Protocol.h>
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMDevice, HMFUnfairLock, HMHome, HMMutableArray, HMUser, NSArray, NSDate, NSString, NSUUID, _HMContext;
+@class HMDevice, HMFUnfairLock, HMHome, HMMutableArray, HMTriggerPolicy, HMUser, NSArray, NSDate, NSString, NSUUID, _HMContext;
 @protocol OS_dispatch_queue;
 
-@interface HMTrigger : NSObject <HMFMessageReceiver, NSSecureCoding, HMObjectMerge>
+@interface HMTrigger : NSObject <HMFLogging, HMFMessageReceiver, NSSecureCoding, HMObjectMerge>
 {
     HMFUnfairLock *_lock;
     _Bool _enabled;
@@ -24,14 +25,21 @@
     HMHome *_home;
     HMDevice *_ownerDevice;
     HMUser *_owner;
+    NSString *_assistantIdentifier;
+    NSString *_configuredName;
+    HMTriggerPolicy *_policy;
     _HMContext *_context;
     HMMutableArray *_currentActionSets;
 }
 
++ (id)logCategory;
 + (_Bool)supportsSecureCoding;
++ (_Bool)isValidPolicy:(id)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) HMMutableArray *currentActionSets; // @synthesize currentActionSets=_currentActionSets;
 @property(readonly, nonatomic) _HMContext *context; // @synthesize context=_context;
+@property(copy, nonatomic) NSString *assistantIdentifier; // @synthesize assistantIdentifier=_assistantIdentifier;
+- (id)logIdentifier;
 - (void)_updateClientWithResults:(CDUnknownBlockType)arg1 withError:(id)arg2;
 - (_Bool)compatibleWithApp;
 - (_Bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
@@ -44,19 +52,26 @@
 - (void)_handleTriggerFiredNotification:(id)arg1;
 - (void)_handleTriggerFired:(id)arg1;
 - (_Bool)_updateTriggerNameFromResponse:(CDUnknownBlockType)arg1 responsePayload:(id)arg2;
+- (void)removePolicy:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)updatePolicy:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_serializeForAdd;
 - (void)_addActionSetOfType:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addActionSetOfType:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addActionSetWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_enable:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)enable:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_updateName:(id)arg1 configuredName:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)updateName:(id)arg1 configuredName:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_removeActionSet:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeActionSet:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_addActionSet:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addActionSet:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_updateActionSet:(id)arg1 add:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)recomputeAssistantIdentifier;
+- (void)setPolicy:(id)arg1;
+@property(readonly, nonatomic) HMTriggerPolicy *policy; // @synthesize policy=_policy;
+- (void)_recomputeAssistantIdentifier;
 @property(nonatomic) __weak HMUser *owner; // @synthesize owner=_owner;
 @property(retain, nonatomic) HMDevice *ownerDevice; // @synthesize ownerDevice=_ownerDevice;
 @property(readonly, nonatomic) __weak HMUser *creator;
@@ -67,12 +82,12 @@
 @property(copy, nonatomic) NSDate *lastFireDate; // @synthesize lastFireDate=_lastFireDate;
 @property(readonly, copy, nonatomic) NSArray *actionSets;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
+@property(copy, nonatomic) NSString *configuredName; // @synthesize configuredName=_configuredName;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 - (void)__configureWithContext:(id)arg1 home:(id)arg2;
-- (void)dealloc;
 - (void)_unconfigure;
 - (void)_unconfigureContext;
-- (id)initWithName:(id)arg1;
+- (id)initWithName:(id)arg1 configuredName:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

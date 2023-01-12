@@ -15,6 +15,5 @@
 @property(readonly, nonatomic) long long qualityCategory;
 @property(readonly, nonatomic) long long tripType;
 @property(readonly, nonatomic) unsigned long long socialRelationships;
-@property(readonly, nonatomic) long long temporalRange;
 @end
 

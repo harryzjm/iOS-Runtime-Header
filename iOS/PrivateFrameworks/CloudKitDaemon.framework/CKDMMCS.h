@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class CKDAssetCache, CKDClientContext, CKDMMCSEngineContext, NSString;
+@class CKDAssetCache, CKDMMCSEngineContext, NSHashTable, NSString;
 
 @interface CKDMMCS : NSObject
 {
     _Bool _didDrop;
     NSString *_path;
     CKDAssetCache *_assetCache;
-    CKDClientContext *_clientContext;
+    NSHashTable *_containers;
     long long _checkoutCount;
     CKDMMCSEngineContext *_MMCSEngineContext;
 }
@@ -25,7 +25,7 @@
 + (void)stopTrackingMMCSItemReader:(id)arg1;
 + (void)startTrackingMMCSItemReader:(id)arg1;
 + (id)sharedMMCSItemReaders;
-+ (id)MMCSWrapperForApplicationBundleID:(id)arg1 assetDirectoryContext:(id)arg2 isUTAccount:(_Bool)arg3 error:(id *)arg4;
++ (id)MMCSWrapperForApplicationBundleID:(id)arg1 directoryContext:(id)arg2 error:(id *)arg3;
 + (void)purgeMMCSDirectoryWithPath:(id)arg1;
 + (id)sharedWrappersByPath;
 + (id)_errorWithMMCSError:(id)arg1 description:(id)arg2 operationType:(long long)arg3;
@@ -42,7 +42,7 @@
 @property(retain, nonatomic) CKDMMCSEngineContext *MMCSEngineContext; // @synthesize MMCSEngineContext=_MMCSEngineContext;
 @property(nonatomic) long long checkoutCount; // @synthesize checkoutCount=_checkoutCount;
 @property(nonatomic) _Bool didDrop; // @synthesize didDrop=_didDrop;
-@property(nonatomic) __weak CKDClientContext *clientContext; // @synthesize clientContext=_clientContext;
+@property(retain, nonatomic) NSHashTable *containers; // @synthesize containers=_containers;
 @property(retain, nonatomic) CKDAssetCache *assetCache; // @synthesize assetCache=_assetCache;
 @property(retain, nonatomic) NSString *path; // @synthesize path=_path;
 - (id)getSectionItem:(id)arg1 operation:(id)arg2 options:(id)arg3 progress:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
@@ -50,6 +50,7 @@
 - (id)putSectionItem:(id)arg1 operation:(id)arg2 options:(id)arg3 progress:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)_contextToPutSectionItem:(id)arg1 operation:(id)arg2 options:(id)arg3 progress:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)performOnRunLoop:(CDUnknownBlockType)arg1;
+- (id)runLoop;
 - (void)unregisterItemIDs:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)unregisterItemIDs:(id)arg1;
 - (void)_unregisterItemIDs:(id)arg1;

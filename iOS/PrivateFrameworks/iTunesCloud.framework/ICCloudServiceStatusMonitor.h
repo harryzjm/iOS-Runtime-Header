@@ -8,7 +8,7 @@
 
 #import <iTunesCloud/ICCloudServiceStatusRemoteMonitoringClient-Protocol.h>
 
-@class ICCloudServerListenerEndpointProvider, NSError, NSMutableSet, NSString, NSUUID, NSXPCConnection;
+@class ICCloudServerListenerEndpointProvider, MSVDefaultDictionary, NSError, NSMutableSet, NSString, NSUUID, NSXPCConnection;
 @protocol OS_dispatch_source;
 
 @interface ICCloudServiceStatusMonitor : NSObject <ICCloudServiceStatusRemoteMonitoringClient>
@@ -17,7 +17,8 @@
     NSError *_cloudServiceStatusMonitorConnectionEstablishmentError;
     NSMutableSet *_activeTransactionIdentifiersForCloudServiceStatusMonitorConnection;
     ICCloudServerListenerEndpointProvider *_listenerEndpointProvider;
-    _Bool _isObservingCloudServiceStatus;
+    long long _privacyAcknowledgementPolicy;
+    unsigned long long _observingCloudServiceStatusRequestsCount;
     NSUUID *_observationToken;
     NSString *_transactionIdentifierForActiveObservationToken;
     int _cloudServerLaunchedNotifyToken;
@@ -26,9 +27,13 @@
     _Bool _hasValidCapabilities;
     NSString *_storefrontCountryCode;
     NSString *_storefrontIdentifier;
+    MSVDefaultDictionary *_developerTokenCompletionHandlers;
+    MSVDefaultDictionary *_userTokenCompletionHandlers;
+    MSVDefaultDictionary *_tokensCompletionHandlers;
     struct os_unfair_lock_s _lock;
 }
 
++ (_Bool)_hasEntitlementForStatusAccessExemptedFromUserConsentRequirement;
 - (void).cxx_destruct;
 - (void)_invalidateTriggersForCloudServiceStatusObservationRecovery;
 - (void)_scheduleTriggersForCloudServiceStatusObservationRecovery;
@@ -41,16 +46,19 @@
 - (void)_updateWithStorefrontIdentifier:(id)arg1 transactionIdentifier:(id)arg2;
 - (void)_updateWithStorefrontCountryCode:(id)arg1 transactionIdentifier:(id)arg2;
 - (void)_updateWithCapabilities:(unsigned long long)arg1 hasValidCapabilities:(_Bool)arg2 transactionIdentifier:(id)arg3;
-- (void)_didEndRequestingUserTokenWithTransactionIdentifier:(id)arg1;
+- (void)_didEndRequestingTokenWithTransactionIdentifier:(id)arg1;
 - (void)_didEndObservingCloudServiceStatusWithToken:(id)arg1 transactionIdentifier:(id)arg2;
 - (void)_endObservingCloudServiceStatusWithToken:(id)arg1;
 - (void)_didBeginObservingCloudServiceStatusWithToken:(id)arg1 transactionIdentifier:(id)arg2;
 - (void)_beginObservingCloudServiceStatus;
+- (_Bool)_locked_isObservingCloudServiceStatus;
 - (void)_requestStorefrontIdentifierWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_requestStorefrontCountryCodeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_requestCapabilitiesWithPrivacyPromptPolicy:(long long)arg1 requestCapabilitiesWithCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)_validateAuthorizationExpiryWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)requestAuthorizationForScopes:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (long long)authorizationStatusForScopes:(long long)arg1;
 - (void)_resetCloudServiceStatusMonitorConnectionAllowingExplicitInvalidation:(_Bool)arg1;
-- (id)_handleCloudServiceStatusMonitorConnectionRemoteObjectProxyError:(id)arg1 forRequestWithDescription:(id)arg2 transactionIdentifier:(id)arg3;
 - (void)_performCloudServiceStatusMonitorRequestWithDescription:(id)arg1 requestHandler:(CDUnknownBlockType)arg2 errorHandler:(CDUnknownBlockType)arg3;
 - (void)_cloudServiceStatusMonitorConnectionWasInvalidated;
 - (void)_cloudServiceStatusMonitorConnectionWasInterrupted;
@@ -60,13 +68,18 @@
 - (void)storefrontIdentifierDidChange:(id)arg1;
 - (void)storefrontCountryCodeDidChange:(id)arg1;
 - (void)capabilitiesDidChange:(unsigned long long)arg1;
+- (void)activeAccountDidChange;
+- (void)requestMusicKitTokensWithOptions:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)requestUserTokenForDeveloperToken:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)requestUserTokenForDeveloperToken:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)requestDeveloperTokenWithOptions:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)requestStorefrontIdentifierWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)requestStorefrontCountryCodeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)requestCapabilitiesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)endObservingCloudServiceStatus;
 - (void)beginObservingCloudServiceStatus;
 @property(readonly, getter=isObservingCloudServiceStatus) _Bool observingCloudServiceStatus;
+@property long long privacyAcknowledgementPolicy;
 - (void)dealloc;
 - (id)init;
 

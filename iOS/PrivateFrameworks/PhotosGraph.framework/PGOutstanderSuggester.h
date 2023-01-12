@@ -15,17 +15,19 @@
     NSArray *_sortedScores;
     long long _currentScoreIndex;
     NSEnumerator *_currentSuggestedAssetEnumerator;
+    double _topTierAestheticScore;
 }
 
 + (id)suggestionSubtypes;
 + (id)suggestionTypes;
 - (void).cxx_destruct;
+@property(nonatomic) double topTierAestheticScore; // @synthesize topTierAestheticScore=_topTierAestheticScore;
 - (id)reasonsForSuggestion:(id)arg1;
 - (id)nextSuggestedAssetEnumeratorWithProgress:(CDUnknownBlockType)arg1;
 - (id)nextSuggestedAssetWithProgress:(CDUnknownBlockType)arg1;
 - (unsigned long long)scoreWithAsset:(id)arg1;
 - (void)computeNiceAssetsBetweenStartDate:(id)arg1 andEndDate:(id)arg2 withProgress:(CDUnknownBlockType)arg3;
-- (id)assetPredicate:(id)arg1 andEndDate:(id)arg2 matchingAssetUUID:(id)arg3;
+- (id)assetInternalPredicate:(id)arg1 andEndDate:(id)arg2 matchingAssetUUID:(id)arg3;
 - (void)reset;
 - (id)nextSuggestionWithProgress:(CDUnknownBlockType)arg1;
 - (void)startSuggestingWithOptions:(id)arg1;

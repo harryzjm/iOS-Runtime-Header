@@ -16,8 +16,6 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSArray *candidates; // @synthesize candidates=_candidates;
-@property(retain, nonatomic) NSObject<OS_dispatch_semaphore> *sem; // @synthesize sem=_sem;
 
 @end
 

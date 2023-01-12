@@ -29,6 +29,7 @@
     HDSPWakeDetectionStateMachine *_stateMachine;
 }
 
++ (id)platformSpecificProviders:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) HDSPWakeDetectionStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
 @property(readonly, nonatomic) struct os_unfair_lock_s wakeDetectionLock; // @synthesize wakeDetectionLock=_wakeDetectionLock;
@@ -38,13 +39,23 @@
 - (id)diagnosticInfo;
 - (id)diagnosticDescription;
 - (id)_currentState;
-- (id)detectionWindowAfterDate:(id)arg1;
+@property(readonly, nonatomic) _Bool isDetecting;
+- (id)_detectionWindowForDetector:(id)arg1 afterDate:(id)arg2 nextWakeUp:(id)arg3;
+- (id)detectionWindowForDetector:(id)arg1 afterDate:(id)arg2;
+- (id)_detectionWindowsAfterDate:(id)arg1 nextWakeUp:(id)arg2;
+- (id)detectionWindowsAfterDate:(id)arg1;
+- (id)upcomingStartDetectionDatesAfterDate:(id)arg1;
+- (id)upcomingStartDetectionDateAfterDate:(id)arg1;
+- (id)nextWakeUpAfterDate:(id)arg1;
+@property(readonly, nonatomic) _Bool inDetectionWindow;
+@property(readonly, nonatomic) _Bool isWatch;
 @property(readonly, nonatomic) _Bool sleepModeIsOff;
 @property(readonly, nonatomic) HKSPSleepScheduleOccurrence *relevantOccurrence;
 @property(readonly, nonatomic) unsigned long long sleepScheduleState;
 - (_Bool)sleepFeaturesEnabled;
 @property(readonly, nonatomic) HKSPSleepScheduleModel *sleepScheduleModel;
 @property(readonly, nonatomic) NSDate *currentDate;
+- (void)earlyWakeUpWasNotifiedRemotely;
 - (void)postWakeDetectionNotification;
 - (id)eventIdentifiers;
 - (void)sleepEventIsDue:(id)arg1;
@@ -57,15 +68,12 @@
 - (void)scheduleWakeDetection;
 - (void)wakeDetector:(id)arg1 didDetectWakeUpEventOnDate:(id)arg2;
 - (void)significantTimeChangeDetected:(id)arg1;
-- (void)sleepScheduleModelManager:(id)arg1 source:(id)arg2 didUpdateSleepScheduleModel:(id)arg3;
-@property(readonly, nonatomic) _Bool isDetecting;
-- (_Bool)isWaiting;
+- (void)sleepScheduleModelManager:(id)arg1 didUpdateSleepScheduleModel:(id)arg2;
 - (void)updateState;
 - (void)environmentDidBecomeReady:(id)arg1;
 - (void)environmentWillBecomeReady:(id)arg1;
 - (void)_withLock:(CDUnknownBlockType)arg1;
 - (id)initWithEnvironment:(id)arg1 wakeDetectorProviders:(id)arg2;
-- (id)standardProviders;
 - (id)initWithEnvironment:(id)arg1;
 
 // Remaining properties

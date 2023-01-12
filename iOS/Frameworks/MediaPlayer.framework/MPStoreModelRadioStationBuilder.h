@@ -14,6 +14,7 @@
         unsigned int shortEditorNotes:1;
         unsigned int explicit:1;
         unsigned int type:1;
+        unsigned int subtype:1;
         unsigned int artwork:1;
         unsigned int stationGlyph:1;
         unsigned int attributionLabel:1;

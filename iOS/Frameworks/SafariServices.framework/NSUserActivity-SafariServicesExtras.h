@@ -9,7 +9,7 @@
 @class NSNumber, NSUUID, _SFNavigationIntent;
 
 @interface NSUserActivity (SafariServicesExtras)
-+ (id)_sf_windowCreationAcitivtyFromSceneConnectionOptions:(id)arg1;
++ (id)_sf_windowCreationActivityFromSceneConnectionOptions:(id)arg1;
 + (id)_sf_windowCreationActivityWithRecentlyClosedTabUUID:(id)arg1 browserControllerUUID:(id)arg2;
 + (id)_sf_windowCreationActivityWithTabUUID:(id)arg1 browserControllerUUID:(id)arg2;
 + (id)_sf_windowCreationActivityWithMode:(long long)arg1;

@@ -30,35 +30,15 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
-+ (Class)componentType;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (id)componentAtIndex:(unsigned long long)arg1;
-- (unsigned long long)componentsCount;
-- (void)addComponent:(id)arg1;
-- (void)clearComponents;
-@property(retain, nonatomic) NSMutableArray *components;
-- (int)StringAsStatus:(id)arg1;
-- (id)statusAsString:(int)arg1;
-@property(nonatomic) _Bool hasStatus;
-@property(nonatomic) int status;
-@property(retain, nonatomic) GEOPDMapsIdentifier *collectionId;
-@property(readonly, nonatomic) _Bool hasCollectionId;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

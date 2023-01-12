@@ -6,21 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class MLModel, MLModelConfiguration, NSDictionary, NSString;
+@class MLModel, MLModelConfiguration, NSArray, NSDictionary, NSString, _PSBehaviorRuleFeatureExtraction;
 
 @interface _PSRuleRankingMLModel : NSObject
 {
     _Bool _isAdaptedModel;
     _Bool _isAdaptedMLModelOK;
     double _scoreThreshold;
+    NSArray *_scores;
     MLModel *_mlModel;
     NSDictionary *_metadata;
     NSDictionary *_psConfigForAdaptableModel;
     MLModelConfiguration *_adaptableModelConfiguration;
     NSString *_adaptedModelRecipeVersion;
+    _PSBehaviorRuleFeatureExtraction *_feaExtHandle;
 }
 
 - (void).cxx_destruct;
+@property(retain) _PSBehaviorRuleFeatureExtraction *feaExtHandle; // @synthesize feaExtHandle=_feaExtHandle;
 @property(retain) NSString *adaptedModelRecipeVersion; // @synthesize adaptedModelRecipeVersion=_adaptedModelRecipeVersion;
 @property(nonatomic) _Bool isAdaptedMLModelOK; // @synthesize isAdaptedMLModelOK=_isAdaptedMLModelOK;
 @property(retain, nonatomic) MLModelConfiguration *adaptableModelConfiguration; // @synthesize adaptableModelConfiguration=_adaptableModelConfiguration;
@@ -28,8 +31,10 @@
 @property _Bool isAdaptedModel; // @synthesize isAdaptedModel=_isAdaptedModel;
 @property(retain) NSDictionary *metadata; // @synthesize metadata=_metadata;
 @property(retain) MLModel *mlModel; // @synthesize mlModel=_mlModel;
+@property(retain, nonatomic) NSArray *scores; // @synthesize scores=_scores;
 @property double scoreThreshold; // @synthesize scoreThreshold=_scoreThreshold;
 - (id)rankRules:(id)arg1 contextItems:(id)arg2;
+- (id)scoresOnRules:(id)arg1 contextItems:(id)arg2;
 - (id)giveModelDescription;
 - (id)extractAdaptedModelRecipeID;
 - (_Bool)isAdaptedModelUsed;

@@ -8,5 +8,7 @@
 {
 }
 
+- (_Bool)matchesEdge:(id)arg1;
+
 @end
 

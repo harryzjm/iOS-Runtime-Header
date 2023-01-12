@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVContentKeyReportGroup, AVContentKeySession, NSData, NSDictionary, NSError, NSString;
+@class AVContentKey, AVContentKeyReportGroup, AVContentKeySession, AVContentKeySpecifier, NSData, NSDictionary, NSError, NSString;
 
 __attribute__((visibility("hidden")))
 @interface AVContentKeyRequestInternal : NSObject
@@ -28,8 +28,12 @@ __attribute__((visibility("hidden")))
     _Bool isRenewalRequest;
     NSString *cryptorUUID;
     unsigned long long cryptorKeyRequestID;
+    _Bool isInchargeOfKeyRequest;
     struct OpaqueFigSimpleMutex *stateMutex;
     _Bool hasAnyKeyRequestSucceeded;
+    AVContentKeySpecifier *contentKeySpecifier;
+    AVContentKey *contentKey;
+    NSData *contentIdentifier;
 }
 
 @end

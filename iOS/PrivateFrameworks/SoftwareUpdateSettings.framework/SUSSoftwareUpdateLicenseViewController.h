@@ -17,7 +17,6 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) UITextView *licenseTextView; // @synthesize licenseTextView=_licenseTextView;
 @property(retain, nonatomic) NSString *licenseTextInfo; // @synthesize licenseTextInfo=_licenseTextInfo;
-- (void)didReceiveMemoryWarning;
 - (void)setLicenseText:(id)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;

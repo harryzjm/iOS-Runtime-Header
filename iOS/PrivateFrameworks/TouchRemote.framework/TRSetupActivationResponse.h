@@ -4,12 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSError;
+
 @interface TRSetupActivationResponse
 {
     _Bool _activated;
+    NSError *_error;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSError *error; // @synthesize error=_error;
 @property(nonatomic) _Bool activated; // @synthesize activated=_activated;
 - (id)description;
 - (id)initWithCoder:(id)arg1;

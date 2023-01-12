@@ -6,6 +6,7 @@
 
 #import <Foundation/NSSecureUnarchiveFromDataTransformer.h>
 
+__attribute__((visibility("hidden")))
 @interface ICMutableSetOfNumbersSecureUnarchiveFromDataTransformer : NSSecureUnarchiveFromDataTransformer
 {
 }

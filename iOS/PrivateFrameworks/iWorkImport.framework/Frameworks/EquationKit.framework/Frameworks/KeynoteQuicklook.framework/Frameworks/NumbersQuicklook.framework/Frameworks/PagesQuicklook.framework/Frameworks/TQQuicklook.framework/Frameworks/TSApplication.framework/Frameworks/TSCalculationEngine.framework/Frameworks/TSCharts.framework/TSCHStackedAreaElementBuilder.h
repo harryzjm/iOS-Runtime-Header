@@ -8,8 +8,8 @@
 {
 }
 
-- (_Bool)p_addBottomStroke:(CDStruct_e0d92598 *)arg1 toPath:(struct CGPath *)arg2 seriesIndex:(unsigned long long)arg3 withPointsArray:(CDStruct_460b8ffe *)arg4 withCount:(unsigned long long)arg5;
-- (CDStruct_40a92360 *)p_centerPointsForSeries:(id)arg1 groupIndexSet:(id)arg2 xAxis:(id)arg3 yAxis:(id)arg4 plotAreaFrame:(struct CGRect)arg5;
+- (_Bool)p_addBottomStroke:(CDStruct_1cb6887c *)arg1 toPath:(struct CGPath *)arg2 seriesIndex:(unsigned long long)arg3 withPointsArray:(CDStruct_460b8ffe *)arg4 withCount:(unsigned long long)arg5;
+- (CDStruct_40a92360 *)p_centerPointsForSeries:(id)arg1 groupIndexSet:(id)arg2 nullsUseIntercept:(_Bool)arg3 plotAreaFrame:(struct CGRect)arg4;
 - (CDStruct_460b8ffe *)p_createPointArrayForSeries:(id)arg1 inAreaFrame:(struct CGRect)arg2 groupIndexSet:(id)arg3 outCount:(unsigned long long *)arg4;
 
 @end

@@ -11,10 +11,12 @@
 @interface BRAccount : NSObject
 {
     NSString *_accountID;
+    NSString *_personaID;
     NSData *_perAppAccountIdentifier;
 }
 
 + (_Bool)refreshCurrentLoggedInAccount;
++ (_Bool)refreshCurrentLoggedInAccountWithError:(id *)arg1;
 + (id)currentLoggedInAccountWithError:(id *)arg1;
 + (id)currentCachedLoggedInAccountWithError:(id *)arg1;
 + (_Bool)_refreshCurrentLoggedInAccountForcingRefresh:(_Bool)arg1 error:(id *)arg2;
@@ -23,8 +25,7 @@
 @property(copy, nonatomic) NSData *perAppAccountIdentifier; // @synthesize perAppAccountIdentifier=_perAppAccountIdentifier;
 - (_Bool)iCloudDesktopSettingsChangedWithAttributes:(id)arg1 error:(id *)arg2;
 - (id)containerWithPendingChanges;
-- (_Bool)logoutWithError:(id *)arg1;
-- (_Bool)loginWithError:(id *)arg1;
+- (id)init;
 - (id)initWithAccountID:(id)arg1;
 - (void)evictOldDocumentsWithHandler:(CDUnknownBlockType)arg1;
 - (_Bool)getEvictableSpace:(id *)arg1 error:(id *)arg2;

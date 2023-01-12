@@ -12,6 +12,7 @@
 
 + (id)entityName;
 + (id)_shareParticipantsWithPredicate:(id)arg1 fetchLimit:(unsigned long long)arg2 inManagedObjectContext:(id)arg3;
++ (id)participantsWithUserIdentifiers:(id)arg1 inScope:(id)arg2 inPhotoLibrary:(id)arg3;
 + (id)participantsWithUUIDs:(id)arg1 inPhotoLibrary:(id)arg2;
 + (id)updateOrInsertWithCPLShareParticipant:(id)arg1 inShare:(id)arg2;
 + (id)insertInPhotoLibrary:(id)arg1;

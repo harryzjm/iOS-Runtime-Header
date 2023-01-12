@@ -24,6 +24,9 @@
 }
 
 + (id)aggregateStatistics:(id)arg1;
++ (void)recordJobCreatedToHistory:(id)arg1;
++ (void)addStatisticsToHistory:(id)arg1 forJob:(id)arg2 wasCanceled:(_Bool)arg3;
++ (id)history;
 - (void).cxx_destruct;
 @property(copy) NSArray *dependencies; // @synthesize dependencies=_dependencies;
 @property double responseTime; // @synthesize responseTime=_responseTime;
@@ -36,6 +39,7 @@
 @property double requestTime; // @synthesize requestTime=_requestTime;
 @property(readonly, copy) NSString *description;
 @property(readonly) double totalDuration;
+- (double)lastRecordedTime;
 @property(readonly) double duration;
 @property(readonly) double latency;
 @property(readonly) double replyLatency;

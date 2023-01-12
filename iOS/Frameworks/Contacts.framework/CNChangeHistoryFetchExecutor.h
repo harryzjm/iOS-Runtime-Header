@@ -19,9 +19,14 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) CNContactStore *store; // @synthesize store=_store;
 @property(readonly, copy, nonatomic) CNChangeHistoryFetchRequest *request; // @synthesize request=_request;
+- (id)contactLinkingEventsForContacts:(id)arg1 withFactory:(id)arg2;
 - (id)keysToFetch;
+- (id)countOfDeltaSync;
 - (id)deltaSync;
 - (id)fullSync;
+- (_Bool)validateFetchRequest;
+- (id)fetchCount:(id *)arg1;
+- (id)fetchEvents:(id *)arg1;
 - (id)run:(id *)arg1;
 - (id)description;
 - (id)initWithRequest:(id)arg1 store:(id)arg2;

@@ -14,11 +14,14 @@
     MISSING_TYPE *contentProvider;
     MISSING_TYPE *categoryIconImageView;
     MISSING_TYPE *categoryLabel;
+    MISSING_TYPE *secondaryLabel;
     MISSING_TYPE *disclosureImageView;
     MISSING_TYPE *margin;
     MISSING_TYPE *topAndBottomDistance;
     MISSING_TYPE *iconWidth;
     MISSING_TYPE *labelLeadingConstraint;
+    MISSING_TYPE *labelTrailingConstraint;
+    MISSING_TYPE *disclosureLeadingConstraint;
     MISSING_TYPE *iconAspectConstraint;
 }
 

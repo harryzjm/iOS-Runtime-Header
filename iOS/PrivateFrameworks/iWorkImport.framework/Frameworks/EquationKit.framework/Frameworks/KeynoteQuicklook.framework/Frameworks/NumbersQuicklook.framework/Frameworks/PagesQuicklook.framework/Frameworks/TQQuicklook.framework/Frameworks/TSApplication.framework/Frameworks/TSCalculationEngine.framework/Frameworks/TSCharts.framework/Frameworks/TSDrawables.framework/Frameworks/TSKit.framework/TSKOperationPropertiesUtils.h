@@ -10,7 +10,7 @@
 {
 }
 
-+ (vector_941b75ab)propertyIdsForPropertyNames:(id)arg1 allowUnknown:(_Bool)arg2;
++ (vector_9203507d)propertyIdsForPropertyNames:(id)arg1 allowUnknown:(_Bool)arg2;
 + (CDStruct_1464e8ba)propertyTypeWithId:(unsigned short)arg1;
 + (id)propertyNameForPropertyId:(unsigned short)arg1;
 + (CDStruct_1464e8ba)propertyTypeWithName:(id)arg1;

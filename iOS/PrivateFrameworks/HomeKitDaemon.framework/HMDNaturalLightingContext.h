@@ -6,13 +6,14 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMBModelObjectCoder-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HMDNaturalLightingCurve, NSString, NSTimeZone;
 
-@interface HMDNaturalLightingContext : HMFObject <HMFLogging, NSSecureCoding, NSCopying>
+@interface HMDNaturalLightingContext : HMFObject <HMBModelObjectCoder, HMFLogging, NSSecureCoding, NSCopying>
 {
     HMDNaturalLightingCurve *_curve;
     NSTimeZone *_timeZone;
@@ -20,6 +21,7 @@
 
 + (id)logCategory;
 + (_Bool)supportsSecureCoding;
++ (id)hmbDecodeData:(id)arg1 fromStorageLocation:(unsigned long long)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 @property(readonly, copy) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
 @property(readonly, copy) HMDNaturalLightingCurve *curve; // @synthesize curve=_curve;
@@ -30,6 +32,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithCurve:(id)arg1 timeZone:(id)arg2;
+- (id)hmbEncodeForStorageLocation:(unsigned long long)arg1 error:(id *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

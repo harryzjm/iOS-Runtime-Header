@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDate, NSSet;
+@class NSDate, NSSet, NSString;
 
 @protocol SGDSuggestManagerURLsProtocol
+- (void)registerURLFeedback:(unsigned char)arg1 absoluteURL:(NSString *)arg2 withCompletion:(void (^)(SGXPCResponse *))arg3;
+- (void)urlsFoundBetweenStartDate:(NSDate *)arg1 endDate:(NSDate *)arg2 excludingBundleIdentifiers:(NSSet *)arg3 containingSubstring:(NSString *)arg4 flagFilter:(unsigned char)arg5 limit:(unsigned int)arg6 withCompletion:(void (^)(SGXPCResponse1 *))arg7;
 - (void)urlsFoundBetweenStartDate:(NSDate *)arg1 endDate:(NSDate *)arg2 excludingBundleIdentifiers:(NSSet *)arg3 limit:(unsigned int)arg4 withCompletion:(void (^)(SGXPCResponse1 *))arg5;
 - (void)recentURLsWithLimit:(unsigned int)arg1 withCompletion:(void (^)(SGXPCResponse1 *))arg2;
 @end

@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSObject;
+@class NSDictionary, NSObject;
 @protocol OS_dispatch_queue;
 
 @protocol HMDDataStreamBulkSendSessionCandidate
+@property(readonly, nonatomic) NSDictionary *metadata;
 - (void)rejectBulkSendSessionWithStatus:(unsigned short)arg1;
 - (void)acceptBulkSendSessionOnQueue:(NSObject<OS_dispatch_queue> *)arg1 callback:(void (^)(id <HMDDataStreamBulkSendSession>))arg2;
 @end

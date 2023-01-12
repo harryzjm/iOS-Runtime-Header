@@ -17,7 +17,6 @@
 + (_Bool)createArchiveSourceURL:(id)arg1 destinationURL:(id)arg2 error:(id *)arg3;
 + (id)createDiagnosticsURLWithError:(id *)arg1;
 + (_Bool)fileNameEligibleForCollection:(id)arg1;
-+ (id)crashReports;
 - (void).cxx_destruct;
 - (void)fetchPathToBackupWithHandler:(CDUnknownBlockType)arg1;
 - (void)_fetchPathToBackupWithHandler:(CDUnknownBlockType)arg1;
@@ -25,8 +24,10 @@
 - (void)fetchPathToDiagnosticFilesWithHandler:(CDUnknownBlockType)arg1;
 - (void)_fetchPathToDiagnosticFilesWithHandler:(CDUnknownBlockType)arg1;
 - (id)_collectDiagnosticFilesWithError:(id *)arg1;
-- (void)_shutdown;
+- (void)_shutdownWithHandler:(CDUnknownBlockType)arg1;
 - (void)addDiagnosticProvider:(id)arg1;
+- (void)logDiagnosticStateWithReason:(id)arg1;
+- (double)footprint;
 - (void)logProcessDiagnosticInformation;
 - (id)initWithDefaultsManager:(id)arg1 platform:(id)arg2;
 - (id)init;

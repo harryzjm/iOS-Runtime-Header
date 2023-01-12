@@ -8,7 +8,6 @@
 {
 }
 
-+ (id)_didReceiveKeysAndValuesNotificationName;
 + (void)didReceiveValuesForKeys:(id)arg1 profile:(id)arg2;
 
 @end

@@ -13,6 +13,7 @@
 }
 
 + (id)scenePartWithEnumerator:(id)arg1 properties:(id)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) id properties; // @synthesize properties=_properties;
 @property(readonly, nonatomic) id enumerator; // @synthesize enumerator=_enumerator;
 - (id)initWithEnumerator:(id)arg1 properties:(id)arg2;

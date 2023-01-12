@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSURL;
+@class NSData, NSURL, NSUUID;
 
 @interface TransparencyNetworkRequest : NSObject
 {
@@ -15,20 +15,25 @@
     NSURL *_url;
     NSData *_data;
     double _timeout;
+    NSUUID *_uuid;
 }
 
++ (void)addDeviceAuthentication:(id)arg1 signature:(id)arg2 timestamp:(id)arg3 certs:(id)arg4;
++ (_Bool)addAccountAuthentication:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
+@property(retain) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property _Bool isGET; // @synthesize isGET=_isGET;
 @property double timeout; // @synthesize timeout=_timeout;
 @property(retain) NSData *data; // @synthesize data=_data;
 @property(retain) NSURL *url; // @synthesize url=_url;
 @property _Bool authenticated; // @synthesize authenticated=_authenticated;
-- (id)copyRequest:(id *)arg1;
+- (void)createRequestForAuthentication:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)createRequestForAuthentication:(id)arg1 fetchAuthNow:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)createGETRequestForURL:(id)arg1 timeout:(double)arg2 error:(id *)arg3;
-- (id)createPOSTRequestForURL:(id)arg1 timeout:(double)arg2 contents:(id)arg3 error:(id *)arg4;
+- (id)createPOSTRequestForURL:(id)arg1 timeout:(double)arg2 contents:(id)arg3 authentication:(id)arg4 fetchAuthNow:(_Bool)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (id)initWithRequest:(id)arg1;
-- (id)initWithURL:(id)arg1 data:(id)arg2 timeout:(double)arg3 isGET:(_Bool)arg4;
-- (id)initPOSTWithURL:(id)arg1 data:(id)arg2;
+- (id)initWithURL:(id)arg1 data:(id)arg2 timeout:(double)arg3 isGET:(_Bool)arg4 uuid:(id)arg5;
+- (id)initPOSTWithURL:(id)arg1 data:(id)arg2 uuid:(id)arg3;
 - (id)initGETWithURL:(id)arg1;
 
 @end

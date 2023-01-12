@@ -14,6 +14,7 @@
 {
     struct _MRSystemAppPlaybackQueue *_mediaRemotePlaybackQueue;
     ICUserIdentity *_userIdentity;
+    NSString *_queueGroupingID;
     NSDictionary *_mediaRemoteOptions;
 }
 
@@ -23,6 +24,7 @@
 + (id)queueWithMediaRemotePlaybackQueue:(struct _MRSystemAppPlaybackQueue *)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSDictionary *mediaRemoteOptions; // @synthesize mediaRemoteOptions=_mediaRemoteOptions;
+@property(readonly, copy, nonatomic) NSString *queueGroupingID; // @synthesize queueGroupingID=_queueGroupingID;
 @property(readonly, nonatomic) ICUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
 @property(readonly, nonatomic) struct _MRSystemAppPlaybackQueue *_mediaRemotePlaybackQueue;
 - (_Bool)verifyWithError:(id *)arg1;

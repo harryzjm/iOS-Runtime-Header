@@ -8,24 +8,28 @@
 
 #import <NewsCore/FCUserVectorManager-Protocol.h>
 
-@class FCAsyncSerialQueue, FCUserVector, NSDate;
-@protocol FCContentContext;
+@class FCAsyncSerialQueue, FCSubscriptionList, FCUserVector, NSDate;
+@protocol FCBundleSubscriptionProviderType, FCContentContext;
 
 @interface FCUserVectorManager : NSObject <FCUserVectorManager>
 {
     FCAsyncSerialQueue *_queue;
     FCUserVector *_userVector;
     id <FCContentContext> _contentContext;
+    id <FCBundleSubscriptionProviderType> _bundleSubscriptionProvider;
+    FCSubscriptionList *_subscriptionList;
     NSDate *_lastUpdated;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *lastUpdated; // @synthesize lastUpdated=_lastUpdated;
+@property(retain, nonatomic) FCSubscriptionList *subscriptionList; // @synthesize subscriptionList=_subscriptionList;
+@property(retain, nonatomic) id <FCBundleSubscriptionProviderType> bundleSubscriptionProvider; // @synthesize bundleSubscriptionProvider=_bundleSubscriptionProvider;
 @property(retain, nonatomic) id <FCContentContext> contentContext; // @synthesize contentContext=_contentContext;
 @property(retain, nonatomic) FCUserVector *userVector; // @synthesize userVector=_userVector;
 @property(retain, nonatomic) FCAsyncSerialQueue *queue; // @synthesize queue=_queue;
 - (void)fetchUserVectorProvider:(CDUnknownBlockType)arg1;
-- (id)initWithContentContext:(id)arg1;
+- (id)initWithContentContext:(id)arg1 bundleSubscriptionProvider:(id)arg2 subscriptionList:(id)arg3;
 
 @end
 

@@ -6,29 +6,57 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthKit/HKCodedObject-Protocol.h>
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class HKMedicalDateInterval, NSString;
+@class HKConcept, HKMedicalCoding, HKMedicalDateInterval, NSString;
 
-@interface HKMedicationDosage : NSObject <NSSecureCoding, NSCopying>
+@interface HKMedicationDosage : NSObject <NSSecureCoding, NSCopying, HKCodedObject>
 {
     NSString *_instruction;
     HKMedicalDateInterval *_timingPeriod;
+    HKConcept *_site;
+    HKMedicalCoding *_siteCoding;
+    HKConcept *_route;
+    HKMedicalCoding *_routeCoding;
+    HKConcept *_method;
+    HKMedicalCoding *_methodCoding;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)dosageWithInstruction:(id)arg1 timingPeriod:(id)arg2 siteCoding:(id)arg3 routeCoding:(id)arg4 methodCoding:(id)arg5;
 + (id)dosageWithInstruction:(id)arg1 timingPeriod:(id)arg2;
++ (id)indexableKeyPathsWithPrefix:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) HKMedicalCoding *methodCoding; // @synthesize methodCoding=_methodCoding;
+@property(readonly, copy, nonatomic) HKConcept *method; // @synthesize method=_method;
+@property(readonly, copy, nonatomic) HKMedicalCoding *routeCoding; // @synthesize routeCoding=_routeCoding;
+@property(readonly, copy, nonatomic) HKConcept *route; // @synthesize route=_route;
+@property(readonly, copy, nonatomic) HKMedicalCoding *siteCoding; // @synthesize siteCoding=_siteCoding;
+@property(readonly, copy, nonatomic) HKConcept *site; // @synthesize site=_site;
 @property(readonly, copy, nonatomic) HKMedicalDateInterval *timingPeriod; // @synthesize timingPeriod=_timingPeriod;
 @property(readonly, copy, nonatomic) NSString *instruction; // @synthesize instruction=_instruction;
+- (_Bool)applyConcepts:(id)arg1 forKeyPath:(id)arg2 error:(id *)arg3;
+- (id)codingsForKeyPath:(id)arg1 error:(id *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
-- (unsigned long long)hash;
-- (id)initWithInstruction:(id)arg1 timingPeriod:(id)arg2;
+@property(readonly) unsigned long long hash;
+- (void)_setMethodCoding:(id)arg1;
+- (void)_setRouteCoding:(id)arg1;
+- (void)_setSiteCoding:(id)arg1;
+- (id)_methodCodingCollection;
+- (id)_routeCodingCollection;
+- (id)_siteCodingCollection;
+- (id)initWithInstruction:(id)arg1 timingPeriod:(id)arg2 siteCoding:(id)arg3 routeCoding:(id)arg4 methodCoding:(id)arg5;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) Class superclass;
 
 @end
 

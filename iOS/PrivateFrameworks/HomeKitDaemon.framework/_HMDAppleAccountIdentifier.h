@@ -9,6 +9,8 @@
 __attribute__((visibility("hidden")))
 @interface _HMDAppleAccountIdentifier
 {
+    struct os_unfair_lock_s _lock;
+    NSString *_accountMergeID;
     NSString *_identifierString;
 }
 
@@ -20,6 +22,8 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (_Bool)isAuthenticated;
 - (_Bool)isEqual:(id)arg1;
+- (void)updateAppleAccountSenderCorrelationIdentifier:(id)arg1;
+- (id)senderCorrelationIdentifier;
 - (id)initWithIdentifierString:(id)arg1;
 - (id)initWithIdentifier:(id)arg1;
 

@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)setBadgeTitlePositionAdjustment:(struct UIOffset)arg1 forState:(long long)arg2;
 - (struct UIOffset)badgeTitlePositionAdjustmentForState:(long long)arg1;
 - (void)setBadgeTextAttributes:(id)arg1 forState:(long long)arg2;
+- (id)badgeTextAttributesForState:(long long)arg1 compatibleWithTraitCollection:(id)arg2;
 - (id)badgeTextAttributesForState:(long long)arg1;
 - (void)setBadgeBackgroundColor:(id)arg1 forState:(long long)arg2;
 - (id)badgeBackgroundColorForState:(long long)arg1;
@@ -48,11 +49,12 @@ __attribute__((visibility("hidden")))
 - (struct UIOffset)titlePositionAdjustmentForState:(long long)arg1;
 - (_Bool)titleTextAttributesSpecifyColorForState:(long long)arg1;
 - (void)setTitleTextAttributes:(id)arg1 forState:(long long)arg2;
+- (id)titleTextAttributesForState:(long long)arg1 compatibleWithTraitCollection:(id)arg2;
 - (id)titleTextAttributesForState:(long long)arg1;
 - (id)_fallbackBadgeTitleColorForState:(long long)arg1;
-- (id)_fallbackBadgeTitleFontForState:(long long)arg1;
+- (id)_fallbackBadgeTitleFontForState:(long long)arg1 compatibleWithTraitCollection:(id)arg2;
 - (id)_fallbackTitleColorForState:(long long)arg1;
-- (id)_fallbackTitleFontForState:(long long)arg1;
+- (id)_fallbackTitleFontForState:(long long)arg1 compatibleWithTraitCollection:(id)arg2;
 - (id)replicate;
 - (_Bool)checkEqualTo:(id)arg1;
 - (long long)hashInto:(long long)arg1;

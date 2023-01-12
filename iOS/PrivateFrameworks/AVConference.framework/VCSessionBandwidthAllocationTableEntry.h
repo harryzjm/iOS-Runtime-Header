@@ -6,16 +6,19 @@
 
 #import <objc/NSObject.h>
 
+@class NSNumber;
 @protocol VCSessionDownlinkBandwidthAllocatorClient;
 
 __attribute__((visibility("hidden")))
 @interface VCSessionBandwidthAllocationTableEntry : NSObject
 {
     id <VCSessionDownlinkBandwidthAllocatorClient> _client;
+    NSNumber *_streamToken;
     unsigned int _maxNetworkBitrate;
     unsigned int _maxMediaBitrate;
     unsigned int _qualityIndex;
     _Bool _isLowestQualityAudio;
+    _Bool _isLowestQualityVideo;
     unsigned char _type;
     unsigned int _streamID;
     unsigned int _actualNetworkBitrate;
@@ -23,6 +26,8 @@ __attribute__((visibility("hidden")))
     unsigned int _repairStreamID;
     unsigned int _repairMaxNetworkBitrate;
     _Bool _onDemand;
+    unsigned int _streamGroupID;
+    unsigned int _encoderGroupID;
     _Bool _subscribedTo;
     _Bool _startOnDemand;
 }
@@ -30,6 +35,10 @@ __attribute__((visibility("hidden")))
 + (long long)compareAudioEntry:(id)arg1 videoEntry:(id)arg2;
 + (long long)compareVideoEntry:(id)arg1 videoEntry:(id)arg2;
 + (long long)compareAudioEntry:(id)arg1 audioEntry:(id)arg2;
++ (unsigned char)entryTypeForMediaType:(unsigned int)arg1;
+@property(readonly) NSNumber *streamToken; // @synthesize streamToken=_streamToken;
+@property(readonly) unsigned int encoderGroupID; // @synthesize encoderGroupID=_encoderGroupID;
+@property(readonly) unsigned int streamGroupID; // @synthesize streamGroupID=_streamGroupID;
 @property(readonly, getter=isStartOnDemand) _Bool startOnDemand; // @synthesize startOnDemand=_startOnDemand;
 @property(getter=isSubscribedTo) _Bool subscribedTo; // @synthesize subscribedTo=_subscribedTo;
 @property(readonly) _Bool hasRepairStreamID; // @synthesize hasRepairStreamID=_hasRepairStreamID;
@@ -38,6 +47,7 @@ __attribute__((visibility("hidden")))
 @property unsigned int actualNetworkBitrate; // @synthesize actualNetworkBitrate=_actualNetworkBitrate;
 @property(readonly) unsigned int streamID; // @synthesize streamID=_streamID;
 @property(readonly) unsigned char type; // @synthesize type=_type;
+@property _Bool isLowestQualityVideo; // @synthesize isLowestQualityVideo=_isLowestQualityVideo;
 @property _Bool isLowestQualityAudio; // @synthesize isLowestQualityAudio=_isLowestQualityAudio;
 @property(readonly) unsigned int qualityIndex; // @synthesize qualityIndex=_qualityIndex;
 @property(readonly) unsigned int maxMediaBitrate; // @synthesize maxMediaBitrate=_maxMediaBitrate;
@@ -46,8 +56,8 @@ __attribute__((visibility("hidden")))
 - (long long)compare:(id)arg1;
 - (id)description;
 - (void)dealloc;
-- (id)initWithClient:(id)arg1 type:(unsigned char)arg2 networkBitrate:(unsigned int)arg3 mediaBitrate:(unsigned int)arg4 qualityIndex:(unsigned int)arg5 streamID:(unsigned int)arg6 hasRepairStreamID:(_Bool)arg7 repairStreamID:(unsigned int)arg8 repairMaxNetworkBitrate:(unsigned int)arg9 subscribedTo:(_Bool)arg10 startOnDemand:(_Bool)arg11;
-- (id)initWithClient:(id)arg1 type:(unsigned char)arg2 networkBitrate:(unsigned int)arg3 mediaBitrate:(unsigned int)arg4 qualityIndex:(unsigned int)arg5 streamID:(unsigned int)arg6;
+- (id)initWithClient:(id)arg1 type:(unsigned char)arg2 streamToken:(long long)arg3 networkBitrate:(unsigned int)arg4 mediaBitrate:(unsigned int)arg5 qualityIndex:(unsigned int)arg6 streamID:(unsigned int)arg7 hasRepairStreamID:(_Bool)arg8 repairStreamID:(unsigned int)arg9 repairMaxNetworkBitrate:(unsigned int)arg10 subscribedTo:(_Bool)arg11 startOnDemand:(_Bool)arg12 streamGroupID:(unsigned int)arg13 encoderGroupID:(unsigned int)arg14;
+- (id)initWithClient:(id)arg1 type:(unsigned char)arg2 streamToken:(long long)arg3 networkBitrate:(unsigned int)arg4 mediaBitrate:(unsigned int)arg5 qualityIndex:(unsigned int)arg6 streamID:(unsigned int)arg7 streamGroupID:(unsigned int)arg8;
 
 @end
 

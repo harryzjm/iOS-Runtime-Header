@@ -12,6 +12,7 @@
 
 @interface NSData (_PASDistilledString) <_PASDistilledString>
 - (id)_pas_revivedString;
+- (id)_pas_dataWithNonnullBytes;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

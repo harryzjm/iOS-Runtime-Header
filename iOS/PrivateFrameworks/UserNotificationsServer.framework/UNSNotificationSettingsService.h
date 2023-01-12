@@ -26,6 +26,7 @@
 - (void)settingsGateway:(id)arg1 didUpdateSectionInfoForSectionIDs:(id)arg2;
 - (void)_queue_removeObserver:(id)arg1;
 - (void)_queue_addObserver:(id)arg1;
+- (void)resetScheduledDeliverySetting;
 - (void)setNotificationSystemSettings:(id)arg1;
 - (id)notificationSystemSettings;
 - (void)replaceNotificationTopicSettings:(id)arg1 forNotificationSourceIdentifier:(id)arg2 topicIdentifier:(id)arg3;

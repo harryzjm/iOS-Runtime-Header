@@ -24,6 +24,8 @@
 
 + (Class)_contentViewClassForStyle:(long long)arg1;
 + (id)_defaultColor;
++ (_Bool)_allowsUnsupportedMacIdiomBehavior;
++ (void)_setAllowsUnsupportedMacIdiomBehavior:(_Bool)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) long long refreshControlState; // @synthesize refreshControlState=_refreshControlState;
 @property(nonatomic, getter=_host, setter=_setHost:) __weak id <_UIRefreshControlHosting> _host;

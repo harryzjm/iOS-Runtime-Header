@@ -18,10 +18,12 @@
     NSData *_data;
     unsigned long long _status;
     unsigned long long _source;
+    unsigned long long _targetDevice;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long targetDevice; // @synthesize targetDevice=_targetDevice;
 @property(nonatomic) unsigned long long source; // @synthesize source=_source;
 @property(nonatomic) unsigned long long status; // @synthesize status=_status;
 @property(copy, nonatomic) NSData *data; // @synthesize data=_data;

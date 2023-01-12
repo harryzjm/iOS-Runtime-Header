@@ -6,7 +6,7 @@
 
 #import <PrototypeTools/PTSettings.h>
 
-@class SBFFluidBehaviorSettings;
+@class SBFFluidBehaviorSettings, SBHPeopleWidgetPersonDetailInteractionSettings;
 
 @interface SBHWidgetSettings : PTSettings
 {
@@ -21,6 +21,9 @@
     _Bool _configurationEqualizesMinCardToCameraDistance;
     _Bool _configurationMaximizesCardHeight;
     _Bool _configurationEnforcesMaxCardHeight;
+    _Bool _configurationUsesSidebarAsContainer;
+    _Bool _stackConfigurationBlursBackground;
+    _Bool _stackConfigurationUsesFolderBlur;
     unsigned long long _maximumWidgetsInAStack;
     SBFFluidBehaviorSettings *_toggleEditingOrPinnedAnimationSettings;
     double _animatedInsertionJumpScale;
@@ -54,10 +57,33 @@
     double _configurationDarkeningTintAlpha;
     double _configurationWidgetTintColorAlpha;
     double _configurationMaxCardHeight;
+    double _configurationFractionBetweenSourceAndContainerX;
+    double _configurationFractionBetweenSourceAndContainerY;
+    double _stackConfigurationZoomTransitionDuration;
+    double _stackConfigurationContentHeightRatio;
+    double _stackConfigurationNoBlurDimmingAlpha;
+    double _stackConfigurationDimmingAlpha;
+    double _stackConfigurationMediumIconScale;
+    double _stackConfigurationLargeIconScale;
+    double _stackConfigurationExtraLargeIconScale;
+    SBHPeopleWidgetPersonDetailInteractionSettings *_personDetailInteractionSettings;
 }
 
 + (id)settingsControllerModule;
 - (void).cxx_destruct;
+@property(retain, nonatomic) SBHPeopleWidgetPersonDetailInteractionSettings *personDetailInteractionSettings; // @synthesize personDetailInteractionSettings=_personDetailInteractionSettings;
+@property(nonatomic) double stackConfigurationExtraLargeIconScale; // @synthesize stackConfigurationExtraLargeIconScale=_stackConfigurationExtraLargeIconScale;
+@property(nonatomic) double stackConfigurationLargeIconScale; // @synthesize stackConfigurationLargeIconScale=_stackConfigurationLargeIconScale;
+@property(nonatomic) double stackConfigurationMediumIconScale; // @synthesize stackConfigurationMediumIconScale=_stackConfigurationMediumIconScale;
+@property(nonatomic) double stackConfigurationDimmingAlpha; // @synthesize stackConfigurationDimmingAlpha=_stackConfigurationDimmingAlpha;
+@property(nonatomic) _Bool stackConfigurationUsesFolderBlur; // @synthesize stackConfigurationUsesFolderBlur=_stackConfigurationUsesFolderBlur;
+@property(nonatomic) _Bool stackConfigurationBlursBackground; // @synthesize stackConfigurationBlursBackground=_stackConfigurationBlursBackground;
+@property(nonatomic) double stackConfigurationNoBlurDimmingAlpha; // @synthesize stackConfigurationNoBlurDimmingAlpha=_stackConfigurationNoBlurDimmingAlpha;
+@property(nonatomic) double stackConfigurationContentHeightRatio; // @synthesize stackConfigurationContentHeightRatio=_stackConfigurationContentHeightRatio;
+@property(nonatomic) double stackConfigurationZoomTransitionDuration; // @synthesize stackConfigurationZoomTransitionDuration=_stackConfigurationZoomTransitionDuration;
+@property(nonatomic) double configurationFractionBetweenSourceAndContainerY; // @synthesize configurationFractionBetweenSourceAndContainerY=_configurationFractionBetweenSourceAndContainerY;
+@property(nonatomic) double configurationFractionBetweenSourceAndContainerX; // @synthesize configurationFractionBetweenSourceAndContainerX=_configurationFractionBetweenSourceAndContainerX;
+@property(nonatomic) _Bool configurationUsesSidebarAsContainer; // @synthesize configurationUsesSidebarAsContainer=_configurationUsesSidebarAsContainer;
 @property(nonatomic) double configurationMaxCardHeight; // @synthesize configurationMaxCardHeight=_configurationMaxCardHeight;
 @property(nonatomic) _Bool configurationEnforcesMaxCardHeight; // @synthesize configurationEnforcesMaxCardHeight=_configurationEnforcesMaxCardHeight;
 @property(nonatomic) _Bool configurationMaximizesCardHeight; // @synthesize configurationMaximizesCardHeight=_configurationMaximizesCardHeight;

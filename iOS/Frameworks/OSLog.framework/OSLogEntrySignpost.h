@@ -25,6 +25,7 @@
     long long _signpostType;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) long long signpostType; // @synthesize signpostType=_signpostType;
 @property(readonly, nonatomic) NSString *signpostName; // @synthesize signpostName=_signpostName;
@@ -38,6 +39,8 @@
 @property(readonly, nonatomic) int processIdentifier; // @synthesize processIdentifier=_processIdentifier;
 @property(readonly, nonatomic) NSString *process; // @synthesize process=_process;
 @property(readonly, nonatomic) unsigned long long activityIdentifier; // @synthesize activityIdentifier=_activityIdentifier;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)initWithEventProxy:(id)arg1;
 
 @end

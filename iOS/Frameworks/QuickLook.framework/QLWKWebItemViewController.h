@@ -9,12 +9,13 @@
 #import <QuickLook/QLScrubViewDelegate-Protocol.h>
 #import <QuickLook/UIScrollViewDelegate-Protocol.h>
 #import <QuickLook/WKNavigationDelegate-Protocol.h>
+#import <QuickLook/WKURLSchemeHandler-Protocol.h>
 
-@class NSCache, NSLayoutConstraint, NSOperationQueue, NSString, QLScrubView, UIPrintPageRenderer, WKWebView;
+@class NSCache, NSLayoutConstraint, NSOperationQueue, NSString, NSURLSessionDataTask, QLPreviewParts, QLScrubView, UIPrintPageRenderer, WKWebView;
 @protocol QLWebKitPaginator, QLWebKitThumbnailGenerator;
 
 __attribute__((visibility("hidden")))
-@interface QLWKWebItemViewController <WKNavigationDelegate, QLPrintingProtocol, QLScrubViewDataSource, QLScrubViewDelegate, UIScrollViewDelegate>
+@interface QLWKWebItemViewController <WKNavigationDelegate, WKURLSchemeHandler, QLPrintingProtocol, QLScrubViewDataSource, QLScrubViewDelegate, UIScrollViewDelegate>
 {
     NSString *_previewContentType;
     struct CGPoint _scrollViewTopOffset;
@@ -33,14 +34,19 @@ __attribute__((visibility("hidden")))
     NSOperationQueue *_operationQueue;
     NSCache *_indexToThumbnailsCache;
     WKWebView *_webView;
+    QLPreviewParts *_generatedDocument;
+    NSURLSessionDataTask *_generatedDocumentURLSessionTask;
 }
 
 + (_Bool)_shouldDisableJavaScriptForContentType:(id)arg1;
 - (void).cxx_destruct;
+@property(retain) NSURLSessionDataTask *generatedDocumentURLSessionTask; // @synthesize generatedDocumentURLSessionTask=_generatedDocumentURLSessionTask;
+@property(retain) QLPreviewParts *generatedDocument; // @synthesize generatedDocument=_generatedDocument;
 @property(retain, nonatomic) WKWebView *webView; // @synthesize webView=_webView;
 @property(retain, nonatomic) NSCache *indexToThumbnailsCache; // @synthesize indexToThumbnailsCache=_indexToThumbnailsCache;
 @property(retain, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
 - (void)_updateConstraintConstants:(_Bool)arg1;
+- (void)buttonPressedWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)transitionWillFinish:(_Bool)arg1 didComplete:(_Bool)arg2;
 - (void)transitionDidStart:(_Bool)arg1;
 - (id)transitioningView;
@@ -55,6 +61,8 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)scrubView:(id)arg1 pageSizeAtIndex:(unsigned long long)arg2;
 - (void)scrubView:(id)arg1 thumbnailForPage:(long long)arg2 size:(struct CGSize)arg3 withCompletionBlock:(CDUnknownBlockType)arg4;
 - (long long)numberOfPagesInScrubView:(id)arg1;
+- (void)webView:(id)arg1 stopURLSchemeTask:(id)arg2;
+- (void)webView:(id)arg1 startURLSchemeTask:(id)arg2;
 - (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
 - (void)webViewWebContentProcessDidTerminate:(id)arg1;
 - (void)_webViewDidRequestPasswordForQuickLookDocument:(id)arg1;
@@ -75,6 +83,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)canClickToToggleFullscreen;
 - (_Bool)canPinchToDismiss;
 - (_Bool)canSwipeToDismiss;
+- (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (_Bool)shouldAcceptTouch:(id)arg1 ofGestureRecognizer:(id)arg2;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (_Bool)automaticallyUpdateScrollViewIndicatorInset;
@@ -89,6 +98,7 @@ __attribute__((visibility("hidden")))
 - (void)_registerRemoteProxy;
 - (id)scrubView;
 - (void)loadView;
+- (void)dealloc;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

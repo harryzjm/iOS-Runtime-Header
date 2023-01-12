@@ -12,6 +12,7 @@
 + (id)cx_callControllerVendorInterface;
 + (id)cx_callControllerHostInterface;
 + (id)cx_networkExtensionMessageControllerHostInterface;
++ (id)cx_notificationServiceExtensionInterface;
 + (id)cx_voicemailProviderVendorInterface;
 + (id)cx_voicemailProviderHostInterface;
 + (id)cx_voicemailControllerVendorInterface;

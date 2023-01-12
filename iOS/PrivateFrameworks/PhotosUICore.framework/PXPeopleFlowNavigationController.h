@@ -20,20 +20,25 @@
     UIBarButtonItem *_nextButton;
     UIBarButtonItem *_doneButton;
     UIViewController<PXPeopleFlowViewController> *_currentViewController;
+    UIBarButtonItem *_customLeftButton;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIBarButtonItem *customLeftButton; // @synthesize customLeftButton=_customLeftButton;
 @property(retain, nonatomic) UIViewController<PXPeopleFlowViewController> *currentViewController; // @synthesize currentViewController=_currentViewController;
 @property(retain, nonatomic) UIBarButtonItem *doneButton; // @synthesize doneButton=_doneButton;
 @property(retain, nonatomic) UIBarButtonItem *nextButton; // @synthesize nextButton=_nextButton;
 @property(retain, nonatomic) UIBarButtonItem *backButton; // @synthesize backButton=_backButton;
 @property(retain, nonatomic) UIBarButtonItem *cancelButton; // @synthesize cancelButton=_cancelButton;
 @property(retain, nonatomic) id <PXPeopleFlowController> flowController; // @synthesize flowController=_flowController;
+- (void)requestDone;
 - (void)requestCancel;
 - (void)requestAdvanceToNextInFlow;
 - (void)setAdvanceButtonEnabled:(_Bool)arg1;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(_Bool)arg3;
+- (_Bool)_enableBootstrapSpeedBump;
 - (void)_updateActions;
+- (void)useCustomBarButtonItem:(id)arg1;
 - (void)back:(id)arg1;
 - (void)next:(id)arg1;
 - (void)done:(id)arg1;

@@ -19,7 +19,6 @@
     _Bool _allowsNextDrawableTimeout;
     NSObject<TSDMetalLayerDelegate> *_delegate;
     id <MTLCommandQueue> _commandQueue;
-    id <MTLDevice> _device;
     unsigned long long _pixelFormat;
     struct CGSize _drawableSize;
 }
@@ -41,7 +40,7 @@
 - (void)startAnimation;
 - (void)p_drawFrameFromDisplayLink:(id)arg1;
 - (void)p_drawFrameAtLayerTime:(double)arg1;
-@property id <MTLDevice> device; // @synthesize device=_device;
+@property id <MTLDevice> device;
 - (void)tearDown;
 - (id)initWithFrame:(struct CGRect)arg1 isOpaque:(_Bool)arg2 isWideGamut:(_Bool)arg3 delegate:(id)arg4 metalDevice:(id)arg5;
 - (id)nextDrawable;

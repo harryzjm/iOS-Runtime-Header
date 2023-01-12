@@ -8,36 +8,53 @@
 
 @interface _GCControllerGestureAwareButtonInput
 {
-    NSMutableArray *_multiPressEventQueue;
+    NSMutableArray *_doublePressEventQueue;
     _GCSetValueEvent *_longPressDownEvent;
+    _GCSetValueEvent *_singlePressDownEvent;
     float _realValue;
+    int _requiredDoublePressCount;
+    _Bool _useActualSystemGestureState;
+    long long _actualSystemGestureState;
+    _Bool _inputDisabledBySystem;
     _Bool _longPressMuted;
-    _Bool _multiPressMuted;
+    _Bool _doublePressMuted;
+    _Bool _singlePressMuted;
     _Bool _enabled;
     float _longPressInterval;
-    float _multiPressInterval;
-    int _requiredMultiPressCount;
+    float _singlePressInterval;
+    float _doublePressInterval;
+    long long _preferredSystemGestureState;
     CDUnknownBlockType _longPressHandler;
-    CDUnknownBlockType _multiPressHandler;
+    CDUnknownBlockType _doublePressHandler;
+    CDUnknownBlockType _singlePressHandler;
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) CDUnknownBlockType multiPressHandler; // @synthesize multiPressHandler=_multiPressHandler;
+@property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
+@property(nonatomic, getter=isSinglePressMuted) _Bool singlePressMuted; // @synthesize singlePressMuted=_singlePressMuted;
+@property(nonatomic, getter=isDoublePressMuted) _Bool doublePressMuted; // @synthesize doublePressMuted=_doublePressMuted;
+@property(nonatomic, getter=isLongPressMuted) _Bool longPressMuted; // @synthesize longPressMuted=_longPressMuted;
+@property(copy, nonatomic) CDUnknownBlockType singlePressHandler; // @synthesize singlePressHandler=_singlePressHandler;
+@property(copy, nonatomic) CDUnknownBlockType doublePressHandler; // @synthesize doublePressHandler=_doublePressHandler;
 @property(copy, nonatomic) CDUnknownBlockType longPressHandler; // @synthesize longPressHandler=_longPressHandler;
-@property(nonatomic) int requiredMultiPressCount; // @synthesize requiredMultiPressCount=_requiredMultiPressCount;
-@property(nonatomic) float multiPressInterval; // @synthesize multiPressInterval=_multiPressInterval;
+@property(nonatomic) float doublePressInterval; // @synthesize doublePressInterval=_doublePressInterval;
+@property(nonatomic) float singlePressInterval; // @synthesize singlePressInterval=_singlePressInterval;
 @property(nonatomic) float longPressInterval; // @synthesize longPressInterval=_longPressInterval;
-- (void)setEnabled:(_Bool)arg1;
-- (void)muteMultiPress:(_Bool)arg1;
-- (void)muteLongPress:(_Bool)arg1;
+- (void)__onqueue_executeSinglePressRecognizerForEvent:(id)arg1 queue:(id)arg2;
 - (void)__onqueue_executeLongPressRecognizerForEvent:(id)arg1 queue:(id)arg2;
-- (void)__onqueue_executeMultiPressRecognizerForEvent:(id)arg1 queue:(id)arg2;
+- (void)__onqueue_executeDoublePressRecognizerForEvent:(id)arg1 queue:(id)arg2;
 - (void)__onqueue_forwardEvent:(id)arg1 queue:(id)arg2;
 - (void)registerSetValueEvent:(float)arg1 queue:(id)arg2;
 - (_Bool)_commitPendingValueOnQueue:(id)arg1;
 - (void)setValue:(float)arg1;
 - (_Bool)_setValue:(float)arg1 queue:(id)arg2;
+- (long long)preferredSystemGestureState;
+- (void)setPreferredSystemGestureState:(long long)arg1;
 @property(nonatomic) long long actualSystemGestureState;
+@property(nonatomic) _Bool inputDisabledBySystem; // @synthesize inputDisabledBySystem=_inputDisabledBySystem;
+- (_Bool)isLongPressGestureRecognizerEnabled;
+- (_Bool)isDoublePressGestureRecognizerEnabled;
+- (_Bool)isSinglePressGestureRecognizerEnabled;
 - (id)initWithDescriptionName:(id)arg1;
 
 @end

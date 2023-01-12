@@ -17,8 +17,11 @@
 }
 
 + (id)logCategory;
-+ (id)defaultDataScalerPath;
-+ (id)defaultModelPath;
++ (id)defaultAestheticQualityDataScalerPath;
++ (id)defaultAestheticQualityModelPath;
++ (id)defaultRecognizabilityDataScalerPath;
++ (id)defaultRecognizabilityModelPath;
++ (id)modelPathForResource:(id)arg1;
 + (id)svmOutputName;
 + (id)svmInputName;
 + (id)dataScalerOutputName;

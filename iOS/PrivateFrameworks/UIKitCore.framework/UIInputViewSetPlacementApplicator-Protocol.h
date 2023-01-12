@@ -11,6 +11,8 @@
 
 @protocol UIInputViewSetPlacementApplicator <NSObject>
 + (id <UIInputViewSetPlacementApplicator>)applicatorForOwner:(id <UIInputViewSetPlacementOwner>)arg1 withPlacement:(UIInputViewSetPlacement *)arg2;
+@property(readonly) struct UIEdgeInsets inputAccessoryPadding;
+@property(readonly) struct UIEdgeInsets inputAssistantPadding;
 @property(readonly) struct CGRect popoverFrame;
 @property(readonly) struct UIEdgeInsets contentInsets;
 @property(readonly, retain) UIView *twoFingerDraggableView;

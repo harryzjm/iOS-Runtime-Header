@@ -4,38 +4,44 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSSet, NSString;
+@class NSString, SBAppLayout;
 
 @interface SBMainDisplayLayoutState
 {
+    SBAppLayout *_cachedAppLayoutIfAny;
+    SBAppLayout *_cachedFloatingAppLayoutIfAny;
     _Bool _floatingSwitcherVisible;
+    _Bool _centerEntityModal;
     long long _spaceConfiguration;
     long long _floatingConfiguration;
+    long long _centerConfiguration;
+    long long _peekConfiguration;
     long long _unlockedEnvironmentMode;
     NSString *_bundleIDShowingAppExpose;
-    NSSet *_inlineAppExposeOverlayElements;
+    long long _windowPickerRole;
 }
 
 + (long long)_defaultInterfaceOrientation;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSSet *inlineAppExposeOverlayElements; // @synthesize inlineAppExposeOverlayElements=_inlineAppExposeOverlayElements;
+@property(readonly, nonatomic) long long windowPickerRole; // @synthesize windowPickerRole=_windowPickerRole;
+@property(readonly, nonatomic, getter=isCenterEntityModal) _Bool centerEntityModal; // @synthesize centerEntityModal=_centerEntityModal;
 @property(readonly, nonatomic, getter=isFloatingSwitcherVisible) _Bool floatingSwitcherVisible; // @synthesize floatingSwitcherVisible=_floatingSwitcherVisible;
 @property(readonly, nonatomic) NSString *bundleIDShowingAppExpose; // @synthesize bundleIDShowingAppExpose=_bundleIDShowingAppExpose;
 @property(readonly, nonatomic) long long unlockedEnvironmentMode; // @synthesize unlockedEnvironmentMode=_unlockedEnvironmentMode;
+@property(readonly, nonatomic) long long peekConfiguration; // @synthesize peekConfiguration=_peekConfiguration;
+@property(readonly, nonatomic) long long centerConfiguration; // @synthesize centerConfiguration=_centerConfiguration;
 @property(readonly, nonatomic) long long floatingConfiguration; // @synthesize floatingConfiguration=_floatingConfiguration;
 @property(readonly, nonatomic) long long spaceConfiguration; // @synthesize spaceConfiguration=_spaceConfiguration;
+- (id)floatingAppLayout;
+- (id)appLayout;
 - (long long)interfaceOrientation;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)inlineAppExposeOverlayElementWithRole:(long long)arg1;
 - (id)_initWithLayoutElements:(id)arg1 interfaceOrientation:(long long)arg2 elementInterfaceOrientation:(long long)arg3;
-- (id)_initWithLayoutElements:(id)arg1 interfaceOrientation:(long long)arg2 elementInterfaceOrientation:(long long)arg3 spaceConfiguration:(long long)arg4 floatingConfiguration:(long long)arg5 unlockedEnvironmentMode:(long long)arg6 floatingSwitcherVisible:(_Bool)arg7 bundleIDShowingAppExpose:(id)arg8 inlineAppExposeOverlayElements:(id)arg9;
+- (id)_initWithLayoutElements:(id)arg1 interfaceOrientation:(long long)arg2 elementInterfaceOrientation:(long long)arg3 spaceConfiguration:(long long)arg4 floatingConfiguration:(long long)arg5 unlockedEnvironmentMode:(long long)arg6 floatingSwitcherVisible:(_Bool)arg7 centerConfiguration:(long long)arg8 centerEntityModal:(_Bool)arg9 peekConfiguration:(long long)arg10 bundleIDShowingAppExpose:(id)arg11 windowPickerRole:(long long)arg12;
 - (id)visibleFloatingItem;
 - (id)floatingItem;
-- (id)_transitionContextForDismissingRightApplication;
-- (id)_transitionContextForResizingToSpaceConfiguration:(long long)arg1;
-- (id)_transitionContextForDismissingLeftApplication;
 
 @end
 

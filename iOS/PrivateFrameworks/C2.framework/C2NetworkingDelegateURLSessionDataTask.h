@@ -6,22 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class C2NetworkingDelegateURLSession, NSString, NSURLRequest, NSURLResponse;
+@class C2NetworkingDelegateURLSession, C2RequestOptions, NSDictionary, NSError, NSString, NSURLRequest, NSURLResponse;
 @protocol NSURLSessionAppleIDContext, OS_dispatch_queue;
 
 @interface C2NetworkingDelegateURLSessionDataTask : NSObject
 {
-    _Bool _cancelled;
     unsigned long long _taskIdentifier;
     NSString *_taskDescription;
     long long _countOfBytesReceived;
     long long _countOfBytesSent;
     long long _countOfBytesExpectedToSend;
     long long _countOfBytesExpectedToReceive;
+    long long _countOfBytesClientExpectsToSend;
+    long long _countOfBytesClientExpectsToReceive;
     long long _state;
     NSURLRequest *_originalRequest;
     NSURLRequest *_currentRequest;
     NSURLResponse *_response;
+    C2RequestOptions *_c2RequestOptions;
+    NSError *_syntheticError;
+    NSDictionary *_timingData;
     C2NetworkingDelegateURLSession *_session;
     double __timeoutIntervalForResource;
     id <NSURLSessionAppleIDContext> __appleIDContext;
@@ -33,11 +37,15 @@
 @property(copy, setter=_setAppleIDContext:) id <NSURLSessionAppleIDContext> _appleIDContext; // @synthesize _appleIDContext=__appleIDContext;
 @property double _timeoutIntervalForResource; // @synthesize _timeoutIntervalForResource=__timeoutIntervalForResource;
 @property(nonatomic) __weak C2NetworkingDelegateURLSession *session; // @synthesize session=_session;
-@property _Bool cancelled; // @synthesize cancelled=_cancelled;
+@property(retain, nonatomic) NSDictionary *timingData; // @synthesize timingData=_timingData;
+@property(retain) NSError *syntheticError; // @synthesize syntheticError=_syntheticError;
+@property(retain, nonatomic) C2RequestOptions *c2RequestOptions; // @synthesize c2RequestOptions=_c2RequestOptions;
 @property(copy) NSURLResponse *response; // @synthesize response=_response;
 @property(copy) NSURLRequest *currentRequest; // @synthesize currentRequest=_currentRequest;
 @property(copy) NSURLRequest *originalRequest; // @synthesize originalRequest=_originalRequest;
 @property long long state; // @synthesize state=_state;
+@property long long countOfBytesClientExpectsToReceive; // @synthesize countOfBytesClientExpectsToReceive=_countOfBytesClientExpectsToReceive;
+@property long long countOfBytesClientExpectsToSend; // @synthesize countOfBytesClientExpectsToSend=_countOfBytesClientExpectsToSend;
 @property long long countOfBytesExpectedToReceive; // @synthesize countOfBytesExpectedToReceive=_countOfBytesExpectedToReceive;
 @property long long countOfBytesExpectedToSend; // @synthesize countOfBytesExpectedToSend=_countOfBytesExpectedToSend;
 @property long long countOfBytesSent; // @synthesize countOfBytesSent=_countOfBytesSent;
@@ -50,9 +58,10 @@
 - (void)handleCompletion;
 - (void)streamResponseBody:(id)arg1 offset:(unsigned int)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)handleResponse:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)processRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)processRequest:(id)arg1 configuration:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setupRequestBodyForRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_drainInputStream:(id)arg1 sinkData:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)willSendRequest:(CDUnknownBlockType)arg1;
 - (void)setupRequest:(CDUnknownBlockType)arg1;
 - (id)init;
 

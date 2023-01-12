@@ -12,8 +12,8 @@
 @interface ADBackgroundTaskRequest : NSObject
 {
     _Bool _performDeferralCheck;
-    NSString *_requestIdentifier;
     NSObject<OS_xpc_object> *_activity;
+    NSString *_requestIdentifier;
     NSObject<OS_xpc_object> *_criteria;
     NSDate *_startDate;
 }
@@ -22,8 +22,8 @@
 @property(retain, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property(nonatomic) _Bool performDeferralCheck; // @synthesize performDeferralCheck=_performDeferralCheck;
 @property(retain, nonatomic) NSObject<OS_xpc_object> *criteria; // @synthesize criteria=_criteria;
-@property(retain, nonatomic) NSObject<OS_xpc_object> *activity; // @synthesize activity=_activity;
 @property(readonly, copy, nonatomic) NSString *requestIdentifier; // @synthesize requestIdentifier=_requestIdentifier;
+@property(retain, nonatomic) NSObject<OS_xpc_object> *activity; // @synthesize activity=_activity;
 - (id)getPropertyAsDate:(id)arg1;
 - (void)setPropertyAsDate:(id)arg1 value:(id)arg2;
 - (double)getPropertyAsDouble:(id)arg1;

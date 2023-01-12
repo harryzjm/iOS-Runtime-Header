@@ -13,6 +13,10 @@
     MISSING_TYPE *delegate;
     MISSING_TYPE *optimisticUpdatesDelegate;
     MISSING_TYPE *store;
+    MISSING_TYPE *canChangeSortingStyle;
+    MISSING_TYPE *canManualSortInSmartList;
+    MISSING_TYPE *defaultListType;
+    MISSING_TYPE *isUnitTestMode;
 }
 
 - (void).cxx_destruct;

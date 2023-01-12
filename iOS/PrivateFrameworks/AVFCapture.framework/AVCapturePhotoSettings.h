@@ -15,6 +15,7 @@
     AVCapturePhotoSettingsInternal *_internal;
 }
 
++ (id)photoSettingsFromMomentCaptureSettings:(id)arg1 withRawPixelFormatType:(unsigned int)arg2 rawFileType:(id)arg3 format:(id)arg4;
 + (id)photoSettingsFromMomentCaptureSettings:(id)arg1 withFormat:(id)arg2;
 + (id)photoSettingsFromPhotoSettings:(id)arg1;
 + (id)burstQualityPhotoSettings;
@@ -27,6 +28,11 @@
 + (long long)uniqueID;
 + (void)initialize;
 - (id)_sanitizedLivePhotoMovieMetadataForArray:(id)arg1 exceptionReason:(id *)arg2;
+@property(nonatomic, getter=isAutoContentAwareDistortionCorrectionEnabled) _Bool autoContentAwareDistortionCorrectionEnabled;
+- (void)setPrefersStillImageShiftedToMatchSpatialOverCapturePreview:(_Bool)arg1;
+- (_Bool)isPrefersStillImageShiftedToMatchSpatialOverCapturePreview;
+- (void)setPreviewPhotoFormatDimensionsLimitedToDisplayDimensions:(_Bool)arg1;
+- (_Bool)arePreviewPhotoFormatDimensionsLimitedToDisplayDimensions;
 - (void)setProcessedPhotoZoomWithoutUpscalingEnabled:(_Bool)arg1;
 - (_Bool)isProcessedPhotoZoomWithoutUpscalingEnabled;
 - (id)spatialOverCaptureGroupIdentifierForOriginalPhoto;
@@ -92,6 +98,8 @@
 - (void)setLivePhotoMovieFileURLForOriginalPhoto:(id)arg1;
 - (id)livePhotoMovieFileURLForOriginalPhoto;
 @property(copy, nonatomic) NSURL *livePhotoMovieFileURL;
+- (void)setSemanticStyle:(id)arg1;
+- (id)semanticStyle;
 - (id)metadataForOriginalPhoto;
 @property(copy, nonatomic) NSDictionary *metadata;
 @property(nonatomic) _Bool embedsSemanticSegmentationMattesInPhoto;

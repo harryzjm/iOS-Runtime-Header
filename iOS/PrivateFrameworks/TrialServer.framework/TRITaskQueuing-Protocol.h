@@ -12,7 +12,9 @@
 @protocol TRITaskQueuing <TRITaskQueueControlling>
 - (unsigned long long)count;
 - (_Bool)cancelTask:(id <TRITask>)arg1;
-- (_Bool)addTask:(id <TRITask>)arg1 options:(TRITaskQueuingOptions *)arg2;
+- (void)registerFinalizeBlock:(void (^)(id <TRITask>, int, TRITaskRunResult *, NSDate *))arg1;
+- (CDStruct_6b48f683)addTask:(id <TRITask>)arg1 options:(TRITaskQueuingOptions *)arg2 taskId:(id *)arg3;
+- (CDStruct_6b48f683)addTask:(id <TRITask>)arg1 options:(TRITaskQueuingOptions *)arg2;
 - (_Bool)resumeWithXPCActivityDescriptor:(TRIRunningXPCActivityDescriptor *)arg1 executeWhenSuspended:(void (^)(void))arg2;
 @end
 

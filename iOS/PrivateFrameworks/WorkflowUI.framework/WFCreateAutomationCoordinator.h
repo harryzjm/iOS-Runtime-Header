@@ -39,11 +39,13 @@
 @property(retain, nonatomic) WFTriggerManager *triggerManager; // @synthesize triggerManager=_triggerManager;
 @property(nonatomic) __weak id <WFCreateAutomationCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) UINavigationController *navigationController; // @synthesize navigationController=_navigationController;
+- (void)trackAddAutomationActions;
+- (void)trackAddAutomationWithRecord:(id)arg1;
 - (void)automationSummaryViewController:(id)arg1 didFinishWithTrigger:(id)arg2;
 - (void)triggerComposeViewControllerDidCancel:(id)arg1;
 - (void)triggerComposeViewController:(id)arg1 didFinishWithWorkflow:(id)arg2;
 - (void)triggerConfigurationViewController:(id)arg1 didFinishWithTrigger:(id)arg2;
-- (void)selectTypeViewController:(id)arg1 didChooseTriggerClass:(Class)arg2;
+- (void)selectTypeViewController:(id)arg1 didChooseTrigger:(id)arg2;
 - (void)triggerEditor:(id)arg1 didFinishWithTriggerBuilder:(id)arg2;
 - (void)automationTypeChooser:(id)arg1 didChooseAutomationType:(unsigned long long)arg2;
 - (void)openHomeApp;

@@ -10,6 +10,7 @@
 
 @class ICPBDGSFinishDelegationResponse, ICPBDGSStartDelegationResponse;
 
+__attribute__((visibility("hidden")))
 @interface ICPBDGSResponse : PBCodable <NSCopying>
 {
     ICPBDGSFinishDelegationResponse *_finishDelegationResponse;
@@ -21,10 +22,6 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) ICPBDGSFinishDelegationResponse *finishDelegationResponse; // @synthesize finishDelegationResponse=_finishDelegationResponse;
-@property(retain, nonatomic) ICPBDGSStartDelegationResponse *startDelegationResponse; // @synthesize startDelegationResponse=_startDelegationResponse;
-@property(nonatomic) unsigned int requestUniqueID; // @synthesize requestUniqueID=_requestUniqueID;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -32,9 +29,6 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasFinishDelegationResponse;
-@property(readonly, nonatomic) _Bool hasStartDelegationResponse;
-@property(nonatomic) _Bool hasRequestUniqueID;
 
 @end
 

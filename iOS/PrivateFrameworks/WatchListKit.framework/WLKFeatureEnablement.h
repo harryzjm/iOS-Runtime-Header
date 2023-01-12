@@ -10,7 +10,7 @@
 {
 }
 
-+ (_Bool)UNWidget;
++ (id)tvAppEnabledFeatures;
 
 @end
 

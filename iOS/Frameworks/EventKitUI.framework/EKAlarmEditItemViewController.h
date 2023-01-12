@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface EKAlarmEditItemViewController <CalendarEventAlarmTableDelegate>
 {
     CalendarEventAlarmTable *_table;
+    double _warningLabelWidth;
     _Bool _immediateAlarmCreation;
     EKUIRecurrenceAlertController *_recurrenceAlertController;
     _Bool _allDay;
@@ -40,10 +41,13 @@ __attribute__((visibility("hidden")))
 - (_Bool)customSelected;
 - (void)setCustomString:(id)arg1;
 - (id)tableHeaderView;
+- (void)viewWillLayoutSubviews;
+- (_Bool)displaysWarningLabel;
 - (void)_storeChanged:(id)arg1;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
-- (void)viewDidLoad;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)resetBackgroundColor;
 - (void)loadView;
 - (id)initWithFrame:(struct CGRect)arg1 styleProvider:(id)arg2;
 

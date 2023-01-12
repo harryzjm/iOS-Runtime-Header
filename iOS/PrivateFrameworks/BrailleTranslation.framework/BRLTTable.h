@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <BrailleTranslation/NSCopying-Protocol.h>
+
 @class NSBundle, NSString;
 
-@interface BRLTTable : NSObject
+@interface BRLTTable : NSObject <NSCopying>
 {
     NSBundle *_bundle;
     NSString *_serviceIdentifier;
@@ -35,6 +37,7 @@
 @property(readonly, nonatomic) NSString *localizedName;
 @property(readonly, nonatomic) NSString *tableIdentifier;
 @property(readonly, nonatomic) NSString *identifier;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithServiceIdentifier:(id)arg1 language:(id)arg2 variant:(id)arg3;
 - (id)initWithServiceIdentifier:(id)arg1 tableIdentifier:(id)arg2;
 - (id)initWithIdentifier:(id)arg1;

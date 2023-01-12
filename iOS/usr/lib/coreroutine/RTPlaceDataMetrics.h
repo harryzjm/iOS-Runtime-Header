@@ -19,13 +19,20 @@
     NSDate *_endDateTime;
 }
 
-+ (id)generateDictionaryOfOldMetricsForLocationsOfInterest:(id)arg1 homeMapItem:(id)arg2 workMapItem:(id)arg3 locationsOfOthers:(id *)arg4;
++ (id)calculateMLFeatures:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 createBucketedFeatures:(_Bool)arg4;
++ (id)labelAnEventInterval:(id)arg1 basedOnIntervalDict:(id)arg2;
++ (id)generateDictionaryOfOldMetricsWithLearnedLocationStore:(id)arg1 locationsOfInterest:(id)arg2 homeMapItem:(id)arg3 workMapItem:(id)arg4 locationsOfOthers:(id *)arg5;
++ (id)standardDeviationOf:(id)arg1;
++ (id)meanOf:(id)arg1;
++ (id)medianOf:(id)arg1;
 + (CDStruct_b8464340)event;
 + (id)supportedMetricKeys;
 + (id)bucketedKeys;
 + (id)doubleKeys;
 + (id)integerKeys;
 + (id)booleanKeys;
++ (id)binArrayPercentage;
++ (id)binArrayDuetEventDuration;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *endDateTime; // @synthesize endDateTime=_endDateTime;
 @property(retain, nonatomic) NSDate *startDateTime; // @synthesize startDateTime=_startDateTime;
@@ -34,18 +41,14 @@
 @property(retain, nonatomic) RTLocation *locationHome; // @synthesize locationHome=_locationHome;
 @property(retain, nonatomic) NSArray *visitArray; // @synthesize visitArray=_visitArray;
 @property(nonatomic) double distanceThreshold; // @synthesize distanceThreshold=_distanceThreshold;
+- (void)setMLMetricsFromFeaturesDict:(id)arg1;
 - (void)setCurrentInferenceReplayableMetricsFromDict:(id)arg1;
-- (void)calculateAndSetVisitCorrelatedMetricsForEventType:(id)arg1 eventHappenedArrayHome:(id)arg2 eventHappenedArrayWork:(id)arg3 eventHappenedArrayOthers:(id)arg4 eventLongestArrayHome:(id)arg5 eventLongestArrayWork:(id)arg6 eventLongestArrayOthers:(id)arg7 eventTotalArrayHome:(id)arg8 eventTotalArrayWork:(id)arg9 eventTotalArrayOthers:(id)arg10;
 - (void)calculateAndSetVisitMetrics;
-- (long long)labelEventInterval:(id)arg1 basedOnIntervalDict:(id)arg2;
 - (id)findHomeWorkOthersIntervals;
 - (long long)convertDateTime2SecondsBasedOnCalendar:(id)arg1 dateTime:(id)arg2;
 - (long long)numberOfWeeksBetweenDatesBasedOnCalendar:(id)arg1 startDateTime:(id)arg2 endDateTime:(id)arg3;
 - (id)removeTimeFromDateTime:(id)arg1 withCalendar:(id)arg2;
 - (long long)daysBetweenDate:(id)arg1 andDate:(id)arg2;
-- (id)standardDeviationOf:(id)arg1;
-- (id)meanOf:(id)arg1;
-- (id)medianOf:(id)arg1;
 - (_Bool)submitMetricsWithError:(id *)arg1;
 - (void)setDerivedMetrics;
 - (id)initWithLoggingEnabled:(_Bool)arg1;

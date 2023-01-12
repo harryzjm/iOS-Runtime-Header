@@ -28,9 +28,10 @@
 - (id)_physicalButtonsForGestureRecognizer:(id)arg1 withPhase:(long long)arg2;
 - (id)_physicalButtonsForGestureRecognizer:(id)arg1;
 - (id)_physicalButtonsForResponder:(id)arg1 withPhase:(long long)arg2;
-- (id)_physicalButtonsForResponder:(id)arg1;
+- (id)_physicalButtonsForPhase:(long long)arg1;
 - (id)_respondersForWindow:(id)arg1;
 - (id)physicalButtonsForWindow:(id)arg1;
+- (long long)_modifierFlags;
 - (id)_allPresses;
 - (id)_windows;
 - (id)pressesForGestureRecognizer:(id)arg1;

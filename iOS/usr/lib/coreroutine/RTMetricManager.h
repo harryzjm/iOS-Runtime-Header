@@ -4,18 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 @class AWDServerConnection, NSArray, RTManagedConfiguration, RTPlatform, RTXPCActivityManager;
-@protocol OS_dispatch_queue;
 
-@interface RTMetricManager : NSObject
+@interface RTMetricManager
 {
     RTPlatform *_platform;
     NSArray *_configuredMetricClasses;
     AWDServerConnection *_awdServerConnection;
     RTManagedConfiguration *_managedConfigurationManager;
-    NSObject<OS_dispatch_queue> *_queue;
     RTXPCActivityManager *_xpcActivityManager;
 }
 
@@ -27,7 +23,6 @@
 + (int)roundTimeInterval:(double)arg1 byIntervalUnit:(unsigned long long)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) RTXPCActivityManager *xpcActivityManager; // @synthesize xpcActivityManager=_xpcActivityManager;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) RTManagedConfiguration *managedConfigurationManager; // @synthesize managedConfigurationManager=_managedConfigurationManager;
 @property(retain, nonatomic) AWDServerConnection *awdServerConnection; // @synthesize awdServerConnection=_awdServerConnection;
 @property(retain, nonatomic) NSArray *configuredMetricClasses; // @synthesize configuredMetricClasses=_configuredMetricClasses;
@@ -40,7 +35,7 @@
 - (void)_releaseMetricPlaceholderForMetric:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)_registerQueriableMetric:(unsigned long long)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)registerQueriableMetric:(unsigned long long)arg1 withHandler:(CDUnknownBlockType)arg2;
-- (void)shutdown;
+- (void)_shutdownWithHandler:(CDUnknownBlockType)arg1;
 - (void)registerForXPCActivities:(id)arg1;
 - (_Bool)setupWithConfiguredClasses:(id)arg1 platform:(id)arg2 error:(id *)arg3;
 - (void)_fetchDiagnosticsEnabled:(CDUnknownBlockType)arg1;

@@ -9,6 +9,7 @@
 @class PXSectionedSelectionManager, PXSelectionSnapshot;
 
 @protocol PXSectionedSelectionManagerSnapshotValidator <NSObject>
+- (_Bool)selectionManagerShouldAvoidEmptySelection:(PXSectionedSelectionManager *)arg1;
 - (PXSelectionSnapshot *)selectionManager:(PXSectionedSelectionManager *)arg1 validateSnapshot:(PXSelectionSnapshot *)arg2;
 @end
 

@@ -27,6 +27,7 @@
 - (void)detachHapticSequence:(unsigned long long)arg1;
 - (_Bool)clearSequenceEvents:(unsigned long long)arg1 atTime:(double)arg2;
 - (_Bool)setSequenceChannelParam:(unsigned long long)arg1 atTime:(double)arg2 channel:(unsigned long long)arg3 param:(unsigned long long)arg4 value:(float)arg5 error:(id *)arg6;
+- (_Bool)resetHapticSequence:(unsigned long long)arg1 atTime:(double)arg2;
 - (_Bool)seekHapticSequence:(unsigned long long)arg1 toTime:(double)arg2;
 - (_Bool)resumeHapticSequence:(unsigned long long)arg1 atTime:(double)arg2;
 - (_Bool)pauseHapticSequence:(unsigned long long)arg1 atTime:(double)arg2;

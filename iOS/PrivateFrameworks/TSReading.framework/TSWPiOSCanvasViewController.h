@@ -50,6 +50,7 @@
 - (_Bool)interactionShouldBegin:(id)arg1;
 - (id)_hyperLinkFieldAtPoint:(struct CGPoint)arg1;
 - (id)_hitRepAtPoint:(struct CGPoint)arg1;
+- (id)_textInteractionBlockingRepClasses;
 - (_Bool)_shouldAllowInteractionAtPoint:(struct CGPoint)arg1;
 - (id)p_newSwipeGestureRecognizerWithDirection:(int)arg1 numberOfTouchesRequired:(unsigned int)arg2;
 - (void)p_addSwipeGestureRecognizer:(id)arg1 failRequiredFor:(id)arg2;

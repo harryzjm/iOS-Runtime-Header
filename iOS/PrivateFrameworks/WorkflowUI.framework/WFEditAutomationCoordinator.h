@@ -9,7 +9,7 @@
 #import <WorkflowUI/UINavigationControllerDelegate-Protocol.h>
 #import <WorkflowUI/WFAutomationSummaryViewControllerDelegate-Protocol.h>
 
-@class NSString, UINavigationController, WFAutomationSummaryViewController, WFConfiguredTriggerRecord, WFDatabase, WFEditAutomationWorkflowStorage, WFTrigger, WFTriggerManager, WFWorkflow, WFWorkflowReference;
+@class NSString, UINavigationController, WFAutomationSummaryViewController, WFConfiguredTriggerRecord, WFDatabase, WFTrigger, WFTriggerManager, WFWorkflow, WFWorkflowRecord, WFWorkflowReference;
 @protocol WFEditAutomationCoordinatorDelegate;
 
 @interface WFEditAutomationCoordinator : NSObject <UINavigationControllerDelegate, WFAutomationSummaryViewControllerDelegate>
@@ -22,7 +22,7 @@
     NSString *_triggerIdentifier;
     WFTrigger *_trigger;
     WFWorkflowReference *_workflowReference;
-    WFEditAutomationWorkflowStorage *_editingStorage;
+    WFWorkflowRecord *_originalRecord;
     WFWorkflow *_editingWorkflow;
     WFAutomationSummaryViewController *_automationSummaryViewController;
 }
@@ -30,7 +30,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) WFAutomationSummaryViewController *automationSummaryViewController; // @synthesize automationSummaryViewController=_automationSummaryViewController;
 @property(retain, nonatomic) WFWorkflow *editingWorkflow; // @synthesize editingWorkflow=_editingWorkflow;
-@property(retain, nonatomic) WFEditAutomationWorkflowStorage *editingStorage; // @synthesize editingStorage=_editingStorage;
+@property(retain, nonatomic) WFWorkflowRecord *originalRecord; // @synthesize originalRecord=_originalRecord;
 @property(readonly, nonatomic) WFWorkflowReference *workflowReference; // @synthesize workflowReference=_workflowReference;
 @property(retain, nonatomic) WFTrigger *trigger; // @synthesize trigger=_trigger;
 @property(readonly, copy, nonatomic) NSString *triggerIdentifier; // @synthesize triggerIdentifier=_triggerIdentifier;

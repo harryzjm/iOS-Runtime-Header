@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (id)appJSURL;
 - (_Bool)shouldIgnoreJSValidation;
 - (_Bool)appIsTrusted;
+- (void)willPerformXhrRequest:(id)arg1;
 - (id)sourceApplicationAuditTokenDataForContext:(id)arg1;
 - (id)sourceApplicationBundleIdentifierForContext:(id)arg1;
 - (id)xhrSessionConfigurationForContext:(id)arg1;

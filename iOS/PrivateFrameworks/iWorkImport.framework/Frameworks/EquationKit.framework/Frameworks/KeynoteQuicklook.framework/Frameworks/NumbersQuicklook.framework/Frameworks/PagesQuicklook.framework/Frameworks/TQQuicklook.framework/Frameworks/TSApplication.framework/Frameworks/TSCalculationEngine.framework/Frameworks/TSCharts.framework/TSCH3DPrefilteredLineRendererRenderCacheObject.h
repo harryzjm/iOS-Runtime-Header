@@ -8,12 +8,13 @@
 
 @interface TSCH3DPrefilteredLineRendererRenderCacheObject
 {
-    TSCH3DStrokePatternTexture *mStrokeTexture;
-    _Bool mDidRenderOnce;
+    TSCH3DStrokePatternTexture *_strokeTexture;
+    _Bool _didRenderOnce;
 }
 
-@property(nonatomic) _Bool didRenderOnce; // @synthesize didRenderOnce=mDidRenderOnce;
-- (void)renderWithLineRenderer:(id)arg1 setting:(id)arg2 fromVertex:(const struct PrefilteredLineVertexProperties *)arg3 toVertex:(const struct PrefilteredLineVertexProperties *)arg4;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool didRenderOnce; // @synthesize didRenderOnce=_didRenderOnce;
+- (void)renderWithLineRenderer:(id)arg1 setting:(id)arg2 fromVertex:(const void *)arg3 toVertex:(const void *)arg4;
 - (void)submitResourcesWithLineRenderer:(id)arg1 setting:(id)arg2;
 - (id)p_diffuseTexcoords;
 - (id)p_normals;
@@ -22,7 +23,6 @@
 - (id)p_texcoords;
 - (id)p_geometry;
 - (void)allocateDynamicResourcesIntoArray:(id)arg1;
-- (void)dealloc;
 - (id)init;
 
 @end

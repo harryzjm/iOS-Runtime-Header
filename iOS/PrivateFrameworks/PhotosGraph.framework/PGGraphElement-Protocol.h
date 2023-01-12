@@ -6,11 +6,9 @@
 
 #import <PhotosGraph/NSObject-Protocol.h>
 
-@class NSString, PGGraph;
+@class NSString;
 
 @protocol PGGraphElement <NSObject>
-@property(readonly) PGGraph *graph;
-- (void)setObject:(id)arg1 forKeyedSubscript:(NSString *)arg2;
 - (id)objectForKeyedSubscript:(NSString *)arg1;
 @end
 

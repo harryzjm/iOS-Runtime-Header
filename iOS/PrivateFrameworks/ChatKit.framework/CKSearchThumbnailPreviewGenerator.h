@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSCache, NSMutableSet;
+@class NSCache, NSMutableDictionary, NSMutableSet;
 
 @interface CKSearchThumbnailPreviewGenerator : NSObject
 {
@@ -14,38 +14,45 @@
     NSCache *_livePhotoStatusCache;
     NSCache *_videoDurationCache;
     NSCache *_lpLinkMetadataCache;
-    NSCache *_mapHashesCache;
+    NSCache *_lpPassPropertiesMetadataCache;
+    NSMutableDictionary *_mapHashesCache;
     NSMutableSet *_keysWithInFlightGeneration;
     NSMutableSet *_keysWithInFlightLivePhotoStatus;
     NSMutableSet *_keysWithInFlightVideoDurationCalculation;
     NSMutableSet *_keysWithInFlightLPLinkMetadataGeneration;
+    NSMutableSet *_keysWithInFlightLPPassPropertiesMetadataGeneration;
 }
 
 + (id)sharedInstance;
 + (void)__setSingleton__im:(id)arg1;
 + (id)__singleton__im;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableSet *keysWithInFlightLPPassPropertiesMetadataGeneration; // @synthesize keysWithInFlightLPPassPropertiesMetadataGeneration=_keysWithInFlightLPPassPropertiesMetadataGeneration;
 @property(retain, nonatomic) NSMutableSet *keysWithInFlightLPLinkMetadataGeneration; // @synthesize keysWithInFlightLPLinkMetadataGeneration=_keysWithInFlightLPLinkMetadataGeneration;
 @property(retain, nonatomic) NSMutableSet *keysWithInFlightVideoDurationCalculation; // @synthesize keysWithInFlightVideoDurationCalculation=_keysWithInFlightVideoDurationCalculation;
 @property(retain, nonatomic) NSMutableSet *keysWithInFlightLivePhotoStatus; // @synthesize keysWithInFlightLivePhotoStatus=_keysWithInFlightLivePhotoStatus;
 @property(retain, nonatomic) NSMutableSet *keysWithInFlightGeneration; // @synthesize keysWithInFlightGeneration=_keysWithInFlightGeneration;
-@property(retain, nonatomic) NSCache *mapHashesCache; // @synthesize mapHashesCache=_mapHashesCache;
+@property(retain, nonatomic) NSMutableDictionary *mapHashesCache; // @synthesize mapHashesCache=_mapHashesCache;
+@property(retain, nonatomic) NSCache *lpPassPropertiesMetadataCache; // @synthesize lpPassPropertiesMetadataCache=_lpPassPropertiesMetadataCache;
 @property(retain, nonatomic) NSCache *lpLinkMetadataCache; // @synthesize lpLinkMetadataCache=_lpLinkMetadataCache;
 @property(retain, nonatomic) NSCache *videoDurationCache; // @synthesize videoDurationCache=_videoDurationCache;
 @property(retain, nonatomic) NSCache *livePhotoStatusCache; // @synthesize livePhotoStatusCache=_livePhotoStatusCache;
 @property(retain, nonatomic) NSCache *thumbnailCache; // @synthesize thumbnailCache=_thumbnailCache;
+- (id)cachedPassLinkPropertiesForQueryResult:(id)arg1;
+- (_Bool)hasCachedPassLinkPropertiesForQueryResult:(id)arg1;
+- (void)beginGeneratingWebLinkPresentationPropertiesForQueryResult:(id)arg1;
 - (void)_prewarmLinkMetadata:(id)arg1;
 - (id)cachedLinkMetadataForQueryResult:(id)arg1;
-- (id)linkMetadataForQueryResult:(id)arg1;
-- (void)_markFileAsPurgeable:(id)arg1;
+- (_Bool)hasCachedLinkMetadataForQueryResult:(id)arg1;
+- (void)beginFetchingLinkMetadataForQueryResult:(id)arg1;
 - (void)_persistPreview:(id)arg1 atURL:(id)arg2;
 - (id)_previewURLForKey:(id)arg1;
 - (id)mapPlaceholderImageForTraitCollection:(id)arg1;
 - (void)_generateMapThumbnailForKey:(id)arg1 attributes:(id)arg2 traitCollection:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)cachedMapPreviewForQueryResult:(id)arg1 traitCollection:(id)arg2;
-- (id)mapPreviewForQueryResult:(id)arg1 traitCollection:(id)arg2;
-- (Class)_qlThumbnailGenerationRequestClass;
-- (id)_qlThumbnailGeneratorSharedGenerator;
+- (_Bool)hasCachedMapPreviewForQueryResult:(id)arg1 traitCollection:(id)arg2;
+- (id)mapKeyForQueryResult:(id)arg1 traitCollection:(id)arg2;
+- (void)generateMapPreviewForQueryResult:(id)arg1 traitCollection:(id)arg2;
 - (void)_asyncLoadCachedDiskPreviewForKeyIfAvailable:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)generateAndCachePassWithURL:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)generateAndCacheIconWithURL:(id)arg1 key:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -56,7 +63,14 @@
 - (_Bool)_checkResultForLivePhotoComplement:(id)arg1;
 - (_Bool)queryResultHasLivePhoto:(id)arg1;
 - (id)cachedPreviewForQueryResult:(id)arg1;
-- (id)previewForQueryResult:(id)arg1;
+- (_Bool)hasCachedPreviewForQueryResult:(id)arg1;
+- (_Bool)hasCachedPreviewForKey:(id)arg1;
+- (id)cachedPreviewOrNullForKey:(id)arg1;
+- (id)cachedPreviewForKey:(id)arg1;
+- (void)generatePreviewForQueryResult:(id)arg1;
+- (id)_lpPassLinkPreviewLoadQueue;
+- (id)_lpPreviewLoadQueue;
+- (id)_previewLoadQueue;
 - (id)init;
 
 @end

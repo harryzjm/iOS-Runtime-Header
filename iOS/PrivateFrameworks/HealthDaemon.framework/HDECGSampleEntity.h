@@ -12,9 +12,6 @@
 + (_Bool)addCodableObject:(id)arg1 toCollection:(id)arg2;
 + (id)codableObjectsFromObjectCollection:(id)arg1;
 + (_Bool)isConcreteEntity;
-+ (id)_symptomSamplesForECG:(id)arg1;
-+ (id)_symptomSamplesForSymptomTypes:(id)arg1 withValue:(long long)arg2 ecg:(id)arg3;
-+ (id)_ecgSampleWithCodableBinarySample:(id)arg1;
 + (_Bool)_insertECGWithCodableBinarySample:(id)arg1 syncStore:(id)arg2 profile:(id)arg3 provenance:(id)arg4 error:(id *)arg5;
 + (id)insertDataObject:(id)arg1 withProvenance:(id)arg2 inDatabase:(id)arg3 persistentID:(id)arg4 error:(id *)arg5;
 + (id)foreignKeys;

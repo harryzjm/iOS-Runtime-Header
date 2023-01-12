@@ -21,7 +21,9 @@ __attribute__((visibility("hidden")))
     unsigned long long _arrivalLegIndex;
     NSDate *_arrivalDate;
     double _closestDistanceToWaypoint;
+    _Bool _isApproachingWaypoint;
     NSMutableArray *_timeoutRegions;
+    _Bool _isCharging;
 }
 
 - (void).cxx_destruct;
@@ -29,13 +31,16 @@ __attribute__((visibility("hidden")))
 - (_Bool)_legacyCheckNonDrivingArrivalForLocation:(id)arg1;
 - (_Bool)_legacyCheckDrivingArrivalForLocation:(id)arg1;
 - (_Bool)_legacyCheckArrivalForLocation:(id)arg1;
+- (void)_setArrivalForLegIndex:(unsigned long long)arg1;
 - (double)_distanceToEndOfLeg:(id)arg1 fromLocation:(id)arg2;
 - (_Bool)_checkArrival:(id)arg1 forLocation:(id)arg2;
 - (_Bool)_checkPreArrival:(id)arg1 forLocation:(id)arg2;
+- (_Bool)_checkApproachingForLocation:(id)arg1;
 - (_Bool)_shouldUseNewArrivalLogic;
 @property(readonly, nonatomic) _Bool isInPreArrivalRegion;
 - (void)updateForDepartureFromWaypoint;
 - (_Bool)allowDepartureForLocation:(id)arg1;
+- (void)setIsCharging:(_Bool)arg1 location:(id)arg2;
 - (void)updateForRoute:(id)arg1;
 - (void)updateForLocation:(id)arg1;
 - (void)setDelegate:(id)arg1;

@@ -11,6 +11,7 @@
     struct AugmentableInspectorController *_controller;
 }
 
+- (void)nodeLayoutContextTypeChangedWithNodeId:(int)arg1 layoutContextType:(long long *)arg2;
 - (void)styleSheetRemovedWithStyleSheetId:(id)arg1;
 - (void)styleSheetAddedWithHeader:(id)arg1;
 - (void)styleSheetChangedWithStyleSheetId:(id)arg1;

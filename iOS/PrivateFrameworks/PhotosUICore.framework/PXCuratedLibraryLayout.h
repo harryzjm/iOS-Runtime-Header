@@ -18,8 +18,8 @@
 @interface PXCuratedLibraryLayout <PXLibrarySummaryDataSource, PXChangeObserver, PXAssetsDataSourceManagerObserver, PXCuratedLibraryViewModelPresenter, PXGNamedImageSource, PXGAnchorDelegate, PXSettingsKeyObserver>
 {
     PXCuratedLibrarySummaryHelper *_summaryHelper;
-    CDStruct_d97c9657 _updateFlags;
-    CDStruct_d97c9657 _postUpdateFlags;
+    CDStruct_af00bf4e _updateFlags;
+    CDStruct_af00bf4e _postUpdateFlags;
     NSMutableDictionary *_lastVisibleAreaAnchorsByZoomLevels;
     NSMutableDictionary *_preferredVisibleAreaAnchorsByZoomLevels;
     PXGDiagnosticsSpriteProbe *_spriteProbe;
@@ -123,7 +123,11 @@
 - (void)_updateAllPhotosOverlayInsets;
 - (void)_updateLateralMargin;
 - (void)_updateZoomLevel;
+- (_Bool)allowsDanglingUpdatesAssertions;
+- (void)didUpdate;
 - (void)update;
+- (void)willUpdate;
+- (_Bool)allowsSublayoutUpdateCycleAssertions;
 - (void)dealloc;
 - (id)initWithViewModel:(id)arg1;
 @property(readonly, nonatomic) PXSectionedObjectReference *dominantObjectReference;

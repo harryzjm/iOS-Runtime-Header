@@ -7,7 +7,9 @@
 #import <DoNotDisturb/DNDState.h>
 
 @interface DNDState (SBDashBoardSupport)
+- (_Bool)_isDNDSettingEnabled:(unsigned long long)arg1;
 - (_Bool)sb_isBedtimeModeActive;
 - (_Bool)sb_isDrivingModeActive;
+- (_Bool)sb_isDimmingModeActive;
 @end
 

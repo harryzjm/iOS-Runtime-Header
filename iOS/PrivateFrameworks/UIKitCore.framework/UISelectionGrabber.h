@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UISelectionGrabberDot, UITextRangeView;
+@class CAShapeLayer, UISelectionGrabberCustomPath, UISelectionGrabberDot, UITextRangeView;
 
 __attribute__((visibility("hidden")))
 @interface UISelectionGrabber
@@ -18,20 +18,30 @@ __attribute__((visibility("hidden")))
     _Bool m_animating;
     long long m_orientation;
     int _applicationDeactivationReason;
+    _Bool _sheetFlattened;
+    UISelectionGrabberCustomPath *_customPath;
 }
 
++ (Class)layerClass;
 + (id)_grabberDot;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UISelectionGrabberCustomPath *customPath; // @synthesize customPath=_customPath;
+@property(nonatomic) _Bool sheetFlattened; // @synthesize sheetFlattened=_sheetFlattened;
 @property(nonatomic) long long orientation; // @synthesize orientation=m_orientation;
 @property(nonatomic) _Bool animating; // @synthesize animating=m_animating;
 @property(nonatomic) _Bool navigationTransitionFlattened; // @synthesize navigationTransitionFlattened=m_navigationTransitionFlattened;
 @property(nonatomic) _Bool activeFlattened; // @synthesize activeFlattened=m_activeFlattened;
 @property(nonatomic) _Bool alertFlattened; // @synthesize alertFlattened=m_alertFlattened;
 @property(nonatomic) _Bool isDotted; // @synthesize isDotted=m_isDotted;
+- (id)fillColor;
 - (void)drawRect:(struct CGRect)arg1;
+- (void)updatePathForBoundsChangeIfNecessary;
+- (void)setCenter:(struct CGPoint)arg1;
+- (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)didMoveToSuperview;
 - (void)willMoveToWindow:(id)arg1;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (_Bool)isPointedLeft;
 - (_Bool)isPointedRight;
 - (_Bool)isPointedUp;
@@ -46,7 +56,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)dotIsVisibleInDocument:(struct CGRect)arg1;
 - (_Bool)clipDot:(struct CGRect)arg1;
 - (void)removeFromSuperview;
+- (id)bezierPathFromCustomPath:(id)arg1;
 - (void)setHidden:(_Bool)arg1;
+@property(readonly, nonatomic) CAShapeLayer *shapeLayer;
 - (_Bool)autoscrolled;
 - (_Bool)inputViewIsChanging;
 - (_Bool)isRotating;
@@ -57,6 +69,8 @@ __attribute__((visibility("hidden")))
 - (void)canExpandAfterBecomeActive:(id)arg1;
 - (void)mustFlattenForResignActive:(id)arg1;
 - (void)saveDeactivationReason:(id)arg1;
+- (void)canExpandAfterSheet:(id)arg1;
+- (void)mustFlattenForSheet:(id)arg1;
 - (void)canExpandAfterAlert:(id)arg1;
 - (void)mustFlattenForAlert:(id)arg1;
 @property(readonly, nonatomic) UITextRangeView *hostView;

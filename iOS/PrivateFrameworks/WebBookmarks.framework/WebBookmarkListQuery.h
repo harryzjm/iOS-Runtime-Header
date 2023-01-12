@@ -19,6 +19,7 @@
     NSString *_urlFilter;
     _Bool _includeHidden;
     _Bool _countShouldUseNumChildrenIfPossible;
+    _Bool _includeDescendantsAsChildren;
     _Bool _customQuery;
     int _folderID;
     id <WebBookmarkInMemoryChangeFilter> _inMemoryFilter;
@@ -36,12 +37,13 @@
 - (int)countInCollection:(id)arg1;
 - (id)_filterBookmarks:(id)arg1;
 - (int)_inMemoryAddedChildrenCountForBookmarkFolder:(int)arg1 collection:(id)arg2 skipCountingBookmarksThatAreDeletedInMemory:(_Bool)arg3;
+- (int)_childCountInDatabaseForFolderFetchInCollection:(id)arg1 skipCountingInDatabaseBookmarksThatAreDeletedInMemory:(_Bool)arg2 countShouldUseNumChildrenIfPossible:(_Bool)arg3;
 - (int)_childCountInDatabaseForFolderFetchInCollection:(id)arg1 skipCountingInDatabaseBookmarksThatAreDeletedInMemory:(_Bool)arg2;
 - (long long)_listQueryType;
 - (id)debugDescription;
 - (id)initWithBookmarksWhere:(id)arg1 folderID:(int)arg2 orderBy:(id)arg3 usingFilter:(id)arg4;
 - (id)initWithBookmarksWhere:(id)arg1 orderBy:(id)arg2 usingFilter:(id)arg3;
-- (id)initWithFolderID:(int)arg1 inCollection:(id)arg2 includeHidden:(_Bool)arg3 usingFilter:(id)arg4;
+- (id)initWithFolderID:(int)arg1 inCollection:(id)arg2 includeHidden:(_Bool)arg3 includeDescendantsAsChildren:(_Bool)arg4 usingFilter:(id)arg5;
 - (id)init;
 
 @end

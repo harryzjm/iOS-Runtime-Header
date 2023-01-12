@@ -24,7 +24,6 @@
 + (id)nullableColorWithHexString:(id)arg1;
 + (id)colorWithHexString:(id)arg1;
 + (id)colorWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4;
-+ (id)colorWithPBColor:(id)arg1;
 @property(readonly, nonatomic) double alpha; // @synthesize alpha=_alpha;
 @property(readonly, nonatomic) double blue; // @synthesize blue=_blue;
 @property(readonly, nonatomic) double green; // @synthesize green=_green;
@@ -38,7 +37,6 @@
 - (void)readDeconstructedRepresentationWithAcccessor:(CDUnknownBlockType)arg1;
 - (id)initWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4;
 - (id)init;
-- (id)pbColor;
 
 @end
 

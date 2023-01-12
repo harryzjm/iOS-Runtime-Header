@@ -68,11 +68,11 @@
     struct {
         struct os_unfair_lock_s lock;
         NSDictionary *keyCodeConfiguration;
-        struct set<unsigned short, std::__1::less<unsigned short>, std::__1::allocator<unsigned short>> keyDown;
-        struct vector<unsigned short, std::__1::allocator<unsigned short>> forward;
-        struct vector<unsigned short, std::__1::allocator<unsigned short>> backward;
-        struct vector<unsigned short, std::__1::allocator<unsigned short>> left;
-        struct vector<unsigned short, std::__1::allocator<unsigned short>> right;
+        struct set<unsigned short, std::less<unsigned short>, std::allocator<unsigned short>> keyDown;
+        struct vector<unsigned short, std::allocator<unsigned short>> forward;
+        struct vector<unsigned short, std::allocator<unsigned short>> backward;
+        struct vector<unsigned short, std::allocator<unsigned short>> left;
+        struct vector<unsigned short, std::allocator<unsigned short>> right;
     } _keyboard;
     struct {
         _Bool hasShift;

@@ -20,6 +20,7 @@
     CDUnknownBlockType _action;
 }
 
++ (double)defaultTableHorizontalInset;
 + (double)defaultHorizontalInset;
 + (id)defaultBackgroundColor;
 - (void).cxx_destruct;

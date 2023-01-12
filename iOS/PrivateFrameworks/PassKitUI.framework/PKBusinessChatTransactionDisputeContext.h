@@ -8,13 +8,17 @@
 
 #import <PassKitUI/PKBusinessChatContext-Protocol.h>
 
-@class NSString, PKPaymentPass, PKPaymentTransaction;
+@class NSString, PKAccount, PKAccountUser, PKFamilyMember, PKPaymentPass, PKPaymentTransaction;
 
 @interface PKBusinessChatTransactionDisputeContext : NSObject <PKBusinessChatContext>
 {
     PKPaymentPass *_paymentPass;
     PKPaymentTransaction *_transaction;
+    PKAccount *_account;
+    PKAccountUser *_accountUser;
+    PKFamilyMember *_familyMember;
     long long _intent;
+    _Bool _disputingAccountUserTransaction;
 }
 
 - (void).cxx_destruct;
@@ -23,7 +27,7 @@
 - (id)groupParameters;
 - (id)intentParameters;
 - (id)businessIdentifier;
-- (id)initWithPaymentPass:(id)arg1 transaction:(id)arg2 intent:(long long)arg3;
+- (id)initWithPaymentPass:(id)arg1 transaction:(id)arg2 account:(id)arg3 accountUser:(id)arg4 familyMember:(id)arg5 intent:(long long)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

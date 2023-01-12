@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSString, TSULocale;
 
 @interface TSUDecimalFormatter : NSObject
 {
@@ -14,6 +14,8 @@
 }
 
 + (id)createHarmonizedDecimalFormatterOfStyle:(long long)arg1 locale:(id)arg2 formattingSymbols:(id)arg3;
+- (id)copyFormatterPropertyForKey:(struct __CFString *)arg1;
+@property(readonly, nonatomic) TSULocale *locale;
 @property(readonly, nonatomic) NSString *currencySymbol;
 @property(readonly, nonatomic) NSString *currencyCode;
 - (void)harmonizedSetCurrency:(id)arg1 locale:(id)arg2;

@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
     VKCameraController *_cameraController;
 }
 
+- (void)updateWithTimestamp:(double)arg1 withContext:(void *)arg2;
 - (_Bool)isRotating;
 - (_Bool)isPanning;
 - (_Bool)isPinching;

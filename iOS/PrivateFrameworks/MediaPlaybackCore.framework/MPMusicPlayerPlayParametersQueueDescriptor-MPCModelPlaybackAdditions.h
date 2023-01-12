@@ -9,5 +9,6 @@
 @interface MPMusicPlayerPlayParametersQueueDescriptor (MPCModelPlaybackAdditions)
 - (_Bool)matchesStartItem:(id)arg1;
 - (id)playbackContext;
+- (id)libraryMediaQueryForPlayParameters:(id)arg1;
 @end
 

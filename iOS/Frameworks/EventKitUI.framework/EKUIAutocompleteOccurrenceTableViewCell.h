@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString, UIColor, UIImageView, UILabel;
+@class NSArray, NSAttributedString, NSString, UIColor, UIImageView, UILabel;
 
 @interface EKUIAutocompleteOccurrenceTableViewCell
 {
@@ -18,7 +18,7 @@
     NSArray *_secondaryLabels;
     UIColor *_eventCalendarColor;
     NSString *_eventTitle;
-    NSString *_eventLocation;
+    NSAttributedString *_eventLocation;
     NSString *_eventTimeWithThisTimeZone;
     NSString *_eventTimeWithResultTimeZone;
     NSString *_eventInvitees;

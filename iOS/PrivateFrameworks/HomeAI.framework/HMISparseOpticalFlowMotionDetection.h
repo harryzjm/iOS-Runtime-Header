@@ -8,18 +8,23 @@
 
 @interface HMISparseOpticalFlowMotionDetection
 {
+    float _motionScore;
     NSArray *_motionVectors;
+    unsigned long long _motionMode;
     struct CGSize _size;
 }
 
++ (id)firstMotionDetectionInArray:(id)arg1 withMode:(unsigned long long)arg2;
 - (void).cxx_destruct;
+@property(readonly) unsigned long long motionMode; // @synthesize motionMode=_motionMode;
+@property(readonly) float motionScore; // @synthesize motionScore=_motionScore;
 @property(readonly) struct CGSize size; // @synthesize size=_size;
 @property(readonly) NSArray *motionVectors; // @synthesize motionVectors=_motionVectors;
 - (id)classPaddingMap;
 - (id)classMotionScoreMap;
-- (_Bool)applyEventTypeAndCheckIfSubBoundingIsStatic:(struct CGRect)arg1 forMetric:(long long)arg2 eventType:(long long)arg3 confidence:(float)arg4;
-- (float)scoreForSubBoundingBox:(struct CGRect)arg1 forMetric:(long long)arg2 eventType:(long long)arg3 confidence:(float)arg4;
-- (id)initWithBoundingBox:(struct CGRect)arg1 size:(struct CGSize)arg2 motionVectors:(id)arg3;
+- (_Bool)applyEventTypeAndCheckIfSubBoundingIsStatic:(struct CGRect)arg1 forMetric:(long long)arg2 eventClass:(Class)arg3 confidence:(float)arg4;
+- (float)scoreForSubBoundingBox:(struct CGRect)arg1 forMetric:(long long)arg2 eventClass:(Class)arg3 confidence:(float)arg4;
+- (id)initWithBoundingBox:(struct CGRect)arg1 size:(struct CGSize)arg2 motionVectors:(id)arg3 motionScore:(float)arg4 motionMode:(unsigned long long)arg5;
 
 @end
 

@@ -6,15 +6,16 @@
 
 #import <objc/NSObject.h>
 
+#import <CoreUtils/CLLocationManagerDelegate-Protocol.h>
 #import <CoreUtils/CXCallObserverDelegate-Protocol.h>
 #import <CoreUtils/CoreTelephonyClientDelegate-Protocol.h>
 #import <CoreUtils/FMFSessionDelegate-Protocol.h>
 
-@class CUBluetoothClient, CUNetInterfaceMonitor, CUSystemMonitor, CUWiFiManager, CXCallObserver, CoreTelephonyClient, NSArray, NSData, NSMutableArray, NSMutableSet, NSString, RTRoutineManager, TUCallCenter;
+@class CLLocationManager, CUBluetoothClient, CUNetInterfaceMonitor, CUSystemMonitor, CUWiFiManager, CXCallObserver, CoreTelephonyClient, NSArray, NSData, NSMutableArray, NSMutableSet, NSString, RTRoutineManager, TUCallCenter;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
-@interface CUSystemMonitorImp : NSObject <FMFSessionDelegate, CXCallObserverDelegate, CoreTelephonyClientDelegate>
+@interface CUSystemMonitorImp : NSObject <FMFSessionDelegate, CXCallObserverDelegate, CLLocationManagerDelegate, CoreTelephonyClientDelegate>
 {
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     NSMutableSet *_monitors;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
     CXCallObserver *_callObserver;
     int _activeCallCount;
     unsigned int _callFlags;
+    CDStruct_8b281280 _callInfo;
     _Bool _callStatusObserving;
     int _connectedCallCount;
     int _familyBuddyToken;
@@ -33,6 +35,8 @@ __attribute__((visibility("hidden")))
     _Bool _familyObserving;
     CUSystemMonitor *_familyPrimaryIPMonitor;
     int _familyUpdatedToken;
+    CLLocationManager *_locationManager;
+    unsigned int _locationVisitsFlags;
     _Bool _manateeAvailable;
     _Bool _manateeObserving;
     int _fmfDevicesChangedToken;
@@ -100,6 +104,7 @@ __attribute__((visibility("hidden")))
 - (void)_screenSaverMonitorStart;
 - (void)_screenChanged:(_Bool)arg1;
 - (void)_screenOnMonitorStop;
+- (void)_screenOnMonitorStartiOS;
 - (void)_screenOnMonitorStart;
 - (void)_screenLockedChanged;
 - (void)_screenLockedMonitorStop;
@@ -130,6 +135,15 @@ __attribute__((visibility("hidden")))
 - (void)_manateeChanged:(id)arg1;
 - (void)_manateeMonitorStop;
 - (void)_manateeMonitorStart;
+- (void)locationManager:(id)arg1 didVisit:(id)arg2;
+- (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
+- (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
+- (void)locationManagerDidChangeAuthorization:(id)arg1;
+- (void)locationManager:(id)arg1 didDepart:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)locationManager:(id)arg1 didArrive:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_locationVisitUpdate:(id)arg1 arrived:(_Bool)arg2;
+- (void)_locationVisitsMonitorStop;
+- (void)_locationVisitsMonitorStart;
 - (void)_familyUpdated:(id)arg1;
 - (void)_familyNetworkChanged;
 - (void)_familyGetMembers:(_Bool)arg1;
@@ -138,6 +152,7 @@ __attribute__((visibility("hidden")))
 - (int)_connectedCallCountUnached;
 - (unsigned int)_callFlagsUncached;
 - (int)_activeCallCountUnached;
+- (CDStruct_8b281280)_callInfoUncached;
 - (void)_callInfoChanged;
 - (void)callObserver:(id)arg1 callChanged:(id)arg2;
 - (void)_callCenterStatusChanged:(id)arg1;

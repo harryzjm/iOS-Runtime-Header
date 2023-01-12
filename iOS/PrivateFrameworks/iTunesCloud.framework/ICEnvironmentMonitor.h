@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSHashTable, NSString, NWPathEvaluator;
+@class CTXPCServiceSubscriptionContext, CoreTelephonyClient, NSDictionary, NSHashTable, NSString, NWPathEvaluator;
 @protocol OS_dispatch_queue;
 
 @interface ICEnvironmentMonitor : NSObject
@@ -14,10 +14,13 @@
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSObject<OS_dispatch_queue> *_calloutQueue;
     NSHashTable *_observers;
+    struct os_unfair_recursive_lock_s _observersLock;
     struct __CTServerConnection *_telephonyServerConnectionRef;
     NWPathEvaluator *_networkPathEvaluator;
     int _thermalNotificationToken;
-    unsigned int _powerNotificationRef;
+    CoreTelephonyClient *_telephonyClient;
+    CTXPCServiceSubscriptionContext *_dataSubscriptionContext;
+    NSDictionary *_cellSignalInfo;
     void *_symptomPresentationFeedDyLibHandle;
     _Bool _isCharging;
     _Bool _isRemoteServerLikelyReachable;
@@ -26,6 +29,7 @@
     _Bool _wifiAssociated;
     _Bool _networkConstrained;
     _Bool _ethernetWired;
+    _Bool _currentNetworkLinkExpensive;
     _Bool _remoteServerReachable;
     NSString *_telephonyOperatorName;
     NSString *_telephonyRegistrationStatus;
@@ -42,6 +46,7 @@
 @property(readonly, nonatomic, getter=isRemoteServerReachable) _Bool remoteServerReachable; // @synthesize remoteServerReachable=_remoteServerReachable;
 @property(readonly, nonatomic) long long lastKnownNetworkType; // @synthesize lastKnownNetworkType=_lastKnownNetworkType;
 @property(readonly, nonatomic) long long networkType; // @synthesize networkType=_networkType;
+@property(readonly, nonatomic, getter=isCurrentNetworkLinkExpensive) _Bool currentNetworkLinkExpensive; // @synthesize currentNetworkLinkExpensive=_currentNetworkLinkExpensive;
 @property(readonly, nonatomic) double currentBatteryLevel; // @synthesize currentBatteryLevel=_currentBatteryLevel;
 @property(readonly, nonatomic, getter=isEthernetWired) _Bool ethernetWired; // @synthesize ethernetWired=_ethernetWired;
 @property(readonly, nonatomic, getter=isNetworkConstrained) _Bool networkConstrained; // @synthesize networkConstrained=_networkConstrained;
@@ -64,6 +69,8 @@
 - (void)_onQueue_loadInitialThermalLevel;
 - (void)_onQueue_updateThermalLevelWithToken:(int)arg1;
 - (void)_onQueue_updateNetworkReachabilityAndNotifyObservers:(_Bool)arg1;
+@property(readonly, nonatomic) NSDictionary *signalStrength;
+@property(readonly, nonatomic) NSDictionary *signalInfo;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (void)dealloc;

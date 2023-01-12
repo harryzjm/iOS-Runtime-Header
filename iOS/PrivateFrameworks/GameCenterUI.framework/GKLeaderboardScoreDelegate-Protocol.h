@@ -6,9 +6,10 @@
 
 #import <GameCenterUI/NSObject-Protocol.h>
 
-@class GKLeaderboardEntry;
+@class GKLeaderboardEntry, UICollectionViewCell;
 
 @protocol GKLeaderboardScoreDelegate <NSObject>
+- (void)setPreferredFocusCell:(UICollectionViewCell *)arg1;
 - (void)collectionViewDidScroll;
 - (void)didLoadAdditionalScores;
 - (void)didLoadScoresWithLocalPlayerEntry:(GKLeaderboardEntry *)arg1 topPlayer:(GKLeaderboardEntry *)arg2 playerAbove:(GKLeaderboardEntry *)arg3 playerBelow:(GKLeaderboardEntry *)arg4 totalEntries:(long long)arg5;

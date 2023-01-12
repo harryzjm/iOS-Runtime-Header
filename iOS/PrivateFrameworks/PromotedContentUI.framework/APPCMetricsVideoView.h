@@ -15,6 +15,7 @@
 
 - (void).cxx_destruct;
 - (void)beginAction;
+- (void)didAddSubview:(id)arg1;
 @property(nonatomic, readonly) APPrivacyMarker *privacyMarker; // @synthesize privacyMarker;
 
 @end

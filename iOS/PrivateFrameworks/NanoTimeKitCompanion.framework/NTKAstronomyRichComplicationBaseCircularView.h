@@ -15,9 +15,9 @@
 - (void)_setupContentViewForFamily:(long long)arg1;
 - (void)updateMonochromeColor;
 - (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)setEditing:(_Bool)arg1;
 - (void)setTimeTravelDate:(id)arg1 animated:(_Bool)arg2;
 - (void)renderSynchronouslyWithImageQueueDiscard:(_Bool)arg1 inGroup:(id)arg2;
-- (void)_enumerateQuadViewsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
 - (void)_applyPausedUpdate;
 - (void)layoutSubviews;

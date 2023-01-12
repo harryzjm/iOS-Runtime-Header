@@ -13,10 +13,14 @@
 #import <Home/HFServiceNameComponentsProviding-Protocol.h>
 #import <Home/HFStateDumpBuildable-Protocol.h>
 #import <Home/HFSymptomFixableObject-Protocol.h>
+#import <Home/HFUIRepresentableHomeObject-Protocol.h>
 
-@class HFServiceNameComponents, HMHome, HMResidentDevice, HMRoom, HMSymptomsHandler, NSArray, NSDate, NSSet, NSString, NSUUID;
+@class HFServiceNameComponents, HMHome, HMResidentDevice, HMRoom, HMSymptomsHandler, NAFuture, NSArray, NSDate, NSSet, NSString, NSUUID;
+@protocol HFUIRepresentableHomeObject;
 
-@interface HMAccessory (HFDebugging) <HFStateDumpBuildable, HFFavoritable, HFSymptomFixableObject, HFHomeContainedObject, HFRoomContextProviding, HFReorderableHomeKitObject, HFServiceNameComponentsProviding>
+@interface HMAccessory (HFDebugging) <HFStateDumpBuildable, HFFavoritable, HFUIRepresentableHomeObject, HFSymptomFixableObject, HFHomeContainedObject, HFRoomContextProviding, HFReorderableHomeKitObject, HFServiceNameComponentsProviding>
++ (_Bool)hf_isSuspendedStateSupported:(unsigned long long)arg1;
++ (_Bool)hf_isSuspendedStateSuspended:(unsigned long long)arg1;
 + (id)hf_userFriendlyLocalizedLowercaseDescription:(id)arg1;
 + (id)hf_userFriendlyLocalizedCapitalizedDescription:(id)arg1;
 + (id)hf_getUserFriendlyDescriptionKey:(id)arg1;
@@ -51,6 +55,7 @@
 @property(readonly, nonatomic) _Bool hf_needsSoftwareUpdateToSupportBeingAddedToMediaSystem;
 @property(readonly, nonatomic) unsigned long long hf_mediaAccessControlCapabilities;
 - (_Bool)hf_supportsMultiUserLanguage:(id)arg1;
+@property(readonly, nonatomic) _Bool hf_isSiriEndpoint;
 @property(readonly, nonatomic) _Bool hf_isAudioReceiver;
 @property(readonly, nonatomic) _Bool hf_isSpeaker;
 @property(readonly, nonatomic) _Bool hf_isDumbSpeaker;
@@ -58,11 +63,19 @@
 @property(readonly, nonatomic) _Bool hf_isAppleTV;
 @property(readonly, nonatomic) _Bool hf_isHomePod;
 @property(readonly, nonatomic) _Bool hf_isMediaAccessory;
-- (id)hf_topLevelAccessoryLikeHomeObject;
-- (id)hf_accessories;
-- (id)hf_profiles;
-- (id)hf_services;
+@property(readonly, nonatomic) id <HFUIRepresentableHomeObject> hf_topLevelUIRepresentableHomeObject;
+@property(readonly, nonatomic) NSSet *hf_accessories;
+@property(readonly, nonatomic) NSSet *hf_profiles;
+@property(readonly, nonatomic) NSSet *hf_services;
+@property(readonly, nonatomic) NAFuture *hf_connectedHomesFuture;
+@property(readonly, nonatomic) NAFuture *hf_allConnectedHomeToCHIPAccessoryPairingFuture;
+- (_Bool)hf_hasSoftwareOrFirmwareUpdate;
+- (_Bool)hf_supportsSoftwareUpdate;
+- (_Bool)hf_shouldNotifyUserOfSoftwareUpdate;
 - (_Bool)hf_shouldHideNearbyAccessoryService:(id)arg1;
+- (id)hf_errorForCurrentSessionState;
+- (_Bool)hf_needsOnboarding;
+- (id)hf_siriEndpointProfile;
 @property(readonly, nonatomic) NSString *hf_userFriendlyLocalizedLowercaseDescription;
 @property(readonly, nonatomic) NSString *hf_userFriendlyLocalizedCapitalizedDescription;
 - (id)hf_categoryType;
@@ -76,6 +89,7 @@
 @property(readonly, nonatomic) NSArray *hf_bridgedAccessories;
 @property(readonly, nonatomic) NSSet *hf_servicesBehindBridge;
 @property(readonly, nonatomic) NSSet *hf_programmableSwitchNamespaceServices;
+@property(readonly, nonatomic) NSSet *hf_programmableSwitchServices;
 - (id)hf_serviceOfType:(id)arg1;
 @property(readonly, nonatomic) unsigned long long hf_numberOfProgrammableSwitches;
 @property(readonly, nonatomic) long long hf_appPunchOutReason;
@@ -118,6 +132,9 @@
 @property(readonly, nonatomic) _Bool hf_isPureBridge;
 @property(readonly, nonatomic) _Bool hf_isCategorizedAsBridge;
 @property(readonly, nonatomic) _Bool hf_isBridge;
+@property(readonly, nonatomic) _Bool hf_canSyncExternalSettings;
+@property(readonly, nonatomic) _Bool hf_supportsSuspendedState;
+@property(readonly, nonatomic) _Bool hf_isSuspended;
 @property(readonly, nonatomic) _Bool hf_isIdentifiable;
 @property(readonly, nonatomic) _Bool hf_requiresFirmwareUpdate;
 @property(readonly, nonatomic) NSSet *accessories;

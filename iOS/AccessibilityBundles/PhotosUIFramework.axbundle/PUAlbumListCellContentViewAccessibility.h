@@ -29,6 +29,7 @@
 - (id)accessibilityHint:(id)arg1;
 - (struct CGRect)accessibilityFrame:(id)arg1;
 - (id)accessibilityLabel:(id)arg1;
+- (_Bool)accessibilityRespondsToUserInteraction;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)setEditing:(_Bool)arg1 animated:(_Bool)arg2;
 - (_Bool)accessibilityElementsHidden;

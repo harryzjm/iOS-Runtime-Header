@@ -11,6 +11,7 @@
 }
 
 + (Class)classForMimePart;
+- (id)storageLocationForAttachment:(id)arg1 withMessage:(id)arg2;
 
 @end
 

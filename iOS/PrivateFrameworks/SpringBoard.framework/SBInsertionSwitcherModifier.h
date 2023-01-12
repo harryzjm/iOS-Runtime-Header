@@ -17,7 +17,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long phase; // @synthesize phase=_phase;
 - (void)_performBlockBySimulatingPreInsertionState:(CDUnknownBlockType)arg1;
-- (double)opacityForIndex:(unsigned long long)arg1;
+- (double)opacityForLayoutRole:(long long)arg1 inAppLayout:(id)arg2 atIndex:(unsigned long long)arg3;
 - (_Bool)clipsToUnobscuredMarginAtIndex:(unsigned long long)arg1;
 - (id)animationAttributesForLayoutElement:(id)arg1;
 - (id)visibleAppLayouts;

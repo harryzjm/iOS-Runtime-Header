@@ -9,23 +9,23 @@
 #import <ChronoServices/BSDescriptionProviding-Protocol.h>
 #import <ChronoServices/CHSChronoWidgetServiceClient-Protocol.h>
 
-@class NSDictionary, NSMutableSet, NSSet, NSString;
-@protocol CHSChronoWidgetServiceServer;
+@class CHSChronoServicesConnection, NSDictionary, NSMutableSet, NSSet, NSString;
 
-@interface CHSAvocadoDescriptorProvider : NSObject <CHSChronoWidgetServiceClient, BSDescriptionProviding>
+@interface CHSAvocadoDescriptorProvider : NSObject <BSDescriptionProviding, CHSChronoWidgetServiceClient>
 {
-    NSDictionary *_descriptorsByExtensionIdentifier;
-    NSMutableSet *_observers;
-    id <CHSChronoWidgetServiceServer> _server;
+    struct os_unfair_lock_s _lock;
+    NSDictionary *_lock_descriptorsByExtensionIdentifier;
+    NSMutableSet *_lock_observers;
+    CHSChronoServicesConnection *_lock_server;
+    CDUnknownBlockType _eduModeProvider;
+    _Bool _lock_hasLoadedContentOnce;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) id <CHSChronoWidgetServiceServer> server; // @synthesize server=_server;
-@property(readonly, copy, nonatomic) NSMutableSet *observers; // @synthesize observers=_observers;
-@property(copy, nonatomic) NSDictionary *descriptorsByExtensionIdentifier; // @synthesize descriptorsByExtensionIdentifier=_descriptorsByExtensionIdentifier;
-- (id)_descriptionForArray:(id)arg1 name:(id)arg2;
-- (void)_mainQueue_handleNewDescriptors:(id)arg1;
-- (void)_sendApplicationWithBundleIdentifierEnteredForeground:(id)arg1;
+@property(copy, nonatomic) CDUnknownBlockType eduModeProvider; // @synthesize eduModeProvider=_eduModeProvider;
+- (void)_lock_postDEPRECATEDDescriptorsDidChangeIfNecessary;
+- (void)_lock_loadContentInitiallySynchronouslyIfNecessary;
+- (_Bool)_isEDUMode;
 - (void)avocadoDescriptorsDidChange:(id)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
@@ -36,6 +36,7 @@
 - (void)addObserver:(id)arg1;
 - (id)descriptorForPersonality:(id)arg1;
 @property(readonly, copy, nonatomic) NSSet *descriptors;
+@property(readonly, copy, nonatomic) NSDictionary *descriptorsByExtensionIdentifier;
 - (id)initWithServer:(id)arg1;
 - (id)init;
 

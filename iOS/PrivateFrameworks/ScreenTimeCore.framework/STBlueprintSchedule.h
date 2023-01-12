@@ -16,12 +16,20 @@
 {
 }
 
++ (id)_nextBoundaryAfterDate:(id)arg1 matchingDate:(id)arg2 onDay:(long long)arg3 inCalendar:(id)arg4;
++ (id)_boundaryForState:(long long)arg1 fromStartBoundaries:(id)arg2 fromEndBoundaries:(id)arg3;
 + (id)keyPathsForValuesAffectingScheduleRepresentation;
 + (id)endDateKeyPaths;
 + (id)startDateKeyPaths;
 @property(readonly) id <STSerializableManagedObject> syncableRootObject;
 - (id)dictionaryRepresentation;
 - (_Bool)updateWithDictionaryRepresentation:(id)arg1;
+- (_Bool)_computeNextStartDate:(id *)arg1 nextEndDate:(id *)arg2 afterDate:(id)arg3 forDay:(long long)arg4 usingCalendar:(id)arg5;
+- (_Bool)_computeStartBoundaries:(id *)arg1 endBoundaries:(id *)arg2 forCreationDate:(id)arg3 calendar:(id)arg4;
+- (id)computeNextOverrideEndDateForState:(long long)arg1 creationDate:(id)arg2 inCalendar:(id)arg3;
+- (id)computeNextScheduleBoundaryAfterDate:(id)arg1 inCalendar:(id)arg2 isStartDate:(_Bool *)arg3;
+- (_Bool)isActiveAtDate:(id)arg1 inCalendar:(id)arg2;
+- (void)_datePairForDay:(long long)arg1 startDate:(id *)arg2 endDate:(id *)arg3;
 - (void)setStartTime:(id)arg1 endTime:(id)arg2 forDay:(unsigned long long)arg3;
 - (void)setStartTime:(id)arg1 endTime:(id)arg2;
 @property(retain, nonatomic) STBlueprintScheduleRepresentation *scheduleRepresentation;
@@ -45,6 +53,7 @@
 @property(retain, nonatomic) NSDate *day6Start; // @dynamic day6Start;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(nonatomic) _Bool enabled; // @dynamic enabled;
 @property(readonly) unsigned long long hash;
 @property(retain, nonatomic) NSNumber *notificationTimeInterval; // @dynamic notificationTimeInterval;
 @property(readonly) Class superclass;

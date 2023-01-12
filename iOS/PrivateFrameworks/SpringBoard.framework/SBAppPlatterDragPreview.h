@@ -9,32 +9,36 @@
 #import <SpringBoard/BSDescriptionProviding-Protocol.h>
 #import <SpringBoard/SBIconDragPreview-Protocol.h>
 
-@class BSCornerRadiusConfiguration, NSArray, NSString, SBApplicationBlurContentView, SBFView, SBIcon, SBIconView, SBPortalView;
+@class BSCornerRadiusConfiguration, NSArray, NSHashTable, NSString, SBApplicationBlurContentView, SBFView, SBIcon, SBIconView, SBPortalView;
 
 @interface SBAppPlatterDragPreview : UIView <SBIconDragPreview, BSDescriptionProviding>
 {
     _Bool _isBlurredPlatterReady;
     _Bool _hasAnimatedToBlurredPlatter;
     unsigned long long _platterViewAlphaAnimationCount;
+    NSHashTable *_cleanupDelayAssertions;
     _Bool _flocked;
     _Bool _iconAllowsLabelArea;
+    _Bool _iconAllowsAccessory;
     _Bool _iconCanShowCloseBox;
     _Bool _iconIsHighlighted;
     _Bool _iconInitiallyShowingCloseBox;
+    _Bool _delayingCleanup;
     unsigned long long _dragState;
     double _iconContentScale;
-    unsigned long long _mode;
     CDUnknownBlockType _cleanUpHandler;
+    unsigned long long _mode;
     UIView *_sourceView;
+    double _sourceViewScale;
     SBApplicationBlurContentView *_platterView;
     CDUnknownBlockType _platterViewAlphaAnimationCompletionBlock;
-    double _platterScale;
     NSArray *_diffuseShadowFilters;
     NSArray *_rimShadowFilters;
     BSCornerRadiusConfiguration *_cornerRadiusConfiguration;
     double _rotation;
     SBIconView *_referenceIconView;
     SBIconView *_iconView;
+    UIView *_captureOnlyBackgroundView;
     UIView *_anchorPointAdjustmentContainerView;
     UIView *_iconContainerView;
     UIView *_cornerMaskingView;
@@ -56,15 +60,16 @@
 @property(copy, nonatomic) NSArray *diffuseShadowFilters; // @synthesize diffuseShadowFilters=_diffuseShadowFilters;
 @property(nonatomic) struct SBDragPreviewShadowParameters rimShadowParameters; // @synthesize rimShadowParameters=_rimShadowParameters;
 @property(nonatomic) struct SBDragPreviewShadowParameters diffuseShadowParameters; // @synthesize diffuseShadowParameters=_diffuseShadowParameters;
-@property(nonatomic) double platterScale; // @synthesize platterScale=_platterScale;
 @property(nonatomic) struct CGSize platterSize; // @synthesize platterSize=_platterSize;
 @property(copy, nonatomic) CDUnknownBlockType platterViewAlphaAnimationCompletionBlock; // @synthesize platterViewAlphaAnimationCompletionBlock=_platterViewAlphaAnimationCompletionBlock;
 @property(readonly, nonatomic) SBApplicationBlurContentView *platterView;
+@property(nonatomic) double sourceViewScale; // @synthesize sourceViewScale=_sourceViewScale;
 @property(readonly, nonatomic) UIView *sourceView;
-@property(copy, nonatomic) CDUnknownBlockType cleanUpHandler; // @synthesize cleanUpHandler=_cleanUpHandler;
 @property(nonatomic) unsigned long long mode; // @synthesize mode=_mode;
+@property(copy, nonatomic) CDUnknownBlockType cleanUpHandler; // @synthesize cleanUpHandler=_cleanUpHandler;
 @property(nonatomic) double iconContentScale; // @synthesize iconContentScale=_iconContentScale;
 @property(nonatomic) _Bool iconCanShowCloseBox; // @synthesize iconCanShowCloseBox=_iconCanShowCloseBox;
+@property(nonatomic) _Bool iconAllowsAccessory; // @synthesize iconAllowsAccessory=_iconAllowsAccessory;
 @property(nonatomic) _Bool iconAllowsLabelArea; // @synthesize iconAllowsLabelArea=_iconAllowsLabelArea;
 @property(nonatomic, getter=isFlocked) _Bool flocked; // @synthesize flocked=_flocked;
 @property(nonatomic) unsigned long long dragState; // @synthesize dragState=_dragState;
@@ -94,21 +99,25 @@
 - (_Bool)_isDragging;
 - (void)_updateContainerViewPositionForAnchorPoint;
 - (void)layoutSubviews;
+- (void)setIconViewDelegate:(id)arg1;
 - (void)dropDestinationAnimationCompleted;
 - (void)draggingSourceCancelAnimationCompleted;
 - (void)draggingSourceDroppedWithOperation:(unsigned long long)arg1;
+- (void)_removeDelayCleanupAssertion:(id)arg1;
+- (id)delayCleanUpForReason:(id)arg1;
 - (void)handleCleanup;
 - (void)setIconIsEditing:(_Bool)arg1 animated:(_Bool)arg2;
 @property(nonatomic) _Bool iconIsEditing;
 - (void)_updateShowDebugIconBorderWithColor:(id)arg1;
 - (void)_configureIconViewWithReferenceIconView:(id)arg1;
-- (void)updateDestinationIconLocation:(id)arg1 animated:(_Bool)arg2;
+- (void)updateDestinationIconLocation:(id)arg1 allowsLabelArea:(_Bool)arg2 animated:(_Bool)arg3;
 @property(retain, nonatomic) SBIcon *icon;
 - (void)configurePlatterForSceneHandle:(id)arg1 withTargetView:(id)arg2 completion:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic, getter=isAnimatingPlatterViewAlpha) _Bool animatingPlatterViewAlpha;
 - (void)invalidateSourceView;
 - (void)updateSourceView:(id)arg1;
 - (void)_matchMoveView:(id)arg1 toContainerView:(id)arg2;
+- (id)initWithReferenceIconView:(id)arg1 sourceView:(id)arg2 sourceViewScale:(double)arg3;
 - (id)initWithReferenceIconView:(id)arg1 sourceView:(id)arg2;
 
 // Remaining properties

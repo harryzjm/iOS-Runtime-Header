@@ -14,13 +14,17 @@
 {
     UNNotification *_notification;
     NSString *_sourceAppId;
+    long long _platform;
 }
 
 + (_Bool)supportedForApplicationWithBundleId:(id)arg1;
 + (_Bool)supportedOnPlatform;
 + (_Bool)canBeHandled;
 - (void).cxx_destruct;
+- (void)withdrawalRequestWithCompletion:(CDUnknownBlockType)arg1;
+- (void)deactivateRequestForReason:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)performRequestWithCompletion:(CDUnknownBlockType)arg1;
+- (id)initWithUserNotification:(id)arg1 sourceAppId:(id)arg2 platform:(long long)arg3;
 - (id)initWithUserNotification:(id)arg1 sourceAppId:(id)arg2;
 
 @end

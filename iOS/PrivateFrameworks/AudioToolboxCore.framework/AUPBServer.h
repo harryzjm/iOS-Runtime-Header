@@ -19,11 +19,11 @@ __attribute__((visibility("hidden")))
     id <AUPBRegistrarHosting> mProxyInterface;
     NSXPCListener *mListener;
     NSMutableArray *mClientConnections;
-    struct unique_ptr<CADeprecated::CAMutex, std::__1::default_delete<CADeprecated::CAMutex>> mLock;
-    struct map<unsigned int, RemoteAUHandleInfo, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, RemoteAUHandleInfo>>> mAUHandlesToInfo;
-    struct map<unsigned int, AUProcessingBlock, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, AUProcessingBlock>>> mBlockHandlesToMethods;
+    struct unique_ptr<CADeprecated::CAMutex, std::default_delete<CADeprecated::CAMutex>> mLock;
+    struct map<unsigned int, RemoteAUHandleInfo, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, RemoteAUHandleInfo>>> mAUHandlesToInfo;
+    struct map<unsigned int, AUProcessingBlock, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, AUProcessingBlock>>> mBlockHandlesToMethods;
     unsigned int mAUPBRefCounter;
-    struct unique_ptr<TestAUProcessingBlock, std::__1::default_delete<TestAUProcessingBlock>> mTestBlock;
+    struct unique_ptr<TestAUProcessingBlock, std::default_delete<TestAUProcessingBlock>> mTestBlock;
     unsigned int mAUHandleCntr;
     int mNotifyToken;
     _Bool mValidToken;

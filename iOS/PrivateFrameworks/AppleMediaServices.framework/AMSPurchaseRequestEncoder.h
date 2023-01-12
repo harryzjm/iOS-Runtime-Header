@@ -23,7 +23,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) AMSPurchaseInfo *purchaseInfo; // @synthesize purchaseInfo=_purchaseInfo;
 - (void)setBag:(id)arg1;
 - (id)bag;
-- (id)_bagURL;
+- (id)_bagURLWithError:(id *)arg1;
+- (id)_buyProductURLWithError:(id *)arg1;
 - (id)encodeRequest;
 - (id)initWithPurchaseInfo:(id)arg1 bag:(id)arg2;
 - (id)initWithPurchaseInfo:(id)arg1;

@@ -35,6 +35,7 @@
 - (void)addInterruptionHandler:(CDUnknownBlockType)arg1 forTarget:(id)arg2;
 - (void)performTask:(CDUnknownBlockType)arg1;
 - (id)interalTestingCollaboratorWithErrorHandler:(CDUnknownBlockType)arg1;
+- (id)serverMessagingCollaboratorWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)activityMonitorCollaboratorWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)registrationCollaboratorWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)opportunisticCollaboratorWithErrorHandler:(CDUnknownBlockType)arg1;
@@ -44,9 +45,11 @@
 - (id)pairingCollaboratorWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
+- (id)_initWithQueue:(id)arg1 isSync:(_Bool)arg2 connectionCreationBlock:(CDUnknownBlockType)arg3;
 - (id)_initWithQueue:(id)arg1 isSync:(_Bool)arg2;
 - (id)initSyncControllerWithQueue:(id)arg1;
 - (id)initWithQueue:(id)arg1;
+- (id)initWithQueue:(id)arg1 connectionCreationBlock:(CDUnknownBlockType)arg2;
 
 @end
 

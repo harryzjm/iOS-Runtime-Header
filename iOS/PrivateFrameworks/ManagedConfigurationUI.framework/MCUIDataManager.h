@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <ManagedConfigurationUI/LSApplicationWorkspaceObserverProtocol-Protocol.h>
+#import <ManagedConfigurationUI/MCUIDataManagerProtocol-Protocol.h>
 
 @class LSApplicationWorkspace, MCProfileInfo, NSArray, NSString;
 @protocol OS_dispatch_queue;
 
-@interface MCUIDataManager : NSObject <LSApplicationWorkspaceObserverProtocol>
+@interface MCUIDataManager : NSObject <LSApplicationWorkspaceObserverProtocol, MCUIDataManagerProtocol>
 {
     _Bool _observing;
     int _appsChangedNotifyToken;
@@ -29,7 +30,7 @@
 }
 
 + (id)sharedManager;
-+ (_Bool)isProfileSectionRestricted;
++ (_Bool)_isDeviceManagementHiddenConcrete;
 - (void).cxx_destruct;
 @property(nonatomic) int provisioningProfileRemovedToken; // @synthesize provisioningProfileRemovedToken=_provisioningProfileRemovedToken;
 @property(nonatomic) int provisioningProfileInstalledToken; // @synthesize provisioningProfileInstalledToken=_provisioningProfileInstalledToken;
@@ -63,6 +64,7 @@
 - (void)appMovedToBackground:(id)arg1;
 - (void)dealloc;
 - (id)init;
+- (_Bool)isDeviceManagementHidden;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

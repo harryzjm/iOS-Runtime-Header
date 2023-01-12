@@ -12,18 +12,24 @@
 
 @interface HMIVideoAnalyzerDelegateAdapter : HMFObject <HMIVideoAnalyzerDelegate>
 {
-    CDUnknownBlockType _analyzerDidAnalyzeFrame;
-    CDUnknownBlockType _analyzerDidAnalyzeFragment;
+    CDUnknownBlockType _analyzerDidAnalyzeFrameWithResult;
+    CDUnknownBlockType _analyzerDidAnalyzeFragmentWithResult;
     CDUnknownBlockType _analyzerDidFailWithError;
+    CDUnknownBlockType _analyzerDidCreateTimelapseFragment;
+    CDUnknownBlockType _analyzerDidProduceAnalysisStateUpdate;
 }
 
 - (void).cxx_destruct;
+@property(copy) CDUnknownBlockType analyzerDidProduceAnalysisStateUpdate; // @synthesize analyzerDidProduceAnalysisStateUpdate=_analyzerDidProduceAnalysisStateUpdate;
+@property(copy) CDUnknownBlockType analyzerDidCreateTimelapseFragment; // @synthesize analyzerDidCreateTimelapseFragment=_analyzerDidCreateTimelapseFragment;
 @property(copy) CDUnknownBlockType analyzerDidFailWithError; // @synthesize analyzerDidFailWithError=_analyzerDidFailWithError;
-@property(copy) CDUnknownBlockType analyzerDidAnalyzeFragment; // @synthesize analyzerDidAnalyzeFragment=_analyzerDidAnalyzeFragment;
-@property(copy) CDUnknownBlockType analyzerDidAnalyzeFrame; // @synthesize analyzerDidAnalyzeFrame=_analyzerDidAnalyzeFrame;
+@property(copy) CDUnknownBlockType analyzerDidAnalyzeFragmentWithResult; // @synthesize analyzerDidAnalyzeFragmentWithResult=_analyzerDidAnalyzeFragmentWithResult;
+@property(copy) CDUnknownBlockType analyzerDidAnalyzeFrameWithResult; // @synthesize analyzerDidAnalyzeFrameWithResult=_analyzerDidAnalyzeFrameWithResult;
+- (void)analyzer:(id)arg1 didProduceAnalysisStateUpdate:(id)arg2;
+- (void)analyzer:(id)arg1 didCreateTimelapseFragment:(id)arg2;
 - (void)analyzer:(id)arg1 didFailWithError:(id)arg2;
-- (void)analyzer:(id)arg1 didAnalyzeFragment:(id)arg2;
-- (void)analyzer:(id)arg1 didAnalyzeFrame:(id)arg2;
+- (void)analyzer:(id)arg1 didAnalyzeFragmentWithResult:(id)arg2;
+- (void)analyzer:(id)arg1 didAnalyzeFrameWithResult:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

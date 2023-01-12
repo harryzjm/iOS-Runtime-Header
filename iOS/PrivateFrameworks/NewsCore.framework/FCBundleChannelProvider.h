@@ -20,22 +20,15 @@
     id <FCCoreConfigurationManager> _configurationManager;
     FCPurchaseLookupRecordSource *_purchaseLookupRecordSource;
     NSArray *_bundleChannelIDs;
+    NSString *_bundleChannelIDsVersion;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *bundleChannelIDsVersion; // @synthesize bundleChannelIDsVersion=_bundleChannelIDsVersion;
 @property(copy, nonatomic) NSArray *bundleChannelIDs; // @synthesize bundleChannelIDs=_bundleChannelIDs;
-@property(readonly, nonatomic) FCPurchaseLookupRecordSource *purchaseLookupRecordSource; // @synthesize purchaseLookupRecordSource=_purchaseLookupRecordSource;
-@property(readonly, nonatomic) id <FCCoreConfigurationManager> configurationManager; // @synthesize configurationManager=_configurationManager;
-@property(retain, nonatomic) NFUnfairLock *accessLock; // @synthesize accessLock=_accessLock;
-@property(retain, nonatomic) FCKeyValueStore *localStore; // @synthesize localStore=_localStore;
 @property(nonatomic) __weak id <FCBundleChannelProviderDelegate> delegate; // @synthesize delegate;
-- (void)fetchBundleTagIDsForPurchaseID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)refreshBundleChannelIDsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)updateBundleChannelIDs:(id)arg1;
 - (void)loadInitialBundleChannelIDsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)activityObservingApplicationWindowWillBecomeForeground;
-- (void)loadLocalCachesFromStore;
-- (id)initWithLocalStore:(id)arg1 appActivityMonitor:(id)arg2 configurationManager:(id)arg3 purchaseLookupRecordSource:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -16,6 +16,7 @@
     unsigned long long _memoryCategory;
 }
 
++ (id)_invalidMeaningLabelsForMemories;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long memoryCategory; // @synthesize memoryCategory=_memoryCategory;
 @property(nonatomic) _Bool skipsCollectionTitle; // @synthesize skipsCollectionTitle=_skipsCollectionTitle;
@@ -23,11 +24,14 @@
 @property(nonatomic) unsigned long long meaning; // @synthesize meaning=_meaning;
 @property(nonatomic) unsigned long long eventType; // @synthesize eventType=_eventType;
 @property(retain, nonatomic) NSDate *lowerBoundLocalDate; // @synthesize lowerBoundLocalDate=_lowerBoundLocalDate;
+- (id)titleGeneratorForTriggeredMemory:(id)arg1 withKeyAsset:(id)arg2 curatedAssets:(id)arg3 extendedCuratedAssets:(id)arg4 titleGenerationContext:(id)arg5 inGraph:(id)arg6;
+- (id)keyAssetCurationOptionsWithTriggeredMemory:(id)arg1 inGraph:(id)arg2;
+- (id)keyAssetCurationOptionsWithPotentialMemory:(id)arg1 inGraph:(id)arg2;
 - (id)_potentialMemoriesForDryTesting;
 - (id)_additionalInfoKeywordsForPotentialMemory:(id)arg1;
-- (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
-- (unsigned long long)durationForCuration;
-- (void)_enumeratePotentialMemoriesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2 andGraph:(id)arg3;
+- (void)_enumeratePotentialMemoriesWithGraph:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (id)generateAllPotentialMemoriesWithGraph:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (id)initWithController:(id)arg1;
 
 @end

@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     CalendarNotesCell *_cell;
     NSString *_lastTextChange;
     struct CGRect _keyboardRect;
+    _Bool _textViewDirty;
 }
 
 - (void).cxx_destruct;

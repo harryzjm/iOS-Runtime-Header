@@ -8,12 +8,13 @@
 
 #import <MapKit/VKCustomFeatureDataSource-Protocol.h>
 
-@class GEOFeatureStyleAttributes, MKQuadTrie, NSHashTable, NSString;
+@class GEOFeatureStyleAttributes, MKQuadTrie, NSHashTable, NSMutableSet, NSString;
 @protocol MKCustomFeatureStoreDelegate;
 
 @interface _MKCustomFeatureStore : NSObject <VKCustomFeatureDataSource>
 {
     MKQuadTrie *_annotationsTrie;
+    NSMutableSet *_globalAnnotations;
     NSHashTable *_observers;
     _Bool _isClusteringEnabled;
     GEOFeatureStyleAttributes *_clusterStyleAttributes;
@@ -33,13 +34,16 @@
 - (void)getClusterAnnotationTextForClusterFeatureCount:(unsigned long long)arg1 text:(id *)arg2 locale:(id *)arg3;
 - (void)getClusterImageTextForClusterFeatureCount:(unsigned long long)arg1 text:(id *)arg2 locale:(id *)arg3;
 - (id)annotationsInMapRect:(CDStruct_02837cd9)arg1;
+- (id)globalAnnotations;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (void)_setSceneState:(unsigned char)arg1;
+- (void)_invalidateGlobalAnnotations;
 - (void)_invalidateRect:(CDStruct_02837cd9)arg1;
 - (id)allAnnotations;
 - (unsigned long long)annotationCount;
-- (void)_clearAnnotations;
+- (void)_clearGlobalAnnotations;
+- (void)_clearTileAnnotations;
 - (void)removeAnnotations:(id)arg1;
 - (void)addAnnotations:(id)arg1;
 - (void)setAnnotations:(id)arg1;

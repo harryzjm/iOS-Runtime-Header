@@ -6,29 +6,42 @@
 
 #import <objc/NSObject.h>
 
-@class IMOneTimeCodeAccelerator, NSHashTable, SFAutoFillOneTimeCode;
+@class IMOneTimeCodeAccelerator, NSHashTable, NSMapTable, NSTimer, SFAutoFillOneTimeCode;
 @protocol OS_dispatch_queue, SFAppAutoFillOneTimeCodeProviderDelegate;
 
 @interface SFAppAutoFillOneTimeCodeProvider : NSObject
 {
     IMOneTimeCodeAccelerator *_oneTimeCodeAccelerator;
     NSObject<OS_dispatch_queue> *_internalQueue;
-    SFAutoFillOneTimeCode *_currentOneTimeCode;
+    SFAutoFillOneTimeCode *_currentOneTimeCodeFromMessages;
     NSHashTable *_observers;
+    NSMapTable *_generatorObservers;
+    NSTimer *_generatorTimer;
     id <SFAppAutoFillOneTimeCodeProviderDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <SFAppAutoFillOneTimeCodeProviderDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)_stopGeneratorTimer;
+- (void)_startGeneratorTimer;
+- (id)_associatedDomainEntriesForAppWithIdentifier:(id)arg1;
+- (id)_sortedOneTimeCodesFromSavedPasswords:(id)arg1;
+- (id)_savedPasswordsForURL:(id)arg1;
 - (id)_secureURLWithDomain:(id)arg1;
+- (_Bool)_appWithAuditTokenIsWebBrowser:(CDStruct_6ad76789)arg1;
 - (_Bool)_validateURL:(id)arg1 withURLFromOriginBoundCode:(id)arg2;
 - (void)_validateCurrentOneTimeCode;
-- (void)_processOneTimeCode:(id)arg1;
+- (void)_processOneTimeCodeFromMessages:(id)arg1;
+- (void)removeObserverForOneTimeCode:(id)arg1;
 - (void)removeObserver:(id)arg1;
+- (void)addObserver:(id)arg1 forOneTimeCode:(id)arg2;
 - (void)addObserver:(id)arg1;
+- (void)consumeOneTimeCode:(id)arg1;
 - (void)consumeCurrentOneTimeCode;
-- (id)currentOneTimeCodeForWebBrowserWithWebsiteFrameURLs:(id)arg1;
+- (id)currentOneTimeCodesForWebBrowserWithWebsiteFrameURLs:(id)arg1 fieldClassification:(long long)arg2;
+- (id)currentOneTimeCodesWithAuditToken:(CDStruct_6ad76789)arg1 website:(id)arg2 usernameHint:(id)arg3 fieldClassification:(long long)arg4;
 - (id)currentOneTimeCodeWithAuditToken:(CDStruct_6ad76789)arg1 website:(id)arg2;
+- (_Bool)hasOneTimeCodeForAppWithAuditToken:(CDStruct_6ad76789)arg1;
 @property(readonly, nonatomic) _Bool hasOneTimeCode;
 - (id)init;
 

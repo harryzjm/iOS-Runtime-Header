@@ -11,6 +11,7 @@
 
 @interface CLSActivityReport <NSSecureCoding, NSCopying>
 {
+    int _handoutAttachmentType;
     long long _contextType;
     NSString *_contextTopic;
     NSString *_contextTitle;
@@ -21,10 +22,13 @@
     CLSActivityReportItem *_primaryReportItem;
     NSArray *_additionalReportItems;
     NSString *_contextStableObjectID;
+    NSString *_handoutAuthorizedObjectID;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *handoutAuthorizedObjectID; // @synthesize handoutAuthorizedObjectID=_handoutAuthorizedObjectID;
+@property(nonatomic) int handoutAttachmentType; // @synthesize handoutAttachmentType=_handoutAttachmentType;
 @property(copy, nonatomic) NSString *contextStableObjectID; // @synthesize contextStableObjectID=_contextStableObjectID;
 @property(copy, nonatomic) NSArray *additionalReportItems; // @synthesize additionalReportItems=_additionalReportItems;
 @property(copy, nonatomic) CLSActivityReportItem *primaryReportItem; // @synthesize primaryReportItem=_primaryReportItem;

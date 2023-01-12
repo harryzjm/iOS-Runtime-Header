@@ -16,11 +16,13 @@
 __attribute__((visibility("hidden")))
 @interface TUVideoDeviceControllerProvider : NSObject <AVConferencePreviewClientDelegate, TUVideoDeviceControllerProvider, TUVideoEffectsProvider>
 {
+    _Bool _isAVCaptureDeviceReady;
     id <TUVideoDeviceControllerProviderDelegate> _delegate;
     TUVideoEffect *_currentVideoEffect;
     AVConferencePreview *_preview;
 }
 
++ (void)prewarm;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) AVConferencePreview *preview; // @synthesize preview=_preview;
 @property(retain, nonatomic) TUVideoEffect *currentVideoEffect; // @synthesize currentVideoEffect=_currentVideoEffect;
@@ -28,7 +30,10 @@ __attribute__((visibility("hidden")))
 - (void)captureDevicesChanged:(id)arg1;
 - (id)thumbnailImageForVideoEffectName:(id)arg1;
 @property(readonly, nonatomic) NSArray *availableVideoEffects;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)cameraCinematicFramingAvailabilityDidChange:(_Bool)arg1;
 - (void)cameraZoomAvailabilityDidChange:(_Bool)arg1;
+- (void)didPausePreview;
 - (void)didStopPreview;
 - (void)didChangeLocalVideoAttributes:(id)arg1;
 - (void)didReceiveFirstPreviewFrameFromCameraUniqueID:(id)arg1;
@@ -43,6 +48,11 @@ __attribute__((visibility("hidden")))
 - (void)beginPreviewToPIPAnimation;
 - (void)setLocalScreenAttributes:(id)arg1;
 - (id)localScreenAttributesForVideoAttributes:(id)arg1;
+@property(nonatomic, getter=isCameraBlurEnabled) _Bool cameraBlurEnabled;
+@property(nonatomic) _Bool allowsCameraBlurToggling;
+- (_Bool)supportsCameraBlurForDevice:(id)arg1;
+@property(nonatomic, getter=isCinematicFramingEnabled) _Bool cinematicFramingEnabled;
+- (void)queryAVCaptureDeviceIfNeeded;
 - (void)stopPreview;
 - (void)pausePreview;
 - (void)startPreview;

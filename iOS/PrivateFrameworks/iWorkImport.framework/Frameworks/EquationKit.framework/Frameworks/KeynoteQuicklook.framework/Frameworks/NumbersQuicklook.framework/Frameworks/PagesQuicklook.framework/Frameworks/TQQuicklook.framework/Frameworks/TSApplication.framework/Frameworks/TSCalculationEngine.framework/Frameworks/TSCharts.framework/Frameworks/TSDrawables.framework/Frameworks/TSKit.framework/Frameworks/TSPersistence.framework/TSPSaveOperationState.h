@@ -12,6 +12,7 @@
 {
     NSMapTable *_newDataStorages;
     NSHashTable *_remoteData;
+    NSMapTable *_saveOperationStatesForRemoteStorages;
     int _sampleID;
     long long _updateType;
 }
@@ -22,9 +23,14 @@
 @property(readonly, nonatomic) _Bool inheritAttributes;
 @property(readonly, nonatomic) _Bool isSavingCurrentDocument;
 @property(readonly, nonatomic) _Bool shouldUpdate;
-@property(readonly, nonatomic) _Bool hasRemoteData;
+- (id)saveOperationStateForRemoteStorage:(id)arg1;
+- (void)addNewPackageDataStorage:(id)arg1 forRemoteDataStorage:(id)arg2 changeCount:(unsigned long long)arg3;
+@property(readonly, nonatomic) _Bool hasAnyRemoteData;
+- (void)willMigrateRemoteDataToTemporaryStorage:(id)arg1;
+- (_Bool)hasRemoteData:(id)arg1;
 - (void)addRemoteData:(id)arg1;
-- (void)enumerateDatasAndStoragesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateRemoteDataUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateDataAndStoragesUsingBlock:(CDUnknownBlockType)arg1;
 - (_Bool)hasNewStorageForData:(id)arg1;
 - (void)addNewStorage:(id)arg1 forData:(id)arg2;
 - (id)initWithUpdateType:(long long)arg1;

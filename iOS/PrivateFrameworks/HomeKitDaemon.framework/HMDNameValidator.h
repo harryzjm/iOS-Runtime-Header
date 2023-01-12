@@ -37,6 +37,7 @@
 - (id)_removeName:(id)arg1 namespace:(id)arg2;
 - (id)_addName:(id)arg1 namespace:(id)arg2;
 - (id)_checkForConflict:(id)arg1 namespace:(id)arg2;
+- (id)trimNotAllowedCharactersFromName:(id)arg1 error:(id *)arg2;
 - (id)_validateName:(id)arg1;
 - (id)despaceName:(id)arg1;
 - (id)_removeNamespace:(id)arg1;

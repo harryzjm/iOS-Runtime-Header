@@ -6,19 +6,31 @@
 
 #import <objc/NSObject.h>
 
-@protocol NSCopying;
+@class NSDate, NSUUID;
+@protocol NSCopying, OS_nw_activity;
 
 @interface AVCSessionConfiguration : NSObject
 {
     long long _sessionMode;
     NSObject<NSCopying> *_reportingHierarchyToken;
     _Bool _oneToOneModeEnabled;
+    NSUUID *_conversationID;
+    NSDate *_conversationTimeBase;
+    NSDate *_conversationTimeBaseTruncated;
+    NSObject<OS_nw_activity> *_parentNWActivity;
 }
 
 + (long long)sessionModeWithClientSessionMode:(long long)arg1;
 + (long long)clientSessionModeWithSessionMode:(long long)arg1;
+@property(nonatomic, setter=setParentNWActivity:) NSObject<OS_nw_activity> *parentNWActivity; // @synthesize parentNWActivity=_parentNWActivity;
+@property(copy, nonatomic) NSDate *conversationTimeBaseTruncated; // @synthesize conversationTimeBaseTruncated=_conversationTimeBaseTruncated;
+@property(copy, nonatomic) NSDate *conversationTimeBase; // @synthesize conversationTimeBase=_conversationTimeBase;
+@property(copy, nonatomic) NSUUID *conversationID; // @synthesize conversationID=_conversationID;
 @property(nonatomic, getter=isOneToOneModeEnabled) _Bool oneToOneModeEnabled; // @synthesize oneToOneModeEnabled=_oneToOneModeEnabled;
 @property(copy, nonatomic) NSObject<NSCopying> *reportingHierarchyToken; // @synthesize reportingHierarchyToken=_reportingHierarchyToken;
+- (void)cleanupNwActivity;
+- (id)deserializeNwActivity:(id)arg1;
+- (id)serializeNwActivity:(id)arg1;
 - (id)dictionary;
 - (void)setUpWithDictionary:(id)arg1;
 @property(nonatomic) long long sessionMode;

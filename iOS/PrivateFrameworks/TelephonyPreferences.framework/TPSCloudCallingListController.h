@@ -6,16 +6,21 @@
 
 #import <TelephonyPreferences/TPSCloudCallingURLControllerDelegate-Protocol.h>
 
-@class NSString;
+@class NSString, OBPrivacyLinkController, OBPrivacyPresenter;
 
 @interface TPSCloudCallingListController <TPSCloudCallingURLControllerDelegate>
 {
+    OBPrivacyLinkController *_privacyLinkController;
+    OBPrivacyPresenter *_privacyPresenter;
 }
 
+- (void).cxx_destruct;
 - (void)privacySplashControllerDidRequestDismissal:(id)arg1;
-- (void)presentPrivacySplashController;
+- (void)presentPrivacyPresenter;
 - (void)presentOrUpdateViewController:(id)arg1;
 - (void)appendAboutWiFiCallingFooterToGroupSpecifier:(id)arg1;
+@property(readonly, nonatomic) OBPrivacyPresenter *privacyPresenter; // @synthesize privacyPresenter=_privacyPresenter;
+@property(readonly, nonatomic) OBPrivacyLinkController *privacyLinkController; // @synthesize privacyLinkController=_privacyLinkController;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

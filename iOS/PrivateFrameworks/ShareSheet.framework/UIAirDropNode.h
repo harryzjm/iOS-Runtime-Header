@@ -7,43 +7,52 @@
 #import <objc/NSObject.h>
 
 #import <ShareSheet/NSSecureCoding-Protocol.h>
+#import <ShareSheet/SHSheetLoadableProxy-Protocol.h>
 
-@class NSNumber, NSUUID;
+@class NSString, NSUUID, SDSuggestionNode;
 
-@interface UIAirDropNode : NSObject <NSSecureCoding>
+@interface UIAirDropNode : NSObject <NSSecureCoding, SHSheetLoadableProxy>
 {
+    _Atomic unsigned int _imageSlotID;
+    _Atomic unsigned int _transportSlotID;
+    _Atomic unsigned int _mainLabelSlotID;
+    _Atomic unsigned int _bottomLabelSlotID;
     _Bool _wantsTwoLines;
     _Bool _hasSquareImage;
     _Bool _disabled;
     _Bool _restricted;
     _Bool _peopleSuggestion;
-    NSNumber *_imageSlot;
-    NSNumber *_mainLabelSlot;
-    NSNumber *_topLabelSlot;
-    NSNumber *_bottomLabelSlot;
-    NSNumber *_transportSlot;
     NSUUID *_nodeIdentifier;
+    SDSuggestionNode *_suggestionNode;
+    CDUnknownBlockType _loadHandler;
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)nodeWithImageSlot:(id)arg1 labelSlot:(id)arg2 transportSlot:(id)arg3 isPeopleSuggestion:(_Bool)arg4;
++ (id)nodeWithImageSlotID:(unsigned int)arg1 labelSlotID:(unsigned int)arg2 transportSlotID:(unsigned int)arg3 isPeopleSuggestion:(_Bool)arg4;
++ (id)nodeWithSuggestionNode:(id)arg1;
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType loadHandler; // @synthesize loadHandler=_loadHandler;
+@property(retain, nonatomic) SDSuggestionNode *suggestionNode; // @synthesize suggestionNode=_suggestionNode;
 @property(nonatomic, getter=isPeopleSuggestion) _Bool peopleSuggestion; // @synthesize peopleSuggestion=_peopleSuggestion;
 @property(nonatomic, getter=isRestricted) _Bool restricted; // @synthesize restricted=_restricted;
 @property(nonatomic, getter=isDisabled) _Bool disabled; // @synthesize disabled=_disabled;
 @property(nonatomic) _Bool hasSquareImage; // @synthesize hasSquareImage=_hasSquareImage;
 @property(nonatomic) _Bool wantsTwoLines; // @synthesize wantsTwoLines=_wantsTwoLines;
-@property(retain) NSUUID *nodeIdentifier; // @synthesize nodeIdentifier=_nodeIdentifier;
-@property(retain) NSNumber *transportSlot; // @synthesize transportSlot=_transportSlot;
-@property(retain) NSNumber *bottomLabelSlot; // @synthesize bottomLabelSlot=_bottomLabelSlot;
-@property(retain) NSNumber *topLabelSlot; // @synthesize topLabelSlot=_topLabelSlot;
-@property(retain) NSNumber *mainLabelSlot; // @synthesize mainLabelSlot=_mainLabelSlot;
-@property(retain) NSNumber *imageSlot; // @synthesize imageSlot=_imageSlot;
+@property(retain, nonatomic) NSUUID *nodeIdentifier; // @synthesize nodeIdentifier=_nodeIdentifier;
+- (_Bool)load;
 - (_Bool)isEqual:(id)arg1;
-- (unsigned long long)hash;
-- (id)description;
+@property(readonly) unsigned long long hash;
+@property(readonly, copy) NSString *description;
+@property unsigned int bottomLabelSlotID;
+@property unsigned int mainLabelSlotID;
+@property unsigned int transportSlotID;
+@property unsigned int imageSlotID;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

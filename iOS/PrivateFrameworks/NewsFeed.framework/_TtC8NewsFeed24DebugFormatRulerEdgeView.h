@@ -16,12 +16,14 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *contentBounds;
     MISSING_TYPE *canvasOffset;
     MISSING_TYPE *selectionFrame;
+    MISSING_TYPE *metricSelectionFrame;
     MISSING_TYPE *direction;
     MISSING_TYPE *markerLayer;
     MISSING_TYPE *markerLabels;
     MISSING_TYPE *indicatorView;
     MISSING_TYPE *contentView;
     MISSING_TYPE *selectionView;
+    MISSING_TYPE *metricSelectionView;
 }
 
 - (void).cxx_destruct;

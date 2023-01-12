@@ -16,6 +16,7 @@
 {
     unsigned long long _popoverImageType;
     id <PXPlacesMapPipelineComponentProvider> pipelineComponentProvider;
+    unsigned long long _imageOptions;
     id <PXPlacesMapGeotaggableInfoDelegate> _informationDelegate;
     PKExtendedTraitCollection *_extendedTraitCollection;
     id _extendedTraitObserver;
@@ -25,6 +26,7 @@
 @property(retain) id extendedTraitObserver; // @synthesize extendedTraitObserver=_extendedTraitObserver;
 @property(retain) PKExtendedTraitCollection *extendedTraitCollection; // @synthesize extendedTraitCollection=_extendedTraitCollection;
 @property(retain) id <PXPlacesMapGeotaggableInfoDelegate> informationDelegate; // @synthesize informationDelegate=_informationDelegate;
+@property(readonly) unsigned long long imageOptions; // @synthesize imageOptions=_imageOptions;
 @property(nonatomic) __weak id <PXPlacesMapPipelineComponentProvider> pipelineComponentProvider; // @synthesize pipelineComponentProvider;
 @property(readonly) unsigned long long popoverImageType; // @synthesize popoverImageType=_popoverImageType;
 - (void)imageForGeotaggable:(id)arg1 ofSize:(struct CGSize)arg2 networkAccessAllowed:(_Bool)arg3 andCompletion:(CDUnknownBlockType)arg4;
@@ -35,6 +37,7 @@
 @property(readonly) struct UIEdgeInsets minimumEdgeInsets;
 - (long long)annotationType;
 - (void)dealloc;
+- (id)initWithTraitCollection:(id)arg1 andInforamtionDelegate:(id)arg2 popoverImageType:(unsigned long long)arg3 popoverImageOptions:(unsigned long long)arg4;
 - (id)initWithTraitCollection:(id)arg1 andInforamtionDelegate:(id)arg2 popoverImageType:(unsigned long long)arg3;
 
 // Remaining properties

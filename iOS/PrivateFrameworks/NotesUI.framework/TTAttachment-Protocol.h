@@ -7,11 +7,12 @@
 #import <NotesUI/NSObject-Protocol.h>
 #import <NotesUI/TTModelAttributeComparable-Protocol.h>
 
-@class ICAttachment, NSManagedObjectContext, NSString;
+@class ICAttachment, ICInlineAttachment, NSManagedObjectContext, NSString;
 
 @protocol TTAttachment <TTModelAttributeComparable, NSObject>
+@property(readonly, copy, nonatomic) NSString *attachmentUTI;
+@property(readonly, copy, nonatomic) NSString *attachmentIdentifier;
+- (ICInlineAttachment *)inlineAttachmentInContext:(NSManagedObjectContext *)arg1;
 - (ICAttachment *)attachmentInContext:(NSManagedObjectContext *)arg1;
-- (NSString *)attachmentUTI;
-- (NSString *)attachmentIdentifier;
 @end
 

@@ -15,6 +15,7 @@
     _Bool _navigationBarHidden;
     _Bool _navigationBarAdjustedToSizeClass;
     _Bool _isInteractivePopGestureAllowed;
+    _Bool _supportsDeclarativeUI;
     long long _type;
     NSString *_viewControllerIdentifier;
     NSString *_viewControllerDocumentIdentifier;
@@ -24,6 +25,7 @@
 + (struct CGSize)_preferredSizeFromConfig:(id)arg1;
 + (id)uiConfigurationWithDict:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool supportsDeclarativeUI; // @synthesize supportsDeclarativeUI=_supportsDeclarativeUI;
 @property(nonatomic, getter=isInteractivePopGestureAllowed) _Bool isInteractivePopGestureAllowed; // @synthesize isInteractivePopGestureAllowed=_isInteractivePopGestureAllowed;
 @property(nonatomic, getter=isNavigationBarAdjustedToSizeClass) _Bool navigationBarAdjustedToSizeClass; // @synthesize navigationBarAdjustedToSizeClass=_navigationBarAdjustedToSizeClass;
 @property(nonatomic, getter=isNavigationBarHidden) _Bool navigationBarHidden; // @synthesize navigationBarHidden=_navigationBarHidden;

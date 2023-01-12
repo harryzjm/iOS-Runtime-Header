@@ -15,6 +15,7 @@
 
 - (void).cxx_destruct;
 @property(retain) UIColor *buttonColor; // @synthesize buttonColor=_buttonColor;
+- (_Bool)canBecomeFocused;
 - (_Bool)_supportsMacIdiom;
 
 @end

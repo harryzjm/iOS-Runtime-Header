@@ -8,24 +8,25 @@
 
 #import <PhotosGraph/PGGraphIngestProcessor-Protocol.h>
 
-@class NSDictionary, NSSet, NSString;
+@class NSDictionary, NSString, PGGraphBuilder;
 
 @interface PGGraphIngestPublicEventsProcessor : NSObject <PGGraphIngestProcessor>
 {
+    PGGraphBuilder *_graphBuilder;
     NSDictionary *_publicEventCriteriaByCategory;
-    NSSet *_largeFrequentLocationNodes;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSSet *largeFrequentLocationNodes; // @synthesize largeFrequentLocationNodes=_largeFrequentLocationNodes;
 @property(readonly, nonatomic) NSDictionary *publicEventCriteriaByCategory; // @synthesize publicEventCriteriaByCategory=_publicEventCriteriaByCategory;
 - (id)publicEventCriteriaByCategoryInGraph:(id)arg1;
-- (id)_frequentLocationNodesByMomentIdentifierForMomentNodes:(id)arg1 graph:(id)arg2;
-- (void)_collectConsolidatedAddressesForMomentNodes:(id)arg1 inGraph:(id)arg2 consolidatedAddresses:(id *)arg3 consolidatedAddressesByMomentIdentifier:(id *)arg4 momentNodesForConsolidatedAddresses:(id *)arg5;
+- (id)_frequentLocationNodesByMomentIdentifierForMomentNodes:(id)arg1 graph:(id)arg2 largeFrequentLocationNodes:(id)arg3;
+- (void)_collectConsolidatedAddressesForMomentNodes:(id)arg1 inGraph:(id)arg2 largeFrequentLocationNodes:(id)arg3 consolidatedAddresses:(id *)arg4 consolidatedAddressesByMomentIdentifier:(id *)arg5 momentNodesForConsolidatedAddresses:(id *)arg6;
 - (id)disambiguateEvents:(id)arg1 forTimeLocationTuple:(id)arg2 momentNode:(id)arg3 graph:(id)arg4;
+- (void)_enumeratePublicEventsFromMomentNodes:(id)arg1 progressBlock:(CDUnknownBlockType)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)_insertPublicEventsFromMomentNodes:(id)arg1 graphUpdate:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
 - (void)runWithGraphUpdate:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (_Bool)shouldRunWithGraphUpdate:(id)arg1;
+- (void)setGraphBuilder:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

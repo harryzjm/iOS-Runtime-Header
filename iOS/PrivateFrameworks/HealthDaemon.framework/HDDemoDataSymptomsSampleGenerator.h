@@ -12,12 +12,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic) double nextSingleRandomSymptomTime; // @synthesize nextSingleRandomSymptomTime=_nextSingleRandomSymptomTime;
-@property(nonatomic) double nextFoodPoisoningSymptomsTime; // @synthesize nextFoodPoisoningSymptomsTime=_nextFoodPoisoningSymptomsTime;
-@property(nonatomic) double nextCommonColdSymptomsTime; // @synthesize nextCommonColdSymptomsTime=_nextCommonColdSymptomsTime;
-- (void)generateSymptomSamplesForDemoPerson:(id)arg1 atTime:(double)arg2 sampleDate:(id)arg3 nextTime:(double)arg4 condition:(long long)arg5 sampleTypes:(id)arg6 frequency:(double)arg7 objectCollection:(id)arg8;
-- (void)generateSingleSymptomSamplesForDemoPerson:(id)arg1 atTime:(double)arg2 sampleDate:(id)arg3 objectCollection:(id)arg4;
-- (void)generateSamplesForDemoPerson:(id)arg1 atTime:(double)arg2 sampleDate:(id)arg3 objectCollection:(id)arg4;
+- (void)generateSamplesForDemoPerson:(id)arg1 fromTime:(double)arg2 toTime:(double)arg3 currentDate:(id)arg4 objectCollection:(id)arg5;
 - (void)setupWithDemoDataGenerator:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

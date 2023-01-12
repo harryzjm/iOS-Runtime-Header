@@ -10,19 +10,19 @@
 
 @interface STStoragePlugin : NSObject
 {
-    NSString *_identifier;
     NSArray *_tips;
+    NSString *_identifier;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSArray *tips; // @synthesize tips=_tips;
-@property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (long long)externDataSizeForApp:(id)arg1;
 - (id)externDataSizeAppIdentifiers;
 - (id)documentSpecifiersForApp:(id)arg1;
 - (id)documentAppIdentifiers;
 - (void)reloadTips;
 - (void)notifyUsageChanged;
+@property(retain) NSArray *tips;
+@property(retain) NSString *identifier;
 
 @end
 

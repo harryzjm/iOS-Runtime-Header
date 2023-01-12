@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class PGGraphMeaningNode;
 @protocol PGGraphMeaningfulEvent;
 
 @interface PGPotentialMeaningfulEventMemory
 {
+    PGGraphMeaningNode *_preciseMeaningNode;
     id <PGGraphMeaningfulEvent> _meaningfulEvent;
     unsigned long long _meaning;
 }
@@ -15,7 +17,9 @@
 - (void).cxx_destruct;
 @property(readonly) unsigned long long meaning; // @synthesize meaning=_meaning;
 @property(readonly) id <PGGraphMeaningfulEvent> meaningfulEvent; // @synthesize meaningfulEvent=_meaningfulEvent;
-- (id)initWithCategory:(unsigned long long)arg1 meaningfulEvent:(id)arg2 meaning:(unsigned long long)arg3 controller:(id)arg4;
+- (id)memoryFeatureNodesInGraph:(id)arg1;
+- (unsigned long long)memoryCategory;
+- (id)initWithCategory:(unsigned long long)arg1 meaningfulEvent:(id)arg2 meaning:(unsigned long long)arg3 preciseMeaningNode:(id)arg4 controller:(id)arg5;
 
 @end
 

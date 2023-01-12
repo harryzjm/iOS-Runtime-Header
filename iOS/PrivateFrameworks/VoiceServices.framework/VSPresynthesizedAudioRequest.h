@@ -9,7 +9,7 @@
 #import <VoiceServices/NSCopying-Protocol.h>
 #import <VoiceServices/NSSecureCoding-Protocol.h>
 
-@class NSData, NSString;
+@class NSData, NSString, NSUUID;
 
 @interface VSPresynthesizedAudioRequest : NSObject <NSCopying, NSSecureCoding>
 {
@@ -18,8 +18,10 @@
     NSData *_audioData;
     NSString *_text;
     NSString *_identifier;
+    NSUUID *_siriRequestId;
     unsigned long long _requestCreatedTimestamp;
     NSString *_clientBundleIdentifier;
+    NSUUID *_accessoryID;
     unsigned long long _pcmDataSize;
     CDUnknownBlockType _stopHandler;
     struct AudioStreamBasicDescription _decoderStreamDescription;
@@ -30,8 +32,10 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType stopHandler; // @synthesize stopHandler=_stopHandler;
 @property(nonatomic) unsigned long long pcmDataSize; // @synthesize pcmDataSize=_pcmDataSize;
+@property(copy, nonatomic) NSUUID *accessoryID; // @synthesize accessoryID=_accessoryID;
 @property(copy, nonatomic) NSString *clientBundleIdentifier; // @synthesize clientBundleIdentifier=_clientBundleIdentifier;
 @property(nonatomic) unsigned long long requestCreatedTimestamp; // @synthesize requestCreatedTimestamp=_requestCreatedTimestamp;
+@property(retain, nonatomic) NSUUID *siriRequestId; // @synthesize siriRequestId=_siriRequestId;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) NSString *text; // @synthesize text=_text;
 @property(nonatomic) _Bool enqueue; // @synthesize enqueue=_enqueue;
@@ -44,7 +48,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (_Bool)isValid;
+- (_Bool)hasValidAudio;
 - (id)logText;
 - (id)initWithIdentifier:(id)arg1;
 - (id)initWithAudioData:(id)arg1 decoderStreamDescription:(struct AudioStreamBasicDescription)arg2 playerStreamDescription:(struct AudioStreamBasicDescription)arg3;

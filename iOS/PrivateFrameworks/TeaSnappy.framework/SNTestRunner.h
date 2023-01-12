@@ -22,8 +22,10 @@
 @property(readonly, nonatomic) SNTestStore *testStore; // @synthesize testStore=_testStore;
 @property(readonly, nonatomic) id <SNTestCoordinating> testCoordinator; // @synthesize testCoordinator=_testCoordinator;
 @property(readonly, nonatomic) UIApplication *application; // @synthesize application=_application;
+- (_Bool)runTestRun:(id)arg1 testName:(id)arg2 options:(id)arg3 fallingBackWith:(CDUnknownBlockType)arg4;
 - (_Bool)runTest:(id)arg1 options:(id)arg2 fallingBackWith:(CDUnknownBlockType)arg3;
 - (_Bool)runTest:(id)arg1 options:(id)arg2;
+- (_Bool)runExtendedLaunchTest;
 - (id)initWithApplication:(id)arg1 testCoordinator:(id)arg2 testStore:(id)arg3;
 
 // Remaining properties

@@ -6,55 +6,68 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <SpringBoard/SBInlineAppExposeContainerViewControllerDelegate-Protocol.h>
+#import <SpringBoard/SBDeviceApplicationSceneHandleObserver-Protocol.h>
+#import <SpringBoard/SBDeviceApplicationSceneStatusBarStateObserver-Protocol.h>
+#import <SpringBoard/SBDeviceApplicationSceneViewControllerDelegate-Protocol.h>
 #import <SpringBoard/SBMedusaDecoratedDeviceApplicationSceneViewControlling-Protocol.h>
 #import <SpringBoard/SBMedusaDecoratedDeviceApplicationSceneViewControlling_Internal-Protocol.h>
 #import <SpringBoard/SBSceneViewStatusBarAssertionObserver-Protocol.h>
 #import <SpringBoard/SBSystemPointerInteractionDelegate-Protocol.h>
+#import <SpringBoard/SBTopAffordanceViewControllerDelegate-Protocol.h>
+#import <SpringBoard/SBUIActiveOrientationObserver-Protocol.h>
+#import <SpringBoard/UIGestureRecognizerDelegate-Protocol.h>
 
-@class BSCornerRadiusConfiguration, MTLumaDodgePillSettings, NSHashTable, NSMutableSet, NSString, SBApplicationBlurContentView, SBAsymmetricalCornerRadiusWrapperView, SBDeviceApplicationSceneHandle, SBDeviceApplicationSceneViewController, SBHomeGrabberView, SBInlineAppExposeContainerViewController, SBMedusaSettings, SBNubView, SBSceneViewStatusBarAssertion, UIDropInteraction, UIView;
-@protocol SBApplicationSceneBackgroundView, SBApplicationSceneViewControllingStatusBarDelegate, SBScenePlaceholderContentContext;
+@class MTLumaDodgePillSettings, NSHashTable, NSMutableSet, NSString, SBApplicationBlurContentView, SBDeviceApplicationSceneHandle, SBDeviceApplicationSceneViewController, SBHomeGrabberView, SBMainWorkspace, SBMedusaSettings, SBNubView, SBSetupManager, SBTopAffordanceViewController, UIApplicationSceneClientSettingsDiffInspector, UIDropInteraction, UITapGestureRecognizer, UIView;
+@protocol SBApplicationSceneBackgroundView, SBApplicationSceneViewControllingStatusBarDelegate, SBMedusaDecoratedDeviceApplicationSceneViewControllerDelegate, SBScenePlaceholderContentContext;
 
-@interface SBMedusaDecoratedDeviceApplicationSceneViewController : UIViewController <SBSceneViewStatusBarAssertionObserver, SBInlineAppExposeContainerViewControllerDelegate, SBSystemPointerInteractionDelegate, SBMedusaDecoratedDeviceApplicationSceneViewControlling_Internal, SBMedusaDecoratedDeviceApplicationSceneViewControlling>
+@interface SBMedusaDecoratedDeviceApplicationSceneViewController : UIViewController <SBDeviceApplicationSceneHandleObserver, SBDeviceApplicationSceneStatusBarStateObserver, SBDeviceApplicationSceneViewControllerDelegate, SBSceneViewStatusBarAssertionObserver, SBSystemPointerInteractionDelegate, SBTopAffordanceViewControllerDelegate, SBUIActiveOrientationObserver, UIGestureRecognizerDelegate, SBMedusaDecoratedDeviceApplicationSceneViewControlling_Internal, SBMedusaDecoratedDeviceApplicationSceneViewControlling>
 {
+    SBMainWorkspace *_workspace;
+    SBSetupManager *_setupManager;
     SBDeviceApplicationSceneHandle *_deviceApplicationSceneHandle;
     SBDeviceApplicationSceneViewController *_deviceApplicationSceneViewController;
-    UIView *_inlineAppExposeContainerView;
-    SBInlineAppExposeContainerViewController *_inlineContainerViewController;
+    UIApplicationSceneClientSettingsDiffInspector *_applicationSceneClientSettingsDiffInspector;
     _Bool _nubViewHidden;
     _Bool _nubViewHighlighted;
-    UIView *_rimShadowView;
     UIView *_containerView;
-    SBAsymmetricalCornerRadiusWrapperView *_asymmetricalCornerRadiusWrapperView;
     UIView *_blurViewContainerView;
     SBNubView *_nubView;
+    SBTopAffordanceViewController *_topAffordanceViewController;
+    UITapGestureRecognizer *_topAffordanceTapGestureRecognizer;
     UIView *_darkenView;
     _Bool _isBlurred;
     SBApplicationBlurContentView *_blurView;
+    long long _blurViewAnimationCount;
+    _Bool _sceneRendersAsynchronously;
+    NSString *_sceneMinificationFilter;
+    long long _disableAsyncRenderingCount;
     NSHashTable *_statusBarAssertions;
-    SBSceneViewStatusBarAssertion *_inlineAppExposeStatusBarAssertion;
     NSMutableSet *_matchMoveAnimationRequiringReasons;
     SBMedusaSettings *_medusaSettings;
-    _Bool _clipsToBounds;
-    double _shadowOpacity;
-    double _shadowOffset;
-    BSCornerRadiusConfiguration *_cornerRadiusConfiguration;
-    unsigned long long _maskedCorners;
+    _Bool _isInsetForHomeAffordance;
     double _darkenViewAlpha;
     UIDropInteraction *_dropInteraction;
+    long long _layoutRole;
+    long long _spaceConfiguration;
+    long long _floatingConfiguration;
+    id <SBMedusaDecoratedDeviceApplicationSceneViewControllerDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <SBMedusaDecoratedDeviceApplicationSceneViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) long long floatingConfiguration; // @synthesize floatingConfiguration=_floatingConfiguration;
+@property(readonly, nonatomic) long long spaceConfiguration; // @synthesize spaceConfiguration=_spaceConfiguration;
+@property(readonly, nonatomic) long long layoutRole; // @synthesize layoutRole=_layoutRole;
 @property(retain, nonatomic) UIDropInteraction *dropInteraction; // @synthesize dropInteraction=_dropInteraction;
 @property(nonatomic) double darkenViewAlpha; // @synthesize darkenViewAlpha=_darkenViewAlpha;
-@property(nonatomic) _Bool clipsToBounds; // @synthesize clipsToBounds=_clipsToBounds;
-@property(nonatomic) unsigned long long maskedCorners; // @synthesize maskedCorners=_maskedCorners;
-@property(retain, nonatomic) BSCornerRadiusConfiguration *cornerRadiusConfiguration; // @synthesize cornerRadiusConfiguration=_cornerRadiusConfiguration;
-@property(nonatomic) double shadowOffset; // @synthesize shadowOffset=_shadowOffset;
-@property(nonatomic) double shadowOpacity; // @synthesize shadowOpacity=_shadowOpacity;
-- (void)_setAbsoluteShadowRadius:(double)arg1;
-- (void)_setAbsoluteShadowOffset:(struct CGSize)arg1;
-- (void)_setAbsoluteDiffuseShadowOpacity:(double)arg1;
+@property(nonatomic, getter=isInsetForHomeAffordance) _Bool insetForHomeAffordance; // @synthesize insetForHomeAffordance=_isInsetForHomeAffordance;
+- (void)_updateAsyncRendering;
+- (_Bool)_shouldShowMultipleWindowsNotSupportedMessageForLayoutStateTransitionContext:(id)arg1;
+- (_Bool)_shouldShowSplitViewNotSupportedMessageForLayoutStateTransitionContext:(id)arg1;
+- (void)_presentTransientErrorMessageIfNeededForLayoutStateTransitionContext:(id)arg1;
+- (void)_updateTopAffordanceHighlight;
+- (void)_createOrDestroyTopAffordanceViewControllerAnimated:(_Bool)arg1;
+- (void)_setTopAffordanceAutoHides:(_Bool)arg1;
 - (void)_endRequiringSceneViewMatchMoveAnimationForReason:(id)arg1;
 - (void)_beginRequiringSceneViewMatchMoveAnimationForReason:(id)arg1;
 - (void)_removeSceneViewMatchMoveAnimation;
@@ -63,27 +76,48 @@
 - (void)_setBlurContentView:(id)arg1;
 - (id)_blurContentView;
 @property(readonly, nonatomic) UIView *_blurViewContainerView;
-- (void)_handleNubTapGestureRecognizerAction:(id)arg1;
-@property(nonatomic) _Bool shouldRasterizeSceneHostView;
-@property(copy, nonatomic) NSString *sceneHostViewMinificationFilter;
+- (void)applicationSceneViewControllerDidUpdateHomeAffordanceSupportedOrientations:(id)arg1;
+- (void)applicationSceneViewController:(id)arg1 statusBarTapped:(id)arg2 tapActionType:(long long)arg3;
+- (void)_medusaEnabledStateChanged:(id)arg1;
+- (void)_hardwareKeyboardAvailabilityChanged:(id)arg1;
+- (void)_guidedAccessActivationChanged:(id)arg1;
+- (void)_elasticValueViewControllerWillDismiss:(id)arg1;
+- (void)_elasticValueViewControllerWillPresent:(id)arg1;
+- (_Bool)gestureRecognizerShouldBegin:(id)arg1;
+- (void)_handleSplitHomeScreenSwitcherKeyShortcut;
+- (void)_sendStatusBarScrollToTopActionForGestureRecognizer:(id)arg1;
+- (long long)_topAffordanceButtonTypeForCurrentLayout;
+- (void)_handleTopAffordanceTapGestureRecognizerAction:(id)arg1;
+- (void)_updateTopAffordanceInset;
 @property(retain, nonatomic) MTLumaDodgePillSettings *homeGrabberPillSettings;
+@property(nonatomic) _Bool sceneRendersAsynchronously;
+@property(copy, nonatomic) NSString *sceneMinificationFilter;
 @property(nonatomic) long long homeGrabberDisplayMode;
-- (double)effectiveCornerRadius;
+- (id)topAffordanceView;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)willMoveToParentViewController:(id)arg1;
 - (void)loadView;
 - (void)viewWillLayoutSubviews;
+- (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarStyleTo:(long long)arg2 forPartWithIdentifier:(id)arg3;
+- (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarStyleTo:(long long)arg2;
+- (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
+- (void)activeInterfaceOrientationDidChangeToOrientation:(long long)arg1 willAnimateWithDuration:(double)arg2 fromOrientation:(long long)arg3;
+- (void)activeInterfaceOrientationWillChangeToOrientation:(long long)arg1;
 - (id)styleForRegion:(id)arg1 forView:(id)arg2;
 - (struct UIEdgeInsets)pointerInteractionHitTestInsetsForView:(id)arg1;
 - (_Bool)shouldBeginPointerInteractionAtLocation:(struct CGPoint)arg1 forView:(id)arg2;
+- (void)_modifyApplicationContext:(id)arg1 forTapOnTopAffordanceButtonType:(long long)arg2 spaceConfiguration:(long long)arg3 layoutRole:(long long)arg4 desiredFloatingConfiguration:(long long)arg5;
+- (void)_handleTopAffordanceButtonPressOfType:(long long)arg1 forTopAffordanceViewController:(id)arg2 desiredFloatingConfiguration:(long long)arg3 transitionSource:(long long)arg4;
+- (void)topAffordanceViewController:(id)arg1 didTapOnButtonWithTopAffordanceButtonType:(long long)arg2;
+- (void)updateTopAffordanceOverrideUserInterfaceStyle;
+- (void)sceneHandle:(id)arg1 didUpdateClientSettingsWithDiff:(id)arg2 transitionContext:(id)arg3;
+- (void)sceneHandle:(id)arg1 didCreateScene:(id)arg2;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidEndWithTransitionContext:(id)arg2;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionWillEndWithTransitionContext:(id)arg2;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidBeginWithTransitionContext:(id)arg2;
-- (void)inlineContainerViewController:(id)arg1 setStatusBarHidden:(_Bool)arg2;
-- (id)animationControllerForTransitionRequest:(id)arg1;
 @property(nonatomic, getter=isNubViewHighlighted) _Bool nubViewHighlighted;
 @property(nonatomic, getter=isNubViewHidden) _Bool nubViewHidden;
-- (void)_updateNubViewAlpha;
+- (void)_updateCurrentTopAffordanceAlpha;
 - (void)statusBarAssertionDidInvalidate:(id)arg1;
 - (void)statusBarAssertionDidUpdate:(id)arg1;
 - (id)statusBarAssertionWithStatusBarHidden:(_Bool)arg1 nubViewHidden:(long long)arg2 atLevel:(unsigned long long)arg3;
@@ -91,9 +125,15 @@
 - (_Bool)SB_conformsToSceneLayoutMedusaStatusBarAssertionProviding;
 - (_Bool)SB_conformsToSceneLayoutStatusBarAssertionProviding;
 - (_Bool)SB_conformsToMedusaDecoratedDeviceApplicationSceneViewControlling;
+@property(readonly, nonatomic) UIView *sceneContentView;
+- (void)conformsToProtocolSBDeviceApplicationSceneViewControlling;
+- (double)currentStatusBarHeight;
+- (long long)trailingStatusBarStyle;
+- (long long)leadingStatusBarStyle;
 @property(nonatomic) __weak id <SBApplicationSceneViewControllingStatusBarDelegate> applicationSceneStatusBarDelegate;
 @property(readonly, nonatomic) long long overrideStatusBarStyle;
 @property(readonly, nonatomic) double statusBarAlpha;
+- (long long)bestHomeAffordanceOrientationForOrientation:(long long)arg1;
 @property(readonly, nonatomic) SBHomeGrabberView *homeGrabberView;
 - (void)containerContentWrapperInterfaceOrientationChangedTo:(long long)arg1;
 - (void)setDisplayMode:(long long)arg1 animationFactory:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -109,13 +149,18 @@
 @property(readonly, nonatomic) long long displayMode;
 @property(readonly, nonatomic) SBDeviceApplicationSceneHandle *sceneHandle;
 - (id)initWithCoder:(id)arg1;
-@property(nonatomic) long long layoutRole;
-- (void)setInlineAppExposeContainerViewController:(id)arg1;
-- (void)blurApplicationContent:(_Bool)arg1 withAnimationFactory:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)didRotateFromInterfaceOrientation:(long long)arg1 toInterfaceOrientation:(long long)arg2;
+- (void)willRotateFromInterfaceOrientation:(long long)arg1 toInterfaceOrientation:(long long)arg2 alongsideContainerView:(id)arg3 animated:(_Bool)arg4;
+- (id)hitTestToTopAffordance:(struct CGPoint)arg1 window:(id)arg2;
+- (void)setLayoutRole:(long long)arg1 spaceConfiguration:(long long)arg2 floatingConfiguration:(long long)arg3;
+- (void)performSwitcherKeyboardShortcutAction:(long long)arg1;
+@property(nonatomic) double blurViewIconScale;
+- (void)setLiveContentBlurEnabled:(_Bool)arg1 duration:(double)arg2 blurDelay:(double)arg3 iconViewScale:(double)arg4 began:(CDUnknownBlockType)arg5 completion:(CDUnknownBlockType)arg6;
 @property(readonly, nonatomic, getter=isBlurred) _Bool blurred;
 - (void)invalidate;
 - (void)dealloc;
-- (id)initWithDeviceApplicationSceneHandle:(id)arg1 inlineContainerViewController:(id)arg2 layoutRole:(long long)arg3;
+- (id)initWithDeviceApplicationSceneHandle:(id)arg1 layoutRole:(long long)arg2 workspace:(id)arg3 setupManager:(id)arg4;
+- (id)initWithDeviceApplicationSceneHandle:(id)arg1 layoutRole:(long long)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

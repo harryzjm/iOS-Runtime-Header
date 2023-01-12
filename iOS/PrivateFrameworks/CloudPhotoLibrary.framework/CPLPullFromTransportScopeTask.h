@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CPLEngineTransport, CPLFeatureVersionHistory, CPLScopeChange, NSData, NSObject;
+@class CPLEngineCloudCache, CPLEngineTransientRepository, CPLEngineTransport, CPLFeatureVersionHistory, CPLScopeChange, NSData, NSObject;
 @protocol CPLEngineTransportDownloadBatchTask, CPLEngineTransportGetCurrentSyncAnchorTask, CPLEngineTransportGroup, CPLEngineTransportQueryTask, OS_dispatch_queue;
 
 @interface CPLPullFromTransportScopeTask
 {
     NSObject<OS_dispatch_queue> *_queue;
+    CPLEngineCloudCache *_cloudCache;
+    CPLEngineTransientRepository *_transientPullRepository;
     CPLEngineTransport *_transport;
     id <CPLEngineTransportDownloadBatchTask> _downloadTask;
     id <CPLEngineTransportQueryTask> _queryTask;
@@ -56,6 +58,8 @@
 - (unsigned long long)_totalAssetCountForScope;
 - (void)_extractAndMingleAssetsIfPossibleFromBatch:(id)arg1 inTransaction:(id)arg2;
 - (void)_extractAndMinglePersonsIfPossibleFromBatch:(id)arg1 inTransaction:(id)arg2;
+- (id)_cloudCacheInStore:(id)arg1;
+- (id)_transientPullRepositoryInStore:(id)arg1;
 - (void)_cancelAllTasks;
 - (void)_notifySchedulerPullQueueIsFullNowIfNecessary;
 - (void)_notifySchedulerPullQueueIsFull;

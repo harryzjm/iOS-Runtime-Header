@@ -5,14 +5,16 @@
 //
 
 #import <CoverSheet/CSModalHomeGestureParticipating-Protocol.h>
+#import <CoverSheet/SBFBarSwipeBehaviorDelegate-Protocol.h>
 #import <CoverSheet/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSString, UIScreenEdgePanGestureRecognizer;
+@class NSString, SBFBarSwipeBehavior, UIScreenEdgePanGestureRecognizer;
 @protocol CSDismissableModalViewControllerDelegate, CSModalHomeAffordanceControlling;
 
-@interface CSDismissableModalViewController <CSModalHomeGestureParticipating, UIGestureRecognizerDelegate>
+@interface CSDismissableModalViewController <CSModalHomeGestureParticipating, UIGestureRecognizerDelegate, SBFBarSwipeBehaviorDelegate>
 {
     UIScreenEdgePanGestureRecognizer *_bottomEdgeRecognizer;
+    SBFBarSwipeBehavior *_barSwipeBehavior;
     id <CSDismissableModalViewControllerDelegate> _delegate;
     id <CSModalHomeAffordanceControlling> _homeAffordanceController;
 }
@@ -22,8 +24,12 @@
 @property(nonatomic) __weak id <CSDismissableModalViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (_Bool)wouldHandleButtonEvent:(id)arg1;
 - (_Bool)handleEvent:(id)arg1;
+- (void)barSwipeBehaviorActionPerformed:(id)arg1;
+- (double)additionalEdgeSpacingForGrabberView:(id)arg1;
 - (void)addGrabberView:(id)arg1;
 - (void)homeGestureParticipantOwningHomeGestureDidChange:(_Bool)arg1;
+- (_Bool)gestureRecognizerShouldBegin:(id)arg1;
+- (void)_configureBarSwipeBehaviorWithGrabberViewIfNecessary:(id)arg1;
 - (void)_handleBottomEdgeGestureEnded:(id)arg1;
 - (void)_handleBottomEdgeGestureChanged:(id)arg1;
 - (void)_handleBottomEdgeGestureBegan:(id)arg1;

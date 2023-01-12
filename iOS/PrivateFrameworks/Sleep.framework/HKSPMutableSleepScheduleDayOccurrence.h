@@ -6,7 +6,8 @@
 
 #import <Sleep/HKSPMutableObject-Protocol.h>
 
-@class HKSPAlarmConfiguration, HKSPChangeSet, NSDate, NSDateComponents, NSSet, NSString;
+@class HKSPAlarmConfiguration, HKSPChangeSet, NSDate, NSDateComponents, NSDictionary, NSSet, NSString;
+@protocol HKSPObject;
 
 @interface HKSPMutableSleepScheduleDayOccurrence <HKSPMutableObject>
 {
@@ -19,6 +20,7 @@
 - (_Bool)hasChangeAffectingScheduling;
 - (void)freeze;
 - (id)generateSleepScheduleOccurrenceWithWeekdays:(unsigned long long)arg1;
+@property(readonly, nonatomic) id <HKSPObject> originalObject;
 - (id)mutableCopy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -27,14 +29,13 @@
 @property(retain, nonatomic) HKSPAlarmConfiguration *alarmConfiguration;
 @property(copy, nonatomic) NSDateComponents *wakeUpComponents;
 @property(copy, nonatomic) NSDateComponents *bedtimeComponents;
-- (void)testTurnOffAlarm;
-- (void)testTurnOnAlarm;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(copy, nonatomic) NSDate *lastModifiedDate;
+@property(readonly, nonatomic) NSDictionary *relationshipChanges;
 @property(readonly, nonatomic) NSSet *significantChanges;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) unsigned long long version;

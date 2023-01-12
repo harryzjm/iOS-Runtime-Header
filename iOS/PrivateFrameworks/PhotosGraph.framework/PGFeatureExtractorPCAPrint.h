@@ -9,7 +9,7 @@
 }
 
 - (_Bool)_generateError:(id *)arg1 code:(long long)arg2 message:(id)arg3 underlyingError:(id)arg4;
-- (id)floatVectorWithEntity:(id)arg1 error:(id *)arg2;
+- (id)floatMatrixWithEntities:(id)arg1 progressReporter:(id)arg2 error:(id *)arg3;
 - (id)_floatArrayFromSceneprint:(id)arg1;
 - (id)featureNames;
 - (long long)featureLength;

@@ -9,9 +9,16 @@
 @class SBFluidSwitcherItemContainer;
 
 @protocol SBFluidSwitcherItemContainerDelegate <NSObject>
+- (void)containerSelectionStateChanged:(SBFluidSwitcherItemContainer *)arg1 toState:(long long)arg2;
+- (double)currentStatusBarHeightOfContainer:(SBFluidSwitcherItemContainer *)arg1;
+- (void)containerDidEndAnimatingHighlight:(SBFluidSwitcherItemContainer *)arg1 scale:(double)arg2;
+- (void)containerWillBeginAnimatingHighlight:(SBFluidSwitcherItemContainer *)arg1 scale:(double)arg2 isTracking:(_Bool)arg3;
+- (void)container:(SBFluidSwitcherItemContainer *)arg1 didBecomeFocused:(_Bool)arg2;
 - (long long)homeScreenInterfaceOrientation;
 - (long long)switcherInterfaceOrientation;
-- (void)scrollViewKillingProgressUpdated:(double)arg1 ofContainer:(SBFluidSwitcherItemContainer *)arg2;
+- (void)scrollViewKillingProgressUpdated:(double)arg1 translation:(struct CGPoint)arg2 isDragging:(_Bool)arg3 decelerationTargetProgress:(double)arg4 forContainer:(SBFluidSwitcherItemContainer *)arg5;
+- (void)containerDidEndSwipingToKill:(SBFluidSwitcherItemContainer *)arg1;
+- (void)containerWillBeginSwipingToKill:(SBFluidSwitcherItemContainer *)arg1;
 - (struct CGRect)frameForPageViewOfContainer:(SBFluidSwitcherItemContainer *)arg1 fullyPresented:(_Bool)arg2;
 - (void)didSelectContainer:(SBFluidSwitcherItemContainer *)arg1;
 - (_Bool)canSelectContainer:(SBFluidSwitcherItemContainer *)arg1 numberOfTaps:(long long)arg2;

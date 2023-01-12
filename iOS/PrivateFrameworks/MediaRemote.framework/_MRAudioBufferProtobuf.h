@@ -10,6 +10,7 @@
 
 @class NSData, NSMutableArray, _MRAudioFormatSettingsProtobuf;
 
+__attribute__((visibility("hidden")))
 @interface _MRAudioBufferProtobuf : PBCodable <NSCopying>
 {
     long long _maximumPacketSize;
@@ -25,32 +26,14 @@
     } _has;
 }
 
-+ (Class)packetDescriptionsType;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableArray *packetDescriptions; // @synthesize packetDescriptions=_packetDescriptions;
-@property(retain, nonatomic) NSData *contents; // @synthesize contents=_contents;
-@property(nonatomic) long long packetCount; // @synthesize packetCount=_packetCount;
-@property(nonatomic) long long maximumPacketSize; // @synthesize maximumPacketSize=_maximumPacketSize;
-@property(nonatomic) long long packetCapacity; // @synthesize packetCapacity=_packetCapacity;
-@property(retain, nonatomic) _MRAudioFormatSettingsProtobuf *formatSettings; // @synthesize formatSettings=_formatSettings;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (id)packetDescriptionsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)packetDescriptionsCount;
-- (void)addPacketDescriptions:(id)arg1;
-- (void)clearPacketDescriptions;
-@property(readonly, nonatomic) _Bool hasContents;
-@property(nonatomic) _Bool hasPacketCount;
-@property(nonatomic) _Bool hasMaximumPacketSize;
-@property(nonatomic) _Bool hasPacketCapacity;
-@property(readonly, nonatomic) _Bool hasFormatSettings;
 
 @end
 

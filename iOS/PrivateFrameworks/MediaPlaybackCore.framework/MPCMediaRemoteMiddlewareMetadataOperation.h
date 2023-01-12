@@ -12,6 +12,7 @@
 @class MPCFuture, MPCMediaRemoteMiddleware, MPRequest, MPSectionedCollection, NSArray, NSError, NSIndexPath, NSMapTable, NSString;
 @protocol MPCMediaRemoteMiddlewareMetadataOperationConfiguration;
 
+__attribute__((visibility("hidden")))
 @interface MPCMediaRemoteMiddlewareMetadataOperation : MPAsyncOperation <MPCMediaRemoteMiddlewareModelObjectsProviding, MPMiddlewareAutomaticDependencyOperation>
 {
     CDUnknownBlockType _invalidationHandler;

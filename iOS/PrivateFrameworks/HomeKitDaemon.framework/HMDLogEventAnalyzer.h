@@ -6,26 +6,18 @@
 
 #import <HMFoundation/HMFObject.h>
 
-#import <HomeKitDaemon/HMDLogEventObserver-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
+#import <HomeKitDaemon/HMMLogEventObserver-Protocol.h>
 
-@class NSArray, NSString;
-@protocol HMDLogEventAnalyzerContext;
+@class NSString;
 
-@interface HMDLogEventAnalyzer : HMFObject <HMFLogging, HMDLogEventObserver>
+@interface HMDLogEventAnalyzer : HMFObject <HMFLogging, HMMLogEventObserver>
 {
-    id <HMDLogEventAnalyzerContext> _context;
-    NSArray *_supportedEventTypes;
 }
 
 + (id)logCategory;
-- (void).cxx_destruct;
-@property(readonly) NSArray *supportedEventTypes; // @synthesize supportedEventTypes=_supportedEventTypes;
-@property(readonly) id <HMDLogEventAnalyzerContext> context; // @synthesize context=_context;
-- (void)didReceiveEventFromDispatcher:(id)arg1 withLogContext:(id)arg2;
-- (void)processLogEvent:(id)arg1;
-- (id)initWithSupportedEventTypes:(id)arg1 context:(id)arg2;
-- (_Bool)isSupportedEvent:(id)arg1;
++ (id)managedEventCounterRequestGroups;
+- (void)didReceiveEventFromDispatcher:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

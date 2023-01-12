@@ -33,12 +33,15 @@
     NSLayoutConstraint *_trailingConstraint;
     TUIEmojiSearchAnalyticsSession *_analyticsSession;
     _UIKeyboardFeedbackGenerator *_feedbackGenerator;
+    _Bool _usesFloatingStyle;
     id <TUIEmojiSearchInputViewControllerDelegate> _delegate;
     TUIEmojiSearchView *_emojiSearchView;
     UIViewController<UIPredictiveViewController> *_childPredictionViewController;
 }
 
++ (_Bool)_preventsAppearanceProxyCustomization;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool usesFloatingStyle; // @synthesize usesFloatingStyle=_usesFloatingStyle;
 @property(retain, nonatomic) UIViewController<UIPredictiveViewController> *childPredictionViewController; // @synthesize childPredictionViewController=_childPredictionViewController;
 @property(readonly, nonatomic) TUIEmojiSearchView *emojiSearchView; // @synthesize emojiSearchView=_emojiSearchView;
 @property(nonatomic) __weak id <TUIEmojiSearchInputViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -51,7 +54,7 @@
 - (void)emojiSearchTextFieldWillBecomeActive:(id)arg1;
 - (void)emojiSearchResultsController:(id)arg1 didRequestVariantSelectorForEmojiToken:(id)arg2 fromRect:(struct CGRect)arg3;
 - (void)emojiSearchResultsController:(id)arg1 didSelectEmoji:(id)arg2;
-- (void)_selectedEmojiString:(id)arg1;
+- (void)_selectedEmojiString:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)emojiSearchSource:(id)arg1 didProduceResults:(id)arg2 forExactQuery:(id)arg3 autocorrectedQuery:(id)arg4;
 - (void)emojiSearchTextFieldWillClear:(id)arg1;
 - (void)emojiSearchTextField:(id)arg1 didChangeSearchString:(id)arg2;
@@ -61,6 +64,8 @@
 @property(readonly, nonatomic) NSArray *displayedCandidates;
 - (void)autocorrectionListDidBecomeAvailable:(id)arg1;
 - (void)_displayResults:(id)arg1 forExactQuery:(id)arg2 autocorrectedQuery:(id)arg3;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)_keyboardInputModeDidChange:(id)arg1;

@@ -6,16 +6,15 @@
 
 #import <SleepDaemon/HKSPStateMachineEventHandler-Protocol.h>
 
+@class HDSPSleepScheduleModelChangeEvaluation;
+
 @protocol HDSPSleepScheduleStateCoordinatorStateMachineEventHandler <HKSPStateMachineEventHandler>
-- (void)scheduleModelChanged;
+- (void)scheduleModelChanged:(HDSPSleepScheduleModelChangeEvaluation *)arg1;
 - (void)timeZoneChange;
 - (void)significantTimeChange;
 - (void)wakeUpConfirmed;
 - (void)wakeTimeReached;
-- (void)bedtimeSkipped;
-- (void)bedtimeDelayed;
 - (void)bedtimeReached;
-- (void)windDownSkipped;
 - (void)windDownReached;
 @end
 

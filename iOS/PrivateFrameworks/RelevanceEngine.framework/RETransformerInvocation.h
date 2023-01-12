@@ -8,7 +8,7 @@
 
 @interface RETransformerInvocation : NSObject
 {
-    struct vector<unsigned long, std::__1::allocator<unsigned long>> _values;
+    struct vector<unsigned long, std::allocator<unsigned long>> _values;
 }
 
 + (id)invocationWithArguments:(unsigned long long *)arg1 count:(unsigned long long)arg2;

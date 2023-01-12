@@ -6,49 +6,45 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSString, UIColor, UIImage;
+@class AVTMaterial, AVTVaryingColor, NSDictionary, NSString, UIImage;
 
 @interface AVTColorPreset : NSObject
 {
     NSString *_name;
     long long _category;
+    NSDictionary *_propertyColors;
     NSDictionary *_derivedColors;
-    NSArray *_colors;
-    UIColor *_previewColorMin;
-    UIColor *_previewColorMid;
-    UIColor *_previewColorMax;
-    UIColor *_previewAccentColorMin;
-    UIColor *_previewAccentColorMid;
-    UIColor *_previewAccentColorMax;
+    AVTVaryingColor *_previewColor;
+    AVTVaryingColor *_previewAccentColor;
     unsigned long long _previewAccentType;
     float _variation;
-    NSArray *_materials;
+    AVTMaterial *_material;
 }
 
++ (id)fallbackColorPresetForNilPresetAndCategory:(long long)arg1 colorIndex:(unsigned long long)arg2;
++ (id)secondaryColorPresetsForCategory:(long long)arg1;
++ (id)colorPresetsForCategory:(long long)arg1;
++ (id)colorPresetsForCategory:(long long)arg1 colorIndex:(unsigned long long)arg2;
++ (id)_colorPresetsForCategory:(long long)arg1 palette:(id)arg2;
 + (id)colorPresetWithName:(id)arg1 category:(long long)arg2;
 + (id)secondaryColorPresetWithName:(id)arg1 category:(long long)arg2 variation:(float)arg3;
 + (id)colorPresetWithName:(id)arg1 category:(long long)arg2 colorIndex:(unsigned long long)arg3 variation:(float)arg4;
 + (id)colorPresetWithName:(id)arg1 category:(long long)arg2 variation:(float)arg3;
 - (void).cxx_destruct;
 @property(readonly) NSString *name; // @synthesize name=_name;
-- (id)description;
 - (id)gradientLayerForNaturalColorWithSkinColor:(id)arg1;
 - (void)renderNaturalSkinColorIntoCALayer:(id)arg1 withSkinColor:(id)arg2;
 - (id)gradientLayerWithRangeMin:(float)arg1 max:(float)arg2 withSkinColor:(id)arg3;
 - (id)gradientLayerWithRangeMin:(float)arg1 max:(float)arg2;
 - (void)renderColorIntoCALayer:(id)arg1 withSkinColor:(id)arg2;
 - (void)renderColorIntoCALayer:(id)arg1;
+- (id)description;
 @property(readonly) float variation;
 - (id)colorPresetWithVariation:(float)arg1;
-- (void)didMutate;
 @property(readonly) long long category;
-- (id)derivedCategoriesNames;
 - (id)derivedColorNameForPresetCategory:(long long)arg1;
-- (void)setDerivedColors:(id)arg1;
-- (id)derivedColor;
-- (id)materialAtIndex:(unsigned long long)arg1;
-- (unsigned long long)materialCount;
-- (void)updateMaterialsIfNeeded;
+- (void)enumerateDerivedColorPresetsUsingBlock:(CDUnknownBlockType)arg1;
+- (id)makeMaterial;
 - (id)previewAccentColor;
 - (id)previewColor;
 - (id)baseColor;

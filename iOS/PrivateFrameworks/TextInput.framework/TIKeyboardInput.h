@@ -8,7 +8,7 @@
 
 #import <TextInput/NSSecureCoding-Protocol.h>
 
-@class NSString, TIKeyboardCandidate, TIKeyboardTouchEvent;
+@class NSString, TIHandwritingStrokes, TIKeyboardCandidate, TIKeyboardTouchEvent;
 @protocol NSCopying><NSObject><NSSecureCoding;
 
 @interface TIKeyboardInput : NSObject <NSSecureCoding>
@@ -26,14 +26,16 @@
             unsigned int doubleSpace:1;
             unsigned int rapidDelete:1;
             unsigned int shiftDown:1;
+            unsigned int expandSegment:1;
+            unsigned int shrinkSegment:1;
         } fields;
     } _flags;
     _Bool _backspace;
-    NSString *_string;
-    id <NSCopying><NSObject><NSSecureCoding> _object;
-    TIKeyboardTouchEvent *_touchEvent;
     TIKeyboardCandidate *_acceptedCandidate;
     NSString *_inputManagerHint;
+    TIHandwritingStrokes *_handwritingStrokes;
+    NSString *_string;
+    TIKeyboardTouchEvent *_touchEvent;
     long long _transliterationType;
     double _timestamp;
 }
@@ -42,25 +44,28 @@
 - (void).cxx_destruct;
 @property(nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 @property(nonatomic) long long transliterationType; // @synthesize transliterationType=_transliterationType;
-@property(copy, nonatomic) NSString *inputManagerHint; // @synthesize inputManagerHint=_inputManagerHint;
-@property(retain, nonatomic) TIKeyboardCandidate *acceptedCandidate; // @synthesize acceptedCandidate=_acceptedCandidate;
 @property(retain, nonatomic) TIKeyboardTouchEvent *touchEvent; // @synthesize touchEvent=_touchEvent;
-@property(nonatomic, getter=isBackspace) _Bool backspace; // @synthesize backspace=_backspace;
-@property(copy, nonatomic) id <NSCopying><NSObject><NSSecureCoding> object; // @synthesize object=_object;
 @property(copy, nonatomic) NSString *string; // @synthesize string=_string;
+@property(copy, nonatomic) TIHandwritingStrokes *handwritingStrokes; // @synthesize handwritingStrokes=_handwritingStrokes;
+@property(copy, nonatomic) NSString *inputManagerHint; // @synthesize inputManagerHint=_inputManagerHint;
+@property(nonatomic, getter=isBackspace) _Bool backspace; // @synthesize backspace=_backspace;
+@property(retain, nonatomic) TIKeyboardCandidate *acceptedCandidate; // @synthesize acceptedCandidate=_acceptedCandidate;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+@property(copy, nonatomic) id <NSCopying><NSObject><NSSecureCoding> object;
+@property(nonatomic, getter=isUppercase) _Bool uppercase;
+@property(nonatomic, getter=isSynthesizedByAcceptingCandidate) _Bool synthesizedByAcceptingCandidate;
+@property(nonatomic, getter=isShrinkSegment) _Bool shrinkSegment;
 @property(nonatomic, getter=isShiftDown) _Bool shiftDown;
 @property(nonatomic, getter=isRapidDelete) _Bool rapidDelete;
-@property(nonatomic, getter=isDoubleSpace) _Bool doubleSpace;
-@property(nonatomic, getter=isSynthesizedByAcceptingCandidate) _Bool synthesizedByAcceptingCandidate;
+@property(nonatomic, getter=isPopupVariant) _Bool popupVariant;
+@property(nonatomic, getter=isMultitap) _Bool multitap;
 @property(nonatomic, getter=isGesture) _Bool gesture;
 @property(nonatomic, getter=isFlick) _Bool flick;
-@property(nonatomic, getter=isMultitap) _Bool multitap;
-@property(nonatomic, getter=isPopupVariant) _Bool popupVariant;
+@property(nonatomic, getter=isExpandSegment) _Bool expandSegment;
+@property(nonatomic, getter=isDoubleSpace) _Bool doubleSpace;
 @property(nonatomic, getter=isAutoshifted) _Bool autoshifted;
-@property(nonatomic, getter=isUppercase) _Bool uppercase;
 
 @end
 

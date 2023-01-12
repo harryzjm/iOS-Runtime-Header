@@ -6,52 +6,51 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, PHImageRequestBehaviorSpec, PHResourceChooserList;
+@class NSString, PHImageRequestBehaviorSpec, PHResourceChooserList, PHResourceChooserListResourceInfo;
 @protocol PHResourceChooserAsset;
 
 @interface PHImageResourceChooser : NSObject
 {
-    double _requiredScale;
+    id <PHResourceChooserAsset> _asset;
     PHResourceChooserList *_list;
-    _Bool _needsReset;
+    CDUnknownBlockType _resourceHandler;
+    double _requiredScale;
+    PHResourceChooserListResourceInfo *_fallbackInfo;
+    PHImageRequestBehaviorSpec *_behaviorSpec;
     _Bool _didCheckForLocalVideoKeyFrame;
     _Bool _hasLocalVideoKeyFrameInNonHintResources;
-    _Bool _isCloudSharedMode;
-    _Bool _onlyUseFetchedAssetPropertiesDuringChoosing;
+    _Bool _needsReset;
     _Bool _allowHints;
-    id <PHResourceChooserAsset> _asset;
-    PHImageRequestBehaviorSpec *_behaviorSpec;
-    long long _policy;
-    unsigned long long _loadingOptions;
-    long long _requestVersion;
-    double _minimumTableThumbnailLongSide;
+    _Bool _isCloudSharedMode;
+    double _fallbackRequestedScaleIfPreferredResourceNotLocallyAvailable;
     id _context;
     NSString *_loggingPrefix;
-    CDUnknownBlockType _resourceHandler;
     struct CGSize _desiredSize;
 }
 
 + (void)initialize;
++ (unsigned long long)_chooserSourceOptionsFromBehaviorSpec:(id)arg1 allowHints:(_Bool)arg2;
++ (id)_bagFromInfo:(id)arg1 asset:(id)arg2 behaviorSpec:(id)arg3 requiredScale:(double)arg4 bagVendor:(id)arg5;
++ (id)_resourceVersionsFromImageRequestVersion:(long long)arg1 assetHasAdjustments:(_Bool)arg2;
 - (void).cxx_destruct;
-@property(copy, nonatomic) CDUnknownBlockType resourceHandler; // @synthesize resourceHandler=_resourceHandler;
 @property(retain, nonatomic) NSString *loggingPrefix; // @synthesize loggingPrefix=_loggingPrefix;
 @property(nonatomic) __weak id context; // @synthesize context=_context;
-@property(nonatomic) _Bool allowHints; // @synthesize allowHints=_allowHints;
-@property(readonly, nonatomic) _Bool onlyUseFetchedAssetPropertiesDuringChoosing; // @synthesize onlyUseFetchedAssetPropertiesDuringChoosing=_onlyUseFetchedAssetPropertiesDuringChoosing;
-@property(readonly, nonatomic) double minimumTableThumbnailLongSide; // @synthesize minimumTableThumbnailLongSide=_minimumTableThumbnailLongSide;
-@property(readonly, nonatomic) long long requestVersion; // @synthesize requestVersion=_requestVersion;
-@property(readonly, nonatomic) unsigned long long loadingOptions; // @synthesize loadingOptions=_loadingOptions;
-@property(readonly, nonatomic) long long policy; // @synthesize policy=_policy;
+@property(copy, nonatomic) CDUnknownBlockType resourceHandler; // @synthesize resourceHandler=_resourceHandler;
 @property(retain, nonatomic) PHImageRequestBehaviorSpec *behaviorSpec; // @synthesize behaviorSpec=_behaviorSpec;
 @property(nonatomic) _Bool isCloudSharedMode; // @synthesize isCloudSharedMode=_isCloudSharedMode;
+@property(nonatomic) _Bool allowHints; // @synthesize allowHints=_allowHints;
+@property(nonatomic) double fallbackRequestedScaleIfPreferredResourceNotLocallyAvailable; // @synthesize fallbackRequestedScaleIfPreferredResourceNotLocallyAvailable=_fallbackRequestedScaleIfPreferredResourceNotLocallyAvailable;
 @property(nonatomic) struct CGSize desiredSize; // @synthesize desiredSize=_desiredSize;
-@property(readonly, nonatomic) id <PHResourceChooserAsset> asset; // @synthesize asset=_asset;
 - (void)presentNextQualifyingResource;
 - (void)moveFirst;
-- (void)_executeEndOfListHandlerWithResourceChooserList:(id)arg1 continueInReverse:(_Bool *)arg2;
-- (_Bool)_executeItemHandlerWithAllowedResourceVersions:(id)arg1 approximateSize:(struct CGSize)arg2 resourceScale:(float)arg3 isPrimaryFormat:(_Bool)arg4 isDefaultOrientation:(_Bool)arg5 resourceType:(unsigned int)arg6 version:(unsigned int)arg7 isDerivative:(_Bool)arg8 store:(id)arg9 key:(id)arg10 localAvailabilityTarget:(short)arg11 identity:(id)arg12 canDownload:(_Bool)arg13 isReverse:(_Bool)arg14 preventAutoAdvance:(_Bool *)arg15;
-- (id)initWithAsset:(id)arg1;
-- (id)init;
+- (void)reset;
+- (id)initWithAsset:(id)arg1 resourceHandler:(CDUnknownBlockType)arg2;
+- (id)initWithChooserList:(id)arg1 asset:(id)arg2 resourceHandler:(CDUnknownBlockType)arg3;
+- (_Bool)_resourceInfoPassesTestForImageDerivativeOfVideo:(id)arg1;
+- (void)_reset;
+- (id)_requestInfo;
+- (Class)_policyHandlerClassForCurrentPolicy;
+- (void)_updateCachedGeometry;
 
 @end
 

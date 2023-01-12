@@ -11,7 +11,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)isAccessibilityElement;
+- (id)accessibilityValue;
 - (id)accessibilityLabel;
+- (unsigned long long)accessibilityTraits;
 
 @end
 

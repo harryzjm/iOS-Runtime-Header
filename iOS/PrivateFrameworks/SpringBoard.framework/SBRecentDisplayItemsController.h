@@ -27,6 +27,7 @@
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <SBRecentDisplayItemsControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)_applicationsBecameHidden:(id)arg1;
 - (id)_addStateCaptureHandler;
 - (id)_webClipForIdentifier:(id)arg1;
 - (id)_associatedWebClipIdentifierForAppClipIdentifier:(id)arg1 sceneIdentifier:(id)arg2;

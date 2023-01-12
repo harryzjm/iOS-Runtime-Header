@@ -12,20 +12,21 @@
 
 @interface TSCH3DResourceCache : NSObject <TSCH3DProtectResourceDelegate>
 {
-    TSCH3DDictionaryOfSet *mResourceKeyedEntries;
-    NSMutableDictionary *mHandles;
-    NSCountedSet *mProtectedResources;
-    NSMutableDictionary *mMemoryUsage;
-    unsigned long long mMemoryUsedInBytes;
-    unsigned long long mMemoryLimitInBytes;
-    NSCountedSet *mUsageCounts;
-    unsigned long long mPeakMemoryUsedInBytes;
-    _Bool mNeedToLogPeakMemory;
-    _Bool mAnalyticsTestingEnabled;
+    TSCH3DDictionaryOfSet *_resourceKeyedEntries;
+    NSMutableDictionary *_handles;
+    NSCountedSet *_protectedResources;
+    NSMutableDictionary *_memoryUsage;
+    unsigned long long _memoryUsedInBytes;
+    unsigned long long _memoryLimitInBytes;
+    NSCountedSet *_usageCounts;
+    unsigned long long _peakMemoryUsedInBytes;
+    _Bool _needToLogPeakMemory;
+    _Bool _analyticsTestingEnabled;
 }
 
-@property(nonatomic) unsigned long long memoryLimitInBytes; // @synthesize memoryLimitInBytes=mMemoryLimitInBytes;
-@property(readonly, nonatomic) unsigned long long memoryUsedInBytes; // @synthesize memoryUsedInBytes=mMemoryUsedInBytes;
+- (void).cxx_destruct;
+@property(nonatomic) unsigned long long memoryLimitInBytes; // @synthesize memoryLimitInBytes=_memoryLimitInBytes;
+@property(readonly, nonatomic) unsigned long long memoryUsedInBytes; // @synthesize memoryUsedInBytes=_memoryUsedInBytes;
 - (id)debug_string;
 - (id)debug_details;
 - (id)debug_usageCounts;

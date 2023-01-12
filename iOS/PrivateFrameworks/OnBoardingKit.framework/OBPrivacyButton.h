@@ -9,7 +9,11 @@
 __attribute__((visibility("hidden")))
 @interface OBPrivacyButton : UIButton
 {
+    _Bool _underlineLinks;
 }
+
+@property(nonatomic) _Bool underlineLinks; // @synthesize underlineLinks=_underlineLinks;
+- (void)tintColorDidChange;
 
 @end
 

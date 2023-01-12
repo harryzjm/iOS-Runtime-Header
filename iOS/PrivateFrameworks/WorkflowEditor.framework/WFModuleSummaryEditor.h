@@ -8,8 +8,8 @@
 
 #import <WorkflowEditor/WFVariableConfigurationResponderDelegate-Protocol.h>
 
-@class NSString, UIView, WFMultipleValueParameterState, WFParameter, WFTextTokenChooser, WFVariableAttachment, WFVariableConfigurationResponder;
-@protocol WFModuleSummaryEditorDelegate, WFModuleSummarySupporting, WFParameterState, WFSlotTemplateTextEntry, WFVariableProvider, WFVariableUIDelegate;
+@class NSString, UIView, WFMultipleValueParameterState, WFParameter, WFTextTokenChooser, WFVariable, WFVariableConfigurationResponder;
+@protocol WFEditorAuxiliaryViewPresenter, WFModuleSummaryEditorDelegate, WFModuleSummarySupporting, WFParameterState, WFSlotTemplateTextEntry, WFVariableProvider, WFVariableUIDelegate;
 
 @interface WFModuleSummaryEditor : NSObject <WFVariableConfigurationResponderDelegate>
 {
@@ -19,30 +19,34 @@
     WFParameter<WFModuleSummarySupporting> *_parameter;
     id <WFParameterState> _initialState;
     WFMultipleValueParameterState *_initialArrayState;
+    id <WFParameterState> _currentState;
     unsigned long long _arrayIndex;
     id <WFModuleSummaryEditorDelegate> _delegate;
     id <WFVariableProvider> _variableProvider;
     id <WFVariableUIDelegate> _variableUIDelegate;
+    id <WFEditorAuxiliaryViewPresenter> _auxiliaryViewPresenter;
     UIView<WFSlotTemplateTextEntry> *_textEntry;
-    WFTextTokenChooser *_variableChooser;
-    WFVariableAttachment *_editingVariableAttachment;
     WFVariableConfigurationResponder *_variableResponder;
+    WFTextTokenChooser *_variableChooser;
+    WFVariable *_lastValueForEditingVariable;
 }
 
 + (unsigned long long)variableResultTypeForParameter:(id)arg1;
 + (_Bool)supportsEditingTextAttachment:(id)arg1 inSlotWithIdentifier:(id)arg2;
 - (void).cxx_destruct;
+@property(retain, nonatomic) WFVariable *lastValueForEditingVariable; // @synthesize lastValueForEditingVariable=_lastValueForEditingVariable;
+@property(retain, nonatomic) WFTextTokenChooser *variableChooser; // @synthesize variableChooser=_variableChooser;
 @property(nonatomic) _Bool returnToKeyboardOnComplete; // @synthesize returnToKeyboardOnComplete=_returnToKeyboardOnComplete;
 @property(nonatomic) _Bool variableResponderSuspended; // @synthesize variableResponderSuspended=_variableResponderSuspended;
 @property(retain, nonatomic) WFVariableConfigurationResponder *variableResponder; // @synthesize variableResponder=_variableResponder;
-@property(retain, nonatomic) WFVariableAttachment *editingVariableAttachment; // @synthesize editingVariableAttachment=_editingVariableAttachment;
-@property(retain, nonatomic) WFTextTokenChooser *variableChooser; // @synthesize variableChooser=_variableChooser;
 @property(readonly, nonatomic) __weak UIView<WFSlotTemplateTextEntry> *textEntry; // @synthesize textEntry=_textEntry;
+@property(nonatomic) __weak id <WFEditorAuxiliaryViewPresenter> auxiliaryViewPresenter; // @synthesize auxiliaryViewPresenter=_auxiliaryViewPresenter;
 @property(nonatomic) __weak id <WFVariableUIDelegate> variableUIDelegate; // @synthesize variableUIDelegate=_variableUIDelegate;
 @property(nonatomic) __weak id <WFVariableProvider> variableProvider; // @synthesize variableProvider=_variableProvider;
-@property(nonatomic) __weak id <WFModuleSummaryEditorDelegate> delegate; // @synthesize delegate=_delegate;
+@property(retain, nonatomic) id <WFModuleSummaryEditorDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic, getter=isProcessing) _Bool processing; // @synthesize processing=_processing;
 @property(readonly, nonatomic) unsigned long long arrayIndex; // @synthesize arrayIndex=_arrayIndex;
+@property(readonly, nonatomic) id <WFParameterState> currentState; // @synthesize currentState=_currentState;
 @property(readonly, nonatomic) WFMultipleValueParameterState *initialArrayState; // @synthesize initialArrayState=_initialArrayState;
 @property(readonly, nonatomic) id <WFParameterState> initialState; // @synthesize initialState=_initialState;
 @property(readonly, nonatomic) WFParameter<WFModuleSummarySupporting> *parameter; // @synthesize parameter=_parameter;
@@ -53,13 +57,13 @@
 - (void)variableResponderDidDelete:(id)arg1 withReplacementText:(id)arg2;
 - (void)variableResponder:(id)arg1 didUpdateVariable:(id)arg2;
 - (void)variableResponderDidEndEditing:(id)arg1;
-- (void)_beginEditingVariableAttachment:(id)arg1 withParentView:(id)arg2;
-- (id)stateByReplacingVariableFromInitialState:(id)arg1 withVariable:(id)arg2;
+- (void)_beginEditingVariableAttachment:(id)arg1 slotIdentifier:(id)arg2 presentationAnchor:(id)arg3;
+- (id)stateByReplacingVariableFromCurrentState:(id)arg1 withVariable:(id)arg2;
 - (_Bool)canTypeAlongsideVariables;
-- (void)beginEditingTextAttachment:(id)arg1 inSlotWithIdentifier:(id)arg2 sourceView:(id)arg3;
+- (void)beginEditingTextAttachment:(id)arg1 inSlotWithIdentifier:(id)arg2 presentationAnchor:(id)arg3;
 - (id)variableMenuInitialStateForSlotWithIdentifier:(id)arg1;
 - (_Bool)variableMenuSupportsVariableSelectionForSlotWithIdentifier:(id)arg1;
-- (void)beginVariableMenuForSlotWithIdentifier:(id)arg1 sourceViewController:(id)arg2 sourceView:(id)arg3 sourceRect:(struct CGRect)arg4;
+- (void)beginVariableMenuForSlotWithIdentifier:(id)arg1 presentationAnchor:(id)arg2;
 - (void)sourceViewTintColorDidChange;
 - (void)textEntryDidFinish;
 - (void)textEntryDidPasteWithOriginalBlock:(CDUnknownBlockType)arg1;
@@ -71,12 +75,11 @@
 - (void)requestTextEntry;
 - (void)completeEditingWithTextAttachmentToEdit:(id)arg1;
 - (void)completeEditing;
-- (void)commitMultipleState:(id)arg1;
 - (void)commitState:(id)arg1;
 - (void)stageState:(id)arg1;
 - (void)cancelEditingWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)beginEditingNewArrayElementFromSourceViewController:(id)arg1 sourceView:(id)arg2 sourceRect:(struct CGRect)arg3;
-- (void)beginEditingSlotWithIdentifier:(id)arg1 sourceViewController:(id)arg2 sourceView:(id)arg3 sourceRect:(struct CGRect)arg4;
+- (void)beginEditingNewArrayElementFromPresentationAnchor:(id)arg1;
+- (void)beginEditingSlotWithIdentifier:(id)arg1 presentationAnchor:(id)arg2;
 - (id)initWithParameter:(id)arg1 initialState:(id)arg2 initialArrayState:(id)arg3 arrayIndex:(unsigned long long)arg4 processing:(_Bool)arg5;
 
 // Remaining properties

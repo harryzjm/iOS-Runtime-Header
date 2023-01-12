@@ -15,8 +15,8 @@
 + (id)strokeSelectionWithMask:(unsigned int)arg1;
 @property(readonly, nonatomic) unsigned int mask; // @synthesize mask=_mask;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)saveToArchive:(struct StrokeSelectionArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct StrokeSelectionArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (id)initWithStrokeVisibilityMask:(unsigned int)arg1;
 
 @end

@@ -13,48 +13,48 @@
 {
     _Bool _isRegisteredWithCalcEngine;
     _Bool _saveAsEmbiggenedFormat;
+    unsigned short _ownerIndex;
     unsigned short _formulaOwnerId;
-    struct TSCECellDependencies *_cellDependencies;
-    struct TSCERangeDependencies *_rangeDependencies;
-    struct TSCESpanningDependencies *_spanningColumnDependencies;
-    struct TSCESpanningDependencies *_spanningRowDependencies;
-    struct TSCEVolatileDependencies *_volatileDependencies;
-    struct TSCEWholeOwnerDependencies *_wholeOwnerDependencies;
-    struct TSCERefErrors *_errors;
+    void *_cellDependencies;
+    void *_rangeDependencies;
+    void *_spanningColumnDependencies;
+    void *_spanningRowDependencies;
+    void *_volatileDependencies;
+    void *_wholeOwnerDependencies;
+    void *_errors;
     TSCEUuidReferences *_uuidReferences;
     id <TSCEFormulaOwning> _formulaOwner;
     id <TSCECalculationEngineRegistration> _calcEngineRegistrationObject;
-    UUIDData_5fbc143e _formulaOwnerUid;
-    struct TSCESubFormulaOwnerID _subOwnerID;
+    struct TSKUIDStruct _formulaOwnerUid;
 }
 
-- (id).cxx_construct;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool isRegisteredWithCalcEngine; // @synthesize isRegisteredWithCalcEngine=_isRegisteredWithCalcEngine;
 @property(retain, nonatomic) id <TSCECalculationEngineRegistration> calcEngineRegistrationObject; // @synthesize calcEngineRegistrationObject=_calcEngineRegistrationObject;
 @property(retain, nonatomic) id <TSCEFormulaOwning> formulaOwner; // @synthesize formulaOwner=_formulaOwner;
 @property(readonly, retain, nonatomic) TSCEUuidReferences *uuidReferences; // @synthesize uuidReferences=_uuidReferences;
-@property(readonly, nonatomic) struct TSCERefErrors *errors; // @synthesize errors=_errors;
-@property(readonly, nonatomic) struct TSCEWholeOwnerDependencies *wholeOwnerDependencies; // @synthesize wholeOwnerDependencies=_wholeOwnerDependencies;
-@property(readonly, nonatomic) struct TSCEVolatileDependencies *volatileDependencies; // @synthesize volatileDependencies=_volatileDependencies;
-@property(readonly, nonatomic) struct TSCESpanningDependencies *spanningRowDependencies; // @synthesize spanningRowDependencies=_spanningRowDependencies;
-@property(readonly, nonatomic) struct TSCESpanningDependencies *spanningColumnDependencies; // @synthesize spanningColumnDependencies=_spanningColumnDependencies;
-@property(readonly, nonatomic) struct TSCERangeDependencies *rangeDependencies; // @synthesize rangeDependencies=_rangeDependencies;
-@property(readonly, nonatomic) struct TSCECellDependencies *cellDependencies; // @synthesize cellDependencies=_cellDependencies;
-@property(nonatomic) struct TSCESubFormulaOwnerID subOwnerID; // @synthesize subOwnerID=_subOwnerID;
-@property(readonly, nonatomic) UUIDData_5fbc143e formulaOwnerUid; // @synthesize formulaOwnerUid=_formulaOwnerUid;
+@property(readonly, nonatomic) void *errors; // @synthesize errors=_errors;
+@property(readonly, nonatomic) void *wholeOwnerDependencies; // @synthesize wholeOwnerDependencies=_wholeOwnerDependencies;
+@property(readonly, nonatomic) void *volatileDependencies; // @synthesize volatileDependencies=_volatileDependencies;
+@property(readonly, nonatomic) void *spanningRowDependencies; // @synthesize spanningRowDependencies=_spanningRowDependencies;
+@property(readonly, nonatomic) void *spanningColumnDependencies; // @synthesize spanningColumnDependencies=_spanningColumnDependencies;
+@property(readonly, nonatomic) void *rangeDependencies; // @synthesize rangeDependencies=_rangeDependencies;
+@property(readonly, nonatomic) void *cellDependencies; // @synthesize cellDependencies=_cellDependencies;
+@property(readonly, nonatomic) struct TSKUIDStruct formulaOwnerUid; // @synthesize formulaOwnerUid=_formulaOwnerUid;
 @property(readonly, nonatomic) unsigned short formulaOwnerId; // @synthesize formulaOwnerId=_formulaOwnerId;
+@property(nonatomic) unsigned short ownerIndex; // @synthesize ownerIndex=_ownerIndex;
 @property(nonatomic) _Bool saveAsEmbiggenedFormat; // @synthesize saveAsEmbiggenedFormat=_saveAsEmbiggenedFormat;
+- (void)resetOwnerUIDForUpgrade:(const struct TSKUIDStruct *)arg1 forBaseOwner:(const struct TSKUIDStruct *)arg2 ownerKind:(unsigned short)arg3;
+- (_Bool)duringSubOwnerUIDUpgrade;
 - (void)saveToArchiver:(id)arg1;
 - (void)unpackAfterUnarchive;
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)pushRangeAndSpanningDependentsWithCounts:(struct TSCECountedInternalCellRefSet *)arg1 fromCoord:(const struct TSUCellCoord *)arg2 cellIsInACycle:(_Bool)arg3;
+- (void)pushRangeAndSpanningDependentsWithCounts:(void *)arg1 fromCoord:(const struct TSUCellCoord *)arg2 cellIsInACycle:(_Bool)arg3;
 @property(readonly, nonatomic) struct TSUCellCoord embiggenedCellCoord;
-@property(readonly, nonatomic) unsigned short ownerKind;
-@property(nonatomic) struct TSCEDependencyTracker *dependencyTracker;
+@property(nonatomic) void *dependencyTracker;
 - (void)dealloc;
 - (void)willClose;
-- (id)initWithContext:(id)arg1 dependencyTracker:(struct TSCEDependencyTracker *)arg2 ownerID:(unsigned short)arg3 ownerUID:(const UUIDData_5fbc143e *)arg4 owner:(id)arg5 subOwnerID:(const struct TSCESubFormulaOwnerID *)arg6;
+- (id)initWithContext:(id)arg1 dependencyTracker:(void *)arg2 ownerID:(unsigned short)arg3 ownerUID:(const struct TSKUIDStruct *)arg4 owner:(id)arg5 ownerIndex:(unsigned short)arg6;
 
 @end
 

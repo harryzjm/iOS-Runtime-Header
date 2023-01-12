@@ -9,6 +9,9 @@
 }
 
 + (id)serviceFacilityIdentifier;
+- (void)fetchSupportedMedusaShortcutActionsForBundleIdentifier:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)performMedusaShortcutAction:(long long)arg1 forBundleIdentifier:(id)arg2;
+- (void)requestShelfPresentationForSceneWithIdentifier:(id)arg1;
 - (void)triggerShowAllWindowsForApplicationBundleIdentifier:(id)arg1;
 - (void)updateDynamicApplicationShortcutItems:(id)arg1 bundleIdentifier:(id)arg2;
 - (id)applicationShortcutItemsOfTypes:(unsigned long long)arg1 forBundleIdentifier:(id)arg2;

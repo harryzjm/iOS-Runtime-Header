@@ -7,7 +7,7 @@
 @class EQKitMathMLParser;
 
 @protocol EQKitMathMLNode
-- (const set_c5c159f9 *)mathMLAttributes;
+- (const void *)mathMLAttributes;
 - (id)initFromXMLNode:(struct _xmlNode *)arg1 parser:(EQKitMathMLParser *)arg2;
 @end
 

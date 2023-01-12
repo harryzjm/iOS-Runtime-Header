@@ -11,7 +11,6 @@
     NSArray *_actions;
 }
 
-+ (id)classSet;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *actions; // @synthesize actions=_actions;

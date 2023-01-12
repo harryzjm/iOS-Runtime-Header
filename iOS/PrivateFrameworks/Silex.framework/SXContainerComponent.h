@@ -15,9 +15,11 @@
 + (CDUnknownBlockType)purgeClassBlockForPropertyWithName:(id)arg1;
 + (CDUnknownBlockType)objectValueClassBlockForPropertyWithName:(id)arg1;
 + (id)typeString;
+- (_Bool)allowAutoplacedAdsWithValue:(id)arg1 withType:(int)arg2;
 
 // Remaining properties
 @property(readonly, nonatomic) SXJSONArray *allComponents; // @dynamic allComponents;
+@property(readonly, nonatomic) _Bool allowAutoplacedAds; // @dynamic allowAutoplacedAds;
 @property(readonly, nonatomic) SXJSONArray *components; // @dynamic components;
 @property(readonly, nonatomic) id <SXContentDisplay> contentDisplay; // @dynamic contentDisplay;
 

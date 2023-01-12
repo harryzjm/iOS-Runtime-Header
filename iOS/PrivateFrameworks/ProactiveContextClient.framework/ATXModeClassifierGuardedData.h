@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class ATXModeFeatureSet, NSDate, NSMutableArray;
+@class BMInferredModeEvent;
 
 @interface ATXModeClassifierGuardedData : NSObject
 {
-    ATXModeFeatureSet *_aggregateFeatures;
-    NSDate *_lastFeatureUpdateDate;
-    NSMutableArray *_featureBuffer;
-    int _mode;
+    BMInferredModeEvent *_currentModeEvent;
 }
 
 - (void).cxx_destruct;

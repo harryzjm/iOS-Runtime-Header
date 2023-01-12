@@ -9,23 +9,21 @@
 #import <PassKitUI/PKPaymentSelectPassesViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentSetupViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKPeerPaymentConfirmNameViewControllerDelegate-Protocol.h>
-#import <PassKitUI/PKPeerPaymentServiceObserver-Protocol.h>
 
-@class NSHashTable, NSString, PKAppleCashSharingRecipientCapabilitiesFetchStatus, PKPaymentPass, PKPaymentProvisioningController, PKPaymentWebService, PKPeerPaymentAccount, PKPeerPaymentConfirmNameViewController, PKPeerPaymentCredential, PKPeerPaymentService, PKPeerPaymentTermsController, PKPeerPaymentWebService, UIImage, UIViewController;
-@protocol PKPeerPaymentSetupFlowControllerConfiguration, PKPeerPaymentSetupFlowControllerDataSource;
+@class NSString, PKDeviceSharingCapabilitiesManager, PKPaymentPass, PKPaymentProvisioningController, PKPaymentWebService, PKPeerPaymentAccount, PKPeerPaymentConfirmNameViewController, PKPeerPaymentCredential, PKPeerPaymentService, PKPeerPaymentTermsController, PKPeerPaymentWebService, PKSecurityCapabilitiesController, UIImage, UIViewController;
+@protocol PKPassLibraryDataProvider, PKPeerPaymentSetupFlowControllerConfiguration, PKPeerPaymentSetupFlowControllerDataSource;
 
-@interface PKPeerPaymentSetupFlowController : NSObject <PKPaymentSelectPassesViewControllerDelegate, PKPaymentSetupViewControllerDelegate, PKPeerPaymentServiceObserver, PKPeerPaymentConfirmNameViewControllerDelegate>
+@interface PKPeerPaymentSetupFlowController : NSObject <PKPaymentSelectPassesViewControllerDelegate, PKPaymentSetupViewControllerDelegate, PKPeerPaymentConfirmNameViewControllerDelegate>
 {
     PKPaymentPass *_peerPaymentPass;
     PKPeerPaymentTermsController *_termsController;
+    PKSecurityCapabilitiesController *_securityCapabiltiesController;
     _Bool _hasPresentedDeviceToDeviceEncryptionFlow;
+    id <PKPassLibraryDataProvider> _passLibraryDataProvider;
     PKPeerPaymentConfirmNameViewController *_confirmNameViewControllerBeingPresented;
-    PKAppleCashSharingRecipientCapabilitiesFetchStatus *_familyMemberCapabilitiesFetchStatus;
     unsigned long long _operations;
     unsigned long long _completedOperations;
     CDUnknownBlockType _nextViewControllerCompletion;
-    struct os_unfair_lock_s _delegatesLock;
-    NSHashTable *_delegates;
     UIViewController<PKPeerPaymentSetupFlowControllerDataSource> *_parentViewController;
     long long _context;
     id <PKPeerPaymentSetupFlowControllerConfiguration> _configuration;
@@ -35,11 +33,13 @@
     PKPaymentWebService *_paymentWebService;
     PKPeerPaymentService *_peerPaymentService;
     PKPeerPaymentAccount *_peerPaymentAccount;
+    PKDeviceSharingCapabilitiesManager *_deviceCapabiltiesManager;
     UIImage *_passSnapShot;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) UIImage *passSnapShot; // @synthesize passSnapShot=_passSnapShot;
+@property(readonly, nonatomic) PKDeviceSharingCapabilitiesManager *deviceCapabiltiesManager; // @synthesize deviceCapabiltiesManager=_deviceCapabiltiesManager;
 @property(readonly, nonatomic) PKPeerPaymentAccount *peerPaymentAccount; // @synthesize peerPaymentAccount=_peerPaymentAccount;
 @property(readonly, nonatomic) PKPeerPaymentService *peerPaymentService; // @synthesize peerPaymentService=_peerPaymentService;
 @property(readonly, nonatomic) PKPaymentWebService *paymentWebService; // @synthesize paymentWebService=_paymentWebService;
@@ -49,9 +49,6 @@
 @property(readonly, nonatomic) id <PKPeerPaymentSetupFlowControllerConfiguration> configuration; // @synthesize configuration=_configuration;
 @property(readonly, nonatomic) long long context; // @synthesize context=_context;
 @property(retain, nonatomic) UIViewController<PKPeerPaymentSetupFlowControllerDataSource> *parentViewController; // @synthesize parentViewController=_parentViewController;
-- (void)removeDelegate:(id)arg1;
-- (void)addDelegate:(id)arg1;
-- (id)delegates;
 - (id)_paymentWebService;
 - (id)_peerPaymentWebService;
 - (void)_handlePeerPaymentAccountDidChangeNotification;
@@ -62,7 +59,6 @@
 - (void)viewControllerDidCancelSetupFlow:(id)arg1;
 - (void)viewControllerDidTerminateSetupFlow:(id)arg1;
 - (void)_fetchAppleCashCapabilitiesIfNecessary;
-- (void)didReceiveAppleCashSharingRecipientCapabilities:(id)arg1 forHandle:(id)arg2;
 - (_Bool)_peerPaymentPassIsProvisioned;
 - (unsigned long long)_cipState;
 - (void)_checkMissingTLKsWithCompletion:(CDUnknownBlockType)arg1;
@@ -84,12 +80,11 @@
 - (void)_completedOperation:(unsigned long long)arg1;
 - (void)_handleDisplayableError:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_nextViewControllerWithCompletion:(CDUnknownBlockType)arg1;
-- (id)familyMemberCashCapabilitiesStatus;
 - (void)nextViewControllerAfterPerfomingOperations:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)firstPeerPaymentAccountSetupViewController;
 - (void)setOperations:(unsigned long long)arg1;
 - (id)passesIncludingPeerPaymentPass:(_Bool)arg1;
-- (id)initWithPeerPaymentCredential:(id)arg1 provisioningController:(id)arg2 configuration:(id)arg3 context:(long long)arg4;
+- (id)initWithPeerPaymentCredential:(id)arg1 provisioningController:(id)arg2 passLibraryDataProvider:(id)arg3 configuration:(id)arg4 context:(long long)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

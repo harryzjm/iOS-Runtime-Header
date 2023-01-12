@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (long long)activityCategory;
++ (long long)_activityStyle;
 - (void)performActivity;
 - (_Bool)canPerformWithActivityItems:(id)arg1;
 - (id)_systemImageName;

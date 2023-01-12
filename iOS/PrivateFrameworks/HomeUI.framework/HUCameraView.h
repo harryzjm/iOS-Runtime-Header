@@ -11,6 +11,7 @@
 @interface HUCameraView : UIView
 {
     _Bool _showActivityIndicator;
+    _Bool _shouldRespectAspectRatio;
     unsigned long long _maskedCameraCorners;
     NSLayoutYAxisAnchor *_badgeBottomAnchor;
     HUCameraErrorContent *_errorContent;
@@ -44,6 +45,7 @@
 @property(readonly, nonatomic) UIView *cameraOverlayView; // @synthesize cameraOverlayView=_cameraOverlayView;
 @property(readonly, nonatomic) HUCameraBadgeView *badgeView; // @synthesize badgeView=_badgeView;
 @property(readonly, nonatomic) HURemoteContextHostingView *cameraContainerView; // @synthesize cameraContainerView=_cameraContainerView;
+@property(nonatomic) _Bool shouldRespectAspectRatio; // @synthesize shouldRespectAspectRatio=_shouldRespectAspectRatio;
 @property(retain, nonatomic) UIImageView *demoSnapshotImageView; // @synthesize demoSnapshotImageView=_demoSnapshotImageView;
 @property(nonatomic) _Bool showActivityIndicator; // @synthesize showActivityIndicator=_showActivityIndicator;
 @property(retain, nonatomic) HUCameraErrorContent *errorContent; // @synthesize errorContent=_errorContent;
@@ -64,6 +66,7 @@
 - (void)setErrorContent:(id)arg1 animated:(_Bool)arg2;
 @property(retain, nonatomic) HMCameraSource *cameraSource;
 - (void)setCameraSource:(id)arg1 animated:(_Bool)arg2;
+- (long long)contentModeForAspectRatio:(double)arg1;
 - (void)setCameraSource:(id)arg1 withDemoSnapshotURL:(id)arg2 animated:(_Bool)arg3;
 - (void)setCameraContentMode:(long long)arg1;
 - (void)layoutSubviews;

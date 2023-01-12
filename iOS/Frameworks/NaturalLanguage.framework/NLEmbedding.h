@@ -11,6 +11,7 @@
 @interface NLEmbedding : NSObject
 {
     void *_embedding;
+    _Bool _usesUntokenizedSentences;
 }
 
 + (id)_embeddingWithData:(id)arg1 error:(id *)arg2;
@@ -32,6 +33,7 @@
 + (id)supportedRevisionsForLanguage:(id)arg1;
 + (id)supportedRevisionsForType:(id)arg1 locale:(id)arg2;
 + (id)sentenceEmbeddingForLanguage:(id)arg1 revision:(unsigned long long)arg2;
++ (id)transformerContextualTokenEmbeddingForLanguage:(id)arg1;
 + (id)contextualWordEmbeddingForLanguage:(id)arg1 revision:(unsigned long long)arg2;
 + (id)wordEmbeddingForLanguage:(id)arg1 revision:(unsigned long long)arg2;
 + (id)sentenceEmbeddingForLanguage:(id)arg1;
@@ -40,6 +42,9 @@
 @property(readonly) unsigned long long revision;
 @property(readonly, copy) NSString *language;
 - (id)vectorsForSentences:(id)arg1 maxTokens:(unsigned long long)arg2;
+- (id)vectorsForTokenizedSentences:(id)arg1 untokenizedSentences:(id)arg2 maxTokens:(unsigned long long)arg3;
+- (id)vectorsForUntokenizedSentences:(id)arg1 maxTokens:(unsigned long long)arg2;
+- (id)vectorsForTokenizedSentences:(id)arg1 maxTokens:(unsigned long long)arg2;
 - (_Bool)getVector:(float *)arg1 forString:(id)arg2;
 - (id)vectorForString:(id)arg1;
 @property(readonly) unsigned long long vocabularySize;
@@ -66,6 +71,8 @@
 - (id)initSentenceEmbeddingWithLocale:(struct __CFLocale *)arg1;
 - (id)initContextualEmbeddingWithLocale:(struct __CFLocale *)arg1;
 - (id)initWithLocale:(struct __CFLocale *)arg1;
+- (void)setUsesUntokenizedSentences:(_Bool)arg1;
+- (_Bool)usesUntokenizedSentences;
 - (id)initWithType:(id)arg1 locale:(id)arg2 version:(id)arg3;
 
 @end

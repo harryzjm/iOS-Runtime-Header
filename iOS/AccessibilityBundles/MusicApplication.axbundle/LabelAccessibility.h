@@ -11,7 +11,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)accessibilityIdentifier;
 - (unsigned long long)_accessibilityAutomationType;
 - (_Bool)_accessibilitySupportsHandwriting;
 - (unsigned long long)accessibilityTraits;
@@ -20,6 +19,7 @@
 - (struct _NSRange)_accessibilityRangeForLineNumberAndColumn:(id)arg1;
 - (id)_accessibilityLineNumberAndColumnForPoint:(struct CGPoint)arg1;
 - (id)accessibilityValue;
+- (id)accessibilityLabel;
 - (id)_accessibilityTextViewTextOperationResponder;
 - (_Bool)isAccessibilityElement;
 

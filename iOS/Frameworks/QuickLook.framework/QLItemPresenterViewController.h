@@ -7,8 +7,8 @@
 #import <QuickLook/QLDownloadingItemViewControllerDelegate-Protocol.h>
 #import <QuickLook/QLItemViewControllerPresentingDelegate-Protocol.h>
 
-@class DMFApplicationPolicyMonitor, DMFCategoryPolicyMonitor, NSString, QLDownloadingItemViewController, QLErrorItemViewController, QLItem, QLItemViewController, QLLoadingItemViewController, QLPreviewContext, QLScreenTimeItemViewController;
-@protocol QLItemPresenterViewControllerDelegate;
+@class DMFApplicationPolicyMonitor, DMFCategoryPolicyMonitor, NSObject, NSString, QLDownloadingItemViewController, QLErrorItemViewController, QLItem, QLItemViewController, QLLoadingItemViewController, QLPreviewContext, QLScreenTimeItemViewController;
+@protocol OS_dispatch_queue, QLItemPresenterViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface QLItemPresenterViewController <QLDownloadingItemViewControllerDelegate, QLItemViewControllerPresentingDelegate>
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     _Bool _isReadyForDisplay;
     _Bool _shouldHandleLoadingView;
     CDUnknownBlockType _readyBlock;
+    NSObject<OS_dispatch_queue> *previewLoadingQueue;
     _Bool _printing;
     QLItemViewController *_previewProvider;
     QLErrorItemViewController *_errorViewController;

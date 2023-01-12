@@ -6,10 +6,9 @@
 
 #import <MapKit/MKPlaceAttributionCellButtonDelegate-Protocol.h>
 
-@class MKPlaceAttributionCellButton, NSArray, NSLayoutConstraint, _MKUILabel;
+@class MKPlaceAttributionCellButton, NSArray, NSLayoutConstraint, UITapGestureRecognizer, _MKUILabel;
 @protocol MKPlaceAttributionCellDelegate;
 
-__attribute__((visibility("hidden")))
 @interface MKPlaceAttributionCell <MKPlaceAttributionCellButtonDelegate>
 {
     NSArray *_visibleConstraints;
@@ -20,10 +19,12 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_labelBaselineToTop;
     NSLayoutConstraint *_labelLastBaselineToBottom;
     id <MKPlaceAttributionCellDelegate> _cellDelegate;
+    UITapGestureRecognizer *_selectGestureRecognizer;
 }
 
 + (id)fontForLabel;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UITapGestureRecognizer *selectGestureRecognizer; // @synthesize selectGestureRecognizer=_selectGestureRecognizer;
 @property(nonatomic) __weak id <MKPlaceAttributionCellDelegate> cellDelegate; // @synthesize cellDelegate=_cellDelegate;
 @property(retain, nonatomic) NSLayoutConstraint *labelLastBaselineToBottom; // @synthesize labelLastBaselineToBottom=_labelLastBaselineToBottom;
 @property(retain, nonatomic) NSLayoutConstraint *labelBaselineToTop; // @synthesize labelBaselineToTop=_labelBaselineToTop;

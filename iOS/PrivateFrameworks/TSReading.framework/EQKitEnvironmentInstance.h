@@ -9,18 +9,9 @@
 @interface EQKitEnvironmentInstance
 {
     NSDictionary *mConfig;
-    struct Dictionary *mOperatorDictionary;
-    struct Manager {
-        CDUnknownFunctionPointerType *;
-        struct Collection *;
-        struct EQKitCacheLRUCounter;
-    } *mFontManager;
-    struct Manager {
-        struct EQKitCache<EQKit::OpticalKern::Glyph::Key, std::__1::shared_ptr<EQKit::OpticalKern::Edge::Path>, std::__1::shared_ptr<const EQKit::OpticalKern::Edge::Path>> *;
-        struct EQKitCacheLRUCounter;
-        _Bool;
-        struct QuantizationConfig;
-    } *mKerningManager;
+    void *mOperatorDictionary;
+    struct Manager *mFontManager;
+    void *mKerningManager;
     struct Config *mLayoutConfig;
 }
 
@@ -31,9 +22,9 @@
 - (void)endLayout;
 - (void)beginLayout;
 - (const struct Config *)layoutConfig;
-- (const Manager_36464627 *)kerningManager;
-- (const Manager_e51557f8 *)fontManager;
-- (const struct Dictionary *)operatorDictionary;
+- (const void *)kerningManager;
+- (const struct Manager *)fontManager;
+- (const void *)operatorDictionary;
 - (id)newDictionaryForArchiving;
 - (void)dealloc;
 - (id)initWithConfig:(id)arg1;

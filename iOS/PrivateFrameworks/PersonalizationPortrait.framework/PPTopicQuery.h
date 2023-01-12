@@ -19,6 +19,7 @@
     _Bool _scoreWithCalibration;
     _Bool _orderByIdentifier;
     _Bool _removeNearDuplicates;
+    _Bool _filterByRelevanceDate;
     unsigned long long _limit;
     NSDate *_fromDate;
     NSDate *_toDate;
@@ -41,6 +42,7 @@
 + (_Bool)supportsSecureCoding;
 + (id)queryForCSSearchableItem:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool filterByRelevanceDate; // @synthesize filterByRelevanceDate=_filterByRelevanceDate;
 @property(nonatomic) _Bool removeNearDuplicates; // @synthesize removeNearDuplicates=_removeNearDuplicates;
 @property(nonatomic) _Bool orderByIdentifier; // @synthesize orderByIdentifier=_orderByIdentifier;
 @property(retain, nonatomic) NSString *matchingTopicTrie; // @synthesize matchingTopicTrie=_matchingTopicTrie;

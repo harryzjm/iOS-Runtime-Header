@@ -9,12 +9,14 @@
 @interface CAMPanoramaPaintingStatus : NSObject
 {
     double _speed;
+    double _normalizedBaselineOffset;
     struct CGRect _cropRectangle;
 }
 
+@property(readonly, nonatomic) double normalizedBaselineOffset; // @synthesize normalizedBaselineOffset=_normalizedBaselineOffset;
 @property(readonly, nonatomic) struct CGRect cropRectangle; // @synthesize cropRectangle=_cropRectangle;
 @property(readonly, nonatomic) double speed; // @synthesize speed=_speed;
-- (id)initWithSpeed:(double)arg1 cropRectangle:(struct CGRect)arg2;
+- (id)initWithSpeed:(double)arg1 cropRectangle:(struct CGRect)arg2 normalizedBaselineOffset:(double)arg3;
 
 @end
 

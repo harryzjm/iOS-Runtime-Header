@@ -14,12 +14,14 @@ __attribute__((visibility("hidden")))
     _Bool _showsLozengeForLivePlayback;
     _Bool _showsStillWatchingAlert;
     _Bool _allowQOSReportingForiTunesLibraryPlayback;
+    _Bool _convertMainContentRelativeStartTimeOfZeroToAbsoluteStartTimeOfZero;
     double _stillWatchingAlertDuration;
     double _alertIdleTimeout;
     NSArray *_mediaTypesExcludedFromReporting;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool convertMainContentRelativeStartTimeOfZeroToAbsoluteStartTimeOfZero; // @synthesize convertMainContentRelativeStartTimeOfZeroToAbsoluteStartTimeOfZero=_convertMainContentRelativeStartTimeOfZeroToAbsoluteStartTimeOfZero;
 @property(nonatomic) _Bool allowQOSReportingForiTunesLibraryPlayback; // @synthesize allowQOSReportingForiTunesLibraryPlayback=_allowQOSReportingForiTunesLibraryPlayback;
 @property(copy, nonatomic) NSArray *mediaTypesExcludedFromReporting; // @synthesize mediaTypesExcludedFromReporting=_mediaTypesExcludedFromReporting;
 @property(nonatomic) double alertIdleTimeout; // @synthesize alertIdleTimeout=_alertIdleTimeout;

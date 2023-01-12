@@ -6,21 +6,21 @@
 
 #import <objc/NSObject.h>
 
+#import <iTunesCloud/ACMonitoredAccountStoreDelegateProtocol-Protocol.h>
 #import <iTunesCloud/ICUserIdentityStoreBackend-Protocol.h>
 
-@class ACAccountStore, ACAccountType, ICUnfairLock, NSArray, NSMapTable, NSMutableDictionary, NSString;
+@class ACAccount, ACMonitoredAccountStore, NSMutableDictionary, NSNumber, NSString;
 @protocol ICUserIdentityStoreBackendDelegate, OS_dispatch_queue;
 
-@interface ICUserIdentityStoreACAccountBackend : NSObject <ICUserIdentityStoreBackend>
+@interface ICUserIdentityStoreACAccountBackend : NSObject <ACMonitoredAccountStoreDelegateProtocol, ICUserIdentityStoreBackend>
 {
-    ACAccountStore *_accountStore;
-    NSMapTable *_accountToIdentityProperties;
-    NSArray *_allStoreAccounts;
-    NSMutableDictionary *_dsidToAccount;
-    id _primaryICloudAccountIdentityPropertiesValue;
-    ACAccountType *_storeAccountType;
+    ACMonitoredAccountStore *_accountStore;
+    NSMutableDictionary *_identityPropertiesCache;
+    NSMutableDictionary *_allStoreAccountsByDSID;
+    ACAccount *_primaryICloudAccount;
+    NSNumber *_activeAccountDSID;
     NSObject<OS_dispatch_queue> *_callbackQueue;
-    ICUnfairLock *_lock;
+    struct os_unfair_lock_s _lock;
     id <ICUserIdentityStoreBackendDelegate> _delegate;
 }
 
@@ -28,21 +28,29 @@
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <ICUserIdentityStoreBackendDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_synchronize;
-- (id)_storeAccountTypeWithError:(id *)arg1;
-- (id)_storeAccountForDSID:(id)arg1 bypassCache:(_Bool)arg2 error:(id *)arg3;
-- (id)_storeAccountForDSID:(id)arg1 error:(id *)arg2;
-- (id)_primaryICloudAccountIdentityProperties;
 - (id)_newUserIdentityPropertiesForAccount:(id)arg1;
+- (id)_userIdentityPropertiesForAccount:(id)arg1;
 - (id)_newLocalStoreAccountPropertiesFromAccount:(id)arg1;
+- (id)_storeAccountForDSID:(id)arg1 error:(id *)arg2;
 - (id)_activeStoreAccountWithError:(id *)arg1;
+- (id)_primaryAppleAccountWithError:(id *)arg1;
 - (id)_allStoreAccountsWithError:(id *)arg1;
+- (id)_registerAndLoadAccountsIfNecessary;
 - (void)_applyLocalStoreAccountProperties:(id)arg1 toAccount:(id)arg2;
 - (void)_applyIdentityProperties:(id)arg1 toAccount:(id)arg2;
-- (void)_accountStoreDidChangeNotification:(id)arg1;
-- (void)_handleITunesStoreAccountsChanged;
+- (void)_postAccountsChangeNotification;
+- (void)accountCredentialChanged:(id)arg1;
+- (void)accountWasRemoved:(id)arg1;
+- (void)accountWasModified:(id)arg1;
+- (void)accountWasAdded:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)storeAccountForDSID:(id)arg1 error:(id *)arg2;
+- (id)localStoreAccountWithError:(id *)arg1;
+- (id)allStoreAccountsWithError:(id *)arg1;
+- (id)allManageableStoreAccountDSIDsWithError:(id *)arg1;
+- (id)allStoreAccountDSIDsWithError:(id *)arg1;
 - (_Bool)setLocalStoreAccountProperties:(id)arg1 error:(id *)arg2;
 - (id)localStoreAccountPropertiesWithError:(id *)arg1;
 - (id)verificationContextForAccountEstablishmentWithError:(id *)arg1;
@@ -57,8 +65,6 @@
 - (id)activeLockerAccountDSIDWithError:(id *)arg1;
 - (_Bool)updateActiveAccountDSID:(id)arg1 error:(id *)arg2;
 - (id)activeAccountDSIDWithError:(id *)arg1;
-- (void)dealloc;
-- (id)initWithACAccountStore:(id)arg1;
 - (id)init;
 
 // Remaining properties

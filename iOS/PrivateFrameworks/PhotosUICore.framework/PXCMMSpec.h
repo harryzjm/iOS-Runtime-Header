@@ -18,15 +18,12 @@
     double _reviewFooterBottomInset;
     double _reviewSectionHeaderHeight;
     UIColor *_composeRecipientViewBackgroundColor;
-    double _composeTableViewCellHeight;
-    double _composeTableViewCellInset;
     double _composeCornerRadius;
     double _composePrivacyMessageInset;
     double _composeHeaderVerticalPadding;
     double _bubbleStatusIconCornerRadius;
     struct CGSize _reviewGridInterItemSpacing;
     struct CGSize _reviewGridItemSize;
-    struct CGSize _composeTableViewCellImageViewSize;
     struct UIEdgeInsets _reviewContentInsets;
     struct UIEdgeInsets _reviewSafeAreaInsets;
     struct UIEdgeInsets _reviewGridContentInsets;
@@ -44,9 +41,6 @@
 @property(readonly, nonatomic) struct UIEdgeInsets composeHeaderLabelMargins; // @synthesize composeHeaderLabelMargins=_composeHeaderLabelMargins;
 @property(readonly, nonatomic) double composePrivacyMessageInset; // @synthesize composePrivacyMessageInset=_composePrivacyMessageInset;
 @property(readonly, nonatomic) double composeCornerRadius; // @synthesize composeCornerRadius=_composeCornerRadius;
-@property(readonly, nonatomic) struct CGSize composeTableViewCellImageViewSize; // @synthesize composeTableViewCellImageViewSize=_composeTableViewCellImageViewSize;
-@property(readonly, nonatomic) double composeTableViewCellInset; // @synthesize composeTableViewCellInset=_composeTableViewCellInset;
-@property(readonly, nonatomic) double composeTableViewCellHeight; // @synthesize composeTableViewCellHeight=_composeTableViewCellHeight;
 @property(readonly, nonatomic) UIColor *composeRecipientViewBackgroundColor; // @synthesize composeRecipientViewBackgroundColor=_composeRecipientViewBackgroundColor;
 @property(readonly, nonatomic) double reviewSectionHeaderHeight; // @synthesize reviewSectionHeaderHeight=_reviewSectionHeaderHeight;
 @property(readonly, nonatomic) double reviewFooterBottomInset; // @synthesize reviewFooterBottomInset=_reviewFooterBottomInset;
@@ -62,7 +56,6 @@
 @property(readonly, nonatomic) struct UIEdgeInsets reviewContentInsets; // @synthesize reviewContentInsets=_reviewContentInsets;
 @property(readonly, nonatomic) UIColor *reviewBackgroundColor; // @synthesize reviewBackgroundColor=_reviewBackgroundColor;
 @property(readonly, nonatomic) unsigned long long activityType; // @synthesize activityType=_activityType;
-- (double)_composeTableViewCellHeight;
 - (double)_reviewSectionHeaderHeightForContentSize:(id)arg1;
 @property(readonly, nonatomic) UIColor *bubbleBackgroundColor;
 - (id)initWithExtendedTraitCollection:(id)arg1 options:(unsigned long long)arg2;

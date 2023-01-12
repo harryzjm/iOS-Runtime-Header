@@ -13,9 +13,13 @@
     _Bool _allDay;
     _Bool _timeChanged;
     _Bool _dateChanged;
+    _Bool _titleChanged;
     _Bool _locationChanged;
+    _Bool _videoConferenceChanged;
     _Bool _attendeeReplyChanged;
+    _Bool _isLocationDecline;
     _Bool _expanded;
+    _Bool _isForReReply;
     NSString *_location;
     NSDate *_startDate;
     NSDate *_startDateForNextOccurrence;
@@ -32,13 +36,17 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isForReReply; // @synthesize isForReReply=_isForReReply;
 @property(nonatomic) _Bool expanded; // @synthesize expanded=_expanded;
 @property(retain, nonatomic) EKCalendarEventInvitationNotificationAttendee *expandedProposedTimeAttendee; // @synthesize expandedProposedTimeAttendee=_expandedProposedTimeAttendee;
+@property(nonatomic) _Bool isLocationDecline; // @synthesize isLocationDecline=_isLocationDecline;
 @property(readonly, nonatomic) NSString *invitedBy; // @synthesize invitedBy=_invitedBy;
 @property(retain, nonatomic) EKCalendarEventInvitationNotificationAttendee *owner; // @synthesize owner=_owner;
 @property(retain, nonatomic) NSArray *attendees; // @synthesize attendees=_attendees;
 @property(nonatomic) _Bool attendeeReplyChanged; // @synthesize attendeeReplyChanged=_attendeeReplyChanged;
+@property(nonatomic) _Bool videoConferenceChanged; // @synthesize videoConferenceChanged=_videoConferenceChanged;
 @property(nonatomic) _Bool locationChanged; // @synthesize locationChanged=_locationChanged;
+@property(nonatomic) _Bool titleChanged; // @synthesize titleChanged=_titleChanged;
 @property(nonatomic) _Bool dateChanged; // @synthesize dateChanged=_dateChanged;
 @property(nonatomic) _Bool timeChanged; // @synthesize timeChanged=_timeChanged;
 @property(retain, nonatomic) EKRecurrenceRule *recurrenceRule; // @synthesize recurrenceRule=_recurrenceRule;
@@ -51,7 +59,9 @@
 @property(retain, nonatomic) NSDate *startDateForNextOccurrence; // @synthesize startDateForNextOccurrence=_startDateForNextOccurrence;
 @property(retain, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property(retain, nonatomic) NSString *location; // @synthesize location=_location;
+- (_Bool)acknowledgeWithEventStore:(id)arg1 error:(id *)arg2;
 - (_Bool)proposedStartDateIsInFutureForAttendee:(id)arg1;
+- (id)nearestProposedTime;
 - (_Bool)isProposedNewTime;
 - (_Bool)needsReply;
 - (_Bool)isInvitation;

@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <TSTables/NSObject-Protocol.h>
+
 @class NSString;
 
-@protocol TSSPreset
+@protocol TSSPreset <NSObject>
 @property(readonly, nonatomic) NSString *presetKind;
 
 @optional

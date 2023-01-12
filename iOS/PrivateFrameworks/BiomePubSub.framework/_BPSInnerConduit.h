@@ -10,6 +10,7 @@
 @interface _BPSInnerConduit
 {
     struct os_unfair_lock_s _lock;
+    struct os_unfair_recursive_lock_s _downstreamLock;
     _Bool _released;
     BPSPassThroughSubject *_parent;
     id <BPSSubscriber> _downstream;

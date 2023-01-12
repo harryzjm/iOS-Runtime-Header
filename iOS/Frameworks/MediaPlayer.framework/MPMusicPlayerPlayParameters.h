@@ -17,10 +17,12 @@
     MPIdentifierSet *_identifiers;
     NSString *_itemKind;
     NSString *_itemID;
+    NSString *_catalogID;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *catalogID; // @synthesize catalogID=_catalogID;
 @property(readonly, copy, nonatomic) NSString *itemID; // @synthesize itemID=_itemID;
 @property(readonly, nonatomic, getter=isLibraryContent) _Bool libraryContent; // @synthesize libraryContent=_libraryContent;
 @property(readonly, copy, nonatomic) NSString *itemKind; // @synthesize itemKind=_itemKind;
@@ -31,6 +33,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithDictionary:(id)arg1;
 
 @end

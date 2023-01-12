@@ -10,8 +10,10 @@ __attribute__((visibility("hidden")))
 @interface MKImageTextAttachment : NSTextAttachment
 {
     double _verticalOffset;
+    double _maxHeight;
 }
 
+@property(nonatomic) double maxHeight; // @synthesize maxHeight=_maxHeight;
 @property(nonatomic) double verticalOffset; // @synthesize verticalOffset=_verticalOffset;
 - (struct CGRect)attachmentBoundsForTextContainer:(id)arg1 proposedLineFragment:(struct CGRect)arg2 glyphPosition:(struct CGPoint)arg3 characterIndex:(unsigned long long)arg4;
 - (id)initWithImage:(id)arg1 verticalOffset:(double)arg2;

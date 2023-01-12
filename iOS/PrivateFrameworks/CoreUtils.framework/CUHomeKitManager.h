@@ -85,6 +85,7 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 - (void)user:(id)arg1 didUpdateAssistantAccessControl:(id)arg2 forHome:(id)arg3;
 - (void)accessory:(id)arg1 didUpdateDevice:(id)arg2;
+- (void)accessoryDidUpdatePairingIdentity:(id)arg1;
 - (void)accessoryDidUpdateApplicationData:(id)arg1;
 - (void)mediaSystem:(id)arg1 didUpdateName:(id)arg2;
 - (void)mediaSystem:(id)arg1 didUpdateComponents:(id)arg2;
@@ -100,6 +101,7 @@
 - (void)home:(id)arg1 didAddAccessory:(id)arg2;
 - (void)homeManager:(id)arg1 didRemoveHome:(id)arg2;
 - (void)homeManager:(id)arg1 didAddHome:(id)arg2;
+- (void)homeManager:(id)arg1 didUpdateStatus:(unsigned long long)arg2;
 - (void)homeManagerDidUpdateHomes:(id)arg1;
 - (void)homeManagerDidUpdateDataSyncState:(id)arg1;
 - (id)_selfAccessoryMediaSystemUncached:(id *)arg1;

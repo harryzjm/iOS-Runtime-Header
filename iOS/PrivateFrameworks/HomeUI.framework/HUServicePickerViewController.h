@@ -19,7 +19,7 @@
 - (_Bool)serviceGridItemManager:(id)arg1 shouldHideItem:(id)arg2;
 - (_Bool)_preselectedServicesContainsService:(id)arg1;
 - (_Bool)_isItemPreselected:(id)arg1;
-- (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
+- (void)itemManagerDidUpdate:(id)arg1;
 - (id)_servicesForItem:(id)arg1;
 - (id)_servicesForItems:(id)arg1;
 - (void)_done:(id)arg1;

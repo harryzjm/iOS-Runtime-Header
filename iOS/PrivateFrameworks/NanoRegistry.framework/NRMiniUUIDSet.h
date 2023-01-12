@@ -13,7 +13,7 @@
 
 @interface NRMiniUUIDSet : NSObject <NSCopying, NSSecureCoding>
 {
-    struct vector<unsigned int, std::__1::allocator<unsigned int>> _miniUUIDs;
+    struct vector<unsigned int, std::allocator<unsigned int>> _miniUUIDs;
     NSData *_data;
 }
 

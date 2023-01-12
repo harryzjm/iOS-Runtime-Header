@@ -18,11 +18,14 @@
 - (id)hk_hourNumber;
 - (id)hk_dayIndexDateDescription;
 - (long long)hk_dayIndex;
+- (long long)hk_indexForDate:(id)arg1 anchorDate:(id)arg2;
+- (id)hk_dateIntervalForDate:(id)arg1 anchorDate:(id)arg2 outIndex:(long long *)arg3;
 - (long long)hk_ageWithCurrentDate:(id)arg1;
 - (id)hk_negativeComponents;
 - (id)hk_translateDateComponentsToCalendar:(id)arg1 calendarUnits:(unsigned long long)arg2;
 - (id)hk_populatedCalendarGregorianCalendarDefault;
 - (long long)hk_maxComponentValue;
+- (id)_hk_dateComponentsMultipliedByCount:(long long)arg1;
 - (id)_hk_dateByAddingFilteredInterval:(long long)arg1 toDate:(id)arg2;
 - (id)hk_dateByAddingInterval:(long long)arg1 toDate:(id)arg2;
 - (double)hk_approximateDuration;

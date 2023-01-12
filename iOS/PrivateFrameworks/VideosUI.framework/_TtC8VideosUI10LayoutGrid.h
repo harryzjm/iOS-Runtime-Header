@@ -11,6 +11,7 @@
 @interface _TtC8VideosUI10LayoutGrid : _TtCs12_SwiftObject
 {
     MISSING_TYPE *swipingGridSpec;
+    MISSING_TYPE *horizontalLayoutGridSpec;
 }
 
 @end

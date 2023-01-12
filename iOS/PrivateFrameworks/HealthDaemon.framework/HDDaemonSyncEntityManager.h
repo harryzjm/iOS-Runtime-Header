@@ -19,7 +19,6 @@
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSDictionary *syncEntitiesByIdentifier;
 @property(readonly, copy, nonatomic) NSArray *orderedSyncEntities;
-- (void)_lock_loadSyncEntities;
 - (id)initWithDaemon:(id)arg1;
 
 @end

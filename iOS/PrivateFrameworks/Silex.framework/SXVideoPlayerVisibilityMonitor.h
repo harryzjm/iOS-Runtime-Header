@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <Silex/SVVisibilityMonitoring-Protocol.h>
+#import <Silex/SXVisibilityMonitoring-Protocol.h>
 
-@class NSMutableArray, NSString, SVVisibilityMonitor;
+@class NSMutableArray, NSString, SXVisibilityMonitor;
 
-@interface SXVideoPlayerVisibilityMonitor : NSObject <SVVisibilityMonitoring>
+@interface SXVideoPlayerVisibilityMonitor : NSObject <SXVisibilityMonitoring>
 {
-    SVVisibilityMonitor *_visibilityMonitor;
+    SXVisibilityMonitor *_visibilityMonitor;
     NSMutableArray *_willAppearBlocks;
     NSMutableArray *_didAppearBlocks;
     NSMutableArray *_visiblePercentageBlocks;
@@ -26,7 +26,7 @@
 @property(readonly, nonatomic) NSMutableArray *visiblePercentageBlocks; // @synthesize visiblePercentageBlocks=_visiblePercentageBlocks;
 @property(readonly, nonatomic) NSMutableArray *didAppearBlocks; // @synthesize didAppearBlocks=_didAppearBlocks;
 @property(readonly, nonatomic) NSMutableArray *willAppearBlocks; // @synthesize willAppearBlocks=_willAppearBlocks;
-@property(retain, nonatomic) SVVisibilityMonitor *visibilityMonitor; // @synthesize visibilityMonitor=_visibilityMonitor;
+@property(retain, nonatomic) SXVisibilityMonitor *visibilityMonitor; // @synthesize visibilityMonitor=_visibilityMonitor;
 - (void)onDidDisappear:(CDUnknownBlockType)arg1;
 - (void)onWillDisappear:(CDUnknownBlockType)arg1;
 - (void)onVisiblePercentageChange:(CDUnknownBlockType)arg1;

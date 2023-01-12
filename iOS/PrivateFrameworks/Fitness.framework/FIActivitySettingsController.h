@@ -28,7 +28,7 @@
 @property(nonatomic) long long biologicalSex; // @synthesize biologicalSex=_biologicalSex;
 @property(retain, nonatomic) HKQuantity *weight; // @synthesize weight=_weight;
 @property(retain, nonatomic) HKQuantity *height; // @synthesize height=_height;
-@property(retain, nonatomic) NSDate *dateOfBirth; // @synthesize dateOfBirth=_dateOfBirth;
+@property(copy, nonatomic) NSDate *dateOfBirth; // @synthesize dateOfBirth=_dateOfBirth;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) HKQuantity *leanBodyMass;
 @property(readonly) unsigned long long experienceType;

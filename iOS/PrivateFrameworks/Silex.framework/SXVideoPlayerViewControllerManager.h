@@ -8,12 +8,12 @@
 
 #import <Silex/SXVideoPlayerViewControllerProvider-Protocol.h>
 
-@class NSMutableDictionary, NSString, NSURL, SVVolumeProvider;
+@class NSMutableDictionary, NSString, NSURL, SXVolumeProvider;
 
 @interface SXVideoPlayerViewControllerManager : NSObject <SXVideoPlayerViewControllerProvider>
 {
     _Bool _presentedAndAppeared;
-    SVVolumeProvider *_volumeProvider;
+    SXVolumeProvider *_volumeProvider;
     NSURL *_autoplayURL;
     NSMutableDictionary *_videoAnalyticsRouters;
     NSMutableDictionary *_visibilityMonitors;
@@ -33,7 +33,7 @@
 @property(readonly, nonatomic) NSMutableDictionary *visibilityMonitors; // @synthesize visibilityMonitors=_visibilityMonitors;
 @property(readonly, nonatomic) NSMutableDictionary *videoAnalyticsRouters; // @synthesize videoAnalyticsRouters=_videoAnalyticsRouters;
 @property(copy, nonatomic) NSURL *autoplayURL; // @synthesize autoplayURL=_autoplayURL;
-@property(readonly, nonatomic) SVVolumeProvider *volumeProvider; // @synthesize volumeProvider=_volumeProvider;
+@property(readonly, nonatomic) SXVolumeProvider *volumeProvider; // @synthesize volumeProvider=_volumeProvider;
 @property(nonatomic) _Bool presentedAndAppeared; // @synthesize presentedAndAppeared=_presentedAndAppeared;
 - (void)configureAutoplayForVideoWithURL:(id)arg1 analyticsRouter:(id)arg2;
 - (void)registerExistingVideoPlayerViewController:(id)arg1 URL:(id)arg2 analyticsRouter:(id)arg3 videoPlayerVisibilityMonitor:(id)arg4 loseOwnershipBlock:(CDUnknownBlockType)arg5;

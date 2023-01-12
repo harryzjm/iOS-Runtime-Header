@@ -14,6 +14,7 @@
     MISSING_TYPE *baseStyler;
     MISSING_TYPE *publisherViewLayoutAttributesFactory;
     MISSING_TYPE *titleViewLayoutAttributesFactory;
+    MISSING_TYPE *assetManager;
     MISSING_TYPE *featureAvailability;
 }
 

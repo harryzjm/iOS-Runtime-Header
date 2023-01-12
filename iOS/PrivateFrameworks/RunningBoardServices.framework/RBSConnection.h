@@ -9,7 +9,7 @@
 #import <RunningBoardServices/RBSClientProtocol-Protocol.h>
 #import <RunningBoardServices/RBSServiceLocalProtocol-Protocol.h>
 
-@class NSHashTable, NSMapTable, NSMutableDictionary, NSMutableSet, NSSet, RBSProcessHandle, RBSProcessIdentity;
+@class NSHashTable, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, RBSProcessHandle;
 @protocol OS_dispatch_queue, OS_xpc_object, RBSConnectionServiceDelegate;
 
 @interface RBSConnection : NSObject <RBSClientProtocol, RBSServiceLocalProtocol>
@@ -21,9 +21,9 @@
     struct os_unfair_lock_s _lock;
     struct os_unfair_lock_s _assertionLock;
     struct os_unfair_lock_s _processExpirationLock;
+    struct os_unfair_lock_s _savedEndowmentLock;
     NSObject<OS_dispatch_queue> *_connectionQueue;
     NSObject<OS_dispatch_queue> *_handshakeQueue;
-    NSObject<OS_dispatch_queue> *_monitorCalloutQueue;
     NSMapTable *_acquiredAssertionsByIdentifier;
     NSHashTable *_processMonitors;
     NSMutableDictionary *_stateByIdentity;
@@ -31,6 +31,7 @@
     NSMutableSet *_inheritances;
     NSHashTable *_expirationWarningClients;
     NSMutableDictionary *_deathHandlers;
+    NSMutableArray *_savedEndowments;
     unsigned long long _state;
 }
 
@@ -48,6 +49,7 @@
 - (oneway void)async_assertionsDidInvalidate:(id)arg1 withError:(id)arg2;
 - (oneway void)async_didChangeInheritances:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)async_willExpireAssertionsSoon;
+- (_Bool)saveEndowment:(id)arg1 withError:(out id *)arg2;
 - (void)reset;
 - (id)preventLaunchPredicatesWithError:(out id *)arg1;
 - (id)busyExtensionInstancesFromSet:(id)arg1 error:(out id *)arg2;
@@ -71,10 +73,6 @@
 - (id)assertionDescriptorsByPidWithFlattenedAttributes:(_Bool)arg1 error:(out id *)arg2;
 - (_Bool)invalidateAssertion:(id)arg1 error:(out id *)arg2;
 - (id)acquireAssertion:(id)arg1 error:(out id *)arg2;
-- (id)observeProcessAssertionsExpirationWarningWithBlock:(CDUnknownBlockType)arg1;
-- (void)registerServiceDelegate:(id)arg1;
-@property(readonly, nonatomic) RBSProcessHandle *handle;
-@property(readonly, copy, nonatomic) RBSProcessIdentity *identity;
 - (void)dealloc;
 - (id)init;
 

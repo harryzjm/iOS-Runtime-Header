@@ -15,7 +15,11 @@
 + (_Bool)_shouldAddRequest:(id)arg1;
 + (id)_harURLFilters;
 + (_Bool)_disabled;
-+ (void)_writeHTTPArchivesToDiskCompressed:(_Bool)arg1;
++ (id)_previouslyWrittenHTTPArchives;
++ (void)_periodicCleanup;
++ (void)_combineAndWriteHTTPArchivesToDiskCompressed:(_Bool)arg1;
++ (void)ams_writeHTTPArchivesToDiskCompressed:(_Bool)arg1;
++ (void)ams_addHTTPArchive:(id)arg1;
 + (void)addHTTPArchive:(id)arg1;
 + (void)setRemoveDisabled:(_Bool)arg1;
 + (void)setMaxBufferSizeOverride:(id)arg1;

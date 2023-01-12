@@ -8,7 +8,7 @@
 
 #import <DataAccessExpress/NSSecureCoding-Protocol.h>
 
-@class NSString, NSURL;
+@class NSData, NSString, NSURL;
 
 @interface DAESubscribedCalendarSummary : NSObject <NSSecureCoding>
 {
@@ -17,12 +17,14 @@
     NSString *_color;
     double _refreshInterval;
     NSString *_subscriptionID;
+    NSData *_data;
     NSURL *_subscriptionURL;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSURL *subscriptionURL; // @synthesize subscriptionURL=_subscriptionURL;
+@property(retain, nonatomic) NSData *data; // @synthesize data=_data;
 @property(retain, nonatomic) NSString *subscriptionID; // @synthesize subscriptionID=_subscriptionID;
 @property(nonatomic) double refreshInterval; // @synthesize refreshInterval=_refreshInterval;
 @property(retain, nonatomic) NSString *color; // @synthesize color=_color;

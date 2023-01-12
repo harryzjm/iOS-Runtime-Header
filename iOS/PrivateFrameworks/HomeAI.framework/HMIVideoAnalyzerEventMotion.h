@@ -6,12 +6,18 @@
 
 @interface HMIVideoAnalyzerEventMotion
 {
+    float _motionScore;
 }
 
 + (id)logCategory;
 + (_Bool)supportsSecureCoding;
+@property(readonly) float motionScore; // @synthesize motionScore=_motionScore;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)shortDescription;
+- (id)attributeDescriptions;
 - (_Bool)isEqual:(id)arg1;
-- (id)initWithConfidence:(id)arg1 boundingBox:(struct CGRect)arg2;
+- (id)initWithConfidence:(id)arg1 boundingBox:(struct CGRect)arg2 motionScore:(float)arg3;
 
 @end
 

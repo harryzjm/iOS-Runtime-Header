@@ -10,7 +10,7 @@
 @protocol WBSSiteMetadataProviderDelegate;
 
 @protocol WBSSiteMetadataProvider <NSObject>
-@property(nonatomic) __weak id <WBSSiteMetadataProviderDelegate> providerDelegate;
+@property __weak id <WBSSiteMetadataProviderDelegate> providerDelegate;
 - (void)prepareResponseForRequest:(WBSSiteMetadataRequest *)arg1 allowDelayedResponse:(_Bool)arg2;
 - (WBSSiteMetadataResponse *)responseForRequest:(WBSSiteMetadataRequest *)arg1 willProvideUpdates:(_Bool *)arg2;
 - (_Bool)canHandleRequest:(WBSSiteMetadataRequest *)arg1;

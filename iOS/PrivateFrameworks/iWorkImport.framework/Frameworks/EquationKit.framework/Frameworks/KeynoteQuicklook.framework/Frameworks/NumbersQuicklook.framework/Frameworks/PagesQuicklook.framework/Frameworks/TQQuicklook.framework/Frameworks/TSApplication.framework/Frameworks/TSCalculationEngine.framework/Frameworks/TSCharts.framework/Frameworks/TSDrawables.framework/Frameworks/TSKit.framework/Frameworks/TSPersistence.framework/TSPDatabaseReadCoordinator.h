@@ -7,7 +7,7 @@
 #import <TSPersistence/TSPDatabaseReaderDelegate-Protocol.h>
 #import <TSPersistence/TSPReadCoordinator-Protocol.h>
 
-@class NSMapTable, NSMutableDictionary, NSObject, NSString, NSURL, NSUUID, TSPDatabase, TSPFinalizeHandlerQueue, TSPObjectContext;
+@class NSMapTable, NSMutableDictionary, NSObject, NSString, NSURL, NSUUID, TSPDatabase, TSPDocumentLoadValidationPolicy, TSPFinalizeHandlerQueue, TSPObjectContext;
 @protocol OS_dispatch_queue;
 
 @interface TSPDatabaseReadCoordinator <TSPDatabaseReaderDelegate, TSPReadCoordinator>
@@ -27,8 +27,8 @@
 
 - (void).cxx_destruct;
 - (void)reader:(id)arg1 didUnarchiveObject:(id)arg2;
-- (void)reader:(id)arg1 didFindExternalRepeatedReference:(id)arg2 isWeak:(_Bool)arg3 allowUnknownObject:(_Bool)arg4 fromParentObject:(id)arg5 completion:(CDUnknownBlockType)arg6;
-- (void)reader:(id)arg1 didFindExternalReferenceToObjectIdentifier:(long long)arg2 componentIdentifier:(long long)arg3 isWeak:(_Bool)arg4 allowUnknownObject:(_Bool)arg5 fromParentObject:(id)arg6 completion:(CDUnknownBlockType)arg7;
+- (void)reader:(id)arg1 didFindExternalRepeatedReference:(id)arg2 isWeak:(_Bool)arg3 allowUnknownObject:(_Bool)arg4 objectClass:(Class)arg5 objectProtocol:(id)arg6 fromParentObject:(id)arg7 completion:(CDUnknownBlockType)arg8;
+- (void)reader:(id)arg1 didFindExternalReferenceToObjectIdentifier:(long long)arg2 componentIdentifier:(long long)arg3 isWeak:(_Bool)arg4 allowUnknownObject:(_Bool)arg5 objectClass:(id)arg6 objectProtocol:(id)arg7 fromParentObject:(id)arg8 completion:(CDUnknownBlockType)arg9;
 - (id)databaseReader:(id)arg1 wantsDataForAppRelativePath:(id)arg2 filename:(id)arg3;
 - (id)databaseReader:(id)arg1 wantsDataForDatabaseObjectIdentifier:(long long)arg2 filename:(id)arg3;
 - (id)reader:(id)arg1 wantsDataForIdentifier:(long long)arg2;
@@ -37,8 +37,7 @@
 - (id)externalObjectForIdentifier:(long long)arg1 componentIdentifier:(long long)arg2 isReadFinished:(_Bool)arg3;
 - (id)unarchivedObjectForIdentifier:(long long)arg1 isReadFinished:(_Bool)arg2;
 - (id)context;
-@property(readonly, nonatomic) _Bool canRetainObjectReferencedByWeakLazyReference;
-@property(readonly, nonatomic) long long sourceType;
+@property(readonly, nonatomic) unsigned int sourceType;
 @property(readonly, nonatomic) _Bool hasDocumentVersionUUID;
 @property(readonly, nonatomic) _Bool isReadingFromDocument;
 @property(readonly, nonatomic) NSUUID *baseObjectUUID;
@@ -48,7 +47,7 @@
 - (id)createUpgradedOldAppBundleResourcePath:(id)arg1;
 - (id)dataForAppRelativePath:(id)arg1 filename:(id)arg2;
 - (id)documentResourceInfoForAppRelativePath:(id)arg1;
-- (id)dataForReadChannel:(id)arg1 filename:(id)arg2 linkURLOrNil:(id)arg3;
+- (id)dataForReadChannel:(id)arg1 filename:(id)arg2 linkURL:(id)arg3;
 - (id)dataForLinkURL:(id)arg1 filename:(id)arg2;
 - (id)dataForDatabaseObject:(id)arg1 filename:(id)arg2;
 - (void)readComponent:(id)arg1 completionQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -59,9 +58,9 @@
 - (id)init;
 
 // Remaining properties
-@property(readonly, nonatomic) long long archiveValidationMode;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) TSPDocumentLoadValidationPolicy *documentLoadValidationPolicy;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) _Bool isCrossAppPaste;
 @property(readonly, nonatomic) _Bool isCrossDocumentPaste;

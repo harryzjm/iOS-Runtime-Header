@@ -12,8 +12,5 @@
 @property(nonatomic, getter=isEnabled) _Bool enabled;
 - (void)setSelectionStyle:(long long)arg1 animated:(_Bool)arg2;
 - (void)setEnabled:(_Bool)arg1 animated:(_Bool)arg2;
-
-@optional
-@property(readonly, nonatomic) long long baseWritingDirection;
 @end
 

@@ -37,7 +37,6 @@
 - (_Bool)checkSoftwareVersionForAccessories:(id)arg1 neededSoftwareVersion:(id)arg2;
 - (id)getAllHomePodFromItem:(id)arg1;
 - (void)settingsDidUpdate:(id)arg1;
-- (void)settings:(id)arg1 didUpdateSetting:(id)arg2;
 - (void)mediaObject:(id)arg1 didUpdateSettings:(id)arg2;
 - (void)_resetIfNeeded;
 - (id)_itemSectionForGroup:(id)arg1 entity:(id)arg2 settingItems:(id)arg3 groupItems:(id)arg4;

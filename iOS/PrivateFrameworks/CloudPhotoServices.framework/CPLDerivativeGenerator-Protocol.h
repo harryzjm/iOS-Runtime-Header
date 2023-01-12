@@ -8,7 +8,7 @@
 
 @protocol CPLDerivativeGenerator
 + (_Bool)isUnsupportedOriginalFormatError:(NSError *)arg1;
-+ (void)generateDerivativeResourcesFromInputResource:(CPLResource *)arg1 withAdjustments:(CPLAdjustments *)arg2 destinationDirectory:(NSURL *)arg3 derivativesFilter:(CPLDerivativesFilter *)arg4 completionHandler:(void (^)(NSArray *, NSError *))arg5;
++ (void)generateDerivativeResourcesFromInputResource:(CPLResource *)arg1 withAdjustments:(CPLAdjustments *)arg2 destinationDirectory:(NSURL *)arg3 derivativesFilter:(CPLDerivativesFilter *)arg4 recordChangeType:(unsigned long long)arg5 includePosterFrameForVideo:(_Bool)arg6 completionHandler:(void (^)(NSArray *, NSError *))arg7;
 + (_Bool)canGenerateImageDerivativesFromUTI:(NSString *)arg1;
 + (_Bool)isMovieUTI:(NSString *)arg1;
 @end

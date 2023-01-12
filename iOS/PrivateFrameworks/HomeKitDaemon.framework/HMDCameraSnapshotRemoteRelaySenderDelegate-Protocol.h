@@ -6,9 +6,10 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMDCameraSnapshotRemoteRelaySender, HMDCameraSnapshotSessionID, NSError;
+@class HMDCameraSnapshotRemoteRelaySender, HMDCameraSnapshotSessionID, HMDSnapshotFile, NSError;
 
 @protocol HMDCameraSnapshotRemoteRelaySenderDelegate <NSObject>
+- (void)snapshotRelaySender:(HMDCameraSnapshotRemoteRelaySender *)arg1 didSaveSnapshotFile:(HMDSnapshotFile *)arg2 sessionID:(HMDCameraSnapshotSessionID *)arg3;
 - (void)snapshotRelaySender:(HMDCameraSnapshotRemoteRelaySender *)arg1 didCompleteSendImage:(NSError *)arg2 sessionID:(HMDCameraSnapshotSessionID *)arg3;
 - (void)snapshotRelaySender:(HMDCameraSnapshotRemoteRelaySender *)arg1 didStartCaptureImage:(NSError *)arg2 sessionID:(HMDCameraSnapshotSessionID *)arg3;
 @end

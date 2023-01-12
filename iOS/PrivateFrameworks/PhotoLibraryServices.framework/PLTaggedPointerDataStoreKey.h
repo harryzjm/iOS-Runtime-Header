@@ -16,7 +16,7 @@
 {
 }
 
-+ (id)keyWithKeyStruct:(const void *)arg1 keyLength:(unsigned long long)arg2 forStoreClassID:(unsigned int)arg3 inLibraryWithID:(id)arg4;
++ (id)keyWithKeyStruct:(const void *)arg1 keyLength:(unsigned long long)arg2 forStoreClassID:(unsigned short)arg3 inLibraryWithID:(id)arg4;
 - (id)descriptionForAssetID:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToKey:(id)arg1;

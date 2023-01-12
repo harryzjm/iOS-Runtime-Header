@@ -12,6 +12,7 @@
 
 @interface CPSListTemplateViewController <UITableViewDelegate, CPUINowPlayingObserving, CPListTemplateProviding>
 {
+    _Bool _assistantCellAvailable;
     CPSSectionedDataSource *_dataSource;
     NSUUID *_currentSpinningIdentifier;
     NSUUID *_nextSpinningIdentifier;
@@ -24,7 +25,10 @@
     NSUUID *_lastFocusedItem;
 }
 
++ (_Bool)clientAssistantCellConfiguration:(id)arg1 availableWithError:(id *)arg2 templateEnvironment:(id)arg3;
++ (id)intentIdentifierFromConfigurationEnum:(long long)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool assistantCellAvailable; // @synthesize assistantCellAvailable=_assistantCellAvailable;
 @property(retain, nonatomic) NSUUID *lastFocusedItem; // @synthesize lastFocusedItem=_lastFocusedItem;
 @property(retain, nonatomic) CPSEmptyView *emptyView; // @synthesize emptyView=_emptyView;
 @property(retain, nonatomic) CPUINowPlayingManager *nowPlayingManager; // @synthesize nowPlayingManager=_nowPlayingManager;
@@ -38,7 +42,9 @@
 - (id)preferredFocusEnvironments;
 - (void)nowPlayingManager:(id)arg1 didUpdateSnapshot:(id)arg2;
 - (long long)_playingIndicatorStateForSnapshot:(id)arg1;
+- (void)_activateSiriForAssistantItem;
 - (void)_activateSiriForMessageItem:(id)arg1;
+- (void)didSelectMediaButton:(id)arg1;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
@@ -46,10 +52,12 @@
 - (void)tableView:(id)arg1 didUpdateFocusInContext:(id)arg2 withAnimationCoordinator:(id)arg3;
 - (void)_scrollViewAccessoryInsetsDidChange:(id)arg1;
 - (void)reloadItems:(id)arg1;
-- (void)updateSections:(id)arg1;
-- (void)_updateFocusForReload;
+- (void)updateAssistantCellConfiguration:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)reloadTemplate:(id)arg1;
 - (void)setButton:(id)arg1 hidden:(_Bool)arg2;
 - (void)setButton:(id)arg1 enabled:(_Bool)arg2;
+- (void)updateSectionHeaderImage:(id)arg1 forSectionIdentifier:(id)arg2;
+- (void)updateAssistantCell;
 - (_Bool)restoresFocusAfterTransition;
 - (void)_cellSelectionCompleted:(id)arg1;
 - (void)_cancelScheduledLoadingSpinner;

@@ -10,6 +10,9 @@
 {
 }
 
++ (_Bool)musicCurationAllowExplicitMusicContent;
++ (_Bool)musicCurationAllowAllForExport;
++ (_Bool)musicCurationShouldUseOldStylePreviewURL;
 + (unsigned long long)minimumNumberOfVisibleItems;
 + (unsigned long long)maximumNumberOfVisibleItems;
 + (unsigned long long)maximumNumberOfVisibleRegularItems;

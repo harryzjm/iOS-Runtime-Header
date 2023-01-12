@@ -9,7 +9,7 @@
 #import <AVConference/AVCSessionParticipantControlProtocol-Protocol.h>
 #import <AVConference/AVCSessionParticipantDelegate-Protocol.h>
 
-@class AVCSessionConfiguration, AVCSessionParticipant, NSArray, NSData, NSDictionary, NSMutableDictionary, NSString, VCXPCClientShared;
+@class AVCSessionConfiguration, AVCSessionParticipant, NSArray, NSData, NSDictionary, NSMutableDictionary, NSString, VCSessionPresentationInfo, VCXPCClientShared;
 @protocol AVCSessionDelegate, OS_dispatch_queue;
 
 @interface AVCSession : NSObject <AVCSessionParticipantDelegate, AVCSessionParticipantControlProtocol>
@@ -18,6 +18,7 @@
     NSMutableDictionary *_participantsToAdd;
     AVCSessionParticipant *_localParticipant;
     AVCSessionConfiguration *_configuration;
+    NSData *_cachedNegotiationData;
     NSString *_transportToken;
     id _delegate;
     NSObject<OS_dispatch_queue> *_delegateNotificationQueue;
@@ -28,8 +29,12 @@
     NSString *_uuid;
     NSData *_frequencyLevels;
     int _activeConfigurationCount;
+    VCSessionPresentationInfo *_presentationInfo;
+    _Bool _oneToOneModeEnabled;
 }
 
++ (id)configurationWithSessionMode:(long long)arg1;
++ (int)mediaNegotiatorVersionWithNegotiationProtocolVersion:(unsigned int)arg1;
 @property(retain, nonatomic) NSDictionary *capabilities; // @synthesize capabilities=_capabilities;
 @property(readonly, nonatomic) long long sessionToken; // @synthesize sessionToken=_sessionToken;
 @property(readonly, nonatomic) VCXPCClientShared *xpcConnection; // @synthesize xpcConnection=_connection;
@@ -42,6 +47,7 @@
 - (void)participant:(id)arg1 mediaPrioritiesDidChange:(id)arg2;
 - (void)participant:(id)arg1 videoPaused:(_Bool)arg2 didSucceed:(_Bool)arg3 error:(id)arg4;
 - (void)participant:(id)arg1 audioPaused:(_Bool)arg2 didSucceed:(_Bool)arg3 error:(id)arg4;
+- (void)participant:(id)arg1 screenEnabled:(_Bool)arg2 didSucceed:(_Bool)arg3 error:(id)arg4;
 - (void)participant:(id)arg1 videoEnabled:(_Bool)arg2 didSucceed:(_Bool)arg3 error:(id)arg4;
 - (void)participant:(id)arg1 audioEnabled:(_Bool)arg2 didSucceed:(_Bool)arg3 error:(id)arg4;
 - (void)participant:(id)arg1 frequencyLevelsDidChange:(id)arg2;
@@ -51,6 +57,7 @@
 - (id)newNSErrorWithErrorDictionary:(id)arg1;
 - (void)validateParticipantConfiguration;
 - (void)endParticipantConfiguration;
+- (void)appendConfigurationToXPCArguments:(id)arg1;
 - (void)beginParticipantConfiguration;
 - (void)updateConfiguration:(id)arg1;
 - (void)stopWithError:(id)arg1;
@@ -65,15 +72,20 @@
 - (id)initWithTransportToken:(id)arg1 configuration:(id)arg2 delegate:(id)arg3 queue:(id)arg4;
 - (id)initWithTransportToken:(id)arg1 configuration:(id)arg2 negotiationData:(id)arg3 delegate:(id)arg4 queue:(id)arg5;
 - (id)initPrivateWithTransportToken:(id)arg1 configuration:(id)arg2 negotiationData:(id)arg3 delegate:(id)arg4 queue:(id)arg5;
+@property(nonatomic) struct tagAVCSessionPresentationInfo presentationInfo;
 @property(nonatomic) id <AVCSessionDelegate> delegate;
+@property(nonatomic, getter=isOneToOneEnabled) _Bool oneToOneEnabled;
 @property(nonatomic) float volume;
 @property(nonatomic, getter=isAudioMuted) _Bool audioMuted;
+@property(nonatomic, getter=isScreenEnabled) _Bool screenEnabled;
 @property(nonatomic, getter=isVideoEnabled) _Bool videoEnabled;
 @property(nonatomic, getter=isAudioEnabled) _Bool audioEnabled;
 @property(nonatomic, getter=isVideoPaused) _Bool videoPaused;
 @property(nonatomic, getter=isAudioPaused) _Bool audioPaused;
+- (id)negotiationDataForProtocolVersion:(unsigned int)arg1;
 @property(readonly, nonatomic) NSData *negotiationData;
 @property(readonly, nonatomic) NSString *uuid;
+- (void)updateOneToOneModeEnabled:(_Bool)arg1;
 @property(readonly, nonatomic) NSArray *remoteParticipants;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;

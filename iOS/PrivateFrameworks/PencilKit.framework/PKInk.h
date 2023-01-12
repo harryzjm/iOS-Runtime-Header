@@ -8,7 +8,7 @@
 
 #import <PencilKit/NSCopying-Protocol.h>
 
-@class NSString, PKInkBehavior, UIColor;
+@class MISSING_TYPE, NSData, NSString, PKInkBehavior, UIColor;
 
 @interface PKInk : NSObject <NSCopying>
 {
@@ -19,6 +19,8 @@
     NSString *_variant;
     NSString *_identifier;
     double _weight;
+    MISSING_TYPE *__sixChannelAddColor;
+    MISSING_TYPE *__sixChannelMultiplyColor;
 }
 
 + (id)colorForLassoStroke;
@@ -30,6 +32,7 @@
 + (id)inkWithIdentifier:(id)arg1 color:(id)arg2 variant:(id)arg3;
 + (id)inkWithIdentifier:(id)arg1 color:(id)arg2 version:(unsigned long long)arg3 variant:(id)arg4;
 + (id)inkWithIdentifier:(id)arg1 color:(id)arg2;
++ (long long)currentInkVersionForInkIdentifier:(id)arg1;
 + (id)inkWithIdentifier:(id)arg1 properties:(id)arg2;
 + (id)inkWithIdentifier:(id)arg1 color:(id)arg2 weight:(double)arg3;
 + (id)inkWithType:(id)arg1 color:(id)arg2 weight:(double)arg3;
@@ -42,15 +45,26 @@
 @property(readonly, nonatomic) NSString *variant; // @synthesize variant=_variant;
 @property(readonly, nonatomic) unsigned long long version; // @synthesize version=_version;
 @property(retain, nonatomic) PKInkBehavior *behavior; // @synthesize behavior=_behavior;
+@property(nonatomic) MISSING_TYPE *_sixChannelMultiplyColor; // @synthesize _sixChannelMultiplyColor=__sixChannelMultiplyColor;
+@property(nonatomic) MISSING_TYPE *_sixChannelAddColor; // @synthesize _sixChannelAddColor=__sixChannelAddColor;
 @property(readonly, nonatomic) UIColor *color; // @synthesize color=_color;
+- (id)dictionaryRepresentation;
 - (id)_dataInUnknownFields;
 - (void)_addTestDataToUnknownFields;
 @property(readonly, nonatomic) _Bool _isStrokeGeneratingInk;
 @property(readonly, nonatomic) NSString *inkType;
 @property(readonly, nonatomic) double _weight;
 - (void)setWeight:(double)arg1;
+- (id)_sixChannelVersion;
+- (_Bool)_shouldSaveSixChannelMultiplyColor;
+- (_Bool)_shouldSaveSixChannelAddColor;
+- (void)_setupCustomizedSixChannelColors;
+- (void)_setupDefaultSixChannelAddAndMultiplyColors;
+- (MISSING_TYPE *)_defaultSixChannelMultiplyColor;
+- (MISSING_TYPE *)_defaultSixChannelAddColor;
 - (id)description;
 - (unsigned long long)hash;
+- (_Bool)isEqualUnweightedInk:(id)arg1;
 - (_Bool)isEqualInk:(id)arg1;
 - (unsigned long long)hashValueForFloat:(double)arg1;
 - (_Bool)isEqual:(id)arg1;
@@ -64,10 +78,12 @@
 - (_Bool)_isLassoInk;
 - (_Bool)_isHandwritingInk;
 - (id)initWithInkType:(id)arg1 color:(id)arg2;
-- (void)saveToV1Archive:(Ink_7b169424 *)arg1;
-- (id)initWithV1Archive:(const Ink_7b169424 *)arg1 serializationVersion:(unsigned long long)arg2;
-- (void)saveToArchive:(struct Ink *)arg1;
-- (id)initWithArchive:(const struct Ink *)arg1;
+- (void)saveToV1Archive:(void *)arg1;
+- (id)initWithV1Archive:(const void *)arg1 serializationVersion:(unsigned long long)arg2;
+- (void)saveToArchive:(void *)arg1;
+- (id)initWithArchive:(const void *)arg1;
+@property(readonly, nonatomic) NSData *rawValue;
+- (id)initWithRawValue:(id)arg1;
 
 @end
 

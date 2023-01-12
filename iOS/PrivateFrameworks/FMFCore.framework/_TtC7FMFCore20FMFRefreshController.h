@@ -10,12 +10,17 @@
 
 @interface _TtC7FMFCore20FMFRefreshController : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *identifier;
     MISSING_TYPE *delegate;
     MISSING_TYPE *selectedFriend;
     MISSING_TYPE *refreshReason;
     MISSING_TYPE *interactionController;
     MISSING_TYPE *apsConnectionHandler;
+    MISSING_TYPE *isSnapshotMode;
+    MISSING_TYPE *useOptimizedFetch;
+    MISSING_TYPE *dataManager;
     MISSING_TYPE *tapContexts;
+    MISSING_TYPE *liveSessionStatistics;
     MISSING_TYPE *refreshQueue;
     MISSING_TYPE *callbackInterval;
     MISSING_TYPE *minCallbackInterval;
@@ -23,6 +28,7 @@
     MISSING_TYPE *lastRefreshTime;
     MISSING_TYPE *refreshTimer;
     MISSING_TYPE *initializedOnce;
+    MISSING_TYPE *initializationInProgress;
     MISSING_TYPE *firstRefreshCompleted;
     MISSING_TYPE *isRefreshing;
 }

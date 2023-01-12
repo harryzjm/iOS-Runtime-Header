@@ -6,8 +6,13 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC16SiriAudioSupport20PlayMediaAppSelector : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *installedAppProvider;
+    MISSING_TYPE *appSelectionConfigurationProvider;
+    MISSING_TYPE *featureFlags;
 }
 
 @end

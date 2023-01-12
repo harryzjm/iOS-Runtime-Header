@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <CloudKit/CKPropertiesDescription-Protocol.h>
 #import <CloudKit/NSCopying-Protocol.h>
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
 @class CKContainerID, CKRecordID, CKShareID, CKShareParticipant, NSArray, NSData, NSMutableArray, NSMutableSet, NSString, NSURL;
 
-@interface CKShare <NSSecureCoding, NSCopying>
+@interface CKShare <CKPropertiesDescription, NSSecureCoding, NSCopying>
 {
     _Bool _encodeAllowsReadOnlyParticipantsToSeeEachOther;
     _Bool _allowsAnonymousPublicAccess;
@@ -20,6 +21,7 @@
     NSMutableArray *_lastFetchedParticipants;
     NSMutableArray *_allParticipants;
     long long _participantVisibility;
+    long long _participantSelfRemovalBehavior;
     CKContainerID *_containerID;
     CKRecordID *_rootRecordID;
     NSData *_invitedProtectionData;
@@ -46,6 +48,7 @@
 @property(copy, nonatomic) CKRecordID *rootRecordID; // @synthesize rootRecordID=_rootRecordID;
 @property(retain, nonatomic) CKContainerID *containerID; // @synthesize containerID=_containerID;
 @property(nonatomic) _Bool allowsAnonymousPublicAccess; // @synthesize allowsAnonymousPublicAccess=_allowsAnonymousPublicAccess;
+@property(nonatomic) long long participantSelfRemovalBehavior; // @synthesize participantSelfRemovalBehavior=_participantSelfRemovalBehavior;
 @property(nonatomic) long long participantVisibility; // @synthesize participantVisibility=_participantVisibility;
 @property(retain, nonatomic) NSMutableArray *allParticipants; // @synthesize allParticipants=_allParticipants;
 @property(nonatomic) _Bool encodeAllowsReadOnlyParticipantsToSeeEachOther; // @synthesize encodeAllowsReadOnlyParticipantsToSeeEachOther=_encodeAllowsReadOnlyParticipantsToSeeEachOther;
@@ -83,8 +86,9 @@
 - (_Bool)canHostServerURLInfo;
 @property(readonly, nonatomic) _Bool isZoneWideShare;
 - (_Bool)hasEncryptedData;
-- (id)description;
-- (id)CKDescriptionPropertiesWithPublic:(_Bool)arg1 private:(_Bool)arg2 shouldExpand:(_Bool)arg3;
+- (id)redactedDescription;
+@property(readonly, copy) NSString *description;
+- (void)CKDescribePropertiesUsing:(id)arg1;
 - (id)copyWithOriginalValues;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)allowsReadOnlyParticipantsToSeeEachOther;
@@ -105,6 +109,9 @@
 
 // Remaining properties
 @property(readonly, copy, nonatomic) NSURL *URL; // @dynamic URL;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

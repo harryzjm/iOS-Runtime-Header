@@ -21,6 +21,7 @@
 @property(readonly, nonatomic) unsigned long long retrainerType; // @synthesize retrainerType;
 @property(readonly, nonatomic) NSURL *modelFilePath; // @synthesize modelFilePath;
 @property(readonly, nonatomic) _Bool implicitTrainingRequired; // @synthesize implicitTrainingRequired;
+- (void)purgeLastSpeakerEmbedding;
 - (_Bool)resetModelForRetraining;
 - (_Bool)needsRetrainingWithAudioFiles:(id)arg1;
 - (id)purgeConfusionInformationWithPolicy:(CDUnknownBlockType)arg1;

@@ -12,7 +12,7 @@
 {
     NSArray *_presets;
     NSDictionary *_tags;
-    NSArray *_rows;
+    NSArray *_pickers;
     long long _presetCategory;
     AVTCoreModelPairing *_pairing;
 }
@@ -20,7 +20,7 @@
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) AVTCoreModelPairing *pairing; // @synthesize pairing=_pairing;
 @property(readonly, nonatomic) long long presetCategory; // @synthesize presetCategory=_presetCategory;
-@property(readonly, copy, nonatomic) NSArray *rows; // @synthesize rows=_rows;
+@property(readonly, copy, nonatomic) NSArray *pickers; // @synthesize pickers=_pickers;
 @property(readonly, copy, nonatomic) NSDictionary *tags; // @synthesize tags=_tags;
 @property(readonly, copy, nonatomic) NSArray *presets; // @synthesize presets=_presets;
 - (id)description;

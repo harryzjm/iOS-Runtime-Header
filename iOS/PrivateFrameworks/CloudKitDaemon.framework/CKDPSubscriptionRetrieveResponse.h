@@ -10,7 +10,6 @@
 
 @class NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface CKDPSubscriptionRetrieveResponse : PBCodable <NSCopying>
 {
     NSMutableArray *_subscriptions;

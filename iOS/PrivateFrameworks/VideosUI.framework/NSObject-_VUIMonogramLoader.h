@@ -8,5 +8,6 @@
 
 @interface NSObject (_VUIMonogramLoader)
 @property(nonatomic, setter=tv_setGeneratorType:) unsigned long long tv_generatorType;
+- (void)vui_debounce:(SEL)arg1 object:(id)arg2 delay:(double)arg3;
 @end
 

@@ -46,6 +46,7 @@
 @property(nonatomic) unsigned int transitTypeEnumValue;
 @property(nonatomic) _Bool hasCartoId;
 @property(nonatomic) unsigned int cartoId;
+- (id)_firstAttribute;
 @property(readonly, nonatomic) unsigned int iconAttributeValue;
 @property(readonly, nonatomic) unsigned int iconAttributeKey;
 @property(readonly, nonatomic) unsigned int defaultTransitType;

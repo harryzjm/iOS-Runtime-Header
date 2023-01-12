@@ -27,6 +27,11 @@
     HKInteractiveChartDisplayType *_standGoalDisplayType;
 }
 
++ (id)_activitySummaryFromCodableSummaryEntry:(id)arg1;
++ (id)_activitySummariesFromCodableCollection:(id)arg1;
++ (id)_codableActivitySummaryFromSummary:(id)arg1;
++ (id)_codableActivitySummaryDataFromSummaries:(id)arg1;
++ (void)encodeChartDataWithHealthStore:(id)arg1 dateCache:(id)arg2 displayTypeController:(id)arg3 unitController:(id)arg4 activityMoveMode:(long long)arg5 monthDateInterval:(id)arg6 sixMonthDateInterval:(id)arg7 completion:(CDUnknownBlockType)arg8;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) HKInteractiveChartDisplayType *standGoalDisplayType; // @synthesize standGoalDisplayType=_standGoalDisplayType;
 @property(readonly, nonatomic) HKInteractiveChartDisplayType *standValueDisplayType; // @synthesize standValueDisplayType=_standValueDisplayType;
@@ -45,6 +50,7 @@
 - (id)activitySummaryForCurrentRange;
 - (long long)graphSeriesTimeScope;
 - (id)seriesSelectionLineColorForGraphView:(id)arg1;
+- (_Bool)graphViewPointSelectionDifferentiatesSeriesGroups:(id)arg1;
 - (id)calendarQuerySampleType;
 - (id)calendarQueryDisplayType;
 - (void)tappedOnCurrentValueView:(id)arg1;
@@ -53,8 +59,8 @@
 - (id)makeCurrentValueView;
 - (id)descriptionForChartData:(id)arg1 timeScope:(long long)arg2;
 - (id)_rangeValueAsNumber:(id)arg1;
-- (id)_spanForValueDisplayType:(id)arg1 title:(id)arg2;
-- (id)descriptionSpansForGraphView:(id)arg1;
+- (id)_spanForValueDisplayType:(id)arg1 timeScope:(long long)arg2 title:(id)arg3;
+- (id)descriptionSpansForGraphView:(id)arg1 timeScope:(long long)arg2;
 - (id)descriptionSeriesForGraphView:(id)arg1;
 - (id)lollipopExtensionColor;
 - (id)lollipopAnnotationColor;
@@ -67,16 +73,19 @@
 - (id)_activityYAxisForActivityValue:(long long)arg1 zeroOnly:(_Bool)arg2 stackOffset:(long long)arg3 bottomLabelPadding:(double)arg4 displayTypeController:(id)arg5 unitPreferenceController:(id)arg6;
 - (id)_zeroStringForActivityValue:(long long)arg1 displayTypeController:(id)arg2 unitPreferenceController:(id)arg3;
 - (id)_activitySeriesForActivityValue:(long long)arg1 wheelchairUseCharacteristicCache:(id)arg2 unitPreferenceController:(id)arg3 displayTypeController:(id)arg4;
-- (id)_displayTypeForActivityValue:(long long)arg1 yAxis:(id)arg2 dataProvider:(id)arg3 displayTypeController:(id)arg4 unitPreferenceController:(id)arg5 wheelchairUseCharacteristicCache:(id)arg6;
+- (id)_displayTypeForActivityValue:(long long)arg1 yAxis:(id)arg2 dataProvider:(id)arg3 displayTypeController:(id)arg4 unitPreferenceController:(id)arg5 wheelchairUseCharacteristicCache:(id)arg6 timescopeToSummariesTable:(id)arg7;
 - (id)_unitForActivityValue:(long long)arg1 displayTypeController:(id)arg2 unitPreferenceController:(id)arg3;
 - (long long)_representativeDataTypeForActivityValue:(long long)arg1;
 - (id)_titleForActivityValue:(long long)arg1 wheelchairUseCharacteristicCache:(id)arg2;
 - (id)_missedGoalFillStyleForActivityValue:(long long)arg1;
 - (id)_metGoalFillStyleForActivityValue:(long long)arg1;
 - (id)_lineColorForActivityValue:(long long)arg1;
+- (long long)_findFirstWeekdayFromModel:(id)arg1;
+- (id)_timeScopeRangesFromSharableModel:(id)arg1;
+- (id)_decodeActivitySummariesFromQueryData:(id)arg1;
+- (id)_buildSummariesTableFromSharableModel:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
-- (id)initWithHealthStore:(id)arg1 unitPreferenceController:(id)arg2 dateCache:(id)arg3 chartDataCacheController:(id)arg4 selectedTimeScopeController:(id)arg5 sampleTypeDateRangeController:(id)arg6 wheelchairUseCharacteristicCache:(id)arg7 initialXValue:(id)arg8 activityMoveMode:(long long)arg9;
-- (id)initWithHealthStore:(id)arg1 unitPreferenceController:(id)arg2 dateCache:(id)arg3 chartDataCacheController:(id)arg4 selectedTimeScopeController:(id)arg5 sampleTypeDateRangeController:(id)arg6 wheelchairUseCharacteristicCache:(id)arg7 initialXValue:(id)arg8;
+- (id)initWithHealthStore:(id)arg1 unitPreferenceController:(id)arg2 dateCache:(id)arg3 chartDataCacheController:(id)arg4 selectedTimeScopeController:(id)arg5 sampleTypeDateRangeController:(id)arg6 wheelchairUseCharacteristicCache:(id)arg7 initialXValue:(id)arg8 activityMoveMode:(long long)arg9 chartSharableModel:(id)arg10;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HKGraphSeries, HKInteractiveChartDataFormatter, NSString, UIColor;
+@class HKDisplayType, HKGraphSeries, HKInteractiveChartDataFormatter, NSDictionary, NSString, UIColor;
 
 @interface HKInteractiveChartDisplayType
 {
-    HKGraphSeries *_graphSeries;
     UIColor *_color;
+    HKDisplayType *_baseDisplayType;
+    HKGraphSeries *_mainGraphSeries;
+    NSDictionary *_seriesForTimeScopeMapping;
     NSString *_specifiedDisplayName;
     NSString *_specifiedUnitName;
     HKInteractiveChartDataFormatter *_specifiedValueFormatter;
@@ -19,17 +21,23 @@
 @property(readonly, nonatomic) HKInteractiveChartDataFormatter *specifiedValueFormatter; // @synthesize specifiedValueFormatter=_specifiedValueFormatter;
 @property(readonly, nonatomic) NSString *specifiedUnitName; // @synthesize specifiedUnitName=_specifiedUnitName;
 @property(readonly, nonatomic) NSString *specifiedDisplayName; // @synthesize specifiedDisplayName=_specifiedDisplayName;
+@property(retain, nonatomic) NSDictionary *seriesForTimeScopeMapping; // @synthesize seriesForTimeScopeMapping=_seriesForTimeScopeMapping;
+@property(readonly, nonatomic) HKGraphSeries *mainGraphSeries; // @synthesize mainGraphSeries=_mainGraphSeries;
+@property(readonly, nonatomic) HKDisplayType *baseDisplayType; // @synthesize baseDisplayType=_baseDisplayType;
 @property(retain, nonatomic) UIColor *color; // @synthesize color=_color;
-@property(readonly, nonatomic) HKGraphSeries *graphSeries; // @synthesize graphSeries=_graphSeries;
 - (long long)_internalDisplayTypeIdentifier;
 - (id)description;
 - (id)hk_interactiveChartsFormatterForTimeScope:(long long)arg1;
 - (id)colorWithDisplayCategoryController:(id)arg1;
 - (id)unitNameForValue:(id)arg1 unitPreferenceController:(id)arg2;
 - (id)displayName;
-- (id)_initWithGraphSeries:(id)arg1 displayName:(id)arg2 unitDisplayNameOverrides:(id)arg3 localizationTableOverride:(id)arg4 chartingRules:(id)arg5 unitName:(id)arg6 valueFormatter:(id)arg7 dataTypeCode:(long long)arg8;
+- (id)graphSeriesForTimeScope:(long long)arg1;
+- (void)setIsCriticalForAutoscale:(_Bool)arg1;
+- (id)_initWithDisplayName:(id)arg1 unitDisplayNameOverrides:(id)arg2 localizationTableOverride:(id)arg3 chartingRules:(id)arg4 unitName:(id)arg5 valueFormatter:(id)arg6 dataTypeCode:(long long)arg7 baseDisplayType:(id)arg8 mainGraphSeries:(id)arg9 seriesForTimeScopeMapping:(id)arg10;
 - (id)initWithGraphSeries:(id)arg1 displayName:(id)arg2 unitName:(id)arg3 valueFormatter:(id)arg4 dataTypeCode:(long long)arg5;
+- (id)initWithBaseDisplayType:(id)arg1 valueFormatter:(id)arg2 dataTypeCode:(long long)arg3 seriesForTimeScopeMapping:(id)arg4;
 - (id)initWithGraphSeries:(id)arg1 baseDisplayType:(id)arg2 valueFormatter:(id)arg3 dataTypeCode:(long long)arg4;
+- (id)initWithGraphSeries:(id)arg1 baseDisplayType:(id)arg2 dataTypeCode:(long long)arg3;
 
 @end
 

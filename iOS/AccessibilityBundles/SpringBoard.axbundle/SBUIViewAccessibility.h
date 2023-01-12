@@ -13,20 +13,10 @@
 + (id)safeCategoryTargetClassName;
 - (double)_axScaleTransformForFocusLayerLineWidth;
 - (_Bool)_isTransparentFocusRegion;
-- (id)actionsForFloatingAppNubView;
-- (id)actionsForPinnedAppNubView;
-- (id)actionsForSideAppDivider;
-- (id)accessibilityCustomActions;
-- (void)_axAddCustomActionWithName:(id)arg1 gesture:(unsigned long long)arg2 toArray:(id)arg3;
 - (_Bool)_axPerformGestureForAction:(id)arg1;
 - (_Bool)_accessibilitySupportsActivateAction;
 - (_Bool)_accessibilityPointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (_Bool)_accessibilityOverridesInvalidFrames;
-- (_Bool)accessibilityPerformEscape;
-- (_Bool)_accessibilityUIViewCanPerformEscapeAction;
-- (_Bool)accessibilityActivate;
-- (id)accessibilityHint;
-- (_Bool)accessibilityScroll:(long long)arg1;
 
 @end
 

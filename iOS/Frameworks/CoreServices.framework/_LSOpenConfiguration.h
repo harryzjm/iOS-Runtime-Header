@@ -9,7 +9,7 @@
 #import <CoreServices/NSCopying-Protocol.h>
 #import <CoreServices/NSSecureCoding-Protocol.h>
 
-@class BSServiceConnectionEndpoint, NSDictionary, NSURL;
+@class BSServiceConnectionEndpoint, NSDictionary, NSURL, UISClickAttribution;
 
 @interface _LSOpenConfiguration : NSObject <NSCopying, NSSecureCoding>
 {
@@ -19,10 +19,12 @@
     NSDictionary *_frontBoardOptions;
     NSURL *_referrerURL;
     BSServiceConnectionEndpoint *_targetConnectionEndpoint;
+    UISClickAttribution *_clickAttribution;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UISClickAttribution *clickAttribution; // @synthesize clickAttribution=_clickAttribution;
 @property(retain, nonatomic) BSServiceConnectionEndpoint *targetConnectionEndpoint; // @synthesize targetConnectionEndpoint=_targetConnectionEndpoint;
 @property(nonatomic) _Bool allowURLOverrides; // @synthesize allowURLOverrides=_allowURLOverrides;
 @property(nonatomic, getter=isSensitive) _Bool sensitive; // @synthesize sensitive=_sensitive;

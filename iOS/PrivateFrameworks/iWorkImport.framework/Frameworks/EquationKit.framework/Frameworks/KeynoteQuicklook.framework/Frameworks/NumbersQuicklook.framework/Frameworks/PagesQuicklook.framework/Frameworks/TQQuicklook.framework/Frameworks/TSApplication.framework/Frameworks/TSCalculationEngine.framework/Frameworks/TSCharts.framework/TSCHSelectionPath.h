@@ -12,9 +12,9 @@
 
 @interface TSCHSelectionPath : NSObject <NSCopying>
 {
-    TSCHSelectionPathType *mPathType;
-    NSArray *mArguments;
-    TSCHSelectionPath *mSubSelection;
+    TSCHSelectionPathType *_pathType;
+    NSArray *_arguments;
+    TSCHSelectionPath *_subSelection;
 }
 
 + (id)selectionPathWithPathType:(id)arg1 arguments:(id)arg2 subSelection:(id)arg3;
@@ -25,10 +25,10 @@
 + (id)seriesEditModeSelectionPath;
 + (id)seriesSymbolsSelectionPathWithSeriesIndex:(unsigned long long)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) TSCHSelectionPath *subSelection; // @synthesize subSelection=mSubSelection;
-@property(readonly, nonatomic) TSCHSelectionPathType *pathType; // @synthesize pathType=mPathType;
-- (void)saveToArchive:(struct ChartSelectionPathArchive *)arg1;
-- (id)initWithArchive:(const struct ChartSelectionPathArchive *)arg1;
+@property(readonly, nonatomic) TSCHSelectionPath *subSelection; // @synthesize subSelection=_subSelection;
+@property(readonly, nonatomic) TSCHSelectionPathType *pathType; // @synthesize pathType=_pathType;
+- (void)saveToArchive:(void *)arg1;
+- (id)initWithArchive:(const void *)arg1;
 - (id)description;
 - (id)debuggingName;
 - (unsigned long long)hash;

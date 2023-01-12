@@ -10,6 +10,8 @@
 
 @interface _TtC7NewsUI210MainRouter : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *controller;
+    MISSING_TYPE *resolver;
     MISSING_TYPE *navigator;
 }
 

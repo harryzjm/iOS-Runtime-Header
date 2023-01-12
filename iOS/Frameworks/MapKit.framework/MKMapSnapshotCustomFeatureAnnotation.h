@@ -16,6 +16,7 @@
     _MKAnnotationViewCustomFeatureAnnotation *_internalCustomFeatureAnnotation;
 }
 
++ (id)customFeatureAnnotationForMapItem:(id)arg1 styleAttributes:(id)arg2 suppressLabel:(_Bool)arg3;
 + (id)customFeatureAnnotationForMapItem:(id)arg1 styleAttributes:(id)arg2;
 + (id)customFeatureAnnotationForMapItem:(id)arg1;
 + (_Bool)supportsSecureCoding;

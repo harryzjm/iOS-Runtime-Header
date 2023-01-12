@@ -9,7 +9,7 @@
 #import <SpringBoard/SBViewMorphAnimatorObserver-Protocol.h>
 #import <SpringBoard/SBWorkspaceApplicationSceneTransitionContextDelegate-Protocol.h>
 
-@class NSString, NSTimer, NSUUID, SBAppLayout, SBAutoPiPWorkspaceTransaction, SBFluidSwitcherViewController, SBMainDisplayLayoutState, SBMainWorkspaceTransaction, SBSceneLayoutWorkspaceTransaction, SBTransientOverlayViewController, SBUISwitcherAnimationController, UIApplicationSceneDeactivationAssertion;
+@class NSString, NSTimer, NSUUID, SBAppLayout, SBAutoPIPWorkspaceTransaction, SBFluidSwitcherViewController, SBMainDisplayLayoutState, SBMainWorkspaceTransaction, SBSceneLayoutWorkspaceTransaction, SBTransientOverlayViewController, SBUISwitcherAnimationController, UIApplicationSceneDeactivationAssertion;
 @protocol BSInvalidatable, SBFluidSwitcherGestureWorkspaceTransactionDelegate;
 
 @interface SBFluidSwitcherGestureWorkspaceTransaction <SBUIAnimationControllerObserver, SBSceneLayoutWorkspaceTransactionDelegate, SBWorkspaceApplicationSceneTransitionContextDelegate, SBViewMorphAnimatorObserver>
@@ -24,15 +24,15 @@
     _Bool _shouldCancelGestureUponInterruption;
     _Bool _hasCompletedAtLeastOneGesture;
     SBFluidSwitcherViewController *_switcherViewController;
+    SBUISwitcherAnimationController *_animationController;
     id <SBFluidSwitcherGestureWorkspaceTransactionDelegate> _delegate;
     UIApplicationSceneDeactivationAssertion *_backgroundingScenesDeactivationAssertion;
     SBMainDisplayLayoutState *_originalLayoutState;
     SBMainDisplayLayoutState *_activeLayoutState;
-    SBUISwitcherAnimationController *_animationController;
     SBMainWorkspaceTransaction *_finalRootTransaction;
     SBSceneLayoutWorkspaceTransaction *_sceneLayoutTransaction;
     CDUnknownBlockType _layoutCompletion;
-    SBAutoPiPWorkspaceTransaction *_autoPiPWorkspaceTransaction;
+    SBAutoPIPWorkspaceTransaction *_autoPIPWorkspaceTransaction;
     NSTimer *_activateScenesTimer;
     SBTransientOverlayViewController *_switcherTransitioningTransientOverlayViewController;
     NSUUID *_gestureID;
@@ -45,16 +45,16 @@
 @property(readonly, nonatomic) _Bool hasCompletedAtLeastOneGesture; // @synthesize hasCompletedAtLeastOneGesture=_hasCompletedAtLeastOneGesture;
 @property(retain, nonatomic) SBTransientOverlayViewController *switcherTransitioningTransientOverlayViewController; // @synthesize switcherTransitioningTransientOverlayViewController=_switcherTransitioningTransientOverlayViewController;
 @property(retain, nonatomic) NSTimer *activateScenesTimer; // @synthesize activateScenesTimer=_activateScenesTimer;
-@property(retain, nonatomic) SBAutoPiPWorkspaceTransaction *autoPiPWorkspaceTransaction; // @synthesize autoPiPWorkspaceTransaction=_autoPiPWorkspaceTransaction;
+@property(retain, nonatomic) SBAutoPIPWorkspaceTransaction *autoPIPWorkspaceTransaction; // @synthesize autoPIPWorkspaceTransaction=_autoPIPWorkspaceTransaction;
 @property(copy, nonatomic) CDUnknownBlockType layoutCompletion; // @synthesize layoutCompletion=_layoutCompletion;
 @property(retain, nonatomic) SBSceneLayoutWorkspaceTransaction *sceneLayoutTransaction; // @synthesize sceneLayoutTransaction=_sceneLayoutTransaction;
 @property(retain, nonatomic) SBMainWorkspaceTransaction *finalRootTransaction; // @synthesize finalRootTransaction=_finalRootTransaction;
-@property(retain, nonatomic) SBUISwitcherAnimationController *animationController; // @synthesize animationController=_animationController;
 @property(retain, nonatomic) SBMainDisplayLayoutState *activeLayoutState; // @synthesize activeLayoutState=_activeLayoutState;
 @property(retain, nonatomic) SBMainDisplayLayoutState *originalLayoutState; // @synthesize originalLayoutState=_originalLayoutState;
 @property(retain, nonatomic) UIApplicationSceneDeactivationAssertion *backgroundingScenesDeactivationAssertion; // @synthesize backgroundingScenesDeactivationAssertion=_backgroundingScenesDeactivationAssertion;
 @property(nonatomic) __weak id <SBFluidSwitcherGestureWorkspaceTransactionDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool shouldCancelGestureUponInterruption; // @synthesize shouldCancelGestureUponInterruption=_shouldCancelGestureUponInterruption;
+@property(retain, nonatomic) SBUISwitcherAnimationController *animationController; // @synthesize animationController=_animationController;
 @property(nonatomic) __weak SBFluidSwitcherViewController *switcherViewController; // @synthesize switcherViewController=_switcherViewController;
 - (void)_updatePPTsForAnimationEndedWithFinalLayoutState:(id)arg1;
 - (void)_updatePPTsForGestureEnded;
@@ -70,6 +70,7 @@
 - (void)_runSceneLayoutTransactionForTransitionRequest:(id)arg1 updateScenes:(_Bool)arg2;
 - (void)_acquireBackgroundingScenesDeactivationAssertionForTransitionRequest:(id)arg1;
 - (void)completeGestureWithTransitionRequest:(id)arg1;
+- (void)updateGestureWithTransitionRequest:(id)arg1;
 - (void)transaction:(id)arg1 didEndLayoutTransitionWithContinuation:(CDUnknownBlockType)arg2;
 - (void)transaction:(id)arg1 performTransitionWithCompletion:(CDUnknownBlockType)arg2;
 - (void)transactionWillBeginLayoutTransition:(id)arg1;
@@ -81,6 +82,7 @@
 - (void)_finishWithGesture:(id)arg1;
 - (void)_updateWithGesture:(id)arg1;
 - (void)_beginWithGesture:(id)arg1;
+- (void)_willBeginWithGesture:(id)arg1;
 - (void)_switcherGestureDidUpdate:(id)arg1;
 - (void)didEndAllAnimations;
 - (void)_finishWithCompletionType:(long long)arg1;

@@ -7,12 +7,11 @@
 #import <objc/NSObject.h>
 
 @class NSDictionary, NSMutableArray, NSOperationQueue, NSString, RTCReporting;
-@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface MPRTCReportingSession : NSObject
 {
-    NSObject<OS_dispatch_queue> *_accessQueue;
+    struct os_unfair_lock_s _lock;
     NSDictionary *_additionalUserInfo;
     NSString *_clientName;
     int _clientType;

@@ -23,6 +23,7 @@
 - (void)tableView:(UITableView *)arg1 didBeginMultipleSelectionInteractionAtIndexPath:(NSIndexPath *)arg2;
 - (_Bool)tableView:(UITableView *)arg1 shouldBeginMultipleSelectionInteractionAtIndexPath:(NSIndexPath *)arg2;
 - (_Bool)tableView:(UITableView *)arg1 shouldSpringLoadRowAtIndexPath:(NSIndexPath *)arg2 withContext:(id <UISpringLoadedInteractionContext>)arg3;
+- (_Bool)tableView:(UITableView *)arg1 selectionFollowsFocusForRowAtIndexPath:(NSIndexPath *)arg2;
 - (NSIndexPath *)indexPathForPreferredFocusedViewInTableView:(UITableView *)arg1;
 - (void)tableView:(UITableView *)arg1 didUpdateFocusInContext:(UITableViewFocusUpdateContext *)arg2 withAnimationCoordinator:(UIFocusAnimationCoordinator *)arg3;
 - (_Bool)tableView:(UITableView *)arg1 shouldUpdateFocusInContext:(UITableViewFocusUpdateContext *)arg2;

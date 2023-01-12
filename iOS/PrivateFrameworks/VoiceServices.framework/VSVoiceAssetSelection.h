@@ -6,19 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class MAAsset, NSString, VSVoiceAsset;
+@class MAAsset, NSString, VSTrialVoice, VSVoiceAsset;
 
 @interface VSVoiceAssetSelection : NSObject
 {
     VSVoiceAsset *_voiceData;
     MAAsset *_asset;
+    VSTrialVoice *_trialVoice;
     NSString *_builtInVoicePath;
     NSString *_voicePath;
+    struct _opaque_pthread_mutex_t _voicePathLock;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) struct _opaque_pthread_mutex_t voicePathLock; // @synthesize voicePathLock=_voicePathLock;
 @property(retain, nonatomic) NSString *voicePath; // @synthesize voicePath=_voicePath;
 @property(retain) NSString *builtInVoicePath; // @synthesize builtInVoicePath=_builtInVoicePath;
+@property(retain) VSTrialVoice *trialVoice; // @synthesize trialVoice=_trialVoice;
 @property(retain) MAAsset *asset; // @synthesize asset=_asset;
 @property(retain) VSVoiceAsset *voiceData; // @synthesize voiceData=_voiceData;
 - (double)preferenceScore;
@@ -27,6 +31,9 @@
 - (unsigned long long)size;
 - (id)descriptiveKey;
 - (id)key;
+- (void)dealloc;
+- (id)initWithTrialVoice:(id)arg1;
+- (id)init;
 
 @end
 

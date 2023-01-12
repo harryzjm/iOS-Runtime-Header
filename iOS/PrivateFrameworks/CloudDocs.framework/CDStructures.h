@@ -17,6 +17,11 @@ struct CGSize {
     double _field2;
 };
 
+struct NSFileProviderTypeAndCreator {
+    unsigned int _field1;
+    unsigned int _field2;
+};
+
 #pragma mark Typedef'd Structures
 
 typedef struct {

@@ -18,6 +18,7 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long senderID; // @synthesize senderID=_senderID;
+- (void)sendIOHIDEventRef:(struct __IOHIDEvent *)arg1;
 - (void)sendEventRepresentation:(id)arg1;
 - (id)init;
 

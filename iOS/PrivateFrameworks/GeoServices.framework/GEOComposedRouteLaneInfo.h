@@ -20,6 +20,8 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+- (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
 @property(readonly, nonatomic) _Bool isHOVLane;
 @property(readonly, nonatomic) _Bool isPreferredLaneForManeuver;
 @property(readonly, nonatomic) _Bool isLaneForManeuver;

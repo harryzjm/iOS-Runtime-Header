@@ -6,29 +6,34 @@
 
 #import <PhotosUI/PUBrowsingViewModelChangeObserver-Protocol.h>
 
-@class NSString, PUBrowsingViewModel, UIColor, _UIContentUnavailableView;
+@class NSString, PUBrowsingViewModel, UIColor, UIVisualEffectView, _UIContentUnavailableView;
 
 __attribute__((visibility("hidden")))
 @interface PUBrowsingBackgroundTileViewController <PUBrowsingViewModelChangeObserver>
 {
     _Bool _shouldDisplayEmptyPlaceholder;
+    _Bool _shouldDisplayBackgroundBlur;
     _Bool __needsUpdateColor;
     UIColor *_backgroundColorOverride;
     PUBrowsingViewModel *_viewModel;
     CDUnknownBlockType __nextColorUpdateAnimatorBlock;
     _UIContentUnavailableView *__emptyPlaceholderView;
+    UIVisualEffectView *__backgroundBlurView;
     struct CGRect __emptyPlaceholderFrame;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic, setter=_setBackgroundBlurView:) UIVisualEffectView *_backgroundBlurView; // @synthesize _backgroundBlurView=__backgroundBlurView;
 @property(nonatomic, setter=_setEmptyPlaceholderFrame:) struct CGRect _emptyPlaceholderFrame; // @synthesize _emptyPlaceholderFrame=__emptyPlaceholderFrame;
 @property(retain, nonatomic, setter=_setEmptyPlaceholderView:) _UIContentUnavailableView *_emptyPlaceholderView; // @synthesize _emptyPlaceholderView=__emptyPlaceholderView;
 @property(copy, nonatomic, setter=_setNextColorUpdateAnimatorBlock:) CDUnknownBlockType _nextColorUpdateAnimatorBlock; // @synthesize _nextColorUpdateAnimatorBlock=__nextColorUpdateAnimatorBlock;
 @property(nonatomic, setter=_setNeedsUpdateColor:) _Bool _needsUpdateColor; // @synthesize _needsUpdateColor=__needsUpdateColor;
 @property(retain, nonatomic) PUBrowsingViewModel *viewModel; // @synthesize viewModel=_viewModel;
+@property(nonatomic) _Bool shouldDisplayBackgroundBlur; // @synthesize shouldDisplayBackgroundBlur=_shouldDisplayBackgroundBlur;
 @property(nonatomic) _Bool shouldDisplayEmptyPlaceholder; // @synthesize shouldDisplayEmptyPlaceholder=_shouldDisplayEmptyPlaceholder;
 @property(retain, nonatomic) UIColor *backgroundColorOverride; // @synthesize backgroundColorOverride=_backgroundColorOverride;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
+- (void)_updateBackgroundBlurViewAnimated:(_Bool)arg1;
 - (void)_updateEmptyPlaceholderAnimated:(_Bool)arg1;
 - (struct CGRect)_emptyPlaceholderFrameForLayoutInfo:(id)arg1;
 - (void)_updateColorIfNeeded;

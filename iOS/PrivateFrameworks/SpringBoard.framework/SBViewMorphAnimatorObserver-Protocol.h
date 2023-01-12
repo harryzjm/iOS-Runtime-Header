@@ -16,6 +16,7 @@
 - (void)didEndAllAnimations;
 - (void)didEndTargetAnimations:(unsigned long long)arg1 finished:(_Bool)arg2 continueBlock:(void (^)(void))arg3;
 - (void)didEndSourceAnimations:(unsigned long long)arg1 finished:(_Bool)arg2 continueBlock:(void (^)(void))arg3;
+- (void)willRemoveTargeMatchMoveAnimationAtFrame:(struct CGRect)arg1 withinSourceFrame:(struct CGRect)arg2;
 - (void)willStartTargetAnimations:(unsigned long long)arg1;
 - (void)willStartSourceAnimations:(unsigned long long)arg1;
 @end

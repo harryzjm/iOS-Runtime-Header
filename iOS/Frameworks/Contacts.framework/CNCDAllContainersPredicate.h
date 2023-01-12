@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 
 @property(nonatomic) _Bool includeDisabledContainers; // @synthesize includeDisabledContainers=_includeDisabledContainers;
 - (id)cn_persistenceFilterRequest;
-- (id)cn_coreDataPredicate;
 - (id)cn_topLevelFilter;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

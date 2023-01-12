@@ -10,7 +10,7 @@
 #import <MapKit/WKNavigationDelegate-Protocol.h>
 #import <MapKit/WKUIDelegate-Protocol.h>
 
-@class MKWebBridge, MKWebViewFactoryItem, NSLayoutConstraint, NSString, NSURL, UIActivityIndicatorView, WKNavigation, WKWebView;
+@class MKWebBridge, MKWebContentTraits, MKWebViewFactoryItem, NSLayoutConstraint, NSString, NSURL, UIActivityIndicatorView, WKNavigation, WKWebView;
 @protocol MKWebContentViewControllerDelegate;
 
 @interface MKWebContentViewController <WKNavigationDelegate, WKUIDelegate, MKInfoCardThemeListener, MKWebBridgeDelegate, MKModuleViewControllerProtocol>
@@ -22,13 +22,13 @@
     UIActivityIndicatorView *_activityIndicatorView;
     NSURL *_resolvedURL;
     WKNavigation *_currentWebNavigation;
+    MKWebContentTraits *_webContentTraits;
     _Bool _loading;
     id <MKWebContentViewControllerDelegate> _delegate;
     NSURL *_url;
 }
 
 + (id)resolvedURLForRelativeURL:(id)arg1;
-+ (void)initialize;
 - (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isLoading) _Bool loading; // @synthesize loading=_loading;
 @property(readonly, nonatomic) NSURL *url; // @synthesize url=_url;
@@ -52,6 +52,7 @@
 - (void)_startLoading;
 - (void)viewDidLoad;
 - (void)dealloc;
+- (id)initWithURL:(id)arg1 traits:(id)arg2;
 - (id)initWithURL:(id)arg1;
 - (_Bool)_canShowWhileLocked;
 

@@ -4,8 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class HDProfile;
+
 @interface HDDemoDataMobilitySampleGenerator
 {
+    HDProfile *_profile;
     double _nextStepLengthSampleTime;
     double _nextWalkingSpeedSampleTime;
     double _nextAsymmetryPercentageSampleTime;
@@ -13,26 +16,14 @@
     double _nextSixMinuteWalkTestDistanceSampleTime;
     double _nextStairAscentSpeedSampleTime;
     double _nextStairDescentSpeedSampleTime;
+    double _nextWalkingSteadinessSampleTime;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic) double nextStairDescentSpeedSampleTime; // @synthesize nextStairDescentSpeedSampleTime=_nextStairDescentSpeedSampleTime;
-@property(nonatomic) double nextStairAscentSpeedSampleTime; // @synthesize nextStairAscentSpeedSampleTime=_nextStairAscentSpeedSampleTime;
-@property(nonatomic) double nextSixMinuteWalkTestDistanceSampleTime; // @synthesize nextSixMinuteWalkTestDistanceSampleTime=_nextSixMinuteWalkTestDistanceSampleTime;
-@property(nonatomic) double nextDoubleSupportPercentageSampleTime; // @synthesize nextDoubleSupportPercentageSampleTime=_nextDoubleSupportPercentageSampleTime;
-@property(nonatomic) double nextAsymmetryPercentageSampleTime; // @synthesize nextAsymmetryPercentageSampleTime=_nextAsymmetryPercentageSampleTime;
-@property(nonatomic) double nextWalkingSpeedSampleTime; // @synthesize nextWalkingSpeedSampleTime=_nextWalkingSpeedSampleTime;
-@property(nonatomic) double nextStepLengthSampleTime; // @synthesize nextStepLengthSampleTime=_nextStepLengthSampleTime;
-- (double)_generateWalkingDataSamplesForDemoPerson:(id)arg1 atTime:(double)arg2 sampleDate:(id)arg3 addFromWatch:(_Bool)arg4 shouldDecreaseDuringRehab:(_Bool)arg5 objectCollection:(id)arg6 nextSampleTime:(double)arg7 typeIdentifier:(id)arg8 unit:(id)arg9 sampleMean:(double)arg10 sampleMeanStdDev:(double)arg11 sampleFrequency:(double)arg12 sampleFrequencyStdDev:(double)arg13;
-- (_Bool)_isDemoPersonWalkingAboveAverage;
-- (void)_generateStairDescentSpeedSamplesForDemoPerson:(id)arg1 atTime:(double)arg2 sampleDate:(id)arg3 objectCollection:(id)arg4;
-- (void)_generateStairAscentSpeedSamplesForDemoPerson:(id)arg1 atTime:(double)arg2 sampleDate:(id)arg3 objectCollection:(id)arg4;
-- (void)_generateSixMinuteWalkTestDistanceSamplesForDemoPerson:(id)arg1 atTime:(double)arg2 sampleDate:(id)arg3 objectCollection:(id)arg4;
-- (void)_generateDoubleSupportPercentageSamplesForDemoPerson:(id)arg1 atTime:(double)arg2 sampleDate:(id)arg3 objectCollection:(id)arg4;
-- (void)_generateAsymmetryPercentageSamplesForDemoPerson:(id)arg1 atTime:(double)arg2 sampleDate:(id)arg3 objectCollection:(id)arg4;
-- (void)_generateWalkingSpeedSamplesForDemoPerson:(id)arg1 atTime:(double)arg2 sampleDate:(id)arg3 objectCollection:(id)arg4;
-- (void)_generateStepLengthSamplesForDemoPerson:(id)arg1 atTime:(double)arg2 sampleDate:(id)arg3 objectCollection:(id)arg4;
-- (void)generateSamplesForDemoPerson:(id)arg1 atTime:(double)arg2 sampleDate:(id)arg3 objectCollection:(id)arg4;
+- (void).cxx_destruct;
+- (void)generateSamplesForDemoPerson:(id)arg1 fromTime:(double)arg2 toTime:(double)arg3 currentDate:(id)arg4 objectCollection:(id)arg5;
+- (void)generateFirstRunSampleForDemoPerson:(id)arg1 firstDate:(id)arg2 objectCollection:(id)arg3;
+- (void)setProfile:(id)arg1 provenance:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;

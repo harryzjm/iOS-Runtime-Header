@@ -34,7 +34,7 @@
 - (void)layoutSubviewsForAlignmentContents;
 - (void)layoutSubviewsForContents;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)configureForChatItem:(id)arg1;
+- (void)configureForChatItem:(id)arg1 context:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

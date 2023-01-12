@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_b504f884)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_b504f884)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) _Bool has_unsuggested_alternatives;
 @property(readonly, nonatomic) NSArray *tok_phrases;
 - (id)copyWithZone:(struct _NSZone *)arg1;

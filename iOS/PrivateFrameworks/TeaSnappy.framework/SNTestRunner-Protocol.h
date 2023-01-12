@@ -11,5 +11,6 @@
 @protocol SNTestRunner <NSObject>
 - (_Bool)runTest:(NSString *)arg1 options:(NSDictionary *)arg2 fallingBackWith:(_Bool (^)(void))arg3;
 - (_Bool)runTest:(NSString *)arg1 options:(NSDictionary *)arg2;
+- (_Bool)runExtendedLaunchTest;
 @end
 

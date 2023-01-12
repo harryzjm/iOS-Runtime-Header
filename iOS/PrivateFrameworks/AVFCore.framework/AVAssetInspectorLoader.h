@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) long long firstFragmentSequenceNumber;
 @property(readonly, nonatomic, getter=_isStreaming) _Bool streaming;
 @property(readonly, nonatomic) _Bool hasProtectedContent;
+@property(readonly, nonatomic) NSArray *contentKeySpecifiersEligibleForPreloading;
 @property(readonly, nonatomic) unsigned long long downloadToken;
 @property(readonly, nonatomic) NSURL *originalNetworkContentURL;
 @property(readonly, nonatomic) NSURL *resolvedURL;
@@ -39,6 +40,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=isExportable) _Bool exportable;
 @property(readonly, nonatomic, getter=isPlayable) _Bool playable;
 @property(readonly, nonatomic) NSString *lyrics;
+@property(readonly, nonatomic) NSArray *variants;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 duration;
 @property(readonly, nonatomic, getter=_classForTrackInspectors) Class classForTrackInspectors;
 @property(readonly, nonatomic, getter=_playbackItem) struct OpaqueFigPlaybackItem *playbackItem;

@@ -6,7 +6,7 @@
 
 #import <PassKitCore/PDXPCServiceExportedInterface-Protocol.h>
 
-@class NSArray, NSSet, NSString, PKRule;
+@class NSArray, NSData, NSSet, NSString, PKRule;
 
 @protocol PDDiscoveryServiceExportedInterface <PDXPCServiceExportedInterface>
 - (void)removeDiscoveryUserNotificationsWithCompletion:(void (^)(NSError *))arg1;
@@ -14,7 +14,14 @@
 - (void)deleteRuleWithIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)insertRule:(PKRule *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)rulesWithCompletion:(void (^)(NSSet *, NSError *))arg1;
-- (void)displayedDiscoveryItemWithIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)archivedTokenForDiscoveryAnalyticsSubject:(void (^)(NSData *, NSError *))arg1;
+- (void)setArchivedTokenForDiscoveryAnalyticsSubject:(NSData *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)completedDiscoveryItemCTAWithCompletion:(void (^)(NSUUID *, NSString *, NSString *, NSNumber *, long long, NSError *))arg1;
+- (void)tappedDiscoveryItemCTA:(NSString *)arg1 itemIdentifier:(NSString *)arg2 cardSize:(long long)arg3 completion:(void (^)(NSUUID *, NSNumber *, NSError *))arg4;
+- (void)removedAllDiscoveryItemsWithCompletion:(void (^)(NSError *))arg1;
+- (void)dismissedDiscoveryItemWithIdentifier:(NSString *)arg1 completion:(void (^)(NSUUID *, NSNumber *, NSError *))arg2;
+- (void)expandedDiscoveryItemWithIdentifier:(NSString *)arg1 completion:(void (^)(NSUUID *, NSNumber *, NSError *))arg2;
+- (void)displayedDiscoveryItemWithIdentifier:(NSString *)arg1 isWelcomeCard:(_Bool)arg2 completion:(void (^)(NSUUID *, NSNumber *, NSError *))arg3;
 - (void)displayedDiscoveryEngagementMessageWithIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)removeDiscoveryMessageWithIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)insertDiscoveryEngagementMessages:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
@@ -25,6 +32,7 @@
 - (void)discoveryArticleLayoutForItemWithIdentifier:(NSString *)arg1 completion:(void (^)(PKDiscoveryArticleLayout *, NSError *))arg2;
 - (void)discoveryItemsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)updateDiscoveryItemWithIdentifier:(NSString *)arg1 forAction:(long long)arg2 completion:(void (^)(NSError *))arg3;
+- (void)manifestAllowsMiniCardsWithCompletion:(void (^)(NSError *, _Bool))arg1;
 - (void)updateDiscoveryManifestWithCompletion:(void (^)(NSError *))arg1;
 - (void)discoveryArticleLayoutsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 @end

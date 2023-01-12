@@ -8,15 +8,18 @@
 {
 }
 
-+ (id)_localizedNameForValue:(unsigned long long)arg1 forDevice:(id)arg2;
++ (id)domain;
 + (id)_snapshotKeyForValue:(unsigned long long)arg1 forDevice:(id)arg2;
 + (id)__orderedValuesForDevice:(id)arg1;
 + (id)_orderedValuesForDevice:(id)arg1;
 + (id)optionWithColor:(unsigned long long)arg1 forDevice:(id)arg2;
-- (id)_valueToFaceBundleStringDict;
-- (_Bool)optionExistsInDevice:(id)arg1;
-@property(readonly, nonatomic) unsigned long long color;
+- (id)pigmentEditOption;
 - (long long)swatchStyle;
+- (id)_valueToFaceBundleStringDict;
+- (id)localizedName;
+- (_Bool)optionExistsInDevice:(id)arg1;
+- (_Bool)isPrideOption;
+@property(readonly, nonatomic) unsigned long long color;
 
 @end
 

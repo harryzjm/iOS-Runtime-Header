@@ -13,6 +13,7 @@
     NSObject<OS_os_log> *_loggingConnection;
 }
 
++ (id)memoriesMusicLogging;
 + (id)sharedLogging;
 - (void).cxx_destruct;
 @property(readonly) NSObject<OS_os_log> *loggingConnection; // @synthesize loggingConnection=_loggingConnection;

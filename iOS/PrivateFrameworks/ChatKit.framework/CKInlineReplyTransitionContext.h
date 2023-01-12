@@ -10,6 +10,8 @@
 
 @interface CKInlineReplyTransitionContext : NSObject
 {
+    _Bool _wantsModalPresentation;
+    _Bool _wantsUnanimatedPresentation;
     _Bool _presentWithKeyboard;
     _Bool _keyboardWasUpInMainTranscript;
     NSDictionary *_visibleChatItemToFrameMap;
@@ -19,6 +21,8 @@
 - (void).cxx_destruct;
 @property(nonatomic) _Bool keyboardWasUpInMainTranscript; // @synthesize keyboardWasUpInMainTranscript=_keyboardWasUpInMainTranscript;
 @property(nonatomic) _Bool presentWithKeyboard; // @synthesize presentWithKeyboard=_presentWithKeyboard;
+@property(nonatomic) _Bool wantsUnanimatedPresentation; // @synthesize wantsUnanimatedPresentation=_wantsUnanimatedPresentation;
+@property(nonatomic) _Bool wantsModalPresentation; // @synthesize wantsModalPresentation=_wantsModalPresentation;
 @property(copy, nonatomic) NSString *anchorChatItemGUID; // @synthesize anchorChatItemGUID=_anchorChatItemGUID;
 @property(retain, nonatomic) NSDictionary *visibleChatItemToFrameMap; // @synthesize visibleChatItemToFrameMap=_visibleChatItemToFrameMap;
 - (id)description;

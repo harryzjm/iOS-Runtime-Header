@@ -10,7 +10,7 @@
 
 @interface CRCHPatternNetwork : NSObject
 {
-    struct CRCHNetwork *_network;
+    void *_network;
     NSDictionary *_symbols;
     NSDictionary *_startEdges;
     NSDictionary *_startCursorForContentTypes;

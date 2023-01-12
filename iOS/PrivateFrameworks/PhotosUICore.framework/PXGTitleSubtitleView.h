@@ -20,5 +20,8 @@
 - (void)prepareForReuse;
 - (void)becomeReusable;
 
+// Remaining properties
+@property(readonly, nonatomic) _Bool shouldReuseWhenInvisible;
+
 @end
 

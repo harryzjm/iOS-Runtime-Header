@@ -9,15 +9,19 @@
 @interface CLSInputPeopleClue
 {
     CLSPersonIdentity *_person;
+    _Bool _includeMergeCandidates;
     PHPhotoLibrary *_photoLibrary;
     unsigned long long _numberOfFaces;
 }
 
-+ (id)cluesWithPeopleUUIDs:(id)arg1 inPhotoLibrary:(id)arg2;
-+ (id)clueWithPeopleUUID:(id)arg1 inPhotoLibrary:(id)arg2;
++ (id)cluesWithConsolidatedPersonLocalIdentifiers:(id)arg1 inPhotoLibrary:(id)arg2;
++ (id)cluesWithPersonLocalIdentifiers:(id)arg1 inPhotoLibrary:(id)arg2;
++ (id)clueWithConsolidatedPersonLocalIdentifier:(id)arg1 inPhotoLibrary:(id)arg2;
++ (id)clueWithPersonLocalIdentifier:(id)arg1 inPhotoLibrary:(id)arg2;
 + (id)cluesWithPeoples:(id)arg1;
 + (id)clueWithPeople:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool includeMergeCandidates; // @synthesize includeMergeCandidates=_includeMergeCandidates;
 @property(nonatomic) unsigned long long numberOfFaces; // @synthesize numberOfFaces=_numberOfFaces;
 @property(nonatomic) __weak PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 - (_Bool)isEqualToClue:(id)arg1;

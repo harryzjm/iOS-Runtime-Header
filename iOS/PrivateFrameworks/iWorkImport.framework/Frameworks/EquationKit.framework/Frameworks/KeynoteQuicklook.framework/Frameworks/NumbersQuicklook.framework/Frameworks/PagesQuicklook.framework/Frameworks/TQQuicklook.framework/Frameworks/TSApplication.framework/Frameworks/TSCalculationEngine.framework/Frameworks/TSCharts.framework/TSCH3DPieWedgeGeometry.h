@@ -8,39 +8,39 @@
 
 @interface TSCH3DPieWedgeGeometry
 {
-    float mStartAngle;
-    float mEndAngle;
-    long long mAngleSteps;
-    long long mRadiusSteps;
-    long long mBevelEdgeSteps;
-    float mRadius;
-    float mBottomZ;
-    float mTopZ;
-    unsigned int mCapOffset;
-    unsigned int mCapCount;
-    TSCH3DNormalDirectionMapper *mNormalDirectionMapper;
+    float _startAngle;
+    float _endAngle;
+    long long _angleSteps;
+    long long _radiusSteps;
+    long long _bevelEdgeSteps;
+    float _radius;
+    float _bottomZ;
+    float _topZ;
+    unsigned int _capOffset;
+    unsigned int _capCount;
+    TSCH3DNormalDirectionMapper *_normalDirectionMapper;
 }
 
-@property(readonly, nonatomic) TSCH3DNormalDirectionMapper *normalDirectionMapper; // @synthesize normalDirectionMapper=mNormalDirectionMapper;
-@property(nonatomic) long long bevelEdgeSteps; // @synthesize bevelEdgeSteps=mBevelEdgeSteps;
-@property(readonly, nonatomic) unsigned int capCount; // @synthesize capCount=mCapCount;
-@property(readonly, nonatomic) unsigned int capOffset; // @synthesize capOffset=mCapOffset;
-@property(nonatomic) float topZ; // @synthesize topZ=mTopZ;
-@property(nonatomic) float bottomZ; // @synthesize bottomZ=mBottomZ;
-@property(nonatomic) float radius; // @synthesize radius=mRadius;
-@property(nonatomic) long long radiusSteps; // @synthesize radiusSteps=mRadiusSteps;
-@property(nonatomic) long long angleSteps; // @synthesize angleSteps=mAngleSteps;
-@property(nonatomic) float endAngle; // @synthesize endAngle=mEndAngle;
-@property(nonatomic) float startAngle; // @synthesize startAngle=mStartAngle;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) TSCH3DNormalDirectionMapper *normalDirectionMapper; // @synthesize normalDirectionMapper=_normalDirectionMapper;
+@property(nonatomic) long long bevelEdgeSteps; // @synthesize bevelEdgeSteps=_bevelEdgeSteps;
+@property(readonly, nonatomic) unsigned int capCount; // @synthesize capCount=_capCount;
+@property(readonly, nonatomic) unsigned int capOffset; // @synthesize capOffset=_capOffset;
+@property(nonatomic) float topZ; // @synthesize topZ=_topZ;
+@property(nonatomic) float bottomZ; // @synthesize bottomZ=_bottomZ;
+@property(nonatomic) float radius; // @synthesize radius=_radius;
+@property(nonatomic) long long radiusSteps; // @synthesize radiusSteps=_radiusSteps;
+@property(nonatomic) long long angleSteps; // @synthesize angleSteps=_angleSteps;
+@property(nonatomic) float endAngle; // @synthesize endAngle=_endAngle;
+@property(nonatomic) float startAngle; // @synthesize startAngle=_startAngle;
 - (id)selectionKnobPositions;
 - (int)geometryCount;
 - (void)generateArrays;
-- (void)p_generateBevelCoordinates:(vector_7200ab52 *)arg1 andAngles:(vector_7584168e *)arg2 radiusArray:(const vector_7584168e *)arg3 topArray:(const vector_7584168e *)arg4;
-- (void)p_generateAngles:(vector_7584168e *)arg1;
-- (void)generateRoundedTop:(vector_7584168e *)arg1 radiusArray:(vector_7584168e *)arg2;
+- (void)p_generateBevelCoordinates:(void *)arg1 andAngles:(void *)arg2 radiusArray:(const void *)arg3 topArray:(const void *)arg4;
+- (void)p_generateAngles:(void *)arg1;
+- (void)generateRoundedTop:(void *)arg1 radiusArray:(void *)arg2;
 - (float)bevelHeight;
 - (_Bool)isFullCircle;
-- (void)dealloc;
 - (id)init;
 
 @end

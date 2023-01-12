@@ -6,18 +6,21 @@
 
 #import <UIKit/UIView.h>
 
+#import <PhotosUICore/PXFocusInfoProvider-Protocol.h>
 #import <PhotosUICore/PXPhotoLibraryUIChangeObserver-Protocol.h>
 #import <PhotosUICore/PXSettingsKeyObserver-Protocol.h>
 
-@class NSError, NSString, PXDisplayAssetUIView, PXGadgetSpec, PXRoundedCornerOverlayView, PXUIAssetBadgeView, PXUIMediaProvider, UIImage, UILabel;
+@class NSError, NSString, PXDisplayAssetUIView, PXFocusInfo, PXGadgetSpec, PXRoundedCornerOverlayView, PXUIAssetBadgeView, PXUIMediaProvider, SLHighlight, UIImage, UILabel;
 @protocol PXDisplayAsset, PXDisplaySuggestion;
 
-@interface PXForYouSuggestionGadgetContentView : UIView <PXPhotoLibraryUIChangeObserver, PXSettingsKeyObserver>
+@interface PXForYouSuggestionGadgetContentView : UIView <PXPhotoLibraryUIChangeObserver, PXSettingsKeyObserver, PXFocusInfoProvider>
 {
-    CDStruct_d97c9657 _updateFlags;
+    CDStruct_af00bf4e _updateFlags;
     _Bool _forceAssetContentReload;
     _Bool _assetContentHidden;
     _Bool _blursDegradedContent;
+    _Bool _shouldShowSyndicationAttributionView;
+    CDUnknownBlockType _focusInfoChangeHandler;
     id <PXDisplaySuggestion> _suggestion;
     id <PXDisplayAsset> _keyAsset;
     NSString *_title;
@@ -25,6 +28,7 @@
     PXUIMediaProvider *_mediaProvider;
     PXGadgetSpec *_gadgetSpec;
     long long _mode;
+    SLHighlight *_highlight;
     PXDisplayAssetUIView *_assetView;
     PXUIAssetBadgeView *_badgeView;
     UILabel *_titleLabel;
@@ -53,6 +57,8 @@
 @property(readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) PXUIAssetBadgeView *badgeView; // @synthesize badgeView=_badgeView;
 @property(retain, nonatomic) PXDisplayAssetUIView *assetView; // @synthesize assetView=_assetView;
+@property(retain, nonatomic) SLHighlight *highlight; // @synthesize highlight=_highlight;
+@property(nonatomic) _Bool shouldShowSyndicationAttributionView; // @synthesize shouldShowSyndicationAttributionView=_shouldShowSyndicationAttributionView;
 @property(nonatomic) _Bool blursDegradedContent; // @synthesize blursDegradedContent=_blursDegradedContent;
 @property(nonatomic) long long mode; // @synthesize mode=_mode;
 @property(nonatomic) _Bool assetContentHidden; // @synthesize assetContentHidden=_assetContentHidden;
@@ -62,12 +68,16 @@
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(retain, nonatomic) id <PXDisplayAsset> keyAsset; // @synthesize keyAsset=_keyAsset;
 @property(retain, nonatomic) id <PXDisplaySuggestion> suggestion; // @synthesize suggestion=_suggestion;
+@property(copy, nonatomic) CDUnknownBlockType focusInfoChangeHandler; // @synthesize focusInfoChangeHandler=_focusInfoChangeHandler;
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1;
 - (void)_handleChangedAsset:(id)arg1;
 - (void)_updateBadgeContents;
 - (void)_contentSizeCategoryDidChange:(id)arg1;
+- (void)_updateAttributionView;
+- (void)_updateTitleLabelVisibility;
 - (void)_updateTitleFont;
 - (void)_updateAssetViewPlaceholderFilters;
+- (id)syndicationReplyActionFromAttributionView;
 - (id)previewAssetView;
 - (void)_updateAssetViewAnimatedContentEnabled;
 - (void)_updateAssetView;
@@ -80,6 +90,7 @@
 - (struct CGRect)_assetFrameInBounds:(struct CGRect)arg1;
 - (void)_updateIfNeeded;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
+@property(readonly, nonatomic) PXFocusInfo *focusInfo;
 @property(readonly, nonatomic) NSError *error;
 @property(readonly, nonatomic) _Bool isDisplayingFullQualityContent;
 - (void)layoutSubviews;

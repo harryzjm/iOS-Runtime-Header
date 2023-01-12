@@ -25,7 +25,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) HMFTimer *cleanupTimer; // @synthesize cleanupTimer=_cleanupTimer;
 @property(readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
-@property(readonly, nonatomic) HMSetupAccessoryDescription *accessoryDescription; // @synthesize accessoryDescription=_accessoryDescription;
+@property(readonly, copy, nonatomic) HMSetupAccessoryDescription *accessoryDescription; // @synthesize accessoryDescription=_accessoryDescription;
 @property(readonly, nonatomic) __weak HMDAccessory *accessory; // @synthesize accessory=_accessory;
 @property(readonly, nonatomic) HMAccessoryCategory *accessoryCategory; // @synthesize accessoryCategory=_accessoryCategory;
 @property(readonly, nonatomic) NSString *accessoryName; // @synthesize accessoryName=_accessoryName;

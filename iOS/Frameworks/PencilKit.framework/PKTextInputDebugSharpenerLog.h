@@ -21,9 +21,9 @@
 @property(readonly, nonatomic) NSDictionary *metadataDictionary; // @synthesize metadataDictionary=_metadataDictionary;
 @property(readonly, nonatomic) NSArray *logEntries; // @synthesize logEntries=_logEntries;
 - (_Bool)_loadFromFileURL:(id)arg1 error:(id *)arg2;
-- (_Bool)writeToURL:(id)arg1 withContentLevel:(long long)arg2 error:(id *)arg3;
-- (id)writeLogToTemporaryDirectoryWithContentLevel:(long long)arg1 error:(id *)arg2;
-- (id)_dictionaryRepresentationWithContentLevel:(long long)arg1;
+- (_Bool)writeToURL:(id)arg1 withContentLevel:(long long)arg2 excludeEntyIndexes:(id)arg3 error:(id *)arg4;
+- (id)writeLogToTemporaryDirectoryWithContentLevel:(long long)arg1 excludeEntyIndexes:(id)arg2 error:(id *)arg3;
+- (id)_dictionaryRepresentationWithContentLevel:(long long)arg1 excludeEntyIndexes:(id)arg2;
 - (id)description;
 - (id)initWithLogEntries:(id)arg1;
 - (id)initWithContentsOfURL:(id)arg1 error:(id *)arg2;

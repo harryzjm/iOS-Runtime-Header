@@ -20,8 +20,8 @@
 + (id)lastSyncedAccountIdentifier;
 + (void)clearLastSyncnedAccount;
 - (void).cxx_destruct;
-@property _Bool shouldAuthenticate; // @synthesize shouldAuthenticate=_shouldAuthenticate;
-@property(readonly) SSAccount *storeAccount; // @synthesize storeAccount=_storeAccount;
+@property(nonatomic) _Bool shouldAuthenticate; // @synthesize shouldAuthenticate=_shouldAuthenticate;
+@property(readonly, nonatomic) SSAccount *storeAccount; // @synthesize storeAccount=_storeAccount;
 - (void)saveAccountToLastFailedSyncDefaults;
 - (void)saveAccountToLastSyncedDefaults;
 - (id)authenticationErrorsForTransaction:(id)arg1;

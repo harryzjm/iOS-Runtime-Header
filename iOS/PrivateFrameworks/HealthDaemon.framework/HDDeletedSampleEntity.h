@@ -19,8 +19,7 @@
 + (const CDStruct_4c492439 *)columnDefinitionsWithCount:(unsigned long long *)arg1;
 + (id)databaseTable;
 + (Class)_entityClassForDeletion;
-+ (id)_externalSyncMetadataForRow:(struct HDSQLiteRow *)arg1;
-+ (_Bool)enumerateDeletedSamplesWithType:(id)arg1 profile:(id)arg2 restrictedSourceEntities:(id)arg3 limit:(unsigned long long)arg4 anchor:(long long)arg5 error:(id *)arg6 handler:(CDUnknownBlockType)arg7;
++ (_Bool)enumerateDeletedSamplesWithTypes:(id)arg1 profile:(id)arg2 restrictedSourceEntities:(id)arg3 limit:(unsigned long long)arg4 anchor:(long long)arg5 error:(id *)arg6 handler:(CDUnknownBlockType)arg7;
 + (id)insertDeletedObject:(id)arg1 dataType:(id)arg2 provenanceIdentifier:(id)arg3 deletionDate:(id)arg4 persistStartAndEndDates:(_Bool)arg5 startTimestamp:(double)arg6 endTimestamp:(double)arg7 inDatabase:(id)arg8 error:(id *)arg9;
 
 @end

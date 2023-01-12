@@ -10,7 +10,7 @@
 #import <Silex/UIGestureRecognizerDelegate-Protocol.h>
 
 @class CALayer, NSString, SXDataTableBlueprint, SXDataTableComponentController, SXDataTableDictionary, SXDataTableView, SXScrollView, SXTangierController;
-@protocol SXComponentActionHandler, SXComponentController, SXImageViewFactory, SXTextComponentLayoutHosting;
+@protocol SXAdIgnorableViewFactory, SXComponentActionHandler, SXComponentController, SXImageViewFactory, SXTextComponentLayoutHosting;
 
 @interface SXDataTableComponentView <SXDataTableViewDataSource, SXTangierControllerDelegate, SXViewportChangeListener, UIGestureRecognizerDelegate>
 {
@@ -18,6 +18,7 @@
     id <SXComponentActionHandler> _componentActionHandler;
     id <SXTextComponentLayoutHosting> _textComponentLayoutHosting;
     id <SXComponentController> _componentController;
+    id <SXAdIgnorableViewFactory> _adIgnorableViewFactory;
     SXDataTableView *_tableView;
     SXDataTableComponentController *_dataTableComponentController;
     SXDataTableBlueprint *_blueprint;
@@ -39,6 +40,7 @@
 @property(retain, nonatomic) SXDataTableBlueprint *blueprint; // @synthesize blueprint=_blueprint;
 @property(retain, nonatomic) SXDataTableComponentController *dataTableComponentController; // @synthesize dataTableComponentController=_dataTableComponentController;
 @property(retain, nonatomic) SXDataTableView *tableView; // @synthesize tableView=_tableView;
+@property(readonly, nonatomic) id <SXAdIgnorableViewFactory> adIgnorableViewFactory; // @synthesize adIgnorableViewFactory=_adIgnorableViewFactory;
 @property(readonly, nonatomic) __weak id <SXComponentController> componentController; // @synthesize componentController=_componentController;
 @property(readonly, nonatomic) __weak id <SXTextComponentLayoutHosting> textComponentLayoutHosting; // @synthesize textComponentLayoutHosting=_textComponentLayoutHosting;
 @property(readonly, nonatomic) id <SXComponentActionHandler> componentActionHandler; // @synthesize componentActionHandler=_componentActionHandler;
@@ -57,7 +59,7 @@
 - (void)receivedInfo:(id)arg1 fromLayoutingPhaseWithIdentifier:(id)arg2;
 - (void)dealloc;
 - (void)presentComponentWithChanges:(CDStruct_12a35e6e)arg1;
-- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 imageViewFactory:(id)arg5 componentActionHandler:(id)arg6 textComponentLayoutHosting:(id)arg7 componentController:(id)arg8;
+- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 imageViewFactory:(id)arg5 componentActionHandler:(id)arg6 textComponentLayoutHosting:(id)arg7 componentController:(id)arg8 adIgnorableViewFactory:(id)arg9;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

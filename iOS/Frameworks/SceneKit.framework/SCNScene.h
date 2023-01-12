@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <SceneKit/NSSecureCoding-Protocol.h>
+#import <SceneKit/SCNTransactionCommandObject-Protocol.h>
 
-@class NSMutableDictionary, NSURL, SCNAuthoringEnvironment, SCNMaterialProperty, SCNNode, SCNPhysicsWorld, SCNSceneSource;
+@class NSMutableDictionary, NSString, NSURL, SCNAuthoringEnvironment, SCNMaterialProperty, SCNNode, SCNPhysicsWorld, SCNSceneSource;
 
-@interface SCNScene : NSObject <NSSecureCoding>
+@interface SCNScene : NSObject <SCNTransactionCommandObject, NSSecureCoding>
 {
     struct __C3DScene *_scene;
     SCNSceneSource *_sceneSource;
@@ -135,6 +136,12 @@
 - (_Bool)writeToURL:(id)arg1 options:(id)arg2;
 - (id)debugQuickLookObjectWithPointOfView:(id)arg1;
 - (id)debugQuickLookObject;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

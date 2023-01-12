@@ -19,7 +19,6 @@
 }
 
 + (id)easyTouchButtonWithType:(long long)arg1;
-+ (double)easyTouchDefaultCharge;
 + (struct UIEdgeInsets)easyTouchDefaultHitRectInsets;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool hitTestDebugEnabled; // @synthesize hitTestDebugEnabled=_hitTestDebugEnabled;
@@ -34,7 +33,6 @@
 @property(nonatomic) struct UIEdgeInsets alignmentRectInsets; // @synthesize alignmentRectInsets=_alignmentRectInsets;
 @property(readonly, nonatomic, getter=isHolding) _Bool holding;
 - (void)layoutSubviews;
-- (void)dealloc;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (struct CGRect)hitRect;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;

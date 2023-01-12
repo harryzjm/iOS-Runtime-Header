@@ -52,10 +52,10 @@
 - (id)reapPurged;
 @property(readonly, copy, nonatomic) NUStoragePoolStats *stats;
 - (void)_returnNonPurgeableStorage:(id)arg1;
+- (void)_returnPurgedStorage:(id)arg1;
 - (void)_returnVolatileStorage:(id)arg1;
 - (void)_enforcePurgableLimit;
 - (void)returnStorage:(id)arg1;
-- (_Bool)_isStorageAlreadyReturned:(id)arg1;
 - (void)_returnStorage:(id)arg1;
 - (id)_storageFromPoolWithSize:(CDStruct_912cb5d2)arg1 format:(id)arg2 exactMatch:(_Bool)arg3;
 - (void)_reclaimSharedStorages;

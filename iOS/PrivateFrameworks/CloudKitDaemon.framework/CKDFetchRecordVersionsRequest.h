@@ -6,7 +6,6 @@
 
 @class NSArray, NSMutableDictionary, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDFetchRecordVersionsRequest
 {
     _Bool _shouldFetchAssetContent;

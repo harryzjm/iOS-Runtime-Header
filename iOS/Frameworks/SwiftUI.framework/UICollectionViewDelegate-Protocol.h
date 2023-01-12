@@ -6,12 +6,13 @@
 
 #import <SwiftUI/UIScrollViewDelegate-Protocol.h>
 
-@class NSIndexPath, NSString, UICollectionReusableView, UICollectionView, UICollectionViewCell, UICollectionViewFocusUpdateContext, UICollectionViewLayout, UICollectionViewTransitionLayout, UIContextMenuConfiguration, UIFocusAnimationCoordinator, UITargetedPreview;
+@class NSIndexPath, NSString, UICollectionReusableView, UICollectionView, UICollectionViewCell, UICollectionViewFocusUpdateContext, UICollectionViewLayout, UICollectionViewTransitionLayout, UIContextMenuConfiguration, UIFocusAnimationCoordinator, UITargetedPreview, UIWindowSceneActivationConfiguration;
 @protocol UIContextMenuInteractionAnimating, UIContextMenuInteractionCommitAnimating, UISpringLoadedInteractionContext;
 
 @protocol UICollectionViewDelegate <UIScrollViewDelegate>
 
 @optional
+- (UIWindowSceneActivationConfiguration *)collectionView:(UICollectionView *)arg1 sceneActivationConfigurationForItemAtIndexPath:(NSIndexPath *)arg2 point:(struct CGPoint)arg3;
 - (void)collectionView:(UICollectionView *)arg1 willEndContextMenuInteractionWithConfiguration:(UIContextMenuConfiguration *)arg2 animator:(id <UIContextMenuInteractionAnimating>)arg3;
 - (void)collectionView:(UICollectionView *)arg1 willDisplayContextMenuWithConfiguration:(UIContextMenuConfiguration *)arg2 animator:(id <UIContextMenuInteractionAnimating>)arg3;
 - (void)collectionView:(UICollectionView *)arg1 willPerformPreviewActionForMenuWithConfiguration:(UIContextMenuConfiguration *)arg2 animator:(id <UIContextMenuInteractionCommitAnimating>)arg3;
@@ -25,6 +26,8 @@
 - (_Bool)collectionView:(UICollectionView *)arg1 canEditItemAtIndexPath:(NSIndexPath *)arg2;
 - (struct CGPoint)collectionView:(UICollectionView *)arg1 targetContentOffsetForProposedContentOffset:(struct CGPoint)arg2;
 - (NSIndexPath *)collectionView:(UICollectionView *)arg1 targetIndexPathForMoveFromItemAtIndexPath:(NSIndexPath *)arg2 toProposedIndexPath:(NSIndexPath *)arg3;
+- (NSIndexPath *)collectionView:(UICollectionView *)arg1 targetIndexPathForMoveOfItemFromOriginalIndexPath:(NSIndexPath *)arg2 atCurrentIndexPath:(NSIndexPath *)arg3 toProposedIndexPath:(NSIndexPath *)arg4;
+- (_Bool)collectionView:(UICollectionView *)arg1 selectionFollowsFocusForItemAtIndexPath:(NSIndexPath *)arg2;
 - (NSIndexPath *)indexPathForPreferredFocusedViewInCollectionView:(UICollectionView *)arg1;
 - (void)collectionView:(UICollectionView *)arg1 didUpdateFocusInContext:(UICollectionViewFocusUpdateContext *)arg2 withAnimationCoordinator:(UIFocusAnimationCoordinator *)arg3;
 - (_Bool)collectionView:(UICollectionView *)arg1 shouldUpdateFocusInContext:(UICollectionViewFocusUpdateContext *)arg2;

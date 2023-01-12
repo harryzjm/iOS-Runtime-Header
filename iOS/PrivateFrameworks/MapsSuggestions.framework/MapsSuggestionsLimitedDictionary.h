@@ -18,11 +18,10 @@
     NSMutableArray *_order;
     unsigned long long _totalHits;
     unsigned long long _totalMisses;
-    NSString *uniqueName;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSString *uniqueName; // @synthesize uniqueName;
+@property(readonly, nonatomic) NSString *uniqueName;
 - (void)triggerFired:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (double)totalHitRatio;

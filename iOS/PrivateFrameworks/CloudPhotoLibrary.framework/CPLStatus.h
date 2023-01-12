@@ -6,20 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class CPLAccountFlags, NSArray, NSData, NSDate, NSDictionary, NSMutableDictionary, NSURL;
+@class CPLAccountFlags, NSArray, NSData, NSDate, NSDictionary, NSMutableDictionary, NSMutableSet, NSURL, Protocol;
 @protocol CPLStatusDelegate, OS_dispatch_queue;
 
 @interface CPLStatus : NSObject
 {
     _Bool _forCPL;
+    NSMutableSet *_changedKeys;
     NSURL *_statusFileURL;
     NSMutableDictionary *_status;
     NSObject<OS_dispatch_queue> *_lock;
+    Protocol *_delegationProtocol;
+    SEL _delegationSelector;
     id <CPLStatusDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <CPLStatusDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)preventDelegateWithDelegationClass:(id)arg1 selector:(SEL)arg2;
 @property(copy, nonatomic) NSArray *disabledFeatures;
 @property(copy, nonatomic) NSData *accountFlagsData;
 @property(readonly, nonatomic) CPLAccountFlags *accountFlags;
@@ -39,6 +43,7 @@
 - (void)setCloudAssetCountPerType:(id)arg1 updateCheckDate:(_Bool)arg2;
 @property(readonly, nonatomic) NSDictionary *cloudAssetCountPerType;
 @property(nonatomic) _Bool iCloudLibraryClientVersionTooOld;
+@property(nonatomic) _Bool containerHasBeenWiped;
 @property(nonatomic) _Bool iCloudLibraryExists;
 @property(nonatomic) _Bool iCloudLibraryHasBeenWiped;
 @property(copy, nonatomic) NSDate *exitDeleteTime;
@@ -55,6 +60,7 @@
 - (_Bool)_writeInitialSyncMarkerForDate:(id)arg1 error:(id *)arg2;
 - (void)_save;
 - (void)_loadIfNecessary;
+- (void)_setObjectInStatus:(id)arg1 forKey:(id)arg2;
 - (id)initWithClientLibraryBaseURLForCPLEngine:(id)arg1;
 - (id)initWithClientLibraryBaseURL:(id)arg1;
 

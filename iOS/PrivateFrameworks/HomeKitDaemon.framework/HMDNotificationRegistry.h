@@ -7,20 +7,24 @@
 #import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
+#import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDHome, HMFUnfairLock, NSHashTable, NSMutableDictionary, NSObject, NSString;
+@class HMDHome, HMFTimer, HMFUnfairLock, NSHashTable, NSMutableDictionary, NSMutableSet, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HMDNotificationRegistry : HMFObject <HMFLogging, NSSecureCoding>
+@interface HMDNotificationRegistry : HMFObject <HMFLogging, HMFTimerDelegate, NSSecureCoding>
 {
     HMFUnfairLock *_lock;
     NSMutableDictionary *_notificationRegistry;
     NSHashTable *_delegates;
+    HMFTimer *_pendingRequestsRetryTimer;
+    NSMutableSet *_pendingRequests;
     HMDHome *_home;
     NSObject<OS_dispatch_queue> *_workQueue;
 }
 
++ (id)logCategory;
 + (_Bool)supportsSecureCoding;
 + (id)_reachabilityEventNotificationRegistryKeysForAccessoryUUIDs:(id)arg1;
 + (id)_reachabilityEventNotificationRegistryKeyForAccessoryUUID:(id)arg1;
@@ -28,14 +32,24 @@
 + (id)keyForProperty:(id)arg1 mediaProfile:(id)arg2;
 + (id)_createCharacteristicsMapForCharacteristics:(id)arg1;
 + (id)keyForCharacteristic:(id)arg1;
-+ (id)logCategory;
 - (void).cxx_destruct;
 @property(retain) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
-@property(readonly) __weak HMDHome *home; // @synthesize home=_home;
+@property __weak HMDHome *home; // @synthesize home=_home;
+@property(readonly) NSMutableSet *pendingRequests; // @synthesize pendingRequests=_pendingRequests;
+@property(readonly) HMFTimer *pendingRequestsRetryTimer; // @synthesize pendingRequestsRetryTimer=_pendingRequestsRetryTimer;
+- (void)timerDidFire:(id)arg1;
+- (id)logIdentifier;
 - (void)addDelegate:(id)arg1;
 - (void)notifyDelegatesOfRegistryUpdates;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (void)_processPendingRequests;
+- (void)_removePendingRequestMatchingMediaPropertiesRequest:(id)arg1;
+- (void)_removePendingRequestMatchingCharacteristicRequest:(id)arg1;
+- (void)_addPendingRequests:(id)arg1;
+- (_Bool)_processMediaPropertiesRequests:(id)arg1;
+- (_Bool)_processCharacteristicsRequests:(id)arg1;
+- (void)setNotificationsEnabled:(_Bool)arg1 forUserID:(id)arg2 characteristicsPayload:(id)arg3 mediaPropertiesPayload:(id)arg4;
 - (void)removeAllReachabilityEventNotificationRegistrations;
 - (id)userIDsRegisteredForReachabilityEventNotificationsForAccessoryUUIDs:(id)arg1;
 - (_Bool)disableReachabilityEventNotificationForAccessoryUUIDs:(id)arg1 forUserID:(id)arg2;
@@ -50,16 +64,17 @@
 - (id)filterProperties:(id)arg1 forUser:(id)arg2;
 - (id)filterCharacteristics:(id)arg1 forUser:(id)arg2;
 - (_Bool)removeRegistrationsForMediaProfile:(id)arg1;
-- (_Bool)disableNotificationForProperties:(id)arg1 forUser:(id)arg2;
-- (_Bool)enableNotificationForProperties:(id)arg1 forUser:(id)arg2;
-- (_Bool)removeRegistrationsForCharacteristic:(id)arg1;
+- (_Bool)disableNotificationForMediaProfile:(id)arg1 mediaProperties:(id)arg2 userID:(id)arg3;
+- (_Bool)enableNotificationForMediaProfile:(id)arg1 mediaProperties:(id)arg2 userID:(id)arg3;
+- (void)removeRegistrationsForCharacteristics:(id)arg1;
 - (_Bool)disableNotificationForCharacteristics:(id)arg1 forUser:(id)arg2 characteristicsToDisableEvents:(id *)arg3;
 - (_Bool)enableNotificationForCharacteristics:(id)arg1 forUser:(id)arg2;
 - (id)shortDescription;
 - (void)clearAllRegistrations;
 @property(readonly, nonatomic) NSMutableDictionary *notificationRegistry; // @synthesize notificationRegistry=_notificationRegistry;
-@property(copy) NSHashTable *delegates; // @synthesize delegates=_delegates;
+@property(readonly, copy) NSHashTable *delegates; // @synthesize delegates=_delegates;
 - (void)configureWithHome:(id)arg1;
+- (id)initWithPendingRequestsRetryTimer:(id)arg1;
 - (id)init;
 
 // Remaining properties

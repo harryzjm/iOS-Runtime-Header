@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HKLineSeriesPointMarkerStyle, NSArray;
+@class HKLineSeriesPointMarkerStyle, HKLineSeriesPresentationStyle, NSArray, NSNumber;
 
 @interface HKLineSeries
 {
@@ -15,12 +15,16 @@
     NSArray *_highlightedPresentationStyles;
     NSArray *_selectedPresentationStyles;
     HKLineSeriesPointMarkerStyle *_selectedPointMarkerStyle;
+    HKLineSeriesPresentationStyle *_inactivePresentationStyle;
+    NSNumber *_maximumConnectionDistance;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSNumber *maximumConnectionDistance; // @synthesize maximumConnectionDistance=_maximumConnectionDistance;
 @property(nonatomic) _Bool extendFirstValue; // @synthesize extendFirstValue=_extendFirstValue;
 @property(nonatomic) _Bool extendLastValue; // @synthesize extendLastValue=_extendLastValue;
 @property(nonatomic) _Bool flatLastValue; // @synthesize flatLastValue=_flatLastValue;
+@property(retain, nonatomic) HKLineSeriesPresentationStyle *inactivePresentationStyle; // @synthesize inactivePresentationStyle=_inactivePresentationStyle;
 @property(retain, nonatomic) HKLineSeriesPointMarkerStyle *selectedPointMarkerStyle; // @synthesize selectedPointMarkerStyle=_selectedPointMarkerStyle;
 @property(retain, nonatomic) NSArray *selectedPresentationStyles; // @synthesize selectedPresentationStyles=_selectedPresentationStyles;
 @property(retain, nonatomic) NSArray *highlightedPresentationStyles; // @synthesize highlightedPresentationStyles=_highlightedPresentationStyles;

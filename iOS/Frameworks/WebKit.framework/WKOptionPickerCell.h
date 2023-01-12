@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property(nonatomic) _Bool disabled; // @synthesize disabled=_disabled;
-- (id)initWithOptionItem:(const struct OptionItem *)arg1;
+- (id)initWithOptionItem:(const void *)arg1;
 - (id)init;
 - (_Bool)_isSelectable;
 

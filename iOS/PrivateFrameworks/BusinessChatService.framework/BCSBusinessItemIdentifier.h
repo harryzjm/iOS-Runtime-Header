@@ -10,27 +10,18 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface BCSBusinessItemIdentifier : NSObject <BCSItemIdentifying>
 {
     long long _computedTruncatedHash;
 }
 
-+ (id)identifierWithBusinessItem:(id)arg1;
-+ (id)identifierWithPhoneNumber:(id)arg1;
-@property(nonatomic) long long computedTruncatedHash; // @synthesize computedTruncatedHash=_computedTruncatedHash;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (id)succinctDescriptionBuilder;
-- (id)succinctDescription;
 - (_Bool)matchesItemIdentifying:(id)arg1;
 @property(readonly, nonatomic) long long type;
 @property(readonly, nonatomic) long long truncatedHash;
 @property(readonly, nonatomic) NSObject *itemIdentifier;
-- (long long)_truncatedHashForPhoneNumber:(id)arg1;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-- (id)_initWithBusinessItem:(id)arg1;
-- (id)_initWithPhoneNumber:(id)arg1;
 
 // Remaining properties
 @property(readonly) unsigned long long hash;

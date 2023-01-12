@@ -6,10 +6,16 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, _SFPBAbstractCommand, _SFPBCard, _SFPBCardSectionValue, _SFPBUserReportRequest;
+@class NSArray, NSData, NSDictionary, NSString, _SFPBAbstractCommand, _SFPBButtonItem, _SFPBCard, _SFPBCardSectionValue, _SFPBCommand, _SFPBUserReportRequest;
 
 @protocol _SFPBCardSection <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(copy, nonatomic) NSString *previewButtonItemsTitle;
+@property(copy, nonatomic) NSString *cardSectionDetail;
+@property(copy, nonatomic) NSString *commandDetail;
+@property(copy, nonatomic) NSArray *previewButtonItems;
+@property(retain, nonatomic) _SFPBCommand *previewCommand;
+@property(retain, nonatomic) _SFPBCommand *command;
 @property(retain, nonatomic) _SFPBUserReportRequest *userReportRequest;
 @property(copy, nonatomic) NSString *resultIdentifier;
 @property(copy, nonatomic) NSString *cardSectionId;
@@ -20,6 +26,10 @@
 @property(nonatomic) int type;
 - (id)initWithDictionary:(NSDictionary *)arg1;
 - (id)initWithJSON:(NSData *)arg1;
+- (_SFPBButtonItem *)previewButtonItemsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)previewButtonItemsCount;
+- (void)addPreviewButtonItems:(_SFPBButtonItem *)arg1;
+- (void)clearPreviewButtonItems;
 - (NSString *)parameterKeyPathsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)parameterKeyPathsCount;
 - (void)addParameterKeyPaths:(NSString *)arg1;

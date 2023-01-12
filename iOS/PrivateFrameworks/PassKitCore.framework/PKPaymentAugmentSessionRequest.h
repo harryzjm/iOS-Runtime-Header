@@ -11,10 +11,11 @@
     PKPaymentMerchantSession *_merchantSession;
 }
 
++ (id)augmentSessionRequestWithBaseRequest:(id)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) PKPaymentMerchantSession *merchantSession; // @synthesize merchantSession=_merchantSession;
 - (id)bodyDictionary;
-- (id)endpointName;
+- (id)endpointComponents;
 
 @end
 

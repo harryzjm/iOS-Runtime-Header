@@ -16,6 +16,9 @@ __attribute__((visibility("hidden")))
     struct OpaqueFigFormatReader *_figFormatReader;
     AVDispatchOnce *_copyFigTrackReaderOnce;
     struct OpaqueFigTrackReader *_figTrackReader;
+    AVDispatchOnce *_copySampleCursorServiceOnce;
+    struct OpaqueFigSampleCursorService *_figSampleCursorService;
+    _Bool _sampleCursorTimeAccuracyIsExact;
     struct OpaqueFigSimpleMutex *_loadingMutex;
     NSObject<OS_dispatch_queue> *_completionHandlerQueue;
     NSMutableArray *_loadingBatches;
@@ -70,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isPlayable;
 - (id)formatDescriptions;
 - (void *)_valueAsCFTypeForProperty:(struct __CFString *)arg1;
+- (struct OpaqueFigSampleCursorService *)_getFigSampleCursorServiceReportingTimeAccuracy:(_Bool *)arg1;
 - (id)mediaType;
 - (unsigned int)_figMediaType;
 - (int)trackID;

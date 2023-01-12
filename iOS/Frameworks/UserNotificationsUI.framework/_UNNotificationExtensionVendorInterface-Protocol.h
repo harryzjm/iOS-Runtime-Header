@@ -12,6 +12,7 @@
 - (void)_hostWantsToUpdateMediaPlayPauseButton;
 - (void)_hostWantsMediaToPause;
 - (void)_hostWantsMediaToPlay;
+- (void)_hostDidReceiveNotificationResponse:(UNNotificationResponse *)arg1 completionHandler:(void (^)(unsigned long long))arg2;
 - (void)_hostDidReceiveNotificationResponse:(UNNotificationResponse *)arg1;
 - (void)_hostDidReceiveNotification:(UNNotification *)arg1;
 @end

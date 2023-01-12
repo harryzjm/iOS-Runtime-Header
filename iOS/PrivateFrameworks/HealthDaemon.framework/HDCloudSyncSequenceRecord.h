@@ -12,20 +12,18 @@
     NSUUID *_storeIdentifier;
 }
 
++ (id)fieldsForUnprotectedSerialization;
 + (id)recordWithCKRecord:(id)arg1 error:(id *)arg2;
 + (_Bool)hasFutureSchema:(id)arg1;
 + (id)recordType;
 + (_Bool)requiresUnderlyingMessage;
 + (_Bool)isSequenceRecord:(id)arg1;
 + (id)recordIDsForOwnerIdentifier:(id)arg1 storeIdentifier:(id)arg2 zoneID:(id)arg3;
-+ (id)recordIDWithOwnerIdentifier:(id)arg1 storeIdentifier:(id)arg2 zoneID:(id)arg3 sequenceSlot:(int)arg4;
 + (id)recordIDsWithIndividualZoneID:(id)arg1;
-+ (id)recordIDWithIndividualZoneID:(id)arg1 sequenceSlot:(int)arg2;
-+ (id)_recordNameForSequenceSlot:(int)arg1;
-+ (id)_recordIDForStoreRecord:(id)arg1 slot:(int)arg2;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSUUID *storeIdentifier; // @synthesize storeIdentifier=_storeIdentifier;
 - (void)_unitTest_setChildRecordCount:(unsigned long long)arg1;
+- (id)printDescription;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -47,8 +45,6 @@
 @property(nonatomic) int protocolVersion;
 @property(nonatomic, getter=isActive) _Bool active;
 - (id)serializeUnderlyingMessage;
-- (id)initWithCKRecord:(id)arg1 schemaVersion:(long long)arg2 underlyingSequence:(id)arg3;
-- (id)initForSequenceSlot:(int)arg1 syncAnchorMap:(id)arg2 active:(_Bool)arg3 changeIndex:(unsigned long long)arg4 childRecordCount:(unsigned long long)arg5 baselineEpoch:(long long)arg6 includedIdentifiers:(id)arg7 protocolVersion:(int)arg8 storeRecordID:(id)arg9 record:(id)arg10 schemaVersion:(long long)arg11;
 - (id)initForSequenceSlot:(int)arg1 syncAnchorMap:(id)arg2 changeIndex:(unsigned long long)arg3 baselineEpoch:(long long)arg4 includedIdentifiers:(id)arg5 storeRecord:(id)arg6;
 - (id)initWithCKRecord:(id)arg1 schemaVersion:(long long)arg2;
 

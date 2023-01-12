@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSMapTable, TSPFinalizeHandlerQueue;
+@class NSArray, TSPFinalizeHandlerQueue;
 @protocol TSPReadCoordinator;
 
 @interface TSPReadCompletionInfo : NSObject
 {
-    NSMapTable *_objects;
+    NSArray *_objects;
     id <TSPReadCoordinator> _readCoordinator;
     TSPFinalizeHandlerQueue *_finalizeHandlerQueue;
 }
@@ -19,7 +19,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) TSPFinalizeHandlerQueue *finalizeHandlerQueue; // @synthesize finalizeHandlerQueue=_finalizeHandlerQueue;
 @property(readonly, nonatomic) id <TSPReadCoordinator> readCoordinator; // @synthesize readCoordinator=_readCoordinator;
-@property(readonly, nonatomic) NSMapTable *objects; // @synthesize objects=_objects;
+- (id)readObjectWithIdentifier:(long long)arg1;
 - (id)initWithObjects:(id)arg1 readCoordinator:(id)arg2 finalizeHandlerQueue:(id)arg3;
 
 @end

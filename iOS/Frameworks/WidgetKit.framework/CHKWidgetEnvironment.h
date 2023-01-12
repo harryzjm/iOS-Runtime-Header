@@ -17,6 +17,8 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+- (_Bool)isEqual:(id)arg1;
+@property(nonatomic, readonly) long long hash;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(nonatomic, readonly) NSString *debugDescription;

@@ -10,25 +10,25 @@
 
 @interface TSCH3DChartAxisLabelsProperties : NSObject
 {
-    TSCHChartInfo *mInfo;
-    TSCH3DLabelResources *mLabels;
-    unsigned long long mStyleIndex;
-    TSCHSelectionPath *mSelectionPath;
-    _Bool mHidden;
-    TSULRUCache *mCategoryStridingCache;
-    float mCachedTextFactor;
+    TSCHChartInfo *_info;
+    TSCH3DLabelResources *_labels;
+    unsigned long long _styleIndex;
+    TSCHSelectionPath *_selectionPath;
+    _Bool _hidden;
+    TSULRUCache *_categoryStridingCache;
+    float _cachedTextFactor;
 }
 
 + (id)propertiesWithInfo:(id)arg1 labels:(id)arg2 styleIndex:(unsigned long long)arg3;
-@property(nonatomic) float cachedTextFactor; // @synthesize cachedTextFactor=mCachedTextFactor;
-@property(readonly, nonatomic) TSULRUCache *categoryStridingCache; // @synthesize categoryStridingCache=mCategoryStridingCache;
-@property(nonatomic) _Bool hidden; // @synthesize hidden=mHidden;
-@property(retain, nonatomic) TSCHSelectionPath *selectionPath; // @synthesize selectionPath=mSelectionPath;
-@property(readonly, nonatomic) unsigned long long styleIndex; // @synthesize styleIndex=mStyleIndex;
-@property(readonly, nonatomic) TSCHChartInfo *info; // @synthesize info=mInfo;
-@property(readonly, nonatomic) TSCH3DLabelResources *labels; // @synthesize labels=mLabels;
+- (void).cxx_destruct;
+@property(nonatomic) float cachedTextFactor; // @synthesize cachedTextFactor=_cachedTextFactor;
+@property(readonly, nonatomic) TSULRUCache *categoryStridingCache; // @synthesize categoryStridingCache=_categoryStridingCache;
+@property(nonatomic) _Bool hidden; // @synthesize hidden=_hidden;
+@property(retain, nonatomic) TSCHSelectionPath *selectionPath; // @synthesize selectionPath=_selectionPath;
+@property(readonly, nonatomic) unsigned long long styleIndex; // @synthesize styleIndex=_styleIndex;
+@property(readonly, nonatomic) TSCHChartInfo *info; // @synthesize info=_info;
+@property(readonly, nonatomic) TSCH3DLabelResources *labels; // @synthesize labels=_labels;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)initWithInfo:(id)arg1 labels:(id)arg2 styleIndex:(unsigned long long)arg3;
 
 @end

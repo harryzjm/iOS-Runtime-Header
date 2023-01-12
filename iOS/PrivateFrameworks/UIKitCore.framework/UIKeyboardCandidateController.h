@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
     double _additionalExtendedBarBackdropOffset;
     TIKeyboardCandidate *_currentCandidate;
     NSDictionary *_opacities;
+    double _singleSlottedCellMargin;
     UIPanGestureRecognizer *_panGestureRecognizer;
     UIViewPropertyAnimator *_animator;
     UIKBRenderConfig *_renderConfig;
@@ -56,6 +57,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIKBRenderConfig *renderConfig; // @synthesize renderConfig=_renderConfig;
 @property(retain, nonatomic) UIViewPropertyAnimator *animator; // @synthesize animator=_animator;
 @property(retain, nonatomic) UIPanGestureRecognizer *panGestureRecognizer; // @synthesize panGestureRecognizer=_panGestureRecognizer;
+@property(nonatomic) double singleSlottedCellMargin; // @synthesize singleSlottedCellMargin=_singleSlottedCellMargin;
 @property(retain, nonatomic) NSDictionary *opacities; // @synthesize opacities=_opacities;
 @property(nonatomic) _Bool darkKeyboardChanged; // @synthesize darkKeyboardChanged=_darkKeyboardChanged;
 @property(nonatomic) _Bool darkKeyboard; // @synthesize darkKeyboard=_darkKeyboard;
@@ -133,6 +135,7 @@ __attribute__((visibility("hidden")))
 - (void)collapse;
 - (void)toggleInlineViewExtendedAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)toggleBarExtendedWithAnimator:(id)arg1;
+- (void)toggleBarExtendedUnanimated;
 - (void)toggleBarExtended;
 - (void)extendKeyboardBackdropHeight:(double)arg1;
 - (void)setupAnimatorWithCurve:(long long)arg1;

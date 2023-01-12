@@ -19,6 +19,8 @@
 @property(readonly, nonatomic) NSArray *legacyRecentDisplayItemRoles; // @dynamic legacyRecentDisplayItemRoles;
 @property(readonly, nonatomic) NSArray *legacyRecentDisplayItems; // @dynamic legacyRecentDisplayItems;
 @property(retain, nonatomic) NSArray *recentsPlistRepresentation; // @dynamic recentsPlistRepresentation;
+@property(nonatomic) _Bool shouldShowSlideOverPeekEducation; // @dynamic shouldShowSlideOverPeekEducation;
+@property(nonatomic) _Bool shouldShowSplitPeekEducation; // @dynamic shouldShowSplitPeekEducation;
 @property(readonly, nonatomic, getter=isSpringBoardKillable) _Bool springBoardKillable; // @dynamic springBoardKillable;
 @property(readonly, nonatomic, getter=areTrackpadSwitcherGesturesEnabled) _Bool trackpadSwitcherGesturesEnabled; // @dynamic trackpadSwitcherGesturesEnabled;
 

@@ -9,16 +9,31 @@
 #import <SpringBoardHome/BSDescriptionProviding-Protocol.h>
 #import <SpringBoardHome/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, SBHSearchVisualConfiguration;
 
 @interface SBHAppLibraryVisualConfiguration : NSObject <NSCopying, BSDescriptionProviding>
 {
+    _Bool _usesInsetPlatterSearchAppearance;
     double _searchContinuousCornerRadius;
-    struct UIEdgeInsets _appSearchTextFieldLayoutInsets;
+    SBHSearchVisualConfiguration *_extendedSearchVisualConfiguration;
+    SBHSearchVisualConfiguration *_standardSearchVisualConfiguration;
+    SBHSearchVisualConfiguration *_compactSearchVisualConfiguration;
+    SBHSearchVisualConfiguration *_activeSearchVisualConfiguration;
+    struct CGSize _portraitCategoryPodIconSpacing;
+    struct CGSize _landscapeCategoryPodIconSpacing;
+    struct CGSize _expandedCategoryPodIconSpacing;
 }
 
-@property(nonatomic) struct UIEdgeInsets appSearchTextFieldLayoutInsets; // @synthesize appSearchTextFieldLayoutInsets=_appSearchTextFieldLayoutInsets;
+- (void).cxx_destruct;
+@property(retain, nonatomic) SBHSearchVisualConfiguration *activeSearchVisualConfiguration; // @synthesize activeSearchVisualConfiguration=_activeSearchVisualConfiguration;
+@property(retain, nonatomic) SBHSearchVisualConfiguration *compactSearchVisualConfiguration; // @synthesize compactSearchVisualConfiguration=_compactSearchVisualConfiguration;
+@property(retain, nonatomic) SBHSearchVisualConfiguration *standardSearchVisualConfiguration; // @synthesize standardSearchVisualConfiguration=_standardSearchVisualConfiguration;
+@property(retain, nonatomic) SBHSearchVisualConfiguration *extendedSearchVisualConfiguration; // @synthesize extendedSearchVisualConfiguration=_extendedSearchVisualConfiguration;
 @property(nonatomic) double searchContinuousCornerRadius; // @synthesize searchContinuousCornerRadius=_searchContinuousCornerRadius;
+@property(nonatomic) _Bool usesInsetPlatterSearchAppearance; // @synthesize usesInsetPlatterSearchAppearance=_usesInsetPlatterSearchAppearance;
+@property(nonatomic) struct CGSize expandedCategoryPodIconSpacing; // @synthesize expandedCategoryPodIconSpacing=_expandedCategoryPodIconSpacing;
+@property(nonatomic) struct CGSize landscapeCategoryPodIconSpacing; // @synthesize landscapeCategoryPodIconSpacing=_landscapeCategoryPodIconSpacing;
+@property(nonatomic) struct CGSize portraitCategoryPodIconSpacing; // @synthesize portraitCategoryPodIconSpacing=_portraitCategoryPodIconSpacing;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;

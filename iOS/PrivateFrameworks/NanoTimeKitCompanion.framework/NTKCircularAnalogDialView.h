@@ -35,11 +35,8 @@
 - (void)setHideHourTicks:(_Bool)arg1;
 - (void)cleanupAfterEdit;
 - (void)prepareForEdit;
-- (void)applyZoomFraction:(double)arg1;
-- (void)cleanupAfterZoom;
-- (void)prepareForZoom;
 - (id)_instantaneousAnimationForKeyPath:(id)arg1 value:(id)arg2;
-- (void)applyColorTransitionFraction:(double)arg1 fromColor:(unsigned long long)arg2 toColor:(unsigned long long)arg3;
+- (void)applyColorTransitionFraction:(double)arg1 fromFaceColorPalette:(id)arg2 toFaceColorPalette:(id)arg3;
 - (void)applyColorTransitionFraction:(double)arg1 fromColorPalette:(id)arg2 toColorPalette:(id)arg3;
 - (void)setDialBackgroundColor:(id)arg1;
 - (void)layoutLayerTicks:(id)arg1 rotationAngleInDegree:(double)arg2 smallTicks:(_Bool)arg3;

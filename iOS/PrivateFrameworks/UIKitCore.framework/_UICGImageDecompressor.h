@@ -9,16 +9,10 @@
 __attribute__((visibility("hidden")))
 @interface _UICGImageDecompressor : NSObject
 {
-    struct CGImage *_imageRef;
-    long long _orientation;
 }
 
-+ (void)flushCaches;
 - (struct CGImage *)waitForImageRef;
-- (void)dealloc;
-- (unsigned long long)hash;
-- (_Bool)isEqual:(id)arg1;
-- (id)initWithData:(id)arg1 immediateLoadWithMaxSize:(struct CGSize)arg2 renderingIntent:(unsigned long long)arg3 cache:(_Bool)arg4;
+- (id)init;
 
 @end
 

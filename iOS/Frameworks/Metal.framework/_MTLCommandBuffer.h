@@ -51,6 +51,7 @@
     _Bool _ownedByParallelEncoder;
     _Bool _wakeOnCommit;
     NSMutableArray *_retainedObjects;
+    _Bool _needsCommandBufferSemaphoreSignal;
     unsigned long long _globalTraceObjectID;
     unsigned long long _labelTraceID;
     _Bool _StatEnabled;
@@ -78,6 +79,7 @@
 @property(readonly) id <MTLCommandQueue> commandQueue; // @synthesize commandQueue=_queue;
 @property(readonly) _Bool synchronousDebugMode; // @synthesize synchronousDebugMode=_synchronousDebugMode;
 @property(readonly) _Bool retainedReferences; // @synthesize retainedReferences=_retainedReferences;
+- (void)signalCommandBufferAvailable;
 - (id)accelerationStructureCommandEncoder;
 - (void *)debugBufferContentsWithLength:(unsigned long long *)arg1;
 - (id)resourceStateCommandEncoderWithDescriptor:(id)arg1;
@@ -122,6 +124,9 @@
 - (id)description;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (void)dealloc;
+- (void)encodeDashboardFinalizeForResourceGroup:(id)arg1 dashboard:(unsigned long long)arg2 values:(const unsigned long long *)arg3 indices:(const unsigned long long *)arg4 count:(unsigned long long)arg5;
+- (void)encodeDashboardFinalizeForResourceGroup:(id)arg1 dashboard:(unsigned long long)arg2 value:(unsigned long long)arg3 forIndex:(unsigned long long)arg4;
+- (void)encodeDashboardTagForResourceGroup:(id)arg1;
 - (id)initWithQueue:(id)arg1 retainedReferences:(_Bool)arg2;
 - (void)getDriverEncoderInfoData:(id)arg1;
 - (void)processEncoderInfos;

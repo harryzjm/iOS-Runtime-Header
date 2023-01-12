@@ -13,16 +13,22 @@
 + (id)_uiTestLocalURLForIdentifier:(id)arg1;
 + (id)_uiTestLocalBaseURL;
 + (_Bool)_isRunningUITest;
++ (id)_productHash;
++ (id)_boardID;
++ (id)_boardIDOrProductHash;
++ (id)_platformString;
 + (id)assetPathFromAssetConfiguration:(id)arg1 type:(long long)arg2;
-+ (id)requestURLForAPI:(id)arg1 additionalQueryItems:(id)arg2 useLanguageDefault:(_Bool)arg3;
++ (id)requestURLForAPI:(id)arg1 additionalQueryItems:(id)arg2 useLanguageDefault:(_Bool)arg3 apiVersion:(id)arg4;
 + (id)effectiveHost;
 + (id)defaultHost;
-+ (id)contentRequestURLWithContentMapHash:(id)arg1 documentID:(id)arg2 variantID:(id)arg3 useLanguageDefault:(_Bool)arg4;
++ (id)contentRequestURLWithContentMapHash:(id)arg1 variantIdentifiers:(id)arg2 useLanguageDefault:(_Bool)arg3;
++ (id)platformQueryItem;
 + (id)modelQueryItem;
 + (id)contentRequestURLWithContentMapHash:(id)arg1;
 + (id)metaRequestURL;
 + (long long)majorVersionForVersionString:(id)arg1;
 + (id)defaultHostPath;
++ (id)preferredLocalizations;
 
 @end
 

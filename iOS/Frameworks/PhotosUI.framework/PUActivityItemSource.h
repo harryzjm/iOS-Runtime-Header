@@ -28,6 +28,7 @@
     NSString *_assetOriginalFilenameBase;
     PUActivityItemSourceOperation *_currentOperation;
     PUActivityItemSourceAnchorOperation *_anchorOperation;
+    _Bool _shouldSendAnalyticsInterval;
     _Bool _shouldSkipPreparation;
     _Bool _shouldAnchorPreparation;
     CDStruct_915a387c _sharingPreferences;
@@ -50,7 +51,6 @@
 }
 
 + (id)activityItemSourceLog;
-+ (void)initialize;
 + (id)_sharingErrorWithCode:(long long)arg1 underlyingError:(id)arg2 localizedDescription:(id)arg3 additionalInfo:(id)arg4;
 + (_Bool)supportsAssetLocalIdentifierForActivityType:(id)arg1;
 - (void).cxx_destruct;
@@ -67,6 +67,7 @@
 @property(retain, nonatomic) PUActivityItemSourceConfiguration *exportConfiguration; // @synthesize exportConfiguration=_exportConfiguration;
 @property(nonatomic) _Bool shouldAnchorPreparation; // @synthesize shouldAnchorPreparation=_shouldAnchorPreparation;
 @property(nonatomic) _Bool shouldSkipPreparation; // @synthesize shouldSkipPreparation=_shouldSkipPreparation;
+@property(nonatomic) _Bool shouldSendAnalyticsInterval; // @synthesize shouldSendAnalyticsInterval=_shouldSendAnalyticsInterval;
 @property(retain, nonatomic) NSError *lastPreparationError; // @synthesize lastPreparationError=_lastPreparationError;
 @property(copy) CDUnknownBlockType postCompletionHandler; // @synthesize postCompletionHandler=_postCompletionHandler;
 @property(copy) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;

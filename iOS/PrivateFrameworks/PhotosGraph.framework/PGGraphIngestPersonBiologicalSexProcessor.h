@@ -8,20 +8,23 @@
 
 #import <PhotosGraph/PGGraphIngestProcessor-Protocol.h>
 
-@class NSString;
+@class NSString, PGGraphBuilder;
 
 @interface PGGraphIngestPersonBiologicalSexProcessor : NSObject <PGGraphIngestProcessor>
 {
+    PGGraphBuilder *_graphBuilder;
 }
 
+- (void).cxx_destruct;
 - (id)_sexDescriptionForBiologicalSex:(unsigned long long)arg1;
 - (unsigned long long)sexForFaces:(id)arg1 personDescription:(id)arg2;
-- (unsigned long long)_sexForPersonNode:(id)arg1 graph:(id)arg2;
+- (unsigned long long)_sexForPersonNode:(id)arg1 photoLibrary:(id)arg2;
 - (unsigned short)_phBiologicalSexFromIngestBiologicalSex:(unsigned long long)arg1;
 - (void)_writeBiologicalSexByPerson:(id)arg1 toPhotoLibrary:(id)arg2;
-- (void)processPersonBiologicalSexForPersonNodes:(id)arg1 graph:(id)arg2 withProgressBlock:(CDUnknownBlockType)arg3;
+- (void)processPersonBiologicalSexForPersonNodes:(id)arg1 photoLibrary:(id)arg2 withProgressBlock:(CDUnknownBlockType)arg3;
 - (void)runWithGraphUpdate:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (_Bool)shouldRunWithGraphUpdate:(id)arg1;
+- (void)setGraphBuilder:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

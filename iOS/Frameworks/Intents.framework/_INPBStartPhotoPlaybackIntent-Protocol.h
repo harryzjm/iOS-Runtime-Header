@@ -15,8 +15,6 @@
 @property(retain, nonatomic) _INPBContactList *peopleInPhoto;
 @property(readonly, nonatomic) _Bool hasLocationCreated;
 @property(retain, nonatomic) _INPBLocation *locationCreated;
-@property(readonly, nonatomic) _Bool hasKeywordString;
-@property(retain, nonatomic) _INPBStringList *keywordString;
 @property(readonly, nonatomic) _Bool hasIntentMetadata;
 @property(retain, nonatomic) _INPBIntentMetadata *intentMetadata;
 @property(readonly, nonatomic) unsigned long long includedAttributesCount;
@@ -25,8 +23,6 @@
 @property(readonly, nonatomic) int *excludedAttributes;
 @property(readonly, nonatomic) _Bool hasDateCreated;
 @property(retain, nonatomic) _INPBDateTimeRange *dateCreated;
-@property(readonly, nonatomic) _Bool hasContentPerson;
-@property(retain, nonatomic) _INPBContactList *contentPerson;
 @property(readonly, nonatomic) _Bool hasAlbumName;
 @property(retain, nonatomic) _INPBString *albumName;
 - (int)StringAsIncludedAttributes:(NSString *)arg1;

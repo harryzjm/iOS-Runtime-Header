@@ -17,11 +17,13 @@
     long long _formFactor;
     unsigned long long _visibleChromeElements;
     double _displayScale;
+    long long _windowOrientation;
     struct CGSize _layoutReferenceSize;
     struct UIEdgeInsets _safeAreaInsets;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long windowOrientation; // @synthesize windowOrientation=_windowOrientation;
 @property(nonatomic) struct UIEdgeInsets safeAreaInsets; // @synthesize safeAreaInsets=_safeAreaInsets;
 @property(nonatomic) double displayScale; // @synthesize displayScale=_displayScale;
 @property(nonatomic) unsigned long long visibleChromeElements; // @synthesize visibleChromeElements=_visibleChromeElements;

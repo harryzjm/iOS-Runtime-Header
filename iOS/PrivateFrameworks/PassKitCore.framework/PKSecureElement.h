@@ -30,8 +30,10 @@
 + (_Bool)hardwareSupportsExpressMode:(id)arg1;
 + (_Bool)supportsExpressMode:(id)arg1 byHardware:(_Bool *)arg2;
 + (_Bool)supportsExpressMode:(id)arg1;
++ (_Bool)hardwareSupportsExpressForAutomaticSelectionTechnologyType:(long long)arg1 outError:(id *)arg2;
 + (_Bool)hardwareSupportsExpressForAutomaticSelectionTechnologyType:(long long)arg1;
 + (_Bool)supportsExpressForAutomaticSelectionTechnologyType:(long long)arg1;
++ (_Bool)supportsExpressForAutomaticSelectionTechnologyType:(long long)arg1 byHardware:(_Bool *)arg2 outError:(id *)arg3;
 + (_Bool)supportsExpressForAutomaticSelectionTechnologyType:(long long)arg1 byHardware:(_Bool *)arg2;
 + (id)sharedSecureElement;
 - (void).cxx_destruct;
@@ -48,6 +50,10 @@
 @property(readonly, nonatomic) _Bool isOwnable;
 @property(copy, nonatomic) CDUnknownBlockType secureElementSessionPostlude;
 @property(copy, nonatomic) CDUnknownBlockType secureElementSessionPrelude;
+- (void)generateSEEncryptionCertificateForSubCredentialId:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)signWithFidoKeyForRelyingParty:(id)arg1 relyingPartyAccountHash:(id)arg2 fidoKeyHash:(id)arg3 challenge:(id)arg4 publicKeyIdentifier:(id)arg5 externalizedAuth:(id)arg6 completion:(CDUnknownBlockType)arg7;
+- (void)checkFidoKeyPresenceForRelyingParty:(id)arg1 relyingPartyAccountHash:(id)arg2 fidoKeyHash:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)createFidoKeyForRelyingParty:(id)arg1 relyingPartyAccountHash:(id)arg2 challenge:(id)arg3 externalizedAuth:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (_Bool)setOwnerUserUUID:(id)arg1 keybagUUID:(id)arg2;
 - (unsigned long long)ownershipStateForUserUUID:(id)arg1;
 - (_Bool)supportsExpressModeForExpressPassType:(long long)arg1;
@@ -57,6 +63,8 @@
 - (void)connectToServerWithPushTopic:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)queueConnectionToServerForAppletIdentifiers:(id)arg1;
 - (_Bool)queueConnectionToServerWithPushTopic:(id)arg1;
+- (void)generateTransactionKeyWithParameters:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)generateTransactionKeyWithReaderIdentifier:(id)arg1 readerPublicKey:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)signedPlatformDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)stateInformationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)signatureForAuthToken:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -65,7 +73,9 @@
 - (void)markAppletsWithIdentifiersForDeletion:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)markAppletWithIdentifierForDeletion:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)markAllAppletsForDeletionWithExternalAuthorization:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)areAnyAppletsSuspendedWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)appletWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)consistencyCheckDeviceCredentialsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)allAppletsAndCredentialsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)allAppletsWithCompletion:(CDUnknownBlockType)arg1;
 - (_Bool)setRegistrationInformation:(id)arg1 primaryRegionTopic:(id)arg2;

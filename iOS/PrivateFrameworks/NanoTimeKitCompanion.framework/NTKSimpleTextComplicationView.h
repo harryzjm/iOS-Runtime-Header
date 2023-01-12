@@ -34,7 +34,7 @@
 - (void)setTimeTravelDate:(id)arg1 animated:(_Bool)arg2;
 - (id)complicationTemplate;
 - (void)setComplicationTemplate:(id)arg1 reason:(long long)arg2;
-@property(readonly, nonatomic) _Bool useAlternateFont;
+@property(readonly, nonatomic) unsigned long long complicationType;
 @property(retain, nonatomic) CLKFont *font;
 - (id)_defaultFont;
 - (void)_updateLabelFrame;

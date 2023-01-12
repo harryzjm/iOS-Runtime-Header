@@ -13,15 +13,17 @@ __attribute__((visibility("hidden")))
 {
     long long _connectionType;
     _Bool _requiresCustomPairing;
+    _Bool _isValid;
     NSString *_uid;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool isValid; // @synthesize isValid=_isValid;
 @property(readonly, nonatomic) long long connectionType; // @synthesize connectionType=_connectionType;
 @property(readonly, nonatomic) _Bool requiresCustomPairing; // @synthesize requiresCustomPairing=_requiresCustomPairing;
 @property(readonly, nonatomic) NSString *uid; // @synthesize uid=_uid;
 - (void)reset;
-- (_Bool)getInputStream:(id *)arg1 outputStream:(id *)arg2 userInfo:(id)arg3;
+- (id)createConnectionWithUserInfo:(id)arg1;
 @property(readonly, nonatomic) NSError *error;
 @property(nonatomic) _Bool shouldUseSystemAuthenticationPrompt; // @dynamic shouldUseSystemAuthenticationPrompt;
 @property(readonly, nonatomic) long long port;

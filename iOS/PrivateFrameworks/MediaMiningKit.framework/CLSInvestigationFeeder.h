@@ -15,11 +15,11 @@
     unsigned long long _locationClusteringAlgorithm;
     _Bool _allowsInterview;
     NSMutableSet *_focusItems;
-    NSSet *_focusPeopleUUIDs;
+    NSSet *_focusPersonLocalIdentifiers;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSSet *focusPeopleUUIDs; // @synthesize focusPeopleUUIDs=_focusPeopleUUIDs;
+@property(retain, nonatomic) NSSet *focusPersonLocalIdentifiers; // @synthesize focusPersonLocalIdentifiers=_focusPersonLocalIdentifiers;
 @property(readonly, nonatomic) NSMutableSet *focusItems; // @synthesize focusItems=_focusItems;
 @property(nonatomic) _Bool allowsInterview; // @synthesize allowsInterview=_allowsInterview;
 @property(nonatomic) unsigned long long locationClusteringAlgorithm; // @synthesize locationClusteringAlgorithm=_locationClusteringAlgorithm;
@@ -27,7 +27,7 @@
 - (id)prepareWithProgressBlock:(CDUnknownBlockType)arg1;
 - (id)_prepareFeederWithProgressBlock:(CDUnknownBlockType)arg1;
 - (void)enumeratePersonNames:(id)arg1 withGaussiansUsingBlock:(CDUnknownBlockType)arg2;
-- (void)enumerateLocationClustersWithGaussians:(id)arg1 enumerationBlock:(CDUnknownBlockType)arg2;
+- (void)_enumerateLocationClustersWithGaussians:(id)arg1 enumerationBlock:(CDUnknownBlockType)arg2;
 - (double)behavioralScore;
 - (unsigned long long)numberOfRegularGemItems;
 - (unsigned long long)numberOfShinyGemItems;

@@ -12,12 +12,14 @@
 
 @interface ICCloudContentTastePBFuseItemPreference : PBCodable <NSCopying>
 {
+    long long _actionTimestampMillis;
     long long _adamId;
     long long _createdOffsetMillis;
     NSString *_externalId;
     int _preference;
     int _preferenceType;
     struct {
+        unsigned int actionTimestampMillis:1;
         unsigned int adamId:1;
         unsigned int createdOffsetMillis:1;
         unsigned int preferenceType:1;
@@ -25,6 +27,7 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long actionTimestampMillis; // @synthesize actionTimestampMillis=_actionTimestampMillis;
 @property(nonatomic) long long createdOffsetMillis; // @synthesize createdOffsetMillis=_createdOffsetMillis;
 @property(retain, nonatomic) NSString *externalId; // @synthesize externalId=_externalId;
 @property(nonatomic) long long adamId; // @synthesize adamId=_adamId;
@@ -37,6 +40,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasActionTimestampMillis;
 @property(nonatomic) _Bool hasPreferenceType;
 @property(nonatomic) int preferenceType; // @synthesize preferenceType=_preferenceType;
 @property(nonatomic) _Bool hasCreatedOffsetMillis;

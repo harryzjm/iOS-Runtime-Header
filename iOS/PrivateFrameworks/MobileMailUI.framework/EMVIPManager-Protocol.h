@@ -16,5 +16,6 @@
 - (void)removeVIPsWithIdentifiers:(NSSet *)arg1;
 - (void)saveVIPs:(NSSet *)arg1;
 - (EMVIP *)vipWithIdentifier:(NSString *)arg1;
+- (void)getAllVIPsWithCompletion:(void (^)(NSSet *, NSError *))arg1;
 @end
 

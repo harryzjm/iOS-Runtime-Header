@@ -9,6 +9,7 @@
 @class NSString, UIColor;
 
 @interface HKElectrocardiogram (HealthUI)
++ (id)hk_localizedAverageBPM:(id)arg1;
 + (id)hk_onboardingCardBackgroundColor;
 + (id)hk_onboardingCardHeaderColor;
 + (id)hk_positiveNumSymptomsTextColor;
@@ -24,12 +25,13 @@
 + (id)hk_defaultClassificationTextColor;
 + (id)hk_defaultCardBackgroundColor;
 + (id)hk_defaultCardHeaderColor;
++ (id)createWithCodableECG:(id)arg1;
 - (_Bool)_hk_classificationHasAbnormalBPMFontColorAndStyle;
 - (_Bool)_hk_classificationHasAbnormalHeaderColorAndStyle;
 @property(readonly, nonatomic) NSString *hk_localizedUppercaseNumSymptoms;
 @property(readonly, nonatomic) NSString *hk_localizedNumSymptoms;
-@property(readonly, nonatomic) NSString *hk_localizedAverageBPM;
 @property(readonly, nonatomic) NSString *hk_localizedDuration;
+@property(readonly, nonatomic) NSString *hk_localizedAverageBPM;
 @property(readonly, nonatomic) UIColor *hk_numSymptomsTextColor;
 @property(readonly, nonatomic) _Bool hk_isBPMTextBold;
 @property(readonly, nonatomic) UIColor *hk_BPMTextColor;
@@ -49,5 +51,6 @@
 - (id)hk_waveformPathsWithPointsPerSecond:(double)arg1 pointsPerMillivolt:(double)arg2 minimumValueInMillivolts:(float)arg3 maximumValueInMillivolts:(float)arg4;
 - (id)_hk_waveformPathsWithNumberOfValues:(long long)arg1 transform:(struct CGAffineTransform)arg2 maximumNumberOfValuesPerPath:(long long)arg3 shouldResetXValues:(_Bool)arg4 initialValuesToOmit:(long long)arg5 minimumValueInMicrovolts:(float)arg6 maximumValueInMicrovolts:(float)arg7;
 - (id)hk_waveformPathsWithNumberOfValues:(long long)arg1 fitToWidth:(double)arg2 pointsPerMillivolt:(double)arg3 minimumValueInMillivolts:(float)arg4 maximumValueInMillivolts:(float)arg5;
+- (id)codableECG;
 @end
 

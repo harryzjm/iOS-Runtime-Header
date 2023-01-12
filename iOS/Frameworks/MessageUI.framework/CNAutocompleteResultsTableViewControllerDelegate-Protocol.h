@@ -11,6 +11,9 @@
 @protocol CNAutocompleteResultsTableViewControllerDelegate <NSObject>
 
 @optional
+- (void)autocompleteResultsController:(CNAutocompleteResultsTableViewController *)arg1 didEndDisplayingRowForRecipient:(CNComposeRecipient *)arg2;
+- (void)autocompleteResultsController:(CNAutocompleteResultsTableViewController *)arg1 willDisplayRowForRecipient:(CNComposeRecipient *)arg2;
+- (void)autocompleteResultsControllerWillBeginToScroll:(CNAutocompleteResultsTableViewController *)arg1;
 - (void)autocompleteResultsController:(CNAutocompleteResultsTableViewController *)arg1 didCollapseSelectedRecipient:(CNComposeRecipient *)arg2;
 - (void)autocompleteResultsController:(CNAutocompleteResultsTableViewController *)arg1 willCollapseSelectedRecipient:(CNComposeRecipient *)arg2;
 - (void)autocompleteResultsController:(CNAutocompleteResultsTableViewController *)arg1 didExpandSelectedRecipient:(CNComposeRecipient *)arg2;
@@ -19,6 +22,7 @@
 - (void)autocompleteResultsController:(CNAutocompleteResultsTableViewController *)arg1 didAskToRemoveRecipient:(CNComposeRecipient *)arg2;
 - (void)autocompleteResultsController:(CNAutocompleteResultsTableViewController *)arg1 tintColorForRecipient:(CNComposeRecipient *)arg2 completion:(void (^)(UIColor *))arg3;
 - (CNComposeRecipient *)autocompleteResultsController:(CNAutocompleteResultsTableViewController *)arg1 preferredRecipientForRecipients:(NSArray *)arg2;
+- (CNComposeRecipient *)autocompleteResultsController:(CNAutocompleteResultsTableViewController *)arg1 preferredRecipientForRecipient:(CNComposeRecipient *)arg2;
 - (void)autocompleteResultsController:(CNAutocompleteResultsTableViewController *)arg1 didRequestInfoAboutRecipient:(CNComposeRecipient *)arg2;
 - (void)autocompleteResultsController:(CNAutocompleteResultsTableViewController *)arg1 didSelectRecipient:(CNComposeRecipient *)arg2 atIndex:(unsigned long long)arg3;
 @end

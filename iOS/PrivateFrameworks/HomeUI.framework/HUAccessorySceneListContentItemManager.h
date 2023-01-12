@@ -15,6 +15,7 @@
     NSMutableDictionary *_committedActionBuildersByActionSetID;
 }
 
++ (_Bool)_action:(id)arg1 involvesServiceLikeItem:(id)arg2;
 + (id)computeNumberOfItemsToDisplayForContentSource:(unsigned long long)arg1 serviceLikeItem:(id)arg2 home:(id)arg3;
 + (id)createItemProviderForContentSource:(unsigned long long)arg1 serviceLikeItem:(id)arg2 home:(id)arg3 persistAddedSuggestions:(_Bool)arg4;
 - (void).cxx_destruct;

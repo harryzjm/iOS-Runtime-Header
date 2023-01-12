@@ -8,20 +8,21 @@
 
 #import <PhotosGraph/PGHighlightItemEnrichmentRule-Protocol.h>
 
-@class NSString, PGManager;
+@class NSString;
+@protocol OS_os_log;
 
 @interface PGYearEnrichmentRule : NSObject <PGHighlightItemEnrichmentRule>
 {
-    PGManager *_manager;
+    NSObject<OS_os_log> *_loggingConnection;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) PGManager *manager; // @synthesize manager=_manager;
-- (void)enumerateChildVisibilityStateForHighlightItemList:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
+@property(readonly, nonatomic) NSObject<OS_os_log> *loggingConnection; // @synthesize loggingConnection=_loggingConnection;
+- (void)enumerateChildVisibilityStateForHighlightItemList:(id)arg1 withGraph:(id)arg2 neighborScoreComputer:(id)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (id)curatedAssetsForHighlightItemList:(id)arg1 contextualKeyAssetByHighlighItemUUID:(id)arg2;
 - (id)keyAssetForHighlightItemList:(id)arg1 contextualKeyAssetByHighlighItemUUID:(id)arg2;
 - (double)promotionScoreForHighlightItemList:(id)arg1;
-- (id)initWithManager:(id)arg1;
+- (id)initWithLoggingConnection:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

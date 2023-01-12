@@ -27,14 +27,15 @@
 - (oneway void)audioPlaybackRequestDidStop:(id)arg1 error:(id)arg2;
 - (oneway void)audioPlaybackRequestDidStart:(id)arg1;
 - (oneway void)audioPlaybackRequestWillStart:(id)arg1;
-- (oneway void)audioSessionDidEndInterruption:(_Bool)arg1;
-- (oneway void)audioSessionDidBeginInterruption;
+- (oneway void)audioSessionDidEndInterruption:(_Bool)arg1 userInfo:(id)arg2;
+- (oneway void)audioSessionDidBeginInterruptionWithUserInfo:(id)arg1;
 - (oneway void)speechRecognitionDidFail:(id)arg1;
 - (oneway void)speechRecognizedPartialResult:(id)arg1;
 - (oneway void)speechRecordingWillBeginRecognitionUpdateForTask:(id)arg1;
 - (oneway void)speechRecordingDidUpdateRecognitionPhrases:(id)arg1 utterances:(id)arg2 refId:(id)arg3;
 - (oneway void)speechRecognizedAdditionalInterpretation:(id)arg1 refId:(id)arg2;
 - (oneway void)speechRecognized:(id)arg1;
+- (oneway void)willStopRecordingWithSignpostID:(unsigned long long)arg1;
 - (oneway void)speechRecordingDidFail:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (oneway void)speechRecordingDidCancelWithReply:(CDUnknownBlockType)arg1;
 - (oneway void)speechRecordingDidEndWithReply:(CDUnknownBlockType)arg1;
@@ -54,7 +55,6 @@
 - (oneway void)acousticIDRequestDidFinishWithSuccess:(_Bool)arg1;
 - (oneway void)musicWasDetected;
 - (oneway void)acousticIDRequestWillStart;
-- (oneway void)getClockContext:(CDUnknownBlockType)arg1;
 - (oneway void)getBulletinContext:(CDUnknownBlockType)arg1;
 - (oneway void)quickStopWasHandledWithActions:(unsigned long long)arg1;
 - (oneway void)requestRequestedDismissAssistant;

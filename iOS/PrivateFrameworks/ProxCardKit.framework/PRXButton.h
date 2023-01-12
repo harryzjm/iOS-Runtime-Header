@@ -8,12 +8,15 @@
 
 @interface PRXButton : UIButton
 {
+    _Bool _active;
     long long _proximityButtonType;
 }
 
 + (id)buttonWithProximityType:(long long)arg1 usesLegacyStyling:(_Bool)arg2;
 + (id)buttonWithProximityType:(long long)arg1;
+@property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
 @property(readonly, nonatomic) long long proximityButtonType; // @synthesize proximityButtonType=_proximityButtonType;
+- (void)toggleActive;
 - (void)setHighlighted:(_Bool)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (double)_minimumIntrinsicHeight;

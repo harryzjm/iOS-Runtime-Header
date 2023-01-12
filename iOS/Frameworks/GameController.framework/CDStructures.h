@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSObject;
+@class MISSING_TYPE, NSObject;
 
 #pragma mark Blocks
 
@@ -96,6 +96,13 @@ struct TokenAndParams {
     struct ItemList<FixedParam, 8> _field2;
 };
 
+struct UIEdgeInsets {
+    double top;
+    double left;
+    double bottom;
+    double right;
+};
+
 struct UsagePage_Usage_Pair {
     long long usagePage;
     long long usage;
@@ -113,6 +120,10 @@ struct pair<bool, float> {
 #pragma mark Typedef'd Structures
 
 typedef struct {
+    MISSING_TYPE *vector;
+} CDStruct_0e8a9a91;
+
+typedef struct {
     unsigned long long mask;
     float buttons[41];
 } CDStruct_5be5f302;
@@ -124,6 +135,14 @@ typedef struct {
 typedef struct {
     unsigned int val[8];
 } CDStruct_4c969caf;
+
+typedef struct {
+    float _field1;
+    float _field2;
+    float _field3;
+    float _field4;
+    float _field5;
+} CDStruct_0be28830;
 
 typedef struct {
     int _field1;
@@ -152,6 +171,7 @@ typedef struct {
             int _field1;
             _Bool _field2;
             float _field3;
+            long long _field4;
         } _field1;
         struct {
             int _field1;
@@ -166,11 +186,19 @@ typedef struct {
     _Bool _field8;
     id _field9;
     id _field10;
-} CDStruct_e11ff636;
+} CDStruct_9b142b0c;
 
 typedef struct {
-    CDStruct_e11ff636 _field1[16];
-} CDStruct_8de101df;
+    struct {
+        struct _field1;
+    } _field1[31];
+} CDStruct_d01ae07a;
+
+typedef struct {
+    CDStruct_9b142b0c _field1[16];
+    _Bool _field2;
+    _Bool _field3;
+} CDStruct_fc41fe5e;
 
 // Ambiguous groups
 typedef struct {

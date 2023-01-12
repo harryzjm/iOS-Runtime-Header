@@ -15,7 +15,6 @@
 
 @interface WFMultipleValueEditorViewCell <CKComponentProvider, CKComponentHostingViewDelegate, WFParameterEventObserver, WFVariableUIDelegate, WFTextTokenEditorViewDelegate>
 {
-    _Bool _standaloneVariablesAsContentItems;
     _Bool _variablesDisabled;
     id <WFMultipleValueEditorViewCellDelegate> _delegate;
     UIViewController *_containingViewController;
@@ -24,7 +23,7 @@
     id <WFVariableProvider> _variableProvider;
     id <WFVariableUIDelegate> _variableUIDelegate;
     NSSet *_allowedVariableTypes;
-    NSString *_widgetSizeClass;
+    long long _widgetFamily;
     MTVisualStylingProvider *_strokeProvider;
     WFTextTokenEditorView *_valueEditor;
     WFMultipleValueEditorViewCellContext *_hostingViewContext;
@@ -32,7 +31,7 @@
     double _lastWidth;
 }
 
-+ (id)singleButtonSlotForParameter:(id)arg1 state:(id)arg2 widgetSizeClass:(id)arg3;
++ (id)singleButtonSlotForParameter:(id)arg1 state:(id)arg2 widgetFamily:(long long)arg3;
 + (id)componentForModel:(id)arg1 context:(id)arg2;
 - (void).cxx_destruct;
 @property(nonatomic) double lastWidth; // @synthesize lastWidth=_lastWidth;
@@ -40,9 +39,8 @@
 @property(retain, nonatomic) WFMultipleValueEditorViewCellContext *hostingViewContext; // @synthesize hostingViewContext=_hostingViewContext;
 @property(readonly, nonatomic) WFTextTokenEditorView *valueEditor; // @synthesize valueEditor=_valueEditor;
 @property(retain, nonatomic) MTVisualStylingProvider *strokeProvider; // @synthesize strokeProvider=_strokeProvider;
-@property(copy, nonatomic) NSString *widgetSizeClass; // @synthesize widgetSizeClass=_widgetSizeClass;
+@property(nonatomic) long long widgetFamily; // @synthesize widgetFamily=_widgetFamily;
 @property(nonatomic) _Bool variablesDisabled; // @synthesize variablesDisabled=_variablesDisabled;
-@property(nonatomic) _Bool standaloneVariablesAsContentItems; // @synthesize standaloneVariablesAsContentItems=_standaloneVariablesAsContentItems;
 @property(copy, nonatomic) NSSet *allowedVariableTypes; // @synthesize allowedVariableTypes=_allowedVariableTypes;
 @property(nonatomic) __weak id <WFVariableUIDelegate> variableUIDelegate; // @synthesize variableUIDelegate=_variableUIDelegate;
 @property(nonatomic) __weak id <WFVariableProvider> variableProvider; // @synthesize variableProvider=_variableProvider;
@@ -54,7 +52,6 @@
 - (void)componentHostingViewDidInvalidateSize:(id)arg1;
 - (void)revealAction:(id)arg1 fromSourceView:(id)arg2 preScrollHandler:(CDUnknownBlockType)arg3 goBackHandler:(CDUnknownBlockType)arg4 scrolledAwayHandler:(CDUnknownBlockType)arg5;
 - (void)showActionOutputPickerFromSourceResponder:(id)arg1 allowExtensionInput:(_Bool)arg2 variableProvider:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)updateValueEditorResultType;
 - (void)textTokenEditorTextDidEndEditing:(id)arg1;
 - (void)notifyDelegateTextUpdated;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

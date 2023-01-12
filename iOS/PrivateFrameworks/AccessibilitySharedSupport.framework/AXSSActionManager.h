@@ -42,11 +42,14 @@
 - (void)toggleDock;
 - (void)toggleControlCenter;
 - (void)toggleNotificationCenter;
+- (void)toggleMenuBar;
 - (void)activateSOS;
 - (void)rebootDevice;
 - (void)armApplePay;
 - (void)activateAccessibilityShortcut;
 - (void)lockScreen;
+- (void)toggleQuickNote;
+- (void)toggleAppLibrary;
 - (void)toggleAppSwitcher;
 - (void)goHome;
 - (void)activateSiri;

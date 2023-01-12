@@ -56,15 +56,13 @@
 - (_Bool)shouldSendClientInfoHeaderForURL:(id)arg1;
 - (_Bool)shouldHandleHTTPCookiesForURL:(id)arg1;
 - (_Bool)handleShouldUseCredentialStorage;
-- (_Bool)handleAuthenticateAgainstProtectionSpace:(id)arg1 withConnection:(id)arg2;
 - (_Bool)handleAuthenticateAgainstProtectionSpace:(id)arg1;
 - (_Bool)renewCredential;
 - (_Bool)shouldTryRenewingCredential;
-- (_Bool)shouldRetryUnauthorizedConnection:(id)arg1;
+- (_Bool)shouldRetryUnauthorizedTask:(id)arg1;
 - (_Bool)shouldTurnModalOnBadPassword;
 - (_Bool)handleCertificateError:(id)arg1;
-- (_Bool)handleTrustChallenge:(id)arg1 withConnection:(id)arg2;
-- (_Bool)handleTrustChallenge:(id)arg1;
+- (_Bool)handleTrustChallenge:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)oauthInfoProvider;
 - (id)clientCertificateInfoProvider;
 - (id)clientToken;

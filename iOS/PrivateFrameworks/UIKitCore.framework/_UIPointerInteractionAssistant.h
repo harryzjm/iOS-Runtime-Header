@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)setAssistedView:(id)arg1 identifier:(id)arg2;
 - (struct CGPoint)request:(id)arg1 locationInView:(id)arg2;
 - (id)createStyleForButton:(id)arg1 shapeProvider:(CDUnknownBlockType)arg2;
-- (id)createRegionFromRect:(struct CGRect)arg1 inView:(id)arg2 withIdentifier:(id)arg3;
+- (id)createRegionFromRect:(struct CGRect)arg1 targetView:(id)arg2 identifier:(id)arg3 selected:(_Bool)arg4;
 - (id)createPreviewTargetForView:(id)arg1 center:(struct CGPoint)arg2;
 @property(readonly, nonatomic) UIView *previewContainer;
 - (id)initWithDelegate:(id)arg1;

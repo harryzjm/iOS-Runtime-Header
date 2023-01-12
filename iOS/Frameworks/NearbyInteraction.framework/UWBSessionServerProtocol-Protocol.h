@@ -6,12 +6,27 @@
 
 #import <NearbyInteraction/NSObject-Protocol.h>
 
-@class NIConfiguration, NSString;
+@class NIConfiguration, NIDiscoveryToken, NSData, NSDictionary;
 
 @protocol UWBSessionServerProtocol <NSObject>
-- (void)shareSandboxToken:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)pause:(void (^)(NSError *))arg1;
 - (void)runWithConfiguration:(NIConfiguration *)arg1 reply:(void (^)(NSError *))arg2;
+
+@optional
+- (void)_provideTruthTag:(NSDictionary *)arg1;
+- (void)_processCarKeyEvent:(NSDictionary *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)_setURSKTTL:(unsigned long long)arg1 reply:(void (^)(NSError *))arg2;
+- (void)_setDebugURSK:(NSData *)arg1 transactionIdentifier:(unsigned int)arg2 reply:(void (^)(NSError *))arg3;
+- (void)deleteURSKs:(void (^)(NSError *))arg1;
+- (void)isRangingLimitExceeded:(void (^)(_Bool, NSError *))arg1;
+- (void)setRangingPriorityPolicy:(long long)arg1 reply:(void (^)(NSError *))arg2;
+- (void)getRangingPriorityPolicy:(void (^)(long long, NSError *))arg1;
+- (void)processBluetoothEventWithType:(long long)arg1 btcClockTicks:(unsigned long long)arg2 reply:(void (^)(NSError *))arg3;
+- (void)processDCKMessage:(NSData *)arg1 reply:(void (^)(NSData *, NSError *))arg2;
+- (void)updateEnabledGesturesFromConfiguration:(NIConfiguration *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)_removeObject:(NIDiscoveryToken *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)_addObject:(NIDiscoveryToken *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)notifySystemShutdownWithReason:(long long)arg1 reply:(void (^)(NSError *))arg2;
 - (void)activate:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)queryDeviceCapabilities:(void (^)(NSDictionary *))arg1;
 @end

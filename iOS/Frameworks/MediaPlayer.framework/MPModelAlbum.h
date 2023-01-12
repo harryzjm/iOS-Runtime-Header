@@ -10,6 +10,7 @@
 {
 }
 
++ (id)__traits_KEY;
 + (id)__downloadedDate_KEY;
 + (id)__songPopularityBlock_KEY;
 + (id)__shortEditorNotes_KEY;
@@ -47,6 +48,7 @@
 + (id)requiredLibraryRemovalProperties;
 + (_Bool)supportsKeepLocalStatusObservation;
 + (id)requiredKeepLocalStatusObservationProperties;
++ (long long)genericObjectType;
 + (id)requiredStoreLibraryPersonalizationProperties;
 - (id)songPopularityForIdentifiers:(id)arg1;
 - (id)artworkCatalog;
@@ -85,6 +87,7 @@
 @property(copy, nonatomic) CDUnknownBlockType songPopularityBlock; // @dynamic songPopularityBlock;
 @property(copy, nonatomic) NSString *title; // @dynamic title;
 @property(nonatomic) long long trackCount; // @dynamic trackCount;
+@property(nonatomic) unsigned long long traits; // @dynamic traits;
 @property(nonatomic) float volumeNormalization; // @dynamic volumeNormalization;
 @property(nonatomic) long long year; // @dynamic year;
 

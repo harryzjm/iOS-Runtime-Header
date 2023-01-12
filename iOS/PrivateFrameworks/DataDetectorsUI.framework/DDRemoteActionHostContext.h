@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)_allowedItemPayloadClasses;
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
 - (void)enableUserInteraction:(_Bool)arg1;

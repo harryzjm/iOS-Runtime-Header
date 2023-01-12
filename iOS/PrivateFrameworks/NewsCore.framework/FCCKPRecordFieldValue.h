@@ -27,6 +27,8 @@
     } _has;
 }
 
++ (Class)listValueType;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *listValues; // @synthesize listValues=_listValues;
 @property(retain, nonatomic) FCCKPRecordReference *referenceValue; // @synthesize referenceValue=_referenceValue;
 @property(retain, nonatomic) NSString *stringValue; // @synthesize stringValue=_stringValue;
@@ -38,7 +40,6 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
@@ -55,7 +56,6 @@
 @property(readonly, nonatomic) _Bool hasBytesValue;
 @property(nonatomic) _Bool hasType;
 @property(nonatomic) int type; // @synthesize type=_type;
-- (void)dealloc;
 
 @end
 

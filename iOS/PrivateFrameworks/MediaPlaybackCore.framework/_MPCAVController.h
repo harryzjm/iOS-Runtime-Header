@@ -8,12 +8,14 @@
 
 #import <MediaPlaybackCore/MPCPlaybackEngineImplementation-Protocol.h>
 
-@class AVPictureInPictureController, MPAVItem, MPCPlaybackEngine, MPQueuePlayer, MPVideoView, NSMutableSet, NSString;
+@class AVPlayerLayer, MPAVItem, MPCPlaybackEngine, MPQueuePlayer, NSMutableSet, NSString;
 @protocol MPAVQueueController;
 
+__attribute__((visibility("hidden")))
 @interface _MPCAVController : MPAVController <MPCPlaybackEngineImplementation>
 {
     _Bool _hasPlayedSuccessfully;
+    AVPlayerLayer *_playerLayer;
     MPCPlaybackEngine *_playbackEngine;
     long long _actionAtQueueEnd;
     NSString *_firstPlaybackItemIdentifier;
@@ -26,17 +28,14 @@
 @property(copy, nonatomic) NSString *firstPlaybackItemIdentifier; // @synthesize firstPlaybackItemIdentifier=_firstPlaybackItemIdentifier;
 @property(nonatomic) long long actionAtQueueEnd; // @synthesize actionAtQueueEnd=_actionAtQueueEnd;
 @property(readonly, nonatomic) __weak MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
-@property(nonatomic) _Bool hasPlayedSuccessfully; // @synthesize hasPlayedSuccessfully=_hasPlayedSuccessfully;
+@property(readonly, nonatomic) AVPlayerLayer *playerLayer; // @synthesize playerLayer=_playerLayer;
+@property(readonly, nonatomic) _Bool hasPlayedSuccessfully; // @synthesize hasPlayedSuccessfully=_hasPlayedSuccessfully;
 - (void)_updateStateForPlaybackPrevention;
-- (void)_firstVideoFrameDisplayed:(id)arg1;
 - (void)_streamBufferFull:(id)arg1;
-- (void)_streamRanDry:(id)arg1;
-- (void)_streamUnlikelyToKeepUp:(id)arg1;
 - (void)_streamLikelyToKeepUp:(id)arg1;
 - (void)_itemPlaybackDidEndNotification:(id)arg1;
 - (void)_queueDidEndWithReason:(id)arg1 lastItem:(id)arg2;
 - (void)_setState:(long long)arg1;
-- (void)_itemFailedToPlayToEnd:(id)arg1;
 - (void)_itemDidChange:(id)arg1;
 - (void)_itemDidSignificantlyChangeElapsedTime:(double)arg1 rate:(float)arg2;
 - (void)_enforcingPolicy:(_Bool)arg1;
@@ -57,29 +56,27 @@
 - (void)togglePlaybackWithOptions:(unsigned long long)arg1;
 - (void)playWithOptions:(unsigned long long)arg1;
 - (void)loadSessionWithQueueController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (_Bool)becomeActiveWithError:(id *)arg1;
 - (void)updateAudioSession;
+@property(readonly, nonatomic, getter=isReloadingPlaybackContext) _Bool reloadingPlaybackContext;
+@property(readonly, nonatomic) float currentRate;
 - (void)endPlayback;
+- (void)replaceCurrentItemWithPlaybackContext:(id)arg1 identifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)reloadWithPlaybackContext:(id)arg1 identifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_setQueueController:(id)arg1 deferItemLoading:(_Bool)arg2;
 - (id)initWithPlaybackEngine:(id)arg1;
 
 // Remaining properties
 @property(nonatomic) _Bool autoPlayWhenLikelyToKeepUp;
-@property(nonatomic) _Bool automaticallyHidesVideoLayersForMusicVideosWhenApplicationBackgrounds;
 @property(readonly, nonatomic) MPAVItem *currentItem;
-@property(nonatomic) double currentTime;
+@property(readonly, nonatomic) double currentTime;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
-@property(readonly, nonatomic) AVPictureInPictureController *pictureInPictureController;
 @property(retain, nonatomic) id <MPAVQueueController> queueController;
 @property(readonly, nonatomic) MPQueuePlayer *queuePlayer;
 @property(readonly, nonatomic) long long state;
 @property(readonly, nonatomic) long long stateBeforeInterruption;
 @property(readonly) Class superclass;
-@property(readonly, nonatomic) MPVideoView *videoView;
-@property(nonatomic) _Bool wantsPictureInPicture;
 
 @end
 

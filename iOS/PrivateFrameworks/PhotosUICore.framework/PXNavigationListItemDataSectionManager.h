@@ -8,13 +8,14 @@
 #import <PhotosUICore/PXDataSectionManagerEnabling-Protocol.h>
 #import <PhotosUICore/PXPhotoLibraryUIChangeObserver-Protocol.h>
 
-@class NSOperationQueue, NSString, PHCollection, PHFetchResult;
+@class NSOperationQueue, NSString, PHCollection, PHFetchResult, PXDataSectionEnablementForwarder;
 @protocol PXNavigationListItem;
 
 @interface PXNavigationListItemDataSectionManager <PXCollectionFetchOperationDelegate, PXPhotoLibraryUIChangeObserver, PXDataSectionManagerEnabling>
 {
     _Bool _enabled;
     _Bool _hiddenWhenEmpty;
+    PXDataSectionEnablementForwarder *_enablementForwarder;
     PHCollection *_collection;
     NSOperationQueue *_workQueue;
     id <PXNavigationListItem> _listItem;
@@ -27,6 +28,7 @@
 @property(readonly, nonatomic) id <PXNavigationListItem> listItem; // @synthesize listItem=_listItem;
 @property(readonly, nonatomic) NSOperationQueue *workQueue; // @synthesize workQueue=_workQueue;
 @property(readonly, nonatomic) PHCollection *collection; // @synthesize collection=_collection;
+@property(retain, nonatomic) PXDataSectionEnablementForwarder *enablementForwarder; // @synthesize enablementForwarder=_enablementForwarder;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1;
 - (void)collectionFetchOperationDidComplete:(id)arg1;

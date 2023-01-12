@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_9fa31b4a)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_9fa31b4a)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSString *ref_transcript;
 @property(readonly, nonatomic) NSArray *audio_packets;
 @property(readonly, nonatomic) double longitude;

@@ -17,7 +17,7 @@
     unsigned int _valuePairDataType;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
++ (const struct MPSLibraryInfo *)libraryInfo:(void *)arg1;
 @property(readonly, nonatomic) unsigned int valuePairDataType; // @synthesize valuePairDataType=_valuePairDataType;
 @property(readonly, nonatomic) unsigned int keyPairDataType; // @synthesize keyPairDataType=_keyPairDataType;
 - (void)encodeToCommandBuffer:(id)arg1 sourceKeyBuffer:(id)arg2 sourceKeyOffset:(unsigned long long)arg3 sourceValueBuffer:(id)arg4 sourceValueOffset:(unsigned long long)arg5 destinationKeyBuffer:(id)arg6 destinationKeyOffset:(unsigned long long)arg7 destinationValueBuffer:(id)arg8 destinationValueOffset:(unsigned long long)arg9 numEntries:(unsigned long long)arg10;

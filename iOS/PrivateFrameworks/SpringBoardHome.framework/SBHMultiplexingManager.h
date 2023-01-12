@@ -31,6 +31,8 @@
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)description;
+- (void)enumerateAllViewControllersUsingBlock:(CDUnknownBlockType)arg1;
+- (void)discardCachedRecentViewControllers;
 - (void)discardCachedRecentViewControllersForIdentifier:(id)arg1;
 - (void)_trimCachedRecentViewControllers;
 - (_Bool)_cacheLastDiscardedViewController:(id)arg1 forIdentifier:(id)arg2;

@@ -7,8 +7,10 @@
 #import <Sleep/HKSPObject-Protocol.h>
 
 @class HKSPChangeSet, NSDate;
+@protocol HKSPObject;
 
 @protocol HKSPMutableObject <HKSPObject>
+@property(readonly, nonatomic) id <HKSPObject> originalObject;
 @property(readonly, nonatomic) HKSPChangeSet *changeSet;
 @property(copy, nonatomic) NSDate *lastModifiedDate;
 - (void)freeze;

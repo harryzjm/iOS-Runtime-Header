@@ -10,12 +10,7 @@
 
 @interface _TtC7NewsUI236MagazineGridBlueprintModifierFactory : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *issueService;
-    MISSING_TYPE *issueModelFactory;
-    MISSING_TYPE *paidAccessChecker;
-    MISSING_TYPE *subscriptionService;
-    MISSING_TYPE *tagService;
-    MISSING_TYPE *offlineIssueManager;
+    MISSING_TYPE *gridModelItemFactory;
 }
 
 @end

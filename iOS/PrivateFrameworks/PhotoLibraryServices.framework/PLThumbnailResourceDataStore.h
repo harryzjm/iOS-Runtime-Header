@@ -6,28 +6,33 @@
 
 #import <PhotoLibraryServices/PLResourceDataStore-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, PLPhotoLibraryPathManager, PLThumbnailIndexes, PLThumbnailManager;
+@class NSArray, NSObject, NSString, PLLazyObject, PLPhotoLibraryPathManager, PLThumbnailIndexes, PLThumbnailManager;
+@protocol NSObject, OS_dispatch_source;
 
 @interface PLThumbnailResourceDataStore <PLResourceDataStore>
 {
-    NSDictionary *_thumbnailFormatsByTableType;
-    NSArray *_thumbnailFormats;
-    PLThumbnailManager *_thumbnailManager;
     PLThumbnailIndexes *_thumbnailIndexes;
+    PLLazyObject *_lazyThumbnailManager;
+    PLLazyObject *_lazyThumbnailFormats;
+    PLLazyObject *_lazyThumbnailFormatsByTableType;
+    NSArray *_overridenThumbnailFormats;
+    struct os_unfair_lock_s _observersLock;
+    NSObject<OS_dispatch_source> *_configWatcherSource;
+    id <NSObject> _clientBackgroundTransitionObserverToken;
 }
 
 + (_Bool)resourceIsSquare:(id)arg1;
 + (unsigned short)keyLengthWithDataPreview:(unsigned char)arg1;
 + (id)supportedRecipes;
-+ (unsigned int)storeClassID;
++ (unsigned short)storeClassID;
++ (id)_tableFormatsByTableTypeFromFormats:(id)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) PLThumbnailIndexes *thumbnailIndexes; // @synthesize thumbnailIndexes=_thumbnailIndexes;
-@property(retain, nonatomic) PLThumbnailManager *thumbnailManager; // @synthesize thumbnailManager=_thumbnailManager;
+@property(readonly) PLThumbnailIndexes *thumbnailIndexes; // @synthesize thumbnailIndexes=_thumbnailIndexes;
+- (_Bool)thumbnailForKey:(id)arg1 matchesAssetID:(id)arg2;
 - (struct CGImage *)newTableThumbImageForKey:(id)arg1;
 - (id)thumbnailFormatsByTableType;
-- (void)setThumbnailFormatsByIDs:(id)arg1;
-@property(retain, nonatomic) NSArray *thumbnailFormats; // @synthesize thumbnailFormats=_thumbnailFormats;
-- (void)requestStreamingURLForResource:(id)arg1 asset:(id)arg2 intent:(unsigned long long)arg3 inContext:(id)arg4 clientBundleID:(id)arg5 completion:(CDUnknownBlockType)arg6;
+@property(readonly) NSArray *thumbnailFormats;
+@property(readonly) PLThumbnailManager *thumbnailManager;
 - (_Bool)videoResource:(id)arg1 matchesOrExceedsQualityLevel:(unsigned int)arg2;
 - (id)requestLocalAvailabilityChange:(short)arg1 forResource:(id)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (_Bool)storeExternalResource:(id)arg1 forAsset:(id)arg2 inContext:(id)arg3 options:(id)arg4 error:(id *)arg5 resultingResource:(id *)arg6;
@@ -39,7 +44,15 @@
 - (id)keyFromKeyStruct:(const void *)arg1;
 - (id)descriptionForSubtype:(long long)arg1;
 - (id)name;
+- (void)dealloc;
 - (id)initWithPathManager:(id)arg1;
+- (void)overrideThumbnailFormatsWithFormatIDs:(id)arg1;
+- (void)invalidateThumbnailManager;
+- (id)_makeThumbnailManager;
+- (void)_installBackgroundWatcher;
+- (void)_stopWatchingThumbnailConfigFile;
+- (void)_startWatchingThumbnailConfigFile;
+- (struct PLImageTableEntryFooter_s *)_tableFooterForKey:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

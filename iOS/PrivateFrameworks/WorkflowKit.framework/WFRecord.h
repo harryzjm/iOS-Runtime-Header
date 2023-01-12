@@ -39,7 +39,7 @@
 - (void)setupPropertyObservation;
 - (void)enumerateSettablePropertiesWithBlock:(CDUnknownBlockType)arg1;
 - (_Bool)saveProperties:(id)arg1 toStorage:(id)arg2 error:(id *)arg3;
-- (void)resetModifications:(_Bool)arg1;
+- (void)resetModificationsForProperties:(id)arg1 onlySinceLastSave:(_Bool)arg2;
 - (void)markPropertyModifiedIfNecessary:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionWithValues:(_Bool)arg1;
@@ -54,8 +54,8 @@
 @property(readonly, nonatomic) NSSet *fetchedProperties;
 @property(readonly, nonatomic) NSSet *allProperties;
 - (void)dealloc;
-- (id)initWithStorage:(id)arg1 properties:(id)arg2 error:(id *)arg3;
-- (id)initWithStorage:(id)arg1 error:(id *)arg2;
+- (id)initWithStorage:(id)arg1 properties:(id)arg2;
+- (id)initWithStorage:(id)arg1;
 - (id)init;
 
 @end

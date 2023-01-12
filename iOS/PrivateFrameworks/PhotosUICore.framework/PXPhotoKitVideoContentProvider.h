@@ -11,14 +11,11 @@
 @interface PXPhotoKitVideoContentProvider <PXPhotoLibraryUIChangeObserver>
 {
     PHFetchResult *_fetchResult;
-    _Bool _wantsCustomCompositor;
 }
 
 - (void).cxx_destruct;
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1;
-- (void)postprocessPlayerItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (_Bool)needsPostprocessing;
-- (id)initWithAsset:(id)arg1 mediaProvider:(id)arg2;
+- (id)initWithAsset:(id)arg1 mediaProvider:(id)arg2 deliveryStrategies:(id)arg3 audioSession:(id)arg4 requestURLOnly:(_Bool)arg5;
 
 // Remaining properties
 @property(readonly, nonatomic) PHAsset *asset; // @dynamic asset;

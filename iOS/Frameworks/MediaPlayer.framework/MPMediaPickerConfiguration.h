@@ -13,6 +13,8 @@
 @interface MPMediaPickerConfiguration : NSObject <NSSecureCoding>
 {
     _Bool _allowsPickingMultipleItems;
+    _Bool _alwaysShowSearchBarInLibrary;
+    _Bool _automaticallyDrillsToLibrary;
     _Bool _showsCloudItems;
     _Bool _showsItemsWithProtectedAssets;
     _Bool _picksSingleCollectionEntity;
@@ -38,6 +40,8 @@
 @property(copy, nonatomic) NSString *prompt; // @synthesize prompt=_prompt;
 @property(nonatomic) _Bool showsItemsWithProtectedAssets; // @synthesize showsItemsWithProtectedAssets=_showsItemsWithProtectedAssets;
 @property(nonatomic) _Bool showsCloudItems; // @synthesize showsCloudItems=_showsCloudItems;
+@property(nonatomic) _Bool automaticallyDrillsToLibrary; // @synthesize automaticallyDrillsToLibrary=_automaticallyDrillsToLibrary;
+@property(nonatomic) _Bool alwaysShowSearchBarInLibrary; // @synthesize alwaysShowSearchBarInLibrary=_alwaysShowSearchBarInLibrary;
 @property(nonatomic) _Bool allowsPickingMultipleItems; // @synthesize allowsPickingMultipleItems=_allowsPickingMultipleItems;
 @property(nonatomic) unsigned long long mediaTypes; // @synthesize mediaTypes=_mediaTypes;
 - (id)initWithCoder:(id)arg1;

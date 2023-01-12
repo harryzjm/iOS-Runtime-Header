@@ -11,9 +11,11 @@
 @interface CSContentActionInterpreter : NSObject
 {
     UIViewController *_nowPlayingViewController;
+    UIViewController *_digestOnboardingSuggestionViewController;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) __weak UIViewController *digestOnboardingSuggestionViewController; // @synthesize digestOnboardingSuggestionViewController=_digestOnboardingSuggestionViewController;
 @property(nonatomic) __weak UIViewController *nowPlayingViewController; // @synthesize nowPlayingViewController=_nowPlayingViewController;
 - (void)_viewControllerFromAction:(id)arg1 completion:(CDUnknownBlockType)arg2;
 

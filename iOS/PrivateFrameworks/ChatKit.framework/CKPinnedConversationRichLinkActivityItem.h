@@ -8,16 +8,18 @@
 
 #import <ChatKit/CKPinnedConversationActivityItem-Protocol.h>
 
-@class IMMessage, NSString;
+@class IMChatContext, IMMessage, NSString;
 
 @interface CKPinnedConversationRichLinkActivityItem : NSObject <CKPinnedConversationActivityItem>
 {
     double _activityItemContentScale;
     NSString *_attachedContactItemIdentifier;
     IMMessage *_message;
+    IMChatContext *_chatContext;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) IMChatContext *chatContext; // @synthesize chatContext=_chatContext;
 @property(readonly, nonatomic) IMMessage *message; // @synthesize message=_message;
 @property(readonly, nonatomic) double activityItemContentScale; // @synthesize activityItemContentScale=_activityItemContentScale;
 @property(readonly, nonatomic) NSString *attachedContactItemIdentifier; // @synthesize attachedContactItemIdentifier=_attachedContactItemIdentifier;
@@ -25,7 +27,7 @@
 @property(readonly, nonatomic) _Bool activityItemDisappearsWithAnimation;
 @property(readonly, nonatomic) _Bool activityItemAppearsWithAnimation;
 @property(readonly, nonatomic) NSString *activityItemIdentifier;
-- (id)initWithMessage:(id)arg1 contentScale:(double)arg2 attachedContactItemIdentifier:(id)arg3;
+- (id)initWithMessage:(id)arg1 chatContext:(id)arg2 contentScale:(double)arg3 attachedContactItemIdentifier:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

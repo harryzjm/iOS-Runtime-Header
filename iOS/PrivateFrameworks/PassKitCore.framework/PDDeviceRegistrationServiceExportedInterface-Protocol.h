@@ -6,9 +6,9 @@
 
 #import <PassKitCore/PDXPCServiceExportedInterface-Protocol.h>
 
-@class NSString;
+@class NSString, NSURL;
 
 @protocol PDDeviceRegistrationServiceExportedInterface <PDXPCServiceExportedInterface>
-- (void)performDeviceRegistrationForReason:(NSString *)arg1 actionType:(long long)arg2 completion:(void (^)(unsigned long long))arg3;
+- (void)performDeviceRegistrationForReason:(NSString *)arg1 brokerURL:(NSURL *)arg2 actionType:(long long)arg3 completion:(void (^)(unsigned long long, NSError *))arg4;
 @end
 

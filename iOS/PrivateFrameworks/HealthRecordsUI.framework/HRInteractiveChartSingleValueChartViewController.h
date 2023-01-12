@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) _TtC15HealthRecordsUI35SingleValueAnnotationViewDataSource *annotationViewDataSource; // @synthesize annotationViewDataSource=_annotationViewDataSource;
 - (id)_colorForDisplayType:(id)arg1;
 - (void)updateSelectionAnnotationDataSourceForContext:(id)arg1 displayType:(id)arg2 timeScope:(long long)arg3;
-- (id)makeAnnotationDataSourceWithMetrics:(id)arg1;
+- (id)makeAnnotationDataSource;
 - (id)makeStandardCurrentValueViewDataSource;
 
 @end

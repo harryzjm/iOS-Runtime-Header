@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HKSPPersistentStateMachineState, NSString;
+@class HKSPPersistentStateMachineState, NSSet, NSString;
 
 @protocol HKSPStatePersistence
 - (_Bool)savePersistentState:(HKSPPersistentStateMachineState *)arg1 identifier:(NSString *)arg2 error:(id *)arg3;
-- (HKSPPersistentStateMachineState *)loadPersistentStateForIdentifier:(NSString *)arg1 error:(id *)arg2;
+- (HKSPPersistentStateMachineState *)loadPersistentStateForIdentifier:(NSString *)arg1 allowedStates:(NSSet *)arg2 error:(id *)arg3;
 @end
 

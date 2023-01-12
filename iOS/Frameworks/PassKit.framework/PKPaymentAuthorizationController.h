@@ -35,6 +35,7 @@
 - (void)paymentAuthorizationCoordinator:(id)arg1 didAuthorizeContextWithHandler:(CDUnknownBlockType)arg2;
 - (void)paymentAuthorizationCoordinator:(id)arg1 didRequestMerchantSessionUpdate:(CDUnknownBlockType)arg2;
 - (void)paymentAuthorizationCoordinator:(id)arg1 willFinishWithError:(id)arg2;
+- (void)paymentAuthorizationCoordinator:(id)arg1 didChangeCouponCode:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)paymentAuthorizationCoordinator:(id)arg1 didSelectPaymentMethod:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)paymentAuthorizationCoordinator:(id)arg1 didSelectShippingAddress:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)paymentAuthorizationCoordinator:(id)arg1 didSelectShippingMethod:(id)arg2 handler:(CDUnknownBlockType)arg3;

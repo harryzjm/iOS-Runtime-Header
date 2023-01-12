@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIDelayedAction;
+@class UIDelayedAction, UIScrollView;
 
 __attribute__((visibility("hidden")))
 @interface UIScrollViewPagingSwipeGestureRecognizer
 {
+    UIScrollView *_scrollView;
     UIDelayedAction *_swipeFailureDelay;
     struct CGPoint _startLocation;
     struct CGPoint _lastLocation;
@@ -18,6 +19,7 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)_shouldDefaultToTouches;
 - (void).cxx_destruct;
+@property(nonatomic) __weak UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;

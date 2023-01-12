@@ -16,6 +16,9 @@
     _PASLock *_perLanguageRecordersLock;
 }
 
++ (_Bool)isLinkInString:(id)arg1;
++ (_Bool)isFileInString:(id)arg1;
++ (_Bool)isFourDigitInString:(id)arg1;
 + (_Bool)_isImageAttachment:(id)arg1;
 + (_Bool)_isSharingSenderLocation:(id)arg1 senderName:(id)arg2;
 - (void).cxx_destruct;

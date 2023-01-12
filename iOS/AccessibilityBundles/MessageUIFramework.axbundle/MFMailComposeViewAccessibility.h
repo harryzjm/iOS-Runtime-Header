@@ -18,7 +18,6 @@
 - (void)scrollViewDidScroll:(id)arg1;
 - (_Bool)presentSearchResults:(id)arg1;
 - (id)_searchResultsTable;
-- (void)didMoveToSuperview;
 - (id)initWithFrame:(struct CGRect)arg1 options:(unsigned long long)arg2;
 - (_Bool)shouldGroupAccessibilityChildren;
 - (id)_accessibilityComposeElementsForSorting;

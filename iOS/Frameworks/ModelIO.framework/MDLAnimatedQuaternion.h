@@ -16,8 +16,8 @@
 - (struct)floatQuaternionAtTime:(double)arg1;
 - (void)setDoubleQuaternion:(struct)arg1 atTime:(double)arg2;
 - (void)setFloatQuaternion:(struct)arg1 atTime:(double)arg2;
-- (void)resetWithUsdAttribute:(const struct UsdAttribute *)arg1 timeScale:(double)arg2 time:(double)arg3;
-- (void)resetWithUsdAttribute:(const struct UsdAttribute *)arg1 timeScale:(double)arg2;
+- (void)resetWithUsdAttribute:(const void *)arg1 timeScale:(double)arg2 time:(double)arg3;
+- (void)resetWithUsdAttribute:(const void *)arg1 timeScale:(double)arg2;
 - (struct VtValue)defaultVtValue;
 - (unsigned long long)precision;
 - (id)copyWithZone:(struct _NSZone *)arg1;

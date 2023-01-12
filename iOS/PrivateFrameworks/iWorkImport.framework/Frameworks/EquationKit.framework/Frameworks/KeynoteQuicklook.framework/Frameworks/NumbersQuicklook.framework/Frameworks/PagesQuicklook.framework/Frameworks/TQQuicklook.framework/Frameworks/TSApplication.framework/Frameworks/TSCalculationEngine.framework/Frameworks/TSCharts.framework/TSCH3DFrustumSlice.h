@@ -10,16 +10,16 @@
 {
     tvec3_17f03ce0 _width;
     tvec3_17f03ce0 _height;
-    line_190fbfc7 _origin;
+    line_e1962432 _origin;
 }
 
-+ (id)sliceWithOrigin:(line_190fbfc7)arg1 width:(tvec3_17f03ce0)arg2 height:(tvec3_17f03ce0)arg3;
++ (id)sliceWithOrigin:(line_e1962432)arg1 width:(tvec3_17f03ce0)arg2 height:(tvec3_17f03ce0)arg3;
 - (id).cxx_construct;
 @property(readonly, nonatomic) tvec3_17f03ce0 height; // @synthesize height=_height;
 @property(readonly, nonatomic) tvec3_17f03ce0 width; // @synthesize width=_width;
-@property(readonly, nonatomic) line_190fbfc7 origin; // @synthesize origin=_origin;
+@property(readonly, nonatomic) line_e1962432 origin; // @synthesize origin=_origin;
 - (tvec3_17f03ce0)atNormalizedPosition:(tvec2_84d5962d)arg1;
-- (id)initWithOrigin:(line_190fbfc7)arg1 width:(tvec3_17f03ce0)arg2 height:(tvec3_17f03ce0)arg3;
+- (id)initWithOrigin:(line_e1962432)arg1 width:(tvec3_17f03ce0)arg2 height:(tvec3_17f03ce0)arg3;
 
 @end
 

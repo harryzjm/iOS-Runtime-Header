@@ -8,7 +8,7 @@
 
 #import <PhotosGraph/PGLibraryChangeConsumer-Protocol.h>
 
-@class NSMutableArray, NSMutableSet, NSString, PGGraphUpdateJetsamIndicator, PGGraphUpdateManagerTargetTokenState, PGLibraryChangeListener, PGManager, PGPhotoChangeToGraphChangeConverter;
+@class NSDate, NSMutableArray, NSMutableSet, NSString, PGGraphUpdateJetsamIndicator, PGGraphUpdateManagerTargetTokenState, PGLibraryChangeListener, PGManager, PGPhotoChangeToGraphChangeConverter;
 @protocol OS_dispatch_queue, PGGraphUpdateHealthRecording;
 
 @interface PGGraphUpdateManager : NSObject <PGLibraryChangeConsumer>
@@ -27,9 +27,11 @@
     PGGraphUpdateManagerTargetTokenState *_targetTokenState;
     long long _executionContext;
     id <PGGraphUpdateHealthRecording> _updateHealthRecorder;
+    NSDate *_dateSinceMajorUpgrade;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSDate *dateSinceMajorUpgrade; // @synthesize dateSinceMajorUpgrade=_dateSinceMajorUpgrade;
 @property(readonly, nonatomic) id <PGGraphUpdateHealthRecording> updateHealthRecorder; // @synthesize updateHealthRecorder=_updateHealthRecorder;
 @property long long executionContext; // @synthesize executionContext=_executionContext;
 @property(retain, nonatomic) PGGraphUpdateManagerTargetTokenState *targetTokenState; // @synthesize targetTokenState=_targetTokenState;
@@ -42,10 +44,11 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *processingQueue; // @synthesize processingQueue=_processingQueue;
 @property(retain, nonatomic) PGLibraryChangeListener *libraryChangeListener; // @synthesize libraryChangeListener=_libraryChangeListener;
 @property(readonly, nonatomic) NSMutableSet *listeners; // @synthesize listeners=_listeners;
+- (void)_recordNumberOfDaysSinceMajorOSUpgradeIfNeeded;
 - (void)_recordInformationFromGraphChanges:(id)arg1;
 - (void)_recordInformationFromDatabaseChange:(id)arg1;
 - (id)_graphUpdateForPhotoChanges:(id)arg1;
-- (_Bool)_performEnrichmentWithGraphUpdateInventory:(id)arg1 enrichmentContext:(long long)arg2 progressBlock:(CDUnknownBlockType)arg3;
+- (_Bool)_performEnrichmentWithGraphUpdateInventory:(id)arg1 enrichmentContext:(unsigned long long)arg2 progressBlock:(CDUnknownBlockType)arg3;
 - (void)_triggerUpdateForGraphUpdate:(id)arg1;
 - (void)_triggerFullRebuildDuringLiveUpdate:(_Bool)arg1 graphIngestRecipe:(id)arg2 progressBlock:(CDUnknownBlockType)arg3 keepExistingGraph:(_Bool)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (void)_onFinishedProcessingChangesWithTokens:(id)arg1;
@@ -54,7 +57,7 @@
 - (void)_processPendingChanges;
 @property(readonly, nonatomic) _Bool isConsistencyUpdate;
 - (_Bool)_pauseListening;
-- (void)_startListening;
+- (_Bool)_startListening;
 - (void)_notifyProgress:(double)arg1;
 - (void)_notifyListeners:(id)arg1 notificationType:(unsigned char)arg2;
 - (void)_onEncounteredTargetToken;
@@ -68,7 +71,7 @@
 - (void)removeListener:(id)arg1;
 - (void)addListener:(id)arg1;
 - (void)stopListening;
-- (void)startListening;
+- (_Bool)startListening;
 @property(nonatomic) _Bool stopRequested; // @synthesize stopRequested=_stopRequested;
 @property(nonatomic, getter=isListening) _Bool listening; // @synthesize listening=_listening;
 @property(readonly, copy) NSString *description;

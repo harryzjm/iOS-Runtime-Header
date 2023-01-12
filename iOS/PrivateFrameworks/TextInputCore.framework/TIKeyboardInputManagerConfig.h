@@ -26,6 +26,7 @@
     _Bool _insertsSpaceAfterPredictiveInput;
     _Bool _usesContinuousPathRetrocorrection;
     _Bool _shouldIgnoreCPRequirements;
+    _Bool _includeLightWeightLanguageModelMobileAssets;
     _Bool _usesCJContinuousPath;
     _Bool _testing;
     _Bool _skipLanguageLayoutCheckCPML;
@@ -35,6 +36,7 @@
     _Bool _sensorKitEnabled;
     _Bool _allowRelaxedOVSPolicy;
     _Bool _usesUserModelLogging;
+    _Bool _skipCandidateQualityFilter;
     int _continuousPathEnabledAlgorithms;
     int _cpConfidenceModelType;
     TIInputMode *_inputMode;
@@ -51,6 +53,7 @@
 
 + (id)configurationForInputMode:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool skipCandidateQualityFilter; // @synthesize skipCandidateQualityFilter=_skipCandidateQualityFilter;
 @property(nonatomic) _Bool usesUserModelLogging; // @synthesize usesUserModelLogging=_usesUserModelLogging;
 @property(nonatomic) _Bool allowRelaxedOVSPolicy; // @synthesize allowRelaxedOVSPolicy=_allowRelaxedOVSPolicy;
 @property(nonatomic) unsigned long long sensorKitWordsThreshold; // @synthesize sensorKitWordsThreshold=_sensorKitWordsThreshold;
@@ -61,6 +64,7 @@
 @property(nonatomic) _Bool skipLanguageLayoutCheckCPML; // @synthesize skipLanguageLayoutCheckCPML=_skipLanguageLayoutCheckCPML;
 @property(nonatomic, getter=isTesting) _Bool testing; // @synthesize testing=_testing;
 @property(nonatomic) _Bool usesCJContinuousPath; // @synthesize usesCJContinuousPath=_usesCJContinuousPath;
+@property(nonatomic) _Bool includeLightWeightLanguageModelMobileAssets; // @synthesize includeLightWeightLanguageModelMobileAssets=_includeLightWeightLanguageModelMobileAssets;
 @property(nonatomic) long long cpCandidatesCount; // @synthesize cpCandidatesCount=_cpCandidatesCount;
 @property(nonatomic) int cpConfidenceModelType; // @synthesize cpConfidenceModelType=_cpConfidenceModelType;
 @property(nonatomic) _Bool shouldIgnoreCPRequirements; // @synthesize shouldIgnoreCPRequirements=_shouldIgnoreCPRequirements;

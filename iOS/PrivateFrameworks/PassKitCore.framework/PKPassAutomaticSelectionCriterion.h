@@ -19,6 +19,7 @@
     long long _technologyType;
     NSSet *_primaryTCIs;
     NSSet *_TCIs;
+    NSSet *_readerIDs;
     NSData *_mask;
 }
 
@@ -27,6 +28,7 @@
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSData *mask; // @synthesize mask=_mask;
+@property(copy, nonatomic) NSSet *readerIDs; // @synthesize readerIDs=_readerIDs;
 @property(copy, nonatomic) NSSet *TCIs; // @synthesize TCIs=_TCIs;
 @property(copy, nonatomic) NSSet *primaryTCIs; // @synthesize primaryTCIs=_primaryTCIs;
 @property(nonatomic) _Bool supportsInSessionExpress; // @synthesize supportsInSessionExpress=_supportsInSessionExpress;

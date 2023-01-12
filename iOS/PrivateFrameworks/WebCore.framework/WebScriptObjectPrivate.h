@@ -8,9 +8,9 @@
 
 @interface WebScriptObjectPrivate : NSObject
 {
-    struct JSObject *imp;
-    struct RootObject *rootObject;
-    struct RootObject *originRootObject;
+    void *imp;
+    void *rootObject;
+    void *originRootObject;
     _Bool isCreatedByDOMWrapper;
 }
 

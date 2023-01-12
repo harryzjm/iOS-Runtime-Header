@@ -14,9 +14,7 @@
 }
 
 - (void).cxx_destruct;
-- (void)purgeExpiredOutboundSharingAssetsWithReply:(CDUnknownBlockType)arg1;
 - (void)asynchronousMasterThumbnailForAssetUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)prepareRevertToOriginalWithObjectURI:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)batchSaveAssetJobs:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)initWithLibraryServicesManager:(id)arg1 trustedCallerBundleID:(id)arg2;
 

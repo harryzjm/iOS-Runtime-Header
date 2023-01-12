@@ -47,11 +47,13 @@
     PKTextInputDebugStateIntrospector *__debugStateIntrospector;
     PKTextInputCursorController *__cursorController;
     PKTextInputReserveSpaceController *__reserveSpaceController;
+    double __lastDebugCornerEventTimestamp;
     struct CGRect _editingOverlayContainerSceneBounds;
 }
 
 + (id)interactionForScene:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) double _lastDebugCornerEventTimestamp; // @synthesize _lastDebugCornerEventTimestamp=__lastDebugCornerEventTimestamp;
 @property(nonatomic) struct CGRect editingOverlayContainerSceneBounds; // @synthesize editingOverlayContainerSceneBounds=_editingOverlayContainerSceneBounds;
 @property(retain, nonatomic) PKTextInputReserveSpaceController *_reserveSpaceController; // @synthesize _reserveSpaceController=__reserveSpaceController;
 @property(retain, nonatomic) PKTextInputCursorController *_cursorController; // @synthesize _cursorController=__cursorController;

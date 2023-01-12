@@ -11,7 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)didChangeLayout:(unsigned long long)arg1;
+- (void)willResignCurrent:(_Bool)arg1;
+- (void)willBecomeCurrent:(_Bool)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)setContainerViewController:(id)arg1;
 

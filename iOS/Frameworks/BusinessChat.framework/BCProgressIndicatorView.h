@@ -4,16 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIProgressView.h>
+#import <UIKit/UIProgressView.h>
 
 __attribute__((visibility("hidden")))
 @interface BCProgressIndicatorView : UIProgressView
 {
 }
 
-- (void)show;
-- (void)hide;
-- (void)setupSubviews;
 - (id)init;
 
 @end

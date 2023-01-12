@@ -23,7 +23,8 @@
     CHRecognitionSessionResult *_cachedFastGroupingRecognitionResult;
     CHRecognitionSessionResult *_partialRecognitionResult;
     int _autoCapitalizationMode;
-    CHRecognitionSessionVersion *_version;
+    int _autoCorrectionMode;
+    CHRecognitionSessionVersion *_sessionVersion;
     _Bool __hasUnprocessedChanges;
     _Bool __shouldForceFastGrouping;
     unsigned int __taskQueueQoSClass;
@@ -35,7 +36,7 @@
     NSArray *__textRecognitionLocales;
     NSMutableDictionary *__recognizersByLocaleID;
     NSArray *__latestTextInputTargets;
-    NSMutableDictionary *__correctionRecognizersByLocaleID;
+    NSMutableDictionary *__correctionRecognizersByLocalesKey;
     unsigned long long __changeCoalescingIndex;
     NSMutableArray *__changeObservers;
     NSMutableArray *__inputDrawingClients;
@@ -47,7 +48,9 @@
 }
 
 + (_Bool)supportsSecureCoding;
-+ (_Bool)_isLocaleSupported:(id)arg1;
++ (id)_cacheKeyForLocales:(id)arg1;
++ (_Bool)isLocaleSupported:(id)arg1;
++ (id)createRecognizerForLocales:(id)arg1 sessionMode:(long long)arg2 remote:(_Bool)arg3 priority:(long long)arg4;
 + (id)createRecognizerForLocale:(id)arg1 sessionMode:(long long)arg2 remote:(_Bool)arg3 priority:(long long)arg4;
 + (id)_strokeGroupsInProximityOfSubjectStrokeGroups:(id)arg1 clusteredStrokeGroups:(id)arg2;
 + (id)strokeIdentifiersInProximalGroupsForStrokeIdentifiers:(id)arg1 sortedStrokeGroups:(id)arg2 clusteredStrokeGroups:(id)arg3 unusedStrokeIdentifiers:(id *)arg4;
@@ -62,7 +65,7 @@
 @property(readonly, retain, nonatomic) NSMutableArray *_inputDrawingClients; // @synthesize _inputDrawingClients=__inputDrawingClients;
 @property(readonly, retain, nonatomic) NSMutableArray *_changeObservers; // @synthesize _changeObservers=__changeObservers;
 @property(nonatomic) unsigned long long _changeCoalescingIndex; // @synthesize _changeCoalescingIndex=__changeCoalescingIndex;
-@property(readonly, retain, nonatomic) NSMutableDictionary *_correctionRecognizersByLocaleID; // @synthesize _correctionRecognizersByLocaleID=__correctionRecognizersByLocaleID;
+@property(readonly, retain, nonatomic) NSMutableDictionary *_correctionRecognizersByLocalesKey; // @synthesize _correctionRecognizersByLocalesKey=__correctionRecognizersByLocalesKey;
 @property(retain, setter=_setLatestTextInputTargets:) NSArray *_latestTextInputTargets; // @synthesize _latestTextInputTargets=__latestTextInputTargets;
 @property(readonly, retain, nonatomic) NSMutableDictionary *_recognizersByLocaleID; // @synthesize _recognizersByLocaleID=__recognizersByLocaleID;
 @property(nonatomic, setter=_setHasUnprocessedChanges:) _Bool _hasUnprocessedChanges; // @synthesize _hasUnprocessedChanges=__hasUnprocessedChanges;
@@ -78,7 +81,7 @@
 - (_Bool)loadSessionData:(id)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) NSData *sessionData;
 - (void)_cleanupCachedRecognizers;
-- (id)textCorrectionRecognizerForLocale:(id)arg1;
+- (id)textCorrectionRecognizerForLocales:(id)arg1;
 - (id)recognizerForLocale:(id)arg1;
 - (id)_newRecognitionSessionTaskWithStrokeGroupingRequirement:(long long)arg1 isHighResponsivenessTask:(_Bool)arg2 strokeGroupingOnly:(_Bool)arg3 subjectStrokeIdentifiers:(id)arg4 partialResultBlock:(CDUnknownBlockType)arg5;
 - (void)_processPendingStrokeChangesIfAvailable;
@@ -106,7 +109,7 @@
 - (id)_cachedFastGroupingResult;
 - (_Bool)_validateLastRecognitionResult:(id)arg1 visibleStrokeIdentifiers:(id)arg2;
 @property(copy, nonatomic) NSArray *locales;
-@property(readonly, retain) CHRecognitionSessionVersion *sessionVersion;
+@property(retain, setter=_setSessionVersion:) CHRecognitionSessionVersion *sessionVersion;
 - (void)dealloc;
 - (void)_setupExecutionQueuesForMode:(long long)arg1;
 - (id)initWithMode:(long long)arg1 recognitionSessionResult:(id)arg2 dataSource:(id)arg3;
@@ -115,6 +118,7 @@
 - (void)unregisterChangeObserver:(id)arg1;
 - (void)registerChangeObserver:(id)arg1;
 - (id)recognizableDrawingForStrokeGroupQueryItem:(id)arg1;
+@property(nonatomic) int autoCorrectionMode;
 @property(nonatomic) int autoCapitalizationMode;
 @property(nonatomic) _Bool strokeGroupingOnly;
 - (struct CGSize)_drawingCanvasSizeForLatestStrokeProviderSnapshot;

@@ -27,6 +27,7 @@
 }
 
 + (id)sharedAuthKitSession;
++ (id)imageSession;
 + (id)defaultSession;
 - (void).cxx_destruct;
 @property(retain, nonatomic) AMSURLSecurityPolicy *securityPolicy; // @synthesize securityPolicy=_securityPolicy;

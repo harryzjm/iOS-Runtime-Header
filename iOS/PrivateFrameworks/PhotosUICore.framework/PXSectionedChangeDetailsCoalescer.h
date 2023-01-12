@@ -10,8 +10,8 @@
 
 @interface PXSectionedChangeDetailsCoalescer : NSObject
 {
-    unsigned long long _fromDataSourceIdentifier;
-    unsigned long long _currentToDataSourceIdentifier;
+    long long _fromDataSourceIdentifier;
+    long long _currentToDataSourceIdentifier;
     PXMutableArrayChangeDetails *_sectionChangeDetails;
     NSMutableArray *_itemChangeEntries;
     PXSectionedDataSourceChangeDetails *_cachedResult;

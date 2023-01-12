@@ -11,8 +11,8 @@ __attribute__((visibility("hidden")))
     struct tagHANDLE *_SIPHandle;
 }
 
-- (void)sendReliableMessage:(id)arg1;
-- (_Bool)sendReliableMessageAndWait:(id)arg1;
+- (void)sendReliableMessage:(id)arg1 withTopic:(id)arg2;
+- (_Bool)sendReliableMessageAndWait:(id)arg1 withTopic:(id)arg2;
 - (void)dealloc;
 - (id)initWithCallID:(unsigned int)arg1 reportingAgent:(struct opaqueRTCReporting *)arg2;
 

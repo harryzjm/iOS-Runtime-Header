@@ -25,6 +25,8 @@ __attribute__((visibility("hidden")))
     unsigned int _repairedMaxNetworkBitrate;
     _Bool _startOnDemand;
     _Bool _isOneToOne;
+    _Bool _shouldIgnoreRTPHeaderExtensions;
+    unsigned int _streamGroupID;
     struct {
         unsigned int maxNetworkBitrate:1;
         unsigned int maxMediaBitrate:1;
@@ -35,8 +37,12 @@ __attribute__((visibility("hidden")))
         unsigned int repairedStreamID:1;
         unsigned int repairedMaxNetworkBitrate:1;
     } _has;
+    unsigned int _negotiationProtocolMask;
 }
 
+@property(nonatomic) unsigned int negotiationProtocolMask; // @synthesize negotiationProtocolMask=_negotiationProtocolMask;
+@property(nonatomic) unsigned int streamGroupID; // @synthesize streamGroupID=_streamGroupID;
+@property(nonatomic) _Bool shouldIgnoreRTPHeaderExtensions; // @synthesize shouldIgnoreRTPHeaderExtensions=_shouldIgnoreRTPHeaderExtensions;
 @property(nonatomic) _Bool isOneToOne; // @synthesize isOneToOne=_isOneToOne;
 @property(nonatomic) _Bool startOnDemand; // @synthesize startOnDemand=_startOnDemand;
 @property(nonatomic) unsigned int repairedMaxNetworkBitrate; // @synthesize repairedMaxNetworkBitrate=_repairedMaxNetworkBitrate;

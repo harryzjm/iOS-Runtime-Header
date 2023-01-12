@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isEqual:(id)arg1;
 - (long long)compare:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly, nonatomic) _Bool isGuestAsset;
 @property(readonly, nonatomic) unsigned long long originalFilesize;
 @property(readonly, nonatomic) NSString *uniformTypeIdentifier;
 @property(readonly, nonatomic) _Bool hasPhotoColorAdjustments;
@@ -66,6 +67,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, nonatomic) unsigned short deferredProcessingNeeded;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) _Bool hasSyndicationInformation;
 @property(readonly, nonatomic) _Bool needsDeferredProcessing;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 videoKeyFrameSourceTime;

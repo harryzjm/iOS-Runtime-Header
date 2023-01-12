@@ -4,38 +4,49 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSNumber, NSSet, NSString;
+#import <PhotosGraph/PGAssetCollectionFeature-Protocol.h>
 
-@interface PGGraphSocialGroupNode
+@class NSArray, NSNumber, NSSet, NSString, PGGraphSocialGroupNodeCollection;
+
+@interface PGGraphSocialGroupNode <PGAssetCollectionFeature>
 {
     NSNumber *_uuid;
     float _weight;
 }
 
++ (id)personOfSocialGroup;
++ (id)momentOfSocialGroup;
++ (long long)identifierForPersonNodes:(id)arg1;
 + (id)weightSortDescriptors;
++ (id)filter;
 - (void).cxx_destruct;
-- (void)setWeight:(float)arg1;
 - (float)weight;
+@property(readonly, nonatomic) NSString *featureIdentifier;
+@property(readonly, nonatomic) unsigned long long featureType;
 @property(readonly, nonatomic) _Bool isFrequentSocialGroup;
 @property(readonly, nonatomic) NSString *socialGroupName;
 - (void)enumeratePersonNodesUsingBlock:(CDUnknownBlockType)arg1;
-- (void)enumerateMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumeratePersonEdgesAndNodesUsingBlock:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSArray *sortedPersonNodes;
 @property(readonly, nonatomic) NSSet *personNodes;
-@property(readonly, nonatomic) NSSet *momentNodes;
 @property(readonly) unsigned long long numberOfPersonNodes;
 @property(readonly) unsigned long long numberOfMomentNodes;
-@property(readonly, nonatomic) unsigned long long rank;
+- (unsigned long long)rankInGraph:(id)arg1;
 - (id)UUID;
 @property(readonly) long long socialGroupID;
 - (unsigned short)domain;
 - (id)label;
-- (id)description;
+@property(readonly, nonatomic) PGGraphSocialGroupNodeCollection *collection;
+@property(readonly, copy) NSString *description;
 - (id)propertyDictionary;
 - (_Bool)hasProperties:(id)arg1;
-- (void)setLocalProperties:(id)arg1;
-- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
-- (id)initWithWeight:(float)arg1;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3 properties:(id)arg4;
+- (id)initWithWeight:(float)arg1 uuid:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

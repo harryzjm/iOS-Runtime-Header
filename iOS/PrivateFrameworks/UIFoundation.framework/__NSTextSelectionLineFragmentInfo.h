@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMapTable, NSTextRange, NSTextSelectionNavigation;
+@class NSArray, NSMapTable, NSSet, NSTextRange, NSTextSelectionNavigation;
 
 __attribute__((visibility("hidden")))
 @interface __NSTextSelectionLineFragmentInfo : NSObject
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     CDStruct_5b583d96 *_carets;
     long long _numberOfCarets;
     NSMapTable *_primaryLocationTable;
+    NSSet *_secondaryLocationTable;
     NSArray *_sortedLocations;
 }
 
@@ -28,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (long long)indexForPrimaryLocation:(id)arg1;
 @property(readonly, getter=isMonotonicDirection) _Bool monotonicDirection; // @dynamic monotonicDirection;
 @property long long numberOfCaretPositions; // @dynamic numberOfCaretPositions;
-- (id)rangesBetweenStartingOffset:(double)arg1 endOffset:(double)arg2;
+- (id)rangesBetweenStartingOffset:(double)arg1 endOffset:(double)arg2 continuous:(_Bool)arg3;
 - (double)offsetForLocation:(id)arg1;
 - (const CDStruct_5b583d96 *)caretPositionAtIndex:(long long)arg1;
 - (const CDStruct_5b583d96 *)caretPositionClosestToLocation:(id)arg1 visualDirection:(long long)arg2 matchLocation:(out _Bool *)arg3;

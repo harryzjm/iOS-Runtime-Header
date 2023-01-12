@@ -59,6 +59,7 @@
 - (void)didChangeTelephonyCallingSupport;
 - (_Bool)invalidateServerCaches:(id)arg1;
 - (void)_handlePreferredRelayNumberUpdate;
+- (void)_requestNotificationAuthorization;
 - (void)_requestNotificationAuthorizationIfNecessary;
 - (id)init;
 

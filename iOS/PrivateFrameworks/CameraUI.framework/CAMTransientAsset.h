@@ -12,6 +12,7 @@
 
 @interface CAMTransientAsset : NSObject <PUTransientDisplayAsset>
 {
+    _Bool _isTemporaryPlaceholder;
     _Bool _canPlayPhotoIris;
     _Bool _canPlayLoopingVideo;
     _Bool _isPhotoIrisPlaceholder;
@@ -58,6 +59,7 @@
 @property(readonly, nonatomic) unsigned long long mediaSubtypes; // @synthesize mediaSubtypes=_mediaSubtypes;
 @property(readonly, nonatomic) unsigned long long mediaType; // @synthesize mediaType=_mediaType;
 @property(readonly, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
+@property(readonly, nonatomic) _Bool isTemporaryPlaceholder; // @synthesize isTemporaryPlaceholder=_isTemporaryPlaceholder;
 @property(readonly, nonatomic) NSDate *localCreationDate; // @synthesize localCreationDate=_localCreationDate;
 - (unsigned long long)isContentEqualTo:(id)arg1;
 @property(readonly, nonatomic) _Bool hasPhotoColorAdjustments;
@@ -75,7 +77,6 @@
 @property(readonly, nonatomic) CLLocation *location;
 @property(readonly, nonatomic) unsigned long long originalFilesize;
 @property(readonly, nonatomic) NSString *uniformTypeIdentifier;
-@property(readonly, nonatomic) _Bool isTemporaryPlaceholder;
 @property(readonly, nonatomic) NSString *localizedGeoDescription;
 @property(readonly, nonatomic) double aspectRatio;
 @property(readonly, nonatomic, getter=isHidden) _Bool hidden;
@@ -84,7 +85,9 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, nonatomic) unsigned short deferredProcessingNeeded;
+@property(readonly, nonatomic) _Bool hasSyndicationInformation;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool isGuestAsset;
 @property(readonly, nonatomic) _Bool isLivePhoto;
 @property(readonly, nonatomic) _Bool needsDeferredProcessing;
 @property(readonly) Class superclass;

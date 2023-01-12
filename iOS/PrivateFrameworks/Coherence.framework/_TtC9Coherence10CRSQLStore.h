@@ -8,10 +8,27 @@
 
 @interface _TtC9Coherence10CRSQLStore
 {
+    MISSING_TYPE *encryptionDelegate;
+    MISSING_TYPE *vacuumStatement;
+    MISSING_TYPE *assetQueryStatement;
+    MISSING_TYPE *assetGetRetainQueryStatement;
+    MISSING_TYPE *hasAssetQueryStatement;
+    MISSING_TYPE *assetInsertQueryStatement;
+    MISSING_TYPE *assetRetainQueryStatement;
+    MISSING_TYPE *assetDeleteQueryStatement;
+    MISSING_TYPE *allAssetsQueryStatement;
+    MISSING_TYPE *allVersionsQueryStatement;
+    MISSING_TYPE *hasReferenceQueryStatement;
     MISSING_TYPE *dataQueryStatement;
+    MISSING_TYPE *allQueryStatement;
     MISSING_TYPE *versionQueryStatement;
+    MISSING_TYPE *retainCountQueryStatement;
+    MISSING_TYPE *updateRetainCountQueryStatement;
+    MISSING_TYPE *updateVersionQueryStatement;
+    MISSING_TYPE *childRetainCountQueryStatement;
+    MISSING_TYPE *updateChildRetainCountQueryStatement;
     MISSING_TYPE *dataInsertStatement;
-    MISSING_TYPE *dataDeleteStatement;
+    MISSING_TYPE *referenceDeleteStatement;
 }
 
 @end

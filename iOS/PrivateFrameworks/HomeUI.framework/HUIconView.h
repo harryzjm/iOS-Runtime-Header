@@ -18,6 +18,7 @@
     long long _contentMode;
     unsigned long long _iconSize;
     unsigned long long _displayContext;
+    double _vibrancyEffectAnimationDuration;
     unsigned long long _displayStyle;
     UIVisualEffectView *_effectView;
     HUIconContentView *_currentIconContentView;
@@ -27,6 +28,7 @@
 @property(retain, nonatomic) HUIconContentView *currentIconContentView; // @synthesize currentIconContentView=_currentIconContentView;
 @property(retain, nonatomic) UIVisualEffectView *effectView; // @synthesize effectView=_effectView;
 @property(readonly, nonatomic) unsigned long long displayStyle; // @synthesize displayStyle=_displayStyle;
+@property(nonatomic) double vibrancyEffectAnimationDuration; // @synthesize vibrancyEffectAnimationDuration=_vibrancyEffectAnimationDuration;
 @property(nonatomic) _Bool disableContinuousAnimation; // @synthesize disableContinuousAnimation=_disableContinuousAnimation;
 @property(nonatomic) unsigned long long displayContext; // @synthesize displayContext=_displayContext;
 @property(nonatomic) unsigned long long iconSize; // @synthesize iconSize=_iconSize;
@@ -41,6 +43,8 @@
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
+- (void)reclaimIconIfPossible;
+- (void)renounceIconIfPossible;
 - (void)updateWithIconDescriptor:(id)arg1 displayStyle:(unsigned long long)arg2 animated:(_Bool)arg3;
 - (id)contentContainerView;
 - (id)initWithFrame:(struct CGRect)arg1 contentMode:(long long)arg2;

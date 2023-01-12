@@ -16,9 +16,9 @@ __attribute__((visibility("hidden")))
 {
     NSObject<OS_os_log> *_logger;
     NSString *_model;
-    struct deque<BtProxData, std::__1::allocator<BtProxData>> _samples;
+    struct deque<BtProxData, std::allocator<BtProxData>> _samples;
     long long _proximity;
-    struct unique_ptr<SingleThresholdProx::Estimator, std::__1::default_delete<SingleThresholdProx::Estimator>> _estimator;
+    struct unique_ptr<SingleThresholdProx::Estimator, std::default_delete<SingleThresholdProx::Estimator>> _estimator;
     long long _sampleCount;
     double _mostRecentSampleTime;
     NSUUID *_peer;

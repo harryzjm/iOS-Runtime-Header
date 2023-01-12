@@ -39,12 +39,14 @@ __attribute__((visibility("hidden")))
     double _minimumIntervalFallbackStateTimeout;
     _Bool _usingServerStatsAggressively;
     int _previousAction;
+    struct _PCTimeRange _signalAvoidanceRange;
 }
 
 + (void)_loadDefaultValue:(double *)arg1 forKey:(struct __CFString *)arg2;
 + (void)_loadDefaults;
 - (void).cxx_destruct;
 @property(nonatomic) int previousAction; // @synthesize previousAction=_previousAction;
+@property(nonatomic) struct _PCTimeRange signalAvoidanceRange; // @synthesize signalAvoidanceRange=_signalAvoidanceRange;
 @property(nonatomic) double minimumIntervalFallbackStateTimeout; // @synthesize minimumIntervalFallbackStateTimeout=_minimumIntervalFallbackStateTimeout;
 @property(nonatomic) _Bool usingServerStatsAggressively; // @synthesize usingServerStatsAggressively=_usingServerStatsAggressively;
 @property(nonatomic) double serverStatsMaxKeepAliveInterval; // @synthesize serverStatsMaxKeepAliveInterval=_serverStatsMaxKeepAliveInterval;
@@ -75,7 +77,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) NSDictionary *cacheInfo;
 - (_Bool)useIntervalIfImprovement:(double)arg1;
 - (void)_fallbackToLastSuccessfulKeepAliveInterval;
-- (void)_setCurrentKeepAliveInterval:(double)arg1;
+- (void)_setCurrentKeepAliveInterval:(double)arg1 varianceMode:(unsigned int)arg2;
+- (void)_setCurrentKeepAliveInterval:(double)arg1 varianceMode:(unsigned int)arg2 allowRoundUp:(_Bool)arg3;
 @property(nonatomic) double minimumKeepAliveInterval; // @synthesize minimumKeepAliveInterval=_minimumKeepAliveInterval;
 @property(nonatomic) double maximumKeepAliveInterval; // @synthesize maximumKeepAliveInterval=_maximumKeepAliveInterval;
 - (id)initWithCacheInfo:(id)arg1 loggingIdentifier:(id)arg2 algorithmName:(id)arg3;

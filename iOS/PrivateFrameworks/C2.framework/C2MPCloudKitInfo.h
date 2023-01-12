@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     NSString *_container;
     NSString *_containerScopedDeviceIdentifier;
     NSString *_containerScopedUserIdentifier;
+    NSString *_databaseScope;
     NSString *_environment;
     NSMutableArray *_operationGroups;
     _Bool _anonymous;
@@ -46,6 +47,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long reportOperationGroupFrequencyBase; // @synthesize reportOperationGroupFrequencyBase=_reportOperationGroupFrequencyBase;
 @property(nonatomic) unsigned long long reportOperationGroupFrequency; // @synthesize reportOperationGroupFrequency=_reportOperationGroupFrequency;
 @property(retain, nonatomic) NSMutableArray *operationGroups; // @synthesize operationGroups=_operationGroups;
+@property(retain, nonatomic) NSString *databaseScope; // @synthesize databaseScope=_databaseScope;
 @property(retain, nonatomic) NSString *applicationBundleIdentifierOverrideForNetworkAttribution; // @synthesize applicationBundleIdentifierOverrideForNetworkAttribution=_applicationBundleIdentifierOverrideForNetworkAttribution;
 @property(retain, nonatomic) NSString *applicationBundleIdentifierOverrideForContainerAccess; // @synthesize applicationBundleIdentifierOverrideForContainerAccess=_applicationBundleIdentifierOverrideForContainerAccess;
 @property(retain, nonatomic) NSString *containerScopedDeviceIdentifier; // @synthesize containerScopedDeviceIdentifier=_containerScopedDeviceIdentifier;
@@ -76,6 +78,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)operationGroupsCount;
 - (void)addOperationGroup:(id)arg1;
 - (void)clearOperationGroups;
+@property(readonly, nonatomic) _Bool hasDatabaseScope;
 @property(readonly, nonatomic) _Bool hasApplicationBundleIdentifierOverrideForNetworkAttribution;
 @property(readonly, nonatomic) _Bool hasApplicationBundleIdentifierOverrideForContainerAccess;
 @property(readonly, nonatomic) _Bool hasContainerScopedDeviceIdentifier;

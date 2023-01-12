@@ -26,8 +26,9 @@
 - (void)revertToOriginalWithObjectURI:(NSURL *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)enqueuePrefetch;
 - (void)clearPrefetchState;
-- (void)getCPLStateWithReply:(void (^)(NSString *))arg1;
+- (void)getCPLStateForDebug:(_Bool)arg1 withReply:(void (^)(NSString *))arg2;
 - (void)getXPCTransactionStatusWithReply:(void (^)(NSString *))arg1;
+- (void)rebuildTableThumbsWithReply:(void (^)(NSString *))arg1;
 - (void)rebuildAllThumbnails;
 - (void)resetDupesAnalysis;
 - (void)rebuildCloudFeedWithReply:(void (^)(void))arg1;

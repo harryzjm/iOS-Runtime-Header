@@ -16,5 +16,6 @@
 - (void)adjustmentsViewControllerSliderWillBeginScrubbing:(PUAdjustmentsViewController *)arg1;
 - (void)adjustmentsViewControllerToolDidEndScrubbing:(PUAdjustmentsViewController *)arg1;
 - (void)adjustmentsViewControllerToolWillBeginScrubbing:(PUAdjustmentsViewController *)arg1;
+- (void)adjustmentsViewControllerDidAppear:(PUAdjustmentsViewController *)arg1;
 @end
 

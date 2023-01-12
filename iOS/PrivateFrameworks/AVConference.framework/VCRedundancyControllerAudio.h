@@ -20,11 +20,16 @@ __attribute__((visibility("hidden")))
     id <VCRedundancyControlAlgorithm> _algorithm;
     unsigned int _currentRedundancyPercentage;
     double _currentRedundancyInterval;
+    _Bool _isNWConnectionEnabled;
+    int _statisticRegistrationIndexNetwork;
+    int _statisticRegistrationIndexNWConnection;
+    int _networkStatisticsType;
 }
 
 - (void)reportRedundancyPercentage:(unsigned int)arg1 redundancyInterval:(double)arg2;
-- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_56e8fa21)arg1;
+- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_c0785916)arg1;
 - (void)dealloc;
+- (void)unregisterStatistics;
 - (id)initWithDelegate:(id)arg1 statisticsCollector:(id)arg2 mode:(unsigned int)arg3;
 
 // Remaining properties

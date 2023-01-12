@@ -20,7 +20,8 @@
 - (void)handleEngagementRequest:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (void)handleDialogRequest:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (void)handleAuthenticateRequest:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
-- (void)shouldContinueTransaction:(id)arg1 withNewStorefront:(id)arg2 replyBlock:(CDUnknownBlockType)arg3;
+- (void)receivedTransactions:(id)arg1;
+- (void)receivedStatuses:(id)arg1;
 - (void)storefrontChanged:(id)arg1;
 - (void)downloadRemoved:(id)arg1;
 - (void)downloadStatusChanged:(id)arg1;

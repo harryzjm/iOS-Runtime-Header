@@ -144,6 +144,7 @@
 - (_Bool)isAvailableForTileKey:(const struct _GEOTileKey *)arg1;
 - (unsigned int)largestZoomLevelLEQ:(unsigned int)arg1 inRect:(CDStruct_90e2a262)arg2;
 - (unsigned int)maximumZoomLevelForMapPoint:(CDStruct_c3b9c2ee)arg1;
+- (unsigned int)minimumZoomLevelForMapPoint:(CDStruct_c3b9c2ee)arg1;
 - (unsigned int)maximumZoomLevelInRect:(CDStruct_90e2a262)arg1;
 - (unsigned int)minimumZoomLevelInRect:(CDStruct_90e2a262)arg1;
 

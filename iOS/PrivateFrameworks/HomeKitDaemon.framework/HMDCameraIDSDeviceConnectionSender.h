@@ -6,14 +6,14 @@
 
 #import <HomeKitDaemon/HMDCameraRemoteStreamSenderProtocol-Protocol.h>
 
-@class AVCPacketRelay, HMFOSTransaction, NSNumber, NSObject, NSString;
+@class AVCPacketRelay, HMDDevice, HMFOSTransaction, NSNumber, NSObject, NSString;
 @protocol HMDCameraIDSDeviceConnectionSenderDelegate, OS_dispatch_queue;
 
 @interface HMDCameraIDSDeviceConnectionSender <HMDCameraRemoteStreamSenderProtocol>
 {
     id <HMDCameraIDSDeviceConnectionSenderDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
-    NSString *_destinationID;
+    HMDDevice *_device;
     AVCPacketRelay *_videoPacketRelay;
     AVCPacketRelay *_audioPacketRelay;
     HMFOSTransaction *_packetRelayTransaction;
@@ -21,15 +21,15 @@
 
 + (id)logCategory;
 - (void).cxx_destruct;
-@property(retain, nonatomic) HMFOSTransaction *packetRelayTransaction; // @synthesize packetRelayTransaction=_packetRelayTransaction;
-@property(retain, nonatomic) AVCPacketRelay *audioPacketRelay; // @synthesize audioPacketRelay=_audioPacketRelay;
-@property(retain, nonatomic) AVCPacketRelay *videoPacketRelay; // @synthesize videoPacketRelay=_videoPacketRelay;
-@property(readonly, copy, nonatomic) NSString *destinationID; // @synthesize destinationID=_destinationID;
+@property(retain) HMFOSTransaction *packetRelayTransaction; // @synthesize packetRelayTransaction=_packetRelayTransaction;
+@property(retain) AVCPacketRelay *audioPacketRelay; // @synthesize audioPacketRelay=_audioPacketRelay;
+@property(retain) AVCPacketRelay *videoPacketRelay; // @synthesize videoPacketRelay=_videoPacketRelay;
+@property(readonly) HMDDevice *device; // @synthesize device=_device;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
-@property(readonly, nonatomic) __weak id <HMDCameraIDSDeviceConnectionSenderDelegate> delegate; // @synthesize delegate=_delegate;
+@property __weak id <HMDCameraIDSDeviceConnectionSenderDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)logIdentifier;
-- (void)_callSessionEnded:(id)arg1;
-- (void)_socketOpened:(id)arg1;
+- (void)_callSessionEndedWithError:(id)arg1;
+- (void)_socketOpenedWithError:(id)arg1;
 - (void)_startAudioPacketRelay:(int)arg1 ipAddress:(id)arg2 port:(unsigned long long)arg3;
 - (void)_startVideoPacketRelay:(int)arg1 ipAddress:(id)arg2 port:(unsigned long long)arg3;
 - (void)_startPacketRelayWithVideoSocket:(int)arg1 videoNetworkConfig:(id)arg2 cameraVideoSSRC:(unsigned int)arg3 audioSocket:(int)arg4 audioNetworkConfig:(id)arg5 cameraAudioSSRC:(unsigned int)arg6;
@@ -39,7 +39,8 @@
 @property(readonly, nonatomic) NSNumber *mtu;
 - (void)openRelaySession;
 - (void)dealloc;
-- (id)initWithSessionID:(id)arg1 workQueue:(id)arg2 destinationID:(id)arg3 delegate:(id)arg4 delegateQueue:(id)arg5;
+- (id)initWithSessionID:(id)arg1 workQueue:(id)arg2 device:(id)arg3 delegate:(id)arg4 delegateQueue:(id)arg5 idsProxyStreamService:(id)arg6;
+- (id)initWithSessionID:(id)arg1 workQueue:(id)arg2 device:(id)arg3 delegate:(id)arg4 delegateQueue:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

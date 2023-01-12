@@ -7,12 +7,14 @@
 #import <PassKitUI/PKExplanationViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentSetupPresentationProtocol-Protocol.h>
 #import <PassKitUI/PKViewControllerPreflightable-Protocol.h>
+#import <PassKitUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
 
 @class NSString, PKDynamicProvisioningPageContent, PKPaymentProvisioningController, PKPaymentSetupProduct, UIImage;
 @protocol PKPaymentSetupViewControllerDelegate, PKSetupFlowControllerProtocol;
 
-@interface PKOnBoardingViewController <PKPaymentSetupPresentationProtocol, PKExplanationViewControllerDelegate, PKViewControllerPreflightable>
+@interface PKOnBoardingViewController <PKPaymentSetupPresentationProtocol, PKExplanationViewControllerDelegate, PKViewControllerPreflightable, UIAdaptivePresentationControllerDelegate>
 {
+    _Bool _preflightCalled;
     id <PKSetupFlowControllerProtocol> _parentFlowController;
     id <PKPaymentSetupViewControllerDelegate> _setupDelegate;
     PKPaymentProvisioningController *_provisioningController;
@@ -22,12 +24,14 @@
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool preflightCalled; // @synthesize preflightCalled=_preflightCalled;
 @property(retain, nonatomic) UIImage *heroImage; // @synthesize heroImage=_heroImage;
 @property(retain, nonatomic) PKDynamicProvisioningPageContent *currentPage; // @synthesize currentPage=_currentPage;
 @property(retain, nonatomic) PKPaymentSetupProduct *paymentSetupProduct; // @synthesize paymentSetupProduct=_paymentSetupProduct;
 @property(retain, nonatomic) PKPaymentProvisioningController *provisioningController; // @synthesize provisioningController=_provisioningController;
 @property(nonatomic) __weak id <PKPaymentSetupViewControllerDelegate> setupDelegate; // @synthesize setupDelegate=_setupDelegate;
 @property(nonatomic) __weak id <PKSetupFlowControllerProtocol> parentFlowController; // @synthesize parentFlowController=_parentFlowController;
+- (void)presentationControllerDidAttemptToDismiss:(id)arg1;
 - (id)nextOnboardingViewControllerWithPage:(id)arg1 product:(id)arg2;
 - (id)paymentSetupMarker;
 - (void)handleNotifyRequested;
@@ -40,7 +44,7 @@
 - (void)explanationViewDidSelectSetupLater:(id)arg1;
 - (void)explanationViewDidSelectContinue:(id)arg1;
 - (void)preflightWithCompletion:(CDUnknownBlockType)arg1;
-- (void)viewWillAppear:(_Bool)arg1;
+- (void)updateForHeroImage;
 - (void)viewDidLoad;
 - (id)initWithParentFlowController:(id)arg1 setupDelegate:(id)arg2 context:(long long)arg3 provisioningController:(id)arg4 paymentSetupProduct:(id)arg5 currentPage:(id)arg6;
 

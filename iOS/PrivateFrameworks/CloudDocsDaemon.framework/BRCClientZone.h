@@ -9,7 +9,7 @@
 #import <CloudDocsDaemon/BRCReachabilityDelegate-Protocol.h>
 #import <CloudDocsDaemon/BRCZone-Protocol.h>
 
-@class BRCAccountSession, BRCCreateZoneAndSubscribeOperation, BRCDeadlineSource, BRCItemID, BRCPQLConnection, BRCServerZone, BRCSyncBudgetThrottle, BRCSyncDownOperation, BRCSyncOperationThrottle, BRCSyncUpOperation, BRCThrottleBase, BRCZoneRowID, BRMangledID, CKOperationGroup, NSArray, NSDate, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSMutableSet, NSSet, NSString, brc_task_tracker;
+@class BRCAccountSession, BRCCreateZoneAndSubscribeOperation, BRCDeadlineSource, BRCItemID, BRCPQLConnection, BRCServerZone, BRCSyncBudgetThrottle, BRCSyncDownOperation, BRCSyncOperationBackoffRatio, BRCSyncOperationThrottle, BRCSyncUpOperation, BRCThrottleBase, BRCZoneRowID, BRMangledID, CKOperationGroup, NSArray, NSDate, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSMutableSet, NSSet, NSString, brc_task_tracker;
 @protocol BRCClientZoneDelegate, NSObject, OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
     NSError *_lastSyncDownError;
     BRCSyncOperationThrottle *_syncUpThrottle;
     BRCSyncBudgetThrottle *_syncUpBudget;
+    BRCSyncOperationBackoffRatio *_syncUpBackoffRatio;
     BRCSyncOperationThrottle *_syncDownThrottle;
     BRCDeadlineSource *_syncDeadlineSource;
     NSMutableIndexSet *_appliedTombstoneRanks;
@@ -89,12 +90,14 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) BRCPQLConnection *db; // @synthesize db=_db;
 @property(retain, nonatomic) id <BRCClientZoneDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) _Bool activated; // @synthesize activated=_activated;
-- (float)syncUpBackoff;
+- (void)resetSyncUpBackoffRatio;
+- (float)syncUpBackoffRatio;
+- (float)syncUpBackoffDelay;
 - (void)waitForCrossZoneMoveProcessingWithCompletion:(CDUnknownBlockType)arg1;
 - (void)itemCrossZoneMoved:(id)arg1 withLookup:(id)arg2;
 - (void)itemMovedIntoShareInThisZone:(id)arg1 associatedItemID:(id)arg2;
-- (void)_startDownloadingItemIfNecessary:(id)arg1;
-- (void)_removeItemAndProcess:(id)arg1;
+- (void)_startDownloadingItemForCrossZoneMoveIfNecessary:(id)arg1;
+- (void)_removeItemAndProcessForCrossZoneMove:(id)arg1;
 - (void)_finishedProcessingItemThatMovedToThisZone:(id)arg1;
 - (void)_removeItemFromCZMProcessingIfNotAssociated:(id)arg1;
 - (id)_refreshItemFromDB:(id)arg1;
@@ -239,6 +242,7 @@ __attribute__((visibility("hidden")))
 - (void)associateWithServerZone:(id)arg1 offline:(_Bool)arg2;
 - (void)associateWithServerZone:(id)arg1;
 - (void)updateWithPlist:(id)arg1;
+- (void)_recreateSyncBudgetsAndThrottlesIfNeeded;
 @property(readonly, nonatomic) NSMutableDictionary *plist;
 - (void)dealloc;
 - (id)initWithMangledID:(id)arg1 dbRowID:(id)arg2 db:(id)arg3 plist:(id)arg4 session:(id)arg5 initialCreation:(_Bool)arg6;

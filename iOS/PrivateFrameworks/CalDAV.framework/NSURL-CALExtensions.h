@@ -19,6 +19,7 @@
 - (id)initWithScheme:(id)arg1 host:(id)arg2 port:(int)arg3 path:(id)arg4;
 - (id)URLWithUsername:(id)arg1 withPassword:(id)arg2;
 - (id)queryParameters;
+- (id)calDAV_leastInfoStringRepresentationRelativeToParentURL:(id)arg1;
 - (_Bool)absoluteURLisEqual:(id)arg1;
 - (id)URLWithoutPassword;
 - (id)URLWithoutUsername;

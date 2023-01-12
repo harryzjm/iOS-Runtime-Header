@@ -13,7 +13,6 @@
     MISSING_TYPE *isMenuItemEnabled;
     MISSING_TYPE *isMenuItemBoundToEnabled;
     MISSING_TYPE *meshesQuery;
-    MISSING_TYPE *wireframeMaterial;
 }
 
 @end

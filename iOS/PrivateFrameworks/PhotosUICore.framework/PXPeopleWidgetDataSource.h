@@ -26,7 +26,7 @@
 - (id)_socialGroupsForIdentifiers:(id)arg1;
 - (void)loadMembersWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)_updateMembers;
-- (void)prefetchThumbnailsForTargetSize:(struct CGSize)arg1 maxFetchCount:(unsigned long long)arg2;
+- (void)prefetchThumbnailsForTargetSize:(struct CGSize)arg1 displayScale:(double)arg2 maxFetchCount:(unsigned long long)arg3;
 - (id)titleAtIndex:(unsigned long long)arg1;
 - (void)imageCacheDidChanged:(id)arg1;
 - (void)photoLibraryDidChange:(id)arg1;

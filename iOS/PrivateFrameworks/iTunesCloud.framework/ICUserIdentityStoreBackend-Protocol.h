@@ -8,7 +8,7 @@
 #import <iTunesCloud/NSObject-Protocol.h>
 #import <iTunesCloud/NSSecureCoding-Protocol.h>
 
-@class ICLocalStoreAccountProperties, ICUserIdentityProperties, ICUserVerificationContext, NSNumber;
+@class ICLocalStoreAccountProperties, ICUserIdentityProperties, ICUserVerificationContext, NSArray, NSNumber;
 @protocol ICUserIdentityStoreBackendDelegate;
 
 @protocol ICUserIdentityStoreBackend <NSObject, NSCopying, NSSecureCoding>
@@ -23,6 +23,8 @@
 - (void)removeIdentityForDSID:(NSNumber *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (ICUserIdentityProperties *)identityPropertiesForPrimaryICloudAccountWithError:(id *)arg1;
 - (ICUserIdentityProperties *)identityPropertiesForDSID:(NSNumber *)arg1 error:(id *)arg2;
+- (NSArray *)allManageableStoreAccountDSIDsWithError:(id *)arg1;
+- (NSArray *)allStoreAccountDSIDsWithError:(id *)arg1;
 - (_Bool)updateActiveLockerAccountDSID:(NSNumber *)arg1 error:(id *)arg2;
 - (NSNumber *)activeLockerAccountDSIDWithError:(id *)arg1;
 - (_Bool)updateActiveAccountDSID:(NSNumber *)arg1 error:(id *)arg2;

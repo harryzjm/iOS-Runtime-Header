@@ -17,7 +17,7 @@
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)_accessibilityHitTestSubviews;
 - (long long)_accessibilityCompareElement:(id)arg1 toElement:(id)arg2;
-- (_Bool)_accessibilityServesAsContainingParentForOrdering;
+- (_Bool)shouldGroupAccessibilityChildren;
 - (id)_accessibilitySubviews;
 - (id)_accessibilityUserTestingChildren;
 

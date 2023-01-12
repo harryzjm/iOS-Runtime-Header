@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, PLClientServerTransaction;
+@class NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSPredicate, PLClientServerTransaction;
 
 @interface PLDelayedSaveActions : NSObject
 {
@@ -24,16 +24,24 @@
     NSMutableArray *_delayedDupeAnalysisCloudInserts;
     NSMutableSet *_delayedAssetsForFileSystemPersistency;
     NSMutableDictionary *_delayedSearchIndexUpdateUUIDs;
+    NSPredicate *_assetBaseSearchIndexPredicate;
     NSMutableSet *_delayedAlbumCountsAndDateRangeUpdates;
+    NSMutableSet *_delayedImportSessionCountsAndDateRangeUpdates;
     NSMutableDictionary *_delayedWorkerTypesToAnalyzeByAssetUUID;
     NSMutableSet *_delayedAssetsForDuetDelete;
     NSMutableSet *_delayedMemoriesForDuetDelete;
+    NSMutableSet *_delayedMemoriesAssetUpdate;
     _Bool _delayedWidgetTimelineReloadNeeded;
+    _Bool _delayedFeaturedContentUpdateNeeded;
     PLClientServerTransaction *_clientTransaction;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) PLClientServerTransaction *clientTransaction; // @synthesize clientTransaction=_clientTransaction;
+- (void)_popMemoryAssetUpdateIntoDetail:(id)arg1;
+- (void)recordMemoryAssetsUpdate:(id)arg1;
+- (void)_popFeaturedContentUpdateNeeded:(id)arg1;
+- (void)recordFeaturedContentUpdateNeeded;
 - (void)_popWidgetTimelineReloadNeeded:(id)arg1;
 - (void)recordWidgetTimelineReloadNeeded;
 - (void)_popDuetDeletedMemoriesIntoDetail:(id)arg1;
@@ -43,21 +51,30 @@
 - (void)_popDelayedAssetsForAnalysis:(id *)arg1;
 - (void)recordAssetForAnalysis:(id)arg1 workerFlags:(int)arg2 workerType:(short)arg3;
 - (void)_popDelayedAlbumCountsAndDateRangeUpdates:(id *)arg1;
+- (void)recordAssetForImportSessionCountsAndDateRangeUpdate:(id)arg1;
 - (void)recordAssetForAlbumCountsAndDateRangeUpdate:(id)arg1;
 - (void)forceAlbumCountsAndDateRangeUpdate:(id)arg1;
 - (void)recordAlbumCountsAndDateRangeUpdate:(id)arg1;
 - (void)_recordDelayedAlbumCountsAndDateRangeUpdate:(id)arg1;
+- (void)_popDelayedImportSessionCountsAndDateRangeUpdates:(id *)arg1;
+- (void)recordImportSessionCountsAndDateRangeUpdate:(id)arg1;
+- (void)_recordDelayedImportSessionCountsAndDateRangeUpdate:(id)arg1;
 - (void)_popDelayedSearchIndexUpdates:(id *)arg1;
+- (void)recordHighlightForSearchIndexUpdate:(id)arg1;
 - (void)recordMemoryForSearchIndexUpdate:(id)arg1;
 - (void)recordAlbumForSearchIndexUpdate:(id)arg1;
 - (void)recordAssetForSearchIndexUpdate:(id)arg1;
+- (void)recordMediaAnalysisAssetAttributesForSearchIndexUpdate:(id)arg1;
 - (void)recordAdditionalAssetAttributesForSearchIndexUpdate:(id)arg1;
 - (void)recordAssetDescriptionForSearchIndexUpdate:(id)arg1;
 - (void)recordDetectedFaceForSearchIndexUpdate:(id)arg1;
 - (void)recordPersonForSearchIndexUpdate:(id)arg1;
+- (id)assetBaseSearchIndexPredicate;
 - (void)_recordAssetForSearchIndexUpdate:(id)arg1;
 - (void)_recordDetectedFaceUUIDInsertForSearchIndexUpdate:(id)arg1;
+- (void)_recordPersonUUIDRenameForSearchIndexUpdate:(id)arg1;
 - (void)_recordPersonUUIDInsertForSearchIndexUpdate:(id)arg1;
+- (void)_recordHighlightUUIDForSearchIndexUpdate:(id)arg1 isInsert:(_Bool)arg2;
 - (void)_recordMemoryUUIDForSearchIndexUpdate:(id)arg1 isInsert:(_Bool)arg2;
 - (void)_recordAlbumUUIDForSearchIndexUpdate:(id)arg1 isInsert:(_Bool)arg2;
 - (void)_recordAssetUUIDForSearchIndexUpdate:(id)arg1 isInsert:(_Bool)arg2;
@@ -87,6 +104,7 @@
 - (void)_recordDelayedHighlightAssetUpdates:(id)arg1;
 - (void)_recordDelayedMomentAssetUpdates:(id)arg1;
 - (void)_recordDelayedMomentAssetDeletionsDictionary:(id)arg1 forKey:(id)arg2;
+- (void)_popImportSessionCountChangesIntoDetail:(id)arg1;
 - (void)_popAlbumCountChangesIntoDetail:(id)arg1;
 - (void)_popSearchIndexChangesIntoDetail:(id)arg1;
 - (void)_popAssetsForFilesystemPersistencyChangesIntoDetail:(id)arg1;

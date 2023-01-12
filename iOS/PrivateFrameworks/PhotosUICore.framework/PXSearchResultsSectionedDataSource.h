@@ -72,7 +72,7 @@
 @property(nonatomic) _Bool resultsReady; // @synthesize resultsReady=_resultsReady;
 @property(nonatomic) __weak id <PXSearchResultsSectionedDataSourceChangeObserver> changeObserver; // @synthesize changeObserver=_changeObserver;
 - (void)_updateResultsWithMergeTargetPerson:(id)arg1 sourcePerson:(id)arg2 tombstonedCandidatesLocalIdentifiers:(id)arg3;
-- (void)_suggestionsDidFinish:(id)arg1;
+- (void)_confirmationDidFinish:(id)arg1;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) NSDictionary *debugDictionary;
 - (id)tapToRadarAttachments;

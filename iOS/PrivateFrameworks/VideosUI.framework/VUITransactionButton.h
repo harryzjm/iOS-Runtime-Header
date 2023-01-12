@@ -32,11 +32,11 @@ __attribute__((visibility("hidden")))
 - (void)_buttonTapped:(id)arg1 eventName:(id)arg2;
 - (void)_layoutProgressIndicatorIfNeeded;
 - (id)_carouselView;
-- (void)traitCollectionDidChange:(id)arg1;
+- (void)vui_traitCollectionDidChange:(id)arg1;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
-- (void)layoutSubviews;
+- (struct CGSize)vui_layoutSubviews:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
 - (void)dealloc;
-- (id)initWithLayout:(id)arg1 interfaceStyle:(long long)arg2;
+- (id)initWithType:(unsigned long long)arg1 interfaceStyle:(unsigned long long)arg2;
 
 @end
 

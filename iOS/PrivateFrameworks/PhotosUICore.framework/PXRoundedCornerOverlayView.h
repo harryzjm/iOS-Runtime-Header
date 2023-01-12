@@ -6,7 +6,7 @@
 
 #import <UIKit/UIImageView.h>
 
-@class UIColor;
+@class PXFocusInfo, UIColor;
 
 @interface PXRoundedCornerOverlayView : UIImageView
 {
@@ -36,6 +36,7 @@
 - (void)_updateIfNeeded;
 - (void)performChanges:(CDUnknownBlockType)arg1;
 - (id)mutableChangeObject;
+@property(readonly, nonatomic) PXFocusInfo *focusInfo;
 - (void)setDisplayScale:(double)arg1;
 - (void)setOverlayColor:(id)arg1;
 - (void)setContinuousCorners:(_Bool)arg1;

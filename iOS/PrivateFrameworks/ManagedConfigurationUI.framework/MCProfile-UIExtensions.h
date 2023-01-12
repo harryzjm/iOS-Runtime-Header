@@ -9,5 +9,6 @@
 @interface MCProfile (UIExtensions)
 - (_Bool)shouldUseTrustedNomenclature;
 - (_Bool)shouldHideUnstrustedLabel;
+@property(readonly, nonatomic) _Bool isHRNProfile;
 @end
 

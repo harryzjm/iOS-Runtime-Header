@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     struct CGSize _nativeSize;
     _Bool _isRawSource;
     _Bool _calledDealloc;
+    NSString *_matteOption;
     NSDictionary *_baseImageProperties;
     NSDictionary *_rawDictionary;
     NSDictionary *_rawReconstructionDefaultsDictionary;
@@ -58,6 +59,7 @@ __attribute__((visibility("hidden")))
     NSNumber *inputHueMagBM;
     CIFilter *inputLinearSpaceFilter;
     NSNumber *inputEnableEDRMode;
+    NSNumber *inputLocalToneMapAmount;
     NSNumber *inputReturnDemosaiced;
 }
 
@@ -67,11 +69,13 @@ __attribute__((visibility("hidden")))
 + (id)filterWithImageURL:(id)arg1 options:(id)arg2;
 + (id)filterWithImageData:(id)arg1 options:(id)arg2;
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
++ (id)matteOptionNameFromOptions:(id)arg1;
 + (id)optionKeys;
 + (id)applyMatrix:(const double *)arg1 toCIImage:(id)arg2;
 + (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
 + (void)convertNeutralTemperature:(id)arg1 tint:(id)arg2 toX:(id *)arg3 y:(id *)arg4;
 + (void)convertNeutralX:(id)arg1 y:(id)arg2 toTemperature:(id *)arg3 tint:(id *)arg4;
+@property(readonly) _Bool isRawSource;
 - (id)outputKeys;
 - (void)setDefaults;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -96,6 +100,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithImageSource:(struct CGImageSource *)arg1 options:(id)arg2;
 - (id)initWithCVPixelBuffer:(struct __CVBuffer *)arg1 properties:(id)arg2 options:(id)arg3;
 - (id)outputNativeSize;
+- (id)properties;
 - (id)activeKeys;
 - (id)defaultBoostShadowAmount;
 - (void)setInputBoostShadowAmount:(id)arg1;
@@ -138,6 +143,8 @@ __attribute__((visibility("hidden")))
 - (id)defaultInputNoiseReductionContrastAmount;
 - (id)defaultInputColorNoiseReductionAmount;
 - (id)defaultInputLuminanceNoiseReductionAmount;
+- (void)setInputLocalToneMapAmount:(id)arg1;
+- (id)defaultInputLocalToneMapAmount;
 - (void)setInputEnableEDRMode:(id)arg1;
 - (id)defaultInputReturnDemosaiced;
 - (void)setInputReturnDemosaiced:(id)arg1;

@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 - (id)_regionForFocusedItem:(id)arg1 inCoordinateSpace:(id)arg2;
 - (void)_searchForFocusRegionsInContext:(id)arg1;
+- (id)createPromiseRegionInCoordinateSpace:(id)arg1;
 - (id)_preferredFocusRegionCoordinateSpace;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (_Bool)shouldUpdateFocusInContext:(id)arg1;
@@ -51,6 +52,7 @@ __attribute__((visibility("hidden")))
 // Remaining properties
 @property(nonatomic) _Bool areChildrenFocused;
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, nonatomic, getter=_isEligibleForFocusOcclusion) _Bool eligibleForFocusOcclusion;
 @property(readonly, copy, nonatomic) NSString *focusGroupIdentifier;
 @property(readonly) unsigned long long hash;
 @property(readonly, copy, nonatomic, getter=_linearFocusMovementSequences) NSArray *linearFocusMovementSequences;

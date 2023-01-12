@@ -22,7 +22,6 @@
 + (void)willFinishSessionWithRecoveryData:(id)arg1 profile:(id)arg2;
 + (id)recoveryIdentifier;
 - (void).cxx_destruct;
-- (_Bool)_isAutoPauseEnabled;
 @property(readonly, nonatomic) id <HDWorkoutDataAccumulator> workoutDataAccumulator;
 - (_Bool)storeSessionControllerState:(id)arg1 forRecoveryIdentifier:(id)arg2 error:(id *)arg3;
 - (void)generateConfigurationUpdate:(id)arg1;

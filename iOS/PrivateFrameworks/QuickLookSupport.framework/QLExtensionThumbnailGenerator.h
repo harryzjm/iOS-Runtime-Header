@@ -21,9 +21,12 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) QLExtensionManager *extensionManager; // @synthesize extensionManager=_extensionManager;
 - (void)ioSurfaceWithSize:(struct CGSize)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)generatePlatformImageThumbnailForExtensionThumbnailItem:(id)arg1 ofSize:(struct CGSize)arg2 minimumSize:(double)arg3 scale:(double)arg4 badgeType:(unsigned long long)arg5 generatorData:(id)arg6 completionBlock:(CDUnknownBlockType)arg7;
+- (void)generatePlatformImageThumbnailForExtensionThumbnailItem:(id)arg1 ofSize:(struct CGSize)arg2 minimumSize:(double)arg3 scale:(double)arg4 badgeType:(unsigned long long)arg5 iconFlavor:(int)arg6 generatorData:(id)arg7 interpolationQuality:(int)arg8 shouldUseRestrictedExtension:(_Bool)arg9 completionBlock:(CDUnknownBlockType)arg10;
+- (void)generatePlatformImageThumbnailForExtensionThumbnailItem:(id)arg1 ofSize:(struct CGSize)arg2 minimumSize:(double)arg3 scale:(double)arg4 badgeType:(unsigned long long)arg5 iconFlavor:(int)arg6 generatorData:(id)arg7 shouldUseRestrictedExtension:(_Bool)arg8 completionBlock:(CDUnknownBlockType)arg9;
+- (void)generatePlatformImageThumbnailForExtensionThumbnailItem:(id)arg1 ofSize:(struct CGSize)arg2 minimumSize:(double)arg3 scale:(double)arg4 badgeType:(unsigned long long)arg5 generatorData:(id)arg6 shouldUseRestrictedExtension:(_Bool)arg7 completionBlock:(CDUnknownBlockType)arg8;
+- (void)generatePlatformImageThumbnailForExtensionThumbnailItem:(id)arg1 ofSize:(struct CGSize)arg2 minimumSize:(double)arg3 scale:(double)arg4 badgeType:(unsigned long long)arg5 generatorData:(id)arg6 interpolationQuality:(int)arg7 shouldUseRestrictedExtension:(_Bool)arg8 completionBlock:(CDUnknownBlockType)arg9;
 - (id)_generateImageFromURL:(id)arg1 withSize:(struct CGSize)arg2 scale:(double)arg3;
-- (id)_generateImageFromRawData:(id)arg1 withContextSize:(struct CGSize)arg2 scale:(double)arg3;
+- (id)_generateImageFromRawData:(id)arg1 bitmapFormat:(id)arg2 scale:(double)arg3;
 - (id)init;
 
 // Remaining properties

@@ -6,12 +6,17 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class NSData, NSError, _GEOSimpleTileRequesterOperation;
+@class NSArray, NSData, NSError, _GEOSimpleTileRequesterOperation;
 
 @protocol GEOSimpleTileRequesterOperationDelegate <NSObject>
+- (NSArray *)additionalNetworkEventAnalyticsStatesForKey:(const struct _GEOTileKey *)arg1;
+- (_Bool)shouldReportSuccessNetworkEventForTileKey:(const struct _GEOTileKey *)arg1;
+- (_Bool)shouldReportErrorNetworkEventWithRertryForTileKey:(const struct _GEOTileKey *)arg1;
+- (_Bool)shouldReportErrorNetworkEventForTileKey:(const struct _GEOTileKey *)arg1;
 - (NSData *)verifyDataIntegrity:(NSData *)arg1 checksumMethod:(int)arg2;
 - (int)checksumMethodForIncomingTileDataWithKey:(const struct _GEOTileKey *)arg1;
 - (_Bool)shouldAllowEmptyDataForTileKey:(const struct _GEOTileKey *)arg1;
+- (_Bool)shouldDownloadToDiskForTileKey:(const struct _GEOTileKey *)arg1 estimatedDataSize:(unsigned long long)arg2;
 - (void)operationFailed:(_GEOSimpleTileRequesterOperation *)arg1 error:(NSError *)arg2;
 - (void)operationFinished:(_GEOSimpleTileRequesterOperation *)arg1;
 @end

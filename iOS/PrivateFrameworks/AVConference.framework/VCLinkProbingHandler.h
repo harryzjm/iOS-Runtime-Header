@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 {
     id <VCLinkProbingHandlerDelegate> _linkProbingHandlerDelegate;
     VCDispatchTimer *_queryProbingResultsTimer;
+    VCDispatchTimer *_probingLockdownTimer;
     NSObject<OS_dispatch_queue> *_serialQueue;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSMutableDictionary *_aggregatedProbingResults;
@@ -32,11 +33,21 @@ __attribute__((visibility("hidden")))
     NSArray *_plrBuckets;
     CDStruct_7421bd8e _linkProbingResultConfig;
     NSMutableSet *_activelyProbingLinkIDs;
+    _Bool _isDuplicationEnabled;
+    _Bool _isProbingLockedOut;
+    double _probingStartTime;
+    double _probingLockoutStartTime;
+    double _linkProbingLockdownPeriod;
+    unsigned int _linkProbingDuplicationWaitTimeout;
+    unsigned int _consecutiveIdenticalQueryResultMax;
+    unsigned int _consecutiveIdenticalQueryResultCount;
 }
 
+@property _Bool isDuplicationEnabled; // @synthesize isDuplicationEnabled=_isDuplicationEnabled;
 @property(readonly) NSSet *activelyProbingLinkIDs; // @synthesize activelyProbingLinkIDs=_activelyProbingLinkIDs;
 @property unsigned char linkProbingCapabilityVersion; // @synthesize linkProbingCapabilityVersion=_linkProbingCapabilityVersion;
 - (void)resetAggregatedProbingResults;
+- (void)probingLockdownEnded;
 - (void)updateLinkPreferenceOrder;
 - (void)queryProbingResults;
 - (void)setLinkProbingResultConfig;
@@ -47,7 +58,7 @@ __attribute__((visibility("hidden")))
 - (void)flushProbingResults:(id)arg1;
 - (void)dispatchedUpdateProbingResults:(id)arg1;
 - (void)updateProbingResults:(id)arg1;
-- (void)stopActiveProbingOnLinks:(id)arg1;
+- (void)stopActiveProbingOnLinks:(id)arg1 resetStats:(_Bool)arg2;
 - (void)startActiveProbingOnLinks:(id)arg1;
 @property(readonly) _Bool isLinkProbingActive;
 @property id <VCLinkProbingHandlerDelegate> linkProbingHandlerDelegate;

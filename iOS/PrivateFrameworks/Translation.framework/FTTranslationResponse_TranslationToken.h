@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_f50ee2c0)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_f50ee2c0)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) _Bool add_space_after;
 @property(readonly, nonatomic) FTAlignment *mt_alignment;
 @property(readonly, nonatomic) float confidence;

@@ -54,6 +54,7 @@
 - (id)handleIntentActionForDonatedIntent:(id)arg1;
 - (id)createActionWithDonation:(id)arg1;
 @property(readonly, nonatomic) NSSet *identifiersOfActionsDisabledOnWatch;
+- (id)createActionForSelectingContentOfType:(Class)arg1 allowMultipleSelection:(_Bool)arg2;
 - (id)updatedActionForResidentCompatibility:(id)arg1 inHome:(id)arg2;
 - (id)residentCompatibleActionsFromActions:(id)arg1 inHome:(id)arg2;
 - (id)suggestionsForHome:(id)arg1 includingRelatedActions:(_Bool)arg2;

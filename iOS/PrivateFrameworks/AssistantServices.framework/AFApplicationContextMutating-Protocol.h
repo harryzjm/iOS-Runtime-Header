@@ -6,9 +6,10 @@
 
 #import <AssistantServices/NSObject-Protocol.h>
 
-@class AFBulletin, AceObject, NSDictionary, NSString;
+@class AFBulletin, AceObject, NSArray, NSDictionary, NSString;
 
 @protocol AFApplicationContextMutating <NSObject>
+- (void)setAceContexts:(NSArray *)arg1;
 - (void)setContextDictionary:(NSDictionary *)arg1;
 - (void)setAceContext:(AceObject *)arg1;
 - (void)setBulletin:(AFBulletin *)arg1;

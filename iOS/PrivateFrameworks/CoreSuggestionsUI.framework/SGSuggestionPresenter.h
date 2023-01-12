@@ -9,16 +9,17 @@
 #import <CoreSuggestionsUI/SGSuggestionDelegate-Protocol.h>
 #import <CoreSuggestionsUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class NSArray, NSString, SGBanner, SGSuggestionAction, SGSuggestionStore, UIViewController;
-@protocol SGSuggestionPresenterDelegate;
+@class NSArray, NSMutableArray, NSString, SGSuggestionAction, SGSuggestionStore, UIView, UIViewController;
+@protocol SGBannerProtocol, SGSuggestionPresenterDelegate;
 
 @interface SGSuggestionPresenter : NSObject <UIPopoverPresentationControllerDelegate, SGSuggestionDelegate>
 {
-    SGBanner *_banner;
+    UIView<SGBannerProtocol> *_banner;
     SGSuggestionAction *_bannerPrimaryAction;
     SGSuggestionAction *_bannerDismissAction;
     UIViewController *_presentedViewController;
     SGSuggestionStore *_suggestionStore;
+    NSMutableArray *_filteredSuggestions;
     _Bool _wantsToShowBanner;
     id <SGSuggestionPresenterDelegate> _delegate;
 }
@@ -38,6 +39,8 @@
 - (void)_presentModalViewControllerFromButton:(id)arg1;
 - (id)_presentingViewController;
 - (id)_viewControllerForPresentingFromBanner;
+- (void)bannerDismissAction;
+- (void)bannerPrimaryAction;
 - (long long)suggestionsUIContext;
 - (void)suggestionWasUpdated:(id)arg1;
 - (void)suggestion:(id)arg1 actionFinished:(_Bool)arg2;
@@ -46,9 +49,15 @@
 - (id)formatMixedCategoriesSubtitle:(id)arg1;
 - (id)formatMixedCategoriesTitle:(id)arg1;
 - (void)_updateBanner;
+- (id)_sortSuggestionByCategoryUsing:(id)arg1;
+- (void)_restoreSuggestions;
+- (void)_filterSuggestions;
+- (void)_removeBanner;
+- (void)reloadSuggestionsFromSearchableItems;
 - (void)_bannerDismiss;
+- (id)tableViewController;
 - (void)_bannerPrimaryAction;
-@property(readonly, nonatomic) SGBanner *banner;
+@property(readonly, nonatomic) UIView<SGBannerProtocol> *banner;
 - (void)removeSuggestion:(id)arg1;
 - (void)addSuggestion:(id)arg1;
 @property(copy, nonatomic) NSArray *suggestions;

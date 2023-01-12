@@ -33,7 +33,7 @@
 - (void)lowercaseWord:(id)arg1;
 - (void)uppercaseWord:(id)arg1;
 - (void)_changeWordCaseWithSelector:(SEL)arg1;
-- (void)_applyEditingStyleToSelection:(Ref_8e48ecf0 *)arg1 withUndoAction:(unsigned char)arg2;
+- (void)_applyEditingStyleToSelection:(void *)arg1 withUndoAction:(unsigned char)arg2;
 - (void)_applyStyleToSelection:(id)arg1 withUndoAction:(unsigned char)arg2;
 - (id)_emptyStyle;
 - (void)centerSelectionInVisibleArea:(id)arg1;
@@ -232,7 +232,7 @@
 - (void)_destroyAllWebPlugins;
 - (void)_web_updateLayoutAndStyleIfNeededRecursive;
 - (void)_layoutIfNeeded;
-- (_Bool)_handleEditingKeyEvent:(struct KeyboardEvent *)arg1;
+- (_Bool)_handleEditingKeyEvent:(void *)arg1;
 - (void)_executeSavedKeypressCommands;
 - (void)closeIfNotCurrentView;
 - (id)_frame;

@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (id)computeClusteringForClusteringTree:(id)arg1 usingThreshold:(float)arg2 error:(id *)arg3;
 - (id)computeClusteringForClusteringTree:(id)arg1 intoKGroups:(int)arg2 error:(id *)arg3;
 - (id)performClustersPostprocessing:(id)arg1 error:(id *)arg2;
-- (id)convertClusterNodesListToDescriptorsList:(vector_e14a6833)arg1;
+- (id)convertClusterNodesListToDescriptorsList:(vector_f43821d3)arg1;
 - (id)computeClusteringTreeForImageDescriptors:(id)arg1 assumeDescriptorsAreSorted:(_Bool)arg2 error:(id *)arg3;
 - (id)computeClusteringTreeForImageDescriptors:(id)arg1 error:(id *)arg2;
 - (id)computeNaturalClusteringOfImageDescriptors:(id)arg1 error:(id *)arg2;

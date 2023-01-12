@@ -31,7 +31,6 @@
     unsigned long long _maxDataSegmentCoalesceThreshhold;
     unsigned long long _maxDataSegmentCount;
     unsigned int _didReceiveDataCount;
-    _Bool _canSendDidFinishCollectingMetrics;
     _Bool _ignoreLoaderEvents;
 }
 

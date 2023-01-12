@@ -10,13 +10,11 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic) double nextSleepDurationSampleTime; // @synthesize nextSleepDurationSampleTime=_nextSleepDurationSampleTime;
 - (_Bool)isDemoPersonSleeping:(id)arg1 atTime:(double)arg2;
 - (_Bool)isDemoPersonAwake:(id)arg1 atTime:(double)arg2;
 - (double)computeSleepTimeFromCurrentTime:(double)arg1 mean:(double)arg2 stdDev:(double)arg3;
 - (double)computeAwakeTimeForDemoPerson:(id)arg1 atTime:(double)arg2;
-- (void)_generateHeartRateDataForSleepSamples:(id)arg1 objectCollection:(id)arg2 demoPerson:(id)arg3;
-- (void)generateSamplesForDemoPerson:(id)arg1 atTime:(double)arg2 sampleDate:(id)arg3 objectCollection:(id)arg4;
+- (void)generateSamplesForDemoPerson:(id)arg1 fromTime:(double)arg2 toTime:(double)arg3 currentDate:(id)arg4 objectCollection:(id)arg5;
 - (void)setupWithDemoDataGenerator:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

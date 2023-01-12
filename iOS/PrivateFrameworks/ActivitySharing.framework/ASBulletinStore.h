@@ -16,10 +16,11 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *bulletins; // @synthesize bulletins=_bulletins;
 - (void)_persistBulletins;
+- (void)removeBulletinsOlderThanInterval:(double)arg1;
 - (void)removeBulletinsMatchingCriteria:(CDUnknownBlockType)arg1;
 - (void)removeAllBulletins;
 - (void)addBulletins:(id)arg1;
-- (id)init;
+- (void)loadBulletins;
 
 @end
 

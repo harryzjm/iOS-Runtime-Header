@@ -9,7 +9,7 @@
 #import <ExtensionFoundation/EXExtensionPoint-Protocol.h>
 #import <ExtensionFoundation/NSCopying-Protocol.h>
 
-@class NSDictionary, NSString;
+@class NSDictionary, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface _EXExtensionPoint : NSObject <EXExtensionPoint, NSCopying>
@@ -17,18 +17,22 @@ __attribute__((visibility("hidden")))
     unsigned int _platform;
     NSString *_identifier;
     NSDictionary *_SDKDictionary;
+    unsigned long long _variant;
+    NSURL *_url;
 }
 
 - (void).cxx_destruct;
+@property(retain) NSURL *url; // @synthesize url=_url;
+@property unsigned long long variant; // @synthesize variant=_variant;
 @property unsigned int platform; // @synthesize platform=_platform;
 @property(retain) NSDictionary *SDKDictionary; // @synthesize SDKDictionary=_SDKDictionary;
 @property(retain) NSString *identifier; // @synthesize identifier=_identifier;
+@property(readonly, copy) NSString *description;
 - (void)reset;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

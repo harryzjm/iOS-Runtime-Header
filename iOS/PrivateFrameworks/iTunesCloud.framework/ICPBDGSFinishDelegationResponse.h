@@ -8,11 +8,11 @@
 
 #import <iTunesCloud/NSCopying-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface ICPBDGSFinishDelegationResponse : PBCodable <NSCopying>
 {
 }
 
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

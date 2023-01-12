@@ -27,10 +27,10 @@
 - (_Bool)unselectedContextShouldUseContextBaseType;
 - (id)baseDisplayTypeForOverlay:(long long)arg1;
 - (id)contextItemForLastUpdate;
-- (void)updateContextItemForDateInterval:(id)arg1 timeScope:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)updateContextItemForDateInterval:(id)arg1 overlayController:(id)arg2 timeScope:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)overlayDisplayTypeForTimeScope:(long long)arg1;
 - (id)sampleTypeForDateRangeUpdates;
-- (id)_amountStringFromCounts:(id)arg1;
+- (id)_amountStringFromCounts:(id)arg1 timeScope:(long long)arg2;
 - (id)_daysWithSleepDataFromChartPoints:(id)arg1;
 - (id)_contextItemWithAmountString:(id)arg1;
 - (id)initWithBaseDisplayType:(id)arg1 overlayChartController:(id)arg2 contextChangeDelegate:(id)arg3;

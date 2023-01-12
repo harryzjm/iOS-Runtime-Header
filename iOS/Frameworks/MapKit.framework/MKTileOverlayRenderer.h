@@ -4,20 +4,38 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class GEOTileKeyList, NSObject;
+@class GEOTileKeyList, NSNumber, NSObject, UIImage, VKRasterTileOverlayProviderData;
 @protocol OS_dispatch_queue;
 
 @interface MKTileOverlayRenderer
 {
     GEOTileKeyList *_pendingRequests;
     NSObject<OS_dispatch_queue> *_pendingRequestsLock;
+    _Bool _externalSubclassOverridesDrawingMethods;
+    VKRasterTileOverlayProviderData *_rasterProvider;
+    unsigned long long _loopsRemaining;
+    UIImage *_colorMap;
+    NSNumber *_visibleKeyframeOverride;
 }
 
++ (id)keyPathsForValuesAffectingVisibleKeyframeIndex;
++ (_Bool)_externalSubclassOverridesDrawingMethods;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSNumber *visibleKeyframeOverride; // @synthesize visibleKeyframeOverride=_visibleKeyframeOverride;
+@property(retain, nonatomic) UIImage *colorMap; // @synthesize colorMap=_colorMap;
+- (void)_updateColorMap;
+- (void)_updateRenderColors;
+- (id)rasterTileProviderForOverlay:(id)arg1;
+- (_Bool)overlayCanProvideRasterTileData:(id)arg1;
 - (void)reloadData;
 - (void)drawMapRect:(CDStruct_02837cd9)arg1 zoomScale:(double)arg2 inContext:(struct CGContext *)arg3;
 - (_Bool)canDrawMapRect:(CDStruct_02837cd9)arg1 zoomScale:(double)arg2;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)_playWithLoopCount:(unsigned long long)arg1;
+@property(readonly, nonatomic, getter=_visibleKeyframeIndex) unsigned long long visibleKeyframeIndex;
+- (void)setAlpha:(double)arg1;
 - (_Bool)_mayExtendOutsideBounds;
+- (void)dealloc;
 - (id)initWithTileOverlay:(id)arg1;
 - (id)initWithOverlay:(id)arg1;
 

@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDChildActionDirections, GEOPDChildActionFlyover, GEOPDChildActionSearch, PBDataReader, PBUnknownFields;
+@class GEOPDChildActionDirections, GEOPDChildActionFlyover, GEOPDChildActionGuides, GEOPDChildActionSearch, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDChildAction : PBCodable <NSCopying>
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     PBUnknownFields *_unknownFields;
     GEOPDChildActionDirections *_childActionDirections;
     GEOPDChildActionFlyover *_childActionFlyover;
+    GEOPDChildActionGuides *_childActionGuides;
     GEOPDChildActionSearch *_childActionSearch;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
@@ -27,38 +28,21 @@ __attribute__((visibility("hidden")))
         unsigned int read_unknownFields:1;
         unsigned int read_childActionDirections:1;
         unsigned int read_childActionFlyover:1;
+        unsigned int read_childActionGuides:1;
         unsigned int read_childActionSearch:1;
         unsigned int wrote_anyField:1;
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(retain, nonatomic) GEOPDChildActionSearch *childActionSearch;
-@property(readonly, nonatomic) _Bool hasChildActionSearch;
-@property(retain, nonatomic) GEOPDChildActionFlyover *childActionFlyover;
-@property(readonly, nonatomic) _Bool hasChildActionFlyover;
-@property(retain, nonatomic) GEOPDChildActionDirections *childActionDirections;
-@property(readonly, nonatomic) _Bool hasChildActionDirections;
-- (int)StringAsChildActionType:(id)arg1;
-- (id)childActionTypeAsString:(int)arg1;
-@property(nonatomic) _Bool hasChildActionType;
-@property(nonatomic) int childActionType;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

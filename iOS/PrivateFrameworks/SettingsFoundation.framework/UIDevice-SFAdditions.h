@@ -7,6 +7,7 @@
 #import <UIKit/UIDevice.h>
 
 @interface UIDevice (SFAdditions)
+@property(readonly, nonatomic, getter=sf_isDeveloperModeEnabled) _Bool sf_developerModeEnabled;
 - (id)sf_serialNumberQRImage;
 - (id)sf_regulatoryDeviceVariant;
 - (id)sf_deviceType;
@@ -26,6 +27,8 @@
 - (_Bool)sf_isChinaRegionCellularDevice;
 - (_Bool)sf_isCarrierInstall;
 - (_Bool)sf_isInternalInstall;
+- (_Bool)sf_hasHardwareHomeButton;
+- (_Bool)sf_isiPod;
 - (_Bool)sf_isAudioAccessory;
 - (_Bool)sf_isAppleTV;
 - (_Bool)sf_isiPhone;

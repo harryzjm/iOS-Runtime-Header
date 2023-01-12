@@ -6,37 +6,28 @@
 
 #import <objc/NSObject.h>
 
+#import <SiriVOX/AFDeviceContextConnectionDelegate-Protocol.h>
 #import <SiriVOX/SVXModuleInstance-Protocol.h>
 #import <SiriVOX/SVXSessionActivityListening-Protocol.h>
-#import <SiriVOX/SVXSystemVolumeDataSource-Protocol.h>
 
-@class NSMutableDictionary, NSString, SVXModule, SVXSystemVolumeAnnouncer;
-@protocol SVXSystemVolumeDataSource;
+@class AFDeviceContextConnection, NSString, SVXDeviceContextAnnouncer, SVXModule;
 
 __attribute__((visibility("hidden")))
-@interface SVXSystemObserver : NSObject <SVXModuleInstance, SVXSessionActivityListening, SVXSystemVolumeDataSource>
+@interface SVXSystemObserver : NSObject <SVXModuleInstance, SVXSessionActivityListening, AFDeviceContextConnectionDelegate>
 {
     SVXModule *_module;
-    SVXSystemVolumeAnnouncer *_volumeAnnouncer;
-    NSMutableDictionary *_volumesByCategory;
+    SVXDeviceContextAnnouncer *_deviceContextAnnouncer;
+    AFDeviceContextConnection *_deviceContextConnection;
 }
 
 - (void).cxx_destruct;
+- (void)deviceContextConnection:(id)arg1 didUpdateLocalDeviceContext:(id)arg2;
+- (void)deviceContextConnectionDidInvalidate:(id)arg1;
+- (void)_stopObservingDeviceContext;
+- (void)_startObservingDeviceContext;
 - (void)_logSnapshot;
 - (void)_stopObservingInfo;
 - (void)_startObservingInfo;
-- (void)_fetchSystemVolumes;
-- (void)_handleSystemVolumeChangeForCategory:(id)arg1 volume:(float)arg2 reason:(id)arg3;
-- (void)systemVolumeChanged:(id)arg1;
-- (void)_stopObservingSystemVolume;
-- (void)_startObservingSystemVolume;
-- (void)_handleMediaServerConnectionDied;
-- (void)mediaServerConnectionDied:(id)arg1;
-- (void)_stopObservingMediaServerConnection;
-- (void)_startObservingMediaServerConnection;
-- (void)removeVolumeListener:(id)arg1;
-- (void)addVolumeListener:(id)arg1;
-- (void)getVolumeForAudioCategory:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)audioSessionDidBecomeActive:(_Bool)arg1 activationContext:(id)arg2 deactivationContext:(id)arg3;
 - (void)audioSessionWillBecomeActive:(_Bool)arg1 activationContext:(id)arg2 deactivationContext:(id)arg3;
 - (void)sessionDidResignActiveWithDeactivationContext:(id)arg1;
@@ -51,8 +42,11 @@ __attribute__((visibility("hidden")))
 - (void)sessionWillChangeFromState:(long long)arg1 toState:(long long)arg2;
 - (void)stopWithModuleInstanceProvider:(id)arg1;
 - (void)startWithModuleInstanceProvider:(id)arg1 platformDependencies:(id)arg2;
+- (void)dealloc;
 - (id)initWithModule:(id)arg1;
-@property(readonly, nonatomic) id <SVXSystemVolumeDataSource> volumeDataSource;
+- (void)getLocalDeviceContextWithCompletion:(CDUnknownBlockType)arg1;
+- (void)removeDeviceContextListener:(id)arg1;
+- (void)addDeviceContextListener:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

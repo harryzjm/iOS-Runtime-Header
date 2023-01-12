@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CRRecognizerConfiguration, MLModel;
+@class CRNeuralRecognizerConfiguration, MLModel;
 
 __attribute__((visibility("hidden")))
 @interface CRTextSequenceRecognizerModelCoreML
 {
-    CRRecognizerConfiguration *_configuration;
+    CRNeuralRecognizerConfiguration *_configuration;
     MLModel *_model;
 }
 

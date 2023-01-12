@@ -31,7 +31,7 @@
     GEOComposedWaypoint *_destination;
 }
 
-+ (id)contentsWithStep:(id)arg1 transportType:(int)arg2;
++ (id)contentsWithStep:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool suppressFallback; // @synthesize suppressFallback=_suppressFallback;
 @property(nonatomic) _Bool suppressNames; // @synthesize suppressNames=_suppressNames;

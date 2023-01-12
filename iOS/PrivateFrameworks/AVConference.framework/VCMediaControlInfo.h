@@ -30,8 +30,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)hasInfoType:(unsigned int)arg1;
 - (int)setInfoUnserialized:(CDStruct_b4442fdd *)arg1 type:(unsigned int)arg2;
 - (int)setInfo:(void *)arg1 size:(unsigned long long)arg2 type:(unsigned int)arg3;
-- (int)configureWithBuffer:(const char *)arg1 length:(unsigned long long)arg2 optionalControlInfo:(CDStruct_39aa150d *)arg3;
-- (id)initWithBuffer:(const char *)arg1 length:(unsigned long long)arg2 optionalControlInfo:(CDStruct_39aa150d *)arg3 version:(unsigned char)arg4;
+- (int)configureWithBuffer:(const char *)arg1 length:(unsigned long long)arg2 optionalControlInfo:(CDStruct_d3f1d543 *)arg3;
+- (id)initWithBuffer:(const char *)arg1 length:(unsigned long long)arg2 optionalControlInfo:(CDStruct_d3f1d543 *)arg3 version:(unsigned char)arg4;
 
 @end
 

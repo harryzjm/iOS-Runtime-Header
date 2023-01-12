@@ -4,22 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HKInspectableValueInRange, HKReferenceRangeView, NSString, UILabel;
+#import <HealthRecordsUI/WDAttributedSubtitleDisplayable-Protocol.h>
+
+@class HKInspectableValueInRange, HRExpandedRangeValueView, NSString, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface WDMedicalRecordReferenceRangeViewCell
+@interface WDMedicalRecordReferenceRangeViewCell <WDAttributedSubtitleDisplayable>
 {
     HKInspectableValueInRange *_valueInRange;
     NSString *_subtitle;
-    HKReferenceRangeView *_referenceRangeView;
+    HRExpandedRangeValueView *_expandedRangeValueView;
     UILabel *_subtitleLabel;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
-@property(retain, nonatomic) HKReferenceRangeView *referenceRangeView; // @synthesize referenceRangeView=_referenceRangeView;
+@property(retain, nonatomic) HRExpandedRangeValueView *expandedRangeValueView; // @synthesize expandedRangeValueView=_expandedRangeValueView;
 @property(copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(retain, nonatomic) HKInspectableValueInRange *valueInRange; // @synthesize valueInRange=_valueInRange;
+- (void)setAttributedSubtitleText:(id)arg1;
 - (void)setupSubviews;
 
 @end

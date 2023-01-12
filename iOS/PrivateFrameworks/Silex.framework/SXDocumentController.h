@@ -13,6 +13,7 @@
 @interface SXDocumentController : NSObject <SXDocumentShareURLProvider>
 {
     NSString *_shareURL;
+    NSArray *_additions;
     SXDocument *_document;
     SXJSONObjectMerger *_componentStyleMerger;
     SXImageController *_imageController;
@@ -25,6 +26,7 @@
 @property(readonly, nonatomic) SXJSONObjectMerger *componentStyleMerger; // @synthesize componentStyleMerger=_componentStyleMerger;
 @property(readonly, nonatomic) SXDocument *document; // @synthesize document=_document;
 @property(readonly, nonatomic) NSString *shareURL; // @synthesize shareURL=_shareURL;
+- (id)additionsForComponents:(id)arg1;
 - (id)mergedObjectsWithIdentifiers:(id)arg1 fromDictionary:(id)arg2 merger:(id)arg3;
 @property(readonly, nonatomic) UIColor *topBackgroundColor;
 @property(readonly, nonatomic) UIColor *documentBackgroundColor;
@@ -34,10 +36,12 @@
 - (id)filterImageResources;
 @property(readonly, nonatomic) NSArray *requiredResourceURLs;
 @property(readonly, nonatomic) NSArray *allImageResources;
+- (id)largestImageResourceForImageIdentifier:(id)arg1;
 - (id)imageResourceForIdentifier:(id)arg1;
 - (id)componentLayoutForIdentifier:(id)arg1;
 - (id)resourceForIdentifier:(id)arg1;
 - (id)componentStyleForComponent:(id)arg1;
+@property(readonly, nonatomic) NSArray *additions; // @synthesize additions=_additions;
 - (id)initWithDocument:(id)arg1 shareURL:(id)arg2;
 
 // Remaining properties

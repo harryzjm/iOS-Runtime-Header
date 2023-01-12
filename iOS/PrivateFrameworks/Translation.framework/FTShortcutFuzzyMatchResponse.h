@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_0da38826)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_0da38826)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) int return_code;
 @property(readonly, nonatomic) NSArray *shortcut_score_pairs;
 @property(readonly, nonatomic) NSString *utterance;

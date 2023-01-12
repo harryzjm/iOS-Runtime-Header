@@ -6,18 +6,33 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
+@class KGElementIdentifierSet, NSArray, NSSet;
+@protocol KGElement, KGGraphImplementation;
 
 @interface KGElementCollection : NSObject
 {
+    KGElementIdentifierSet *_identifiers;
+    id <KGGraphImplementation> _implementation;
 }
 
-- (void)enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
-@property(readonly, copy) NSArray *allObjects;
-- (id)objectAtIndex:(unsigned long long)arg1;
-@property(readonly) id lastObject;
-@property(readonly) id firstObject;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) id <KGGraphImplementation> implementation; // @synthesize implementation=_implementation;
+@property(readonly, nonatomic) KGElementIdentifierSet *identifiers; // @synthesize identifiers=_identifiers;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
+- (_Bool)isEqualToCollection:(id)arg1;
+- (id)description;
+- (void)enumerateUnsignedIntegerPropertyValuesForKey:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)enumerateDoublePropertyValuesForKey:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)enumerateStringPropertyValuesForKey:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)enumerateIntegerPropertyValuesForKey:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)enumerateElementsWithBatchSize:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)enumerateElementIdentifierBatchesWithBatchSize:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
+@property(readonly) NSArray *allObjects;
+@property(readonly) id <KGElement> anyObject;
 @property(readonly) unsigned long long count;
+@property(readonly) NSSet *set;
+- (id)initWithIdentifiers:(id)arg1 graphImplementation:(id)arg2;
 
 @end
 

@@ -13,10 +13,12 @@
 }
 
 + (id)responseWithSceneID:(id)arg1;
++ (id)responseWithPersistentIdentifier:(id)arg1;
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;
 @property(readonly, copy, nonatomic) NSString *sceneIdentifier;
+@property(readonly, copy, nonatomic) NSString *persistentIdentifier;
 - (id)initWithInfo:(id)arg1 error:(id)arg2;
-- (id)responseWithSceneID:(id)arg1;
+- (id)_responseWithPersistentIdentifier:(id)arg1;
 
 @end
 

@@ -22,7 +22,8 @@ __attribute__((visibility("hidden")))
 - (id)notificationTitle;
 - (int)interactionType;
 - (_Bool)prefersOpenToCreate;
-- (id)icon;
+- (id)iconName;
+- (id)subtitle;
 - (id)localizedName;
 
 // Remaining properties

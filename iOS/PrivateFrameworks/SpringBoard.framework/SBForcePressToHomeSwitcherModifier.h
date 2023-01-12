@@ -25,9 +25,9 @@
 - (_Bool)isSwitcherWindowUserInteractionEnabled;
 - (_Bool)isContainerStatusBarVisible;
 - (long long)homeScreenBackdropBlurType;
-- (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
+- (struct UIRectCornerRadii)cornerRadiiForIndex:(unsigned long long)arg1;
 - (double)scaleForIndex:(unsigned long long)arg1;
-- (double)opacityForIndex:(unsigned long long)arg1;
+- (double)opacityForLayoutRole:(long long)arg1 inAppLayout:(id)arg2 atIndex:(unsigned long long)arg3;
 - (id)visibleAppLayouts;
 - (id)initWithTransitionID:(id)arg1 selectedAppLayout:(id)arg2 effectiveStartingEnvironmentMode:(long long)arg3 initialPanThreshold:(double)arg4 multitaskingModifier:(id)arg5;
 

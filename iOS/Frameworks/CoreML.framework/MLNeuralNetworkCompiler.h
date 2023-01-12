@@ -10,9 +10,9 @@
 {
 }
 
-+ (id)compiledVersionForSpecification:(struct _MLModelSpecification *)arg1 options:(id)arg2 error:(id *)arg3;
-+ (id)compileSpecification:(struct _MLModelSpecification *)arg1 toArchive:(struct _MLModelOutputArchiver *)arg2 options:(id)arg3 error:(id *)arg4;
-+ (_Bool)collectNNModelDetailsFromArchive:(struct _MLModelOutputArchiver *)arg1 spec:(struct _MLModelSpecification *)arg2 error:(id *)arg3;
++ (id)compiledVersionForSpecification:(void *)arg1 options:(id)arg2 error:(id *)arg3;
++ (id)compileSpecification:(void *)arg1 toArchive:(void *)arg2 options:(id)arg3 error:(id *)arg4;
++ (_Bool)collectNNModelDetailsFromArchive:(void *)arg1 spec:(void *)arg2 error:(id *)arg3;
 
 @end
 

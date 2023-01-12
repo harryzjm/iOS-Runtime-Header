@@ -15,7 +15,8 @@
 {
     id <FBSApplicationDataStoreRepositoryClient> _client;
     _Bool _clientNeedsCheckin;
-    NSHashTable *_observers;
+    struct os_unfair_lock_s _lock;
+    NSHashTable *_lock_observers;
 }
 
 - (void).cxx_destruct;

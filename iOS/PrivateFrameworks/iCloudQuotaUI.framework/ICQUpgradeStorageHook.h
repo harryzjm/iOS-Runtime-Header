@@ -10,7 +10,7 @@
 #import <iCloudQuotaUI/AMSPurchaseResponseProtocol-Protocol.h>
 #import <iCloudQuotaUI/PSCloudStorageOffersManagerDelegate-Protocol.h>
 
-@class AAUIServerHookResponse, ICQOffer, NSArray, NSDictionary, NSString, NSTimer, NSURLSession, PSCloudStorageOffersManager, RUIElement, RUIObjectModel;
+@class AAUIServerHookResponse, AMSBag, ICQOffer, NSArray, NSDictionary, NSString, NSTimer, NSURLSession, PSCloudStorageOffersManager, RUIElement, RUIObjectModel;
 @protocol AAUIServerHookDelegate, ICQServerHookDelegate;
 
 @interface ICQUpgradeStorageHook : NSObject <PSCloudStorageOffersManagerDelegate, AMSPurchaseResponseProtocol, AAUIServerHook>
@@ -27,13 +27,16 @@
     CDUnknownBlockType _interruptedCompletion;
     _Bool _isListeningToAMS;
     NSArray *_interruptedBuyErrorCodes;
+    NSString *_userAgentSuffix;
     id <AAUIServerHookDelegate> _delegate;
     CDUnknownBlockType _completionHandler;
     NSString *_buttonId;
     NSString *_flowtype;
+    AMSBag *_bag;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) AMSBag *bag; // @synthesize bag=_bag;
 @property(retain, nonatomic) NSString *flowtype; // @synthesize flowtype=_flowtype;
 @property(retain, nonatomic) NSString *buttonId; // @synthesize buttonId=_buttonId;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
@@ -41,6 +44,7 @@
 - (void)_registerForDarwinNotifications;
 - (void)_appGoesToBackground:(id)arg1;
 - (void)_handlePurchaseRequestSucceededNotification;
+- (void)handleEngagementRequest:(id)arg1 purchase:(id)arg2 purchaseQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)handleDialogRequest:(id)arg1 purchase:(id)arg2 purchaseQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)handleAuthenticateRequest:(id)arg1 purchase:(id)arg2 purchaseQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)registerAMSBagKeySets;

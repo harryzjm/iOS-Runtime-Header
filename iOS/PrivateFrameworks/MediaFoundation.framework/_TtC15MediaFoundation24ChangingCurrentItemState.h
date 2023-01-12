@@ -8,7 +8,7 @@
 
 @interface _TtC15MediaFoundation24ChangingCurrentItemState
 {
-    MISSING_TYPE *item;
+    MISSING_TYPE *items;
 }
 
 @end

@@ -26,6 +26,7 @@
         _Bool hasDidUpdateLivePhoto;
         _Bool hasDidFinishRenderingWithStatistics;
         _Bool hasDidZoom;
+        _Bool hasDidScroll;
         _Bool hasWillBeginZooming;
         _Bool hasDidEndZooming;
         _Bool hasIsReadyForVideoPlayback;
@@ -117,6 +118,9 @@
 - (void)_setupViews;
 - (void)installRenderingCompletionBlock:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) struct CGRect imageFrame;
+- (struct CGRect)convertViewRect:(struct CGRect)arg1 fromSpace:(id)arg2;
+- (struct CGRect)convertNormalizedViewRect:(struct CGRect)arg1 fromSpace:(id)arg2;
+- (struct CGPoint)convertPoint:(struct CGPoint)arg1 toNormalizedYDownSourceSpaceFromView:(id)arg2;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromSpace:(id)arg2 toView:(id)arg3;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromView:(id)arg2 toSpace:(id)arg3;
 - (struct CGRect)convertRectFromImage:(struct CGRect)arg1;
@@ -127,6 +131,8 @@
 - (void)layoutSubviews;
 - (id)_imageLayer;
 - (_Bool)isReady;
+- (void)zoomToRect:(struct CGRect)arg1 animated:(_Bool)arg2;
+- (void)setZoomScale:(double)arg1 animated:(_Bool)arg2;
 @property(nonatomic) double minimumZoomScale;
 @property(nonatomic) double maximumZoomScale;
 @property(nonatomic) double zoomScale;

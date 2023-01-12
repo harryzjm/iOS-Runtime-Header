@@ -16,8 +16,8 @@
 + (id)requiredEntitlements;
 + (id)taskIdentifier;
 - (void)remote_tearDownHealthSharingForProfile:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)remote_revokeAccessForAllShareParticipantsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)remote_fetchAllShareParticipantEmailAddressesWithCompletion:(CDUnknownBlockType)arg1;
+- (void)remote_revokeAccessForAllShareParticipantsForSharingType:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)remote_fetchAllShareParticipantEmailAddressesForSharingType:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_fetchSharingParticipantStatus:(CDUnknownBlockType)arg1;
 - (void)connectionInvalidated;
 - (id)exportedInterface;

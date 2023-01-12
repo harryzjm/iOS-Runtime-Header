@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <CoreSpeech/NSCopying-Protocol.h>
+
 @class CSAudioRecordContext;
 @protocol OS_xpc_object;
 
-@interface CSAudioStreamRequest : NSObject
+@interface CSAudioStreamRequest : NSObject <NSCopying>
 {
     _Bool _requiresHistoricalBuffer;
     _Bool _useCustomizedRecordSettings;
@@ -38,8 +40,11 @@
 @property(nonatomic) _Bool useCustomizedRecordSettings; // @synthesize useCustomizedRecordSettings=_useCustomizedRecordSettings;
 @property(nonatomic) _Bool requiresHistoricalBuffer; // @synthesize requiresHistoricalBuffer=_requiresHistoricalBuffer;
 @property(retain, nonatomic) CSAudioRecordContext *recordContext; // @synthesize recordContext=_recordContext;
+- (id)description;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) NSObject<OS_xpc_object> *xpcObject;
 - (id)initWithXPCObject:(id)arg1;
+- (id)initTandemWithRequest:(id)arg1;
 
 @end
 

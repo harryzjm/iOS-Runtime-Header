@@ -6,11 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class AVConferenceXPCClient;
+#import <AVConference/AVCStreamOutputDelegate-Protocol.h>
+
+@class AVCStreamOutput, AVConferenceXPCClient, NSString;
 @protocol AVCVideoDataOutputDelegate, OS_dispatch_queue;
 
-@interface AVCVideoDataOutput : NSObject
+@interface AVCVideoDataOutput : NSObject <AVCStreamOutputDelegate>
 {
+    AVCStreamOutput *_streamOutput;
     AVConferenceXPCClient *_connection;
     CDStruct_cc9cf49a _videoAttributes;
     id _delegate;
@@ -34,8 +37,21 @@
 @property(nonatomic) _Bool isValid; // @synthesize isValid=_isValid;
 @property(readonly, nonatomic) long long streamToken; // @synthesize streamToken=_streamToken;
 @property(nonatomic) id <AVCVideoDataOutputDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)streamOutput:(id)arg1 didSuspend:(_Bool)arg2;
+- (void)streamOutput:(id)arg1 didDegrade:(_Bool)arg2;
+- (void)streamOutput:(id)arg1 didStall:(_Bool)arg2;
+- (void)streamOutput:(id)arg1 didPause:(_Bool)arg2;
+- (void)streamOutputDidBecomeInvalid:(id)arg1;
+- (void)streamOutputServerDidDie:(id)arg1;
+- (void)streamOutput:(id)arg1 didReceiveSampleBuffer:(struct opaqueCMSampleBuffer *)arg2;
 - (void)dealloc;
 - (id)initWithStreamToken:(long long)arg1 delegate:(id)arg2 queue:(id)arg3 error:(id *)arg4;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

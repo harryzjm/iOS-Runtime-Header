@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PrivacySettingsUI/PUIPhotosPrivacyController.h>
+#import <PrivacySettingsUI/PUITCCAccessController.h>
 
 @class PSSpecifier;
 
 __attribute__((visibility("hidden")))
-@interface STAllowTCCRestrictionsController : PUIPhotosPrivacyController
+@interface STAllowTCCRestrictionsController : PUITCCAccessController
 {
     PSSpecifier *_allowedGroup;
 }

@@ -7,11 +7,8 @@
 #import <Foundation/NSDate.h>
 
 @interface NSDate (HKSPSleep)
-+ (id)hkspTestDSTEndDateWithHour:(unsigned long long)arg1 minute:(unsigned long long)arg2;
-+ (id)hkspTestDSTStartDateWithHour:(unsigned long long)arg1 minute:(unsigned long long)arg2;
-+ (id)hkspTestWeekendDateWithHour:(unsigned long long)arg1 minute:(unsigned long long)arg2;
-+ (id)hkspTestDateWithHour:(unsigned long long)arg1 minute:(unsigned long long)arg2;
-+ (id)hkspTestUTCDateWithHour:(unsigned long long)arg1 minute:(unsigned long long)arg2;
++ (id)hksp_earliestFromDates:(id)arg1;
++ (id)hksp_latestFromDates:(id)arg1;
 - (id)hksp_dateNearestMatchingComponents:(id)arg1;
 - (_Bool)hksp_isAfterOrSameAsDate:(id)arg1;
 - (_Bool)hksp_isAfterDate:(id)arg1;
@@ -19,6 +16,5 @@
 - (_Bool)hksp_isBeforeDate:(id)arg1;
 - (id)hkspDescription;
 - (id)hkspGreetingStringWithOptions:(unsigned long long)arg1;
-- (id)hkspAddDays:(long long)arg1;
 @end
 

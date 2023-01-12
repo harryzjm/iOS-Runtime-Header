@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class IKAppContext, NSDictionary;
+@class NSDictionary, VUIAppContext;
 
 __attribute__((visibility("hidden")))
 @interface VUIActionPromise
 {
     NSDictionary *_contextDataDictionary;
-    IKAppContext *_appContext;
+    VUIAppContext *_appContext;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) __weak IKAppContext *appContext; // @synthesize appContext=_appContext;
+@property(nonatomic) __weak VUIAppContext *appContext; // @synthesize appContext=_appContext;
 @property(readonly, nonatomic) NSDictionary *contextDataDictionary; // @synthesize contextDataDictionary=_contextDataDictionary;
 - (void)performWithTargetResponder:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithContextData:(id)arg1 appContext:(id)arg2;

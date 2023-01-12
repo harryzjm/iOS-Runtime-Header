@@ -54,9 +54,9 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
-- (void)saveToArchive:(struct ImportWarningSetArchive *)arg1;
+- (void)saveToArchive:(void *)arg1;
 - (int)TSTImportFormulaWarningTypeToArchive;
-- (id)initFromArchive:(const struct ImportWarningSetArchive *)arg1;
+- (id)initFromArchive:(const void *)arg1;
 - (long long)TSTImportFormulaWarningTypeFromArchive:(int)arg1;
 - (void)saveToPropertyCommandMessage:(struct Message *)arg1 archiver:(id)arg2;
 - (id)initFromPropertyCommandMessage:(const struct Message *)arg1 unarchiver:(id)arg2;

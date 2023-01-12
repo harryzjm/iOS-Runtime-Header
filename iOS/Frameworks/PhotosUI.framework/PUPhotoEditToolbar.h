@@ -8,7 +8,7 @@
 
 #import <PhotosUI/PUPhotoEditLayoutStaticAdaptable-Protocol.h>
 
-@class CAGradientLayer, NSArray, NSString, UIButton, UILongPressGestureRecognizer;
+@class CAGradientLayer, NSArray, NSString, PUPhotoEditViewControllerSpec, UIButton, UILongPressGestureRecognizer;
 @protocol PUPhotoEditToolbarDelegate;
 
 __attribute__((visibility("hidden")))
@@ -35,12 +35,14 @@ __attribute__((visibility("hidden")))
     long long _layoutDirection;
     double _longSideMargin;
     id <PUPhotoEditToolbarDelegate> _delegate;
+    PUPhotoEditViewControllerSpec *_photoEditSpec;
     UIView *_mainToolbarContainer;
     struct UIEdgeInsets _contentPadding;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIView *mainToolbarContainer; // @synthesize mainToolbarContainer=_mainToolbarContainer;
+@property(retain, nonatomic) PUPhotoEditViewControllerSpec *photoEditSpec; // @synthesize photoEditSpec=_photoEditSpec;
 @property(nonatomic) __weak id <PUPhotoEditToolbarDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) double longSideMargin; // @synthesize longSideMargin=_longSideMargin;
 @property(nonatomic) long long layoutDirection; // @synthesize layoutDirection=_layoutDirection;

@@ -41,6 +41,7 @@
 - (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
+- (_Bool)_settingsAreValidToMoveContentToNewScene;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -6,28 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class KGPerformChangesRequest, NSString;
-@protocol KGGraphStore, OS_dispatch_queue;
+@protocol KGGraphImplementation;
 
 @interface KGGraph : NSObject
 {
-    id <KGGraphStore> _store;
-    KGPerformChangesRequest *_request;
-    NSObject<OS_dispatch_queue> *_transactionQueue;
-    NSString *_name;
+    id <KGGraphImplementation> _implementation;
 }
 
-+ (id)graphForCurrentTransaction;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSString *name; // @synthesize name=_name;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *transactionQueue; // @synthesize transactionQueue=_transactionQueue;
-@property(retain, nonatomic) KGPerformChangesRequest *request; // @synthesize request=_request;
-@property(retain, nonatomic) id <KGGraphStore> store; // @synthesize store=_store;
-- (void)_cancelChanges:(CDUnknownBlockType)arg1;
-- (_Bool)_finalizeChanges:(id *)arg1;
-- (void)_prepareForChanges;
-- (void)performChanges:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (_Bool)performChangesAndWait:(CDUnknownBlockType)arg1 error:(id *)arg2;
+@property(readonly, nonatomic) id <KGGraphImplementation> implementation; // @synthesize implementation=_implementation;
 - (id)edgeLabels;
 - (id)nodeLabels;
 - (id)neighborNodeIdentifiersWithStartNodeIdentifiers:(id)arg1 edgeDirection:(unsigned long long)arg2 edgeFilter:(id)arg3;
@@ -35,6 +22,9 @@
 - (id)_edgeIdentifiersMatchingFilter:(id)arg1 intersectingIdentifiers:(id)arg2;
 - (id)edgeIdentifiersMatchingFilter:(id)arg1 intersectingIdentifiers:(id)arg2;
 - (id)edgeIdentifiersMatchingFilter:(id)arg1;
+- (id)sourcesByTargetWithEdgeIdentifiers:(id)arg1;
+- (id)targetsBySourceWithEdgeIdentifiers:(id)arg1;
+- (id)nodeIdentifiersOfEdgesForIdentifiers:(id)arg1 edgeDirection:(unsigned long long)arg2;
 - (id)_nodeIdentifiersMatchingFilter:(id)arg1 intersectingIdentifiers:(id)arg2;
 - (id)nodeIdentifiersMatchingFilter:(id)arg1 intersectingIdentifiers:(id)arg2;
 - (id)nodeIdentifiersMatchingFilter:(id)arg1;
@@ -42,9 +32,7 @@
 - (id)nodesForIdentifiers:(id)arg1;
 - (id)edgeForIdentifier:(unsigned long long)arg1;
 - (id)nodeForIdentifier:(unsigned long long)arg1;
-- (id)initializeSnapshotEdgeWithIdentifier:(unsigned long long)arg1 labels:(id)arg2 weight:(float)arg3 properties:(id)arg4 sourceNode:(id)arg5 targetNode:(id)arg6;
-- (id)initializeSnapshotNodeWithIdentifier:(unsigned long long)arg1 labels:(id)arg2 weight:(float)arg3 properties:(id)arg4;
-- (id)initGraphWithStore:(id)arg1;
+- (id)initWithImplementation:(id)arg1;
 
 @end
 

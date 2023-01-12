@@ -8,18 +8,19 @@
 
 #import <SpringBoard/PTSettingsKeyObserver-Protocol.h>
 
-@class BSUIEmojiLabelView, MTVisualStyling, NSArray, NSString, SBFluidSwitcherIconImageContainerView, SBFluidSwitcherItemContainerHeaderItem, UILabel;
+@class MTVisualStyling, NSArray, NSMutableArray, NSMutableDictionary, NSString, UITapGestureRecognizer;
+@protocol SBFluidSwitcherItemContainerHeaderViewDelegate;
 
 @interface SBFluidSwitcherItemContainerHeaderView : UIView <PTSettingsKeyObserver>
 {
-    SBFluidSwitcherItemContainerHeaderItem *_firstItem;
-    SBFluidSwitcherIconImageContainerView *_firstIconImageView;
-    UILabel *_firstTitleLabel;
-    BSUIEmojiLabelView *_firstSubtitleLabelView;
-    SBFluidSwitcherItemContainerHeaderItem *_secondItem;
-    SBFluidSwitcherIconImageContainerView *_secondIconImageView;
-    UILabel *_secondTitleLabel;
-    BSUIEmojiLabelView *_secondSubtitleLabelView;
+    NSMutableDictionary *_itemsToIconImageViews;
+    NSMutableArray *_iconImageViewReusePool;
+    NSMutableDictionary *_itemsToTitleLabels;
+    NSMutableArray *_titleLabelReusePool;
+    NSMutableDictionary *_itemsToSubtitleLabelViews;
+    NSMutableArray *_subtitleLabelReusePool;
+    NSMutableDictionary *_itemsToMultiWindowIndicatorViews;
+    NSMutableArray *_multiWindowIndicatorViewReusePool;
     long long _subtitleVisualStylingInterfaceStyle;
     MTVisualStyling *_subtitleVisualStyling;
     double _spacingBetweenLeadingEdgeAndIcon;
@@ -29,28 +30,35 @@
     double _spacingBetweenSnapshotAndDescriptionLabelBaseline;
     double _spacingBetweenTitleAndSubtitleBaseline;
     double _spacingBetweenIconAndLabel;
+    double _spacingBetweenLabelAndMultipleWindowsIndicator;
+    double _multipleWindowsIndicatorSideLength;
     double _spacingBetweenLabelAndSecondIcon;
     double _spacingBetweenBoundsCenterAndSecondIcon;
+    UITapGestureRecognizer *_tapGestureRecognizer;
+    id <SBFluidSwitcherItemContainerHeaderViewDelegate> _delegate;
     double _textAlpha;
-    NSArray *_headerItems;
+    NSArray *_titleItems;
 }
 
 + (double)distanceFromBoundingLeadingEdgeToIconTrailingEdge;
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSArray *headerItems; // @synthesize headerItems=_headerItems;
+@property(copy, nonatomic) NSArray *titleItems; // @synthesize titleItems=_titleItems;
 @property(nonatomic) double textAlpha; // @synthesize textAlpha=_textAlpha;
+@property(readonly, nonatomic) __weak id <SBFluidSwitcherItemContainerHeaderViewDelegate> delegate; // @synthesize delegate=_delegate;
+- (id)_makeMultipleWindowsIndicatorView;
 - (void)_updateTitleAlpha;
 - (id)_titleLabelFont;
 - (id)_subtitleLabelFont;
 - (void)_applyPrototypeSettings;
-- (void)_updateVisualStylingWithHeaderItems:(id)arg1;
+- (void)_updateVisualStylingWithTitleItems:(id)arg1;
+- (void)_handleTapGestureRecognizer:(id)arg1;
 - (void)_contentSizeCategoryDidChangeNotification:(id)arg1;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (void)layoutSubviews;
-- (void)setHeaderItems:(id)arg1 animated:(_Bool)arg2;
+- (void)setTitleItems:(id)arg1 animated:(_Bool)arg2;
 @property(readonly, nonatomic) double preferredHeaderHeight;
 - (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 delegate:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

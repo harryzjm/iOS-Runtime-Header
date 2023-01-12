@@ -113,6 +113,8 @@
 @property(retain, nonatomic) UIWindow *window;
 @property(nonatomic) unsigned long long tapCount;
 @property(nonatomic) long long phase;
+- (_Bool)_isFirstTouchForView;
+- (void)_setIsFirstTouchForView:(_Bool)arg1;
 - (unsigned int)_touchIdentifier;
 - (_Bool)_edgeForceActive;
 - (_Bool)_edgeForcePending;

@@ -15,22 +15,22 @@
     NSString *_string;
     NSDate *_date;
     TSCERegexMatcher *_matcher;
-    struct TSCEEvaluationContext *_evaluationContext;
+    void *_evaluationContext;
 }
 
-+ (id)logicalTestWithCriterion:(struct TSCEValue)arg1 functionSpec:(id)arg2 evaluationContext:(struct TSCEEvaluationContext *)arg3;
++ (id)logicalTestWithCriterion:(struct TSCEValue)arg1 functionSpec:(id)arg2 evaluationContext:(void *)arg3;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(nonatomic) struct TSCEEvaluationContext *evaluationContext; // @synthesize evaluationContext=_evaluationContext;
+@property(nonatomic) void *evaluationContext; // @synthesize evaluationContext=_evaluationContext;
 @property(retain, nonatomic) TSCERegexMatcher *matcher; // @synthesize matcher=_matcher;
 @property(retain, nonatomic) NSDate *date; // @synthesize date=_date;
 @property(retain, nonatomic) NSString *string; // @synthesize string=_string;
 - (unsigned long long)cost;
 - (_Bool)isEqual:(id)arg1;
-- (_Bool)compare:(struct TSCEValue)arg1 withContext:(struct TSCEEvaluationContext *)arg2;
+- (_Bool)compare:(struct TSCEValue)arg1 withContext:(void *)arg2;
 - (int)criteriaParser:(id)arg1;
 - (id)description;
-- (id)initWithCriterion:(struct TSCEValue)arg1 functionSpec:(id)arg2 evaluationContext:(struct TSCEEvaluationContext *)arg3;
+- (id)initWithCriterion:(struct TSCEValue)arg1 functionSpec:(id)arg2 evaluationContext:(void *)arg3;
 
 @end
 

@@ -41,8 +41,10 @@ __attribute__((visibility("hidden")))
     unsigned int is_direct:1;
     unsigned int has_ipv4:1;
     unsigned int has_ipv6:1;
+    unsigned int has_nat64:1;
     unsigned int ctl_command_valid:1;
     unsigned int defunct:1;
+    unsigned int is_custom_ip:1;
 }
 
 - (void).cxx_destruct;

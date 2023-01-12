@@ -16,8 +16,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)statisticsWithEngineMeta:(id)arg1;
-+ (long long)_countWithTokenString:(id)arg1;
++ (id)statisticsWithEngineMeta:(id)arg1 locale:(id)arg2;
++ (long long)_countWithTokenString:(id)arg1 countCharacters:(_Bool)arg2;
 @property(nonatomic) long long inputSubtokenCount; // @synthesize inputSubtokenCount=_inputSubtokenCount;
 @property(nonatomic) long long inputTokenCount; // @synthesize inputTokenCount=_inputTokenCount;
 - (id)copyWithZone:(struct _NSZone *)arg1;

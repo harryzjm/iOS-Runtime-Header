@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_f65efac6)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_f65efac6)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSArray *normalized_tokens;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithFlatbuffData:(id)arg1 root:(const struct NormalizedTokenVariant *)arg2 verify:(_Bool)arg3;

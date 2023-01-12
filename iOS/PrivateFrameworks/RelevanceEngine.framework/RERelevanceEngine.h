@@ -63,6 +63,7 @@
 - (void)_queue_resumeSubsystem:(id)arg1;
 - (void)pause;
 - (void)resume;
+- (void)updateSectionsWithIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)resumeWithTimeout:(double)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_queue_resumeWithTimeout:(double)arg1 completion:(CDUnknownBlockType)arg2;
 @property(readonly, getter=isRunning) _Bool running;

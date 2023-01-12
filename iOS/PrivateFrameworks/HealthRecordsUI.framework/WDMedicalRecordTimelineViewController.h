@@ -6,21 +6,21 @@
 
 #import <HealthUI/HKTableViewController.h>
 
+#import <HealthRecordsUI/HKClinicalAccountStoreStateChangeListener-Protocol.h>
 #import <HealthRecordsUI/HKCloudSyncObserverDelegate-Protocol.h>
 #import <HealthRecordsUI/HKConceptStoreObserver-Protocol.h>
-#import <HealthRecordsUI/HKHealthRecordsStoreAccountStateChangeListener-Protocol.h>
 #import <HealthRecordsUI/HKHealthRecordsStoreIngestionStateListener-Protocol.h>
+#import <HealthRecordsUI/HKInteractiveChartViewObserver-Protocol.h>
 #import <HealthRecordsUI/HRConceptTitleTableHeaderViewDelegate-Protocol.h>
 #import <HealthRecordsUI/HRTimelineHeaderViewDelegate-Protocol.h>
 #import <HealthRecordsUI/UISearchControllerDelegate-Protocol.h>
 #import <HealthRecordsUI/UISearchResultsUpdating-Protocol.h>
 #import <HealthRecordsUI/_TtP15HealthRecordsUI36FilterSettingsViewControllerDelegate_-Protocol.h>
 
-@class HKClinicalAccount, HKCloudSyncObserver, HKConcept, HKConceptIdentifier, HKViewTableViewCell, HRContentStatusCell, HRContentStatusView, HROverlayRoomViewController, HRProfile, NSArray, NSHashTable, NSPredicate, NSSet, NSString, NSTimer, NSUUID, UIButton, UISearchController, WDMedicalRecordCategory, WDMedicalRecordDisplayItemProvider, WDMedicalRecordStandaloneCell;
+@class HKClinicalAccount, HKClinicalAccountStore, HKCloudSyncObserver, HKConcept, HKConceptIdentifier, HKMedicalUserDomainConcept, HKViewTableViewCell, HRContentStatusCell, HRContentStatusView, HROverlayRoomViewController, HRProfile, NSArray, NSDictionary, NSHashTable, NSPredicate, NSSet, NSString, NSTimer, NSUUID, UIButton, UISearchController, WDMedicalRecordCategory, WDMedicalRecordDisplayItemProvider, WDMedicalRecordStandaloneCell;
 @protocol HRRecordViewControllerFactory;
 
-__attribute__((visibility("hidden")))
-@interface WDMedicalRecordTimelineViewController : HKTableViewController <UISearchControllerDelegate, UISearchResultsUpdating, _TtP15HealthRecordsUI36FilterSettingsViewControllerDelegate_, HKHealthRecordsStoreIngestionStateListener, HKHealthRecordsStoreAccountStateChangeListener, HKConceptStoreObserver, HKCloudSyncObserverDelegate, HRTimelineHeaderViewDelegate, HRConceptTitleTableHeaderViewDelegate>
+@interface WDMedicalRecordTimelineViewController : HKTableViewController <UISearchControllerDelegate, UISearchResultsUpdating, _TtP15HealthRecordsUI36FilterSettingsViewControllerDelegate_, HKHealthRecordsStoreIngestionStateListener, HKClinicalAccountStoreStateChangeListener, HKConceptStoreObserver, HKCloudSyncObserverDelegate, HRTimelineHeaderViewDelegate, HRConceptTitleTableHeaderViewDelegate, HKInteractiveChartViewObserver>
 {
     _Bool _loadingNextPage;
     _Bool _showSearchBar;
@@ -29,11 +29,15 @@ __attribute__((visibility("hidden")))
     _Bool _queryReturned;
     _Bool _chartabilityDetermined;
     _Bool _cloudSyncActive;
+    _Bool _chartLoaded;
     WDMedicalRecordDisplayItemProvider *_displayItemProvider;
+    NSString *_overrideTitle;
     HRProfile *_profile;
     id <HRRecordViewControllerFactory> _factory;
+    HKClinicalAccountStore *_clinicalAccountStore;
     NSPredicate *_accountPredicate;
     NSPredicate *_searchPredicate;
+    NSDictionary *_additionalPredicatePerSampleType;
     NSUUID *_accountId;
     HKClinicalAccount *_account;
     WDMedicalRecordCategory *_category;
@@ -41,6 +45,7 @@ __attribute__((visibility("hidden")))
     NSSet *_accounts;
     HKConceptIdentifier *_conceptIdentifier;
     HKConcept *_concept;
+    HKMedicalUserDomainConcept *_userDomainConcept;
     NSUUID *_highlightedRecordId;
     NSArray *_preloadedRecords;
     id _medicalRecordSearchController;
@@ -60,6 +65,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool chartLoaded; // @synthesize chartLoaded=_chartLoaded;
 @property(retain, nonatomic) NSHashTable *floatingSectionHeaders; // @synthesize floatingSectionHeaders=_floatingSectionHeaders;
 @property(nonatomic) _Bool cloudSyncActive; // @synthesize cloudSyncActive=_cloudSyncActive;
 @property(retain, nonatomic) HKCloudSyncObserver *cloudSyncObserver; // @synthesize cloudSyncObserver=_cloudSyncObserver;
@@ -83,6 +89,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool loadingNextPage; // @synthesize loadingNextPage=_loadingNextPage;
 @property(copy, nonatomic) NSArray *preloadedRecords; // @synthesize preloadedRecords=_preloadedRecords;
 @property(retain, nonatomic) NSUUID *highlightedRecordId; // @synthesize highlightedRecordId=_highlightedRecordId;
+@property(retain, nonatomic) HKMedicalUserDomainConcept *userDomainConcept; // @synthesize userDomainConcept=_userDomainConcept;
 @property(retain, nonatomic) HKConcept *concept; // @synthesize concept=_concept;
 @property(copy, nonatomic) HKConceptIdentifier *conceptIdentifier; // @synthesize conceptIdentifier=_conceptIdentifier;
 @property(retain, nonatomic) NSSet *accounts; // @synthesize accounts=_accounts;
@@ -90,15 +97,19 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) WDMedicalRecordCategory *category; // @synthesize category=_category;
 @property(retain, nonatomic) HKClinicalAccount *account; // @synthesize account=_account;
 @property(retain, nonatomic) NSUUID *accountId; // @synthesize accountId=_accountId;
+@property(retain, nonatomic) NSDictionary *additionalPredicatePerSampleType; // @synthesize additionalPredicatePerSampleType=_additionalPredicatePerSampleType;
 @property(retain, nonatomic) NSPredicate *searchPredicate; // @synthesize searchPredicate=_searchPredicate;
 @property(retain, nonatomic) NSPredicate *accountPredicate; // @synthesize accountPredicate=_accountPredicate;
+@property(retain, nonatomic) HKClinicalAccountStore *clinicalAccountStore; // @synthesize clinicalAccountStore=_clinicalAccountStore;
 @property(retain, nonatomic) id <HRRecordViewControllerFactory> factory; // @synthesize factory=_factory;
 @property(retain, nonatomic) HRProfile *profile; // @synthesize profile=_profile;
+@property(copy, nonatomic) NSString *overrideTitle; // @synthesize overrideTitle=_overrideTitle;
 @property(retain, nonatomic) WDMedicalRecordDisplayItemProvider *displayItemProvider; // @synthesize displayItemProvider=_displayItemProvider;
-- (void)trackInteractionOfType:(long long)arg1;
-- (void)trackImpression;
-- (long long)userInteractionContext;
-- (long long)userInteractionType;
+- (void)configureDisplayTypes:(id)arg1 timeScope:(long long)arg2 stackOffset:(long long)arg3;
+- (void)didUpdateSeriesWithNewValueRange:(id)arg1;
+- (void)didUpdateVisibleValueRange:(id)arg1 changeContext:(long long)arg2;
+- (void)trackInteractionOfType:(long long)arg1 context:(long long)arg2;
+- (long long)userInteractionContextForType:(long long)arg1 timelineSection:(long long)arg2;
 - (void)titleTableHeaderViewDidTapActionButton:(id)arg1;
 - (void)filterSettingsViewControllerWithDidSelectCategories:(id)arg1 accounts:(id)arg2;
 - (void)_updateFilterButtonImage;
@@ -137,7 +148,7 @@ __attribute__((visibility("hidden")))
 - (void)cloudSyncObserver:(id)arg1 syncDidStartWithProgress:(id)arg2;
 - (void)cloudSyncObserverStatusUpdated:(id)arg1 status:(id)arg2;
 - (void)conceptStore:(id)arg1 indexManagerDidChangeState:(unsigned long long)arg2;
-- (void)healthRecordsStore:(id)arg1 accountDidChange:(id)arg2 changeType:(long long)arg3;
+- (void)clinicalAccountStore:(id)arg1 accountDidChange:(id)arg2 changeType:(long long)arg3;
 - (void)healthRecordsStore:(id)arg1 ingestionStateDidUpdateTo:(long long)arg2;
 - (void)_updateSystemStatusViewAfterDelay:(_Bool)arg1;
 - (void)_updateSystemStatusView;
@@ -167,15 +178,16 @@ __attribute__((visibility("hidden")))
 - (void)_reloadDataWithDelay:(double)arg1;
 - (void)_tapToRadar:(id)arg1;
 - (void)_configureBarButtonItems;
-- (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)dealloc;
 - (id)initWithProfile:(id)arg1 factory:(id)arg2 preloadedRecords:(id)arg3;
+- (id)initWithProfile:(id)arg1 factory:(id)arg2 userDomainConcept:(id)arg3 category:(id)arg4 highlightedRecordId:(id)arg5;
 - (id)initWithProfile:(id)arg1 factory:(id)arg2 concept:(id)arg3 category:(id)arg4 highlightedRecordId:(id)arg5;
 - (id)initWithProfile:(id)arg1 factory:(id)arg2 conceptIdentifier:(id)arg3 category:(id)arg4 highlightedRecordId:(id)arg5;
+- (id)initWithProfile:(id)arg1 factory:(id)arg2 category:(id)arg3 showInitialSearchBar:(_Bool)arg4 predicatePerSampleType:(id)arg5;
 - (id)initWithProfile:(id)arg1 factory:(id)arg2 category:(id)arg3 showInitialSearchBar:(_Bool)arg4;
 - (id)initWithProfile:(id)arg1 factory:(id)arg2 accountId:(id)arg3 showInitialSearchBar:(_Bool)arg4 enableReconnect:(_Bool)arg5;
 - (id)initWithProfile:(id)arg1 factory:(id)arg2 account:(id)arg3 showInitialSearchBar:(_Bool)arg4 enableReconnect:(_Bool)arg5;

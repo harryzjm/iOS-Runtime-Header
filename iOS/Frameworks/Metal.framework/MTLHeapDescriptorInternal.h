@@ -11,6 +11,8 @@ __attribute__((visibility("hidden")))
 }
 
 - (_Bool)validateWithDevice:(id)arg1;
+- (unsigned long long)pinnedGPUAddress;
+- (void)setPinnedGPUAddress:(unsigned long long)arg1;
 - (void)setResourceOptions:(unsigned long long)arg1;
 - (unsigned long long)resourceOptions;
 - (void)setHazardTrackingMode:(unsigned long long)arg1;

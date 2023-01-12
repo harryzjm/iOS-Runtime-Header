@@ -8,7 +8,7 @@
 
 #import <Pegasus/PGPlaybackStateDiffConsumer-Protocol.h>
 
-@class NSString, PGControlsViewModelValues, PGPlaybackState;
+@class NSString, PGControlsViewModelValues, PGPlaybackState, UIImage;
 @protocol PGControlsViewModelDelegate;
 
 @interface PGControlsViewModel : NSObject <PGPlaybackStateDiffConsumer>
@@ -16,21 +16,24 @@
     double _lastKnownElapsedTime;
     _Bool _hasBegun;
     _Bool _interrupted;
-    _Bool _preventsRestoreAndCancelActions;
+    _Bool _inActivitySession;
     id <PGControlsViewModelDelegate> _delegate;
     PGPlaybackState *_playbackState;
+    NSString *_screenSharingTitle;
+    UIImage *_screenSharingAvatar;
     PGControlsViewModelValues *_values;
 }
 
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) PGControlsViewModelValues *values; // @synthesize values=_values;
-@property(nonatomic) _Bool preventsRestoreAndCancelActions; // @synthesize preventsRestoreAndCancelActions=_preventsRestoreAndCancelActions;
+@property(retain, nonatomic) UIImage *screenSharingAvatar; // @synthesize screenSharingAvatar=_screenSharingAvatar;
+@property(copy, nonatomic) NSString *screenSharingTitle; // @synthesize screenSharingTitle=_screenSharingTitle;
+@property(nonatomic, getter=isInActivitySession) _Bool inActivitySession; // @synthesize inActivitySession=_inActivitySession;
 @property(nonatomic, getter=isInterrupted) _Bool interrupted; // @synthesize interrupted=_interrupted;
 @property(readonly, copy, nonatomic) PGPlaybackState *playbackState; // @synthesize playbackState=_playbackState;
 @property(nonatomic) __weak id <PGControlsViewModelDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_updateViewModelValues;
 @property(readonly, nonatomic) double preferredMinimumWidth;
-@property(readonly, nonatomic) _Bool stashEventsShouldBeginAndEndInterruptions;
 @property(readonly, nonatomic) _Bool isPrerollSkippable;
 @property(readonly, nonatomic) long long secondsUntilPrerollSkippable;
 - (void)handleSkipPrerollButtonTapped;

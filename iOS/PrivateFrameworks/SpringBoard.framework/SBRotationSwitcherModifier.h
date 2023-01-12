@@ -4,15 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class SBAppLayout;
+
 @interface SBRotationSwitcherModifier
 {
+    SBAppLayout *_appLayout;
+    long long _fromInterfaceOrientation;
+    long long _toInterfaceOrientation;
 }
 
-- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) long long toInterfaceOrientation; // @synthesize toInterfaceOrientation=_toInterfaceOrientation;
+@property(readonly, nonatomic) long long fromInterfaceOrientation; // @synthesize fromInterfaceOrientation=_fromInterfaceOrientation;
+@property(readonly, nonatomic) SBAppLayout *appLayout; // @synthesize appLayout=_appLayout;
+- (struct SBSwitcherAsyncRenderingAttributes)asyncRenderingAttributesForAppLayout:(id)arg1;
 - (id)keyboardSuppressionMode;
 - (id)appLayoutsToResignActive;
+- (_Bool)shouldUseAnchorPointToPinLayoutRolesToSpace:(unsigned long long)arg1;
 - (_Bool)shouldPerformRotationAnimationForOrientationChange;
+- (double)rotationAngleForIndex:(unsigned long long)arg1;
 - (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)transitionWillBegin;
+- (id)initWithTransitionID:(id)arg1 appLayout:(id)arg2 fromInterfaceOrientation:(long long)arg3 toInterfaceOrientation:(long long)arg4;
 
 @end
 

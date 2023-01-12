@@ -17,9 +17,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool didRemoveAllObjects; // @synthesize didRemoveAllObjects=_didRemoveAllObjects;
-@property(nonatomic) long long cacheScope; // @synthesize cacheScope=_cacheScope;
-@property(retain, nonatomic) NSMutableDictionary *cache; // @synthesize cache=_cache;
 - (id)init;
 
 @end

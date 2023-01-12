@@ -32,7 +32,7 @@
 @property(copy, nonatomic) NSString *overrideRoutingContextUID; // @synthesize overrideRoutingContextUID=_overrideRoutingContextUID;
 @property(nonatomic) long long routePickerButtonStyle; // @synthesize routePickerButtonStyle=_routePickerButtonStyle;
 @property(nonatomic) __weak id <AVRoutePickerViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (struct CGRect)_normalizedRectInWindow;
+- (struct CGRect)_normalizedRect:(struct CGRect)arg1 fromView:(id)arg2;
 - (id)_defaultActiveTintColor;
 - (_Bool)_isAirPlayActive;
 - (void)_setupOutputContext;
@@ -44,6 +44,7 @@
 - (void)_routePickerButtonTouchDown:(id)arg1;
 - (void)_routePickerButtonTapped:(id)arg1;
 - (void)_createOrUpdateRoutePickerButton;
+- (void)presentRoutePicker:(id)arg1;
 @property(nonatomic) _Bool prioritizesVideoDevices;
 - (void)updateButtonAppearance;
 - (void)setCustomButton:(id)arg1;

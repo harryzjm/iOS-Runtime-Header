@@ -30,7 +30,6 @@
 @property(readonly, retain, nonatomic) NSArray *connectionButtons; // @synthesize connectionButtons=_connectionButtons;
 @property(retain, nonatomic) UIButton *otherButton; // @synthesize otherButton=_otherButton;
 @property(retain, nonatomic) UIButton *cancelButton; // @synthesize cancelButton=_cancelButton;
-- (void)dealloc;
 - (void)layout;
 @property(readonly, nonatomic) UIFont *messageFont; // @dynamic messageFont;
 @property(readonly, nonatomic) UIFont *titleFont; // @dynamic titleFont;
@@ -49,6 +48,7 @@
 @property(nonatomic) NSString *title; // @dynamic title;
 @property(nonatomic) UIImage *icon; // @dynamic icon;
 - (void)setConnectionButtonTypes:(unsigned long long)arg1;
+- (void)dealloc;
 - (id)initWithTitle:(id)arg1 message:(id)arg2 icon:(id)arg3 cancelButtonTitle:(id)arg4 otherButtonTitle:(id)arg5;
 
 @end

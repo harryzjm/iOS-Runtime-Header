@@ -31,6 +31,7 @@
 @property(retain, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(nonatomic) __weak id <TUMomentsControllerDataSourceDelegate> delegate; // @synthesize delegate=_delegate;
+- (oneway void)requestSandboxExtensionForURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (oneway void)didReceiveLocallyRequestedMomentDescriptor:(id)arg1;
 - (oneway void)willCaptureRemoteRequestFromRequesterID:(id)arg1;
 - (oneway void)didUpdateCapabilities:(id)arg1 forVideoStreamToken:(long long)arg2;
@@ -44,6 +45,9 @@
 - (void)registerStreamToken:(long long)arg1 requesterID:(id)arg2 remoteIDSDestinations:(id)arg3 remoteMomentsAvailable:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)dealloc;
 - (id)init;
+@property(readonly, copy, nonatomic) NSString *processName;
+- (id)processBundleIdentifier;
+@property(readonly, nonatomic) int processIdentifier;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -10,6 +10,7 @@
 @protocol CHStrokeIdentifier;
 
 @protocol CHStroke <NSObject>
+@property(readonly, nonatomic) _Bool isFinished;
 @property(readonly, nonatomic) double endTimestamp;
 @property(readonly, nonatomic) double startTimestamp;
 @property(readonly, nonatomic) unsigned long long strokeAttributes;

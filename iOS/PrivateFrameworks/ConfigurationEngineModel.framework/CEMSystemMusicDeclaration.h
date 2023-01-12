@@ -14,17 +14,19 @@
     NSNumber *_payloadAllowRadioService;
     NSNumber *_payloadAllowMusicArtistActivity;
     NSNumber *_payloadAllowMusicVideos;
+    NSNumber *_payloadAllowSharedLibraries;
 }
 
-+ (id)buildWithIdentifier:(id)arg1 withAllowMusicService:(id)arg2 withAllowRadioService:(id)arg3 withAllowMusicArtistActivity:(id)arg4;
-+ (id)buildRequiredOnlyWithIdentifier:(id)arg1;
 + (id)buildWithIdentifier:(id)arg1 withAllowMusicService:(id)arg2 withAllowRadioService:(id)arg3 withAllowMusicArtistActivity:(id)arg4 withAllowMusicVideos:(id)arg5;
++ (id)buildRequiredOnlyWithIdentifier:(id)arg1;
++ (id)buildWithIdentifier:(id)arg1 withAllowMusicService:(id)arg2 withAllowRadioService:(id)arg3 withAllowMusicArtistActivity:(id)arg4 withAllowMusicVideos:(id)arg5 withAllowSharedLibraries:(id)arg6;
 + (id)restrictionPayloadKeys;
 + (id)allowedPayloadKeys;
 + (id)profileType;
 + (id)registeredIdentifier;
 + (id)registeredClassName;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSNumber *payloadAllowSharedLibraries; // @synthesize payloadAllowSharedLibraries=_payloadAllowSharedLibraries;
 @property(copy, nonatomic) NSNumber *payloadAllowMusicVideos; // @synthesize payloadAllowMusicVideos=_payloadAllowMusicVideos;
 @property(copy, nonatomic) NSNumber *payloadAllowMusicArtistActivity; // @synthesize payloadAllowMusicArtistActivity=_payloadAllowMusicArtistActivity;
 @property(copy, nonatomic) NSNumber *payloadAllowRadioService; // @synthesize payloadAllowRadioService=_payloadAllowRadioService;

@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 @interface GEOLocalizedAttribution : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
+    NSString *_captionDisplayString;
     NSString *_displayName;
     NSString *_language;
     NSMutableArray *_logoURLs;
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
     struct {
+        unsigned int read_captionDisplayString:1;
         unsigned int read_displayName:1;
         unsigned int read_language:1;
         unsigned int read_logoURLs:1;
@@ -30,37 +32,15 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
-+ (Class)snippetLogoURLsType;
-+ (Class)logoURLsType;
 - (void).cxx_destruct;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (id)snippetLogoURLsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)snippetLogoURLsCount;
-- (void)addSnippetLogoURLs:(id)arg1;
-- (void)clearSnippetLogoURLs;
-@property(retain, nonatomic) NSMutableArray *snippetLogoURLs;
-- (id)logoURLsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)logoURLsCount;
-- (void)addLogoURLs:(id)arg1;
-- (void)clearLogoURLs;
-@property(retain, nonatomic) NSMutableArray *logoURLs;
-@property(retain, nonatomic) NSString *displayName;
-@property(readonly, nonatomic) _Bool hasDisplayName;
-@property(retain, nonatomic) NSString *language;
-@property(readonly, nonatomic) _Bool hasLanguage;
 - (id)initWithData:(id)arg1;
 - (id)init;
 - (id)bestURLForLogos:(id)arg1 scale:(double)arg2;

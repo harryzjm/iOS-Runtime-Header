@@ -9,37 +9,51 @@
 #import <CoreLocation/NSCopying-Protocol.h>
 #import <CoreLocation/NSSecureCoding-Protocol.h>
 
-@class CLRegionInternal, NSString;
+@class NSString, NSUUID;
 
 @interface CLRegion : NSObject <NSCopying, NSSecureCoding>
 {
-    CLRegionInternal *_internal;
+    _Bool _notifyOnEntry;
+    _Bool _notifyOnExit;
+    _Bool _conservativeEntry;
+    _Bool _emergency;
+    int _referenceFrame;
+    int _type;
+    double _radius;
+    NSString *_identifier;
+    NSUUID *_deviceId;
+    NSString *_handoffTag;
+    NSString *_onBehalfOfBundleId;
+    struct CLLocationCoordinate2D _center;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic) _Bool emergency;
-@property(nonatomic) _Bool conservativeEntry;
-@property(readonly, nonatomic) CDStruct_739493b2 clientRegion;
-- (_Bool)containsCoordinate:(struct CLLocationCoordinate2D)arg1;
-@property(nonatomic) _Bool notifyOnExit;
-@property(nonatomic) _Bool notifyOnEntry;
-@property(copy, nonatomic) NSString *onBehalfOfBundleId;
-@property(nonatomic) int referenceFrame;
-@property(readonly, copy, nonatomic) NSString *identifier;
-@property(readonly, nonatomic) double radius;
-@property(readonly, nonatomic) struct CLLocationCoordinate2D center;
+@property int type; // @synthesize type=_type;
+@property _Bool emergency; // @synthesize emergency=_emergency;
+@property int referenceFrame; // @synthesize referenceFrame=_referenceFrame;
+@property _Bool conservativeEntry; // @synthesize conservativeEntry=_conservativeEntry;
+@property(copy, nonatomic) NSString *onBehalfOfBundleId; // @synthesize onBehalfOfBundleId=_onBehalfOfBundleId;
+@property(readonly, copy, nonatomic) NSString *handoffTag; // @synthesize handoffTag=_handoffTag;
+@property(readonly, copy, nonatomic) NSUUID *deviceId; // @synthesize deviceId=_deviceId;
+@property _Bool notifyOnExit; // @synthesize notifyOnExit=_notifyOnExit;
+@property _Bool notifyOnEntry; // @synthesize notifyOnEntry=_notifyOnEntry;
+@property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(readonly) double radius; // @synthesize radius=_radius;
+@property(readonly) struct CLLocationCoordinate2D center; // @synthesize center=_center;
 - (id)description;
+- (_Bool)containsCoordinate:(struct CLLocationCoordinate2D)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)_encodeWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)_initWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
+- (id)initWithIdentifier:(id)arg1 onBehalfOf:(id)arg2 regionType:(int)arg3 notifyOnEntry:(_Bool)arg4 notifyOnExit:(_Bool)arg5 conservativeEntry:(_Bool)arg6 emergency:(_Bool)arg7 deviceId:(id)arg8 handoffTag:(id)arg9;
+- (id)initWithIdentifier:(id)arg1 onBehalfOf:(id)arg2 regionType:(int)arg3 notifyOnEntry:(_Bool)arg4 notifyOnExit:(_Bool)arg5 conservativeEntry:(_Bool)arg6 emergency:(_Bool)arg7;
+- (id)initWithIdentifier:(id)arg1 andRegionType:(int)arg2;
 - (id)initWithIdentifier:(id)arg1;
 - (id)initCircularRegionWithCenter:(struct CLLocationCoordinate2D)arg1 radius:(double)arg2 identifier:(id)arg3;
-- (id)initWithClientRegion:(CDStruct_739493b2)arg1;
+- (id)initWithClientRegion:(CDStruct_9fcfe784)arg1;
 
 @end
 

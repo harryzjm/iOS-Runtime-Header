@@ -30,7 +30,7 @@
 @property(retain) NSArray *descriptors; // @synthesize descriptors=_descriptors;
 @property(retain) NSData *value; // @synthesize value=_value;
 @property(nonatomic) unsigned long long properties; // @synthesize properties=_properties;
-@property(nonatomic) CBService *service; // @synthesize service=_service;
+@property(nonatomic) __weak CBService *service; // @synthesize service=_service;
 - (id)handleDescriptorsDiscovered:(id)arg1;
 - (id)handleValueNotifying:(id)arg1;
 - (id)handleValueBroadcasted:(id)arg1;

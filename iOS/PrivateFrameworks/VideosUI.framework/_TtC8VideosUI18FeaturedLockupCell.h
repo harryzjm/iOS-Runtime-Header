@@ -10,11 +10,14 @@ __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI18FeaturedLockupCell
 {
     MISSING_TYPE *featuredLockupCellLayout;
+    MISSING_TYPE *previousSize;
+    MISSING_TYPE *imageViewModel;
 }
 
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (struct CGSize)vui_layoutSubviews:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
 
 @end
 

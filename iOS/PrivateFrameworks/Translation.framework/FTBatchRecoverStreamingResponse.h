@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_1fba3b8e)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_1fba3b8e)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) FTBatchRecoverFinalResponse *contentAsFTBatchRecoverFinalResponse;
 @property(readonly, nonatomic) FTPronGuessResponse *contentAsFTPronGuessResponse;
 @property(readonly, nonatomic) long long content_type;

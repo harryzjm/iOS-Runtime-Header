@@ -16,38 +16,39 @@
 @interface STStatusDomainPublisherXPCServerHandle : NSObject <STStatusDomainPublisherXPCClient, BSDescriptionProviding, STStatusDomainPublisherServerHandle>
 {
     BSMutableIntegerMap *_dataByDomain;
-    BSMutableIntegerMap *_hasSentDataByDomain;
     BSMutableIntegerMap *_dataMutationCompletionsByDomain;
     BSMutableIntegerMap *_volatileDataByDomain;
-    BSMutableIntegerMap *_hasSentVolatileDataByDomain;
     BSMutableIntegerMap *_volatileDataMutationCompletionsByDomain;
     BSMutableIntegerMap *_publisherClientsByDomain;
+    BSMutableIntegerMap *_fallbackDataByDomain;
     NSObject<OS_dispatch_queue> *_internalQueue;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSXPCConnection *_serverXPCConnection;
+    CDUnknownBlockType _xpcConnectionProvider;
 }
 
-+ (id)sharedInstance;
++ (id)sharedMachServiceServerHandle;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) CDUnknownBlockType xpcConnectionProvider; // @synthesize xpcConnectionProvider=_xpcConnectionProvider;
 @property(retain, nonatomic) NSXPCConnection *serverXPCConnection; // @synthesize serverXPCConnection=_serverXPCConnection;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
+@property(readonly, copy, nonatomic) BSMutableIntegerMap *fallbackDataByDomain; // @synthesize fallbackDataByDomain=_fallbackDataByDomain;
 @property(readonly, copy, nonatomic) BSMutableIntegerMap *publisherClientsByDomain; // @synthesize publisherClientsByDomain=_publisherClientsByDomain;
 @property(readonly, copy, nonatomic) BSMutableIntegerMap *volatileDataMutationCompletionsByDomain; // @synthesize volatileDataMutationCompletionsByDomain=_volatileDataMutationCompletionsByDomain;
-@property(readonly, copy, nonatomic) BSMutableIntegerMap *hasSentVolatileDataByDomain; // @synthesize hasSentVolatileDataByDomain=_hasSentVolatileDataByDomain;
 @property(readonly, copy, nonatomic) BSMutableIntegerMap *volatileDataByDomain; // @synthesize volatileDataByDomain=_volatileDataByDomain;
 @property(readonly, copy, nonatomic) BSMutableIntegerMap *dataMutationCompletionsByDomain; // @synthesize dataMutationCompletionsByDomain=_dataMutationCompletionsByDomain;
-@property(readonly, copy, nonatomic) BSMutableIntegerMap *hasSentDataByDomain; // @synthesize hasSentDataByDomain=_hasSentDataByDomain;
 @property(readonly, copy, nonatomic) BSMutableIntegerMap *dataByDomain; // @synthesize dataByDomain=_dataByDomain;
 - (void)_tearDownXPCConnection;
 - (void)_internalQueue_reregisterForPublishingDomains;
 - (void)_resendData;
 - (void)_internalQueue_setupXPCConnectionIfNecessary;
-- (id)_internalQueue_volatileDataForDomain:(unsigned long long)arg1;
-- (id)_internalQueue_dataForDomain:(unsigned long long)arg1;
-- (void)_internalQueue_publishData:(id)arg1 forDomain:(unsigned long long)arg2 discardingOnExit:(_Bool)arg3 dataSendBlock:(CDUnknownBlockType)arg4 diffSendBlock:(CDUnknownBlockType)arg5 completion:(CDUnknownBlockType)arg6;
-- (void)_internalQueue_publishDiffToServer:(id)arg1 forDomain:(unsigned long long)arg2 discardingOnExit:(_Bool)arg3 reply:(CDUnknownBlockType)arg4;
+- (id)_internalQueue_volatileDataForDomain:(unsigned long long)arg1 usingFallbackIfNecessary:(_Bool)arg2;
+- (id)_internalQueue_dataForDomain:(unsigned long long)arg1 usingFallbackIfNecessary:(_Bool)arg2;
+- (void)_internalQueue_mutateDataForDomain:(unsigned long long)arg1 discardingOnExit:(_Bool)arg2 wrappingCompletion:(CDUnknownBlockType)arg3 usingBlock:(CDUnknownBlockType)arg4;
+- (void)_internalQueue_publishDiffToServer:(id)arg1 forDomain:(unsigned long long)arg2 replacingData:(_Bool)arg3 discardingOnExit:(_Bool)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)_internalQueue_publishDataToServer:(id)arg1 forDomain:(unsigned long long)arg2 discardingOnExit:(_Bool)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)_internalQueue_publishDiff:(id)arg1 forDomain:(unsigned long long)arg2 discardingOnExit:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_internalQueue_publishData:(id)arg1 forDomain:(unsigned long long)arg2 discardingOnExit:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
@@ -55,14 +56,15 @@
 - (id)succinctDescription;
 @property(readonly, copy) NSString *description;
 - (void)handleUserInteraction:(id)arg1 forDomain:(unsigned long long)arg2;
-- (void)updateVolatileDataForPublisherClient:(id)arg1 domain:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3 fallbackDataProvider:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)updateDataForPublisherClient:(id)arg1 domain:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3 fallbackDataProvider:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)updateVolatileDataForPublisherClient:(id)arg1 domain:(unsigned long long)arg2 usingDiffProvider:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)updateDataForPublisherClient:(id)arg1 domain:(unsigned long long)arg2 usingDiffProvider:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)publishVolatileData:(id)arg1 forPublisherClient:(id)arg2 domain:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)publishData:(id)arg1 forPublisherClient:(id)arg2 domain:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)removePublisherClient:(id)arg1 forDomain:(unsigned long long)arg2;
-- (void)registerPublisherClient:(id)arg1 forDomain:(unsigned long long)arg2;
+- (void)registerPublisherClient:(id)arg1 forDomain:(unsigned long long)arg2 fallbackData:(id)arg3;
 - (id)publishedVolatileDataForDomain:(unsigned long long)arg1;
 - (id)publishedDataForDomain:(unsigned long long)arg1;
+- (id)initWithXPCConnectionProvider:(CDUnknownBlockType)arg1;
 - (id)init;
 
 // Remaining properties

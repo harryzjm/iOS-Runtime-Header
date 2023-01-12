@@ -24,6 +24,9 @@
     _Bool _supportsInboxAvailability;
     _Bool _supportsPrivateEvents;
     _Bool _supportsSubscriptionCalendars;
+    _Bool _supportsManagedSubscriptionCalendars;
+    _Bool _supportsSubscriptionMirroring;
+    _Bool _supportsParticipantRoles;
     _Bool _supportsPrincipalPropertySearch;
     _Bool _supportsExtendedCalendarQuery;
     _Bool _supportsRequestCompression;
@@ -36,6 +39,7 @@
     _Bool _alwaysSupportsFreebusyOnOutbox;
     _Bool _supportsCalendarAudit;
     _Bool _supportsTelephone;
+    _Bool _expandPropertyReportIsUnreliable;
     double _version;
     NSString *_supportedCalendarComponentSets;
     NSSet *_complianceClasses;
@@ -48,6 +52,7 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *serverHeader; // @synthesize serverHeader=_serverHeader;
 @property(retain, nonatomic) NSSet *complianceClasses; // @synthesize complianceClasses=_complianceClasses;
+@property(nonatomic) _Bool expandPropertyReportIsUnreliable; // @synthesize expandPropertyReportIsUnreliable=_expandPropertyReportIsUnreliable;
 @property(nonatomic) _Bool supportsTelephone; // @synthesize supportsTelephone=_supportsTelephone;
 @property(nonatomic) _Bool supportsCalendarAudit; // @synthesize supportsCalendarAudit=_supportsCalendarAudit;
 @property(nonatomic) _Bool alwaysSupportsFreebusyOnOutbox; // @synthesize alwaysSupportsFreebusyOnOutbox=_alwaysSupportsFreebusyOnOutbox;
@@ -61,6 +66,9 @@
 @property(nonatomic) _Bool supportsRequestCompression; // @synthesize supportsRequestCompression=_supportsRequestCompression;
 @property(nonatomic) _Bool supportsExtendedCalendarQuery; // @synthesize supportsExtendedCalendarQuery=_supportsExtendedCalendarQuery;
 @property(nonatomic) _Bool supportsPrincipalPropertySearch; // @synthesize supportsPrincipalPropertySearch=_supportsPrincipalPropertySearch;
+@property(nonatomic) _Bool supportsParticipantRoles; // @synthesize supportsParticipantRoles=_supportsParticipantRoles;
+@property(nonatomic) _Bool supportsSubscriptionMirroring; // @synthesize supportsSubscriptionMirroring=_supportsSubscriptionMirroring;
+@property(nonatomic) _Bool supportsManagedSubscriptionCalendars; // @synthesize supportsManagedSubscriptionCalendars=_supportsManagedSubscriptionCalendars;
 @property(nonatomic) _Bool supportsSubscriptionCalendars; // @synthesize supportsSubscriptionCalendars=_supportsSubscriptionCalendars;
 @property(nonatomic) _Bool supportsPrivateEvents; // @synthesize supportsPrivateEvents=_supportsPrivateEvents;
 @property(nonatomic) _Bool supportsInboxAvailability; // @synthesize supportsInboxAvailability=_supportsInboxAvailability;

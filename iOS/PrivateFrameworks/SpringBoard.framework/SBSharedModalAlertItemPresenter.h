@@ -8,6 +8,7 @@
 
 #import <SpringBoard/SBBarSwipeAffordanceDelegate-Protocol.h>
 #import <SpringBoard/SBBarSwipeAffordanceObserver-Protocol.h>
+#import <SpringBoard/SBFZStackParticipantDelegate-Protocol.h>
 #import <SpringBoard/SBHomeGestureParticipantDelegate-Protocol.h>
 #import <SpringBoard/SBHomeGrabberPointerClickDelegate-Protocol.h>
 #import <SpringBoard/SBModalViewControllerStackDelegate-Protocol.h>
@@ -15,15 +16,17 @@
 #import <SpringBoard/UIAlertControllerCoordinatedActionPerforming-Protocol.h>
 #import <SpringBoard/_SBAlertControllerDelegate-Protocol.h>
 
-@class NSString, SBAlertItem, SBAlertLayoutPresentationVerifier, SBBarSwipeAffordanceView, SBFWindow, SBHomeGestureArbiter, SBHomeGestureParticipant, SBModalViewControllerStack, SBReachabilityManager, SBSystemGestureManager;
+@class NSString, SBAlertItem, SBAlertLayoutPresentationVerifier, SBBarSwipeAffordanceView, SBFWindow, SBFZStackParticipant, SBFZStackResolver, SBHomeGestureArbiter, SBHomeGestureParticipant, SBModalViewControllerStack, SBReachabilityManager, SBSystemGestureManager;
 @protocol SBFLockOutStatusProvider;
 
-@interface SBSharedModalAlertItemPresenter : NSObject <_SBAlertControllerDelegate, SBModalViewControllerStackDelegate, UIAlertControllerCoordinatedActionPerforming, SBBarSwipeAffordanceObserver, SBBarSwipeAffordanceDelegate, SBHomeGestureParticipantDelegate, SBHomeGrabberPointerClickDelegate, SBReachabilityObserver>
+@interface SBSharedModalAlertItemPresenter : NSObject <_SBAlertControllerDelegate, SBModalViewControllerStackDelegate, UIAlertControllerCoordinatedActionPerforming, SBBarSwipeAffordanceObserver, SBBarSwipeAffordanceDelegate, SBHomeGestureParticipantDelegate, SBFZStackParticipantDelegate, SBHomeGrabberPointerClickDelegate, SBReachabilityObserver>
 {
     id <SBFLockOutStatusProvider> _lockOutProvider;
     SBSystemGestureManager *_systemGestureManager;
     SBHomeGestureParticipant *_homeGestureParticipant;
     SBHomeGestureArbiter *_homeGestureArbiter;
+    SBFZStackParticipant *_zStackParticipant;
+    SBFZStackResolver *_zStackResolver;
     SBReachabilityManager *_reachabilityManager;
     SBAlertLayoutPresentationVerifier *_alertLayoutPresentationVerifier;
     SBBarSwipeAffordanceView *_barSwipeView;
@@ -36,9 +39,11 @@
 - (void)homeGrabberViewDidReceiveClick:(id)arg1;
 - (void)homeGesturePerformedForBarSwipeAffordanceView:(id)arg1;
 - (unsigned long long)barSwipeAffordanceView:(id)arg1 systemGestureTypeForType:(long long)arg2;
+- (void)zStackParticipant:(id)arg1 updatePreferences:(id)arg2;
+- (void)zStackParticipantDidChange:(id)arg1;
 - (void)homeGestureParticipantOwningHomeGestureDidChange:(id)arg1;
 - (void)_updateBarSwipeViewWithAlertController:(id)arg1;
-- (void)_updateHomeGestureParticipantWithItemCountAdjustment:(long long)arg1;
+- (void)_updateHomeGestureParticipant;
 - (void)handleReachabilityYOffsetDidChange;
 - (void)alertControllerDidDisappear:(id)arg1;
 - (void)_performActionForAlertController:(id)arg1 invokeActionBlock:(CDUnknownBlockType)arg2 dismissControllerBlock:(CDUnknownBlockType)arg3;
@@ -50,8 +55,8 @@
 - (void)presentAlertItem:(id)arg1 isLocked:(_Bool)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 @property(readonly, nonatomic) SBAlertItem *currentlyPresentedAlertItem;
 - (void)dealloc;
-- (id)initWithLockOutProvider:(id)arg1 systemGestureManager:(id)arg2 homeGestureArbiter:(id)arg3 reachabilityManager:(id)arg4 alertLayoutPresentationVerifier:(id)arg5 enableGestures:(_Bool)arg6;
-- (id)initWithLockOutProvider:(id)arg1 systemGestureManager:(id)arg2 homeGestureArbiter:(id)arg3 reachabilityManager:(id)arg4 alertLayoutPresentationVerifier:(id)arg5;
+- (id)initWithLockOutProvider:(id)arg1 systemGestureManager:(id)arg2 homeGestureArbiter:(id)arg3 zStackResolver:(id)arg4 reachabilityManager:(id)arg5 alertLayoutPresentationVerifier:(id)arg6 enableGestures:(_Bool)arg7;
+- (id)initWithLockOutProvider:(id)arg1 systemGestureManager:(id)arg2 homeGestureArbiter:(id)arg3 zStackResolver:(id)arg4 reachabilityManager:(id)arg5 alertLayoutPresentationVerifier:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

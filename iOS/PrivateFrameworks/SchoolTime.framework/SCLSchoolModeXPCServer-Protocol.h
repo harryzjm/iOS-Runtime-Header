@@ -17,7 +17,6 @@
 - (oneway void)fetchRecentUnlockHistoryItemsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (oneway void)setActive:(_Bool)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (oneway void)applySchedule:(SCLScheduleSettings *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
-- (oneway void)reconnectWithPairingID:(NSUUID *)arg1 identifier:(NSString *)arg2;
 - (oneway void)connectWithPairingID:(NSUUID *)arg1 identifier:(NSString *)arg2 completion:(void (^)(SCLSchoolModeServerSettings *, NSError *))arg3;
 @end
 

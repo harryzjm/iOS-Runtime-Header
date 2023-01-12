@@ -35,8 +35,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) double time;
 @property(readonly, nonatomic) unsigned short type;
 - (void)cancel;
-- (void)preprocessCommand:(const struct HapticCommand *)arg1;
-- (id)initWithHapticCommand:(const struct HapticCommand *)arg1;
+- (void)preprocessCommand:(const void *)arg1;
+- (id)initWithHapticCommand:(const void *)arg1;
 
 @end
 

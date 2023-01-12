@@ -5,12 +5,13 @@
 //
 
 #import <CoreHAP/HAPAccessoryServerNotification-Protocol.h>
+#import <CoreHAP/HAPPowerManagerProtocol-Protocol.h>
 #import <CoreHAP/HMFTimerDelegate-Protocol.h>
 
-@class HAPWACAccessoryBrowser, HMFTimer, NSArray, NSMutableSet, NSObject, NSString;
+@class HAPPowerManager, HAPWACAccessoryBrowser, HMFTimer, NSArray, NSMutableSet, NSObject, NSString;
 @protocol HAPAccessoryServerBrowserDelegate, OS_dispatch_queue;
 
-@interface HAPAccessoryServerBrowserIP <HMFTimerDelegate, HAPAccessoryServerNotification>
+@interface HAPAccessoryServerBrowserIP <HMFTimerDelegate, HAPPowerManagerProtocol, HAPAccessoryServerNotification>
 {
     struct BonjourBrowser *_bonjourBrowser;
     NSMutableSet *_discoveredAccessoryServers;
@@ -19,9 +20,11 @@
     NSMutableSet *_pendingBonjourEvents;
     HMFTimer *_bonjourEventTimer;
     HAPWACAccessoryBrowser *_hapWACBrowser;
+    HAPPowerManager *_powerManager;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) HAPPowerManager *powerManager; // @synthesize powerManager=_powerManager;
 @property(retain, nonatomic) HAPWACAccessoryBrowser *hapWACBrowser; // @synthesize hapWACBrowser=_hapWACBrowser;
 @property(retain, nonatomic) HMFTimer *bonjourEventTimer; // @synthesize bonjourEventTimer=_bonjourEventTimer;
 @property(retain, nonatomic) NSMutableSet *pendingBonjourEvents; // @synthesize pendingBonjourEvents=_pendingBonjourEvents;
@@ -32,7 +35,9 @@
 - (id)serverWithIdentifier:(id)arg1;
 - (void)_timerDidExpire:(id)arg1;
 - (void)timerDidFire:(id)arg1;
+- (void)devicePowerStateChanged:(unsigned long long)arg1;
 - (int)_purgePendingBonjourEvents:(id)arg1 withProcessing:(_Bool)arg2;
+- (void)processPendingBonjourRemoveEventsForDeviceID:(id)arg1;
 - (int)_processPendingBonjourEvent:(id)arg1;
 - (void)_pendBonjourEvent:(id)arg1;
 - (void)_pendBonjourRemoveEvent:(id)arg1;

@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstance;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *ongoingItemIDOperationDictionary; // @synthesize ongoingItemIDOperationDictionary=_ongoingItemIDOperationDictionary;
-- (void)sendRequestForItemID:(id)arg1 itemType:(id)arg2 channelID:(id)arg3;
+- (void)sendRequestForItemID:(id)arg1 itemType:(id)arg2 channelID:(id)arg3 adamID:(id)arg4;
 - (id)init;
 - (id)_init;
 

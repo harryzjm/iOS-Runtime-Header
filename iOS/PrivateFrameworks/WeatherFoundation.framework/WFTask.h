@@ -24,6 +24,7 @@
 @property(readonly, nonatomic) _Bool isCancelled;
 - (void)cleanup;
 - (void)handleCancellation;
+- (void)handleError:(id)arg1 forResponseIdentifier:(id)arg2;
 - (void)handleResponse:(id)arg1;
 - (void)startWithService:(id)arg1;
 - (void)executeSynchronously;

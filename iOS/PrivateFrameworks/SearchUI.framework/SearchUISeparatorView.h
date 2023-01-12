@@ -11,6 +11,7 @@
     double _separatorHeight;
 }
 
++ (id)separatorColorForAppearance:(id)arg1;
 + (unsigned long long)separatorProminenceForAppearance:(id)arg1;
 @property(nonatomic) double separatorHeight; // @synthesize separatorHeight=_separatorHeight;
 - (void)tlk_updateForAppearance:(id)arg1;

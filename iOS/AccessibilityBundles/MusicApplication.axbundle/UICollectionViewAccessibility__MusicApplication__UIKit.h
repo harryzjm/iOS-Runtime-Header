@@ -12,6 +12,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (_Bool)_accessibilityIsShelfCollectionView;
+- (_Bool)accessibilityScrollDownPage;
+- (_Bool)accessibilityScrollUpPage;
 - (struct UIEdgeInsets)_accessibilityVisibleContentInset;
 - (_Bool)_accessibilityShouldAvoidScrollingCollectionViewCells;
 - (_Bool)accessibilityShouldSpeakItemReorderEvents;

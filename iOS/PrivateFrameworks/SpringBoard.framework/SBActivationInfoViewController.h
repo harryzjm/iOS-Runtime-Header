@@ -10,7 +10,7 @@
 #import <SpringBoard/UITableViewDataSource-Protocol.h>
 #import <SpringBoard/UITableViewDelegate-Protocol.h>
 
-@class NSArray, NSLayoutConstraint, NSString, UIButton, UITableView, UIView;
+@class NSArray, NSLayoutConstraint, NSString, UIButton, UITableView, UIView, _UILegibilitySettings;
 
 @interface SBActivationInfoViewController : UIViewController <STTelephonyStateObserver, UITableViewDataSource, UITableViewDelegate>
 {
@@ -22,10 +22,13 @@
     UITableView *_activationInfoTableView;
     NSLayoutConstraint *_activationInfoTableViewHeight;
     UIButton *_regulatoryInfoButton;
+    _UILegibilitySettings *_legibilitySettings;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property(readonly, nonatomic) UIButton *regulatoryInfoButton; // @synthesize regulatoryInfoButton=_regulatoryInfoButton;
+@property(retain, nonatomic) NSArray *mobileEquipmentInfo; // @synthesize mobileEquipmentInfo=_mobileEquipmentInfo;
 - (id)_formattedString:(id)arg1 withSpaceAfterDigits:(unsigned long long)arg2;
 - (id)_formattedCSN:(id)arg1;
 - (id)_formattedIMEI:(id)arg1;

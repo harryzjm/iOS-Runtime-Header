@@ -23,7 +23,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) TTMergeableAttributedString *contents; // @synthesize contents=_contents;
 @property(nonatomic) __weak NSObject<CRUndoDelegate> *delegate; // @synthesize delegate=_delegate;
-@property(retain, nonatomic) CRDocument *document; // @synthesize document=_document;
+@property(nonatomic) __weak CRDocument *document; // @synthesize document=_document;
 - (_Bool)wantsUndoCommands;
 - (void)addUndoCommand:(id)arg1;
 - (void)edited:(unsigned long long)arg1 range:(struct _NSRange)arg2 changeInLength:(long long)arg3;
@@ -54,11 +54,11 @@
 - (id)initWithDocument:(id)arg1;
 - (id)init;
 - (void)encodeWithCRCoder:(id)arg1;
-- (id)initWithCRCoder:(id)arg1 stringArray:(const struct StringArray *)arg2;
+- (id)initWithCRCoder:(id)arg1 stringArray:(const void *)arg2;
 - (id)initWithCRCoder:(id)arg1;
-- (void)saveToArchive:(struct StringArray *)arg1;
-- (id)initWithArchive:(const struct StringArray *)arg1 andReplicaID:(id)arg2;
-- (id)serializeDataFromArchive:(const struct StringArray *)arg1;
+- (void)saveToArchive:(void *)arg1;
+- (id)initWithArchive:(const void *)arg1 replicaID:(id)arg2;
+- (id)serializeDataFromArchive:(const void *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

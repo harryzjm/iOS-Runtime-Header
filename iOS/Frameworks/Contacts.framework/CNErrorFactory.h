@@ -21,6 +21,7 @@
 + (long long)CNErrorCodeForABError:(struct __CFError *)arg1;
 + (id)errorForiOSABError:(struct __CFError *)arg1;
 + (id)genericiOSABError;
++ (id)os_log;
 
 @end
 

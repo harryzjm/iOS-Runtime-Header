@@ -14,6 +14,7 @@
 __attribute__((visibility("hidden")))
 @interface _UIDiffableDataSourceViewUpdater : NSObject <_UICollectionViewUpdateItemApplying>
 {
+    _Bool _hasPerformedInitialUpdate;
     long long _tableViewRowAnimation;
     long long _sinkKind;
     id <_UICollectionViewUpdateItemApplying> _updatesSink;
@@ -24,25 +25,22 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak UITableView *tableView; // @synthesize tableView=_tableView;
+@property(nonatomic) _Bool hasPerformedInitialUpdate; // @synthesize hasPerformedInitialUpdate=_hasPerformedInitialUpdate;
 @property(retain, nonatomic) id <_UIDataSourceSnapshotTranslating> dataSourceSnapshot; // @synthesize dataSourceSnapshot=_dataSourceSnapshot;
 @property(nonatomic) __weak UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property(nonatomic) __weak id <_UICollectionViewUpdateItemApplying> updatesSink; // @synthesize updatesSink=_updatesSink;
 @property(nonatomic) long long sinkKind; // @synthesize sinkKind=_sinkKind;
 @property(nonatomic) long long tableViewRowAnimation; // @synthesize tableViewRowAnimation=_tableViewRowAnimation;
 - (void)_performMoveUpdate:(id)arg1 onTableView:(id)arg2;
-- (void)_performDeleteUpdate:(id)arg1 onTableView:(id)arg2;
-- (void)_performReloadUpdate:(id)arg1 onTableView:(id)arg2;
-- (void)_performInsertUpdate:(id)arg1 onTableView:(id)arg2;
+- (id)_sectionIndexesToReloadForTableViewCompatibility:(id)arg1;
 - (void)_performMoveUpdate:(id)arg1 onCollectionView:(id)arg2;
-- (void)_performDeleteUpdate:(id)arg1 onCollectionView:(id)arg2;
-- (void)_performReloadUpdate:(id)arg1 onCollectionView:(id)arg2;
-- (void)_performInsertUpdate:(id)arg1 onCollectionView:(id)arg2;
 - (void)_performViewUpdates:(id)arg1;
 - (id)targetView;
 - (void)_willPerformDiff:(_Bool)arg1;
 - (void)_reloadData;
 - (void)_deleteAllItems;
-- (void)_performUpdateWithCollectionViewUpdateItems:(id)arg1 dataSourceSnapshot:(id)arg2 updateHandler:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4 viewPropertyAnimator:(id)arg5 customAnimationsProvider:(CDUnknownBlockType)arg6;
+- (_Bool)_doesExpectedUpdate:(id)arg1 matchActualUpdates:(id)arg2 allowingEmptyUpdates:(_Bool)arg3;
+- (void)_performUpdateWithCollectionViewUpdateItems:(id)arg1 dataSourceSnapshot:(id)arg2 updateHandler:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4 viewPropertyAnimator:(id)arg5 customAnimationsProvider:(CDUnknownBlockType)arg6 animated:(_Bool)arg7;
 - (id)initWithTableView:(id)arg1;
 - (id)initWithCollectionView:(id)arg1;
 - (id)initWithCollectionViewUpdatesSink:(id)arg1;

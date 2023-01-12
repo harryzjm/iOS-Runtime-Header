@@ -14,6 +14,8 @@
 - (UIViewController<PUAccessoryContentViewController> *)accessoryTileViewControllerAccessoryViewController:(PUAccessoryTileViewController *)arg1;
 
 @optional
+- (_Bool)accessoryTileViewControllerShouldUseSquareImageWhenShowingAccessoryView:(PUAccessoryTileViewController *)arg1;
+- (_Bool)accessoryTileViewControllerWillHideNavigationBarWhenShowingAccessoryView:(PUAccessoryTileViewController *)arg1;
 - (_Bool)accessoryTileViewControllerWillHideToolbarWhenShowingAccessoryView:(PUAccessoryTileViewController *)arg1;
 - (UIView *)accessoryTileViewControllerViewHostingGestureRecognizers:(PUAccessoryTileViewController *)arg1;
 @end

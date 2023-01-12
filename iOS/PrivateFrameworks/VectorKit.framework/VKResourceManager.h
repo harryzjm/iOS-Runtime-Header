@@ -15,6 +15,7 @@
 
 - (_Bool)isDevResourceWithName:(id)arg1;
 - (id)pathForResourceWithName:(id)arg1;
+- (id)dataForResourceWithName:(id)arg1 fallbackNameHandler:(CDUnknownBlockType)arg2;
 - (id)dataForResourceWithName:(id)arg1;
 - (id)_localNameForResourceName:(id)arg1;
 - (void)dealloc;

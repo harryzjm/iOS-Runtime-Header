@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<NSURL> _temporaryFileShareDirectory;
     struct WeakObjCPtr<WKWebView> _webView;
     struct WeakObjCPtr<id<WKShareSheetDelegate>> _delegate;
-    CompletionHandler_e3f3fa93 _completionHandler;
+    struct CompletionHandler<void (bool)> _completionHandler;
     struct RetainPtr<UIActivityViewController> _shareSheetViewController;
     struct RetainPtr<UIViewController> _presentationViewController;
     _Bool _didShareSuccessfully;
@@ -29,9 +29,8 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)dismiss;
-- (void)presentationControllerDidDismiss:(id)arg1;
-- (void)presentWithShareDataArray:(id)arg1 inRect:(Optional_93f3c085)arg2;
-- (void)presentWithParameters:(const struct ShareDataWithParsedURL *)arg1 inRect:(Optional_93f3c085)arg2 completionHandler:(CompletionHandler_e3f3fa93 *)arg3;
+- (void)presentWithShareDataArray:(id)arg1 inRect:(optional_acc783a3)arg2;
+- (void)presentWithParameters:(const void *)arg1 inRect:(optional_acc783a3)arg2 completionHandler:(void *)arg3;
 - (id)initWithView:(id)arg1;
 @property(nonatomic) __weak id <WKShareSheetDelegate> delegate;
 

@@ -16,6 +16,7 @@
     NSString *_websheetURL;
     NSDictionary *_postdata;
     unsigned long long _requestType;
+    _Bool _skipIntroPaneForWebsheetFlow;
     UIViewController<TSSetupFlowItem> *_currentViewController;
 }
 
@@ -25,13 +26,15 @@
 - (void)accountPendingRelease;
 - (void)accountCancelled;
 - (void)didTransferPlanSuccessfullyWithEid:(id)arg1 imei:(id)arg2 meid:(id)arg3 iccid:(id)arg4 srcIccid:(id)arg5 alternateSDMP:(id)arg6 state:(id)arg7;
-- (void)didPurchasePlanSuccessfullyWithEid:(id)arg1 imei:(id)arg2 meid:(id)arg3 iccid:(id)arg4 alternateSDMP:(id)arg5;
+- (void)didPurchasePlanSuccessfullyWithCarrier:(id)arg1 mnc:(id)arg2 gid1:(id)arg3 gid2:(id)arg4 state:(id)arg5;
+- (void)didPurchasePlanSuccessfullyWithEid:(id)arg1 imei:(id)arg2 meid:(id)arg3 iccid:(id)arg4 alternateSDMP:(id)arg5 state:(id)arg6;
 - (void)setDefaultNavigationItems:(id)arg1;
 - (void)viewControllerDidComplete:(id)arg1;
+- (id)getWebsheetViewController;
 - (id)nextViewControllerFrom:(id)arg1;
 - (void)firstViewController:(CDUnknownBlockType)arg1;
 - (id)firstViewController;
-- (id)initWithRequestType:(unsigned long long)arg1 websheetURL:(id)arg2 postdata:(id)arg3;
+- (id)initWithRequestType:(unsigned long long)arg1 skipIntroPaneForWebsheetFlow:(_Bool)arg2 websheetURL:(id)arg3 postdata:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <PhotosUICore/PXAssetCountObserverDelegate-Protocol.h>
+#import <PhotosUICore/PXFetchResultCountObserverDelegate-Protocol.h>
 #import <PhotosUICore/PXSmartAlbumConditionDelegate-Protocol.h>
 #import <PhotosUICore/PXSmartAlbumQuery-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, PHAssetCollection, PHCollectionList, PHPhotoLibrary, PLQuery, PXAssetCountObserver, PXLabeledValue, PXSmartAlbumPhotoKitEditingContext;
+@class NSArray, NSMutableArray, NSString, PHAssetCollection, PHCollectionList, PHPhotoLibrary, PLQuery, PXFetchResultCountObserver, PXLabeledValue, PXSmartAlbumPhotoKitEditingContext;
 @protocol PXSmartAlbumQueryDelegate;
 
-@interface PXSmartAlbumPhotoKitQuery : NSObject <PXSmartAlbumConditionDelegate, PXAssetCountObserverDelegate, PXSmartAlbumQuery>
+@interface PXSmartAlbumPhotoKitQuery : NSObject <PXSmartAlbumConditionDelegate, PXFetchResultCountObserverDelegate, PXSmartAlbumQuery>
 {
     NSMutableArray *_conditions;
     PHAssetCollection *_albumToEdit;
@@ -21,7 +21,7 @@
     PHPhotoLibrary *_photoLibrary;
     PXSmartAlbumPhotoKitEditingContext *_editingContext;
     PLQuery *_query;
-    PXAssetCountObserver *_assetCountObserver;
+    PXFetchResultCountObserver *_fetchResultCountObserver;
     _Bool _canPersistChanges;
     NSString *_title;
     NSArray *_conjunctionValues;
@@ -40,11 +40,11 @@
 @property(retain, nonatomic) NSArray *conditions; // @synthesize conditions=_conditions;
 @property(readonly, nonatomic) NSArray *conjunctionValues; // @synthesize conjunctionValues=_conjunctionValues;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
-- (void)assetCountObserver:(id)arg1 didChangeNumberOfAssets:(long long)arg2;
+- (void)fetchResultCountObserver:(id)arg1 didChangeFetchResultCount:(long long)arg2;
 - (void)_updateStatusString;
 - (void)conditionDidChange:(id)arg1;
 - (void)_updateQueryFromConditions;
-- (void)_updateAssetCountObserver;
+- (void)_updateFetchResultCountObserver;
 - (void)_updateCanPersistChanges;
 - (void)persistChangesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)removeCondition:(id)arg1;

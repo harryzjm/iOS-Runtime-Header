@@ -10,6 +10,7 @@
 
 @protocol CDPDOctagonTrustProxy <NSObject>
 @property(retain, nonatomic) CDPContext *cdpContext;
+- (NSArray *)fetchAllEscrowRecords:(NSDictionary *)arg1 forceFetch:(_Bool)arg2 error:(id *)arg3;
 - (NSArray *)fetchEscrowRecords:(NSDictionary *)arg1 forceFetch:(_Bool)arg2 error:(id *)arg3;
 - (id)initWithContext:(CDPContext *)arg1;
 @end

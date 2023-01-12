@@ -12,6 +12,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) CDUnknownBlockType resultHandler; // @synthesize resultHandler=_resultHandler;
 - (void)handleCancellation;
+- (void)handleError:(id)arg1 forResponseIdentifier:(id)arg2;
 - (void)handleResponse:(id)arg1;
 - (void)startWithService:(id)arg1;
 - (id)initWithResultHandler:(CDUnknownBlockType)arg1;

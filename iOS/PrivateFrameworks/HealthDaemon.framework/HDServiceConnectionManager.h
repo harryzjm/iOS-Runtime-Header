@@ -8,12 +8,12 @@
 
 #import <HealthDaemon/HDDatabaseProtectedDataObserver-Protocol.h>
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
-#import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
+#import <HealthDaemon/HDProfileReadyObserver-Protocol.h>
 
 @class HDHealthServiceManager, HDProfile, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HDServiceConnectionManager : NSObject <HDDatabaseProtectedDataObserver, HDDiagnosticObject, HDHealthDaemonReadyObserver>
+@interface HDServiceConnectionManager : NSObject <HDDatabaseProtectedDataObserver, HDDiagnosticObject, HDProfileReadyObserver>
 {
     HDProfile *_profile;
     HDHealthServiceManager *_serviceManager;
@@ -26,13 +26,7 @@
 - (void).cxx_destruct;
 - (id)diagnosticDescription;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(_Bool)arg2;
-- (void)daemonReady:(id)arg1;
-- (void)_disconnectFromService:(id)arg1;
-- (void)_disconnectFromServicesStopConnecting:(_Bool)arg1;
-- (void)_connectToService:(id)arg1;
-- (void)_connectToServices;
-- (void)_subscribeBluetoothStateUpdates;
-- (void)_handleBluetoothUpdates:(long long)arg1;
+- (void)profileDidBecomeReady:(id)arg1;
 - (void)dealloc;
 - (void)connectToService:(id)arg1;
 - (void)disconnectFromService:(id)arg1;

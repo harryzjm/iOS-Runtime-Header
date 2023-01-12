@@ -18,9 +18,6 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSArray *links; // @synthesize links=_links;
-@property(retain, nonatomic) NSString *_accessibilityContent; // @synthesize _accessibilityContent=__accessibilityContent;
-@property(readonly, nonatomic) struct _NSRange textRange; // @synthesize textRange=_textRange;
 - (_Bool)accessibilityActivate;
 - (struct CGRect)accessibilityFrame;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
@@ -33,7 +30,6 @@
 - (struct _NSRange)_accessibilitySelectedTextRange;
 - (id)accessibilityValue;
 - (id)accessibilityLabel;
-- (id)initWithAccessibilityContainer:(id)arg1 textRange:(struct _NSRange)arg2 links:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

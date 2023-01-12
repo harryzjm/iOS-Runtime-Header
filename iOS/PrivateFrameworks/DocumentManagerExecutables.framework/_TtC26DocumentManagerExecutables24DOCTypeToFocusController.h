@@ -24,7 +24,6 @@
 @property(nonatomic, readonly) UIView *inputView;
 - (void)deleteBackward;
 - (void)insertText:(id)arg1;
-- (void)dealloc;
 @property(nonatomic, readonly) _Bool hasText;
 @property(nonatomic, readonly) UITextInputAssistantItem *inputAssistantItem;
 @property(nonatomic) long long autocorrectionType;

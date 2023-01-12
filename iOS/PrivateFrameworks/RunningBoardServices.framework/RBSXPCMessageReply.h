@@ -17,10 +17,8 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) RBSXPCMessageContext *context; // @synthesize context=_context;
 @property(readonly, nonatomic) id <RBSXPCEncoding><RBSXPCDecoding> payload; // @synthesize payload=_payload;
 - (void)send;
-- (void)encode:(CDUnknownBlockType)arg1;
 - (void)prepareForHandoff;
 
 @end

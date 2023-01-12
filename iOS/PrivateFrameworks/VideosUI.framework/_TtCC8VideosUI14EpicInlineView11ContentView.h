@@ -4,30 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtCC8VideosUI14EpicInlineView11ContentView : UIView
+@interface _TtCC8VideosUI14EpicInlineView11ContentView
 {
     MISSING_TYPE *debugUIOverlay;
     MISSING_TYPE *shelfLockupStyle;
     MISSING_TYPE *decoratedShelfLayout;
-    MISSING_TYPE *shelfMargin;
     MISSING_TYPE *mainGradientColor;
     MISSING_TYPE *playbackDelayInterval;
     MISSING_TYPE *hostMediaController;
     MISSING_TYPE *didHostMediaController;
     MISSING_TYPE *backgroundMediaController;
     MISSING_TYPE *shelfView;
-    MISSING_TYPE *shelfRowMetrics;
     MISSING_TYPE *shelfHeight;
     MISSING_TYPE *verticalStackView;
     MISSING_TYPE *logoImageView;
     MISSING_TYPE *channelLogoView;
     MISSING_TYPE *isVideoPlaying;
-    MISSING_TYPE *$__lazy_storage_$_twoLineShelfLockupComputationLabel;
     MISSING_TYPE *backgroundViewModel;
     MISSING_TYPE *playbackDidStartObserver;
     MISSING_TYPE *playbackDidStopObserver;
@@ -42,9 +37,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
-- (void)layoutSubviews;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)vui_traitCollectionDidChange:(id)arg1;
+- (struct CGSize)vui_layoutSubviews:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
 
 @end
 

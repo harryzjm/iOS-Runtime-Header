@@ -13,6 +13,7 @@
 @property(readonly, copy, nonatomic) NSString *clientDebugDescription;
 @property(readonly, nonatomic) _Bool isClientAuthorizedForTCCServicePhotosAdd;
 @property(readonly, nonatomic) _Bool isClientAuthorizedForTCCServicePhotos;
+- (void)invalidateClientAuthorizationCache;
 - (void)awaitLibraryState:(long long)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
 - (_Bool)hasEntitlement:(NSString *)arg1;
 @end

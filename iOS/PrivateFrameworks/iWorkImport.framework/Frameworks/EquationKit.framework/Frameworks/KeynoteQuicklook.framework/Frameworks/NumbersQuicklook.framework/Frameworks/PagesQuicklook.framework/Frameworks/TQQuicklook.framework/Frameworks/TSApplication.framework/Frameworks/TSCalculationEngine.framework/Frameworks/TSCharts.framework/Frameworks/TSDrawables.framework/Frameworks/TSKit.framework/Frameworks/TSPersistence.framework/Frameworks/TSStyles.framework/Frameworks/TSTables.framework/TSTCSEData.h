@@ -10,7 +10,7 @@
 
 @interface TSTCSEData : NSObject
 {
-    struct unordered_map<TSTExpressionNode *, TSTCSENodeData, std::__1::hash<TSTExpressionNode *>, std::__1::equal_to<TSTExpressionNode *>, std::__1::allocator<std::__1::pair<TSTExpressionNode *const, TSTCSENodeData>>> _nodesToData;
+    struct unordered_map<TSTExpressionNode *, TSTCSENodeData, std::hash<TSTExpressionNode *>, std::equal_to<TSTExpressionNode *>, std::allocator<std::pair<TSTExpressionNode *const, TSTCSENodeData>>> _nodesToData;
     NSMutableDictionary *_hashesToNodeSets;
 }
 

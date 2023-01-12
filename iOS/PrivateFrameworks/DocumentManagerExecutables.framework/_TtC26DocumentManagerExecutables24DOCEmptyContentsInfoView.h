@@ -10,6 +10,7 @@
 
 @interface _TtC26DocumentManagerExecutables24DOCEmptyContentsInfoView : UIView
 {
+    MISSING_TYPE *safeCenteringView;
     MISSING_TYPE *noContentLabelsView;
     MISSING_TYPE *title;
     MISSING_TYPE *message;

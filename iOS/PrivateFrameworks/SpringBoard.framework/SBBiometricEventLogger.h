@@ -17,17 +17,17 @@
     _Bool _passcodeSuccessAfterBioFailureTriggerArmed;
     id <SBUIBiometricResource> _biometricResource;
     _Bool _fingerOnWithScreenOn;
-    unsigned long long _fingerOnTime;
     unsigned long long _keybagUnlockTime;
+    unsigned long long _fingerOnTime;
 }
 
 + (void)logClass:(unsigned char)arg1 code:(unsigned int)arg2;
 + (void)logEvent:(unsigned int)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-@property(nonatomic) unsigned long long keybagUnlockTime; // @synthesize keybagUnlockTime=_keybagUnlockTime;
 @property(nonatomic) _Bool fingerOnWithScreenOn; // @synthesize fingerOnWithScreenOn=_fingerOnWithScreenOn;
 @property(nonatomic) unsigned long long fingerOnTime; // @synthesize fingerOnTime=_fingerOnTime;
+@property(nonatomic) unsigned long long keybagUnlockTime; // @synthesize keybagUnlockTime=_keybagUnlockTime;
 - (unsigned long long)_machTimeInMilliseconds;
 - (void)timestampEvent:(unsigned long long)arg1;
 - (_Bool)_shouldSyslogTimestamps;

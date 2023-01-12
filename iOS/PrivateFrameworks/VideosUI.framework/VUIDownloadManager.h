@@ -42,7 +42,10 @@
 - (void)download:(id)arg1 willDownloadToURL:(id)arg2;
 - (void)download:(id)arg1 didChangeStateTo:(long long)arg2;
 @property(readonly, nonatomic) NSArray *downloads;
-- (void)preflightDownloadForPresentingViewController:(id)arg1 contentAllowsCellularDownload:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_preflightDownloadForPresentingViewController:(id)arg1 contentAllowsCellularDownload:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)preflightDownloadForTVPMediaItem:(id)arg1 presentingViewController:(id)arg2 contentAllowsCellularDownload:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)preflightDownloadForLibraryMediaEntity:(id)arg1 presentingViewController:(id)arg2 contentAllowsCellularDownload:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)preflightDownloadForVideosPlayable:(id)arg1 presentingViewController:(id)arg2 contentAllowsCellularDownload:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)cancelDownloadForCanonicalID:(id)arg1;
 - (id)existingDownloadForCanonicalID:(id)arg1;
 - (void)cancelAndRemoveDownloadForMediaItem:(id)arg1;

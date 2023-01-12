@@ -9,7 +9,7 @@
 #import <SPOwner/NSCopying-Protocol.h>
 #import <SPOwner/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSUUID, SPHandle;
+@class NSArray, NSData, NSDate, NSDictionary, NSString, NSUUID, SPDiscoveredAccessoryMetadata, SPHandle, SPUnknownProductInfo;
 
 @interface SPUnknownBeacon : NSObject <NSCopying, NSSecureCoding>
 {
@@ -17,6 +17,10 @@
     NSUUID *_identifier;
     NSArray *_beaconLocations;
     NSData *_advertisement;
+    NSString *_type;
+    SPDiscoveredAccessoryMetadata *_metadata;
+    SPUnknownProductInfo *_productInfo;
+    NSDictionary *_taskInformation;
     NSUUID *_beaconIdentifier;
     SPHandle *_handle;
     NSDate *_triggerDate;
@@ -30,6 +34,10 @@
 @property(nonatomic) _Bool isIgnored; // @synthesize isIgnored=_isIgnored;
 @property(copy, nonatomic) SPHandle *handle; // @synthesize handle=_handle;
 @property(copy, nonatomic) NSUUID *beaconIdentifier; // @synthesize beaconIdentifier=_beaconIdentifier;
+@property(copy, nonatomic) NSDictionary *taskInformation; // @synthesize taskInformation=_taskInformation;
+@property(copy, nonatomic) SPUnknownProductInfo *productInfo; // @synthesize productInfo=_productInfo;
+@property(copy, nonatomic) SPDiscoveredAccessoryMetadata *metadata; // @synthesize metadata=_metadata;
+@property(copy, nonatomic) NSString *type; // @synthesize type=_type;
 @property(copy, nonatomic) NSData *advertisement; // @synthesize advertisement=_advertisement;
 @property(copy, nonatomic) NSArray *beaconLocations; // @synthesize beaconLocations=_beaconLocations;
 @property(copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;

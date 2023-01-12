@@ -46,7 +46,7 @@
 - (_Bool)needsAsynchronousLoad;
 - (void)_intrinsicSizeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (struct CGSize)_intrinsicSizeIfKnown;
-- (_Bool)_shouldEncodeData;
+- (_Bool)_isSubstitute;
 - (void)_mapDataFromFileURL;
 @property(readonly, copy, nonatomic) LPVideoProperties *properties;
 @property(readonly, nonatomic) _Bool hasAudio;

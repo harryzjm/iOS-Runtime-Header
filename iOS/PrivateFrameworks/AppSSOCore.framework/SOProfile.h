@@ -19,11 +19,16 @@ __attribute__((visibility("hidden")))
     NSArray *_hosts;
     NSString *_extensionBundleIdentifier;
     NSString *_realm;
+    NSArray *_deniedBundleIdentifiers;
+    long long _screenLockedBehavior;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)stringWithScreenLockedBehavior:(long long)arg1;
 + (id)stringWithProfileType:(long long)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) long long screenLockedBehavior; // @synthesize screenLockedBehavior=_screenLockedBehavior;
+@property(retain, nonatomic) NSArray *deniedBundleIdentifiers; // @synthesize deniedBundleIdentifiers=_deniedBundleIdentifiers;
 @property(retain, nonatomic) NSString *realm; // @synthesize realm=_realm;
 @property(retain, nonatomic) NSString *extensionBundleIdentifier; // @synthesize extensionBundleIdentifier=_extensionBundleIdentifier;
 @property(retain, nonatomic) NSArray *hosts; // @synthesize hosts=_hosts;

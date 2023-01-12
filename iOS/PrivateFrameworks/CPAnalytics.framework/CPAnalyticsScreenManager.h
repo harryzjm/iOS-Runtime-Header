@@ -30,6 +30,7 @@
 + (id)_viewNameFromCombined:(id)arg1;
 + (id)_combinedViewName:(id)arg1 withID:(id)arg2;
 + (_Bool)_isValidScreenViewEvent:(id)arg1;
++ (_Bool)isDebugScreenForViewName:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) long long foregroundEventCount; // @synthesize foregroundEventCount=_foregroundEventCount;
 @property(retain, nonatomic) NSDate *currentScreenStartTime; // @synthesize currentScreenStartTime=_currentScreenStartTime;

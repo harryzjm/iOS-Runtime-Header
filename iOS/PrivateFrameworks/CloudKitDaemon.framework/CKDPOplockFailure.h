@@ -10,7 +10,6 @@
 
 @class CKDPRecord;
 
-__attribute__((visibility("hidden")))
 @interface CKDPOplockFailure : PBCodable <NSCopying>
 {
     CKDPRecord *_recordForOplockFailure;

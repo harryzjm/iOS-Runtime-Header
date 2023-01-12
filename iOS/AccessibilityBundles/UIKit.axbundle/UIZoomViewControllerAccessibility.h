@@ -13,7 +13,6 @@
 + (id)safeCategoryTargetClassName;
 - (void)_changeZoom:(id)arg1;
 - (void)loadView;
-- (void)_accessibilitySetZoomButtonLabel;
 
 @end
 

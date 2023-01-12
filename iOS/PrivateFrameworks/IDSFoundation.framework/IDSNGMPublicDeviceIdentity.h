@@ -12,6 +12,7 @@
 
 + (id)identityWithIdentityData:(id)arg1 prekeyData:(id)arg2 error:(id *)arg3;
 + (id)identityWithDataRepresentation:(id)arg1 error:(id *)arg2;
+- (id)sealMessage:(id)arg1 withEncryptedAttributes:(id)arg2 signedByFullIdentity:(id)arg3 error:(id *)arg4;
 - (id)sealMessage:(id)arg1 signedByFullIdentity:(id)arg2 error:(id *)arg3;
 - (id)prekeyData;
 - (id)identityData;

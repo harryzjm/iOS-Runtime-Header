@@ -7,6 +7,7 @@
 #import <Photos/PHPhotoLibrary.h>
 
 @interface PHPhotoLibrary (LimitedLibraryPicker)
+- (void)presentLimitedLibraryPickerFromViewController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)presentLimitedLibraryPickerFromViewController:(id)arg1;
 @end
 

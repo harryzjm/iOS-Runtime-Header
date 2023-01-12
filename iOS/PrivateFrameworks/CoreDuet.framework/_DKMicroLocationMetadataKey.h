@@ -10,6 +10,7 @@
 {
 }
 
++ (id)microLocationIsStable;
 + (id)microLocationDistribution;
 + (id)locationDistribution;
 + (id)probabilityVector;

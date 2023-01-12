@@ -28,9 +28,9 @@
     NSSet *_trustedUserIdentifiers;
 }
 
-+ (id)trustedUsersFromPersons:(id)arg1 certificateVendor:(id)arg2;
-+ (id)usersFromPersons:(id)arg1;
-+ (id)courseNameforClass:(id)arg1;
++ (id)trustedUsersFromPersons:(id)arg1 environment:(id)arg2;
++ (id)usersFromPersons:(id)arg1 environment:(id)arg2;
++ (id)courseNameForClass:(id)arg1;
 + (id)trustedUserIdentifierForTrustedUsers:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSSet *trustedUserIdentifiers; // @synthesize trustedUserIdentifiers=_trustedUserIdentifiers;
@@ -51,7 +51,7 @@
 - (unsigned long long)hash;
 @property(readonly, copy, nonatomic) NSSet *allTrustedUserCertificates;
 @property(readonly, nonatomic) id <CRKIdentity> identity;
-- (id)initWithBackingClass:(id)arg1 location:(id)arg2 persons:(id)arg3 trustedPersons:(id)arg4 identityVendor:(id)arg5 certificateVendor:(id)arg6 manageableLocationIDs:(id)arg7;
+- (id)initWithBackingClass:(id)arg1 location:(id)arg2 persons:(id)arg3 trustedPersons:(id)arg4 identityVendor:(id)arg5 manageableLocationIDs:(id)arg6 environment:(id)arg7;
 
 @end
 

@@ -4,12 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDate, NSIndexSet, NSSet, NSString, TRIDownloadOptions, TRIExperimentDeployment;
+@class CKRecordID, NSDate, NSDictionary, NSIndexSet, NSSet, NSString, TRIExperimentDeployment, TRIFetchOptions, TRIRolloutDeployment;
+@protocol TRIFactorPackSetId, TRIFetchOpCanceling;
 
 @protocol TRIArtifactProvider
-- (void)fetchTreatmentWithId:(NSString *)arg1 assetIndexes:(NSIndexSet *)arg2 options:(TRIDownloadOptions *)arg3 progressHandler:(void (^)(unsigned long long))arg4 completionHandler:(void (^)(unsigned long long, TRIClientTreatmentArtifact *, NSDate *, NSError *))arg5;
-- (void)fetchExperimentWithLatestDeploymentForExperimentId:(NSString *)arg1 options:(TRIDownloadOptions *)arg2 completionHandler:(void (^)(unsigned long long, TRIClientExperimentArtifact *, NSDate *, NSError *))arg3;
-- (void)fetchExperimentWithExperimentDeployment:(TRIExperimentDeployment *)arg1 options:(TRIDownloadOptions *)arg2 completionHandler:(void (^)(unsigned long long, TRIClientExperimentArtifact *, NSDate *, NSError *))arg3;
-- (void)fetchExperimentNotificationsWithNamespaceNames:(NSSet *)arg1 rollbacksOnly:(_Bool)arg2 lastFetchDateOverride:(NSDate *)arg3 options:(TRIDownloadOptions *)arg4 resultsHandler:(void (^)(unsigned long long, NSArray *, NSDate *, NSError *))arg5;
+- (id <TRIFetchOpCanceling>)fetchDiffsWithRecordIds:(NSDictionary *)arg1 options:(TRIFetchOptions *)arg2 perRecordProgress:(void (^)(CKRecordID *, double))arg3 perRecordCompletionBlockOnSuccess:(void (^)(CKRecord *, CKRecordID *))arg4 completion:(void (^)(unsigned long long, NSDictionary *, NSDate *, NSError *))arg5;
+- (id <TRIFetchOpCanceling>)fetchDiffSourceRecordIdsWithTargetAssetIds:(NSSet *)arg1 isAcceptableSourceAssetId:(_Bool (^)(NSString<TRIAssetId> *))arg2 options:(TRIFetchOptions *)arg3 completion:(void (^)(unsigned long long, NSDictionary *, NSDate *, NSError *))arg4;
+- (id <TRIFetchOpCanceling>)fetchAssetsWithRecordIds:(NSDictionary *)arg1 options:(TRIFetchOptions *)arg2 perRecordProgress:(void (^)(CKRecordID *, double))arg3 perRecordCompletionBlockOnSuccess:(void (^)(CKRecord *, CKRecordID *))arg4 completion:(void (^)(unsigned long long, NSDictionary *, NSDate *, NSError *))arg5;
+- (id <TRIFetchOpCanceling>)fetchRecordIdsForAssetsWithIds:(NSSet *)arg1 options:(TRIFetchOptions *)arg2 completion:(void (^)(unsigned long long, NSDictionary *, NSDate *, NSError *))arg3;
+- (void)fetchFactorPackSetWithId:(NSString<TRIFactorPackSetId> *)arg1 options:(TRIFetchOptions *)arg2 completion:(void (^)(unsigned long long, TRIFactorPackSet *, unsigned long long, NSDate *, NSError *))arg3;
+- (void)fetchRolloutNotificationWithLatestDeploymentForRolloutId:(NSString *)arg1 options:(TRIFetchOptions *)arg2 completion:(void (^)(unsigned long long, TRIClientRolloutArtifact *, NSDate *, NSError *))arg3;
+- (void)fetchRolloutNotificationWithDeployment:(TRIRolloutDeployment *)arg1 options:(TRIFetchOptions *)arg2 completion:(void (^)(unsigned long long, TRIClientRolloutArtifact *, NSDate *, NSError *))arg3;
+- (void)fetchRolloutNotificationsDateDescendingWithOptions:(TRIFetchOptions *)arg1 completion:(void (^)(unsigned long long, NSArray *, NSDate *, NSError *, _Bool *))arg2;
+- (void)fetchRolloutNotificationsDateAscendingWithOptions:(TRIFetchOptions *)arg1 lastFetchDateOverride:(NSDate *)arg2 namespaceNames:(NSSet *)arg3 completion:(void (^)(unsigned long long, NSArray *, NSDate *, NSError *))arg4;
+- (id <TRIFetchOpCanceling>)fetchAssetsWithIndexes:(NSIndexSet *)arg1 fromTreatmentWithRecordId:(CKRecordID *)arg2 options:(TRIFetchOptions *)arg3 progress:(void (^)(double))arg4 completion:(void (^)(unsigned long long, NSDictionary *, NSDate *, NSError *))arg5;
+- (id <TRIFetchOpCanceling>)fetchTreatmentWithId:(NSString *)arg1 options:(TRIFetchOptions *)arg2 completion:(void (^)(unsigned long long, CKRecordID *, TRIClientTreatment *, unsigned long long, NSDate *, NSError *))arg3;
+- (void)fetchExperimentWithLatestDeploymentForExperimentId:(NSString *)arg1 options:(TRIFetchOptions *)arg2 completion:(void (^)(unsigned long long, TRIClientExperimentArtifact *, NSDate *, NSError *))arg3;
+- (void)fetchExperimentWithExperimentDeployment:(TRIExperimentDeployment *)arg1 options:(TRIFetchOptions *)arg2 completion:(void (^)(unsigned long long, TRIClientExperimentArtifact *, NSDate *, NSError *))arg3;
+- (void)fetchExperimentNotificationsWithNamespaceNames:(NSSet *)arg1 rollbacksOnly:(_Bool)arg2 lastFetchDateOverride:(NSDate *)arg3 options:(TRIFetchOptions *)arg4 completion:(void (^)(unsigned long long, NSArray *, NSDate *, NSError *))arg5;
 @end
 

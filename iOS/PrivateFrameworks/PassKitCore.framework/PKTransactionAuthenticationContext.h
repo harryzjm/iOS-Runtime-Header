@@ -15,6 +15,7 @@
     _Bool _complete;
     unsigned long long _requestedAuthenticationMechanisms;
     unsigned long long _processedAuthenticationMechanisms;
+    unsigned long long _dataCollectedAuthenticationMechanisms;
     long long _paymentPINFormat;
     NSData *_nonce;
     NSData *_signingKeyMaterial;
@@ -30,6 +31,7 @@
 @property(copy, nonatomic) NSData *nonce; // @synthesize nonce=_nonce;
 @property(nonatomic) long long paymentPINFormat; // @synthesize paymentPINFormat=_paymentPINFormat;
 @property(nonatomic) _Bool complete; // @synthesize complete=_complete;
+@property(nonatomic) unsigned long long dataCollectedAuthenticationMechanisms; // @synthesize dataCollectedAuthenticationMechanisms=_dataCollectedAuthenticationMechanisms;
 @property(nonatomic) unsigned long long processedAuthenticationMechanisms; // @synthesize processedAuthenticationMechanisms=_processedAuthenticationMechanisms;
 @property(nonatomic) unsigned long long requestedAuthenticationMechanisms; // @synthesize requestedAuthenticationMechanisms=_requestedAuthenticationMechanisms;
 - (_Bool)isEqualToTransactionAuthenticationContext:(id)arg1;

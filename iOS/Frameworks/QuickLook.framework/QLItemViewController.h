@@ -64,8 +64,12 @@
 - (long long)_dragInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
 - (id)dragInteraction:(id)arg1 itemsForBeginningSession:(id)arg2;
 - (void)_addDragInteractionIfNeeded;
+- (_Bool)draggableViewShouldStartDragSession:(id)arg1;
 - (id)draggableView;
 - (void)notifyDelegatesDidFailWithError:(id)arg1;
+- (id)stateRestorationDictionary;
+- (void)notifyStateRestorationWithUserInfo:(id)arg1;
+- (void)notifyStateRestorationWithUserInfoIfNeeded:(id)arg1;
 - (void)performFirstTimeAppearanceActions:(unsigned long long)arg1;
 - (_Bool)canPerformFirstTimeAppearanceActions:(unsigned long long)arg1;
 - (void)preloadViewControllerForContext:(id)arg1;
@@ -76,7 +80,8 @@
 - (void)transitionDidStart:(_Bool)arg1;
 - (id)transitioningView;
 - (void)_scrollScrollViewByPercentualOffset:(double)arg1;
-- (void)_scrollScrollViewWithKeyCommand:(id)arg1;
+- (void)_scrollScrollViewDown;
+- (void)_scrollScrollViewUp;
 - (void)handlePerformedKeyCommandIfNeeded:(id)arg1;
 - (_Bool)supportsScrollingUpAndDownUsingKeyCommands;
 @property(readonly, nonatomic) NSArray *registeredKeyCommands;
@@ -89,6 +94,8 @@
 - (_Bool)automaticallyUpdateScrollViewIndicatorInset;
 - (_Bool)automaticallyUpdateScrollViewContentInset;
 - (_Bool)automaticallyUpdateScrollViewContentOffset;
+- (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (_Bool)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (_Bool)shouldRecognizeGestureRecognizer:(id)arg1;
 - (_Bool)canShowNavBar;
 - (_Bool)canShowToolBar;
@@ -100,9 +107,12 @@
 - (id)excludedToolbarButtonIdentifiersForTraitCollection:(id)arg1;
 - (id)toolbarButtonsForTraitCollection:(id)arg1;
 - (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)requestLockForCurrentItem;
+- (_Bool)canBeLocked;
 - (_Bool)canClickToToggleFullscreen;
 - (_Bool)canToggleFullScreen;
 - (_Bool)canEnterFullScreen;
+- (void)actionSheetDidDismiss;
 - (void)prepareForActionSheetPresentation;
 - (void)hostApplicationDidEnterBackground:(id)arg1;
 - (void)hostApplicationDidBecomeActive;

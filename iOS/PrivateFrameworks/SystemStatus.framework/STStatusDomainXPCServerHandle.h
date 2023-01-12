@@ -20,10 +20,12 @@
     NSObject<OS_dispatch_queue> *_internalQueue;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSXPCConnection *_serverXPCConnection;
+    CDUnknownBlockType _xpcConnectionProvider;
 }
 
-+ (id)sharedInstance;
++ (id)sharedMachServiceServerHandle;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) CDUnknownBlockType xpcConnectionProvider; // @synthesize xpcConnectionProvider=_xpcConnectionProvider;
 @property(retain, nonatomic) NSXPCConnection *serverXPCConnection; // @synthesize serverXPCConnection=_serverXPCConnection;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
@@ -44,6 +46,7 @@
 - (void)removeClient:(id)arg1 forDomain:(unsigned long long)arg2;
 - (void)registerClient:(id)arg1 forDomain:(unsigned long long)arg2;
 - (id)dataForDomain:(unsigned long long)arg1;
+- (id)initWithXPCConnectionProvider:(CDUnknownBlockType)arg1;
 - (id)init;
 
 // Remaining properties

@@ -6,10 +6,13 @@
 
 #import <MTLCapture/MTLDynamicLibrary-Protocol.h>
 
-@class NSArray, NSObject, NSString, NSURL;
+@class MTLDebugInstrumentationData, NSArray, NSObject, NSString, NSURL;
 @protocol OS_dispatch_data;
 
 @protocol MTLDynamicLibrarySPI <MTLDynamicLibrary>
+@property(readonly, nonatomic) _Bool shaderValidationEnabled;
+@property(retain, nonatomic) MTLDebugInstrumentationData *debugInstrumentationData;
+@property(copy, nonatomic) NSArray *relocations;
 @property(readonly) const CDStruct_5af0f983 *libraryUUID;
 @property(readonly) NSString *libraryPath;
 @property(readonly) NSArray *importedLibraries;

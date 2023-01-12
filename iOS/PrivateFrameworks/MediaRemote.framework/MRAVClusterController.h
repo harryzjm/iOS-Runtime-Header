@@ -17,10 +17,12 @@
     NSString *_localPairingIdentity;
     NSString *_clusterUID;
     NSString *_clusterLeaderUID;
+    unsigned int _clusterType;
     unsigned long long _previousClusterStatus;
     int _airplayClusterStatusNotificationToken;
 }
 
++ (unsigned int)getClusterType;
 + (id)getClusterLeaderUID;
 + (id)getClusterUID;
 + (_Bool)canBeClusterMember;
@@ -31,7 +33,10 @@
 - (void)deviceInfoDidChangeNotification:(id)arg1;
 - (void)getClusterLeaderEndpoint:(CDUnknownBlockType)arg1;
 - (void)getClusterStatus:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) NSString *clusterLeaderUID;
 @property(readonly, nonatomic) unsigned long long clusterStatus;
+@property(readonly, nonatomic) unsigned int clusterType;
+@property(readonly, nonatomic) _Bool needsCommandRedirection;
 - (void)unregisterObserver:(id)arg1;
 - (void)registerObserver:(id)arg1;
 - (id)init;

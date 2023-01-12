@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <PhotosUICore/NSCopying-Protocol.h>
+
 @class NSArray;
 
-@interface PXTuple : NSObject
+@interface PXTuple : NSObject <NSCopying>
 {
     unsigned long long _hash;
     NSArray *_objects;
@@ -16,6 +18,7 @@
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *objects; // @synthesize objects=_objects;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

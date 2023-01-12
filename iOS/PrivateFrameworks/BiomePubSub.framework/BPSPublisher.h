@@ -15,8 +15,18 @@
 }
 
 - (void)subscribe:(id)arg1;
+- (id)correlateWithCurrent:(id)arg1 comparator:(CDUnknownBlockType)arg2 correlateHandler:(id)arg3;
+- (id)bufferWithSize:(unsigned long long)arg1 prefetch:(unsigned long long)arg2 whenFull:(unsigned long long)arg3;
+- (id)connectableSinkWithCompletion:(CDUnknownBlockType)arg1 shouldContinue:(CDUnknownBlockType)arg2;
 - (id)sinkWithCompletion:(CDUnknownBlockType)arg1 shouldContinue:(CDUnknownBlockType)arg2;
 - (id)sinkWithCompletion:(CDUnknownBlockType)arg1 receiveInput:(CDUnknownBlockType)arg2;
+- (id)drivableSinkWithBookmark:(id)arg1 completion:(CDUnknownBlockType)arg2 shouldContinue:(CDUnknownBlockType)arg3;
+- (id)sinkWithBookmark:(id)arg1 completion:(CDUnknownBlockType)arg2 receiveInput:(CDUnknownBlockType)arg3;
+- (id)handleEventsReceiveSubscription:(CDUnknownBlockType)arg1 receiveOutput:(CDUnknownBlockType)arg2 receiveCompletion:(CDUnknownBlockType)arg3 receiveCancel:(CDUnknownBlockType)arg4 receiveRequest:(CDUnknownBlockType)arg5;
+- (id)multicastCreateSubject:(CDUnknownBlockType)arg1;
+- (id)multicastSubject:(id)arg1;
+- (id)windowWithAssigner:(id)arg1;
+- (id)windowByKey:(CDUnknownBlockType)arg1 assigner:(id)arg2;
 - (id)removeDuplicatesWithIsDuplicate:(CDUnknownBlockType)arg1;
 - (id)orderedMergeWithOthers:(id)arg1 comparator:(CDUnknownBlockType)arg2;
 - (id)orderedMergeWithOther:(id)arg1 comparator:(CDUnknownBlockType)arg2;
@@ -30,10 +40,14 @@
 - (id)sequenceWithSequence:(id)arg1;
 - (id)reduce:(id)arg1;
 - (id)reduceWithInitial:(id)arg1 nextPartialResult:(CDUnknownBlockType)arg2;
+- (id)timerFor:(double)arg1 getTimestamp:(CDUnknownBlockType)arg2;
 - (id)scanWithInitial:(id)arg1 nextPartialResult:(CDUnknownBlockType)arg2;
+- (id)throttleFor:(double)arg1 latest:(_Bool)arg2 getTimestamp:(CDUnknownBlockType)arg3;
+- (id)debounceFor:(double)arg1 getTimestamp:(CDUnknownBlockType)arg2;
 - (id)combineLatestwithOther:(id)arg1;
 - (id)mergeWithOther:(id)arg1;
 - (id)mergeWithOthers:(id)arg1;
+- (id)groupByKey:(CDUnknownBlockType)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

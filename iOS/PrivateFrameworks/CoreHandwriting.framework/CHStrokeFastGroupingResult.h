@@ -6,16 +6,16 @@
 
 @interface CHStrokeFastGroupingResult
 {
-    vector_063dde0e _fastGroupingClusters;
+    vector_4ea6921b _fastGroupingClusters;
 }
 
-+ (id)_strokeGroupsFromFastGroupingClusters:(const vector_063dde0e *)arg1 clusteredStrokes:(id)arg2 strokeProvider:(id)arg3 strategyIdentifier:(id)arg4 clutterFilter:(id)arg5;
-+ (id)_strokeGroupFromFastGroupingCluster:(const struct CHFastGroupingCluster *)arg1 strokeProvider:(id)arg2 strategyIdentifier:(id)arg3;
++ (id)_strokeGroupsFromFastGroupingClusters:(const void *)arg1 clusteredStrokes:(id)arg2 strokeProvider:(id)arg3 strategyIdentifier:(id)arg4 clutterFilter:(id)arg5;
++ (id)_strokeGroupFromFastGroupingCluster:(const void *)arg1 strokeProvider:(id)arg2 strategyIdentifier:(id)arg3;
 + (id)_strokeGroupFromSortedStrokeIdentifiers:(id)arg1 strokeProvider:(id)arg2 strategyIdentifier:(id)arg3;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) vector_063dde0e fastGroupingClusters; // @synthesize fastGroupingClusters=_fastGroupingClusters;
-- (id)initWithFastGroupingClusters:(const vector_063dde0e *)arg1 clusteredStrokes:(id)arg2 strokeProvider:(id)arg3 strategyIdentifier:(id)arg4 clutterFilter:(id)arg5;
+@property(readonly, nonatomic) vector_4ea6921b fastGroupingClusters; // @synthesize fastGroupingClusters=_fastGroupingClusters;
+- (id)initWithFastGroupingClusters:(const void *)arg1 clusteredStrokes:(id)arg2 strokeProvider:(id)arg3 strategyIdentifier:(id)arg4 clutterFilter:(id)arg5;
 
 @end
 

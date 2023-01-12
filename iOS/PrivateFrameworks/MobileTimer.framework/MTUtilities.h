@@ -10,6 +10,8 @@
 {
 }
 
++ (id)widgetOverrideDate;
++ (id)widgetURL;
 + (void)logMessage:(id)arg1;
 + (id)dayAndTimeZoneOffsetStringFromDate:(id)arg1 withTimeZoneOffset:(long long)arg2 timeZoneAbbreviation:(id)arg3 spaceBeforeTimeDesignator:(_Bool)arg4 hoursOnly:(_Bool)arg5 numericOnly:(_Bool)arg6;
 

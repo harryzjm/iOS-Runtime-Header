@@ -8,7 +8,7 @@
 
 #import <PencilKit/NSCoding-Protocol.h>
 
-@class PKDrawing;
+@class PKDrawingConcrete;
 
 @interface PKReplicaEntry : NSObject <NSCoding>
 {
@@ -16,10 +16,10 @@
     unsigned int _clock;
     unsigned int _subclock;
     _Bool _inUse;
-    PKDrawing *_drawing;
+    PKDrawingConcrete *_drawing;
 }
 
-@property(nonatomic) PKDrawing *drawing; // @synthesize drawing=_drawing;
+@property(nonatomic) PKDrawingConcrete *drawing; // @synthesize drawing=_drawing;
 @property(nonatomic) _Bool inUse; // @synthesize inUse=_inUse;
 @property(nonatomic) unsigned int subclock; // @synthesize subclock=_subclock;
 @property(nonatomic) unsigned int clock; // @synthesize clock=_clock;

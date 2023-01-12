@@ -9,6 +9,7 @@
 @interface ICAttachmentGalleryModel (PreviewGeneration)
 - (_Bool)generatePreviewsInOperation:(id)arg1;
 - (_Bool)needToGeneratePreviews;
+- (id)blockingGeneratePDFURL;
 - (void)drawPreviewInRect:(struct CGRect)arg1;
 - (id)fileURLForTypeIdentifier:(id)arg1;
 - (id)providerFileTypes;

@@ -8,7 +8,7 @@
 {
 }
 
-+ (void)setShadowPlanePadding:(box_a3bd9649)arg1 forScene:(id)arg2;
++ (void)setShadowPlanePadding:(box_c9ef104e)arg1 forScene:(id)arg2;
 + (void)invalidateShadowsForScene:(id)arg1;
 - (tvec3_17f03ce0)calculateShadowCameraPosition:(float)arg1 center:(tvec3_17f03ce0)arg2 shadowQuality:(float)arg3 depthLimitAdjustment:(float)arg4;
 - (void)getBounds:(id)arg1;
@@ -20,7 +20,7 @@
 - (void)renderShadowScene:(id)arg1;
 - (id)effects;
 - (id)TSDShadowFromScene:(id)arg1;
-- (box_a3bd9649)p_shadowPlanePaddingForScene:(id)arg1;
+- (box_c9ef104e)p_shadowPlanePaddingForScene:(id)arg1;
 - (id)propertiesForScene:(id)arg1;
 
 @end

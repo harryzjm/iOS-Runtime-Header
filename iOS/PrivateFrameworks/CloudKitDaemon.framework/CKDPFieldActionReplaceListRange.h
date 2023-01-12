@@ -10,7 +10,6 @@
 
 @class CKDPListRange, NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface CKDPFieldActionReplaceListRange : PBCodable <NSCopying>
 {
     CKDPListRange *_range;

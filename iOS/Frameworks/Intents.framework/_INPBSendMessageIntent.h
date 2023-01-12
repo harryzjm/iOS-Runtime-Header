@@ -25,6 +25,7 @@
     NSString *_conversationIdentifier;
     _INPBString *_groupName;
     _INPBIntentMetadata *_intentMetadata;
+    NSString *_notificationThreadIdentifier;
     NSArray *_recipients;
     _INPBContact *_sender;
     NSString *_serviceName;
@@ -40,6 +41,7 @@
 @property(retain, nonatomic) _INPBContact *sender; // @synthesize sender=_sender;
 @property(copy, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
 @property(nonatomic) int outgoingMessageType; // @synthesize outgoingMessageType=_outgoingMessageType;
+@property(copy, nonatomic) NSString *notificationThreadIdentifier; // @synthesize notificationThreadIdentifier=_notificationThreadIdentifier;
 @property(retain, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property(retain, nonatomic) _INPBString *groupName; // @synthesize groupName=_groupName;
 @property(nonatomic) int effect; // @synthesize effect=_effect;
@@ -64,6 +66,7 @@
 - (int)StringAsOutgoingMessageType:(id)arg1;
 - (id)outgoingMessageTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasOutgoingMessageType;
+@property(readonly, nonatomic) _Bool hasNotificationThreadIdentifier;
 @property(readonly, nonatomic) _Bool hasIntentMetadata;
 @property(readonly, nonatomic) _Bool hasGroupName;
 - (int)StringAsEffect:(id)arg1;

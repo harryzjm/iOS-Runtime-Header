@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (id)enabledKeyColor;
 - (id)dividerColor;
 @property(readonly, nonatomic) double carScale;
+- (long long)assetIdiom;
 
 @end
 

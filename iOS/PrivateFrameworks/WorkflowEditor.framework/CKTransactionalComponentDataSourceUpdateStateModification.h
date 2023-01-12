@@ -12,13 +12,13 @@
 
 @interface CKTransactionalComponentDataSourceUpdateStateModification : NSObject <CKTransactionalComponentDataSourceStateModifying>
 {
-    unordered_map_097a8478 _stateUpdates;
+    struct unordered_map<int, std::unordered_multimap<int, id (^)(id)>, std::hash<int>, std::equal_to<int>, std::allocator<std::pair<const int, std::unordered_multimap<int, id (^)(id)>>>> _stateUpdates;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)changeFromState:(id)arg1;
-- (id)initWithStateUpdates:(const unordered_map_097a8478 *)arg1;
+- (id)initWithStateUpdates:(const void *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_288bd34a)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_288bd34a)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) double similarity_score;
 @property(readonly, nonatomic) NSString *shortcut;
 - (id)copyWithZone:(struct _NSZone *)arg1;

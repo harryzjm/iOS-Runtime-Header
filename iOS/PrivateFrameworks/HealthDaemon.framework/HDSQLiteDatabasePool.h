@@ -30,13 +30,11 @@
 - (void).cxx_destruct;
 @property __weak id <HDSQLiteDatabasePoolDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)diagnosticDescription;
-- (void)_didFlushDatabases:(id)arg1;
-- (id)_semaphoreForCheckOutOptions:(unsigned long long)arg1;
-- (id)_removeDatabaseFromCheckoutMap:(id)arg1;
-- (void)_addDatabaseWrapperToCheckoutMap:(id)arg1;
+- (id)currentFlushGroup;
 - (id)flush;
 - (void)checkInDatabase:(id)arg1 flushImmediately:(_Bool)arg2;
 - (id)checkOutDatabaseWithOptions:(unsigned long long)arg1 error:(id *)arg2;
+@property(readonly) long long checkedOutDatabaseCount;
 @property(readonly) long long concurrentReaderLimit;
 @property(readonly) long long cacheSize;
 @property(readonly) long long count;

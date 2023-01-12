@@ -9,14 +9,14 @@
 @interface TSWPRangeMap : NSObject
 {
     struct _NSRange _subRange;
-    vector_7c702c4c _unmappedIndexes;
-    vector_7c702c4c _mappedIndexes;
+    vector_c03e297f _unmappedIndexes;
+    vector_c03e297f _mappedIndexes;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(nonatomic) vector_7c702c4c mappedIndexes; // @synthesize mappedIndexes=_mappedIndexes;
-@property(nonatomic) vector_7c702c4c unmappedIndexes; // @synthesize unmappedIndexes=_unmappedIndexes;
+@property(nonatomic) vector_c03e297f mappedIndexes; // @synthesize mappedIndexes=_mappedIndexes;
+@property(nonatomic) vector_c03e297f unmappedIndexes; // @synthesize unmappedIndexes=_unmappedIndexes;
 @property(nonatomic) struct _NSRange subRange; // @synthesize subRange=_subRange;
 - (void)adjustByDelta:(long long)arg1 startingAt:(unsigned long long)arg2;
 - (struct _NSRange)unmappedCharRange:(struct _NSRange)arg1;
@@ -25,9 +25,9 @@
 - (unsigned long long)p_extendLeftMappedIndex:(unsigned long long)arg1;
 - (unsigned long long)unmappedCharIndex:(unsigned long long)arg1;
 - (unsigned long long)mappedCharIndex:(unsigned long long)arg1;
-- (id)initWithSubRange:(struct _NSRange)arg1 unmappedIndexes:(const vector_06e666a8 *)arg2 affinity:(int)arg3;
-- (id)initWithSubRange:(struct _NSRange)arg1 unmappedIndexes:(const vector_06e666a8 *)arg2 isBackwardAffinities:(const vector_553f084a *)arg3;
-- (id)initWithSubRange:(struct _NSRange)arg1 unmappedPairIndexes:(const vector_06e666a8 *)arg2;
+- (id)initWithSubRange:(struct _NSRange)arg1 unmappedIndexes:(const void *)arg2 affinity:(int)arg3;
+- (id)initWithSubRange:(struct _NSRange)arg1 unmappedIndexes:(const void *)arg2 isBackwardAffinities:(const void *)arg3;
+- (id)initWithSubRange:(struct _NSRange)arg1 unmappedPairIndexes:(const void *)arg2;
 
 @end
 

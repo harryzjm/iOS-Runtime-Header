@@ -15,6 +15,7 @@
 
 @interface CEKDiscreteSlider : UIControl <UIScrollViewDelegate, CEKSliderTickMarksDelegate, CEKAbstractSlider>
 {
+    _Bool _interactiveWhenHidden;
     _Bool _useTextLegibilityBackgrounds;
     _Bool _useTextLegibilityShadows;
     _Bool __needsUpdateContentOffset;
@@ -22,6 +23,7 @@
     double _labelVerticalPadding;
     long long _sliderVerticalAlignment;
     double _sliderVerticalOffset;
+    double _levelIndicatorHeight;
     long long _textOrientation;
     long long _titleAlignment;
     unsigned long long _fontStyle;
@@ -75,8 +77,10 @@
 @property(nonatomic) long long titleAlignment; // @synthesize titleAlignment=_titleAlignment;
 @property(nonatomic) long long textOrientation; // @synthesize textOrientation=_textOrientation;
 @property(nonatomic) CDStruct_ae5a35ae gradientInsets; // @synthesize gradientInsets=_gradientInsets;
+@property(nonatomic) double levelIndicatorHeight; // @synthesize levelIndicatorHeight=_levelIndicatorHeight;
 @property(nonatomic) double sliderVerticalOffset; // @synthesize sliderVerticalOffset=_sliderVerticalOffset;
 @property(nonatomic) long long sliderVerticalAlignment; // @synthesize sliderVerticalAlignment=_sliderVerticalAlignment;
+@property(nonatomic) _Bool interactiveWhenHidden; // @synthesize interactiveWhenHidden=_interactiveWhenHidden;
 @property(nonatomic) double labelVerticalPadding; // @synthesize labelVerticalPadding=_labelVerticalPadding;
 @property(retain, nonatomic) UIColor *gradientColor;
 @property(nonatomic) _Bool useLegibilityBackgrounds;

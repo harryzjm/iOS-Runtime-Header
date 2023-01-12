@@ -10,11 +10,12 @@
 {
 }
 
++ (id)checkFocusGroupTreeForEnvironment:(id)arg1;
 + (id)_ancestryForEnvironment:(id)arg1;
 + (id)simulateFocusUpdateRequestFromEnvironment:(id)arg1;
 + (id)checkFocusabilityForItem:(id)arg1;
 + (id)_legacy_checkFocusabilityForView:(id)arg1;
-+ (id)_statusForFocusSystem:(id)arg1 includeFocusSystem:(_Bool)arg2;
++ (id)_statusForFocusSystem:(id)arg1 scene:(id)arg2 includeFocusSystemLog:(_Bool)arg3 includeSceneLog:(_Bool)arg4;
 + (id)_verboseStatus;
 + (id)status;
 + (id)help;

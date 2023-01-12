@@ -27,7 +27,7 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 - (id)sessionForIdentifier:(id)arg1;
 - (void)handleStopStreamMsg:(id)arg1;
-- (void)handleStartStreamMsg:(id)arg1;
+- (void)handleStartStreamMsg:(id)arg1 args:(id)arg2;
 - (void)handleCheckInMsg:(id)arg1;
 - (void)sendMsg:(id)arg1 args:(id)arg2;
 - (void)sendMsgIfCheckedIn:(id)arg1 args:(id)arg2;

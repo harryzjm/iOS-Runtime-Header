@@ -8,7 +8,6 @@
 
 @class CKRecord, CKRecordID, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDRecordResponse : NSObject
 {
     CKRecordID *_recordID;

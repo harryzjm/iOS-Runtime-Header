@@ -14,6 +14,6 @@
 - (void)requestSummaryForMessageObjectID:(EMMessageObjectID *)arg1;
 - (void)test_tearDown;
 - (void)tearDown;
-- (void)start;
+- (_Bool)start;
 @end
 

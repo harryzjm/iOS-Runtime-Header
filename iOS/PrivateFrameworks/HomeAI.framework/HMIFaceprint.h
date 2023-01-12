@@ -20,6 +20,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)sentinelFaceprintWithUUID:(id)arg1 modelUUID:(id)arg2 faceCropUUID:(id)arg3;
 - (void).cxx_destruct;
 @property(readonly, copy) NSUUID *faceCropUUID; // @synthesize faceCropUUID=_faceCropUUID;
 @property(readonly, copy) NSUUID *modelUUID; // @synthesize modelUUID=_modelUUID;
@@ -30,6 +31,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+@property(readonly, getter=isSentinelFaceprint) _Bool sentinelFaceprint;
 - (id)attributeDescriptions;
 - (id)initWithUUID:(id)arg1 data:(id)arg2 modelUUID:(id)arg3 faceCropUUID:(id)arg4;
 

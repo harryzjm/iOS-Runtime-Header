@@ -8,7 +8,6 @@
 
 @class CKServerChangeToken, NSMutableArray, NSMutableDictionary, NSString;
 
-__attribute__((visibility("hidden")))
 @interface BRCZoneHealthCheckOperation <BRCOperationSubclass>
 {
     CKServerChangeToken *_changeToken;

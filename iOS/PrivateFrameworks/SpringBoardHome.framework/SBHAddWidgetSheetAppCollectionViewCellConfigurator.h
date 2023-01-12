@@ -6,20 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class NSMutableDictionary, SBHIconImageCache;
 
 @interface SBHAddWidgetSheetAppCollectionViewCellConfigurator : NSObject
 {
-    NSMutableDictionary *_imageCache;
+    NSMutableDictionary *_nonAppIconImageCache;
+    SBHIconImageCache *_iconImageCache;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableDictionary *imageCache; // @synthesize imageCache=_imageCache;
-- (id)_newIconImageForApplicationWidgetCollection:(id)arg1 withIconImageInfo:(struct SBIconImageInfo)arg2;
-- (id)_applicationCellIconImageForApplicationWidgetCollection:(id)arg1 withIconImageInfo:(struct SBIconImageInfo)arg2;
-- (id)_applicationCellTitleForApplicationWidgetCollection:(id)arg1;
-- (id)_cacheKeyForApplicationWidgetCollection:(id)arg1 iconImageInfo:(struct SBIconImageInfo)arg2;
-- (void)configureCell:(id)arg1 withApplicationWidgetCollection:(id)arg2 iconImageInfo:(struct SBIconImageInfo)arg3;
+@property(readonly, nonatomic) SBHIconImageCache *iconImageCache; // @synthesize iconImageCache=_iconImageCache;
+- (void)configureCell:(id)arg1 withApplicationWidgetCollection:(id)arg2;
+- (id)initWithIconCache:(id)arg1;
 
 @end
 

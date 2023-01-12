@@ -12,6 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)initWithRowModel:(id)arg1 feedbackDelegate:(id)arg2;
+- (id)_accessibilitySupplementaryFooterViews;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
 - (void)_accessibilityLoadAccessibilityInformation;

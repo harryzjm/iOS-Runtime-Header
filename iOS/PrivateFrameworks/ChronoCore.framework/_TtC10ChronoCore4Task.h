@@ -11,12 +11,13 @@
 __attribute__((visibility("hidden")))
 @interface _TtC10ChronoCore4Task : NSObject
 {
+    MISSING_TYPE *requiredDataProtectionLevel;
     MISSING_TYPE *schedulingConfiguration;
     MISSING_TYPE *schedulingOptions;
-    MISSING_TYPE *powerlogUpdateIdentities;
     MISSING_TYPE *powerlogWakeReason;
     MISSING_TYPE *target;
     MISSING_TYPE *cost;
+    MISSING_TYPE *allowCostOverride;
     MISSING_TYPE *identifier;
     MISSING_TYPE *taskIdentifier;
     MISSING_TYPE *logDigest;
@@ -27,6 +28,8 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)init;
+- (_Bool)isEqual:(id)arg1;
+@property(nonatomic, readonly) long long hash;
 @property(nonatomic, readonly) NSString *description;
 
 @end

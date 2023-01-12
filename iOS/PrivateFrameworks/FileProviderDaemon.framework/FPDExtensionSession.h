@@ -9,7 +9,7 @@
 #import <FileProviderDaemon/FPDExtensionSessionProtocol-Protocol.h>
 #import <FileProviderDaemon/FPDProcessMonitorDelegate-Protocol.h>
 
-@class BKSAssertion, FPDDomain, FPDExtension, FPDProcessMonitor, FPGracePeriodTimer, NSCountedSet, NSExtension, NSHashTable, NSMutableDictionary, NSString, NSUUID, NSXPCConnection;
+@class FPDDomain, FPDExtension, FPDProcessMonitor, FPGracePeriodTimer, NSCountedSet, NSExtension, NSHashTable, NSMutableDictionary, NSString, NSUUID, NSXPCConnection, RBSAssertion;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -32,8 +32,8 @@ __attribute__((visibility("hidden")))
     _Bool _invalidated;
     _Bool _isForeground;
     int _pid;
-    BKSAssertion *_foregroundAssertion;
-    BKSAssertion *_backgroundAssertion;
+    RBSAssertion *_foregroundAssertion;
+    RBSAssertion *_backgroundAssertion;
     _Bool _hasFileProviderPresenceTCCAccess;
 }
 
@@ -44,27 +44,29 @@ __attribute__((visibility("hidden")))
 - (void)_evaluateExtensionForegroundness;
 - (id)newBackgroundAssertion;
 - (id)newForegroundAssertion;
-- (id)newAssertionWithFlags:(unsigned int)arg1 reason:(id)arg2;
+- (id)newAssertionWithAttributeName:(id)arg1 reason:(id)arg2;
 - (void)_notifyNetworkingProviderMonitorWithState:(_Bool)arg1;
 - (void)_networkingGracePeriodOver;
 @property(readonly, copy) NSString *description;
 - (void)invalidate;
+- (void)cancel;
 - (void)start;
 - (void)asyncUnregisterLifetimeExtensionForObject:(id)arg1;
 - (void)unregisterLifetimeExtensionForObject:(id)arg1;
 - (void)_unregisterLifetimeExtensionForObject:(id)arg1;
 - (void)registerLifetimeExtensionForObject:(id)arg1;
 - (id)newFileProviderProxyWithTimeout:(_Bool)arg1 pid:(int)arg2 createIfNeeded:(_Bool)arg3;
-- (id)existingFileProviderProxyWithTimeout:(_Bool)arg1 pid:(int)arg2;
+- (id)existingFileProviderProxyWithTimeout:(_Bool)arg1 onlyAlreadyLifetimeExtended:(_Bool)arg2 pid:(int)arg3;
 - (id)newFileProviderProxyWithTimeout:(_Bool)arg1 pid:(int)arg2;
 - (id)newFileProviderProxyWithoutPIDWithTimeout:(_Bool)arg1;
 - (id)newFileProviderProxyWithPID:(int)arg1;
 - (id)newFileProviderProxyWithoutPID;
 - (void)_invalidateExtensionIfPossible;
-- (void)updatePresenceTCCWithAuditToken:(CDStruct_6ad76789)arg1;
+@property(readonly, nonatomic) _Bool hasFileProviderAttributionMDMAccess;
+- (void)updatePresenceTCCWithAuditToken:(CDStruct_4c969caf)arg1;
 - (id)_connectionWithError:(id *)arg1;
-- (_Bool)_setUpConnectionWithAttemptNumber:(long long)arg1 error:(id *)arg2;
-- (_Bool)terminateExtensionWithRetry:(long long)arg1 error:(id *)arg2;
+- (_Bool)_setUpConnectionWithError:(id *)arg1;
+- (_Bool)terminateExtensionWithError:(id *)arg1;
 - (id)_alternateContentsDictionary;
 - (void)__invalidateWithCancellation:(_Bool)arg1;
 - (void)_invalidateWithCancellation:(_Bool)arg1;

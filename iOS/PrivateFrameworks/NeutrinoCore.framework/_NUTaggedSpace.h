@@ -21,6 +21,7 @@
 - (id)description;
 - (_Bool)isEqualToTaggedImageSpace:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
 - (void)mergeSpace:(id)arg1;
 - (void)addTagNodes:(id)arg1;
 - (void)addTagNode:(id)arg1;

@@ -17,17 +17,23 @@
     _Bool _shouldIgnoreScrolling;
     _Bool _userScrubbing;
     _Bool _hasUserInteractedWithScrubber;
+    _Bool _scrollingForward;
     HUClipScrubberDataSource *_dataSource;
     UICollectionView *_clipCollectionView;
     HFCameraPlaybackEngine *_playbackEngine;
     double _lastContentWidth;
+    double _lastContentOffset;
     id <HFCameraRecordingEvent> _currentEvent;
     double _targetScrollOffset;
+    double _elapsedTime;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) double elapsedTime; // @synthesize elapsedTime=_elapsedTime;
+@property(nonatomic, getter=isScrollingForward) _Bool scrollingForward; // @synthesize scrollingForward=_scrollingForward;
 @property(nonatomic) double targetScrollOffset; // @synthesize targetScrollOffset=_targetScrollOffset;
 @property(retain, nonatomic) id <HFCameraRecordingEvent> currentEvent; // @synthesize currentEvent=_currentEvent;
+@property(nonatomic) double lastContentOffset; // @synthesize lastContentOffset=_lastContentOffset;
 @property(nonatomic) double lastContentWidth; // @synthesize lastContentWidth=_lastContentWidth;
 @property(nonatomic) _Bool hasUserInteractedWithScrubber; // @synthesize hasUserInteractedWithScrubber=_hasUserInteractedWithScrubber;
 @property(nonatomic, getter=isUserScrubbing) _Bool userScrubbing; // @synthesize userScrubbing=_userScrubbing;

@@ -10,8 +10,8 @@
 @interface NWStreamPair
 {
     NSObject<OS_nw_connection> *_connection;
-    struct PerSide_CFReadStream *_rs;
-    struct PerSide_CFWriteStream *_ws;
+    void *_rs;
+    void *_ws;
     NSObject<OS_dispatch_queue> *_queue;
     unsigned char _doneInitialRead;
     struct __CFError *_readError;

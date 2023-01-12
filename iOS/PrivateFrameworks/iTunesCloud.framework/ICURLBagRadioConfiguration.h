@@ -16,6 +16,7 @@
 - (void).cxx_destruct;
 - (id)urlForBagRadioKey:(id)arg1;
 - (_Bool)shouldIncludeHTTPHeaderField:(id)arg1 forRequestURL:(id)arg2;
+@property(readonly, nonatomic) long long continueListeningLoadStationThreshold;
 @property(readonly, nonatomic) long long continueListeningMaxUpcomingTracksSizeToMaintain;
 @property(readonly, nonatomic) long long continueListeningMaxQueueSizeInRequest;
 @property(readonly, nonatomic, getter=isContinueListeningAvailable) _Bool continueListeningAvailable;

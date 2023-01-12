@@ -16,20 +16,19 @@
     NSUUID *_uuid;
 }
 
-+ (id)todoWithIdentifier:(id)arg1 done:(_Bool)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool done; // @synthesize done=_done;
 @property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
-- (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)description;
 - (id)todoWithDone:(_Bool)arg1;
-- (id)init;
 - (id)initWithIdentifier:(id)arg1 done:(_Bool)arg2;
+- (id)init;
 - (id)serialize;
-- (void)saveToArchive:(struct Todo *)arg1;
-- (id)initWithArchive:(const struct Todo *)arg1;
+- (void)saveToArchive:(void *)arg1;
+- (id)initWithArchive:(const void *)arg1;
 - (id)initWithData:(id)arg1;
 
 @end

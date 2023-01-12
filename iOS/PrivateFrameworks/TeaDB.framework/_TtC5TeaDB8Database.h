@@ -11,6 +11,7 @@
 @interface _TtC5TeaDB8Database : _TtCs12_SwiftObject
 {
     MISSING_TYPE *connection;
+    MISSING_TYPE *db;
     MISSING_TYPE *queue;
 }
 

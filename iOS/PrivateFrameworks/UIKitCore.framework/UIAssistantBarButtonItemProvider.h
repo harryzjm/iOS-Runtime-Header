@@ -10,13 +10,24 @@
 {
 }
 
-+ (id)unmodifiableSystemAssistantItem;
++ (id)compactSystemAssistantItem;
++ (id)unmodifiableSystemAssistantItem:(long long)arg1;
++ (id)dictationMenu;
++ (id)dictationActionForInputMode:(id)arg1 inCurrentInputMode:(id)arg2;
++ (id)languageIndicatorItem:(_Bool)arg1;
++ (id)languageIndicatorMenu:(_Bool)arg1;
++ (void)setAssistantBarCompact:(_Bool)arg1;
++ (id)actionForInputMode:(id)arg1;
++ (_Bool)_isInputModeVisible:(id)arg1;
 + (id)systemDefaultAssistantItem;
-+ (id)newPencilTextInputLeadingGroupWithTarget:(id)arg1;
-+ (id)newPencilTextInputTrailingGroupWithTarget:(id)arg1;
++ (id)defaultSystemTrailingBarButtonGroupsForItem:(id)arg1;
++ (id)defaultSystemLeadingBarButtonGroupsForItem:(id)arg1;
 + (id)imageSymbolConfigurationForAssistantBarWithPointSize:(double)arg1;
 + (id)configuredSymbolImageWithName:(id)arg1 size:(double)arg2;
++ (id)barButtonItemForAssistantItemStyle:(long long)arg1 target:(id)arg2 forcePlainButton:(_Bool)arg3;
 + (id)barButtonItemForAssistantItemStyle:(long long)arg1 target:(id)arg2;
++ (_Bool)_isKeyboardItemEnabled;
++ (_Bool)_isMinimizeAssistantBarButtonVisible;
 + (_Bool)_isShowKeyboardButtonVisible;
 + (_Bool)_isDismissButtonVisible;
 + (_Bool)_isDictationButtonVisible;

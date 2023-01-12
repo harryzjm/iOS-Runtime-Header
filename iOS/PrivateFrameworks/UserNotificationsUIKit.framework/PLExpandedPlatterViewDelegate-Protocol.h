@@ -9,6 +9,8 @@
 @class PLExpandedPlatterView;
 
 @protocol PLExpandedPlatterViewDelegate <UIScrollViewDelegate>
+
+@optional
 - (_Bool)associatedViewControllerDidAppearForExpandedPlatterView:(PLExpandedPlatterView *)arg1;
 @end
 

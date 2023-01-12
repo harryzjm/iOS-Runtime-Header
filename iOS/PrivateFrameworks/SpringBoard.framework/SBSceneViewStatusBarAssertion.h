@@ -13,7 +13,6 @@
 @interface SBSceneViewStatusBarAssertion : NSObject <BSInvalidatable>
 {
     NSHashTable *_observers;
-    _Bool _shouldDrawStatusBarInsideSceneView;
     long long _nubViewHidden;
     SBAppStatusBarSettings *_settings;
     unsigned long long _level;
@@ -21,7 +20,6 @@
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long level; // @synthesize level=_level;
-@property(nonatomic) _Bool shouldDrawStatusBarInsideSceneView; // @synthesize shouldDrawStatusBarInsideSceneView=_shouldDrawStatusBarInsideSceneView;
 @property(copy, nonatomic) SBAppStatusBarSettings *settings; // @synthesize settings=_settings;
 @property(nonatomic) long long nubViewHidden; // @synthesize nubViewHidden=_nubViewHidden;
 - (void)_notifyObserversDidInvalidate;

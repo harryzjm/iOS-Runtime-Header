@@ -50,6 +50,7 @@
 - (void)invalidateConnectionWithReason:(id)arg1;
 - (_Bool)_prepareToRunDaemonJob:(id)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) PLLibraryServicesManager *libraryServicesManager;
+- (id)_autoCreateWellKnownPhotoLibraryIfNeededWithURL:(id)arg1 wellKnownLibraryIdentifier:(long long *)arg2;
 - (void)bindToPhotoLibraryURL:(id)arg1 sandboxExtension:(id)arg2 clientOptions:(id)arg3 withReply:(CDUnknownBlockType)arg4;
 - (void)bindToPhotoLibraryURL:(id)arg1 sandboxExtension:(id)arg2 withReply:(CDUnknownBlockType)arg3;
 - (id)_waitForLibraryServicesForDaemonJob;

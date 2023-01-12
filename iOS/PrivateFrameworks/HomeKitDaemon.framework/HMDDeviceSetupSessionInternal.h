@@ -24,7 +24,7 @@
 @property(retain, nonatomic) NSData *sessionData; // @synthesize sessionData=_sessionData;
 @property(readonly) __weak HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 @property(nonatomic) unsigned long long state; // @synthesize state=_state;
-- (_Bool)processSessionData:(id)arg1 error:(id *)arg2;
+- (_Bool)processSessionData:(id)arg1 fromBundle:(id)arg2 outAccessoryUUID:(id *)arg3 error:(id *)arg4;
 - (id)initWithHomeManager:(id)arg1;
 
 @end

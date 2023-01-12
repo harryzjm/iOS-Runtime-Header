@@ -17,6 +17,7 @@
     NSDictionary *_vectorGlyphNodes;
     NSMutableDictionary *_vectorGlyphWithWeightSize;
     float _templateVersion;
+    _Bool _isInterpolatable;
     double _sourcePointSize;
     double _defaultPointSize;
 }
@@ -24,11 +25,21 @@
 + (id)vectorGlyphReaderWithURL:(id)arg1 platform:(long long)arg2 error:(id *)arg3;
 + (id)vectorGlyphReaderWithURL:(id)arg1 error:(id *)arg2;
 @property(readonly) float templateVersion; // @synthesize templateVersion=_templateVersion;
+- (_Bool)canDrawWithWeight:(long long)arg1 size:(long long)arg2;
+- (void)drawInContext:(struct CGContext *)arg1 atPointSize:(double)arg2 scaleFactor:(double)arg3 weight:(long long)arg4 size:(long long)arg5;
+- (_Bool)containsWideGamutContent;
+- (struct CGSize)canvasSizeForWeight:(long long)arg1 size:(long long)arg2;
+- (struct CGSVGNode *)interpolatedSymbolForWeight:(long long)arg1 size:(long long)arg2;
+- (_Bool)isInterpolatableForWeight:(long long)arg1 size:(long long)arg2;
+- (void)_calcInterpolatability;
+- (CDStruct_3c058996)_fixedAlignmentRectInsetsForVectorGlyphWithWeight:(long long)arg1 size:(long long)arg2 foundExactMargins:(_Bool *)arg3;
+- (CDStruct_3c058996)_interpolatedAlignmentRectInsetsForVectorGlyphWithWeight:(long long)arg1 size:(long long)arg2;
 - (CDStruct_3c058996)alignmentRectInsetsForVectorGlyphWithWeight:(long long)arg1 size:(long long)arg2;
 - (double)capHeightForVectorGlyphWithWeight:(long long)arg1 size:(long long)arg2;
 - (double)baselineForVectorGlyphWithWeight:(long long)arg1 size:(long long)arg2;
 - (_Bool)vectorGlyphExistsWithWeight:(long long)arg1 size:(long long)arg2 error:(id *)arg3;
 - (struct CGSVGDocument *)vectorGlyphWithWeight:(long long)arg1 size:(long long)arg2 error:(id *)arg3;
+- (id)_marginNodeIDForWeight:(long long)arg1 size:(long long)arg2 direction:(long long)arg3;
 - (id)_caplineNodeIDForGlyphSize:(long long)arg1;
 - (id)_baselineNodeIDForGlyphSize:(long long)arg1;
 - (id)_glyphNodeIDForWeight:(long long)arg1 size:(long long)arg2;

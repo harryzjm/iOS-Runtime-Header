@@ -8,7 +8,7 @@
 
 #import <AXMediaUtilities/AXMTaskDispatcherDelegate-Protocol.h>
 
-@class AXMAudioSession, AXMSoundComponent, AXMSpeechComponent, AXMTaskDispatcher, NSArray, NSString;
+@class AXMAudioSession, AXMOutputManagerConfiguration, AXMSoundComponent, AXMSpeechComponent, AXMTaskDispatcher, NSArray, NSString;
 @protocol OS_dispatch_queue;
 
 @interface AXMOutputManager : NSObject <AXMTaskDispatcherDelegate>
@@ -21,9 +21,11 @@
     AXMSoundComponent *_queue_soundComponent;
     AXMSpeechComponent *_queue_speechComponent;
     NSArray *_queue_activeComponents;
+    AXMOutputManagerConfiguration *_configuration;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) AXMOutputManagerConfiguration *configuration; // @synthesize configuration=_configuration;
 - (void)dispatcher:(id)arg1 handleTask:(id)arg2;
 - (id)playActiveSound:(id)arg1;
 - (void)playSound:(id)arg1;
@@ -35,6 +37,7 @@
 - (void)enableWithCompletion:(CDUnknownBlockType)arg1;
 - (void)disable;
 @property(readonly, copy) NSString *description;
+- (id)initWithConfiguration:(id)arg1;
 - (id)initWithComponents:(unsigned long long)arg1 options:(unsigned long long)arg2;
 
 // Remaining properties

@@ -9,7 +9,6 @@
 }
 
 + (id)articleTypeNonFlintFeature;
-- (id)fr_description;
 - (id)init;
 
 @end

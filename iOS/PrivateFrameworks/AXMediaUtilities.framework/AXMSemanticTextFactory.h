@@ -10,19 +10,19 @@
 
 @interface AXMSemanticTextFactory : NSObject
 {
+    NSDataDetector *_dataDetector;
     NLTagger *_tagger;
     NSMutableDictionary *_cachedLexicons;
     NSNumberFormatter *_numberFormatter;
     NSMutableDictionary *_compiledPatterns;
-    NSDataDetector *_dataDetector;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSDataDetector *dataDetector; // @synthesize dataDetector=_dataDetector;
 @property(retain, nonatomic) NSMutableDictionary *compiledPatterns; // @synthesize compiledPatterns=_compiledPatterns;
 @property(retain, nonatomic) NSNumberFormatter *numberFormatter; // @synthesize numberFormatter=_numberFormatter;
 @property(retain, nonatomic) NSMutableDictionary *cachedLexicons; // @synthesize cachedLexicons=_cachedLexicons;
 @property(retain, nonatomic) NLTagger *tagger; // @synthesize tagger=_tagger;
+@property(retain, nonatomic) NSDataDetector *dataDetector; // @synthesize dataDetector=_dataDetector;
 - (struct _LXLexicon *)_lexiconForLocale:(id)arg1;
 - (_Bool)_textExistsInLexicon:(id)arg1 withLocale:(id)arg2;
 - (_Bool)_lexiconExistsForLocale:(id)arg1;

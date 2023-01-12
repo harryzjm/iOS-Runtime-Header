@@ -78,6 +78,7 @@
 - (_Bool)deviceScanningInProgress;
 - (_Bool)deviceScanningEnabled;
 - (_Bool)wasDeviceDiscovered:(id)arg1;
+- (id)deviceFromAddressString:(id)arg1;
 - (void)_removeDevice:(id)arg1;
 - (id)addDeviceIfNeeded:(struct BTDeviceImpl *)arg1;
 - (_Bool)isAnyoneAdvertising;

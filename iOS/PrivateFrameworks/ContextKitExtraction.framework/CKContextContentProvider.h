@@ -10,6 +10,8 @@
 {
 }
 
+- (double)timeout;
+- (void)extractUsingExecutor:(id)arg1 withOptions:(unsigned long long)arg2;
 - (void)extractUsingExecutor:(id)arg1;
 
 @end

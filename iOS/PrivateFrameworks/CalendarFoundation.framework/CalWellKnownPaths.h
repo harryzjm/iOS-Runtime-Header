@@ -15,6 +15,7 @@
 + (id)eventsPendingChangesPath;
 + (id)temporaryFilesPath;
 + (id)calendarCachePath;
++ (id)sandboxCalendarsFolderPath;
 + (id)calendarsFolderPath;
 + (id)mailInvitationDropPath;
 + (id)calendarFileHandlerPath;

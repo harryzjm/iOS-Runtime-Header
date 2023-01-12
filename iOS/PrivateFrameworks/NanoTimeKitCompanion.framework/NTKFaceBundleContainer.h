@@ -10,7 +10,7 @@
 {
 }
 
-+ (id)faceBundles;
++ (id)faceBundleClasses;
 
 @end
 

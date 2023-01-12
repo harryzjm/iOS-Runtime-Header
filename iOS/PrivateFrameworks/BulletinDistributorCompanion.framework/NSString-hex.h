@@ -10,6 +10,8 @@
 - (id)fromHex;
 - (_Bool)_validHexChar:(BOOL)arg1;
 - (id)hex;
+@property(readonly) NSString *blt_filenameSafe;
 - (id)blt_sanitizeForURL;
+- (unsigned long long)blt_sizeof;
 @end
 

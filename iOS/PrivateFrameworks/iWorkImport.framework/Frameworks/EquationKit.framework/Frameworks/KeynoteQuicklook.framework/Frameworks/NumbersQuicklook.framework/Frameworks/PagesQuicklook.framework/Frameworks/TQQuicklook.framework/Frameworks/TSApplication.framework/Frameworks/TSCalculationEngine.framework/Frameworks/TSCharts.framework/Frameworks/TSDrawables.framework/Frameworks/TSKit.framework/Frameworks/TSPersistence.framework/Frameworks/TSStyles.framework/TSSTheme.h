@@ -9,7 +9,7 @@
 #import <TSStyles/TSKDocumentObject-Protocol.h>
 #import <TSStyles/TSKModel-Protocol.h>
 
-@class NSMutableDictionary, NSString, TSSStylesheet;
+@class NSArray, NSMutableDictionary, NSString, TSSStylesheet;
 
 @interface TSSTheme : TSPObject <TSKModel, TSKDocumentObject>
 {
@@ -25,12 +25,12 @@
 + (void)registerPresetSourceClass:(Class)arg1;
 + (void)registerPresetSourceClasses;
 + (id)presetSources;
-+ (id)themeWithContext:(id)arg1 alternate:(int)arg2 withStylesheet:(id)arg3;
++ (id)themeWithContext:(id)arg1 alternate:(unsigned long long)arg2 withStylesheet:(id)arg3;
 - (void).cxx_destruct;
 - (id)referencedStyles;
 - (void)checkThemeStylesheetConsistency;
-- (void)bootstrapThemeAlternate:(int)arg1;
-- (id)p_identifierForBootstrapTheme:(int)arg1;
+- (void)bootstrapThemeAlternate:(unsigned long long)arg1;
+- (id)p_identifierForBootstrapTheme:(unsigned long long)arg1;
 - (id)migratedPresetForPresetWithoutFollowingReplacements:(id)arg1;
 - (id)migratedPresetForPreset:(id)arg1;
 - (id)p_migratedPresetForPreset:(id)arg1 followReplacements:(_Bool)arg2;
@@ -42,7 +42,7 @@
 - (id)childEnumerator;
 - (void)setStylesheetForUpgradeToSingleStylesheet:(id)arg1;
 - (_Bool)containsCGColor:(struct CGColor *)arg1;
-- (id)colors;
+@property(readonly, nonatomic) NSArray *colors;
 - (unsigned long long)indexOfPreset:(id)arg1;
 - (id)presetOfKind:(id)arg1 index:(unsigned long long)arg2;
 - (void)movePresetOfKind:(id)arg1 fromIndex:(unsigned long long)arg2 toIndex:(unsigned long long)arg3;
@@ -59,7 +59,7 @@
 - (void)enablePresetValidation;
 - (_Bool)hasPresetsOfKind:(id)arg1;
 - (id)presetsOfKind:(id)arg1;
-- (id)presetKinds;
+@property(readonly, nonatomic) NSArray *presetKinds;
 @property(retain, nonatomic) TSSStylesheet *documentStylesheet;
 @property(retain, nonatomic) TSSStylesheet *legacyStylesheet;
 @property(retain, nonatomic) NSString *themeIdentifier;
@@ -68,8 +68,8 @@
 - (id)initWithContext:(id)arg1 documentStylesheet:(id)arg2;
 - (id)initWithContext:(id)arg1;
 - (void)upgradeStylesWithBlock:(CDUnknownBlockType)arg1;
-- (void)saveToArchive:(struct ThemeArchive *)arg1 archiver:(id)arg2;
-- (void)loadFromArchive:(const struct ThemeArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

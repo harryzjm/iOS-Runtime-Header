@@ -27,7 +27,7 @@
 - (void)presentAudioActionMenu;
 - (void)configureAudioActionMenuControllerForPlayback:(_Bool)arg1;
 - (void)audioMenuItemAction:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 marginInsets:(struct UIEdgeInsets)arg2 shouldAllowImpact:(_Bool)arg3 shouldShowSendButton:(_Bool)arg4 shouldShowSubject:(_Bool)arg5 shouldShowPluginButtons:(_Bool)arg6 shouldShowCharacterCount:(_Bool)arg7 traitCollection:(id)arg8;
+- (id)initWithFrame:(struct CGRect)arg1 marginInsets:(struct UIEdgeInsets)arg2 shouldAllowImpact:(_Bool)arg3 shouldShowSendButton:(_Bool)arg4 shouldShowSubject:(_Bool)arg5 shouldShowPluginButtons:(_Bool)arg6 shouldShowCharacterCount:(_Bool)arg7 traitCollection:(id)arg8 shouldDisableAttachments:(_Bool)arg9;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_accessibilityApplyEmojiButtonLabel;
 - (void)_accessibilityApplyCancelButtonLabel;

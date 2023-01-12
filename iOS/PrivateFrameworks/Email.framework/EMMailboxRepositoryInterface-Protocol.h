@@ -6,11 +6,11 @@
 
 #import <Email/NSObject-Protocol.h>
 
-@class EMMailboxChangeAction, EMObjectID;
+@class EMMailboxChangeAction, EMMailboxObjectID, EMObjectID;
 @protocol EMMailboxChangeObserver;
 
 @protocol EMMailboxRepositoryInterface <NSObject>
-- (void)mailboxTypeForMailboxObjectID:(EMObjectID *)arg1 completionHandler:(void (^)(long long))arg2;
+- (void)mailboxTypeForMailboxObjectID:(EMMailboxObjectID *)arg1 completionHandler:(void (^)(long long))arg2;
 - (void)mailboxObjectIDsForMailboxType:(long long)arg1 completionHandler:(void (^)(NSSet *))arg2;
 - (void)getAllMailboxObjectIDsWithCompletion:(void (^)(NSSet *))arg1;
 - (void)performMailboxChangeAction:(EMMailboxChangeAction *)arg1 completionHandler:(void (^)(_Bool))arg2;

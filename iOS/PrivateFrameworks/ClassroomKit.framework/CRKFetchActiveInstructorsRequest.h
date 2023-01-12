@@ -8,10 +8,14 @@
 
 @interface CRKFetchActiveInstructorsRequest : CATTaskRequest
 {
+    _Bool _includeImages;
 }
 
 + (_Bool)supportsSecureCoding;
 + (Class)whitelistedClassForResultObject;
+@property(nonatomic) _Bool includeImages; // @synthesize includeImages=_includeImages;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

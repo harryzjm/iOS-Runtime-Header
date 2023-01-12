@@ -11,20 +11,23 @@
 #import <Rapport/RPCompanionLinkXPCClientInterface-Protocol.h>
 #import <Rapport/RPMessageable-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSString, NSXPCConnection, RPCompanionLinkDevice;
-@protocol OS_dispatch_queue;
+@class NSArray, NSDictionary, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSString, RPCompanionLinkDevice;
+@protocol OS_dispatch_queue, RPDaemonConnection, RPSignedInUserProvider;
 
 @interface RPCompanionLinkClient : NSObject <NSSecureCoding, RPCompanionLinkXPCClientInterface, RPAuthenticatable, RPMessageable>
 {
     _Bool _activateCalled;
     NSMutableSet *_assertions;
+    id <RPDaemonConnection> _daemonCnx;
     NSMutableDictionary *_deviceDictionary;
     NSMutableDictionary *_eventRegistrations;
     _Bool _invalidateCalled;
     _Bool _invalidateDone;
     NSMutableOrderedSet *_registeredProfileIDs;
     NSMutableDictionary *_requestRegistrations;
-    NSXPCConnection *_xpcCnx;
+    NSString *_serviceType;
+    id <RPSignedInUserProvider> _userProvider;
+    _Bool _targetUserSession;
     unsigned int _pairSetupFlags;
     unsigned int _pairVerifyFlags;
     int _passwordType;
@@ -32,20 +35,26 @@
     unsigned int _flags;
     unsigned int _clientID;
     unsigned int _internalAuthFlags;
+    NSArray *_allowedMACAddresses;
+    NSArray *_pairSetupACL;
     NSString *_password;
     CDUnknownBlockType _authCompletionHandler;
+    CDUnknownBlockType _disconnectHandler;
     CDUnknownBlockType _showPasswordHandler;
     CDUnknownBlockType _hidePasswordHandler;
     CDUnknownBlockType _promptForPasswordHandler;
     NSString *_appID;
+    double _awdlGuestDiscoveryTimeout;
     long long _bleClientUseCase;
     NSString *_cloudServiceID;
     unsigned long long _controlFlags;
     RPCompanionLinkDevice *_destinationDevice;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
+    unsigned long long _errorFlags;
+    CDUnknownBlockType _errorFlagsChangedHandler;
     CDUnknownBlockType _interruptionHandler;
     CDUnknownBlockType _invalidationHandler;
-    NSString *_serviceType;
+    long long _rssiThreshold;
     CDUnknownBlockType _deviceFoundHandler;
     CDUnknownBlockType _deviceLostHandler;
     CDUnknownBlockType _deviceChangedHandler;
@@ -64,37 +73,47 @@
 @property(copy, nonatomic) CDUnknownBlockType deviceChangedHandler; // @synthesize deviceChangedHandler=_deviceChangedHandler;
 @property(copy, nonatomic) CDUnknownBlockType deviceLostHandler; // @synthesize deviceLostHandler=_deviceLostHandler;
 @property(copy, nonatomic) CDUnknownBlockType deviceFoundHandler; // @synthesize deviceFoundHandler=_deviceFoundHandler;
-@property(copy, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
+@property(nonatomic) _Bool targetUserSession; // @synthesize targetUserSession=_targetUserSession;
+@property(nonatomic) long long rssiThreshold; // @synthesize rssiThreshold=_rssiThreshold;
 @property(copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property(copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
 @property(nonatomic) unsigned int flags; // @synthesize flags=_flags;
+@property(copy, nonatomic) CDUnknownBlockType errorFlagsChangedHandler; // @synthesize errorFlagsChangedHandler=_errorFlagsChangedHandler;
+@property(nonatomic) unsigned long long errorFlags; // @synthesize errorFlags=_errorFlags;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property(retain, nonatomic) RPCompanionLinkDevice *destinationDevice; // @synthesize destinationDevice=_destinationDevice;
 @property(nonatomic) unsigned long long controlFlags; // @synthesize controlFlags=_controlFlags;
 @property(copy, nonatomic) NSString *cloudServiceID; // @synthesize cloudServiceID=_cloudServiceID;
 @property(nonatomic) long long bleClientUseCase; // @synthesize bleClientUseCase=_bleClientUseCase;
+@property(nonatomic) double awdlGuestDiscoveryTimeout; // @synthesize awdlGuestDiscoveryTimeout=_awdlGuestDiscoveryTimeout;
 @property(copy, nonatomic) NSString *appID; // @synthesize appID=_appID;
+@property(retain, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
 @property(copy, nonatomic) CDUnknownBlockType promptForPasswordHandler; // @synthesize promptForPasswordHandler=_promptForPasswordHandler;
 @property(copy, nonatomic) CDUnknownBlockType hidePasswordHandler; // @synthesize hidePasswordHandler=_hidePasswordHandler;
 @property(copy, nonatomic) CDUnknownBlockType showPasswordHandler; // @synthesize showPasswordHandler=_showPasswordHandler;
+@property(copy, nonatomic) CDUnknownBlockType disconnectHandler; // @synthesize disconnectHandler=_disconnectHandler;
 @property(copy, nonatomic) CDUnknownBlockType authCompletionHandler; // @synthesize authCompletionHandler=_authCompletionHandler;
 @property(readonly, nonatomic) int passwordTypeActual; // @synthesize passwordTypeActual=_passwordTypeActual;
 @property(nonatomic) int passwordType; // @synthesize passwordType=_passwordType;
 @property(copy, nonatomic) NSString *password; // @synthesize password=_password;
 @property(nonatomic) unsigned int pairVerifyFlags; // @synthesize pairVerifyFlags=_pairVerifyFlags;
 @property(nonatomic) unsigned int pairSetupFlags; // @synthesize pairSetupFlags=_pairSetupFlags;
+@property(retain, nonatomic) NSArray *pairSetupACL; // @synthesize pairSetupACL=_pairSetupACL;
+@property(retain, nonatomic) NSArray *allowedMACAddresses; // @synthesize allowedMACAddresses=_allowedMACAddresses;
 - (void)deregisterProfileID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_reregisterProfileIDs;
 - (void)_registerProfileID:(id)arg1 reregister:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)registerProfileID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)launchAppWithURL:(id)arg1 destinationID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)launchAppWithBundleID:(id)arg1 destinationID:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)companionLinkHandleDisconnect;
 - (void)companionLinkReceivedRequestID:(id)arg1 request:(id)arg2 options:(id)arg3 responseHandler:(CDUnknownBlockType)arg4;
 - (void)sendRequestID:(id)arg1 request:(id)arg2 destinationID:(id)arg3 options:(id)arg4 responseHandler:(CDUnknownBlockType)arg5;
 - (void)sendRequestID:(id)arg1 request:(id)arg2 options:(id)arg3 responseHandler:(CDUnknownBlockType)arg4;
 - (void)deregisterRequestID:(id)arg1;
 - (void)_reregisterRequests;
 - (void)_registerRequestID:(id)arg1 options:(id)arg2 reregister:(_Bool)arg3;
+- (void)_registerRequestIDOnQueue:(id)arg1 options:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)registerRequestID:(id)arg1 options:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)companionLinkReceivedEventID:(id)arg1 event:(id)arg2 options:(id)arg3;
 - (void)sendEventID:(id)arg1 event:(id)arg2 destinationID:(id)arg3 options:(id)arg4 completion:(CDUnknownBlockType)arg5;
@@ -103,7 +122,8 @@
 - (void)_reregisterEvents;
 - (void)_registerEventID:(id)arg1 options:(id)arg2 reregister:(_Bool)arg3;
 - (void)registerEventID:(id)arg1 options:(id)arg2 handler:(CDUnknownBlockType)arg3;
-- (_Bool)shouldReportDevice:(id)arg1;
+- (void)companionLinkUpdateErrorFlags:(unsigned long long)arg1;
+- (_Bool)shouldReportDevice:(id)arg1 toXPCConnectionWithLaunchInstanceID:(id)arg2;
 - (void)_lostAllDevices;
 - (void)companionLinkLocalDeviceUpdated:(id)arg1;
 - (void)companionLinkChangedDevice:(id)arg1 changes:(unsigned int)arg2;
@@ -121,12 +141,15 @@
 - (void)invalidate;
 - (void)_interrupted;
 - (void)_invokeBlockActivateSafe:(CDUnknownBlockType)arg1;
-- (void)_ensureXPCStarted;
+- (id)_ensureXPCStarted;
+- (id)_connectionWithClient:(id)arg1 queue:(id)arg2 userProvider:(id)arg3 interruptionHandler:(CDUnknownBlockType)arg4 invalidationHandler:(CDUnknownBlockType)arg5;
+- (id)_XPCConnectionWithMachServiceName:(id)arg1 options:(unsigned long long)arg2;
 - (void)_activateWithCompletion:(CDUnknownBlockType)arg1 reactivate:(_Bool)arg2;
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithUserProvider:(id)arg1;
 - (id)init;
 
 @end

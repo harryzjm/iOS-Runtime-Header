@@ -7,12 +7,14 @@
 #import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
+#import <PassKitCore/PKInvalidatable-Protocol.h>
 
-@class NSData;
+@class NSData, NSString;
 @protocol OS_xpc_object;
 
-@interface PKImageSetXPCContainer : NSObject <NSSecureCoding>
+@interface PKImageSetXPCContainer : NSObject <NSSecureCoding, PKInvalidatable>
 {
+    _Bool _invalidated;
     unsigned long long _length;
     _Bool _isShmem;
     unsigned long long _offset;
@@ -23,13 +25,20 @@
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSData *imageSetHash; // @synthesize imageSetHash=_imageSetHash;
-- (void)purge;
+- (void)invalidate;
+@property(readonly, nonatomic, getter=isInvalidated) _Bool invalidated;
 - (id)containedImageSet;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithWithXPCObject:(id)arg1 length:(unsigned long long)arg2 isSharedMemory:(_Bool)arg3 offset:(unsigned long long)arg4 hash:(id)arg5;
 - (id)initWithWithXPCObject:(id)arg1 hash:(id)arg2;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

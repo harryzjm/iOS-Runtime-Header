@@ -39,11 +39,13 @@
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)description;
+- (_Bool)containsPath:(id)arg1;
 - (id)FSEventsUUID;
 - (id)uuid;
 - (id)initWithPath:(id)arg1;
 - (_Bool)validate;
 @property(readonly, nonatomic) long long state; // @dynamic state;
+- (_Bool)freespaceIsStale:(unsigned long long)arg1;
 - (unsigned long long)freespace;
 - (unsigned long long)size;
 - (unsigned long long)amountPurged;

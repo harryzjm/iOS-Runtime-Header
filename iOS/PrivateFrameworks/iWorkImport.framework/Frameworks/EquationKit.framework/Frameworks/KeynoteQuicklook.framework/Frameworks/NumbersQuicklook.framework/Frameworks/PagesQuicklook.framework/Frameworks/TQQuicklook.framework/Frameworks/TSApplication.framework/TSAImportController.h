@@ -10,7 +10,7 @@
 #import <TSApplication/TSDImportExportDelegate-Protocol.h>
 #import <TSApplication/TSPObjectContextDelegate-Protocol.h>
 
-@class NSDictionary, NSMapTable, NSMutableArray, NSMutableSet, NSOperationQueue, NSProgress, NSSet, NSString, NSURL, NSUUID, TSPObjectContext, TSUTemporaryDirectory;
+@class NSDictionary, NSMapTable, NSMutableArray, NSMutableSet, NSOperationQueue, NSProgress, NSSet, NSString, NSURL, NSUUID, SFUCryptoKey, TSPDocumentLoadValidationPolicy, TSPDocumentSaveValidationPolicy, TSPObjectContext, TSUTemporaryDirectory;
 @protocol NSFilePresenter, OS_dispatch_queue, TSADocumentPassphraseProvider, TSAImportDelegate, TSKImporter;
 
 @interface TSAImportController : NSObject <TSPObjectContextDelegate, NSFilePresenter, TSDImportExportDelegate>
@@ -103,10 +103,12 @@
 - (id)initWithPath:(id)arg1 delegate:(id)arg2;
 
 // Remaining properties
-@property(readonly, nonatomic) long long archiveValidationMode;
 @property(readonly, nonatomic) NSUUID *baseUUIDForObjectUUID;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) TSPDocumentLoadValidationPolicy *documentLoadValidationPolicy;
+@property(readonly, nonatomic) TSPDocumentSaveValidationPolicy *documentSaveValidationPolicy;
+@property(readonly) SFUCryptoKey *encryptionKey;
 @property(readonly, nonatomic) id <NSFilePresenter> filePresenter;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) NSMapTable *incompatibleMediaContainersWithDataUnsupportedOnAllDevices;

@@ -21,7 +21,7 @@
 }
 
 + (id)formBestOfGroup:(id)arg1 clusteringRules:(id)arg2 topicDiversityThreshold:(double)arg3 topicDiversityWindowSize:(long long)arg4 allowUnfilteredArticles:(_Bool)arg5;
-+ (id)formGroup:(id)arg1 withMinClusterSize:(long long)arg2 maxClusterSize:(long long)arg3 maxPublisherOccurrences:(long long)arg4 maxUnpaidArticles:(long long)arg5 enforcePublisherCap:(_Bool)arg6;
++ (id)formGroup:(id)arg1 withMinClusterSize:(long long)arg2 maxClusterSize:(long long)arg3 maxPublisherOccurrences:(long long)arg4 maxUnpaidArticles:(long long)arg5 maxEvergreenArticles:(long long)arg6 enforcePublisherCap:(_Bool)arg7;
 + (id)predictBestGroup:(id)arg1 ungroupedArticles:(id)arg2 ungroupedTags:(id)arg3 articlesByTag:(id)arg4 heuristic:(id)arg5 autoFavoriteHeuristic:(id)arg6;
 - (void).cxx_destruct;
 @property(nonatomic) double heuristicScore; // @synthesize heuristicScore=_heuristicScore;

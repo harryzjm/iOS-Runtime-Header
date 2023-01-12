@@ -13,11 +13,19 @@
     MISSING_TYPE *components;
     MISSING_TYPE *$__lazy_storage_$_componentViews;
     MISSING_TYPE *$__lazy_storage_$_contentView;
+    MISSING_TYPE *$__lazy_storage_$_trackingViewToState;
+    MISSING_TYPE *scrollView;
 }
 
 - (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(_Bool)arg2;
+- (void)scrollViewDidEndDecelerating:(id)arg1;
+- (void)scrollViewWillBeginDragging:(id)arg1;
+- (void)scrollViewDidScroll:(id)arg1;
 - (void)dismissArticleModal;
+@property(nonatomic, readonly) unsigned long long supportedInterfaceOrientations;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (id)initWithCoder:(id)arg1;
 

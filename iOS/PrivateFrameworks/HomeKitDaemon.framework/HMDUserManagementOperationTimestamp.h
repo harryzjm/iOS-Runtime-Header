@@ -6,11 +6,12 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMBModelObjectCoder-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDDevice, NSDate, NSNumber;
+@class HMDDevice, NSDate, NSNumber, NSString;
 
-@interface HMDUserManagementOperationTimestamp : HMFObject <NSSecureCoding>
+@interface HMDUserManagementOperationTimestamp : HMFObject <HMBModelObjectCoder, NSSecureCoding>
 {
     HMDDevice *_device;
     NSDate *_timestamp;
@@ -18,6 +19,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)hmbDecodeData:(id)arg1 fromStorageLocation:(unsigned long long)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 @property(readonly) NSNumber *state; // @synthesize state=_state;
 @property(readonly) NSDate *timestamp; // @synthesize timestamp=_timestamp;
@@ -28,6 +30,13 @@
 - (id)attributeDescriptions;
 - (id)shortDescription;
 - (id)initWithDevice:(id)arg1 state:(unsigned long long)arg2;
+- (id)hmbEncodeForStorageLocation:(unsigned long long)arg1 error:(id *)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

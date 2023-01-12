@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)blockGoingBackFromCurrentController;
 - (void)buddyControllerHold:(id)arg1 beforePresentingBuddyController:(id)arg2;
 
 @end

@@ -52,7 +52,7 @@
 - (void)cancelRetrievalRequest;
 - (void)_cancelActiveAssetResourceRequests;
 - (void)_didFinishDownloadWithSuccess:(_Bool)arg1 resourceInfo:(id)arg2 error:(id)arg3;
-- (void)_simulateFetchResourcesWithDuration:(double)arg1 success:(_Bool)arg2 networkAccessAllowed:(_Bool)arg3 handler:(CDUnknownBlockType)arg4;
+- (void)_simulateFetchResourcesWithDuration:(double)arg1 success:(_Bool)arg2 networkAccessAllowed:(_Bool)arg3 queue:(id)arg4 handler:(CDUnknownBlockType)arg5;
 - (void)_handleCompletionOfAssetResourceDataRequestWithId:(int)arg1 error:(id)arg2;
 - (void)_fetchResourcesForDuplicatingAsset:(id)arg1 options:(id)arg2 networkAccessAllowed:(_Bool)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)_fetchResourcesForSharingAsset:(id)arg1 options:(id)arg2 networkAccessAllowed:(_Bool)arg3 handler:(CDUnknownBlockType)arg4;

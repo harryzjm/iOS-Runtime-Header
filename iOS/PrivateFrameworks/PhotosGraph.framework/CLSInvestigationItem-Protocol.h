@@ -14,7 +14,6 @@
 @property(readonly, nonatomic) double clsSquareCropScore;
 @property(readonly) _Bool clsHasInterestingScenes;
 @property(readonly) _Bool clsHasPoorResolution;
-@property(readonly) _Bool clsAvoidIfPossibleForKeyItem;
 @property(readonly) _Bool clsIsInhabited;
 @property(readonly, nonatomic) NSDate *cls_localDate;
 @property(readonly, nonatomic) NSDate *cls_universalDate;
@@ -49,13 +48,16 @@
 @property(readonly, nonatomic) long long clsShareCount;
 @property(readonly, nonatomic) long long clsPlayCount;
 @property(readonly, nonatomic) long long clsViewCount;
-@property(readonly, nonatomic) NSArray *peopleNames;
 @property(readonly, nonatomic) CLLocation *location;
 @property(readonly, nonatomic) NSString *clsIdentifier;
+@property(readonly, nonatomic) NSArray *clsPersonAndPetLocalIdentifiers;
+@property(readonly, nonatomic) NSArray *clsPetLocalIdentifiers;
 @property(readonly, nonatomic) unsigned long long clsPeopleCount;
-@property(readonly, nonatomic) NSArray *clsUnprefetchedPeopleNames;
-@property(readonly, nonatomic) NSArray *clsPeopleNames;
+@property(readonly, nonatomic) NSArray *clsConsolidatedPersonLocalIdentifiers;
+@property(readonly, nonatomic) NSArray *clsUnprefetchedPersonLocalIdentifiers;
+@property(readonly, nonatomic) NSArray *clsPersonLocalIdentifiers;
 @property(readonly, nonatomic) CLLocation *clsLocation;
+- (_Bool)clsAvoidIfPossibleAsKeyItemForMemories:(_Bool)arg1 allowGuestAsset:(_Bool)arg2;
 - (double)scoreInContext:(CLSAssetScoringContext *)arg1;
 @end
 

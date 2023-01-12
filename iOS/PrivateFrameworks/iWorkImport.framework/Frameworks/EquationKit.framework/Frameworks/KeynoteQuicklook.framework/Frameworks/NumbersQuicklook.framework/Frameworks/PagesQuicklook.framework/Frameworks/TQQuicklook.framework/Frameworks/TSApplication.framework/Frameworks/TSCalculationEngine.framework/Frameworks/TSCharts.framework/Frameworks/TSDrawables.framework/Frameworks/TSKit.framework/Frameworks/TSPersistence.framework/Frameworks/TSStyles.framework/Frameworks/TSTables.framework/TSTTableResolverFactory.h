@@ -13,21 +13,22 @@
 
 @interface TSTTableResolverFactory : NSObject <TSCETableResolverFactoryProtocol, TSCEResolverLocatingProtocol>
 {
-    struct TSCECalcEngine *_calcEngine;
+    void *_calcEngine;
 }
 
-- (struct TSCERangeRef)aggregateRangeRefForCategoryRef:(const struct TSCECategoryRef *)arg1;
-- (vector_4115f7f8)unorderedCellRefsForCategoryRef:(const struct TSCECategoryRef *)arg1 atRowUid:(const UUIDData_5fbc143e *)arg2;
-- (vector_2431c21e)categoryRefsForSpanningCategoryRef:(const struct TSCECategoryRef *)arg1;
-- (vector_4115f7f8)cellRefsForCategoryRef:(const struct TSCECategoryRef *)arg1 atRowUid:(const UUIDData_5fbc143e *)arg2;
-- (vector_10088e46)valuesForCategoryRef:(const struct TSCECategoryRef *)arg1 atRowUid:(const UUIDData_5fbc143e *)arg2 error:(id *)arg3;
-- (unsigned char)aggregateTypeForCategoryRef:(const struct TSCECategoryRef *)arg1;
-- (UUIDData_5fbc143e)mapOwnerUID:(const UUIDData_5fbc143e *)arg1;
+- (struct TSCERangeRef)aggregateRangeRefForCategoryRef:(id)arg1;
+- (vector_522b9630)unorderedCellRefsForCategoryRef:(id)arg1 atRowUid:(const struct TSKUIDStruct *)arg2;
+- (vector_0812e05b)categoryRefsForSpanningCategoryRef:(id)arg1;
+- (vector_522b9630)cellRefsForCategoryRef:(id)arg1 atRowUid:(const struct TSKUIDStruct *)arg2;
+- (id)valueGridForCategoryRef:(id)arg1 atRowUid:(const struct TSKUIDStruct *)arg2 hidingActionMask:(unsigned char)arg3 error:(id *)arg4;
+- (vector_ff6aafb2)valuesForCategoryRef:(id)arg1 atRowUid:(const struct TSKUIDStruct *)arg2 hidingActionMask:(unsigned char)arg3 error:(id *)arg4;
+- (unsigned char)aggregateTypeForCategoryRef:(id)arg1;
+- (struct TSKUIDStruct)mapOwnerUID:(const struct TSKUIDStruct *)arg1;
 - (id)resolverMatchingNameWithContextContainer:(id)arg1 inDocumentRoot:(id)arg2 contextContainerName:(id)arg3;
 - (id)resolverMatchingName:(id)arg1 inDocumentRoot:(id)arg2 contextResolver:(id)arg3;
 - (id)resolverContainerMatchingName:(id)arg1 inDocumentRoot:(id)arg2;
 - (struct TSCETableResolver *)newTableResolverForResolver:(id)arg1;
-- (id)initWithCalcEngine:(struct TSCECalcEngine *)arg1;
+- (id)initWithCalcEngine:(void *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

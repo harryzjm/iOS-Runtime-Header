@@ -6,10 +6,9 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKDetailsContactsTableViewCell, UIMenu;
+@class CKDetailsContactsTableViewCell;
 
 @protocol CKDetailsContactsTableViewCellDelegate <NSObject>
-- (UIMenu *)screenSharingButtonContextMenuForCell:(CKDetailsContactsTableViewCell *)arg1;
 - (void)contactsCellDidTapMessagesButton:(CKDetailsContactsTableViewCell *)arg1;
 - (void)contactsCellDidTapPhoneButton:(CKDetailsContactsTableViewCell *)arg1;
 - (void)contactsCellDidTapFaceTimeVideoButton:(CKDetailsContactsTableViewCell *)arg1;

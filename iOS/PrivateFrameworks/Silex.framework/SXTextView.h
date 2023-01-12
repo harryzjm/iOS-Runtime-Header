@@ -56,7 +56,6 @@
 - (id)infoGeometry;
 @property(nonatomic) struct CGRect frameInCanvas; // @synthesize frameInCanvas=_frameInCanvas;
 - (void)setFrame:(struct CGRect)arg1;
-- (void)setNeedsLayout;
 - (void)directLayerHostUpdateOverlayLayers:(id)arg1 forRep:(id)arg2;
 - (void)_updateOverlayTransform;
 - (void)directLayerhostUpdateTopLevelTilingLayers:(id)arg1 forRep:(id)arg2;

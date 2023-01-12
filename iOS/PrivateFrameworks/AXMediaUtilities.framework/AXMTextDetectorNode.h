@@ -6,12 +6,14 @@
 
 #import <AXMediaUtilities/NSSecureCoding-Protocol.h>
 
-@class AXMSemanticTextFactory, AXMTextLayoutManager;
+@class AXMSemanticTextFactory, AXMTextLayoutManager, AXMTextSpecialCase, NSArray;
 
 @interface AXMTextDetectorNode <NSSecureCoding>
 {
     AXMSemanticTextFactory *_semanticTextFactory;
     AXMTextLayoutManager *_textLayoutManager;
+    AXMTextSpecialCase *_specialCaseManager;
+    NSArray *_sceneLabelsForOCRDocumentTypeDetection;
 }
 
 + (id)filterPreferredDetectionLanguages:(id)arg1 withSupportedDetectionLanguages:(id)arg2;
@@ -23,10 +25,13 @@
 + (_Bool)isSupported;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *sceneLabelsForOCRDocumentTypeDetection; // @synthesize sceneLabelsForOCRDocumentTypeDetection=_sceneLabelsForOCRDocumentTypeDetection;
+@property(retain, nonatomic) AXMTextSpecialCase *specialCaseManager; // @synthesize specialCaseManager=_specialCaseManager;
 @property(retain, nonatomic) AXMTextLayoutManager *textLayoutManager; // @synthesize textLayoutManager=_textLayoutManager;
 @property(retain, nonatomic) AXMSemanticTextFactory *semanticTextFactory; // @synthesize semanticTextFactory=_semanticTextFactory;
+- (double)detectTextSkew:(id)arg1;
 - (id)_textDetectionOptions:(id)arg1;
-- (id)_textsForObservations:(id)arg1;
+- (id)_sequencesForObservations:(id)arg1 canvasSize:(struct CGSize)arg2;
 - (void)evaluate:(id)arg1 metrics:(id)arg2;
 - (_Bool)validateVisionKitSoftLinkSymbols;
 - (_Bool)shouldEvaluate:(id)arg1;

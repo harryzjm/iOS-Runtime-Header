@@ -6,14 +6,14 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSString, UIColor;
+@class NSError, NSString, UIColor;
 
 @protocol _UIColorPickerRemoteViewControllerHost <NSObject>
+- (void)_colorPickerviewServiceDidTerminateWithError:(NSError *)arg1;
 - (void)_colorPickerDidFinish;
 - (void)_pickerDidDismissEyedropper;
 - (void)_pickerDidFloatEyedropper;
 - (void)_pickerDidShowEyedropper;
-- (void)_pickerDidSelectColor:(UIColor *)arg1;
 - (void)_pickerDidSelectColor:(UIColor *)arg1 colorspace:(NSString *)arg2 isVolatile:(_Bool)arg3;
 @end
 

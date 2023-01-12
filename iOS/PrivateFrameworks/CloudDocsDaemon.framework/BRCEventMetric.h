@@ -25,8 +25,10 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSDate *startTime; // @synthesize startTime=_startTime;
 @property(readonly, nonatomic) NSString *eventName; // @synthesize eventName=_eventName;
 - (void)associateWithCompletedOperation:(id)arg1;
+- (id)associatedAppTelemetryEvent;
 - (id)additionalPayload;
 - (id)subDescription;
+- (double)duration;
 - (id)description;
 - (id)initWithEventName:(id)arg1;
 

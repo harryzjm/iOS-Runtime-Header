@@ -10,7 +10,7 @@
 #import <KeynoteQuicklook/TSKDocumentObject-Protocol.h>
 #import <KeynoteQuicklook/TSKModel-Protocol.h>
 
-@class KNAbstractSlide, KNSlideTree, NSArray, NSDictionary, NSMutableDictionary, NSMutableSet, NSSet, NSString, TSPLazyReference;
+@class KNAbstractSlide, KNSlideTree, NSArray, NSDictionary, NSMutableDictionary, NSMutableSet, NSSet, NSString, NSUUID, TSPLazyReference;
 
 @interface KNSlideNode : TSPObject <TSKDocumentObject, TSKModel, TSCEResolverContainer>
 {
@@ -38,6 +38,8 @@
     unsigned long long _buildEventCount;
     _Bool _buildEventCountIsUpToDate;
     NSMutableSet *_remappedTableNames;
+    NSUUID *_templateSlideUUID;
+    NSSet *_liveVideoSourceUUIDs;
     KNSlideTree *_slideTree;
 }
 
@@ -47,6 +49,8 @@
 + (_Bool)needsObjectUUID;
 + (id)slideNodeUUIDForObsoleteUniqueIDString:(id)arg1 inSlideNodes:(id)arg2;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSSet *liveVideoSourceUUIDs; // @synthesize liveVideoSourceUUIDs=_liveVideoSourceUUIDs;
+@property(readonly, nonatomic) NSUUID *templateSlideUUID; // @synthesize templateSlideUUID=_templateSlideUUID;
 @property(readonly, nonatomic) NSDictionary *slideSpecificHyperlinkMap; // @synthesize slideSpecificHyperlinkMap=_slideSpecificHyperlinkMap;
 @property(readonly, nonatomic) _Bool hasBackgroundAlpha; // @synthesize hasBackgroundAlpha=_hasBackgroundAlpha;
 @property(nonatomic) _Bool hasBodyInOutlineView; // @synthesize hasBodyInOutlineView=_hasBodyInOutlineView;
@@ -97,6 +101,7 @@
 - (void)p_addHyperlinkForObjectReferencedByMapping:(id)arg1 toSlideNode:(id)arg2;
 - (_Bool)hasSlideSpecificHyperlinkToNode:(id)arg1;
 - (_Bool)hasSlideSpecificHyperlinks;
+- (void)updateLiveVideoSourceUUIDs;
 - (void)uniquifyTableNamesForUpgradeOrImport;
 @property(readonly, nonatomic) long long bodyParagraphCount;
 - (unsigned long long)p_buildEventCount;
@@ -108,6 +113,7 @@
 - (void)p_updateHasExplicitBuilds;
 @property(readonly, nonatomic) _Bool hasExplicitBuilds;
 - (void)updateHasBackgroundAlpha;
+- (void)updateTemplateSlideUUID;
 @property(readonly, nonatomic) NSArray *children;
 @property(readonly, nonatomic) _Bool hasChildren;
 @property(readonly, nonatomic) KNSlideNode *previousSkippingHidden;
@@ -126,9 +132,9 @@
 @property(nonatomic) _Bool thumbnailsAreDirty;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)saveToArchive:(struct SlideNodeArchive *)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (id)p_mappingFromString:(id)arg1;
-- (void)loadFromArchive:(const struct SlideNodeArchive *)arg1 unarchiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (id)objectUUIDPath;
 - (void)didLoadSlide:(id)arg1;
 - (void)removeObsoleteFieldsFor20Upgrade;

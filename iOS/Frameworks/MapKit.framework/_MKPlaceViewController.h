@@ -9,11 +9,11 @@
 #import <MapKit/CNContactViewControllerPrivateDelegate-Protocol.h>
 #import <MapKit/GEOLogContextDelegate-Protocol.h>
 #import <MapKit/MKActivityViewControllerDelegate-Protocol.h>
+#import <MapKit/MKAnnotatedItemListViewControllerDelegate-Protocol.h>
 #import <MapKit/MKBrowseCategoryViewControllerDelegate-Protocol.h>
 #import <MapKit/MKCollectionViewProvider-Protocol.h>
 #import <MapKit/MKETAProviderDelegate-Protocol.h>
 #import <MapKit/MKETAProviderObserver-Protocol.h>
-#import <MapKit/MKMuninViewProvider-Protocol.h>
 #import <MapKit/MKPlaceCardActionControllerDelegate-Protocol.h>
 #import <MapKit/MKPlaceCardEncyclopedicControllerDelegate-Protocol.h>
 #import <MapKit/MKPlaceCardHeaderViewControllerDelegate-Protocol.h>
@@ -33,12 +33,12 @@
 #import <MapKit/MKWebContentViewControllerDelegate-Protocol.h>
 #import <MapKit/RadiosPreferencesDelegate-Protocol.h>
 #import <MapKit/_MKInfoCardAnalyticsDelegate-Protocol.h>
-#import <MapKit/_MKInfoCardController-Protocol.h>
+#import <MapKit/_MKPlaceCardConforming-Protocol.h>
 
-@class CLLocation, CNContact, CNContactNavigationController, CNContactStore, CNContactViewController, GEOAutomobileOptions, GEOCyclingOptions, GEOTransitOptions, MKETAProvider, MKInfoCardLoadingView, MKMapItem, MKMuninContainerView, MKMuninView, MKOfficialAppViewController, MKPlaceActionManager, MKPlaceCardActionsRowViewController, MKPlaceCardFooterActionsViewController, MKPlaceCardHeaderViewController, MKPlaceCollectionViewController, MKPlaceCuratedCollectionsViewController, MKPlaceEncyclopedicViewController, MKPlaceHeaderButtonsViewController, MKPlaceInfoViewController, MKPlaceInlineMapViewController, MKPlacePoisInlineMapViewController, MKUGCCallToActionViewAppearance, MKUGCCallToActionViewController, NSMapTable, NSMutableArray, NSObject, NSString, NSTimer, NSUserActivity, RadiosPreferences, _MKPlaceActionButtonController, _MXExtensionManager, geo_isolater;
+@class CLLocation, CNContact, CNContactNavigationController, CNContactStore, CNContactViewController, GEOAutomobileOptions, GEOCyclingOptions, GEOTransitOptions, MKETAProvider, MKInfoCardLoadingView, MKMapItem, MKMuninContainerView, MKMuninView, MKOfficialAppViewController, MKPlaceActionManager, MKPlaceCardActionsRowViewController, MKPlaceCardFooterActionsViewController, MKPlaceCardHeaderViewController, MKPlaceCollectionViewController, MKPlaceCuratedCollectionsViewController, MKPlaceEncyclopedicViewController, MKPlaceHeaderButtonsViewController, MKPlaceInfoViewController, MKPlaceInlineMapViewController, MKPlacePoisInlineMapViewController, MKUGCCallToActionViewAppearance, MKUGCCallToActionViewController, NSMapTable, NSMutableArray, NSObject, NSString, NSTimer, NSUserActivity, RadiosPreferences, UIScrollView, _MKPlaceActionButtonController, _MXExtensionManager, geo_isolater;
 @protocol CNContactViewControllerPrivateDelegate, OS_dispatch_queue, UIScrollViewDelegate, _MKPlaceItem, _MKPlaceViewControllerDelegate, _MKPlaceViewControllerFeedbackDelegate;
 
-@interface _MKPlaceViewController <MKStackingViewControllerDelegate, MKActivityViewControllerDelegate, RadiosPreferencesDelegate, MKBrowseCategoryViewControllerDelegate, MKPlaceParentInfoViewControllerDelegate, MKPlaceRelatedViewControllerDelegate, MKPlaceQuickLinksViewControllerDelegate, MKUGCCallToActionViewDelegate, MKCollectionViewProvider, CNContactViewControllerDelegate, CNContactViewControllerPrivateDelegate, CNContactPickerDelegate, MKPlaceCollectionsDelegate, MKPlaceViewControllerPresentingProtocol, MKPlaceCardPhotosControllerDelegate, MKPlaceCardReviewsControllerDelegate, MKPlaceCardEncyclopedicControllerDelegate, MKTransitDepaturesViewControllerDelegate, MKPlaceCardHeaderViewControllerDelegate, MKTransitAttributionViewControllerDelegate, GEOLogContextDelegate, MKWebContentViewControllerDelegate, MKETAProviderDelegate, MKETAProviderObserver, MKPlaceHeaderButtonsViewControllerDelegate, MKPlaceServiceHoursViewControllerProtocol, _MKInfoCardController, _MKInfoCardAnalyticsDelegate, MKPlaceCardActionControllerDelegate, MKMuninViewProvider>
+@interface _MKPlaceViewController <MKStackingViewControllerDelegate, MKActivityViewControllerDelegate, RadiosPreferencesDelegate, MKBrowseCategoryViewControllerDelegate, MKPlaceParentInfoViewControllerDelegate, MKPlaceRelatedViewControllerDelegate, MKPlaceQuickLinksViewControllerDelegate, MKUGCCallToActionViewDelegate, MKCollectionViewProvider, CNContactViewControllerDelegate, CNContactViewControllerPrivateDelegate, CNContactPickerDelegate, MKPlaceCollectionsDelegate, MKPlaceViewControllerPresentingProtocol, MKAnnotatedItemListViewControllerDelegate, MKPlaceCardPhotosControllerDelegate, MKPlaceCardReviewsControllerDelegate, MKPlaceCardEncyclopedicControllerDelegate, MKTransitDepaturesViewControllerDelegate, MKPlaceCardHeaderViewControllerDelegate, MKTransitAttributionViewControllerDelegate, GEOLogContextDelegate, MKWebContentViewControllerDelegate, MKETAProviderDelegate, MKETAProviderObserver, MKPlaceHeaderButtonsViewControllerDelegate, MKPlaceServiceHoursViewControllerProtocol, _MKPlaceCardConforming, _MKInfoCardAnalyticsDelegate, MKPlaceCardActionControllerDelegate>
 {
     MKPlaceActionManager *_actionManager;
     MKPlaceCardHeaderViewController *_headerViewController;
@@ -79,9 +79,10 @@
     unsigned long long _initialAppearanceSignpostID;
     _Bool _hasCheckedDistanceAvailability;
     _Bool _placeInBookmarks;
+    _Bool _placeInCollections;
+    _Bool _placeInShortcuts;
     _Bool _showContactActions;
     _Bool _inAirplaneModeAndNetworkUnreachable;
-    _Bool _placeInShortcuts;
     NSString *_headerTitle;
     id <_MKPlaceItem> _placeItem;
     CNContact *_contact;
@@ -108,7 +109,6 @@
 + (void)initialize;
 - (void).cxx_destruct;
 @property(retain, nonatomic) CLLocation *location; // @synthesize location=_location;
-@property(nonatomic) _Bool placeInShortcuts; // @synthesize placeInShortcuts=_placeInShortcuts;
 @property(retain, nonatomic) NSMutableArray *viewDidAppearBlocks; // @synthesize viewDidAppearBlocks=_viewDidAppearBlocks;
 @property(retain, nonatomic) _MKPlaceActionButtonController *headerAlternatePrimaryButtonController; // @synthesize headerAlternatePrimaryButtonController=_headerAlternatePrimaryButtonController;
 @property(nonatomic) __weak id <UIScrollViewDelegate> scrollViewDelegate; // @synthesize scrollViewDelegate=_scrollViewDelegate;
@@ -116,6 +116,8 @@
 @property(nonatomic) _Bool inAirplaneModeAndNetworkUnreachable; // @synthesize inAirplaneModeAndNetworkUnreachable=_inAirplaneModeAndNetworkUnreachable;
 @property(nonatomic) __weak CNContactNavigationController<CNContactViewControllerPrivateDelegate> *contactsNavigationController; // @synthesize contactsNavigationController=_contactsNavigationController;
 @property(nonatomic) _Bool showContactActions; // @synthesize showContactActions=_showContactActions;
+@property(nonatomic) _Bool placeInShortcuts; // @synthesize placeInShortcuts=_placeInShortcuts;
+@property(nonatomic) _Bool placeInCollections; // @synthesize placeInCollections=_placeInCollections;
 @property(retain, nonatomic) GEOCyclingOptions *cyclingOptions; // @synthesize cyclingOptions=_cyclingOptions;
 @property(retain, nonatomic) GEOTransitOptions *transitOptions; // @synthesize transitOptions=_transitOptions;
 @property(retain, nonatomic) GEOAutomobileOptions *automobileOptions; // @synthesize automobileOptions=_automobileOptions;
@@ -135,11 +137,14 @@
 - (id)generateUnactionableUIElementsForAnalytics;
 - (id)generateAvailableActionForAnalytics;
 - (int)getPlaceCardTypeForAnalytics;
+- (void)infoCardAnalyticsDidSelectAction:(int)arg1 target:(int)arg2 eventValue:(id)arg3 moduleMetadata:(id)arg4 feedbackDelegateSelector:(int)arg5;
+- (void)infoCardAnalyticsDidSelectAction:(int)arg1 target:(int)arg2 eventValue:(id)arg3 actionURL:(id)arg4 photoID:(id)arg5 moduleMetadata:(id)arg6 feedbackDelegateSelector:(int)arg7;
 - (void)infoCardTransitAnalyticsDidSelectionAction:(int)arg1 resultIndex:(long long)arg2 targetID:(unsigned long long)arg3 transitSystem:(id)arg4 transitDepartureSequence:(id)arg5 transitCardCategory:(int)arg6 transitIncident:(id)arg7 feedbackDelegateSelector:(int)arg8;
 - (void)infoCardAnalyticsDidSelectAction:(int)arg1 target:(int)arg2 eventValue:(id)arg3 actionURL:(id)arg4 photoID:(id)arg5 feedbackDelegateSelector:(int)arg6;
 - (void)infoCardAnalyticsDidSelectAction:(int)arg1 target:(int)arg2 eventValue:(id)arg3 feedbackDelegateSelector:(int)arg4;
 - (void)infoCardAnalyticsDidSelectAction:(int)arg1 eventValue:(id)arg2 feedbackDelegateSelector:(int)arg3;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *analyticsQueue; // @synthesize analyticsQueue=_analyticsQueue;
+- (void)annotatedItemListViewController:(id)arg1 requestsSceneActivationWithPhotoGallery:(id)arg2;
 - (void)didFinishDismissingViewController:(id)arg1;
 - (void)requestsDismissingPresentingViewControllerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)presentPOIEnrichmentWithCallToActionView:(id)arg1 overallState:(long long)arg2;
@@ -165,15 +170,14 @@
 - (void)placeCardActionControllerDidSelectViewAllPhotos:(id)arg1 presentingViewController:(id)arg2;
 - (void)placeCardActionControllerDidSelectAddPhoto:(id)arg1 presentingViewController:(id)arg2 progressObserver:(id)arg3 sourceView:(id)arg4;
 - (void)placeCardActionControllerDidRequestCopy:(id)arg1;
-- (void)placeCardActionControllerDidSelectRequestInformedConsentForAddingContributions:(id)arg1;
 - (void)placeCardActionControllerDidSelectChangeAddress:(id)arg1;
 - (void)placeCardActionControllerDidSelectRefineLocation:(id)arg1;
 - (void)placeCardActionControllerDidSelectRemoveFromMapsHome:(id)arg1;
 - (void)placeCardActionControllerDidSelectAddToMapsHome:(id)arg1;
 - (void)placeCardActionControllerDidSelectAddToCollection:(id)arg1;
-- (void)placeCardActionControllerDidSelectReportAProblemAddNewPlace:(id)arg1;
+- (void)placeCardActionControllerDidSelectReportAProblemAddNewPlace:(id)arg1 isQuickAction:(_Bool)arg2;
 - (void)placeCardActionControllerDidSelectAddToContacts:(id)arg1 fromView:(id)arg2;
-- (void)placeCardActionControllerDidSelectReportAProblem:(id)arg1 fromView:(id)arg2;
+- (void)placeCardActionControllerDidSelectReportAProblem:(id)arg1 fromView:(id)arg2 isQuickAction:(_Bool)arg3;
 - (void)_updateViewControllerStatesForOffline;
 - (void)updateAirplaneModeNetworkUnreachable;
 - (void)networkReachableChanged:(id)arg1;
@@ -205,11 +209,13 @@
 - (int)mapTypeForETAProvider:(id)arg1;
 - (void)ETAProviderLocationUpdated:(id)arg1;
 - (void)placeHeaderButtonsViewController:(id)arg1 didSelectPrimaryType:(unsigned long long)arg2 withView:(id)arg3;
+- (_Bool)placeCardHeaderViewControllerShouldOverrideCallToAction:(id)arg1;
 - (double)placeCardHeaderViewControllerTrailingConstantForTitle:(id)arg1;
 - (id)_traits;
 - (void)placeCardPhotosController:(id)arg1 requestsSceneActivationForPhotoGalleryViewController:(id)arg2;
 - (void)updateFooterViews;
-- (void)updateUGCViewsWithHeaderAppearance:(id)arg1 rowInfoAppearances:(id)arg2 animated:(_Bool)arg3;
+- (void)updateActionRowView;
+- (void)updateUGCViewsWithHeaderAppearance:(id)arg1 rowInfoAppearances:(id)arg2 userSubmissionStatus:(id)arg3 animated:(_Bool)arg4;
 - (void)updateHeaderTitle;
 - (void)_presentViewControllerWithInterfaceStyleCheck:(id)arg1;
 - (void)_showShareSheetNoDeviceLockCheck:(id)arg1;
@@ -300,6 +306,7 @@
 - (void)updateCollectionViewsAnimated:(_Bool)arg1;
 - (id)collectionViewController;
 - (void)showAllCollections:(id)arg1 usingTitle:(id)arg2 usingCollectionIds:(id)arg3;
+- (void)routeToGuidesHomeFromExploreGuides:(id)arg1;
 - (void)routeToCuratedCollection:(id)arg1;
 - (id)relatedPlaceListVC;
 - (id)createRowActions;
@@ -379,6 +386,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) UIScrollView *scrollView;
 @property(readonly) Class superclass;
 
 @end

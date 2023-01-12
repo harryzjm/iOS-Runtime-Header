@@ -23,6 +23,7 @@
 - (_Bool)shouldSendSegmentDataToAdPlatforms:(id)arg1;
 - (void)populateAccountTypeFields:(id)arg1;
 - (void)handleSuccessfulJingleSegmentResponse:(id)arg1 dsidRecord:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)verifyGenderInSegmentData:(id)arg1;
 - (void)handleJingleSegmentResponse:(id)arg1 activeRecord:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)retrieveSegmentData:(id)arg1 forceSegments:(_Bool)arg2 ignoreTimestamps:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)retrieveSegmentData:(id)arg1 forceSegments:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;

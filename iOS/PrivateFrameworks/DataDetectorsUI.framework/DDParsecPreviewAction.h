@@ -9,6 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)prepareViewControllerForActionController:(id)arg1;
 - (id)menuActionClasses;
 - (void)setPreviewMode:(_Bool)arg1;
 - (_Bool)wantsSeamlessCommit;

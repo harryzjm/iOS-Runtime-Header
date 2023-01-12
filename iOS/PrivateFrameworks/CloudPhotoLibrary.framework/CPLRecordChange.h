@@ -54,6 +54,7 @@
 + (Class)classForStoredClassName:(id)arg1 forCPLArchiver:(id)arg2;
 + (_Bool)cplShouldIgnorePropertyForEquality:(id)arg1;
 + (_Bool)cplShouldIgnorePropertyForCoding:(id)arg1;
++ (Class)relatedRecordClass;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool serverRecordIsCorrupted; // @synthesize serverRecordIsCorrupted=_serverRecordIsCorrupted;
 @property(copy, nonatomic) NSData *recordChangeData; // @synthesize recordChangeData=_recordChangeData;
@@ -65,10 +66,12 @@
 @property(nonatomic) unsigned long long changeType; // @synthesize changeType=_changeType;
 @property(copy, nonatomic) NSDate *recordModificationDate; // @synthesize recordModificationDate=_recordModificationDate;
 @property(copy, nonatomic) CPLScopedIdentifier *scopedIdentifier; // @synthesize scopedIdentifier=_scopedIdentifier;
+- (_Bool)isScopeChange;
 - (_Bool)isAssetChange;
 - (_Bool)isMasterChange;
 - (void)applyChangeType:(unsigned long long)arg1 fromChange:(id)arg2;
 - (void)applyChange:(id)arg1;
+- (void)clearChangeType:(unsigned long long)arg1;
 - (id)copyChangeType:(unsigned long long)arg1;
 - (void)enumerateChangeTypesForChangeType:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
 - (void)copyDerivativesFromRecordIfPossible:(id)arg1;
@@ -127,6 +130,7 @@
 - (id)description;
 - (id)propertiesDescription;
 - (unsigned long long)originalResourceSize;
+- (unsigned long long)realUploadResourceSize;
 - (unsigned long long)realResourceSize;
 - (unsigned long long)effectiveResourceSizeToUploadUsingStorage:(id)arg1;
 - (unsigned long long)totalResourceSize;
@@ -157,6 +161,7 @@
 - (id)compactedChangeWithRelatedChanges:(id)arg1 isOnlyChange:(_Bool)arg2 fullRecord:(id)arg3 usingStorageView:(id)arg4;
 - (id)asRecordView;
 - (_Bool)validateRecordForTracker:(id)arg1;
+- (Class)relatedRecordClass;
 
 @end
 

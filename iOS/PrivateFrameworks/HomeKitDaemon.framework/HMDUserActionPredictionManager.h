@@ -62,7 +62,7 @@
 - (void)handleServiceGroupUpdatedNotification:(id)arg1;
 - (void)handleServiceGroupRemovedNotification:(id)arg1;
 - (void)handleServiceRemovedNotification:(id)arg1;
-- (void)handleActionSetRemovedNotification:(id)arg1;
+- (void)handleActionSetEmptiedNotification:(id)arg1;
 - (void)handleAccessoryRemovedNotification:(id)arg1;
 - (void)configureWithHome:(id)arg1 notificationCenter:(id)arg2;
 - (id)initWithUUID:(id)arg1 zoneManager:(id)arg2 dataReceiver:(id)arg3 workQueue:(id)arg4;

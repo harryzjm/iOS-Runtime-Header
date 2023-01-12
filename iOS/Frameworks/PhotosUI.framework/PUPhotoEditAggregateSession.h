@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
+@class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface PUPhotoEditAggregateSession : NSObject
@@ -19,15 +19,18 @@ __attribute__((visibility("hidden")))
     _Bool __hasPerspectiveCropSuggestion;
     _Bool __autoCropAdjusted;
     _Bool __autoCropReset;
+    NSString *_pluginIdentifier;
     double _originalDuration;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, setter=_setAutoCropReset:) _Bool _autoCropReset; // @synthesize _autoCropReset=__autoCropReset;
 @property(nonatomic, setter=_setAutoCropAdjusted:) _Bool _autoCropAdjusted; // @synthesize _autoCropAdjusted=__autoCropAdjusted;
 @property(nonatomic, setter=_setHasPerspectiveCropSuggestion:) _Bool _hasPerspectiveCropSuggestion; // @synthesize _hasPerspectiveCropSuggestion=__hasPerspectiveCropSuggestion;
 @property(nonatomic, setter=_setHasCropSuggestion:) _Bool _hasCropSuggestion; // @synthesize _hasCropSuggestion=__hasCropSuggestion;
 @property(nonatomic) double originalDuration; // @synthesize originalDuration=_originalDuration;
 @property(nonatomic) _Bool shouldUseVideoKeys; // @synthesize shouldUseVideoKeys=_shouldUseVideoKeys;
+@property(retain, nonatomic) NSString *pluginIdentifier; // @synthesize pluginIdentifier=_pluginIdentifier;
 @property(nonatomic) _Bool pluginSaved; // @synthesize pluginSaved=_pluginSaved;
 @property(nonatomic) _Bool pluginStarted; // @synthesize pluginStarted=_pluginStarted;
 @property(nonatomic) _Bool toggledOriginal; // @synthesize toggledOriginal=_toggledOriginal;

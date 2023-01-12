@@ -10,23 +10,23 @@
 
 @interface TSCHLegendCellMetrics : NSObject
 {
-    TSWPParagraphStyle *mParagraphStyle;
-    struct __CTFont *mFont;
-    float mBadgeSize;
-    float mLegendSymbolGap;
-    float mTrueTitleHeight;
-    float mLineGap;
-    float mBaseline;
+    TSWPParagraphStyle *_paragraphStyle;
+    struct __CTFont *_font;
+    float _badgeSize;
+    float _legendSymbolGap;
+    float _trueTitleHeight;
+    float _lineGap;
+    float _baseline;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) float baseline; // @synthesize baseline=mBaseline;
-@property(readonly, nonatomic) float lineGap; // @synthesize lineGap=mLineGap;
-@property(readonly, nonatomic) float titleHeight; // @synthesize titleHeight=mTrueTitleHeight;
-@property(readonly, nonatomic) float symbolGap; // @synthesize symbolGap=mLegendSymbolGap;
-@property(readonly, nonatomic) float badgeSize; // @synthesize badgeSize=mBadgeSize;
-@property(readonly, nonatomic) struct __CTFont *font; // @synthesize font=mFont;
-@property(readonly, nonatomic) TSWPParagraphStyle *paragraphStyle; // @synthesize paragraphStyle=mParagraphStyle;
+@property(readonly, nonatomic) float baseline; // @synthesize baseline=_baseline;
+@property(readonly, nonatomic) float lineGap; // @synthesize lineGap=_lineGap;
+@property(readonly, nonatomic) float titleHeight; // @synthesize titleHeight=_trueTitleHeight;
+@property(readonly, nonatomic) float symbolGap; // @synthesize symbolGap=_legendSymbolGap;
+@property(readonly, nonatomic) float badgeSize; // @synthesize badgeSize=_badgeSize;
+@property(readonly, nonatomic) struct __CTFont *font; // @synthesize font=_font;
+@property(readonly, nonatomic) TSWPParagraphStyle *paragraphStyle; // @synthesize paragraphStyle=_paragraphStyle;
 - (void)dealloc;
 - (id)initWithParagraphStyle:(id)arg1;
 

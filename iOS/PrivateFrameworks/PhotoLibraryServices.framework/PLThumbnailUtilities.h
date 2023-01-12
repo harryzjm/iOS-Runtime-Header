@@ -18,7 +18,7 @@
 + (id)_destinationDataArrayFromSpecifications:(id)arg1;
 + (id)_destinationDataFromSpecification:(id)arg1;
 + (int)_requiredDataLengthForSpecification:(id)arg1;
-+ (int)_bytesPerRowForWidthInPixels:(int)arg1;
++ (int)_bytesPerRowForSpecification:(id)arg1;
 
 @end
 

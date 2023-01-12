@@ -7,5 +7,6 @@
 #import <GameCenterFoundation/NSObject-Protocol.h>
 
 @protocol GKBulletinService <NSObject>
+- (void)sendRefreshContentsForDataTypeToAllClientProxy:(unsigned int)arg1;
 @end
 

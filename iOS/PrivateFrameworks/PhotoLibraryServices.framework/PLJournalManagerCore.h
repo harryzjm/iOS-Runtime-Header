@@ -17,9 +17,11 @@
 + (id)_objectEnumeratorForJournal:(id)arg1 usingManagedObjectContext:(id)arg2 error:(id *)arg3;
 + (_Bool)appendSnapshotWithJournal:(id)arg1 usingManagedObjectContext:(id)arg2 changedKeys:(id)arg3 error:(id *)arg4;
 + (_Bool)createSnapshotWithJournal:(id)arg1 usingManagedObjectContext:(id)arg2 error:(id *)arg3;
++ (id)_nextValidPayloadWithObjectEnumerator:(id)arg1 changedKeys:(id)arg2;
 + (void)validatePayloadClassesForManagedObjectModel:(id)arg1;
 + (id)payloadClasses;
 - (void).cxx_destruct;
+- (void)removeHistoryToken;
 - (_Bool)saveHistoryToken:(id)arg1 error:(id *)arg2;
 - (id)initWithBaseURL:(id)arg1;
 - (id)init;

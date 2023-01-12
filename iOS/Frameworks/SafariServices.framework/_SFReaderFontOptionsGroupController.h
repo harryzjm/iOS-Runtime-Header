@@ -11,7 +11,6 @@
 @class NSArray, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue, SFReaderContext;
 
-__attribute__((visibility("hidden")))
 @interface _SFReaderFontOptionsGroupController : NSObject <_SFSettingsAlertOptionsGroupController>
 {
     double _fontSize;

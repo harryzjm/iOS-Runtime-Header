@@ -9,6 +9,8 @@
 @class NSString, UIColor;
 
 @protocol MKInfoCardTheme <NSObject>
+@property(readonly, nonatomic) UIColor *cardBackgroundColor;
+@property(readonly, nonatomic) UIColor *transitIncidentBackgroundColor;
 @property(readonly, nonatomic) UIColor *ratingBarBackgroundColor;
 @property(readonly, nonatomic) UIColor *ratingBarEndColor;
 @property(readonly, nonatomic) UIColor *ratingBarStartColor;

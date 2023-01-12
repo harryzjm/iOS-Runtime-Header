@@ -9,7 +9,8 @@
 #import <UIKitCore/UIApplicationSceneSettings-Protocol.h>
 #import <UIKitCore/_UIDisplayInfoProviding-Protocol.h>
 
-@class BSCornerRadiusConfiguration, FBSDisplayConfiguration, NSNumber, NSString;
+@class BSCornerRadiusConfiguration, FBSDisplayConfiguration, NSNumber, NSSet, NSString;
+@protocol _UIDisplayInfoShape;
 
 @interface UIApplicationSceneSettings : FBSSceneSettings <_UIDisplayInfoProviding, UIApplicationSceneSettings>
 {
@@ -19,6 +20,9 @@
 - (id)valueDescriptionForFlag:(long long)arg1 object:(id)arg2 ofSetting:(unsigned long long)arg3;
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
+@property(readonly, nonatomic) _Bool _debugValidationOrientationMaskEnabled;
+@property(readonly, nonatomic) NSSet *targetOfEventDeferringEnvironments;
+@property(readonly, nonatomic) long long interfaceOrientationMode;
 @property(readonly, nonatomic) long long pointerLockStatus;
 @property(readonly, nonatomic) long long accessibilityContrast;
 @property(readonly, nonatomic) unsigned long long scenePresenterRenderIdentifierForSnapshotting;
@@ -45,7 +49,7 @@
 @property(readonly, nonatomic) NSNumber *forcedStatusBarStyle;
 @property(readonly, nonatomic) long long userInterfaceStyle;
 @property(readonly, nonatomic) unsigned long long deactivationReasons;
-@property(readonly, nonatomic) int statusBarStyleOverridesToSuppress;
+@property(readonly, nonatomic) unsigned long long statusBarStyleOverridesToSuppress;
 @property(readonly, nonatomic) _Bool underLock;
 @property(readonly, nonatomic) NSString *persistenceIdentifier;
 
@@ -53,6 +57,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) FBSDisplayConfiguration *displayConfiguration;
+@property(readonly, nonatomic) id <_UIDisplayInfoShape> exclusionArea;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

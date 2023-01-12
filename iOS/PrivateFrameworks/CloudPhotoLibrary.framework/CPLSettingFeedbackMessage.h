@@ -17,7 +17,7 @@
 @property(readonly, nonatomic) NSString *value; // @synthesize value=_value;
 @property(readonly, nonatomic) NSString *settingName; // @synthesize settingName=_settingName;
 - (id)serverMessage;
-- (id)initWithSetting:(id)arg1 value:(id)arg2;
+- (id)initWithSetting:(id)arg1 value:(id)arg2 libraryIdentifier:(id)arg3;
 
 @end
 

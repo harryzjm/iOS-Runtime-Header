@@ -14,10 +14,11 @@
 @interface NTPBReadingHistoryItem (FCReadingHistory) <FCMutableReadingHistoryItem, FCKeyValueStoreCoding>
 + (id)readValueFromKeyValuePair:(id)arg1;
 + (int)keyValuePairType;
-+ (id)readingHistoryItemWithCKRecord:(id)arg1;
 - (void)writeToKeyValuePair:(id)arg1;
 @property(readonly, nonatomic) CKRecord *asCKRecord;
+@property(nonatomic, getter=isPruningDisabled) _Bool pruningDisabled;
 @property(nonatomic) unsigned long long articleLikingStatus;
+@property(nonatomic) _Bool hasArticleCompletedReading;
 @property(nonatomic) _Bool hasArticleCompletedListening;
 @property(nonatomic) _Bool hasArticleBeenConsumed;
 @property(nonatomic) _Bool hasArticleBeenMarkedOffensive;

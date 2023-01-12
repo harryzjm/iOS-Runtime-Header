@@ -18,7 +18,7 @@
 - (void)serviceExtensionTimeWillExpire;
 - (void)serviceExtensionPerformCleanup;
 - (void)reloadAppsFromServerWithReply:(CDUnknownBlockType)arg1;
-- (void)didReachTerminalPhaseWithBetaBundleID:(id)arg1 terminalPhase:(long long)arg2 error:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)didReachTerminalPhaseWithBetaBundle:(id)arg1 terminalPhase:(long long)arg2 error:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)didReceivePushMessages:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)didReceivePushToken:(id)arg1 reply:(CDUnknownBlockType)arg2;
 

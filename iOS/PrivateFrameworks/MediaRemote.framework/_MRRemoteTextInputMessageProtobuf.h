@@ -10,6 +10,7 @@
 
 @class NSData;
 
+__attribute__((visibility("hidden")))
 @interface _MRRemoteTextInputMessageProtobuf : PBCodable <NSCopying>
 {
     double _timestamp;
@@ -23,20 +24,14 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSData *data; // @synthesize data=_data;
-@property(nonatomic) unsigned long long version; // @synthesize version=_version;
-@property(nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(readonly, nonatomic) _Bool hasData;
-@property(nonatomic) _Bool hasVersion;
-@property(nonatomic) _Bool hasTimestamp;
 
 @end
 

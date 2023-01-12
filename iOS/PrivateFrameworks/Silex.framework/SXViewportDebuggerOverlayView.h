@@ -14,7 +14,6 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) UIColor *borderColor; // @synthesize borderColor=_borderColor;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 

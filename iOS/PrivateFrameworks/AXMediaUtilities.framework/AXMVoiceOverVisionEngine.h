@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AXMCaptionDetectorNode, AXMFaceDetectorNode, AXMNSFWDetectorNode, AXMProminentObjectsDetectorNode, AXMSceneDetectorNode, AXMSignificantEventDetectorNode, AXMTraitDetectorNode;
+@class AXMCaptionDetectorNode, AXMFaceDetectorNode, AXMNSFWDetectorNode, AXMObjectDetectorNode, AXMProminentObjectsDetectorNode, AXMSceneDetectorNode, AXMSignificantEventDetectorNode, AXMTraitDetectorNode;
 
 @interface AXMVoiceOverVisionEngine
 {
     AXMSceneDetectorNode *_sceneDetector;
+    AXMObjectDetectorNode *_objectDetector;
     AXMFaceDetectorNode *_faceDetector;
     AXMTraitDetectorNode *_traitDetector;
     AXMProminentObjectsDetectorNode *_prominentObjectsDetector;
@@ -24,6 +25,7 @@
 @property(nonatomic) __weak AXMProminentObjectsDetectorNode *prominentObjectsDetector; // @synthesize prominentObjectsDetector=_prominentObjectsDetector;
 @property(nonatomic) __weak AXMTraitDetectorNode *traitDetector; // @synthesize traitDetector=_traitDetector;
 @property(nonatomic) __weak AXMFaceDetectorNode *faceDetector; // @synthesize faceDetector=_faceDetector;
+@property(nonatomic) __weak AXMObjectDetectorNode *objectDetector; // @synthesize objectDetector=_objectDetector;
 @property(nonatomic) __weak AXMSceneDetectorNode *sceneDetector; // @synthesize sceneDetector=_sceneDetector;
 - (id)configuredOptionsDisableAllDetectors:(CDUnknownBlockType)arg1 elementOptions:(unsigned int)arg2 textRecognitionLevel:(CDUnknownBlockType)arg3 textDetectionLocales:(CDUnknownBlockType)arg4 preferringFullCaptions:(_Bool)arg5;
 @property(nonatomic) unsigned long long genderStrategy;

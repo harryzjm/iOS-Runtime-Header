@@ -8,12 +8,13 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7FMFCore25FMFGenericResponseHandler : NSObject
 {
+    MISSING_TYPE *identifier;
     MISSING_TYPE *delegate;
     MISSING_TYPE *fmfSession;
     MISSING_TYPE *fences;
+    MISSING_TYPE *isSnapshotMode;
     MISSING_TYPE *locationShifter;
     MISSING_TYPE *updateQueue;
     MISSING_TYPE *locationAlertsOnMeByMe;
@@ -21,10 +22,12 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *locationAlertsOnFriendsByMe;
     MISSING_TYPE *locationAlertsOnFriendsByFriends;
     MISSING_TYPE *dataManager;
+    MISSING_TYPE *secureLocationManager;
 }
 
 - (void).cxx_destruct;
 - (id)init;
+- (void)dealloc;
 
 @end
 

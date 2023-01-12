@@ -9,6 +9,7 @@
 @class CNContact, NSArray, NSData, NSError, NSPredicate, NSString;
 
 @protocol CNContactsLogger <NSObject>
+- (void)failedToApplyContactUpdateOfKind:(const char *)arg1 value:(id)arg2 property:(NSString *)arg3 error:(NSError *)arg4;
 - (void)postingNotificationWithName:(NSString *)arg1;
 - (void)XPCConnectionWasInterrupted;
 - (void)XPCConnectionWasInvalidated;

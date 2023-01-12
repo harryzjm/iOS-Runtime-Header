@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (Class)classForCoder;
+- (id)description;
 - (unsigned long long)retainCount;
 - (_Bool)_isDeallocating;
 - (_Bool)_tryRetain;

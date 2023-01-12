@@ -16,41 +16,7 @@
     id <PKDrawingPaletteStatistics> _drawingPaletteStatistics;
 }
 
-+ (id)sharedStatisticsManager;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) id <PKDrawingPaletteStatistics> drawingPaletteStatistics; // @synthesize drawingPaletteStatistics=_drawingPaletteStatistics;
-- (void)recordDataDetectorItemMenuAction:(id)arg1;
-- (void)recordDataDetectorItemDefaultAction:(id)arg1;
-- (void)recordDataDetectorItemRemove:(id)arg1;
-- (void)recordDataDetectorItemAdd:(id)arg1;
-- (void)recordShapeUndoIfNecessary;
-- (void)recordCreateShapeWithType:(long long)arg1 fromMenu:(_Bool)arg2 multiple:(_Bool)arg3;
-- (void)recordShapeEventWithType:(id)arg1 modeString:(id)arg2;
-- (void)recordToolAttributePopoverAppearedForTool:(id)arg1 hadInteraction:(_Bool)arg2;
-- (void)recordPixelObjectEraseModeChange:(long long)arg1;
-- (void)recordAutoMinimizeEnabledDidChange:(_Bool)arg1 type:(unsigned long long)arg2;
-- (void)recordPalettePositionChange:(long long)arg1 type:(unsigned long long)arg2;
-- (void)recordRulerInteractionEndedWithType:(unsigned long long)arg1 angle:(double)arg2;
-- (void)recordShowRuler;
-- (void)recordDrawWithFingerToggle:(_Bool)arg1;
-- (void)recordJumpToSettings;
-- (void)recordInsertSpaceAddWhitespace:(_Bool)arg1;
-- (void)recordInsertSpaceWithType:(int)arg1;
-- (void)recordSelectAllWithStrokeCount:(unsigned long long)arg1;
-- (void)recordCopyAsTextWithLength:(unsigned long long)arg1 time:(double)arg2 didShowHUD:(_Bool)arg3 invokedFromSmartSelection:(_Bool)arg4;
-- (void)recordTool:(id)arg1;
-- (void)recordCollaboration:(unsigned long long)arg1;
-- (void)recordColorsChangedBeforeChosen:(long long)arg1;
-- (void)recordColorPanelInvoked:(id)arg1;
-- (void)recordInkPickerNoOp:(id)arg1;
-- (void)recordDoubleTapAction:(long long)arg1;
-- (void)recordDragAndDropSelection;
-- (void)recordDragSelection;
-- (void)recordPerceivedLatency:(float)arg1 mean:(float)arg2 max:(float)arg3;
-- (void)recordLatency:(float)arg1 mean:(float)arg2 max:(float)arg3 percentageOverLatencyThreshold:(float)arg4;
-- (void)recordObjectEraseWithInputType:(long long)arg1;
-- (void)recordBitmapEraseWithInputType:(long long)arg1;
-- (void)recordDrawStroke:(id)arg1;
 
 @end
 

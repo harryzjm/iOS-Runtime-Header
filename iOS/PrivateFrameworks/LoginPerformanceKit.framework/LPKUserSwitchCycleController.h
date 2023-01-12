@@ -15,8 +15,11 @@
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <LPKUserSwitchCycleResponder> delegate; // @synthesize delegate=_delegate;
+- (void)_scheduleRetryWithTimeout:(double)arg1;
+- (void)_fixTestStatesForRetry;
 - (_Bool)_isLoginSession;
 - (_Bool)_validateUserSwitchExpectation;
+- (unsigned long long)_currentEnvironment;
 - (_Bool)_setUserSwitchDestinationExpectation:(unsigned long long)arg1;
 - (void)_triggerFullLogoutWithDelay:(double)arg1;
 - (void)_triggerFastLogoutWithDelay:(double)arg1;

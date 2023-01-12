@@ -15,7 +15,7 @@
     NSURL *_URL;
     CDUnknownBlockType _handler;
     TSUFileIOChannel *_writeChannel;
-    _Bool _isClosed;
+    _Atomic _Bool _isClosed;
 }
 
 - (void).cxx_destruct;

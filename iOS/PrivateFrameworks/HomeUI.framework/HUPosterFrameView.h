@@ -7,16 +7,16 @@
 #import <UIKit/UIView.h>
 
 #import <HomeUI/HFCameraImageObserver-Protocol.h>
+#import <HomeUI/HFCameraPosterFrameDelegate-Protocol.h>
 
-@class CALayer, HMCameraClip, UIActivityIndicatorView;
+@class CALayer, HMCameraClip;
 
-@interface HUPosterFrameView : UIView <HFCameraImageObserver>
+@interface HUPosterFrameView : UIView <HFCameraImageObserver, HFCameraPosterFrameDelegate>
 {
-    _Bool _loading;
-    _Bool _requestInProgress;
     _Bool _shouldShowLineSeparator;
-    _Bool _displayingHeroFrame;
-    UIActivityIndicatorView *_inProgressSpinner;
+    _Bool _loadingHeroFrame;
+    _Bool _loadingPosterFrame;
+    unsigned long long _posterFrameLoadingState;
     CALayer *_posterFrameLayer;
     CALayer *_lineSeparator;
     HMCameraClip *_clip;
@@ -25,24 +25,26 @@
 
 + (id)posterFrameViewForWidth:(double)arg1;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool displayingHeroFrame; // @synthesize displayingHeroFrame=_displayingHeroFrame;
 @property(nonatomic) double timeOffset; // @synthesize timeOffset=_timeOffset;
 @property(nonatomic) __weak HMCameraClip *clip; // @synthesize clip=_clip;
 @property(retain, nonatomic) CALayer *lineSeparator; // @synthesize lineSeparator=_lineSeparator;
 @property(retain, nonatomic) CALayer *posterFrameLayer; // @synthesize posterFrameLayer=_posterFrameLayer;
-@property(retain, nonatomic) UIActivityIndicatorView *inProgressSpinner; // @synthesize inProgressSpinner=_inProgressSpinner;
+@property(nonatomic) unsigned long long posterFrameLoadingState; // @synthesize posterFrameLoadingState=_posterFrameLoadingState;
+@property(nonatomic) _Bool loadingPosterFrame; // @synthesize loadingPosterFrame=_loadingPosterFrame;
+@property(nonatomic) _Bool loadingHeroFrame; // @synthesize loadingHeroFrame=_loadingHeroFrame;
 @property(nonatomic) _Bool shouldShowLineSeparator; // @synthesize shouldShowLineSeparator=_shouldShowLineSeparator;
-@property(nonatomic, getter=isRequestInProgress) _Bool requestInProgress; // @synthesize requestInProgress=_requestInProgress;
-@property(nonatomic, getter=isLoading) _Bool loading; // @synthesize loading=_loading;
-- (void)dealloc;
 - (void)manager:(id)arg1 failedToFindHeroFrameforClip:(id)arg2;
 - (void)manager:(id)arg1 didFindHeroFrame:(id)arg2 forClip:(id)arg3;
-- (void)displayHeroFrameForClip:(id)arg1;
-- (void)displayImageForClip:(id)arg1 atTimeOffset:(double)arg2;
-- (void)manager:(id)arg1 didFinishGeneratingImagesForObserver:(id)arg2;
+- (void)manager:(id)arg1 failedToGenerateImageAtOffset:(double)arg2 forClip:(id)arg3;
+- (void)manager:(id)arg1 didGenerateImage:(id)arg2 atOffset:(double)arg3 forClip:(id)arg4;
 - (void)manager:(id)arg1 didFindImage:(id)arg2 atTimeOffset:(double)arg3 forClip:(id)arg4;
-- (void)displayImage:(id)arg1;
+- (void)failedToFindPosterFrameAtOffset:(double)arg1 forClip:(id)arg2;
+- (void)didFindPosterFrame:(id)arg1 atOffset:(double)arg2 forClip:(id)arg3;
+- (void)loadPosterFrameImageForClip:(id)arg1 atOffset:(double)arg2;
+- (void)loadPlaceholderHeroFrameImageForClip:(id)arg1;
+- (void)displayImage:(id)arg1 opacity:(double)arg2;
 - (void)prepareForReuse;
+- (void)displayImageForClip:(id)arg1 atTimeOffset:(double)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

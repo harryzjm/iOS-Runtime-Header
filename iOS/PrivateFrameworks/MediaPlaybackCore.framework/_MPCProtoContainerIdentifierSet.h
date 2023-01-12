@@ -10,6 +10,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MPCProtoContainerIdentifierSet : PBCodable <NSCopying>
 {
     long long _cloudID;
@@ -28,15 +29,6 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSString *cloudUniversalLibraryID; // @synthesize cloudUniversalLibraryID=_cloudUniversalLibraryID;
-@property(retain, nonatomic) NSString *radioStationID; // @synthesize radioStationID=_radioStationID;
-@property(retain, nonatomic) NSString *cloudCollectionID; // @synthesize cloudCollectionID=_cloudCollectionID;
-@property(nonatomic) long long cloudID; // @synthesize cloudID=_cloudID;
-@property(retain, nonatomic) NSString *storePlaylistVersionHash; // @synthesize storePlaylistVersionHash=_storePlaylistVersionHash;
-@property(retain, nonatomic) NSString *storePlaylistGlobalID; // @synthesize storePlaylistGlobalID=_storePlaylistGlobalID;
-@property(nonatomic) long long storeAdamID; // @synthesize storeAdamID=_storeAdamID;
-@property(nonatomic) long long delegateInfoID; // @synthesize delegateInfoID=_delegateInfoID;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -44,14 +36,6 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasCloudUniversalLibraryID;
-@property(readonly, nonatomic) _Bool hasRadioStationID;
-@property(readonly, nonatomic) _Bool hasCloudCollectionID;
-@property(nonatomic) _Bool hasCloudID;
-@property(readonly, nonatomic) _Bool hasStorePlaylistVersionHash;
-@property(readonly, nonatomic) _Bool hasStorePlaylistGlobalID;
-@property(nonatomic) _Bool hasStoreAdamID;
-@property(nonatomic) _Bool hasDelegateInfoID;
 
 @end
 

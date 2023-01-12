@@ -38,6 +38,9 @@
     _Bool _supportsBinauralStreaming;
     _Bool _supportsCombinedPresets;
     _Bool _supportsCombinedVolumes;
+    _Bool _requiresBinauralStreaming;
+    _Bool _requiresCombinedPresets;
+    _Bool _requiresCombinedVolumes;
     _Bool _leftPeripheralPaired;
     _Bool _rightPeripheralPaired;
     short _leftMicrophoneVolumeSteps;
@@ -107,6 +110,9 @@
 @property(retain, nonatomic) NSDate *leftBatteryLowDate; // @synthesize leftBatteryLowDate=_leftBatteryLowDate;
 @property(nonatomic) unsigned long long rightWriteResponseProperties; // @synthesize rightWriteResponseProperties=_rightWriteResponseProperties;
 @property(nonatomic) unsigned long long leftWriteResponseProperties; // @synthesize leftWriteResponseProperties=_leftWriteResponseProperties;
+@property(nonatomic) _Bool requiresCombinedVolumes; // @synthesize requiresCombinedVolumes=_requiresCombinedVolumes;
+@property(nonatomic) _Bool requiresCombinedPresets; // @synthesize requiresCombinedPresets=_requiresCombinedPresets;
+@property(nonatomic) _Bool requiresBinauralStreaming; // @synthesize requiresBinauralStreaming=_requiresBinauralStreaming;
 @property(nonatomic) _Bool supportsCombinedVolumes; // @synthesize supportsCombinedVolumes=_supportsCombinedVolumes;
 @property(nonatomic) _Bool supportsCombinedPresets; // @synthesize supportsCombinedPresets=_supportsCombinedPresets;
 @property(nonatomic) _Bool supportsBinauralStreaming; // @synthesize supportsBinauralStreaming=_supportsBinauralStreaming;
@@ -184,6 +190,7 @@
 - (void)pairingDidCompleteForPeripheral:(id)arg1;
 - (void)peripheral:(id)arg1 didWriteValueForCharacteristic:(id)arg2 error:(id)arg3;
 - (void)peripheral:(id)arg1 didInvalidateServices:(id)arg2;
+- (_Bool)readsWatchSupportCharacteristic;
 - (void)peripheral:(id)arg1 didUpdateCharacteristic:(id)arg2;
 - (void)peripheral:(id)arg1 didUpdateValueForCharacteristic:(id)arg2 error:(id)arg3;
 - (void)peripheral:(id)arg1 didDiscoverCharacteristicsForService:(id)arg2 error:(id)arg3;

@@ -21,7 +21,7 @@
 - (id)schemataChildren;
 - (_Bool)schemataIsQuoted;
 - (struct Schemata)layoutSchemata;
-- (const set_25e6ba53 *)mathMLAttributes;
+- (const void *)mathMLAttributes;
 - (id)initFromXMLNode:(struct _xmlNode *)arg1 parser:(id)arg2;
 - (void)dealloc;
 - (id)initWithContent:(id)arg1;

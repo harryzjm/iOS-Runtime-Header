@@ -7,29 +7,38 @@
 #import <LinkPresentation/LPContentInsettable-Protocol.h>
 #import <LinkPresentation/LPTextStyleable-Protocol.h>
 
-@class LPTextViewStyle, NSAttributedString, UILabel;
+@class LPTextViewStyle, NSAttributedString, NSRegularExpression, UILabel, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
 @interface LPTextView <LPTextStyleable, LPContentInsettable>
 {
     UILabel *_textView;
-    long long _overrideMaximumNumberOfLines;
+    UILabel *_coloredGlyphsView;
+    UIVisualEffectView *_effectView;
     struct UIEdgeInsets _contentInset;
     LPTextViewStyle *_style;
     NSAttributedString *_attributedString;
     double _ascender;
     double _descender;
+    long long _overrideMaximumNumberOfLines;
+    NSRegularExpression *_emphasizedTextExpression;
 }
 
++ (id)attributedStringHidingNonColoredRanges:(id)arg1;
++ (id)attributedString:(id)arg1 resolvedAgainstStyle:(id)arg2 withEmphasizedTextExpression:(id)arg3 tintColor:(id)arg4 lineBreakMode:(long long)arg5 usesVibrancy:(_Bool)arg6 forLTR:(_Bool)arg7 withFont:(id)arg8;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSRegularExpression *emphasizedTextExpression; // @synthesize emphasizedTextExpression=_emphasizedTextExpression;
+@property(nonatomic) long long overrideMaximumNumberOfLines; // @synthesize overrideMaximumNumberOfLines=_overrideMaximumNumberOfLines;
 - (id)lastBaselineAnchor;
 - (id)firstBaselineAnchor;
-- (id)_createTextViewWithAttributedString:(id)arg1 style:(id)arg2;
+- (void)applyAttributedString:(id)arg1;
+- (void)_createTextViewWithAttributedString:(id)arg1;
+- (id)_createLabel;
+- (void)tintColorDidChange;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutComponentView;
 - (long long)effectiveMaximumNumberOfLines;
 - (struct UIEdgeInsets)effectiveInsets;
-- (void)setOverrideMaximumNumberOfLines:(long long)arg1;
 - (long long)computedNumberOfLines;
 - (double)descender;
 - (double)ascender;
@@ -38,8 +47,11 @@ __attribute__((visibility("hidden")))
 @property(readonly, retain, nonatomic) LPTextViewStyle *style;
 - (void)setContentInset:(struct UIEdgeInsets)arg1;
 @property(readonly, retain, nonatomic) NSAttributedString *attributedString;
-- (id)initWithText:(id)arg1 style:(id)arg2;
-- (id)init;
+- (id)effectiveAttributedString;
+- (_Bool)_lp_isLTR;
+- (void)_buildSubviewsIfNeeded;
+- (id)initWithHost:(id)arg1 text:(id)arg2 style:(id)arg3;
+- (id)initWithHost:(id)arg1;
 
 @end
 

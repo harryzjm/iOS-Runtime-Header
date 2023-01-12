@@ -10,7 +10,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)description;
-- (unsigned long long)priority;
 - (unsigned long long)type;
 @property(readonly, nonatomic) unsigned long long virtualDeviceID;
 @property(readonly, nonatomic) struct _MRHIDTouchEvent event;

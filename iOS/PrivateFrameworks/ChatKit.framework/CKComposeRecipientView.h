@@ -19,6 +19,7 @@
 - (struct UIEdgeInsets)safeAreaInsets;
 - (void)atomTextViewDidBecomeFirstResponder:(id)arg1;
 - (void)reset;
+- (void)setFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

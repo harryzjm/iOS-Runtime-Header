@@ -46,7 +46,7 @@
 - (void)queryDidComplete;
 - (void)queryDidFailWithError:(id)arg1;
 - (void)protectedHealthDataDidBecomeAvailable;
-- (id)stateMachineLog;
+- (unsigned long long)loggingCategory;
 @property(readonly, nonatomic) _Bool isDelayingForTracking;
 @property(readonly, nonatomic) _Bool isWaitingForWakeUp;
 - (id)initWithIdentifier:(id)arg1 persistence:(id)arg2 delegate:(id)arg3 infoProvider:(id)arg4 currentDateProvider:(CDUnknownBlockType)arg5;

@@ -10,27 +10,29 @@
 
 @interface TSTFormulaStore : NSObject
 {
-    UUIDData_5fbc143e _formulaOwnerUID;
+    struct TSKUIDStruct _formulaOwnerUID;
     TSCECalculationEngine *_calcEngine;
     TSUSparseArray *_formulas;
     unsigned long long _nextIndex;
+    _Bool _usesOnlyFixedCoords;
 }
 
-+ (UUIDData_5fbc143e)tableUIDFromFormula:(id)arg1 atCoord:(const struct TSUModelCellCoord *)arg2;
++ (struct TSKUIDStruct)tableUIDFromFormula:(id)arg1 atCoord:(const struct TSUModelCellCoord *)arg2;
 + (struct TSUModelCellRect)rangeFromFormulaObject:(id)arg1 atCoord:(const struct TSUModelCellCoord *)arg2 useBoundingRange:(_Bool)arg3;
 + (struct TSUModelCellRect)rangeFromFormulaObject:(id)arg1 atCoord:(const struct TSUModelCellCoord *)arg2;
++ (id)createFormulaForUIDRange:(const void *)arg1 tableUID:(const struct TSKUIDStruct *)arg2;
 + (struct TSUCellCoord)coordFromIndex:(unsigned long long)arg1;
 + (unsigned long long)indexFromCoord:(const struct TSUCellCoord *)arg1;
-- (id).cxx_construct;
 - (void).cxx_destruct;
 @property(nonatomic) __weak TSCECalculationEngine *calcEngine; // @synthesize calcEngine=_calcEngine;
-@property(nonatomic) UUIDData_5fbc143e formulaOwnerUID; // @synthesize formulaOwnerUID=_formulaOwnerUID;
-- (void)saveToArchive:(struct FormulaStoreArchive *)arg1 archiver:(id)arg2;
-- (id)initWithOwnerUID:(const UUIDData_5fbc143e *)arg1 archive:(const struct FormulaStoreArchive *)arg2 unarchiver:(id)arg3;
-- (void)remapRangeFormulasToOwnerUID:(const UUIDData_5fbc143e *)arg1;
-- (UUIDData_5fbc143e)tableUIDFromFormulaAtIndex:(unsigned long long)arg1;
+@property(nonatomic) struct TSKUIDStruct formulaOwnerUID; // @synthesize formulaOwnerUID=_formulaOwnerUID;
+@property(nonatomic) _Bool usesOnlyFixedCoords; // @synthesize usesOnlyFixedCoords=_usesOnlyFixedCoords;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithOwnerUID:(const struct TSKUIDStruct *)arg1 archive:(const void *)arg2 unarchiver:(id)arg3;
+- (void)remapRangeFormulasToOwnerUID:(const struct TSKUIDStruct *)arg1;
+- (struct TSKUIDStruct)tableUIDFromFormulaAtIndex:(unsigned long long)arg1;
 - (struct TSUModelCellRect)rangeFromFormulaAtIndex:(unsigned long long)arg1 useBoundingRange:(_Bool)arg2;
-- (id)createFormulaObjectForRange:(struct TSUModelCellRect)arg1 atIndex:(unsigned long long)arg2 tableUID:(const UUIDData_5fbc143e *)arg3;
+- (id)createFormulaObjectForRange:(struct TSUModelCellRect)arg1 atIndex:(unsigned long long)arg2 tableUID:(const struct TSKUIDStruct *)arg3;
 - (void)foreach:(CDUnknownBlockType)arg1;
 - (id)formulaObjectAtIndex:(unsigned long long)arg1;
 - (void)registerAllFormulaToCalculationEngine;
@@ -43,7 +45,7 @@
 - (unsigned long long)reserveNextIndex;
 - (id)description;
 - (struct TSUCellCoord)reserveNextCoordinate;
-- (id)initWithOwnerUID:(UUIDData_5fbc143e)arg1;
+- (id)initWithOwnerUID:(struct TSKUIDStruct)arg1;
 - (unsigned long long)formulaCount;
 
 @end

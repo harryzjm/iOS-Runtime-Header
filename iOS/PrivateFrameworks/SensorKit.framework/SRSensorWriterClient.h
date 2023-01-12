@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 + (id)sensorWriterClientWithWriter:(id)arg1;
 - (void).cxx_destruct;
 @property __weak SRSensorWriter *writer; // @synthesize writer=_writer;
-- (void)setMonitoring:(_Bool)arg1;
+- (void)setMonitoring:(_Bool)arg1 withRequestedConfigurations:(id)arg2;
 - (void)resetDatastoreFiles:(id)arg1;
 - (id)initWithWriter:(id)arg1;
 

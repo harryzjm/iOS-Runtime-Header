@@ -6,32 +6,38 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMBModelObjectCoder-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMFWoBLEInfo, HMFWoWLANInfo, NSString;
+@class HMFWoBLEInfo, HMFWoWLANInfo, NSArray, NSString;
 
-@interface HMFConnectivityInfo : HMFObject <NSSecureCoding>
+@interface HMFConnectivityInfo : HMFObject <HMBModelObjectCoder, NSSecureCoding>
 {
     NSString *_accessoryIdentifier;
     HMFWoBLEInfo *_woBLEInfo;
-    HMFWoWLANInfo *_woWLANInfo;
+    NSArray *_woWLANInfos;
 }
 
 + (id)shortDescription;
 + (_Bool)supportsSecureCoding;
++ (id)connectivityInfoWithAccessoryIdentifier:(id)arg1 wakeConfiguration:(id)arg2;
++ (id)hmbDecodeData:(id)arg1 fromStorageLocation:(unsigned long long)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
-@property(retain, nonatomic) HMFWoWLANInfo *woWLANInfo; // @synthesize woWLANInfo=_woWLANInfo;
+@property(retain, nonatomic) NSArray *woWLANInfos; // @synthesize woWLANInfos=_woWLANInfos;
 @property(retain, nonatomic) HMFWoBLEInfo *woBLEInfo; // @synthesize woBLEInfo=_woBLEInfo;
 @property(readonly, nonatomic) NSString *accessoryIdentifier; // @synthesize accessoryIdentifier=_accessoryIdentifier;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
-- (unsigned long long)hash;
-- (void)updateWithWoWLANInfo:(id)arg1;
-- (void)updateWithWoBLEInfo:(id)arg1;
-- (id)initWithAccessory:(id)arg1 woWLANInfo:(id)arg2;
-- (id)initWithAccessory:(id)arg1 woBLEInfo:(id)arg2;
+@property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) HMFWoWLANInfo *woWLANInfo;
+- (id)initWithAccessoryIdentifier:(id)arg1 woBLEInfo:(id)arg2 woWLANInfos:(id)arg3;
+- (id)hmbEncodeForStorageLocation:(unsigned long long)arg1 error:(id *)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

@@ -36,14 +36,13 @@
 + (_Bool)annotationPageLayerEffectIsFlipped;
 + (void)setAnnotationPageLayerEffectIsFlipped:(_Bool)arg1;
 + (_Bool)PDFAnnotationIsHandledByPDFKit:(id)arg1;
++ (id)newPDFAnnotationFromAKAnnotation:(id)arg1;
 + (id)getProperNameStringFromString:(id)arg1;
 + (id)nameForLineStyle:(long long)arg1;
 + (long long)lineStyleFromName:(id)arg1;
 - (void).cxx_destruct;
 - (void)presentRedactionDiscoverabilityAlertWithOldValue:(id)arg1 forAnnotationKey:(id)arg2;
-- (void)discardTextStorageAndLayoutManager;
-- (id)_getAttributedStringForTextWidget;
-- (void)createTextStorageAndLayoutManager;
+- (id)createAttributedStringForTextWidget;
 - (void)setTextInsets:(struct UIEdgeInsets)arg1;
 - (struct UIEdgeInsets)textInsets;
 - (void)setTextStorage:(id)arg1;
@@ -67,6 +66,7 @@
 - (id)description;
 - (void)_drawAnnotationWithBox:(long long)arg1 inContext:(struct CGContext *)arg2;
 - (void)drawWithBox:(long long)arg1 inContext:(struct CGContext *)arg2;
+- (void)drawCachedAppearance:(struct CGDisplayList *)arg1 withBox:(long long)arg2 inContext:(struct CGContext *)arg3 inRect:(struct CGRect)arg4 scaleProportional:(_Bool)arg5;
 - (void)drawAppearance:(struct CGPDFForm *)arg1 withBox:(long long)arg2 inContext:(struct CGContext *)arg3 inRect:(struct CGRect)arg4 scaleProportional:(_Bool)arg5;
 - (void)drawAppearance:(struct CGPDFForm *)arg1 withBox:(long long)arg2 inContext:(struct CGContext *)arg3 scaleProportional:(_Bool)arg4;
 - (void)drawAppearance:(struct CGPDFForm *)arg1 withBox:(long long)arg2 inContext:(struct CGContext *)arg3;
@@ -82,6 +82,8 @@
 - (double)pointSizeFromAppearanceTokens:(id)arg1;
 - (id)tokenizeAppearanceString:(id)arg1;
 - (void)getAppearancesFromDictionary:(struct CGPDFDictionary *)arg1 ofType:(int)arg2;
+- (void)cacheAppearances;
+- (struct CGDisplayList *)cachedAppearance:(int)arg1;
 - (void)setAppearance:(struct CGPDFForm *)arg1 forType:(int)arg2;
 - (_Bool)savesAppearanceStream;
 - (void)setSavesAppearanceStream:(_Bool)arg1;
@@ -142,6 +144,7 @@
 - (void)addRect:(struct CGRect)arg1 forKey:(struct __CFString *)arg2 toDictionaryRef:(struct __CFDictionary *)arg3;
 - (id)_createArrayForCGRect:(struct CGRect)arg1;
 - (void)addPageReferenceToDictionaryRef:(struct __CFDictionary *)arg1;
+- (id)akAnnotation;
 - (id)_accessibilityTypeString;
 - (_Bool)isTextWidget;
 - (_Bool)intersectsWithRedactionPath;

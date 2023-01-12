@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class PPLocalConnectionsStore, PPLocalContactStore, PPLocalEventStore, PPLocalLocationStore, PPLocalNamedEntityStore, PPLocalQuickTypeBroker, PPLocalTopicStore, PPSQLDatabase;
+@class PPLocalConnectionsStore, PPLocalContactStore, PPLocalEventStore, PPLocalLocationStore, PPLocalNamedEntityStore, PPLocalQuickTypeBroker, PPLocalTopicStore, PPSQLDatabase, _PASLock;
 
 @interface PPFeedbackStorage : NSObject
 {
@@ -18,27 +18,18 @@
     PPLocalContactStore *_contactStoreOverride;
     PPLocalEventStore *_eventStoreOverride;
     PPLocalConnectionsStore *_connectionsStoreOverride;
+    _PASLock *_lock;
 }
 
 + (id)storeTypeDescription:(unsigned char)arg1;
-+ (void)transformOfferedItemsIntoEngagementAndRejection:(id)arg1;
-+ (void)logFeedback:(id)arg1 domain:(unsigned char)arg2 domainStatus:(int)arg3;
++ (void)logFeedback:(id)arg1 domain:(unsigned char)arg2 domainStatus:(unsigned char)arg3;
 - (void).cxx_destruct;
-- (_Bool)deleteAllPendingFeedbackOlderThanDate:(id)arg1 deletedCount:(unsigned long long *)arg2 error:(id *)arg3;
+- (id)pendingTopicFeedback;
+- (_Bool)processPendingFeedbackWithShouldContinueBlock:(CDUnknownBlockType)arg1 error:(id *)arg2;
+- (id)mappedTopicsPendingFeedbackWithShouldContinueBlock:(CDUnknownBlockType)arg1;
+- (_Bool)deleteExpiredFeedbackWithShouldContinueBlock:(CDUnknownBlockType)arg1;
 - (_Bool)storePendingFeedback:(id)arg1 storeType:(unsigned char)arg2 error:(id *)arg3;
-- (void)_emitMaxRowCountEvent;
-- (_Bool)_clearPendingFeedbackRecordsWithStoreType:(unsigned char)arg1 limit:(int)arg2;
-- (_Bool)processPendingFeedbackWithStoreType:(unsigned char)arg1 shouldContinueBlock:(CDUnknownBlockType)arg2 error:(id *)arg3;
-- (void)filterPendingFeedbackItems:(id)arg1 storeType:(unsigned char)arg2 timestamp:(double)arg3 clientIdentifier:(id)arg4 clientBundleId:(id)arg5 mappingId:(id)arg6;
-- (id)initWithDatabase:(id)arg1 namedEntityStoreOverride:(id)arg2 topicStoreOverride:(id)arg3 locationStoreOverride:(id)arg4 quickTypeBrokerOverride:(id)arg5 contactStoreOverride:(id)arg6 eventStoreOverride:(id)arg7 connectionsStoreOverride:(id)arg8;
 - (id)init;
-- (id)connectionsStore;
-- (id)eventStore;
-- (id)contactStore;
-- (id)quickTypeBroker;
-- (id)locationStore;
-- (id)topicStore;
-- (id)namedEntityStore;
 
 @end
 

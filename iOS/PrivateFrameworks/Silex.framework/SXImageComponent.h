@@ -16,6 +16,7 @@
 @property(readonly, nonatomic) _Bool shouldBeExposedToAssistiveTechnology;
 
 // Remaining properties
+@property(readonly, nonatomic) NSString *accessibilityCaption; // @dynamic accessibilityCaption;
 @property(readonly, nonatomic) NSString *caption; // @dynamic caption;
 @property(readonly, nonatomic) NSString *imageIdentifier; // @dynamic imageIdentifier;
 @property(readonly, nonatomic) _Bool userControllable; // @dynamic userControllable;

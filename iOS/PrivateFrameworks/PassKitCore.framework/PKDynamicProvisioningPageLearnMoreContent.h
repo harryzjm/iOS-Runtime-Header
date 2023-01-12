@@ -14,19 +14,21 @@
 {
     NSString *_buttonTitle;
     NSURL *_buttonURL;
+    NSString *_termsIdentifier;
     NSString *_title;
     NSString *_subtitle;
     NSString *_body;
-    NSString *_bussinessChatButtonTitle;
-    NSString *_bussinesChatIntentName;
+    NSString *_businessChatButtonTitle;
+    NSString *_businessChatIntentName;
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSString *bussinesChatIntentName; // @synthesize bussinesChatIntentName=_bussinesChatIntentName;
-@property(copy, nonatomic) NSString *bussinessChatButtonTitle; // @synthesize bussinessChatButtonTitle=_bussinessChatButtonTitle;
+@property(copy, nonatomic) NSString *businessChatIntentName; // @synthesize businessChatIntentName=_businessChatIntentName;
+@property(copy, nonatomic) NSString *businessChatButtonTitle; // @synthesize businessChatButtonTitle=_businessChatButtonTitle;
 @property(copy, nonatomic) NSString *body; // @synthesize body=_body;
 @property(copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property(copy, nonatomic) NSString *termsIdentifier; // @synthesize termsIdentifier=_termsIdentifier;
 @property(copy, nonatomic) NSURL *buttonURL; // @synthesize buttonURL=_buttonURL;
 @property(copy, nonatomic) NSString *buttonTitle; // @synthesize buttonTitle=_buttonTitle;
 - (id)copyWithZone:(struct _NSZone *)arg1;

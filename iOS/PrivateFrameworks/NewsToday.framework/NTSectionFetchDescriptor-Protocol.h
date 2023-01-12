@@ -8,10 +8,10 @@
 #import <NewsToday/NSObject-Protocol.h>
 
 @class NSArray, NTCatchUpOperation, NTCatchUpOperationResults;
-@protocol FCFeedPersonalizing, NTFeedTransforming;
+@protocol FCFeedPersonalizing, FCFeedPersonalizing><FCPersonalizationFunctionProviding, NTFeedTransforming;
 
 @protocol NTSectionFetchDescriptor <NSObject, NSCopying>
-- (id <NTFeedTransforming>)incrementalLimitTransformationWithFeedPersonalizer:(id <FCFeedPersonalizing>)arg1 limit:(unsigned long long)arg2 priorFeedItems:(NSArray *)arg3;
+- (id <NTFeedTransforming>)incrementalLimitTransformationWithFeedPersonalizer:(id <FCFeedPersonalizing><FCPersonalizationFunctionProviding>)arg1 limit:(unsigned long long)arg2 priorFeedItems:(NSArray *)arg3;
 - (id <NTFeedTransforming>)incrementalSortTransformationWithFeedPersonalizer:(id <FCFeedPersonalizing>)arg1;
 - (NTCatchUpOperationResults *)assembleResultsWithCatchUpOperation:(NTCatchUpOperation *)arg1;
 - (void)configureCatchUpOperationWithFetchRequest:(NTCatchUpOperation *)arg1;

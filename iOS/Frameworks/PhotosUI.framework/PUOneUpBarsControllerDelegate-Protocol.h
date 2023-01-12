@@ -12,11 +12,15 @@
 @protocol PUOneUpBarsControllerDelegate <PUBarsControllerDelegate>
 
 @optional
+- (_Bool)oneUpBarsControllerDismissPresentedViewController:(PUOneUpBarsController *)arg1;
+- (_Bool)oneUpBarsControllerShouldAnimateViewControllerPresentation:(PUOneUpBarsController *)arg1;
 - (void)oneUpBarsControllerDidEndShowingOriginal:(PUOneUpBarsController *)arg1;
 - (void)oneUpBarsControllerDidBeginShowingOriginal:(PUOneUpBarsController *)arg1;
 - (_Bool)oneUpBarsController:(PUOneUpBarsController *)arg1 shouldEnableShowOriginalForAsset:(id <PUDisplayAsset>)arg2;
 - (_Bool)oneUpBarsController:(PUOneUpBarsController *)arg1 canShowOriginalForAsset:(id <PUDisplayAsset>)arg2;
 - (void)oneUpBarsController:(PUOneUpBarsController *)arg1 willExecuteActionPerformer:(PUAssetActionPerformer *)arg2;
+- (_Bool)oneUpBarsController:(PUOneUpBarsController *)arg1 shouldHideStatusBarWhenShowingAccessoryViewForAssetReference:(PUAssetReference *)arg2;
+- (_Bool)oneUpBarsController:(PUOneUpBarsController *)arg1 shouldHideNavigationBarWhenShowingAccessoryViewForAssetReference:(PUAssetReference *)arg2;
 - (_Bool)oneUpBarsController:(PUOneUpBarsController *)arg1 shouldHideToolbarWhenShowingAccessoryViewForAssetReference:(PUAssetReference *)arg2;
 - (_Bool)oneUpBarsController:(PUOneUpBarsController *)arg1 shouldTapBeginAtLocationFromProvider:(id <PUDisplayLocationProvider>)arg2;
 - (_Bool)oneUpBarsController:(PUOneUpBarsController *)arg1 canShowCommentsForAsset:(id <PUDisplayAsset>)arg2;

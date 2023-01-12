@@ -8,13 +8,12 @@
 
 #import <TextInputCore/TITypingSessionAggregatedEventObserver-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableDictionary, NSString, TIInputMode, TIKeyboardInput, TITypingSession, TIUserModelDataStore;
+@class NLTagger, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, TIInputMode, TIKeyboardInput, TITypingSession, TIUserModelDataStore;
 @protocol OS_dispatch_queue, TISensorWriterWrapper;
 
 @interface TISKMetricCollector : NSObject <TITypingSessionAggregatedEventObserver>
 {
     TIInputMode *_inputMode;
-    NSString *_wordSeparator;
     NSMutableDictionary *_touchToEventMap;
     NSMutableArray *_events;
     NSArray *_sortedEvents;
@@ -31,18 +30,21 @@
     TIUserModelDataStore *_userModelDataStore;
     _Bool _accentedLanguage;
     NSMutableArray *_accentedLayoutsMap;
-    NSString *_idenitifer;
+    NSString *_identifier;
     NSObject<OS_dispatch_queue> *_workQueue;
     int _tccNotifyToken;
     _Bool _isTCCAuthorized;
     _Bool _skipTCCAuthorization;
+    NSDictionary *_wordBucketDictionary;
+    NSDictionary *_emojiBuckets;
+    NLTagger *_tagger;
     unsigned long long _wordAccumulationThreshold;
     id <TISensorWriterWrapper> _dataWriter;
     NSMutableArray *_savedSessionSamplesArray;
     TITypingSession *_typingSession;
 }
 
-+ (id)makeMetricCollector:(id)arg1 separator:(id)arg2 wordsThreshold:(unsigned long long)arg3 isTesting:(_Bool)arg4;
++ (id)makeMetricCollector:(id)arg1 wordsThreshold:(unsigned long long)arg2 isTesting:(_Bool)arg3;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool isLoaded; // @synthesize isLoaded=_isLoaded;
 @property(retain, nonatomic) TITypingSession *typingSession; // @synthesize typingSession=_typingSession;
@@ -50,6 +52,7 @@
 @property(retain, nonatomic) NSMutableArray *savedSessionSamplesArray; // @synthesize savedSessionSamplesArray=_savedSessionSamplesArray;
 @property(retain, nonatomic) id <TISensorWriterWrapper> dataWriter; // @synthesize dataWriter=_dataWriter;
 @property(nonatomic) unsigned long long wordAccumulationThreshold; // @synthesize wordAccumulationThreshold=_wordAccumulationThreshold;
+- (void)removeSamplesWithNegativeDurationForTypingSession:(id)arg1;
 - (void)_persistSavedSessionSampleArray;
 - (id)_retrieveSavedSessionSampleArray;
 - (void)_loadStatsFromDataStore;
@@ -59,14 +62,23 @@
 - (void)_mergeStats:(id)arg1;
 - (double)totalTimeSpanFromLastTap;
 - (double)totalTimeSpan;
+- (id)privateEventsDescription;
 - (id)eventsDescription:(_Bool)arg1;
 - (id)eventsDescription;
 - (void)_coalesceTaps;
 - (id)_mapIDToLayout:(unsigned long long)arg1;
+- (id)_insertEmojiSwitchEvents:(id)arg1;
 - (void)_mapTapsToEvents;
 - (void)_metricWalk;
+- (id)getWordBucketCategoryForWord:(id)arg1;
+- (id)lemmatizeWord:(id)arg1;
+- (void)loadEmojiBucketDictionaryIfNecessary;
+- (void)loadWordBucketDictionaryIfNecessary;
 - (void)_haltSessionTypingTimer:(id)arg1 event:(id)arg2;
 - (void)_processEvents;
+- (void)_consumePathsAndPredictions:(id)arg1 emojiSearchMode:(_Bool)arg2;
+- (void)_consumeInputsAndTouches:(id)arg1 occurenceTime:(double)arg2 emojiSearchMode:(_Bool)arg3;
+- (void)_consumeDeleteWordEvent:(id)arg1;
 - (void)_consumeWordEntry:(id)arg1;
 - (void)_consumeUserAction:(id)arg1;
 - (id)_consumeTypingSession:(id)arg1;
@@ -78,9 +90,10 @@
 - (void)_setupTCCAuthNotification;
 - (void)testTCCAuthorization;
 - (void)dealloc;
-- (id)init:(id)arg1 separator:(id)arg2 wordsThreshold:(unsigned long long)arg3 accentedLanguage:(_Bool)arg4 skipTCCAuthorization:(_Bool)arg5;
-- (id)init:(id)arg1 separator:(id)arg2 wordsThreshold:(unsigned long long)arg3 accentedLanguage:(_Bool)arg4;
-- (id)init:(id)arg1 separator:(id)arg2 wordsThreshold:(unsigned long long)arg3;
+- (id)loadDataWithFilename:(id)arg1;
+- (id)init:(id)arg1 wordsThreshold:(unsigned long long)arg2 accentedLanguage:(_Bool)arg3 skipTCCAuthorization:(_Bool)arg4;
+- (id)init:(id)arg1 wordsThreshold:(unsigned long long)arg2 accentedLanguage:(_Bool)arg3;
+- (id)init:(id)arg1 wordsThreshold:(unsigned long long)arg2;
 - (id)init:(id)arg1;
 - (void)placeTaskOnWorkQueue:(CDUnknownBlockType)arg1;
 

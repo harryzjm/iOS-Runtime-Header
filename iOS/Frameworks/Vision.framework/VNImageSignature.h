@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithImageBuffer:(id)arg1 andOptions:(id)arg2 error:(id *)arg3;
+- (id)initWithImageBuffer:(id)arg1 regionOfInterest:(struct CGRect)arg2 error:(id *)arg3;
 
 @end
 

@@ -11,14 +11,15 @@
 @interface WFWidgetOptions : NSObject
 {
     INIntent *_intent;
-    unsigned long long _sizeClass;
+    long long _family;
     NSNumber *_cornerRadius;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSNumber *cornerRadius; // @synthesize cornerRadius=_cornerRadius;
-@property(nonatomic) unsigned long long sizeClass; // @synthesize sizeClass=_sizeClass;
+@property(nonatomic) long long family; // @synthesize family=_family;
 @property(copy, nonatomic) INIntent *intent; // @synthesize intent=_intent;
+@property(nonatomic) unsigned long long sizeClass;
 
 @end
 

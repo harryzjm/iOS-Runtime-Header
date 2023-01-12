@@ -12,12 +12,16 @@
 @protocol MPCItemIdentifier, MPCReportingIdentityPropertiesLoading;
 
 @interface MPAVItem (MFQueuePlayerItem) <MFQueuePlayerItem>
+- (void)reset;
 - (void)setItemID:(id)arg1;
 @property(readonly, copy, nonatomic) id <MPCItemIdentifier> itemID;
 - (void)setCurrentItemTransition:(long long)arg1;
+@property(nonatomic) double playbackStartTimeOverride;
+@property(readonly, nonatomic) _Bool isMovieOrTVShow;
 @property(nonatomic) _Bool isVideoContent;
 @property(readonly, nonatomic) _Bool isFullyDownloaded;
 @property(readonly, nonatomic) _Bool hasLoadableAsset;
+@property(readonly, nonatomic) double time;
 @property(readonly, nonatomic) AVPlayerItem *avPlayerItem;
 @property(copy, nonatomic) NSString *title;
 @property(readonly, copy, nonatomic) NSData *mpcReporting_trackInfo;

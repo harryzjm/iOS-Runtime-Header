@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SFCard;
-@protocol SearchUICardViewDelegate;
+#import <SearchUI/SearchUICardTableBridgingProtocol-Protocol.h>
 
-@interface SearchUICardTableViewController
+@class NSString, SFCard, SearchUITableModel;
+@protocol SFFeedbackListener, SearchUICardViewDelegate, SearchUICommandDelegate, SearchUIResultsViewDelegate, SearchUISizingDelegate;
+
+@interface SearchUICardTableViewController <SearchUICardTableBridgingProtocol>
 {
     _Bool _rowSelectionAppearanceEnabled;
     id <SearchUICardViewDelegate> _cardViewDelegate;
@@ -18,6 +20,7 @@
 @property(nonatomic) _Bool rowSelectionAppearanceEnabled; // @synthesize rowSelectionAppearanceEnabled=_rowSelectionAppearanceEnabled;
 @property(retain, nonatomic) SFCard *card; // @synthesize card=_card;
 @property(nonatomic) __weak id <SearchUICardViewDelegate> cardViewDelegate; // @synthesize cardViewDelegate=_cardViewDelegate;
+- (id)scrollViewForSizing;
 - (_Bool)shouldDrawTopAndBottomSeparators;
 - (_Bool)tableView:(id)arg1 shouldDrawBottomSeparatorForSection:(long long)arg2;
 - (_Bool)tableView:(id)arg1 shouldDrawTopSeparatorForSection:(long long)arg2;
@@ -25,14 +28,31 @@
 - (double)offScreenContentScrollDistance;
 - (void)updateTopPadding;
 - (void)updateSelectionStyleForCell:(id)arg1;
-- (void)setShouldUseStandardSectionInsets:(_Bool)arg1;
-- (void)setShouldUseInsetRoundedSections:(_Bool)arg1;
+@property(nonatomic) _Bool shouldUseStandardSectionInsets;
+@property(nonatomic) _Bool shouldUseInsetRoundedSections;
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
+- (void)reloadViews;
+@property(nonatomic) _Bool showsVerticalScrollIndicator;
 - (id)cellForIndexPath:(id)arg1 reuseIfPossible:(_Bool)arg2;
-- (void)setTableModel:(id)arg1;
+@property(retain, nonatomic) SearchUITableModel *tableModel;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (id)init;
+
+// Remaining properties
+@property(copy, nonatomic) CDUnknownBlockType cellWillDisplayHandler;
+@property(nonatomic) __weak id <SearchUICommandDelegate> commandDelegate;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(nonatomic) _Bool dragInteractionEnabled;
+@property(nonatomic) __weak id <SFFeedbackListener> feedbackListener;
+@property(readonly) unsigned long long hash;
+@property __weak id <SearchUIResultsViewDelegate> resultsViewDelegate;
+@property __weak id <SearchUISizingDelegate> sizingDelegate;
+@property(readonly) Class superclass;
+@property(copy, nonatomic) CDUnknownBlockType tableViewDidUpdateHandler;
+@property(copy, nonatomic) CDUnknownBlockType tableViewWillUpdateHandler;
+@property(nonatomic) _Bool threeDTouchEnabled;
 
 @end
 

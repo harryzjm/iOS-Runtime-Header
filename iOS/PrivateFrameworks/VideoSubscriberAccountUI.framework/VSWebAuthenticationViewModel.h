@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) VSMessageQueue *messagesFromWeb; // @synthesize messagesFromWeb=_messagesFromWeb;
 @property(readonly, nonatomic) VSMessageQueue *messagesToWeb; // @synthesize messagesToWeb=_messagesToWeb;
 @property(copy, nonatomic) NSURL *sourceURL; // @synthesize sourceURL=_sourceURL;
+- (void)configureWithRequest:(id)arg1;
 - (id)init;
 
 @end

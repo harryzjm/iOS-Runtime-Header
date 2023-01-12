@@ -8,7 +8,7 @@
 
 #import <GeoServices/GEOTileRequesterDelegate-Protocol.h>
 
-@class GEOTileKeyList, GEOTileKeyMap, GEOTileRequester, NSString;
+@class GEOTileKeyList, GEOTileKeyMap, NSMutableDictionary, NSString;
 @protocol GEOBatchOpportunisticTileDownloaderDelegate, OS_dispatch_group, OS_dispatch_queue, OS_os_log;
 
 __attribute__((visibility("hidden")))
@@ -25,8 +25,8 @@ __attribute__((visibility("hidden")))
     _Bool _canceled;
     _Bool _paused;
     struct GEOOnce_s _finished;
-    GEOTileRequester *_activeRequester;
-    GEOTileKeyList *_remainingKeysForActiveRequester;
+    NSMutableDictionary *_activeRequesters;
+    GEOTileKeyList *_remainingKeysForActiveRequesters;
     unsigned long long _numberOfTilesAttempted;
     unsigned long long _successfulTiles;
     unsigned long long _failedTiles;
@@ -44,7 +44,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned long long numberOfTilesAttempted; // @synthesize numberOfTilesAttempted=_numberOfTilesAttempted;
 - (void)tileRequesterFinished:(id)arg1;
 - (void)tileRequester:(id)arg1 receivedError:(id)arg2 forKey:(struct _GEOTileKey)arg3;
-- (void)tileRequester:(id)arg1 receivedData:(id)arg2 tileEdition:(unsigned int)arg3 tileSetDB:(unsigned int)arg4 tileSet:(id)arg5 etag:(id)arg6 forKey:(struct _GEOTileKey)arg7 userInfo:(id)arg8;
+- (void)tileRequester:(id)arg1 receivedData:(id)arg2 tileEdition:(unsigned int)arg3 tileSetDB:(CDUnion_23a7df3d)arg4 tileSet:(id)arg5 etag:(id)arg6 forKey:(struct _GEOTileKey)arg7 userInfo:(id)arg8;
 - (void)_startRequesterForKeys:(id)arg1 staleCachedETags:(id)arg2 staleCachedData:(id)arg3;
 - (void)_requestNextBatch;
 - (_Bool)cancelKey:(const struct _GEOTileKey *)arg1;

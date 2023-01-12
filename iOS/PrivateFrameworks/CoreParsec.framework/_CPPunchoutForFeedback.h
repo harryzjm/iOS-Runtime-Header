@@ -26,10 +26,6 @@
 @property(copy, nonatomic) NSArray *urls; // @synthesize urls=_urls;
 @property(copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (id)initWithDictionary:(id)arg1;
-- (id)initWithJSON:(id)arg1;
-@property(readonly, nonatomic) NSData *jsonData;
-- (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
@@ -42,11 +38,11 @@
 - (void)clearUrls;
 - (void)clearBundleid;
 - (id)initWithFacade:(id)arg1;
-- (id)feedbackJSON;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) NSData *jsonData; // @dynamic jsonData;
 @property(readonly) Class superclass;
 
 @end

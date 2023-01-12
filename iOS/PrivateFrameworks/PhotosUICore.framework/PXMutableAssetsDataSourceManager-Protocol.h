@@ -5,11 +5,12 @@
 //
 
 #import <PhotosUICore/NSObject-Protocol.h>
+#import <PhotosUICore/PXMutableSectionedDataSourceManager-Protocol.h>
 
 @class NSArray, NSIndexSet, NSPredicate, NSSet, PXIndexPathSet;
 @protocol PXDisplayAssetCollection;
 
-@protocol PXMutableAssetsDataSourceManager <NSObject>
+@protocol PXMutableAssetsDataSourceManager <NSObject, PXMutableSectionedDataSourceManager>
 @property(retain, nonatomic) NSPredicate *filterPredicate;
 @property(nonatomic) long long backgroundFetchOriginSection;
 - (void)setFilteringDisabled:(_Bool)arg1 forAssetCollection:(id <PXDisplayAssetCollection>)arg2;
@@ -20,8 +21,6 @@
 - (void)stopForceIncludingAllAssets;
 - (void)forceIncludeAssetsAtIndexPaths:(PXIndexPathSet *)arg1;
 - (void)startBackgroundFetchIfNeeded;
-- (void)resumeChangeDeliveryAndBackgroundLoading:(id)arg1;
-- (id)pauseChangeDeliveryWithTimeout:(double)arg1;
 - (void)ensureStartingSectionHasContent;
 - (void)ensureLastSectionHasContent;
 - (_Bool)forceAccurateSection:(long long)arg1 andSectionsBeforeAndAfter:(long long)arg2;

@@ -8,19 +8,23 @@
 
 #import <Silex/SXActionActivityGroup-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSString, UIView;
 
 @interface SXActionActivityGroup : NSObject <SXActionActivityGroup>
 {
     NSString *_title;
     NSMutableArray *_activities;
+    UIView *_sourceView;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) UIView *sourceView; // @synthesize sourceView=_sourceView;
 @property(retain, nonatomic) NSMutableArray *activities; // @synthesize activities=_activities;
 @property(readonly, nonatomic) NSString *title; // @synthesize title=_title;
 - (void)addActivity:(id)arg1;
+- (id)initWithTitle:(id)arg1 sourceView:(id)arg2;
 - (id)initWithTitle:(id)arg1;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

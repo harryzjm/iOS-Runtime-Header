@@ -21,6 +21,7 @@
 @property(readonly, nonatomic) NSArray *dictionaries; // @synthesize dictionaries=_dictionaries;
 @property(readonly, nonatomic) NSNumber *number; // @synthesize number=_number;
 @property(readonly, nonatomic) NSArray *textCheckingResults; // @synthesize textCheckingResults=_textCheckingResults;
+@property(readonly, nonatomic) NSArray *dateComponentsResults;
 @property(readonly, nonatomic) NSArray *dates;
 @property(readonly, nonatomic) NSArray *phoneNumbers;
 @property(readonly, nonatomic) NSArray *streetAddresses;

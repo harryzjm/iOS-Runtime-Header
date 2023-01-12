@@ -14,12 +14,12 @@
 
 + (id)secureCodedPropertyKeys;
 + (id)internalRepresentation;
+- (void).cxx_destruct;
 @property(retain, nonatomic) GKLeaderboardInternal *leaderboard; // @synthesize leaderboard=_leaderboard;
 @property(copy, nonatomic) GKScoreInternal *score; // @synthesize score=_score;
 - (id)titleText;
 - (unsigned long long)type;
 - (id)serverRepresentationForReceivingPlayer:(id)arg1;
-- (void)dealloc;
 
 @end
 

@@ -6,17 +6,14 @@
 
 @class NSArray;
 
-__attribute__((visibility("hidden")))
 @interface CKAnyPredicateValidator
 {
     NSArray *_validators;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSArray *validators; // @synthesize validators=_validators;
 - (id)CKPropertiesDescription;
 - (_Bool)validate:(id)arg1 error:(id *)arg2;
-- (id)initWithValidators:(id)arg1;
 
 @end
 

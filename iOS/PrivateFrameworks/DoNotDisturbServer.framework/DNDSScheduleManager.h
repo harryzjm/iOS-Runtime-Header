@@ -6,19 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class DNDSModeAssertionManager, DNDSScheduleSettings;
+@class DNDSModeAssertionManager, NSMutableDictionary;
 @protocol DNDSScheduleManagerDataSource;
 
 @interface DNDSScheduleManager : NSObject
 {
     DNDSModeAssertionManager *_modeAssertionManager;
-    DNDSScheduleSettings *_currentScheduleSettings;
+    NSMutableDictionary *_currentScheduleSettingsByModeIdentifier;
     id <DNDSScheduleManagerDataSource> _dataSource;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <DNDSScheduleManagerDataSource> dataSource; // @synthesize dataSource=_dataSource;
-- (void)_refreshWithScheduleSettings:(id)arg1 context:(id)arg2;
+- (id)_scheduleManagerClientIdentifierForModeIdentifier:(id)arg1;
+- (void)_refreshWithScheduleSettings:(id)arg1 modeIdentifier:(id)arg2 currentScheduleAssertion:(id)arg3 context:(id)arg4;
+- (void)_refreshWithScheduleSettingsByModeIdentifier:(id)arg1 context:(id)arg2;
 - (void)refresh;
 - (id)initWithModeAssertionManager:(id)arg1;
 

@@ -8,15 +8,15 @@
 
 #import <Silex/SXVideoProviding-Protocol.h>
 
-@class NSString, NSURL, SVTimeline;
-@protocol SVVideoMetadata, SXAnalyticsReporting;
+@class NSString, NSURL, SXTimeline;
+@protocol SXAnalyticsReporting, SXVideoMetadata;
 
 @interface SXVideoProvider : NSObject <SXVideoProviding>
 {
     NSURL *_URL;
     id <SXAnalyticsReporting> _analyticsReporter;
-    id <SVVideoMetadata> _metadata;
-    SVTimeline *_timeline;
+    id <SXVideoMetadata> _metadata;
+    SXTimeline *_timeline;
     double _pausedAtTime;
     NSString *_mediaIdentifier;
     unsigned long long _playMethod;
@@ -26,8 +26,8 @@
 @property(nonatomic) unsigned long long playMethod; // @synthesize playMethod=_playMethod;
 @property(readonly, nonatomic) NSString *mediaIdentifier; // @synthesize mediaIdentifier=_mediaIdentifier;
 @property(nonatomic) double pausedAtTime; // @synthesize pausedAtTime=_pausedAtTime;
-@property(readonly, nonatomic) SVTimeline *timeline; // @synthesize timeline=_timeline;
-@property(nonatomic) __weak id <SVVideoMetadata> metadata; // @synthesize metadata=_metadata;
+@property(readonly, nonatomic) SXTimeline *timeline; // @synthesize timeline=_timeline;
+@property(nonatomic) __weak id <SXVideoMetadata> metadata; // @synthesize metadata=_metadata;
 @property(retain, nonatomic) id <SXAnalyticsReporting> analyticsReporter; // @synthesize analyticsReporter=_analyticsReporter;
 @property(readonly, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 - (void)playbackPassedQuartile:(unsigned long long)arg1;

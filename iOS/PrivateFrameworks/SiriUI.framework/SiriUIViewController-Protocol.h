@@ -19,11 +19,14 @@
 @optional
 - (void)siriDidReceiveViewsWithDialogPhase:(AFDialogPhase *)arg1;
 - (_Bool)shouldHidePriorViews;
+- (void)siriDidUpdateASRWithRecognition:(NSString *)arg1;
 - (void)siriDidStopSpeakingWithIdentifier:(NSString *)arg1 speechQueueIsEmpty:(_Bool)arg2;
 - (void)siriDidStartSpeakingWithIdentifier:(NSString *)arg1;
 - (double)baselineOffsetFromBottom;
 - (double)desiredPinnedTopPadding;
 - (double)desiredTopPaddingBelowController:(id <SiriUIViewController>)arg1;
+- (void)siriWillStartRequest;
+- (void)siriDidTapOutsideContent;
 - (void)siriDidScrollVisible:(_Bool)arg1;
 - (void)siriWillBeginScrolling;
 - (void)handleAceCommand:(AceObject *)arg1;

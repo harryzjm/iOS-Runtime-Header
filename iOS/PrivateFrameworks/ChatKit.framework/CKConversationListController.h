@@ -10,7 +10,6 @@
 #import <ChatKit/CKContainerSearchControllerDelegate-Protocol.h>
 #import <ChatKit/CKConversationListCellDelegate-Protocol.h>
 #import <ChatKit/CKConversationListControllerProtocol-Protocol.h>
-#import <ChatKit/CKConversationListFilterDelegate-Protocol.h>
 #import <ChatKit/CKConversationResultsControllerDelegate-Protocol.h>
 #import <ChatKit/CKMacToolbarItemProvider-Protocol.h>
 #import <ChatKit/CKOnboardingControllerDelegate-Protocol.h>
@@ -29,10 +28,10 @@
 #import <ChatKit/UITableViewDropDelegate-Protocol.h>
 #import <ChatKit/_UIContextMenuInteractionDelegate-Protocol.h>
 
-@class CKCloudKitSyncProgressViewController, CKConversation, CKConversationSearchResultsController, CKLargeTitleAccessoryView, CKMacToolbarController, CKMacToolbarItem, CKMessagesController, CKNavigationBarTitleView, CKOnboardingController, CKScheduledUpdater, CKSearchViewController, CNContact, CNContactStore, NSArray, NSDate, NSIndexPath, NSMapTable, NSString, TPKContentController, TPKContentView, UIBarButtonItem, UIButton, UISearchController, UITableViewCell, UIView, _UIContextMenuInteraction;
-@protocol CKConversationListFilterCellCommon;
+@class CKCloudKitSyncProgressViewController, CKConversation, CKConversationSearchResultsController, CKLargeTitleAccessoryView, CKMacToolbarController, CKMacToolbarItem, CKNavigationBarTitleView, CKOnboardingController, CKScheduledUpdater, CKSearchViewController, CNContact, CNContactStore, NSArray, NSDate, NSIndexPath, NSMapTable, NSString, TPKContentController, TPKContentView, UIBarButtonItem, UIButton, UISearchController, UIView, _UIContextMenuInteraction;
+@protocol CKConversationListControllerDelegate;
 
-@interface CKConversationListController : UITableViewController <UISearchControllerDelegate, UISearchBarDelegate, CKConversationListFilterDelegate, CKCloudKitSyncProgressViewControllerDelegate, IMCloudKitEventHandler, CNContactViewControllerDelegate, CKConversationResultsControllerDelegate, CKContainerSearchControllerDelegate, CKConversationListCellDelegate, UITableViewDropDelegate, UITableViewDragDelegate, _UIContextMenuInteractionDelegate, TPKContentControllerDelegate, CNMeCardSharingSettingsViewControllerDelegate, CKOnboardingControllerDelegate, CKConversationListControllerProtocol, UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate, UITableViewDelegatePrivate, UIActionSheetDelegate, CKMacToolbarItemProvider>
+@interface CKConversationListController : UITableViewController <UISearchControllerDelegate, UISearchBarDelegate, CKCloudKitSyncProgressViewControllerDelegate, IMCloudKitEventHandler, CNContactViewControllerDelegate, CKConversationResultsControllerDelegate, CKContainerSearchControllerDelegate, CKConversationListCellDelegate, UITableViewDropDelegate, UITableViewDragDelegate, _UIContextMenuInteractionDelegate, TPKContentControllerDelegate, CNMeCardSharingSettingsViewControllerDelegate, CKOnboardingControllerDelegate, CKConversationListControllerProtocol, UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate, UITableViewDelegatePrivate, UIActionSheetDelegate, CKMacToolbarItemProvider>
 {
     NSIndexPath *_previouslySelectedIndexPath;
     unsigned int _isVisible:1;
@@ -45,7 +44,7 @@
     _Bool _compositionWasSent;
     _Bool _shouldUseFastPreviewText;
     unsigned long long _filterMode;
-    CKMessagesController *_messagesController;
+    id <CKConversationListControllerDelegate> _delegate;
     NSString *_deferredSearchQuery;
     CKCloudKitSyncProgressViewController *_syncProgressViewController;
     UIBarButtonItem *_customBackButton;
@@ -76,7 +75,6 @@
     UIBarButtonItem *_doneButton;
     CDUnknownBlockType _searchCompletion;
     CNContactStore *_contactStore;
-    UITableViewCell<CKConversationListFilterCellCommon> *_cachedFilterControlCell;
     TPKContentController *_tipKitContentController;
     TPKContentView *_tipKitContentView;
     CKOnboardingController *_onboardingController;
@@ -86,7 +84,6 @@
 @property(retain, nonatomic) CKOnboardingController *onboardingController; // @synthesize onboardingController=_onboardingController;
 @property(retain, nonatomic) TPKContentView *tipKitContentView; // @synthesize tipKitContentView=_tipKitContentView;
 @property(retain, nonatomic) TPKContentController *tipKitContentController; // @synthesize tipKitContentController=_tipKitContentController;
-@property(retain, nonatomic) UITableViewCell<CKConversationListFilterCellCommon> *cachedFilterControlCell; // @synthesize cachedFilterControlCell=_cachedFilterControlCell;
 @property(retain, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 @property(nonatomic) _Bool shouldUseFastPreviewText; // @synthesize shouldUseFastPreviewText=_shouldUseFastPreviewText;
 @property(copy, nonatomic) CDUnknownBlockType searchCompletion; // @synthesize searchCompletion=_searchCompletion;
@@ -123,7 +120,7 @@
 @property(retain, nonatomic) CKCloudKitSyncProgressViewController *syncProgressViewController; // @synthesize syncProgressViewController=_syncProgressViewController;
 @property(retain, nonatomic) NSIndexPath *previouslySelectedIndexPath; // @synthesize previouslySelectedIndexPath=_previouslySelectedIndexPath;
 @property(retain, nonatomic) NSString *deferredSearchQuery; // @synthesize deferredSearchQuery=_deferredSearchQuery;
-@property(nonatomic) __weak CKMessagesController *messagesController; // @synthesize messagesController=_messagesController;
+@property(nonatomic) __weak id <CKConversationListControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) unsigned long long filterMode; // @synthesize filterMode=_filterMode;
 - (id)toolbarItemForIdentifier:(id)arg1;
 - (_Bool)itemProviderDisablesTouches;
@@ -145,7 +142,7 @@
 - (void)unregisterForCloudKitEvents;
 - (void)registerForCloudKitEventsImmediately;
 - (void)registerForCloudKitEventsWithDelayedRegistration:(_Bool)arg1;
-- (void)_updateSyncProgressIfNeeded;
+- (void)updateSyncProgressIfNeeded;
 - (void)_updateSyncProgressIfNeededWithProgressController:(id)arg1 forceShow:(_Bool)arg2;
 @property(readonly, nonatomic) _Bool shouldShowPendingCell;
 - (void)selectConversationClosestToDeletedIndex:(unsigned long long)arg1;
@@ -174,6 +171,8 @@
 - (void)searcher:(id)arg1 userDidDeleteChatGUID:(id)arg2;
 - (void)searcher:(id)arg1 userDidSelectChatGUID:(id)arg2 messageGUID:(id)arg3;
 - (id)searcher:(id)arg1 conversationForChatGUID:(id)arg2;
+- (_Bool)shouldInsetResultsForSearchController:(id)arg1;
+- (id)searchBarForSearchViewController:(id)arg1;
 - (void)searchViewController:(id)arg1 requestsPushOfSearchController:(id)arg2;
 - (void)searchControllerDidBeginDragging:(id)arg1;
 - (void)searchController:(id)arg1 didSelectItem:(id)arg2 inChat:(id)arg3;
@@ -186,8 +185,10 @@
 - (void)didDismissSearchController:(id)arg1;
 - (void)willDismissSearchController:(id)arg1;
 - (void)willPresentSearchController:(id)arg1;
-- (void)filterSelectionChanged:(long long)arg1;
+@property(readonly, nonatomic) _Bool isSearchActiveAndDisplayingResultsForSearchText;
+@property(readonly, nonatomic) _Bool isSearchActive;
 - (void)_dismissPresentedNavController:(id)arg1;
+- (double)widthForDeterminingAvatarVisibility;
 - (void)selectedDeleteButtonForConversation:(id)arg1 inCell:(id)arg2;
 - (void)avatarHeaderWasTappedForConversation:(id)arg1 inCell:(id)arg2;
 - (id)_conversationMuteActionForConversation:(id)arg1 andIndexPath:(id)arg2;
@@ -337,9 +338,6 @@
 - (id)init;
 - (id)conversationList;
 - (id)activeConversations;
-- (void)updateFilterControl:(id)arg1;
-- (unsigned long long)_filterSelectedIndex;
-- (Class)conversationListFilterCellClass;
 - (Class)conversationListCellClass;
 
 // Remaining properties

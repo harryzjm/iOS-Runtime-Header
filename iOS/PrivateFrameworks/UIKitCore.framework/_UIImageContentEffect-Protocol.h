@@ -6,10 +6,13 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class _UIImageContentRendition;
+@class UIImageSymbolConfiguration, UITraitCollection, _UIImageContentRendition;
 @protocol _UIImageContentLayoutSource;
 
 @protocol _UIImageContentEffect <NSObject>
-- (_UIImageContentRendition *)_renditionForSource:(id <_UIImageContentLayoutSource>)arg1 size:(struct CGSize)arg2 withCGImageProvider:(struct CGImage * (^)(void))arg3 lazy:(_Bool)arg4;
+@property(readonly, nonatomic) UITraitCollection *traitCollection;
+- (long long)_effectiveRenderingModeForSource:(id <_UIImageContentLayoutSource>)arg1 symbolConfiguration:(UIImageSymbolConfiguration *)arg2;
+- (UIImageSymbolConfiguration *)_symbolConfigurationForSource:(id <_UIImageContentLayoutSource>)arg1;
+- (_UIImageContentRendition *)_renditionForSource:(id <_UIImageContentLayoutSource>)arg1 size:(struct CGSize)arg2 symbolConfiguration:(UIImageSymbolConfiguration *)arg3 withCGImageProvider:(struct CGImage * (^)(void))arg4 lazy:(_Bool)arg5;
 @end
 

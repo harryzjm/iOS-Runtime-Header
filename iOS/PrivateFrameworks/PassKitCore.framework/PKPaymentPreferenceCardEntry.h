@@ -12,6 +12,7 @@
 {
     _Bool _shouldShowCardUI;
     _Bool _isSelectable;
+    _Bool _insetsSeparatorByTextOffset;
     PKPaymentPass *_pass;
     PKRemotePaymentInstrument *_remotePaymentInstrument;
     PKPaymentApplication *_paymentApplication;
@@ -22,6 +23,7 @@
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType actionBlock; // @synthesize actionBlock=_actionBlock;
+@property(nonatomic) _Bool insetsSeparatorByTextOffset; // @synthesize insetsSeparatorByTextOffset=_insetsSeparatorByTextOffset;
 @property(nonatomic) _Bool isSelectable; // @synthesize isSelectable=_isSelectable;
 @property(nonatomic) _Bool shouldShowCardUI; // @synthesize shouldShowCardUI=_shouldShowCardUI;
 @property(copy, nonatomic) NSString *availabilityString; // @synthesize availabilityString=_availabilityString;

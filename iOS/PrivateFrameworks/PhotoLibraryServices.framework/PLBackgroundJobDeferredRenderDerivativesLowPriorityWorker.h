@@ -8,7 +8,7 @@
 {
 }
 
-+ (id)workerWithLibrary:(id)arg1;
++ (id)workerWithLibraryBundle:(id)arg1;
 - (id)_predicateToFetchDeferredAssets;
 
 @end

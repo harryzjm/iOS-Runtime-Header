@@ -6,7 +6,7 @@
 
 #import <VideosUI/VUIFamilyMemberDelegate-Protocol.h>
 
-@class NSString, TVImageLayout, VUIFamilyMember, VUIImageView, VUILabel, VUISeparatorView, _TVImageView, _TVMonogramView;
+@class NSString, TVImageLayout, VUIFamilyMember, VUILabel, VUISeparatorView, VUIVideosImageView, _TVImageView, _TVMonogramView;
 
 __attribute__((visibility("hidden")))
 @interface VUIFamilyMemberCell <VUIFamilyMemberDelegate>
@@ -16,22 +16,23 @@ __attribute__((visibility("hidden")))
     TVImageLayout *_monogramImageLayout;
     _TVMonogramView *_monogramView;
     _TVImageView *_familyMemberImageView;
-    VUIImageView *_chevronImageView;
-    VUISeparatorView *_topSeparatorView;
+    VUIVideosImageView *_chevronImageView;
+    VUISeparatorView *_bottomSeparatorView;
 }
 
 + (id)_monogramViewForFamilyMemberCell:(id)arg1;
-+ (double)monogramHeight;
++ (double)maxMonogramHeight;
 + (void)configureVUIFamilyMemberCell:(id)arg1 withFamilyMember:(id)arg2 metricsOnly:(_Bool)arg3;
 - (void).cxx_destruct;
-@property(retain, nonatomic) VUISeparatorView *topSeparatorView; // @synthesize topSeparatorView=_topSeparatorView;
-@property(retain, nonatomic) VUIImageView *chevronImageView; // @synthesize chevronImageView=_chevronImageView;
+@property(retain, nonatomic) VUISeparatorView *bottomSeparatorView; // @synthesize bottomSeparatorView=_bottomSeparatorView;
+@property(retain, nonatomic) VUIVideosImageView *chevronImageView; // @synthesize chevronImageView=_chevronImageView;
 @property(retain, nonatomic) _TVImageView *familyMemberImageView; // @synthesize familyMemberImageView=_familyMemberImageView;
 @property(retain, nonatomic) _TVMonogramView *monogramView; // @synthesize monogramView=_monogramView;
 @property(retain, nonatomic) TVImageLayout *monogramImageLayout; // @synthesize monogramImageLayout=_monogramImageLayout;
 @property(retain, nonatomic) VUILabel *nameLabel; // @synthesize nameLabel=_nameLabel;
 @property(retain, nonatomic) VUIFamilyMember *familyMember; // @synthesize familyMember=_familyMember;
 - (struct CGSize)_iOS_layoutSubviewsWithSize:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
+- (void)configureMonogramImageLayoutForWindowWidth:(double)arg1;
 @property(readonly, nonatomic) struct CGSize monogramSize;
 - (void)familyMember:(id)arg1 photoRequestDidCompleteWithImage:(id)arg2;
 - (void)layoutSubviews;

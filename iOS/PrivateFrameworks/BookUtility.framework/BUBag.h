@@ -16,12 +16,12 @@
     id <AMSBagProtocol> _bag;
 }
 
-+ (void)setBagValuesFromOfflineCache:(id)arg1;
-+ (void)setRunFromOfflineCache:(_Bool)arg1;
 + (id)_defaultValueDictionary;
 + (id)_keySetWithDictionary:(id)arg1;
 + (void)audiobookStoreIsAvailable:(CDUnknownBlockType)arg1;
 + (void)registerKeySetToDefaultBag:(id)arg1;
++ (void)setOfflineCacheProvider:(id)arg1;
++ (id)offlineCacheProvider;
 + (id)defaultBagKeysDictionary;
 + (id)defaultBag;
 - (void).cxx_destruct;
@@ -37,8 +37,11 @@
 @property(readonly, copy, nonatomic) NSString *profile;
 @property(readonly, nonatomic) NSDate *expirationDate;
 @property(readonly, nonatomic, getter=isExpired) _Bool expired;
+@property(readonly, nonatomic) AMSBagValue *bu_deauthorizeMachine;
+@property(readonly, nonatomic) AMSBagValue *bu_authorizeMachine;
 @property(readonly, nonatomic) AMSBagValue *bu_acquireSlotURL;
 @property(readonly, nonatomic) AMSBagValue *bu_writeUserReviewURL;
+- (id)bu_voteURL;
 @property(readonly, nonatomic) AMSBagValue *bu_viewBookUpdateParams;
 @property(readonly, nonatomic) AMSBagValue *bu_viewBook;
 @property(readonly, nonatomic) AMSBagValue *bu_viewAudiobook;
@@ -56,6 +59,8 @@
 @property(readonly, nonatomic) AMSBagValue *bu_searchHints;
 @property(readonly, nonatomic) AMSBagValue *bu_saveUserReviewURL;
 @property(readonly, nonatomic) AMSBagValue *bu_resetAndRedirectURL;
+- (id)bu_reportConcernURL;
+- (id)bu_reportConcernReasons;
 @property(readonly, nonatomic) AMSBagValue *bu_remoteConfigSupportedStorefronts;
 @property(readonly, nonatomic) AMSBagValue *bu_readingGoalShareURL;
 @property(readonly, nonatomic) AMSBagValue *bu_purchaseDAAP;

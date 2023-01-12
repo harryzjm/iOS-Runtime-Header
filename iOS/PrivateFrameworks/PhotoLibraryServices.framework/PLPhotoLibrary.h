@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, NSPersistentStore, NSSet, NSString, PAImageConversionServiceClient, PAVideoConversionServiceClient, PLGenericAlbum, PLGlobalValues, PLKeywordManager, PLLibraryServicesManager, PLManagedObjectContext, PLPhotoLibraryBundle, PLPhotoLibraryOptions, PLPhotoLibraryPathManager, PLSimpleDCIMDirectory, PLThumbnailIndexes, PLThumbnailManager;
+@class NSArray, NSMutableArray, NSPersistentStore, NSSet, NSString, PAImageConversionServiceClient, PAVideoConversionServiceClient, PLGenericAlbum, PLGlobalValues, PLKeywordManager, PLLibraryServicesManager, PLManagedObjectContext, PLPhotoLibraryBundle, PLPhotoLibraryOptions, PLPhotoLibraryPathManager, PLThumbnailIndexes, PLThumbnailManager;
 @protocol PLAlbumProtocol;
 
 @interface PLPhotoLibrary : NSObject
@@ -20,7 +20,6 @@
     NSSet *_audioFileExtensions;
     NSSet *_extraVideoExtensions;
     PLPhotoLibraryBundle *_libraryBundle;
-    PLSimpleDCIMDirectory *_simpleDCIMDirectory;
     struct os_unfair_lock_s _managedObjectContextLock;
     PLManagedObjectContext *_managedObjectContext;
     NSPersistentStore *_loadedPersistentStore;
@@ -39,10 +38,11 @@
 + (void)refreshCachedCountsOnAllAssetContainersInContext:(id)arg1;
 + (_Bool)canSaveVideoToLibrary:(id)arg1;
 + (id)_resourcesInfoFromMoc:(id)arg1;
++ (void)configureEnumeratorForLibrarySizeInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (id)librarySummarySizeDataRefWithManagedObjectContext:(id)arg1;
 + (id)savedPhotosReferenceMediaSizeWithSizeDataRef:(id)arg1;
 + (id)savedPhotosOriginalsSizeWithSizeDataRef:(id)arg1;
-+ (void)_getResourceData:(id)arg1 nonDerivativeSizeOut:(unsigned long long *)arg2 derivativesSizeOut:(unsigned long long *)arg3 fileBackedThumbnailsSizeOut:(unsigned long long *)arg4 tableThumbnailsSizeOut:(unsigned long long *)arg5;
++ (void)_getResourceData:(id)arg1 nonDerivativeSizeOut:(_Atomic unsigned long long *)arg2 derivativesSizeOut:(_Atomic unsigned long long *)arg3 fileBackedThumbnailsSizeOut:(_Atomic unsigned long long *)arg4 tableThumbnailsSizeOut:(_Atomic unsigned long long *)arg5;
 + (int)priorityForFileExtension:(id)arg1;
 + (_Bool)isAdjustmentEnvelopeExtension:(id)arg1;
 + (_Bool)isAudioFileExtension:(id)arg1;
@@ -84,12 +84,21 @@
 + (void)_contextSaveFailedWithError:(id)arg1;
 + (void)_contextSaveFailedWithSQLiteError:(id)arg1;
 + (void)_contextSaveFailedWithTimeoutError:(id)arg1;
++ (void)reportLibraryDidDealloc:(id)arg1;
++ (void)reportLibraryDidInit:(id)arg1;
++ (id)queueStatusDescription;
++ (void)_registerStateHandler;
++ (void)_activateStatusTimer;
++ (id)_debugStatisticsDescription;
++ (struct os_state_data_s *)_stateDataWithHints:(struct os_state_hints_s *)arg1;
++ (id)_stateDictionary;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) PLPhotoLibraryOptions *options; // @synthesize options=_options;
 @property(readonly) PLPhotoLibraryBundle *libraryBundle; // @synthesize libraryBundle=_libraryBundle;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, nonatomic) __weak PLLibraryServicesManager *libraryServicesManager; // @synthesize libraryServicesManager=_libraryServicesManager;
 @property(readonly, nonatomic) PLPhotoLibraryPathManager *pathManager; // @synthesize pathManager=_pathManager;
+- (id)cplStatus;
 - (id)personInfoManager;
 - (unsigned long long)numberOfUnpushedAssetsOfKind:(short)arg1;
 - (unsigned long long)numberOfCPLSupportedAssetsOfKind:(short)arg1 includingTrashedSinceDate:(id)arg2;
@@ -105,7 +114,6 @@
 - (void)old_refreshCachedCountsOnAllAssetContainersInContext:(id)arg1;
 - (_Bool)isAlbumSynced:(id)arg1;
 - (id)syncedAlbumSubtitleStringFormat;
-- (_Bool)_checkMomentAnalysisCompletion;
 - (_Bool)hasCompletedMomentAnalysis;
 - (id)incompleteRestoreProcesses;
 - (_Bool)isReadyForCloudPhotoLibrary;
@@ -123,7 +131,6 @@
 - (id)albumListForContentMode:(int)arg1;
 @property(readonly) PLKeywordManager *keywordManager;
 - (id)assetsdClient;
-- (id)simpleDCIMDirectory;
 - (void)_processPhotoIrisSidecarIfNecessary:(id)arg1 forAsset:(id)arg2 mainFileMetadata:(id)arg3;
 - (void)_applyAdjustmentFileInfo:(id)arg1 renderedContentFileInfo:(id)arg2 renderedVideoComplementFileInfo:(id)arg3 toAsset:(id)arg4 withMainFileURL:(id)arg5 mainFileMetadata:(id)arg6;
 - (void)_applySideCarFiles:(id)arg1 toAsset:(id)arg2 withMainFileURL:(id)arg3 mainFileMetadata:(id)arg4;
@@ -156,10 +163,10 @@
 - (id)_loadDatabaseContextWithOptions:(id)arg1 error:(id *)arg2;
 - (id)_loadServerDatabaseContextWithOptions:(id)arg1 error:(id *)arg2;
 - (id)_loadClientDatabaseContextWithOptions:(id)arg1 error:(id *)arg2;
-- (id)_loadClientDatabaseContextFastPathAndReturnAbortAfterOpen:(_Bool *)arg1;
+- (id)_loadClientDatabaseContextFastPath;
 - (void)cleanupIncompleteAssetsAfterOTARestore;
 - (void)dataMigratorSupportCleanupModelForDataMigrationPurgeMissingSharedAndSynced;
-- (id)_fetchCompleteAssetIDsWithSavedAssetType:(short)arg1 context:(id)arg2;
+- (id)_fetchCompleteAssetIDsWithValidatedSavedAssetTypeMask:(unsigned short)arg1 context:(id)arg2;
 - (_Bool)batchDeleteObjectsWithEntity:(id)arg1 predicate:(id)arg2 error:(id *)arg3;
 - (_Bool)batchDeleteAssetsWithPredicate:(id)arg1 reason:(id)arg2 error:(id *)arg3;
 - (id)_fetchedObjectsForDeleteWithEntity:(id)arg1 predicate:(id)arg2 batchSize:(unsigned long long)arg3 error:(id *)arg4;
@@ -177,12 +184,13 @@
 - (id)duplicatePhotoStreamPhotosForPhotos:(id)arg1;
 - (void)createPhotoStreamAlbumWithStreamID:(id)arg1;
 - (void)_inq_createPhotoStreamAlbumStreamID:(id)arg1;
+- (void)userExpungeAssets:(id)arg1 localOnlyDelete:(_Bool)arg2;
 - (void)userExpungeAssets:(id)arg1;
 - (void)userUntrashAssets:(id)arg1;
 - (void)userTrashAssets:(id)arg1;
-- (void)_userApplyTrashedState:(short)arg1 toAssets:(id)arg2;
+- (void)_userApplyTrashedState:(short)arg1 toAssets:(id)arg2 localOnlyDelete:(_Bool)arg3;
 - (void)_filterAssets:(id)arg1 toTrashableAssets:(id *)arg2 deletableAssets:(id *)arg3 otherAssets:(id *)arg4;
-- (void)_userDeleteAssets:(id)arg1 withReason:(id)arg2;
+- (void)_userDeleteAssets:(id)arg1 withReason:(id)arg2 localOnlyDelete:(_Bool)arg3;
 - (id)assetWithUUID:(id)arg1 inContainer:(id)arg2;
 - (id)assetWithUUID:(id)arg1;
 - (id)objectWithObjectID:(id)arg1;
@@ -246,7 +254,6 @@
 - (void)performTransactionAndWait:(CDUnknownBlockType)arg1;
 - (void)performTransaction:(CDUnknownBlockType)arg1;
 - (void)performTransaction:(CDUnknownBlockType)arg1 withPriority:(long long)arg2;
-- (id)queueStatusDescription;
 
 @end
 

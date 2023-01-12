@@ -10,25 +10,26 @@
 {
 }
 
-+ (id)orderedFeatureNamesFromInterface:(struct _MLModelDescriptionSpecification *)arg1 forInput:(_Bool)arg2;
-+ (id)trainingInputDescriptionFromInterface:(struct _MLModelDescriptionSpecification *)arg1;
-+ (id)outputDescriptionFromInterface:(struct _MLModelDescriptionSpecification *)arg1;
-+ (id)inputDescriptionFromInterface:(struct _MLModelDescriptionSpecification *)arg1;
-+ (id)deserializeMetadataAndInterfaceFromArchive:(struct _MLModelInputArchiver *)arg1 error:(id *)arg2;
-+ (_Bool)serializeMetadataAndInterfaceFromSpecification:(struct _MLModelSpecification *)arg1 archive:(struct _MLModelOutputArchiver *)arg2 error:(id *)arg3;
-+ (id)deserializeVersionInfoFromArchive:(struct _MLModelInputArchiver *)arg1 error:(id *)arg2;
-+ (_Bool)serializeVersionInfo:(id)arg1 archive:(struct _MLModelOutputArchiver *)arg2 error:(id *)arg3;
-+ (id)orderedNamesFromProto:(const RepeatedPtrField_6c6d963a *)arg1;
-+ (id)descriptionFromProto:(const RepeatedPtrField_6c6d963a *)arg1;
-+ (id)populateConstraintsForFeatureDescription:(const struct FeatureDescription *)arg1;
-+ (id)populateConstraintsForImageFeatureDescriptionElement:(struct _MLFeatureDescriptionSpecification *)arg1;
-+ (id)populateConstraintsForImageFeatureDescription:(const struct FeatureDescription *)arg1;
-+ (struct _NSRange)rangeFromAllowedSizeRangeProtoMessage:(const struct SizeRange *)arg1;
-+ (_Bool)deserializeInterfaceFormat:(struct _MLModelDescriptionSpecification *)arg1 archive:(struct _MLModelInputArchiver *)arg2 error:(id *)arg3;
-+ (_Bool)serializeInterfaceFormat:(struct _MLModelDescriptionSpecification *)arg1 archive:(struct _MLModelOutputArchiver *)arg2 error:(id *)arg3;
-+ (id)serializeSpecification:(struct _MLModelSpecification *)arg1 toArchive:(struct _MLModelOutputArchiver *)arg2 error:(id *)arg3;
-+ (id)versionForSerializedSpecification:(struct _MLModelSpecification *)arg1 options:(id)arg2 error:(id *)arg3;
-+ (id)loadFromModelSpecificationInArchive:(struct _MLModelInputArchiver *)arg1 withClass:(Class)arg2 versionInfo:(id)arg3 configuration:(id)arg4 error:(id *)arg5;
++ (id)specificationURLFromModelAtURL:(id)arg1 error:(id *)arg2;
++ (id)orderedFeatureNamesFromInterface:(void *)arg1 forInput:(_Bool)arg2;
++ (id)trainingInputDescriptionFromInterface:(void *)arg1;
++ (id)outputDescriptionFromInterface:(void *)arg1;
++ (id)inputDescriptionFromInterface:(void *)arg1;
++ (id)deserializeMetadataAndInterfaceFromArchive:(void *)arg1 error:(id *)arg2;
++ (_Bool)serializeMetadataAndInterfaceFromSpecification:(void *)arg1 archive:(void *)arg2 error:(id *)arg3;
++ (id)deserializeVersionInfoFromArchive:(void *)arg1 error:(id *)arg2;
++ (_Bool)serializeVersionInfo:(id)arg1 archive:(void *)arg2 error:(id *)arg3;
++ (id)orderedNamesFromProto:(const void *)arg1;
++ (id)descriptionFromProto:(const void *)arg1;
++ (id)populateConstraintsForFeatureDescription:(const void *)arg1;
++ (id)populateConstraintsForImageFeatureDescriptionElement:(void *)arg1;
++ (id)populateConstraintsForImageFeatureDescription:(const void *)arg1;
++ (struct _NSRange)rangeFromAllowedSizeRangeProtoMessage:(const void *)arg1;
++ (_Bool)deserializeInterfaceFormat:(void *)arg1 archive:(void *)arg2 error:(id *)arg3;
++ (_Bool)serializeInterfaceFormat:(void *)arg1 archive:(void *)arg2 error:(id *)arg3;
++ (id)serializeSpecification:(void *)arg1 toArchive:(void *)arg2 error:(id *)arg3;
++ (id)versionForSerializedSpecification:(void *)arg1 options:(id)arg2 error:(id *)arg3;
++ (id)loadFromModelSpecificationInArchive:(void *)arg1 withClass:(Class)arg2 versionInfo:(id)arg3 configuration:(id)arg4 error:(id *)arg5;
 
 @end
 

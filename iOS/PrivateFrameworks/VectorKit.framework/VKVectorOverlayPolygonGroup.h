@@ -34,6 +34,7 @@
 @property(nonatomic) long long lineJoin;
 @property(nonatomic) double lineWidth;
 - (void)_updateStyleColor;
+- (void)setBlendMode:(long long)arg1;
 - (void)dealloc;
 - (id)initWithPolygons:(id)arg1;
 

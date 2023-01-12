@@ -14,26 +14,14 @@ __attribute__((visibility("hidden")))
     CDStruct_9f2792e4 _occlusionScores;
 }
 
-+ (_Bool)isValid:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (void)setOcclusionScores:(unsigned int *)arg1 count:(unsigned long long)arg2;
-- (unsigned int)occlusionScoreAtIndex:(unsigned long long)arg1;
-- (void)addOcclusionScore:(unsigned int)arg1;
-- (void)clearOcclusionScores;
-@property(readonly, nonatomic) unsigned int *occlusionScores;
-@property(readonly, nonatomic) unsigned long long occlusionScoresCount;
 - (void)dealloc;
 
 @end

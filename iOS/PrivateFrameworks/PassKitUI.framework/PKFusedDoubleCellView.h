@@ -24,7 +24,6 @@
     UILabel *_rightDetailView;
     UILabel *_rightSubDetailView;
     unsigned long long _deferUpdateCounter;
-    _Bool _animated;
     _Bool _enableDisclosure;
     PKPaymentPass *_pass;
     UIColor *_leftTitleColor;
@@ -74,7 +73,6 @@
 - (void)beginUpdates;
 - (_Bool)_rightNeedsThirdLine;
 - (_Bool)_leftNeedsThirdLine;
-- (void)layoutIfNeededAnimated:(_Bool)arg1;
 - (struct CGSize)_layoutWithBounds:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

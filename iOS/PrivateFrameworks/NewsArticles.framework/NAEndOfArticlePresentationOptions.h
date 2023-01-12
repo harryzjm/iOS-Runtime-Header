@@ -10,14 +10,15 @@
 
 @interface NAEndOfArticlePresentationOptions : NSObject
 {
-    MISSING_TYPE *suppressPrimarySection;
-    MISSING_TYPE *suppressSecondarySection;
+    MISSING_TYPE *suppressMoreFromSection;
+    MISSING_TYPE *suppressRelatedSection;
+    MISSING_TYPE *suppressRecommendedReadsSection;
     MISSING_TYPE *articleBackgroundColor;
 }
 
 - (void).cxx_destruct;
 - (id)init;
-- (id)initWithSuppressPrimarySection:(_Bool)arg1 suppressSecondarySection:(_Bool)arg2 articleBackgroundColor:(id)arg3;
+- (id)initWithSuppressMoreFromSection:(_Bool)arg1 suppressRelatedSection:(_Bool)arg2 suppressRecommendedReadsSection:(long long)arg3 articleBackgroundColor:(id)arg4;
 
 @end
 

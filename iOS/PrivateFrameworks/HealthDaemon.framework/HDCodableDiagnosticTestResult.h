@@ -9,40 +9,47 @@
 #import <HealthDaemon/HDDecoding-Protocol.h>
 #import <HealthDaemon/NSCopying-Protocol.h>
 
-@class HDCodableInspectableValueCollection, HDCodableMedicalCoding, HDCodableMedicalCodingList, HDCodableMedicalRecord, HDCodableReferenceRangeList, HDCodableStringList, NSData, NSString;
+@class HDCodableInspectableValueCollection, HDCodableMedicalCoding, HDCodableMedicalCodingList, HDCodableMedicalCodingListList, HDCodableMedicalRecord, HDCodableReferenceRangeList, HDCodableStringList, NSData, NSString;
 
 @interface HDCodableDiagnosticTestResult : PBCodable <HDDecoding, NSCopying>
 {
-    HDCodableMedicalCodingList *_bodySiteCodings;
+    long long _referenceRangeStatus;
+    HDCodableMedicalCodingList *_bodySiteCodingCollection;
+    HDCodableMedicalCodingListList *_categoriesCodingCollections;
     NSString *_category;
     NSString *_comments;
-    HDCodableMedicalCodingList *_diagnosticTestCodings;
+    HDCodableMedicalCodingList *_diagnosticTestCodingCollection;
     NSData *_effectiveEndDate;
     NSData *_effectiveStartDate;
-    HDCodableMedicalCodingList *_interpretationCodings;
+    HDCodableMedicalCodingListList *_interpretationCodingCollections;
     NSData *_issueDate;
     HDCodableMedicalRecord *_medicalRecord;
-    HDCodableMedicalCodingList *_methodCodings;
+    HDCodableMedicalCodingList *_methodCodingCollection;
     HDCodableStringList *_performers;
     HDCodableReferenceRangeList *_referenceRanges;
     HDCodableMedicalCoding *_statusCoding;
     HDCodableInspectableValueCollection *_value;
+    struct {
+        unsigned int referenceRangeStatus:1;
+    } _has;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long referenceRangeStatus; // @synthesize referenceRangeStatus=_referenceRangeStatus;
 @property(retain, nonatomic) HDCodableStringList *performers; // @synthesize performers=_performers;
-@property(retain, nonatomic) HDCodableMedicalCodingList *methodCodings; // @synthesize methodCodings=_methodCodings;
-@property(retain, nonatomic) HDCodableMedicalCodingList *bodySiteCodings; // @synthesize bodySiteCodings=_bodySiteCodings;
+@property(retain, nonatomic) HDCodableMedicalCodingList *methodCodingCollection; // @synthesize methodCodingCollection=_methodCodingCollection;
+@property(retain, nonatomic) HDCodableMedicalCodingList *bodySiteCodingCollection; // @synthesize bodySiteCodingCollection=_bodySiteCodingCollection;
 @property(retain, nonatomic) NSString *comments; // @synthesize comments=_comments;
-@property(retain, nonatomic) HDCodableMedicalCodingList *interpretationCodings; // @synthesize interpretationCodings=_interpretationCodings;
+@property(retain, nonatomic) HDCodableMedicalCodingListList *interpretationCodingCollections; // @synthesize interpretationCodingCollections=_interpretationCodingCollections;
 @property(retain, nonatomic) HDCodableMedicalCoding *statusCoding; // @synthesize statusCoding=_statusCoding;
 @property(retain, nonatomic) NSData *effectiveEndDate; // @synthesize effectiveEndDate=_effectiveEndDate;
 @property(retain, nonatomic) NSData *issueDate; // @synthesize issueDate=_issueDate;
+@property(retain, nonatomic) HDCodableMedicalCodingListList *categoriesCodingCollections; // @synthesize categoriesCodingCollections=_categoriesCodingCollections;
 @property(retain, nonatomic) NSString *category; // @synthesize category=_category;
 @property(retain, nonatomic) NSData *effectiveStartDate; // @synthesize effectiveStartDate=_effectiveStartDate;
 @property(retain, nonatomic) HDCodableReferenceRangeList *referenceRanges; // @synthesize referenceRanges=_referenceRanges;
 @property(retain, nonatomic) HDCodableInspectableValueCollection *value; // @synthesize value=_value;
-@property(retain, nonatomic) HDCodableMedicalCodingList *diagnosticTestCodings; // @synthesize diagnosticTestCodings=_diagnosticTestCodings;
+@property(retain, nonatomic) HDCodableMedicalCodingList *diagnosticTestCodingCollection; // @synthesize diagnosticTestCodingCollection=_diagnosticTestCodingCollection;
 @property(retain, nonatomic) HDCodableMedicalRecord *medicalRecord; // @synthesize medicalRecord=_medicalRecord;
 - (void)mergeFrom:(id)arg1;
 @property(readonly) unsigned long long hash;
@@ -53,19 +60,21 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 @property(readonly, copy) NSString *description;
+@property(nonatomic) _Bool hasReferenceRangeStatus;
 @property(readonly, nonatomic) _Bool hasPerformers;
-@property(readonly, nonatomic) _Bool hasMethodCodings;
-@property(readonly, nonatomic) _Bool hasBodySiteCodings;
+@property(readonly, nonatomic) _Bool hasMethodCodingCollection;
+@property(readonly, nonatomic) _Bool hasBodySiteCodingCollection;
 @property(readonly, nonatomic) _Bool hasComments;
-@property(readonly, nonatomic) _Bool hasInterpretationCodings;
+@property(readonly, nonatomic) _Bool hasInterpretationCodingCollections;
 @property(readonly, nonatomic) _Bool hasStatusCoding;
 @property(readonly, nonatomic) _Bool hasEffectiveEndDate;
 @property(readonly, nonatomic) _Bool hasIssueDate;
+@property(readonly, nonatomic) _Bool hasCategoriesCodingCollections;
 @property(readonly, nonatomic) _Bool hasCategory;
 @property(readonly, nonatomic) _Bool hasEffectiveStartDate;
 @property(readonly, nonatomic) _Bool hasReferenceRanges;
 @property(readonly, nonatomic) _Bool hasValue;
-@property(readonly, nonatomic) _Bool hasDiagnosticTestCodings;
+@property(readonly, nonatomic) _Bool hasDiagnosticTestCodingCollection;
 @property(readonly, nonatomic) _Bool hasMedicalRecord;
 - (_Bool)applyToObject:(id)arg1 error:(out id *)arg2;
 - (_Bool)applyToObject:(id)arg1;

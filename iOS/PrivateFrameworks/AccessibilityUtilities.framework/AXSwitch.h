@@ -24,6 +24,9 @@
     long long _buttonNumber;
     long long _headSwitch;
     AXMIDIEvent *_midiEvent;
+    long long _accessibilityEventUsagePage;
+    long long _accessibilityEventUsage;
+    long long _accessibilityEventModifierFlags;
     NSString *_remoteSwitchIdentifier;
     NSString *_remoteDeviceName;
     NSString *_remoteDeviceIdentifier;
@@ -35,6 +38,9 @@
 @property(copy, nonatomic) NSString *remoteDeviceIdentifier; // @synthesize remoteDeviceIdentifier=_remoteDeviceIdentifier;
 @property(copy, nonatomic) NSString *remoteDeviceName; // @synthesize remoteDeviceName=_remoteDeviceName;
 @property(copy, nonatomic) NSString *remoteSwitchIdentifier; // @synthesize remoteSwitchIdentifier=_remoteSwitchIdentifier;
+@property(nonatomic) long long accessibilityEventModifierFlags; // @synthesize accessibilityEventModifierFlags=_accessibilityEventModifierFlags;
+@property(nonatomic) long long accessibilityEventUsage; // @synthesize accessibilityEventUsage=_accessibilityEventUsage;
+@property(nonatomic) long long accessibilityEventUsagePage; // @synthesize accessibilityEventUsagePage=_accessibilityEventUsagePage;
 @property(retain, nonatomic) AXMIDIEvent *midiEvent; // @synthesize midiEvent=_midiEvent;
 @property(nonatomic) long long headSwitch; // @synthesize headSwitch=_headSwitch;
 @property(nonatomic) long long buttonNumber; // @synthesize buttonNumber=_buttonNumber;

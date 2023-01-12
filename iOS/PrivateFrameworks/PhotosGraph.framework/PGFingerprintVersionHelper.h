@@ -20,6 +20,8 @@
 + (id)_multiModalFeatureExtractorForMutliModalType:(long long)arg1 assetFeatureExtractor:(id)arg2 personaVectorFeatureExtractor:(id)arg3 graph:(id)arg4 transformers:(id)arg5 error:(id *)arg6;
 + (id)_assetPrintFeatureExtractorForAssetPrintType:(long long)arg1 transformers:(id)arg2;
 + (void)resetPreCalculatedFeatures;
++ (_Bool)isMemoryNodeFingerprintVersion:(long long)arg1;
++ (_Bool)isMomentNodeFingerprintVersion:(long long)arg1;
 + (_Bool)isMemoryFingerprintVersion:(long long)arg1;
 + (_Bool)isMomentFingerprintVersion:(long long)arg1;
 + (_Bool)isAssetFingerprintVersion:(long long)arg1;

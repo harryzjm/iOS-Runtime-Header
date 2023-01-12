@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (id)availabilityEndDate;
 - (id)downloadExpirationDate;
 - (id)episodeIndexInSeries;
+- (id)fractionalEpisodeNumber;
 - (id)episodeNumber;
 - (id)showCanonicalID;
 - (id)seasonCanonicalID;

@@ -6,8 +6,11 @@
 
 @interface AAPasswordSecurityUIRequest
 {
+    unsigned long long _spyglassOptionMask;
 }
 
+@property(nonatomic) unsigned long long spyglassOptionMask; // @synthesize spyglassOptionMask=_spyglassOptionMask;
+- (id)urlRequest;
 - (id)urlString;
 
 @end

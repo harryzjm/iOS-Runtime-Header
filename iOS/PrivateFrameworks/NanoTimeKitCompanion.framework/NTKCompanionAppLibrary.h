@@ -11,18 +11,20 @@
 #import <NanoTimeKitCompanion/NTKCompanionAppDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKSystemAppStateCache-Protocol.h>
 
-@class CLKDevice, NSArray, NSHashTable, NSMutableArray, NSSet, NSString;
+@class CLKDevice, NSArray, NSHashTable, NSIndexSet, NSMutableArray, NSRecursiveLock, NSSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface NTKCompanionAppLibrary : NSObject <NTKCompanionAppDelegate, LSApplicationWorkspaceObserverProtocol, ACXDeviceConnectionDelegate, NTKSystemAppStateCache>
 {
+    _Bool _appConduitLoaded;
     NSArray *_allApps;
     NSArray *_firstPartyApps;
     NSArray *_watchSystemApps;
     NSSet *_installedSystemApplicationIdentifiers;
     NSArray *_thirdPartyApps;
+    NSIndexSet *_disabledComplicationTypesCache;
     NSHashTable *_changeObservers;
-    NSObject<OS_dispatch_queue> *_internalQueue;
+    NSRecursiveLock *_internalLock;
     NSObject<OS_dispatch_queue> *_updateProcessingQueue;
     NSObject<OS_dispatch_queue> *_observerCallbackQueue;
     NSObject<OS_dispatch_queue> *_appProcessingQueue;
@@ -39,8 +41,10 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *appProcessingQueue; // @synthesize appProcessingQueue=_appProcessingQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *observerCallbackQueue; // @synthesize observerCallbackQueue=_observerCallbackQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *updateProcessingQueue; // @synthesize updateProcessingQueue=_updateProcessingQueue;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
+@property(retain, nonatomic) NSRecursiveLock *internalLock; // @synthesize internalLock=_internalLock;
 @property(retain, nonatomic) NSHashTable *changeObservers; // @synthesize changeObservers=_changeObservers;
+@property(copy, nonatomic) NSIndexSet *disabledComplicationTypesCache; // @synthesize disabledComplicationTypesCache=_disabledComplicationTypesCache;
+@property(nonatomic) _Bool appConduitLoaded; // @synthesize appConduitLoaded=_appConduitLoaded;
 @property(retain, nonatomic) NSArray *thirdPartyApps; // @synthesize thirdPartyApps=_thirdPartyApps;
 @property(retain, nonatomic) NSSet *installedSystemApplicationIdentifiers; // @synthesize installedSystemApplicationIdentifiers=_installedSystemApplicationIdentifiers;
 @property(retain, nonatomic) NSArray *watchSystemApps; // @synthesize watchSystemApps=_watchSystemApps;
@@ -67,6 +71,7 @@
 - (void)_activeDeviceChanged;
 - (void)_load;
 - (void)prewarmCompanionDaemonWithCompletion:(CDUnknownBlockType)arg1;
+- (id)disabledComplicationTypes;
 - (void)dealloc;
 - (id)init;
 

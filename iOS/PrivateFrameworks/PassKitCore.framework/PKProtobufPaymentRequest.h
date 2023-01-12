@@ -8,19 +8,27 @@
 
 #import <PassKitCore/NSCopying-Protocol.h>
 
-@class NSData, NSMutableArray, NSString, PKProtobufPaymentMerchantSession;
+@class NSData, NSMutableArray, NSString, PKProtobufPaymentMerchantSession, PKProtobufPaymentTokenConfiguration;
 
 @interface PKProtobufPaymentRequest : PBRequest <NSCopying>
 {
     unsigned int _apiType;
     NSData *_applicationData;
+    NSString *_billingAgreement;
     NSData *_billingContact;
+    int _confirmationStyle;
+    NSMutableArray *_contentItems;
     NSString *_countryCode;
     NSString *_currencyCode;
+    NSString *_localizedNavigationTitle;
+    NSString *_localizedSummaryItemsTitle;
     unsigned int _merchantCapabilities;
     NSString *_merchantIdentifier;
     PKProtobufPaymentMerchantSession *_merchantSession;
     NSString *_originatingURL;
+    PKProtobufPaymentTokenConfiguration *_paymentTokenConfiguration;
+    int _requestType;
+    int _requestor;
     unsigned int _requiredBillingAddressFields;
     NSMutableArray *_requiredBillingContactFields;
     unsigned int _requiredShippingAddressFields;
@@ -32,15 +40,23 @@
     NSMutableArray *_supportedNetworks;
     NSMutableArray *_thumbnailURLs;
     _Bool _expectsMerchantSession;
+    _Bool _summaryPinned;
+    _Bool _suppressTotal;
     struct {
         unsigned int apiType:1;
+        unsigned int confirmationStyle:1;
         unsigned int merchantCapabilities:1;
+        unsigned int requestType:1;
+        unsigned int requestor:1;
         unsigned int requiredBillingAddressFields:1;
         unsigned int requiredShippingAddressFields:1;
         unsigned int expectsMerchantSession:1;
+        unsigned int summaryPinned:1;
+        unsigned int suppressTotal:1;
     } _has;
 }
 
++ (Class)contentItemsType;
 + (Class)supportedCountriesType;
 + (Class)requiredBillingContactFieldsType;
 + (Class)requiredShippingContactFieldsType;
@@ -49,6 +65,13 @@
 + (Class)summaryItemsType;
 + (Class)supportedNetworksType;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool summaryPinned; // @synthesize summaryPinned=_summaryPinned;
+@property(nonatomic) _Bool suppressTotal; // @synthesize suppressTotal=_suppressTotal;
+@property(retain, nonatomic) NSString *localizedSummaryItemsTitle; // @synthesize localizedSummaryItemsTitle=_localizedSummaryItemsTitle;
+@property(retain, nonatomic) NSString *localizedNavigationTitle; // @synthesize localizedNavigationTitle=_localizedNavigationTitle;
+@property(retain, nonatomic) NSMutableArray *contentItems; // @synthesize contentItems=_contentItems;
+@property(retain, nonatomic) PKProtobufPaymentTokenConfiguration *paymentTokenConfiguration; // @synthesize paymentTokenConfiguration=_paymentTokenConfiguration;
+@property(retain, nonatomic) NSString *billingAgreement; // @synthesize billingAgreement=_billingAgreement;
 @property(nonatomic) unsigned int apiType; // @synthesize apiType=_apiType;
 @property(retain, nonatomic) NSMutableArray *supportedCountries; // @synthesize supportedCountries=_supportedCountries;
 @property(retain, nonatomic) NSMutableArray *requiredBillingContactFields; // @synthesize requiredBillingContactFields=_requiredBillingContactFields;
@@ -78,6 +101,28 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsRequestType:(id)arg1;
+- (id)requestTypeAsString:(int)arg1;
+@property(nonatomic) _Bool hasRequestType;
+@property(nonatomic) int requestType; // @synthesize requestType=_requestType;
+- (int)StringAsConfirmationStyle:(id)arg1;
+- (id)confirmationStyleAsString:(int)arg1;
+@property(nonatomic) _Bool hasConfirmationStyle;
+@property(nonatomic) int confirmationStyle; // @synthesize confirmationStyle=_confirmationStyle;
+- (int)StringAsRequestor:(id)arg1;
+- (id)requestorAsString:(int)arg1;
+@property(nonatomic) _Bool hasRequestor;
+@property(nonatomic) int requestor; // @synthesize requestor=_requestor;
+@property(nonatomic) _Bool hasSummaryPinned;
+@property(nonatomic) _Bool hasSuppressTotal;
+@property(readonly, nonatomic) _Bool hasLocalizedSummaryItemsTitle;
+@property(readonly, nonatomic) _Bool hasLocalizedNavigationTitle;
+- (id)contentItemsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)contentItemsCount;
+- (void)addContentItems:(id)arg1;
+- (void)clearContentItems;
+@property(readonly, nonatomic) _Bool hasPaymentTokenConfiguration;
+@property(readonly, nonatomic) _Bool hasBillingAgreement;
 @property(nonatomic) _Bool hasApiType;
 - (id)supportedCountriesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)supportedCountriesCount;

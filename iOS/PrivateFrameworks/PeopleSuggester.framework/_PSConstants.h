@@ -10,6 +10,7 @@
 {
 }
 
++ (id)inExpanseSessionHeuristicReason;
 + (id)inCallHeuristicReason;
 + (id)photoAssetPresenceHeuristicReason;
 + (id)eligibleShareSheetTargets;
@@ -17,7 +18,9 @@
 + (id)mobileSafariBundleId;
 + (id)shareSheetTargetBundleIdMail;
 + (id)shareSheetTargetBundleIdMessages;
-+ (id)mobilePhoneOrFacetimeBundleId;
++ (id)macFacetimeBundleId;
++ (id)mobileFacetimeBundleId;
++ (id)mobilePhoneBundleId;
 + (id)macCalendarBundleId;
 + (id)mobileCalendarBundleId;
 + (id)macMailBundleId;

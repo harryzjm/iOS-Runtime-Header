@@ -8,20 +8,21 @@
 
 @interface TSCH3DChartLayoutSceneSettingsUpgrader
 {
-    TSCH3DChartLayout *mChartLayout;
-    _Bool mIsMutatedForSceneSettings;
-    NSValue *mInfoGeometryOffset;
+    TSCH3DChartLayout *_chartLayout;
+    _Bool _isMutatedForSceneSettings;
+    NSValue *_infoGeometryOffset;
     _Bool hasConstantDepth;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool hasConstantDepth; // @synthesize hasConstantDepth;
 - (void)upgradeForSpice:(_Bool)arg1 naturalSize:(struct CGSize)arg2;
 - (void)updateInfoGeometryIfNecessary;
 - (void)mutateInfoWithContainingViewport:(id)arg1 scene:(id)arg2;
 - (id)containingViewportByResizingScene:(id)arg1 toResizingFrame:(struct CGRect)arg2;
 - (struct CGRect)oldResizingFrame;
-- (id)sceneResetWithLayoutSettings:(CDStruct_b1c75024)arg1;
-- (CDStruct_b1c75024)oldLayoutSettings;
+- (id)sceneResetWithLayoutSettings:(CDStruct_c48db077)arg1;
+- (CDStruct_c48db077)oldLayoutSettings;
 - (void)dealloc;
 
 @end

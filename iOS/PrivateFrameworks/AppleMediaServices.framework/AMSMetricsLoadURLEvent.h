@@ -13,6 +13,7 @@
 + (double)_timingDataMetricToServerTimeInterval:(id)arg1;
 + (id)_resolvedIPAddressFromTask:(id)arg1;
 + (double)_randomDouble;
++ (id)_radioTypeStringValueFromRadioType:(int)arg1;
 + (id)_metricsDictionaryFromConfig:(id)arg1;
 + (id)_fetchNetworkQualityReports;
 + (id)_DNSServerIPAddresses;
@@ -60,6 +61,7 @@
 @property(nonatomic) double connectionEndTime;
 @property(retain, nonatomic) NSString *clientError;
 @property(retain, nonatomic) NSString *clientCorrelationKey;
+@property(retain, nonatomic) NSString *cellularDataBearerTechnology;
 @property(nonatomic) _Bool cachedResponse;
 @property(nonatomic) _Bool apsRelaySucceeded;
 @property(nonatomic) _Bool apsRelayDidFallback;

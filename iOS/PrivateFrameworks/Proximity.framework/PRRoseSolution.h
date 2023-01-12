@@ -15,6 +15,10 @@
     _Bool _az_valid;
     _Bool _el_valid;
     _Bool _soi_rssi_valid;
+    _Bool _previous_solution_is_bad;
+    _Bool _track_score_valid;
+    _Bool _sweep_angle_valid;
+    _Bool _multipath_probability_valid;
     long long _variant;
     unsigned long long _mac_addr;
     double _mach_absolute_time_sec;
@@ -28,9 +32,19 @@
     double _fov_confidence;
     double _soi_rssi_dbm;
     long long _antenna_type;
+    double _track_score;
+    double _sweep_angle_deg;
+    double _multipath_probability;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(readonly, nonatomic) double multipath_probability; // @synthesize multipath_probability=_multipath_probability;
+@property(readonly, nonatomic) _Bool multipath_probability_valid; // @synthesize multipath_probability_valid=_multipath_probability_valid;
+@property(readonly, nonatomic) double sweep_angle_deg; // @synthesize sweep_angle_deg=_sweep_angle_deg;
+@property(readonly, nonatomic) _Bool sweep_angle_valid; // @synthesize sweep_angle_valid=_sweep_angle_valid;
+@property(readonly, nonatomic) double track_score; // @synthesize track_score=_track_score;
+@property(readonly, nonatomic) _Bool track_score_valid; // @synthesize track_score_valid=_track_score_valid;
+@property(readonly, nonatomic) _Bool previous_solution_is_bad; // @synthesize previous_solution_is_bad=_previous_solution_is_bad;
 @property(readonly, nonatomic) long long antenna_type; // @synthesize antenna_type=_antenna_type;
 @property(readonly, nonatomic) double soi_rssi_dbm; // @synthesize soi_rssi_dbm=_soi_rssi_dbm;
 @property(readonly, nonatomic) _Bool soi_rssi_valid; // @synthesize soi_rssi_valid=_soi_rssi_valid;
@@ -53,7 +67,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithVariant:(long long)arg1 macAddr:(unsigned long long)arg2 machAbsTime_sec:(double)arg3 machContTimeValid:(_Bool)arg4 machContTime_sec:(double)arg5 range_m:(double)arg6 rangeUnc_m:(double)arg7 azValid:(_Bool)arg8 elValid:(_Bool)arg9 az_deg:(double)arg10 el_deg:(double)arg11 azUnc_deg:(double)arg12 elUnc_deg:(double)arg13 fovConfidence:(double)arg14 soiRssiValid:(_Bool)arg15 soiRssi_dBm:(double)arg16 antennaType:(long long)arg17;
+- (id)initWithVariant:(long long)arg1 macAddr:(unsigned long long)arg2 machAbsTime_sec:(double)arg3 machContTimeValid:(_Bool)arg4 machContTime_sec:(double)arg5 range_m:(double)arg6 rangeUnc_m:(double)arg7 azValid:(_Bool)arg8 elValid:(_Bool)arg9 az_deg:(double)arg10 el_deg:(double)arg11 azUnc_deg:(double)arg12 elUnc_deg:(double)arg13 fovConfidence:(double)arg14 soiRssiValid:(_Bool)arg15 soiRssi_dBm:(double)arg16 antennaType:(long long)arg17 prevSolutionIsBad:(_Bool)arg18 trackScoreValid:(_Bool)arg19 trackScore:(double)arg20 sweepAngleValid:(_Bool)arg21 sweepAngle_deg:(double)arg22 multipathProbabilityValid:(_Bool)arg23 multipathProbability:(double)arg24;
 
 @end
 

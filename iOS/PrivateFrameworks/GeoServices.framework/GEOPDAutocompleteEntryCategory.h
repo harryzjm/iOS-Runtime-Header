@@ -10,7 +10,6 @@
 
 @class GEOLocalizedString, GEOPDVenueIdentifier, GEOStyleAttributes, NSData, PBDataReader, PBUnknownFields;
 
-__attribute__((visibility("hidden")))
 @interface GEOPDAutocompleteEntryCategory : PBCodable <NSCopying>
 {
     PBDataReader *_reader;

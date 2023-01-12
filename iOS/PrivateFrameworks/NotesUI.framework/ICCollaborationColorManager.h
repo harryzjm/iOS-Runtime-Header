@@ -15,6 +15,7 @@
     unsigned long long _colorUsageCountMinimum;
 }
 
++ (id)defaultColor;
 + (id)participantColors;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long colorUsageCountMinimum; // @synthesize colorUsageCountMinimum=_colorUsageCountMinimum;
@@ -23,7 +24,7 @@
 - (id)participantAXDisplayNameForUserID:(id)arg1 forNote:(id)arg2;
 - (id)containerScopedUserRecordNameForAccount:(id)arg1;
 - (id)baseColorValuesForUserID:(id)arg1;
-- (id)highlightColorForUserID:(id)arg1 withPercentage:(double)arg2 forNote:(id)arg3 darkAppearance:(_Bool)arg4;
+- (id)highlightColorForUserID:(id)arg1 note:(id)arg2;
 - (id)init;
 
 @end

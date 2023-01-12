@@ -30,9 +30,11 @@
 + (id)getAdaptedModelRecipeVersionFilePath;
 + (id)getIntermediateAdaptableCompiledMLModel;
 + (id)getDeployedAdaptableCompiledMLModelPath;
++ (id)getDeployedCompiledMLModelPathForContactRanker;
 + (id)getDeployedCompiledMLModelPath;
 + (id)getAdaptedCompiledMLModelPath;
 + (id)getTrialCompiledAdaptableMLModelPath;
++ (id)getTrialCompiledMLModelPathForContactRanker;
 + (id)getTrialCompiledMLModelPath;
 
 @end

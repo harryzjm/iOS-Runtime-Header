@@ -5,13 +5,14 @@
 //
 
 #import <EventKitUI/EKCellShortener-Protocol.h>
+#import <EventKitUI/EKDateTimeCellDelegate-Protocol.h>
 #import <EventKitUI/EKTimeZoneViewControllerDelegate-Protocol.h>
 
-@class NSArray, NSDate, NSDateComponents, NSString, NSTimeZone, PreferencesTwoPartValueCell, UIDatePicker, UITableViewCell;
+@class EKDateTimeCell, NSArray, NSDate, NSDateComponents, NSString, NSTimeZone, PreferencesTwoPartValueCell, UIDatePicker, UITableViewCell;
 @protocol EKEventDateEditItemDelegate;
 
 __attribute__((visibility("hidden")))
-@interface EKEventDateEditItem <EKTimeZoneViewControllerDelegate, EKCellShortener>
+@interface EKEventDateEditItem <EKTimeZoneViewControllerDelegate, EKDateTimeCellDelegate, EKCellShortener>
 {
     NSDateComponents *_startComponents;
     NSDateComponents *_endComponents;
@@ -20,20 +21,26 @@ __attribute__((visibility("hidden")))
     NSTimeZone *_endTimeZone;
     _Bool _showTimeZones;
     _Bool _canPerformTargettedReload;
-    PreferencesTwoPartValueCell *_startDateCell;
-    PreferencesTwoPartValueCell *_endDateCell;
+    EKDateTimeCell *_modernStartDateCell;
+    EKDateTimeCell *_modernEndDateCell;
+    PreferencesTwoPartValueCell *_classicStartDateCell;
+    PreferencesTwoPartValueCell *_classicEndDateCell;
+    int _shorteningStatus;
     UITableViewCell *_allDayCell;
     UITableViewCell *_startTimeZoneCell;
     UITableViewCell *_endTimeZoneCell;
     UITableViewCell *_startDatePickerCell;
     UITableViewCell *_endDatePickerCell;
     long long _selectedSubitem;
+    long long _currentPickerMode;
     UIDatePicker *_startDatePicker;
     UIDatePicker *_endDatePicker;
     _Bool _endTimeWasMessedUp;
     _Bool _changingDate;
-    int _shorteningStatus;
+    _Bool _showingInlineDatePicker;
+    _Bool _modifyingVisibleControls;
     _Bool _pushingTZController;
+    long long _targetedSubitemForTimezone;
     NSArray *_startPickerConstraints;
     NSArray *_endPickerConstraints;
     _Bool _showsAllDay;
@@ -54,15 +61,20 @@ __attribute__((visibility("hidden")))
 - (id)_dateInSystemCalendarFromComponents:(id)arg1;
 - (id)_timeZoneDescription:(id)arg1;
 - (void)_allDayChanged:(id)arg1;
+- (void)dateChanged:(id)arg1 forSubitem:(long long)arg2;
 - (void)_datePickerChanged:(id)arg1;
-- (void)_updateDateColors;
-- (void)_adjustDatePickerFrame:(id)arg1 toFillEnclosingViewWidth:(id)arg2;
-- (void)_updateDatePickerAnimated:(_Bool)arg1;
+- (void)_updateDatePicker:(id)arg1 animated:(_Bool)arg2;
 - (_Bool)_endDateIsBeforeStartDate;
 - (void)_resetStartString:(_Bool)arg1 endString:(_Bool)arg2;
-- (void)_updateTimeWidths;
+- (void)_resetClassicStartString:(_Bool)arg1 endString:(_Bool)arg2;
 - (void)_pickNextReasonableTime;
 - (void)_hideInlineDateControls;
+- (void)_showInlineControls:(long long)arg1 forSubitem:(long long)arg2 includingInlineDatePicker:(_Bool)arg3;
+- (void)dateTimeCellEndedEditing:(id)arg1;
+- (void)dateTimeCellBeganEditing:(id)arg1;
+- (void)dateTimeCell:(id)arg1 dateChanged:(id)arg2;
+- (void)dateTimeCellTimeTapped:(id)arg1;
+- (void)dateTimeCellDateTapped:(id)arg1;
 - (void)_setEndTimeZone:(id)arg1;
 - (void)_setStartTimeZone:(id)arg1;
 - (void)_validateTimezones;
@@ -71,18 +83,20 @@ __attribute__((visibility("hidden")))
 - (void)_setStartDate:(id)arg1;
 - (void)timeZoneViewControllerDidCancel:(id)arg1;
 - (void)timeZoneViewController:(id)arg1 didSelectTimeZone:(id)arg2;
+- (void)shortenCell:(id)arg1;
+- (void)_updateClassicDateCellColors;
+- (void)_updateClassicDateCellTimeWidths;
 - (void)_contentSizeCategoryDidChange:(id)arg1;
 - (_Bool)saveAndDismissWithForce:(_Bool)arg1;
 - (id)_calendarForEventComponents:(_Bool)arg1;
 - (void)endInlineEditing;
 - (void)editor:(id)arg1 didStartEditingItem:(id)arg2;
 - (_Bool)usesDetailViewControllerForSubitem:(unsigned long long)arg1;
+- (_Bool)handleClassicSubitemSelection:(long long)arg1;
 - (void)editor:(id)arg1 didSelectSubitem:(unsigned long long)arg2;
 - (_Bool)editor:(id)arg1 canSelectSubitem:(unsigned long long)arg2;
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
-- (void)shortenCell:(id)arg1;
-- (void)_datePickerDoubleTapped:(id)arg1;
 - (void)setupPickerConstraintsForCell:(id)arg1 datePicker:(id)arg2;
 - (id)_endDatePickerCell;
 - (id)_startDatePickerCell;
@@ -90,8 +104,10 @@ __attribute__((visibility("hidden")))
 - (id)_endTimeZoneCell;
 - (id)_startTimeZoneCell;
 - (id)_allDayCell;
-- (id)_endDateCell;
-- (id)_startDateCell;
+- (id)_classicEndDateCell;
+- (id)_classicStartDateCell;
+- (id)_modernEndDateCell;
+- (id)_modernStartDateCell;
 - (unsigned long long)numberOfSubitems;
 - (long long)_subitemForRow:(long long)arg1;
 - (long long)_rowForSubitem:(long long)arg1;
@@ -105,6 +121,7 @@ __attribute__((visibility("hidden")))
 - (void)_adjustStartAndEndComponentsForEventIfNeeded:(id)arg1;
 - (void)_refreshDatePicker;
 - (void)refreshFromCalendarItemAndStore;
+- (_Bool)usesClassicUI;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (id)init;

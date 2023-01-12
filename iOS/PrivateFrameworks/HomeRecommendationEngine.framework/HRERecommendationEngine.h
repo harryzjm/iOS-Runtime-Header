@@ -6,26 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class HMHomeManager, HRERecommendationRankingController, HREUserProfiler, NSMutableArray;
+@class HRERankConfidenceController, HRETemplateRecommendationGenerator, NSArray, NSMutableArray;
 
 @interface HRERecommendationEngine : NSObject
 {
     NSMutableArray *_recommendationSources;
-    HRERecommendationRankingController *_rankingController;
-    HMHomeManager *_homeManager;
-    HREUserProfiler *_userProfiler;
+    HRERankConfidenceController *_rankingController;
+    HRETemplateRecommendationGenerator *_templateSource;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) HREUserProfiler *userProfiler; // @synthesize userProfiler=_userProfiler;
-@property(retain, nonatomic) HMHomeManager *homeManager; // @synthesize homeManager=_homeManager;
-@property(retain, nonatomic) HRERecommendationRankingController *rankingController; // @synthesize rankingController=_rankingController;
+@property(retain, nonatomic) HRETemplateRecommendationGenerator *templateSource; // @synthesize templateSource=_templateSource;
+@property(retain, nonatomic) HRERankConfidenceController *rankingController; // @synthesize rankingController=_rankingController;
 @property(retain, nonatomic) NSMutableArray *recommendationSources; // @synthesize recommendationSources=_recommendationSources;
 - (id)_sourcesEnabledWithOptions:(unsigned long long)arg1;
-- (id)getUserProfiler;
+@property(retain, nonatomic) NSArray *templates;
 - (id)generateRecommendationsForServiceLikeItems:(id)arg1 inHome:(id)arg2 options:(unsigned long long)arg3;
 - (id)generateRecommendationsForHome:(id)arg1 options:(unsigned long long)arg2;
-- (id)initWithHomeManager:(id)arg1;
+- (id)init;
 
 @end
 

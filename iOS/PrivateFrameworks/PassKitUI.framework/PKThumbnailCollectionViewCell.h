@@ -13,6 +13,7 @@
     NSString *_title;
     UIImage *_image;
     CNAvatarView *_avatarView;
+    _Bool _strokeImage;
     NSString *_identifier;
 }
 
@@ -25,6 +26,7 @@
 - (void)showAvatarView:(_Bool)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
+- (void)setStrokeImage:(_Bool)arg1;
 - (void)_setupImageView:(id)arg1;
 - (void)_resetFonts;
 - (void)prepareForReuse;

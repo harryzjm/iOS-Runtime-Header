@@ -29,6 +29,7 @@
     NSString *_routeEstimationErrorMessage;
     _Bool _isOriginSelectionVisible;
     _Bool _suppressErrors;
+    _Bool _needsShowOriginAlert;
     _Bool _estimatedRowIsChecked;
     EKTravelRouteEstimationController *_routeEstimationControler;
     long long _selectedRoutingMode;
@@ -63,6 +64,7 @@
 - (long long)_numberOfEstimatedTravelTimeResultRows;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
+- (void)tableView:(id)arg1 willDisplayFooterView:(id)arg2 forSection:(long long)arg3;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
@@ -108,6 +110,8 @@
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)resetBackgroundColor;
 - (void)loadView;
 @property(readonly, copy) NSString *description;
 - (id)initWithFrame:(struct CGRect)arg1 styleProvider:(id)arg2 calendarItem:(id)arg3 eventStore:(id)arg4;

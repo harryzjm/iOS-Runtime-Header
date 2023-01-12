@@ -11,6 +11,8 @@
 @protocol SFVerticalLayoutCardSection <SFCardSection>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(retain, nonatomic) SFRichText *thumbnailOverlayText;
+@property(nonatomic) _Bool contentsLeading;
 @property(retain, nonatomic) SFRichText *footnote;
 @property(retain, nonatomic) SFRichText *title;
 @property(retain, nonatomic) SFImage *thumbnail;

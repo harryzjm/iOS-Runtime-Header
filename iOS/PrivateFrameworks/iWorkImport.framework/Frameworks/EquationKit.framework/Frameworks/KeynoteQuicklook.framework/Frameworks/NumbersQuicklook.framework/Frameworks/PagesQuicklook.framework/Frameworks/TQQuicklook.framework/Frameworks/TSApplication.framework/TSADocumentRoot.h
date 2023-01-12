@@ -46,7 +46,6 @@
 }
 
 + (_Bool)shouldShowImportedDataNotificationsOnOpen;
-+ (id)persistenceWarningsForData:(id)arg1 flags:(unsigned long long)arg2;
 + (unsigned long long)previewTypeForCurrentDevice;
 + (struct CGSize)previewImageMaxSizeForType:(unsigned long long)arg1;
 + (struct CGSize)previewImageSizeForType:(unsigned long long)arg1;
@@ -65,6 +64,8 @@
 + (id)localizedFontNameForFontName:(id)arg1 withLocale:(id)arg2;
 + (void)localizeChartInfo:(id)arg1 withTemplateBundle:(id)arg2 andLocale:(id)arg3;
 + (void)localizeTextStorage:(id)arg1 withTemplateBundle:(id)arg2 andLocale:(id)arg3;
++ (id)prelocalizedStringForStorage:(id)arg1 range:(struct _NSRange)arg2 attachmentHandlingBlock:(CDUnknownBlockType)arg3;
++ (id)identifierForAttachmentNumber:(unsigned long long)arg1;
 + (void)localizeDropCapsInStorage:(id)arg1 withLocale:(id)arg2;
 + (void)localizeTableInfo:(id)arg1 templateBundle:(id)arg2 andLocale:(id)arg3;
 + (void)replacePropertiesOfStyle:(id)arg1 withMap:(id)arg2;
@@ -90,6 +91,7 @@
 - (_Bool)hasICloudConflict;
 - (id)commandForPropagatingPresetChangeCommand:(id)arg1 alwaysPreserveAppearance:(_Bool)arg2;
 - (void)p_verifyEntireDocument;
+- (void)presentDocumentWarnings;
 - (_Bool)hasExpandedTables;
 @property(readonly, nonatomic) TSADrawableFactory *drawableFactory;
 - (id)readBuildVersionHistoryFromDiskHasPreUFFVersion:(_Bool)arg1;
@@ -112,6 +114,7 @@
 - (void)didSaveWithEncryptionChange;
 - (void)documentCacheWasInvalidated;
 - (id)dataFromDocumentCachePath:(id)arg1;
+- (id)documentCachePathWithRelativePath:(id)arg1;
 - (id)documentCachePath;
 - (id)referencedStylesOfClass:(Class)arg1;
 - (_Bool)shouldAllowDrawableInGroups:(id)arg1;
@@ -153,7 +156,6 @@
 - (void)didDownloadDocumentResources:(id)arg1;
 - (void)fontUpdatedForStyleClient:(id)arg1;
 - (id)tableToShowImportedDataNotificationOnOpenFor;
-- (_Bool)shouldShowFontWarningNotificationForWarnings:(id)arg1;
 - (id)warningLocationDescriptionForAffectedObjects:(id)arg1 sortingInfo:(id *)arg2;
 - (id)warningsByCombiningSortedWarnings:(id)arg1 withWarnings:(id)arg2;
 - (long long)compareLocationSortingInfo:(id)arg1 toSortingInfo:(id)arg2;
@@ -202,10 +204,10 @@
 - (id)additionalResourceRequestsForObjectContext:(id)arg1;
 - (id)additionalDocumentPropertiesForWrite;
 @property(readonly, nonatomic) NSDictionary *packageDataForWrite;
-- (void)saveToArchive:(struct DocumentArchive *)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (_Bool)validatedLoadFromUnarchiver:(id)arg1;
-- (void)loadFromArchive:(const struct DocumentArchive *)arg1 unarchiver:(id)arg2;
-- (void)stashUpgradeState:(const struct DocumentArchive *)arg1 unarchiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
+- (void)stashUpgradeState:(const void *)arg1 unarchiver:(id)arg2;
 - (id)upgradeState;
 - (void)sendDocumentOpenedAnalyticsEventWithEventPayload:(id)arg1;
 - (void)documentDidLoad;
@@ -233,8 +235,6 @@
 - (void)setDocumentCreationLocale:(id)arg1;
 - (void)setDocumentLanguage:(id)arg1;
 - (id)documentLanguage;
-- (void)sendDocumentEditedAnalyticsWithWasEdited:(_Bool)arg1;
-- (void)sendDocumentExportedAnalyticsWithExportFormat:(id)arg1 error:(id)arg2 success:(_Bool)arg3;
 - (id)namedTextStyles;
 
 // Remaining properties

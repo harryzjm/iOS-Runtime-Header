@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <OnBoardingKit/OBWelcomeController.h>
-
 #import <SIMSetupSupport/TSSetupFlowItem-Protocol.h>
 #import <SIMSetupSupport/UINavigationControllerDelegate-Protocol.h>
 
 @class NSString;
 @protocol TSSIMSetupFlowDelegate;
 
-@interface TSTransferredViewController : OBWelcomeController <UINavigationControllerDelegate, TSSetupFlowItem>
+@interface TSTransferredViewController <UINavigationControllerDelegate, TSSetupFlowItem>
 {
     id <TSSIMSetupFlowDelegate> _delegate;
 }

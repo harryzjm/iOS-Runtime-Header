@@ -4,33 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSTimer, _UIStatusBarDisplayItemPlacement, _UIStatusBarRegion;
+#import <UIKitCore/_UIStatusBarPillRegionVisualProvider-Protocol.h>
 
-@interface _UIStatusBarVisualProvider_Phone
+@class NSString, _UIStatusBar, _UIStatusBarVisualProvider_PillRegionCoordinator;
+
+@interface _UIStatusBarVisualProvider_Phone <_UIStatusBarPillRegionVisualProvider>
 {
-    _UIStatusBarDisplayItemPlacement *_backgroundActivityDetailPlacement;
-    _UIStatusBarDisplayItemPlacement *_pillIconPlacement;
-    _UIStatusBarRegion *_pillRegion;
-    NSTimer *_backgroundActivityDetailTimer;
+    _UIStatusBarVisualProvider_PillRegionCoordinator *_pillRegionCoordinator;
 }
 
 + (Class)visualProviderSubclassForScreen:(id)arg1 visualProviderInfo:(id)arg2;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSTimer *backgroundActivityDetailTimer; // @synthesize backgroundActivityDetailTimer=_backgroundActivityDetailTimer;
-@property(retain, nonatomic) _UIStatusBarRegion *pillRegion; // @synthesize pillRegion=_pillRegion;
-@property(retain, nonatomic) _UIStatusBarDisplayItemPlacement *pillIconPlacement; // @synthesize pillIconPlacement=_pillIconPlacement;
-@property(retain, nonatomic) _UIStatusBarDisplayItemPlacement *backgroundActivityDetailPlacement; // @synthesize backgroundActivityDetailPlacement=_backgroundActivityDetailPlacement;
-- (id)animationForBackgroundActivityPillWithDuration:(double)arg1 scale:(double)arg2;
-- (id)_animationForBackgroundActivityPill;
-- (id)_animationForBackgroundActivityIcon;
-- (void)_hideActivityDetailAndUpdate:(_Bool)arg1;
-- (void)updatePill;
-- (void)_updateBackgroundActivityWithEntry:(id)arg1 timeEntry:(id)arg2 needsUpdate:(_Bool)arg3;
-- (void)updateDataForBackgroundActivity:(id)arg1;
+@property(retain, nonatomic) _UIStatusBarVisualProvider_PillRegionCoordinator *pillRegionCoordinator; // @synthesize pillRegionCoordinator=_pillRegionCoordinator;
 - (void)actionable:(id)arg1 highlighted:(_Bool)arg2 initialPress:(_Bool)arg3;
 - (id)removalAnimationForDisplayItemWithIdentifier:(id)arg1 itemAnimation:(id)arg2;
 - (id)additionAnimationForDisplayItemWithIdentifier:(id)arg1 itemAnimation:(id)arg2;
 - (id)willUpdateWithData:(id)arg1;
+- (id)init;
+
+// Remaining properties
+@property(readonly, nonatomic) _Bool canFixupDisplayItemAttributes;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(nonatomic) _Bool expanded;
+@property(readonly) unsigned long long hash;
+@property(nonatomic) __weak _UIStatusBar *statusBar;
+@property(readonly) Class superclass;
+@property(readonly, nonatomic) _Bool supportsIndirectPointerTouchActions;
 
 @end
 

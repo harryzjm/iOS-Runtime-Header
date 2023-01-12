@@ -6,10 +6,15 @@
 
 #import <DoNotDisturbServer/NSObject-Protocol.h>
 
-@class DNDSPairedDevice;
+@class DNDModeAssertion, DNDSPairedDevice, DNDScheduleSettings, NSSet, NSString;
 @protocol DNDSAssertionSyncManager;
 
 @protocol DNDSAssertionSyncManagerDataSource <NSObject>
+- (_Bool)isCloudSyncDisabledForSyncManager:(id <DNDSAssertionSyncManager>)arg1;
+- (DNDScheduleSettings *)syncManager:(id <DNDSAssertionSyncManager>)arg1 scheduleSettingsForModeIdentifier:(NSString *)arg2;
+- (DNDModeAssertion *)syncManager:(id <DNDSAssertionSyncManager>)arg1 updateOutboundModeAssertion:(DNDModeAssertion *)arg2;
+- (DNDSPairedDevice *)syncManager:(id <DNDSAssertionSyncManager>)arg1 deviceForDeviceIdentifier:(NSString *)arg2;
+- (NSSet *)pairedDevicesForSyncManager:(id <DNDSAssertionSyncManager>)arg1;
 - (DNDSPairedDevice *)currentlyActivePairedDeviceForSyncManager:(id <DNDSAssertionSyncManager>)arg1;
 @end
 

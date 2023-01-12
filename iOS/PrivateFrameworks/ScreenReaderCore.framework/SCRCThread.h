@@ -24,6 +24,7 @@
     double _lastStartTime;
 }
 
++ (id)threadTaskCacheKey;
 + (id)currentThreadTaskCache;
 + (void)postStopNotification;
 + (void)invalidateForKey:(id)arg1;

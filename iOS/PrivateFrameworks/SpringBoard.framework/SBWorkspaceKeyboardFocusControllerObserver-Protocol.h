@@ -6,9 +6,9 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class NSString, SBWorkspaceKeyboardFocusController;
+@class FBScene, SBWorkspaceKeyboardFocusController;
 
 @protocol SBWorkspaceKeyboardFocusControllerObserver <NSObject>
-- (void)keyboardFocusController:(SBWorkspaceKeyboardFocusController *)arg1 didUpdateFocusToPID:(int)arg2 sceneID:(NSString *)arg3;
+- (void)keyboardFocusController:(SBWorkspaceKeyboardFocusController *)arg1 externalSceneDidAcquireFocus:(FBScene *)arg2;
 @end
 

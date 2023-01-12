@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 + (void)_postGLActiveNotification;
 + (_Bool)setCurrentGLContext:(id)arg1;
 + (void)createSharedRepeatableTexture:(unsigned int *)arg1 withImageName:(id)arg2 ofType:(id)arg3;
-+ (void)teardownSharedContext;
++ (void)teardownSharedGLContext;
 + (id)createSharedGLContext;
 + (id)createPlatformGLContext;
 + (id)snapshotImageOfFrameBufferWithID:(unsigned int)arg1 bufferSize:(struct CGSize)arg2 displayScale:(double)arg3;

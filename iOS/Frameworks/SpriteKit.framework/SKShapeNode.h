@@ -8,7 +8,7 @@
 
 @interface SKShapeNode
 {
-    struct SKCShapeNode *_skcShapeNode;
+    void *_skcShapeNode;
 }
 
 + (id)debugHierarchyValueForPropertyWithName:(id)arg1 onObject:(id)arg2 outOptions:(id *)arg3 outError:(id *)arg4;
@@ -53,7 +53,7 @@
 - (void)_initialize;
 - (_Bool)isEqualToNode:(id)arg1;
 - (void)_didMakeBackingNode;
-- (struct SKCNode *)_makeBackingNode;
+- (void *)_makeBackingNode;
 
 // Remaining properties
 @property(copy, nonatomic) NSDictionary *attributeValues; // @dynamic attributeValues;

@@ -8,18 +8,18 @@
 
 @interface TSCH3DGaussianBlurShaderEffect
 {
-    TSCH3DShaderVariable *mSamplingTexcoords;
+    TSCH3DShaderVariable *_samplingTexcoords;
 }
 
 + (void)setTapUnit:(tvec2_84d5962d)arg1 effectsStates:(id)arg2;
 + (id)variableTexture;
 + (id)variableTapUnit;
 + (id)variableAccum;
+- (void).cxx_destruct;
 - (void)uploadData:(id)arg1 effectsStates:(id)arg2;
 - (void)injectCommonShaderInto:(id)arg1 context:(id)arg2;
 - (void)addVariables:(id)arg1;
 - (id)variableTexture;
-- (void)dealloc;
 - (id)init;
 - (id)variableTapUnit;
 - (id)variableAccum;

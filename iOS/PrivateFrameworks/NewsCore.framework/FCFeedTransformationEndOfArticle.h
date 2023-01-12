@@ -17,6 +17,7 @@
     unsigned long long _minimumResultHeadlineCount;
     double _paidHeadlineRatio;
     unsigned long long _maxiumInaccessibleHeadlineCount;
+    unsigned long long _expireArticlesAfter;
     id <FCPurchaseProviderType> _purchaseProvider;
 }
 
@@ -24,6 +25,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) id <FCPurchaseProviderType> purchaseProvider; // @synthesize purchaseProvider=_purchaseProvider;
 @property(nonatomic) _Bool isPaywallAvailable; // @synthesize isPaywallAvailable=_isPaywallAvailable;
+@property(nonatomic) unsigned long long expireArticlesAfter; // @synthesize expireArticlesAfter=_expireArticlesAfter;
 @property(nonatomic) unsigned long long maxiumInaccessibleHeadlineCount; // @synthesize maxiumInaccessibleHeadlineCount=_maxiumInaccessibleHeadlineCount;
 @property(nonatomic) double paidHeadlineRatio; // @synthesize paidHeadlineRatio=_paidHeadlineRatio;
 @property(nonatomic) unsigned long long minimumResultHeadlineCount; // @synthesize minimumResultHeadlineCount=_minimumResultHeadlineCount;

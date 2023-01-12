@@ -19,6 +19,7 @@
 - (void)setPhoto:(id)arg1 avatarType:(long long)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)deletePhotoWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)deletePhoto;
+- (void)registerGameControllers;
 - (void)reloadAccessPoint;
 - (void)hideAccessPoint;
 - (void)showAccessPoint;
@@ -30,6 +31,10 @@
 - (void)showOnboardingUIFromViewController:(id)arg1;
 - (_Bool)shouldShowOnBoardingUI;
 - (void)showWelcomeBannerWithTitle:(id)arg1 message:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)presentFriendRequestCreatorFromViewController:(id)arg1 error:(id *)arg2;
+- (_Bool)isPresentingFriendRequestViewController;
+- (void)sendFriendInviteTo:(id)arg1 groupId:(id)arg2;
+- (_Bool)canSendFriendRequest;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

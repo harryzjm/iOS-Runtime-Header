@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FigCaptureMovieFileRecordingSettings, NSArray, NSURL;
+@class FigCaptureMovieFileRecordingSettings, FigCaptureSemanticStyle, NSArray, NSURL;
 
 @interface FigCaptureIrisStillImageSettings
 {
@@ -15,9 +15,11 @@
     NSURL *_spatialOverCaptureMovieURLForOriginalImage;
     NSArray *_spatialOverCaptureMovieLevelMetadataForOriginalImage;
     struct CGSize _nonDestructiveCropSize;
+    FigCaptureSemanticStyle *_semanticStyle;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(retain, nonatomic) FigCaptureSemanticStyle *semanticStyle; // @synthesize semanticStyle=_semanticStyle;
 @property(nonatomic) struct CGSize nonDestructiveCropSize; // @synthesize nonDestructiveCropSize=_nonDestructiveCropSize;
 @property(copy, nonatomic) NSArray *spatialOverCaptureMovieLevelMetadataForOriginalImage; // @synthesize spatialOverCaptureMovieLevelMetadataForOriginalImage=_spatialOverCaptureMovieLevelMetadataForOriginalImage;
 @property(copy, nonatomic) NSURL *spatialOverCaptureMovieURLForOriginalImage; // @synthesize spatialOverCaptureMovieURLForOriginalImage=_spatialOverCaptureMovieURLForOriginalImage;

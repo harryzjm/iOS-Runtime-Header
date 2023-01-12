@@ -17,10 +17,12 @@
     NSNumber *_sourceFilter;
     NSDateInterval *_dateInterval;
     unsigned long long _limit;
+    NSNumber *_distance;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSNumber *distance; // @synthesize distance=_distance;
 @property(readonly, nonatomic) unsigned long long limit; // @synthesize limit=_limit;
 @property(readonly, nonatomic) NSDateInterval *dateInterval; // @synthesize dateInterval=_dateInterval;
 @property(readonly, nonatomic) NSNumber *sourceFilter; // @synthesize sourceFilter=_sourceFilter;
@@ -34,6 +36,7 @@
 - (unsigned long long)hash;
 - (Class)enumeratedType;
 - (unsigned long long)batchSize;
+- (id)initWithReferenceLocation:(id)arg1 sourceFilter:(id)arg2 ascending:(_Bool)arg3 distance:(id)arg4 dateInterval:(id)arg5 limit:(unsigned long long)arg6 batchSize:(unsigned long long)arg7;
 - (id)initWithReferenceLocation:(id)arg1 sourceFilter:(id)arg2 ascending:(_Bool)arg3 dateInterval:(id)arg4 limit:(unsigned long long)arg5 batchSize:(unsigned long long)arg6;
 - (id)initWithReferenceLocation:(id)arg1 ascending:(_Bool)arg2 dateInterval:(id)arg3 limit:(unsigned long long)arg4 batchSize:(unsigned long long)arg5;
 - (id)init;

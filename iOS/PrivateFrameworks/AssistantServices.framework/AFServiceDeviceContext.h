@@ -9,35 +9,46 @@
 #import <AssistantServices/NSCopying-Protocol.h>
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, NSUUID;
+@class NSArray, NSDictionary, NSString, NSUUID;
 
 @interface AFServiceDeviceContext : NSObject <NSCopying, NSSecureCoding>
 {
-    long long _proximity;
     NSUUID *_identifier;
+    NSString *_assistantIdentifier;
     NSString *_mediaSystemIdentifier;
     NSString *_mediaRouteIdentifier;
+    NSString *_sharedUserID;
     NSString *_roomName;
+    long long _proximity;
     NSArray *_contextSnapshots;
-    NSString *_productType;
+    NSDictionary *_serializedContextByKey;
+    NSDictionary *_metricsContext;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)newWithBuilder:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSString *productType; // @synthesize productType=_productType;
-@property(nonatomic) long long proximity; // @synthesize proximity=_proximity;
+@property(readonly, copy, nonatomic) NSDictionary *metricsContext; // @synthesize metricsContext=_metricsContext;
+@property(readonly, copy, nonatomic) NSDictionary *serializedContextByKey; // @synthesize serializedContextByKey=_serializedContextByKey;
 @property(readonly, copy, nonatomic) NSArray *contextSnapshots; // @synthesize contextSnapshots=_contextSnapshots;
+@property(readonly, nonatomic) long long proximity; // @synthesize proximity=_proximity;
 @property(readonly, copy, nonatomic) NSString *roomName; // @synthesize roomName=_roomName;
+@property(readonly, copy, nonatomic) NSString *sharedUserID; // @synthesize sharedUserID=_sharedUserID;
 @property(readonly, copy, nonatomic) NSString *mediaRouteIdentifier; // @synthesize mediaRouteIdentifier=_mediaRouteIdentifier;
 @property(readonly, copy, nonatomic) NSString *mediaSystemIdentifier; // @synthesize mediaSystemIdentifier=_mediaSystemIdentifier;
+@property(readonly, copy, nonatomic) NSString *assistantIdentifier; // @synthesize assistantIdentifier=_assistantIdentifier;
 @property(readonly, copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
-- (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
+- (id)_descriptionWithIndent:(unsigned long long)arg1;
 - (id)description;
-- (id)initWithIdentifier:(id)arg1 mediaSystemIdentifier:(id)arg2 mediaRouteIdentifier:(id)arg3 productType:(id)arg4 roomName:(id)arg5 contextSnapshots:(id)arg6;
+- (id)initWithIdentifier:(id)arg1 assistantIdentifier:(id)arg2 mediaSystemIdentifier:(id)arg3 mediaRouteIdentifier:(id)arg4 sharedUserID:(id)arg5 roomName:(id)arg6 proximity:(long long)arg7 contextSnapshots:(id)arg8 serializedContextByKey:(id)arg9 metricsContext:(id)arg10;
+- (id)initWithIdentifier:(id)arg1 mediaSystemIdentifier:(id)arg2 mediaRouteIdentifier:(id)arg3 sharedUserID:(id)arg4 roomName:(id)arg5 proximity:(long long)arg6 contextSnapshots:(id)arg7 serializedContextByKey:(id)arg8 metricsContext:(id)arg9;
+- (id)initWithIdentifier:(id)arg1 mediaSystemIdentifier:(id)arg2 mediaRouteIdentifier:(id)arg3 roomName:(id)arg4 proximity:(long long)arg5 contextSnapshots:(id)arg6 serializedContextByKey:(id)arg7 metricsContext:(id)arg8;
+- (id)mutatedCopyWithMutator:(CDUnknownBlockType)arg1;
 
 @end
 

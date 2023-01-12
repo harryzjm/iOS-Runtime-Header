@@ -10,12 +10,16 @@
 {
 }
 
-+ (id)locationStringForLocation:(id)arg1 locationWithoutPrediction:(id)arg2 preferredLocation:(id)arg3;
-+ (id)locationStringForLocation:(id)arg1 locationWithoutPrediction:(id)arg2 preferredLocation:(id)arg3 options:(unsigned long long)arg4;
++ (id)conferenceURLForEvent:(id)arg1 options:(unsigned long long)arg2;
++ (_Bool)_conferenceURL:(id)arg1 isSameAsLocationString:(id)arg2;
++ (id)_conferenceStringForURL:(id)arg1 options:(unsigned long long)arg2 outImageNames:(id *)arg3;
++ (id)glyphNamesForConferenceString:(id)arg1;
++ (id)conferenceStringForURL:(id)arg1 options:(unsigned long long)arg2;
++ (id)locationStringForLocation:(id)arg1 locationWithoutPrediction:(id)arg2 preferredLocation:(id)arg3 conferenceURL:(id)arg4;
++ (id)locationStringForLocation:(id)arg1 locationWithoutPrediction:(id)arg2 preferredLocation:(id)arg3 conferenceURL:(id)arg4 options:(unsigned long long)arg5;
 + (id)labelForLocation:(id)arg1;
 + (id)locationStringForEvent:(id)arg1;
 + (id)locationStringForEvent:(id)arg1 options:(unsigned long long)arg2;
-+ (void)locationStringForEvent:(id)arg1 options:(unsigned long long)arg2 completionBlock:(CDUnknownBlockType)arg3;
 
 @end
 

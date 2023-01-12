@@ -31,6 +31,8 @@
 - (void)receiveSubscription:(id)arg1;
 - (id)initWithReceiveCompletion:(CDUnknownBlockType)arg1 receiveInput:(CDUnknownBlockType)arg2;
 - (id)init;
+- (id)newBookmark;
+- (id)initWithReceiveBookmarkedCompletion:(CDUnknownBlockType)arg1 receiveInput:(CDUnknownBlockType)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

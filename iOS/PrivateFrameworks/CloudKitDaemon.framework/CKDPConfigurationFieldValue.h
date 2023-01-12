@@ -10,7 +10,6 @@
 
 @class NSData, NSMutableArray, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDPConfigurationFieldValue : PBCodable <NSCopying>
 {
     double _doubleValue;

@@ -13,6 +13,8 @@
 - (_Bool)profileViewControllerIsProfileInstalled;
 
 @optional
+- (void)profileViewControllerDidSelectPoll:(MCProfileViewController *)arg1;
+- (_Bool)profileViewControllerShouldDisplayPoll:(MCProfileViewController *)arg1;
 - (void)profileViewControllerDidSelectUpdateProfile:(MCProfileViewController *)arg1;
 @end
 

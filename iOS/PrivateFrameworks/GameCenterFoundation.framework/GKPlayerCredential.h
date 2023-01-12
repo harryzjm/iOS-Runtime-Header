@@ -20,6 +20,7 @@
 }
 
 + (id)secureCodedPropertyKeys;
+- (void).cxx_destruct;
 @property(retain) NSString *rawPassword; // @synthesize rawPassword=_rawPassword;
 @property(retain) NSString *DSID; // @synthesize DSID=_DSID;
 @property(retain) NSString *altDSID; // @synthesize altDSID=_altDSID;
@@ -31,7 +32,6 @@
 @property(retain) GKPlayerInternal *playerInternal; // @synthesize playerInternal=_playerInternal;
 - (id)description;
 @property(readonly) NSString *scopeAsString;
-- (void)dealloc;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 

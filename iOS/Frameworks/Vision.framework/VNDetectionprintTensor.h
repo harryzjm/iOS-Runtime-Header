@@ -8,11 +8,14 @@
 {
 }
 
-+ (unsigned long long)confidenceTypeForRevision:(unsigned long long)arg1;
++ (unsigned long long)confidenceTypeForOriginatingRequestSpecifier:(id)arg1;
++ (_Bool)shouldAssumeOriginatingRequestClassForHeaderSerializationVersion:(unsigned int)arg1;
++ (_Bool)shouldIgnoreLagecyLabelsAndConfidenceForHeaderSerializationVersion:(unsigned int)arg1;
 + (unsigned long long)currentSerializationVersion;
 + (unsigned long long)serializationMagicNumber;
 + (unsigned int)currentCodingVersion;
 + (id)currentVersion;
++ (id)defaultOriginatingRequestClassNameForRequestRevision:(unsigned long long)arg1;
 
 @end
 

@@ -4,16 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSString, NSURL, PLInternalResource;
+@class NSData, NSString, PLInternalResource;
 
 @interface PLFileSystemBookmark
 {
-    NSURL *_fileSystemURL;
 }
 
 + (id)fileSystemBookmarkFromURL:(id)arg1 context:(id)arg2;
 + (id)entityName;
-- (void).cxx_destruct;
 - (id)fileSystemURL;
 - (_Bool)supportsCloudUpload;
 - (id)payloadForChangedKeys:(id)arg1;

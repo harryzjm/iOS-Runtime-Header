@@ -10,15 +10,18 @@
 
 @interface TSUZipArchive : NSObject
 {
-    unsigned long long _options;
     NSMutableDictionary *_entriesMap;
     NSMutableOrderedSet *_entries;
     long long _endOfLastEntry;
+    unsigned long long _options;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) long long endOfLastEntry; // @synthesize endOfLastEntry=_endOfLastEntry;
+@property(readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 - (id)debugDescription;
+- (_Bool)validateCRCAndReturnError:(id *)arg1;
+- (void)validateCRCWithQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) _Bool isValid;
 - (id)newArchiveReadChannel;
 @property(readonly, nonatomic) unsigned long long archiveLength;

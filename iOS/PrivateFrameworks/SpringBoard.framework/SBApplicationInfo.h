@@ -13,7 +13,6 @@
     NSString *_applicationShortcutWidgetBundleIdentifier;
     NSArray *_staticApplicationShortcutItems;
     NSString *_displayName;
-    Class _iconClass;
     CRCarPlayAppDeclaration *_carPlayDeclaration;
     NSArray *_domainsToPreheat;
     NSArray *_launchImageInfo;
@@ -33,9 +32,10 @@
     long long _whitePointAdaptivityStyle;
     unsigned long long _allowedNKNotificationsPerDay;
     long long _forcedUserInterfaceStyle;
+    unsigned int _codeSignatureVersion;
     int _networkUsageTypes;
     unsigned long long _supportedTypes;
-    int _ignoredStatusBarStyleOverrides;
+    unsigned long long _ignoredStatusBarStyleOverrides;
     _Bool _isLaunchableDuringSetup;
     _Bool _usesSplashBoard;
     _Bool _disablesClassicMode;
@@ -48,6 +48,9 @@
     _Bool _isYukonLinked;
     _Bool _isYukonELinked;
     _Bool _isAzulLinked;
+    _Bool _isAzulHWLinked;
+    _Bool _isAzulBLinked;
+    _Bool _isSkyLinked;
     _Bool _prefersSavedSnapshots;
     _Bool _wantsLaunchWithoutPNG;
     _Bool _wantsFullScreen;
@@ -72,6 +75,7 @@
     _Bool _supportsDirectToAirplay;
     _Bool _alwaysReceivesOpenURLSource;
     _Bool _alwaysDeliversOpenURLActionsUsingWorkspace;
+    _Bool _isLicensedToDevice;
     _Bool _arcadeApplication;
     _Bool _appClip;
     _Bool _shouldLaunchWithLiveContentASAP;
@@ -94,6 +98,7 @@
 @property(readonly, nonatomic) unsigned long long applicationSizeInBytes; // @synthesize applicationSizeInBytes=_applicationSizeInBytes;
 @property(readonly, nonatomic, getter=isAppClip) _Bool appClip; // @synthesize appClip=_appClip;
 @property(readonly, nonatomic, getter=isArcadeApplication) _Bool arcadeApplication; // @synthesize arcadeApplication=_arcadeApplication;
+@property(readonly, nonatomic, getter=isLicensedToDevice) _Bool licensedToDevice; // @synthesize licensedToDevice=_isLicensedToDevice;
 @property(readonly, nonatomic) _Bool alwaysDeliversOpenURLActionsUsingWorkspace; // @synthesize alwaysDeliversOpenURLActionsUsingWorkspace=_alwaysDeliversOpenURLActionsUsingWorkspace;
 @property(readonly, nonatomic) _Bool alwaysReceivesOpenURLSource; // @synthesize alwaysReceivesOpenURLSource=_alwaysReceivesOpenURLSource;
 @property(readonly, nonatomic) _Bool supportsDirectToAirplay; // @synthesize supportsDirectToAirplay=_supportsDirectToAirplay;
@@ -123,9 +128,8 @@
 @property(readonly, nonatomic) _Bool preventsLaunchInterfaceSplitting; // @synthesize preventsLaunchInterfaceSplitting=_preventsLaunchInterfaceSplitting;
 @property(readonly, nonatomic) _Bool wasGameCenterEverEnabled; // @synthesize wasGameCenterEverEnabled=_wasGameCenterEverEnabled;
 @property(readonly, nonatomic, getter=isGameCenterEnabled) _Bool gameCenterEnabled; // @synthesize gameCenterEnabled=_isGameCenterEnabled;
-@property(readonly, nonatomic) Class iconClass; // @synthesize iconClass=_iconClass;
 @property(readonly, nonatomic) int networkUsageTypes; // @synthesize networkUsageTypes=_networkUsageTypes;
-@property(readonly, nonatomic) int ignoredStatusBarStyleOverrides; // @synthesize ignoredStatusBarStyleOverrides=_ignoredStatusBarStyleOverrides;
+@property(readonly, nonatomic) unsigned long long ignoredStatusBarStyleOverrides; // @synthesize ignoredStatusBarStyleOverrides=_ignoredStatusBarStyleOverrides;
 @property(readonly, nonatomic) long long defaultStatusBarStyle; // @synthesize defaultStatusBarStyle=_defaultStatusBarStyle;
 @property(readonly, nonatomic) _Bool wantsFullScreen; // @synthesize wantsFullScreen=_wantsFullScreen;
 @property(readonly, nonatomic) _Bool wantsLaunchWithoutPNG; // @synthesize wantsLaunchWithoutPNG=_wantsLaunchWithoutPNG;
@@ -139,6 +143,9 @@
 @property(readonly, nonatomic) unsigned long long dynamicApplicationShortcutItemsVersion; // @synthesize dynamicApplicationShortcutItemsVersion=_dynamicApplicationShortcutItemsVersion;
 @property(readonly, copy, nonatomic) NSString *applicationShortcutWidgetBundleIdentifier; // @synthesize applicationShortcutWidgetBundleIdentifier=_applicationShortcutWidgetBundleIdentifier;
 @property(readonly, nonatomic) _Bool representsWebApplication; // @synthesize representsWebApplication=_representsWebApplication;
+@property(readonly, nonatomic, getter=isSkyLinked) _Bool skyLinked; // @synthesize skyLinked=_isSkyLinked;
+@property(readonly, nonatomic, getter=isAzulBLinked) _Bool azulBLinked; // @synthesize azulBLinked=_isAzulBLinked;
+@property(readonly, nonatomic, getter=isAzulHWLinked) _Bool azulHWLinked; // @synthesize azulHWLinked=_isAzulHWLinked;
 @property(readonly, nonatomic, getter=isAzulLinked) _Bool azulLinked; // @synthesize azulLinked=_isAzulLinked;
 @property(readonly, nonatomic, getter=isYukonELinked) _Bool yukonELinked; // @synthesize yukonELinked=_isYukonELinked;
 @property(readonly, nonatomic, getter=isYukonLinked) _Bool yukonLinked; // @synthesize yukonLinked=_isYukonLinked;

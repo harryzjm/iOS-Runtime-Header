@@ -42,6 +42,7 @@
 - (void)_handleConfigurationUpdated;
 - (void)_handleSessionChanged;
 - (void)_handleInCarNotification;
+- (void)_handleEndpointActivated:(id)arg1;
 - (void)_handleAuthenticationSucceeded:(id)arg1;
 - (void)removeSessionObserver:(id)arg1;
 - (void)addSessionObserver:(id)arg1;

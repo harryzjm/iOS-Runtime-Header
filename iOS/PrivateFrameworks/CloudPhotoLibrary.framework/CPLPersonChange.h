@@ -24,6 +24,7 @@
 + (_Bool)cplShouldIgnorePropertyForCoding:(id)arg1;
 + (_Bool)serverSupportsMergeTargetRef;
 + (_Bool)serverSupportsGraphPeopleHome;
++ (Class)relatedRecordClass;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSData *contactDescriptor; // @synthesize contactDescriptor=_contactDescriptor;
 @property(copy, nonatomic) NSString *mergeTargetPersonIdentifier; // @synthesize mergeTargetPersonIdentifier=_mergeTargetPersonIdentifier;

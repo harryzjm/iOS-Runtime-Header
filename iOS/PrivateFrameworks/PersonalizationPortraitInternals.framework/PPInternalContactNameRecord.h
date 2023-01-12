@@ -6,15 +6,17 @@
 
 #import <PersonalizationPortrait/PPContactNameRecord.h>
 
-@class PPPBContactNameRecord;
+@class NSString, PPPBContactNameRecord;
 
 @interface PPInternalContactNameRecord : PPContactNameRecord
 {
     PPPBContactNameRecord *_pbRecord;
+    NSString *_localizedFullName;
 }
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)localizedFullName;
 - (id)pbRecord;
 - (id)cityNames;
 - (id)streetNames;

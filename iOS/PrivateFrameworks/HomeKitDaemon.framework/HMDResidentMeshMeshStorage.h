@@ -11,22 +11,24 @@
 @interface HMDResidentMeshMeshStorage : HMFObject
 {
     _Bool _enabled;
+    HMDResidentMesh *_owner;
     HMDDevice *_device;
     NSDictionary *_metrics;
-    HMDResidentMesh *_owner;
     NSMutableSet *_accessoryUUIDs;
     unsigned long long _generationCount;
     NSMutableDictionary *_accessoryListWithLinkQuality;
+    unsigned long long _nestedStatusRequests;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long nestedStatusRequests; // @synthesize nestedStatusRequests=_nestedStatusRequests;
 @property(retain, nonatomic) NSMutableDictionary *accessoryListWithLinkQuality; // @synthesize accessoryListWithLinkQuality=_accessoryListWithLinkQuality;
 @property(nonatomic) _Bool enabled; // @synthesize enabled=_enabled;
 @property(nonatomic) unsigned long long generationCount; // @synthesize generationCount=_generationCount;
 @property(retain, nonatomic) NSMutableSet *accessoryUUIDs; // @synthesize accessoryUUIDs=_accessoryUUIDs;
-@property(nonatomic) __weak HMDResidentMesh *owner; // @synthesize owner=_owner;
 @property(retain, nonatomic) NSDictionary *metrics; // @synthesize metrics=_metrics;
 @property(readonly, nonatomic) HMDDevice *device; // @synthesize device=_device;
+@property(nonatomic) __weak HMDResidentMesh *owner; // @synthesize owner=_owner;
 - (void)_requestStatus;
 - (id)initWithDevice:(id)arg1 owner:(id)arg2;
 

@@ -17,6 +17,7 @@
     NSCalendar *_gregorianCalendar;
     NSCalendar *_currentCalendar;
     NSDate *_retryDate;
+    _Bool _shouldSortAscending;
 }
 
 - (void).cxx_destruct;
@@ -36,6 +37,7 @@
 - (void)_timeZoneDidChange:(id)arg1;
 - (void)_commonInit;
 - (id)init;
+- (id)initWithHealthStore:(id)arg1 shouldSortAscending:(_Bool)arg2;
 - (id)initWithHealthStore:(id)arg1;
 
 @end

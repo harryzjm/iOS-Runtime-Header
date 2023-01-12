@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSObject<OS_dispatch_group> *throwAnimationGroup; // @synthesize throwAnimationGroup=_throwAnimationGroup;
 @property(retain, nonatomic) CAEmitterLayer *dustEmitter; // @synthesize dustEmitter=_dustEmitter;
 @property(nonatomic) __weak id <CKSendAnimationManager> animationDelegate; // @synthesize animationDelegate=_animationDelegate;
+- (void)_configureForVFD:(id)arg1;
 - (void)_beginGentleAnimationWithContext:(id)arg1;
 - (void)_beginFocusAnimationWithContext:(id)arg1;
 - (void)_beginLoudAnimationsWithContext:(id)arg1;

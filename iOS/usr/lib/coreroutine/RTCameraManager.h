@@ -9,6 +9,7 @@
 }
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
+- (void)_shutdownWithHandler:(CDUnknownBlockType)arg1;
 
 @end
 

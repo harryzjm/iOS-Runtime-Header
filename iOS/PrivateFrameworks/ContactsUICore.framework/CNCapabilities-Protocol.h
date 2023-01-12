@@ -8,6 +8,7 @@
 
 @protocol CNCapabilities <NSObject>
 + (_Bool)shouldUseLegacyMessages;
+@property(readonly, nonatomic) _Bool isExpanseSupported;
 @property(readonly, nonatomic) _Bool isPaySupported;
 @property(readonly, nonatomic) _Bool isFaceTimeAudioSupported;
 @property(readonly, nonatomic) _Bool isFaceTimeVideoSupported;

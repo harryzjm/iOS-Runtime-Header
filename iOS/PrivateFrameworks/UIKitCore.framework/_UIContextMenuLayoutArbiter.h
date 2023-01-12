@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     UIView *_containerView;
     unsigned long long _currentLayout;
     _UIContextMenuLayoutArbiterInput *_currentInput;
-    CDStruct_a36705e8 _menuAnchor;
+    CDStruct_17a0fc55 _menuAnchor;
 }
 
 - (void).cxx_destruct;
@@ -27,12 +27,12 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)_computedMenuBoundsForContentBounds:(struct CGRect)arg1 predictedPreviewFrame:(struct CGRect)arg2;
 - (struct CGRect)_computedPreviewBoundsForContentBounds:(struct CGRect)arg1;
 - (void)_positionPlatterFrame:(inout struct CGRect *)arg1 andActionViewFrame:(inout struct CGRect *)arg2 inBounds:(struct CGRect)arg3 aboutSourcePoint:(struct CGPoint)arg4;
-- (unsigned long long)_automaticAlignmentForAttachment:(unsigned long long)arg1 sourcePoint:(struct CGPoint)arg2;
+- (unsigned long long)_automaticAlignmentAndOffset:(out double *)arg1 forAttachment:(unsigned long long)arg2 sourcePoint:(struct CGPoint)arg3;
 - (unsigned long long)_defaultAttachmentEdge;
-- (double)contentMargin;
+- (double)contentSpacing;
 @property(readonly, nonatomic) struct CGRect contentBounds;
 - (id)computedLayoutWithInput:(id)arg1;
-@property(readonly, nonatomic) CDStruct_a36705e8 menuAnchor; // @synthesize menuAnchor=_menuAnchor;
+@property(readonly, nonatomic) CDStruct_17a0fc55 menuAnchor; // @synthesize menuAnchor=_menuAnchor;
 - (id)initWithContainerView:(id)arg1 layout:(unsigned long long)arg2;
 
 @end

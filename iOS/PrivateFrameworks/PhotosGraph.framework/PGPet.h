@@ -12,6 +12,8 @@
 
 @interface PGPet : NSObject <PGGraphIngestPet>
 {
+    NSString *_localIdentifier;
+    unsigned long long _species;
     NSMutableSet *_momentNodes;
     NSMutableSet *_ownerNodes;
 }
@@ -19,7 +21,9 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableSet *ownerNodes; // @synthesize ownerNodes=_ownerNodes;
 @property(readonly, nonatomic) NSMutableSet *momentNodes; // @synthesize momentNodes=_momentNodes;
-- (id)initWithMomentNodes:(id)arg1 ownerNodes:(id)arg2;
+@property(readonly, nonatomic) unsigned long long species; // @synthesize species=_species;
+@property(readonly, nonatomic) NSString *localIdentifier; // @synthesize localIdentifier=_localIdentifier;
+- (id)initWithLocalIdentifier:(id)arg1 petSpecies:(unsigned long long)arg2 momentNodes:(id)arg3 ownerNodes:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

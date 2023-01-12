@@ -8,7 +8,6 @@
 
 @class NSDictionary, NSSet;
 
-__attribute__((visibility("hidden")))
 @interface CKRecordFetchAggregatorOperationInfo : CKDatabaseOperationInfo
 {
     _Bool _fetchAssetContents;

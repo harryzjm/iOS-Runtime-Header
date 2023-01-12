@@ -65,6 +65,7 @@
 - (void)upgradeFlowManagerDidCancel:(id)arg1;
 - (long long)_delegateActionForAction:(long long)arg1;
 - (_Bool)_legacyDelegateMethodHandlesAction:(long long)arg1;
+- (_Bool)_launchFlowManagerWithLink:(id)arg1;
 - (_Bool)_performLink:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 @property(retain, nonatomic) ICQOffer *offer;
@@ -78,9 +79,11 @@
 - (id)messageAttributes;
 - (id)textParagraphStyleAttributes;
 - (id)textParagraphStyle;
+- (void)_updateBannerViewConstraints;
 - (void)updateConstraints;
 - (long long)userInterfaceLayoutDirection;
 - (long long)semanticContentAttribute;
+- (id)_getOffer;
 - (id)_initWithFrame:(struct CGRect)arg1;
 - (id)initWithOffer:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

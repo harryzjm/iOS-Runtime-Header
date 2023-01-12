@@ -15,16 +15,15 @@
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id <CHSChronoToolServiceServer> server; // @synthesize server=_server;
+- (void)expireLocationGracePeriods;
+- (void)reloadTimelinesOfKind:(id)arg1 containedIn:(id)arg2 reason:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)timelineForWidgetKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)widgetsWithTimelines:(CDUnknownBlockType)arg1;
+- (void)extensionInfo:(CDUnknownBlockType)arg1;
+- (void)extensionInfoForBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchStateForItemWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)listStateCaptureIdentifiersWithCompletion:(CDUnknownBlockType)arg1;
-- (void)wakesRemainingForExtensionWithBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)resetWakeBudgetWithCompletion:(CDUnknownBlockType)arg1;
-- (void)resetWakeBudgetForExtensionWithBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)disableWakeBudgetWithCompletion:(CDUnknownBlockType)arg1;
-- (void)disableWakeBudgetForExtensionWithBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)resetCaches:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)cacheDescriptorsForBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithServer:(id)arg1;

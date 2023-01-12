@@ -8,7 +8,7 @@
 
 #import <AVFCore/AVAudioSessionParticipant-Protocol.h>
 
-@class AVAudioSession, AVPlayerInternal, NSArray, NSError, NSNumber, NSString;
+@class AVAudioSession, AVPlayerInternal, AVPlayerPlaybackCoordinator, NSArray, NSError, NSNumber, NSString;
 @protocol AVLoggingIdentifier;
 
 @interface AVPlayer : NSObject <AVAudioSessionParticipant>
@@ -46,6 +46,8 @@
 + (id)makePlayerLoggingIdentifier;
 - (void)_setSuppressesAudioRendering:(_Bool)arg1;
 - (_Bool)_suppressesAudioRendering;
+- (long long)audiovisualBackgroundPlaybackPolicy;
+- (void)setAudiovisualBackgroundPlaybackPolicy:(long long)arg1;
 - (_Bool)_pausesAudioVisualPlaybackInBackground;
 - (void)_setPausesAudioVisualPlaybackInBackground:(_Bool)arg1;
 - (_Bool)_isVideoPlaybackAllowedWhileInBackground;
@@ -61,6 +63,8 @@
 - (void)_setFigPlaybackItemToMakeCurrent:(struct OpaqueFigPlaybackItem *)arg1;
 - (void)_removeFPListeners;
 - (void)_addFPListeners;
+- (void)_removeFPInterstitialCoordinatorListeners;
+- (void)_addFPInterstitialCoordinatorListeners;
 - (id)_fpNotificationNames;
 - (void)_setNeroVideoGravityOnFigPlayer;
 - (void)setExternalPlaybackVideoGravity:(id)arg1;
@@ -71,7 +75,7 @@
 - (void)_pixelBufferAttributesDidChangeForLayer:(id)arg1;
 - (_Bool)_hasForegroundLayers;
 - (void)_addLayer:(id)arg1;
-- (void)_removeLayer:(id)arg1 videoLayer:(id)arg2 closedCaptionLayer:(id)arg3 subtitleLayer:(id)arg4;
+- (void)_removeLayer:(id)arg1 videoLayer:(id)arg2 closedCaptionLayer:(id)arg3 subtitleLayer:(id)arg4 interstitialLayer:(id)arg5;
 - (void)_removeLayer:(id)arg1;
 - (void)_detachClosedCaptionLayersFromFigPlayer:(struct OpaqueFigPlayer *)arg1;
 - (void)_attachClosedCaptionLayersToFigPlayer;
@@ -81,6 +85,8 @@
 - (void)_attachFigPlayerToSubtitleLayers;
 - (void)_evaluateDisplaySizeOfAllAttachedLayers;
 - (struct CGSize)_maximumAVPlayerLayerDisplaySize;
+- (void)_removeCaptionLayer:(id)arg1 subtitleLayer:(id)arg2;
+- (void)_addCaptionLayer:(id)arg1 subtitleLayer:(id)arg2;
 - (void)_updateClosedCaptionLayerBounds:(id)arg1 videoRelativeToViewport:(const struct CGRect *)arg2 captionsAvoidanceMargins:(const struct NSEdgeInsets *)arg3;
 - (id)_avPlayerLayers;
 - (id)_videoLayers;
@@ -136,6 +142,8 @@
 - (id)vibrationPattern;
 - (void)_setUserVolume:(float)arg1;
 - (float)_userVolume;
+- (void)setSourceClock:(struct OpaqueCMClock *)arg1;
+- (struct OpaqueCMClock *)sourceClock;
 - (void)setMasterClock:(struct OpaqueCMClock *)arg1;
 - (struct OpaqueCMClock *)masterClock;
 - (void)prerollOperationDidComplete:(_Bool)arg1 notificationPayload:(struct __CFDictionary *)arg2;
@@ -162,14 +170,19 @@
 - (long long)_timeControlStatusAndWaitingReason:(id *)arg1;
 - (long long)_inferredTimeControlStatusAndWaitingReason:(id *)arg1 forRate:(float)arg2;
 - (long long)_timeControlStatusAndWaitingReason:(id *)arg1 forPlaybackState:(int)arg2;
+- (long long)_updateWaitingReasonAccordingToInterstitialEventCoordinator:(id *)arg1 forTimeControlStatus:(long long)arg2;
+- (void)_setRateDidChangeNotificationIncludesExtendedDiagnosticPayload:(_Bool)arg1;
+- (_Bool)_rateDidChangeNotificationIncludesExtendedDiagnosticPayload;
+- (void)pauseWithoutAffectingCoordinatedPlayback;
 - (void)playImmediatelyAtRate:(float)arg1;
 - (void)setRate:(float)arg1;
 - (void)setRate:(float)arg1 withVolumeRampDuration:(CDStruct_1b6d18a9)arg2;
-- (void)setRate:(float)arg1 withVolumeRampDuration:(CDStruct_1b6d18a9)arg2 playImmediately:(_Bool)arg3 rateChangeReason:(int)arg4;
+- (void)setRate:(float)arg1 withVolumeRampDuration:(CDStruct_1b6d18a9)arg2 playImmediately:(_Bool)arg3 rateChangeReason:(int)arg4 affectsCoordinatedPlayback:(_Bool)arg5;
+- (void)_updatePlayerRate:(float)arg1 rateChangeReason:(int)arg2 rateChangeIdentifier:(id)arg3 figPlayerSetRateHandler:(CDUnknownBlockType)arg4;
 - (float)rate;
 - (float)_rate;
-- (id)_rateDidChangeNotificationPayloadForFigRateChangeReason:(int)arg1 rateChangeIdentifier:(id)arg2;
-- (id)_rateDidChangeNotificationPayloadForAVFRateChangeReason:(id)arg1 rateChangeIdentifier:(id)arg2;
+- (id)_rateDidChangeNotificationPayloadForFigRateChangeReason:(int)arg1 rateChangeIdentifier:(id)arg2 rateChangeOriginator:(id)arg3;
+- (id)_rateDidChangeNotificationPayloadForAVFRateChangeReason:(id)arg1 reasonIsExtendedDiagnostic:(_Bool)arg2 rateChangeIdentifier:(id)arg3 rateChangeOriginator:(id)arg4;
 - (void)_removeAllItems;
 - (id)_items;
 - (id)_items_invokeOnIvarAccessQueue;
@@ -186,6 +199,7 @@
 - (void)setExpectedAssetTypes:(id)arg1;
 - (id)expectedAssetTypes;
 - (void)_createAndConfigureFigPlayerWithType:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)linkInterstitialFigPlayersOnQueue;
 - (void)_setPendingFigPlayerProperty:(id)arg1 forKey:(id)arg2;
 - (id)_pendingFigPlayerPropertyForKey:(id)arg1;
 - (id)_pendingFigPlayerProperties;
@@ -205,6 +219,8 @@
 - (id)_synchronizeWithNewCurrentItem;
 - (void)_setCurrentItem:(id)arg1;
 - (void)_updateCurrentItemPreferredPixelBufferAttributesAndVideoLayerSuppression;
+- (id)closedCaptionsDisplayPublisher;
+- (id)currentItemPublisher;
 - (id)currentItem;
 - (void)_updateDecoderPixelBufferAttributes:(id)arg1 onFigPlayer:(struct OpaqueFigPlayer *)arg2;
 - (void)_changeStatusToFailedWithError:(id)arg1;
@@ -237,16 +253,20 @@
 @property(readonly, nonatomic, getter=isAudioPlaybackEnabledAtAllRates) _Bool audioPlaybackEnabledAtAllRates;
 - (void)removeAudioPlaybackRateLimits;
 - (void)_ensureVideoLayersAreAttached;
-- (void)_restoreVideoLayersForForeground;
 - (void)_willEnterForeground:(id)arg1;
+- (_Bool)_rateUpdateDuringTransitionDecided;
 - (void)_detachVideoLayersForSuspension;
 - (void)_didFinishSuspension:(id)arg1;
 - (void)_didEnterBackground:(id)arg1;
+- (id)_acquireBackgroundAssertion;
 - (void)_layerForegroundStateChanged:(id)arg1;
 - (_Bool)_shouldDetachVideoLayersFromFigPlayer;
 - (long long)_itemOkayToPlayWhileTransitioningToBackground:(id)arg1;
+- (void)_forceHostApplicationInForeground:(_Bool)arg1;
+- (_Bool)_canContinuePlaybackInBackgrounBasedOnAudiovisualBackgroundPlaybackPolicy:(long long)arg1;
 - (void)_setHostApplicationInForeground:(_Bool)arg1;
 - (_Bool)_hostApplicationInForeground;
+- (_Bool)_hostApplicationHasForegroundExemption;
 - (_Bool)_carplayIsActive;
 - (_Bool)_isIAPDExtendedModeActive;
 - (_Bool)_hasAssociatedOnscreenAVPlayerLayer;
@@ -293,6 +313,7 @@
 - (_Bool)_ensuresActiveAudioSessionWhenStartingPlayback;
 - (void)_setEnsuresActiveAudioSessionWhenStartingPlayback:(_Bool)arg1;
 @property(retain, nonatomic, getter=_STSLabel, setter=_setSTSLabel:) NSString *STSLabel;
+@property(copy, nonatomic) NSString *backgroundPIPAuthorizationToken;
 @property(readonly, nonatomic) NSNumber *mxSessionID;
 @property(nonatomic, getter=_silencesOtherPlaybackDuringPIP, setter=_setSilencesOtherPlaybackDuringPIP:) _Bool silencesOtherPlaybackDuringPIP;
 @property(readonly, nonatomic) _Bool isSilencedDueToConflictWithOtherPlayback;
@@ -301,6 +322,20 @@
 - (void)removeVideoTarget:(struct OpaqueFigVideoTarget *)arg1;
 - (void)addVideoTarget:(struct OpaqueFigVideoTarget *)arg1;
 - (void)_updateVideoTargetOnFigPlayer;
+- (void)_noteCurrentRemoteInterstitialEvent:(id)arg1;
+- (void)_noteRemoteInterstitialEvents:(id)arg1 forItem:(id)arg2;
+- (void)_setInterstitialPlayer:(id)arg1;
+- (struct OpaqueFigPlayerInterstitialCoordinator *)retainInterstitialEventCoordinator;
+- (struct OpaqueFigPlayerInterstitialCoordinator *)_retainInterstitialCoordinatorIfCreated;
+- (id)interstitialPlayer;
+- (id)_interstitialPlayerIfCreated;
+- (void)_setInterstitialPlayerGuts:(id)arg1;
+- (void)syncAudioSessionToInterstitialPlayer:(id)arg1;
+- (void)_setIsInterstitialPlayer:(_Bool)arg1;
+- (_Bool)_isInterstitialPlayer;
+@property(readonly) AVPlayerPlaybackCoordinator *playbackCoordinator;
+- (id)_playbackCoordinatorWithoutTriggeringFullSetup;
+- (_Bool)_clientRequestedPlaybackCoordinator;
 
 @end
 

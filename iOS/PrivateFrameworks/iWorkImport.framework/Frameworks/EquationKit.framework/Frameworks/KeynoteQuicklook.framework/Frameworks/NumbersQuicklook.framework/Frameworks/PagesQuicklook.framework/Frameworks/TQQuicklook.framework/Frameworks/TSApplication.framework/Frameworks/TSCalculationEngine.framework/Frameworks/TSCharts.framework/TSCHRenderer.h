@@ -13,14 +13,14 @@
 
 @interface TSCHRenderer : NSObject <TSCHSupportsTextEditing>
 {
-    TSCHChartLayoutItem *mChartLayoutItem;
-    id <TSCHSupportsRendering> mChartRep;
+    TSCHChartLayoutItem *_layoutItem;
+    id <TSCHSupportsRendering> _chartRep;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) __weak id <TSCHSupportsRendering> chartRep; // @synthesize chartRep=mChartRep;
+@property(readonly, nonatomic) __weak id <TSCHSupportsRendering> chartRep; // @synthesize chartRep=_chartRep;
 - (struct CGRect)tLayerRectForContext:(struct CGContext *)arg1;
-- (struct CGRect)chartLayoutSpaceRenderingRect;
+@property(readonly, nonatomic) struct CGRect chartLayoutSpaceRenderingRect;
 - (void)addSelection:(id)arg1 toCGPath:(struct CGPath *)arg2 useWrapWidth:(_Bool)arg3;
 - (void)renderIntoContext:(struct CGContext *)arg1 selection:(id)arg2;
 - (_Bool)canRenderSelectionPath:(id)arg1;
@@ -28,17 +28,15 @@
 - (void)p_renderIntoContext:(struct CGContext *)arg1 visible:(struct CGRect)arg2;
 - (void)strokeRectInContext:(struct CGContext *)arg1 rect:(struct CGRect)arg2 color:(struct CGColor *)arg3;
 - (void)renderIntoContext:(struct CGContext *)arg1 visible:(struct CGRect)arg2;
-- (int)chunkPlane;
+@property(readonly, nonatomic) int chunkPlane;
 - (int)textDrawingFlagForSelectionPath:(id)arg1;
 - (double)frameHeightChangeForPath:(id)arg1;
 - (void)useEditedString:(id)arg1;
 - (id)textEditorForSelectionPath:(id)arg1 chartEditor:(id)arg2;
 - (struct CGRect)frameForEditingTextForSelectionPath:(id)arg1;
 - (_Bool)canEditTextForSelectionPath:(id)arg1;
-@property(readonly, nonatomic) struct CGColor *debugColor;
-@property(readonly, nonatomic) _Bool debugLayout;
 @property(readonly, nonatomic) _Bool supportsSeparateLabelsRenderPass;
-- (_Bool)isCompositeRenderer;
+@property(readonly, nonatomic) _Bool isCompositeRenderer;
 @property(readonly, nonatomic) double viewScale;
 @property(readonly, nonatomic) TSCHChartLayoutItem *layoutItem;
 @property(readonly, nonatomic) TSCHChartModel *model;

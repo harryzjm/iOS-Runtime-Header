@@ -8,7 +8,7 @@
 {
 }
 
-+ (id)newWithURL:(id)arg1 imageDownloader:(id)arg2 scenePath:(id)arg3 size:(const struct CKComponentSize *)arg4 options:(const struct CKNetworkImageComponentOptions *)arg5 attributes:(const unordered_map_b2cee720 *)arg6;
++ (id)newWithURL:(id)arg1 imageDownloader:(id)arg2 scenePath:(id)arg3 size:(const struct CKComponentSize *)arg4 options:(const struct CKNetworkImageComponentOptions *)arg5 attributes:(const void *)arg6;
 
 @end
 

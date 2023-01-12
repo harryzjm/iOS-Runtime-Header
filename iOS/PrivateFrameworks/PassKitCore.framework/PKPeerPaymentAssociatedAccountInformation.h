@@ -18,14 +18,10 @@
     NSSet *_associatedAccountRemovalRecords;
     double _proactiveAssociatedAccountFetchPeriod;
     NSDate *_lastUpdated;
-    NSDate *_nextPossibleFetchDate;
-    long long _backoffRetryLevel;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(nonatomic) long long backoffRetryLevel; // @synthesize backoffRetryLevel=_backoffRetryLevel;
-@property(retain, nonatomic) NSDate *nextPossibleFetchDate; // @synthesize nextPossibleFetchDate=_nextPossibleFetchDate;
 @property(copy, nonatomic) NSDate *lastUpdated; // @synthesize lastUpdated=_lastUpdated;
 @property(nonatomic, getter=isAssociatedAccountStateDirty) _Bool associatedAccountStateDirty; // @synthesize associatedAccountStateDirty=_associatedAccountStateDirty;
 @property(nonatomic) double proactiveAssociatedAccountFetchPeriod; // @synthesize proactiveAssociatedAccountFetchPeriod=_proactiveAssociatedAccountFetchPeriod;

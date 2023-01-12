@@ -10,10 +10,12 @@
 {
 }
 
-+ (void)secureArchive:(id)arg1 forKey:(id)arg2 userDefaults:(id)arg3;
-+ (void)secureArchive:(id)arg1 forKey:(id)arg2;
-+ (id)secureUnarchiveForKey:(id)arg1 classSet:(id)arg2 userDefaults:(id)arg3;
-+ (id)secureUnarchiveForKey:(id)arg1 classSet:(id)arg2;
++ (void)archivedDataWithRootObject:(id)arg1 forKey:(id)arg2 userDefaults:(id)arg3;
++ (void)archivedDataWithRootObject:(id)arg1 forKey:(id)arg2;
++ (id)unarchivedObjectOfClasses:(id)arg1 forKey:(id)arg2 userDefaults:(id)arg3;
++ (id)unarchivedObjectOfClasses:(id)arg1 forKey:(id)arg2;
++ (id)unarchivedObjectOfClass:(Class)arg1 forKey:(id)arg2 userDefaults:(id)arg3;
++ (id)unarchivedObjectOfClass:(Class)arg1 forKey:(id)arg2;
 
 @end
 

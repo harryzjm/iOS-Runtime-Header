@@ -32,7 +32,7 @@
 }
 
 + (_Bool)isValid:(id)arg1;
-+ (id)completeOperatingHoursForPlaceData:(id)arg1 withTimeZone:(id)arg2;
++ (id)completeOperatingHoursForPlaceData:(id)arg1 date:(id)arg2 withTimeZone:(id)arg3;
 + (_Bool)currentOperatingHoursAvailableForPlaceData:(id)arg1 withTimeZone:(id)arg2;
 + (id)_allHoursForPlaceData:(id)arg1;
 + (_Bool)operatingHoursAvailableForPlaceData:(id)arg1;

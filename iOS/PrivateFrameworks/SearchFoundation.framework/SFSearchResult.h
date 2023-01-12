@@ -32,6 +32,8 @@
     _Bool _usesCompactDisplay;
     _Bool _publiclyIndexable;
     _Bool _doNotFold;
+    _Bool _isInstantAnswer;
+    _Bool _shouldAutoNavigate;
     int _auxiliaryBottomTextColor;
     int _topHit;
     int _placement;
@@ -56,6 +58,7 @@
     NSString *_storeIdentifier;
     NSString *_contactIdentifier;
     NSString *_calendarIdentifier;
+    NSString *_entityIdentifier;
     NSData *_mapsData;
     NSString *_mapsResultType;
     NSURL *_mapsMoreURL;
@@ -74,6 +77,7 @@
     NSString *_sectionHeaderMore;
     NSURL *_sectionHeaderMoreURL;
     double _rankingScore;
+    NSString *_domainName;
     unsigned long long _minimumRankOfTopHitToSuppressResult;
     NSString *_mediaType;
     double _serverScore;
@@ -112,6 +116,8 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldAutoNavigate; // @synthesize shouldAutoNavigate=_shouldAutoNavigate;
+@property(nonatomic) _Bool isInstantAnswer; // @synthesize isInstantAnswer=_isInstantAnswer;
 @property(retain, nonatomic) NSData *entityData; // @synthesize entityData=_entityData;
 @property(nonatomic) unsigned long long blockId; // @synthesize blockId=_blockId;
 @property(nonatomic) _Bool doNotFold; // @synthesize doNotFold=_doNotFold;
@@ -158,6 +164,7 @@
 @property(nonatomic) double serverScore; // @synthesize serverScore=_serverScore;
 @property(copy, nonatomic) NSString *mediaType; // @synthesize mediaType=_mediaType;
 @property(nonatomic) unsigned long long minimumRankOfTopHitToSuppressResult; // @synthesize minimumRankOfTopHitToSuppressResult=_minimumRankOfTopHitToSuppressResult;
+@property(copy, nonatomic) NSString *domainName; // @synthesize domainName=_domainName;
 @property(nonatomic) int type; // @synthesize type=_type;
 @property(nonatomic) int placement; // @synthesize placement=_placement;
 @property(nonatomic) double rankingScore; // @synthesize rankingScore=_rankingScore;
@@ -181,6 +188,7 @@
 @property(retain, nonatomic) NSURL *mapsMoreURL; // @synthesize mapsMoreURL=_mapsMoreURL;
 @property(copy, nonatomic) NSString *mapsResultType; // @synthesize mapsResultType=_mapsResultType;
 @property(retain, nonatomic) NSData *mapsData; // @synthesize mapsData=_mapsData;
+@property(copy, nonatomic) NSString *entityIdentifier; // @synthesize entityIdentifier=_entityIdentifier;
 @property(copy, nonatomic) NSString *calendarIdentifier; // @synthesize calendarIdentifier=_calendarIdentifier;
 @property(copy, nonatomic) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
 @property(copy, nonatomic) NSString *storeIdentifier; // @synthesize storeIdentifier=_storeIdentifier;
@@ -205,8 +213,10 @@
 @property(nonatomic) _Bool preventThumbnailImageScaling; // @synthesize preventThumbnailImageScaling=_preventThumbnailImageScaling;
 @property(retain, nonatomic) SFImage *thumbnail; // @synthesize thumbnail=_thumbnail;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+- (void)updatePunchout;
 - (_Bool)compareWithResult:(id)arg1 logger:(CDUnknownBlockType)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithSearchResult:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(readonly, nonatomic) NSData *jsonData;

@@ -8,6 +8,7 @@
 {
 }
 
+- (id)paddleSeparatorColor;
 - (id)blue_balloonOverlayColor;
 - (id)gray_balloonOverlayColor;
 - (id)detailsAttachmentsDecorationViewBackgroundColor;
@@ -34,6 +35,7 @@
 - (id)conversationListSummaryColor;
 - (id)conversationListSenderColor;
 - (id)entryFieldButtonColor;
+- (id)quickSaveButtonGlyphColor;
 
 @end
 

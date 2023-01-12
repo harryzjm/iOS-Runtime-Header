@@ -12,7 +12,7 @@
 
 @interface TSCH3DGLRenderBuffer : NSObject <TSCH3DGLBindable>
 {
-    unsigned int mBuffer;
+    unsigned int _buffer;
 }
 
 - (void)deactivateInContext:(id)arg1;

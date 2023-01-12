@@ -13,19 +13,22 @@
 {
     NSMutableDictionary *_itemTypeCache;
     NSObject<OS_dispatch_queue> *_synchronizationQueue;
+    NSMutableDictionary *_dataItemTypeCache;
 }
 
 + (id)_iWorkUTIs;
 + (id)sharedCache;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableDictionary *dataItemTypeCache; // @synthesize dataItemTypeCache=_dataItemTypeCache;
 @property(retain) NSMutableDictionary *itemTypeCache; // @synthesize itemTypeCache=_itemTypeCache;
 - (_Bool)requestedBadgeType:(unsigned long long)arg1 isValidForContentType:(id)arg2;
 - (_Bool)_contentType:(id)arg1 isEqualToContentTypeInArray:(id)arg2;
 - (_Bool)_contentTypeShouldBeHandledByAppleExtension:(id)arg1;
 - (_Bool)_contentTypeIsIWorkType:(id)arg1;
+- (unsigned long long)itemTypeForContentType:(id)arg1 isDataItem:(_Bool)arg2;
 - (unsigned long long)itemTypeForContentType:(id)arg1;
 - (unsigned long long)itemTypeForItem:(id)arg1;
-- (unsigned long long)_itemTypeByUTIResolutionForContentType:(id)arg1;
+- (unsigned long long)_itemTypeByUTIResolutionForContentType:(id)arg1 isDataItem:(_Bool)arg2;
 - (id)init;
 
 @end

@@ -6,6 +6,8 @@
 
 #import <UIKitCore/_UICellConfigurationStateReadonly-Protocol.h>
 
+@class NSString;
+
 @interface UICellConfigurationState <_UICellConfigurationStateReadonly>
 {
     struct {
@@ -19,6 +21,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void)_configureWithViewConfigurationState:(unsigned long long)arg1;
 @property(readonly, nonatomic) unsigned long long _viewConfigurationState;
 @property(nonatomic) long long cellDropState;
 @property(nonatomic) long long cellDragState;
@@ -27,17 +30,22 @@
 @property(nonatomic, getter=isExpanded) _Bool expanded;
 @property(nonatomic, getter=isEditing) _Bool editing;
 - (void)_appendPropertiesForDescription:(id)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)_initWithState:(id)arg1;
 
 // Remaining properties
+@property(readonly, nonatomic) _Bool _showingCompactContextMenu;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(readonly, nonatomic, getter=isDisabled) _Bool disabled;
 @property(readonly, nonatomic, getter=isFocused) _Bool focused;
 @property(readonly, nonatomic, getter=isHighlighted) _Bool highlighted;
+@property(readonly, nonatomic, getter=isPinned) _Bool pinned;
 @property(readonly, nonatomic, getter=isSelected) _Bool selected;
+@property(readonly) Class superclass;
 
 @end
 

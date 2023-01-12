@@ -10,7 +10,6 @@
 
 @class CKDPRecord, CKDPRecordSaveRequestConflictLoserUpdate, CKDPRecordSaveRequestShareIdUpdate, CKDPRequestedFields, NSMutableArray, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDPRecordSaveRequest : PBRequest <NSCopying>
 {
     CKDPRecordSaveRequestConflictLoserUpdate *_conflictLoserUpdate;

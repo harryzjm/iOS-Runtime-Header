@@ -11,7 +11,7 @@
 
 @interface NUHistogram : NSObject <NSCopying, NSMutableCopying>
 {
-    struct unique_ptr<NU::Histogram<long, double>, std::__1::default_delete<NU::Histogram<long, double>>> _histogram;
+    struct unique_ptr<NU::Histogram<long, double>, std::default_delete<NU::Histogram<long, double>>> _histogram;
 }
 
 - (id).cxx_construct;

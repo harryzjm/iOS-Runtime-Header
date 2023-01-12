@@ -33,6 +33,7 @@
     HMBulletinBoardNotification *_bulletinBoardNotificationInternal;
     NSURL *_homeObjectURLInternal;
     NSNumber *_mediaSourceIdentifier;
+    NSString *_assistantIdentifier;
     _HMContext *_context;
     NSNumber *_instanceID;
     HMMutableArray *_currentCharacteristics;
@@ -69,6 +70,7 @@
 @property(retain, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property(readonly, nonatomic, getter=isPrimaryService) _Bool primaryService; // @synthesize primaryService=_primaryService;
 @property(readonly, nonatomic, getter=isUserInteractive) _Bool userInteractive; // @synthesize userInteractive=_userInteractive;
+@property(copy, nonatomic) NSString *assistantIdentifier; // @synthesize assistantIdentifier=_assistantIdentifier;
 @property _Bool nameModifiable; // @synthesize nameModifiable=_nameModifiable;
 - (_Bool)_hasCharacteristicOfType:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *localizedDescription;
@@ -86,7 +88,6 @@
 - (void)_handleUpdateServicePrimary:(id)arg1;
 - (void)updateApplicationData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_addLastKnownOperatingStateWithResponsesDidUpdateDelegateCallbackToOperations:(id)arg1;
-- (void)_addLastKnownSleepDiscoveryModeDidUpdateDelegateCallbackToOperations:(id)arg1;
 - (_Bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (id)_findCharacteristicWithUniqueIdentifier:(id)arg1;
 - (id)_findCharacteristic:(id)arg1;
@@ -101,6 +102,8 @@
 - (void)_updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 @property(readonly, copy, nonatomic) NSArray *linkedServices;
+- (void)recomputeAssistantIdentifier;
+- (void)_recomputeAssistantIdentifier;
 - (id)homeObjectURL;
 @property(readonly, nonatomic) NSURL *homeObjectURLInternal; // @synthesize homeObjectURLInternal=_homeObjectURLInternal;
 - (id)bulletinBoardNotification;
@@ -126,7 +129,6 @@
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(copy, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
 @property(nonatomic) __weak HMAccessory *accessory; // @synthesize accessory=_accessory;
-- (void)dealloc;
 - (void)_unconfigure;
 - (void)_unconfigureContext;
 - (void)__configureWithContext:(id)arg1 accessory:(id)arg2;

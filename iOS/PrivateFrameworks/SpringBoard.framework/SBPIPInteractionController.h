@@ -7,35 +7,44 @@
 #import <objc/NSObject.h>
 
 #import <SpringBoard/PTSettingsKeyPathObserver-Protocol.h>
+#import <SpringBoard/SBPIPPositionHyperregionComposerDelegate-Protocol.h>
+#import <SpringBoard/SBPIPSystemGestureRecognizerDelegate-Protocol.h>
 #import <SpringBoard/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSArray, NSString, SBPIPInteractionSettings, UIPanGestureRecognizer, UIPinchGestureRecognizer, UIRotationGestureRecognizer, UIView, UIViewFloatAnimatableProperty, _UIHyperInteractor, _UIHyperregionUnion;
-@protocol BSInvalidatable, SBPIPInteractionControllerDelegate;
+@class NSDictionary, NSMutableArray, NSString, SBPIPContentViewLayoutSettings, SBPIPDefaultPositionHyperregionComposer, SBPIPInteractionSettings, SBPIPPinchGestureRecognizer, SBPIPRotationGestureRecognizer, UIPanGestureRecognizer, UIView, UIViewFloatAnimatableProperty, _UIHyperInteractor, _UIHyperregionUnion;
+@protocol BSInvalidatable, SBPIPInteractionControllerDataSource, SBPIPInteractionControllerDelegate;
 
-@interface SBPIPInteractionController : NSObject <UIGestureRecognizerDelegate, PTSettingsKeyPathObserver>
+@interface SBPIPInteractionController : NSObject <UIGestureRecognizerDelegate, SBPIPSystemGestureRecognizerDelegate, PTSettingsKeyPathObserver, SBPIPPositionHyperregionComposerDelegate>
 {
     id <SBPIPInteractionControllerDelegate> _delegate;
+    id <SBPIPInteractionControllerDataSource> _dataSource;
     UIView *_interactionTargetView;
+    NSString *_shortDescription;
+    long long _shouldStash;
+    _Bool _didLastSettleInStashedState;
     _Bool _enabled;
     _Bool _didHandleGestureEndState;
     _Bool _gesturesWereCancelled;
     _Bool _isChangingSize;
-    _Bool _stashed;
     _Bool _threeTouchesPanDetected;
-    struct CGRect _nonoperationalFrame;
-    struct CGSize _containerSize;
+    _Bool _useSystemGesturesForResizing;
     struct CGSize _preferredContentSize;
     struct CGSize _toBeAppliedPreferredContentSize;
-    struct UIEdgeInsets _edgeInsets;
-    struct UIEdgeInsets _minimumInsets;
     UIViewFloatAnimatableProperty *_layoutProgressProperty;
     unsigned long long _allLayoutSessionUpdateReasons;
     unsigned long long _gesturesEndedLayoutReason;
+    SBPIPPinchGestureRecognizer *_pinchGestureRecognizer;
+    SBPIPRotationGestureRecognizer *_rotationGestureRecognizer;
     UIPanGestureRecognizer *_panGestureRecognizer;
-    UIPinchGestureRecognizer *_pinchGestureRecognizer;
-    UIRotationGestureRecognizer *_rotationGestureRecognizer;
-    NSArray *_steadyStateCorners;
-    _UIHyperregionUnion *_steadyStateStashedRegions;
+    UIPanGestureRecognizer *_externalPanDrivingGestureRecognizer;
+    UIPanGestureRecognizer *_panWhileResizingGestureRecognizer;
+    struct SBPIPPositionGeometryContext _geometryContext;
+    NSDictionary *_resolvedPositionRegionsMap;
+    NSMutableArray *_positionRegionComposers;
+    _UIHyperregionUnion *_stashedLeftRegion;
+    _UIHyperregionUnion *_stashedRightRegion;
+    _UIHyperregionUnion *_cornersRegion;
+    SBPIPDefaultPositionHyperregionComposer *_defaultComposer;
     _UIHyperInteractor *_positionInteractor;
     _UIHyperInteractor *_rotationInteractor;
     _UIHyperInteractor *_scaleInteractor;
@@ -43,31 +52,36 @@
     double _pinchGestureScaleFactor;
     double _preferredScale;
     double _lastStashedProgress;
+    struct CGPoint _panGestureLocationOffset;
     struct CGPoint _anchorPoint;
-    struct CGPoint _panInitialLocationInView;
-    struct CGPoint _positionAnchorPointOffset;
     struct CGAffineTransform _stashTabCompensationTransform;
+    struct CGAffineTransform _rotationTransform;
     unsigned long long _inFlightAnimatedLayouts;
-    SBPIPInteractionSettings *_settings;
+    CDUnknownBlockType _pendingInteractionCompletion;
+    SBPIPInteractionSettings *_interactionSettings;
     id <BSInvalidatable> _stateCaptureInvalidatable;
-    long long _orientation;
+    SBPIPContentViewLayoutSettings *_layoutSettings;
+    UIView *_positionRegionVisualizationView;
+    NSString *_debugName;
+    UIView *_targetOverlayView;
+    struct CGRect _nonoperationalFrame;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) double preferredScale; // @synthesize preferredScale=_preferredScale;
-@property(readonly, nonatomic) long long orientation; // @synthesize orientation=_orientation;
-@property(readonly, nonatomic) struct CGSize containerSize; // @synthesize containerSize=_containerSize;
-@property(nonatomic) struct UIEdgeInsets edgeInsets; // @synthesize edgeInsets=_edgeInsets;
 @property(nonatomic) struct CGSize preferredContentSize; // @synthesize preferredContentSize=_preferredContentSize;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
-- (_Bool)__shouldIgnoreInsetRect:(struct CGRect)arg1;
-- (struct CGRect)__minimumOnScreenInsetRect;
-- (struct CGRect)__validatedOnScreenInsetRectForEdgeInsets:(struct UIEdgeInsets)arg1;
-- (id)__stashedRegionsForEdgeInsets:(struct UIEdgeInsets)arg1;
-- (id)__cornersForEdgeInsets:(struct UIEdgeInsets)arg1;
-- (id)__steadyPositionHyperregionWithCorners:(id)arg1 stashedRegions:(id)arg2;
-- (id)__interactivePositionHyperregionForEdgeInsets:(struct UIEdgeInsets)arg1;
-- (id)_positionHyperregionUnion;
+@property(nonatomic) __weak UIView *targetOverlayView; // @synthesize targetOverlayView=_targetOverlayView;
+@property(readonly, nonatomic) NSString *debugName; // @synthesize debugName=_debugName;
+@property(readonly, nonatomic) struct CGRect nonoperationalFrame; // @synthesize nonoperationalFrame=_nonoperationalFrame;
+@property(readonly, nonatomic) double preferredScale; // @synthesize preferredScale=_preferredScale;
+- (void)positionRegionComposerNeedsUpdate:(id)arg1 behavior:(int)arg2;
+- (void)positionRegionComposerDidInvalidate:(id)arg1;
+- (void)addPositionRegionComposer:(id)arg1;
+- (_Bool)_regionIsStashedOne:(id)arg1;
+- (void)_updateHyperregionVisualizationIfNecessary;
+- (struct SBPIPPositionInteractionStateContext)_currentPositionInteractionStateContext;
+- (void)_updatePIPSizeGeometryContext;
+- (id)positionHyperregion;
 - (id)_rotationHyperregion;
 - (id)_scaleHyperregion;
 - (void)_updateInteractorsAndCommit:(_Bool)arg1;
@@ -81,21 +95,29 @@
 - (_Bool)_isSizeAffectedByLayoutReasons:(unsigned long long)arg1;
 - (_Bool)_hasInFlightLayoutAnimations;
 - (_Bool)_isInteractive;
+- (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (_Bool)_isSystemGestureRecognizer:(id)arg1;
 - (unsigned long long)__traitsForGesturesReasons:(unsigned long long)arg1;
-- (void)_setNeedsLayoutForTraits:(unsigned long long)arg1 withReason:(unsigned long long)arg2 behavior:(int)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_setNeedsLayoutForTraits:(unsigned long long)arg1 withReason:(unsigned long long)arg2 behavior:(int)arg3 layoutCompletion:(CDUnknownBlockType)arg4 interactionCompletion:(CDUnknownBlockType)arg5;
+- (void)_setNeedsLayoutForTraits:(unsigned long long)arg1 withReason:(unsigned long long)arg2 behavior:(int)arg3;
 - (void)__handleGesturesEndedState:(id)arg1;
 - (void)_handleGestureEndedState:(id)arg1;
 - (void)_handleGestureBeganState:(id)arg1;
 - (void)handleRotationGesture:(id)arg1;
 - (void)handlePinchGesture:(id)arg1;
 - (void)handlePanGesture:(id)arg1;
+- (void)handleExternalPanGesture:(id)arg1;
+- (_Bool)gestureRecognizerShouldFailForMovementPastHysteresis:(id)arg1;
+- (_Bool)gestureRecognizerShouldBegin:(id)arg1;
+- (struct CGPoint)_convertPointToInteractionTargetView:(struct CGPoint)arg1 fromSystemGestureRecognizer:(id)arg2;
 - (void)_sizeChangeEnded;
 - (void)_sizeChangeBeganWithBehavior:(int)arg1;
 - (void)__moveToAnchorPoint:(struct CGPoint)arg1 reason:(id)arg2;
 - (void)_resetAnchorPoint;
 - (void)_adjustContentViewAnchorPointForGestureRecognizer:(id)arg1;
 - (struct CGAffineTransform)_stashTabCompensationTransformForStashProgress:(double)arg1 reason:(unsigned long long)arg2;
+- (_Bool)_isPositionCloserToStashedLeftRegion:(struct CGPoint)arg1 closestPointOut:(struct CGPoint *)arg2;
 - (void)_noteStashProgress:(double)arg1 withReason:(unsigned long long)arg2;
 - (double)_stashProgressForPosition:(struct CGPoint)arg1;
 @property(readonly, nonatomic) double stashProgress;
@@ -110,30 +132,42 @@
 - (void)layoutInteractedTraits:(unsigned long long)arg1 withReason:(unsigned long long)arg2 source:(id)arg3;
 - (void)_updatePreferredContentSize;
 - (_Bool)_isPreferredContentSizeDirty;
-- (unsigned long long)canonicalPosition;
-- (void)setStashed:(_Bool)arg1;
-- (void)setContainerSize:(struct CGSize)arg1 withOrientation:(long long)arg2;
 - (void)_applyPreferredScale;
-- (void)_setPreferredScale:(double)arg1 animationBehavior:(int)arg2;
-- (void)_setPreferredNormalizedScale:(double)arg1 animationBehavior:(int)arg2;
+- (void)_setPreferredScale:(double)arg1 additionalReasons:(unsigned long long)arg2 animationBehavior:(int)arg3;
+- (void)setPreferredNormalizedScale:(double)arg1 additionalReasons:(unsigned long long)arg2 animationBehavior:(int)arg3;
+@property(nonatomic) double preferredNormalizedScale;
+- (double)_proratedScaleForNormalizedScale:(double)arg1;
 - (void)toggleUserPreferredScale;
-- (double)currentScale;
-- (struct CGRect)initialFrame;
+@property(nonatomic) struct UIEdgeInsets edgeInsets;
+@property(nonatomic) struct UIEdgeInsets stashedPadding;
+@property(nonatomic, getter=isStashed) _Bool stashed;
+- (void)setContainerSize:(struct CGSize)arg1 withOrientation:(long long)arg2;
+- (void)setPlatformMetrics:(id)arg1 contentSize:(struct CGSize)arg2 animationBehavior:(int)arg3;
+- (void)setContentLayoutSettings:(id)arg1 animationBehavior:(int)arg2;
+- (_Bool)isRotating;
+- (_Bool)isPinching;
+@property(readonly, nonatomic) unsigned long long canonicalPosition;
+@property(readonly, nonatomic) long long orientation;
+@property(readonly, nonatomic) double currentNormalizedScale;
+@property(readonly, nonatomic) SBPIPContentViewLayoutSettings *layoutSettings;
+@property(readonly, nonatomic) struct CGSize containerSize;
+@property(readonly, nonatomic) struct CGRect initialFrame;
+@property(readonly, nonatomic) __weak UIView *targetView;
 - (void)settings:(id)arg1 changedValueForKeyPath:(id)arg2;
 - (unsigned long long)_canonicalPositionForPoint:(struct CGPoint)arg1;
-- (struct CGPoint)_currentCornerPosition;
+- (struct CGPoint)_closestToDefaultCornersPosition;
 - (void)_setDefaults;
 - (void)_performInitialLayoutIfNeeded;
 - (void)_updateSettingsDrivenParameters;
 - (void)_setupDefaultInteractorsAndHyperRegions;
 - (void)_removeGestureRecognizers;
 - (void)_setupGestureRecognizers;
-- (struct CGRect)_setupForInitialFrame;
+- (void)_setupForInitialFrame;
 @property(readonly, copy) NSString *description;
 - (void)_setupStateCapture;
 - (_Bool)_hasValidInteractionTargetView;
 - (void)dealloc;
-- (id)initWithInteractionTargetView:(id)arg1 delegate:(id)arg2 preferredContentSize:(struct CGSize)arg3;
+- (id)initWithInteractionTargetView:(id)arg1 preferredContentSize:(struct CGSize)arg2 interactionSettings:(id)arg3 dataSource:(id)arg4 delegate:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

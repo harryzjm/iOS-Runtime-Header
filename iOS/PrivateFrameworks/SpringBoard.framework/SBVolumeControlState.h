@@ -17,7 +17,7 @@
     _Bool _currentRouteHasVolumeControl;
     _Bool _isFullyMuted;
     _Bool _isRingerMuted;
-    _Bool _isUILocked;
+    _Bool _isLocked;
     _Bool _isHostingAppOnLockScreen;
     _Bool _isShowingLockScreenMediaControls;
     NSString *_activeVolumeCategoryName;
@@ -26,7 +26,7 @@
 - (void).cxx_destruct;
 @property(nonatomic, setter=setShowingLockScreenMediaControls:) _Bool isShowingLockScreenMediaControls; // @synthesize isShowingLockScreenMediaControls=_isShowingLockScreenMediaControls;
 @property(nonatomic, setter=setHostingAppOnLockScreen:) _Bool isHostingAppOnLockScreen; // @synthesize isHostingAppOnLockScreen=_isHostingAppOnLockScreen;
-@property(nonatomic, setter=setUILocked:) _Bool isUILocked; // @synthesize isUILocked=_isUILocked;
+@property(nonatomic, setter=setLocked:) _Bool isLocked; // @synthesize isLocked=_isLocked;
 @property(nonatomic, setter=setRingerMuted:) _Bool isRingerMuted; // @synthesize isRingerMuted=_isRingerMuted;
 @property(nonatomic, setter=setFullyMuted:) _Bool isFullyMuted; // @synthesize isFullyMuted=_isFullyMuted;
 @property(nonatomic, setter=setCurrentRouteHasVolumeControl:) _Bool currentRouteHasVolumeControl; // @synthesize currentRouteHasVolumeControl=_currentRouteHasVolumeControl;

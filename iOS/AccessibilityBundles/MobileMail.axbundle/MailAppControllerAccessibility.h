@@ -14,6 +14,8 @@
 - (id)_accessibilityFirstElementForFocus;
 - (id)_accessibilityFirstElementForReadFromTop;
 - (id)_axVisibleViewController;
+- (id)_axAccessibilityGroupForKey:(id)arg1 fromSplitController:(id)arg2;
+- (id)_accessibilitySplitViewControllerScannerGroupElements;
 
 @end
 

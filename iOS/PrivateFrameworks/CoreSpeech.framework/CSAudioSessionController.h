@@ -10,7 +10,7 @@
 #import <CoreSpeech/CSCoreSpeechDaemonStateMonitorDelegate-Protocol.h>
 #import <CoreSpeech/CSXPCClientDelegate-Protocol.h>
 
-@class CSXPCClient, NSHashTable, NSString;
+@class CSXPCClient, NSHashTable, NSString, NSUUID;
 @protocol CSAudioSessionInfoProviding, OS_dispatch_queue;
 
 @interface CSAudioSessionController : NSObject <CSAudioSessionInfoProvidingDelegate, CSXPCClientDelegate, CSCoreSpeechDaemonStateMonitorDelegate>
@@ -20,10 +20,12 @@
     NSHashTable *_observers;
     id <CSAudioSessionInfoProviding> _sessionInfoProvider;
     CSXPCClient *_xpcClient;
+    NSUUID *_endpointId;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSUUID *endpointId; // @synthesize endpointId=_endpointId;
 @property _Bool shouldKeepConnection; // @synthesize shouldKeepConnection=_shouldKeepConnection;
 @property(retain, nonatomic) CSXPCClient *xpcClient; // @synthesize xpcClient=_xpcClient;
 @property(retain, nonatomic) id <CSAudioSessionInfoProviding> sessionInfoProvider; // @synthesize sessionInfoProvider=_sessionInfoProvider;
@@ -40,7 +42,6 @@
 - (void)_registerInterruptionNotification;
 - (void)_stopMonitoring;
 - (void)_startMonitoring;
-- (unsigned int)_getLocalAudioSessionID;
 - (_Bool)_createXPCClientConnectionIfNeeded;
 - (void)audioSessionInfoProvider:(id)arg1 didReceiveAudioSessionMediaServicesWereResetNotificationWithUserInfo:(id)arg2;
 - (void)audioSessionInfoProvider:(id)arg1 didReceiveAudioSessionMediaServicesWereLostNotificationWithUserInfo:(id)arg2;
@@ -52,6 +53,7 @@
 - (void)unregisterObserver:(id)arg1;
 - (void)registerObserver:(id)arg1;
 - (void)dealloc;
+- (id)initWithEndpointId:(id)arg1;
 - (id)init;
 
 // Remaining properties

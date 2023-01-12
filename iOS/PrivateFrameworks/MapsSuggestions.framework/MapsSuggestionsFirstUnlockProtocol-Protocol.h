@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapsSuggestions/MapsSuggestionsRunCondition-Protocol.h>
 #import <MapsSuggestions/MapsSuggestionsTrigger-Protocol.h>
 #import <MapsSuggestions/MapsSuggestionsTriggerObserver-Protocol.h>
 
-@protocol MapsSuggestionsFirstUnlockProtocol <MapsSuggestionsTrigger, MapsSuggestionsRunCondition, MapsSuggestionsTriggerObserver>
+@class NSString;
+
+@protocol MapsSuggestionsFirstUnlockProtocol <MapsSuggestionsTrigger, MapsSuggestionsTriggerObserver>
 - (_Bool)hasDeviceBeenUnlocked;
-- (void)didRemoveLastObserver;
-- (void)didAddFirstObserver;
+- (id)initWithName:(NSString *)arg1;
 @end
 

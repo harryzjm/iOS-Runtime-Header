@@ -12,7 +12,7 @@
 
 @interface WBSHistoryServiceURLCompletionMatchData : NSObject <WBSURLCompletionMatchData>
 {
-    unique_ptr_3ff2d08e _streamData;
+    struct unique_ptr<SafariShared::_HistoryStreamedMatchData, std::default_delete<SafariShared::_HistoryStreamedMatchData>> _streamData;
     NSArray *_autocompleteTriggersAsStringArray;
     NSArray *_entries;
 }
@@ -20,9 +20,11 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *entries; // @synthesize entries=_entries;
+- (long long)visitCountScoreForURLStringAtIndex:(unsigned long long)arg1;
+- (long long)visitCountScoreForPageTitleAtTime;
 - (float)topSitesScoreForPageTitleAtTime:(double)arg1;
 - (float)topSitesScoreForURLStringAtIndex:(unsigned long long)arg1 atTime:(double)arg2;
-- (_Bool)matchesAutocompleteTrigger:(id)arg1;
+- (_Bool)matchesAutocompleteTrigger:(id)arg1 isStrengthened:(_Bool)arg2;
 - (id)pageTitleForUserVisibleURLStringAtIndex:(unsigned long long)arg1;
 - (id)userVisibleURLStringForPageTitleAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSString *originalURLString;
@@ -32,14 +34,16 @@
 - (void)enumeratePageTitlesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)matchDataByMergingWithMatchData:(id)arg1;
 - (void)setAutocompleteTriggers:(const void *)arg1 length:(unsigned long long)arg2;
+@property(nonatomic) long long visitCountScore;
 @property(nonatomic) long long visitCount;
 @property(readonly, nonatomic) _Bool shouldPreload;
+@property(readonly, nonatomic) _Bool visitWasClientError;
 @property(nonatomic) double lastVisitedTimeInterval;
 @property(readonly, nonatomic) _Bool lastVisitWasFailure;
 @property(readonly, nonatomic) _Bool containsBookmark;
 @property(readonly, nonatomic) struct _HistoryStreamedMatchData *streamData;
-- (id)initWithStreamData:(unique_ptr_3ff2d08e *)arg1 entries:(id)arg2;
-- (id)initWithLastVisitWasFailure:(_Bool)arg1 visitWasFromThisDevice:(_Bool)arg2;
+- (id)initWithStreamData:(void *)arg1 entries:(id)arg2;
+- (id)initWithLastVisitWasFailure:(_Bool)arg1 visitWasFromThisDevice:(_Bool)arg2 visitWasClientError:(_Bool)arg3;
 - (id)init;
 
 // Remaining properties

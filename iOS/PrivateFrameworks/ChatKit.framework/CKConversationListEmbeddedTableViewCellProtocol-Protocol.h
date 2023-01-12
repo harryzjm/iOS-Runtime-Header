@@ -10,7 +10,6 @@
 @protocol CKConversationListCellDelegate;
 
 @protocol CKConversationListEmbeddedTableViewCellProtocol <NSObject>
-@property(nonatomic) double widthForDeterminingAvatarVisibility;
 @property(nonatomic) struct CGRect containerBounds;
 @property(nonatomic) _Bool shouldHidePreviewSummary;
 @property(nonatomic) struct UIEdgeInsets marginInsets;

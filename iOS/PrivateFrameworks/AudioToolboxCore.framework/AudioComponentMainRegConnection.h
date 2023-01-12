@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface AudioComponentMainRegConnection : NSObject <AudioComponentRegistrarProtocol>
 {
-    struct AudioComponentRegistrarImpl *mImpl;
+    void *mImpl;
     struct ConnectionInfo mConnInfo;
 }
 
@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)canRegisterComponent:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getComponentList:(id)arg1 linkedSDKRequiresEntitlement:(_Bool)arg2 includeExtensions:(_Bool)arg3 reply:(CDUnknownBlockType)arg4;
-- (id)initWithRegistrar:(struct AudioComponentRegistrarImpl *)arg1 connection:(id)arg2;
+- (id)initWithRegistrar:(void *)arg1 connection:(id)arg2;
 
 @end
 

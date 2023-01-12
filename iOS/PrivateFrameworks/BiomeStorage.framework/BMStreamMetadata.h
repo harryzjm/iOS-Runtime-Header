@@ -8,21 +8,30 @@
 
 #import <BiomeStorage/NSSecureCoding-Protocol.h>
 
+@class BMPruningPolicy, NSString;
+
 @interface BMStreamMetadata : NSObject <NSSecureCoding>
 {
+    NSString *_streamId;
+    NSString *_remoteStreamName;
     Class _eventDataClass;
+    BMPruningPolicy *_pruningPolicy;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) BMPruningPolicy *pruningPolicy; // @synthesize pruningPolicy=_pruningPolicy;
 @property(readonly, nonatomic) Class eventDataClass; // @synthesize eventDataClass=_eventDataClass;
+@property(copy, nonatomic) NSString *remoteStreamName; // @synthesize remoteStreamName=_remoteStreamName;
+@property(readonly, nonatomic) NSString *streamId; // @synthesize streamId=_streamId;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (_Bool)checkAndReportDecodingFailureIfNeededForid:(id)arg1 key:(id)arg2 coder:(id)arg3 errorDomain:(id)arg4 errorCode:(long long)arg5;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualStreamMetadata:(id)arg1;
 - (unsigned long long)hash;
-- (void)dealloc;
-- (id)initWithEventType:(Class)arg1;
+@property(readonly, nonatomic) _Bool isRemote;
+- (id)initWithStreamId:(id)arg1 eventType:(Class)arg2 remoteStreamName:(id)arg3 pruningPolicy:(id)arg4;
 
 @end
 

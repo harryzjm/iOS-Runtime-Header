@@ -8,18 +8,20 @@
 
 #import <KeynoteQuicklook/KNPlaybackLayerHost-Protocol.h>
 
-@class CALayer, NSString;
+@class CALayer, KNAnimationScreenEnvironment, NSString;
 
 @interface KNSinglePlaybackLayerHost : NSObject <KNPlaybackLayerHost>
 {
     CALayer *_containerLayer;
     CALayer *_rootLayer;
+    KNAnimationScreenEnvironment *_screenEnvironment;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) CALayer *rootLayer; // @synthesize rootLayer=_rootLayer;
 - (struct CGRect)convertRootLayerRectToContainer:(struct CGRect)arg1;
-- (id)initWithContainerLayer:(id)arg1;
+@property(readonly, nonatomic) KNAnimationScreenEnvironment *screenEnvironment; // @synthesize screenEnvironment=_screenEnvironment;
+- (id)initWithContainerLayer:(id)arg1 screenEnvironment:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

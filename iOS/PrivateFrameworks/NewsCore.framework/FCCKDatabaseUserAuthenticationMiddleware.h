@@ -15,9 +15,7 @@
     _Bool _privateDataSyncingEnabled;
 }
 
-@property(nonatomic, getter=isPrivateDataSyncingEnabled) _Bool privateDataSyncingEnabled; // @synthesize privateDataSyncingEnabled=_privateDataSyncingEnabled;
 - (long long)database:(id)arg1 willEnqueueOperation:(id)arg2 error:(id *)arg3;
-- (id)initWithPrivateDataSyncingEnabled:(_Bool)arg1;
 - (id)init;
 
 // Remaining properties

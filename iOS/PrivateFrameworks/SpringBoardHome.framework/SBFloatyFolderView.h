@@ -54,7 +54,7 @@
 - (void)_configureGestures;
 - (struct CGPoint)_scrollView:(id)arg1 adjustedOffsetForOffset:(struct CGPoint)arg2 translation:(struct CGPoint)arg3 startPoint:(struct CGPoint)arg4 locationInView:(struct CGPoint)arg5 horizontalVelocity:(inout double *)arg6 verticalVelocity:(inout double *)arg7;
 - (void)scrollViewDidScroll:(id)arg1;
-- (_Bool)_shouldManageScrolledHiddenClippedIconView;
+- (_Bool)_shouldUseScrollableIconViewInteraction;
 - (void)_updateScrollingState:(_Bool)arg1;
 - (void)_setScrollViewNeedsToClipCorners:(_Bool)arg1;
 - (void)_convertToSingleIconListAnimated:(_Bool)arg1;

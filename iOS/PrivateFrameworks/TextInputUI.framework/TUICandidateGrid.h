@@ -95,7 +95,7 @@
 - (id)indexPathForCandidateNumber:(unsigned long long)arg1;
 - (id)indexPathForVerticalCandidateNumber:(unsigned long long)arg1;
 - (unsigned long long)candidateNumberInVerticalLayoutForIndexPath:(id)arg1;
-- (id)visibleAttributesInVerticalLayout;
+- (id)visibleAttributes;
 - (unsigned long long)candidateNumberInHorizontalLayoutForIndexPath:(id)arg1;
 - (_Bool)canExpandCandidateGrid;
 - (unsigned long long)candidateNumberForIndexPath:(id)arg1;

@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSString, UILabel;
+@class NSString, UIImage, UIImageView, UILabel;
 
 @interface PKPaymentTransactionDetailHeaderView : UIView
 {
@@ -15,14 +15,17 @@
     UILabel *_secondaryLabel;
     UILabel *_tertiaryLabel;
     _Bool _isTemplateLayout;
+    UIImageView *_merchantIconImageView;
     _Bool _inBridge;
     NSString *_amountText;
     NSString *_subtitleText;
     NSString *_secondarySubtitleText;
     NSString *_tertiarySubtitleText;
+    UIImage *_merchantIcon;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) UIImage *merchantIcon; // @synthesize merchantIcon=_merchantIcon;
 @property(copy, nonatomic) NSString *tertiarySubtitleText; // @synthesize tertiarySubtitleText=_tertiarySubtitleText;
 @property(copy, nonatomic) NSString *secondarySubtitleText; // @synthesize secondarySubtitleText=_secondarySubtitleText;
 @property(copy, nonatomic) NSString *subtitleText; // @synthesize subtitleText=_subtitleText;

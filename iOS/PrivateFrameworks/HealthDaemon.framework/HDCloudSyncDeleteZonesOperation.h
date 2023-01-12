@@ -17,7 +17,6 @@
 
 - (void).cxx_destruct;
 - (void)synchronousTaskGroup:(id)arg1 didFinishWithSuccess:(_Bool)arg2 errors:(id)arg3;
-- (void)_deleteZones:(id)arg1 container:(id)arg2;
 - (void)main;
 @property(copy) NSArray *zonesToDelete;
 - (id)initWithConfiguration:(id)arg1 cloudState:(id)arg2;

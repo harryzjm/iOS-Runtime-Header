@@ -20,8 +20,6 @@
 - (void)remote_requestAuthorizationToNewIdentifierWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_fetchAvailableIdentifiersWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_fetchForIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (_Bool)clientMayAccessProfile:(id)arg1;
-- (id)profileManager;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

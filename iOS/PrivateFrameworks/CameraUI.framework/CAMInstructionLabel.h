@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSString, UILabel;
+@class NSAttributedString, NSString, UIColor, UILabel;
 @protocol CAMInstructionLabelDelegate;
 
 @interface CAMInstructionLabel : UIView
@@ -16,21 +16,28 @@
     id <CAMInstructionLabelDelegate> _delegate;
     long long _style;
     UILabel *__label;
+    NSAttributedString *__attributedText;
+    NSString *__symbolSuffixName;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *_symbolSuffixName; // @synthesize _symbolSuffixName=__symbolSuffixName;
+@property(copy, nonatomic) NSAttributedString *_attributedText; // @synthesize _attributedText=__attributedText;
 @property(readonly, nonatomic) UILabel *_label; // @synthesize _label=__label;
 @property(nonatomic) _Bool useModeDialFontSize; // @synthesize useModeDialFontSize=_useModeDialFontSize;
 @property(nonatomic) long long style; // @synthesize style=_style;
 @property(nonatomic) __weak id <CAMInstructionLabelDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic) NSString *text; // @synthesize text=_text;
+@property(readonly, nonatomic) NSString *_symbolPrefixName;
 @property(readonly, nonatomic) double _backgroundAlpha;
+@property(readonly, nonatomic) UIColor *_textColor;
 @property(readonly, nonatomic) struct UIEdgeInsets _textInsets;
 - (void)_updateLayer;
 - (void)_updateLabel;
+- (void)_updateAttributedText;
 - (id)_textAttributes;
 - (void)layoutSubviews;
-- (void)updateToContentSize:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

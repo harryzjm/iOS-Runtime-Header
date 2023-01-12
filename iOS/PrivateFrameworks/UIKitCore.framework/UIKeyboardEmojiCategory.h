@@ -19,6 +19,7 @@
 + (id)fallbackDisplayName:(long long)arg1;
 + (id)displayName:(long long)arg1;
 + (id)localizedStringForKey:(id)arg1;
++ (_Bool)isRTLMode;
 + (id)categoryForType:(long long)arg1;
 + (long long)emojiCategoryTypeForCategoryString:(id)arg1;
 + (id)emojiCategoryStringForCategoryType:(long long)arg1;

@@ -44,11 +44,3 @@ struct _NSRange {
     unsigned long long length;
 };
 
-#pragma mark Typedef'd Structures
-
-typedef struct {
-    double start;
-    double end;
-    double dt;
-} CDStruct_37002fae;
-

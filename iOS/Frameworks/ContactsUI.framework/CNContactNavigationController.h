@@ -12,11 +12,12 @@
 #import <ContactsUI/CNContactListViewControllerDelegateInternal-Protocol.h>
 #import <ContactsUI/CNContactViewControllerAddContactPresenter-Protocol.h>
 #import <ContactsUI/CNContactViewControllerDelegate-Protocol.h>
+#import <ContactsUI/NSUserActivityDelegate-Protocol.h>
 
 @class CNAccountsAndGroupsDataSource, CNAccountsAndGroupsViewController, CNContactListStyleApplier, CNContactListViewController, CNContactStore, CNContactStoreDataSource, CNContactStyle, CNContactViewController, CNUIUserActivityManager, NSArray, NSNumber, NSString, UIAlertController, UIBarButtonItem, UIKeyCommand;
 @protocol CNContactDataSource, CNContactNavigationControllerDelegate, CNScheduler;
 
-@interface CNContactNavigationController : UINavigationController <CNContactListViewControllerDelegate, CNContactListViewControllerDelegateInternal, CNContactViewControllerDelegate, CNContactContentViewControllerDelegate, CNAccountsAndGroupsViewControllerDelegate, CNContactViewControllerAddContactPresenter>
+@interface CNContactNavigationController : UINavigationController <CNContactListViewControllerDelegate, CNContactListViewControllerDelegateInternal, CNContactViewControllerDelegate, CNContactContentViewControllerDelegate, CNAccountsAndGroupsViewControllerDelegate, CNContactViewControllerAddContactPresenter, NSUserActivityDelegate>
 {
     CNContactListViewController *_contactListViewController;
     _Bool _allowsCardEditing;
@@ -82,6 +83,8 @@
 - (void)otherFacebookContactsAlertDidSelectActionWithNotification:(id)arg1;
 - (void)observeOtherFacebookContactsAlert;
 - (void)checkForFacebookContactsWithDelay:(double)arg1 allowAlert:(_Bool)arg2;
+- (void)toggleEditContact:(id)arg1;
+- (void)toggleGroupsPanel:(id)arg1;
 - (_Bool)shouldFlipDirectionWhenChangingSelectionWithKey:(id)arg1;
 - (void)selectPreviousContact:(id)arg1;
 - (void)selectNextContact:(id)arg1;
@@ -90,6 +93,8 @@
 - (void)cancelSearch:(id)arg1;
 - (void)beginSearch:(id)arg1;
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
+- (id)popViewControllerAnimated:(_Bool)arg1;
+- (void)pushViewController:(id)arg1 animated:(_Bool)arg2;
 - (void)searchForString:(id)arg1;
 - (void)popToContactListAndSaveChanges:(_Bool)arg1;
 - (void)applicationDidResume;
@@ -114,6 +119,7 @@
 - (void)showCardForContact:(id)arg1 animated:(_Bool)arg2;
 - (id)reuseableContactViewControllerConfiguredForContact:(id)arg1 mode:(long long)arg2;
 - (void)showCardForContact:(id)arg1 resetFilter:(_Bool)arg2 resetSearch:(_Bool)arg3 fallbackToFirstContact:(_Bool)arg4 scrollToContact:(_Bool)arg5 animated:(_Bool)arg6;
+- (void)dismissSearchAndSelectContact:(id)arg1;
 - (void)addContact:(id)arg1 animated:(_Bool)arg2;
 - (void)presentAddContactViewController:(id)arg1 animated:(_Bool)arg2;
 - (id)addContactPresenter;
@@ -143,6 +149,11 @@
 @property(readonly, nonatomic) id <CNContactDataSource> dataSource;
 - (void)contactStyleCurrentStyleDidChange:(id)arg1;
 - (void)contactStoreDidChange:(id)arg1;
+- (void)scrollToContact:(id)arg1 animated:(_Bool)arg2;
+- (id)firstVisibleContact;
+- (void)updateUserActivityState:(id)arg1;
+- (void)_updateUserActivity;
+- (void)createUserActivity;
 - (void)dealloc;
 - (id)initWithDataSource:(id)arg1 contactFormatter:(id)arg2 applyGroupFilterFromPreferences:(_Bool)arg3 environment:(id)arg4 allowsLargeTitles:(_Bool)arg5;
 - (id)initWithDataSource:(id)arg1 environment:(id)arg2 allowsLargeTitles:(_Bool)arg3;

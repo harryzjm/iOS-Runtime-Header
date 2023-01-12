@@ -48,6 +48,8 @@
 - (void)adjustForAccessoryViewYOffset:(double)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (id)initWithPerson:(id)arg1 orFace:(id)arg2;
+- (id)initWithFace:(id)arg1;
 - (id)initWithPerson:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithCoder:(id)arg1;

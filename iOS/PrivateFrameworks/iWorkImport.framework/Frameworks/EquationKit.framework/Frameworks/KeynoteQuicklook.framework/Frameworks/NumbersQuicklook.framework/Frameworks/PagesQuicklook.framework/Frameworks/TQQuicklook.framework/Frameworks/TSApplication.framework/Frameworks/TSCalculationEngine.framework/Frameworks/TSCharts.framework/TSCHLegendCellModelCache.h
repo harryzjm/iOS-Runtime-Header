@@ -10,43 +10,42 @@
 
 @interface TSCHLegendCellModelCache : NSObject
 {
-    int mLegendCellType;
-    int mBadgeType;
-    unsigned long long mSeriesIndex;
-    TSCHChartSeries *mSeries;
-    NSString *mLabelString;
-    TSDStroke *mStroke;
-    TSDStroke *mSymbolStroke;
-    int mSymbolType;
-    int mLineType;
-    struct CGSize mCellSize;
-    double mEffectiveStrokeWidth;
-    double mEffectiveSymbolStrokeWidth;
-    struct CGRect mBadgeFrame;
-    struct CGRect mLabelFrame;
-    struct CGRect mBadgeFillFrame;
+    int _legendCellType;
+    int _badgeType;
+    unsigned long long _seriesIndex;
+    TSCHChartSeries *_series;
+    NSString *_labelString;
+    TSDStroke *_stroke;
+    TSDStroke *_symbolStroke;
+    int _symbolType;
+    int _lineType;
+    struct CGSize _cellSize;
+    double _effectiveStrokeWidth;
+    double _effectiveSymbolStrokeWidth;
+    struct CGRect _badgeFrame;
+    struct CGRect _labelFrame;
+    struct CGRect _badgeFillFrame;
 }
 
 - (void).cxx_destruct;
-@property(readonly) double effectiveSymbolStrokeWidth; // @synthesize effectiveSymbolStrokeWidth=mEffectiveSymbolStrokeWidth;
-@property(readonly) double effectiveStrokeWidth; // @synthesize effectiveStrokeWidth=mEffectiveStrokeWidth;
-@property(readonly) int lineType; // @synthesize lineType=mLineType;
-@property(readonly) int symbolType; // @synthesize symbolType=mSymbolType;
-@property(readonly) TSDStroke *symbolStroke; // @synthesize symbolStroke=mSymbolStroke;
-@property(readonly) TSDStroke *stroke; // @synthesize stroke=mStroke;
-@property(readonly) struct CGRect labelFrame; // @synthesize labelFrame=mLabelFrame;
-@property(readonly) struct CGRect badgeFillFrame; // @synthesize badgeFillFrame=mBadgeFillFrame;
-@property(readonly) struct CGRect badgeFrame; // @synthesize badgeFrame=mBadgeFrame;
-@property(readonly) struct CGSize size; // @synthesize size=mCellSize;
-@property(readonly) NSString *labelString; // @synthesize labelString=mLabelString;
-@property(readonly) TSCHChartSeries *series; // @synthesize series=mSeries;
-@property(readonly) unsigned long long seriesIndex; // @synthesize seriesIndex=mSeriesIndex;
-@property(readonly) int badgeType; // @synthesize badgeType=mBadgeType;
-@property(readonly) int cellType; // @synthesize cellType=mLegendCellType;
+@property(readonly) double effectiveSymbolStrokeWidth; // @synthesize effectiveSymbolStrokeWidth=_effectiveSymbolStrokeWidth;
+@property(readonly) double effectiveStrokeWidth; // @synthesize effectiveStrokeWidth=_effectiveStrokeWidth;
+@property(readonly) int lineType; // @synthesize lineType=_lineType;
+@property(readonly) int symbolType; // @synthesize symbolType=_symbolType;
+@property(readonly) TSDStroke *symbolStroke; // @synthesize symbolStroke=_symbolStroke;
+@property(readonly) TSDStroke *stroke; // @synthesize stroke=_stroke;
+@property(readonly) struct CGRect labelFrame; // @synthesize labelFrame=_labelFrame;
+@property(readonly) struct CGRect badgeFillFrame; // @synthesize badgeFillFrame=_badgeFillFrame;
+@property(readonly) struct CGRect badgeFrame; // @synthesize badgeFrame=_badgeFrame;
+@property(readonly) struct CGSize size; // @synthesize size=_cellSize;
+@property(readonly) NSString *labelString; // @synthesize labelString=_labelString;
+@property(readonly) TSCHChartSeries *series; // @synthesize series=_series;
+@property(readonly) unsigned long long seriesIndex; // @synthesize seriesIndex=_seriesIndex;
+@property(readonly) int badgeType; // @synthesize badgeType=_badgeType;
+@property(readonly) int cellType; // @synthesize cellType=_legendCellType;
 @property(readonly) id symbolFill;
 @property(readonly) id fill;
-- (void)dealloc;
-- (id)initWithChartModel:(id)arg1 cellType:(int)arg2 seriesIndex:(unsigned long long)arg3 withMetrics:(id)arg4 overrideLabel:(id)arg5;
+- (id)initWithChartModel:(id)arg1 cellType:(int)arg2 seriesIndex:(unsigned long long)arg3 withMetrics:(id)arg4 overrideLabel:(id)arg5 styleProvidingSource:(id)arg6;
 
 @end
 

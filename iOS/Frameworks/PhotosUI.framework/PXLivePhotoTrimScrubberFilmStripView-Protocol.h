@@ -16,6 +16,7 @@
 - (void)setAsset:(AVAsset *)arg1 videoComposition:(AVVideoComposition *)arg2;
 
 @optional
+@property(nonatomic) _Bool preserveThumbnailsDuringReload;
 @property(nonatomic) __weak id thumbnailUpdatingDelegate;
 @property(nonatomic) _Bool useContentAspectRatio;
 @end

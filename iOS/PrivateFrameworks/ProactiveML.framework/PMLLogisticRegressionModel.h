@@ -18,6 +18,8 @@
 
 + (id)withWeights:(id)arg1 andIntercept:(_Bool)arg2;
 + (id)withWeights:(id)arg1;
++ (id)solverWithWeights:(id)arg1 andIntercept:(_Bool)arg2 learningRate:(float)arg3 minIterations:(unsigned long long)arg4 stoppingThreshold:(float)arg5 regularizationStrategy:(unsigned long long)arg6 regularizationRate:(float)arg7 l1Ratio:(float)arg8;
++ (id)solverWithWeights:(id)arg1 andIntercept:(_Bool)arg2 learningRate:(float)arg3 minIterations:(unsigned long long)arg4 stoppingThreshold:(float)arg5 l2RegularizationRate:(float)arg6;
 + (id)solverWithWeights:(id)arg1 andIntercept:(_Bool)arg2 learningRate:(float)arg3 minIterations:(unsigned long long)arg4 stoppingThreshold:(float)arg5;
 + (id)solverWithWeights:(id)arg1 andIntercept:(_Bool)arg2;
 + (id)solverWithWeights:(id)arg1;

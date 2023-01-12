@@ -8,11 +8,14 @@
 
 @interface ASAuthorizationSingleSignOnRequest
 {
+    _Bool _userInterfaceEnabled;
     NSArray *_authorizationOptions;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic, getter=isUserInterfaceEnabled) _Bool userInterfaceEnabled; // @synthesize userInterfaceEnabled=_userInterfaceEnabled;
 @property(copy, nonatomic) NSArray *authorizationOptions; // @synthesize authorizationOptions=_authorizationOptions;
+- (id)initWithProvider:(id)arg1;
 
 @end
 

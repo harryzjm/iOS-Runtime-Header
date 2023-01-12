@@ -8,19 +8,20 @@
 
 #import <Vision/NSCopying-Protocol.h>
 #import <Vision/NSSecureCoding-Protocol.h>
+#import <Vision/VNRequestRevisionProviding-Protocol.h>
 
 @class CRImageReaderOutput, NSString;
 
-@interface VNRecognizedText : NSObject <NSCopying, NSSecureCoding>
+@interface VNRecognizedText : NSObject <NSCopying, NSSecureCoding, VNRequestRevisionProviding>
 {
-    CRImageReaderOutput *_crOutput;
     unsigned long long _requestRevision;
+    CRImageReaderOutput *_crOutput;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) unsigned long long requestRevision; // @synthesize requestRevision=_requestRevision;
 @property(readonly, copy) CRImageReaderOutput *crOutput; // @synthesize crOutput=_crOutput;
+@property(nonatomic) unsigned long long requestRevision; // @synthesize requestRevision=_requestRevision;
 - (id)debugDescription;
 - (id)boundingBoxForRange:(struct _NSRange)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) float confidence;

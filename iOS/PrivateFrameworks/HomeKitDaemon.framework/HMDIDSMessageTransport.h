@@ -6,7 +6,7 @@
 
 #import <HomeKitDaemon/IDSServiceDelegate-Protocol.h>
 
-@class HMFOperationBudget, IDSService, NSMutableArray, NSMutableDictionary, NSObject, NSString;
+@class HMFOperationBudget, IDSService, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HMDIDSMessageTransport <IDSServiceDelegate>
@@ -20,13 +20,16 @@
     NSMutableDictionary *_requestedCapabilities;
     NSMutableDictionary *_destinationAddress;
     NSMutableDictionary *_pendingResponseTimers;
+    NSMutableOrderedSet *_messageDedupBuffer;
 }
 
++ (id)logCategory;
 + (struct _HMFRate)sendMessageRate;
 + (unsigned long long)sendMessageLimit;
 + (long long)priorityForMessage:(id)arg1;
 + (unsigned long long)restriction;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSMutableOrderedSet *messageDedupBuffer; // @synthesize messageDedupBuffer=_messageDedupBuffer;
 @property(readonly, nonatomic) NSMutableDictionary *pendingResponseTimers; // @synthesize pendingResponseTimers=_pendingResponseTimers;
 @property(readonly, nonatomic) NSMutableDictionary *destinationAddress; // @synthesize destinationAddress=_destinationAddress;
 @property(readonly, nonatomic) NSMutableDictionary *requestedCapabilities; // @synthesize requestedCapabilities=_requestedCapabilities;
@@ -45,8 +48,9 @@
 - (void)_restartPendingResponseTimerFor:(id)arg1 withReducedFactor:(unsigned long long)arg2;
 - (id)sendMessage:(id)arg1 fromHandle:(id)arg2 destination:(id)arg3 priority:(long long)arg4 timeout:(double)arg5 options:(unsigned long long)arg6 error:(id *)arg7;
 - (void)sendMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-@property(readonly, nonatomic) int awdTransportType;
+- (int)transportType;
 - (_Bool)canSendMessage:(id)arg1;
+- (_Bool)isSecure;
 - (id)deviceForSenderContext:(id)arg1;
 - (long long)qualityOfService;
 - (void)start;

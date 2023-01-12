@@ -16,10 +16,10 @@
 - (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)updateWithDictionary:(id)arg1;
 - (id)__INCodableDescriptionKey;
-- (id)__INIntentResponseCodableDescriptionKey;
-- (id)__INTypeCodableDescriptionKey;
 - (id)__INCodableDescriptionTypeKey;
+- (id)__INIntentResponseCodableDescriptionKey;
 - (id)__INIntentResponseCodableDescriptionTypeKey;
+- (id)__INTypeCodableDescriptionKey;
 - (id)__INTypeCodableDescriptionTypeKey;
 
 @end

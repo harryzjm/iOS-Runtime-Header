@@ -11,6 +11,9 @@
 @protocol _UISheetInteractionDelegate <NSObject>
 
 @optional
+- (void)_sheetInteractionDraggingEnded:(_UISheetInteraction *)arg1;
+- (void)_sheetInteractionDraggingChanged:(_UISheetInteraction *)arg1 withTranslation:(struct CGPoint)arg2 velocity:(struct CGPoint)arg3 animateChange:(_Bool)arg4;
+- (void)_sheetInteractionDraggingBegan:(_UISheetInteraction *)arg1 withRubberBandCoefficient:(double)arg2;
 - (_Bool)sheetInteraction:(_UISheetInteraction *)arg1 shouldAllowVerticalRubberBandingWithEvent:(UIEvent *)arg2;
 - (_Bool)sheetInteraction:(_UISheetInteraction *)arg1 shouldBeginHorizontalRubberBandingWithGestureRecognizer:(UIGestureRecognizer *)arg2;
 - (struct CGPoint)offsetForInterruptedAnimationInSheetInteraction:(_UISheetInteraction *)arg1;

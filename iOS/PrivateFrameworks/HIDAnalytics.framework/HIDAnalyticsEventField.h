@@ -13,13 +13,15 @@
 @interface HIDAnalyticsEventField : NSObject <HIDAnalyticsEventFieldProtocol>
 {
     unsigned long long integerValue;
+    NSString *stringValue;
     NSString *_fieldName;
 }
 
 - (void).cxx_destruct;
 @property(readonly) NSString *fieldName; // @synthesize fieldName=_fieldName;
+- (void)setStringValue:(id)arg1;
 - (void)setIntegerValue:(unsigned long long)arg1;
-@property(retain) id value;
+@property __weak id value;
 - (id)initWithName:(id)arg1;
 
 // Remaining properties

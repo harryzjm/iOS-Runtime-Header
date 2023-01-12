@@ -7,6 +7,8 @@
 @class NSURL, SFPunchout;
 
 @protocol DDParsecHostVCInterface
+- (void)remoteVCIsReady;
+- (void)performClientQueryWithServerAccessPermitted:(_Bool)arg1 localSearchPermitted:(_Bool)arg2;
 - (void)openTrailerPunchout:(SFPunchout *)arg1;
 - (void)getStatusBarHidden:(void (^)(_Bool))arg1;
 - (void)openParsecURL:(NSURL *)arg1;

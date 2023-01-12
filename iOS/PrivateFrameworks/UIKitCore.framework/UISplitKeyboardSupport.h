@@ -36,16 +36,15 @@ __attribute__((visibility("hidden")))
 - (void)invalidateDisplayLink;
 - (void)bounceAnimationDidFinish;
 - (void)cancelBounceAnimation;
+- (void)_updateKeyboardLayoutGuideForHostFrame:(struct CGRect)arg1;
 - (void)translateDetected:(id)arg1;
 - (void)cancelGestureRecognizers;
 - (_Bool)completedPlacementFrom:(id)arg1 to:(id)arg2 forController:(id)arg3;
 - (_Bool)startedPlacementFrom:(id)arg1 to:(id)arg2 forController:(id)arg3;
-- (void)translateToPlacement:(id)arg1 animated:(_Bool)arg2;
 - (void)willPerformPlacementFrom:(id)arg1 to:(id)arg2 forController:(id)arg3;
 - (void)updatedControllerApplicator:(id)arg1;
 @property(readonly, nonatomic) _Bool isSplitting;
 @property(readonly, nonatomic) _Bool isTranslating;
-- (void)translateToPlacement:(id)arg1 quietly:(_Bool)arg2 animated:(_Bool)arg3;
 - (_Bool)generateSplitNotificationForNewPlacement:(id)arg1;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;

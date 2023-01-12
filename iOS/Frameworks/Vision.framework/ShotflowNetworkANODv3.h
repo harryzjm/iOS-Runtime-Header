@@ -10,10 +10,10 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)inputBGR;
-+ (tuple_8621cb4d)inputBiasRGB;
++ (tuple_8dc74180)inputBiasRGB;
 + (float)inputScale;
 + (_Bool)hasPose;
-+ (const vector_eb9481f9 *)importantClasses;
++ (const void *)importantClasses;
 + (unsigned long long)mumberPosClasses;
 + (id)inputLayerName;
 + (id)modelName;

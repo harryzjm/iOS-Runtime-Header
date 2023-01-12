@@ -6,7 +6,7 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class MTUIAlarmView, UIStackView, UISwitch;
+@class NSCalendar, NSDate, UILabel, UIStackView, UISwitch;
 @protocol HUAlarmTableViewCellDelegate;
 
 @interface HUAlarmTableViewCell : UITableViewCell
@@ -14,28 +14,35 @@
     _Bool _disabled;
     _Bool _enabled;
     id <HUAlarmTableViewCellDelegate> _delegate;
-    MTUIAlarmView *_alarmView;
+    NSCalendar *_calendar;
+    NSDate *_baseDate;
+    UILabel *_nameAndDescriptionLabel;
+    UILabel *_timeLabel;
+    UIStackView *_labelsStackView;
     UISwitch *_enabledSwitch;
-    UIStackView *_stackView;
 }
 
++ (id)timeFormatter;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool enabled; // @synthesize enabled=_enabled;
-@property(retain, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
 @property(retain, nonatomic) UISwitch *enabledSwitch; // @synthesize enabledSwitch=_enabledSwitch;
-@property(retain, nonatomic) MTUIAlarmView *alarmView; // @synthesize alarmView=_alarmView;
+@property(retain, nonatomic) UIStackView *labelsStackView; // @synthesize labelsStackView=_labelsStackView;
+@property(retain, nonatomic) UILabel *timeLabel; // @synthesize timeLabel=_timeLabel;
+@property(retain, nonatomic) UILabel *nameAndDescriptionLabel; // @synthesize nameAndDescriptionLabel=_nameAndDescriptionLabel;
+@property(retain, nonatomic) NSDate *baseDate; // @synthesize baseDate=_baseDate;
+@property(retain, nonatomic) NSCalendar *calendar; // @synthesize calendar=_calendar;
 @property(nonatomic, getter=isDisabled) _Bool disabled; // @synthesize disabled=_disabled;
 @property(nonatomic) __weak id <HUAlarmTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)_setTimeLabelToHour:(long long)arg1 minute:(long long)arg2;
 - (void)layoutSubviews;
 - (void)setEditing:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setHighlighted:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setSelected:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)willTransitionToState:(unsigned long long)arg1;
 - (void)_alarmActiveChanged:(id)arg1;
-- (void)setAlarmActiveDelegate:(id)arg1;
 - (void)_setupConstraints;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)refreshUI:(id)arg1 accessoryName:(id)arg2 animated:(_Bool)arg3;
+- (void)_createSubviews;
 - (id)_alarmBackgroundColor;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;

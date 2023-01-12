@@ -12,7 +12,7 @@
 
 @interface MLShufflingBatchProvider : NSObject <MLBatchProvider>
 {
-    struct vector<long, std::__1::allocator<long>> indices;
+    struct vector<long, std::allocator<long>> indices;
     struct linear_congruential_engine<unsigned int, 48271, 0, 2147483647> randomNumberGenerator;
     id <MLBatchProvider> _batchProvider;
 }

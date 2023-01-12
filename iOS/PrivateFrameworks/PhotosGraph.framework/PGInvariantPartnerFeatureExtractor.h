@@ -4,12 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <KnowledgeGraphKit/MARelationFeatureExtractor.h>
-
-@interface PGInvariantPartnerFeatureExtractor : MARelationFeatureExtractor
+@interface PGInvariantPartnerFeatureExtractor
 {
 }
 
++ (id)name;
 - (id)initWithError:(id *)arg1;
 
 @end

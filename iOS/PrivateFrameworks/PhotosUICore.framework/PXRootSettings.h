@@ -4,24 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PXAlbumsDebugUISettings, PXApplicationSettings, PXAssetVariationsSettings, PXAssetsSceneSettings, PXCPLStatusSettings, PXCompleteMyMomentSettings, PXCuratedLibrarySettings, PXCursorInteractionSettings, PXDiagnosticsSettings, PXDragAndDropSettings, PXFooterSettings, PXForYouSettings, PXGPPTSettings, PXGridKitSettings, PXGridSettings, PXImageModulationSettings, PXImportSettings, PXInlineVideoStabilizationSettings, PXKeyboardSettings, PXKitSettings, PXMemoriesFeedSettings, PXMemoriesRelatedSettings, PXModelSettings, PXOneUpSettings, PXPeopleDetailSettings, PXPeopleUISettings, PXPhotoPickerSettings, PXPhotosDataSourceSettings, PXPhotosDetailsHeaderTileSettings, PXPhotosDetailsSettings, PXPhotosGridSettings, PXRelatedSettings, PXSearchSettings, PXSharingSettings, PXTilingSettings, PXViewControllerTransitionSettings, PXZoomablePhotosSettings;
+@class PXAlbumsDebugUISettings, PXApplicationSettings, PXAssetVariationsSettings, PXAssetsSceneSettings, PXAudioSettings, PXCPLStatusSettings, PXCompleteMyMomentSettings, PXContentSyndicationSettings, PXCuratedLibrarySettings, PXCursorInteractionSettings, PXDiagnosticsSettings, PXDragAndDropSettings, PXFooterSettings, PXForYouSettings, PXGPPTSettings, PXGridKitSettings, PXGridSettings, PXImageModulationSettings, PXImportSettings, PXInlineVideoStabilizationSettings, PXKeyboardSettings, PXKitSettings, PXMemoriesFeedSettings, PXMemoriesRelatedSettings, PXMessagesUISettings, PXModelSettings, PXOneUpSettings, PXPeopleDetailSettings, PXPeopleUISettings, PXPhotoPickerSettings, PXPhotosDataSourceSettings, PXPhotosDetailsHeaderTileSettings, PXPhotosDetailsSettings, PXPhotosGridSettings, PXRelatedSettings, PXSearchSettings, PXSharingSettings, PXStorySettings, PXTilingSettings, PXUpNextSettings, PXVideoPlaybackSettings, PXViewControllerTransitionSettings, PXZoomablePhotosSettings;
 
 @interface PXRootSettings
 {
-    _Bool _showTapToRadar;
+    _Bool _showLibraryFilterTip;
     _Bool _showWIPAlertRadar;
+    _Bool _private_wantsInternalUI;
     PXDiagnosticsSettings *_diagnostics;
+    PXStorySettings *_storySettings;
     PXImageModulationSettings *_imageModulationSettings;
     PXZoomablePhotosSettings *_zoomablePhotosSettings;
     PXCuratedLibrarySettings *_curatedLibrarySettings;
     PXPhotoPickerSettings *_photoPickerSettings;
     PXKeyboardSettings *_keyboardSettings;
+    PXVideoPlaybackSettings *_videoPlaybackSettings;
     PXOneUpSettings *_oneUpSettings;
     PXPhotosDetailsSettings *_photosDetails;
     PXPhotosDetailsHeaderTileSettings *_photosDetailsHeaderTile;
     PXRelatedSettings *_related;
     PXMemoriesFeedSettings *_memoryFeed;
     PXMemoriesRelatedSettings *_memoriesRelated;
+    PXUpNextSettings *_upNextSettings;
+    PXContentSyndicationSettings *_contentSyndicationSettings;
+    PXMessagesUISettings *_messagesUISettings;
     PXAssetsSceneSettings *_assetsScene;
     PXPhotosDataSourceSettings *_photosDataSource;
     PXTilingSettings *_tiling;
@@ -47,13 +53,16 @@
     PXPhotosGridSettings *_photosGridSettings;
     PXCPLStatusSettings *_cplStatusSettings;
     PXInlineVideoStabilizationSettings *_inlineVideoStabilizationSettings;
+    PXAudioSettings *_audioSettings;
 }
 
 + (id)sharedInstance;
 + (id)settingsControllerModule;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool private_wantsInternalUI; // @synthesize private_wantsInternalUI=_private_wantsInternalUI;
 @property(nonatomic) _Bool showWIPAlertRadar; // @synthesize showWIPAlertRadar=_showWIPAlertRadar;
-@property(nonatomic) _Bool showTapToRadar; // @synthesize showTapToRadar=_showTapToRadar;
+@property(retain, nonatomic) PXAudioSettings *audioSettings; // @synthesize audioSettings=_audioSettings;
+@property(nonatomic) _Bool showLibraryFilterTip; // @synthesize showLibraryFilterTip=_showLibraryFilterTip;
 @property(retain, nonatomic) PXInlineVideoStabilizationSettings *inlineVideoStabilizationSettings; // @synthesize inlineVideoStabilizationSettings=_inlineVideoStabilizationSettings;
 @property(retain, nonatomic) PXCPLStatusSettings *cplStatusSettings; // @synthesize cplStatusSettings=_cplStatusSettings;
 @property(retain, nonatomic) PXPhotosGridSettings *photosGridSettings; // @synthesize photosGridSettings=_photosGridSettings;
@@ -79,21 +88,28 @@
 @property(retain, nonatomic) PXTilingSettings *tiling; // @synthesize tiling=_tiling;
 @property(retain, nonatomic) PXPhotosDataSourceSettings *photosDataSource; // @synthesize photosDataSource=_photosDataSource;
 @property(retain, nonatomic) PXAssetsSceneSettings *assetsScene; // @synthesize assetsScene=_assetsScene;
+@property(retain, nonatomic) PXMessagesUISettings *messagesUISettings; // @synthesize messagesUISettings=_messagesUISettings;
+@property(retain, nonatomic) PXContentSyndicationSettings *contentSyndicationSettings; // @synthesize contentSyndicationSettings=_contentSyndicationSettings;
+@property(retain, nonatomic) PXUpNextSettings *upNextSettings; // @synthesize upNextSettings=_upNextSettings;
 @property(retain, nonatomic) PXMemoriesRelatedSettings *memoriesRelated; // @synthesize memoriesRelated=_memoriesRelated;
 @property(retain, nonatomic) PXMemoriesFeedSettings *memoryFeed; // @synthesize memoryFeed=_memoryFeed;
 @property(retain, nonatomic) PXRelatedSettings *related; // @synthesize related=_related;
 @property(retain, nonatomic) PXPhotosDetailsHeaderTileSettings *photosDetailsHeaderTile; // @synthesize photosDetailsHeaderTile=_photosDetailsHeaderTile;
 @property(retain, nonatomic) PXPhotosDetailsSettings *photosDetails; // @synthesize photosDetails=_photosDetails;
 @property(retain, nonatomic) PXOneUpSettings *oneUpSettings; // @synthesize oneUpSettings=_oneUpSettings;
+@property(retain, nonatomic) PXVideoPlaybackSettings *videoPlaybackSettings; // @synthesize videoPlaybackSettings=_videoPlaybackSettings;
 @property(retain, nonatomic) PXKeyboardSettings *keyboardSettings; // @synthesize keyboardSettings=_keyboardSettings;
 @property(retain, nonatomic) PXPhotoPickerSettings *photoPickerSettings; // @synthesize photoPickerSettings=_photoPickerSettings;
 @property(retain, nonatomic) PXCuratedLibrarySettings *curatedLibrarySettings; // @synthesize curatedLibrarySettings=_curatedLibrarySettings;
 @property(retain, nonatomic) PXZoomablePhotosSettings *zoomablePhotosSettings; // @synthesize zoomablePhotosSettings=_zoomablePhotosSettings;
 @property(retain, nonatomic) PXImageModulationSettings *imageModulationSettings; // @synthesize imageModulationSettings=_imageModulationSettings;
+@property(retain, nonatomic) PXStorySettings *storySettings; // @synthesize storySettings=_storySettings;
 @property(retain, nonatomic) PXDiagnosticsSettings *diagnostics; // @synthesize diagnostics=_diagnostics;
 @property(nonatomic) _Bool hideWIPAlerts;
 - (id)parentSettings;
 - (void)createChildren;
+- (void)setCanShowInternalUI:(_Bool)arg1;
+- (_Bool)canShowInternalUI;
 - (void)setDefaultValues;
 
 @end

@@ -11,12 +11,14 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (_Bool)_axIsShowingVideo;
+- (_Bool)_accessibilityIsExpanded;
 - (id)_axConstraintsController;
 - (id)_axParticipantView;
+- (_Bool)_axIsShowingVideo;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (id)_accessibilitySupplementaryFooterViews;
 - (_Bool)accessibilityPerformEscape;
 - (_Bool)accessibilityActivate;
-- (_Bool)_accessibilityIsExpanded;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityHint;
 - (id)accessibilityValue;

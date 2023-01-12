@@ -18,9 +18,12 @@
 - (void)setIsCommunalDevice:(_Bool)arg1;
 - (void)setMediaRouteIdentifier:(NSString *)arg1;
 - (void)setMediaSystemIdentifier:(NSString *)arg1;
+- (void)setHomeKitAccessoryIdentifier:(NSString *)arg1;
 - (void)setRapportEffectiveIdentifier:(NSString *)arg1;
 - (void)setIdsDeviceUniqueIdentifier:(NSString *)arg1;
 - (void)setIdsIdentifier:(NSString *)arg1;
+- (void)setSharedUserIdentifier:(NSString *)arg1;
+- (void)setAssistantIdentifier:(NSString *)arg1;
 - (void)setIsDeviceOwnedByCurrentUser:(_Bool)arg1;
 @end
 

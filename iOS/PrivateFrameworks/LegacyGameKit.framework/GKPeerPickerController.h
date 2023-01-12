@@ -15,6 +15,7 @@
 }
 
 + (void)initialize;
+@property(retain) id picker; // @synthesize picker=_picker;
 - (id)peerPickerViewController:(id)arg1 sessionForConnectionType:(unsigned long long)arg2;
 - (void)peerPickerViewController:(id)arg1 didSelectConnectionType:(unsigned long long)arg2;
 - (void)peerPickerViewController:(id)arg1 didConnectPeer:(id)arg2 toSession:(id)arg3;

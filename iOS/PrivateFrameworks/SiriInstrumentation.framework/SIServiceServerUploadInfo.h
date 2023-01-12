@@ -4,17 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProtocolBuffer/PBCodable.h>
-
 @class NSData;
 
-@interface SIServiceServerUploadInfo : PBCodable
+@interface SIServiceServerUploadInfo
 {
-    _Bool _hasNs_server_upload_ts;
     long long _ns_server_upload_ts;
+    struct {
+        unsigned int ns_server_upload_ts:1;
+    } _has;
 }
 
-@property(nonatomic) _Bool hasNs_server_upload_ts; // @synthesize hasNs_server_upload_ts=_hasNs_server_upload_ts;
 @property(nonatomic) long long ns_server_upload_ts; // @synthesize ns_server_upload_ts=_ns_server_upload_ts;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
@@ -24,6 +23,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
+@property(nonatomic) _Bool hasNs_server_upload_ts;
 
 @end
 

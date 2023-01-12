@@ -6,10 +6,11 @@
 
 #import <Silex/NSObject-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, UIView;
 
 @protocol SXActionActivityGroup <NSObject>
 @property(readonly, nonatomic) NSArray *activities;
+@property(readonly, nonatomic) UIView *sourceView;
 @property(readonly, nonatomic) NSString *title;
 @end
 

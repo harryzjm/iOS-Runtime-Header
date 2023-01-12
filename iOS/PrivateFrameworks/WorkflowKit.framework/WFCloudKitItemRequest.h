@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class CKContainer, CKDatabase;
-@protocol OS_xpc_object;
+@protocol OS_dispatch_queue, OS_xpc_object;
 
 @interface WFCloudKitItemRequest : NSObject
 {
@@ -15,6 +15,8 @@
     CKContainer *_container;
     CKDatabase *_database;
     NSObject<OS_xpc_object> *_xpcActivity;
+    NSObject<OS_dispatch_queue> *_operationWaitingQueue;
+    NSObject<OS_dispatch_queue> *_callbackQueue;
 }
 
 + (id)recordValueForItemValue:(id)arg1 item:(id)arg2 property:(id)arg3 recordKey:(id)arg4 zoneID:(id)arg5;
@@ -26,6 +28,8 @@
 + (id)desiredKeysFromProperties:(id)arg1 itemType:(Class)arg2;
 + (void)hydrateItem:(id)arg1 withRecord:(id)arg2 setNilValues:(_Bool)arg3;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *operationWaitingQueue; // @synthesize operationWaitingQueue=_operationWaitingQueue;
 @property(retain, nonatomic) NSObject<OS_xpc_object> *xpcActivity; // @synthesize xpcActivity=_xpcActivity;
 @property(nonatomic) _Bool performExpensiveFetchOperations; // @synthesize performExpensiveFetchOperations=_performExpensiveFetchOperations;
 @property(readonly, nonatomic) CKDatabase *database; // @synthesize database=_database;
@@ -36,6 +40,7 @@
 - (id)updateItems:(id)arg1 setNilValues:(_Bool)arg2 qualityOfService:(long long)arg3 timeoutIntervalForRequest:(double)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)updateItems:(id)arg1 setNilValues:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)fetchItemWithID:(id)arg1 itemType:(Class)arg2 groupName:(id)arg3 properties:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)fetchItemsWithPredicate:(id)arg1 itemType:(Class)arg2 groupName:(id)arg3 properties:(id)arg4 sortDescriptors:(id)arg5 resultsLimit:(unsigned long long)arg6 qualityOfService:(long long)arg7 completionHandler:(CDUnknownBlockType)arg8;
 - (id)fetchItemsWithPredicate:(id)arg1 itemType:(Class)arg2 groupName:(id)arg3 properties:(id)arg4 sortDescriptors:(id)arg5 resultsLimit:(unsigned long long)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (id)fetchItemsWithPredicate:(id)arg1 itemType:(Class)arg2 groupName:(id)arg3 properties:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)initWithContainer:(id)arg1 database:(id)arg2;

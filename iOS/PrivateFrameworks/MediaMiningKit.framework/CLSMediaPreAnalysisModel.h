@@ -12,6 +12,10 @@
 
 @interface CLSMediaPreAnalysisModel : NSObject <CLSSignalModel>
 {
+    CLSSignalNode *_probableRotationDirection0DegreesConfidenceNode;
+    CLSSignalNode *_probableRotationDirection90DegreesConfidenceNode;
+    CLSSignalNode *_probableRotationDirection180DegreesConfidenceNode;
+    CLSSignalNode *_probableRotationDirection270DegreesConfidenceNode;
     unsigned long long _version;
     unsigned long long _minimumSupportedVersion;
     CLSSignalNode *_sharpnessNode;
@@ -27,6 +31,8 @@
 @property(readonly) CLSSignalNode *sharpnessNode; // @synthesize sharpnessNode=_sharpnessNode;
 @property(readonly) unsigned long long minimumSupportedVersion; // @synthesize minimumSupportedVersion=_minimumSupportedVersion;
 @property(readonly) unsigned long long version; // @synthesize version=_version;
+- (_Bool)isWronglyRotatedFromMediaAnalysisProperties:(id)arg1;
+- (void)setupVersion57;
 - (void)setupVersion45;
 - (void)setupVersion31;
 - (id)initWithVersion:(unsigned long long)arg1;

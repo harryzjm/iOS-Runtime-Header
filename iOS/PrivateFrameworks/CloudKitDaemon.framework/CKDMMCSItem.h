@@ -119,13 +119,13 @@
 @property(retain, nonatomic) NSNumber *fileID; // @synthesize fileID=_fileID;
 @property(retain, nonatomic) NSNumber *deviceID; // @synthesize deviceID=_deviceID;
 @property(retain, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
-- (id)readBytesOfInMemoryAssetContentWithProxy:(id)arg1 offset:(unsigned long long)arg2 length:(unsigned long long)arg3 error:(id *)arg4;
+- (id)readBytesOfInMemoryAssetContentWithContainer:(id)arg1 offset:(unsigned long long)arg2 length:(unsigned long long)arg3 error:(id *)arg4;
 - (id)getFileMetadataWithFileHandle:(id)arg1 error:(id *)arg2;
-- (id)getFileMetadataWithProxy:(id)arg1 fileHandle:(id)arg2 error:(id *)arg3;
+- (id)getFileMetadataWithContainer:(id)arg1 fileHandle:(id)arg2 error:(id *)arg3;
 - (id)getFileSizeWithError:(id *)arg1;
-- (id)getFileSizeWithProxy:(id)arg1 error:(id *)arg2;
+- (id)getFileSizeWithContainer:(id)arg1 error:(id *)arg2;
 - (id)openWithError:(id *)arg1;
-- (id)openWithProxy:(id)arg1 error:(id *)arg2;
+- (id)openWithContainer:(id)arg1 error:(id *)arg2;
 - (id)_openInfo;
 - (id)description;
 - (id)CKPropertiesDescription;

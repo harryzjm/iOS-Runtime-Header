@@ -7,20 +7,27 @@
 #import <objc/NSObject.h>
 
 @class NSDate, NSString;
+@protocol OS_os_log;
 
 @interface VMUDebugTimer : NSObject
 {
     NSDate *_programStartTime;
     NSDate *_eventStartTime;
     NSString *_eventMessage;
+    NSString *_categoryMessage;
+    NSObject<OS_os_log> *_logHandle;
+    unsigned long long _signpostID;
 }
 
 + (id)sharedTimerIfCreated;
 + (id)sharedTimer;
 - (void).cxx_destruct;
+@property(readonly) unsigned long long signpostID; // @synthesize signpostID=_signpostID;
+@property(readonly) NSObject<OS_os_log> *logHandle; // @synthesize logHandle=_logHandle;
 - (void)stop;
-- (void)_endEvent;
-- (void)startWithMessage:(id)arg1;
+- (void)endEvent:(const char *)arg1;
+- (void)startWithCategory:(const char *)arg1 message:(const char *)arg2;
+- (void)startWithMessage:(const char *)arg1;
 - (id)init;
 
 @end

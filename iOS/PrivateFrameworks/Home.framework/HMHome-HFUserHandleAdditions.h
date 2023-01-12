@@ -13,8 +13,7 @@
 #import <Home/HFStateDumpBuildable-Protocol.h>
 #import <Home/HFWallaperHost-Protocol.h>
 
-@class NSArray, NSDate, NSNumber, NSObject, NSString, NSUUID, UIImage;
-@protocol OS_dispatch_source;
+@class NSArray, NSDate, NSString, NSUUID, UIImage;
 
 @interface HMHome (HFUserHandleAdditions) <HFStateDumpBuildable, HFCharacteristicValueReader, HFCharacteristicValueWriter, HFWallaperHost, HFHomeKitObject, HFReorderableHomeKitObject>
 + (_Bool)hf_prefersAutoSynthesizedDescription;
@@ -28,6 +27,35 @@
 - (_Bool)hf_shouldDefaultFavoriteForHomeKitObject:(id)arg1 excludingHomeKitObjects:(id)arg2;
 - (unsigned long long)hf_favoriteServiceLikeObjectCountExcludingHomeKitObjects:(id)arg1;
 - (unsigned long long)hf_favoriteCameraCountExcludingHomeKitObjects:(id)arg1;
+- (id)hf_allCHIPAccessoriesForThirdPartyConnectedHome:(id)arg1;
+- (id)hf_thirdPartyHomeAccessoryCountMapFuture;
+- (id)hf_connectedThirdPartyHomesFuture;
+- (id)hf_fetchExistingWalletKeyEncodedPKPass;
+- (id)hf_fetchAvailableWalletKeyEncodedPKPass;
+- (void)hf_clearCachedWalletKeyDeviceStateForCurrentDevice;
+- (id)hf_walletKeyDeviceStatesOfCompatiblePairedWatches;
+- (id)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;
+- (id)hf_hasWalletKeyCompatibleDevice;
+- (_Bool)hf_hasHomeHubSupportingAccessCodes;
+- (id)hf_setHasOnboardedForAccessCode;
+- (id)hf_accessoriesSupportingAccessCodes;
+- (id)hf_walletKeyColorToDisplay;
+- (id)_hf_existingWalletKeyColorForCurrentDevice;
+- (id)_hf_fetchWalletKeyColorFromAccessories;
+- (id)hf_fetchWalletKeyDeviceStateForPairedWatches;
+- (id)hf_formattedErrorForWalletKeyDeviceStateForCurrentDevice;
+- (_Bool)hf_hasHomeHubSupportingWalletKey;
+- (id)hf_setHasOnboardedForWalletKey;
+- (id)hf_addWalletKeyToPairedWatchesWithOptions:(long long)arg1;
+- (id)hf_addWalletKeyWithOptions:(long long)arg1;
+- (id)hf_enableExpressModeForWalletKeyWithAuthData:(id)arg1;
+- (id)hf_walletKeyInWalletAppURL;
+- (id)hf_walletKeyUUID;
+- (id)hf_hasWalletKey;
+- (id)hf_fetchWalletKeyDeviceStateForCurrentDeviceIfNecessary;
+- (id)_hf_cachedWalletKeyDeviceStateForCurrentDevice;
+- (id)hf_fetchWalletKeyDeviceStateForCurrentDevice;
+- (id)hf_walletKeyAccessories;
 - (id)hf_updateAccessControlDescriptor:(id)arg1;
 - (id)hf_accessControlDescriptor;
 - (id)hf_updateColorPalette:(id)arg1 type:(unsigned long long)arg2;
@@ -44,6 +72,11 @@
 - (void)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;
 - (_Bool)hf_cameraRecordingHasBeenOnboarded;
 - (_Bool)hf_hasAtleastOneReachableHomePod;
+- (_Bool)hf_atleastOneMediaAccessorySupportsAndHasAnnounceEnabled;
+- (_Bool)hf_atleastTwoDistinctHomePodsSupportsAnnounce;
+- (_Bool)hf_atleastOneHomePodSupportsAnnounce;
+- (_Bool)hf_shouldShowAnnounceFeatureForThisHome;
+- (_Bool)hf_shouldShowAnnounceButtonForThisHome;
 - (void)hf_startReprovisioningAccessory:(id)arg1;
 - (_Bool)hf_supportsReachabilityNotifications;
 - (_Bool)hf_hasCameraRecordingResident;
@@ -57,6 +90,7 @@
 - (id)hf_allNonOwnerUsers;
 - (id)hf_allNonAdminUsers;
 - (id)hf_allUsersIncludingCurrentUser;
+- (_Bool)hf_hasEnabledResidentSupportingThirdPartySoftwareUpdate;
 - (_Bool)hf_enabledResidentsSupportsNaturalLight;
 - (_Bool)hf_enabledResidentsSupportsMediaActions;
 - (_Bool)hf_supportsRemoteAccessRestrictions;
@@ -73,12 +107,16 @@
 - (id)hf_reorderableActionSetsList;
 - (id)hf_reorderableServicesList;
 - (id)hf_reorderableRoomsList;
+- (id)hf_allSiriEndPointProfileContainers;
+- (id)hf_siriEndPointAccessories;
 - (id)hf_tvViewingProfilesAccessories;
 - (id)hf_personalRequestAccessories;
 - (id)hf_allResidentAccessories;
+- (id)hf_siriEndpointCapableAccessoriesToOnboard;
 - (id)hf_homePods;
 - (id)hf_appleTVs;
 - (id)hf_mediaAccessories;
+- (id)hf_updateAutomaticThirdPartyAccessorySoftwareUpdateEnabled:(_Bool)arg1;
 - (id)hf_updateAutomaticSoftwareUpdateEnabled:(_Bool)arg1;
 - (id)hf_accessoriesRequiringManualWiFiReconfiguration;
 - (id)hf_resetAllNetworkConfigurationProfiles;
@@ -88,7 +126,7 @@
 - (id)hf_personWithIdentifier:(id)arg1;
 - (id)hf_allPersons;
 - (id)hf_personManagerWithIdentifier:(id)arg1;
-- (id)hf_allExternalPersonManagers;
+- (id)hf_allPhotosPersonManagers;
 - (id)hf_allPersonManagers;
 - (id)hf_setFaceRecognitionEnabled:(_Bool)arg1;
 - (_Bool)hf_isFaceRecognitionAvailable;
@@ -116,12 +154,22 @@
 - (_Bool)hf_containsActionableAccessories;
 - (id)hf_homeKitObjectsSupportingNaturalLighting;
 - (id)hf_accessoriesSupportingNaturalLighting;
+- (id)hf_accessoriesWithSoftwareOrFirmwareUpdates;
+- (_Bool)hf_isAutomaticThirdPartyAccessorySoftwareUpdateEnabled;
+- (_Bool)hf_hasThirdPartyAccessoriesSupportingSoftwareUpdate;
+- (_Bool)hf_hasFirstPartyAccessoriesSupportingSoftwareUpdate;
+- (_Bool)hf_hasAccessoriesSupportingSoftwareUpdate;
 - (id)availableSoftwareUpdates;
 - (id)accessoriesSupportingSoftwareUpdate;
+- (id)hf_appleTVsSupportingHomeTheater;
+- (id)hf_relatedHomeTheaterMediaProfileContainerFor:(id)arg1;
+- (id)hf_appleTVUsingAudioDestination:(id)arg1;
 - (id)hf_mediaSystemWithIdentifier:(id)arg1;
 - (id)hf_mediaSystemForAccessory:(id)arg1;
 - (id)hf_serviceGroupWithIdentifier:(id)arg1;
 - (id)hf_serviceGroupsForService:(id)arg1;
+- (_Bool)hf_hasResidentDeviceCapableOfSupportingEnhancedDetectionModes;
+- (_Bool)hf_hasResidentDeviceCapableOfSupportingActivityZones;
 - (id)hf_actionSetWithUUID:(id)arg1;
 - (id)hf_enabledResidentDevices;
 - (id)hf_primaryResidentDevice;
@@ -130,6 +178,7 @@
 - (id)hf_allBridgeAccessories;
 - (id)hf_accessoriesMatchingCategoryType:(id)arg1;
 - (id)hf_mediaProfileContainerForSymptomsHandler:(id)arg1;
+- (_Bool)hf_hasVisibleAccessories;
 - (id)hf_visibleAccessories;
 - (id)hf_mediaSystemForSymptomsHandler:(id)arg1;
 - (id)hf_accessoryForSymptomsHandler:(id)arg1;
@@ -157,6 +206,7 @@
 - (_Bool)hf_isUserAtHome;
 - (_Bool)hf_isCurrentLocationHome;
 - (unsigned long long)hf_remoteAccessState;
+- (id)hf_suspendedStateOverrideValueProvider;
 - (id)hf_characteristicValueManager;
 - (id)hf_activeRooms;
 - (id)hf_allRooms;
@@ -178,8 +228,6 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
-@property(retain, nonatomic) NSNumber *homepodLanguageSettingSyncCompleteCheckCount; // @dynamic homepodLanguageSettingSyncCompleteCheckCount;
-@property(retain, nonatomic) NSObject<OS_dispatch_source> *homepodLanguageSettingSyncCompleteTimer; // @dynamic homepodLanguageSettingSyncCompleteTimer;
 @property(readonly) Class superclass;
 @property(readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 @end

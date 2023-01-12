@@ -6,26 +6,25 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCHUnretainedParent-Protocol.h>
-
 @class TSCH3DChartMeshResources;
 
-@interface TSCH3DChartMeshSharedChildResource : NSObject <TSCHUnretainedParent>
+@interface TSCH3DChartMeshSharedChildResource : NSObject
 {
-    TSCH3DChartMeshResources *mParent;
-    _Bool mChildRegenerated;
-    int mCaching;
-    struct DataBufferInfo mBufferInfo;
-    unsigned long long mResourceIdentifier;
+    TSCH3DChartMeshResources *_parent;
+    _Bool _childRegenerated;
+    int _caching;
+    struct DataBufferInfo _bufferInfo;
+    unsigned long long _resourceIdentifier;
 }
 
 + (id)resourceWithParent:(id)arg1;
 - (id).cxx_construct;
-@property(nonatomic) _Bool childRegenerated; // @synthesize childRegenerated=mChildRegenerated;
-@property(nonatomic) int caching; // @synthesize caching=mCaching;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool childRegenerated; // @synthesize childRegenerated=_childRegenerated;
+@property(nonatomic) int caching; // @synthesize caching=_caching;
 @property(readonly, nonatomic) unsigned long long resourceIdentifier;
 @property(readonly) struct DataBufferInfo bufferInfo;
-- (void)clearParent;
+- (void)p_clear;
 - (void)dealloc;
 - (id)initWithParent:(id)arg1;
 

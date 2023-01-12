@@ -7,13 +7,14 @@
 #import <UIKit/UIView.h>
 
 #import <ContactsUI/UIDropInteractionDelegate-Protocol.h>
+#import <ContactsUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <ContactsUI/UITextFieldDelegate-Protocol.h>
 
-@class CAShapeLayer, CNPhotoPickerHeaderViewTextField, CNPhotoPickerProviderItem, CNVisualIdentity, CNVisualIdentityAvatarViewController, NSArray, NSString, UIButton;
+@class CAShapeLayer, CNPhotoPickerHeaderViewTextField, CNPhotoPickerProviderItem, CNVisualIdentity, CNVisualIdentityAvatarViewController, NSArray, NSString, UIButton, UIGestureRecognizer;
 @protocol CNPhotoPickerHeaderViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNPhotoPickerHeaderView : UIView <UITextFieldDelegate, UIDropInteractionDelegate>
+@interface CNPhotoPickerHeaderView : UIView <UITextFieldDelegate, UIDropInteractionDelegate, UIGestureRecognizerDelegate>
 {
     id <CNPhotoPickerHeaderViewDelegate> _delegate;
     CNPhotoPickerProviderItem *_placeholderProviderItem;
@@ -25,9 +26,11 @@ __attribute__((visibility("hidden")))
     CAShapeLayer *_clearAvatarImageButtonClippingLayer;
     CNPhotoPickerHeaderViewTextField *_identityNameTextField;
     UIButton *_clearIdentityNameButton;
+    UIGestureRecognizer *_tapGestureRecognizer;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
 @property(retain, nonatomic) UIButton *clearIdentityNameButton; // @synthesize clearIdentityNameButton=_clearIdentityNameButton;
 @property(retain, nonatomic) CNPhotoPickerHeaderViewTextField *identityNameTextField; // @synthesize identityNameTextField=_identityNameTextField;
 @property(retain, nonatomic) CAShapeLayer *clearAvatarImageButtonClippingLayer; // @synthesize clearAvatarImageButtonClippingLayer=_clearAvatarImageButtonClippingLayer;
@@ -38,6 +41,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CNVisualIdentity *visualIdentity; // @synthesize visualIdentity=_visualIdentity;
 @property(retain, nonatomic) CNPhotoPickerProviderItem *placeholderProviderItem; // @synthesize placeholderProviderItem=_placeholderProviderItem;
 @property(nonatomic) __weak id <CNPhotoPickerHeaderViewDelegate> delegate; // @synthesize delegate=_delegate;
+- (_Bool)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (void)dropInteraction:(id)arg1 performDrop:(id)arg2;
 - (id)dropInteraction:(id)arg1 sessionDidUpdate:(id)arg2;
 - (_Bool)dropInteraction:(id)arg1 canHandleSession:(id)arg2;
@@ -48,7 +52,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)textFieldShouldReturn:(id)arg1;
 - (_Bool)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (void)didTapClearAvatarImageButton;
-- (void)updateClearAvatarImageButtonFrame;
 - (void)setupClearAvatarImageButton;
 - (void)setClearAvatarImageButtonHidden:(_Bool)arg1;
 - (void)updateIdentityNameTextFieldWithIdentity:(id)arg1;

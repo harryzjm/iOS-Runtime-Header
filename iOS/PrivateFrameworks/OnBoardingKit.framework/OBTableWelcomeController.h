@@ -16,17 +16,16 @@
     OBTableHeaderFooterView *_footerContainer;
     UIView *_hostedTableFooterView;
     UIView *_hostedTableHeaderView;
-    struct UIEdgeInsets _hostedTableFooterPadding;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) struct UIEdgeInsets hostedTableFooterPadding; // @synthesize hostedTableFooterPadding=_hostedTableFooterPadding;
 @property(retain, nonatomic) UIView *hostedTableHeaderView; // @synthesize hostedTableHeaderView=_hostedTableHeaderView;
 @property(retain, nonatomic) UIView *hostedTableFooterView; // @synthesize hostedTableFooterView=_hostedTableFooterView;
 @property(nonatomic) _Bool adoptTableViewScrollView; // @synthesize adoptTableViewScrollView=_adoptTableViewScrollView;
 @property(retain, nonatomic) OBTableHeaderFooterView *footerContainer; // @synthesize footerContainer=_footerContainer;
 @property(retain, nonatomic) OBTableHeaderFooterView *headerContainer; // @synthesize headerContainer=_headerContainer;
 @property(retain, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
+- (void)_updateHeaderFooterViewSizeIfNeeded;
 - (void)_layoutFooterContainerFloatButtonTray;
 - (void)_layoutFooterContainerInlineButtonTray;
 - (void)_setupScrollView;

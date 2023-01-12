@@ -16,6 +16,7 @@
     UILabel *_numberRatings;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UILabel *numberRatings; // @synthesize numberRatings=_numberRatings;
 @property(nonatomic) float capturedRating; // @synthesize capturedRating=_capturedRating;
 @property(retain, nonatomic) GKRatingView *ratingStarsView; // @synthesize ratingStarsView=_ratingStarsView;
@@ -25,7 +26,6 @@
 - (_Bool)canRemoveItem;
 - (void)didUpdateModel;
 - (void)prepareForReuse;
-- (void)dealloc;
 - (void)establishConstraints;
 - (id)initWithFrame:(struct CGRect)arg1;
 

@@ -68,8 +68,8 @@
 - (void)dealloc;
 - (id)initWithContext:(id)arg1;
 - (id)initWithContext:(id)arg1 containedStorage:(id)arg2;
-- (void)saveToArchive:(struct NoteArchive *)arg1 archiver:(id)arg2;
-- (void)loadFromArchive:(const struct NoteArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
 

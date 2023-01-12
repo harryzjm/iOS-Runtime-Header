@@ -4,20 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <NanoTimeKitCompanion/NTKExplorerColorPalette-Protocol.h>
 
-@interface NTKExplorerColorPalette : NSObject
+@class NSString, UIColor;
+
+@interface NTKExplorerColorPalette <NTKExplorerColorPalette>
 {
 }
 
-+ (id)complicationPlatterColorForExplorerColor:(unsigned long long)arg1;
-+ (id)complicationForegroundColorForExplorerColor:(unsigned long long)arg1;
-+ (id)explorerDeepRedColor;
-+ (id)explorerRedColor;
-+ (id)secondFillColorForExplorerColor:(unsigned long long)arg1;
-+ (id)secondStrokeColorForExplorerColor:(unsigned long long)arg1;
-+ (id)handFillColorForExplorerColor:(unsigned long long)arg1;
-+ (id)handStrokeColorForExplorerColor:(unsigned long long)arg1;
+- (id)tritium_handsInlay;
+- (id)tritium_hands;
+- (id)_secondHandInlay;
+- (id)_secondHand;
+- (id)_handsInlay;
+- (id)_hands;
+- (id)init;
+
+// Remaining properties
+@property(readonly, nonatomic) UIColor *complication; // @dynamic complication;
+@property(readonly, nonatomic) UIColor *complicationPlatter; // @dynamic complicationPlatter;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, nonatomic) UIColor *deepRed; // @dynamic deepRed;
+@property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) UIColor *hands; // @dynamic hands;
+@property(readonly, nonatomic) UIColor *handsInlay; // @dynamic handsInlay;
+@property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) UIColor *red; // @dynamic red;
+@property(readonly, nonatomic) UIColor *secondHand; // @dynamic secondHand;
+@property(readonly, nonatomic) UIColor *secondHandInlay; // @dynamic secondHandInlay;
+@property(readonly) Class superclass;
 
 @end
 

@@ -6,7 +6,12 @@
 
 #import <NanoTimeKitCompanion/NSObject-Protocol.h>
 
+@class NTKFace;
+
 @protocol NTKEnumeratableFaceCollection <NSObject>
 - (void)enumerateFaceNamesUsingBlock:(void (^)(NSString *))arg1;
+- (unsigned long long)indexOfFace:(NTKFace *)arg1;
+- (NTKFace *)faceAtIndex:(unsigned long long)arg1;
+- (unsigned long long)numberOfFaces;
 @end
 

@@ -7,35 +7,36 @@
 #import <TipsCore/NSCopying-Protocol.h>
 #import <TipsCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, TPSActionableContent, TPSAssets, TPSWidgetContent;
+@class NSArray, NSString, TPSActionableContent, TPSAssets, TPSFullTipContent, TPSWidgetContent;
 
 @interface TPSTip <NSCopying, NSSecureCoding>
 {
     _Bool _siriSuggestion;
     long long _type;
     long long _subContentType;
-    TPSActionableContent *_fullContent;
+    NSString *_eyebrow;
+    TPSFullTipContent *_fullContent;
     TPSActionableContent *_miniContent;
     TPSWidgetContent *_widgetContent;
     NSArray *_collectionIdentifiers;
 }
 
-+ (void)getValuesFromOpenURLSchemeQueryItems:(id)arg1 tipIdentifier:(id *)arg2 collectionIdentifier:(id *)arg3 launchSource:(id *)arg4;
++ (void)getValuesFromOpenURLSchemeQueryItems:(id)arg1 tipIdentifier:(id *)arg2 collectionIdentifier:(id *)arg3 referrer:(id *)arg4;
 + (long long)contentTypeForDictionary:(id)arg1;
 + (id)tipIdFromDictionary:(id)arg1;
-+ (id)classSet;
-+ (id)URLSchemeWithTipIdentifier:(id)arg1 collectionIdentifier:(id)arg2 launchSource:(id)arg3;
++ (id)URLSchemeWithTipIdentifier:(id)arg1 collectionIdentifier:(id)arg2 referrer:(id)arg3;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *collectionIdentifiers; // @synthesize collectionIdentifiers=_collectionIdentifiers;
 @property(copy, nonatomic) TPSWidgetContent *widgetContent; // @synthesize widgetContent=_widgetContent;
 @property(copy, nonatomic) TPSActionableContent *miniContent; // @synthesize miniContent=_miniContent;
-@property(copy, nonatomic) TPSActionableContent *fullContent; // @synthesize fullContent=_fullContent;
+@property(copy, nonatomic) TPSFullTipContent *fullContent; // @synthesize fullContent=_fullContent;
+@property(copy, nonatomic) NSString *eyebrow; // @synthesize eyebrow=_eyebrow;
 @property(nonatomic) long long subContentType; // @synthesize subContentType=_subContentType;
 @property(nonatomic) long long type; // @synthesize type=_type;
 @property(nonatomic, getter=isSiriSuggestion) _Bool siriSuggestion; // @synthesize siriSuggestion=_siriSuggestion;
 - (id)debugDescription;
-- (id)URLSchemeWithLaunchSource:(id)arg1;
+- (id)URLSchemeWithReferrer:(id)arg1;
 - (_Bool)hasWidgetContent;
 - (void)addCollectionIdentifier:(id)arg1;
 - (void)updateWithContentDictionary:(id)arg1 metadata:(id)arg2;
@@ -51,6 +52,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithDictionary:(id)arg1 metadata:(id)arg2;
 - (id)shareText;
+- (id)footnoteContent;
 - (id)bodyContent;
 - (id)bodyText;
 - (id)webURLPath;
@@ -60,6 +62,7 @@
 - (_Bool)hasImage;
 - (id)shortTitle;
 - (id)title;
+- (id)eyebrowText;
 - (_Bool)textContainsHTML;
 - (_Bool)containsLinks;
 

@@ -10,6 +10,7 @@
 
 @class NSString, _MRNowPlayingInfoProtobuf, _MRNowPlayingPlayerPathProtobuf, _MRPlaybackQueueCapabilitiesProtobuf, _MRPlaybackQueueProtobuf, _MRPlaybackQueueRequestProtobuf, _MRSupportedCommandsProtobuf;
 
+__attribute__((visibility("hidden")))
 @interface _MRSetStateMessageProtobuf : PBCodable <NSCopying>
 {
     double _playbackStateTimestamp;
@@ -29,37 +30,13 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) double playbackStateTimestamp; // @synthesize playbackStateTimestamp=_playbackStateTimestamp;
-@property(retain, nonatomic) _MRPlaybackQueueRequestProtobuf *request; // @synthesize request=_request;
-@property(retain, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;
-@property(retain, nonatomic) _MRPlaybackQueueCapabilitiesProtobuf *playbackQueueCapabilities; // @synthesize playbackQueueCapabilities=_playbackQueueCapabilities;
-@property(retain, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
-@property(retain, nonatomic) NSString *displayID; // @synthesize displayID=_displayID;
-@property(retain, nonatomic) _MRPlaybackQueueProtobuf *playbackQueue; // @synthesize playbackQueue=_playbackQueue;
-@property(retain, nonatomic) _MRSupportedCommandsProtobuf *supportedCommands; // @synthesize supportedCommands=_supportedCommands;
-@property(retain, nonatomic) _MRNowPlayingInfoProtobuf *nowPlayingInfo; // @synthesize nowPlayingInfo=_nowPlayingInfo;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasPlaybackStateTimestamp;
-@property(readonly, nonatomic) _Bool hasRequest;
-@property(readonly, nonatomic) _Bool hasPlayerPath;
-@property(readonly, nonatomic) _Bool hasPlaybackQueueCapabilities;
-- (int)StringAsPlaybackState:(id)arg1;
-- (id)playbackStateAsString:(int)arg1;
-@property(nonatomic) _Bool hasPlaybackState;
-@property(nonatomic) int playbackState; // @synthesize playbackState=_playbackState;
-@property(readonly, nonatomic) _Bool hasDisplayName;
-@property(readonly, nonatomic) _Bool hasDisplayID;
-@property(readonly, nonatomic) _Bool hasPlaybackQueue;
-@property(readonly, nonatomic) _Bool hasSupportedCommands;
-@property(readonly, nonatomic) _Bool hasNowPlayingInfo;
 
 @end
 

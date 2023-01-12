@@ -20,6 +20,7 @@
     _Bool _shouldBypassApplicationStateChecking;
     _Bool _discardBackBuffers;
     _Bool _shouldRenderOnLayout;
+    _Bool _shouldCheckDrawableAvailable;
     _Bool _viewIsVisible;
     _Bool _paused;
     ARUIRenderer *_renderer;
@@ -51,6 +52,7 @@
 @property(nonatomic, getter=isPaused) _Bool paused; // @synthesize paused=_paused;
 @property(readonly, nonatomic) _Bool viewIsVisible; // @synthesize viewIsVisible=_viewIsVisible;
 @property(nonatomic) long long preferredFramesPerSecond; // @synthesize preferredFramesPerSecond=_preferredFramesPerSecond;
+@property(nonatomic) _Bool shouldCheckDrawableAvailable; // @synthesize shouldCheckDrawableAvailable=_shouldCheckDrawableAvailable;
 @property(nonatomic) _Bool shouldRenderOnLayout; // @synthesize shouldRenderOnLayout=_shouldRenderOnLayout;
 @property(nonatomic) _Bool discardBackBuffers; // @synthesize discardBackBuffers=_discardBackBuffers;
 @property(nonatomic) _Bool shouldBypassApplicationStateChecking; // @synthesize shouldBypassApplicationStateChecking=_shouldBypassApplicationStateChecking;

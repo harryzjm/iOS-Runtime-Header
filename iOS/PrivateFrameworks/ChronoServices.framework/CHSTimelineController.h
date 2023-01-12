@@ -19,6 +19,9 @@
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *extensionBundleIdentifier; // @synthesize extensionBundleIdentifier=_extensionBundleIdentifier;
 @property(readonly, copy, nonatomic) NSString *avocadoIdentifier; // @synthesize avocadoIdentifier=_avocadoIdentifier;
+- (id)reloadTimelineBudgetedWithReason:(id)arg1;
+- (id)reloadTimelineBudgeted;
+- (id)reloadTimelineWithReason:(id)arg1;
 - (id)reloadTimeline;
 - (id)initForAvocadoIdentifier:(id)arg1 inBundleIdentifier:(id)arg2;
 

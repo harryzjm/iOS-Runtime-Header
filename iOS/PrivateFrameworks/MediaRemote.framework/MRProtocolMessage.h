@@ -6,30 +6,32 @@
 
 #import <objc/NSObject.h>
 
-@class MRProtocolClientConnection, MSVMultiCallback, NSData, NSError, NSString, PBCodable;
+@class MRProtocolClientConnection, MRProtocolMessageOptions, NSData, NSError, NSString, PBCodable;
 
 @interface MRProtocolMessage : NSObject
 {
     NSData *_protobufData;
     _Bool _replied;
-    MSVMultiCallback *_messageSentCallbacks;
-    MSVMultiCallback *_messagePurgedCallbacks;
-    _Bool _isReply;
+    _Bool _isIncomingReply;
+    _Bool _isOutgoingReply;
     PBCodable *_underlyingCodableMessage;
     NSError *_error;
     NSString *_replyIdentifier;
     NSString *_uniqueIdentifier;
     unsigned long long _timestamp;
+    MRProtocolMessageOptions *_transportOptions;
     MRProtocolClientConnection *_clientConnection;
 }
 
 + (id)protocolMessageWithProtobufData:(id)arg1 error:(id *)arg2;
 + (unsigned long long)currentProtocolVersion;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool isReply; // @synthesize isReply=_isReply;
+@property(nonatomic) _Bool isOutgoingReply; // @synthesize isOutgoingReply=_isOutgoingReply;
+@property(nonatomic) _Bool isIncomingReply; // @synthesize isIncomingReply=_isIncomingReply;
 @property(nonatomic) __weak MRProtocolClientConnection *clientConnection; // @synthesize clientConnection=_clientConnection;
+@property(retain, nonatomic) MRProtocolMessageOptions *transportOptions; // @synthesize transportOptions=_transportOptions;
 @property(nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
-@property(readonly, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
+@property(copy, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property(copy, nonatomic) NSString *replyIdentifier; // @synthesize replyIdentifier=_replyIdentifier;
 @property(copy, nonatomic) NSError *error; // @synthesize error=_error;
 @property(retain, nonatomic) PBCodable *underlyingCodableMessage; // @synthesize underlyingCodableMessage=_underlyingCodableMessage;
@@ -37,14 +39,12 @@
 - (_Bool)replyWithMessage:(id)arg1;
 - (_Bool)reply;
 @property(readonly, nonatomic) _Bool shouldLog;
-@property(readonly, nonatomic) unsigned long long priority;
 @property(readonly, nonatomic) unsigned long long type;
 @property(readonly, nonatomic) unsigned long long encryptionType;
 @property(readonly, nonatomic) NSString *description;
 - (void)dealloc;
-@property(readonly, nonatomic) MSVMultiCallback *messagePurgedCallbacks;
-@property(readonly, nonatomic) MSVMultiCallback *messageSentCallbacks;
 - (id)initWithUnderlyingCodableMessage:(id)arg1 error:(id)arg2;
+- (id)init;
 
 @end
 

@@ -13,6 +13,8 @@
     MISSING_TYPE *decorationView;
     MISSING_TYPE *title;
     MISSING_TYPE *subtitle;
+    MISSING_TYPE *wantsVerticalLayout;
+    MISSING_TYPE *achievementsTheme;
 }
 
 - (void).cxx_destruct;

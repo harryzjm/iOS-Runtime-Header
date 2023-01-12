@@ -6,11 +6,13 @@
 
 #import <PhotosUI/NSObject-Protocol.h>
 
-@class PXUIAssetBadgeView;
+@class PXUIAssetBadgeView, UIMenu;
 
 @protocol PXUIAssetBadgeViewDelegate <NSObject>
 
 @optional
+- (void)assetBadgeView:(PXUIAssetBadgeView *)arg1 dismissAnyPresentedViewControllerWithCompletion:(void (^)(void))arg2;
 - (void)assetBadgeView:(PXUIAssetBadgeView *)arg1 userDidSelectBadges:(unsigned long long)arg2;
+- (UIMenu *)assetBadgeView:(PXUIAssetBadgeView *)arg1 menuForBadges:(unsigned long long)arg2;
 @end
 

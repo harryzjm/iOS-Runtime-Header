@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <CallKit/CXCopying-Protocol.h>
 #import <CallKit/NSSecureCoding-Protocol.h>
 
-@class CXHandle, NSDate, NSURL, NSUUID;
+@class CXHandle, NSDate, NSString, NSURL, NSUUID;
 
-@interface CXVoicemail : NSObject <NSSecureCoding>
+@interface CXVoicemail : NSObject <NSSecureCoding, CXCopying>
 {
     _Bool _played;
     _Bool _trashed;
@@ -33,14 +34,18 @@
 - (void)updateSanitizedCopy:(id)arg1 withZone:(struct _NSZone *)arg2;
 - (id)sanitizedCopyWithZone:(struct _NSZone *)arg1;
 - (id)sanitizedCopy;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqualToVoicemail:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithUUID:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

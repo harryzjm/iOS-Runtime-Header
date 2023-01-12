@@ -12,6 +12,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (_Bool)isAccessibilityElement;
+- (void)layoutSubviews;
+- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

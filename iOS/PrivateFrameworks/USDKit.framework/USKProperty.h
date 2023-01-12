@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MISSING_TYPE, NSString, USKToken;
+@class MISSING_TYPE, NSString, USKNode, USKScene, USKToken;
 
 @interface USKProperty
 {
     struct UsdProperty _property;
+    USKScene *_sceneOwner;
+    USKNode *_nodeOwner;
 }
 
 - (id).cxx_construct;
@@ -146,6 +148,8 @@
 - (_Bool)isAnimated;
 - (id)dataAtTime:(double)arg1;
 - (id)data;
+- (void)clearValue;
+- (void)clearMetadata;
 - (void)clearConnections;
 - (_Bool)setConnectionWithTargetPaths:(id)arg1;
 - (id)connectedPropertyPaths;
@@ -163,6 +167,8 @@
 - (unsigned long long)arraySizeAtTime:(double)arg1;
 - (unsigned long long)arraySize;
 - (id)parentNode;
+- (id)initWithUsdProperty:(struct UsdProperty)arg1 withNodeOwner:(id)arg2;
+- (id)initWithUsdProperty:(struct UsdProperty)arg1 withSceneOwner:(id)arg2;
 - (id)initWithUsdProperty:(struct UsdProperty)arg1;
 @property(readonly, nonatomic) USKToken *roleName;
 @property(readonly, nonatomic) NSString *role;

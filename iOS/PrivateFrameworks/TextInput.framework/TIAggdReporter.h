@@ -6,13 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@interface TIAggdReporter : NSObject
+#import <TextInput/TIAggdReporting-Protocol.h>
+
+@class NSString;
+
+@interface TIAggdReporter : NSObject <TIAggdReporting>
 {
 }
 
 + (id)getDefaultSoftwareLayout;
++ (id)singletonInstance;
 + (id)sharedAggdReporter;
 + (void)setSharedAggdReporter:(id)arg1;
+- (void)pushValue:(double)arg1 forKey:(id)arg2;
+- (void)setValue:(double)arg1 forDistributionKey:(id)arg2;
+- (void)clearDistributionKey:(id)arg1;
+- (void)decrementKey:(id)arg1;
+- (void)incrementKey:(id)arg1;
+- (void)subtractValue:(long long)arg1 forKey:(id)arg2;
+- (void)addValue:(long long)arg1 forKey:(id)arg2;
+- (void)setValue:(long long)arg1 forScalarKey:(id)arg2;
+- (void)clearScalarKey:(id)arg1;
+- (int)commit;
+- (void)significantTimeChanged;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

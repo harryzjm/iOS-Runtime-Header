@@ -10,5 +10,8 @@
 
 @protocol TFBetaLaunchHandleActivationDelegate <NSObject>
 - (void)betaLaunchHandle:(TFBetaLaunchHandle *)arg1 activateIfNeededEndedWithResult:(_Bool)arg2;
+
+@optional
+- (void)betaLaunchHandleDidDismissInfo:(TFBetaLaunchHandle *)arg1;
 @end
 

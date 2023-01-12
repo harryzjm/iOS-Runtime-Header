@@ -24,6 +24,7 @@
     double _pinchLastDate;
     _Bool _wasPinching;
     _Bool _wasInteractiveZooming;
+    unsigned long long _supportLevel;
     id _pauseToken;
     _Bool _lowMemoryMode;
     _Bool _isPinching;
@@ -33,6 +34,7 @@
     _Bool _aspectFit;
     _Bool _captionsVisible;
     _Bool _wantsDimmedSelectionStyle;
+    _Bool _wantsNumberedSelectionStyle;
     _Bool _wantsOverBackgroundFloatingHeaderAppearance;
     _Bool _layoutExtendsContentBelowBounds;
     _Bool _shouldHideSurroundingContent;
@@ -49,6 +51,7 @@
     NSArray *_allowedColumnWidths;
     PXAssetReference *_anchorAssetReference;
     PXZoomableInlineHeadersDataSourceManager *_inlineHeadersDataSourceManager;
+    CDUnknownBlockType _effectProvider;
     PXUpdater *_updater;
     CDStruct_7c4e768e _pinchState;
     CDStruct_8bc229d5 _zoomState;
@@ -58,10 +61,12 @@
 @property(nonatomic) _Bool hasInlineHeadersContent; // @synthesize hasInlineHeadersContent=_hasInlineHeadersContent;
 @property(readonly, nonatomic) _Bool isPerformingInitialChanges; // @synthesize isPerformingInitialChanges=_isPerformingInitialChanges;
 @property(readonly, nonatomic) PXUpdater *updater; // @synthesize updater=_updater;
+@property(readonly, nonatomic) CDUnknownBlockType effectProvider; // @synthesize effectProvider=_effectProvider;
 @property(readonly, nonatomic) PXZoomableInlineHeadersDataSourceManager *inlineHeadersDataSourceManager; // @synthesize inlineHeadersDataSourceManager=_inlineHeadersDataSourceManager;
 @property(nonatomic) _Bool shouldHideSurroundingContent; // @synthesize shouldHideSurroundingContent=_shouldHideSurroundingContent;
 @property(readonly, nonatomic) _Bool layoutExtendsContentBelowBounds; // @synthesize layoutExtendsContentBelowBounds=_layoutExtendsContentBelowBounds;
 @property(readonly, nonatomic) _Bool wantsOverBackgroundFloatingHeaderAppearance; // @synthesize wantsOverBackgroundFloatingHeaderAppearance=_wantsOverBackgroundFloatingHeaderAppearance;
+@property(readonly, nonatomic) _Bool wantsNumberedSelectionStyle; // @synthesize wantsNumberedSelectionStyle=_wantsNumberedSelectionStyle;
 @property(readonly, nonatomic) _Bool wantsDimmedSelectionStyle; // @synthesize wantsDimmedSelectionStyle=_wantsDimmedSelectionStyle;
 @property(readonly, nonatomic) _Bool captionsVisible; // @synthesize captionsVisible=_captionsVisible;
 @property(readonly, nonatomic) _Bool aspectFit; // @synthesize aspectFit=_aspectFit;
@@ -96,10 +101,12 @@
 - (void)_invalidateAllowedColumns;
 - (void)_setNeedsUpdate;
 - (void)didPerformChanges;
+- (void)setEffectProvider:(CDUnknownBlockType)arg1;
 - (void)setLayoutExtendsContentBelowBounds:(_Bool)arg1;
 - (void)setWantsOverBackgroundFloatingHeaderAppearance:(_Bool)arg1;
 - (void)setInteractiveZoomColumnIndex:(double)arg1 withAnchorAssetReference:(id)arg2;
 - (void)setIsInteractiveZooming:(_Bool)arg1;
+- (void)setWantsNumberedSelectionStyle:(_Bool)arg1;
 - (void)setWantsDimmedSelectionStyle:(_Bool)arg1;
 - (void)setCaptionsVisible:(_Bool)arg1;
 - (void)setAspectFit:(_Bool)arg1;

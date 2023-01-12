@@ -19,7 +19,7 @@
     NSArray *_classLabels;
 }
 
-+ (id)loadModelFromSpecification:(struct _MLModelSpecification *)arg1 configuration:(id)arg2 error:(id *)arg3;
++ (id)loadModelFromSpecification:(void *)arg1 configuration:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *classLabels; // @synthesize classLabels=_classLabels;
 @property unsigned long long inputSize; // @synthesize inputSize=_inputSize;
@@ -30,7 +30,7 @@
 - (_Bool)hasProbabilityPredictionEnabled;
 - (id)predict:(id)arg1;
 - (void)deallocSVMNodeVector:(struct svm_node *)arg1;
-- (void)fillSVMNodeVector:(struct svm_node *)arg1 values:(double *)arg2 count:(unsigned long long)arg3;
+- (void)fillSVMNodeVector:(struct svm_node *)arg1 values:(const double *)arg2 count:(unsigned long long)arg3;
 - (struct svm_node *)allocSVMNodeVector:(unsigned long long)arg1;
 @property(readonly, nonatomic) unsigned long long numberOfClasses;
 - (void)dealloc;

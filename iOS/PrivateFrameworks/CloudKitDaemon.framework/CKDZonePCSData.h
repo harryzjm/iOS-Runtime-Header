@@ -9,7 +9,6 @@
 
 @class CKDSharePCSData, CKRecordID, CKRecordZoneID, NSData, NSDate;
 
-__attribute__((visibility("hidden")))
 @interface CKDZonePCSData <NSSecureCoding, NSCopying>
 {
     struct _OpaquePCSShareProtection *_zoneishPCS;

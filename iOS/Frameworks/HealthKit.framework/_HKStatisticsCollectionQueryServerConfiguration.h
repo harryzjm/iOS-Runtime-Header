@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDate, NSDateComponents;
+@class HKStatisticsCollectionCacheSettings, NSDate, NSDateComponents, NSDateInterval;
 
 __attribute__((visibility("hidden")))
 @interface _HKStatisticsCollectionQueryServerConfiguration
@@ -13,10 +13,14 @@ __attribute__((visibility("hidden")))
     unsigned long long _options;
     NSDateComponents *_intervalComponents;
     unsigned long long _mergeStrategy;
+    NSDateInterval *_dateInterval;
+    HKStatisticsCollectionCacheSettings *_cacheSettings;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) HKStatisticsCollectionCacheSettings *cacheSettings; // @synthesize cacheSettings=_cacheSettings;
+@property(copy, nonatomic) NSDateInterval *dateInterval; // @synthesize dateInterval=_dateInterval;
 @property(nonatomic) unsigned long long mergeStrategy; // @synthesize mergeStrategy=_mergeStrategy;
 @property(copy, nonatomic) NSDateComponents *intervalComponents; // @synthesize intervalComponents=_intervalComponents;
 @property(nonatomic) unsigned long long options; // @synthesize options=_options;

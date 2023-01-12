@@ -21,6 +21,7 @@
 + (void)assembleURL:(id)arg1 sandbox:(id)arg2 physicalURL:(id)arg3 physicalSandbox:(id)arg4;
 + (_Bool)supportsSecureCoding;
 + (id)wrapperWithSecurityScopedURL:(id)arg1;
++ (id)wrapperWithURL:(id)arg1 extensionClass:(const char *)arg2 report:(_Bool)arg3 error:(id *)arg4;
 + (id)wrapperWithURL:(id)arg1 extensionClass:(const char *)arg2 error:(id *)arg3;
 + (id)wrapperWithURL:(id)arg1 readonly:(_Bool)arg2 error:(id *)arg3;
 + (id)wrapperWithURL:(id)arg1 readonly:(_Bool)arg2;
@@ -32,6 +33,10 @@
 @property(copy, nonatomic) NSURL *url; // @synthesize url=_url;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)description;
+- (id)initWithURL:(id)arg1 extensionClass:(const char *)arg2 report:(_Bool)arg3 error:(id *)arg4;
+- (id)_init;
+- (id)init;
 
 @end
 

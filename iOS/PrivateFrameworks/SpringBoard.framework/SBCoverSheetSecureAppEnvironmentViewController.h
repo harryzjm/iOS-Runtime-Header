@@ -8,23 +8,26 @@
 
 #import <SpringBoard/CSApplicationHosting-Protocol.h>
 #import <SpringBoard/SBCoverSheetSlidingViewControllerContentViewController-Protocol.h>
+#import <SpringBoard/SBFZStackParticipantDelegate-Protocol.h>
 #import <SpringBoard/SBHomeGestureParticipantDelegate-Protocol.h>
 #import <SpringBoard/SBHomeGrabberPointerClickDelegate-Protocol.h>
 #import <SpringBoard/SBSecureAppObserver-Protocol.h>
 
-@class NSString, SBDashBoardHostedAppViewController, SBHomeGestureParticipant;
+@class NSString, SBDashBoardHostedAppViewController, SBFZStackParticipant, SBHomeGestureParticipant;
 @protocol BSInvalidatable, SBCoverSheetSecureAppEnvironmentViewControllerDelegate;
 
-@interface SBCoverSheetSecureAppEnvironmentViewController : UIViewController <SBHomeGestureParticipantDelegate, SBHomeGrabberPointerClickDelegate, SBSecureAppObserver, CSApplicationHosting, SBCoverSheetSlidingViewControllerContentViewController>
+@interface SBCoverSheetSecureAppEnvironmentViewController : UIViewController <SBHomeGestureParticipantDelegate, SBFZStackParticipantDelegate, SBHomeGrabberPointerClickDelegate, SBSecureAppObserver, CSApplicationHosting, SBCoverSheetSlidingViewControllerContentViewController>
 {
     id <BSInvalidatable> _biometricMatchingAssertion;
     unsigned long long _currentOrientationMask;
     SBDashBoardHostedAppViewController *_secureAppViewController;
     id <SBCoverSheetSecureAppEnvironmentViewControllerDelegate> _delegate;
     SBHomeGestureParticipant *_homeGestureParticipant;
+    SBFZStackParticipant *_zStackParticipant;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) SBFZStackParticipant *zStackParticipant; // @synthesize zStackParticipant=_zStackParticipant;
 @property(retain, nonatomic) SBHomeGestureParticipant *homeGestureParticipant; // @synthesize homeGestureParticipant=_homeGestureParticipant;
 @property(nonatomic) __weak id <SBCoverSheetSecureAppEnvironmentViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) SBDashBoardHostedAppViewController *secureAppViewController; // @synthesize secureAppViewController=_secureAppViewController;
@@ -32,6 +35,8 @@
 - (void)relinquishHiddenAssertionForHomeGrabber:(id)arg1 animated:(_Bool)arg2;
 - (void)takeHiddenAssertionForHomeGrabber:(id)arg1 animated:(_Bool)arg2;
 - (void)updateHomeGrabberHiddenAssertion:(_Bool)arg1;
+- (void)zStackParticipant:(id)arg1 updatePreferences:(id)arg2;
+- (void)zStackParticipantDidChange:(id)arg1;
 - (void)homeGestureParticipantOwningHomeGestureDidChange:(id)arg1;
 - (void)_updateSupportedOrientationsMaskForSecureAppAction;
 - (id)_currentSecureAppAction;

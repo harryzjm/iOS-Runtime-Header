@@ -10,13 +10,12 @@
 #import <QuickLook/QLPreviewItemPrivateProtocol-Protocol.h>
 #import <QuickLook/QLTExtensionThumbnailItem-Protocol.h>
 
-@class FPItem, FPSandboxingURLWrapper, NSData, NSDictionary, NSItemProvider, NSNumber, NSString, NSURL, NSUUID, QLItemFetcher, QLPreviewItemEditedCopy, QLUTIAnalyzer, UIColor;
+@class FPItem, FPSandboxingURLWrapper, NSData, NSDictionary, NSItemProvider, NSNumber, NSString, NSURL, NSUUID, QLGeneratorFetcher, QLItemFetcher, QLPreviewItemEditedCopy, QLTBitmapFormat, QLURLHandler, QLUTIAnalyzer, UIColor;
 @protocol QLItemThumbnailGeneratorProtocolInternal, QLPreviewItemDataProvider, QLPreviewItemPrivateProtocol;
 
 @interface QLItem : NSObject <QLTExtensionThumbnailItem, QLPreviewItemPrivateProtocol, NSSecureCoding>
 {
     long long _editedFileExtensionHandle;
-    _Bool _useAVPlayerViewController;
     _Bool _useFullPDFTransition;
     _Bool _useLoadingTimeout;
     _Bool _wantsPreviewInDebugViewController;
@@ -25,8 +24,7 @@
     _Bool _canHandleEditedCopy;
     _Bool _originalContentWasUpdated;
     _Bool _canBeShared;
-    _Bool _hasDeterminedShouldUseThirdPartyPreviewExtension;
-    _Bool _shouldUseThirdPartyPreviewExtension;
+    _Bool _hasDeterminedThirdPartyPreviewExtensionType;
     _Bool _hasDeterminedShouldUseExtensionThumbnail;
     _Bool _shouldUseExtensionThumbnail;
     _Bool _hasDeterminedPredictedPreferredContentSizeForOrbPlatter;
@@ -36,6 +34,10 @@
     id <QLPreviewItemPrivateProtocol> _originalPreviewItem;
     NSURL *_previewItemURL;
     NSData *_previewItemData;
+    unsigned long long _stringEncoding;
+    NSDictionary *_attachments;
+    QLTBitmapFormat *_bitmapFormat;
+    QLURLHandler *_generatedURLHandler;
     id <QLPreviewItemDataProvider> _previewItemDataProvider;
     NSString *_searchableItemIdentifier;
     NSString *_spotlightQueryString;
@@ -57,8 +59,13 @@
     long long _processIdentifier;
     long long _editingMode;
     unsigned long long _editedFileBehavior;
+    unsigned long long _previewExtensionType;
     FPSandboxingURLWrapper *_sandboxingURLWrapper;
     NSDictionary *_clientPreviewOptions;
+    QLGeneratorFetcher *_generationFetcher;
+    NSString *_generatedItemContentType;
+    unsigned long long _generatedPreviewItemType;
+    unsigned long long _generatedReplyType;
     struct CGSize _preferredContentSizeForOrbPlatter;
 }
 
@@ -68,13 +75,18 @@
 + (_Bool)supportsSecureCoding;
 + (id)itemWithPreviewItem:(id)arg1;
 + (_Bool)shouldUseRemoteCollection:(id)arg1;
-+ (_Bool)_shouldUsePreviewExtensionForContentType:(id)arg1 firstPartyExtension:(_Bool)arg2;
++ (unsigned long long)_previewExtensionKindForContentType:(id)arg1 firstPartyExtension:(_Bool)arg2;
 + (id)contentTypesToPreviewTypes;
 + (_Bool)contentTypeConformsToRTFD:(id)arg1;
 + (id)rtfContentTypes;
 + (id)webContentTypes;
 + (id)supportedContentTypes;
++ (id)supportedContentTypeIdentifiers;
 - (void).cxx_destruct;
+@property unsigned long long generatedReplyType; // @synthesize generatedReplyType=_generatedReplyType;
+@property(nonatomic) unsigned long long generatedPreviewItemType; // @synthesize generatedPreviewItemType=_generatedPreviewItemType;
+@property(retain) NSString *generatedItemContentType; // @synthesize generatedItemContentType=_generatedItemContentType;
+@property(retain) QLGeneratorFetcher *generationFetcher; // @synthesize generationFetcher=_generationFetcher;
 @property _Bool needsAccessToExternalResources; // @synthesize needsAccessToExternalResources=_needsAccessToExternalResources;
 @property(copy, nonatomic) NSDictionary *clientPreviewOptions; // @synthesize clientPreviewOptions=_clientPreviewOptions;
 @property(retain, nonatomic) FPSandboxingURLWrapper *sandboxingURLWrapper; // @synthesize sandboxingURLWrapper=_sandboxingURLWrapper;
@@ -82,8 +94,8 @@
 @property(nonatomic) _Bool hasDeterminedPredictedPreferredContentSizeForOrbPlatter; // @synthesize hasDeterminedPredictedPreferredContentSizeForOrbPlatter=_hasDeterminedPredictedPreferredContentSizeForOrbPlatter;
 @property(nonatomic) _Bool shouldUseExtensionThumbnail; // @synthesize shouldUseExtensionThumbnail=_shouldUseExtensionThumbnail;
 @property(nonatomic) _Bool hasDeterminedShouldUseExtensionThumbnail; // @synthesize hasDeterminedShouldUseExtensionThumbnail=_hasDeterminedShouldUseExtensionThumbnail;
-@property(nonatomic) _Bool shouldUseThirdPartyPreviewExtension; // @synthesize shouldUseThirdPartyPreviewExtension=_shouldUseThirdPartyPreviewExtension;
-@property(nonatomic) _Bool hasDeterminedShouldUseThirdPartyPreviewExtension; // @synthesize hasDeterminedShouldUseThirdPartyPreviewExtension=_hasDeterminedShouldUseThirdPartyPreviewExtension;
+@property(nonatomic) unsigned long long previewExtensionType; // @synthesize previewExtensionType=_previewExtensionType;
+@property(nonatomic) _Bool hasDeterminedThirdPartyPreviewExtensionType; // @synthesize hasDeterminedThirdPartyPreviewExtensionType=_hasDeterminedThirdPartyPreviewExtensionType;
 @property(nonatomic) unsigned long long editedFileBehavior; // @synthesize editedFileBehavior=_editedFileBehavior;
 @property(nonatomic) _Bool canBeShared; // @synthesize canBeShared=_canBeShared;
 @property(nonatomic) long long editingMode; // @synthesize editingMode=_editingMode;
@@ -110,6 +122,10 @@
 @property(retain) NSString *spotlightQueryString; // @synthesize spotlightQueryString=_spotlightQueryString;
 @property(retain) NSString *searchableItemIdentifier; // @synthesize searchableItemIdentifier=_searchableItemIdentifier;
 @property(retain) id <QLPreviewItemDataProvider> previewItemDataProvider; // @synthesize previewItemDataProvider=_previewItemDataProvider;
+@property(retain) QLURLHandler *generatedURLHandler; // @synthesize generatedURLHandler=_generatedURLHandler;
+@property(retain) QLTBitmapFormat *bitmapFormat; // @synthesize bitmapFormat=_bitmapFormat;
+@property(retain) NSDictionary *attachments; // @synthesize attachments=_attachments;
+@property unsigned long long stringEncoding; // @synthesize stringEncoding=_stringEncoding;
 @property(retain) NSData *previewItemData; // @synthesize previewItemData=_previewItemData;
 @property(retain, nonatomic) NSURL *previewItemURL; // @synthesize previewItemURL=_previewItemURL;
 @property(retain, nonatomic) id <QLPreviewItemPrivateProtocol> originalPreviewItem; // @synthesize originalPreviewItem=_originalPreviewItem;
@@ -118,7 +134,6 @@
 @property(copy, nonatomic) NSNumber *previewItemProviderProgress; // @synthesize previewItemProviderProgress=_previewItemProviderProgress;
 @property(nonatomic) _Bool useLoadingTimeout; // @synthesize useLoadingTimeout=_useLoadingTimeout;
 @property(nonatomic) _Bool useFullPDFTransition; // @synthesize useFullPDFTransition=_useFullPDFTransition;
-@property _Bool useAVPlayerViewController; // @synthesize useAVPlayerViewController=_useAVPlayerViewController;
 @property(readonly, nonatomic) NSURL *editedFileURL;
 - (void)_removeEditedCopyIfExists;
 - (id)saveURL;
@@ -158,13 +173,16 @@
 - (long long)defaultWhitePointAdaptivityStyle;
 - (double)maxLoadingTime;
 - (_Bool)useExtensionThumbnail;
-- (_Bool)useThirdPartyPreviewExtension;
+- (unsigned long long)previewExtensionTypeToUse;
+- (id)previewItemViewControllerClassNameForType:(unsigned long long)arg1;
 - (id)previewItemViewControllerClassName;
 - (id)previewItemPrintingViewControllerClassName;
 - (Class)transformerClass;
 - (_Bool)isStandardQuickLookType;
+- (unsigned long long)_previewItemTypeForType:(id)arg1;
+- (unsigned long long)_getGeneratedItemType;
 - (unsigned long long)_getPreviewItemType;
-- (unsigned long long)_uncachedPreviewItemType;
+- (unsigned long long)_uncachedPreviewItemTypeForContentType:(id)arg1;
 - (unsigned long long)_uncachedExtensionPreviewItemType;
 
 // Remaining properties
@@ -173,7 +191,6 @@
 @property(readonly) unsigned long long hash;
 @property(readonly) NSURL *previewItemURLForDisplay;
 @property(readonly) Class superclass;
-@property(readonly) _Bool wantsDefaultMediaPlayer;
 
 @end
 

@@ -9,7 +9,7 @@
 }
 
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)loadFromArchive:(const struct WPTableInfoArchive *)arg1 unarchiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 @end
 

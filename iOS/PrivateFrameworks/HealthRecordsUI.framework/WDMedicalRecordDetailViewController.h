@@ -8,7 +8,7 @@
 
 #import <HealthRecordsUI/WDMedicalRecordDetailDataProviderDelegate-Protocol.h>
 
-@class HKAccountOwner, HKClinicalAccount, HKMedicalRecord, HRProfile, WDMedicalRecordDetailDataProvider;
+@class HKAccountOwner, HKClinicalAccount, HKMedicalRecord, HRProfile, NSDate, UIProgressHUD, WDMedicalRecordDetailDataProvider;
 
 __attribute__((visibility("hidden")))
 @interface WDMedicalRecordDetailViewController : HKTableViewController <WDMedicalRecordDetailDataProviderDelegate>
@@ -18,22 +18,34 @@ __attribute__((visibility("hidden")))
     HRProfile *_profile;
     HKMedicalRecord *_medicalRecord;
     WDMedicalRecordDetailDataProvider *_medicalRecordDataProvider;
+    NSDate *_hudEarliestDismissalDate;
+    UIProgressHUD *_hud;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) __weak UIProgressHUD *hud; // @synthesize hud=_hud;
+@property(copy, nonatomic) NSDate *hudEarliestDismissalDate; // @synthesize hudEarliestDismissalDate=_hudEarliestDismissalDate;
 @property(retain, nonatomic) WDMedicalRecordDetailDataProvider *medicalRecordDataProvider; // @synthesize medicalRecordDataProvider=_medicalRecordDataProvider;
 @property(retain, nonatomic) HKMedicalRecord *medicalRecord; // @synthesize medicalRecord=_medicalRecord;
 @property(retain, nonatomic) HRProfile *profile; // @synthesize profile=_profile;
 @property(readonly, copy, nonatomic) HKAccountOwner *accountOwner; // @synthesize accountOwner=_accountOwner;
 @property(readonly, copy, nonatomic) HKClinicalAccount *account; // @synthesize account=_account;
+- (void)trackUserInteraction;
+- (void)trackUserImpression;
 - (void)detailDataProviderHasDisplayItemUpdate:(id)arg1;
+- (void)_dismissViewController;
+- (void)_hideActivityWithError:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_showActivityInProgressUIWithMessage:(id)arg1;
+- (void)_deleteSignedClinicalData;
+- (void)_promptForSignedClinicalDataDeletion:(id)arg1;
 - (void)_tapToRadar:(id)arg1;
 - (id)_makeCopyMenuFor:(id)arg1;
 - (id)_pasteboardStringForRowAtIndexPath:(id)arg1;
 - (id)tableView:(id)arg1 contextMenuConfigurationForRowAtIndexPath:(id)arg2 point:(struct CGPoint)arg3;
-- (_Bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
+- (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
+- (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
+- (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;

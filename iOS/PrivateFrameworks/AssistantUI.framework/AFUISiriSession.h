@@ -9,18 +9,16 @@
 #import <AssistantUI/AFAssistantUIService-Protocol.h>
 #import <AssistantUI/AFSpeechDelegate-Protocol.h>
 #import <AssistantUI/AFUISiriSession-Protocol.h>
-#import <AssistantUI/AFUISpeechSynthesisLocalDelegate-Protocol.h>
-#import <AssistantUI/AFUIStateMachineDelegate-Protocol.h>
+#import <AssistantUI/SRUIFStateMachineDelegate-Protocol.h>
 
-@class AFAnalyticsTurnBasedInstrumentationContext, AFConnection, AFSettingsConnection, AFSpeechSynthesisRecord, AFUISiriSessionInfo, AFUISpeechSynthesis, AFUIStateMachine, NSArray, NSMutableSet, NSString;
+@class AFAnalyticsTurnBasedInstrumentationContext, AFConnection, AFSettingsConnection, AFSiriClientStateManager, AFSpeechSynthesisRecord, NSArray, NSMutableSet, NSString, SRUIFSiriSessionInfo, SRUIFStateMachine;
 @protocol AFUISiriSessionDelegate, AFUISiriSessionLocalDataSource, AFUISiriSessionLocalDelegate, OS_dispatch_group, OS_dispatch_queue;
 
-@interface AFUISiriSession : NSObject <AFAssistantUIService, AFSpeechDelegate, AFUIStateMachineDelegate, AFUISpeechSynthesisLocalDelegate, AFUISiriSession>
+@interface AFUISiriSession : NSObject <AFAssistantUIService, AFSpeechDelegate, SRUIFStateMachineDelegate, AFUISiriSession>
 {
     NSObject<OS_dispatch_queue> *_delegateQueue;
     _Bool _currentRequestDidPresent;
-    AFUIStateMachine *_stateMachine;
-    AFUISpeechSynthesis *_speechSynthesis;
+    SRUIFStateMachine *_stateMachine;
     AFSpeechSynthesisRecord *_lastSpeechSynthesisRecord;
     NSMutableSet *_speechRequestGroupGraveyard;
     AFConnection *_connection;
@@ -28,12 +26,14 @@
     _Bool _sendContextBeforeContinuingSpeechRequest;
     AFSettingsConnection *_settingsConnection;
     _Bool _isDeviceInStarkMode;
+    AFSiriClientStateManager *_clientStateManager;
+    unsigned long long _thinkingIntervalID;
     _Bool _eyesFree;
     _Bool _isProcessingAcousticIdRequest;
     id <AFUISiriSessionDelegate> _delegate;
     id <AFUISiriSessionLocalDataSource> _localDataSource;
     id <AFUISiriSessionLocalDelegate> _localDelegate;
-    AFUISiriSessionInfo *_siriSessionInfo;
+    SRUIFSiriSessionInfo *_siriSessionInfo;
     NSArray *_sessionDelegateContext;
     NSArray *_directActionApplicationContexts;
     NSObject<OS_dispatch_group> *_currentSpeechRequestGroup;
@@ -48,14 +48,17 @@
 @property(retain, nonatomic, getter=_currentSpeechRequestGroup, setter=_setCurrentSpeechRequestGroup:) NSObject<OS_dispatch_group> *currentSpeechRequestGroup; // @synthesize currentSpeechRequestGroup=_currentSpeechRequestGroup;
 @property(retain, nonatomic) NSArray *directActionApplicationContexts; // @synthesize directActionApplicationContexts=_directActionApplicationContexts;
 @property(retain, nonatomic) NSArray *sessionDelegateContext; // @synthesize sessionDelegateContext=_sessionDelegateContext;
-@property(retain, nonatomic) AFUISiriSessionInfo *siriSessionInfo; // @synthesize siriSessionInfo=_siriSessionInfo;
+@property(retain, nonatomic) SRUIFSiriSessionInfo *siriSessionInfo; // @synthesize siriSessionInfo=_siriSessionInfo;
 @property(readonly, nonatomic) _Bool isProcessingAcousticIdRequest; // @synthesize isProcessingAcousticIdRequest=_isProcessingAcousticIdRequest;
 @property(nonatomic, getter=isEyesFree) _Bool eyesFree; // @synthesize eyesFree=_eyesFree;
 @property(nonatomic) __weak id <AFUISiriSessionLocalDelegate> localDelegate; // @synthesize localDelegate=_localDelegate;
 @property(nonatomic) __weak id <AFUISiriSessionLocalDataSource> localDataSource; // @synthesize localDataSource=_localDataSource;
 @property(retain, nonatomic) id <AFUISiriSessionDelegate> delegate; // @synthesize delegate=_delegate;
-- (id)_invocationContextFromDirectActionEvent:(long long)arg1 appBundleIdentifier:(id)arg2;
+- (int)_mapEnhancedCarPlayTriggerMode:(long long)arg1;
+- (id)_invocationContextFromTVRemoteType:(unsigned long long)arg1;
+- (void)_updateCarPlayInvocationContext:(id)arg1 fromDirectActionEvent:(long long)arg2 appBundleIdentifier:(id)arg3;
 - (int)_mapInvocationSource:(long long)arg1;
+- (id)_invocationEventForRequestOptions:(id)arg1 localDataSource:(id)arg2;
 - (void)_updateActiveAccount:(id)arg1 withNumberOfActiveAccounts:(unsigned long long)arg2;
 - (void)_updateActiveAccount:(id)arg1;
 - (void)settingsConnectionDidChangeActiveAccount:(id)arg1;
@@ -69,13 +72,16 @@
 - (void)endForReason:(long long)arg1;
 - (void)end;
 - (void)_discardCurrentSpeechGroup;
-- (void)performAceCommands:(id)arg1;
-- (void)performAceCommand:(id)arg1;
 - (void)siriUIDidPresentDynamicSnippetWithInfo:(id)arg1;
-- (void)performAceCommand:(id)arg1 conflictHandler:(CDUnknownBlockType)arg2;
+- (_Bool)_aceObjectExpectsTurnIdentifierWhenSendingCommand:(id)arg1;
+- (void)_performAceCommand:(id)arg1 turnIdentifier:(id)arg2 conflictHandler:(CDUnknownBlockType)arg3;
+- (void)_performAceCommands:(id)arg1;
+- (void)performAceCommand:(id)arg1 turnIdentifier:(id)arg2;
 - (void)_handleRequestUpdateViewsCommand:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_performAceCommand:(id)arg1 forRequestUpdateViewsCommand:(id)arg2 afterDelay:(double)arg3;
+- (void)_handleUnlockDeviceWithWatchCommand:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_handleUnlockDeviceCommand:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setAnnouncementRequestsPermittedByPresentationWhileActive:(_Bool)arg1;
 - (void)setLockState:(unsigned long long)arg1;
 - (void)setCarDNDActive:(_Bool)arg1;
 - (void)setDeviceInStarkMode:(_Bool)arg1;
@@ -92,7 +98,15 @@
 - (void)_startRequestWithText:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_startRequestWithInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_startContinuityRequestWithInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_startDirectActionRequestWithString:(id)arg1 appID:(id)arg2 withContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_startLegacyDirectActionRequestWithInfo:(id)arg1 context:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)notifyStateManagerTransactionEnded;
+- (void)notifyStateManagerTransactionBegan;
+- (void)notifyStateManagerSpeakingEnded;
+- (void)notifyStateManagerSpeakingBegan;
+- (void)notifyStateManagerPresentationTransitionEnded;
+- (void)notifyStateManagerPresentationTransitionBegan;
+- (void)speechSynthesisDidUpdatePowerLevelTo:(float)arg1;
+- (void)speechSynthesisDidFinish:(id)arg1;
 - (void)audioRoutePickerWillDismiss;
 - (void)audioRoutePickerWillShow;
 - (void)recordMetricsContext:(id)arg1 forDisambiguatedAppWIthBundleIdentifier:(id)arg2;
@@ -112,6 +126,8 @@
 - (_Bool)_hasActiveRequest;
 - (void)_startRequestWithBlock:(CDUnknownBlockType)arg1;
 - (void)_requestWillStart;
+- (void)assistantConnectionAudioSessionDidEndInterruption:(id)arg1 shouldResume:(_Bool)arg2 userInfo:(id)arg3;
+- (void)assistantConnectionAudioSessionDidBeginInterruption:(id)arg1 userInfo:(id)arg2;
 - (void)assistantConnection:(id)arg1 speechRecognizedPartialResult:(id)arg2;
 - (void)assistantConnection:(id)arg1 recognitionUpdateWithPhrases:(id)arg2 utterances:(id)arg3 refId:(id)arg4;
 - (void)assistantConnection:(id)arg1 recognizedAdditionalSpeechInterpretation:(id)arg2 refId:(id)arg3;
@@ -124,6 +140,7 @@
 - (void)assistantConnection:(id)arg1 speechRecordingDidChangeAVRecordRoute:(id)arg2;
 - (void)assistantConnection:(id)arg1 speechRecordingDidBeginOnAVRecordRoute:(id)arg2 audioSessionID:(unsigned int)arg3;
 - (void)assistantConnectionSpeechRecordingWillBegin:(id)arg1;
+- (void)_playPhaticWithCompletion:(id)arg1;
 - (void)assistantConnection:(id)arg1 speechRecordingPerformTwoShotPromptWithType:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_updateAssistantVersion:(id)arg1;
 - (void)assistantConnection:(id)arg1 appLaunchFailedWithBundleIdentifier:(id)arg2;
@@ -137,7 +154,6 @@
 - (void)assistantConnection:(id)arg1 didChangeAudioSessionID:(unsigned int)arg2;
 - (void)assistantConnection:(id)arg1 startPlaybackDidFail:(long long)arg2;
 - (void)assistantConnection:(id)arg1 willProcessStartPlayback:(long long)arg2 intent:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)assistantConnection:(id)arg1 shouldSpeak:(_Bool)arg2;
 - (void)assistantConnection:(id)arg1 openURL:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)assistantConnectionRequestFinished:(id)arg1;
 - (void)assistantConnection:(id)arg1 requestFailedWithError:(id)arg2 requestClass:(id)arg3;
@@ -149,23 +165,18 @@
 - (void)assistantConnection:(id)arg1 receivedCommand:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_setRefIdForAllViewsInAddViews:(id)arg1;
 - (CDUnknownBlockType)safeWrapResponseCompletion:(CDUnknownBlockType)arg1;
-- (void)assistantConnectionAudioSessionDidBeginInterruption:(id)arg1;
 - (void)assistantConnectionRequestWillStart:(id)arg1;
-- (void)speechSynthesisDidFinish:(id)arg1;
-- (_Bool)speechSynthesisConnectionIsRecording:(id)arg1;
-- (void)speechSynthesis:(id)arg1 prepareForSpeakingWithOptions:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)stopCurrentRecordingForSpeechSynthesis:(id)arg1;
-- (void)speechSynthesis:(id)arg1 didUpdatePowerLevelTo:(float)arg2;
-- (id)speechSynthesis;
+- (_Bool)_shouldFetchActiveAccount;
 - (void)_continuePendingSpeechRequest;
 - (void)updateRequestOptions:(id)arg1;
 - (void)stopRequestWithOptions:(id)arg1;
 - (void)startRequestWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)startRequestWithOptions:(id)arg1;
+- (void)_startRequestForReadoutOfBulletin:(id)arg1;
 - (void)_startRequestWithFinalOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)resumeInterruptedAudioPlaybackIfNeeded;
 - (void)forceAudioSessionInactive;
-- (void)forceAudioSessionActiveForReason:(long long)arg1;
+- (void)forceAudioSessionActiveWithCompletion:(CDUnknownBlockType)arg1;
 - (void)forceAudioSessionActive;
 - (void)preheat;
 - (void)_performBlockWithDelegate:(CDUnknownBlockType)arg1;
@@ -176,7 +187,6 @@
 - (id)_stateMachine;
 @property(readonly, nonatomic, getter=_connection) AFConnection *connection;
 - (void)_siriNetworkAvailabilityDidChange:(id)arg1;
-- (void)_outputVoiceDidChange:(id)arg1;
 - (void)dealloc;
 - (id)initWithConnection:(id)arg1 delegateQueue:(id)arg2;
 

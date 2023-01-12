@@ -5,6 +5,7 @@
 //
 
 @protocol BCSNFCReaderDelegate
+- (void)nfcReaderDidDetectNonNDEFTag;
 - (void)nfcReaderStateDidChange:(long long)arg1;
 @end
 

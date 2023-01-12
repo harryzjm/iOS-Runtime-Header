@@ -5,14 +5,14 @@
 //
 
 #import <SpringBoard/BNPresentable-Protocol.h>
-#import <SpringBoard/SBButtonEventsHandler-Protocol.h>
 
 @class NSString;
 
-@protocol SBBannerManagerPresentable <BNPresentable, SBButtonEventsHandler>
+@protocol SBBannerManagerPresentable <BNPresentable>
 
 @optional
 - (_Bool)shouldDismissForReason:(NSString *)arg1;
+- (_Bool)shouldDismissForReason:(NSString *)arg1 outReason:(id *)arg2;
 - (_Bool)shouldAcquireWindowLevelAssertion;
 @end
 

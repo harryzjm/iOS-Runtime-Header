@@ -25,14 +25,14 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) QLFileThumbnailRequest *request; // @synthesize request=_request;
 - (id)_thumbnailDataDestructionConcurrenQueue;
 - (_Bool)_canCreateContextOfSize:(struct CGSize)arg1 forRequest:(id)arg2;
-- (void)_executeCompletionHandlerWithThumbnailData:(id)arg1 thumbnailURL:(id)arg2 ioSurface:(id)arg3 drawingContextSize:(struct CGSize)arg4 didGenerateThumbnail:(_Bool)arg5 error:(id)arg6;
+- (void)_executeCompletionHandlerWithThumbnailData:(id)arg1 thumbnailURL:(id)arg2 ioSurface:(id)arg3 drawingContextSize:(struct CGSize)arg4 bitmapFormat:(id)arg5 didGenerateThumbnail:(_Bool)arg6 error:(id)arg7;
 - (struct CGSize)_IOSurfaceSizeFromThumbnailReply:(id)arg1;
 - (void)_drawInIOSurface;
 - (void)_didReceiveThumbnailURL:(id)arg1;
-- (void)_didGenerateThumbnailWithData:(id)arg1 drawingContextSize:(struct CGSize)arg2;
+- (void)_didGenerateThumbnailWithData:(id)arg1 bitmapFormat:(id)arg2 drawingContextSize:(struct CGSize)arg3;
 - (void)_thumbnailGenerationDidFailWithError:(id)arg1;
-- (void)_drawInCurrentContextOfSize:(struct CGSize)arg1 drawingBlock:(CDUnknownBlockType)arg2;
-- (void)_drawInContextOfSize:(struct CGSize)arg1 drawingBlock:(CDUnknownBlockType)arg2;
+- (void)_drawInCurrentContextOfSize:(struct CGSize)arg1 colorSpace:(struct CGColorSpace *)arg2 drawingBlock:(CDUnknownBlockType)arg3;
+- (void)_drawInContextOfSize:(struct CGSize)arg1 colorSpace:(struct CGColorSpace *)arg2 drawingBlock:(CDUnknownBlockType)arg3;
 - (void)generateThumbnailAndPerformCompletionHandler;
 - (id)initWithRequest:(id)arg1 reply:(id)arg2 completionHandler:(CDUnknownBlockType)arg3 surfaceGenerator:(id)arg4;
 

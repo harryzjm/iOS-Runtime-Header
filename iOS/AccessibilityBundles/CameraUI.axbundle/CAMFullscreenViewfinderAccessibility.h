@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)setImageAnalysisButtonVisible:(_Bool)arg1 animated:(_Bool)arg2;
 - (_Bool)accessibilityPerformEscape;
 - (void)setControlDrawerExpanded:(_Bool)arg1 animated:(_Bool)arg2;
 

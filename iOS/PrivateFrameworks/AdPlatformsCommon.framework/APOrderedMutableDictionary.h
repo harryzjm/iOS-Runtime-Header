@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSMutableOrderedSet;
+@class NSArray, NSMutableDictionary, NSMutableOrderedSet;
 
 @interface APOrderedMutableDictionary : NSObject
 {
@@ -14,6 +14,8 @@
     NSMutableOrderedSet *_mutableOrderedSet;
 }
 
++ (id)dictionaryWithCapacity:(unsigned long long)arg1;
++ (id)dictionary;
 - (void).cxx_destruct;
 - (void)enumerateKeysUsingBlock:(CDUnknownBlockType)arg1;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
@@ -26,7 +28,10 @@
 - (void)removeObjectForKey:(id)arg1;
 - (id)objectForKey:(id)arg1;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
+- (void)setValue:(id)arg1 forKey:(id)arg2;
+@property(readonly, nonatomic) NSArray *allKeys;
 @property(readonly, nonatomic) unsigned long long count;
+- (id)initWithCapacity:(unsigned long long)arg1;
 - (id)init;
 
 @end

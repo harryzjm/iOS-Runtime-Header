@@ -17,6 +17,7 @@
     int _type;
     int _attribute;
     int _entity;
+    unsigned int _flags;
     NSUUID *_uuid;
     NSString *_name;
     NSDate *_creationTime;
@@ -27,6 +28,7 @@
 + (_Bool)supportsSecureCoding;
 + (id)biometricKitIdentity;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned int flags; // @synthesize flags=_flags;
 @property(nonatomic) long long updateCount; // @synthesize updateCount=_updateCount;
 @property(nonatomic) long long matchCount; // @synthesize matchCount=_matchCount;
 @property(retain, nonatomic) NSDate *creationTime; // @synthesize creationTime=_creationTime;

@@ -8,7 +8,7 @@
 
 #import <C2/NSCopying-Protocol.h>
 
-@class C2MPError, NSString;
+@class C2MPError, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface C2MPNetworkEvent : PBCodable <NSCopying>
@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
     NSString *_networkHostname;
     NSString *_networkInterfaceIdentifier;
     NSString *_networkNegotiatedTlsProtocolVersion;
+    NSMutableArray *_networkPathInfos;
     unsigned int _networkPreviousAttemptCount;
     NSString *_networkProtocolName;
     NSString *_networkRemoteAddresssAndPort;
@@ -52,6 +53,7 @@ __attribute__((visibility("hidden")))
     unsigned int _optionsTimeoutIntervalForResource;
     _Bool _networkConnectionReused;
     _Bool _networkIsDiscretionary;
+    _Bool _optionsAllowCellularAccess;
     _Bool _optionsAllowExpensiveAccess;
     _Bool _optionsAllowPowerNapScheduling;
     _Bool _optionsAppleIdContext;
@@ -84,6 +86,7 @@ __attribute__((visibility("hidden")))
         unsigned int optionsTimeoutIntervalForResource:1;
         unsigned int networkConnectionReused:1;
         unsigned int networkIsDiscretionary:1;
+        unsigned int optionsAllowCellularAccess:1;
         unsigned int optionsAllowExpensiveAccess:1;
         unsigned int optionsAllowPowerNapScheduling:1;
         unsigned int optionsAppleIdContext:1;
@@ -93,7 +96,9 @@ __attribute__((visibility("hidden")))
     } _has;
 }
 
++ (Class)networkPathInfoType;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool optionsAllowCellularAccess; // @synthesize optionsAllowCellularAccess=_optionsAllowCellularAccess;
 @property(retain, nonatomic) NSString *optionsDuetPreClearedMode; // @synthesize optionsDuetPreClearedMode=_optionsDuetPreClearedMode;
 @property(retain, nonatomic) NSString *optionsDiscretionaryNetworkBehavior; // @synthesize optionsDiscretionaryNetworkBehavior=_optionsDiscretionaryNetworkBehavior;
 @property(nonatomic) _Bool optionsTlsPinningRequired; // @synthesize optionsTlsPinningRequired=_optionsTlsPinningRequired;
@@ -119,6 +124,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long timestampC2Now; // @synthesize timestampC2Now=_timestampC2Now;
 @property(nonatomic) unsigned long long timestampC2Start; // @synthesize timestampC2Start=_timestampC2Start;
 @property(nonatomic) unsigned long long timestampC2Init; // @synthesize timestampC2Init=_timestampC2Init;
+@property(retain, nonatomic) NSMutableArray *networkPathInfos; // @synthesize networkPathInfos=_networkPathInfos;
 @property(retain, nonatomic) NSString *networkNegotiatedTlsProtocolVersion; // @synthesize networkNegotiatedTlsProtocolVersion=_networkNegotiatedTlsProtocolVersion;
 @property(nonatomic) _Bool networkIsDiscretionary; // @synthesize networkIsDiscretionary=_networkIsDiscretionary;
 @property(retain, nonatomic) NSString *networkRequestUri; // @synthesize networkRequestUri=_networkRequestUri;
@@ -148,6 +154,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasOptionsAllowCellularAccess;
 @property(readonly, nonatomic) _Bool hasOptionsDuetPreClearedMode;
 @property(readonly, nonatomic) _Bool hasOptionsDiscretionaryNetworkBehavior;
 @property(nonatomic) _Bool hasOptionsTlsPinningRequired;
@@ -173,6 +180,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool hasTimestampC2Now;
 @property(nonatomic) _Bool hasTimestampC2Start;
 @property(nonatomic) _Bool hasTimestampC2Init;
+- (id)networkPathInfoAtIndex:(unsigned long long)arg1;
+- (unsigned long long)networkPathInfosCount;
+- (void)addNetworkPathInfo:(id)arg1;
+- (void)clearNetworkPathInfos;
 @property(readonly, nonatomic) _Bool hasNetworkNegotiatedTlsProtocolVersion;
 @property(nonatomic) _Bool hasNetworkIsDiscretionary;
 @property(readonly, nonatomic) _Bool hasNetworkRequestUri;

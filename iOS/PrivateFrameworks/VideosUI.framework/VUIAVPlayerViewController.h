@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSArray *customControlItems;
 @property(readonly, nonatomic) AVPlayerViewControllerCustomControlsView *customControlsView;
 @property(readonly, copy) NSString *debugDescription;
+@property(nonatomic) __weak id delegate;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(nonatomic) _Bool playbackControlsIncludeDisplayModeControls;

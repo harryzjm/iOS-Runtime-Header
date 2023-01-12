@@ -10,7 +10,7 @@
 
 @interface CMKappaInternal : NSObject
 {
-    struct CLConnectionClient *fLocationdConnection;
+    void *fLocationdConnection;
     NSObject<OS_dispatch_queue> *fInternalQueue;
     _Bool fStartedUpdates;
     CDUnknownBlockType fHandler;

@@ -18,6 +18,7 @@
 - (id)createManagedObjectWithError:(id *)arg1;
 - (id)copyManagedObject:(id *)arg1;
 @property(readonly) LogHead *parsedLogHead;
+@property _Bool gossip;
 @property(retain) TransparencyManagedDataStore *dataStore;
 @property(retain) TransparencySignatureVerifier *verifier;
 

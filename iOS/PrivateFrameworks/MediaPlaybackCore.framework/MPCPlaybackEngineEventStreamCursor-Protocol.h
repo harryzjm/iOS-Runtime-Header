@@ -10,6 +10,8 @@
 @protocol MPCPlaybackEngineEventStreamCursor;
 
 @protocol MPCPlaybackEngineEventStreamCursor <NSObject>
+@property(readonly, nonatomic) MPCPlaybackEngineEvent *endEvent;
+@property(readonly, nonatomic) MPCPlaybackEngineEvent *startEvent;
 - (id <MPCPlaybackEngineEventStreamCursor>)cursorFromEvent:(MPCPlaybackEngineEvent *)arg1 untilEvent:(MPCPlaybackEngineEvent *)arg2;
 - (id <MPCPlaybackEngineEventStreamCursor>)cursorUntilEvent:(MPCPlaybackEngineEvent *)arg1;
 - (long long)countOfPreviousEventsWithTypes:(NSArray *)arg1 matchingPayload:(NSDictionary *)arg2;

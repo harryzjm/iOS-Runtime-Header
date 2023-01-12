@@ -6,7 +6,7 @@
 
 #import <AssetExplorer/AEPhotosAssetPackageFinalizer-Protocol.h>
 
-@class AEChatKitStatisticsManager, NSMutableDictionary, NSObject;
+@class NSMutableDictionary, NSObject;
 @protocol AEChatKitTransportDelegate, OS_dispatch_group, OS_dispatch_queue;
 
 @interface AEChatKitTransport <AEPhotosAssetPackageFinalizer>
@@ -14,11 +14,9 @@
     NSObject<OS_dispatch_group> *__packagePreparationGroup;
     NSObject<OS_dispatch_queue> *__urlSidetableIsolationQueue;
     NSMutableDictionary *__alternateURLsByIdentifier;
-    AEChatKitStatisticsManager *__statisticsManager;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) AEChatKitStatisticsManager *_statisticsManager; // @synthesize _statisticsManager=__statisticsManager;
 @property(readonly, nonatomic) NSMutableDictionary *_alternateURLsByIdentifier; // @synthesize _alternateURLsByIdentifier=__alternateURLsByIdentifier;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *_urlSidetableIsolationQueue; // @synthesize _urlSidetableIsolationQueue=__urlSidetableIsolationQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_group> *_packagePreparationGroup; // @synthesize _packagePreparationGroup=__packagePreparationGroup;

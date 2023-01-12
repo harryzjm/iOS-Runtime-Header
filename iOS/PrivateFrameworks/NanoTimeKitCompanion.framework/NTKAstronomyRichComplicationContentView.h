@@ -24,9 +24,11 @@
     unsigned int _isRenderOneFrame:1;
     NTKDelayedBlock *_stopAnimationDelayedBlock;
     CLLocation *_currentLocation;
+    _Bool _editing;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool editing; // @synthesize editing=_editing;
 - (void)setTimeTravelDate:(id)arg1 animated:(_Bool)arg2;
 - (void)renderSynchronouslyWithImageQueueDiscard:(_Bool)arg1 inGroup:(id)arg2;
 @property(readonly, nonatomic) CLKUIQuadView *quadView;

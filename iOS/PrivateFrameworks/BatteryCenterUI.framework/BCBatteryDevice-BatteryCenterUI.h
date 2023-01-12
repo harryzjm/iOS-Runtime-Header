@@ -10,6 +10,6 @@
 + (id)_internalBatteryDeviceGlyphName;
 + (struct CGSize)batteryWidgetGlyphLargestSize;
 - (id)batteryWidgetGlyph;
-- (id)_batteryWidgetGlyphName:(out _Bool *)arg1;
+- (id)_batteryWidgetGlyphName;
 @end
 

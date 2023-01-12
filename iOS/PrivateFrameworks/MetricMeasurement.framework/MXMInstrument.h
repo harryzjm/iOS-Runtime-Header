@@ -6,17 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSString, NSURL;
-@protocol MXMInstrumentDelegate, OS_dispatch_queue;
+@class NSArray, NSData, NSString, NSURL;
+@protocol OS_dispatch_queue;
 
 @interface MXMInstrument : NSObject
 {
     _Bool _didQuiesce;
     NSArray *_instrumentals;
     NSURL *_performanceTraceFileURL;
+    NSData *_perfMetricsPerfdata;
     NSString *_performanceTraceFileSandboxExtensionToken;
-    NSDictionary *_performanceTestConfiguration;
-    id <MXMInstrumentDelegate> _delegate;
     CDStruct_33f31899 *_currentIteration;
     NSObject<OS_dispatch_queue> *_instrumentalsQueue;
 }
@@ -25,20 +24,19 @@
 + (id)activeInstrument;
 + (void)load;
 - (void).cxx_destruct;
+@property(readonly) _Bool didQuiesce; // @synthesize didQuiesce=_didQuiesce;
 @property(readonly) NSObject<OS_dispatch_queue> *instrumentalsQueue; // @synthesize instrumentalsQueue=_instrumentalsQueue;
 @property CDStruct_33f31899 *currentIteration; // @synthesize currentIteration=_currentIteration;
-@property(readonly) _Bool didQuiesce; // @synthesize didQuiesce=_didQuiesce;
-@property(retain, nonatomic) id <MXMInstrumentDelegate> delegate; // @synthesize delegate=_delegate;
-@property(retain) NSDictionary *performanceTestConfiguration; // @synthesize performanceTestConfiguration=_performanceTestConfiguration;
 @property(readonly) NSString *performanceTraceFileSandboxExtensionToken; // @synthesize performanceTraceFileSandboxExtensionToken=_performanceTraceFileSandboxExtensionToken;
+@property(readonly) NSData *perfMetricsPerfdata; // @synthesize perfMetricsPerfdata=_perfMetricsPerfdata;
 @property(readonly) NSURL *performanceTraceFileURL; // @synthesize performanceTraceFileURL=_performanceTraceFileURL;
 @property(readonly, nonatomic) NSArray *instrumentals; // @synthesize instrumentals=_instrumentals;
 - (void)dealloc;
-- (void)quiesceDidUpdate:(_Bool)arg1 error:(id)arg2;
 - (id)_validOptionKeys;
 - (id)_defaultValueWithOption:(id)arg1;
 - (id)_valueWithOption:(id)arg1 userOptions:(id)arg2;
 - (id)_makeInstrumentalsForIteration:(id)arg1 shouldCopy:(_Bool)arg2;
+- (void)_makePerfDataFromMXMResults:(id)arg1 testName:(id)arg2;
 - (id)measureAutomatically:(unsigned long long)arg1 options:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (id)measureAutomatically:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
 - (id)measureWithOptions:(id)arg1 block:(CDUnknownBlockType)arg2;

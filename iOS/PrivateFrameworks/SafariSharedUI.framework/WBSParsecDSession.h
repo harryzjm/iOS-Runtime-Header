@@ -18,35 +18,40 @@
     WBSParsecDFeedbackDispatcher *_feedbackDispatcher;
     GEOUserSessionEntity *_threadUnsafeGEOUserSessionEntity;
     struct os_unfair_lock_s _geoUserSessionLock;
+    WBSCompletionQuery *_currentQuery;
+    NSString *_rewrittenQueryStringFromParsec;
+    id <WBSParsecSearchSessionDelegate> _delegate;
+    _Bool _abTestingEnabled;
     _Bool _skipAutoFillDataUpdates;
-    double _threadUnsafeUIScale;
-    WBSCompletionQuery *_threadUnsafeCurrentQuery;
+    double _uiScale;
     WBSParsecABGroupManager *_abGroupManager;
-    id <WBSParsecSearchSessionDelegate> _threadUnsafeDelegate;
-    PARSession *_threadUnsafeParsecdSession;
+    PARSession *_parsecdSession;
     unsigned long long _currentQueryID;
 }
 
 + (void)_updateAutoFillCorrectionSetsIfNeededForSession:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)_updateAutoFillTLDsIfNeededForSession:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (void)_updateParsecAvailabilityInSessionConfiguration:(id)arg1;
++ (void)_parsecEnabledDidChange:(id)arg1;
++ (id)_sharedSessionConfiguration;
 + (id)sharedCorrectionsProcessor;
 + (id)sharedDomainPolicyProvider;
 + (id)sharedPARSession;
 - (void).cxx_destruct;
 @property unsigned long long currentQueryID; // @synthesize currentQueryID=_currentQueryID;
+@property(readonly, nonatomic) PARSession *parsecdSession; // @synthesize parsecdSession=_parsecdSession;
 @property(readonly, nonatomic) _Bool skipAutoFillDataUpdates; // @synthesize skipAutoFillDataUpdates=_skipAutoFillDataUpdates;
+@property(readonly, nonatomic, getter=isABTestingEnabled) _Bool abTestingEnabled; // @synthesize abTestingEnabled=_abTestingEnabled;
+@property(readonly, copy, nonatomic) NSString *rewrittenQueryStringFromParsec;
 - (void)_startUpdatingAutoFillDataInBackgroundIfPossibleForSession:(id)arg1;
 - (void)session:(id)arg1 bag:(id)arg2 didLoadWithError:(id)arg3;
-- (_Bool)_isABTestingEnabledOnProcessingQueue;
-@property(readonly, nonatomic, getter=isABTestingEnabled) _Bool abTestingEnabled;
 @property(readonly, nonatomic) WBSParsecABGroupManager *abGroupManager; // @synthesize abGroupManager=_abGroupManager;
 @property(readonly, nonatomic) id <WBSParsecFeedbackDispatcher> feedbackDispatcher;
 - (void)_didReceiveResponse:(id)arg1 error:(id)arg2 forTask:(id)arg3 query:(id)arg4;
 - (void)_setCurrentQuery:(id)arg1 withKeyboardInputType:(id)arg2;
-@property(retain, nonatomic) WBSCompletionQuery *currentQuery; // @synthesize currentQuery=_threadUnsafeCurrentQuery;
-@property(nonatomic, setter=setUIScale:) double uiScale; // @synthesize uiScale=_threadUnsafeUIScale;
-@property(retain, nonatomic) PARSession *parsecdSession; // @synthesize parsecdSession=_threadUnsafeParsecdSession;
-@property(nonatomic) __weak id <WBSParsecSearchSessionDelegate> delegate; // @synthesize delegate=_threadUnsafeDelegate;
+- (void)setCurrentQuery:(id)arg1;
+@property(nonatomic, setter=setUIScale:) double uiScale; // @synthesize uiScale=_uiScale;
+- (void)setDelegate:(id)arg1;
 - (id)initWithParsecdSession:(id)arg1 skipAutoFillDataUpdates:(_Bool)arg2;
 
 // Remaining properties

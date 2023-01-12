@@ -19,6 +19,8 @@
     RTMapItemProviderBluePOIParameters *_parameters;
 }
 
++ (id)harvestTypeToString:(unsigned long long)arg1;
++ (int)harvestTypeToPoiTriggerType:(unsigned long long)arg1;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) RTMapItemProviderBluePOIParameters *parameters; // @synthesize parameters=_parameters;
 @property(readonly, nonatomic) RTPlatform *platform; // @synthesize platform=_platform;
@@ -27,7 +29,7 @@
 @property(retain, nonatomic) RTLocationManager *locationManager; // @synthesize locationManager=_locationManager;
 @property(retain, nonatomic) RTFingerprintManager *fingerprintManager; // @synthesize fingerprintManager=_fingerprintManager;
 @property(readonly, nonatomic) RTInferredMapItemDeduper *inferredMapItemDeduper; // @synthesize inferredMapItemDeduper=_inferredMapItemDeduper;
-- (_Bool)harvestVisits:(id)arg1 mapItem:(id)arg2 error:(id *)arg3;
+- (_Bool)harvestVisits:(id)arg1 mapItem:(id)arg2 harvestType:(unsigned long long)arg3 error:(id *)arg4;
 - (_Bool)submitHarvest:(id)arg1 error:(id *)arg2;
 - (id)poiHarvestForFingerprint:(id)arg1 mapItem:(id)arg2 referenceLocation:(id)arg3 endDate:(id)arg4 error:(id *)arg5;
 - (id)filterByDistance:(id)arg1 location:(id)arg2 thresholdForUnknownLabel:(double)arg3 error:(id *)arg4;

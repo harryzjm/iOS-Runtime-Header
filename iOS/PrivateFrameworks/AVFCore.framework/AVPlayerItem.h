@@ -45,8 +45,12 @@
 + (void)initialize;
 + (void)_uninitializeProtectedContentPlaybackSupportSession:(id)arg1;
 + (id)_initializeProtectedContentPlaybackSupportSessionAsynchronouslyForProvider:(id)arg1 withOptions:(id)arg2;
+- (void)_setPlaybackCoordinator:(id)arg1;
+- (id)_playbackCoordinator;
+- (void)_updateItemIdentifierForCoordinatedPlayback;
 - (void)setAllowedAudioSpatializationFormats:(unsigned long long)arg1;
 - (unsigned long long)allowedAudioSpatializationFormats;
+- (void)_updateAllowedAudioSpatializationFormatsFromFigItem;
 - (void)_updateAllowedAudioSpatializationFormats;
 - (_Bool)allowedAudioSpatializationFormatsWasSet;
 - (void)setAudioSpatializationAllowed:(_Bool)arg1;
@@ -57,7 +61,9 @@
 - (void)_updateAdvanceTimeForOverlappedPlaybackOnFigPlaybackItem;
 - (_Bool)advanceTimeForOverlappedPlaybackWasSet;
 - (CDStruct_1b6d18a9)advanceTimeForOverlappedPlayback;
-- (void)_updateCanPlayAndCanStepPropertiesWhenReadyToPlayWithNotificationPayload:(id)arg1;
+- (void)_updateCanPlayAndCanStepPropertiesWhenReadyToPlayWithNotificationPayload:(id)arg1 updateStatusToReadyToPlay:(_Bool)arg2;
+- (void)_removeInterstitialEventCollector;
+- (void)_addInterstitialEventCollector;
 - (void)setAudioTapProcessor:(struct opaqueMTAudioProcessingTap *)arg1;
 - (void)_updateAudioTapProcessorOnFigPlaybackItem;
 - (struct opaqueMTAudioProcessingTap *)audioTapProcessor;
@@ -73,6 +79,14 @@
 - (id)videoApertureMode;
 - (void)setVideoApertureMode:(id)arg1;
 - (void)_updateVideoApertureModeOnFigPlaybackItem;
+- (void)setPreferredMaximumAudioSampleRate:(double)arg1;
+- (void)_updatePreferredMaximumAudioSampleRateOnFigPlaybackItem;
+- (double)preferredMaximumAudioSampleRate;
+- (void)setVariantPreferences:(unsigned long long)arg1;
+- (void)_updateVariantPreferencesOnFigPlaybackItem;
+- (unsigned long long)variantPreferences;
+- (_Bool)prefersOfflinePlayableVariants;
+- (void)setPrefersOfflinePlayableVariants:(_Bool)arg1;
 - (_Bool)suppressesAudioOnlyVariants;
 - (void)setSuppressesAudioOnlyVariants:(_Bool)arg1;
 - (void)setRequiresAccessLog:(_Bool)arg1;
@@ -80,6 +94,9 @@
 - (void)_renderingSuppressionDidChangeForOutput:(id)arg1;
 - (void)setPreferredMinimumResolution:(struct CGSize)arg1;
 - (void)_updatePreferredMinimumResolutionOnFigPlaybackItem;
+- (struct CGSize)preferredMaximumResolutionForExpensiveNetworks;
+- (void)setPreferredMaximumResolutionForExpensiveNetworks:(struct CGSize)arg1;
+- (void)_updatePreferredMaximumResolutionForExpensiveNetworksOnFigPlaybackItem;
 - (struct CGSize)preferredMinimumResolution;
 - (void)setPreferredMaximumResolution:(struct CGSize)arg1;
 - (void)_updatePreferredMaximumResolutionOnFigPlaybackItem;
@@ -88,6 +105,9 @@
 - (struct CGSize)preferredPeakPresentationSize;
 - (void)setMaximumBitRate:(float)arg1;
 - (float)maximumBitRate;
+- (void)setPreferredPeakBitRateForExpensiveNetworks:(double)arg1;
+- (void)_updatePreferredPeakBitRateForExpensiveNetworksOnFigPlaybackItem;
+- (double)preferredPeakBitRateForExpensiveNetworks;
 - (void)setPreferredPeakBitRate:(double)arg1;
 - (void)_updatePreferredPeakBitRateOnFigPlaybackItem;
 - (double)preferredPeakBitRate;
@@ -110,6 +130,7 @@
 - (_Bool)_suppressionForOutputs:(id)arg1;
 - (_Bool)hasEnabledAudio;
 - (_Bool)_hasEnabledAudio;
+- (_Bool)isRenderingSpatialAudio;
 - (_Bool)hasVideo;
 - (_Bool)hasEnabledVideo;
 - (_Bool)_hasEnabledVideo;
@@ -135,8 +156,7 @@
 - (void)selectMediaOptionAutomaticallyInMediaSelectionGroup:(id)arg1;
 - (void)selectMediaOption:(id)arg1 inMediaSelectionGroup:(id)arg2;
 - (void)_selectMediaOption:(id)arg1 inMediaSelectionGroup:(id)arg2 cacheIfAppropriate:(_Bool)arg3;
-- (void)_selectMediaOption:(id)arg1 inStreamingGroup:(id)arg2 cacheIfAppropriate:(_Bool)arg3;
-- (void)_selectMediaOption:(id)arg1 inNonStreamingGroup:(id)arg2 cacheIfAppropriate:(_Bool)arg3;
+- (void)_selectMediaOption:(id)arg1 inGroup:(id)arg2 cacheIfAppropriate:(_Bool)arg3;
 - (id)_propertyListForSelectedMediaOptionUsingFigSelectedMediaArrayObtainedFromGroup:(id)arg1;
 - (void)_allowSelectMediaOptionsAutomaticallyUsingFigSelectedMediaArrayObtainedFromGroup:(id)arg1;
 - (void)_selectMediaOption:(id)arg1 usingFigSelectedMediaArrayObtainedFromGroup:(id)arg2;
@@ -157,6 +177,7 @@
 - (float)soundCheckVolumeNormalization;
 - (void)setSoundCheckVolumeNormalization:(float)arg1;
 - (void)_updateSoundCheckVolumeNormalizationOnFigPlaybackItem;
+- (id)currentStableVariantID;
 - (void)setVariantIndex:(long long)arg1;
 - (void)_quietlySetVariantIndex:(long long)arg1;
 - (double)liveUpdateInterval;
@@ -205,6 +226,7 @@
 - (_Bool)seekingWaitsForVideoCompositionRendering;
 - (id)customVideoCompositor;
 - (void)_setVideoCompositor:(void *)arg1;
+- (void)_setVideoCompositionSourceSampleDataTrackIDs:(id)arg1;
 - (void)_setVideoCompositionInstructions:(id)arg1;
 - (void)_setVideoCompositionColorTransferFunction:(id)arg1;
 - (void)_setVideoCompositionColorYCbCrMatrix:(id)arg1;
@@ -287,6 +309,10 @@
 - (void)_updateReversesMoreVideoFramesInMemoryOnFigPlaybackItem;
 - (_Bool)reversesMoreVideoFramesInMemoryWasSet;
 - (_Bool)reversesMoreVideoFramesInMemory;
+- (void)setAppliesPerFrameHDRDisplayMetadata:(_Bool)arg1;
+- (void)_updateAppliesPerFrameHDRDisplayMetadataOnFigPlaybackItem;
+- (_Bool)appliesPerFrameHDRDisplayMetadataWasSet;
+- (_Bool)appliesPerFrameHDRDisplayMetadata;
 - (void)setBlendsVideoFrames:(_Bool)arg1;
 - (void)_updateBlendsVideoFramesOnFigPlaybackItem;
 - (_Bool)blendsVideoFramesWasSet;
@@ -295,6 +321,14 @@
 - (void)_updateImageQueueInterpolationCurveOnFigPlaybackItem;
 - (_Bool)imageQueueInterpolationCurveWasSet;
 - (id)imageQueueInterpolationCurve;
+- (void)setTimeToPausePlayback:(CDStruct_1b6d18a9)arg1;
+- (void)_updateTimeToPausePlaybackOnFigPlaybackItem;
+- (CDStruct_1b6d18a9)timeToPausePlayback;
+- (CDStruct_1b6d18a9)_timeToPausePlayback;
+- (void)setTimeToPauseBuffering:(CDStruct_1b6d18a9)arg1;
+- (void)_updateTimeToPauseBufferingOnFigPlaybackItem;
+- (CDStruct_1b6d18a9)timeToPauseBuffering;
+- (CDStruct_1b6d18a9)_timeToPauseBuffering;
 - (void)setReversePlaybackEndTime:(CDStruct_1b6d18a9)arg1;
 - (void)_updateReversePlaybackEndTimeOnFigPlaybackItem;
 - (CDStruct_1b6d18a9)reversePlaybackEndTime;
@@ -315,7 +349,7 @@
 - (void)seekToTime:(CDStruct_1b6d18a9)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)seekToTime:(CDStruct_1b6d18a9)arg1 toleranceBefore:(CDStruct_1b6d18a9)arg2 toleranceAfter:(CDStruct_1b6d18a9)arg3;
 - (void)seekToTime:(CDStruct_1b6d18a9)arg1;
-- (void)_unregisterInvokeAndReleasePendingSeekCompletionHandlerForSeekID:(int)arg1 finished:(_Bool)arg2;
+- (void)_unregisterInvokeAndReleasePendingSeekCompletionHandlerForSeekID:(int)arg1 completeAnyPendingSeek:(_Bool)arg2 finished:(_Bool)arg3;
 - (int)_cancelPendingSeekAndRegisterSeekCompletionHandler:(CDUnknownBlockType)arg1;
 - (int)_CreateSeekID;
 - (CDStruct_1b6d18a9)currentTime;
@@ -330,11 +364,11 @@
 - (void)_markAsReadyForInspectionOfRecommendedTimeOffsetFromLive;
 - (_Bool)_isReadyForInspectionOfRecommendedTimeOffsetFromLive;
 - (void)setConfiguredTimeOffsetFromLive:(CDStruct_1b6d18a9)arg1;
-- (void)_updateConfiguredTimeOffsetFromLiveOnFigPlaybackItem:(CDStruct_1b6d18a9)arg1;
+- (void)_updateConfiguredTimeOffsetFromLiveOnFigPlaybackItem;
 - (CDStruct_1b6d18a9)configuredTimeOffsetFromLive;
 - (CDStruct_1b6d18a9)_configuredTimeOffsetFromLive;
 - (void)setAutomaticallyPreservesTimeOffsetFromLive:(_Bool)arg1;
-- (void)_updatePreservesTimeOffsetFromLive:(_Bool)arg1;
+- (void)_updatePreservesTimeOffsetFromLive;
 - (_Bool)automaticallyPreservesTimeOffsetFromLive;
 - (_Bool)canStepBackward;
 - (_Bool)_canStepBackward;
@@ -393,6 +427,9 @@
 - (void)_setURL:(id)arg1;
 - (id)_URL;
 - (id)_propertyListForMediaSelection:(id)arg1 forGroup:(id)arg2;
+- (id)nonForcedSubtitleDisplayEnabledPublisher;
+- (id)tracksPublisher;
+- (id)presentationSizePublisher;
 - (void)_removeFromItems;
 - (void)_insertAfterItem:(id)arg1;
 - (id)_previousItem;
@@ -416,7 +453,9 @@
 - (id)delegate;
 - (id)_nameForLogging;
 - (id)description;
+- (id)copy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1 newAssetOptions:(id)arg2;
 - (void)dealloc;
 - (id)initWithAsset:(id)arg1 automaticallyLoadedAssetKeys:(id)arg2;
 - (id)initWithAsset:(id)arg1;
@@ -437,10 +476,10 @@
 - (id)accessLog;
 - (long long)_availableFileSize;
 - (long long)_fileSize;
-- (void)_setEQPreset:(int)arg1;
-- (void)_quietlySetEQPreset:(int)arg1;
 - (void)_setAudibleDRMInfo:(id)arg1;
 - (void)_setRampInOutInfo:(id)arg1;
+- (void)_setEQPreset:(int)arg1;
+- (void)_quietlySetEQPreset:(int)arg1;
 @property(readonly, nonatomic) NSArray *outputs;
 - (void)removeOutput:(id)arg1;
 - (void)_removeMetadataOutput:(id)arg1;
@@ -477,6 +516,9 @@
 - (void)setVideoEnhancementMode:(id)arg1;
 - (void)_updateVideoEnhancementModeOnFigPlaybackItem;
 - (id)videoEnhancementMode;
+- (void)_setTemplatePlayerItem:(id)arg1;
+@property(readonly, nonatomic) AVPlayerItem *templatePlayerItem;
+@property(nonatomic) _Bool automaticallyHandlesInterstitialEvents;
 
 @end
 

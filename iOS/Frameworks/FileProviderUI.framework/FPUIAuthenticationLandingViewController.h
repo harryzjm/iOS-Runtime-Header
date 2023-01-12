@@ -12,6 +12,7 @@
 @interface FPUIAuthenticationLandingViewController <UITextFieldDelegate, FPUIAuthenticationServerInfoDelegate>
 {
     FPUIAuthenticationSectionDescriptor *_recentServersSection;
+    FPUIAuthenticationSectionDescriptor *_recentServersExtraTopPaddingSection;
     NSMutableArray *_recentServersRowDescriptors;
     UITextField *_serverInputTextField;
     NSURL *_initialURL;
@@ -33,6 +34,8 @@
 - (void)_updateNextStep;
 - (void)_transitionUIStateToConnecting;
 - (void)authenticationDelegate:(id)arg1 didEncounterError:(id)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)_updateRecentServerSectionVisibilityWithRowAnimation:(long long)arg1;
 - (void)_showRecentServersSectionWithRecentServers:(id)arg1 rowAnimation:(long long)arg2;
 - (void)setupTableViewSections;
 - (id)defaultRightBarButtonItem;

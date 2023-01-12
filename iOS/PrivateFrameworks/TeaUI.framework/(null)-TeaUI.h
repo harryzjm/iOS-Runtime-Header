@@ -6,7 +6,5 @@
 
 @interface (null) (TeaUI)
 - (void)handleShareCommandWithSender:(id)arg1;
-- (void)handleAlternateMenuCommandWithSender:(id)arg1;
-- (void)handleMenuCommandWithSender:(id)arg1;
 @end
 

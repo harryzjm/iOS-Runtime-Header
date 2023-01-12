@@ -10,8 +10,8 @@
 
 @interface GEOThrottlerIsSafeReply <GEOXPCReply>
 {
-    double _nextSafeRequestTime;
     int _availableRequestCount;
+    double _nextSafeRequestTime;
     GEODataRequestThrottlerToken *_throttlerToken;
 }
 

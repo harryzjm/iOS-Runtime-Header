@@ -31,6 +31,8 @@
 - (void)updateUnreadIndicatorWithImage:(id)arg1 tintColor:(id)arg2;
 - (void)updateFromLabelWithText:(id)arg1;
 - (void)contentSizeCategoryDidChange;
+- (id)unreadIndicatorColorForVisibility:(_Bool)arg1 withMuteState:(_Bool)arg2;
+- (id)unreadIndicatorImageForVisibility:(_Bool)arg1 withMuteState:(_Bool)arg2;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 @end

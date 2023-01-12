@@ -4,10 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UITextCanvasViewContext-Protocol.h>
+#import <UIKitCore/_UITextCanvasContext-Protocol.h>
 
-@protocol _UITextViewCanvasViewContext <_UITextCanvasViewContext>
-@property(readonly, nonatomic) struct CGRect constrainedTiledRenderingRect;
+@protocol _UITextViewCanvasViewContext <_UITextCanvasContext>
 - (void)_ensureLayoutCompleteForRect:(struct CGRect)arg1;
 @end
 

@@ -20,7 +20,7 @@
     struct AURemoteParameterObserver *_remoteObserverToken;
     struct AURemoteParameterObserver *_remoteRecorderToken;
     NSXPCConnection *_remoteParameterSynchronizerXPCConnection;
-    vector_66b3461a _addrToParamIndex;
+    vector_c2436194 _addrToParamIndex;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -39,11 +39,11 @@
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *valueAccessQueue; // @synthesize valueAccessQueue=_valueAccessQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *observationQueue; // @synthesize observationQueue=_observationQueue;
 @property(nonatomic) int _autoCreatedForV2AU; // @synthesize _autoCreatedForV2AU=__autoCreatedForV2AU;
-@property(nonatomic) vector_66b3461a addrToParamIndex; // @synthesize addrToParamIndex=_addrToParamIndex;
+@property(nonatomic) vector_c2436194 addrToParamIndex; // @synthesize addrToParamIndex=_addrToParamIndex;
 - (void)remoteSyncParameter:(unsigned long long)arg1 value:(float)arg2 extOriginator:(unsigned long long)arg3 hostTime:(unsigned long long)arg4 eventType:(unsigned int)arg5;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (struct AUObserverController *)observerController;
+- (void *)observerController;
 - (void)_checkInitTreeObservation;
 - (id)parameterWithID:(unsigned int)arg1 scope:(unsigned int)arg2 element:(unsigned int)arg3;
 - (id)parameterWithAddress:(unsigned long long)arg1;

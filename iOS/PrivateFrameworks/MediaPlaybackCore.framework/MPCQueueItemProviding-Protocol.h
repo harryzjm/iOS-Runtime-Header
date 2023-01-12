@@ -4,14 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MPAVItem, NSString;
+#import <MediaPlaybackCore/NSObject-Protocol.h>
 
-@protocol MPCQueueItemProviding
+@class AVPlayerPlaybackCoordinator, MPAVItem, NSString;
+
+@protocol MPCQueueItemProviding <NSObject>
 @property(retain, nonatomic) MPAVItem *currentItem;
 - (_Bool)canSkipInDirection:(long long)arg1 fromQueueItem:(MPAVItem *)arg2;
 - (void)playerItemDidBecomeCurrent:(MPAVItem *)arg1;
 - (void)playerItemDidResignCurrent:(MPAVItem *)arg1;
-- (MPAVItem *)itemToFollowItem:(MPAVItem *)arg1 direction:(long long)arg2 distance:(long long)arg3 jumpToItem:(_Bool)arg4;
+- (MPAVItem *)itemToFollowItem:(MPAVItem *)arg1 direction:(long long)arg2 distance:(long long)arg3 jumpToItem:(_Bool)arg4 allowReuse:(_Bool)arg5;
 - (MPAVItem *)itemForContentItemID:(NSString *)arg1 allowReuse:(_Bool)arg2;
+
+@optional
+- (void)updatePlayerPlaybackCoordinator:(AVPlayerPlaybackCoordinator *)arg1;
 @end
 

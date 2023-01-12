@@ -15,13 +15,13 @@
 - (void)p_replaceSceneOfPipeline:(id)arg1 replacement:(id)arg2 duringBlock:(CDUnknownBlockType)arg3;
 - (void)getProjectedBounds:(id)arg1;
 - (void)get3DBounds:(id)arg1;
-- (void)runScene:(id)arg1 selector:(SEL)arg2;
+- (void)runScene:(id)arg1 objectBlock:(CDUnknownBlockType)arg2;
 - (void)setObjectRenderMode:(int)arg1;
 - (void)set2DProjectedRenderingMode:(_Bool)arg1;
 - (_Bool)useIndividualBounds;
-- (void)extend2DProjectedBounds:(const box_a3bd9649 *)arg1;
+- (void)extend2DProjectedBounds:(const void *)arg1;
 - (void)resetBounds;
-@property(readonly, nonatomic) const struct ObjectBounds *bounds;
+@property(readonly, nonatomic) const void *bounds;
 - (id)boundsProcessor;
 - (id)initWithScene:(id)arg1;
 - (id)initWithScene:(id)arg1 renderProcessor:(id)arg2;

@@ -10,7 +10,7 @@
 
 @interface _TtC15HealthRecordsUI24RecordReferenceRangeCell : UITableViewCell
 {
-    MISSING_TYPE *referenceRangeView;
+    MISSING_TYPE *expandedRangeValueView;
     MISSING_TYPE *valueInRange;
 }
 

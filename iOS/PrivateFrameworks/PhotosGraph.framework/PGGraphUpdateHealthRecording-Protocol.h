@@ -9,6 +9,7 @@
 @protocol PGGraphUpdateHealthRecording <NSObject>
 - (void)endRecordingInBackground:(_Bool)arg1;
 - (void)beginRecording;
+- (void)recordNumberOfDaysSinceMajorOSUpgrade:(unsigned long long)arg1;
 - (void)recordTransactionSize:(unsigned long long)arg1;
 - (void)recordNumberOfTimesGraphUpdatePaused:(unsigned long long)arg1;
 - (void)recordNumberOfDatabaseChangesConvertedToGraphChanges:(unsigned long long)arg1 inBackground:(_Bool)arg2;

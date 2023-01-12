@@ -6,8 +6,8 @@
 
 #import <Metal/NSObject-Protocol.h>
 
-@class NSString;
-@protocol MTLDevice;
+@class MTLIntersectionFunctionTableDescriptor, MTLRenderPipelineFunctionsDescriptor, MTLVisibleFunctionTableDescriptor, NSString;
+@protocol MTLDevice, MTLFunction, MTLFunctionHandle, MTLIntersectionFunctionTable, MTLRenderPipelineState, MTLVisibleFunctionTable;
 
 @protocol MTLRenderPipelineState <NSObject>
 @property(readonly) _Bool supportIndirectCommandBuffers;
@@ -16,6 +16,10 @@
 @property(readonly) unsigned long long maxTotalThreadsPerThreadgroup;
 @property(readonly) id <MTLDevice> device;
 @property(readonly) NSString *label;
+- (id <MTLRenderPipelineState>)newRenderPipelineStateWithAdditionalBinaryFunctions:(MTLRenderPipelineFunctionsDescriptor *)arg1 error:(id *)arg2;
+- (id <MTLIntersectionFunctionTable>)newIntersectionFunctionTableWithDescriptor:(MTLIntersectionFunctionTableDescriptor *)arg1 stage:(unsigned long long)arg2;
+- (id <MTLVisibleFunctionTable>)newVisibleFunctionTableWithDescriptor:(MTLVisibleFunctionTableDescriptor *)arg1 stage:(unsigned long long)arg2;
+- (id <MTLFunctionHandle>)functionHandleWithFunction:(id <MTLFunction>)arg1 stage:(unsigned long long)arg2;
 - (unsigned long long)imageblockMemoryLengthForDimensions:(CDStruct_da2e99ad)arg1;
 @end
 

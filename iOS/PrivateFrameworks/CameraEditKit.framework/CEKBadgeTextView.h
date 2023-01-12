@@ -26,6 +26,7 @@
 @property(retain, nonatomic, setter=_setTextAttributes:) NSDictionary *_textAttributes; // @synthesize _textAttributes=__textAttributes;
 @property(nonatomic) unsigned long long fontStyle; // @synthesize fontStyle=_fontStyle;
 @property(copy, nonatomic) NSString *contentSizeCategory; // @synthesize contentSizeCategory=_contentSizeCategory;
+- (void)traitCollectionDidChange:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (struct CGSize)_textSize;
 - (id)_maskImage;

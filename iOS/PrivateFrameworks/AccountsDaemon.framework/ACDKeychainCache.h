@@ -21,10 +21,10 @@
 @property(retain) NSMutableDictionary *expirersByUsername; // @synthesize expirersByUsername=_expirersByUsername;
 @property(retain) NSDictionary *cachesByUsername; // @synthesize cachesByUsername=_cachesByUsername;
 @property unsigned int cacheValidityDuration; // @synthesize cacheValidityDuration=_cacheValidityDuration;
-- (void)clearCache;
-- (void)clearDataForService:(id)arg1 username:(id)arg2;
-- (id)dataForService:(id)arg1 username:(id)arg2;
-- (void)cacheData:(id)arg1 forService:(id)arg2 username:(id)arg3;
+- (void)clearCacheForSyncState:(unsigned long long)arg1;
+- (void)clearDataForService:(id)arg1 username:(id)arg2 syncState:(unsigned long long)arg3;
+- (id)dataForService:(id)arg1 username:(id)arg2 syncState:(unsigned long long)arg3;
+- (void)cacheData:(id)arg1 forService:(id)arg2 username:(id)arg3 syncState:(unsigned long long)arg4;
 - (id)initWithValidityDuration:(unsigned int)arg1;
 
 @end

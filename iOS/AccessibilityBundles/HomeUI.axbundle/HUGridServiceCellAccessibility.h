@@ -15,6 +15,7 @@
 - (id)accessibilityValue;
 - (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
+- (_Bool)_asIsSensor;
 - (id)_axComposedString;
 - (id)_axServiceIconDescription;
 - (id)_axServiceNameComponents;

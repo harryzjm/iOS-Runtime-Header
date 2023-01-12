@@ -10,20 +10,16 @@
 
 @interface TISKTap : NSObject
 {
-    _Bool _downup;
     TIKeyboardTouchEvent *_firstTouch;
     TIKeyboardTouchEvent *_lastTouch;
     NSMutableArray *_dragTouches;
-    unsigned long long _numberOfDrags;
     long long _pathIndex;
     TIKeyboardLayout *_layout;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic, getter=isDownUpTap) _Bool downup; // @synthesize downup=_downup;
 @property(retain, nonatomic) TIKeyboardLayout *layout; // @synthesize layout=_layout;
 @property(nonatomic) long long pathIndex; // @synthesize pathIndex=_pathIndex;
-@property(nonatomic) unsigned long long numberOfDrags; // @synthesize numberOfDrags=_numberOfDrags;
 @property(retain, nonatomic) NSMutableArray *dragTouches; // @synthesize dragTouches=_dragTouches;
 @property(retain, nonatomic) TIKeyboardTouchEvent *lastTouch; // @synthesize lastTouch=_lastTouch;
 @property(retain, nonatomic) TIKeyboardTouchEvent *firstTouch; // @synthesize firstTouch=_firstTouch;
@@ -34,7 +30,9 @@
 - (struct CGRect)getFrameForKey:(id)arg1;
 - (double)upErrorDistance:(struct CGRect)arg1;
 - (double)downErrorDistance:(struct CGRect)arg1;
+@property(readonly, nonatomic, getter=isDownUpTap) _Bool downup;
 - (void)addDragTouch:(id)arg1;
+@property(readonly, nonatomic) unsigned long long numberOfDrags;
 - (id)init:(id)arg1 layout:(id)arg2;
 
 @end

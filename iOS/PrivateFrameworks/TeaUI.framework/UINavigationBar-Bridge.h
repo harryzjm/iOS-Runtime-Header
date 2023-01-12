@@ -7,6 +7,8 @@
 #import <UIKit/UINavigationBar.h>
 
 @interface UINavigationBar (Bridge)
++ (_Bool)ts_chromelessBarsEnabled;
+- (void)syncOpacityForBarButtonItems:(id)arg1;
 - (id)ts_fetchTitleView;
 - (void)ts_resetButtonTransforms;
 - (void)ts_setBackgroundEffects:(id)arg1;

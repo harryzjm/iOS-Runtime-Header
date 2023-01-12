@@ -12,11 +12,13 @@
 {
     _Bool _unlocked;
     _Bool _credentialAdded;
+    _Bool _resultIgnored;
     BKIdentity *_identity;
     long long _lockoutState;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool resultIgnored; // @synthesize resultIgnored=_resultIgnored;
 @property(readonly, nonatomic) _Bool credentialAdded; // @synthesize credentialAdded=_credentialAdded;
 @property(readonly, nonatomic) _Bool unlocked; // @synthesize unlocked=_unlocked;
 @property(nonatomic) long long lockoutState; // @synthesize lockoutState=_lockoutState;

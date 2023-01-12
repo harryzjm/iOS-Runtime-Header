@@ -79,7 +79,7 @@
 @property(readonly, copy, nonatomic) NSArray *events;
 - (void)__configureWithContext:(id)arg1 home:(id)arg2;
 - (id)initWithName:(id)arg1 events:(id)arg2 predicate:(id)arg3;
-- (id)initInternalWithName:(id)arg1 events:(id)arg2 endEvents:(id)arg3 recurrences:(id)arg4 predicate:(id)arg5;
+- (id)initInternalWithName:(id)arg1 configuredName:(id)arg2 events:(id)arg3 endEvents:(id)arg4 recurrences:(id)arg5 predicate:(id)arg6;
 - (id)initWithName:(id)arg1 events:(id)arg2 endEvents:(id)arg3 recurrences:(id)arg4 predicate:(id)arg5;
 
 @end

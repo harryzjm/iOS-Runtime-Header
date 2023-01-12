@@ -6,9 +6,16 @@
 
 #import <ChatKit/UITextViewDelegate-Protocol.h>
 
-@class CKMediaObject, CKMessageEntryRichTextView, NSArray, NSString, UIGestureRecognizer;
+@class CKEntity, CKMediaObject, CKMessageEntryRichTextView, NSArray, NSString, UIGestureRecognizer;
 
 @protocol CKMessageEntryRichTextViewDelegate <UITextViewDelegate>
+- (void)messageEntryRichTextViewCancelShowMentionSuggestions:(CKMessageEntryRichTextView *)arg1;
+- (void)messageEntryRichTextView:(CKMessageEntryRichTextView *)arg1 showMentionSuggestionsForEntities:(NSArray *)arg2 replacementRange:(struct _NSRange)arg3 completionHandler:(void (^)(CKEntity *))arg4;
+- (void)messageEntryRichTextView:(CKMessageEntryRichTextView *)arg1 insertMention:(NSString *)arg2 entity:(CKEntity *)arg3 replacementRange:(struct _NSRange)arg4;
+- (_Bool)messageEntryRichTextViewCanSuggestMentionForCurrentSelection:(CKMessageEntryRichTextView *)arg1;
+- (void)messageEntryRichTextViewInsertionPointExitedRangeWithMention:(CKMessageEntryRichTextView *)arg1;
+- (void)messageEntryRichTextView:(CKMessageEntryRichTextView *)arg1 insertionPointEnteredRange:(struct _NSRange)arg2 forMention:(NSString *)arg3 withEntities:(NSArray *)arg4;
+- (void)messageEntryRichTextView:(CKMessageEntryRichTextView *)arg1 didTapCharacterAtIndex:(unsigned long long)arg2 isLongPress:(_Bool)arg3;
 - (void)messageEntryRichTextViewDidTapMention:(CKMessageEntryRichTextView *)arg1 characterIndex:(double)arg2;
 - (void)messageEntryRichTextViewDidTapHandwritingKey:(CKMessageEntryRichTextView *)arg1;
 - (void)messageEntryRichTextView:(CKMessageEntryRichTextView *)arg1 pastedURL:(NSString *)arg2;

@@ -15,12 +15,14 @@
 @interface RBSAuditToken : NSObject <RBSXPCCoding, NSCopying, NSSecureCoding>
 {
     CDStruct_4c969caf _auditToken;
+    int _pidversion;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)tokenFromXPCConnection:(id)arg1;
 + (id)tokenFromAuditTokenRef:(CDStruct_4c969caf *)arg1;
 + (id)tokenFromAuditToken:(CDStruct_4c969caf)arg1;
+@property(readonly, nonatomic) int pidversion; // @synthesize pidversion=_pidversion;
 @property(readonly, nonatomic) CDStruct_4c969caf realToken; // @synthesize realToken=_auditToken;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, copy) NSString *description;

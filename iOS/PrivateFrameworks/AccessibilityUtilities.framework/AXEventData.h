@@ -12,10 +12,16 @@
 }
 
 + (id)dataWithBytes:(char *)arg1 length:(long long)arg2;
++ (id)dataWithSender:(long long)arg1 page:(long long)arg2 usage:(long long)arg3 modifierFlags:(long long)arg4 eventValue1:(float)arg5 eventValue2:(float)arg6;
 + (id)dataWithSender:(long long)arg1;
 @property(readonly, nonatomic) long long dataLength;
 @property(readonly, nonatomic) char *dataBytes;
 @property(readonly, nonatomic) _Bool wasPostedByAccessibility;
+@property(readonly, nonatomic) float eventValue2;
+@property(readonly, nonatomic) float eventValue1;
+@property(readonly, nonatomic) long long modifierFlags;
+@property(readonly, nonatomic) long long usage;
+@property(readonly, nonatomic) long long page;
 @property(readonly, nonatomic) long long eventSenderIdentifier;
 - (id)description;
 - (id)init;

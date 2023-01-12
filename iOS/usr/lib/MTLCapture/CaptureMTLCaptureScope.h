@@ -12,7 +12,6 @@
 {
     struct GTTraceContext *_traceContext;
     struct GTTraceStream *_traceStream;
-    _Bool _stopCapture;
 }
 
 - (void)dealloc;

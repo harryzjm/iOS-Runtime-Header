@@ -8,14 +8,15 @@
 
 #import <NewsUI/SXResourceDataSource-Protocol.h>
 
-@class FCAsyncOnceOperation, FCFlintManifest, FCFlintResourceManager, NSOperationQueue, NSString, NUANFAssetLoader, SXContext;
+@class FCANFContent, FCAsyncOnceOperation, FCFlintResourceManager, NSOperationQueue, NSString, NUANFAssetLoader, SXContext;
 @protocol FCHeadlineProviding, NUArticleResourceURLTranslator, SXHost;
 
 @interface NUANFContextLoader : NSObject <SXResourceDataSource>
 {
+    _Bool _hasLoaded;
     SXContext *_context;
     NUANFAssetLoader *_assetLoader;
-    FCFlintManifest *_flintManifest;
+    FCANFContent *_anfContent;
     FCFlintResourceManager *_flintResourceManager;
     id <SXHost> _host;
     id <NUArticleResourceURLTranslator> _resourceURLTranslator;
@@ -31,15 +32,17 @@
 @property(readonly, nonatomic) id <NUArticleResourceURLTranslator> resourceURLTranslator; // @synthesize resourceURLTranslator=_resourceURLTranslator;
 @property(readonly, nonatomic) id <SXHost> host; // @synthesize host=_host;
 @property(readonly, nonatomic) FCFlintResourceManager *flintResourceManager; // @synthesize flintResourceManager=_flintResourceManager;
-@property(readonly, nonatomic) FCFlintManifest *flintManifest; // @synthesize flintManifest=_flintManifest;
+@property(readonly, nonatomic) FCANFContent *anfContent; // @synthesize anfContent=_anfContent;
 @property(retain, nonatomic) NUANFAssetLoader *assetLoader; // @synthesize assetLoader=_assetLoader;
 @property(retain, nonatomic) SXContext *context; // @synthesize context=_context;
+@property(readonly, nonatomic) _Bool hasLoaded; // @synthesize hasLoaded=_hasLoaded;
+- (id)fallbackResourceForImageRequest:(id)arg1 originalResource:(id)arg2;
 - (id)asyncLoadContextOnceWithCompletion:(CDUnknownBlockType)arg1;
 - (id)translateURL:(id)arg1;
 - (void)fileURLForURL:(id)arg1 onCompletion:(CDUnknownBlockType)arg2 onError:(CDUnknownBlockType)arg3;
 - (CDUnknownBlockType)loadImagesForImageRequest:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (id)loadContextWithCompletion:(CDUnknownBlockType)arg1;
-- (id)initWithFlintManifest:(id)arg1 flintResourceManager:(id)arg2 host:(id)arg3 resourceURLTranslator:(id)arg4 headline:(id)arg5;
+- (id)initWithANFContent:(id)arg1 flintResourceManager:(id)arg2 host:(id)arg3 resourceURLTranslator:(id)arg4 headline:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

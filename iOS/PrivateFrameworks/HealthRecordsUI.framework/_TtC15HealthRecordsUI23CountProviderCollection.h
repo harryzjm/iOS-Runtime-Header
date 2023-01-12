@@ -10,8 +10,9 @@
 
 @interface _TtC15HealthRecordsUI23CountProviderCollection : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *countProviders;
     MISSING_TYPE *healthStore;
+    MISSING_TYPE *defaultCountProvider;
+    MISSING_TYPE *countProviders;
 }
 
 @end

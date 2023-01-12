@@ -18,7 +18,7 @@
 
 + (id)logCategory;
 - (void).cxx_destruct;
-- (void)loadValuesSynchronously;
+- (_Bool)loadValuesSynchronously;
 - (_Bool)resourceLoader:(id)arg1 shouldWaitForLoadingOfRequestedResource:(id)arg2;
 - (id)initWithData:(id)arg1;
 

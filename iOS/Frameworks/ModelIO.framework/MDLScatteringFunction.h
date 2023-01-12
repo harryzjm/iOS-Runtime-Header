@@ -14,7 +14,7 @@
 {
     NSString *_name;
     MDLMaterialProperty *_baseColor;
-    struct unique_ptr<ModelIO::BidirectionalScatteringDistributionFunction, std::__1::default_delete<ModelIO::BidirectionalScatteringDistributionFunction>> _bsdf;
+    struct unique_ptr<ModelIO::BidirectionalScatteringDistributionFunction, std::default_delete<ModelIO::BidirectionalScatteringDistributionFunction>> _bsdf;
     MDLMaterialProperty *_emission;
     MDLMaterialProperty *_specular;
     MDLMaterialProperty *_materialIndexOfRefraction;

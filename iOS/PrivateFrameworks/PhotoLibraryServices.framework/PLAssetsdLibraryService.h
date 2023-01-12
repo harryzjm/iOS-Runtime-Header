@@ -6,10 +6,11 @@
 
 #import <PhotoLibraryServices/PLAssetsdLibraryServiceProtocol-Protocol.h>
 
-@class NSMutableArray, NSString, PLAssetsdConnectionAuthorization, PLAssetsdService, PLPhotoLibraryBundleController;
+@class NSMutableArray, NSString, PLAssetsdConnectionAuthorization, PLAssetsdService, PLPhotoLibraryBundleController, PLXPCPhotoLibraryStoreContainer;
 
 @interface PLAssetsdLibraryService <PLAssetsdLibraryServiceProtocol>
 {
+    PLXPCPhotoLibraryStoreContainer *_xpcPhotoLibraryStoreContainer;
     PLAssetsdConnectionAuthorization *_connectionAuthorization;
     NSMutableArray *_preRunningProgressFollowers;
     NSMutableArray *_postRunningProgressFollowers;
@@ -19,11 +20,13 @@
 
 + (long long)requiredLibraryServicesStateForURL:(id)arg1;
 - (void).cxx_destruct;
+- (id)copyAssetsWithUuids:(id)arg1 fromLibraryURL:(id)arg2 transferOptions:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (id)libraryBundle;
 - (void)pendingEventsForRequest:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)publishRemoteChangeEvent:(id)arg1 delayedSaveActionsDetail:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)automaticallyDeleteEmptyAlbumWithObjectURI:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)updateThumbnailsForPhotos:(id)arg1 assignNewIndex:(_Bool)arg2 forceRefresh:(_Bool)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)resetFaceAnalysisWithResetLevel:(long long)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)repairSingletonObjectsWithReply:(CDUnknownBlockType)arg1;
 - (void)recoverFromCrashIfNeeded;
 - (id)importFileSystemAssetsWithReason:(id)arg1 force:(_Bool)arg2 reply:(CDUnknownBlockType)arg3;
@@ -38,6 +41,7 @@
 - (void)createPhotoLibraryDatabaseWithOptions:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)sandboxExtensionsByPath;
 - (id)newLibraryOpener;
+- (void)isLibraryReadyForImportWithReply:(CDUnknownBlockType)arg1;
 - (void)getCurrentModelVersionWithReply:(CDUnknownBlockType)arg1;
 - (void)launchAssetsd;
 - (id)initWithLibraryServicesManager:(id)arg1 bundleController:(id)arg2 connectionAuthorization:(id)arg3 assetsdService:(id)arg4;

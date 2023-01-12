@@ -28,7 +28,9 @@
     NSString *_sanitizedPrimaryAccountNumber;
     NSString *_sanitizedPrimaryAccountName;
     NSString *_associatedAccountServiceAccountIdentifier;
+    unsigned long long _associatedAccountFeatureIdentifier;
     NSString *_issuerCountryCode;
+    NSString *_issuerAdministrativeAreaCode;
     NSString *_topLeftBackgroundTitle;
     NSString *_topRightBackgroundTitle;
     NSSet *_paymentApplications;
@@ -38,6 +40,7 @@
     PKPaymentApplication *_devicePrimaryInAppPaymentApplication;
     PKPaymentApplication *_devicePrimaryBarcodePaymentApplication;
     NSSet *_deviceInAppPaymentApplications;
+    NSString *_partnerAccountIdentifier;
     NSString *_transactionSourceIdentifier;
     NSString *_cobrandName;
     NSURL *_transactionServiceURL;
@@ -74,6 +77,7 @@
 @property(copy, nonatomic) NSString *cobrandName; // @synthesize cobrandName=_cobrandName;
 @property(nonatomic, getter=isCobranded) _Bool cobranded; // @synthesize cobranded=_cobranded;
 @property(copy, nonatomic) NSString *transactionSourceIdentifier; // @synthesize transactionSourceIdentifier=_transactionSourceIdentifier;
+@property(copy, nonatomic) NSString *partnerAccountIdentifier; // @synthesize partnerAccountIdentifier=_partnerAccountIdentifier;
 @property(retain, nonatomic) NSSet *deviceInAppPaymentApplications; // @synthesize deviceInAppPaymentApplications=_deviceInAppPaymentApplications;
 @property(retain, nonatomic) PKPaymentApplication *devicePrimaryBarcodePaymentApplication; // @synthesize devicePrimaryBarcodePaymentApplication=_devicePrimaryBarcodePaymentApplication;
 @property(retain, nonatomic) PKPaymentApplication *devicePrimaryInAppPaymentApplication; // @synthesize devicePrimaryInAppPaymentApplication=_devicePrimaryInAppPaymentApplication;
@@ -85,8 +89,10 @@
 @property(copy, nonatomic) NSString *topLeftBackgroundTitle; // @synthesize topLeftBackgroundTitle=_topLeftBackgroundTitle;
 @property(nonatomic, getter=isPaymentOptionSelectable) _Bool paymentOptionSelectable; // @synthesize paymentOptionSelectable=_paymentOptionSelectable;
 @property(nonatomic) _Bool supportsSerialNumberBasedProvisioning; // @synthesize supportsSerialNumberBasedProvisioning=_supportsSerialNumberBasedProvisioning;
+@property(copy, nonatomic) NSString *issuerAdministrativeAreaCode; // @synthesize issuerAdministrativeAreaCode=_issuerAdministrativeAreaCode;
 @property(copy, nonatomic) NSString *issuerCountryCode; // @synthesize issuerCountryCode=_issuerCountryCode;
 @property(nonatomic) _Bool supportsPeerPayment; // @synthesize supportsPeerPayment=_supportsPeerPayment;
+@property(nonatomic) unsigned long long associatedAccountFeatureIdentifier; // @synthesize associatedAccountFeatureIdentifier=_associatedAccountFeatureIdentifier;
 @property(copy, nonatomic) NSString *associatedAccountServiceAccountIdentifier; // @synthesize associatedAccountServiceAccountIdentifier=_associatedAccountServiceAccountIdentifier;
 @property(nonatomic) _Bool hasAssociatedPeerPaymentAccount; // @synthesize hasAssociatedPeerPaymentAccount=_hasAssociatedPeerPaymentAccount;
 @property(nonatomic) _Bool supportsDefaultCardSelection; // @synthesize supportsDefaultCardSelection=_supportsDefaultCardSelection;
@@ -99,6 +105,8 @@
 @property(nonatomic) long long cardType; // @synthesize cardType=_cardType;
 @property(copy, nonatomic) NSString *primaryAccountNumberSuffix; // @synthesize primaryAccountNumberSuffix=_primaryAccountNumberSuffix;
 @property(copy, nonatomic) NSString *primaryAccountIdentifier; // @synthesize primaryAccountIdentifier=_primaryAccountIdentifier;
+- (id)fidoProfile;
+- (id)iso18013BlobsForSecureElementIdentifiers:(id)arg1;
 - (id)_transactionServiceURLOverride;
 - (_Bool)hasDeviceTransactionSourceIdentifier:(id)arg1;
 - (id)deviceTransactionSourceIdentifiers;
@@ -110,6 +118,10 @@
 @property(readonly, copy, nonatomic) PKTransitPassProperties *transitProperties;
 - (id)dynamicLayerConfiguration;
 - (_Bool)supportsBarcodePayment;
+@property(readonly, nonatomic) unsigned long long supportedRadioTechnologies;
+- (long long)paymentType;
+@property(readonly, nonatomic) long long accessType;
+@property(readonly, nonatomic) long long identityType;
 @property(readonly, nonatomic) NSArray *upgradeRequests;
 - (id)notificationCenterTitle;
 - (id)transitCommutePlans;
@@ -136,11 +148,19 @@
 - (_Bool)requiresFelicaSecureElement;
 @property(readonly, copy, nonatomic) NSString *pairedTerminalIdentifier;
 @property(readonly, copy, nonatomic) NSString *devicePassIdentifier;
+- (_Bool)areCredentialsStoredInKML;
+- (_Bool)isHomeKeyPass;
+- (_Bool)isCarKeyPass;
+- (_Bool)hasMerchantTokens;
 - (_Bool)hasCredentials;
 - (_Bool)hasImmediateAutomaticSelectionCriterion;
+- (_Bool)isIdentityPass;
 - (_Bool)isOctopusPass;
 - (_Bool)needsHardcodedReminderOptions;
 - (_Bool)isChinaTransitCredential;
+- (_Bool)isStoredValuePass;
+- (_Bool)isEMoneyPass;
+- (_Bool)isPrepaidPass;
 - (_Bool)isSuicaPass;
 - (_Bool)isTransitPass;
 - (_Bool)isAccessPass;

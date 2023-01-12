@@ -14,9 +14,12 @@
     BCSNotificationServiceConnection *_notificationServiceConnection;
 }
 
++ (id)sharedParser;
 - (void).cxx_destruct;
+- (void)setPreferredBundleIdentifier:(id)arg1 forURL:(id)arg2;
 - (void)stopQRCodeParsingSession;
 - (void)startQRCodeParsingSessionWithMetadataObject:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)_payloadForMRCObject:(id)arg1;
 @property(readonly, nonatomic) BCSNotificationServiceConnection *notificationServiceConnection;
 - (void)_parseMetadataObject:(id)arg1 reply:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)postNotificationAfterParsingCodeFromImage:(struct CGImage *)arg1 completion:(CDUnknownBlockType)arg2;

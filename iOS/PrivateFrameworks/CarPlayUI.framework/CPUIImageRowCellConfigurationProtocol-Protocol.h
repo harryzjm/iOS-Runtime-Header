@@ -9,6 +9,7 @@
 @class NSArray, NSString;
 
 @protocol CPUIImageRowCellConfigurationProtocol <NSObject>
+- (_Bool)enabled;
 - (_Bool)showActivityIndicator;
 - (NSArray *)artworkCatalogs;
 - (void (^)(void))selectTitleBlock;

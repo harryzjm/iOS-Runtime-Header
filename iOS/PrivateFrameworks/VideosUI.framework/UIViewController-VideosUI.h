@@ -10,5 +10,7 @@
 + (Class)_vui_TVLoadingViewControllerClass;
 - (void)vui_presentViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic, getter=vui_ppt_isLoading) _Bool vui_ppt_loading;
+- (id)customAnimatorForNavigationControllerOperation:(long long)arg1 fromViewController:(id)arg2;
+- (id)customAnimatorForNavigationControllerOperation:(long long)arg1 toViewController:(id)arg2;
 @end
 

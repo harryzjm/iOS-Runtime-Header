@@ -6,21 +6,34 @@
 
 #import <SpringBoardHome/SBFolderControllerDelegate-Protocol.h>
 
-@class NSString, SBHAddWidgetSheetViewController, SBIconListView, SBIconView, SBRootFolderController, SBViewControllerTransitionContext, SBWidgetIcon, UIView, UIViewPropertyAnimator;
-@protocol UIViewImplicitlyAnimating;
+@class NSMutableDictionary, NSString, SBHAddWidgetSheetViewController, SBHIconImageCache, SBIcon, SBIconListView, SBIconView, SBRootFolderController, SBRootFolderViewPageManagementLayoutManager, SBViewControllerTransitionContext, SBWidgetIcon, UIView, UIViewController, UIViewPropertyAnimator;
+@protocol SBHWidgetSheetViewControllerPresenter, SBHWidgetSheetViewControlling, SBIconDragPreview, UIDropSession, UIViewImplicitlyAnimating;
 
 @protocol SBRootFolderControllerDelegate <SBFolderControllerDelegate>
 
 @optional
+- (_Bool)rootFolderControllerDidSetPrototypeSettingEditAsUndo:(SBRootFolderController *)arg1;
+- (void)rootFolderControllerDidEditWidgetIntroduction:(SBRootFolderController *)arg1;
+- (void)rootFolderControllerDidUndoWidgetIntroduction:(SBRootFolderController *)arg1;
+- (void)rootFolderControllerDidAcceptWidgetIntroduction:(SBRootFolderController *)arg1;
+- (SBHIconImageCache *)appIconImageCacheForRootFolderController:(SBRootFolderController *)arg1;
+- (NSString *)iconLocationForListsWithNonDefaultSizedIconsForRootFolderController:(SBRootFolderController *)arg1;
 - (void)rootFolderController:(SBRootFolderController *)arg1 prepareAddSheetViewController:(SBHAddWidgetSheetViewController *)arg2;
-- (void)rootFolderControllerDidDismissWidgetEditing:(SBRootFolderController *)arg1;
-- (void)rootFolderControllerWillPresentWidgetEditing:(SBRootFolderController *)arg1;
-- (void)rootFolderController:(SBRootFolderController *)arg1 handleInsertionForWidgetIcon:(SBWidgetIcon *)arg2 withReferenceIconView:(SBIconView *)arg3 fromTodayPresenter:(_Bool)arg4 dismissViewControllerHandler:(void (^)(void))arg5;
+- (void)rootFolderController:(SBRootFolderController *)arg1 didDismissWidgetEditingViewController:(UIViewController<SBHWidgetSheetViewControlling> *)arg2;
+- (void)rootFolderController:(SBRootFolderController *)arg1 willDismissWidgetEditingViewController:(UIViewController<SBHWidgetSheetViewControlling> *)arg2;
+- (void)rootFolderController:(SBRootFolderController *)arg1 didPresentWidgetEditingViewController:(UIViewController<SBHWidgetSheetViewControlling> *)arg2;
+- (void)rootFolderController:(SBRootFolderController *)arg1 willPresentWidgetEditingViewController:(UIViewController<SBHWidgetSheetViewControlling> *)arg2;
+- (UIView<SBIconDragPreview> *)rootFolderController:(SBRootFolderController *)arg1 dragPreviewForIconView:(SBIconView *)arg2;
+- (void)rootFolderController:(SBRootFolderController *)arg1 noteDidRemoveSuggestedWidgetIcon:(SBWidgetIcon *)arg2;
+- (void)rootFolderController:(SBRootFolderController *)arg1 noteDragItemWasConsumedExternallyForDropSession:(id <UIDropSession>)arg2;
+- (void)rootFolderController:(SBRootFolderController *)arg1 handleInsertionForWidgetIcon:(SBWidgetIcon *)arg2 withReferenceIconView:(SBIconView *)arg3 fromPresenter:(id <SBHWidgetSheetViewControllerPresenter>)arg4 dismissViewControllerHandler:(void (^)(void))arg5;
+- (SBIcon *)rootFolderController:(SBRootFolderController *)arg1 draggedIconForStackConfigurationInteractionForIdentifier:(NSString *)arg2;
+- (void)rootFolderControllerWillAnimateWidgetInsertionForStackConfigurationInteraction:(SBRootFolderController *)arg1;
+- (void)rootFolderController:(SBRootFolderController *)arg1 didDismissPageManagementWithLayoutManager:(SBRootFolderViewPageManagementLayoutManager *)arg2 context:(NSMutableDictionary *)arg3;
+- (void)rootFolderController:(SBRootFolderController *)arg1 willDismissPageManagementUsingAnimator:(id <UIViewImplicitlyAnimating>)arg2 context:(NSMutableDictionary *)arg3;
+- (void)rootFolderController:(SBRootFolderController *)arg1 willPresentPageManagementWithLayoutManager:(SBRootFolderViewPageManagementLayoutManager *)arg2 animator:(id <UIViewImplicitlyAnimating>)arg3 context:(NSMutableDictionary *)arg4;
 - (void)rootFolderControllerViewDidDisappear:(SBRootFolderController *)arg1;
 - (void)rootFolderControllerViewWillAppear:(SBRootFolderController *)arg1;
-- (void)rootFolderControllerDidDismissPageManagement:(SBRootFolderController *)arg1;
-- (void)rootFolderController:(SBRootFolderController *)arg1 willDismissPageManagementUsingAnimator:(id <UIViewImplicitlyAnimating>)arg2;
-- (void)rootFolderController:(SBRootFolderController *)arg1 willPresentPageManagementUsingAnimator:(id <UIViewImplicitlyAnimating>)arg2;
 - (NSString *)rootFolderController:(SBRootFolderController *)arg1 vendorNameForAppWithBundleIdentifiers:(NSString *)arg2;
 - (void)rootFolderController:(SBRootFolderController *)arg1 didEndOverscrollOnLastPageWithVelocity:(double)arg2 translation:(double)arg3;
 - (void)rootFolderController:(SBRootFolderController *)arg1 didOverscrollOnLastPageByAmount:(double)arg2;
@@ -38,7 +51,7 @@
 - (double)externalDockHeightForRootFolderController:(SBRootFolderController *)arg1;
 - (double)maxExternalDockHeightForRootFolderController:(SBRootFolderController *)arg1;
 - (double)distanceToTopOfSpotlightIconsForRootFolderController:(SBRootFolderController *)arg1;
-- (void)rootFolderController:(SBRootFolderController *)arg1 wantsToAdjustTodayContentForEdgeBounceForScrollOffset:(struct CGPoint)arg2;
+- (void)rootFolderController:(SBRootFolderController *)arg1 wantsToAdjustLeadingCustomContentForEdgeBounceForScrollOffset:(struct CGPoint)arg2;
 - (_Bool)rootFolderControllerCanUseSeparateWindowForRotation:(SBRootFolderController *)arg1;
 @end
 

@@ -18,11 +18,6 @@
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) FCFeedItemFeature *requiredFeature; // @synthesize requiredFeature=_requiredFeature;
-@property(nonatomic) _Bool cachedOnly; // @synthesize cachedOnly=_cachedOnly;
-@property(nonatomic) unsigned long long maxCount; // @synthesize maxCount=_maxCount;
-@property(copy, nonatomic) FCFeedRange *feedRange; // @synthesize feedRange=_feedRange;
-@property(copy, nonatomic) NSString *feedID; // @synthesize feedID=_feedID;
 
 @end
 

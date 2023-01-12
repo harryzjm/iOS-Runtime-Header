@@ -18,15 +18,15 @@
 {
     NSString *_containerBundleIdentifier;
     NSString *_displayName;
-    _Bool _suggestion;
     NSString *_uniqueIdentifier;
     NSString *_kind;
     NSString *_extensionBundleIdentifier;
+    long long _suggestionSource;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(nonatomic, getter=isSuggestion) _Bool suggestion; // @synthesize suggestion=_suggestion;
+@property(readonly, nonatomic) long long suggestionSource; // @synthesize suggestionSource=_suggestionSource;
 @property(readonly, copy, nonatomic) NSString *extensionBundleIdentifier; // @synthesize extensionBundleIdentifier=_extensionBundleIdentifier;
 @property(readonly, copy, nonatomic) NSString *kind; // @synthesize kind=_kind;
 @property(readonly, copy, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
@@ -44,13 +44,16 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)copyWithSuggestionSource:(long long)arg1;
 - (id)copyWithUniqueIdentifier;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)matchesPersonality:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *containerBundleIdentifier;
+- (void)resetDisplayName;
 @property(readonly, copy, nonatomic) NSString *displayName;
 - (id)initWithKind:(id)arg1 extensionBundleIdentifier:(id)arg2;
-- (id)initWithUniqueIdentifier:(id)arg1 kind:(id)arg2 extensionBundleIdentifier:(id)arg3;
+- (id)initWithKind:(id)arg1 extensionBundleIdentifier:(id)arg2 containerBundleIdentifier:(id)arg3;
+- (id)initWithUniqueIdentifier:(id)arg1 kind:(id)arg2 extensionBundleIdentifier:(id)arg3 containerBundleIdentifier:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

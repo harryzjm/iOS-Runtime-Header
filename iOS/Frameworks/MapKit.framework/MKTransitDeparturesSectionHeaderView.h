@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)_contentSizeCategoryDidChange;
 - (void)dealloc;
 - (void)tintColorDidChange;
+- (id)_initWithType:(unsigned long long)arg1 extraSpacing:(_Bool)arg2 reuseIdentifier:(id)arg3;
 - (id)initWithType:(unsigned long long)arg1 extraSpacing:(_Bool)arg2 reuseIdentifier:(id)arg3;
 - (id)initWithType:(unsigned long long)arg1 extraSpacing:(_Bool)arg2;
 

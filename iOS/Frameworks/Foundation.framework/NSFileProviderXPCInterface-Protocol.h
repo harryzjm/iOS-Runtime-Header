@@ -6,15 +6,15 @@
 
 #import <Foundation/NSFileCoordinationDebugInfoXPCInterface-Protocol.h>
 
-@class NSSet, NSString, NSURL;
+@class NSFileProviderKernelMaterializationInfo, NSSet, NSString, NSURL;
 
 @protocol NSFileProviderXPCInterface <NSFileCoordinationDebugInfoXPCInterface>
 - (void)movingItemAtURL:(NSURL *)arg1 requiresProvidingWithDestinationURL:(NSURL *)arg2 completionHandler:(void (^)(_Bool))arg3;
-- (oneway void)observeEndOfWriteAtURL:(NSURL *)arg1 forClaimWithID:(id)arg2 fromProcessWithIdentifier:(int)arg3;
-- (oneway void)observePresentationChangeOfKind:(NSString *)arg1 forPresenterWithID:(id)arg2 fromProcessWithIdentifier:(int)arg3 observedUbiquityAttributes:(NSSet *)arg4 url:(NSURL *)arg5 newURL:(NSURL *)arg6;
+- (oneway void)observeEndOfWriteAtURL:(NSURL *)arg1 forClaimWithID:(NSString *)arg2 fromProcessWithIdentifier:(int)arg3;
+- (oneway void)observePresentationChangeOfKind:(NSString *)arg1 forPresenterWithID:(NSString *)arg2 fromProcessWithIdentifier:(int)arg3 observedUbiquityAttributes:(NSSet *)arg4 url:(NSURL *)arg5 newURL:(NSURL *)arg6;
 - (void)providePhysicalItemForURL:(NSURL *)arg1 completionHandler:(void (^)(NSURL *))arg2;
-- (oneway void)cancelProvidingItemAtURL:(NSURL *)arg1 forClaimWithID:(id)arg2;
-- (void)provideItemAtURL:(NSURL *)arg1 forClaimWithID:(id)arg2 madeByClientWithProcessIdentifier:(int)arg3 options:(unsigned long long)arg4 kernelOperation:(unsigned int)arg5 completionHandler:(void (^)(NSString *, unsigned long long, NSError *))arg6;
+- (oneway void)cancelProvidingItemAtURL:(NSURL *)arg1 forClaimWithID:(NSString *)arg2;
+- (void)provideItemAtURL:(NSURL *)arg1 forClaimWithID:(NSString *)arg2 madeByClientWithProcessIdentifier:(int)arg3 options:(unsigned long long)arg4 kernelInfo:(NSFileProviderKernelMaterializationInfo *)arg5 completionHandler:(void (^)(NSString *, unsigned long long, NSError *))arg6;
 - (void)checkInProviderWithReply:(void (^)(_Bool))arg1;
 @end
 

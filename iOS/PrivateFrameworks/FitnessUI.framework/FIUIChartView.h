@@ -38,9 +38,9 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSNumber *highlightedYValue; // @synthesize highlightedYValue=_highlightedYValue;
-@property(retain, nonatomic) NSNumber *maxYValue; // @synthesize maxYValue=_maxYValue;
-@property(retain, nonatomic) NSNumber *minYValue; // @synthesize minYValue=_minYValue;
+@property(copy, nonatomic) NSNumber *highlightedYValue; // @synthesize highlightedYValue=_highlightedYValue;
+@property(copy, nonatomic) NSNumber *maxYValue; // @synthesize maxYValue=_maxYValue;
+@property(copy, nonatomic) NSNumber *minYValue; // @synthesize minYValue=_minYValue;
 @property(retain, nonatomic) NSDateInterval *dateInterval; // @synthesize dateInterval=_dateInterval;
 @property(nonatomic) double animationDuration; // @synthesize animationDuration=_animationDuration;
 @property(nonatomic) struct UIEdgeInsets contentBufferEdgeInsets; // @synthesize contentBufferEdgeInsets=_contentBufferEdgeInsets;

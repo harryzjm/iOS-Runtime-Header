@@ -6,18 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
 @protocol GKOnboardingFlowDelegate;
 
 @interface GKOnboardingController : NSObject
 {
     id <GKOnboardingFlowDelegate> _delegate;
-    NSMutableDictionary *_analyticsPayload;
 }
 
 + (id)shared;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableDictionary *analyticsPayload; // @synthesize analyticsPayload=_analyticsPayload;
 @property(nonatomic) __weak id <GKOnboardingFlowDelegate> delegate; // @synthesize delegate=_delegate;
 - (_Bool)didShowPrivacyNotice;
 - (unsigned long long)getPrivacyNoticeVersion;

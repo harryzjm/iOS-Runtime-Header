@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <CoreSpeech/NSCopying-Protocol.h>
 #import <CoreSpeech/NSSecureCoding-Protocol.h>
 
 @class NSData, NSString;
 
-@interface CSVoiceTriggerRTModel : NSObject <NSSecureCoding>
+@interface CSVoiceTriggerRTModel : NSObject <NSSecureCoding, NSCopying>
 {
     NSData *_modelData;
     NSString *_modelLocale;
@@ -31,6 +32,7 @@
 - (id)description;
 - (id)builtInRTModelDictionary;
 - (void)encodeWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithData:(id)arg1 hash:(id)arg2 locale:(id)arg3;
 - (id)initWithHash:(id)arg1 locale:(id)arg2;

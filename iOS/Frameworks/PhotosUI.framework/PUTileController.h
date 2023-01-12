@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, PUTileLayoutInfo, PUTilingView;
+@class NSMutableArray, NSString, PUTileLayoutInfo, PUTilingView;
 
 @interface PUTileController : NSObject
 {
@@ -16,6 +16,7 @@
     _Bool _reusable;
     _Bool _wantsVisibleRectChanges;
     NSString *_reuseIdentifier;
+    NSMutableArray *_reasonsToSuppressAnimatedUpdates;
     long long _animationCount;
     PUTilingView *_tilingView;
     PUTileLayoutInfo *_layoutInfo;
@@ -27,10 +28,14 @@
 @property(readonly, nonatomic) __weak PUTilingView *tilingView; // @synthesize tilingView=_tilingView;
 @property(nonatomic) long long animationCount; // @synthesize animationCount=_animationCount;
 @property(nonatomic, getter=isReusable) _Bool reusable; // @synthesize reusable=_reusable;
+@property(retain, nonatomic) NSMutableArray *reasonsToSuppressAnimatedUpdates; // @synthesize reasonsToSuppressAnimatedUpdates=_reasonsToSuppressAnimatedUpdates;
 @property(nonatomic) _Bool shouldPreserveCurrentContent; // @synthesize shouldPreserveCurrentContent=_shouldPreserveCurrentContent;
 @property(readonly, nonatomic) NSString *reuseIdentifier; // @synthesize reuseIdentifier=_reuseIdentifier;
 @property(nonatomic, getter=isDetached) _Bool detached; // @synthesize detached=_detached;
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
+@property(readonly, nonatomic) _Bool shouldSuppressAnimatedUpdates;
+- (void)stopSuppressingAnimatedUpdatesWithReason:(id)arg1;
+- (void)startSuppressingAnimatedUpdatesWithReason:(id)arg1;
 - (id)description;
 - (void)notifyWhenReadyForDisplayWithTimeOut:(double)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)adoptAssetTransitionInfo:(id)arg1;

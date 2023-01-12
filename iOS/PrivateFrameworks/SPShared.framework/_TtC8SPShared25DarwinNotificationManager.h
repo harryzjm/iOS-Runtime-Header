@@ -10,7 +10,9 @@
 
 @interface _TtC8SPShared25DarwinNotificationManager : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *helpers;
+    MISSING_TYPE *serialQueue;
+    MISSING_TYPE *lock;
+    MISSING_TYPE *publishers;
 }
 
 @end

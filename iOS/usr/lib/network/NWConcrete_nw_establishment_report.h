@@ -9,7 +9,7 @@
 #import <network/OS_nw_establishment_report-Protocol.h>
 
 @class NSString;
-@protocol OS_nw_array, OS_nw_endpoint;
+@protocol OS_nw_array;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_establishment_report : NSObject <OS_nw_establishment_report>
@@ -18,7 +18,8 @@ __attribute__((visibility("hidden")))
     unsigned long long duration_milliseconds;
     unsigned long long resolution_started_after_milliseconds;
     unsigned long long flow_started_after_milliseconds;
-    NSObject<OS_nw_endpoint> *proxy_endpoint;
+    NSObject<OS_nw_array> *proxy_endpoints;
+    int privacy_stance;
     NSObject<OS_nw_array> *protocol_reports;
     NSObject<OS_nw_array> *resolution_reports;
     unsigned int previous_attempt_count;

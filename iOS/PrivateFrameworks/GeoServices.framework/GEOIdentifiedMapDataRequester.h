@@ -13,16 +13,13 @@
 {
 }
 
-+ (unsigned int)tileSetForKey:(const struct _GEOTileKey *)arg1;
++ (CDUnion_23a7df3d)tileSetForKey:(const struct _GEOTileKey *)arg1;
 + (unsigned char)tileProviderIdentifier;
-- (_Bool)needsLocalizationForKey:(const struct _GEOTileKey *)arg1;
-- (id)localizationURLForTileKey:(const struct _GEOTileKey *)arg1;
-- (id)_localizationURLForTileKey:(const struct _GEOTileKey *)arg1;
+- (_Bool)shouldDownloadToDiskForTileKey:(const struct _GEOTileKey *)arg1 estimatedDataSize:(unsigned long long)arg2;
 - (id)urlForTileKey:(const struct _GEOTileKey *)arg1;
-- (id)_urlComponentsForKey:(const struct _GEOTileKey *)arg1 withURLString:(id)arg2 language:(id)arg3;
+- (id)_urlComponentsForKey:(const struct _GEOTileKey *)arg1 url:(id)arg2;
 - (id)activeTileSetForKey:(const struct _GEOTileKey *)arg1;
 - (int)checksumMethodForIncomingTileDataWithKey:(const struct _GEOTileKey *)arg1;
-- (unsigned int)tileSetForKey:(const struct _GEOTileKey *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

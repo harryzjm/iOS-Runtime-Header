@@ -10,18 +10,18 @@
 
 @interface TNChartRangeList : NSObject
 {
-    UUIDData_5fbc143e _tableUID;
-    struct vector<TSCERangeCoordinate, std::__1::allocator<TSCERangeCoordinate>> _ranges;
+    struct TSKUIDStruct _tableUID;
+    struct vector<TSCERangeCoordinate, std::allocator<TSCERangeCoordinate>> _ranges;
     struct TSCERangeCoordinate _unionRange;
     _Bool _unionRangeValid;
 }
 
 + (id)rangeListWithRangeRef:(struct TSCERangeRef)arg1;
-+ (id)rangeListWithTableUID:(const UUIDData_5fbc143e *)arg1 range:(struct TSCERangeCoordinate)arg2;
-+ (id)rangeListWithTableUID:(const UUIDData_5fbc143e *)arg1;
++ (id)rangeListWithTableUID:(const struct TSKUIDStruct *)arg1 range:(struct TSCERangeCoordinate)arg2;
++ (id)rangeListWithTableUID:(const struct TSKUIDStruct *)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) UUIDData_5fbc143e tableUID; // @synthesize tableUID=_tableUID;
+@property(readonly, nonatomic) struct TSKUIDStruct tableUID; // @synthesize tableUID=_tableUID;
 - (id)description;
 @property(readonly, nonatomic) TSTCellRegion *cellRegion;
 - (CDStruct_c0454aff)chartableSizeByDirection:(int)arg1;
@@ -35,8 +35,8 @@
 - (unsigned long long)numberOfRanges;
 - (void)removeAllRanges;
 - (void)addRange:(struct TSCERangeCoordinate)arg1 coalesceFlags:(int)arg2;
-- (id)initWithTableUID:(const UUIDData_5fbc143e *)arg1 range:(struct TSCERangeCoordinate)arg2;
-- (id)initWithTableUID:(const UUIDData_5fbc143e *)arg1;
+- (id)initWithTableUID:(const struct TSKUIDStruct *)arg1 range:(struct TSCERangeCoordinate)arg2;
+- (id)initWithTableUID:(const struct TSKUIDStruct *)arg1;
 
 @end
 

@@ -6,7 +6,6 @@
 
 #import <GeoServices/GEOPlaceDataRequester-Protocol.h>
 
-__attribute__((visibility("hidden")))
 @interface GEOPlaceDataRequester <GEOPlaceDataRequester>
 {
 }

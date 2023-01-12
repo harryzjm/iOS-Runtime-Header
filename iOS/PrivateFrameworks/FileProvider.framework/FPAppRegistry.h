@@ -6,45 +6,40 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableDictionary, NSNotificationCenter;
+@class NSArray, NSMutableDictionary;
 @protocol FPAppRegistryDelegate, OS_dispatch_queue;
 
 @interface FPAppRegistry : NSObject
 {
     NSMutableDictionary *_appMetadataByBundleID;
     NSMutableDictionary *_appMetadataByDisplayName;
-    NSNotificationCenter *_notificationCenter;
     NSObject<OS_dispatch_queue> *_syncQueue;
-    _Bool _keepUpToDate;
-    unsigned long long _dataState;
+    NSObject<OS_dispatch_queue> *_notificationQueue;
+    int _updateAppsNotification;
     id <FPAppRegistryDelegate> _delegate;
 }
 
-+ (id)deserializeListOfAppsFromNotification:(id)arg1;
-+ (id)serializeListOfApps:(id)arg1;
-+ (void)setNotificationCenterOverride:(id)arg1;
-+ (id)notificationCenterOverride;
++ (_Bool)keepInSync;
++ (void)setDaemonConnectionOverride:(id)arg1;
++ (id)daemonConnectionOverride;
 + (void)setSharedRegistry:(id)arg1;
 + (id)sharedRegistry;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <FPAppRegistryDelegate> delegate; // @synthesize delegate=_delegate;
-@property unsigned long long dataState; // @synthesize dataState=_dataState;
-@property(nonatomic) _Bool keepUpToDate; // @synthesize keepUpToDate=_keepUpToDate;
 - (id)_bundleIDForHomonymOfApp:(id)arg1;
-- (void)_didRemoveApps:(id)arg1;
-- (void)_didUpdateApps:(id)arg1;
-- (void)_registerForNotification:(id)arg1 handler:(SEL)arg2;
+- (int)_registerForNotification:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (_Bool)_isAppLibrary:(id)arg1 appMetadata:(id *)arg2 userVisible:(_Bool *)arg3;
-- (id)removeAppsWithBundleIDs:(id)arg1;
+- (void)_removeAppsWithBundleIDs:(id)arg1;
+- (void)removeAppsWithBundleIDs:(id)arg1;
 - (void)_addApps:(id)arg1;
 - (void)addApps:(id)arg1;
+- (void)_setApps:(id)arg1;
 - (id)appForDisplayName:(id)arg1;
 - (id)appForBundleID:(id)arg1;
 @property(readonly, copy, nonatomic) NSArray *listOfMonitoredApps;
 - (_Bool)isAppLibrary:(id)arg1;
 - (id)promoteItemToAppLibraryIfNeeded:(id)arg1;
-- (void)populateRegistry;
-@property(readonly, nonatomic) NSNotificationCenter *notificationCenter;
+- (void)updateAppList;
 - (void)dealloc;
 - (id)init;
 

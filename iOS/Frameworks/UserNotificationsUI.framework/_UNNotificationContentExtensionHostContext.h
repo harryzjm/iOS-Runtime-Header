@@ -54,6 +54,7 @@
 - (void)_hostWantsToUpdateMediaPlayPauseButton;
 - (void)_hostWantsMediaToPlay;
 - (void)_hostWantsMediaToPause;
+- (void)_hostDidReceiveNotificationResponse:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_hostDidReceiveNotificationResponse:(id)arg1;
 - (void)_hostDidReceiveNotification:(id)arg1;
 - (void)restoreInputViews;
@@ -61,6 +62,7 @@
 - (void)updateMediaPlayPauseButton;
 - (void)mediaPlay;
 - (void)mediaPause;
+- (void)didReceiveNotificationResponse:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)didReceiveNotificationResponse:(id)arg1;
 - (void)didReceiveNotification:(id)arg1;
 - (void)dealloc;

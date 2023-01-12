@@ -21,6 +21,7 @@
 @property(nonatomic) _Bool authoritative; // @synthesize authoritative=_authoritative;
 - (void)_logTrustState:(unsigned long long)arg1 forApp:(id)arg2 reason:(id)arg3;
 - (unsigned long long)_validateApp:(id)arg1;
+- (unsigned int)signatureVersionForApp:(id)arg1;
 - (unsigned long long)trustStateForApplication:(id)arg1;
 - (id)_initWithMISInterfaceWrapper:(id)arg1;
 - (id)init;

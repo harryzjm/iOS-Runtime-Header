@@ -27,6 +27,7 @@
 @property(retain, nonatomic) PKPaymentTransaction *transaction; // @synthesize transaction=_transaction;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)logoURL;
 
 @end
 

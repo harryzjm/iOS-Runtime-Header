@@ -10,14 +10,16 @@
 #import <HomeKitDaemon/HMDAccessorySettingsControllerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
 #import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
+#import <HomeKitDaemon/HMDMediaDestinationsManagerDataSource-Protocol.h>
+#import <HomeKitDaemon/HMDMediaDestinationsManagerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDAccessorySettingsController, HMDAppleMediaAccessory, HMDApplicationData, HMDBackingStore, HMDHome, HMDMediaSession, HMDMediaSystemSymptomHandler, HMDRoom, HMFActivity, HMFMessageDispatcher, NSArray, NSNotificationCenter, NSObject, NSSet, NSString, NSUUID;
-@protocol HMFLocking, OS_dispatch_queue;
+@class HMDAccessorySettingsController, HMDAccessorySetupMetricDispatcher, HMDAppleMediaAccessory, HMDApplicationData, HMDBackingStore, HMDHome, HMDMediaDestinationsManager, HMDMediaSession, HMDMediaSystemSymptomHandler, HMDRoom, HMFActivity, HMFMessageDispatcher, HMMediaDestination, NSArray, NSNotificationCenter, NSObject, NSSet, NSString, NSUUID;
+@protocol HMDMediaDestinationManager, HMFLocking, OS_dispatch_queue;
 
-@interface HMDMediaSystem : HMFObject <HMDAccessorySettingsControllerDataSource, HMDAccessorySettingsControllerDelegate, NSSecureCoding, HMFDumpState, HMFLogging, HMDBackingStoreObjectProtocol, HMDHomeMessageReceiver>
+@interface HMDMediaSystem : HMFObject <HMDMediaDestinationsManagerDataSource, HMDMediaDestinationsManagerDelegate, HMDAccessorySettingsControllerDataSource, HMDAccessorySettingsControllerDelegate, NSSecureCoding, HMFDumpState, HMFLogging, HMDBackingStoreObjectProtocol, HMDHomeMessageReceiver>
 {
     id <HMFLocking> _lock;
     NSString *_name;
@@ -25,13 +27,16 @@
     HMDApplicationData *_appData;
     HMDMediaSession *_mediaSession;
     NSString *_configuredName;
+    HMMediaDestination *_audioDestination;
     NSUUID *_uuid;
     HMDHome *_home;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMFMessageDispatcher *_msgDispatcher;
     HMDMediaSystemSymptomHandler *_symptomsHandler;
     HMDAccessorySettingsController *_settingsController;
+    HMDMediaDestinationsManager *_audioDestinationsManager;
     NSNotificationCenter *_notificationCenter;
+    CDUnknownBlockType _audioDestinationsManagerFactory;
 }
 
 + (_Bool)hasMessageReceiverChildren;
@@ -40,7 +45,9 @@
 + (void)_configureMediaSystemComponents:(id)arg1 mediaSystem:(id)arg2;
 + (id)logCategory;
 - (void).cxx_destruct;
+@property(copy) CDUnknownBlockType audioDestinationsManagerFactory; // @synthesize audioDestinationsManagerFactory=_audioDestinationsManagerFactory;
 @property(retain) NSNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
+@property(retain) HMDMediaDestinationsManager *audioDestinationsManager; // @synthesize audioDestinationsManager=_audioDestinationsManager;
 @property(readonly) HMDAccessorySettingsController *settingsController; // @synthesize settingsController=_settingsController;
 @property(readonly) HMDMediaSystemSymptomHandler *symptomsHandler; // @synthesize symptomsHandler=_symptomsHandler;
 @property(retain, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
@@ -49,6 +56,7 @@
 @property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property(retain, nonatomic) NSString *configuredName; // @synthesize configuredName=_configuredName;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
+- (void)languagesChangedForAccessorySettingsController:(id)arg1;
 - (id)assistantAccessControlModelWithRemovedAccessoriesForAccessorySettingsController:(id)arg1;
 - (id)remoteMessageDestinationForAccessorySettingsController:(id)arg1 target:(id)arg2;
 - (id)supportedMultiUserLanguageCodesForAccessorySettingsController:(id)arg1;
@@ -58,9 +66,8 @@
 - (id)modelsToMigrateSettingsForController:(id)arg1;
 - (id)modelsToMakeSettingsForController:(id)arg1 parentUUID:(id)arg2;
 @property double setupStartTimestamp;
-@property double homepodSettingsCreationTimestamp;
-@property double homepodSetupLatency;
 @property(retain) HMFActivity *setupActivity;
+@property(readonly) HMDAccessorySetupMetricDispatcher *accessorySetupMetricDispatcher;
 @property(readonly) HMDBackingStore *backingStore;
 @property(readonly, copy) NSSet *messageReceiverChildren;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
@@ -92,6 +99,19 @@
 - (void)auditMediaComponents;
 - (void)unconfigureMediaSystemComponents:(id)arg1;
 - (void)unconfigureMediaSystemComponents;
+- (void)mediaDestinationsManager:(id)arg1 didUpdateDestination:(id)arg2;
+- (id)mediaDestinationsManager:(id)arg1 destinationControllerWithIdentifier:(id)arg2;
+- (id)associatedDestinationManagersForMediaDestinationsManager:(id)arg1;
+- (id)targetAccessoryForMediaDestinationManager:(id)arg1;
+- (_Bool)isCurrentComponent;
+- (id)destinationControllerGroupedWithAssociatedDestination;
+- (void)repairAnyPreExistingAudioGroups;
+- (id)createNewAudioDestination;
+- (void)configureAudioDestinationsManager;
+@property(readonly, copy) NSArray *associatedAudioDestinationManagers;
+@property(readonly) HMMediaDestination *audioDestination; // @synthesize audioDestination=_audioDestination;
+@property(readonly) id <HMDMediaDestinationManager> audioDestinationManager;
+- (id)audioDestinationIdentifier;
 - (void)configureMediaSystemComponents:(id)arg1;
 - (void)configureWithMessageDispatcher:(id)arg1;
 - (_Bool)isValid;

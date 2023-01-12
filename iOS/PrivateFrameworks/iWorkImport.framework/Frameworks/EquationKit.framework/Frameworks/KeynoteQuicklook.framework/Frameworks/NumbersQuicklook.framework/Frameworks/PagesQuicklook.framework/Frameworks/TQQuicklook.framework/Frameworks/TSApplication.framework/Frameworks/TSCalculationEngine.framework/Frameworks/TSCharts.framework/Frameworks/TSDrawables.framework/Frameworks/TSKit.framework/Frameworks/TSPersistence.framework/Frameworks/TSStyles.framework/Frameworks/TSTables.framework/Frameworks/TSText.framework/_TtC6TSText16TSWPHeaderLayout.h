@@ -4,18 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class TSDLayout;
-
 @interface _TtC6TSText16TSWPHeaderLayout
 {
 }
 
-- (id)init;
 - (id)initWithInfo:(id)arg1;
 - (id)initWithInfo:(id)arg1 storage:(id)arg2 frame:(struct CGRect)arg3;
 - (id)initWithInfo:(id)arg1 frame:(struct CGRect)arg2;
 - (struct CGSize)maximumFrameSizeForChild:(id)arg1;
-@property(nonatomic, readonly) TSDLayout *parentLayoutForInlineAttachments;
+- (id)parentLayoutForPartitionableAttachment:(id)arg1 atPosition:(struct CGPoint)arg2;
 
 @end
 

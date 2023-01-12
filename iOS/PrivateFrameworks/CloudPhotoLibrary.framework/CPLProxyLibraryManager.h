@@ -8,19 +8,19 @@
 #import <CloudPhotoLibrary/CPLLibraryManagerImplementation-Protocol.h>
 #import <CloudPhotoLibrary/NSXPCConnectionDelegate-Protocol.h>
 
-@class NSCountedSet, NSMutableArray, NSMutableDictionary, NSObject, NSString, NSXPCConnection;
+@class NSCountedSet, NSDate, NSMutableArray, NSMutableDictionary, NSObject, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 @interface CPLProxyLibraryManager <CPLClientLibraryManagerProtocol, NSXPCConnectionDelegate, CPLLibraryManagerImplementation>
 {
-    NSXPCConnection *_connection;
+    struct os_unfair_lock_s _realConnectionLock;
+    NSXPCConnection *_realConnection;
     CDUnknownBlockType _blockToCallOnDaemonDying;
     NSMutableDictionary *_downloadTasks;
     NSMutableDictionary *_inMemoryDownloadTasks;
     NSMutableDictionary *_uploadTasks;
     NSMutableDictionary *_forceSyncTasks;
     NSMutableDictionary *_vouchersPerTaskIdentifier;
-    _Bool _diagnosticsEnabled;
     unsigned long long _foregroundCalls;
     NSCountedSet *_disablingReasons;
     unsigned long long _disablingMinglingCount;
@@ -31,8 +31,10 @@
     unsigned long long _syncOutstandingInvocationsCount;
     NSMutableArray *_pendingBlocksAfterOpening;
     int _openingStatus;
+    NSDate *_backoffRetryingConnectionDate;
     int _notifyToken;
     _Bool _killed;
+    _Bool _firstTryOpeningLibrary;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
@@ -43,6 +45,7 @@
 - (void)_dropVoucherForTaskWithIdentifier:(id)arg1;
 - (void)_storeVoucher:(id)arg1 forTaskWithIdentifier:(id)arg2;
 - (void)_withVoucherForTaskWithIdentifier:(id)arg1 do:(CDUnknownBlockType)arg2;
+- (void)addDropDerivativesRecipe:(id)arg1 writeToUserDefaults:(_Bool)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)provideCloudResource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)provideRecordWithCloudScopeIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)provideScopeChangeForScopeWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -109,20 +112,20 @@
 - (void)resetStatus;
 - (void)checkResourcesAreSafeToPrune:(id)arg1 checkServerIfNecessary:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)deleteResources:(id)arg1 checkServerIfNecessary:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)setDiagnosticsEnabled:(_Bool)arg1;
-- (_Bool)diagnosticsEnabled;
+- (void)testKey:(id)arg1 value:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)queryUserDetailsForShareParticipants:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)acceptSharedScope:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchSharedScopeFromShareURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)updateShareForScope:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)createScope:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getMappedScopedIdentifiersForScopedIdentifiers:(id)arg1 inAreLocalIdentifiers:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)resolveLocalScopedIdentifiersForCloudScopedIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)beginInMemoryDownloadOfResource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_dispatchFailedInMemoryDownloadTaskForResource:(id)arg1 withError:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)rampingRequestForResourceType:(unsigned long long)arg1 numRequested:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)getStreamingURLForResource:(id)arg1 intent:(unsigned long long)arg2 hints:(id)arg3 clientBundleID:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)beginDownloadForResource:(id)arg1 clientBundleID:(id)arg2 intent:(unsigned long long)arg3 proposedTaskIdentifier:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)_dispatchFailedDownloadTaskForResource:(id)arg1 intent:(unsigned long long)arg2 proposedTaskIdentifier:(id)arg3 withError:(id)arg4 withCompletionHandler:(CDUnknownBlockType)arg5;
+- (void)getStreamingURLForResource:(id)arg1 intent:(unsigned long long)arg2 hints:(id)arg3 timeRange:(CDStruct_e83c9415)arg4 clientBundleID:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)beginDownloadForResource:(id)arg1 clientBundleID:(id)arg2 options:(id)arg3 proposedTaskIdentifier:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)_dispatchFailedDownloadTaskForResource:(id)arg1 options:(id)arg2 proposedTaskIdentifier:(id)arg3 withError:(id)arg4 withCompletionHandler:(CDUnknownBlockType)arg5;
 - (void)_invokeOutstandingInvocationsWithTaskIdentifier:(id)arg1;
 - (void)boostPriorityForScopeWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)deactivateScopeWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -133,9 +136,14 @@
 - (void)dispatchBlockWhenLibraryIsOpen:(CDUnknownBlockType)arg1;
 - (void)_dispatchBlockWhenOpen:(CDUnknownBlockType)arg1;
 - (void)_reallyOpenWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_dropConnectionCompletly;
+- (void)_dropConnectionCompletlyLocked;
+- (void)_markConnectionAsInvalid;
+- (void)_setupConnection;
 - (void)_setCallBlockOnDaemonDying:(CDUnknownBlockType)arg1;
 - (void)_callBlockOnDaemonDying;
 - (id)proxyWithErrorHandler:(CDUnknownBlockType)arg1;
+- (id)_connection;
 - (void)dealloc;
 - (id)initWithAbstractObject:(id)arg1;
 

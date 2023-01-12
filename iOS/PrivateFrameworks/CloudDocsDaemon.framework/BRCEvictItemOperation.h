@@ -9,7 +9,6 @@
 
 @class BRCAccountSession, BRCNotificationPipe, NSString, NSURL, brc_task_tracker;
 
-__attribute__((visibility("hidden")))
 @interface BRCEvictItemOperation <BRItemNotificationReceiving, BRCOperationSubclass>
 {
     BRCAccountSession *_session;

@@ -10,8 +10,8 @@
 #import <PhotosUICore/PXPhotoLibraryUIChangeObserver-Protocol.h>
 #import <PhotosUICore/PXWidget-Protocol.h>
 
-@class NSString, PHAsset, PXCaptionHashtagsEntryView, PXPhotosDetailsContext, PXSectionedSelectionManager, PXTilingController, PXWidgetSpec, _PXUIContainerView;
-@protocol PXAnonymousView, PXWidgetDelegate, PXWidgetEditingDelegate, PXWidgetUnlockDelegate;
+@class NSString, PHAsset, PXAssetActionManager, PXCaptionHashtagsEntryView, PXPhotosDetailsContext, PXSectionedSelectionManager, PXTilingController, PXWidgetSpec, UIView, _PXUIContainerView;
+@protocol PXAnonymousView, PXWidgetDelegate, PXWidgetEditingDelegate, PXWidgetInteractionDelegate, PXWidgetUnlockDelegate;
 
 @interface PXPhotosDetailsCaptionHashtagsWidget : NSObject <PXCaptionHashtagsEntryViewDelegate, PXPhotoLibraryUIChangeObserver, PXWidget>
 {
@@ -21,6 +21,8 @@
     id <PXWidgetDelegate> _widgetDelegate;
     PXWidgetSpec *_spec;
     _PXUIContainerView *_containerView;
+    UIView *_textViewContainer;
+    UIView *_separatorView;
     PXCaptionHashtagsEntryView *_textEntryView;
     PHAsset *_asset;
     long long _exitEditChangesSavingMode;
@@ -35,6 +37,8 @@
 @property(retain) PHAsset *asset; // @synthesize asset=_asset;
 @property(nonatomic) struct CGSize contentSize; // @synthesize contentSize=_contentSize;
 @property(readonly, nonatomic) PXCaptionHashtagsEntryView *textEntryView; // @synthesize textEntryView=_textEntryView;
+@property(retain, nonatomic) UIView *separatorView; // @synthesize separatorView=_separatorView;
+@property(readonly, nonatomic) UIView *textViewContainer; // @synthesize textViewContainer=_textViewContainer;
 @property(readonly, nonatomic) _PXUIContainerView *containerView; // @synthesize containerView=_containerView;
 @property(nonatomic) struct CGSize maxVisibleSizeInEditMode; // @synthesize maxVisibleSizeInEditMode=_maxVisibleSizeInEditMode;
 @property(readonly, nonatomic) _Bool isInEditMode; // @synthesize isInEditMode=_isInEditMode;
@@ -43,10 +47,14 @@
 @property(retain, nonatomic) PXPhotosDetailsContext *context; // @synthesize context=_context;
 @property(nonatomic) __weak id <PXWidgetEditingDelegate> widgetEditingDelegate; // @synthesize widgetEditingDelegate=_widgetEditingDelegate;
 - (void)_configureFadeInAnimation;
+- (void)_removeSeparatorView;
+- (void)_addSeparatorView;
+- (void)_applySpec;
 - (void)_configureTextViewVisibility:(_Bool)arg1;
 - (void)_logCPAnalyticsEventsForCommittedCaption:(id)arg1 numOfHashtags:(unsigned long long)arg2;
 - (struct CGRect)_textEntryViewFrameForSize:(struct CGSize)arg1;
-- (struct UIEdgeInsets)_adjustedContentInsets;
+- (_Bool)_prefersFloatingiPadInfoPanelLayout;
+- (struct UIEdgeInsets)_contentInsets;
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1 withPreparedInfo:(id)arg2;
 - (id)prepareForPhotoLibraryChange:(id)arg1;
 - (void)captionHashtagsEntryViewRequestFocus:(id)arg1;
@@ -56,27 +64,32 @@
 - (void)captionHashtagsEntryViewWillBeginEditing:(id)arg1;
 - (_Bool)captionHashtagsEntryViewShouldBeginEditing:(id)arg1;
 - (void)captionHashtagsEntryViewPreferredHeightDidChange:(id)arg1;
+@property(readonly, nonatomic) NSString *snappableWidgetIdentifier;
+- (_Bool)canSnapToEdges;
 @property(readonly, nonatomic) _Bool wantsFocus;
 - (void)requestExitEditWithChangesSavingMode:(long long)arg1;
 - (void)contentViewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)contentViewDidDisappear;
 - (void)contentViewWillAppear;
+- (struct UIEdgeInsets)_textViewContainerInsets;
+- (_Bool)_fadeInEnabled;
 @property(readonly, nonatomic) NSObject<PXAnonymousView> *contentView;
 - (void)unloadContentData;
 - (void)loadContentData;
 - (double)preferredContentHeightForWidth:(double)arg1;
 - (double)currentContentHeight;
 @property(readonly, nonatomic) _Bool hasContentForCurrentInput;
-@property(readonly, nonatomic) double extraSpaceNeededAtContentBottom;
 - (id)init;
 
 // Remaining properties
 @property(readonly, nonatomic) _Bool allowUserInteractionWithSubtitle;
+@property(readonly, nonatomic) PXAssetActionManager *assetActionManager;
 @property(readonly, nonatomic) long long contentLayoutStyle;
 @property(readonly, nonatomic) PXTilingController *contentTilingController;
 @property(readonly, nonatomic) long long contentViewAnchoringType;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) double extraSpaceNeededAtContentBottom;
 @property(nonatomic, getter=isFaceModeEnabled) _Bool faceModeEnabled;
 @property(readonly, nonatomic) _Bool hasLoadedContentData;
 @property(readonly) unsigned long long hash;
@@ -90,6 +103,7 @@
 @property(readonly, nonatomic) _Bool supportsFaceMode;
 @property(readonly, nonatomic) _Bool supportsSelection;
 @property(nonatomic, getter=isUserInteractionEnabled) _Bool userInteractionEnabled;
+@property(nonatomic) __weak id <PXWidgetInteractionDelegate> widgetInteractionDelegate;
 @property(nonatomic) __weak id <PXWidgetUnlockDelegate> widgetUnlockDelegate;
 
 @end

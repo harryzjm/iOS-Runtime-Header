@@ -9,23 +9,25 @@
 #import <ReminderKit/REMConflictResolving-Protocol.h>
 #import <ReminderKit/REMExternalSyncMetadataWritableProviding-Protocol.h>
 #import <ReminderKit/REMSaveRequestTrackedValue-Protocol.h>
+#import <ReminderKit/REMSupportedVersionProviding-Protocol.h>
+#import <ReminderKit/REMSupportedVersionUpdating-Protocol.h>
 
-@class NSArray, NSAttributedString, NSData, NSDate, NSDateComponents, NSSet, NSString, NSURL, REMAccountCapabilities, REMCRMergeableStringDocument, REMChangedKeysObserver, REMContactRepresentation, REMDisplayDate, REMListChangeItem, REMObjectID, REMReminderAssignmentContextChangeItem, REMReminderAttachmentContextChangeItem, REMReminderFlaggedContextChangeItem, REMReminderStorage, REMReminderSubtaskContextChangeItem, REMResolutionTokenMap, REMSaveRequest, REMUserActivity;
+@class NSArray, NSAttributedString, NSData, NSDate, NSDateComponents, NSSet, NSString, NSURL, REMAccountCapabilities, REMCRMergeableStringDocument, REMChangedKeysObserver, REMContactRepresentation, REMDisplayDate, REMListChangeItem, REMObjectID, REMReminderAssignmentContextChangeItem, REMReminderAttachmentContextChangeItem, REMReminderFlaggedContextChangeItem, REMReminderHashtagContextChangeItem, REMReminderStorage, REMReminderSubtaskContextChangeItem, REMResolutionTokenMap, REMSaveRequest, REMUserActivity;
 
-@interface REMReminderChangeItem : NSObject <REMConflictResolving, REMSaveRequestTrackedValue, REMExternalSyncMetadataWritableProviding>
+@interface REMReminderChangeItem : NSObject <REMConflictResolving, REMSaveRequestTrackedValue, REMExternalSyncMetadataWritableProviding, REMSupportedVersionProviding, REMSupportedVersionUpdating>
 {
     REMSaveRequest *_saveRequest;
     REMReminderStorage *_storage;
     REMChangedKeysObserver *_changedKeysObserver;
 }
 
-+ (id)_deduplicateAlarms:(id)arg1;
 + (void)initialize;
 + (long long)hourForNextThirdsFromHour:(long long)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) REMChangedKeysObserver *changedKeysObserver; // @synthesize changedKeysObserver=_changedKeysObserver;
 @property(retain, nonatomic) REMReminderStorage *storage; // @synthesize storage=_storage;
 @property(readonly, nonatomic) REMSaveRequest *saveRequest; // @synthesize saveRequest=_saveRequest;
+- (_Bool)isUnsupported;
 - (id)resolutionTokenKeyForChangedKey:(id)arg1;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
 - (_Bool)respondsToSelector:(SEL)arg1;
@@ -37,6 +39,7 @@
 - (id)removeFromParentReminderAllowingUndo;
 - (void)removeFromList;
 - (id)removeFromListAllowingUndo;
+@property(readonly, nonatomic) REMReminderHashtagContextChangeItem *hashtagContext;
 @property(readonly, nonatomic) REMReminderAssignmentContextChangeItem *assignmentContext;
 @property(readonly, nonatomic) REMReminderFlaggedContextChangeItem *flaggedContext;
 @property(readonly, nonatomic) REMReminderAttachmentContextChangeItem *attachmentContext;
@@ -46,6 +49,7 @@
 - (void)removeAllAlarms;
 - (void)removeAlarm:(id)arg1 updateDisplayDate:(_Bool)arg2;
 - (void)removeAlarm:(id)arg1;
+- (void)setAlarms:(id)arg1 updateDisplayDate:(_Bool)arg2;
 - (void)setAlarms:(id)arg1;
 - (void)addAlarm:(id)arg1 updateDisplayDate:(_Bool)arg2;
 - (void)addAlarm:(id)arg1;
@@ -68,9 +72,11 @@
 @property(nonatomic, getter=isCompleted) _Bool completed; // @dynamic completed;
 @property(copy, nonatomic) NSString *titleAsString;
 @property(copy, nonatomic) NSAttributedString *title;
+@property(retain, nonatomic) NSString *primaryLocaleInferredFromLastUsedKeyboard;
 - (id)_editDocument:(id)arg1 replicaIDSource:(id)arg2 newString:(id)arg3;
 @property(readonly, nonatomic) REMListChangeItem *listChangeItem;
 - (id)shallowCopyWithSaveRequest:(id)arg1;
+- (id)dedupedAndFilteredNonSnoozeAlarms:(id)arg1;
 - (void)_copyAlarmsInto:(id)arg1;
 - (void)copyInto:(id)arg1;
 - (id)duplicateForRecurrenceUsingReminderID:(id)arg1;
@@ -109,10 +115,13 @@
 @property(copy, nonatomic) NSString *daSyncToken; // @dynamic daSyncToken;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy, nonatomic) REMDisplayDate *displayDate; // @dynamic displayDate;
+@property(readonly, nonatomic) long long effectiveMinimumSupportedVersion; // @dynamic effectiveMinimumSupportedVersion;
 @property(copy, nonatomic) NSString *externalIdentifier; // @dynamic externalIdentifier;
 @property(copy, nonatomic) NSString *externalModificationTag; // @dynamic externalModificationTag;
 @property(nonatomic) long long flagged; // @dynamic flagged;
 @property(readonly) unsigned long long hash;
+@property(retain, nonatomic) NSSet *hashtagIDsToUndelete; // @dynamic hashtagIDsToUndelete;
+@property(retain, nonatomic) NSSet *hashtags; // @dynamic hashtags;
 @property(copy, nonatomic) NSURL *icsUrl; // @dynamic icsUrl;
 @property(retain, nonatomic) NSData *importedICSData; // @dynamic importedICSData;
 @property(readonly, nonatomic) _Bool isOverdue; // @dynamic isOverdue;
@@ -121,6 +130,7 @@
 @property(copy, nonatomic) NSDate *lastModifiedDate; // @dynamic lastModifiedDate;
 @property(readonly, copy, nonatomic) NSString *legacyNotificationIdentifier; // @dynamic legacyNotificationIdentifier;
 @property(retain, nonatomic) REMObjectID *listID; // @dynamic listID;
+@property(readonly, nonatomic) long long minimumSupportedVersion; // @dynamic minimumSupportedVersion;
 @property(retain, nonatomic) REMCRMergeableStringDocument *notesDocument; // @dynamic notesDocument;
 @property(retain, nonatomic) NSData *notesDocumentData; // @dynamic notesDocumentData;
 @property(retain, nonatomic) REMObjectID *objectID; // @dynamic objectID;

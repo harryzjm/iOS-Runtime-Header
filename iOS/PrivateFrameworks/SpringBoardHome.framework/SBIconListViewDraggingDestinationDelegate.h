@@ -28,7 +28,6 @@
     id <SBIconListViewDraggingPolicyHandling> _springLoadingPolicyHandler;
 }
 
-+ (unsigned long long)dragTypeForDropSession:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic, getter=isWaitingForConcludeDrag) _Bool waitingForConcludeDrag; // @synthesize waitingForConcludeDrag=_waitingForConcludeDrag;
 @property(retain, nonatomic) id <SBIconListViewDraggingPolicyHandling> springLoadingPolicyHandler; // @synthesize springLoadingPolicyHandler=_springLoadingPolicyHandler;
@@ -59,6 +58,7 @@
 @property(readonly, copy) NSString *description;
 - (_Bool)updateSpringLoadedPolicyHandlerForDropSession:(id)arg1;
 - (_Bool)updateCurrentPolicyHandlerForDropSession:(id)arg1;
+- (unsigned long long)dragTypeForDropSession:(id)arg1;
 - (_Bool)isDropSessionWaitingForConcludeDrop:(id)arg1;
 - (void)unmarkDropSessionAsWaitingForConcludeDrop:(id)arg1;
 - (void)markDropSessionAsWaitingForConcludeDrop:(id)arg1;

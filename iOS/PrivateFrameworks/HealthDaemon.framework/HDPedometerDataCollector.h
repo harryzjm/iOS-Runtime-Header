@@ -16,8 +16,6 @@
 + (_Bool)isPedometerDataCollectionSupported;
 - (void).cxx_destruct;
 - (void)userCharacteristicsManager:(id)arg1 didUpdateUserProfile:(id)arg2;
-- (_Bool)queue_userConditionIsSet;
-- (_Bool)queue_userIsAbleBodied;
 - (id)persistentIdentifier;
 - (double)queue_differenceFromDatum:(id)arg1 toDatum:(id)arg2 type:(id)arg3;
 - (id)queue_newDataSource;

@@ -22,6 +22,7 @@
     CDUnknownBlockType _avatarUpdater;
     CDUnknownBlockType _thumbnailProvider;
     CDUnknownBlockType _presetResourcesProvider;
+    CDUnknownBlockType _stickerResourceProvider;
     CDUnknownBlockType discardableContentHandler;
     UIImage *_cachedThumbnail;
     double _heightRatio;
@@ -31,6 +32,7 @@
 @property(readonly, nonatomic) double heightRatio; // @synthesize heightRatio=_heightRatio;
 @property(retain, nonatomic) UIImage *cachedThumbnail; // @synthesize cachedThumbnail=_cachedThumbnail;
 @property(copy, nonatomic) CDUnknownBlockType discardableContentHandler; // @synthesize discardableContentHandler;
+@property(readonly, copy, nonatomic) CDUnknownBlockType stickerResourceProvider; // @synthesize stickerResourceProvider=_stickerResourceProvider;
 @property(readonly, copy, nonatomic) CDUnknownBlockType presetResourcesProvider; // @synthesize presetResourcesProvider=_presetResourcesProvider;
 @property(readonly, copy, nonatomic) CDUnknownBlockType thumbnailProvider; // @synthesize thumbnailProvider=_thumbnailProvider;
 @property(nonatomic, getter=isSelected) _Bool selected; // @synthesize selected=_selected;
@@ -40,7 +42,7 @@
 - (void)discardContent;
 @property(readonly, copy) NSString *description;
 @property(readonly, copy, nonatomic) NSString *prefetchingIdentifier;
-- (id)initWithIdentifier:(id)arg1 localizedName:(id)arg2 thumbnailProvider:(CDUnknownBlockType)arg3 presetResourcesProvider:(CDUnknownBlockType)arg4 avatarUpdater:(CDUnknownBlockType)arg5 heightRatio:(double)arg6 selected:(_Bool)arg7;
+- (id)initWithIdentifier:(id)arg1 localizedName:(id)arg2 thumbnailProvider:(CDUnknownBlockType)arg3 stickerResourceProvider:(CDUnknownBlockType)arg4 presetResourcesProvider:(CDUnknownBlockType)arg5 avatarUpdater:(CDUnknownBlockType)arg6 heightRatio:(double)arg7 selected:(_Bool)arg8;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

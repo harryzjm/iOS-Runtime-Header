@@ -10,8 +10,6 @@
 {
 }
 
-+ (_Bool)_componentsHaveStreetAndCityOrZip:(id)arg1;
-+ (_Bool)_components:(id)arg1 haveHongKongAtKey:(id)arg2;
 + (_Bool)isValidDataDetectorsMatch:(struct __DDResult *)arg1 addressComponents:(id *)arg2;
 + (id)addressComponentsFromString:(id)arg1 extractedAddress:(id *)arg2 locale:(id)arg3;
 + (id)addressComponentsFromString:(id)arg1 extractedAddress:(id *)arg2;

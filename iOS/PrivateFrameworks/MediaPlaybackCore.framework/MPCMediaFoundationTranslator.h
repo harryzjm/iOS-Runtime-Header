@@ -11,6 +11,7 @@
 @class NSMutableDictionary;
 @protocol MPCQueueItemProviding;
 
+__attribute__((visibility("hidden")))
 @interface MPCMediaFoundationTranslator : NSObject <MFQueueControlling>
 {
     NSMutableDictionary *_mapping;
@@ -21,6 +22,7 @@
 @property(readonly, nonatomic) id <MPCQueueItemProviding> queueController; // @synthesize queueController=_queueController;
 @property(readonly, copy, nonatomic) NSMutableDictionary *mapping; // @synthesize mapping=_mapping;
 - (id)_MPAVItemForMFPlayerItem:(id)arg1 allowReuse:(_Bool)arg2;
+- (void)updatePlayerPlaybackCoordinator:(id)arg1;
 - (_Bool)canSkipInDirection:(long long)arg1 fromItem:(id)arg2;
 - (id)itemToFollowItem:(id)arg1 direction:(long long)arg2 distance:(long long)arg3 reason:(long long)arg4;
 - (id)queueItemForPlayerItem:(id)arg1 allowReuse:(_Bool)arg2;

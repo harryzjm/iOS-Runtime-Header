@@ -8,39 +8,53 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSSet, NSString, NSUUID, PKAppletSubcredentialEncryptedRequest, PKAppletSubcredentialEntitlement, PKAppletSubcredentialSharingConfirguration;
+@class NSData, NSSet, NSString, NSUUID, PKAppletSubcredentialEncryptedRequest, PKAppletSubcredentialEntitlement, PKAppletSubcredentialSharingConfirguration;
 
 @interface PKAppletSubcredential : NSObject <NSSecureCoding>
 {
+    _Bool _isOnlineImmobilizerToken;
     NSString *_identifier;
     long long _state;
     PKAppletSubcredentialEntitlement *_entitlement;
+    long long _credentialType;
     PKAppletSubcredentialSharingConfirguration *_sharingConfiguration;
     NSString *_invitationIdentifier;
     NSString *_partnerIdentifier;
     NSString *_pairedReaderIdentifier;
+    unsigned long long _supportedRadioTechnologies;
     NSSet *_sharedCredentials;
     NSSet *_invitationReceipts;
     NSString *_endpointIdentifier;
     NSUUID *_sharingSessionIdentifier;
     NSString *_originatorIDSHandle;
+    NSString *_isoFormat;
     unsigned long long _credentialState;
     PKAppletSubcredentialEncryptedRequest *_trackingRequest;
+    NSData *_transactionKey;
+    NSData *_readerIdentifier;
+    NSString *_appletIdentifier;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *appletIdentifier; // @synthesize appletIdentifier=_appletIdentifier;
+@property(retain, nonatomic) NSData *readerIdentifier; // @synthesize readerIdentifier=_readerIdentifier;
+@property(retain, nonatomic) NSData *transactionKey; // @synthesize transactionKey=_transactionKey;
 @property(retain, nonatomic) PKAppletSubcredentialEncryptedRequest *trackingRequest; // @synthesize trackingRequest=_trackingRequest;
 @property(nonatomic) unsigned long long credentialState; // @synthesize credentialState=_credentialState;
+@property(copy, nonatomic) NSString *isoFormat; // @synthesize isoFormat=_isoFormat;
 @property(copy, nonatomic) NSString *originatorIDSHandle; // @synthesize originatorIDSHandle=_originatorIDSHandle;
 @property(retain, nonatomic) NSUUID *sharingSessionIdentifier; // @synthesize sharingSessionIdentifier=_sharingSessionIdentifier;
 @property(copy, nonatomic) NSString *endpointIdentifier; // @synthesize endpointIdentifier=_endpointIdentifier;
 @property(copy, nonatomic) NSSet *invitationReceipts; // @synthesize invitationReceipts=_invitationReceipts;
 @property(copy, nonatomic) NSSet *sharedCredentials; // @synthesize sharedCredentials=_sharedCredentials;
+@property(nonatomic) unsigned long long supportedRadioTechnologies; // @synthesize supportedRadioTechnologies=_supportedRadioTechnologies;
+@property(nonatomic) _Bool isOnlineImmobilizerToken; // @synthesize isOnlineImmobilizerToken=_isOnlineImmobilizerToken;
 @property(copy, nonatomic) NSString *pairedReaderIdentifier; // @synthesize pairedReaderIdentifier=_pairedReaderIdentifier;
 @property(copy, nonatomic) NSString *partnerIdentifier; // @synthesize partnerIdentifier=_partnerIdentifier;
 @property(copy, nonatomic) NSString *invitationIdentifier; // @synthesize invitationIdentifier=_invitationIdentifier;
 @property(retain, nonatomic) PKAppletSubcredentialSharingConfirguration *sharingConfiguration; // @synthesize sharingConfiguration=_sharingConfiguration;
+@property(nonatomic) long long credentialType; // @synthesize credentialType=_credentialType;
 @property(retain, nonatomic) PKAppletSubcredentialEntitlement *entitlement; // @synthesize entitlement=_entitlement;
 @property(nonatomic) long long state; // @synthesize state=_state;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;

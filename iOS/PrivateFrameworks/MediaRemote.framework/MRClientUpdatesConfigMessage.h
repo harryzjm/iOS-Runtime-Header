@@ -4,11 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSArray;
+
 __attribute__((visibility("hidden")))
 @interface MRClientUpdatesConfigMessage
 {
+    NSArray *_subscribedPlayerPaths;
 }
 
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *subscribedPlayerPaths; // @synthesize subscribedPlayerPaths=_subscribedPlayerPaths;
 - (unsigned long long)type;
 @property(readonly, nonatomic) _Bool systemEndpointUpdates;
 @property(readonly, nonatomic) _Bool outputDeviceUpdates;
@@ -16,7 +21,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool volumeUpdates;
 @property(readonly, nonatomic) _Bool artworkUpdates;
 @property(readonly, nonatomic) _Bool nowPlayingUpdates;
-- (id)initWithNowPlayingUpdates:(_Bool)arg1 artworkUpdates:(_Bool)arg2 volumeUpdates:(_Bool)arg3 keyboardUpdates:(_Bool)arg4 outputDeviceUpdates:(_Bool)arg5 systemEndpointUpdates:(_Bool)arg6;
+- (id)initWithNowPlayingUpdates:(_Bool)arg1 artworkUpdates:(_Bool)arg2 volumeUpdates:(_Bool)arg3 keyboardUpdates:(_Bool)arg4 outputDeviceUpdates:(_Bool)arg5 systemEndpointUpdates:(_Bool)arg6 subscribedPlayerPaths:(id)arg7;
+- (id)initWithUnderlyingCodableMessage:(id)arg1 error:(id)arg2;
 
 @end
 

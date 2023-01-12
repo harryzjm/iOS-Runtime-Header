@@ -25,8 +25,8 @@
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithStartTime:(double)arg1 targetSlideNode:(id)arg2 targetEventIndex:(unsigned long long)arg3 animationPhase:(long long)arg4;
-- (void)saveToMessage:(struct RecordingEventArchive *)arg1 archiver:(id)arg2;
-- (void)loadFromMessage:(const struct RecordingEventArchive *)arg1 unarchiver:(id)arg2 parentEventTrack:(id)arg3;
+- (void)saveToMessage:(void *)arg1 archiver:(id)arg2;
+- (void)loadFromMessage:(const void *)arg1 unarchiver:(id)arg2 parentEventTrack:(id)arg3;
 
 @end
 

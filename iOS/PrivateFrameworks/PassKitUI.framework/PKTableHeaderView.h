@@ -16,24 +16,27 @@
     UILabel *_subtitleLabel;
     UIButton *_actionButton;
     UIActivityIndicatorView *_activityIndicator;
-    _Bool _shouldResizeImageToFit;
+    _Bool _isTemplateLayout;
     _Bool _accessoryViewsDisabled;
+    _Bool _shouldReserveSubtitleHeight;
     unsigned long long _style;
     double _topPadding;
     double _bottomPadding;
     double _minimumHeight;
+    double _maximumHeight;
     LAUICheckmarkLayer *_checkmarkLayer;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) LAUICheckmarkLayer *checkmarkLayer; // @synthesize checkmarkLayer=_checkmarkLayer;
 @property(readonly, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
+@property(nonatomic) _Bool shouldReserveSubtitleHeight; // @synthesize shouldReserveSubtitleHeight=_shouldReserveSubtitleHeight;
 @property(retain, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property(nonatomic) _Bool accessoryViewsDisabled; // @synthesize accessoryViewsDisabled=_accessoryViewsDisabled;
+@property(nonatomic) double maximumHeight; // @synthesize maximumHeight=_maximumHeight;
 @property(nonatomic) double minimumHeight; // @synthesize minimumHeight=_minimumHeight;
 @property(nonatomic) double bottomPadding; // @synthesize bottomPadding=_bottomPadding;
 @property(nonatomic) double topPadding; // @synthesize topPadding=_topPadding;
-@property(nonatomic) _Bool shouldResizeImageToFit; // @synthesize shouldResizeImageToFit=_shouldResizeImageToFit;
 @property(nonatomic) unsigned long long style; // @synthesize style=_style;
 - (void)_updateCheckmarkColor;
 - (id)_subtitleFont;
@@ -45,16 +48,18 @@
 - (void)_dynamicUserInterfaceTraitDidChange;
 - (void)tintColorDidChange;
 - (void)layoutSubviews;
-- (struct CGSize)_sizeThatFitsExcludingImage:(struct CGSize)arg1;
+- (struct CGSize)_layoutWithBounds:(struct CGRect)arg1 imageHeightAdjustment:(double)arg2;
+- (struct CGSize)_layoutWithBounds:(struct CGRect)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-@property(readonly, nonatomic) UIButton *actionButton;
+- (id)actionButton;
 @property(readonly, nonatomic) UILabel *subtitleLabel;
 @property(readonly, nonatomic) UILabel *titleLabel;
 - (void)_updateImageView;
 - (void)setImageViewImage:(id)arg1 withSize:(struct CGSize)arg2 animated:(_Bool)arg3;
 - (void)setPassSnapshot:(id)arg1 withSize:(struct CGSize)arg2 animated:(_Bool)arg3 needsCorners:(_Bool)arg4;
 - (void)setPassSnapshotUsingDefaultSize:(id)arg1 animated:(_Bool)arg2 needsCorners:(_Bool)arg3;
-- (void)dealloc;
+- (void)setActionTitle:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

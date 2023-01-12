@@ -37,7 +37,7 @@
 - (void)sendMediaActionMessageToResident:(id)arg1 sessionData:(id)arg2 encodePlaybackArchive:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)handleNonResidentMediaActionExecutionWithSessionData:(id)arg1 encodePlaybackArchive:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)routeSessionDataForExecution:(id)arg1 encodePlaybackArchive:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)routeMediaActionForExecution:(id)arg1 source:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)routeMediaActionForExecution:(id)arg1 source:(unsigned long long)arg2 clientName:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_registerForMessages;
 - (void)dealloc;
 - (id)init;

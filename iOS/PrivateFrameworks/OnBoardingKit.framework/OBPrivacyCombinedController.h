@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSString, UIColor;
 
 @interface OBPrivacyCombinedController
 {
+    _Bool _underlineLinks;
     _Bool _allowsOpeningSafari;
     _Bool _presentedFromPrivacyPane;
+    UIColor *_customTintColor;
     NSString *_displayLanguage;
 }
 
@@ -19,6 +21,8 @@
 @property _Bool presentedFromPrivacyPane; // @synthesize presentedFromPrivacyPane=_presentedFromPrivacyPane;
 @property(retain) NSString *displayLanguage; // @synthesize displayLanguage=_displayLanguage;
 @property _Bool allowsOpeningSafari; // @synthesize allowsOpeningSafari=_allowsOpeningSafari;
+@property(nonatomic) _Bool underlineLinks; // @synthesize underlineLinks=_underlineLinks;
+@property(retain, nonatomic) UIColor *customTintColor; // @synthesize customTintColor=_customTintColor;
 - (void)viewDidAppear:(_Bool)arg1;
 - (id)initWithIdentifiers:(id)arg1;
 - (id)init;

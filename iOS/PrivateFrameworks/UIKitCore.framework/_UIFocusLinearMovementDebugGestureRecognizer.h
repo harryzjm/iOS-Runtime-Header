@@ -4,19 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIPress;
+@class NSMutableSet, UIPress;
 
 __attribute__((visibility("hidden")))
 @interface _UIFocusLinearMovementDebugGestureRecognizer
 {
     UIPress *_press;
+    _Bool _allowsGroupMode;
+    NSMutableSet *_presses;
+    _Bool _groupMode;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic, getter=isGroupMode) _Bool groupMode; // @synthesize groupMode=_groupMode;
+- (void)reset;
 - (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)pressesChanged:(id)arg1 withEvent:(id)arg2;
 - (void)pressesBegan:(id)arg1 withEvent:(id)arg2;
+- (void)_update;
+- (id)initWithTarget:(id)arg1 action:(SEL)arg2 allowsGroupMode:(_Bool)arg3;
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2;
 
 @end

@@ -6,16 +6,20 @@
 
 #import <NotesShared/ICCloudObject-Protocol.h>
 
-@class ICAccount, NSArray, NSData, NSDate, NSNumber, NSSet, NSString;
+@class ICAccount, ICQuery, ICQueryObjC, NSArray, NSData, NSDate, NSNumber, NSSet, NSString;
 
 @interface ICFolder <ICCloudObject>
 {
 }
 
++ (id)paperFoldersWithManagedObjectContext:(id)arg1;
++ (id)systemPaperFolderFetchRequest;
++ (unsigned long long)countOfVisibleSmartFoldersForHashtagStandardizedContent:(id)arg1 account:(id)arg2;
 + (id)keyPathsForValuesAffectingCanBeSharedViaICloud;
-+ (id)keyPathsForValuesAffectingIsSharedViaICloud;
 + (id)shareType;
 + (id)rootSharingFolderForNote:(id)arg1;
++ (id)englishTitleForSystemPaperFolder;
++ (id)localizedTitleForSystemPaperFolder;
 + (id)englishTitleForTrashFolder;
 + (id)localizedTitleForTrashFolder;
 + (id)englishTitleForDefaultFolder;
@@ -23,6 +27,8 @@
 + (id)keyPathsForValuesAffectingSupportsEditingNotes;
 + (id)keyPathsForValuesAffectingTitleForTableViewCell;
 + (id)keyPathsForValuesAffectingVisibleNotesCount;
++ (_Bool)isTitleValid:(id)arg1 account:(id)arg2 folder:(id)arg3 parentFolder:(id)arg4 error:(out id *)arg5;
++ (_Bool)isTitleValid:(id)arg1 account:(id)arg2 parentFolder:(id)arg3 error:(out id *)arg4;
 + (id)keyPathsForValuesAffectingIsDefaultFolderForAccount;
 + (id)keyPathsForValuesAffectingVisibleNoteContainerChildren;
 + (id)keyPathsForValuesAffectingIsTrashFolder;
@@ -37,9 +43,19 @@
 + (id)localizedNewFolderName;
 + (id)deduplicatingTitle:(id)arg1 forFolder:(id)arg2 forNewFolderParent:(id)arg3 ofAccount:(id)arg4;
 + (id)deduplicatingTitle:(id)arg1 forFolder:(id)arg2 ofAccount:(id)arg3;
++ (id)deduplicatingTitle:(id)arg1 account:(id)arg2;
 + (id)reservedFolderTitles;
++ (_Bool)supportsUserSpecificRecords;
++ (id)newPlaceholderObjectForRecordName:(id)arg1 accountID:(id)arg2 context:(id)arg3;
++ (id)newCloudObjectForRecord:(id)arg1 accountID:(id)arg2 context:(id)arg3;
++ (id)existingCloudObjectForRecordID:(id)arg1 accountID:(id)arg2 context:(id)arg3;
++ (id)defaultSmartFolderTitleWithComponents:(id)arg1;
++ (id)smartFolderWithQuery:(id)arg1 titleComponents:(id)arg2 account:(id)arg3;
++ (id)smartFolderWithQuery:(id)arg1 account:(id)arg2;
++ (_Bool)supportsActivityEvents;
 + (id)predicateForFoldersInFolder:(id)arg1;
 + (id)predicateForNotesInFolder:(id)arg1;
++ (id)predicateForVisibleCustomFolders;
 + (id)predicateForVisibleFoldersIncludingHiddenNoteContainers:(_Bool)arg1 inContext:(id)arg2;
 + (id)predicateForVisibleObjects;
 + (id)predicateForVisibleFoldersInContext:(id)arg1;
@@ -54,14 +70,23 @@
 + (void)deleteFolder:(id)arg1;
 + (id)newFolderWithIdentifier:(id)arg1 parentFolder:(id)arg2;
 + (id)newFolderInParentFolder:(id)arg1;
++ (id)newFolderWithIdentifier:(id)arg1 account:(id)arg2 query:(id)arg3;
 + (id)newFolderWithIdentifier:(id)arg1 account:(id)arg2;
 + (id)newFolderInAccount:(id)arg1;
-+ (_Bool)supportsUserSpecificRecords;
-+ (id)newPlaceholderObjectForRecordName:(id)arg1 accountID:(id)arg2 context:(id)arg3;
-+ (id)newCloudObjectForRecord:(id)arg1 accountID:(id)arg2 context:(id)arg3;
-+ (id)existingCloudObjectForRecordID:(id)arg1 accountID:(id)arg2 context:(id)arg3;
++ (id)objc_defaultSmartFolderTitleWithComponents:(id)arg1;
++ (id)objc_smartFolderWithQuery:(id)arg1 account:(id)arg2;
++ (id)objc_smartFolderWithQuery:(id)arg1 titleComponents:(id)arg2 account:(id)arg3;
+- (_Bool)allowsImporting;
+- (_Bool)allowsExporting;
+- (_Bool)isSystemPaperFolder;
+- (_Bool)isSmartNonSystemPaperFolder;
+- (_Bool)isEditableSmartFolder;
+- (_Bool)isSmartFolder;
+@property(copy, nonatomic) NSString *smartFolderQueryJSON; // @dynamic smartFolderQueryJSON;
+@property(nonatomic) short folderType; // @dynamic folderType;
 - (_Bool)isModernCustomFolder;
 - (_Bool)canBeSharedViaICloud;
+- (id)parentCloudObjectModificationDate;
 - (id)parentCloudObject;
 - (id)shareType;
 - (id)shareTitle;
@@ -104,7 +129,6 @@
 - (void)updateChangeCount;
 - (void)setMarkedForDeletion:(_Bool)arg1;
 - (void)markForDeletion;
-- (_Bool)containsVisibleLockedNotesIncludingChildFolders:(_Bool)arg1;
 - (_Bool)shouldSyncMinimumSupportedNotesVersion;
 - (long long)intrinsicNotesVersion;
 @property(retain, nonatomic) ICAccount *account; // @dynamic account;
@@ -140,21 +164,10 @@
 - (id)customNoteSortType;
 - (void)setCustomNoteSortType:(id)arg1;
 - (id)cacheKey;
-- (id)predicateForVisibleAttachmentsInFolder;
-- (id)predicateForAttachmentsInFolder;
-- (id)predicateForPinnedNotesInFolder;
-- (id)predicateForVisibleNotesInFolder;
-- (id)predicateForFoldersInFolder;
-- (id)predicateForNotesInFolder;
-- (unsigned long long)countOfVisibleNotesInFolder;
-- (id)foldersInFolder;
-- (id)pinnedNotesInFolder;
-- (id)visibleNotesInFolder;
 - (void)resetUniqueIdentifier;
 - (void)mergeDataFromUserSpecificRecord:(id)arg1 accountID:(id)arg2;
 - (id)newlyCreatedUserSpecificRecord;
 - (void)objectWasDeletedFromCloudByAnotherDevice;
-- (void)objectWasFetchedFromCloudWithRecord:(id)arg1 accountID:(id)arg2;
 - (id)objectsToBeDeletedBeforeThisObject;
 - (void)deleteFromLocalDatabase;
 - (_Bool)hasAllMandatoryFields;
@@ -162,10 +175,26 @@
 - (_Bool)isInICloudAccount;
 - (id)newlyCreatedRecord;
 - (void)mergeParentFromRecord:(id)arg1;
-- (void)mergeDataFromRecord:(id)arg1 accountID:(id)arg2;
+- (void)mergeDataFromRecord:(id)arg1 accountID:(id)arg2 force:(_Bool)arg3;
 - (id)recordType;
 - (id)recordZoneName;
 - (void)unmarkForDeletionIncludingParentHierarchy;
+@property(readonly, copy, nonatomic) NSString *smartFolderShortDescription;
+@property(readonly, copy, nonatomic) NSString *smartFolderDescription;
+@property(retain, nonatomic) ICQuery *smartFolderQuery;
+- (id)predicateForVisibleAttachmentsInFolder;
+- (id)predicateForAttachmentsInFolder;
+- (id)predicateForPinnedNotesInFolder;
+- (id)predicateForVisibleNotesInFolder;
+- (id)predicateForFoldersInFolder;
+- (id)predicateForNotesInFolder;
+- (unsigned long long)countOfVisibleNotesInFolder;
+@property(readonly, nonatomic) NSArray *foldersInFolder;
+- (id)pinnedNotesInFolder;
+@property(readonly, nonatomic) NSArray *visibleNotesInFolder;
+@property(nonatomic, readonly) NSString *smartFolderShortDescriptionObjC;
+@property(nonatomic, readonly) NSString *smartFolderDescriptionObjC;
+@property(nonatomic, retain) ICQueryObjC *smartFolderQueryObjC;
 
 // Remaining properties
 @property(retain, nonatomic) NSSet *children; // @dynamic children;
@@ -174,10 +203,12 @@
 @property(retain, nonatomic) NSDate *dateForLastTitleModification; // @dynamic dateForLastTitleModification;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(nonatomic) short folderType; // @dynamic folderType;
 @property(readonly) unsigned long long hash;
 @property(nonatomic) _Bool importedFromLegacy; // @dynamic importedFromLegacy;
 @property(retain, nonatomic) NSData *mergeableData; // @dynamic mergeableData;
+@property(readonly, nonatomic) _Bool needsToBeDeletedFromCloud;
+@property(readonly, nonatomic) _Bool needsToBeFetchedFromCloud;
+@property(readonly, nonatomic) _Bool needsToBePushedToCloud;
 @property(retain, nonatomic) NSSet *notes; // @dynamic notes;
 @property(retain, nonatomic) NSDate *parentModificationDate; // @dynamic parentModificationDate;
 @property(readonly) Class superclass;

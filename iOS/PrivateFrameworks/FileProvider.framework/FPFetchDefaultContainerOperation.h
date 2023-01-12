@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class LSApplicationRecord, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FPFetchDefaultContainerOperation
 {
-    NSString *_defaultName;
-    NSString *_appIdentifier;
+    LSApplicationRecord *_requestedRecord;
     NSString *_domainIdentifier;
     CDUnknownBlockType _fetchCompletionBlock;
 }
@@ -19,7 +18,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType fetchCompletionBlock; // @synthesize fetchCompletionBlock=_fetchCompletionBlock;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
 - (void)actionMain;
-- (id)initForApplicationProxy:(id)arg1 providerDomain:(id)arg2;
+- (id)initForApplicationRecord:(id)arg1 providerDomain:(id)arg2;
 
 @end
 

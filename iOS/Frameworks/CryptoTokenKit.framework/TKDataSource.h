@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(readonly) const char *ptr; // @synthesize ptr=_ptr;
+- (id)dataFromPtr:(const char *)arg1;
 @property(readonly) NSData *data;
 - (id)fetchDataWithLength:(long long)arg1;
 - (unsigned char)fetchByte;

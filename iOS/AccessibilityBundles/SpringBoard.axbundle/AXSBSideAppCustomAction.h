@@ -12,6 +12,7 @@
 }
 
 @property(nonatomic) unsigned long long gesture; // @synthesize gesture=_gesture;
+- (id)initWithName:(id)arg1 gesture:(unsigned long long)arg2 target:(id)arg3 selector:(SEL)arg4;
 
 @end
 

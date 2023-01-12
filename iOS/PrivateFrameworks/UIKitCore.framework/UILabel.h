@@ -10,31 +10,38 @@
 #import <UIKitCore/_UIMultilineTextContentSizing-Protocol.h>
 #import <UIKitCore/_UIViewBaselineSpacing-Protocol.h>
 
-@class CUICatalog, CUIStyleEffectConfiguration, NSAttributedString, NSDictionary, NSMutableDictionary, NSString, UIColor, UIFont, _UILabelContent, _UILabelScaledMetrics, _UILabelVisualStyle, _UITextSizeCache;
+@class CUICatalog, CUIStyleEffectConfiguration, NSAttributedString, NSDictionary, NSMutableDictionary, NSString, UIColor, UIFont, _UILabelConfiguration, _UILabelContent, _UILabelLegacyScaledMetrics, _UILabelMetrics, _UILabelScaledMetrics, _UILabelSynthesizedContent, _UILabelVisualStyle, _UITextSizeCache;
 
 @interface UILabel <_UIViewBaselineSpacing, _UIMultilineTextContentSizing, _UILabelVisualStyleSubject, NSCoding, UIContentSizeCategoryAdjusting>
 {
     struct CGSize _size;
+    UIColor *_backgroundColor;
     UIColor *_highlightedColor;
     long long _numberOfLines;
-    CDStruct_25ed71ea _baselineInfo;
+    CDStruct_a0add0ba _intrinsicSizeBaselineInfo;
+    _UILabelMetrics *_metrics;
+    _UILabelMetrics *_intrinsicMetrics;
     double _previousBaselineOffsetFromBottom;
     double _previousFirstLineBaseline;
     double _minimumScaleFactor;
     _UILabelContent *_content;
+    _UILabelSynthesizedContent *_synthesizedContent;
     NSAttributedString *_synthesizedAttributedText;
     NSDictionary *_cachedSynthesizedTextAttributes;
     NSMutableDictionary *_fallbackColorsForUserInterfaceStyle;
     double _minimumFontSize;
     long long _lineSpacing;
     id _layout;
-    _UILabelScaledMetrics *_scaledMetrics;
+    _UILabelLegacyScaledMetrics *_scaledMetrics;
+    struct CGSize _scaledMetricsTargetSize;
     _UITextSizeCache *_intrinsicContentSizeCache;
     long long _contentsFormat;
     CUICatalog *_cuiCatalog;
     CUIStyleEffectConfiguration *_cuiStyleEffectConfiguration;
     NSMutableDictionary *_marqueeAnimations;
     NSMutableDictionary *_marqueeMaskAnimations;
+    _UILabelConfiguration *_configuration;
+    unsigned long long _accessibilityButtonShapesChangedToken;
     struct {
         unsigned int highlighted:1;
         unsigned int autosizeTextToFit:1;
@@ -48,6 +55,7 @@
         unsigned int marqueeEnabled:1;
         unsigned int marqueeRunable:1;
         unsigned int marqueeRequired:1;
+        unsigned int marqueeUpdatable:1;
         unsigned int usesExplicitPreferredMaxLayoutWidth:1;
         unsigned int drawsDebugBaselines:1;
         unsigned int explicitBaselineOffset:1;
@@ -65,8 +73,11 @@
         unsigned int canUseUILabelLayer:1;
         unsigned int implementsDefaultAttributes:1;
         unsigned int textColorFollowsTintColor:1;
+        unsigned int showsExpansionTextWhenTruncated:1;
+        unsigned int adjustsFontForContentSizeCategory:1;
+        unsigned int disableConfigurationUpdate:1;
+        unsigned int temporarilyDisableHighlight:1;
     } _textLabelFlags;
-    _Bool _adjustsFontForContentSizeCategory;
     double _preferredMaxLayoutWidth;
     double _multilineContextWidth;
     UIFont *_fontForShortcutBaselineCalculation;
@@ -84,7 +95,6 @@
 @property(retain, nonatomic, setter=set_fontForShortcutBaselineCalculation:) UIFont *_fontForShortcutBaselineCalculation; // @synthesize _fontForShortcutBaselineCalculation;
 - (void)_setMultilineContextWidth:(double)arg1;
 - (double)_multilineContextWidth;
-@property(nonatomic) _Bool adjustsFontForContentSizeCategory; // @synthesize adjustsFontForContentSizeCategory=_adjustsFontForContentSizeCategory;
 @property(retain, nonatomic) UIColor *highlightedTextColor; // @synthesize highlightedTextColor=_highlightedColor;
 @property(nonatomic) double preferredMaxLayoutWidth; // @synthesize preferredMaxLayoutWidth=_preferredMaxLayoutWidth;
 @property(readonly, nonatomic) long long _measuredNumberOfLines;
@@ -102,17 +112,23 @@
 - (void)setDrawsUnderline:(_Bool)arg1;
 - (void)_ancestorWillUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)setMarqueeRunning:(_Bool)arg1;
+- (_Bool)_isMarqueeUpdatable;
 - (_Bool)marqueeEnabled;
 - (_Bool)marqueeRunning;
 - (void)_stopMarqueeWithRedisplay:(_Bool)arg1;
 - (void)_startMarqueeIfNecessary;
 - (void)_drawFullMarqueeTextInRect:(struct CGRect)arg1;
+- (void)_setMarqueeUpdatable:(_Bool)arg1;
 - (void)setMarqueeEnabled:(_Bool)arg1;
 - (_Bool)_shouldDrawUnderlinesLikeWebKit;
 - (void)_setWordRoundingEnabled:(_Bool)arg1;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)layerWillDraw:(id)arg1;
-- (void)_drawTextInRect:(struct CGRect)arg1 baselineCalculationOnly:(_Bool)arg2;
+- (struct CGRect)_drawTextInRect:(struct CGRect)arg1;
+- (void)_ensureMetricsInRect:(struct CGRect)arg1 forDrawing:(_Bool)arg2;
+@property(retain, nonatomic, setter=_setMetrics:) _UILabelMetrics *_metrics;
+- (struct CGRect)_drawTextInRect:(struct CGRect)arg1 baselineCalculationOnly:(_Bool)arg2;
+@property(readonly, nonatomic) _UILabelScaledMetrics *_scaledMetrics;
 - (void)drawTextInRect:(struct CGRect)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)intrinsicContentSize;
@@ -147,11 +163,13 @@
 @property(nonatomic) struct CGSize shadowOffset;
 @property(retain, nonatomic) UIColor *shadowColor;
 @property(retain, nonatomic) UIFont *font;
+@property(nonatomic) _Bool adjustsFontForContentSizeCategory;
 - (void)_setFont:(id)arg1;
 - (void)_invalidateBaselineConstraints;
 - (_Bool)_shouldInvalidateBaselineConstraintsForSize:(struct CGSize)arg1 oldSize:(struct CGSize)arg2;
 - (id)currentTextColor;
 - (id)_disabledFontColor;
+@property(retain, nonatomic, setter=_setConfiguration:) _UILabelConfiguration *_configuration;
 - (void)setSemanticContentAttribute:(long long)arg1;
 @property(nonatomic) long long textAlignment;
 - (void)_setTextAlignment:(long long)arg1;
@@ -159,6 +177,7 @@
 - (_Bool)_textColorFollowsTintColor;
 - (void)_setTextColorFollowsTintColor:(_Bool)arg1;
 @property(nonatomic) unsigned long long lineBreakStrategy;
+@property(nonatomic) _Bool showsExpansionTextWhenTruncated;
 @property(nonatomic) _Bool enablesMarqueeWhenAncestorFocused;
 @property(nonatomic) _Bool allowsDefaultTighteningForTruncation;
 @property(nonatomic) double minimumFontSize;
@@ -170,12 +189,14 @@
 @property(retain, nonatomic) UIColor *textColor;
 - (void)_setTextColor:(id)arg1;
 - (void)_setFallbackTextColor:(id)arg1 forUserInterfaceStyle:(long long)arg2;
+- (void)setBackgroundColor:(id)arg1;
 @property(nonatomic, getter=isEnabled) _Bool enabled;
 @property(nonatomic, getter=isUserInteractionEnabled) _Bool userInteractionEnabled; // @dynamic userInteractionEnabled;
 @property(copy, nonatomic) NSAttributedString *attributedText;
 @property(copy, nonatomic) NSString *text;
 - (void)_setText:(id)arg1;
 - (struct UIEdgeInsets)_contentInsetsFromFonts;
+- (struct CGRect)_drawingRectForBounds:(struct CGRect)arg1;
 - (struct CGRect)_textRectForBounds:(struct CGRect)arg1 limitedToNumberOfLines:(long long)arg2 includingShadow:(_Bool)arg3;
 - (_Bool)_shouldCeilSizeToViewScale;
 - (long long)_stringDrawingOptions;
@@ -190,10 +211,11 @@
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)_commonInit;
-@property(retain, nonatomic, getter=_synthesizedAttributedText, setter=_setSynthesizedAttributedText:) NSAttributedString *_synthesizedAttributedText;
+@property(readonly, retain, nonatomic, getter=_synthesizedAttributedText) NSAttributedString *_synthesizedAttributedText;
+- (id)_synthesizedContent;
 - (void)invalidateIntrinsicContentSize;
-- (void)_invalidateTextSize;
 - (void)_invalidateLabelSize;
+- (void)_invalidateTextSize;
 - (void)setNeedsDisplay;
 - (void)_contentDidChange:(long long)arg1 fromContent:(id)arg2;
 @property(retain, nonatomic, getter=_content, setter=_setContent:) _UILabelContent *_content;
@@ -209,7 +231,7 @@
 - (_Bool)isAccessibilityElementByDefault;
 - (id)_image;
 - (id)largeContentTitle;
-- (_Bool)_isTextFieldCenteredLabel;
+- (void)_ola_willApplyMultilineTextWidthDisambiguationConstraint;
 - (double)_autolayoutSpacingAtEdge:(int)arg1 forAttribute:(long long)arg2 nextToNeighbor:(id)arg3 edge:(int)arg4 attribute:(long long)arg5 multiplier:(double)arg6;
 - (double)_autolayoutSpacingAtEdge:(int)arg1 forAttribute:(long long)arg2 inContainer:(id)arg3 isGuide:(_Bool)arg4;
 - (_Bool)_hasCustomAutolayoutNeighborSpacingForAttribute:(long long *)arg1;

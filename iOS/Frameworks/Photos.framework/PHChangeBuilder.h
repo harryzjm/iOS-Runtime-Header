@@ -31,7 +31,7 @@
 - (void)_recordUpdateChange:(id)arg1 withUniquedObjectID:(id)arg2;
 - (void)_recordInsertChange:(id)arg1 withUniquedObjectID:(id)arg2;
 - (void)recordChange:(id)arg1;
-- (void)recordChanges:(id)arg1;
+- (void)recordChangesInTransaction:(id)arg1;
 - (void)recordNonIncrementalChanges;
 - (_Bool)changeCountExeedsThreshold:(unsigned long long)arg1;
 - (void)recordTransaction:(id)arg1;

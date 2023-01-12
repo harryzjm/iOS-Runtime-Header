@@ -9,6 +9,7 @@
 @class MPIdentifierSet, MPModelFileAsset, MPModelGenericObject, MPModelHomeSharingAsset, MPModelStoreAsset, NSString;
 @protocol MPCModelPlaybackAssetCacheProviding;
 
+__attribute__((visibility("hidden")))
 @interface MPCModelGenericAVItemAssetLoadProperties : NSObject
 {
     _Bool _allowsHLSContent;
@@ -27,9 +28,13 @@
     unsigned long long _delegatedAccountID;
     NSString *_householdID;
     NSString *_storefrontID;
+    NSString *_playbackAuthorizationToken;
+    long long _preferredAudioAssetType;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long preferredAudioAssetType; // @synthesize preferredAudioAssetType=_preferredAudioAssetType;
+@property(copy, nonatomic) NSString *playbackAuthorizationToken; // @synthesize playbackAuthorizationToken=_playbackAuthorizationToken;
 @property(copy, nonatomic) NSString *storefrontID; // @synthesize storefrontID=_storefrontID;
 @property(copy, nonatomic) NSString *householdID; // @synthesize householdID=_householdID;
 @property(nonatomic) unsigned long long delegatedAccountID; // @synthesize delegatedAccountID=_delegatedAccountID;

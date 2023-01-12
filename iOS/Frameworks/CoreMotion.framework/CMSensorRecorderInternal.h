@@ -11,7 +11,7 @@
 @interface CMSensorRecorderInternal : NSObject
 {
     NSObject<OS_dispatch_queue> *fInternalQueue;
-    struct CLConnectionClient *fLocationdConnection;
+    void *fLocationdConnection;
 }
 
 - (id)newDataByID:(unsigned long long)arg1 metaID:(unsigned long long)arg2 forType:(int)arg3;

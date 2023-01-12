@@ -8,9 +8,16 @@
 
 @interface _TtC3ECS22DispatchApplyScheduler
 {
-    MISSING_TYPE *semas;
+    MISSING_TYPE *sema;
     MISSING_TYPE *inFlightJobs;
+    MISSING_TYPE *inFlightJobGroups;
     MISSING_TYPE *currentStageIndex;
+    MISSING_TYPE *lastNonActionableStep;
+    MISSING_TYPE *currentStep;
+    MISSING_TYPE *jobPickingCount;
+    MISSING_TYPE *jobPickingSkipCount;
+    MISSING_TYPE *jobPickingFailedCount;
+    MISSING_TYPE *jobPickingIterationCount;
 }
 
 @end

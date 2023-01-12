@@ -25,11 +25,14 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) FCNewsAvailabilityMonitor *NewsAvailabilityMonitor; // @synthesize NewsAvailabilityMonitor=_NewsAvailabilityMonitor;
 @property(retain, nonatomic) FCNetworkReachability *networkReachability; // @synthesize networkReachability=_networkReachability;
+- (_Bool)_isAvailableAssumingStoreFrontIsSupported:(_Bool)arg1;
+- (_Bool)_isAvailable;
 - (void)_updateAvailability;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 @property(readonly, nonatomic) Class todayResultsFetchDescriptorClass;
 - (void)dealloc;
 @property(copy, nonatomic) CDUnknownBlockType availabilityChangedNotificationBlock; // @synthesize availabilityChangedNotificationBlock=_availabilityChangedNotificationBlock;
+@property(readonly, nonatomic, getter=isLikelyAvailable) _Bool likelyAvailable;
 - (id)initWithNetworkReachability:(id)arg1 processVariant:(unsigned long long)arg2 queue:(id)arg3;
 - (id)init;
 

@@ -14,7 +14,8 @@
 __attribute__((visibility("hidden")))
 @interface VKCameraController : NSObject <VKCameraController>
 {
-    VKCamera *_camera;
+    VKCamera *_vkCamera;
+    shared_ptr_46708168 _camera;
     id <MDRenderTarget> _canvas;
     id <VKMapViewCameraDelegate> _cameraDelegate;
     _Bool _gesturing;
@@ -31,6 +32,8 @@ __attribute__((visibility("hidden")))
     _Bool _isRotateEnabled;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) struct RunLoopController *runLoopController; // @synthesize runLoopController=_runLoopController;
 @property(readonly, nonatomic) struct AnimationRunner *animationRunner; // @synthesize animationRunner=_animationRunner;
 @property(readonly, nonatomic) struct MapDataAccess *mapDataAccess; // @synthesize mapDataAccess=_mapDataAccess;
@@ -38,12 +41,11 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool isPitchEnabled; // @synthesize isPitchEnabled=_isPitchEnabled;
 @property(nonatomic) _Bool staysCenteredDuringRotation; // @synthesize staysCenteredDuringRotation=_staysCenteredDuringRotation;
 @property(nonatomic) _Bool staysCenteredDuringPinch; // @synthesize staysCenteredDuringPinch=_staysCenteredDuringPinch;
-- (void)populateDebugNode:(struct DebugTreeNode *)arg1 withOptions:(const bitset_dc343b9a *)arg2;
+- (_Bool)usesVKCamera;
+- (void)populateDebugNode:(void *)arg1 withOptions:(const void *)arg2;
 - (_Bool)centerCoordinate:(CDStruct_c3b9c2ee *)arg1 andDistanceFromCenter:(double *)arg2 forMapRegion:(id)arg3;
-- (void)updateWithTimestamp:(double)arg1;
+- (void)updateWithTimestamp:(double)arg1 withContext:(void *)arg2;
 - (_Bool)wantsTimerTick;
-- (_Bool)restoreViewportFromInfo:(id)arg1;
-- (id)viewportInfo;
 @property(readonly, nonatomic) double altitude;
 @property(readonly, nonatomic) double maxPitch;
 @property(readonly, nonatomic) double minPitch;
@@ -52,6 +54,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double heading;
 @property(nonatomic) double distanceFromCenterCoordinate;
 @property(nonatomic) CDStruct_c3b9c2ee centerCoordinate;
+@property(readonly, nonatomic) GEOMapRegion *mapRegionIgnoringEdgeInsets;
 @property(readonly, nonatomic) GEOMapRegion *mapRegion;
 - (void)updateCameraToPositionOrientationLimits;
 - (void)stylesheetDidReload;
@@ -61,6 +64,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool isPitched;
 @property(readonly, nonatomic) _Bool canRotate;
 @property(readonly, nonatomic) _Bool canPitch;
+- (long long)tileSize;
 - (_Bool)canZoomOutForTileSize:(long long)arg1;
 - (_Bool)canZoomInForTileSize:(long long)arg1;
 - (double)topDownMinimumZoomLevelForTileSize:(long long)arg1;
@@ -92,8 +96,10 @@ __attribute__((visibility("hidden")))
 - (id)cameraDelegate;
 - (void)setCanvas:(id)arg1;
 - (id)canvas;
-- (id)camera;
-- (void)setCamera:(id)arg1;
+- (shared_ptr_46708168)camera;
+- (void)setCamera:(shared_ptr_46708168)arg1;
+- (id)vkCamera;
+- (void)setVkCamera:(id)arg1;
 - (void)dealloc;
 - (id)initWithMapDataAccess:(struct MapDataAccess *)arg1 animationRunner:(struct AnimationRunner *)arg2 runLoopController:(struct RunLoopController *)arg3 cameraDelegate:(id)arg4;
 

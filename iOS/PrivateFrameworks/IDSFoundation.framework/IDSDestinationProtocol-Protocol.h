@@ -8,10 +8,9 @@
 #import <IDSFoundation/NSObject-Protocol.h>
 #import <IDSFoundation/NSSecureCoding-Protocol.h>
 
-@class NSData, NSSet;
+@class NSSet;
 
 @protocol IDSDestinationProtocol <NSSecureCoding, NSCopying, NSObject>
-- (NSData *)groupID;
 - (NSSet *)destinationURIs;
 @end
 

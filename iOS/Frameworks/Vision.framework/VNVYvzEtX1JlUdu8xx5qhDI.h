@@ -13,11 +13,9 @@
 }
 
 + (id)descriptionForPrivateRevision:(unsigned long long)arg1;
-+ (_Bool)supportsPrivateRevision:(unsigned long long)arg1;
-+ (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
++ (id)supportedPrivateRevisions;
 + (Class)configurationClass;
 + (id)knownClassificationsForRevision:(unsigned long long)arg1 error:(id *)arg2;
-+ (id)_observationsForRequestRevision:(unsigned long long)arg1 withIdentifiers:(id)arg2;
 @property(readonly) NSArray *supportedImageSizeSet;
 - (CDUnknownBlockType)resultsSortingComparator;
 - (_Bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
@@ -25,6 +23,7 @@
 - (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
 - (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1 session:(id)arg2;
 @property unsigned long long imageCropAndScaleOption;
+- (id)supportedIdentifiersAndReturnError:(id *)arg1;
 - (id)_applicableDetectorAndOptions:(id *)arg1 loadedInSession:(id)arg2 error:(id *)arg3;
 
 // Remaining properties

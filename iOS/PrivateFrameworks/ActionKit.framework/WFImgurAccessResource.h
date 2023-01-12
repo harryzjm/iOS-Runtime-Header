@@ -6,7 +6,7 @@
 
 #import <ActionKit/WFActionEventObserver-Protocol.h>
 
-@class NSString, WFImgurUploadAction;
+@class NSArray, NSString, WFImgurUploadAction;
 
 @interface WFImgurAccessResource <WFActionEventObserver>
 {
@@ -22,6 +22,7 @@
 - (Class)accountClass;
 
 // Remaining properties
+@property(readonly, copy, nonatomic) NSArray *accounts; // @dynamic accounts;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

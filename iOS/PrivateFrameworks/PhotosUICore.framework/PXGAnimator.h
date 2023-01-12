@@ -30,6 +30,7 @@
 @property(nonatomic) double speed; // @synthesize speed=_speed;
 @property(nonatomic, getter=isAnimating) _Bool animating; // @synthesize animating=_animating;
 - (void)_stopAllAnimations;
+@property(readonly, nonatomic) unsigned int highFrameRateReason;
 @property(readonly, nonatomic) _Bool hasCriticalAnimations;
 - (void)retargetAnimationsAfterStartTime:(double)arg1 newStartTime:(double)arg2;
 - (void)computeAnimationStateForTime:(double)arg1 inputSpriteDataStore:(id)arg2 inputChangeDetails:(id)arg3 inputLayout:(id)arg4 viewportShift:(struct CGPoint)arg5 animationPresentationSpriteDataStore:(id)arg6 animationTargetSpriteDataStore:(id)arg7 animationChangeDetails:(out id *)arg8 animationLayout:(out id *)arg9;

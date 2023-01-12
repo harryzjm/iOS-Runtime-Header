@@ -15,13 +15,11 @@
 {
     id <CAMBadgeTrayDelegate> _delegate;
     unsigned long long _visibleBadges;
-    NSString *_contentSize;
     NSMutableDictionary *__badgeMap;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableDictionary *_badgeMap; // @synthesize _badgeMap=__badgeMap;
-@property(retain, nonatomic) NSString *contentSize; // @synthesize contentSize=_contentSize;
 @property(nonatomic) unsigned long long visibleBadges; // @synthesize visibleBadges=_visibleBadges;
 @property(nonatomic) __weak id <CAMBadgeTrayDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)badgeViewDidChangeIntrinsicContentSize:(id)arg1;
@@ -34,6 +32,7 @@
 @property(readonly, nonatomic) CAMFocusLockBadge *focusLockBadge;
 @property(readonly, nonatomic) CAMLivePhotoBadge *livePhotoBadge;
 @property(readonly, nonatomic) CAMFlashBadge *flashBadge;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)setVisibleBadges:(unsigned long long)arg1 animated:(_Bool)arg2;
 - (void)_layoutBadges:(unsigned long long)arg1 withVisibleBadges:(unsigned long long)arg2;
 - (void)layoutSubviews;

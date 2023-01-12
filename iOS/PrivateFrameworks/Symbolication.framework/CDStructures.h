@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSMapTable, VMUObjectIdentifier, VMUTaskMemoryScanner;
+
 #pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
@@ -18,6 +20,11 @@ struct VMUAutoreleasePoolPageLayout {
     unsigned int _field3;
     unsigned long long _field4;
     unsigned int _field5;
+};
+
+struct _CSArchitecture {
+    int _field1;
+    int _field2;
 };
 
 struct _CSTypeRef {
@@ -85,10 +92,24 @@ struct _VMURegionNode {
     void *_field2;
     unsigned long long _field3;
     struct _VMURegionNode *_field4;
-    CDStruct_183601bc *_field5;
-    unsigned int _field6;
-    unsigned long long _field7;
+    unsigned int _field5;
+    CDStruct_183601bc *_field6;
+    unsigned int _field7;
     unsigned long long _field8;
+    unsigned long long _field9;
+};
+
+struct _VMUSwiftRemoteMirrorReaderContext {
+    struct _CSTypeRef symbolicator;
+    CDUnknownBlockType memoryReader;
+    NSMapTable *remoteAddressToLocalAddressAndSizeMap;
+    NSMapTable *remoteStringToLengthMap;
+    _Bool needToValidateAddressRange;
+    int swiftRemoteMirrorMemoryReadsLogLevel;
+    unsigned int readBytesCallCount;
+    unsigned int getStringLengthCallCount;
+    VMUObjectIdentifier *objectIdentifier;
+    VMUTaskMemoryScanner *scanner;
 };
 
 struct _VMUVMRegionData {
@@ -170,6 +191,29 @@ struct libSwiftRemoteMirrorWrapper {
 
 struct malloc_introspection_t;
 
+struct map<std::string, std::unordered_set<unsigned long long>, std::less<std::string>, std::allocator<std::pair<const std::string, std::unordered_set<unsigned long long>>>> {
+    struct __tree<std::__value_type<std::string, std::unordered_set<unsigned long long>>, std::__map_value_compare<std::string, std::__value_type<std::string, std::unordered_set<unsigned long long>>, std::less<std::string>, true>, std::allocator<std::__value_type<std::string, std::unordered_set<unsigned long long>>>> {
+        void *__begin_node_;
+        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<std::string, std::unordered_set<unsigned long long>>, void *>>> {
+            struct __tree_end_node<std::__tree_node_base<void *>*> {
+                void *__left_;
+            } __value_;
+        } __pair1_;
+        struct __compressed_pair<unsigned long, std::__map_value_compare<std::string, std::__value_type<std::string, std::unordered_set<unsigned long long>>, std::less<std::string>, true>> {
+            unsigned long long __value_;
+        } __pair3_;
+    } __tree_;
+};
+
+struct mapped_region_node_t {
+    unsigned long long _field1;
+    unsigned long long _field2;
+    unsigned long long _field3;
+    unsigned int _field4;
+};
+
+struct re_guts;
+
 struct swift_typeinfo {
     int _field1;
     unsigned int _field2;
@@ -186,6 +230,34 @@ struct swift_typeref_interop {
 struct timeval {
     long long tv_sec;
     int tv_usec;
+};
+
+struct unique_ptr<std::__hash_node_base<std::__hash_node<unsigned long long, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<unsigned long long, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<unsigned long long, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<unsigned long long, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<unsigned long long, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<unsigned long long, void *>*>*>> {
+                unsigned long long __value_;
+            } __data_;
+        } __value_;
+    } __ptr_;
+};
+
+struct unordered_set<unsigned long long, std::hash<unsigned long long>, std::equal_to<unsigned long long>, std::allocator<unsigned long long>> {
+    struct __hash_table<unsigned long long, std::hash<unsigned long long>, std::equal_to<unsigned long long>, std::allocator<unsigned long long>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<unsigned long long, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<unsigned long long, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<unsigned long long, void *>*>, std::allocator<std::__hash_node<unsigned long long, void *>>> {
+            struct __hash_node_base<std::__hash_node<unsigned long long, void *>*> {
+                void *__next_;
+            } __value_;
+        } __p1_;
+        struct __compressed_pair<unsigned long, std::hash<unsigned long long>> {
+            unsigned long long __value_;
+        } __p2_;
+        struct __compressed_pair<float, std::equal_to<unsigned long long>> {
+            float __value_;
+        } __p3_;
+    } __table_;
 };
 
 struct vmu_backtrace_uniquing_table_t {
@@ -242,4 +314,11 @@ typedef struct {
     CDStruct_8b65991f _field2;
     CDStruct_183601bc *_field3;
 } CDStruct_3aaebc0a;
+
+typedef struct {
+    int _field1;
+    unsigned long long _field2;
+    char *_field3;
+    struct re_guts *_field4;
+} CDStruct_d5ae6b26;
 

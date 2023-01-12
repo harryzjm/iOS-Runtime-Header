@@ -13,7 +13,15 @@
 @interface NSArray (CKPropertiesDescription) <CKRecordValue>
 - (id)CKDescriptionPropertiesWithPublic:(_Bool)arg1 private:(_Bool)arg2 shouldExpand:(_Bool)arg3;
 - (void)CKAssignToContainerWithID:(id)arg1;
+- (id)CKShuffledArray;
 - (id)CKComponentsAndSubcomponentsJoinedByString:(id)arg1;
+- (id)CKFilter:(CDUnknownBlockType)arg1;
+- (id)CKFlatMap:(CDUnknownBlockType)arg1;
+- (id)CKCompactMapToDictionary:(CDUnknownBlockType)arg1;
+- (id)CKCompactMap:(CDUnknownBlockType)arg1;
+- (id)CKMapToDictionary:(CDUnknownBlockType)arg1;
+- (id)CKMapWithIndex:(CDUnknownBlockType)arg1;
+- (id)CKMap:(CDUnknownBlockType)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

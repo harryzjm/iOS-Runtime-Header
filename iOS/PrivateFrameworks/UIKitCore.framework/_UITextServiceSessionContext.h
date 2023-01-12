@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     struct CGRect _presentationRect;
 }
 
++ (id)selectedTextRangeForTextInput:(id)arg1;
 + (id)sessionContextForType:(long long)arg1 withTextInput:(id)arg2;
 + (id)sessionContextWithText:(id)arg1 withRect:(struct CGRect)arg2 withRange:(struct _NSRange)arg3 withView:(id)arg4;
 + (id)sessionContextWithText:(id)arg1 withRect:(struct CGRect)arg2 withView:(id)arg3;

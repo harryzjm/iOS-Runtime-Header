@@ -10,6 +10,7 @@
 
 @protocol _SFPageLoadErrorControllerDelegate <NSObject>
 - (void)pageLoadErrorController:(_SFPageLoadErrorController *)arg1 allowLegacyTLSConnectionForURL:(NSURL *)arg2 navigateToURL:(NSURL *)arg3;
+- (_Bool)pageLoadErrorControllerIsInPreviewMode:(_SFPageLoadErrorController *)arg1;
 - (_Bool)pageLoadErrorControllerShouldReloadAfterError:(_SFPageLoadErrorController *)arg1;
 - (_SFSecIdentityPreferencesController *)pageLoadErrorControllerGetSecIdentityPreferencesController:(_SFPageLoadErrorController *)arg1;
 - (_Bool)pageLoadErrorControllerShouldPermanentlyAcceptCertificate:(_SFPageLoadErrorController *)arg1;

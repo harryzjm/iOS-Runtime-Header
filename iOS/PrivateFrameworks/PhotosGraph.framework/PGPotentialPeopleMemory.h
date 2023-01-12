@@ -18,6 +18,8 @@
 @property(retain) NSArray *facedAssetLocalIdentifiers; // @synthesize facedAssetLocalIdentifiers=_facedAssetLocalIdentifiers;
 @property(readonly) long long year; // @synthesize year=_year;
 @property(retain) PGGraphPersonNode *personNode; // @synthesize personNode=_personNode;
+- (id)memoryFeatureNodesInGraph:(id)arg1;
+- (unsigned long long)memoryCategory;
 - (void)addMomentNode:(id)arg1;
 - (id)initWithSubcategory:(unsigned long long)arg1 peopleNode:(id)arg2 year:(long long)arg3;
 

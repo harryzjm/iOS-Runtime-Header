@@ -13,7 +13,6 @@
 @property(copy, nonatomic) EMMailDropMetadata *mailDropMetadata;
 @property(nonatomic) long long storageByteCount;
 @property(nonatomic) long long dataTransferByteCount;
-@property(nonatomic) _Bool isSinglePagePDF;
 @property(copy, nonatomic) NSString *UTType;
 @property(copy, nonatomic) NSString *contentID;
 @property(copy, nonatomic) NSString *displayName;

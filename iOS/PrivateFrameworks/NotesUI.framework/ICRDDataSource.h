@@ -29,6 +29,7 @@
 @property(readonly, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 - (void)noteDidAddOrRemovePassword:(id)arg1;
 - (void)noteWillAddOrRemovePassword:(id)arg1;
+- (void)accountHidesSystemPaperNotesInCustomFoldersDidChange:(id)arg1;
 - (void)willEnterForeground:(id)arg1;
 - (id)nextRelevantItemIdentifierAfter:(id)arg1;
 - (id)associatedCellsForManagedObjectIDs:(id)arg1;

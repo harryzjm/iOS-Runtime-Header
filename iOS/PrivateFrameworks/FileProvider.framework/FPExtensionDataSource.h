@@ -9,7 +9,7 @@
 #import <FileProvider/FPCollectionDataSource-Protocol.h>
 #import <FileProvider/FPXEnumeratorObserver-Protocol.h>
 
-@class FPExtensionEnumerationSettings, NSData, NSString;
+@class FPExtensionEnumerationSettings, NSData, NSMutableDictionary, NSString;
 @protocol FPCollectionDataSourceDelegate, FPDLifetimeServicing, FPXEnumerator, OS_dispatch_queue;
 
 @interface FPExtensionDataSource : NSObject <FPXEnumeratorObserver, FPCollectionDataSource>
@@ -25,10 +25,15 @@
     NSData *_changeToken;
     unsigned long long _numGatheredItems;
     id <FPDLifetimeServicing> _lifetimeExtender;
+    NSMutableDictionary *_oobBuffer;
     _Bool _hasMoreIncoming;
     id <FPCollectionDataSourceDelegate> _delegate;
 }
 
++ (long long)suggestedBatchSize;
++ (void)setSuggestedBatchSize:(long long)arg1;
++ (long long)suggestedPageSize;
++ (void)setSuggestedPageSize:(long long)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <FPCollectionDataSourceDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_gatherMoreItemsAfterPage:(id)arg1 section:(unsigned long long)arg2;

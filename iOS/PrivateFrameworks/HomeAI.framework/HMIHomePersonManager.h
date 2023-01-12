@@ -7,24 +7,23 @@
 #import <HomeAI/HMFLogging-Protocol.h>
 #import <HomeAI/HMFTimerDelegate-Protocol.h>
 
-@class HMFTimer, HMFUnfairLock, HMIHomePersonManagerSettings, NSMutableDictionary, NSOperationQueue, NSString;
+@class HMFTimer, HMIHomePersonManagerSettings, NSMutableDictionary, NSOperationQueue, NSString;
 @protocol HMIHomePersonManagerDataSource;
 
 @interface HMIHomePersonManager <HMFTimerDelegate, HMFLogging>
 {
+    struct os_unfair_lock_s _lock;
     id <HMIHomePersonManagerDataSource> _dataSource;
     HMIHomePersonManagerSettings *_settings;
     NSOperationQueue *_operationQueue;
     HMFTimer *_watchdogTimer;
     HMFTimer *_analyticsTimer;
-    HMFUnfairLock *_lock;
     NSMutableDictionary *_unknownFacesSavedCounts;
 }
 
 + (id)logCategory;
 - (void).cxx_destruct;
 @property(readonly) NSMutableDictionary *unknownFacesSavedCounts; // @synthesize unknownFacesSavedCounts=_unknownFacesSavedCounts;
-@property(readonly, nonatomic) HMFUnfairLock *lock; // @synthesize lock=_lock;
 @property(readonly) HMFTimer *analyticsTimer; // @synthesize analyticsTimer=_analyticsTimer;
 @property(readonly) HMFTimer *watchdogTimer; // @synthesize watchdogTimer=_watchdogTimer;
 @property(readonly) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;

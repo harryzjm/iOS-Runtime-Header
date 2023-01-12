@@ -10,9 +10,5 @@
 {
 }
 
-+ (id)deprecatedComponents;
-+ (id)deprecatedComponentsForVersion:(id)arg1;
-+ (id)deprecatedComponentForType:(id)arg1 andVersion:(id)arg2;
-
 @end
 

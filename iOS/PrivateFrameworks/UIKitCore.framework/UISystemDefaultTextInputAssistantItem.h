@@ -4,23 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSArray;
 @protocol UISystemDefaultTextInputAssistantItemDelegate;
 
 @interface UISystemDefaultTextInputAssistantItem
 {
+    _Bool _systemItem;
+    _Bool _isKeyboardCameraItem;
     id <UISystemDefaultTextInputAssistantItemDelegate> _delegate;
+    NSArray *_defaultSystemLeadingBarButtonGroups;
+    NSArray *_defaultSystemTrailingBarButtonGroups;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *defaultSystemTrailingBarButtonGroups; // @synthesize defaultSystemTrailingBarButtonGroups=_defaultSystemTrailingBarButtonGroups;
+@property(retain, nonatomic) NSArray *defaultSystemLeadingBarButtonGroups; // @synthesize defaultSystemLeadingBarButtonGroups=_defaultSystemLeadingBarButtonGroups;
+@property(readonly, nonatomic) _Bool isKeyboardCameraItem; // @synthesize isKeyboardCameraItem=_isKeyboardCameraItem;
 @property(nonatomic) __weak id <UISystemDefaultTextInputAssistantItemDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic, getter=_isSystemItem) _Bool systemItem; // @synthesize systemItem=_systemItem;
 - (void)performSystemButtonActionForStyle:(long long)arg1;
 - (void)analyticsDispatchWithActionStyle:(long long)arg1;
 - (_Bool)canPerformSystemButtonActionForStyle:(long long)arg1;
 - (SEL)_responderSelectorForSystemButtonStyle:(long long)arg1;
-- (void)_performReturn;
-- (void)assistantSelectPencilTextInputLanguage:(id)arg1;
-- (void)assistantSelectPencilTextInputLanguage;
-- (void)assistantReturn;
+- (void)assistantExpand;
 - (void)assistantWriteboard;
 - (void)assistantShowKeyboard;
 - (void)assistantDismiss;
@@ -29,11 +35,15 @@
 - (void)assistantUnderline;
 - (void)assistantItalic;
 - (void)assistantBold;
-- (void)assistantPaste;
+- (void)assistantPaste:(id)arg1 forEvent:(id)arg2;
 - (void)assistantRedo;
 - (void)assistantUndo;
 - (void)assistantCopy;
 - (void)assistantCut;
+- (void)setTrailingBarButtonGroups:(id)arg1;
+- (void)setLeadingBarButtonGroups:(id)arg1;
+- (void)_updateIsSystemItem;
+- (id)init;
 
 @end
 

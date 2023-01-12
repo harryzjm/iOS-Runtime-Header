@@ -31,10 +31,12 @@
     struct {
         unsigned int _forceColorWrite:1;
         unsigned int _activeFontFeatures:1;
+        unsigned int _activeFontPalette:1;
+        unsigned int _activeFontPaletteColors:1;
         unsigned int _preserveNaturalAlignment:1;
         unsigned int _textScalingNeedsConvert:1;
         unsigned int _wroteCocoaVersion:1;
-        unsigned int _reserved:27;
+        unsigned int _reserved:25;
     } _rwFlags;
     double _rightMargin;
     NSDictionary *_docAttrs;

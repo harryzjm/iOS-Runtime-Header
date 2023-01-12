@@ -6,9 +6,10 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKRecipientSelectionController, CNComposeRecipient, NSString;
+@class CKConversation, CKRecipientSelectionController, CNComposeRecipient, NSString;
 
 @protocol CKRecipientSelectionControllerDelegate <NSObject>
+- (void)recipientSelectionControllerShouldResignFirstResponder:(CKRecipientSelectionController *)arg1;
 - (struct UIEdgeInsets)navigationBarInsetsForRecipientSelectionController:(CKRecipientSelectionController *)arg1;
 - (void)recipientSelectionController:(CKRecipientSelectionController *)arg1 didFinishAvailaiblityLookupForRecipient:(CNComposeRecipient *)arg2;
 - (void)recipientSelectionControllerDidPushABViewController:(CKRecipientSelectionController *)arg1;
@@ -19,5 +20,8 @@
 - (void)recipientSelectionControllerReturnPressed:(CKRecipientSelectionController *)arg1;
 - (void)recipientSelectionControllerDidChangeSize:(CKRecipientSelectionController *)arg1;
 - (void)recipientSelectionControllerDidBecomeFirstResponder:(CKRecipientSelectionController *)arg1;
+
+@optional
+- (void)showConversation:(CKConversation *)arg1 animate:(_Bool)arg2;
 @end
 

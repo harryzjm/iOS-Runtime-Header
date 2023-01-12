@@ -10,6 +10,7 @@
 }
 
 @property int potentialGraphColor; // @synthesize potentialGraphColor=_potentialGraphColor;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end
 

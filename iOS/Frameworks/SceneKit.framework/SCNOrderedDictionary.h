@@ -15,12 +15,14 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_keyValues;
 }
 
+- (id)description;
 - (id)copy;
 - (void)_setupFrom:(id)arg1;
 - (id)keys;
 - (id)dictionary;
 - (id)allValues;
 - (unsigned long long)count;
+- (void)applyBlock:(CDUnknownBlockType)arg1;
 - (void)applyFunction:(CDUnknownFunctionPointerType)arg1 withContext:(void *)arg2;
 - (id)allKeys;
 - (void)removeAllObjects;

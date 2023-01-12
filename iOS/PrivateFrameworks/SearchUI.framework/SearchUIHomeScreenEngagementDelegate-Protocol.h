@@ -6,10 +6,9 @@
 
 #import <SearchUI/NSObject-Protocol.h>
 
-@class SFSearchResult;
+@class SFCardSection, SFSearchResult;
 
 @protocol SearchUIHomeScreenEngagementDelegate <NSObject>
-- (void)didEngageResult:(SFSearchResult *)arg1 withTriggerEvent:(unsigned long long)arg2 destination:(unsigned long long)arg3;
-- (void)didEngageResult:(SFSearchResult *)arg1;
+- (void)didUpdateKeyboardFocusToResult:(SFSearchResult *)arg1 cardSection:(SFCardSection *)arg2;
 @end
 

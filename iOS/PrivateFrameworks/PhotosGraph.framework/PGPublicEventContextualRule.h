@@ -8,19 +8,23 @@
 
 #import <PhotosGraph/PGContextualRule-Protocol.h>
 
-@class NSArray, NSString, PGGraph;
+@class NSString, PGGraph, PGGraphMomentNodeCollection, PGGraphPublicEventNodeCollection, PHPhotoLibrary;
+@protocol OS_os_log;
 
 @interface PGPublicEventContextualRule : NSObject <PGContextualRule>
 {
     PGGraph *_graph;
-    NSArray *_publicEventNodes;
+    PGGraphPublicEventNodeCollection *_publicEventNodes;
+    PGGraphMomentNodeCollection *_momentNodesMatchingPublicEvents;
+    PHPhotoLibrary *_photoLibrary;
+    NSObject<OS_os_log> *_loggingConnection;
 }
 
 - (void).cxx_destruct;
-- (id)highlightNodeMatchingYearHighlight:(id)arg1 withOptions:(id)arg2;
-- (void)enumerateContextualKeyAssetsForYearHighlight:(id)arg1 withOptions:(id)arg2 modelReader:(id)arg3 usingBlock:(CDUnknownBlockType)arg4;
+- (id)highlightNodesMatchingYearHighlight:(id)arg1 withOptions:(id)arg2;
+- (void)enumerateContextualKeyAssetsForYearHighlight:(id)arg1 withOptions:(id)arg2 modelReader:(id)arg3 curationContext:(id)arg4 usingBlock:(CDUnknownBlockType)arg5;
 - (_Bool)canProvideContextualKeyAssetsWithOptions:(id)arg1;
-- (id)initWithGraph:(id)arg1;
+- (id)initWithGraph:(id)arg1 photoLibrary:(id)arg2 loggingConnection:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

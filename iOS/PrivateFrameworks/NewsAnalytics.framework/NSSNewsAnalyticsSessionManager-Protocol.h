@@ -5,9 +5,10 @@
 //
 
 @class NTPBSession;
-@protocol NSSNewsAnalyticsSessionManagerObserving;
+@protocol NSSNewsAnalyticsAppSessionManagerObserving, NSSNewsAnalyticsSessionManagerObserving;
 
 @protocol NSSNewsAnalyticsSessionManager
+- (void)addAppSessionObserver:(id <NSSNewsAnalyticsAppSessionManagerObserving>)arg1;
 - (void)addObserver:(id <NSSNewsAnalyticsSessionManagerObserving>)arg1;
 @property(nonatomic, readonly) NTPBSession *currentSession;
 @end

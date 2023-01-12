@@ -11,6 +11,9 @@
 + (id)aa_errorWithCode:(long long)arg1 underlyingError:(id)arg2;
 + (id)aa_errorWithCode:(long long)arg1 userInfo:(id)arg2;
 + (id)aa_errorWithCode:(long long)arg1;
+- (_Bool)aa_isAACustodianRecoveryErrorWithCode:(long long)arg1;
+- (_Bool)aa_isAACustodianRecoveryError;
+- (_Bool)aa_isAASignInErrorWithCode:(long long)arg1;
 - (_Bool)aa_isAAErrorWithCode:(long long)arg1;
 - (id)_aa_userReadableError;
 @end

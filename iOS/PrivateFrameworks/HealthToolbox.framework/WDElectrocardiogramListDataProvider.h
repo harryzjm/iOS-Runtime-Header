@@ -4,19 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-__attribute__((visibility("hidden")))
 @interface WDElectrocardiogramListDataProvider
 {
     _Bool _shouldConsiderRequeryDueToDeletedObjects;
     unsigned long long _recentSampleLimit;
+    long long _mode;
 }
 
 @property(nonatomic) _Bool shouldConsiderRequeryDueToDeletedObjects; // @synthesize shouldConsiderRequeryDueToDeletedObjects=_shouldConsiderRequeryDueToDeletedObjects;
+@property(nonatomic) long long mode; // @synthesize mode=_mode;
 @property(nonatomic) unsigned long long recentSampleLimit; // @synthesize recentSampleLimit=_recentSampleLimit;
 - (id)viewControllerForItemAtIndexPath:(id)arg1;
 - (id)customLoadingCellForRowAtIndexPath:(id)arg1 tableView:(id)arg2;
 - (id)placeholderCellAtIndexPath:(id)arg1 tableView:(id)arg2;
 - (id)customCellForObject:(id)arg1 indexPath:(id)arg2 tableView:(id)arg3;
+- (id)_compactCellForSample:(id)arg1 indexPath:(id)arg2 tableView:(id)arg3 activeAlgorithmVersion:(long long)arg4;
+- (id)_waveCellForSample:(id)arg1 indexPath:(id)arg2 tableView:(id)arg3 activeAlgorithmVersion:(long long)arg4;
 - (id)_cellForSample:(id)arg1 indexPath:(id)arg2 tableView:(id)arg3 activeAlgorithmVersion:(long long)arg4;
 - (double)customEstimatedCellHeight;
 - (double)customCellHeight;
@@ -31,8 +34,11 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)numberOfSections;
 - (id)sampleTypes;
 - (void)refineSamplesWithCompletion:(CDUnknownBlockType)arg1;
-- (void)updateController:(id)arg1 didReceiveUpdateForType:(id)arg2 samplesAdded:(id)arg3 objectsRemoved:(id)arg4;
+- (void)updateController:(id)arg1 didReceiveUpdateForType:(id)arg2 samplesAdded:(id)arg3 objectsRemoved:(id)arg4 recoveringFromError:(_Bool)arg5;
 - (id)createQueryForSampleType:(id)arg1 predicate:(id)arg2 limit:(long long)arg3 sortDescriptors:(id)arg4 resultsHandler:(CDUnknownBlockType)arg5;
+- (id)activeECGAlgorithmVersion;
+- (id)initWithDisplayType:(id)arg1 profile:(id)arg2 mode:(long long)arg3;
+- (id)initWithDisplayType:(id)arg1 profile:(id)arg2;
 
 @end
 

@@ -8,12 +8,13 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, PKPaymentTokenConfiguration;
 
 @interface PKPaymentClientUpdate : NSObject <NSSecureCoding>
 {
     NSArray *_paymentSummaryItems;
     NSArray *_shippingMethods;
+    PKPaymentTokenConfiguration *_tokenConfiguration;
     long long _status;
     NSString *_selectedAID;
 }
@@ -23,11 +24,12 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *selectedAID; // @synthesize selectedAID=_selectedAID;
 @property(readonly, nonatomic) long long status; // @synthesize status=_status;
+@property(readonly, nonatomic) PKPaymentTokenConfiguration *tokenConfiguration; // @synthesize tokenConfiguration=_tokenConfiguration;
 @property(readonly, nonatomic) NSArray *shippingMethods; // @synthesize shippingMethods=_shippingMethods;
 @property(readonly, nonatomic) NSArray *paymentSummaryItems; // @synthesize paymentSummaryItems=_paymentSummaryItems;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithPaymentSummaryItems:(id)arg1 shippingMethods:(id)arg2 status:(long long)arg3 selectedAID:(id)arg4;
+- (id)initWithPaymentSummaryItems:(id)arg1 shippingMethods:(id)arg2 tokenConfiguration:(id)arg3 status:(long long)arg4 selectedAID:(id)arg5;
 - (id)protobuf;
 
 @end

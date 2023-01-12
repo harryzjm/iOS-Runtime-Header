@@ -21,12 +21,6 @@
 }
 
 - (void).cxx_destruct;
-- (id)_queue_coreMotionWorkoutMets;
-- (id)_queue_coreMotionWorkoutManager;
-- (void)_queue_stopWorkoutWithAssertion:(id)arg1;
-- (unsigned long long)_queue_countActiveAssertionsForSessionUUID:(id)arg1;
-- (id)_queue_cmWorkoutForConfiguration:(id)arg1 sessionUUID:(id)arg2;
-- (void)_queue_startWorkoutWithAssertion:(id)arg1;
 - (void)unitTest_setCMWorkoutManager:(id)arg1;
 - (void)assertionManager:(id)arg1 assertionInvalidated:(id)arg2;
 - (void)averageMETsForWorkoutSessionUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;

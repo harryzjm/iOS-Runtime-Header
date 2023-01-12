@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@protocol VUIDocumentCreator;
+@protocol VUIDocumentCreator, VUIGroupActivitiesManagerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface VUIInterfaceFactory : NSObject
@@ -15,14 +15,18 @@ __attribute__((visibility("hidden")))
         _Bool respondsToViewControllerCreation;
     } _documentCreatorFlags;
     NSObject<VUIDocumentCreator> *_documentCreator;
+    NSObject<VUIGroupActivitiesManagerDelegate> *_groupActivitiesManager;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSObject<VUIGroupActivitiesManagerDelegate> *groupActivitiesManager; // @synthesize groupActivitiesManager=_groupActivitiesManager;
 @property(retain, nonatomic) NSObject<VUIDocumentCreator> *documentCreator; // @synthesize documentCreator=_documentCreator;
 - (id)accountSettingsViewController;
-- (id)viewControllerWithDocumentDataSource:(id)arg1 appContext:(id)arg2 viewElement:(id)arg3 documentOptions:(id)arg4;
+- (id)rootSplitViewController;
+- (id)viewControllerWithDocumentDataSource:(id)arg1 appContext:(id)arg2 documentOptions:(id)arg3;
 - (id)viewControllerWithDocumentDataSource:(id)arg1 appContext:(id)arg2;
+- (id)rootTabBarViewController;
 
 @end
 

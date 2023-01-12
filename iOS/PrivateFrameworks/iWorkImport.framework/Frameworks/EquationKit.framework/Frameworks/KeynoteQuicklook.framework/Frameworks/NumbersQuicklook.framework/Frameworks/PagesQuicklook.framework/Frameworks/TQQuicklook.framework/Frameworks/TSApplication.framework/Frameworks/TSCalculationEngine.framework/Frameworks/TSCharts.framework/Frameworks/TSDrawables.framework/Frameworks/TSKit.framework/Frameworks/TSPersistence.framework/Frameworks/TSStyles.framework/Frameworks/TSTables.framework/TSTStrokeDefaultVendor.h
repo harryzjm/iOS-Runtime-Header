@@ -14,11 +14,12 @@
     _Bool _isValid;
     id <TSTTableStrokeProviding> _strokeProvider;
     id <TSTTableHiddenRowColumnProviding><TSTTableInternalGeometryProviding> _tableProvider;
-    TSTTableInfo *_categoryProvider;
+    TSTTableInfo *_tableInfo;
     NSPointerArray *_strokeTypeToLayerMap;
     NSPointerArray *_strokeTypeToLayerStackMap;
     struct _NSRange _headerSideBorderColumnRange;
     struct _NSRange _headerColumnSeparatorColumnRange;
+    struct _NSRange _footerColumnSeparatorColumnRange;
     struct _NSRange _bodySideBorderColumnRange;
     struct _NSRange _topBorderRowRange;
     struct _NSRange _headerRowSeparatorRowRange;
@@ -32,30 +33,31 @@
 @property(nonatomic) struct _NSRange headerRowSeparatorRowRange; // @synthesize headerRowSeparatorRowRange=_headerRowSeparatorRowRange;
 @property(nonatomic) struct _NSRange topBorderRowRange; // @synthesize topBorderRowRange=_topBorderRowRange;
 @property(nonatomic) struct _NSRange bodySideBorderColumnRange; // @synthesize bodySideBorderColumnRange=_bodySideBorderColumnRange;
+@property(nonatomic) struct _NSRange footerColumnSeparatorColumnRange; // @synthesize footerColumnSeparatorColumnRange=_footerColumnSeparatorColumnRange;
 @property(nonatomic) struct _NSRange headerColumnSeparatorColumnRange; // @synthesize headerColumnSeparatorColumnRange=_headerColumnSeparatorColumnRange;
 @property(nonatomic) struct _NSRange headerSideBorderColumnRange; // @synthesize headerSideBorderColumnRange=_headerSideBorderColumnRange;
 @property(retain, nonatomic) NSPointerArray *strokeTypeToLayerStackMap; // @synthesize strokeTypeToLayerStackMap=_strokeTypeToLayerStackMap;
 @property(retain, nonatomic) NSPointerArray *strokeTypeToLayerMap; // @synthesize strokeTypeToLayerMap=_strokeTypeToLayerMap;
 @property(nonatomic) _Bool isValid; // @synthesize isValid=_isValid;
-@property(nonatomic) __weak TSTTableInfo *categoryProvider; // @synthesize categoryProvider=_categoryProvider;
+@property(nonatomic) __weak TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
 @property(nonatomic) __weak id <TSTTableHiddenRowColumnProviding><TSTTableInternalGeometryProviding> tableProvider; // @synthesize tableProvider=_tableProvider;
 @property(nonatomic) __weak id <TSTTableStrokeProviding> strokeProvider; // @synthesize strokeProvider=_strokeProvider;
-- (void)p_updateStrokeLayer:(id)arg1 forRowStrokeType:(int)arg2;
-- (void)p_updateStrokeLayer:(id)arg1 forColumnStrokeType:(int)arg2;
+- (void)p_updateStrokeLayer:(id)arg1 forRowStrokeType:(unsigned long long)arg2;
+- (void)p_updateStrokeLayer:(id)arg1 forColumnStrokeType:(unsigned long long)arg2;
 - (_Bool)p_headerRowSeparatorRowRangeIsValid;
-- (int)p_strokeTypeForRow:(unsigned int)arg1;
+- (unsigned long long)p_strokeTypeForRow:(unsigned int)arg1;
 - (_Bool)p_headerColumnSeparatorColumnRangeIsValid;
-- (int)p_strokeTypeForColumn:(unsigned int)arg1;
+- (unsigned long long)p_strokeTypeForColumn:(unsigned int)arg1;
 - (int)validateChangeDescriptors:(id)arg1;
 - (_Bool)validateGeometry;
 - (void)invalidate;
-- (id)strokeLayerStackForStrokeType:(int)arg1;
+- (id)strokeLayerStackForStrokeType:(unsigned long long)arg1;
 - (id)strokeLayerStackForRow:(unsigned int)arg1;
 - (id)strokeLayerStackForColumn:(unsigned int)arg1;
-- (id)strokeLayerForStrokeType:(int)arg1;
+- (id)strokeLayerForStrokeType:(unsigned long long)arg1;
 - (id)strokeLayerForRow:(unsigned int)arg1;
 - (id)strokeLayerForColumn:(unsigned int)arg1;
-- (id)initWithStrokeProvider:(id)arg1 tableProvider:(id)arg2 categoryProvider:(id)arg3;
+- (id)initWithStrokeProvider:(id)arg1 tableProvider:(id)arg2 tableInfo:(id)arg3;
 
 @end
 

@@ -4,14 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class BKIdentity;
 @protocol BKMatchPearlOperationDelegate;
 
 @interface BKMatchPearlOperation
 {
     _Bool _longTimeout;
     _Bool _shouldAutoRetry;
+    _Bool _preAugmentationCheck;
+    BKIdentity *_preAugmentationCheckIdentity;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) BKIdentity *preAugmentationCheckIdentity; // @synthesize preAugmentationCheckIdentity=_preAugmentationCheckIdentity;
+@property(nonatomic) _Bool preAugmentationCheck; // @synthesize preAugmentationCheck=_preAugmentationCheck;
 @property(nonatomic) _Bool shouldAutoRetry; // @synthesize shouldAutoRetry=_shouldAutoRetry;
 @property(nonatomic) _Bool longTimeout; // @synthesize longTimeout=_longTimeout;
 - (_Bool)pauseFaceDetectTimer:(_Bool)arg1 error:(id *)arg2;

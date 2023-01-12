@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@protocol SVXAudioPowerUpdateListening, SVXServiceCommandHandling, SVXSessionActivityListening;
+@protocol SVXAudioPowerUpdateListening, SVXAudioStreamingListening, SVXServiceCommandHandling, SVXSessionActivityListening, SVXSessionDataSource, SVXSiriModesManaging;
 
 @interface SVXPlatformDependency : NSObject
 {
@@ -14,13 +14,22 @@
     id <SVXServiceCommandHandling> _serviceCommandHandler;
     id <SVXSessionActivityListening> _activityListener;
     id <SVXAudioPowerUpdateListening> _audioPowerUpdateListener;
+    id <SVXSiriModesManaging> _siriModesManager;
+    id <SVXAudioStreamingListening> _audioStreamingListener;
+    id <SVXSessionDataSource> _sessionDataSource;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <SVXSessionDataSource> sessionDataSource; // @synthesize sessionDataSource=_sessionDataSource;
+@property(readonly, nonatomic) id <SVXAudioStreamingListening> audioStreamingListener; // @synthesize audioStreamingListener=_audioStreamingListener;
+@property(readonly, nonatomic) id <SVXSiriModesManaging> siriModesManager; // @synthesize siriModesManager=_siriModesManager;
 @property(readonly, nonatomic) id <SVXAudioPowerUpdateListening> audioPowerUpdateListener; // @synthesize audioPowerUpdateListener=_audioPowerUpdateListener;
 @property(readonly, nonatomic) id <SVXSessionActivityListening> activityListener; // @synthesize activityListener=_activityListener;
 @property(readonly, nonatomic) id <SVXServiceCommandHandling> serviceCommandHandler; // @synthesize serviceCommandHandler=_serviceCommandHandler;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
+- (id)initWithSessionDataSource:(id)arg1;
+- (id)initWithAudioStreamingListener:(id)arg1;
+- (id)initWithSiriModesManager:(id)arg1;
 - (id)initWithAudioPowerUpdateListener:(id)arg1;
 - (id)initWithSessionActivityListener:(id)arg1;
 - (id)initWithServiceCommandHandler:(id)arg1;

@@ -6,7 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSString;
+@class NSData, NSString, VCNetworkFeedbackController, VCSecurityKeyManager, VCSessionMediaNegotiator;
+@protocol OS_nw_activity;
 
 __attribute__((visibility("hidden")))
 @interface VCSessionParticipantConfig : NSObject
@@ -16,6 +17,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _idsParticipantID;
     _Bool _audioEnabled;
     _Bool _videoEnabled;
+    _Bool _screeEnabled;
     _Bool _frequencyMeteringEnabled;
     _Bool _audioMuted;
     float _volume;
@@ -25,8 +27,36 @@ __attribute__((visibility("hidden")))
     unsigned char _videoQuality;
     unsigned int _visibilityIndex;
     unsigned int _prominenceIndex;
+    NSData *_positionalInfo;
+    void *_spatialMetadata;
+    VCSessionMediaNegotiator *_mediaNegotiator;
+    VCSecurityKeyManager *_securityKeyManager;
+    NSString *_sessionUUID;
+    unsigned int _transportSessionID;
+    NSString *_idsDestination;
+    int _processId;
+    _Bool _isGKVoiceChat;
+    _Bool _isLowLatencyAudio;
+    long long _sessionMode;
+    _Bool _isOneToOneModeEnabled;
+    VCNetworkFeedbackController *_networkFeedbackController;
+    _Bool _screenEnabled;
+    NSObject<OS_nw_activity> *_nwActivity;
 }
 
+@property(retain, nonatomic) VCNetworkFeedbackController *networkFeedbackController; // @synthesize networkFeedbackController=_networkFeedbackController;
+@property(nonatomic) _Bool isOneToOneModeEnabled; // @synthesize isOneToOneModeEnabled=_isOneToOneModeEnabled;
+@property(nonatomic) long long sessionMode; // @synthesize sessionMode=_sessionMode;
+@property(nonatomic) _Bool isLowLatencyAudio; // @synthesize isLowLatencyAudio=_isLowLatencyAudio;
+@property(nonatomic) _Bool isGKVoiceChat; // @synthesize isGKVoiceChat=_isGKVoiceChat;
+@property(retain, nonatomic) NSString *idsDestination; // @synthesize idsDestination=_idsDestination;
+@property(nonatomic) unsigned int transportSessionID; // @synthesize transportSessionID=_transportSessionID;
+@property(retain, nonatomic) NSString *sessionUUID; // @synthesize sessionUUID=_sessionUUID;
+@property(nonatomic) int processId; // @synthesize processId=_processId;
+@property(retain, nonatomic) VCSecurityKeyManager *securityKeyManager; // @synthesize securityKeyManager=_securityKeyManager;
+@property(retain, nonatomic) VCSessionMediaNegotiator *mediaNegotiator; // @synthesize mediaNegotiator=_mediaNegotiator;
+@property(nonatomic) NSObject<OS_nw_activity> *nwActivity; // @synthesize nwActivity=_nwActivity;
+@property(retain, nonatomic) NSData *positionalInfo; // @synthesize positionalInfo=_positionalInfo;
 @property(nonatomic) unsigned int prominenceIndex; // @synthesize prominenceIndex=_prominenceIndex;
 @property(nonatomic) unsigned int visibilityIndex; // @synthesize visibilityIndex=_visibilityIndex;
 @property(nonatomic) unsigned char videoQuality; // @synthesize videoQuality=_videoQuality;
@@ -36,11 +66,14 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) float volume; // @synthesize volume=_volume;
 @property(nonatomic) _Bool audioMuted; // @synthesize audioMuted=_audioMuted;
 @property(nonatomic) _Bool frequencyMeteringEnabled; // @synthesize frequencyMeteringEnabled=_frequencyMeteringEnabled;
+@property(nonatomic) _Bool screenEnabled; // @synthesize screenEnabled=_screenEnabled;
 @property(nonatomic) _Bool videoEnabled; // @synthesize videoEnabled=_videoEnabled;
 @property(nonatomic) _Bool audioEnabled; // @synthesize audioEnabled=_audioEnabled;
 @property(nonatomic) unsigned long long idsParticipantID; // @synthesize idsParticipantID=_idsParticipantID;
 @property(retain, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 @property(retain, nonatomic) NSData *participantData; // @synthesize participantData=_participantData;
+- (void)cleanupNwActivity;
+@property(nonatomic) void *spatialMetadata;
 - (id)description;
 - (void)dealloc;
 

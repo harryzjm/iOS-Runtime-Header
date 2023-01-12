@@ -6,6 +6,7 @@
 
 @class CRVectorTimestamp;
 
+__attribute__((visibility("hidden")))
 @interface TTCRVectorTimestamp
 {
     CRVectorTimestamp *_crTimestamp;

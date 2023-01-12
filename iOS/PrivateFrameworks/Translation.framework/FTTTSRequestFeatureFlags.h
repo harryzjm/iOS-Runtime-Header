@@ -21,7 +21,8 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_668da1f4)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_668da1f4)addObjectToBuffer:(void *)arg1;
+@property(readonly, nonatomic) _Bool cache_only;
 @property(readonly, nonatomic) _Bool disable_prompts;
 @property(readonly, nonatomic) _Bool fe_feature_only;
 @property(readonly, nonatomic) _Bool fe_feature;

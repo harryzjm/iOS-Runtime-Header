@@ -12,7 +12,7 @@
 
 @interface TSCERemoteDataSpecifier : NSObject <NSCopying>
 {
-    int _functionIndex;
+    unsigned short _functionIndex;
     NSString *_symbol;
     long long _attribute;
     long long _year;
@@ -21,16 +21,16 @@
     unsigned long long _hashVal;
 }
 
-+ (id)specifierFromArchive:(const struct RemoteDataSpecifierArchive *)arg1;
-+ (id)specifierWithFunctionIndex:(int)arg1 symbol:(id)arg2 attribute:(long long)arg3 year:(long long)arg4 month:(long long)arg5 day:(long long)arg6;
-+ (id)specifierWithFunctionIndex:(int)arg1 symbol:(id)arg2 attribute:(long long)arg3;
++ (id)specifierFromArchive:(const void *)arg1;
++ (id)specifierWithFunctionIndex:(unsigned short)arg1 symbol:(id)arg2 attribute:(long long)arg3 year:(long long)arg4 month:(long long)arg5 day:(long long)arg6;
++ (id)specifierWithFunctionIndex:(unsigned short)arg1 symbol:(id)arg2 attribute:(long long)arg3;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long hashVal; // @synthesize hashVal=_hashVal;
 @property(readonly, nonatomic) long long day; // @synthesize day=_day;
 @property(readonly, nonatomic) long long month; // @synthesize month=_month;
 @property(readonly, nonatomic) long long attribute; // @synthesize attribute=_attribute;
 @property(readonly, nonatomic) NSString *symbol; // @synthesize symbol=_symbol;
-@property(readonly, nonatomic) int functionIndex; // @synthesize functionIndex=_functionIndex;
+@property(readonly, nonatomic) unsigned short functionIndex; // @synthesize functionIndex=_functionIndex;
 @property(readonly, nonatomic) NSString *functionName;
 - (id)description;
 @property(readonly, nonatomic) struct TSCEValue invalidSymbolErrorValue;
@@ -42,11 +42,11 @@
 - (_Bool)hasDateEqualToDate:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (void)encodeToArchive:(struct RemoteDataSpecifierArchive *)arg1;
-- (id)initFromArchive:(const struct RemoteDataSpecifierArchive *)arg1;
+- (void)encodeToArchive:(void *)arg1;
+- (id)initFromArchive:(const void *)arg1;
 - (id)specifierByChangingAttributeTo:(long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithFunctionIndex:(int)arg1 symbol:(id)arg2 attribute:(long long)arg3 year:(long long)arg4 month:(long long)arg5 day:(long long)arg6;
+- (id)initWithFunctionIndex:(unsigned short)arg1 symbol:(id)arg2 attribute:(long long)arg3 year:(long long)arg4 month:(long long)arg5 day:(long long)arg6;
 
 @end
 

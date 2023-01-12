@@ -34,7 +34,6 @@
 - (id)initForAllManagedWithReason:(id)arg1;
 - (id)initWithProcessIdentifier:(id)arg1 context:(id)arg2;
 - (id)initWithProcessIdentity:(id)arg1 context:(id)arg2;
-- (id)initWithPredicate:(id)arg1 context:(id)arg2 service:(id)arg3;
 - (id)initWithPredicate:(id)arg1 context:(id)arg2;
 
 // Remaining properties

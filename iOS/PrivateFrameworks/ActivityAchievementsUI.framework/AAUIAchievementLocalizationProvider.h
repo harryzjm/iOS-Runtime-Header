@@ -31,6 +31,7 @@
 - (id)_achievementValueWithAchievement:(id)arg1;
 - (id)_progressValueWithAchievement:(id)arg1;
 - (id)_formattedMoveTimeValue:(id)arg1;
+- (id)_formattedEnergyValueWithoutUnit:(id)arg1 canonicalUnit:(id)arg2;
 - (id)_formattedEnergyValue:(id)arg1 canonicalUnit:(id)arg2;
 - (id)_formattedMoveGoal:(id)arg1 template:(id)arg2;
 - (id)_calculateSuffixCombinations:(id)arg1;

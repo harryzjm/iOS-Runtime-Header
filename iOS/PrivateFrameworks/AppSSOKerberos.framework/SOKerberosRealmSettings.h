@@ -6,54 +6,54 @@
 
 #import <objc/NSObject.h>
 
-#import <AppSSOKerberos/NSSecureCoding-Protocol.h>
+@class NSData, NSDate, NSMutableArray, NSNumber, NSString, NSUUID, NSUserDefaults;
 
-@class NSData, NSDate, NSMutableArray, NSNumber, NSString, NSUUID;
-
-@interface SOKerberosRealmSettings : NSObject <NSSecureCoding>
+@interface SOKerberosRealmSettings : NSObject
 {
-    NSString *_userPrincipalName;
-    NSString *_userName;
-    NSUUID *_credentialUUID;
-    NSString *_cacheName;
-    NSData *_smartCardIssuer;
-    NSData *_smartCardSerialNumber;
-    NSString *_smartCardTokenID;
-    NSDate *_dateLastLogin;
-    NSString *_datePasswordLastChanged;
-    NSString *_dateLocalPasswordLastChanged;
-    NSString *_datePasswordExpires;
-    NSString *_networkHomeDirectory;
-    NSNumber *_delayUserSetupCleared;
-    NSNumber *_networkAvailable;
-    NSNumber *_userCancelledLogin;
     NSMutableArray *_siteCodeCache;
+    NSUserDefaults *_defaults;
+    NSString *_realm;
 }
 
-+ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain) NSString *realm; // @synthesize realm=_realm;
+@property(retain) NSUserDefaults *defaults; // @synthesize defaults=_defaults;
 @property(retain, nonatomic) NSMutableArray *siteCodeCache; // @synthesize siteCodeCache=_siteCodeCache;
-@property(retain, nonatomic) NSNumber *userCancelledLogin; // @synthesize userCancelledLogin=_userCancelledLogin;
-@property(retain, nonatomic) NSNumber *networkAvailable; // @synthesize networkAvailable=_networkAvailable;
-@property(retain, nonatomic) NSNumber *delayUserSetupCleared; // @synthesize delayUserSetupCleared=_delayUserSetupCleared;
-@property(retain, nonatomic) NSString *networkHomeDirectory; // @synthesize networkHomeDirectory=_networkHomeDirectory;
-@property(retain, nonatomic) NSString *datePasswordExpires; // @synthesize datePasswordExpires=_datePasswordExpires;
-@property(retain, nonatomic) NSString *dateLocalPasswordLastChanged; // @synthesize dateLocalPasswordLastChanged=_dateLocalPasswordLastChanged;
-@property(retain, nonatomic) NSString *datePasswordLastChanged; // @synthesize datePasswordLastChanged=_datePasswordLastChanged;
-@property(retain, nonatomic) NSDate *dateLastLogin; // @synthesize dateLastLogin=_dateLastLogin;
-@property(retain, nonatomic) NSString *smartCardTokenID; // @synthesize smartCardTokenID=_smartCardTokenID;
-@property(retain, nonatomic) NSData *smartCardSerialNumber; // @synthesize smartCardSerialNumber=_smartCardSerialNumber;
-@property(retain, nonatomic) NSData *smartCardIssuer; // @synthesize smartCardIssuer=_smartCardIssuer;
-@property(retain, nonatomic) NSString *cacheName; // @synthesize cacheName=_cacheName;
-@property(retain, nonatomic) NSUUID *credentialUUID; // @synthesize credentialUUID=_credentialUUID;
-@property(retain, nonatomic) NSString *userName; // @synthesize userName=_userName;
-@property(retain, nonatomic) NSString *userPrincipalName; // @synthesize userPrincipalName=_userPrincipalName;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
+- (void)saveSiteCodes;
+- (void)loadSiteCodes;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)siteCodeForNetworkFingerprint:(id)arg1;
 - (void)cacheSiteCode:(id)arg1;
 - (id)dumpSiteCodeCache;
-- (id)init;
+@property(retain, nonatomic) NSDate *dateUserSignedOut; // @dynamic dateUserSignedOut;
+@property(nonatomic) _Bool passwordChangeInProgress; // @dynamic passwordChangeInProgress;
+@property(nonatomic) _Bool userCancelledLogin; // @dynamic userCancelledLogin;
+@property(nonatomic) _Bool networkAvailable; // @dynamic networkAvailable;
+@property(nonatomic) _Bool delayUserSetupCleared; // @dynamic delayUserSetupCleared;
+@property(retain, nonatomic) NSString *networkHomeDirectory; // @dynamic networkHomeDirectory;
+@property(readonly, nonatomic) NSNumber *daysUntilExpiration; // @dynamic daysUntilExpiration;
+@property(retain, nonatomic) NSDate *dateExpirationChecked; // @dynamic dateExpirationChecked;
+@property(retain, nonatomic) NSDate *dateExpirationNotificationSent; // @dynamic dateExpirationNotificationSent;
+@property(nonatomic) _Bool passwordNeverExpires; // @dynamic passwordNeverExpires;
+@property(retain, nonatomic) NSDate *datePasswordExpires; // @dynamic datePasswordExpires;
+@property(retain, nonatomic) NSDate *dateLocalPasswordLastChangedWhenSynced; // @dynamic dateLocalPasswordLastChangedWhenSynced;
+@property(retain, nonatomic) NSDate *dateADPasswordLastChangedWhenSynced; // @dynamic dateADPasswordLastChangedWhenSynced;
+@property(retain, nonatomic) NSDate *dateLocalPasswordLastChanged; // @dynamic dateLocalPasswordLastChanged;
+@property(retain, nonatomic) NSDate *dateADPasswordCanChange; // @dynamic dateADPasswordCanChange;
+@property(retain, nonatomic) NSDate *dateNextPacRefresh;
+@property(retain, nonatomic) NSDate *datePasswordLastChangedAtLogin;
+@property(retain, nonatomic) NSDate *datePasswordLastChanged; // @dynamic datePasswordLastChanged;
+@property(retain, nonatomic) NSDate *dateLastLogin; // @dynamic dateLastLogin;
+@property(retain, nonatomic) NSString *smartCardTokenID; // @dynamic smartCardTokenID;
+@property(retain, nonatomic) NSData *pkinitPersistientRef; // @dynamic pkinitPersistientRef;
+@property(retain, nonatomic) NSUUID *credentialUUID; // @dynamic credentialUUID;
+@property(retain, nonatomic) NSString *userName; // @dynamic userName;
+@property(retain, nonatomic) NSString *userPrincipalName; // @dynamic userPrincipalName;
+- (void)save;
+- (void)removeAllValues;
+- (id)realmKey:(id)arg1;
+- (void)dealloc;
+- (id)initWithRealm:(id)arg1;
 
 @end
 

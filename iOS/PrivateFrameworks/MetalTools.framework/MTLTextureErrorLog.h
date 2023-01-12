@@ -8,12 +8,13 @@
 
 #import <MetalTools/MTLFunctionLog-Protocol.h>
 
-@class NSArray, NSString;
+@class MTLDebugInstrumentationData, NSArray, NSString;
 @protocol MTLFunction, MTLFunctionLogDebugLocation, MTLTexture;
 
 __attribute__((visibility("hidden")))
 @interface MTLTextureErrorLog : NSObject <MTLFunctionLog>
 {
+    MTLDebugInstrumentationData *_debugData;
     id <MTLFunctionLogDebugLocation> _debugLocation;
     NSString *_encoderLabel;
     id <MTLFunction> _function;
@@ -31,7 +32,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *encoderLabel; // @synthesize encoderLabel=_encoderLabel;
 @property(readonly, nonatomic) id <MTLFunctionLogDebugLocation> debugLocation; // @synthesize debugLocation=_debugLocation;
 - (void)dealloc;
-- (id)initWithType:(unsigned long long)arg1 function:(id)arg2 encoderLabel:(id)arg3 texture:(id)arg4 stackTrace:(id)arg5;
+- (id)initWithType:(unsigned long long)arg1 function:(id)arg2 encoderLabel:(id)arg3 texture:(id)arg4 stackTrace:(id)arg5 debugData:(id)arg6;
 @property(readonly, copy) NSString *description;
 
 // Remaining properties

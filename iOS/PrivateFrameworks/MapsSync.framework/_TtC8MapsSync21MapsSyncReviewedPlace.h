@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MISSING_TYPE, NSDate, _TtC8MapsSync27MapsSyncAnonymousCredential;
+@class MISSING_TYPE, NSDate, NSNumber, NSString, _TtC8MapsSync27MapsSyncAnonymousCredential;
 
 @interface _TtC8MapsSync21MapsSyncReviewedPlace
 {
@@ -12,6 +12,11 @@
     MISSING_TYPE *_lastSuggestedReviewDate;
     MISSING_TYPE *_hasUserReviewed;
     MISSING_TYPE *_uploadedPhotosCount;
+    MISSING_TYPE *_resultProviderIdentifier;
+    MISSING_TYPE *_rating;
+    MISSING_TYPE *_latitude;
+    MISSING_TYPE *_longitude;
+    MISSING_TYPE *_version;
     MISSING_TYPE *_anonymousCredential;
     MISSING_TYPE *_anonymousCredentialUnstored;
 }
@@ -20,18 +25,24 @@
 + (id)fetchWithMuids:(id)arg1;
 + (void)fetch:(long long)arg1:(long long)arg2:(id)arg3 sort:(long long)arg4 ascending:(_Bool)arg5 completion:(CDUnknownBlockType)arg6;
 - (void).cxx_destruct;
+@property(nonatomic, readonly) NSString *description;
 - (void)addEditWithBlock:(CDUnknownBlockType)arg1;
 - (Class)managedObjectClass;
 - (Class)mutableObjectClass;
 - (void)setPropertiesWithObject:(id)arg1;
-- (void)executeOnFirstSave:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 @property(nonatomic, readonly) _TtC8MapsSync27MapsSyncAnonymousCredential *anonymousCredential;
+@property(nonatomic, readonly) short version;
 @property(nonatomic, readonly) int uploadedPhotosCount;
 @property(nonatomic, readonly) _Bool hasUserReviewed;
 @property(nonatomic, readonly) NSDate *lastSuggestedReviewDate;
+@property(nonatomic, readonly) NSNumber *longitude;
+@property(nonatomic, readonly) NSNumber *latitude;
+@property(nonatomic, readonly) NSNumber *rating;
+@property(nonatomic, readonly) NSNumber *resultProviderIdentifier;
 @property(nonatomic, readonly) unsigned long long muid;
 - (id)initWithObject:(id)arg1;
+- (id)init;
 - (id)initWithAnonymousCredential:(id)arg1;
 
 @end

@@ -10,7 +10,7 @@
 
 + (id)_plistName;
 - (_Bool)_shouldProcessSource;
-- (id)_plistMoodIdentifiers;
+- (id)_plistMoodIdentifiersWithGraph:(id)arg1;
 - (double)weight;
 
 @end

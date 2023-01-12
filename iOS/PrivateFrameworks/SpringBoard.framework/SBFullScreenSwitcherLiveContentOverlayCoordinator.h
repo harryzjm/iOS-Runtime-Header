@@ -6,27 +6,30 @@
 
 #import <objc/NSObject.h>
 
+#import <SpringBoard/SBFullScreenSwitcherSceneLiveContentOverlayDelegate-Protocol.h>
 #import <SpringBoard/SBSwitcherLiveContentOverlayCoordinating-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSString, SBMainDisplaySceneLayoutViewController, SBSceneLayoutLiveContentOverlay;
+@class NSMutableArray, NSMutableDictionary, NSString, SBMainDisplaySceneManager;
 @protocol SBSwitcherLiveContentOverlayCoordinatorDelegate;
 
-@interface SBFullScreenSwitcherLiveContentOverlayCoordinator : NSObject <SBSwitcherLiveContentOverlayCoordinating>
+@interface SBFullScreenSwitcherLiveContentOverlayCoordinator : NSObject <SBFullScreenSwitcherSceneLiveContentOverlayDelegate, SBSwitcherLiveContentOverlayCoordinating>
 {
     _Bool _liveContentOverlayUpdatesSuspended;
     long long _containerOrientation;
     id <SBSwitcherLiveContentOverlayCoordinatorDelegate> _delegate;
+    SBMainDisplaySceneManager *_sceneManager;
+    NSString *_keyboardFocusSceneID;
+    NSString *_keyboardFocusBundleID;
     NSMutableDictionary *_appLayoutToLiveContentOverlayContext;
     NSMutableArray *_visibleAlwaysLiveAppLayouts;
-    SBMainDisplaySceneLayoutViewController *_sceneLayoutViewController;
-    SBSceneLayoutLiveContentOverlay *_sceneLayoutLiveContentOverlay;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) SBSceneLayoutLiveContentOverlay *sceneLayoutLiveContentOverlay; // @synthesize sceneLayoutLiveContentOverlay=_sceneLayoutLiveContentOverlay;
-@property(readonly, nonatomic) __weak SBMainDisplaySceneLayoutViewController *sceneLayoutViewController; // @synthesize sceneLayoutViewController=_sceneLayoutViewController;
 @property(retain, nonatomic) NSMutableArray *visibleAlwaysLiveAppLayouts; // @synthesize visibleAlwaysLiveAppLayouts=_visibleAlwaysLiveAppLayouts;
 @property(retain, nonatomic) NSMutableDictionary *appLayoutToLiveContentOverlayContext; // @synthesize appLayoutToLiveContentOverlayContext=_appLayoutToLiveContentOverlayContext;
+@property(retain, nonatomic) NSString *keyboardFocusBundleID; // @synthesize keyboardFocusBundleID=_keyboardFocusBundleID;
+@property(copy, nonatomic) NSString *keyboardFocusSceneID; // @synthesize keyboardFocusSceneID=_keyboardFocusSceneID;
+@property(retain, nonatomic) SBMainDisplaySceneManager *sceneManager; // @synthesize sceneManager=_sceneManager;
 @property(nonatomic) __weak id <SBSwitcherLiveContentOverlayCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) long long containerOrientation; // @synthesize containerOrientation=_containerOrientation;
 @property(nonatomic, getter=areLiveContentOverlayUpdatesSuspended) _Bool liveContentOverlayUpdatesSuspended; // @synthesize liveContentOverlayUpdatesSuspended=_liveContentOverlayUpdatesSuspended;
@@ -34,16 +37,28 @@
 - (void)_removeOverlayForAppLayout:(id)arg1 animated:(_Bool)arg2;
 - (long long)_existingOverlayTypeForAppLayout:(id)arg1;
 - (_Bool)_canTransitionToOverlayType:(long long)arg1 forAppLayout:(id)arg2;
-- (void)_addOverlay:(id)arg1 withType:(long long)arg2 forAppLayout:(id)arg3 animated:(_Bool)arg4;
+- (void)_addOverlay:(id)arg1 forAppLayout:(id)arg2 animated:(_Bool)arg3;
+- (void)_configureLiveContentOverlayView:(id)arg1 forTransitionContext:(id)arg2 layoutRole:(long long)arg3;
+- (id)_newLiveContentOverlayForApplicationContext:(id)arg1 layoutRole:(long long)arg2;
+- (void)_updateFullScreenDisplayLayoutElementsForActiveAppLayouts:(id)arg1;
 - (_Bool)_layoutStateContainsElementBlockedForScreenTimeExpiration:(id)arg1;
-- (_Bool)_shouldAnimateAddingSceneLayoutLiveContentOverlayForTransitionContext:(id)arg1;
+- (_Bool)_shouldAnimateAddingLiveContentOverlayForTransitionContext:(id)arg1 leafAppLayout:(id)arg2;
+- (void)fullScreenSwitcherSceneLiveContentOverlay:(id)arg1 tappedStatusBar:(id)arg2 tapActionType:(long long)arg3;
+- (_Bool)wantsHomeAffordanceAutoHideForAppLayout:(id)arg1;
+- (_Bool)wantsEdgeProtectForHomeGestureForAppLayout:(id)arg1;
+- (void)itemContainerForAppLayout:(id)arg1 willBeReusedForAppLayout:(id)arg2;
 - (void)appLayoutDidBecomeHidden:(id)arg1;
 - (void)appLayoutWillBecomeVisible:(id)arg1;
+- (_Bool)performSwitcherKeyboardShortcutAction:(long long)arg1;
+- (id)liveAppLayoutsMatchingKeyboardFocusedApp:(_Bool)arg1 foundAtIndex:(long long *)arg2;
+- (id)appLayoutForKeyboardFocusedScene;
 - (void)noteKeyboardFocusDidChangeToSceneID:(id)arg1;
-- (id)animationControllerForTransitionRequest:(id)arg1;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidEndWithTransitionContext:(id)arg2;
+- (void)layoutStateTransitionCoordinator:(id)arg1 transitionWillEndWithTransitionContext:(id)arg2;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidBeginWithTransitionContext:(id)arg2;
-- (id)initWithSceneLayoutViewController:(id)arg1;
+- (void)didRotateFromInterfaceOrientation:(long long)arg1 toInterfaceOrientation:(long long)arg2;
+- (void)willRotateFromInterfaceOrientation:(long long)arg1 toInterfaceOrientation:(long long)arg2 alongsideContainerView:(id)arg3 animated:(_Bool)arg4;
+- (id)initWithSceneManager:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

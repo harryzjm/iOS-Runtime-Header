@@ -9,8 +9,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (Class)_visualProviderClass;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
-- (id)_setupBackgroundView;
 - (void)setEnabled:(_Bool)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 buttonType:(long long)arg2;
 

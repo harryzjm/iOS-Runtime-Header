@@ -29,12 +29,12 @@
 - (void)dataProviderStore:(id)arg1 didAddDataProvider:(id)arg2 performMigration:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)dataProviderStore:(id)arg1 didAddParentSectionFactory:(id)arg2;
 - (id)_queue_getSectionInfoForSectionID:(id)arg1;
-- (id)_queue_dataProviderForUniversalSectionID:(id)arg1;
+- (id)_queue_dataProvidersForUniversalSectionID:(id)arg1;
 - (id)universalSectionIDForSectionID:(id)arg1;
 - (id)parentSectionDataProviderFactoryForSectionID:(id)arg1;
 - (id)dataProviderForSectionID:(id)arg1;
 - (void)performBlockOnDataProviders:(CDUnknownBlockType)arg1;
-- (id)localSectionIdentifierFromDismissalSectionIdentifer:(id)arg1;
+- (id)localSectionIdentifiersFromDismissalSectionIdentifer:(id)arg1;
 - (void)reloadIdentityForSectionID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)rebuildSectionInfo:(id)arg1 forSectionID:(id)arg2;
 - (void)noteSettingsChanged:(id)arg1 forSectionID:(id)arg2;

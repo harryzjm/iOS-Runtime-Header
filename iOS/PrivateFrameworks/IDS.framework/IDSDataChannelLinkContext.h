@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSUUID, _IDSDataChannelLinkContext;
+@class NSData, NSString, NSUUID, _IDSDataChannelLinkContext;
 
 @interface IDSDataChannelLinkContext : NSObject
 {
@@ -14,6 +14,8 @@
 }
 
 - (void).cxx_destruct;
+@property(readonly) NSString *localInterfaceName;
+@property(readonly) _Bool isVirtualRelayLink;
 @property(readonly) unsigned int remoteDataSoMask;
 @property(readonly) unsigned int localDataSoMask;
 @property(readonly) unsigned short localLinkFlags;
@@ -37,7 +39,7 @@
 @property(readonly) NSUUID *linkUUID;
 @property(readonly) BOOL linkID;
 - (id)description;
-- (id)initWithAttributes:(CDStruct_d2f8504d *)arg1 maxBitrate:(unsigned int)arg2 relayServerProvider:(long long)arg3 relaySessionToken:(id)arg4 relaySessionKey:(id)arg5;
+- (id)initWithAttributes:(CDStruct_ab50c87c *)arg1 maxBitrate:(unsigned int)arg2 relayServerProvider:(long long)arg3 relaySessionToken:(id)arg4 relaySessionKey:(id)arg5;
 - (id)initWithLinkID:(BOOL)arg1 linkUUID:(id)arg2 QRSessionID:(id)arg3 networkType:(unsigned char)arg4 connectionType:(long long)arg5 RATType:(unsigned int)arg6 MTU:(unsigned short)arg7 remoteNetworkType:(unsigned char)arg8 remoteConnectionType:(long long)arg9 remoteRATType:(unsigned int)arg10 maxBitrate:(unsigned int)arg11 relayServerProvider:(long long)arg12 relaySessionToken:(id)arg13 relaySessionKey:(id)arg14 serverIsDegraded:(_Bool)arg15;
 - (id)initWithDummyInformation;
 

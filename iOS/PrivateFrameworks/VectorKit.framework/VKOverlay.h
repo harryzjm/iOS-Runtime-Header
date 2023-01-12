@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <VectorKit/VKRasterTileOverlayProviderDelegate-Protocol.h>
 #import <VectorKit/VKVectorOverlayDelegate-Protocol.h>
 
-@class NSString, VKVectorOverlayData;
+@class NSString, VKRasterTileOverlayProviderData, VKVectorOverlayData;
 @protocol VKOverlayDelegate;
 
-@interface VKOverlay : NSObject <VKVectorOverlayDelegate>
+@interface VKOverlay : NSObject <VKVectorOverlayDelegate, VKRasterTileOverlayProviderDelegate>
 {
     _Bool _canProvideVectorGeometry;
     id <VKOverlayDelegate> _delegate;
@@ -23,21 +24,32 @@
     struct RunLoopController *_runLoopController;
     VKVectorOverlayData *_vectorData;
     struct unfair_lock _vectorDataLock;
+    VKRasterTileOverlayProviderData *_rasterTileProvider;
+    struct unfair_lock _rasterTileProviderLock;
+    shared_ptr_5164686c _rasterStyle;
+    long long _blendMode;
     _Bool _canProvideVectorData;
     unsigned int _identifier;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(nonatomic) long long blendMode; // @synthesize blendMode=_blendMode;
+@property(readonly, nonatomic) shared_ptr_5164686c rasterStyle; // @synthesize rasterStyle=_rasterStyle;
 @property(readonly, nonatomic) unsigned int identifier; // @synthesize identifier=_identifier;
 @property(nonatomic) struct RunLoopController *runLoopController; // @synthesize runLoopController=_runLoopController;
 @property(nonatomic) unsigned long long level; // @synthesize level=_level;
 @property(nonatomic) CDStruct_02837cd9 replaceMapContentInRect; // @synthesize replaceMapContentInRect=_replaceMapContentInRect;
 @property(readonly) _Bool canProvideVectorData; // @synthesize canProvideVectorData=_canProvideVectorData;
+- (void)rasterTileOverlayNeedsInvalidate:(id)arg1;
+- (void)rasterTileOverlayDidChangeAlpha:(id)arg1;
+- (void)rasterTileOverlayNeedsDisplay:(id)arg1;
 - (void)vectorOverlayNeedsDisplay:(id)arg1 needsFullInvalidate:(_Bool)arg2;
 @property(nonatomic) weak_ptr_4d470b75 standardContainer;
 @property(nonatomic) weak_ptr_96fca551 flyoverContainer;
 - (void)setNeedsDisplayForReason:(unsigned long long)arg1;
+- (void)_updateRasterTileProvider;
+- (id)rasterTileProvider;
 - (void)_updateVectorData;
 - (id)vectorData;
 - (void)drawKey:(const CDStruct_7523a67d *)arg1 inContext:(struct CGContext *)arg2;

@@ -6,12 +6,14 @@
 
 #import <SafariServices/NSObject-Protocol.h>
 
-@class NSArray, UIActivityViewController;
+@class NSArray, NSString, UIActivityViewController, UIViewController;
 
 @protocol UIActivityViewControllerObjectManipulationDelegate <NSObject>
 - (NSArray *)_customizationGroupsForActivityViewController:(UIActivityViewController *)arg1;
 
 @optional
+- (UIViewController *)customActionViewControllerForActivityViewController:(UIActivityViewController *)arg1;
+- (NSString *)customLocalizedActionTitleForActivityViewController:(UIActivityViewController *)arg1;
 - (_Bool)_customizationAvailableForActivityViewController:(UIActivityViewController *)arg1;
 @end
 

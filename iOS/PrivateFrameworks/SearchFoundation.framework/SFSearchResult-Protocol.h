@@ -7,6 +7,8 @@
 @class NSArray, NSData, NSDictionary, NSNumber, NSString, NSURL, SFActionItem, SFCard, SFCustom, SFImage, SFMoreResults, SFPunchout, SFText;
 
 @protocol SFSearchResult
+@property(nonatomic) _Bool shouldAutoNavigate;
+@property(nonatomic) _Bool isInstantAnswer;
 @property(retain, nonatomic) NSData *entityData;
 @property(nonatomic) unsigned long long blockId;
 @property(nonatomic) _Bool doNotFold;
@@ -52,6 +54,7 @@
 @property(nonatomic) double serverScore;
 @property(copy, nonatomic) NSString *mediaType;
 @property(nonatomic) unsigned long long minimumRankOfTopHitToSuppressResult;
+@property(copy, nonatomic) NSString *domainName;
 @property(nonatomic) int type;
 @property(nonatomic) int placement;
 @property(nonatomic) double rankingScore;
@@ -75,6 +78,7 @@
 @property(retain, nonatomic) NSURL *mapsMoreURL;
 @property(copy, nonatomic) NSString *mapsResultType;
 @property(retain, nonatomic) NSData *mapsData;
+@property(copy, nonatomic) NSString *entityIdentifier;
 @property(copy, nonatomic) NSString *calendarIdentifier;
 @property(copy, nonatomic) NSString *contactIdentifier;
 @property(copy, nonatomic) NSString *storeIdentifier;

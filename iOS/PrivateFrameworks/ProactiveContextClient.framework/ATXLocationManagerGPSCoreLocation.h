@@ -46,7 +46,7 @@
 - (void)beginMonitoringRegion:(id)arg1;
 - (void)updateLocationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)updateLocationWithTimeout:(double)arg1 requestPreciseLocation:(_Bool)arg2;
-- (void)_startUpdateIfNeeded;
+- (void)_startUpdateIfNeededWithPreciseLocation:(_Bool)arg1;
 @property(readonly, nonatomic) CLLocation *location;
 @property(readonly, nonatomic) _Bool preciseLocationEnabled;
 @property(readonly, nonatomic) _Bool locationEnabled;

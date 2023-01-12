@@ -11,6 +11,7 @@
 }
 
 @property(nonatomic) long long subscriptionAdamID; // @dynamic subscriptionAdamID;
+@property(nonatomic) long long reportingAdamID; // @dynamic reportingAdamID;
 @property(nonatomic) long long equivalencySourceAdamID; // @dynamic equivalencySourceAdamID;
 @property(nonatomic) long long radioAdamID; // @dynamic radioAdamID;
 @property(nonatomic) long long purchasedAdamID; // @dynamic purchasedAdamID;

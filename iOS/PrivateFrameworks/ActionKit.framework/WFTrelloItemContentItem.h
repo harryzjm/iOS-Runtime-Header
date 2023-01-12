@@ -16,6 +16,7 @@
 + (id)pluralTypeDescription;
 + (id)typeDescription;
 + (id)ownedTypes;
++ (id)stringConversionBehavior;
 + (id)propertyBuilders;
 - (id)preferredFileType;
 

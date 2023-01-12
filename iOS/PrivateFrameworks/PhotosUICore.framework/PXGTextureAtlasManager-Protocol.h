@@ -20,6 +20,6 @@
 - (void)applyChangeDetails:(PXGChangeDetails *)arg1;
 - (void)removeSpriteIndex:(unsigned int)arg1 atThumbnailIndex:(unsigned int)arg2;
 - (void)processPendingThumbnailRequestIDsWithHandler:(unsigned int (^)(int, unsigned int, unsigned int))arg1;
-- (unsigned int)addSpriteWithTextureRequestID:(int)arg1 thumbnailData:(NSData *)arg2 bytesPerRow:(unsigned long long)arg3 contentsRect:(struct CGRect)arg4;
+- (void)addSpriteWithTextureRequestID:(int)arg1 thumbnailData:(NSData *)arg2 size:(struct CGSize)arg3 bytesPerRow:(unsigned long long)arg4 contentsRect:(struct CGRect)arg5;
 @end
 

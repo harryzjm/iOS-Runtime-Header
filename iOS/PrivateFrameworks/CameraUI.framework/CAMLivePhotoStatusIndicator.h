@@ -4,27 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CAMLivePhotoAnimationCache;
+@class CAMLivePhotoBloomView;
 
 @interface CAMLivePhotoStatusIndicator
 {
     long long _livePhotoMode;
-    CAMLivePhotoAnimationCache *__animationCache;
+    CAMLivePhotoBloomView *__bloomView;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) CAMLivePhotoAnimationCache *_animationCache; // @synthesize _animationCache=__animationCache;
+@property(readonly, nonatomic) CAMLivePhotoBloomView *_bloomView; // @synthesize _bloomView=__bloomView;
 @property(nonatomic) long long livePhotoMode; // @synthesize livePhotoMode=_livePhotoMode;
+- (void)_updateTintColor;
+- (id)imageNameForAXHUD;
 - (_Bool)shouldShowSlashForCurrentState;
 - (_Bool)shouldUseSlash;
-- (_Bool)canAnimate;
 - (_Bool)shouldUseOutline;
 - (_Bool)shouldUseActiveTintForCurrentState;
 - (struct CGSize)intrinsicContentSize;
-- (id)imageAnimationFramesForCurrentState;
 - (id)imageNameForCurrentState;
-- (void)preloadAnimationFrames;
+- (void)stopAnimating;
+- (void)startAnimating;
 - (void)setLivePhotoMode:(long long)arg1 animated:(_Bool)arg2;
+- (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

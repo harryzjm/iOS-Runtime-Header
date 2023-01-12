@@ -14,8 +14,8 @@
     NSArray *_suffixes;
 }
 
-+ (void)matchCriteriaToPb:(id)arg1 matchCriteriaPb:(struct MatchCriteria *)arg2;
-+ (id)matchCriteriaFromPb:(const struct MatchCriteria *)arg1;
++ (void)matchCriteriaToPb:(id)arg1 matchCriteriaPb:(void *)arg2;
++ (id)matchCriteriaFromPb:(const void *)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *suffixes; // @synthesize suffixes=_suffixes;
 @property(retain, nonatomic) NSArray *prefixes; // @synthesize prefixes=_prefixes;

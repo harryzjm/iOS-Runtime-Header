@@ -34,6 +34,7 @@
 - (void)_drawHorizontalSeparatorAt:(double)arg1;
 - (id)_informationalText;
 - (id)_watchOSVersionText;
+- (id)_sampleAlgorithmVersionText;
 - (id)_iOSVersionText;
 - (id)_appleWatchModelText;
 - (id)_samplingRateText;

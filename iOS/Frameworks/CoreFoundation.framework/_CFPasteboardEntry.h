@@ -14,8 +14,7 @@ __attribute__((visibility("hidden")))
     const struct __CFString *_flavorName;
     const struct __CFUUID *_uuid;
     const struct __CFData *_data;
-    NSObject<OS_xpc_object> *_shmem;
-    unsigned long long _shmemLength;
+    NSObject<OS_xpc_object> *_xpcData;
     unsigned long long _dataFlags;
     unsigned char _isHidden;
     CDUnknownBlockType _promisor;
@@ -36,15 +35,17 @@ __attribute__((visibility("hidden")))
 @property(readonly) int itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
 @property unsigned long long dataFlags; // @synthesize dataFlags=_dataFlags;
 @property(readonly) const struct __CFString *flavorName; // @synthesize flavorName=_flavorName;
+- (CDUnknownBlockType)requestDataForPasteboard:(struct __CFPasteboard *)arg1 generation:(long long)arg2 immediatelyAvailableResult:(CDStruct_55991ab6 *)arg3;
 - (void)resolveClientPromisedDataWithQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (unsigned char)resolveLocalPromisedData;
 - (void)promiseDataWithBlock:(CDUnknownBlockType)arg1 forPasteboard:(struct __CFPasteboard *)arg2 generation:(long long)arg3;
 - (id)createXPCObjectWithMetadataOnly:(unsigned char)arg1;
 - (id)initFromXPCObject:(id)arg1 fromConnection:(id)arg2;
+@property(readonly) unsigned char promisorExistsInCurrentProcess;
 - (void)_setLocalPromiseState:(int)arg1;
 @property(readonly) unsigned char hasLocalPromise;
 - (const struct __CFData *)createDataAndReturnError:(int *)arg1;
-- (id)_createShmemIfNecessaryLength:(unsigned long long *)arg1;
+- (id)_createXPCData;
 - (void)setData:(struct __CFData *)arg1;
 @property(readonly) unsigned char hasData;
 - (id)description;

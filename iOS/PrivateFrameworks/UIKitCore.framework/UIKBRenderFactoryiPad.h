@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (double)tinyPunctuationGlyphFontSize;
 - (double)messagesTypeKeyplanSwitchKeyFontSize;
 - (double)fallbackFontSize;
+- (double)symbolImageControlKeyFontSize;
 - (double)zhuyinFirstToneKeyFontSize;
 - (double)facemarkKeyFontSize;
 - (double)emailDotKeyFontSize;
@@ -78,6 +79,7 @@ __attribute__((visibility("hidden")))
 - (id)globalKeyImageName;
 - (struct CGPoint)ZWNJKeyOffset;
 - (struct CGPoint)secondaryShiftKeyOffset;
+- (struct CGPoint)symbolImageControlKeyOffset;
 - (struct CGPoint)returnKeyOffset;
 - (struct CGPoint)shiftKeyOffset;
 - (struct CGPoint)deleteKeyOffset;
@@ -92,6 +94,7 @@ __attribute__((visibility("hidden")))
 - (id)thinKeycapsFontName;
 - (id)lightKeycapsFontName;
 - (void)setAllowsPaddles:(_Bool)arg1;
+- (long long)assetIdiom;
 
 @end
 

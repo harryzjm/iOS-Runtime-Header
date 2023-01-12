@@ -8,7 +8,7 @@
 
 #import <SpringBoard/BKSMousePointerDeviceObserver-Protocol.h>
 
-@class BKSMousePointerService, NSString, PSPointerClientController;
+@class BKSMousePointerService, NSHashTable, NSString, PSPointerClientController;
 @protocol BSInvalidatable;
 
 @interface SBMousePointerManager : NSObject <BKSMousePointerDeviceObserver>
@@ -18,6 +18,7 @@
     id <BSInvalidatable> _mousePointerDeviceObserverToken;
     unsigned long long _connectedPointingDevicesCount;
     id <BSInvalidatable> _serviceKeepAliveAssertion;
+    NSHashTable *_observers;
     unsigned int _systemCursorInteractionContextID;
 }
 
@@ -26,7 +27,11 @@
 - (void)_updateKeepAliveAssertion;
 - (void)_setPointerUIDWithConnectedDeviceCount:(unsigned long long)arg1;
 - (void)_handleAssistiveTouchEnabledDidChangeNotification;
+- (void)_notifyObserversPointingDeviceBecameAvailable:(_Bool)arg1;
 - (void)mousePointerDevicesDidChange:(id)arg1;
+- (void)removeObserver:(id)arg1;
+- (void)addObserver:(id)arg1;
+- (_Bool)isHardwarePointingDeviceAttached;
 - (void)dealloc;
 - (id)init;
 

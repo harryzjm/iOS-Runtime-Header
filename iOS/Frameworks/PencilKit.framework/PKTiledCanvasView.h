@@ -11,7 +11,7 @@
 #import <PencilKit/PKDrawingGestureTarget-Protocol.h>
 #import <PencilKit/PKShapeDrawingControllerDelegate-Protocol.h>
 
-@class CADisplayLink, NSMutableArray, NSMutableSet, NSString, PKAlternativeStrokesAnimation, PKController, PKDrawing, PKDrawingPowerSavingController, PKInk, PKInterpolateColorAnimation, PKMetalRendererController, PKMetalView, PKRulerController, PKSelectionController, PKShapeDrawingController, PKToolPicker, UIColor, UIGestureRecognizer, UIImage, UITouch;
+@class CADisplayLink, NSMutableArray, NSMutableSet, NSString, PKAlternativeStrokesAnimation, PKController, PKDrawing, PKDrawingPowerSavingController, PKInk, PKInterpolateColorAnimation, PKMetalFramebuffer, PKMetalRendererController, PKMetalView, PKRulerController, PKSelectionController, PKShapeDrawingController, PKUndoCommand, UIColor, UIGestureRecognizer, UIImage, UITouch;
 @protocol PKDrawingGestureRecognizerProtocol, PKTiledCanvasViewDelegate;
 
 @interface PKTiledCanvasView : UIView <PKDrawingGestureRecognizerDelegate, PKControllerDelegate, PKShapeDrawingControllerDelegate, PKDrawingGestureTarget>
@@ -27,7 +27,7 @@
         unsigned int delegateSupportsDidBeginDrawing:1;
         unsigned int delegateSupportsDrawingMovedWithTouch:1;
         unsigned int delegateSupportsDidEndDrawing:1;
-        unsigned int delegateSupportsDidFinishRenderingStrokesOnRenderQueue:1;
+        unsigned int delegateSupportsDidFinishRenderingNewStrokes:1;
         unsigned int delegateSupportsShouldBeginDrawingWithTouch:1;
         unsigned int delegateSupportsDidEraseStrokes:1;
         unsigned int delegateSupportsRegisterUndoCommands:1;
@@ -37,12 +37,18 @@
         unsigned int delegateSupportsHasVisibleStrokesChanged:1;
         unsigned int delegateSupportsShouldDisableShapeRecognition:1;
         unsigned int delegateSupportsInkForStroke:1;
+        unsigned int delegateSupportsTransformForStroke:1;
     } _canvasViewFlags;
     NSMutableArray *_finishedStrokes;
     long long _liveInteractionCount;
     UITouch *_currentStrokeTouch;
+    UIColor *_canvasBackgroundColor;
+    PKDrawing *_liveDrawing;
+    PKUndoCommand *_liveDrawingUndoCommand;
+    PKMetalFramebuffer *_snapshotFramebuffer;
     _Bool _isDrawing;
     _Bool _hasVisibleStrokes;
+    _Bool _sixChannelBlending;
     _Bool _isErasingObjects;
     _Bool _predictionDisabled;
     _Bool _enableCanvasOffsetSupport;
@@ -80,8 +86,8 @@
     NSMutableSet *_strokeUUIDsAboutToBeRemoved;
     NSMutableArray *_strokeRenderCachesToPurge;
     PKInterpolateColorAnimation *_liveRenderingOverrideColorAnimation;
-    PKToolPicker *_toolPickerToRestoreBackgroundMaterialUpdatingState;
     PKShapeDrawingController *_shapeDrawingController;
+    PKInk *_sixChannelInk;
     struct CGPoint _canvasOffset;
     struct CGSize _liveStrokeMaxSize;
     struct CGSize __fixedPixelSize;
@@ -91,12 +97,12 @@
     struct CGAffineTransform _paperTransform;
 }
 
-+ (void)prewarmFutureCanvasesIfNecessary;
++ (void)prewarmFutureCanvasesIfNecessarySecureRendering:(_Bool)arg1;
 + (void)setupDefaults;
 + (void)initialize;
 - (void).cxx_destruct;
+@property(retain, nonatomic) PKInk *sixChannelInk; // @synthesize sixChannelInk=_sixChannelInk;
 @property(retain, nonatomic) PKShapeDrawingController *shapeDrawingController; // @synthesize shapeDrawingController=_shapeDrawingController;
-@property(nonatomic) __weak PKToolPicker *toolPickerToRestoreBackgroundMaterialUpdatingState; // @synthesize toolPickerToRestoreBackgroundMaterialUpdatingState=_toolPickerToRestoreBackgroundMaterialUpdatingState;
 @property(retain, nonatomic) PKInterpolateColorAnimation *liveRenderingOverrideColorAnimation; // @synthesize liveRenderingOverrideColorAnimation=_liveRenderingOverrideColorAnimation;
 @property(retain, nonatomic) NSMutableArray *strokeRenderCachesToPurge; // @synthesize strokeRenderCachesToPurge=_strokeRenderCachesToPurge;
 @property(retain, nonatomic) NSMutableSet *strokeUUIDsAboutToBeRemoved; // @synthesize strokeUUIDsAboutToBeRemoved=_strokeUUIDsAboutToBeRemoved;
@@ -112,6 +118,7 @@
 @property(retain, nonatomic) PKDrawingPowerSavingController *powerSavingController; // @synthesize powerSavingController=_powerSavingController;
 @property double drawingStartTimestamp; // @synthesize drawingStartTimestamp=_drawingStartTimestamp;
 @property(nonatomic) long long maxNumPredictionPoints; // @synthesize maxNumPredictionPoints=_maxNumPredictionPoints;
+@property(retain, nonatomic) PKMetalFramebuffer *snapshotFramebuffer; // @synthesize snapshotFramebuffer=_snapshotFramebuffer;
 @property(nonatomic) _Bool singleComponent; // @synthesize singleComponent=_singleComponent;
 @property(nonatomic) _Bool usePrivateResourceHandler; // @synthesize usePrivateResourceHandler=_usePrivateResourceHandler;
 @property(nonatomic) _Bool shouldPause; // @synthesize shouldPause=_shouldPause;
@@ -135,6 +142,7 @@
 @property(nonatomic) __weak PKRulerController *rulerController; // @synthesize rulerController=_rulerController;
 @property(nonatomic) __weak PKSelectionController *selectionController; // @synthesize selectionController=_selectionController;
 @property(retain, nonatomic) UIColor *liveRenderingOverrideColor; // @synthesize liveRenderingOverrideColor=_liveRenderingOverrideColor;
+@property(nonatomic) _Bool sixChannelBlending; // @synthesize sixChannelBlending=_sixChannelBlending;
 @property(readonly, nonatomic) _Bool hasVisibleStrokes; // @synthesize hasVisibleStrokes=_hasVisibleStrokes;
 @property(nonatomic) _Bool isDrawing; // @synthesize isDrawing=_isDrawing;
 @property(retain, nonatomic) UIGestureRecognizer<PKDrawingGestureRecognizerProtocol> *drawingGestureRecognizer; // @synthesize drawingGestureRecognizer=_drawingGestureRecognizer;
@@ -171,15 +179,17 @@
 - (void)_endAlternativeStrokeIfNecessaryAccepted:(_Bool)arg1;
 - (void)drawingEnded:(id)arg1;
 - (void)drawingGestureRecognizer:(id)arg1 touchesEndedWithDrawingTouch:(id)arg2;
-- (void)_handleEndOfStroke:(id)arg1 undoCommand:(id)arg2 detectedShapeUndoCommand:(id)arg3 invalidateTiles:(_Bool)arg4;
+- (void)_handleEndOfStroke:(id)arg1 groupedUndoCommands:(id)arg2 invalidateTiles:(_Bool)arg3;
 - (void)drawingEstimatedPropertiesUpdated:(id)arg1;
 - (void)drawingMoved:(id)arg1 withEvent:(id)arg2;
 - (void)drawingBegan:(id)arg1;
+- (id)_inkForNewStroke;
 - (_Bool)drawingGestureRecognizer:(id)arg1 shouldBeginDrawingWithTouches:(id)arg2 event:(id)arg3;
 - (void)didEndLiveInteractionWithStrokes:(id)arg1 drawing:(id)arg2 cancelled:(_Bool)arg3;
 @property(readonly, nonatomic) _Bool wantsCanvasVisible;
 - (void)willBeginLiveInteractionWithTouch:(id)arg1;
 - (double)_inputScale;
+- (id)liveDrawing;
 - (void)cancelCurrentStroke;
 - (id)currentStrokeWithStrokeDataCopy;
 - (id)currentStroke;
@@ -190,9 +200,12 @@
 - (_Bool)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
 - (void)drawingChanged:(id)arg1;
 @property(readonly, nonatomic) PKDrawing *activeDrawing;
-- (void)_setDrawing:(id)arg1 tiles:(id)arg2 tileTransform:(struct CGAffineTransform)arg3 setupComplete:(CDUnknownBlockType)arg4 completionBlock:(CDUnknownBlockType)arg5;
+- (void)_setDrawing:(id)arg1 tiles:(id)arg2 tileTransform:(struct CGAffineTransform)arg3 snapshotTexture:(id)arg4 snapshotTextureTransform:(struct CGAffineTransform)arg5 setupComplete:(CDUnknownBlockType)arg6 completionBlock:(CDUnknownBlockType)arg7;
+- (void)_setDrawing:(id)arg1 tiles:(id)arg2 image:(struct CGImage *)arg3 tileTransform:(struct CGAffineTransform)arg4 setupComplete:(CDUnknownBlockType)arg5 completionBlock:(CDUnknownBlockType)arg6;
 - (void)delayCompletionBlockUntilPresentation:(CDUnknownBlockType)arg1;
 - (void)setOpaque:(_Bool)arg1;
+- (void)_updateMetalLayerOpacityIsDoingBitmapErase:(_Bool)arg1;
+- (void)_updateMetalLayerOpacity;
 - (void)layoutSubviews;
 - (void)_drawingDisplay:(double)arg1;
 - (void)setHidden:(_Bool)arg1;
@@ -202,6 +215,8 @@
 - (void)setNeedsDrawingDisplay;
 - (_Bool)_isShapeRecognitionEnabled;
 @property(readonly, nonatomic) PKMetalRendererController *_rendererController;
+- (void)_stopDisplayLink;
+- (void)_startDisplayLink;
 - (void)setupDisplayLink;
 - (void)resizeBackingBuffersForPixelSize:(struct CGSize)arg1 drawingScale:(double)arg2;
 - (void)_setFixedPointSize:(struct CGSize)arg1 drawingScale:(double)arg2;
@@ -219,8 +234,9 @@
 @property(nonatomic) _Bool useLuminanceColorFilter;
 - (void)setLiveRenderingOverrideColor:(id)arg1 animated:(_Bool)arg2;
 - (void)setupDrawing;
+- (id)snapshotFramebufferWithSize:(struct CGSize)arg1;
 - (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1 usePrivateResourceHandler:(_Bool)arg2 singleComponent:(_Bool)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 usePrivateResourceHandler:(_Bool)arg2 singleComponent:(_Bool)arg3 sixChannelBlending:(_Bool)arg4;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)_replayDrawingCancelled;
 - (void)_replayDrawingEnded;

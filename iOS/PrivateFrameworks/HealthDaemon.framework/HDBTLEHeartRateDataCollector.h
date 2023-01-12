@@ -31,21 +31,7 @@
 - (id)sourceForDataAggregator:(id)arg1;
 - (void)dataAggregator:(id)arg1 wantsCollectionWithConfiguration:(id)arg2;
 - (void)beginCollectionForDataAggregator:(id)arg1 lastPersistedSensorDatum:(id)arg2;
-- (void)_queue_handleCharacteristic:(id)arg1 device:(id)arg2;
-- (void)_cancelSessionsWithIdentifiers:(id)arg1;
-- (id)_heartRatePairingsWithError:(id *)arg1;
-- (void)_queue_stateDidChange;
-- (void)_queue_stopHeartRateCollection;
-- (void)_queue_startHeartRateCollection;
-- (_Bool)_queue_startHeartRateServices:(id)arg1;
 - (void)startOneShotCollectionForService:(id)arg1;
-- (void)_queue_service:(id)arg1 sessionDidDisconnect:(unsigned long long)arg2;
-- (void)_queue_service:(id)arg1 sessionDidConnect:(unsigned long long)arg2;
-- (void)_queue_service:(id)arg1 session:(unsigned long long)arg2 statusDidChange:(long long)arg3 finished:(_Bool)arg4 error:(id)arg5;
-- (void)_queue_updateForCurrentConfiguration;
-- (void)_queue_configurationChanged:(id)arg1;
-- (id)_queue_currentState;
-- (id)aggregator;
 - (id)initWithProfile:(id)arg1;
 
 // Remaining properties

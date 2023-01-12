@@ -10,7 +10,6 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKCDPCodeServiceRequestAccountConfig : PBCodable <NSCopying>
 {
     unsigned long long _accountFlags;

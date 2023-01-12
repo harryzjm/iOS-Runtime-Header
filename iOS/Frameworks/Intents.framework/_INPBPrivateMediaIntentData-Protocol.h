@@ -6,7 +6,7 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSString, _INPBAppIdentifier, _INPBSpeakerIDInfo, _INPBString, _INPBWholeHouseAudioMetadata;
+@class NSString, _INPBAppIdentifier, _INPBHomeAutomationEntityProvider, _INPBSpeakerIDInfo, _INPBString, _INPBWholeHouseAudioMetadata;
 
 @protocol _INPBPrivateMediaIntentData <NSObject>
 @property(readonly, nonatomic) _Bool hasWholeHouseAudioMetadata;
@@ -27,6 +27,8 @@
 @property(nonatomic) _Bool isAppCorrection;
 @property(nonatomic) _Bool hasIsAppAttributionRequired;
 @property(nonatomic) _Bool isAppAttributionRequired;
+@property(readonly, nonatomic) _Bool hasHomeAutomationEntityProvider;
+@property(retain, nonatomic) _INPBHomeAutomationEntityProvider *homeAutomationEntityProvider;
 @property(readonly, nonatomic) _Bool hasFallbackUsername;
 @property(retain, nonatomic) _INPBString *fallbackUsername;
 @property(nonatomic) _Bool hasAsrConfidenceScore;

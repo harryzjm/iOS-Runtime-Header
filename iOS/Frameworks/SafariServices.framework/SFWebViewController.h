@@ -16,7 +16,7 @@
 #import <SafariServices/_WKInputDelegate-Protocol.h>
 #import <SafariServices/_WKWebAuthenticationPanelDelegate-Protocol.h>
 
-@class NSString, NSUUID, WKWebView, WKWebViewConfiguration, _SFAuthenticationContext, _SFDialogController, _SFFormAutoFillController;
+@class NSString, NSUUID, WBSPermissionDialogThrottler, WKWebView, WKWebViewConfiguration, _SFAuthenticationContext, _SFDialogController, _SFFormAutoFillController;
 @protocol SFWebViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     _Bool _didFinishDocumentLoad;
     _Bool _shouldSuppressDialogsThatBlockWebProcess;
     NSString *_domainWhereUserDeclinedAutomaticStrongPassword;
+    WBSPermissionDialogThrottler *_permissionDialogThrottler;
     _Bool _loading;
     _Bool _didFirstVisuallyNonEmptyLayout;
     _Bool _didFirstPaint;
@@ -56,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (void)sfWebViewDidChangeSafeAreaInsets:(id)arg1;
 - (void)dialogController:(id)arg1 dismissViewController:(id)arg2 withAdditionalAnimations:(CDUnknownBlockType)arg3;
 - (void)dialogController:(id)arg1 presentViewController:(id)arg2 withAdditionalAnimations:(CDUnknownBlockType)arg3;
+- (id)permissionDialogThrottler;
 - (void)presentDialog:(id)arg1 sender:(id)arg2;
 - (void)dialogController:(id)arg1 willPresentDialog:(id)arg2;
 - (long long)dialogController:(id)arg1 presentationPolicyForDialog:(id)arg2;
@@ -78,6 +80,7 @@ __attribute__((visibility("hidden")))
 - (void)_webView:(id)arg1 printFrame:(id)arg2;
 - (void)_webView:(id)arg1 contextMenuDidEndForElement:(id)arg2;
 - (void)_webView:(id)arg1 contextMenuForElement:(id)arg2 willCommitWithAnimator:(id)arg3;
+- (id)_webView:(id)arg1 contextMenuContentPreviewForElement:(id)arg2;
 - (void)_webView:(id)arg1 contextMenuWillPresentForElement:(id)arg2;
 - (void)_webView:(id)arg1 contextMenuConfigurationForElement:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)_webView:(id)arg1 shouldIncludeAppLinkActionsForElement:(id)arg2;
@@ -100,6 +103,7 @@ __attribute__((visibility("hidden")))
 - (void)formAutoFillControllerDidFocusSensitiveFormField:(id)arg1;
 - (void)_userDeclinedAutomaticStrongPasswordForCurrentDomainOnTabWithUUID:(id)arg1;
 - (void)_automaticPasswordInputViewNotification:(id)arg1;
+- (void)performPageLevelAutoFill;
 - (_Bool)formAutoFillControllerShouldShowIconsInPasswordPicker:(id)arg1;
 - (void)formAutoFillControllerGetAuthenticationForAutoFill:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)formAutoFillControllerUserChoseToUseGeneratedPassword:(id)arg1;
@@ -124,7 +128,7 @@ __attribute__((visibility("hidden")))
 - (void)_webViewDidEndNavigationGesture:(id)arg1 withNavigationToBackForwardListItem:(id)arg2;
 - (void)_webViewWillEndNavigationGesture:(id)arg1 withNavigationToBackForwardListItem:(id)arg2;
 - (void)_webView:(id)arg1 decidePolicyForSOAuthorizationLoadWithCurrentPolicy:(long long)arg2 forExtension:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)_webView:(id)arg1 didNegotiateModernTLS:(id)arg2;
+- (void)_webView:(id)arg1 didNegotiateModernTLSForURL:(id)arg2;
 - (void)_webView:(id)arg1 authenticationChallenge:(id)arg2 shouldAllowLegacyTLS:(CDUnknownBlockType)arg3;
 - (void)_webView:(id)arg1 navigation:(id)arg2 didSameDocumentNavigation:(long long)arg3;
 - (void)webView:(id)arg1 didCommitNavigation:(id)arg2;
@@ -135,6 +139,7 @@ __attribute__((visibility("hidden")))
 - (void)willBeginUserInitiatedNavigation;
 - (void)willActivateWebViewController;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)invalidate;
 - (void)dealloc;
 @property(readonly, nonatomic) WKWebView *webView;
 - (id)_presentingViewControllerForWebView:(id)arg1;

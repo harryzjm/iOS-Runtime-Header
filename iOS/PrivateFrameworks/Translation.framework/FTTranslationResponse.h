@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_eb48cfa2)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_eb48cfa2)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSString *sequence_id;
 @property(readonly, nonatomic) NSArray *engine_output;
 @property(readonly, nonatomic) NSString *engine_input;

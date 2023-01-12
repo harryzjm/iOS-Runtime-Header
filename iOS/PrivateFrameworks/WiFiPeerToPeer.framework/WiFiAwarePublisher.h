@@ -31,6 +31,8 @@
 - (void)publishDataTerminatedForHandle:(id)arg1 reason:(long long)arg2;
 - (void)publishDataConfirmedForHandle:(id)arg1 localInterfaceIndex:(unsigned int)arg2 serviceSpecificInfo:(id)arg3;
 - (void)publishStartedWithInstanceID:(unsigned char)arg1;
+- (void)generateStatisticsReportForDataSession:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)updateLinkStatus:(long long)arg1 forDataSession:(id)arg2;
 - (void)reportIssue:(id)arg1 forDataSession:(id)arg2;
 - (void)updateDatapathServiceSpecificInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateServiceSpecificInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

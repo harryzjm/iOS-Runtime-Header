@@ -6,21 +6,24 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaServices/MSVRandom-Protocol.h>
+#import <MediaServices/MSVRandomSource-Protocol.h>
 #import <MediaServices/NSCopying-Protocol.h>
 #import <MediaServices/NSSecureCoding-Protocol.h>
 
 @class NSData;
 
-@interface MSVARC4RandomSource : NSObject <MSVRandom, NSSecureCoding, NSCopying>
+@interface MSVARC4RandomSource : NSObject <MSVRandomSource, NSSecureCoding, NSCopying>
 {
-    struct Arc4State *_state;
+    struct MSVArc4State *_state;
     NSData *_seed;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)sharedSource;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSData *seed; // @synthesize seed=_seed;
+- (id)mutableBytesWithLength:(long long)arg1;
+- (id)bytesWithLength:(long long)arg1;
 - (unsigned long long)nextIntWithUpperBound:(unsigned long long)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

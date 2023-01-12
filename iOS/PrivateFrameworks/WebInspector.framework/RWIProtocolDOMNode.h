@@ -10,6 +10,7 @@
 {
 }
 
+@property(nonatomic) long long layoutContextType;
 @property(copy, nonatomic) NSString *contentSecurityPolicyHash;
 @property(copy, nonatomic) NSArray *pseudoElements;
 @property(retain, nonatomic) RWIProtocolDOMNode *templateContent;

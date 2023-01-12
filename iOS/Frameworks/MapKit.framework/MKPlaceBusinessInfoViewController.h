@@ -7,7 +7,7 @@
 #import <MapKit/MKModuleViewControllerProtocol-Protocol.h>
 #import <MapKit/_MKInfoCardChildViewControllerAnalyticsDelegate-Protocol.h>
 
-@class MKMapItem, MKPlaceSectionHeaderView, NSString, _MKPlaceBusinessInfoRow;
+@class MKMapItem, MKPlaceAmenitiesProvider, MKPlaceSectionHeaderView, NSString, _MKPlaceBusinessInfoRow;
 
 __attribute__((visibility("hidden")))
 @interface MKPlaceBusinessInfoViewController <_MKInfoCardChildViewControllerAnalyticsDelegate, MKModuleViewControllerProtocol>
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     MKMapItem *_mapItem;
     MKPlaceSectionHeaderView *_headerView;
     _MKPlaceBusinessInfoRow *_businessInfoRow;
+    MKPlaceAmenitiesProvider *_amenityProvider;
 }
 
 + (_Bool)mapItemHasBusinessInfoToDisplay:(id)arg1;
@@ -23,8 +24,6 @@ __attribute__((visibility("hidden")))
 - (id)infoCardChildPossibleActions;
 - (void)_updateBusinessInfo;
 - (void)infoCardThemeChanged;
-- (id)_stringForAmenity:(int)arg1;
-- (id)_imageForApplePay;
 @property(retain, nonatomic) MKMapItem *mapItem;
 - (void)viewDidLoad;
 - (_Bool)_canShowWhileLocked;

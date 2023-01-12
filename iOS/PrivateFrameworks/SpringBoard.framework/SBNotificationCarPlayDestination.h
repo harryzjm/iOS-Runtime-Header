@@ -11,23 +11,45 @@
 #import <SpringBoard/NCCarPlayBannerPresentableViewControllerDelegate-Protocol.h>
 #import <SpringBoard/NCNotificationAlertDestination-Protocol.h>
 
-@class BNBannerHostMonitorListener, BSServiceConnectionEndpoint, CRCarPlayAppPolicyEvaluator, DNDEventBehaviorResolutionService, NCCarPlayBannerSource, NSHashTable, NSMutableDictionary, NSMutableSet, NSString;
-@protocol NCNotificationAlertDestinationDelegate;
+@class BNBannerHostMonitorListener, BSServiceConnectionEndpoint, BSTimer, CRCarPlayAppPolicyEvaluator, NCCarPlayBannerSource, NCNotificationRequest, NSHashTable, NSMutableArray, NSMutableDictionary, NSString, SBNCAlertingController;
+@protocol BNPresentable, NCNotificationAlertDestinationDelegate;
 
 @interface SBNotificationCarPlayDestination : NSObject <BNBannerHostMonitorListenerObserving, BNPresentableObserving, NCCarPlayBannerPresentableViewControllerDelegate, NCNotificationAlertDestination>
 {
-    DNDEventBehaviorResolutionService *_dndEventBehaviorResolutionService;
     BNBannerHostMonitorListener *_bannerHostMonitorListener;
     NSHashTable *_presentables;
     CRCarPlayAppPolicyEvaluator *_appPolicyEvaluator;
     NSMutableDictionary *_appPolicyForBundleID;
-    NSMutableSet *_suspensionReasons;
+    id <BNPresentable> _presentablePresentingAlertController;
+    NSMutableArray *_notificationRequestsForAnnounce;
+    NSMutableArray *_notificationRequestsPendingAnnounce;
+    NSMutableArray *_notificationRequestsPendingAVSession;
+    NCNotificationRequest *_notificationRequestPendingDeactivation;
     id <NCNotificationAlertDestinationDelegate> _delegate;
     NCCarPlayBannerSource *_carPlayBannerSource;
+    SBNCAlertingController *_alertingController;
+    BSTimer *_announceTimeoutTimer;
+    NCNotificationRequest *_notificationRequestCurrentlyAnnouncing;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic, getter=_notificationRequestCurrentlyAnnouncing, setter=_setNotificationRequestCurrentlyAnnouncing:) NCNotificationRequest *notificationRequestCurrentlyAnnouncing; // @synthesize notificationRequestCurrentlyAnnouncing=_notificationRequestCurrentlyAnnouncing;
+@property(retain, nonatomic, getter=_announceTimeoutTimer, setter=_setAnnounceTimeoutTimer:) BSTimer *announceTimeoutTimer; // @synthesize announceTimeoutTimer=_announceTimeoutTimer;
+@property(nonatomic) __weak SBNCAlertingController *alertingController; // @synthesize alertingController=_alertingController;
 @property(nonatomic) __weak id <NCNotificationAlertDestinationDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)_cancelAnnounceTimeoutTimer;
+- (void)_startAnnounceTimeoutTimer;
+- (void)_flushAnnounceNotificationRequestsShouldAnnounce:(_Bool)arg1;
+- (void)_flushNotificationRequestsPendingAnnounce;
+- (void)_withdrawNotificationRequest:(id)arg1 inStore:(id)arg2;
+- (void)_modifyNotificationRequest:(id)arg1 inStore:(id)arg2;
+- (void)_queueNotificationRequestWhileAnnouncing:(id)arg1;
+- (id)_notificationRequestForAnnounceWithIdentifier:(id)arg1;
+- (void)_clearNotificationRequestPendingAnnounceDeactivationIfNecessary;
+- (_Bool)_shouldDeferPostingNotificationRequestForAnnounce:(id)arg1;
+- (_Bool)_shouldAnnounceNotificationRequest:(id)arg1;
+- (_Bool)_isCurrentlyAnnouncing;
+- (_Bool)_setSuspended:(_Bool)arg1 forPresentingAlertControllerForPresentable:(id)arg2;
 - (id)_bulletinForNotificationRequest:(id)arg1;
 - (void)_callOrFaceTimeStateChanged;
 - (_Bool)_inCallOrFaceTime;
@@ -58,6 +80,7 @@
 - (void)bannerHostDidBecomeAvailableForMonitorListener:(id)arg1;
 - (void)withdrawNotificationRequest:(id)arg1;
 - (void)modifyNotificationRequest:(id)arg1;
+- (void)_postNotificationRequest:(id)arg1 shouldAnnounce:(_Bool)arg2;
 - (void)postNotificationRequest:(id)arg1;
 - (_Bool)canReceiveNotificationRequest:(id)arg1;
 @property(readonly, nonatomic) BSServiceConnectionEndpoint *endpoint;

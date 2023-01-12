@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CLKTextProvider, NSDate, NSDictionary;
+@class CLKImageProvider, CLKTextProvider, NSDate, NSDictionary;
 
 @interface CLKComplicationTemplateModularLargeTallBody
 {
@@ -13,20 +13,25 @@
     CLKTextProvider *_bodyTextProvider;
     CLKTextProvider *_headerTrailingTextProvider;
     NSDictionary *_additionalContentAttributes;
+    CLKImageProvider *_headerImageProvider;
 }
 
++ (id)templateWithHeaderImageProvider:(id)arg1 headerTextProvider:(id)arg2 bodyTextProvider:(id)arg3;
 + (id)templateWithHeaderTextProvider:(id)arg1 bodyTextProvider:(id)arg2;
 - (void).cxx_destruct;
+@property(copy, nonatomic) CLKImageProvider *headerImageProvider; // @synthesize headerImageProvider=_headerImageProvider;
 @property(copy, nonatomic) NSDictionary *additionalContentAttributes; // @synthesize additionalContentAttributes=_additionalContentAttributes;
 @property(nonatomic) _Bool shouldTruncateHeaderLeadingLabelFirst; // @synthesize shouldTruncateHeaderLeadingLabelFirst=_shouldTruncateHeaderLeadingLabelFirst;
 @property(copy, nonatomic) CLKTextProvider *headerTrailingTextProvider; // @synthesize headerTrailingTextProvider=_headerTrailingTextProvider;
 @property(copy, nonatomic) CLKTextProvider *bodyTextProvider; // @synthesize bodyTextProvider=_bodyTextProvider;
 @property(copy, nonatomic) CLKTextProvider *headerTextProvider; // @synthesize headerTextProvider=_headerTextProvider;
 @property(copy, nonatomic) NSDate *contentDate;
+- (void)_enumerateImageProviderKeysWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateDateKeysWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateBOOLKeysWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateTextProviderKeysWithBlock:(CDUnknownBlockType)arg1;
 - (long long)compatibleFamily;
+- (id)initWithHeaderImageProvider:(id)arg1 headerTextProvider:(id)arg2 bodyTextProvider:(id)arg3;
 - (id)initWithHeaderTextProvider:(id)arg1 bodyTextProvider:(id)arg2;
 
 @end

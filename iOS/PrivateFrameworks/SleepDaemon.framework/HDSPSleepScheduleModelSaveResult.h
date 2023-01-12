@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSError;
+@class HDSPSleepScheduleModelChangeEvaluation, NSError;
 
 __attribute__((visibility("hidden")))
 @interface HDSPSleepScheduleModelSaveResult : NSObject
 {
     _Bool _success;
     _Bool _shouldNotify;
+    HDSPSleepScheduleModelChangeEvaluation *_changeEvaluation;
     NSError *_error;
 }
 
@@ -21,8 +22,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool shouldNotify; // @synthesize shouldNotify=_shouldNotify;
 @property(readonly, nonatomic) NSError *error; // @synthesize error=_error;
+@property(readonly, nonatomic) HDSPSleepScheduleModelChangeEvaluation *changeEvaluation; // @synthesize changeEvaluation=_changeEvaluation;
 @property(readonly, nonatomic) _Bool success; // @synthesize success=_success;
-- (id)initWithSuccess:(_Bool)arg1 error:(id)arg2 shouldNotify:(_Bool)arg3;
+- (id)initWithSuccess:(_Bool)arg1 changeEvaluation:(id)arg2 error:(id)arg3 shouldNotify:(_Bool)arg4;
 
 @end
 

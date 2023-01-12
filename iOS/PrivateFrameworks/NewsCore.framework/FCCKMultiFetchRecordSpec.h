@@ -17,10 +17,6 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool shortcut; // @synthesize shortcut=_shortcut;
-@property(copy, nonatomic) NSArray *fetchKeys; // @synthesize fetchKeys=_fetchKeys;
-@property(copy, nonatomic) NSArray *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
-@property(copy, nonatomic) NSString *recordType; // @synthesize recordType=_recordType;
 
 @end
 

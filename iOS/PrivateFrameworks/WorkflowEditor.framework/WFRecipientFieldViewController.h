@@ -15,6 +15,7 @@
 
 @interface WFRecipientFieldViewController : UIViewController <CNComposeRecipientTextViewDelegate, CNAutocompleteResultsTableViewControllerDelegate, CNAutocompleteSearchConsumer>
 {
+    _Bool _allowsCustomHandles;
     CNAutocompleteSearchManager *_searchManager;
     NSSet *_supportedPersonProperties;
     NSString *_fieldLabel;
@@ -39,6 +40,7 @@
 @property(readonly, nonatomic) CNAutocompleteResultsTableViewController *autocompleteResultsController; // @synthesize autocompleteResultsController=_autocompleteResultsController;
 @property(retain, nonatomic) WFContactPickerCoordinator *contactPickerCoordinator; // @synthesize contactPickerCoordinator=_contactPickerCoordinator;
 @property(nonatomic) __weak id <WFRecipientFieldViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) _Bool allowsCustomHandles; // @synthesize allowsCustomHandles=_allowsCustomHandles;
 @property(copy, nonatomic) NSString *fieldLabel; // @synthesize fieldLabel=_fieldLabel;
 @property(copy, nonatomic) NSSet *supportedPersonProperties; // @synthesize supportedPersonProperties=_supportedPersonProperties;
 - (void)_updateFetchContextChosenAddresses;

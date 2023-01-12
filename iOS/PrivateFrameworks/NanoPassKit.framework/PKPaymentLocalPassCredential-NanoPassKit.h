@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PassKit/PKPaymentLocalPassCredential.h>
+#import <PassKitCore/PKPaymentLocalPassCredential.h>
 
 @interface PKPaymentLocalPassCredential (NanoPassKit)
 - (id)_initWithPassTypeIdentifier:(id)arg1 serialNumber:(id)arg2 credentialType:(long long)arg3 sanitizedPrimaryAccountNumber:(id)arg4 longDescription:(id)arg5 cardType:(long long)arg6;

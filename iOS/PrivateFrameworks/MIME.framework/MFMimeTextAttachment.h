@@ -8,7 +8,6 @@
 {
 }
 
-- (id)persistentUniqueIdentifier;
 - (unsigned int)approximateSize;
 - (_Bool)hasBeenDownloaded;
 - (void)download;

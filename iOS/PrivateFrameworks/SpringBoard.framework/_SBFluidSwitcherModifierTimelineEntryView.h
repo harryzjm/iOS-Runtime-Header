@@ -22,9 +22,10 @@
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <_SBFluidSwitcherModifierTimelineEntryViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) SBSwitcherModifierTimelineEntry *entry; // @synthesize entry=_entry;
+- (double)_randomFloatFromSeed:(unsigned long long)arg1 min:(double)arg2 max:(double)arg3;
+- (id)_randomColorWithSeed:(unsigned long long)arg1;
 - (id)_appendRecursiveDescriptionToString:(id)arg1 level:(unsigned long long)arg2 snapshot:(id)arg3;
-- (id)_stringForStack:(id)arg1;
-- (id)_randomColor;
+- (id)_attributedStringsForStack:(id)arg1;
 - (void)_tap:(id)arg1;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1 entry:(id)arg2;

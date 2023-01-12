@@ -15,10 +15,7 @@
     _Bool _allowNilDesiredKeys;
 }
 
-@property(nonatomic) _Bool allowNilDesiredKeys; // @synthesize allowNilDesiredKeys=_allowNilDesiredKeys;
-- (void)_addLoggersToOperation:(id)arg1 database:(id)arg2;
 - (long long)database:(id)arg1 willEnqueueOperation:(id)arg2 error:(id *)arg3;
-- (id)initAllowingNilDesiredKeys:(_Bool)arg1;
 - (id)init;
 
 // Remaining properties

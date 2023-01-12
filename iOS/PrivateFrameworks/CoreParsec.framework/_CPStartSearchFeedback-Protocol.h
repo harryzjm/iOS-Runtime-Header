@@ -10,6 +10,7 @@
 
 @protocol _CPStartSearchFeedback <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(nonatomic) int searchType;
 @property(nonatomic) unsigned long long queryId;
 @property(nonatomic) int triggerEvent;
 @property(copy, nonatomic) NSString *uuid;

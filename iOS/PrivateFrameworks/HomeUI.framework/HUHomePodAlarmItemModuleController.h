@@ -11,16 +11,22 @@
 
 @interface HUHomePodAlarmItemModuleController <HUAlarmTableViewCellDelegate>
 {
+    _Bool _allowsCellSelection;
     id <HUHomePodAlarmItemModuleControllerDelegate> _delegate;
     NSMapTable *_cellToItemMap;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSMapTable *cellToItemMap; // @synthesize cellToItemMap=_cellToItemMap;
+@property(readonly, nonatomic) _Bool allowsCellSelection; // @synthesize allowsCellSelection=_allowsCellSelection;
 @property(nonatomic) __weak id <HUHomePodAlarmItemModuleControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)_significantTimeChange:(id)arg1;
+- (_Bool)_shouldAllowCellSelection;
 - (void)setAlarmEnabled:(_Bool)arg1 forCell:(id)arg2;
+- (_Bool)canSelectItem:(id)arg1;
 - (unsigned long long)didSelectItem:(id)arg1;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 animated:(_Bool)arg3;
+- (void)setupCell:(id)arg1 forItem:(id)arg2;
 - (Class)cellClassForItem:(id)arg1;
 - (id)initWithModule:(id)arg1;
 

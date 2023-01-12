@@ -16,7 +16,8 @@
     void *_addressBook;
     CNContactFetchRequest *_contactFetchRequest;
     CNContactsEnvironment *_environment;
-    CDUnknownBlockType _completionHandler;
+    CDUnknownBlockType _addressBookCompletionHandler;
+    CDUnknownBlockType _cursorCompletionHandler;
     id <CNEncodedFetchCursor> _cursor;
     id <CNContactsLogger> _logger;
     CNManagedConfiguration *_managedConfiguration;
@@ -26,7 +27,7 @@
 - (void)fetchNextBatchWithReply:(CDUnknownBlockType)arg1;
 - (_Bool)fetchEncodedPeopleWithError:(id *)arg1 cancelationToken:(id)arg2 batchHandler:(CDUnknownBlockType)arg3;
 - (void)dealloc;
-- (id)initWithFetchRequest:(id)arg1 addressBook:(void *)arg2 managedConfiguration:(id)arg3 completionHandler:(CDUnknownBlockType)arg4 environment:(id)arg5;
+- (id)initWithFetchRequest:(id)arg1 addressBook:(void *)arg2 managedConfiguration:(id)arg3 addressBookCompletionHandler:(CDUnknownBlockType)arg4 cursorCompletionHandler:(CDUnknownBlockType)arg5 environment:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

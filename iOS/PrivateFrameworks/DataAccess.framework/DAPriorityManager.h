@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class BKSApplicationStateMonitor, NSMapTable, NSMutableDictionary;
+@class NSMapTable, NSMutableDictionary, RBSProcessMonitor;
 
 @interface DAPriorityManager : NSObject
 {
     int _currentPriority;
     NSMapTable *_clientsToPriorityRequests;
-    BKSApplicationStateMonitor *_appStateMonitor;
+    RBSProcessMonitor *_processMonitor;
     NSMutableDictionary *_cachedAppState;
     long long _foregroundDataclasses;
 }
@@ -22,7 +22,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) long long foregroundDataclasses; // @synthesize foregroundDataclasses=_foregroundDataclasses;
 @property(retain, nonatomic) NSMutableDictionary *cachedAppState; // @synthesize cachedAppState=_cachedAppState;
-@property(retain, nonatomic) BKSApplicationStateMonitor *appStateMonitor; // @synthesize appStateMonitor=_appStateMonitor;
+@property(retain, nonatomic) RBSProcessMonitor *processMonitor; // @synthesize processMonitor=_processMonitor;
 @property(readonly, nonatomic) int currentPriority; // @synthesize currentPriority=_currentPriority;
 @property(retain, nonatomic) NSMapTable *clientsToPriorityRequests; // @synthesize clientsToPriorityRequests=_clientsToPriorityRequests;
 - (void)bumpDataclassesToUIPriority:(long long)arg1;
@@ -31,10 +31,11 @@
 - (int)_recalculatePriority;
 - (id)stateString;
 - (void)_setForegroundDataclasses:(long long)arg1;
+- (void)setupProcessStateMonitor;
 - (void)dealloc;
 - (id)init;
 - (void)_updateForegroundDataclasses;
-- (void)_applicationStateChanged:(id)arg1;
+- (void)appWithBundleID:(id)arg1 isNowRunningAndVisible:(_Bool)arg2;
 - (id)appIDsToDataclasses;
 
 @end

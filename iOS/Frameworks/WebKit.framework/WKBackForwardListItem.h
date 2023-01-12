@@ -18,7 +18,7 @@
 @property(readonly) struct Object *_apiObject;
 - (struct CGPoint)_scrollPosition;
 - (struct CGImage *)_copySnapshotForTesting;
-@property(readonly) struct WebBackForwardListItem *_item;
+@property(readonly) void *_item;
 @property(readonly, copy) NSURL *initialURL;
 @property(readonly, copy) NSString *title;
 @property(readonly, copy) NSURL *URL;

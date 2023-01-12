@@ -8,7 +8,7 @@
 {
 }
 
-- (id)objectWithPropertySets:(id)arg1;
+- (id)newObjectWithPropertySets:(id)arg1;
 
 @end
 

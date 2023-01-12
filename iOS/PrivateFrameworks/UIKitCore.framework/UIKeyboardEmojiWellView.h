@@ -4,18 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSIndexPath, NSString, UIColor, UIFont, UIView;
+@class NSArray, NSIndexPath, NSString, UIColor, UIFont, UILabel, UIView;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardEmojiWellView
 {
     _Bool _selected;
     _Bool _activeSelection;
+    _Bool _unreleasedHighlight;
     NSArray *_compositeImageRepresentation;
     UIFont *_labelFont;
     NSString *_stringRepresentation;
     UIColor *_selectionBackgroundColor;
     NSIndexPath *_associatedIndexPath;
+    UILabel *_unreleasedBanner;
     UIView *_wellContentView;
     UIView *_backgroundView;
     struct CGSize _compositeImageSize;
@@ -24,6 +26,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property(retain, nonatomic) UIView *wellContentView; // @synthesize wellContentView=_wellContentView;
+@property(retain, nonatomic) UILabel *unreleasedBanner; // @synthesize unreleasedBanner=_unreleasedBanner;
+@property(nonatomic) _Bool unreleasedHighlight; // @synthesize unreleasedHighlight=_unreleasedHighlight;
 @property(retain, nonatomic) NSIndexPath *associatedIndexPath; // @synthesize associatedIndexPath=_associatedIndexPath;
 @property(retain, nonatomic) UIColor *selectionBackgroundColor; // @synthesize selectionBackgroundColor=_selectionBackgroundColor;
 @property(nonatomic, getter=isActiveSelection) _Bool activeSelection; // @synthesize activeSelection=_activeSelection;
@@ -34,6 +38,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGSize compositeImageSize; // @synthesize compositeImageSize=_compositeImageSize;
 - (void)layoutSubviews;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)fontUsingSilhouette:(unsigned long long)arg1 size:(double)arg2;
+- (void)setStringRepresentation:(id)arg1 silhouette:(unsigned long long)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

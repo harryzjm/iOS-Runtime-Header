@@ -6,22 +6,23 @@
 
 #import <WorkflowKit/WFWorkflowReferencing-Protocol.h>
 
-@class NSDictionary, NSError, NSString, WFDatabase, WFImage, WFWorkflow;
-@protocol NSObject, WFAccessResourcePerWorkflowState;
+@class NSDictionary, NSError, NSString, WFDatabaseProxy, WFImage, WFWorkflow;
+@protocol WFAccessResourcePerWorkflowState;
 
 @interface WFAccessResource <WFWorkflowReferencing>
 {
+    int _token;
     WFWorkflow *_workflow;
     id <WFAccessResourcePerWorkflowState> _currentPerWorkflowState;
+    WFDatabaseProxy *_databaseProxy;
     NSString *_persistentIdentifier;
-    id <NSObject> _resourceAvailabilityChangedNotificationObserver;
 }
 
 + (Class)perWorkflowStateClass;
 + (_Bool)isSystemResource;
 + (id)accessResourceFromDatabaseState:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) id <NSObject> resourceAvailabilityChangedNotificationObserver; // @synthesize resourceAvailabilityChangedNotificationObserver=_resourceAvailabilityChangedNotificationObserver;
+@property(readonly, nonatomic) int token; // @synthesize token=_token;
 @property(readonly, nonatomic) NSString *persistentIdentifier; // @synthesize persistentIdentifier=_persistentIdentifier;
 @property(retain, nonatomic) id <WFAccessResourcePerWorkflowState> currentPerWorkflowState; // @synthesize currentPerWorkflowState=_currentPerWorkflowState;
 @property(nonatomic) __weak WFWorkflow *workflow; // @synthesize workflow=_workflow;
@@ -43,27 +44,28 @@
 - (void)attemptRecoveryFromGlobalLevelErrorWithOptionIndex:(unsigned long long)arg1 userInterface:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic) NSString *localizedWorkflowLevelDeniedStatusMessage;
 @property(readonly, nonatomic) NSString *localizedWorkflowLevelNotDeterminedStatusMessage;
+@property(readonly, nonatomic) NSString *localizedWorkflowLevelMessage;
 @property(readonly, nonatomic) NSString *localizedWorkflowLevelMessageTemplate;
+@property(readonly, nonatomic) NSString *localizedWorkflowLevelPrompt;
 @property(readonly, nonatomic) NSString *localizedWorkflowLevelPromptTemplate;
 - (id)updatedPerWorkflowStateForAuthorizationChoice:(_Bool)arg1 overridingPreviouslyDeterminedAuthorizations:(_Bool)arg2;
 @property(readonly, nonatomic) unsigned long long workflowLevelStatus;
 @property(readonly, nonatomic) unsigned long long globalLevelStatus;
 - (void)makeAvailableAtGlobalLevelWithUserInterface:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)setAuthorizedAtWorkflowLevel:(_Bool)arg1 forReference:(id)arg2 inDatabase:(id)arg3 overridingPreviouslyDeterminedAuthorizations:(_Bool)arg4;
-- (void)persistPerWorkflowState:(id)arg1 forReference:(id)arg2 inDatabase:(id)arg3;
 - (void)refreshCurrentPerWorkflowStateForReference:(id)arg1 inDatabase:(id)arg2;
 - (void)refreshCurrentPerWorkflowState;
 - (id)loadPersistedPerWorkflowStateForReference:(id)arg1 inDatabase:(id)arg2;
 - (void)attemptRecoveryFromWorkflowLevelErrorWithOptionIndex:(unsigned long long)arg1 userInterface:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-@property(readonly, nonatomic) WFDatabase *database;
+@property(readonly, nonatomic) WFDatabaseProxy *databaseProxy; // @synthesize databaseProxy=_databaseProxy;
 - (_Bool)isEquivalentToAccessResource:(id)arg1;
-- (void)setAuthorizedAtWorkflowLevel:(_Bool)arg1 overridingPreviouslyDeterminedAuthorizations:(_Bool)arg2;
 - (void)makeAvailableAtLevel:(unsigned long long)arg1 withUserInterface:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)availabilityErrorForLevel:(unsigned long long)arg1;
 - (unsigned long long)statusAtLevel:(unsigned long long)arg1;
 - (void)makeAvailableAtWorkflowLevelWithUserInterface:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)refreshAvailability;
 - (void)refreshAvailabilityWithNotification:(_Bool)arg1;
+- (void)configureResourceForConfiguration:(id)arg1;
+- (id)authorizationConfiguration;
 @property(readonly, nonatomic) unsigned long long status;
 @property(readonly, nonatomic) NSString *protectedResourceDescription;
 @property(readonly, nonatomic) WFImage *icon;
@@ -75,6 +77,7 @@
 - (id)initWithDefinition:(id)arg1 persistentIdentifier:(id)arg2;
 @property(readonly, nonatomic) NSDictionary *settingsUIDefinition;
 - (void)logOut;
+@property(readonly, nonatomic) _Bool supportsMultipleAccounts;
 @property(readonly, nonatomic) _Bool logOutAffectsOtherApps;
 @property(readonly, nonatomic) _Bool canLogOut;
 @property(readonly, nonatomic) NSString *username;

@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <MapKit/NSObject-Protocol.h>
+
 @class CNContact, EKCalendarItem, MKMapItem, NSString;
 
-@protocol _MKPlaceItem
+@protocol _MKPlaceItem <NSObject>
 @property(readonly, nonatomic) unsigned long long options;
 @property(readonly, nonatomic) _Bool hasContactOnly;
 @property(readonly, nonatomic) _Bool isContactPersisted;

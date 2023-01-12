@@ -4,15 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HealthDaemon/HDSeriesEntity-Protocol.h>
 #import <HealthDaemon/_HDSeriesFreezeJournalEntrySeries-Protocol.h>
 
 @class NSString;
 
-@interface HDSeriesSampleEntity <_HDSeriesFreezeJournalEntrySeries>
+@interface HDSeriesSampleEntity <_HDSeriesFreezeJournalEntrySeries, HDSeriesEntity>
 {
 }
 
-+ (id)entityEncoderForProfile:(id)arg1 transaction:(id)arg2 purpose:(long long)arg3 authorizationFilter:(CDUnknownBlockType)arg4;
++ (_Bool)migrateDataToSQLFromStore:(const void *)arg1 transaction:(id)arg2 error:(id *)arg3;
++ (_Bool)migrateDataFromDataStore:(const void *)arg1 to:(void *)arg2 transaction:(id)arg3 recoveryAnalytics:(id)arg4 error:(id *)arg5;
++ (id)hasSeriesDataForHFDKey:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
++ (id)entityEncoderForProfile:(id)arg1 transaction:(id)arg2 purpose:(long long)arg3 encodingOptions:(id)arg4 authorizationFilter:(CDUnknownBlockType)arg5;
 + (id)insertDataObject:(id)arg1 withProvenance:(id)arg2 inDatabase:(id)arg3 persistentID:(id)arg4 error:(id *)arg5;
 + (id)additionalPredicateForEnumeration;
 + (CDUnknownBlockType)objectInsertionFilterForProfile:(id)arg1;
@@ -24,11 +28,10 @@
 + (const CDStruct_4c492439 *)columnDefinitionsWithCount:(unsigned long long *)arg1;
 + (id)databaseTable;
 + (void)updateInsertionEra;
-+ (long long)_insertionEra;
+- (id)HFDKeyWithDatabase:(id)arg1 error:(id *)arg2;
 - (_Bool)updateSampleCount:(long long)arg1 withDatabase:(id)arg2 error:(id *)arg3;
 - (_Bool)canAddDatumInDatabase:(id)arg1 error:(id *)arg2;
 - (id)freezeWithTransaction:(id)arg1 profile:(id)arg2 error:(id *)arg3;
-- (id)HFDKeyWithDatabase:(id)arg1 error:(id *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

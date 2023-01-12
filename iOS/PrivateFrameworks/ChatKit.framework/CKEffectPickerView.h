@@ -179,6 +179,7 @@
 - (void)updateViewColors;
 - (id)initWithFrame:(struct CGRect)arg1 sendButtonFrame:(struct CGRect)arg2 balloonViewOrigin:(struct CGPoint)arg3 composition:(id)arg4 color:(BOOL)arg5;
 - (double)marginBetweenPickerDotButtons;
+- (_Bool)__im_ff_systemImageAdoptionEnabled;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

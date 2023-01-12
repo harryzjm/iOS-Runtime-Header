@@ -26,6 +26,7 @@
 - (id)generatePreviewFromThumbnail:(id)arg1 width:(double)arg2 orientation:(BOOL)arg3;
 - (id)generateThumbnailForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (_Bool)generatePreviewOutOfProcess;
+- (Class)placeholderBalloonViewClass;
 - (Class)previewBalloonViewClass;
 - (_Bool)hasOutOfProcessPreviewGenerator;
 - (int)mediaType;

@@ -12,7 +12,7 @@
 #import <UIKitCore/_UIRemoteKeyboardDistributedViewSource-Protocol.h>
 #import <UIKitCore/_UIRemoteKeyboardsEventObserverDelegate-Protocol.h>
 
-@class FBSScene, FBSSceneIdentityToken, NSArray, NSHashTable, NSMapTable, NSMutableArray, NSMutableSet, NSString, NSXPCConnection, UIScreen, UIView, UIWindow, UIWindowScene, _UIAssertionController, _UIKeyboardChangedInformation, _UIRemoteKeyboardsEventObserver;
+@class FBSScene, NSArray, NSHashTable, NSMapTable, NSMutableArray, NSMutableSet, NSString, NSXPCConnection, UIRemoteKeyboardWindow, UIScreen, UIView, UIWindowScene, _UIAssertionController, _UIKeyboardChangedInformation, _UIRemoteKeyboardsEventObserver;
 @protocol _UIKeyboardArbitration;
 
 @interface _UIRemoteKeyboards : NSObject <_UIRemoteKeyboardDistributedViewSource, _UIKeyboardArbitrationClient, _UIRemoteKeyboardControllerDelegate, _UIRemoteKeyboardsEventObserverDelegate, _UIAssertionControllerSubject>
@@ -25,8 +25,12 @@
     UIView *_keyboardSnapshot;
     _Bool _expectingInitialState;
     int _hostedCount;
-    FBSSceneIdentityToken *_focusedSceneIdentity;
+    NSString *_focusedSceneIdentityStringOrIdentifier;
     _Bool _hadFocusBeforeOverlay;
+    _Bool _deactivatedByControlCenter;
+    _Bool _deactivatedBySystemAnimation;
+    _Bool _resignActiveByControlCenter;
+    _Bool _enqueuedWillEnterForegroundActions;
     UIWindowScene *_suppressedScene;
     _Bool _expectedSuppression;
     int _externalSuppression;
@@ -36,6 +40,7 @@
     _Bool _windowEnabled;
     UIScreen *_lastScreen;
     _Bool _disablingKeyboard;
+    _Bool _resigningByOtherApp;
     double _iavHeight;
     NSMapTable *_minimumKeyboardHeights;
     _UIRemoteKeyboardsEventObserver *_eventObserver;
@@ -51,8 +56,11 @@
     long long _lastEventSource;
     NSXPCConnection *_connection;
     _UIKeyboardChangedInformation *_currentState;
+    _UIKeyboardChangedInformation *_backupState;
 }
 
++ (id)keyboardWindowSceneForScreen:(id)arg1 create:(_Bool)arg2;
++ (_Bool)wantsUnassociatedWindowSceneForKeyboardWindow;
 + (id)createArbiterConnection;
 + (id)serviceName;
 + (_Bool)useSystemService;
@@ -64,11 +72,12 @@
 @property(getter=isUpdatingKeyWindow) _Bool updatingKeyWindow; // @synthesize updatingKeyWindow=_updatingKeyWindow;
 @property _Bool didSignalKeyboardChangedForCurrentKeyboard; // @synthesize didSignalKeyboardChangedForCurrentKeyboard=_didSignalKeyboardChangedForCurrentKeyboard;
 @property _Bool currentKeyboard; // @synthesize currentKeyboard=_currentKeyboard;
+@property(retain) _UIKeyboardChangedInformation *backupState; // @synthesize backupState=_backupState;
 @property(retain) _UIKeyboardChangedInformation *currentState; // @synthesize currentState=_currentState;
 @property(retain) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property(nonatomic) _Bool enableMultiscreenHack; // @synthesize enableMultiscreenHack=_enableMultiscreenHack;
 @property(readonly, nonatomic) long long lastEventSource; // @synthesize lastEventSource=_lastEventSource;
-@property(copy, nonatomic) FBSSceneIdentityToken *focusedSceneIdentity; // @synthesize focusedSceneIdentity=_focusedSceneIdentity;
+@property(copy, nonatomic) NSString *focusedSceneIdentityStringOrIdentifier; // @synthesize focusedSceneIdentityStringOrIdentifier=_focusedSceneIdentityStringOrIdentifier;
 - (void)didBecomeActive:(id)arg1;
 - (void)willResignActive:(id)arg1;
 - (void)didRemoveDeactivationReason:(id)arg1;
@@ -83,6 +92,8 @@
 - (void)_postInputSourceDidChangeNotification;
 - (void)userSelectedProcessIdentifier:(int)arg1 withSceneIdentity:(id)arg2 onCompletion:(CDUnknownBlockType)arg3;
 - (void)userSelectedApp:(id)arg1 onCompletion:(CDUnknownBlockType)arg2;
+- (void)restoreKeyboardWithId:(id)arg1;
+- (void)preserveKeyboardWithId:(id)arg1;
 - (void)forceKeyboardAway;
 - (void)queue_setKeyboardDisabled:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)assertionActivationStateChangedToState:(_Bool)arg1 forType:(unsigned long long)arg2;
@@ -94,13 +105,13 @@
 - (void)setSuppressingKeyboard:(_Bool)arg1 forScene:(id)arg2;
 - (_Bool)hasAnyHostedViews;
 @property(readonly, retain) NSArray *currentHostedPIDs;
-- (void)updateFocusedIdentityIfPermittedForHostWindow:(id)arg1 servicePID:(int)arg2;
-- (void)addHostedWindowView:(id)arg1 fromPID:(int)arg2;
-@property(readonly) UIWindow *keyboardWindow;
+- (void)addHostedWindowView:(id)arg1 fromPID:(int)arg2 forScene:(id)arg3;
+- (_Bool)remoteKeyboardUndocked:(_Bool)arg1;
 @property(readonly) _Bool remoteKeyboardUndocked;
 @property(readonly) _Bool keyboardActive;
 @property(readonly, nonatomic) struct CGRect keyboardFrameIncludingRemoteIAV;
 @property(readonly) double iavHeight;
+- (double)intersectionHeightForWindowScene:(id)arg1 isLocalMinimumHeightOut:(_Bool *)arg2 ignoreHorizontalOffset:(_Bool)arg3;
 - (double)intersectionHeightForWindowScene:(id)arg1;
 - (_Bool)hasLocalMinimumKeyboardHeightForScene:(id)arg1;
 - (_Bool)refreshWithLocalMinimumKeyboardHeight:(double)arg1 forScene:(id)arg2;
@@ -113,34 +124,38 @@
 - (void)performOnControllers:(CDUnknownBlockType)arg1;
 - (void)unregisterController:(id)arg1;
 - (void)registerController:(id)arg1;
+- (void)releaseIgnoreLayoutNotificationsAssertion;
+- (void)assertIgnoreLayoutNotifications;
 - (void)ignoreLayoutNotifications:(CDUnknownBlockType)arg1;
 - (void)controllerDidLayoutSubviews:(id)arg1;
 - (void)setWindowLevel:(double)arg1 sceneLevel:(double)arg2 forResponder:(id)arg3;
 - (void)completeMoveKeyboardForWindow:(id)arg1;
 - (id)viewHostForWindow:(id)arg1;
 - (void)prepareToMoveKeyboard:(struct CGRect)arg1 withIAV:(struct CGRect)arg2 isIAVRelevant:(_Bool)arg3 showing:(_Bool)arg4 notifyRemote:(_Bool)arg5 forScene:(id)arg6;
+- (void)updateLastScreen:(id)arg1;
 - (_Bool)wantsToShowKeyboardForViewServiceHostWindow:(id)arg1;
 - (_Bool)wantsToShowKeyboardForWindow:(id)arg1;
 - (_Bool)isOnScreenRotating;
 - (_Bool)allowedToShowKeyboard;
 - (_Bool)needsToShowKeyboardForViewServiceHostWindow:(id)arg1;
 - (_Bool)needsToShowKeyboardForWindow:(id)arg1;
-- (void)_updateProxySceneIdentity;
-- (void)_updateFocusedSceneIdentityIfPermittedForWindow:(id)arg1 force:(_Bool)arg2;
-- (void)keyWindowDidChange:(id)arg1;
-- (void)keyWindowWillChange:(id)arg1;
+- (void)applicationKeyWindowDidChange:(id)arg1;
+- (void)applicationKeyWindowWillChange:(id)arg1;
 - (void)applicationResume:(id)arg1;
+- (void)willLock:(id)arg1;
 - (void)willResume:(id)arg1;
 - (void)didSuspend:(id)arg1;
 - (void)_lostWindow:(id)arg1;
 - (void)setWindowEnabled:(_Bool)arg1 force:(_Bool)arg2;
 - (void)setWindowEnabled:(_Bool)arg1;
+- (void)setRequiredScene:(id)arg1;
 @property(readonly, retain) FBSScene *requiredScene;
 @property(readonly) _Bool oldPathForSnapshot;
 @property(nonatomic) _Bool isSnapshotting;
 - (void)checkState;
 - (void)sceneUpdated;
 - (void)reloadForSnapshotting;
+@property(readonly) UIRemoteKeyboardWindow *keyboardWindow;
 - (Class)keyboardWindowClass;
 - (void)checkConnection;
 - (void)cleanSuppression;
@@ -152,9 +167,11 @@
 - (void)queue_keyboardChanged:(id)arg1 onComplete:(CDUnknownBlockType)arg2;
 - (void)keyboardChangedCompleted;
 - (_Bool)didHandleKeyboardChange:(id)arg1 shouldConsiderSnapshottingKeyboard:(_Bool)arg2 isLocalEvent:(_Bool)arg3;
+- (unsigned long long)localSceneCount;
 - (void)resetSnapshotWithWindowCheck:(_Bool)arg1;
 - (void)startConnection;
 - (void)queue_failedConnection:(id)arg1;
+- (void)queue_activeProcessResignWithCompletion:(CDUnknownBlockType)arg1;
 - (void)signalToProxyKeyboardChanged:(id)arg1 onCompletion:(CDUnknownBlockType)arg2;
 - (void)updateCurrentState:(id)arg1;
 - (_Bool)currentStateHasEqualRect:(struct CGRect)arg1 andIAVPosition:(struct CGRect)arg2;

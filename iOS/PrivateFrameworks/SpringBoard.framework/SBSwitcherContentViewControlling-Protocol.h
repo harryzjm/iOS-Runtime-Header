@@ -8,17 +8,21 @@
 #import <SpringBoard/SBLayoutStateTransitionObserver-Protocol.h>
 #import <SpringBoard/SBSwitcherAnimatedTransitioning-Protocol.h>
 
-@class NSArray, NSString, SBAppLayout, SBApplicationSceneHandle, SBBestAppSuggestion, SBFluidSwitcherAnimationController, SBFluidSwitcherGesture, SBIcon, SBMainWorkspaceTransitionRequest, SBTransientOverlayViewController, SBWorkspaceApplicationSceneTransitionContext;
+@class NSArray, NSString, SBAppLayout, SBApplicationSceneHandle, SBBestAppSuggestion, SBFluidSwitcherAnimationController, SBFluidSwitcherGesture, SBHomeGrabberView, SBIcon, SBMainWorkspaceTransitionRequest, SBTransientOverlayViewController, SBWorkspaceApplicationSceneTransitionContext, UIStatusBarStyleRequest;
 @protocol SBSwitcherContentViewControllerDataSource, SBSwitcherContentViewControllerDelegate;
 
 @protocol SBSwitcherContentViewControlling <SBButtonEventsHandler, SBLayoutStateTransitionObserver, SBSwitcherAnimatedTransitioning>
-@property(nonatomic, getter=isLiveContentRasterizationDisabled) _Bool liveContentRasterizationDisabled;
+@property(nonatomic, getter=isAsyncRenderingDisabled) _Bool asyncRenderingDisabled;
 @property(nonatomic) long long contentOrientation;
 @property(nonatomic, getter=isShowingModifierTimeline) _Bool showModifierTimeline;
 @property(retain, nonatomic) SBBestAppSuggestion *bestAppSuggestion;
 @property(nonatomic) __weak id <SBSwitcherContentViewControllerDataSource> dataSource;
 @property(nonatomic) __weak id <SBSwitcherContentViewControllerDelegate> delegate;
+- (void)tapReceivedForGrabberTongueAtEdge:(unsigned long long)arg1;
+- (void)clickReceivedForHomeGrabberView:(SBHomeGrabberView *)arg1;
 - (SBIcon *)iconForAppLayout:(SBAppLayout *)arg1;
+- (void)performKeyboardShortcutAction:(long long)arg1;
+- (_Bool)canPerformKeyboardShortcutAction:(long long)arg1 forBundleIdentifier:(NSString *)arg2;
 - (void)noteKeyboardFocusDidChangeToSceneID:(NSString *)arg1;
 - (SBFluidSwitcherAnimationController *)animationControllerForTransitionRequest:(SBMainWorkspaceTransitionRequest *)arg1;
 - (void)relinquishTransientOverlayViewController:(SBTransientOverlayViewController *)arg1;
@@ -27,14 +31,16 @@
 - (void)handleGestureDidEnd:(SBFluidSwitcherGesture *)arg1;
 - (void)handleGestureDidUpdate:(SBFluidSwitcherGesture *)arg1;
 - (void)handleGestureDidBegin:(SBFluidSwitcherGesture *)arg1;
-- (void)performAnimatedRemovalOfAppLayout:(SBAppLayout *)arg1 forReason:(long long)arg2 completion:(void (^)(_Bool, _Bool))arg3;
-- (void)noteModelDidMutateForRemovalOfAppLayout:(SBAppLayout *)arg1 forReason:(long long)arg2 animated:(_Bool)arg3;
-- (void)prepareAnimatedRemovalOfAppLayout:(SBAppLayout *)arg1 forReason:(long long)arg2;
-- (_Bool)shouldAnimateRemovalOfAppLayout:(SBAppLayout *)arg1 forReason:(long long)arg2;
+- (void)removeLayoutRole:(long long)arg1 inSpace:(SBAppLayout *)arg2 mutationBlock:(void (^)(void))arg3 reason:(long long)arg4;
 - (void)performAnimatedInsertionOfAppLayouts:(NSArray *)arg1 atIndexes:(NSArray *)arg2 completion:(void (^)(_Bool, _Bool))arg3;
 - (void)noteModelDidMutateForInsertionOfAppLayouts:(NSArray *)arg1 atIndexes:(NSArray *)arg2 willAnimate:(_Bool)arg3;
 - (void)prepareAnimatedInsertionOfAppLayouts:(NSArray *)arg1 atIndexes:(NSArray *)arg2;
 - (_Bool)shouldAnimateInsertionOfAppLayouts:(NSArray *)arg1 atIndexes:(NSArray *)arg2;
+- (long long)switcherPreferredInterfaceOrientation;
+- (unsigned long long)_debugSwitcherPostModernRotationSupportedSupportedInterfaceOrientations;
+- (unsigned long long)switcherSupportedInterfaceOrientations;
+- (UIStatusBarStyleRequest *)trailingStatusBarStyleRequest;
+- (UIStatusBarStyleRequest *)leadingStatusBarStyleRequest;
 - (_Bool)isStatusBarHiddenForAppLayout:(SBAppLayout *)arg1;
 - (void)respondToInAppStatusBarRequestedHiddenUpdateAnimated:(_Bool)arg1;
 - (_Bool)shouldRubberbandFullScreenHomeGrabberView;
@@ -43,6 +49,7 @@
 - (_Bool)isWindowVisible;
 - (_Bool)shouldAddAppLayoutToFront:(SBAppLayout *)arg1 forTransitionWithContext:(SBWorkspaceApplicationSceneTransitionContext *)arg2 transitionCompleted:(_Bool)arg3;
 - (double)minimumHomeScreenScale;
+- (struct CGRect)applicationSceneSettingsFrameForInterfaceOrientation:(long long)arg1 centerConfiguration:(long long)arg2;
 - (double)snapshotScaleForSceneHandle:(SBApplicationSceneHandle *)arg1;
 @end
 

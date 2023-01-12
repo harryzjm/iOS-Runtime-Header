@@ -14,7 +14,7 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) long long position;
+@property(nonatomic) long long cellPosition;
 @property(nonatomic) _Bool padBottom;
 - (void)configureWithMessage:(id)arg1 incident:(id)arg2 referenceDate:(id)arg3 shouldShowImage:(_Bool)arg4 inSiri:(_Bool)arg5;
 - (void)configureWithIncidentMessage:(id)arg1 referenceDate:(id)arg2 shouldShowImage:(_Bool)arg3 inSiri:(_Bool)arg4;

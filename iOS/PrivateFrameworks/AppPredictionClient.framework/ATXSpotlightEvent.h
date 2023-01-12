@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AppPredictionClient/ATXProtoBufWrapper-Protocol.h>
-#import <AppPredictionClient/NSSecureCoding-Protocol.h>
+#import <AppPredictionClient/ATXProactiveSuggestionUIInteractionProtocol-Protocol.h>
 
 @class ATXSpotlightEventMetadata, NSArray, NSDate, NSString;
 
-@interface ATXSpotlightEvent : NSObject <NSSecureCoding, ATXProtoBufWrapper>
+@interface ATXSpotlightEvent : NSObject <ATXProactiveSuggestionUIInteractionProtocol>
 {
     double _absoluteDate;
     int _eventType;
@@ -25,14 +24,15 @@
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)searchResultTappedWithEngagedBundleId:(id)arg1 searchedActionType:(unsigned long long)arg2;
-+ (id)actionSuggestionDismissedEventWithSuggestionId:(id)arg1 actionBlendingCacheId:(id)arg2;
-+ (id)actionSuggestionContextMenuDismissOnceEventWithSuggestionId:(id)arg1 actionBlendingCacheId:(id)arg2;
-+ (id)actionSuggestionTappedEventWithSuggestionId:(id)arg1 actionBlendingCacheId:(id)arg2 currentQuery:(id)arg3;
-+ (id)appSuggestionTappedEventWithSuggestionId:(id)arg1 appBlendingCacheId:(id)arg2 currentQuery:(id)arg3;
-+ (id)suggestionsAppearedEventWithAppSuggestionIds:(id)arg1 actionSuggestionIds:(id)arg2 appBlendingCacheId:(id)arg3 actionBlendingCacheId:(id)arg4;
-+ (id)viewDisappearedEventWithDidSearch:(_Bool)arg1;
-+ (id)viewAppearedEventWithSFFeedback:(id)arg1;
++ (id)eventWithData:(id)arg1 dataVersion:(unsigned int)arg2;
++ (id)searchResultTappedWithEngagedBundleId:(id)arg1 searchedActionType:(unsigned long long)arg2 date:(id)arg3;
++ (id)actionSuggestionDismissedEventWithSuggestionId:(id)arg1 actionBlendingCacheId:(id)arg2 date:(id)arg3;
++ (id)actionSuggestionContextMenuDismissOnceEventWithSuggestionId:(id)arg1 actionBlendingCacheId:(id)arg2 date:(id)arg3;
++ (id)actionSuggestionTappedEventWithSuggestion:(id)arg1 actionBlendingCacheId:(id)arg2 currentQuery:(id)arg3 date:(id)arg4;
++ (id)appSuggestionTappedEventWithSuggestion:(id)arg1 appBlendingCacheId:(id)arg2 currentQuery:(id)arg3 date:(id)arg4;
++ (id)suggestionsAppearedEventWithAppSuggestionIds:(id)arg1 actionSuggestionIds:(id)arg2 appBlendingCacheId:(id)arg3 actionBlendingCacheId:(id)arg4 date:(id)arg5;
++ (id)viewDisappearedEventWithDidSearch:(_Bool)arg1 date:(id)arg2;
++ (id)viewAppearedEventWithSFFeedback:(id)arg1 date:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) ATXSpotlightEventMetadata *metadata; // @synthesize metadata=_metadata;
 @property(retain, nonatomic) NSArray *actionSuggestionIds; // @synthesize actionSuggestionIds=_actionSuggestionIds;
@@ -42,7 +42,8 @@
 @property(retain, nonatomic) NSString *actionConsumerSubType; // @synthesize actionConsumerSubType=_actionConsumerSubType;
 @property(retain, nonatomic) NSString *appConsumerSubType; // @synthesize appConsumerSubType=_appConsumerSubType;
 @property(nonatomic) int eventType; // @synthesize eventType=_eventType;
-- (unsigned long long)hash;
+- (id)_stringArrayToUUIDArray:(id)arg1;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqualToATXSpotlightEvent:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)encodeAsProto;
@@ -54,9 +55,24 @@
 - (_Bool)checkAndReportDecodingFailureIfNeededFordouble:(double)arg1 key:(id)arg2 coder:(id)arg3 errorDomain:(id)arg4 errorCode:(long long)arg5;
 - (_Bool)checkAndReportDecodingFailureIfNeededForint32_t:(int)arg1 key:(id)arg2 coder:(id)arg3 errorDomain:(id)arg4 errorCode:(long long)arg5;
 - (_Bool)checkAndReportDecodingFailureIfNeededForid:(id)arg1 key:(id)arg2 coder:(id)arg3 errorDomain:(id)arg4 errorCode:(long long)arg5;
+- (id)json;
+- (id)jsonDict;
+- (id)serialize;
+@property(readonly, nonatomic) unsigned int dataVersion;
+- (void)_updateActionUIFeedbackSession:(id)arg1;
+- (void)_updateAppUIFeedbackSession:(id)arg1;
+- (void)updateUIFeedbackSession:(id)arg1 uiCacheConsumerSubType:(unsigned char)arg2;
+- (id)blendingUICacheUpdateUUIDForUICacheConsumerSubType:(unsigned char)arg1;
+- (id)sessionIdentifierForSessionType:(long long)arg1 uiCacheConsumerSubType:(unsigned char)arg2;
+- (id)sessionProcessingOptionsForSessionType:(long long)arg1;
 @property(retain, nonatomic) NSDate *date;
 - (id)initWithAbsoluteDate:(double)arg1 eventType:(int)arg2 appConsumerSubType:(id)arg3 actionConsumerSubType:(id)arg4 appBlendingCacheId:(id)arg5 actionBlendingCacheId:(id)arg6 appSuggestionIds:(id)arg7 actionSuggestionIds:(id)arg8 metadata:(id)arg9;
 - (id)initWithDate:(id)arg1 eventType:(int)arg2 appConsumerSubType:(id)arg3 actionConsumerSubType:(id)arg4 appBlendingCacheId:(id)arg5 actionBlendingCacheId:(id)arg6 appSuggestionIds:(id)arg7 actionSuggestionIds:(id)arg8 metadata:(id)arg9;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) Class superclass;
 
 @end
 

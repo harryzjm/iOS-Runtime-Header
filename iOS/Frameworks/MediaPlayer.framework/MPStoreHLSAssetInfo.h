@@ -14,6 +14,8 @@
 }
 
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSURL *enhancedAudioKeyServerURL;
+@property(readonly, copy, nonatomic) NSURL *enhancedAudioKeyCertificateURL;
 @property(readonly, nonatomic, getter=isiTunesStoreStream) _Bool iTunesStoreStream;
 @property(readonly, copy, nonatomic) NSURL *alternateKeyServerURL;
 @property(readonly, copy, nonatomic) NSURL *alternateKeyCertificateURL;

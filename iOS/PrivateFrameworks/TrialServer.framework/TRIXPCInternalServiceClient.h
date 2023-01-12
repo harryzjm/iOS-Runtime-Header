@@ -16,15 +16,21 @@
 }
 
 - (void).cxx_destruct;
+- (_Bool)immediatelySchedulePostUpgradeActivityWithError:(id *)arg1;
+- (_Bool)setSubscription:(id)arg1 namespaceName:(id)arg2 error:(id *)arg3;
+- (id)subscriptionForNamespaceName:(id)arg1 error:(id *)arg2;
 - (id)dynamicNamespaceRecordsWithError:(id *)arg1;
 - (_Bool)startNamespaceDownloadWithName:(id)arg1 withTeamId:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (_Bool)deregisterNamespaceWithNamespaceName:(id)arg1 withTeamId:(id)arg2 error:(id *)arg3;
 - (_Bool)registerNamespaceWithNamespaceName:(id)arg1 compatibilityVersion:(unsigned int)arg2 defaultsFileURL:(id)arg3 withTeamId:(id)arg4 appContainerId:(id)arg5 appContainerType:(long long)arg6 cloudKitContainerId:(int)arg7 error:(id *)arg8;
+- (_Bool)resumeSQLiteCKDatabaseQueueWithError:(id *)arg1;
+- (_Bool)suspendSQLiteCKDatabaseQueueWithError:(id *)arg1;
+- (_Bool)setFailureInjectionDelegate:(id)arg1 error:(id *)arg2;
 - (_Bool)setLastFetchDate:(id)arg1 forContainer:(int)arg2 teamId:(id)arg3 error:(id *)arg4;
 - (id)lastFetchDateForContainer:(int)arg1 teamId:(id)arg2 error:(id *)arg3;
 - (_Bool)submitTask:(id)arg1 options:(id)arg2 error:(id *)arg3;
+- (id)rolloutNotificationWithLatestDeploymentForRolloutId:(id)arg1 cloudKitContainer:(int)arg2 teamId:(id)arg3 error:(id *)arg4;
 - (id)experimentNotificationsWithExperimentId:(id)arg1 cloudKitContainer:(int)arg2 teamId:(id)arg3 error:(id *)arg4;
-- (id)experimentRecordsWithError:(id *)arg1;
 - (id)taskRecordsWithError:(id *)arg1;
 - (_Bool)_performSyncXpcWithError:(id *)arg1 block:(CDUnknownBlockType)arg2;
 - (id)init;

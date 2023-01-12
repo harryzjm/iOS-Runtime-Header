@@ -9,6 +9,8 @@
 @class NSArray, NSString, NSURL, SFSafariViewControllerConfiguration, UIColor;
 
 @protocol SFServiceViewControllerProtocol <NSObject>
+- (void)invalidatePrewarmingTokenWithID:(unsigned long long)arg1;
+- (void)requestPrewarmingWithTokens:(NSArray *)arg1;
 - (void)stopDigitalHealthTracking;
 - (void)beginDigitalHealthTracking;
 - (void)prepareForDisplayWithCompletionHandler:(void (^)(void))arg1;

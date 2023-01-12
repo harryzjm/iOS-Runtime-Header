@@ -6,9 +6,11 @@
 
 #import <UIKit/UICollectionViewController.h>
 
+#import <GameCenterUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
+
 @class MISSING_TYPE, UICollectionView;
 
-@interface _TtC12GameCenterUI28BaseCollectionViewController : UICollectionViewController
+@interface _TtC12GameCenterUI28BaseCollectionViewController : UICollectionViewController <UIAdaptivePresentationControllerDelegate>
 {
     MISSING_TYPE *overlayView;
     MISSING_TYPE *wantsHiddenNavigationBar;
@@ -24,6 +26,7 @@
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewDidLayoutSubviews;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
 - (void)viewDidLoad;

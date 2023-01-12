@@ -7,16 +7,19 @@
 #import <PassKitUI/PKPaymentServiceDelegate-Protocol.h>
 #import <PassKitUI/UITextViewDelegate-Protocol.h>
 
-@class NSString, PKAccount, PKBusinessChatController, PKPaymentService, PKPaymentTransaction, PKPaymentTransactionCellController, PKPaymentWebService, PKTransactionSource, UIActivityIndicatorView, UIBarButtonItem, UIImageView, UITableViewHeaderFooterView;
+@class NSString, PKAccount, PKAccountUserCollection, PKBusinessChatController, PKFamilyMemberCollection, PKPaymentPass, PKPaymentService, PKPaymentTransaction, PKPaymentTransactionCellController, PKPaymentWebService, PKTransactionSourceCollection, UIActivityIndicatorView, UIBarButtonItem, UIImageView, UITableViewHeaderFooterView;
 
 @interface PKReportIssueViewController <PKPaymentServiceDelegate, UITextViewDelegate>
 {
     PKPaymentTransaction *_transaction;
-    PKTransactionSource *_transactionSource;
+    PKTransactionSourceCollection *_transactionSourceCollection;
+    PKPaymentPass *_paymentPass;
     PKAccount *_account;
+    PKAccountUserCollection *_accountUserCollection;
     PKPaymentService *_paymentService;
     PKPaymentTransactionCellController *_transactionCellController;
     PKBusinessChatController *_businessChatController;
+    PKFamilyMemberCollection *_familyCollection;
     UIBarButtonItem *_cancelButton;
     UIBarButtonItem *_submitButton;
     UIActivityIndicatorView *_activityIndicator;
@@ -39,10 +42,11 @@
     PKPaymentWebService *_paymentWebService;
 }
 
-+ (_Bool)canReportIssueForTransaction:(id)arg1 transactionSource:(id)arg2;
++ (_Bool)canReportIssueForTransaction:(id)arg1 paymentPass:(id)arg2;
 - (void).cxx_destruct;
 - (void)_presentAlertWithTitle:(id)arg1 message:(id)arg2 dismissAfter:(_Bool)arg3;
 - (void)_reportIssueToMaps;
+- (void)_reprocessTransactionMerchantWithIssueReportIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_resetMapsMerchantAndBrandWithIssueReportIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_reportIssueInBusinessChat;
 - (void)_cancelPayment;
@@ -63,6 +67,7 @@
 - (void)_handleMapsIssueTypeSelectedInTableView:(id)arg1 atIndexPath:(id)arg2;
 - (void)_handleDisputeTypeSelectedInTableView:(id)arg1 atIndexPath:(id)arg2;
 - (void)_handleIssueTypeSelectedInTableView:(id)arg1 atIndexPath:(id)arg2;
+- (void)didUpdateFamilyMembers:(id)arg1;
 - (void)textViewDidChange:(id)arg1;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (_Bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
@@ -76,7 +81,7 @@
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;
-- (id)initWithTransaction:(id)arg1 transactionSource:(id)arg2 account:(id)arg3 detailViewStyle:(long long)arg4;
+- (id)initWithTransaction:(id)arg1 transactionSourceCollection:(id)arg2 paymentPass:(id)arg3 familyCollection:(id)arg4 account:(id)arg5 accountUserCollection:(id)arg6 detailViewStyle:(long long)arg7;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

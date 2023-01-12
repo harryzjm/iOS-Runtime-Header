@@ -22,6 +22,8 @@
 - (void)connection:(IDSConnection *)arg1 isActiveChanged:(_Bool)arg2;
 - (void)connection:(IDSConnection *)arg1 incomingProtobuf:(IDSProtobuf *)arg2 fromID:(NSString *)arg3 context:(IDSMessageContext *)arg4;
 - (void)connection:(IDSConnection *)arg1 incomingPendingMessageFromID:(NSString *)arg2 context:(IDSMessageContext *)arg3;
+- (void)connection:(IDSConnection *)arg1 incomingInvitationUpdate:(NSDictionary *)arg2 fromID:(NSString *)arg3 context:(IDSMessageContext *)arg4;
+- (void)connection:(IDSConnection *)arg1 incomingInvitation:(NSDictionary *)arg2 fromID:(NSString *)arg3 context:(IDSMessageContext *)arg4;
 - (void)connection:(IDSConnection *)arg1 incomingAccessoryReportMessage:(NSString *)arg2 accessoryID:(NSString *)arg3 controllerID:(NSString *)arg4 context:(IDSMessageContext *)arg5;
 - (void)connection:(IDSConnection *)arg1 incomingAccessoryData:(NSData *)arg2 fromID:(NSString *)arg3 context:(IDSMessageContext *)arg4;
 - (void)connection:(IDSConnection *)arg1 didUpdateDeviceIdentity:(IDSDeviceIdentity *)arg2 error:(NSError *)arg3 context:(IDSMessageContext *)arg4;

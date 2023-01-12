@@ -23,6 +23,7 @@
 - (id)processViewRenderWithPredicate:(id)arg1;
 - (id)processViewMetrics:(id)arg1 atInvocationPoint:(id)arg2 withActivity:(id)arg3;
 - (id)processMetricsData:(id)arg1 withActivity:(id)arg2;
+- (id)recordQToken:(id)arg1 campaignToken:(id)arg2 advertisementID:(id)arg3 withLockup:(id)arg4;
 - (id)recordCampaignToken:(id)arg1 providerToken:(id)arg2 withLockup:(id)arg3;
 - (id)processMetricsData:(id)arg1 pageFields:(id)arg2 activity:(id)arg3;
 - (void)daemonConnectionWasLost:(id)arg1;

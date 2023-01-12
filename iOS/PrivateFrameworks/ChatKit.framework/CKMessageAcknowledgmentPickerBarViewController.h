@@ -13,13 +13,20 @@
 
 @interface CKMessageAcknowledgmentPickerBarViewController : UIViewController <CKMessageAcknowledgmentPickerBarItemViewDelegate>
 {
+    BOOL _forcedOrientation;
+    _Bool _useForcedOrientation;
+    BOOL _balloonAnchorVerticalOrientation;
     id <CKMessageAcknowledgmentPickerBarDelegate> _delegate;
     CKMessagePartChatItem *_chatItem;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) BOOL balloonAnchorVerticalOrientation; // @synthesize balloonAnchorVerticalOrientation=_balloonAnchorVerticalOrientation;
+@property(nonatomic) _Bool useForcedOrientation; // @synthesize useForcedOrientation=_useForcedOrientation;
+@property(nonatomic) BOOL forcedOrientation; // @synthesize forcedOrientation=_forcedOrientation;
 @property(retain, nonatomic) CKMessagePartChatItem *chatItem; // @synthesize chatItem=_chatItem;
 @property(nonatomic) __weak id <CKMessageAcknowledgmentPickerBarDelegate> delegate; // @synthesize delegate=_delegate;
+- (_Bool)isAnchoredToTop;
 - (void)performCancelAnimation:(CDUnknownBlockType)arg1;
 - (void)performSendAnimation:(CDUnknownBlockType)arg1;
 - (void)performShowAnimation:(CDUnknownBlockType)arg1;

@@ -23,8 +23,6 @@ __attribute__((visibility("hidden")))
 + (id)manager;
 - (void).cxx_destruct;
 - (id)sharedCIContextWithOptions:(id)arg1;
-- (void)removeBuffer:(id)arg1;
-- (void)addImageBuffer:(id)arg1;
 - (void)purgeAllCaches;
 - (void)dealloc;
 - (id)init;

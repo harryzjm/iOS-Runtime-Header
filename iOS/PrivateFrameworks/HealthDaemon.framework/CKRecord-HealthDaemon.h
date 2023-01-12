@@ -7,6 +7,8 @@
 #import <CloudKit/CKRecord.h>
 
 @interface CKRecord (HealthDaemon)
++ (id)hd_recordWithSystemData:(id)arg1 error:(id *)arg2;
+- (id)hd_systemData;
 - (id)hd_optionalEncryptedValueForKey:(id)arg1 type:(Class)arg2 error:(id *)arg3;
 - (id)hd_optionalValueForKey:(id)arg1 type:(Class)arg2 error:(id *)arg3;
 - (id)hd_requiredEncryptedValueForKey:(id)arg1 type:(Class)arg2 error:(id *)arg3;

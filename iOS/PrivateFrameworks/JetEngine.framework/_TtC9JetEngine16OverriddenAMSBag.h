@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (id)initWithData:(id)arg1;
 - (id)init;
 - (void)createSnapshotWithCompletion:(CDUnknownBlockType)arg1;
 - (id)dictionaryForKey:(id)arg1;

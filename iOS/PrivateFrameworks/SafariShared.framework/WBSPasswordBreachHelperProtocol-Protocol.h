@@ -8,6 +8,7 @@
 
 @protocol WBSPasswordBreachHelperProtocol
 - (void)addResultRecordDictionaries:(NSArray *)arg1 completionHandler:(void (^)(_Bool))arg2;
+- (void)clearAllRecordsWithCompletionHandler:(void (^)(_Bool))arg1;
 - (void)clearRecentlyBreachedResultRecordsWithCompletionHandler:(void (^)(_Bool))arg1;
 - (void)recentlyBreachedResultRecordDictionariesWithCompletionHandler:(void (^)(NSArray *))arg1;
 - (void)getResultRecordDictionariesForResultQueryDictionaries:(NSArray *)arg1 withCompletionHandler:(void (^)(NSArray *))arg2;

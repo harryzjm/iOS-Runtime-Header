@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 
 - (_Bool)canBePerformedByOpeningURL;
 - (void)performFromView:(id)arg1;
-- (id)icon;
+- (id)iconName;
 - (id)localizedName;
 
 @end

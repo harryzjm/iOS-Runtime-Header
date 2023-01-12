@@ -12,12 +12,13 @@
 
 @class HKDisplayType, HKHealthStore, HKSampleListDataProviderFilter, HKSortedSampleArray, NSDictionary, NSPredicate, NSString, WDProfile;
 
-__attribute__((visibility("hidden")))
 @interface WDSampleListDataProvider : NSObject <HKSampleTypeUpdateControllerObserver, WDDataListViewControllerDataProvider, HKDataMetadataViewControllerDelegate>
 {
     NSDictionary *_pagingContexts;
     HKSampleListDataProviderFilter *_defaultQueryPredicateFilter;
     CDUnknownBlockType _updateCallback;
+    _Bool _didFetchInitialData;
+    _Bool _hasDetailViewController;
     NSPredicate *_defaultQueryPredicate;
     NSString *_profileName;
     HKDisplayType *_displayType;
@@ -30,16 +31,18 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) __weak WDProfile *profile; // @synthesize profile=_profile;
 @property(readonly, nonatomic) HKDisplayType *displayType; // @synthesize displayType=_displayType;
 @property(copy, nonatomic) NSString *profileName; // @synthesize profileName=_profileName;
+@property(nonatomic) _Bool hasDetailViewController; // @synthesize hasDetailViewController=_hasDetailViewController;
 @property(retain, nonatomic) NSPredicate *defaultQueryPredicate; // @synthesize defaultQueryPredicate=_defaultQueryPredicate;
 - (_Bool)_handleObjectsRemoved:(id)arg1;
 - (void)updateController:(id)arg1 didReceiveHighFrequencyUpdateForType:(id)arg2;
-- (void)updateController:(id)arg1 didReceiveUpdateForType:(id)arg2 samplesAdded:(id)arg3 objectsRemoved:(id)arg4;
+- (void)updateController:(id)arg1 didReceiveUpdateForType:(id)arg2 samplesAdded:(id)arg3 objectsRemoved:(id)arg4 recoveringFromError:(_Bool)arg5;
 - (void)refineSamplesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_callUpdateHandler;
 - (id)_UUIDsForSamplesWithEndDate:(id)arg1;
 - (void)_handleQueryResultsForSampleType:(id)arg1 results:(id)arg2;
 - (void)_requestNextPageOfDataForSampleType:(id)arg1;
 - (id)createQueryForSampleType:(id)arg1 predicate:(id)arg2 limit:(long long)arg3 sortDescriptors:(id)arg4 resultsHandler:(CDUnknownBlockType)arg5;
+- (id)createDataFetcherForSampleType:(id)arg1 predicate:(id)arg2 limit:(long long)arg3 sortDescriptors:(id)arg4 resultsHandler:(CDUnknownBlockType)arg5;
 - (id)_pagingContextForSampleType:(id)arg1;
 - (void)_requestNextPageOfData;
 - (id)queryDateForSelectedDate:(id)arg1;

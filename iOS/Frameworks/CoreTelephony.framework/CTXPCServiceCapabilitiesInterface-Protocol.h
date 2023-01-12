@@ -15,6 +15,7 @@
 - (void)getPhoneServicesDeviceInfo:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)getPhoneServicesDeviceList:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)context:(CTXPCServiceSubscriptionContext *)arg1 recheckPhoneServicesAccountStatus:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)getSupports5G:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
 - (void)context:(CTXPCServiceSubscriptionContext *)arg1 getSystemCapabilities:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)context:(CTXPCServiceSubscriptionContext *)arg1 setCapability:(NSString *)arg2 enabled:(_Bool)arg3 info:(NSDictionary *)arg4 completion:(void (^)(NSError *))arg5;
 - (void)context:(CTXPCServiceSubscriptionContext *)arg1 getCapability:(NSString *)arg2 completion:(void (^)(_Bool, NSDictionary *, NSError *))arg3;

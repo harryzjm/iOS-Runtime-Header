@@ -12,11 +12,11 @@
 __attribute__((visibility("hidden")))
 @interface CNiOSPersonFetchRequest : NSObject
 {
-    id <CNiOSContactPredicate> _predicate;
     _Bool _shouldSort;
-    unsigned int _sortOrder;
-    unsigned long long _options;
     _Bool _unifiedFetch;
+    unsigned int _sortOrder;
+    id <CNiOSContactPredicate> _predicate;
+    unsigned long long _options;
     NSArray *_keysToFetch;
     unsigned long long _batchSize;
     CNManagedConfiguration *_managedConfiguration;

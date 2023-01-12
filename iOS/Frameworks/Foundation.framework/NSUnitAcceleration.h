@@ -12,6 +12,7 @@
 
 + (id)metersPerSecondSquared;
 + (id)gravity;
++ (id)icuType;
 + (id)baseUnit;
 + (void)initialize;
 

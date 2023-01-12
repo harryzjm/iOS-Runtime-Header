@@ -7,24 +7,25 @@
 #import <UIKit/UIViewController.h>
 
 #import <VideosUI/UICollectionViewDelegate-Protocol.h>
-#import <VideosUI/VUICollectionViewDelegate-Protocol.h>
+#import <VideosUI/VUILegacyCollectionViewDelegate-Protocol.h>
 
-@class NSArray, NSString, UICollectionViewCell, UICollectionViewDiffableDataSource, VUICollectionConfiguration, VUICollectionView, VUIMenuDataSource, VUIMenuSectionHeaderCollectionViewCell, _UIDiffableDataSourceSectionController;
+@class NSArray, NSString, UICollectionViewCell, UICollectionViewDiffableDataSource, VUICollectionConfiguration, VUILegacyCollectionView, VUIMenuDataSource, VUIMenuSectionHeaderCollectionViewCell, _UIDiffableDataSourceSectionController;
 @protocol VUIMenuCollectionViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VUIMenuCollectionViewController : UIViewController <UICollectionViewDelegate, VUICollectionViewDelegate>
+@interface VUIMenuCollectionViewController : UIViewController <UICollectionViewDelegate, VUILegacyCollectionViewDelegate>
 {
     _Bool _shouldShowLeftBarButton;
     _Bool _shouldShowBackButton;
     _Bool _shouldDeselectOnViewAppear;
+    _Bool _isInPrimaryOnlyMode;
     _Bool _shouldMarkFirstCategorySelected;
     _Bool _genresOnlyMenu;
-    _Bool _isDesignedForIpadEnabled;
+    _Bool _isForLibrarySplitViewController;
     id <VUIMenuCollectionViewControllerDelegate> _delegate;
     VUIMenuDataSource *_categories;
     VUICollectionConfiguration *_collectionConfiguration;
-    VUICollectionView *_menuCollectionView;
+    VUILegacyCollectionView *_menuCollectionView;
     UICollectionViewCell *_sizingCell;
     VUIMenuSectionHeaderCollectionViewCell *_sectionHeaderSizingCell;
     UICollectionViewDiffableDataSource *_diffableDataSource;
@@ -34,22 +35,24 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool isDesignedForIpadEnabled; // @synthesize isDesignedForIpadEnabled=_isDesignedForIpadEnabled;
 @property(retain, nonatomic) _UIDiffableDataSourceSectionController *sectionController; // @synthesize sectionController=_sectionController;
 @property(retain, nonatomic) NSArray *genreMenuItems; // @synthesize genreMenuItems=_genreMenuItems;
 @property(retain, nonatomic) NSArray *mainMenuItems; // @synthesize mainMenuItems=_mainMenuItems;
 @property(retain, nonatomic) UICollectionViewDiffableDataSource *diffableDataSource; // @synthesize diffableDataSource=_diffableDataSource;
 @property(retain, nonatomic) VUIMenuSectionHeaderCollectionViewCell *sectionHeaderSizingCell; // @synthesize sectionHeaderSizingCell=_sectionHeaderSizingCell;
 @property(retain, nonatomic) UICollectionViewCell *sizingCell; // @synthesize sizingCell=_sizingCell;
-@property(retain, nonatomic) VUICollectionView *menuCollectionView; // @synthesize menuCollectionView=_menuCollectionView;
+@property(retain, nonatomic) VUILegacyCollectionView *menuCollectionView; // @synthesize menuCollectionView=_menuCollectionView;
+@property(nonatomic) _Bool isForLibrarySplitViewController; // @synthesize isForLibrarySplitViewController=_isForLibrarySplitViewController;
 @property(nonatomic) _Bool genresOnlyMenu; // @synthesize genresOnlyMenu=_genresOnlyMenu;
 @property(nonatomic) _Bool shouldMarkFirstCategorySelected; // @synthesize shouldMarkFirstCategorySelected=_shouldMarkFirstCategorySelected;
 @property(retain, nonatomic) VUICollectionConfiguration *collectionConfiguration; // @synthesize collectionConfiguration=_collectionConfiguration;
+@property(nonatomic) _Bool isInPrimaryOnlyMode; // @synthesize isInPrimaryOnlyMode=_isInPrimaryOnlyMode;
 @property(nonatomic) _Bool shouldDeselectOnViewAppear; // @synthesize shouldDeselectOnViewAppear=_shouldDeselectOnViewAppear;
 @property(nonatomic) _Bool shouldShowBackButton; // @synthesize shouldShowBackButton=_shouldShowBackButton;
 @property(nonatomic) _Bool shouldShowLeftBarButton; // @synthesize shouldShowLeftBarButton=_shouldShowLeftBarButton;
 @property(retain, nonatomic) VUIMenuDataSource *categories; // @synthesize categories=_categories;
 @property(nonatomic) __weak id <VUIMenuCollectionViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)_updateNavigationBarPadding;
 - (void)_selectFirstMenuItemIfNecessary;
 - (id)_leftBarButton;
 - (id)_backButton;
@@ -74,7 +77,7 @@ __attribute__((visibility("hidden")))
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)loadView;
-- (id)initWithCategories:(id)arg1 gridConfiguration:(id)arg2;
+- (id)initWithCategories:(id)arg1 gridConfiguration:(id)arg2 isForLibrarySplitViewController:(_Bool)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

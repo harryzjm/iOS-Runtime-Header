@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (id)cornerMaskEffectingEdges:(_Bool)arg1;
 - (id)cornerMaskAppliedToCorners:(unsigned long long)arg1;
 - (id)_clone;
+- (_Bool)cornersAreContinuous;
 - (id)init;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 

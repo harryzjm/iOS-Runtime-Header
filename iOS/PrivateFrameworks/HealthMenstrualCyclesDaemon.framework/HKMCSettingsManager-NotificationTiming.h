@@ -7,6 +7,8 @@
 #import <HealthMenstrualCycles/HKMCSettingsManager.h>
 
 @interface HKMCSettingsManager (NotificationTiming)
+- (id)_hdmc_analysisSchedulingWindowStartComponents;
+- (id)hdmc_nextAnalysisSchedulingWindowStartDateAfterDate:(id)arg1 calendar:(id)arg2;
 - (id)_hdmc_dateComponentsForNotificationOnDayIndex:(long long)arg1 timeOfDay:(id)arg2;
 - (id)hdmc_dateComponentsForFertileWindowNotificationOnDayIndex:(long long)arg1;
 - (id)hdmc_dateComponentsForMenstruationNotificationOnDayIndex:(long long)arg1;

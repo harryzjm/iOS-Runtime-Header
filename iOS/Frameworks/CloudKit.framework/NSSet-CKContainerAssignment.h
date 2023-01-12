@@ -8,5 +8,6 @@
 
 @interface NSSet (CKContainerAssignment)
 - (void)CKAssignToContainerWithID:(id)arg1;
+- (id)CKMap:(CDUnknownBlockType)arg1;
 @end
 

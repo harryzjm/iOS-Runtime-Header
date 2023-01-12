@@ -12,6 +12,7 @@
     NSDictionary *_route;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSDictionary *route; // @synthesize route=_route;
 @property(readonly, copy, nonatomic) NSString *avAudioRouteName; // @synthesize avAudioRouteName=_avAudioRouteName;
@@ -20,14 +21,18 @@
 @property(readonly, nonatomic, getter=isHeadphoneJackConnected) _Bool headphoneJackConnected;
 @property(readonly, copy, nonatomic) NSString *bluetoothProductIdentifier;
 - (long long)deviceType;
-- (_Bool)supportsPreferredAndActive;
+- (_Bool)supportsHighQualityVoiceWithMedia;
 - (_Bool)isPreferredAndActive;
 - (_Bool)isPreferred;
-- (long long)bluetoothEndpointType;
 - (_Bool)isDefaultRoute;
 - (_Bool)isWirelessHeadset;
 - (_Bool)isWiredHeadset;
 - (_Bool)isWiredHeadphones;
+- (_Bool)isInEarDetectionSupported;
+- (_Bool)isInEarDetectionEnabled;
+- (_Bool)isA2DPRoute;
+- (long long)bluetoothEndpointType;
+- (_Bool)isBluetoothManaged;
 - (_Bool)isBluetooth;
 - (_Bool)isBluetoothLE;
 - (_Bool)isCarAudio;
@@ -36,6 +41,9 @@
 - (_Bool)isReceiver;
 - (_Bool)isHandset;
 - (_Bool)isCurrentlyPicked;
+- (_Bool)isCarPlayConnected;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)customDescription;
 - (id)initWithDictionary:(id)arg1;
 

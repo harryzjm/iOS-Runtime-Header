@@ -6,17 +6,24 @@
 
 #import <IDSFoundation/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, NSString, NSUUID;
+@class NSData, NSDictionary, NSNumber, NSString, NSUUID;
 
 @protocol IDSLinkDelegate <NSObject>
-- (_Bool)link:(id)arg1 didReceivePacket:(CDStruct_12676517 *)arg2 fromDeviceUniqueID:(NSString *)arg3 cbuuid:(NSString *)arg4;
+- (_Bool)link:(id)arg1 didReceivePacket:(CDStruct_727fadec *)arg2 fromDeviceUniqueID:(NSString *)arg3 cbuuid:(NSString *)arg4;
 - (void)link:(id)arg1 didDisconnectForDeviceUniqueID:(NSString *)arg2 cbuuid:(NSString *)arg3;
 - (void)link:(id)arg1 didConnectForDeviceUniqueID:(NSString *)arg2 cbuuid:(NSString *)arg3;
 
 @optional
 - (void)link:(id)arg1 didAddQREvent:(NSDictionary *)arg2;
 - (void)link:(id)arg1 didReceiveReportEvent:(NSDictionary *)arg2;
-- (void)link:(id)arg1 didReceiveSessionInfo:(NSDictionary *)arg2 relayGroupID:(NSString *)arg3 relaySessionID:(NSString *)arg4 success:(_Bool)arg5;
+- (void)didReceiveBlockedIndicationForLink:(id)arg1 reason:(unsigned int)arg2;
+- (void)link:(id)arg1 didReceiveSessionStateCounter:(unsigned int)arg2;
+- (void)link:(id)arg1 didReceiveRequestToPurgeRegistration:(NSDictionary *)arg2;
+- (void)link:(id)arg1 didReceivePluginUnregistration:(unsigned long long)arg2 pluginName:(NSString *)arg3;
+- (void)link:(id)arg1 didReceivePluginRegistration:(unsigned long long)arg2 pluginName:(NSString *)arg3;
+- (void)link:(id)arg1 didReceiveParticipantUpdate:(NSDictionary *)arg2 status:(unsigned short)arg3;
+- (void)link:(id)arg1 didReceiveSessionInfo:(NSDictionary *)arg2 relayGroupID:(NSString *)arg3 relaySessionID:(NSString *)arg4 status:(unsigned int)arg5;
+- (void)terminateCallDueToIdleClientForLink:(id)arg1;
 - (void)link:(id)arg1 didSoMaskChange:(unsigned int)arg2;
 - (void)link:(id)arg1 didGetLinkProbingStatus:(NSDictionary *)arg2;
 - (void)link:(id)arg1 didCellularMTUChange:(unsigned short)arg2;
@@ -26,6 +33,7 @@
 - (void)link:(id)arg1 didDefaultUnderlyingLinkChangeSucceeded:(_Bool)arg2 currentDefaultLinkID:(BOOL)arg3;
 - (void)link:(id)arg1 didDisconnectUnderlyingLinkID:(BOOL)arg2 linkUUID:(NSUUID *)arg3 reason:(unsigned char)arg4;
 - (void)link:(id)arg1 didConnectUnderlyingLink:(BOOL)arg2 linkUUID:(NSUUID *)arg3 localAttributes:(NSDictionary *)arg4 remoteAttributes:(NSDictionary *)arg5;
+- (void)link:(id)arg1 didReceiveKeyMaterialMessageData:(NSData *)arg2 fromParticipantID:(NSNumber *)arg3 toParticipantID:(NSNumber *)arg4;
 - (void)link:(id)arg1 didReceiveSKEData:(NSData *)arg2;
 - (void)link:(id)arg1 didDisconnectOverCloud:(NSString *)arg2 cbuuid:(NSString *)arg3;
 - (void)link:(id)arg1 didFailToConnectOverCloud:(NSString *)arg2 cbuuid:(NSString *)arg3;

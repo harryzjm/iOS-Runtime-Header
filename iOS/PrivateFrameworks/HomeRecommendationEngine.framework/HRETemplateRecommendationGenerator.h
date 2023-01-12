@@ -11,6 +11,7 @@
     NSArray *_templates;
 }
 
++ (id)allAvailableTemplates;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *templates; // @synthesize templates=_templates;
 - (Class)generationProcessClass;

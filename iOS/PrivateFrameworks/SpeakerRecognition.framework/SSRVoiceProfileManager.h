@@ -6,23 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class CSVoiceIdXPCClient;
+@class NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface SSRVoiceProfileManager : NSObject
 {
     unsigned long long _currentDeviceCategory;
-    CSVoiceIdXPCClient *_xpcClient;
     NSObject<OS_dispatch_queue> *_queue;
+    NSUUID *_endpointUUID;
 }
 
++ (id)sharedInstanceWithEndpointId:(id)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSUUID *endpointUUID; // @synthesize endpointUUID=_endpointUUID;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property(retain, nonatomic) CSVoiceIdXPCClient *xpcClient; // @synthesize xpcClient=_xpcClient;
 @property(nonatomic) unsigned long long currentDeviceCategory; // @synthesize currentDeviceCategory=_currentDeviceCategory;
 - (_Bool)_isLegacyEnrollmentMarkedWith:(id)arg1 forLanguageCode:(id)arg2;
 - (id)_CSSATUploadPathForSiriProfileId:(id)arg1;
+- (id)_CSSATCachePathForAppDomain:(id)arg1;
 - (id)_CSSATDownloadPath;
 - (id)_CSSATCachePath;
 - (void)deleteAllVoiceProfilesForAppDomain:(id)arg1;
@@ -32,6 +34,7 @@
 - (_Bool)isSATEnrolledForSiriProfileId:(id)arg1 forLanguageCode:(id)arg2;
 - (id)markSATEnrollmentSuccessForVoiceProfile:(id)arg1;
 - (void)triggerRetrainingVoiceProfile:(id)arg1 withContext:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)triggerVoiceProfileDownload;
 - (void)pruneImplicitUtterancesOfProfile:(id)arg1 withAsset:(id)arg2;
 - (void)cleanupVoiceProfileModelFilesForLocale:(id)arg1;
 - (void)triggerVoiceProfileCleanupWithCompletion:(CDUnknownBlockType)arg1;
@@ -65,8 +68,10 @@
 - (id)_enrollVoiceProfileForSiriProfileId:(id)arg1 fromCacheDirectoryPath:(id)arg2 withCategoryType:(unsigned long long)arg3;
 - (void)_downloadVoiceProfileForProfileId:(id)arg1 forDeviceCategory:(unsigned long long)arg2 withDownloadTriggerBlock:(CDUnknownBlockType)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (id)_downloadAndEnrollVoiceProfileForProfileId:(id)arg1 withDownloadTriggerBlock:(CDUnknownBlockType)arg2;
+- (_Bool)_checkIfDownloadRequiredForProfileId:(id)arg1;
 - (void)notifyUserVoiceProfileUpdateReady;
 - (void)notifyUserVoiceProfileDownloadReadyForUser:(id)arg1 getData:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)getCacheDirectoryForAppDomain:(id)arg1;
 - (id)getUserVoiceProfileUpdateDirectory;
 - (void)notifyImplicitTrainingUtteranceAvailable:(id)arg1 forVoiceProfileId:(id)arg2 withRecordDeviceInfo:(id)arg3 withRecordCtxt:(id)arg4 withVoiceTriggerCtxt:(id)arg5 withOtherCtxt:(id)arg6 withCompletion:(CDUnknownBlockType)arg7;
 - (void)addUtterances:(id)arg1 toProfile:(id)arg2 withContext:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
@@ -81,6 +86,8 @@
 - (id)baseDir;
 - (_Bool)isSpeakerRecognitionAvailable;
 - (id)getSATEnrollmentPath;
+- (id)initWithEndpointId:(id)arg1;
+- (id)init;
 
 @end
 

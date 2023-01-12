@@ -15,6 +15,9 @@ __attribute__((visibility("hidden")))
 {
     _Bool _hasFlexibleContentSize;
     _Bool _prefersSecondaryMaterialOverlay;
+    _Bool _canOverflowToAuxiliaryMenu;
+    _Bool _canOnlyAppearInControlOverflowMenu;
+    _Bool _canSubstituteOtherAttributes;
     _Bool _collapsed;
     _Bool _included;
     unsigned long long _displayPriority;
@@ -36,6 +39,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isIncluded) _Bool included; // @synthesize included=_included;
 @property(nonatomic, getter=isCollapsed) _Bool collapsed; // @synthesize collapsed=_collapsed;
 @property(nonatomic) struct CGSize minimumSize; // @synthesize minimumSize=_minimumSize;
+@property(nonatomic) _Bool canSubstituteOtherAttributes; // @synthesize canSubstituteOtherAttributes=_canSubstituteOtherAttributes;
+@property(nonatomic) _Bool canOnlyAppearInControlOverflowMenu; // @synthesize canOnlyAppearInControlOverflowMenu=_canOnlyAppearInControlOverflowMenu;
+@property(nonatomic) _Bool canOverflowToAuxiliaryMenu; // @synthesize canOverflowToAuxiliaryMenu=_canOverflowToAuxiliaryMenu;
 @property(nonatomic) _Bool prefersSecondaryMaterialOverlay; // @synthesize prefersSecondaryMaterialOverlay=_prefersSecondaryMaterialOverlay;
 @property(nonatomic) _Bool hasFlexibleContentSize; // @synthesize hasFlexibleContentSize=_hasFlexibleContentSize;
 @property __weak AVLayoutItemAttributes *displayPartnerAttributes; // @synthesize displayPartnerAttributes=_displayPartnerAttributes;

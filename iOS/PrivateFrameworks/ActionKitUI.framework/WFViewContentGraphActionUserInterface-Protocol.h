@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ActionKitUI/WFRemoteUserInterface-Protocol.h>
+#import <ActionKitUI/WFActionRemoteUserInterface-Protocol.h>
 
 @class WFContentCollection;
 
-@protocol WFViewContentGraphActionUserInterface <WFRemoteUserInterface>
+@protocol WFViewContentGraphActionUserInterface <WFActionRemoteUserInterface>
 - (void)showWithContentItems:(WFContentCollection *)arg1 completionHandler:(void (^)(NSError *))arg2;
 @end
 

@@ -24,10 +24,9 @@
     _Bool _forFormulaPlainText;
     _Bool _usedSymbolicName;
     NSString *_contextSheetName;
-    UUIDData_5fbc143e _hostTableUID;
+    struct TSKUIDStruct _hostTableUID;
 }
 
-- (id).cxx_construct;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool usedSymbolicName; // @synthesize usedSymbolicName=_usedSymbolicName;
 @property(nonatomic) _Bool forFormulaPlainText; // @synthesize forFormulaPlainText=_forFormulaPlainText;
@@ -40,7 +39,7 @@
 @property(nonatomic) _Bool allowTableName; // @synthesize allowTableName=_allowTableName;
 @property(nonatomic) _Bool useSymbolicNames; // @synthesize useSymbolicNames=_useSymbolicNames;
 @property(nonatomic) _Bool suppressIdenticalEndReference; // @synthesize suppressIdenticalEndReference=_suppressIdenticalEndReference;
-@property(nonatomic) UUIDData_5fbc143e hostTableUID; // @synthesize hostTableUID=_hostTableUID;
+@property(nonatomic) struct TSKUIDStruct hostTableUID; // @synthesize hostTableUID=_hostTableUID;
 @property(retain, nonatomic) NSString *contextSheetName; // @synthesize contextSheetName=_contextSheetName;
 - (void)reset;
 - (id)copyWithZone:(struct _NSZone *)arg1;

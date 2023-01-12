@@ -4,18 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKDContainerInfo, NSString;
+@class CKDContainerServerInfo, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDContainerSpecificInfoURLRequest
 {
     _Bool _requireUserIDs;
     NSString *_containerIdentifier;
-    CKDContainerInfo *_containerInfo;
+    CKDContainerServerInfo *_containerServerInfo;
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) CKDContainerInfo *containerInfo; // @synthesize containerInfo=_containerInfo;
+@property(copy, nonatomic) CKDContainerServerInfo *containerServerInfo; // @synthesize containerServerInfo=_containerServerInfo;
 @property(copy, nonatomic) NSString *containerIdentifier; // @synthesize containerIdentifier=_containerIdentifier;
 @property(nonatomic) _Bool requireUserIDs; // @synthesize requireUserIDs=_requireUserIDs;
 - (void)requestDidParseJSONObject:(id)arg1;

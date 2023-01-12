@@ -18,11 +18,15 @@
     CDStruct_e83c9415 _timeRange;
 }
 
++ (id)cosineSimilarityBetweenOneOneFeaturePrint:(id)arg1 andAnotherFeaturePrint:(id)arg2 error:(id *)arg3;
++ (id)cosineSimilarityBetweenOneFeatureVector:(id)arg1 andAnotherFeatureVector:(id)arg2 error:(id *)arg3;
++ (id)cosineSimilarityBetweenOneFloat32Array:(float *)arg1 andAnotherFloat32Array:(float *)arg2 length:(unsigned long long)arg3 error:(id *)arg4;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) MLMultiArray *featureVector; // @synthesize featureVector=_featureVector;
 @property(readonly, nonatomic) long long featurePrintType; // @synthesize featurePrintType=_featurePrintType;
 @property(nonatomic) CDStruct_e83c9415 timeRange; // @synthesize timeRange=_timeRange;
+- (id)cosineSimilarityToFeaturePrint:(id)arg1 error:(id *)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(readonly) unsigned long long hash;

@@ -21,6 +21,7 @@
     IMDefaults *_imDefaults;
 }
 
++ (void)addConditionChecks:(unsigned long long)arg1 toCriteria:(id)arg2;
 + (void)calculateAndSaveAliasesToDefaults;
 + (id)calculateAliasesForDefaults;
 + (id)readAliasesFromDefaults;
@@ -49,9 +50,8 @@
 - (id)_primaryiCloudAccountAltDSID;
 - (id)_primaryiCloudAccount;
 - (id)_accountManager;
-- (void)submitPCSReportManateeStatuMetricWithPrefix:(id)arg1 andReason:(id)arg2;
-- (void)_metricForPCSReportManateeStatusWithReason:(id)arg1 linkedFunction:(CDUnknownFunctionPointerType)arg2 timeoutInSec:(double)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)metricForPCSReportManateeStatusWithReason:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)PCSReportManateeStatusAsync:(CDUnknownBlockType)arg1 timeout:(double)arg2;
+- (unsigned int)PCSReportManateeStatus;
 - (_Bool)logDumpIsNecessaryAfterSync;
 - (_Bool)logDumpIsExpected;
 - (_Bool)_isRunningInAutomation;
@@ -63,20 +63,17 @@
 - (void)logToPowerLogForLogDumpGUID:(id)arg1 logDumpCompleted:(_Bool)arg2 logDumpSucceeded:(_Bool)arg3 logDumpSendingCompleted:(_Bool)arg4 logDumpSendingSucceeded:(_Bool)arg5 reason:(id)arg6;
 - (void)logDumpAndSendMessageTo:(id)arg1 forHours:(int)arg2 reason:(id)arg3 requirePreviousPrompt:(_Bool)arg4 willSendBlock:(CDUnknownBlockType)arg5;
 - (void)logDumpAndSendMessageTo:(id)arg1 forHours:(int)arg2 reason:(id)arg3;
-- (id)findRootCause:(id)arg1;
+- (id)simplifiedError:(id)arg1;
+- (id)findRootCauses:(id)arg1;
 - (_Bool)isCKPartialError:(id)arg1;
-- (void)reportCompletionForSyncType:(long long)arg1 isCoreDuetSync:(_Bool)arg2 onAttempt:(unsigned long long)arg3 wasSuccessful:(_Bool)arg4;
-- (void)reportErrorForSyncType:(long long)arg1 syncStep:(id)arg2 isRecoverable:(_Bool)arg3 error:(id)arg4;
+- (void)reportCompletionForSyncType:(long long)arg1 isCoreDuetSync:(_Bool)arg2 onAttempt:(unsigned long long)arg3 wasSuccessful:(_Bool)arg4 duration:(double)arg5;
+- (id)finalSyncStateFor:(long long)arg1;
+- (void)reportErrorForSyncType:(long long)arg1 syncStep:(id)arg2 response:(long long)arg3 error:(id)arg4;
 - (void)reportZoneCreation:(id)arg1;
-- (void)postSyncStateToCloudKit:(id)arg1 useManatee:(_Bool)arg2 legacyOnly:(_Bool)arg3;
-- (void)postSyncStateToCloudKit:(id)arg1 legacyOnly:(_Bool)arg2;
-- (void)postSyncStateToCloudKit:(id)arg1 useManatee:(_Bool)arg2;
 - (void)postSyncStateToCloudKit:(id)arg1;
 - (_Bool)isLocalCachedSaltPresent;
 - (_Bool)shouldKickOffWriteForSyncType:(long long)arg1;
 - (void)_showCKLogNotificationWithCompletion:(CDUnknownBlockType)arg1;
-- (_Bool)errorIndicateDeviceDoesNotHaveKeysToSync:(id)arg1;
-- (_Bool)errorIndicatesIdentityWasLost:(id)arg1;
 - (_Bool)_deviceActive;
 - (id)deviceActiveString;
 - (id)lastDeviceBackUpDate;
@@ -97,21 +94,8 @@
 - (void)evalToggleiCloudSettingsSwitch;
 - (void)checkCloudkitEnabledStatusAndToggleiCloudSwitchIfNeeded;
 - (id)_accountStore;
-- (_Bool)errorIndicatesQuotaExceeded:(id)arg1;
-- (_Bool)errorIndicatesChatZoneCreationFailed:(id)arg1;
 - (void)resetLastSyncDate;
-- (_Bool)errorIndicatesUserDeletedZone:(id)arg1;
-- (_Bool)errorIndicatesZoneNotCreated:(id)arg1;
-- (id)extractRecordIDsDeletedFromCKPartialError:(id)arg1;
-- (_Bool)acceptableErrorCodeWhileDeleting:(id)arg1;
-- (_Bool)isRecoverableCloudKitError:(id)arg1 withRetryInterval:(id *)arg2;
-- (_Bool)errorIndicatesDeviceConditionsDontAllowSync:(id)arg1;
-- (_Bool)CKPartialError:(id)arg1 onlyHasErrorCodes:(id)arg2;
-- (_Bool)CKPartialErrorOnlyHasQuotaExceededError:(id)arg1;
-- (_Bool)CKPartialError:(id)arg1 hasErrorCode:(id)arg2;
 - (id)extractServerRecordFromCKServerErrorRecordChanged:(id)arg1;
-- (id)_errorsFromPartialError:(id)arg1;
-- (_Bool)_isCKErrorPartialFailure:(id)arg1;
 - (id)syncFailureMetricString:(id)arg1 isRecoverable:(_Bool)arg2 error:(id)arg3;
 - (id)recordNameForMessageWithGUID:(id)arg1 usingSalt:(id)arg2;
 - (void)_askToTapToRadarWithString:(id)arg1 internalOnly:(_Bool)arg2;
@@ -161,7 +145,6 @@
 - (void)isFirstSyncWithCompletion:(CDUnknownBlockType)arg1;
 - (long long)overrideNumberOfChatsToWrite;
 - (long long)overrideNumberOfChatsToFetch;
-- (_Bool)shouldSyncToSRContainer;
 - (_Bool)shouldForceArchivedMessagesSync;
 - (_Bool)shouldUseDevNickNameContainer;
 - (_Bool)shouldUseDevContainer;

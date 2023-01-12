@@ -6,28 +6,27 @@
 
 #import <HomeKitBackingStore/HMBModel.h>
 
-@class HMBModelCloudReference, NSData, NSDate;
+@class HMBModelCloudReference, NSData, NSDate, NSUUID;
 
 @interface HMDFaceCropModel : HMBModel
 {
 }
 
-+ (id)faceCropsForNoPersonQuery;
-+ (id)faceCropsForAnyPersonQuery;
++ (id)faceCropsWithUnassociatedFaceCropUUIDQuery;
 + (id)faceCropsForPersonQuery;
 + (id)sentinelParentUUID;
 + (id)hmbQueries;
 + (id)hmbProperties;
 @property struct CGRect faceBoundingBox;
 - (id)createPersonFaceCrop;
-- (id)createFaceCrop;
-- (id)initWithFaceCrop:(id)arg1;
+- (id)initWithPersonFaceCrop:(id)arg1;
 
 // Remaining properties
 @property(retain) NSData *dataRepresentation; // @dynamic dataRepresentation;
 @property(retain) NSDate *dateCreated; // @dynamic dateCreated;
 @property(retain) NSData *faceBoundingBoxData; // @dynamic faceBoundingBoxData;
 @property(retain) HMBModelCloudReference *person; // @dynamic person;
+@property(retain) NSUUID *unassociatedFaceCropUUID; // @dynamic unassociatedFaceCropUUID;
 
 @end
 

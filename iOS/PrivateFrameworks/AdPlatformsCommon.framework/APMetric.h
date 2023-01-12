@@ -58,7 +58,9 @@
 @property(readonly, nonatomic) NSDictionary *serverDictionaryRepresentation;
 - (id)_serverDictionaryRepresentation;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)addInternalPropertyValue:(id)arg1 forKey:(id)arg2;
 - (id)duplicateMetricReplacingIdentifier:(id)arg1;
+@property(readonly, nonatomic) NSString *bundleIdentifier;
 - (void)_replaceIdentifierWithIdentifier:(id)arg1;
 - (id)initWithRoute:(long long)arg1 metric:(long long)arg2 contentIdentifier:(id)arg3 contextIdentifier:(id)arg4 identifier:(id)arg5 properties:(id)arg6 internalProperties:(id)arg7 options:(long long)arg8;
 - (id)initWithCoder:(id)arg1;

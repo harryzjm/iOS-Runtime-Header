@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AMSPushConfiguration;
+@class AMSPushConfiguration, NSDictionary;
 @protocol AMSBagProtocol, AMSPushHandlerContract, AMSPushHandlerDelegate;
 
 @interface AMSPushHandler : NSObject
@@ -21,7 +21,7 @@
 @property(readonly, nonatomic) AMSPushConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(readonly, nonatomic) id <AMSBagProtocol> bag; // @synthesize bag=_bag;
 - (id)initWithConfiguration:(id)arg1 bagContract:(id)arg2;
-- (id)_enabledParsables;
+@property(readonly, nonatomic) NSDictionary *enabledParsables;
 - (_Bool)shouldHandleNotification:(id)arg1;
 - (void)handleNotification:(id)arg1;
 @property(nonatomic) __weak id <AMSPushHandlerDelegate> delegate;

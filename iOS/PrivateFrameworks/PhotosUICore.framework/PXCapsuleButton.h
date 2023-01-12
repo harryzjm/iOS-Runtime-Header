@@ -17,8 +17,15 @@
 
 - (void).cxx_destruct;
 @property(nonatomic) NSString *maxContentSizeCategory; // @synthesize maxContentSizeCategory=_maxContentSizeCategory;
-- (id)_backgroundImageWithColor:(id)arg1;
+- (void)_updateCornerRadius;
+- (void)_invalidateCornerRadius;
+- (void)_updateBackgroundColor;
+- (void)_invalidateBackgroundColor;
 - (id)_titleFont;
+- (void)_stateDidChange;
+- (void)setEnabled:(_Bool)arg1;
+- (void)setSelected:(_Bool)arg1;
+- (void)setHighlighted:(_Bool)arg1;
 - (void)stopLoadingAnimation;
 - (void)startLoadingAnimation;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

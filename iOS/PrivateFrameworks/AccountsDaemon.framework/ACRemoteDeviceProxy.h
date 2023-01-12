@@ -30,7 +30,7 @@
 - (void)_enqueueCompletionHandler:(CDUnknownBlockType)arg1 forMessageWithInternalID:(id)arg2 transportID:(id)arg3;
 - (void)service:(id)arg1 account:(id)arg2 incomingData:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)service:(id)arg1 account:(id)arg2 identifier:(id)arg3 didSendWithSuccess:(_Bool)arg4 error:(id)arg5;
-- (void)_sendReplyForMessage:(id)arg1 withSuccess:(_Bool)arg2 result:(id)arg3 error:(id)arg4;
+- (void)_sendReplyForMessage:(id)arg1 toDestination:(id)arg2 withSuccess:(_Bool)arg3 result:(id)arg4 error:(id)arg5;
 - (_Bool)_sendMessageData:(id)arg1 toDestination:(id)arg2 withPriority:(long long)arg3 bypassDuet:(_Bool)arg4 transportID:(id *)arg5 error:(id *)arg6;
 - (void)sendCommand:(id)arg1 withAccount:(id)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)sendCommand:(id)arg1 withAccount:(id)arg2 completion:(CDUnknownBlockType)arg3;

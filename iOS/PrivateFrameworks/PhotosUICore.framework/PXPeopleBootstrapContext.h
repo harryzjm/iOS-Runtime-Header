@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, PXPeopleNameSelection, PXPeopleSuggestionManager;
-@protocol PXCMMPersonSuggestion, PXPeopleSuggestionManagerDataSource, PXPerson;
+@class NSString, PHFace, PXPeopleNameSelection, PXPeopleSuggestionManager;
+@protocol PXPeopleSuggestionManagerDataSource, PXPerson, PXPersonSuggestion;
 
 @interface PXPeopleBootstrapContext : NSObject
 {
@@ -15,27 +15,34 @@
     _Bool _wantsNaming;
     _Bool _wantsMergeCandidateSuggestions;
     _Bool _wantsPostNaming;
+    _Bool _wantsToBeAddedToPeopleAlbum;
     id <PXPerson> _sourcePerson;
     id <PXPerson> _targetPerson;
     unsigned long long _bootstrapType;
     PXPeopleNameSelection *_nameSelection;
     PXPeopleSuggestionManager *_suggestionManager;
-    CDUnknownBlockType _preCommitBlock;
+    CDUnknownBlockType _onInitBlock;
     CDUnknownBlockType _cancelBlock;
     id <PXPeopleSuggestionManagerDataSource> _prefetchedDataSource;
-    id <PXCMMPersonSuggestion> _personSuggestion;
+    id <PXPersonSuggestion> _personSuggestion;
+    PHFace *_face;
+    CDUnknownBlockType _delayedPersonBlock;
 }
 
 + (id)contextWithPersonSuggestion:(id)arg1;
++ (id)contextWithFace:(id)arg1 type:(unsigned long long)arg2 delayedPersonBlock:(CDUnknownBlockType)arg3;
 + (id)contextWithPerson:(id)arg1 type:(unsigned long long)arg2;
 - (void).cxx_destruct;
-@property(retain, nonatomic) id <PXCMMPersonSuggestion> personSuggestion; // @synthesize personSuggestion=_personSuggestion;
+@property(copy, nonatomic) CDUnknownBlockType delayedPersonBlock; // @synthesize delayedPersonBlock=_delayedPersonBlock;
+@property(retain, nonatomic) PHFace *face; // @synthesize face=_face;
+@property(retain, nonatomic) id <PXPersonSuggestion> personSuggestion; // @synthesize personSuggestion=_personSuggestion;
 @property(retain, nonatomic) id <PXPeopleSuggestionManagerDataSource> prefetchedDataSource; // @synthesize prefetchedDataSource=_prefetchedDataSource;
+@property(nonatomic) _Bool wantsToBeAddedToPeopleAlbum; // @synthesize wantsToBeAddedToPeopleAlbum=_wantsToBeAddedToPeopleAlbum;
 @property(nonatomic) _Bool wantsPostNaming; // @synthesize wantsPostNaming=_wantsPostNaming;
 @property(nonatomic) _Bool wantsMergeCandidateSuggestions; // @synthesize wantsMergeCandidateSuggestions=_wantsMergeCandidateSuggestions;
 @property(nonatomic) _Bool wantsNaming; // @synthesize wantsNaming=_wantsNaming;
 @property(copy, nonatomic) CDUnknownBlockType cancelBlock; // @synthesize cancelBlock=_cancelBlock;
-@property(copy, nonatomic) CDUnknownBlockType preCommitBlock; // @synthesize preCommitBlock=_preCommitBlock;
+@property(copy, nonatomic) CDUnknownBlockType onInitBlock; // @synthesize onInitBlock=_onInitBlock;
 @property(nonatomic) _Bool skipInitialAction; // @synthesize skipInitialAction=_skipInitialAction;
 @property(retain) PXPeopleSuggestionManager *suggestionManager; // @synthesize suggestionManager=_suggestionManager;
 @property(retain) PXPeopleNameSelection *nameSelection; // @synthesize nameSelection=_nameSelection;

@@ -6,21 +6,28 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/NSCopying-Protocol.h>
+
 @class NSUUID;
 
-@interface HMDWatchSync : HMFObject
+@interface HMDWatchSync : HMFObject <NSCopying>
 {
     _Bool _inProgress;
     unsigned long long _syncOption;
-    NSUUID *_syncIdentifier;
+    NSUUID *_identifier;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool inProgress; // @synthesize inProgress=_inProgress;
-@property(readonly, copy, nonatomic) NSUUID *syncIdentifier; // @synthesize syncIdentifier=_syncIdentifier;
-@property(nonatomic) unsigned long long syncOption; // @synthesize syncOption=_syncOption;
-- (id)description;
+@property _Bool inProgress; // @synthesize inProgress=_inProgress;
+@property(readonly, copy) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property unsigned long long syncOption; // @synthesize syncOption=_syncOption;
+- (id)attributeDescriptions;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 syncOption:(unsigned long long)arg2;
 - (id)initWithSyncOption:(unsigned long long)arg1;
+- (id)initWithIdentifier:(id)arg1 syncOption:(unsigned long long)arg2 inProgress:(_Bool)arg3;
 
 @end
 

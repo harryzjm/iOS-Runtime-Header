@@ -13,6 +13,7 @@
 }
 
 + (long long)objectIdentifierForPackageIdentifier:(unsigned char)arg1;
++ (_Bool)tsp_isInternalObjectContainerClass;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *childObjects; // @synthesize childObjects=_childObjects;
 - (void)saveToArchiver:(id)arg1;

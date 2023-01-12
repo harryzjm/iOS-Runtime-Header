@@ -8,8 +8,8 @@
 
 @interface FCAsyncBlockOperation : NSOperation
 {
-    _Bool _executing;
-    _Bool _finished;
+    _Atomic _Bool _executing;
+    _Atomic _Bool _finished;
     CDUnknownBlockType _block;
 }
 

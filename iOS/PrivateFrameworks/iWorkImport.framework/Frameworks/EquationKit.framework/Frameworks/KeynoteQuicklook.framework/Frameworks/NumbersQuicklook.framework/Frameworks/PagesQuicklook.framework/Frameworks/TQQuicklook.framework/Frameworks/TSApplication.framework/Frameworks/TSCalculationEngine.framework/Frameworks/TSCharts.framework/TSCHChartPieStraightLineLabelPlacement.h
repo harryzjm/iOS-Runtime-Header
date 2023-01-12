@@ -8,11 +8,11 @@
 
 @interface TSCHChartPieStraightLineLabelPlacement
 {
-    NSDictionary *mSeriesIndexToWedgeLayoutInfo;
-    NSDictionary *mSeriesIndexToAllWedgeLayoutInfosToTheLeft;
-    unsigned long long mCGPointCellSize;
-    NSMutableDictionary *mSpatialMap;
-    NSMutableDictionary *mSeriesIndexToConflictingWedgeLayoutInfos;
+    NSDictionary *_seriesIndexToWedgeLayoutInfo;
+    NSDictionary *_seriesIndexToAllWedgeLayoutInfosToTheLeft;
+    unsigned long long _CGPointCellSize;
+    NSMutableDictionary *_spatialMap;
+    NSMutableDictionary *_seriesIndexToConflictingWedgeLayoutInfos;
 }
 
 - (void).cxx_destruct;

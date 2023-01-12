@@ -6,13 +6,14 @@
 
 #import <CameraUI/NSObject-Protocol.h>
 
-@class PUOneUpPresentationHelper, PUOneUpViewController, UIScrollView, UIView, UIViewController;
+@class NSArray, PUOneUpPresentationHelper, PUOneUpViewController, UIScrollView, UIView, UIViewController;
 
 @protocol PUOneUpPresentationHelperDelegate <NSObject>
 - (long long)oneUpPresentationOrigin:(PUOneUpPresentationHelper *)arg1;
 - (UIViewController *)oneUpPresentationHelperViewController:(PUOneUpPresentationHelper *)arg1;
 
 @optional
+- (NSArray *)oneUpPresentationHelperSpotlightTextsToHighlight:(PUOneUpPresentationHelper *)arg1;
 - (unsigned long long)oneUpPresentationHelperAdditionalOptions:(PUOneUpPresentationHelper *)arg1;
 - (long long)oneUpPresentationHelperPreferredPresentationOrientation:(PUOneUpPresentationHelper *)arg1;
 - (_Bool)oneUpPresentationHelperWantsShowInLibraryButton:(PUOneUpPresentationHelper *)arg1;

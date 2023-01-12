@@ -38,7 +38,6 @@
 - (void).cxx_destruct;
 @property(nonatomic) long long loopOption; // @synthesize loopOption=mLoopOption;
 @property(nonatomic, getter=isStreaming) _Bool streaming; // @synthesize streaming=mStreaming;
-@property(retain, nonatomic) TSPData *posterImageData; // @synthesize posterImageData=mPosterImageData;
 - (id)style;
 - (_Bool)shouldShowInPrint;
 - (_Bool)willRenderContentViaImager;
@@ -70,6 +69,7 @@
 @property(readonly, nonatomic) _Bool supportsLoopingBackAndForth;
 @property(readonly, nonatomic) _Bool supportsLooping;
 @property(readonly, nonatomic) _Bool supportsStartTimeAndEndTime;
+- (id)typeName;
 - (_Bool)allowsTitle;
 - (_Bool)allowsCaption;
 - (_Bool)isAllowedInGroups;
@@ -82,6 +82,7 @@
 - (_Bool)canBeMediaPlaceholder;
 - (_Bool)canResetMediaSize;
 - (struct CGSize)rawDataSize;
+@property(retain, nonatomic) TSPData *posterImageData;
 - (id)styleIdentifierTemplateForNewPreset;
 - (id)presetKind;
 - (_Bool)supportsStyleInspecting;
@@ -99,6 +100,7 @@
 @property(nonatomic) double posterTime;
 @property(nonatomic) double endTime;
 @property(nonatomic) double startTime;
+- (void)i_setPosterImageData:(id)arg1;
 @property(retain, nonatomic) TSPData *audioOnlyImageData;
 @property(copy, nonatomic) TSDMovieFingerprint *fingerprint;
 @property(copy, nonatomic) NSString *importedAuxiliaryMovieDataOriginalFilename;
@@ -106,9 +108,9 @@
 @property(retain, nonatomic) NSURL *movieRemoteURL;
 @property(retain, nonatomic) TSPData *movieData;
 - (void)saveToArchiver:(id)arg1;
-- (void)saveToArchive:(struct MovieArchive *)arg1 archiver:(id)arg2;
-- (void)loadFromUnarchiver:(id)arg1;
-- (void)loadFromArchive:(const struct MovieArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (_Bool)validatedLoadFromUnarchiver:(id)arg1;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

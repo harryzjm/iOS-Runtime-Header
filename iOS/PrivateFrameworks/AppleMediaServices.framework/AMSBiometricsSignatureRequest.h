@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <AppleMediaServices/NSSecureCoding-Protocol.h>
+
 @class ACAccount, AMSKeychainOptions, AMSProcessInfo, LAContext, NSDictionary, NSString;
 @protocol AMSBagProtocol;
 
-__attribute__((visibility("hidden")))
-@interface AMSBiometricsSignatureRequest : NSObject
+@interface AMSBiometricsSignatureRequest : NSObject <NSSecureCoding>
 {
     _Bool _dualAction;
     struct __SecAccessControl *_localAuthAccessControlRef;
@@ -23,6 +24,8 @@ __attribute__((visibility("hidden")))
     NSDictionary *_localAuthOptions;
 }
 
++ (_Bool)supportsSecureCoding;
++ (id)biometricsSignatureRequestForURLResponse:(id)arg1 account:(id)arg2 session:(id)arg3 task:(id)arg4 clientInfo:(id)arg5 options:(id)arg6 error:(id *)arg7;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSDictionary *localAuthOptions; // @synthesize localAuthOptions=_localAuthOptions;
 @property(readonly, nonatomic) LAContext *localAuthContext; // @synthesize localAuthContext=_localAuthContext;
@@ -36,6 +39,8 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)setLocalAuthAccessControlRef:(struct __SecAccessControl *)arg1;
 @property(readonly, nonatomic) struct __SecAccessControl *localAuthAccessControlRef; // @synthesize localAuthAccessControlRef=_localAuthAccessControlRef;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithAccount:(id)arg1 clientInfo:(id)arg2 challenge:(id)arg3 options:(id)arg4 error:(id *)arg5;
 
 @end

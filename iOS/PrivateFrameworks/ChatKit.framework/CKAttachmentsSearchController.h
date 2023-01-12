@@ -18,10 +18,10 @@
 + (id)reuseIdentifier;
 + (id)sectionIdentifier;
 + (id)sectionTitle;
++ (_Bool)supportsMacSelection;
 + (_Bool)supportsQuicklookForResult:(id)arg1;
 - (_Bool)handleSelectionForResult:(id)arg1;
 - (id)_activityItemProviderForResult:(id)arg1;
-- (id)_pasteboardItemsForResult:(id)arg1;
 - (id)previewViewControllerForResult:(id)arg1;
 - (id)cellForSupplementryItemInCollectionView:(id)arg1 atIndexPath:(id)arg2 supplementryViewKind:(id)arg3;
 - (id)cellForItemInCollectionView:(id)arg1 atIndex:(long long)arg2 withIdentifier:(id)arg3;

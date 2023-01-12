@@ -16,6 +16,7 @@
 - (void)fetchStorePromotionOrderWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)updateStorePromotionVisibility:(long long)arg1 forProduct:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)fetchStorePromotionVisibilityForProduct:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_clearPromotionInfo;
 
 @end
 

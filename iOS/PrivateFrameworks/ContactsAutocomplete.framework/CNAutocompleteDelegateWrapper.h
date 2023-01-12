@@ -32,7 +32,7 @@
 @property(readonly, nonatomic) CNAutocompleteQueryResponsePreparer *responsePreparer; // @synthesize responsePreparer=_responsePreparer;
 @property(readonly, nonatomic) id <CNScheduler> scheduler; // @synthesize scheduler=_scheduler;
 @property(readonly, nonatomic) id <CNAutocompleteFetchDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)setDuetResultsFuture:(id)arg1;
+- (void)setPredictionResultsFuture:(id)arg1;
 - (void)cancel;
 - (void)queueUncancelableMessageToDelegate:(CDUnknownBlockType)arg1;
 - (void)queueMessageToDelegate:(CDUnknownBlockType)arg1;

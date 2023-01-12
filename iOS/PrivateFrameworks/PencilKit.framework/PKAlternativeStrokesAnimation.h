@@ -21,19 +21,6 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool forceDone; // @synthesize forceDone=_forceDone;
-@property(readonly, nonatomic) _Bool accepted; // @synthesize accepted=_accepted;
-@property(readonly, nonatomic) double originalStrokeDimmingFactor; // @synthesize originalStrokeDimmingFactor=_originalStrokeDimmingFactor;
-@property(readonly, nonatomic) double fadeDuration; // @synthesize fadeDuration=_fadeDuration;
-@property(readonly, nonatomic) double crossFadeStartTime; // @synthesize crossFadeStartTime=_crossFadeStartTime;
-@property(readonly, nonatomic) double startTime; // @synthesize startTime=_startTime;
-@property(readonly, nonatomic) NSArray *strokes; // @synthesize strokes=_strokes;
-@property(readonly, nonatomic) PKShape *shape; // @synthesize shape=_shape;
-- (void)startCrossFade:(double)arg1 accepted:(_Bool)arg2;
-- (double)originalStrokeAlphaAtTime:(double)arg1;
-- (double)alphaAtTime:(double)arg1;
-- (_Bool)isDoneAtTime:(double)arg1;
-- (id)initWithStrokes:(id)arg1 shape:(id)arg2 startTime:(double)arg3 fadeDuration:(double)arg4;
 
 @end
 

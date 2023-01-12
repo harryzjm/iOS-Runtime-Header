@@ -19,6 +19,7 @@
 - (void)playerViewController:(AVPlayerViewController *)arg1 failedToStartPictureInPictureWithError:(NSError *)arg2;
 - (void)playerViewControllerDidStartPictureInPicture:(AVPlayerViewController *)arg1;
 - (void)playerViewControllerWillStartPictureInPicture:(AVPlayerViewController *)arg1;
+- (void)playerViewController:(AVPlayerViewController *)arg1 restoreUserInterfaceForFullScreenExitWithCompletionHandler:(void (^)(_Bool))arg2;
 - (void)playerViewController:(AVPlayerViewController *)arg1 willEndFullScreenPresentationWithAnimationCoordinator:(id <UIViewControllerTransitionCoordinator>)arg2;
 - (void)playerViewController:(AVPlayerViewController *)arg1 willBeginFullScreenPresentationWithAnimationCoordinator:(id <UIViewControllerTransitionCoordinator>)arg2;
 @end

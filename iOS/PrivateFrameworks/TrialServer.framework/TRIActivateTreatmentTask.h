@@ -12,14 +12,16 @@
 @interface TRIActivateTreatmentTask <TRIRetryableTask>
 {
     TRIMetric *_treatmentMetric;
+    _Bool wasDeferred;
     int retryCount;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)parseFromData:(id)arg1;
-+ (id)taskWithExperiment:(id)arg1 treatmentId:(id)arg2 taskAttributing:(id)arg3 startTime:(id)arg4;
-+ (id)taskWithExperiment:(id)arg1 treatmentId:(id)arg2 taskAttributing:(id)arg3;
++ (id)taskWithExperiment:(id)arg1 treatmentId:(id)arg2 taskAttributing:(id)arg3 requiresTreatmentInstallation:(_Bool)arg4 startTime:(id)arg5;
++ (id)taskWithExperiment:(id)arg1 treatmentId:(id)arg2 taskAttributing:(id)arg3 requiresTreatmentInstallation:(_Bool)arg4;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool wasDeferred; // @synthesize wasDeferred;
 @property(nonatomic) int retryCount; // @synthesize retryCount;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -29,6 +31,7 @@
 - (id)_asPersistedTask;
 - (id)metrics;
 - (id)runTaskUsingContext:(id)arg1 experiment:(id)arg2;
+- (_Bool)_notifyUpdatedShadowEvaluationWithExperimentRecord:(id)arg1 context:(id)arg2;
 - (id)_nextTasksForRunStatus:(int)arg1;
 @property(readonly, nonatomic) int taskType;
 

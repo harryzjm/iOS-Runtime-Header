@@ -4,16 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <CloudDocsDaemon/BRShareOperationProtocol-Protocol.h>
 #import <CloudDocsDaemon/CKXPCShareDaemon-Protocol.h>
 
-@class BRFileObjectID, CKRecordID, CKShare, CKShareMetadata, NSArray, NSData, NSDictionary, NSFileHandle, NSObject, NSSet, NSString, NSURL;
+@class BRFileObjectID, BRGetPausedFileListUpdater, CKShareMetadata, NSArray, NSData, NSDictionary, NSFileHandle, NSObject, NSSet, NSString, NSURL;
 @protocol BRItemNotificationReceiving, BRNonLocalVersionReceiving, BROperationClient;
 
-@protocol BRProtocol <CKXPCShareDaemon>
+@protocol BRProtocol <CKXPCShareDaemon, BRShareOperationProtocol>
 - (void)scheduleDeepScanForContainer:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)_t_extractMetadataForAllContainersWithReply:(void (^)(NSError *))arg1;
 - (void)_t_getEntitledContainerIDsForBundleID:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)_t_getEntitlementsForBundleID:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)getPausedFilesList:(BRGetPausedFileListUpdater *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)fetchLatestVersionForFileAtURL:(NSURL *)arg1 reply:(void (^)(NSFileVersion *, NSError *))arg2;
+- (void)resumeSyncForFileAtURL:(NSURL *)arg1 dropLocalChanges:(_Bool)arg2 reply:(void (^)(_Bool, NSError *))arg3;
+- (void)pauseSyncForFileAtURL:(NSURL *)arg1 timeout:(double)arg2 options:(long long)arg3 appBundle:(NSString *)arg4 reply:(void (^)(_Bool, NSError *))arg5;
 - (void)lookupMinFileSizeForThumbnailTransferWithReply:(void (^)(NSNumber *, NSError *))arg1;
 - (void)lookupExcludedExtensionsForLogoutWithReply:(void (^)(NSSet *, NSError *))arg1;
 - (void)lookupExcludedFilenamesForLogoutWithReply:(void (^)(NSSet *, NSError *))arg1;
@@ -24,33 +29,22 @@
 - (void)moveBRSecurityBookmarkAtURL:(NSURL *)arg1 toURL:(NSURL *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)refreshSharingStateForItemIdentifier:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
 - (oneway void)updatePrivilegesDescriptor;
-- (void)currentSyncedRootURLsWithReply:(void (^)(NSArray *, NSError *))arg1;
 - (void)overwriteAccessTimeForItemAtURL:(NSURL *)arg1 atime:(unsigned long long)arg2 reply:(void (^)(NSError *))arg3;
 - (void)boostFilePresenterAtURL:(NSURL *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)trashItemAtURL:(NSURL *)arg1 reply:(void (^)(NSURL *, NSError *))arg2;
 - (void)removeItemFromDisk:(NSURL *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)presentAcceptDialogsForShareMetadata:(CKShareMetadata *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)getCreatorNameComponentsForURL:(NSURL *)arg1 reply:(void (^)(NSPersonNameComponents *, NSError *))arg2;
-- (void)startOperation:(NSObject<BROperationClient> *)arg1 toCopyShareURLForShare:(CKShare *)arg2 appName:(NSString *)arg3 reply:(void (^)(CKShare *, NSURL *, NSError *))arg4;
 - (void)copyBulkShareIDsAtURLs:(NSArray *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toCopyShareInfoAtURL:(NSURL *)arg2 reply:(void (^)(NSString *, NSString *, NSError *))arg3;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toCopyEtagAtURL:(NSURL *)arg2 reply:(void (^)(NSString *, NSError *))arg3;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toCopyShortTokenAtURL:(NSURL *)arg2 reply:(void (^)(NSString *, NSError *))arg3;
-- (void)startOperation:(NSObject<BROperationClient> *)arg1 toCopyParticipantTokenAtURL:(NSURL *)arg2 reply:(void (^)(NSString *, NSString *, NSError *))arg3;
-- (void)startOperation:(NSObject<BROperationClient> *)arg1 toModifyRecordAccessAtURL:(NSURL *)arg2 allowAccess:(_Bool)arg3 reply:(void (^)(NSData *, NSString *, NSError *))arg4;
-- (void)startOperation:(NSObject<BROperationClient> *)arg1 toLookupShareParticipants:(NSArray *)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
-- (void)startOperation:(NSObject<BROperationClient> *)arg1 toUnshareShare:(CKShare *)arg2 forceDelete:(_Bool)arg3 reply:(void (^)(NSError *))arg4;
-- (void)startOperation:(NSObject<BROperationClient> *)arg1 toSaveSharingInfo:(CKShare *)arg2 reply:(void (^)(CKShare *, NSError *))arg3;
-- (void)createSharingInfoForURL:(NSURL *)arg1 reply:(void (^)(CKShare *, NSError *))arg2;
-- (void)copyCurrentUserNameAndDisplayHandleWithReply:(void (^)(NSPersonNameComponents *, NSString *, NSError *))arg1;
 - (void)copyCurrentUserNameAndEmailWithReply:(void (^)(NSPersonNameComponents *, NSString *, NSError *))arg1;
 - (void)copyCurrentUserIdentifierWithReply:(void (^)(NSString *, NSError *))arg1;
+- (void)startOperation:(NSObject<BROperationClient> *)arg1 toAcceptShareLink:(NSURL *)arg2 skipAcceptDialogs:(_Bool)arg3 reply:(void (^)(FPSandboxingURLWrapper *, NSError *))arg4;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toEvictItemAtURL:(NSURL *)arg2 reply:(void (^)(NSError *))arg3;
-- (void)startOperation:(NSObject<BROperationClient> *)arg1 toProcessSubitemsAtURL:(NSURL *)arg2 maxSubsharesFailures:(unsigned long long)arg3 processType:(unsigned long long)arg4 reply:(void (^)(NSError *))arg5;
-- (void)startOperation:(NSObject<BROperationClient> *)arg1 toPrepFolderForSharingAt:(NSURL *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toUploadAllFilesInContainer:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toCopyAvailableQuotaWithReply:(void (^)(NSNumber *, NSError *))arg2;
-- (void)startOperation:(NSObject<BROperationClient> *)arg1 toCopyDocumentURLForRecordID:(CKRecordID *)arg2 syncIfNeeded:(_Bool)arg3 reply:(void (^)(FPSandboxingURLWrapper *, NSError *))arg4;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toCopySharingAccessToken:(NSURL *)arg2 reply:(void (^)(NSData *, NSString *, NSError *))arg3;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toCopySharingWebAuthTokenForContainerID:(NSString *)arg2 reply:(void (^)(NSString *, NSError *))arg3;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toCopySharingInfoAtURL:(NSURL *)arg2 reply:(void (^)(CKShare *, NSURL *, NSError *))arg3;
@@ -80,8 +74,10 @@
 - (void)getMigrationStatusForPrimaryiCloudAccount:(void (^)(BOOL, NSError *))arg1;
 - (void)setMigrationStatus:(BOOL)arg1 forDSID:(NSString *)arg2 shouldUpdateAccount:(_Bool)arg3 reply:(void (^)(NSError *))arg4;
 - (void)getContainersNeedingUpload:(void (^)(NSSet *, NSError *))arg1;
-- (void)currentAccountLogoutWithReply:(void (^)(_Bool, NSError *))arg1;
-- (void)currentAccountCreateWithID:(NSString *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
+- (void)invalidateAccountCacheWithReply:(void (^)(NSError *))arg1;
+- (void)updateAccountDisplayName:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)logoutAccountWithACAccountID:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)createAccountWithACAccountID:(NSString *)arg1 dsid:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)resolveConflictWithName:(NSString *)arg1 atURL:(NSURL *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)addExternalDocumentReferenceTo:(NSURL *)arg1 inContainer:(NSString *)arg2 underParent:(NSURL *)arg3 reply:(void (^)(NSURL *, NSURL *, NSData *, NSURL *, NSData *, NSError *))arg4;
 - (void)getLoggedInUserPropertyValuesForKeys:(NSArray *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
@@ -93,8 +89,11 @@
 - (void)hasOptimizeStorageWithReply:(void (^)(_Bool, NSError *))arg1;
 - (void)getApplicationDocumentUsageInfoForBundleID:(NSString *)arg1 withReply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)getTotalApplicationDocumentUsageWithReply:(void (^)(NSDictionary *, NSError *))arg1;
+- (void)queryLoggedInAccountDescriptorsWithReply:(void (^)(NSArray *, NSError *))arg1;
+- (void)querySyncedRootURLsForPersona:(NSString *)arg1 reply:(void (^)(NSArray *, NSError *))arg2;
+- (void)queryPathsForPersona:(NSString *)arg1 reply:(void (^)(NSString *, NSString *, NSError *))arg2;
 - (void)getNonLocalVersionSenderWithReceiver:(id <BRNonLocalVersionReceiving>)arg1 documentURL:(NSURL *)arg2 includeCachedVersions:(_Bool)arg3 reply:(void (^)(id <BRNonLocalVersionSending>, NSURL *, NSError *))arg4;
-- (void)getItemUpdateSenderWithReceiver:(id <BRItemNotificationReceiving>)arg1 reply:(void (^)(id <BRItemNotificationSending>, NSDictionary *, NSError *))arg2;
+- (void)getItemUpdateSenderWithReceiver:(id <BRItemNotificationReceiving>)arg1 reply:(void (^)(id <BRItemNotificationSending><NSXPCProxyCreating>, NSDictionary *, NSError *))arg2;
 - (void)getAttributeValues:(NSArray *)arg1 forItemAtURL:(NSURL *)arg2 reply:(void (^)(NSMutableDictionary *, NSError *))arg3;
 - (void)updateItemFromURL:(NSURL *)arg1 reply:(void (^)(BRQueryItem *, NSError *))arg2;
 - (void)getQueryItemForURL:(NSURL *)arg1 reply:(void (^)(BRQueryItem *, NSError *))arg2;
@@ -113,7 +112,11 @@
 - (void)getContainerForURL:(NSURL *)arg1 reply:(void (^)(BRContainer *, NSError *))arg2;
 - (void)getContainersByID:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)createContainerWithID:(NSString *)arg1 ownerName:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
-- (void)launchTelemetryConsistencyChecksAtURL:(NSURL *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
+- (void)cancelTreeConsistencyCheckWithReply:(void (^)(NSError *))arg1;
+- (void)resumeSyncConsistencyWithReply:(void (^)(NSError *))arg1;
+- (void)pauseSyncConsistencyWithReply:(void (^)(NSError *))arg1;
+- (void)launchSyncConsistencyChecksWithReply:(void (^)(NSArray *, NSArray *, NSError *))arg1;
+- (void)launchItemCountMismatchChecksAtURL:(NSURL *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
 - (void)waitForFileSystemChangeProcessingWithReply:(void (^)(void))arg1;
 - (void)readerThrottleBackoffForDocumentAtPath:(NSString *)arg1 containerID:(NSString *)arg2 reply:(void (^)(double, NSError *))arg3;
 - (void)dropSpotlightIndexWithReply:(void (^)(NSError *))arg1;

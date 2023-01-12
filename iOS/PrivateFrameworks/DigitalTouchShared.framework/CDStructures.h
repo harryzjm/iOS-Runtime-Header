@@ -25,53 +25,57 @@ struct CGSize {
     double height;
 };
 
-struct __compressed_pair<float * __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>> {
+struct __compressed_pair<float * __attribute__((ext_vector_type(2))), std::allocator<float __attribute__((ext_vector_type(2)))>> {
     void *__value_;
 };
 
-struct vector<CGPoint, std::__1::allocator<CGPoint>> {
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
+};
+
+struct vector<CGPoint, std::allocator<CGPoint>> {
     struct CGPoint *__begin_;
     struct CGPoint *__end_;
-    struct __compressed_pair<CGPoint *, std::__1::allocator<CGPoint>> {
+    struct __compressed_pair<CGPoint *, std::allocator<CGPoint>> {
         struct CGPoint *__value_;
     } __end_cap_;
 };
 
-struct vector<double, std::__1::allocator<double>> {
+struct vector<double, std::allocator<double>> {
     double *__begin_;
     double *__end_;
-    struct __compressed_pair<double *, std::__1::allocator<double>> {
+    struct __compressed_pair<double *, std::allocator<double>> {
         double *__value_;
     } __end_cap_;
 };
 
-struct vector<std::__1::vector<float __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>>, std::__1::allocator<std::__1::vector<float __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>>>> {
-    struct vector<float __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>> *__begin_;
-    struct vector<float __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>> *__end_;
-    struct __compressed_pair<std::__1::vector<float __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>>*, std::__1::allocator<std::__1::vector<float __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>>>> {
-        struct vector<float __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>> *__value_;
+struct vector<std::vector<float __attribute__((ext_vector_type(2)))>, std::allocator<std::vector<float __attribute__((ext_vector_type(2)))>>> {
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<std::vector<float __attribute__((ext_vector_type(2)))>*, std::allocator<std::vector<float __attribute__((ext_vector_type(2)))>>> {
+        void *__value_;
     } __end_cap_;
 };
 
-struct vector<unsigned long, std::__1::allocator<unsigned long>> {
+struct vector<unsigned long, std::allocator<unsigned long>> {
     unsigned long long *__begin_;
     unsigned long long *__end_;
-    struct __compressed_pair<unsigned long *, std::__1::allocator<unsigned long>> {
+    struct __compressed_pair<unsigned long *, std::allocator<unsigned long>> {
         unsigned long long *__value_;
     } __end_cap_;
 };
 
 #if 0
 // Names with conflicting types:
-typedef struct ?<float __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>> {
-    struct __compressed_pair<float * __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>> **_field1;
-} vector_80ea899f;
+typedef struct ?<float __attribute__((ext_vector_type(2))), std::allocator<float __attribute__((ext_vector_type(2)))>> {
+    struct __compressed_pair<float * __attribute__((ext_vector_type(2))), std::allocator<float __attribute__((ext_vector_type(2)))>> **_field1;
+} vector_825d63de;
 
-typedef struct ?<float __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>> {
+typedef struct ?<float __attribute__((ext_vector_type(2))), std::allocator<float __attribute__((ext_vector_type(2)))>> {
     void *__begin_;
     void *__end_;
-    struct __compressed_pair<float * __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>> __end_cap_;
-} vector_e654105b;
+    struct __compressed_pair<float * __attribute__((ext_vector_type(2))), std::allocator<float __attribute__((ext_vector_type(2)))>> __end_cap_;
+} vector_885e1103;
 
 #endif
 
@@ -88,19 +92,19 @@ typedef struct {
 } CDStruct_e6681aac;
 
 // Template types
-typedef struct vector<std::__1::vector<float __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>>, std::__1::allocator<std::__1::vector<float __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>>>> {
-    struct vector<float __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>> *__begin_;
-    struct vector<float __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>> *__end_;
-    struct __compressed_pair<std::__1::vector<float __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>>*, std::__1::allocator<std::__1::vector<float __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>>>> {
-        struct vector<float __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>> *__value_;
+typedef struct vector<std::vector<float __attribute__((ext_vector_type(2)))>, std::allocator<std::vector<float __attribute__((ext_vector_type(2)))>>> {
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<std::vector<float __attribute__((ext_vector_type(2)))>*, std::allocator<std::vector<float __attribute__((ext_vector_type(2)))>>> {
+        void *__value_;
     } __end_cap_;
-} vector_c2d99b46;
+} vector_848757e0;
 
-typedef struct vector<unsigned long, std::__1::allocator<unsigned long>> {
+typedef struct vector<unsigned long, std::allocator<unsigned long>> {
     unsigned long long *__begin_;
     unsigned long long *__end_;
-    struct __compressed_pair<unsigned long *, std::__1::allocator<unsigned long>> {
+    struct __compressed_pair<unsigned long *, std::allocator<unsigned long>> {
         unsigned long long *__value_;
     } __end_cap_;
-} vector_06e666a8;
+} vector_2056c7c2;
 

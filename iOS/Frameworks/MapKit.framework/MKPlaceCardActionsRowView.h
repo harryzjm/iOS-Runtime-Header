@@ -8,27 +8,30 @@
 
 #import <MapKit/MKActionRowItemViewDelegate-Protocol.h>
 
-@class NSArray, UILayoutGuide;
+@class NSArray;
 @protocol MKPlaceActionManagerProtocol, _MKPlaceViewControllerDelegate;
 
 @interface MKPlaceCardActionsRowView : UIView <MKActionRowItemViewDelegate>
 {
-    NSArray *_actionButtons;
     NSArray *_constraints;
     NSArray *_actionRowsArray;
     unsigned long long _maxButtonsPerRow;
     unsigned long long _style;
-    UILayoutGuide *_marginLayoutguide;
     NSArray *_items;
     id <MKPlaceActionManagerProtocol> _actionManager;
     id <_MKPlaceViewControllerDelegate> _placeViewControllerDelegate;
+    NSArray *_actionButtons;
+    Class _buttonBackgroundViewClass;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) Class buttonBackgroundViewClass; // @synthesize buttonBackgroundViewClass=_buttonBackgroundViewClass;
+@property(readonly, nonatomic) NSArray *actionButtons; // @synthesize actionButtons=_actionButtons;
 @property(nonatomic) __weak id <_MKPlaceViewControllerDelegate> placeViewControllerDelegate; // @synthesize placeViewControllerDelegate=_placeViewControllerDelegate;
 @property(nonatomic) __weak id <MKPlaceActionManagerProtocol> actionManager; // @synthesize actionManager=_actionManager;
 @property(copy, nonatomic) NSArray *items; // @synthesize items=_items;
 - (void)actionRowSelected:(id)arg1;
+- (void)actionButtonPressed:(id)arg1;
 - (void)infoCardThemeChanged;
 - (unsigned long long)maxButtonsPerRow;
 - (void)invalidateActionButtons;

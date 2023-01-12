@@ -6,7 +6,7 @@
 
 #import <UIKitCore/FBSSceneDelegate-Protocol.h>
 
-@class BKSAnimationFenceHandle, FBSScene, FBSSceneSettings, NSArray, NSDictionary, NSMutableDictionary, NSNumber, NSPointerArray, NSString, UIApplicationSceneClientSettings, UIApplicationSceneSettings, UIPointerLockState, UISceneActivationConditions, UISceneSession, _UIFocusSystemSceneComponent, _UISceneLifecycleMonitor;
+@class BKSAnimationFenceHandle, FBSScene, FBSSceneSettings, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSNumber, NSPointerArray, NSString, UIApplicationSceneClientSettings, UIApplicationSceneSettings, UIPointerLockState, UISceneActivationConditions, UISceneSession, _UIEventDeferringManager, _UIFocusSystemSceneComponent, _UIKeyWindowSceneObserver, _UISceneLifecycleMonitor;
 @protocol UISceneDelegate;
 
 @interface UIScene <FBSSceneDelegate>
@@ -14,6 +14,7 @@
     UISceneSession *_session;
     id <UISceneDelegate> _delegate;
     NSString *_title;
+    NSString *_subtitle;
     UISceneActivationConditions *_activationConditions;
     FBSScene *_scene;
     NSArray *_initialSettingsDiffActions;
@@ -24,7 +25,6 @@
     NSArray *_flattenedDiffActions;
     NSDictionary *_additionalSceneBSActionHandlers;
     NSArray *_flattenedActionsHandlers;
-    NSDictionary *_builtinComponents;
     NSDictionary *_registeredComponents;
     _UISceneLifecycleMonitor *_lifecycleMonitor;
     FBSSceneSettings *_overrideSettings;
@@ -45,13 +45,18 @@
         unsigned int isUIKitManaged:1;
         unsigned int isInternal:1;
         unsigned int affectsAppLifecycleIfInternal:1;
+        unsigned int affectsScreenOrientation:1;
+        unsigned int isConnecting:1;
         unsigned int hostsWindows:1;
         unsigned int hasInvalidated:1;
         unsigned int allowOverrideSettings:1;
         unsigned int isProcessingUpdateResponseBlocks:1;
-        unsigned int readyForSuspend:1;
+        unsigned int readyForSuspension:1;
         unsigned int isMediaParticipant:1;
+        unsigned int classRoutesEvents:1;
+        unsigned int isTargetOfKeyboardEventDeferringEnvironment:1;
     } _sceneFlags;
+    NSMutableArray *_heldSceneEventResponseBlocks;
     _Bool _respondingToLifecycleEvent;
     NSNumber *__cachedInterfaceOrientation;
 }
@@ -65,7 +70,7 @@
 + (id)_scenesIncludingInternalForPK:(_Bool)arg1;
 + (id)_scenesIncludingInternal:(_Bool)arg1;
 + (id)_sceneForFBSScene:(id)arg1 create:(_Bool)arg2 withSession:(id)arg3 connectionOptions:(id)arg4;
-+ (void)_registerInternalSceneIdentifier:(id)arg1 withInitializationBlock:(CDUnknownBlockType)arg2;
++ (_Bool)_supportsEventUIWindowRouting;
 + (void)_enumerateAllWindowsIncludingInternalWindows:(_Bool)arg1 onlyVisibleWindows:(_Bool)arg2 asCopy:(_Bool)arg3 withBlock:(CDUnknownBlockType)arg4;
 + (_Bool)_hostsWindows;
 + (void)_synchronizeDrawingWithFence:(id)arg1;
@@ -78,7 +83,7 @@
 + (id)_sceneForFBSScene:(id)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic, getter=_cachedInterfaceOrientation, setter=_setCachedInterfaceOrientation:) NSNumber *_cachedInterfaceOrientation; // @synthesize _cachedInterfaceOrientation=__cachedInterfaceOrientation;
-@property(nonatomic, setter=_setIsRespondingToLifecycleEvent:) _Bool _respondingToLifecycleEvent; // @synthesize _respondingToLifecycleEvent;
+@property(nonatomic, getter=_isRespondingToLifecycleEvent, setter=_setIsRespondingToLifecycleEvent:) _Bool _respondingToLifecycleEvent; // @synthesize _respondingToLifecycleEvent;
 @property(readonly, nonatomic) FBSSceneSettings *_oldSettings; // @synthesize _oldSettings;
 - (void)_removeInheritingScene:(id)arg1;
 - (void)_addInheritingScene:(id)arg1;
@@ -89,16 +94,20 @@
 @property(readonly, copy) NSString *description;
 - (void)scene:(id)arg1 didReceiveActions:(id)arg2 fromTransitionContext:(id)arg3;
 - (void)scene:(id)arg1 didReceiveActions:(id)arg2;
+- (void)_scheduleSceneEventResponseWithResponseBlock:(CDUnknownBlockType)arg1;
+- (void)_setShouldHoldSceneEventResponses:(_Bool)arg1;
 - (void)scene:(id)arg1 didUpdateWithDiff:(id)arg2 transitionContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_refreshActivationConditions;
+@property(readonly, nonatomic) _Bool _affectsScreenOrientation;
 @property(readonly, nonatomic) _Bool _affectsAppLifecycleIfInternal;
 @property(readonly, nonatomic, getter=_isUIKitManaged) _Bool _isUIKitManaged;
 @property(readonly, nonatomic, getter=_isInternal) _Bool _internal;
 - (id)_shortDescription;
-- (_Bool)_connected;
-@property(readonly, nonatomic, getter=_suspendedUnderLock) _Bool _suspendedUnderLock;
-@property(readonly, nonatomic, getter=_runningInTaskSwitcher) _Bool _runningInTaskSwitcher;
-@property(readonly, nonatomic, getter=_suspendedEventsOnly) _Bool _suspendedEventsOnly;
+@property(readonly, nonatomic, getter=_isConnecting) _Bool _connecting;
+- (_Bool)_isConnected;
+@property(readonly, nonatomic, getter=_isSuspendedUnderLock) _Bool _suspendedUnderLock;
+@property(readonly, nonatomic, getter=_isRunningInTaskSwitcher) _Bool _runningInTaskSwitcher;
+@property(readonly, nonatomic, getter=_isSuspendedEventsOnly) _Bool _suspendedEventsOnly;
 @property(readonly, nonatomic, getter=_isActive) _Bool _active;
 @property(readonly, nonatomic) _Bool _hasLifecycle;
 @property(readonly, nonatomic) _UISceneLifecycleMonitor *_lifecycleMonitor;
@@ -113,17 +122,21 @@
 - (id)_fixupInheritedSettings:(id)arg1;
 - (void)_emitSceneSettingsUpdateResponseForCompletion:(CDUnknownBlockType)arg1 afterSceneUpdateWork:(CDUnknownBlockType)arg2;
 - (void)_enqueuePostSettingsUpdateResponseBlock:(CDUnknownBlockType)arg1 inPhase:(id)arg2;
+@property(readonly, nonatomic) _Bool _hasSettingsScene;
 @property(readonly, nonatomic) NSArray *_interitingScenes;
 @property(nonatomic, setter=_setSettingsScene:) __weak UIScene *_settingsScene;
-@property(readonly, nonatomic) _Bool _eligableForSuspend;
-@property(readonly, nonatomic) _Bool _readyForSuspend;
+@property(readonly, nonatomic, getter=_isEligibleForSuspension) _Bool _eligibleForSuspension;
+@property(readonly, nonatomic, getter=_isReadyForSuspension) _Bool _readyForSuspension;
 - (void)_prepareForSuspend;
 - (void)_prepareForResume;
 @property(nonatomic, setter=_setInvolvedInMediaPlayback:) _Bool _involvedInMediaPlayback;
 - (void)_initializeSceneComponents;
 - (_Bool)_needsMakeKeyAndVisible;
 - (void)_makeKeyAndVisibleIfNeeded;
+- (void)_finishSceneConnection;
 - (void)_readySceneForConnection;
+@property(readonly, nonatomic) _Bool _isTargetOfKeyboardEventDeferringEnvironment;
+@property(readonly, nonatomic) _Bool _allowsEventUIWindowRouting;
 - (void)__releaseWindow:(id)arg1;
 - (void)__captureWindow:(id)arg1;
 - (struct UIEdgeInsets)_safeAreaInsetsForInterfaceOrientation:(long long)arg1;
@@ -140,6 +153,7 @@
 - (_Bool)_windowIsFront:(id)arg1;
 @property(readonly, nonatomic) _Bool _hostsWindows;
 @property(readonly, nonatomic) NSArray *_windows;
+@property(readonly, nonatomic) _Bool _hasInvalidated;
 @property(readonly, nonatomic) _Bool _hasInvaidated;
 - (void)_invalidate;
 - (void)_noteDisplayIdentityDidChangeWithConfiguration:(id)arg1;
@@ -169,6 +183,7 @@
 @property(retain, nonatomic) UISceneActivationConditions *activationConditions;
 @property(retain, nonatomic, setter=_setActivationConditions:) UISceneActivationConditions *_activationConditions;
 - (id)nextResponder;
+@property(copy, nonatomic) NSString *subtitle;
 @property(copy, nonatomic) NSString *title;
 - (void)_openURL:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)openURL:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -177,9 +192,16 @@
 @property(retain, nonatomic) id <UISceneDelegate> delegate;
 @property(readonly, nonatomic) UISceneSession *session;
 - (id)initWithSession:(id)arg1 connectionOptions:(id)arg2;
+@property(readonly, nonatomic) _UIEventDeferringManager *_eventDeferringManager;
 @property(readonly, nonatomic) _UIFocusSystemSceneComponent *_focusSystemSceneComponent;
 @property(readonly, nonatomic) UIPointerLockState *pointerLockState;
+@property(readonly, nonatomic) _UIKeyWindowSceneObserver *_keyWindowSceneObserver;
 - (id)_carPlaySceneComponent;
+- (void)_willRestoreInteractionStateForUserActivityManager:(id)arg1;
+- (void)_completeStateRestoration;
+- (void)_extendStateRestoration;
+- (void)completeStateRestoration;
+- (void)extendStateRestoration;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

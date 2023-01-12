@@ -10,6 +10,7 @@
 
 @protocol _SFPBMapPlaceCardSection <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(nonatomic) _Bool shouldSearchDirectionsAlongCurrentRoute;
 @property(copy, nonatomic) NSData *mapsData;
 @property(retain, nonatomic) _SFPBColor *backgroundColor;
 @property(nonatomic) int separatorStyle;

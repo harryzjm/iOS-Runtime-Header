@@ -7,14 +7,15 @@
 #import <Foundation/NSUUID.h>
 
 @interface NSUUID (HomeKitClient)
-+ (void)setIdentifierSalt:(id)arg1 assistantSalt:(_Bool)arg2;
-+ (id)deriveUUIDForAssistantFromBaseUUID:(id)arg1 withSalts:(id)arg2;
-+ (id)deriveUUIDForAssistantFromBaseUUID:(id)arg1;
-+ (id)deriveUUIDFromBaseUUID:(id)arg1 withSalts:(id)arg2;
-+ (id)deriveUUIDFromBaseUUID:(id)arg1;
-+ (id)deriveUUIDFromBaseUUID:(id)arg1 identifierSalt:(id)arg2 withSalts:(id)arg3;
-+ (id)deriveUUIDFromBaseUUID:(id)arg1 identifierSalt:(id)arg2;
-+ (id)uuid:(id)arg1 identifierSalt:(id)arg2 withSalts:(id)arg3;
-- (id)convertToData;
++ (_Bool)hm_setAssistantIdentifierSalt:(id)arg1;
++ (id)hm_deriveUUIDForAssistantFromBaseUUID:(id)arg1;
++ (id)hm_deriveUUIDForAssistantFromBaseUUID:(id)arg1 withSalts:(id)arg2;
++ (void)hm_setIdentifierSalt:(id)arg1;
++ (id)hm_deriveUUIDFromBaseUUID:(id)arg1;
++ (id)hm_deriveUUIDFromBaseUUID:(id)arg1 withSalts:(id)arg2;
++ (id)hm_deriveUUIDFromBaseUUID:(id)arg1 identifierSalt:(id)arg2;
++ (id)hm_deriveUUIDFromBaseUUID:(id)arg1 identifierSalt:(id)arg2 withSalts:(id)arg3;
++ (id)hm_uuid:(id)arg1 identifierSalt:(id)arg2 withSalts:(id)arg3;
+- (id)hm_convertToData;
 @end
 

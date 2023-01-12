@@ -12,22 +12,22 @@
 
 @interface TSCH3DLightShaderEffectState : NSObject <NSCopying>
 {
-    NSMutableArray *mLights;
-    struct LightingPackageShaderEffectState mPackageState;
+    NSMutableArray *_lights;
+    struct LightingPackageShaderEffectState _packageState;
 }
 
 + (id)effectState;
 - (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)removeAllObjects;
 - (id)objectAtIndex:(unsigned long long)arg1;
 - (void)addObject:(id)arg1;
 - (unsigned long long)count;
-- (void)setPackageState:(const struct LightingPackageShaderEffectState *)arg1;
-- (const struct LightingPackageShaderEffectState *)packageState;
+- (void)setPackageState:(const void *)arg1;
+- (const void *)packageState;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)init;
 
 @end

@@ -6,32 +6,39 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSNumber, NSString;
+@class NSData, NSDictionary, NSNumber, NSString;
 
 @interface WLKURLRequestProperties : NSObject
 {
     NSString *_endpoint;
+    NSString *_routeName;
     NSString *_httpMethod;
     NSDictionary *_queryParameters;
     NSDictionary *_headers;
+    NSData *_httpBody;
     NSString *_caller;
     NSNumber *_timeout;
     NSNumber *_apiVersion;
     long long _options;
 }
 
++ (id)requestPropertiesWithEndpoint:(id)arg1 queryParameters:(id)arg2 httpMethod:(id)arg3 httpBody:(id)arg4 headers:(id)arg5 caller:(id)arg6 timeout:(id)arg7 apiVersion:(id)arg8 options:(long long)arg9;
 + (id)requestPropertiesWithEndpoint:(id)arg1 queryParameters:(id)arg2 httpMethod:(id)arg3 headers:(id)arg4 caller:(id)arg5 timeout:(id)arg6 apiVersion:(id)arg7 options:(long long)arg8;
 + (id)requestPropertiesWithEndpoint:(id)arg1 queryParameters:(id)arg2 httpMethod:(id)arg3 headers:(id)arg4 caller:(id)arg5 timeout:(id)arg6 options:(long long)arg7;
 + (id)requestPropertiesWithEndpoint:(id)arg1 queryParameters:(id)arg2 httpMethod:(id)arg3 caller:(id)arg4;
 + (id)requestPropertiesWithEndpoint:(id)arg1;
++ (id)requestPropertiesWithServerRoute:(id)arg1 queryParameters:(id)arg2 httpMethod:(id)arg3 httpBody:(id)arg4 headers:(id)arg5 caller:(id)arg6 timeout:(id)arg7 options:(long long)arg8;
++ (id)requestPropertiesWithServerRoute:(id)arg1 queryParameters:(id)arg2 httpMethod:(id)arg3 headers:(id)arg4 caller:(id)arg5 timeout:(id)arg6 options:(long long)arg7;
 - (void).cxx_destruct;
 @property(nonatomic) long long options; // @synthesize options=_options;
 @property(copy, nonatomic) NSNumber *apiVersion; // @synthesize apiVersion=_apiVersion;
 @property(copy, nonatomic) NSNumber *timeout; // @synthesize timeout=_timeout;
 @property(copy, nonatomic) NSString *caller; // @synthesize caller=_caller;
+@property(copy, nonatomic) NSData *httpBody; // @synthesize httpBody=_httpBody;
 @property(copy, nonatomic) NSDictionary *headers; // @synthesize headers=_headers;
 @property(copy, nonatomic) NSDictionary *queryParameters; // @synthesize queryParameters=_queryParameters;
 @property(copy, nonatomic) NSString *httpMethod; // @synthesize httpMethod=_httpMethod;
+@property(copy, nonatomic) NSString *routeName; // @synthesize routeName=_routeName;
 @property(copy, nonatomic) NSString *endpoint; // @synthesize endpoint=_endpoint;
 - (id)shortDescription;
 - (id)description;

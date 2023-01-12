@@ -10,8 +10,8 @@
 
 @interface TSCHStyleOwnerReference : NSObject <NSCopying>
 {
-    int mType;
-    unsigned long long mIndex;
+    int _type;
+    unsigned long long _index;
 }
 
 + (id)styleOwnerReferenceWithType:(int)arg1 index:(unsigned long long)arg2;

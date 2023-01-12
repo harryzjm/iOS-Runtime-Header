@@ -11,16 +11,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic) double nextHandwashingSampleTime; // @synthesize nextHandwashingSampleTime=_nextHandwashingSampleTime;
-@property(nonatomic) double nextToothbrushingSampleTime; // @synthesize nextToothbrushingSampleTime=_nextToothbrushingSampleTime;
-- (id)_dateComponentsByAddingHours:(long long)arg1 toDate:(id)arg2;
-- (id)_generateHandwashingSampleForDate:(id)arg1 demoPerson:(id)arg2 atTime:(double)arg3;
-- (id)_generateToothbrushingSampleForDate:(id)arg1 demoPerson:(id)arg2 atTime:(double)arg3;
-- (id)_eveningDateFromDate:(id)arg1 calendar:(id)arg2;
-- (id)_morningDateFromDate:(id)arg1 calendar:(id)arg2;
-- (void)_generateHandwashingSamplesForDemoPerson:(id)arg1 atTime:(double)arg2 sampleDate:(id)arg3 objectCollection:(id)arg4;
-- (void)_generateToothbrushingSamplesForDemoPerson:(id)arg1 atTime:(double)arg2 sampleDate:(id)arg3 objectCollection:(id)arg4;
-- (void)generateSamplesForDemoPerson:(id)arg1 atTime:(double)arg2 sampleDate:(id)arg3 objectCollection:(id)arg4;
+- (void)generateSamplesForDemoPerson:(id)arg1 fromTime:(double)arg2 toTime:(double)arg3 currentDate:(id)arg4 objectCollection:(id)arg5;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

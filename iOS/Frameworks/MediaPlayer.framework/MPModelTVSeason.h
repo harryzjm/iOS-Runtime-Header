@@ -27,6 +27,7 @@
 + (id)kindWithEpisodeKind:(id)arg1;
 + (id)requiredLibraryAddStatusObservationProperties;
 + (_Bool)supportsLibraryAddStatusObservation;
++ (long long)genericObjectType;
 - (id)artworkCatalog;
 - (id)humanDescription;
 - (struct MPLibraryAddStatusObserverConfiguration)libraryAddStatusObserverConfiguration;

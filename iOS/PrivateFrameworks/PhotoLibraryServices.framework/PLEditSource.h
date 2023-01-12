@@ -21,6 +21,7 @@
 @property(readonly, nonatomic) _Bool isRAWSource;
 - (void)setIdentifier:(id)arg1;
 @property(readonly, retain, nonatomic) NUSource *source;
+- (void)setResolvedSource:(id)arg1 mediaType:(long long)arg2;
 - (id)initWithResolvedSource:(id)arg1 mediaType:(long long)arg2;
 
 @end

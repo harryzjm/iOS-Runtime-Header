@@ -11,6 +11,7 @@
 
 @class MISSING_TYPE;
 
+__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI225LocalDraftsDeviceListener : NSObject <MCSessionDelegate, MCNearbyServiceBrowserDelegate>
 {
     MISSING_TYPE *localFiles;

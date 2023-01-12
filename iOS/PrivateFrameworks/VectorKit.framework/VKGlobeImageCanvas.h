@@ -11,22 +11,21 @@
 __attribute__((visibility("hidden")))
 @interface VKGlobeImageCanvas <MDSnapshotMap>
 {
-    struct GlobeView *_globeView;
-    VKCamera *_camera;
-    struct unique_ptr<md::GlobeAdapter, std::__1::default_delete<md::GlobeAdapter>> _globeAdapter;
-    struct LoadingStatusTracker *_loadingStatusTracker;
+    void *_globeView;
+    VKCamera *_vkCamera;
+    struct unique_ptr<md::GlobeAdapter, std::default_delete<md::GlobeAdapter>> _globeAdapter;
+    void *_loadingStatusTracker;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)cancelTileRequests;
-- (void)_updateCameraFromGlobe;
 - (void)_updateViewport;
 - (void)didLayout;
-- (void)updateWithTimestamp:(double)arg1 withContext:(struct LayoutContext *)arg2;
+- (void)updateWithTimestamp:(double)arg1 withContext:(void *)arg2;
 - (void)setMapType:(int)arg1;
 - (void)dealloc;
-- (id)initWithMapEngine:(struct MapEngine *)arg1;
+- (id)initWithMapEngine:(void *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

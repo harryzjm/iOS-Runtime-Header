@@ -13,15 +13,19 @@ __attribute__((visibility("hidden")))
 
 + (void)clearCachedResources;
 + (id)appClipIcon;
++ (id)closeQuote;
++ (id)openQuote;
 + (id)transportWalkIcon;
 + (id)transportBicycleIcon;
 + (id)transportTransitIcon;
 + (id)transportDriveIcon;
-+ (id)indeterminateProgressSpinnerDarkInterface;
-+ (id)indeterminateProgressSpinner;
 + (id)telephoneIcon;
++ (id)linkIcon;
++ (id)mapIcon;
++ (id)iCloudIcon;
 + (id)textIcon;
 + (id)fileIcon;
++ (id)faceTimeIcon;
 + (id)unmuteButton;
 + (id)muteButton;
 + (id)pauseButton;

@@ -8,7 +8,7 @@
 
 #import <ClassKit/CLSQuery-Protocol.h>
 
-@class NSMapTable, NSMutableArray, NSMutableSet, NSString;
+@class NSMapTable, NSMutableArray, NSMutableOrderedSet, NSString;
 @protocol CLSFaultProcessorDelegate, OS_dispatch_group, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -20,10 +20,11 @@ __attribute__((visibility("hidden")))
     NSMapTable *_objects;
     NSMapTable *_relations;
     NSMapTable *_objectsIdsByParentID;
-    NSMutableSet *_rootObjectIDs;
+    NSMutableOrderedSet *_rootObjectIDs;
     id <CLSFaultProcessorDelegate> _delegate;
 }
 
++ (id)rootClasses;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) __weak id <CLSFaultProcessorDelegate> delegate; // @synthesize delegate=_delegate;
 - (oneway void)clientRemote_itemChanged:(unsigned long long)arg1;
@@ -34,6 +35,8 @@ __attribute__((visibility("hidden")))
 - (id)_childParentRelationForObject:(id)arg1;
 - (_Bool)_isRootObject:(id)arg1 withRelation:(id)arg2;
 - (_Bool)_isRootObject:(id)arg1;
+- (void)_insertRootObjectID:(id)arg1 withChildren:(id)arg2;
+- (void)_insertRootObject:(id)arg1;
 - (void)_addObject:(id)arg1;
 - (void)_faultObject:(id)arg1;
 - (void)_faultRelation:(id)arg1 fromObject:(id)arg2;

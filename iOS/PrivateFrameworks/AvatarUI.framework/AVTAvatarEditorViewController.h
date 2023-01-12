@@ -16,6 +16,7 @@
 
 @interface AVTAvatarEditorViewController : UIViewController <AVTSplashScreenViewControllerDelegate, AVTAvatarAttributeEditorViewControllerDelegate, UIAdaptivePresentationControllerDelegate, AVTToolBarDelegate>
 {
+    _Bool _shouldHideUserInfoView;
     _Bool _isCreating;
     _Bool _hasChanges;
     id <AVTAvatarEditorViewControllerDelegate> _delegate;
@@ -50,6 +51,7 @@
 @property(readonly, nonatomic) AVTViewSessionProvider *avtViewSessionProvider; // @synthesize avtViewSessionProvider=_avtViewSessionProvider;
 @property(readonly, nonatomic) id <AVTAvatarStoreInternal> store; // @synthesize store=_store;
 @property(retain, nonatomic) AVTAvatarRecord *initialAvatarRecord; // @synthesize initialAvatarRecord=_initialAvatarRecord;
+@property(nonatomic) _Bool shouldHideUserInfoView; // @synthesize shouldHideUserInfoView=_shouldHideUserInfoView;
 @property(nonatomic) __weak id <AVTAvatarEditorViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)toolbar:(id)arg1 didSelectButton:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)controllerPresentationWillObstructView:(id)arg1;
@@ -61,10 +63,14 @@
 - (_Bool)presentationControllerShouldDismiss:(id)arg1;
 - (void)splashScreenViewControllerDidFinish:(id)arg1;
 - (void)finish:(id)arg1;
+- (void)returnPressed:(id)arg1;
 - (void)cancel:(id)arg1;
+- (void)escPressed:(id)arg1;
 - (void)enableDoneButton:(_Bool)arg1;
 - (struct UIEdgeInsets)additionalSafeAreaInsets;
 - (void)updateToolBarForLayout:(id)arg1;
+- (_Bool)canBecomeFirstResponder;
+- (id)keyCommands;
 - (void)configureNavigationItems;
 - (void)loadAttributeEditorViewWithAvatarRecord:(id)arg1;
 - (void)loadSplashScreen;

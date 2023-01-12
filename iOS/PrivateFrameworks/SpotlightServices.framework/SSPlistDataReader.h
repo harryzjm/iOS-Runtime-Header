@@ -18,8 +18,8 @@
 - (id)description;
 - (double)doubleValueForBundle:(id)arg1;
 - (double)doubleValueForKey:(const char *)arg1;
-- (_Bool)doesBundleExistInAppWhiteList:(id)arg1;
-@property(readonly, nonatomic) NSArray *blacklist;
+- (_Bool)doesBundleExistInAppAllowList:(id)arg1;
+@property(readonly, nonatomic) NSArray *blocklist;
 @property(readonly, copy, nonatomic) NSMutableArray *allKeys;
 @property(readonly, nonatomic) unsigned long long count;
 - (void)dealloc;

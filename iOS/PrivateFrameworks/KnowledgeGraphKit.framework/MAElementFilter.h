@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSString;
+@class KGElementIdentifierSet, NSArray, NSDictionary, NSSet, NSString;
 
 @interface MAElementFilter : NSObject
 {
-    unsigned short _domain;
-    NSString *_label;
+    NSSet *_labels;
+    KGElementIdentifierSet *_domains;
     NSDictionary *_properties;
 }
 
@@ -19,18 +19,31 @@
 + (id)scanFilterWithScanner:(id)arg1;
 + (_Bool)scanInstance:(out id *)arg1 withScanner:(id)arg2;
 + (_Bool)scanPropertyValue:(out id *)arg1 withScanner:(id)arg2;
++ (_Bool)scanPropertyOption:(out id *)arg1 withScanner:(id)arg2;
 + (_Bool)scanProperties:(out id *)arg1 withScanner:(id)arg2;
-+ (_Bool)scanElementFilterLabel:(out id *)arg1 domain:(out int *)arg2 properties:(out id *)arg3 withScanner:(id)arg4;
++ (_Bool)scanDomains:(out id *)arg1 withScanner:(id)arg2;
++ (_Bool)scanLabels:(out id *)arg1 withScanner:(id)arg2;
++ (_Bool)scanElementFilterLabels:(out id *)arg1 domains:(out id *)arg2 properties:(out id *)arg3 withScanner:(id)arg4;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSDictionary *properties; // @synthesize properties=_properties;
-@property(readonly, nonatomic) unsigned short domain; // @synthesize domain=_domain;
-@property(readonly, copy, nonatomic) NSString *label; // @synthesize label=_label;
+@property(readonly, copy, nonatomic) KGElementIdentifierSet *domains; // @synthesize domains=_domains;
+@property(readonly, copy, nonatomic) NSSet *labels; // @synthesize labels=_labels;
+- (id)filterBySettingProperties:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, nonatomic) NSString *visualString;
 - (void)appendVisualStringToString:(id)arg1;
-@property(readonly, nonatomic) NSArray *kgLabels;
+- (void)_appendPropertyOption:(id)arg1 toString:(id)arg2;
+@property(readonly, nonatomic) NSArray *kgOptionalLabels;
+@property(readonly, nonatomic) NSArray *kgRequiredLabels;
+- (id)description;
 - (_Bool)matchesElement:(id)arg1;
+- (_Bool)matchesPropertiesOfElement:(id)arg1;
+- (_Bool)matchesDomainOfElement:(id)arg1;
+- (_Bool)matchesLabelOfElement:(id)arg1;
+- (id)initWithLabels:(id)arg1 domains:(id)arg2 properties:(id)arg3;
+- (id)initWithLabel:(id)arg1 domains:(id)arg2 properties:(id)arg3;
+- (id)initWithLabels:(id)arg1 domain:(unsigned short)arg2 properties:(id)arg3;
 - (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2;
 - (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 properties:(id)arg3;
 

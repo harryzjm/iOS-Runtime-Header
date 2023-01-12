@@ -17,6 +17,7 @@
 - (_Bool)_accessibilityIgnoresStatusBarFrame;
 - (_Bool)_accessibilityWindowVisible;
 - (_Bool)accessibilityElementsHidden;
+- (_Bool)_accessibilityIsIsolatedWindow;
 
 @end
 

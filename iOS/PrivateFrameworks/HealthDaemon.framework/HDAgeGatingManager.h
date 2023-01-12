@@ -7,12 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <HealthDaemon/HDDatabaseProtectedDataObserver-Protocol.h>
-#import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
+#import <HealthDaemon/HDProfileReadyObserver-Protocol.h>
 
 @class HDProfile, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HDAgeGatingManager : NSObject <HDHealthDaemonReadyObserver, HDDatabaseProtectedDataObserver>
+@interface HDAgeGatingManager : NSObject <HDProfileReadyObserver, HDDatabaseProtectedDataObserver>
 {
     HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_queue;
@@ -21,16 +21,11 @@
 }
 
 - (void).cxx_destruct;
-- (void)_setAgeGatingEnabled:(_Bool)arg1 forKey:(id)arg2;
-- (id)_ageWithDateOfBirthComponents:(id)arg1;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(_Bool)arg2;
-- (void)_unregisterNotifications;
-- (void)_registerForNotifications;
-- (void)_updateUserDefaultsWithAge:(id)arg1;
-- (void)_queue_updateAgeGating;
+- (id)ageInYearsWithError:(id *)arg1;
 - (void)unitTesting_updateAgeGates;
 - (void)didRecieveDayChangeNotification:(id)arg1;
-- (void)daemonReady:(id)arg1;
+- (void)profileDidBecomeReady:(id)arg1;
 - (void)dealloc;
 - (id)initWithProfile:(id)arg1 queue:(id)arg2;
 - (id)initWithProfile:(id)arg1;

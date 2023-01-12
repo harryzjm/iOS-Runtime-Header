@@ -6,25 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class AVAudioFormat, SNAudioQueueConfiguration;
-@protocol OS_os_transaction;
+@class AVAudioFormat, SNAudioQueueConfiguration, SNAudioRecordingQueueScheduler;
 
 __attribute__((visibility("hidden")))
 @interface SNAudioRecordingQueue : NSObject
 {
-    struct OpaqueAudioQueue *_audioQueue;
     AVAudioFormat *_recordFormat;
-    _Bool _running;
     SNAudioQueueConfiguration *_audioQueueConfiguration;
-    CDUnknownBlockType _clientBufferHandler;
-    NSObject<OS_os_transaction> *_transaction;
+    _Bool _running;
+    struct OpaqueAudioQueue *_audioQueue;
+    SNAudioRecordingQueueScheduler *_aqCallbackScheduler;
 }
 
 - (void).cxx_destruct;
 - (void)_stop;
 - (void)stop;
-- (_Bool)startWithBufferHandler:(CDUnknownBlockType)arg1;
-- (void)handleAudioBufferCallbackForQueue:(struct OpaqueAudioQueue *)arg1 buffer:(struct AudioQueueBuffer *)arg2 startTime:(const struct AudioTimeStamp *)arg3 numberPacketDescriptions:(unsigned int)arg4 packetDescriptions:(const struct AudioStreamPacketDescription *)arg5;
+- (_Bool)startHandlingBuffersOnQueue:(id)arg1 audioSession:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (id)initWithFormat:(id)arg1 audioQueueConfiguration:(id)arg2;
 

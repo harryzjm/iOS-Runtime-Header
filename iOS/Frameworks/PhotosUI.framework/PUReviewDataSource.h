@@ -42,6 +42,7 @@
 - (void)removeAssetWithIdentifier:(id)arg1;
 - (void)replaceAsset:(id)arg1;
 - (void)insertAssets:(id)arg1;
+- (void)insertAsset:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)insertAsset:(id)arg1;
 - (id)existingRepresentativeAssetForBurstIdentifier:(id)arg1;
 - (id)existingAssetForIdentifier:(id)arg1;

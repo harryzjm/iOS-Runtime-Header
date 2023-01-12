@@ -25,6 +25,7 @@
 @property(nonatomic) long long exponent; // @synthesize exponent=_exponent;
 @property(copy, nonatomic) NSString *currency; // @synthesize currency=_currency;
 @property(copy, nonatomic) NSDecimalNumber *amount; // @synthesize amount=_amount;
+- (id)amountByConvertingToSmallestCommonCurrencyUnit;
 - (id)negativeValue;
 - (id)absoluteValue;
 - (id)minimalFormattedStringValueInLocale:(id)arg1;

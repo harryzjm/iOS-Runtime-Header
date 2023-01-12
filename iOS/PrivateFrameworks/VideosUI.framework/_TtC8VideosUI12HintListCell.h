@@ -9,17 +9,19 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI12HintListCell
 {
-    MISSING_TYPE *titleLabel;
     MISSING_TYPE *layout;
+    MISSING_TYPE *shouldShowBottomSeparator;
+    MISSING_TYPE *titleLabel;
     MISSING_TYPE *$__lazy_storage_$_accessoryImageView;
-    MISSING_TYPE *bottomSeparatorView;
+    MISSING_TYPE *$__lazy_storage_$_bottomSeparatorView;
 }
 
 - (void).cxx_destruct;
-- (void)setHighlighted:(_Bool)arg1;
+- (void)setSelected:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)vui_setHighlighted:(_Bool)arg1;
 - (void)prepareForReuse;
-- (void)layoutSubviews;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (struct CGSize)vui_layoutSubviews:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
+- (struct CGSize)vui_sizeThatFits:(struct CGSize)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

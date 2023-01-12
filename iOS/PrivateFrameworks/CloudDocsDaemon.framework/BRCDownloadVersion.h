@@ -6,7 +6,6 @@
 
 @class BRCClientZone, BRCProgress, CKRecord, CKRecordID, GSPermanentStorage, NSError, NSNumber;
 
-__attribute__((visibility("hidden")))
 @interface BRCDownloadVersion
 {
     CKRecordID *_secondaryRecordID;

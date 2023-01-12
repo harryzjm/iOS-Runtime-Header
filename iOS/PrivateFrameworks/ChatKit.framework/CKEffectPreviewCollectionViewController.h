@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)addAnimationTimerForCell:(id)arg1;
 - (void)displayEffectWithIdentifier:(id)arg1;
 - (void)dealloc;
+- (void)loadView;
 - (id)init;
 
 @end

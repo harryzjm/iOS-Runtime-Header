@@ -8,6 +8,7 @@
 
 @class MISSING_TYPE;
 
+__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI227AudioAutoClosePlayerHandler : NSObject
 {
     MISSING_TYPE *audioStatus;

@@ -6,13 +6,15 @@
 
 @interface WFMissingAction
 {
+    _Bool _isForLocalization;
 }
 
+@property(nonatomic) _Bool isForLocalization; // @synthesize isForLocalization=_isForLocalization;
 - (void)runWithInput:(id)arg1 error:(id *)arg2;
 - (_Bool)inputPassthrough;
 - (_Bool)isMissing;
 - (id)descriptionDictionary;
-- (id)icon;
+- (id)iconImage;
 - (id)name;
 
 @end

@@ -6,11 +6,12 @@
 
 #import <PhotosUI/NSObject-Protocol.h>
 
-@class MarkupViewController, NSArray, NSURL;
+@class MarkupViewController, NSArray, NSURL, PDFPage;
 
 @protocol MarkupViewControllerDelegate <NSObject>
 
 @optional
+- (NSArray *)menuElementsForPage:(PDFPage *)arg1;
 - (struct UIEdgeInsets)customSketchOverlayInsets;
 - (struct UIEdgeInsets)customEdgeInsets;
 - (void)controller:(MarkupViewController *)arg1 willWriteCGPDFDocument:(struct CGPDFDocument *)arg2 toContext:(struct CGContext *)arg3;

@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)traitCollectionDidChange:(id)arg1;
 - (double)bottomMarginWithBaselineMargin:(double)arg1;
 - (double)topMarginWithBaselineMargin:(double)arg1;
-- (double)baselineOffsetFromBottom;
+- (double)vui_baselineOffsetFromBottom;
 - (double)topMarginToLabel:(id)arg1 withBaselineMargin:(double)arg2;
 
 // Remaining properties

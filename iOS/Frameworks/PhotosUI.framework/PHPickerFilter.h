@@ -15,7 +15,16 @@
     id <PUPickerFilter> __puPickerFilter;
 }
 
++ (id)notFilterOfSubfilter:(id)arg1;
++ (id)allFilterMatchingSubfilters:(id)arg1;
 + (id)anyFilterMatchingSubfilters:(id)arg1;
++ (id)playbackStyleFilter:(long long)arg1;
++ (id)_depthEffectPhotosFilter;
++ (id)timelapseVideosFilter;
++ (id)slomoVideosFilter;
++ (id)screenRecordingsFilter;
++ (id)screenshotsFilter;
++ (id)panoramasFilter;
 + (id)livePhotosFilter;
 + (id)videosFilter;
 + (id)imagesFilter;

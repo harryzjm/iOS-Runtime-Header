@@ -6,13 +6,13 @@
 
 #import <WorkflowEditor/NSObject-Protocol.h>
 
-@class WFParameterValuePickerViewController;
+@class WFParameterValuePickerViewController, WFVariableSubstitutableParameterState;
 
 @protocol WFParameterValuePickerViewControllerDelegate <NSObject>
 
 @optional
 - (void)parameterValuePickerViewControllerDidRequestRemovingItem:(WFParameterValuePickerViewController *)arg1;
 - (void)parameterValuePickerViewControllerDidCancel:(WFParameterValuePickerViewController *)arg1;
-- (void)parameterValuePickerViewController:(WFParameterValuePickerViewController *)arg1 didFinishWithObject:(id)arg2;
+- (void)parameterValuePickerViewController:(WFParameterValuePickerViewController *)arg1 didFinishWithParameterState:(WFVariableSubstitutableParameterState *)arg2;
 @end
 

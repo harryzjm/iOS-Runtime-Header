@@ -12,8 +12,7 @@
 {
     MISSING_TYPE *data;
     MISSING_TYPE *entityIndices;
-    MISSING_TYPE *lastFrameDirty;
-    MISSING_TYPE *currentFrameDirty;
+    MISSING_TYPE *filters;
     MISSING_TYPE *currentIterationContext;
     MISSING_TYPE *indexInClassChunks;
     MISSING_TYPE *_staticWorkerAffinity;

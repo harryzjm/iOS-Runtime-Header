@@ -21,11 +21,13 @@
 + (id)defaultOfferManager;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *offers; // @synthesize offers=_offers;
+- (id)_updateOfferFile;
 - (void)_setOffers:(id)arg1;
 - (id)_offers;
 - (void)_activeAccountChangedNotification:(id)arg1;
 - (id)_connection;
 - (void)clearOffers:(CDUnknownBlockType)arg1;
+- (void)removeOfferByBadgeId:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchOffers:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)saveOffer:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;

@@ -11,6 +11,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (struct CGRect)vuiRectCenteredXInRect:(struct CGRect)arg1 boundsToCenterIn:(struct CGRect)arg2;
++ (_Bool)isInRetailDemoMode;
++ (id)getOSVersion;
++ (double)imageCornerRadiusWithStyle:(long long)arg1;
 + (id)gradientLayerLocationsFromSpacings:(id)arg1 height:(double)arg2;
 + (long long)interfaceStyleFromTheme:(id)arg1 defaultInterfaceStyle:(long long)arg2;
 + (id)colorFromHexStr:(id)arg1;
@@ -19,7 +23,6 @@ __attribute__((visibility("hidden")))
 + (double)libraryCategoryListWidth;
 + (double)libraryListMarginToGrid;
 + (id)placeholderImageResourceName:(long long)arg1;
-+ (double)imageCornerRadiusWithStyle:(long long)arg1;
 + (struct TVCornerRadii)imageCornerRadiiWithStyle:(long long)arg1;
 + (void)gradientConfigForCollection:(id)arg1 gradientMask:(long long)arg2 properties:(id)arg3 configuration:(CDStruct_fe9bf7bc *)arg4;
 + (_Bool)isInFullscreenOrPipPlayback;
@@ -27,16 +30,13 @@ __attribute__((visibility("hidden")))
 + (_Bool)isTVApp;
 + (long long)textAlignmentWithSemanticContentAttribute:(long long)arg1;
 + (unsigned long long)minimumNumberOfItemsToEnableSeeAllButton;
-+ (id)createImageProxyForResourceObject:(id)arg1 imageSize:(struct CGSize)arg2;
-+ (id)randomColor;
-+ (_Bool)isIpadLayout;
++ (_Bool)isIpadPortrait;
++ (_Bool)isIpadInterface;
 + (double)scaleContentSizeValue:(double)arg1 forTraitCollection:(id)arg2 maximumContentSizeCategory:(id)arg3;
 + (double)scaleContentSizeValue:(double)arg1 forTraitCollection:(id)arg2;
-+ (_Bool)isAXLargeEnabled:(id)arg1;
-+ (_Bool)isAXSmallEnabled:(id)arg1;
-+ (_Bool)contentSizeCategoryIsAccessibility:(id)arg1;
 + (struct CGSize)imageSizeWithAspectRatio:(double)arg1 scaleToSize:(struct CGSize)arg2;
 + (_Bool)shouldInvalidateLayoutWithPreviousTraitCollection:(id)arg1 newTraitCollection:(id)arg2;
++ (id)randomColor;
 
 @end
 

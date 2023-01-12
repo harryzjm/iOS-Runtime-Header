@@ -6,14 +6,21 @@
 
 #import <CoverSheet/CSCoverSheetParticipating-Protocol.h>
 
-@class NCNotificationAction, NCNotificationRequest, NCNotificationSectionSettings, NSDate, NSDictionary, NSSet, NSString;
+@class NCNotificationAction, NCNotificationRequest, NCNotificationSectionSettings, NCNotificationSystemSettings, NSArray, NSDate, NSDictionary, NSSet, NSString, NSUUID;
 @protocol CSNotificationAlertingController, CSNotificationDestination;
 
 @protocol CSNotificationDispatcher <CSCoverSheetParticipating>
+- (NCNotificationSystemSettings *)notificationSystemSettingsForDestination:(id <CSNotificationDestination>)arg1;
 - (NSSet *)notificationSectionSettingsForDestination:(id <CSNotificationDestination>)arg1;
 - (NCNotificationSectionSettings *)destination:(id <CSNotificationDestination>)arg1 settingsForSectionIdentifier:(NSString *)arg2;
 - (id <CSNotificationAlertingController>)alertingControllerForDestination:(id <CSNotificationDestination>)arg1;
+- (NCNotificationRequest *)destination:(id <CSNotificationDestination>)arg1 notificationRequestForUUID:(NSUUID *)arg2;
+- (void)destination:(id <CSNotificationDestination>)arg1 setSystemScheduledDeliveryEnabled:(_Bool)arg2 scheduledDeliveryTimes:(NSArray *)arg3;
+- (void)destination:(id <CSNotificationDestination>)arg1 setScheduledDelivery:(_Bool)arg2 forSectionIdentifier:(NSString *)arg3;
+- (void)destination:(id <CSNotificationDestination>)arg1 setAllowsDirectMessages:(_Bool)arg2 forSectionIdentifier:(NSString *)arg3;
+- (void)destination:(id <CSNotificationDestination>)arg1 setAllowsTimeSensitive:(_Bool)arg2 forSectionIdentifier:(NSString *)arg3;
 - (void)destination:(id <CSNotificationDestination>)arg1 setAllowsCriticalAlerts:(_Bool)arg2 forSectionIdentifier:(NSString *)arg3;
+- (void)destination:(id <CSNotificationDestination>)arg1 setMuted:(_Bool)arg2 untilDate:(NSDate *)arg3 forSectionIdentifier:(NSString *)arg4 threadIdentifier:(NSString *)arg5;
 - (void)destination:(id <CSNotificationDestination>)arg1 setDeliverQuietly:(_Bool)arg2 forSectionIdentifier:(NSString *)arg3;
 - (void)destination:(id <CSNotificationDestination>)arg1 setAllowsNotifications:(_Bool)arg2 forSectionIdentifier:(NSString *)arg3;
 - (void)destination:(id <CSNotificationDestination>)arg1 clearNotificationRequestsFromDate:(NSDate *)arg2 toDate:(NSDate *)arg3 inSections:(NSSet *)arg4;

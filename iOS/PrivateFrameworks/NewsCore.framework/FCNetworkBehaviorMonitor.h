@@ -26,11 +26,6 @@
 - (void).cxx_destruct;
 - (void)operationThrottlerPerformOperation:(id)arg1;
 - (void)wifiReachabilityDidChange:(id)arg1;
-- (void)_visitEventGroupsFromDate:(id)arg1 toDate:(id)arg2 block:(CDUnknownBlockType)arg3;
-- (int)_cacheStateFromEvent:(id)arg1;
-- (id)_respondingPOPFromEvent:(id)arg1;
-- (void)_sanitizeNetworkEvent:(id)arg1;
-- (_Bool)_shouldFilterNetworkEvent:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (void)logNetworkEvent:(id)arg1;
@@ -38,7 +33,7 @@
 @property(readonly, copy, nonatomic) NSArray *sessions;
 - (void)populateTelemetry:(id)arg1 withNetworkEventsFromDate:(id)arg2 toDate:(id)arg3;
 - (id)initWithCacheDirectory:(id)arg1;
-- (id)initTransient;
+- (id)initForLoggingOnly;
 - (id)init;
 
 // Remaining properties

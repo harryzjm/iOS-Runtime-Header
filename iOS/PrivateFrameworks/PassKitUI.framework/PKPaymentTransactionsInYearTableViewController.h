@@ -10,7 +10,7 @@
 #import <PassKitUI/PKDashboardTransactionFetcherDelegate-Protocol.h>
 #import <PassKitUI/_UIContextMenuInteractionDelegate-Protocol.h>
 
-@class NSArray, NSCalendar, NSDate, NSDateFormatter, NSSet, NSString, PKDashboardTransactionFetcher, PKPaymentTransactionCellController, PKPaymentTransactionDetailsFactory, PKPeerPaymentContactResolver, PKPeerPaymentWebService, PKTransactionSource;
+@class NSArray, NSCalendar, NSDate, NSDateFormatter, NSSet, NSString, PKContactResolver, PKDashboardTransactionFetcher, PKFamilyMemberCollection, PKPaymentTransactionCellController, PKPaymentTransactionDetailsFactory, PKPeerPaymentWebService, PKTransactionSourceCollection;
 @protocol PKPaymentDataProvider;
 
 @interface PKPaymentTransactionsInYearTableViewController : UITableViewController <CNAvatarViewDelegate, _UIContextMenuInteractionDelegate, PKDashboardTransactionFetcherDelegate>
@@ -19,17 +19,18 @@
     NSCalendar *_calendar;
     NSArray *_transactionsByMonth;
     NSArray *_instantWithdrawalFeesTransactionGroups;
-    PKTransactionSource *_transactionSource;
+    PKTransactionSourceCollection *_transactionSourceCollection;
     NSSet *_transactionSourceIdentifiers;
     id <PKPaymentDataProvider> _paymentServiceDataProvider;
     PKPaymentTransactionCellController *_transactionCellController;
-    PKPeerPaymentContactResolver *_contactResolver;
+    PKContactResolver *_contactResolver;
     PKPeerPaymentWebService *_peerPaymentWebService;
     NSDateFormatter *_transactionMonthFormatter;
     NSDateFormatter *_withdrawalFeeMonthYearFormatter;
     long long _detailViewStyle;
     PKDashboardTransactionFetcher *_transactionFetcher;
     PKPaymentTransactionDetailsFactory *_transactionDetailsFactory;
+    PKFamilyMemberCollection *_familyCollection;
 }
 
 - (void).cxx_destruct;
@@ -51,7 +52,7 @@
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)viewDidLoad;
-- (id)initWithDateFromYear:(id)arg1 calendar:(id)arg2 transactionSource:(id)arg3 detailViewStyle:(long long)arg4 paymentServiceDataProvider:(id)arg5 contactResolver:(id)arg6 peerPaymentWebService:(id)arg7;
+- (id)initWithDateFromYear:(id)arg1 calendar:(id)arg2 transactionSourceCollection:(id)arg3 familyCollection:(id)arg4 detailViewStyle:(long long)arg5 paymentServiceDataProvider:(id)arg6 contactResolver:(id)arg7 peerPaymentWebService:(id)arg8;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

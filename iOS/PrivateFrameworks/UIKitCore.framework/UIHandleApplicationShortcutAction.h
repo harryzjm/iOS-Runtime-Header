@@ -4,19 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <BaseBoard/BSAction.h>
+#import <UIKitServices/UISHandleApplicationShortcutAction.h>
 
-@class SBSApplicationShortcutItem, UIApplicationShortcutItem;
-
-@interface UIHandleApplicationShortcutAction : BSAction
+@interface UIHandleApplicationShortcutAction : UISHandleApplicationShortcutAction
 {
 }
-
-- (id)keyDescriptionForSetting:(unsigned long long)arg1;
-@property(readonly, copy, nonatomic) UIApplicationShortcutItem *uiShortcutItem;
-@property(readonly, copy, nonatomic) SBSApplicationShortcutItem *sbsShortcutItem;
-- (long long)UIActionType;
-- (id)initWithSBSShortcutItem:(id)arg1;
 
 @end
 

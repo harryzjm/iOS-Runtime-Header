@@ -58,8 +58,10 @@
 @property(copy, nonatomic) NSString *_DKApplicationActivityMetadataKey__userActivityRequiredString; // @dynamic _DKApplicationActivityMetadataKey__userActivityRequiredString;
 @property(copy, nonatomic) NSString *_DKApplicationActivityMetadataKey__userActivityUUID; // @dynamic _DKApplicationActivityMetadataKey__userActivityUUID;
 @property(copy, nonatomic) NSString *_DKApplicationMetadataKey__backboardState; // @dynamic _DKApplicationMetadataKey__backboardState;
+@property(copy, nonatomic) NSNumber *_DKApplicationMetadataKey__dyldPlatform; // @dynamic _DKApplicationMetadataKey__dyldPlatform;
 @property(copy, nonatomic) NSString *_DKApplicationMetadataKey__extensionContainingBundleIdentifier; // @dynamic _DKApplicationMetadataKey__extensionContainingBundleIdentifier;
 @property(copy, nonatomic) NSString *_DKApplicationMetadataKey__extensionHostIdentifier; // @dynamic _DKApplicationMetadataKey__extensionHostIdentifier;
+@property(copy, nonatomic) NSNumber *_DKApplicationMetadataKey__isNativeArchitecture; // @dynamic _DKApplicationMetadataKey__isNativeArchitecture;
 @property(copy, nonatomic) NSString *_DKApplicationMetadataKey__launchReason; // @dynamic _DKApplicationMetadataKey__launchReason;
 @property(copy, nonatomic) NSNumber *_DKApplicationMetadataKey__processIdentifier; // @dynamic _DKApplicationMetadataKey__processIdentifier;
 @property(copy, nonatomic) NSString *_DKAudioMetadataKey__channels; // @dynamic _DKAudioMetadataKey__channels;
@@ -100,6 +102,7 @@
 @property(copy, nonatomic) NSURL *_DKDigitalHealthMetadataKey__webpageURL; // @dynamic _DKDigitalHealthMetadataKey__webpageURL;
 @property(copy, nonatomic) NSString *_DKDiscoverabilitySignalsMetadataKey__context; // @dynamic _DKDiscoverabilitySignalsMetadataKey__context;
 @property(copy, nonatomic) NSString *_DKDiscoverabilitySignalsMetadataKey__osBuild; // @dynamic _DKDiscoverabilitySignalsMetadataKey__osBuild;
+@property(retain, nonatomic) NSData *_DKDiscoverabilitySignalsMetadataKey__userInfo; // @dynamic _DKDiscoverabilitySignalsMetadataKey__userInfo;
 @property(retain, nonatomic) NSData *_DKDiscoverabilityUsageMetadataKey__analyticsEvent; // @dynamic _DKDiscoverabilityUsageMetadataKey__analyticsEvent;
 @property(copy, nonatomic) NSString *_DKDiscoverabilityUsageMetadataKey__bundleID; // @dynamic _DKDiscoverabilityUsageMetadataKey__bundleID;
 @property(copy, nonatomic) NSNumber *_DKDiscoverabilityUsageMetadataKey__contentType; // @dynamic _DKDiscoverabilityUsageMetadataKey__contentType;
@@ -167,6 +170,7 @@
 @property(copy, nonatomic) NSString *_DKMicroLocationMetadataKey__domain; // @dynamic _DKMicroLocationMetadataKey__domain;
 @property(copy, nonatomic) NSString *_DKMicroLocationMetadataKey__locationDistribution; // @dynamic _DKMicroLocationMetadataKey__locationDistribution;
 @property(copy, nonatomic) NSString *_DKMicroLocationMetadataKey__microLocationDistribution; // @dynamic _DKMicroLocationMetadataKey__microLocationDistribution;
+@property(copy, nonatomic) NSNumber *_DKMicroLocationMetadataKey__microLocationIsStable; // @dynamic _DKMicroLocationMetadataKey__microLocationIsStable;
 @property(retain, nonatomic) NSData *_DKMicroLocationMetadataKey__probabilityVector; // @dynamic _DKMicroLocationMetadataKey__probabilityVector;
 @property(copy, nonatomic) NSString *_DKNotificationUsageMetadataKey__bundleID; // @dynamic _DKNotificationUsageMetadataKey__bundleID;
 @property(copy, nonatomic) NSString *_DKNotificationUsageMetadataKey__identifier; // @dynamic _DKNotificationUsageMetadataKey__identifier;

@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_308573ba)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_308573ba)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) FTRecognitionSausage *pre_sausage_payload;
 @property(readonly, nonatomic) NSString *post_itn_payload;
 @property(readonly, nonatomic) NSString *pre_itn_payload;

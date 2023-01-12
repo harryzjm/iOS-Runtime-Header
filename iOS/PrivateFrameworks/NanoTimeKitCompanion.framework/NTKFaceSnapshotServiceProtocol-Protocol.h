@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NTKFace;
+@class NSDictionary, NTKFaceInstanceDescriptor;
 
 @protocol NTKFaceSnapshotServiceProtocol
-- (void)provideSnapshotOfFace:(NTKFace *)arg1 options:(NSDictionary *)arg2 completion:(void (^)(_Bool, UIImage *))arg3;
+- (void)provideSnapshotOfFaceInstanceDescriptor:(NTKFaceInstanceDescriptor *)arg1 options:(NSDictionary *)arg2 completion:(void (^)(_Bool, UIImage *))arg3;
 @end
 

@@ -8,6 +8,7 @@
 
 @class NSArray, NSManagedObjectModel, NSString;
 
+__attribute__((visibility("hidden")))
 @interface NotesMigrationMapping : NSObject
 {
     NSManagedObjectModel *_destinationModel;

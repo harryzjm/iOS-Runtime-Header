@@ -6,17 +6,19 @@
 
 #import <objc/NSObject.h>
 
+#import <DACalDAV/CDBRecordIDMap-Protocol.h>
 #import <DACalDAV/CalDAVCalendar-Protocol.h>
 
-@class CalDAVDBChangeTrackingHelper, CalDiagCalendarCollectionSync, MobileCalDAVPrincipal, NSArray, NSDictionary, NSMutableDictionary, NSSet, NSString, NSTimeZone, NSURL;
+@class CalDAVDBChangeTrackingHelper, CalDiagCalendarCollectionSync, MobileCalDAVPrincipal, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSSet, NSString, NSTimeZone, NSURL;
 @protocol CalDAVPrincipal;
 
-@interface MobileCalDAVCalendar : NSObject <CalDAVCalendar>
+@interface MobileCalDAVCalendar : NSObject <CalDAVCalendar, CDBRecordIDMap>
 {
     MobileCalDAVPrincipal *_principal;
     void *_calCalendar;
     NSMutableDictionary *_changesToClear;
     NSString *_calendarURLString;
+    NSMutableArray *_newlyAddedItems;
     _Bool _isScheduleOutbox;
     _Bool _isEnabled;
     _Bool _wasModifiedLocally;
@@ -130,6 +132,7 @@
 @property(readonly, nonatomic) void *calCalendar;
 - (void *)initCalCalendarWithTitle:(id)arg1;
 - (void)_updateCalendarInfo;
+@property(retain, nonatomic) NSArray *newlyAddedItems;
 @property(readonly, nonatomic) NSString *accountID;
 @property(readonly, nonatomic) NSString *displayColor;
 @property(readonly, nonatomic) _Bool isHidden;
@@ -141,7 +144,9 @@
 - (_Bool)setScheduleTag:(id)arg1 forItemAtURL:(id)arg2;
 - (_Bool)setEtag:(id)arg1 forItemAtURL:(id)arg2;
 - (_Bool)setURL:(id)arg1 forResourceWithUUID:(id)arg2;
-- (struct CalRecordID *)recordIDForUniqueIdentifier:(id)arg1;
+- (const struct CalRecordID *)recordIDForExternalIdentifier:(id)arg1;
+- (void)setExternalIdentifier:(id)arg1 forRecordID:(struct CalRecordID *)arg2;
+- (const struct CalRecordID *)recordIDForUniqueIdentifier:(id)arg1;
 - (void)setUniqueIdentifier:(id)arg1 forRecordID:(struct CalRecordID *)arg2;
 - (void *)_copyCalItemWithExternalID:(id)arg1;
 - (void *)_copyCalItemWithUniqueIdentifier:(id)arg1 inCalendar:(void *)arg2 orStore:(void *)arg3;

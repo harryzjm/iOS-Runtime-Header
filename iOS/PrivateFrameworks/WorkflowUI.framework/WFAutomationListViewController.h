@@ -76,6 +76,7 @@
 - (void)updateTableViewLayoutMargins;
 - (void)updateSubheadLayoutMargins;
 - (void)viewLayoutMarginsDidChange;
+- (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)loadView;
 - (void)dealloc;

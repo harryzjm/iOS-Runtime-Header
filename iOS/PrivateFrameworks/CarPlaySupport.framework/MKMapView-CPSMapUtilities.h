@@ -7,6 +7,6 @@
 #import <MapKit/MKMapView.h>
 
 @interface MKMapView (CPSMapUtilities)
-- (void)_CPS_setCamera:(id)arg1 animated:(_Bool)arg2;
+- (void)_CPS_setCamera:(id)arg1 animated:(_Bool)arg2 completionBlock:(CDUnknownBlockType)arg3;
 @end
 

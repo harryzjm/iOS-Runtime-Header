@@ -15,9 +15,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)systemImageNameForActionManager:(id)arg1;
 + (id)createActivityWithActionManager:(id)arg1;
 + (id)createBarButtonItemWithTarget:(id)arg1 action:(SEL)arg2 actionManager:(id)arg3;
-+ (_Bool)canPerformOnImplicitSelection;
++ (_Bool)canPerformOnImplicitSelectionInContainerCollection:(id)arg1;
 + (_Bool)canPerformOnSubsetOfSelection;
 + (_Bool)canPerformWithSelectionSnapshot:(id)arg1 person:(id)arg2;
 + (id)localizedTitleForUseCase:(unsigned long long)arg1 actionManager:(id)arg2;

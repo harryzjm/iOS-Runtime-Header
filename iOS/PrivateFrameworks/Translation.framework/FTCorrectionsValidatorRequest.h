@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_17540bad)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_17540bad)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSString *corrected_utterance;
 @property(readonly, nonatomic) NSString *original_utterance;
 @property(readonly, nonatomic) FTRecognitionResult *recognition_result;

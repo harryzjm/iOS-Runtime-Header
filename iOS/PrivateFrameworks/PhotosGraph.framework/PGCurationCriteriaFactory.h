@@ -6,52 +6,58 @@
 
 #import <objc/NSObject.h>
 
+@class NSMutableDictionary;
+
 @interface PGCurationCriteriaFactory : NSObject
 {
+    NSMutableDictionary *_holidayServiceByLocale;
 }
 
-+ (id)_indexSetFromBaseSceneNames:(id)arg1 leafSceneNames:(id)arg2;
-+ (id)_petScenesTrait;
-+ (id)_babyScenesTrait;
-+ (id)_tripScenesTrait;
-+ (id)_searchRestaurantCompulsoryScenesTrait;
-+ (id)_searchRestaurantScenesTrait;
-+ (id)_memoriesRestaurantScenesTrait;
-+ (id)_searchFallCriteriaWithGraph:(id)arg1;
-+ (id)_searchSummerCriteriaWithGraph:(id)arg1;
-+ (id)_searchSpringCriteriaWithGraph:(id)arg1;
-+ (id)_searchWinterCriteriaWithGraph:(id)arg1;
-+ (id)_compulsoryRequiredTraitsFromBaseSceneNames:(id)arg1 leafSceneNames:(id)arg2;
-+ (id)_yourPetCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
-+ (id)_yourBabyCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
-+ (id)_longTripCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
-+ (id)_shortTripCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
-+ (id)_dinnerCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
-+ (id)_lunchCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
-+ (id)_breakfastCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
-+ (id)_nightOutCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
-+ (id)_sportEventCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
-+ (id)_museumCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
-+ (id)_performanceCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
-+ (id)_festivalCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
-+ (id)_concertCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
-+ (id)_entertainmentCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
-+ (id)_climbingCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
-+ (id)_beachingCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
-+ (id)_winterSportCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
-+ (id)_divingCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
-+ (id)_hikingCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
-+ (id)_holidayEventCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
-+ (id)_anniversaryCriteriaWithPersonIdentifier:(id)arg1 inGraph:(id)arg2 client:(unsigned long long)arg3;
-+ (id)_birthdayCriteriaWithPersonIdentifier:(id)arg1 inGraph:(id)arg2 client:(unsigned long long)arg3;
-+ (id)_weddingCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
-+ (id)foodieCurationCriteriaWithPersonLocalIdentifier:(id)arg1 graph:(id)arg2 client:(unsigned long long)arg3;
-+ (id)foodieCurationCriteriaWithGraph:(id)arg1 client:(unsigned long long)arg2;
-+ (id)curationCriteriaWithGraph:(id)arg1 seasonName:(id)arg2 client:(unsigned long long)arg3;
-+ (id)tripCurationCriteriaWithCollection:(id)arg1 inGraph:(id)arg2 client:(unsigned long long)arg3;
-+ (id)petCurationCriteriaWithCollection:(id)arg1 inGraph:(id)arg2 client:(unsigned long long)arg3;
-+ (id)babyCurationCriteriaWithCollection:(id)arg1 inGraph:(id)arg2 client:(unsigned long long)arg3;
-+ (id)curationCriteriaWithCollection:(id)arg1 meaningLabel:(id)arg2 inGraph:(id)arg3 client:(unsigned long long)arg4;
+- (void).cxx_destruct;
+- (id)_indexSetFromBaseSceneNames:(id)arg1 leafSceneNames:(id)arg2;
+- (id)_petScenesTrait;
+- (id)_babyScenesTrait;
+- (id)_tripScenesTrait;
+- (id)_searchRestaurantCompulsoryScenesTrait;
+- (id)_searchRestaurantScenesTrait;
+- (id)_memoriesRestaurantScenesTrait;
+- (id)_searchFallCriteria;
+- (id)_searchSummerCriteria;
+- (id)_searchSpringCriteria;
+- (id)_searchWinterCriteria;
+- (id)_compulsoryRequiredTraitsFromBaseSceneNames:(id)arg1 leafSceneNames:(id)arg2;
+- (id)_yourPetCriteriaWithClient:(unsigned long long)arg1;
+- (id)_yourBabyCriteriaWithClient:(unsigned long long)arg1;
+- (id)_longTripCriteriaWithClient:(unsigned long long)arg1;
+- (id)_shortTripCriteriaWithClient:(unsigned long long)arg1;
+- (id)_dinnerCriteriaWithClient:(unsigned long long)arg1;
+- (id)_lunchCriteriaWithClient:(unsigned long long)arg1;
+- (id)_breakfastCriteriaWithClient:(unsigned long long)arg1;
+- (id)_nightOutCriteriaWithClient:(unsigned long long)arg1;
+- (id)_sportEventCriteriaWithClient:(unsigned long long)arg1;
+- (id)_museumCriteriaWithClient:(unsigned long long)arg1;
+- (id)_performanceCriteriaWithClient:(unsigned long long)arg1;
+- (id)_festivalCriteriaWithClient:(unsigned long long)arg1;
+- (id)_concertCriteriaWithClient:(unsigned long long)arg1;
+- (id)_entertainmentCriteriaWithClient:(unsigned long long)arg1;
+- (id)_climbingCriteriaWithClient:(unsigned long long)arg1;
+- (id)_beachingCriteriaWithClient:(unsigned long long)arg1;
+- (id)_winterSportCriteriaWithClient:(unsigned long long)arg1;
+- (id)_divingCriteriaWithClient:(unsigned long long)arg1;
+- (id)_hikingCriteriaWithClient:(unsigned long long)arg1;
+- (id)_holidayEventCriteriaWithGraph:(id)arg1 featureNodes:(id)arg2 client:(unsigned long long)arg3;
+- (id)_anniversaryCriteriaWithPersonLocalIdentifier:(id)arg1 client:(unsigned long long)arg2;
+- (id)_birthdayCriteriaWithPersonLocalIdentifiers:(id)arg1 client:(unsigned long long)arg2;
+- (id)_weddingCriteriaWithClient:(unsigned long long)arg1;
+- (id)foodieCurationCriteriaWithPersonLocalIdentifier:(id)arg1 client:(unsigned long long)arg2;
+- (id)foodieCurationCriteriaWithClient:(unsigned long long)arg1;
+- (id)curationCriteriaWithSeasonName:(id)arg1 client:(unsigned long long)arg2;
+- (id)tripCurationCriteriaWithCollection:(id)arg1 client:(unsigned long long)arg2;
+- (id)petCurationCriteriaWithCollection:(id)arg1 client:(unsigned long long)arg2;
+- (id)babyCurationCriteriaWithCollection:(id)arg1 client:(unsigned long long)arg2;
+- (id)curationCriteriaWithCollection:(id)arg1 meaningLabel:(id)arg2 inGraph:(id)arg3 client:(unsigned long long)arg4;
+- (id)curationCriteriaWithMeaningLabel:(id)arg1 featureNodes:(id)arg2 inGraph:(id)arg3 client:(unsigned long long)arg4;
+- (id)holidayServiceWithGraph:(id)arg1;
 
 @end
 

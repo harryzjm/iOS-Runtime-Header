@@ -6,38 +6,70 @@
 
 #import <objc/NSObject.h>
 
-#import <MapsSuggestions/MapsSuggestionsJSONable-Protocol.h>
+#import <MapsSuggestions/MapsSuggestionsCircuit-Protocol.h>
 #import <MapsSuggestions/MapsSuggestionsSink-Protocol.h>
 #import <MapsSuggestions/MapsSuggestionsTriggerObserver-Protocol.h>
 
-@class MapsSuggestionsEngine, NSString;
+@class MapsSuggestionsEngine, MapsSuggestionsEngineBuilder, MapsSuggestionsObservers, NSArray, NSDate, NSMutableArray, NSMutableSet, NSString;
+@protocol MapsSuggestionsTimer;
 
-@interface MapsSuggestionsEngineRunner : NSObject <MapsSuggestionsTriggerObserver, MapsSuggestionsSink, MapsSuggestionsJSONable>
+@interface MapsSuggestionsEngineRunner : NSObject <MapsSuggestionsTriggerObserver, MapsSuggestionsSink, MapsSuggestionsCircuit>
 {
     struct Queue _queue;
     MapsSuggestionsEngine *_engine;
-    struct _Config _config;
-    struct _State _state;
+    struct _Config {
+        NSString *name;
+        MapsSuggestionsEngineBuilder *engineBuilder;
+        MapsSuggestionsObservers *observers;
+        double minRunTime;
+        double maxRunTime;
+        double minSleepTime;
+        double maxSleepTime;
+        double leewayRunTime;
+        double leewaySleepTime;
+        NSMutableArray *triggers;
+        NSMutableArray *conditions;
+        NSMutableSet *filters;
+        unsigned long long maxEntries;
+        _Bool nilledWhenAsleep;
+    } _config;
+    struct _State {
+        NSDate *minSilenceDate;
+        NSDate *earliestRunDate;
+        NSString *firedTriggerName;
+        NSString *failedConditionName;
+        id <MapsSuggestionsTimer> stopRunTimer;
+        id <MapsSuggestionsTimer> wakeUpTimer;
+        NSArray *entries;
+    } _state;
+    id <MapsSuggestionsTimer> _wakeUpTimer;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <MapsSuggestionsTimer> wakeUpTimer; // @synthesize wakeUpTimer=_wakeUpTimer;
 - (id)objectForJSON;
+- (id)nameForJSON;
 - (void)invalidateForMapsSuggestionsManager:(id)arg1;
 - (void)triggerFired:(id)arg1;
 @property(readonly, nonatomic) NSString *uniqueName;
 - (void)runASAP;
 - (void)scheduleNextRun;
-- (void)removeRunCondition:(id)arg1;
+- (void)removeConditions:(id)arg1;
+- (void)removeCondition:(id)arg1;
 - (void)addPostFilter:(id)arg1;
-- (void)addRunCondition:(id)arg1;
+- (void)addConditions:(id)arg1;
+- (void)addCondition:(id)arg1;
+- (void)removeTriggers:(id)arg1;
 - (void)removeTrigger:(id)arg1;
+- (void)addTriggers:(id)arg1;
 - (void)addTrigger:(id)arg1;
-- (void)addObserver:(id)arg1;
+- (void)registerObserver:(id)arg1;
 @property(readonly, nonatomic) __weak MapsSuggestionsEngine *engine;
 - (id)initWithEngineBuilder:(id)arg1 name:(id)arg2 minRunTime:(double)arg3 maxRunTime:(double)arg4 minSleepTime:(double)arg5 maxSleepTime:(double)arg6 maxEntries:(unsigned long long)arg7;
 - (id)initWithEngineBuilder:(id)arg1 name:(id)arg2 minRunTime:(double)arg3 maxRunTime:(double)arg4 minSleepTime:(double)arg5 maxSleepTime:(double)arg6 runTimeLeeway:(double)arg7 sleepTimeLeeway:(double)arg8 maxEntries:(unsigned long long)arg9 nilledWhenAsleep:(_Bool)arg10;
-- (id)initWithEngineBuilder:(id)arg1 name:(id)arg2 minRunTime:(double)arg3 maxRunTime:(double)arg4 minSleepTime:(double)arg5 maxSleepTime:(double)arg6 runTimeLeeway:(double)arg7 sleepTimeLeeway:(double)arg8 maxEntries:(unsigned long long)arg9 nilledWhenAsleep:(_Bool)arg10 timerClass:(Class)arg11;
+- (id)initWithEngineBuilder:(id)arg1 name:(id)arg2 minRunTime:(double)arg3 maxRunTime:(double)arg4 minSleepTime:(double)arg5 maxSleepTime:(double)arg6 runTimeLeeway:(double)arg7 sleepTimeLeeway:(double)arg8 maxEntries:(unsigned long long)arg9 nilledWhenAsleep:(_Bool)arg10 wakeUpTimerClass:(Class)arg11;
+- (id)initWithEngineBuilder:(id)arg1 name:(id)arg2 minRunTime:(double)arg3 maxRunTime:(double)arg4 minSleepTime:(double)arg5 maxSleepTime:(double)arg6 runTimeLeeway:(double)arg7 sleepTimeLeeway:(double)arg8 maxEntries:(unsigned long long)arg9 nilledWhenAsleep:(_Bool)arg10 wakeUpTimerClass:(Class)arg11 stopRunTimerClass:(Class)arg12;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

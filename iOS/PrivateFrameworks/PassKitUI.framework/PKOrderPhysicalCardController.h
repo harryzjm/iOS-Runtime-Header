@@ -8,7 +8,7 @@
 
 #import <PassKitUI/PKSetupFlowControllerProtocol-Protocol.h>
 
-@class CNPostalAddress, NSArray, NSString, PKAccount, PKAccountService, PKAccountWebServicePhysicalCardActionRequest, PKAccountWebServiceRequestPhysicalCardRequest, PKPaymentPass, PKPaymentWebService, PKPhysicalCard, PKPhysicalCardArtworkOption;
+@class CNPostalAddress, NSArray, NSString, PKAccount, PKAccountService, PKAccountUser, PKAccountWebServicePhysicalCardActionRequest, PKAccountWebServiceRequestPhysicalCardRequest, PKPaymentPass, PKPaymentWebService, PKPhysicalCard, PKPhysicalCardArtworkOption;
 @protocol PKSetupFlowControllerProtocol;
 
 @interface PKOrderPhysicalCardController : NSObject <PKSetupFlowControllerProtocol>
@@ -16,6 +16,7 @@
     PKAccountService *_accountService;
     PKPaymentWebService *_paymentWebService;
     PKAccount *_account;
+    PKAccountUser *_accountUser;
     unsigned long long _orderReason;
     PKPhysicalCard *_physicalCardToReplace;
     NSArray *_priceOptions;
@@ -46,7 +47,7 @@
 - (void)startOrderPhysicalCardWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateCustomizationOptionsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)nextViewControllerWithCompletion:(CDUnknownBlockType)arg1;
-- (id)initWithAccountService:(id)arg1 paymentWebService:(id)arg2 paymentPass:(id)arg3 account:(id)arg4 orderReason:(unsigned long long)arg5 context:(long long)arg6 currentPhysicalCard:(id)arg7;
+- (id)initWithAccountService:(id)arg1 paymentWebService:(id)arg2 paymentPass:(id)arg3 account:(id)arg4 accountUser:(id)arg5 orderReason:(unsigned long long)arg6 context:(long long)arg7 currentPhysicalCard:(id)arg8;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

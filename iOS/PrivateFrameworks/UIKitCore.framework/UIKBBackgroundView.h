@@ -6,7 +6,7 @@
 
 #import <UIKitCore/UIKBCacheableView-Protocol.h>
 
-@class NSObject, NSString, UIKBRenderConfig, UIKBTree, UITextInputTraits;
+@class NSObject, NSString, UIKBRenderConfig, UIKBScreenTraits, UIKBTree, UITextInputTraits;
 
 __attribute__((visibility("hidden")))
 @interface UIKBBackgroundView <UIKBCacheableView>
@@ -24,8 +24,10 @@ __attribute__((visibility("hidden")))
     _Bool _centerFilled;
     _Bool _hasCandidateKeys;
     UIKBRenderConfig *_renderConfig;
+    UIKBScreenTraits *_screenTraits;
 }
 
+@property(retain, nonatomic) UIKBScreenTraits *screenTraits; // @synthesize screenTraits=_screenTraits;
 @property(retain, nonatomic) NSObject *geometryCacheKey; // @synthesize geometryCacheKey=_geometryCacheKey;
 @property(retain, nonatomic) UIKBRenderConfig *renderConfig; // @synthesize renderConfig=_renderConfig;
 @property(readonly, nonatomic) long long assetIdiom;

@@ -35,6 +35,7 @@
 - (_Bool)isSpacingFlexibleForEdge:(unsigned long long)arg1;
 - (_Bool)isSpacingFixedForEdge:(unsigned long long)arg1;
 - (struct NSDirectionalEdgeInsets)edgeOutsets;
+- (id)_externalDescription;
 - (id)description;
 - (id)initWithLeading:(id)arg1 top:(id)arg2 trailing:(id)arg3 bottom:(id)arg4;
 

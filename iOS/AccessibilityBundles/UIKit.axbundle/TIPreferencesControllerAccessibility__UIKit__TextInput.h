@@ -12,10 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)valueForPreferenceKey:(id)arg1;
-- (void)_accessibilityUpdateMouseKeysSetting;
 - (id)init;
-- (void)_accessibilitySetMouseKeysEnabled:(id)arg1;
-- (id)_accessibilityMouseKeysEnabled;
 
 @end
 

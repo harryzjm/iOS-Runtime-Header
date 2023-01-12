@@ -14,7 +14,6 @@
 - (id)_accessibilitySpeakThisViewController;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_updateDisplayModeButtonItem;
-- (void)_axApplyDisplayModeLabel;
 - (id)displayModeButtonItem;
 - (void)_loadNewSubviews:(id)arg1;
 

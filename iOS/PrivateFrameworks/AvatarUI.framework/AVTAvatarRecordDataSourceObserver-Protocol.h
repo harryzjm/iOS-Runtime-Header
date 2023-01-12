@@ -6,15 +6,15 @@
 
 #import <AvatarUI/NSObject-Protocol.h>
 
-@class AVTAvatarRecordDataSource;
+@class AVTPAvatarRecordDataSource;
 @protocol AVTAvatarRecord;
 
 @protocol AVTAvatarRecordDataSourceObserver <NSObject>
 
 @optional
-- (void)significantRecordChangeInDataSource:(AVTAvatarRecordDataSource *)arg1;
-- (void)dataSource:(AVTAvatarRecordDataSource *)arg1 didRemoveRecord:(id <AVTAvatarRecord>)arg2 atIndex:(unsigned long long)arg3;
-- (void)dataSource:(AVTAvatarRecordDataSource *)arg1 didEditRecord:(id <AVTAvatarRecord>)arg2 atIndex:(unsigned long long)arg3;
-- (void)dataSource:(AVTAvatarRecordDataSource *)arg1 didAddRecord:(id <AVTAvatarRecord>)arg2 atIndex:(unsigned long long)arg3;
+- (void)significantRecordChangeInDataSource:(AVTPAvatarRecordDataSource *)arg1;
+- (void)dataSource:(AVTPAvatarRecordDataSource *)arg1 didRemoveRecord:(id <AVTAvatarRecord>)arg2 atIndex:(unsigned long long)arg3;
+- (void)dataSource:(AVTPAvatarRecordDataSource *)arg1 didEditRecord:(id <AVTAvatarRecord>)arg2 atIndex:(unsigned long long)arg3;
+- (void)dataSource:(AVTPAvatarRecordDataSource *)arg1 didAddRecord:(id <AVTAvatarRecord>)arg2 atIndex:(unsigned long long)arg3;
 @end
 

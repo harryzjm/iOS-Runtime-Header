@@ -8,7 +8,7 @@
 
 #import <VideoSubscriberAccount/VSRemoteNotifierDelegate-Protocol.h>
 
-@class NSOperationQueue, NSString, VSDeveloperServiceConnection, VSPreferences, VSRemoteNotifier, VSStoreURLBag;
+@class NSOperationQueue, NSString, VSAMSBagLoadOperation, VSDeveloperServiceConnection, VSPreferences, VSRemoteNotifier;
 
 @interface VSIdentityProviderAvailabilityInfoCenter : NSObject <VSRemoteNotifierDelegate>
 {
@@ -16,17 +16,17 @@
     long long _status;
     NSOperationQueue *_privateQueue;
     VSRemoteNotifier *_remoteNotifier;
-    VSStoreURLBag *_bag;
     VSPreferences *_preferences;
     VSDeveloperServiceConnection *_developerServiceConnection;
+    VSAMSBagLoadOperation *_mockAMSBagLoadOperation;
 }
 
 + (_Bool)automaticallyNotifiesObserversOfStatus;
 + (id)defaultCenter;
 - (void).cxx_destruct;
+@property(retain, nonatomic) VSAMSBagLoadOperation *mockAMSBagLoadOperation; // @synthesize mockAMSBagLoadOperation=_mockAMSBagLoadOperation;
 @property(retain, nonatomic) VSDeveloperServiceConnection *developerServiceConnection; // @synthesize developerServiceConnection=_developerServiceConnection;
 @property(retain, nonatomic) VSPreferences *preferences; // @synthesize preferences=_preferences;
-@property(retain, nonatomic) VSStoreURLBag *bag; // @synthesize bag=_bag;
 @property(retain, nonatomic) VSRemoteNotifier *remoteNotifier; // @synthesize remoteNotifier=_remoteNotifier;
 @property(nonatomic) _Bool hasDeterminedInitialStatus; // @synthesize hasDeterminedInitialStatus=_hasDeterminedInitialStatus;
 @property(retain, nonatomic) NSOperationQueue *privateQueue; // @synthesize privateQueue=_privateQueue;

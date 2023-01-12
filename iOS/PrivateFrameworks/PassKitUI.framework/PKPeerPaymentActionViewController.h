@@ -9,7 +9,7 @@
 #import <PassKitUI/PKPeerPaymentActionControllerDelegate-Protocol.h>
 
 @class NSDecimalNumber, NSString, PKPaymentPass, PKPeerPaymentAccount, PKPeerPaymentAccountFeatureDescriptor, PKPeerPaymentActionController, PKPeerPaymentWebService;
-@protocol PKPeerPaymentActionViewControllerDelegate;
+@protocol PKPassLibraryDataProvider, PKPeerPaymentActionViewControllerDelegate;
 
 @interface PKPeerPaymentActionViewController : UIViewController <PKPeerPaymentActionControllerDelegate>
 {
@@ -17,6 +17,7 @@
     _Bool _dismissingViewController;
     _Bool _showCancelButton;
     id <PKPeerPaymentActionViewControllerDelegate> _delegate;
+    id <PKPassLibraryDataProvider> _passLibraryDataProvider;
     PKPeerPaymentAccount *_account;
     PKPeerPaymentActionController *_actionController;
     PKPeerPaymentWebService *_webService;
@@ -31,7 +32,7 @@
 }
 
 + (id)navigationBarBackgroundColor;
-+ (id)peerPaymentActionViewControllerForAction:(unsigned long long)arg1 paymentPass:(id)arg2 webService:(id)arg3 context:(long long)arg4;
++ (id)peerPaymentActionViewControllerForAction:(unsigned long long)arg1 paymentPass:(id)arg2 webService:(id)arg3 passLibraryDataProvider:(id)arg4 context:(long long)arg5;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool showCancelButton; // @synthesize showCancelButton=_showCancelButton;
 @property(copy, nonatomic) NSDecimalNumber *maxLoadAmount; // @synthesize maxLoadAmount=_maxLoadAmount;
@@ -45,6 +46,7 @@
 @property(readonly, nonatomic) PKPeerPaymentWebService *webService; // @synthesize webService=_webService;
 @property(readonly, nonatomic) PKPeerPaymentActionController *actionController; // @synthesize actionController=_actionController;
 @property(retain, nonatomic) PKPeerPaymentAccount *account; // @synthesize account=_account;
+@property(nonatomic) __weak id <PKPassLibraryDataProvider> passLibraryDataProvider; // @synthesize passLibraryDataProvider=_passLibraryDataProvider;
 @property(nonatomic) __weak id <PKPeerPaymentActionViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)_cancelBarButton;
 - (void)_handleApplicationDidBecomeActiveNotification:(id)arg1;
@@ -65,7 +67,7 @@
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)loadView;
 - (void)dealloc;
-- (id)initWithPaymentPass:(id)arg1 webService:(id)arg2 context:(long long)arg3;
+- (id)initWithPaymentPass:(id)arg1 webService:(id)arg2 passLibraryDataProvider:(id)arg3 context:(long long)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -8,7 +8,6 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-__attribute__((visibility("hidden")))
 @interface CKDPZoneCapabilities : PBCodable <NSCopying>
 {
     int _sharingType;

@@ -11,7 +11,7 @@
 
 @protocol MKTransitItemIncidentView <NSObject>
 @property(nonatomic) _Bool padBottom;
-@property(nonatomic) long long position;
+@property(nonatomic) long long cellPosition;
 - (void)configureWithMessage:(NSString *)arg1 incident:(id <GEOTransitIncident>)arg2 referenceDate:(NSDate *)arg3 shouldShowImage:(_Bool)arg4 inSiri:(_Bool)arg5;
 - (void)configureWithIncidentMessage:(id <GEOTransitRoutingIncidentMessage>)arg1 referenceDate:(NSDate *)arg2 shouldShowImage:(_Bool)arg3 inSiri:(_Bool)arg4;
 - (void)configureWithIncident:(id <GEOTransitIncident>)arg1 referenceDate:(NSDate *)arg2 shouldShowImage:(_Bool)arg3 inSiri:(_Bool)arg4;

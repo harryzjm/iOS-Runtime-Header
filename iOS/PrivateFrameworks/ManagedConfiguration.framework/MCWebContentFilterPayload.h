@@ -13,8 +13,8 @@
     _Bool _filterSockets;
     NSString *_filterType;
     NSArray *_permittedURLStrings;
-    NSArray *_whitelistedBookmarks;
-    NSArray *_blacklistedURLStrings;
+    NSArray *_allowListBookmarks;
+    NSArray *_denyListURLStrings;
     NSDictionary *_pluginConfiguration;
     NSString *_name;
     NSString *_pluginBundleID;
@@ -30,8 +30,8 @@
 @property(copy, nonatomic) NSString *pluginBundleID; // @synthesize pluginBundleID=_pluginBundleID;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(retain, nonatomic) NSDictionary *pluginConfiguration; // @synthesize pluginConfiguration=_pluginConfiguration;
-@property(retain, nonatomic) NSArray *blacklistedURLStrings; // @synthesize blacklistedURLStrings=_blacklistedURLStrings;
-@property(retain, nonatomic) NSArray *whitelistedBookmarks; // @synthesize whitelistedBookmarks=_whitelistedBookmarks;
+@property(retain, nonatomic) NSArray *denyListURLStrings; // @synthesize denyListURLStrings=_denyListURLStrings;
+@property(retain, nonatomic) NSArray *allowListBookmarks; // @synthesize allowListBookmarks=_allowListBookmarks;
 @property(retain, nonatomic) NSArray *permittedURLStrings; // @synthesize permittedURLStrings=_permittedURLStrings;
 @property(nonatomic) _Bool autoFilterEnabled; // @synthesize autoFilterEnabled=_autoFilterEnabled;
 @property(copy, nonatomic) NSString *filterType; // @synthesize filterType=_filterType;

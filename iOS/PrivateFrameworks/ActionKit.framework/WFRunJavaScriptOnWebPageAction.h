@@ -14,11 +14,17 @@
 {
 }
 
+- (id)parameterSummary;
+- (id)name;
+- (id)smartPromptWithContentDescription:(id)arg1 contentDestination:(id)arg2 workflowName:(id)arg3;
+- (id)noWebPageProvidedError;
 - (id)userInterfaceToPresentAlertForEvaluator:(id)arg1;
 - (id)_getErrorFromScript:(id)arg1;
 - (void)getWebPageFromInput:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)evaluateQuarantineWithJavaScript:(id)arg1 webPage:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)evaluateQuarantineWithJavaScript:(id)arg1 webPageURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)runAsynchronouslyWithInput:(id)arg1;
+- (id)invalidJavaScriptErrorWithSyntaxErrorString:(id)arg1;
+- (id)missingCompletionError;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

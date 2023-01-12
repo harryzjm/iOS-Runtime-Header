@@ -13,10 +13,10 @@
     _Bool _truncateTitleMiddle;
     _Bool _secondaryTitleIsDetached;
     _Bool _useCompactDisplay;
+    _Bool _buttonItemsAreTrailing;
     SFImage *_leadingImage;
     SFImage *_fallbackImage;
     SFButton *_leadingButton;
-    NSString *_applicationBundleIdentifier;
     NSString *_nearbyBusinessesString;
     SFRichText *_title;
     SFFormattedText *_secondaryTitle;
@@ -28,12 +28,17 @@
     SFFormattedText *_trailingTopText;
     SFFormattedText *_trailingMiddleText;
     SFFormattedText *_trailingBottomText;
+    NSArray *_buttonItems;
+    SFImage *_trailingThumbnail;
     MKSearchFoundationResult *_mapsResult;
 }
 
 + (_Bool)urlIsDraggable:(id)arg1;
 - (void).cxx_destruct;
 @property(retain) MKSearchFoundationResult *mapsResult; // @synthesize mapsResult=_mapsResult;
+@property(retain) SFImage *trailingThumbnail; // @synthesize trailingThumbnail=_trailingThumbnail;
+@property _Bool buttonItemsAreTrailing; // @synthesize buttonItemsAreTrailing=_buttonItemsAreTrailing;
+@property(retain) NSArray *buttonItems; // @synthesize buttonItems=_buttonItems;
 @property _Bool useCompactDisplay; // @synthesize useCompactDisplay=_useCompactDisplay;
 @property(retain) SFFormattedText *trailingBottomText; // @synthesize trailingBottomText=_trailingBottomText;
 @property(retain) SFFormattedText *trailingMiddleText; // @synthesize trailingMiddleText=_trailingMiddleText;
@@ -49,12 +54,13 @@
 @property(retain) SFRichText *title; // @synthesize title=_title;
 @property(retain) NSString *nearbyBusinessesString; // @synthesize nearbyBusinessesString=_nearbyBusinessesString;
 @property _Bool isLocalApplicationResult; // @synthesize isLocalApplicationResult=_isLocalApplicationResult;
-@property(retain) NSString *applicationBundleIdentifier; // @synthesize applicationBundleIdentifier=_applicationBundleIdentifier;
 @property _Bool preventThumbnailImageScaling; // @synthesize preventThumbnailImageScaling=_preventThumbnailImageScaling;
 @property(retain) SFButton *leadingButton; // @synthesize leadingButton=_leadingButton;
 @property(retain) SFImage *fallbackImage; // @synthesize fallbackImage=_fallbackImage;
 @property(retain, nonatomic) SFImage *leadingImage; // @synthesize leadingImage=_leadingImage;
-- (Class)customCardSectionViewClass;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)requestAppClipObjects;
+- (Class)cardSectionViewClass;
 - (_Bool)hasLeadingImage;
 - (int)separatorStyle;
 - (id)punchouts;

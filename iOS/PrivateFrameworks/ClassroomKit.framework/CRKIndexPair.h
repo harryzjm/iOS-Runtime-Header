@@ -14,6 +14,7 @@
 
 @property(nonatomic) long long destinationIndex; // @synthesize destinationIndex=_destinationIndex;
 @property(nonatomic) long long sourceIndex; // @synthesize sourceIndex=_sourceIndex;
+- (id)description;
 
 @end
 

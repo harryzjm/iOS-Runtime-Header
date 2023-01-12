@@ -6,22 +6,27 @@
 
 #import <objc/NSObject.h>
 
-#import <ClassroomKit/CRKCourseEnrollmentControllerDelegate-Protocol.h>
+#import <ClassroomKit/CRKCourseEnrollmentControllerObserver-Protocol.h>
 #import <ClassroomKit/CRKSettingsUIVisibilityProvider-Protocol.h>
 
 @class CRKCourseEnrollmentController, CRKUserDefaultsObject, NSString;
 
-@interface CRKDefaultSettingsUIVisibilityProvider : NSObject <CRKCourseEnrollmentControllerDelegate, CRKSettingsUIVisibilityProvider>
+@interface CRKDefaultSettingsUIVisibilityProvider : NSObject <CRKCourseEnrollmentControllerObserver, CRKSettingsUIVisibilityProvider>
 {
     CRKUserDefaultsObject *mUIPreviouslyVisible;
     CRKCourseEnrollmentController *mEnrollmentController;
     _Bool _settingsUIVisible;
+    NSString *_paneStatus;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *paneStatus; // @synthesize paneStatus=_paneStatus;
 @property _Bool settingsUIVisible; // @synthesize settingsUIVisible=_settingsUIVisible;
+- (void)enrollmentControllerDidUpdateActiveCourses:(id)arg1;
 - (void)enrollmentControllerDidUpdateSettingsUIVisibility:(id)arg1;
 - (void)connectToDaemon;
+- (_Bool)isAnyCourseActiveInEnrollmentController:(id)arg1;
+- (void)updatePaneStatus;
 - (void)updateVisibilityState;
 - (void)updatePreviouslyVisibleDefaultWithValue:(_Bool)arg1;
 - (void)migrateOldUserDefaultsValues;

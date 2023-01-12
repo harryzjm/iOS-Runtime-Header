@@ -15,7 +15,7 @@
 }
 
 - (id)_contextualKeyAssetForDayHighlightItem:(id)arg1 contextualLocalDate:(id)arg2;
-- (void)enumerateContextualKeyAssetsForYearHighlight:(id)arg1 withOptions:(id)arg2 modelReader:(id)arg3 usingBlock:(CDUnknownBlockType)arg4;
+- (void)enumerateContextualKeyAssetsForYearHighlight:(id)arg1 withOptions:(id)arg2 modelReader:(id)arg3 curationContext:(id)arg4 usingBlock:(CDUnknownBlockType)arg5;
 - (_Bool)canProvideContextualKeyAssetsWithOptions:(id)arg1;
 
 // Remaining properties

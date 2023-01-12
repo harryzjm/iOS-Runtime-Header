@@ -5,12 +5,11 @@
 //
 
 #import <PassKitUI/PKPaymentCameraCaptureViewControllerDelegate-Protocol.h>
-#import <PassKitUI/PKPaymentSetupBrowseProductsViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentSetupDisambiguationViewControllerDelegate-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface PKPaymentCardManualEntryViewController <PKPaymentSetupDisambiguationViewControllerDelegate, PKPaymentSetupBrowseProductsViewControllerDelegate, PKPaymentCameraCaptureViewControllerDelegate>
+@interface PKPaymentCardManualEntryViewController <PKPaymentSetupDisambiguationViewControllerDelegate, PKPaymentCameraCaptureViewControllerDelegate>
 {
     NSArray *_pendingCameraCaptureObjects;
 }
@@ -21,7 +20,6 @@
 - (id)readonlyFieldIdentifiers;
 - (id)visibleFieldIdentifiers;
 - (id)defaultFields;
-- (void)browseProductsViewController:(id)arg1 didSelectProduct:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)disambiguationViewControllerSetupLater:(id)arg1;
 - (void)disambiguationViewController:(id)arg1 didSelectProduct:(id)arg2;
 - (void)fieldCellEditableTextFieldValueDidChange:(id)arg1;
@@ -41,6 +39,7 @@
 - (void)_cameraCaptureCancelButtonPressed:(id)arg1;
 - (void)_captureFromCamera:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (void)handleNextButtonTapped:(id)arg1;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;

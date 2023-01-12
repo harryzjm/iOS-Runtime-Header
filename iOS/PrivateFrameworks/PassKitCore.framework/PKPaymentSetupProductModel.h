@@ -6,20 +6,33 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class NSMutableArray, NSMutableDictionary, NSString;
 
 @interface PKPaymentSetupProductModel : NSObject
 {
     NSMutableDictionary *_paymentSetupProducts;
+    NSMutableArray *_allSections;
+    NSString *_localizedTitle;
+    NSString *_localizedSubtitle;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *localizedSubtitle; // @synthesize localizedSubtitle=_localizedSubtitle;
+@property(readonly, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
+- (id)description;
+- (void)_updatePaymentSetupProduct:(id)arg1 displayName:(id)arg2 localizedDescription:(id)arg3 partnerDictionary:(id)arg4 productIdentifier:(id)arg5 paymentOptions:(id)arg6 termsURL:(id)arg7 provisioningMethods:(id)arg8 readerModeMetadata:(id)arg9 requiredFields:(id)arg10 imageAssets:(id)arg11 minimumOSVersion:(id)arg12 region:(id)arg13 hsa2Requirement:(id)arg14 suppressPendingPurchases:(id)arg15 supportedTransitNetworkIdentifiers:(id)arg16 onboardingItems:(id)arg17 actionBaseURL:(id)arg18 productState:(id)arg19 minimumProductAge:(id)arg20 maximumProductAge:(id)arg21 minimumTargetUserSupportedAge:(id)arg22 associatedStoreIdentifiers:(id)arg23 appLaunchURL:(id)arg24 regionIdentifier:(id)arg25 type:(id)arg26 localizedNotificationTitle:(id)arg27 localizedNotificationMessage:(id)arg28 clientInfo:(id)arg29 searchTerms:(id)arg30;
+- (id)_paymentSetupProductsWithPartners:(id)arg1 products:(id)arg2 existingPaymentSetupProducts:(id)arg3;
+- (void)updateWithPaymentSetupProductsResponse:(id)arg1 productsFilter:(CDUnknownBlockType)arg2 sectionsFilter:(CDUnknownBlockType)arg3;
 - (id)productsForFeatureIdentifier:(unsigned long long)arg1;
-- (id)allSetupProducts;
-- (void)setPaymentSetupProducts:(id)arg1 forType:(unsigned long long)arg2;
-- (void)setPaymentSetupProducts:(id)arg1;
+- (id)productsForProductIdentifiers:(id)arg1;
 - (id)setupProductsOfType:(unsigned long long)arg1;
-- (void)addPaymentSetupProducts:(id)arg1;
+- (id)productForProductIdentifier:(id)arg1;
+- (id)allSetupProducts;
+- (void)setPaymentSetupProducts:(id)arg1;
+- (void)removePaymentSetupProducts:(id)arg1;
+- (void)updatePaymentSetupProducts:(id)arg1;
+- (void)setAllSections:(id)arg1;
+- (id)allSections;
 - (id)init;
 
 @end

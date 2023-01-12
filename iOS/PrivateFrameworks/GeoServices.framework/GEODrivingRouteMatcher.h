@@ -7,6 +7,7 @@
 __attribute__((visibility("hidden")))
 @interface GEODrivingRouteMatcher
 {
+    double _differentLegScorePenalty;
 }
 
 - (double)_courseFromLocation:(id)arg1;

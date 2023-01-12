@@ -26,6 +26,7 @@
 + (id)suggestedAttributes;
 + (id)utility;
 + (id)accountPlugin;
++ (id)extraneousAlarmCleaner;
 + (id)alarmEngine;
 + (id)crdt;
 + (id)ui;

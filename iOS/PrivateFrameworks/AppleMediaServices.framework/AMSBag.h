@@ -14,6 +14,8 @@
 @interface AMSBag : NSObject <AMSBagProtocol>
 {
     id <AMSBagDataSourceProtocol> _dataSource;
+    AMSProcessInfo *_processInfo;
+    shared_ptr_f2d2fb1b _underlyingBag;
 }
 
 + (void)_resetBagCache;
@@ -21,7 +23,10 @@
 + (id)bagCache;
 + (id)bagForProfile:(id)arg1 profileVersion:(id)arg2 processInfo:(id)arg3;
 + (id)bagForProfile:(id)arg1 profileVersion:(id)arg2;
+- (id).cxx_construct;
 - (void).cxx_destruct;
+@property(nonatomic) shared_ptr_f2d2fb1b underlyingBag; // @synthesize underlyingBag=_underlyingBag;
+@property(copy, nonatomic) AMSProcessInfo *processInfo; // @synthesize processInfo=_processInfo;
 @property(retain, nonatomic) id <AMSBagDataSourceProtocol> dataSource; // @synthesize dataSource=_dataSource;
 - (id)dictionaryForKey:(id)arg1;
 - (id)URLForKey:(id)arg1 account:(id)arg2;
@@ -34,12 +39,13 @@
 @property(readonly, nonatomic) NSString *descriptionExtended;
 @property(readonly, copy) NSString *description;
 - (void)createSnapshotWithCompletion:(CDUnknownBlockType)arg1;
+- (void)addDefaultValue:(id)arg1 forBagKey:(id)arg2;
 - (_Bool)isLoaded;
 @property(readonly, copy, nonatomic) NSString *profileVersion;
 @property(readonly, copy, nonatomic) NSString *profile;
-@property(readonly, copy, nonatomic) AMSProcessInfo *processInfo;
 @property(readonly, nonatomic, getter=isExpired) _Bool expired;
 @property(readonly, nonatomic) NSDate *expirationDate;
+- (id)initWithBag:(shared_ptr_f2d2fb1b)arg1 processInfo:(id)arg2;
 - (id)initWithDataSource:(id)arg1;
 
 // Remaining properties

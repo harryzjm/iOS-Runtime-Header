@@ -8,7 +8,7 @@
 
 @interface CHCTCRecognitionModel
 {
-    _Bool __hasBatchFirstFeatureArrayShape;
+    _Bool _hasBatchFirstFeatureArrayShape;
     long long _sequenceCompression;
     long long _distanceFeatureIndex;
     long long _sinAlphaFeatureIndex;
@@ -19,21 +19,21 @@
     struct CHCodeMap *_codeMap;
     long long _blankIndex;
     long long _spaceIndex;
-    long long __activationsDomain;
-    double __distMean;
-    double __distStd;
+    double _distMean;
+    double _distStd;
+    double _interpointDistance;
+    long long _activationsDomain;
     NSOrderedSet *__stringCodeMap;
-    double __interpointDistance;
     struct CVNLPTextDecodingPruningPolicy _decodingPruningPolicy;
 }
 
-@property(readonly) _Bool _hasBatchFirstFeatureArrayShape; // @synthesize _hasBatchFirstFeatureArrayShape=__hasBatchFirstFeatureArrayShape;
-@property(readonly) double _interpointDistance; // @synthesize _interpointDistance=__interpointDistance;
 @property(readonly, retain) NSOrderedSet *_stringCodeMap; // @synthesize _stringCodeMap=__stringCodeMap;
-@property(readonly) double _distStd; // @synthesize _distStd=__distStd;
-@property(readonly) double _distMean; // @synthesize _distMean=__distMean;
-@property(readonly) long long _activationsDomain; // @synthesize _activationsDomain=__activationsDomain;
-@property(readonly, nonatomic) struct CVNLPTextDecodingPruningPolicy decodingPruningPolicy; // @synthesize decodingPruningPolicy=_decodingPruningPolicy;
+@property(nonatomic) struct CVNLPTextDecodingPruningPolicy decodingPruningPolicy; // @synthesize decodingPruningPolicy=_decodingPruningPolicy;
+@property(nonatomic) long long activationsDomain; // @synthesize activationsDomain=_activationsDomain;
+@property(nonatomic) _Bool hasBatchFirstFeatureArrayShape; // @synthesize hasBatchFirstFeatureArrayShape=_hasBatchFirstFeatureArrayShape;
+@property(nonatomic) double interpointDistance; // @synthesize interpointDistance=_interpointDistance;
+@property(nonatomic) double distStd; // @synthesize distStd=_distStd;
+@property(nonatomic) double distMean; // @synthesize distMean=_distMean;
 @property(readonly, nonatomic) long long spaceIndex; // @synthesize spaceIndex=_spaceIndex;
 @property(readonly, nonatomic) long long blankIndex; // @synthesize blankIndex=_blankIndex;
 @property(readonly, nonatomic) struct CHCodeMap *codeMap; // @synthesize codeMap=_codeMap;
@@ -44,11 +44,12 @@
 @property(readonly, nonatomic) long long sinAlphaFeatureIndex; // @synthesize sinAlphaFeatureIndex=_sinAlphaFeatureIndex;
 @property(readonly, nonatomic) long long distanceFeatureIndex; // @synthesize distanceFeatureIndex=_distanceFeatureIndex;
 @property(readonly, nonatomic) long long sequenceCompression; // @synthesize sequenceCompression=_sequenceCompression;
-- (id)_extractFeaturesFromDrawing:(id)arg1 inputName:(id)arg2 interpointDistance:(double)arg3 initialVectorAnchorPoint:(struct CGPoint)arg4 error:(id *)arg5;
+- (id)_extractFeaturesFromDrawing:(id)arg1 inputName:(id)arg2 interpointDistance:(double)arg3 initialVectorAnchorPoint:(struct CGPoint)arg4 normalizeFeatures:(_Bool)arg5 padFeatures:(_Bool)arg6 error:(id *)arg7;
 - (id)_extractFeaturesFromDrawing:(id)arg1 inputName:(id)arg2 interpointDistance:(double)arg3 error:(id *)arg4;
-- (id)recognizeDrawing:(id)arg1 minimumDrawingSize:(struct CGSize)arg2 initialVectorAnchorPoint:(struct CGPoint)arg3 activeCharacterSet:(id)arg4 outStrokeEndings:(vector_afed86a5 *)arg5;
+- (id)recognizeDrawing:(id)arg1 minimumDrawingSize:(struct CGSize)arg2 initialVectorAnchorPoint:(struct CGPoint)arg3 activeCharacterSet:(id)arg4 outStrokeEndings:(void *)arg5;
+- (id)featureProviderForDrawing:(id)arg1 initialVectorAnchorPoint:(struct CGPoint)arg2 normalizeFeatures:(_Bool)arg3 padFeatures:(_Bool)arg4 outStrokeEndings:(void *)arg5 outInputSequenceLength:(long long *)arg6 outOutputSequenceLength:(long long *)arg7;
 - (void)dealloc;
-- (id)initWithModelName:(id)arg1 decodingPruningPolicy:(struct CVNLPTextDecodingPruningPolicy)arg2;
+- (id)initWithModelName:(id)arg1 decodingPruningPolicy:(struct CVNLPTextDecodingPruningPolicy)arg2 featureIndex:(long long)arg3;
 
 @end
 

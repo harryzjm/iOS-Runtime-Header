@@ -39,6 +39,7 @@
 - (Class)mutableObjectClass;
 - (void)setPropertiesWithObject:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
+@property(nonatomic, readonly) NSString *description;
 @property(nonatomic, readonly) NSNumber *year;
 @property(nonatomic, readonly) NSNumber *vehicleType;
 @property(nonatomic, readonly) NSString *vehicleIdentifier;

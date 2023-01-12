@@ -24,6 +24,7 @@
     double _approximateAxisLabelInterval;
 }
 
++ (id)seriesPointIntervalUnitForTimeScope:(long long)arg1 pointCount:(long long)arg2;
 + (id)_axisSpanDateComponentsWithTimeScope:(long long)arg1;
 + (id)_snappingStartDateWithStartDate:(id)arg1 velocity:(struct CGPoint)arg2 calendar:(id)arg3 timeScope:(long long)arg4 options:(long long)arg5;
 + (id)activeRangeFromCadenceRange:(id)arg1 timeScope:(long long)arg2 axisRange:(id)arg3 calendar:(id)arg4;

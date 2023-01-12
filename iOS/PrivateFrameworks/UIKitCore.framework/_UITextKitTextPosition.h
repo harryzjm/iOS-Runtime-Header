@@ -11,12 +11,13 @@ __attribute__((visibility("hidden")))
     long long _affinity;
 }
 
-+ (id)positionWithOffset:(long long)arg1 affinity:(long long)arg2;
 + (id)positionWithOffset:(long long)arg1;
++ (id)positionWithOffset:(long long)arg1 affinity:(long long)arg2;
 @property long long affinity; // @synthesize affinity=_affinity;
 @property long long offset; // @synthesize offset=_offset;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
+- (long long)compare:(id)arg1;
 - (id)init;
 
 @end

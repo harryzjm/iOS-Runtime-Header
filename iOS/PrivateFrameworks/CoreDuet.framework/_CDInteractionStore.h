@@ -55,6 +55,7 @@
 - (unsigned long long)deleteUnreferencedKeywords;
 - (void)exitMaintenanceMode;
 - (void)enterMaintenanceMode;
+- (id)usersWithInteractions;
 - (id)interactionCountPerMechanism;
 - (id)histogramContactInteractionsUsingPredicate:(id)arg1 withLimit:(unsigned long long)arg2;
 - (id)queryContactInteractionsUsingPredicate:(id)arg1 withLimit:(unsigned long long)arg2;
@@ -87,7 +88,6 @@
 - (id)dateFromTimeIntervalSinceRef:(double)arg1;
 - (id)createInteractionRecord:(id)arg1 context:(id)arg2 keywordCache:(id)arg3 attachmentCache:(id)arg4 contactCache:(id)arg5 error:(id *)arg6;
 - (void)updateCachedStatsForContactRecord:(id)arg1 isSender:(_Bool)arg2 withInteraction:(id)arg3;
-- (id)createInteractionRecord:(id)arg1 context:(id)arg2 error:(id *)arg3;
 - (void)fillWithoutRelationshipsInteractionRecord:(id)arg1 fromInteraction:(id)arg2;
 - (id)batchFetchExistingInteractionsWithUUIDs:(id)arg1 context:(id)arg2 error:(id *)arg3;
 - (id)batchFetchExistingContactRecords:(id)arg1 context:(id)arg2 error:(id *)arg3;

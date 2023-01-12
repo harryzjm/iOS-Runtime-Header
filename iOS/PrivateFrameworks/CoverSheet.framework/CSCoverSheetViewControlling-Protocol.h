@@ -14,6 +14,8 @@
 @protocol CSCoverSheetViewPresenting;
 
 @protocol CSCoverSheetViewControlling <CSAppearanceProviding, CSBehaviorProviding, CSPresentationProviding, CSEventHandling, CSCoverSheetParticipating, SBFIdleTimerBehaviorProviding>
+@property(readonly, nonatomic) unsigned int presentationFrameRateRangeReason;
+@property(readonly, nonatomic) struct CAFrameRateRange presentationPreferredFrameRateRange;
 @property(readonly, nonatomic) long long presentationAltitude;
 @property(readonly, nonatomic) long long presentationPriority;
 @property(readonly, nonatomic) long long presentationTransition;

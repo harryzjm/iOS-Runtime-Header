@@ -6,14 +6,16 @@
 
 #import <UIKit/UIViewController.h>
 
-@class IMCloudKitSyncProgress, UIButton, UIColor, UILabel, UIProgressView;
+@class IMCloudKitSyncProgress, UIButton, UIColor, UILabel, UIProgressView, UIToolbar;
 @protocol CKCloudKitSyncProgressViewControllerDelegate;
 
 @interface CKCloudKitSyncProgressViewController : UIViewController
 {
     _Bool _hidden;
+    _Bool _progressLabelIsWrapping;
     id <CKCloudKitSyncProgressViewControllerDelegate> _delegate;
     IMCloudKitSyncProgress *_lastProgress;
+    UIToolbar *_toolbar;
     UIColor *_originalProgressTintColor;
     UILabel *_progressLabel;
     UILabel *_userMessageLabel;
@@ -26,7 +28,9 @@
 @property(readonly, nonatomic) UIButton *actionButton; // @synthesize actionButton=_actionButton;
 @property(readonly, nonatomic) UILabel *userMessageLabel; // @synthesize userMessageLabel=_userMessageLabel;
 @property(readonly, nonatomic) UILabel *progressLabel; // @synthesize progressLabel=_progressLabel;
+@property(nonatomic) _Bool progressLabelIsWrapping; // @synthesize progressLabelIsWrapping=_progressLabelIsWrapping;
 @property(copy, nonatomic) UIColor *originalProgressTintColor; // @synthesize originalProgressTintColor=_originalProgressTintColor;
+@property(nonatomic) __weak UIToolbar *toolbar; // @synthesize toolbar=_toolbar;
 @property(retain, nonatomic) IMCloudKitSyncProgress *lastProgress; // @synthesize lastProgress=_lastProgress;
 @property(nonatomic, getter=isHidden) _Bool hidden; // @synthesize hidden=_hidden;
 @property(nonatomic) __weak id <CKCloudKitSyncProgressViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -37,6 +41,7 @@
 - (void)showUserMessageWithString:(id)arg1 showActionButton:(_Bool)arg2 withActionButtonLabel:(id)arg3;
 - (void)showProgressBarWithIndeterminateProgress:(_Bool)arg1 percentComplete:(double)arg2;
 - (void)viewDidLayoutSubviews;
+- (_Bool)_isProgressLabelWrapping;
 - (void)loadView;
 - (void)_addUserMessageLabel;
 - (void)_addProgressLabel;

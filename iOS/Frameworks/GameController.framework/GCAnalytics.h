@@ -17,15 +17,16 @@
 
 + (id)instance;
 - (void).cxx_destruct;
-- (void)dealloc;
 - (void)onSiriMotionEnabled;
 - (void)unpublishController:(id)arg1;
 - (void)publishController:(id)arg1;
 - (void)runInputPollTimer;
 - (void)checkMultipleControllers;
 - (void)sendInputsPressedEvent:(const CDStruct_6ad99454 *)arg1;
+- (void)dealloc;
 - (id)init;
 - (id)getBundleID;
+- (void)sendSettingsRPKitGesturesCustomized:(id)arg1 from:(id)arg2;
 - (void)sendSettingsCustomizedAppsEventForTotalCustomizedAppsCount:(int)arg1;
 - (void)sendSettingsDevicesEventForTotalCustomizedControllersCount:(int)arg1;
 - (void)sendSettingsIdentifyControllerEventForProductCategory:(id)arg1;
@@ -33,6 +34,10 @@
 - (void)sendSettingsCustomizationsResetEventForBundleID:(id)arg1 productCategory:(id)arg2;
 - (void)sendSettingsCustomizationsToggledEventForBundleID:(id)arg1 productCategory:(id)arg2 toggledOn:(_Bool)arg3;
 - (void)sendSettingsEnteredEvent;
+- (void)sendRPKitInstantCaptureBufferStartedEventForBundleID:(id)arg1;
+- (void)sendRPKitInstantCaptureSavedEventForBundleID:(id)arg1 productCategory:(id)arg2;
+- (void)sendRPKitManualRecordingSavedEventForBundleID:(id)arg1 productCategory:(id)arg2 duration:(int)arg3;
+- (void)sendRPKitScreenshotSavedEventForBundleID:(id)arg1 productCategory:(id)arg2;
 - (void)sendHapticsErrorRaisedEventFromSource:(id)arg1 productCategory:(id)arg2 errorType:(id)arg3;
 - (void)sendHapticsPlayerDestroyedEventForBundleID:(id)arg1 productCategory:(id)arg2 totalEventsProcessed:(int)arg3 transientEventsProcessed:(int)arg4 continuousEventsProcessed:(int)arg5 parameterCurvesProcessed:(int)arg6 sessionTotalDuration:(int)arg7 sessionActiveDuration:(int)arg8;
 - (void)sendHapticsClientDestroyedEventForBundleID:(id)arg1 productCategory:(id)arg2 totalPlayers:(int)arg3 sessionTotalDuration:(int)arg4 sessionActiveDuration:(int)arg5 terminationReason:(id)arg6;

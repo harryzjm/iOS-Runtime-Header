@@ -7,11 +7,12 @@
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class INCodableAttribute, NSArray, NSString;
+@class INCodableAttribute, NSArray, NSNumber, NSString;
 
 @interface INIntentCodableDescription <NSSecureCoding, NSCopying>
 {
     _Bool _userConfirmationRequired;
+    _Bool _foreground;
     _Bool _deprecated;
     _Bool _configurable;
     _Bool _eligibleForSuggestions;
@@ -26,10 +27,12 @@
     long long _intentCategory;
     NSString *_verb;
     NSArray *_phrases;
+    NSNumber *_versioningHash;
     NSArray *_entityVerbs;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)_intentClassNameWithDictionary:(id)arg1;
 + (id)__Key;
 + (id)__NameKey;
 + (id)__CategoryKey;
@@ -42,9 +45,12 @@
 + (id)__DescriptionIDKey;
 + (id)__EligibleForWidgetsKey;
 + (id)__EntityKey;
++ (id)__ForegroundKey;
++ (id)__HashKey;
 + (id)__IneligibleForSuggestionsKey;
 + (id)__InputKey;
 + (id)__KeyParameterKey;
++ (id)__NameKey;
 + (id)__ParameterKey;
 + (id)__ParametersKey;
 + (id)__PhrasesKey;
@@ -56,11 +62,13 @@
 + (id)__VerbAssociationsKey;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *entityVerbs; // @synthesize entityVerbs=_entityVerbs;
+@property(copy, nonatomic) NSNumber *versioningHash; // @synthesize versioningHash=_versioningHash;
 @property(retain, nonatomic) NSArray *phrases; // @synthesize phrases=_phrases;
 @property(nonatomic, getter=isEligibleForWidgets) _Bool eligibleForWidgets; // @synthesize eligibleForWidgets=_eligibleForWidgets;
 @property(nonatomic, getter=isEligibleForSuggestions) _Bool eligibleForSuggestions; // @synthesize eligibleForSuggestions=_eligibleForSuggestions;
 @property(nonatomic, getter=isConfigurable) _Bool configurable; // @synthesize configurable=_configurable;
 @property(nonatomic, getter=isDeprecated) _Bool deprecated; // @synthesize deprecated=_deprecated;
+@property(nonatomic, getter=isForeground) _Bool foreground; // @synthesize foreground=_foreground;
 @property(nonatomic) _Bool userConfirmationRequired; // @synthesize userConfirmationRequired=_userConfirmationRequired;
 @property(copy, nonatomic) NSString *verb; // @synthesize verb=_verb;
 @property(nonatomic) long long intentCategory; // @synthesize intentCategory=_intentCategory;

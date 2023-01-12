@@ -18,6 +18,7 @@
 + (id)PHShareErrorFromError:(id)arg1;
 + (void)publishShareWithUUID:(id)arg1 photoLibrary:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)acceptShareWithUUID:(id)arg1 photoLibrary:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)fetchShareFromShareURL:(id)arg1 photoLibrary:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 - (id)init;
 

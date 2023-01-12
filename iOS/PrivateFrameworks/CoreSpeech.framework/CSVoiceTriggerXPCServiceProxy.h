@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSHashTable, NSMutableSet;
+@class CSSiriAssertionMonitor, NSHashTable, NSMutableSet;
 
 @interface CSVoiceTriggerXPCServiceProxy : NSObject
 {
@@ -14,10 +14,12 @@
     _Bool _isRaiseToSpeakBypassed;
     NSMutableSet *_activationAssertions;
     NSHashTable *_observers;
+    CSSiriAssertionMonitor *_assertionMonitor;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(retain, nonatomic) CSSiriAssertionMonitor *assertionMonitor; // @synthesize assertionMonitor=_assertionMonitor;
 @property(retain, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property(nonatomic) _Bool isRaiseToSpeakBypassed; // @synthesize isRaiseToSpeakBypassed=_isRaiseToSpeakBypassed;
 @property(nonatomic) _Bool isPhraseSpotterBypassed; // @synthesize isPhraseSpotterBypassed=_isPhraseSpotterBypassed;
@@ -28,8 +30,10 @@
 - (void)setRaiseToSpeakBypassing:(_Bool)arg1 timeout:(double)arg2;
 - (void)setPhraseSpotterBypassing:(_Bool)arg1 timeout:(double)arg2;
 - (void)enableVoiceTrigger:(_Bool)arg1 withAssertion:(id)arg2 timestamp:(double)arg3;
+- (id)_fetchAssertionMonitor;
 - (void)unregisterObserver:(id)arg1;
 - (void)registerObserver:(id)arg1;
+- (id)initWithAssertionMonitor:(id)arg1;
 - (id)init;
 
 @end

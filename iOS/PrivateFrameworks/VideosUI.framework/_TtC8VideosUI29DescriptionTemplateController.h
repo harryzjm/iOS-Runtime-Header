@@ -4,19 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI29DescriptionTemplateController : UIViewController
+@interface _TtC8VideosUI29DescriptionTemplateController
 {
     MISSING_TYPE *templateViewModel;
 }
 
 - (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (void)loadView;
+- (void)vui_loadView;
 - (id)initWithCoder:(id)arg1;
 
 @end

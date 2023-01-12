@@ -43,6 +43,7 @@
 - (void)_registerTransaction:(id)arg1;
 - (id)_transactionForIdentifier:(id)arg1;
 - (void)reset;
+- (void)cancelAllActiveDatabaseOperationsForClient:(id)arg1 waitUntilFinished:(_Bool)arg2;
 - (void)cancelAllActiveDatabaseOperationsAndWaitUntilFinished:(_Bool)arg1;
 - (void)cancelAllActiveTransactions;
 - (void)cancelActiveTransactionForClient:(id)arg1;

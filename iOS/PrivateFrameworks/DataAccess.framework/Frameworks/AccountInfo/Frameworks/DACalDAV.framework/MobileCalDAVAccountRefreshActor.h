@@ -83,6 +83,7 @@
 - (void)_saveMoveChange:(id)arg1;
 - (void)_clearMoveChange:(id)arg1;
 - (void)_sendMoveTasks;
+- (_Bool)_checkForNewItemsDeletedSinceSyncStartedInCalendars:(id)arg1 database:(struct CalDatabase *)arg2;
 - (_Bool)_cleanUpDuplicateCalendar:(id)arg1 ofCalendar:(id)arg2;
 - (void)_cleanUpDuplicateCalendars;
 - (void)calendarRefreshForPrincipal:(id)arg1 completedWithNewCTags:(id)arg2 newSyncTokens:(id)arg3 calendarHomeSyncToken:(id)arg4 updatedCalendars:(id)arg5 error:(id)arg6;

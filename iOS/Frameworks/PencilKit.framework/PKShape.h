@@ -15,6 +15,7 @@
     PKStroke *_originalStroke;
 }
 
++ (id)snapToShapeActionNameForNumShapes:(unsigned long long)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) PKStroke *originalStroke; // @synthesize originalStroke=_originalStroke;
 @property(readonly, nonatomic) NSArray *strokes; // @synthesize strokes=_strokes;

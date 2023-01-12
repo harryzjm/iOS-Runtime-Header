@@ -9,8 +9,7 @@
 #import <CallHistory/NSCopying-Protocol.h>
 #import <CallHistory/NSSecureCoding-Protocol.h>
 
-@class CHHandle, CNContact, NSArray, NSDate, NSDictionary, NSNumber, NSSet, NSString, NSUUID, NSValue;
-@protocol CHPhoneBookManagerProtocol;
+@class CHHandle, CHPhoneBookIOSManager, CNContact, INInteraction, NSArray, NSDate, NSDateInterval, NSDictionary, NSNumber, NSSet, NSString, NSUUID, NSValue;
 
 @interface CHRecentCall : NSObject <NSSecureCoding, NSCopying>
 {
@@ -53,14 +52,14 @@
     NSString *_addressBookCallerIDMultiValueId;
     NSString *_devicePhoneId;
     NSString *_callerId;
+    CNContact *_contactRef;
     long long _junkConfidence;
     long long _verificationStatus;
     NSString *_callerName;
     NSString *_callerIdLabel;
     NSString *_callerIdLocation;
-    CNContact *_contactRef;
+    NSUUID *_participantGroupUUID;
     NSString *_callerIdFormatted;
-    id <CHPhoneBookManagerProtocol> _phoneBookManager;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -106,15 +105,15 @@
 - (void).cxx_destruct;
 @property _Bool mobileOriginated; // @synthesize mobileOriginated=_mobileOriginated;
 @property _Bool answered; // @synthesize answered=_answered;
-@property(retain) id <CHPhoneBookManagerProtocol> phoneBookManager; // @synthesize phoneBookManager=_phoneBookManager;
 @property(copy, nonatomic, getter=callerIdForDisplay) NSString *callerIdFormatted; // @synthesize callerIdFormatted=_callerIdFormatted;
-@property(copy, nonatomic) CNContact *contactRef; // @synthesize contactRef=_contactRef;
+@property(retain, nonatomic) NSUUID *participantGroupUUID; // @synthesize participantGroupUUID=_participantGroupUUID;
 @property(nonatomic) _Bool multiCall; // @synthesize multiCall=_multiCall;
 @property(copy, nonatomic) NSString *callerIdLocation; // @synthesize callerIdLocation=_callerIdLocation;
 @property(copy, nonatomic) NSString *callerIdLabel; // @synthesize callerIdLabel=_callerIdLabel;
 @property(copy, nonatomic) NSString *callerName; // @synthesize callerName=_callerName;
 @property(nonatomic) long long verificationStatus; // @synthesize verificationStatus=_verificationStatus;
 @property(nonatomic) long long junkConfidence; // @synthesize junkConfidence=_junkConfidence;
+@property(copy, nonatomic) CNContact *contactRef; // @synthesize contactRef=_contactRef;
 @property(copy, nonatomic) NSString *callerId; // @synthesize callerId=_callerId;
 @property(copy, nonatomic) NSString *devicePhoneId; // @synthesize devicePhoneId=_devicePhoneId;
 @property(nonatomic) unsigned int callType; // @synthesize callType=_callType;
@@ -152,7 +151,6 @@
 @property(retain, nonatomic) NSUUID *localParticipantUUID; // @synthesize localParticipantUUID=_localParticipantUUID;
 @property(retain, nonatomic) CHHandle *localParticipantHandle; // @synthesize localParticipantHandle=_localParticipantHandle;
 - (_Bool)isEqualToRecentCall:(id)arg1;
-- (id)coalescingHash;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)description;
@@ -169,6 +167,9 @@
 - (_Bool)callerIdIsEmailAddress;
 - (void)fetchAndSetFullContact;
 - (void)fetchAndSetContactIdentifier;
+- (long long)countOfExcludedHandles;
+- (id)validRemoteParticipantHandles;
+@property(readonly, nonatomic) CHPhoneBookIOSManager *phoneBookManager;
 - (unsigned long long)numberOfOccurrences;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 - (id)coalescedCallWithCall:(id)arg1 usingStrategy:(id)arg2;
@@ -179,6 +180,9 @@
 - (id)callOccurrencesArrayByAddingCallOccurrencesFromArray:(id)arg1;
 - (id)init;
 - (id)archivedDataWithError:(id *)arg1;
+@property(readonly, nonatomic) NSDateInterval *interactionDateInterval;
+@property(readonly, nonatomic) INInteraction *interaction;
+@property(readonly, copy, nonatomic) NSString *notificationThreadIdentifier;
 
 @end
 

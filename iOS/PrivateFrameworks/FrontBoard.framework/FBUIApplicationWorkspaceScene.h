@@ -5,31 +5,19 @@
 //
 
 @class NSMutableArray, NSMutableSet;
-@protocol BSInvalidatable;
 
 @interface FBUIApplicationWorkspaceScene
 {
     NSMutableSet *_allWatchdogs;
     NSMutableArray *_watchdogStack;
-    unsigned long long _inFlightUpdateEvents;
-    unsigned long long _inFlightLifecycleEvents;
-    unsigned char _assertionState;
-    id <BSInvalidatable> _workspaceAssertion;
+    _Bool _sentSceneCreate;
 }
 
 - (void).cxx_destruct;
-- (unsigned char)_workspaceQueue_determineSceneActionFromSettings:(id)arg1 toSettings:(id)arg2;
-- (void)_workspaceQueue_cancelAllWatchdogTimers;
 - (void)_workspaceQueue_cancelWatchdogTimer:(id)arg1;
 - (id)_workspaceQueue_createWatchdogForSceneAction:(unsigned char)arg1 transitionContext:(id)arg2;
-- (void)_workspaceQueue_decrementInFlightUpdatesForAction:(unsigned char)arg1;
-- (void)_workspaceQueue_incrementInFlightUpdatesForAction:(unsigned char)arg1;
-- (void)_workspaceQueue_updateAssertion;
-- (void)_workspaceQueue_handleInvalidationWithTransitionContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_workspaceQueue_handleDidUpdateSettings:(id)arg1 withDiff:(id)arg2 transitionContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_workspaceQueue_invalidate;
-- (void)dealloc;
-- (id)initWithParentWorkspace:(id)arg1 host:(id)arg2;
+- (id)initWithWorkspace:(id)arg1 host:(id)arg2 settings:(id)arg3 clientSettings:(id)arg4 fromRemnant:(_Bool)arg5;
 
 @end
 

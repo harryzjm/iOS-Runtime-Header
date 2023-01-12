@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class FBSDisplayConfiguration;
+@class FBSDisplayConfiguration, XBCacheDeleteRequestHandler;
 @protocol XBApplicationLaunchRequestProviding, XBApplicationProviding;
 
 @interface XBApplicationController : NSObject
@@ -14,6 +14,7 @@
     long long _statusBarOrientation;
     FBSDisplayConfiguration *_mainDisplayConfiguration;
     id <XBApplicationLaunchRequestProviding> _launchRequestProvider;
+    XBCacheDeleteRequestHandler *_snapshotCacheDeleteRequestHandler;
     id <XBApplicationProviding> _applicationProvider;
 }
 
@@ -27,8 +28,11 @@
 - (void)_captureOrUpdateLaunchImagesForApplications:(id)arg1 firstImageIsReady:(CDUnknownBlockType)arg2 completionWithCaptureInfo:(CDUnknownBlockType)arg3;
 - (void)captureOrUpdateLaunchImagesForApplications:(id)arg1 firstImageIsReady:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeCachedLaunchImagesForApplications:(id)arg1 forgettingApps:(_Bool)arg2;
+- (id)findRecentlyUsedOfApplications:(id)arg1;
 - (void)_deleteLegacyCachesSnapshotPathsIfNeeded;
+- (void)performPostMigrationLaunchImageGeneration;
 - (void)_migrateDataIfNeeded;
+- (void)_configureCacheDelete;
 - (void)dealloc;
 - (id)initWithMainDisplayConfiguration:(id)arg1 applicationProvider:(id)arg2 launchRequestProvider:(id)arg3;
 

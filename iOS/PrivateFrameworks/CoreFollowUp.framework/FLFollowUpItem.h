@@ -8,7 +8,7 @@
 
 #import <CoreFollowUp/NSSecureCoding-Protocol.h>
 
-@class FLFollowUpNotification, NSArray, NSData, NSDictionary, NSString;
+@class FLFollowUpNotification, NSArray, NSData, NSDate, NSDictionary, NSString;
 
 @interface FLFollowUpItem : NSObject <NSSecureCoding>
 {
@@ -29,18 +29,22 @@
     NSString *_extensionIdentifier;
     NSArray *_actions;
     NSDictionary *_userInfo;
+    NSDate *_expirationDate;
     unsigned long long _sqlID;
     NSString *_clientIdentifier;
     NSString *_delegateMachServiceName;
 }
 
++ (long long)_daysRemaining:(id)arg1 ceiling:(_Bool)arg2;
 + (_Bool)supportsSecureCoding;
++ (id)_expirationDateFormatter;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *delegateMachServiceName; // @synthesize delegateMachServiceName=_delegateMachServiceName;
 @property(copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property(nonatomic) unsigned long long sqlID; // @synthesize sqlID=_sqlID;
 @property _Bool shouldPersistWhenDismissed; // @synthesize shouldPersistWhenDismissed=_shouldPersistWhenDismissed;
 @property _Bool shouldPersistWhenActivated; // @synthesize shouldPersistWhenActivated=_shouldPersistWhenActivated;
+@property(copy) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property(copy) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 @property(copy) NSArray *actions; // @synthesize actions=_actions;
 @property(copy) NSString *extensionIdentifier; // @synthesize extensionIdentifier=_extensionIdentifier;
@@ -57,6 +61,10 @@
 @property(copy, nonatomic) NSString *groupIdentifier; // @synthesize groupIdentifier=_groupIdentifier;
 @property(copy, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 - (id)description;
+- (id)_informativeNotificationTextOrDate;
+- (id)formattedExpirationDate;
+@property(readonly) _Bool isExpired;
+- (id)_midnightAdjustedDate;
 @property(retain, nonatomic) NSData *_userInfoData;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

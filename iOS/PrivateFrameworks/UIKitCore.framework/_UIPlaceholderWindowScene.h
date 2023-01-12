@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 + (_Bool)autoinvalidates;
 + (_Bool)shouldAllowComponents;
 + (_Bool)alwaysKeepContexts;
-- (_Bool)_permitContextCreationForBindingDescription:(CDStruct_a002d41c)arg1;
+- (_Bool)_permitContextCreationForBindingDescription:(CDStruct_98d137ef)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

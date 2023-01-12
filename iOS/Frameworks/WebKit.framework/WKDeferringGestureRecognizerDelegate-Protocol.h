@@ -7,8 +7,9 @@
 @class UIEvent, UIGestureRecognizer, WKDeferringGestureRecognizer;
 
 @protocol WKDeferringGestureRecognizerDelegate
+- (void)deferringGestureRecognizer:(WKDeferringGestureRecognizer *)arg1 didTransitionToState:(long long)arg2;
+- (void)deferringGestureRecognizer:(WKDeferringGestureRecognizer *)arg1 didEndTouchesWithEvent:(UIEvent *)arg2;
+- (_Bool)deferringGestureRecognizer:(WKDeferringGestureRecognizer *)arg1 willBeginTouchesWithEvent:(UIEvent *)arg2;
 - (_Bool)deferringGestureRecognizer:(WKDeferringGestureRecognizer *)arg1 shouldDeferOtherGestureRecognizer:(UIGestureRecognizer *)arg2;
-- (_Bool)deferringGestureRecognizer:(WKDeferringGestureRecognizer *)arg1 shouldDeferGesturesAfterBeginningTouchesWithEvent:(UIEvent *)arg2;
-- (_Bool)deferringGestureRecognizer:(WKDeferringGestureRecognizer *)arg1 shouldDeferGesturesAfterEndingTouchesWithEvent:(UIEvent *)arg2;
 @end
 

@@ -14,10 +14,14 @@
     NSString *_regular;
     NSString *_size394h;
     NSString *_size448h;
+    NSString *_size430h;
+    NSString *_size484h;
 }
 
 + (id)screenStringsWithArray:(id)arg1;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *size484h; // @synthesize size484h=_size484h;
+@property(copy, nonatomic) NSString *size430h; // @synthesize size430h=_size430h;
 @property(copy, nonatomic) NSString *size448h; // @synthesize size448h=_size448h;
 @property(copy, nonatomic) NSString *size394h; // @synthesize size394h=_size394h;
 @property(copy, nonatomic) NSString *regular; // @synthesize regular=_regular;

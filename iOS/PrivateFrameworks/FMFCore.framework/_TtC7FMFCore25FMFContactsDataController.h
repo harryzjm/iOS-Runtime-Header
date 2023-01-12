@@ -10,13 +10,14 @@
 
 @interface _TtC7FMFCore25FMFContactsDataController : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *identifier;
+    MISSING_TYPE *isSnapshotMode;
     MISSING_TYPE *delegate;
     MISSING_TYPE *contactStore;
     MISSING_TYPE *contactMatchingQueue;
     MISSING_TYPE *lastContactSearchDate;
     MISSING_TYPE *lastContactUpdateDate;
     MISSING_TYPE *contactRecords;
-    MISSING_TYPE *keysToFetch;
 }
 
 - (void)contactStoreChangedWithNotification:(id)arg1;

@@ -38,6 +38,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToProcess:(id)arg1;
 - (void)addConnection:(id)arg1;
+- (void)populateBundleIdentifierForConnection:(id)arg1;
 - (id)init;
 - (id)initWithConnection:(id)arg1;
 

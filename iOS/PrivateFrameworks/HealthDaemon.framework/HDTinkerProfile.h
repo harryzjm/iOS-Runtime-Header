@@ -8,7 +8,6 @@
 {
 }
 
-- (void)triggerDeletion;
 - (_Bool)setDSID:(id)arg1 error:(id *)arg2;
 - (id)dsidWithError:(id *)arg1;
 - (_Bool)setPairedNRDeviceUUID:(id)arg1 error:(id *)arg2;

@@ -43,6 +43,7 @@
 @property(retain) AKPageModelController *pageModelController; // @synthesize pageModelController=_pageModelController;
 @property __weak AKController *controller; // @synthesize controller=_controller;
 - (id)_popoverPresentingViewController;
+- (void)_updateOverlayVisibilityWithToolPicker:(id)arg1 visible:(_Bool)arg2;
 - (_Bool)handleEditAnnotation:(id)arg1;
 - (void)noteEditorWillDismissFromFullScreen:(id)arg1;
 - (void)noteEditorWillPresentFullScreen:(id)arg1;

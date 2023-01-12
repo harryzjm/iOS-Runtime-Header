@@ -12,7 +12,6 @@
     NSString *_bundleID;
 }
 
-+ (id)classSet;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;

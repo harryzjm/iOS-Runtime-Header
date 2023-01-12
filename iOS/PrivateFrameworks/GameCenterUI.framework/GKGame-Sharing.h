@@ -8,6 +8,7 @@
 
 @interface GKGame (Sharing)
 + (void)removeHistoryForGameWithBundleIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (id)platformDisplayString:(id)arg1;
 + (void)preloadIconsForGames:(id)arg1 style:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 + (struct CGSize)serverImageSizeForIconStyle:(long long)arg1;
 + (void)launchAppStoreWithGameCenterGames;

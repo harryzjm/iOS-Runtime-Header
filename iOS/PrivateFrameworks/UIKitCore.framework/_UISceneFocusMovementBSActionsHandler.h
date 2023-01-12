@@ -8,14 +8,18 @@
 
 #import <UIKitCore/_UISceneBSActionHandler-Protocol.h>
 
-@class NSString;
+@class NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _UISceneFocusMovementBSActionsHandler : NSObject <_UISceneBSActionHandler>
 {
+    NSMutableDictionary *_pendingFocusMovementActions;
 }
 
+- (void).cxx_destruct;
+- (void)_focusSystemSceneComponentDidPerformInitialSetupNotification:(id)arg1;
 - (id)_respondToActions:(id)arg1 forFBSScene:(id)arg2 inUIScene:(id)arg3 fromTransitionContext:(id)arg4;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

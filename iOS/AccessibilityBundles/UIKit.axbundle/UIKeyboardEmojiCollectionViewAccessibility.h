@@ -13,7 +13,6 @@
 + (id)safeCategoryTargetClassName;
 - (_Bool)_accessibilityOpaqueElementScrollsContentIntoView;
 - (id)_accessibilityFirstOpaqueElement;
-- (id)_accessibilityLocalizedVisibleSectionNames;
 - (double)_accessibilityMaxFuzzyHitTestDistance;
 - (_Bool)_accessibilityHitTestShouldFallbackToNearestChild;
 - (id)_accessibilityScrollStatus;

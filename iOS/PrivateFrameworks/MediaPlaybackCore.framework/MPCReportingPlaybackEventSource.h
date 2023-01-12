@@ -9,6 +9,7 @@
 @class MPModelGenericObject, MPModelPlayEvent, NSData, NSNumber, NSString;
 @protocol MPCReportingIdentityPropertiesLoading;
 
+__attribute__((visibility("hidden")))
 @interface MPCReportingPlaybackEventSource : NSObject
 {
     _Bool _shouldReportPlayEventsToStore;

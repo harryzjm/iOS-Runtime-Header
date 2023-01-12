@@ -11,6 +11,7 @@
 @class NSString;
 
 @interface NSSet (EmailFoundationAdditions) <EFSQLValueCollectionExpressable>
+- (id)ef_setByRemovingObjectsFromSet:(id)arg1;
 - (id)ef_partition:(CDUnknownBlockType)arg1;
 - (unsigned long long)ef_countObjectsPassingTest:(CDUnknownBlockType)arg1;
 - (_Bool)ef_all:(CDUnknownBlockType)arg1;

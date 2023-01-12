@@ -18,6 +18,7 @@
 + (id)contentCategories;
 + (id)outputTypes;
 + (id)ownedTypes;
++ (id)stringConversionBehavior;
 - (id)preferredFileType;
 - (void)getPreferredFileSize:(CDUnknownBlockType)arg1;
 - (void)generateObjectRepresentation:(CDUnknownBlockType)arg1 options:(id)arg2 forClass:(Class)arg3;

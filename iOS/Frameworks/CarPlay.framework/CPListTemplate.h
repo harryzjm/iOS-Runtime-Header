@@ -7,7 +7,7 @@
 #import <CarPlay/CPBarButtonProviding-Protocol.h>
 #import <CarPlay/CPListClientTemplateDelegate-Protocol.h>
 
-@class CPBarButton, NAFuture, NSArray, NSMutableSet, NSString;
+@class CPAssistantCellConfiguration, CPBarButton, NAFuture, NSArray, NSMutableSet, NSString;
 @protocol CPListTemplateDelegate;
 
 @interface CPListTemplate <CPListClientTemplateDelegate, CPBarButtonProviding>
@@ -17,6 +17,7 @@
     NSString *_title;
     NSArray *_emptyViewTitleVariants;
     NSArray *_emptyViewSubtitleVariants;
+    CPAssistantCellConfiguration *_assistantCellConfiguration;
     NSMutableSet *_itemsToReload;
 }
 
@@ -25,23 +26,27 @@
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableSet *itemsToReload; // @synthesize itemsToReload=_itemsToReload;
+@property(retain, nonatomic) CPAssistantCellConfiguration *assistantCellConfiguration; // @synthesize assistantCellConfiguration=_assistantCellConfiguration;
 @property(copy, nonatomic) NSArray *emptyViewSubtitleVariants; // @synthesize emptyViewSubtitleVariants=_emptyViewSubtitleVariants;
 @property(copy, nonatomic) NSArray *emptyViewTitleVariants; // @synthesize emptyViewTitleVariants=_emptyViewTitleVariants;
 @property(readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(readonly, copy, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 @property(nonatomic) __weak id <CPListTemplateDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)listTemplate:(id)arg1 didSelectImageAtIndex:(unsigned long long)arg2 inImageRowItem:(id)arg3;
-- (void)listTemplate:(id)arg1 didSelectListItemWithIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)handleActionForControlIdentifier:(id)arg1;
+- (void)listTemplateWithIdentifier:(id)arg1 didSelectImageAtIndex:(unsigned long long)arg2 inImageRowItemWithIdentifier:(id)arg3;
+- (void)listTemplateWithIdentifier:(id)arg1 didSelectListItemWithIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)_itemForHostItemWithIdentifier:(id)arg1;
 - (void)performUpdate;
 - (void)_setItemNeedsUpdate:(id)arg1;
 - (void)_linkItemsInSection:(id)arg1;
 - (id)indexPathForItem:(id)arg1;
+- (void)updateHeaderImage:(id)arg1 forSectionIdentifier:(id)arg2;
 @property(readonly, nonatomic) unsigned long long itemCount;
 @property(readonly, nonatomic) unsigned long long sectionCount;
 - (void)updateSections:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithTitle:(id)arg1 sections:(id)arg2 assistantCellConfiguration:(id)arg3;
 - (id)initWithTitle:(id)arg1 sections:(id)arg2;
 - (id)_sectionsByTrimmingAndLinkingSections:(id)arg1;
 

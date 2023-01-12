@@ -6,27 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class ACAccount, AMSProcessInfo;
+@class ACAccount, AMSMetricsIdentifierStore, AMSProcessInfo, NSString;
 
 @interface AMSMetricsIdentifier : NSObject
 {
-    ACAccount *_account;
-    AMSProcessInfo *_clientInfo;
-    double _duration;
+    AMSMetricsIdentifierStore *_store;
 }
 
-+ (id)_sharedQueue;
-+ (id)_database;
-+ (id)_accountIdentifierForAccount:(id)arg1;
++ (id)clientIdKey;
 + (void)removeIdentifiersForAccount:(id)arg1;
 + (void)cleanupIdentifiers;
 - (void).cxx_destruct;
-@property(nonatomic) double duration; // @synthesize duration=_duration;
-@property(retain, nonatomic) AMSProcessInfo *clientInfo; // @synthesize clientInfo=_clientInfo;
-@property(retain, nonatomic) ACAccount *account; // @synthesize account=_account;
-- (id)_generateCacheKey;
 - (id)generateIdentifier;
 - (id)generateEventFields;
+@property(nonatomic) double duration;
+@property(retain, nonatomic) NSString *domain;
+@property(retain, nonatomic) AMSProcessInfo *clientInfo;
+@property(retain, nonatomic) ACAccount *account;
 - (id)init;
 
 @end

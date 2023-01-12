@@ -9,9 +9,10 @@
 #import <PromotedContent/NSSecureCoding-Protocol.h>
 
 @class NSDate, NSDictionary, NSString;
-@protocol APMetricProtocol;
+@protocol APMetricProtocol, NSSecureCoding;
 
 @protocol APMetricProtocol <NSObject, NSCopying, NSSecureCoding>
+- (void)addInternalPropertyValue:(id <NSSecureCoding>)arg1 forKey:(NSString *)arg2;
 @property(nonatomic, readonly) _Bool areNetworkDates;
 @property(nonatomic, readonly) NSDictionary *serverDictionaryRepresentation;
 @property(nonatomic, readonly) long long options;
@@ -20,6 +21,7 @@
 @property(nonatomic, readonly) NSString *userIdentifier;
 @property(nonatomic, readonly) NSString *deviceIdentifier;
 @property(nonatomic, readonly) NSString *clientBundleIdentifier;
+@property(nonatomic, readonly) NSString *bundleIdentifier;
 @property(nonatomic, readonly) NSString *deviceModel;
 @property(nonatomic, readonly) NSString *osBuild;
 @property(nonatomic, readonly) NSString *osVersion;

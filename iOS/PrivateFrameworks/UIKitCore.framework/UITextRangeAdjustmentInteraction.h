@@ -9,7 +9,7 @@
 #import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
 #import <UIKitCore/UIInteraction-Protocol.h>
 
-@class NSString, UITextGestureTuning, UITextRangeAdjustmentGestureRecognizer, UITouch, UIView;
+@class NSString, UITextGestureTuning, UITextModernLoupeSession, UITextRangeAdjustmentGestureRecognizer, UITouch, UIView;
 @protocol UITextRangeAdjustmentInteractionDelegate;
 
 __attribute__((visibility("hidden")))
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 {
     UIView *_view;
     UITextGestureTuning *_gestureTuning;
+    UITextModernLoupeSession *_loupeSession;
     _Bool _baseIsStart;
     id <UITextRangeAdjustmentInteractionDelegate> _delegate;
     UITextRangeAdjustmentGestureRecognizer *_adjustmentGestureRecognizer;
@@ -50,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)_adjustmentInteractionEndedAtLocation:(struct CGPoint)arg1 forTouchType:(long long)arg2;
 - (void)_adjustmentInteractionChangedWithLocation:(struct CGPoint)arg1 forTouchType:(long long)arg2;
 - (void)_adjustmentInteractionBeganWithLocation:(struct CGPoint)arg1 startPoint:(struct CGPoint)arg2 forTouchType:(long long)arg3;
+- (struct CGRect)_activeAdjustmentEdgeRect;
 - (void)_updateAdjustmentInteractionWithState:(long long)arg1 location:(struct CGPoint)arg2 locationOfFirstTouch:(struct CGPoint)arg3 forTouchType:(long long)arg4;
 - (_Bool)_shouldApplyOffsetForTouchType:(long long)arg1;
 - (void)updateBaseAndExtentPointsFromEdges;

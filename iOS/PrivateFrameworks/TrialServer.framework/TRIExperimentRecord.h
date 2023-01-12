@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <TrialServer/NSCopying-Protocol.h>
-#import <TrialServer/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate, NSString, TRIExperimentDeployment;
+@class NSArray, NSDate, NSString, TRIClientExperimentArtifact, TRIExperimentDeployment;
 
-@interface TRIExperimentRecord : NSObject <NSCopying, NSSecureCoding>
+@interface TRIExperimentRecord : NSObject <NSCopying>
 {
+    _Bool _isShadow;
+    int _deploymentEnvironment;
     int _type;
     TRIExperimentDeployment *_experimentDeployment;
     NSString *_treatmentId;
@@ -20,12 +21,13 @@
     NSDate *_startDate;
     NSDate *_endDate;
     NSArray *_namespaces;
+    TRIClientExperimentArtifact *_artifact;
 }
 
-+ (_Bool)supportsSecureCoding;
-+ (id)recordWithExperimentDeployment:(id)arg1 treatmentId:(id)arg2 type:(int)arg3 status:(long long)arg4 startDate:(id)arg5 endDate:(id)arg6 namespaces:(id)arg7;
-+ (void)load;
++ (id)recordWithDeploymentEnvironment:(int)arg1 experimentDeployment:(id)arg2 treatmentId:(id)arg3 type:(int)arg4 status:(long long)arg5 startDate:(id)arg6 endDate:(id)arg7 namespaces:(id)arg8 isShadow:(_Bool)arg9 artifact:(id)arg10;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) TRIClientExperimentArtifact *artifact; // @synthesize artifact=_artifact;
+@property(readonly, nonatomic) _Bool isShadow; // @synthesize isShadow=_isShadow;
 @property(readonly, nonatomic) NSArray *namespaces; // @synthesize namespaces=_namespaces;
 @property(readonly, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
 @property(readonly, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
@@ -33,14 +35,15 @@
 @property(readonly, nonatomic) int type; // @synthesize type=_type;
 @property(readonly, nonatomic) NSString *treatmentId; // @synthesize treatmentId=_treatmentId;
 @property(readonly, nonatomic) TRIExperimentDeployment *experimentDeployment; // @synthesize experimentDeployment=_experimentDeployment;
+@property(readonly, nonatomic) int deploymentEnvironment; // @synthesize deploymentEnvironment=_deploymentEnvironment;
 - (id)init;
 - (id)description;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToRecord:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)copyWithReplacementArtifact:(id)arg1;
+- (id)copyWithReplacementIsShadow:(_Bool)arg1;
 - (id)copyWithReplacementNamespaces:(id)arg1;
 - (id)copyWithReplacementEndDate:(id)arg1;
 - (id)copyWithReplacementStartDate:(id)arg1;
@@ -48,8 +51,8 @@
 - (id)copyWithReplacementType:(int)arg1;
 - (id)copyWithReplacementTreatmentId:(id)arg1;
 - (id)copyWithReplacementExperimentDeployment:(id)arg1;
-- (id)initWithExperimentDeployment:(id)arg1 treatmentId:(id)arg2 type:(int)arg3 status:(long long)arg4 startDate:(id)arg5 endDate:(id)arg6 namespaces:(id)arg7;
-- (void)_swizzledEncodeWithCoder:(id)arg1;
+- (id)copyWithReplacementDeploymentEnvironment:(int)arg1;
+- (id)initWithDeploymentEnvironment:(int)arg1 experimentDeployment:(id)arg2 treatmentId:(id)arg3 type:(int)arg4 status:(long long)arg5 startDate:(id)arg6 endDate:(id)arg7 namespaces:(id)arg8 isShadow:(_Bool)arg9 artifact:(id)arg10;
 - (_Bool)isExpiredExperiment;
 
 @end

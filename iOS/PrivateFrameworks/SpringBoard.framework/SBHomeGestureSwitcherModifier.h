@@ -96,7 +96,7 @@
 - (_Bool)isShowingOrAnimatingCardsForFlyIn;
 - (struct CGPoint)liftOffTranslationForGestureEnd;
 - (struct CGPoint)liftOffVelocityForGestureEnd;
-- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
+- (struct SBSwitcherAsyncRenderingAttributes)asyncRenderingAttributesForAppLayout:(id)arg1;
 - (id)keyboardSuppressionMode;
 - (id)appLayoutsToResignActive;
 - (id)appLayoutsToCacheFullsizeSnapshots;
@@ -114,14 +114,15 @@
 - (double)wallpaperScale;
 - (double)homeScreenScale;
 - (double)homeScreenAlpha;
-- (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
-- (double)shadowOpacityForIndex:(unsigned long long)arg1;
+- (struct UIRectCornerRadii)cornerRadiiForIndex:(unsigned long long)arg1;
+- (double)shadowOpacityForLayoutRole:(long long)arg1 atIndex:(unsigned long long)arg2;
 - (double)titleOpacityForIndex:(unsigned long long)arg1;
 - (double)titleAndIconOpacityForIndex:(unsigned long long)arg1;
+- (long long)headerStyleForIndex:(unsigned long long)arg1;
 - (double)lighteningAlphaForIndex:(unsigned long long)arg1;
 - (double)wallpaperOverlayAlphaForIndex:(unsigned long long)arg1;
-- (double)darkeningAlphaForIndex:(unsigned long long)arg1;
-- (double)opacityForIndex:(unsigned long long)arg1;
+- (double)dimmingAlphaForLayoutRole:(long long)arg1 inAppLayout:(id)arg2;
+- (double)opacityForLayoutRole:(long long)arg1 inAppLayout:(id)arg2 atIndex:(unsigned long long)arg3;
 - (struct CGPoint)_rubberbandedTranslationForAdjacentCards;
 - (double)_scaleForOffscreenAdjacentCardsForFlyIn;
 - (double)_scaleForAdjacentCards;
@@ -145,7 +146,7 @@
 - (id)_updateForGestureDidBeginWithEvent:(id)arg1;
 - (id)handleGestureEvent:(id)arg1;
 - (id)handleRemovalEvent:(id)arg1;
-- (id)handleMainTransitionEvent:(id)arg1;
+- (id)handleTransitionEvent:(id)arg1;
 - (id)handleSwitcherSettingsChangedEvent:(id)arg1;
 - (id)handleHomeGestureSettingsChangedEvent:(id)arg1;
 - (id)_newDockModifierRequiringVerticalSwipeToTrackDock:(_Bool)arg1 startingEnvironmentMode:(long long)arg2;

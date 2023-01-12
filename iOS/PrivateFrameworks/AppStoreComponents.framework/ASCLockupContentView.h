@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     UILabel *_offerStatusLabelIfLoaded;
 }
 
++ (_Bool)isOfferButtonOnlyLockupForSize:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) UILabel *offerStatusLabelIfLoaded; // @synthesize offerStatusLabelIfLoaded=_offerStatusLabelIfLoaded;
 @property(readonly, nonatomic) UILabel *headingLabelIfLoaded; // @synthesize headingLabelIfLoaded=_headingLabelIfLoaded;

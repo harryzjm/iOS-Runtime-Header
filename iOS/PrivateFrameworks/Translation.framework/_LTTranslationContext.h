@@ -15,6 +15,7 @@
     _Bool _autodetectLanguage;
     _Bool _censorSpeech;
     _Bool _autoEndpoint;
+    _Bool _enableVAD;
     unsigned int _audioSessionID;
     NSString *_uniqueID;
     NSString *_sessionID;
@@ -27,6 +28,9 @@
     long long _lidThreshold;
     long long _route;
     long long _asrConfidenceThreshold;
+    double _ttsPlaybackRate;
+    NSString *_appIdentifier;
+    long long _sourceOrigin;
     NSString *_clientIdentifier;
     long long _dataSharingOptInStatus;
 }
@@ -35,6 +39,10 @@
 - (void).cxx_destruct;
 @property(nonatomic) long long dataSharingOptInStatus; // @synthesize dataSharingOptInStatus=_dataSharingOptInStatus;
 @property(retain, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
+@property(nonatomic) long long sourceOrigin; // @synthesize sourceOrigin=_sourceOrigin;
+@property(copy, nonatomic) NSString *appIdentifier; // @synthesize appIdentifier=_appIdentifier;
+@property(nonatomic) _Bool enableVAD; // @synthesize enableVAD=_enableVAD;
+@property(nonatomic) double ttsPlaybackRate; // @synthesize ttsPlaybackRate=_ttsPlaybackRate;
 @property(nonatomic) long long asrConfidenceThreshold; // @synthesize asrConfidenceThreshold=_asrConfidenceThreshold;
 @property(nonatomic) unsigned int audioSessionID; // @synthesize audioSessionID=_audioSessionID;
 @property(nonatomic) long long route; // @synthesize route=_route;
@@ -53,6 +61,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;
+- (id)sequoiaClientHeaderValue;
+- (id)redactIfNeeded:(id)arg1;
 - (id)_ospreyTTSRequestWithText:(id)arg1;
 - (id)_ospreyTextToSpeechTranslationRequestWithText:(id)arg1;
 - (id)_ospreySpeechTranslationRequestWithHybridEndpointer:(_Bool)arg1;

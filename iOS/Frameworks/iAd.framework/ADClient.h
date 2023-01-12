@@ -11,10 +11,9 @@
 }
 
 + (id)sharedClient;
-- (void)prepareForAdRequests;
-- (void)segmentDataForSignedInUserWithBlock:(CDUnknownBlockType)arg1;
 - (void)addClientToSegments:(id)arg1 replaceExisting:(_Bool)arg2;
 - (void)requestAttributionDetailsWithBlock:(CDUnknownBlockType)arg1;
+- (void)segmentDataForSignedInUserWithBlock:(CDUnknownBlockType)arg1;
 - (void)lookupAdConversionDetails:(CDUnknownBlockType)arg1;
 - (void)determineAppInstallationAttributionWithCompletionHandler:(CDUnknownBlockType)arg1;
 

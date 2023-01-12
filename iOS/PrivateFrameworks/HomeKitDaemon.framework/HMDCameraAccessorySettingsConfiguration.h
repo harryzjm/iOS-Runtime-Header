@@ -6,8 +6,6 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class NSMutableArray;
-
 @interface HMDCameraAccessorySettingsConfiguration : HMFObject
 {
     _Bool _isRecordingCapable;
@@ -18,14 +16,11 @@
     _Bool _reachabilityNotificationEnabled;
     unsigned long long _recordingEventTriggers;
     unsigned long long _numActivityZones;
-    NSMutableArray *_numPointsInActivityZones;
 }
 
-- (void).cxx_destruct;
 @property(readonly) _Bool reachabilityNotificationEnabled; // @synthesize reachabilityNotificationEnabled=_reachabilityNotificationEnabled;
 @property(readonly) _Bool smartBulletinBoardNotificationEnabled; // @synthesize smartBulletinBoardNotificationEnabled=_smartBulletinBoardNotificationEnabled;
 @property(readonly) _Bool inclusionZone; // @synthesize inclusionZone=_inclusionZone;
-@property(retain, nonatomic) NSMutableArray *numPointsInActivityZones; // @synthesize numPointsInActivityZones=_numPointsInActivityZones;
 @property(readonly) unsigned long long numActivityZones; // @synthesize numActivityZones=_numActivityZones;
 @property(readonly) unsigned long long recordingEventTriggers; // @synthesize recordingEventTriggers=_recordingEventTriggers;
 @property(readonly) _Bool isRecordingAudioEnabled; // @synthesize isRecordingAudioEnabled=_isRecordingAudioEnabled;

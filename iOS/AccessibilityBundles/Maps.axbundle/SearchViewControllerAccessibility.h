@@ -16,6 +16,7 @@
 - (void)dealloc;
 - (void)viewDidLoad;
 - (void)_axAnnotateSubviews;
+- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

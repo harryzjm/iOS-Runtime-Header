@@ -41,6 +41,8 @@
     double _minimumHeight;
     unsigned int _emphasizedEdge;
     _Bool _occludesBodyView;
+    _Bool _hidesSeparatorView;
+    _Bool _preventPasscodeFallbackForBiometricFailure;
     long long _state;
     PKPaymentAuthorizationLayout *_layout;
     unsigned long long _requestType;
@@ -49,11 +51,15 @@
     NSString *_biometricConfirmationTitle;
     NSString *_confirmationTitle;
     NSString *_authorizingTitle;
+    long long _completionStyle;
     id <PKPaymentAuthorizationFooterViewDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <PKPaymentAuthorizationFooterViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) _Bool preventPasscodeFallbackForBiometricFailure; // @synthesize preventPasscodeFallbackForBiometricFailure=_preventPasscodeFallbackForBiometricFailure;
+@property(nonatomic) long long completionStyle; // @synthesize completionStyle=_completionStyle;
+@property(nonatomic) _Bool hidesSeparatorView; // @synthesize hidesSeparatorView=_hidesSeparatorView;
 @property(nonatomic) _Bool occludesBodyView; // @synthesize occludesBodyView=_occludesBodyView;
 @property(retain, nonatomic) NSString *authorizingTitle; // @synthesize authorizingTitle=_authorizingTitle;
 @property(retain, nonatomic) NSString *confirmationTitle; // @synthesize confirmationTitle=_confirmationTitle;

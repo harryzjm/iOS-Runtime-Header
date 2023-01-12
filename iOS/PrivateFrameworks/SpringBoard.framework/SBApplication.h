@@ -7,13 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <SpringBoard/BSDescriptionProviding-Protocol.h>
-#import <SpringBoard/SBLeafIconDataSource-Protocol.h>
+#import <SpringBoard/SBHApplication-Protocol.h>
 #import <SpringBoard/UISApplicationStateServiceDataSource-Protocol.h>
 #import <SpringBoard/XBApplicationSnapshotManifestDelegate-Protocol.h>
 
-@class FBApplicationProcess, FBProcessExitContext, FBSApplicationDataStore, NSArray, NSDate, NSHashTable, NSMapTable, NSMutableDictionary, NSString, NSUserDefaults, SBApplicationInfo, SBApplicationProcessState, SBApplicationSupportServiceRequestContext, SBApplicationWakeScheduler, XBApplicationSnapshotManifest;
+@class FBApplicationProcess, FBProcessExitContext, FBSApplicationDataStore, NSArray, NSDate, NSHashTable, NSMapTable, NSMutableDictionary, NSString, NSURL, NSUserDefaults, SBApplicationInfo, SBApplicationProcessState, SBApplicationSupportServiceRequestContext, SBApplicationWakeScheduler, XBApplicationSnapshotManifest;
 
-@interface SBApplication : NSObject <XBApplicationSnapshotManifestDelegate, SBLeafIconDataSource, UISApplicationStateServiceDataSource, BSDescriptionProviding>
+@interface SBApplication : NSObject <XBApplicationSnapshotManifestDelegate, SBHApplication, UISApplicationStateServiceDataSource, BSDescriptionProviding>
 {
     FBApplicationProcess *_process;
     FBSApplicationDataStore *_dataStore;
@@ -25,7 +25,7 @@
     SBApplicationSupportServiceRequestContext *_initializationContext;
     unsigned int _isRecentlyUpdated:3;
     unsigned int _isNewlyInstalled:3;
-    unsigned int _terminationAssertionState:2;
+    _Bool _launchWillBePrevented;
     _Bool _uninstalled;
     unsigned int _hasBadgeValue:3;
     unsigned int _dataFlags:8;
@@ -59,6 +59,7 @@
 + (unsigned long long)_niceScreenTypeForClassicType:(unsigned long long)arg1 matchingAValidDisplayZoomModeOnScreenType:(unsigned long long)arg2;
 + (unsigned long long)_canonicalScreenTypeForClassicMode:(long long)arg1;
 + (long long)_bestAvailableClassicModeForHostingExtensionContainedInApplication:(_Bool)arg1;
++ (_Bool)KJHKJHw39rq9w87q903475q0983rskjd;
 + (long long)_classicModeForLaunchingSize:(struct CGSize)arg1;
 + (struct CGSize)_defaultLaunchingSizeForDisplayConfiguration:(id)arg1 classicMode:(long long)arg2;
 + (id)snapshotSortDescriptorForCustomSafeAreaInsets:(id)arg1;
@@ -85,7 +86,7 @@
 @property(nonatomic) unsigned long long failedAutoLaunchCountForVOIP; // @synthesize failedAutoLaunchCountForVOIP=_failedAutoLaunchCountForVOIP;
 @property(nonatomic) _Bool hasShownDataPlanAlertSinceLock; // @synthesize hasShownDataPlanAlertSinceLock=_hasShownDataPlanAlertSinceLock;
 @property(nonatomic, getter=isRestoringIcon) _Bool restoringIcon; // @synthesize restoringIcon=_isRestoringApplicationFromHiding;
-@property(readonly, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property(readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(readonly, nonatomic) unsigned long long failedLaunchCount; // @synthesize failedLaunchCount=_failedLaunchCount;
 @property(readonly, nonatomic) FBProcessExitContext *lastExitContext; // @synthesize lastExitContext=_lastExitContext;
 - (void)_noteIconDataSourceDidChange;
@@ -93,6 +94,12 @@
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
+- (void)possibleUserTapDidCancel;
+- (void)possibleUserTapBeganWithAbsoluteTime:(unsigned long long)arg1 andContinuousTime:(unsigned long long)arg2;
+- (id)iTunesCategoriesOrderedByRelevancyForIcon:(id)arg1;
+- (id)tagsForIcon:(id)arg1;
+- (id)folderFallbackTitleForIcon:(id)arg1;
+- (id)folderTitleOptionsForIcon:(id)arg1;
 - (_Bool)isTimedOutForIcon:(id)arg1;
 - (_Bool)icon:(id)arg1 launchFromLocation:(id)arg2 context:(id)arg3;
 - (_Bool)iconDisallowsLaunchForObscuredReason:(id)arg1;
@@ -106,12 +113,16 @@
 - (long long)accessoryTypeForIcon:(id)arg1;
 - (_Bool)iconCanTightenLabel:(id)arg1;
 - (_Bool)iconCanTruncateLabel:(id)arg1;
+- (_Bool)canGenerateIconsInBackgroundForIcon:(id)arg1;
 - (id)icon:(id)arg1 unmaskedImageWithInfo:(struct SBIconImageInfo)arg2;
 - (id)icon:(id)arg1 imageWithInfo:(struct SBIconImageInfo)arg2;
 @property(readonly, copy, nonatomic) NSString *uniqueIdentifier;
 - (unsigned long long)priorityForIcon:(id)arg1;
 - (id)icon:(id)arg1 displayNameForObscuredDisabledLaunchForLocation:(id)arg2;
 - (id)icon:(id)arg1 displayNameForLocation:(id)arg2;
+- (void)uninstall;
+- (void)launchFromIcon:(id)arg1 location:(id)arg2 context:(id)arg3;
+- (_Bool)isLaunchDisallowedForObscuredReason;
 - (void)_invalidateStatusBarStyleOverridesAssertions;
 - (void)_lockStateDidChange:(id)arg1;
 - (void)_updateRecentlyUpdatedTimer;
@@ -132,13 +143,13 @@
 @property(retain, nonatomic) SBApplicationInfo *info; // @synthesize info=_appInfo;
 - (void)_setApplicationRestorationCheckState:(int)arg1;
 - (int)_applicationRestorationCheckState;
-- (void)_terminationAssertionEfficacyChangedTo:(unsigned long long)arg1;
+- (void)_setLaunchPrevented:(_Bool)arg1;
 - (id)_snapshotManifest;
 - (void)_clearSceneTitles;
 - (id)_sceneIdentifierForStoredPersistenceIdentifier:(id)arg1;
 - (id)_dataStore;
 - (id)_baseSceneIdentifier;
-@property(copy, nonatomic) id badgeValue;
+@property(retain, nonatomic) id badgeValue;
 @property(nonatomic) _Bool usesBackgroundNetwork;
 @property(retain, nonatomic) NSDate *nextWakeDate;
 - (void)_cancelPreheatForUserLaunchIfNecessary;
@@ -153,6 +164,7 @@
 - (void)takeStatusBarStyleOverridesAssertion:(id)arg1;
 - (void)setHasDisplayedLaunchAlert:(_Bool)arg1 forType:(unsigned long long)arg2;
 - (_Bool)hasDisplayedLaunchAlertForType:(unsigned long long)arg1;
+@property(readonly, nonatomic) _Bool supportsMultitaskingShelf;
 @property(readonly, nonatomic) _Bool suppressesCoverSheetGesture;
 @property(readonly, nonatomic) _Bool suppressesControlCenter;
 @property(readonly, nonatomic) int dataUsage;
@@ -164,33 +176,45 @@
 @property(copy, nonatomic) NSArray *dynamicApplicationShortcutItems;
 @property(nonatomic, getter=isUninstalled) _Bool uninstalled;
 @property(readonly, nonatomic, getter=isUninstallSupported) _Bool uninstallSupported;
-@property(readonly, nonatomic, getter=isCacheCleaningTerminationAssertionHeld) _Bool cacheCleaningTerminationAssertionHeld;
+- (_Bool)isCacheCleaningTerminationAssertionHeld;
+@property(readonly, nonatomic, getter=isAnyTerminationAssertionInEffect) _Bool terminationAssertionInEffect;
 @property(readonly, nonatomic, getter=isAnyTerminationAssertionHeld) _Bool terminationAssertionHeld;
+@property(readonly, nonatomic) _Bool hasHiddenTag;
+@property(readonly, nonatomic) NSArray *tags;
+@property(readonly, copy, nonatomic) NSString *vendorName;
+@property(readonly, nonatomic, getter=isAppClip) _Bool appClip;
+@property(readonly, nonatomic, getter=isAppleApplication) _Bool appleApplication;
 @property(readonly, nonatomic, getter=isSystemApplication) _Bool systemApplication;
 @property(readonly, nonatomic, getter=isInternalApplication) _Bool internalApplication;
-@property(readonly, nonatomic) NSString *displayName;
-@property(readonly, nonatomic) NSString *iconIdentifier;
+@property(readonly, copy, nonatomic) NSString *displayName;
+@property(readonly, nonatomic) NSURL *bundleURL;
+@property(readonly, copy, nonatomic) NSString *iconIdentifier;
 @property(readonly, nonatomic) SBApplicationProcessState *processState;
 - (_Bool)isSameExecutableAsApplication:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (id)initWithApplicationInfo:(id)arg1;
+- (id)_redactedDisplayConfigurationIfNecessaryForDisplayConfiguration:(id)arg1;
 - (id)restrictedClassicModeDisplayConfigurationForDisplayConfiguration:(id)arg1;
 - (struct CGSize)defaultLaunchingSizeForDisplayConfiguration:(id)arg1;
+@property(readonly, nonatomic) _Bool classicAppWithRoundedCorners;
 @property(readonly, nonatomic) _Bool classicAppScaledWithAspectRatioCloseEnoughToBeTreatedAsFullScreen;
-@property(readonly, nonatomic) _Bool isInsetForHomeAffordance;
-@property(readonly, nonatomic) _Bool classicAppInsetForHomeAffordance;
+@property(readonly, nonatomic, getter=isInsetForHomeAffordance) _Bool insetForHomeAffordance;
+@property(readonly, nonatomic) _Bool classicAppNonFullScreenWithHomeAffordance;
 @property(readonly, nonatomic) _Bool ignoreScalingOfJailedStatusBar;
-@property(readonly, nonatomic) _Bool includesStatusBarInClassicJail;
+- (_Bool)includesStatusBarInClassicJailForInterfaceOrientation:(long long)arg1;
+@property(readonly, nonatomic) _Bool classicAppWithOwnSafeArea;
 @property(readonly, nonatomic) _Bool classicAppPhoneAppRunningOnPad;
 @property(readonly, nonatomic) _Bool classicAppFullScreen;
 @property(readonly, nonatomic) _Bool classicAppScaled;
+@property(nonatomic, setter=_setClassicAppPhoneOnPadPrefersLandscape:) _Bool classicAppPhoneOnPadPrefersLandscape;
 @property(readonly, nonatomic) _Bool classicAppZoomedInOrRequiresHiDPI;
 @property(readonly, nonatomic) _Bool classicAppRequiresHiDPI;
 @property(nonatomic, setter=_setClassicAppZoomedIn:) _Bool classicAppZoomedIn;
 @property(readonly, nonatomic) _Bool isClassic;
 @property(readonly, nonatomic) _Bool isMedusaCapable;
+- (_Bool)supportsModernRotation;
 @property(readonly, nonatomic) _Bool wantsLegacyFullscreenInterfaceOrientationBehaviors;
 - (unsigned long long)_screenTypeForClassicMode:(long long)arg1;
 - (long long)_classicModeForHostingExtensionContainedInThisApplicationInUnknownHostingHierarchy;
@@ -205,7 +229,7 @@
 - (long long)_classicModeFromSupportedTypes;
 - (void)_calculateSupportedTypesForSplashBoard;
 - (_Bool)_useSupportedTypesForSplashBoard;
-- (_Bool)KJHKJHw39rq9w87q903475q0983rskjd;
+- (_Bool)_isNewEnoughToKnowAbout2020Phones;
 - (_Bool)_isNewEnoughToKnowAboutRoundPads;
 - (_Bool)_isClassicViaOverride;
 - (_Bool)_bypassesClassicMode;
@@ -249,6 +273,8 @@
 - (void)_purgeAndResetStaticDefaultImagesInSnapshotManifest;
 - (void)_resetLaunchImageIngestionStatus;
 - (void)refreshLaunchImagesInSnapshotManifestIfNeeded;
+@property(readonly, nonatomic) _Bool isSpotlight;
+@property(readonly, nonatomic) _Bool isPaperBoard;
 @property(readonly, nonatomic) _Bool isFaceTime;
 @property(readonly, nonatomic) _Bool isMobilePhone;
 @property(readonly, nonatomic) _Bool isSetup;

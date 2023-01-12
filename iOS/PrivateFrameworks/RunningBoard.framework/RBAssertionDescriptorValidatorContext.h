@@ -7,23 +7,25 @@
 #import <objc/NSObject.h>
 
 #import <RunningBoard/NSCopying-Protocol.h>
+#import <RunningBoard/RBAssertionContextProviding-Protocol.h>
 
-@class RBAssertionAcquisitionContext, RBAssertionDescriptorValidator, RBConcreteTarget, RBProcess, RBProcessState, RBSAssertionDescriptor, RBSProcessIdentifier, RBSProcessIdentity;
-@protocol RBBundleProperties, RBBundlePropertiesManaging, RBDomainAttributeManaging, RBEntitlementManaging, RBEntitlementPossessing;
+@class NSDictionary, NSString, RBAssertionAcquisitionContext, RBAssertionDescriptorValidator, RBProcess, RBProcessState, RBSAssertionDescriptor, RBSProcessIdentifier, RBSProcessIdentity;
+@protocol RBBundleProperties, RBBundlePropertiesManaging, RBConcreteTargeting, RBDomainAttributeManaging, RBEntitlementManaging, RBEntitlementPossessing;
 
-@interface RBAssertionDescriptorValidatorContext : NSObject <NSCopying>
+@interface RBAssertionDescriptorValidatorContext : NSObject <NSCopying, RBAssertionContextProviding>
 {
-    id <RBBundleProperties> _targetProperties;
-    id <RBEntitlementPossessing> _originatorEntitlements;
-    id <RBEntitlementPossessing> _targetEntitlements;
     unsigned long long _ignoreRestrictions;
     _Bool _targetIsSystem;
+    RBProcess *_targetProcess;
+    id <RBBundleProperties> _targetProperties;
+    id <RBEntitlementPossessing> _targetEntitlements;
+    RBProcess *_originatorProcess;
+    id <RBBundleProperties> _originatorProperties;
+    id <RBEntitlementPossessing> _originatorEntitlements;
     RBAssertionDescriptorValidator *_assertionDescriptionValidator;
     RBSAssertionDescriptor *_assertionDescriptor;
-    RBProcess *_originatorProcess;
     RBProcessState *_originatorState;
-    RBConcreteTarget *_target;
-    RBProcess *_targetProcess;
+    id <RBConcreteTargeting> _target;
     RBSProcessIdentity *_targetIdentity;
     RBSProcessIdentifier *_targetIdentifier;
     RBProcessState *_targetState;
@@ -31,11 +33,13 @@
     id <RBEntitlementManaging> _entitlementManager;
     id <RBBundlePropertiesManaging> _bundlePropertiesManager;
     id <RBDomainAttributeManaging> _domainAttributeManager;
+    NSDictionary *_savedEndowments;
 }
 
 + (id)context;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool targetIsSystem; // @synthesize targetIsSystem=_targetIsSystem;
+@property(retain, nonatomic) NSDictionary *savedEndowments; // @synthesize savedEndowments=_savedEndowments;
 @property(retain, nonatomic) id <RBDomainAttributeManaging> domainAttributeManager; // @synthesize domainAttributeManager=_domainAttributeManager;
 @property(retain, nonatomic) id <RBBundlePropertiesManaging> bundlePropertiesManager; // @synthesize bundlePropertiesManager=_bundlePropertiesManager;
 @property(retain, nonatomic) id <RBEntitlementManaging> entitlementManager; // @synthesize entitlementManager=_entitlementManager;
@@ -43,20 +47,29 @@
 @property(retain, nonatomic) RBProcessState *targetState; // @synthesize targetState=_targetState;
 @property(retain, nonatomic) RBSProcessIdentifier *targetIdentifier; // @synthesize targetIdentifier=_targetIdentifier;
 @property(retain, nonatomic) RBSProcessIdentity *targetIdentity; // @synthesize targetIdentity=_targetIdentity;
-@property(retain, nonatomic) RBProcess *targetProcess; // @synthesize targetProcess=_targetProcess;
-@property(retain, nonatomic) RBConcreteTarget *target; // @synthesize target=_target;
+@property(retain, nonatomic) id <RBConcreteTargeting> target; // @synthesize target=_target;
 @property(retain, nonatomic) RBProcessState *originatorState; // @synthesize originatorState=_originatorState;
-@property(retain, nonatomic) RBProcess *originatorProcess; // @synthesize originatorProcess=_originatorProcess;
 @property(retain, nonatomic) RBSAssertionDescriptor *assertionDescriptor; // @synthesize assertionDescriptor=_assertionDescriptor;
 @property(retain, nonatomic) RBAssertionDescriptorValidator *assertionDescriptionValidator; // @synthesize assertionDescriptionValidator=_assertionDescriptionValidator;
+@property(retain, nonatomic) id <RBEntitlementPossessing> originatorEntitlements; // @synthesize originatorEntitlements=_originatorEntitlements;
+@property(readonly, nonatomic) id <RBBundleProperties> originatorProperties; // @synthesize originatorProperties=_originatorProperties;
+@property(retain, nonatomic) RBProcess *originatorProcess; // @synthesize originatorProcess=_originatorProcess;
+@property(retain, nonatomic) id <RBEntitlementPossessing> targetEntitlements; // @synthesize targetEntitlements=_targetEntitlements;
+@property(readonly, nonatomic) RBProcess *targetProcess; // @synthesize targetProcess=_targetProcess;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) RBSProcessIdentity *originatorIdentity;
-@property(readonly, nonatomic) id <RBEntitlementPossessing> targetEntitlements;
-@property(readonly, nonatomic) id <RBEntitlementPossessing> originatorEntitlements;
-@property(readonly, nonatomic) id <RBBundleProperties> targetProperties;
+@property(readonly, nonatomic) id <RBBundleProperties> targetProperties; // @synthesize targetProperties=_targetProperties;
+- (void)setTargetProperties:(id)arg1;
+- (void)setTargetProcess:(id)arg1;
 @property(readonly, nonatomic) _Bool ignoreRestrictions;
 - (void)popIgnoreRestrictions;
 - (void)pushIgnoreRestrictions;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

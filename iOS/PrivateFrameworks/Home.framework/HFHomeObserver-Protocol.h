@@ -6,11 +6,12 @@
 
 #import <Home/HMHomeDelegatePrivate-Protocol.h>
 
-@class HMHome, HMRoom, NSSet;
+@class HMHome, HMRoom, NSError, NSSet;
 
 @protocol HFHomeObserver <HMHomeDelegatePrivate>
 
 @optional
+- (void)home:(HMHome *)arg1 didFailAccessorySetupWithError:(NSError *)arg2;
 - (void)home:(HMHome *)arg1 remoteAccessStateDidChange:(unsigned long long)arg2;
 - (void)home:(HMHome *)arg1 didUpdateWallpaperForRoom:(HMRoom *)arg2;
 - (void)homeDidUpdateWallpaper:(HMHome *)arg1;

@@ -13,5 +13,11 @@
     unsigned long long _duration;
 }
 
+@property(nonatomic) unsigned long long duration; // @synthesize duration=_duration;
+@property(nonatomic) _Bool didTriggerSOS; // @synthesize didTriggerSOS=_didTriggerSOS;
+@property(nonatomic) _Bool didPressVolumeDown; // @synthesize didPressVolumeDown=_didPressVolumeDown;
+@property(nonatomic) _Bool didPressVolumeUp; // @synthesize didPressVolumeUp=_didPressVolumeUp;
+@property(nonatomic) _Bool didPressLock; // @synthesize didPressLock=_didPressLock;
+
 @end
 

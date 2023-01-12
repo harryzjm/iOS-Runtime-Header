@@ -6,15 +6,17 @@
 
 #import <PhotosUI/NSObject-Protocol.h>
 
-@class NSOrderedSet, NSURL, UIActivityViewController;
+@class NSOrderedSet, NSURL, PHPerson, UIActivityViewController;
 @protocol PXActivityViewController;
 
 @protocol PXActivityItemSourceController <NSObject>
 @property(readonly, nonatomic) _Bool itemSourcesSupportSlideshow;
+@property(readonly, nonatomic) unsigned long long unsavedSyndicatedAssetCount;
 @property(readonly, nonatomic) _Bool isPreparingIndividualItems;
 @property(readonly, nonatomic) NSURL *publishedURL;
 @property(readonly, nonatomic) _Bool itemSourcesSupportMomentShareLinkCreation;
 @property(readonly, nonatomic) _Bool momentSharePublishAttempted;
+@property(retain, nonatomic) PHPerson *person;
 @property(readonly, copy, nonatomic) NSOrderedSet *assets;
 @property(readonly, nonatomic) _Bool shouldShareAsOriginals;
 @property(readonly, nonatomic) _Bool shouldExcludeAccessibilityDescriptionInAllItemSources;

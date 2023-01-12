@@ -10,7 +10,6 @@
 
 @protocol ASDInstallationServiceProtocol <NSObject>
 - (void)installWatchApps:(NSArray *)arg1 onPairedDevice:(NSUUID *)arg2 withReplyHandler:(void (^)(NSArray *, NSError *))arg3;
-- (void)installTestFlightApps:(NSArray *)arg1 onPairedDevice:(NSUUID *)arg2 withReplyHandler:(void (^)(NSArray *, NSError *))arg3;
 - (void)installSystemApps:(NSArray *)arg1 onPairedDevice:(NSUUID *)arg2 withReplyHandler:(void (^)(NSArray *, NSError *))arg3;
 - (void)installScreenSyncApps:(NSArray *)arg1 withReplyHandler:(void (^)(NSArray *, NSError *))arg2;
 - (void)installEnterpriseApps:(NSArray *)arg1 onPairedDevice:(NSUUID *)arg2 withReplyHandler:(void (^)(NSArray *, NSError *))arg3;

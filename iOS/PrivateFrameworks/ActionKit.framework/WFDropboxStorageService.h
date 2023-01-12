@@ -8,7 +8,7 @@
 
 #import <ActionKit/WFFileStorageService-Protocol.h>
 
-@class NSString, WFContentAttributionSet;
+@class INAppDescriptor, NSString, WFContentAttributionSet;
 
 @interface WFDropboxStorageService : NSObject <WFFileStorageService>
 {
@@ -17,7 +17,8 @@
 + (Class)resultItemClass;
 + (id)serviceName;
 @property(readonly, nonatomic) WFContentAttributionSet *contentAttributionSet;
-@property(readonly, nonatomic) NSString *associatedAppBundleIdentifier;
+@property(readonly, nonatomic) INAppDescriptor *associatedAppDescriptor;
+- (id)associatedAppBundleIdentifier;
 @property(readonly, nonatomic) _Bool supportsJumpingToSubdirectoryInUI;
 @property(readonly, nonatomic) NSString *storageLocationPrefix;
 @property(readonly, nonatomic) Class accessResourceClass;
@@ -26,9 +27,10 @@
 - (void)searchFiles:(id)arg1 inPath:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)appendText:(id)arg1 toPath:(id)arg2 options:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)createFolderAtPath:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)deleteFiles:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)deleteFiles:(id)arg1 deleteImmediately:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)getSharingURLsForFiles:(id)arg1 usePublicURLs:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)saveFiles:(id)arg1 withManagedLevel:(unsigned long long)arg2 toPath:(id)arg3 options:(unsigned long long)arg4 progress:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)finishRetrievalWithContentsOfFolderAtPath:(id)arg1 sessionManager:(id)arg2 retrievalHandler:(CDUnknownBlockType)arg3;
 - (void)retrieveFilesAtPath:(id)arg1 options:(unsigned long long)arg2 progress:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 // Remaining properties

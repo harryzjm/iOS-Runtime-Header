@@ -4,50 +4,43 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProtocolBuffer/PBCodable.h>
-
 @class NSData, NSString;
 
-@interface LCServiceLoggingParameters : PBCodable
+@interface LCServiceLoggingParameters
 {
-    _Bool _hasQos;
-    _Bool _hasMessageSizeQuotaInBytes;
-    _Bool _hasTotalDiskSizeQuotaInBytes;
-    _Bool _optOutOfCompression;
-    _Bool _hasOptOutOfCompression;
-    _Bool _hasUploadSamplingRate;
-    _Bool _hasRealtimeSamplingRate;
-    _Bool _hasEntropy;
-    _Bool _overrideIntoSamplePopulation;
-    _Bool _hasOverrideIntoSamplePopulation;
-    _Bool _hasUploadEndpointURL;
     int _qos;
     int _messageSizeQuotaInBytes;
     int _totalDiskSizeQuotaInBytes;
+    _Bool _optOutOfCompression;
     float _uploadSamplingRate;
     float _realtimeSamplingRate;
     NSData *_entropy;
+    _Bool _overrideIntoSamplePopulation;
     NSString *_uploadEndpointURL;
+    struct {
+        unsigned int qos:1;
+        unsigned int messageSizeQuotaInBytes:1;
+        unsigned int totalDiskSizeQuotaInBytes:1;
+        unsigned int optOutOfCompression:1;
+        unsigned int uploadSamplingRate:1;
+        unsigned int realtimeSamplingRate:1;
+        unsigned int overrideIntoSamplePopulation:1;
+    } _has;
+    _Bool _hasEntropy;
+    _Bool _hasUploadEndpointURL;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool hasUploadEndpointURL; // @synthesize hasUploadEndpointURL=_hasUploadEndpointURL;
-@property(copy, nonatomic) NSString *uploadEndpointURL; // @synthesize uploadEndpointURL=_uploadEndpointURL;
-@property(nonatomic) _Bool hasOverrideIntoSamplePopulation; // @synthesize hasOverrideIntoSamplePopulation=_hasOverrideIntoSamplePopulation;
-@property(nonatomic) _Bool overrideIntoSamplePopulation; // @synthesize overrideIntoSamplePopulation=_overrideIntoSamplePopulation;
 @property(nonatomic) _Bool hasEntropy; // @synthesize hasEntropy=_hasEntropy;
+@property(copy, nonatomic) NSString *uploadEndpointURL; // @synthesize uploadEndpointURL=_uploadEndpointURL;
+@property(nonatomic) _Bool overrideIntoSamplePopulation; // @synthesize overrideIntoSamplePopulation=_overrideIntoSamplePopulation;
 @property(copy, nonatomic) NSData *entropy; // @synthesize entropy=_entropy;
-@property(nonatomic) _Bool hasRealtimeSamplingRate; // @synthesize hasRealtimeSamplingRate=_hasRealtimeSamplingRate;
 @property(nonatomic) float realtimeSamplingRate; // @synthesize realtimeSamplingRate=_realtimeSamplingRate;
-@property(nonatomic) _Bool hasUploadSamplingRate; // @synthesize hasUploadSamplingRate=_hasUploadSamplingRate;
 @property(nonatomic) float uploadSamplingRate; // @synthesize uploadSamplingRate=_uploadSamplingRate;
-@property(nonatomic) _Bool hasOptOutOfCompression; // @synthesize hasOptOutOfCompression=_hasOptOutOfCompression;
 @property(nonatomic) _Bool optOutOfCompression; // @synthesize optOutOfCompression=_optOutOfCompression;
-@property(nonatomic) _Bool hasTotalDiskSizeQuotaInBytes; // @synthesize hasTotalDiskSizeQuotaInBytes=_hasTotalDiskSizeQuotaInBytes;
 @property(nonatomic) int totalDiskSizeQuotaInBytes; // @synthesize totalDiskSizeQuotaInBytes=_totalDiskSizeQuotaInBytes;
-@property(nonatomic) _Bool hasMessageSizeQuotaInBytes; // @synthesize hasMessageSizeQuotaInBytes=_hasMessageSizeQuotaInBytes;
 @property(nonatomic) int messageSizeQuotaInBytes; // @synthesize messageSizeQuotaInBytes=_messageSizeQuotaInBytes;
-@property(nonatomic) _Bool hasQos; // @synthesize hasQos=_hasQos;
 @property(nonatomic) int qos; // @synthesize qos=_qos;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
@@ -57,6 +50,13 @@
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
+@property(nonatomic) _Bool hasOverrideIntoSamplePopulation;
+@property(nonatomic) _Bool hasRealtimeSamplingRate;
+@property(nonatomic) _Bool hasUploadSamplingRate;
+@property(nonatomic) _Bool hasOptOutOfCompression;
+@property(nonatomic) _Bool hasTotalDiskSizeQuotaInBytes;
+@property(nonatomic) _Bool hasMessageSizeQuotaInBytes;
+@property(nonatomic) _Bool hasQos;
 
 @end
 

@@ -21,6 +21,7 @@
 - (id)previewMetricsSpecificationForDeviceContext:(id)arg1 displayContext:(id)arg2 bundleIdentifier:(id)arg3;
 - (id)previewMetricsSpecificationForBundleIdentifier:(id)arg1;
 - (id)systemMetricsForWidget:(id)arg1;
+- (id)systemMetricsForFamily:(long long)arg1;
 - (id)systemDefaultMetricsSpecification;
 
 // Remaining properties

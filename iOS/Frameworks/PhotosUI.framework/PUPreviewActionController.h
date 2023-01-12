@@ -34,15 +34,16 @@ __attribute__((visibility("hidden")))
 - (_Bool)assetActionPerformer:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)assetActionPerformer:(id)arg1 presentViewController:(id)arg2;
 - (void)_executeActionPerformer:(id)arg1;
-- (void)_performRevealInMomentAction;
-- (void)_performCopyAction;
 - (void)_performFavoriteAction:(_Bool)arg1;
 - (void)_performTrashAction;
-- (void)_performRestoreAction;
-- (void)_performSimpleActionWithType:(unsigned long long)arg1;
+- (void)_promptTrashActionConfirmationForAsset:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)_performSimpleActionWithType:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_notifiyDelegateOfAction:(id)arg1;
-- (unsigned long long)_actionForPreferredAction:(unsigned long long)arg1;
+- (unsigned long long)_confirmationFreeActionForPreferredAction:(unsigned long long)arg1;
+- (id)debugActions;
 @property(readonly, nonatomic) NSArray *actions;
+- (id)contextMenuActionIfAvailableForActionType:(unsigned long long)arg1;
+- (id)_contextMenuActionWithTitle:(id)arg1 image:(id)arg2 attributes:(unsigned long long)arg3 actionHandler:(CDUnknownBlockType)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

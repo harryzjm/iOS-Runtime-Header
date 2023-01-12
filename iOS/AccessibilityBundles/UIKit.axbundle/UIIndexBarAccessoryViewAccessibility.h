@@ -12,13 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (_Bool)_didSelectEntry:(id)arg1 atIndex:(long long)arg2;
-- (void)_accessibilityMoveToIndexAtPosition:(long long)arg1;
-- (void)_axPostNotificationForEntry:(id)arg1;
-- (id)_axLabelForEntry:(id)arg1;
 - (void)_accessibilityJumpToTableIndex:(id)arg1;
-- (long long)_axCurrentPosition;
-- (id)_accessibiityDisplayEntryNearestToContentOffset:(struct CGPoint)arg1;
-- (id)_axEntries;
 - (id)accessibilityFlowToElements;
 - (void)accessibilityDecrement;
 - (void)accessibilityIncrement;

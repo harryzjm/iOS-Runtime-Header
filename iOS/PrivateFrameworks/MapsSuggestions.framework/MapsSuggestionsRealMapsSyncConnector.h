@@ -9,13 +9,15 @@
 #import <MapsSuggestions/MapsSuggestionsMapsSyncConnector-Protocol.h>
 #import <MapsSuggestions/_TtP8MapsSync25MapsSyncDataQueryDelegate_-Protocol.h>
 
-@class NSString, _TtC8MapsSync24MapsSyncHistoryItemQuery;
+@class NSString, _TtC8MapsSync24MapsSyncHistoryItemQuery, _TtC8MapsSync25MapsSyncFavoriteItemQuery, _TtC8MapsSync34MapsSyncCollectionTransitItemQuery;
 @protocol MapsSuggestionsMapsSyncConnectorDelegate;
 
 @interface MapsSuggestionsRealMapsSyncConnector : NSObject <_TtP8MapsSync25MapsSyncDataQueryDelegate_, MapsSuggestionsMapsSyncConnector>
 {
     id <MapsSuggestionsMapsSyncConnectorDelegate> _delegate;
     _TtC8MapsSync24MapsSyncHistoryItemQuery *_historyQuery;
+    _TtC8MapsSync34MapsSyncCollectionTransitItemQuery *_transitItemQuery;
+    _TtC8MapsSync25MapsSyncFavoriteItemQuery *_favoriteItemQuery;
 }
 
 - (void).cxx_destruct;

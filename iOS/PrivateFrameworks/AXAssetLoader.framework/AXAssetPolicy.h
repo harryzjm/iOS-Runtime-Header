@@ -10,6 +10,7 @@
 
 @interface AXAssetPolicy : NSObject
 {
+    _Bool _daemonShouldDownloadInBackgroundIfNeeded;
     NSNumber *_minSupportedFormatVersion;
     NSNumber *_maxSupportedFormatVersion;
     double _downloadResourceTimeout;
@@ -30,6 +31,7 @@
 @property(nonatomic) double downloadResourceTimeout; // @synthesize downloadResourceTimeout=_downloadResourceTimeout;
 @property(retain, nonatomic) NSNumber *maxSupportedFormatVersion; // @synthesize maxSupportedFormatVersion=_maxSupportedFormatVersion;
 @property(retain, nonatomic) NSNumber *minSupportedFormatVersion; // @synthesize minSupportedFormatVersion=_minSupportedFormatVersion;
+@property(nonatomic) _Bool daemonShouldDownloadInBackgroundIfNeeded; // @synthesize daemonShouldDownloadInBackgroundIfNeeded=_daemonShouldDownloadInBackgroundIfNeeded;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)assetsToPurgeFromInstalledAssets:(id)arg1;
@@ -38,6 +40,7 @@
 - (_Bool)isAssetContentVersion:(id)arg1 greatherThanInstalledAssets:(id)arg2;
 - (_Bool)shouldDownloadAsset:(id)arg1 withInstalledAssets:(id)arg2;
 @property(readonly, nonatomic) _Bool shouldCopyLocally;
+@property(readonly, nonatomic) NSString *assetTypeSuffix;
 @property(readonly, nonatomic) NSString *assetType;
 - (id)description;
 - (id)init;

@@ -14,9 +14,11 @@
     unsigned long long _type;
     NSString *_identifier;
     NSString *_reason;
+    double _createdAt;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) double createdAt; // @synthesize createdAt=_createdAt;
 @property(nonatomic) _Bool invalidateWhenBackgrounded; // @synthesize invalidateWhenBackgrounded=_invalidateWhenBackgrounded;
 @property(readonly, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;

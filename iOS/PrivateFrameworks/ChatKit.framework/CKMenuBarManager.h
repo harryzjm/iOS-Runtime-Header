@@ -12,6 +12,7 @@
 
 + (id)sharedInstance;
 - (id)allKeyboardShortcutKeyCommands;
+- (_Bool)__im_ff_isInterstellarEnabled;
 
 @end
 

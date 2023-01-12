@@ -6,12 +6,20 @@
 
 #import <UIKit/UIApplicationSceneSettings.h>
 
+@class NSUUID;
+
 @interface SBSUIInCallSceneSettings : UIApplicationSceneSettings
 {
 }
 
 - (id)valueDescriptionForFlag:(long long)arg1 object:(id)arg2 ofSetting:(unsigned long long)arg3;
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;
+@property(readonly, nonatomic) NSUUID *requestedPresentationConfigurationIdentifier;
+@property(readonly, nonatomic, getter=isBeingShownAboveCoverSheet) _Bool beingShownAboveCoverSheet;
+@property(readonly, nonatomic) _Bool systemControlsShouldPresentAsEmbedded;
+@property(readonly, nonatomic, getter=isScreenSharingPresentation) _Bool screenSharingPresentation;
+@property(readonly, nonatomic) struct CGRect windowedAccessoryCutoutFrameInScreen;
+@property(readonly, nonatomic, getter=isAttachedToWindowedAccessory) _Bool attachedToWindowedAccessory;
 @property(readonly, nonatomic) long long inCallPresentationMode;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 

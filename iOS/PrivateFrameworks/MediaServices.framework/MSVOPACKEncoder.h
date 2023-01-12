@@ -6,11 +6,11 @@
 
 #import <Foundation/NSCoder.h>
 
-#import <MediaServices/MSVSegmentedSubEncoder-Protocol.h>
+#import <MediaServices/NSObject-Protocol.h>
 
 @class NSData, NSDictionary, NSMapTable, NSMutableArray, NSString;
 
-@interface MSVOPACKEncoder : NSCoder <MSVSegmentedSubEncoder>
+@interface MSVOPACKEncoder : NSCoder <NSObject>
 {
     _Bool _hasFinished;
     NSData *_encodedData;
@@ -49,7 +49,7 @@
 - (_Bool)requiresSecureCoding;
 - (id)encodedDataWithError:(id *)arg1;
 @property(readonly, nonatomic) NSData *encodedData; // @synthesize encodedData=_encodedData;
-- (void)finishEncodingWithError:(id *)arg1;
+- (_Bool)finishEncodingWithError:(id *)arg1;
 - (void)finishEncoding;
 - (id)init;
 

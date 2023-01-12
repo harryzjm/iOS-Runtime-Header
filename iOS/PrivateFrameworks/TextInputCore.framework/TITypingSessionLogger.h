@@ -9,7 +9,7 @@
 #import <TextInputCore/NSSecureCoding-Protocol.h>
 #import <TextInputCore/TIKeyboardInteractionProtocol-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSArray, NSMutableArray, NSString;
 @protocol TIKeyboardInteractionProtocol;
 
 @interface TITypingSessionLogger : NSObject <NSSecureCoding, TIKeyboardInteractionProtocol>
@@ -20,8 +20,10 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly) NSArray *typingEvents; // @synthesize typingEvents=_typingEvents;
 - (id)logDetailsForKeyboardState:(id)arg1;
 - (void)sendTo:(id)arg1;
+- (_Bool)shouldPrintEvent:(id)arg1;
 - (void)setClientID:(id)arg1 keyboardState:(id)arg2;
 - (void)layoutDidChange:(id)arg1 keyboardState:(id)arg2;
 - (void)contextDidChange:(id)arg1 wordDelete:(_Bool)arg2 cursorMoved:(_Bool)arg3 extendsPriorWord:(_Bool)arg4 inWord:(id)arg5 range:(struct _NSRange)arg6 selectionLocation:(unsigned long long)arg7 keyboardState:(id)arg8;

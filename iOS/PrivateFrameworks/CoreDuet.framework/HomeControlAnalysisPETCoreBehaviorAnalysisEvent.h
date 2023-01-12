@@ -15,6 +15,7 @@
     double _timestamp;
     NSString *_accessoryUUID;
     NSString *_associatedAccessoryUUIDs;
+    NSString *_characteristicType;
     NSString *_eventStreamTitle;
     unsigned int _homeOccupancy;
     NSString *_homeUUID;
@@ -30,13 +31,40 @@
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *characteristicType; // @synthesize characteristicType=_characteristicType;
+@property(retain, nonatomic) NSString *value; // @synthesize value=_value;
+@property(retain, nonatomic) NSString *associatedAccessoryUUIDs; // @synthesize associatedAccessoryUUIDs=_associatedAccessoryUUIDs;
+@property(retain, nonatomic) NSString *sceneUUID; // @synthesize sceneUUID=_sceneUUID;
+@property(retain, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
+@property(retain, nonatomic) NSString *serviceUUID; // @synthesize serviceUUID=_serviceUUID;
+@property(retain, nonatomic) NSString *accessoryUUID; // @synthesize accessoryUUID=_accessoryUUID;
+@property(nonatomic) unsigned int homeOccupancy; // @synthesize homeOccupancy=_homeOccupancy;
+@property(retain, nonatomic) NSString *microlocation; // @synthesize microlocation=_microlocation;
+@property(retain, nonatomic) NSString *homeUUID; // @synthesize homeUUID=_homeUUID;
+@property(retain, nonatomic) NSString *homekitSource; // @synthesize homekitSource=_homekitSource;
+@property(retain, nonatomic) NSString *eventStreamTitle; // @synthesize eventStreamTitle=_eventStreamTitle;
+@property(nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
+- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasCharacteristicType;
+@property(readonly, nonatomic) _Bool hasValue;
+@property(readonly, nonatomic) _Bool hasAssociatedAccessoryUUIDs;
+@property(readonly, nonatomic) _Bool hasSceneUUID;
+@property(readonly, nonatomic) _Bool hasServiceType;
+@property(readonly, nonatomic) _Bool hasServiceUUID;
+@property(readonly, nonatomic) _Bool hasAccessoryUUID;
+@property(nonatomic) _Bool hasHomeOccupancy;
+@property(readonly, nonatomic) _Bool hasMicrolocation;
+@property(readonly, nonatomic) _Bool hasHomeUUID;
+@property(readonly, nonatomic) _Bool hasHomekitSource;
+@property(readonly, nonatomic) _Bool hasEventStreamTitle;
 
 @end
 

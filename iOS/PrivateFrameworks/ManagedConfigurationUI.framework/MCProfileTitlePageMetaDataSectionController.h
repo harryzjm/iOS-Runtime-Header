@@ -10,7 +10,6 @@
 
 @class MCProfile, MCProfileTitlePageOrganizationCell, MCProfileTitlePageSettingsIconCell, MCProfileTitlePageSubtitleCell, MCProfileTitlePageTitleCell, NSString, UITableView;
 
-__attribute__((visibility("hidden")))
 @interface MCProfileTitlePageMetaDataSectionController : NSObject <MCProfileTitlePageSectionController>
 {
     UITableView *_tableView;

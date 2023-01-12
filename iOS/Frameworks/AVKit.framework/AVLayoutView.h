@@ -55,6 +55,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) AVLayoutItemAttributes *layoutAttributes; // @synthesize layoutAttributes=_layoutAttributes;
 - (void)layoutAttributesDidChange;
 @property(readonly, nonatomic, getter=isCollapsedOrExcluded) _Bool collapsedOrExcluded; // @synthesize collapsedOrExcluded=_collapsedOrExcluded;
+- (id)_includedItemsFromSubviews:(id)arg1 inStackLayout:(id)arg2 thatFitSize:(struct CGSize)arg3;
 - (void)_removeArrangedSubview:(id)arg1;
 - (void)_insertArrangedSubview:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)_applyShapeStyle;

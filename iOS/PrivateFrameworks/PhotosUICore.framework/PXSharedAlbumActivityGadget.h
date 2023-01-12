@@ -15,6 +15,7 @@
 
 @interface PXSharedAlbumActivityGadget : NSObject <PXOneUpPresentationDelegate, PXSettingsKeyObserver, PXGadget>
 {
+    _Bool _isContentViewLaidOut;
     _Bool _wasAskedToLoadContentData;
     PXGadgetSpec *_gadgetSpec;
     long long _priority;
@@ -46,6 +47,7 @@
 @property(retain, nonatomic) PXAssetCollageView *collageView; // @synthesize collageView=_collageView;
 @property(retain, nonatomic) PXSharedAlbumHeaderView *headerView; // @synthesize headerView=_headerView;
 @property(retain, nonatomic) _PXSharedAlbumActivityGadgetContentView *contentView; // @synthesize contentView=_contentView;
+@property(nonatomic) _Bool isContentViewLaidOut; // @synthesize isContentViewLaidOut=_isContentViewLaidOut;
 @property(nonatomic) struct CGRect visibleContentRect; // @synthesize visibleContentRect=_visibleContentRect;
 @property(retain, nonatomic) PXFeedAssetsSectionInfo *assetsSectionInfo; // @synthesize assetsSectionInfo=_assetsSectionInfo;
 @property(nonatomic) __weak id <PXGadgetDelegate> delegate; // @synthesize delegate=_delegate;

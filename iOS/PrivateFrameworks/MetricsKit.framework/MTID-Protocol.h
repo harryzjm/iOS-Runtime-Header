@@ -6,7 +6,7 @@
 
 #import <MetricsKit/NSObject-Protocol.h>
 
-@class NSDate, NSDictionary, NSString;
+@class NSDate, NSDictionary, NSNumber, NSString;
 
 @protocol MTID <NSObject>
 @property(readonly, copy, nonatomic) NSDictionary *metricsFields;
@@ -14,6 +14,7 @@
 @property(readonly, copy, nonatomic) NSDate *expirationDate;
 @property(readonly, copy, nonatomic) NSDate *effectiveDate;
 @property(readonly, nonatomic) double lifespan;
+@property(readonly, nonatomic) NSNumber *dsId;
 @property(readonly, copy, nonatomic) NSString *idString;
 @property(readonly, nonatomic) long long idType;
 @property(readonly, copy, nonatomic) NSString *idNamespace;

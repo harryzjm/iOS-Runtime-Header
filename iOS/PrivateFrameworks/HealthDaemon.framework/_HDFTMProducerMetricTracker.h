@@ -20,13 +20,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) _Bool metricAvailable; // @synthesize metricAvailable=_metricAvailable;
-- (void)_startTimer;
-- (void)resume;
-- (void)pause;
-- (void)invalidate;
-- (void)metricReceived;
-- (id)initWithTimeoutHandler:(CDUnknownBlockType)arg1 queue:(id)arg2;
 
 @end
 

@@ -6,13 +6,14 @@
 
 @class CKOperationGroup, CKServerChangeToken, NSDate;
 
-__attribute__((visibility("hidden")))
 @interface BRCContainerMetadataSyncPersistedState
 {
     _Bool _needsContainerMetadataSyncDown;
     _Bool _needsSharedDBSyncDown;
+    _Bool _hasCaughtUpAtLeastOnce;
     CKServerChangeToken *_serverChangeToken;
-    NSDate *_lastSyncDate;
+    NSDate *_lastSyncDownDate;
+    unsigned long long _requestID;
     CKOperationGroup *_ckGroup;
 }
 
@@ -20,10 +21,15 @@ __attribute__((visibility("hidden")))
 + (id)loadFromClientStateInSession:(id)arg1 options:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) CKOperationGroup *ckGroup; // @synthesize ckGroup=_ckGroup;
+@property(readonly, nonatomic) unsigned long long requestID; // @synthesize requestID=_requestID;
+@property(nonatomic) _Bool hasCaughtUpAtLeastOnce; // @synthesize hasCaughtUpAtLeastOnce=_hasCaughtUpAtLeastOnce;
 @property(nonatomic) _Bool needsSharedDBSyncDown; // @synthesize needsSharedDBSyncDown=_needsSharedDBSyncDown;
 @property(nonatomic) _Bool needsContainerMetadataSyncDown; // @synthesize needsContainerMetadataSyncDown=_needsContainerMetadataSyncDown;
-@property(retain) NSDate *lastSyncDate; // @synthesize lastSyncDate=_lastSyncDate;
-@property(retain, nonatomic) CKServerChangeToken *serverChangeToken; // @synthesize serverChangeToken=_serverChangeToken;
+@property(readonly, nonatomic) NSDate *lastSyncDownDate; // @synthesize lastSyncDownDate=_lastSyncDownDate;
+@property(readonly, nonatomic) CKServerChangeToken *serverChangeToken; // @synthesize serverChangeToken=_serverChangeToken;
+- (unsigned long long)allocateNextRequestID;
+- (void)containerMetadataWasReset;
+- (void)updateWithServerChangeToken:(id)arg1 requestID:(unsigned long long)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;

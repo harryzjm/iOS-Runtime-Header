@@ -17,6 +17,7 @@
 @property(readonly, nonatomic) id <HKRPOxygenSaturationOnboardingManagerDataSource> dataSource; // @synthesize dataSource=_dataSource;
 - (void)cacheCompletedOnboardingStateIfNeeded;
 - (void)onboardWithCompletion:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) _Bool bloodOxygenRemoteDisabled;
 @property(readonly, nonatomic) _Bool onboardingComplete;
 @property(readonly, nonatomic) _Bool onboardingDuringPairingShouldAppear;
 @property(readonly, nonatomic) _Bool onboardingShouldAppear;

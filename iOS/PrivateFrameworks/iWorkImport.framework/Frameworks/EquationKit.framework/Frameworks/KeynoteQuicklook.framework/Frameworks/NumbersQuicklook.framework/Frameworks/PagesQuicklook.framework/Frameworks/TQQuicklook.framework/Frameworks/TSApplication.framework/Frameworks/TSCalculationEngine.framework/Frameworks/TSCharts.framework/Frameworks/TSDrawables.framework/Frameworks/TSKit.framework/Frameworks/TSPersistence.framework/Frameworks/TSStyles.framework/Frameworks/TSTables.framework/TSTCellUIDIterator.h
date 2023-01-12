@@ -10,8 +10,8 @@
 
 @interface TSTCellUIDIterator : NSObject
 {
-    deque_5668141c _recentRowResults;
-    deque_5668141c _recentColumnResults;
+    struct deque<TSKUIDStruct, std::allocator<TSKUIDStruct>> _recentRowResults;
+    struct deque<TSKUIDStruct, std::allocator<TSKUIDStruct>> _recentColumnResults;
     TSTCellUIDList *_cellUIDList;
     unsigned long long _index;
     unsigned long long _rowIndex;
@@ -20,12 +20,12 @@
     unsigned long long _columnRemainDup;
     unsigned long long _lastRowDiffPos;
     unsigned long long _lastColumnDiffPos;
-    struct TSTCellUID _cellUID;
+    struct TSKUIDStructCoord _cellUID;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(nonatomic) struct TSTCellUID cellUID; // @synthesize cellUID=_cellUID;
+@property(nonatomic) struct TSKUIDStructCoord cellUID; // @synthesize cellUID=_cellUID;
 @property(nonatomic) unsigned long long lastColumnDiffPos; // @synthesize lastColumnDiffPos=_lastColumnDiffPos;
 @property(nonatomic) unsigned long long lastRowDiffPos; // @synthesize lastRowDiffPos=_lastRowDiffPos;
 @property(nonatomic) unsigned long long columnRemainDup; // @synthesize columnRemainDup=_columnRemainDup;
@@ -34,10 +34,10 @@
 @property(nonatomic) unsigned long long rowIndex; // @synthesize rowIndex=_rowIndex;
 @property(nonatomic) unsigned long long index; // @synthesize index=_index;
 @property(retain, nonatomic) TSTCellUIDList *cellUIDList; // @synthesize cellUIDList=_cellUIDList;
-- (_Bool)nextCellUIDsBatch:(vector_0c3ec296 *)arg1 batchSize:(unsigned long long)arg2;
-- (struct TSTCellUID)nextCellUID;
-- (struct TSTCellUID)_nextCellUID_NoDispatch;
-- (UUIDData_5fbc143e)p_nextCellRefIdWithUIDIndexList:(const vector_12bd641b *)arg1 UIDs:(const vector_4dc5f307 *)arg2 index:(unsigned long long *)arg3 remainDup:(unsigned long long *)arg4 lastDiffPos:(unsigned long long *)arg5 recentResults:(deque_5668141c *)arg6;
+- (_Bool)nextCellUIDsBatch:(void *)arg1 batchSize:(unsigned long long)arg2;
+- (struct TSKUIDStructCoord)nextCellUID;
+- (struct TSKUIDStructCoord)_nextCellUID_NoDispatch;
+- (struct TSKUIDStruct)p_nextCellRefIdWithUIDIndexList:(const void *)arg1 UIDs:(const void *)arg2 index:(unsigned long long *)arg3 remainDup:(unsigned long long *)arg4 lastDiffPos:(unsigned long long *)arg5 recentResults:(void *)arg6;
 - (id)initWithCellUIDList:(id)arg1;
 
 @end

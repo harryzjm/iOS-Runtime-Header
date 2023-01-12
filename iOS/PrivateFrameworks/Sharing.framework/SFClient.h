@@ -16,6 +16,7 @@
     _Bool _invalidateCalled;
     _Bool _invalidateDone;
     NSXPCConnection *_xpcCnx;
+    NSXPCConnection *_syncXPCCnx;
     CDUnknownBlockType _interruptionHandler;
     CDUnknownBlockType _invalidationHandler;
 }
@@ -32,6 +33,7 @@
 - (void)triggerProximityAutoFillDetectedWithURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)triggerHomeKitDeviceDetectedWithURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)testContinuityKeyboardBegin:(_Bool)arg1;
+- (id)syncRemoteProxyWithError:(id *)arg1;
 - (void)showDevicePickerWithInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setupDevice:(id)arg1 home:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setAudioRoutingScore:(int)arg1 completion:(CDUnknownBlockType)arg2;
@@ -42,9 +44,13 @@
 - (void)reenableProxCardType:(unsigned char)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)preventExitForLocaleReason:(id)arg1;
 - (void)openSetupURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)clearXPCHelperImageCacheWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getPeopleSuggestions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getDeviceAssets:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)findContact:(id)arg1 skipIfContactBlocked:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)findContact:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)ensureSyncXPCStarted;
+- (void)displayStringForContactIdentifierSync:(id)arg1 deviceIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)displayStringForContactIdentifier:(id)arg1 deviceIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)displayNameForEmailHash:(id)arg1 phoneHash:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)contactIDForEmailHash:(id)arg1 phoneHash:(id)arg2 completion:(CDUnknownBlockType)arg3;

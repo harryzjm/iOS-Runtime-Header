@@ -10,7 +10,6 @@
 
 @class NSData, NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface CKDPQueryRetrieveResponse : PBCodable <NSCopying>
 {
     NSData *_continuationMarker;

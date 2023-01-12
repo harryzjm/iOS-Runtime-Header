@@ -12,13 +12,13 @@
 
 @interface NTPBError : PBCodable <NSCopying>
 {
-    NSString *_errorCode;
+    int _errorCode;
     NSString *_errorMessage;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *errorMessage; // @synthesize errorMessage=_errorMessage;
-@property(retain, nonatomic) NSString *errorCode; // @synthesize errorCode=_errorCode;
+@property(nonatomic) int errorCode; // @synthesize errorCode=_errorCode;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -28,7 +28,6 @@
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(readonly, nonatomic) _Bool hasErrorMessage;
-@property(readonly, nonatomic) _Bool hasErrorCode;
 
 @end
 

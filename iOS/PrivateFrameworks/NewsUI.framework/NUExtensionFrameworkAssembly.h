@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsUI/NFFrameworkAssembly-Protocol.h>
+#import <NewsUI/TFFrameworkAssembly-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface NUExtensionFrameworkAssembly : NSObject <NFFrameworkAssembly>
+@interface NUExtensionFrameworkAssembly : NSObject <TFFrameworkAssembly>
 {
     NSArray *_assemblies;
 }

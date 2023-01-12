@@ -10,6 +10,7 @@
 
 @interface ICAppearanceInfo (UI)
 + (id)currentInfo;
+- (void)performAsCurrentAppearance:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) double navigationBarAlpha;
 @property(readonly, nonatomic) UITraitCollection *traitCollection;
 @end

@@ -12,6 +12,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (_Bool)accessibilityRespondsToUserInteraction;
 - (struct CGPoint)_accessibilityMaxScrubberPosition;
 - (struct CGPoint)_accessibilityMinScrubberPosition;
@@ -32,6 +33,7 @@
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 specifier:(id)arg3;
 - (_Bool)_accessibilityLanguageOverriddesUser;
 - (void)refreshCellContentsWithSpecifier:(id)arg1;
+- (_Bool)_accessibilityElementServesAsHeadingLandmark;
 
 @end
 

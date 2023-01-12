@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
     UIColor *_fillColor;
 }
 
++ (Class)_visualProviderClass;
 - (void).cxx_destruct;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)setTintColor:(id)arg1;

@@ -14,6 +14,7 @@
 + (id)typeDescription;
 + (id)contentCategories;
 + (id)ownedTypes;
++ (id)stringConversionBehavior;
 + (id)propertyBuilders;
 - (_Bool)getListThumbnail:(CDUnknownBlockType)arg1 forSize:(struct CGSize)arg2;
 - (_Bool)getListAltText:(CDUnknownBlockType)arg1;

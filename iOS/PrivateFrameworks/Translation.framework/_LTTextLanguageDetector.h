@@ -18,6 +18,7 @@
 @property(copy, nonatomic) NSArray *availableLocales; // @synthesize availableLocales=_availableLocales;
 - (id)detectionForStrings:(id)arg1;
 - (id)detectionForString:(id)arg1;
+- (id)initWithModel:(unsigned long long)arg1;
 - (id)init;
 
 @end

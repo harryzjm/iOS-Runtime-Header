@@ -38,7 +38,6 @@
 - (void)_invalidateFlushTimer;
 - (void)_startFlushTimer;
 - (void)_shutdownWithHandler:(CDUnknownBlockType)arg1;
-- (void)_shutdown;
 - (id)initWithPersistenceManager:(id)arg1 timerManager:(id)arg2;
 - (id)initWithPersistenceManager:(id)arg1;
 - (id)init;

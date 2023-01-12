@@ -17,6 +17,7 @@
 }
 
 + (id)dataSourceMetricsWithMetrics:(id)arg1 dataSource:(id)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *cachedKey; // @synthesize cachedKey=_cachedKey;
 @property(retain, nonatomic) GKCollectionViewDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property(retain, nonatomic) NSArray *childMetrics; // @synthesize childMetrics=_childMetrics;
@@ -29,7 +30,6 @@
 - (id)metricsForSection:(long long)arg1;
 - (id)_gkDescriptionWithChildren:(long long)arg1;
 - (id)description;
-- (void)dealloc;
 - (id)initWithMetrics:(id)arg1 dataSource:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)prepareLayout:(id)arg1;

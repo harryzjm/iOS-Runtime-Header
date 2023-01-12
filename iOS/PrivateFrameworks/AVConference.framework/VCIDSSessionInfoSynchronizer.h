@@ -25,7 +25,6 @@ __attribute__((visibility("hidden")))
     NSNumber *_duplicationLinkID;
     VCConnectionManager *_connectionManager;
     id _reportingAgentWeak;
-    _Bool _isSessionInfoErrorResponseReported;
     NSObject<OS_dispatch_queue> *_stateQueue;
     int _sessionInfoRequestBytesUsed;
     int _sessionInfoResponseBytesUsed;
@@ -38,6 +37,7 @@ __attribute__((visibility("hidden")))
     int _maxReceivedRate;
     int _minReceivedRate;
     double _lastUpdateTimestamp;
+    unsigned int _subscribedStreamsRetryCount;
 }
 
 @property(copy, nonatomic) CDUnknownBlockType errorReponseCallback; // @synthesize errorReponseCallback=_errorReponseCallback;
@@ -48,6 +48,8 @@ __attribute__((visibility("hidden")))
 - (id)sessionInfoSynchronizerDelegate;
 @property(readonly) id reportingAgent;
 - (void)setVCIDSSessionInfoPublishedStreamIDs:(id)arg1;
+- (void)sendVCIDSSessionInfoSubscribedStreamIDs:(id)arg1;
+- (void)retryVCIDSSessionInfoSubscribedStreamIDs;
 - (void)setVCIDSSessionInfoSubscribedStreamIDs:(id)arg1;
 - (void)dealloc;
 - (void)flushRealTimeReportingStats;
@@ -55,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (void)periodicTask:(void *)arg1;
 - (void)optOutStreamIDsForNonPrimaryConnection:(id)arg1 sentOnConnection:(id)arg2;
 - (void)optInStreamIDsForNewPrimaryConnection:(id)arg1 oldPrimaryConnection:(id)arg2;
+- (void)optInAllStreamsForConnection:(id)arg1;
 - (void)optInStreamIDsForConnection:(id)arg1;
 - (void)updateVCIDSSessionInfoResponse:(id)arg1;
 - (void)checkVCIDSSessionInfoNeedUpdate:(unsigned char)arg1;

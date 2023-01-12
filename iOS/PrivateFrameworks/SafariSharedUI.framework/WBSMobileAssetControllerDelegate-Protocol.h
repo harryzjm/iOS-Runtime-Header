@@ -6,7 +6,7 @@
 
 #import <SafariSharedUI/NSObject-Protocol.h>
 
-@class NSError, NSURL;
+@class MAAssetQuery, NSError, NSURL;
 @protocol WBSMobileAssetControllerProtocol;
 
 @protocol WBSMobileAssetControllerDelegate <NSObject>
@@ -17,6 +17,7 @@
 - (void)mobileAssetController:(id <WBSMobileAssetControllerProtocol>)arg1 didDownload:(NSURL *)arg2;
 
 @optional
+- (void)mobileAssetController:(id <WBSMobileAssetControllerProtocol>)arg1 willPerformQuery:(MAAssetQuery *)arg2;
 - (_Bool)mobileAssetControllerShouldPerformScheduledUpdate:(id <WBSMobileAssetControllerProtocol>)arg1;
 @end
 

@@ -28,10 +28,10 @@
 @property(readonly, nonatomic) long long sinAngleLeftFeatureIndex; // @synthesize sinAngleLeftFeatureIndex=_sinAngleLeftFeatureIndex;
 @property(readonly, nonatomic) long long distanceRightFeatureIndex; // @synthesize distanceRightFeatureIndex=_distanceRightFeatureIndex;
 @property(readonly, nonatomic) long long distanceLeftFeatureIndex; // @synthesize distanceLeftFeatureIndex=_distanceLeftFeatureIndex;
-- (id)_remappedCutpoints:(vector_cdf22482 *)arg1 pointMap:(vector_1dba4e4e *)arg2 originalDrawing:(id)arg3 excludingStrokeIDs:(const set_54c7c768 *)arg4;
-- (vector_cdf22482)_detectedCutpoints:(vector_8f06c10f *)arg1 resampledDrawing:(id)arg2;
-- (vector_f9ed6fc8)_extractFeaturesFromDrawing:(id)arg1 inputName:(id)arg2 interpointDistance:(double)arg3 error:(id *)arg4;
-- (id)detectCutpointsInDrawing:(id)arg1 minimumDrawingSize:(struct CGSize)arg2 excludingStrokeIDs:(const set_54c7c768 *)arg3;
+- (id)_remappedCutpoints:(void *)arg1 pointMap:(void *)arg2 originalDrawing:(id)arg3 excludingStrokeIDs:(const void *)arg4;
+- (vector_689a71e0)_detectedCutpoints:(void *)arg1 resampledDrawing:(id)arg2;
+- (vector_fef9a72d)_extractFeaturesFromDrawing:(id)arg1 inputName:(id)arg2 interpointDistance:(double)arg3 error:(id *)arg4;
+- (id)detectCutpointsInDrawing:(id)arg1 minimumDrawingSize:(struct CGSize)arg2 excludingStrokeIDs:(const void *)arg3;
 - (long long)windowOverlap;
 - (long long)maxSequenceLength;
 - (void)dealloc;

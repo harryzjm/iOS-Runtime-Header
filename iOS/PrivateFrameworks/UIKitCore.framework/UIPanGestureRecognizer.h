@@ -34,6 +34,8 @@
     unsigned int _ignoresStationaryTouches:1;
     unsigned int _multitouchTimerOn:1;
     unsigned int _requiresImmediateMultipleTouches:1;
+    unsigned int _sawNonzeroStifledDeltaX:1;
+    unsigned int _sawNonzeroStifledDeltaY:1;
     NSMutableArray *_movingTouches;
     struct CGPoint _digitizerLocation;
     UIPanGestureVelocitySample *_velocitySample;
@@ -80,7 +82,7 @@
 - (_Bool)_shouldTryToBeginWithEvent:(id)arg1;
 - (_Bool)_shouldBeginHorizontally:(_Bool)arg1 vertically:(_Bool)arg2 withEvent:(id)arg3;
 - (void)setDelegate:(id)arg1;
-- (void)_centroidMovedTo:(struct CGPoint)arg1 atTime:(double)arg2;
+- (void)_centroidMovedTo:(struct CGPoint)arg1 atTime:(double)arg2 affectingTranslation:(_Bool)arg3;
 - (struct CGPoint)_adjustSceneReferenceLocation:(struct CGPoint)arg1;
 - (void)_touchesListChangedFrom:(id)arg1 to:(id)arg2;
 - (struct CGPoint)velocityInView:(id)arg1;

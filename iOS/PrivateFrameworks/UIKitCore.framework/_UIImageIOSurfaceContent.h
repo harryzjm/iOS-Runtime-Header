@@ -10,7 +10,7 @@ __attribute__((visibility("hidden")))
     struct __IOSurface *_surfaceRef;
 }
 
-- (_Bool)canProvideCGImage;
+- (_Bool)canDrawImage;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

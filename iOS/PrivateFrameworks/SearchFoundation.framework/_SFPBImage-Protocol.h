@@ -6,10 +6,12 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, NSString, _SFPBAppIconImage, _SFPBCalendarImage, _SFPBContactImage, _SFPBGraphicalFloat, _SFPBLocalImage, _SFPBMediaArtworkImage, _SFPBMonogramImage, _SFPBPointSize, _SFPBSymbolImage, _SFPBURLImage;
+@class NSData, NSDictionary, NSString, _SFPBAppIconImage, _SFPBCalendarImage, _SFPBContactImage, _SFPBGraphicalFloat, _SFPBLocalImage, _SFPBMediaArtworkImage, _SFPBMonogramImage, _SFPBPhotosLibraryImage, _SFPBPointSize, _SFPBQuickLookThumbnailImage, _SFPBSymbolImage, _SFPBURLImage;
 
 @protocol _SFPBImage <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(retain, nonatomic) _SFPBQuickLookThumbnailImage *quickLookThumbnailImage;
+@property(retain, nonatomic) _SFPBPhotosLibraryImage *photosLibraryImage;
 @property(retain, nonatomic) _SFPBSymbolImage *symbolImage;
 @property(retain, nonatomic) _SFPBCalendarImage *calendarImage;
 @property(retain, nonatomic) _SFPBMediaArtworkImage *mediaArtworkImage;
@@ -19,6 +21,7 @@
 @property(retain, nonatomic) _SFPBContactImage *contactImage;
 @property(retain, nonatomic) _SFPBURLImage *urlImage;
 @property(nonatomic) int type;
+@property(copy, nonatomic) NSString *accessibilityLabel;
 @property(nonatomic) int cornerRoundingStyle;
 @property(nonatomic) int source;
 @property(copy, nonatomic) NSString *identifier;

@@ -12,7 +12,6 @@
 - (void)viewControllerDidComplete:(UIViewController *)arg1;
 
 @optional
-- (void)popViewController:(UIViewController *)arg1;
 - (void)receivedResponse;
 - (void)waitForResponse:(UIViewController *)arg1;
 - (void)userDidTapCancel;

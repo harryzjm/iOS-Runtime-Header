@@ -4,23 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <LinkPresentation/LPStreamingAudioPlayerClient-Protocol.h>
+#import <LinkPresentation/LPAudioPlayerClient-Protocol.h>
 
-@class LPStreamingAudioPlayer;
+@class LPAudioPlayerMediaPlayableAdaptor;
+@protocol LPAudioPlayer;
 
 __attribute__((visibility("hidden")))
-@interface LPStreamingAudioPlayButtonControl <LPStreamingAudioPlayerClient>
+@interface LPStreamingAudioPlayButtonControl <LPAudioPlayerClient>
 {
-    LPStreamingAudioPlayer *_player;
+    id <LPAudioPlayer> _player;
+    LPAudioPlayerMediaPlayableAdaptor *_playableAdaptor;
 }
 
 - (void).cxx_destruct;
+- (id)playable;
 - (void)buttonPressed:(id)arg1;
-- (void)streamingAudioPlayerDidFailToPlay:(id)arg1;
-- (void)streamingAudioPlayer:(id)arg1 didChangeProgress:(float)arg2;
-- (void)streamingAudioPlayer:(id)arg1 didTransitionToState:(unsigned long long)arg2;
+- (void)audioPlayerDidFailToPlay:(id)arg1;
+- (void)audioPlayer:(id)arg1 didChangeProgress:(float)arg2;
+- (void)audioPlayer:(id)arg1 didTransitionToState:(unsigned long long)arg2;
 - (void)dealloc;
-- (id)initWithAudio:(id)arg1 style:(id)arg2;
+- (id)initWithAudio:(id)arg1 style:(id)arg2 theme:(id)arg3 player:(id)arg4;
 
 @end
 

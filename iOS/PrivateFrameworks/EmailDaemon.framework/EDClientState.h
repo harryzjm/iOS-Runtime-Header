@@ -22,7 +22,7 @@
 + (id)log;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool isRunningTests; // @synthesize isRunningTests=_isRunningTests;
-@property(readonly, nonatomic) NSArray *visibleMailboxesObjectIds; // @synthesize visibleMailboxesObjectIds=_visibleMailboxesObjectIds;
+@property(retain) NSArray *visibleMailboxesObjectIds; // @synthesize visibleMailboxesObjectIds=_visibleMailboxesObjectIds;
 @property(readonly, nonatomic) _Bool isForeground; // @synthesize isForeground=_isForeground;
 - (void)setClientIsRunningTests:(_Bool)arg1;
 - (id)giveBoostWithCompletionBlock:(CDUnknownBlockType)arg1;

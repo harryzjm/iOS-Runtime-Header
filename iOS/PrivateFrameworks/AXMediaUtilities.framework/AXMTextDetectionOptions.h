@@ -13,20 +13,21 @@
 @interface AXMTextDetectionOptions : NSObject <NSSecureCoding>
 {
     _Bool _usesLanguageCorrection;
-    _Bool _correctSpelling;
     unsigned long long _recognitionLevel;
     double _normalizedMinimumTextHeightRatio;
     NSArray *_textDetectionLocales;
+    unsigned long long _postProcessingOptions;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)defaultOptions;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool correctSpelling; // @synthesize correctSpelling=_correctSpelling;
+@property(nonatomic) unsigned long long postProcessingOptions; // @synthesize postProcessingOptions=_postProcessingOptions;
 @property(retain, nonatomic) NSArray *textDetectionLocales; // @synthesize textDetectionLocales=_textDetectionLocales;
 @property(nonatomic) _Bool usesLanguageCorrection; // @synthesize usesLanguageCorrection=_usesLanguageCorrection;
 @property(nonatomic) double normalizedMinimumTextHeightRatio; // @synthesize normalizedMinimumTextHeightRatio=_normalizedMinimumTextHeightRatio;
 @property(nonatomic) unsigned long long recognitionLevel; // @synthesize recognitionLevel=_recognitionLevel;
+@property(readonly, nonatomic) _Bool shouldApplySemanticTextFiltering;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

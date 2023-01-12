@@ -25,7 +25,7 @@
     NSString *_formattedValue;
     TSWPStorage *_formattedRichTextStorage;
     unsigned short _explicitFlags;
-    unsigned int _cellFormatKind;
+    unsigned char _cellFormatKind;
     TSKFormat *_numberFormat;
     TSKFormat *_currencyFormat;
     TSKFormat *_dateFormat;
@@ -37,11 +37,12 @@
 + (id)cellDiffProperties;
 + (id)formatAndValueFromCell:(id)arg1 applySpareFormatOnly:(unsigned int)arg2;
 + (id)formatAndValueFromRichTextCell:(id)arg1 updatingStorageWithBlock:(CDUnknownBlockType)arg2;
++ (id)formatAndValueFromCell:(id)arg1 useAllSpareFormats:(_Bool)arg2 suppressApplyingValue:(_Bool)arg3;
 + (id)formatAndValueFromCell:(id)arg1 useAllSpareFormats:(_Bool)arg2 forceNoContent:(_Bool)arg3;
 + (id)formatAndValueFromCell:(id)arg1 useAllSpareFormats:(_Bool)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)p_formatForFormatType:(unsigned int)arg1;
+- (id)p_formatForFormatType:(unsigned char)arg1;
 - (void)saveToPropertyCommandMessage:(struct Message *)arg1 archiver:(id)arg2;
 - (id)initFromPropertyCommandMessage:(const struct Message *)arg1 unarchiver:(id)arg2;
 - (id)objectByRemovingPropertiesInMap:(id)arg1 addingPropertiesInMap:(id)arg2 updateInverseResetPropertyMap:(id)arg3 updateInverseSetPropertyMap:(id)arg4;
@@ -52,13 +53,13 @@
 @property(readonly, nonatomic) _Bool isApplySpareFormatOnly;
 @property(readonly, nonatomic) _Bool isFormulaSyntaxError;
 @property(readonly, nonatomic) struct TSUDecimal numberOrCurrencyDecimalValue;
-@property(readonly, nonatomic) int valueType;
+@property(readonly, nonatomic) unsigned char valueType;
 - (id)p_copyStorage:(id)arg1;
 - (id)copyForApplyingNoContentWithSuppressApplyValue:(_Bool)arg1;
 - (id)copyForNotApplyingValue;
 - (id)copyForApplyingNoContent;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initFromCell:(id)arg1 useAllSpareFormats:(_Bool)arg2 forceNoContent:(_Bool)arg3 applySpareFormatOnly:(unsigned int)arg4;
+- (id)initFromCell:(id)arg1 useAllSpareFormats:(_Bool)arg2 forceNoContent:(_Bool)arg3 suppressApplyValue:(_Bool)arg4 applySpareFormatOnly:(unsigned int)arg5;
 - (id)initFromCell:(id)arg1 useAllSpareFormats:(_Bool)arg2;
 @property(readonly, nonatomic) TSWPStorage *richTextOrErrorTextStorageValue;
 @property(readonly, copy, nonatomic) NSString *stringValue;

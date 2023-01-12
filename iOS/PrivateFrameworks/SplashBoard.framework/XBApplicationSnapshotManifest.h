@@ -21,6 +21,7 @@
 + (id)_manifestsByIdentity;
 + (void)deleteAllSystemSnapshots;
 + (id)debugDescription;
++ (void)handleTrackingStateChange;
 + (void)initialize;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) __weak XBApplicationSnapshotManifestImpl *manifestImpl; // @synthesize manifestImpl=_manifestImpl;
@@ -31,7 +32,10 @@
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 - (_Bool)_invalidate;
+- (void)archive;
 - (void)beginSnapshotAccessTransaction:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)snapshotsConsideredUnpurgableByAPFS;
+- (void)updateSnapshotsAPFSPurgability:(_Bool)arg1;
 - (void)purgeSnapshotsWithProtectedContent;
 - (void)deleteSnapshotsForGroupID:(id)arg1 predicateBuilder:(CDUnknownBlockType)arg2;
 - (void)deleteSnapshotsForGroupID:(id)arg1 matchingPredicate:(id)arg2;
@@ -49,6 +53,8 @@
 - (void)generateImageForSnapshot:(id)arg1 dataProvider:(id)arg2 writeToFile:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)createVariantForSnapshot:(id)arg1 withIdentifier:(id)arg2;
 - (id)createSnapshotWithGroupID:(id)arg1;
+- (void)endTrackingImageDeletions;
+- (void)beginTrackingImageDeletions;
 - (id)snapshotsForGroupIDs:(id)arg1 fetchRequest:(id)arg2;
 - (id)snapshotsForGroupIDs:(id)arg1 matchingPredicate:(id)arg2;
 - (id)snapshotsForGroupIDs:(id)arg1;

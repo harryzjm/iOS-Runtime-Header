@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <WorkflowEditor/WFTriggerConfigurationViewController.h>
+
 #import <WorkflowUI/UITableViewDataSource-Protocol.h>
 #import <WorkflowUI/UITableViewDelegate-Protocol.h>
 #import <WorkflowUI/WFLocationPickerViewControllerDelegate-Protocol.h>
@@ -11,7 +13,7 @@
 
 @class NSArray, NSDateFormatter, NSString, UITableView;
 
-@interface WFLocationTriggerConfigurationViewController <UITableViewDataSource, UITableViewDelegate, WFLocationPickerViewControllerDelegate, WFTimeRangePickerViewControllerDelegate>
+@interface WFLocationTriggerConfigurationViewController : WFTriggerConfigurationViewController <UITableViewDataSource, UITableViewDelegate, WFLocationPickerViewControllerDelegate, WFTimeRangePickerViewControllerDelegate>
 {
     _Bool _isLocationBasedAlertsEnabled;
     _Bool _isArrive;
@@ -43,7 +45,7 @@
 - (void)checkLocationAuthorization;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
-- (id)initWithTrigger:(id)arg1 triggerManager:(id)arg2 mode:(unsigned long long)arg3;
+- (id)initWithTrigger:(id)arg1 mode:(unsigned long long)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

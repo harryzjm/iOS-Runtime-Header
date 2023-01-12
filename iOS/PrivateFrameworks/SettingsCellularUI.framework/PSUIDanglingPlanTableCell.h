@@ -6,7 +6,7 @@
 
 #import <Preferences/PSTableCell.h>
 
-@class UILabel, UIView;
+@class UILabel;
 
 __attribute__((visibility("hidden")))
 @interface PSUIDanglingPlanTableCell : PSTableCell
@@ -14,24 +14,17 @@ __attribute__((visibility("hidden")))
     UILabel *_nameLabel;
     UILabel *_numberLabel;
     UILabel *_statusLabel;
-    UILabel *_centeredNameLabel;
-    UIView *_accessorySpacerView;
 }
 
 + (long long)cellStyle;
 - (void).cxx_destruct;
-@property(retain, nonatomic) UIView *accessorySpacerView; // @synthesize accessorySpacerView=_accessorySpacerView;
-@property(retain, nonatomic) UILabel *centeredNameLabel; // @synthesize centeredNameLabel=_centeredNameLabel;
 @property(retain, nonatomic) UILabel *statusLabel; // @synthesize statusLabel=_statusLabel;
 @property(retain, nonatomic) UILabel *numberLabel; // @synthesize numberLabel=_numberLabel;
 @property(retain, nonatomic) UILabel *nameLabel; // @synthesize nameLabel=_nameLabel;
 - (id)detailTextLabel;
 - (id)textLabel;
 - (void)refreshCellContentsWithSpecifier:(id)arg1;
-- (void)_setCenteredText:(id)arg1;
 - (void)_setLabel:(id)arg1 andPhoneNumber:(id)arg2;
-- (void)setAccessoryType:(long long)arg1;
-- (void)_setView;
 - (_Bool)canBeChecked;
 - (_Bool)canReload;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;

@@ -6,11 +6,13 @@
 
 #import <Home/HFItemManager.h>
 
-@class HFItem, HFStaticItemProvider, HUCharacteristicEventOptionProvider, HUInstructionsItem, HUTriggerConditionEditorItemModule;
+@class HFCharacteristicEventBuilderItem, HFEventTriggerBuilder, HFItem, HFStaticItemProvider, HUCharacteristicEventOptionProvider, HUInstructionsItem, HUTriggerConditionEditorItemModule;
 @protocol HFServiceVendor;
 
 @interface HUCharacteristicTriggerEventItemManager : HFItemManager
 {
+    HFCharacteristicEventBuilderItem *_eventBuilderItem;
+    HFEventTriggerBuilder *_triggerBuilder;
     HFItem<HFServiceVendor> *_serviceVendingItem;
     HFItem *_activeOptionItem;
     HUTriggerConditionEditorItemModule *_conditionModule;
@@ -22,7 +24,7 @@
 
 + (id)_titleForItemSection:(id)arg1;
 + (CDUnknownBlockType)_optionItemComparator;
-+ (id)serviceVendingItemForCharacteristicTriggerBuilder:(id)arg1;
++ (id)serviceVendorItemForEventBuilderItem:(id)arg1 inHome:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) HUCharacteristicEventOptionProvider *optionProvider; // @synthesize optionProvider=_optionProvider;
 @property(retain, nonatomic) HFStaticItemProvider *staticItemProvider; // @synthesize staticItemProvider=_staticItemProvider;
@@ -31,9 +33,13 @@
 @property(readonly, nonatomic) HUTriggerConditionEditorItemModule *conditionModule; // @synthesize conditionModule=_conditionModule;
 @property(retain, nonatomic) HFItem *activeOptionItem; // @synthesize activeOptionItem=_activeOptionItem;
 @property(retain, nonatomic) HFItem<HFServiceVendor> *serviceVendingItem; // @synthesize serviceVendingItem=_serviceVendingItem;
+@property(readonly, nonatomic) HFEventTriggerBuilder *triggerBuilder; // @synthesize triggerBuilder=_triggerBuilder;
+@property(readonly, nonatomic) HFCharacteristicEventBuilderItem *eventBuilderItem; // @synthesize eventBuilderItem=_eventBuilderItem;
 - (id)_buildSectionsWithDisplayedItems:(id)arg1;
 - (id)_buildItemProvidersForHome:(id)arg1;
-- (id)initWithCharacteristicTriggerBuilder:(id)arg1 delegate:(id)arg2;
+- (id)_buildItemModulesForHome:(id)arg1;
+- (id)optionItems;
+- (id)initWithTriggerBuilder:(id)arg1 eventBuilderItem:(id)arg2 delegate:(id)arg3;
 
 @end
 

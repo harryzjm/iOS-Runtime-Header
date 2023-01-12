@@ -8,7 +8,7 @@
 
 @interface _EARCommandTagger : NSObject
 {
-    struct unique_ptr<quasar::CommandTagger, std::__1::default_delete<quasar::CommandTagger>> _tagger;
+    struct unique_ptr<quasar::CommandTagger, std::default_delete<quasar::CommandTagger>> _tagger;
 }
 
 + (void)initialize;

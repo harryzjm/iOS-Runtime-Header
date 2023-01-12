@@ -10,7 +10,6 @@
 
 @class BRCAccountSession, BRCDirectoryItem, BRCTreeEnumerator, BRCXPCClient, NSError, NSMutableArray, NSMutableSet, NSSet, NSString, NSURL;
 
-__attribute__((visibility("hidden")))
 @interface BRCFileProvidingRequestOperation <BRCDownloadTracking, BRCReachabilityDelegate, BRCOperationSubclass>
 {
     BRCAccountSession *_session;

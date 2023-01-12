@@ -7,7 +7,7 @@
 #import <PhotoLibraryServices/PLDiagnosticsProvider-Protocol.h>
 #import <PhotoLibraryServices/PLMomentData-Protocol.h>
 
-@class CLLocation, NSArray, NSDate, NSObject, NSSet, NSString, PLMomentList;
+@class CLLocation, NSArray, NSDate, NSObject, NSSet, NSString;
 @protocol NSCopying, PLPhotosHighlightData;
 
 @interface PLMoment <PLMomentData, PLDiagnosticsProvider>
@@ -29,6 +29,8 @@
 + (id)allInvalidAssetsInManagedObjectContext:(id)arg1 error:(id *)arg2;
 + (id)invalidAssetsIgnoringAssetIdentifiers:(id)arg1 inManagedObjectContext:(id)arg2 error:(id *)arg3;
 + (id)allAssetsIncludedInMomentsInManagedObjectContext:(id)arg1 IDsOnly:(_Bool)arg2 error:(id *)arg3;
++ (id)batchFetchMomentObjectIDsByAssetObjectIDsWithAssetObjectIDs:(id)arg1 andAssetPredicate:(id)arg2 inManagedObjectContext:(id)arg3 error:(id *)arg4;
++ (id)batchFetchMomentObjectIDsByAssetObjectIDsWithAssetObjectIDs:(id)arg1 inManagedObjectContext:(id)arg2 error:(id *)arg3;
 + (void)batchFetchMomentUUIDsByAssetUUIDsWithAssetUUIDs:(id)arg1 library:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (id)predicateForInvalidAssets;
 + (id)predicateForInvalidAssetsIgnoringAssetsWithIdentifiers:(id)arg1;
@@ -46,6 +48,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) _Bool didRegisteredWithUserInterfaceContext; // @synthesize didRegisteredWithUserInterfaceContext;
 @property(nonatomic) _Bool isRegisteredForChanges; // @synthesize isRegisteredForChanges;
+@property(readonly, nonatomic) short pl_originatorState;
 @property(readonly, nonatomic) unsigned long long pl_numberOfAssets;
 @property(readonly, nonatomic) struct CLLocationCoordinate2D pl_coordinate;
 @property(readonly, nonatomic) CLLocation *pl_location;
@@ -85,11 +88,11 @@
 - (void)_appendPOIs:(id)arg1 withSynonyms:(id)arg2 toCollection:(id)arg3;
 - (void)_appendHolidays:(id)arg1 toCollection:(id)arg2;
 - (void)_appendMeanings:(id)arg1 withSynonyms:(id)arg2 toCollection:(id)arg3;
-- (void)_appendScenesWithIdentifiers:(id)arg1 toCollection:(id)arg2 sceneTaxonomyProxy:(id)arg3;
+- (void)_appendScenesWithIdentifiers:(id)arg1 toCollection:(id)arg2 sceneTaxonomy:(id)arg3;
 - (void)_appendDates:(id)arg1 withDateFormatter:(id)arg2 withSynonyms:(id)arg3 toCollection:(id)arg4;
 - (void)_appendSocialGroupIdentifiers:(id)arg1 toCollection:(id)arg2;
 - (void)_appendPersonsWithUUIDs:(id)arg1 toCollection:(id)arg2;
-- (void)getSearchIndexContentsForCollection:(id)arg1 fromDictionary:(id)arg2 withDateFormatter:(id)arg3 synonymsDictionaries:(id)arg4 sceneTaxonomyProxy:(id)arg5;
+- (void)getSearchIndexContentsForCollection:(id)arg1 fromDictionary:(id)arg2 withDateFormatter:(id)arg3 synonymsDictionaries:(id)arg4 sceneTaxonomy:(id)arg5;
 - (id)assetUUIDsForPreviewWithCount:(unsigned long long)arg1;
 - (id)displayTitleWithDateFormatter:(id)arg1;
 - (id)bestAsset;
@@ -112,8 +115,8 @@
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) id <PLPhotosHighlightData> highlight; // @dynamic highlight;
 @property(readonly, copy, nonatomic) NSArray *localizedLocationNames; // @dynamic localizedLocationNames;
-@property(retain, nonatomic) PLMomentList *megaMomentList; // @dynamic megaMomentList;
 @property(retain, nonatomic) NSDate *modificationDate; // @dynamic modificationDate;
+@property(nonatomic) short originatorState; // @dynamic originatorState;
 @property(nonatomic) unsigned short processedLocation; // @dynamic processedLocation;
 @property(retain, nonatomic) NSDate *representativeDate; // @dynamic representativeDate;
 @property(retain, nonatomic) NSDate *startDate; // @dynamic startDate;
@@ -122,7 +125,6 @@
 @property(nonatomic) int timeZoneOffset; // @dynamic timeZoneOffset;
 @property(retain, nonatomic) NSString *title; // @dynamic title;
 @property(retain, nonatomic) NSString *uuid; // @dynamic uuid;
-@property(retain, nonatomic) PLMomentList *yearMomentList; // @dynamic yearMomentList;
 
 @end
 

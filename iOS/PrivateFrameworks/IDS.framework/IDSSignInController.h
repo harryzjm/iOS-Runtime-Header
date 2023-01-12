@@ -37,6 +37,7 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *signInQueue; // @synthesize signInQueue=_signInQueue;
 @property(retain, nonatomic) NSMutableDictionary *accountIDDescriptionMap; // @synthesize accountIDDescriptionMap=_accountIDDescriptionMap;
 @property(retain, nonatomic) NSMutableDictionary *serviceNameAccountControllerMap; // @synthesize serviceNameAccountControllerMap=_serviceNameAccountControllerMap;
+- (void)accountController:(id)arg1 accountUpdated:(id)arg2;
 - (void)accountController:(id)arg1 accountRemoved:(id)arg2;
 - (void)accountController:(id)arg1 accountDisabled:(id)arg2;
 - (void)accountController:(id)arg1 accountAdded:(id)arg2;
@@ -52,7 +53,7 @@
 - (id)_createAccountWithDictionary:(id)arg1 accountID:(id)arg2 serviceName:(id)arg3;
 - (void)_validateStateForAccountID:(id)arg1 timeoutMode:(unsigned long long)arg2;
 - (void)_cleanupStateForAccountID:(id)arg1;
-- (void)_scheduleValidationAfter:(double)arg1 forAccountID:(id)arg2 allowFuzz:(_Bool)arg3;
+- (void)_scheduleValidationAfter:(double)arg1 forAccountID:(id)arg2 allowFuzz:(_Bool)arg3 signOut:(_Bool)arg4;
 - (void)_initializeStateMachineForAccountID:(id)arg1 service:(id)arg2 state:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)signOutService:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)signInUsername:(id)arg1 withProvidedCredential:(id)arg2 onService:(unsigned long long)arg3 waitUntilRegistered:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;

@@ -15,6 +15,7 @@
 + (id)resultCandidateSelectedWithDictionary:(id)arg1 context:(id)arg2;
 + (id)resultCandidateSelected;
 - (_Bool)requiresResponse;
+@property(nonatomic) _Bool serverFallback;
 @property(copy, nonatomic) NSString *selectedResultCandidateId;
 @property(retain, nonatomic) SARDNativeFlowContextUpdate *nativeFlowContextUpdate;
 - (id)encodedClassName;

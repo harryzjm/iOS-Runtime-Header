@@ -17,6 +17,7 @@
 
 - (void).cxx_destruct;
 - (void)reset;
+- (void)triggerABCForType:(id)arg1 subType:(id)arg2 context:(id)arg3;
 - (void)pushMyriadAdvertisementContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_resetSettingsConnection;
 - (id)_settingsConnection;

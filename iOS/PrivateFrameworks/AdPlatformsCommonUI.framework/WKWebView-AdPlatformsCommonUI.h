@@ -7,6 +7,8 @@
 #import <WebKit/WKWebView.h>
 
 @interface WKWebView (AdPlatformsCommonUI)
+- (_Bool)_webView:(id)arg1 focusShouldStartInputSession:(id)arg2;
+- (void)setupInternalProperties;
 - (id)remoteObjectProxyWithInterface;
 - (void)setRemoteInspectionNameOverride:(id)arg1;
 - (void)unregisterExportedObject:(id)arg1 interface:(id)arg2;

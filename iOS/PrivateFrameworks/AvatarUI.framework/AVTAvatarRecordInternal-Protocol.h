@@ -5,8 +5,10 @@
 //
 
 #import <AvatarUI/AVTAvatarRecord-Protocol.h>
+#import <AvatarUI/NSCopying-Protocol.h>
+#import <AvatarUI/NSSecureCoding-Protocol.h>
 
-@protocol AVTAvatarRecordInternal <AVTAvatarRecord>
+@protocol AVTAvatarRecordInternal <AVTAvatarRecord, NSSecureCoding, NSCopying>
 @property(readonly, nonatomic, getter=isPuppet) _Bool puppet;
 @end
 

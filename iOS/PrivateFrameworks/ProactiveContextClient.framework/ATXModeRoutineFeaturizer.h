@@ -8,36 +8,24 @@
 
 #import <ProactiveContextClient/ATXModeFeaturizer-Protocol.h>
 
-@class CLCircularRegion, NSString;
-@protocol ATXLocationManagerProtocol><ATXLocationOfInterestManagerProtocol, ATXModeFeaturizerDelegate;
+@class BMBiomeScheduler, BPSSink, NSString;
+@protocol ATXModeFeaturizerDelegate, OS_dispatch_queue;
 
 @interface ATXModeRoutineFeaturizer : NSObject <ATXModeFeaturizer>
 {
-    id <ATXLocationManagerProtocol><ATXLocationOfInterestManagerProtocol> _locationManager;
-    CLCircularRegion *_homeLOIRegion;
-    CLCircularRegion *_workLOIRegion;
+    NSObject<OS_dispatch_queue> *_queue;
+    BMBiomeScheduler *_scheduler;
+    BPSSink *_sink;
     id <ATXModeFeaturizerDelegate> _delegate;
-    double _homeLOISearchRadius;
-    double _workLOISearchRadius;
 }
 
 - (void).cxx_destruct;
-@property double workLOISearchRadius; // @synthesize workLOISearchRadius=_workLOISearchRadius;
-@property double homeLOISearchRadius; // @synthesize homeLOISearchRadius=_homeLOISearchRadius;
 @property(nonatomic) __weak id <ATXModeFeaturizerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)stopListening;
 - (void)beginListening;
-- (void)beginMonitoringForLocation:(id)arg1 radius:(double)arg2 type:(long long)arg3;
-- (void)_watchRegionForLOIType:(long long)arg1;
+- (void)_processNewLocationEvent:(id)arg1;
+- (id)_provideFeaturesWithLocationEvent:(id)arg1;
 - (id)provideFeatures;
-- (_Bool)isInRegion:(id)arg1;
-- (void)_locationManagerDidExitRegion:(id)arg1;
-- (void)_locationManagerDidEnterRegion:(id)arg1;
-- (void)_routineLocationsOfInterestDidChange:(id)arg1;
-- (void)_updateLOIAndUpdateFeatures;
-- (void)dealloc;
-- (id)initWithLocationManager:(id)arg1;
-- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

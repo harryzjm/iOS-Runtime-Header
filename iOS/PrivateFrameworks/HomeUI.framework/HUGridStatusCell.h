@@ -5,10 +5,11 @@
 //
 
 #import <HomeUI/HUAccessoryViewCellProtocol-Protocol.h>
+#import <HomeUI/HUIconRenouncing-Protocol.h>
 
 @class HFItem, HUGridStatusCellLayoutOptions, HUGridStatusCellTextView, HUIconView, NSArray, NSString, UILabel, UIStackView, UIView;
 
-@interface HUGridStatusCell <HUAccessoryViewCellProtocol>
+@interface HUGridStatusCell <HUAccessoryViewCellProtocol, HUIconRenouncing>
 {
     HFItem *_item;
     UIView *_accessoryView;
@@ -47,6 +48,8 @@
 - (void)_updateIconAnimated:(_Bool)arg1;
 - (void)_updateLabels;
 - (void)layoutOptionsDidChange;
+- (void)reclaimIconIfPossible;
+- (void)renounceIcon;
 - (void)updateUIWithAnimation:(_Bool)arg1;
 - (unsigned long long)iconDisplayStyle;
 - (_Bool)managesOwnBackgroundViewLayout;

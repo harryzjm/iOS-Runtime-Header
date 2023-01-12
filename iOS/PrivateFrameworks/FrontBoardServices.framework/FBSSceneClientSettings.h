@@ -11,7 +11,7 @@
 #import <FrontBoardServices/NSCopying-Protocol.h>
 #import <FrontBoardServices/NSMutableCopying-Protocol.h>
 
-@class BSSettings, FBSSceneIdentityToken, NSOrderedSet, NSSet, NSString;
+@class BSSettings, FBSSceneIdentityToken, NSOrderedSet, NSString;
 
 @interface FBSSceneClientSettings : NSObject <BSDebugDescriptionProviding, BSXPCSecureCoding, NSCopying, NSMutableCopying>
 {
@@ -53,7 +53,7 @@
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (id)otherSettings;
-@property(readonly, copy, nonatomic) NSSet *occlusions;
+- (id)occlusions;
 - (void)dealloc;
 - (id)init;
 - (id)initWithSettings:(id)arg1;

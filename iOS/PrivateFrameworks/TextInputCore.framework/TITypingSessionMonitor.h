@@ -6,22 +6,26 @@
 
 #import <objc/NSObject.h>
 
-#import <TextInputCore/TITypingSessionAggregatedEventSourcing-Protocol.h>
 #import <TextInputCore/TITypingSessionMonitoringProtocol-Protocol.h>
 
-@class NSLocale, NSPointerArray, NSString, TIKeyboardLayout, TITypingDESRecordWriter, TITypingSession;
-@protocol OS_dispatch_queue, TITypingSessionDelegate;
+@class NSLocale, NSMutableArray, NSString, TIBiomeObserver, TICoreAnalyticsEventDispatcher, TIDPEventDispatcher, TIFeatureUsageMetricsCache, TIKBUserModel, TIKeyboardLayout, TISKMetricCollector, TITypingDESRecordWriter, TITypingSession;
+@protocol OS_dispatch_queue;
 
-@interface TITypingSessionMonitor : NSObject <TITypingSessionMonitoringProtocol, TITypingSessionAggregatedEventSourcing>
+@interface TITypingSessionMonitor : NSObject <TITypingSessionMonitoringProtocol>
 {
     NSObject<OS_dispatch_queue> *_workQueue;
     _Bool _useDODML;
-    id <TITypingSessionDelegate> _delegate;
+    TIKBUserModel *_userModel;
+    TISKMetricCollector *_sensorKitMetricCollector;
+    TICoreAnalyticsEventDispatcher *_coreAnalyticsEventDispatcher;
+    TIDPEventDispatcher *_differentialPrivacyEventDispatcher;
+    TIFeatureUsageMetricsCache *_featureUsageMetricsCache;
+    TIBiomeObserver *_biomeObserver;
     TITypingSession *_currentTypingSession;
     TITypingDESRecordWriter *_desRecordWriter;
     NSLocale *_locale;
-    NSPointerArray *_aggregateEventsObservers;
     TIKeyboardLayout *_currentLayout;
+    NSMutableArray *_aggregatedEventObservers;
 }
 
 + (_Bool)shouldRecordSession:(id)arg1;
@@ -29,17 +33,24 @@
 + (id)pathForTimeTaggedFileName:(id)arg1;
 + (id)temporaryKeyboardsDirectory;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *aggregatedEventObservers; // @synthesize aggregatedEventObservers=_aggregatedEventObservers;
 @property(retain, nonatomic) TIKeyboardLayout *currentLayout; // @synthesize currentLayout=_currentLayout;
-@property(retain, nonatomic) NSPointerArray *aggregateEventsObservers; // @synthesize aggregateEventsObservers=_aggregateEventsObservers;
 @property(retain, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 @property(retain, nonatomic) TITypingDESRecordWriter *desRecordWriter; // @synthesize desRecordWriter=_desRecordWriter;
 @property(retain, nonatomic) TITypingSession *currentTypingSession; // @synthesize currentTypingSession=_currentTypingSession;
-@property(nonatomic) __weak id <TITypingSessionDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)addAggregatedEventObserver:(id)arg1;
-- (void)keyboardDidSuspend;
+@property(readonly, nonatomic) TIBiomeObserver *biomeObserver; // @synthesize biomeObserver=_biomeObserver;
+@property(readonly, nonatomic) TIFeatureUsageMetricsCache *featureUsageMetricsCache; // @synthesize featureUsageMetricsCache=_featureUsageMetricsCache;
+@property(readonly, nonatomic) TIDPEventDispatcher *differentialPrivacyEventDispatcher; // @synthesize differentialPrivacyEventDispatcher=_differentialPrivacyEventDispatcher;
+@property(readonly, nonatomic) TICoreAnalyticsEventDispatcher *coreAnalyticsEventDispatcher; // @synthesize coreAnalyticsEventDispatcher=_coreAnalyticsEventDispatcher;
+@property(readonly, nonatomic) TISKMetricCollector *sensorKitMetricCollector; // @synthesize sensorKitMetricCollector=_sensorKitMetricCollector;
+@property(readonly, nonatomic) TIKBUserModel *userModel; // @synthesize userModel=_userModel;
+- (void)tearDown;
+- (void)observeSession:(id)arg1 sessionParams:(id)arg2;
+- (void)keyboardDidSuspend:(id)arg1 withSessionParams:(id)arg2;
+- (id)endTypingSession;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (void)layoutDidChange:(id)arg1 keyboardState:(id)arg2;
-- (id)initWithLocale:(id)arg1 useDODML:(_Bool)arg2;
+- (id)initWithConfig:(id)arg1 metricDescriptorRegistry:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

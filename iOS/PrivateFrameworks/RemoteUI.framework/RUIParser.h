@@ -33,6 +33,7 @@
 
 + (id)rowWithAttributeDict:(id)arg1 delegate:(id)arg2 parent:(id)arg3;
 + (id)tableRowClassForElementName:(id)arg1;
++ (id)textStyleForString:(id)arg1;
 + (long long)textAlignmentForString:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <RUIParserDelegate> delegate; // @synthesize delegate=_delegate;

@@ -11,7 +11,8 @@
 #import <PhotosUICore/PXPhotosGridOptionsControllerDelegate-Protocol.h>
 #import <PhotosUICore/PXSettingsKeyObserver-Protocol.h>
 
-@class NSArray, NSMapTable, NSString, PLDateRangeFormatter, PXActionPerformer, PXAssetSelectionTypeCounter, PXMiroMoviePresenter, PXPhotosBarButtonItemsController, PXPhotosGridActionMenuController, PXPhotosUIViewController, PXPhotosViewModel;
+@class NSArray, NSMapTable, NSString, PLDateRangeFormatter, PXActionPerformer, PXAssetSelectionTypeCounter, PXMoviePresenter, PXPhotosBarButtonItemsController, PXPhotosContentController, PXPhotosGridActionMenuController, PXPhotosViewModel;
+@protocol PXPhotosBarsControllerDelegate;
 
 @interface PXPhotosBarsController <PXChangeObserver, PXActionPerformerDelegate, PXPhotosGridActionPerformerDelegate, PXPhotosGridOptionsControllerDelegate, PXAssetCollectionActionPerformerDelegate, PXSettingsKeyObserver>
 {
@@ -19,13 +20,15 @@
     NSArray *_rightBarButtonItemIdentifiers;
     NSArray *_toolbarItemIdentifiers;
     PLDateRangeFormatter *_dateRangeFormatter;
+    id <PXPhotosBarsControllerDelegate> _delegate;
     PXPhotosViewModel *_viewModel;
+    PXPhotosContentController *_contentController;
     PXAssetSelectionTypeCounter *_assetTypeCounter;
     PXPhotosBarButtonItemsController *_barButtonItemsController;
     PXActionPerformer *_activeActionPerformer;
     PXActionPerformer *_lastActionPerformer;
     PXPhotosGridActionMenuController *_menuController;
-    PXMiroMoviePresenter *_miroMoviePresenter;
+    PXMoviePresenter *_moviePresenter;
     NSMapTable *_actionTypeByBarButtonItem;
     NSString *_contentSizeCategory;
     double _interButtonSpacing;
@@ -37,13 +40,15 @@
 @property(nonatomic) double interButtonSpacing; // @synthesize interButtonSpacing=_interButtonSpacing;
 @property(retain, nonatomic) NSString *contentSizeCategory; // @synthesize contentSizeCategory=_contentSizeCategory;
 @property(readonly, nonatomic) NSMapTable *actionTypeByBarButtonItem; // @synthesize actionTypeByBarButtonItem=_actionTypeByBarButtonItem;
-@property(retain, nonatomic) PXMiroMoviePresenter *miroMoviePresenter; // @synthesize miroMoviePresenter=_miroMoviePresenter;
+@property(retain, nonatomic) PXMoviePresenter *moviePresenter; // @synthesize moviePresenter=_moviePresenter;
 @property(retain, nonatomic) PXPhotosGridActionMenuController *menuController; // @synthesize menuController=_menuController;
 @property(retain, nonatomic) PXActionPerformer *lastActionPerformer; // @synthesize lastActionPerformer=_lastActionPerformer;
 @property(retain, nonatomic) PXActionPerformer *activeActionPerformer; // @synthesize activeActionPerformer=_activeActionPerformer;
 @property(readonly, nonatomic) PXPhotosBarButtonItemsController *barButtonItemsController; // @synthesize barButtonItemsController=_barButtonItemsController;
 @property(readonly, nonatomic) PXAssetSelectionTypeCounter *assetTypeCounter; // @synthesize assetTypeCounter=_assetTypeCounter;
+@property(readonly, nonatomic) __weak PXPhotosContentController *contentController; // @synthesize contentController=_contentController;
 @property(readonly, nonatomic) PXPhotosViewModel *viewModel; // @synthesize viewModel=_viewModel;
+@property(nonatomic) __weak id <PXPhotosBarsControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) NSArray *toolbarItemIdentifiers; // @synthesize toolbarItemIdentifiers=_toolbarItemIdentifiers;
 @property(retain, nonatomic) NSArray *rightBarButtonItemIdentifiers; // @synthesize rightBarButtonItemIdentifiers=_rightBarButtonItemIdentifiers;
 @property(retain, nonatomic) NSArray *leftBarButtonItemIdentifiers; // @synthesize leftBarButtonItemIdentifiers=_leftBarButtonItemIdentifiers;
@@ -53,15 +58,18 @@
 - (void)_reloadOptionsButton;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)assetCollectionActionPerformer:(id)arg1 playMovieForAssetCollection:(id)arg2;
-- (void)photosGridActionPerformer:(id)arg1 filterStateChanged:(id)arg2;
+- (void)photosGridActionPerformer:(id)arg1 contentFilterStateChanged:(id)arg2;
 - (id)hostViewControllerForActionPerformer:(id)arg1;
 - (_Bool)actionPerformer:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)_actionPerformer:(id)arg1 presentViewController:(id)arg2;
 - (_Bool)actionPerformer:(id)arg1 transitionToViewController:(id)arg2 transitionType:(long long)arg3;
 - (void)actionPerformer:(id)arg1 didChangeState:(unsigned long long)arg2;
 - (void)_handleActionTypeBarButtonItem:(id)arg1;
+- (void)handleInfoButton:(id)arg1;
 - (void)handleAddButtonItem:(id)arg1;
+- (void)handleDismissButton:(id)arg1;
 - (void)handleActionMenuBarButtonItem:(id)arg1;
+- (id)createActionMenuController;
 - (void)handleCancelBarButtonItem:(id)arg1;
 - (void)handleDeselectAllBarButtonItem:(id)arg1;
 - (void)handleSelectAllBarButtonItem:(id)arg1;
@@ -71,11 +79,12 @@
 - (id)_identifierForActionType:(id)arg1;
 - (id)createBarButtonItemForIdentifier:(id)arg1 placement:(unsigned long long)arg2;
 @property(readonly, nonatomic) PLDateRangeFormatter *dateRangeFormatter; // @synthesize dateRangeFormatter=_dateRangeFormatter;
-@property(readonly, nonatomic) PXPhotosUIViewController *photosViewController;
 - (id)barAppearance;
 - (void)updateBars;
+- (id)existingBarItemForIdentifier:(id)arg1;
 - (id)createAssetActionManagerForAssetReference:(id)arg1;
-- (id)initWithPhotosViewController:(id)arg1 viewModel:(id)arg2;
+- (void)viewControllerDidChange;
+- (id)initWithPhotosContentController:(id)arg1;
 - (id)init;
 
 // Remaining properties

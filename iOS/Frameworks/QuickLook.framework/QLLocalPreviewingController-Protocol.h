@@ -13,6 +13,7 @@
 - (void)loadPreviewControllerWithContents:(id)arg1 context:(QLPreviewContext *)arg2 completionHandler:(void (^)(NSError *))arg3;
 
 @optional
+- (void)actionSheetDidDismiss;
 - (void)prepareForActionSheetPresentation;
 - (void)previewDidDisappear:(_Bool)arg1;
 - (void)previewWillDisappear:(_Bool)arg1;
@@ -21,6 +22,8 @@
 - (void)previewIsAppearingWithProgress:(double)arg1;
 - (void)previewWillAppear:(_Bool)arg1;
 - (void)previewBecameFullScreen:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)requestLockForCurrentItem;
+- (_Bool)canBeLocked;
 - (_Bool)canShowNavBar;
 - (_Bool)canShowToolBar;
 - (_Bool)canPinchToDismiss;

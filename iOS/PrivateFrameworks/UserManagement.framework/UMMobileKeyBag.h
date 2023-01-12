@@ -34,7 +34,7 @@
 + (id)currentUserSwitchContext;
 + (_Bool)adoptPersonaVoucherForAccoutID:(id)arg1 outError:(id *)arg2;
 + (id)currentPersona;
-+ (id)allUsers;
++ (id)allUsersWithFilter:(_Bool)arg1;
 + (id)lastLoggedInUser;
 + (id)loginUser;
 + (id)currentUser;
@@ -42,6 +42,7 @@
 + (unsigned long long)userQuotaSize;
 + (unsigned long long)maxNumberOfUsers;
 + (unsigned long long)userType;
++ (_Bool)isInternalBuild;
 + (_Bool)inSyncBubble;
 + (_Bool)isMultiUser;
 + (void)initialize;

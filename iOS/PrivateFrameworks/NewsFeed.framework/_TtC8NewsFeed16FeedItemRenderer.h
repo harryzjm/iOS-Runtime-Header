@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *presentingViewController;
     MISSING_TYPE *colorPaletteProvider;
+    MISSING_TYPE *cellSelectionRenderer;
     MISSING_TYPE *imageHeadlineViewRenderer;
     MISSING_TYPE *featuredHeadlineViewRenderer;
     MISSING_TYPE *featuredIssueHeadlineViewRenderer;
@@ -27,6 +28,10 @@
     MISSING_TYPE *audioTrackViewRenderer;
     MISSING_TYPE *audioDailyBriefingViewRenderer;
     MISSING_TYPE *bannerAdViewManager;
+    MISSING_TYPE *hiddenContentPlacardViewRenderer;
+    MISSING_TYPE *categoryViewRenderer;
+    MISSING_TYPE *engagementBannerViewRenderer;
+    MISSING_TYPE *engagementInlineViewManager;
     MISSING_TYPE *webEmbedViewControllerReuseManager;
     MISSING_TYPE *formatRegistrationIdentifiers;
 }

@@ -6,18 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
+@class GEOBuildingFootprintFeature, NSArray;
 
 @interface GEOMapFeatureBuilding : NSObject
 {
-    CDStruct_1d944ba4 *_feature;
+    GEOBuildingFootprintFeature *_feature;
     NSArray *_sections;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 - (void)dealloc;
-- (id)initWithFeature:(CDStruct_1d944ba4 *)arg1;
+- (id)initWithFeature:(id)arg1;
 
 @end
 

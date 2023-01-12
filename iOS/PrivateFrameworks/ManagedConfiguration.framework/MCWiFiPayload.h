@@ -111,6 +111,7 @@
 - (_Bool)_isEAPSIMConfig:(id)arg1;
 - (id)_eapPasswordFromConfig:(id)arg1 isRequired:(_Bool *)arg2;
 - (id)_eapUsernameFromConfig:(id)arg1 isRequired:(_Bool *)arg2;
+- (id)_createDictionaryWithAllowListKeyMigrated:(id)arg1;
 - (_Bool)_qosMarkingConfigIsValid:(id)arg1 error:(id *)arg2;
 - (_Bool)_eapConfigIsValid:(id)arg1 error:(id *)arg2;
 

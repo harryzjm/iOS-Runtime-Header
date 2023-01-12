@@ -12,6 +12,7 @@
 
 + (_Bool)supportsRowModel:(id)arg1;
 - (unsigned long long)type;
+- (void)tlk_updateForAppearance:(id)arg1;
 - (void)updateWithRowModel:(id)arg1;
 - (id)setupView;
 

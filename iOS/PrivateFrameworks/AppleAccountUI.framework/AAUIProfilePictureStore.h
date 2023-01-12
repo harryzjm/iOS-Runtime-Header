@@ -52,6 +52,7 @@
 - (void)_endObservingContactStoreDidChangeNotifications;
 - (void)_contactStoreDidChange:(id)arg1;
 - (void)_beginObservingContactStoreDidChangeNotifications;
+- (id)profilePictureForLocalContact:(id)arg1;
 - (void)fetchRawImageAndCropRectForFamilyMember:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchRawImageAndCropRectForAccountOwner:(CDUnknownBlockType)arg1;
 - (void)fetchProfilePictureForFamilyMember:(id)arg1 completion:(CDUnknownBlockType)arg2;

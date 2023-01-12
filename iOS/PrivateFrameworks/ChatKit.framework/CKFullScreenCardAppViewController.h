@@ -7,18 +7,19 @@
 #import <UIKit/UIViewController.h>
 
 #import <ChatKit/CKBrowserViewControllerProtocol-Protocol.h>
-#import <ChatKit/CKFullScreenAppViewControllerProtocol-Protocol.h>
+#import <ChatKit/CKExpandedAppViewControllerProtocol-Protocol.h>
 #import <ChatKit/UIAdaptivePresentationControllerDelegate-Protocol.h>
 #import <ChatKit/UIGestureRecognizerDelegate-Protocol.h>
 
 @class CKBrowserDragManager, CKConversation, CKDismissView, IMBalloonPlugin, IMBalloonPluginDataSource, NSArray, NSData, NSNumber, NSObject, NSString, UIView;
-@protocol CKBrowserViewControllerProtocol, CKBrowserViewControllerSendDelegate, CKFullScreenAppViewControllerDelegate, UIViewControllerTransitioningDelegate;
+@protocol CKBrowserViewControllerProtocol, CKBrowserViewControllerSendDelegate, CKExpandedAppViewControllerDelegate, UIViewControllerTransitioningDelegate;
 
-@interface CKFullScreenCardAppViewController : UIViewController <CKBrowserViewControllerProtocol, UIGestureRecognizerDelegate, UIAdaptivePresentationControllerDelegate, CKFullScreenAppViewControllerProtocol>
+@interface CKFullScreenCardAppViewController : UIViewController <CKBrowserViewControllerProtocol, UIGestureRecognizerDelegate, UIAdaptivePresentationControllerDelegate, CKExpandedAppViewControllerProtocol>
 {
+    _Bool _shouldDisableSnapshotView;
     _Bool _inTransition;
     UIViewController<CKBrowserViewControllerProtocol> *_contentViewController;
-    id <CKFullScreenAppViewControllerDelegate> _delegate;
+    id <CKExpandedAppViewControllerDelegate> _delegate;
     id <UIViewControllerTransitioningDelegate> _parentTransitioningDelegate;
     UIView *_contentView;
     CKDismissView *_dismissView;
@@ -33,7 +34,8 @@
 @property(retain, nonatomic) CKDismissView *dismissView; // @synthesize dismissView=_dismissView;
 @property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property(readonly, nonatomic) __weak id <UIViewControllerTransitioningDelegate> parentTransitioningDelegate; // @synthesize parentTransitioningDelegate=_parentTransitioningDelegate;
-@property(nonatomic) __weak id <CKFullScreenAppViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) _Bool shouldDisableSnapshotView;
+@property(nonatomic) __weak id <CKExpandedAppViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) UIViewController<CKBrowserViewControllerProtocol> *contentViewController; // @synthesize contentViewController=_contentViewController;
 - (_Bool)_shouldShowDimmingView;
 - (void)_updateDimmingViewAlpha;

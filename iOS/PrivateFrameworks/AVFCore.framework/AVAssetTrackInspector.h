@@ -17,6 +17,11 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)assetTrackInspectorWithAsset:(id)arg1 trackID:(int)arg2 trackIndex:(long long)arg3;
+- (struct OpaqueFigSampleCursorService *)_getFigSampleCursorServiceReportingTimeAccuracy:(_Bool *)arg1;
+- (id)makeSampleCursorAtLastSampleInDecodeOrder;
+- (id)makeSampleCursorAtFirstSampleInDecodeOrder;
+- (id)makeSampleCursorWithPresentationTimeStamp:(CDStruct_1b6d18a9)arg1;
+@property(readonly, nonatomic) _Bool canProvideSampleCursors;
 @property(readonly, nonatomic) _Bool isAudibleBooksContentAuthorized;
 @property(readonly, nonatomic) _Bool hasAudibleBooksContent;
 @property(readonly, nonatomic) _Bool hasProtectedContent;

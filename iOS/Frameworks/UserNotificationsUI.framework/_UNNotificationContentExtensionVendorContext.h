@@ -10,14 +10,14 @@
 #import <UserNotificationsUI/_UNNotificationExtensionVendorInterface-Protocol.h>
 
 @class NSArray, NSObject;
-@protocol OS_dispatch_queue, _UNNotificationContentExtensionContainer;
+@protocol OS_dispatch_queue, _UNNotificationContentExtensionVendorContainer;
 
 @interface _UNNotificationContentExtensionVendorContext : NSExtensionContext <_UNNotificationExtensionVendorInterface, _UNNotificationExtensionHostInterface>
 {
     _Bool _queueInactive;
     _Bool _didCheckActionResponseDelegate;
     NSArray *_notificationActions;
-    id <_UNNotificationContentExtensionContainer> _notificationExtensionContainer;
+    id <_UNNotificationContentExtensionVendorContainer> _notificationExtensionContainer;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
@@ -27,7 +27,7 @@
 @property(nonatomic) _Bool didCheckActionResponseDelegate; // @synthesize didCheckActionResponseDelegate=_didCheckActionResponseDelegate;
 @property(nonatomic, getter=isQueueInactive) _Bool queueInactive; // @synthesize queueInactive=_queueInactive;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property(nonatomic) __weak id <_UNNotificationContentExtensionContainer> notificationExtensionContainer; // @synthesize notificationExtensionContainer=_notificationExtensionContainer;
+@property(nonatomic) __weak id <_UNNotificationContentExtensionVendorContainer> notificationExtensionContainer; // @synthesize notificationExtensionContainer=_notificationExtensionContainer;
 @property(copy, nonatomic) NSArray *notificationActions; // @synthesize notificationActions=_notificationActions;
 - (void)_activateQueueIfNecessary;
 - (id)_notificationExtension;
@@ -35,6 +35,7 @@
 - (void)_hostWantsToUpdateMediaPlayPauseButton;
 - (void)_hostWantsMediaToPlay;
 - (void)_hostWantsMediaToPause;
+- (void)_hostDidReceiveNotificationResponse:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_hostDidReceiveNotificationResponse:(id)arg1;
 - (void)_hostDidReceiveNotification:(id)arg1;
 - (void)_hostWantsToRestoreInputViews;

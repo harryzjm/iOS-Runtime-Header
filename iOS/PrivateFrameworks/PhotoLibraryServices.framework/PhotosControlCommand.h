@@ -23,13 +23,17 @@
 + (id)abbreviations;
 + (id)name;
 - (void).cxx_destruct;
+- (id)formatDuration:(double)arg1;
 - (void)waitForSigInt;
 - (_Bool)writeData:(id)arg1 toPathOrStdout:(id)arg2;
 - (id)dataForPathOrStdin:(id)arg1;
 - (void)outputError:(id)arg1 arguments:(char *)arg2;
 - (void)output:(id)arg1 arguments:(char *)arg2;
+- (void)outputErrorWithJsonOutput:(_Bool)arg1 format:(id)arg2;
 - (void)outputError:(id)arg1;
 - (void)output:(id)arg1;
+- (void)outputCompactJsonObject:(id)arg1;
+- (void)outputJsonObject:(id)arg1;
 - (id)args;
 - (_Bool)processOption:(int)arg1 arg:(id)arg2;
 - (_Bool)processArgc:(int)arg1 argv:(char **)arg2;

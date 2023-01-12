@@ -19,7 +19,7 @@
     unsigned long long _byteSizeForArchiving;
 }
 
-+ (void)loadObjectFromArchive:(const struct TableDataList_ListEntry *)arg1 listType:(int)arg2 unarchiver:(id)arg3 completion:(CDUnknownBlockType)arg4;
++ (void)loadObjectFromArchive:(const void *)arg1 listType:(int)arg2 unarchiver:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (id)objectWithRefCount:(unsigned int)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned int key; // @synthesize key=_key;
@@ -46,9 +46,9 @@
 - (_Bool)dropReference;
 - (void)takeReferences:(unsigned int)arg1;
 - (void)takeReference;
-- (void)encodeToArchive:(struct TableDataList_ListEntry *)arg1 archiver:(id)arg2;
-- (void)loadFromArchive:(const struct TableDataList_ListEntry *)arg1 unarchiver:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)sharedLoadFromArchive:(const struct TableDataList_ListEntry *)arg1;
+- (void)encodeToArchive:(void *)arg1 archiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)sharedLoadFromArchive:(const void *)arg1;
 - (id)initWithRefCount:(unsigned int)arg1;
 - (void)p_sharedInitWithRefCount:(unsigned int)arg1 key:(unsigned int)arg2;
 

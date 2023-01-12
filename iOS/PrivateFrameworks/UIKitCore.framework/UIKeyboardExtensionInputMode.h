@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property(retain, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
+- (id)_indicatorIconWithBackground:(_Bool)arg1;
 - (_Bool)isDesiredForTraits:(id)arg1;
 - (_Bool)isAllowedForTraits:(id)arg1;
 - (id)normalizedIdentifierLevels;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (id)extendedDisplayName;
 - (id)displayName;
 - (id)hardwareLayout;
+- (_Bool)showSWLayoutWithHWKeyboard;
 - (void)setPrimaryLanguage:(id)arg1;
 - (void)dealloc;
 - (id)initWithIdentifier:(id)arg1;

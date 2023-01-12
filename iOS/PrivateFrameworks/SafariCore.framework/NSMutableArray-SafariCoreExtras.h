@@ -7,6 +7,9 @@
 #import <Foundation/NSMutableArray.h>
 
 @interface NSMutableArray (SafariCoreExtras)
+- (void)safari_insertObject:(id)arg1 inSortedOrderUsingComparator:(CDUnknownBlockType)arg2;
+- (void)safari_insertObjects:(id)arg1 afterObject:(id)arg2;
+- (void)safari_insertObject:(id)arg1 afterObject:(id)arg2;
 - (void)safari_removeObjectsAtIndexes:(id)arg1 withOffset:(long long)arg2 startingAtIndex:(unsigned long long)arg3;
 - (void)safari_removeObjectsPassingTest:(CDUnknownBlockType)arg1;
 - (void)safari_setObject:(id)arg1 atIndex:(unsigned long long)arg2 withPaddingObject:(id)arg3;

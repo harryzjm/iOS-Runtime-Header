@@ -6,20 +6,20 @@
 
 #import <UIKit/UIView.h>
 
+#import <PhotosUICore/PXChangeObserver-Protocol.h>
 #import <PhotosUICore/PXVideoViewDelegate-Protocol.h>
 
 @class NSString, PXVideoSession, PXVideoView, UIImage, UIImageView;
 @protocol PXVideoSessionUIViewDelegate;
 
-@interface PXVideoSessionUIView : UIView <PXVideoViewDelegate>
+@interface PXVideoSessionUIView : UIView <PXVideoViewDelegate, PXChangeObserver>
 {
     UIView *_videoContainerView;
-    PXVideoView *_videoView;
     PXVideoView *_adoptedVideoView;
-    PXVideoView *_activeVideoView;
     UIImageView *_placeholderImageView;
     _Bool _placeholderVisible;
     _Bool _allowsEdgeAntialiasing;
+    _Bool _toneMapToStandardDynamicRange;
     PXVideoSession *_videoSession;
     UIImage *_placeholderImage;
     id <PXVideoSessionUIViewDelegate> _delegate;
@@ -28,6 +28,7 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool toneMapToStandardDynamicRange; // @synthesize toneMapToStandardDynamicRange=_toneMapToStandardDynamicRange;
 @property(copy, nonatomic) NSString *videoGravity; // @synthesize videoGravity=_videoGravity;
 @property(nonatomic) _Bool allowsEdgeAntialiasing; // @synthesize allowsEdgeAntialiasing=_allowsEdgeAntialiasing;
 @property(nonatomic) struct CGRect contentsRect; // @synthesize contentsRect=_contentsRect;
@@ -37,9 +38,11 @@
 @property(retain, nonatomic) PXVideoSession *videoSession; // @synthesize videoSession=_videoSession;
 - (void)_updateEdgeAntialiasing;
 - (void)_updatePlaceholderVisibility;
+- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)videoViewReadinessDidChange:(id)arg1;
 - (void)dealloc;
 @property(readonly, nonatomic) _Bool isVideoLayerReadyForDisplay;
+@property(readonly, nonatomic) UIView *viewForSnapshotting;
 - (id)generateSnapshotImage;
 - (void)_updateVideoViewFrame;
 - (void)setContentMode:(long long)arg1;

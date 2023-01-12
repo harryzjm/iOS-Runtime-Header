@@ -15,13 +15,13 @@
     int _pid;
     NSCache *_plistValues;
     _Bool _canFetchBundle;
-    _Bool _backgroundRefreshEnabled;
     _Bool _hasPreferredJetsamBand;
     _Bool _supportsBackgroundContentFetching;
     _Bool _supportsBackgroundNetworkAuthentication;
     _Bool _supportsBackgroundAudio;
     _Bool _supportsUnboundedTaskCompletion;
     _Bool _usesSocketMonitoring;
+    _Bool _continuousBackgroundMode;
     _Bool _isExtension;
     int _preferredJetsamBand;
     int _platform;
@@ -36,6 +36,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) int platform; // @synthesize platform=_platform;
 @property(readonly, nonatomic) _Bool isExtension; // @synthesize isExtension=_isExtension;
+@property(readonly, nonatomic) _Bool continuousBackgroundMode; // @synthesize continuousBackgroundMode=_continuousBackgroundMode;
 @property(readonly, nonatomic) _Bool usesSocketMonitoring; // @synthesize usesSocketMonitoring=_usesSocketMonitoring;
 @property(readonly, nonatomic) _Bool supportsUnboundedTaskCompletion; // @synthesize supportsUnboundedTaskCompletion=_supportsUnboundedTaskCompletion;
 @property(readonly, nonatomic) _Bool supportsBackgroundAudio; // @synthesize supportsBackgroundAudio=_supportsBackgroundAudio;
@@ -45,7 +46,6 @@
 @property(readonly, nonatomic) _Bool hasPreferredJetsamBand; // @synthesize hasPreferredJetsamBand=_hasPreferredJetsamBand;
 @property(readonly, nonatomic) NSDictionary *environmentVariables; // @synthesize environmentVariables=_environmentVariables;
 @property(readonly, nonatomic) NSURL *dataContainerURL; // @synthesize dataContainerURL=_dataContainerURL;
-@property(readonly, nonatomic, getter=isBackgroundRefreshEnabled) _Bool backgroundRefreshEnabled; // @synthesize backgroundRefreshEnabled=_backgroundRefreshEnabled;
 @property(readonly, copy, nonatomic) NSString *extensionPointIdentifier; // @synthesize extensionPointIdentifier=_extensionPointIdentifier;
 @property(readonly, copy, nonatomic) NSString *executablePath; // @synthesize executablePath=_executablePath;
 @property(readonly, copy, nonatomic) NSString *bundlePath; // @synthesize bundlePath=_path;

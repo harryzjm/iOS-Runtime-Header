@@ -12,13 +12,16 @@
 
 @interface ADClientSettingsRequest : PBRequest <NSCopying>
 {
+    NSMutableArray *_currentSearchLandingAdsSettingParams;
     NSMutableArray *_currentSettingParams;
     NSString *_iAdIDString;
 }
 
++ (Class)currentSearchLandingAdsSettingParamsType;
 + (Class)currentSettingParamsType;
 + (id)options;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *currentSearchLandingAdsSettingParams; // @synthesize currentSearchLandingAdsSettingParams=_currentSearchLandingAdsSettingParams;
 @property(retain, nonatomic) NSMutableArray *currentSettingParams; // @synthesize currentSettingParams=_currentSettingParams;
 @property(retain, nonatomic) NSString *iAdIDString; // @synthesize iAdIDString=_iAdIDString;
 - (void)mergeFrom:(id)arg1;
@@ -30,6 +33,10 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)currentSearchLandingAdsSettingParamsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)currentSearchLandingAdsSettingParamsCount;
+- (void)addCurrentSearchLandingAdsSettingParams:(id)arg1;
+- (void)clearCurrentSearchLandingAdsSettingParams;
 - (id)currentSettingParamsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)currentSettingParamsCount;
 - (void)addCurrentSettingParams:(id)arg1;

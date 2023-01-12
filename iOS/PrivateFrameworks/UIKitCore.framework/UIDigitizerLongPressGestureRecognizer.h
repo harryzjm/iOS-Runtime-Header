@@ -16,6 +16,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) double minimumPressDuration;
 @property(readonly, nonatomic) struct CGPoint digitizerLocation;
+- (void)pressesHeldOverMaximum:(id)arg1;
 - (void)pressesNotHeldLongEnough:(id)arg1;
 - (void)pressesHeldForMinimum:(id)arg1;
 - (void)touchesBeganSuccessfully:(id)arg1;

@@ -14,18 +14,18 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) __weak id attributeDelegate; // @synthesize attributeDelegate;
-@property(nonatomic) __weak id textDelegate; // @synthesize textDelegate;
 - (_Bool)canBecomeFocused;
 - (id)_accessibilityCapturedImages;
 - (id)_accessibilityAllDropPointDescriptors;
 - (id)_accessibilityAllDragSourceDescriptors;
 - (id)description;
+- (void)accessibilityIncrement;
+- (void)accessibilityDecrement;
 - (id)accessibilityUserInputLabels;
 - (unsigned long long)_accessibilityScanningBehaviorTraits;
 - (long long)_accessibilityScannerActivateBehavior;
 - (id)_accessibilitySpeakThisString;
-- (_Bool)_accessibilityUseElementAtPositionAfterActivation;
+- (void *)_accessibilityGetBlockForAttribute:(long long)arg1;
 - (_Bool)_accessibilityIsSpeakThisElement;
 - (id)_accessibilityEquivalenceTag;
 - (struct _NSRange)_accessibilitySelectedTextRange;
@@ -51,14 +51,14 @@
 - (id)accessibilityIdentifier;
 - (id)accessibilityHint;
 - (id)accessibilityValue;
+- (_Bool)_accessibilityUseElementAtPositionAfterActivation;
 - (id)accessibilityLabel;
 - (id)_accessibilityTextViewTextOperationResponder;
-- (id)_tableViewCellAttributeDelegate;
 - (void)accessibilityElementDidLoseFocus;
 - (id)_accessibilityScrollStatus;
 - (id)_accessibilityCustomActionGroupIdentifier;
 - (void)accessibilityElementDidBecomeFocused;
-- (id)_tableViewCellTextDelegate;
+- (_Bool)_accessibilityElementServesAsHeadingLandmark;
 
 @end
 

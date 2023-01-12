@@ -10,7 +10,6 @@
 
 @class CKDPRecordZoneIdentifier, NSData;
 
-__attribute__((visibility("hidden")))
 @interface CKDPZoneRetrieveRequest : PBRequest <NSCopying>
 {
     NSData *_continuationMarker;

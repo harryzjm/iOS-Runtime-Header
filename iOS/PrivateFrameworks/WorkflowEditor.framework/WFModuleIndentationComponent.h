@@ -13,7 +13,7 @@
 }
 
 + (id)newWithIndentationLevel:(unsigned long long)arg1 component:(id)arg2;
-+ (id)newWithView:(const struct CKComponentViewConfiguration *)arg1 size:(const struct CKComponentSize *)arg2;
++ (id)newWithView:(const void *)arg1 size:(const struct CKComponentSize *)arg2;
 - (void).cxx_destruct;
 - (struct CKComponentLayout)computeLayoutThatFits:(struct CKSizeRange)arg1 restrictedToSize:(const struct CKComponentSize *)arg2 relativeToParentSize:(struct CGSize)arg3;
 

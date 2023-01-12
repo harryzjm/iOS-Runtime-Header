@@ -12,13 +12,13 @@ __attribute__((visibility("hidden")))
 + (_Bool)regionCursorIsPill;
 + (struct UIEdgeInsets)regionCursorInsets;
 + (struct NSDirectionalEdgeInsets)edgeInsets;
-+ (id)pillSmallFont;
-+ (id)pillFont;
-+ (struct CGSize)smallPillSize;
-+ (struct CGSize)pillSize;
 + (double)baselineOffset;
 + (double)cornerRadius;
 + (double)height;
+- (id)pillSmallFont;
+- (id)pillFont;
+- (struct CGSize)smallPillSize;
+- (struct CGSize)pillSize;
 
 @end
 

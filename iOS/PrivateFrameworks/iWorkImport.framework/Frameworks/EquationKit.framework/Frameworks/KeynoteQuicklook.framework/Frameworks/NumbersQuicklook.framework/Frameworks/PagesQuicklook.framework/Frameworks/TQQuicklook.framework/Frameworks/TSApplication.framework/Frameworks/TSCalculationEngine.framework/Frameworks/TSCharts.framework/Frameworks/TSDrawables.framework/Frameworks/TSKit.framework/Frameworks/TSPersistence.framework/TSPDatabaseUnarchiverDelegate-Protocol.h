@@ -7,6 +7,6 @@
 #import <TSPersistence/TSPUnarchiverDelegate-Protocol.h>
 
 @protocol TSPDatabaseUnarchiverDelegate <TSPUnarchiverDelegate>
-- (set_713dd2e1 *)filterIdentifiers:(const set_713dd2e1 *)arg1;
+- (void *)filterIdentifiers:(const void *)arg1;
 @end
 

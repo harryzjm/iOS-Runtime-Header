@@ -14,15 +14,12 @@
 {
     CDUnknownBlockType _bufferWillHandleSampleBuffer;
     CDUnknownBlockType _bufferWillFlush;
-    CDUnknownBlockType _bufferWillFinish;
 }
 
 - (void).cxx_destruct;
-@property(copy) CDUnknownBlockType bufferWillFinish; // @synthesize bufferWillFinish=_bufferWillFinish;
 @property(copy) CDUnknownBlockType bufferWillFlush; // @synthesize bufferWillFlush=_bufferWillFlush;
 @property(copy) CDUnknownBlockType bufferWillHandleSampleBuffer; // @synthesize bufferWillHandleSampleBuffer=_bufferWillHandleSampleBuffer;
 - (void)bufferWillFlush:(id)arg1;
-- (void)bufferWillFinish:(id)arg1;
 - (void)buffer:(id)arg1 willHandleSampleBuffer:(struct opaqueCMSampleBuffer *)arg2;
 
 // Remaining properties

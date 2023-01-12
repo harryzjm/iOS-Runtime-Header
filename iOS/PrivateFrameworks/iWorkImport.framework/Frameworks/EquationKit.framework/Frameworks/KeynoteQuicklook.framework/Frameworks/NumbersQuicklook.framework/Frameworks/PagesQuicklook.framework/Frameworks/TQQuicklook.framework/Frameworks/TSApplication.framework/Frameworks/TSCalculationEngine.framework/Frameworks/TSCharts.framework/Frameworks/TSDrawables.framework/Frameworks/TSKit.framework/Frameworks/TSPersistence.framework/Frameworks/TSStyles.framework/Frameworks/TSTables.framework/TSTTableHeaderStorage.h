@@ -47,11 +47,11 @@
 - (id)_mutableNoCreateHeaderAtIndex:(unsigned int)arg1;
 - (id)_mutableHeaderAtIndex:(unsigned int)arg1;
 - (void)updateHeaderAtIndex:(unsigned int)arg1 fromMetadata:(id)arg2;
-- (id)metadataAtIndex:(unsigned int)arg1 hidingAction:(unsigned char)arg2 defaultSize:(double)arg3 uuid:(UUIDData_5fbc143e)arg4;
+- (id)metadataAtIndex:(unsigned int)arg1 hidingAction:(unsigned char)arg2 defaultSize:(double)arg3 uuid:(struct TSKUIDStruct)arg4;
 - (void)p_allocateBuckets;
 @property(readonly, nonatomic) unsigned long long archivingCompatibilityVersion;
-- (void)encodeToArchive:(struct HeaderStorage *)arg1 archiver:(id)arg2;
-- (id)initFromArchive:(const struct HeaderStorage *)arg1 unarchiver:(id)arg2 owner:(id)arg3;
+- (void)encodeToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initFromArchive:(const void *)arg1 unarchiver:(id)arg2 owner:(id)arg3;
 @property(readonly, nonatomic) TSPObject *firstBucketForArchiving;
 - (id)initWithBucket:(id)arg1 owner:(id)arg2;
 - (id)initWithOwner:(id)arg1;

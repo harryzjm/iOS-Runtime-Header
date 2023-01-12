@@ -9,11 +9,12 @@
 #import <AVConference/NSCoding-Protocol.h>
 #import <AVConference/NSCopying-Protocol.h>
 #import <AVConference/NSSecureCoding-Protocol.h>
+#import <AVConference/VCCaptionsTranscription-Protocol.h>
 
 @class NSArray, NSMutableArray, NSMutableString, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VCCaptionsTranscription : NSObject <NSCopying, NSCoding, NSSecureCoding>
+@interface VCCaptionsTranscription : NSObject <NSCopying, NSCoding, NSSecureCoding, VCCaptionsTranscription>
 {
     NSMutableArray *_segments;
     NSMutableString *_formattedText;
@@ -29,12 +30,16 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool isLocal; // @synthesize isLocal=_isLocal;
 @property(nonatomic) unsigned int updateNumber; // @synthesize updateNumber=_updateNumber;
 @property(nonatomic) unsigned int utteranceNumber; // @synthesize utteranceNumber=_utteranceNumber;
+- (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
+- (id)description;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)addSegment:(id)arg1;
 @property(readonly, nonatomic) NSString *formattedText;
 - (void)dealloc;
+- (id)initWithSFTranscription:(id)arg1 utteranceNumber:(unsigned int)arg2 updateNumber:(unsigned int)arg3 isLocal:(_Bool)arg4 isFinal:(_Bool)arg5;
 - (id)initWithUtteranceNumber:(unsigned int)arg1 updateNumber:(unsigned int)arg2 isLocal:(_Bool)arg3 isFinal:(_Bool)arg4;
 
 @end

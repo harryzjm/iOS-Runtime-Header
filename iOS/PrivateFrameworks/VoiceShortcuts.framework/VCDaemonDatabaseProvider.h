@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <VoiceShortcuts/VCDatabaseProvider-Protocol.h>
+#import <VoiceShortcuts/WFDatabaseProvider-Protocol.h>
 
 @class NSString, WFDatabase;
 @protocol OS_dispatch_queue;
 
-@interface VCDaemonDatabaseProvider : NSObject <VCDatabaseProvider>
+@interface VCDaemonDatabaseProvider : NSObject <WFDatabaseProvider>
 {
     WFDatabase *_database;
     NSObject<OS_dispatch_queue> *_queue;

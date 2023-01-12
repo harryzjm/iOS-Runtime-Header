@@ -6,11 +6,11 @@
 
 #import <AVKit/NSObject-Protocol.h>
 
-@class AVTransitionController, UIColor, UIGestureRecognizer, UITouch, UIView, UIViewController;
+@class AVPresentationConfiguration, AVTransitionController, UIColor, UIGestureRecognizer, UITouch, UIView, UIViewController;
 
 @protocol AVTransitionControllerDelegate <NSObject>
 - (void)transitionController:(AVTransitionController *)arg1 animationProgressDidChange:(float)arg2;
-- (void)transitionController:(AVTransitionController *)arg1 transitionWillComplete:(_Bool)arg2;
+- (void)transitionController:(AVTransitionController *)arg1 transitionWillComplete:(_Bool)arg2 continueBlock:(void (^)(_Bool))arg3;
 - (void)transitionController:(AVTransitionController *)arg1 prepareForFinishingInteractiveTransition:(void (^)(void))arg2;
 - (void)transitionControllerBeginInteractiveDismissalTransition:(AVTransitionController *)arg1;
 - (void)transitionControllerBeginInteractivePresentationTransition:(AVTransitionController *)arg1;
@@ -22,5 +22,6 @@
 - (UIView *)transitionController:(AVTransitionController *)arg1 targetViewForDismissingViewController:(UIViewController *)arg2;
 - (void)transitionController:(AVTransitionController *)arg1 willBeginDismissingViewController:(UIViewController *)arg2;
 - (void)transitionController:(AVTransitionController *)arg1 willBeginPresentingViewController:(UIViewController *)arg2;
+- (AVPresentationConfiguration *)transitionController:(AVTransitionController *)arg1 configurationForPresentedViewController:(UIViewController *)arg2 presentingViewController:(UIViewController *)arg3;
 @end
 

@@ -8,6 +8,7 @@
 
 @class MISSING_TYPE;
 
+__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI218NotificationSwitch : UISwitch
 {
     MISSING_TYPE *onValueChanged;

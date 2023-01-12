@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class LPFetcherGroup, LPSpecializationMetadata, LPiTunesMediaLookupTask, NSString;
+@class LPFetcherGroup, LPSpecializationMetadata, LPiTunesMediaLookupTask, MPStoreLyricsSnippetURLComponents, NSString;
 @protocol LPiTunesMediaUnresolvedMetadata;
 
 __attribute__((visibility("hidden")))
@@ -16,9 +16,11 @@ __attribute__((visibility("hidden")))
     LPiTunesMediaLookupTask *_lookupTask;
     LPSpecializationMetadata *_resolvedMetadata;
     id <LPiTunesMediaUnresolvedMetadata> _unresolvedMetadata;
+    MPStoreLyricsSnippetURLComponents *_lyricComponents;
     LPFetcherGroup *_fetcherGroup;
 }
 
++ (void)requestSourceApplicationMetadataForBundleIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)extractOffers:(id)arg1;
 + (id)assetFromVideoPreviewDictionary:(id)arg1 usingPreferredPlatformArray:(id)arg2;
 + (id)assetArrayFromScreenshotDictionary:(id)arg1 usingPreferredPlatformArray:(id)arg2;
@@ -37,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)resolve;
 - (id)processResponseDictionary:(id)arg1 withStorefrontIdentifier:(id)arg2;
 - (id)schema;
+- (id)initWithLyricComponents:(id)arg1 withContext:(id)arg2;
 - (id)initWithIdentifier:(id)arg1 storefrontCountryCode:(id)arg2 withContext:(id)arg3;
 
 @end

@@ -10,6 +10,8 @@
 @protocol VSIdentityProviderPickerViewControllerDelegate;
 
 @protocol VSIdentityProviderPickerViewController <NSObject>
+@property(copy, nonatomic) NSArray *allStorefronts;
+@property(copy, nonatomic) NSString *requestedStorefrontCountryCode;
 @property(copy, nonatomic) NSString *resourceTitle;
 @property(copy, nonatomic) NSString *requestingAppDisplayName;
 @property(nonatomic) unsigned long long additionalProvidersMode;

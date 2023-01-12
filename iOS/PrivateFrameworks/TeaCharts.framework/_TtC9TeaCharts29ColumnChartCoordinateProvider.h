@@ -15,6 +15,7 @@
     MISSING_TYPE *size;
     MISSING_TYPE *options;
     MISSING_TYPE *seriesDictionary;
+    MISSING_TYPE *lock;
 }
 
 @end

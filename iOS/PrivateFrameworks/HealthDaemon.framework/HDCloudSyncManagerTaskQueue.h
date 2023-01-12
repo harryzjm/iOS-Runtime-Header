@@ -22,8 +22,6 @@
 
 - (void).cxx_destruct;
 @property __weak id <HDCloudSyncManagerTaskQueueDelegate> delegate; // @synthesize delegate=_delegate;
-- (_Bool)_primitiveConsiderStartingNextTask;
-- (void)_considerStartingNextTask;
 - (void)addTask:(id)arg1;
 @property(readonly) HDCloudSyncManagerTask *activeTask;
 @property(readonly) _Bool hasActiveTask;

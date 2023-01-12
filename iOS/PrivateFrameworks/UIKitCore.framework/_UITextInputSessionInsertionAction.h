@@ -8,8 +8,10 @@ __attribute__((visibility("hidden")))
 @interface _UITextInputSessionInsertionAction
 {
     unsigned long long _textLength;
+    unsigned long long _options;
 }
 
+@property(nonatomic) unsigned long long options; // @synthesize options=_options;
 @property(nonatomic) unsigned long long textLength; // @synthesize textLength=_textLength;
 - (_Bool)changedContent;
 - (long long)mergeActionIfPossible:(id)arg1;

@@ -16,5 +16,10 @@
 @property(readonly, nonatomic) NSData *ams_actionDataV1_5;
 @property(readonly, nonatomic) NSData *ams_actionDataV1;
 @property(readonly, nonatomic) NSData *ams_actionData;
+@property(readonly) NSString *ams_fsrCallbackUrl;
+@property(readonly) NSString *ams_fsrTransactionID;
+@property(readonly) NSString *ams_fsrSessionID;
+@property(readonly) NSString *ams_fsrNameSpace;
+@property(readonly) long long ams_fsrData;
 @end
 

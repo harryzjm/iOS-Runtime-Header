@@ -8,7 +8,7 @@
 #import <Message/EDReceivingAccount-Protocol.h>
 #import <Message/EFLoggable-Protocol.h>
 
-@class ACAccount, MFError, MFLocalActionReplayHandler, MFLock, MFMailMessageLibrary, MFMailboxUid, MFWeakObjectCache, NSArray, NSMutableDictionary, NSString;
+@class ACAccount, ECAccount, MFError, MFLocalActionReplayHandler, MFLock, MFMailMessageLibrary, MFMailboxUid, MFWeakObjectCache, NSArray, NSMutableDictionary, NSString;
 @protocol EFScheduler;
 
 @interface MailAccount <EFLoggable, EDReceivingAccount, EDIndexableAccount>
@@ -37,8 +37,6 @@
     NSMutableDictionary *_currentChokedActions;
     NSString *_mailboxCachePath;
     MFWeakObjectCache *_messageStoresCache;
-    long long _cachedLibraryID;
-    MFLock *_cachedLibraryIDLock;
     _Bool _supportsFastRemoteBodySearch;
     id <EFScheduler> _mailboxCacheWriteScheduler;
     MFLocalActionReplayHandler *_replayHandler;
@@ -48,7 +46,6 @@
 + (_Bool)canMoveMessagesFromAccount:(id)arg1 toAccount:(id)arg2 profileConnection:(id)arg3;
 + (_Bool)canMoveMessagesFromAccount:(id)arg1 toAccount:(id)arg2;
 + (void)_setOutboxMailboxUid:(id)arg1;
-+ (void)setDataclassesConsideredActive:(id)arg1;
 + (id)_accountWithPath:(id)arg1;
 + (_Bool)getConfigurationFromServerForEmail:(id)arg1;
 + (_Bool)usernameIsEmailAddress;
@@ -61,7 +58,6 @@
 + (id)infoForURL:(id)arg1;
 + (id)accountWithURL:(id)arg1;
 + (id)mailboxUidForFileSystemPath:(id)arg1 create:(_Bool)arg2;
-+ (void)synchronouslyEmptyMailboxUidType:(int)arg1 inAccounts:(id)arg2;
 + (id)csAccountTypeString;
 + (void)saveStateForAllAccounts;
 + (_Bool)isPredefinedAccountType;
@@ -70,11 +66,11 @@
 + (id)_defaultMailAccountForDeliveryIncludingRestricted:(_Bool)arg1;
 + (id)defaultMailAccountForDeliveryExcludingRestricted;
 + (id)defaultMailAccountForDelivery;
-+ (void)setGlobalPathForAccounts:(id)arg1;
 + (id)defaultAccountDirectory;
 + (id)legacyPathNameForAccountWithHostname:(id)arg1 username:(id)arg2;
 + (id)legacyPathForAccountIdentifier:(id)arg1 withHostname:(id)arg2 username:(id)arg3;
 + (id)newAccountWithDictionary:(id)arg1;
++ (void)test_tearDown;
 + (id)newAccountWithPath:(id)arg1;
 + (id)accountWithPath:(id)arg1;
 + (id)allActivePrimaryMailboxUids;
@@ -86,13 +82,10 @@
 + (id)addressesThatReceivedMessage:(id)arg1;
 + (id)accountThatMessageIsFrom:(id)arg1;
 + (id)accountThatMessageIsFrom:(id)arg1 includingInactive:(_Bool)arg2;
-+ (id)accountUsingHeadersFromMessage:(id)arg1;
 + (id)accountForHeaders:(id)arg1 message:(id)arg2 includingInactive:(_Bool)arg3;
 + (id)accountContainingEmailAddress:(id)arg1;
 + (id)accountContainingEmailAddress:(id)arg1 includingInactive:(_Bool)arg2;
 + (id)_accountContainingEmailAddress:(id)arg1 matchingAddress:(id *)arg2 fullUserName:(id *)arg3 includingInactive:(_Bool)arg4;
-+ (id)allEmailAddressesIncludingFullUserName:(_Bool)arg1 includeReceiveAliases:(_Bool)arg2;
-+ (void)updateAutoFetchSettings;
 + (void)resetMailboxTimers;
 + (id)existingAccountWithType:(id)arg1 hostname:(id)arg2 username:(id)arg3;
 + (void)notifyOfAccountsAdded:(id)arg1 accountsRemoved:(id)arg2 changedAccounts:(id)arg3;
@@ -104,14 +97,12 @@
 + (void)_setMailAccounts:(id)arg1 saveIfChanged:(_Bool)arg2 alreadyLocked:(_Bool)arg3;
 + (void)setMailAccounts:(id)arg1 saveIfChanged:(_Bool)arg2;
 + (void)setMailAccounts:(id)arg1;
-+ (id)lastMailAccountsReloadError;
 + (id)lastMailAccountsReloadDate;
 + (id)mailAccountsWithError:(id *)arg1;
 + (id)mailAccounts;
 + (void)reloadAccounts;
 + (id)_loadDataAccessAccountsWithError:(id *)arg1;
-+ (id)_loadAllAccountsWithOptions:(unsigned long long)arg1 error:(id *)arg2;
-+ (void)setMailAccountLoadOptions:(unsigned long long)arg1;
++ (id)_loadAllAccountsWithError:(id *)arg1;
 + (id)existingDAMailAccountForDAAccount:(id)arg1;
 + (id)existingAccountForUniqueID:(id)arg1;
 + (void)_setupSortedPathsForAccounts:(id)arg1;
@@ -161,12 +152,10 @@
 - (id)valueInAccountLookAsidePropertiesForKey:(id)arg1;
 - (id)saveSentFolder;
 - (id)iconString;
-- (_Bool)shouldFetchBodiesWhenMovingToTrash;
 - (_Bool)shouldRestoreMessagesAfterFailedDelete;
 - (id)allLocalMailboxUids;
 - (_Bool)isMailboxLocalForType:(int)arg1;
 - (id)_localMailboxNameForType:(int)arg1 usingDisplayName:(id)arg2;
-- (id)moveMessages:(id)arg1 fromMailbox:(id)arg2 toMailbox:(id)arg3 markAsRead:(_Bool)arg4;
 - (id)_newMailboxWithParent:(id)arg1 name:(id)arg2 attributes:(unsigned int)arg3 dictionary:(id)arg4 withCreationOption:(int)arg5;
 - (id)newMailboxWithParent:(id)arg1 name:(id)arg2;
 - (id)_copyMailboxWithParent:(id)arg1 name:(id)arg2 attributes:(unsigned int)arg3 dictionary:(id)arg4;
@@ -208,7 +197,7 @@
 - (int)_emptyFrequencyForKey:(id)arg1 defaultValue:(id)arg2;
 - (void)_didBecomeActive:(_Bool)arg1;
 - (void)setActive:(_Bool)arg1;
-- (_Bool)isActive;
+@property(readonly, nonatomic) _Bool isActive;
 @property(readonly, nonatomic) _Bool isLocalAccount;
 - (_Bool)isActiveWithPersistentAccount:(id)arg1;
 - (_Bool)_setPath:(id)arg1;
@@ -216,8 +205,6 @@
 - (_Bool)supportsUserPushedMailboxes;
 - (id)pushedMailboxUids;
 - (void)deliveryAccountWillBeRemoved:(id)arg1;
-- (void)removeUserFocusMailbox:(id)arg1;
-- (void)addUserFocusMailbox:(id)arg1;
 - (void)didFinishActionForChokePoint:(id)arg1 coalescePoint:(id)arg2 withResult:(id)arg3;
 - (_Bool)willPerformActionForChokePoint:(id)arg1 coalescePoint:(id)arg2 result:(id *)arg3;
 - (_Bool)_registerPushNotificationPrefix:(id)arg1 forMailboxNames:(id)arg2;
@@ -231,8 +218,8 @@
 - (void)newActionsAdded;
 @property(readonly) _Bool moveSupported;
 - (id)loggingIdentifier;
-@property(readonly, nonatomic) _Bool needsRemoteSearchResultsVerification;
 @property(readonly, copy, nonatomic) NSString *statisticsKind;
+- (_Bool)shouldFetchRemoteLinksWithDateReceived:(id)arg1;
 - (id)persistentNameForMailbox:(id)arg1;
 - (id)displayNameUsingSpecialNamesForMailboxUid:(id)arg1;
 - (_Bool)deleteInPlaceForMailbox:(id)arg1;
@@ -241,19 +228,14 @@
 - (_Bool)supportsMessageFlagging;
 - (_Bool)archiveSentMessages;
 - (id)displayUsername;
-- (int)cachePolicy;
-- (void)setCachePolicy:(int)arg1;
 - (_Bool)supportsPurge;
 - (_Bool)supportsMailboxEditing;
 - (_Bool)supportsSyncingReadState;
 @property(readonly, nonatomic) _Bool supportsRemoteAppend;
 - (_Bool)supportsAppend;
-- (_Bool)shouldAppearInMailSettings;
 - (void)setupLibrary;
 - (id)library;
 - (void)setLibrary:(id)arg1;
-- (_Bool)canForwardWithoutDownload;
-- (long long)libraryID;
 - (void)systemWillSleep;
 - (void)systemDidWake;
 - (_Bool)updateEmailAliases;
@@ -293,8 +275,7 @@
 @property(readonly, copy, nonatomic) NSString *mailboxPathExtension;
 - (void)resetSpecialMailboxes;
 - (_Bool)_resetSpecialMailboxes;
-- (id)displayNameForMailboxUid:(id)arg1;
-- (id)displayName;
+@property(copy, nonatomic) NSString *displayName;
 - (void)setEmptyFrequency:(int)arg1 forMailboxType:(int)arg2;
 - (int)emptyFrequencyForMailboxType:(int)arg1;
 - (void)_setEmptyFrequency:(int)arg1 forKey:(id)arg2;
@@ -310,11 +291,10 @@
 - (_Bool)isSpecialMailbox:(id)arg1;
 - (_Bool)deliveryAccountInUseByOtherAccounts:(id)arg1;
 - (void)deleteDeliveryAccountIfNeeded;
-- (_Bool)shouldExpungeMessagesOnDelete;
+@property(readonly, nonatomic) MFMailboxUid *rootMailbox;
 @property(readonly, nonatomic) MFMailboxUid *rootMailboxUid;
 - (id)allMailMailboxUid;
 - (id)primaryMailboxUid;
-- (_Bool)canAppendMessages;
 - (void)forceFetchMailboxList;
 - (void)fetchMailboxList;
 - (void)nowWouldBeAGoodTimeToStartBackgroundSynchronization;
@@ -339,7 +319,6 @@
 - (id)fromEmailAddressesIncludingDisabled;
 - (id)fromEmailAddresses;
 - (void)setReceiveEmailAliasAddresses:(id)arg1;
-- (id)receiveEmailAliasAddressesList;
 - (id)receiveEmailAliasAddresses;
 - (id)emailAddressesDictionary;
 - (void)setEmailAddresses:(id)arg1;
@@ -372,16 +351,15 @@
 - (void)_setAccountProperties:(id)arg1;
 - (void)persistentAccountDidChange:(id)arg1 previousAccount:(id)arg2;
 - (void)_invalidateCachedMailboxen;
-- (void)test_tearDown;
 - (void)dealloc;
 - (id)uniqueIdForPersistentConnection;
 - (void)resetMailboxTimer;
 - (_Bool)isUsernameEquivalentTo:(id)arg1;
 - (_Bool)isEquivalentTo:(id)arg1 hostname:(id)arg2 username:(id)arg3;
-- (void)accountDidLoad;
 @property _Bool cacheHasBeenRead;
 
 // Remaining properties
+@property(readonly, nonatomic) ECAccount *baseAccount;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
 @property(readonly, copy, nonatomic) NSString *identifier;
@@ -391,6 +369,7 @@
 @property(readonly, nonatomic) _Bool primaryiCloudAccount;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) ACAccount *systemAccount;
+@property(readonly, copy, nonatomic) NSString *username;
 
 @end
 

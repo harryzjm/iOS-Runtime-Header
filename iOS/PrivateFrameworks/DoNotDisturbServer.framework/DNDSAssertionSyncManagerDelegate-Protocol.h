@@ -6,9 +6,11 @@
 
 #import <DoNotDisturbServer/NSObject-Protocol.h>
 
+@class NSArray;
 @protocol DNDSAssertionSyncManager;
 
 @protocol DNDSAssertionSyncManagerDelegate <NSObject>
+- (void)syncManager:(id <DNDSAssertionSyncManager>)arg1 prepareForSyncToDevices:(NSArray *)arg2 completionHandler:(void (^)(void))arg3;
 - (void)syncManager:(id <DNDSAssertionSyncManager>)arg1 performModeAssertionUpdatesWithHandler:(_Bool (^)(id <DNDSModeAssertionUpdateContext>))arg2;
 @end
 

@@ -6,19 +6,19 @@
 
 #import <objc/NSObject.h>
 
-#import <WorkflowKit/WFRemoteUserInterface-Protocol.h>
+#import <WorkflowKit/WFActionRemoteUserInterface-Protocol.h>
 
 @class NSString;
-@protocol WFRemoteUserInterface;
+@protocol WFActionRemoteUserInterface;
 
-@interface WFRemoteActionUserInterface : NSObject <WFRemoteUserInterface>
+@interface WFRemoteActionUserInterface : NSObject <WFActionRemoteUserInterface>
 {
     NSString *_userInterfaceType;
-    id <WFRemoteUserInterface> _remoteUserInterface;
+    id <WFActionRemoteUserInterface> _remoteUserInterface;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) id <WFRemoteUserInterface> remoteUserInterface; // @synthesize remoteUserInterface=_remoteUserInterface;
+@property(readonly, nonatomic) id <WFActionRemoteUserInterface> remoteUserInterface; // @synthesize remoteUserInterface=_remoteUserInterface;
 @property(readonly, nonatomic) NSString *userInterfaceType; // @synthesize userInterfaceType=_userInterfaceType;
 - (_Bool)respondsToSelector:(SEL)arg1;
 - (_Bool)conformsToProtocol:(id)arg1;

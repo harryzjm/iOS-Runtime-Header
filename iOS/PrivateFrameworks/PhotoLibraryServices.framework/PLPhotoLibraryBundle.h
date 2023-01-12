@@ -8,7 +8,7 @@
 
 #import <PhotoLibraryServices/PLFileSystemVolumeUnmountObserver-Protocol.h>
 
-@class NSArray, NSError, NSNumber, NSURL, PFTimeZoneLookup, PLAssetsdClient, PLAtomicObject, PLChangeHandlingContainer, PLClientSandboxExtensionCache, PLConstraintsDirector, PLEmailAddressManager, PLFileSystemVolumeUnmountMonitor, PLIndicatorFileCoordinator, PLLazyObject, PLLibraryServicesManager, PLManagedObjectLookupItemCache, PLPersistentContainer, PLPersonInfoManager, PLPhotoAnalysisServiceClient, PLPhotoKitVariationCache, PLPhotoLibraryBundleController, PLPhotoLibraryPathManager;
+@class NSArray, NSError, NSNumber, NSURL, PFTimeZoneLookup, PLAssetsdClient, PLAtomicObject, PLChangeHandlingContainer, PLClientSandboxExtensionCache, PLConstraintsDirector, PLEmailAddressManager, PLFileSystemVolumeUnmountMonitor, PLIndicatorFileCoordinator, PLLazyObject, PLLibraryServicesManager, PLPersistentContainer, PLPersonInfoManager, PLPhotoAnalysisServiceClient, PLPhotoKitVariationCache, PLPhotoLibraryBundleController, PLPhotoLibraryPathManager;
 
 @interface PLPhotoLibraryBundle : NSObject <PLFileSystemVolumeUnmountObserver>
 {
@@ -22,8 +22,6 @@
     PLLazyObject *_lazyAssetsdClient;
     PLLazyObject *_lazyLibraryServicesManager;
     PLLazyObject *_lazyVariationCache;
-    PLLazyObject *_lazyUniformTypeIdentiferCache;
-    PLLazyObject *_lazyCodecCache;
     PLLazyObject *_lazyPersonInfoManager;
     PLLazyObject *_lazyEmailAddressManager;
     PLLazyObject *_lazyBoundAssetsdServicesTable;
@@ -56,6 +54,7 @@
 @property(readonly) PLPhotoAnalysisServiceClient *photoAnalysisServiceClient;
 - (id)boundAssetsdServicesTable;
 @property(readonly) PLLibraryServicesManager *libraryServicesManager;
+- (id)transferAssets:(id)arg1 toBundle:(id)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)touch;
 - (_Bool)sqliteErrorIndicatorFileExists;
 - (void)shutdownWithReason:(id)arg1;
@@ -70,13 +69,12 @@
 @property(readonly) PLChangeHandlingContainer *changeHandlingContainer;
 - (void)resetClientSandboxExtensionCache;
 @property(readonly) PLClientSandboxExtensionCache *clientSandboxExtensionCache;
+- (_Bool)isSystemPhotoLibrary;
 @property(readonly) PFTimeZoneLookup *timeZoneLookup;
 @property(readonly) PLIndicatorFileCoordinator *indicatorFileCoordinator;
 @property(readonly) PLEmailAddressManager *emailAddressManager;
 @property(readonly) PLPersonInfoManager *personInfoManager;
 @property(readonly) PLAssetsdClient *assetsdClient;
-@property(readonly) PLManagedObjectLookupItemCache *codecCache;
-@property(readonly) PLManagedObjectLookupItemCache *uniformTypeIdentiferCache;
 @property(readonly) PLPhotoKitVariationCache *variationCache;
 @property(readonly) PLPersistentContainer *persistentContainer;
 @property(readonly, copy) NSError *shutdownReason;

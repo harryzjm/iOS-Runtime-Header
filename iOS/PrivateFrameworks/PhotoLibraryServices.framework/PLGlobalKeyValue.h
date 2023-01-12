@@ -12,18 +12,21 @@
 }
 
 + (void)migrateLocaleIdentifierToGlobalKeyValues:(id)arg1 withPathManager:(id)arg2;
-+ (id)_fetchGlobalKeyValuesForKeys:(id)arg1 withManagedObjectContext:(id)arg2;
-+ (id)_fetchGlobalKeyValueForKey:(id)arg1 withManagedObjectContext:(id)arg2 createIfMissing:(_Bool)arg3;
++ (id)fetchGlobalKeyValuesForKeys:(id)arg1 withManagedObjectContext:(id)arg2;
++ (id)fetchGlobalKeyValueForKey:(id)arg1 withManagedObjectContext:(id)arg2 createIfMissing:(_Bool)arg3;
 + (id)_globalValueForKeyValue:(id)arg1;
 + (void)_setGlobalValue:(id)arg1 forKeyValue:(id)arg2 managedObjectContext:(id)arg3;
 + (void)populateWithDictionary:(id)arg1 managedObjectContext:(id)arg2 replaceExisting:(_Bool)arg3;
-+ (id)dictionaryWithManagedObjectContext:(id)arg1;
++ (id)dictionaryWithManagedObjectContext:(id)arg1 forMigrationHistory:(_Bool)arg2;
 + (id)globalValuesForKeys:(id)arg1 managedObjectContext:(id)arg2;
 + (id)globalValueForKey:(id)arg1 managedObjectContext:(id)arg2;
 + (void)setGlobalValue:(id)arg1 forKey:(id)arg2 managedObjectContext:(id)arg3;
 + (void)checkTypeForKey:(id)arg1 andValue:(id)arg2;
++ (id)allDecodeClasses;
 + (short)typeForKey:(id)arg1;
++ (id)attributesForKey;
 + (id)entityName;
++ (void)initialize;
 - (_Bool)supportsCloudUpload;
 
 // Remaining properties

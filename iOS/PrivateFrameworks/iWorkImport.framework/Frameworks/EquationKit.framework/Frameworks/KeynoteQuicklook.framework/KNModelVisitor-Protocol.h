@@ -6,13 +6,14 @@
 
 #import <KeynoteQuicklook/TSKModelVisitor-Protocol.h>
 
-@class KNBodyPlaceholderInfo, KNMasterSlide, KNSlide, KNSlideNumberPlaceholderInfo, KNTitlePlaceholderInfo;
+@class KNBodyPlaceholderInfo, KNLiveVideoInfo, KNSlide, KNSlideNumberPlaceholderInfo, KNTemplateSlide, KNTitlePlaceholderInfo;
 
 @protocol KNModelVisitor <TSKModelVisitor>
+- (void)visitKNLiveVideoInfo:(KNLiveVideoInfo *)arg1;
 - (void)visitKNSlideNumberPlaceholderInfo:(KNSlideNumberPlaceholderInfo *)arg1;
 - (void)visitKNBodyPlaceholderInfo:(KNBodyPlaceholderInfo *)arg1;
 - (void)visitKNTitlePlaceholderInfo:(KNTitlePlaceholderInfo *)arg1;
-- (void)visitKNMasterSlide:(KNMasterSlide *)arg1;
+- (void)visitKNTemplateSlide:(KNTemplateSlide *)arg1;
 - (void)visitKNSlide:(KNSlide *)arg1;
 @end
 

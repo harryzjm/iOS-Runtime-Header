@@ -10,14 +10,14 @@
 
 @interface _TtC10ChronoCore27AccountsChangedNotification : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *subject;
-    MISSING_TYPE *queue;
+    MISSING_TYPE *_subject;
+    MISSING_TYPE *_queue;
     MISSING_TYPE *_queue_iTunesAccount;
     MISSING_TYPE *_queue_iCloudAccount;
     MISSING_TYPE *_accountStore;
     MISSING_TYPE *_observerToken;
-    MISSING_TYPE *downstreamCount;
-    MISSING_TYPE *upstream;
+    MISSING_TYPE *_downstreamCount;
+    MISSING_TYPE *_upstream;
 }
 
 @end

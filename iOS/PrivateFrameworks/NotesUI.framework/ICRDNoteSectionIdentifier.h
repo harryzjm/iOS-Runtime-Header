@@ -21,6 +21,7 @@
 @property(nonatomic) long long sectionType; // @synthesize sectionType=_sectionType;
 - (_Bool)isEqualToICRDNoteSectionIdentifier:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, nonatomic) NSString *expansionStateContext;
@@ -28,7 +29,6 @@
 - (id)initWithNoteSectionType:(long long)arg1;
 
 // Remaining properties
-@property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) Class superclass;
 

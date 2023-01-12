@@ -7,7 +7,7 @@
 #import <Foundation/NSProcessInfo.h>
 
 @interface NSProcessInfo (RunningTests)
-+ (_Bool)isInternalInstall;
++ (_Bool)isDNUEnabled;
 @property(readonly, nonatomic, getter=isRunningTests) _Bool runningTests;
 @end
 

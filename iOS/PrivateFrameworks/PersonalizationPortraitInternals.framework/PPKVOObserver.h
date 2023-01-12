@@ -22,7 +22,6 @@
 - (void).cxx_destruct;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)dealloc;
-- (id)initWithName:(id)arg1 key:(id)arg2 observee:(id)arg3 handler:(CDUnknownBlockType)arg4;
 
 @end
 

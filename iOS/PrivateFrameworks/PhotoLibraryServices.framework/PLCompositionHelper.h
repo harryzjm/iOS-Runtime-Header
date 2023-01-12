@@ -10,6 +10,8 @@
 {
 }
 
++ (void)compositionController:(id)arg1 updateSemanticEnhanceFromCameraMetadata:(id)arg2 exportProperties:(id)arg3;
++ (_Bool)wantsSemanticEnhanceForCameraMetadata:(id)arg1;
 + (void)compositionController:(id)arg1 setInputOrientation:(long long)arg2;
 + (id)updateReframeStateForAdjustmentData:(id)arg1 formatIdentifier:(id)arg2 formatVersion:(id)arg3 outFormatIdentifier:(id *)arg4 outFormatVersion:(id *)arg5 isReframed:(_Bool)arg6;
 + (_Bool)compositionHasOvercaptureSourceSelection:(id)arg1;

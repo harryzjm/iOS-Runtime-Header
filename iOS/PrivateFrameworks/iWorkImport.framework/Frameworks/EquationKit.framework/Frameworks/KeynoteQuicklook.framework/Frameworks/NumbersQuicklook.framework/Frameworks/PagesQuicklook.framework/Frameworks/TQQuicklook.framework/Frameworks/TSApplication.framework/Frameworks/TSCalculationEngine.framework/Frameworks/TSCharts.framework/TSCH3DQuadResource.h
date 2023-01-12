@@ -8,7 +8,7 @@
 {
 }
 
-+ (id)resourceForBox2:(box_80622335)arg1;
++ (id)resourceForBox2:(box_c88174d1)arg1;
 + (id)normalizedCube;
 + (id)normalizedCenteredCube;
 + (id)normalized2D;

@@ -14,32 +14,50 @@
     NSMutableDictionary *_persistentStores;
     NSObject<FLLoggingContext> *_context;
     NSObject<OS_os_log> *_log;
-    NSObject<OS_dispatch_source> *_persistentStoreCacheTTLTimer;
     unsigned long long _persistentStoreCacheTTL;
+    NSObject<OS_dispatch_source> *_persistentStoreCacheTTLTimer;
     NSDistributedNotificationCenter *_notificationCenter;
 }
 
++ (id)categoryForSiriPayload:(id)arg1;
++ (id)readSiriCategoryFrom:(id)arg1 recursive:(_Bool)arg2;
 + (id)sharedLogger;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSDistributedNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
-@property(nonatomic) unsigned long long persistentStoreCacheTTL; // @synthesize persistentStoreCacheTTL=_persistentStoreCacheTTL;
 @property(retain, nonatomic) NSObject<OS_dispatch_source> *persistentStoreCacheTTLTimer; // @synthesize persistentStoreCacheTTLTimer=_persistentStoreCacheTTLTimer;
+@property(nonatomic) unsigned long long persistentStoreCacheTTL; // @synthesize persistentStoreCacheTTL=_persistentStoreCacheTTL;
 @property(retain, nonatomic) NSObject<OS_os_log> *log; // @synthesize log=_log;
 @property(retain, nonatomic) NSObject<FLLoggingContext> *context; // @synthesize context=_context;
 @property(retain, nonatomic) NSMutableDictionary *persistentStores; // @synthesize persistentStores=_persistentStores;
-- (void)closeAllStores;
-- (void)resetStoreCacheTimer;
-- (void)closeStoreForApplicationFromNotification:(id)arg1;
-- (id)pathForApplication:(id)arg1;
-- (id)persistentStoreForApplication:(id)arg1;
-- (id)__dispatched_persistentStoreForApplication:(id)arg1;
 - (void)report:(id)arg1 application:(id)arg2 onComplete:(CDUnknownBlockType)arg3;
 - (void)report:(id)arg1 application:(id)arg2;
+- (void)reportDataUploadEvent:(id)arg1 application:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)dataUploadStoreIdForApplicationIdentifier:(id)arg1;
+- (void)removeSiriInstrumentationObserver:(id)arg1;
+- (id)registerSiriInstrumentationObserver:(id)arg1 observer:(CDUnknownBlockType)arg2;
+- (void)reportSiriInstrumentationEvent:(id)arg1 forBundleID:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)siriReadingStoreForBundleID:(id)arg1;
+- (id)siriWritingStoreForBundleID:(id)arg1 category:(id)arg2;
+- (id)siriStoreIdForBundleId:(id)arg1;
+- (void)reportParsecFeedback:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)parsecPersistentStoreForBundleID:(id)arg1;
+- (id)parsecCategoryForPayload:(id)arg1;
+- (id)parsecStoreId;
+- (void)write:(id)arg1 category:(id)arg2 toStoreWithID:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)scheduleImmediateUpload;
+- (id)uploadHeaders;
+- (void)setValue:(id)arg1 forUploadHeaderNamed:(id)arg2;
+- (void)closeAllStores;
+- (void)_closeAllStores;
+- (void)_cancelStoreCacheTimer;
+- (void)_resetStoreCacheTimer;
+- (id)_nextTimerFireDate;
+- (void)_cleanPersistantStores;
+- (void)closeStoreForApplicationFromNotification:(id)arg1;
+- (id)pathForStore:(id)arg1;
+- (id)__dispatched_persistentStoreWithId:(id)arg1 category:(id)arg2;
 - (void)dealloc;
 - (id)initWithContext:(id)arg1;
-- (_Bool)closeOpenBatchForBundle:(id)arg1;
-- (_Bool)purgeBatchFromBundle:(id)arg1 withIdentifier:(id)arg2;
-- (_Bool)closeOpenBatches;
 
 @end
 

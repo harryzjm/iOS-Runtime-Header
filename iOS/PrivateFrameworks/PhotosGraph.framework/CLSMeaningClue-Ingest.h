@@ -14,6 +14,7 @@
 @interface CLSMeaningClue (Ingest) <PGGraphIngestScene, PGGraphIngestPlace>
 @property(readonly, nonatomic) NSString *placeInterestType;
 @property(readonly, nonatomic) _Bool isReliable;
+@property(readonly, nonatomic) unsigned long long numberOfDominantSceneAssets;
 @property(readonly, nonatomic) unsigned long long numberOfSearchConfidenceAssets;
 @property(readonly, nonatomic) unsigned long long numberOfHighConfidenceAssets;
 @property(readonly, nonatomic) unsigned long long numberOfAssets;

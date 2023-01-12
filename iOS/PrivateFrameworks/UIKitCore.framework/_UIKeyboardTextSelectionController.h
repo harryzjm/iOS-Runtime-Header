@@ -16,8 +16,8 @@ __attribute__((visibility("hidden")))
     _Bool _hasSelectionInteractionAssistant;
     _Bool _hasTextInputView;
     UITextPosition *_cursorPosition;
-    long long _selectionGranularity;
     UITextRange *_initialSelection;
+    long long _selectionGranularity;
     UITextRange *_selectionBase;
     UIResponder<UITextInput> *_inputDelegate;
     struct CGRect _caretRectForCursorPosition;
@@ -25,10 +25,11 @@ __attribute__((visibility("hidden")))
 
 @property(readonly, nonatomic) UIResponder<UITextInput> *inputDelegate; // @synthesize inputDelegate=_inputDelegate;
 @property(retain, nonatomic) UITextRange *selectionBase; // @synthesize selectionBase=_selectionBase;
-@property(retain, nonatomic) UITextRange *initialSelection; // @synthesize initialSelection=_initialSelection;
 @property(nonatomic) struct CGRect caretRectForCursorPosition; // @synthesize caretRectForCursorPosition=_caretRectForCursorPosition;
 @property(nonatomic) long long selectionGranularity; // @synthesize selectionGranularity=_selectionGranularity;
+@property(retain, nonatomic) UITextRange *initialSelection; // @synthesize initialSelection=_initialSelection;
 - (void)endSelection;
+- (void)modifySelectionWithExtentPoint:(struct CGPoint)arg1 executionContext:(id)arg2;
 - (void)updateSelectionWithExtentPoint:(struct CGPoint)arg1 withBoundary:(long long)arg2 executionContext:(id)arg3;
 - (void)updateSelectionWithExtentAtBoundary:(long long)arg1 inDirection:(long long)arg2 relativeToSelection:(id)arg3 executionContext:(id)arg4;
 - (void)updateImmediateSelectionWithExtentAtBoundary:(long long)arg1 inDirection:(long long)arg2 executionContext:(id)arg3;

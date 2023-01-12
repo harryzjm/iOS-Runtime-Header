@@ -18,7 +18,6 @@
     unsigned long long _alignmentSize;
     double _alignmentDelays[100];
     _UIViewAnimationAttributes *_textAnimationAttributes;
-    _UIViewAnimationAttributes *_textColorAnimationAttributes;
     double _lastUpdateTime;
     double _slowdown;
     double _rippleFactor;
@@ -46,8 +45,8 @@
 @property(nonatomic) _Bool suppressLayoutSubviews; // @synthesize suppressLayoutSubviews=_suppressLayoutSubviews;
 @property(nonatomic) struct CGRect visibleRect; // @synthesize visibleRect=_visibleRect;
 @property(nonatomic) long long textAlignment; // @synthesize textAlignment=_textAlignment;
-@property(retain, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
-@property(retain, nonatomic) UIFont *font; // @synthesize font=_font;
+@property(copy, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
+@property(copy, nonatomic) UIFont *font; // @synthesize font=_font;
 @property(copy, nonatomic) NSString *text; // @synthesize text=_text;
 - (void)contentSizeDidChange:(id)arg1;
 - (double)requiredWidthForText:(id)arg1;
@@ -56,7 +55,6 @@
 - (void)layoutSubviews;
 - (id)attributedString;
 - (id)attributedStringForText:(id)arg1;
-- (void)animateTextColor;
 - (void)animateGlyphs;
 - (void)animateAlignmentHunkAtIndex:(unsigned long long)arg1;
 - (void)initAlignmentHunkAtIndex:(unsigned long long)arg1;
@@ -81,7 +79,7 @@
 - (void)animateGlyph:(id)arg1 toAlpha:(double)arg2 duration:(double)arg3 delay:(double)arg4;
 - (void)animateGlyph:(id)arg1 toPosition:(struct CGPoint)arg2 delay:(double)arg3;
 - (double)currentMediaTime;
-- (id)uniqueStringWithPrefix:(id)arg1;
+- (id)uniqueString;
 - (void)hideGlyph:(id)arg1;
 - (id)glyphViewWithImage:(id)arg1 isColorGlyph:(_Bool)arg2;
 - (struct _NSRange)dstRangeOfAlignmentHunkAtIndex:(unsigned long long)arg1;

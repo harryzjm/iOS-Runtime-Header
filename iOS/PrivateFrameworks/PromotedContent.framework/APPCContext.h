@@ -17,13 +17,19 @@
     MISSING_TYPE *lastError;
     MISSING_TYPE *requester;
     MISSING_TYPE *blacklistEvaluator;
-    MISSING_TYPE *pendingPrefetchedTypesLock;
-    MISSING_TYPE *pendingPrefetchedTypes;
     MISSING_TYPE *newsContext;
+    MISSING_TYPE *appStoreContext;
     MISSING_TYPE *contextQueue;
+    MISSING_TYPE *limit;
+    MISSING_TYPE *fetchingLock;
+    MISSING_TYPE *fetching;
+    MISSING_TYPE *waitingLock;
+    MISSING_TYPE *waiting;
+    MISSING_TYPE *prefetchLock;
 }
 
 - (void).cxx_destruct;
+- (id)promotedContentWithoutFetchWithType:(long long)arg1 size:(struct CGSize)arg2;
 - (id)promotedContentWithType:(long long)arg1 size:(struct CGSize)arg2 placeholderReplacement:(CDUnknownBlockType)arg3;
 - (id)promotedContentVideoWithSize:(struct CGSize)arg1 placeholderReplacement:(CDUnknownBlockType)arg2;
 - (void)prefetchPromotedContentWithRequests:(id)arg1;
@@ -32,6 +38,7 @@
 - (id)initWithMaxSize:(struct CGSize)arg1 requestedAd:(id)arg2 current:(id)arg3 adjacent:(id)arg4 newsContext:(id)arg5;
 - (id)initWithMaxSize:(struct CGSize)arg1 requestedAd:(id)arg2 current:(id)arg3 next:(id)arg4;
 - (id)initWithMaxSize:(struct CGSize)arg1 requestedAd:(id)arg2 current:(id)arg3 next:(id)arg4 newsContext:(id)arg5;
+@property(nonatomic, readonly) long long hash;
 - (void)registerBlacklistEvaluator:(CDUnknownBlockType)arg1;
 - (void)removeHandler;
 - (void)registerHandlerForAllMetricsWithClosure:(CDUnknownBlockType)arg1;

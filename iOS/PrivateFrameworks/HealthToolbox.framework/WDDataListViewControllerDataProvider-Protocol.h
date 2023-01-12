@@ -12,6 +12,7 @@
 @protocol WDDataListViewControllerDataProvider <NSObject>
 @property(readonly, nonatomic) double customEstimatedCellHeight;
 @property(readonly, nonatomic) double customCellHeight;
+@property(nonatomic) _Bool hasDetailViewController;
 @property(readonly, nonatomic) _Bool textAdjustsFontSizeToFitWidth;
 @property(readonly, nonatomic) unsigned long long numberOfSections;
 @property(readonly, nonatomic) long long cellStyle;

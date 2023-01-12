@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSMapTable *activeFocusLayersToItems; // @synthesize activeFocusLayersToItems=_activeFocusLayersToItems;
 @property(retain, nonatomic) NSMutableArray *activeFocusLayers; // @synthesize activeFocusLayers=_activeFocusLayers;
 @property(nonatomic) __weak id <UIFocusItem> currentFocusItem; // @synthesize currentFocusItem=_currentFocusItem;
+- (id)description;
 - (id)initWithClientID:(id)arg1;
 
 @end

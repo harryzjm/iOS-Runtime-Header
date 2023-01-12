@@ -10,6 +10,7 @@
 {
 }
 
++ (_Bool)sensitiveVisitsTooCloseBetweenFromLOIType:(unsigned long long)arg1 toLOIType:(unsigned long long)arg2 distance:(double)arg3 settings:(id)arg4;
 + (unsigned long long)identifyDetectionTypeWithStore:(id)arg1 settings:(id)arg2;
 + (_Bool)isReasonableSpeedOfTravelFrom:(id)arg1 to:(id)arg2;
 + (id)getIntersectionOfFirstSet:(id)arg1 andSecondSet:(id)arg2;

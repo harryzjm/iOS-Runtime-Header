@@ -10,6 +10,7 @@
 {
 }
 
++ (_Bool)isLTR;
 + (id)controlsInView:(id)arg1;
 + (void)applyMinimumSizeTouchInsetsForControlsInView:(id)arg1;
 + (double)contentHeightOfTableView:(id)arg1 forWidth:(double)arg2 maxHeight:(double)arg3;

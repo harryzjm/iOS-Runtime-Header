@@ -22,8 +22,13 @@
 + (id)aboutImproveSiriAndDictationURL;
 + (id)fixSymptomURLForAccessoryWithUUID:(id)arg1 symptom:(id)arg2;
 + (id)fixSymptomURLForAccessory:(id)arg1 symptom:(id)arg2;
++ (id)_settingsURLHostString:(id)arg1 scheme:(id)arg2 UUID:(id)arg3 forHome:(id)arg4;
++ (id)_privateSettingsURLHostString:(id)arg1 UUID:(id)arg2 forHome:(id)arg3;
 + (id)_settingsURLHostString:(id)arg1 UUID:(id)arg2 forHome:(id)arg3;
 + (id)_settingsURLHostString:(id)arg1 forHome:(id)arg2;
++ (id)personalRequestsOptInURLForHomeID:(id)arg1;
++ (id)locksOnboardingURLForHome:(id)arg1;
++ (id)userLockSettingsURLForHome:(id)arg1;
 + (id)faceRecognitionSettingsURLForHome:(id)arg1;
 + (id)networkRouterSettingsURLForHome:(id)arg1;
 + (id)bridgeSettingsURLForAccessory:(id)arg1 home:(id)arg2;
@@ -35,6 +40,7 @@
 + (id)musicPrivacyURL;
 + (id)siriPrivacyURL;
 + (id)aboutResidentDeviceURL;
++ (id)personalRequestsOptInURL;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) HFHomeKitDispatcher *homeKitDispatcher; // @synthesize homeKitDispatcher=_homeKitDispatcher;
 @property(readonly, nonatomic) NSURL *URL; // @synthesize URL=_URL;

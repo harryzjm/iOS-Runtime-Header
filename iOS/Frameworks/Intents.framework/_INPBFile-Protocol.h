@@ -17,5 +17,7 @@
 @property(retain, nonatomic) _INPBURLValue *fileURL;
 @property(readonly, nonatomic) _Bool hasData;
 @property(copy, nonatomic) NSData *data;
+@property(readonly, nonatomic) _Bool hasBookmarkData;
+@property(copy, nonatomic) NSData *bookmarkData;
 @end
 

@@ -8,11 +8,14 @@
 
 #import <CoreSpotlight/CSIndexExtensionDelegate-Protocol.h>
 
-@class NSCondition, NSDictionary, NSString, _MDExtensionLoader;
+@class NSCondition, NSDictionary, NSMutableDictionary, NSMutableSet, NSString, _MDExtensionLoader;
 @protocol OS_dispatch_queue;
 
 @interface _MDExtensionManager : NSObject <CSIndexExtensionDelegate>
 {
+    NSMutableDictionary *_fileTypeToExtensionMapping;
+    NSMutableSet *_fileTypeNegativeCache;
+    unsigned long long _lastLoadCount;
     NSObject<OS_dispatch_queue> *_notifyQueue;
     _MDExtensionLoader *_extensionLoader;
     NSDictionary *_indexExtensionsByBundleID;
@@ -41,6 +44,7 @@
 - (void)_didRetryJobWithBundleID:(id)arg1;
 - (void)_willRunJobWithBundleID:(id)arg1;
 - (id)extensions;
+- (id)extensionForFileType:(id)arg1;
 - (id)anyExtensionWithBlock:(CDUnknownBlockType)arg1;
 - (id)allExtensionsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_waitForLoadLocked;

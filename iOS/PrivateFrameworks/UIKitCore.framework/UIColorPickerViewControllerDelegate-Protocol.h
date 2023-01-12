@@ -6,12 +6,13 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class UIColorPickerViewController;
+@class UIColor, UIColorPickerViewController;
 
 @protocol UIColorPickerViewControllerDelegate <NSObject>
 
 @optional
 - (void)colorPickerViewControllerDidFinish:(UIColorPickerViewController *)arg1;
+- (void)colorPickerViewController:(UIColorPickerViewController *)arg1 didSelectColor:(UIColor *)arg2 continuously:(_Bool)arg3;
 - (void)colorPickerViewControllerDidSelectColor:(UIColorPickerViewController *)arg1;
 @end
 

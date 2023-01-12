@@ -14,7 +14,6 @@
     _Bool _transientBeganAsContinuousEvent;
     unsigned long long _identifier;
     long long _type;
-    long long _subtype;
     double _startTime;
     double _intensity;
     double _sharpness;
@@ -26,7 +25,6 @@
 @property(nonatomic) double sharpness; // @synthesize sharpness=_sharpness;
 @property(nonatomic) double intensity; // @synthesize intensity=_intensity;
 @property(nonatomic) double startTime; // @synthesize startTime=_startTime;
-@property(nonatomic) long long subtype; // @synthesize subtype=_subtype;
 @property(nonatomic) long long type; // @synthesize type=_type;
 @property(nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
 - (id)description;

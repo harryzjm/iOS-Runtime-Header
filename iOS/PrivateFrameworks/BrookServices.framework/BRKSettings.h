@@ -6,20 +6,23 @@
 
 #import <objc/NSObject.h>
 
+#import <BrookServices/CLLocationManagerDelegate-Protocol.h>
 #import <BrookServices/MCProfileConnectionObserver-Protocol.h>
 
-@class NPSDomainAccessor, NPSManager, NRDevice, NSDate, NSSet, NSString;
+@class CLLocationManager, NPSDomainAccessor, NPSManager, NRDevice, NSDate, NSSet, NSString;
 
-@interface BRKSettings : NSObject <MCProfileConnectionObserver>
+@interface BRKSettings : NSObject <MCProfileConnectionObserver, CLLocationManagerDelegate>
 {
     NPSManager *_npsManager;
     _Bool _shouldObserveDefaultChanges;
     int _notifyToken;
-    _Bool _currentMCDataCollectionValue;
+    _Bool _currentIsManagedConfigurationImproveHandwashingEnabled;
     NPSDomainAccessor *_domainAccessor;
     NSSet *_observedKeys;
     NSSet *_dataCollectionKeys;
     NRDevice *_device;
+    CLLocationManager *_locationManager;
+    _Bool _healthAndActivityEnabled;
 }
 
 + (id)_stringForConfigurationWithKey:(id)arg1;
@@ -38,19 +41,25 @@
 + (id)settingsForDevice:(id)arg1;
 + (id)settingsForActiveDevice;
 - (void).cxx_destruct;
+@property(nonatomic, getter=isHealthAndActivityEnabled) _Bool healthAndActivityEnabled; // @synthesize healthAndActivityEnabled=_healthAndActivityEnabled;
 - (void)profileConnectionDidReceiveEffectiveSettingsChangedNotification:(id)arg1 userInfo:(id)arg2;
 - (void)_handleNPSNotification;
 - (void)_observeDefaultChanges:(_Bool)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)_valueForKey:(id)arg1;
 - (void)_setValue:(id)arg1 forKey:(id)arg2;
+- (_Bool)_isManagedConfigurationImproveHealthAndActivityEnabled;
+- (_Bool)_isTinkerDataCollectionEnabled;
+- (_Bool)_isManagedConfigurationImproveHandwashingEnabled;
+- (id)tinkerDataCollectionCredentials;
 @property(nonatomic, getter=isDataCollectionUploadDisabled) _Bool dataCollectionUploadDisabled;
 @property(nonatomic) unsigned long long overrideDataCollectionAuthorization;
 @property(retain, nonatomic) NSDate *lastDataCollectionUploadDate;
 @property(nonatomic) double brookCoolDownInterval;
+@property(readonly, nonatomic, getter=isLocationAuthFlowEnabled) _Bool locationAuthFlowEnabled;
 @property(readonly, nonatomic, getter=isStealthUIEnabled) _Bool stealthUIEnabled;
 @property(nonatomic, getter=isOnboardingComplete) _Bool onboardingComplete;
-- (_Bool)_isManagedConfigurationDataCollectionEnabled;
+@property(readonly, nonatomic, getter=isDataCollectionOnboardingComplete) _Bool dataCollectionOnboardingComplete;
 @property(nonatomic, getter=isDataCollectionEnabled) _Bool dataCollectionEnabled;
 @property(nonatomic, getter=areRemindersEnabled) _Bool remindersEnabled;
 @property(nonatomic, getter=isEnabled) _Bool enabled;

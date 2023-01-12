@@ -4,18 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+@class NSDictionary, PGManager;
 
-#import <PhotosGraph/PLMetricEvent-Protocol.h>
-
-@class NSDictionary, NSString, PGGraph;
-
-@interface PGGuessWhoNamingMetricEvent : NSObject <PLMetricEvent>
+@interface PGGuessWhoNamingMetricEvent
 {
+    PGManager *_manager;
     _Bool _hasMeNodeAndMeContact;
-    NSString *_identifier;
     NSDictionary *_payload;
-    PGGraph *_graph;
     unsigned long long _numberOfPeople;
     unsigned long long _numberOfPeopleToName;
     unsigned long long _numberOfPeopleFavorited;
@@ -40,17 +35,10 @@
 @property(nonatomic) unsigned long long numberOfPeopleToName; // @synthesize numberOfPeopleToName=_numberOfPeopleToName;
 @property(nonatomic) _Bool hasMeNodeAndMeContact; // @synthesize hasMeNodeAndMeContact=_hasMeNodeAndMeContact;
 @property(nonatomic) unsigned long long numberOfPeople; // @synthesize numberOfPeople=_numberOfPeople;
-@property(retain, nonatomic) PGGraph *graph; // @synthesize graph=_graph;
-@property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property(readonly, copy) NSString *description;
 - (void)gatherMetricsWithProgressBlock:(CDUnknownBlockType)arg1;
-@property(readonly, nonatomic) NSDictionary *payload; // @synthesize payload=_payload;
+- (id)payload;
+- (id)identifier;
 - (id)initWithGraphManager:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

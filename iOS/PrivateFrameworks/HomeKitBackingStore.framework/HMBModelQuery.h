@@ -19,11 +19,11 @@
     Class _modelClass;
     NSString *_sqlSelect;
     NSDictionary *_argumentFields;
-    NSDictionary *_defaultArgumentValues;
+    NSDictionary *_encodedDefaultValuesByArgumentName;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSDictionary *defaultArgumentValues; // @synthesize defaultArgumentValues=_defaultArgumentValues;
+@property(readonly, nonatomic) NSDictionary *encodedDefaultValuesByArgumentName; // @synthesize encodedDefaultValuesByArgumentName=_encodedDefaultValuesByArgumentName;
 @property(readonly, nonatomic) NSDictionary *argumentFields; // @synthesize argumentFields=_argumentFields;
 @property(readonly, nonatomic) NSString *sqlSelect; // @synthesize sqlSelect=_sqlSelect;
 @property(retain, nonatomic) Class modelClass; // @synthesize modelClass=_modelClass;

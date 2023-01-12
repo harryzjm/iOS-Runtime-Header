@@ -4,12 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, UIColor, UIFont;
+#import <UserNotificationsUIKit/NSObject-Protocol.h>
 
-@protocol NCTextSupporting
+@class NSString, NSStringDrawingContext, UIColor, UIFont;
+
+@protocol NCTextSupporting <NSObject>
 @property(nonatomic, setter=nc_setNumberOfLines:) unsigned long long nc_numberOfLines;
 @property(retain, nonatomic) UIColor *textColor;
 @property(retain, nonatomic) UIFont *font;
 @property(copy, nonatomic) NSString *text;
+- (double)unui_drawingHeightWithNumberOfLines:(unsigned long long)arg1;
+- (double)unui_measuringHeightWithNumberOfLines:(unsigned long long)arg1;
+- (unsigned long long)unui_numberOfLinesInFrame:(struct CGRect)arg1 maximum:(unsigned long long)arg2 drawingContext:(inout NSStringDrawingContext *)arg3;
 @end
 

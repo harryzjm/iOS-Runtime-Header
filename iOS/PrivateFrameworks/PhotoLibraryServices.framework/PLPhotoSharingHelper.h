@@ -49,7 +49,7 @@
 + (id)_temporaryUploadDerivativesPathForCollectionGUID:(id)arg1 pathExtension:(id)arg2;
 + (double)derivedAssetSmallDimensionLimitForType:(int)arg1;
 + (id)derivativesForMasterAsset:(id)arg1 withSpecifications:(id)arg2;
-+ (id)_videoDerivativeForVideoAtURL:(id)arg1 outputURL:(id)arg2 withPreset:(id)arg3 outputFileType:(id)arg4;
++ (id)_videoDerivativeForVideoAtURL:(id)arg1 outputURL:(id)arg2 withPreset:(id)arg3 reason:(id)arg4 outputFileType:(id)arg5;
 + (id)videoDerivativesForAssetCollection:(id)arg1 withSpecifications:(id)arg2;
 + (void)deleteCommentWithGUIDFromServer:(id)arg1;
 + (void)publishCloudSharedCommentToServer:(id)arg1;
@@ -74,6 +74,7 @@
 + (void)deleteCloudSharedAssetsFromServer:(id)arg1 inSharedAlbum:(id)arg2;
 + (void)_userDidDeleteSharedAssets:(id)arg1;
 + (void)enqueueCloudSharedAssetsForPublishToServer:(id)arg1 inSharedAlbum:(id)arg2;
++ (id)photoSharingOriginalFilenameForAsset:(id)arg1;
 + (void)updateCloudSharedAlbumMultipleContributorsStateOnServer:(id)arg1;
 + (void)updateCloudSharedAlbumPublicURLStateOnServer:(id)arg1;
 + (void)updateCloudSharedAlbumMetadataOnServer:(id)arg1;

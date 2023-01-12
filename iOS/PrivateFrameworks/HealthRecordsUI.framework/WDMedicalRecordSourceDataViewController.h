@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) HKMedicalRecord *medicalRecord; // @synthesize medicalRecord=_medicalRecord;
 - (void)displaySourceString:(id)arg1;
 - (void)_fetchAndDisplaySourceStringIfNecessary;
+- (void)selectAll:(id)arg1;
 - (void)_tapToRadar:(id)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)share:(id)arg1;

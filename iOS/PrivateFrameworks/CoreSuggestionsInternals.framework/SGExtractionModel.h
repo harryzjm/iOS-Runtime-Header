@@ -20,6 +20,7 @@
 + (id)argMaxForSequence:(id)arg1;
 + (id)modelOutputFromOutputMapping:(id)arg1 modelOutput:(id)arg2 modelInput:(id)arg3;
 + (unsigned long long)featureDimensionForInputSection:(id)arg1 forModel:(id)arg2;
++ (id)inputDictFromTaggedCharacterRanges:(id)arg1 usingTokenMapping:(id)arg2 forModel:(id)arg3 pflTraining:(_Bool)arg4 hasEvent:(_Bool)arg5;
 + (id)inputDictFromTaggedCharacterRanges:(id)arg1 usingTokenMapping:(id)arg2 forModel:(id)arg3;
 + (id)loadLazyPlistWithBasename:(id)arg1;
 - (id)currentModelURLForModelName:(id)arg1;

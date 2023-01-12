@@ -8,15 +8,17 @@
 
 #import <WorkflowKit/WFParameterState-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, NSUUID;
 
 @interface WFArrayParameterState : NSObject <WFParameterState>
 {
     NSArray *_values;
+    NSUUID *_identity;
 }
 
 + (Class)processingValueClass;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSUUID *identity; // @synthesize identity=_identity;
 @property(readonly, copy, nonatomic) NSArray *values; // @synthesize values=_values;
 - (void)processWithContext:(id)arg1 userInputRequiredHandler:(CDUnknownBlockType)arg2 valueHandler:(CDUnknownBlockType)arg3;
 - (void)processWithContext:(id)arg1 userInputRequiredHandler:(CDUnknownBlockType)arg2 valueHandler:(CDUnknownBlockType)arg3 processSingleVariableStringsAsContentItems:(_Bool)arg4;
@@ -26,6 +28,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)serializedRepresentation;
 - (id)initWithSerializedRepresentation:(id)arg1 variableProvider:(id)arg2 parameter:(id)arg3;
+- (id)initWithValues:(id)arg1 identity:(id)arg2;
 - (id)initWithValues:(id)arg1;
 
 // Remaining properties

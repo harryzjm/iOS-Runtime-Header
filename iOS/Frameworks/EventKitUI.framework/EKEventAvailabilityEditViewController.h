@@ -25,6 +25,8 @@ __attribute__((visibility("hidden")))
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 @property(nonatomic) unsigned long long supportedAvailabilities;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)resetBackgroundColor;
 - (void)loadView;
 - (id)initWithFrame:(struct CGRect)arg1;
 

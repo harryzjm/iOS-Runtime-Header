@@ -12,6 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface QLTransitionDriver : NSObject
 {
+    _Bool _isSourceViewTransformed;
     _Bool _transitionContainerMasksToBounds;
     _Bool _presenting;
     QLItem *_transitionPreviewItem;
@@ -23,9 +24,12 @@ __attribute__((visibility("hidden")))
     double _topNavigationOffset;
     double _hostNavigationOffset;
     struct CGSize _transitionPreviewSize;
+    struct CGPoint _sourceViewCenter;
     struct CGRect _sourceViewFrame;
+    struct CGRect _sourceViewBounds;
     struct CGRect _uncroppedFrame;
     struct CGRect _transitionContainerOriginalFrame;
+    struct CGAffineTransform _sourceViewTransform;
 }
 
 - (void).cxx_destruct;
@@ -37,6 +41,10 @@ __attribute__((visibility("hidden")))
 @property _Bool transitionContainerMasksToBounds; // @synthesize transitionContainerMasksToBounds=_transitionContainerMasksToBounds;
 @property struct CGRect transitionContainerOriginalFrame; // @synthesize transitionContainerOriginalFrame=_transitionContainerOriginalFrame;
 @property struct CGRect uncroppedFrame; // @synthesize uncroppedFrame=_uncroppedFrame;
+@property struct CGAffineTransform sourceViewTransform; // @synthesize sourceViewTransform=_sourceViewTransform;
+@property struct CGPoint sourceViewCenter; // @synthesize sourceViewCenter=_sourceViewCenter;
+@property struct CGRect sourceViewBounds; // @synthesize sourceViewBounds=_sourceViewBounds;
+@property _Bool isSourceViewTransformed; // @synthesize isSourceViewTransformed=_isSourceViewTransformed;
 @property struct CGRect sourceViewFrame; // @synthesize sourceViewFrame=_sourceViewFrame;
 @property(retain) UIView *sourceView; // @synthesize sourceView=_sourceView;
 @property(retain) UIView *destinationView; // @synthesize destinationView=_destinationView;
@@ -45,7 +53,6 @@ __attribute__((visibility("hidden")))
 @property struct CGSize transitionPreviewSize; // @synthesize transitionPreviewSize=_transitionPreviewSize;
 - (void)tearDown;
 - (void)animateTransition;
-- (void)animateFinishTransition;
 
 @end
 

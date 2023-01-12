@@ -30,6 +30,7 @@
 + (id)gadgetColumnWidthSpanSingleSetAInterpolator;
 + (id)gadgetColumnSpacingSpanSingleSetAInterpolator;
 + (id)layoutMarginWidthInterpolator;
++ (id)photosDetailsEdgeInsetsInterpolator;
 + (id)legacyLayoutMarginWidthInterpolator;
 + (id)_gridItemWidthInterpolatorWithGridEdgeInsetsInterpolator:(id)arg1;
 + (id)_sharedGridItemWidthInterpolator;

@@ -13,11 +13,8 @@
 - (void)applyPropertiesFromCloudStoreRecord:(PKCloudStoreRecord *)arg1;
 - (NSString *)primaryIdentifier;
 - (unsigned long long)itemType;
-- (NSArray *)recordTypesAndNamesIncludingServerData:(_Bool)arg1;
-- (void)encodeWithCloudStoreCoder:(PKCloudStoreRecord *)arg1;
+- (NSArray *)recordTypesAndNamesForCodingType:(unsigned long long)arg1;
+- (void)encodeWithCloudStoreCoder:(PKCloudStoreRecord *)arg1 codingType:(unsigned long long)arg2;
 - (id)initWithCloudStoreCoder:(PKCloudStoreRecord *)arg1;
-
-@optional
-- (void)encodeServerAndDeviceDataWithCloudStoreCoder:(PKCloudStoreRecord *)arg1;
 @end
 

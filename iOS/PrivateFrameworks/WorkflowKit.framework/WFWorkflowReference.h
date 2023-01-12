@@ -8,7 +8,7 @@
 
 #import <WorkflowKit/WFNaming-Protocol.h>
 
-@class NSDate, NSString, NSUserActivity, WFImage, WFWorkflowIcon;
+@class NSDate, NSString, NSUserActivity, WFIcon, WFWorkflowIcon;
 
 @interface WFWorkflowReference : WFWorkflowDescriptor <WFNaming>
 {
@@ -19,10 +19,14 @@
     unsigned long long _actionCount;
     WFWorkflowIcon *_icon;
     NSDate *_modificationDate;
+    NSDate *_lastRunDate;
+    long long _remoteQuarantineStatus;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) long long remoteQuarantineStatus; // @synthesize remoteQuarantineStatus=_remoteQuarantineStatus;
+@property(readonly, nonatomic) NSDate *lastRunDate; // @synthesize lastRunDate=_lastRunDate;
 @property(readonly, nonatomic) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
 @property(readonly, nonatomic) _Bool hiddenFromLibraryAndSync; // @synthesize hiddenFromLibraryAndSync=_hiddenFromLibraryAndSync;
 @property(readonly, nonatomic) _Bool isDeleted; // @synthesize isDeleted=_isDeleted;
@@ -31,15 +35,14 @@
 @property(readonly, copy, nonatomic) NSString *actionsDescription; // @synthesize actionsDescription=_actionsDescription;
 @property(readonly, copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 - (id)attributionIconWithSize:(struct CGSize)arg1 scale:(double)arg2 rounded:(_Bool)arg3;
-@property(readonly, nonatomic) WFImage *attributionIcon;
+@property(readonly, nonatomic) WFIcon *attributionIcon;
 @property(readonly, nonatomic) NSString *attributionTitle;
-- (id)externalURLForViewing;
 - (id)externalURLForRunningWithSource:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithIdentifier:(id)arg1 name:(id)arg2 color:(long long)arg3 glyphCharacter:(unsigned short)arg4 associatedAppBundleIdentifier:(id)arg5 subtitle:(id)arg6 actionsDescription:(id)arg7 actionCount:(unsigned long long)arg8 isDeleted:(_Bool)arg9 hiddenFromLibraryAndSync:(_Bool)arg10 modificationDate:(id)arg11;
+- (id)initWithIdentifier:(id)arg1 name:(id)arg2 color:(long long)arg3 glyphCharacter:(unsigned short)arg4 associatedAppBundleIdentifier:(id)arg5 subtitle:(id)arg6 actionsDescription:(id)arg7 actionCount:(unsigned long long)arg8 isDeleted:(_Bool)arg9 hiddenFromLibraryAndSync:(_Bool)arg10 modificationDate:(id)arg11 lastRunDate:(id)arg12 remoteQuarantineStatus:(long long)arg13;
 @property(readonly, copy, nonatomic) NSString *wfName;
 - (void)donateRunInteraction;
 - (id)speakableString;

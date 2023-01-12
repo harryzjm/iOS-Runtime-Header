@@ -13,13 +13,12 @@
 
 @interface NPKExpressPassController : NSObject <PKFieldDetectorObserver>
 {
-    NSObject<OS_dispatch_queue> *_internalQueue;
-    NSObject<OS_dispatch_queue> *_callbackQueue;
+    NSObject<OS_dispatch_queue> *_updatePassesQueue;
     int _expressPassChangedNotifyToken;
     unsigned long long _transactionStatus;
     PKPass *_currentTransactionPass;
     NSSet *_expressPassesInformation;
-    PKPaymentService *_queue_paymentService;
+    PKPaymentService *_paymentService;
     PKPassLibrary *_passLibrary;
     NSDistributedNotificationCenter *_distributedNotificationCenter;
     id <NPKExpressPassControllerDelegate> _delegate;
@@ -38,12 +37,13 @@
 - (void)fieldDetectorDidEnterField:(id)arg1 withProperties:(id)arg2;
 - (void)_stopFieldDetector;
 - (void)_startFieldDetector;
+- (void)_parseRKEActionNotificationObject:(id)arg1 outApplicationIdentifier:(id *)arg2 outApplicationKeyIdentifier:(id *)arg3 outFunctionNumber:(id *)arg4 outActionNumber:(id *)arg5 outExecutionStatusNumber:(id *)arg6 outErrorMessage:(id *)arg7;
 - (void)_parseExpressNotificationObject:(id)arg1 outApplicationIdentifier:(id *)arg2 outApplicationKeyIdentifier:(id *)arg3;
 - (id)_expressPassInformationWithTechnologyType:(long long)arg1;
 - (id)_expressPassesInformationWithTCIs:(id)arg1;
 - (id)_queue_siblingExpressPassesForExpressPass:(id)arg1 applicationIdentifier:(id)arg2;
 - (id)_expressPassesInformationWithAutomaticSelectionTechnologyType:(long long)arg1;
-- (void)_queue_updateExpressPasses;
+- (void)_updatePassesQueue_updateExpressPasses;
 - (void)updateExpressPasses;
 - (id)_queue_expressPassForTransactionApplicationIdentifier:(id)arg1 transactionApplicationKeyIdentifier:(id)arg2;
 - (_Bool)_hasNoTransactionStartOrEndNotificationForTechnologyType:(long long)arg1;
@@ -59,14 +59,16 @@
 - (void)_handleEnterNearFieldNotification:(id)arg1;
 - (void)_stopListeningForExpressNotifications;
 - (void)_startListeningForExpressNotifications;
+- (void)_transitionToCompletedRKEAction:(id)arg1 function:(id)arg2 forExpressPass:(id)arg3;
+- (void)_transitionToStandaloneTransactionEvent:(unsigned long long)arg1 forExpressPass:(id)arg2;
 - (void)_transitionToStatus:(unsigned long long)arg1 forExpressPass:(id)arg2 paymentApplicationIdentifier:(id)arg3;
 @property(readonly, nonatomic) __weak NSDistributedNotificationCenter *distributedNotificationCenter; // @synthesize distributedNotificationCenter=_distributedNotificationCenter;
 @property(readonly, nonatomic) __weak PKPassLibrary *passLibrary; // @synthesize passLibrary=_passLibrary;
-- (id)_queue_paymentService;
+- (id)paymentService;
 - (void)reset;
 - (void)dealloc;
-- (id)initWithDelegate:(id)arg1 callbackQueue:(id)arg2;
-- (id)initWithPaymentService:(id)arg1 passLibrary:(id)arg2 distributedNotificationCenter:(id)arg3 delegate:(id)arg4 callbackQueue:(id)arg5;
+- (id)initWithDelegate:(id)arg1;
+- (id)initWithPaymentService:(id)arg1 passLibrary:(id)arg2 distributedNotificationCenter:(id)arg3 delegate:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

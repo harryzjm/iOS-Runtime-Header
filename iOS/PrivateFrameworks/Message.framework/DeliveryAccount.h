@@ -50,14 +50,17 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(copy, nonatomic) NSString *displayName;
 @property(readonly, copy, nonatomic) NSArray *emailAddressStrings;
 @property(readonly) unsigned long long hash;
 @property(copy, nonatomic) NSString *hostname;
+@property(readonly, nonatomic) _Bool isActive;
 @property(copy, nonatomic) NSString *password;
 @property(readonly, nonatomic) _Bool primaryiCloudAccount;
 @property(readonly, copy, nonatomic) NSString *statisticsKind;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) ACAccount *systemAccount;
+@property(readonly, copy, nonatomic) NSString *username;
 
 @end
 

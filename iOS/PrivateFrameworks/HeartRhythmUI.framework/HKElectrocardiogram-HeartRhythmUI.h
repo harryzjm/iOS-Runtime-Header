@@ -7,6 +7,6 @@
 #import <HealthKit/HKElectrocardiogram.h>
 
 @interface HKElectrocardiogram (HeartRhythmUI)
-- (id)hrui_classificationShortBodyTextWithActiveAlgorithmVersion:(long long)arg1;
+- (id)hrui_classificationShortBodyTextWithActiveAlgorithmVersion:(long long)arg1 isSharedData:(_Bool)arg2;
 @end
 

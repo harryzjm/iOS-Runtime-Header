@@ -6,19 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class NSEnumerator;
+@class NSArray, NSEnumerator, Protocol;
 
 @interface MPMiddlewareChain : NSObject
 {
+    Protocol *_protocol;
+    NSArray *_builders;
     NSEnumerator *_middlewareEnumerator;
     SEL _builderSelector;
 }
 
-+ (void)_addBuilderProtocol:(id)arg1;
-+ (void)registerReturnType:(const char *)arg1 returnValueBlock:(id)arg2;
 + (id)builderProxyForProtocol:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) SEL builderSelector; // @synthesize builderSelector=_builderSelector;
+- (id)methodSignatureForSelector:(SEL)arg1;
+- (void)forwardInvocation:(id)arg1;
 - (id)nextObject;
 - (id)initWithMiddleware:(id)arg1 protocol:(id)arg2;
 

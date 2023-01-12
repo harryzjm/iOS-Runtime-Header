@@ -63,7 +63,6 @@
 - (void)_loadSnapshotContentViews;
 - (void)_cleanupAfterOrb:(_Bool)arg1;
 - (void)_prepareForOrb;
-- (_Bool)_needsVignette;
 - (id)_curtainView;
 - (_Bool)_curtainViewVisible;
 - (void)_fadeFromCurtainViewWithDuration:(double)arg1 completion:(CDUnknownBlockType)arg2;

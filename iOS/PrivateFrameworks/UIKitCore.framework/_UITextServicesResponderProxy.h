@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <_UITextServicesResponderProxyDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) __weak UIResponder *responder; // @synthesize responder=_responder;
+- (void)_translate:(id)arg1;
 - (void)_lookup:(id)arg1;
 - (void)_define:(id)arg1;
 - (void)_addShortcut:(id)arg1;

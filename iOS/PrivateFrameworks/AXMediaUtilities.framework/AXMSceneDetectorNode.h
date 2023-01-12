@@ -19,6 +19,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic, setter=_setSceneClassificationRequest:) VNSceneClassificationRequest *_sceneClassificationRequest; // @synthesize _sceneClassificationRequest=__sceneClassificationRequest;
 @property(nonatomic) unsigned int taxonomyOptions; // @synthesize taxonomyOptions=_taxonomyOptions;
+- (_Bool)_shouldIncludeSceneLabelForOCRDocumenTypeDetection:(id)arg1;
 - (void)evaluate:(id)arg1 metrics:(id)arg2;
 - (_Bool)validateVisionKitSoftLinkSymbols;
 - (void)encodeWithCoder:(id)arg1;

@@ -6,30 +6,18 @@
 
 #import <KnowledgeGraphKit/NSObject-Protocol.h>
 
-@class MAEdge, MAMemoryFootprint, MANode, NSArray, NSMutableSet, NSSet, NSString;
+@class MAEdgeFilter, MAMemoryFootprint, MANode, MANodeFilter;
 
 @protocol MANodeImplementationProtocol <NSObject>
 - (unsigned long long)memoryFootprint:(MAMemoryFootprint *)arg1;
-- (void)enumerateDeepNeighborsWithLabel:(NSString *)arg1 domain:(unsigned short)arg2 edgeType:(unsigned long long)arg3 excluding:(NSMutableSet *)arg4 shouldStop:(_Bool *)arg5 block:(void (^)(MANode *, _Bool *))arg6;
-- (void)removeEdge:(MAEdge *)arg1;
-- (void)addEdge:(MAEdge *)arg1;
-- (void)enumerateSiblingNodesThroughEdgesInDomains:(NSArray *)arg1 usingBlock:(void (^)(MANode *, MAEdge *, MANode *, MAEdge *, _Bool *))arg2;
-- (void)enumerateSiblingNodesThroughEdgesWithLabel:(NSString *)arg1 inDomain:(unsigned short)arg2 usingBlock:(void (^)(MANode *, MAEdge *, MANode *, MAEdge *, _Bool *))arg3;
-- (NSSet *)siblingNodesThroughEdgesWithLabel:(NSString *)arg1 inDomain:(unsigned short)arg2;
-- (void)enumerateNeighborNodesThroughEdgesInDomains:(NSArray *)arg1 usingBlock:(void (^)(MAEdge *, MANode *, _Bool *))arg2;
-- (void)enumerateNeighborNodesThroughEdgesOfType:(unsigned long long)arg1 withLabel:(NSString *)arg2 inDomain:(unsigned short)arg3 usingBlock:(void (^)(MAEdge *, MANode *, _Bool *))arg4;
-- (NSSet *)neighborNodesThroughEdgesOfType:(unsigned long long)arg1 withLabel:(NSString *)arg2 inDomain:(unsigned short)arg3;
-- (MANode *)anyNeighborNodeThroughEdgesOfType:(unsigned long long)arg1 withLabel:(NSString *)arg2 inDomain:(unsigned short)arg3;
-- (void)enumerateNeighborNodesWithLabel:(NSString *)arg1 inDomain:(unsigned short)arg2 usingBlock:(void (^)(MAEdge *, MANode *, _Bool *))arg3;
-- (NSSet *)neighborNodesWithLabel:(NSString *)arg1 inDomain:(unsigned short)arg2;
-- (NSSet *)edgesOfType:(unsigned long long)arg1 withNode:(MANode *)arg2;
-- (MAEdge *)anyEdgeOfType:(unsigned long long)arg1 withNode:(MANode *)arg2;
+- (void)enumerateNeighborEdgesAndNodesThroughEdgesOfType:(unsigned long long)arg1 matchingFilter:(MAEdgeFilter *)arg2 usingBlock:(void (^)(MAEdge *, MANode *, _Bool *))arg3;
+- (void)enumerateNeighborNodesThroughEdgesOfType:(unsigned long long)arg1 matchingFilter:(MAEdgeFilter *)arg2 usingBlock:(void (^)(MANode *, _Bool *))arg3;
+- (void)enumerateNeighborEdgesAndNodesMatchingFilter:(MANodeFilter *)arg1 usingBlock:(void (^)(MAEdge *, MANode *, _Bool *))arg2;
+- (void)enumerateNeighborNodesMatchingFilter:(MANodeFilter *)arg1 usingBlock:(void (^)(MANode *, _Bool *))arg2;
+- (void)enumerateEdgesOfType:(unsigned long long)arg1 withNode:(MANode *)arg2 usingBlock:(void (^)(MAEdge *, _Bool *))arg3;
 - (_Bool)hasEdgeOfType:(unsigned long long)arg1 withNode:(MANode *)arg2;
-- (void)enumerateEdgesInDomains:(NSArray *)arg1 usingBlock:(void (^)(MAEdge *, _Bool *))arg2;
-- (void)enumerateEdgesOfType:(unsigned long long)arg1 withLabel:(NSString *)arg2 inDomain:(unsigned short)arg3 usingBlock:(void (^)(MAEdge *, _Bool *))arg4;
-- (NSSet *)edgesOfType:(unsigned long long)arg1 withLabel:(NSString *)arg2 inDomain:(unsigned short)arg3;
-- (MAEdge *)anyEdgeOfType:(unsigned long long)arg1 withLabel:(NSString *)arg2 inDomain:(unsigned short)arg3;
-- (_Bool)hasEdgeOfType:(unsigned long long)arg1 withLabel:(NSString *)arg2 inDomain:(unsigned short)arg3;
-- (unsigned long long)countOfEdgesOfType:(unsigned long long)arg1 withLabel:(NSString *)arg2 inDomain:(unsigned short)arg3;
+- (void)enumerateEdgesOfType:(unsigned long long)arg1 matchingFilter:(MAEdgeFilter *)arg2 usingBlock:(void (^)(MAEdge *, _Bool *))arg3;
+- (_Bool)hasEdgeOfType:(unsigned long long)arg1 matchingFilter:(MAEdgeFilter *)arg2;
+- (unsigned long long)countOfEdgesOfType:(unsigned long long)arg1 matchingFilter:(MAEdgeFilter *)arg2;
 @end
 

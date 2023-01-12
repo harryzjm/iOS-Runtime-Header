@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_setCachedSize:(struct CGSize)arg1 forKey:(id)arg2;
 - (_Bool)_cachedSizeForKey:(id)arg1 size:(struct CGSize *)arg2;
-- (struct CGSize)_sizeForText:(id)arg1 font:(id)arg2 height:(double)arg3;
+- (struct CGSize)_sizeForText:(id)arg1 font:(id)arg2 height:(double)arg3 overrideAttributes:(id)arg4;
 - (unsigned long long)_currentPriority;
 - (unsigned long long)_requiresLowerPriority:(id)arg1;
 - (void)_resetPriority;

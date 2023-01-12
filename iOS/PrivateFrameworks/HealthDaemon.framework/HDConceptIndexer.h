@@ -6,27 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class HDProfile;
-@protocol OS_dispatch_queue;
+#import <HealthDaemon/HDConceptIndexer-Protocol.h>
 
-@interface HDConceptIndexer : NSObject
+@class NSString;
+
+@interface HDConceptIndexer : NSObject <HDConceptIndexer>
 {
-    HDProfile *_profile;
-    NSObject<OS_dispatch_queue> *_syncQueue;
 }
 
-+ (_Bool)insertConceptIndexEntries:(id)arg1 profile:(id)arg2 error:(id *)arg3;
-+ (id)indexSample:(id)arg1 profile:(id)arg2 error:(id *)arg3;
-+ (id)sampleQueryDescriptionsFollowingAnchor:(id)arg1 futureMigrationEnabled:(_Bool)arg2;
-- (void).cxx_destruct;
-- (_Bool)_syncQueue_resetWithError:(id *)arg1;
-- (_Bool)resetWithError:(id *)arg1;
-- (_Bool)_syncQueue_processSamplesWithLimit:(long long)arg1 countOfSamplesProcessed:(long long *)arg2 error:(id *)arg3;
-- (_Bool)processSamplesWithLimit:(unsigned long long)arg1 countOfSamplesProcessed:(long long *)arg2 error:(id *)arg3;
-- (_Bool)_syncQueue_processUpdatedSamplesWithLimit:(long long)arg1 countOfSamplesProcessed:(long long *)arg2 error:(id *)arg3;
-- (_Bool)_syncQueue_processDeletedSamplesWithLimit:(long long)arg1 sampleType:(id)arg2 countOfSamplesProcessed:(long long *)arg3 error:(id *)arg4;
-- (id)initWithProfile:(id)arg1;
++ (_Bool)storeState:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
++ (id)stateWithTransaction:(id)arg1 error:(id *)arg2;
++ (_Bool)resetIndexManagerStateForProfile:(id)arg1 withError:(id *)arg2;
++ (_Bool)indexSamplesForProfile:(id)arg1 limit:(unsigned long long)arg2 outIndexedSamplesCount:(long long *)arg3 error:(id *)arg4;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

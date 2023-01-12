@@ -19,13 +19,14 @@
 - (void)_handleFilterButtonTapped:(id)arg1;
 - (void)_axUpdateInternalMotionManager;
 - (_Bool)_shouldHideZoomControlForGraphConfiguration:(id)arg1;
-- (void)_embedCTMDescriptionOverlayView;
-- (void)_embedPortraitModeDescriptionOverlayViewWithLayoutStyle:(long long)arg1;
+- (void)_embedDescriptionOverlayView:(id)arg1 forMode:(long long)arg2;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)_presentCameraRollViewControllerAnimated:(_Bool)arg1 interactive:(_Bool)arg2;
 - (void)_updateLevelMotionTracking;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (_Bool)accessibilityPerformMagicTap;
+- (_Bool)_stopCapturingVideo;
+- (_Bool)_startCapturingVideoWithRequest:(id)arg1;
 
 @end
 

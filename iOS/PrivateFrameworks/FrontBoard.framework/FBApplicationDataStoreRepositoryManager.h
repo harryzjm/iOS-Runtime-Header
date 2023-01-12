@@ -8,20 +8,20 @@
 
 #import <FrontBoard/FBApplicationDataStoreRepositoryDelegate-Protocol.h>
 
-@class FBSqliteApplicationDataStoreRepository, LSApplicationWorkspace, NSString, NSURL;
+@class FBSqliteApplicationDataStoreRepository, LSEnumerator, NSString, NSURL;
 @protocol FBApplicationDataStoreRepository, OS_dispatch_queue;
 
 @interface FBApplicationDataStoreRepositoryManager : NSObject <FBApplicationDataStoreRepositoryDelegate>
 {
     NSURL *_dataStoreURL;
     FBSqliteApplicationDataStoreRepository *_dataStore;
-    LSApplicationWorkspace *_lsApplicationWorkspace;
+    LSEnumerator *_lsEnumerator;
     NSObject<OS_dispatch_queue> *_deferredWorkQueue;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-@property(retain, nonatomic) LSApplicationWorkspace *lsApplicationWorkspace; // @synthesize lsApplicationWorkspace=_lsApplicationWorkspace;
+@property(retain, nonatomic) LSEnumerator *lsEnumerator; // @synthesize lsEnumerator=_lsEnumerator;
 @property(retain, nonatomic) id <FBApplicationDataStoreRepository> dataStore; // @synthesize dataStore=_dataStore;
 - (void)storeInvalidatedForIdentifier:(id)arg1;
 - (void)objectChangedForKeys:(id)arg1 application:(id)arg2;
@@ -35,7 +35,7 @@
 - (_Bool)removeStoreAtURL:(id)arg1 error:(out id *)arg2;
 - (id)urlByAppendingString:(id)arg1 toURL:(id)arg2;
 - (void)dealloc;
-- (id)_initWithDataStore:(id)arg1 lsWorkspace:(id)arg2;
+- (id)_initWithDataStore:(id)arg1 lsEnumerator:(id)arg2;
 - (id)init;
 
 // Remaining properties

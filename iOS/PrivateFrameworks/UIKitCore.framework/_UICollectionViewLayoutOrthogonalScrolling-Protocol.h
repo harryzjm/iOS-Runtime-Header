@@ -7,11 +7,10 @@
 #import <UIKitCore/NSObject-Protocol.h>
 
 @class NSArray, NSIndexPath, NSIndexSet, NSString, UICollectionViewLayoutAttributes;
-@protocol _UICollectionViewLayoutOrthogonalScrollingSectionState;
 
 @protocol _UICollectionViewLayoutOrthogonalScrolling <NSObject>
 - (NSString *)_orthogonalScrollingTrace;
-- (id <_UICollectionViewLayoutOrthogonalScrollingSectionState>)_orthogonalScrollingStateForSection:(long long)arg1;
+- (_Bool)_orthogonalScrollingElementShouldAppearBelowForAttributes:(UICollectionViewLayoutAttributes *)arg1;
 - (_Bool)_orthogonalScrollingElementShouldAppearAboveForAttributes:(UICollectionViewLayoutAttributes *)arg1;
 - (struct CGRect)_orthogonalFrameWithOffsetElidedForItemWithLayoutAttributes:(UICollectionViewLayoutAttributes *)arg1 frame:(struct CGRect)arg2;
 - (NSArray *)_extendedAttributesQueryIncludingOrthogonalScrollingRegions:(struct CGRect)arg1;
@@ -22,7 +21,7 @@
 - (struct CGRect)_orthogonalScrollingLayoutRectForSection:(long long)arg1;
 - (double)_orthogonalScrollingDecelerationRateForSection:(long long)arg1;
 - (unsigned long long)_orthogonalScrollingAxis;
-- (struct CGPoint)_orthogonalScrollingTargetContentOffsetForOffset:(struct CGPoint)arg1 section:(long long)arg2;
+- (struct CGPoint)_orthogonalScrollingTargetContentOffsetForOffset:(struct CGPoint)arg1 section:(long long)arg2 item:(long long)arg3;
 - (_Bool)_orthogonalScrollingUsesTargetContentOffsetForSection:(long long)arg1;
 - (_Bool)_orthogonalScrollingShouldCenterCustomPagingSizeForSection:(long long)arg1;
 - (double)_orthogonalScrollingPagingDimensionForSection:(long long)arg1;

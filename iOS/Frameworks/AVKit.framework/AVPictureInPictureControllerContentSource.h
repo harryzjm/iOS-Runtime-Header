@@ -6,25 +6,38 @@
 
 #import <objc/NSObject.h>
 
-@class AVPlayerLayer, AVSampleBufferDisplayLayer;
+@class AVPictureInPictureVideoCallViewController, AVPlayerLayer, AVSampleBufferDisplayLayer, UIView;
 @protocol AVPictureInPictureContentSource, AVPictureInPictureSampleBufferPlaybackDelegate;
 
 @interface AVPictureInPictureControllerContentSource : NSObject
 {
-    AVPlayerLayer *_playerLayer;
+    struct CGSize _initialRenderSize;
     AVSampleBufferDisplayLayer *_sampleBufferDisplayLayer;
     id <AVPictureInPictureSampleBufferPlaybackDelegate> _sampleBufferPlaybackDelegate;
+    _Bool _hasInitialRenderSize;
+    AVPlayerLayer *_playerLayer;
+    id __activeVideoCallSourceView;
+    id <AVPictureInPictureContentSource> __activeVideoCallContentViewController;
 }
 
++ (long long)version;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) __weak id <AVPictureInPictureSampleBufferPlaybackDelegate> sampleBufferPlaybackDelegate; // @synthesize sampleBufferPlaybackDelegate=_sampleBufferPlaybackDelegate;
-@property(readonly, nonatomic) AVSampleBufferDisplayLayer *sampleBufferDisplayLayer; // @synthesize sampleBufferDisplayLayer=_sampleBufferDisplayLayer;
+@property(readonly, nonatomic) _Bool hasInitialRenderSize; // @synthesize hasInitialRenderSize=_hasInitialRenderSize;
+@property(readonly, nonatomic) id <AVPictureInPictureContentSource> _activeVideoCallContentViewController; // @synthesize _activeVideoCallContentViewController=__activeVideoCallContentViewController;
+@property(readonly, nonatomic) __weak id _activeVideoCallSourceView; // @synthesize _activeVideoCallSourceView=__activeVideoCallSourceView;
 @property(readonly, nonatomic) AVPlayerLayer *playerLayer; // @synthesize playerLayer=_playerLayer;
 - (void)dealloc;
 @property(readonly, nonatomic) id <AVPictureInPictureContentSource> source;
-- (id)initWithSampleBufferDisplayLayer:(id)arg1 playbackDelegate:(id)arg2;
 - (id)initWithPlayerLayer:(id)arg1;
 - (id)init;
+@property(readonly, nonatomic) __weak id <AVPictureInPictureSampleBufferPlaybackDelegate> sampleBufferPlaybackDelegate;
+@property(readonly, nonatomic) AVSampleBufferDisplayLayer *sampleBufferDisplayLayer;
+- (id)initWithSampleBufferDisplayLayer:(id)arg1 playbackDelegate:(id)arg2;
+@property(readonly, nonatomic) struct CGSize initialRenderSize;
+- (id)initWithSampleBufferDisplayLayer:(id)arg1 initialRenderSize:(struct CGSize)arg2 playbackDelegate:(id)arg3;
+@property(readonly, nonatomic) AVPictureInPictureVideoCallViewController *activeVideoCallContentViewController;
+@property(readonly, nonatomic) __weak UIView *activeVideoCallSourceView;
+- (id)initWithActiveVideoCallSourceView:(id)arg1 contentViewController:(id)arg2;
 
 @end
 

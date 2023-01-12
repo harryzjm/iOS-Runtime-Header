@@ -6,9 +6,11 @@
 
 #import <SpringBoardHome/SBHWidgetDragHandlerPassing-Protocol.h>
 
-@class SBHWidgetWrapperViewController;
+@class SBHWidgetWrapperViewController, UIView;
 
 @protocol SBHWidgetWrapperViewControllerDelegate <SBHWidgetDragHandlerPassing>
+- (void)configureBackgroundView:(UIView *)arg1 matchingMaterialBeneathWrapperViewController:(SBHWidgetWrapperViewController *)arg2;
+- (UIView *)backgroundViewMatchingMaterialBeneathWrapperViewController:(SBHWidgetWrapperViewController *)arg1;
 
 @optional
 - (void)wrapperViewControllerSelectedSizeClassChanged:(SBHWidgetWrapperViewController *)arg1;

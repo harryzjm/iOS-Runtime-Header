@@ -11,16 +11,16 @@ __attribute__((visibility("hidden")))
 {
     CDUnknownBlockType _sortTransformer;
     CDUnknownBlockType _valueTransformer;
-    shared_ptr_217a6612 _propertiesToFetchMap;
-    shared_ptr_217a6612 _propertiesToSortMap;
+    shared_ptr_a9db792c _propertiesToFetchMap;
+    shared_ptr_a9db792c _propertiesToSortMap;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType valueTransformer; // @synthesize valueTransformer=_valueTransformer;
 @property(copy, nonatomic) CDUnknownBlockType sortTransformer; // @synthesize sortTransformer=_sortTransformer;
-@property(nonatomic) shared_ptr_217a6612 propertiesToSortMap; // @synthesize propertiesToSortMap=_propertiesToSortMap;
-@property(nonatomic) shared_ptr_217a6612 propertiesToFetchMap; // @synthesize propertiesToFetchMap=_propertiesToFetchMap;
+@property(nonatomic) shared_ptr_a9db792c propertiesToSortMap; // @synthesize propertiesToSortMap=_propertiesToSortMap;
+@property(nonatomic) shared_ptr_a9db792c propertiesToFetchMap; // @synthesize propertiesToFetchMap=_propertiesToFetchMap;
 
 @end
 

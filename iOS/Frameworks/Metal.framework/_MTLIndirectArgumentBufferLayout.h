@@ -10,7 +10,7 @@
 
 @interface _MTLIndirectArgumentBufferLayout : NSObject
 {
-    struct _MTLIndirectArgumentBufferLayoutPrivate *_private;
+    void *_private;
 }
 
 @property(readonly, nonatomic) id <MTLDeviceSPI> device;
@@ -25,6 +25,9 @@
 @property(readonly) unsigned long long encodedLength; // @dynamic encodedLength;
 @property(readonly) _Bool bufferLayoutMatchesFrontEndLayout; // @dynamic bufferLayoutMatchesFrontEndLayout;
 - (unsigned long long)uniqueIdentifierForIndirectCommandBufferAtIndex:(unsigned long long)arg1 inIndirectArgumentBuffer:(id)arg2 atOffset:(unsigned long long)arg3;
+- (unsigned long long)uniqueIdentifierForPrimitiveAccelerationStructureAtIndex:(unsigned long long)arg1 inIndirectArgumentBuffer:(id)arg2 atOffset:(unsigned long long)arg3;
+- (unsigned long long)uniqueIdentifierForInstanceAccelerationStructureAtIndex:(unsigned long long)arg1 inIndirectArgumentBuffer:(id)arg2 atOffset:(unsigned long long)arg3;
+- (unsigned long long)uniqueIdentifierForIntersectionFunctionTableAtIndex:(unsigned long long)arg1 inIndirectArgumentBuffer:(id)arg2 atOffset:(unsigned long long)arg3;
 - (unsigned long long)uniqueIdentifierForVisibleFunctionTableAtIndex:(unsigned long long)arg1 inIndirectArgumentBuffer:(id)arg2 atOffset:(unsigned long long)arg3;
 - (unsigned long long)uniqueIdentifierForComputePipelineAtIndex:(unsigned long long)arg1 inIndirectArgumentBuffer:(id)arg2 atOffset:(unsigned long long)arg3;
 - (unsigned long long)uniqueIdentifierForRenderPipelineAtIndex:(unsigned long long)arg1 inIndirectArgumentBuffer:(id)arg2 atOffset:(unsigned long long)arg3;

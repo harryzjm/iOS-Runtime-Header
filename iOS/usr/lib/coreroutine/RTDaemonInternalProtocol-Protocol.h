@@ -9,9 +9,11 @@
 @class NSArray, NSDate, NSDictionary, NSNumber, NSSet, NSString, NSURL, NSUUID, RTFetchFingerprintsOptions, RTFingerprint, RTLocation, RTLocationOfInterest, RTLocationOfInterestVisit, RTPlaceInferenceOptions, RTScenarioTrigger, RTSignalGeneratorOptions, RTVisit;
 
 @protocol RTDaemonInternalProtocol <NSObject>
+- (void)fetchSnapshotWithOptions:(unsigned long long)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)logDatabasesWithReply:(void (^)(NSError *))arg1;
 - (void)extendLifetimeOfVisitsWithIdentifiers:(NSSet *)arg1 toExpireOn:(NSDate *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)expireLifetimeOfVisitsWithIdentifiers:(NSSet *)arg1 expirationDate:(NSDate *)arg2 reply:(void (^)(NSError *))arg3;
+- (void)submitTransitMetricsWithReply:(void (^)(NSError *))arg1;
 - (void)submitMetrics:(NSDictionary *)arg1 metricName:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)fetchMotionActivitiesFromStartDate:(NSDate *)arg1 endDate:(NSDate *)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
 - (void)fetchFMCEnabledWithReply:(void (^)(_Bool, NSError *))arg1;
@@ -41,6 +43,7 @@
 - (void)updateAssetServerURL:(NSURL *)arg1 assetType:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)forceUpdateAssetMetadataWithReply:(void (^)(NSError *))arg1;
 - (void)simulateScenarioTrigger:(RTScenarioTrigger *)arg1 reply:(void (^)(RTScenarioTrigger *, NSError *))arg2;
+- (void)forcePlaceTypeClassificationWithReply:(void (^)(NSError *))arg1;
 - (void)forceRelabeling:(void (^)(NSError *))arg1;
 - (void)fetchVisitsWithReply:(void (^)(NSArray *, NSError *))arg1;
 - (void)fetchStoredLocationsCountFromDate:(NSDate *)arg1 toDate:(NSDate *)arg2 uncertainty:(double)arg3 limit:(unsigned long long)arg4 reply:(void (^)(unsigned long long, NSError *))arg5;

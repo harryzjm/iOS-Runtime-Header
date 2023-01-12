@@ -7,7 +7,7 @@
 @class NSDate, NSString;
 
 @protocol TRIDateProviding
-- (void)updateLastFetchExperimentDate:(NSDate *)arg1 forContainer:(int)arg2 teamId:(NSString *)arg3;
-- (NSDate *)lastFetchExperimentDateForContainer:(int)arg1 teamId:(NSString *)arg2;
+- (void)setLastFetchDate:(NSDate *)arg1 type:(unsigned char)arg2 container:(int)arg3 teamId:(NSString *)arg4;
+- (NSDate *)lastFetchDateWithType:(unsigned char)arg1 container:(int)arg2 teamId:(NSString *)arg3;
 @end
 

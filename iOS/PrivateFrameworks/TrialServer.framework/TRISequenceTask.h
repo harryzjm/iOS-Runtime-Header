@@ -14,6 +14,7 @@
 {
     id <TRITask> _task;
     id <TRITask> _dependentTask;
+    _Bool wasDeferred;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -21,6 +22,7 @@
 + (_Bool)_isTask:(id)arg1 equalTo:(id)arg2;
 + (id)task;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool wasDeferred; // @synthesize wasDeferred;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)serialize;
@@ -36,6 +38,7 @@
 - (void)addTaskToEndOfSequence:(id)arg1;
 @property(readonly) id <TRITask> lastTask;
 @property(nonatomic) int retryCount;
+- (id)trialSystemTelemetry;
 - (id)dimensions;
 - (id)metrics;
 @property(readonly, nonatomic) NSString *taskName;

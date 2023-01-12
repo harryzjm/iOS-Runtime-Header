@@ -15,10 +15,13 @@
 + (_Bool)tsk_appIsAlwaysInDarkMode;
 + (_Bool)tsk_deviceCanUseSidebar;
 + (_Bool)tsk_isHorizontallyCompactOnLandscape;
++ (_Bool)tsk_phoneUI926H;
 + (_Bool)tsk_phoneUI896H;
++ (_Bool)tsk_phoneUI844H;
 + (_Bool)tsk_phoneUI812HOrLarger;
 + (_Bool)tsk_phoneUI812H;
 + (_Bool)tsk_phoneUI736H;
++ (_Bool)tsk_phoneUI693H;
 + (_Bool)tsk_phoneUI667HOrSmaller;
 + (_Bool)tsk_phoneUI667H;
 + (_Bool)tsk_phoneUI568HOrSmaller;
@@ -29,5 +32,10 @@
 + (_Bool)tsk_pad1180H;
 + (_Bool)tsk_pad1112H;
 + (_Bool)tsk_pad1080H;
++ (double)tsk_screenZoomScale;
++ (_Bool)tsk_screenClassPhoneUISmallOrRegularZoom;
++ (_Bool)tsk_screenClassPhoneUIRegularOrLarge;
++ (long long)p_tsk_uncachedScreenClass;
++ (long long)tsk_screenClass;
 @end
 

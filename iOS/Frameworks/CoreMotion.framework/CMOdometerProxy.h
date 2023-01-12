@@ -13,19 +13,25 @@
 {
     NSObject<OS_dispatch_queue> *fInternalQueue;
     NSObject<OS_dispatch_queue> *fCallbackQueue;
-    struct CLConnectionClient *fLocationdConnection;
+    void *fLocationdConnection;
     CDUnknownBlockType fHandler;
     long long fGpsAvailability;
     CMOdometer *_odometer;
     double _totalDistance;
     double _averageSpeed;
     double _startDate;
+    double _totalCyclingDistance;
+    double _cyclingStartDate;
 }
 
+@property double cyclingStartDate; // @synthesize cyclingStartDate=_cyclingStartDate;
+@property double totalCyclingDistance; // @synthesize totalCyclingDistance=_totalCyclingDistance;
 @property double startDate; // @synthesize startDate=_startDate;
 @property double averageSpeed; // @synthesize averageSpeed=_averageSpeed;
 @property double totalDistance; // @synthesize totalDistance=_totalDistance;
 @property(nonatomic) CMOdometer *odometer; // @synthesize odometer=_odometer;
+- (void)_stopCyclingWorkoutDistanceUpdates;
+- (void)_startCyclingWorkoutDistanceUpdatesWithHandler:(CDUnknownBlockType)arg1;
 - (void)_stopOdometerUpdates;
 - (void)_startOdometerUpdatesWithHandler:(CDUnknownBlockType)arg1;
 - (void)_startDaemonConnection;

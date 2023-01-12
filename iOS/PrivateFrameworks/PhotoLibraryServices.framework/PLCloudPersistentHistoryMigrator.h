@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSManagedObjectContext, PLCloudBatchUploader, PLCloudPhotoLibraryUploadTracker;
+@class PLCloudBatchUploader, PLCloudPhotoLibraryUploadTracker, PLManagedObjectContext;
 @protocol PLCloudPersistentHistoryMigratorContext;
 
 @interface PLCloudPersistentHistoryMigrator : NSObject
 {
     PLCloudBatchUploader *_uploader;
     PLCloudPhotoLibraryUploadTracker *_uploadTracker;
-    NSManagedObjectContext *_managedObjectContext;
+    PLManagedObjectContext *_managedObjectContext;
     id <PLCloudPersistentHistoryMigratorContext> _migratorContext;
 }
 

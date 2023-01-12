@@ -6,12 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString, PGMeaningCriteriaInfo;
+@class NSArray, NSString, PGMeaningActionCriteria, PGMeaningCriteriaInfo, PGMeaningSceneCriteria;
 
 @interface PGMeaningCriteriaEvaluator : NSObject
 {
     NSString *_meaningLabel;
     PGMeaningCriteriaInfo *_meaningCriteriaInfo;
+    PGMeaningSceneCriteria *_meaningSceneCriteria;
+    PGMeaningActionCriteria *_meaningActionCriteria;
     NSArray *_allMeaningCriteriaArray;
 }
 
@@ -19,10 +21,13 @@
 + (id)meaningCriteriaEvaluatorsForMeaningLabel:(id)arg1 withDictionary:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *allMeaningCriteriaArray; // @synthesize allMeaningCriteriaArray=_allMeaningCriteriaArray;
+@property(retain, nonatomic) PGMeaningActionCriteria *meaningActionCriteria; // @synthesize meaningActionCriteria=_meaningActionCriteria;
+@property(retain, nonatomic) PGMeaningSceneCriteria *meaningSceneCriteria; // @synthesize meaningSceneCriteria=_meaningSceneCriteria;
 @property(retain, nonatomic) PGMeaningCriteriaInfo *meaningCriteriaInfo; // @synthesize meaningCriteriaInfo=_meaningCriteriaInfo;
 - (id)description;
 - (_Bool)allCriteriaIsValid;
-- (_Bool)allCriteriaPassesForMomentNode:(id)arg1;
+- (_Bool)allCriteriaPassForAssets:(id)arg1;
+- (_Bool)allCriteriaPassForMomentNode:(id)arg1 momentNodeCache:(id)arg2;
 @property(readonly, nonatomic) NSString *meaningLabel; // @synthesize meaningLabel=_meaningLabel;
 - (id)initWithDictionary:(id)arg1 meaningCriteriaInfo:(id)arg2;
 

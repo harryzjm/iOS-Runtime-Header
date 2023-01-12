@@ -22,5 +22,6 @@
 - (void)accessoryServerBrowser:(HAPAccessoryServerBrowser *)arg1 didFindAccessoryServerForReprovisioning:(HAPAccessoryServer *)arg2;
 - (void)accessoryServerBrowser:(HAPAccessoryServerBrowser *)arg1 didRemoveAccessoryServer:(HAPAccessoryServer *)arg2 error:(NSError *)arg3;
 - (void)accessoryServerBrowser:(HAPAccessoryServerBrowser *)arg1 didFindAccessoryServer:(HAPAccessoryServer *)arg2 stateChanged:(_Bool)arg3 stateNumber:(NSNumber *)arg4;
+- (_Bool)isServerLinkTypeBrowseable:(long long)arg1;
 @end
 

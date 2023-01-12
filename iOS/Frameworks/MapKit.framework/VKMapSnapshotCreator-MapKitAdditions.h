@@ -10,5 +10,6 @@
 - (void)_mapkit_configureWithOptions:(id)arg1;
 - (void)_mapkit_configureFromDefaults;
 - (void)_mapkit_configureLabelSizesForContentSizeCategory:(id)arg1;
+- (id)initWithSnapshotOptions:(id)arg1 homeQueue:(id)arg2 auditToken:(id)arg3;
 @end
 

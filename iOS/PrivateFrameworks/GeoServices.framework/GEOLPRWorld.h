@@ -23,39 +23,15 @@ __attribute__((visibility("hidden")))
     CDStruct_4ca0835f _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
-+ (Class)vehicleTypesType;
-+ (Class)powerTypesType;
-+ (Class)regionsType;
 - (void).cxx_destruct;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (id)vehicleTypesAtIndex:(unsigned long long)arg1;
-- (unsigned long long)vehicleTypesCount;
-- (void)addVehicleTypes:(id)arg1;
-- (void)clearVehicleTypes;
-@property(retain, nonatomic) NSMutableArray *vehicleTypes;
-- (id)powerTypesAtIndex:(unsigned long long)arg1;
-- (unsigned long long)powerTypesCount;
-- (void)addPowerTypes:(id)arg1;
-- (void)clearPowerTypes;
-@property(retain, nonatomic) NSMutableArray *powerTypes;
-- (id)regionsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)regionsCount;
-- (void)addRegions:(id)arg1;
-- (void)clearRegions;
-@property(retain, nonatomic) NSMutableArray *regions;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

@@ -10,23 +10,20 @@
 
 @class _MRPlaybackSessionProtobuf;
 
+__attribute__((visibility("hidden")))
 @interface _MRPlaybackSessionResponseMessageProtobuf : PBCodable <NSCopying>
 {
     _MRPlaybackSessionProtobuf *_playbackSession;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) _MRPlaybackSessionProtobuf *playbackSession; // @synthesize playbackSession=_playbackSession;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasPlaybackSession;
 
 @end
 

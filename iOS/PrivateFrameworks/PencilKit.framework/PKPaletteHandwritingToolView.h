@@ -4,15 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PencilKit/PKPaletteInkingTool-Protocol.h>
+#import <PencilKit/PKPaletteHandwritingTool-Protocol.h>
 
-@class NSLayoutConstraint, NSString, PKInk, UILabel;
-@protocol PKPaletteErasingTool, PKPaletteInkingTool;
+@class NSLayoutConstraint, NSString, UILabel;
+@protocol PKPaletteErasingTool, PKPaletteHandwritingTool, PKPaletteInkingTool;
 
-@interface PKPaletteHandwritingToolView <PKPaletteInkingTool>
+@interface PKPaletteHandwritingToolView <PKPaletteHandwritingTool>
 {
     _Bool _needsUpdateTitleLabel;
-    PKInk *_ink;
     NSString *_localeIdentifier;
     UILabel *_toolLabel;
     NSLayoutConstraint *_toolLabelCenterXConstraint;
@@ -25,17 +24,13 @@
 @property(retain, nonatomic) NSLayoutConstraint *toolLabelCenterXConstraint; // @synthesize toolLabelCenterXConstraint=_toolLabelCenterXConstraint;
 @property(retain, nonatomic) UILabel *toolLabel; // @synthesize toolLabel=_toolLabel;
 @property(copy, nonatomic) NSString *localeIdentifier; // @synthesize localeIdentifier=_localeIdentifier;
-@property(readonly, nonatomic) PKInk *ink; // @synthesize ink=_ink;
-- (void)setInkWeight:(double)arg1;
-- (void)setInkColor:(id)arg1;
+- (void)setEdgeLocation:(unsigned long long)arg1;
+- (void)setScalingFactor:(double)arg1;
 - (struct CGPoint)_toolLabelCenterOffset;
 - (void)updateConstraints;
-- (void)setEdgeLocation:(unsigned long long)arg1;
 - (struct CGAffineTransform)_toolLabelImageViewTransform;
 - (id)_toolLabelText;
 - (void)_updateUI;
-- (void)setScalingFactor:(double)arg1;
-- (_Bool)isHandwritingTool;
 - (id)initWithToolIdentifier:(id)arg1;
 - (id)init;
 
@@ -43,6 +38,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) id <PKPaletteErasingTool> erasingTool;
+@property(readonly, nonatomic) id <PKPaletteHandwritingTool> handwritingTool;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) id <PKPaletteInkingTool> inkingTool;
 @property(readonly) Class superclass;

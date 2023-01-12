@@ -12,6 +12,7 @@
 - (void)biometricUnlockBehaviorConfigurationDidChange:(id <SBBiometricUnlockBehaviorConfiguration>)arg1;
 
 @optional
+- (_Bool)hasVisibleContentToReveal;
 - (_Bool)isRestToOpenAvailable;
 - (void)resetRestToOpen;
 - (void)fillRestToOpenWithDuration:(double)arg1;

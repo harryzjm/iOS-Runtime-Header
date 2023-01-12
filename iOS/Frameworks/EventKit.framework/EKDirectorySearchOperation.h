@@ -25,10 +25,7 @@
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
 @property(nonatomic) _Bool numberOfMatchesExceededLimit; // @synthesize numberOfMatchesExceededLimit=_numberOfMatchesExceededLimit;
 - (void)_finishWithError:(id)arg1;
-- (id)_processLocationsInResults:(id)arg1;
-- (id)_processResourcesInResults:(id)arg1;
-- (id)_processGroupsInResults:(id)arg1;
-- (id)_processPeopleInResults:(id)arg1;
+- (id)_processResults:(id)arg1 class:(Class)arg2;
 - (void)_processResults:(id)arg1;
 - (id)_recordTypes;
 - (_Bool)isFinished;

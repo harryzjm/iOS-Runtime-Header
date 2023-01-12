@@ -40,6 +40,7 @@
 - (id)firstBaselineAnchor;
 - (id)lastBaselineAnchor;
 - (_Bool)_hasBaseline;
+- (struct CGSize)_layoutSizeThatFits:(struct CGSize)arg1 fixedAxes:(unsigned long long)arg2;
 - (double)scaledLayoutValueForBaseValue:(double)arg1 shouldLowerBound:(_Bool)arg2;
 - (double)scaledLayoutValueForBaseValue:(double)arg1;
 - (void)updateActiveHorizontalConstraints;

@@ -8,16 +8,17 @@
 
 #import <ClockKitUI/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate;
+@class NSDate;
 
 @interface CLKUIAlmanacTransitInfo : NSObject <NSSecureCoding>
 {
     NSDate *_day;
+    NSDate *_tomorrow;
     long long _constantSun;
     NSDate *_rise;
     NSDate *_solarNoon;
     NSDate *_set;
-    NSArray *_solarMidnights;
+    NSDate *_solarMidnight;
     CDStruct_2c43369c _location;
 }
 
@@ -28,15 +29,18 @@
 + (id)transitInfoForDate:(id)arg1;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSArray *solarMidnights; // @synthesize solarMidnights=_solarMidnights;
+@property(retain, nonatomic) NSDate *solarMidnight; // @synthesize solarMidnight=_solarMidnight;
 @property(retain, nonatomic) NSDate *set; // @synthesize set=_set;
 @property(retain, nonatomic) NSDate *solarNoon; // @synthesize solarNoon=_solarNoon;
 @property(retain, nonatomic) NSDate *rise; // @synthesize rise=_rise;
 @property(nonatomic) long long constantSun; // @synthesize constantSun=_constantSun;
 @property(nonatomic) CDStruct_2c43369c location; // @synthesize location=_location;
+@property(retain, nonatomic) NSDate *tomorrow; // @synthesize tomorrow=_tomorrow;
 @property(retain, nonatomic) NSDate *day; // @synthesize day=_day;
+- (_Bool)isDateWithinTransitInfo:(id)arg1;
 - (id)description;
 - (id)initWithDate:(id)arg1 city:(id)arg2 sunAltitude:(double)arg3;
+- (id)_dateOrNil:(double)arg1;
 - (id)initWithDate:(id)arg1 location:(CDStruct_2c43369c)arg2 sunAltitude:(double)arg3;
 - (id)initWithDate:(id)arg1 city:(id)arg2;
 - (id)initWithDate:(id)arg1 location:(CDStruct_2c43369c)arg2;

@@ -4,23 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <AppleMediaServicesUI/AMSUIWebActionRunnable-Protocol.h>
 
-@class AMSUIWebClientContext, NSString, NSURL;
+@class NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebOpenURLAction : NSObject <AMSUIWebActionRunnable>
+@interface AMSUIWebOpenURLAction <AMSUIWebActionRunnable>
 {
-    _Bool _appLink;
     NSURL *_URL;
-    AMSUIWebClientContext *_context;
+    long long _type;
 }
 
++ (id)_openUniversalLink:(id)arg1;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool appLink; // @synthesize appLink=_appLink;
-@property(retain, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
+@property(nonatomic) long long type; // @synthesize type=_type;
 @property(retain, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 - (id)runAction;
 - (id)initWithJSObject:(id)arg1 context:(id)arg2;

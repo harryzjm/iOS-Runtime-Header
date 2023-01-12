@@ -11,6 +11,7 @@
 @class NSString, UIWindow;
 
 @interface AVSampleBufferDisplayLayer (AVPictureInPictureContentSource) <AVPictureInPictureContentSource>
+- (long long)avkit_contentSourceType;
 - (void)avkit_willBeginStoppingPictureInPictureForPictureInPictureViewController:(id)arg1;
 - (void)avkit_endReducingResourcesForPictureInPictureViewController:(id)arg1 playerController:(id)arg2;
 - (void)avkit_beginReducingResourcesForPictureInPictureViewController:(id)arg1 playerController:(id)arg2;

@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool didSucceed; // @synthesize didSucceed=_didSucceed;
 @property(retain, nonatomic) NSMutableSet *docIDs; // @synthesize docIDs=_docIDs;
 @property(retain, nonatomic) NSUUID *operationID; // @synthesize operationID=_operationID;
+- (id)associatedAppTelemetryEvent;
 - (id)subDescription;
 - (id)additionalPayload;
 - (id)init;

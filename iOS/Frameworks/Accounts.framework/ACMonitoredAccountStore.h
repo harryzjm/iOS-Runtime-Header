@@ -6,15 +6,16 @@
 
 #import <Accounts/ACRemoteAccountStoreSessionDelegate-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSSet, NSString;
-@protocol ACMonitoredAccountStoreDelegateProtocol, NSObject;
+@class NSArray, NSHashTable, NSMutableDictionary, NSSet, NSString;
+@protocol NSObject;
 
 @interface ACMonitoredAccountStore <ACRemoteAccountStoreSessionDelegate>
 {
     NSSet *_accountTypesToMonitor;
     NSMutableDictionary *_accountsByID;
-    id <ACMonitoredAccountStoreDelegateProtocol> _delegate;
+    NSHashTable *_delegates;
     id <NSObject> _credentialsDidChangeObserver;
+    id <NSObject> _remoteAccountDidChangeObserver;
 }
 
 - (void).cxx_destruct;
@@ -30,6 +31,8 @@
 - (void)_registerAccountMonitorSynchronouslyWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_registerAccountMonitorWithCompletion:(CDUnknownBlockType)arg1;
 - (id)connectionDelegate;
+- (void)removeDelegate:(id)arg1;
+- (void)addDelegate:(id)arg1;
 - (id)monitoredAccountWithIdentifier:(id)arg1;
 @property(readonly) NSArray *monitoredAccounts;
 - (void)registerSynchronouslyWithError:(id *)arg1;

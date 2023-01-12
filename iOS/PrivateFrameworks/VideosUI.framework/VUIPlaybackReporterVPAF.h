@@ -22,10 +22,11 @@
 - (id)_sensitiveContentInfoForPlayer:(id)arg1;
 - (_Bool)_isDelegatedForPlayer:(id)arg1;
 - (id)_delegatedInfoForPlayer:(id)arg1;
-- (id)_audioFormatForPlayer:(id)arg1;
+- (id)_audioFormatForPlayer:(id)arg1 session:(id)arg2;
 - (id)_colorRangeForPlayer:(id)arg1;
+- (id)_audioInfoForPlayer:(id)arg1;
 - (id)_subtitleInfoForPlayer:(id)arg1;
-- (id)_metricsForPlayer:(id)arg1;
+- (id)_metricsForPlayer:(id)arg1 session:(id)arg2;
 - (id)_focusInfoForSession:(id)arg1;
 - (id)_skipIntroActionForSession:(id)arg1 consume:(_Bool)arg2;
 - (id)_videoDisplayInfoForSession:(id)arg1;

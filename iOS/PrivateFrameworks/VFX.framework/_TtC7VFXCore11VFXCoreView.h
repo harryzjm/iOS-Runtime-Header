@@ -10,18 +10,19 @@
 
 @interface _TtC7VFXCore11VFXCoreView : UIView
 {
-    MISSING_TYPE *displayClockHandle;
+    MISSING_TYPE *delegate;
     MISSING_TYPE *renderTargetHandle;
     MISSING_TYPE *metalLayer;
-    MISSING_TYPE *colorPixelFormat;
-    MISSING_TYPE *depthStencilPixelFormat;
     MISSING_TYPE *sampleCount;
+    MISSING_TYPE *preferredFramesPerSecond;
+    MISSING_TYPE *scaleFactor;
     MISSING_TYPE *entityManager;
+    MISSING_TYPE *renderer;
     MISSING_TYPE *paused;
+    MISSING_TYPE *effectID;
     MISSING_TYPE *sizeDirty;
     MISSING_TYPE *drawableSize;
-    MISSING_TYPE *isTicking;
-    MISSING_TYPE *_currentDrawable;
+    MISSING_TYPE *resizingMode;
 }
 
 + (Class)layerClass;
@@ -37,6 +38,8 @@
 - (void)didMoveToWindow;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;
+@property(nonatomic) _Bool hidden;
+- (_Bool)isHidden;
 
 @end
 

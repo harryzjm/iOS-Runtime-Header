@@ -26,8 +26,8 @@ __attribute__((visibility("hidden")))
     unsigned short _maxAudioErasureCount;
     double _averageFramerateSum;
     unsigned short _averageFramerateReportCounter;
-    double _averageJitterLengthSum;
-    unsigned short _averageJitterReportCounter;
+    double _averageVideoJitterLengthSum;
+    unsigned short _averageVideoJitterReportCounter;
     double _averageJitterBufferDelay;
     unsigned short _totalJitterBufferDelayCnt;
     unsigned short _targetJBSizeAccumulation;
@@ -44,11 +44,23 @@ __attribute__((visibility("hidden")))
     unsigned int _evictedFramesLikelyRecoverableCount;
     unsigned int _evictedFramesTrackedCount;
     unsigned int _evictedFramesAnalysisValidIntervals;
+    unsigned int _lateFramesScheduledCount;
     double _evictedFramesAverageLatePacketDelay;
+    unsigned int _decodeNoShowFrameCount;
+    int _maxAVSyncOffset;
+    int _minAVSyncOffset;
+    int _averageAVSyncOffsetSum;
+    unsigned int _averageAVSyncOffsetCounter;
 }
 
 @property(readonly) double totalAudioErasureTime; // @synthesize totalAudioErasureTime=_totalAudioErasureTime;
 @property(readonly) double currentStallTime; // @synthesize currentStallTime=_currentStallTime;
+- (unsigned int)decodeNoShowFrameCount;
+- (unsigned int)averageAVSyncOffsetCounter;
+- (int)averageAVSyncOffsetSum;
+- (int)minAVSyncOffset;
+- (int)maxAVSyncOffset;
+- (unsigned int)lateFramesScheduledCount;
 - (unsigned int)evictedFramesTrackedCount;
 - (unsigned int)evictedFramesLikelyRecoverableCount;
 - (double)evictedFramesAnalysisValidIntervals;
@@ -61,8 +73,8 @@ __attribute__((visibility("hidden")))
 - (unsigned int)totalFIRDemandCounter;
 - (unsigned int)totalVideoPacketsReceived;
 - (unsigned int)oooPacketCount;
-- (unsigned short)averageJitterReportCounter;
-- (double)averageJitterLengthSum;
+- (unsigned short)averageVideoJitterReportCounter;
+- (double)averageVideoJitterLengthSum;
 - (unsigned short)averageFramerateReportCounter;
 - (double)averageFramerateSum;
 - (unsigned short)minVideoFrameRate;
@@ -76,7 +88,8 @@ __attribute__((visibility("hidden")))
 - (double)videoStallTotalTime;
 - (unsigned short)significantVideoStallCount;
 - (unsigned int)RTPeriod;
-- (void)processData:(id)arg1;
+- (void)processData:(id)arg1 algosScorer:(id)arg2;
+- (void)updateMinimumAndMaximumAVSyncOffset:(id)arg1;
 - (void)dealloc;
 - (id)initStreamWithID:(id)arg1;
 

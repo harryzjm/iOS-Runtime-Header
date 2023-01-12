@@ -13,7 +13,6 @@
 + (_Bool)enumerateOrderedSourceIDsForType:(id)arg1 profile:(id)arg2 transaction:(id)arg3 error:(id *)arg4 block:(CDUnknownBlockType)arg5;
 + (_Bool)enumerateOrderedSourceIDsForType:(id)arg1 profile:(id)arg2 error:(id *)arg3 block:(CDUnknownBlockType)arg4;
 + (_Bool)saveOrderedSourceIDs:(id)arg1 type:(id)arg2 userOrdered:(_Bool)arg3 profile:(id)arg4 error:(id *)arg5;
-+ (_Bool)_updateOrderedSourcesForType:(id)arg1 profile:(id)arg2 transaction:(id)arg3 error:(id *)arg4 updateHandler:(CDUnknownBlockType)arg5;
 + (_Bool)updateOrderedSourcesForType:(id)arg1 profile:(id)arg2 error:(id *)arg3 updateHandler:(CDUnknownBlockType)arg4;
 + (id)joinClausesForProperty:(id)arg1;
 + (long long)protectionClass;

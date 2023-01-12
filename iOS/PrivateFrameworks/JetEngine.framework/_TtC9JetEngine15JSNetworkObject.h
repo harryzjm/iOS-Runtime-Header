@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *accounts;
     MISSING_TYPE *requestEncoder;
     MISSING_TYPE *requestFixUpBlock;
+    MISSING_TYPE *isAnonymous;
 }
 
 - (void).cxx_destruct;

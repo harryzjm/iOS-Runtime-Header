@@ -8,7 +8,7 @@
 #import <WebKit/UITextInputTokenizer-Protocol.h>
 #import <WebKit/UITextInputTraits_Private-Protocol.h>
 
-@class NSArray, NSAttributedString, NSDictionary, NSString, RTIInputSystemSourceSession, UIColor, UIDictationSerializableResults, UIFont, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UITextSuggestion, UIView, WebEvent;
+@class NSArray, NSAttributedString, NSDictionary, NSString, RTIInputSystemSourceSession, UIColor, UIDictationSerializableResults, UIFont, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UITextSuggestion, UIView, WebEvent, _UISupplementalItem;
 @protocol UISelectionInteractionAssistant, UITextInputSuggestionDelegate;
 
 @protocol UITextInputPrivate <UITextInput, UITextInputTokenizer, UITextInputTraits_Private>
@@ -43,6 +43,13 @@
 - (NSDictionary *)_autofillContext;
 - (_Bool)isAutoFillMode;
 - (void)acceptedAutoFillWord:(NSString *)arg1;
+- (_Bool)_canSuggestSupplementalItemsForCurrentSelection;
+- (void)_insertionPointExitedRangeWithSupplementalItems;
+- (void)_insertionPointEnteredRange:(UITextRange *)arg1 string:(NSString *)arg2 supplementalItems:(NSArray *)arg3;
+- (void)_cancelChooseSupplementalItemToInsert;
+- (void)_chooseSupplementalItemToInsert:(NSArray *)arg1 replacementRange:(UITextRange *)arg2 completionHandler:(void (^)(_UISupplementalItem *))arg3;
+- (_Bool)_insertsSpaceAfterAcceptingPredictionForSupplementalItem:(_UISupplementalItem *)arg1;
+- (void)_insertSupplementalItem:(_UISupplementalItem *)arg1 forString:(NSString *)arg2 replacementRange:(UITextRange *)arg3;
 - (void)insertTextSuggestion:(UITextSuggestion *)arg1;
 - (UITextRange *)rangeWithTextAlternatives:(id *)arg1 atPosition:(UITextPosition *)arg2;
 - (NSArray *)metadataDictionariesForDictationResults;

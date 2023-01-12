@@ -21,6 +21,8 @@
     MISSING_TYPE *$__lazy_storage_$_verificationSpinner;
     MISSING_TYPE *subscriptionsNotSupportedTagsByID;
     MISSING_TYPE *subscriptionsExpiredTagsByID;
+    MISSING_TYPE *alertQueue;
+    MISSING_TYPE *bootstrapperDidComplete;
 }
 
 @end

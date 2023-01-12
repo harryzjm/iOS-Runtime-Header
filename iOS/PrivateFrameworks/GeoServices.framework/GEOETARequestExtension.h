@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool hasNeedServerLatency;
 @property(nonatomic) _Bool needServerLatency;
@@ -30,16 +29,11 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool useLiveTrafficAsFallback;
 @property(retain, nonatomic) GEOTFTrafficSnapshot *trafficSnapshot;
 @property(readonly, nonatomic) _Bool hasTrafficSnapshot;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;

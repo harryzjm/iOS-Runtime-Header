@@ -6,13 +6,19 @@
 
 #import <UIKit/UIToolbar.h>
 
+@class MISSING_TYPE;
+
 __attribute__((visibility("hidden")))
 @interface _TtC7SwiftUI14SwiftUIToolbar : UIToolbar
 {
+    MISSING_TYPE *customMaterial;
+    MISSING_TYPE *hostingView;
 }
 
+- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)layoutSubviews;
 
 @end
 

@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     } _has;
 }
 
++ (unsigned int)capabilitiesBitmapWithCapabilities:(unsigned char)arg1;
 + (unsigned int)avcMomentsCapabilitiesForMultiwayMomentsCapabilities:(int)arg1;
 @property(nonatomic) unsigned int multiwayCapabilities; // @synthesize multiwayCapabilities=_multiwayCapabilities;
 @property(nonatomic) unsigned int supportedImageTypes; // @synthesize supportedImageTypes=_supportedImageTypes;
@@ -41,7 +42,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool hasSupportedVideoCodecs;
 - (id)newImageTypeSet;
 - (id)newVideoCodecSet;
-- (id)initWithVideoCodecs:(id)arg1 imageTypes:(id)arg2;
+- (id)initWithVideoCodecs:(id)arg1 imageTypes:(id)arg2 capabilities:(unsigned char)arg3 multiwayCapabilities:(unsigned char)arg4;
 
 @end
 

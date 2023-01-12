@@ -10,7 +10,6 @@
 
 @class NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
-__attribute__((visibility("hidden")))
 @interface GEOPDModuleLayoutEntry : PBCodable <NSCopying>
 {
     PBDataReader *_reader;

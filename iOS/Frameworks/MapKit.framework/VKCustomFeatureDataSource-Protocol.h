@@ -10,6 +10,7 @@
 @protocol VKCustomFeatureDataSourceObserver;
 
 @protocol VKCustomFeatureDataSource <NSObject>
+- (NSArray *)globalAnnotations;
 - (NSArray *)annotationsInMapRect:(CDStruct_02837cd9)arg1;
 - (unsigned char)sceneState;
 - (unsigned char)sceneID;

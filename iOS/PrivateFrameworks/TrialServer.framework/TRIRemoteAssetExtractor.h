@@ -12,7 +12,7 @@
 {
 }
 
-- (_Bool)extractArchiveFromData:(id)arg1 withArchiveName:(id)arg2 toEmptyDirectory:(id)arg3;
+- (_Bool)extractArchiveFromFile:(id)arg1 withArchiveName:(id)arg2 toEmptyDirectory:(id)arg3 postExtractionCompression:(CDStruct_69d7cc99)arg4 error:(id *)arg5;
 
 @end
 

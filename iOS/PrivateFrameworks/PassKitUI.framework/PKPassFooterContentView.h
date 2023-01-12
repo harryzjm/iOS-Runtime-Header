@@ -11,6 +11,7 @@
 
 @interface PKPassFooterContentView : UIView
 {
+    UIButton *_infoButton;
     _Bool _physicalButtonRequired;
     _Bool _invalidated;
     _Bool _requestPileSuppression;
@@ -18,7 +19,6 @@
     id <PKPassFooterContentViewDelegate> _delegate;
     PKPass *_pass;
     PKLinkedAppIconView *_appIconView;
-    UIButton *_infoButton;
     UIView *_bottomRule;
     long long _coachingState;
 }
@@ -29,17 +29,17 @@
 @property(readonly, nonatomic) long long coachingState; // @synthesize coachingState=_coachingState;
 @property(readonly, nonatomic, getter=isPhysicalButtonRequired) _Bool physicalButtonRequired; // @synthesize physicalButtonRequired=_physicalButtonRequired;
 @property(readonly, nonatomic) UIView *bottomRule; // @synthesize bottomRule=_bottomRule;
-@property(readonly, nonatomic) UIButton *infoButton; // @synthesize infoButton=_infoButton;
 @property(readonly, nonatomic) PKLinkedAppIconView *appIconView; // @synthesize appIconView=_appIconView;
 @property(readonly, nonatomic) PKPass *pass; // @synthesize pass=_pass;
 @property(nonatomic) __weak id <PKPassFooterContentViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) long long style; // @synthesize style=_style;
-- (id)_buttonWithTitle:(id)arg1;
+- (id)_buttonWithTitle:(id)arg1 action:(id)arg2;
 - (void)_infoButtonPressed:(id)arg1;
 - (void)_setRequestPileSuppression:(_Bool)arg1;
 - (void)_setCoachingState:(long long)arg1;
 - (void)_setPhysicalButtonRequired:(_Bool)arg1;
 @property(readonly, nonatomic, getter=isPassAuthorized) _Bool passAuthorized;
+- (void)_didInvalidate;
 - (void)invalidate;
 - (void)showFullScreenBarcode;
 - (void)coachingStateDidChange;
@@ -49,7 +49,8 @@
 - (void)willBecomeVisibleAnimated:(_Bool)arg1;
 - (void)layoutSubviews;
 @property(readonly, nonatomic) PKPaymentPass *paymentPass;
-- (void)dealloc;
+@property(readonly, nonatomic) struct CGRect infoButtonFrame;
+@property(nonatomic) double infoButtonAlpha;
 - (id)initWithPass:(id)arg1;
 - (id)init;
 

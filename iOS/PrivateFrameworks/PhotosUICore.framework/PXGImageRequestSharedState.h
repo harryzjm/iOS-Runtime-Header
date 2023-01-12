@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@protocol PXDisplayAssetFetchResult, PXGDisplayAssetRequestObserver;
+@protocol PXDisplayAssetFetchResult, PXGDisplayAssetAdjustment, PXGDisplayAssetRequestObserver;
 
 @interface PXGImageRequestSharedState : NSObject
 {
@@ -14,16 +14,20 @@
     id <PXGDisplayAssetRequestObserver> _observer;
     unsigned long long _presentationStyles;
     double _screenScale;
+    id <PXGDisplayAssetAdjustment> _adjustment;
+    unsigned long long _intent;
     struct CGSize _targetSize;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long intent; // @synthesize intent=_intent;
+@property(readonly, nonatomic) id <PXGDisplayAssetAdjustment> adjustment; // @synthesize adjustment=_adjustment;
 @property(readonly, nonatomic) double screenScale; // @synthesize screenScale=_screenScale;
 @property(readonly, nonatomic) struct CGSize targetSize; // @synthesize targetSize=_targetSize;
 @property(readonly, nonatomic) unsigned long long presentationStyles; // @synthesize presentationStyles=_presentationStyles;
 @property(readonly, nonatomic) id <PXGDisplayAssetRequestObserver> observer; // @synthesize observer=_observer;
 @property(readonly, nonatomic) id <PXDisplayAssetFetchResult> displayAssetFetchResult; // @synthesize displayAssetFetchResult=_displayAssetFetchResult;
-- (id)initWithDisplayAssetFetchResult:(id)arg1 observer:(id)arg2 presentationStyles:(unsigned long long)arg3 targetSize:(struct CGSize)arg4 screenScale:(double)arg5;
+- (id)initWithDisplayAssetFetchResult:(id)arg1 observer:(id)arg2 presentationStyles:(unsigned long long)arg3 targetSize:(struct CGSize)arg4 screenScale:(double)arg5 adjustment:(id)arg6 intent:(unsigned long long)arg7;
 
 @end
 

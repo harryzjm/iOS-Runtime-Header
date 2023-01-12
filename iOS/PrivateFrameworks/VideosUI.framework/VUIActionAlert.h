@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSString, VUIAction;
 
 __attribute__((visibility("hidden")))
 @interface VUIActionAlert
@@ -12,14 +12,16 @@ __attribute__((visibility("hidden")))
     NSString *_title;
     NSString *_descriptionString;
     NSString *_dismissButtonTitle;
+    VUIAction *_cancelAction;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) VUIAction *cancelAction; // @synthesize cancelAction=_cancelAction;
 @property(retain, nonatomic) NSString *dismissButtonTitle; // @synthesize dismissButtonTitle=_dismissButtonTitle;
 @property(retain, nonatomic) NSString *descriptionString; // @synthesize descriptionString=_descriptionString;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
 - (void)performWithTargetResponder:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)initWithContextData:(id)arg1;
+- (id)initWithContextData:(id)arg1 appContext:(id)arg2;
 
 @end
 

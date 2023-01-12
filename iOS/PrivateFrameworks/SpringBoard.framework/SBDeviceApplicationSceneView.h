@@ -8,7 +8,7 @@
 #import <SpringBoard/SBAppSwitcherPageContentView-Protocol.h>
 #import <SpringBoard/SBDeviceApplicationSceneClassicAccessoryViewDelegate-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSString, SBApplicationSceneViewStatusBarDescriptor, SBDeviceApplicationSceneClassicAccessoryView, SBDeviceApplicationSceneHandle, SBFHomeGrabberSettings, SBHomeGrabberRotationView, SBHomeGrabberView, SBSceneHandleBlockObserver, UIApplicationSceneClientSettingsDiffInspector, UIApplicationSceneSettingsDiffInspector, UIView, _UIDirectionalRotationView;
+@class NSMutableArray, NSMutableDictionary, NSString, SBApplicationSceneViewStatusBarDescriptor, SBDeviceApplicationSceneClassicAccessoryView, SBDeviceApplicationSceneHandle, SBFHomeGrabberSettings, SBHomeGrabberRotationView, SBHomeGrabberView, SBMedusaSettings, SBSceneHandleBlockObserver, UIApplicationSceneClientSettingsDiffInspector, UIApplicationSceneSettingsDiffInspector, UIView, _UIDirectionalRotationView;
 @protocol SBApplicationSceneBackgroundView, UISceneLayerTarget, UIScenePresentation;
 
 @interface SBDeviceApplicationSceneView <SBDeviceApplicationSceneClassicAccessoryViewDelegate, PTSettingsKeyObserver, SBAppSwitcherPageContentView>
@@ -30,17 +30,25 @@
     UIView *_classicWrapperView;
     UIView *_classicPositioningView;
     UIView<UIScenePresentation> *_wrappedHostView;
+    _Bool _suppressLayoutUpdatesForStartOfClassicPhoneAppRotation;
+    _Bool _preparingForUserDrivenClassicRotation;
+    long long _startingOrientationforClassicPhoneAppRotation;
     NSMutableArray *_multitaskingExclusionRectDebugViews;
+    SBMedusaSettings *_medusaSettings;
+    _Bool _isInsetForHomeAffordance;
     _Bool _active;
     _Bool _visible;
     _Bool _counterRotationViewTransformUpdatesPaused;
     double _statusBarAlpha;
+    unsigned long long maskedCorners;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool counterRotationViewTransformUpdatesPaused; // @synthesize counterRotationViewTransformUpdatesPaused=_counterRotationViewTransformUpdatesPaused;
+@property(nonatomic) unsigned long long maskedCorners; // @synthesize maskedCorners;
 @property(nonatomic, getter=isVisible) _Bool visible; // @synthesize visible=_visible;
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
+@property(nonatomic, getter=isInsetForHomeAffordance) _Bool insetForHomeAffordance; // @synthesize insetForHomeAffordance=_isInsetForHomeAffordance;
 @property(nonatomic) double statusBarAlpha; // @synthesize statusBarAlpha=_statusBarAlpha;
 @property(retain, nonatomic) SBApplicationSceneViewStatusBarDescriptor *statusBarDescriptor; // @synthesize statusBarDescriptor=_statusBarDescriptor;
 - (void)_updateDragAndDropExclusionDebugViewsIfNecessary;
@@ -74,15 +82,19 @@
 @property(retain, nonatomic) UIView<SBApplicationSceneBackgroundView> *backgroundView; // @dynamic backgroundView;
 - (void)dealloc;
 - (id)initWithSceneHandle:(id)arg1 referenceSize:(struct CGSize)arg2 orientation:(long long)arg3 hostRequester:(id)arg4;
+- (double)_contentContainerCornerRadius;
+- (struct UIEdgeInsets)_contentContainerEdgeInsets;
+- (_Bool)_wantsBlackBackground;
 - (void)_layoutLiveHostView:(id)arg1;
 - (id)_transitionViewForHostView;
 - (void)_invalidateSceneLiveHostView:(id)arg1;
 - (void)_configureSceneLiveHostView:(id)arg1;
 - (void)_createClassicWrapperViewIfNecessaryForHostView:(id)arg1;
 - (struct CGRect)_effectiveSceneBounds;
+- (void)noteApplicationClassicPhoneSceneOrientationPreferenceChanging;
 - (void)applicationSceneCompatibilityModeAnimatingChangeTo:(long long)arg1;
-- (void)teardownClassicAccesoryViewIfNecessary;
-- (void)createClassicAccesoryViewIfNecessary;
+- (void)teardownClassicAccessoryViewIfNecessary;
+- (void)createClassicAccessoryViewIfNecessary;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

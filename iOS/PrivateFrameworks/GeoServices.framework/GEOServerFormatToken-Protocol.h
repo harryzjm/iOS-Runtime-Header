@@ -8,9 +8,12 @@
 #import <GeoServices/NSObject-Protocol.h>
 
 @class NSArray, NSString;
-@protocol GEOServerFormatTokenCountdownValue, GEOServerFormatTokenPriceValue, GEOTransitArtworkDataSource;
+@protocol GEOServerFormatTokenCountdownValue, GEOServerFormatTokenManeuverValue, GEOServerFormatTokenNumberData, GEOServerFormatTokenPriceValue, GEOServerFormatTokenUrlValue, GEOTransitArtworkDataSource;
 
 @protocol GEOServerFormatToken <NSObject, NSCoding>
+@property(readonly, nonatomic) id <GEOServerFormatTokenNumberData> numberData;
+@property(readonly, nonatomic) id <GEOServerFormatTokenManeuverValue> maneuverValue;
+@property(readonly, nonatomic) id <GEOServerFormatTokenUrlValue> urlValue;
 @property(readonly, nonatomic) id <GEOServerFormatTokenCountdownValue> countdownValue;
 @property(readonly, nonatomic) NSArray *timeStampValues;
 @property(readonly, nonatomic) id <GEOTransitArtworkDataSource> artworkValue;

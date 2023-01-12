@@ -26,12 +26,7 @@
 - (id)initWithSource:(id)arg1 injectionTime:(long long)arg2 forMainFrameOnly:(_Bool)arg3;
 @property(readonly, nonatomic) WKContentWorld *_contentWorld;
 - (id)_initWithSource:(id)arg1 injectionTime:(long long)arg2 forMainFrameOnly:(_Bool)arg3 includeMatchPatternStrings:(id)arg4 excludeMatchPatternStrings:(id)arg5 associatedURL:(id)arg6 contentWorld:(id)arg7 deferRunningUntilNotification:(_Bool)arg8;
-- (id)_initWithSource:(id)arg1 injectionTime:(long long)arg2 forMainFrameOnly:(_Bool)arg3 legacyWhitelist:(id)arg4 legacyBlacklist:(id)arg5 associatedURL:(id)arg6 contentWorld:(id)arg7 deferRunningUntilNotification:(_Bool)arg8;
-- (id)_initWithSource:(id)arg1 injectionTime:(long long)arg2 forMainFrameOnly:(_Bool)arg3 legacyWhitelist:(id)arg4 legacyBlacklist:(id)arg5 associatedURL:(id)arg6 contentWorld:(id)arg7;
-- (id)_initWithSource:(id)arg1 injectionTime:(long long)arg2 forMainFrameOnly:(_Bool)arg3 legacyWhitelist:(id)arg4 legacyBlacklist:(id)arg5 contentWorld:(id)arg6;
 @property(readonly, nonatomic) _WKUserContentWorld *_userContentWorld;
-- (id)_initWithSource:(id)arg1 injectionTime:(long long)arg2 forMainFrameOnly:(_Bool)arg3 legacyWhitelist:(id)arg4 legacyBlacklist:(id)arg5 associatedURL:(id)arg6 userContentWorld:(id)arg7;
-- (id)_initWithSource:(id)arg1 injectionTime:(long long)arg2 forMainFrameOnly:(_Bool)arg3 legacyWhitelist:(id)arg4 legacyBlacklist:(id)arg5 userContentWorld:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -8,18 +8,17 @@
 
 @interface WFGlyphView
 {
-    _Bool _outline;
     WFWorkflowIconDrawer *_iconDrawer;
     struct UIEdgeInsets _glyphInsets;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) WFWorkflowIconDrawer *iconDrawer; // @synthesize iconDrawer=_iconDrawer;
-@property(nonatomic) _Bool outline; // @synthesize outline=_outline;
 @property(nonatomic) struct UIEdgeInsets glyphInsets; // @synthesize glyphInsets=_glyphInsets;
 - (void)redrawIcon;
 @property(retain, nonatomic) UIColor *glyphColor;
 @property(nonatomic) unsigned short glyphCharacter;
+@property(nonatomic) _Bool outline;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

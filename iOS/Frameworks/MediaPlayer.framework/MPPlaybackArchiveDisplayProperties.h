@@ -6,12 +6,15 @@
 
 #import <objc/NSObject.h>
 
+#import <MediaPlayer/MPMutablePlaybackArchiveDisplayProperties-Protocol.h>
+#import <MediaPlayer/NSCopying-Protocol.h>
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
 
 @class NSData, NSMutableDictionary, NSString;
 
-@interface MPPlaybackArchiveDisplayProperties : NSObject <NSSecureCoding>
+@interface MPPlaybackArchiveDisplayProperties : NSObject <MPMutablePlaybackArchiveDisplayProperties, NSCopying, NSSecureCoding>
 {
+    _Bool _final;
     NSString *_title;
     NSString *_subtitle;
     NSData *_artworkImageData;
@@ -24,12 +27,22 @@
 @property(readonly, copy, nonatomic) NSData *artworkImageData; // @synthesize artworkImageData=_artworkImageData;
 @property(readonly, copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
+- (void)setArtworkImageData:(id)arg1;
+- (void)setSubtitle:(id)arg1;
+- (void)setTitle:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (id)copyWithOptions:(unsigned long long)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithTitle:(id)arg1 subtitle:(id)arg2 artworkImageData:(id)arg3;
+- (id)initWithBlock:(CDUnknownBlockType)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

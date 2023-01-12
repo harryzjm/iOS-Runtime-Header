@@ -6,15 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@interface HAMenstrualAlgorithmsHistoricalAnalyzer : NSObject
+#import <HealthAlgorithms/HAMenstrualAlgorithmsPhaseIngestion-Protocol.h>
+
+@interface HAMenstrualAlgorithmsHistoricalAnalyzer : NSObject <HAMenstrualAlgorithmsPhaseIngestion>
 {
-    struct unique_ptr<Nightingale::ngt_HistoricalAnalyzer, std::__1::default_delete<Nightingale::ngt_HistoricalAnalyzer>> _historicalAnalyzer;
+    struct unique_ptr<Nightingale::ngt_HistoricalAnalyzer, std::default_delete<Nightingale::ngt_HistoricalAnalyzer>> _historicalAnalyzer;
     struct optional<unsigned int> _julianDayOfLastInput;
+    struct unique_ptr<HealthAlgorithms::PhaseCondenser, std::default_delete<HealthAlgorithms::PhaseCondenser>> _phaseCondenser;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)analyze;
+- (void)sendCoreAnalyticsEvent:(id)arg1;
+- (_Bool)shouldSendCoreAnalytics;
+- (id)phaseStringFromNumber:(id)arg1;
+- (void)endPhase:(unsigned char)arg1 onJulianDay:(unsigned int)arg2;
+- (void)beginPhase:(unsigned char)arg1 onJulianDay:(unsigned int)arg2;
 - (void)appendDay:(id)arg1;
 - (id)init;
 

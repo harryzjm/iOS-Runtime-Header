@@ -4,15 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class _UIStatusBarImageView;
+
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarIndicatorLocationItem
 {
+    _UIStatusBarImageView *_prominentImageView;
     long long _previousType;
 }
 
++ (id)prominentDisplayIdentifier;
++ (id)groupWithPriority:(long long)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) long long previousType; // @synthesize previousType=_previousType;
+@property(retain, nonatomic) _UIStatusBarImageView *prominentImageView; // @synthesize prominentImageView=_prominentImageView;
+- (id)overriddenStyleAttributesForData:(id)arg1 identifier:(id)arg2;
 - (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
-- (id)imageNameForUpdate:(id)arg1;
+- (_Bool)canEnableDisplayItem:(id)arg1 fromData:(id)arg2;
+- (id)viewForIdentifier:(id)arg1;
+- (id)createDisplayItemForIdentifier:(id)arg1;
+- (void)_create_prominentImageView;
+- (id)systemImageNameForUpdate:(id)arg1;
 - (id)indicatorEntryKey;
 - (id)initWithIdentifier:(id)arg1 statusBar:(id)arg2;
 

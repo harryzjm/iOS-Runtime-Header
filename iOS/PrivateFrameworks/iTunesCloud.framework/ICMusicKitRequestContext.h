@@ -6,12 +6,14 @@
 
 #import <iTunesCloud/NSSecureCoding-Protocol.h>
 
+@class NSString;
 @protocol ICDeveloperTokenProvider;
 
 @interface ICMusicKitRequestContext <NSSecureCoding>
 {
     id <ICDeveloperTokenProvider> _developerTokenProvider;
     long long _personalizationMethod;
+    NSString *_cachedDescription;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -28,6 +30,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)description;
+- (id)_description;
 - (id)copyWithBlock:(CDUnknownBlockType)arg1;
 - (id)initWithBlock:(CDUnknownBlockType)arg1;
 

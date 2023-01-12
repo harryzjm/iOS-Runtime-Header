@@ -23,7 +23,7 @@
 - (void)addDirectoryServerObservable:(id)arg1;
 - (void)addCachedDirectoryServerObservable:(id)arg1;
 - (void)addSupplementalObservable:(id)arg1;
-- (void)addDuetObservable:(id)arg1;
+- (void)addPredictionObservable:(id)arg1;
 - (void)addLocalExtensionObservable:(id)arg1;
 - (void)addSuggestionsObservable:(id)arg1;
 - (void)addCoreRecentsObservable:(id)arg1;

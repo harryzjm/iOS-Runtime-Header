@@ -17,6 +17,7 @@
     _Bool _isVPNPrivateAPI;
     _Bool _isNEHelper;
     _Bool _isSynchronous;
+    _Bool _isSyncedOnQueue;
     _Bool _hasVPNAPIEntitlement;
     int _changedNotifyToken;
     NSString *_pluginType;
@@ -45,6 +46,7 @@
 @property long long configurationChangeSource; // @synthesize configurationChangeSource=_configurationChangeSource;
 @property(readonly) NSUUID *userUUID; // @synthesize userUUID=_userUUID;
 @property _Bool hasVPNAPIEntitlement; // @synthesize hasVPNAPIEntitlement=_hasVPNAPIEntitlement;
+@property _Bool isSyncedOnQueue; // @synthesize isSyncedOnQueue=_isSyncedOnQueue;
 @property(nonatomic) _Bool isSynchronous; // @synthesize isSynchronous=_isSynchronous;
 @property _Bool isNEHelper; // @synthesize isNEHelper=_isNEHelper;
 @property _Bool isVPNPrivateAPI; // @synthesize isVPNPrivateAPI=_isVPNPrivateAPI;
@@ -93,6 +95,7 @@
 - (id)removeConfigurationFromDisk:(id)arg1 updateSCPreferences:(struct __SCPreferences *)arg2;
 - (void)saveConfigurationToDisk:(id)arg1 currentSignature:(id)arg2 userUUID:(id)arg3 isUpgrade:(_Bool)arg4 completionQueue:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (id)saveConfigurationToDisk:(id)arg1 updateSCPreferences:(struct __SCPreferences *)arg2 currentSignature:(id)arg3 userUUID:(id)arg4 notifyNow:(_Bool)arg5 isUpgrade:(_Bool)arg6;
+- (_Bool)isSystemConfiguration:(id)arg1;
 - (void)postChangeNotification;
 - (void)postChangeNotificationWithGeneration:(long long)arg1 andFlags:(unsigned long long)arg2 onlyIfChanged:(_Bool)arg3;
 - (id)makeMutableCopyOfIndex:(id)arg1;
@@ -107,6 +110,7 @@
 - (void)notifyChanges;
 - (void)getCurrentIndexWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (_Bool)reloadFromDisk;
+- (id)copyCurrentIndexWithConfigurationIDsExpunged:(id)arg1;
 - (void)postGeneration;
 - (void)sendRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
 @property(copy) CDUnknownBlockType incomingMessageHandler;

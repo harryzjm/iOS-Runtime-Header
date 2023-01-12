@@ -18,18 +18,18 @@
     double _bottomPadding;
 }
 
++ (id)descriptionLabel;
++ (id)buttonWithTitle:(id)arg1 textStyle:(id)arg2 action:(id)arg3;
 - (void).cxx_destruct;
 @property(nonatomic) double bottomPadding; // @synthesize bottomPadding=_bottomPadding;
 @property(nonatomic) double secondaryActionTopPadding; // @synthesize secondaryActionTopPadding=_secondaryActionTopPadding;
 @property(nonatomic) double topPadding; // @synthesize topPadding=_topPadding;
+@property(readonly, retain, nonatomic) UILabel *descriptionLabel; // @synthesize descriptionLabel=_descriptionLabel;
 - (void)sizeToFitForTableView:(id)arg1;
 - (double)_recommendedSecondaryActionTopPaddingForTableView:(id)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-@property(readonly, retain, nonatomic) UIButton *secondaryActionButton;
-@property(readonly, retain, nonatomic) UIButton *actionButton;
-@property(readonly, retain, nonatomic) UILabel *descriptionLabel;
-- (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1 action:(id)arg2 secondaryAction:(id)arg3 title:(id)arg4 secondaryTitle:(id)arg5 desscription:(id)arg6;
 
 @end
 

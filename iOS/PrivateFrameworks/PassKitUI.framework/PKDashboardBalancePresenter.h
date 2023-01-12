@@ -19,7 +19,6 @@
 
 - (void).cxx_destruct;
 @property(nonatomic) long long cellStyle; // @synthesize cellStyle=_cellStyle;
-- (_Bool)_shouldInset;
 - (void)traitCollectionDidChangeFromTrait:(id)arg1 toTrait:(id)arg2 inCollectionView:(id)arg3;
 - (void)_updateMessageView:(id)arg1 withItem:(id)arg2;
 - (void)_configureCell:(id)arg1 forItem:(id)arg2 inCollectionView:(id)arg3 forIndexPath:(id)arg4;

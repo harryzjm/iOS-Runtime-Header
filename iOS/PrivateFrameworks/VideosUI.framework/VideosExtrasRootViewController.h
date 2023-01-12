@@ -9,7 +9,6 @@
 #import <VideosUI/IKAppContextDelegate-Protocol.h>
 #import <VideosUI/IKAppDeviceConfig-Protocol.h>
 #import <VideosUI/IKApplication-Protocol.h>
-#import <VideosUI/MPVideoOverlayDelegate-Protocol.h>
 #import <VideosUI/UICollectionViewDelegate-Protocol.h>
 #import <VideosUI/UINavigationControllerDelegate-Protocol.h>
 
@@ -17,7 +16,7 @@
 @protocol IKAppDataStoring, IKAppUserDefaultsStoring, OS_dispatch_queue, VideosExtrasRootViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VideosExtrasRootViewController : UIViewController <IKApplication, IKAppContextDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, IKAppDeviceConfig, MPVideoOverlayDelegate>
+@interface VideosExtrasRootViewController : UIViewController <IKApplication, IKAppContextDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, IKAppDeviceConfig>
 {
     NSLayoutConstraint *_bottomConstraint;
     VideosExtrasNavigationController *_navigationController;
@@ -67,7 +66,6 @@ __attribute__((visibility("hidden")))
 - (void)_playbackWillEndNotification:(id)arg1;
 - (_Bool)_areExtrasVisible;
 - (void)_adjustExtrasVisibilityForViewSize:(struct CGSize)arg1;
-- (void)overlayTappedBackButton:(id)arg1;
 @property(readonly, nonatomic) UIView *mainMenuBar;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (id)detectMainDocument:(id)arg1;

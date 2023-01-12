@@ -32,6 +32,7 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *iVarQueue; // @synthesize iVarQueue=_iVarQueue;
 @property(retain) NSArray *pastDiagnosticPayloads; // @synthesize pastDiagnosticPayloads=_pastDiagnosticPayloads;
 @property(retain) NSArray *pastPayloads; // @synthesize pastPayloads=_pastPayloads;
+- (id)mergeDiagnosticsAtLocation:(id)arg1;
 - (void)registrationProcessed;
 - (void)_checkAndDeliverDiagnosticReports;
 - (void)_checkAndDeliverMetricReports;

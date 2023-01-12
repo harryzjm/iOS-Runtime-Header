@@ -14,7 +14,7 @@
 __attribute__((visibility("hidden")))
 @interface _UITreeDataSourceSnapshotter : NSObject <_UITreeDataSourceSnapshotter, NSCopying>
 {
-    vector_8b07facb _nodes;
+    vector_a91a301d _nodes;
     long long _count;
     NSMutableIndexSet *_expandedIndexes;
 }
@@ -73,7 +73,7 @@ __attribute__((visibility("hidden")))
 - (void)insertCount:(long long)arg1 beforeIndex:(long long)arg2;
 - (struct _NSRange)appendChildItemsWithCount:(long long)arg1 toParentIndex:(long long)arg2;
 - (struct _NSRange)appendChildItemsWithCount:(long long)arg1;
-- (id)initWithNodes:(vector_8b07facb)arg1 count:(long long)arg2 expandedIndexes:(id)arg3;
+- (id)initWithNodes:(vector_a91a301d)arg1 count:(long long)arg2 expandedIndexes:(id)arg3;
 - (id)init;
 
 @end

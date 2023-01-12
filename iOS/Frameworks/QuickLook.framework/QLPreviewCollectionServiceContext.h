@@ -6,13 +6,12 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-#import <QuickLook/QLPreviewCollectionHostProtocol-Protocol.h>
+#import <QuickLook/QLPreviewCollectionServiceProtocol-Protocol.h>
 
-@class NSString;
 @protocol QLPreviewItemProvider;
 
 __attribute__((visibility("hidden")))
-@interface QLPreviewCollectionServiceContext : NSExtensionContext <QLPreviewCollectionHostProtocol>
+@interface QLPreviewCollectionServiceContext : NSExtensionContext <QLPreviewCollectionServiceProtocol>
 {
     id <QLPreviewItemProvider> _itemProvider;
 }
@@ -25,6 +24,8 @@ __attribute__((visibility("hidden")))
 - (void)overrideParentApplicationDisplayIdentifierWithIdentifier:(id)arg1;
 - (void)setLoadingString:(id)arg1;
 - (void)setAllowInteractiveTransitions:(_Bool)arg1;
+- (void)getCurrentPreviewActivityUserInfoWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)notifyStateRestorationUserInfo:(id)arg1;
 - (void)notifyFirstTimeAppearanceWithActions:(unsigned long long)arg1;
 - (void)setAppearance:(id)arg1 animated:(_Bool)arg2;
 - (void)tearDownTransition:(_Bool)arg1;
@@ -33,6 +34,9 @@ __attribute__((visibility("hidden")))
 - (void)updateTransitionWithProgress:(double)arg1;
 - (void)keyCommandWasPerformed:(id)arg1;
 - (void)keyCommandsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)requestLockForCurrentItem;
+- (void)shouldDisplayLockActivityWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)actionSheetDidDismiss;
 - (void)prepareForActionSheetPresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)saveCurrentPreviewEditsSynchronously:(_Bool)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)toolbarButtonPressedWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -49,12 +53,6 @@ __attribute__((visibility("hidden")))
 - (void)configureAsAccessoryViewContainerForPreviewCollection:(id)arg1;
 - (id)_previewCollection;
 - (id)_protocolHost;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

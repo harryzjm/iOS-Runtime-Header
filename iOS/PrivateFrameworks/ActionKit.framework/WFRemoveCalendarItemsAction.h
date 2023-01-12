@@ -18,6 +18,7 @@
 - (void)presentConfirmationToDeleteItems:(id)arg1;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 - (id)accessResource;
+- (Class)contentItemClass;
 - (unsigned long long)entityType;
 
 @end

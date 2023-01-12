@@ -10,7 +10,6 @@
 
 @class GEOPDShardedId, PBUnknownFields;
 
-__attribute__((visibility("hidden")))
 @interface GEOPDMapsIdentifier : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
@@ -26,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;

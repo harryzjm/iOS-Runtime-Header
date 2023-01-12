@@ -6,10 +6,11 @@
 
 #import <NewsCore/NSObject-Protocol.h>
 
-@class NSDictionary, NTPBVersionedPersonalizationVector;
+@class NSDictionary, NSSet, NTPBVersionedPersonalizationVector;
 @protocol FCPersonalizationAggregate;
 
 @protocol FCUserVectorProvider <NSObject>
-- (NTPBVersionedPersonalizationVector *)computePersonalizationVectorWithBaselineAggregate:(id <FCPersonalizationAggregate>)arg1 allAggregates:(NSDictionary *)arg2;
+- (NSSet *)subscribedBundleChannelIDs;
+- (NTPBVersionedPersonalizationVector *)computePersonalizationVectorWithBaselineAggregate:(id <FCPersonalizationAggregate>)arg1 allAggregates:(NSDictionary *)arg2 options:(long long)arg3;
 @end
 

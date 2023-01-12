@@ -6,26 +6,31 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSDictionary, NSError, NSString, NSURL, SOAuthorizationCredential, SOAuthorizationRequestParameters;
-@protocol SOHostExtensionContextProtocol;
+@class NSArray, NSData, NSDictionary, NSError, NSString, NSURL, SOAuthorizationCredential, SOAuthorizationRequestParameters, SORemoteExtensionContext;
 
 @interface SOAuthorizationRequest : NSObject
 {
     SOAuthorizationRequestParameters *_requestParameters;
-    id <SOHostExtensionContextProtocol> _hostExtensionContext;
+    SORemoteExtensionContext *_remoteExtensionContext;
     _Bool _authorizationCanceled;
+    int _secKeyProxiesConnectedClients;
     SOAuthorizationCredential *_canceledAuthorizationCredential;
     NSError *_canceledAuthorizationError;
+    NSArray *_secKeyProxies;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) int secKeyProxiesConnectedClients; // @synthesize secKeyProxiesConnectedClients=_secKeyProxiesConnectedClients;
+@property(retain, nonatomic) NSArray *secKeyProxies; // @synthesize secKeyProxies=_secKeyProxies;
 @property(retain, nonatomic) NSError *canceledAuthorizationError; // @synthesize canceledAuthorizationError=_canceledAuthorizationError;
 @property(retain, nonatomic) SOAuthorizationCredential *canceledAuthorizationCredential; // @synthesize canceledAuthorizationCredential=_canceledAuthorizationCredential;
 @property(nonatomic, getter=isAuthorizationCanceled) _Bool authorizationCanceled; // @synthesize authorizationCanceled=_authorizationCanceled;
-- (_Bool)_isUserInterfaceAllowed;
+@property(copy, nonatomic) NSString *impersonationBundleIdentifier;
+@property(nonatomic, getter=isUserInteractionEnabled) _Bool enableUserInteraction;
 @property(retain, nonatomic) NSString *localizedCallerDisplayName;
 @property(retain, nonatomic) NSString *callerTeamIdentifier;
 @property(nonatomic, getter=isCallerManaged) _Bool callerManaged;
+@property(nonatomic, getter=isCFNetworkInterception, setter=setCFNetworkInterception:) _Bool cfNetworkInterception;
 @property(retain, nonatomic) NSDictionary *authorizationOptions;
 @property(retain, nonatomic) NSData *auditTokenData;
 @property(retain, nonatomic) NSString *callerBundleIdentifier;
@@ -35,14 +40,19 @@
 @property(retain, nonatomic) NSDictionary *httpHeaders;
 @property(retain, nonatomic) NSString *requestedOperation;
 @property(retain, nonatomic) NSURL *url;
+- (id)_createSecKeyProxiesForSecKeys:(id)arg1 error:(id *)arg2;
+- (void)_completeFinishAuthorizationWithError:(id)arg1;
+- (id)_hostExtensionContext;
+- (_Bool)_isUserInterfaceAllowed;
 - (void)presentAuthorizationViewControllerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)completeWithError:(id)arg1;
+- (void)completeWithAuthorizationResult:(id)arg1;
 - (void)completeWithHTTPResponse:(id)arg1 httpBody:(id)arg2;
 - (void)completeWithHTTPAuthorizationHeaders:(id)arg1;
 - (void)complete;
 - (void)cancel;
 - (void)doNotHandle;
-- (id)initWithRequestParameters:(id)arg1 hostExtensionContext:(id)arg2;
+- (id)initWithRequestParameters:(id)arg1 remoteExtensionContext:(id)arg2;
 
 @end
 

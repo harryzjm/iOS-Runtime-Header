@@ -24,20 +24,20 @@
 + (id)xpcCounterTracker;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *lastResetDate; // @synthesize lastResetDate=_lastResetDate;
-@property(readonly, copy) NSString *description;
-- (void)submitCounters;
-- (void)log;
 - (id)dumpState;
+- (void)submitCounters;
+- (id)sampleCountersAndReset:(_Bool)arg1;
 - (void)_incrementCounterOfType:(long long)arg1 identifier:(id)arg2;
 - (void)incrementCounterOfType:(long long)arg1 identifier:(id)arg2;
 - (id)countersOfType:(long long)arg1;
 - (id)_countersOfType:(long long)arg1;
-- (void)resetCounters;
+- (void)_resetCounters;
 - (id)__init;
 - (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

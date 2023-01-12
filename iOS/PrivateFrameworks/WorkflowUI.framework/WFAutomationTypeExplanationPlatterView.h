@@ -6,18 +6,18 @@
 
 #import <UIKit/UIView.h>
 
-@class UIImageView, UILabel, UIStackView, WFMultilineBackgroundFadingButton;
+@class UIButton, UIImageView, UILabel, UIStackView;
 
 @interface WFAutomationTypeExplanationPlatterView : UIView
 {
     UIStackView *_stackView;
     UIImageView *_iconView;
     UILabel *_explanationTextLabel;
-    WFMultilineBackgroundFadingButton *_button;
+    UIButton *_button;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) WFMultilineBackgroundFadingButton *button; // @synthesize button=_button;
+@property(readonly, nonatomic) UIButton *button; // @synthesize button=_button;
 @property(readonly, nonatomic) UILabel *explanationTextLabel; // @synthesize explanationTextLabel=_explanationTextLabel;
 @property(readonly, nonatomic) UIImageView *iconView; // @synthesize iconView=_iconView;
 @property(readonly, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
@@ -25,9 +25,9 @@
 - (id)homeButtonColor;
 - (id)homeExplanatoryText;
 - (id)homeAutomationIcon;
+- (id)personalAutomationIcon;
 - (void)setButtonTarget:(id)arg1 action:(SEL)arg2;
-- (void)setButtonColor:(id)arg1;
-- (void)setButtonTitle:(id)arg1;
+- (void)setButtonTitle:(id)arg1 color:(id)arg2;
 - (void)setExplanatoryText:(id)arg1;
 - (void)setIcon:(id)arg1;
 - (void)configureForAutomationType:(unsigned long long)arg1;

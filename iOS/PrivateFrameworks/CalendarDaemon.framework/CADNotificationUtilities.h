@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 + (int)_gatherSharedCalendarResponsesAndResourceChangesWithContext:(id)arg1;
 + (int)_gatherSharedCalendarInvitationsWithContext:(id)arg1;
 + (int)_gatherEventInvitationsAndRepliesWithContext:(id)arg1;
-+ (int)CADDatabaseGetEventNotificationItemsWithDatabase:(struct CalDatabase *)arg1 forSourceWithExternalIdentifier:(id)arg2 excludingDelegateSources:(_Bool)arg3 filteredByShowsNotificationsFlag:(_Bool)arg4 earliestExpirationDate:(id *)arg5 notificationTypes:(id *)arg6 rowIDs:(id *)arg7 occurrenceDates:(id *)arg8;
++ (int)CADDatabaseGetEventNotificationItemsWithDatabase:(struct CalDatabase *)arg1 afterDate:(id)arg2 forSourceWithExternalIdentifier:(id)arg3 excludingDelegateSources:(_Bool)arg4 filteredByShowsNotificationsFlag:(_Bool)arg5 earliestExpirationDate:(id *)arg6 notificationTypes:(id *)arg7 rowIDs:(id *)arg8 occurrenceDates:(id *)arg9;
 
 @end
 

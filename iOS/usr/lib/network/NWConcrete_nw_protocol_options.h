@@ -9,17 +9,19 @@
 #import <network/OS_nw_protocol_options-Protocol.h>
 
 @class NSString, NWConcrete_nw_protocol_definition;
-@protocol OS_xpc_object;
+@protocol OS_nw_endpoint, OS_xpc_object;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_protocol_options : NSObject <OS_nw_protocol_options>
 {
     NWConcrete_nw_protocol_definition *definition;
     struct nw_protocol *protocol_handle;
+    NSObject<OS_nw_endpoint> *proxy_endpoint;
     NSObject<OS_xpc_object> *legacy_parameters;
     char *log_id_str;
     unsigned short log_id_num;
     void *handle;
+    _Bool override_stack_endpoint;
 }
 
 - (void).cxx_destruct;

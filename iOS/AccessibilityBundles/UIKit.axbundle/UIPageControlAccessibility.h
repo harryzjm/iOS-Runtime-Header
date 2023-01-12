@@ -21,6 +21,7 @@
 - (id)accessibilityValue;
 - (_Bool)isAccessibilityElement;
 - (unsigned long long)_accessibilityAutomationType;
+- (unsigned int)_accessibilityMediaAnalysisOption;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)accessibilityPath;
 - (struct CGRect)accessibilityFrame;

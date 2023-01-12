@@ -22,9 +22,11 @@
     NSDictionary *__commandInfos;
     double __lastTabPressTime;
     AXSSKeyboardCommandInfo *__lastDownAndUpCommandInfo;
+    double _minimumDelayUntilRepeat;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) double minimumDelayUntilRepeat; // @synthesize minimumDelayUntilRepeat=_minimumDelayUntilRepeat;
 @property(retain, nonatomic) AXSSKeyboardCommandInfo *_lastDownAndUpCommandInfo; // @synthesize _lastDownAndUpCommandInfo=__lastDownAndUpCommandInfo;
 @property(nonatomic) double _lastTabPressTime; // @synthesize _lastTabPressTime=__lastTabPressTime;
 @property(nonatomic) _Bool _performedActionWhileTabComboPressed; // @synthesize _performedActionWhileTabComboPressed=__performedActionWhileTabComboPressed;
@@ -45,6 +47,7 @@
 - (void)handleFKAEvent:(id)arg1;
 - (_Bool)_handleEvent:(id)arg1 forCaptureOnly:(_Bool)arg2;
 - (void)_performDownActionForCommand:(id)arg1 info:(id)arg2;
+- (_Bool)processKeyboardCommand:(id)arg1;
 - (_Bool)processKeyboardEvent:(id)arg1;
 - (id)initWithActionManager:(id)arg1 commandMap:(id)arg2;
 - (id)initWithActionManager:(id)arg1;

@@ -20,7 +20,7 @@
 @property(readonly, nonatomic) NSBundle *localPolicyBundle; // @synthesize localPolicyBundle=_localPolicyBundle;
 @property(retain, nonatomic) CKDatabase *database; // @synthesize database=_database;
 @property(retain, nonatomic) CKContainer *container; // @synthesize container=_container;
-- (id)createDirectoryForAssetWithIdentifier:(id)arg1 directoryExists:(_Bool *)arg2 error:(id *)arg3;
+- (id)prepareDirectoryForAssetWithIdentifier:(id)arg1 error:(id *)arg2;
 - (_Bool)deleteAssetBundlesExceptAssetWithIdentifier:(id)arg1 error:(id *)arg2;
 - (_Bool)persistAssetToDisk:(id)arg1 error:(id *)arg2;
 - (_Bool)processAsset:(id)arg1 error:(id *)arg2;

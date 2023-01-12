@@ -18,8 +18,8 @@
 + (id)catUpdates;
 + (id)catUpdates:(id)arg1;
 + (id)filterThroughPb:(id)arg1;
-+ (void)filterToPb:(id)arg1 filterPb:(struct Filter *)arg2;
-+ (id)filterFromPb:(const struct Filter *)arg1;
++ (void)filterToPb:(id)arg1 filterPb:(void *)arg2;
++ (id)filterFromPb:(const void *)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) DEMatchCriteria *exclude; // @synthesize exclude=_exclude;
 @property(retain, nonatomic) DEMatchCriteria *include; // @synthesize include=_include;

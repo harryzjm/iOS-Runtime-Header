@@ -13,13 +13,13 @@
     NSProgress *_progressForCurrentAsset;
 }
 
++ (_Bool)supportsWellKnownPhotoLibraryIdentifier:(long long)arg1;
 + (id)workerWithLibrary:(id)arg1;
 - (void).cxx_destruct;
-- (void)stopWorkingOnManagedObjectID:(id)arg1;
+- (void)stopWorkingOnItem:(id)arg1;
 - (_Bool)isInterruptible;
-- (void)performWorkOnManagedObjectID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)managedObjectIDsNeedingProcessing;
-- (_Bool)hasPendingJobs;
+- (void)performWorkOnItem:(id)arg1 inLibrary:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)workItemsNeedingProcessingInLibrary:(id)arg1;
 - (void)dealloc;
 - (id)_predicateToFetchDeferredAdjustmentNeededAssets;
 

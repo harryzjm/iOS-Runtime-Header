@@ -10,6 +10,7 @@
 {
 }
 
++ (id)monogramWithTitle:(id)arg1 url:(id)arg2 size:(struct CGSize)arg3 fontSize:(double)arg4 fontWeight:(long long)arg5 baselineOffset:(double)arg6 backgroundColor:(id)arg7 foregroundColor:(id)arg8 cornerRadius:(double)arg9;
 + (id)monogramWithTitle:(id)arg1 url:(id)arg2 size:(struct CGSize)arg3 fontSize:(double)arg4 fontWeight:(long long)arg5 baselineOffset:(double)arg6 backgroundColor:(id)arg7 cornerRadius:(double)arg8;
 + (id)monogramWithTitle:(id)arg1 url:(id)arg2 backgroundColor:(id)arg3;
 + (id)monogramWithTitle:(id)arg1 url:(id)arg2 monogramConfiguration:(id)arg3;

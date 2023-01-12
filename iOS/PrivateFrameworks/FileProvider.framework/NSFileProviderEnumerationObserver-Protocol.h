@@ -12,5 +12,8 @@
 - (void)finishEnumeratingWithError:(NSError *)arg1;
 - (void)finishEnumeratingUpToPage:(NSData *)arg1;
 - (void)didEnumerateItems:(NSArray *)arg1;
+
+@optional
+@property(readonly, nonatomic) long long suggestedPageSize;
 @end
 

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MRCryptoPairingSession, NSArray, NSMutableArray;
+@class MRCryptoPairingSession, NSArray;
 
 @interface MRExternalClientConnection
 {
-    NSMutableArray *_subscribedOrigins;
+    NSArray *_subscribedPlayerPaths;
     _Bool _registeredToNowPlayingUpdates;
     _Bool _registeredToVolumeUpdates;
     _Bool _registeredKeyboardUpdates;
@@ -28,12 +28,8 @@
 @property(nonatomic) _Bool registeredKeyboardUpdates; // @synthesize registeredKeyboardUpdates=_registeredKeyboardUpdates;
 @property(nonatomic) _Bool registeredToVolumeUpdates; // @synthesize registeredToVolumeUpdates=_registeredToVolumeUpdates;
 @property(nonatomic) _Bool registeredToNowPlayingUpdates; // @synthesize registeredToNowPlayingUpdates=_registeredToNowPlayingUpdates;
-- (void)unsubscribeOrigin:(id)arg1;
-- (void)subscribeOrigin:(id)arg1;
-@property(readonly, copy, nonatomic) NSArray *subscribedOrigins;
-- (id)decryptData:(id)arg1 error:(id *)arg2;
-- (id)encryptDataForMessage:(id)arg1;
-- (id)initWithInputStream:(id)arg1 outputStream:(id)arg2 runLoop:(id)arg3;
+@property(copy, nonatomic) NSArray *subscribedPlayerPaths;
+- (id)initWithConnection:(id)arg1;
 
 @end
 

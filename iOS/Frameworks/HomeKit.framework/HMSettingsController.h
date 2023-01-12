@@ -15,13 +15,14 @@
 
 @interface HMSettingsController : NSObject <HMFLogging, HMSettingManager, HMSettingsOwner>
 {
-    HMSettings *_settings;
-    id <HMSettingsDelegate> _delegate;
+    struct os_unfair_lock_s _lock;
     HMSettingGroup *_rootGroup;
-    HMSettingsMessageHandler *_messageHandler;
-    NSDictionary *_encodedSettings;
     NSMapTable *_groupsMap;
     NSMapTable *_settingsMap;
+    HMSettings *_settings;
+    id <HMSettingsDelegate> _delegate;
+    HMSettingsMessageHandler *_messageHandler;
+    NSDictionary *_encodedSettings;
     _HMContext *_context;
     NSUUID *_parentIdentifier;
     NSString *_codingKey;
@@ -32,25 +33,26 @@
 @property(readonly) NSString *codingKey; // @synthesize codingKey=_codingKey;
 @property(readonly) NSUUID *parentIdentifier; // @synthesize parentIdentifier=_parentIdentifier;
 @property(retain) _HMContext *context; // @synthesize context=_context;
-@property(retain) NSMapTable *settingsMap; // @synthesize settingsMap=_settingsMap;
-@property(retain) NSMapTable *groupsMap; // @synthesize groupsMap=_groupsMap;
 @property(retain) NSDictionary *encodedSettings; // @synthesize encodedSettings=_encodedSettings;
 @property(retain) HMSettingsMessageHandler *messageHandler; // @synthesize messageHandler=_messageHandler;
-@property(retain) HMSettingGroup *rootGroup; // @synthesize rootGroup=_rootGroup;
 @property __weak id <HMSettingsDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly) HMSettings *settings; // @synthesize settings=_settings;
 - (id)logIdentifier;
+- (void)__notifyDelegateDidUpdateKeyPath:(id)arg1;
 - (void)__notifyDelegateSettingsDidUpdate;
-- (void)__notifyDelegateSettingsWillUpdateWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_updateSettingsWithBlock:(CDUnknownBlockType)arg1;
 - (void)updateValueForSetting:(id)arg1 value:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)configureWithContext:(id)arg1;
 - (void)decodeWithCoder:(id)arg1;
 - (void)notifyDelegateOfUpdate;
 - (void)mergeWith:(id)arg1 settingsInitializedWasModified:(_Bool)arg2;
-- (void)settingsDidChangeWithRootGroup:(id)arg1 addedGroups:(id)arg2 addedSettings:(id)arg3 changedSettings:(id)arg4;
 - (id)settingGroupForIdentifier:(id)arg1;
+- (void)setSettingGroup:(id)arg1 withParentGroupIdentifier:(id)arg2;
+- (_Bool)hasSettingGroups;
 - (id)settingForIdentifier:(id)arg1;
+- (void)setSetting:(id)arg1 withGroupIdentifier:(id)arg2;
+- (_Bool)hasSettings;
+- (void)setRootGroup:(id)arg1;
+@property(readonly) HMSettingGroup *rootGroup;
 - (id)initWithParentIdentifier:(id)arg1 codingKey:(id)arg2;
 - (id)initWithParentIdentifier:(id)arg1 codingKey:(id)arg2 messageHandler:(id)arg3 settingsCreator:(id)arg4;
 

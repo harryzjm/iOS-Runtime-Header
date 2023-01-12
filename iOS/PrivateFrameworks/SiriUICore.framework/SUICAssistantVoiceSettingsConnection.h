@@ -26,7 +26,7 @@
 - (_Bool)languageHasVoiceSelection:(id)arg1;
 - (id)getAvailableDialectsForLanguage:(id)arg1;
 - (id)getAvailableVoicesForLanguage:(id)arg1;
-- (id)nonCacheAvailableVoicesForLanguage:(id)arg1;
+- (_Bool)languageHasVoiceVariations:(id)arg1;
 - (_Bool)languageHasBothGender:(id)arg1;
 - (_Bool)languageHasCustomVoice:(id)arg1;
 

@@ -28,6 +28,7 @@
 @property(nonatomic) _Bool isReadyForDisplay; // @synthesize isReadyForDisplay=_isReadyForDisplay;
 @property(retain, nonatomic) MSConversation *activeConversation; // @synthesize activeConversation=_activeConversation;
 @property(nonatomic) struct CGRect initialFrameBeforeAppearance; // @synthesize initialFrameBeforeAppearance=_initialFrameBeforeAppearance;
+- (void)_presentAlertWithTitle:(id)arg1 message:(id)arg2 buttonTitle:(id)arg3 destructiveButtonTitle:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_presentAlertWithTitle:(id)arg1 message:(id)arg2 buttonTitle:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_prepareForPresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_didRemoveAssetArchiveWithIdentifier:(id)arg1;

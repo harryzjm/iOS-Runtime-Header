@@ -12,6 +12,7 @@
 
 @interface NSURL (TouchML) <NSURLJSExports>
 + (void)initializeJSContext:(id)arg1;
+- (id)withPathComponent:(id)arg1;
 - (id)filterQueryParameters:(id)arg1;
 - (id)withQueryParameters:(id)arg1;
 - (id)withQueryParameter:(id)arg1:(id)arg2;

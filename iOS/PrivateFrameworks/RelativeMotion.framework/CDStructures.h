@@ -24,6 +24,10 @@ typedef struct {
 } CDStruct_91d2e2b9;
 
 typedef struct {
+    double machAbsTimestamp;
+} CDStruct_8ca199c0;
+
+typedef struct {
     union {
         float data[16];
         unsigned long long abstime;

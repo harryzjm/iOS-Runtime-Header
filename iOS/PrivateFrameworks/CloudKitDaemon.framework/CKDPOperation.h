@@ -8,11 +8,13 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-@class NSString;
+@class CKDPIdentifier, NSData, NSString;
 
 @interface CKDPOperation : PBCodable <NSCopying>
 {
+    CKDPIdentifier *_anonymousCKUserID;
     NSString *_operationUUID;
+    NSData *_requestSignature;
     int _type;
     _Bool _last;
     _Bool _synchronousMode;
@@ -24,6 +26,8 @@
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) CKDPIdentifier *anonymousCKUserID; // @synthesize anonymousCKUserID=_anonymousCKUserID;
+@property(retain, nonatomic) NSData *requestSignature; // @synthesize requestSignature=_requestSignature;
 @property(nonatomic) _Bool last; // @synthesize last=_last;
 @property(nonatomic) _Bool synchronousMode; // @synthesize synchronousMode=_synchronousMode;
 @property(retain, nonatomic) NSString *operationUUID; // @synthesize operationUUID=_operationUUID;
@@ -36,6 +40,8 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasAnonymousCKUserID;
+@property(readonly, nonatomic) _Bool hasRequestSignature;
 @property(nonatomic) _Bool hasLast;
 @property(nonatomic) _Bool hasSynchronousMode;
 - (int)StringAsType:(id)arg1;
@@ -43,7 +49,7 @@
 @property(nonatomic) _Bool hasType;
 @property(nonatomic) int type; // @synthesize type=_type;
 @property(readonly, nonatomic) _Bool hasOperationUUID;
-- (void)_CKLogToFileHandle:(id)arg1 atDepth:(int)arg2;
+- (id)_typeCKLogValue;
 
 @end
 

@@ -13,8 +13,9 @@
 {
     _Bool _stopped;
     _Bool _currentlyPerformingAction;
-    NSObject<OS_dispatch_queue> *_queue;
+    struct os_unfair_lock_s _accessorLock;
     TURepeatingAction *_currentRepeatingAction;
+    NSObject<OS_dispatch_queue> *_queue;
     TURepeatingAction *_pendingRepeatingAction;
     CDUnknownBlockType _attemptNextIterationBlock;
 }
@@ -22,19 +23,20 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType attemptNextIterationBlock; // @synthesize attemptNextIterationBlock=_attemptNextIterationBlock;
 @property(retain, nonatomic) TURepeatingAction *pendingRepeatingAction; // @synthesize pendingRepeatingAction=_pendingRepeatingAction;
-@property(retain, nonatomic) TURepeatingAction *currentRepeatingAction; // @synthesize currentRepeatingAction=_currentRepeatingAction;
 @property(nonatomic, getter=isCurrentlyPerformingAction) _Bool currentlyPerformingAction; // @synthesize currentlyPerformingAction=_currentlyPerformingAction;
 @property(nonatomic, getter=isStopped) _Bool stopped; // @synthesize stopped=_stopped;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property(readonly, nonatomic) struct os_unfair_lock_s accessorLock; // @synthesize accessorLock=_accessorLock;
 - (void)_completeWithDidFinish:(_Bool)arg1;
 - (void)_stopWithDidFinish:(_Bool)arg1;
 - (_Bool)_hasIterationsRemaining;
 - (void)_attemptNextIteration;
 - (void)_beginRepeatingAction:(id)arg1;
-@property(readonly, nonatomic, getter=isRunning) _Bool running;
 - (void)stop;
 - (void)beginRepeatingAction:(CDUnknownBlockType)arg1 iterations:(unsigned long long)arg2 pauseDurationBetweenIterations:(double)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)beginRepeatingAction:(CDUnknownBlockType)arg1 iterations:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+@property(readonly, nonatomic, getter=isRunning) _Bool running;
+@property(retain, nonatomic) TURepeatingAction *currentRepeatingAction; // @synthesize currentRepeatingAction=_currentRepeatingAction;
 - (id)init;
 
 @end

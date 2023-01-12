@@ -6,14 +6,14 @@
 
 #import <VoiceShortcuts/NSObject-Protocol.h>
 
-@class NSError, WFDialogAttribution, WFOutOfProcessWorkflowController, WFWorkflowReference;
+@class WFDialogAttributions, WFOutOfProcessWorkflowController, WFWorkflowReference, WFWorkflowRunResult;
 @protocol WFUserInterfaceHost;
 
 @protocol WFOutOfProcessWorkflowControllerDelegate <NSObject>
-- (void)outOfProcessWorkflowController:(WFOutOfProcessWorkflowController *)arg1 didFinishWithError:(NSError *)arg2 cancelled:(_Bool)arg3 reference:(WFWorkflowReference *)arg4 dialogAttribution:(WFDialogAttribution *)arg5;
+- (void)outOfProcessWorkflowController:(WFOutOfProcessWorkflowController *)arg1 didFinishWithResult:(WFWorkflowRunResult *)arg2 reference:(WFWorkflowReference *)arg3 dialogAttributions:(WFDialogAttributions *)arg4;
 
 @optional
 - (id <WFUserInterfaceHost>)userInterfaceForOutOfProcessWorkflowController:(WFOutOfProcessWorkflowController *)arg1;
-- (void)outOfProcessWorkflowController:(WFOutOfProcessWorkflowController *)arg1 didStartFromWorkflowReference:(WFWorkflowReference *)arg2 dialogAttribution:(WFDialogAttribution *)arg3;
+- (void)outOfProcessWorkflowController:(WFOutOfProcessWorkflowController *)arg1 didStartFromWorkflowReference:(WFWorkflowReference *)arg2 dialogAttributions:(WFDialogAttributions *)arg3;
 @end
 

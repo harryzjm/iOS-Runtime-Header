@@ -8,7 +8,6 @@
 
 @class CKDChainPCSData, CKDSharePCSData, CKDZonePCSData, CKEncryptedData, CKRecordID, CKRecordZoneID, NSData, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDRecordPCSData <NSSecureCoding>
 {
     CKRecordID *_recordID;
@@ -21,6 +20,7 @@ __attribute__((visibility("hidden")))
     NSData *_zoneishPublicKeyID;
     CKDSharePCSData *_sharePCSData;
     CKRecordID *_shareID;
+    struct _OpaquePCSShareProtection *_signingPCS;
     CKDChainPCSData *_chainPCSData;
     CKEncryptedData *_encryptedPublicSharingKey;
 }
@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) CKEncryptedData *encryptedPublicSharingKey; // @synthesize encryptedPublicSharingKey=_encryptedPublicSharingKey;
 @property(retain, nonatomic) CKDChainPCSData *chainPCSData; // @synthesize chainPCSData=_chainPCSData;
+@property(nonatomic) struct _OpaquePCSShareProtection *signingPCS; // @synthesize signingPCS=_signingPCS;
 @property(retain, nonatomic) CKRecordID *shareID; // @synthesize shareID=_shareID;
 @property(retain, nonatomic) CKDSharePCSData *sharePCSData; // @synthesize sharePCSData=_sharePCSData;
 @property(retain, nonatomic) NSData *zoneishPublicKeyID; // @synthesize zoneishPublicKeyID=_zoneishPublicKeyID;
@@ -40,6 +41,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CKRecordID *parentID; // @synthesize parentID=_parentID;
 @property(readonly, nonatomic) NSString *recordType; // @synthesize recordType=_recordType;
 @property(retain, nonatomic) CKRecordID *recordID; // @synthesize recordID=_recordID;
+- (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)CKPropertiesDescription;

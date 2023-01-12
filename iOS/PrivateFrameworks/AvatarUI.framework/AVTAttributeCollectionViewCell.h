@@ -22,6 +22,7 @@
 @property(copy, nonatomic) CDUnknownBlockType discardableContentHandler; // @synthesize discardableContentHandler;
 - (void)discardContent;
 - (void)prepareForReuse;
+- (struct CGRect)frameForAttributeView;
 @property(readonly, nonatomic) AVTAttributeValueView *valueView;
 
 // Remaining properties

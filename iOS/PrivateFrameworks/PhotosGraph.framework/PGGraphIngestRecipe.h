@@ -12,7 +12,7 @@
 {
     PGManager *_manager;
     NSArray *_momentsToIngest;
-    NSArray *_highligthsToIngest;
+    NSArray *_highlightsToIngest;
     NSArray *_preProcessors;
     NSArray *_postProcessors;
     PGGraphIngestRecipeParameters *_parameters;
@@ -27,7 +27,7 @@
 - (id)_momentsForLibraryAnalysisWithFetchOptions:(id)arg1;
 @property(readonly, nonatomic) NSArray *postProcessors; // @synthesize postProcessors=_postProcessors;
 @property(readonly, nonatomic) NSArray *preProcessors; // @synthesize preProcessors=_preProcessors;
-@property(readonly, nonatomic) NSArray *highligthsToIngest; // @synthesize highligthsToIngest=_highligthsToIngest;
+@property(readonly, nonatomic) NSArray *highlightsToIngest; // @synthesize highlightsToIngest=_highlightsToIngest;
 @property(readonly, nonatomic) NSArray *momentsToIngest; // @synthesize momentsToIngest=_momentsToIngest;
 - (id)initWithManager:(id)arg1 parameters:(id)arg2;
 

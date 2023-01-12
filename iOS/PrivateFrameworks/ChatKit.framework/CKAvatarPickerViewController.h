@@ -7,17 +7,20 @@
 #import <UIKit/UIViewController.h>
 
 #import <ChatKit/CKAvatarPickerLayoutDelegate-Protocol.h>
+#import <ChatKit/CKAvatarTitleCollectionReusableViewDelegate-Protocol.h>
 #import <ChatKit/CNAvatarViewDelegate-Protocol.h>
 #import <ChatKit/UICollectionViewDataSource-Protocol.h>
 #import <ChatKit/UICollectionViewDelegate-Protocol.h>
 
 @class CKAvatarPickerLayout, CKAvatarTitleCollectionReusableView, CKConversation, CNContactStore, CNGroupAvatarViewController, NSMapTable, NSString, UICollectionView;
+@protocol CKAvatarPickerViewControllerDelegate;
 
-@interface CKAvatarPickerViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, CNAvatarViewDelegate, CKAvatarPickerLayoutDelegate>
+@interface CKAvatarPickerViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, CNAvatarViewDelegate, CKAvatarPickerLayoutDelegate, CKAvatarTitleCollectionReusableViewDelegate>
 {
+    UICollectionView *_collectionView;
     CKAvatarTitleCollectionReusableView *_titleView;
     long long _indicatorType;
-    UICollectionView *_collectionView;
+    id <CKAvatarPickerViewControllerDelegate> _delegate;
     CNGroupAvatarViewController *_groupAvatarViewController;
     CKAvatarPickerLayout *_layout;
     CKConversation *_conversation;
@@ -33,13 +36,25 @@
 @property(retain, nonatomic) CKConversation *conversation; // @synthesize conversation=_conversation;
 @property(retain, nonatomic) CKAvatarPickerLayout *layout; // @synthesize layout=_layout;
 @property(retain, nonatomic) CNGroupAvatarViewController *groupAvatarViewController; // @synthesize groupAvatarViewController=_groupAvatarViewController;
-@property(retain, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
+@property(nonatomic) __weak id <CKAvatarPickerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) long long indicatorType; // @synthesize indicatorType=_indicatorType;
 @property(retain, nonatomic) CKAvatarTitleCollectionReusableView *titleView; // @synthesize titleView=_titleView;
-- (id)_configureCollectionView:(id)arg1 groupIdentityCellForItemAtIndexPath:(id)arg2 entity:(id)arg3;
+@property(retain, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
+- (long long)_avatarTitleAccessoryImageType;
+- (void)tappedAvatarPickerViewController;
+- (void)endedTouchingAvatarView;
+- (void)beganTouchingAvatarView;
+- (void)endedTouchingTitleLabel;
+- (void)beganTouchingTitleLabel;
+- (_Bool)avatarWantsTapAtPoint:(struct CGPoint)arg1 fromView:(id)arg2;
+- (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
+- (void)collectionView:(id)arg1 didUnhighlightItemAtIndexPath:(id)arg2;
+- (void)collectionView:(id)arg1 didHighlightItemAtIndexPath:(id)arg2;
+- (_Bool)collectionView:(id)arg1 shouldHighlightItemAtIndexPath:(id)arg2;
+- (id)_configureCollectionView:(id)arg1 groupIdentityCellForItemAtIndexPath:(id)arg2;
 - (id)_groupAvatarViewControllerRequiredContactKeys;
-- (id)_configureCollectionView:(id)arg1 avatarViewCellForItemAtIndexPath:(id)arg2 entity:(id)arg3;
-- (id)_configureCollectionView:(id)arg1 bannerViewCellForItemAtIndexPath:(id)arg2 entity:(id)arg3;
+- (id)_configureCollectionView:(id)arg1 avatarViewCellForItemAtIndexPath:(id)arg2;
+- (id)_configureCollectionView:(id)arg1 bannerViewCellForItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (id)_cutoutSupplementaryViewAtIndexPath:(id)arg1;
 - (id)avatarDisplayName;
@@ -57,7 +72,6 @@
 - (void)_chatItemsDidChange:(id)arg1;
 - (void)_handleConversationRecipientsDidChange:(id)arg1;
 - (unsigned long long)_preferredAvatarLayoutMode;
-- (_Bool)_shouldUseBanner;
 - (void)_handleConversationIsFilteredChange:(id)arg1;
 - (void)updateGroupAvatarView;
 - (void)_chatPropertiesChanged:(id)arg1;

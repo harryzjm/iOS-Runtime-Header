@@ -10,6 +10,8 @@
 {
 }
 
++ (id)sortedPersons:(id)arg1 byPersonMemoryFeatures:(id)arg2;
++ (void)unblockPersonsInLibrary:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (id)memoryTitleStringFromPeople:(id)arg1;
 + (id)slideshowTitleStringForPeople:(id)arg1;
 + (id)_titleStringForPeople:(id)arg1 singlePersonFallback:(id)arg2 groupFallback:(id)arg3;
@@ -38,11 +40,17 @@
 + (id)_peopleHomeFetchResultForPersonType:(long long)arg1;
 + (_Bool)changePeople:(id)arg1 toPersonType:(long long)arg2 error:(id *)arg3;
 + (id)changePerson:(id)arg1 toPersonType:(long long)arg2;
++ (id)personWithLocalIdentifier:(id)arg1 propertySets:(id)arg2;
 + (id)personWithLocalIdentifier:(id)arg1;
++ (id)finalMergeTargetPersonForPersonWithUUID:(id)arg1;
 + (id)peopleWithPersonUris:(id)arg1;
 + (id)personWithPersonUri:(id)arg1;
 + (id)sharedContactStore;
-+ (id)alertControllerForBlockingPerson:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (id)suggestLessOptionSelectionViewController:(id)arg1 delegate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (void)alertStringsForPersonWithUserFeedbackType:(unsigned long long)arg1 name:(id)arg2 alertTitle:(id *)arg3 alertMessage:(id *)arg4 alternativeLevelActionTitle:(id *)arg5 resetActionTitle:(id *)arg6;
++ (id)alertControllerForRevertingSuggestLess:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (id)_untaggingLog;
++ (id)alertControllerForUntaggingPerson:(id)arg1 asset:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (id)alertControllerForResettingPeopleWithCompletion:(CDUnknownBlockType)arg1;
 + (id)alertControllerForRemovingNumberOfPeople:(long long)arg1 completionBlock:(CDUnknownBlockType)arg2;
 + (_Bool)showBootstrapIfNeededWithContext:(id)arg1 fromParentVC:(id)arg2 force:(_Bool)arg3 delegate:(id)arg4;

@@ -22,6 +22,8 @@
 + (void)rootViewModelParseDidBeginWithTag:(unsigned long long)arg1;
 + (void)jsCallDidEndWithTag:(unsigned long long)arg1;
 + (void)jsCallDidBeginWithTag:(unsigned long long)arg1;
++ (void)jsStackBootstrapDidEndWithTag:(unsigned long long)arg1;
++ (void)jsStackBootstrapDidBeginWithTag:(unsigned long long)arg1;
 + (void)requestDidEndWithTag:(unsigned long long)arg1;
 + (void)requestDidBeginWithTag:(unsigned long long)arg1;
 + (void)launchCorrelationKeyWithTag:(unsigned long long)arg1 withString:(id)arg2;

@@ -10,34 +10,56 @@
 #import <UIKitCore/UIInteraction-Protocol.h>
 #import <UIKitCore/_UIMultiSelectOneFingerPanGestureDelegate-Protocol.h>
 
-@class NSArray, NSString, UIPanGestureRecognizer, UITapGestureRecognizer, UIView, _UIMultiSelectOneFingerPanGesture, _UISingleFingerTapExtensionGesture;
+@class NSArray, NSString, UIBandSelectionInteraction, UIKeyCommand, UIPanGestureRecognizer, UITapGestureRecognizer, UIView, _UIMultiSelectOneFingerPanGesture, _UISingleFingerTapExtensionGesture;
 @protocol UIMultiSelectInteractionDelegate;
 
 @interface UIMultiSelectInteraction : NSObject <UIGestureRecognizerDelegate, _UIMultiSelectOneFingerPanGestureDelegate, UIInteraction>
 {
     _Bool _isScrollView;
     _Bool _delegateConformsToProtocol;
+    UIKeyCommand *_extendToCellAboveCommand;
+    UIKeyCommand *_extendToCellBelowCommand;
+    UIKeyCommand *_extendToCellRightCommand;
+    UIKeyCommand *_extendToCellLeftCommand;
     struct {
         unsigned int respondsToShouldPreventDragLiftGesture:1;
         unsigned int respondsToShouldAllowSelectionExtensionAtPoint:1;
+        unsigned int respondsToShouldAllowSelectionExtensionAtIndexPath:1;
         unsigned int respondsToDidCancelMultiSelectInteraction:1;
+        unsigned int respondsToSelectItemsWithinRect:1;
+        unsigned int respondsToToggleSelectionWithinRect:1;
+        unsigned int respondsToShouldStartBandSelectionAtPoint:1;
+        unsigned int respondsToSupportsKeyboardSelectionExtension:1;
+        unsigned int respondsToExtendSelectionInDirection:1;
+        unsigned int respondsToChildScrollViewAtLocation:1;
         unsigned int respondsToShouldBeginMultiSelectInteraction:1;
     } _optionalDelegateFlags;
     _UIMultiSelectOneFingerPanGesture *_multiSelectModePan;
     UIPanGestureRecognizer *_multiFingerPan;
     UITapGestureRecognizer *_multiFingerTap;
     _UISingleFingerTapExtensionGesture *_singleFingerExtensionTap;
+    long long _activeGestureType;
     id <UIMultiSelectInteractionDelegate> _delegate;
     UIView *_view;
+    UIBandSelectionInteraction *_bandSelectionInteraction;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIBandSelectionInteraction *bandSelectionInteraction; // @synthesize bandSelectionInteraction=_bandSelectionInteraction;
 @property(nonatomic) __weak UIView *view; // @synthesize view=_view;
 @property(nonatomic) __weak id <UIMultiSelectInteractionDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) long long activeGestureType; // @synthesize activeGestureType=_activeGestureType;
 @property(retain, nonatomic) _UISingleFingerTapExtensionGesture *_singleFingerExtensionTap; // @synthesize _singleFingerExtensionTap;
 @property(retain, nonatomic) UITapGestureRecognizer *_multiFingerTap; // @synthesize _multiFingerTap;
 @property(retain, nonatomic) UIPanGestureRecognizer *_multiFingerPan; // @synthesize _multiFingerPan;
 @property(retain, nonatomic) _UIMultiSelectOneFingerPanGesture *_multiSelectModePan; // @synthesize _multiSelectModePan;
+- (void)_handleKeyboardSelectionExtensionKeyCommand:(id)arg1;
+- (id)keyCommandsForSelectionExtension;
+- (_Bool)_areSelectionExtensionKeyCommandsEnabled;
+- (_Bool)_shouldBeginInteractionWithGestureType:(long long)arg1 location:(struct CGPoint)arg2 velocity:(struct CGPoint)arg3;
+- (void)_endInteractionAtPoint:(struct CGPoint)arg1 canceled:(_Bool)arg2;
+- (void)_beginInteractionWithTrigger:(id)arg1 point:(struct CGPoint)arg2 keepingSelection:(_Bool)arg3;
+- (_Bool)_isActive;
 - (void)_handleSelectionExtensionTapGesture:(id)arg1;
 - (void)_multiFingerTapGesture:(id)arg1;
 - (void)_didInvokeMultiSelectExtendGestureAtLocation:(struct CGPoint)arg1;
@@ -48,6 +70,10 @@
 - (void)_beginCommonPan:(id)arg1;
 - (void)_handleCommonPanGestureStateChanged:(id)arg1;
 - (void)_cancelScrollingInViewForGesture:(id)arg1;
+- (void)_cancelScrollingInScrollView:(id)arg1;
+- (void)_handleBandSelectionInteraction:(id)arg1;
+- (_Bool)_shouldBeginBandSelectionInteraction:(id)arg1 atPoint:(struct CGPoint)arg2;
+- (_Bool)_isBandSelectionAllowedAtPoint:(struct CGPoint)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
@@ -56,7 +82,7 @@
 - (unsigned long long)_currentExtensionTypeForOneFingerTapGesture:(id)arg1;
 - (_Bool)_isCommandKeyBeingHeldWithGesture:(id)arg1;
 - (_Bool)_isShiftKeyBeingHeldWithGesture:(id)arg1;
-- (void)_askDelegateToAutomaticallyTransitionToMultiSelectModeAtPoint:(struct CGPoint)arg1 keepingSelection:(_Bool)arg2;
+- (void)_askDelegateToAutomaticallyTransitionToMultiSelectModeKeepingSelection:(_Bool)arg1;
 - (_Bool)_attemptToAutomaticallyTransitionToMultiSelectModeIfNecessaryAtPoint:(struct CGPoint)arg1 withVelocity:(struct CGPoint)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_endObservingScrollViewOffsetUpdates;

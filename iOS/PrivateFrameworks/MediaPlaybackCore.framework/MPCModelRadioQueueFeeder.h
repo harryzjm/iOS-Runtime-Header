@@ -64,7 +64,8 @@
 - (void)_updateAdditionalLoadingSupport;
 @property(readonly, copy, nonatomic) NSDictionary *rtcReportingSessionAdditionalUserInfo;
 @property(readonly, copy, nonatomic) NSString *rtcReportingPlayQueueSourceIdentifier;
-- (id)modelPlayEvent;
+- (id)modelPlayEventForItem:(id)arg1 inSection:(id)arg2;
+- (id)firstModelPlayEvent;
 - (void)reloadSection:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)section:(id)arg1 supportsShuffleType:(long long)arg2;
 - (id)updatedPlaybackContext;
@@ -73,6 +74,7 @@
 - (long long)prefetchThresholdForSection:(id)arg1;
 - (_Bool)shouldRequestAdditionalItemsWhenReachingTailOfSection:(id)arg1;
 - (id)itemForItem:(id)arg1 inSection:(id)arg2;
+- (id)identifiersForItem:(id)arg1 inSection:(id)arg2;
 - (void)loadPlaybackContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)supportsAutoPlayForItem:(id)arg1 inSection:(id)arg2;
 @property(readonly, nonatomic) _Bool containsTransportableContent;
@@ -83,7 +85,7 @@
 - (_Bool)canSkipItem:(id)arg1;
 - (void)itemDidBeginPlayback:(id)arg1;
 - (long long)itemCount;
-- (void)getRepresentativeMetadataForPlaybackContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getRepresentativeMetadataForPlaybackContext:(id)arg1 properties:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (id)init;
 

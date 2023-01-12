@@ -61,7 +61,7 @@
 - (void)updateConstraints;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
 - (void)dealloc;
-- (id)initWithContact:(id)arg1 frame:(struct CGRect)arg2 monogrammerStyle:(long long)arg3;
+- (id)initWithContact:(id)arg1 frame:(struct CGRect)arg2;
 
 @end
 

@@ -6,13 +6,17 @@
 
 #import <CarPlaySupport/CPSessionConfigurationDelegate-Protocol.h>
 
-@class CPSessionConfiguration, NSArray, NSMutableArray, NSString;
+@class CPSTemplateEnvironment, CPSessionConfiguration, NSArray, NSIndexPath, NSMutableArray, NSString;
 
 @interface CPSSectionedDataSource <CPSessionConfigurationDelegate>
 {
     _Bool _limitingWithSections;
     long long _maxVisibleSection;
     long long _numberOfVisibleItemsInLastSection;
+    NSIndexPath *_assistantCellIndexPath;
+    CPSTemplateEnvironment *_templateEnvironment;
+    long long _assistantCellVisibility;
+    long long _assistantCellPosition;
     NSMutableArray *_sections;
     CPSessionConfiguration *_sessionConfiguration;
     NSArray *_sectionHeightCache;
@@ -22,31 +26,33 @@
 @property(retain, nonatomic) NSArray *sectionHeightCache; // @synthesize sectionHeightCache=_sectionHeightCache;
 @property(retain, nonatomic) CPSessionConfiguration *sessionConfiguration; // @synthesize sessionConfiguration=_sessionConfiguration;
 @property(retain, nonatomic) NSMutableArray *sections; // @synthesize sections=_sections;
+@property(nonatomic) long long assistantCellPosition; // @synthesize assistantCellPosition=_assistantCellPosition;
+@property(nonatomic) long long assistantCellVisibility; // @synthesize assistantCellVisibility=_assistantCellVisibility;
+@property(readonly, nonatomic) CPSTemplateEnvironment *templateEnvironment; // @synthesize templateEnvironment=_templateEnvironment;
+@property(readonly, nonatomic) NSIndexPath *assistantCellIndexPath; // @synthesize assistantCellIndexPath=_assistantCellIndexPath;
+- (void)updateIndexPathForAssistantItem;
 - (void)sessionConfiguration:(id)arg1 limitedUserInterfacesChanged:(unsigned long long)arg2;
 - (_Bool)isLimitingLists;
 - (void)reloadItems:(id)arg1;
 - (void)updateSections:(id)arg1;
-- (void)deleteSectionAtIndex:(unsigned long long)arg1;
-- (void)insertSection:(id)arg1 atIndex:(unsigned long long)arg2;
-- (void)appendSection:(id)arg1;
 - (long long)tableView:(id)arg1 sectionForSectionIndexTitle:(id)arg2 atIndex:(long long)arg3;
 - (id)sectionIndexTitlesForTableView:(id)arg1;
 - (id)_sanitizedSectionIndexTitleForTitle:(id)arg1;
+- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)rebuildHeightCacheWithEnvironment:(id)arg1;
 - (void)invalidateHeightCache;
 - (double)heightForItemAtIndexPath:(id)arg1 inEnvironment:(id)arg2;
 - (id)indexPathForItemWithIdentifier:(id)arg1;
-- (id)items;
 - (id)itemAtIndexPath:(id)arg1;
 - (id)firstItemIndexPath;
 - (long long)numberOfItemsInSection:(long long)arg1;
 - (long long)numberOfItems;
 - (long long)numberOfSections;
 - (long long)_filteredNumberOfItemsGivenSection:(long long)arg1 numberOfItems:(long long)arg2;
+- (_Bool)showingAssistantInLastPosition;
+- (id)sectionWithIdentifier:(id)arg1;
 - (id)sectionAtIndex:(long long)arg1;
-- (id)initWithItems:(id)arg1;
-- (id)initWithSection:(id)arg1;
-- (id)initWithSections:(id)arg1;
+- (id)initWithSections:(id)arg1 templateEnvironment:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

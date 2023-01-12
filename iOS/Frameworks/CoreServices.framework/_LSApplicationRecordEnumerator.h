@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
     NSURL *_volumeURL;
     unsigned long long _options;
-    vector_12da65de _bundleIdentifiersOrUnits;
+    struct vector<unsigned int, std::allocator<unsigned int>> _bundleIdentifiersOrUnits;
     unsigned int _container;
     unsigned int _bundleClass;
 }
@@ -19,11 +19,11 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property unsigned int bundleClass; // @synthesize bundleClass=_bundleClass;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)_getObject:(id *)arg1 atIndex:(unsigned long long)arg2 context:(struct LSContext *)arg3;
 - (_Bool)_prepareWithContext:(struct LSContext *)arg1 error:(id *)arg2;
-- (id)initWithVolumeURL:(id)arg1 options:(unsigned long long)arg2;
+- (id)initWithContext:(struct LSContext *)arg1 volumeURL:(id)arg2 options:(unsigned long long)arg3;
 - (id)_applicationRecordWithContext:(struct LSContext *)arg1 bundleIdentifierOrUnit:(unsigned int)arg2;
-- (_Bool)_evaluateBundleNoIO:(unsigned int)arg1 data:(const struct LSBundleData *)arg2 context:(struct LSContext *)arg3;
 - (_Bool)_getContainer:(unsigned int *)arg1 context:(struct LSContext *)arg2 error:(id *)arg3;
 
 @end

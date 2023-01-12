@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AVCaptureDeviceControlRequestQueue, AVCaptureDeviceFormat, AVCaptureSystemPressureState, AVWeakReference, NSArray, NSData, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSString;
+@class AVCaptureDevice, AVCaptureDeviceControlRequestQueue, AVCaptureDeviceFormat, AVCaptureSystemPressureState, AVWeakReference, NSArray, NSData, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -100,9 +100,16 @@ __attribute__((visibility("hidden")))
     double _minAvailableVideoZoomFactor;
     double _maxAvailableVideoZoomFactor;
     _Bool _depthDataDeliveryEnabled;
-    _Bool _cameraCalibrationDataDeliveryEnabled;
     long long _shallowDepthOfFieldEffectStatus;
-    NSString *_bravoCameraSelectionBehavior;
+    _Bool _cameraCalibrationDataDeliveryEnabled;
+    _Bool _focusedAtMacro;
+    AVCaptureDevice *_activePrimaryConstituentDevice;
+    long long _activePrimaryConstituentDeviceSwitchingBehavior;
+    unsigned long long _activePrimaryConstituentDeviceRestrictedSwitchingBehaviorConditions;
+    long long _primaryConstituentDeviceSwitchingBehavior;
+    unsigned long long _primaryConstituentDeviceRestrictedSwitchingBehaviorConditions;
+    NSArray *_supportedFallbackPrimaryConstituentDevices;
+    NSArray *_fallbackPrimaryConstituentDevices;
     AVWeakReference *_weakReference;
     NSMutableArray *_captureSourceSupportedMetadata;
     NSDictionary *_supportedOptionalFaceDetectionFeatures;
@@ -128,6 +135,16 @@ __attribute__((visibility("hidden")))
     _Bool _variableFrameRateVideoCaptureEnabled;
     long long _timeOfFlightProjectorMode;
     NSData *_cameraPoseMatrix;
+    unsigned long long _degradedCaptureQualityFactors;
+    _Bool _degradedCaptureQualityFactorsNeedInitialization;
+    _Bool _walletDegradesCaptureQuality;
+    _Bool _batteryPackDegradesCaptureQuality;
+    _Bool _centerStageSupported;
+    _Bool _centerStageActive;
+    _Bool _centerStageAllowedByClient;
+    _Bool _backgroundBlurSupported;
+    _Bool _backgroundBlurActive;
+    _Bool _backgroundBlurAllowedByClient;
 }
 
 + (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
@@ -137,6 +154,9 @@ __attribute__((visibility("hidden")))
 + (id)_devices;
 + (id)_newFigCaptureSources;
 + (void)initialize;
+- (void)setCinematicVideoFocusAtPoint:(struct CGPoint)arg1 objectID:(long long)arg2 isHardFocus:(_Bool)arg3 isFixedPlaneFocus:(_Bool)arg4;
+- (_Bool)isCinematicVideoFocusAtPointSupported;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_performBlockOnMainThread:(CDUnknownBlockType)arg1;
 - (void)_drainManualControlRequestQueue:(id)arg1;
 - (void)_drainManualControlRequestQueues;
@@ -155,18 +175,30 @@ __attribute__((visibility("hidden")))
 - (_Bool)isNonDestructiveCropEnabled;
 - (void)setSpatialOverCaptureEnabled:(_Bool)arg1;
 - (_Bool)isSpatialOverCaptureEnabled;
+- (unsigned long long)degradedCaptureQualityFactors;
 - (long long)timeOfFlightBankCount;
 - (void)setTimeOfFlightProjectorMode:(long long)arg1;
 - (long long)timeOfFlightProjectorMode;
 - (_Bool)isTimeOfFlightProjectorModeSupported:(long long)arg1;
-- (void)_setBravoCameraSelectionBehavior:(id)arg1;
+- (long long)minimumFocusDistance;
+- (_Bool)isFocusedAtMacro;
+- (void)_populateSupportedFallbackPrimaryConstituentDevices;
+- (void)_setActivePrimaryConstituentDeviceSwitchingBehavior:(long long)arg1 restrictedSwitchingBehaviorConditions:(unsigned long long)arg2;
+- (void)setFallbackPrimaryConstituentDevices:(id)arg1;
+- (id)fallbackPrimaryConstituentDevices;
+- (id)supportedFallbackPrimaryConstituentDevices;
+- (id)activePrimaryConstituentDevice;
+- (id)currentPrimaryConstituentDevice;
+- (unsigned long long)activePrimaryConstituentDeviceRestrictedSwitchingBehaviorConditions;
+- (long long)activePrimaryConstituentDeviceSwitchingBehavior;
+- (unsigned long long)primaryConstituentDeviceRestrictedSwitchingBehaviorConditions;
+- (long long)primaryConstituentDeviceSwitchingBehavior;
+- (void)setPrimaryConstituentDeviceSwitchingBehavior:(long long)arg1 restrictedSwitchingBehaviorConditions:(unsigned long long)arg2;
 - (id)bravoCameraSelectionBehavior;
 - (_Bool)isHEIFSupported;
 - (_Bool)isHEVCPreferred;
 - (_Bool)isHEVCSupported;
 - (_Bool)isHEVCRelaxedAverageBitRateTargetSupported;
-- (_Bool)isHEVCMemoryUsageMinimizationSupported;
-- (_Bool)hevcAllowBFramesForHighCTUCountAndHighResolution;
 - (_Bool)hevcAllowBFramesForHighCTUCount;
 - (int)hevcTurboModeVersion;
 - (_Bool)usesQuantizationScalingMatrix_H264_Steep_16_48;
@@ -191,6 +223,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isEyeClosedDetectionSupported;
 - (_Bool)isEyeDetectionSupported;
 - (id)supportedMetadataObjectIdentifiers;
+- (void)_setBackgroundBlurAllowed:(_Bool)arg1;
 - (void)_setCameraCalibrationDataDeliveryEnabled:(_Bool)arg1;
 - (void)_setDepthDataDeliveryEnabled:(_Bool)arg1;
 - (_Bool)_isDepthDataDeliveryEnabled;
@@ -210,12 +243,21 @@ __attribute__((visibility("hidden")))
 - (void)_resetVideoHDRSuspended;
 - (void)setVideoHDRSuspended:(_Bool)arg1;
 - (_Bool)isVideoHDRSuspended;
-- (void)_setVideoHDREnabled:(_Bool)arg1;
+- (void)_setVideoHDREnabled:(_Bool)arg1 forceResetVideoHDRSuspended:(_Bool)arg2;
 - (void)setVideoHDREnabled:(_Bool)arg1;
 - (_Bool)isVideoHDREnabled;
 - (void)setAutomaticallyAdjustsVideoHDREnabled:(_Bool)arg1;
 - (_Bool)automaticallyAdjustsVideoHDREnabled;
 - (_Bool)isAutoRedEyeReductionSupported;
+- (void)_updateBackgroundBlurActiveForEnabled:(_Bool)arg1;
+- (_Bool)_isBackgroundBlurActiveForEnabled:(_Bool)arg1;
+- (_Bool)isBackgroundBlurActive;
+- (_Bool)isPortraitEffectActive;
+- (void)_updateCenterStageActiveForEnabled:(_Bool)arg1 updateDependentProperties:(_Bool)arg2;
+- (_Bool)_isCenterStageActiveForEnabled:(_Bool)arg1;
+- (void)_setCenterStageAllowed:(_Bool)arg1;
+- (_Bool)isCinematicFramingActive;
+- (_Bool)isCenterStageActive;
 - (id)cameraPoseMatrix;
 - (void)setGeometricDistortionCorrectionEnabled:(_Bool)arg1;
 - (_Bool)isGeometricDistortionCorrectionEnabled;
@@ -403,6 +445,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)hasMediaType:(id)arg1;
 - (int)figCaptureSourceDeviceType;
 - (_Bool)_isBravoVariant;
+- (_Bool)wideAngleCameraSourcesFromUltraWide;
 - (id)deviceType;
 - (id)manufacturer;
 - (id)localizedName;
@@ -419,7 +462,9 @@ __attribute__((visibility("hidden")))
 - (void)addObserver:(id)arg1 forKeyPath:(id)arg2 options:(unsigned long long)arg3 context:(void *)arg4;
 - (void)dealloc;
 - (id)init;
+- (void)_initDegradedCaptureQualityFactors;
 - (id)_initWithFigCaptureSource:(struct OpaqueFigCaptureSource *)arg1;
+- (_Bool)_isAppleManufacturer;
 - (int)_orderInDevicesArray;
 
 @end

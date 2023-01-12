@@ -8,28 +8,22 @@
 
 #import <BusinessChatService/BCSIdentityServiceProtocol-Protocol.h>
 
-@class IDSAccount, NSMutableDictionary, NSString;
-@protocol OS_dispatch_queue;
+@class NSMutableDictionary, NSString;
+@protocol BCSIDSQueryControllerProtocol, BCSIDSServiceFactoryProtocol, BCSIdentityAccountProtocol, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface BCSIdentityService : NSObject <BCSIdentityServiceProtocol>
 {
-    IDSAccount *_businessChatAccount;
+    id <BCSIdentityAccountProtocol> _businessChatAccount;
     NSObject<OS_dispatch_queue> *_serialDispatchQueue;
     NSMutableDictionary *_idStatusCompletionBlocks;
+    id <BCSIDSServiceFactoryProtocol> _IDSServiceFactory;
+    id <BCSIDSQueryControllerProtocol> _IDSQueryController;
 }
 
-+ (id)sharedInstance;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableDictionary *idStatusCompletionBlocks; // @synthesize idStatusCompletionBlocks=_idStatusCompletionBlocks;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *serialDispatchQueue; // @synthesize serialDispatchQueue=_serialDispatchQueue;
-- (void)idStatusUpdatedForDestinations:(id)arg1 service:(id)arg2;
-- (void)addIDSIDQueryControllerDelegate;
-- (id)loginID;
-- (void)handleIDStatusCompletionBlocksForBizID:(id)arg1 idStatus:(long long)arg2;
 - (void)refreshIDStatusForBizID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)businessChatAccount;
-- (void)warmBusinessChatAccountCache;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

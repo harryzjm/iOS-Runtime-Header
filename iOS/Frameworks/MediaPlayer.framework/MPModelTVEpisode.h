@@ -41,6 +41,7 @@
 + (id)requiredLibraryRemovalProperties;
 + (_Bool)supportsKeepLocalStatusObservation;
 + (id)requiredKeepLocalStatusObservationProperties;
++ (long long)genericObjectType;
 + (id)requiredStoreLibraryPersonalizationProperties;
 - (id)artworkCatalog;
 - (id)humanDescription;

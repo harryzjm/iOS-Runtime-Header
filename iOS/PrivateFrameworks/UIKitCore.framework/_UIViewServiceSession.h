@@ -10,7 +10,7 @@
 #import <UIKitCore/_UIViewServiceDeputyManagerDelegate-Protocol.h>
 #import <UIKitCore/_UIViewServiceViewControllerOperatorDelegate-Protocol.h>
 
-@class NSString, NSXPCConnection, _UIAsyncInvocation, _UIViewServiceDeputyManager;
+@class NSString, NSXPCConnection, _UIAsyncInvocation, _UIViewServiceDeputyManager, _UIViewServiceSessionManager;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSXPCConnection *_connection;
+    _UIViewServiceSessionManager *_manager;
     _UIViewServiceDeputyManager *_deputyManager;
     _UIAsyncInvocation *_invalidationInvocation;
     CDUnknownBlockType _terminationHandler;
@@ -25,8 +26,15 @@ __attribute__((visibility("hidden")))
     _Bool __automatic_invalidation_invalidated;
 }
 
-+ (id)sessionWithConnection:(id)arg1;
++ (id)sessionWithConnection:(id)arg1 manager:(id)arg2;
 @property(copy, nonatomic) CDUnknownBlockType terminationHandler; // @synthesize terminationHandler=_terminationHandler;
+@property(readonly) __weak _UIViewServiceSessionManager *manager; // @synthesize manager=_manager;
+- (id)mainStoryboardNameForViewControllerOperator:(id)arg1;
+- (id)containingViewControllerClassNameForViewControllerOperator:(id)arg1;
+- (id)viewControllerClassNameForViewControllerOperator:(id)arg1;
+- (_Bool)requiresExtensionContextForViewControllerOperator:(id)arg1;
+- (_Bool)isExtensionServiceViewControllerOperator:(id)arg1;
+- (void)viewControllerOperator:(id)arg1 didCreateServiceViewController:(id)arg2 contextToken:(id)arg3;
 - (void)viewControllerOperator:(id)arg1 didCreateServiceViewControllerOfClass:(Class)arg2;
 - (void)unregisterDeputyClass:(Class)arg1;
 - (void)registerDeputyClass:(Class)arg1 withConnectionHandler:(CDUnknownBlockType)arg2;

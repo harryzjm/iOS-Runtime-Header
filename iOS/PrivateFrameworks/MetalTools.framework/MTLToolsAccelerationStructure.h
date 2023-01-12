@@ -17,6 +17,7 @@
 - (void)dealloc;
 - (id)initWithBaseObject:(id)arg1 parent:(id)arg2;
 @property(readonly, nonatomic) id <MTLBuffer> buffer;
+@property(readonly, nonatomic) unsigned long long resourceIndex;
 @property(retain, nonatomic) MTLAccelerationStructureDescriptor *descriptor;
 @property(readonly, nonatomic) unsigned long long uniqueIdentifier;
 @property(readonly, nonatomic) unsigned long long bufferOffset;

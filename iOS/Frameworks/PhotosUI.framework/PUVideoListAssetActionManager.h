@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) id <PUVideoListAssetExpungeActionPerformerDelegate> actionPerformerDelegate; // @synthesize actionPerformerDelegate=_actionPerformerDelegate;
+@property(nonatomic) __weak id <PUVideoListAssetExpungeActionPerformerDelegate> actionPerformerDelegate; // @synthesize actionPerformerDelegate=_actionPerformerDelegate;
 - (_Bool)shouldEnableActionType:(unsigned long long)arg1 onAllAssetsByAssetCollection:(id)arg2;
 - (id)actionPerformerForSimpleActionType:(unsigned long long)arg1 onAssetsByAssetCollection:(id)arg2;
 - (unsigned long long)preferredTrashActionTypeOnAssetsByAssetCollection:(id)arg1;

@@ -69,13 +69,13 @@
 - (id)initWithContainerId:(id)arg1 bagContract:(id)arg2;
 - (_Bool)_scheduledFlushAllowedForStyle:(long long)arg1;
 - (void)_handleFlushIntervalWithStyle:(long long)arg1;
+- (void)_flushTimerEnabledChanged;
 - (void)_flushIntervalInvalidate;
 - (double)_flushIntervalForEvents:(id)arg1;
 - (void)_beginFlushIntervalWithStyle:(long long)arg1 events:(id)arg2;
 - (id)_flushDataSource:(id)arg1 topic:(id)arg2;
 - (id)_enqueueFigaroEvents:(id)arg1;
 - (id)_determineFlushStrategyWithDataSource:(id)arg1 topic:(id)arg2;
-- (void)_applicationWillEnterForeground;
 - (id)flushEvents:(id)arg1;
 - (id)flushTopic:(id)arg1;
 - (id)flush;
@@ -90,6 +90,7 @@
 @property(readonly, nonatomic) long long eventCount;
 - (void)dealloc;
 - (id)initWithContainerID:(id)arg1 bag:(id)arg2;
+- (void)_applicationWillEnterForeground;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

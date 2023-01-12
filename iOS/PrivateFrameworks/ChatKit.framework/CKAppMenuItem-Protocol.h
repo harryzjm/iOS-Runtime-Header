@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, UIImage;
+@class NSString, UIImage, UITraitCollection;
 
 @protocol CKAppMenuItem
-@property(readonly, nonatomic) UIImage *__ck_image;
 @property(readonly, nonatomic) NSString *__ck_displayName;
 @property(readonly, nonatomic) id __ck_identifier;
+- (UIImage *)__ck_imageForTraitCollection:(UITraitCollection *)arg1;
 @end
 

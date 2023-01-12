@@ -10,10 +10,16 @@
 
 @interface HMDAnalyticsHAPServiceData : HMFObject
 {
+    _Bool _isPrimary;
+    _Bool _ownerUser;
     NSString *_serviceType;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool ownerUser; // @synthesize ownerUser=_ownerUser;
+@property(readonly, nonatomic) _Bool isPrimary; // @synthesize isPrimary=_isPrimary;
+@property(readonly, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
+- (id)initWithServiceType:(id)arg1 isPrimary:(_Bool)arg2 ownerUser:(_Bool)arg3;
 
 @end
 

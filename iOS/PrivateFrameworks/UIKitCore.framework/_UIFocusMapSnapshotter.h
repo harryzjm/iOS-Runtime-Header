@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 @interface _UIFocusMapSnapshotter : NSObject
 {
     _Bool _snapshotFrameIsEmpty;
+    _Bool _ignoresRootContainerClippingRect;
     _Bool _clipToSnapshotRect;
     UIFocusSystem *_focusSystem;
     id <_UIFocusRegionContainer> _rootContainer;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool ignoresRootContainerClippingRect; // @synthesize ignoresRootContainerClippingRect=_ignoresRootContainerClippingRect;
 @property(nonatomic) _Bool clipToSnapshotRect; // @synthesize clipToSnapshotRect=_clipToSnapshotRect;
 @property(nonatomic) struct CGRect snapshotFrame; // @synthesize snapshotFrame=_snapshotFrame;
 @property(retain, nonatomic) _UIFocusSearchInfo *searchInfo; // @synthesize searchInfo=_searchInfo;
@@ -36,7 +38,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) __weak UIFocusSystem *focusSystem; // @synthesize focusSystem=_focusSystem;
 - (id)captureSnapshot;
 - (id)_searchAreaForContainerSearchRect:(struct CGRect)arg1;
-- (id)initWithFocusSystem:(id)arg1 rootContainer:(id)arg2 coordinateSpace:(id)arg3 searchInfo:(id)arg4;
+- (id)initWithFocusSystem:(id)arg1 rootContainer:(id)arg2 coordinateSpace:(id)arg3 searchInfo:(id)arg4 ignoresRootContainerClippingRect:(_Bool)arg5;
 - (id)init;
 
 @end

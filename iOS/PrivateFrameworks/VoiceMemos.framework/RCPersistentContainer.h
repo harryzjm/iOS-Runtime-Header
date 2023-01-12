@@ -6,7 +6,7 @@
 
 #import <CoreData/NSPersistentContainer.h>
 
-@class NSArray, NSCloudKitMirroringDelegateOptions, NSDate, NSMutableArray, NSPersistentHistoryToken, NSPersistentStore, NSSet, NSString, RCDatabaseMetadata;
+@class NSArray, NSCloudKitMirroringDelegate, NSCloudKitMirroringDelegateOptions, NSDate, NSMutableArray, NSPersistentHistoryToken, NSPersistentStore, NSSet, NSString, RCDatabaseMetadata;
 
 __attribute__((visibility("hidden")))
 @interface RCPersistentContainer : NSPersistentContainer
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_transactionsBuffer;
     NSArray *_contextsToNotify;
     NSDate *_changeNotificationDate;
+    NSCloudKitMirroringDelegate *_mirroringDelegate;
 }
 
 + (id)newObjectModel;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 + (id)sharedContainer;
 + (void)initialize;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSCloudKitMirroringDelegate *mirroringDelegate; // @synthesize mirroringDelegate=_mirroringDelegate;
 @property(readonly, nonatomic) NSCloudKitMirroringDelegateOptions *mirroringOptions; // @synthesize mirroringOptions=_mirroringOptions;
 @property(readonly, nonatomic) RCDatabaseMetadata *metadata; // @synthesize metadata=_metadata;
 @property(readonly, nonatomic) NSPersistentStore *cloudStore; // @synthesize cloudStore=_cloudStore;

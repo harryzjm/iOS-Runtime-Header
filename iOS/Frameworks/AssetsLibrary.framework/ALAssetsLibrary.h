@@ -28,7 +28,6 @@
 + (long long)_estimatedOutputFileLengthForVideoURL:(id)arg1 fallbackFilePath:(id)arg2 exportPreset:(id)arg3 exportProperties:(id)arg4;
 + (id)_filePathForVideoURL:(id)arg1 outMetadata:(id *)arg2;
 @property(retain, nonatomic) ALAssetsLibraryPrivate *internal; // @synthesize internal=_internal;
-- (id)assetsGroupsRelatedToAssetsGroup:(id)arg1;
 - (void)addAssetsGroupAlbumWithName:(id)arg1 resultBlock:(CDUnknownBlockType)arg2 failureBlock:(CDUnknownBlockType)arg3;
 - (void)groupForURL:(id)arg1 resultBlock:(CDUnknownBlockType)arg2 failureBlock:(CDUnknownBlockType)arg3;
 - (id)_copyGroupForURL:(id)arg1;
@@ -41,8 +40,8 @@
 - (void)writeImageToSavedPhotosAlbum:(struct CGImage *)arg1 orientation:(long long)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)_writeImageToSavedPhotosAlbum:(struct CGImage *)arg1 orientation:(long long)arg2 imageData:(id)arg3 metadata:(id)arg4 internalProperties:(id)arg5 completionBlock:(CDUnknownBlockType)arg6;
 - (void)enumerateGroupsWithTypes:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2 failureBlock:(CDUnknownBlockType)arg3;
+- (void)_setBundlePropertiesOnPropertiesDictionary:(id)arg1;
 - (void)checkPhotosAccessAllowedWithScope:(long long)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)_addGroupListForContainerList:(id)arg1 ofType:(unsigned long long)arg2 toArray:(id)arg3;
 - (void)_addGroupForAlbum:(id)arg1 ofType:(unsigned long long)arg2 toArray:(id)arg3;
 - (id)publicErrorForPrivateDomain:(id)arg1 withPrivateCode:(long long)arg2;
 - (id)publicErrorFromPrivateError:(id)arg1;

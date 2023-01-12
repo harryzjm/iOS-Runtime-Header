@@ -8,7 +8,8 @@
 
 @interface HKSample (HKMenstrualCycles)
 + (id)hkmc_defaultMetadata;
-- (id)hkmc_timeZone;
+- (_Bool)hkmc_isCycleFactorSample;
+- (_Bool)hkmc_isNotPresentSymptom;
 - (_Bool)hkmc_wasEnteredFromCycleTracking;
 @end
 

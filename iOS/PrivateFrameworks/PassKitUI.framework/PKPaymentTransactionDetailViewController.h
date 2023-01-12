@@ -6,16 +6,16 @@
 
 #import <PassKitUI/CNContactViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKAccountServiceAccountResolutionControllerDelegate-Protocol.h>
+#import <PassKitUI/PKContactResolverDelegate-Protocol.h>
 #import <PassKitUI/PKDashboardTransactionFetcherDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentDataProviderDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentTransactionReportFraudConfirmationViewControllerDelegate-Protocol.h>
-#import <PassKitUI/PKPeerPaymentContactResolverDelegate-Protocol.h>
 #import <PassKitUI/PKTransactionDetailQuestionCellDelegate-Protocol.h>
 
-@class NSArray, NSDateFormatter, NSString, NSTimeZone, PKAccountServiceAccountResolutionController, PKCoarseLocationMonitor, PKDashboardTransactionFetcher, PKPaymentTransaction, PKPaymentTransactionCellController, PKPaymentTransactionDetailHeaderView, PKPeerPaymentContactResolver, PKPeerPaymentController, PKPeerPaymentStatusResponse, PKPeerPaymentWebService, PKTransactionReceipt, PKTransactionSource, UIImage;
+@class NSArray, NSDateFormatter, NSString, NSTimeZone, PKAccount, PKAccountServiceAccountResolutionController, PKAccountUserCollection, PKCoarseLocationMonitor, PKContactResolver, PKDashboardTransactionFetcher, PKFamilyMemberCollection, PKPaymentPass, PKPaymentTransaction, PKPaymentTransactionCellController, PKPaymentTransactionDetailHeaderView, PKPaymentTransactionIconGenerator, PKPaymentWebService, PKPeerPaymentController, PKPeerPaymentStatusResponse, PKPeerPaymentWebService, PKRetrieveMerchantTokensResponse, PKTransactionReceipt, PKTransactionSourceCollection, UIImage;
 @protocol PKPaymentDataProvider;
 
-@interface PKPaymentTransactionDetailViewController <PKPeerPaymentContactResolverDelegate, PKPaymentDataProviderDelegate, CNContactViewControllerDelegate, PKTransactionDetailQuestionCellDelegate, PKPaymentTransactionReportFraudConfirmationViewControllerDelegate, PKAccountServiceAccountResolutionControllerDelegate, PKDashboardTransactionFetcherDelegate>
+@interface PKPaymentTransactionDetailViewController <PKContactResolverDelegate, PKPaymentDataProviderDelegate, CNContactViewControllerDelegate, PKTransactionDetailQuestionCellDelegate, PKPaymentTransactionReportFraudConfirmationViewControllerDelegate, PKAccountServiceAccountResolutionControllerDelegate, PKDashboardTransactionFetcherDelegate>
 {
     long long _detailViewStyle;
     _Bool _showRawName;
@@ -23,6 +23,7 @@
     _Bool _showProductTimeZone;
     PKPeerPaymentWebService *_peerPaymentWebService;
     PKPeerPaymentController *_lazyPeerPaymentController;
+    PKPaymentPass *_paymentPass;
     PKPaymentTransaction *_associatedRefund;
     PKPaymentTransaction *_associatedAdjustment;
     NSArray *_associatedInstallmentPlans;
@@ -33,15 +34,21 @@
     PKAccountServiceAccountResolutionController *_accountResolutionController;
     _Bool _allowTransactionLinks;
     PKCoarseLocationMonitor *_coarseLocationMonitor;
+    PKFamilyMemberCollection *_familyCollection;
+    PKAccount *_account;
+    PKAccountUserCollection *_accountUserCollection;
+    PKPaymentWebService *_webService;
+    PKRetrieveMerchantTokensResponse *_merchantTokenResponse;
     NSString *_submittingAnswer;
     PKDashboardTransactionFetcher *_transactionFetcher;
+    PKPaymentTransactionIconGenerator *_iconGenerator;
     _Bool _issuerAppDeepLinkingEnabled;
     _Bool _inBridge;
     PKPaymentTransaction *_transaction;
-    PKTransactionSource *_transactionSource;
+    PKTransactionSourceCollection *_transactionSourceCollection;
     id <PKPaymentDataProvider> _paymentServiceDataProvider;
     PKPaymentTransactionDetailHeaderView *_headerView;
-    PKPeerPaymentContactResolver *_contactResolver;
+    PKContactResolver *_contactResolver;
     UIImage *_mapTilePlaceholderImage;
     NSArray *_lineItems;
     PKPeerPaymentStatusResponse *_peerPaymentStatusResponse;
@@ -61,10 +68,10 @@
 @property(retain, nonatomic) UIImage *mapTilePlaceholderImage; // @synthesize mapTilePlaceholderImage=_mapTilePlaceholderImage;
 @property(nonatomic) _Bool inBridge; // @synthesize inBridge=_inBridge;
 @property(nonatomic) _Bool issuerAppDeepLinkingEnabled; // @synthesize issuerAppDeepLinkingEnabled=_issuerAppDeepLinkingEnabled;
-@property(retain, nonatomic) PKPeerPaymentContactResolver *contactResolver; // @synthesize contactResolver=_contactResolver;
+@property(retain, nonatomic) PKContactResolver *contactResolver; // @synthesize contactResolver=_contactResolver;
 @property(retain, nonatomic) PKPaymentTransactionDetailHeaderView *headerView; // @synthesize headerView=_headerView;
 @property(readonly, nonatomic) id <PKPaymentDataProvider> paymentServiceDataProvider; // @synthesize paymentServiceDataProvider=_paymentServiceDataProvider;
-@property(readonly, nonatomic) PKTransactionSource *transactionSource; // @synthesize transactionSource=_transactionSource;
+@property(readonly, nonatomic) PKTransactionSourceCollection *transactionSourceCollection; // @synthesize transactionSourceCollection=_transactionSourceCollection;
 @property(readonly, nonatomic) PKPaymentTransaction *transaction; // @synthesize transaction=_transaction;
 - (void)didReportFraudInViewController:(id)arg1;
 - (void)explanationViewControllerDidSelectCancel:(id)arg1;
@@ -73,6 +80,7 @@
 - (void)submitAnswer:(id)arg1;
 - (void)contactViewController:(id)arg1 didCompleteWithContact:(id)arg2;
 - (_Bool)contactViewController:(id)arg1 shouldPerformDefaultActionForContactProperty:(id)arg2;
+- (void)didUpdateFamilyMembers:(id)arg1;
 - (void)transactionWithIdentifier:(id)arg1 didDownloadTransactionReceipt:(id)arg2;
 - (void)transactionSourceIdentifier:(id)arg1 didRemoveTransactionWithIdentifier:(id)arg2;
 - (void)transactionSourceIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
@@ -80,6 +88,9 @@
 - (id)_tableView:(id)arg1 cellForAmountDetailLineItemAtIndex:(long long)arg2 atIndexPath:(id)arg3;
 - (id)_awardCellForTableView:(id)arg1;
 - (id)_debugDetailCellForTableView:(id)arg1 atIndexPath:(id)arg2;
+- (void)_didSelectMerchantTokenManagement;
+- (id)_merchantTokenManagementCellForTableView:(id)arg1;
+- (id)_releasedDataCellForTableView:(id)arg1;
 - (id)_fraudRiskCellForTableView:(id)arg1;
 - (id)_transactionIdentifierCellForTableView:(id)arg1;
 - (id)_transactionIdentifierDescription;
@@ -115,13 +126,11 @@
 - (_Bool)_shouldHighlightAction:(unsigned long long)arg1;
 - (_Bool)_actionRowIsEnabled:(unsigned long long)arg1;
 - (void)accountServiceAccountResolutionController:(id)arg1 requestsPresentViewController:(id)arg2 animated:(_Bool)arg3;
-- (void)_updateAccountResolutionControllerIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_accountWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_accountWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_showInstallmentDetailsForAssociatedInstallment:(id)arg1;
 - (id)_associatedInstallmentCellForTableView:(id)arg1 atIndexPath:(id)arg2;
 - (void)contactsDidChangeForContactResolver:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
+- (void)_fetchMerchantToken;
 - (void)_handlePeerPaymentDisplayableError:(id)arg1 withPeerPaymentController:(id)arg2;
 - (void)_performPeerPaymentAction:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_updateWithTransactionReceipt:(id)arg1;
@@ -149,12 +158,13 @@
 - (void)_reloadTableHeaderView;
 - (void)viewWillLayoutSubviews;
 - (void)_updatePeerPaymentTransactionStatusWithCompletion:(CDUnknownBlockType)arg1;
+- (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (_Bool)shouldMapSection:(unsigned long long)arg1;
 - (void)_recomputeLineItems;
 - (void)setTransaction:(id)arg1;
 - (void)dealloc;
-- (id)initWithTransaction:(id)arg1 transactionSource:(id)arg2 contactResolver:(id)arg3 peerPaymentWebService:(id)arg4 paymentServiceDataProvider:(id)arg5 detailViewStyle:(long long)arg6 allowTransactionLinks:(_Bool)arg7;
+- (id)initWithTransaction:(id)arg1 transactionSourceCollection:(id)arg2 familyCollection:(id)arg3 account:(id)arg4 accountUserCollection:(id)arg5 contactResolver:(id)arg6 peerPaymentWebService:(id)arg7 paymentServiceDataProvider:(id)arg8 detailViewStyle:(long long)arg9 allowTransactionLinks:(_Bool)arg10;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

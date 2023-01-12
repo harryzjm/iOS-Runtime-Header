@@ -20,26 +20,27 @@
     long long _dataOrigination;
     UIImage *_cachedLogoImage;
     WFAirQualityProviderStation *_station;
-    NSURL *_logoURL;
     NSObject<OS_dispatch_queue> *_logoImageLoadingQueue;
     NSMutableArray *_outstandingRequestsCompletionBlocks;
+    NSURL *_logoURL;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)defaultProviderAttribution;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSURL *logoURL; // @synthesize logoURL=_logoURL;
 @property(nonatomic) struct os_unfair_lock_s dataSynchronizationLock; // @synthesize dataSynchronizationLock=_dataSynchronizationLock;
 @property(nonatomic) _Bool logoRequestInFlight; // @synthesize logoRequestInFlight=_logoRequestInFlight;
 @property(retain, nonatomic) NSMutableArray *outstandingRequestsCompletionBlocks; // @synthesize outstandingRequestsCompletionBlocks=_outstandingRequestsCompletionBlocks;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *logoImageLoadingQueue; // @synthesize logoImageLoadingQueue=_logoImageLoadingQueue;
-@property(copy, nonatomic) NSURL *logoURL; // @synthesize logoURL=_logoURL;
 @property(retain, nonatomic) WFAirQualityProviderStation *station; // @synthesize station=_station;
 @property(copy, nonatomic) UIImage *cachedLogoImage; // @synthesize cachedLogoImage=_cachedLogoImage;
 @property(nonatomic) long long dataOrigination; // @synthesize dataOrigination=_dataOrigination;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)p_invokeAndClearCompletionBlocksWithImage:(id)arg1 error:(id)arg2;
 - (void)p_queueCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)p_clearRequestInFlight;

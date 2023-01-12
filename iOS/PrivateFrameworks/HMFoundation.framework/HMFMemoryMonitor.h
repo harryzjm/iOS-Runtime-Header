@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMFUnfairLock, NSObject;
+@class NSObject;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface HMFMemoryMonitor
 {
+    struct os_unfair_lock_s _lock;
     _Bool _monitoring;
-    HMFUnfairLock *_lock;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_source> *_memoryPressureSource;
     long long _systemMemoryState;
@@ -22,7 +22,6 @@
 @property(nonatomic, getter=isMonitoring) _Bool monitoring; // @synthesize monitoring=_monitoring;
 @property(readonly, nonatomic) NSObject<OS_dispatch_source> *memoryPressureSource; // @synthesize memoryPressureSource=_memoryPressureSource;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
-@property(readonly, nonatomic) HMFUnfairLock *lock; // @synthesize lock=_lock;
 - (void)stop;
 - (void)start;
 - (void)dealloc;

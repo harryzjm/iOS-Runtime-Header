@@ -6,31 +6,31 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <SpringBoard/SBHomeGestureParticipantDelegate-Protocol.h>
+#import <SpringBoard/SBBarSwipeAffordanceControlling-Protocol.h>
 
-@class NSString, SBBarSwipeAffordanceView, SBHomeGestureParticipant;
-@protocol SBHomeGrabberPointerClickDelegate;
+@class NSString, SBBarSwipeAffordanceController, SBBarSwipeAffordanceView, SBFZStackParticipant, SBHomeGestureParticipant;
+@protocol SBBarSwipeAffordanceControllingDelegate, SBHomeGrabberPointerClickDelegate;
 
-@interface SBBarSwipeAffordanceViewController : UIViewController <SBHomeGestureParticipantDelegate>
+@interface SBBarSwipeAffordanceViewController : UIViewController <SBBarSwipeAffordanceControlling>
 {
-    long long _homeGestureParticipantIdentifier;
-    _Bool _wantsToBeActiveAffordance;
-    _Bool _suppressAffordance;
-    SBHomeGestureParticipant *_homeGestureParticipant;
-    id <SBHomeGrabberPointerClickDelegate> _pointerClickDelegate;
+    SBBarSwipeAffordanceController *_barSwipeAffordanceController;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) __weak id <SBHomeGrabberPointerClickDelegate> pointerClickDelegate; // @synthesize pointerClickDelegate=_pointerClickDelegate;
-@property(readonly, nonatomic) SBHomeGestureParticipant *homeGestureParticipant;
-@property(nonatomic) _Bool suppressAffordance; // @synthesize suppressAffordance=_suppressAffordance;
-@property(nonatomic) _Bool wantsToBeActiveAffordance; // @synthesize wantsToBeActiveAffordance=_wantsToBeActiveAffordance;
-- (void)_updateActiveState;
-- (void)_stopTryingToBecomeActiveAffordance;
-- (void)_beginTryingToBecomeActiveAffordance;
+- (void)zStackParticipant:(id)arg1 updatePreferences:(id)arg2;
+- (void)zStackParticipantDidChange:(id)arg1;
 - (void)homeGestureParticipantOwningHomeGestureDidChange:(id)arg1;
 - (_Bool)_canShowWhileLocked;
 - (void)loadView;
+@property(nonatomic) __weak id <SBHomeGrabberPointerClickDelegate> pointerClickDelegate;
+@property(readonly, nonatomic) SBFZStackParticipant *zStackParticipant;
+@property(readonly, nonatomic) SBHomeGestureParticipant *homeGestureParticipant;
+@property(nonatomic) long long activationPolicyForParticipantsBelow;
+@property(nonatomic) _Bool suppressAffordance;
+@property(nonatomic) _Bool wantsToBeActiveAffordance;
+@property(readonly, nonatomic) SBBarSwipeAffordanceView *barSwipeAffordanceView;
+@property(nonatomic) __weak id <SBBarSwipeAffordanceControllingDelegate> delegate;
+- (id)initWithHomeGestureParticipantIdentifier:(long long)arg1 zStackParticipantIdentifier:(long long)arg2;
 - (id)initWithHomeGestureParticipantIdentifier:(long long)arg1;
 
 // Remaining properties

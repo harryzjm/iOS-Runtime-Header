@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSArray;
+
 @interface WFCloudAppAccessResource
 {
 }
@@ -12,7 +14,7 @@
 + (void)accountInformationRetrievalSucceeded:(id)arg1 connectionIdentifier:(id)arg2 userInfo:(id)arg3;
 + (void)getAccountWithUsername:(id)arg1 password:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)name;
-- (id)accounts;
+@property(readonly, copy, nonatomic) NSArray *accounts;
 - (Class)accountClass;
 - (id)icon;
 

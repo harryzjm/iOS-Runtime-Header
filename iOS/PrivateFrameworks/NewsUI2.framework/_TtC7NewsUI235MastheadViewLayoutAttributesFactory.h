@@ -11,6 +11,8 @@
 @interface _TtC7NewsUI235MastheadViewLayoutAttributesFactory : _TtCs12_SwiftObject
 {
     MISSING_TYPE *styler;
+    MISSING_TYPE *marginBetweenContentAndEngagementBanner;
+    MISSING_TYPE *topMarginEngagementBanner;
 }
 
 @end

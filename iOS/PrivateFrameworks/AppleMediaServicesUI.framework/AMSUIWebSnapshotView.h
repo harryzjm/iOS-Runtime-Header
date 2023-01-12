@@ -10,12 +10,22 @@ __attribute__((visibility("hidden")))
 @interface AMSUIWebSnapshotView
 {
     UIView *_snapshot;
+    double _originalRatio;
+    long long _originalInterfaceStyle;
+    unsigned long long _visibilityModifiers;
+    struct CGRect _originalSnapshotFrame;
 }
 
++ (void)_screenCapFromView:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (id)_imageViewForImage:(id)arg1;
-+ (void)screenCapFromView:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long visibilityModifiers; // @synthesize visibilityModifiers=_visibilityModifiers;
+@property(nonatomic) long long originalInterfaceStyle; // @synthesize originalInterfaceStyle=_originalInterfaceStyle;
+@property(nonatomic) struct CGRect originalSnapshotFrame; // @synthesize originalSnapshotFrame=_originalSnapshotFrame;
+@property(nonatomic) double originalRatio; // @synthesize originalRatio=_originalRatio;
 @property(retain, nonatomic) UIView *snapshot; // @synthesize snapshot=_snapshot;
+- (_Bool)_visibilityUnmodified;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)layoutSubviews;
 - (void)_updateSnapshot:(id)arg1;
 - (id)initWithView:(id)arg1 completion:(CDUnknownBlockType)arg2;

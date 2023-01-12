@@ -28,7 +28,7 @@
 - (id)_findOrphansFromIconUUIDs:(id)arg1;
 - (id)_fetchPageURLStringsWithPredicate:(id)arg1;
 - (id)_fetchAllPageURLStrings;
-- (id)_fetchIconInfoForRejectedResourceWithPageURLString:(id)arg1 iconURLString:(id)arg2;
+- (id)_fetchIconInfosForRejectedResourcesWithPageURLString:(id)arg1 iconURLString:(id)arg2;
 - (id)_fetchIconInfoForIconUUID:(id)arg1;
 - (id)_fetchIconInfoForIconURLString:(id)arg1;
 - (id)_fetchIconUUIDsForPageURLStrings:(id)arg1;
@@ -39,7 +39,7 @@
 - (void)_firstIconUUIDForPageURLStrings:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)firstIconInfoMatchingPageURLStringIn:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)firstIconUUIDMatchingPageURLStringIn:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)rejectedResourceIconInfoForPageURLString:(id)arg1 iconURLString:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)rejectedResourceIconInfosForPageURLString:(id)arg1 iconURLString:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)markValidIconAtPageURLString:(id)arg1 iconURLString:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)markRejectedIconAtPageURLString:(id)arg1 iconURLString:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)iconInfoForIconURLString:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

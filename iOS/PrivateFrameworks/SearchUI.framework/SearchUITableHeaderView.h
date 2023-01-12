@@ -4,39 +4,43 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITableViewHeaderFooterView.h>
+#import <TemplateKit/TLKStackView.h>
 
 #import <SearchUI/NUIContainerViewDelegate-Protocol.h>
 
-@class NSString, SFResultSection, TLKLabel, TLKStackView, TLKTextButton;
-@protocol SFFeedbackListener, SearchUITableHeaderViewDelegate;
+@class NSString, SFCollectionCardSection, SFResultSection, SearchUILabel, TLKTextButton;
+@protocol SFFeedbackListener, SearchUITableHeaderCommandDelegate, SearchUITableHeaderViewDelegate;
 
-@interface SearchUITableHeaderView : UITableViewHeaderFooterView <NUIContainerViewDelegate>
+@interface SearchUITableHeaderView : TLKStackView <NUIContainerViewDelegate>
 {
     _Bool _shouldUseInsetRoundedSections;
     _Bool _isExpanded;
-    id <SearchUITableHeaderViewDelegate> _delegate;
+    id <SearchUITableHeaderViewDelegate> _headerViewDelegate;
+    id <SearchUITableHeaderCommandDelegate> _commandDelegate;
     id <SFFeedbackListener> _feedbackListener;
     unsigned long long _headerType;
     SFResultSection *_section;
-    TLKLabel *_titleLabel;
+    SearchUILabel *_titleLabel;
     TLKTextButton *_headerOptionButton;
-    TLKStackView *_stackView;
+    SFCollectionCardSection *_cardSection;
 }
 
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
+@property(retain, nonatomic) SFCollectionCardSection *cardSection; // @synthesize cardSection=_cardSection;
 @property(nonatomic) _Bool isExpanded; // @synthesize isExpanded=_isExpanded;
-@property(retain, nonatomic) TLKStackView *stackView; // @synthesize stackView=_stackView;
 @property(retain, nonatomic) TLKTextButton *headerOptionButton; // @synthesize headerOptionButton=_headerOptionButton;
-@property(retain, nonatomic) TLKLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property(retain, nonatomic) SearchUILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(nonatomic) _Bool shouldUseInsetRoundedSections; // @synthesize shouldUseInsetRoundedSections=_shouldUseInsetRoundedSections;
 @property(retain, nonatomic) SFResultSection *section; // @synthesize section=_section;
 @property(nonatomic) unsigned long long headerType; // @synthesize headerType=_headerType;
 @property(nonatomic) __weak id <SFFeedbackListener> feedbackListener; // @synthesize feedbackListener=_feedbackListener;
-@property(nonatomic) __weak id <SearchUITableHeaderViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak id <SearchUITableHeaderCommandDelegate> commandDelegate; // @synthesize commandDelegate=_commandDelegate;
+@property(nonatomic) __weak id <SearchUITableHeaderViewDelegate> headerViewDelegate; // @synthesize headerViewDelegate=_headerViewDelegate;
 @property(readonly) NSString *title;
-- (void)setFloating:(_Bool)arg1;
+- (void)updateWithCollectionCardSection:(id)arg1 section:(id)arg2 usesInsetRoundedSection:(_Bool)arg3;
+- (id)attributedStringWithSymbolImageName:(id)arg1 text:(id)arg2;
+- (void)updateButtonWithAttributedText:(id)arg1 image:(id)arg2;
 - (void)moreButtonPressed;
 - (_Bool)supportsShowMoreInApp;
 - (_Bool)isSuggestedAppsHeader;
@@ -44,10 +48,6 @@
 - (id)moreResultsPunchout;
 - (void)updateWithSection:(id)arg1 isExpanded:(_Bool)arg2 usesInsetRoundedSection:(_Bool)arg3;
 - (void)layoutSubviews;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)tlk_updateForAppearance:(id)arg1;
-- (void)didMoveToWindow;
-- (void)_dynamicUserInterfaceTraitDidChange;
 - (id)init;
 
 // Remaining properties

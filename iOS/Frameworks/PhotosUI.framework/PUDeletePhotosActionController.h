@@ -32,7 +32,7 @@
 @property(nonatomic) _Bool shouldSkipDeleteConfirmation; // @synthesize shouldSkipDeleteConfirmation=_shouldSkipDeleteConfirmation;
 @property(readonly, nonatomic) __weak id <PUDeletePhotosActionControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) long long action; // @synthesize action=_action;
-- (void)_getDeleteActionSheetTitle:(id *)arg1 destructiveButtonTitle:(id *)arg2 cancelButtonTitle:(id *)arg3 isDestructiveBehavior:(_Bool *)arg4 forAssets:(id)arg5 additionalPhotoStreamAssets:(id)arg6;
+- (void)_getDeleteActionSheetTitle:(id *)arg1 destructiveButtonTitle:(id *)arg2 cancelButtonTitle:(id *)arg3 isDestructiveBehavior:(_Bool *)arg4 forAssets:(id)arg5 duplicatePhotoStreamCount:(long long)arg6;
 - (void)_handleOneTimeAlertConfirmed;
 - (void)_handleMainAlertConfirmed:(_Bool)arg1;
 - (void)_showOnetimeConfirmation;

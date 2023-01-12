@@ -8,7 +8,6 @@
 
 @class CKRecordID, NSArray;
 
-__attribute__((visibility("hidden")))
 @interface CKDUpdateMissingAssetStatusOperationInfo : CKDatabaseOperationInfo
 {
     _Bool _recovered;

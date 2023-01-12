@@ -7,7 +7,7 @@
 #import <PhotosUICore/NSObject-Protocol.h>
 
 @protocol PXCuratedLibraryBodyLayout <NSObject>
-- (NSArray * (^)(unsigned long long))locationNamesFutureForContentInRect:(struct CGRect)arg1;
-- (NSDateInterval * (^)(unsigned long long))dateIntervalFutureForContentInRect:(struct CGRect)arg1 type:(unsigned long long)arg2;
+- (NSArray * (^)(long long))locationNamesFutureForContentInRect:(struct CGRect)arg1;
+- (NSDateInterval * (^)(long long))dateIntervalFutureForContentInRect:(struct CGRect)arg1 type:(unsigned long long)arg2;
 @end
 

@@ -9,8 +9,8 @@
 @class NSArray, NSDictionary;
 
 @protocol PRBeaconRangingProtocol <PRServerProtocol>
-- (void)clearBeaconWhitelist:(void (^)(_Bool, NSError *))arg1;
-- (void)pushBeaconWhitelist:(NSArray *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
+- (void)clearBeaconAllowlist:(void (^)(_Bool, NSError *))arg1;
+- (void)pushBeaconAllowlist:(NSArray *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
 - (void)stopBeaconing:(long long)arg1 reply:(void (^)(_Bool, NSError *))arg2;
 - (void)startBeaconing:(long long)arg1 options:(NSDictionary *)arg2 reply:(void (^)(_Bool, NSError *))arg3;
 @end

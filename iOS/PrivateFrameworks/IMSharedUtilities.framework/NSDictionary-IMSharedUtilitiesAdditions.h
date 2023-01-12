@@ -21,6 +21,7 @@
 - (long long)integerValueForKey:(id)arg1 withDefault:(long long)arg2;
 - (_Bool)boolValueForKey:(id)arg1 withDefault:(_Bool)arg2;
 - (_Bool)isArchivable_im;
+- (id)allValuesSortedByGUIDKeyWithBackupOrder:(id)arg1;
 @property(readonly, nonatomic) NSString *__im_associatedMessagePluginDisplayName;
 @property(readonly, nonatomic) NSString *__im_associatedMessagePluginBundleID;
 @property(readonly, nonatomic) NSNumber *__im_associatedMessageContentType;

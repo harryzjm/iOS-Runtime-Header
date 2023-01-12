@@ -25,7 +25,6 @@
 + (id)defaultAppearance;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
-- (id)_convertHexString:(id)arg1;
 - (void)updateBackgroundColorWithJSString:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 

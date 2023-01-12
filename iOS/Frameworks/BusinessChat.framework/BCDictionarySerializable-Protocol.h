@@ -8,7 +8,5 @@
 
 @protocol BCDictionarySerializable
 @property(readonly, nonatomic) NSDictionary *dictionaryValue;
-- (id)initWithDictionary:(NSDictionary *)arg1;
-- (id)init;
 @end
 

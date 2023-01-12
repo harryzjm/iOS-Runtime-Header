@@ -30,7 +30,7 @@
 - (void)prepareForReuse;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)dealloc;
-- (void)configureForChatItem:(id)arg1;
+- (void)configureForChatItem:(id)arg1 context:(id)arg2;
 
 @end
 

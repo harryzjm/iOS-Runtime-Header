@@ -6,7 +6,6 @@
 
 @protocol CKFetchUserQuotaOperationCallbacks;
 
-__attribute__((visibility("hidden")))
 @interface CKDFetchUserQuotaOperation
 {
     unsigned long long _quotaAvailable;
@@ -16,7 +15,7 @@ __attribute__((visibility("hidden")))
 - (void)main;
 - (int)operationType;
 - (id)activityCreate;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 // Remaining properties
 @property(retain, nonatomic) id <CKFetchUserQuotaOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;

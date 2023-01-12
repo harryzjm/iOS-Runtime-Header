@@ -26,7 +26,7 @@
 - (void)_showAlertForPasscodeSetupWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_showAlertForUnderageAccount:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_showAlertForCannotFindServerWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_showAlertForInsufficientSecurityLevelWithBundleID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_showAlertForInsufficientSecurityLevelWithError:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_showAlertForUnverifiedEmailWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_showAlertForAccountNotSupportedWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_showAlertForMissingAppleAccountWithCompletion:(CDUnknownBlockType)arg1;

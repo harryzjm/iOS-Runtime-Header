@@ -17,7 +17,7 @@
 - (_Bool)isEmbellishedOperator;
 - (struct Schemata)layoutSchemata;
 - (void)dealloc;
-- (const set_c5c159f9 *)mathMLAttributes;
+- (const void *)mathMLAttributes;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

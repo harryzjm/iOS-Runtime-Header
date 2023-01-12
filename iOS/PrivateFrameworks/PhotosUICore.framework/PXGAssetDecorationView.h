@@ -8,12 +8,13 @@
 
 #import <PhotosUICore/PXGReusableView-Protocol.h>
 
-@class PXGAssetDecorationViewConfiguration, PXRoundProgressView, PXUpdater;
+@class NSTimer, PXGAssetDecorationViewConfiguration, PXRoundProgressView, PXUpdater;
 
 @interface PXGAssetDecorationView : UIView <PXGReusableView>
 {
     PXUpdater *_updater;
     PXRoundProgressView *_progressIndicatorView;
+    NSTimer *_progressIndicatorDelayTimer;
     PXGAssetDecorationViewConfiguration *_userData;
     struct CGRect _clippingRect;
 }
@@ -30,6 +31,9 @@
 - (void)_setNeedsUpdate;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, nonatomic) _Bool shouldReuseWhenInvisible;
 
 @end
 

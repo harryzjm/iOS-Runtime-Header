@@ -33,7 +33,6 @@
 - (void)clientRemote_didDetectEmergencyCallbackModeWithEndDate:(id)arg1;
 - (void)clientRemote_didEndWithReason:(long long)arg1 error:(id)arg2;
 - (void)clientRemote_didDetectContactAtDate:(id)arg1;
-- (CDUnknownBlockType)_successCompletionBlockOnClientQueue:(CDUnknownBlockType)arg1;
 - (void)abortWithCompletion:(CDUnknownBlockType)arg1;
 - (void)startWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithHealthStore:(id)arg1 configuration:(id)arg2;

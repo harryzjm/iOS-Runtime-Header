@@ -23,6 +23,8 @@
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;
 - (_Bool)settings:(id)arg1 appendDescriptionToBuilder:(id)arg2 forFlag:(long long)arg3 object:(id)arg4 ofSetting:(unsigned long long)arg5;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(nonatomic) long long playbackControlsState;
+@property(nonatomic, setter=_setDebugValidationOrientationMask:) unsigned long long _debugValidationOrientationMask;
 @property(retain, nonatomic) NSArray *multitaskingDragExclusionRects;
 @property(nonatomic) long long preferredPointerLockStatus;
 @property(nonatomic) struct CGRect screenFocusedFrame;

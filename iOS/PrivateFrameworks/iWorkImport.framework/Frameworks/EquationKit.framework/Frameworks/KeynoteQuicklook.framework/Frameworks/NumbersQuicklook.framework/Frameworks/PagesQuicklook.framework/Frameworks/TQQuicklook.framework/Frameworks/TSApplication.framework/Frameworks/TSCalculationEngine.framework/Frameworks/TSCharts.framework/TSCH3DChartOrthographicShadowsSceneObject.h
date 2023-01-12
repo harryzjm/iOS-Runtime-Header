@@ -10,8 +10,8 @@
 
 + (id)blurParametersArray;
 - (id)createShadowsRenderer;
-- (void)updateShadowPlane:(id)arg1 texcoords:(id)arg2 scene:(id)arg3 blurslack:(float)arg4 angle:(float)arg5 quality:(float)arg6 planePadding:(box_a3bd9649)arg7;
-- (void)updateCoordsAndTexcoords:(const box_a3bd9649 *)arg1 zOffset:(float)arg2 cameraPosition:(const tvec3_17f03ce0 *)arg3 quad:(id)arg4 texcoords:(id)arg5;
+- (void)updateShadowPlane:(id)arg1 texcoords:(id)arg2 scene:(id)arg3 blurslack:(float)arg4 angle:(float)arg5 quality:(float)arg6 planePadding:(box_c9ef104e)arg7;
+- (void)updateCoordsAndTexcoords:(const void *)arg1 zOffset:(float)arg2 cameraPosition:(const void *)arg3 quad:(id)arg4 texcoords:(id)arg5;
 - (id)createCamera;
 
 @end

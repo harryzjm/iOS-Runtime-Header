@@ -10,7 +10,7 @@
 
 @interface SKSpriteNode <SKWarpable>
 {
-    struct SKCSpriteNode *_skcSpriteNode;
+    void *_skcSpriteNode;
     SKLightNode *_light;
     _Bool _shouldRepeatTexture;
 }
@@ -59,7 +59,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)init;
 - (void)_didMakeBackingNode;
-- (struct SKCNode *)_makeBackingNode;
+- (void *)_makeBackingNode;
 - (id)initWithTexture:(id)arg1 color:(id)arg2 size:(struct CGSize)arg3;
 
 // Remaining properties

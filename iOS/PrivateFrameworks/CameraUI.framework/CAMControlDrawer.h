@@ -11,7 +11,7 @@
 #import <CameraUI/CAMControlDrawerMenuButtonDelegate-Protocol.h>
 #import <CameraUI/UIScrollViewDelegate-Protocol.h>
 
-@class CAMControlDrawerButton, CAMDrawerApertureButton, CAMDrawerAspectRatioButton, CAMDrawerExposureButton, CAMDrawerFilterButton, CAMDrawerFlashButton, CAMDrawerHDRButton, CAMDrawerIntensityButton, CAMDrawerLivePhotoButton, CAMDrawerLowLightButton, CAMDrawerTimerButton, CAMExposureSlider, CAMLowLightSlider, CEKApertureSlider, CEKSlider, CEKWheelScrubberView, NSArray, NSMutableDictionary, NSString, UIScrollView;
+@class CAMControlDrawerButton, CAMDrawerApertureButton, CAMDrawerAspectRatioButton, CAMDrawerExposureButton, CAMDrawerFilterButton, CAMDrawerFlashButton, CAMDrawerHDRButton, CAMDrawerIntensityButton, CAMDrawerLivePhotoButton, CAMDrawerLowLightButton, CAMDrawerRAWButton, CAMDrawerSemanticStyleButton, CAMDrawerTimerButton, CAMExposureSlider, CAMLowLightSlider, CAMSemanticStyleControl, CEKApertureSlider, CEKSlider, CEKWheelScrubberView, NSArray, NSMutableDictionary, NSString, UIScrollView;
 @protocol CAMControlDrawerDelegate, CAMControlDrawerExpandableButton, CAMControlDrawerPresentationDelegate;
 
 @interface CAMControlDrawer : UIView <CAMControlDrawerMenuButtonDelegate, UIScrollViewDelegate, CAMAccessibilityHUDItemProvider, CAMBarsAccessibilityHUDManagerGestureProvider>
@@ -19,7 +19,6 @@
     long long _layoutStyle;
     id <CAMControlDrawerDelegate> _delegate;
     id <CAMControlDrawerPresentationDelegate> _presentationDelegate;
-    NSString *_contentSize;
     NSArray *_visibleControlTypes;
     long long _orientation;
     CEKWheelScrubberView *_filterScrubberView;
@@ -27,6 +26,7 @@
     CEKSlider *_intensitySlider;
     CAMLowLightSlider *_lowLightSlider;
     CAMExposureSlider *_exposureSlider;
+    CAMSemanticStyleControl *_semanticStyleControl;
     NSMutableDictionary *__controlMap;
     CAMControlDrawerButton<CAMControlDrawerExpandableButton> *__expandedControl;
     UIScrollView *__scrollView;
@@ -36,6 +36,7 @@
 @property(readonly, nonatomic) UIScrollView *_scrollView; // @synthesize _scrollView=__scrollView;
 @property(retain, nonatomic, setter=_setExpandedControl:) CAMControlDrawerButton<CAMControlDrawerExpandableButton> *_expandedControl; // @synthesize _expandedControl=__expandedControl;
 @property(readonly, nonatomic) NSMutableDictionary *_controlMap; // @synthesize _controlMap=__controlMap;
+@property(readonly, nonatomic) CAMSemanticStyleControl *semanticStyleControl; // @synthesize semanticStyleControl=_semanticStyleControl;
 @property(readonly, nonatomic) CAMExposureSlider *exposureSlider; // @synthesize exposureSlider=_exposureSlider;
 @property(readonly, nonatomic) CAMLowLightSlider *lowLightSlider; // @synthesize lowLightSlider=_lowLightSlider;
 @property(readonly, nonatomic) CEKSlider *intensitySlider; // @synthesize intensitySlider=_intensitySlider;
@@ -43,7 +44,6 @@
 @property(readonly, nonatomic) CEKWheelScrubberView *filterScrubberView; // @synthesize filterScrubberView=_filterScrubberView;
 @property(nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property(retain, nonatomic) NSArray *visibleControlTypes; // @synthesize visibleControlTypes=_visibleControlTypes;
-@property(retain, nonatomic) NSString *contentSize; // @synthesize contentSize=_contentSize;
 @property(nonatomic) __weak id <CAMControlDrawerPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
 @property(nonatomic) __weak id <CAMControlDrawerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
@@ -65,6 +65,8 @@
 - (_Bool)isControlExpandedForType:(long long)arg1;
 - (void)expandControlForType:(long long)arg1 animated:(_Bool)arg2;
 - (void)setOrientation:(long long)arg1 animated:(_Bool)arg2;
+- (void)setSemanticStyleControlVisible:(_Bool)arg1 animated:(_Bool)arg2;
+@property(nonatomic, getter=isSemanticStyleControlVisible) _Bool semanticStyleControlVisible;
 - (void)setLowLightSliderVisible:(_Bool)arg1 animated:(_Bool)arg2;
 @property(nonatomic, getter=isLowLightSliderVisible) _Bool lowLightSliderVisible;
 - (void)setExposureSliderVisible:(_Bool)arg1 animated:(_Bool)arg2;
@@ -77,6 +79,7 @@
 @property(readonly, nonatomic, getter=isFilterScrubberVisible) _Bool filterScrubberVisible;
 - (void)setVisibleControlTypes:(id)arg1 animated:(_Bool)arg2;
 - (void)_layoutFilterScrubberView;
+- (void)_layoutSemanticStyleControl;
 - (void)_layoutLowLightSlider;
 - (void)_layoutExposureSlider;
 - (void)_layoutIntensitySlider;
@@ -91,6 +94,7 @@
 - (double)_viewportLength;
 - (unsigned long long)_viewportMaximumControlCount;
 - (unsigned long long)_sliderFontStyle;
+- (void)_loadSemanticStyleControlIfNeeded;
 - (void)_loadExposureSliderIfNeeded;
 - (void)_loadLowLightSliderIfNeeded;
 - (void)_loadIntensitySliderIfNeeded;
@@ -100,6 +104,8 @@
 - (void)_loadCustomUIIfNeededForControlType:(long long)arg1;
 - (void)_handleControlReleased:(id)arg1;
 - (void)_handleControlValueChanged:(id)arg1;
+@property(readonly, nonatomic) CAMDrawerRAWButton *rawButton;
+@property(readonly, nonatomic) CAMDrawerSemanticStyleButton *semanticStyleButton;
 @property(readonly, nonatomic) CAMDrawerLowLightButton *lowLightButton;
 @property(readonly, nonatomic) CAMDrawerHDRButton *hdrButton;
 @property(readonly, nonatomic) CAMDrawerExposureButton *exposureButton;

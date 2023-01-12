@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, WBSAutomaticReaderActivationManager, _SFContentBlockersPreferenceManager, _SFGeolocationPermissionManager, _SFPageZoomPreferenceManager, _SFRequestDesktopSitePreferenceManager, _SFUserMediaPermissionController;
+@class NSMutableDictionary, WBSAutomaticReaderActivationManager, _SFAppInfoOverlayPreferenceManager, _SFContentBlockersPreferenceManager, _SFGeolocationPermissionManager, _SFPageZoomPreferenceManager, _SFRequestDesktopSitePreferenceManager, _SFUserMediaPermissionController;
 
 @interface _SFPerSitePreferencesVendor : NSObject
 {
@@ -15,10 +15,12 @@
     _SFContentBlockersPreferenceManager *_contentBlockersPreferenceManager;
     _SFRequestDesktopSitePreferenceManager *_requestDesktopSitePreferenceManager;
     _SFPageZoomPreferenceManager *_pageZoomPreferenceManager;
+    _SFAppInfoOverlayPreferenceManager *_appInfoOverlayPreferenceManager;
 }
 
 - (void).cxx_destruct;
 - (id)managerForPreference:(id)arg1;
+@property(readonly, nonatomic) _SFAppInfoOverlayPreferenceManager *appInfoOverlayPreferenceManager; // @synthesize appInfoOverlayPreferenceManager=_appInfoOverlayPreferenceManager;
 @property(readonly, nonatomic) _SFPageZoomPreferenceManager *pageZoomPreferenceManager; // @synthesize pageZoomPreferenceManager=_pageZoomPreferenceManager;
 @property(readonly, nonatomic) _SFRequestDesktopSitePreferenceManager *requestDesktopSitePreferenceManager; // @synthesize requestDesktopSitePreferenceManager=_requestDesktopSitePreferenceManager;
 @property(readonly, nonatomic) _SFGeolocationPermissionManager *sharedGeolocationPermissionManager;

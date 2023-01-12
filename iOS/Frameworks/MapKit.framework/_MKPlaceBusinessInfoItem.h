@@ -6,9 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSAttributedString, NSString, UIColor, UIFont;
+@class NSAttributedString, NSString, UIColor, UIFont, UIImage;
 
-__attribute__((visibility("hidden")))
 @interface _MKPlaceBusinessInfoItem : NSObject
 {
     NSString *_displayString;
@@ -16,12 +15,16 @@ __attribute__((visibility("hidden")))
     NSAttributedString *_formattedDisplayString;
     UIFont *_font;
     UIColor *_textColor;
+    NSString *_symbolName;
 }
 
-+ (id)itemWithDescription:(id)arg1 availability:(_Bool)arg2;
++ (id)itemWithDescription:(id)arg1 availability:(_Bool)arg2 symbolName:(id)arg3;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) UIImage *amenityIcon;
+@property(readonly, nonatomic) NSString *amenityString;
 - (_Bool)isEqual:(id)arg1;
 - (void)setFont:(id)arg1 textColor:(id)arg2;
+- (id)_resolvedAvailabilityIconWithFont:(id)arg1 textColor:(id)arg2;
 @property(readonly, nonatomic) NSAttributedString *displayString;
 
 @end

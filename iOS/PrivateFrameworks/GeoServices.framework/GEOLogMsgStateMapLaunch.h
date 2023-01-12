@@ -16,13 +16,17 @@
     NSString *_launchUri;
     NSString *_referringWebsite;
     NSString *_sourceAppId;
+    NSString *_sourceHandoffDevice;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
+    _Bool _isHandoff;
     struct {
+        unsigned int has_isHandoff:1;
         unsigned int read_launchUri:1;
         unsigned int read_referringWebsite:1;
         unsigned int read_sourceAppId:1;
+        unsigned int read_sourceHandoffDevice:1;
         unsigned int wrote_anyField:1;
     } _flags;
 }
@@ -42,6 +46,10 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) NSString *sourceHandoffDevice;
+@property(readonly, nonatomic) _Bool hasSourceHandoffDevice;
+@property(nonatomic) _Bool hasIsHandoff;
+@property(nonatomic) _Bool isHandoff;
 @property(retain, nonatomic) NSString *referringWebsite;
 @property(readonly, nonatomic) _Bool hasReferringWebsite;
 @property(retain, nonatomic) NSString *launchUri;

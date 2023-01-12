@@ -41,6 +41,7 @@
 - (id)placemarksForLocationAddress:(id)arg1;
 - (void)setPlacemarks:(id)arg1 forLocationAddress:(id)arg2;
 - (id)placemarksForLocationCoordinate:(struct CLLocationCoordinate2D)arg1 withHorizontalAccuracy:(double)arg2 queryAccuracy:(double)arg3;
+- (id)placemarksForLocationCoordinate:(struct CLLocationCoordinate2D)arg1 withHorizontalAccuracy:(double)arg2;
 - (void)setPlacemarks:(id)arg1 forLocationCoordinate:(struct CLLocationCoordinate2D)arg2 withHorizontalAccuracy:(double)arg3;
 - (void)setPlacemarks:(id)arg1 forCLLocation:(id)arg2;
 - (void)insertBatchesOfPlacemarks:(id)arg1 forLocations:(id)arg2;

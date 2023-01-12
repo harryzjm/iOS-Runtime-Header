@@ -10,7 +10,6 @@
 
 @interface IMAccountController : NSObject
 {
-    NSMutableDictionary *_accountMap;
     _Bool _isReadOnly;
     _Bool _cachesEnabled;
     NSArray *_operationalAccountsCache;
@@ -18,6 +17,7 @@
     NSMutableDictionary *_serviceToAccountsMap;
     NSMutableDictionary *_serviceToConnectedAccountsMap;
     NSMutableDictionary *_serviceToOperationalAccountsMap;
+    NSMutableDictionary *_accountMap;
     _Bool _networkDataAvailable;
     NSArray *_accounts;
 }
@@ -99,6 +99,7 @@
 - (id)_bestOperationalAccountForSendingForService:(id)arg1;
 - (id)__iCloudSystemAccountForService:(id)arg1;
 - (id)_bestAccountForAddresses:(id)arg1;
+- (_Bool)metionedHandleMatchesMeCard:(id)arg1;
 - (_Bool)receiverIsMyMention:(id)arg1;
 - (long long)activeAccountsAreEligibleForAppleSMSFilter;
 - (long long)activeAccountsAreEligibleForHawking;

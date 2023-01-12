@@ -6,6 +6,7 @@
 
 @class NSData, NSMutableData;
 
+__attribute__((visibility("hidden")))
 @interface ICSAPSessionVerifySignatureOperation
 {
     NSData *_signatureData;

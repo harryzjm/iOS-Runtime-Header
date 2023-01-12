@@ -12,9 +12,11 @@
 {
     unsigned long long _high;
     unsigned long long _low;
+    unsigned int _deanonymizeId;
     struct {
         unsigned int has_high:1;
         unsigned int has_low:1;
+        unsigned int has_deanonymizeId:1;
     } _flags;
 }
 
@@ -32,6 +34,8 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasDeanonymizeId;
+@property(nonatomic) unsigned int deanonymizeId;
 @property(nonatomic) _Bool hasLow;
 @property(nonatomic) unsigned long long low;
 @property(nonatomic) _Bool hasHigh;

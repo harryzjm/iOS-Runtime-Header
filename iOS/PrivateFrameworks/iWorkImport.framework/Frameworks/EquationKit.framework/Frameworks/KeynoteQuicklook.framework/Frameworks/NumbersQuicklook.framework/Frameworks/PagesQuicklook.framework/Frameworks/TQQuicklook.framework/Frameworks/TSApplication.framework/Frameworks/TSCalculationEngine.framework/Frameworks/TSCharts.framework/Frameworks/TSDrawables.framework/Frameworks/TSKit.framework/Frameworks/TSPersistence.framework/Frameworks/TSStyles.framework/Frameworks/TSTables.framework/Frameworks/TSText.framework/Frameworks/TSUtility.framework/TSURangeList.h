@@ -8,10 +8,10 @@
 
 @interface TSURangeList : NSObject
 {
-    vector_b5e32e34 mRangeList;
+    struct vector<_NSRange, std::allocator<_NSRange>> mRangeList;
 }
 
-+ (id)stringValueForRangeVector:(const vector_b5e32e34 *)arg1;
++ (id)stringValueForRangeVector:(const void *)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)stringValue;
@@ -23,9 +23,9 @@
 - (void)insertRange:(struct _NSRange)arg1 atIndex:(unsigned long long)arg2;
 - (void)addRange:(struct _NSRange)arg1;
 @property(readonly, nonatomic) unsigned long long count;
-@property(readonly, nonatomic) const vector_b5e32e34 *rangeVector;
-- (id)initWithRangeVectorMove:(vector_b5e32e34 *)arg1;
-- (id)initWithRangeVector:(const vector_b5e32e34 *)arg1;
+@property(readonly, nonatomic) const void *rangeVector;
+- (id)initWithRangeVectorMove:(void *)arg1;
+- (id)initWithRangeVector:(const void *)arg1;
 - (id)initWithString:(id)arg1;
 - (id)initWithRangeList:(id)arg1;
 - (id)initWithRange:(struct _NSRange)arg1;

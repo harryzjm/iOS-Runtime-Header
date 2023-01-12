@@ -9,30 +9,29 @@
 @interface CXXPCCallSource
 {
     _Bool _hasVoIPBackgroundMode;
+    struct os_unfair_lock_s _accessorLock;
+    NSXPCConnection *_connection;
     NSString *_bundleIdentifier;
     NSURL *_bundleURL;
     NSString *_localizedName;
-    NSXPCConnection *_connection;
-    NSString *_applicationIdentifier;
     NSSet *_capabilities;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool hasVoIPBackgroundMode; // @synthesize hasVoIPBackgroundMode=_hasVoIPBackgroundMode;
-@property(copy, nonatomic) NSSet *capabilities; // @synthesize capabilities=_capabilities;
-@property(copy, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
-@property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
+@property(readonly, nonatomic) _Bool hasVoIPBackgroundMode; // @synthesize hasVoIPBackgroundMode=_hasVoIPBackgroundMode;
+@property(readonly, copy, nonatomic) NSSet *capabilities; // @synthesize capabilities=_capabilities;
+@property(readonly, nonatomic) struct os_unfair_lock_s accessorLock; // @synthesize accessorLock=_accessorLock;
 - (id)localizedName;
-@property(retain, nonatomic) NSURL *bundleURL; // @synthesize bundleURL=_bundleURL;
-@property(retain, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+- (id)bundleURL;
+- (id)bundleIdentifier;
 - (id)vendorProtocolDelegate;
 - (_Bool)isPermittedToUseBluetoothAccessories;
 - (_Bool)isPermittedToUsePrivateAPI;
 - (_Bool)isPermittedToUsePublicAPI;
 - (CDStruct_6ad76789)auditToken;
 - (int)processIdentifier;
-- (id)identifier;
 - (_Bool)isConnected;
+@property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 - (void)dealloc;
 - (id)initWithConnection:(id)arg1;
 - (id)init;

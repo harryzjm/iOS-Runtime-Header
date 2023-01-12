@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)setMaxVisibleContentInsetsWhenInEdit:(struct UIEdgeInsets)arg1;
 @property(readonly, nonatomic) struct CGSize minimumContentSize;
 @property(readonly, nonatomic) struct UIEdgeInsets contentInsets;
+- (void)visualSearchLookupWidgetDidTap;
 - (void)editorHeightDidChange;
 - (void)editingDidChange:(_Bool)arg1;
 - (_Bool)_canShowWhileLocked;

@@ -18,7 +18,6 @@
     MISSING_TYPE *offlineArticleManager;
     MISSING_TYPE *offlineAlertControllerFactory;
     MISSING_TYPE *audioPlaybackTracker;
-    MISSING_TYPE *alertPresenter;
     MISSING_TYPE *audioConfigManager;
     MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *audioTabVisibilitySignal;

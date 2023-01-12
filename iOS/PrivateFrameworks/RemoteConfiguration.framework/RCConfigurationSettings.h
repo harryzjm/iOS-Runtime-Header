@@ -19,9 +19,11 @@
     NSString *_bundleID;
     RCDeviceInfo *_deviceInfo;
     RCDebugOverrides *_debugOverrides;
+    unsigned long long _requestMode;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long requestMode; // @synthesize requestMode=_requestMode;
 @property(readonly, nonatomic) _Bool useBackgroundRefreshRate; // @synthesize useBackgroundRefreshRate=_useBackgroundRefreshRate;
 @property(readonly, nonatomic) RCDebugOverrides *debugOverrides; // @synthesize debugOverrides=_debugOverrides;
 @property(readonly, nonatomic) RCDeviceInfo *deviceInfo; // @synthesize deviceInfo=_deviceInfo;
@@ -38,9 +40,11 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)initWithRequestInfos:(id)arg1 userID:(id)arg2 storefrontID:(id)arg3 bundleID:(id)arg4 deviceInfo:(id)arg5 debugOverrides:(id)arg6 useBackgroundRefreshRate:(_Bool)arg7 requestMode:(unsigned long long)arg8;
 - (id)initWithRequestInfos:(id)arg1 userID:(id)arg2 storefrontID:(id)arg3 bundleID:(id)arg4 deviceInfo:(id)arg5 debugOverrides:(id)arg6 useBackgroundRefreshRate:(_Bool)arg7;
 - (id)initWithRequestInfos:(id)arg1 userID:(id)arg2 storefrontID:(id)arg3 bundleID:(id)arg4 deviceInfo:(id)arg5 debugOverrides:(id)arg6;
 - (id)initWithRequestKey:(id)arg1 responseKey:(id)arg2 fallbackURL:(id)arg3 userID:(id)arg4 storefrontID:(id)arg5 bundleID:(id)arg6 deviceInfo:(id)arg7 debugOverrides:(id)arg8 useBackgroundRefreshRate:(_Bool)arg9;
+- (id)initWithRequestKey:(id)arg1 responseKey:(id)arg2 fallbackURL:(id)arg3 userID:(id)arg4 storefrontID:(id)arg5 bundleID:(id)arg6 deviceInfo:(id)arg7 debugOverrides:(id)arg8 requestMode:(unsigned long long)arg9;
 - (id)initWithRequestKey:(id)arg1 responseKey:(id)arg2 fallbackURL:(id)arg3 userID:(id)arg4 storefrontID:(id)arg5 bundleID:(id)arg6 deviceInfo:(id)arg7 debugOverrides:(id)arg8;
 
 // Remaining properties

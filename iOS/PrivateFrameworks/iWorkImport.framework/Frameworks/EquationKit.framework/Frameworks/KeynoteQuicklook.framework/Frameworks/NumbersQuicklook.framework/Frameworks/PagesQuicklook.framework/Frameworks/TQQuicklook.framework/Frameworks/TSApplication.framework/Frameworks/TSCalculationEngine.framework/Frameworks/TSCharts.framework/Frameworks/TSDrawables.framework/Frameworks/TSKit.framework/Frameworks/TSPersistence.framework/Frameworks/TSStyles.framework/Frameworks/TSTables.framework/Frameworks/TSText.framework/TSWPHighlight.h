@@ -44,7 +44,7 @@
 @property(copy, nonatomic) TSDCommentStorage *storage;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)loadFromArchive:(const struct HighlightArchive *)arg1 unarchiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEquivalentToObject:(id)arg1;

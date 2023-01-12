@@ -10,8 +10,7 @@
 
 @interface _TtCC9Coherence9CRDecoder13CRDTContainer : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *crdt;
-    MISSING_TYPE *decodeContext;
+    MISSING_TYPE *decoder;
 }
 
 @end

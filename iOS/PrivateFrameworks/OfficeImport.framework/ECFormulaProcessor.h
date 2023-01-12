@@ -9,22 +9,22 @@
 __attribute__((visibility("hidden")))
 @interface ECFormulaProcessor : NSObject
 {
-    struct XlFormulaProcessor *mXlFormulaProcessorLasso;
-    struct XlFormulaProcessor *mXlFormulaProcessorXl;
-    struct XlNameTable *mXlNameTable;
-    ChVector_cc6fdd32 *mLassoSheetNames;
-    ChVector_cc6fdd32 *mXlSheetNames;
-    struct XlLinkTable *mXlLinkTable;
+    void *mXlFormulaProcessorLasso;
+    void *mXlFormulaProcessorXl;
+    void *mXlNameTable;
+    void *mLassoSheetNames;
+    void *mXlSheetNames;
+    void *mXlLinkTable;
 }
 
-+ (id)formulaStringForEDFormula:(id)arg1 edWorksheet:(id)arg2 xlFormulaProcessor:(struct XlFormulaProcessor *)arg3;
-- (struct XlFormulaProcessor *)xlFormulaProcessorXl;
-- (struct XlFormulaProcessor *)xlFormulaProcessorLasso;
++ (id)formulaStringForEDFormula:(id)arg1 edWorksheet:(id)arg2 xlFormulaProcessor:(void *)arg3;
+- (void *)xlFormulaProcessorXl;
+- (void *)xlFormulaProcessorLasso;
 - (void)setupWithWorkbook:(id)arg1;
 - (void)dealloc;
 - (id)init;
-- (ChVector_cc6fdd32 *)sheetNamesFromWorkbook:(id)arg1;
-- (struct XlFormulaProcessor *)setupWithWorkbook:(id)arg1 xlNameTable:(struct XlNameTable *)arg2 sheetNames:(ChVector_cc6fdd32 *)arg3 xlLinkTable:(struct XlLinkTable *)arg4 lassoSyntax:(_Bool)arg5;
+- (void *)sheetNamesFromWorkbook:(id)arg1;
+- (void *)setupWithWorkbook:(id)arg1 xlNameTable:(void *)arg2 sheetNames:(void *)arg3 xlLinkTable:(void *)arg4 lassoSyntax:(_Bool)arg5;
 
 @end
 

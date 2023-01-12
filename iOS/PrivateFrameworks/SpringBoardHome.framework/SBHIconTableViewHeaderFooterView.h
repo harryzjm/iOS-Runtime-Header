@@ -6,21 +6,19 @@
 
 #import <UIKit/UITableViewHeaderFooterView.h>
 
-@protocol SBIconListLayoutProvider;
+@class NSString;
 
 @interface SBHIconTableViewHeaderFooterView : UITableViewHeaderFooterView
 {
-    id <SBIconListLayoutProvider> _listLayoutProvider;
-    struct SBIconImageInfo _iconImageInfo;
+    NSString *_title;
+    struct NSDirectionalEdgeInsets _titleLayoutMargins;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) id <SBIconListLayoutProvider> listLayoutProvider; // @synthesize listLayoutProvider=_listLayoutProvider;
-@property(nonatomic) struct SBIconImageInfo iconImageInfo; // @synthesize iconImageInfo=_iconImageInfo;
-- (void)layoutSubviews;
-- (void)_updateFont;
-- (void)traitCollectionDidChange:(id)arg1;
+@property(nonatomic) struct NSDirectionalEdgeInsets titleLayoutMargins; // @synthesize titleLayoutMargins=_titleLayoutMargins;
+@property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 - (void)prepareForReuse;
+- (void)updateConfigurationUsingState:(id)arg1;
 - (id)initWithReuseIdentifier:(id)arg1;
 
 @end

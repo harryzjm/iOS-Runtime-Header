@@ -14,12 +14,14 @@
 + (id)dictionaryWithUnreadableSegment:(double)arg1 stream:(long long)arg2 size:(unsigned int)arg3;
 + (id)dictionaryWithBookmarkResumeFailureTime:(double)arg1 bookmarkCreationTime:(double)arg2 publicStream:(long long)arg3;
 + (id)dictionaryWithPrunePublicStream:(long long)arg1 deletionInterval:(double)arg2 eventDeletionCount:(unsigned int)arg3;
++ (id)dictionaryWithAllStreamsEventWritten:(_Bool)arg1 size:(unsigned int)arg2 streamIdentifier:(id)arg3;
 + (id)dictionaryWithIntentEventWritten:(_Bool)arg1 size:(unsigned int)arg2;
 + (id)dictionaryWithAppLaunchEventWritten:(_Bool)arg1 size:(unsigned int)arg2;
 + (id)dictionaryWithUnreadableEventTime:(double)arg1 stream:(long long)arg2 segmentTime:(double)arg3;
 + (void)sendUnreadableSegment:(double)arg1 stream:(long long)arg2 size:(unsigned int)arg3;
 + (void)sendBookmarkResumeFailureTime:(double)arg1 bookmarkCreationTime:(double)arg2 publicStream:(long long)arg3;
 + (void)sendPrunePublicStream:(long long)arg1 deletionInterval:(double)arg2 eventDeletionCount:(unsigned int)arg3;
++ (void)sendAllStreamsEventWritten:(_Bool)arg1 size:(unsigned int)arg2 streamIdentifier:(id)arg3;
 + (void)sendIntentEventWritten:(_Bool)arg1 size:(unsigned int)arg2;
 + (void)sendAppLaunchEventWritten:(_Bool)arg1 size:(unsigned int)arg2;
 + (void)sendUnreadableEventTime:(double)arg1 stream:(long long)arg2 segmentTime:(double)arg3;

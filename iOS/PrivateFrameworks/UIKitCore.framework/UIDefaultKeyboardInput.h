@@ -7,7 +7,7 @@
 #import <UIKitCore/UIKeyboardInput-Protocol.h>
 #import <UIKitCore/UITextInputPrivate-Protocol.h>
 
-@class NSDictionary, NSIndexSet, NSString, RTIInputSystemSourceSession, UIColor, UIImage, UIInputContextHistory, UITextInputPasswordRules, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView;
+@class NSDictionary, NSIndexSet, NSString, RTIInputSystemSourceSession, UIColor, UIImage, UIInputContextHistory, UITextInputPasswordRules, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, _UISupplementalLexicon;
 @protocol UITextInputDelegate, UITextInputSuggestionDelegate, UITextInputTokenizer;
 
 @interface UIDefaultKeyboardInput <UIKeyboardInput, UITextInputPrivate>
@@ -112,6 +112,7 @@
 @property(nonatomic) _Bool deferBecomingResponder;
 @property(readonly, copy) NSString *description;
 @property(nonatomic, getter=isDevicePasscodeEntry) _Bool devicePasscodeEntry;
+@property(nonatomic) _Bool disableHandwritingKeyboard;
 @property(nonatomic) _Bool disableInputBars;
 @property(nonatomic) _Bool disablePrediction;
 @property(nonatomic) _Bool displaySecureEditsUsingPlainText;
@@ -138,6 +139,7 @@
 @property(nonatomic) _Bool loadKeyboardsForSiriLanguage;
 @property(copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property(nonatomic) _Bool preferOnlineDictation;
+@property(nonatomic) long long preferredKeyboardStyle;
 @property(copy, nonatomic) NSString *recentInputIdentifier;
 @property(copy, nonatomic) NSString *responseContext;
 @property(nonatomic) _Bool returnKeyGoesToNextResponder;
@@ -145,7 +147,11 @@
 @property(nonatomic, getter=isSecureTextEntry) _Bool secureTextEntry; // @dynamic secureTextEntry;
 @property(nonatomic) long long selectionAffinity;
 @property(retain, nonatomic) UIColor *selectionBarColor;
+@property(retain, nonatomic) UIColor *selectionBorderColor;
+@property(nonatomic) double selectionBorderWidth;
+@property(nonatomic) double selectionCornerRadius;
 @property(retain, nonatomic) UIImage *selectionDragDotImage;
+@property(nonatomic) struct UIEdgeInsets selectionEdgeInsets;
 @property(nonatomic) long long selectionGranularity;
 @property(retain, nonatomic) UIColor *selectionHighlightColor;
 @property(nonatomic) int shortcutConversionType; // @dynamic shortcutConversionType;
@@ -155,12 +161,15 @@
 @property(nonatomic) long long smartQuotesType; // @dynamic smartQuotesType;
 @property(nonatomic) long long spellCheckingType; // @dynamic spellCheckingType;
 @property(readonly) Class superclass;
+@property(retain, nonatomic) _UISupplementalLexicon *supplementalLexicon;
+@property(retain, nonatomic) UIImage *supplementalLexiconAmbiguousItemIcon;
 @property(readonly, nonatomic) _Bool supportsImagePaste;
 @property(nonatomic) _Bool suppressReturnKeyStyling;
 @property(copy, nonatomic) NSString *textContentType; // @dynamic textContentType;
 @property(readonly, nonatomic) id <UITextInputSuggestionDelegate> textInputSuggestionDelegate;
 @property(readonly, nonatomic) UIView *textInputView;
 @property(nonatomic) int textLoupeVisibility; // @dynamic textLoupeVisibility;
+@property(readonly, nonatomic) UITextRange *textRangeForServicesInteraction;
 @property(nonatomic) long long textScriptType;
 @property(nonatomic) int textSelectionBehavior; // @dynamic textSelectionBehavior;
 @property(nonatomic) id textSuggestionDelegate; // @dynamic textSuggestionDelegate;

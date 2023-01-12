@@ -59,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)useBlockyMagnificationInClassic;
 - (id)hitTest:(struct CGPoint)arg1 forEvent:(struct __GSEvent *)arg2;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)focusEffect;
 - (id)_preferredConfigurationForFocusAnimation:(long long)arg1 inContext:(id)arg2;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (_Bool)canBecomeFocused;
@@ -90,6 +91,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)showDivider;
 @property int controlSize;
 @property(getter=isMomentary) _Bool momentary;
+- (_Bool)isRightHighlighted;
 - (_Bool)isRightSelected;
 - (_Bool)_isContainedInHostedFocusSystem;
 @property(readonly) UIView *badgeView;
@@ -115,6 +117,7 @@ __attribute__((visibility("hidden")))
 - (void)setBarStyle:(long long)arg1;
 - (id)disabledTextColor;
 - (id)_attributedTextForState:(unsigned long long)arg1 selected:(_Bool)arg2 forceSelectedAppearance:(_Bool)arg3;
+- (id)_enabledColor:(_Bool)arg1;
 - (id)_stateTextAttibutes:(id)arg1 segmentState:(unsigned long long)arg2;
 - (void)_updateTextColors;
 - (void)setUsesAXTextSize:(_Bool)arg1;

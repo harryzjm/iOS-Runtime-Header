@@ -6,8 +6,10 @@
 
 @interface PXYearCardSectionBodyLayoutSpec
 {
+    double _multiColumnAspectRatio;
 }
 
+@property(nonatomic) double multiColumnAspectRatio; // @synthesize multiColumnAspectRatio=_multiColumnAspectRatio;
 - (id)initWithExtendedTraitCollection:(id)arg1 options:(unsigned long long)arg2;
 
 @end

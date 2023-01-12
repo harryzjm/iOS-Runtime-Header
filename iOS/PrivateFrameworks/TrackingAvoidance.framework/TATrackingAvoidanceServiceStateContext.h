@@ -17,8 +17,12 @@
     _Bool _locationSimulationInProgress;
     _Bool _allowSimulatedEvents;
     _Bool _deviceUnlockedSinceBoot;
+    _Bool _hasKoreaCountryCode;
+    _Bool _userLocationInsideKorea;
 }
 
+@property _Bool userLocationInsideKorea; // @synthesize userLocationInsideKorea=_userLocationInsideKorea;
+@property _Bool hasKoreaCountryCode; // @synthesize hasKoreaCountryCode=_hasKoreaCountryCode;
 @property _Bool deviceUnlockedSinceBoot; // @synthesize deviceUnlockedSinceBoot=_deviceUnlockedSinceBoot;
 @property _Bool allowSimulatedEvents; // @synthesize allowSimulatedEvents=_allowSimulatedEvents;
 @property _Bool locationSimulationInProgress; // @synthesize locationSimulationInProgress=_locationSimulationInProgress;

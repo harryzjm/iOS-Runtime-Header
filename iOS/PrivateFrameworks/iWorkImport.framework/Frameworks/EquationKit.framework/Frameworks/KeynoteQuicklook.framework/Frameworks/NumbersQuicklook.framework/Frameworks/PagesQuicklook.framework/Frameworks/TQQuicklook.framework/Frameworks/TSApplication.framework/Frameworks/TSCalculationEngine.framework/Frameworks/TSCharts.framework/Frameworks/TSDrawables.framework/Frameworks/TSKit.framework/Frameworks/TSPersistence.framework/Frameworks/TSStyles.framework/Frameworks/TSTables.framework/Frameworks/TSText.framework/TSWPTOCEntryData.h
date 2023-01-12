@@ -9,7 +9,7 @@
 #import <TSText/TSPCopying-Protocol.h>
 #import <TSText/TSSStyleClient-Protocol.h>
 
-@class NSString, TSWPListStyle, TSWPParagraphStyle, TSWPStorage;
+@class NSSet, NSString, TSWPListStyle, TSWPParagraphStyle, TSWPStorage;
 
 @interface TSWPTOCEntryData : TSPObject <TSPCopying, TSSStyleClient>
 {
@@ -36,12 +36,12 @@
 @property(readonly, nonatomic) unsigned long long paragraphIndex; // @synthesize paragraphIndex=_paragraphIndex;
 @property(readonly, nonatomic) __weak TSWPStorage *storage; // @synthesize storage=_storage;
 - (void)replaceReferencedStylesUsingBlock:(CDUnknownBlockType)arg1;
-- (id)referencedStyles;
+@property(readonly, nonatomic) NSSet *referencedStyles;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
-- (void)saveToArchive:(struct TOCEntryInstanceArchive *)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)loadFromArchive:(const struct TOCEntryInstanceArchive *)arg1 unarchiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, copy) NSString *description;

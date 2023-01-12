@@ -4,17 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString;
+@class NSArray, NSString, PKFeatureFailureCollection;
 
 @interface PKApplyWebServiceApplicationsResponse
 {
     NSArray *_allFeatureApplications;
+    PKFeatureFailureCollection *_featureFailures;
     NSString *_lastUpdated;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *lastUpdated; // @synthesize lastUpdated=_lastUpdated;
+@property(readonly, nonatomic) PKFeatureFailureCollection *featureFailures; // @synthesize featureFailures=_featureFailures;
 @property(readonly, nonatomic) NSArray *allFeatureApplications; // @synthesize allFeatureApplications=_allFeatureApplications;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

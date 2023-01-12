@@ -10,18 +10,18 @@
 
 @interface TSDLinePreset : NSObject
 {
-    TSDLineEnd *mHeadLineEnd;
-    TSDLineEnd *mTailLineEnd;
-    TSDStroke *mStroke;
+    TSDLineEnd *_headLineEnd;
+    TSDLineEnd *_tailLineEnd;
+    TSDStroke *_stroke;
 }
 
 + (id)lineWithStroke:(id)arg1 headLineEnd:(id)arg2 tailLineEnd:(id)arg3;
-@property(readonly, copy, nonatomic) TSDStroke *stroke; // @synthesize stroke=mStroke;
-@property(readonly, copy, nonatomic) TSDLineEnd *tailLineEnd; // @synthesize tailLineEnd=mTailLineEnd;
-@property(readonly, copy, nonatomic) TSDLineEnd *headLineEnd; // @synthesize headLineEnd=mHeadLineEnd;
+- (void).cxx_destruct;
+@property(readonly, copy, nonatomic) TSDStroke *stroke; // @synthesize stroke=_stroke;
+@property(readonly, copy, nonatomic) TSDLineEnd *tailLineEnd; // @synthesize tailLineEnd=_tailLineEnd;
+@property(readonly, copy, nonatomic) TSDLineEnd *headLineEnd; // @synthesize headLineEnd=_headLineEnd;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (void)dealloc;
 - (id)initWithStroke:(id)arg1 headLineEnd:(id)arg2 tailLineEnd:(id)arg3;
 
 @end

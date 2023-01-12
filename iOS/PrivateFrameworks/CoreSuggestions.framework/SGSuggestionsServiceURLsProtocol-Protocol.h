@@ -6,9 +6,11 @@
 
 #import <CoreSuggestions/_SGSuggestionsServiceBaseProtocol-Protocol.h>
 
-@class NSDate, NSSet;
+@class NSDate, NSSet, NSString;
 
 @protocol SGSuggestionsServiceURLsProtocol <_SGSuggestionsServiceBaseProtocol>
+- (void)registerURLFeedback:(unsigned char)arg1 absoluteURL:(NSString *)arg2 withCompletion:(void (^)(NSError *))arg3;
+- (void)urlsFoundBetweenStartDate:(NSDate *)arg1 endDate:(NSDate *)arg2 excludingBundleIdentifiers:(NSSet *)arg3 containingSubstring:(NSString *)arg4 flagFilter:(unsigned char)arg5 limit:(unsigned int)arg6 withCompletion:(void (^)(NSArray *, NSError *))arg7;
 - (void)urlsFoundBetweenStartDate:(NSDate *)arg1 endDate:(NSDate *)arg2 excludingBundleIdentifiers:(NSSet *)arg3 limit:(unsigned int)arg4 withCompletion:(void (^)(NSArray *, NSError *))arg5;
 - (void)recentURLsWithLimit:(unsigned int)arg1 withCompletion:(void (^)(NSArray *, NSError *))arg2;
 @end

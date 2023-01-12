@@ -9,9 +9,9 @@
 @interface NSData (Compression)
 + (id)dataWithSQLite3Column:(struct sqlite3_stmt *)arg1 column:(int)arg2;
 + (id)dataWithSQLite3ColumnNoCopy:(struct sqlite3_stmt *)arg1 column:(int)arg2;
-- (id)uncompress;
-- (id)compress;
-- (id)generateSHA1;
-- (id)stringInHexFormat;
+@property(readonly, copy) NSData *hmd_uncompressedData;
+@property(readonly, copy) NSData *hmd_compressedData;
+- (id)hm_generateSHA1;
+- (id)hm_stringInHexFormat;
 @end
 

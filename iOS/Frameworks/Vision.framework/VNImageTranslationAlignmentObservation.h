@@ -9,12 +9,13 @@
     struct CGAffineTransform _alignmentTransform;
 }
 
++ (id)defaultOriginatingRequestClassNameForRequestRevision:(unsigned long long)arg1;
 + (_Bool)supportsSecureCoding;
 @property(nonatomic) struct CGAffineTransform alignmentTransform; // @synthesize alignmentTransform=_alignmentTransform;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)vn_cloneObject;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;

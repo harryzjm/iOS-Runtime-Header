@@ -23,6 +23,7 @@
 - (double)ef_timeIntervalSinceDate:(id)arg1;
 - (_Bool)ef_isLaterThanDate:(id)arg1;
 - (_Bool)ef_isEarlierThanDate:(id)arg1;
+- (_Bool)ef_isMoreThanTimeIntervalAgo:(double)arg1;
 @property(readonly, nonatomic) EFSQLBinding *ef_SQLBinding;
 - (id)ef_SQLIsolatedExpression;
 - (void)ef_renderSQLExpressionInto:(id)arg1;

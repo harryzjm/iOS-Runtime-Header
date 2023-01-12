@@ -10,12 +10,14 @@
 {
     NSString *_cameraMake;
     NSString *_cameraModel;
+    NSString *_formattedCameraModel;
     NSString *_lensModel;
     NSNumber *_flashFired;
     NSNumber *_whiteBalance;
     NSNumber *_meteringMode;
     NSNumber *_iso;
     NSNumber *_focalLength;
+    NSNumber *_focalLengthIn35mm;
     NSNumber *_exposureBias;
     NSNumber *_aperture;
     NSNumber *_shutterSpeed;
@@ -25,6 +27,8 @@
     NSNumber *_sampleRate;
     NSNumber *_bitrate;
     NSNumber *_trackFormat;
+    NSNumber *_semanticStylePreset;
+    NSNumber *_digitalZoomRatio;
 }
 
 + (id)propertiesToFetch;
@@ -32,6 +36,8 @@
 + (id)entityName;
 + (id)propertySetName;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSNumber *digitalZoomRatio; // @synthesize digitalZoomRatio=_digitalZoomRatio;
+@property(readonly, nonatomic) NSNumber *semanticStylePreset; // @synthesize semanticStylePreset=_semanticStylePreset;
 @property(readonly, nonatomic) NSNumber *trackFormat; // @synthesize trackFormat=_trackFormat;
 @property(readonly, nonatomic) NSNumber *bitrate; // @synthesize bitrate=_bitrate;
 @property(readonly, nonatomic) NSNumber *sampleRate; // @synthesize sampleRate=_sampleRate;
@@ -41,12 +47,14 @@
 @property(readonly, nonatomic) NSNumber *shutterSpeed; // @synthesize shutterSpeed=_shutterSpeed;
 @property(readonly, nonatomic) NSNumber *aperture; // @synthesize aperture=_aperture;
 @property(readonly, nonatomic) NSNumber *exposureBias; // @synthesize exposureBias=_exposureBias;
+@property(readonly, nonatomic) NSNumber *focalLengthIn35mm; // @synthesize focalLengthIn35mm=_focalLengthIn35mm;
 @property(readonly, nonatomic) NSNumber *focalLength; // @synthesize focalLength=_focalLength;
 @property(readonly, nonatomic) NSNumber *iso; // @synthesize iso=_iso;
 @property(readonly, nonatomic) NSNumber *meteringMode; // @synthesize meteringMode=_meteringMode;
 @property(readonly, nonatomic) NSNumber *whiteBalance; // @synthesize whiteBalance=_whiteBalance;
 @property(readonly, nonatomic) NSNumber *flashFired; // @synthesize flashFired=_flashFired;
 @property(readonly, nonatomic) NSString *lensModel; // @synthesize lensModel=_lensModel;
+@property(readonly, nonatomic) NSString *formattedCameraModel; // @synthesize formattedCameraModel=_formattedCameraModel;
 @property(readonly, nonatomic) NSString *cameraModel; // @synthesize cameraModel=_cameraModel;
 @property(readonly, nonatomic) NSString *cameraMake; // @synthesize cameraMake=_cameraMake;
 - (id)initWithFetchDictionary:(id)arg1 asset:(id)arg2 prefetched:(_Bool)arg3;

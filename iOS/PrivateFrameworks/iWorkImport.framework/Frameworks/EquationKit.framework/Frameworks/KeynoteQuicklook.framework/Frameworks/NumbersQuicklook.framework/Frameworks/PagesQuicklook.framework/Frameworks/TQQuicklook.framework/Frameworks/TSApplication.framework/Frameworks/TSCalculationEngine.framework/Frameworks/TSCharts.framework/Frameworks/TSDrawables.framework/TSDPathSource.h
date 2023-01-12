@@ -21,7 +21,7 @@
 }
 
 + (id)pathSourceForShapeType:(long long)arg1 naturalSize:(struct CGSize)arg2;
-+ (id)pathSourceWithArchive:(const struct PathSourceArchive *)arg1;
++ (id)pathSourceWithArchive:(const void *)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool hasVerticalFlip; // @synthesize hasVerticalFlip=_verticalFlip;
 @property(nonatomic) _Bool hasHorizontalFlip; // @synthesize hasHorizontalFlip=_horizontalFlip;
@@ -31,7 +31,7 @@
 @property(readonly, nonatomic) NSString *inferredAccessibilityDescription;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
-- (id)valueForSetSelector:(SEL)arg1;
+@property(readonly, nonatomic) NSString *name;
 @property(readonly, nonatomic) struct CGAffineTransform pathFlipTransform;
 - (void)scaleToNaturalSize:(struct CGSize)arg1;
 - (double)uniformScaleForScalingToNaturalSize:(struct CGSize)arg1;
@@ -48,10 +48,10 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)saveToArchive:(struct PathSourceArchive *)arg1;
-- (id)initWithArchive:(const struct PathSourceArchive *)arg1;
-- (void)saveSharedToArchive:(struct PathSourceArchive *)arg1;
-- (void)loadSharedFromArchive:(const struct PathSourceArchive *)arg1;
+- (void)saveToArchive:(void *)arg1;
+- (id)initWithArchive:(const void *)arg1;
+- (void)saveSharedToArchive:(void *)arg1;
+- (void)loadSharedFromArchive:(const void *)arg1;
 
 // Remaining properties
 @property(readonly, nonatomic) _Bool isClosed;

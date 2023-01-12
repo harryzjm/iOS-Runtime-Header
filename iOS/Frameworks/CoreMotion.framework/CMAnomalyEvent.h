@@ -18,11 +18,17 @@
     long long _response;
     long long _resolution;
     double _absoluteTimestamp;
+    double _updateTimestamp;
     unsigned long long _identifier;
+    long long _sosState;
+    long long _operatingMode;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(nonatomic) long long operatingMode; // @synthesize operatingMode=_operatingMode;
+@property(nonatomic) long long sosState; // @synthesize sosState=_sosState;
 @property(readonly, nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
+@property(nonatomic) double updateTimestamp; // @synthesize updateTimestamp=_updateTimestamp;
 @property(nonatomic) double absoluteTimestamp; // @synthesize absoluteTimestamp=_absoluteTimestamp;
 @property(nonatomic, getter=isAcknowledgement) _Bool acknowledgement; // @synthesize acknowledgement=_acknowledgement;
 @property(nonatomic) long long resolution; // @synthesize resolution=_resolution;
@@ -30,13 +36,14 @@
 @property(readonly, nonatomic) long long state; // @synthesize state=_state;
 - (id)description;
 - (id)debugDescription;
+@property(readonly, nonatomic) NSDate *updateDate;
 @property(readonly, nonatomic) NSDate *date;
 @property(readonly, nonatomic) NSDate *timestamp;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(unsigned long long)arg1 absoluteTimestamp:(double)arg2 state:(long long)arg3 response:(long long)arg4 resolution:(long long)arg5 acknowledgement:(_Bool)arg6;
-- (id)initWithIdentifier:(unsigned long long)arg1 absoluteTimestamp:(double)arg2 state:(long long)arg3 response:(long long)arg4 resolution:(long long)arg5;
+- (id)initWithIdentifier:(unsigned long long)arg1 absoluteTimestamp:(double)arg2 updateTimestamp:(double)arg3 state:(long long)arg4 response:(long long)arg5 resolution:(long long)arg6 sosState:(long long)arg7 operatingMode:(long long)arg8 acknowledgement:(_Bool)arg9;
+- (id)initWithIdentifier:(unsigned long long)arg1 absoluteTimestamp:(double)arg2 updateTimestamp:(double)arg3 state:(long long)arg4 response:(long long)arg5 resolution:(long long)arg6 sosState:(long long)arg7 operatingMode:(long long)arg8;
 
 @end
 

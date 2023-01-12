@@ -6,15 +6,11 @@
 
 #import <PassKitCore/PDXPCServiceExportedInterface-Protocol.h>
 
-@class NSArray, NSSet, NSString, PKCloudStoreZoneInvitation, PKPaymentTransaction;
+@class NSArray, NSSet, NSString, PKCloudStoreZoneQueryConfiguration, PKPaymentTransaction;
 
 @protocol PDCloudStoreServiceExportedInterface <PDXPCServiceExportedInterface>
-- (void)noteAccountDeletedWithHandler:(void (^)(void))arg1;
-- (void)noteCloudSyncPassesSwitchChangedWithHandler:(void (^)(void))arg1;
-- (void)sendShareInvitationForRecipientHandle:(NSString *)arg1 zoneName:(NSString *)arg2 containerName:(NSString *)arg3 qualityOfService:(long long)arg4 completion:(void (^)(PKCloudStoreZoneInvitation *, NSError *))arg5;
 - (void)shareForZoneName:(NSString *)arg1 containerName:(NSString *)arg2 qualityOfService:(long long)arg3 completion:(void (^)(PKCloudRecordArray *, NSError *))arg4;
 - (void)declineInvitationForRecipientHandle:(NSString *)arg1 zoneName:(NSString *)arg2 containerName:(NSString *)arg3 qualityOfService:(long long)arg4 completion:(void (^)(_Bool, NSError *))arg5;
-- (void)acceptShareInvitation:(PKCloudStoreZoneInvitation *)arg1 qualityOfService:(long long)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)populateEvents:(NSArray *)arg1 forAccountIdentifier:(NSString *)arg2 completion:(void (^)(PKCloudRecordArray *, NSError *))arg3;
 - (void)setupCloudDatabaseForContainerName:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)resetApplePayManateeViewWithCompletion:(void (^)(_Bool, NSError *))arg1;
@@ -27,11 +23,12 @@
 - (void)fetchAndStoreRecordsForTransactionSourceIdentifier:(NSString *)arg1 completion:(void (^)(PKCloudRecordArray *, NSError *))arg2;
 - (void)simulateCloudStorePushForContainerIdentifier:(NSString *)arg1 completion:(void (^)(PKCloudRecordArray *, NSArray *, NSError *))arg2;
 - (void)resetContainerWithIdentifier:(NSString *)arg1 zoneNames:(NSSet *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
+- (void)cloudStoreRecordArrayWithConfiguration:(PKCloudStoreZoneQueryConfiguration *)arg1 completion:(void (^)(PKCloudRecordArray *, NSError *))arg2;
 - (void)itemOfItemTypeFromAllZones:(unsigned long long)arg1 recordName:(NSString *)arg2 qualityOfService:(long long)arg3 completion:(void (^)(PKCloudRecordArray *, NSError *))arg4;
 - (void)itemOfItemType:(unsigned long long)arg1 recordName:(NSString *)arg2 qualityOfService:(long long)arg3 completion:(void (^)(PKCloudRecordObject *, NSError *))arg4;
 - (void)allItemsOfItemType:(unsigned long long)arg1 storeLocally:(_Bool)arg2 completion:(void (^)(PKCloudRecordArray *, NSError *))arg3;
 - (void)removeRecordWithRecordName:(NSString *)arg1 zoneName:(NSString *)arg2 containerName:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
-- (void)removeItemsWithRecordNames:(NSArray *)arg1 itemType:(unsigned long long)arg2 completion:(void (^)(NSError *))arg3;
-- (void)updateCloudStoreWithLocalItems:(NSArray *)arg1 recordSpecificKeys:(NSArray *)arg2 includeServerData:(_Bool)arg3 completion:(void (^)(NSArray *, NSError *))arg4;
+- (void)removeAllItems:(unsigned long long)arg1 inZoneName:(NSString *)arg2 containerName:(NSString *)arg3 storeLocally:(_Bool)arg4 completion:(void (^)(NSSet *, NSError *))arg5;
+- (void)updateCloudStoreWithLocalItemsWithConfigurations:(NSSet *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 @end
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, UIColor, UIImageConfiguration;
+@class NSBundle, NSString, UIColor, UIImageConfiguration;
 
 @interface PXExtendedImageConfiguration : NSObject
 {
@@ -14,15 +14,17 @@
     NSString *_imageName;
     UIColor *_tintColor;
     UIImageConfiguration *_imageConfiguration;
+    NSBundle *_bundle;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSBundle *bundle; // @synthesize bundle=_bundle;
 @property(readonly, nonatomic) UIImageConfiguration *imageConfiguration; // @synthesize imageConfiguration=_imageConfiguration;
 @property(readonly, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 @property(readonly, nonatomic) _Bool isSystemImage; // @synthesize isSystemImage=_isSystemImage;
 @property(readonly, nonatomic) NSString *imageName; // @synthesize imageName=_imageName;
 - (id)init;
-- (id)initWithImageName:(id)arg1 isSystemImage:(_Bool)arg2 tintColor:(id)arg3 imageConfiguration:(id)arg4;
+- (id)initWithImageName:(id)arg1 isSystemImage:(_Bool)arg2 tintColor:(id)arg3 imageConfiguration:(id)arg4 inBundle:(id)arg5;
 - (id)initWithImageName:(id)arg1 isSystemImage:(_Bool)arg2;
 - (id)initWithImageName:(id)arg1;
 

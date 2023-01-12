@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, SBAutoPiPWorkspaceTransaction;
+@class NSArray, SBAutoPIPWorkspaceTransaction;
 @protocol BSInvalidatable;
 
 @interface SBTransientOverlayDismissAllToAppsWorkspaceTransaction
 {
     NSArray *_switcherTransitioningTransientOverlayViewControllers;
-    SBAutoPiPWorkspaceTransaction *_autoPiPTransaction;
+    SBAutoPIPWorkspaceTransaction *_autoPIPTransaction;
     id <BSInvalidatable> _pipWindowLevelOverrideAssertionInvalidatable;
     _Bool _isUsingSwitcherAnimation;
     _Bool _beganDismissingTransientOverlays;

@@ -6,17 +6,17 @@
 
 #import <PhotosUI/PUMagnfiedViewControllerDelegate-Protocol.h>
 #import <PhotosUI/PXChangeObserver-Protocol.h>
-#import <PhotosUI/PXCloudQuotaControllerDelegate-Protocol.h>
+#import <PhotosUI/PXCloudQuotaControllerHelperDelegate-Protocol.h>
 #import <PhotosUI/PXPhotosLibraryFooterViewModelPresentationDelegate-Protocol.h>
 
-@class NSArray, NSIndexPath, NSString, NSTimer, PUGridMagnifiedImageViewController, PUGridPinchGestureRecognizer, PUGridZoomLevelInfo, PUMomentsZoomLevelManager, PUZoomableGridTransition, PUZoomableGridViewControllerSpec, PXCPLUIStatusProvider, PXCloudQuotaController, UITapGestureRecognizer;
+@class NSArray, NSIndexPath, NSString, NSTimer, PUGridMagnifiedImageViewController, PUGridPinchGestureRecognizer, PUGridZoomLevelInfo, PUMomentsZoomLevelManager, PUZoomableGridTransition, PUZoomableGridViewControllerSpec, PXCPLUIStatusProvider, PXCloudQuotaControllerHelper, UITapGestureRecognizer;
 
-@interface PUZoomableGridViewController <PXChangeObserver, PXCloudQuotaControllerDelegate, PUMagnfiedViewControllerDelegate, PXPhotosLibraryFooterViewModelPresentationDelegate>
+@interface PUZoomableGridViewController <PXChangeObserver, PXCloudQuotaControllerHelperDelegate, PUMagnfiedViewControllerDelegate, PXPhotosLibraryFooterViewModelPresentationDelegate>
 {
     _Bool _isDisplayingGlobalFooterView;
     _Bool _isDisplayingEmptyPlaceholderView;
     PXCPLUIStatusProvider *_cplUIStatusProvider;
-    PXCloudQuotaController *_cloudQuotaController;
+    PXCloudQuotaControllerHelper *_cloudQuotaHelper;
     _Bool _iCPLEnabled;
     _Bool _globalFooterDidAutoScroll;
     NSTimer *_globalFooterAutoScrollMinimumIdleTimer;
@@ -59,7 +59,7 @@
 @property(readonly, nonatomic) PUMomentsZoomLevelManager *zoomLevelManager; // @synthesize zoomLevelManager=_zoomLevelManager;
 - (_Bool)canDragIn;
 - (id)imageWithSize:(struct CGSize)arg1 forIndexPath:(id)arg2;
-- (_Bool)zoomTransition:(id)arg1 getFrame:(struct CGRect *)arg2 contentMode:(long long *)arg3 cropInsets:(struct UIEdgeInsets *)arg4 forPhotoToken:(id)arg5 operation:(long long)arg6;
+- (_Bool)zoomTransition:(id)arg1 getFrame:(struct CGRect *)arg2 inCoordinateSpace:(id *)arg3 contentMode:(long long *)arg4 cropInsets:(struct UIEdgeInsets *)arg5 forPhotoToken:(id)arg6 operation:(long long)arg7;
 - (void)navigateToLowerZoomLevelWithReferenceItemPath:(id)arg1;
 - (_Bool)_disallowNavigationToHigherZoomLevel;
 - (id)_beginInteractiveTransitionWithReferenceItemPath:(id)arg1 zoomingOut:(_Bool)arg2;
@@ -100,8 +100,8 @@
 - (void)configureGlobalFooterView:(id)arg1;
 - (_Bool)wantsGlobalFooter;
 - (void)_globalFooterDidChange;
-- (id)presentingViewControllerForCloudQuotaController:(id)arg1;
-- (void)cloudQuotaController:(id)arg1 informationBannerDidChange:(id)arg2;
+- (id)presentingViewControllerForCloudQuotaControllerHelper:(id)arg1;
+- (void)cloudQuotaControllerHelper:(id)arg1 informationViewDidChange:(id)arg2;
 - (_Bool)shouldPreventRevealInMomentAction;
 - (void)getEmptyPlaceholderViewTitle:(id *)arg1 message:(id *)arg2 buttonTitle:(id *)arg3 buttonAction:(CDUnknownBlockType *)arg4;
 - (void)didEndDisplayingEmptyPlaceholderView;

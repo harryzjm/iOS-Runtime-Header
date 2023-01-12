@@ -23,6 +23,7 @@
     long long _level;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) long long level; // @synthesize level=_level;
 @property(readonly, nonatomic) NSString *subsystem; // @synthesize subsystem=_subsystem;
@@ -34,6 +35,9 @@
 @property(readonly, nonatomic) int processIdentifier; // @synthesize processIdentifier=_processIdentifier;
 @property(readonly, nonatomic) NSString *process; // @synthesize process=_process;
 @property(readonly, nonatomic) unsigned long long activityIdentifier; // @synthesize activityIdentifier=_activityIdentifier;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithDate:(id)arg1 composedMessage:(id)arg2 processIdentifier:(int)arg3;
 - (id)initWithEventProxy:(id)arg1;
 
 @end

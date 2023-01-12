@@ -44,7 +44,6 @@
 - (id)initWithTag:(id)arg1 attributes:(id)arg2 doubleValue:(double)arg3 unit:(id)arg4;
 - (id)initWithTag:(id)arg1 attributes:(id)arg2 doubleValue:(double)arg3;
 - (id)attributeWithName:(id)arg1;
-- (const double *)numberValueDouble;
 @property(readonly, nonatomic) unsigned long long unsignedValue;
 @property(readonly, nonatomic) long long integerValue;
 @property(readonly, nonatomic) double floatValue;

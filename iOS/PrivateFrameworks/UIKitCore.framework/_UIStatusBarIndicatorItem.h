@@ -18,10 +18,12 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSArray *currentImageNamePrefixes; // @synthesize currentImageNamePrefixes=_currentImageNamePrefixes;
 - (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
 - (_Bool)shouldUpdateIndicatorForIdentifier:(id)arg1;
+- (id)imageViewForIdentifier:(id)arg1;
 - (id)viewForIdentifier:(id)arg1;
 - (void)_create_imageView;
 - (id)imageForUpdate:(id)arg1;
 - (id)imageNameForUpdate:(id)arg1;
+- (_Bool)useMultiColorSystemImageForUpdate:(id)arg1;
 - (id)systemImageNameForUpdate:(id)arg1;
 @property(readonly, nonatomic) _Bool flipsForRightToLeftLayoutDirection;
 @property(readonly, nonatomic) _Bool isTemplateImage;

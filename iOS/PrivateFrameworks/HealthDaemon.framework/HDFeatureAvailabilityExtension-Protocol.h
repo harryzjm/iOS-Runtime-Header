@@ -6,13 +6,11 @@
 
 #import <HealthDaemon/HKFeatureAvailabilityProviding-Protocol.h>
 
-@class NRDevice, NSObject, NSString, NSUUID;
+@class NSObject;
 @protocol HDFeatureAvailabilityExtensionObserver, OS_dispatch_queue;
 
 @protocol HDFeatureAvailabilityExtension <HKFeatureAvailabilityProviding>
-@property(readonly, copy, nonatomic) NSString *featureIdentifier;
 - (void)unregisterObserver:(id <HDFeatureAvailabilityExtensionObserver>)arg1;
 - (void)registerObserver:(id <HDFeatureAvailabilityExtensionObserver>)arg1 queue:(NSObject<OS_dispatch_queue> *)arg2;
-- (NRDevice *)deviceForPairingID:(NSUUID *)arg1;
 @end
 

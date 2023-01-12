@@ -6,7 +6,7 @@
 
 #import <Navigation/NSObject-Protocol.h>
 
-@class CLHeading, MNLocation, NSDate, NSError;
+@class CLHeading, CLRegion, MNLocation, NSDate, NSError;
 @protocol MNLocationProvider;
 
 @protocol MNLocationProviderDelegate <NSObject>
@@ -20,5 +20,10 @@
 - (void)locationProvider:(id <MNLocationProvider>)arg1 didReceiveError:(NSError *)arg2;
 - (void)locationProvider:(id <MNLocationProvider>)arg1 didUpdateHeading:(CLHeading *)arg2;
 - (void)locationProvider:(id <MNLocationProvider>)arg1 didUpdateLocation:(MNLocation *)arg2;
+
+@optional
+- (void)locationProvider:(id <MNLocationProvider>)arg1 monitoringDidFailForRegion:(CLRegion *)arg2 withError:(NSError *)arg3;
+- (void)locationProvider:(id <MNLocationProvider>)arg1 didExitRegion:(CLRegion *)arg2;
+- (void)locationProvider:(id <MNLocationProvider>)arg1 didEnterRegion:(CLRegion *)arg2;
 @end
 

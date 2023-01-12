@@ -6,21 +6,21 @@
 
 #import <objc/NSObject.h>
 
-#import <AssistantUI/AFUIStateMachineDelegate-Protocol.h>
 #import <AssistantUI/RadiosPreferencesDelegate-Protocol.h>
+#import <AssistantUI/SRUIFStateMachineDelegate-Protocol.h>
 
-@class AFUIStateMachine, NSString, RadiosPreferences;
+@class NSString, RadiosPreferences, SRUIFStateMachine;
 @protocol AFUINetworkAvailabilityStateMachineDelegate;
 
-@interface AFUINetworkAvailabilityStateMachine : NSObject <AFUIStateMachineDelegate, RadiosPreferencesDelegate>
+@interface AFUINetworkAvailabilityStateMachine : NSObject <SRUIFStateMachineDelegate, RadiosPreferencesDelegate>
 {
     id <AFUINetworkAvailabilityStateMachineDelegate> _delegate;
     RadiosPreferences *_radioPreferences;
-    AFUIStateMachine *_stateMachine;
+    SRUIFStateMachine *_stateMachine;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) AFUIStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
+@property(retain, nonatomic) SRUIFStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
 @property(retain, nonatomic) RadiosPreferences *radioPreferences; // @synthesize radioPreferences=_radioPreferences;
 @property(nonatomic) __weak id <AFUINetworkAvailabilityStateMachineDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_performTransitionForEvent:(long long)arg1;

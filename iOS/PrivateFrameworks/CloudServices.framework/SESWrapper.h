@@ -46,7 +46,7 @@
 - (void)dealloc;
 - (id)recoveryResponseForBlob:(id)arg1;
 - (id)srpResponseForEscrowBlob:(id)arg1 withKey:(struct __SecKey *)arg2 withFullCCKey:(struct ccrsa_full_ctx *)arg3;
-- (id)decodedEscrowRecordFromData:(id)arg1 stingray:(_Bool)arg2 enroll:(_Bool)arg3 env:(id)arg4 duplicate:(_Bool)arg5;
+- (id)decodedEscrowRecordFromData:(id)arg1 stingray:(_Bool)arg2 env:(id)arg3 duplicate:(_Bool)arg4;
 - (id)encodedEscrowRecordWithPublicKey:(struct __SecKey *)arg1 error:(id *)arg2;
 - (id)srpRecoveryBlobFromData:(id)arg1 error:(id *)arg2;
 - (void)srpRecoveryUpdateDSID:(id)arg1 recoveryPassphrase:(id)arg2;

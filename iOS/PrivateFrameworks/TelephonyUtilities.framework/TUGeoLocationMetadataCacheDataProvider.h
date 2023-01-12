@@ -4,11 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class PNRPhoneNumberResolver;
+
 @interface TUGeoLocationMetadataCacheDataProvider
 {
+    PNRPhoneNumberResolver *_phoneNumberResolver;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) PNRPhoneNumberResolver *phoneNumberResolver; // @synthesize phoneNumberResolver=_phoneNumberResolver;
 - (void)updateCacheWithDestinationIDs:(id)arg1 withGroup:(id)arg2;
+- (id)locationForMetadataIdentifier:(id)arg1;
+- (id)init;
 
 @end
 

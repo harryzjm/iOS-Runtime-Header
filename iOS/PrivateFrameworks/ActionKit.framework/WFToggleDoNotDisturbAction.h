@@ -11,9 +11,10 @@
 }
 
 - (void)resolveSlot:(id)arg1 withProcessedValue:(id)arg2 parameter:(id)arg3 input:(id)arg4 completion:(CDUnknownBlockType)arg5;
-- (id)generatedAccessResource;
+- (id)contentDestinationWithError:(id *)arg1;
+- (id)generatedAccessResourceNode;
 - (id)appIdentifier;
-- (_Bool)shouldCreateIntentAvailableResource;
+- (id)appResource;
 
 @end
 

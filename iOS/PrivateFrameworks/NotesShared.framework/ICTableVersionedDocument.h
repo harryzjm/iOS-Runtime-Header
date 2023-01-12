@@ -4,17 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CRDocument, ICTable, NSUUID;
+@class CRDocument, ICTable;
 
 @interface ICTableVersionedDocument
 {
-    NSUUID *_replica;
     CRDocument *_innerTableDocument;
     ICTable *_table;
 }
 
-+ (id)tableDocWithColumnCount:(unsigned long long)arg1 rowCount:(unsigned long long)arg2;
-+ (id)tableDoc;
 + (unsigned int)minimumSupportedVersion;
 + (unsigned int)serializationVersion;
 - (void).cxx_destruct;
@@ -22,9 +19,8 @@
 - (id)serializeCurrentVersion:(unsigned int *)arg1;
 - (void)mergeVersion:(unsigned int)arg1 fromData:(id)arg2;
 @property(readonly) CRDocument *innerTableDocument; // @synthesize innerTableDocument=_innerTableDocument;
-- (void)setReplica:(id)arg1;
-@property(readonly, nonatomic) NSUUID *replica; // @synthesize replica=_replica;
 - (unsigned long long)mergeWithTableVersionedDocument:(id)arg1;
+- (id)initWithColumnCount:(unsigned long long)arg1 rowCount:(unsigned long long)arg2 replicaID:(id)arg3;
 
 @end
 

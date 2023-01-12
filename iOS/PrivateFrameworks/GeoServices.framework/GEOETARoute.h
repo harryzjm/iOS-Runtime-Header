@@ -20,6 +20,7 @@
     CDStruct_9f2792e4 _trafficColors;
     GEOWaypointInfo *_destinationWaypointInfo;
     NSMutableArray *_enrouteNotices;
+    NSMutableArray *_guidanceEvents;
     NSMutableArray *_incidentOnRouteInfos;
     NSMutableArray *_incidentsOffReRoutes;
     NSMutableArray *_incidentsOnETARoutes;
@@ -27,8 +28,11 @@
     NSMutableArray *_invalidSectionZilchPoints;
     GEONavigabilityInfo *_navigabilityInfo;
     GEOWaypointInfo *_originWaypointInfo;
+    NSData *_pathLeg;
     NSMutableArray *_reroutedRoutes;
     NSData *_routeID;
+    NSMutableArray *_routeCameraInputInfos;
+    NSMutableArray *_routeLineStyleInfos;
     NSMutableArray *_steps;
     GEOTrafficBannerText *_trafficBannerText;
     NSMutableArray *_trafficColorInfos;
@@ -56,6 +60,7 @@
         unsigned int read_trafficColors:1;
         unsigned int read_destinationWaypointInfo:1;
         unsigned int read_enrouteNotices:1;
+        unsigned int read_guidanceEvents:1;
         unsigned int read_incidentOnRouteInfos:1;
         unsigned int read_incidentsOffReRoutes:1;
         unsigned int read_incidentsOnETARoutes:1;
@@ -63,8 +68,11 @@
         unsigned int read_invalidSectionZilchPoints:1;
         unsigned int read_navigabilityInfo:1;
         unsigned int read_originWaypointInfo:1;
+        unsigned int read_pathLeg:1;
         unsigned int read_reroutedRoutes:1;
         unsigned int read_routeID:1;
+        unsigned int read_routeCameraInputInfos:1;
+        unsigned int read_routeLineStyleInfos:1;
         unsigned int read_steps:1;
         unsigned int read_trafficBannerText:1;
         unsigned int read_trafficColorInfos:1;
@@ -74,12 +82,15 @@
 }
 
 + (_Bool)isValid:(id)arg1;
++ (Class)guidanceEventType;
 + (Class)incidentOnRouteInfoType;
 + (Class)trafficColorInfoType;
 + (Class)enrouteNoticeType;
 + (Class)incidentsOffReRoutesType;
 + (Class)incidentsOnReRoutesType;
 + (Class)incidentsOnETARouteType;
++ (Class)routeCameraInputInfoType;
++ (Class)routeLineStyleInfoType;
 + (Class)invalidSectionZilchPointsType;
 + (Class)reroutedRouteType;
 + (Class)zilchPointsType;
@@ -92,6 +103,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -100,6 +112,11 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)guidanceEventAtIndex:(unsigned long long)arg1;
+- (unsigned long long)guidanceEventsCount;
+- (void)addGuidanceEvent:(id)arg1;
+- (void)clearGuidanceEvents;
+@property(retain, nonatomic) NSMutableArray *guidanceEvents;
 @property(retain, nonatomic) GEONavigabilityInfo *navigabilityInfo;
 @property(readonly, nonatomic) _Bool hasNavigabilityInfo;
 @property(retain, nonatomic) GEOWaypointInfo *destinationWaypointInfo;
@@ -160,6 +177,16 @@
 - (void)addIncidentsOnETARoute:(id)arg1;
 - (void)clearIncidentsOnETARoutes;
 @property(retain, nonatomic) NSMutableArray *incidentsOnETARoutes;
+- (id)routeCameraInputInfoAtIndex:(unsigned long long)arg1;
+- (unsigned long long)routeCameraInputInfosCount;
+- (void)addRouteCameraInputInfo:(id)arg1;
+- (void)clearRouteCameraInputInfos;
+@property(retain, nonatomic) NSMutableArray *routeCameraInputInfos;
+- (id)routeLineStyleInfoAtIndex:(unsigned long long)arg1;
+- (unsigned long long)routeLineStyleInfosCount;
+- (void)addRouteLineStyleInfo:(id)arg1;
+- (void)clearRouteLineStyleInfos;
+@property(retain, nonatomic) NSMutableArray *routeLineStyleInfos;
 - (void)setTrafficColorOffsets:(unsigned int *)arg1 count:(unsigned long long)arg2;
 - (unsigned int)trafficColorOffsetAtIndex:(unsigned long long)arg1;
 - (void)addTrafficColorOffset:(unsigned int)arg1;
@@ -184,6 +211,8 @@
 @property(retain, nonatomic) NSMutableArray *reroutedRoutes;
 @property(nonatomic) _Bool hasRouteNoLongerValid;
 @property(nonatomic) _Bool routeNoLongerValid;
+@property(retain, nonatomic) NSData *pathLeg;
+@property(readonly, nonatomic) _Bool hasPathLeg;
 - (id)zilchPointsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)zilchPointsCount;
 - (void)addZilchPoints:(id)arg1;

@@ -8,7 +8,7 @@
 #import <CoreHAP/HAPAccessoryServerBrowserWiProxBTLEDelegate-Protocol.h>
 #import <CoreHAP/HMFLogging-Protocol.h>
 
-@class CBCentralManager, CBConnectionsObserver, HAPAccessoryServerBrowserWiProxBTLE, NSMapTable, NSMutableArray, NSMutableOrderedSet, NSObject, NSString;
+@class CBCentralManager, CBConnectionsObserver, HAPAccessoryServerBrowserWiProxBTLE, HMFActivity, NSMapTable, NSMutableArray, NSMutableOrderedSet, NSObject, NSString;
 @protocol HAPAccessoryServerBrowserBTLEDelegate, OS_dispatch_queue, OS_dispatch_source;
 
 @interface HAPAccessoryServerBrowserBTLE <CBCentralManagerDelegate, HAPAccessoryServerBrowserWiProxBTLEDelegate, HMFLogging>
@@ -27,16 +27,23 @@
     NSMutableOrderedSet *_peripheralsWithConnectionRequests;
     NSMutableArray *_peripheralsPendingConnection;
     NSObject<OS_dispatch_source> *_targetedScanTimer;
+    HMFActivity *_targetedScanActivity;
     NSMutableArray *_targetedScanAccessoryIdentifiers;
     NSMapTable *_identifersWithReachabilityScanTuples;
+    long long _peripheralDisconnectionTimeout;
+    NSMapTable *_peripheralDisconnectionMonitorMap;
     long long _scanState;
 }
 
++ (id)HAPBluetoothRouteModeToString:(unsigned char)arg1;
 + (id)logCategory;
 - (void).cxx_destruct;
 @property(nonatomic) long long scanState; // @synthesize scanState=_scanState;
+@property(retain) NSMapTable *peripheralDisconnectionMonitorMap; // @synthesize peripheralDisconnectionMonitorMap=_peripheralDisconnectionMonitorMap;
+@property long long peripheralDisconnectionTimeout; // @synthesize peripheralDisconnectionTimeout=_peripheralDisconnectionTimeout;
 @property(retain, nonatomic) NSMapTable *identifersWithReachabilityScanTuples; // @synthesize identifersWithReachabilityScanTuples=_identifersWithReachabilityScanTuples;
 @property(retain, nonatomic) NSMutableArray *targetedScanAccessoryIdentifiers; // @synthesize targetedScanAccessoryIdentifiers=_targetedScanAccessoryIdentifiers;
+@property(retain, nonatomic) HMFActivity *targetedScanActivity; // @synthesize targetedScanActivity=_targetedScanActivity;
 @property(retain, nonatomic) NSObject<OS_dispatch_source> *targetedScanTimer; // @synthesize targetedScanTimer=_targetedScanTimer;
 @property(retain, nonatomic) NSMutableArray *peripheralsPendingConnection; // @synthesize peripheralsPendingConnection=_peripheralsPendingConnection;
 @property(retain, nonatomic) NSMutableOrderedSet *peripheralsWithConnectionRequests; // @synthesize peripheralsWithConnectionRequests=_peripheralsWithConnectionRequests;
@@ -50,31 +57,36 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property(nonatomic) __weak id <HAPAccessoryServerBrowserBTLEDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) unsigned long long qosLimits; // @synthesize qosLimits=_qosLimits;
+- (id)serverTupleWithPairingIdentifier:(id)arg1 whbStableIdentifier:(id)arg2;
 - (void)_handleTargetedScanTimeout;
+- (void)_invalidTargettedScanActivity;
 - (void)_updateTargetedScanTimer;
-- (_Bool)_shouldCreateHAPAccessoryServerWithIdentifier:(id)arg1 statusFlags:(id)arg2 stateNumber:(id)arg3 category:(id)arg4 configNumber:(id)arg5 forPeripheral:(id)arg6 advertisementFormat:(unsigned long long)arg7 setupHash:(id)arg8 stateChanged:(_Bool *)arg9 connectReason:(unsigned char *)arg10;
+- (_Bool)_shouldCreateHAPAccessoryServerWithIdentifier:(id)arg1 statusFlags:(id)arg2 stateNumber:(id)arg3 category:(id)arg4 configNumber:(id)arg5 name:(id)arg6 forPeripheral:(id)arg7 advertisementFormat:(unsigned long long)arg8 setupHash:(id)arg9 stateChanged:(_Bool *)arg10 connectReason:(unsigned char *)arg11;
 - (void)_reportReachabilityForAccessoryWithIdentifier:(id)arg1;
 - (void)_performTargetedScanForAccessoryWithIdentifier:(id)arg1;
-- (void)_connectPendingConnections;
-- (void)_connectHAPPeripheralWhenAllowed:(id)arg1;
+- (void)_connectPendingConnections:(unsigned char)arg1;
+- (void)_connectHAPPeripheralWhenAllowed:(id)arg1 routeMode:(unsigned char)arg2;
 - (void)_removeFromPendingConnections:(id)arg1;
 - (void)_addToPendingConnections:(id)arg1;
 - (void)_performTimedConnectionRequestForIdentifier:(id)arg1;
-- (void)_createHAPAccessoryAndNotifyDelegateWithPeripheral:(id)arg1 name:(id)arg2 pairingUsername:(id)arg3 statusFlags:(id)arg4 stateNumber:(id)arg5 stateChanged:(_Bool)arg6 connectReason:(unsigned char)arg7 configNumber:(id)arg8 category:(id)arg9 connectionIdleTime:(unsigned char)arg10 format:(unsigned long long)arg11 setupHash:(id)arg12 encryptedPayload:(id)arg13;
+- (void)_createHAPAccessoryAndNotifyDelegateWithPeripheral:(id)arg1 name:(id)arg2 pairingUsername:(id)arg3 statusFlags:(id)arg4 stateNumber:(id)arg5 stateChanged:(_Bool)arg6 connectReason:(unsigned char)arg7 configNumber:(id)arg8 category:(id)arg9 connectionIdleTime:(unsigned char)arg10 format:(unsigned long long)arg11 setupHash:(id)arg12 encryptedPayload:(id)arg13 whbStableIdentifier:(id)arg14;
 - (id)hapCharacteristicsForEncryptedPayload:(id)arg1 identifier:(id)arg2 shouldConnect:(_Bool *)arg3;
 - (_Bool)_delegateRespondsToSelector:(SEL)arg1;
 - (id)_cachedCharacteristicForInstanceID:(id)arg1 identifier:(id)arg2;
-- (void)accessoryServerBrowserBTLE:(id)arg1 didDiscoverHAPPeripheral:(id)arg2 accessoryName:(id)arg3 pairingIdentifier:(id)arg4 advertisementFormat:(unsigned long long)arg5 statusFlags:(id)arg6 stateNumber:(id)arg7 category:(id)arg8 configurationNumber:(id)arg9 setupHash:(id)arg10 encryptedPayload:(id)arg11;
+- (void)accessoryServerBrowserBTLE:(id)arg1 didDiscoverHAPPeripheral:(id)arg2 accessoryName:(id)arg3 pairingIdentifier:(id)arg4 advertisementFormat:(unsigned long long)arg5 statusFlags:(id)arg6 stateNumber:(id)arg7 category:(id)arg8 configurationNumber:(id)arg9 setupHash:(id)arg10 encryptedPayload:(id)arg11 whbStableIdentifier:(id)arg12;
+- (id)_getLocalCBPeripheral:(id)arg1;
+- (void)_monitorDisconnectionOfPeripheral:(id)arg1;
 - (void)_disconectFromHAPPeripheral:(id)arg1;
 - (void)disconnectedHAPPeripheral:(id)arg1 error:(id)arg2;
 - (void)centralManager:(id)arg1 didDisconnectPeripheral:(id)arg2 error:(id)arg3;
 - (void)failedToConnectHAPPeripheral:(id)arg1 error:(id)arg2;
+- (unsigned char)_getRouteMode;
 - (void)centralManager:(id)arg1 didFailToConnectPeripheral:(id)arg2 error:(id)arg3;
 - (void)connectedHAPPeripheral:(id)arg1;
 - (void)centralManager:(id)arg1 didConnectPeripheral:(id)arg2;
 - (void)centralManager:(id)arg1 didDiscoverPeripheral:(id)arg2 advertisementData:(id)arg3 RSSI:(id)arg4;
 - (void)centralManagerDidUpdateState:(id)arg1;
-- (void)_didDiscoverPeripheral:(id)arg1 accessoryName:(id)arg2 pairingIdentifier:(id)arg3 format:(unsigned long long)arg4 statusFlags:(id)arg5 stateNumber:(id)arg6 category:(id)arg7 configNumber:(id)arg8 setupHash:(id)arg9 encryptedPayload:(id)arg10;
+- (void)_didDiscoverPeripheral:(id)arg1 accessoryName:(id)arg2 pairingIdentifier:(id)arg3 format:(unsigned long long)arg4 statusFlags:(id)arg5 stateNumber:(id)arg6 category:(id)arg7 configNumber:(id)arg8 setupHash:(id)arg9 encryptedPayload:(id)arg10 whbStableIdentifier:(id)arg11;
 - (void)_notifyDelegatesOfRemovedAccessoryServer:(id)arg1 error:(id)arg2;
 - (void)_performTimedScanForIdentifiers:(id)arg1 workQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)_removeIdentifiersForReachabilityScan;
@@ -101,13 +113,14 @@
 - (_Bool)_hasRecentlySeenAccessoriesWithIdentifiers:(id)arg1;
 - (_Bool)_hasPairedAccessoriesOfType:(unsigned long long)arg1;
 - (void)_startScanningForPairingPeers;
-- (void)_stopActiveScan;
+- (void)_stopActiveScanWithForce:(_Bool)arg1;
 - (void)pauseScans;
 - (void)_matchAccessoryServerWithSetupID:(id)arg1 serverIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)matchAccessoryServerWithSetupID:(id)arg1 serverIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)stopDiscoveringAccessoryServers;
 - (void)_startDiscoveringAccessoryServers;
 - (void)startDiscoveringAccessoryServers;
+- (_Bool)_canStartScan;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
 - (long long)linkType;
 - (id)initWithQueue:(id)arg1;
@@ -122,6 +135,8 @@
 - (unsigned long long)_parseAdvertisementData:(id)arg1 forPeripheral:(id)arg2 name:(id *)arg3 pairingUsername:(id *)arg4 statusFlags:(id *)arg5 stateNumber:(id *)arg6 category:(id *)arg7 configNumber:(id *)arg8 setupHash:(id *)arg9;
 - (void)disconnectFromBTLEAccessoryServer:(id)arg1;
 - (void)connectToBTLEAccessoryServer:(id)arg1;
+- (void)connectToBTLEAccessoryServer:(id)arg1 routeMode:(unsigned char)arg2;
+- (void)_updatePeripheralObject:(id)arg1 whbStableIdentifier:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

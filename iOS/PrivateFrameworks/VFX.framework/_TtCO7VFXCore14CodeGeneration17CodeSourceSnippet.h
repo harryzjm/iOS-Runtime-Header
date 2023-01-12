@@ -12,11 +12,20 @@
 {
     MISSING_TYPE *name;
     MISSING_TYPE *label;
+    MISSING_TYPE *searchLabel;
+    MISSING_TYPE *tooltip;
     MISSING_TYPE *hasValue;
     MISSING_TYPE *includeFunctions;
+    MISSING_TYPE *supportedBy;
     MISSING_TYPE *useNamedSignature;
+    MISSING_TYPE *hidden;
+    MISSING_TYPE *skipTest;
+    MISSING_TYPE *disableable;
+    MISSING_TYPE *timeDependent;
+    MISSING_TYPE *useDynamicBranching;
     MISSING_TYPE *deprecated;
     MISSING_TYPE *deprecationInfo;
+    MISSING_TYPE *toolCreateFunction;
     MISSING_TYPE *genericTypes;
     MISSING_TYPE *previousInParameterNames;
     MISSING_TYPE *inParameterNames;
@@ -26,7 +35,9 @@
     MISSING_TYPE *outParameterNames;
     MISSING_TYPE *outParameterTypes;
     MISSING_TYPE *code;
+    MISSING_TYPE *cleanupCode;
     MISSING_TYPE *noOutputDeclarationCode;
+    MISSING_TYPE *codeContainsUidIndexTag;
     MISSING_TYPE *valueType;
     MISSING_TYPE *defaultInParameter;
     MISSING_TYPE *inParameters;

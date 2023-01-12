@@ -7,6 +7,7 @@
 #import <TSUtility/TSUImage.h>
 
 @interface TSUImage (TSDAdditions)
+- (id)compositeImageWithOverlayImage:(id)arg1 overlayTintColor:(id)arg2;
 - (id)compositedImageWithColor:(id)arg1 alpha:(double)arg2 blendMode:(int)arg3;
 - (struct CGImage *)CGImageForSize:(struct CGSize)arg1 inContext:(struct CGContext *)arg2 orContentsScaleProvider:(id)arg3;
 @end

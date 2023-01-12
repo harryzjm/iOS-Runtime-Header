@@ -17,6 +17,7 @@
 @property(retain, nonatomic) NSMutableArray *visibleButtons; // @synthesize visibleButtons=_visibleButtons;
 - (void)_hideAllButtons;
 - (void)_updateVisibleButtons;
+- (void)setShowsTUConversationStatus:(_Bool)arg1;
 - (void)setShowsLocation:(_Bool)arg1;
 - (void)layoutSubviews;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;

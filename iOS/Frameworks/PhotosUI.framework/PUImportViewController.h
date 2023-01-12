@@ -13,8 +13,7 @@
 #import <PhotosUI/PXChangeObserver-Protocol.h>
 #import <PhotosUI/PXImportAlbumPickerDelegate-Protocol.h>
 #import <PhotosUI/PXImportAssetsDataSourceManagerObserver-Protocol.h>
-#import <PhotosUI/PXImportControllerImportCompletionDelegate-Protocol.h>
-#import <PhotosUI/PXImportControllerNotificationsReceiver-Protocol.h>
+#import <PhotosUI/PXImportControllerTopLevelCompletionDelegate-Protocol.h>
 #import <PhotosUI/PXImportHistorySectionHeaderViewDelegate-Protocol.h>
 #import <PhotosUI/PXSettingsKeyObserver-Protocol.h>
 #import <PhotosUI/PXSwipeSelectionManagerDelegate-Protocol.h>
@@ -23,7 +22,7 @@
 
 @class NSLayoutConstraint, NSMutableSet, NSNumber, NSProgress, NSString, PHImportSource, PLRoundProgressView, PUImportActionCoordinator, PUImportAddToAlbumsPickerViewController, PUImportAddToAlbumsToolbarView, PUImportChangeDetailsCollectionViewHelper, PUImportCustomViewBarButton, PUImportFakePhotosDataSource, PUImportFloatingToolbarView, PUPhotosGridViewControllerSpec, PXImportAssetsDataSource, PXImportAssetsDataSourceManager, PXImportController, PXImportHistorySectionHeaderView, PXImportSessionInfo, PXNavigationTitleView, PXProgrammaticNavigationDestination, PXSelectionSnapshot, PXSwipeSelectionManager, UIBarButtonItem, UILabel, UITapGestureRecognizer;
 
-@interface PUImportViewController <PUSectionedGridLayoutDelegate, PUImportActionCoordinatorDelegate, PXImportAlbumPickerDelegate, PXImportAssetsDataSourceManagerObserver, PXImportControllerImportCompletionDelegate, PXImportControllerNotificationsReceiver, PXImportHistorySectionHeaderViewDelegate, PUImportOneUpTransitioning, PUImportSectionedGridLayoutDelegate, PXSettingsKeyObserver, PUCameraImportItemCellDelegate, PXChangeObserver, PXSwipeSelectionManagerDelegate, PUImportAddToAlbumsToolbarViewDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate>
+@interface PUImportViewController <PUSectionedGridLayoutDelegate, PUImportActionCoordinatorDelegate, PXImportAlbumPickerDelegate, PXImportAssetsDataSourceManagerObserver, PXImportControllerTopLevelCompletionDelegate, PXImportHistorySectionHeaderViewDelegate, PUImportOneUpTransitioning, PUImportSectionedGridLayoutDelegate, PXSettingsKeyObserver, PUCameraImportItemCellDelegate, PXChangeObserver, PXSwipeSelectionManagerDelegate, PUImportAddToAlbumsToolbarViewDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate>
 {
     _Bool _completedAnImport;
     PXImportSessionInfo *_completedImportSessionInfo;
@@ -218,6 +217,7 @@
 - (struct CGSize)gridItemSize;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (void)notifyUserOfImportCompletionIfNeededWithImportSession:(id)arg1 results:(id)arg2;
+- (void)importController:(id)arg1 didLoadAssets:(id)arg2 exceptions:(id)arg3;
 - (void)importController:(id)arg1 didCompleteImportWithImportSession:(id)arg2 results:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_importControllerWillBeginAction;
 - (void)_importControllerDidEndAction;
@@ -238,7 +238,7 @@
 - (void)presentAlbumPickerFromView:(id)arg1 orBarItem:(id)arg2;
 - (void)showAlbumPicker:(id)arg1;
 - (void)didTapAddToAlbumsView:(id)arg1;
-- (void)importControllerProgressDidChange:(id)arg1 completedItemCount:(id)arg2 totalItemCount:(id)arg3;
+- (void)importControllerProgressDidChange:(id)arg1;
 - (void)stopImport:(id)arg1;
 - (void)delete:(id)arg1;
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;

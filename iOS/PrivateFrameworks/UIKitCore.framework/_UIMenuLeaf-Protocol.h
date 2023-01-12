@@ -10,6 +10,7 @@
 @protocol _UIMenuLeaf, _UIMenuLeafAlternate;
 
 @protocol _UIMenuLeaf <NSObject>
+@property(readonly, nonatomic) _Bool keepsMenuPresented;
 @property(readonly, nonatomic) _Bool requiresAuthenticatedInput;
 @property(nonatomic) long long state;
 @property(nonatomic) unsigned long long attributes;

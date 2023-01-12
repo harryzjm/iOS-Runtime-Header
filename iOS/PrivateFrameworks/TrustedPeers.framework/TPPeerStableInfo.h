@@ -6,10 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSDictionary, NSString, TPPolicyVersion;
+@class NSData, NSDictionary, NSString, TPPBPeerStableInfoSetting, TPPBSecureElementIdentity, TPPolicyVersion;
 
 @interface TPPeerStableInfo : NSObject
 {
+    _Bool _isInheritedAccount;
     int _syncUserControllableViews;
     unsigned long long _clock;
     TPPolicyVersion *_frozenPolicyVersion;
@@ -20,23 +21,28 @@
     NSString *_osVersion;
     NSData *_recoverySigningPublicKey;
     NSData *_recoveryEncryptionPublicKey;
+    TPPBSecureElementIdentity *_secureElementIdentity;
+    TPPBPeerStableInfoSetting *_walrusSetting;
     NSData *_data;
     NSData *_sig;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSData *sig; // @synthesize sig=_sig;
-@property(retain, nonatomic) NSData *data; // @synthesize data=_data;
+@property(readonly, nonatomic) NSData *sig; // @synthesize sig=_sig;
+@property(readonly, nonatomic) NSData *data; // @synthesize data=_data;
+@property(nonatomic) _Bool isInheritedAccount; // @synthesize isInheritedAccount=_isInheritedAccount;
+@property(readonly, nonatomic) TPPBPeerStableInfoSetting *walrusSetting; // @synthesize walrusSetting=_walrusSetting;
+@property(readonly, nonatomic) TPPBSecureElementIdentity *secureElementIdentity; // @synthesize secureElementIdentity=_secureElementIdentity;
 @property(readonly, nonatomic) int syncUserControllableViews; // @synthesize syncUserControllableViews=_syncUserControllableViews;
-@property(retain, nonatomic) NSData *recoveryEncryptionPublicKey; // @synthesize recoveryEncryptionPublicKey=_recoveryEncryptionPublicKey;
-@property(retain, nonatomic) NSData *recoverySigningPublicKey; // @synthesize recoverySigningPublicKey=_recoverySigningPublicKey;
+@property(readonly, nonatomic) NSData *recoveryEncryptionPublicKey; // @synthesize recoveryEncryptionPublicKey=_recoveryEncryptionPublicKey;
+@property(readonly, nonatomic) NSData *recoverySigningPublicKey; // @synthesize recoverySigningPublicKey=_recoverySigningPublicKey;
 @property(readonly, nonatomic) NSString *osVersion; // @synthesize osVersion=_osVersion;
 @property(readonly, nonatomic) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;
 @property(readonly, nonatomic) NSString *deviceName; // @synthesize deviceName=_deviceName;
-@property(retain, nonatomic) NSDictionary *policySecrets; // @synthesize policySecrets=_policySecrets;
+@property(readonly, nonatomic) NSDictionary *policySecrets; // @synthesize policySecrets=_policySecrets;
 @property(readonly) TPPolicyVersion *flexiblePolicyVersion; // @synthesize flexiblePolicyVersion=_flexiblePolicyVersion;
 @property(readonly) TPPolicyVersion *frozenPolicyVersion; // @synthesize frozenPolicyVersion=_frozenPolicyVersion;
-@property(nonatomic) unsigned long long clock; // @synthesize clock=_clock;
+@property(readonly, nonatomic) unsigned long long clock; // @synthesize clock=_clock;
 - (_Bool)isEqual:(id)arg1;
 - (id)bestPolicyVersion;
 - (id)description;
@@ -45,8 +51,8 @@
 - (_Bool)checkSignatureWithKey:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithData:(id)arg1 sig:(id)arg2;
-- (id)initWithClock:(unsigned long long)arg1 frozenPolicyVersion:(id)arg2 flexiblePolicyVersion:(id)arg3 policySecrets:(id)arg4 syncUserControllableViews:(int)arg5 deviceName:(id)arg6 serialNumber:(id)arg7 osVersion:(id)arg8 signingKeyPair:(id)arg9 recoverySigningPubKey:(id)arg10 recoveryEncryptionPubKey:(id)arg11 error:(id *)arg12;
-- (id)initWithClock:(unsigned long long)arg1 frozenPolicyVersion:(id)arg2 flexiblePolicyVersion:(id)arg3 policySecrets:(id)arg4 syncUserControllableViews:(int)arg5 deviceName:(id)arg6 serialNumber:(id)arg7 osVersion:(id)arg8 recoverySigningPubKey:(id)arg9 recoveryEncryptionPubKey:(id)arg10 data:(id)arg11 sig:(id)arg12;
+- (id)initWithClock:(unsigned long long)arg1 frozenPolicyVersion:(id)arg2 flexiblePolicyVersion:(id)arg3 policySecrets:(id)arg4 syncUserControllableViews:(int)arg5 secureElementIdentity:(id)arg6 walrusSetting:(id)arg7 deviceName:(id)arg8 serialNumber:(id)arg9 osVersion:(id)arg10 signingKeyPair:(id)arg11 recoverySigningPubKey:(id)arg12 recoveryEncryptionPubKey:(id)arg13 isInheritedAccount:(_Bool)arg14 error:(id *)arg15;
+- (id)initWithClock:(unsigned long long)arg1 frozenPolicyVersion:(id)arg2 flexiblePolicyVersion:(id)arg3 policySecrets:(id)arg4 syncUserControllableViews:(int)arg5 secureElementIdentity:(id)arg6 walrusSetting:(id)arg7 deviceName:(id)arg8 serialNumber:(id)arg9 osVersion:(id)arg10 recoverySigningPubKey:(id)arg11 recoveryEncryptionPubKey:(id)arg12 isInheritedAccount:(_Bool)arg13 data:(id)arg14 sig:(id)arg15;
 
 @end
 

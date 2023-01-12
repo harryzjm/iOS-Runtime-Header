@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MCUIProfile;
+@class MCUIProfile, NSArray, RMConfigurationsSpecifierProvider;
 @protocol MCProfileViewControllerDelegate;
 
 @interface MCProfileViewController
@@ -16,9 +16,13 @@
     long long _profileViewMode;
     unsigned long long _installProfileSource;
     id <MCProfileViewControllerDelegate> _profileViewControllerDelegate;
+    RMConfigurationsSpecifierProvider *_rmSpecifierProvider;
+    NSArray *_rmTableCells;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *rmTableCells; // @synthesize rmTableCells=_rmTableCells;
+@property(retain, nonatomic) RMConfigurationsSpecifierProvider *rmSpecifierProvider; // @synthesize rmSpecifierProvider=_rmSpecifierProvider;
 @property(nonatomic) _Bool profileRemovable; // @synthesize profileRemovable=_profileRemovable;
 @property(nonatomic) _Bool profileOffersReenroll; // @synthesize profileOffersReenroll=_profileOffersReenroll;
 @property(nonatomic) __weak id <MCProfileViewControllerDelegate> profileViewControllerDelegate; // @synthesize profileViewControllerDelegate=_profileViewControllerDelegate;
@@ -26,25 +30,46 @@
 @property(nonatomic) unsigned long long installProfileSource; // @synthesize installProfileSource=_installProfileSource;
 @property(nonatomic) long long profileViewMode; // @synthesize profileViewMode=_profileViewMode;
 @property(readonly, nonatomic) MCUIProfile *UIProfile; // @synthesize UIProfile=_UIProfile;
-- (void)_profileChanged:(id)arg1;
+- (id)_tableView:(id)arg1 removeButtonForRowAtIndexPath:(id)arg2;
+- (id)_tableView:(id)arg1 buttonForRowAtIndexPath:(id)arg2 text:(id)arg3 color:(id)arg4;
+- (id)_tableView:(id)arg1 elevatedPayloadCellForRowAtIndexPath:(id)arg2;
+- (id)_tableView:(id)arg1 profileMoreDetailsCellForRowAtIndexPath:(id)arg2;
+- (id)_tableView:(id)arg1 profileCellForRowAtIndexPath:(id)arg2;
+- (int)_profileDetailsModeForElevatedPayloadAtIndexPath:(id)arg1;
+- (_Bool)_isSectionPopulated:(long long)arg1;
+- (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
+- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
+- (id)_emptyViewForHeaderFooter;
+- (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
+- (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
+- (double)_heightForHeaderFooterInSection:(long long)arg1;
+- (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
+- (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
+- (double)tableView:(id)arg1 estimatedHeightForFooterInSection:(long long)arg2;
+- (double)tableView:(id)arg1 estimatedHeightForHeaderInSection:(long long)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
-- (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (_Bool)_delegateCanPoll;
+- (_Bool)_delegateDisplayPoll;
 - (_Bool)_delegateCanUpdate;
 - (_Bool)_delegateCanRemove;
+- (void)_poll;
 - (void)_updateProfile;
 - (void)_removeProfile;
+- (_Bool)_shouldShowPollButton;
 - (_Bool)_shouldShowRemoveButton;
 - (_Bool)_shouldShowUpdateButton;
 - (_Bool)_showManagedPayloads;
 - (void)setProfile:(id)arg1;
+- (void)_rmConfigsChanged:(id)arg1;
+- (void)_tableChanged:(id)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)_setup;
 - (id)initWithStyle:(long long)arg1 profile:(id)arg2 profileViewMode:(long long)arg3;
-- (id)initWithStyle:(long long)arg1;
+- (id)initWithMDMProfileForRMAccount;
+- (id)initWithProfile:(id)arg1 viewMode:(long long)arg2;
 
 @end
 

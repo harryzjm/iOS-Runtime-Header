@@ -14,7 +14,7 @@
 {
 }
 
-+ (id)loadModelFromSpecification:(struct _MLModelSpecification *)arg1 configuration:(id)arg2 error:(id *)arg3;
++ (id)loadModelFromSpecification:(void *)arg1 configuration:(id)arg2 error:(id *)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

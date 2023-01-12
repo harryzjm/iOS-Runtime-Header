@@ -7,6 +7,7 @@
 #import <Photos/PHFetchOptions.h>
 
 @interface PHFetchOptions (PXSearch)
++ (id)px_searchAssetFetchOptionsForPhotoLibrary:(id)arg1;
 + (id)px_searchAssetFetchOptions;
 + (id)px_standardFetchOptions;
 @end

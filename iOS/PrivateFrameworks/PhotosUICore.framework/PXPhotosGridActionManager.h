@@ -20,10 +20,12 @@
 @property(readonly, nonatomic) __weak PXPhotosViewModel *viewModel; // @synthesize viewModel=_viewModel;
 - (id)activityForActionType:(id)arg1;
 - (id)alertActionForActionType:(id)arg1;
+- (id)standardActionForActionType:(id)arg1;
 - (void)_handleBarButtonItem:(id)arg1;
 - (id)barButtonItemForActionType:(id)arg1;
 - (id)localizedTitleForActionType:(id)arg1 useCase:(unsigned long long)arg2;
 - (id)actionPerformerForActionType:(id)arg1;
+- (_Bool)supportsActionType:(id)arg1;
 - (_Bool)canPerformActionType:(id)arg1;
 - (id)init;
 - (id)initWithViewModel:(id)arg1;

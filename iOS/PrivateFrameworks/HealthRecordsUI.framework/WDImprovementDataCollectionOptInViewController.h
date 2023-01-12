@@ -9,12 +9,13 @@
 #import <HealthRecordsUI/UITableViewDataSource-Protocol.h>
 #import <HealthRecordsUI/UITableViewDelegate-Protocol.h>
 
-@class HRProfile, NSArray, NSString, UIButton, UITableView, UIView;
+@class HKClinicalAccount, NSArray, NSString, UIButton, UITableView, UIView, WDClinicalAccountOnboardingSession;
 
 __attribute__((visibility("hidden")))
 @interface WDImprovementDataCollectionOptInViewController : HKViewController <UITableViewDataSource, UITableViewDelegate>
 {
-    HRProfile *_profile;
+    WDClinicalAccountOnboardingSession *_onboardingSession;
+    HKClinicalAccount *_account;
     NSArray *_sections;
     UIButton *_allowButton;
     UIButton *_doNotAllowButton;
@@ -28,9 +29,11 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIButton *doNotAllowButton; // @synthesize doNotAllowButton=_doNotAllowButton;
 @property(retain, nonatomic) UIButton *allowButton; // @synthesize allowButton=_allowButton;
 @property(retain, nonatomic) NSArray *sections; // @synthesize sections=_sections;
-@property(retain, nonatomic) HRProfile *profile; // @synthesize profile=_profile;
+@property(readonly, nonatomic) HKClinicalAccount *account; // @synthesize account=_account;
+@property(readonly, nonatomic) WDClinicalAccountOnboardingSession *onboardingSession; // @synthesize onboardingSession=_onboardingSession;
 - (void)_setOptInStatus:(long long)arg1;
 - (void)aboutPrivacyButtonTapped:(id)arg1;
+- (void)_pushToNextView;
 - (void)doNotAllowButtonTapped:(id)arg1;
 - (void)allowButtonTapped:(id)arg1;
 - (void)cancelButtonTapped:(id)arg1;
@@ -51,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)_setupConstraints;
 - (void)_setupSubviews;
 - (void)loadView;
+- (id)initWithOnboardingSession:(id)arg1 account:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

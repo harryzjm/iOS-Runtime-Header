@@ -6,24 +6,28 @@
 
 #import <objc/NSObject.h>
 
+#import <TextInputCore/TISupplementalLexiconControllerDelegate-Protocol.h>
 #import <TextInputCore/TITransientLexiconManaging-Protocol.h>
 
-@class NSString;
+@class NSHashTable, NSString, NSXPCConnection, TISupplementalLexiconController;
 @protocol _ICLexiconManaging;
 
-@interface TITransientLexiconManager : NSObject <TITransientLexiconManaging>
+@interface TITransientLexiconManager : NSObject <TISupplementalLexiconControllerDelegate, TITransientLexiconManaging>
 {
     struct _LXLexicon *_namedEntityLexiconRef;
     struct _LXLexicon *_namedEntityPhraseLexiconRef;
-    id <_ICLexiconManaging> _inputContextLexiconManager;
+    NSObject<_ICLexiconManaging> *_inputContextLexiconManager;
+    NSHashTable *_supplementalLexicons;
     _Bool _lexiconsLoaded;
+    _Bool _supplementalLexiconSearchEnabled;
 }
 
 + (id)getEntries:(struct _LXLexicon *)arg1;
-+ (id)sharedInstance;
 + (id)singletonInstance;
++ (id)sharedInstance;
 + (void)setSharedTITransientLexiconManager:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic, getter=isSupplementalLexiconSearchEnabled) _Bool supplementalLexiconSearchEnabled; // @synthesize supplementalLexiconSearchEnabled=_supplementalLexiconSearchEnabled;
 - (void)provideFeedbackForString:(id)arg1 type:(unsigned char)arg2 style:(unsigned char)arg3;
 - (void)debugLogEntities;
 @property(readonly, nonatomic) const struct _LXLexicon *namedEntityPhraseLexicon;
@@ -36,9 +40,14 @@
 - (CDUnknownBlockType)addContactObserver:(CDUnknownBlockType)arg1;
 - (void)handleMemoryPressureLevel:(unsigned long long)arg1 excessMemoryInBytes:(unsigned long long)arg2;
 - (void)keyboardActivityDidTransition:(id)arg1;
+- (void)supplementalLexiconControllerProcessDidTerminate:(id)arg1;
 - (void)loadLexicons;
+@property(readonly, nonatomic) TISupplementalLexiconController *supplementalLexicons;
+@property(readonly, nonatomic) TISupplementalLexiconController *ensureSupplementalLexicons;
+- (id)_currentConnection;
 - (void)dealloc;
 - (id)init;
+@property(retain, nonatomic, setter=_setOverridingCurrentConnectionForTesting:) NSXPCConnection *_overridingCurrentConnectionForTesting;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

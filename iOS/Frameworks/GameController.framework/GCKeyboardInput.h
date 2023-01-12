@@ -12,6 +12,7 @@
     NSSet *_allCodes;
     _Bool _isActive;
     int _numberOfKeysPressed;
+    CDUnknownBlockType _keyChangedHandlerPrivate;
     CDUnknownBlockType _keyChangedHandler;
 }
 
@@ -33,6 +34,8 @@
 - (id)initWithController:(id)arg1;
 - (id)init;
 - (void)commonInit;
+- (void)setKeyChangedHandlerPrivate:(CDUnknownBlockType)arg1;
+- (CDUnknownBlockType)keyChangedHandlerPrivate;
 
 @end
 

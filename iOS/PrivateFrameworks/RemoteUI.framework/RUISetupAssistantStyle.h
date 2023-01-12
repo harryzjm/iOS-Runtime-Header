@@ -8,9 +8,10 @@
 {
 }
 
-- (void)applyToNavigationController:(id)arg1;
+- (void)applyToNavigationBar:(id)arg1;
 - (void)applyToObjectModel:(id)arg1;
 - (void)_applyToFooter:(id)arg1 view:(id)arg2;
+- (long long)tableViewStyle;
 - (id)_backgroundColor;
 - (void)applyToLabel:(id)arg1;
 - (void)_applyToTitleLabel:(id)arg1;

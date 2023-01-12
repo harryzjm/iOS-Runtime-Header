@@ -9,6 +9,7 @@
 #import <ContactsUI/CNAvatarViewDelegate-Protocol.h>
 #import <ContactsUI/CNPhotoPickerViewControllerDelegate-Protocol.h>
 #import <ContactsUI/CNPresenterDelegate-Protocol.h>
+#import <ContactsUI/CNVisualIdentityPickerPresenterDelegate-Protocol.h>
 #import <ContactsUI/QLPreviewControllerDataSource-Protocol.h>
 #import <ContactsUI/QLPreviewControllerDelegate-Protocol.h>
 #import <ContactsUI/UIDropInteractionDelegate-Protocol.h>
@@ -19,7 +20,7 @@
 @protocol CNContactPhotoViewDelegate, CNPresenterDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNContactPhotoView : UIControl <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIDropInteractionDelegate, QLPreviewControllerDelegate, QLPreviewControllerDataSource, CNPhotoPickerViewControllerDelegate, CNAvatarViewDelegate, CNPresenterDelegate>
+@interface CNContactPhotoView : UIControl <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIDropInteractionDelegate, QLPreviewControllerDelegate, QLPreviewControllerDataSource, CNPhotoPickerViewControllerDelegate, CNVisualIdentityPickerPresenterDelegate, CNAvatarViewDelegate, CNPresenterDelegate>
 {
     _Bool _editing;
     _Bool _showEditingLabel;
@@ -91,6 +92,7 @@ __attribute__((visibility("hidden")))
 - (void)imagePickerControllerDidCancel:(id)arg1;
 - (void)saveImagePickerMediaFromInfo:(id)arg1 toContact:(id)arg2;
 - (void)imagePickerController:(id)arg1 didFinishPickingMediaWithInfo:(id)arg2;
+- (void)visualIdentityPicker:(id)arg1 presentationControllerWillDismiss:(id)arg2;
 - (void)photoPicker:(id)arg1 didUpdatePhotoForContact:(id)arg2 withContactImage:(id)arg3;
 - (void)photoPickerDidCancel:(id)arg1;
 @property(readonly) _Bool isPresentingModalViewController;
@@ -127,7 +129,7 @@ __attribute__((visibility("hidden")))
 - (id)contact;
 - (_Bool)isMeContact;
 - (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1 monogrammerStyle:(long long)arg2 shouldAllowTakePhotoAction:(_Bool)arg3 threeDTouchEnabled:(_Bool)arg4 contactStore:(id)arg5 allowsImageDrops:(_Bool)arg6 imageRenderer:(id)arg7;
+- (id)initWithFrame:(struct CGRect)arg1 shouldAllowTakePhotoAction:(_Bool)arg2 threeDTouchEnabled:(_Bool)arg3 contactStore:(id)arg4 allowsImageDrops:(_Bool)arg5 imageRenderer:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

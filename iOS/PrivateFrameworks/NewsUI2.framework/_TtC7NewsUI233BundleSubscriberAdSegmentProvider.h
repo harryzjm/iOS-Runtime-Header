@@ -8,6 +8,7 @@
 
 @class MISSING_TYPE;
 
+__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI233BundleSubscriberAdSegmentProvider : NSObject
 {
     MISSING_TYPE *needsUpdate;

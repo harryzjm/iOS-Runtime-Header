@@ -9,7 +9,6 @@
 @class CKDProgressTracker, CKRecord, NSError, NSMutableArray;
 @protocol OS_dispatch_group;
 
-__attribute__((visibility("hidden")))
 @interface CKDRecordDownloadTask : NSObject
 {
     CKRecord *_record;

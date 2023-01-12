@@ -8,11 +8,11 @@
 
 @interface WebFixedPositionContent : NSObject
 {
-    struct WebFixedPositionContentData *_private;
+    void *_private;
 }
 
 - (_Bool)hasFixedOrStickyPositionLayers;
-- (void)setViewportConstrainedLayers:(HashMap_16811959 *)arg1 stickyContainerMap:(const HashMap_3ffacf9f *)arg2;
+- (void)setViewportConstrainedLayers:(void *)arg1 stickyContainerMap:(const void *)arg2;
 - (void)didFinishScrollingOrZooming;
 - (void)overflowScrollPositionForLayer:(id)arg1 changedTo:(struct CGPoint)arg2;
 - (void)scrollOrZoomChanged:(struct CGRect)arg1;

@@ -35,7 +35,6 @@
 @property(readonly, nonatomic) UILabel *descriptionLabel; // @synthesize descriptionLabel=_descriptionLabel;
 @property(readonly, nonatomic) UILabel *countLabel; // @synthesize countLabel=_countLabel;
 @property(readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-- (id)_goButtonBackgroundImageWithColor:(id)arg1;
 - (void)_createViews;
 - (void)updateConstraints;
 - (void)commonInit;

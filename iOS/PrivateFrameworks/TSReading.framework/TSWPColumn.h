@@ -28,7 +28,7 @@
     unsigned long long _pageNumber;
     unsigned long long _scaleTextPercent;
     id <TSWPStyleProvider> _styleProvider;
-    shared_ptr_1a254aea _lineFragmentArray;
+    struct shared_ptr<TSWPLineFragmentArray> _lineFragmentArray;
     void *_paragraphAdornments;
     _Bool _textIsVertical;
 }
@@ -69,7 +69,7 @@
 - (id)singleLinePartitionedInfoAtStart:(_Bool)arg1;
 - (id)partitionedLayoutForInfo:(id)arg1;
 - (id)smartFieldAtCharIndex:(unsigned long long)arg1 attributeKind:(unsigned int)arg2;
-- (void)renderWithRenderer:(id)arg1 currentSelection:(id)arg2 limitSelection:(id)arg3 listRange:(struct _NSRange)arg4 rubyGlyphRange:(struct _NSRange)arg5 isCanvasInteractive:(_Bool)arg6 spellChecker:(id)arg7 suppressedMisspellingRange:(struct _NSRange)arg8 blackAndWhite:(_Bool)arg9 dictationInterpretations:(const struct TSWPRangeVector *)arg10 autocorrections:(const struct TSWPRangeVector *)arg11 markedRange:(struct _NSRange)arg12 markedText:(id)arg13 renderMode:(int)arg14 pageCount:(unsigned long long)arg15 suppressInvisibles:(_Bool)arg16 currentCanvasSelection:(id)arg17;
+- (void)renderWithRenderer:(id)arg1 currentSelection:(id)arg2 limitSelection:(id)arg3 listRange:(struct _NSRange)arg4 rubyGlyphRange:(struct _NSRange)arg5 isCanvasInteractive:(_Bool)arg6 spellChecker:(id)arg7 suppressedMisspellingRange:(struct _NSRange)arg8 blackAndWhite:(_Bool)arg9 dictationInterpretations:(const void *)arg10 autocorrections:(const void *)arg11 markedRange:(struct _NSRange)arg12 markedText:(id)arg13 renderMode:(int)arg14 pageCount:(unsigned long long)arg15 suppressInvisibles:(_Bool)arg16 currentCanvasSelection:(id)arg17;
 - (void)renderWithRenderer:(id)arg1 pageCount:(unsigned long long)arg2;
 - (struct _TSWPCharIndexAndPosition)calcAttachmentPositionForDrawable:(id)arg1 atPoint:(struct CGPoint)arg2 inTextLayoutTarget:(id)arg3 tlBoundsInfluencingWrap:(struct CGPoint)arg4 wrapOutset:(struct CGSize)arg5 wrapMargin:(double)arg6 makeInline:(_Bool)arg7;
 - (unsigned long long)charIndexFromWPPoint:(struct CGPoint)arg1 pastCenterGoesToNextChar:(_Bool)arg2 allowNotFound:(_Bool)arg3 outFragment:(const struct TSWPLineFragment **)arg4 leadingEdge:(_Bool *)arg5;
@@ -85,7 +85,7 @@
 - (id)rectsForSelectionRange:(struct _NSRange)arg1 selectionType:(int)arg2;
 - (id)rectsForSelectionRanges:(id)arg1 selectionType:(int)arg2;
 - (id)pMutableRectsForSelectionRange:(struct _NSRange)arg1 selectionType:(int)arg2 includeSpaceAfter:(_Bool)arg3 includeSpaceBefore:(_Bool)arg4 includeLeading:(_Bool)arg5 forParagraphMode:(_Bool)arg6 includeRuby:(_Bool)arg7 inranges:(id)arg8 outranges:(id *)arg9;
-- (const struct TSWPLineFragment *)pColumnEndingPartitionedLineFragmentInSelectionRange:(struct _NSRange)arg1;
+- (const void *)pColumnEndingPartitionedLineFragmentInSelectionRange:(struct _NSRange)arg1;
 - (id)rectsForSelectionRange:(struct _NSRange)arg1;
 - (id)rectsForSelection:(id)arg1;
 - (struct CGRect)firstRectForSelection:(id)arg1 includeSpaceAfter:(_Bool)arg2 includeSpaceBefore:(_Bool)arg3 includeLeading:(_Bool)arg4;
@@ -99,8 +99,8 @@
 - (struct CGRect)glyphRectForRange:(struct _NSRange)arg1 includingLabel:(_Bool)arg2;
 - (struct CGRect)caretRectForSelection:(id)arg1;
 - (unsigned long long)lineIndexForCharIndex:(unsigned long long)arg1 eol:(_Bool)arg2;
-- (const struct TSWPLineFragment *)lineFragmentForCharIndex:(unsigned long long)arg1 knobTag:(unsigned long long)arg2 selectionType:(int)arg3;
-- (const struct TSWPLineFragment *)lineFragmentClosestToPoint:(struct CGPoint)arg1 knobTag:(unsigned long long)arg2;
+- (const void *)lineFragmentForCharIndex:(unsigned long long)arg1 knobTag:(unsigned long long)arg2 selectionType:(int)arg3;
+- (const void *)lineFragmentClosestToPoint:(struct CGPoint)arg1 knobTag:(unsigned long long)arg2;
 - (double)horizontalOffsetForCharIndex:(unsigned long long)arg1 lineFragmentIndex:(unsigned long long)arg2 bumpPastHyphen:(_Bool)arg3 allowPastLineBounds:(_Bool)arg4;
 - (CDStruct_50f584da)lineMetricsAtCharIndex:(unsigned long long)arg1 allowEndOfLine:(_Bool)arg2;
 - (double)baselineOfLineFragmentAtCharIndex:(unsigned long long)arg1;
@@ -119,9 +119,9 @@
 - (unsigned long long)lineFragmentCountForBaseline:(double)arg1;
 - (void)offsetLineFragmentsByPoint:(struct CGPoint)arg1;
 - (void)normalizeLineFragmentOrigins:(struct CGPoint)arg1;
-- (const struct TSWPLineFragment *)lineFragmentAtIndex:(unsigned long long)arg1;
-- (void)setLineFragmentArray:(const shared_ptr_1a254aea *)arg1;
-- (const shared_ptr_1a254aea *)lineFragmentArray;
+- (const void *)lineFragmentAtIndex:(unsigned long long)arg1;
+- (void)setLineFragmentArray:(const void *)arg1;
+- (const void *)lineFragmentArray;
 - (double)topOfCapForLogicalLineIndex:(unsigned long long)arg1;
 - (struct _NSRange)lineFragmentRangeForLogicalLineIndex:(unsigned long long)arg1;
 - (unsigned long long)logicalLineCount;
@@ -135,7 +135,7 @@
 @property(readonly, nonatomic) double textBottom;
 - (struct CGRect)erasableBounds:(unsigned int)arg1;
 - (double)minimumHeightForLayoutOnPage;
-- (void)trimFromCharIndex:(unsigned long long)arg1 inTarget:(id)arg2 layoutChore:(struct TSWPLayoutChore *)arg3;
+- (void)trimFromCharIndex:(unsigned long long)arg1 inTarget:(id)arg2 layoutChore:(void *)arg3;
 - (double)trimToCharIndex:(unsigned long long)arg1 inTarget:(id)arg2;
 - (void)trimToCharIndex:(unsigned long long)arg1 inTarget:(id)arg2 removeAutoNumberFootnoteCount:(unsigned long long)arg3;
 - (struct CGSize)maxSize;

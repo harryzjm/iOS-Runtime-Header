@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSString;
+@class NSString;
 
 @protocol TRIAssetExtracting
-- (_Bool)extractArchiveFromData:(NSData *)arg1 withArchiveName:(NSString *)arg2 toEmptyDirectory:(NSString *)arg3;
+- (_Bool)extractArchiveFromFile:(NSString *)arg1 withArchiveName:(NSString *)arg2 toEmptyDirectory:(NSString *)arg3 postExtractionCompression:(CDStruct_69d7cc99)arg4 error:(id *)arg5;
 @end
 

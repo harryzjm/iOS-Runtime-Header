@@ -16,6 +16,7 @@
     _Bool _showsPin;
     _Bool _showsStar;
     _Bool _showsMute;
+    _Bool _enabled;
     NSString *_text;
     NSString *_detailText;
     UIImage *_trailingImage;
@@ -23,8 +24,10 @@
     NSString *_trailingText;
 }
 
++ (id)configurationWithText:(id)arg1 detailText:(id)arg2 image:(id)arg3 unread:(_Bool)arg4 showsPin:(_Bool)arg5 showsStar:(_Bool)arg6 showsMute:(_Bool)arg7 trailingText:(id)arg8 trailingImage:(id)arg9 enabled:(_Bool)arg10;
 + (id)configurationWithText:(id)arg1 detailText:(id)arg2 image:(id)arg3 unread:(_Bool)arg4 showsPin:(_Bool)arg5 showsStar:(_Bool)arg6 showsMute:(_Bool)arg7 trailingText:(id)arg8 trailingImage:(id)arg9;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool enabled; // @synthesize enabled=_enabled;
 @property(nonatomic) _Bool showsMute; // @synthesize showsMute=_showsMute;
 @property(nonatomic) _Bool showsStar; // @synthesize showsStar=_showsStar;
 @property(nonatomic) _Bool showsPin; // @synthesize showsPin=_showsPin;

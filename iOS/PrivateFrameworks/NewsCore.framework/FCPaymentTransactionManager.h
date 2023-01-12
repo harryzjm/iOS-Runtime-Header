@@ -25,8 +25,8 @@
 @property(nonatomic) __weak id <FCPaymentTransactionManagerDelegate> delegate; // @synthesize delegate;
 - (void)paymentTransactionObserver:(id)arg1 didFinishPurchaseTransactionWithProductID:(id)arg2;
 - (void)paymentTransactionObserver:(id)arg1 didFailPurchaseTransactionWithTransaction:(id)arg2;
-- (id)createPaymentQueueWithProductID:(id)arg1 purchaseID:(id)arg2 webAccessOptIn:(_Bool)arg3 appAdamID:(id)arg4 storeExternalVersion:(id)arg5;
-- (void)startPurchaseWithTagID:(id)arg1 productID:(id)arg2 purchaseID:(id)arg3 appAdamID:(id)arg4 storeExternalVersion:(id)arg5 price:(id)arg6 webAccessOptIn:(_Bool)arg7 payment:(id)arg8;
+- (id)createPaymentQueueWithProductID:(id)arg1 purchaseID:(id)arg2 bundleID:(id)arg3 webAccessOptIn:(_Bool)arg4 appAdamID:(id)arg5 storeExternalVersion:(id)arg6;
+- (void)startPurchaseWithTagID:(id)arg1 productID:(id)arg2 purchaseID:(id)arg3 bundleID:(id)arg4 appAdamID:(id)arg5 storeExternalVersion:(id)arg6 price:(id)arg7 webAccessOptIn:(_Bool)arg8 payment:(id)arg9;
 - (void)registerOngoingPurchaseTransactionsWithEntry:(id)arg1;
 - (_Bool)canMakePayments;
 - (id)init;

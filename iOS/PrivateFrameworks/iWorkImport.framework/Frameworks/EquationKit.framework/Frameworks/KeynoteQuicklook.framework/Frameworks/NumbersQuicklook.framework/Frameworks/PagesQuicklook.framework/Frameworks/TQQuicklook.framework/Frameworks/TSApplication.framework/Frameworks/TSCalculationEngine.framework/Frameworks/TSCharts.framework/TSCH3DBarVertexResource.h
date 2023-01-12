@@ -8,16 +8,16 @@
 
 @interface TSCH3DBarVertexResource
 {
-    TSCH3DBarExtrusionGeometry *mGeometry;
+    TSCH3DBarExtrusionGeometry *_geometry;
 }
 
+- (void).cxx_destruct;
 - (id)geometry;
 - (long long)capOffset;
 - (long long)numCapVertices;
 - (long long)verticesOffset;
 - (long long)numVertices;
 - (id)get;
-- (void)dealloc;
 - (id)initWithGeometry:(id)arg1;
 
 @end

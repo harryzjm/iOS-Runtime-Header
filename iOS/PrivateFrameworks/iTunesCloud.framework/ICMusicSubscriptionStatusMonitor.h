@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class ICMusicSubscriptionStatus, ICUserIdentity, ICUserIdentityContext, NSMutableDictionary;
+@class ICMusicSubscriptionStatus, ICUserIdentity, ICUserIdentityContext, NSMutableDictionary, NSNumber;
 
 @interface ICMusicSubscriptionStatusMonitor : NSObject
 {
     ICUserIdentityContext *_identityContext;
+    NSNumber *_DSID;
     NSMutableDictionary *_observers;
     struct os_unfair_lock_s _lock;
     ICMusicSubscriptionStatus *_subscriptionStatus;
@@ -23,11 +24,13 @@
 @property(readonly, nonatomic) ICMusicSubscriptionStatus *subscriptionStatus; // @synthesize subscriptionStatus=_subscriptionStatus;
 - (void)_updateWithSubscriptionStatus:(id)arg1;
 - (void)_requestSubscriptionStatusWithCachingPolicy:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)_isMonitoringSubscriptionStatusForAutoupdatingIdentity;
 - (id)_effectiveIdentityForRequestingSubscriptionStatus;
 - (void)_endObservingSubscriptionStatus;
 - (void)_beginObservingSubscriptionStatus;
 - (void)_handleUserIdentityStoreDidChange:(id)arg1;
 - (void)_handleSubscriptionStatusDidChange:(id)arg1;
+- (void)_handleActiveUserIdentityDidChangeRemoteNotification;
 - (void)refreshSubscriptionStatus;
 - (void)endObservingSubscriptionStatusWithToken:(id)arg1;
 - (id)beginObservingSubscriptionStatusWithHandler:(CDUnknownBlockType)arg1;

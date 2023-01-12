@@ -6,13 +6,15 @@
 
 #import <objc/NSObject.h>
 
+#import <SceneKit/SCNMTLRenderContextCommandBufferStatusMonitor-Protocol.h>
+#import <SceneKit/SCNMTLRenderContextResourceManagerMonitor-Protocol.h>
 #import <SceneKit/SCNSceneRenderer-Protocol.h>
 #import <SceneKit/SCNTechniqueSupport-Protocol.h>
 
 @class AVAudioEngine, AVAudioEnvironmentNode, EAGLContext, MISSING_TYPE, MTLRenderPassDescriptor, NSArray, NSString, SCNAuthoringEnvironment, SCNMTLRenderContext, SCNNode, SCNRecursiveLock, SCNRendererTransitionContext, SCNScene, SCNTechnique, SKScene, UIColor, __SKSCNRenderer;
-@protocol MTLCommandQueue, MTLDevice, MTLRenderCommandEncoder, MTLTexture, OS_dispatch_queue, SCNSceneRenderer, SCNSceneRendererDelegate;
+@protocol MTLCommandQueue, MTLDevice, MTLRenderCommandEncoder, MTLTexture, OS_dispatch_queue, SCNSceneRenderer, SCNSceneRendererDelegate, _SCNSceneCommandBufferStatusMonitor, _SCNSceneRendererResourceManagerMonitor;
 
-@interface SCNRenderer : NSObject <SCNSceneRenderer, SCNTechniqueSupport>
+@interface SCNRenderer : NSObject <SCNMTLRenderContextCommandBufferStatusMonitor, SCNMTLRenderContextResourceManagerMonitor, SCNSceneRenderer, SCNTechniqueSupport>
 {
     SCNScene *_scene;
     SCNNode *_pointOfView;
@@ -93,13 +95,19 @@
     _Bool _showStatistics;
     _Bool _showAuthoringEnvironment;
     double _statisticsTimeStamp;
+    id <_SCNSceneRendererResourceManagerMonitor> _resourceManagerMonitor;
+    id <_SCNSceneCommandBufferStatusMonitor> _commandBufferStatusMonitor;
 }
 
 + (id)rendererWithContext:(id)arg1 options:(id)arg2;
 + (id)rendererWithDevice:(id)arg1 options:(id)arg2;
+- (void).cxx_destruct;
 - (void)_setInterfaceOrientation:(long long)arg1;
 - (void)_interfaceOrientationDidChange;
 - (void)_UIOrientationDidChangeNotification:(id)arg1;
+- (void)_addGPUFramePresentedHandler:(CDUnknownBlockType)arg1;
+- (void)_addGPUFrameCompletedHandler:(CDUnknownBlockType)arg1;
+- (void)_addGPUFrameScheduledHandler:(CDUnknownBlockType)arg1;
 - (id)privateRendererOwner;
 - (void)_jitterAtStep:(unsigned long long)arg1 updateMainFramebuffer:(_Bool)arg2 redisplay:(_Bool)arg3 jitterer:(id)arg4;
 - (id)initOffscreenRendererWithSize:(struct CGSize)arg1 options:(id)arg2;
@@ -204,6 +212,12 @@
 - (double)_nextFrameTime;
 - (void)set_nextFrameTime:(double)arg1;
 - (void)updateCurrentTimeIfPlayingWithSystemTime:(double)arg1;
+- (void)renderContext:(id)arg1 commandBufferDidCompleteWithError:(id)arg2;
+- (void)set_commandBufferStatusMonitor:(id)arg1;
+- (id)_commandBufferStatusMonitor;
+- (void)renderContext:(id)arg1 didFallbackToDefaultTextureForSource:(id)arg2 message:(id)arg3;
+- (void)set_resourceManagerMonitor:(id)arg1;
+- (id)_resourceManagerMonitor;
 - (void)set_shouldForwardSceneRendererDelegationMessagesToPrivateRendererOwner:(_Bool)arg1;
 - (_Bool)_shouldForwardSceneRendererDelegationMessagesToPrivateRendererOwner;
 - (void)set_wantsSceneRendererDelegationMessages:(_Bool)arg1;

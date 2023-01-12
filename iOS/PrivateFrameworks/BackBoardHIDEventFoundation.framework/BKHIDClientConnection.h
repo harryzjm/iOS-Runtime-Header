@@ -8,7 +8,7 @@
 
 #import <BackBoardHIDEventFoundation/BSInvalidatable-Protocol.h>
 
-@class BSCompoundAssertion, NSString;
+@class BSCompoundAssertion, BSProcessDeathWatcher, NSString;
 
 @interface BKHIDClientConnection : NSObject <BSInvalidatable>
 {
@@ -20,10 +20,12 @@
     struct os_unfair_lock_s _lock;
     BSCompoundAssertion *_observerAssertion;
     struct atomic_flag _invalid;
+    BSProcessDeathWatcher *_processDeathWatcher;
 }
 
 + (id)connectionWithConnection:(struct __IOHIDEventSystemConnection *)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) BSProcessDeathWatcher *processDeathWatcher; // @synthesize processDeathWatcher=_processDeathWatcher;
 @property(readonly, nonatomic) unsigned int task; // @synthesize task=_task;
 @property(readonly, nonatomic) long long versionedPID; // @synthesize versionedPID=_versionedPID;
 @property(readonly, nonatomic) int pid; // @synthesize pid=_pid;

@@ -4,17 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class BPSPublisher;
+@protocol BPSPublisher;
 
 @interface BPSCollect
 {
-    BPSPublisher *_upstream;
+    id <BPSPublisher> _upstream;
 }
 
++ (id)publisherWithPublisher:(id)arg1 upstreams:(id)arg2 bookmarkState:(id)arg3;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) BPSPublisher *upstream; // @synthesize upstream=_upstream;
+@property(readonly, nonatomic) id <BPSPublisher> upstream; // @synthesize upstream=_upstream;
 - (void)subscribe:(id)arg1;
 - (id)initWithUpstream:(id)arg1;
+- (_Bool)canStoreInternalStateInBookmark;
+- (id)bookmarkableUpstreams;
 
 @end
 

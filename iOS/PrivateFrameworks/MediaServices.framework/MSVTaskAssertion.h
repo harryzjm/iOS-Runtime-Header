@@ -34,6 +34,7 @@
 - (void)invalidateOnDate:(id)arg1;
 - (void)invalidate;
 - (_Bool)acquire;
+- (_Bool)isAcquired;
 - (id)description;
 - (void)dealloc;
 - (id)init;

@@ -21,6 +21,7 @@
 @property(nonatomic) __weak id <UNNotificationSettingsCenterDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)settingsServiceConnection:(id)arg1 didUpdateNotificationSystemSettings:(id)arg2;
 - (void)settingsServiceConnection:(id)arg1 didUpdateNotificationSourcesWithIdentifiers:(id)arg2;
+- (void)resetScheduledDeliverySetting;
 - (void)setNotificationSystemSettings:(id)arg1;
 - (id)notificationSystemSettings;
 - (void)replaceNotificationTopicSettings:(id)arg1 forNotificationSourceIdentifier:(id)arg2 topicIdentifier:(id)arg3;

@@ -8,23 +8,21 @@
 
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, NSUUID;
+@class NSString, NSUUID;
 
 @interface HKObjectAuthorizationPromptSession : NSObject <NSSecureCoding>
 {
     NSUUID *_sessionIdentifier;
     NSString *_bundleIdentifier;
-    NSArray *_samplesRequiringAuthorization;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSArray *samplesRequiringAuthorization; // @synthesize samplesRequiringAuthorization=_samplesRequiringAuthorization;
 @property(readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(readonly, copy, nonatomic) NSUUID *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initForBundleIdentifier:(id)arg1 samples:(id)arg2 sessionIdentifier:(id)arg3;
+- (id)initForBundleIdentifier:(id)arg1 sessionIdentifier:(id)arg2;
 
 @end
 

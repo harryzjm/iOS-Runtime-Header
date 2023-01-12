@@ -10,7 +10,6 @@
 
 @class PBUnknownFields;
 
-__attribute__((visibility("hidden")))
 @interface GEOPDAutocompleteEntryOfflineArea : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;

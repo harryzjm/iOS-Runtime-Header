@@ -27,6 +27,7 @@
 @property(readonly, nonatomic) __weak UIView<_SFBarCommon> *bar; // @synthesize bar=_bar;
 - (void)dynamicBarAnimatorWillLeaveSteadyState:(id)arg1;
 - (void)dynamicBarAnimatorStateDidChange:(id)arg1;
+- (void)dealloc;
 - (_Bool)_gestureIsOverBar;
 - (void)_hover:(id)arg1;
 - (id)initWithBar:(id)arg1 withAnimator:(id)arg2 inContainerView:(id)arg3;

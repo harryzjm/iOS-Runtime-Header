@@ -11,7 +11,7 @@
 #import <Rapport/RPMessageable-Protocol.h>
 #import <Rapport/RPRemoteDisplayXPCClientInterface-Protocol.h>
 
-@class CUBonjourDevice, NSMutableDictionary, NSNumber, NSString, NSXPCConnection, RPRemoteDisplayDevice, RPRemoteDisplayServer;
+@class CUBonjourDevice, NSArray, NSMutableDictionary, NSNumber, NSString, NSXPCConnection, RPRemoteDisplayDevice, RPRemoteDisplayServer;
 @protocol OS_dispatch_queue;
 
 @interface RPRemoteDisplaySession : NSObject <NSSecureCoding, RPRemoteDisplayXPCClientInterface, RPAuthenticatable, RPMessageable>
@@ -27,11 +27,14 @@
     int _passwordType;
     int _passwordTypeActual;
     unsigned int _internalAuthFlags;
+    NSArray *_allowedMACAddresses;
+    NSArray *_pairSetupACL;
     NSString *_password;
     CDUnknownBlockType _authCompletionHandler;
     CDUnknownBlockType _showPasswordHandler;
     CDUnknownBlockType _hidePasswordHandler;
     CDUnknownBlockType _promptForPasswordHandler;
+    NSString *_serviceType;
     unsigned long long _controlFlags;
     RPRemoteDisplayDevice *_destinationDevice;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
@@ -60,6 +63,7 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property(retain, nonatomic) RPRemoteDisplayDevice *destinationDevice; // @synthesize destinationDevice=_destinationDevice;
 @property(nonatomic) unsigned long long controlFlags; // @synthesize controlFlags=_controlFlags;
+@property(retain, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
 @property(copy, nonatomic) CDUnknownBlockType promptForPasswordHandler; // @synthesize promptForPasswordHandler=_promptForPasswordHandler;
 @property(copy, nonatomic) CDUnknownBlockType hidePasswordHandler; // @synthesize hidePasswordHandler=_hidePasswordHandler;
 @property(copy, nonatomic) CDUnknownBlockType showPasswordHandler; // @synthesize showPasswordHandler=_showPasswordHandler;
@@ -69,6 +73,8 @@
 @property(copy, nonatomic) NSString *password; // @synthesize password=_password;
 @property(nonatomic) unsigned int pairVerifyFlags; // @synthesize pairVerifyFlags=_pairVerifyFlags;
 @property(nonatomic) unsigned int pairSetupFlags; // @synthesize pairSetupFlags=_pairSetupFlags;
+@property(retain, nonatomic) NSArray *pairSetupACL; // @synthesize pairSetupACL=_pairSetupACL;
+@property(retain, nonatomic) NSArray *allowedMACAddresses; // @synthesize allowedMACAddresses=_allowedMACAddresses;
 - (void)remoteDisplayReceivedRequestID:(id)arg1 request:(id)arg2 options:(id)arg3 responseHandler:(CDUnknownBlockType)arg4;
 - (void)_sendRequestID:(id)arg1 request:(id)arg2 destinationID:(id)arg3 options:(id)arg4 responseHandler:(CDUnknownBlockType)arg5;
 - (void)sendRequestID:(id)arg1 request:(id)arg2 destinationID:(id)arg3 options:(id)arg4 responseHandler:(CDUnknownBlockType)arg5;

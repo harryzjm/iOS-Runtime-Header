@@ -10,6 +10,12 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct CAFrameRateRange {
+    float _field1;
+    float _field2;
+    float _field3;
+};
+
 struct CGAffineTransform {
     double _field1;
     double _field2;
@@ -32,6 +38,37 @@ struct CGRect {
 struct CGSize {
     double width;
     double height;
+};
+
+struct SBFScreenSpecificCGFloatValue {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+    double _field5;
+    double _field6;
+    double _field7;
+    double _field8;
+    double _field9;
+    double _field10;
+    double _field11;
+    double _field12;
+    double _field13;
+    double _field14;
+    double _field15;
+    double _field16;
+    double _field17;
+    double _field18;
+    double _field19;
+    double _field20;
+    double _field21;
+    double _field22;
+    double _field23;
+    double _field24;
+    double _field25;
+    double _field26;
+    double _field27;
+    double _field28;
 };
 
 struct UIEdgeInsets {

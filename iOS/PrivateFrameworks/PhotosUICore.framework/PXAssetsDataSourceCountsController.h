@@ -26,7 +26,9 @@
 @property(nonatomic) _Bool isPreparingAssetTypeCounts; // @synthesize isPreparingAssetTypeCounts=_isPreparingAssetTypeCounts;
 @property(readonly, nonatomic) CDStruct_aa0b146f counts; // @synthesize counts=_counts;
 @property(readonly, nonatomic) PXAssetsDataSourceManager *assetsDataSourceManager; // @synthesize assetsDataSourceManager=_assetsDataSourceManager;
+- (void)assetsDataSourceManagerDidFinishBackgroundFetching:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
+- (void)_dataSourceManagerDidChange;
 - (void)_updateCounts;
 - (void)_handlePreparationCompletion;
 - (void)_prepareFetchResults:(id)arg1;

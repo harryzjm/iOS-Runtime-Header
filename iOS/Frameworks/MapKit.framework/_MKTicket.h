@@ -8,7 +8,7 @@
 
 #import <MapKit/MKMapServiceTicket-Protocol.h>
 
-@class GEOCategorySearchResultSection, GEODirectionIntent, GEOMapRegion, GEOMapServiceTraits, GEORelatedSearchSuggestion, GEOResolvedItem, NSArray, NSError, NSString;
+@class GEOCategorySearchResultSection, GEODirectionIntent, GEOMapRegion, GEOMapServiceTraits, GEOPDPlaceSummaryLayoutMetadata, GEORelatedSearchSuggestion, GEOResolvedItem, GEOResultRefinementGroup, GEOSearchAutoRedoThreshold, GEOSearchSectionList, NSArray, NSError, NSString;
 @protocol GEOMapServiceTicket;
 
 __attribute__((visibility("hidden")))
@@ -21,6 +21,12 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool disableAdditionalViewportPadding;
+@property(readonly, nonatomic) GEOSearchSectionList *searchSectionList;
+@property(readonly, nonatomic) GEOResultRefinementGroup *resultRefinementGroup;
+@property(readonly, nonatomic) GEOPDPlaceSummaryLayoutMetadata *placeSummaryLayoutMetadata;
+@property(readonly, nonatomic) GEOSearchAutoRedoThreshold *searchAutoRedoThreshold;
+@property(readonly, nonatomic) NSArray *dotPlaces;
 @property(readonly, nonatomic) NSArray *publisherResults;
 @property(readonly, nonatomic) NSArray *collectionResults;
 @property(readonly, nonatomic) NSArray *relatedEntitySections;

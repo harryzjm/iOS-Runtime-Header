@@ -23,7 +23,7 @@
 - (id)resultsWithEndedAudio;
 - (id)resultsWithAddedFloatAudio:(id)arg1 numberOfSamples:(unsigned long long)arg2 taskName:(id)arg3;
 - (id)resultsWithAddedAudio:(id)arg1 numberOfSamples:(unsigned long long)arg2 taskName:(id)arg3;
-- (id)getSpeechRecognitionResultFromTokens:(vector_2c247c42)arg1 taskName:(id)arg2;
+- (id)getSpeechRecognitionResultFromTokens:(vector_daa4424d)arg1 taskName:(id)arg2;
 - (void)resetWithSamplingRate:(unsigned int)arg1 language:(id)arg2 taskType:(id)arg3 userId:(id)arg4 sessionId:(id)arg5 deviceId:(id)arg6 farField:(_Bool)arg7 audioSource:(id)arg8 maxAudioBufferSizeSeconds:(unsigned int)arg9;
 - (id)initWithConfiguration:(id)arg1;
 

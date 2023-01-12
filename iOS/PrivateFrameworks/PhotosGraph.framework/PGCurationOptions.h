@@ -13,33 +13,58 @@
 @interface PGCurationOptions : NSObject <NSCopying>
 {
     _Bool _includesAllFaces;
+    _Bool _identicalDedupingEnabled;
     _Bool _semanticalDedupingEnabled;
     _Bool _semanticalDedupingUsesAdaptiveSimilarStacking;
     _Bool _movieDedupingEnabled;
     _Bool _lastPassMovieAdditionEnabled;
+    _Bool _shouldSkipClustering;
     _Bool _focusOnPeople;
     _Bool _focusOnInterestingItems;
+    _Bool _useDurationBasedCuration;
+    _Bool _failIfMinimumDurationNotReached;
     unsigned long long _duration;
     unsigned long long _precision;
     long long _cardinalMode;
     NSSet *_uuidsOfRequiredAssets;
+    NSSet *_uuidsOfEligibleAssets;
+    NSSet *_personLocalIdentifiersToFocus;
+    double _defaultDurationOfStillPhoto;
+    double _defaultDurationOfLivePhoto;
+    double _defaultDurationOfVideo;
+    double _minimumDuration;
+    double _targetDuration;
+    unsigned long long _minimumNumberOfItems;
 }
 
 + (id)defaultOptions;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long minimumNumberOfItems; // @synthesize minimumNumberOfItems=_minimumNumberOfItems;
+@property(nonatomic) double targetDuration; // @synthesize targetDuration=_targetDuration;
+@property(nonatomic) double minimumDuration; // @synthesize minimumDuration=_minimumDuration;
+@property(nonatomic) double defaultDurationOfVideo; // @synthesize defaultDurationOfVideo=_defaultDurationOfVideo;
+@property(nonatomic) double defaultDurationOfLivePhoto; // @synthesize defaultDurationOfLivePhoto=_defaultDurationOfLivePhoto;
+@property(nonatomic) double defaultDurationOfStillPhoto; // @synthesize defaultDurationOfStillPhoto=_defaultDurationOfStillPhoto;
+@property(nonatomic) _Bool failIfMinimumDurationNotReached; // @synthesize failIfMinimumDurationNotReached=_failIfMinimumDurationNotReached;
+@property(nonatomic) _Bool useDurationBasedCuration; // @synthesize useDurationBasedCuration=_useDurationBasedCuration;
+@property(copy, nonatomic) NSSet *personLocalIdentifiersToFocus; // @synthesize personLocalIdentifiersToFocus=_personLocalIdentifiersToFocus;
 @property(nonatomic) _Bool focusOnInterestingItems; // @synthesize focusOnInterestingItems=_focusOnInterestingItems;
 @property(nonatomic) _Bool focusOnPeople; // @synthesize focusOnPeople=_focusOnPeople;
+@property(copy, nonatomic) NSSet *uuidsOfEligibleAssets; // @synthesize uuidsOfEligibleAssets=_uuidsOfEligibleAssets;
 @property(copy, nonatomic) NSSet *uuidsOfRequiredAssets; // @synthesize uuidsOfRequiredAssets=_uuidsOfRequiredAssets;
 @property(nonatomic) long long cardinalMode; // @synthesize cardinalMode=_cardinalMode;
+@property(nonatomic) _Bool shouldSkipClustering; // @synthesize shouldSkipClustering=_shouldSkipClustering;
 @property(nonatomic, getter=lastPassMovieAdditionIsEnabled) _Bool lastPassMovieAdditionEnabled; // @synthesize lastPassMovieAdditionEnabled=_lastPassMovieAdditionEnabled;
 @property(nonatomic, getter=movieDedupingIsEnabled) _Bool movieDedupingEnabled; // @synthesize movieDedupingEnabled=_movieDedupingEnabled;
 @property(nonatomic) _Bool semanticalDedupingUsesAdaptiveSimilarStacking; // @synthesize semanticalDedupingUsesAdaptiveSimilarStacking=_semanticalDedupingUsesAdaptiveSimilarStacking;
 @property(nonatomic, getter=semanticalDedupingIsEnabled) _Bool semanticalDedupingEnabled; // @synthesize semanticalDedupingEnabled=_semanticalDedupingEnabled;
+@property(nonatomic, getter=identicalDedupingIsEnabled) _Bool identicalDedupingEnabled; // @synthesize identicalDedupingEnabled=_identicalDedupingEnabled;
 @property(nonatomic) _Bool includesAllFaces; // @synthesize includesAllFaces=_includesAllFaces;
 @property(nonatomic) unsigned long long precision; // @synthesize precision=_precision;
 @property(nonatomic) unsigned long long duration; // @synthesize duration=_duration;
 - (id)dictionaryRepresentation;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (id)initWithDictionaryRepresentation:(id)arg1;
 - (id)initWithDuration:(unsigned long long)arg1 precision:(unsigned long long)arg2;
 

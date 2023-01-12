@@ -4,35 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SpringBoardHome/SBLeafIcon.h>
+#import <SpringBoardHome/SBHBookmarkIcon.h>
 
-@class NSURL, SBBookmark, UIWebClip;
-
-@interface SBBookmarkIcon : SBLeafIcon
+@interface SBBookmarkIcon : SBHBookmarkIcon
 {
-    SBBookmark *_bookmark;
 }
 
-- (void).cxx_destruct;
-@property(retain, nonatomic) SBBookmark *bookmark; // @synthesize bookmark=_bookmark;
-- (id)_sbhIconLibraryOverrideCollationSectionTitle;
-- (_Bool)isBookmarkIcon;
-- (id)draggingUserActivity;
-- (id)uninstallAlertBody;
-- (id)uninstallAlertTitle;
-- (_Bool)canBeAddedToSubfolder;
-- (_Bool)canBeAddedToMultiItemDrag;
-- (id)iTunesCategoriesOrderedByRelevancy;
 - (id)representedSceneIdentifier;
-- (id)folderFallbackTitle;
-- (id)folderTitleOptions;
 - (id)applicationToLaunch;
 @property(readonly, nonatomic) _Bool representsWebApp;
+@property(readonly, nonatomic) _Bool displaysAppStoreURLShortcutItem;
 @property(readonly, nonatomic) _Bool displaysShareBookmarkShortcutItem;
-@property(readonly, nonatomic) NSURL *launchURL;
-@property(readonly, nonatomic) UIWebClip *webClip;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithBookmark:(id)arg1;
+- (_Bool)_isSaneURL;
 
 @end
 

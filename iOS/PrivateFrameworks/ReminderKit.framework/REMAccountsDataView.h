@@ -20,6 +20,8 @@
 - (id)fetchAccountWithExternalIdentifier:(id)arg1 error:(id *)arg2;
 - (id)fetchAccountsWithObjectIDs:(id)arg1 error:(id *)arg2;
 - (id)fetchAccountWithObjectID:(id)arg1 error:(id *)arg2;
+- (id)fetchPrimaryActiveCloudKitAccountWithError:(id *)arg1;
+- (id)fetchPrimaryActiveCloudKitAccountREMObjectIDWithError:(id *)arg1;
 - (id)fetchAllAccountsForDumpingWithError:(id *)arg1;
 - (id)fetchAllAccountsForAccountManagementWithError:(id *)arg1;
 - (id)fetchAllAccountsWithError:(id *)arg1;

@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class HKHealthRecordsStore, HKHealthStore;
+@class HKClinicalAccountStore, HKHealthRecordsStore, HKHealthStore;
 
 __attribute__((visibility("hidden")))
 @interface WDClinicalSourcesDataProvider : NSObject
 {
+    HKClinicalAccountStore *_clinicalAccountStore;
     HKHealthRecordsStore *_healthRecordsStore;
 }
 
@@ -18,6 +19,7 @@ __attribute__((visibility("hidden")))
 + (CDUnknownBlockType)_logoCompletionOnMainQueue:(CDUnknownBlockType)arg1 cancellationToken:(id)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) HKHealthRecordsStore *healthRecordsStore;
+@property(readonly, nonatomic) HKClinicalAccountStore *clinicalAccountStore; // @synthesize clinicalAccountStore=_clinicalAccountStore;
 @property(readonly, nonatomic) HKHealthStore *healthStore;
 - (id)_orderAccountsForDisplay:(id)arg1;
 - (id)_createLoginSafariViewControllerForURL:(id)arg1 error:(id *)arg2;
@@ -26,6 +28,9 @@ __attribute__((visibility("hidden")))
 - (void)beginReloginSessionForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)beginInitialLoginSessionForGateway:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)gatewaysWithExistingAccountsFromGateways:(id)arg1;
+- (id)nameAndFormattedBirthDateForSignedClinicalDataSubject:(id)arg1 useMultipleLines:(_Bool)arg2;
+- (id)nameAndFormattedBirthDateForSignedClinicalDataSubject:(id)arg1;
+- (id)formattedFullName:(id)arg1 birthDate:(id)arg2 useMultipleLines:(_Bool)arg3;
 - (id)nameAndFormattedBirthDateForAccountOwner:(id)arg1 useMultipleLines:(_Bool)arg2;
 - (id)nameAndFormattedBirthDateForAccountOwner:(id)arg1;
 - (id)fetchAccountOwnerForSource:(id)arg1;
@@ -35,8 +40,6 @@ __attribute__((visibility("hidden")))
 - (id)_logoForFallback:(id)arg1 size:(double)arg2;
 - (id)_fetchLogoForBrand:(id)arg1 fallback:(id)arg2 size:(double)arg3 options:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)fetchLogoForBrand:(id)arg1 fallback:(id)arg2 size:(double)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)fetchCachedLogoForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)fetchLogoForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)accountsForDisplayForGateways:(id)arg1;
 - (id)_accountsForGateways:(id)arg1;
 - (id)fetchAccessedAccountsForDisplayWithCompletion:(CDUnknownBlockType)arg1;

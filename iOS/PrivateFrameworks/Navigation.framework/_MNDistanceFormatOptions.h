@@ -6,6 +6,8 @@
 
 #import <objc/NSObject.h>
 
+@class NSLocale, NSUnitLength;
+
 __attribute__((visibility("hidden")))
 @interface _MNDistanceFormatOptions : NSObject
 {
@@ -16,8 +18,13 @@ __attribute__((visibility("hidden")))
     unsigned long long _minimumFractionDigits;
     unsigned long long _maximumFractionDigits;
     long long _rounding;
+    NSUnitLength *_unitLength;
+    NSLocale *_locale;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
+@property(retain, nonatomic) NSUnitLength *unitLength; // @synthesize unitLength=_unitLength;
 @property(nonatomic) long long rounding; // @synthesize rounding=_rounding;
 @property(nonatomic) _Bool spoken; // @synthesize spoken=_spoken;
 @property(nonatomic) _Bool abbreviateUnits; // @synthesize abbreviateUnits=_abbreviateUnits;
@@ -25,6 +32,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool metric; // @synthesize metric=_metric;
 @property(nonatomic) unsigned long long maximumFractionDigits; // @synthesize maximumFractionDigits=_maximumFractionDigits;
 @property(nonatomic) unsigned long long minimumFractionDigits; // @synthesize minimumFractionDigits=_minimumFractionDigits;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
 
 @end
 

@@ -7,13 +7,15 @@
 #import <objc/NSObject.h>
 
 #import <WorkflowKit/WFActionParameterInputProvider-Protocol.h>
+#import <WorkflowKit/WFActionRunningDelegate-Protocol.h>
 #import <WorkflowKit/WFRemoteQuarantinePolicyEvaluatorDelegate-Protocol.h>
 #import <WorkflowKit/WFVariableDataSource-Protocol.h>
+#import <WorkflowKit/WFWorkflowNoInputBehaviorDelegate-Protocol.h>
 
-@class NSDictionary, NSMapTable, NSProgress, NSString, RBSAssertion, WFAction, WFContentCollection, WFOutOfProcessWorkflowController, WFRemoteQuarantinePolicyEvaluator, WFWorkflow, WFWorkflowControllerState, WFWorkflowRunningContext;
+@class NSDate, NSDictionary, NSMapTable, NSProgress, NSString, RBSAssertion, WFAction, WFContentCollection, WFContentItemCache, WFControlFlowAttributionTracker, WFOutOfProcessWorkflowController, WFRemoteQuarantinePolicyEvaluator, WFWorkflow, WFWorkflowControllerState, WFWorkflowRunningContext;
 @protocol OS_dispatch_queue, WFWorkflowControllerDelegate;
 
-@interface WFWorkflowController : NSObject <WFRemoteQuarantinePolicyEvaluatorDelegate, WFVariableDataSource, WFActionParameterInputProvider>
+@interface WFWorkflowController : NSObject <WFRemoteQuarantinePolicyEvaluatorDelegate, WFActionRunningDelegate, WFWorkflowNoInputBehaviorDelegate, WFVariableDataSource, WFActionParameterInputProvider>
 {
     WFWorkflowController *_strongSelf;
     _Bool _donateInteraction;
@@ -33,9 +35,12 @@
     NSString *_automationType;
     NSString *_automationTrialID;
     NSDictionary *_listenerEndpoints;
+    unsigned long long _outputBehavior;
     NSObject<OS_dispatch_queue> *_executionQueue;
     NSObject<OS_dispatch_queue> *_delegateQueue;
+    NSDate *_startDate;
     unsigned long long _currentIndex;
+    NSProgress *_currentActionProgress;
     NSMapTable *_variableTable;
     WFWorkflowControllerState *_pendingState;
     NSDictionary *_pendingProcessedParameters;
@@ -43,11 +48,17 @@
     WFRemoteQuarantinePolicyEvaluator *_policyEvaluator;
     RBSAssertion *_workflowRunAssertion;
     WFOutOfProcessWorkflowController *_outOfProcessController;
+    WFControlFlowAttributionTracker *_flowTracker;
+    WFContentItemCache *_contentItemCache;
+    WFContentCollection *_capturedFiles;
 }
 
 + (void)initialize;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool actionDidRunRemotely; // @synthesize actionDidRunRemotely=_actionDidRunRemotely;
+@property(retain, nonatomic) WFContentCollection *capturedFiles; // @synthesize capturedFiles=_capturedFiles;
+@property(retain, nonatomic) WFContentItemCache *contentItemCache; // @synthesize contentItemCache=_contentItemCache;
+@property(retain, nonatomic) WFControlFlowAttributionTracker *flowTracker; // @synthesize flowTracker=_flowTracker;
 @property(retain, nonatomic) WFOutOfProcessWorkflowController *outOfProcessController; // @synthesize outOfProcessController=_outOfProcessController;
 @property(retain, nonatomic) RBSAssertion *workflowRunAssertion; // @synthesize workflowRunAssertion=_workflowRunAssertion;
 @property(retain, nonatomic) WFRemoteQuarantinePolicyEvaluator *policyEvaluator; // @synthesize policyEvaluator=_policyEvaluator;
@@ -55,13 +66,16 @@
 @property(retain, nonatomic) NSDictionary *pendingProcessedParameters; // @synthesize pendingProcessedParameters=_pendingProcessedParameters;
 @property(retain, nonatomic) WFWorkflowControllerState *pendingState; // @synthesize pendingState=_pendingState;
 @property(retain, nonatomic) NSMapTable *variableTable; // @synthesize variableTable=_variableTable;
+@property(retain, nonatomic) NSProgress *currentActionProgress; // @synthesize currentActionProgress=_currentActionProgress;
 @property(nonatomic) _Bool resumed; // @synthesize resumed=_resumed;
 @property(nonatomic, getter=isStepping) _Bool stepping; // @synthesize stepping=_stepping;
 @property(nonatomic, getter=isRunning) _Bool running; // @synthesize running=_running;
 @property(nonatomic) unsigned long long currentIndex; // @synthesize currentIndex=_currentIndex;
+@property(retain, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *executionQueue; // @synthesize executionQueue=_executionQueue;
 @property(nonatomic) _Bool acquiresAssertionWhileRunning; // @synthesize acquiresAssertionWhileRunning=_acquiresAssertionWhileRunning;
+@property(nonatomic) unsigned long long outputBehavior; // @synthesize outputBehavior=_outputBehavior;
 @property(copy, nonatomic) NSDictionary *listenerEndpoints; // @synthesize listenerEndpoints=_listenerEndpoints;
 @property(copy, nonatomic) NSString *automationTrialID; // @synthesize automationTrialID=_automationTrialID;
 @property(nonatomic) _Bool isAutomationSuggestion; // @synthesize isAutomationSuggestion=_isAutomationSuggestion;
@@ -74,6 +88,8 @@
 @property(retain, nonatomic) WFContentCollection *output; // @synthesize output=_output;
 @property(retain, nonatomic) WFContentCollection *input; // @synthesize input=_input;
 @property(retain, nonatomic) WFWorkflow *workflow; // @synthesize workflow=_workflow;
+- (void)noInputBehavior:(id)arg1 wantsToRunAction:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)resolveWorkflowInputWithCompletion:(CDUnknownBlockType)arg1;
 - (id)errorByAddingActionIndex:(long long)arg1 toError:(id)arg2;
 - (void)quarantineWorkflow;
 - (void)resetEvaluationCriteriaForControlFlowActions;
@@ -83,7 +99,7 @@
 - (_Bool)canRun;
 - (void)handleActionCompletion:(id)arg1 actionGroupSkipped:(_Bool)arg2;
 - (void)handleError:(id)arg1 fromAction:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (id)userInterfaceForAction:(id)arg1;
+- (id)userInterface;
 - (id)parameterInputProviderForAction:(id)arg1;
 - (void)didRunAction:(id)arg1;
 - (void)runAction:(id)arg1 withInput:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -97,12 +113,20 @@
 - (void)logFinishRunEvent:(_Bool)arg1;
 - (void)logStartEvent;
 - (_Bool)action:(id)arg1 canProvideInputForParameter:(id)arg2;
-- (void)action:(id)arg1 provideInputForParameters:(id)arg2 withDefaultStates:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)action:(id)arg1 provideInputForParameters:(id)arg2 withDefaultStates:(id)arg3 prompts:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)invalidateAssertionIfNeeded;
 - (void)acquireAssertionIfNeeded;
 - (void)autoreleaseSelf;
 - (void)retainSelf;
-- (id)listenerEndpointWithIdentifier:(id)arg1;
+- (id)actionSandboxExtensionProviderForAction:(id)arg1;
+- (id)remoteDialogPresenterEndpointForRunWorkflowAction:(id)arg1;
+- (id)currentRunningContextForAction:(id)arg1;
+- (void)requestAccessToFileAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)requestAccessToFileAtLocation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)captureFileRepresentation:(id)arg1;
+- (id)contentForPrivateVariableKey:(id)arg1;
+- (void)setContent:(id)arg1 forPrivateVariableKey:(id)arg2;
+- (id)workflowStartDate;
 - (id)workflowInput;
 - (id)contentForVariableWithName:(id)arg1;
 - (_Bool)setContent:(id)arg1 forVariableWithName:(id)arg2;
@@ -123,6 +147,7 @@
 @property(retain, nonatomic) WFWorkflowControllerState *currentState;
 @property(readonly, nonatomic) WFAction *currentAction;
 - (void)queue_setWorkflow:(id)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)dealloc;
 - (id)init;
 

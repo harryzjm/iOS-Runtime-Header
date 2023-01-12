@@ -8,16 +8,17 @@
 
 #import <HealthUI/HKDateCacheObserver-Protocol.h>
 
-@class HKActivitySummary, HKDateCache, HKDisplayTypeController, HKFetchOperation, HKHealthStore, HKQuery, HKUnitPreferenceController, NSCache, NSCalendar, NSHashTable, NSString;
+@class HKActivitySummary, HKDateCache, HKDisplayTypeController, HKFetchOperation, HKHealthStore, HKQuery, HKSynchronousObserverSet, HKThrottleCallback, HKUnitPreferenceController, NSCache, NSCalendar, NSString;
 
 @interface HKActivitySummaryDataProvider : NSObject <HKDateCacheObserver>
 {
-    NSHashTable *_observers;
+    HKSynchronousObserverSet *_observers;
     NSCache *_activitySummaryForTimeScopeCache;
     NSCalendar *_cachedCalendar;
     HKFetchOperation *_outstandingFetchOperation;
     HKQuery *_observerQuery;
     NSCache *_hourlyActivitySummaryCache;
+    HKThrottleCallback *_databaseChangesThrottle;
     HKHealthStore *_healthStore;
     HKDateCache *_dateCache;
     HKDisplayTypeController *_displayTypeController;
@@ -42,9 +43,10 @@
 - (void)_hourlyPageInProgress:(id)arg1;
 - (void)_submitHourlyQueryForPageNumber:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
 - (id)_hourActivitySummariesForDateRange:(id)arg1;
-- (id)_buildActivitySummaryFromAverages:(struct _WDActivitySummaryAverages)arg1 startDate:(id)arg2 calendar:(id)arg3 energyUnit:(id)arg4 standHourUnit:(id)arg5;
-- (void)_monthActivitySummariesForCachedData:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (id)_monthActivitySummariesForDateRange:(id)arg1;
+- (id)_buildActivitySummaryFromAverages:(struct _WDActivitySummaryAverages)arg1 averagePeriod:(long long)arg2 startDate:(id)arg3 calendar:(id)arg4 energyUnit:(id)arg5 standHourUnit:(id)arg6;
+- (void)_averageActivitySummariesForCachedData:(id)arg1 averagePeriod:(long long)arg2 handler:(CDUnknownBlockType)arg3;
+- (long long)_weekOfYearForDateComponents:(id)arg1 calendar:(id)arg2;
+- (id)_averageActivitySummariesForDateRange:(id)arg1 averagePeriod:(long long)arg2;
 - (id)_dayActivitySummariesForDateRange:(id)arg1;
 - (id)cachedCalendar;
 - (void)dateCacheDidUpdate:(id)arg1 onNotification:(id)arg2;

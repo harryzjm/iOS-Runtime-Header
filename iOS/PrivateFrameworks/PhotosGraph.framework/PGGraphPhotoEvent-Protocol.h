@@ -6,11 +6,11 @@
 
 #import <PhotosGraph/PGGraphEvent-Protocol.h>
 
-@class NSArray, NSString, PHAssetCollection;
+@class NSArray, NSString, PHAssetCollection, PHPhotoLibrary;
 
 @protocol PGGraphPhotoEvent <PGGraphEvent>
 + (NSArray *)scoreSortDescriptors;
-- (PHAssetCollection *)fetchAssetCollection;
+- (PHAssetCollection *)fetchAssetCollectionInPhotoLibrary:(PHPhotoLibrary *)arg1;
 - (NSString *)localIdentifier;
 @end
 

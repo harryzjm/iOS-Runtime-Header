@@ -23,10 +23,11 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
 @property(nonatomic) __weak id <SFAirDropViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)_presentationControllerDidDismiss:(id)arg1;
 @property(readonly, nonatomic) _UIRemoteViewController *_containedRemoteViewController;
 - (void)airDropViewServiceRequestingSharedItemsWithDataRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)airDropViewServiceDidSuccessfullyCompleteTransfer;
-- (void)airDropViewServiceDidSuccessfullyStartTransfer;
+- (void)airDropViewServiceDidFinishTransferWithSuccess:(_Bool)arg1;
+- (void)airDropViewServiceDidStartTransfer;
 - (void)airDropViewServiceDidRequestDismissal;
 - (void)_setChildViewController:(id)arg1;
 - (void)_setExtensionRequest:(id)arg1;

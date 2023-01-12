@@ -13,6 +13,7 @@
     struct OpaqueFigEndpoint *_endpoint;
     _Bool _isPaired;
     _Bool _authenticated;
+    _Bool _activated;
     _Bool _clientIsCarPlayShell;
     CARSessionConfiguration *_configuration;
     NSString *_sourceVersion;
@@ -26,6 +27,7 @@
 @property(retain, nonatomic) NSNumber *systemNightMode; // @synthesize systemNightMode=_systemNightMode;
 @property(readonly, nonatomic) _Bool clientIsCarPlayShell; // @synthesize clientIsCarPlayShell=_clientIsCarPlayShell;
 @property(retain, nonatomic) CARInputDeviceManager *inputDeviceManager; // @synthesize inputDeviceManager=_inputDeviceManager;
+@property(readonly, nonatomic, getter=isActivated) _Bool activated; // @synthesize activated=_activated;
 @property(readonly, nonatomic, getter=isAuthenticated) _Bool authenticated; // @synthesize authenticated=_authenticated;
 @property(readonly, copy, nonatomic) NSString *sourceVersion; // @synthesize sourceVersion=_sourceVersion;
 @property(readonly, nonatomic) _Bool isPaired; // @synthesize isPaired=_isPaired;
@@ -36,7 +38,10 @@
 - (long long)mapInterfaceStyleForScreenUUID:(id)arg1;
 - (long long)userInterfaceStyleForScreenUUID:(id)arg1;
 - (void)sendCommand:(id)arg1 withParameters:(id)arg2;
+- (void)_updateCarCapabilities;
 - (void)_updateConfiguration;
+- (_Bool)_sessionReady;
+- (void)_fetchActivationStatus;
 - (void)_fetchAuthenticationStatus;
 - (id)_endpointValueForKey:(struct __CFString *)arg1;
 - (struct OpaqueFigEndpoint *)endpoint;
@@ -52,6 +57,7 @@
 - (_Bool)carOwnsScreen;
 - (void)requestCarUIForURL:(id)arg1;
 - (void)requestCarUI;
+- (struct OpaqueFigEndpointRemoteControlSession *)createRemoteControlSession:(id)arg1 error:(id *)arg2;
 - (id)lastNavigatingBundleIdentifier;
 - (id)MFiCertificateSerialNumber;
 - (void)setInputMode:(unsigned long long)arg1 forInputDevice:(id)arg2;

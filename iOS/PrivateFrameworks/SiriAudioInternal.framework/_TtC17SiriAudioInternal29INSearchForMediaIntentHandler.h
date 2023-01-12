@@ -14,6 +14,7 @@
 
 - (id)init;
 - (void)handleSearchForMedia:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)resolveMediaItemsForSearchForMedia:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 
 @end
 

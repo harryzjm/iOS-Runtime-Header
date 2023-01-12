@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <WorkflowEditor/WFTriggerConfigurationViewController.h>
+
 #import <WorkflowUI/UITableViewDataSource-Protocol.h>
 #import <WorkflowUI/UITableViewDelegate-Protocol.h>
 #import <WorkflowUI/WFTriggerTableViewControllerDelegate-Protocol.h>
 
 @class NSArray, NSString, UITableView;
 
-@interface WFWifiTriggerConfigurationViewController <WFTriggerTableViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface WFWifiTriggerConfigurationViewController : WFTriggerConfigurationViewController <WFTriggerTableViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 {
     NSArray *_allNetworks;
     UITableView *_tableView;
@@ -33,7 +35,7 @@
 - (id)infoForSection:(long long)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(_Bool)arg1;
-- (id)initWithTrigger:(id)arg1 triggerManager:(id)arg2 mode:(unsigned long long)arg3;
+- (id)initWithTrigger:(id)arg1 mode:(unsigned long long)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -12,8 +12,8 @@
 
 @interface ARPointCloud : NSObject <NSSecureCoding>
 {
-    struct vector<float __attribute__((ext_vector_type(3))), std::__1::allocator<float __attribute__((ext_vector_type(3)))>> _pointsVector;
-    struct vector<unsigned long long, std::__1::allocator<unsigned long long>> _identifiersVector;
+    struct vector<float __attribute__((ext_vector_type(3))), std::allocator<float __attribute__((ext_vector_type(3)))>> _pointsVector;
+    struct vector<unsigned long long, std::allocator<unsigned long long>> _identifiersVector;
     unsigned long long _count;
     const MISSING_TYPE **_points;
     const unsigned long long *_identifiers;

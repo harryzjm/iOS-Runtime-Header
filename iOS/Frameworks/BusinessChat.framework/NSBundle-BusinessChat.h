@@ -7,6 +7,5 @@
 #import <Foundation/NSBundle.h>
 
 @interface NSBundle (BusinessChat)
-- (id)businessBundle;
 @end
 

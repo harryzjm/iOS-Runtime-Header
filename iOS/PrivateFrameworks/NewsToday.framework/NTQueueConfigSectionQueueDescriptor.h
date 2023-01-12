@@ -20,7 +20,7 @@
 @property(readonly, nonatomic) unsigned long long visibleSectionConfigsLimit; // @synthesize visibleSectionConfigsLimit=_visibleSectionConfigsLimit;
 @property(readonly, copy, nonatomic) NSArray *sectionDescriptors; // @synthesize sectionDescriptors=_sectionDescriptors;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithQueueConfig:(id)arg1 appConfiguration:(id)arg2 todayData:(id)arg3 supplementalFeedFilterOptions:(long long)arg4 respectsWidgetVisibleSectionsLimit:(_Bool)arg5;
+- (id)initWithQueueConfig:(id)arg1 appConfiguration:(id)arg2 todayData:(id)arg3 inFavoritesOnlyMode:(_Bool)arg4 respectsWidgetVisibleSectionsLimit:(_Bool)arg5;
 - (id)init;
 
 @end

@@ -11,8 +11,8 @@
 #import <ProactiveContextClient/ATXLocationOfInterestManagerProtocol-Protocol.h>
 #import <ProactiveContextClient/ATXPredictedLocationsManagerProtocol-Protocol.h>
 
-@class NSDate, NSString, _PASLock;
-@protocol ATXLocationManagerGPS, ATXLocationManagerRoutine, ATXLocationManagerStateStore, OS_dispatch_queue;
+@class GEOLocationShifter, NSDate, NSString, _PASLock;
+@protocol ATXLocationManagerGPS, ATXLocationManagerRoutine, ATXLocationManagerStateStore, ATXLocationParameters, OS_dispatch_queue;
 
 @interface ATXLocationManager : NSObject <ATXLocationManagerGPSDelegate, ATXLocationManagerProtocol, ATXPredictedLocationsManagerProtocol, ATXLocationOfInterestManagerProtocol>
 {
@@ -20,14 +20,16 @@
     id <ATXLocationManagerRoutine> _routine;
     id <ATXLocationManagerStateStore> _stateStore;
     _PASLock *_lock;
+    GEOLocationShifter *_shifter;
     NSObject<OS_dispatch_queue> *_loiUpdateQueue;
+    id <ATXLocationParameters> _modeGlobals;
     NSDate *_now;
     double _predictedNextLOITimeout;
     double _predictedExitDateTimeout;
 }
 
 + (id)stringForLOIType:(long long)arg1;
-+ (id)sharedInstance;
++ (id)debugDescriptionForCLLocation:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) double predictedExitDateTimeout; // @synthesize predictedExitDateTimeout=_predictedExitDateTimeout;
 @property(nonatomic) double predictedNextLOITimeout; // @synthesize predictedNextLOITimeout=_predictedNextLOITimeout;
@@ -38,13 +40,13 @@
 - (void)locationManagerGPS:(id)arg1 didEnterRegionWithIdentifier:(id)arg2;
 - (void)didChangePreciseLocationEnabled:(_Bool)arg1;
 - (void)didChangeLocationEnabled:(_Bool)arg1;
-- (void)didGetLocationUpdate:(id)arg1;
 - (_Bool)isTouristWithCurrentDate:(id)arg1;
 - (_Bool)isTourist;
 - (unsigned long long)getCurrentRoutineModeWithCurrentDate:(id)arg1;
 - (void)clearLocationOfInterest;
 - (_Bool)isNearKnownTypeOrFrequentLocationOfInterest;
 - (_Bool)isNearFrequentLocationOfInterest;
+- (_Bool)isLocationNearKnownTypeLocationOfInterest:(id)arg1;
 - (_Bool)isNearKnownTypeLocationOfInterest;
 - (void)fetchAllLocationsOfInterest:(CDUnknownBlockType)arg1;
 - (_Bool)isAvailableLocationOfInterestType:(long long)arg1;
@@ -78,15 +80,19 @@
 - (id)_updateLocationsOfInterestWithCurrentLocation:(id)arg1;
 - (void)getCurrentLocationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)getCurrentLocation_RequestPreciseLocation:(_Bool)arg1;
+- (id)shiftedLocationForChinaFromLocation:(id)arg1;
+- (id)getCurrentPreciseLocationWithShiftInChina;
+- (id)getCurrentLocationWithShiftInChina;
 - (id)getCurrentPreciseLocation;
 - (id)getCurrentLocation;
 - (id)_currentLocationAndNeedsUpdate_RequestPreciseLocation:(_Bool)arg1;
+- (id)shifter;
 - (_Bool)preciseLocationEnabled;
 - (_Bool)locationEnabled;
 @property(retain, nonatomic) NSDate *now; // @synthesize now=_now;
 - (id)init;
-- (id)initWithGPS:(id)arg1 routine:(id)arg2 stateStore:(id)arg3 now:(id)arg4;
-- (id)initWithStateStore:(id)arg1;
+- (id)initWithGPS:(id)arg1 routine:(id)arg2 stateStore:(id)arg3 now:(id)arg4 modeGlobals:(id)arg5;
+- (id)initWithStateStore:(id)arg1 modeGlobals:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

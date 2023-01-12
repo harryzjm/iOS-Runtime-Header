@@ -12,7 +12,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_privateAccessibilityCustomActions;
-- (id)_axCustomActionsForActions:(id)arg1;
 - (_Bool)_axPerformAction:(id)arg1;
 - (id)_accessibilitySupplementaryFooterViews;
 

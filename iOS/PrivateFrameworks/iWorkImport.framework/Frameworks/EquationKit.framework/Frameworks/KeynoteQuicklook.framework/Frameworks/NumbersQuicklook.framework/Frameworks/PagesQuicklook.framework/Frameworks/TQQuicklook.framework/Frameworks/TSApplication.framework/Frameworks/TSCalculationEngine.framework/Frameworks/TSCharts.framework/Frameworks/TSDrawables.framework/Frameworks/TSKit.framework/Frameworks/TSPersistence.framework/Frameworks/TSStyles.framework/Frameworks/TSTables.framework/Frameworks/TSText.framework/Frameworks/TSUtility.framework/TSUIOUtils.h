@@ -16,6 +16,7 @@
 + (struct CGDataProvider *)newCGDataProviderForReadChannel:(id)arg1 length:(unsigned long long)arg2;
 + (struct CGDataProvider *)newCGDataProviderForInputStream:(id)arg1 outInfo:(void **)arg2 outCallbacks:(const struct CGDataProviderSequentialCallbacks **)arg3;
 + (struct CGDataProvider *)newCGDataProviderForInputStream:(id)arg1;
++ (void)readAllFromChannel:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)readAllFromChannel:(id)arg1 offset:(long long)arg2 length:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end

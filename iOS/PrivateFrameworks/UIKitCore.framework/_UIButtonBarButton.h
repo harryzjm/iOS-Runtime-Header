@@ -7,13 +7,15 @@
 #import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
 #import <UIKitCore/UISpringLoadedInteractionSupporting-Protocol.h>
 
-@class NSLayoutConstraint, NSString, _UIBarButtonItemData, _UIButtonBarButtonVisualProvider;
+@class NSDate, NSLayoutConstraint, NSString, _UIBarButtonItemData, _UIButtonBarButtonVisualProvider;
 
 @interface _UIButtonBarButton <UIPointerInteractionDelegate, UISpringLoadedInteractionSupporting>
 {
     _UIButtonBarButtonVisualProvider *_visualProvider;
     NSLayoutConstraint *_widthMinimizingConstraint;
     NSLayoutConstraint *_heightMinimizingConstraint;
+    _Bool _autolayoutIsCleanForBoundsChange;
+    NSDate *_appearanceDate;
     _Bool _backButton;
     _UIBarButtonItemData *_appearanceData;
 }
@@ -22,6 +24,7 @@
 @property(retain, nonatomic) _UIBarButtonItemData *appearanceData; // @synthesize appearanceData=_appearanceData;
 @property(readonly, nonatomic, getter=isBackButton) _Bool backButton; // @synthesize backButton=_backButton;
 @property(readonly, copy, nonatomic) _UIButtonBarButtonVisualProvider *visualProvider; // @synthesize visualProvider=_visualProvider;
+- (id)focusEffect;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (void)_accessibilitySettingsChanged:(id)arg1;
@@ -33,15 +36,13 @@
 - (void)_traitCollectionDidChangeOnSubtreeInternal:(const struct _UITraitCollectionChangeDescription *)arg1;
 - (void)willMoveToWindow:(id)arg1;
 - (void)willMoveToSuperview:(id)arg1;
+- (void)setBounds:(struct CGRect)arg1;
+- (void)_is_setNeedsLayout;
 - (void)layoutSubviews;
 - (void)pointerInteraction:(id)arg1 willExitRegion:(id)arg2 animator:(id)arg3;
 - (void)pointerInteraction:(id)arg1 willEnterRegion:(id)arg2 animator:(id)arg3;
 - (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
-- (void)cursorInteraction:(id)arg1 willExitRegion:(id)arg2 withAnimator:(id)arg3;
-- (void)cursorInteraction:(id)arg1 willEnterRegion:(id)arg2 withAnimator:(id)arg3;
-- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
-- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
 - (_Bool)updatePresentedMenuFrom:(id)arg1;
 - (struct CGPoint)menuAttachmentPointForConfiguration:(id)arg1;
 - (id)_contextMenuInteraction:(id)arg1 styleForMenuWithConfiguration:(id)arg2;
@@ -49,6 +50,7 @@
 - (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
 - (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 @property(nonatomic, getter=isSpringLoaded) _Bool springLoaded;
+- (void)pasteTouchDown;
 - (void)_configureFromBarItem:(id)arg1 appearanceDelegate:(id)arg2 isBackButton:(_Bool)arg3;
 @property(readonly, nonatomic) NSLayoutConstraint *heightMinimizingConstraint;
 @property(readonly, nonatomic) NSLayoutConstraint *widthMinimizingConstraint;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HKQueryAnchor, NSMutableDictionary, NSString, _HKDatabaseChangesQueryServerConfiguration;
+@class HKQueryAnchor, NSMutableDictionary, NSString;
 
 @interface HDDatabaseChangesQueryServer
 {
@@ -17,23 +17,13 @@
 
 + (Class)queryClass;
 - (void).cxx_destruct;
-- (id)_authorizedObjectTypes;
-- (void)_queue_deliverError:(id)arg1;
-- (void)_queue_deliverQueryAnchor:(id)arg1 sampleTypeChanges:(id)arg2;
 - (void)samplesOfTypesWereRemoved:(id)arg1 anchor:(id)arg2;
 - (void)didAddSamplesOfTypes:(id)arg1 anchor:(id)arg2;
-- (void)_queue_addPendingChangesForSample:(id)arg1;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
 - (_Bool)_shouldListenForUpdates;
-- (id)_queue_detailedChangeUsingDateIndexStrategyForType:(id)arg1 sinceAnchor:(long long)arg2 hasUnfrozenSeries:(_Bool)arg3 database:(id)arg4 error:(id *)arg5;
-- (id)_queue_detailedChangeUsingAnchorIndexStrategyForType:(id)arg1 sinceAnchor:(long long)arg2 hasUnfrozenSeries:(_Bool)arg3 database:(id)arg4 error:(id *)arg5;
-- (long long)_queue_queryStrategyForType:(id)arg1 sinceAnchor:(long long)arg2 currentAnchor:(long long)arg3;
-- (id)_queue_sampleTypeCodesWithUnfrozenSeriesWithAuthorizedTypes:(id)arg1 database:(id)arg2 error:(id *)arg3;
-- (id)_queue_changesByTypeWithDatabase:(id)arg1 sinceAnchor:(long long)arg2 error:(id *)arg3;
 - (void)_queue_start;
 - (id)objectTypes;
 - (_Bool)validateConfiguration:(id *)arg1;
-@property(readonly, copy, nonatomic) _HKDatabaseChangesQueryServerConfiguration *databaseChangesQueryConfiguration;
 - (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;
 
 @end

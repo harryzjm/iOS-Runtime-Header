@@ -6,7 +6,6 @@
 
 @class MCPayload, MCPayloadInfo, NSArray;
 
-__attribute__((visibility("hidden")))
 @interface MCPayloadDetailsViewController
 {
     MCPayload *_payload;

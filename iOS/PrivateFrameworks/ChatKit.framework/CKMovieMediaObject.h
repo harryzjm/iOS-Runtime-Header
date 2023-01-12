@@ -39,7 +39,7 @@
 - (void)updateVideoInfo;
 - (_Bool)hasNoVideoTrack;
 - (id)previewItemTitle;
-- (void)export:(id)arg1;
+- (_Bool)isPhotosCompatible;
 - (_Bool)canExport;
 - (struct CGSize)bbSize;
 - (id)bbPreviewFillToSize:(struct CGSize)arg1;
@@ -48,13 +48,16 @@
 - (id)generatePreviewFromThumbnail:(id)arg1 width:(double)arg2 orientation:(BOOL)arg3;
 - (void)prewarmPreviewForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (id)previewForWidth:(double)arg1 orientation:(BOOL)arg2;
-- (Class)balloonViewClassForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (Class)previewBalloonViewClass;
+- (Class)balloonViewClass;
 - (id)previewCacheKeyWithOrientation:(BOOL)arg1;
+- (_Bool)allowAutoplay;
+- (_Bool)supportsUnknownSenderPreview;
 - (_Bool)_assetContainsMetadataKey:(id)arg1;
 - (int)mediaType;
 - (id)attachmentSummary:(unsigned long long)arg1;
 - (id)metricsCollectorMediaType;
+- (_Bool)__im_ff_systemImageAdoptionEnabled;
 
 @end
 

@@ -8,21 +8,20 @@
 
 #import <Navigation/MNLocationProvider-Protocol.h>
 
-@class MNActiveRouteInfo, MNLocation, NSBundle, NSDate, NSString, NSTimer;
+@class CLSimulationManager, MNSimulatedLocationGenerator, NSBundle, NSMutableArray, NSString, NSTimer;
 @protocol MNLocationProviderDelegate;
 
 __attribute__((visibility("hidden")))
 @interface MNSimulationLocationProvider : NSObject <MNLocationProvider>
 {
     id <MNLocationProviderDelegate> _delegate;
-    long long _simulationType;
     NSTimer *_locationUpdateTimer;
-    MNLocation *_previousLocation;
-    CDStruct_3f2a7a20 _previousPolylineCoordinate;
-    MNActiveRouteInfo *_routeInfo;
-    long long _state;
-    unsigned long long _currentLegIndex;
-    NSDate *_startWaitingDate;
+    long long _simulationType;
+    MNSimulatedLocationGenerator *_locationGenerator;
+    _Bool _simulateGeoFences;
+    CLSimulationManager *_simulationManager;
+    NSMutableArray *_monitoredGeoFences;
+    NSMutableArray *_currentGeoFences;
 }
 
 - (void).cxx_destruct;
@@ -30,21 +29,14 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) double timeScale;
 @property(readonly, nonatomic) unsigned long long traceVersion;
 @property(readonly, nonatomic) _Bool isTracePlayer;
-@property(readonly, nonatomic) _Bool isSimulation;
-@property(readonly, nonatomic) _Bool usesCLMapCorrection;
 @property(readonly, nonatomic) _Bool coarseModeEnabled;
-@property(readonly, nonatomic) int authorizationStatus;
 @property(readonly, nonatomic) double expectedGpsUpdateInterval;
-- (void)requestWhenInUseAuthorizationWithPrompt;
-- (void)requestWhenInUseAuthorization;
-@property(copy, nonatomic) CDUnknownBlockType authorizationRequestBlock;
 @property(nonatomic) int headingOrientation;
-@property(nonatomic) _Bool matchInfoEnabled;
-@property(nonatomic) double distanceFilter;
-@property(nonatomic, getter=isLocationServicesPreferencesDialogEnabled) _Bool locationServicesPreferencesDialogEnabled;
-@property(nonatomic) double desiredAccuracy;
+@property(readonly, nonatomic) _Bool isAuthorized;
 @property(copy, nonatomic) NSString *effectiveBundleIdentifier;
 @property(retain, nonatomic) NSBundle *effectiveBundle;
+- (void)stopMonitoringForRegion:(id)arg1;
+- (void)startMonitoringForRegion:(id)arg1;
 - (void)resetForActiveTileGroupChanged;
 - (void)stopUpdatingVehicleHeading;
 - (void)startUpdatingVehicleHeading;
@@ -54,18 +46,6 @@ __attribute__((visibility("hidden")))
 - (void)startUpdatingHeading;
 - (void)stopUpdatingLocation;
 - (void)startUpdatingLocation;
-- (id)_stringForState:(long long)arg1;
-- (double)_courseFromCoordinate:(CDStruct_39925896)arg1 toCoordinate:(CDStruct_39925896)arg2;
-- (_Bool)_isCoordinate:(CDStruct_3f2a7a20)arg1 atEndOfLeg:(id)arg2;
-- (double)_modifiedSpeedForSpeed:(double)arg1;
-- (id)_locationWithCoordinate:(CDStruct_39925896)arg1 course:(double)arg2 speed:(double)arg3;
-- (CDStruct_3f2a7a20)_projectedCoordinateOnRouteFrom:(CDStruct_3f2a7a20)arg1 overTimeDelta:(double)arg2 outSpeed:(out double *)arg3;
-- (CDStruct_39925896)_projectedCoordinateOffRouteFrom:(CDStruct_39925896)arg1 toCoordinate:(CDStruct_39925896)arg2 overTimeDelta:(double)arg3 outCourse:(out double *)arg4 outSpeed:(out double *)arg5;
-- (CDStruct_3f2a7a20)_simulationStartRouteCoordinate;
-- (CDStruct_39925896)_updateForWaitingAtWaypointOverTimeDelta:(double)arg1 outCourse:(out double *)arg2 outSpeed:(out double *)arg3;
-- (CDStruct_39925896)_updateForProceedingToWaypointOverTimeDelta:(double)arg1 outCourse:(out double *)arg2 outSpeed:(out double *)arg3;
-- (CDStruct_39925896)_updateForFollowingRouteOverTimeDelta:(double)arg1 outCourse:(out double *)arg2 outSpeed:(out double *)arg3;
-- (CDStruct_39925896)_updateForProceedingToStartOfLegOverTimeDelta:(double)arg1 outCourse:(out double *)arg2 outSpeed:(out double *)arg3;
 - (void)_sendLocationUpdate:(id)arg1;
 - (void)updateWithRouteInfo:(id)arg1;
 - (void)dealloc;

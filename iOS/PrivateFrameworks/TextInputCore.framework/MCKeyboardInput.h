@@ -8,16 +8,18 @@
 
 #import <TextInputCore/NSCopying-Protocol.h>
 
-@class NSArray, NSMutableArray;
+@class MCKeyboardState, NSArray, NSMutableArray;
 
 @interface MCKeyboardInput : NSObject <NSCopying>
 {
     NSMutableArray *_mutableInputs;
+    MCKeyboardState *_sourceKeyboardState;
     unsigned long long _composingInputIndex;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long composingInputIndex; // @synthesize composingInputIndex=_composingInputIndex;
+@property(readonly, nonatomic) MCKeyboardState *sourceKeyboardState; // @synthesize sourceKeyboardState=_sourceKeyboardState;
 - (_Bool)hasKindOf:(Class)arg1;
 - (void)insertInput:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)replaceComposingInputWith:(id)arg1;
@@ -31,10 +33,11 @@
 @property(readonly, nonatomic) NSArray *inputs;
 @property(readonly, nonatomic) NSMutableArray *mutableInputs; // @synthesize mutableInputs=_mutableInputs;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithSourceKeyboardState:(id)arg1;
 - (id)init;
 - (_Bool)hasDrawInput;
 - (id)_asInputStringWithCursorIndex:(unsigned long long *)arg1 remainingComposingInputIndex:(unsigned long long *)arg2 typeInputs:(id)arg3 forSearch:(_Bool)arg4 suffix:(id)arg5;
-- (void)_addNearbyKeys:(id)arg1 to:(void *)arg2;
+- (void)_addNearbyKeys:(id)arg1 to:(void *)arg2 likelihoodThreshold:(float)arg3;
 - (id)asMecabraGestures:(_Bool *)arg1;
 - (id)asSearchString;
 - (_Bool)hasRemainingComposingInput;

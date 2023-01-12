@@ -13,6 +13,7 @@
 + (id)descriptor;
 
 // Remaining properties
+@property(nonatomic) int earliestVersion; // @dynamic earliestVersion;
 @property(copy, nonatomic) NSData *publicKeyBytes; // @dynamic publicKeyBytes;
 
 @end

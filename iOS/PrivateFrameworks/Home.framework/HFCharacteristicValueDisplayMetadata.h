@@ -20,12 +20,12 @@
 }
 
 + (id)_errorForSymptomHandler:(id)arg1 isFixingCurrently:(_Bool)arg2 withContextProvider:(id)arg3;
-+ (long long)_unknownStatePriorityForServiceType:(id)arg1;
++ (long long)_unknownStatePriorityForServiceDescriptor:(id)arg1 characteristicReadResponse:(id)arg2;
 + (void)_populateSplitMediaAccountErrorForMedatadata:(id)arg1 withContextProvider:(id)arg2;
 + (void)_displayAppleIDSplitErrorForMediaProfile:(id)arg1 havingMetadata:(id)arg2 withContextProvider:(id)arg3;
 + (id)displayMetadataForMediaProfile:(id)arg1 withContextProvider:(id)arg2;
 + (id)displayMetadataForAccessory:(id)arg1 withContextProvider:(id)arg2;
-+ (id)displayMetadataForServiceDescriptor:(id)arg1 characteristicReadResponse:(id)arg2;
++ (id)displayMetadataForService:(id)arg1 characteristicReadResponse:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NAFuture *splitAccountFuture; // @synthesize splitAccountFuture=_splitAccountFuture;
 @property(retain, nonatomic) HFServiceState *serviceState; // @synthesize serviceState=_serviceState;

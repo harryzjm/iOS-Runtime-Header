@@ -8,8 +8,8 @@
 
 #import <GeoServices/GEOTileLoaderObserver-Protocol.h>
 
-@class GEOApplicationAuditToken, GEOComposedRoute, NSArray, NSString, geo_isolater;
-@protocol OS_dispatch_queue;
+@class GEOApplicationAuditToken, GEOComposedRoute, GEORoutePreloaderStatisticsInfo, NSArray, NSString, geo_isolater;
+@protocol GEORoutePreloaderDelegate, OS_dispatch_queue;
 
 @interface GEORoutePreloader : NSObject <GEOTileLoaderObserver>
 {
@@ -23,20 +23,18 @@
     geo_isolater *_deviceQualitiesIsolation;
     int _batteryNotificationToken;
     _Bool _pluggedIn;
-    geo_isolater *_statisticsIsolation;
-    unsigned long long _statisticsCounts[5];
-    unsigned long long _tilesUsed;
-    unsigned long long _nonPreloadedTilesLoadedFromNetwork;
-    unsigned long long _nonPreloadedTilesFailed;
-    _Bool _hasStartedStatistics;
-    double _statisticsStartMonotonicTimestamp;
+    GEORoutePreloaderStatisticsInfo *_statistics;
+    id <GEORoutePreloaderDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <GEORoutePreloaderDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) GEOApplicationAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 @property(readonly, nonatomic) GEOComposedRoute *route; // @synthesize route=_route;
+- (void)preloadStrategy:(id)arg1 failedToLoadTileKey:(const struct _GEOTileKey *)arg2 error:(id)arg3;
+- (void)preloadStrategy:(id)arg1 loadedTileKey:(const struct _GEOTileKey *)arg2 source:(long long)arg3 sizeInBytes:(unsigned long long)arg4;
 - (void)tileLoader:(id)arg1 failedTileKey:(const struct _GEOTileKey *)arg2 error:(id)arg3 withOptions:(unsigned long long)arg4;
-- (void)tileLoader:(id)arg1 loadedTileKey:(const struct _GEOTileKey *)arg2 fromSource:(long long)arg3 withOptions:(unsigned long long)arg4;
+- (void)tileLoader:(id)arg1 loadedTileKey:(const struct _GEOTileKey *)arg2 sizeInBytes:(unsigned long long)arg3 fromSource:(long long)arg4 withOptions:(unsigned long long)arg5;
 - (void)_updateBatteryState;
 - (void)_unregisterForBatteryStatusChanges;
 - (void)_registerForBatteryStatusChanges;
@@ -59,7 +57,6 @@
 - (id)initWithRoute:(id)arg1 strategies:(id)arg2 auditToken:(id)arg3;
 - (id)initWithRoute:(id)arg1 strategies:(id)arg2;
 - (id)init;
-- (void)_finalizeStatistics;
 - (void)incrementTileLoadStatistic:(long long)arg1 amount:(unsigned long long)arg2;
 
 // Remaining properties

@@ -7,41 +7,45 @@
 #import <objc/NSObject.h>
 
 #import <AvatarUI/AVTNotifyingContainerViewDelegate-Protocol.h>
-#import <AvatarUI/AVTObjectViewController-Protocol.h>
 #import <AvatarUI/AVTStickerCollectionViewCellDelegate-Protocol.h>
+#import <AvatarUI/AVTStickerSheetController-Protocol.h>
 #import <AvatarUI/UICollectionViewDataSource-Protocol.h>
 #import <AvatarUI/UICollectionViewDelegate-Protocol.h>
 #import <AvatarUI/UICollectionViewDelegateFlowLayout-Protocol.h>
 
 @class AVTStickerSheetModel, NSString, UICollectionView, UIImage, UIView;
-@protocol AVTAvatarRecord, AVTPresenterDelegate, AVTStickerDisclosureValidationDelegate, AVTStickerSheetControllerDelegate;
+@protocol AVTAvatarRecord, AVTPresenterDelegate, AVTStickerDisclosureValidationDelegate, AVTStickerSheetControllerDelegate, AVTStickerTaskScheduler;
 
-@interface AVTStickerSheetController : NSObject <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, AVTNotifyingContainerViewDelegate, AVTStickerCollectionViewCellDelegate, AVTObjectViewController>
+@interface AVTStickerSheetController : NSObject <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, AVTNotifyingContainerViewDelegate, AVTStickerCollectionViewCellDelegate, AVTStickerSheetController>
 {
     _Bool _allowsPeel;
     _Bool _isPageVisible;
+    _Bool _areAllStickersRendered;
     _Bool _showPrereleaseSticker;
     id <AVTPresenterDelegate> presenterDelegate;
-    id <AVTStickerSheetControllerDelegate> _delegate;
-    id <AVTStickerDisclosureValidationDelegate> _disclosureValidationDelegate;
+    id <AVTStickerSheetControllerDelegate> delegate;
+    id <AVTStickerDisclosureValidationDelegate> disclosureValidationDelegate;
     UIView *_view;
     UICollectionView *_collectionView;
     AVTStickerSheetModel *_model;
     UIImage *_placeholderImage;
+    id <AVTStickerTaskScheduler> _taskScheduler;
     struct UIEdgeInsets _sectionInsets;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool showPrereleaseSticker; // @synthesize showPrereleaseSticker=_showPrereleaseSticker;
+@property(readonly, nonatomic) id <AVTStickerTaskScheduler> taskScheduler; // @synthesize taskScheduler=_taskScheduler;
 @property(retain, nonatomic) UIImage *placeholderImage; // @synthesize placeholderImage=_placeholderImage;
 @property(retain, nonatomic) AVTStickerSheetModel *model; // @synthesize model=_model;
+@property(nonatomic) _Bool areAllStickersRendered; // @synthesize areAllStickersRendered=_areAllStickersRendered;
 @property(nonatomic) _Bool isPageVisible; // @synthesize isPageVisible=_isPageVisible;
 @property(retain, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property(retain, nonatomic) UIView *view; // @synthesize view=_view;
 @property(readonly, nonatomic) _Bool allowsPeel; // @synthesize allowsPeel=_allowsPeel;
-@property(nonatomic) __weak id <AVTStickerDisclosureValidationDelegate> disclosureValidationDelegate; // @synthesize disclosureValidationDelegate=_disclosureValidationDelegate;
-@property(nonatomic) __weak id <AVTStickerSheetControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak id <AVTStickerDisclosureValidationDelegate> disclosureValidationDelegate; // @synthesize disclosureValidationDelegate;
 @property(nonatomic) struct UIEdgeInsets sectionInsets; // @synthesize sectionInsets=_sectionInsets;
+@property(nonatomic) __weak id <AVTStickerSheetControllerDelegate> delegate; // @synthesize delegate;
 @property(nonatomic) __weak id <AVTPresenterDelegate> presenterDelegate; // @synthesize presenterDelegate;
 - (void)notifyingContainerViewDidChangeSize:(struct CGSize)arg1;
 - (void)notifyingContainerViewWillChangeSize:(struct CGSize)arg1;
@@ -52,6 +56,8 @@
 - (void)scrollViewDidScroll:(id)arg1;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
 - (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
+- (_Bool)collectionView:(id)arg1 canFocusItemAtIndexPath:(id)arg2;
+- (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
@@ -62,16 +68,19 @@
 - (void)clearStickerRendererIfNeeded;
 - (void)discardStickerItems;
 - (id)firstStickerView;
+- (void)scheduleSheetStickerTask:(CDUnknownBlockType)arg1 withIndexPath:(id)arg2;
+- (void)scheduleSheetPlaceholderTask:(CDUnknownBlockType)arg1;
+- (void)startAllSchedulerTasksExcludingVisibleIndexPaths:(id)arg1;
+- (void)startAllSchedulerTasks;
 - (void)sheetWillAppear;
-- (void)sheetWillDisappear;
-- (void)lowerTaskPriority:(CDUnknownBlockType)arg1;
-- (void)startedTask:(CDUnknownBlockType)arg1 forItem:(id)arg2;
+- (void)sheetDidDisappear;
 @property(readonly, nonatomic) id <AVTAvatarRecord> avatarRecord;
 - (void)loadView;
 - (struct CGPoint)maxedContentOffset:(struct CGPoint)arg1;
 - (struct CGSize)minimumContentSizeForSize:(struct CGSize)arg1;
 - (double)topPadding;
-- (id)initWithStickerSheetModel:(id)arg1 allowsPeel:(_Bool)arg2;
+- (void)dealloc;
+- (id)initWithStickerSheetModel:(id)arg1 taskScheduler:(id)arg2 allowsPeel:(_Bool)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -16,7 +16,11 @@
     _Bool _playingIndicatorLeadingSide;
     MPUNowPlayingIndicatorView *_nowPlayingIndicator;
     CPUITableCellAccessory *_cloudAccessory;
+    CPUITableCellAccessory *_accessory;
+    UIImage *_cloudImage;
+    UIImage *_chevronImage;
     double _playbackProgress;
+    UIImage *_playbackProgressFullImage;
     UIImage *_artwork;
     UIView *_playbackProgressView;
     UIImageView *_artworkImageView;
@@ -37,20 +41,27 @@
 @property(retain, nonatomic) UIImage *artwork; // @synthesize artwork=_artwork;
 @property(nonatomic) _Bool container; // @synthesize container=_container;
 @property(nonatomic) _Bool shouldShowPlaybackProgress; // @synthesize shouldShowPlaybackProgress=_shouldShowPlaybackProgress;
+@property(retain, nonatomic) UIImage *playbackProgressFullImage; // @synthesize playbackProgressFullImage=_playbackProgressFullImage;
 @property(nonatomic) double playbackProgress; // @synthesize playbackProgress=_playbackProgress;
 @property(nonatomic) _Bool showActivityIndicator; // @synthesize showActivityIndicator=_showActivityIndicator;
+@property(retain, nonatomic) UIImage *chevronImage; // @synthesize chevronImage=_chevronImage;
+@property(retain, nonatomic) UIImage *cloudImage; // @synthesize cloudImage=_cloudImage;
+@property(retain, nonatomic) CPUITableCellAccessory *accessory; // @synthesize accessory=_accessory;
 @property(retain, nonatomic) CPUITableCellAccessory *cloudAccessory; // @synthesize cloudAccessory=_cloudAccessory;
 @property(nonatomic, getter=isShowExplicit) _Bool showExplicit; // @synthesize showExplicit=_showExplicit;
 @property(nonatomic) struct CGSize artworkSize; // @synthesize artworkSize=_artworkSize;
 @property(readonly, nonatomic) MPUNowPlayingIndicatorView *nowPlayingIndicator; // @synthesize nowPlayingIndicator=_nowPlayingIndicator;
 - (void)_updatePlayingArtworkIfNeeded;
 - (void)layoutSubviews;
+- (void)updateArtwork;
+- (void)updatePlaybackProgress;
 - (double)_accessoryWidth;
 - (void)_setCloudAccessory:(id)arg1;
 - (void)setShowsExplicit:(_Bool)arg1;
 - (void)setHighlighted:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)applyConfiguration:(id)arg1;
 - (void)configureCell;
+- (void)_updateTintColors;
 
 @end
 

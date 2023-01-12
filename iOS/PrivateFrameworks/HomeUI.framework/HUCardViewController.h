@@ -12,7 +12,7 @@
 #import <HomeUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <HomeUI/UIScrollViewDelegate-Protocol.h>
 
-@class HFItem, HUAnimationApplier, HUQuickControlContainerViewController, HUQuickControlSummaryNavigationBarTitleView, HUQuickControlViewControllerCoordinator, HUVisualEffectContainerView, NAFuture, NAPromise, NSMutableArray, NSString, UIActivityIndicatorView, UIButton, UIColor, UIImpactFeedbackGenerator, UILayoutGuide, UIPanGestureRecognizer, UIScrollView, UIView;
+@class HFItem, HUAnimationApplier, HUQuickControlContainerViewController, HUQuickControlProxHandOffSummaryViewUpdater, HUQuickControlSummaryNavigationBarTitleView, HUQuickControlViewControllerCoordinator, HUVisualEffectContainerView, NAFuture, NAPromise, NSMutableArray, NSSet, NSString, UIActivityIndicatorView, UIButton, UIColor, UIImpactFeedbackGenerator, UILayoutGuide, UIPanGestureRecognizer, UIScrollView, UIView, UIVisualEffectView;
 @protocol HUCardViewControllerDelegate;
 
 @interface HUCardViewController : UIViewController <HFItemManagerDelegate, UIGestureRecognizerDelegate, HUQuickControlViewControllerCoordinatorDelegate, HUViewControllerCustomDismissing, UIScrollViewDelegate>
@@ -22,6 +22,7 @@
     _Bool _disablePullToUnlockSettings;
     _Bool _settingsUnlocked;
     _Bool _reachable;
+    _Bool _hasRequestedDismissal;
     HUQuickControlContainerViewController *_quickControlViewController;
     UIViewController *_settingsViewController;
     HFItem *_sourceItem;
@@ -33,24 +34,33 @@
     UIButton *_closeButton;
     NAPromise *_viewControllerReadyPromise;
     NSMutableArray *_constraints;
+    HUQuickControlProxHandOffSummaryViewUpdater *_proxHandOffSummaryViewUpdater;
     UIPanGestureRecognizer *_panGestureRecognizer;
     UILayoutGuide *_quickControlLayoutGuide;
     HUVisualEffectContainerView *_closeButtonEffectView;
     UIView *_transitionBlurView;
     HUAnimationApplier *_animationApplier;
+    NSSet *_controlItems;
+    NSMutableArray *_contentSizeKeyPathObservees;
     UIImpactFeedbackGenerator *_impactFeedbackGenerator;
+    UIVisualEffectView *_backgroundVisualEffectView;
     UIActivityIndicatorView *_spinnerView;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool hasRequestedDismissal; // @synthesize hasRequestedDismissal=_hasRequestedDismissal;
 @property __weak UIActivityIndicatorView *spinnerView; // @synthesize spinnerView=_spinnerView;
+@property(retain, nonatomic) UIVisualEffectView *backgroundVisualEffectView; // @synthesize backgroundVisualEffectView=_backgroundVisualEffectView;
 @property(retain, nonatomic) UIImpactFeedbackGenerator *impactFeedbackGenerator; // @synthesize impactFeedbackGenerator=_impactFeedbackGenerator;
+@property(retain, nonatomic) NSMutableArray *contentSizeKeyPathObservees; // @synthesize contentSizeKeyPathObservees=_contentSizeKeyPathObservees;
+@property(retain, nonatomic) NSSet *controlItems; // @synthesize controlItems=_controlItems;
 @property(retain, nonatomic) HUAnimationApplier *animationApplier; // @synthesize animationApplier=_animationApplier;
 @property(nonatomic) _Bool reachable; // @synthesize reachable=_reachable;
 @property(retain, nonatomic) UIView *transitionBlurView; // @synthesize transitionBlurView=_transitionBlurView;
 @property(retain, nonatomic) HUVisualEffectContainerView *closeButtonEffectView; // @synthesize closeButtonEffectView=_closeButtonEffectView;
 @property(retain, nonatomic) UILayoutGuide *quickControlLayoutGuide; // @synthesize quickControlLayoutGuide=_quickControlLayoutGuide;
 @property(retain, nonatomic) UIPanGestureRecognizer *panGestureRecognizer; // @synthesize panGestureRecognizer=_panGestureRecognizer;
+@property(retain, nonatomic) HUQuickControlProxHandOffSummaryViewUpdater *proxHandOffSummaryViewUpdater; // @synthesize proxHandOffSummaryViewUpdater=_proxHandOffSummaryViewUpdater;
 @property(retain, nonatomic) NSMutableArray *constraints; // @synthesize constraints=_constraints;
 @property(retain, nonatomic) NAPromise *viewControllerReadyPromise; // @synthesize viewControllerReadyPromise=_viewControllerReadyPromise;
 @property(retain, nonatomic) UIButton *closeButton; // @synthesize closeButton=_closeButton;
@@ -77,6 +87,7 @@
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)_escapeKeyPressed;
 - (id)keyCommands;
+- (void)_updateCloseButtonVibrancyEffect;
 - (id)_springAnimationSettings;
 - (void)setContentOffset:(struct CGPoint)arg1 animated:(_Bool)arg2;
 - (void)_nudgeScrollViewToPoint:(struct CGPoint)arg1;
@@ -98,8 +109,12 @@
 - (void)dealloc;
 - (void)scrollToDetailsViewAnimated:(_Bool)arg1;
 - (void)dismissCardAnimated:(_Bool)arg1;
+- (void)externalAnimationsEnded;
+- (void)externalAnimationsBegan;
+- (void)forceUnlockSettings;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)viewDidLayoutSubviews;
+- (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)setUpConstraints;
 - (_Bool)_canShowWhileLocked;
@@ -108,6 +123,7 @@
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateWithQuickControlViewController:(id)arg1 settingsViewController:(id)arg2 presentationContext:(id)arg3;
 @property(readonly, nonatomic) NAFuture *viewControllerReadyFuture;
+- (id)initWithControlItems:(id)arg1;
 - (id)init;
 
 // Remaining properties

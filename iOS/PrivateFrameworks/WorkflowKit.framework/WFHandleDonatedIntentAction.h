@@ -4,30 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class INIntent, INIntentExecutionInfo, NSString;
+@class INIntent, INIntentDescriptor, NSString;
 
 @interface WFHandleDonatedIntentAction
 {
     _Bool _forceExecutionOnPhone;
+    INIntentDescriptor *_intentDescriptor;
     INIntent *_intent;
     NSString *_groupIdentifier;
     NSString *_title;
     NSString *_subtitle;
-    INIntentExecutionInfo *_resolvedExecutionInfo;
 }
 
 + (id)intentActionWithShortcut:(id)arg1 forceExecutionOnPhone:(_Bool)arg2 groupIdentifier:(id)arg3 error:(id *)arg4;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) INIntentExecutionInfo *resolvedExecutionInfo; // @synthesize resolvedExecutionInfo=_resolvedExecutionInfo;
 @property(readonly, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(readonly, nonatomic) NSString *title; // @synthesize title=_title;
 @property(readonly, nonatomic) NSString *groupIdentifier; // @synthesize groupIdentifier=_groupIdentifier;
 @property(readonly, nonatomic) _Bool forceExecutionOnPhone; // @synthesize forceExecutionOnPhone=_forceExecutionOnPhone;
 @property(retain, nonatomic) INIntent *intent; // @synthesize intent=_intent;
+- (void)setIntentDescriptor:(id)arg1;
 - (id)metricsIdentifier;
 - (id)generatedIntentWithIdentifier:(id)arg1 input:(id)arg2 processedParameters:(id)arg3 error:(id *)arg4;
 - (id)slots;
 - (id)intentDescription;
+- (id)parameterSummaryDefinition;
 - (id)localizedDescriptionSummary;
 - (id)appIdentifier;
 - (long long)intentCategory;
@@ -35,11 +36,11 @@
 - (id)localizedSubtitle;
 - (id)localizedName;
 - (id)name;
-- (id)createResourceManager;
+- (id)intentDescriptor;
 - (void)initializeParameters;
 - (id)serializedParameters;
 - (id)executorWithIntent:(id)arg1 groupIdentifier:(id)arg2;
-- (id)initWithIdentifier:(id)arg1 definition:(id)arg2 serializedParameters:(id)arg3;
+- (id)initWithIdentifier:(id)arg1 definition:(id)arg2 serializedParameters:(id)arg3 stringLocalizer:(id)arg4;
 - (void)continueInAppWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithInteraction:(id)arg1 forceExecutionOnPhone:(_Bool)arg2;
 - (id)initWithIntent:(id)arg1 forceExecutionOnPhone:(_Bool)arg2;

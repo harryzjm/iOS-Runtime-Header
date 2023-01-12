@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_67099afb)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_67099afb)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) FTContextWithPronHints *context_with_pron_hints;
 @property(readonly, nonatomic) NSString *orthography;
 @property(readonly, nonatomic) NSString *language;

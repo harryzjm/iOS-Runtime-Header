@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (void)readMasterStyleAtom:(struct PptTextMasterStyleAtom *)arg1 baseMasterStyleAtom:(struct PptTextMasterStyleAtom *)arg2 masterBulletStyleAtom:(struct PptTextMasterStyle9Atom *)arg3 textListStyle:(id)arg4 state:(id)arg5;
++ (void)readMasterStyleAtom:(void *)arg1 baseMasterStyleAtom:(void *)arg2 masterBulletStyleAtom:(void *)arg3 textListStyle:(id)arg4 state:(id)arg5;
 
 @end
 

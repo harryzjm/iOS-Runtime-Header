@@ -15,6 +15,7 @@
 - (void)_stopMonitoring;
 - (void)_startMonitoringWithQueue:(id)arg1;
 - (const char *)_asssetMetaUpdatedKey;
+- (void)notifyNewVoiceTriggerAssetMetaDataUpdated;
 - (id)init;
 
 @end

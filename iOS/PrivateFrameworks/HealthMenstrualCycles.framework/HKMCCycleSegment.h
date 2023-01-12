@@ -6,9 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthMenstrualCycles/HKRedactedDescription-Protocol.h>
+#import <HealthMenstrualCycles/NSCopying-Protocol.h>
 #import <HealthMenstrualCycles/NSSecureCoding-Protocol.h>
 
-@interface HKMCCycleSegment : NSObject <NSSecureCoding>
+@class NSString;
+
+@interface HKMCCycleSegment : NSObject <HKRedactedDescription, NSCopying, NSSecureCoding>
 {
     CDStruct_ef5fcbe6 _days;
     long long _type;
@@ -19,9 +23,10 @@
 + (id)_menstruationSegmentWithDays:(CDStruct_ef5fcbe6)arg1;
 @property(readonly, nonatomic) CDStruct_ef5fcbe6 days; // @synthesize days=_days;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)redactedDescription;
+@property(readonly, copy) NSString *hk_redactedDescription;
 - (id)description;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

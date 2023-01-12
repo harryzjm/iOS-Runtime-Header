@@ -25,11 +25,11 @@
 + (id)specifierForAppIdentifier:(id)arg1;
 + (id)specifierForStorageApp:(id)arg1;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool infoHidden;
-@property(retain, nonatomic) NSString *info;
-@property(retain, nonatomic) NSString *vendor;
-@property(retain, nonatomic) NSString *title;
-@property(retain, nonatomic) UIImage *icon;
+@property _Bool infoHidden;
+@property(retain) NSString *info;
+@property(retain) NSString *vendor;
+@property(retain) NSString *title;
+@property(retain) UIImage *icon;
 - (void)refreshCellContentsWithSpecifier:(id)arg1;
 - (void)updateConstraints;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 specifier:(id)arg3;

@@ -21,8 +21,7 @@
 - (id)vs_insertContextInfo:(id)arg1;
 - (id)vs_substituteAudioWithLocalPath;
 - (id)vs_textifyEmojiWithLanguage:(id)arg1;
-- (id)preinstalledAudioHashForLanguage:(id)arg1 gender:(long long)arg2;
-- (id)md5hash;
+- (id)preinstalledAudioHashForLanguage:(id)arg1 name:(id)arg2;
 - (id)sha256hex;
 @end
 

@@ -32,8 +32,6 @@
 - (void)waitForPendingUpdates;
 - (void)pause;
 - (void)start;
-- (id)encodedStrokeIdentifiers:(id)arg1 withStrokeProvider:(id)arg2;
-- (id)strokeIdentifiersForData:(id)arg1 withStrokeProvider:(id)arg2;
 - (void)dealloc;
 - (id)initWithRecognitionSession:(id)arg1;
 - (id)init;

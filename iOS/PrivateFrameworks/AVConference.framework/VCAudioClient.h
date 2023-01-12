@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVAudioDevice, VCAudioIO;
+@class AVAudioDevice, VCAudioIO, VCAudioManager;
 
 __attribute__((visibility("hidden")))
 @interface VCAudioClient : NSObject
@@ -20,8 +20,21 @@ __attribute__((visibility("hidden")))
     _Bool _isOnHold;
     struct VCAudioClientSettings _selectedSettings;
     struct VCAudioClientSettings _requestedSettings;
+    unsigned int _audioSessionId;
+    unsigned int _spatialAudioRegistered;
+    void **_audioSession;
+    VCAudioManager *_audioManager;
+    _Bool _isMutedTalkerNotificationRegistered;
+    _Bool _isMixingVoiceWithMediaEnabled;
+    _Bool _followSystemInput;
+    _Bool _followSystemOutput;
+    _Bool _mixingVoiceWithMediaEnabled;
 }
 
+@property(nonatomic, getter=isFollowSystemOutputEnabled) _Bool followSystemOutput; // @synthesize followSystemOutput=_followSystemOutput;
+@property(nonatomic, getter=isFollowSystemInputEnabled) _Bool followSystemInput; // @synthesize followSystemInput=_followSystemInput;
+@property(nonatomic, getter=isMixingVoiceWithMediaEnabled) _Bool mixingVoiceWithMediaEnabled; // @synthesize mixingVoiceWithMediaEnabled=_mixingVoiceWithMediaEnabled;
+@property(nonatomic) _Bool isMutedTalkerNotificationRegistered; // @synthesize isMutedTalkerNotificationRegistered=_isMutedTalkerNotificationRegistered;
 @property(retain, nonatomic) VCAudioIO *audioIO; // @synthesize audioIO=_audioIO;
 @property(readonly, nonatomic) int processId; // @synthesize processId=_processId;
 @property(readonly, nonatomic) _Bool isMuted; // @synthesize isMuted=_muted;

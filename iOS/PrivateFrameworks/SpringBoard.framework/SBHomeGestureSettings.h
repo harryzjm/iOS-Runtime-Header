@@ -12,11 +12,10 @@
 {
     _Bool _homeGestureEnabled;
     _Bool _recognizeAlongEdge;
+    _Bool _useZStackResolverResults;
     _Bool _snapToMaxVelocityThresholdAfterAccelerationDip;
     _Bool _injectGestureVelocityForZoomDown;
     _Bool _onlyInjectVelocityForShortFlicks;
-    _Bool _morphShouldShowBlackCurtainOverSource;
-    _Bool _morphShouldMatchMove;
     _Bool _preventMultipleEdgesAfterAppInteraction;
     _Bool _resetSwitcherListAfterAppInteraction;
     double _hysteresis;
@@ -33,6 +32,8 @@
     double _minimumYVelocityForArcSwipe;
     double _normalizedDistanceYThresholdForUnconditionalHome;
     double _normalizedDistanceYThresholdRangeForUnconditionalHome;
+    double _normalizedDistanceYThresholdForUnconditionalHomeInSlideOver;
+    double _normalizedDistanceYThresholdRangeForUnconditionalHomeInSlideOver;
     double _pauseVelocityThresholdForAppSwitcher;
     double _pauseVelocityThresholdForDefiniteAppSwitcher;
     double _maximumAdaptivePauseVelocityThresholdForAppSwitcher;
@@ -61,10 +62,6 @@
     double _positionVelocityYPercentOfGestureVelocityY;
     double _scaleVelocityPercentOfGestureVelocityYDividedByViewHeight;
     double _maximumScaleVelocity;
-    double _morphSourceClipDuration;
-    double _morphTargetUnclipDuration;
-    double _morphSourceUnclipDuration;
-    double _morphTargetClipDuration;
     double _secondsToAllowMultipleEdges;
     double _secondsToResetSwitcherListAfterTransition;
     double _travelDistanceForTranslatingScreenHeight;
@@ -81,12 +78,6 @@
 @property(nonatomic) double secondsToResetSwitcherListAfterTransition; // @synthesize secondsToResetSwitcherListAfterTransition=_secondsToResetSwitcherListAfterTransition;
 @property(nonatomic) _Bool preventMultipleEdgesAfterAppInteraction; // @synthesize preventMultipleEdgesAfterAppInteraction=_preventMultipleEdgesAfterAppInteraction;
 @property(nonatomic) double secondsToAllowMultipleEdges; // @synthesize secondsToAllowMultipleEdges=_secondsToAllowMultipleEdges;
-@property(nonatomic) _Bool morphShouldMatchMove; // @synthesize morphShouldMatchMove=_morphShouldMatchMove;
-@property(nonatomic) _Bool morphShouldShowBlackCurtainOverSource; // @synthesize morphShouldShowBlackCurtainOverSource=_morphShouldShowBlackCurtainOverSource;
-@property(nonatomic) double morphTargetClipDuration; // @synthesize morphTargetClipDuration=_morphTargetClipDuration;
-@property(nonatomic) double morphSourceUnclipDuration; // @synthesize morphSourceUnclipDuration=_morphSourceUnclipDuration;
-@property(nonatomic) double morphTargetUnclipDuration; // @synthesize morphTargetUnclipDuration=_morphTargetUnclipDuration;
-@property(nonatomic) double morphSourceClipDuration; // @synthesize morphSourceClipDuration=_morphSourceClipDuration;
 @property(nonatomic) double maximumScaleVelocity; // @synthesize maximumScaleVelocity=_maximumScaleVelocity;
 @property(nonatomic) double scaleVelocityPercentOfGestureVelocityYDividedByViewHeight; // @synthesize scaleVelocityPercentOfGestureVelocityYDividedByViewHeight=_scaleVelocityPercentOfGestureVelocityYDividedByViewHeight;
 @property(nonatomic) double positionVelocityYPercentOfGestureVelocityY; // @synthesize positionVelocityYPercentOfGestureVelocityY=_positionVelocityYPercentOfGestureVelocityY;
@@ -118,6 +109,8 @@
 @property(nonatomic) double maximumAdaptivePauseVelocityThresholdForAppSwitcher; // @synthesize maximumAdaptivePauseVelocityThresholdForAppSwitcher=_maximumAdaptivePauseVelocityThresholdForAppSwitcher;
 @property(nonatomic) double pauseVelocityThresholdForDefiniteAppSwitcher; // @synthesize pauseVelocityThresholdForDefiniteAppSwitcher=_pauseVelocityThresholdForDefiniteAppSwitcher;
 @property(nonatomic) double pauseVelocityThresholdForAppSwitcher; // @synthesize pauseVelocityThresholdForAppSwitcher=_pauseVelocityThresholdForAppSwitcher;
+@property(nonatomic) double normalizedDistanceYThresholdRangeForUnconditionalHomeInSlideOver; // @synthesize normalizedDistanceYThresholdRangeForUnconditionalHomeInSlideOver=_normalizedDistanceYThresholdRangeForUnconditionalHomeInSlideOver;
+@property(nonatomic) double normalizedDistanceYThresholdForUnconditionalHomeInSlideOver; // @synthesize normalizedDistanceYThresholdForUnconditionalHomeInSlideOver=_normalizedDistanceYThresholdForUnconditionalHomeInSlideOver;
 @property(nonatomic) double normalizedDistanceYThresholdRangeForUnconditionalHome; // @synthesize normalizedDistanceYThresholdRangeForUnconditionalHome=_normalizedDistanceYThresholdRangeForUnconditionalHome;
 @property(nonatomic) double normalizedDistanceYThresholdForUnconditionalHome; // @synthesize normalizedDistanceYThresholdForUnconditionalHome=_normalizedDistanceYThresholdForUnconditionalHome;
 @property(nonatomic) double minimumYVelocityForArcSwipe; // @synthesize minimumYVelocityForArcSwipe=_minimumYVelocityForArcSwipe;
@@ -131,6 +124,7 @@
 @property(nonatomic) double minimumXDistanceForFirstArcSwipe; // @synthesize minimumXDistanceForFirstArcSwipe=_minimumXDistanceForFirstArcSwipe;
 @property(nonatomic) double minimumYDistanceToConsiderAccelerationDip; // @synthesize minimumYDistanceToConsiderAccelerationDip=_minimumYDistanceToConsiderAccelerationDip;
 @property(nonatomic) double minimumYDistanceForHomeOrAppSwitcher; // @synthesize minimumYDistanceForHomeOrAppSwitcher=_minimumYDistanceForHomeOrAppSwitcher;
+@property(nonatomic) _Bool useZStackResolverResults; // @synthesize useZStackResolverResults=_useZStackResolverResults;
 @property(nonatomic) _Bool recognizeAlongEdge; // @synthesize recognizeAlongEdge=_recognizeAlongEdge;
 @property(nonatomic) double hysteresis; // @synthesize hysteresis=_hysteresis;
 @property(nonatomic, getter=isHomeGestureEnabled) _Bool homeGestureEnabled; // @synthesize homeGestureEnabled=_homeGestureEnabled;

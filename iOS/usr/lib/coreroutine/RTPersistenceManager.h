@@ -75,6 +75,7 @@
 - (void)createManagedObjectContext:(CDUnknownBlockType)arg1;
 - (_Bool)initializeContainer;
 - (void)dealloc;
+- (void)_shutdownWithHandler:(CDUnknownBlockType)arg1;
 - (_Bool)initializePersistenceStores;
 - (id)initWithModelsDirectory:(id)arg1 storesDirectory:(id)arg2;
 - (id)init;

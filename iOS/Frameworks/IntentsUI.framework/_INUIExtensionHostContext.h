@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     id <INUIExtensionHostContextDelegate> _extensionHostContextDelegate;
 }
 
++ (id)_allowedItemPayloadClasses;
 + (id)_extensionAuxiliaryVendorProtocol;
 + (id)_extensionAuxiliaryHostProtocol;
 - (void).cxx_destruct;

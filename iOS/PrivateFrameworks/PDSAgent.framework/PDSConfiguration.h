@@ -8,7 +8,7 @@
 
 #import <PDSAgent/NSCopying-Protocol.h>
 
-@class NSURL;
+@class NSString, NSURL;
 @protocol OS_dispatch_queue, OS_dispatch_workloop;
 
 @interface PDSConfiguration : NSObject <NSCopying>
@@ -16,12 +16,15 @@
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_workloop> *_workloop;
     NSURL *_daemonRootDirectory;
+    NSString *_pushHandlerPort;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *pushHandlerPort; // @synthesize pushHandlerPort=_pushHandlerPort;
 @property(retain, nonatomic) NSURL *daemonRootDirectory; // @synthesize daemonRootDirectory=_daemonRootDirectory;
 @property(retain, nonatomic) NSObject<OS_dispatch_workloop> *workloop; // @synthesize workloop=_workloop;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+- (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

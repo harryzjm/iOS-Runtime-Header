@@ -26,7 +26,6 @@
 
 + (_Bool)isProtectedDataAvailableWithState:(long long)arg1;
 - (void).cxx_destruct;
-- (void)_observationQueue_adjustContentProtectionStateWithBlock:(CDUnknownBlockType)arg1;
 - (id)diagnosticDescription;
 @property(nonatomic) _Bool shouldIgnoreUnlockedState;
 - (void)setContentProtectionState:(long long)arg1;

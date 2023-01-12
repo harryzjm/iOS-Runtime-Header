@@ -8,7 +8,7 @@
 
 @interface TSKCOUpdateRangeOperation <TSKCORangeOperation>
 {
-    vector_b5e32e34 _rangeVector;
+    struct vector<_NSRange, std::allocator<_NSRange>> _rangeVector;
     int _transformBehavior;
 }
 
@@ -17,19 +17,19 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) int transformBehavior; // @synthesize transformBehavior=_transformBehavior;
-- (void)saveToArchiver:(id)arg1 message:(struct Operation *)arg2;
-- (id)initWithUnarchiver:(id)arg1 message:(const struct Operation *)arg2;
+- (void)saveToArchiver:(id)arg1 message:(void *)arg2;
+- (id)initWithUnarchiver:(id)arg1 message:(const void *)arg2;
 - (shared_ptr_f167ad79)newTransformableOperation;
 - (id)toString;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-@property(readonly, nonatomic) const vector_b5e32e34 *rangeVector;
+@property(readonly, nonatomic) const void *rangeVector;
 - (id)operationWithNewNoop:(_Bool)arg1;
-- (id)initWithAddress:(const vector_4dc5f307 *)arg1 rangeVector:(const vector_b5e32e34 *)arg2 selectionPropertyId:(unsigned short)arg3;
-- (id)initWithAddress:(const vector_4dc5f307 *)arg1 rangeVector:(const vector_b5e32e34 *)arg2 propertyId:(unsigned short)arg3 noop:(_Bool)arg4;
-- (id)initWithAddress:(const vector_4dc5f307 *)arg1 rangeVector:(const vector_b5e32e34 *)arg2 propertyId:(unsigned short)arg3;
-- (id)initWithAddress:(const vector_4dc5f307 *)arg1 rangeVector:(const vector_b5e32e34 *)arg2 propertyId:(unsigned short)arg3 transformBehavior:(int)arg4 noop:(_Bool)arg5;
-- (id)initWithAddress:(const vector_4dc5f307 *)arg1 rangeVector:(const vector_b5e32e34 *)arg2 propertyType:(CDStruct_1464e8ba)arg3 transformBehavior:(int)arg4 noop:(_Bool)arg5;
+- (id)initWithAddress:(const void *)arg1 rangeVector:(const void *)arg2 selectionPropertyId:(unsigned short)arg3;
+- (id)initWithAddress:(const void *)arg1 rangeVector:(const void *)arg2 propertyId:(unsigned short)arg3 noop:(_Bool)arg4;
+- (id)initWithAddress:(const void *)arg1 rangeVector:(const void *)arg2 propertyId:(unsigned short)arg3;
+- (id)initWithAddress:(const void *)arg1 rangeVector:(const void *)arg2 propertyId:(unsigned short)arg3 transformBehavior:(int)arg4 noop:(_Bool)arg5;
+- (id)initWithAddress:(const void *)arg1 rangeVector:(const void *)arg2 propertyType:(CDStruct_1464e8ba)arg3 transformBehavior:(int)arg4 noop:(_Bool)arg5;
 
 @end
 

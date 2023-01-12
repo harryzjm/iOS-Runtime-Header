@@ -12,7 +12,11 @@
 }
 
 - (void).cxx_destruct;
+- (_Bool)canPropagateOriginalAuxiliaryData;
 - (id)preparedNodeWithSourceContainer:(id)arg1 pipelineState:(id)arg2 pipelineSettings:(id)arg3 sourceSettings:(id)arg4 error:(out id *)arg5;
+- (id)_rawFiltersWithSourceOptions:(id)arg1 error:(out id *)arg2;
+- (id)resolvedNodeWithCachedInputs:(id)arg1 settings:(id)arg2 pipelineState:(id)arg3 error:(out id *)arg4;
+- (_Bool)shouldGenerateMeteorGainMap;
 - (id)sourceOptionsForSettings:(id)arg1 error:(out id *)arg2;
 - (id)_appendFilter:(id)arg1 filterType:(int)arg2 settings:(id)arg3 source:(id)arg4;
 - (int)_filterTypeForClassName:(id)arg1;
@@ -28,7 +32,6 @@
 - (void)_processRAWProperties:(id)arg1;
 - (id)_RAWCameraSpaceProperties:(id)arg1 RAWProperties:(id)arg2;
 - (void)_addDefaultFinalizedSourceOptions:(id)arg1;
-- (id)resolvedNodeWithCachedInputs:(id)arg1 settings:(id)arg2 pipelineState:(id)arg3 error:(out id *)arg4;
 - (id)initWithURL:(id)arg1 UTI:(id)arg2 settings:(id)arg3;
 - (id)initWithURL:(id)arg1 UTI:(id)arg2 identifier:(id)arg3;
 - (id)initWithImageSource:(struct CGImageSource *)arg1 identifier:(id)arg2;

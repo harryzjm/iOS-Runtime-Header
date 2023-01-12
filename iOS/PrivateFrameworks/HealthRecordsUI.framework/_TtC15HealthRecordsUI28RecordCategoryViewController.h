@@ -20,21 +20,29 @@
     MISSING_TYPE *recordCount;
     MISSING_TYPE *currentViewController;
     MISSING_TYPE *displayMode;
+    MISSING_TYPE *isSearching;
     MISSING_TYPE *isModePickerHidden;
+    MISSING_TYPE *$__lazy_storage_$_scrollView;
     MISSING_TYPE *$__lazy_storage_$_modePicker;
+    MISSING_TYPE *$__lazy_storage_$_resultViewController;
+    MISSING_TYPE *$__lazy_storage_$_searchController;
     MISSING_TYPE *$__lazy_storage_$_navigationPalette;
+    MISSING_TYPE *$__lazy_storage_$_latestViewContoller;
+    MISSING_TYPE *$__lazy_storage_$_udcListViewController;
     MISSING_TYPE *$__lazy_storage_$_lastUpdatedViewController;
     MISSING_TYPE *$__lazy_storage_$_alphabeticalViewController;
 }
 
 - (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)setEditing:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)tapToRadar:(id)arg1;
 - (void)modePickerDidChange:(id)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;
+- (void)didTapEditButton;
 
 @end
 

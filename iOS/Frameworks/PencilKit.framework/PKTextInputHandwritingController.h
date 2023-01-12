@@ -10,11 +10,12 @@
 #import <PencilKit/PKTextInputDebugStateReporting-Protocol.h>
 #import <PencilKit/PKTextInputHandwritingShotDelegate-Protocol.h>
 #import <PencilKit/PKTextInputResultCommandDelegate-Protocol.h>
+#import <PencilKit/PKTextInputWritingSessionDelegate-Protocol.h>
 
 @class NSMutableArray, NSString, NSUUID, PKDrawing, PKTextInputCanvasController, PKTextInputCursorController, PKTextInputDebugLogController, PKTextInputElementsController, PKTextInputFeedbackController, PKTextInputHandwritingShot, PKTextInputRecognitionManager, PKTextInputReserveSpaceController, PKTextInputResultCommand, PKTextInputTargetState, PKTextInputWritingSession;
 @protocol PKTextInputHandwritingControllerDelegate;
 
-@interface PKTextInputHandwritingController : NSObject <PKTextInputHandwritingShotDelegate, PKTextInputResultCommandDelegate, PKTextInputCanvasControllerChangeObserver, PKTextInputDebugStateReporting>
+@interface PKTextInputHandwritingController : NSObject <PKTextInputHandwritingShotDelegate, PKTextInputResultCommandDelegate, PKTextInputWritingSessionDelegate, PKTextInputCanvasControllerChangeObserver, PKTextInputDebugStateReporting>
 {
     id <PKTextInputHandwritingControllerDelegate> _delegate;
     PKTextInputCanvasController *_canvasController;
@@ -69,6 +70,7 @@
 - (void)_updateStrokeAlphaOverride;
 - (void)_updateFloatingBackground;
 - (_Bool)_wantsFloatingBackground;
+- (_Bool)writingSession:(id)arg1 elementHasPendingOperations:(id)arg2;
 - (_Bool)handwritingShot:(id)arg1 shouldSuppressGesturesForStrokesBounds:(struct CGRect)arg2 coordinateSpace:(id)arg3;
 - (id)handwritingShotStrokeIdentifiersToExcludeFromRecognition:(id)arg1;
 - (struct _NSRange)handwritingShot:(id)arg1 inProgressGestureInitialSelectedRangeForElementRecognitionIdentifier:(id)arg2;

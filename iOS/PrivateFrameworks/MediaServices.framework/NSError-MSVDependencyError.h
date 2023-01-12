@@ -9,5 +9,17 @@
 @interface NSError (MSVDependencyError)
 + (id)MSVErrorWithMissingDependencies:(id)arg1;
 + (id)MSVErrorWithMissingDependency:(id)arg1;
++ (id)_msv_errorWithDomain:(id)arg1 code:(long long)arg2 underlyingError:(id)arg3 userInfo:(id)arg4 debugDescriptionFormat:(id)arg5 arguments:(char *)arg6;
++ (id)msv_errorWithDomain:(id)arg1 code:(long long)arg2 underlyingError:(id)arg3 userInfo:(id)arg4 debugDescription:(id)arg5;
++ (id)msv_errorWithDomain:(id)arg1 code:(long long)arg2 userInfo:(id)arg3 debugDescription:(id)arg4;
++ (id)msv_errorWithDomain:(id)arg1 code:(long long)arg2 underlyingError:(id)arg3 debugDescription:(id)arg4;
++ (id)msv_errorWithDomain:(id)arg1 code:(long long)arg2 debugDescription:(id)arg3;
+@property(readonly, nonatomic) NSError *msv_underlyingError;
+- (id)msv_description;
+- (id)msv_codeDescription;
+- (id)msv_errorByUnwrappingDomain:(id)arg1 code:(long long)arg2;
+- (id)msv_errorByUnwrappingDomain:(id)arg1;
+- (id)msv_errorByWrappingWithDomain:(id)arg1 code:(long long)arg2 userInfo:(id)arg3 debugDescription:(id)arg4;
+- (id)msv_errorByWrappingWithDomain:(id)arg1 code:(long long)arg2 debugDescription:(id)arg3;
 @end
 

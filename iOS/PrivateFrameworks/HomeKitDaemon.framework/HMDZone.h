@@ -11,15 +11,17 @@
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDHome, HMFMessageDispatcher, NSMutableArray, NSMutableDictionary, NSObject, NSSet, NSString, NSUUID;
+@class HMDHome, HMFMessageDispatcher, HMFUnfairLock, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDZone : HMFObject <HMDHomeMessageReceiver, HMFDumpState, NSSecureCoding, HMDBackingStoreObjectProtocol>
 {
+    HMFUnfairLock *_lock;
+    NSMutableArray *_roomUUIDs;
+    NSMutableDictionary *_currentRooms;
     NSString *_name;
     NSUUID *_uuid;
-    NSMutableDictionary *_currentRooms;
-    NSMutableArray *_roomUUIDs;
+    NSUUID *_spiClientIdentifier;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMDHome *_home;
     HMFMessageDispatcher *_msgDispatcher;
@@ -31,10 +33,8 @@
 @property(retain, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property(nonatomic) __weak HMDHome *home; // @synthesize home=_home;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
-@property(retain, nonatomic) NSMutableArray *roomUUIDs; // @synthesize roomUUIDs=_roomUUIDs;
-@property(retain, nonatomic) NSMutableDictionary *currentRooms; // @synthesize currentRooms=_currentRooms;
+@property(readonly, copy) NSUUID *spiClientIdentifier; // @synthesize spiClientIdentifier=_spiClientIdentifier;
 @property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
-@property(retain, nonatomic) NSString *name; // @synthesize name=_name;
 - (id)backingStoreObjects:(long long)arg1;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
@@ -43,24 +43,24 @@
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;
 - (void)removeRoom:(id)arg1;
-- (id)_handleSetRoomsZoneTransaction:(id)arg1 error:(id *)arg2;
+- (id)_handleSetRoomsTransactionWithRoomUUIDStrings:(id)arg1 error:(id *)arg2;
 - (id)_handleRenameZoneTransaction:(id)arg1 error:(id *)arg2;
 - (void)_handleRename:(id)arg1;
 - (void)_handleRemoveRoom:(id)arg1;
-- (id)_checkForAddValidity:(id)arg1 room:(id *)arg2;
+- (id)_checkForAddValidity:(id)arg1;
 - (void)_handleAddRoom:(id)arg1;
 - (void)_registerForMessages;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)dumpState;
-- (id)roomWithUUID:(id)arg1;
-- (id)roomWithName:(id)arg1;
 - (id)rooms;
+@property(readonly, copy) NSArray *roomUUIDs;
+@property(copy) NSString *name; // @synthesize name=_name;
 - (void)configure:(id)arg1 queue:(id)arg2;
 - (void)dealloc;
 - (id)initWithName:(id)arg1 uuid:(id)arg2 home:(id)arg3 queue:(id)arg4;
-- (id)assistantObject;
-- (id)urlString;
+@property(readonly, copy) NSDictionary *assistantObject;
+@property(readonly, copy) NSString *urlString;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

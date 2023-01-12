@@ -7,6 +7,7 @@
 #import <SAObjects/SAMPMediaItem.h>
 
 @interface SAMPMediaItem (SiriMediaRemoteHelpers)
++ (id)_af_mediaItemWithMRContentItem:(id)arg1;
 + (id)_af_mediaItemWithMRContentItemRef:(void *)arg1;
 @end
 

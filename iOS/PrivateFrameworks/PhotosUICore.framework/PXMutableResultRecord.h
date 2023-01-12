@@ -15,6 +15,7 @@
     _Bool _reverseSortOrder;
     _Bool _wantsCuration;
     _Bool _preloadAssetTypeCounts;
+    _Bool _ensureKeyAssetAtBeginning;
     NSSet *_excludedOids;
     NSSet *_includedOids;
     NSSet *_curatedOids;
@@ -22,9 +23,12 @@
     PHFetchResult *_curatedFetchResult;
     PHFetchResult *_keyAssetsFetchResult;
     long long _keyAssetIndex;
+    CDUnknownBlockType _curatedRefetchCondition;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType curatedRefetchCondition; // @synthesize curatedRefetchCondition=_curatedRefetchCondition;
+@property(nonatomic) _Bool ensureKeyAssetAtBeginning; // @synthesize ensureKeyAssetAtBeginning=_ensureKeyAssetAtBeginning;
 @property(nonatomic) _Bool preloadAssetTypeCounts; // @synthesize preloadAssetTypeCounts=_preloadAssetTypeCounts;
 @property(nonatomic) _Bool wantsCuration; // @synthesize wantsCuration=_wantsCuration;
 @property(nonatomic) long long keyAssetIndex; // @synthesize keyAssetIndex=_keyAssetIndex;

@@ -13,13 +13,18 @@
     PGGraphPersonNode *_personNode;
     long long _year;
     long long _hobbyType;
+    unsigned long long _memoryCategorySubcategory;
 }
 
++ (id)sceneFeatureNameForHobbyType:(long long)arg1;
 - (void).cxx_destruct;
+- (unsigned long long)memoryCategorySubcategory;
 @property(readonly) long long hobbyType; // @synthesize hobbyType=_hobbyType;
 @property(readonly) long long year; // @synthesize year=_year;
 @property(readonly) PGGraphPersonNode *personNode; // @synthesize personNode=_personNode;
 @property(retain) NSArray *hobbyAssetLocalIdentifiers; // @synthesize hobbyAssetLocalIdentifiers=_hobbyAssetLocalIdentifiers;
+- (id)memoryFeatureNodesInGraph:(id)arg1;
+- (unsigned long long)memoryCategory;
 - (void)addMomentNode:(id)arg1;
 - (id)initWithPerson:(id)arg1 year:(long long)arg2 hobbyType:(long long)arg3;
 

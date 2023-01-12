@@ -4,11 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface PGGraphLocationEdge
+#import <PhotosGraph/MAUniquelyIdentifiableEdge-Protocol.h>
+
+@class MAEdgeFilter;
+
+@interface PGGraphLocationEdge <MAUniquelyIdentifiableEdge>
 {
 }
 
 + (id)filter;
+@property(readonly, nonatomic) MAEdgeFilter *uniquelyIdentifyingFilter;
 
 @end
 

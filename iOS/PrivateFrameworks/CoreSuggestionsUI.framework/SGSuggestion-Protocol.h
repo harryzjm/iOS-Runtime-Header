@@ -10,13 +10,14 @@
 @protocol SGSuggestionCategory, SGSuggestionDelegate;
 
 @protocol SGSuggestion <NSObject>
-@property(nonatomic) __weak id <SGSuggestionDelegate> suggestionDelegate;
 - (SGSuggestionAction *)suggestionPrimaryAction;
 - (NSString *)suggestionTitle;
 - (id <SGSuggestionCategory>)suggestionCategory;
+@property(nonatomic) __weak id <SGSuggestionDelegate> suggestionDelegate;
 
 @optional
 - (UIViewController *)suggestionPrimaryActionViewController;
+- (long long)suggestionActionButtonType;
 - (UIImage *)suggestionImage;
 - (NSAttributedString *)suggestionAttributedSubtitle;
 - (NSString *)suggestionSubtitle;

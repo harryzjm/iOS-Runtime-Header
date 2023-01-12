@@ -9,6 +9,7 @@
 @interface CVNLPDecodingLanguageModel
 {
     int _lmSPIType;
+    void *_tokenizer;
     NSLocale *_locale;
     void *_languageModel;
 }
@@ -20,8 +21,8 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) void *languageModel; // @synthesize languageModel=_languageModel;
 @property(readonly, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
-- (vector_12da65de)wordTokenIDsForString:(id)arg1 outTokenRanges:(id *)arg2;
-- (vector_12da65de)characterTokenIDsForString:(id)arg1;
+- (vector_3b74075b)wordTokenIDsForString:(id)arg1 outTokenRanges:(id *)arg2;
+- (vector_3b74075b)characterTokenIDsForString:(id)arg1;
 - (long long)requiredContextLengthForStringLength:(long long)arg1;
 - (int)lmSPIType;
 - (void)dealloc;

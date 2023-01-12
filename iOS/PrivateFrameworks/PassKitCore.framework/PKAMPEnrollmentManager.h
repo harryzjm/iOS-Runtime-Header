@@ -24,7 +24,9 @@
 - (void)_accessObserversWithHandler:(CDUnknownBlockType)arg1;
 - (void)unregisterObserver:(id)arg1;
 - (void)registerObserver:(id)arg1;
+- (id)_bag;
 - (id)performEnrollPaymentPass:(id)arg1 isDefault:(_Bool)arg2;
+- (_Bool)shouldOfferAMPEnrollmentForPaymentPass:(id)arg1;
 - (void)enrollPaymentPass:(id)arg1 isDefault:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)performCanEnrollPaymentPass:(id)arg1;
 - (void)canEnrollPaymentPass:(id)arg1 completion:(CDUnknownBlockType)arg2;

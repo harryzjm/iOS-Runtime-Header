@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray, NSString, UIImage, UIView, _UIFloatingContentCornerRadiusAnimatingScreenScaleInheritingView, _UIFloatingContentCornerRadiusAnimatingView, _UIFloatingContentTransformView, _UIFocusAnimationConfiguration;
+@class NSMutableArray, NSString, UIImage, UIView, _UIFloatingContentCornerRadiusAnimatingScreenScaleInheritingView, _UIFloatingContentCornerRadiusAnimatingView, _UIFloatingContentTransformView, _UIFloatingMotionConfiguration, _UIFocusAnimationConfiguration;
 @protocol _UIFloatingContentViewDelegate;
 
 @interface _UIFloatingContentView
@@ -44,6 +44,7 @@
     double _unfocusedShadowVerticalOffset;
     UIImage *_shadowImage;
     unsigned long long _controlState;
+    _UIFloatingMotionConfiguration *_contentMotion;
     long long _highlightStyle;
     NSString *_cornerCurve;
     CDUnknownBlockType _focusAnimationConfigurationHandler;
@@ -68,6 +69,7 @@
 @property(nonatomic) _Bool scalesBackwards; // @synthesize scalesBackwards=_scalesBackwards;
 @property(nonatomic, getter=isContentOpaque) _Bool contentOpaque; // @synthesize contentOpaque=_contentOpaque;
 @property(nonatomic) long long highlightStyle; // @synthesize highlightStyle=_highlightStyle;
+@property(retain, nonatomic) _UIFloatingMotionConfiguration *contentMotion; // @synthesize contentMotion=_contentMotion;
 @property(nonatomic) unsigned long long controlState; // @synthesize controlState=_controlState;
 @property(nonatomic) struct CGRect shadowContentsCenter; // @synthesize shadowContentsCenter=_shadowContentsCenter;
 @property(retain, nonatomic) UIImage *shadowImage; // @synthesize shadowImage=_shadowImage;
@@ -85,6 +87,9 @@
 @property(nonatomic) double visualEffectContainerViewScaleFactor; // @synthesize visualEffectContainerViewScaleFactor=_visualEffectContainerViewScaleFactor;
 @property(nonatomic) struct CGPoint focusScaleAnchorPoint; // @synthesize focusScaleAnchorPoint=_focusScaleAnchorPoint;
 @property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
+- (void)_updateFocusedFrameGuideConstraintsIfApplicable;
+- (id)_focusedFrameGuideCreateIfNecessary:(_Bool)arg1;
+- (id)_focusedFrameGuide;
 - (id)_preferredConfigurationForFocusAnimation:(long long)arg1 inContext:(id)arg2;
 - (void)_setShadowImageIfNeeded;
 - (void)_updateShadowContentsScaleForPrimaryState:(unsigned long long)arg1;

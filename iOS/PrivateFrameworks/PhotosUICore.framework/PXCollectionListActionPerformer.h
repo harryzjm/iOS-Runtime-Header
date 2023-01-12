@@ -4,32 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PHAssetCollection, PHCollectionList, PHFetchResult;
+@class PHAssetCollection, PHCollectionList;
 
 @interface PXCollectionListActionPerformer
 {
     PHCollectionList *_collectionList;
-    PHFetchResult *_parentCollectionListFetchResult;
     PHAssetCollection *_createdAssetCollection;
-    unsigned long long _collectionActionType;
 }
 
 + (_Bool)canPerformActionForCollectionList:(id)arg1;
++ (id)localizedTitleForActionType:(id)arg1;
 - (void).cxx_destruct;
-@property(nonatomic) unsigned long long collectionActionType; // @synthesize collectionActionType=_collectionActionType;
 @property(retain, nonatomic) PHAssetCollection *createdAssetCollection; // @synthesize createdAssetCollection=_createdAssetCollection;
-@property(readonly, nonatomic) PHFetchResult *parentCollectionListFetchResult; // @synthesize parentCollectionListFetchResult=_parentCollectionListFetchResult;
 @property(readonly, nonatomic) PHCollectionList *collectionList; // @synthesize collectionList=_collectionList;
-- (void)_albumCreationDidBegin;
 - (long long)_albumInsertionIndex;
 - (void)createAlbumWithAssets:(id)arg1 albumTitle:(id)arg2;
 - (void)handleCreateSharedAlbum;
-- (void)handleCreateSmartAlbum;
-- (void)handleCreateFolder;
 - (void)presentSetupUIForAlbumCreationWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)handleCreateAlbum;
 - (void)performUserInteractionTask;
-- (id)initWithActionType:(id)arg1 collectionList:(id)arg2 fetchResult:(id)arg3;
 - (id)initWithActionType:(id)arg1 collectionList:(id)arg2;
 
 @end

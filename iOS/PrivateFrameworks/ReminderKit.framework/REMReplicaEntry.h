@@ -25,8 +25,8 @@
 - (_Bool)hasEqualPersistedPropertiesAs:(id)arg1;
 - (id)persistenceDescription;
 - (id)description;
-- (id)initWithEntryArchive:(const struct ReplicaEntry *)arg1;
-- (void)encodeIntoEntryArchive:(struct ReplicaEntry *)arg1;
+- (id)initWithEntryArchive:(const void *)arg1;
+- (void)encodeIntoEntryArchive:(void *)arg1;
 - (id)initWithReplicaUUIDIndex:(unsigned int)arg1 clockElementList:(id)arg2 inUse:(_Bool)arg3 forClient:(id)arg4;
 
 @end

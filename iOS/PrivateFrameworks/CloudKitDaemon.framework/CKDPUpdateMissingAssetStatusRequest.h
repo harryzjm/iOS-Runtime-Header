@@ -10,7 +10,6 @@
 
 @class CKDPRecordIdentifier, NSMutableArray, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDPUpdateMissingAssetStatusRequest : PBRequest <NSCopying>
 {
     struct {

@@ -84,7 +84,7 @@
 - (void)loadFavoniusTypingModel;
 - (void)syncToKeyboardState:(id)arg1 from:(id)arg2 afterContextChange:(_Bool)arg3;
 - (void)syncToLayoutState:(id)arg1;
-- (struct TIInputManager *)initImplementationWithMode:(id)arg1 andLanguage:(id)arg2;
+- (void *)initImplementationWithMode:(id)arg1 andLanguage:(id)arg2;
 - (void)resetCommitHistory;
 - (id)initWithConfig:(id)arg1 keyboardState:(id)arg2;
 

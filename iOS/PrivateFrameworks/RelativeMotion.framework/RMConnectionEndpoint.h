@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_xpc_object> *_streamingClientConnection;
     NSObject<OS_xpc_object> *_streamingClientListener;
     NSObject<OS_xpc_object> *_messagingConnection;
+    NSObject<OS_xpc_object> *_priorityBoostReplyMessage;
 }
 
 - (void).cxx_destruct;

@@ -7,10 +7,10 @@
 #import <NotesShared/ICAttachmentImageModel.h>
 
 @interface ICAttachmentImageModel (PreviewGeneration)
++ (id)ocrStringFromImageURL:(id)arg1 title:(id *)arg2 languages:(id)arg3;
 - (id)labelsForClassificationObservations:(id)arg1;
 - (id)classificationsForImage:(id)arg1;
 - (void)classifyImageInOperation:(id)arg1;
-- (id)ocrStringFromImageURL:(id)arg1 title:(id *)arg2;
 - (void)generateOCRInOperation:(id)arg1;
 - (_Bool)generatePreviewsInOperation:(id)arg1;
 - (id)generateFullSizePreviewWithAttachmentIdentifier:(id)arg1 existingPreviewImage:(id)arg2 markupModelData:(id)arg3 imageOrientation:(long long)arg4 imageFilterType:(short)arg5 mediaDecryptedData:(id)arg6 mediaURL:(id)arg7 mediaSize:(struct CGSize)arg8 croppingQuad:(id)arg9;

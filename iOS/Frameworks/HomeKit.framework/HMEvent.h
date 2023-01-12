@@ -46,7 +46,6 @@
 @property(readonly) unsigned long long hash;
 - (void)_registerNotificationHandlers;
 - (void)__configureWithContext:(id)arg1 eventTrigger:(id)arg2;
-- (void)dealloc;
 - (void)_unconfigure;
 - (void)_unconfigureContext;
 - (id)initWithDict:(id)arg1;

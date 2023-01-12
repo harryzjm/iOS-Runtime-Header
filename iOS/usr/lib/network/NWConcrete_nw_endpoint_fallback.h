@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
     unsigned int weak_fallback:1;
     unsigned int no_fallback_timer:1;
     unsigned int fallback_is_forced:1;
+    unsigned int fallback_is_preferred:1;
     unsigned int fallback_based_on_interface_type:1;
     unsigned int started_fallback:1;
     unsigned int primary_child_in_progress:1;

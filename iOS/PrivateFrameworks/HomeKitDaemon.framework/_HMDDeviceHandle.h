@@ -20,16 +20,16 @@
 + (id)identifierNamespace;
 + (_Bool)isValidDestination:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property(readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-@property(readonly, copy) HMDAccountHandle *accountHandle;
-@property(readonly, getter=isGlobal) _Bool global;
-@property(readonly, getter=isLocal) _Bool local;
+@property(readonly, copy, nonatomic) HMDAccountHandle *accountHandle;
+@property(readonly, nonatomic, getter=isGlobal) _Bool global;
+@property(readonly, nonatomic, getter=isLocal) _Bool local;
 - (id)initWithIdentifier:(id)arg1;
 - (id)initWithDestination:(id)arg1;
-@property(readonly, copy) NSString *destination;
+@property(readonly, copy, nonatomic) NSString *destination;
 - (id)init;
 
 @end

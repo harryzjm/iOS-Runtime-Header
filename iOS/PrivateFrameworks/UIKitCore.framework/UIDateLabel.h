@@ -57,6 +57,7 @@
 - (void)drawRect:(struct CGRect)arg1;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (void)_didUpdateDate;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)invalidate;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;

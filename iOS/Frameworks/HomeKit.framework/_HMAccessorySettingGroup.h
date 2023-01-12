@@ -54,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)notifyDelegateOfAddedGroup:(id)arg1;
 - (void)addGroup:(id)arg1;
 - (id)groupWithIdentifier:(id)arg1;
+- (void)resetGroups;
 @property(readonly, copy) NSArray *groups;
 - (void)removeSetting:(id)arg1 fromGroup:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)notifyDelegateOfRemovedSetting:(id)arg1;
@@ -62,7 +63,10 @@ __attribute__((visibility("hidden")))
 - (void)notifyDelegateOfAddedSetting:(id)arg1;
 - (void)addSetting:(id)arg1;
 - (id)settingWithIdentifier:(id)arg1;
+- (void)resetSettings;
 @property(readonly, copy) NSArray *settings;
+- (void)_unconfigure;
+- (void)_unconfigureContext;
 - (void)configureWithAccessorySettings:(id)arg1 context:(id)arg2;
 - (id)clientQueue;
 @property(readonly, copy) NSString *description;
@@ -71,7 +75,6 @@ __attribute__((visibility("hidden")))
 - (id)shortDescription;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
-- (void)dealloc;
 - (id)initWithName:(id)arg1;
 - (id)init;
 

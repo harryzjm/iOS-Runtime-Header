@@ -35,6 +35,7 @@
 @property(nonatomic) unsigned long long fontStyle; // @synthesize fontStyle=_fontStyle;
 - (void)_updateFont;
 - (void)_updateNumberOfLines;
+- (id)_attributedTitle;
 - (struct CGSize)intrinsicContentSize;
 - (id)initWithFrame:(struct CGRect)arg1;
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSMutableDictionary, NSString, PETAggregateState, PETConfig, RBSAssertion, RBSTarget;
+@class NSMutableDictionary, NSString, PETAggregateState, PETConfig, RBSAssertion, RBSTarget;
 @protocol OS_dispatch_queue;
 
 @interface PETEventTracker2 : NSObject
@@ -20,24 +20,21 @@
     RBSAssertion *_rbsAssertion;
     _Bool _rbsShouldInvalidate;
     struct _opaque_pthread_mutex_t _rbsAssertionLock;
-    _Bool _isDaemon;
+    _Bool _isApp;
     _Bool _isAsyncEnabled;
     NSString *_rootDir;
     NSString *_logStoresDir;
     PETConfig *_config;
     NSMutableDictionary *_storeCache;
-    NSDictionary *_pet1HistogramBuckets;
 }
 
 + (id)formattedTextForUnaggregatedMessage:(id)arg1 messageGroup:(id)arg2 config:(id)arg3;
 + (id)formattedTextForAggregatedMessage:(id)arg1;
 + (double)roundToSigFigs:(double)arg1 sigFigs:(unsigned long long)arg2;
-+ (_Bool)_isPET1Key:(id)arg1;
 + (unsigned int)typeIdForMessageName:(id)arg1;
 + (id)defaultRootDir;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-@property(retain) NSDictionary *pet1HistogramBuckets; // @synthesize pet1HistogramBuckets=_pet1HistogramBuckets;
 @property(retain) NSMutableDictionary *storeCache; // @synthesize storeCache=_storeCache;
 @property(readonly, nonatomic) PETAggregateState *aggregateState; // @synthesize aggregateState=_aggregateState;
 @property(retain) PETConfig *config; // @synthesize config=_config;
@@ -53,7 +50,6 @@
 - (void)_logMessage:(id)arg1 subGroup:(id)arg2;
 - (id)_getLogStore:(id)arg1;
 - (void)_trackDistributionForMessage:(id)arg1 value:(double)arg2;
-- (id)_findBucketsForPET1Key:(id)arg1;
 - (void)_trackScalarForMessage:(id)arg1 count:(int)arg2 overwrite:(_Bool)arg3;
 - (id)_writeMessage:(id)arg1;
 - (void)logMessage:(id)arg1 subGroup:(id)arg2;

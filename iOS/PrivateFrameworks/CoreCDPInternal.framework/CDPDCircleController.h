@@ -39,6 +39,8 @@
 - (void)promptForCredentials:(CDUnknownBlockType)arg1;
 - (long long)nextRetryInterval;
 - (_Bool)canRetryCliqueStatus;
+- (void)_attemptCustodianBackupRecoveryWithInfo:(id)arg1 result:(id)arg2 ignoreBackups:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_joinCircleFallbackWithResult:(id)arg1 ignoreBackups:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_joinCircleIgnoringBackups:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)joinCircleIgnoringBackups:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)joinCircleWithCompletion:(CDUnknownBlockType)arg1;

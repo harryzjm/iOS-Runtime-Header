@@ -12,7 +12,6 @@
 {
     MISSING_TYPE *identifier;
     MISSING_TYPE *imageBlock;
-    MISSING_TYPE *style;
     MISSING_TYPE *optionsBlock;
     MISSING_TYPE *actionBlock;
     MISSING_TYPE *titleBlock;

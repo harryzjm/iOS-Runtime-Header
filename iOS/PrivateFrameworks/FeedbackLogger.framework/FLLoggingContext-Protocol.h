@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <FeedbackLogger/FLTelemetryReporter-Protocol.h>
+#import <FeedbackLogger/NSObject-Protocol.h>
 
 @class NSFileManager, NSObject, NSString, NSUserDefaults;
 @protocol OS_dispatch_queue;
 
-@protocol FLLoggingContext <FLTelemetryReporter>
+@protocol FLLoggingContext <NSObject>
 @property(readonly, nonatomic) NSUserDefaults *userDefaults;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue;
 @property(readonly, nonatomic) NSFileManager *fileManager;

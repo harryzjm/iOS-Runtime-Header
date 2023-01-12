@@ -6,28 +6,34 @@
 
 #import <objc/NSObject.h>
 
+#import <DataDetectorsCore/NSCopying-Protocol.h>
+#import <DataDetectorsCore/NSSecureCoding-Protocol.h>
+
 @class NSString;
 @protocol OS_dispatch_queue;
 
-@interface DDScannerServiceConfiguration : NSObject
+@interface DDScannerServiceConfiguration : NSObject <NSCopying, NSSecureCoding>
 {
     int _scannerType;
-    long long _resultsOptions;
-    long long _scannerOptions;
-    double _timeout;
-    _Bool _noObjC;
     _Bool _spotlightSuggestionsEnabled;
     NSString *_recyclingIdentifier;
     long long *_jobIdentifierPtr;
+    _Bool _remoteScannerEnabled;
+    _Bool _noObjC;
+    double _timeout;
+    long long _resultsOptions;
+    long long _scannerOptions;
     NSObject<OS_dispatch_queue> *_completionQueue;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *completionQueue; // @synthesize completionQueue=_completionQueue;
 @property(nonatomic) _Bool noObjC; // @synthesize noObjC=_noObjC;
-@property(nonatomic) double timeout; // @synthesize timeout=_timeout;
-@property(nonatomic) long long resultsOptions; // @synthesize resultsOptions=_resultsOptions;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *completionQueue; // @synthesize completionQueue=_completionQueue;
 @property(nonatomic) long long scannerOptions; // @synthesize scannerOptions=_scannerOptions;
+@property(nonatomic) long long resultsOptions; // @synthesize resultsOptions=_resultsOptions;
+@property(nonatomic) double timeout; // @synthesize timeout=_timeout;
+@property(nonatomic) _Bool remoteScannerEnabled; // @synthesize remoteScannerEnabled=_remoteScannerEnabled;
 - (int)scannerType;
 @property(nonatomic) _Bool spotlightSuggestionsEnabled;
 - (id)recyclingIdentifier;
@@ -35,8 +41,7 @@
 - (void)updateRecyclingIdentifier;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (_Bool)supportsSecureCoding;
-- (id)copy;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initEmpty;
 - (id)initWithScannerType:(int)arg1 passiveIntent:(_Bool)arg2;
 - (id)init;

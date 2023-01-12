@@ -11,15 +11,19 @@
 @interface SOAuthorizationParametersCore : NSObject
 {
     _Bool _useInternalExtensions;
+    _Bool _cfNetworkInterception;
     NSString *_operation;
     NSURL *_url;
     NSDictionary *_httpHeaders;
     NSData *_httpBody;
     NSData *_auditTokenData;
     long long _responseCode;
+    NSString *_impersonationBundleIdentifier;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *impersonationBundleIdentifier; // @synthesize impersonationBundleIdentifier=_impersonationBundleIdentifier;
+@property(nonatomic, getter=isCFNetworkInterception) _Bool cfNetworkInterception; // @synthesize cfNetworkInterception=_cfNetworkInterception;
 @property(nonatomic) long long responseCode; // @synthesize responseCode=_responseCode;
 @property(nonatomic) _Bool useInternalExtensions; // @synthesize useInternalExtensions=_useInternalExtensions;
 @property(retain, nonatomic) NSData *auditTokenData; // @synthesize auditTokenData=_auditTokenData;

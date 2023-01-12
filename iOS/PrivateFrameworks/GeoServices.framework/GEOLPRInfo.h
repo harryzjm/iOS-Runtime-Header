@@ -22,8 +22,10 @@
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
+    unsigned int _maskedplateGeneratorValidatorVersion;
     struct {
         unsigned int has_timestamp:1;
+        unsigned int has_maskedplateGeneratorValidatorVersion:1;
         unsigned int read_unknownFields:1;
         unsigned int read_licensePlate:1;
         unsigned int read_powerTypeKey:1;
@@ -50,6 +52,8 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasMaskedplateGeneratorValidatorVersion;
+@property(nonatomic) unsigned int maskedplateGeneratorValidatorVersion;
 @property(nonatomic) _Bool hasTimestamp;
 @property(nonatomic) unsigned long long timestamp;
 @property(retain, nonatomic) NSData *versionId;

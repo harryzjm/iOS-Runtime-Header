@@ -124,6 +124,7 @@ struct _NSAttributeInfo {
     double fontSize;
     double kern;
     NSMutableParagraphStyle *paraStyle;
+    short fontPalette;
     unsigned int bold:1;
     unsigned int italic:1;
     unsigned int fontIsValid:1;
@@ -226,7 +227,8 @@ typedef struct {
     unsigned char _field1;
     long long _field2;
     _Bool _field3;
-} CDStruct_65ebe2bc;
+    _Bool _field4;
+} CDStruct_75b03505;
 
 typedef struct {
     unsigned long long _field1;
@@ -269,7 +271,10 @@ typedef struct {
     id *layoutFragmentsHint;
     unsigned long long layoutFragmentsCount;
     unsigned long long layoutFragmentsSize;
-} CDStruct_80f920e0;
+    unsigned long long layoutFragmentsGapIndex;
+    _Bool layoutFragmentsValid;
+    _Bool forPositionQuery;
+} CDStruct_cd0b71ee;
 
 typedef struct {
     id _field1;

@@ -11,7 +11,7 @@
 #import <UIKit/_UIFocusEnvironmentPrivate-Protocol.h>
 #import <UIKit/_UIFocusRegionContainer-Protocol.h>
 
-@class NSArray, NSString, UIView;
+@class NSArray, NSString, UIFocusEffect, UIView;
 @protocol UICoordinateSpace, UIFocusEnvironment, UIFocusItemContainer;
 
 @interface CALayer (UIFocusConformance) <UIFocusItem, UIFocusItemContainer, _UIFocusEnvironmentPrivate, _UIFocusRegionContainer>
@@ -29,7 +29,7 @@
 - (void)updateFocusIfNeeded;
 - (void)setNeedsFocusUpdate;
 @property(readonly, nonatomic) id <UIFocusItemContainer> focusItemContainer;
-- (id)_focusGroupDescriptor;
+@property(readonly, copy, nonatomic) NSString *focusGroupIdentifier;
 @property(readonly, nonatomic) __weak id <UIFocusEnvironment> parentFocusEnvironment;
 @property(readonly, copy, nonatomic) NSArray *preferredFocusEnvironments;
 @property(nonatomic) _Bool areChildrenFocused;
@@ -40,9 +40,12 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic, getter=_isEligibleForFocusInteraction) _Bool eligibleForFocusInteraction;
-@property(readonly, copy, nonatomic) NSString *focusGroupIdentifier;
+@property(readonly, nonatomic, getter=_isEligibleForFocusOcclusion) _Bool eligibleForFocusOcclusion;
+@property(readonly, copy, nonatomic) UIFocusEffect *focusEffect;
+@property(readonly, nonatomic) long long focusGroupPriority;
 @property(readonly, nonatomic) struct CGRect frame; // @dynamic frame;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool isTransparentFocusItem;
 @property(readonly, copy, nonatomic, getter=_linearFocusMovementSequences) NSArray *linearFocusMovementSequences;
 @property(readonly, nonatomic, getter=_preferredFocusMovementStyle) long long preferredFocusMovementStyle;
 @property(readonly, nonatomic) __weak UIView *preferredFocusedView;

@@ -19,6 +19,7 @@
 @property(readonly, nonatomic) NSLayoutConstraint *activityIndicatorVerticalConstraint; // @synthesize activityIndicatorVerticalConstraint=_activityIndicatorVerticalConstraint;
 @property(readonly, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
 @property(readonly, nonatomic) PRXLabel *statusLabel; // @synthesize statusLabel=_statusLabel;
+- (double)activityIndicatorVerticalShift;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

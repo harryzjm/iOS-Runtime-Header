@@ -16,7 +16,7 @@
 - (_Bool)_useSplitTimeTitlesIfNeeded;
 - (id)_locationTitle;
 - (void)_generateTitleAndSubtitleWithResult:(CDUnknownBlockType)arg1;
-- (id)initWithCollection:(id)arg1;
+- (id)initWithCollection:(id)arg1 titleGenerationContext:(id)arg2;
 
 @end
 

@@ -10,6 +10,7 @@
 + (id)dateWithNaturalLanguageString:(id)arg1 locale:(id)arg2;
 + (id)dateWithNaturalLanguageString:(id)arg1;
 + (id)dateWithNaturalLanguageString:(id)arg1 date:(id)arg2 locale:(id)arg3;
++ (_Bool)_subclassesMustBeExplicitlyMentionedWhenDecoded;
 - (id)descriptionWithCalendarFormat:(id)arg1 timeZone:(id)arg2 locale:(id)arg3;
 - (id)dateWithCalendarFormat:(id)arg1 timeZone:(id)arg2;
 - (Class)classForCoder;

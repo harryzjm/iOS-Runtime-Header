@@ -8,21 +8,20 @@
 
 #import <PhotosGraph/PGQuestionFactory-Protocol.h>
 
-@class NSString, PGManager, PHFetchResult;
+@class NSString, PGManagerWorkingContext, PHFetchResult;
 
 @interface PGMergeCandidateQuestionFactory : NSObject <PGQuestionFactory>
 {
-    PGManager *_manager;
+    PGManagerWorkingContext *_workingContext;
     PHFetchResult *_persons;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) PHFetchResult *persons; // @synthesize persons=_persons;
-@property(retain, nonatomic) PGManager *manager; // @synthesize manager=_manager;
 - (id)generateQuestionsWithLimit:(unsigned long long)arg1 progressBlock:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) long long questionOptions;
 @property(readonly, nonatomic) unsigned short questionType;
-- (id)initWithManager:(id)arg1;
+- (id)initWithWorkingContext:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

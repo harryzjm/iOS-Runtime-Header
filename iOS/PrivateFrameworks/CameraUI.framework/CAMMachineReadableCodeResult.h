@@ -22,6 +22,7 @@
 @property(readonly, nonatomic) AVMetadataObject *underlyingMetadataObject;
 @property(readonly, copy, nonatomic) NSString *metadataType;
 @property(readonly, nonatomic) NSString *symbolString;
+- (long long)mrcType;
 - (_Bool)isOfSignificantSize;
 - (id)initWithMachineReadableCodeObject:(id)arg1;
 
@@ -30,6 +31,7 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) unsigned long long syntheticFocusMode;
 
 @end
 

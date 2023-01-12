@@ -22,6 +22,7 @@
 + (id)highRankNib;
 + (id)lowRankNib;
 + (struct CGSize)defaultSize;
+- (void).cxx_destruct;
 @property(nonatomic) UIView *monogramColorView; // @synthesize monogramColorView=_monogramColorView;
 @property(nonatomic) UIView *bottomLine; // @synthesize bottomLine=_bottomLine;
 @property(nonatomic) UIView *topLine; // @synthesize topLine=_topLine;
@@ -34,7 +35,6 @@
 @property(nonatomic) _Bool linesVisible; // @dynamic linesVisible;
 - (void)setupForScore:(id)arg1;
 @property(readonly, nonatomic) UIView *popoverSourceView;
-- (void)dealloc;
 - (void)awakeFromNib;
 
 @end

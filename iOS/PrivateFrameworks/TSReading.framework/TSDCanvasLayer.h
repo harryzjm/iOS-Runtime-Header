@@ -25,10 +25,10 @@
     _Bool mVerticallyCenteredInScrollView;
     _Bool mAvoidKeyboardWhenVerticallyCenteredInScrollView;
     _Bool _torndown;
-    _Bool _createdByPresentationLayer;
+    _Bool _createdAsCopy;
 }
 
-@property(nonatomic) _Bool createdByPresentationLayer; // @synthesize createdByPresentationLayer=_createdByPresentationLayer;
+@property(nonatomic) _Bool createdAsCopy; // @synthesize createdAsCopy=_createdAsCopy;
 @property(nonatomic) _Bool torndown; // @synthesize torndown=_torndown;
 @property(nonatomic) _Bool avoidKeyboardWhenVerticallyCenteredInScrollView; // @synthesize avoidKeyboardWhenVerticallyCenteredInScrollView=mAvoidKeyboardWhenVerticallyCenteredInScrollView;
 @property(nonatomic) _Bool verticallyCenteredInScrollView; // @synthesize verticallyCenteredInScrollView=mVerticallyCenteredInScrollView;
@@ -77,7 +77,6 @@
 - (void)teardown;
 - (void)dealloc;
 - (void)p_scrollViewScrollerStyleDidChange:(id)arg1;
-- (id)presentationLayer;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithLayer:(id)arg1;
 - (id)init;

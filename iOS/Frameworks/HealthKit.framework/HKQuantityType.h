@@ -21,6 +21,7 @@
 @property(readonly, nonatomic) HKUnit *canonicalUnit;
 @property(readonly) long long aggregationStyle;
 - (_Bool)isCompatibleWithUnit:(id)arg1;
+- (id)initWithIdentifier:(id)arg1;
 - (id)_initWithCode:(long long)arg1;
 
 @end

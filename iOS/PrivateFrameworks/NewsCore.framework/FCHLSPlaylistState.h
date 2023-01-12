@@ -21,14 +21,6 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableDictionary *mutableSessionData; // @synthesize mutableSessionData=_mutableSessionData;
-@property(retain, nonatomic) FCHLSKey *currentKey; // @synthesize currentKey=_currentKey;
-@property(retain, nonatomic) NSMutableArray *mutableStreamInfs; // @synthesize mutableStreamInfs=_mutableStreamInfs;
-@property(retain, nonatomic) FCHLSStreamInf *currentStreamInf; // @synthesize currentStreamInf=_currentStreamInf;
-@property(retain, nonatomic) NSMutableArray *mutableSegments; // @synthesize mutableSegments=_mutableSegments;
-@property(nonatomic) double currentDuration; // @synthesize currentDuration=_currentDuration;
-@property(retain, nonatomic) FCHLSMap *currentMap; // @synthesize currentMap=_currentMap;
-@property(retain, nonatomic) NSMutableDictionary *mutableGroups; // @synthesize mutableGroups=_mutableGroups;
 - (id)init;
 
 @end

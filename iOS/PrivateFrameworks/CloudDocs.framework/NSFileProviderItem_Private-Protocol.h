@@ -6,8 +6,7 @@
 
 #import <CloudDocs/NSFileProviderItem-Protocol.h>
 
-@class NSDictionary, NSFileProviderItemVersion, NSNumber, NSPersonNameComponents, NSSet, NSString, NSURL;
-@protocol NSFileProviderItemFlags;
+@class NSData, NSNumber, NSPersonNameComponents, NSSet, NSString, NSURL;
 
 @protocol NSFileProviderItem_Private <NSFileProviderItem>
 
@@ -17,11 +16,10 @@
 @property(readonly, nonatomic) NSPersonNameComponents *fp_addedByNameComponents;
 @property(readonly, nonatomic, getter=fp_isAddedByCurrentUser) _Bool fp_addedByCurrentUser;
 @property(readonly, nonatomic, getter=fp_isLastModifiedByCurrentUser) _Bool fp_lastModifiedByCurrentUser;
-@property(readonly, copy) NSString *fileSystemFilename;
-@property(readonly, nonatomic) NSFileProviderItemVersion *itemVersion;
 @property(readonly, nonatomic, getter=isExcludedFromSync) _Bool excludedFromSync;
-@property(readonly, nonatomic) NSDictionary *extendedAttributes;
-@property(readonly, nonatomic) id <NSFileProviderItemFlags> flags;
+@property(readonly, copy) NSString *fileSystemFilename;
+@property(getter=isSyncRoot) _Bool syncRoot;
+@property(readonly, copy, nonatomic) NSData *quarantineBlob;
 @property(readonly, nonatomic, getter=isTopLevelSharedItem) _Bool topLevelSharedItem;
 @property(readonly, copy, nonatomic) NSString *displayName;
 @property(readonly, copy) NSSet *fp_cloudContainerClientBundleIdentifiers;

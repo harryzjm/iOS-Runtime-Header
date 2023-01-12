@@ -22,8 +22,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CIImage *inputImage; // @synthesize inputImage;
 - (id)_croppedCenterPixelImage;
 - (id)_kernel;
-- (id)_kernel_source;
-- (id)_kernel_name;
 
 @end
 

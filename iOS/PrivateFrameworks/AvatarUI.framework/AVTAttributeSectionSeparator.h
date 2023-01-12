@@ -6,11 +6,20 @@
 
 #import <UIKit/UICollectionReusableView.h>
 
+@class UIView;
+
 @interface AVTAttributeSectionSeparator : UICollectionReusableView
 {
+    UIView *_separatorView;
+    struct UIEdgeInsets _edgeInsets;
 }
 
 + (id)reuseIdentifier;
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIView *separatorView; // @synthesize separatorView=_separatorView;
+@property(nonatomic) struct UIEdgeInsets edgeInsets; // @synthesize edgeInsets=_edgeInsets;
+- (void)prepareForReuse;
+- (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

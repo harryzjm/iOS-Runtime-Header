@@ -14,7 +14,7 @@
 __attribute__((visibility("hidden")))
 @interface WebAVPlayerViewController : NSObject <AVPlayerViewControllerDelegate>
 {
-    struct VideoFullscreenInterfaceAVKit *_fullscreenInterface;
+    void *_fullscreenInterface;
     struct RetainPtr<UIViewController> _presentingViewController;
     struct RetainPtr<AVPlayerViewController> _avPlayerViewController;
     struct RetainPtr<NSTimer> _startPictureInPictureTimer;
@@ -44,7 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)setWebKitOverrideRouteSharingPolicy:(unsigned long long)arg1 routingContextUID:(id)arg2;
 - (_Bool)playerViewControllerShouldHandleDoneButtonTap:(id)arg1;
 - (void)dealloc;
-- (id)initWithFullscreenInterface:(struct VideoFullscreenInterfaceAVKit *)arg1;
+- (id)initWithFullscreenInterface:(void *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

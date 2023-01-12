@@ -25,6 +25,7 @@
 @property(readonly, nonatomic) UIImage *image;
 - (id)initWithSize:(struct CGSize)arg1 scale:(double)arg2 options:(unsigned int)arg3;
 - (id)initWithSize:(struct CGSize)arg1 scale:(double)arg2 options:(unsigned int)arg3 data:(void *)arg4;
+- (void)dealloc;
 
 @end
 

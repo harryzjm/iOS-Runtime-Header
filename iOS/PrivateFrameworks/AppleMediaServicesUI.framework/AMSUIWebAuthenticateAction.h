@@ -4,26 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <AppleMediaServicesUI/AMSUIWebActionRunnable-Protocol.h>
 
-@class AMSAuthenticateRequest, AMSUIWebClientContext, NSString;
+@class AMSAuthenticateRequest, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebAuthenticateAction : NSObject <AMSUIWebActionRunnable>
+@interface AMSUIWebAuthenticateAction <AMSUIWebActionRunnable>
 {
     _Bool _makeCurrentAccount;
     _Bool _pauseTimeouts;
+    _Bool _isAuthenticatingCloud;
     AMSAuthenticateRequest *_request;
-    AMSUIWebClientContext *_context;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isAuthenticatingCloud; // @synthesize isAuthenticatingCloud=_isAuthenticatingCloud;
 @property(nonatomic) _Bool pauseTimeouts; // @synthesize pauseTimeouts=_pauseTimeouts;
-@property(retain, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
 @property(retain, nonatomic) AMSAuthenticateRequest *request; // @synthesize request=_request;
 @property(nonatomic) _Bool makeCurrentAccount; // @synthesize makeCurrentAccount=_makeCurrentAccount;
+- (id)_responseForAccount:(id)arg1;
+- (void)_updateContextWithAccountIfNeeded:(id)arg1;
 - (id)runAction;
 - (id)initWithJSObject:(id)arg1 context:(id)arg2;
 

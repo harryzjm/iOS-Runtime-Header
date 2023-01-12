@@ -23,6 +23,9 @@ __attribute__((visibility("hidden")))
 @property long long contactManagementState; // @synthesize contactManagementState=_contactManagementState;
 @property long long downtimeCommunicationLimit; // @synthesize downtimeCommunicationLimit=_downtimeCommunicationLimit;
 @property long long screenTimeCommunicationLimit; // @synthesize screenTimeCommunicationLimit=_screenTimeCommunicationLimit;
+- (unsigned long long)hash;
+- (_Bool)isEqualToCommunicationLimits:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

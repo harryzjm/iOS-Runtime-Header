@@ -6,7 +6,6 @@
 
 @class NSArray, NSMutableDictionary;
 
-__attribute__((visibility("hidden")))
 @interface CKDDiscoverUserIdentitiesURLRequest
 {
     _Bool _wantsProtectionInfo;

@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <RelevanceEngine/CSLPRFAppDataProviderDelegate-Protocol.h>
 #import <RelevanceEngine/LSApplicationWorkspaceObserverProtocol-Protocol.h>
 
-@class NARApplicationWorkspace, NSMutableDictionary, NSString, REKeyValueMap;
+@class CSLPRFDefaultAppDataProvider, NSMutableDictionary, NSString, REKeyValueMap;
 @protocol OS_dispatch_queue;
 
-@interface REApplicationCache : NSObject <LSApplicationWorkspaceObserverProtocol>
+@interface REApplicationCache : NSObject <LSApplicationWorkspaceObserverProtocol, CSLPRFAppDataProviderDelegate>
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_applicationTypes;
@@ -19,7 +20,7 @@
     NSMutableDictionary *_removedApps;
     NSMutableDictionary *_watchKitExtensions;
     REKeyValueMap *_remoteApplicationsMap;
-    NARApplicationWorkspace *_workspace;
+    CSLPRFDefaultAppDataProvider *_appProvider;
 }
 
 + (id)sharedInstance;
@@ -32,8 +33,9 @@
 - (void)_queue_loadStateForBundleID:(id)arg1;
 - (void)_init_loadApplicationTypesMapFromWorkspace:(id)arg1;
 - (void)_clearApplicationTypesMap;
-- (void)_queue_loadNanoRegistryCompletion:(CDUnknownBlockType)arg1;
+- (void)_queue_loadRemoteAppsCompletion:(CDUnknownBlockType)arg1;
 - (void)clearNanoRegistryApplications;
+- (void)dataProviderDidChange:(id)arg1;
 - (unsigned long long)_trackedApplicationCount;
 - (unsigned long long)typeForApplication:(id)arg1;
 - (id)watchKitExtensionForApplication:(id)arg1;

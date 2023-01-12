@@ -6,18 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@protocol VCDatabaseProvider;
+@protocol WFDatabaseProvider;
 
 @interface WFShareSheetWorkflowProvider : NSObject
 {
-    id <VCDatabaseProvider> _databaseProvider;
+    id <WFDatabaseProvider> _databaseProvider;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) id <VCDatabaseProvider> databaseProvider; // @synthesize databaseProvider=_databaseProvider;
+@property(readonly, nonatomic) id <WFDatabaseProvider> databaseProvider; // @synthesize databaseProvider=_databaseProvider;
 - (id)generateSingleUseTokenForWorkflowIdentifier:(id)arg1;
 - (id)shareSheetWorkflowsForExtensionMatchingDictionaries:(id)arg1 hostBundleIdentifier:(id)arg2 error:(id *)arg3;
-- (id)shareSheetWorkflowReferencesForExtensionMatchingDictionaries:(id)arg1 hostBundleIdentifier:(id)arg2 error:(id *)arg3;
 - (id)initWithDatabaseProvider:(id)arg1;
 
 @end

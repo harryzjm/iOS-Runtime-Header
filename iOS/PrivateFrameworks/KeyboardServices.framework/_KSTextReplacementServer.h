@@ -37,7 +37,6 @@
 - (void)connection:(id)arg1 didReceiveIncomingMessage:(id)arg2;
 - (void)registerForPushNotifications;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
-- (void)runMigration;
 - (void)queryTextReplacementsWithPredicate:(id)arg1 callback:(CDUnknownBlockType)arg2;
 - (void)queryTextReplacementsWithCallback:(CDUnknownBlockType)arg1;
 - (id)textReplacementEntriesForClient:(id)arg1;
@@ -55,7 +54,6 @@
 - (void)cleanup;
 @property(retain, nonatomic) _KSTextReplacementManager *textReplacementManager; // @synthesize textReplacementManager=_textReplacementManager;
 - (void)scheduleSyncTask;
-- (void)reachabilityDidChange:(id)arg1;
 - (_Bool)isSetupAssistantRunning;
 - (void)dealloc;
 - (id)initWithDatabaseDirectoryPath:(id)arg1;

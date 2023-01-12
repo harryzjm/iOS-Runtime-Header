@@ -24,6 +24,7 @@
     unsigned int _mainBundle:1;
     NSDictionary *_aliasDictionary;
     NSSet *_legacyFlippableSet;
+    NSCache *_nameCache;
 }
 
 @property(readonly, copy) NSString *debugDescription;
@@ -35,8 +36,10 @@
 - (_Bool)imageNamedShouldFlip:(id)arg1;
 - (id)mappedAliases;
 - (id)aliasForName:(id)arg1;
+- (_Bool)localizationWorkaroundForKeyList:(const struct _renditionkeytoken *)arg1;
 - (void)clearRenditionCache;
 - (_Bool)caAllowSubimageOfImage:(struct CGImage *)arg1;
+- (_Bool)_subImageTexturingShouldBeSupported;
 @property _Bool mainBundle;
 - (id)renditionInfoForIdentifier:(unsigned short)arg1;
 - (unsigned short)localizationIdentifierForName:(id)arg1;

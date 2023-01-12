@@ -14,11 +14,12 @@
     long long _databaseID;
     int _visitCount;
     int _visitCountScore;
-    struct unique_ptr<WBSHistoryItemVisitCountScoresStorage, std::__1::default_delete<WBSHistoryItemVisitCountScoresStorage>> _visitCountScores;
+    struct unique_ptr<WBSHistoryItemVisitCountScoresStorage, std::default_delete<WBSHistoryItemVisitCountScoresStorage>> _visitCountScores;
     NSMutableArray *_visits;
     _Bool _shouldRecomputeDerivedVisitCountScores;
     NSURL *_url;
     NSString *_urlString;
+    long long _statusCode;
 }
 
 + (double)timeIntervalForDailyAndWeeklyVisitCountScores;
@@ -27,10 +28,12 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool shouldRecomputeDerivedVisitCountScores; // @synthesize shouldRecomputeDerivedVisitCountScores=_shouldRecomputeDerivedVisitCountScores;
+@property(nonatomic) long long statusCode; // @synthesize statusCode=_statusCode;
 @property(readonly, nonatomic) int visitCountScore; // @synthesize visitCountScore=_visitCountScore;
 @property(readonly, nonatomic) NSArray *visits; // @synthesize visits=_visits;
 @property(readonly, nonatomic) NSString *urlString; // @synthesize urlString=_urlString;
 @property(nonatomic) long long databaseID; // @synthesize databaseID=_databaseID;
+- (void)updateWithServiceItem:(id)arg1;
 - (void)recomputeDerivedVisitCountScoresWithVisits:(id)arg1;
 @property(readonly, nonatomic) NSData *weeklyVisitCountScoresDataOnSynchronizationQueue;
 @property(readonly, nonatomic) NSData *dailyVisitCountScoresDataOnSynchronizationQueue;

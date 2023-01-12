@@ -8,8 +8,10 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityFirstContainedElementForTechnology:(id)arg1 honoringGroups:(_Bool)arg2 shouldAlwaysScroll:(_Bool)arg3;
 - (_Bool)_accessibilityShouldIncludeArrowKeyCommandsForDirectionalFocusMovement;
 - (_Bool)_accessibilityDrawsFocusRingWhenChildrenFocused;
 - (struct UIEdgeInsets)_accessibilityVisibleContentInset;

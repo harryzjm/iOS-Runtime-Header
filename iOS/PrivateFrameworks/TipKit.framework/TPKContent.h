@@ -9,30 +9,51 @@
 #import <TipKit/NSCopying-Protocol.h>
 #import <TipKit/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString;
+@class MISSING_TYPE, NSDictionary, NSError, NSString, TPSDiscoverabilityTip, TPSMonitoringEvents;
 
-@interface TPKContent : NSObject <NSSecureCoding, NSCopying>
+@interface TPKContent : NSObject <NSCopying, NSSecureCoding>
 {
-    long long _customizationID;
-    NSArray *_dismissalEvents;
-    NSString *_identifier;
-    long long _version;
+    MISSING_TYPE *tip;
+    MISSING_TYPE *cachedViewModel;
+    MISSING_TYPE *displayCount;
+    MISSING_TYPE *identifier;
+    MISSING_TYPE *customizationID;
+    MISSING_TYPE *version;
+    MISSING_TYPE *userInfo;
+    MISSING_TYPE *state;
+    MISSING_TYPE *monitoringEvents;
 }
 
++ (id)emptyContent;
 + (_Bool)supportsSecureCoding;
-+ (id)classSet;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) long long version; // @synthesize version=_version;
-@property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property(readonly, nonatomic) NSArray *dismissalEvents; // @synthesize dismissalEvents=_dismissalEvents;
-@property(readonly, nonatomic) long long customizationID; // @synthesize customizationID=_customizationID;
-- (id)debugDescription;
-- (id)description;
-- (_Bool)isEqual:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 dismissalEvents:(id)arg2 customizationID:(long long)arg3;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)init;
+- (void)createCachedViewModelUsingViewDelegate:(id)arg1;
+- (unsigned long long)monitoringEventOptionsMatchedWithRegistrableEventIdentifier:(id)arg1;
+- (unsigned long long)monitoringEventOptionsForCurrentState;
+- (void)updateDisplayCount:(long long)arg1;
+- (void)updateState:(long long)arg1;
+- (void)incrementDisplaycount;
+- (id)copyWithZone:(void *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
+- (id)initWithCopy:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithDiscoverabilityTip:(id)arg1 monitoringEvents:(id)arg2 customizationID:(long long)arg3 userInfo:(id)arg4;
+- (id)initWithIdentifier:(id)arg1 monitoringEvents:(id)arg2 customizationID:(long long)arg3 userInfo:(id)arg4;
+@property(nonatomic, readonly) NSString *debugDescription;
+@property(nonatomic, readonly) NSString *description;
+@property(nonatomic, readonly) NSError *parsingError;
+@property(nonatomic, readonly) _Bool isLocalContent;
+@property(nonatomic, readonly) _Bool hasTipContent;
+@property(nonatomic, retain) TPSMonitoringEvents *monitoringEvents; // @synthesize monitoringEvents;
+@property(nonatomic) long long state; // @synthesize state;
+@property(nonatomic, copy) NSDictionary *userInfo;
+@property(nonatomic) long long version; // @synthesize version;
+@property(nonatomic) long long customizationID; // @synthesize customizationID;
+@property(nonatomic, copy) NSString *identifier;
+@property(nonatomic) long long displayCount; // @synthesize displayCount;
+@property(nonatomic, retain) TPSDiscoverabilityTip *tip; // @synthesize tip;
 
 @end
 

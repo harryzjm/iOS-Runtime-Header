@@ -6,31 +6,56 @@
 
 #import <UIKit/UIWindowScene.h>
 
+@class NSUUID;
+
 @interface SBSUIInCallWindowScene : UIWindowScene
 {
+    NSUUID *_requestedPresentationConfigurationIdentifier;
+    long long _validationState;
+    _Bool _hasRequestedDestructionForInvalidState;
     _Bool _supportsDeviceLockEvents;
     _Bool _idleTimerDisabled;
     _Bool _shouldBecomeVisibleWhenWakingDisplay;
     _Bool _callConnected;
-    int _preferredStatusBarStyleOverridesToSuppress;
+    _Bool _prefersHiddenWhenDismissed;
+    _Bool _deviceAttachedToWindowedAccessory;
+    _Bool _prefersBannersHiddenFromClonedDisplay;
+    _Bool _shouldNeverBeShownWhenLaunchingFaceTime;
     unsigned long long _preferredHardwareButtonEventTypes;
+    unsigned long long _preferredStatusBarStyleOverridesToSuppress;
     long long _presentationMode;
+    struct UIEdgeInsets _expanseHUDDodgingInsets;
+    struct CGRect _windowedAccessoryCutoutFrameInScreen;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool shouldNeverBeShownWhenLaunchingFaceTime; // @synthesize shouldNeverBeShownWhenLaunchingFaceTime=_shouldNeverBeShownWhenLaunchingFaceTime;
+@property(nonatomic) _Bool prefersBannersHiddenFromClonedDisplay; // @synthesize prefersBannersHiddenFromClonedDisplay=_prefersBannersHiddenFromClonedDisplay;
+@property(readonly, nonatomic) struct CGRect windowedAccessoryCutoutFrameInScreen; // @synthesize windowedAccessoryCutoutFrameInScreen=_windowedAccessoryCutoutFrameInScreen;
+@property(readonly, nonatomic, getter=isDeviceAttachedToWindowedAccessory) _Bool deviceAttachedToWindowedAccessory; // @synthesize deviceAttachedToWindowedAccessory=_deviceAttachedToWindowedAccessory;
 @property(readonly, nonatomic) long long presentationMode; // @synthesize presentationMode=_presentationMode;
+@property(nonatomic) _Bool prefersHiddenWhenDismissed; // @synthesize prefersHiddenWhenDismissed=_prefersHiddenWhenDismissed;
+@property(nonatomic) struct UIEdgeInsets expanseHUDDodgingInsets; // @synthesize expanseHUDDodgingInsets=_expanseHUDDodgingInsets;
 @property(nonatomic, getter=isCallConnected) _Bool callConnected; // @synthesize callConnected=_callConnected;
 @property(nonatomic) _Bool shouldBecomeVisibleWhenWakingDisplay; // @synthesize shouldBecomeVisibleWhenWakingDisplay=_shouldBecomeVisibleWhenWakingDisplay;
 @property(nonatomic, getter=isIdleTimerDisabled) _Bool idleTimerDisabled; // @synthesize idleTimerDisabled=_idleTimerDisabled;
 @property(nonatomic) _Bool supportsDeviceLockEvents; // @synthesize supportsDeviceLockEvents=_supportsDeviceLockEvents;
-@property(nonatomic) int preferredStatusBarStyleOverridesToSuppress; // @synthesize preferredStatusBarStyleOverridesToSuppress=_preferredStatusBarStyleOverridesToSuppress;
+@property(nonatomic) unsigned long long preferredStatusBarStyleOverridesToSuppress; // @synthesize preferredStatusBarStyleOverridesToSuppress=_preferredStatusBarStyleOverridesToSuppress;
 @property(nonatomic) unsigned long long preferredHardwareButtonEventTypes; // @synthesize preferredHardwareButtonEventTypes=_preferredHardwareButtonEventTypes;
+- (void)_updateValidationStateIfNeededForPresentationMode:(long long)arg1;
+- (void)_setAttachedToWindowedAccessory:(_Bool)arg1 windowedAccessoryCutoutFrameInScreen:(struct CGRect)arg2;
 - (void)_handleFrameChanged;
 - (void)_updatePresentationMode:(long long)arg1 analyticsSource:(id)arg2;
 - (void)_handleHardwareButtonEventSceneActions:(id)arg1;
 - (void)_handleDeviceLockAction:(id)arg1;
+@property(readonly, nonatomic, getter=isScreenSharingPresentation) _Bool screenSharingPresentation;
+@property(readonly, nonatomic) NSUUID *requestedPresentationConfigurationIdentifier;
+@property(readonly, nonatomic, getter=isBeingShownAboveCoverSheet) _Bool beingShownAboveCoverSheet;
+@property(readonly, nonatomic) _Bool systemControlsShouldPresentAsEmbedded;
 - (void)requestTransitionToPresentationMode:(long long)arg1 isUserInitiated:(_Bool)arg2 analyticsSource:(id)arg3;
 - (void)requestTransitionToPresentationMode:(long long)arg1 isUserInitiated:(_Bool)arg2;
 - (void)requestTransitionToPresentationMode:(long long)arg1;
+- (void)dealloc;
 - (id)initWithSession:(id)arg1 connectionOptions:(id)arg2;
 
 @end

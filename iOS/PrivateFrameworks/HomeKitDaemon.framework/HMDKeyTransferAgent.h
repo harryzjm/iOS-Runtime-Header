@@ -28,7 +28,6 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(readonly) unsigned long long residentProvisioningStatus; // @synthesize residentProvisioningStatus=_residentProvisioningStatus;
 @property(retain, nonatomic) NSString *progressState; // @synthesize progressState=_progressState;
-- (id)logIdentifier;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;
 @property(readonly, copy) HMFMessageDestination *messageDestination;

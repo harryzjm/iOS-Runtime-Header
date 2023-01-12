@@ -6,18 +6,19 @@
 
 #import <UIKitCore/CAAnimationDelegate-Protocol.h>
 
-@class NSString, UIButton, UIColor, UIView;
+@class NSString, UIColor, UIView;
+@protocol _UIButtonMaskAnimationViewDelegate;
 
 __attribute__((visibility("hidden")))
 @interface _UIButtonMaskAnimationView <CAAnimationDelegate>
 {
     unsigned long long _hardEdge;
     UIView *_hardEdgeLine;
-    UIButton *_delegate;
+    id <_UIButtonMaskAnimationViewDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) UIButton *delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) id <_UIButtonMaskAnimationViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)animationDidStop:(id)arg1 finished:(_Bool)arg2;
 - (_Bool)_shouldAnimatePropertyWithKey:(id)arg1;
 @property unsigned long long hardEdge;

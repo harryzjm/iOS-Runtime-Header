@@ -9,7 +9,7 @@
 #import <EventKit/EKFrozenMeltedPair-Protocol.h>
 #import <EventKit/EKProtocolObject-Protocol.h>
 
-@class EKEventStore, EKObjectID, NSDictionary, NSMutableDictionary, NSMutableSet, NSString;
+@class CADGenerationStampedObjectID, EKEventStore, EKObjectID, NSDictionary, NSHashTable, NSMutableDictionary, NSString;
 
 @interface EKPersistentObject : NSObject <EKProtocolObject, EKFrozenMeltedPair>
 {
@@ -19,8 +19,9 @@
     } _lock;
     EKEventStore *_eventStore;
     EKObjectID *_objectID;
+    int _databaseRestoreGeneration;
     unsigned int _flags;
-    NSMutableSet *_coCommitObjects;
+    NSHashTable *_coCommitObjects;
     NSMutableDictionary *_loadedProperties;
     NSMutableDictionary *_updatedProperties;
 }
@@ -43,6 +44,8 @@
 - (void)takeValues:(id)arg1 forKeys:(id)arg2;
 - (_Bool)_loadChildIdentifiersForKey:(id)arg1 values:(id *)arg2;
 - (_Bool)_loadRelationForKey:(id)arg1 value:(id *)arg2;
+- (void)primitiveSetSecurityScopedURLWrapperValue:(id)arg1 forKey:(id)arg2;
+- (id)primitiveSecurityScopedURLWrapperValueForKey:(id)arg1;
 - (void)primitiveSetDataValue:(id)arg1 forKey:(id)arg2;
 - (id)primitiveDataValueForKey:(id)arg1;
 - (void)primitiveSetStringValue:(id)arg1 forKey:(id)arg2;
@@ -58,7 +61,7 @@
 - (int)primitiveIntValueForKey:(id)arg1;
 - (void)primitiveSetNumberValue:(id)arg1 forKey:(id)arg2;
 - (id)primitiveNumberValueForKey:(id)arg1;
-- (void)_primitiveSetValue:(id)arg1 forKey:(id)arg2 daemonSetter:(CDUnknownBlockType)arg3;
+- (void)_primitiveSetValue:(id)arg1 forKey:(id)arg2;
 - (id)_primitiveValueForKey:(id)arg1 loader:(CDUnknownBlockType)arg2;
 - (void)primitiveSetRelationValue:(id)arg1 forKey:(id)arg2;
 - (void)primitiveRemoveRelatedObject:(id)arg1 forKey:(id)arg2;
@@ -76,6 +79,7 @@
 - (id)_propertyForKey:(id)arg1;
 - (id)_loadedPropertyForKey:(id)arg1;
 - (id)loadedPropertyForKey:(id)arg1;
+- (void)internalAddCoCommitObject:(id)arg1;
 - (void)addCoCommitObject:(id)arg1;
 - (id)coCommitObjects;
 - (_Bool)_areDefaultPropertiesLoaded;
@@ -89,8 +93,7 @@
 - (void)rollback;
 - (void)reset;
 - (void)saved;
-- (_Bool)setAttributes:(id)arg1 relations:(id)arg2 objectID:(id)arg3 eventStore:(id)arg4 error:(id *)arg5;
-- (_Bool)pushDirtyProperties:(id *)arg1;
+- (id)dirtyPropertiesAndValues;
 - (_Bool)isPropertyLoaded:(id)arg1;
 - (_Bool)isPropertyDirty:(id)arg1;
 - (_Bool)refresh;
@@ -99,7 +102,10 @@
 - (_Bool)isDirty;
 - (_Bool)_isNew;
 - (_Bool)existsInStore;
-- (void)_setObjectID:(id)arg1;
+@property(readonly, nonatomic) CADGenerationStampedObjectID *CADObjectID;
+- (id)_CADObjectID;
+@property(readonly, nonatomic) int databaseRestoreGeneration;
+- (void)_setObjectID:(id)arg1 inDatabaseRestoreGeneration:(int)arg2;
 - (id)objectID;
 - (void)_setEventStore:(id)arg1;
 @property(readonly, nonatomic) EKEventStore *eventStore;
@@ -113,6 +119,7 @@
 - (id)changeSet;
 @property(readonly, nonatomic) NSString *semanticIdentifier;
 @property(readonly, nonatomic) NSString *uniqueIdentifier;
+- (id)propertyKeyForUniqueIdentifier;
 - (id)initWithObject:(id)arg1;
 - (_Bool)isPropertyUnavailable:(id)arg1;
 - (_Bool)isNew;

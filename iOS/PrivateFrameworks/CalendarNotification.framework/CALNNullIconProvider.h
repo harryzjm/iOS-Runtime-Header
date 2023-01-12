@@ -8,10 +8,11 @@
 
 #import <CalendarNotification/CALNCalendarIconIdentifierProvider-Protocol.h>
 #import <CalendarNotification/CALNNotificationIconProvider-Protocol.h>
+#import <CalendarNotification/CalIconProvider-Protocol.h>
 
 @class NSString;
 
-@interface CALNNullIconProvider : NSObject <CALNNotificationIconProvider, CALNCalendarIconIdentifierProvider>
+@interface CALNNullIconProvider : NSObject <CALNNotificationIconProvider, CALNCalendarIconIdentifierProvider, CalIconProvider>
 {
 }
 

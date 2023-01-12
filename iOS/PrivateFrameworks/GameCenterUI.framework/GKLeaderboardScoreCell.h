@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewCell.h>
-
 @class GKDashboardPlayerPhotoView, GKLeaderboardEntry, NSLayoutConstraint, UILabel, UIView;
 @protocol GKLeaderboardScoreActionDelegate;
 
-@interface GKLeaderboardScoreCell : UICollectionViewCell
+@interface GKLeaderboardScoreCell
 {
     _Bool _shouldShowContextMenu;
     _Bool _isLocalPlayerScore;

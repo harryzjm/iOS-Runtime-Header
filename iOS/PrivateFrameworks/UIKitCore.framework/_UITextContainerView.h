@@ -7,7 +7,7 @@
 #import <UIKitCore/NSUITextViewCommonMethods-Protocol.h>
 #import <UIKitCore/_UITextViewCanvasViewContext-Protocol.h>
 
-@class NSDictionary, NSLayoutManager, NSString, NSTextContainer, NSTextStorage, UIColor, UITextView, _UITextViewCanvasView;
+@class NSDictionary, NSLayoutManager, NSString, NSTextContainer, UIColor, UITextView, _UITextLayoutController, _UITextViewCanvasView;
 @protocol _UITextContainerViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -29,9 +29,9 @@ __attribute__((visibility("hidden")))
         unsigned int freezeTextContainerSize:1;
         unsigned int usesStandardTextScaling:1;
     } _tcvFlags;
-    struct CGRect _constrainedTiledRenderingRect;
     UITextView *_textView;
     _UITextViewCanvasView *_canvasView;
+    _UITextLayoutController *_textLayoutController;
     id <_UITextContainerViewDelegate> _delegate;
 }
 
@@ -41,10 +41,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGSize minSize; // @synthesize minSize=_minSize;
 @property(nonatomic) __weak id <_UITextContainerViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak NSTextContainer *textContainer; // @synthesize textContainer=_textContainer;
-- (struct CGRect)_intersectRectWithConstrainedTiledRenderingRect:(struct CGRect)arg1;
-- (void)_unconstrainTiledRendering;
-- (void)_constrainTiledRenderingToRect:(struct CGRect)arg1;
-@property(readonly, nonatomic) struct CGRect constrainedTiledRenderingRect;
+@property(readonly, nonatomic) _UITextLayoutController *textLayoutController; // @synthesize textLayoutController=_textLayoutController;
 - (void)removeAllGhostedRanges;
 - (void)addGhostedRange:(struct _NSRange)arg1;
 @property(nonatomic) double maxTileHeight;
@@ -88,12 +85,13 @@ __attribute__((visibility("hidden")))
 - (void)tintColorDidChange;
 - (id)linkAttributesForLink:(id)arg1 forCharacterAtIndex:(unsigned long long)arg2;
 - (id)linkTextAttributes;
-@property(readonly, nonatomic) NSTextStorage *textStorage;
+- (id)textStorage;
 @property(readonly, nonatomic) NSLayoutManager *layoutManager;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 textContainer:(id)arg2 delegate:(id)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 textLayoutController:(id)arg2 textContainer:(id)arg3 delegate:(id)arg4;
 
 // Remaining properties
+@property(readonly, nonatomic) struct CGRect _clipRectForFadedEdges;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;

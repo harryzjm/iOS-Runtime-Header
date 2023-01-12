@@ -15,11 +15,7 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSString *resultConfigString; // @synthesize resultConfigString=_resultConfigString;
-@property(readonly, nonatomic) id <FCContentContext> context; // @synthesize context=_context;
 @property(copy, nonatomic) CDUnknownBlockType fetchCompletionHandler; // @synthesize fetchCompletionHandler=_fetchCompletionHandler;
-- (id)_promiseConfiguration:(id)arg1;
-- (id)_promiseConfiguration;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
 - (_Bool)validateOperation;

@@ -6,28 +6,19 @@
 
 #import <UIKit/UIViewController.h>
 
-@class MISSING_TYPE, NSLayoutConstraint, UIButton, UIImageView, UILabel, UIView;
+@class MISSING_TYPE;
 
 @interface _TtC18HealthExperienceUI33SuggestedActionTileViewController : UIViewController
 {
     MISSING_TYPE *context;
-    MISSING_TYPE *nibObjects;
-    MISSING_TYPE *containerView;
-    MISSING_TYPE *imageView;
-    MISSING_TYPE *imageBackgroundView;
-    MISSING_TYPE *containerViewTopConstraint;
-    MISSING_TYPE *containerViewBottomConstraint;
-    MISSING_TYPE *imageBackgroundViewContainerViewTopConstraint;
-    MISSING_TYPE *imageBackgroundViewContainerViewBottomConstraint;
-    MISSING_TYPE *titleLabel;
-    MISSING_TYPE *bodyLabel;
-    MISSING_TYPE *linkButton;
-    MISSING_TYPE *linkButtonTopSpacingConstraint;
-    MISSING_TYPE *linkButtonHeightConstraint;
-    MISSING_TYPE *actionButton;
-    MISSING_TYPE *actionButtonTopSpacingConstraint;
-    MISSING_TYPE *actionButtonHeightConstraint;
-    MISSING_TYPE *actionButtonStyle;
+    MISSING_TYPE *stackView;
+    MISSING_TYPE *$__lazy_storage_$_containerView;
+    MISSING_TYPE *$__lazy_storage_$_imageView;
+    MISSING_TYPE *imageViewInset;
+    MISSING_TYPE *$__lazy_storage_$_titleLabel;
+    MISSING_TYPE *$__lazy_storage_$_bodyLabel;
+    MISSING_TYPE *$__lazy_storage_$_linkButton;
+    MISSING_TYPE *$__lazy_storage_$_actionButton;
     MISSING_TYPE *suggestedActionDelegate;
 }
 
@@ -36,21 +27,6 @@
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)didTapLink:(id)arg1;
 - (void)didTapAction:(id)arg1;
-- (void)viewDidLayoutSubviews;
-- (void)traitCollectionDidChange:(id)arg1;
-- (void)viewDidLoad;
-- (void)loadView;
-@property(nonatomic, retain) NSLayoutConstraint *actionButtonHeightConstraint; // @synthesize actionButtonHeightConstraint;
-@property(nonatomic) __weak UIButton *actionButton; // @synthesize actionButton;
-@property(nonatomic) __weak UILabel *bodyLabel; // @synthesize bodyLabel;
-@property(nonatomic) __weak UILabel *titleLabel; // @synthesize titleLabel;
-@property(nonatomic, retain) NSLayoutConstraint *imageBackgroundViewContainerViewBottomConstraint; // @synthesize imageBackgroundViewContainerViewBottomConstraint;
-@property(nonatomic, retain) NSLayoutConstraint *imageBackgroundViewContainerViewTopConstraint; // @synthesize imageBackgroundViewContainerViewTopConstraint;
-@property(nonatomic, retain) NSLayoutConstraint *containerViewBottomConstraint; // @synthesize containerViewBottomConstraint;
-@property(nonatomic, retain) NSLayoutConstraint *containerViewTopConstraint; // @synthesize containerViewTopConstraint;
-@property(nonatomic) __weak UIView *imageBackgroundView; // @synthesize imageBackgroundView;
-@property(nonatomic) __weak UIImageView *imageView; // @synthesize imageView;
-@property(nonatomic) __weak UIView *containerView; // @synthesize containerView;
 
 @end
 

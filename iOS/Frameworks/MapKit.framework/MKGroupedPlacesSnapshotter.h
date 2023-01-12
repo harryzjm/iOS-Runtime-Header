@@ -4,29 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-@class MKMapCamera, MKMapSnapshotOptions, MKMapSnapshotter, NSArray, UITraitCollection;
-
-@interface MKGroupedPlacesSnapshotter : NSObject
+@interface MKGroupedPlacesSnapshotter
 {
-    NSArray *_mapItems;
-    struct CGSize _mapSize;
-    MKMapSnapshotOptions *_snapshotOptions;
-    _Bool _useSnapshotService;
-    MKMapSnapshotter *_snapshotter;
-    UITraitCollection *_traitCollection;
 }
-
-- (void).cxx_destruct;
-@property(retain, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
-- (void)cancel;
-@property(readonly, nonatomic, getter=isLoading) _Bool loading;
-- (void)startWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)startWithQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-@property(readonly, nonatomic) MKMapCamera *camera;
-- (void)_initSnapshotterWithMapItems;
-- (id)initWithMapItems:(id)arg1 mapSize:(struct CGSize)arg2 useSnapshotService:(_Bool)arg3;
 
 @end
 

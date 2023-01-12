@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 @interface _GEOThrottlerShort : NSObject <_GEOThrottler>
 {
     NSString *_keyPath;
-    struct vector<(anonymous namespace)::Timestamp, std::__1::allocator<(anonymous namespace)::Timestamp>> _lastRequestTimes;
+    struct vector<(anonymous namespace)::Timestamp, std::allocator<(anonymous namespace)::Timestamp>> _lastRequestTimes;
     unsigned int _currentIndex;
     double _timeWindow;
 }

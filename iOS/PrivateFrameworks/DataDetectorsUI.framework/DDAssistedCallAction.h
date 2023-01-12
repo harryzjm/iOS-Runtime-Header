@@ -10,7 +10,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)isAvailable;
-- (id)icon;
+- (id)subtitle;
+- (id)iconName;
 
 @end
 

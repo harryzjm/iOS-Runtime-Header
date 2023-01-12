@@ -10,7 +10,6 @@
 
 @class CKDPRequestedFields;
 
-__attribute__((visibility("hidden")))
 @interface CKDPRecordRetrieveRequestRetrieveAssetURL : PBCodable <NSCopying>
 {
     long long _requestedTTL;

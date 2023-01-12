@@ -6,18 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class AVTAvatar, SCNMaterial, SCNNode, SCNScene;
+@class AVTAvatar, NSString, SCNMaterial, SCNNode, SCNScene;
+@protocol SCNSceneRenderer;
 
 @interface AVTAvatarEnvironment : NSObject
 {
     SCNScene *_scene;
+    id <SCNSceneRenderer> _renderer;
     AVTAvatar *_avatar;
-    SCNNode *_trackingLostIndicator;
-    _Bool _trackingLostIndicatorVisible;
     SCNMaterial *_shadowPlaneMaterial;
     SCNNode *_whitePlane;
     SCNNode *_environmentNode;
     SCNNode *_defaultPointOfView;
+    NSString *_framingMode;
+    SCNNode *_animojiCamera;
+    SCNNode *_memojiCameraGroup;
+    SCNNode *_customCamera;
     SCNNode *_specializedLightingNode;
     SCNNode *_defaultLightingNode;
 }
@@ -27,17 +31,15 @@
 @property(nonatomic) float fadeFactor;
 - (void)didSnapshot;
 - (void)willSnapshot;
-- (void)hideTrackingLossIndicator;
-- (void)showTrackingLossIndicator;
-- (void)hideReticle;
-- (_Bool)showReticle;
-- (void)setShowReticle:(_Bool)arg1;
 - (void)updateARMode:(_Bool)arg1;
+- (void)updatePointOfViewFromFramingMode;
+@property(retain, nonatomic) NSString *framingMode;
 - (void)updateSpecializedLighting;
+- (void)updateCustomCameras;
 - (void)avatarDidChange:(id)arg1 arMode:(_Bool)arg2;
 @property(readonly, nonatomic) SCNNode *defaultPointOfView;
 @property(readonly, nonatomic) SCNNode *environmentNode;
-- (id)initAndInstallInScene:(id)arg1;
+- (id)initAndInstallInScene:(id)arg1 renderer:(id)arg2;
 - (id)defaultEnvironmentNode;
 
 @end

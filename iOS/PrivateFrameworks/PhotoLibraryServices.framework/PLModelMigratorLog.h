@@ -15,14 +15,14 @@
 }
 
 + (id)openWriteFileAtURL:(id)arg1;
++ (id)new;
 + (id)setup;
 - (void).cxx_destruct;
-- (void)logFromCodeLocation:(CDStruct_530518fa)arg1 subsystem:(id)arg2 level:(int)arg3 message:(id)arg4;
-- (void)logFromCodeLocation:(CDStruct_530518fa)arg1 subsystem:(id)arg2 level:(int)arg3 format:(const char *)arg4;
+- (void)_logFromCodeLocation:(CDStruct_530518fa)arg1 subsystem:(id)arg2 type:(unsigned char)arg3 message:(const char *)arg4;
+- (void)logFromCodeLocation:(CDStruct_530518fa)arg1 subsystem:(id)arg2 type:(unsigned char)arg3 format:(const char *)arg4;
 - (id)buildFormatString:(const char *)arg1;
 - (id)initWithFileHandle:(id)arg1;
 - (id)initWithLogFileURL:(id)arg1;
-- (id)new;
 - (id)init;
 
 @end

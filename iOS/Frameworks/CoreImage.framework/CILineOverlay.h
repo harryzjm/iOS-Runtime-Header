@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)customAttributes;
+@property(retain, nonatomic) CIImage *inputImage; // @synthesize inputImage;
 - (id)outputImage;
 - (id)_CIColorControls;
 - (id)_CIComicNoiseReduction;

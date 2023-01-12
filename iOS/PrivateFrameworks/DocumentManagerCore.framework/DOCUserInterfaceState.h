@@ -9,14 +9,15 @@
 #import <DocumentManagerCore/NSCopying-Protocol.h>
 #import <DocumentManagerCore/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDate, NSDictionary, NSNumber;
+@class NSData, NSDate, NSDictionary, NSMutableDictionary, NSNumber;
 
 @interface DOCUserInterfaceState : NSObject <NSCopying, NSSecureCoding>
 {
     NSData *_mostRecentlyVisitedLocation;
     NSData *_mostRecentEffectiveRootLocation;
-    NSNumber *_displayMode;
     NSDictionary *_sortingMode;
+    NSMutableDictionary *_groupingBehaviors;
+    NSMutableDictionary *_displayModes;
     NSNumber *_browseTabSelected;
     NSNumber *_userPrefersTiledSidebarHidden;
     NSDate *_lastUpdatedDate;
@@ -27,8 +28,9 @@
 @property(retain, nonatomic) NSDate *lastUpdatedDate; // @synthesize lastUpdatedDate=_lastUpdatedDate;
 @property(retain, nonatomic) NSNumber *userPrefersTiledSidebarHidden; // @synthesize userPrefersTiledSidebarHidden=_userPrefersTiledSidebarHidden;
 @property(retain, nonatomic) NSNumber *browseTabSelected; // @synthesize browseTabSelected=_browseTabSelected;
+@property(readonly, nonatomic) NSMutableDictionary *displayModes; // @synthesize displayModes=_displayModes;
+@property(readonly, nonatomic) NSMutableDictionary *groupingBehaviors; // @synthesize groupingBehaviors=_groupingBehaviors;
 @property(retain, nonatomic) NSDictionary *sortingMode; // @synthesize sortingMode=_sortingMode;
-@property(retain, nonatomic) NSNumber *displayMode; // @synthesize displayMode=_displayMode;
 @property(retain, nonatomic) NSData *mostRecentEffectiveRootLocation; // @synthesize mostRecentEffectiveRootLocation=_mostRecentEffectiveRootLocation;
 @property(retain, nonatomic) NSData *mostRecentlyVisitedLocation; // @synthesize mostRecentlyVisitedLocation=_mostRecentlyVisitedLocation;
 - (id)copyWithZone:(struct _NSZone *)arg1;

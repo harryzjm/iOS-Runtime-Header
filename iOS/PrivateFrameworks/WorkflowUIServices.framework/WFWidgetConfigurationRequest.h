@@ -15,7 +15,7 @@
     _Bool _usesWidgetAccentColor;
     UIColor *_widgetTintColor;
     INIntent *_intent;
-    unsigned long long _sizeClass;
+    long long _family;
     NSString *_widgetDisplayName;
     NSString *_widgetDescription;
     UIColor *_widgetPrimaryColor;
@@ -37,7 +37,7 @@
 @property(readonly, copy, nonatomic) NSString *widgetDisplayName; // @synthesize widgetDisplayName=_widgetDisplayName;
 @property(readonly, nonatomic) struct CGRect initialCardFrame; // @synthesize initialCardFrame=_initialCardFrame;
 @property(readonly, nonatomic) struct CGSize defaultCardSize; // @synthesize defaultCardSize=_defaultCardSize;
-@property(readonly, nonatomic) unsigned long long sizeClass; // @synthesize sizeClass=_sizeClass;
+@property(readonly, nonatomic) long long family; // @synthesize family=_family;
 @property(readonly, nonatomic) INIntent *intent; // @synthesize intent=_intent;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -48,8 +48,8 @@
 @property(readonly, nonatomic) INSchema *schema;
 @property(readonly, nonatomic, getter=isWidgetExtensionInformationLoaded) _Bool widgetExtensionInformationLoaded;
 @property(readonly, nonatomic) UIColor *widgetTintColor; // @synthesize widgetTintColor=_widgetTintColor;
-- (id)initWithIntent:(id)arg1 bundleIdentifier:(id)arg2 widgetBundleScopedURL:(id)arg3 schemaBundleURL:(id)arg4 sizeClass:(unsigned long long)arg5 defaultCardSize:(struct CGSize)arg6 initialCardFrame:(struct CGRect)arg7 widgetDisplayName:(id)arg8 widgetDescription:(id)arg9 widgetPrimaryColor:(id)arg10 widgetTintColor:(id)arg11 usesWidgetAccentColor:(_Bool)arg12;
-- (id)initWithIntent:(id)arg1 bundleIdentifier:(id)arg2 widgetBundleScopedURL:(id)arg3 schemaBundleURL:(id)arg4 sizeClass:(unsigned long long)arg5 defaultCardSize:(struct CGSize)arg6 initialCardFrame:(struct CGRect)arg7 widgetDisplayName:(id)arg8 widgetDescription:(id)arg9 usesWidgetAccentColor:(_Bool)arg10;
+- (id)initWithIntent:(id)arg1 bundleIdentifier:(id)arg2 widgetBundleScopedURL:(id)arg3 schemaBundleURL:(id)arg4 family:(long long)arg5 defaultCardSize:(struct CGSize)arg6 initialCardFrame:(struct CGRect)arg7 widgetDisplayName:(id)arg8 widgetDescription:(id)arg9 widgetPrimaryColor:(id)arg10 widgetTintColor:(id)arg11 usesWidgetAccentColor:(_Bool)arg12;
+- (id)initWithIntent:(id)arg1 bundleIdentifier:(id)arg2 widgetBundleScopedURL:(id)arg3 schemaBundleURL:(id)arg4 family:(long long)arg5 defaultCardSize:(struct CGSize)arg6 initialCardFrame:(struct CGRect)arg7 widgetDisplayName:(id)arg8 widgetDescription:(id)arg9 usesWidgetAccentColor:(_Bool)arg10;
 - (id)initWithOptions:(id)arg1;
 
 @end

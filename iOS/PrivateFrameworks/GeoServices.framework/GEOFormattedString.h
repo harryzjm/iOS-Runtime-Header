@@ -84,6 +84,10 @@
 - (id)initWithData:(id)arg1;
 - (id)init;
 - (id)initWithString:(id)arg1;
+@property(readonly, nonatomic) _Bool isPrivate;
+- (id)_joinFormattedComponentsWithSeparators:(id)arg1;
+@property(readonly, nonatomic) NSString *stringWithDefaultValues;
+@property(readonly, nonatomic) NSString *basicString;
 @property(readonly, nonatomic) NSArray *formatTokens;
 
 // Remaining properties

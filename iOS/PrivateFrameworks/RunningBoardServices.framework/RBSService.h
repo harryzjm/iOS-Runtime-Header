@@ -20,6 +20,7 @@
     NSObject<OS_dispatch_queue> *_calloutQueue;
 }
 
++ (_Bool)saveEndowment:(id)arg1 forKey:(id)arg2 withError:(out id *)arg3;
 - (void).cxx_destruct;
 - (void)didLoseInheritances:(id)arg1;
 - (void)didReceiveInheritances:(id)arg1;

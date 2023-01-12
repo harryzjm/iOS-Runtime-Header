@@ -6,32 +6,32 @@
 
 #import <objc/NSObject.h>
 
+#import <ScreenTimeCore/STDebouncerDelegate-Protocol.h>
 #import <ScreenTimeCore/STPersistenceControllerProtocol-Protocol.h>
 
-@class NSManagedObjectContext, NSMutableDictionary, NSPersistentContainer, NSPersistentStore, NSString;
-@protocol OS_dispatch_queue;
+@class NSManagedObjectContext, NSPersistentContainer, NSPersistentStore, NSString, STDebouncer;
+@protocol OS_dispatch_queue, STPersistentStoreChangeHandler;
 
-@interface STPersistenceController : NSObject <STPersistenceControllerProtocol>
+@interface STPersistenceController : NSObject <STDebouncerDelegate, STPersistenceControllerProtocol>
 {
-    NSObject *_lastPersistentHistoryTokenByStoreIdentifierLock;
     NSPersistentContainer *_persistentContainer;
-    NSMutableDictionary *_lastPersistentHistoryTokenByStoreIdentifier;
     NSObject<OS_dispatch_queue> *_coreDataQueue;
+    id <STPersistentStoreChangeHandler> _changeHandler;
+    STDebouncer *_changeNotificationDebouncer;
 }
 
 - (void).cxx_destruct;
+@property(readonly) STDebouncer *changeNotificationDebouncer; // @synthesize changeNotificationDebouncer=_changeNotificationDebouncer;
+@property(readonly) id <STPersistentStoreChangeHandler> changeHandler; // @synthesize changeHandler=_changeHandler;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *coreDataQueue; // @synthesize coreDataQueue=_coreDataQueue;
-@property(readonly, copy, nonatomic) NSMutableDictionary *lastPersistentHistoryTokenByStoreIdentifier; // @synthesize lastPersistentHistoryTokenByStoreIdentifier=_lastPersistentHistoryTokenByStoreIdentifier;
 @property(retain, nonatomic) NSPersistentContainer *persistentContainer; // @synthesize persistentContainer=_persistentContainer;
 - (void)_logAboutMissingStoreName:(id)arg1;
 - (void)_persistentStoreCoordinatorStoresDidChange:(id)arg1;
+- (void)_remotePersistentStoreChangesDidCoalesce:(id)arg1;
 - (void)_remotePersistentStoreDidChange:(id)arg1;
 - (id)descriptionForPersistentStore:(id)arg1;
-- (void)savePersistentHistoryToken:(id)arg1 forStore:(id)arg2;
-- (id)persistentHistoryTokenForStore:(id)arg1;
+- (void)debouncer:(id)arg1 didDebounce:(id)arg2;
 @property(readonly, nonatomic) _Bool hasStoreLoaded;
-- (void)setLocalPersistentStoreValue:(id)arg1 forKey:(id)arg2;
-- (id)localPersistentStoreMetadataValueForKey:(id)arg1;
 @property(readonly) NSPersistentStore *cloudStore;
 @property(readonly) NSPersistentStore *localStore;
 @property(readonly, nonatomic) NSManagedObjectContext *viewContext;
@@ -39,7 +39,7 @@
 - (void)performBackgroundTaskAndWait:(CDUnknownBlockType)arg1;
 - (void)performBackgroundTask:(CDUnknownBlockType)arg1;
 - (id)init;
-- (id)initWithPersistentContainer:(id)arg1;
+- (id)initWithPersistentContainer:(id)arg1 persistentStoreChangeHandler:(id)arg2 notificationDebouncer:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

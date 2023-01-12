@@ -14,11 +14,18 @@
 {
 }
 
+- (id)fileHandleForReadingFromURL:(id)arg1 error:(id *)arg2;
+- (_Bool)linkItemAtURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
+- (_Bool)writeJSONObject:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
+- (id)JSONObjectWithURL:(id)arg1 error:(id *)arg2;
+- (_Bool)zipItemAtURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
+- (_Bool)removeItemAtURL:(id)arg1 error:(id *)arg2;
 - (_Bool)writeData:(id)arg1 toURL:(id)arg2 options:(unsigned long long)arg3 error:(id *)arg4;
 - (id)dataWithContentsOfURL:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (_Bool)fileExistsAtURL:(id)arg1;
 - (_Bool)copyItemAtURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 - (_Bool)createDirectoryAtURL:(id)arg1 withIntermediateDirectories:(_Bool)arg2 attributes:(id)arg3 error:(id *)arg4;
+@property(readonly, copy) NSURL *legacyHeroFrameStoreDirectoryURL;
 @property(readonly, copy) NSURL *heroFrameStoreDirectoryURL;
 
 // Remaining properties

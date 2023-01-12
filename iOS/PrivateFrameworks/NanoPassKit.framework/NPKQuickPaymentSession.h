@@ -14,6 +14,7 @@
 @interface NPKQuickPaymentSession : NSObject <PKContactlessInterfaceSessionDelegate>
 {
     NSData *_credential;
+    _Atomic unsigned int _atomicIsSwitchingSessionTypeCount;
     _Bool _deferAuthorization;
     _Bool _requireFirstInQueue;
     _Bool _inServiceMode;
@@ -25,6 +26,7 @@
     PKPass *_currentPass;
     NSDictionary *_vasPasses;
     id <NPKQuickPaymentSessionDelegate> _delegate;
+    unsigned long long _sessionType;
     NSObject<OS_dispatch_queue> *_paymentSessionQueue;
     NSObject<OS_dispatch_queue> *_internalQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
@@ -57,6 +59,7 @@
 @property(nonatomic) _Bool endSessionWhenAuthorizationIsConsumed; // @synthesize endSessionWhenAuthorizationIsConsumed=_endSessionWhenAuthorizationIsConsumed;
 @property(nonatomic) _Bool inServiceMode; // @synthesize inServiceMode=_inServiceMode;
 @property(nonatomic) _Bool requireFirstInQueue; // @synthesize requireFirstInQueue=_requireFirstInQueue;
+@property(readonly, nonatomic) unsigned long long sessionType; // @synthesize sessionType=_sessionType;
 @property(nonatomic) __weak id <NPKQuickPaymentSessionDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_internalQueue_invokeDeactivationCompletionBlocks;
 - (void)_callbackQueue_invokeDidCompleteForReason:(unsigned long long)arg1 withTransactionContext:(id)arg2;
@@ -68,6 +71,9 @@
 - (void)contactlessInterfaceSessionDidSelectValueAddedService:(id)arg1;
 - (void)contactlessInterfaceSessionDidSelectPayment:(id)arg1;
 - (void)contactlessInterfaceSession:(id)arg1 didEndPersistentCardEmulationWithContext:(id)arg2;
+- (void)contactlessInterfaceSessionDidTerminate:(id)arg1;
+- (void)contactlessInterfaceSessionDidTerminate:(id)arg1 withErrorCode:(unsigned long long)arg2;
+- (void)contactlessInterfaceSessionDidReceiveUntrustedTerminal:(id)arg1;
 - (void)contactlessInterfaceSession:(id)arg1 didFinishTransactionWithContext:(id)arg2;
 - (void)contactlessInterfaceSessionDidReceiveActivityTimeout:(id)arg1;
 - (void)contactlessInterfaceSessionDidStartTransaction:(id)arg1;
@@ -87,7 +93,7 @@
 - (_Bool)_sessionQueue_startContactlessSessionWithSuccessfulCompletionOnInternalQueue:(CDUnknownBlockType)arg1;
 - (void)_sessionQueue_invokeAppropriateCallbackForActivationWithSuccess:(_Bool)arg1 invokeOnSuccess:(_Bool)arg2 contactlessValidity:(unsigned long long)arg3 forPass:(id)arg4;
 - (_Bool)_sessionQueue_updateContactlessSessionForPass:(id)arg1 paymentApplication:(id)arg2 vasPasses:(id)arg3 sessionConfirmed:(_Bool)arg4 deferAuthorization:(_Bool)arg5;
-- (void)_internalQueue_updateContactlessSessionForPass:(id)arg1 vasPasses:(id)arg2;
+- (void)_internalQueue_updateContactlessSessionForPass:(id)arg1 vasPasses:(id)arg2 deferAuthorization:(_Bool)arg3;
 - (void)_internalQueue_deactivateSessionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)deactivateSessionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_updateSessionWithCredentialAndActivate;
@@ -97,6 +103,11 @@
 - (void)confirmSessionExpectingCredential:(_Bool)arg1;
 - (void)setCredential:(id)arg1;
 @property(retain, nonatomic) PKPass *currentPass; // @synthesize currentPass=_currentPass;
+- (void)_internalQueue_setCurrentPass:(id)arg1;
+- (void)executeRKEActionForPass:(id)arg1 function:(id)arg2 action:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
+- (void)authorize18013RequestWithDataToRelease:(id)arg1 credential:(id)arg2;
+- (_Bool)startSessionWithCompletion:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) _Bool isSwitchingSessionType;
 - (_Bool)startSession;
 - (void)dealloc;
 - (id)initWithQueue:(id)arg1;

@@ -6,10 +6,12 @@
 
 #import <WorkflowKit/WFNaming-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSSet, NSString, WFWorkflowIcon, WFWorkflowQuarantine;
+@class NSArray, NSData, NSDate, NSDictionary, NSSet, NSString, WFWorkflowIcon, WFWorkflowQuarantine;
 
 @interface WFWorkflowRecord <WFNaming>
 {
+    _Bool _hasShortcutInputVariables;
+    _Bool _hasOutputFallback;
     _Bool _hiddenInComplication;
     _Bool _hiddenFromLibraryAndSync;
     _Bool _deleted;
@@ -27,6 +29,8 @@
     WFWorkflowQuarantine *_quarantine;
     NSArray *_workflowTypes;
     NSArray *_inputClasses;
+    NSDictionary *_noInputBehavior;
+    NSArray *_outputClasses;
     NSArray *_actions;
     long long _actionCount;
     NSArray *_importQuestions;
@@ -36,6 +40,7 @@
     NSString *_lastSavedOnDeviceName;
     unsigned long long _estimatedSize;
     NSSet *_accessResourcePerWorkflowStates;
+    NSSet *_smartPromptPerWorkflowStates;
     long long _remoteQuarantineStatus;
     NSData *_cloudKitRecordMetadata;
     long long _syncHash;
@@ -48,6 +53,7 @@
 @property(copy, nonatomic) NSData *cloudKitRecordMetadata; // @synthesize cloudKitRecordMetadata=_cloudKitRecordMetadata;
 @property(readonly, nonatomic, getter=isConflictOfOtherWorkflow) _Bool conflictOfOtherWorkflow; // @synthesize conflictOfOtherWorkflow=_conflictOfOtherWorkflow;
 @property(nonatomic) long long remoteQuarantineStatus; // @synthesize remoteQuarantineStatus=_remoteQuarantineStatus;
+@property(copy, nonatomic) NSSet *smartPromptPerWorkflowStates; // @synthesize smartPromptPerWorkflowStates=_smartPromptPerWorkflowStates;
 @property(copy, nonatomic) NSSet *accessResourcePerWorkflowStates; // @synthesize accessResourcePerWorkflowStates=_accessResourcePerWorkflowStates;
 @property(readonly, nonatomic) unsigned long long estimatedSize; // @synthesize estimatedSize=_estimatedSize;
 @property(copy, nonatomic) NSString *lastSavedOnDeviceName; // @synthesize lastSavedOnDeviceName=_lastSavedOnDeviceName;
@@ -60,6 +66,10 @@
 @property(copy, nonatomic) NSArray *importQuestions; // @synthesize importQuestions=_importQuestions;
 @property(nonatomic) long long actionCount; // @synthesize actionCount=_actionCount;
 @property(copy, nonatomic) NSArray *actions; // @synthesize actions=_actions;
+@property(nonatomic) _Bool hasOutputFallback; // @synthesize hasOutputFallback=_hasOutputFallback;
+@property(nonatomic) _Bool hasShortcutInputVariables; // @synthesize hasShortcutInputVariables=_hasShortcutInputVariables;
+@property(copy, nonatomic) NSArray *outputClasses; // @synthesize outputClasses=_outputClasses;
+@property(copy, nonatomic) NSDictionary *noInputBehavior; // @synthesize noInputBehavior=_noInputBehavior;
 @property(copy, nonatomic) NSArray *inputClasses; // @synthesize inputClasses=_inputClasses;
 @property(copy, nonatomic) NSArray *workflowTypes; // @synthesize workflowTypes=_workflowTypes;
 @property(retain, nonatomic) WFWorkflowQuarantine *quarantine; // @synthesize quarantine=_quarantine;

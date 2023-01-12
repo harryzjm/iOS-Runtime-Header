@@ -14,7 +14,7 @@
     void *ctx;
     void *plan;
     CDStruct_2bc666a5 net;
-    basic_string_90719d97 output_layer_name;
+    struct basic_string<char, std::char_traits<char>, std::allocator<char>> output_layer_name;
     id <MTLCommandQueue> queue;
     id <MTLDevice> device;
     NSObject<OS_dispatch_queue> *dispatch_queue;
@@ -26,13 +26,13 @@
     float t0;
     int scale_ratio;
     id <MTLTexture> smallOldResultTexture;
-    struct map<std::__1::basic_string<char>, float, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, float>>> tweaks;
+    struct map<std::string, float, std::less<std::string>, std::allocator<std::pair<const std::string, float>>> tweaks;
     struct postprocessing_settings_t current_postprocessing_settings;
     struct shared_ptr<Espresso::V9Engine::v9_noise_kernel> noise_k;
     struct shared_ptr<Espresso::generic_load_constant_kernel> noise_load_constant_kernel;
     NSString *currentNetworkPath;
     long long currentResolutionPreset;
-    shared_ptr_0954c506 precomputed_noise;
+    shared_ptr_b3167edd precomputed_noise;
     id <MTLTexture> tmpDestinationTexture;
     int _rotation_degrees;
     int _flip_y;
@@ -51,7 +51,7 @@
 @property(nonatomic) int flip_y; // @synthesize flip_y=_flip_y;
 @property(nonatomic) int rotation_degrees; // @synthesize rotation_degrees=_rotation_degrees;
 - (float)benchmark;
-- (void)aggregateWisdom:(struct wisdom_trainer2 *)arg1;
+- (void)aggregateWisdom:(void *)arg1;
 - (void)_tune;
 - (void)tune;
 - (id)newOutputTexture;

@@ -35,7 +35,6 @@
 - (id)loadMeetingExternalIDForMessage:(id)arg1;
 - (_Bool)wantsLineEndingConversionForMIMEPart:(id)arg1;
 - (_Bool)shouldDownloadBodyDataForMessage:(id)arg1;
-- (id)copyOfAllMessagesForBodyLoadingFromRowID:(long long)arg1 limit:(unsigned int)arg2;
 - (void)purgeMessagesBeyondLimit:(unsigned long long)arg1 keepingMessage:(id)arg2;
 - (void)deleteMessagesOlderThanNumberOfDays:(int)arg1 compact:(_Bool)arg2;
 - (id)messageForRemoteID:(id)arg1 inMailbox:(id)arg2;
@@ -44,7 +43,6 @@
 - (void)setFlagsForAllMessagesFromDictionary:(id)arg1;
 - (_Bool)replayFlagChange:(id)arg1 forRemoteIDs:(id)arg2 error:(id *)arg3 completed:(_Bool *)arg4;
 - (id)storeSearchResultMatchingSearchText:(id)arg1 criterion:(id)arg2 limit:(unsigned int)arg3 offset:(id)arg4 error:(id *)arg5;
-- (long long)fetchMessagesMatchingCriterion:(id)arg1 limit:(unsigned int)arg2;
 - (void)_remoteIDsMatchingSearchText:(id)arg1 predicate:(id)arg2 limit:(unsigned int)arg3 offset:(id)arg4 filterByDate:(_Bool)arg5 handler:(CDUnknownBlockType)arg6;
 - (long long)fetchNumMessages:(unsigned long long)arg1 preservingUID:(id)arg2 options:(unsigned long long)arg3;
 - (id)folderIDForFetching;

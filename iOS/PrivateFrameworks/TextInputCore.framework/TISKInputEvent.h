@@ -15,7 +15,7 @@
     TIKeyboardInput *_input;
 }
 
-+ (id)makeInputEvent:(id)arg1 order:(long long)arg2 wordSeparator:(id)arg3 accentedLanguage:(_Bool)arg4;
++ (id)makeInputEvent:(id)arg1 emojiSearchMode:(_Bool)arg2 order:(long long)arg3 wordSeparator:(id)arg4 accentedLanguage:(_Bool)arg5;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool ignoreTapData; // @synthesize ignoreTapData=_ignoreTapData;
 @property(retain, nonatomic) TIKeyboardInput *input; // @synthesize input=_input;
@@ -27,7 +27,7 @@
 - (double)downUpTimeDelta;
 - (id)upTouchEvent;
 - (_Bool)isMissingATouch;
-- (id)init:(id)arg1 type:(int)arg2 order:(long long)arg3;
+- (id)init:(id)arg1 type:(int)arg2 emojiSearchMode:(_Bool)arg3 order:(long long)arg4;
 
 @end
 

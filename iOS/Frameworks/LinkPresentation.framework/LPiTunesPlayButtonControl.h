@@ -4,33 +4,43 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class LPInlineMediaPlaybackInformation, MPModelGenericObject, NSTimer;
+#import <LinkPresentation/LPMediaPlayable-Protocol.h>
+#import <LinkPresentation/LPMediaRemotePlaybackObserverClient-Protocol.h>
+
+@class LPInlineMediaPlaybackInformation, NSString;
+@protocol NSObject;
 
 __attribute__((visibility("hidden")))
-@interface LPiTunesPlayButtonControl
+@interface LPiTunesPlayButtonControl <LPMediaPlayable, LPMediaRemotePlaybackObserverClient>
 {
     LPInlineMediaPlaybackInformation *_playbackInformation;
-    NSTimer *_playbackStateUpdateTimer;
-    MPModelGenericObject *_enqueuedItem;
-    MPModelGenericObject *_enqueuedItemContext;
-    double _currentPlaybackPosition;
-    _Bool _currentlyPlaying;
-    _Bool _hasStartedPlaying;
+    id <NSObject> _playbackDidEndNotificationToken;
+    _Bool _wasPlayingMusicWhenLyricExcerptPlaybackStarted;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic, getter=isPlaying) _Bool playing;
+@property(readonly, nonatomic) _Bool hasMuteControl;
+- (id)playable;
 - (_Bool)matchesNowPlayingItem;
 - (void)buttonPressed:(id)arg1;
 - (void)startPlaying;
 - (id)mediaPlaybackApplicationID;
 - (struct _MRSystemAppPlaybackQueue *)createPlaybackQueue;
-- (void)willMoveToWindow:(id)arg1;
+- (void)startPlaybackForLyricExcerpt;
 - (void)didMoveToWindow;
-- (void)updatePlaybackState;
-- (void)stopListeningForPlayback;
-- (void)startListeningForPlayback;
+- (void)resetPlaybackState;
+- (double)desiredUpdateIntervalForMediaRemotePlaybackObserver:(id)arg1;
+- (void)mediaRemotePlaybackObserverPlayingItemDidChange:(id)arg1;
 - (void)updatePlayState;
-- (id)initWithPlaybackInformation:(id)arg1 style:(id)arg2;
+- (void)dealloc;
+- (id)initWithPlaybackInformation:(id)arg1 style:(id)arg2 theme:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

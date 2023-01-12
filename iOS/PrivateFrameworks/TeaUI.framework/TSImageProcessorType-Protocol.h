@@ -8,6 +8,7 @@
 @protocol TSProcessedImageRequestType;
 
 @protocol TSImageProcessorType
+- (UIImage *)process:(id <TSProcessedImageRequestType>)arg1 imageFromCache:(UIImage *)arg2;
 - (UIImage *)process:(id <TSProcessedImageRequestType>)arg1;
 @end
 

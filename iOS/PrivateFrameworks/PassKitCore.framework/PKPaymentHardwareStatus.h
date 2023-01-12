@@ -17,6 +17,7 @@
     _Bool _canMakeRemotePayments;
     _Bool _isSRD;
     _Bool _canDecryptBAAEncryptedData;
+    unsigned long long _type;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -26,6 +27,7 @@
 @property(nonatomic, getter=isInFailForward) _Bool inFailForward; // @synthesize inFailForward=_inFailForward;
 @property(nonatomic) _Bool hasRemoteDevices; // @synthesize hasRemoteDevices=_hasRemoteDevices;
 @property(nonatomic) _Bool hasSecureElement; // @synthesize hasSecureElement=_hasSecureElement;
+@property(nonatomic) unsigned long long type; // @synthesize type=_type;
 @property(readonly, nonatomic, getter=_isDemoModeActive) _Bool _isDemoModeActive;
 @property(readonly, nonatomic) _Bool canMakeLocalPayments;
 @property(readonly, nonatomic) _Bool canMakePayments;

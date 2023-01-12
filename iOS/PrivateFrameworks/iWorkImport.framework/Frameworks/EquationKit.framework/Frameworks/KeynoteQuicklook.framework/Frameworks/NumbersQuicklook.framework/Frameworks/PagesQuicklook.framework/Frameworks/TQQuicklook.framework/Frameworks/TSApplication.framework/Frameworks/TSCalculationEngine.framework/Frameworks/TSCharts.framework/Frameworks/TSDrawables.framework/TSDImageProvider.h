@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class TSPData, TSPObjectContext, TSUFlushingManager, TSUWeakReference;
+@class TSPData, TSPObjectContext, TSUWeakReference;
 
 @interface TSDImageProvider : NSObject
 {
@@ -14,24 +14,18 @@
     TSPData *mImageData;
     TSUWeakReference *mObjectContextReference;
     _Atomic int mRetainCount;
-    _Atomic int mOwnerCount;
-    TSUFlushingManager *mFlushingManager;
     _Atomic int mInterest;
 }
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
 @property(nonatomic) int i_loadState; // @synthesize i_loadState=mLoadState;
-- (unsigned long long)retainCount;
+- (void)i_flushIfNoOneUsing;
 - (oneway void)release;
 - (id)retain;
-- (void)ownerAccess;
-- (void)removeOwner;
-- (void)addOwner;
-- (void)setFlushingManager:(id)arg1;
-- (void)flush;
 - (void)removeInterest;
 - (void)addInterest;
 - (int)interest;
+- (void)flush;
 @property(readonly, nonatomic) unsigned long long i_flushableMemoryEstimate;
 @property(readonly, nonatomic) _Bool i_hasFlushableContent;
 - (void)drawImageInContext:(struct CGContext *)arg1 rect:(struct CGRect)arg2;

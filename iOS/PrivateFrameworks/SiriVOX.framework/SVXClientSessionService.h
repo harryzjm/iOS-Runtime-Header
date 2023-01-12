@@ -26,9 +26,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <SVXClientSessionServiceDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) long long currentState; // @synthesize currentState=_currentState;
 - (void)_setCurrentState:(long long)arg1;
+- (void)fetchAlarmAndTimerFiringContextWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchStateWithCompletion:(CDUnknownBlockType)arg1;
-- (void)clientServiceDidChange;
-- (id)initWithClientServiceProvider:(id)arg1 performer:(id)arg2;
+- (void)clientServiceDidChange:(_Bool)arg1;
+- (id)initWithClientServiceProvider:(id)arg1 analytics:(id)arg2 performer:(id)arg3;
 - (void)handleDidResignActiveWithDeactivationContext:(id)arg1;
 - (void)handleWillResignActiveWithOptions:(unsigned long long)arg1 duration:(double)arg2;
 - (void)handleDidBecomeActiveWithActivationContext:(id)arg1;

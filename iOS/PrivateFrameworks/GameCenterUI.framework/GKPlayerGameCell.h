@@ -12,13 +12,13 @@
     UILabel *_dateLabel;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UILabel *dateLabel; // @synthesize dateLabel=_dateLabel;
 @property(retain, nonatomic) UILabel *statsLabel; // @synthesize statsLabel=_statsLabel;
 - (void)prepareForReuse;
 - (id)statText;
 - (id)leaderboardStringWithGameRecord:(id)arg1;
 - (id)achievementsStringWithGameRecord:(id)arg1;
-- (void)dealloc;
 - (void)didUpdateModel;
 - (id)initWithFrame:(struct CGRect)arg1;
 

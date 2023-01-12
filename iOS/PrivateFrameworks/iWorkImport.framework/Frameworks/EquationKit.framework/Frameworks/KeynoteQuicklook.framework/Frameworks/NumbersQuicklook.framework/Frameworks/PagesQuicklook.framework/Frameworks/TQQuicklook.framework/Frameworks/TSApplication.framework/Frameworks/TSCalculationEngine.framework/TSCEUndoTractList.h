@@ -20,8 +20,8 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(nonatomic) struct TSUPreserveFlags preserveFlags; // @synthesize preserveFlags=_preserveFlags;
-- (_Bool)remapUsingColumnUidMap:(const UUIDMap_b66c2694 *)arg1 rowUidMap:(const UUIDMap_b66c2694 *)arg2 clearIfMissing:(_Bool)arg3;
-- (_Bool)remapUsingUidMap:(const UUIDMap_b66c2694 *)arg1;
+- (_Bool)remapUsingColumnUidMap:(const void *)arg1 rowUidMap:(const void *)arg2 clearIfMissing:(_Bool)arg3;
+- (_Bool)remapUsingUidMap:(const void *)arg1;
 - (id)description;
 - (void)pruneMergeUidTractsAtAndAboveIndex:(unsigned char)arg1;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
@@ -30,16 +30,16 @@
 - (void)dropTract:(id)arg1;
 - (id)firstTractWithPurpose:(unsigned char)arg1;
 - (void)addTractAtFront:(id)arg1;
-- (void)removeFromExcludedUidsTractRowUids:(const vector_4dc5f307 *)arg1;
-- (void)removeFromExcludedUidsTractColumnUids:(const vector_4dc5f307 *)arg1;
-- (void)removeFromExcludedUidsTractRowUidsSet:(const UUIDSet_23f3f095 *)arg1;
-- (void)removeFromExcludedUidsTractColumnUidsSet:(const UUIDSet_23f3f095 *)arg1;
-- (void)addToExcludedTractUids:(const vector_4dc5f307 *)arg1 isRows:(_Bool)arg2;
-- (void)addToExcludedUidsTractRowUids:(const vector_4dc5f307 *)arg1;
-- (void)addToExcludedUidsTractColumnUids:(const vector_4dc5f307 *)arg1;
-- (void)addToIncludedUidsTractColumnUids:(const vector_4dc5f307 *)arg1 rowUids:(const vector_4dc5f307 *)arg2;
-- (void)addToIncludedUidsTractColumnUids:(const vector_4dc5f307 *)arg1 rowUids:(const vector_4dc5f307 *)arg2 isRangeRef:(_Bool)arg3 preserveRectangularRange:(_Bool)arg4;
-- (void)addToIncludedUidsTractColumnUid:(const UUIDData_5fbc143e *)arg1 rowUid:(const UUIDData_5fbc143e *)arg2;
+- (void)removeFromExcludedUidsTractRowUids:(const void *)arg1;
+- (void)removeFromExcludedUidsTractColumnUids:(const void *)arg1;
+- (void)removeFromExcludedUidsTractRowUidsSet:(const void *)arg1;
+- (void)removeFromExcludedUidsTractColumnUidsSet:(const void *)arg1;
+- (void)addToExcludedTractUids:(const void *)arg1 isRows:(_Bool)arg2;
+- (void)addToExcludedUidsTractRowUids:(const void *)arg1;
+- (void)addToExcludedUidsTractColumnUids:(const void *)arg1;
+- (void)addToIncludedUidsTractColumnUids:(const void *)arg1 rowUids:(const void *)arg2;
+- (void)addToIncludedUidsTractColumnUids:(const void *)arg1 rowUids:(const void *)arg2 isRangeRef:(_Bool)arg3 preserveRectangularRange:(_Bool)arg4;
+- (void)addToIncludedUidsTractColumnUid:(struct TSKUIDStruct)arg1 rowUid:(struct TSKUIDStruct)arg2;
 - (id)removedByMoveUidTract;
 - (id)activeUidTract;
 - (id)preMoveRegionUidTract;
@@ -48,8 +48,16 @@
 - (id)includedUidsTract;
 - (unsigned char)tractCount;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)saveToArchive:(struct ASTNodeArrayArchive_ASTUidTractList *)arg1;
-- (id)initWithArchive:(const struct ASTNodeArrayArchive_ASTUidTractList *)arg1;
+- (void)saveToArchive:(void *)arg1;
+- (id)initWithArchive:(const void *)arg1;
+- (void)enumerateRowColumnRuleValuePairsUsingBlock:(CDUnknownBlockType)arg1;
+- (int)flatteningDimension;
+- (struct TSKUIDStruct)aggregateRuleUid;
+- (struct TSKUIDStruct)rowHeaderUid;
+- (struct TSKUIDStruct)columnHeaderUid;
+- (_Bool)hasFullTupleInformation;
+- (void)addRowColumnRuleValuePair:(struct TSKUIDStruct)arg1 valueUid:(struct TSKUIDStruct)arg2;
+- (id)initAsFullTupleForColumnHeaderUid:(struct TSKUIDStruct)arg1 rowHeaderUid:(struct TSKUIDStruct)arg2 aggregateRuleUid:(struct TSKUIDStruct)arg3 flatteningDimension:(int)arg4;
 
 @end
 

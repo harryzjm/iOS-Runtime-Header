@@ -33,6 +33,7 @@
 @property(retain, nonatomic) NSMutableArray *spacingHelpers; // @synthesize spacingHelpers=_spacingHelpers;
 @property(retain, nonatomic) NSMutableArray *iconViews; // @synthesize iconViews=_iconViews;
 @property __weak id <SearchUIFeedbackDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)didUpdateKeyboardFocusToResult:(id)arg1 cardSection:(id)arg2;
 - (void)layoutSubviews;
 - (struct CGRect)layoutFrameForArrangedSubview:(id)arg1 withProposedContentFrame:(struct CGRect)arg2;
 - (struct CGSize)contentLayoutSizeFittingSize:(struct CGSize)arg1 forArrangedSubview:(id)arg2;
@@ -40,8 +41,6 @@
 - (long long)numberOfItemsInGridArrangement:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
-- (void)didEngageResult:(id)arg1 withTriggerEvent:(unsigned long long)arg2 destination:(unsigned long long)arg3;
-- (void)didEngageResult:(id)arg1;
 - (void)updateWithResultsForRow:(id)arg1;
 - (id)init;
 

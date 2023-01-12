@@ -21,6 +21,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSDictionary *payload; // @synthesize payload=_payload;
 @property(readonly, nonatomic) NSString *logKey; // @synthesize logKey=_logKey;
+- (id)objectForKeyedSubscript:(id)arg1;
 @property(readonly, nonatomic) NSString *URLString;
 @property(readonly, nonatomic) long long priority;
 @property(readonly, nonatomic) NSString *clientIdentifier;

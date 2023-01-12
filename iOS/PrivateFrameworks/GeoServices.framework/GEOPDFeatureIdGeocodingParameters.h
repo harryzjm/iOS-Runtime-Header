@@ -8,46 +8,42 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, PBUnknownFields;
+@class GEOLatLng, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDFeatureIdGeocodingParameters : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    CDStruct_62a50c50 _encryptedFeatureIds;
     unsigned long long _featureId;
     GEOLatLng *_location;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _formattedAddressType;
     struct {
         unsigned int has_featureId:1;
         unsigned int has_formattedAddressType:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_encryptedFeatureIds:1;
+        unsigned int read_location:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (int)StringAsFormattedAddressType:(id)arg1;
-- (id)formattedAddressTypeAsString:(int)arg1;
-@property(nonatomic) _Bool hasFormattedAddressType;
-@property(nonatomic) int formattedAddressType;
-@property(retain, nonatomic) GEOLatLng *location;
-@property(readonly, nonatomic) _Bool hasLocation;
-@property(nonatomic) _Bool hasFeatureId;
-@property(nonatomic) unsigned long long featureId;
+- (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

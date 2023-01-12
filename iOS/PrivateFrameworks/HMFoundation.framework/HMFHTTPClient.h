@@ -9,7 +9,7 @@
 #import <HMFoundation/HMFTimerDelegate-Protocol.h>
 #import <HMFoundation/NSURLSessionDelegate-Protocol.h>
 
-@class HMFExponentialBackoffTimer, HMFHTTPClientConfiguration, HMFNetMonitor, HMFNetService, NSObject, NSOperationQueue, NSString, NSURL, NSURLSession;
+@class HMFHTTPClientConfiguration, HMFNetManager, HMFNetMonitor, HMFNetService, HMFTimer, NSObject, NSOperationQueue, NSString, NSURL, NSURLSession;
 @protocol HMFHTTPClientDelegate, OS_dispatch_queue;
 
 @interface HMFHTTPClient <HMFLogging, HMFNetMonitorDelegate, HMFTimerDelegate, NSURLSessionDelegate>
@@ -27,13 +27,17 @@
     NSURLSession *_session;
     HMFNetMonitor *_reachabilityMonitor;
     NSOperationQueue *_reachabilityProbeQueue;
-    HMFExponentialBackoffTimer *_delegatedPingTimer;
+    HMFNetManager *_netManager;
+    HMFTimer *_delegatedPingTimer;
+    CDUnknownBlockType _timerFactory;
 }
 
 + (id)logCategory;
 + (id)baseURLWithScheme:(id)arg1 hostAddress:(id)arg2 port:(unsigned long long)arg3;
 - (void).cxx_destruct;
-@property(retain, nonatomic) HMFExponentialBackoffTimer *delegatedPingTimer; // @synthesize delegatedPingTimer=_delegatedPingTimer;
+@property(copy) CDUnknownBlockType timerFactory; // @synthesize timerFactory=_timerFactory;
+@property(retain, nonatomic) HMFTimer *delegatedPingTimer; // @synthesize delegatedPingTimer=_delegatedPingTimer;
+@property(readonly, nonatomic) HMFNetManager *netManager; // @synthesize netManager=_netManager;
 @property(readonly, nonatomic) NSOperationQueue *reachabilityProbeQueue; // @synthesize reachabilityProbeQueue=_reachabilityProbeQueue;
 @property(readonly, nonatomic) HMFNetMonitor *reachabilityMonitor; // @synthesize reachabilityMonitor=_reachabilityMonitor;
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
@@ -50,6 +54,7 @@
 - (void)resolveWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)invalidate;
 - (void)cancelPendingRequests;
+- (void)_sendRequest:(id)arg1 baseURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)sendRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)stopDelegatedPingTimer;
 - (void)startDelegatedPingTimer;
@@ -62,9 +67,12 @@
 @property(readonly, copy) HMFHTTPClientConfiguration *configuration; // @synthesize configuration=_configuration;
 - (id)attributeDescriptions;
 - (void)dealloc;
-- (void)__initializeWithConfiguration:(id)arg1;
+- (void)finishCommonInitialization;
+- (id)createNSURLSession:(id)arg1;
+- (id)initWithService:(id)arg1 configuration:(id)arg2 session:(id)arg3 reachabilityMonitor:(id)arg4 netManager:(id)arg5;
 - (id)initWithService:(id)arg1 configuration:(id)arg2;
 - (id)initWithNetService:(id)arg1 options:(unsigned long long)arg2;
+- (id)initWithBaseURL:(id)arg1 configuration:(id)arg2 session:(id)arg3 reachabilityMonitor:(id)arg4 netManager:(id)arg5;
 - (id)initWithBaseURL:(id)arg1 configuration:(id)arg2;
 - (id)initWithBaseURL:(id)arg1 options:(unsigned long long)arg2;
 - (id)init;

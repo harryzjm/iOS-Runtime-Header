@@ -12,9 +12,12 @@
 {
 }
 
+- (id)initWithCoder:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 displayString:(id)arg2 pronunciationHint:(id)arg3;
 
 // Remaining properties
-@property(copy, nonatomic) NSString *name; // @dynamic name;
+@property(nonatomic, copy) NSString *name; // @dynamic name;
 @property(nonatomic) long long role; // @dynamic role;
+
 @end
 

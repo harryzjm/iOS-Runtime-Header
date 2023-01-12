@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_faaa60fe)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_faaa60fe)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSString *transcript;
 @property(readonly, nonatomic) NSString *task_name;
 @property(readonly, nonatomic) NSString *language;

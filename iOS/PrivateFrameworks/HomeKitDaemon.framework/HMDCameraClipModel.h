@@ -12,14 +12,18 @@
 {
 }
 
-+ (id)countOfClipsBetweenDatesQuery;
-+ (id)clipsBetweenDatesQueryWithIsAscending:(_Bool)arg1;
++ (id)qualityPredicate;
++ (id)countOfClipsWithQualityBetweenDatesQuery;
++ (id)clipsWithQualityBetweenDatesDescendingQuery;
++ (id)clipsWithQualityBetweenDatesAscendingQuery;
++ (id)clipsBeforeDateQuery;
 + (id)clipsWithNeedsUploadFeedbackStatusQuery;
 + (id)incompleteClipsQuery;
 + (id)sentinelParentUUID;
 + (id)hmbQueries;
 + (id)hmbExternalRecordType;
 + (id)hmbProperties;
+@property long long quality;
 @property unsigned long long feedbackStatus;
 - (id)createClipWithSignificantEvents:(id)arg1;
 
@@ -33,6 +37,7 @@
 @property(retain, nonatomic) NSArray *posterFramesMetadata; // @dynamic posterFramesMetadata;
 @property(retain, nonatomic) NSArray *posterFramesMetadataArray; // @dynamic posterFramesMetadataArray;
 @property(retain, nonatomic) HMBStreamingAsset *posterFramesStreamingAsset; // @dynamic posterFramesStreamingAsset;
+@property(retain, nonatomic) NSNumber *qualityField; // @dynamic qualityField;
 @property(retain, nonatomic) NSNumber *recordedLocally; // @dynamic recordedLocally;
 @property(retain, nonatomic) NSDate *startDate; // @dynamic startDate;
 @property(retain, nonatomic) NSString *streamingAssetVersion; // @dynamic streamingAssetVersion;

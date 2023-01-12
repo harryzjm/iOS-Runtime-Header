@@ -8,18 +8,18 @@
 
 #import <IBCocoaTouchToolFoundation/IBBinaryArchiving-Protocol.h>
 
-@class IBUITraitCollection, NSMutableSet, NSSet, NSString;
+@class IBUITraitCollection, NSMutableOrderedSet, NSOrderedSet, NSString;
 
 @interface IBUIRelationshipTraitStorageRecord : NSObject <IBBinaryArchiving>
 {
-    NSMutableSet *_addedObjectIDs;
-    NSMutableSet *_removedObjectIDs;
+    NSMutableOrderedSet *_addedObjectIDs;
+    NSMutableOrderedSet *_removedObjectIDs;
     IBUITraitCollection *_traitCollection;
 }
 
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSSet *removedObjectIDs; // @synthesize removedObjectIDs=_removedObjectIDs;
-@property(readonly, copy, nonatomic) NSSet *addedObjectIDs; // @synthesize addedObjectIDs=_addedObjectIDs;
+@property(readonly, copy, nonatomic) NSOrderedSet *removedObjectIDs; // @synthesize removedObjectIDs=_removedObjectIDs;
+@property(readonly, copy, nonatomic) NSOrderedSet *addedObjectIDs; // @synthesize addedObjectIDs=_addedObjectIDs;
 @property(readonly, copy, nonatomic) IBUITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 @property(readonly, copy) NSString *description;
 - (id)descriptionWithLocale:(id)arg1 indent:(unsigned long long)arg2;

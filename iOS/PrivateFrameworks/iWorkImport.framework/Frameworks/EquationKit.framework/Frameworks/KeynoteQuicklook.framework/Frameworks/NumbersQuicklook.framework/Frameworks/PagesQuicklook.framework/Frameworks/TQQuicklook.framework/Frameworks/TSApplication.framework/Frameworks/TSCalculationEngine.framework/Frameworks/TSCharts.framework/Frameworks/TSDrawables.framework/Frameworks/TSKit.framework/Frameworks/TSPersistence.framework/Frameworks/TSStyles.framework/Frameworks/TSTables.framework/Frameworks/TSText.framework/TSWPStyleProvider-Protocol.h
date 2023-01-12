@@ -6,9 +6,13 @@
 
 #import <TSText/NSObject-Protocol.h>
 
-@class TSWPParagraphStyle;
+@class TSSPropertyMap, TSWPCharacterStyle, TSWPDropCapStyle, TSWPEquationLayout, TSWPListStyle, TSWPParagraphStyle;
 
 @protocol TSWPStyleProvider <NSObject>
+- (TSSPropertyMap *)textPropertiesForEquation:(TSWPEquationLayout *)arg1 basedOnProperties:(TSSPropertyMap *)arg2;
+- (TSWPDropCapStyle *)dropCapStyleAtParIndex:(unsigned long long)arg1;
+- (TSWPListStyle *)listStyleAtParIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
+- (TSWPCharacterStyle *)characterStyleAtCharIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
 - (TSWPParagraphStyle *)paragraphStyleAtParIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
 
 @optional

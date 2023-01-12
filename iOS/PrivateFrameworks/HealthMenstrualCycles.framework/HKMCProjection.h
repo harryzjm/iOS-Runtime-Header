@@ -6,25 +6,34 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthMenstrualCycles/HKRedactedDescription-Protocol.h>
 #import <HealthMenstrualCycles/NSCopying-Protocol.h>
 #import <HealthMenstrualCycles/NSSecureCoding-Protocol.h>
 
-@interface HKMCProjection : NSObject <NSSecureCoding, NSCopying>
+@class NSString;
+
+@interface HKMCProjection : NSObject <HKRedactedDescription, NSSecureCoding, NSCopying>
 {
+    _Bool _partiallyLogged;
+    long long _daysOffsetFromCalendarMethod;
     double _startMean;
     double _startStandardDeviation;
     double _endMean;
     double _endStandardDeviation;
-    _Bool _partiallyLogged;
     CDStruct_ef5fcbe6 _allDays;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(readonly) double endStandardDeviation; // @synthesize endStandardDeviation=_endStandardDeviation;
+@property(readonly) double endMean; // @synthesize endMean=_endMean;
+@property(readonly) double startStandardDeviation; // @synthesize startStandardDeviation=_startStandardDeviation;
+@property(readonly) double startMean; // @synthesize startMean=_startMean;
+@property(readonly, nonatomic) long long daysOffsetFromCalendarMethod; // @synthesize daysOffsetFromCalendarMethod=_daysOffsetFromCalendarMethod;
 @property(readonly, nonatomic, getter=isPartiallyLogged) _Bool partiallyLogged; // @synthesize partiallyLogged=_partiallyLogged;
 @property(readonly, nonatomic) CDStruct_ef5fcbe6 allDays; // @synthesize allDays=_allDays;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)redactedDescription;
+@property(readonly, copy) NSString *hk_redactedDescription;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (long long)_dayIndexFromMean:(double)arg1 standardDeviation:(double)arg2 coefficient:(double)arg3;
@@ -34,7 +43,7 @@
 @property(readonly, nonatomic) CDStruct_ef5fcbe6 mostLikelyDays;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithStartMean:(double)arg1 startStandardDeviation:(double)arg2 endMean:(double)arg3 endStandardDeviation:(double)arg4 allDays:(CDStruct_ef5fcbe6)arg5 partiallyLogged:(_Bool)arg6;
+- (id)initWithStartMean:(double)arg1 startStandardDeviation:(double)arg2 endMean:(double)arg3 endStandardDeviation:(double)arg4 allDays:(CDStruct_ef5fcbe6)arg5 partiallyLogged:(_Bool)arg6 daysOffsetFromCalendarMethod:(long long)arg7;
 
 @end
 

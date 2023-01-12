@@ -6,8 +6,9 @@
 
 #import <TextRecognition/NSObject-Protocol.h>
 
+@class CRConfidenceThresholds, CRTextFeature;
+
 @protocol CRConfidenceThresholdProviding <NSObject>
-@property(readonly) float highConfidenceThreshold;
-@property(readonly) float mediumConfidenceThreshold;
+- (CRConfidenceThresholds *)thresholdsForTextFeature:(CRTextFeature *)arg1;
 @end
 

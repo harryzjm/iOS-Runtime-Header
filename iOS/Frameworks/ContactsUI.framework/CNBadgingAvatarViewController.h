@@ -9,24 +9,33 @@
 #import <ContactsUI/CNUIObjectViewController-Protocol.h>
 #import <ContactsUI/CNUIObjectViewControllerDelegate-Protocol.h>
 
-@class CNAvatarViewController, NSArray, NSString, UIImage, UIImageView, UIView;
+@class CNAvatarAccessoryView, CNAvatarViewController, CNBadgingAvatarBadgeStyleSettings, CNBadgingAvatarView, NSArray, NSString, UIImage, UIView;
 @protocol CNUIObjectViewControllerDelegate;
 
 @interface CNBadgingAvatarViewController : NSObject <CNUIObjectViewControllerDelegate, CNUIObjectViewController>
 {
+    _Bool _isMarkedForSyndication;
+    _Bool _isDoNotDisturb;
     id <CNUIObjectViewControllerDelegate> objectViewControllerDelegate;
-    CNAvatarViewController *_avatarViewController;
+    UIImage *_badgeImage;
+    CNBadgingAvatarBadgeStyleSettings *_badgeStyleSettings;
     UIView *_containerView;
-    UIImageView *_badgeImageView;
+    CNBadgingAvatarView *_badgingAvatarView;
+    CNAvatarViewController *_avatarViewController;
+    CNAvatarAccessoryView *_mediaContextBadge;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) UIImageView *badgeImageView; // @synthesize badgeImageView=_badgeImageView;
-@property(retain, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
+@property(nonatomic) _Bool isDoNotDisturb; // @synthesize isDoNotDisturb=_isDoNotDisturb;
+@property(nonatomic) _Bool isMarkedForSyndication; // @synthesize isMarkedForSyndication=_isMarkedForSyndication;
+@property(retain, nonatomic) CNAvatarAccessoryView *mediaContextBadge; // @synthesize mediaContextBadge=_mediaContextBadge;
 @property(retain, nonatomic) CNAvatarViewController *avatarViewController; // @synthesize avatarViewController=_avatarViewController;
+@property(retain, nonatomic) CNBadgingAvatarView *badgingAvatarView; // @synthesize badgingAvatarView=_badgingAvatarView;
+@property(retain, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
+@property(retain, nonatomic) CNBadgingAvatarBadgeStyleSettings *badgeStyleSettings; // @synthesize badgeStyleSettings=_badgeStyleSettings;
+@property(retain, nonatomic) UIImage *badgeImage; // @synthesize badgeImage=_badgeImage;
 @property(nonatomic) __weak id <CNUIObjectViewControllerDelegate> objectViewControllerDelegate; // @synthesize objectViewControllerDelegate;
 - (id)hostingViewControllerForController:(id)arg1;
-@property(retain, nonatomic) UIImage *badgeImage;
 - (void)setupContainerViewIfNeeded;
 @property(readonly, nonatomic) UIView *view;
 @property(copy, nonatomic) NSArray *contacts;

@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (struct UIEdgeInsets)cellSeparatorInset;
 - (id)cellNameTextEmphasisedFont;
 - (id)cellNameTextFont;
+- (id)cellBlueSelectionSecondaryTextColor;
 - (id)cellSearchResultTextDisabledColor;
 - (id)cellSearchResultTextColor;
 - (id)cellSearchBackgroundColor;

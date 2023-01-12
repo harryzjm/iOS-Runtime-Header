@@ -13,6 +13,9 @@
 
 @interface HKRPOnboardingSettingsViewController : UIViewController <BPSMiniFlowStepController>
 {
+    _Bool _didLayoutSubviews;
+    _Bool _isInitialInsetsSet;
+    _Bool _isVisible;
     id <BPSSetupMiniFlowControllerDelegate> miniFlowDelegate;
     long long _style;
     HKRPOxygenSaturationSettings *_settings;
@@ -28,9 +31,14 @@
     UIVisualEffectView *_blurView;
     UIScrollView *_scrollView;
     UIView *_contentView;
+    struct UIEdgeInsets _initialInsets;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isVisible; // @synthesize isVisible=_isVisible;
+@property(nonatomic) _Bool isInitialInsetsSet; // @synthesize isInitialInsetsSet=_isInitialInsetsSet;
+@property(nonatomic) struct UIEdgeInsets initialInsets; // @synthesize initialInsets=_initialInsets;
+@property(nonatomic) _Bool didLayoutSubviews; // @synthesize didLayoutSubviews=_didLayoutSubviews;
 @property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property(retain, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property(retain, nonatomic) UIVisualEffectView *blurView; // @synthesize blurView=_blurView;
@@ -61,8 +69,13 @@
 - (void)_onboardWithCompletion:(CDUnknownBlockType)arg1;
 - (double)_calculateHeroHorizontalMarginForViewFrame:(struct CGRect)arg1;
 - (void)suggestedChoiceButtonPressed:(id)arg1;
-- (void)viewDidLayoutSubviews;
-- (void)viewDidLoad;
+- (void)layoutUI;
+- (void)createUI;
+- (void)viewDidDisappear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
+- (void)setInsetsIfNeeded;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)viewSafeAreaInsetsDidChange;
 - (id)initWithStyle:(long long)arg1 settings:(id)arg2 onboardingManager:(id)arg3 onboardingDelegate:(id)arg4;
 
 @end

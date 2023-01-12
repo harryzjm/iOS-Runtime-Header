@@ -15,11 +15,15 @@
     int _entryViewInvisible;
     _Bool _cameraSelectionDisabled;
     _Bool _forceMMS;
+    _Bool _appearCompleted;
     CKChatEagerUploadController *_eagerUploadController;
     NSMutableArray *_deferredInsertMediaObjectBlocks;
+    struct CGRect _frameOfSpaceCoveredByKeyboard;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) struct CGRect frameOfSpaceCoveredByKeyboard; // @synthesize frameOfSpaceCoveredByKeyboard=_frameOfSpaceCoveredByKeyboard;
+@property(nonatomic) _Bool appearCompleted; // @synthesize appearCompleted=_appearCompleted;
 @property(retain, nonatomic) NSMutableArray *deferredInsertMediaObjectBlocks; // @synthesize deferredInsertMediaObjectBlocks=_deferredInsertMediaObjectBlocks;
 @property(retain, nonatomic) CKChatEagerUploadController *eagerUploadController; // @synthesize eagerUploadController=_eagerUploadController;
 @property(nonatomic) _Bool forceMMS; // @synthesize forceMMS=_forceMMS;
@@ -44,17 +48,20 @@
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (double)_offsetForScreenWidth:(double)arg1 containerWidth:(double)arg2 windowOffset:(struct CGPoint)arg3;
-- (_Bool)getContainerWidth:(double *)arg1 offset:(double *)arg2;
+- (_Bool)messageEntryViewWidth:(double *)arg1 andOffset:(double *)arg2;
 - (void)insertData:(id)arg1 MIMEType:(id)arg2 exportedFilename:(id)arg3;
 - (id)proposedParticipantHandles;
 - (void)insertFileURL:(id)arg1 filename:(id)arg2 transcoderUserInfo:(id)arg3 fullyRealizedPreview:(id)arg4 rawPreview:(id)arg5 appendedVideoURL:(id)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)insertMessage:(id)arg1 appProxy:(id)arg2;
 - (double)_maxEntryViewHeight;
+- (void)keyboardWillChangeFrame:(id)arg1;
 - (void)insertRichLinkWithURL:(id)arg1 data:(id)arg2;
 - (_Bool)_insertMediaObject:(id)arg1;
 - (void)_insertMediaObjectAndReturnFrame:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setEntryView:(id)arg1;
 - (_Bool)_canShowWhileLocked;
 - (void)setComposition:(id)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
 - (id)initWithNavigationController:(id)arg1;
 
 @end

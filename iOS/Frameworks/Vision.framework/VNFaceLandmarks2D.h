@@ -36,16 +36,15 @@
     struct os_unfair_lock_s _rightPupilLock;
     unsigned long long _constellation;
     NSArray *_precisionEstimatesPerPoint;
-    NSArray *_occlusionFlagsPerPoint;
 }
 
 + (id)_createNSArrayFrom:(id)arg1 withPointIndices:(const int *)arg2 andPointCount:(unsigned long long)arg3;
 + (_Bool)supportsSecureCoding;
++ (id)defaultOriginatingRequestClassNameForRequestRevision:(unsigned long long)arg1;
 + (unsigned long long)landmarkPointSizeInBytes;
 - (void).cxx_destruct;
-@property(retain) NSArray *occlusionFlagsPerPoint; // @synthesize occlusionFlagsPerPoint=_occlusionFlagsPerPoint;
-@property(retain) NSArray *precisionEstimatesPerPoint; // @synthesize precisionEstimatesPerPoint=_precisionEstimatesPerPoint;
-@property unsigned long long constellation; // @synthesize constellation=_constellation;
+@property(copy) NSArray *precisionEstimatesPerPoint; // @synthesize precisionEstimatesPerPoint=_precisionEstimatesPerPoint;
+@property(readonly) unsigned long long constellation; // @synthesize constellation=_constellation;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) VNFaceLandmarkRegion2D *rightPupil; // @synthesize rightPupil=_rightPupil;
 @property(readonly) VNFaceLandmarkRegion2D *leftPupil; // @synthesize leftPupil=_leftPupil;
@@ -62,12 +61,11 @@
 @property(readonly) VNFaceLandmarkRegion2D *faceContour; // @synthesize faceContour=_faceContour;
 @property(readonly) VNFaceLandmarkRegion2D *allPoints; // @synthesize allPoints=_allPoints;
 - (void *)_createPointArray:(const int *)arg1 count:(unsigned long long)arg2;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (void)_initLocks;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithRequestRevision:(unsigned long long)arg1 pointsData:(id)arg2 pointCount:(unsigned long long)arg3 constellation:(unsigned long long)arg4 precisionEstimatesPerPoint:(id)arg5 occlusionFlagsPerPoint:(id)arg6 userFacingBBox:(struct CGRect)arg7 alignedBBox:(struct _Geometry2D_rect2D_)arg8 landmarkScore:(float)arg9;
+- (id)initWithOriginatingRequestSpecifier:(id)arg1 pointsData:(id)arg2 pointCount:(unsigned long long)arg3 constellation:(unsigned long long)arg4 precisionEstimatesPerPoint:(id)arg5 userFacingBBox:(struct CGRect)arg6 alignedBBox:(struct _Geometry2D_rect2D_)arg7 landmarkScore:(float)arg8;
 
 @end
 

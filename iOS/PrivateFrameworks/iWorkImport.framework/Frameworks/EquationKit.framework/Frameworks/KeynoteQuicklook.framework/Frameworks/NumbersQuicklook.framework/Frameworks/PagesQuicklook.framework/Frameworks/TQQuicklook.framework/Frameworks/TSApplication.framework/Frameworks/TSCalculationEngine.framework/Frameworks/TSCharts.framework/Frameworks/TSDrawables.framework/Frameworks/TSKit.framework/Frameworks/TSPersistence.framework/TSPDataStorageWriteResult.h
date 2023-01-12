@@ -11,21 +11,23 @@
 
 @interface TSPDataStorageWriteResult : NSObject
 {
-    _Bool _didCopyDataToPackage;
     _Bool _isMissingData;
     NSString *_filename;
     id <TSPCryptoInfo> _encryptionInfo;
+    long long _packageStorageType;
     unsigned long long _encodedLength;
+    unsigned long long _changeCount;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long changeCount; // @synthesize changeCount=_changeCount;
 @property(readonly, nonatomic) _Bool isMissingData; // @synthesize isMissingData=_isMissingData;
 @property(readonly, nonatomic) unsigned long long encodedLength; // @synthesize encodedLength=_encodedLength;
-@property(readonly, nonatomic) _Bool didCopyDataToPackage; // @synthesize didCopyDataToPackage=_didCopyDataToPackage;
+@property(readonly, nonatomic) long long packageStorageType; // @synthesize packageStorageType=_packageStorageType;
 @property(readonly, nonatomic) id <TSPCryptoInfo> encryptionInfo; // @synthesize encryptionInfo=_encryptionInfo;
 @property(readonly, nonatomic) NSString *filename; // @synthesize filename=_filename;
 - (id)init;
-- (id)initWithFilename:(id)arg1 encryptionInfo:(id)arg2 didCopyDataToPackage:(_Bool)arg3 encodedLength:(unsigned long long)arg4 isMissingData:(_Bool)arg5;
+- (id)initWithFilename:(id)arg1 encryptionInfo:(id)arg2 packageStorageType:(long long)arg3 encodedLength:(unsigned long long)arg4 isMissingData:(_Bool)arg5 changeCount:(unsigned long long)arg6;
 
 @end
 

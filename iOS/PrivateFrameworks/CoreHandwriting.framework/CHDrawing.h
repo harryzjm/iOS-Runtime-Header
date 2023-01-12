@@ -23,18 +23,19 @@
 - (double)averageCharacterHeightEstimation:(double)arg1 minChunkHeight:(double)arg2;
 - (struct CGRect)boundingBoxForDrawingSegmentFromCutPoint:(id)arg1 toCutPoint:(id)arg2;
 - (void)appendSegment:(id)arg1 fromDrawing:(id)arg2;
-- (id)findSignalCutPointsExcludingStrokes:(set_54c7c768)arg1;
+- (id)findSignalCutPointsExcludingStrokes:(set_f63680ae)arg1;
 - (id)filterPointsWithProximity:(double)arg1 fixedPoints:(id)arg2 points:(id)arg3;
-- (id)findLocalYMaximaWithWindowSize:(unsigned long long)arg1 excludingStrokes:(set_54c7c768)arg2;
+- (id)findLocalYMaximaWithWindowSize:(unsigned long long)arg1 excludingStrokes:(set_f63680ae)arg2;
 - (id)initialSegmentationPointIndicesForDrawing;
 - (void)setLineHeight:(double)arg1;
-- (vector_afed86a5)strokeIndicesSortedByMinXCoordinate;
-- (id)drawingSpatiallyResampled:(double)arg1 outputPointMap:(vector_1dba4e4e *)arg2;
+- (vector_5c2ed87a)strokeIndicesSortedByMinXCoordinate;
+- (id)drawingSpatiallyResampled:(double)arg1 outputPointMap:(void *)arg2;
 - (id)drawingTransformedWithTranslation:(struct CGVector)arg1 scaleFactor:(double)arg2;
 - (id)drawingScaledByFactor:(double)arg1;
 - (id)sortedDrawingUsingMinXCoordinate;
 - (Matrix_273a43f8)orientationRepresentationForSampling:(unsigned long long)arg1 convolutionWidth:(unsigned long long)arg2;
 - (Matrix_273a43f8)bitmapRepresentationForSize:(struct CGSize)arg1;
+- (id)jsonStringRepresentation;
 - (id)xyRepresentation;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -48,6 +49,8 @@
 - (float)cumulativePointToPointDistance;
 - (struct CGRect)bounds;
 - (struct CGRect)strokeBoundsAtIndex:(unsigned long long)arg1;
+- (struct CGRect)boundsForStrokeIndex:(unsigned long long)arg1;
+- (struct CGRect)boundsForStrokeIndexes:(id)arg1;
 - (struct CGPoint)centroidForStrokeIndexes:(id)arg1;
 - (id)drawingWithStrokesFromIndexSet:(id)arg1;
 - (id)indexesOfStrokesSmallerThanSize:(struct CGSize)arg1;
@@ -58,6 +61,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithContentsOfJSONDictionary:(id)arg1;
 - (id)initWithContentsOfXYString:(id)arg1;
 - (id)initWithContentsOfFile:(id)arg1;
 

@@ -6,11 +6,40 @@
 
 #import <NetworkServiceProxy/NSObject-Protocol.h>
 
-@class NPUsageReport, NPWaldo, NSDate, NSDictionary, NSPAppRule, NSPConfiguration, NSString;
+@class NPUsageReport, NPWaldo, NSData, NSDate, NSDictionary, NSPAppRule, NSPConfiguration, NSString, PrivacyProxyNetworkStatus;
 
 @protocol NSPServerCommands <NSObject>
 
 @optional
+- (void)sendRTCReport:(long long)arg1 errorCode:(long long)arg2 url:(NSString *)arg3 completionHandler:(void (^)(NSError *))arg4;
+- (void)getPrivacyProxyEffectiveUserTierWithCompletionHandler:(void (^)(unsigned long long, NSError *))arg1;
+- (void)getPrivacyProxyAccountTypeWithCompletionHandler:(void (^)(unsigned long long, NSError *))arg1;
+- (void)getGeohashSharingPreferenceWithCompletionHandler:(void (^)(_Bool, NSError *))arg1;
+- (void)setGeohashSharingPreference:(_Bool)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)overridePreferredResolver:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)overridePreferredProxy:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)getPrivacyProxyInfoWithCompletionHandler:(void (^)(PrivacyProxyInfo *, NSError *))arg1;
+- (void)stopLocationMonitor;
+- (void)startLocationMonitor;
+- (void)setLocationMonitorInterval:(double)arg1;
+- (void)locationAuthorizationStatusWithCompletionHandler:(void (^)(_Bool))arg1;
+- (void)mergePrivacyProxyPolicy:(void (^)(NSDictionary *, NSError *))arg1;
+- (_Bool)removePrivacyProxyPolicy;
+- (void)setPrivacyProxyPolicy:(NSData *)arg1 completionHandler:(void (^)(_Bool))arg2;
+- (void)getPrivacyProxyPolicyWithCompletionHandler:(void (^)(NSDictionary *))arg1;
+- (void)getPrivacyProxyTrafficStateWithCompletionHandler:(void (^)(unsigned long long, NSError *))arg1;
+- (void)setPrivacyProxyTrafficState:(unsigned long long)arg1 proxyTraffic:(unsigned long long)arg2 completionHandler:(void (^)(NSError *))arg3;
+- (void)getPrivacyProxyUserTierWithCompletionHandler:(void (^)(unsigned long long, NSError *))arg1;
+- (void)setPrivacyProxyUserTier:(unsigned long long)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)reportPrivacyProxyNetworkStatus:(PrivacyProxyNetworkStatus *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)reportPrivacyProxyServiceStatus:(unsigned long long)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)getPrivacyProxyServiceStatusTimelineWithCompletionHandler:(void (^)(NSArray *, NSError *))arg1;
+- (void)getPrivacyProxyServiceStatusWithCompletionHandler:(void (^)(PrivacyProxyServiceStatus *, NSError *))arg1;
+- (void)getPrivacyProxyStatusWithCompletionHandler:(void (^)(_Bool, NSError *))arg1;
+- (void)setPrivacyProxyStatus:(_Bool)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)convertPrivacyProxyConfigurationWithCompletionHandler:(NSData *)arg1 completionHandler:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)setPrivacyProxyConfiguration:(NSDictionary *)arg1 completionHandler:(void (^)(NSString *))arg2;
+- (void)getPrivacyProxyConfiguration:(void (^)(NSDictionary *))arg1;
 - (void)setTestLatencyMap:(NSDictionary *)arg1 completionHandler:(void (^)(_Bool))arg2;
 - (void)fetchStateForClient:(NSString *)arg1 withPeerEndpoint:(NSString *)arg2 completionHandler:(void (^)(NSDictionary *, NSString *, NSURL *))arg3;
 - (void)setCurrentLatitude:(double)arg1 longitude:(double)arg2 timestamp:(NSDate *)arg3 forClient:(NSString *)arg4;

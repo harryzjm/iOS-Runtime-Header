@@ -9,19 +9,19 @@
 #import <PhotoLibraryServices/PLFrequentLocationProtocol-Protocol.h>
 
 @class NSDateInterval, NSMutableArray, NSSet, NSString;
-@protocol PLMomentProtocol;
+@protocol PLMomentProcessingProtocol;
 
 @interface PLFrequentLocation : NSObject <PLFrequentLocationProtocol>
 {
     NSMutableArray *_sortedMoments;
     NSDateInterval *_dateInterval;
     NSSet *_momentsSet;
-    id <PLMomentProtocol> _centroid;
+    id <PLMomentProcessingProtocol> _centroid;
     struct CLLocationCoordinate2D _coordinate;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) id <PLMomentProtocol> centroid; // @synthesize centroid=_centroid;
+@property(retain, nonatomic) id <PLMomentProcessingProtocol> centroid; // @synthesize centroid=_centroid;
 @property(retain, nonatomic) NSSet *momentsSet; // @synthesize momentsSet=_momentsSet;
 @property(retain, nonatomic) NSDateInterval *dateInterval; // @synthesize dateInterval=_dateInterval;
 @property(nonatomic) struct CLLocationCoordinate2D coordinate; // @synthesize coordinate=_coordinate;

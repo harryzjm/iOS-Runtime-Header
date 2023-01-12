@@ -11,6 +11,7 @@
 @interface _TtC8NewsFeed15FeedLayoutCache : _TtCs12_SwiftObject
 {
     MISSING_TYPE *cache;
+    MISSING_TYPE *database;
 }
 
 @end

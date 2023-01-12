@@ -8,7 +8,6 @@
 
 @class CKRecord, NSMutableSet;
 
-__attribute__((visibility("hidden")))
 @interface CKRecordGraphNode : NSObject
 {
     NSMutableSet *_edges;

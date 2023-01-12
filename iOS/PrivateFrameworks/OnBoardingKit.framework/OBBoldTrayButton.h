@@ -4,14 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSAttributedString, NSNumber;
+
 @interface OBBoldTrayButton
 {
+    NSNumber *_buttonStateRequiredHeight;
+    NSAttributedString *_cachedDisableStateTitle;
 }
 
 + (id)boldButton;
-- (struct UIEdgeInsets)contentEdgeInsets;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSAttributedString *cachedDisableStateTitle; // @synthesize cachedDisableStateTitle=_cachedDisableStateTitle;
+@property(retain, nonatomic) NSNumber *buttonStateRequiredHeight; // @synthesize buttonStateRequiredHeight=_buttonStateRequiredHeight;
 - (void)tintColorDidChange;
-- (void)_setButtonBackgroundColor:(id)arg1;
+- (void)updateConfiguration;
+- (struct CGSize)intrinsicContentSize;
+- (void)setEnabled:(_Bool)arg1;
+- (void)hidesBusyIndicator;
+- (void)showsBusyIndicator;
+- (id)boldConfiguration;
 
 @end
 

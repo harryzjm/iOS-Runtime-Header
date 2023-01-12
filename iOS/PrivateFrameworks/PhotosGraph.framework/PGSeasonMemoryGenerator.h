@@ -4,30 +4,46 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDate;
+@class NSDate, PGFeaturedTimePeriodMemoryConfiguration, PGMemoryMomentRequirements;
 
 @interface PGSeasonMemoryGenerator
 {
+    _Bool _requireSceneProcessingMeetsThresholdOverTime;
+    _Bool _requireFaceProcessingMeetsThresholdOverTime;
     NSDate *_localDate;
     unsigned long long _type;
+    PGFeaturedTimePeriodMemoryConfiguration *_featuredSeasonConfiguration;
+    PGMemoryMomentRequirements *_momentRequirements;
 }
 
 + (unsigned long long)numberOfPotentialMemoriesWithGraph:(id)arg1;
 + (_Bool)isMoment:(id)arg1 duringSeason:(id)arg2;
 + (id)seasonNodeForMomentNode:(id)arg1;
++ (void)enumerateMomentNodesBySeasonInYearFromMomentNodes:(id)arg1 loggingConnection:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
+- (id)momentRequirements;
+- (id)featuredSeasonConfiguration;
+- (_Bool)requireFaceProcessingMeetsThresholdOverTime;
+- (_Bool)requireSceneProcessingMeetsThresholdOverTime;
 @property(nonatomic) unsigned long long type; // @synthesize type=_type;
 @property(retain, nonatomic) NSDate *localDate; // @synthesize localDate=_localDate;
+- (id)titleGeneratorForTriggeredMemory:(id)arg1 withKeyAsset:(id)arg2 curatedAssets:(id)arg3 extendedCuratedAssets:(id)arg4 titleGenerationContext:(id)arg5 inGraph:(id)arg6;
+- (unsigned long long)durationForCuration;
+- (id)keyAssetCurationOptionsWithTriggeredMemory:(id)arg1 inGraph:(id)arg2;
+- (id)keyAssetCurationOptionsWithPotentialMemory:(id)arg1 inGraph:(id)arg2;
 - (id)_potentialMemoriesForDryTesting;
-- (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
-- (id)keyAssetCurationOptions;
-- (void)_enumeratePotentialMemoriesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2 andGraph:(id)arg3;
+- (void)_enumeratePotentialMemoriesWithGraph:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)initWithController:(id)arg1;
-- (id)_seasonInHistoryPotentialMemories;
-- (id)_lastSeasonPotentialMemory;
+- (id)_seasonInHistoryPotentialMemoriesWithGraph:(id)arg1;
+- (id)_lastSeasonPotentialMemoryWithGraph:(id)arg1;
 - (id)_potentialMemoryForMomentNodes:(id)arg1 seasonNode:(id)arg2 category:(unsigned long long)arg3;
-- (void)seasonInHistoryMomentNodesForLocalDate:(id)arg1 resultBlock:(CDUnknownBlockType)arg2;
-- (void)lastSeasonMomentNodesForLocalDate:(id)arg1 resultBlock:(CDUnknownBlockType)arg2;
+- (void)seasonInHistoryMomentNodesForLocalDate:(id)arg1 inGraph:(id)arg2 resultBlock:(CDUnknownBlockType)arg3;
+- (void)lastSeasonMomentNodesForLocalDate:(id)arg1 inGraph:(id)arg2 resultBlock:(CDUnknownBlockType)arg3;
+- (void)enumerateMomentNodesAndFeatureNodesInGraph:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (unsigned long long)memoryCategorySubcategoryForOverTimeType:(unsigned long long)arg1;
+- (unsigned long long)memoryCategory;
+- (id)initWithMemoryGenerationContext:(id)arg1;
 
 @end
 

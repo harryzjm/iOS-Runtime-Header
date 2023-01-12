@@ -4,14 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface HMCharacteristicReadRequest
+#import <HomeKit/HMReadOperation-Protocol.h>
+
+@class NSString;
+
+@interface HMCharacteristicReadRequest <HMReadOperation>
 {
 }
 
 + (id)readRequestWithCharacteristic:(id)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithCharacteristic:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) Class superclass;
 
 @end
 

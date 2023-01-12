@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)start;
 - (unsigned long long)powerState;
 - (_Bool)isNetworkUp;
-- (id)initWithBeaconManager:(id)arg1 delegateQueueu:(id)arg2;
+- (id)initWithBeaconManager:(id)arg1 delegateQueue:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

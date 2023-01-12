@@ -9,7 +9,7 @@
 #import <PhotosGraph/PGMemoryCore-Protocol.h>
 #import <PhotosGraph/PGMemoryProtocol-Protocol.h>
 
-@class CLLocation, NSArray, NSDate, NSDictionary, NSMutableSet, NSSet, NSString, PGMemoryDebug, PHAsset, PHAssetCollection;
+@class CLLocation, NSArray, NSDate, NSDictionary, NSIndexSet, NSMutableSet, NSSet, NSString, PGMemoryDebug, PHAsset, PHAssetCollection;
 
 @interface PGMemory : NSObject <PGMemoryProtocol, PGMemoryCore>
 {
@@ -17,6 +17,7 @@
     PHAssetCollection *_assetCollection;
     NSArray *_curatedAssets;
     NSArray *_extendedCuratedAssets;
+    NSArray *_representativeAssets;
     PHAsset *_curatedKeyAsset;
     NSDate *_localStartDate;
     NSDate *_localEndDate;
@@ -25,16 +26,18 @@
     NSString *_title;
     NSString *_subtitle;
     long long _titleCategory;
+    NSArray *_encodedFeatures;
+    NSIndexSet *_triggerTypes;
+    NSString *_graphMemoryIdentifier;
     double _score;
     long long _sourceType;
-    unsigned long long _duration;
     unsigned long long _category;
     unsigned long long _subcategory;
     unsigned long long _originalSubcategory;
     unsigned long long _matchedTypes;
     NSDate *_matchedLocalDate;
     CLLocation *_matchedLocation;
-    NSSet *_matchedPeople;
+    NSSet *_matchedPersonLocalIdentifiers;
     NSString *_matchedEventName;
     NSSet *_features;
     NSMutableSet *_persistedFeatures;
@@ -43,12 +46,11 @@
     long long _notificationQuality;
     NSSet *_momentIDs;
     NSDictionary *_numberOfAssetsByMomentIDs;
-    NSArray *_blacklistableFeatures;
+    NSArray *_blockableFeatures;
     NSString *_rejectionCause;
     NSDictionary *_musicGenreDistribution;
 }
 
-+ (id)stringForSourceType:(long long)arg1;
 + (id)otherMemoryCriteria;
 + (id)greatMemoryCriteria;
 + (id)stellarMemoryCriteria;
@@ -56,7 +58,7 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSDictionary *musicGenreDistribution; // @synthesize musicGenreDistribution=_musicGenreDistribution;
 @property(nonatomic) NSString *rejectionCause; // @synthesize rejectionCause=_rejectionCause;
-@property(retain, nonatomic) NSArray *blacklistableFeatures; // @synthesize blacklistableFeatures=_blacklistableFeatures;
+@property(retain, nonatomic) NSArray *blockableFeatures; // @synthesize blockableFeatures=_blockableFeatures;
 @property(retain, nonatomic) NSDictionary *numberOfAssetsByMomentIDs; // @synthesize numberOfAssetsByMomentIDs=_numberOfAssetsByMomentIDs;
 @property(retain, nonatomic) NSSet *momentIDs; // @synthesize momentIDs=_momentIDs;
 @property(nonatomic) long long notificationQuality; // @synthesize notificationQuality=_notificationQuality;
@@ -65,16 +67,18 @@
 @property(retain, nonatomic) NSMutableSet *persistedFeatures; // @synthesize persistedFeatures=_persistedFeatures;
 @property(retain, nonatomic) NSSet *features; // @synthesize features=_features;
 @property(retain, nonatomic) NSString *matchedEventName; // @synthesize matchedEventName=_matchedEventName;
-@property(retain, nonatomic) NSSet *matchedPeople; // @synthesize matchedPeople=_matchedPeople;
+@property(retain, nonatomic) NSSet *matchedPersonLocalIdentifiers; // @synthesize matchedPersonLocalIdentifiers=_matchedPersonLocalIdentifiers;
 @property(retain, nonatomic) CLLocation *matchedLocation; // @synthesize matchedLocation=_matchedLocation;
 @property(retain, nonatomic) NSDate *matchedLocalDate; // @synthesize matchedLocalDate=_matchedLocalDate;
 @property(nonatomic) unsigned long long matchedTypes; // @synthesize matchedTypes=_matchedTypes;
 @property(nonatomic) unsigned long long originalSubcategory; // @synthesize originalSubcategory=_originalSubcategory;
 @property(nonatomic) unsigned long long subcategory; // @synthesize subcategory=_subcategory;
 @property(nonatomic) unsigned long long category; // @synthesize category=_category;
-@property(nonatomic) unsigned long long duration; // @synthesize duration=_duration;
 @property(nonatomic) long long sourceType; // @synthesize sourceType=_sourceType;
 @property(nonatomic) double score; // @synthesize score=_score;
+@property(retain, nonatomic) NSString *graphMemoryIdentifier; // @synthesize graphMemoryIdentifier=_graphMemoryIdentifier;
+@property(retain, nonatomic) NSIndexSet *triggerTypes; // @synthesize triggerTypes=_triggerTypes;
+@property(retain, nonatomic) NSArray *encodedFeatures; // @synthesize encodedFeatures=_encodedFeatures;
 @property(nonatomic) long long titleCategory; // @synthesize titleCategory=_titleCategory;
 @property(retain, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
@@ -83,6 +87,7 @@
 @property(retain, nonatomic) NSDate *localEndDate; // @synthesize localEndDate=_localEndDate;
 @property(retain, nonatomic) NSDate *localStartDate; // @synthesize localStartDate=_localStartDate;
 @property(retain, nonatomic) PHAsset *curatedKeyAsset; // @synthesize curatedKeyAsset=_curatedKeyAsset;
+@property(retain, nonatomic) NSArray *representativeAssets; // @synthesize representativeAssets=_representativeAssets;
 @property(retain, nonatomic) NSArray *extendedCuratedAssets; // @synthesize extendedCuratedAssets=_extendedCuratedAssets;
 @property(retain, nonatomic) NSArray *curatedAssets; // @synthesize curatedAssets=_curatedAssets;
 @property(readonly, nonatomic) PHAssetCollection *assetCollection; // @synthesize assetCollection=_assetCollection;
@@ -95,14 +100,16 @@
 @property(nonatomic) unsigned short relatedAlgorithmsVersion;
 @property(nonatomic) unsigned short curationAlgorithmsVersion;
 @property(nonatomic) unsigned short graphSchemaVersion;
-- (id)_localIdentifiersInAssetCollection:(id)arg1;
 @property(readonly, copy) NSString *description;
+- (void)setVersions;
 - (id)initWithAssetCollection:(id)arg1;
+- (id)initWithCreationDate:(id)arg1;
 - (double)_scoreForMemoryCriteria:(id)arg1;
-- (double)phMemoryScore;
+- (double)legacyPHMemoryScore;
 - (_Bool)isGreat;
 - (_Bool)isStellar;
 - (_Bool)isMustSee;
+- (id)notificationQualityString;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

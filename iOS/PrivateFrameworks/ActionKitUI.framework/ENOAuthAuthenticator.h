@@ -45,7 +45,6 @@ __attribute__((visibility("hidden")))
 + (id)queryStringFromParameters:(id)arg1;
 + (id)scrubString:(id)arg1 usingRegex:(id)arg2 withMaxLength:(unsigned short)arg3;
 + (id)deviceDescription;
-+ (id)deviceIdentifier;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSURLResponse *response; // @synthesize response=_response;
 @property(retain, nonatomic) NSMutableData *receivedData; // @synthesize receivedData=_receivedData;

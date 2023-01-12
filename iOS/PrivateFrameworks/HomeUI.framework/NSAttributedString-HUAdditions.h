@@ -7,6 +7,7 @@
 #import <Foundation/NSAttributedString.h>
 
 @interface NSAttributedString (HUAdditions)
++ (id)hu_attributedStringWithSystemImageNamed:(id)arg1 title:(id)arg2 isRTL:(_Bool)arg3;
 + (id)hu_safeAttributedStringWithHTML:(id)arg1 attributes:(id)arg2;
 + (id)hu_attributedLinkStringForString:(id)arg1 linkString:(id)arg2 linkURL:(id)arg3 attributes:(id)arg4 additionalLinkAttributes:(id)arg5;
 + (id)hu_attributedLinkStringForAttributedString:(id)arg1 linkString:(id)arg2 linkURL:(id)arg3;

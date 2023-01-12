@@ -38,23 +38,27 @@
     NSMutableDictionary *_remainingUUIDsToAddActions;
     NSMutableDictionary *_remainingHREFsToModDeleteActions;
     _Bool _actionsOnly;
+    unsigned long long _maxRetryOnUnexpectedSyncTokenChange;
+    unsigned long long _unexpectedEmptySyncReportResponseRetryAttemptCount;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long unexpectedEmptySyncReportResponseRetryAttemptCount; // @synthesize unexpectedEmptySyncReportResponseRetryAttemptCount=_unexpectedEmptySyncReportResponseRetryAttemptCount;
+@property(retain, nonatomic) NSString *nextCTag; // @synthesize nextCTag=_nextCTag;
+@property(nonatomic) unsigned long long maxRetryOnUnexpectedSyncTokenChange; // @synthesize maxRetryOnUnexpectedSyncTokenChange=_maxRetryOnUnexpectedSyncTokenChange;
+@property(nonatomic) _Bool ensureUpdatedCTag; // @synthesize ensureUpdatedCTag=_ensureUpdatedCTag;
+@property(readonly, nonatomic) NSArray *localItemURLOrder; // @synthesize localItemURLOrder=_localItemURLOrder;
 @property(nonatomic) _Bool actionsOnly; // @synthesize actionsOnly=_actionsOnly;
 @property(retain, nonatomic) NSString *bulkChangeCheckCTag; // @synthesize bulkChangeCheckCTag=_bulkChangeCheckCTag;
 @property(retain, nonatomic) NSDictionary *bulkRequests; // @synthesize bulkRequests=_bulkRequests;
-@property(readonly, nonatomic) NSArray *localItemURLOrder; // @synthesize localItemURLOrder=_localItemURLOrder;
+@property(retain, nonatomic) NSURL *addMemberURL; // @synthesize addMemberURL=_addMemberURL;
+@property(nonatomic) unsigned long long maxIndependentTasks; // @synthesize maxIndependentTasks=_maxIndependentTasks;
+@property(nonatomic) _Bool useMultiGet; // @synthesize useMultiGet=_useMultiGet;
+@property(nonatomic) unsigned long long multiGetBatchSize; // @synthesize multiGetBatchSize=_multiGetBatchSize;
 @property(nonatomic) _Bool useSyncCollection; // @synthesize useSyncCollection=_useSyncCollection;
 @property(retain, nonatomic) NSString *previousSyncToken; // @synthesize previousSyncToken=_previousSyncToken;
-@property(nonatomic) _Bool ensureUpdatedCTag; // @synthesize ensureUpdatedCTag=_ensureUpdatedCTag;
-@property(retain, nonatomic) NSString *nextCTag; // @synthesize nextCTag=_nextCTag;
 @property(retain, nonatomic) NSString *previousCTag; // @synthesize previousCTag=_previousCTag;
 @property(readonly, nonatomic) NSURL *folderURL; // @synthesize folderURL=_folderURL;
-@property(nonatomic) _Bool useMultiGet; // @synthesize useMultiGet=_useMultiGet;
-@property(nonatomic) unsigned long long maxIndependentTasks; // @synthesize maxIndependentTasks=_maxIndependentTasks;
-@property(nonatomic) unsigned long long multiGetBatchSize; // @synthesize multiGetBatchSize=_multiGetBatchSize;
-@property(retain, nonatomic) NSURL *addMemberURL; // @synthesize addMemberURL=_addMemberURL;
 - (void)propPatchTask:(id)arg1 parsedResponses:(id)arg2 error:(id)arg3;
 - (void)_getTask:(id)arg1 finishedWithParsedContents:(id)arg2 deletedItems:(id)arg3 error:(id)arg4;
 - (void)getTask:(id)arg1 data:(id)arg2 error:(id)arg3;

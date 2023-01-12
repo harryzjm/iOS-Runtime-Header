@@ -4,26 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapKit/_MKPlaceViewController.h>
+#import <MapsUI/MUPlaceViewController.h>
 
-#import <PassKitUI/_MKPlaceViewControllerDelegate-Protocol.h>
-
-@class NSString;
-
-@interface PKMerchantMapViewController : _MKPlaceViewController <_MKPlaceViewControllerDelegate>
+@interface PKMerchantMapViewController : MUPlaceViewController
 {
 }
 
-- (void)placeViewControllerDidSelectShareLocation;
-- (id)activityViewControllerForPlaceViewController:(id)arg1;
-- (void)viewWillAppear:(_Bool)arg1;
-- (void)viewDidLoad;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)initWithMapItem:(id)arg1 configOptions:(unsigned long long)arg2;
 
 @end
 

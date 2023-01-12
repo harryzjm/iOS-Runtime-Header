@@ -10,7 +10,6 @@
 
 @class NSHashTable, NSString, PKPushRegistry;
 
-__attribute__((visibility("hidden")))
 @interface CKPKPushRegistry : NSObject <PKPushRegistryDelegate>
 {
     NSHashTable *_delegates;

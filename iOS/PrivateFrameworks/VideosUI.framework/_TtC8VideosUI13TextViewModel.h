@@ -9,7 +9,7 @@
 @interface _TtC8VideosUI13TextViewModel
 {
     MISSING_TYPE *textValue;
-    MISSING_TYPE *imgageLayout;
+    MISSING_TYPE *imageLayout;
     MISSING_TYPE *computedAttributedString;
 }
 

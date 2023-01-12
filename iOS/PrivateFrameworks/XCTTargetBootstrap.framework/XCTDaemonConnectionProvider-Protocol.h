@@ -6,9 +6,9 @@
 
 #import <XCTTargetBootstrap/NSObject-Protocol.h>
 
-@class NSXPCConnection;
+@class NSString, NSXPCConnection;
 
 @protocol XCTDaemonConnectionProvider <NSObject>
-- (NSXPCConnection *)makeNewDaemonConnection;
+- (NSXPCConnection *)makeNewDaemonConnectionWithServiceName:(NSString *)arg1;
 @end
 

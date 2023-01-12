@@ -12,9 +12,9 @@
 
 @interface NUArticleViewStyler : NSObject <NUArticleViewStyler>
 {
-    UIColor *_backgroundColor;
+    UIColor *_mainBackgroundColor;
+    UIColor *_topContentColor;
     long long _statusBarStyle;
-    long long _topBackgroundStatusBarStyle;
     UIColor *_tabBarTintColor;
     UIColor *_toolbarTintColor;
 }
@@ -22,10 +22,11 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIColor *toolbarTintColor; // @synthesize toolbarTintColor=_toolbarTintColor;
 @property(retain, nonatomic) UIColor *tabBarTintColor; // @synthesize tabBarTintColor=_tabBarTintColor;
-@property(readonly, nonatomic) long long topBackgroundStatusBarStyle; // @synthesize topBackgroundStatusBarStyle=_topBackgroundStatusBarStyle;
 @property(readonly, nonatomic) long long statusBarStyle; // @synthesize statusBarStyle=_statusBarStyle;
-@property(readonly, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property(readonly, nonatomic) UIColor *topContentColor; // @synthesize topContentColor=_topContentColor;
+@property(readonly, nonatomic) UIColor *mainBackgroundColor; // @synthesize mainBackgroundColor=_mainBackgroundColor;
 - (long long)statusBarStyleForBackgroundColor:(id)arg1;
+@property(readonly, nonatomic) long long topBackgroundStatusBarStyle;
 - (void)unstyleToolbar:(id)arg1 overrideRestoreColor:(id)arg2;
 - (void)styleToolbar:(id)arg1;
 - (void)unstyleTabBar:(id)arg1 overrideRestoreColor:(id)arg2;

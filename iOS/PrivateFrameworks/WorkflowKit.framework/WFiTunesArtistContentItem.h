@@ -14,6 +14,7 @@
 + (id)typeDescription;
 + (id)contentCategories;
 + (id)ownedTypes;
++ (id)stringConversionBehavior;
 + (id)propertyBuilders;
 - (_Bool)getListSubtitle:(CDUnknownBlockType)arg1;
 - (id)generateObjectRepresentationForClass:(Class)arg1 options:(id)arg2 error:(id *)arg3;

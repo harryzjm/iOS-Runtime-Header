@@ -9,24 +9,23 @@
 #import <PhotosUICore/ISWrappedAVPlayerDelegate-Protocol.h>
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
 
-@class AVPlayerItem, AVPlayerItemVideoOutput, ISWrappedAVAudioSession, ISWrappedAVPlayer, NSError, NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSString, NSTimer, PXDisplayLink, PXNumberAnimator, PXVideoContentProvider;
+@class AVPlayerItem, AVPlayerItemVideoOutput, ISWrappedAVAudioSession, ISWrappedAVPlayer, NSError, NSLock, NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSString, NSTimer, PXDisplayLink, PXNumberAnimator, PXVideoContentProvider;
 @protocol OS_dispatch_queue, PXVideoSessionDelegate;
 
 @interface PXVideoSession <ISChangeObserver, AVPlayerItemOutputPullDelegate, PXChangeObserver, ISWrappedAVPlayerDelegate>
 {
-    id _playerTimeObservationToken;
-    NSTimer *_playerTimeAdvancementTimer;
     long long _tokenCounter;
-    ISWrappedAVPlayer *_videoPlayer;
+    NSTimer *_playerTimeAdvancementTimer;
     void *_updateQueueIdentifier;
     NSObject<OS_dispatch_queue> *_audioSessionQueue;
     NSObject<OS_dispatch_queue> *_videoWorkQueue;
     NSObject<OS_dispatch_queue> *_stateQueue;
     NSObject<OS_dispatch_queue> *_updateQueue;
     NSMutableArray *_mainQueue_videoViewQueue;
-    ISWrappedAVAudioSession *_audioSessionQueue_audioSession;
     NSMutableDictionary *_stateQueue_presentationStatesByContext;
     NSMutableSet *_stateQueue_pixelBufferOutputTokens;
+    NSMutableDictionary *_stateQueue_pixelBufferOutputSizesByTokens;
+    NSMutableSet *_stateQueue_pixelBufferPausedOutputTokens;
     PXDisplayLink *_stateQueue_displayLink;
     id _stateQueue_playbackTimeRangeEndBoundaryObserver;
     long long _stateQueue_playState;
@@ -38,11 +37,14 @@
     _Bool _stateQueue_buffering;
     long long _stateQueue_desiredPlayState;
     AVPlayerItemVideoOutput *_stateQueue_videoOutput;
+    struct CGSize _stateQueue_videoOutputSize;
+    _Bool _stateQueue_videoOutputIsReady;
     CDStruct_1b6d18a9 _stateQueue_videoDuration;
     AVPlayerItem *_stateQueue_currentPlayerItem;
     _Bool _stateQueue_isPlayerTimeAdvancing;
     long long _stateQueue_audioStatus;
     AVPlayerItem *_stateQueue_playerItem;
+    CDStruct_e83c9415 _stateQueue_segmentTimeRangeOfOriginalVideo;
     _Bool _stateQueue_isPlayable;
     _Bool _stateQueue_isStalled;
     _Bool _stateQueue_isLoopingEnabled;
@@ -53,15 +55,25 @@
     _Bool _stateQueue_isAtEnd;
     _Bool _stateQueue_isAtBeginning;
     struct CGAffineTransform _stateQueue_preferredTransform;
+    struct CGSize _stateQueue_naturalSize;
     struct __CVBuffer *_stateQueue_currentPixelBuffer;
     _Bool _stateQueue_readyForSeeking;
-    CDStruct_d97c9657 _updateQueue_updateFlags;
+    CDStruct_1b6d18a9 _stateQueue_currentTime;
+    NSLock *_stateQueue_readyForSeekingLock;
+    NSLock *_stateQueue_videoOutputReadyLock;
+    _Bool _stateQueue_shouldDisableAutomaticPixelBufferUpdates;
+    ISWrappedAVPlayer *_stateQueue_videoPlayer;
+    id _stateQueue_playerTimeObservationToken;
+    ISWrappedAVAudioSession *_stateQueue_audioSession;
+    CDStruct_af00bf4e _updateQueue_updateFlags;
+    long long _updateQueue_pendingPlayerItemSeekCount;
     _Bool _updateQueue_didFinishInitializingAudioSession;
     CDStruct_1b6d18a9 _updateQueue_lastPlayerTime;
     long long _updateQueue_playRequestIntervalSignpost;
     PXNumberAnimator *_mainQueue_volumeAnimator;
     _Bool _allowsExternalPlayback;
     _Bool _isUpdatingAudioSession;
+    _Bool _isExpectingVideoView;
     id <PXVideoSessionDelegate> _delegate;
     PXVideoContentProvider *_contentProvider;
     NSError *_error;
@@ -69,6 +81,7 @@
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool isExpectingVideoView; // @synthesize isExpectingVideoView=_isExpectingVideoView;
 @property(nonatomic, setter=setUpdatingAudioSession:) _Bool isUpdatingAudioSession; // @synthesize isUpdatingAudioSession=_isUpdatingAudioSession;
 @property(nonatomic) CDStruct_1b6d18a9 currentTime; // @synthesize currentTime=_currentTime;
 @property(readonly, nonatomic) _Bool allowsExternalPlayback; // @synthesize allowsExternalPlayback=_allowsExternalPlayback;
@@ -86,9 +99,12 @@
 - (id)_playbackStateDescription;
 - (void)_logPlaybackState;
 - (void)_handleDidReachPlaybackTimeRangeEnd;
-- (void)_seekToPlaybackTimeRangeStartIfNeeded;
+- (void)_updateQueue_decrementPendingPlayerItemSeekCount;
+- (void)_handlePlayerItemSeekDidFinish;
+- (void)_updateQueue_seekToPlaybackTimeRangeStartIfNeeded;
 - (void)_removeAllVideoOutputs;
 - (void)_updateAVPlayerPlayState;
+- (void)_updateCurrentPlayerItem;
 - (void)_updatePlayState;
 - (void)_updateReadyForSeeking;
 - (void)_updatePlayerVolume;
@@ -99,15 +115,17 @@
 - (void)_updateBuffering;
 - (void)_updateAtBeginningOrEndWithPlayerItemDuration:(CDStruct_1b6d18a9)arg1 success:(_Bool)arg2 error:(id)arg3;
 - (void)_updateAtBeginningOrEnd;
+@property(nonatomic) struct CGSize naturalSize;
 @property(nonatomic) struct CGAffineTransform preferredTransform;
-- (void)_updatePreferredTransform;
+- (void)_updateTrackGeometry;
 - (void)_updateAudioStatus;
 - (void)_setPlayabilityFromAsset:(id)arg1;
 - (void)_handlePlayabilityDidLoadForAsset:(id)arg1;
 - (void)_updatePlayability;
 - (void)_handlePlayerTimeAdvancementTimer:(id)arg1;
 - (void)_avPlayerTimeDidChange:(CDStruct_1b6d18a9)arg1;
-- (void)_handlePreferredTransformDidLoad;
+- (void)_handleTrackGeometryDidLoad;
+- (id)pixelBufferOutputSizes;
 - (unsigned long long)pixelBufferOutputTokenCount;
 @property(nonatomic, setter=setAtEnd:) _Bool isAtEnd;
 @property(nonatomic, setter=setAtBeginning:) _Bool isAtBeginning;
@@ -121,7 +139,10 @@
 @property(nonatomic, setter=setStalled:) _Bool isStalled;
 - (void)setPlayable:(_Bool)arg1;
 @property(readonly, nonatomic) _Bool isPlayable;
-@property(retain, nonatomic) AVPlayerItem *playerItem;
+@property(readonly, nonatomic) _Bool isSegmentOfOriginalVideo;
+@property(readonly, nonatomic) CDStruct_e83c9415 segmentTimeRangeOfOriginalVideo;
+- (void)setPlayerItem:(id)arg1 segmentTimeRangeOfOriginalVideo:(CDStruct_e83c9415)arg2;
+@property(readonly, nonatomic) AVPlayerItem *playerItem;
 @property(nonatomic) long long audioStatus;
 - (void)setPlayerTimeAdvancing:(_Bool)arg1;
 - (_Bool)isPlayerTimeAdvancing;
@@ -136,12 +157,13 @@
 - (void)setPreventsSleepDuringVideoPlayback:(_Bool)arg1;
 @property(readonly, nonatomic) float volume;
 - (void)setVolume:(float)arg1 withFade:(_Bool)arg2;
-- (id)videoPlayer;
 - (void)setCurrentPlayerItem:(id)arg1;
 - (id)currentPlayerItem;
 @property(nonatomic) CDStruct_1b6d18a9 videoDuration;
-- (void)setVideoOutput:(id)arg1;
-- (id)videoOutput;
+@property(nonatomic) _Bool isVideoOutputReady;
+- (void)setVideoOutput:(id)arg1 size:(struct CGSize)arg2;
+@property(readonly, nonatomic) struct CGSize videoOutputSize;
+@property(readonly, nonatomic) AVPlayerItemVideoOutput *videoOutput;
 - (_Bool)_isAVPlayerPlayStateOutOfSync;
 - (void)_updateDuration;
 @property(nonatomic) struct __CVBuffer *currentPixelBuffer;
@@ -159,6 +181,7 @@
 - (void)_audioSessionQueue_initializeAudioSession;
 - (void)_updateFromCurrentPresentationState;
 - (void)_handleContentLoadingResult:(id)arg1;
+- (void)_handleMediaServicesWereResetNotification:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)avPlayer:(id)arg1 itemDidPlayToEnd:(id)arg2;
 - (void)outputMediaDataWillChange:(id)arg1;
@@ -166,6 +189,14 @@
 - (void)didPerformChanges;
 - (void)_performChanges:(CDUnknownBlockType)arg1;
 - (void)performChanges:(CDUnknownBlockType)arg1;
+- (void)setAudioSession:(id)arg1;
+- (id)audioSession;
+- (void)setVideoPlayer:(id)arg1;
+@property(readonly, nonatomic) ISWrappedAVPlayer *videoPlayer;
+- (void)setShouldDisableAutomaticPixelBufferUpdates:(_Bool)arg1;
+@property(readonly, nonatomic) _Bool shouldDisableAutomaticPixelBufferUpdates;
+- (void)_updateCurrenPixelBufferAfterSeekingToTime:(CDStruct_1b6d18a9)arg1 completionLock:(id)arg2;
+- (void)seekToExactTime:(CDStruct_1b6d18a9)arg1 updatePixelBuffer:(_Bool)arg2 waitUntilComplete:(_Bool)arg3;
 - (void)seekToTime:(CDStruct_1b6d18a9)arg1 toleranceBefore:(CDStruct_1b6d18a9)arg2 toleranceAfter:(CDStruct_1b6d18a9)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)seekToTime:(CDStruct_1b6d18a9)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (struct CGImage *)generateSnapshotImage;
@@ -178,18 +209,19 @@
 - (void)_audioSessionQueue_updateAudioSessionWithCategory:(id)arg1 mode:(id)arg2 routeSharingPolicy:(unsigned long long)arg3 options:(unsigned long long)arg4;
 - (void)setAudioSessionCategory:(id)arg1 mode:(id)arg2 routeSharingPolicy:(unsigned long long)arg3 options:(unsigned long long)arg4;
 - (void)cancelPixelBufferOutputWithRequestIdentifier:(id)arg1;
-- (void)requestPixelBufferOutputWithRequestIdentifier:(id)arg1;
+- (void)requestPixelBufferOutputWithRequestIdentifier:(id)arg1 maxOutputSize:(struct CGSize)arg2;
 - (void)recycleVideoView:(id)arg1;
 - (id)dequeueVideoView;
 - (void)_mainQueue_actuallyPrewarmVideoView;
 - (void)prewarmVideoView;
 - (void)dealloc;
-- (void)performFinalCleanup;
+- (id)performFinalCleanup;
 - (void)performChanges:(CDUnknownBlockType)arg1 withPresentationContext:(long long)arg2 presenter:(void *)arg3;
 - (void)leavePresentationContext:(long long)arg1 presenter:(void *)arg2;
 - (void)enterPresentationContext:(long long)arg1 presenter:(void *)arg2;
 - (id)_stateQueue_newPresentationStateFromCurrentWithPresenter:(void *)arg1;
 - (id)init;
+- (id)initWithContentProvider:(id)arg1 videoPlayer:(id)arg2;
 - (id)initWithContentProvider:(id)arg1;
 
 // Remaining properties

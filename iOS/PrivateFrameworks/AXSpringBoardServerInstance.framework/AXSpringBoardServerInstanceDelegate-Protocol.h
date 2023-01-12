@@ -9,6 +9,9 @@
 @class NSArray, NSDictionary, NSNumber, NSString, _AXSpringBoardServerInstance;
 
 @protocol AXSpringBoardServerInstanceDelegate <NSObject>
+- (NSArray *)visibleTripleClickItemsWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
+- (void)launchVoiceOverImageExplorerViewServiceWithServerInstance:(_AXSpringBoardServerInstance *)arg1 forData:(NSDictionary *)arg2;
+- (void)launchVoiceOverQuickSettingsViewServiceWithServerInstance:(_AXSpringBoardServerInstance *)arg1 data:(NSDictionary *)arg2;
 - (void)updateFrontMostApplicationWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (_Bool)isMagnifierVisibleWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (void)launchMagnifierAppWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
@@ -24,6 +27,9 @@
 - (int)purpleBuddyPIDWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (NSNumber *)focusedAppPIDWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (_Bool)isSystemAppShowingAnAlertWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
+- (void)toggleTorchWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
+- (void)cancelSiriDismissalForAssistiveTouchWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
+- (_Bool)currentDevicesHaveAssistiveTouchCustomActions;
 - (_Bool)connectedDevicesRequireAssistiveTouch;
 - (id)serverInstance:(_AXSpringBoardServerInstance *)arg1 splashImageForAppWithBundleIdentifier:(NSString *)arg2;
 - (void)rebootDeviceWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
@@ -57,22 +63,28 @@
 - (void)serverInstance:(_AXSpringBoardServerInstance *)arg1 pauseMedia:(_Bool)arg2 forBundleId:(NSString *)arg3;
 - (void)serverInstance:(_AXSpringBoardServerInstance *)arg1 showSpeechPlaybackControls:(_Bool)arg2;
 - (_Bool)isSyncingRestoringResettingOrUpdatingWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
+- (void)toggleQuickNoteWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
+- (void)toggleAppLibraryWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (void)simulateEdgePressHaptics:(_AXSpringBoardServerInstance *)arg1;
+- (void)dismissShelfSwitcherWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (void)dismissAppSwitcherWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (void)openAppSwitcherWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
+- (_Bool)isLockScreenVisibleWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (_Bool)isPasscodeLockVisibleWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (_Bool)isShowingNonSystemAppWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (_Bool)isDockVisibleWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
+- (_Bool)isShelfSwitcherVisibleWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (_Bool)isAppSwitcherVisibleWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (_Bool)isShowingHomescreenWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (_Bool)isSiriVisibleWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (_Bool)isControlCenterVisibleWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (void)armApplePayWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
-- (_Bool)isStatusBarNativeFocusableWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
+- (_Bool)isStatusBarNativeFocusableWithServerInstance:(_AXSpringBoardServerInstance *)arg1 includingNonDismissableElements:(_Bool)arg2;
 - (void)toggleDockWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (void)serverInstance:(_AXSpringBoardServerInstance *)arg1 setReachabilityEnabled:(_Bool)arg2;
 - (_Bool)serverInstance:(_AXSpringBoardServerInstance *)arg1 showNotificationCenter:(_Bool)arg2;
 - (_Bool)serverInstance:(_AXSpringBoardServerInstance *)arg1 showControlCenter:(_Bool)arg2;
+- (_Bool)isLongLookNotificationVisibleWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (_Bool)isNotificationCenterVisibleWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (_Bool)isBannerVisibleWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (_Bool)isNotificationVisibleWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
@@ -91,6 +103,7 @@
 - (void)openCommandAndControlSettingsWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (void)openCustomGestureCreationForSCATWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (void)openCustomGestureCreationForASTWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
+- (void)serverInstance:(_AXSpringBoardServerInstance *)arg1 setOrientation:(long long)arg2;
 - (void)serverInstance:(_AXSpringBoardServerInstance *)arg1 setOrientationLocked:(_Bool)arg2;
 - (_Bool)isOrientationLockedWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (_Bool)isRingerMutedWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
@@ -102,7 +115,7 @@
 - (void)hideAlertWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (_Bool)serverInstance:(_AXSpringBoardServerInstance *)arg1 isShowingRemoteViewType:(long long)arg2;
 - (void)serverInstance:(_AXSpringBoardServerInstance *)arg1 hideRemoteViewType:(long long)arg2;
-- (void)serverInstance:(_AXSpringBoardServerInstance *)arg1 showRemoteViewType:(long long)arg2 withData:(id)arg3;
+- (void)serverInstance:(_AXSpringBoardServerInstance *)arg1 showRemoteViewType:(long long)arg2 withData:(NSDictionary *)arg3;
 - (void)serverInstance:(_AXSpringBoardServerInstance *)arg1 showAlertType:(int)arg2 withHandler:(void (^)(long long))arg3 withData:(id)arg4;
 @end
 

@@ -25,12 +25,13 @@
 @property(retain, nonatomic) NSMutableArray *children; // @synthesize children=_children;
 @property(retain, nonatomic) TSTAccumulator *accumulator; // @synthesize accumulator=_accumulator;
 @property(readonly, nonatomic) struct TSUCellCoord formulaCoord; // @synthesize formulaCoord=_formulaCoord;
-- (void)encodeToArchive:(struct CategoryOwnerArchive_GroupByArchive_AggNodeArchive *)arg1;
-- (id)initWithArchive:(const struct CategoryOwnerArchive_GroupByArchive_AggNodeArchive *)arg1 aggregator:(id)arg2;
+- (void)encodeToArchive:(void *)arg1;
+- (id)initWithArchive:(const void *)arg1 aggregator:(id)arg2;
 - (void)enumerateDirectChildren:(CDUnknownBlockType)arg1;
-- (id)descriptionWithCategoryOwner:(id)arg1;
+- (id)descriptionWithGroupBy:(id)arg1;
 - (id)description;
-- (void)clearAggFormulas:(id)arg1 inOwner:(const UUIDData_5fbc143e *)arg2;
+- (void)upgradeForNewAggregateTypes:(id)arg1 inOwner:(const struct TSKUIDStruct *)arg2;
+- (void)clearAggFormulas:(id)arg1 inOwner:(const struct TSKUIDStruct *)arg2;
 - (void)addChild:(id)arg1;
 - (id)initWithFormulaCoord:(struct TSUCellCoord)arg1 groupNode:(id)arg2 aggregator:(id)arg3;
 

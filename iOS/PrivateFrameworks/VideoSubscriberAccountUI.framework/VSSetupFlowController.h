@@ -32,9 +32,11 @@
     CDUnknownBlockType _goingBackActivationCompletionBlock;
     VSDevice *_currentDevice;
     VSAccountSerializationCenter *_serializationCenter;
+    NSArray *_supportedApps;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *supportedApps; // @synthesize supportedApps=_supportedApps;
 @property(retain, nonatomic) VSAccountSerializationCenter *serializationCenter; // @synthesize serializationCenter=_serializationCenter;
 @property(retain, nonatomic) VSDevice *currentDevice; // @synthesize currentDevice=_currentDevice;
 @property(copy, nonatomic) CDUnknownBlockType goingBackActivationCompletionBlock; // @synthesize goingBackActivationCompletionBlock=_goingBackActivationCompletionBlock;
@@ -73,7 +75,7 @@
 - (void)_startLoadingAfterOfferingOptions:(_Bool)arg1 endingUndoGrouping:(_Bool)arg2 arrivedViaNotNowButton:(_Bool)arg3 arrivedAfterSigningIn:(_Bool)arg4 goingBack:(_Bool)arg5;
 - (void)startLoadingWhenGoingBack:(_Bool)arg1 serializedAccountDataToImport:(id)arg2;
 - (void)markSTBProviderAppForInstallation:(id)arg1 withAppPlacementPosition:(id)arg2;
-- (void)_obtainConsentForBundleIDs:(id)arg1 vouchers:(id)arg2 withAppleAccount:(id)arg3 identityProvider:(id)arg4 endingUndoGrouping:(_Bool)arg5 arrivedViaNotNowButton:(_Bool)arg6 arrivedAfterSigningIn:(_Bool)arg7 goingBack:(_Bool)arg8;
+- (void)_obtainConsentForBundleIDs:(id)arg1 vouchers:(id)arg2 withAppleAccountName:(id)arg3 identityProvider:(id)arg4 endingUndoGrouping:(_Bool)arg5 arrivedViaNotNowButton:(_Bool)arg6 arrivedAfterSigningIn:(_Bool)arg7 goingBack:(_Bool)arg8;
 - (void)_presentError:(id)arg1;
 - (void)_appleAccountDidChange:(id)arg1;
 - (void)_finishAfterOfferingOptions:(_Bool)arg1 endingUndoGrouping:(_Bool)arg2;

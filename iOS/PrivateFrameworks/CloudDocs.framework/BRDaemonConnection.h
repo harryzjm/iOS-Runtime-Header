@@ -22,6 +22,13 @@
 + (id)syncedDesktopURL;
 + (id)mobileDocumentsURL;
 + (id)homeDirectoryURL;
++ (id)syncedRootURLsForPersonaID:(id)arg1 needsPersonaSwitch:(_Bool)arg2;
++ (id)syncedDocumentsURLForPersonaID:(id)arg1 needsPersonaSwitch:(_Bool)arg2;
++ (id)syncedDesktopURLForPersonaID:(id)arg1 needsPersonaSwitch:(_Bool)arg2;
++ (id)cloudDocsCachesURLForPersonaID:(id)arg1 needsPersonaSwitch:(_Bool)arg2;
++ (id)cloudDocsAppSupportURLForPersonaID:(id)arg1 needsPersonaSwitch:(_Bool)arg2;
++ (id)mobileDocumentsURLForPersonaID:(id)arg1 needsPersonaSwitch:(_Bool)arg2;
++ (id)homeDirectoryURLForPersonaID:(id)arg1 needsPersonaSwitch:(_Bool)arg2;
 + (void)t_setMobileDocumentsURL:(id)arg1;
 + (void)t_setDefaultConnection:(id)arg1;
 + (id)t_connectionForUUID:(id)arg1;

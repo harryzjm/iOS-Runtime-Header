@@ -25,7 +25,8 @@
     unsigned long long _autoInstallOverride;
 }
 
-+ (id)gizmoApplicationsFromCompanionAppProxy:(id)arg1 databaseUUID:(id)arg2 startingSequenceNumber:(unsigned long long)arg3;
++ (int)_systemTrustsApplicationWithBundleURL:(id)arg1;
++ (id)gizmoApplicationsFromCompanionAppRecord:(id)arg1 databaseUUID:(id)arg2 startingSequenceNumber:(unsigned long long)arg3;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long autoInstallOverride; // @synthesize autoInstallOverride=_autoInstallOverride;
@@ -35,27 +36,29 @@
 @property(readonly, copy, nonatomic) NSString *sourceAppIdentifier; // @synthesize sourceAppIdentifier=_sourceAppIdentifier;
 @property(readonly, copy, nonatomic) NSString *companionAppName; // @synthesize companionAppName=_companionAppName;
 @property(readonly, nonatomic) NSURL *companionAppURL; // @synthesize companionAppURL=_companionAppURL;
-@property(readonly, nonatomic) _Bool isTrusted; // @synthesize isTrusted=_isTrusted;
+@property(nonatomic) _Bool isTrusted; // @synthesize isTrusted=_isTrusted;
 @property(readonly, copy, nonatomic) NSArray *clockFaceExtensionPaths; // @synthesize clockFaceExtensionPaths=_clockFaceExtensionPaths;
 @property(readonly, nonatomic) unsigned long long lsSequenceNumber; // @synthesize lsSequenceNumber=_lsSequenceNumber;
 @property(readonly, nonatomic) NSURL *watchAppURL; // @synthesize watchAppURL=_watchAppURL;
-- (id)_localizedAppNameFromProxy:(id)arg1;
+- (id)_localizedAppNameFromRecord:(id)arg1;
 - (id)_storeMetadataWithError:(id *)arg1;
-- (id)_watchKitApplicationNameFromWKAppInfoPlist:(id)arg1 containerProxy:(id)arg2;
+- (id)_watchKitApplicationNameFromWKAppInfoPlist:(id)arg1 containerRecord:(id)arg2;
 - (id)_URLsOfExtensionsInBundleURL:(id)arg1 mayNotExist:(_Bool)arg2;
-- (id)_mostCurrentWKAppURLInCompanionAppProxy:(id)arg1 versionFound:(id *)arg2 isPlaceholder:(_Bool *)arg3;
+- (id)_mostCurrentWKAppURLInCompanionAppRecord:(id)arg1 isPlaceholder:(_Bool *)arg2;
 - (id)_URLOfFirstItemWithExtension:(id)arg1 inDirectory:(id)arg2;
 - (id)_infoPlistForPluginBundle:(id)arg1;
-- (_Bool)_systemTrustsApplicationWithBundleURL:(id)arg1;
-- (id)appWithReEvaluatedTrust;
-- (id)initWithApplicationProxy:(id)arg1 gizmoBundleIdentifier:(id)arg2 databaseUUID:(id)arg3 sequenceNumber:(unsigned long long)arg4;
-- (id)initWithApplicationProxy:(id)arg1 databaseUUID:(id)arg2 sequenceNumber:(unsigned long long)arg3;
+- (id)appWithReevaluatedTrust;
+- (void)_evaluateTrustInfoForReevaluation:(_Bool)arg1;
+- (id)initWithApplicationRecord:(id)arg1 gizmoBundleIdentifier:(id)arg2 databaseUUID:(id)arg3 sequenceNumber:(unsigned long long)arg4;
+- (id)initWithApplicationRecord:(id)arg1 databaseUUID:(id)arg2 sequenceNumber:(unsigned long long)arg3;
 - (void)_populateStoreMetadata;
 - (id)_buildLocalizedInfoPlistStringsDictForAppBundleURL:(id)arg1 watchKitExtensionURL:(id)arg2;
+- (_Bool)isLocallyAvailable;
 @property(readonly, copy) NSString *description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)serializeAsRemoteApplication;
 - (id)serialize;
+- (id)initWithSerializedDictionary:(id)arg1 reevaluatingTrust:(_Bool)arg2;
 - (id)initWithSerializedDictionary:(id)arg1;
 - (id)initWithBundleID:(id)arg1 databaseUUID:(id)arg2 sequenceNumber:(unsigned long long)arg3;
 - (id)init;

@@ -11,6 +11,7 @@
     MISSING_TYPE *direction;
     MISSING_TYPE *resumeRate;
     MISSING_TYPE *metadata;
+    MISSING_TYPE *isStalled;
 }
 
 @end

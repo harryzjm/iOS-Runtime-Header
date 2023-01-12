@@ -30,8 +30,8 @@
 @property(nonatomic) unsigned int basePlaylistContainerID; // @synthesize basePlaylistContainerID=_basePlaylistContainerID;
 @property(nonatomic) unsigned int databaseRevision; // @synthesize databaseRevision=_databaseRevision;
 @property(nonatomic) unsigned int databaseID; // @synthesize databaseID=_databaseID;
-@property(copy) NSString *homeSharingGroupID; // @synthesize homeSharingGroupID=_homeSharingGroupID;
-@property(retain) HSFairPlayInfo *fairPlayInfo; // @synthesize fairPlayInfo=_fairPlayInfo;
+@property(copy, nonatomic) NSString *homeSharingGroupID; // @synthesize homeSharingGroupID=_homeSharingGroupID;
+@property(retain, nonatomic) HSFairPlayInfo *fairPlayInfo; // @synthesize fairPlayInfo=_fairPlayInfo;
 @property(nonatomic) long long connectionState; // @synthesize connectionState=_connectionState;
 @property(readonly, nonatomic) long long connectionType; // @synthesize connectionType=_connectionType;
 @property(readonly, nonatomic) NSURL *baseURL; // @synthesize baseURL=_baseURL;

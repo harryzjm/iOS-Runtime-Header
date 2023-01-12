@@ -10,9 +10,9 @@
 
 + (id)_webClipIdentifierFromWebAppIdentifier:(id)arg1;
 + (id)_webAppIdentifierFromWebClipIdentifier:(id)arg1;
+- (_Bool)supportsMultitaskingShelf;
 - (_Bool)isWebApplication;
 - (id)iconIdentifier;
-- (Class)iconClass;
 
 @end
 

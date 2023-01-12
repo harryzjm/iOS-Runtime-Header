@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class GEOFormattedString, GEORestrictionInfo, NSArray, NSDate, NSString;
+@class GEOFormattedString, GEOPBTransitArtwork, GEORestrictionInfo, NSArray, NSDate, NSString;
 
 @interface VKTrafficIncidentFeature
 {
@@ -22,13 +22,20 @@
     NSDate *_endDate;
     NSDate *_lastUpdatedDate;
     NSString *_uniqueString;
+    float _elevationMinZoom;
+    GEOPBTransitArtwork *_artwork;
     GEORestrictionInfo *_restrictionInfo;
+    optional_cc3e12e1 _dataSource;
 }
 
 + (id)stringForIncidentSignificance:(long long)arg1;
 + (id)stringForRouteRelevance:(long long)arg1;
 + (id)stringForIncidentType:(long long)arg1;
 + (long long)incidentTypeForGeoRouteIncident:(id)arg1;
+- (id).cxx_construct;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) optional_cc3e12e1 dataSource; // @synthesize dataSource=_dataSource;
+@property(readonly, nonatomic) GEOPBTransitArtwork *artwork; // @synthesize artwork=_artwork;
 @property(readonly, nonatomic) long long significance; // @synthesize significance=_significance;
 @property(readonly, nonatomic) NSDate *lastUpdatedDate; // @synthesize lastUpdatedDate=_lastUpdatedDate;
 @property(readonly, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
@@ -36,6 +43,7 @@
 @property(readonly, nonatomic) NSString *info; // @synthesize info=_info;
 @property(readonly, nonatomic) NSString *crossStreet; // @synthesize crossStreet=_crossStreet;
 @property(readonly, nonatomic) NSString *street; // @synthesize street=_street;
+@property(readonly, nonatomic) float elevationMinZoom; // @synthesize elevationMinZoom=_elevationMinZoom;
 @property(nonatomic) _Bool isOnSelectedRoute; // @synthesize isOnSelectedRoute=_isOnSelectedRoute;
 @property(nonatomic) long long routeRelevance; // @synthesize routeRelevance=_routeRelevance;
 @property(readonly, nonatomic) _Bool isNotForDisplay; // @synthesize isNotForDisplay=_isNotForDisplay;
@@ -43,7 +51,7 @@
 @property(readonly, copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(readonly, nonatomic) NSString *uniqueString; // @synthesize uniqueString=_uniqueString;
-- (void)populateDebugNode:(struct DebugTreeNode *)arg1;
+- (void)populateDebugNode:(void *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) GEOFormattedString *formattedSubtitle;
 @property(readonly, nonatomic) GEOFormattedString *formattedTitle;
@@ -51,8 +59,7 @@
 @property(readonly, nonatomic) GEOFormattedString *effectiveTimeRange;
 - (void)dealloc;
 - (id)initWithRouteIncident:(id)arg1 routeOffsetInMeters:(unsigned int)arg2 routeRelevance:(long long)arg3 onRoute:(id)arg4;
-- (id)initWithIncidentType:(long long)arg1 uniqueIdentifier:(id)arg2 position:(CDStruct_c3b9c2ee)arg3 routeRelevance:(long long)arg4 laneType:(long long)arg5 significance:(long long)arg6 onRoute:(id)arg7;
-- (id)initWithIncidentData:(const struct Incident *)arg1 worldPoint:(Matrix_6e1d3589 *)arg2;
+- (id)initWithIncidentData:(const void *)arg1;
 - (_Bool)hasSameIdentifier:(id)arg1;
 
 @end

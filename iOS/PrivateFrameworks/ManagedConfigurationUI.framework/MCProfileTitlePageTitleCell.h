@@ -8,7 +8,6 @@
 
 @class UILabel;
 
-__attribute__((visibility("hidden")))
 @interface MCProfileTitlePageTitleCell : UITableViewCell
 {
     UILabel *_titleLabel;

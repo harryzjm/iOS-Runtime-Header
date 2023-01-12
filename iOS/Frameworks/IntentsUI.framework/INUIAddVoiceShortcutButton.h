@@ -51,10 +51,13 @@
 - (void)_didTapButton;
 - (void)_updatePhraseVisibility;
 - (void)_updateContent;
-- (id)_dynamicColorWithLightColor:(id)arg1 darkColor:(id)arg2;
 - (id)_dynamicBlackColor;
 - (id)_dynamicWhiteColor;
-- (id)_sphiriImage;
+- (id)_checkmarkImage;
+- (id)_dynamicDarkSphiriImage;
+- (id)_dynamicLightSphiriImage;
+- (id)_darkSphiriImage;
+- (id)_lightSphiriImage;
 - (_Bool)_shouldUseLargerFont;
 - (id)_phraseFont;
 - (id)_addToSiriFont;
@@ -66,8 +69,10 @@
 - (id)_strokeColorForStyle:(unsigned long long)arg1;
 - (id)_textColorForStyle:(unsigned long long)arg1;
 - (id)_backgroundColorForStyle:(unsigned long long)arg1;
+- (id)_sphiriImageForStyle:(unsigned long long)arg1;
 - (void)_updateColors;
 - (struct CGSize)intrinsicContentSize;
+- (double)_cornerRadius;
 - (void)layoutSubviews;
 - (void)setHighlighted:(_Bool)arg1;
 - (void)setStyle:(unsigned long long)arg1;

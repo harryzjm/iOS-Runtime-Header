@@ -6,11 +6,11 @@
 
 #import <PhotosUI/NSObject-Protocol.h>
 
-@class NSString, PHAsset, PHAssetCollection, UIAlertController;
+@class NSError, NSString, PHAsset, PHAssetCollection, UIAlertController;
 
 @protocol PUPhotosGridDownloadUpdateHandler <NSObject>
 - (void)presentAlertController:(UIAlertController *)arg1;
-- (void)endShowingProgressWithIdentifier:(NSString *)arg1;
+- (void)endShowingProgressWithIdentifier:(NSString *)arg1 succeeded:(_Bool)arg2 canceled:(_Bool)arg3 error:(NSError *)arg4;
 - (void)updateProgressWithIdentifier:(NSString *)arg1 withValue:(double)arg2;
 - (NSString *)beginShowingProgressForAsset:(PHAsset *)arg1 inCollection:(PHAssetCollection *)arg2;
 @end

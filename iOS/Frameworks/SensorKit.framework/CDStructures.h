@@ -18,6 +18,10 @@ typedef struct {
 } CDStruct_70511ce9;
 
 typedef struct {
+    unsigned int _field1[8];
+} CDStruct_6ad76789;
+
+typedef struct {
     float x;
     float y;
 } CDStruct_6e3f967a;

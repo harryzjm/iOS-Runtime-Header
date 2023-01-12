@@ -18,6 +18,7 @@
     _Bool _isMemoryStore;
     struct os_unfair_lock_s lock;
     NSMutableSet *memoryEntries;
+    NSMutableSet *clearEntries;
     NSMutableDictionary *speculativeEntries;
     struct sqlite3 *dbConnection;
     struct sqlite3_stmt *selectAllEntriesStmt;
@@ -26,6 +27,7 @@
     struct sqlite3_stmt *selectEntriesWithRegistrableDomainStmt;
     struct sqlite3_stmt *insertEntriesStmt;
     struct sqlite3_stmt *deleteWithTimeStmt;
+    struct sqlite3_stmt *deleteWithHostAndPortStmt;
     struct sqlite3_stmt *deleteWithRegistrableDomainStmt;
     struct sqlite3_stmt *deleteExpiredEntriesStmt;
     struct sqlite3_stmt *trimDbStmt;
@@ -35,6 +37,7 @@
 - (void).cxx_destruct;
 - (void)removeHTTPAlternativeServiceEntriesCreatedAfterDate:(id)arg1;
 - (void)removeHTTPAlternativeServiceEntriesWithRegistrableDomain:(id)arg1;
+- (void)removeHTTPAlternativeServiceEntriesWithHost:(id)arg1 port:(long long)arg2;
 - (void)storeHTTPServiceEntry:(id)arg1;
 - (id)entries;
 - (id)HTTPServiceEntriesWithRegistrableDomain:(id)arg1;

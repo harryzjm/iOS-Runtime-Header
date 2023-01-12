@@ -18,9 +18,9 @@
 @property(readonly, nonatomic) id <PLJournalEntryPayloadID> payloadID;
 - (NSString *)prettyDescriptionForEntry:(PLJournalEntry *)arg1 indent:(long long)arg2;
 - (NSString *)descriptionForEntry:(PLJournalEntry *)arg1;
+- (_Bool)containsAttributeForKey:(NSString *)arg1;
 - (void)migrateMergedPayloadWithUpdatePayloads:(NSArray *)arg1;
 - (void)mergePayload:(id <PLJournalEntryPayload>)arg1;
-- (_Bool)decodePayloadData:(NSData *)arg1 error:(id *)arg2;
 - (NSData *)payloadDataWithError:(id *)arg1;
 @end
 

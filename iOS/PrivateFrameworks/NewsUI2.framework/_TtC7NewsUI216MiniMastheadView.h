@@ -8,12 +8,14 @@
 
 @class MISSING_TYPE;
 
+__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI216MiniMastheadView : UIView
 {
     MISSING_TYPE *titleView;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool accessibilityElementsHidden;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

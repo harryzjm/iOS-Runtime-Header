@@ -14,8 +14,8 @@
 }
 
 - (void).cxx_destruct;
-- (void)recurseOperation:(id)arg1 builder:(struct OpBuilder *)arg2 symbolTable:(struct MPSSymbolTable *)arg3 tensorToValueMap:(map_b1b11e52 *)arg4 operationsRecursed:(id)arg5;
-- (struct Value)makeMLIROpWithBuilder:(struct OpBuilder *)arg1 symbolTable:(struct MPSSymbolTable *)arg2 inputValues:(vector_c90d9c45 *)arg3 opInitialization:(_Bool)arg4 name:(id)arg5;
+- (void)recurseOperation:(id)arg1 builder:(void *)arg2 symbolTable:(void *)arg3 tensorToValueMap:(void *)arg4 operationsRecursed:(id)arg5;
+- (void *)makeMLIROpWithBuilder:(void *)arg1 symbolTable:(void *)arg2 inputValues:(void *)arg3 opInitialization:(_Bool)arg4 name:(id)arg5;
 - (id)initWithGraph:(id)arg1 withBlock:(CDUnknownBlockType)arg2 inputTensors:(id)arg3 controlDependencies:(id)arg4 name:(id)arg5;
 
 @end

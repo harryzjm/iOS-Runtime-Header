@@ -6,12 +6,14 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class UIColor, UIFont, UIImage;
+@class NSString, UIColor, UIFont, UIImage;
 
 @protocol _UIBarButtonItemDataFallback <NSObject>
 - (struct UIOffset)backgroundImagePositionAdjustmentForState:(long long)arg1 style:(long long)arg2;
 - (UIImage *)backgroundImageForState:(long long)arg1 style:(long long)arg2;
 - (struct UIOffset)titlePositionAdjustmentForState:(long long)arg1 style:(long long)arg2;
+- (NSString *)backIndicatorTextStyleForSymbolConfiguration;
+- (NSString *)textStyleForSymbolConfiguration;
 - (UIColor *)colorForState:(long long)arg1 style:(long long)arg2;
 - (UIFont *)fontForState:(long long)arg1 style:(long long)arg2;
 @end

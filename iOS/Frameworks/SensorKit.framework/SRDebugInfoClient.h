@@ -20,6 +20,8 @@
 + (void)initialize;
 @property _Bool connectionDidInterrupt; // @synthesize connectionDidInterrupt=_connectionDidInterrupt;
 @property(retain) NSXPCConnection *connection; // @synthesize connection=_connection;
+- (void)dumpDefaultsWithReply:(CDUnknownBlockType)arg1;
+- (void)dumpConfigurationsWithReply:(CDUnknownBlockType)arg1;
 - (void)datastoreListingWithReply:(CDUnknownBlockType)arg1;
 - (void)dumpStateCacheWithReply:(CDUnknownBlockType)arg1;
 - (void)dumpClientsWithReply:(CDUnknownBlockType)arg1;

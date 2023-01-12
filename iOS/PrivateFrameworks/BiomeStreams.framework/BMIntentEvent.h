@@ -5,14 +5,17 @@
 //
 
 #import <BiomeStreams/BMEventAppAssociating-Protocol.h>
+#import <BiomeStreams/BMIdentifiable-Protocol.h>
 #import <BiomeStreams/BMProtoBufWrapper-Protocol.h>
+#import <BiomeStreams/BMPublicStreamEvent-Protocol.h>
 #import <BiomeStreams/BMStoreData-Protocol.h>
 #import <BiomeStreams/NSSecureCoding-Protocol.h>
 
 @class NSData, NSString;
 
-@interface BMIntentEvent <BMEventAppAssociating, BMStoreData, NSSecureCoding, BMProtoBufWrapper>
+@interface BMIntentEvent <BMEventAppAssociating, BMStoreData, NSSecureCoding, BMProtoBufWrapper, BMIdentifiable, BMPublicStreamEvent>
 {
+    _Bool _donatedBySiri;
     double _absoluteTimestamp;
     NSString *_bundleID;
     NSString *_sourceId;
@@ -21,12 +24,18 @@
     long long _intentType;
     long long _intentHandlingStatus;
     NSData *_interaction;
+    NSString *_itemID;
+    long long _interactionDirection;
 }
 
++ (long long)stream;
 + (_Bool)supportsSecureCoding;
 + (id)eventWithData:(id)arg1 dataVersion:(unsigned int)arg2;
 + (id)eventWithDKEvent:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) long long interactionDirection; // @synthesize interactionDirection=_interactionDirection;
+@property(nonatomic) _Bool donatedBySiri; // @synthesize donatedBySiri=_donatedBySiri;
+@property(copy, nonatomic) NSString *itemID; // @synthesize itemID=_itemID;
 @property(copy, nonatomic) NSData *interaction; // @synthesize interaction=_interaction;
 @property(nonatomic) long long intentHandlingStatus; // @synthesize intentHandlingStatus=_intentHandlingStatus;
 @property(nonatomic) long long intentType; // @synthesize intentType=_intentType;
@@ -39,6 +48,7 @@
 - (id)initWithProtoData:(id)arg1;
 - (id)initWithProto:(id)arg1;
 - (id)encodeAsProto;
+@property(readonly, nonatomic) NSString *identifier;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (id)initWithCoder:(id)arg1;
@@ -46,11 +56,11 @@
 - (_Bool)checkAndReportDecodingFailureIfNeededForuint32_t:(unsigned int)arg1 key:(id)arg2 coder:(id)arg3 errorDomain:(id)arg4 errorCode:(long long)arg5;
 - (_Bool)checkAndReportDecodingFailureIfNeededForid:(id)arg1 key:(id)arg2 coder:(id)arg3 errorDomain:(id)arg4 errorCode:(long long)arg5;
 - (_Bool)checkAndReportDecodingFailureIfNeededForCFAbsoluteTime:(double)arg1 key:(id)arg2 coder:(id)arg3 errorDomain:(id)arg4 errorCode:(long long)arg5;
-- (id)json;
-- (id)jsonDict;
 - (id)serialize;
 @property(readonly, nonatomic) unsigned int dataVersion;
 - (id)initWithAbsoluteTime:(double)arg1 bundleId:(id)arg2 sourceId:(id)arg3 intentClass:(id)arg4 intentVerb:(id)arg5 intentType:(long long)arg6 intentHandlingStatus:(long long)arg7 interaction:(id)arg8;
+- (id)initWithAbsoluteTime:(double)arg1 bundleId:(id)arg2 sourceId:(id)arg3 intentClass:(id)arg4 intentVerb:(id)arg5 intentType:(long long)arg6 intentHandlingStatus:(long long)arg7 interaction:(id)arg8 itemID:(id)arg9 donatedBySiri:(_Bool)arg10 interactionDirection:(long long)arg11;
+- (id)initWithAbsoluteTime:(double)arg1 bundleId:(id)arg2 sourceId:(id)arg3 intentClass:(id)arg4 intentVerb:(id)arg5 intentType:(long long)arg6 intentHandlingStatus:(long long)arg7 interaction:(id)arg8 itemID:(id)arg9;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

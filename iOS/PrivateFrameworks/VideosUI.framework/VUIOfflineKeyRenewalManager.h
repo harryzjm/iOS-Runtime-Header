@@ -9,7 +9,7 @@
 #import <VideosUI/TVPDownloadDelegate-Protocol.h>
 #import <VideosUI/VUIStoreFPSKeyLoaderDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, NSTimer, TVPContentKeySession, TVPStateMachine;
+@class NSMutableArray, NSString, NSTimer, TVPStateMachine;
 
 __attribute__((visibility("hidden")))
 @interface VUIOfflineKeyRenewalManager : NSObject <VUIStoreFPSKeyLoaderDelegate, TVPDownloadDelegate>
@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_keyLoaders;
     NSTimer *_keyRenewalTimer;
     NSTimer *_expirationTimer;
-    TVPContentKeySession *_contentKeySession;
+    NSMutableArray *_contentKeySessions;
     unsigned long long _backgroundTaskIdentifier;
     NSMutableArray *_downloadsForRepairingKeys;
 }
@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *downloadsForRepairingKeys; // @synthesize downloadsForRepairingKeys=_downloadsForRepairingKeys;
 @property(nonatomic) unsigned long long backgroundTaskIdentifier; // @synthesize backgroundTaskIdentifier=_backgroundTaskIdentifier;
-@property(retain, nonatomic) TVPContentKeySession *contentKeySession; // @synthesize contentKeySession=_contentKeySession;
+@property(retain, nonatomic) NSMutableArray *contentKeySessions; // @synthesize contentKeySessions=_contentKeySessions;
 @property(retain, nonatomic) NSTimer *expirationTimer; // @synthesize expirationTimer=_expirationTimer;
 @property(retain, nonatomic) NSTimer *keyRenewalTimer; // @synthesize keyRenewalTimer=_keyRenewalTimer;
 @property(nonatomic) _Bool networkErrorOccurredDuringInvalidation; // @synthesize networkErrorOccurredDuringInvalidation=_networkErrorOccurredDuringInvalidation;

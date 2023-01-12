@@ -28,9 +28,9 @@
 @property(readonly, nonatomic) TSPObject<TSDHint> *nextTargetFirstChildHint;
 @property(readonly, nonatomic) id <TSWPFootnoteMarkProvider> footnoteMarkProvider;
 @property(readonly, nonatomic) id <TSWPFootnoteHeightMeasurer> footnoteHeightMeasurer;
-@property(readonly, nonatomic) const struct TSWPTopicNumberHints *nextTargetTopicNumbers;
+@property(readonly, nonatomic) const void *nextTargetTopicNumbers;
 @property(readonly, retain, nonatomic) id <TSWPOffscreenColumn> nextTargetFirstColumn;
-@property(readonly, nonatomic) const struct TSWPTopicNumberHints *previousTargetTopicNumbers;
+@property(readonly, nonatomic) const void *previousTargetTopicNumbers;
 @property(readonly, retain, nonatomic) id <TSWPOffscreenColumn> previousTargetLastColumn;
 @property(readonly, retain, nonatomic) NSMutableArray *columns;
 - (_Bool)isLayoutOffscreen;

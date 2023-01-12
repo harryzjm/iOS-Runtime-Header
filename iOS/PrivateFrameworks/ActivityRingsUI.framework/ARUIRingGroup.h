@@ -68,6 +68,8 @@
 - (void)_setupFloatAnimationForState:(id)arg1 startValue:(float)arg2 endValue:(float)arg3 key:(id)arg4 applier:(CDUnknownBlockType)arg5;
 - (void)setFrame:(unsigned long long)arg1 ofSpriteAtIndex:(unsigned long long)arg2;
 - (void)_positionSprites;
+- (void)playCelebration:(id)arg1 onRingAtIndex:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)playCelebration:(id)arg1 onRingAtIndex:(unsigned long long)arg2;
 - (void)playSpriteAnimationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)playSpriteAnimation;
 - (void)setSpriteSheet:(id)arg1;

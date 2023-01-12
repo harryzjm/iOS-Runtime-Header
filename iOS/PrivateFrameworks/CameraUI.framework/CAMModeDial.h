@@ -39,7 +39,6 @@
 - (id)hudItemForAccessibilityHUDManager:(id)arg1;
 - (void)_updateSelectedItemBackgroundForLayoutStyle:(long long)arg1;
 - (void)_updateForLayoutStyle;
-- (void)updateToContentSize:(id)arg1;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)_configureMeshTransformForLayoutStyle:(long long)arg1;
 - (id)_meshTransformForLayoutStyle:(long long)arg1;
@@ -60,6 +59,7 @@
 - (struct CGSize)_interpolatedHorizontalMeshTransformSize;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithLayoutStyle:(long long)arg1;

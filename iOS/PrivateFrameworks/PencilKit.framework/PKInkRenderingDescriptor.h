@@ -10,6 +10,7 @@
 
 @interface PKInkRenderingDescriptor : NSObject
 {
+    _Bool _animating;
     NSString *_identifier;
     unsigned long long _version;
     unsigned long long _type;
@@ -19,6 +20,7 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) PKInkParticleDescriptor *particleDescriptor; // @synthesize particleDescriptor=_particleDescriptor;
+@property(nonatomic) _Bool animating; // @synthesize animating=_animating;
 @property(nonatomic) unsigned long long blendMode; // @synthesize blendMode=_blendMode;
 @property(nonatomic) unsigned long long type; // @synthesize type=_type;
 @property(nonatomic) unsigned long long version; // @synthesize version=_version;

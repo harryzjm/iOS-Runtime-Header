@@ -5,18 +5,18 @@
 //
 
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
-#import <PhotosUICore/PXCloudQuotaControllerDelegate-Protocol.h>
+#import <PhotosUICore/PXCloudQuotaControllerHelperDelegate-Protocol.h>
 #import <PhotosUICore/PXSettingsKeyObserver-Protocol.h>
 
-@class NSArray, NSString, PXAssetsDataSourceCountsController, PXCPLUIStatusProvider, PXCloudQuotaController, PXContentFilterFooterController, PXCuratedLibraryAnalysisStatus, PXCuratedLibraryViewModel, PXFooterSettings;
+@class NSArray, NSString, PXAssetsDataSourceCountsController, PXCPLUIStatusProvider, PXCloudQuotaControllerHelper, PXCuratedLibraryAnalysisStatus, PXCuratedLibraryViewModel, PXFilterFooterController, PXFooterSettings;
 @protocol PXCuratedLibraryFooterViewModelPresentationDelegate;
 
-@interface PXCuratedLibraryFooterViewModel <PXCloudQuotaControllerDelegate, PXChangeObserver, PXSettingsKeyObserver>
+@interface PXCuratedLibraryFooterViewModel <PXCloudQuotaControllerHelperDelegate, PXChangeObserver, PXSettingsKeyObserver>
 {
     PXCPLUIStatusProvider *_cplUIStatusProvider;
-    PXCloudQuotaController *_cloudQuotaController;
+    PXCloudQuotaControllerHelper *_cloudQuotaHelper;
     PXCuratedLibraryViewModel *_curatedLibraryViewModel;
-    PXContentFilterFooterController *_filterFooterController;
+    PXFilterFooterController *_filterFooterController;
     long long _animatedGridCycleIndex;
     _Bool _hasImportantInformation;
     _Bool _isFooterShown;
@@ -28,7 +28,6 @@
     PXFooterSettings *_settings;
 }
 
-+ (_Bool)hasCPLStatusForCPLUIStatus:(id)arg1;
 + (_Bool)hasAnalysisProgressForMode:(long long)arg1 analysisStatus:(id)arg2 cplUIStatus:(id)arg3 userDefaults:(id)arg4 outAnimatedIconMode:(long long *)arg5 outProgress:(float *)arg6 outTitle:(id *)arg7 outDescription:(id *)arg8;
 + (id)_titleWithOptionalDescription:(id *)arg1 progress:(float *)arg2 forMode:(long long)arg3 itemCountsController:(id)arg4 analysisStatus:(id)arg5 cplUIStatus:(id)arg6 inRebuild:(_Bool)arg7;
 - (void).cxx_destruct;
@@ -36,13 +35,12 @@
 @property(readonly, nonatomic) PXFooterSettings *settings; // @synthesize settings=_settings;
 @property(readonly, nonatomic) PXAssetsDataSourceCountsController *itemCountsController; // @synthesize itemCountsController=_itemCountsController;
 @property(readonly, nonatomic) PXCuratedLibraryAnalysisStatus *analysisStatus; // @synthesize analysisStatus=_analysisStatus;
-@property(readonly, nonatomic) PXCloudQuotaController *cloudQuotaController; // @synthesize cloudQuotaController=_cloudQuotaController;
 @property(readonly, nonatomic) _Bool hasImportantInformation; // @synthesize hasImportantInformation=_hasImportantInformation;
 @property(nonatomic) long long mode; // @synthesize mode=_mode;
 @property(nonatomic) __weak id <PXCuratedLibraryFooterViewModelPresentationDelegate> presentingDelegate; // @synthesize presentingDelegate=_presentingDelegate;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
-- (id)presentingViewControllerForCloudQuotaController:(id)arg1;
-- (void)cloudQuotaController:(id)arg1 informationBannerDidChange:(id)arg2;
+- (id)presentingViewControllerForCloudQuotaControllerHelper:(id)arg1;
+- (void)cloudQuotaControllerHelper:(id)arg1 informationViewDidChange:(id)arg2;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)_updateExposedProperties;
 - (void)_updateHasImportantInformation;

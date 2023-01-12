@@ -13,22 +13,34 @@
 @interface NTKOlympusAnalogBackgroundPalette : NSObject <NTKVictoryAnalogBackgroundColorPalette>
 {
     NTKOlympusColorPalette *_olympusPalette;
+    NTKOlympusColorPalette *_tritiumPalette;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NTKOlympusColorPalette *tritiumPalette; // @synthesize tritiumPalette=_tritiumPalette;
 @property(retain, nonatomic) NTKOlympusColorPalette *olympusPalette; // @synthesize olympusPalette=_olympusPalette;
+@property(readonly, nonatomic) _Bool isMulticolor;
+- (id)tritiumBackgroundColor;
+- (double)smallDotsColorBrightness;
+- (double)smallNumbersColorBrightness;
+- (id)tritiumOutlineNumbers;
+- (id)tritiumSmallNumbers;
+- (id)tritiumLargeNumbersOutline;
+- (id)tritiumLargeNumbers;
 - (id)_softBlackColor;
-@property(readonly, nonatomic) _Bool hasWhiteElements;
+- (_Bool)hasWhiteElements;
 @property(readonly, nonatomic) UIColor *analogDotColor;
-@property(readonly, nonatomic) UIColor *logoColor;
+- (id)logoColor;
 @property(readonly, nonatomic) UIColor *numbersColor;
 @property(readonly, nonatomic) UIColor *backgroundColor;
-@property(readonly, nonatomic) unsigned long long faceColor;
-- (id)colorForLogoWithStyle:(unsigned long long)arg1;
-- (id)colorForNumberVictoryAnalogTimeElement:(unsigned long long)arg1;
-- (id)colorForDotVictoryAnalogTimeElement:(unsigned long long)arg1;
-- (id)initWithOlympusPalette:(id)arg1 alternatePalette:(id)arg2;
-- (id)initWithOlympusPalette:(id)arg1;
+- (id)tritiumOutlineNumbersColorAtIndex:(id)arg1;
+- (id)tritiumNumbersColorAtIndex:(id)arg1;
+- (id)logo;
+- (id)numberColorAtIndex:(id)arg1;
+- (id)dotMarkerColorAtIndex:(id)arg1;
+- (id)dotMarkerAlpha;
+- (id)initWithOlympusColorPalette:(id)arg1 alternatePalette:(id)arg2;
+- (id)initWithOlympusColorPalette:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

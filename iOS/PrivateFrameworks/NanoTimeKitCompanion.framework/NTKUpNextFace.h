@@ -8,8 +8,10 @@
 {
 }
 
++ (id)pigmentFaceDomain;
 + (id)_orderedComplicationSlots;
 + (id)_complicationSlotDescriptors;
+- (_Bool)supportsPigmentEditOption;
 - (Class)_optionClassForCustomEditMode:(long long)arg1;
 - (unsigned long long)_indexOfOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (id)_optionAtIndex:(unsigned long long)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;

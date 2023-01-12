@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
     unsigned int _lastSentAudioSampleTime;
     double _lastSentAudioHostTime;
     _Bool _isServerBasedBandwidthProbingEnabled;
+    NSString *_profileLevel;
 }
 
 @property(nonatomic) unsigned int targetBitrateChangeCounter; // @synthesize targetBitrateChangeCounter=_targetBitrateChangeCounter;
@@ -42,15 +43,18 @@ __attribute__((visibility("hidden")))
 @property unsigned int lastRTPTimestamp; // @synthesize lastRTPTimestamp=_timestamp;
 @property CDStruct_1b6d18a9 lastFrameTime; // @synthesize lastFrameTime=_latestSampleBufferTimestamp;
 - (void)handleActiveConnectionChange:(id)arg1;
+- (void)setTemporalBitrateArray:(id)arg1;
+- (void)updateWindowState:(int)arg1 isLocal:(_Bool)arg2 windowRect:(struct CGRect)arg3;
+- (void)handleThermalLevelChange:(int)arg1;
 - (_Bool)setEncodingMode:(int)arg1;
 - (void)setMediaSuggestion:(struct VCRateControlMediaSuggestion *)arg1;
-- (void)setFECRedundancyVector:(const CDStruct_cd7ddd1c *)arg1;
+- (void)setFECRedundancyVector:(const CDStruct_d7e2e0ee *)arg1;
 - (void)setFECRatio:(double)arg1;
-- (void)collectChannelMetrics:(CDStruct_3ab08b48 *)arg1 interval:(float)arg2;
+- (void)collectChannelMetrics:(CDStruct_a4f8a7cd *)arg1 interval:(float)arg2;
 - (void)setStreamIDs:(unsigned short *)arg1 numOfStreamIDs:(unsigned char)arg2 repairedStreamIDs:(unsigned short *)arg3 numOfRepairedStreamIDs:(unsigned char)arg4;
 - (void)setKeyFrameOnlyStreamID:(unsigned short)arg1;
 - (unsigned int)setTemporaryMaximumBitrate:(unsigned int)arg1;
-- (void)generateKeyFrame;
+- (void)generateKeyFrameWithFIRType:(int)arg1;
 - (void)stopVideo;
 - (void)startVideo;
 - (_Bool)enqueueVideoFrame:(struct opaqueCMSampleBuffer *)arg1 frameTime:(CDStruct_1b6d18a9)arg2 cameraStatusBits:(unsigned char)arg3;

@@ -20,24 +20,7 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) unsigned long long pixelFormat; // @synthesize pixelFormat=_pixelFormat;
-@property(nonatomic) _Bool useLuminanceColorFilter; // @synthesize useLuminanceColorFilter=_useLuminanceColorFilter;
-@property(nonatomic) _Bool doubleBuffered; // @synthesize doubleBuffered=_doubleBuffered;
-@property(readonly, nonatomic) struct CGSize fixedPixelSize; // @synthesize fixedPixelSize=_fixedPixelSize;
-@property(readonly, nonatomic) _Bool isFixedPixelSize; // @synthesize isFixedPixelSize=_isFixedPixelSize;
 - (void)accessibilityInvertColorsStatusDidChange:(id)arg1;
-- (void)flushDrawables;
-- (void)resizeDrawableIfNecessary;
-- (void)setFixedPixelSize:(struct CGSize)arg1;
-@property(readonly, nonatomic) _Bool isDrawableAvailable; // @dynamic isDrawableAvailable;
-@property(readonly, nonatomic) struct CGSize drawableSize;
-@property(nonatomic) _Bool presentsWithTransaction;
-@property(readonly, nonatomic) CAMetalLayer *metalLayer;
-- (void)installLuminanceColorFilter;
-- (struct CGImage *)newLuminanceMap;
-- (id)initWithFrame:(struct CGRect)arg1 andPixelSize:(struct CGSize)arg2 pixelFormat:(unsigned long long)arg3;
-- (id)initWithFrame:(struct CGRect)arg1 pixelFormat:(unsigned long long)arg2;
-- (void)initLayer;
 
 @end
 

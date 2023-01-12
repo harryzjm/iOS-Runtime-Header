@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 - (void)setAttributes:(unsigned long long)arg1;
 - (void)setDiscoverabilityTitle:(id)arg1;
 - (void)setImage:(id)arg1;
+- (void)setSubtitle:(id)arg1;
 - (void)setTitle:(id)arg1;
 
 @end

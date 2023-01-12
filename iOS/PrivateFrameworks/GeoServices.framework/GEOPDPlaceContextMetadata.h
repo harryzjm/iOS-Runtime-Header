@@ -32,33 +32,15 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(retain, nonatomic) GEOPDAutocompletePlaceContextMetadata *autocompletePlaceContextMetadata;
-@property(readonly, nonatomic) _Bool hasAutocompletePlaceContextMetadata;
-@property(retain, nonatomic) GEOPDSearchPlaceContextMetadata *searchPlaceContextMetadata;
-@property(readonly, nonatomic) _Bool hasSearchPlaceContextMetadata;
-- (int)StringAsPlaceContextMetadataType:(id)arg1;
-- (id)placeContextMetadataTypeAsString:(int)arg1;
-@property(nonatomic) _Bool hasPlaceContextMetadataType;
-@property(nonatomic) int placeContextMetadataType;
-@property(nonatomic) _Bool hasMuid;
-@property(nonatomic) unsigned long long muid;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

@@ -76,6 +76,8 @@
 @property(nonatomic) __weak id <PKSelectionInteractionDelegate> delegate; // @synthesize delegate=_delegate;
 - (struct CGPoint)_pointFromViewToStrokeSpace:(struct CGPoint)arg1 inDrawing:(id)arg2;
 - (_Bool)_dragShouldBeginForSession:(id)arg1;
+- (_Bool)_selectionInteractionShouldForwardAtPoint:(struct CGPoint)arg1 forEvent:(id)arg2;
+- (_Bool)_selectionInteractionShouldBeginAtPoint:(struct CGPoint)arg1 forEvent:(id)arg2 orGestureRecognizer:(id)arg3;
 - (_Bool)_selectionShouldReceiveTouchForPoint:(struct CGPoint)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
@@ -153,6 +155,10 @@
 - (_Bool)_liveSelectionGestureStillActive;
 - (id)_gesturesForLiveSelection;
 - (void)_setupGestures;
+- (void)didResizeExternalElements;
+- (_Bool)hasStrokesAtLocation:(struct CGPoint)arg1;
+@property(readonly, nonatomic) _Bool hasStrokesOrElementsSelection;
+@property(readonly, nonatomic) _Bool currentSelectionHasStrokes;
 @property(readonly, nonatomic) _Bool hasCurrentSelection;
 - (id)_adornmentLayers;
 - (void)didMoveToView:(id)arg1;

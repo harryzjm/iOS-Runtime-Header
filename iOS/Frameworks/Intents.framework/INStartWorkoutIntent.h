@@ -6,12 +6,13 @@
 
 #import <Intents/INStartWorkoutIntentExport-Protocol.h>
 
-@class INSpeakableString, NSNumber, NSString;
+@class INSpeakableString, INWorkoutCustomization, NSArray, NSNumber, NSString;
 
 @interface INStartWorkoutIntent <INStartWorkoutIntentExport>
 {
 }
 
++ (id)_ignoredParameters;
 - (void)setParametersByName:(id)arg1;
 - (id)parametersByName;
 - (void)setVerb:(id)arg1;
@@ -20,6 +21,11 @@
 - (id)domain;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
 - (id)_dictionaryRepresentation;
+@property(copy, nonatomic) INWorkoutCustomization *customization;
+@property(nonatomic) long long sequenceLabel;
+@property(copy, nonatomic) NSNumber *isVoiceOnly;
+@property(copy, nonatomic) NSNumber *isBuiltInWorkoutType;
+@property(copy, nonatomic) NSArray *associatedItems;
 - (void)setIsOpenEnded:(id)arg1;
 @property(readonly, copy, nonatomic) NSNumber *isOpenEnded;
 - (void)setWorkoutLocationType:(long long)arg1;

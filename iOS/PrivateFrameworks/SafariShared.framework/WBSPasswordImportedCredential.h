@@ -15,10 +15,12 @@
     NSString *_user;
     NSString *_password;
     NSURL *_url;
+    NSURL *_otpAuthURL;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSURL *otpAuthURL; // @synthesize otpAuthURL=_otpAuthURL;
 @property(readonly, nonatomic) NSURL *url; // @synthesize url=_url;
 @property(readonly, copy, nonatomic) NSString *password; // @synthesize password=_password;
 @property(readonly, copy, nonatomic) NSString *user; // @synthesize user=_user;
@@ -30,6 +32,7 @@
 - (id)urlCredentialWithPersistence:(unsigned long long)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)initWithUser:(id)arg1 password:(id)arg2 url:(id)arg3 sidecarData:(id)arg4;
 - (id)initWithUser:(id)arg1 password:(id)arg2 url:(id)arg3;
 
 @end

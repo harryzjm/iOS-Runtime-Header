@@ -8,16 +8,22 @@
 
 @interface PLBackgroundJobResourceAvailabilityWorker
 {
+    struct os_unfair_lock_s _lock;
     NSProgress *_progressForCurrentAsset;
     PAImageConversionServiceClient *_imageConversionClient;
     PAVideoConversionServiceClient *_videoConversionClient;
 }
 
-+ (id)workerWithLibrary:(id)arg1;
++ (void)workerDidFinishWorkingOnItemsInLibrary:(id)arg1;
++ (void)workerWillStartWorkingOnItemsInLibrary:(id)arg1;
++ (_Bool)supportsWellKnownPhotoLibraryIdentifier:(long long)arg1;
++ (id)workerWithLibraryBundle:(id)arg1;
 - (void).cxx_destruct;
-- (void)performWorkOnManagedObjectID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)managedObjectIDsNeedingProcessing;
-- (_Bool)hasPendingJobs;
+- (void)stopWorkingOnItem:(id)arg1;
+- (_Bool)isInterruptible;
+- (void)performWorkOnItem:(id)arg1 inLibrary:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)workItemsNeedingProcessingInLibrary:(id)arg1;
+- (id)initWithPriority:(long long)arg1 libraryBundle:(id)arg2;
 - (id)videoConversionClient;
 - (id)imageConversionClient;
 - (id)_predicateToFetchResourcesAwaitingProcessing;

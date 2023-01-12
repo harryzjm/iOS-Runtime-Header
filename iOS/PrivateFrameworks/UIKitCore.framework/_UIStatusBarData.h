@@ -9,7 +9,7 @@
 #import <UIKitCore/NSCopying-Protocol.h>
 #import <UIKitCore/NSSecureCoding-Protocol.h>
 
-@class NSSet, _UIStatusBarDataActivityEntry, _UIStatusBarDataBackgroundActivityEntry, _UIStatusBarDataBatteryEntry, _UIStatusBarDataBluetoothEntry, _UIStatusBarDataBoolEntry, _UIStatusBarDataCellularEntry, _UIStatusBarDataEntry, _UIStatusBarDataIntegerEntry, _UIStatusBarDataLocationEntry, _UIStatusBarDataLockEntry, _UIStatusBarDataStringEntry, _UIStatusBarDataTetheringEntry, _UIStatusBarDataThermalEntry, _UIStatusBarDataVoiceControlEntry, _UIStatusBarDataWifiEntry;
+@class NSSet, _UIStatusBarDataActivityEntry, _UIStatusBarDataBackgroundActivityEntry, _UIStatusBarDataBatteryEntry, _UIStatusBarDataBluetoothEntry, _UIStatusBarDataBoolEntry, _UIStatusBarDataCellularEntry, _UIStatusBarDataEntry, _UIStatusBarDataIntegerEntry, _UIStatusBarDataLocationEntry, _UIStatusBarDataLockEntry, _UIStatusBarDataQuietModeEntry, _UIStatusBarDataStringEntry, _UIStatusBarDataTetheringEntry, _UIStatusBarDataThermalEntry, _UIStatusBarDataVoiceControlEntry, _UIStatusBarDataWifiEntry;
 
 @interface _UIStatusBarData : NSObject <NSCopying, NSSecureCoding>
 {
@@ -28,7 +28,7 @@
     _UIStatusBarDataTetheringEntry *_tetheringEntry;
     _UIStatusBarDataLocationEntry *_locationEntry;
     _UIStatusBarDataLockEntry *_lockEntry;
-    _UIStatusBarDataBoolEntry *_quietModeEntry;
+    _UIStatusBarDataQuietModeEntry *_quietModeEntry;
     _UIStatusBarDataBoolEntry *_electronicTollCollectionEntry;
     _UIStatusBarDataBoolEntry *_radarEntry;
     _UIStatusBarDataEntry *_rotationLockEntry;
@@ -44,6 +44,7 @@
     _UIStatusBarDataEntry *_carPlayEntry;
     _UIStatusBarDataEntry *_alarmEntry;
     _UIStatusBarDataEntry *_sensorActivityEntry;
+    _UIStatusBarDataBoolEntry *_announceNotificationsEntry;
     _UIStatusBarDataIntegerEntry *_volumeEntry;
     _UIStatusBarDataBackgroundActivityEntry *_backgroundActivityEntry;
     _UIStatusBarDataStringEntry *_backNavigationEntry;
@@ -57,6 +58,7 @@
 @property(copy, nonatomic) _UIStatusBarDataStringEntry *backNavigationEntry; // @synthesize backNavigationEntry=_backNavigationEntry;
 @property(copy, nonatomic) _UIStatusBarDataBackgroundActivityEntry *backgroundActivityEntry; // @synthesize backgroundActivityEntry=_backgroundActivityEntry;
 @property(copy, nonatomic) _UIStatusBarDataIntegerEntry *volumeEntry; // @synthesize volumeEntry=_volumeEntry;
+@property(copy, nonatomic) _UIStatusBarDataBoolEntry *announceNotificationsEntry; // @synthesize announceNotificationsEntry=_announceNotificationsEntry;
 @property(copy, nonatomic) _UIStatusBarDataEntry *sensorActivityEntry; // @synthesize sensorActivityEntry=_sensorActivityEntry;
 @property(copy, nonatomic) _UIStatusBarDataEntry *alarmEntry; // @synthesize alarmEntry=_alarmEntry;
 @property(copy, nonatomic) _UIStatusBarDataEntry *carPlayEntry; // @synthesize carPlayEntry=_carPlayEntry;
@@ -72,7 +74,7 @@
 @property(copy, nonatomic) _UIStatusBarDataEntry *rotationLockEntry; // @synthesize rotationLockEntry=_rotationLockEntry;
 @property(copy, nonatomic) _UIStatusBarDataBoolEntry *radarEntry; // @synthesize radarEntry=_radarEntry;
 @property(copy, nonatomic) _UIStatusBarDataBoolEntry *electronicTollCollectionEntry; // @synthesize electronicTollCollectionEntry=_electronicTollCollectionEntry;
-@property(copy, nonatomic) _UIStatusBarDataBoolEntry *quietModeEntry; // @synthesize quietModeEntry=_quietModeEntry;
+@property(copy, nonatomic) _UIStatusBarDataQuietModeEntry *quietModeEntry; // @synthesize quietModeEntry=_quietModeEntry;
 @property(copy, nonatomic) _UIStatusBarDataLockEntry *lockEntry; // @synthesize lockEntry=_lockEntry;
 @property(copy, nonatomic) _UIStatusBarDataLocationEntry *locationEntry; // @synthesize locationEntry=_locationEntry;
 @property(copy, nonatomic) _UIStatusBarDataTetheringEntry *tetheringEntry; // @synthesize tetheringEntry=_tetheringEntry;

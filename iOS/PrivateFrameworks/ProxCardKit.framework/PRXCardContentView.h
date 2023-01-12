@@ -31,6 +31,7 @@
 @property(retain, nonatomic) PRXLabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 @property(retain, nonatomic) UIView<PRXTextContainer> *titleView; // @synthesize titleView=_titleView;
 @property(readonly, nonatomic) long long cardStyle; // @synthesize cardStyle=_cardStyle;
+- (id)auxiliaryViews;
 - (void)updateTitleTextViewExclusionPathsForCardWidth:(double)arg1;
 - (void)_invalidateMainContentConstraints;
 @property(copy, nonatomic) NSArray *actionButtons;

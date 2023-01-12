@@ -8,7 +8,6 @@
 
 @class NSMutableDictionary, NSNumber, NSString;
 
-__attribute__((visibility("hidden")))
 @interface MCUIPayloadUserInputField : NSObject
 {
     NSMutableDictionary *_fieldDictionary;

@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 + (double)reversePushSamplingPercentageForTask:(id)arg1;
 - (void)_updateSubscriptionStatusFromBody:(id)arg1 account:(id)arg2;
 - (void)_updatePasswordSettingWithBuyParams:(id)arg1 account:(id)arg2;
+- (void)_syncDiversityBagFromResponse:(id)arg1 purchaseInfo:(id)arg2;
 - (void)_syncKeybagFromResponse:(id)arg1 purchaseInfo:(id)arg2;
 - (_Bool)_shouldRetryForFailureAction:(id)arg1 response:(id)arg2 task:(id)arg3 decodedObject:(id)arg4 responseDictionary:(id)arg5;
 - (id)_locateBuyParamsFromResponse:(id)arg1 selectedAction:(id)arg2 purchaseInfo:(id)arg3;

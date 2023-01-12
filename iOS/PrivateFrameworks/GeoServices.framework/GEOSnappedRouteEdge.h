@@ -6,15 +6,17 @@
 
 #import <objc/NSObject.h>
 
+@class GEOMultiSectionFeature;
+
 @interface GEOSnappedRouteEdge : NSObject
 {
     CDStruct_02837cd9 _localBounds;
     shared_ptr_92bc9970 _mapEdge;
-    struct vector<GEOPosition2f, std::__1::allocator<GEOPosition2f>> _points;
-    struct vector<geo::PolylineCoordinate, std::__1::allocator<geo::PolylineCoordinate>> _routeOffsets;
+    struct vector<geo::PolylineCoordinate, std::allocator<geo::PolylineCoordinate>> _routeOffsets;
     unsigned long long _mapEdgeOffset;
     _Bool _clippedFront;
     _Bool _clippedBack;
+    struct vector<GeoCodecsVectorTilePoint, std::allocator<GeoCodecsVectorTilePoint>> _points;
 }
 
 - (id).cxx_construct;
@@ -23,15 +25,15 @@
 @property(readonly, nonatomic) _Bool clippedFront; // @synthesize clippedFront=_clippedFront;
 @property(readonly, nonatomic) unsigned long long mapEdgeOffset; // @synthesize mapEdgeOffset=_mapEdgeOffset;
 @property(readonly, nonatomic) shared_ptr_92bc9970 mapEdge; // @synthesize mapEdge=_mapEdge;
-@property(readonly, nonatomic) CDStruct_4da79865 *feature;
+@property(readonly, nonatomic) GEOMultiSectionFeature *feature;
 @property(readonly, nonatomic) struct PolylineCoordinate routeOffsetB;
 @property(readonly, nonatomic) struct PolylineCoordinate routeOffsetA;
 @property(readonly, nonatomic) struct PolylineCoordinate *routeOffsets;
 - (id)description;
 @property(readonly, nonatomic) unsigned long long pointCount;
-@property(readonly, nonatomic) CDStruct_6e3f967a *points;
+@property(readonly, nonatomic) struct GeoCodecsVectorTilePoint *points;
 - (void)calculateRouteOffsetsBetweenA:(struct PolylineCoordinate)arg1 andB:(struct PolylineCoordinate)arg2 overLength:(float)arg3 onRoute:(id)arg4;
-- (id)initWithRoadPath:(const RoadPathElement_1a15aef6 *)arg1 sectionRect:(const CDStruct_90e2a262 *)arg2;
+- (id)initWithRoadPath:(const void *)arg1 sectionRect:(const CDStruct_90e2a262 *)arg2;
 
 @end
 

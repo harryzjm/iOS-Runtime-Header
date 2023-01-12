@@ -4,18 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitMetrics/HMMLogEvent.h>
+
 #import <HomeKitDaemon/HMDAWDLogEvent-Protocol.h>
 
 @class NSString;
 
-@interface HMDSoftwareUpdateAutomaticUpdateToggledEvent <HMDAWDLogEvent>
+@interface HMDSoftwareUpdateAutomaticUpdateToggledEvent : HMMLogEvent <HMDAWDLogEvent>
 {
     _Bool _enabled;
 }
 
 + (id)eventWithAutomaticUpdateEnabled:(_Bool)arg1;
-+ (id)uuid;
-+ (void)initialize;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 - (id)metricForAWD;
 - (unsigned int)AWDMessageType;

@@ -6,7 +6,7 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
-@class HDSyncSession, NSArray, NSError;
+@class HDSyncAnchorRangeMap, HDSyncSession, NSArray, NSError;
 
 @protocol HDSyncSessionDelegate <NSObject>
 - (void)syncSession:(HDSyncSession *)arg1 didFinishSuccessfully:(_Bool)arg2 error:(NSError *)arg3;
@@ -14,6 +14,7 @@
 - (void)syncSessionWillBegin:(HDSyncSession *)arg1;
 
 @optional
+- (void)syncSession:(HDSyncSession *)arg1 willSyncAnchorRanges:(HDSyncAnchorRangeMap *)arg2;
 - (_Bool)syncSession:(HDSyncSession *)arg1 didEndTransactionWithError:(id *)arg2;
 @end
 

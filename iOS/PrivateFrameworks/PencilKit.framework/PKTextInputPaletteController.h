@@ -9,11 +9,12 @@
 #import <PencilKit/PKPaletteControllerDelegate-Protocol.h>
 #import <PencilKit/PKPaletteTapToRadarCommandDelegate-Protocol.h>
 #import <PencilKit/PKTextInputWindowFirstResponderControllerDelegate-Protocol.h>
+#import <PencilKit/UIEditingOverlayInteractionWithView-Protocol.h>
 
 @class NSString, PKPaletteController, PKTextInputSettings, PKTextInputWindowFirstResponderController, UIWindowScene;
 @protocol PKTextInputPaletteControllerDelegate;
 
-@interface PKTextInputPaletteController : NSObject <PKTextInputWindowFirstResponderControllerDelegate, PKPaletteControllerDelegate, PKPaletteTapToRadarCommandDelegate>
+@interface PKTextInputPaletteController : NSObject <PKTextInputWindowFirstResponderControllerDelegate, PKPaletteControllerDelegate, PKPaletteTapToRadarCommandDelegate, UIEditingOverlayInteractionWithView>
 {
     _Bool __writingStateActive;
     id <PKTextInputPaletteControllerDelegate> _delegate;
@@ -36,6 +37,7 @@
 - (void)paletteControllerFloatingKeyboardWillHide:(id)arg1;
 - (id)paletteTapToRadarCommandConfiguration:(id)arg1;
 - (void)windowFirstResponderController:(id)arg1 didChangeFirstResponder:(id)arg2;
+- (void)editingOverlayContainerDidChangeToSceneBounds:(struct CGRect)arg1;
 - (void)_setupPaletteControllerIfNeededWithView:(id)arg1 wantsPaletteVisible:(_Bool)arg2;
 - (void)_peformPaletteVisibilityUpdate;
 - (void)_updatePaletteVisibility;

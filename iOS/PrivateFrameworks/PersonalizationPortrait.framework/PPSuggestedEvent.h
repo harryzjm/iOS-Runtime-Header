@@ -4,12 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface PPSuggestedEvent
 {
     unsigned char _category;
+    NSString *_eventIdentifier;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *eventIdentifier; // @synthesize eventIdentifier=_eventIdentifier;
 @property(readonly, nonatomic) unsigned char category; // @synthesize category=_category;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

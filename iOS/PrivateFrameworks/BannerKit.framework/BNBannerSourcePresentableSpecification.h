@@ -4,30 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-#import <BannerKit/BSXPCSecureCoding-Protocol.h>
+#import <BannerKit/BNPresentableSpecifying-Protocol.h>
 
 @class NSString, NSUUID;
 
-@interface BNBannerSourcePresentableSpecification : NSObject <BSXPCSecureCoding>
+@interface BNBannerSourcePresentableSpecification <BNPresentableSpecifying>
 {
-    NSString *_requesterIdentifier;
-    NSString *_requestIdentifier;
-    NSUUID *_uniqueIdentifier;
     long long _presentableType;
     struct CGSize _preferredContentSize;
     struct UIEdgeInsets _contentOutsets;
 }
 
-+ (_Bool)supportsBSXPCSecureCoding;
-- (void).cxx_destruct;
 @property(nonatomic) struct UIEdgeInsets contentOutsets; // @synthesize contentOutsets=_contentOutsets;
 @property(nonatomic) struct CGSize preferredContentSize; // @synthesize preferredContentSize=_preferredContentSize;
 @property(nonatomic) long long presentableType; // @synthesize presentableType=_presentableType;
-@property(copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
-@property(copy, nonatomic) NSString *requestIdentifier; // @synthesize requestIdentifier=_requestIdentifier;
-@property(copy, nonatomic) NSString *requesterIdentifier; // @synthesize requesterIdentifier=_requesterIdentifier;
 @property(readonly, copy) NSString *description;
 - (id)initWithBSXPCCoder:(id)arg1;
 - (void)encodeWithBSXPCCoder:(id)arg1;
@@ -35,7 +25,10 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
+@property(readonly, copy, nonatomic) NSString *requestIdentifier;
+@property(readonly, copy, nonatomic) NSString *requesterIdentifier;
 @property(readonly) Class superclass;
+@property(readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 
 @end
 

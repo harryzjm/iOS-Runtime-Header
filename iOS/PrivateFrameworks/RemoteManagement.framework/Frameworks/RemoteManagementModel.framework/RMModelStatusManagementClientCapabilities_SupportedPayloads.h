@@ -8,18 +8,16 @@
 
 @interface RMModelStatusManagementClientCapabilities_SupportedPayloads
 {
-    NSArray *_statusCommands;
     RMModelStatusManagementClientCapabilities_SupportedPayloadsDeclarations *_statusDeclarations;
     NSArray *_statusStatusItems;
 }
 
-+ (id)buildRequiredOnlyWithCommands:(id)arg1 declarations:(id)arg2 statusItems:(id)arg3;
-+ (id)buildWithCommands:(id)arg1 declarations:(id)arg2 statusItems:(id)arg3;
++ (id)buildRequiredOnlyWithDeclarations:(id)arg1 statusItems:(id)arg2;
++ (id)buildWithDeclarations:(id)arg1 statusItems:(id)arg2;
 + (id)allowedStatusKeys;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *statusStatusItems; // @synthesize statusStatusItems=_statusStatusItems;
 @property(copy, nonatomic) RMModelStatusManagementClientCapabilities_SupportedPayloadsDeclarations *statusDeclarations; // @synthesize statusDeclarations=_statusDeclarations;
-@property(copy, nonatomic) NSArray *statusCommands; // @synthesize statusCommands=_statusCommands;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)serializeWithType:(short)arg1;
 - (_Bool)loadFromDictionary:(id)arg1 serializationType:(short)arg2 error:(id *)arg3;

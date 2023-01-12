@@ -13,8 +13,8 @@
 
 @interface ML3MusicLibraryResourcesManager : NSObject <NSSecureCoding, ML3MusicLibraryResourcesProviding>
 {
-    ML3MusicLibraryResourcesManagerContext *_context;
     _ML3BaseMusicLibraryResourcesManager *_implementation;
+    ML3MusicLibraryResourcesManagerContext *_context;
 }
 
 + (_Bool)supportsSecureCoding;

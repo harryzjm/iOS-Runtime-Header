@@ -7,98 +7,82 @@
 #import <UIKit/UIViewController.h>
 
 #import <PhotosUI/PUAssetPickerSearchSuggestionsSelectionDelegate-Protocol.h>
+#import <PhotosUI/PUAssetPickerSuggestionsViewControllerActionHandler-Protocol.h>
 #import <PhotosUI/PXChangeObserver-Protocol.h>
 #import <PhotosUI/PXPhotosViewDelegate-Protocol.h>
 #import <PhotosUI/PXScrollViewControllerObserver-Protocol.h>
 #import <PhotosUI/UISearchBarDelegate-Protocol.h>
 #import <PhotosUI/UISearchResultsUpdating-Protocol.h>
-#import <PhotosUI/_PUPickerUnavailableUIViewControllerDelegate-Protocol.h>
 
-@class NSDictionary, NSHashTable, NSOrderedSet, NSString, PHCachingImageManager, PUAlbumsGadgetViewController, PUAssetPickerFilterOptions, PUAssetPickerSearchSuggestionsHeaderView, PUAssetPickerViewController, PUPhotoPickerResizeTaskDescriptorViewModel, PUSessionInfo, PXAssetsDataSourceManager, PXCachingCountManager, PXGAnchor, PXLoadingStatusManager, PXPhotosUIViewController, PXSearchComposableDataSource, PXSearchQueryController, PXSelectionCoordinator, UIBarButtonItem, UIButton, UILabel, UISearchController, UISegmentedControl, _PUPickerUnavailableUIViewController;
-@protocol PUAssetPickerContainerControllerActionHandler, PUAssetPickerViewControllerActionHandler;
+@class NSString, PUAlbumsGadgetViewController, PUAssetPickerSearchSuggestionsHeaderView, PUPhotoPickerResizeTaskDescriptorViewModel, PUPickerConfiguration, PUSessionInfo, PXAssetsDataSourceManager, PXGAnchor, PXPhotosUIViewController, PXSearchComposableDataSource, PXSearchQueryController, PXSectionedSelectionManager, PXSelectionCoordinator, UIBarButtonItem, UIButton, UILabel, UISearchController, UISegmentedControl;
+@protocol PUAssetPickerContainerControllerActionHandler;
 
-@interface PUAssetPickerContainerController : UIViewController <UISearchResultsUpdating, UISearchBarDelegate, PXPhotosViewDelegate, PXScrollViewControllerObserver, PUAssetPickerSearchSuggestionsSelectionDelegate, _PUPickerUnavailableUIViewControllerDelegate, PXChangeObserver>
+@interface PUAssetPickerContainerController : UIViewController <UISearchResultsUpdating, UISearchBarDelegate, PXPhotosViewDelegate, PXScrollViewControllerObserver, PUAssetPickerSearchSuggestionsSelectionDelegate, PXChangeObserver, PUAssetPickerSuggestionsViewControllerActionHandler>
 {
-    _Bool _allowsMultipleSelection;
     _Bool _allowSafeAreaChangeAnchor;
-    unsigned long long _viewOptions;
-    PUAssetPickerFilterOptions *_filterOptions;
-    NSOrderedSet *_selectedAssets;
-    NSDictionary *_downloadProgress;
+    PUPickerConfiguration *_configuration;
+    PUSessionInfo *_sessionInfo;
+    PUPhotoPickerResizeTaskDescriptorViewModel *_resizeTaskDescriptorViewModel;
+    PXSelectionCoordinator *_selectionCoordinator;
     id <PUAssetPickerContainerControllerActionHandler> _containerControllerActionHandler;
-    id <PUAssetPickerViewControllerActionHandler> _viewControllerActionHandler;
     UISegmentedControl *_navigationBarSegmentedControl;
     long long _previousNavigationBarSegmentedControlSelectedIndex;
-    UIBarButtonItem *_navigationBarCancelButton;
     UIBarButtonItem *_navigationBarAddButton;
+    UIBarButtonItem *_navigationBarDoneButton;
+    UIBarButtonItem *_navigationBarCancelButton;
+    UIBarButtonItem *_navigationBarClearButton;
     UIButton *_toolbarSelectedItemsButton;
-    UILabel *_fileSizeLabel;
+    UILabel *_toolbarFileSizeLabel;
     UIBarButtonItem *_toolbarSelectedItemsFileSizeStackView;
-    PHCachingImageManager *_cachingImageManager;
-    PXCachingCountManager *_cachingCountManager;
+    UIBarButtonItem *_toolbarSelectAllButton;
+    UIBarButtonItem *_toolbarDeselectAllButton;
     PXPhotosUIViewController *_photosViewController;
     PXGAnchor *_pinToTopAnchor;
     PXAssetsDataSourceManager *_photosDataSourceManager;
-    PUAssetPickerViewController *_allAssetsViewController;
-    PXSearchQueryController *_queryController;
+    PXSectionedSelectionManager *_photosSelectionManager;
+    PUAlbumsGadgetViewController *_allAlbumsGadgetViewController;
     UISearchController *_searchController;
+    PXSearchQueryController *_queryController;
     PXSearchComposableDataSource *_searchSuggestionsCollectionViewDataSource;
     PUAssetPickerSearchSuggestionsHeaderView *_searchSuggestionsHeaderView;
-    PUAlbumsGadgetViewController *_allAlbumsGadgetViewController;
-    PUAssetPickerViewController *_allAlbumsViewController;
-    NSHashTable *_pushedAssetPickerViewControllers;
-    PXLoadingStatusManager *_loadingStatusManager;
-    PXSelectionCoordinator *_selectionCoordinator;
-    _PUPickerUnavailableUIViewController *_unavailableViewController;
-    PUPhotoPickerResizeTaskDescriptorViewModel *_resizeTaskDescriptorViewModel;
-    PUSessionInfo *_sessionInfo;
 }
 
 + (id)_setupSearchQueryControllerWithSuggestionsSectionProvider:(id)arg1 photosDataSourceManager:(id)arg2 suggestionsHeaderView:(id)arg3 photosViewController:(id)arg4;
 + (_Bool)_hideSearchBarWhenScrolling;
-+ (_Bool)_useGadgetsAlbumsTab;
-+ (_Bool)_usePXPhotosView;
-+ (void)updateToolbarSelectedItemsButton:(id)arg1 selectedAssets:(id)arg2;
++ (id)photosTabTitleForConfiguration:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) PUSessionInfo *sessionInfo; // @synthesize sessionInfo=_sessionInfo;
-@property(retain, nonatomic) PUPhotoPickerResizeTaskDescriptorViewModel *resizeTaskDescriptorViewModel; // @synthesize resizeTaskDescriptorViewModel=_resizeTaskDescriptorViewModel;
-@property(nonatomic) _Bool allowSafeAreaChangeAnchor; // @synthesize allowSafeAreaChangeAnchor=_allowSafeAreaChangeAnchor;
-@property(readonly, nonatomic) _PUPickerUnavailableUIViewController *unavailableViewController; // @synthesize unavailableViewController=_unavailableViewController;
-@property(readonly, nonatomic) PXSelectionCoordinator *selectionCoordinator; // @synthesize selectionCoordinator=_selectionCoordinator;
-@property(readonly, nonatomic) PXLoadingStatusManager *loadingStatusManager; // @synthesize loadingStatusManager=_loadingStatusManager;
-@property(readonly, nonatomic) NSHashTable *pushedAssetPickerViewControllers; // @synthesize pushedAssetPickerViewControllers=_pushedAssetPickerViewControllers;
-@property(readonly, nonatomic) PUAssetPickerViewController *allAlbumsViewController; // @synthesize allAlbumsViewController=_allAlbumsViewController;
-@property(readonly, nonatomic) PUAlbumsGadgetViewController *allAlbumsGadgetViewController; // @synthesize allAlbumsGadgetViewController=_allAlbumsGadgetViewController;
 @property(readonly, nonatomic) PUAssetPickerSearchSuggestionsHeaderView *searchSuggestionsHeaderView; // @synthesize searchSuggestionsHeaderView=_searchSuggestionsHeaderView;
 @property(readonly, nonatomic) PXSearchComposableDataSource *searchSuggestionsCollectionViewDataSource; // @synthesize searchSuggestionsCollectionViewDataSource=_searchSuggestionsCollectionViewDataSource;
-@property(readonly, nonatomic) UISearchController *searchController; // @synthesize searchController=_searchController;
 @property(readonly, nonatomic) PXSearchQueryController *queryController; // @synthesize queryController=_queryController;
-@property(readonly, nonatomic) PUAssetPickerViewController *allAssetsViewController; // @synthesize allAssetsViewController=_allAssetsViewController;
+@property(readonly, nonatomic) UISearchController *searchController; // @synthesize searchController=_searchController;
+@property(readonly, nonatomic) PUAlbumsGadgetViewController *allAlbumsGadgetViewController; // @synthesize allAlbumsGadgetViewController=_allAlbumsGadgetViewController;
+@property(nonatomic) _Bool allowSafeAreaChangeAnchor; // @synthesize allowSafeAreaChangeAnchor=_allowSafeAreaChangeAnchor;
+@property(readonly, nonatomic) PXSectionedSelectionManager *photosSelectionManager; // @synthesize photosSelectionManager=_photosSelectionManager;
 @property(readonly, nonatomic) PXAssetsDataSourceManager *photosDataSourceManager; // @synthesize photosDataSourceManager=_photosDataSourceManager;
 @property(retain, nonatomic) PXGAnchor *pinToTopAnchor; // @synthesize pinToTopAnchor=_pinToTopAnchor;
 @property(readonly, nonatomic) PXPhotosUIViewController *photosViewController; // @synthesize photosViewController=_photosViewController;
-@property(readonly, nonatomic) PXCachingCountManager *cachingCountManager; // @synthesize cachingCountManager=_cachingCountManager;
-@property(readonly, nonatomic) PHCachingImageManager *cachingImageManager; // @synthesize cachingImageManager=_cachingImageManager;
+@property(readonly, nonatomic) UIBarButtonItem *toolbarDeselectAllButton; // @synthesize toolbarDeselectAllButton=_toolbarDeselectAllButton;
+@property(readonly, nonatomic) UIBarButtonItem *toolbarSelectAllButton; // @synthesize toolbarSelectAllButton=_toolbarSelectAllButton;
 @property(readonly, nonatomic) UIBarButtonItem *toolbarSelectedItemsFileSizeStackView; // @synthesize toolbarSelectedItemsFileSizeStackView=_toolbarSelectedItemsFileSizeStackView;
-@property(readonly, nonatomic) UILabel *fileSizeLabel; // @synthesize fileSizeLabel=_fileSizeLabel;
+@property(readonly, nonatomic) UILabel *toolbarFileSizeLabel; // @synthesize toolbarFileSizeLabel=_toolbarFileSizeLabel;
 @property(readonly, nonatomic) UIButton *toolbarSelectedItemsButton; // @synthesize toolbarSelectedItemsButton=_toolbarSelectedItemsButton;
-@property(readonly, nonatomic) UIBarButtonItem *navigationBarAddButton; // @synthesize navigationBarAddButton=_navigationBarAddButton;
+@property(readonly, nonatomic) UIBarButtonItem *navigationBarClearButton; // @synthesize navigationBarClearButton=_navigationBarClearButton;
 @property(readonly, nonatomic) UIBarButtonItem *navigationBarCancelButton; // @synthesize navigationBarCancelButton=_navigationBarCancelButton;
+@property(readonly, nonatomic) UIBarButtonItem *navigationBarDoneButton; // @synthesize navigationBarDoneButton=_navigationBarDoneButton;
+@property(readonly, nonatomic) UIBarButtonItem *navigationBarAddButton; // @synthesize navigationBarAddButton=_navigationBarAddButton;
 @property(nonatomic) long long previousNavigationBarSegmentedControlSelectedIndex; // @synthesize previousNavigationBarSegmentedControlSelectedIndex=_previousNavigationBarSegmentedControlSelectedIndex;
 @property(readonly, nonatomic) UISegmentedControl *navigationBarSegmentedControl; // @synthesize navigationBarSegmentedControl=_navigationBarSegmentedControl;
-@property(readonly, nonatomic) __weak id <PUAssetPickerViewControllerActionHandler> viewControllerActionHandler; // @synthesize viewControllerActionHandler=_viewControllerActionHandler;
 @property(readonly, nonatomic) __weak id <PUAssetPickerContainerControllerActionHandler> containerControllerActionHandler; // @synthesize containerControllerActionHandler=_containerControllerActionHandler;
-@property(copy, nonatomic) NSDictionary *downloadProgress; // @synthesize downloadProgress=_downloadProgress;
-@property(copy, nonatomic) NSOrderedSet *selectedAssets; // @synthesize selectedAssets=_selectedAssets;
-@property(retain, nonatomic) PUAssetPickerFilterOptions *filterOptions; // @synthesize filterOptions=_filterOptions;
-@property(readonly, nonatomic) _Bool allowsMultipleSelection; // @synthesize allowsMultipleSelection=_allowsMultipleSelection;
-@property(readonly, nonatomic) unsigned long long viewOptions; // @synthesize viewOptions=_viewOptions;
-- (void)_pickerUnavailableUIViewController:(id)arg1 cancelButtonTapped:(id)arg2;
+@property(readonly, nonatomic) PXSelectionCoordinator *selectionCoordinator; // @synthesize selectionCoordinator=_selectionCoordinator;
+@property(readonly, nonatomic) PUPhotoPickerResizeTaskDescriptorViewModel *resizeTaskDescriptorViewModel; // @synthesize resizeTaskDescriptorViewModel=_resizeTaskDescriptorViewModel;
+@property(readonly, nonatomic) PUSessionInfo *sessionInfo; // @synthesize sessionInfo=_sessionInfo;
+@property(readonly, nonatomic) PUPickerConfiguration *configuration; // @synthesize configuration=_configuration;
 - (unsigned long long)_searchSuggestionLimit;
 - (void)_updateSearchFieldWithSuggestion:(id)arg1;
 - (void)didSelectSuggestionAtIndexPath:(id)arg1 collectionView:(id)arg2;
 - (void)scrollViewControllerDidScroll:(id)arg1;
 - (void)searchBarSearchButtonClicked:(id)arg1;
+- (_Bool)searchBarShouldBeginEditing:(id)arg1;
 - (void)updateSearchResultsForSearchController:(id)arg1;
 - (id)_sectionLayoutForSection:(long long)arg1 environment:(id)arg2;
 - (id)_setupCollectionViewLayoutWithSectionProviders:(id)arg1;
@@ -107,25 +91,25 @@
 - (id)headerViewForPhotosViewController:(id)arg1;
 - (id)photosViewController:(id)arg1 animationForProposedAnimation:(id)arg2;
 - (_Bool)photosViewController:(id)arg1 didPickAssetReference:(id)arg2;
+- (_Bool)allowsContextMenuInteractionForPhotosViewController:(id)arg1;
+- (void)suggestionsViewController:(id)arg1 didTapAsset:(id)arg2;
+- (void)handleToolbarDeselectAllButton:(id)arg1;
+- (void)handleToolbarSelectAllButton:(id)arg1;
 - (void)handleToolbarSelectedItemsButton:(id)arg1;
 - (void)handleNavigationBarAddButton:(id)arg1;
+- (void)handleNavigationBarClearButton:(id)arg1;
 - (void)handleNavigationBarCancelButton:(id)arg1;
 - (void)handleNavigationBarSegmentedControl:(id)arg1;
-- (void)switchToViewController:(id)arg1;
-- (void)switchFromViewController:(id)arg1;
-- (void)_updateNavigationBarButtonItemsForSelectedAssets:(id)arg1;
-- (void)downloadProgressDidChange:(id)arg1 changedAssetIdentifier:(id)arg2;
-- (void)selectedAssetsDidChange:(id)arg1;
-- (void)presentAssetPickerViewControllerWithSectionDataItems:(id)arg1 title:(id)arg2;
-- (void)configurePromptTextForLimitedLibraryMode:(_Bool)arg1 selectionLimit:(long long)arg2;
-- (id)contentScrollView;
+- (void)_updateToolbarBar;
+- (void)_updateNavigationBar;
+- (void)updateBars;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewSafeAreaInsetsDidChange;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)dealloc;
-- (id)initWithViewOptions:(unsigned long long)arg1 filterOptions:(id)arg2 resizeTaskDescriptorViewModel:(id)arg3 selectedAssets:(id)arg4 selectionCoordinator:(id)arg5 loadingStatusManager:(id)arg6 downloadProgress:(id)arg7 containerControllerActionHandler:(id)arg8 viewControllerActionHandler:(id)arg9;
+- (id)initWithConfiguration:(id)arg1 loadingStatusManager:(id)arg2 resizeTaskDescriptorViewModel:(id)arg3 selectionCoordinator:(id)arg4 actionHandler:(id)arg5;
 - (id)px_gridPresentation;
 - (void)ppt_prepareForSearchTest:(CDUnknownBlockType)arg1;
 - (void)ppt_switchToAlbumsTab;

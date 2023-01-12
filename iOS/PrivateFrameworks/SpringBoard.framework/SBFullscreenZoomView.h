@@ -14,7 +14,7 @@
 - (void)_addBlackBackground;
 @property(readonly, nonatomic) __weak id surface;
 - (id)initWithView:(id)arg1 containingSceneSnapshot:(id)arg2 forDisplayConfiguration:(id)arg3;
-- (id)initWithContainingBounds:(struct CGRect)arg1 contentFrame:(struct CGRect)arg2 statusBarFrame:(struct CGRect)arg3 snapshot:(id)arg4 snapshotOrientation:(long long)arg5 interfaceOrientation:(long long)arg6 doubleHeightStatusBar:(_Bool)arg7 preventSplit:(_Bool)arg8 needsZoomFilter:(_Bool)arg9 asyncDecodeImage:(_Bool)arg10 forJail:(_Bool)arg11;
+- (id)initWithContainingBounds:(struct CGRect)arg1 contentFrame:(struct CGRect)arg2 statusBarFrame:(struct CGRect)arg3 snapshot:(id)arg4 snapshotOrientation:(long long)arg5 interfaceOrientation:(long long)arg6 doubleHeightStatusBar:(_Bool)arg7 allowStatusBarToOverlap:(_Bool)arg8 useLargerCornerRadii:(_Bool)arg9 preventSplit:(_Bool)arg10 needsZoomFilter:(_Bool)arg11 asyncDecodeImage:(_Bool)arg12 forJail:(_Bool)arg13 hasOrientationMismatchForClassicApp:(_Bool)arg14;
 - (id)_initWithView:(id)arg1 displayConfiguration:(id)arg2;
 - (id)_initWithFrame:(struct CGRect)arg1;
 

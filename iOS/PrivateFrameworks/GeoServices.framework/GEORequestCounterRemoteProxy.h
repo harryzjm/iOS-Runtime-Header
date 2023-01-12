@@ -26,10 +26,9 @@
 - (void)startedProactiveTileDownloadForIdentifier:(id)arg1 policy:(unsigned char)arg2;
 - (void)recordTrafficProbeCollectionAt:(id)arg1 tripId:(id)arg2 locationCount:(int)arg3 result:(unsigned char)arg4;
 - (void)clearCounters;
-- (void)startPowerLogSessionWithName:(id)arg1;
-- (void)readRequestLogsSince:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)readRequestsPerAppSince:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)_incrementForApp:(id)arg1 requestId:(id)arg2 time:(id)arg3 requestType:(CDStruct_d1a7ebee)arg4 result:(unsigned char)arg5 xmitBytes:(long long)arg6 recvBytes:(long long)arg7;
+- (void)readRequestLogsDuring:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)readRequestsPerAppDuring:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_incrementForApp:(id)arg1 startTime:(id)arg2 endTime:(id)arg3 requestType:(CDStruct_d1a7ebee)arg4 result:(unsigned char)arg5 xmitBytes:(long long)arg6 recvBytes:(long long)arg7 usedInterfaces:(unsigned long long)arg8;
 - (id)requestCounterTicketForType:(CDStruct_d1a7ebee)arg1 appId:(id)arg2;
 @property(nonatomic) _Bool countersEnabled;
 

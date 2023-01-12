@@ -14,8 +14,6 @@
 }
 
 - (void).cxx_destruct;
-- (id)_compoundSyncOperationWithConfiguration:(id)arg1 cloudState:(id)arg2;
-- (id)_operationWithMostRecentCloudMedicalIDFromPrimaryFetchOperation:(id)arg1 secondaryFetchOperations:(id)arg2;
 - (void)main;
 
 @end

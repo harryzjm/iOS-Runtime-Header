@@ -25,8 +25,10 @@
 + (void)beginSubjectReporting:(id)arg1 withArchivedParent:(id)arg2;
 + (void)beginSubjectReporting:(id)arg1;
 + (id)reporterForSubject:(id)arg1;
++ (id)subjectSessionStateDateDictionary;
 + (id)subjectDictionary;
 + (void)reportDashboardEventIfNecessary:(id)arg1 forPass:(id)arg2;
++ (id)subjectToReportDashboardAnalyticsForFeature:(unsigned long long)arg1;
 + (id)subjectToReportDashboardAnalyticsForAccount:(id)arg1;
 + (id)subjectToReportDashboardAnalyticsForPass:(id)arg1;
 - (void).cxx_destruct;

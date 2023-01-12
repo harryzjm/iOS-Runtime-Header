@@ -22,6 +22,8 @@
 - (id)_lp_strictlyDecodeLPVideoForKey:(id)arg1;
 - (id)_lp_strictlyDecodeArrayOfLPImagesForKey:(id)arg1;
 - (id)_lp_strictlyDecodeLPImageForKey:(id)arg1;
+- (id)_lp_strictlyDecodeArrayOfLPARAssetsForKey:(id)arg1;
+- (id)_lp_strictlyDecodeLPARAssetForKey:(id)arg1;
 - (id)_lp_strictlyDecodeNSAttributedStringForKey:(id)arg1;
 - (id)_lp_strictlyDecodeNSStringForKey:(id)arg1;
 - (id)_lp_strictlyDecodeNSDataForKey:(id)arg1;

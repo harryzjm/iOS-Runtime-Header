@@ -8,6 +8,7 @@
 
 @class NSISEngine;
 
+__attribute__((visibility("hidden")))
 @interface NSISObjectiveLinearExpression : NSObject
 {
     NSISEngine *_engine;
@@ -34,8 +35,13 @@
 
 - (id)description;
 - (void)dealloc;
-- (id)initWithEngine:(id)arg1;
 - (id)init;
+- (unsigned long long)_variableCount;
+- (_Bool)_restrictedVarWithCoefficientOfLargestNegativeMagnitudeOutVar:(CDStruct_fcd6c539 *)arg1;
+- (void)_replaceVar:(CDStruct_fcd6c539)arg1 withExpression:(CDStruct_9ac54d62 *)arg2 processVarNewToReceiver:(CDUnknownBlockType)arg3 processVarDroppedFromReceiver:(CDUnknownBlockType)arg4;
+- (void)_removeVar:(CDStruct_fcd6c539)arg1;
+- (void)_addVar:(CDStruct_fcd6c539)arg1 priority:(double)arg2 times:(double)arg3;
+- (id)_initWithEngine:(id)arg1;
 
 @end
 

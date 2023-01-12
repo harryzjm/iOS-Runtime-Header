@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) long long numberOfWarnings; // @synthesize numberOfWarnings=_numberOfWarnings;
 @property(nonatomic) long long warningStyle; // @synthesize warningStyle=_warningStyle;
+- (void)_updateDetailViewVisibilityForWarningStyle:(long long)arg1;
 - (void)_setDetailLabelText;
 - (void)traitCollectionDidChange:(id)arg1;
 @property(copy, nonatomic) NSString *subtitleText;

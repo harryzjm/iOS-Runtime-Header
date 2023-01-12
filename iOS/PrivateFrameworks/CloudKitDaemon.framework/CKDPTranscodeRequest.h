@@ -10,7 +10,6 @@
 
 @class CKCodeRecordTransport, NSData;
 
-__attribute__((visibility("hidden")))
 @interface CKDPTranscodeRequest : PBRequest <NSCopying>
 {
     NSData *_constructedAssetDownloadParameters;

@@ -11,6 +11,7 @@
 @interface _TtC8NewsFeed13FormatService : _TtCs12_SwiftObject
 {
     MISSING_TYPE *headlineService;
+    MISSING_TYPE *issueService;
     MISSING_TYPE *tagService;
     MISSING_TYPE *assetManager;
     MISSING_TYPE *fontManager;
@@ -18,6 +19,7 @@
     MISSING_TYPE *resourceService;
     MISSING_TYPE *webArchiveService;
     MISSING_TYPE *subscriptionController;
+    MISSING_TYPE *paidAccessChecker;
     MISSING_TYPE *$__lazy_storage_$_ignoreCache;
     MISSING_TYPE *$__lazy_storage_$_loadPackagesFromDebugServerDropbox;
     MISSING_TYPE *fileCache;

@@ -6,13 +6,19 @@
 
 #import <objc/NSObject.h>
 
+@class UMUserSwitchBlockingTask;
+
 @interface LKLogoutSupport : NSObject
 {
+    UMUserSwitchBlockingTask *_syncTask;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) UMUserSwitchBlockingTask *syncTask; // @synthesize syncTask=_syncTask;
 - (_Bool)isCurrentUserAnonymous;
 - (id)logoutWarningMessage;
 - (void)logoutToLoginWindowWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_syncPreferencesIfNeeded;
 - (void)logoutToLoginUserWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)logoutToLoginSessionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (_Bool)_canLogoutToLoginSession;

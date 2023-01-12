@@ -6,17 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSURL;
+@class WLKSharedFileStorage;
 
 @interface WLKUpNextDeltaStore : NSObject
 {
-    NSURL *_fileURL;
+    WLKSharedFileStorage *_fileStorage;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (_Bool)_writeDelta:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
-- (id)_readDeltaFromURL:(id)arg1 error:(id *)arg2;
 - (void)delete:(CDUnknownBlockType)arg1;
 - (void)merge:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)write:(id)arg1 completion:(CDUnknownBlockType)arg2;

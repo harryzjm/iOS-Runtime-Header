@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray, NSNumber, UITapGestureRecognizer;
+@class HKChartSummaryTrendModel, NSMutableArray, NSNumber, UITapGestureRecognizer;
 
 @interface HKOverlayRoomOxygenSaturationViewController
 {
     NSNumber *_preferredOverlayIndex;
+    HKChartSummaryTrendModel *_trendModel;
     NSMutableArray *_contextDelegates;
     long long _preferredOverlay;
     UITapGestureRecognizer *_overrideOnboardingRecognizer;
@@ -27,6 +28,7 @@
 - (id)_makePressureOverlayContextForMode:(long long)arg1 applicationItems:(id)arg2 overlayChartController:(id)arg3 context:(unsigned long long)arg4 contextDelegate:(id *)arg5;
 - (id)_configureContextSectionsForFullMode:(long long)arg1 applicationItems:(id)arg2 overlayChartController:(id)arg3;
 - (id)_configureContextSectionsForSingleOverlayMode:(long long)arg1 applicationItems:(id)arg2 overlayChartController:(id)arg3;
+- (id)createChartOverlayViewController;
 - (id)createViewControllerForMode:(long long)arg1 displayDate:(id)arg2 applicationItems:(id)arg3;
 - (id)initialSelectedContextForMode:(long long)arg1;
 - (id)contextSectionsForMode:(long long)arg1 applicationItems:(id)arg2 overlayChartController:(id)arg3;
@@ -38,7 +40,7 @@
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (id)controllerTitleWithApplicationItems:(id)arg1;
-- (id)initWithDisplayDate:(id)arg1 applicationItems:(id)arg2 mode:(long long)arg3 preferredOverlay:(long long)arg4;
+- (id)initWithDisplayDate:(id)arg1 applicationItems:(id)arg2 mode:(long long)arg3 preferredOverlay:(long long)arg4 trendModel:(id)arg5;
 
 @end
 

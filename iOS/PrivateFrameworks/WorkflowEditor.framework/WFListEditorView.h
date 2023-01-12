@@ -7,13 +7,13 @@
 #import <UIKit/UIView.h>
 
 #import <WorkflowEditor/UITableViewDataSource-Protocol.h>
-#import <WorkflowEditor/UITableViewDelegate-Protocol.h>
+#import <WorkflowEditor/UITableViewDelegatePrivate-Protocol.h>
 #import <WorkflowEditor/WFListEditorViewCellDelegate-Protocol.h>
 
 @class NSArray, NSSet, NSString, UITableView;
 @protocol WFComponentNavigationContext, WFListEditorViewDelegate, WFVariableProvider, WFVariableUIDelegate;
 
-@interface WFListEditorView : UIView <UITableViewDataSource, UITableViewDelegate, WFListEditorViewCellDelegate>
+@interface WFListEditorView : UIView <UITableViewDataSource, UITableViewDelegatePrivate, WFListEditorViewCellDelegate>
 {
     _Bool _variablesDisabled;
     _Bool _standaloneVariablesAsContentItems;
@@ -46,6 +46,7 @@
 - (_Bool)isAccessibilityElement;
 - (void)keyboardWillChangeFrame:(id)arg1;
 - (void)listEditorCell:(id)arg1 didUpdateToValue:(id)arg2;
+- (_Bool)tableView:(id)arg1 shouldDrawBottomSeparatorForSection:(long long)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 targetIndexPathForMoveFromRowAtIndexPath:(id)arg2 toProposedIndexPath:(id)arg3;
 - (void)tableView:(id)arg1 moveRowAtIndexPath:(id)arg2 toIndexPath:(id)arg3;

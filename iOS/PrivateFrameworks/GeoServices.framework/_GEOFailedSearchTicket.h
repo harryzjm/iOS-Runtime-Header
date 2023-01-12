@@ -6,7 +6,7 @@
 
 #import <GeoServices/GEOMapServiceSearchTicket-Protocol.h>
 
-@class GEOCategorySearchResultSection, GEODirectionIntent, GEOMapRegion, GEOMapServiceTraits, GEOPDMerchantLookupResult, GEORelatedSearchSuggestion, GEOResolvedItem, NSArray, NSDictionary, NSString;
+@class GEOCategorySearchResultSection, GEODirectionIntent, GEOMapRegion, GEOMapServiceTraits, GEOPDMerchantLookupResult, GEOPDPlaceSummaryLayoutMetadata, GEORelatedSearchSuggestion, GEOResolvedItem, GEOResultRefinementGroup, GEOSearchAutoRedoThreshold, GEOSearchSectionList, NSArray, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _GEOFailedSearchTicket <GEOMapServiceSearchTicket>
@@ -32,20 +32,26 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) GEORelatedSearchSuggestion *defaultRelatedSuggestion;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) GEODirectionIntent *directionIntent;
+@property(readonly, nonatomic) _Bool disableAdditionalViewportPadding;
 @property(readonly, nonatomic) NSArray *displayHeaderSubstitutes;
+@property(readonly, nonatomic) NSArray *dotPlaces;
 @property(readonly, nonatomic) unsigned int dymSuggestionVisibleTime;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) GEOPDMerchantLookupResult *merchantLookupResult;
+@property(readonly, nonatomic) GEOPDPlaceSummaryLayoutMetadata *placeSummaryLayoutMetadata;
 @property(readonly, nonatomic) NSArray *publisherResults;
 @property(readonly, nonatomic) NSArray *relatedEntitySections;
 @property(readonly, nonatomic) NSArray *relatedSearchSuggestions;
 @property(readonly, nonatomic) NSDictionary *responseUserInfo;
 @property(readonly, nonatomic) GEOMapRegion *resultBoundingRegion;
 @property(readonly, nonatomic) NSString *resultDisplayHeader;
+@property(readonly, nonatomic) GEOResultRefinementGroup *resultRefinementGroup;
 @property(readonly, nonatomic) NSString *resultSectionHeader;
 @property(readonly, nonatomic) NSArray *retainedSearchMetadata;
+@property(readonly, nonatomic) GEOSearchAutoRedoThreshold *searchAutoRedoThreshold;
 @property(readonly, nonatomic) NSArray *searchResultSections;
 @property(readonly, nonatomic) int searchResultType;
+@property(readonly, nonatomic) GEOSearchSectionList *searchSectionList;
 @property(readonly, nonatomic) _Bool shouldEnableRedoSearch;
 @property(readonly, nonatomic) _Bool showDymSuggestionCloseButton;
 @property(readonly) Class superclass;

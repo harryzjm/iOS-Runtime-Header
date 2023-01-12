@@ -7,12 +7,11 @@
 #import <PhotosUICore/PXGadgetDataSourceManager.h>
 
 #import <PhotosUI/PUSearchZeroKeywordChangeDelegate-Protocol.h>
-#import <PhotosUI/PXSettingsKeyObserver-Protocol.h>
 
 @class NSArray, NSString, PUSearchZeroKeywordDataSource, PXTapToRadarGadgetProvider;
 
 __attribute__((visibility("hidden")))
-@interface PUSearchHomeGadgetDataSourceManager : PXGadgetDataSourceManager <PXSettingsKeyObserver, PUSearchZeroKeywordChangeDelegate>
+@interface PUSearchHomeGadgetDataSourceManager : PXGadgetDataSourceManager <PUSearchZeroKeywordChangeDelegate>
 {
     NSArray *_gadgetProviders;
     PUSearchZeroKeywordDataSource *_zeroKeywordDataSource;
@@ -27,7 +26,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSArray *zeroKeywordGadgetProviders; // @synthesize zeroKeywordGadgetProviders=_zeroKeywordGadgetProviders;
 @property(readonly, nonatomic) PUSearchZeroKeywordDataSource *zeroKeywordDataSource; // @synthesize zeroKeywordDataSource=_zeroKeywordDataSource;
 - (void)ppt_prepareZeroKeywordRequest:(CDUnknownBlockType)arg1;
-- (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (void)didUpdateSections:(id)arg1;
 - (void)refreshData;
 - (void)_waitForFirstDisplayTimedOut;

@@ -16,8 +16,8 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) double percent; // @synthesize percent=_percent;
 - (void)traitCollectionDidChange:(id)arg1;
+@property double percent;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)updateColors;

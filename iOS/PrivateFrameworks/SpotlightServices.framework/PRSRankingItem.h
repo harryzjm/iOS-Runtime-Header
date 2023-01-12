@@ -23,19 +23,26 @@
     _Bool _recentForAboveThresholdTopHit;
     _Bool _matchedQueryTerms;
     _Bool _hasPolicyMultipleTermsPhraseMatch;
+    _Bool _hasPolicySingleTermPhraseMatch;
+    _Bool _hasPolicyMultipleTermsNearMatch;
     _Bool _isSafariTopHit;
     _Bool _isBundleDemotedForBullseyeCommittedSearch;
     _Bool _hasShortCut;
     _Bool _displayNameInitialsPrefixMatchOnly;
+    _Bool _displayNameInitialsFirstWordAndMoreMatchOnly;
     _Bool _vendorNameIsDisplayNamePrefix;
     _Bool _isNotExecutable;
     _Bool _isKeywordMatch;
+    _Bool _wordMatchedKeyword;
+    _Bool _photosMatch;
+    _Bool _photosExactMatch;
+    _Bool _isServerAlternativeResult;
     _Bool _isPrepared;
-    short _topHitReason;
     float _rawScore;
     float _feedbackScore;
     float _score;
     float _withinBundleScore;
+    int _topHitReason;
     unsigned int _bundleIDType;
     NSString *_identifier;
     double _suggestionScore;
@@ -49,7 +56,7 @@
     NSData *_localSuggestionsData;
     double _mostRecentUsedDate;
     double _closestUpComingDate;
-    // Error: parsing type: '^{?=q[2Q]TT[0^v]}', name: _attributes
+    CDStruct_ff5cd05b *_attributes;
     PRSRankingSpanCalculator *_spanCalculator;
     NSString *_contentType;
     unsigned long long _importantPropertiesPrefixMatched;
@@ -63,19 +70,24 @@
 + (id)rankingDescriptorForBundleFeature:(unsigned long long)arg1;
 + (void)initialize;
 - (void).cxx_destruct;
-// Error parsing type for property attributes:
-// Property attributes: T^{?=q[2Q]TT[0^v]},N,V_attributes
-
-@property(nonatomic) short topHitReason; // @synthesize topHitReason=_topHitReason;
+@property(nonatomic) CDStruct_ff5cd05b *attributes; // @synthesize attributes=_attributes;
+@property(nonatomic) int topHitReason; // @synthesize topHitReason=_topHitReason;
 @property(nonatomic) double closestUpComingDate; // @synthesize closestUpComingDate=_closestUpComingDate;
 @property(nonatomic) double mostRecentUsedDate; // @synthesize mostRecentUsedDate=_mostRecentUsedDate;
+@property(nonatomic) _Bool isServerAlternativeResult; // @synthesize isServerAlternativeResult=_isServerAlternativeResult;
+@property(nonatomic) _Bool photosExactMatch; // @synthesize photosExactMatch=_photosExactMatch;
+@property(nonatomic) _Bool photosMatch; // @synthesize photosMatch=_photosMatch;
+@property(nonatomic) _Bool wordMatchedKeyword; // @synthesize wordMatchedKeyword=_wordMatchedKeyword;
 @property(nonatomic) _Bool isKeywordMatch; // @synthesize isKeywordMatch=_isKeywordMatch;
 @property(nonatomic) _Bool isNotExecutable; // @synthesize isNotExecutable=_isNotExecutable;
 @property(nonatomic) _Bool vendorNameIsDisplayNamePrefix; // @synthesize vendorNameIsDisplayNamePrefix=_vendorNameIsDisplayNamePrefix;
+@property(nonatomic) _Bool displayNameInitialsFirstWordAndMoreMatchOnly; // @synthesize displayNameInitialsFirstWordAndMoreMatchOnly=_displayNameInitialsFirstWordAndMoreMatchOnly;
 @property(nonatomic) _Bool displayNameInitialsPrefixMatchOnly; // @synthesize displayNameInitialsPrefixMatchOnly=_displayNameInitialsPrefixMatchOnly;
 @property(nonatomic) _Bool hasShortCut; // @synthesize hasShortCut=_hasShortCut;
 @property(nonatomic) _Bool isBundleDemotedForBullseyeCommittedSearch; // @synthesize isBundleDemotedForBullseyeCommittedSearch=_isBundleDemotedForBullseyeCommittedSearch;
 @property(nonatomic) _Bool isSafariTopHit; // @synthesize isSafariTopHit=_isSafariTopHit;
+@property(nonatomic) _Bool hasPolicyMultipleTermsNearMatch; // @synthesize hasPolicyMultipleTermsNearMatch=_hasPolicyMultipleTermsNearMatch;
+@property(nonatomic) _Bool hasPolicySingleTermPhraseMatch; // @synthesize hasPolicySingleTermPhraseMatch=_hasPolicySingleTermPhraseMatch;
 @property(nonatomic) _Bool hasPolicyMultipleTermsPhraseMatch; // @synthesize hasPolicyMultipleTermsPhraseMatch=_hasPolicyMultipleTermsPhraseMatch;
 @property(nonatomic) _Bool matchedQueryTerms; // @synthesize matchedQueryTerms=_matchedQueryTerms;
 @property(nonatomic) _Bool recentForAboveThresholdTopHit; // @synthesize recentForAboveThresholdTopHit=_recentForAboveThresholdTopHit;
@@ -97,7 +109,12 @@
 @property(nonatomic) float feedbackScore; // @synthesize feedbackScore=_feedbackScore;
 @property(nonatomic) float rawScore; // @synthesize rawScore=_rawScore;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+- (_Bool)isTopHit;
+- (id)rankingFeedbackBundleID;
+- (_Bool)isInSectionWithRankCategory:(id)arg1;
+- (void)setSuggestionBundleIDType;
 - (_Bool)serializeToJSON:(void *)arg1 valuesOnly:(_Bool)arg2;
+- (id)contentType;
 - (id)dataCollectionBundle;
 @property(readonly, copy) NSString *description;
 - (id)likelyDisplayTitle;
@@ -108,10 +125,12 @@
 - (id)dueDate;
 - (void)populateTextFeatureValuesForProperty:(id)arg1 updatingBundleFeatureValues:(float (*)[0])arg2 propertyIndex:(unsigned long long)arg3 withEvaluator:(id)arg4 withContext:(struct prs_feature_population_ctx_t *)arg5 featureScoreInfo:(struct PRSL2FeatureScoreInfo *)arg6 propertyCanFuzzyMatch:(_Bool)arg7 keyboardLanguage:(id)arg8 isCJK:(_Bool)arg9 featureList:(const unsigned short *)arg10 propertyName:(id)arg11;
 - (void)populateTextFeatureValuesForProperty:(id)arg1 updatingBundleFeatureValues:(float (*)[0])arg2 propertyIndex:(unsigned long long)arg3 withEvaluator:(id)arg4 withContext:(struct prs_feature_population_ctx_t *)arg5 featureScoreInfo:(struct PRSL2FeatureScoreInfo *)arg6 propertyCanFuzzyMatch:(_Bool)arg7 keyboardLanguage:(id)arg8 isCJK:(_Bool)arg9 propertyName:(id)arg10;
-- (id)getBundleSpecificValue:(id)arg1 forPropertyName:(id)arg2 withQueryString:(id)arg3 isCJK:(_Bool)arg4 isBullseyeSearch:(_Bool)arg5;
+- (id)getBundleSpecificValue:(id)arg1 forPropertyName:(id)arg2 withQueryString:(id)arg3 isCJK:(_Bool)arg4 isBullseyeSearch:(_Bool)arg5 withEvaluator:(id)arg6 keyboardLanguage:(id)arg7;
 - (void)populateParsecRemainingFeatures;
 - (void)populateRemainingFeaturesWithRanker:(id)arg1;
-- (void)populateOtherFeatures:(struct PRSL2FeatureScoreInfo *)arg1 withEvaluator:(id)arg2;
+- (void)populateOtherFeatures:(struct PRSL2FeatureScoreInfo *)arg1 withEvaluator:(id)arg2 currentTime:(double)arg3;
+- (void)populatePortraitScore:(struct PRSL2FeatureScoreInfo *)arg1 scorer:(id)arg2 attributeHolder:(id)arg3;
+- (void)populateTextContentDistanceMeasures:(struct PRSL2FeatureScoreInfo *)arg1;
 - (void)inferDateBinsFromDates:(id)arg1 intoBins:(int *)arg2;
 - (void)populateSMSFeatures:(struct PRSL2FeatureScoreInfo *)arg1;
 - (void)populateMailFeatures:(struct PRSL2FeatureScoreInfo *)arg1;
@@ -137,7 +156,8 @@
 - (_Bool)didMatchRankingDescriptor:(id)arg1;
 - (void)dealloc;
 - (id)initForParsecResultWithBundleID:(id)arg1;
--     // Error parsing type: @24@0:8^{?=q[2Q]TT[0^v]}16, name: initWithAttrs:
+- (id)initWithAttrs:(CDStruct_ff5cd05b *)arg1 isServerAlternativeResult:(_Bool)arg2;
+- (id)initWithAttrs:(CDStruct_ff5cd05b *)arg1;
 @property(nonatomic) MISSING_TYPE *test_indexScore;
 @property(nonatomic) MISSING_TYPE *test_inputToModelScore;
 

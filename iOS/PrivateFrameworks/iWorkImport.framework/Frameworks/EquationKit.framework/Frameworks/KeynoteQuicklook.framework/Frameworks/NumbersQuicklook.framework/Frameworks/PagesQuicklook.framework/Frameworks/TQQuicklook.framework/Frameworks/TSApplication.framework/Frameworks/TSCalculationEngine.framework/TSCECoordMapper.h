@@ -14,14 +14,26 @@
 @interface TSCECoordMapper : NSObject <TSCECoordMappingProtocol, NSCopying>
 {
     _Bool _isIdentityMapping;
-    UUIDData_5fbc143e _tableUID;
-    struct unordered_map<unsigned int, unsigned int, std::__1::hash<unsigned int>, std::__1::equal_to<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, unsigned int>>> _baseRowToViewRow;
-    struct unordered_map<unsigned int, unsigned int, std::__1::hash<unsigned int>, std::__1::equal_to<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, unsigned int>>> _viewRowToBaseRow;
+    _Bool _chromeCoordsAreViewCoords;
+    struct TSKUIDStruct _tableUID;
+    struct unordered_map<unsigned int, unsigned int, std::hash<unsigned int>, std::equal_to<unsigned int>, std::allocator<std::pair<const unsigned int, unsigned int>>> _baseRowToViewRow;
+    struct unordered_map<unsigned int, unsigned int, std::hash<unsigned int>, std::equal_to<unsigned int>, std::allocator<std::pair<const unsigned int, unsigned int>>> _viewRowToBaseRow;
+    NSIndexSet *_summaryRowIndexes;
+    NSIndexSet *_summaryColumnIndexes;
+    NSIndexSet *_labelRowIndexes;
     NSIndexSet *_summaryAndLabelRowIndexes;
+    struct unordered_map<unsigned short, unsigned short, std::hash<unsigned short>, std::equal_to<unsigned short>, std::allocator<std::pair<const unsigned short, unsigned short>>> _baseColumnToViewColumn;
+    struct unordered_map<unsigned short, unsigned short, std::hash<unsigned short>, std::equal_to<unsigned short>, std::allocator<std::pair<const unsigned short, unsigned short>>> _viewColumnToBaseColumn;
+    struct unordered_map<unsigned int, unsigned int, std::hash<unsigned int>, std::equal_to<unsigned int>, std::allocator<std::pair<const unsigned int, unsigned int>>> _summaryRowToViewRow;
+    struct unordered_map<unsigned int, unsigned int, std::hash<unsigned int>, std::equal_to<unsigned int>, std::allocator<std::pair<const unsigned int, unsigned int>>> _viewRowToSummaryRow;
+    struct unordered_map<unsigned short, unsigned short, std::hash<unsigned short>, std::equal_to<unsigned short>, std::allocator<std::pair<const unsigned short, unsigned short>>> _summaryColumnToViewColumn;
+    struct unordered_map<unsigned short, unsigned short, std::hash<unsigned short>, std::equal_to<unsigned short>, std::allocator<std::pair<const unsigned short, unsigned short>>> _viewColumnToSummaryColumn;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool chromeCoordsAreViewCoords; // @synthesize chromeCoordsAreViewCoords=_chromeCoordsAreViewCoords;
+@property(readonly, nonatomic) _Bool isIdentityMapping; // @synthesize isIdentityMapping=_isIdentityMapping;
 - (id)baseShuffleMapForViewShuffleMap:(id)arg1;
 - (id)viewTractRefForChromeTractRef:(id)arg1;
 - (id)viewTractRefForBaseTractRef:(id)arg1;
@@ -29,14 +41,16 @@
 - (id)chromeTractRefForBaseTractRef:(id)arg1;
 - (id)baseTractRefForViewTractRef:(id)arg1;
 - (id)baseTractRefForChromeTractRef:(id)arg1;
-- (RefTypeHolder_45a2a752)viewRangeRefForChromeRangeRef:(const RefTypeHolder_9036d455 *)arg1;
-- (RefTypeHolder_9036d455)chromeRangeRefForViewRangeRef:(const RefTypeHolder_45a2a752 *)arg1;
-- (RefTypeHolder_adbccd1a)viewCellRefForChromeCellRef:(const RefTypeHolder_cfaab535 *)arg1;
-- (RefTypeHolder_adbccd1a)viewCellRefForBaseCellRef:(const RefTypeHolder_dbc9cf8d *)arg1;
-- (RefTypeHolder_cfaab535)chromeCellRefForViewCellRef:(const RefTypeHolder_adbccd1a *)arg1;
-- (RefTypeHolder_cfaab535)chromeCellRefForBaseCellRef:(const RefTypeHolder_dbc9cf8d *)arg1;
-- (RefTypeHolder_dbc9cf8d)baseCellRefForViewCellRef:(const RefTypeHolder_adbccd1a *)arg1;
-- (RefTypeHolder_dbc9cf8d)baseCellRefForChromeCellRef:(const RefTypeHolder_cfaab535 *)arg1;
+- (RefTypeHolder_7723cd4d)viewRangeRefForChromeRangeRef:(const void *)arg1;
+- (RefTypeHolder_4cbd00f5)chromeRangeRefForViewRangeRef:(const void *)arg1;
+- (RefTypeHolder_ca5e87e3)viewCellRefForChromeCellRef:(const void *)arg1;
+- (RefTypeHolder_ca5e87e3)viewCellRefForBaseCellRef:(const void *)arg1;
+- (RefTypeHolder_57ff3e12)chromeCellRefForViewCellRef:(const void *)arg1;
+- (RefTypeHolder_57ff3e12)chromeCellRefForBaseCellRef:(const void *)arg1;
+- (RefTypeHolder_0e28a076)baseCellRefForViewCellRef:(const void *)arg1;
+- (RefTypeHolder_0e28a076)baseCellRefForChromeCellRef:(const void *)arg1;
+- (struct TSUViewCellCoord)viewCellCoordForSummaryCellCoord:(struct TSUModelCellCoord)arg1;
+- (struct TSUModelCellCoord)summaryCellCoordForViewCellCoord:(struct TSUViewCellCoord)arg1;
 - (struct TSUViewCellCoord)viewCellCoordForChromeCellCoord:(struct TSUChromeCellCoord)arg1;
 - (struct TSUViewCellCoord)viewCellCoordForBaseCellCoord:(struct TSUModelCellCoord)arg1;
 - (struct TSUChromeCellCoord)chromeCellCoordForViewCellCoord:(struct TSUViewCellCoord)arg1;
@@ -51,6 +65,10 @@
 - (id)viewColumnIndexesForBaseColumnIndexes:(id)arg1;
 - (id)baseRowIndexesForViewRowIndexes:(id)arg1;
 - (id)baseColumnIndexesForViewColumnIndexes:(id)arg1;
+- (struct TSUViewRowIndex)viewRowIndexForSummaryRowIndex:(struct TSUModelRowIndex)arg1;
+- (struct TSUViewColumnIndex)viewColumnIndexForSummaryColumnIndex:(struct TSUModelColumnIndex)arg1;
+- (struct TSUModelRowIndex)summaryRowIndexForViewRowIndex:(struct TSUViewRowIndex)arg1;
+- (struct TSUModelColumnIndex)summaryColumnIndexForViewColumnIndex:(struct TSUViewColumnIndex)arg1;
 - (struct TSUViewRowIndex)viewRowIndexForChromeRowIndex:(struct TSUChromeRowIndex)arg1;
 - (struct TSUViewColumnIndex)viewColumnIndexForChromeColumnIndex:(struct TSUChromeColumnIndex)arg1;
 - (struct TSUChromeRowIndex)chromeRowIndexForViewRowIndex:(struct TSUViewRowIndex)arg1;
@@ -63,14 +81,17 @@
 - (struct TSUModelColumnIndex)baseColumnIndexForChromeColumnIndex:(struct TSUChromeColumnIndex)arg1;
 - (struct TSUModelRowIndex)baseRowIndexForViewRowIndex:(struct TSUViewRowIndex)arg1;
 - (struct TSUModelColumnIndex)baseColumnIndexForViewColumnIndex:(struct TSUViewColumnIndex)arg1;
-- (_Bool)isIdentityMapping;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)mapSummaryColumn:(unsigned short)arg1 toViewColumn:(unsigned short)arg2;
+- (void)mapSummaryRow:(unsigned int)arg1 toViewRow:(unsigned int)arg2;
+- (void)mapBaseColumn:(unsigned short)arg1 toViewColumn:(unsigned short)arg2;
 - (void)mapBaseRow:(unsigned int)arg1 toViewRow:(unsigned int)arg2;
-- (void)encodeToArchive:(struct CoordMapperArchive *)arg1;
-- (const UUIDData_5fbc143e *)tableUID;
-- (id)initFromArchive:(const struct CoordMapperArchive *)arg1;
-- (id)initWithTableUID:(const UUIDData_5fbc143e *)arg1 summaryAndLabelRows:(id)arg2;
-- (id)initWithTableUID:(const UUIDData_5fbc143e *)arg1;
+- (void)encodeToArchive:(void *)arg1;
+- (const struct TSKUIDStruct *)tableUID;
+- (id)initFromArchive:(const void *)arg1;
+- (id)initWithTableUID:(const struct TSKUIDStruct *)arg1 summaryRows:(id)arg2 labelRows:(id)arg3;
+- (id)initWithTableUID:(const struct TSKUIDStruct *)arg1 summaryColumns:(id)arg2 summaryRows:(id)arg3 labelRows:(id)arg4;
+- (id)initWithTableUID:(const struct TSKUIDStruct *)arg1;
 
 @end
 

@@ -8,20 +8,19 @@
 
 @interface TSCH3DAreaGenerator : NSObject
 {
-    vector_7200ab52 mTop;
-    vector_7200ab52 mBottom;
-    tvec2_84d5962d mYLimits;
-    float mZeroValue;
+    struct vector<glm::detail::tvec3<float>, std::allocator<glm::detail::tvec3<float>>> _top;
+    struct vector<glm::detail::tvec3<float>, std::allocator<glm::detail::tvec3<float>>> _bottom;
+    tvec2_84d5962d _YLimits;
+    float _zeroValue;
 }
 
 + (id)generatorWithYLimits:(tvec2_84d5962d)arg1 zeroValue:(float)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)clipLine:(const vector_7200ab52 *)arg1 into:(vector_7200ab52 *)arg2;
-- (id)createGeometryWithXValues:(const vector_7584168e *)arg1 yValues:(const vector_7584168e *)arg2;
-- (void)addRowWithXValues:(const vector_7584168e *)arg1 yValues:(const vector_7584168e *)arg2;
+- (void)clipLine:(const void *)arg1 into:(void *)arg2;
+- (id)createGeometryWithXValues:(const void *)arg1 yValues:(const void *)arg2;
+- (void)addRowWithXValues:(const void *)arg1 yValues:(const void *)arg2;
 - (float)clampedZero;
-- (void)dealloc;
 - (id)initWithYLimits:(tvec2_84d5962d)arg1 zeroValue:(float)arg2;
 
 @end

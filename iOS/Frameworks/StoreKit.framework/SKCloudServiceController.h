@@ -10,20 +10,20 @@
 
 @interface SKCloudServiceController : NSObject
 {
+    _Bool _allowsPromptingForPrivacyAcknowledgement;
     ICCloudServiceStatusMonitor *_cloudServiceStatusMonitor;
     struct os_unfair_lock_s _lock;
-    _Bool _allowsPromptingForPrivacyAcknowledgement;
 }
 
 + (id)_publicErrorForPrivateError:(id)arg1;
 + (void)requestAuthorization:(CDUnknownBlockType)arg1;
 + (long long)authorizationStatus;
 - (void).cxx_destruct;
-@property(nonatomic, setter=_setAllowsPromptingForPrivacyAcknowledgement:) _Bool _allowsPromptingForPrivacyAcknowledgement; // @synthesize _allowsPromptingForPrivacyAcknowledgement;
 - (id)_cloudServiceStatusMonitorWithError:(id *)arg1;
 - (void)_handleStorefrontIdentifierDidChangeNotification:(id)arg1;
 - (void)_handleStorefrontCountryCodeDidChangeNotification:(id)arg1;
 - (void)_handleCapabilitiesDidChangeNotification:(id)arg1;
+@property(nonatomic, setter=_setAllowsPromptingForPrivacyAcknowledgement:) _Bool _allowsPromptingForPrivacyAcknowledgement;
 - (void)requestPersonalizationTokenForClientToken:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)requestUserTokenForDeveloperToken:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)requestStorefrontIdentifierWithCompletionHandler:(CDUnknownBlockType)arg1;

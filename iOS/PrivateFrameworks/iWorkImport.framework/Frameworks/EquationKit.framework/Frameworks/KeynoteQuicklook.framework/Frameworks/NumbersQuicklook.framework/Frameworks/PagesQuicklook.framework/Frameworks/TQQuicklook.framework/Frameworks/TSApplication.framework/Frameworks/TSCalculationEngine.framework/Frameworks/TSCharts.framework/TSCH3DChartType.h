@@ -4,42 +4,44 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSSet, NSString;
+@protocol TSCH3DAxisLabelPositioner;
+
 @interface TSCH3DChartType
 {
 }
 
 + (id)allAnimationFilters;
-+ (tvec3_17f03ce0)adjustedScaleForInfoChartScale:(const tvec3_17f03ce0 *)arg1 chartType:(id)arg2 barShape:(int)arg3;
-- (id)specificSeriesStrokeProperties;
-- (id)specificSeriesFillProperties;
++ (tvec3_17f03ce0)adjustedScaleForInfoChartScale:(const void *)arg1 chartType:(id)arg2 barShape:(int)arg3;
+- (_Bool)layoutFrameShouldEncloseInfoGeometry;
 - (_Bool)supportsCalloutLines;
 - (_Bool)supportsValueLabelSpacing;
 - (_Bool)supportsReferenceLines;
 - (_Bool)supportsIncrementalResize;
-- (_Bool)needsRefinementForInwardLayout;
-- (unsigned long long)depthRatioDimension;
-- (double)spiceMaxDepthRatio;
-- (double)sageMaxDepthRatio;
+@property(readonly, nonatomic) _Bool needsRefinementForInwardLayout;
+@property(readonly, nonatomic) unsigned long long depthRatioDimension;
+@property(readonly, nonatomic) double spiceMaxDepthRatio;
+@property(readonly, nonatomic) double sageMaxDepthRatio;
 - (double)maxDepthRatio;
-- (double)minDepthRatio;
+@property(readonly, nonatomic) double minDepthRatio;
 - (struct CGSize)minimumChartBodySizeForTransformingGeometry;
 - (struct CGSize)minimumChartBodySize;
-- (id)columnShapeUIName;
-- (_Bool)supportsInterSetDepthGap;
-- (_Bool)supportsColumnShape;
+@property(readonly, nonatomic) NSString *columnShapeUIName;
+@property(readonly, nonatomic) _Bool supportsInterSetDepthGap;
+@property(readonly, nonatomic) _Bool supportsColumnShape;
 - (_Bool)supportsGroupedShadows;
 - (_Bool)supportsShadowOffset;
-- (_Bool)supportsBevels;
-- (_Bool)isHomogeneous;
-- (id)renderers;
+@property(readonly, nonatomic) _Bool supportsBevels;
+@property(readonly, nonatomic) _Bool isHomogeneous;
+@property(readonly, nonatomic) id renderers;
 - (id)animationFiltersWithDefaultFilters:(id)arg1;
-- (id)sceneWithChartInfo:(id)arg1 layoutSettings:(CDStruct_b1c75024)arg2;
-- (Class)stageClass;
-- (id)categoryLabelPositioner;
-- (id)valueLabelPositioner;
-- (int)labelOrientation;
+- (id)sceneWithChartInfo:(id)arg1 layoutSettings:(CDStruct_c48db077)arg2 styleProvidingSource:(id)arg3;
+@property(readonly, nonatomic) Class stageClass;
+@property(readonly, nonatomic) id <TSCH3DAxisLabelPositioner> categoryLabelPositioner;
+@property(readonly, nonatomic) id <TSCH3DAxisLabelPositioner> valueLabelPositioner;
+@property(readonly, nonatomic) int labelOrientation;
 - (id)animationDeliveryStylesForFilter:(id)arg1;
-- (id)animationFilters;
+@property(readonly, copy, nonatomic) NSSet *animationFilters;
 - (_Bool)supportsAxisLabelAngle;
 - (_Bool)supportsBubbleOptions;
 - (_Bool)supportsConnectingLines;
@@ -49,11 +51,13 @@
 - (_Bool)supportsErrorBars;
 - (_Bool)supportsTrendLines;
 - (_Bool)supportsCategoryAxisMinorTickmarks;
+- (_Bool)supportsGridlineTickmarks;
 - (_Bool)supportsTickmarks;
 - (_Bool)supportsAxisLine;
 - (_Bool)supportsAxisLabelsOrientation;
 - (_Bool)supportsValueAxisLabelsPosition;
 - (_Bool)supportsMinorGridlines;
+- (_Bool)supportsBorderStroke;
 - (_Bool)supportsBorderFrame;
 - (_Bool)supportsBackgroundFill;
 - (_Bool)approximatesTitleAccommodationUsingLegendSize;
@@ -65,8 +69,7 @@
 - (Class)chartLayoutClass;
 - (Class)chartLayoutItemClass;
 - (unsigned long long)presentationDimension;
-- (tvec3_17f03ce0)adjustedScaleForInfoChartScale:(const tvec3_17f03ce0 *)arg1 barShape:(int)arg2;
-- (_Bool)layoutFrameShouldEncloseInfoGeometry;
+- (tvec3_17f03ce0)adjustedScaleForInfoChartScale:(const void *)arg1 barShape:(int)arg2;
 - (int)deprecated3DShadowSpecificProperty;
 - (int)deprecated3DBevelEdgesSpecificProperty;
 

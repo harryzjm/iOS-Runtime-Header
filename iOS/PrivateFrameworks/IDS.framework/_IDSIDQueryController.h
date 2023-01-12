@@ -25,6 +25,7 @@
     id _delegateContext;
 }
 
++ (id)_createXPCConnectionOnQueue:(id)arg1;
 + (void)initialize;
 - (void).cxx_destruct;
 - (void)removeDelegate:(id)arg1 forService:(id)arg2 listenerID:(id)arg3;
@@ -34,15 +35,18 @@
 - (long long)_currentCachedIDStatusForDestination:(id)arg1 service:(id)arg2 listenerID:(id)arg3;
 - (_Bool)_hasCacheForService:(id)arg1;
 - (_Bool)currentRemoteDevicesForDestinations:(id)arg1 service:(id)arg2 listenerID:(id)arg3 queue:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
-- (_Bool)_currentRemoteDevicesForDestinations:(id)arg1 service:(id)arg2 listenerID:(id)arg3 queue:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
-- (_Bool)currentIDStatusForDestination:(id)arg1 service:(id)arg2 listenerID:(id)arg3 queue:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
-- (_Bool)currentIDStatusForDestinations:(id)arg1 service:(id)arg2 listenerID:(id)arg3 queue:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
+- (_Bool)_currentRemoteDevicesForDestinations:(id)arg1 service:(id)arg2 listenerID:(id)arg3 queue:(id)arg4 waitForReply:(_Bool)arg5 completionBlock:(CDUnknownBlockType)arg6;
+- (_Bool)currentIDStatusForDestination:(id)arg1 service:(id)arg2 respectExpiry:(_Bool)arg3 listenerID:(id)arg4 queue:(id)arg5 completionBlock:(CDUnknownBlockType)arg6;
+- (_Bool)currentIDStatusForDestinations:(id)arg1 service:(id)arg2 respectExpiry:(_Bool)arg3 listenerID:(id)arg4 queue:(id)arg5 completionBlock:(CDUnknownBlockType)arg6;
+- (_Bool)requiredIDStatusForDestination:(id)arg1 service:(id)arg2 listenerID:(id)arg3 queue:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
+- (_Bool)requiredIDStatusForDestinations:(id)arg1 service:(id)arg2 listenerID:(id)arg3 queue:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (_Bool)refreshIDStatusForDestination:(id)arg1 service:(id)arg2 listenerID:(id)arg3 queue:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (_Bool)refreshIDStatusForDestinations:(id)arg1 service:(id)arg2 listenerID:(id)arg3 forceRefresh:(_Bool)arg4 queue:(id)arg5 completionBlock:(CDUnknownBlockType)arg6;
-- (_Bool)_sync_currentIDStatusForDestinations:(id)arg1 service:(id)arg2 listenerID:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
+- (_Bool)_sync_currentRemoteDevicesForDestinations:(id)arg1 service:(id)arg2 listenerID:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
+- (_Bool)_sync_currentIDStatusForDestinations:(id)arg1 service:(id)arg2 respectExpiry:(_Bool)arg3 listenerID:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (_Bool)_sync_refreshIDStatusForDestinations:(id)arg1 service:(id)arg2 listenerID:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
-- (_Bool)_refreshIDStatusForDestinations:(id)arg1 service:(id)arg2 listenerID:(id)arg3 allowRefresh:(_Bool)arg4 waitForReply:(_Bool)arg5 forceRefresh:(_Bool)arg6 queue:(id)arg7 completionBlock:(CDUnknownBlockType)arg8;
-- (void)_idStatusForDestinations:(id)arg1 service:(id)arg2 listenerID:(id)arg3 allowRenew:(_Bool)arg4 waitForReply:(_Bool)arg5 forceRefresh:(_Bool)arg6 completionBlock:(CDUnknownBlockType)arg7;
+- (_Bool)_refreshIDStatusForDestinations:(id)arg1 service:(id)arg2 listenerID:(id)arg3 allowRefresh:(_Bool)arg4 respectExpiry:(_Bool)arg5 waitForReply:(_Bool)arg6 forceRefresh:(_Bool)arg7 bypassLimit:(_Bool)arg8 queue:(id)arg9 completionBlock:(CDUnknownBlockType)arg10;
+- (void)_idStatusForDestinations:(id)arg1 service:(id)arg2 listenerID:(id)arg3 allowRenew:(_Bool)arg4 respectExpiry:(_Bool)arg5 waitForReply:(_Bool)arg6 forceRefresh:(_Bool)arg7 bypassLimit:(_Bool)arg8 completionBlock:(CDUnknownBlockType)arg9;
 - (void)_setCurrentIDStatus:(long long)arg1 forDestination:(id)arg2 service:(id)arg3;
 - (id)_delegateMapForListenerID:(id)arg1 service:(id)arg2;
 - (void)_callDelegatesWithBlock:(CDUnknownBlockType)arg1 delegateMap:(id)arg2;
@@ -65,9 +69,9 @@
 - (void)addDelegate:(id)arg1 queue:(id)arg2;
 - (void)___oldDealloc;
 - (id)__sendMessage:(id)arg1 queue:(id)arg2 reply:(CDUnknownBlockType)arg3 failBlock:(CDUnknownBlockType)arg4 waitForReply:(_Bool)arg5;
-- (void)_requestRemoteDevicesForDestination:(id)arg1 service:(id)arg2 listenerID:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
-- (void)_requestStatusForDestinations:(id)arg1 service:(id)arg2 waitForReply:(_Bool)arg3 forceRefresh:(_Bool)arg4 listenerID:(id)arg5 completionBlock:(CDUnknownBlockType)arg6;
-- (void)_requestCachedStatusForDestinations:(id)arg1 service:(id)arg2 waitForReply:(_Bool)arg3 listenerID:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
+- (void)_requestRemoteDevicesForDestination:(id)arg1 service:(id)arg2 listenerID:(id)arg3 waitForReply:(_Bool)arg4 completionBlock:(CDUnknownBlockType)arg5;
+- (void)_requestStatusForDestinations:(id)arg1 service:(id)arg2 waitForReply:(_Bool)arg3 forceRefresh:(_Bool)arg4 bypassLimit:(_Bool)arg5 listenerID:(id)arg6 completionBlock:(CDUnknownBlockType)arg7;
+- (void)_requestCachedStatusForDestinations:(id)arg1 service:(id)arg2 waitForReply:(_Bool)arg3 respectExpiry:(_Bool)arg4 listenerID:(id)arg5 completionBlock:(CDUnknownBlockType)arg6;
 - (void)_requestCacheForService:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)_disconnectFromQueryService;
 

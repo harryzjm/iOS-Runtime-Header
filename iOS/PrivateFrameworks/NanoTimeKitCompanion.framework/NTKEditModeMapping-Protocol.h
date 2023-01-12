@@ -7,6 +7,8 @@
 #import <NanoTimeKitCompanion/NSObject-Protocol.h>
 
 @protocol NTKEditModeMapping <NSObject>
+- (_Bool)deviceSupportsPigmentEditOption;
+- (Class)legacyEditOptionClassFromCustomEditMode:(long long)arg1 resourceDirectoryExists:(_Bool)arg2;
 - (Class)editOptionClassFromEditMode:(long long)arg1 resourceDirectoryExists:(_Bool)arg2;
 @end
 

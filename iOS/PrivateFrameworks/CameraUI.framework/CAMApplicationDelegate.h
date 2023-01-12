@@ -49,6 +49,7 @@
 - (void)userNotificationCenter:(id)arg1 didReceiveNotificationResponse:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)userNotificationCenter:(id)arg1 willPresentNotification:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)prepareForDefaultImageSnapshotForScreen:(id)arg1;
+- (id)_userInfoForMode:(long long)arg1 devicePosition:(long long)arg2;
 - (void)applicationWillTerminate:(id)arg1;
 - (void)applicationDidBecomeActive:(id)arg1;
 - (void)applicationWillEnterForeground:(id)arg1;

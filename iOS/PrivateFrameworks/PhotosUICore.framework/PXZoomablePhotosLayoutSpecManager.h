@@ -11,9 +11,11 @@
 {
     id <PXZoomablePhotosUserDefaults> _userDefaults;
     NSArray *_availableThumbnailSizes;
+    long long _gridStyle;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long gridStyle; // @synthesize gridStyle=_gridStyle;
 @property(retain, nonatomic) NSArray *availableThumbnailSizes; // @synthesize availableThumbnailSizes=_availableThumbnailSizes;
 @property(retain, nonatomic) id <PXZoomablePhotosUserDefaults> userDefaults; // @synthesize userDefaults=_userDefaults;
 - (_Bool)shouldUpdateSpecForExtendedTraitCollection:(id)arg1 change:(unsigned long long)arg2;

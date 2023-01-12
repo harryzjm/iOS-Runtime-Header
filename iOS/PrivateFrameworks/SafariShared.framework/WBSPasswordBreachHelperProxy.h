@@ -17,6 +17,7 @@
 
 - (void).cxx_destruct;
 - (void)addResultRecordDictionaries:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)clearAllRecordsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)clearRecentlyBreachedResultRecordsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)recentlyBreachedResultRecordDictionariesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getResultRecordDictionariesForResultQueryDictionaries:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

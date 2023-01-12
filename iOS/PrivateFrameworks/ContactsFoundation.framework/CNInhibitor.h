@@ -15,6 +15,7 @@
     _Bool _debugIsInhibiting;
 }
 
++ (id)runningboardInhibitorWithExplanation:(id)arg1;
 + (id)os_transactionInhibitorWithLabel:(id)arg1;
 + (id)suddenTerminationInhibitorWithProcessInfo:(id)arg1;
 + (id)suddenTerminationInhibitor;

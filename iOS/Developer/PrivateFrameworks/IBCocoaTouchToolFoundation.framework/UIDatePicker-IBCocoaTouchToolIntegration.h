@@ -7,6 +7,9 @@
 #import <UIKit/UIDatePicker.h>
 
 @interface UIDatePicker (IBCocoaTouchToolIntegration)
+- (id)ibSwizzledDate;
+- (void)setIbShouldForceNilDateForCompile:(_Bool)arg1;
+- (_Bool)ibShouldForceNilDateForCompile;
 - (id)initWithMarshalledValues:(id)arg1 orderedKeys:(id)arg2 ignoredKeys:(id)arg3 globalMarshallingContext:(id)arg4;
 @end
 

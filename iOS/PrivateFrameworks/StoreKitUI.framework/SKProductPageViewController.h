@@ -44,6 +44,7 @@
     SKUIITunesStoreUIPageViewController *_storePageViewController;
     long long _urlBagType;
     NSString *_cancelButtonTitle;
+    NSURL *_mainDocumentURL;
 }
 
 + (void)_validateURL:(id)arg1 withURLBag:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
@@ -51,6 +52,7 @@
 + (id)_defaultClientInterface;
 + (void)getCanLoadWithURL:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSURL *mainDocumentURL; // @synthesize mainDocumentURL=_mainDocumentURL;
 @property(copy, nonatomic) NSString *cancelButtonTitle; // @synthesize cancelButtonTitle=_cancelButtonTitle;
 @property(nonatomic) _Bool askToBuy; // @synthesize askToBuy=_askToBuy;
 @property(nonatomic) long long URLBagType; // @synthesize URLBagType=_urlBagType;

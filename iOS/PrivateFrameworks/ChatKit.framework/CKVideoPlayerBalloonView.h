@@ -5,13 +5,15 @@
 //
 
 #import <ChatKit/AVPlayerViewControllerDelegate-Protocol.h>
+#import <ChatKit/CKReusableVideoPlayerDelegate-Protocol.h>
 #import <ChatKit/UIGestureRecognizerDelegate-Protocol.h>
 
 @class CKMovieMediaObject, CKReusableVideoPlayer, CKVideoPlayerReusePool, NSString, UIView;
 @protocol CKVideoPlayerBalloonViewDelegate;
 
-@interface CKVideoPlayerBalloonView <UIGestureRecognizerDelegate, AVPlayerViewControllerDelegate>
+@interface CKVideoPlayerBalloonView <UIGestureRecognizerDelegate, AVPlayerViewControllerDelegate, CKReusableVideoPlayerDelegate>
 {
+    _Bool _observingSceneDisconnects;
     CKMovieMediaObject *_mediaObject;
     UIView *_playerView;
     CKReusableVideoPlayer *_reusablePlayer;
@@ -19,6 +21,7 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic, getter=isObservingSceneDisconnects) _Bool observingSceneDisconnects; // @synthesize observingSceneDisconnects=_observingSceneDisconnects;
 @property(retain, nonatomic) CKVideoPlayerReusePool *playerPool; // @synthesize playerPool=_playerPool;
 @property(retain, nonatomic) CKReusableVideoPlayer *reusablePlayer; // @synthesize reusablePlayer=_reusablePlayer;
 @property(retain, nonatomic) UIView *playerView; // @synthesize playerView=_playerView;
@@ -26,14 +29,19 @@
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)playerItem;
 - (id)playerViewController;
+- (void)startPlayingInlineVideo;
 - (void)showPlayerViewController;
 - (void)cleanUpPlayerIfNeeded;
 - (void)applicationDidEnterBackground:(id)arg1;
+- (void)pausePlayback;
 - (void)doubleTapGestureRecognized:(id)arg1;
 - (void)tapGestureRecognized:(id)arg1;
 - (void)prepareForDisplay;
+- (void)willMoveToWindow:(id)arg1;
 - (void)prepareForReuse;
 - (void)layoutSubviews;
+- (void)reusablePlayerDidStop;
+- (void)reusablePlayerDidStart;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (_Bool)gestureIsOurGesture:(id)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;

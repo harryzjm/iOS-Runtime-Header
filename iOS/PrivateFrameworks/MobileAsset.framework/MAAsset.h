@@ -14,15 +14,20 @@
     NSString *_assetType;
     NSString *_assetId;
     long long _state;
+    NSString *_purpose;
 }
 
 + (void)cancelCatalogDownload:(id)arg1 then:(CDUnknownBlockType)arg2;
++ (void)cancelCatalogDownload:(id)arg1 withPurpose:(id)arg2 then:(CDUnknownBlockType)arg3;
 + (void)startCatalogDownload:(id)arg1 options:(id)arg2 completionWithError:(CDUnknownBlockType)arg3;
 + (void)startCatalogDownload:(id)arg1 options:(id)arg2 then:(CDUnknownBlockType)arg3;
 + (void)startCatalogDownload:(id)arg1 then:(CDUnknownBlockType)arg2;
++ (id)loadSync:(id)arg1 allowingDifferences:(id)arg2 withPurpose:(id)arg3 error:(id *)arg4;
 + (id)loadSync:(id)arg1 allowingDifferences:(id)arg2 error:(id *)arg3;
++ (id)loadSync:(id)arg1 withPurpose:(id)arg2 error:(id *)arg3;
 + (id)loadSync:(id)arg1 error:(id *)arg2;
 + (id)getLoadResultFromMessage:(id)arg1;
+@property(readonly, nonatomic) NSString *purpose; // @synthesize purpose=_purpose;
 @property(readonly) long long state; // @synthesize state=_state;
 @property(readonly, nonatomic) NSString *assetId; // @synthesize assetId=_assetId;
 @property(readonly, nonatomic) NSString *assetType; // @synthesize assetType=_assetType;
@@ -39,8 +44,8 @@
 - (void)purgeWithError:(CDUnknownBlockType)arg1;
 - (void)purge:(CDUnknownBlockType)arg1;
 - (void)commonAssetDownload:(id)arg1 options:(id)arg2 then:(CDUnknownBlockType)arg3;
-- (void)invokeClientDownloadCompletion:(long long)arg1 completionBlockWithError:(CDUnknownBlockType)arg2;
-- (void)invokeClientDownloadCompletionAlreadyOnQueue:(long long)arg1 completionBlockWithError:(CDUnknownBlockType)arg2;
+- (void)invokeClientDownloadCompletion:(long long)arg1 asset:(id)arg2 completionBlockWithError:(CDUnknownBlockType)arg3;
+- (void)invokeClientDownloadCompletionAlreadyOnQueue:(long long)arg1 asset:(id)arg2 completionBlockWithError:(CDUnknownBlockType)arg3;
 - (long long)calculateTimeout;
 - (void)startDownload:(id)arg1 completionWithError:(CDUnknownBlockType)arg2;
 - (void)startDownload:(id)arg1 then:(CDUnknownBlockType)arg2;

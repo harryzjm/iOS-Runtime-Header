@@ -7,6 +7,8 @@
 #import <AACCore/NSObject-Protocol.h>
 
 @protocol AEPreferences <NSObject>
+@property(nonatomic, getter=shouldElevateWindows) _Bool elevateWindows;
+@property(nonatomic, getter=shouldCaptureDisplays) _Bool captureDisplays;
 @property(nonatomic, getter=shouldDisableTrackpadLookup) _Bool disableTrackpadLookup;
 @property(nonatomic, getter=shouldRestrictContentCapture) _Bool restrictContentCapture;
 @property(nonatomic, getter=shouldPauseMedia) _Bool pauseMedia;

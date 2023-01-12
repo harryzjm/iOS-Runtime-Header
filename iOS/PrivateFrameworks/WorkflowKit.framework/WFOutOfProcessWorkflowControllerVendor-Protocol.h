@@ -6,16 +6,18 @@
 
 #import <WorkflowKit/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSString, NSURL, VCSleepWorkflow, WFWorkflowRunRequest, WFWorkflowRunningContext;
+@class NSArray, NSData, NSString, NSURL, VCSleepWorkflow, WFContextualActionContext, WFWorkflowRunRequest, WFWorkflowRunningContext;
 
 @protocol WFOutOfProcessWorkflowControllerVendor <NSObject>
 - (void)stop;
+- (void)filterContextualActions:(NSArray *)arg1 forContext:(WFContextualActionContext *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
+- (void)getContextualActionsForContext:(WFContextualActionContext *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)populateSleepWorkflowsFromWorkflowReferences:(NSArray *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)createSleepWorkflow:(VCSleepWorkflow *)arg1 completion:(void (^)(VCConfiguredSleepWorkflow *, NSError *))arg2;
 - (void)handleIncomingFileForRemoteExecutionWithURL:(NSURL *)arg1 withIdentifier:(NSString *)arg2;
 - (void)pauseWorkflowAndWriteStateToDisk;
-- (void)resumeRunningFromContext:(WFWorkflowRunningContext *)arg1;
-- (void)runActionFromRunRequestData:(NSData *)arg1 runningContext:(WFWorkflowRunningContext *)arg2;
-- (void)runWorkflowWithRequest:(WFWorkflowRunRequest *)arg1 inEnvironment:(long long)arg2 runningContext:(WFWorkflowRunningContext *)arg3;
+- (void)resumeRunningFromContext:(WFWorkflowRunningContext *)arg1 withRequest:(WFWorkflowRunRequest *)arg2 completion:(void (^)(WFWorkflowRunResult *, WFWorkflowReference *))arg3;
+- (void)runActionFromRunRequestData:(NSData *)arg1 runningContext:(WFWorkflowRunningContext *)arg2 completion:(void (^)(WFWorkflowRunResult *, WFWorkflowReference *))arg3;
+- (void)runWorkflowWithRequest:(WFWorkflowRunRequest *)arg1 inEnvironment:(long long)arg2 runningContext:(WFWorkflowRunningContext *)arg3 completion:(void (^)(WFWorkflowRunResult *, WFWorkflowReference *))arg4;
 @end
 

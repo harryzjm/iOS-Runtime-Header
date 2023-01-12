@@ -18,7 +18,7 @@
 @property(retain) ATXDefaultWidgetStack *defaultStack; // @synthesize defaultStack=_defaultStack;
 @property(retain) NSArray *galleryItems; // @synthesize galleryItems=_galleryItems;
 - (_Bool)isStackDefaultStack:(id)arg1;
-- (_Bool)isWidgetSuggestedInGallery:(id)arg1;
+- (unsigned long long)rankOfWidgetSuggestedInGallery:(id)arg1;
 - (void)loadDefaultItemsWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end

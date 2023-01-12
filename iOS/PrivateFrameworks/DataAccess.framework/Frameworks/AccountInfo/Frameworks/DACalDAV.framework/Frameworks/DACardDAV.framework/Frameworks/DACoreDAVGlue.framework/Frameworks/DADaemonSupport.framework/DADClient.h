@@ -72,6 +72,7 @@
 - (void)_requestClientStatusDump:(id)arg1;
 - (void)_asPolicyKeyChanged:(id)arg1;
 - (void)_getAccountExternalIdentification:(id)arg1 eventDict:(id)arg2;
+- (void)_performGroupExpansion:(id)arg1 eventDict:(id)arg2;
 - (void)_cancelCalendarDirectorySearch:(id)arg1 eventDict:(id)arg2;
 - (void)_performCalendarDirectorySearch:(id)arg1 eventDict:(id)arg2;
 - (void)_updateGrantedDelegatePermission:(id)arg1 eventDict:(id)arg2;

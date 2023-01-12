@@ -23,6 +23,7 @@
 }
 
 + (_Bool)isSkypeAvailableWithEnvironment:(id)arg1;
++ (_Bool)shouldIgnoreApplicationProxy:(id)arg1;
 + (id)applicationProxiesForIntent:(id)arg1 applicationWorkspace:(id)arg2;
 + (id)os_log;
 - (void).cxx_destruct;

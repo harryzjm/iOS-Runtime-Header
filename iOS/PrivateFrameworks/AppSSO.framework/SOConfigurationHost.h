@@ -41,6 +41,7 @@
 - (id)removedProfileForExtensionBundleIdentifier:(id)arg1;
 - (id)profileForURL:(id)arg1 responseCode:(long long)arg2;
 - (_Bool)saveConfigurationData:(id)arg1 error:(id *)arg2;
+- (_Bool)saveConfiguration:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (id)init;
 

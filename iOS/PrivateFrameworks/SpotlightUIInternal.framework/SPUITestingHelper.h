@@ -25,8 +25,11 @@
 - (void)setDefaultsForSearchVCWithqueryType:(unsigned long long)arg1;
 - (void)searchForString:(id)arg1 testName:(id)arg2 event:(unsigned long long)arg3 queryKind:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)searchManyStringsForTestName:(id)arg1 options:(id)arg2 event:(unsigned long long)arg3 queryKind:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)performScrollOnSearchViewWithTestName:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)scrollMainResultsForTest:(id)arg1 forQuery:(id)arg2 queryKind:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)scrollEntityForTest:(id)arg1 forQuery:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)scrollForSectionHeader:(id)arg1 forSearchString:(id)arg2 testName:(id)arg3 queryKind:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)searchForSectionHeader:(id)arg1 testName:(id)arg2 forSearchString:(id)arg3 queryKind:(unsigned long long)arg4 startPushHandler:(CDUnknownBlockType)arg5 finishHandler:(CDUnknownBlockType)arg6;
 - (void)searchViewFinishedGettingAllResultsAndFinishedDrawsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)tapIndexsPathsAndPopViewControllersAfter2Seconds:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)searchString:(id)arg1 andOpenResultsUnderSection:(id)arg2 testName:(id)arg3 needsCard:(_Bool)arg4 queryKind:(unsigned long long)arg5 completion:(CDUnknownBlockType)arg6;
@@ -34,7 +37,8 @@
 - (void)performCardScrollTest:(id)arg1 queryKind:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)finishLaunchTestIfNeeded;
 - (void)performPushPopCardsOnTest:(id)arg1 options:(id)arg2 needsCard:(_Bool)arg3 sectionHeader:(id)arg4 atDesk:(_Bool)arg5 queryKind:(unsigned long long)arg6 completion:(CDUnknownBlockType)arg7;
-- (void)testMapsCardsPushAndScrollForTestName:(id)arg1 strings:(id)arg2 queryKind:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)testMapsCardsPushAndScrollForTestName:(id)arg1 string:(id)arg2 queryKind:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)runPushTest:(id)arg1 sectionHeader:(id)arg2 searchString:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)performTest:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)canPerformTest:(id)arg1;
 @property(readonly) UIApplication *activeApp;

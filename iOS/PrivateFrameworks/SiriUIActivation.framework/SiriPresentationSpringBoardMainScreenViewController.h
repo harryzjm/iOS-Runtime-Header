@@ -39,7 +39,7 @@
 - (void)setShowsStatusBar:(_Bool)arg1;
 - (void)requestPasscodeUnlockWithCompletion:(CDUnknownBlockType)arg1;
 - (void)loadView;
-- (void)_commonInit;
+- (void)resetGestureBehaviors;
 - (id)init;
 - (id)initWithIdentifier:(long long)arg1 hostedPresentationFrame:(struct CGRect)arg2;
 - (id)initWithIdentifier:(long long)arg1;

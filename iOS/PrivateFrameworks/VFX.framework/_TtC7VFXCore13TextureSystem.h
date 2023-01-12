@@ -10,8 +10,28 @@
 
 @interface _TtC7VFXCore13TextureSystem : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *compileQueue;
+    MISSING_TYPE *allDirtyTextureFilesWithWatcher;
+    MISSING_TYPE *allTextureFilesWithoutWatcher;
+    MISSING_TYPE *allTextureFiles;
+    MISSING_TYPE *allTextureFilesWithoutDoNotUpload;
+    MISSING_TYPE *allTextureArrayFiles;
+    MISSING_TYPE *readTextureFile;
+    MISSING_TYPE *readTextureArrayFile;
+    MISSING_TYPE *allTextureFileWithCPURuntime;
+    MISSING_TYPE *readTextureDataCPUQuery;
+    MISSING_TYPE *textureArrayAssetAddTextureCPURuntimeQuery;
+    MISSING_TYPE *textureArrayAssetRemoveCPURuntimeQuery;
+    MISSING_TYPE *textureArrayAssetUpdateTextureCPURuntimeQuery;
     MISSING_TYPE *updateGPURuntime;
     MISSING_TYPE *addRenderTargetRuntime;
+    MISSING_TYPE *loadNamedAssetQuery;
+    MISSING_TYPE *shaderAssetQueryAdd;
+    MISSING_TYPE *shaderAssetQueryGen;
+    MISSING_TYPE *convertToEquirectangularQuery;
+    MISSING_TYPE *textureArrayAssetAddGpuRepQuery;
+    MISSING_TYPE *uploadCPUToGPUQuery;
+    MISSING_TYPE *textureRequests;
 }
 
 @end

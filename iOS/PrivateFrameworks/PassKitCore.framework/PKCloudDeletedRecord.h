@@ -21,6 +21,13 @@
 @property(readonly, copy, nonatomic) NSString *recordType; // @synthesize recordType=_recordType;
 @property(readonly, nonatomic) CKRecordID *recordID; // @synthesize recordID=_recordID;
 - (id)description;
+- (unsigned long long)hash;
+- (_Bool)isEqualToDeletedRecord:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
+@property(readonly, nonatomic) _Bool isRemoteAsset;
+@property(readonly, nonatomic) _Bool isPassCatalog;
+@property(readonly, nonatomic) _Bool isPass;
+@property(readonly, copy, nonatomic) NSString *recordName;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithRecordID:(id)arg1 recordType:(id)arg2;

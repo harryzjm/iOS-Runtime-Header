@@ -27,6 +27,11 @@
 @property(readonly) NSArray *eventParameters; // @synthesize eventParameters=_eventParams;
 - (id)resolveExternalResources:(id)arg1 error:(id *)arg2;
 @property(readonly) double fullDuration;
+@property(readonly) NSString *audioPowerUsage;
+@property(readonly) NSString *hapticPowerUsage;
+@property(readonly) NSString *priority;
+@property(readonly) NSString *locality;
+@property(readonly) NSString *patternID;
 @property(readonly) NSArray *parameterCurves;
 @property(readonly) NSArray *parameters;
 @property(readonly) NSArray *events;

@@ -9,7 +9,6 @@
 
 @class BRCCountedSet, NSMutableSet, NSString;
 
-__attribute__((visibility("hidden")))
 @interface BRCApplyScheduler <BRCModule, BRCSuspendable>
 {
     BRCCountedSet *_coordinatedWriters;
@@ -18,6 +17,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (unsigned int)recoverAndReportMissingJobs;
 - (void)_close;
 - (void)didSyncDownZone:(id)arg1 requestID:(unsigned long long)arg2 upToRank:(long long)arg3 caughtUpWithServer:(_Bool)arg4;
 - (void)deleteExpiredJobs;

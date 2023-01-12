@@ -10,7 +10,6 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDPStreamingAssetSaveAssetResponse : PBCodable <NSCopying>
 {
     long long _reservedSize;

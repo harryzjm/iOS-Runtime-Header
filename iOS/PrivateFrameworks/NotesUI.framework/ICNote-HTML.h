@@ -6,9 +6,11 @@
 
 #import <NotesShared/ICNote.h>
 
-@class ICCollaborationColorManager, NSArray, PKInk, TTTextStorage;
+#import <NotesUI/TTTextStorageDelegate-Protocol.h>
 
-@interface ICNote (HTML)
+@class ICCollaborationColorManager, NSArray, NSString, PKInk, TTTextStorage;
+
+@interface ICNote (HTML) <TTTextStorageDelegate>
 + (id)hexStringForColor:(id)arg1;
 + (_Bool)isDefaultColor:(id)arg1;
 + (id)tagDictionariesForAttributes:(id)arg1 attachmentConversionHandler:(CDUnknownBlockType)arg2;
@@ -26,10 +28,19 @@
 + (id)attributedStringFromHTMLString:(id)arg1 readerDelegate:(id)arg2;
 + (id)attributedStringFromHTMLString:(id)arg1;
 + (id)thumbnailImageForAttachment:(id)arg1 minSize:(struct CGSize)arg2 scale:(double)arg3 appearanceType:(unsigned long long)arg4 requireAppearance:(_Bool)arg5 imageScaling:(unsigned long long *)arg6 showAsFileIcon:(_Bool *)arg7 isMovie:(_Bool *)arg8 movieDuration:(CDStruct_1b6d18a9 *)arg9;
++ (void)redactNote:(id)arg1;
++ (id)createNoteFromNote:(id)arg1 inFolder:(id)arg2 isPasswordProtected:(_Bool)arg3 removingOriginalNote:(_Bool)arg4;
++ (id)createNoteFromNote:(id)arg1 isPasswordProtected:(_Bool)arg2 removingOriginalNote:(_Bool)arg3;
++ (void)createNoteForAirDropDocument:(id)arg1 legacyContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)htmlStringWithHTMLAttachments;
 - (id)htmlStringWithAttachmentConversionHandler:(CDUnknownBlockType)arg1;
 - (id)htmlStringWithAttachments:(_Bool)arg1;
 - (id)htmlString;
+- (_Bool)isHashtagRowAtRange:(struct _NSRange)arg1 outRangeForAppending:(struct _NSRange *)arg2 outIndex:(long long *)arg3 forHashtagAttachment:(id)arg4 outHashtagCount:(long long *)arg5;
+- (void)removeHashtag:(id)arg1;
+- (id)addHashtagToNoteBody:(id)arg1 onlyIfMissing:(_Bool)arg2;
+- (id)addHashtagToNoteBodyIfMissing:(id)arg1;
+- (id)firstAttachmentInTextStorage;
 - (void)updatePKDrawingsWithHandwritingRecognitionEnabled:(_Bool)arg1;
 @property(nonatomic, getter=isHandwritingRecognitionEnabled) _Bool handwritingRecognitionEnabled;
 @property(copy, nonatomic) PKInk *selectedInk;
@@ -38,6 +49,7 @@
 - (void)announceAccessibilitySelectionChangedByMergeWithSavedSelections:(id)arg1 beforeMergeTimestamp:(id)arg2;
 - (void)notifyTextViewsNoteDidMerge;
 - (void)notifyTextViewsNoteWillMerge;
+- (void)markBlockAndInlineAttachmentsForDeletion:(_Bool)arg1 inAttributedString:(id)arg2;
 - (void)textStorageDidChange:(id)arg1;
 - (void)textStorageWillChange:(id)arg1;
 - (void)textStorageDidPerformUndo:(id)arg1;
@@ -60,11 +72,15 @@
 - (id)attachmentFromRemoteFileWrapper:(id)arg1;
 - (id)attachmentFromLegacyAttachmentFileWrapper:(id)arg1;
 - (id)attachmentFromStandardFileWrapper:(id)arg1;
+- (id)attachmentFromSystemPaperAttachment:(id)arg1;
 - (id)attachmentFromInlineDrawingAttachment:(id)arg1;
 - (id)attachmentFromTableData:(id)arg1;
 - (id)attachmentFromObject:(id)arg1 createIfNecessary:(_Bool)arg2;
+- (void)_updateTextViewToPaperIfNecessary;
+- (void)redactAuthorAttributions;
 - (id)attachmentActivityItemsForSharingForRange:(struct _NSRange)arg1;
 @property(readonly, nonatomic) NSArray *attachmentActivityItemsForSharing;
+- (id)airDropActivityItemSource;
 - (id)noteActivityItemsForSharingWithNoteExporter:(id)arg1;
 @property(readonly, nonatomic) long long primaryWritingDirection;
 - (id)uiAttributedString;
@@ -73,11 +89,19 @@
 @property(readonly, nonatomic) _Bool ic_hasLightBackground;
 @property(readonly, retain, nonatomic) ICCollaborationColorManager *collaborationColorManager;
 - (void)didMergeNoteDocument:(id)arg1 withUserInfo:(id)arg2;
+- (id)rangesModifiedAfterTimestamp:(id)arg1 inTextStorage:(id)arg2;
 - (void)willMergeNoteDocument:(id)arg1 withUserInfo:(id)arg2;
 - (void)noteDidReplaceDocument;
 - (void)noteDidSaveAndClearDecryptedData;
+- (void)noteWillReleaseTextStorage;
 - (_Bool)shouldReleaseTextStorageWhenTurningIntoFault;
 - (void)noteWillTurnIntoFault;
 - (id)dataForTypeIdentifier:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 @end
 

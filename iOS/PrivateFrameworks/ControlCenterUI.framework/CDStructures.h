@@ -10,6 +10,12 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct CAFrameRateRange {
+    float minimum;
+    float maximum;
+    float preferred;
+};
+
 struct CCUILayoutPoint {
     unsigned long long _field1;
     unsigned long long _field2;
@@ -23,6 +29,11 @@ struct CCUILayoutRect {
 struct CCUILayoutSize {
     unsigned long long width;
     unsigned long long height;
+};
+
+struct CCUIModuleLayoutSize {
+    unsigned long long _field1;
+    unsigned long long _field2;
 };
 
 struct CGAffineTransform {

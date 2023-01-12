@@ -6,7 +6,6 @@
 
 @class NSArray, NSDate, NSMutableDictionary;
 
-__attribute__((visibility("hidden")))
 @interface CKDModifyRecordZonesURLRequest
 {
     _Bool _markZonesAsUserPurged;
@@ -29,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (id)generateRequestOperations;
 - (id)requestOperationClasses;
 - (id)zoneIDsToLock;
+- (_Bool)requiresCKAnonymousUserIDs;
 - (id)initWithOperation:(id)arg1 recordZonesToSave:(id)arg2 recordZoneIDsToDelete:(id)arg3;
 
 @end

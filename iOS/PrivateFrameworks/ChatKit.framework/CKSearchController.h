@@ -22,10 +22,12 @@
     CDUnknownBlockType _queryCompletionHandler;
     unsigned long long _sectionIndex;
     NSArray *_results;
+    unsigned long long _queriedResultsCount;
     CKQLPreviewControllerDataSource *_qlPreviewDataSource;
 }
 
 + (long long)orthogonalScrollingBehavior;
++ (id)supportedCellClasses;
 + (Class)cellClass;
 + (id)indexingString;
 + (id)reuseIdentifier;
@@ -33,6 +35,7 @@
 + (id)sectionTitle;
 + (unsigned long long)recencyRankedTargetResultCount;
 + (_Bool)previewControllerPresentsModally;
++ (_Bool)supportsMacSelection;
 + (_Bool)supportsMenuInteraction;
 + (_Bool)supportsQuicklookForResult:(id)arg1;
 + (_Bool)useRecencyRankedSearchForMode:(unsigned long long)arg1;
@@ -40,6 +43,7 @@
 @property(nonatomic) _Bool queryRunning; // @synthesize queryRunning=_queryRunning;
 @property(retain, nonatomic) CKQLPreviewControllerDataSource *qlPreviewDataSource; // @synthesize qlPreviewDataSource=_qlPreviewDataSource;
 @property(nonatomic) _Bool suppressAvatars; // @synthesize suppressAvatars=_suppressAvatars;
+@property(nonatomic) unsigned long long queriedResultsCount; // @synthesize queriedResultsCount=_queriedResultsCount;
 @property(retain, nonatomic) NSArray *results; // @synthesize results=_results;
 @property(nonatomic) unsigned long long sectionIndex; // @synthesize sectionIndex=_sectionIndex;
 @property(copy, nonatomic) CDUnknownBlockType queryCompletionHandler; // @synthesize queryCompletionHandler=_queryCompletionHandler;
@@ -52,7 +56,7 @@
 - (_Bool)handleSelectionForResult:(id)arg1;
 - (void)didSelectResult:(id)arg1;
 - (id)_activityItemProviderForResult:(id)arg1;
-- (id)_pasteboardItemsForResult:(id)arg1;
+- (id)itemProviderForSearchResult:(id)arg1;
 - (id)_overridingMenuElementsForResult:(id)arg1;
 - (id)_additionalMenuElementsForResult:(id)arg1;
 - (id)previewViewControllerForResult:(id)arg1;
@@ -79,6 +83,7 @@
 - (_Bool)wantsHeaderSection;
 - (struct NSDirectionalEdgeInsets)additionalGroupInsets;
 - (double)interGroupSpacing;
+- (void)removeFromCache:(id)arg1;
 - (void)deleteAttachmentForResult:(id)arg1;
 - (void)saveAttachmentForResult:(id)arg1;
 - (id)initWithSectionIndex:(unsigned long long)arg1;
@@ -91,6 +96,7 @@
 - (unsigned long long)maxResultsForMode:(unsigned long long)arg1;
 - (id)fetchAttributes;
 - (id)queryAttributesForText:(id)arg1;
+- (_Bool)__im_ff_isInterstellarEnabled;
 
 @end
 

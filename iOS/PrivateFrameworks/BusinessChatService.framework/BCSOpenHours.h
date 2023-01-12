@@ -19,22 +19,9 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSTimeZone *localTimeZone; // @synthesize localTimeZone=_localTimeZone;
-@property(readonly, nonatomic) NSDictionary *timeRanges; // @synthesize timeRanges=_timeRanges;
 - (id)debugDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)_convertDateToLocalTimeZoneWithDate:(id)arg1 timeZone:(id)arg2;
-- (id)_convertDateToLocalTimeZoneWithDate:(id)arg1;
-- (id)_weekdayStringFromWeekdayIndex:(int)arg1;
-- (long long)_weekdayIndexFromWeekdayString:(id)arg1;
-- (long long)_totalSecondsInLocalTimeFromPreviousMidnightWithDate:(id)arg1 timeZone:(id)arg2;
-- (long long)_totalSecondsInLocalTimeFromPreviousMidnightWithDate:(id)arg1;
-- (long long)_weekdayOrdinalFromDate:(id)arg1 timeZone:(id)arg2;
-- (long long)_weekdayOrdinalFromDate:(id)arg1;
-- (_Bool)_validTimeRange:(id)arg1;
-- (id)_dateWhenOpenNextAfterDate:(id)arg1 timeZone:(id)arg2;
 - (id)dateWhenOpenNextAfterDate:(id)arg1;
-- (_Bool)isOpenAtDate:(id)arg1 timeZone:(id)arg2;
 - (_Bool)isOpenAtDate:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

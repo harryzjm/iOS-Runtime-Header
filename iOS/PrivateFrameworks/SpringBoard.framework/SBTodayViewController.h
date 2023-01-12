@@ -6,11 +6,15 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <SpringBoard/BSDescriptionProviding-Protocol.h>
 #import <SpringBoard/CSExternalBehaviorProviding-Protocol.h>
 #import <SpringBoard/PTSettingsKeyObserver-Protocol.h>
 #import <SpringBoard/SBFIdleTimerBehaviorProviding-Protocol.h>
+#import <SpringBoard/SBFOverlayObserving-Protocol.h>
 #import <SpringBoard/SBHLegibility-Protocol.h>
 #import <SpringBoard/SBHOccludable-Protocol.h>
+#import <SpringBoard/SBHScrollableIconViewContaining-Protocol.h>
+#import <SpringBoard/SBHTodayViewController-Protocol.h>
 #import <SpringBoard/SBIconListLayoutObserver-Protocol.h>
 #import <SpringBoard/SBIconListModelObserver-Protocol.h>
 #import <SpringBoard/SBIconListViewDragDelegate-Protocol.h>
@@ -25,18 +29,21 @@
 #import <SpringBoard/WGMajorListViewControllerDelegate-Protocol.h>
 #import <SpringBoard/WGWidgetIconAnimationExtraViewsProviding-Protocol.h>
 
-@class MTMaterialView, NSArray, NSHashTable, NSLayoutConstraint, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString, SBFTouchPassThroughView, SBHDateHeaderViewController, SBHIconManager, SBHWidgetSettings, SBIconListView, SBIconView, SBRootFolder, SBTodayIconListLayoutDelegate, SBTodayKeepOnHomeScreenPlatterView, SBTodayViewSpotlightPresenter, SBViewControllerTransitionContext, UILabel, UIScrollView, UIStackView, UITapGestureRecognizer, UIView, WGMajorListViewController, WGWidgetListHeaderView, _UILegibilitySettings;
-@protocol SBFOverlayDismissalDelegate, SBIconListLayoutProvider, SBIconViewProviding, SBTodayViewControllerDelegate;
+@class MTMaterialView, NSArray, NSHashTable, NSLayoutConstraint, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString, SBFTouchPassThroughView, SBHDateHeaderViewController, SBHIconManager, SBHScrollableIconViewInteraction, SBHWidgetSettings, SBIconListView, SBRootFolder, SBTodayIconListLayoutDelegate, SBTodayKeepOnHomeScreenPlatterView, SBTodayViewSpotlightPresenter, SBViewControllerTransitionContext, UILabel, UIScrollView, UIStackView, UITapGestureRecognizer, UIView, WGMajorListViewController, WGWidgetListHeaderView, _UILegibilitySettings;
+@protocol BSInvalidatable, SBFOverlayDismissalDelegate, SBIconListLayoutProvider, SBIconViewProviding, SBTodayViewControllerDelegate;
 
-@interface SBTodayViewController : UIViewController <SBUICoronaAnimationControllerParticipant, SBIconListLayoutObserver, SBIconViewObserver, UIScrollViewDelegate, SBIconListModelObserver, SBIconListViewDragDelegate, WGMajorListViewControllerDelegate, WGWidgetIconAnimationExtraViewsProviding, PTSettingsKeyObserver, SBTodayViewSpotlightPresenterDelegate, CSExternalBehaviorProviding, UIGestureRecognizerDelegate, SBUISpotlightInitiating, SBHLegibility, SBIconViewQuerying, SBIconLocationPresenting, SBFIdleTimerBehaviorProviding, SBHOccludable>
+@interface SBTodayViewController : UIViewController <SBUICoronaAnimationControllerParticipant, SBIconListLayoutObserver, SBIconViewObserver, SBHScrollableIconViewContaining, UIScrollViewDelegate, SBIconListModelObserver, SBIconListViewDragDelegate, WGMajorListViewControllerDelegate, WGWidgetIconAnimationExtraViewsProviding, PTSettingsKeyObserver, SBTodayViewSpotlightPresenterDelegate, CSExternalBehaviorProviding, UIGestureRecognizerDelegate, BSDescriptionProviding, SBUISpotlightInitiating, SBHLegibility, SBIconViewQuerying, SBIconLocationPresenting, SBFIdleTimerBehaviorProviding, SBHOccludable, SBHTodayViewController, SBFOverlayObserving>
 {
-    SBIconView *_cachedHiddenIconView;
+    NSHashTable *_iconViewsForbiddenFromEditing;
+    NSHashTable *_keepStaticAssertions;
+    id <BSInvalidatable> _stateCapture;
     _Bool _occluded;
     _Bool _suppressesEditingStateForListViews;
     _Bool _headerVisible;
     _Bool _spotlightVisible;
     _Bool _visuallyRevealedPriorToEditingIcons;
     _Bool _enableEditingModeWhenScrollEnds;
+    _Bool _isOverlayViewDisappearing;
     _UILegibilitySettings *_legibilitySettings;
     SBViewControllerTransitionContext *_transitionContext;
     SBRootFolder *_rootFolder;
@@ -51,15 +58,20 @@
     SBHWidgetSettings *_widgetSettings;
     UIScrollView *_scrollView;
     NSMutableArray *_scrollViewDidEndScrollingHandlers;
+    double _lastRootSideBarContentOffset;
+    SBHScrollableIconViewInteraction *_scrollingInteraction;
     UIStackView *_stackView;
-    UIView *_fixedContentSizeView;
     SBIconListView *_listView;
     UIView *_favoriteListContainerView;
     MTMaterialView *_favoriteListPlatterView;
     UILabel *_favoriteListInstructionLabel;
     SBIconListView *_favoriteListView;
+    NSLayoutConstraint *_scrollViewLeadingConstraint;
+    NSLayoutConstraint *_scrollViewTrailingConstraint;
     NSLayoutConstraint *_favoriteListWithLargeWidgetMinimumHeightConstraint;
     NSLayoutConstraint *_favoriteListWithSmallOrMediumWidgetsMinimumHeightConstraint;
+    NSLayoutConstraint *_listViewMinimumHeightConstraint;
+    NSLayoutConstraint *_listViewMinimumWidthConstraint;
     SBTodayIconListLayoutDelegate *_listLayoutDelegate;
     SBTodayIconListLayoutDelegate *_favoriteListLayoutDelegate;
     UIView *_carouselReferenceForLegacyWidgetListView;
@@ -75,21 +87,34 @@
     SBFTouchPassThroughView *_spotlightContainerView;
     NSLayoutConstraint *_stackViewToScrollViewTopConstraint;
     NSLayoutConstraint *_stackViewToScrollViewBottomConstraint;
+    NSLayoutConstraint *_stackViewToScrollViewLeadingConstraint;
+    NSLayoutConstraint *_stackViewToScrollViewTrailingConstraint;
     NSMutableSet *_suspendVisibleRowRangeUpdatesReasons;
     NSMutableSet *_widgetHitTestingDisabledReasons;
     double _searchBarTopOffset;
+    double _firstWidgetTopOffset;
     NSHashTable *_viewControllerAppearStateOverrideAssertions;
     UITapGestureRecognizer *_dismissTapGestureRecognizer;
+    NSMapTable *_onScreenIconIndexRangeByIconListView;
+    NSHashTable *_observers;
+    struct CGPoint _scrollingBeginningOffset;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isOverlayViewDisappearing; // @synthesize isOverlayViewDisappearing=_isOverlayViewDisappearing;
+@property(retain, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
+@property(retain, nonatomic) NSMapTable *onScreenIconIndexRangeByIconListView; // @synthesize onScreenIconIndexRangeByIconListView=_onScreenIconIndexRangeByIconListView;
 @property(retain, nonatomic) UITapGestureRecognizer *dismissTapGestureRecognizer; // @synthesize dismissTapGestureRecognizer=_dismissTapGestureRecognizer;
+@property(nonatomic) struct CGPoint scrollingBeginningOffset; // @synthesize scrollingBeginningOffset=_scrollingBeginningOffset;
 @property(nonatomic) _Bool enableEditingModeWhenScrollEnds; // @synthesize enableEditingModeWhenScrollEnds=_enableEditingModeWhenScrollEnds;
 @property(retain, nonatomic) NSHashTable *viewControllerAppearStateOverrideAssertions; // @synthesize viewControllerAppearStateOverrideAssertions=_viewControllerAppearStateOverrideAssertions;
+@property(readonly, nonatomic) double firstWidgetTopOffset; // @synthesize firstWidgetTopOffset=_firstWidgetTopOffset;
 @property(readonly, nonatomic) double searchBarTopOffset; // @synthesize searchBarTopOffset=_searchBarTopOffset;
 @property(retain, nonatomic) NSMutableSet *widgetHitTestingDisabledReasons; // @synthesize widgetHitTestingDisabledReasons=_widgetHitTestingDisabledReasons;
 @property(retain, nonatomic) NSMutableSet *suspendVisibleRowRangeUpdatesReasons; // @synthesize suspendVisibleRowRangeUpdatesReasons=_suspendVisibleRowRangeUpdatesReasons;
 @property(nonatomic) _Bool visuallyRevealedPriorToEditingIcons; // @synthesize visuallyRevealedPriorToEditingIcons=_visuallyRevealedPriorToEditingIcons;
+@property(retain, nonatomic) NSLayoutConstraint *stackViewToScrollViewTrailingConstraint; // @synthesize stackViewToScrollViewTrailingConstraint=_stackViewToScrollViewTrailingConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *stackViewToScrollViewLeadingConstraint; // @synthesize stackViewToScrollViewLeadingConstraint=_stackViewToScrollViewLeadingConstraint;
 @property(readonly, nonatomic) NSLayoutConstraint *stackViewToScrollViewBottomConstraint; // @synthesize stackViewToScrollViewBottomConstraint=_stackViewToScrollViewBottomConstraint;
 @property(readonly, nonatomic) NSLayoutConstraint *stackViewToScrollViewTopConstraint; // @synthesize stackViewToScrollViewTopConstraint=_stackViewToScrollViewTopConstraint;
 @property(retain, nonatomic) SBFTouchPassThroughView *spotlightContainerView; // @synthesize spotlightContainerView=_spotlightContainerView;
@@ -105,15 +130,20 @@
 @property(retain, nonatomic) UIView *carouselReferenceForLegacyWidgetListView; // @synthesize carouselReferenceForLegacyWidgetListView=_carouselReferenceForLegacyWidgetListView;
 @property(retain, nonatomic) SBTodayIconListLayoutDelegate *favoriteListLayoutDelegate; // @synthesize favoriteListLayoutDelegate=_favoriteListLayoutDelegate;
 @property(retain, nonatomic) SBTodayIconListLayoutDelegate *listLayoutDelegate; // @synthesize listLayoutDelegate=_listLayoutDelegate;
+@property(retain, nonatomic) NSLayoutConstraint *listViewMinimumWidthConstraint; // @synthesize listViewMinimumWidthConstraint=_listViewMinimumWidthConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *listViewMinimumHeightConstraint; // @synthesize listViewMinimumHeightConstraint=_listViewMinimumHeightConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *favoriteListWithSmallOrMediumWidgetsMinimumHeightConstraint; // @synthesize favoriteListWithSmallOrMediumWidgetsMinimumHeightConstraint=_favoriteListWithSmallOrMediumWidgetsMinimumHeightConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *favoriteListWithLargeWidgetMinimumHeightConstraint; // @synthesize favoriteListWithLargeWidgetMinimumHeightConstraint=_favoriteListWithLargeWidgetMinimumHeightConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *scrollViewTrailingConstraint; // @synthesize scrollViewTrailingConstraint=_scrollViewTrailingConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *scrollViewLeadingConstraint; // @synthesize scrollViewLeadingConstraint=_scrollViewLeadingConstraint;
 @property(retain, nonatomic) SBIconListView *favoriteListView; // @synthesize favoriteListView=_favoriteListView;
 @property(retain, nonatomic) UILabel *favoriteListInstructionLabel; // @synthesize favoriteListInstructionLabel=_favoriteListInstructionLabel;
 @property(retain, nonatomic) MTMaterialView *favoriteListPlatterView; // @synthesize favoriteListPlatterView=_favoriteListPlatterView;
 @property(retain, nonatomic) UIView *favoriteListContainerView; // @synthesize favoriteListContainerView=_favoriteListContainerView;
 @property(retain, nonatomic) SBIconListView *listView; // @synthesize listView=_listView;
-@property(retain, nonatomic) UIView *fixedContentSizeView; // @synthesize fixedContentSizeView=_fixedContentSizeView;
 @property(retain, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
+@property(retain, nonatomic) SBHScrollableIconViewInteraction *scrollingInteraction; // @synthesize scrollingInteraction=_scrollingInteraction;
+@property(nonatomic) double lastRootSideBarContentOffset; // @synthesize lastRootSideBarContentOffset=_lastRootSideBarContentOffset;
 @property(retain, nonatomic) NSMutableArray *scrollViewDidEndScrollingHandlers; // @synthesize scrollViewDidEndScrollingHandlers=_scrollViewDidEndScrollingHandlers;
 @property(retain, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property(retain, nonatomic) SBHWidgetSettings *widgetSettings; // @synthesize widgetSettings=_widgetSettings;
@@ -132,6 +162,10 @@
 @property(retain, nonatomic) SBViewControllerTransitionContext *transitionContext; // @synthesize transitionContext=_transitionContext;
 @property(nonatomic, getter=isOccluded) _Bool occluded; // @synthesize occluded=_occluded;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
+- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)descriptionWithMultilinePrefix:(id)arg1;
+- (id)succinctDescriptionBuilder;
+- (id)succinctDescription;
 - (struct CGRect)_suggestedTodayViewFrameForBounds:(struct CGRect)arg1;
 - (struct CGSize)widgetListViewController:(id)arg1 sizeForInterfaceOrientation:(long long)arg2;
 @property(readonly, nonatomic) long long participantState;
@@ -154,21 +188,27 @@
 @property(readonly, copy, nonatomic) NSArray *extraViews;
 @property(readonly, copy, nonatomic) NSArray *extraViewsContainers;
 - (_Bool)_isViewVisibleInScrollViewSpace:(id)arg1;
+- (struct CGPoint)_interactiveSpotlightDraggingBeginPoint;
+- (id)_majorScrollView;
 - (void)_cleanupViews;
 - (struct CGRect)_cellFrameInScrollBoundsForCell:(id)arg1;
 - (void)_updateVisibleRowRangeForListView:(id)arg1;
 - (void)_updateVisibleRowRangeForListViews;
 - (void)_endSuspendingVisibleRowRangeUpdatesForReason:(id)arg1;
 - (void)_beginSuspendingVisibleRowRangeUpdatesForReason:(id)arg1;
-- (void)_updateVisiblySettledForIconView:(id)arg1;
+- (_Bool)_shouldIconViewForbidJiggling:(id)arg1;
+- (void)_updateEditingStateForListView:(id)arg1;
+- (void)_updateVisiblySettledForIconViewsInListView:(id)arg1;
 - (void)_updateVisiblySettledForIconViews;
 - (void)_updateSubviewOrderingForListViews;
 - (unsigned long long)_indexForNextWidgetInNonFavoriteListViewAfterContentOffset:(double)arg1;
 - (void)_updateListViewLayoutAnimated:(_Bool)arg1;
 - (void)_scrollViewDidEndScrolling;
-- (void)_handleClippingScrollViewDidScroll:(id)arg1;
-- (id)_findHiddenIconView;
-- (void)_updateHiddenIconViewForScrolling:(_Bool)arg1;
+- (void)overlayController:(id)arg1 didChangePresentationProgress:(double)arg2 newPresentationProgress:(double)arg3 fromLeading:(_Bool)arg4;
+- (void)overlayController:(id)arg1 visibilityDidChange:(_Bool)arg2;
+- (void)overlayControllerDidBeginChangingPresentationProgress:(id)arg1;
+- (void)enumerateScrollableIconViewsUsingBlock:(CDUnknownBlockType)arg1;
+- (struct UIEdgeInsets)visibleContainerInsets;
 - (_Bool)scrollViewShouldScrollToTop:(id)arg1;
 - (void)scrollViewDidEndScrollingAnimation:(id)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
@@ -177,8 +217,6 @@
 - (void)scrollIconToVisible:(id)arg1 atPosition:(long long)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewWillBeginDragging:(id)arg1;
-- (void)_prepareIconViewForSpotlightPresentation:(id)arg1;
-- (void)_prepareIconViewsForSpotlightPresentation;
 - (_Bool)spotlightPresenterAllowsPullToSearch:(id)arg1;
 - (double)searchBarTopOffsetForSpotlightPresenter:(id)arg1;
 - (double)todayViewControllerLocationForSpotlightPresenter:(id)arg1;
@@ -201,6 +239,7 @@
 - (void)iconListView:(id)arg1 iconDragItem:(id)arg2 willAnimateDropWithAnimator:(id)arg3;
 - (id)iconListView:(id)arg1 previewForDroppingIconDragItem:(id)arg2 proposedPreview:(id)arg3;
 - (void)iconListView:(id)arg1 willUseIconView:(id)arg2 forDroppingIconDragItem:(id)arg3;
+- (id)iconListView:(id)arg1 iconViewForDroppingIconDragItem:(id)arg2 proposedIconView:(id)arg3;
 - (void)iconListView:(id)arg1 performIconDrop:(id)arg2;
 - (void)iconListView:(id)arg1 iconDropSessionDidExit:(id)arg2;
 - (void)iconListView:(id)arg1 iconDropSession:(id)arg2 didPauseAtLocation:(struct CGPoint)arg3;
@@ -248,15 +287,20 @@
 - (_Bool)isPresentingIconLocation:(id)arg1;
 - (void)_updateHeaderVisibility;
 - (void)_styleHeaderView:(id)arg1 withCellFrameInScrollViewBounds:(struct CGRect)arg2;
+- (void)removeObserver:(id)arg1;
+- (void)addObserver:(id)arg1;
+- (void)_updatePresentationModeForIconViews;
+- (_Bool)_shouldKeepIconImageViewControllersStatic;
+- (void)_removeIconImageViewControllerKeepStaticAssertion:(id)arg1;
+- (id)keepIconImageViewControllersStaticForReason:(id)arg1;
 - (_Bool)_isOverridingViewControllerAppearanceStateToRemainDisappeared;
 - (id)beginOverridingViewControllerAppearanceStateToRemainDisappearedForReason:(id)arg1;
 - (void)noteIconViewWillZoomDown:(id)arg1;
 - (void)dismissSpotlightAnimated:(_Bool)arg1;
-- (void)layoutIconListView:(double)arg1 animationType:(long long)arg2 forceRelayout:(_Bool)arg3;
-- (id)_majorScrollView;
+- (void)presentSpotlightAnimated:(_Bool)arg1;
+- (void)layoutIconListViewWithAnimationType:(long long)arg1 forceRelayout:(_Bool)arg2;
 - (id)favoriteListModel;
 - (id)listModel;
-- (void)_showOnBoardingAlertIfNeeded;
 - (void)_toggleHeaderViewWithEditingState:(_Bool)arg1;
 - (void)_toggleCarouselLayoutWithEditingState:(_Bool)arg1;
 - (void)_toggleNonFavoriteListVisibilityWithSidebarPinned:(_Bool)arg1 editing:(_Bool)arg2;
@@ -269,6 +313,7 @@
 - (void)_updateEditingStateAnimated:(_Bool)arg1;
 - (void)setEditing:(_Bool)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (void)viewDidLayoutSubviews;
 - (void)viewWillLayoutSubviews;
 - (void)_updateTouchInsets;
 - (struct UIEdgeInsets)_effectiveLayoutInsets;
@@ -284,6 +329,8 @@
 - (void)viewWillAppear:(_Bool)arg1;
 - (_Bool)shouldAutomaticallyForwardAppearanceMethods;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
+- (void)_setupStateCapture;
+- (void)updateViewConstraints;
 - (void)_setUpGestureRecognizers;
 - (double)_dateHeaderViewSpacing;
 - (void)_setUpHeaderViews;

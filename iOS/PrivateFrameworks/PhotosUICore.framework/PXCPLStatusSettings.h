@@ -4,14 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSNumber;
+
 @interface PXCPLStatusSettings
 {
     _Bool _cloudQuotaOfferIncludeAssetCounts;
     long long _cloudQuotaOfferLevel;
+    NSNumber *_resumeOverrideHours;
 }
 
 + (id)settingsControllerModule;
 + (id)sharedInstance;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSNumber *resumeOverrideHours; // @synthesize resumeOverrideHours=_resumeOverrideHours;
 @property(nonatomic) _Bool cloudQuotaOfferIncludeAssetCounts; // @synthesize cloudQuotaOfferIncludeAssetCounts=_cloudQuotaOfferIncludeAssetCounts;
 @property(nonatomic) long long cloudQuotaOfferLevel; // @synthesize cloudQuotaOfferLevel=_cloudQuotaOfferLevel;
 - (void)setDefaultValues;

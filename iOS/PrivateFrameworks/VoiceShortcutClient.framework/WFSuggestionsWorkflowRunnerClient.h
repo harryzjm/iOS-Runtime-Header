@@ -11,8 +11,10 @@
     NSDictionary *_userInfo;
 }
 
++ (id)allSuggestionsRunSources;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
+- (id)initWithINShortcut:(id)arg1 executionContext:(long long)arg2 remoteDialogPresenterEndpoint:(id)arg3;
 - (id)initWithINShortcut:(id)arg1 executionContext:(long long)arg2;
 
 @end

@@ -13,7 +13,7 @@
 @interface TSWPLayoutMetricsCache : NSObject <TSWPStorageParagraphObserver>
 {
     TSWPStorage *_storage;
-    struct vector<TSWPParagraphMetrics, std::__1::allocator<TSWPParagraphMetrics>> _paragraphMetrics;
+    struct vector<TSWPParagraphMetrics, std::allocator<TSWPParagraphMetrics>> _paragraphMetrics;
 }
 
 - (id).cxx_construct;

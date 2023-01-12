@@ -26,7 +26,7 @@
 #import <SpringBoard/SBProximitySensorManagerObserver-Protocol.h>
 
 @class NSArray, NSMutableSet, NSString, SBDashBoardNotificationPresenter, SBProximitySensorManager, SBSyncController, SBWallpaperAggdLogger;
-@protocol CSAppHostConfiguring, CSApplicationInforming, CSAuthenticationManaging, CSCarPlayStatusProviding, CSDeviceOrientationProviding, CSHomeAffordanceControlling, CSLegibilityProviding, CSMediaControlling, CSModalHomeAffordanceControlling, CSNotificationPresenting, CSOverlayProviding, CSPowerStatusProviding, CSProximitySensorProviding, CSReachabilityControlling, CSResetRestoreStatusProviding, CSScreenStateProviding, CSStatusBarControlling, CSSystemPointerInteractionManaging, CSTelephonyStatusProviding, CSThermalStatusProviding, CSTouchEnvironmentStatusProviding, CSUnlockRequesting, CSUserSessionControlling, CSWallpaperLogging, CSWallpaperViewProviding, SBFActionProviding, SBFAuthenticationAssertionProviding, SBFAuthenticationStatusProvider, SBFDateProviding, SBFLockOutStatusProvider, SBFPasscodeFieldChangeObserver, SBFScreenWakeAnimationControlling, SBUIBiometricResource;
+@protocol CSAppHostConfiguring, CSApplicationInforming, CSAuthenticationManaging, CSCarPlayStatusProviding, CSDeviceOrientationProviding, CSHomeAffordanceControlling, CSLegibilityProviding, CSMagSafeAccessoryStatusProviding, CSMediaControlling, CSModalHomeAffordanceControlling, CSNotificationPresenting, CSOverlayProviding, CSPlatterHomeGestureManaging, CSPowerStatusProviding, CSProximitySensorProviding, CSReachabilityControlling, CSResetRestoreStatusProviding, CSScreenStateProviding, CSStatusBarControlling, CSSystemPointerInteractionManaging, CSTelephonyStatusProviding, CSThermalStatusProviding, CSTouchEnvironmentStatusProviding, CSUnlockRequesting, CSUserSessionControlling, CSWallpaperLogging, CSWallpaperViewProviding, SBFActionProviding, SBFAuthenticationAssertionProviding, SBFAuthenticationStatusProvider, SBFDateProviding, SBFLockOutStatusProvider, SBFPasscodeFieldChangeObserver, SBFScreenWakeAnimationControlling, SBUIBiometricResource;
 
 @interface SBDefaultCoverSheetContext : NSObject <CSAuthenticationManaging, CSCarPlayStatusProviding, CSMediaControlling, CSReachabilityControlling, CSResetRestoreStatusProviding, CSTelephonyStatusProviding, CSTouchEnvironmentStatusProviding, CSUnlockRequesting, CSUserSessionControlling, CSWallpaperLogging, CSOverlayProviding, CSAppHostConfiguring, CSSystemPointerInteractionManaging, CSProximitySensorProviding, CSDeviceOrientationProviding, SBProximitySensorManagerObserver, SBFOverlayObserving, CSCoverSheetContextProviding>
 {
@@ -44,12 +44,17 @@
     id <CSLegibilityProviding> _legibilityProvider;
     id <CSPowerStatusProviding> _powerStatusProvider;
     NSString *_powerStatusChangeNotificationName;
+    id <CSMagSafeAccessoryStatusProviding> _accessoryStatusProvider;
+    NSString *_accessoryAttachedNotificationName;
+    NSString *_accessoryDetachedNotificationName;
+    NSString *_accessoryAnimationStatusChangedNotificationName;
     id <CSThermalStatusProviding> _thermalStatusProvider;
     id <SBUIBiometricResource> _biometricResource;
     id <CSScreenStateProviding> _screenStateProvider;
     id <SBFScreenWakeAnimationControlling> _screenWakeAnimationController;
     id <CSHomeAffordanceControlling> _homeAffordanceController;
     id <CSModalHomeAffordanceControlling> _modalHomeAffordanceController;
+    id <CSPlatterHomeGestureManaging> _platterHomeGestureManager;
     id <CSStatusBarControlling> _statusBarController;
     id <CSWallpaperViewProviding> _wallpaperViewProvider;
     id <SBFActionProviding> _contentActionProvider;
@@ -63,12 +68,17 @@
 @property(readonly, nonatomic) id <SBFActionProviding> contentActionProvider; // @synthesize contentActionProvider=_contentActionProvider;
 @property(readonly, nonatomic) id <CSWallpaperViewProviding> wallpaperViewProvider; // @synthesize wallpaperViewProvider=_wallpaperViewProvider;
 @property(readonly, nonatomic) id <CSStatusBarControlling> statusBarController; // @synthesize statusBarController=_statusBarController;
+@property(readonly, nonatomic) id <CSPlatterHomeGestureManaging> platterHomeGestureManager; // @synthesize platterHomeGestureManager=_platterHomeGestureManager;
 @property(readonly, nonatomic) id <CSModalHomeAffordanceControlling> modalHomeAffordanceController; // @synthesize modalHomeAffordanceController=_modalHomeAffordanceController;
 @property(readonly, nonatomic) id <CSHomeAffordanceControlling> homeAffordanceController; // @synthesize homeAffordanceController=_homeAffordanceController;
 @property(readonly, nonatomic) id <SBFScreenWakeAnimationControlling> screenWakeAnimationController; // @synthesize screenWakeAnimationController=_screenWakeAnimationController;
 @property(readonly, nonatomic) id <CSScreenStateProviding> screenStateProvider; // @synthesize screenStateProvider=_screenStateProvider;
 @property(readonly, nonatomic) id <SBUIBiometricResource> biometricResource; // @synthesize biometricResource=_biometricResource;
 @property(readonly, nonatomic) id <CSThermalStatusProviding> thermalStatusProvider; // @synthesize thermalStatusProvider=_thermalStatusProvider;
+@property(readonly, copy, nonatomic) NSString *accessoryAnimationStatusChangedNotificationName; // @synthesize accessoryAnimationStatusChangedNotificationName=_accessoryAnimationStatusChangedNotificationName;
+@property(readonly, copy, nonatomic) NSString *accessoryDetachedNotificationName; // @synthesize accessoryDetachedNotificationName=_accessoryDetachedNotificationName;
+@property(readonly, copy, nonatomic) NSString *accessoryAttachedNotificationName; // @synthesize accessoryAttachedNotificationName=_accessoryAttachedNotificationName;
+@property(readonly, nonatomic) id <CSMagSafeAccessoryStatusProviding> accessoryStatusProvider; // @synthesize accessoryStatusProvider=_accessoryStatusProvider;
 @property(readonly, copy, nonatomic) NSString *powerStatusChangeNotificationName; // @synthesize powerStatusChangeNotificationName=_powerStatusChangeNotificationName;
 @property(readonly, nonatomic) id <CSPowerStatusProviding> powerStatusProvider; // @synthesize powerStatusProvider=_powerStatusProvider;
 @property(readonly, nonatomic) id <CSLegibilityProviding> legibilityProvider; // @synthesize legibilityProvider=_legibilityProvider;
@@ -84,7 +94,7 @@
 - (void)unregisterView:(id)arg1;
 - (void)registerView:(id)arg1 delegate:(id)arg2;
 - (id)applicationHosterForBundleIdentifier:(id)arg1;
-- (void)overlayController:(id)arg1 didChangePresentationProgress:(double)arg2 fromLeading:(_Bool)arg3;
+- (void)overlayController:(id)arg1 didChangePresentationProgress:(double)arg2 newPresentationProgress:(double)arg3 fromLeading:(_Bool)arg4;
 - (void)overlayController:(id)arg1 visibilityDidChange:(_Bool)arg2;
 - (void)overlayControllerDidBeginChangingPresentationProgress:(id)arg1;
 - (id)_todayViewControllerIfAvailable;

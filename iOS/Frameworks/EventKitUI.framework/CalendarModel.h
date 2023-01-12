@@ -90,7 +90,7 @@
 - (void)_ignoredErrorsChanged;
 - (void)_eventStoreChanged:(id)arg1;
 - (void)_notificationBlacklisted;
-- (void)calendarEventLoader:(id)arg1 occurrencesDidUpdateBetweenStart:(double)arg2 end:(double)arg3 wasEmptyLoad:(_Bool)arg4;
+- (void)calendarEventLoader:(id)arg1 occurrencesDidUpdateBetweenStart:(double)arg2 end:(double)arg3 generation:(int)arg4 wasEmptyLoad:(_Bool)arg5;
 - (void)_finishedFirstLoad;
 - (void)simulateFirstLoadFinished;
 - (long long)countAccountsInInitialSync;

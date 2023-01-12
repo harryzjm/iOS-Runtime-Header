@@ -4,20 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI20EpisodeContainerView : UIView
+@interface _TtC8VideosUI20EpisodeContainerView
 {
-    MISSING_TYPE *viewLayout;
+    MISSING_TYPE *delegate;
+    MISSING_TYPE *collectionView;
+    MISSING_TYPE *headerView;
+    MISSING_TYPE *headerViewLayout;
+    MISSING_TYPE *decorationView;
 }
 
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (struct CGSize)vui_layoutSubviews:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
 
 @end
 

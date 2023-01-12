@@ -13,7 +13,7 @@
     NSArray *_libraryCollections;
 }
 
-+ (id)keyForFaceStyle:(long long)arg1 editOption:(id)arg2 mode:(long long)arg3 selectedOptions:(id)arg4;
++ (id)keyForFaceStyle:(id)arg1 editOption:(id)arg2 mode:(long long)arg3 selectedOptions:(id)arg4;
 + (id)sharedCache;
 - (void).cxx_destruct;
 - (void)_cleanCache;

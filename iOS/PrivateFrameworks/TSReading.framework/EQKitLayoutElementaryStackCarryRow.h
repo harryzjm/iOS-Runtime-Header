@@ -10,14 +10,14 @@
 
 @interface EQKitLayoutElementaryStackCarryRow <EQKitLayoutElementaryStackRow>
 {
-    vector_e38595b5 mCrossouts;
+    struct vector<EQKitTypes::Crossout::Enum, std::allocator<EQKitTypes::Crossout::Enum>> mCrossouts;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)populateMaxColumnWidths:(__wrap_iter_8fb6ff7c)arg1;
 - (int)crossoutAtColumnIndex:(unsigned long long)arg1;
-- (id)initWithChildren:(id)arg1 decimalPoint:(unsigned long long)arg2 position:(long long)arg3 followingSpace:(double)arg4 crossouts:(const vector_e38595b5 *)arg5;
+- (id)initWithChildren:(id)arg1 decimalPoint:(unsigned long long)arg2 position:(long long)arg3 followingSpace:(double)arg4 crossouts:(const void *)arg5;
 
 // Remaining properties
 @property(readonly, nonatomic) long long alignmentShift;

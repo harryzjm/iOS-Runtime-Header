@@ -7,8 +7,11 @@
 #import <Foundation/NSIndexPath.h>
 
 @interface NSIndexPath (SBIconIndex)
++ (id)sb_indexPathWithFolderIconIndex:(unsigned long long)arg1 folderListIndex:(unsigned long long)arg2 listIndex:(unsigned long long)arg3;
++ (id)sb_indexPathWithListIndex:(unsigned long long)arg1;
 + (id)indexPathWithFolderIconIndex:(unsigned long long)arg1 folderListIndex:(unsigned long long)arg2 iconIndex:(unsigned long long)arg3 listIndex:(unsigned long long)arg4;
 + (id)indexPathWithIconIndex:(unsigned long long)arg1 listIndex:(unsigned long long)arg2;
+- (id)sb_iconPathDescription;
 - (id)sb_indexPathByReplacingLastIconIndex:(unsigned long long)arg1;
 - (_Bool)sb_isOnSameListAsIndexPath:(id)arg1;
 - (id)sb_indexPathByAddingPathComponentWithListIndex:(unsigned long long)arg1 iconIndex:(unsigned long long)arg2;
@@ -16,6 +19,7 @@
 - (id)sb_lastIconPathComponent;
 - (id)sb_indexPathByRemovingLastIconIndex;
 - (id)sb_indexPathByRemovingLastIconPathComponent;
+- (id)sb_indexPathByRemovingFirstIconPathComponent;
 - (id)sb_firstIconPathComponent;
 - (id)sb_iconRelativePathComponents;
 - (unsigned long long)sb_lastIconIndex;

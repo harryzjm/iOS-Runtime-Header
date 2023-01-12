@@ -33,6 +33,7 @@
 
 @property(readonly, retain, nonatomic) NSArray *textInputTargets; // @synthesize textInputTargets=_textInputTargets;
 - (id)recognizableDrawingForStrokeGroup:(id)arg1 translationVector:(struct CGVector)arg2 originalDrawing:(id *)arg3 orderedStrokesIDs:(id *)arg4 rescalingFactor:(double *)arg5;
+- (_Bool)_isSplitAcceptable:(id)arg1 arcLengthsByStrokeIdentifier:(id)arg2 outRejectionReason:(id *)arg3;
 - (id)_findMostProbableTextInputTarget:(id)arg1 forGroupBounds:(struct CGRect)arg2 outOverlap:(double *)arg3 outDistance:(double *)arg4;
 - (double)_accumulatedTimeDifferences:(id)arg1;
 - (double)_estimateSplitScore:(id)arg1 withTextInputTargets:(id)arg2 arcLengthsByStrokeIdentifier:(id)arg3;

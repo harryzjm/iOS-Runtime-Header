@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <SpringBoardHome/SBDateTimeOverrideObserver-Protocol.h>
+
 @class CALayer, NSString, UIImage;
 
-@interface SBHClockApplicationIconImageView
+@interface SBHClockApplicationIconImageView <SBDateTimeOverrideObserver>
 {
     CALayer *_seconds;
     CALayer *_minutes;
@@ -19,9 +21,10 @@
     NSString *_currentNumberingSystem;
 }
 
-+ (id)backgroundImageName;
++ (id)backgroundImageNameWithImageInfo:(struct SBIconImageInfo)arg1;
 + (id)systemNumberingSystem;
 + (void)precacheDataWithIconImageInfo:(struct SBIconImageInfo)arg1;
++ (id)fallbackBackgroundImageWithIconImageInfo:(struct SBIconImageInfo)arg1;
 + (id)iconImageWithImageInfo:(struct SBIconImageInfo)arg1 includingMask:(_Bool)arg2;
 + (id)imageSetForMetrics:(const struct SBHClockApplicationIconImageMetrics *)arg1;
 + (id)makeImageSetForMetrics:(const struct SBHClockApplicationIconImageMetrics *)arg1;
@@ -49,6 +52,7 @@
 + (void)initialize;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *currentNumberingSystem; // @synthesize currentNumberingSystem=_currentNumberingSystem;
+- (void)controller:(id)arg1 didChangeOverrideDateFromDate:(id)arg2;
 - (void)localeDidChange:(id)arg1;
 - (void)_timerFiredWithComponents:(id)arg1 flags:(unsigned long long)arg2;
 - (void)updateUnanimated;
@@ -66,6 +70,12 @@
 - (void)setIcon:(id)arg1 location:(id)arg2 animated:(_Bool)arg3;
 - (void)prepareForReuse;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

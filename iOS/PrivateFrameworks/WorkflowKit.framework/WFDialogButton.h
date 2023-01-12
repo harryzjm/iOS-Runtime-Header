@@ -20,6 +20,7 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)cancelButton;
++ (id)selectButton;
 + (id)okButton;
 + (id)doneButton;
 + (id)defaultButtonWithTitle:(id)arg1;
@@ -31,6 +32,8 @@
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithTitle:(id)arg1 style:(long long)arg2;
+- (id)initWithIdentifier:(id)arg1 title:(id)arg2 style:(long long)arg3;
+- (id)smartPromptIntentButton;
 
 @end
 

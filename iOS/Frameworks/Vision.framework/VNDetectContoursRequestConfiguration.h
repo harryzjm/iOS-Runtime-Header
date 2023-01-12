@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSNumber;
+
 __attribute__((visibility("hidden")))
 @interface VNDetectContoursRequestConfiguration
 {
@@ -11,13 +13,16 @@ __attribute__((visibility("hidden")))
     _Bool _inHierarchy;
     _Bool _forceUseInputCVPixelBufferDirectly;
     float _contrastAdjustment;
+    NSNumber *_contrastPivot;
     unsigned long long _maximumImageDimension;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool forceUseInputCVPixelBufferDirectly; // @synthesize forceUseInputCVPixelBufferDirectly=_forceUseInputCVPixelBufferDirectly;
 @property(nonatomic) _Bool inHierarchy; // @synthesize inHierarchy=_inHierarchy;
 @property(nonatomic) unsigned long long maximumImageDimension; // @synthesize maximumImageDimension=_maximumImageDimension;
 @property(nonatomic) _Bool detectsDarkOnLight; // @synthesize detectsDarkOnLight=_detectsDarkOnLight;
+@property(retain, nonatomic) NSNumber *contrastPivot; // @synthesize contrastPivot=_contrastPivot;
 @property(nonatomic) float contrastAdjustment; // @synthesize contrastAdjustment=_contrastAdjustment;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithRequestClass:(Class)arg1;

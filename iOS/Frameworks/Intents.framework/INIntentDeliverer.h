@@ -6,26 +6,27 @@
 
 #import <objc/NSObject.h>
 
+#import <Intents/INIntentDelivering-Protocol.h>
 #import <Intents/INIntentParameterOptionsProviding-Protocol.h>
 
 @class INExtensionContextIntentResponseObserver, NSString;
-@protocol INIntentDelivererDataSource, INIntentDelivererDelegate, OS_dispatch_queue;
+@protocol INIntentDeliveringDelegate, OS_dispatch_queue;
 
-@interface INIntentDeliverer : NSObject <INIntentParameterOptionsProviding>
+@interface INIntentDeliverer : NSObject <INIntentParameterOptionsProviding, INIntentDelivering>
 {
     NSObject<OS_dispatch_queue> *_queue;
-    id <INIntentDelivererDelegate> _delegate;
-    id <INIntentDelivererDataSource> _dataSource;
+    id <INIntentDeliveringDelegate> _delegate;
     INExtensionContextIntentResponseObserver *_getRideStatusObserver;
     INExtensionContextIntentResponseObserver *_getCarPowerLevelObserver;
+    CDStruct_4c969caf _auditToken;
 }
 
 + (void)initialize;
 - (void).cxx_destruct;
 @property(retain, nonatomic) INExtensionContextIntentResponseObserver *getCarPowerLevelObserver; // @synthesize getCarPowerLevelObserver=_getCarPowerLevelObserver;
 @property(retain, nonatomic) INExtensionContextIntentResponseObserver *getRideStatusObserver; // @synthesize getRideStatusObserver=_getRideStatusObserver;
-@property(nonatomic) __weak id <INIntentDelivererDataSource> dataSource; // @synthesize dataSource=_dataSource;
-@property(nonatomic) __weak id <INIntentDelivererDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) CDStruct_4c969caf auditToken; // @synthesize auditToken=_auditToken;
+@property(nonatomic) __weak id <INIntentDeliveringDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 - (void)_stopSendingUpdatesForIntent:(id)arg1 fromConnection:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_startSendingUpdatesForIntent:(id)arg1 toObserver:(id)arg2 fromConnection:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -48,7 +49,7 @@
 - (void)resolveIntentParameters:(id)arg1 forIntent:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)getIntentParameterDefaultValue:(id)arg1 forIntent:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)getIntentParameterOptions:(id)arg1 forIntent:(id)arg2 searchTerm:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
-- (id)initWithQueue:(id)arg1;
+- (id)initWithQueue:(id)arg1 auditToken:(CDStruct_4c969caf)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

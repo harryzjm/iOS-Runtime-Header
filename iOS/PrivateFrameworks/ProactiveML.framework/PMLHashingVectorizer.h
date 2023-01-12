@@ -13,32 +13,42 @@
 @interface PMLHashingVectorizer : NSObject <PMLTransformerProtocol>
 {
     int _buckets;
-    _Bool _normalize;
     struct _NSRange _characterNGramRange;
     struct _NSRange _tokenNGramRange;
     _Bool _shouldNormalizeTokens;
     _Bool _shouldNormalizeCharacters;
     NSLocale *_localeForNonwordTokens;
     _Bool _tokenizeNewlines;
-    _Bool _intercept;
+    unsigned long long _idVectorLength;
+    unsigned long long _extraIdOptions;
+    unsigned long long _vectorizerStrategy;
+    long long _vectorNormalization;
+    long long _paddingId;
+    long long _endId;
 }
 
-+ (id)withBucketSize:(int)arg1 characterNGramRange:(struct _NSRange)arg2 tokenNGramRange:(struct _NSRange)arg3 shouldNormalizeTokens:(_Bool)arg4 shouldNormalizeCharacters:(_Bool)arg5 withIntercept:(_Bool)arg6;
-+ (id)withBucketSize:(int)arg1 characterNGramRange:(struct _NSRange)arg2 tokenNGramRange:(struct _NSRange)arg3 shouldNormalizeTokens:(_Bool)arg4 shouldNormalizeCharacters:(_Bool)arg5 localeForNonwordTokens:(id)arg6 tokenizeNewlines:(_Bool)arg7 withIntercept:(_Bool)arg8;
-+ (id)withBucketSize:(int)arg1 ngrams:(int)arg2 localeForNonwordTokens:(id)arg3 tokenizeNewlines:(_Bool)arg4 andIntercept:(_Bool)arg5;
++ (id)withBucketSize:(int)arg1 characterNGramRange:(struct _NSRange)arg2 tokenNGramRange:(struct _NSRange)arg3 shouldNormalizeTokens:(_Bool)arg4 shouldNormalizeCharacters:(_Bool)arg5;
++ (id)withBucketSize:(int)arg1 characterNGramRange:(struct _NSRange)arg2 tokenNGramRange:(struct _NSRange)arg3 shouldNormalizeTokens:(_Bool)arg4 shouldNormalizeCharacters:(_Bool)arg5 localeForNonwordTokens:(id)arg6 tokenizeNewlines:(_Bool)arg7;
++ (id)withBucketSize:(int)arg1 characterNGramRange:(struct _NSRange)arg2 tokenNGramRange:(struct _NSRange)arg3 shouldNormalizeTokens:(_Bool)arg4 shouldNormalizeCharacters:(_Bool)arg5 localeForNonwordTokens:(id)arg6 tokenizeNewlines:(_Bool)arg7 idVectorLength:(unsigned long long)arg8 extraIdOptions:(unsigned long long)arg9 vectorizerStrategy:(unsigned long long)arg10 vectorNormalization:(long long)arg11;
++ (id)withBucketSize:(int)arg1 ngrams:(int)arg2 localeForNonwordTokens:(id)arg3 tokenizeNewlines:(_Bool)arg4;
 + (id)withBucketSize:(int)arg1 andNgrams:(int)arg2;
++ (id)withBucketSize:(int)arg1 andCharNgramOrder:(int)arg2;
++ (id)withBucketSize:(int)arg1 andNgramOrder:(int)arg2;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool normalize; // @synthesize normalize=_normalize;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToHashingVectorizer:(id)arg1;
 - (id)initWithPlist:(id)arg1 chunks:(id)arg2 context:(id)arg3;
 - (id)toPlistWithChunks:(id)arg1;
 - (id)transformBatch:(id)arg1;
+- (id)transformBagOfIds:(id)arg1 shouldDecrement:(_Bool)arg2;
+- (id)transformSequentialNGrams:(id)arg1;
+- (id)transformWithFrequency:(id)arg1 shouldDecrement:(_Bool)arg2;
 - (id)transform:(id)arg1;
+- (void)setVectorizerNormalization:(long long)arg1;
 - (id)init;
-- (id)initWithBucketSize:(int)arg1 characterNGramRange:(struct _NSRange)arg2 tokenNGramRange:(struct _NSRange)arg3 shouldNormalizeTokens:(_Bool)arg4 shouldNormalizeCharacters:(_Bool)arg5 localeForNonwordTokens:(id)arg6 tokenizeNewlines:(_Bool)arg7 withIntercept:(_Bool)arg8;
-- (id)initWithBucketSize:(int)arg1 ngrams:(int)arg2 localeForNonwordTokens:(id)arg3 tokenizeNewlines:(_Bool)arg4 andIntercept:(_Bool)arg5;
+- (id)initWithBucketSize:(int)arg1 characterNGramRange:(struct _NSRange)arg2 tokenNGramRange:(struct _NSRange)arg3 shouldNormalizeTokens:(_Bool)arg4 shouldNormalizeCharacters:(_Bool)arg5 localeForNonwordTokens:(id)arg6 tokenizeNewlines:(_Bool)arg7 idVectorLength:(unsigned long long)arg8 extraIdOptions:(unsigned long long)arg9 vectorizerStrategy:(unsigned long long)arg10 vectorNormalization:(long long)arg11;
+- (id)initWithBucketSize:(int)arg1 ngrams:(int)arg2 localeForNonwordTokens:(id)arg3 tokenizeNewlines:(_Bool)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

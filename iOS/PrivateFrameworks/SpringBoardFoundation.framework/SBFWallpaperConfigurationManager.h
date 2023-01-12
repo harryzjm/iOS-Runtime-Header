@@ -52,6 +52,7 @@
 - (double)parallaxFactorForCropRect:(struct CGRect)arg1 portrait:(_Bool)arg2 forImageSize:(struct CGSize)arg3 zoomScale:(double)arg4;
 - (struct CGRect)cropRectForOldCropRect:(struct CGRect)arg1 portrait:(_Bool)arg2 zoomScale:(double)arg3 oldParallaxFactor:(double)arg4 forImageSize:(struct CGSize)arg5 newZoomScale:(double *)arg6;
 - (struct CGRect)cropRectForViewPort:(struct CGRect)arg1 portrait:(_Bool)arg2 zoomScale:(double)arg3 parallaxFactor:(double)arg4 forImageSize:(struct CGSize)arg5 contentScaleFactor:(double)arg6;
+- (id)getWallpaperLegibilitySettingsForVariant:(long long)arg1;
 - (void)notifyDelegateOfChangesToVariants:(long long)arg1;
 - (void)wallpaperDidChangeForVariants:(long long)arg1 shouldNotify:(_Bool)arg2;
 - (void)wallpaperWillChangeForVariants:(long long)arg1;
@@ -71,6 +72,7 @@
 - (_Bool)isProceduralWallpaperInfoValid:(id)arg1;
 - (Class)proceduralWallpaperClassForIdentifier:(id)arg1;
 - (void)removeVideoForVariants:(long long)arg1;
+- (struct CGAffineTransform)_naturalPreferredTransform:(struct CGAffineTransform)arg1 forNaturalSize:(struct CGSize)arg2;
 - (void)saveCroppedVideo:(id)arg1 toURL:(id)arg2 cropRect:(struct CGRect)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (_Bool)setVideoURL:(id)arg1 forVariant:(long long)arg2 shoudCrop:(_Bool)arg3 relativeCropRect:(struct CGRect)arg4 wallpaperMode:(long long)arg5;
 - (id)videoURLForVariant:(long long)arg1 wallpaperMode:(long long)arg2;

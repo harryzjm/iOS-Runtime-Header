@@ -21,6 +21,7 @@
 @property(nonatomic) long long kind; // @synthesize kind=_kind;
 - (id)dictionaryRepresentation;
 @property(readonly, copy) NSString *description;
+- (void)mergeWithObject:(id)arg1;
 - (_Bool)validateObject:(id *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

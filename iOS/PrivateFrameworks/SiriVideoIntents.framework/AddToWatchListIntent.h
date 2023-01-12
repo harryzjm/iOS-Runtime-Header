@@ -12,9 +12,14 @@
 {
 }
 
+- (id)initWithDomain:(id)arg1 verb:(id)arg2 parametersByName:(id)arg3;
+- (id)initWithIdentifier:(id)arg1 backingStore:(id)arg2;
+- (id)initWithCoder:(id)arg1;
+- (id)init;
 
 // Remaining properties
-@property(copy, nonatomic) Content *content; // @dynamic content;
-@property(copy, nonatomic) ContentSearch *contentSearch; // @dynamic contentSearch;
+@property(nonatomic, retain) Content *content; // @dynamic content;
+@property(nonatomic, retain) ContentSearch *contentSearch; // @dynamic contentSearch;
+
 @end
 

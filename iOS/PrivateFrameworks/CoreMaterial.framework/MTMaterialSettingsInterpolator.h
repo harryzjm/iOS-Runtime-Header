@@ -12,37 +12,34 @@
 @interface MTMaterialSettingsInterpolator : NSObject
 {
     double _previousWeighting;
+    _Bool _overlay;
     double _weighting;
     id <MTRecipeMaterialSettingsProviding> _finalSettings;
-    NSString *_finalConfiguration;
     id <MTRecipeMaterialSettingsProviding> _initialSettings;
-    NSString *_initialConfiguration;
     CDUnknownBlockType _blurRadiusTransformer;
 }
 
 + (id)_filteringProtocolGetterNames;
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType blurRadiusTransformer; // @synthesize blurRadiusTransformer=_blurRadiusTransformer;
-@property(copy, nonatomic) NSString *initialConfiguration; // @synthesize initialConfiguration=_initialConfiguration;
+@property(readonly, nonatomic, getter=isOverlay) _Bool overlay; // @synthesize overlay=_overlay;
 @property(retain, nonatomic) id <MTRecipeMaterialSettingsProviding> initialSettings; // @synthesize initialSettings=_initialSettings;
-@property(copy, nonatomic) NSString *finalConfiguration; // @synthesize finalConfiguration=_finalConfiguration;
 @property(retain, nonatomic) id <MTRecipeMaterialSettingsProviding> finalSettings; // @synthesize finalSettings=_finalSettings;
 @property(nonatomic) double weighting; // @synthesize weighting=_weighting;
 - (id)description;
-- (id)_backdropScaleWithSettings:(id)arg1 configuration:(id)arg2;
-- (id)_colorMatrixColorWithSettings:(id)arg1 configuration:(id)arg2 alpha:(double)arg3;
-- (id)_zoomWithSettings:(id)arg1 configuration:(id)arg2;
-- (id)_tintAlphaWithSettings:(id)arg1 configuration:(id)arg2;
-- (id)_colorMatrixWithSettings:(id)arg1 configuration:(id)arg2;
-- (id)_brightnessWithSettings:(id)arg1 configuration:(id)arg2;
-- (id)_saturationWithSettings:(id)arg1 configuration:(id)arg2;
-- (id)_luminanceAmountWithSettings:(id)arg1 configuration:(id)arg2;
-- (id)_blurRadiusWithSettings:(id)arg1 configuration:(id)arg2;
-- (id)_filteringProperty:(id)arg1 withSettings:(id)arg2 configuration:(id)arg3;
-- (_Bool)_isTintEnabledWithSettings:(id)arg1 configuration:(id)arg2;
-- (_Bool)_isBackdropRequiredWithSettings:(id)arg1 configuration:(id)arg2;
+- (id)_backdropScaleWithSettings:(id)arg1;
+- (id)_colorMatrixColorWithSettings:(id)arg1 alpha:(double)arg2;
+- (id)_zoomWithSettings:(id)arg1;
+- (id)_tintAlphaWithSettings:(id)arg1;
+- (id)_colorMatrixWithSettings:(id)arg1;
+- (id)_brightnessWithSettings:(id)arg1;
+- (id)_saturationWithSettings:(id)arg1;
+- (id)_luminanceAmountWithSettings:(id)arg1;
+- (id)_blurRadiusWithSettings:(id)arg1;
+- (id)_filteringProperty:(id)arg1 withSettings:(id)arg2;
+- (_Bool)_isTintEnabledWithSettings:(id)arg1;
+- (_Bool)_isBackdropRequiredWithSettings:(id)arg1;
 - (_Bool)_isBackdropRequiredWithSubSettings:(id)arg1;
-- (id)_subSettingsForRecipeSettings:(id)arg1 configuration:(id)arg2;
 - (id)_luminanceInputValues;
 - (id)_colorWithGetterBlock:(CDUnknownBlockType)arg1;
 - (double)_floatPropertyValueForProperty:(id)arg1;
@@ -69,13 +66,13 @@
 @property(readonly, nonatomic, getter=isSaturationEnabled) _Bool saturationEnabled;
 @property(readonly, nonatomic, getter=isLuminanceEnabled) _Bool luminanceEnabled;
 @property(readonly, nonatomic, getter=isBlurEnabled) _Bool blurEnabled;
-@property(readonly, nonatomic, getter=isOverlay) _Bool overlay;
 @property(readonly, nonatomic, getter=isBackdropRequiredEver) _Bool backdropRequiredEver;
 @property(readonly, nonatomic, getter=isBackdropRequiredFinally) _Bool backdropRequiredFinally;
 @property(readonly, nonatomic, getter=isBackdropRequiredInitially) _Bool backdropRequiredInitially;
 - (void)finalizeWeighting;
 @property(readonly, nonatomic, getter=isWeightingChanging) _Bool weightingChanging;
-- (id)initWithSettings:(id)arg1 configuration:(id)arg2;
+- (id)initialSettingsInterpolator;
+- (id)initWithSettings:(id)arg1;
 
 @end
 

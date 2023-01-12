@@ -16,6 +16,7 @@
     NSUUID *_uuid;
 }
 
++ (_Bool)actuallyOverridesDMFObserverMethod;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;

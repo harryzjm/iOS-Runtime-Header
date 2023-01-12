@@ -7,6 +7,7 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (UIKitConvenienceAdditions)
++ (id)ui_arrayByCompactingArray:(id)arg1;
 - (id)_ui_onlyObject;
 - (id)_ui_firstObject;
 - (id)_filteredArrayOfObjectsPassingTest:(CDUnknownBlockType)arg1;

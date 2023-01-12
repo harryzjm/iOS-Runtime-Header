@@ -12,12 +12,12 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)feedForwardEspressoBufferForNetwork:(CDStruct_2bc666a5 *)arg1 fromBufferWithName:(id)arg2 toBufferWithName:(id)arg3 firstFrame:(_Bool)arg4 error:(id *)arg5;
-+ (_Bool)enableMontrealAndReturnError:(id *)arg1;
-+ (unsigned long long)pixelValueSizeInBytesForBuffer:(const CDStruct_cf098810 *)arg1 error:(id *)arg2;
-+ (_Bool)renderEspressoBufferImage:(const CDStruct_cf098810 *)arg1 intoCVPixelBuffer:(struct __CVBuffer *)arg2 error:(id *)arg3;
-+ (struct __CVBuffer *)createCVPixelBufferWithPixelFormat:(unsigned int)arg1 fromImageInEspressoBuffer:(const CDStruct_cf098810 *)arg2 error:(id *)arg3;
-+ (_Bool)createSingleNetworkPlanFromResourceName:(id)arg1 usingProcessingDevice:(id)arg2 lowPriorityMode:(_Bool)arg3 inputBlobNames:(id)arg4 outputBlobNames:(id)arg5 explicitNetworkLayersStorageType:(int)arg6 espressoResources:(id *)arg7 error:(id *)arg8;
-+ (_Bool)createSingleNetworkPlanFromResourceName:(id)arg1 usingProcessingDevice:(id)arg2 lowPriorityMode:(_Bool)arg3 inputBlobNames:(id)arg4 outputBlobNames:(id)arg5 espressoResources:(id *)arg6 error:(id *)arg7;
++ (unsigned long long)pixelValueSizeInBytesForBuffer:(const CDStruct_0a65202a *)arg1 error:(id *)arg2;
++ (_Bool)renderEspressoBufferImage:(const CDStruct_0a65202a *)arg1 intoCVPixelBuffer:(struct __CVBuffer *)arg2 error:(id *)arg3;
++ (struct __CVBuffer *)createCVPixelBufferWithPixelFormat:(unsigned int)arg1 fromImageInEspressoBuffer:(const CDStruct_0a65202a *)arg2 error:(id *)arg3;
++ (_Bool)createSingleNetworkPlanFromResourceName:(id)arg1 usingProcessingDevice:(id)arg2 lowPriorityMode:(_Bool)arg3 inputBlobNames:(id)arg4 outputBlobNames:(id)arg5 networkConfiguration:(id)arg6 explicitNetworkLayersStorageType:(int)arg7 espressoResources:(id *)arg8 error:(id *)arg9;
++ (_Bool)createSingleNetworkPlanFromResourceName:(id)arg1 usingProcessingDevice:(id)arg2 lowPriorityMode:(_Bool)arg3 inputBlobNames:(id)arg4 outputBlobNames:(id)arg5 networkConfiguration:(id)arg6 espressoResources:(id *)arg7 error:(id *)arg8;
++ (_Bool)getWidth:(unsigned long long *)arg1 height:(unsigned long long *)arg2 ofBlobNamed:(id)arg3 forNetworkModelFileWithName:(id)arg4 error:(id *)arg5;
 + (id)pathForEspressoNetworkModelFileWithName:(id)arg1 error:(id *)arg2;
 + (id)pathForEspressoResourceWithFilename:(id)arg1 error:(id *)arg2;
 + (id)pathForEspressoResource:(id)arg1 ofType:(id)arg2 error:(id *)arg3;

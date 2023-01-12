@@ -35,7 +35,9 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *selectedEffectIdentifier;
 - (id)effectImageForIndexPath:(id)arg1;
 - (id)effectTitleForIndexPath:(id)arg1;
+- (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
+- (double)maxCellHeight;
 - (_Bool)becomeFirstResponder;
 - (void)viewDidLoad;
 

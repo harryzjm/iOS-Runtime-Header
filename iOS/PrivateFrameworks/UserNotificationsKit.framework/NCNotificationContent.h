@@ -10,18 +10,22 @@
 #import <UserNotificationsKit/NSCopying-Protocol.h>
 #import <UserNotificationsKit/NSMutableCopying-Protocol.h>
 
-@class NSArray, NSDate, NSString, NSTimeZone, UIImage;
+@class NSArray, NSDate, NSString, NSTimeZone, UIImage, _UNNotificationCommunicationContext;
 
 @interface NCNotificationContent : NSObject <BSDescriptionProviding, NSCopying, NSMutableCopying>
 {
-    NSString *_header;
+    NSString *_contentType;
+    NSString *_customHeader;
+    NSString *_defaultHeader;
     NSString *_title;
     NSString *_subtitle;
     NSString *_message;
+    NSString *_footer;
     NSString *_hiddenPreviewsBodyPlaceholder;
     NSString *_categorySummaryFormat;
     NSString *_summaryArgument;
     unsigned long long _summaryArgumentCount;
+    _UNNotificationCommunicationContext *_communicationContext;
     NSArray *_icons;
     NSArray *_carPlayIcons;
     UIImage *_attachmentImage;
@@ -33,20 +37,24 @@
 
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *topic; // @synthesize topic=_topic;
+@property(readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(readonly, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
 @property(readonly, nonatomic, getter=isDateAllDay) _Bool dateAllDay; // @synthesize dateAllDay=_dateAllDay;
 @property(readonly, nonatomic) NSDate *date; // @synthesize date=_date;
 @property(readonly, nonatomic) UIImage *attachmentImage; // @synthesize attachmentImage=_attachmentImage;
 @property(readonly, nonatomic) NSArray *carPlayIcons; // @synthesize carPlayIcons=_carPlayIcons;
 @property(readonly, nonatomic) NSArray *icons; // @synthesize icons=_icons;
+@property(readonly, nonatomic) _UNNotificationCommunicationContext *communicationContext; // @synthesize communicationContext=_communicationContext;
 @property(readonly, nonatomic) unsigned long long summaryArgumentCount; // @synthesize summaryArgumentCount=_summaryArgumentCount;
 @property(readonly, copy, nonatomic) NSString *summaryArgument; // @synthesize summaryArgument=_summaryArgument;
 @property(readonly, copy, nonatomic) NSString *categorySummaryFormat; // @synthesize categorySummaryFormat=_categorySummaryFormat;
 @property(readonly, copy, nonatomic) NSString *hiddenPreviewsBodyPlaceholder; // @synthesize hiddenPreviewsBodyPlaceholder=_hiddenPreviewsBodyPlaceholder;
+@property(readonly, copy, nonatomic) NSString *footer; // @synthesize footer=_footer;
 @property(readonly, copy, nonatomic) NSString *message; // @synthesize message=_message;
 @property(readonly, copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
-@property(readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
-@property(readonly, copy, nonatomic) NSString *header; // @synthesize header=_header;
+@property(readonly, copy, nonatomic) NSString *defaultHeader; // @synthesize defaultHeader=_defaultHeader;
+@property(readonly, copy, nonatomic) NSString *customHeader; // @synthesize customHeader=_customHeader;
+@property(readonly, copy, nonatomic) NSString *contentType; // @synthesize contentType=_contentType;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
@@ -57,8 +65,13 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
+@property(readonly, nonatomic, getter=isCommunicationType) _Bool communicationType;
+- (_Bool)isAirDrop;
+@property(readonly, nonatomic, getter=isCallType) _Bool callType;
+@property(readonly, nonatomic, getter=isMessagingType) _Bool messagingType;
 @property(readonly, nonatomic) UIImage *carPlayIcon;
 @property(readonly, nonatomic) UIImage *icon;
+@property(readonly, copy, nonatomic) NSString *header;
 - (id)initWithNotificationContent:(id)arg1;
 
 // Remaining properties

@@ -13,7 +13,8 @@
 
 @interface INFile (Workflow) <WFCodableAttributeContentConvertible, WFCodableAttributeTransformable>
 + (Class)wf_contentItemClass;
-+ (id)wf_fileWithFileRepresentation:(id)arg1;
++ (id)wf_fileWithFileRepresentation:(id)arg1 bookmarkData:(id)arg2 displayName:(id)arg3;
++ (id)wf_fileWithFileRepresentation:(id)arg1 displayName:(id)arg2;
 - (id)wf_fileRepresentation;
 - (void)wf_transformUsingCodableAttribute:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)wf_contentItemWithCodableAttribute:(id)arg1;

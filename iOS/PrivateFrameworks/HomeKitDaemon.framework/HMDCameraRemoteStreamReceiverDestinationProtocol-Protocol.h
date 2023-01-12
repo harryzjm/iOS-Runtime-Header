@@ -9,6 +9,6 @@
 @class NSString;
 
 @protocol HMDCameraRemoteStreamReceiverDestinationProtocol <HMDCameraRemoteStreamReceiverProtocol>
-@property(readonly, nonatomic) NSString *remoteDestination;
+@property(readonly, copy) NSString *remoteDestination;
 @end
 

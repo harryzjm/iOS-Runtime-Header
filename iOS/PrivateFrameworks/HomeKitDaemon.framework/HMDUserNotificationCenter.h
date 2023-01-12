@@ -6,43 +6,30 @@
 
 #import <HMFoundation/HMFObject.h>
 
-#import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 #import <HomeKitDaemon/UNUserNotificationCenterDelegate-Protocol.h>
 
-@class HMDHomeManager, NSMutableDictionary, NSString, UNUserNotificationCenter;
+@class NSString, UNUserNotificationCenter;
+@protocol HMDUserNotificationCenterDelegate;
 
-@interface HMDUserNotificationCenter : HMFObject <NSSecureCoding, UNUserNotificationCenterDelegate>
+@interface HMDUserNotificationCenter : HMFObject <UNUserNotificationCenterDelegate>
 {
-    HMDHomeManager *_homeManager;
+    id <HMDUserNotificationCenterDelegate> _delegate;
     UNUserNotificationCenter *_userNotificationCenter;
-    NSMutableDictionary *_notificationRequests;
 }
 
-+ (_Bool)supportsSecureCoding;
++ (id)logCategory;
 - (void).cxx_destruct;
-@property(readonly) NSMutableDictionary *notificationRequests; // @synthesize notificationRequests=_notificationRequests;
 @property(readonly) UNUserNotificationCenter *userNotificationCenter; // @synthesize userNotificationCenter=_userNotificationCenter;
-@property __weak HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
-- (id)sortDescriptors;
+@property __weak id <HMDUserNotificationCenterDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)userNotificationCenter:(id)arg1 didReceiveNotificationResponse:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
-- (id)insertRequestWithTitle:(id)arg1 snapshotData:(id)arg2 message:(id)arg3 requestIdentifier:(id)arg4 date:(id)arg5 bulletinType:(unsigned long long)arg6 actionURL:(id)arg7 bulletinContext:(id)arg8 actionContext:(id)arg9;
-- (id)createNotificationAttachmentWithIdentifier:(id)arg1 forFileAtPath:(id)arg2;
-- (id)showNotificationWithTitle:(id)arg1 body:(id)arg2 threadIdentifier:(id)arg3 categoryIdentifier:(id)arg4 requestIdentifier:(id)arg5 date:(id)arg6 attachments:(id)arg7 userInfo:(id)arg8 shouldIgnoreDoNotDisturb:(_Bool)arg9;
-- (void)registerNotificationCategories;
-- (id)notificationCategories;
-- (id)sortedRequestsByDate;
-- (void)_removeRequestWithIdentifiersFromNotificationCenter:(id)arg1;
-- (void)_removeRequestWithIdentifier:(id)arg1;
-- (void)removeRequestWithIdentifier:(id)arg1;
-- (void)cullBulletinsToCount:(unsigned long long)arg1;
-- (void)updateContent:(id)arg1 forNotificationWithRequestIdentifier:(id)arg2;
 - (void)_showNotification:(id)arg1;
+- (void)fetchAreUserNotificationsEnabledWithCompletion:(CDUnknownBlockType)arg1;
+- (void)removeNotificationRequestsWithIdentifiers:(id)arg1;
+- (id)showNotificationWithTitle:(id)arg1 body:(id)arg2 threadIdentifier:(id)arg3 categoryIdentifier:(id)arg4 requestIdentifier:(id)arg5 date:(id)arg6 attachments:(id)arg7 userInfo:(id)arg8 shouldIgnoreDoNotDisturb:(_Bool)arg9 interruptionLevel:(unsigned long long)arg10;
+- (void)updateContent:(id)arg1 forNotificationWithRequestIdentifier:(id)arg2;
 - (void)setBadgeNumber:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)configureHomeManager:(id)arg1;
-- (id)initWithUserNotificationCenter:(id)arg1;
-- (id)init;
+- (void)configureWithNotificationCategories:(id)arg1;
+- (id)initWithBundleIdentifier:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

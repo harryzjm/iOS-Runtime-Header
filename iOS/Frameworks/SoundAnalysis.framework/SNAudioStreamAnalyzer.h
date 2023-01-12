@@ -16,8 +16,8 @@
     NSObject<OS_dispatch_queue> *_analyzerQueue;
     SNForwardPassAudioStreamAnalyzer *_firstPassAnalyzer;
     NSMutableDictionary *_secondPassAnalyzers;
-    struct unique_ptr<AudioRingBuffer, std::__1::default_delete<AudioRingBuffer>> _ringBuffer;
-    struct unique_ptr<CABufferList, std::__1::default_delete<CABufferList>> _ringBufferWriteBufferList;
+    struct unique_ptr<AT::RingBuffer, std::default_delete<AT::RingBuffer>> _ringBuffer;
+    struct unique_ptr<CABufferList, std::default_delete<CABufferList>> _ringBufferWriteBufferList;
 }
 
 + (id)secondPassRecordingPath;

@@ -12,11 +12,11 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)setControlsHidden:(_Bool)arg1 animator:(id)arg2;
+- (id)_accessibilityResponseTracklistPlayingItem;
+- (id)_accessibilityResponseTracklist;
+- (id)_accessibilityResponseForViewController;
 - (id)_axUpNextBadgeValue;
 - (id)_accessibilityLeftbuttonValueString;
-- (void)_axMediaRemoteCommandChanged:(id)arg1;
-- (void)_axLikedStateCommandChanged:(id)arg1;
-- (void)_axAudioRouteNameCommandChanged:(id)arg1;
 - (void)viewDidLoad;
 - (id)_axLikedBannedValueForState:(long long)arg1;
 - (_Bool)accessibilityPerformEscape;

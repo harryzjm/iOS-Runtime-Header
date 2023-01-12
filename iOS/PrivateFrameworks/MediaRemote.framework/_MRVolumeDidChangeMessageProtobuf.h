@@ -10,6 +10,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MRVolumeDidChangeMessageProtobuf : PBCodable <NSCopying>
 {
     NSString *_endpointUID;
@@ -19,21 +20,13 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSString *outputDeviceUID; // @synthesize outputDeviceUID=_outputDeviceUID;
-@property(retain, nonatomic) NSString *endpointUID; // @synthesize endpointUID=_endpointUID;
-@property(nonatomic) float volume; // @synthesize volume=_volume;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasOutputDeviceUID;
-@property(readonly, nonatomic) _Bool hasEndpointUID;
-@property(nonatomic) _Bool hasVolume;
 
 @end
 

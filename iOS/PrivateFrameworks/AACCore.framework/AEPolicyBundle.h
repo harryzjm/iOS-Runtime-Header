@@ -20,7 +20,7 @@
 - (void).cxx_destruct;
 - (id)recoverySession;
 - (void)activateSessionWithCompletion:(CDUnknownBlockType)arg1;
-- (id)initWithPolicyStore:(id)arg1 performancePrimitives:(id)arg2 activations:(id)arg3;
+- (id)initWithPolicyStore:(id)arg1 performancePrimitives:(id)arg2 activations:(id)arg3 queue:(id)arg4;
 
 @end
 

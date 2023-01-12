@@ -11,10 +11,11 @@
 #import <CFNetwork/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSData, NSDictionary, NSHTTPCookieStorage, NSNumber, NSSet, NSString, NSURL, NSURLCache, NSURLCredentialStorage, _NSHSTSStorage, _NSHTTPAlternativeServicesStorage;
-@protocol NSURLSessionAppleIDContext;
+@protocol NSURLSessionAppleIDContext, OS_xpc_object;
 
 @interface NSURLSessionConfiguration : NSObject <NSMutableCopying, NSSecureCoding, NSCopying>
 {
+    struct HTTPConnectionCacheLimits _limits;
     _Bool _allowsCellularAccess;
     _Bool _allowsExpensiveNetworkAccess;
     _Bool _allowsConstrainedNetworkAccessAPI;
@@ -29,6 +30,7 @@
     _Bool _allowsExpensiveAccess;
     _Bool _allowsConstrainedNetworkAccessSPI;
     _Bool _allowsPowerNapScheduling;
+    _Bool _allowsHSTSWithUntrustedRootCertificate;
     _Bool _preventsIdleSleepOnceConnected;
     _Bool _sessionSendsLaunchOnDemandEvents;
     _Bool _shouldSkipPreferredClientCertificateLookup;
@@ -75,10 +77,13 @@
     _Bool _disablesUseOfProxySession;
     _Bool _allowsHTTP3;
     _Bool _phskip_alternativeServicesStorageSet;
+    _Bool _usesNWLoader;
     _Bool __allowsWCA;
     int _TLSMinimumSupportedProtocol;
     int _TLSMaximumSupportedProtocol;
     int _loggingPrivacyLevel;
+    int _xpcActivityBudgeted;
+    int _pidForHAR;
     NSString *_identifier;
     unsigned long long _requestCachePolicy;
     double _timeoutIntervalForRequest;
@@ -88,28 +93,25 @@
     NSDictionary *_connectionProxyDictionary;
     unsigned long long _HTTPCookieAcceptPolicy;
     NSDictionary *_HTTPAdditionalHeaders;
-    long long _HTTPMaximumConnectionsPerHost;
     NSArray *_protocolClasses;
     long long _multipathServiceType;
     NSURL *_directoryForDownloadedFiles;
     NSString *_sourceApplicationBundleIdentifier;
     NSString *_sourceApplicationSecondaryIdentifier;
     NSData *_sourceApplicationAuditTokenData;
+    NSString *_attributedBundleIdentifier;
     unsigned long long _TCPAdaptiveReadTimeout;
     unsigned long long _TCPAdaptiveWriteTimeout;
     long long _timingDataOptions;
     id <NSURLSessionAppleIDContext> _appleIDContext;
     NSData *_atsContext;
-    double _connectionCachePurgeTimeout;
-    double _connectionCacheCellPurgeTimeout;
-    double _longLivedConnectionCachePurgeTimeout;
-    double _longLivedConnectionCacheCellPurgeTimeout;
     NSString *_connectionPoolName;
     NSString *_CTDataConnectionServiceType;
     NSString *_tlsTrustPinningPolicyName;
     unsigned long long _customReadBufferSize;
     double _customReadBufferTimeout;
     long long _duetPreClearedMode;
+    NSObject<OS_xpc_object> *_xpcActivity;
     long long _IDSMessageTimeout;
     NSNumber *_maximumWatchCellularTransferSize;
     unsigned long long _multipathAlternatePort;
@@ -118,11 +120,6 @@
     NSURLCache *_phskip_urlCache;
     NSHTTPCookieStorage *_phskip_cookieStorage;
     _NSHSTSStorage *_phskip_hstsStorage;
-    long long _pipeliningHighWatermark;
-    long long _pipeliningLowWatermark;
-    long long _numPriorityLevels;
-    long long _numFastLanes;
-    long long _minimumFastLanePriority;
     NSString *_tcpConnectionPoolName;
     NSDictionary *_socketStreamProperties;
     NSSet *_authenticatorStatusCodes;
@@ -135,6 +132,7 @@
     NSSet *_suppressedAutoAddedHTTPHeaders;
     long long _expiredDNSBehavior;
     _NSHTTPAlternativeServicesStorage *_phskip_alternativeServicesStorage;
+    NSString *_downloadFileProtectionType;
     long long __companionProxyPreference;
 }
 
@@ -149,8 +147,13 @@
 + (id)_defaultProtocolClasses;
 + (id)new;
 + (void)initialize;
++ (id)immutableEffectiveConfigurationFromConfig:(id)arg1;
+- (id).cxx_construct;
 @property long long _companionProxyPreference; // @synthesize _companionProxyPreference=__companionProxyPreference;
 @property _Bool _allowsWCA; // @synthesize _allowsWCA=__allowsWCA;
+@property int _pidForHAR; // @synthesize _pidForHAR;
+@property(copy) NSString *_downloadFileProtectionType; // @synthesize _downloadFileProtectionType;
+@property _Bool _usesNWLoader; // @synthesize _usesNWLoader;
 @property(retain) _NSHTTPAlternativeServicesStorage *_phskip_alternativeServicesStorage; // @synthesize _phskip_alternativeServicesStorage;
 @property _Bool _phskip_alternativeServicesStorageSet; // @synthesize _phskip_alternativeServicesStorageSet;
 @property _Bool _allowsHTTP3; // @synthesize _allowsHTTP3;
@@ -175,11 +178,6 @@
 @property(copy) NSString *_tcpConnectionPoolName; // @synthesize _tcpConnectionPoolName;
 @property _Bool _requiresClientToOpenFiles; // @synthesize _requiresClientToOpenFiles;
 @property _Bool skip_download_unlink; // @synthesize skip_download_unlink=_skip_download_unlink;
-@property long long minimumFastLanePriority; // @synthesize minimumFastLanePriority=_minimumFastLanePriority;
-@property long long numFastLanes; // @synthesize numFastLanes=_numFastLanes;
-@property long long numPriorityLevels; // @synthesize numPriorityLevels=_numPriorityLevels;
-@property long long pipeliningLowWatermark; // @synthesize pipeliningLowWatermark=_pipeliningLowWatermark;
-@property long long pipeliningHighWatermark; // @synthesize pipeliningHighWatermark=_pipeliningHighWatermark;
 @property _Bool _phskip_hstsStorageSet; // @synthesize _phskip_hstsStorageSet;
 @property(retain) _NSHSTSStorage *_phskip_hstsStorage; // @synthesize _phskip_hstsStorage;
 @property _Bool _phskip_cookieStorageSet; // @synthesize _phskip_cookieStorageSet;
@@ -196,6 +194,7 @@
 @property _Bool _ignoreDidReceiveResponseDisposition; // @synthesize _ignoreDidReceiveResponseDisposition;
 @property long long _IDSMessageTimeout; // @synthesize _IDSMessageTimeout;
 @property _Bool _requiresSustainedDataDelivery; // @synthesize _requiresSustainedDataDelivery;
+@property int _xpcActivityBudgeted; // @synthesize _xpcActivityBudgeted;
 @property long long _duetPreClearedMode; // @synthesize _duetPreClearedMode;
 @property _Bool _duetPreauthorized; // @synthesize _duetPreauthorized;
 @property _Bool _allowsReachabilityCheck; // @synthesize _allowsReachabilityCheck;
@@ -226,23 +225,20 @@
 @property _Bool _clientIsNotExplicitlyDiscretionary; // @synthesize _clientIsNotExplicitlyDiscretionary;
 @property _Bool _onBehalfOfPairedDevice; // @synthesize _onBehalfOfPairedDevice;
 @property _Bool _allowsRetryForBackgroundDataTasks; // @synthesize _allowsRetryForBackgroundDataTasks;
-@property double _longLivedConnectionCacheCellPurgeTimeout; // @synthesize _longLivedConnectionCacheCellPurgeTimeout;
-@property double _longLivedConnectionCachePurgeTimeout; // @synthesize _longLivedConnectionCachePurgeTimeout;
-@property double _connectionCacheCellPurgeTimeout; // @synthesize _connectionCacheCellPurgeTimeout;
-@property double _connectionCachePurgeTimeout; // @synthesize _connectionCachePurgeTimeout;
 @property(copy) NSData *_atsContext; // @synthesize _atsContext;
 @property(copy) id <NSURLSessionAppleIDContext> _appleIDContext; // @synthesize _appleIDContext;
 @property _Bool _shouldSkipPreferredClientCertificateLookup; // @synthesize _shouldSkipPreferredClientCertificateLookup;
 @property long long _timingDataOptions; // @synthesize _timingDataOptions;
 @property _Bool _sessionSendsLaunchOnDemandEvents; // @synthesize _sessionSendsLaunchOnDemandEvents;
 @property _Bool _preventsIdleSleepOnceConnected; // @synthesize _preventsIdleSleepOnceConnected;
+@property _Bool _allowsHSTSWithUntrustedRootCertificate; // @synthesize _allowsHSTSWithUntrustedRootCertificate;
 @property _Bool _allowsPowerNapScheduling; // @synthesize _allowsPowerNapScheduling;
 @property _Bool _allowsConstrainedNetworkAccess; // @synthesize _allowsConstrainedNetworkAccess=_allowsConstrainedNetworkAccessSPI;
 @property _Bool _allowsExpensiveAccess; // @synthesize _allowsExpensiveAccess;
 @property _Bool _reportsDataStalls; // @synthesize _reportsDataStalls;
 @property unsigned long long _TCPAdaptiveWriteTimeout; // @synthesize _TCPAdaptiveWriteTimeout;
 @property unsigned long long _TCPAdaptiveReadTimeout; // @synthesize _TCPAdaptiveReadTimeout;
-@property(copy) NSData *_sourceApplicationAuditTokenData; // @synthesize _sourceApplicationAuditTokenData;
+@property(copy) NSString *_attributedBundleIdentifier; // @synthesize _attributedBundleIdentifier;
 @property(copy) NSString *_sourceApplicationSecondaryIdentifier; // @synthesize _sourceApplicationSecondaryIdentifier;
 @property(copy) NSString *_sourceApplicationBundleIdentifier; // @synthesize _sourceApplicationBundleIdentifier;
 @property(copy) NSURL *_directoryForDownloadedFiles; // @synthesize _directoryForDownloadedFiles;
@@ -250,7 +246,6 @@
 @property long long multipathServiceType; // @synthesize multipathServiceType=_multipathServiceType;
 @property(copy) NSArray *protocolClasses; // @synthesize protocolClasses=_protocolClasses;
 @property _Bool shouldUseExtendedBackgroundIdleMode; // @synthesize shouldUseExtendedBackgroundIdleMode=_shouldUseExtendedBackgroundIdleMode;
-@property long long HTTPMaximumConnectionsPerHost; // @synthesize HTTPMaximumConnectionsPerHost=_HTTPMaximumConnectionsPerHost;
 @property(copy) NSDictionary *HTTPAdditionalHeaders; // @synthesize HTTPAdditionalHeaders=_HTTPAdditionalHeaders;
 @property unsigned long long HTTPCookieAcceptPolicy; // @synthesize HTTPCookieAcceptPolicy=_HTTPCookieAcceptPolicy;
 @property _Bool HTTPShouldSetCookies; // @synthesize HTTPShouldSetCookies=_HTTPShouldSetCookies;
@@ -279,10 +274,17 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
+@property(copy) NSData *_sourceApplicationAuditTokenData; // @synthesize _sourceApplicationAuditTokenData;
+@property(retain) NSObject<OS_xpc_object> *_xpcActivity; // @synthesize _xpcActivity;
 @property _Bool _allowsSensitiveLogging;
+@property double _longLivedConnectionCacheCellPurgeTimeout;
+@property double _longLivedConnectionCachePurgeTimeout;
+@property double _connectionCacheCellPurgeTimeout;
+@property double _connectionCachePurgeTimeout;
 @property long long _connectionCacheMinimumFastLanePriority;
 @property long long _connectionCacheNumFastLanes;
 @property long long _connectionCacheNumPriorityLevels;
+@property long long HTTPMaximumConnectionsPerHost;
 @property unsigned short TLSMaximumSupportedProtocolVersion;
 @property unsigned short TLSMinimumSupportedProtocolVersion;
 @property(retain) _NSHSTSStorage *_hstsStorage;
@@ -293,6 +295,8 @@
 - (struct _CFHSTSPolicy *)copyHSTSPolicy;
 - (id)copyImmutableVariant:(CDUnknownBlockType)arg1;
 - (id)init;
+- (id)_sessionConfiguration;
+- (id)_initWithConfiguration:(id)arg1;
 
 @end
 

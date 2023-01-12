@@ -15,11 +15,16 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) AAUIProfilePictureStore *profilePictureStore; // @synthesize profilePictureStore=_profilePictureStore;
 - (void)_accountStoreDidChange:(id)arg1;
+- (void)_updateAccessibilityFrame;
 - (void)_updateAccountButtonVisibility:(_Bool)arg1;
 - (void)_updateAccountImage;
 - (void)_setupAccountImageView;
 - (void)_setup;
-- (id)initWithButtonLayout:(id)arg1 interfaceStyle:(long long)arg2;
+- (void)layoutSubviews;
+- (void)configureWithLayoutProperties;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)setFrame:(struct CGRect)arg1;
+- (id)initWithType:(unsigned long long)arg1 interfaceStyle:(unsigned long long)arg2;
 
 @end
 

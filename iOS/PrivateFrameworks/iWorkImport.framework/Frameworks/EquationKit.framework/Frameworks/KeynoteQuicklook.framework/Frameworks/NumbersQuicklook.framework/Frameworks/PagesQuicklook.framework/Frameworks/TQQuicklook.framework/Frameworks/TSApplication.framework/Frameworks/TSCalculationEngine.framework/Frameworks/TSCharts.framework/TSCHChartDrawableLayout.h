@@ -7,37 +7,42 @@
 #import <TSText/TSWPTextHostLayout.h>
 
 @class NSArray, NSDictionary, NSIndexSet, TSCHChartDrawableLayoutLegendResizer, TSCHChartInfo, TSCHChartLayout, TSCHChartModel, TSDLayoutGeometry;
+@protocol TSWPStyleProviding;
 
 @interface TSCHChartDrawableLayout : TSWPTextHostLayout
 {
+    TSCHChartLayout *_chartLayout;
     struct {
-        unsigned int chartLayoutState:1;
-        unsigned int chartLayoutStructure:1;
-    } mChartInvalidFlags;
-    TSCHChartLayout *mChartLayout;
-    _Bool mForceLayoutSettingsOmitLabelPlacement;
-    TSDLayoutGeometry *mLayoutGeometryWhileCallingSuperComputeLayoutGeometry;
-    TSDLayoutGeometry *mLastPureGeometry;
-    TSDLayoutGeometry *mLastChartAreaGeometry;
-    struct CGSize mMinSizeCache;
-    _Bool mInResize;
-    _Bool mSuppressChartLayoutInvalidation;
-    TSDLayoutGeometry *mLegendGeometryForResize;
-    TSCHChartDrawableLayoutLegendResizer *mLegendResizer;
+        _Bool chartLayoutState;
+        _Bool chartLayoutStructure;
+    } _chartInvalidFlags;
+    _Bool _forceLayoutSettingsOmitLabelPlacement;
+    _Bool _inResize;
+    _Bool _suppressChartLayoutInvalidation;
+    TSCHChartDrawableLayoutLegendResizer *_legendResizer;
+    TSDLayoutGeometry *_lastPureGeometry;
+    TSDLayoutGeometry *_lastChartAreaGeometry;
+    TSDLayoutGeometry *_legendGeometryForResize;
+    TSDLayoutGeometry *_layoutGeometryWhileCallingSuperComputeLayoutGeometry;
+    struct CGSize _minSizeCache;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) TSCHChartDrawableLayoutLegendResizer *p_legendResizer; // @synthesize p_legendResizer=mLegendResizer;
-@property(copy, nonatomic) TSDLayoutGeometry *p_legendGeometryForResize; // @synthesize p_legendGeometryForResize=mLegendGeometryForResize;
-@property(copy, nonatomic) TSDLayoutGeometry *p_lastChartAreaGeometry; // @synthesize p_lastChartAreaGeometry=mLastChartAreaGeometry;
-@property(copy, nonatomic) TSDLayoutGeometry *p_lastPureGeometry; // @synthesize p_lastPureGeometry=mLastPureGeometry;
-@property(retain, nonatomic) TSCHChartLayout *p_chartLayoutNoCreate; // @synthesize p_chartLayoutNoCreate=mChartLayout;
-@property(nonatomic) _Bool forceLayoutSettingsOmitLabelPlacement; // @synthesize forceLayoutSettingsOmitLabelPlacement=mForceLayoutSettingsOmitLabelPlacement;
+@property(retain, nonatomic) TSDLayoutGeometry *layoutGeometryWhileCallingSuperComputeLayoutGeometry; // @synthesize layoutGeometryWhileCallingSuperComputeLayoutGeometry=_layoutGeometryWhileCallingSuperComputeLayoutGeometry;
+@property(nonatomic) _Bool suppressChartLayoutInvalidation; // @synthesize suppressChartLayoutInvalidation=_suppressChartLayoutInvalidation;
+@property(nonatomic) _Bool inResize; // @synthesize inResize=_inResize;
+@property(nonatomic) struct CGSize minSizeCache; // @synthesize minSizeCache=_minSizeCache;
+@property(copy, nonatomic) TSDLayoutGeometry *legendGeometryForResize; // @synthesize legendGeometryForResize=_legendGeometryForResize;
+@property(copy, nonatomic) TSDLayoutGeometry *lastChartAreaGeometry; // @synthesize lastChartAreaGeometry=_lastChartAreaGeometry;
+@property(copy, nonatomic) TSDLayoutGeometry *lastPureGeometry; // @synthesize lastPureGeometry=_lastPureGeometry;
+@property(retain, nonatomic) TSCHChartDrawableLayoutLegendResizer *legendResizer; // @synthesize legendResizer=_legendResizer;
+@property(nonatomic) _Bool forceLayoutSettingsOmitLabelPlacement; // @synthesize forceLayoutSettingsOmitLabelPlacement=_forceLayoutSettingsOmitLabelPlacement;
 - (double)viewScaleForZoomingToSelectionPath:(id)arg1 targetPointSize:(double)arg2;
 - (struct CGRect)frameForCaptionPositioning;
 - (id)i_computeWrapPath;
 - (id)i_computeUnitedWrapPath;
 - (struct CGRect)insertionFrame;
+- (struct CGRect)alignmentFrameForInlineLayout;
 - (struct CGRect)alignmentFrame;
 - (struct CGRect)boundsInfluencingExteriorWrap;
 - (int)wrapFitType;
@@ -45,6 +50,7 @@
 - (struct CGRect)frameForCullingWithBaseFrame:(struct CGRect)arg1 additionalTransform:(struct CGAffineTransform)arg2;
 - (struct CGRect)p_addMultiDataControlToInlineWrapBounds:(struct CGRect)arg1;
 - (double)p_approximatedAdditionalHeightForMultiDataControlWithMinimumAccommodatingScale:(double)arg1;
+@property(readonly, nonatomic) double multiDataControlDesiredDistanceFromChartRep;
 - (double)p_approximateMultiDataControlUnscaledMinimumWidth;
 - (double)p_approximateMultiDataControlUnscaledHeight;
 - (_Bool)p_isRenderingForKPF;
@@ -70,6 +76,7 @@
 - (void)offsetGeometryBy:(struct CGPoint)arg1;
 - (id)layoutGeometryFromInfo;
 - (struct CGRect)boundsForStandardKnobs;
+- (id)p_infoGeometryForComputingLayoutGeometryWithChartLayout:(id)arg1;
 - (void)p_clearChartLayout;
 - (void)p_forceValidateChartLayout;
 - (void)p_validateChartLayout;
@@ -93,14 +100,20 @@
 - (void)setChartLayoutPropertyValue:(id)arg1 forKey:(id)arg2;
 - (void)p_postLayoutPropertyValueDidChangeNotification;
 @property(readonly, nonatomic) _Bool is3DChart;
-@property(readonly, retain, nonatomic) TSCHChartLayout *chartLayout;
+@property(readonly, nonatomic) TSCHChartLayout *chartLayout;
 @property(readonly, nonatomic) __weak TSCHChartInfo *chartInfo;
+@property(readonly, nonatomic) __weak TSCHChartInfo *chart;
 - (id)chartDrawableInfo;
-@property(readonly, nonatomic) TSCHChartLayout *p_chartLayout;
+- (id)p_chartLayout;
+- (CDStruct_c48db077)p_layoutSettingsForDrawableLayoutModeByUpdatingLayoutSettings:(CDStruct_c48db077)arg1;
 - (Class)repClassOverride;
 - (void)dealloc;
 - (id)initWithInfo:(id)arg1;
-- (id)optimizedLabelRectsToPreventOverlapWithCheckTitle:(_Bool)arg1;
+- (id)chartDrawableLayoutGeometryProvider;
+@property(readonly, nonatomic) long long chartDrawableLayoutMode;
+- (id)chartDrawableLayoutModeProvider;
+@property(readonly, nonatomic) __weak id <TSWPStyleProviding> styleProvidingSource;
+- (id)ancestorLayoutConformingToProtocol:(id)arg1;
 
 @end
 

@@ -10,12 +10,12 @@
 
 @interface TSCHMultiDataAnimatingFrameLayer : CALayer <TSCHMultiDataAnimatingFrameLayerProtocol>
 {
-    struct CGRect mPresentationBounds;
-    struct CGPoint mPresentationPosition;
+    struct CGRect _presentationBounds;
+    struct CGPoint _presentationPosition;
 }
 
-@property(nonatomic) struct CGPoint presentationPosition; // @synthesize presentationPosition=mPresentationPosition;
-@property(nonatomic) struct CGRect presentationBounds; // @synthesize presentationBounds=mPresentationBounds;
+@property(nonatomic) struct CGPoint presentationPosition; // @synthesize presentationPosition=_presentationPosition;
+@property(nonatomic) struct CGRect presentationBounds; // @synthesize presentationBounds=_presentationBounds;
 - (struct CGRect)currentFrame;
 - (void)setPosition:(struct CGPoint)arg1;
 - (void)setBounds:(struct CGRect)arg1;

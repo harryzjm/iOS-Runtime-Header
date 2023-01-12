@@ -8,7 +8,7 @@
 
 @interface TSURectList : NSObject
 {
-    struct vector<CGRect, std::__1::allocator<CGRect>> mRectList;
+    struct vector<CGRect, std::allocator<CGRect>> mRectList;
 }
 
 + (id)rectListWithRect:(struct CGRect)arg1;

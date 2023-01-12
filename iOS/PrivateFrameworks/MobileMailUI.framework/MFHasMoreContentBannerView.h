@@ -18,8 +18,10 @@
 - (void)requestLoad;
 - (void)reloadData;
 - (void)_titleControlTapped:(id)arg1;
+- (void)primaryAction;
 - (id)actionStringIsDownloading:(_Bool)arg1;
 @property(readonly) NSString *titleString;
+- (id)bannerIcon;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

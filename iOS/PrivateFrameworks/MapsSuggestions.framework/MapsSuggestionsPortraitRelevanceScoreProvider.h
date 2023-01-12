@@ -13,7 +13,7 @@
 @interface MapsSuggestionsPortraitRelevanceScoreProvider : NSObject <MapsSuggestionsRelevanceScoreProvider>
 {
     NSDate *_fetchEntriesFromDate;
-    NSArray *_portraitStrings;
+    NSArray *_portraitData;
     struct Queue _queue;
     NSLocale *_currentLocale;
     NSString *_languageCode;

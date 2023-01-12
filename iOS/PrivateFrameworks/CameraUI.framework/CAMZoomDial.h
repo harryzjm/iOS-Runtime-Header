@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class CAMZoomDialDotsView, NSArray, NSObject, NSString, UIImageView;
+@class CAMZoomDialDotsView, NSArray, NSObject, UIImageView;
 @protocol OS_dispatch_queue;
 
 @interface CAMZoomDial : UIView
@@ -26,7 +26,7 @@
     double _contentMaskingHeight;
     double _contractionDistance;
     long long _orientation;
-    NSString *_contentSizeCategory;
+    double _angleDeltaForZoomRange;
     UIImageView *__backgroundView;
     UIView *__contentContainerView;
     UIView *__labelContainerView;
@@ -71,7 +71,7 @@
 @property(readonly, nonatomic) UIView *_labelContainerView; // @synthesize _labelContainerView=__labelContainerView;
 @property(readonly, nonatomic) UIView *_contentContainerView; // @synthesize _contentContainerView=__contentContainerView;
 @property(readonly, nonatomic) UIImageView *_backgroundView; // @synthesize _backgroundView=__backgroundView;
-@property(copy, nonatomic) NSString *contentSizeCategory; // @synthesize contentSizeCategory=_contentSizeCategory;
+@property(nonatomic) double angleDeltaForZoomRange; // @synthesize angleDeltaForZoomRange=_angleDeltaForZoomRange;
 @property(nonatomic) _Bool hideLabels; // @synthesize hideLabels=_hideLabels;
 @property(nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property(nonatomic, getter=isExpanded) _Bool expanded; // @synthesize expanded=_expanded;
@@ -82,6 +82,7 @@
 @property(nonatomic) double minAvailableZoomFactor; // @synthesize minAvailableZoomFactor=_minAvailableZoomFactor;
 @property(retain, nonatomic) NSArray *zoomFactors; // @synthesize zoomFactors=_zoomFactors;
 @property(readonly, nonatomic) long long style; // @synthesize style=_style;
+- (void)traitCollectionDidChange:(id)arg1;
 - (double)_labelRotationAngleForOrientation;
 - (void)setOrientation:(long long)arg1 animated:(_Bool)arg2;
 - (id)_createDotImage;
@@ -107,7 +108,6 @@
 - (double)_offsetAngleForZoomFactor:(double)arg1 relativeToCurrentZoomFactor:(_Bool)arg2;
 - (double)offsetAngleForZoomFactor:(double)arg1;
 - (double)_signedAngleDeltaForZoomRange;
-@property(readonly, nonatomic) double angleDeltaForZoomRange;
 @property(readonly, nonatomic) double _focalLengthInsetLandscape;
 @property(readonly, nonatomic) double _focalLengthInsetPortrait;
 @property(readonly, nonatomic) double _tickLabelCenterRadialInset;

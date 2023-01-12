@@ -10,7 +10,6 @@
 
 @class CKDPIdentifier;
 
-__attribute__((visibility("hidden")))
 @interface CKDPUniqueFieldFailure : PBCodable <NSCopying>
 {
     CKDPIdentifier *_identifierForConstraintFailure;

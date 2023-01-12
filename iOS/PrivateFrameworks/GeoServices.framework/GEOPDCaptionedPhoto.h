@@ -8,15 +8,17 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDJoeColor, GEOPDPhoto, NSString, PBDataReader, PBUnknownFields;
+@class GEOPDAttribution, GEOPDJoeColor, GEOPDPhoto, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDCaptionedPhoto : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    GEOPDAttribution *_attribution;
     NSString *_author;
     NSString *_caption;
+    double _dateAdded;
     GEOPDJoeColor *_joeColor;
     NSString *_licenseDescription;
     NSString *_licenseUrl;
@@ -30,12 +32,14 @@ __attribute__((visibility("hidden")))
     _Bool _isBusinessOwned;
     _Bool _useGallery;
     struct {
+        unsigned int has_dateAdded:1;
         unsigned int has_displayFullPhotoInline:1;
         unsigned int has_displayFullScreenPhotoGallery:1;
         unsigned int has_highQuality:1;
         unsigned int has_isBusinessOwned:1;
         unsigned int has_useGallery:1;
         unsigned int read_unknownFields:1;
+        unsigned int read_attribution:1;
         unsigned int read_author:1;
         unsigned int read_caption:1;
         unsigned int read_joeColor:1;
@@ -46,46 +50,16 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
 + (id)captionedPhotosForPlaceData:(id)arg1;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(retain, nonatomic) GEOPDJoeColor *joeColor;
-@property(readonly, nonatomic) _Bool hasJoeColor;
-@property(nonatomic) _Bool hasDisplayFullScreenPhotoGallery;
-@property(nonatomic) _Bool displayFullScreenPhotoGallery;
-@property(nonatomic) _Bool hasIsBusinessOwned;
-@property(nonatomic) _Bool isBusinessOwned;
-@property(nonatomic) _Bool hasHighQuality;
-@property(nonatomic) _Bool highQuality;
-@property(nonatomic) _Bool hasUseGallery;
-@property(nonatomic) _Bool useGallery;
-@property(nonatomic) _Bool hasDisplayFullPhotoInline;
-@property(nonatomic) _Bool displayFullPhotoInline;
-@property(retain, nonatomic) GEOPDPhoto *photo;
-@property(readonly, nonatomic) _Bool hasPhoto;
-@property(retain, nonatomic) NSString *licenseUrl;
-@property(readonly, nonatomic) _Bool hasLicenseUrl;
-@property(retain, nonatomic) NSString *licenseDescription;
-@property(readonly, nonatomic) _Bool hasLicenseDescription;
-@property(retain, nonatomic) NSString *author;
-@property(readonly, nonatomic) _Bool hasAuthor;
-@property(retain, nonatomic) NSString *caption;
-@property(readonly, nonatomic) _Bool hasCaption;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

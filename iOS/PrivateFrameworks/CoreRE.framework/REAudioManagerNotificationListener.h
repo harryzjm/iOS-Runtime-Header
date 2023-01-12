@@ -9,12 +9,13 @@
 __attribute__((visibility("hidden")))
 @interface REAudioManagerNotificationListener : NSObject
 {
-    struct AudioManager_AVAudioEngine *_owner;
+    void *_owner;
 }
 
 - (void)engineInterrupted:(id)arg1;
 - (void)sessionInterrupted:(id)arg1;
 - (id)initWithOwner:(void *)arg1;
+- (void)stop;
 
 @end
 

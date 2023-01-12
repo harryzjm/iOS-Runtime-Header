@@ -6,19 +6,26 @@
 
 #import <PhotoLibraryServices/PLAssetsdLibraryInternalServiceProtocol-Protocol.h>
 
-@class NSString;
+@class NSString, PLAssetsdConnectionAuthorization;
 
 @interface PLAssetsdLibraryInternalService <PLAssetsdLibraryInternalServiceProtocol>
 {
+    PLAssetsdConnectionAuthorization *_connectionAuthorization;
 }
 
+- (void).cxx_destruct;
+- (unsigned long long)_assetCountInManagedObjectContext:(id)arg1 forSyncedAssets:(_Bool)arg2;
+- (void)metricsForLibraryAtURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)coreAnalyticsLibrarySummaryDataWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)forceRunBackgroundJobsOnLibraryPath:(id)arg1 priority:(int)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setWidgetTimelineGeneratedForDisplaySize:(struct CGSize)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)resetLimitedLibraryAccessForApplication:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)setFetchFilterWithAssets:(id)arg1 forApplication:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)setFetchFilterWithAssets:(id)arg1 forApplication:(id)arg2 withAuditToken:(CDStruct_4c969caf)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)invalidateBehavioralScoreOnAllAssetsWithReply:(CDUnknownBlockType)arg1;
 - (void)deleteiTunesSyncedContentWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)backgroundJobServiceRemoveAllBundleRecordsFromProcessingSet;
 - (void)getBackgroundJobServiceBundlesInQueueDictionaryWithReply:(CDUnknownBlockType)arg1;
+- (void)getBackgroundJobServiceStatusCenterDumpWithReply:(CDUnknownBlockType)arg1;
 - (void)getBackgroundJobServiceStateWithReply:(CDUnknownBlockType)arg1;
 - (void)registerBackgroundJobServiceIfNecessaryOnLibraryPath:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)invalidateReverseLocationDataOnAllAssetsWithReply:(CDUnknownBlockType)arg1;
@@ -34,6 +41,7 @@
 - (void)getSizeOfResourcesToUploadByCPLWithReply:(CDUnknownBlockType)arg1;
 - (void)getLibrarySizesFromDB:(_Bool)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getAssetCountsWithReply:(CDUnknownBlockType)arg1;
+- (id)initWithLibraryServicesManager:(id)arg1 connectionAuthorization:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -6,8 +6,11 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtCV7VFXCore17ParticleIntegrate6System : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *positionQuery;
 }
 
 @end

@@ -24,7 +24,8 @@
         unsigned int _directionState:2;
         unsigned int _drawsOutside:1;
         unsigned int _standaloneAttachment:1;
-        unsigned int _reserved:28;
+        unsigned int _wrappedByCluster:1;
+        unsigned int _reserved:27;
     } _flags;
 }
 

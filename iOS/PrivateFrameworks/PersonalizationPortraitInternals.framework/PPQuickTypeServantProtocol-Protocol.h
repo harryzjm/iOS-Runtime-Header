@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, PPQuickTypeExplanationSet, PPQuickTypeQuery;
+@class NSArray, PPBaseFeedback, PPQuickTypeExplanationSet, PPQuickTypeQuery;
 
 @protocol PPQuickTypeServantProtocol
 - (NSArray *)quickTypeItemsWithQuery:(PPQuickTypeQuery *)arg1 limit:(unsigned long long)arg2 explanationSet:(PPQuickTypeExplanationSet *)arg3;
+
+@optional
+- (void)registerFeedback:(PPBaseFeedback *)arg1;
 @end
 

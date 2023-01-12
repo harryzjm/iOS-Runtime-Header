@@ -23,7 +23,7 @@
 - (id)additionalBridgeSectionIDsForSectionID:(id)arg1;
 - (id)watchVersionThatUsesUserInfoForContextForSectionID:(id)arg1;
 - (unsigned long long)legacyMapLocationForSectionID:(id)arg1;
-- (_Bool)applyWhitelistToChildSections:(id)arg1;
+- (_Bool)applyAllowListToChildSections:(id)arg1;
 - (_Bool)hasSectionIDDisplayedCriticalBulletins:(id)arg1;
 - (_Bool)hasSectionIDOptedOutOfNotificationTuning:(id)arg1;
 - (_Bool)hasSectionIDOptedOutOfWaitForUserIdle:(id)arg1;

@@ -15,11 +15,11 @@
 }
 
 + (long long)_keyboardTypeFromType:(long long)arg1;
-+ (id)_convertTextField:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 @property(readonly, nonatomic) AMSDialogRequest *request; // @synthesize request=_request;
 - (id)_createIOSViewControllerFromRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)cancel;
 - (id)present;
 - (id)initWithRequest:(id)arg1 presentingViewController:(id)arg2;
 

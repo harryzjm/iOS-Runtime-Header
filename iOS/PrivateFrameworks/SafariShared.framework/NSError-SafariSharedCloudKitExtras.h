@@ -7,8 +7,16 @@
 #import <Foundation/NSError.h>
 
 @interface NSError (SafariSharedCloudKitExtras)
+@property(readonly, nonatomic) _Bool safari_isUnrecoverableCloudKitError;
+@property(readonly, nonatomic) NSError *safari_errorByAddingRequestUUIDInPrivacyPreservingUserInfo;
+- (id)safari_errorByAddingCloudKitPrivacyPreservingUserInfoForItemID:(id)arg1;
+- (_Bool)_safari_isOrContainsCloudKitErrorOfCodes:(id)arg1 checkInternalErrorCode:(_Bool)arg2;
+@property(readonly, nonatomic) _Bool safari_isCloudKitMissingZoneError;
+@property(readonly, nonatomic) _Bool safari_isCloudKitNonExistentRecordError;
+@property(readonly, nonatomic) _Bool safari_isCloudKitBatchTooLargeError;
+@property(readonly, nonatomic) _Bool safari_isInCloudKitErrorDomain;
 - (_Bool)safari_errorOrAnyPartialErrorHasCloudKitInternalErrorCode:(long long)arg1;
-- (_Bool)safari_errorOrAnyPartialErrorHasCloudKitErrorCode:(long long)arg1;
+- (_Bool)safari_hasOrContainsErrorWithCloudKitErrorCode:(long long)arg1;
 - (void)_safari_enumerateCloudKitErrorsWithBlock:(CDUnknownBlockType)arg1;
 @end
 

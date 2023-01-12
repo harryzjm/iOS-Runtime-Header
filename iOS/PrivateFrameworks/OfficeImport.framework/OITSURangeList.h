@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface OITSURangeList : NSObject
 {
-    struct vector<_NSRange, std::__1::allocator<_NSRange>> mRangeList;
+    struct vector<_NSRange, std::allocator<_NSRange>> mRangeList;
 }
 
 - (id).cxx_construct;

@@ -12,8 +12,8 @@
 
 - (id)recordViewsWithRelatedScopedIdentifier:(id)arg1 class:(Class)arg2;
 - (id)recordViewWithScopedIdentifier:(id)arg1;
-- (id)resourceOfType:(unsigned long long)arg1 forRecordWithScopedIdentifier:(id)arg2 error:(id *)arg3;
 - (id)resourceOfType:(unsigned long long)arg1 forRecordWithScopedIdentifier:(id)arg2 recordClass:(Class *)arg3 error:(id *)arg4;
+- (id)resourceOfType:(unsigned long long)arg1 forRecordWithScopedIdentifier:(id)arg2 record:(id *)arg3 error:(id *)arg4;
 - (id)localChangeBatchFromCloudBatch:(id)arg1 usingMapping:(id)arg2 withError:(id *)arg3;
 - (id)compactedBatchFromExpandedBatch:(id)arg1;
 - (unsigned long long)countOfRecordsWithRelatedScopedIdentifier:(id)arg1 class:(Class)arg2;

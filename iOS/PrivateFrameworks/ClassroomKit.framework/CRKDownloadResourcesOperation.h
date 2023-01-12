@@ -9,19 +9,25 @@
 #import <ClassroomKit/NSURLSessionDownloadDelegate-Protocol.h>
 
 @class NSArray, NSMutableArray, NSString, NSURLCredential, NSURLSession;
+@protocol CRKIdentity;
 
 @interface CRKDownloadResourcesOperation : CATOperation <NSURLSessionDownloadDelegate>
 {
-    NSURLCredential *mCredential;
     NSURLSession *mSession;
     NSArray *mDownloadTasks;
     NSMutableArray *mFileURLs;
     NSMutableArray *mCompletedUnitCounts;
+    NSURLCredential *_credential;
     NSArray *_resources;
+    id <CRKIdentity> _clientIdentity;
+    NSArray *_trustedCertificates;
 }
 
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSArray *trustedCertificates; // @synthesize trustedCertificates=_trustedCertificates;
+@property(readonly, nonatomic) id <CRKIdentity> clientIdentity; // @synthesize clientIdentity=_clientIdentity;
 @property(readonly, copy, nonatomic) NSArray *resources; // @synthesize resources=_resources;
+@property(readonly, nonatomic) NSURLCredential *credential; // @synthesize credential=_credential;
 - (void)URLSession:(id)arg1 didBecomeInvalidWithError:(id)arg2;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (void)finalizeDownloadedItem:(id)arg1 forRequestURL:(id)arg2;

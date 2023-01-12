@@ -9,18 +9,18 @@
 #import <SafariServices/ASAccountAuthenticationModificationControllerDelegate-Protocol.h>
 #import <SafariServices/ASAccountAuthenticationModificationControllerPresentationContextProviding-Protocol.h>
 #import <SafariServices/PSStateRestoration-Protocol.h>
+#import <SafariServices/SFPasswordOtpauthQRCodeScannerViewControllerDelegate-Protocol.h>
 #import <SafariServices/UITextFieldDelegate-Protocol.h>
 #import <SafariServices/_ASAccountAuthenticationModificationExtensionManagerObserver-Protocol.h>
 #import <SafariServices/_SFTableViewDiffableDataSourceDelegate-Protocol.h>
 
-@class ASAccountAuthenticationModificationController, NSExtension, NSObject, NSString, SFEditableTableViewCell, SFSafariViewController, SFSecurityRecommendationInfoCell, UIBarButtonItem, UITableViewCell, WBSPasswordWarning, WBSSavedPassword, _SFTableViewDiffableDataSource;
+@class ASAccountAuthenticationModificationController, NSArray, NSExtension, NSObject, NSString, NSTimer, SFEditableTableViewCell, SFSafariViewController, SFSecurityRecommendationInfoCell, UIAlertController, UIBarButtonItem, UITableViewCell, UITableViewHeaderFooterView, WBSPasswordWarning, WBSSavedPassword, _SFTableViewDiffableDataSource;
 @protocol OS_dispatch_queue, SFPasswordDetailViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SFPasswordDetailViewController : UITableViewController <_ASAccountAuthenticationModificationExtensionManagerObserver, ASAccountAuthenticationModificationControllerDelegate, ASAccountAuthenticationModificationControllerPresentationContextProviding, UITextFieldDelegate, _SFTableViewDiffableDataSourceDelegate, PSStateRestoration>
+@interface SFPasswordDetailViewController : UITableViewController <_ASAccountAuthenticationModificationExtensionManagerObserver, ASAccountAuthenticationModificationControllerDelegate, ASAccountAuthenticationModificationControllerPresentationContextProviding, UITextFieldDelegate, _SFTableViewDiffableDataSourceDelegate, SFPasswordOtpauthQRCodeScannerViewControllerDelegate, PSStateRestoration>
 {
     WBSSavedPassword *_savedPassword;
-    _Bool _hidesSensitiveInformation;
     unsigned long long _options;
     UIBarButtonItem *_editBarButtonItem;
     UIBarButtonItem *_shareBarButtonItem;
@@ -32,11 +32,17 @@ __attribute__((visibility("hidden")))
     NSString *_userForEditing;
     NSString *_passwordForEditing;
     UITableViewCell *_changePasswordOnWebsiteCell;
+    UITableViewCell *_setupTOTPCodeCell;
+    UITableViewHeaderFooterView *_totpFooterView;
     _SFTableViewDiffableDataSource *_tableViewDiffableDataSource;
     NSObject<OS_dispatch_queue> *_diffableDataSourceQueue;
     SFSecurityRecommendationInfoCell *_securityRecommendationInfoCell;
     WBSPasswordWarning *_passwordWarning;
     SFSafariViewController *_changePasswordSafariViewController;
+    NSTimer *_TOTPTimer;
+    _Bool _didAcceptTOTPQRCode;
+    UIAlertController *_secretEntryAlertController;
+    NSArray *_TOTPGenerators;
     UITableViewCell *_upgradeToSignInWithAppleCell;
     UITableViewCell *_changeToStrongPasswordCell;
     NSString *_rulesForStrongPasswordChange;
@@ -46,6 +52,8 @@ __attribute__((visibility("hidden")))
     _Bool _completedUpgradeToStrongPassword;
     _Bool _completedUpgradeToSignInWithApple;
     ASAccountAuthenticationModificationController *_accountAuthenticationModificationController;
+    _Bool _didShowAccountOptionsHeaderText;
+    long long _accountUpgradeOriginType;
     _Bool _showsChangePasswordControllerOnAppearance;
     id <SFPasswordDetailViewControllerDelegate> _delegate;
 }
@@ -53,6 +61,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) _Bool showsChangePasswordControllerOnAppearance; // @synthesize showsChangePasswordControllerOnAppearance=_showsChangePasswordControllerOnAppearance;
 @property(nonatomic) __weak id <SFPasswordDetailViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)QRCodeScannerViewController:(id)arg1 didScanQRCodeWithURLValue:(id)arg2;
+- (_Bool)_shouldShowAccountOptionsHeader;
 - (void)_showConfirmationToDeletePassword;
 - (void)accountModificationExtensionManagerExtensionListDidChange:(id)arg1;
 - (id)presentationAnchorForAccountAuthenticationModificationController:(id)arg1;
@@ -64,6 +74,7 @@ __attribute__((visibility("hidden")))
 - (void)_initiateUpgradeToSignInWithApple;
 - (void)_updateAccountModificationOptions;
 - (_Bool)_completedUpgrade;
+- (_Bool)dataSource:(id)arg1 canEditRowAtIndexPath:(id)arg2;
 - (void)dataSource:(id)arg1 commitEditingStyle:(long long)arg2 forItemIdentifier:(id)arg3;
 - (id)dataSource:(id)arg1 footerTextForSection:(long long)arg2;
 - (id)dataSource:(id)arg1 headerTextForSection:(long long)arg2;
@@ -71,6 +82,17 @@ __attribute__((visibility("hidden")))
 - (void)safari_sharePassword:(id)arg1;
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (_Bool)canBecomeFirstResponder;
+- (void)_openURLInSafariViewController:(id)arg1;
+- (id)_totpFooterStringWithGenerator:(id)arg1 font:(id)arg2;
+- (void)_deleteTOTPGeneratorWithConfirmation:(id)arg1;
+- (id)_newSecretEntryAlertController;
+- (void)_updateCachedTOTPGenerators;
+- (void)_deleteTOTPGenerator:(id)arg1;
+- (void)_addTOTPGenerator:(id)arg1;
+- (id)_formattedCodeFromGenerator:(id)arg1 font:(id)arg2;
+- (void)_updateTOTPCell:(id)arg1 generator:(id)arg2;
+- (void)_stopTOTPTimer;
+- (void)_startTOTPTimerIfNeeded;
 - (void)_updateWarningForSavedPassword;
 - (id)_warningTitleForPassword;
 - (void)_savePasswordAndFinishEditing;
@@ -78,12 +100,15 @@ __attribute__((visibility("hidden")))
 - (long long)_sectionTypeForSection:(long long)arg1;
 - (id)_lastModifiedDateString;
 - (void)_updateMenuItems;
+- (void)safari_copyOneTimeCode:(id)arg1;
+- (void)safari_copyWebsite:(id)arg1;
 - (void)safari_copyPassword:(id)arg1;
 - (void)safari_copyUserName:(id)arg1;
 - (void)_willHideUIMenuController:(id)arg1;
 - (void)_textFieldChanged:(id)arg1;
 - (_Bool)textFieldShouldReturn:(id)arg1;
 - (void)textFieldDidEndEditing:(id)arg1;
+- (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (_Bool)tableView:(id)arg1 shouldIndentWhileEditingRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
@@ -97,20 +122,24 @@ __attribute__((visibility("hidden")))
 - (void)_configurePasswordCell:(id)arg1;
 - (void)_configureUserCell:(id)arg1;
 - (id)_editableCellWithCell:(id)arg1;
+- (id)_subtitleStringForStrongPasswordUpgrade;
+- (id)_subtitleStringForSignInWithAppleUpgrade;
 - (id)_securityRecommendationSubtitleString;
 - (void)_configureSecurityRecommendationInfoCell;
+- (void)_addTOTPButtonToAccountOptionsSectionInSnapshot:(id)arg1;
+- (void)_addAccountUpgradeItemsForSectionType:(long long)arg1 toSnapshot:(id)arg2;
 - (void)_reloadDiffableDataSourceAnimated:(_Bool)arg1;
 - (void)_reloadDiffableDataSourceOnInternalQueueAnimated:(_Bool)arg1;
 - (id)_cellForIdentifier:(id)arg1 indexPath:(id)arg2;
-- (void)_appWillResignActive:(id)arg1;
-- (void)_appDidBecomeActive:(id)arg1;
 - (void)dealloc;
 - (void)_setEditing:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)_shareBarButtonItemTapped:(id)arg1;
 - (void)_doneBarButtonItemTapped:(id)arg1;
 - (void)_cancelBarButtonItemTapped:(id)arg1;
 - (void)_editBarButtonItemTapped:(id)arg1;
+- (void)_openChangePasswordURLInWebBrowser;
 - (void)_showChangePasswordSafariViewController;
+- (id)_changePasswordURL;
 - (void)_passwordStoreDidUpdate;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidDisappear:(_Bool)arg1;

@@ -18,7 +18,8 @@ __attribute__((visibility("hidden")))
 
 + (id)sharedPropertiesMapTable;
 + (id)accessQueue;
-+ (id)_propertiesForClientIdentifier:(id)arg1 bag:(id)arg2 URLKnownToBeTrusted:(_Bool)arg3;
++ (id)_propertiesForClientIdentifier:(id)arg1 account:(id)arg2 bag:(id)arg3 URLKnownToBeTrusted:(_Bool)arg4;
++ (id)propertiesForStorefrontsTask:(id)arg1;
 + (id)propertiesForRatingsTask:(id)arg1;
 + (id)propertiesForMediaTask:(id)arg1;
 + (id)propertiesForMarketingItemTask:(id)arg1;
@@ -26,7 +27,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) id <AMSMediaTokenServiceProtocol> tokenService; // @synthesize tokenService=_tokenService;
 @property(readonly, nonatomic) AMSURLSession *session; // @synthesize session=_session;
 - (void)dealloc;
-- (id)_initWithClientIdentifier:(id)arg1 bag:(id)arg2 URLKnownToBeTrusted:(_Bool)arg3;
+- (id)_initWithClientIdentifier:(id)arg1 account:(id)arg2 bag:(id)arg3 URLKnownToBeTrusted:(_Bool)arg4;
 
 @end
 

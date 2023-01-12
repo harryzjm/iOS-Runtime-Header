@@ -7,7 +7,7 @@
 #import <SystemStatus/STMutableStatusDomainData-Protocol.h>
 #import <SystemStatus/STMutableStatusDomainDataDifferencing-Protocol.h>
 
-@class NSSet, NSString, STMutableActivityAttributionCatalog;
+@class NSArray, NSSet, NSString, STMutableActivityAttributionCatalog;
 
 @interface STMutableMediaStatusDomainData <STMutableStatusDomainDataDifferencing, STMutableStatusDomainData>
 {
@@ -16,15 +16,18 @@
 @property(readonly, copy, nonatomic) STMutableActivityAttributionCatalog *attributionCatalog;
 - (_Bool)applyDiff:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(copy, nonatomic) NSSet *cameraCaptureAttributions; // @dynamic cameraCaptureAttributions;
 - (void)removeCameraCaptureAttribution:(id)arg1;
 - (void)addCameraCaptureAttribution:(id)arg1;
-@property(copy, nonatomic) NSSet *cameraCaptureAttributions; // @dynamic cameraCaptureAttributions;
+@property(copy, nonatomic) NSArray *cameraCaptureAttributionList; // @dynamic cameraCaptureAttributionList;
+@property(copy, nonatomic) NSSet *mutedAudioRecordingAttributions; // @dynamic mutedAudioRecordingAttributions;
 - (void)removeMutedAudioRecordingAttribution:(id)arg1;
 - (void)addMutedAudioRecordingAttribution:(id)arg1;
-@property(copy, nonatomic) NSSet *mutedAudioRecordingAttributions; // @dynamic mutedAudioRecordingAttributions;
+@property(copy, nonatomic) NSArray *mutedAudioRecordingAttributionList; // @dynamic mutedAudioRecordingAttributionList;
+@property(copy, nonatomic) NSSet *audioRecordingAttributions; // @dynamic audioRecordingAttributions;
 - (void)removeAudioRecordingAttribution:(id)arg1;
 - (void)addAudioRecordingAttribution:(id)arg1;
-@property(copy, nonatomic) NSSet *audioRecordingAttributions; // @dynamic audioRecordingAttributions;
+@property(copy, nonatomic) NSArray *audioRecordingAttributionList; // @dynamic audioRecordingAttributionList;
 - (id)initWithAttributionCatalog:(id)arg1;
 
 // Remaining properties

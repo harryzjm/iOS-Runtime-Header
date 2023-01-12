@@ -8,7 +8,7 @@
 
 @interface GKGridGraphNode
 {
-    struct GKCGridGraphNode *_cGridGraphNode;
+    void *_cGridGraphNode;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -21,8 +21,8 @@
 @property(readonly, nonatomic) MISSING_TYPE *gridPosition;
 - (id)init;
 - (void)deleteCGraphNode;
-- (struct GKCGraphNode *)makeCGraphNode;
-- (struct GKCGridGraphNode *)cGridGraphNode;
+- (void *)makeCGraphNode;
+- (void *)cGridGraphNode;
 
 @end
 

@@ -6,9 +6,19 @@
 
 #import <SPOwner/SPOwnerSessionProtocol-Protocol.h>
 
-@class NSDateInterval, NSUUID, SPBeacon;
+@class NSData, NSDate, NSDateInterval, NSString, NSUUID, SPBeacon;
 
 @protocol SPOwnerSessionPrivateProtocol <SPOwnerSessionProtocol>
+@property(copy, nonatomic) CDUnknownBlockType maintainedUnknownBeaconsChangedBlock;
+@property(copy, nonatomic) CDUnknownBlockType maintainedBeaconsChangedBlock;
+- (void)requestLiveLocationForFriend:(NSString *)arg1 completion:(void (^)(NSString *))arg2;
+- (void)requestLiveLocationForUUID:(NSUUID *)arg1 completion:(void (^)(NSString *))arg2;
+- (void)unregisterDarwinNotificationName:(NSString *)arg1;
+- (void)registerDarwinNotificationName:(NSString *)arg1 block:(void (^)(void))arg2;
+- (oneway void)fakeClassicPairingWithMACAddress:(NSData *)arg1 completion:(void (^)(NSError *))arg2;
+- (oneway void)forceKeySyncForBeaconUUID:(NSUUID *)arg1 lastObservationDate:(NSDate *)arg2 lastObservationIndex:(unsigned long long)arg3 completion:(void (^)(NSError *))arg4;
+- (void)sendUnregisterIntentWithCompletion:(void (^)(NSError *))arg1;
+- (void)sendRegisterIntentWithCompletion:(void (^)(double, NSError *))arg1;
 - (void)waitForBeaconStoreAvailableWithCompletion:(void (^)(void))arg1;
 - (void)beaconStoreStatusWithCompletion:(void (^)(_Bool))arg1;
 - (void)rawSearchResultsForBeacon:(SPBeacon *)arg1 dateInterval:(NSDateInterval *)arg2 completion:(void (^)(NSArray *))arg3;

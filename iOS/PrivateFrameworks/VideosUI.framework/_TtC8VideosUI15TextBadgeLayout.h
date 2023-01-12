@@ -10,9 +10,9 @@
 {
     MISSING_TYPE *type;
     MISSING_TYPE *size;
+    MISSING_TYPE *kind;
     MISSING_TYPE *textLayout;
     MISSING_TYPE *imageLayout;
-    MISSING_TYPE *kind;
 }
 
 @end

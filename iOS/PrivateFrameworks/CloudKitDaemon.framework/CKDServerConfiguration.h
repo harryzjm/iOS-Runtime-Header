@@ -23,7 +23,7 @@
 @property(retain, nonatomic) NSDate *expiry; // @synthesize expiry=_expiry;
 - (id)dictionaryPropertyEncoding;
 - (id)initWithPropertyDictionary:(id)arg1;
-- (id)iCloudHostnames;
+- (id)iCloudAppSiteAssociationData;
 - (id)chunkProfileConfigurationDefaultProfilePolicy:(id)arg1;
 - (id)chunkProfileConfigurationFileExtensionToProfileMap:(id)arg1;
 - (id)chunkProfileConfigurationVersion:(id)arg1;
@@ -43,6 +43,9 @@
 - (id)flowControlMaximumThrottleTime:(id)arg1;
 - (id)flowControlRegeneration:(id)arg1;
 - (id)flowControlBudget:(id)arg1;
+- (_Bool)allowCloudMediaProcessingOffloadForGM:(id)arg1;
+- (_Bool)allowCloudMediaProcessingOffloadForSeed:(id)arg1;
+- (id)cloudMediaProcessingPublicKeyURLString:(id)arg1;
 - (id)transcodeServerPublicKeyURLs:(id)arg1;
 - (long long)tokenRegisterDays:(id)arg1;
 - (_Bool)applicationWithBundleID:(id)arg1 canSyncUsingVersion:(id)arg2 forContainerID:(id)arg3;

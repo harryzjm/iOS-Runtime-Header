@@ -15,6 +15,7 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic, readonly) struct CGSize intrinsicContentSize;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;

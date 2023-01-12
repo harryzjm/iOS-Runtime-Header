@@ -11,6 +11,8 @@
 - (id)uns_notificationSource;
 - (void)uns_setPropertiesFromTopicRecord:(id)arg1;
 - (void)uns_setPropertiesFromSourceSettingsDescription:(id)arg1;
+- (long long)uns_notificationSettingForBBSectionAnnounceSetting:(long long)arg1;
+- (long long)uns_BBSectionAnnounceSettingForUNNotificationSetting:(long long)arg1;
 - (long long)uns_BBSectionInfoSettingForUNNotificationSetting:(long long)arg1;
 - (long long)uns_notificationSettingForBBSectionInfoSetting:(long long)arg1;
 - (id)uns_notificationSettings;

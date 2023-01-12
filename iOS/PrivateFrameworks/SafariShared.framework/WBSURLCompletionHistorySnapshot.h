@@ -15,16 +15,16 @@
 {
     NSObject<OS_dispatch_queue> *_completionDatabaseQueue;
     WBSURLCompletionDatabase *_completionDatabase;
-    unique_ptr_91c700ae _items;
+    unique_ptr_5d7d1a42 _items;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)fakeBookmarkMatchDataWithURLString:(id)arg1 title:(id)arg2 shouldPreload:(_Bool)arg3;
 - (void)enumerateMatchDataForTypedStringHint:(id)arg1 options:(unsigned long long)arg2 withBlock:(CDUnknownBlockType)arg3;
-- (void)getBestMatchesForTypedString:(id)arg1 limit:(unsigned long long)arg2 forQueryID:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)getBestMatchesForTypedString:(id)arg1 limit:(unsigned long long)arg2 forQueryID:(long long)arg3 withSearchParameters:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)_matchSnapshotForCompletionMatch:(id)arg1;
-- (id)initWithItems:(unique_ptr_91c700ae)arg1;
+- (id)initWithItems:(unique_ptr_5d7d1a42)arg1;
 - (id)init;
 
 // Remaining properties

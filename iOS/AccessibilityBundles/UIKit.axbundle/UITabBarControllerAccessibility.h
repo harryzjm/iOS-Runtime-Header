@@ -11,7 +11,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_updateOffscreenStatus:(_Bool)arg1 withFocusAnimationCoordinator:(id)arg2;
 - (id)_accessibilitySpeakThisViewController;
 
 @end

@@ -12,7 +12,6 @@
 {
 }
 
-+ (id)defaultSourceForRepresentation:(id)arg1;
 + (_Bool)canLowercaseTypeDescription;
 + (id)countDescription;
 + (id)pluralTypeDescription;
@@ -23,6 +22,7 @@
 + (id)ownedTypes;
 + (_Bool)supportedTypeMustBeDeterminedByInstance:(id)arg1;
 + (id)propertyBuilders;
+- (id)defaultSourceForRepresentation:(id)arg1;
 - (_Bool)canGenerateRepresentationForType:(id)arg1;
 - (id)generateFileRepresentationForType:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)generateObjectRepresentationForClass:(Class)arg1 options:(id)arg2 error:(id *)arg3;

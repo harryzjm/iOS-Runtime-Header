@@ -21,11 +21,11 @@ __attribute__((visibility("hidden")))
     UIScrollView *_previewingScrollView;
     NSTimer *_previewingTouchTimer;
     unsigned long long _spatialFocusUpdateCount;
+    _Bool _persistFastScrollingPreviewThroughReset;
     _Bool _enabled;
     id <_UIFocusFastScrollingRecognizerDelegate> _delegate;
 }
 
-+ (id)recognizerWithPanGesture:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 @property(nonatomic) __weak id <_UIFocusFastScrollingRecognizerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -34,13 +34,15 @@ __attribute__((visibility("hidden")))
 - (void)focusEnginePanGesture:(id)arg1 touchMovedToDigitizerLocation:(struct CGPoint)arg2;
 - (void)focusEnginePanGesture:(id)arg1 touchBeganAtDigitizerLocation:(struct CGPoint)arg2;
 - (void)_deactivatePreviewingScrollViewIfNecessary;
-- (void)_activatePreviewingScrollView;
-- (void)_activatePreviewingScrollViewAfterDelay;
+- (void)_activatePreviewingScrollViewForScrollingStyle:(long long)arg1 emphasisAnimation:(_Bool)arg2 overrideIndexDisplayMode:(_Bool)arg3;
+- (void)_activatePreviewingScrollViewForEdgeGesture;
+- (void)_activatePreviewingScrollViewForEdgeGestureAfterDelay;
 - (void)_notifyDelegateWithScrollView:(id)arg1 scrollingStyle:(long long)arg2 heading:(unsigned long long)arg3;
-- (_Bool)_scrollViewIsEligibleForFastScrolling:(id)arg1 alongHeading:(unsigned long long)arg2;
+- (_Bool)_scrollViewIsEligibleForFastScrolling:(id)arg1 alongHeading:(unsigned long long)arg2 withScrollingStyle:(long long)arg3;
 - (id)_scrollViewsContainingCurrentlyFocusedItem;
 - (_Bool)_attemptToImmediatelyRecognizeEdgeGesture;
-- (id)_deepestEligibleScrollViewContainingFocusedItem:(unsigned long long)arg1;
+- (id)_deepestEligibleScrollViewContainingFocusedItem:(unsigned long long)arg1 withScrollingStyle:(long long)arg2;
+- (_Bool)_canFastScrollWithEdgeSwipe;
 - (_Bool)_swipeSequenceCanBeginFastScrolling:(id)arg1;
 - (void)_updateActiveSwipeSequencesForScrollViews:(id)arg1;
 - (unsigned long long)_bestHeadingForAccumulator:(struct CGVector)arg1;

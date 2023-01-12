@@ -15,12 +15,13 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)earlyWakeUpWasNotifiedRemotely;
 - (void)wakeupEventDetected:(id)arg1;
 - (void)wakeDetectionEventDue;
-- (_Bool)_inDetectionWindow;
 - (_Bool)isWakeDetectionDisabled;
 - (id)determineNextState;
 - (void)updateState;
+@property(readonly, nonatomic) _Bool schedulesWakeDetection;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

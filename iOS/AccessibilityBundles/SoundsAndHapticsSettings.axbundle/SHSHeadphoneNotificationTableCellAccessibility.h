@@ -11,7 +11,15 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityDataSeries;
+- (id)_accessibilityChartSummary;
+- (id)_accessibilityDataSeriesName;
+- (id)accessibilityChartDescriptor;
+- (void)_accessibilityLoadChartInformation;
 - (void)layoutSubviews;
+- (_Bool)_accessibilitySupportsChartsV2;
+- (unsigned long long)accessibilityTraits;
+- (id)accessibilityLabel;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

@@ -18,19 +18,19 @@
     MLParameterContainer *_parameterContainer;
     unsigned long long _numDimensions;
     shared_ptr_0841df90 _mmappedModel;
-    vector_ebb6ef3e _classesByString;
-    vector_bbba3654 _classesByInt;
-    vector_aab22ae2 _cachedModel;
+    vector_bfe5b09a _classesByString;
+    vector_1ee95920 _classesByInt;
+    vector_ce5fcef0 _cachedModel;
 }
 
-+ (id)loadModelFromCompiledArchive:(struct _MLModelInputArchiver *)arg1 modelVersionInfo:(id)arg2 compilerVersionInfo:(id)arg3 configuration:(id)arg4 error:(id *)arg5;
++ (id)loadModelFromCompiledArchive:(void *)arg1 modelVersionInfo:(id)arg2 compilerVersionInfo:(id)arg3 configuration:(id)arg4 error:(id *)arg5;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(nonatomic) vector_aab22ae2 cachedModel; // @synthesize cachedModel=_cachedModel;
+@property(nonatomic) vector_ce5fcef0 cachedModel; // @synthesize cachedModel=_cachedModel;
 @property(nonatomic) shared_ptr_0841df90 mmappedModel; // @synthesize mmappedModel=_mmappedModel;
 @property(nonatomic) unsigned long long numDimensions; // @synthesize numDimensions=_numDimensions;
-@property(nonatomic) vector_bbba3654 classesByInt; // @synthesize classesByInt=_classesByInt;
-@property(nonatomic) vector_ebb6ef3e classesByString; // @synthesize classesByString=_classesByString;
+@property(nonatomic) vector_1ee95920 classesByInt; // @synthesize classesByInt=_classesByInt;
+@property(nonatomic) vector_bfe5b09a classesByString; // @synthesize classesByString=_classesByString;
 @property(retain, nonatomic) MLParameterContainer *parameterContainer; // @synthesize parameterContainer=_parameterContainer;
 @property(nonatomic) _Bool personalization; // @synthesize personalization=_personalization;
 @property(nonatomic) _Bool continueWithUpdate; // @synthesize continueWithUpdate=_continueWithUpdate;
@@ -47,7 +47,7 @@
 - (void)setUpdateProgressHandlers:(id)arg1 dispatchQueue:(id)arg2;
 - (id)updateParameters;
 - (id)loadParameterDescriptionsAndContainerFromConfiguration:(id)arg1 modelDescription:(id)arg2 error:(id *)arg3;
-- (id)initWithCompiledArchive:(struct _MLModelInputArchiver *)arg1 configuration:(id)arg2 error:(id *)arg3;
+- (id)initWithCompiledArchive:(void *)arg1 configuration:(id)arg2 error:(id *)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

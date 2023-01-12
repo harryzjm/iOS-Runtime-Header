@@ -11,12 +11,13 @@
 #import <SafariServices/SFPasswordBreachToggleCellDelegate-Protocol.h>
 #import <SafariServices/SFPasswordDetailViewControllerDelegate-Protocol.h>
 #import <SafariServices/_ASAccountAuthenticationModificationExtensionManagerObserver-Protocol.h>
+#import <SafariServices/_SFTableLinkableFooterViewDelegate-Protocol.h>
 #import <SafariServices/_SFTableViewDiffableDataSourceDelegate-Protocol.h>
 
-@class ASAccountAuthenticationModificationController, NSArray, NSObject, NSString, SFHighPriorityRecommendationData, SFSafariViewController, UIActivityIndicatorView, WBSAutoFillQuirksManager, WBSPasswordGenerationManager, WBSPasswordWarningManager, WBSSavedPassword, WBSSavedPasswordStore, _SFTableViewDiffableDataSource;
+@class ASAccountAuthenticationModificationController, NSArray, NSObject, NSString, SFHighPriorityRecommendationData, SFSafariViewController, UIActivityIndicatorView, WBSAutoFillQuirksManager, WBSPasswordGenerationManager, WBSPasswordWarningManager, WBSSavedPassword, WBSSavedPasswordStore, _SFTableLinkableFooterView, _SFTableViewDiffableDataSource;
 @protocol OS_dispatch_queue, _SFPasswordAuditingViewControllerDelegate;
 
-@interface _SFPasswordAuditingViewController <SFPasswordBreachToggleCellDelegate, SFHighPriorityRecommendationDataDelegate, SFPasswordDetailViewControllerDelegate, _SFTableViewDiffableDataSourceDelegate, _ASAccountAuthenticationModificationExtensionManagerObserver, ASAccountAuthenticationModificationControllerDelegate, ASAccountAuthenticationModificationControllerPresentationContextProviding, PSStateRestoration>
+@interface _SFPasswordAuditingViewController <SFPasswordBreachToggleCellDelegate, SFHighPriorityRecommendationDataDelegate, SFPasswordDetailViewControllerDelegate, _SFTableViewDiffableDataSourceDelegate, _ASAccountAuthenticationModificationExtensionManagerObserver, ASAccountAuthenticationModificationControllerDelegate, ASAccountAuthenticationModificationControllerPresentationContextProviding, _SFTableLinkableFooterViewDelegate, PSStateRestoration>
 {
     WBSAutoFillQuirksManager *_autoFillQuirksManager;
     WBSSavedPasswordStore *_savedPasswordStore;
@@ -32,6 +33,7 @@
     WBSPasswordGenerationManager *_passwordGenerator;
     SFHighPriorityRecommendationData *_passwordDataForCurrentUpgrade;
     ASAccountAuthenticationModificationController *_accountAuthenticationModificationController;
+    _SFTableLinkableFooterView *_passwordBreachFooterView;
     id <_SFPasswordAuditingViewControllerDelegate> _delegate;
     WBSSavedPassword *_passwordToRemoveAfterCompletedUpgradeInDetailView;
 }
@@ -50,13 +52,15 @@
 - (void)_initiateChangeToStrongPasswordForHighPriorityRecommendation:(id)arg1;
 - (void)_upgradeToSignInWithAppleForHighPriorityRecommendation:(id)arg1;
 - (void)_configureHighPriorityInformationCell:(id)arg1 withHighPriorityRecommendationData:(id)arg2;
+- (void)linkableFooterViewDidInteractWithLink:(id)arg1;
+- (id)_passwordBreachFooterTextForDeviceClass:(int)arg1;
+- (id)_passwordBreachFooterView;
 - (id)_passwordBreachToggleCell;
 - (id)_standardRecommendationCellWithPasswordCellData:(id)arg1;
 - (id)_warningStringForPasswordCellData:(id)arg1;
 - (id)_passwordGenerationManager;
 - (id)passwordGeneratorForPasswordDetailViewController:(id)arg1;
 - (id)passwordWarningManagerForPasswordDetailViewController:(id)arg1;
-- (id)dataSource:(id)arg1 footerTextForSection:(long long)arg2;
 - (id)dataSource:(id)arg1 headerTextForSection:(long long)arg2;
 - (void)_removeHighPriorityRecommendation:(id)arg1;
 - (id)tableView:(id)arg1 contextMenuConfigurationForRowAtIndexPath:(id)arg2 point:(struct CGPoint)arg3;
@@ -72,7 +76,7 @@
 - (void)_reloadSavedPasswordsForceUpdate:(_Bool)arg1;
 - (void)_findAndRemoveEntryForCompletedDetailViewUpgrade;
 - (void)viewDidDisappear:(_Bool)arg1;
-- (_Bool)_shouldUseInsetGroupedStyle;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;

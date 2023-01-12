@@ -12,7 +12,9 @@
 @property(readonly, nonatomic) NSString *supergroupConfigJson;
 @property(readonly, nonatomic) NSString *supergroupKnobsJson;
 @property(readonly, copy, nonatomic) NSString *backIssuesListID;
+@property(readonly, copy, nonatomic) NSArray *recentIssueIDs;
 @property(readonly, copy, nonatomic) NSArray *currentIssueIDs;
+@property(readonly, nonatomic) unsigned long long channelType;
 @property(readonly, nonatomic) _Bool isWhitelisted;
 @property(readonly, nonatomic) _Bool supportsNotifications;
 @property(readonly, copy, nonatomic) NSString *defaultSectionID;

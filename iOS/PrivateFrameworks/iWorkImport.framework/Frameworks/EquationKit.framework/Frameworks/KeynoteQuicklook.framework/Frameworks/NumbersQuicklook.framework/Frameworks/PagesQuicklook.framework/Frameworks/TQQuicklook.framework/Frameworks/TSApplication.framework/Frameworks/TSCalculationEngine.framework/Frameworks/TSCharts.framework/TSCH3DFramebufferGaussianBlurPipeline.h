@@ -6,12 +6,12 @@
 
 @interface TSCH3DFramebufferGaussianBlurPipeline
 {
-    tvec2_84d5962d mTapUnit;
+    tvec2_84d5962d _tapUnit;
 }
 
 + (id)effectsArray;
 - (id).cxx_construct;
-@property(nonatomic) tvec2_84d5962d tapUnit; // @synthesize tapUnit=mTapUnit;
+@property(nonatomic) tvec2_84d5962d tapUnit; // @synthesize tapUnit=_tapUnit;
 - (void)updateShaderEffectsStates;
 - (id)initWithProcessor:(id)arg1 session:(id)arg2;
 

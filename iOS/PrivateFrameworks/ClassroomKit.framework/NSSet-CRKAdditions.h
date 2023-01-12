@@ -11,13 +11,17 @@
 @class NSArray, NSString;
 
 @interface NSSet (CRKAdditions) <_SetOperable>
++ (id)crk_setByCopyingObjectsFromArray:(id)arg1;
 - (id)setByCombiningWithSet:(id)arg1 operation:(SEL)arg2;
+- (_Bool)crk_containsObjectMatchingPredicate:(CDUnknownBlockType)arg1;
 - (id)crk_filterUsingBlock:(CDUnknownBlockType)arg1;
+- (id)crk_flatMapUsingBlock:(CDUnknownBlockType)arg1;
 - (id)crk_mapUsingBlock:(CDUnknownBlockType)arg1;
 - (id)crk_setByRemovingObject:(id)arg1;
 - (id)crk_setByIntersectingSet:(id)arg1;
 - (id)crk_setByAddingSet:(id)arg1;
 - (id)crk_setBySubtractingSet:(id)arg1;
+@property(readonly, copy, nonatomic) NSArray *crk_naturallySortedArray;
 @property(readonly, copy, nonatomic) NSString *crk_stableDescription;
 - (id)setByIntersectingSet:(id)arg1;
 - (id)setBySubtractingSet:(id)arg1;

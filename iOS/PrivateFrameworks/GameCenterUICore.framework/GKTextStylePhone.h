@@ -11,7 +11,6 @@
 + (double)standardFontSize;
 - (id)cellActionItem;
 - (id)sectionCaptionSmall;
-- (id)signInTitle;
 - (id)smallInfo;
 - (id)header4;
 - (id)header2;

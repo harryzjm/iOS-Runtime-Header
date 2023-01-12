@@ -22,8 +22,8 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) PHFetchResult *assetsFetchResult; // @synthesize assetsFetchResult=_assetsFetchResult;
 @property(retain, nonatomic) PXAssetsDataSourceManager *assetsDataSourceManager; // @synthesize assetsDataSourceManager=_assetsDataSourceManager;
-@property(retain, nonatomic) id <UIDropSession> dropSession; // @synthesize dropSession=_dropSession;
-@property(retain, nonatomic) id <UIDragSession> dragSession; // @synthesize dragSession=_dragSession;
+@property(nonatomic) __weak id <UIDropSession> dropSession; // @synthesize dropSession=_dropSession;
+@property(nonatomic) __weak id <UIDragSession> dragSession; // @synthesize dragSession=_dragSession;
 @property(retain, nonatomic) PXAssetReference *dropTargetAssetReference; // @synthesize dropTargetAssetReference=_dropTargetAssetReference;
 @property(retain, nonatomic) PHFetchResult *people; // @synthesize people=_people;
 @property(readonly, nonatomic) PXDisplayTitleInfo *displayTitleInfo; // @synthesize displayTitleInfo=_displayTitleInfo;

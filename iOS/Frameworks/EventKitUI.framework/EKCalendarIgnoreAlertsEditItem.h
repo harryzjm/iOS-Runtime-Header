@@ -8,12 +8,12 @@
 {
 }
 
+- (_Bool)cellWrapsLongText;
 - (id)headerTitle;
 - (id)descriptionLabelText;
 - (id)cellText;
 - (_Bool)underlyingCalendarState;
 - (void)setUnderlyingCalendarState:(_Bool)arg1;
-- (_Bool)configureWithCalendar:(id)arg1;
 
 @end
 

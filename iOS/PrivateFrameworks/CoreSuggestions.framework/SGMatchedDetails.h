@@ -9,14 +9,17 @@
 #import <CoreSuggestions/NSCopying-Protocol.h>
 #import <CoreSuggestions/NSSecureCoding-Protocol.h>
 
-@class NSMutableDictionary;
+@class NSDictionary;
 
 @interface SGMatchedDetails : NSObject <NSCopying, NSSecureCoding>
 {
-    NSMutableDictionary *_tokenDetailMap;
-    NSMutableDictionary *_detailTokenMap;
+    NSDictionary *_tokenDetailMap;
+    NSDictionary *_detailTokenMap;
 }
 
++ (long long)tokenMatchedDetailTypeForContact:(id)arg1 contactEntityId:(id)arg2 detailEntityId:(id)arg3 matchedDetailReader:(id)arg4 phraseNumber:(unsigned int)arg5 token:(id)arg6;
++ (long long)tokenMatchedDetailTypeForContact:(id)arg1 matchedDetailReader:(id)arg2 phraseNumber:(unsigned int)arg3 token:(id)arg4;
++ (long long)tokensMatchedDetailTypeForContact:(id)arg1 contactEntityId:(id)arg2 detailEntityId:(id)arg3 matchinfoData:(id)arg4 tokens:(id)arg5;
 + (id)matchedDetailsWithContact:(id)arg1 matchinfoData:(id)arg2 tokens:(id)arg3;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -26,10 +29,11 @@
 - (id)initWithCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToMatchedDetails:(id)arg1;
-- (id)_contactDetailFromContact:(id)arg1 column:(unsigned int)arg2 detailEntityId:(id)arg3;
-- (void)_processRawData:(id)arg1 tokens:(id)arg2 contact:(id)arg3;
+- (void)_processRawData:(id)arg1 tokens:(id)arg2 contact:(id)arg3 tokenDetailMap:(id)arg4;
+- (void)_addToTokenDetailMap:(id)arg1 token:(id)arg2 detail:(id)arg3;
 - (id)tokensForDetail:(id)arg1;
 - (id)matchedDetailsForToken:(id)arg1;
+- (void)_initilizeDictionariesFromTokenDetailMap:(id)arg1;
 - (id)initWithContact:(id)arg1 matchinfoData:(id)arg2 tokens:(id)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;

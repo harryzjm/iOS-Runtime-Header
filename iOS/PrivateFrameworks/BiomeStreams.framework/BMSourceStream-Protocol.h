@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <BiomeStreams/BMStream-Protocol.h>
+
 @class BMSource;
 
-@protocol BMSourceStream
+@protocol BMSourceStream <BMStream>
 - (BMSource *)source;
 @end
 

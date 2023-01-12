@@ -20,12 +20,13 @@
 - (void)endAudio;
 - (void)_endAudio;
 - (void)appendAudioSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
-- (void)_appendAudioSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
 - (void)_convertAndFeedPCMBuffer:(id)arg1;
 - (void)_drainAndClearAudioConverter;
 - (void)appendAudioPCMBuffer:(id)arg1;
 - (void)_appendAudioPCMBuffer:(id)arg1;
+- (id)_startedLocalConnectionWithLanguageCode:(id)arg1 delegate:(id)arg2 taskHint:(long long)arg3 requestIdentifier:(id)arg4;
 - (id)_startedConnectionWithLanguageCode:(id)arg1 delegate:(id)arg2 taskHint:(long long)arg3 requestIdentifier:(id)arg4;
+- (void)_handleAudioBuffersWithDelegate:(id)arg1;
 @property(readonly, nonatomic) AVAudioFormat *nativeAudioFormat;
 - (id)init;
 

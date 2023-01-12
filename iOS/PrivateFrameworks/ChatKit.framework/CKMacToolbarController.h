@@ -30,6 +30,9 @@
     UIView *_secondaryProvidedVirtualView;
 }
 
++ (id)defaultSecondaryItemIdentifiers;
++ (id)primaryItemIdentifiersStandaloneWindow;
++ (id)primaryItemIdentifiersFullWindow;
 - (void).cxx_destruct;
 @property(nonatomic) __weak UIView *secondaryProvidedVirtualView; // @synthesize secondaryProvidedVirtualView=_secondaryProvidedVirtualView;
 @property(nonatomic) __weak UIView *primaryProvidedVirtualView; // @synthesize primaryProvidedVirtualView=_primaryProvidedVirtualView;
@@ -55,11 +58,13 @@
 - (id)_providerForType:(long long)arg1;
 - (long long)_providerTypeForItemIdentifier:(id)arg1;
 - (void)_updateVirtualViewForProviderType:(long long)arg1;
+- (struct CGRect)alignmentRectForItemWithIdentifier:(id)arg1;
 - (void)updateVirtualViewForProvider:(id)arg1;
 - (void)removeItemProvider:(id)arg1;
 - (void)removeVirtualViewForProvider:(id)arg1;
 - (void)removeToolbarItems;
 - (void)removeItemProviders;
+- (void)_sizeMetricsDidChange;
 - (void)updateWithFrame:(struct CGRect)arg1;
 - (_Bool)reparentToolbarItemsForProvider:(id)arg1;
 - (void)reloadToolbarItems;
@@ -69,6 +74,7 @@
 - (void)viewWillLayoutSubviews;
 - (void)loadView;
 - (id)initWithScene:(id)arg1 connectingToSession:(id)arg2 inStandaloneWindow:(_Bool)arg3;
+- (_Bool)__im_ff_isExpanseEnabled;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

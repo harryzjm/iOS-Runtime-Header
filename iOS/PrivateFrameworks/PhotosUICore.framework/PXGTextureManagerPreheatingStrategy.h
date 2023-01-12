@@ -22,7 +22,7 @@
 @property(nonatomic) double mediumOffset; // @synthesize mediumOffset=_mediumOffset;
 @property(nonatomic) double slowOffset; // @synthesize slowOffset=_slowOffset;
 @property(nonatomic) double stoppedOffset; // @synthesize stoppedOffset=_stoppedOffset;
-- (struct CGRect)preheatingRectForLayout:(id)arg1 interactionState:(CDStruct_a02a4563)arg2;
+- (struct CGRect)preheatingRectForLayout:(id)arg1 interactionState:(CDStruct_da8e67cd)arg2;
 @property(readonly, nonatomic) double maxPreheatingDistance;
 
 @end

@@ -13,7 +13,7 @@
     MISSING_TYPE *type;
 }
 
-+ (struct UIEdgeInsets)minimumContentInsetFitting:(struct CGSize)arg1;
++ (struct UIEdgeInsets)minimumContentInsetIn:(id)arg1;
 - (_Bool)shouldInvalidateLayoutForBoundsChange:(struct CGRect)arg1;
 @property(nonatomic, readonly) long long cellLayoutMode;
 @property(nonatomic, readonly) struct CGSize collectionViewContentSize;

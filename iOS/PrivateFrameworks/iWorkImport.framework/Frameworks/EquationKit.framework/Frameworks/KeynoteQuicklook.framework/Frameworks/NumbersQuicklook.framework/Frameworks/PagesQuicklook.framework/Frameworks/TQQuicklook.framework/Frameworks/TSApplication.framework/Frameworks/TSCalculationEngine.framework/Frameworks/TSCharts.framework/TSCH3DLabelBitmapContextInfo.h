@@ -10,23 +10,22 @@
 
 @interface TSCH3DLabelBitmapContextInfo : NSObject <NSCopying>
 {
-    _Bool mIsPrinting;
-    _Bool mIsPDF;
-    _Bool mHasSuppressedBackgrounds;
+    _Bool _isPrinting;
+    _Bool _isPDF;
+    _Bool _hasSuppressedBackgrounds;
 }
 
 + (id)contextInfoWithIsPrinting:(_Bool)arg1 isPDF:(_Bool)arg2 hasSuppressedBackgrounds:(_Bool)arg3;
 + (id)context;
 + (void)setIsPrinting:(_Bool)arg1 isPDF:(_Bool)arg2 hasSuppressedBackgrounds:(_Bool)arg3 forScene:(id)arg4;
 + (id)contextInfoForScene:(id)arg1;
-@property(readonly, nonatomic) _Bool isPDF; // @synthesize isPDF=mIsPDF;
-@property(readonly, nonatomic) _Bool isPrinting; // @synthesize isPrinting=mIsPrinting;
-@property(readonly, nonatomic) _Bool hasSuppressedBackgrounds; // @synthesize hasSuppressedBackgrounds=mHasSuppressedBackgrounds;
+@property(readonly, nonatomic) _Bool isPDF; // @synthesize isPDF=_isPDF;
+@property(readonly, nonatomic) _Bool isPrinting; // @synthesize isPrinting=_isPrinting;
+@property(readonly, nonatomic) _Bool hasSuppressedBackgrounds; // @synthesize hasSuppressedBackgrounds=_hasSuppressedBackgrounds;
 - (void)setTSDCGContextInfoForCGContext:(struct CGContext *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)init;
 - (id)initWithIsPrinting:(_Bool)arg1 isPDF:(_Bool)arg2 hasSuppressedBackgrounds:(_Bool)arg3;
 
 @end

@@ -23,7 +23,7 @@
 - (void)invalidate;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)dealloc;
-- (id)initWithUserDefaults:(id)arg1 key:(id)arg2 queue:(id)arg3 handler:(CDUnknownBlockType)arg4;
+- (id)initWithUserDefaults:(id)arg1 key:(id)arg2 queue:(id)arg3 notifyForInitialValue:(_Bool)arg4 handler:(CDUnknownBlockType)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

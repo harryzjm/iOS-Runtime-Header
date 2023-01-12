@@ -11,6 +11,9 @@
 @interface _TtC7VFXCore14CameraUISystem : _TtCs12_SwiftObject
 {
     MISSING_TYPE *isMenuItemEnabled;
+    MISSING_TYPE *anyCameraQuery;
+    MISSING_TYPE *perspectiveCameraQuery;
+    MISSING_TYPE *orthographicCameraQuery;
 }
 
 @end

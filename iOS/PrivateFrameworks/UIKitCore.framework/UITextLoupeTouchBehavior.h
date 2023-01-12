@@ -8,7 +8,7 @@
 
 #import <UIKitCore/UITextLoupeInteractionBehaviorDelegate-Protocol.h>
 
-@class NSString, UITextRange, _UIKeyboardTextSelectionController;
+@class NSString, UITextModernLoupeSession, UITextRange, _UIKeyboardTextSelectionController;
 
 __attribute__((visibility("hidden")))
 @interface UITextLoupeTouchBehavior : NSObject <UITextLoupeInteractionBehaviorDelegate>
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     _Bool _isShiftKeyBeingHeld;
     UITextRange *_originalTextRange;
     _UIKeyboardTextSelectionController *_activeSelectionController;
+    UITextModernLoupeSession *_loupeSession;
 }
 
 - (void).cxx_destruct;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)velocityInView:(id)arg1 forLoupeGesture:(id)arg2;
 - (struct CGPoint)translationInView:(id)arg1 forLoupeGesture:(id)arg2;
 - (struct CGPoint)startPointForLoupeGesture:(id)arg1;
+- (_Bool)triggeredByLongPressGesture:(id)arg1;
 - (_Bool)_allowsPaintSelectionForLoupeInteraction:(id)arg1;
 - (_Bool)usesTouchAlignment;
 - (_Bool)loupeGestureRecognizerShouldBegin:(id)arg1 forTextLoupeInteraction:(id)arg2;

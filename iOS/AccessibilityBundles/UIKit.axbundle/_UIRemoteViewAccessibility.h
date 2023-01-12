@@ -14,8 +14,6 @@
 - (void)_accessibilitySetFocusOnElement:(_Bool)arg1;
 - (void)_accessibilityUnregisterRemoteView;
 - (id)accessibilityElements;
-- (void)_accessibilitySetRemoteElementIfNecessary;
-- (void)_accessibilityTransmitRemoteUUIDToPid:(int)arg1 machPort:(unsigned int)arg2 value:(id)arg3;
 - (id)_accessibilityResponderElement;
 - (id)_accessibilityActiveKeyboard;
 - (_Bool)_accessibilityServesAsFirstResponder;
@@ -24,9 +22,6 @@
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)dealloc;
 - (id)accessibilityIdentifier;
-- (id)_accessibilityRemoteElementCommunicationQueue;
-- (void)_accessibilitySetRemoteElementArray:(id)arg1;
-- (id)_accessibilityGetRemoteElementArray;
 
 @end
 

@@ -6,19 +6,21 @@
 
 #import <objc/NSObject.h>
 
+#import <DoNotDisturbKit/ATXActivitySuggestionClientObserver-Protocol.h>
 #import <DoNotDisturbKit/DNDSettingsUpdateListener-Protocol.h>
 #import <DoNotDisturbKit/DNDStateUpdateListener-Protocol.h>
 #import <DoNotDisturbKit/UNUserNotificationCenterDelegate-Protocol.h>
 
-@class DNDBehaviorSettings, DNDBypassSettings, DNDModeAssertionService, DNDSettingsService, DNDState, DNDStateService, NSDate, NSString, UNUserNotificationCenter;
+@class ATXActivitySuggestionClient, DNDBehaviorSettings, DNDModeAssertionService, DNDModeConfigurationService, DNDSettingsService, DNDState, DNDStateService, NSDate, NSString, UNUserNotificationCenter;
 @protocol OS_dispatch_queue;
 
-@interface DNDNotificationsService : NSObject <DNDStateUpdateListener, DNDSettingsUpdateListener, UNUserNotificationCenterDelegate>
+@interface DNDNotificationsService : NSObject <DNDStateUpdateListener, DNDSettingsUpdateListener, UNUserNotificationCenterDelegate, ATXActivitySuggestionClientObserver>
 {
     NSObject<OS_dispatch_queue> *_queue;
     DNDModeAssertionService *_notificationsAssertionService;
     DNDStateService *_notificationsStateService;
     DNDSettingsService *_notificationsSettingsService;
+    DNDModeConfigurationService *_notificationsModeConfigurationService;
     _Bool _doNotDisturbActive;
     _Bool _basicActive;
     _Bool _sleepActive;
@@ -31,18 +33,22 @@
     unsigned long long _transitionLifetimeType;
     DNDState *_currentState;
     DNDBehaviorSettings *_currentBehaviorSettings;
-    DNDBypassSettings *_currentPhoneCallBypassSettings;
     UNUserNotificationCenter *_notificationsCenter;
+    ATXActivitySuggestionClient *_activitySuggestionClient;
 }
 
 + (void)initialize;
 - (void).cxx_destruct;
 - (void)_handleSignificantTimeChange;
+- (void)_setModeConfiguration:(id)arg1;
+- (id)_modeConfigurationForIdentifier:(id)arg1;
+- (id)_modeForIdentifier:(id)arg1;
 - (void)_queue_postOrRemoveNotificationWithUpdatedBehavior:(_Bool)arg1 significantTimeChange:(_Bool)arg2;
 - (void)userNotificationCenter:(id)arg1 didReceiveNotificationResponse:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
-- (void)settingsService:(id)arg1 didReceiveUpdatedPhoneCallBypassSettings:(id)arg2;
 - (void)settingsService:(id)arg1 didReceiveUpdatedBehaviorSettings:(id)arg2;
 - (void)stateService:(id)arg1 didReceiveDoNotDisturbStateUpdate:(id)arg2;
+- (void)activitySuggestionClient:(id)arg1 didSuggestTriggersForConfiguredActivity:(id)arg2;
+- (void)activitySuggestionClient:(id)arg1 didSuggestSettingUpActivity:(id)arg2;
 - (void)resume;
 - (id)initWithClientIdentifier:(id)arg1;
 

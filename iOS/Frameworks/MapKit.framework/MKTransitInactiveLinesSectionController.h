@@ -5,18 +5,22 @@
 //
 
 @class NSArray;
+@protocol GEOTransitLine;
 
 __attribute__((visibility("hidden")))
 @interface MKTransitInactiveLinesSectionController
 {
+    id <GEOTransitLine> _line;
     NSArray *_inactiveLines;
 }
 
 - (void).cxx_destruct;
+- (_Bool)_newStationCardUIEnabled;
 - (void)_buildRows;
 - (void)_setNeedsBuildRows;
 - (id)_pagingFilter;
 @property(readonly, nonatomic) NSArray *inactiveLines; // @synthesize inactiveLines=_inactiveLines;
+- (id)initWithMapItem:(id)arg1 system:(id)arg2 line:(id)arg3;
 - (id)init;
 
 @end

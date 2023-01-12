@@ -10,13 +10,14 @@
 {
 }
 
-+ (_Bool)shouldShowInformedConsentFooterActionForMapItem:(id)arg1 options:(unsigned long long)arg2;
 + (_Bool)_isMapsApplication;
 + (_Bool)_shouldAllowUserToAddContributionsForMapItem:(id)arg1;
-+ (_Bool)shouldShowReportAnIssueOnPhotoGalleryForMapItem:(id)arg1;
++ (_Bool)shouldShowReportAnIssueOnPhotoGalleryForMapItem:(id)arg1 photoAttribution:(id)arg2;
 + (_Bool)shouldShowRatingInfoCallToActionOnPlaceCardHeaderForMapItem:(id)arg1;
-+ (_Bool)shouldShowAddPhotoButtonsOnSlideshowGalleryForMapItem:(id)arg1 options:(unsigned long long)arg2;
-+ (_Bool)shouldShowAddPhotoButtonsOnPhotoGalleryForMapItem:(id)arg1;
++ (_Bool)shouldShowAddPhotoButtonsOnSlideshowGalleryForMapItem:(id)arg1 photoAttribution:(id)arg2 options:(unsigned long long)arg3;
++ (_Bool)shouldShowAddPhotoButtonsOnPhotoGalleryForMapItem:(id)arg1 photoAttribution:(id)arg2;
++ (_Bool)shouldShowPhotosCallToActionForMapItem:(id)arg1;
++ (_Bool)shouldShowRatingsCallToActionForMapItem:(id)arg1;
 + (_Bool)shouldShowCallToActionForMapItem:(id)arg1 options:(unsigned long long)arg2;
 + (_Bool)shouldShowCallToActionForMapItem:(id)arg1;
 + (_Bool)shouldShowMorePhotosGalleryForMapItem:(id)arg1;

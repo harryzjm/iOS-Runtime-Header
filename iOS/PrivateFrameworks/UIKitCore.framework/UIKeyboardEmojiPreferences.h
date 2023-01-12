@@ -22,6 +22,7 @@
 - (void)updateSkinToneBaseKey:(id)arg1 variantUsed:(id)arg2;
 - (id)typingNameForEmoji:(id)arg1 language:(id)arg2;
 - (void)emojiPredicted:(id)arg1 typingName:(id)arg2 language:(id)arg3;
+- (void)emojiUsed:(id)arg1 language:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)emojiUsed:(id)arg1 language:(id)arg2;
 - (void)emojiUsed:(id)arg1;
 @property(nonatomic) long long selectedCategoryType;

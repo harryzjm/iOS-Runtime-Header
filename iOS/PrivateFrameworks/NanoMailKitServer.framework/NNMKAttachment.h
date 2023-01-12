@@ -22,6 +22,7 @@
     unsigned long long _syncState;
 }
 
++ (_Bool)isTypeActionable:(unsigned long long)arg1;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long syncState; // @synthesize syncState=_syncState;
@@ -33,6 +34,8 @@
 @property(retain, nonatomic) NSString *contentId; // @synthesize contentId=_contentId;
 @property(retain, nonatomic) NSString *url; // @synthesize url=_url;
 - (id)description;
+- (_Bool)isImage;
+- (_Bool)isActionable;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

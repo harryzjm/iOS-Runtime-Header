@@ -12,10 +12,10 @@ __attribute__((visibility("hidden")))
 @interface _CTFontFallbacksArray : NSArray
 {
     struct TUnfairLock _lock;
-    const struct TBaseFont *_baseFont;
+    const void *_baseFont;
     const struct TTraitsValues *_refTraits;
     unsigned long long _count;
-    NSArray *_cascade;
+    NSMutableArray *_cascade;
     NSMutableArray *_fallbacks;
     unsigned long long _hash;
     int _uiUse;

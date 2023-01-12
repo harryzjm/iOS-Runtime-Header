@@ -4,42 +4,58 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitMetrics/HMMLogEvent.h>
+
 #import <HomeKitDaemon/HMDAWDLogEvent-Protocol.h>
+#import <HomeKitDaemon/HMDBiomeLogEvent-Protocol.h>
 #import <HomeKitDaemon/HMDCoreDuetLogEvent-Protocol.h>
+#import <HomeKitDaemon/HMDMicroLocationLogEvent-Protocol.h>
 
-@class HMDHome, NSArray, NSString, NSUUID;
+@class HMDHome, NSArray, NSDate, NSString, NSUUID;
 
-@interface HMDActionSetEvent <HMDCoreDuetLogEvent, HMDAWDLogEvent>
+@interface HMDActionSetEvent : HMMLogEvent <HMDBiomeLogEvent, HMDMicroLocationLogEvent, HMDCoreDuetLogEvent, HMDAWDLogEvent>
 {
     unsigned int _numAccessoriesModified;
     unsigned int _numAccessoriesInHome;
     unsigned int _numNonEmptyScenesInHome;
     unsigned long long _triggerSource;
     NSUUID *_actionSetUUID;
+    NSUUID *_actionSetUniqueIdentifier;
     NSString *_bundleId;
     NSUUID *_transactionId;
+    NSString *_clientMetricIdentifier;
     NSString *_serializedIdentifier;
     NSString *_actionSetName;
     NSString *_actionSetType;
     HMDHome *_home;
+    NSString *_homeName;
     NSArray *_accessoryUUIDs;
+    NSArray *_accessoryUniqueIdentifiers;
 }
 
-+ (id)uuid;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSArray *accessoryUniqueIdentifiers; // @synthesize accessoryUniqueIdentifiers=_accessoryUniqueIdentifiers;
 @property(readonly, copy, nonatomic) NSArray *accessoryUUIDs; // @synthesize accessoryUUIDs=_accessoryUUIDs;
+@property(readonly, copy) NSString *homeName; // @synthesize homeName=_homeName;
 @property(readonly, nonatomic) __weak HMDHome *home; // @synthesize home=_home;
-@property(readonly, nonatomic) NSString *actionSetType; // @synthesize actionSetType=_actionSetType;
-@property(readonly, nonatomic) NSString *actionSetName; // @synthesize actionSetName=_actionSetName;
-@property(readonly, nonatomic) NSString *serializedIdentifier; // @synthesize serializedIdentifier=_serializedIdentifier;
+@property(readonly, copy, nonatomic) NSString *actionSetType; // @synthesize actionSetType=_actionSetType;
+@property(readonly, copy, nonatomic) NSString *actionSetName; // @synthesize actionSetName=_actionSetName;
+@property(readonly, copy, nonatomic) NSString *serializedIdentifier; // @synthesize serializedIdentifier=_serializedIdentifier;
 @property(readonly, nonatomic) unsigned int numNonEmptyScenesInHome; // @synthesize numNonEmptyScenesInHome=_numNonEmptyScenesInHome;
 @property(readonly, nonatomic) unsigned int numAccessoriesInHome; // @synthesize numAccessoriesInHome=_numAccessoriesInHome;
 @property(readonly, nonatomic) unsigned int numAccessoriesModified; // @synthesize numAccessoriesModified=_numAccessoriesModified;
-@property(readonly, nonatomic) NSUUID *transactionId; // @synthesize transactionId=_transactionId;
-@property(readonly, nonatomic) NSString *bundleId; // @synthesize bundleId=_bundleId;
-@property(readonly, nonatomic) NSUUID *actionSetUUID; // @synthesize actionSetUUID=_actionSetUUID;
+@property(readonly, copy, nonatomic) NSString *clientMetricIdentifier; // @synthesize clientMetricIdentifier=_clientMetricIdentifier;
+@property(readonly, copy, nonatomic) NSUUID *transactionId; // @synthesize transactionId=_transactionId;
+@property(readonly, copy, nonatomic) NSString *bundleId; // @synthesize bundleId=_bundleId;
+@property(readonly, copy, nonatomic) NSUUID *actionSetUniqueIdentifier; // @synthesize actionSetUniqueIdentifier=_actionSetUniqueIdentifier;
+@property(readonly, copy, nonatomic) NSUUID *actionSetUUID; // @synthesize actionSetUUID=_actionSetUUID;
 @property(readonly, nonatomic) unsigned long long triggerSource; // @synthesize triggerSource=_triggerSource;
 - (id)initWithActionSet:(id)arg1 source:(unsigned long long)arg2 numAccessories:(unsigned int)arg3 bundleId:(id)arg4 transactionId:(id)arg5;
+- (id)biomeEventsRepresentationForLogObserver:(id)arg1;
+- (unsigned long long)microLocationScanTriggerTypeForLogEventObserver:(id)arg1;
+- (_Bool)shouldTriggerMicroLocationRecordingScanForLogEventObserver:(id)arg1;
+- (_Bool)shouldTriggerMicroLocationLocalizationScanForLogEventObserver:(id)arg1;
+- (id)microLocationMetadataForLogEventObserver:(id)arg1;
 @property(readonly, copy) NSArray *eventDataToLog;
 - (id)value;
 - (id)metadata;
@@ -50,7 +66,9 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, copy) NSDate *endDate;
 @property(readonly) unsigned long long hash;
+@property(readonly, copy) NSDate *startDate;
 @property(readonly) Class superclass;
 
 @end

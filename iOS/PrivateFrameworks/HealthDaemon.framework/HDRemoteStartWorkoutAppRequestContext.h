@@ -16,8 +16,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
-@property(retain, nonatomic) HDCodableStartWorkoutAppRequest *request; // @synthesize request=_request;
 
 @end
 

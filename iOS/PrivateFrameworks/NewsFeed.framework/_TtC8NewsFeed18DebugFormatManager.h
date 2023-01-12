@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *lock;
     MISSING_TYPE *cache;
+    MISSING_TYPE *mixinCache;
     MISSING_TYPE *service;
     MISSING_TYPE *fontManager;
     MISSING_TYPE *$__lazy_storage_$_environment;

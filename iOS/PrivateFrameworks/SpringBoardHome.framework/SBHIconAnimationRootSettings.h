@@ -6,7 +6,7 @@
 
 #import <PrototypeTools/PTSettings.h>
 
-@class SBHCenterAcceleratedAppSuspendSettings, SBHCenterAppLaunchSettings, SBHCenterAppSuspendSettings, SBHCrossfadeAcceleratedAppSuspendSettings, SBHCrossfadeAppLaunchSettings, SBHCrossfadeAppSuspendSettings, SBHFolderCloseSettings, SBHFolderOpenSettings, SBHLibraryPodCloseSettings, SBHLibraryPodOpenSettings, SBHReducedMotionFadeSettings, SBHUnlockSettings;
+@class SBHCenterAcceleratedAppSuspendSettings, SBHCenterAppLaunchSettings, SBHCenterAppSuspendSettings, SBHCrossfadeAcceleratedAppSuspendSettings, SBHCrossfadeAppLaunchSettings, SBHCrossfadeAppSuspendSettings, SBHFolderCloseSettings, SBHFolderOpenSettings, SBHLibraryIndicatorIconSettings, SBHLibraryPodCloseSettings, SBHLibraryPodOpenSettings, SBHLibraryWaveCloseSettings, SBHLibraryWaveOpenSettings, SBHReducedMotionFadeSettings, SBHUnlockSettings;
 
 @interface SBHIconAnimationRootSettings : PTSettings
 {
@@ -25,10 +25,16 @@
     double _maxFolderCloseHintProgress;
     SBHLibraryPodOpenSettings *_libraryPodOpenSettings;
     SBHLibraryPodCloseSettings *_libraryPodCloseSettings;
+    SBHLibraryWaveOpenSettings *_libraryWaveOpenSettings;
+    SBHLibraryWaveCloseSettings *_libraryWaveCloseSettings;
+    SBHLibraryIndicatorIconSettings *_libraryIndicatorIconSettings;
 }
 
 + (id)settingsControllerModule;
 - (void).cxx_destruct;
+@property(retain, nonatomic) SBHLibraryIndicatorIconSettings *libraryIndicatorIconSettings; // @synthesize libraryIndicatorIconSettings=_libraryIndicatorIconSettings;
+@property(retain, nonatomic) SBHLibraryWaveCloseSettings *libraryWaveCloseSettings; // @synthesize libraryWaveCloseSettings=_libraryWaveCloseSettings;
+@property(retain, nonatomic) SBHLibraryWaveOpenSettings *libraryWaveOpenSettings; // @synthesize libraryWaveOpenSettings=_libraryWaveOpenSettings;
 @property(retain, nonatomic) SBHLibraryPodCloseSettings *libraryPodCloseSettings; // @synthesize libraryPodCloseSettings=_libraryPodCloseSettings;
 @property(retain, nonatomic) SBHLibraryPodOpenSettings *libraryPodOpenSettings; // @synthesize libraryPodOpenSettings=_libraryPodOpenSettings;
 @property(nonatomic) double maxFolderCloseHintProgress; // @synthesize maxFolderCloseHintProgress=_maxFolderCloseHintProgress;

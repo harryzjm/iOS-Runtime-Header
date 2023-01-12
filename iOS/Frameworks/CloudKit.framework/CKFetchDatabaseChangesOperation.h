@@ -17,6 +17,7 @@
     CDUnknownBlockType _recordZoneWithIDWasPurgedBlock;
     CDUnknownBlockType _changeTokenUpdatedBlock;
     CDUnknownBlockType _fetchDatabaseChangesCompletionBlock;
+    CDUnknownBlockType _recordZoneWithIDWasDeletedDueToUserEncryptedDataResetBlock;
     CKServerChangeToken *_previousServerChangeToken;
     unsigned long long _resultsLimit;
     CKServerChangeToken *_serverChangeToken;
@@ -32,6 +33,7 @@
 @property(copy, nonatomic) CKServerChangeToken *previousServerChangeToken; // @synthesize previousServerChangeToken=_previousServerChangeToken;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)handleChangeSetCompletionWithServerChangeToken:(id)arg1 databaseChangesStatus:(long long)arg2 error:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)handleEncryptedDataResetForRecordZoneID:(id)arg1;
 - (void)handlePurgeForRecordZoneID:(id)arg1;
 - (void)handleDeleteForRecordZoneID:(id)arg1;
 - (void)handleChangeForRecordZoneID:(id)arg1;
@@ -40,6 +42,7 @@
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
 - (id)activityCreate;
+@property(copy, nonatomic) CDUnknownBlockType recordZoneWithIDWasDeletedDueToUserEncryptedDataResetBlock; // @synthesize recordZoneWithIDWasDeletedDueToUserEncryptedDataResetBlock=_recordZoneWithIDWasDeletedDueToUserEncryptedDataResetBlock;
 @property(copy, nonatomic) CDUnknownBlockType fetchDatabaseChangesCompletionBlock; // @synthesize fetchDatabaseChangesCompletionBlock=_fetchDatabaseChangesCompletionBlock;
 @property(copy, nonatomic) CDUnknownBlockType changeTokenUpdatedBlock; // @synthesize changeTokenUpdatedBlock=_changeTokenUpdatedBlock;
 @property(copy, nonatomic) CDUnknownBlockType recordZoneWithIDWasPurgedBlock; // @synthesize recordZoneWithIDWasPurgedBlock=_recordZoneWithIDWasPurgedBlock;

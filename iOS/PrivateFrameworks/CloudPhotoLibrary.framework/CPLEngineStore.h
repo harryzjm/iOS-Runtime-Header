@@ -9,7 +9,7 @@
 #import <CloudPhotoLibrary/CPLAbstractObject-Protocol.h>
 #import <CloudPhotoLibrary/CPLEngineComponent-Protocol.h>
 
-@class CPLChangeBatch, CPLEngineChangePipe, CPLEngineCloudCache, CPLEngineDerivativesCache, CPLEngineIDMapping, CPLEngineInitialQueryTracker, CPLEngineLibrary, CPLEngineOutgoingResources, CPLEnginePushRepository, CPLEngineQuarantinedRecords, CPLEngineRemappedDeletes, CPLEngineResourceDownloadQueue, CPLEngineResourceStorage, CPLEngineScopeCleanupTasks, CPLEngineScopeStorage, CPLEngineStatusCenter, CPLEngineTransientRepository, CPLPlatformObject, CPLRecordStorageView, CPLResetTracker, NSArray, NSDate, NSHashTable, NSMutableArray, NSSet, NSString, NSURL;
+@class CPLChangeBatch, CPLEngineChangePipe, CPLEngineCloudCache, CPLEngineDerivativesCache, CPLEngineIDMapping, CPLEngineInitialQueryTracker, CPLEngineLibrary, CPLEngineOutgoingResources, CPLEnginePushRepository, CPLEngineQuarantinedRecords, CPLEngineRemappedDeletes, CPLEngineResourceDownloadQueue, CPLEngineResourceStorage, CPLEngineScopeCleanupTasks, CPLEngineScopeStorage, CPLEngineStatusCenter, CPLEngineTransientRepository, CPLPlatformObject, CPLRecordStorageView, CPLResetTracker, CPLSyncSessionPredictor, NSArray, NSDate, NSHashTable, NSMutableArray, NSMutableDictionary, NSSet, NSString, NSURL;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface CPLEngineStore : NSObject <CPLAbstractObject, CPLEngineComponent>
@@ -19,12 +19,14 @@
     NSMutableArray *_batchedTransactions;
     _Bool _batchedTransactionDequeueIsScheduled;
     _Bool _dontDelayChangeSessionUpdate;
+    _Bool _applyingChangeSessionUpdate;
     NSURL *_resetEventsURL;
     NSMutableArray *_resetEvents;
     CPLResetTracker *_pendingTracker;
     CPLChangeBatch *_unacknowledgedBatch;
     _Bool _discardUnacknowledgedBatchOnTransactionFail;
     _Bool _transactionClientCacheViewHasPushRepository;
+    NSMutableDictionary *_transactionNewPredictions;
     NSSet *_lastInvalidRecordScopedIdentifiers;
     NSDate *_lastInvalidRecordsDate;
     NSObject<OS_dispatch_source> *_pendingUpdateTimer;
@@ -61,6 +63,7 @@
     CPLEngineStatusCenter *_statusCenter;
     CPLEngineInitialQueryTracker *_initialQueryTracker;
     CPLEngineDerivativesCache *_derivativesCache;
+    CPLSyncSessionPredictor *_predictor;
     unsigned long long _state;
 }
 
@@ -69,6 +72,7 @@
 + (id)storageNames;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long state; // @synthesize state=_state;
+@property(readonly, nonatomic) CPLSyncSessionPredictor *predictor; // @synthesize predictor=_predictor;
 @property(readonly, nonatomic) CPLEngineDerivativesCache *derivativesCache; // @synthesize derivativesCache=_derivativesCache;
 @property(readonly, nonatomic) CPLEngineInitialQueryTracker *initialQueryTracker; // @synthesize initialQueryTracker=_initialQueryTracker;
 @property(readonly, nonatomic) CPLEngineStatusCenter *statusCenter; // @synthesize statusCenter=_statusCenter;
@@ -86,6 +90,7 @@
 @property(readonly, nonatomic) CPLEnginePushRepository *pushRepository; // @synthesize pushRepository=_pushRepository;
 @property(readonly, nonatomic) __weak CPLEngineLibrary *engineLibrary; // @synthesize engineLibrary=_engineLibrary;
 @property(readonly, nonatomic) CPLPlatformObject *platformObject; // @synthesize platformObject=_platformObject;
+- (void)testKey:(id)arg1 value:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)getStatusDictionaryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)componentName;
@@ -97,9 +102,13 @@
 - (void)_removeTransactionOnCurrentThread:(id)arg1;
 - (void)_setTransactionOnCurrentThread:(id)arg1;
 - (id)_currentTransaction;
+- (void)_addCleanupBlock:(CDUnknownBlockType)arg1;
 @property(readonly, copy) NSString *description;
+- (void)markAsCorrupted;
+- (void)emergencyClose;
 - (void)stopVacuum;
 - (void)startVacuum;
+- (void)predictSyncSessionValue:(id)arg1 ofType:(id)arg2;
 - (void)wipeStoreAtNextOpeningWithReason:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (_Bool)storeDerivativesFilter:(id)arg1 error:(id *)arg2;
 - (id)derivativesFilter;
@@ -127,6 +136,7 @@
 - (void)_reallyUnschedulePendingUpdateApply;
 - (void)_reallySchedulePendingUpdateApply;
 - (_Bool)_applyPendingUpdate:(id)arg1 error:(id *)arg2;
+- (_Bool)_applyAndDiscardPendingUpdate:(id)arg1 error:(id *)arg2;
 - (void)notePushRepositoryStoredSomeChanges;
 @property(readonly, nonatomic) CPLRecordStorageView *transactionClientCacheView; // @synthesize transactionClientCacheView=_transactionClientCacheView;
 @property(readonly, nonatomic) _Bool shouldGenerateDerivatives;
@@ -169,6 +179,8 @@
 - (void)_finishTransaction;
 - (void)_performTransaction:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (_Bool)_handleException:(id)arg1;
+- (_Bool)deleteDynamicallyCreatedStorages:(id)arg1 error:(id *)arg2;
+- (_Bool)createStoragesDynamically:(id)arg1 error:(id *)arg2;
 - (void)noteInvalidRecordScopedIdentifiersInPushSession:(id)arg1;
 - (void)noteOtherResetEvent:(id)arg1 cause:(id)arg2;
 - (_Bool)resetSyncAnchorWithCause:(id)arg1 error:(id *)arg2;

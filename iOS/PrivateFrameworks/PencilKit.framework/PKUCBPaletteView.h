@@ -81,7 +81,10 @@
 - (void)_handleReturnKey;
 - (unsigned long long)paletteViewType;
 - (void)buttonDidChangeIntrinsicContentSize:(id)arg1;
+- (void)_flashLanguageIndicatorIfNeeded;
+- (_Bool)toolPreviewMatchesExpandedTool;
 - (_Bool)isPalettePresentingPopover;
+- (void)willStartAppearanceAnimation:(_Bool)arg1;
 - (_Bool)shouldExpandFromCorner;
 - (_Bool)shouldStartUpMinimized;
 - (struct CGSize)paletteSizeForEdge:(unsigned long long)arg1;

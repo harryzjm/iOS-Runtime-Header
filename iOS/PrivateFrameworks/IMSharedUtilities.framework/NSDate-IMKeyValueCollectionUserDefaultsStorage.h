@@ -7,12 +7,17 @@
 #import <Foundation/NSDate.h>
 
 @interface NSDate (IMKeyValueCollectionUserDefaultsStorage)
++ (id)__im_dateFromEncodedString:(id)arg1;
++ (id)__im_serialization_dateFormatter;
 + (id)__im_iMessageDateFromTimeStamp:(id)arg1;
 + (id)__im_clampDate:(id)arg1;
 + (_Bool)useCourierTime;
 + (id)__im_dateWithCurrentServerTime;
 + (id)__im_dateWithNanosecondTimeIntervalSinceReferenceDate:(long long)arg1;
 - (_Bool)isArchivable_im;
+- (id)__im_encodeAsString;
+- (_Bool)__im_isEqualToSeconds:(id)arg1;
+- (long long)secondsDifferenceFromDate:(id)arg1;
 - (long long)minutesDifferenceFromDate:(id)arg1;
 - (long long)hoursDifferenceFromDate:(id)arg1;
 - (long long)differenceFromDate:(id)arg1;

@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapsSuggestions/MapsSuggestionsRunCondition-Protocol.h>
+#import <MapsSuggestions/MapsSuggestionsCondition-Protocol.h>
 #import <MapsSuggestions/MapsSuggestionsTriggerObserver-Protocol.h>
 
 @class NSString;
 @protocol MapsSuggestionsFirstUnlockProtocol;
 
-@interface MapsSuggestionsFirstUnlockTrigger <MapsSuggestionsTriggerObserver, MapsSuggestionsRunCondition>
+@interface MapsSuggestionsFirstUnlockTrigger <MapsSuggestionsTriggerObserver, MapsSuggestionsCondition>
 {
     id <MapsSuggestionsFirstUnlockProtocol> _firstUnlock;
 }
@@ -20,7 +20,7 @@
 - (id)objectForJSON;
 - (void)didRemoveLastObserver;
 - (void)didAddFirstObserver;
-- (_Bool)shouldRun;
+- (_Bool)isTrue;
 - (id)initWithFirstLock:(id)arg1;
 - (id)init;
 

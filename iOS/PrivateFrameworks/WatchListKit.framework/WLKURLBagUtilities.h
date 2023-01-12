@@ -10,7 +10,9 @@
 {
 }
 
++ (id)isFullTVAppEnabledCachedValue;
 + (void)isFullTVAppEnabledwithCompletion:(CDUnknownBlockType)arg1;
++ (void)isFullTVAppEnabledWithCompletion:(CDUnknownBlockType)arg1;
 + (_Bool)isFullTVAppEnabled;
 
 @end

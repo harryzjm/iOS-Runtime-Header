@@ -16,15 +16,17 @@
     UIViewController *_viewController;
     UITraitCollection *_traitCollection;
     id <NUDocumentSectionItemHeightProvider> _heightProvider;
+    double _sectionHeight;
 }
 
 - (void).cxx_destruct;
+@property(readonly) double sectionHeight; // @synthesize sectionHeight=_sectionHeight;
 @property(readonly) id <NUDocumentSectionItemHeightProvider> heightProvider; // @synthesize heightProvider=_heightProvider;
 @property(readonly) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 @property(readonly) UIViewController *viewController; // @synthesize viewController=_viewController;
 - (id)sectionItemViewController;
 - (double)sectionItemHeightForSize:(struct CGSize)arg1 traitCollection:(id)arg2;
-- (id)initWithViewController:(id)arg1 heightProvider:(id)arg2;
+- (id)initWithViewController:(id)arg1 sectionHeight:(double)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

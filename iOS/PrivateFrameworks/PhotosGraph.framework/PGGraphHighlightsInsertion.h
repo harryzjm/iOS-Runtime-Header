@@ -8,18 +8,18 @@
 
 @interface PGGraphHighlightsInsertion
 {
-    NSSet *_highlightLocalIdentifiers;
+    NSSet *_highlightUUIDs;
     NSSet *_highlights;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSSet *highlights; // @synthesize highlights=_highlights;
-@property(readonly, nonatomic) NSSet *highlightLocalIdentifiers; // @synthesize highlightLocalIdentifiers=_highlightLocalIdentifiers;
+@property(readonly, nonatomic) NSSet *highlightUUIDs; // @synthesize highlightUUIDs=_highlightUUIDs;
 - (id)description;
 - (unsigned long long)changeCount;
 - (unsigned long long)type;
 - (id)initWithHighlights:(id)arg1;
-- (id)initWithHighlightLocalIdentifiers:(id)arg1;
+- (id)initWithHighlightUUIDs:(id)arg1;
 
 @end
 

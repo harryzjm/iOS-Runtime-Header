@@ -8,7 +8,7 @@
 
 #import <Translation/CSLanguageDetectorDelegate-Protocol.h>
 
-@class CSLanguageDetector, NSMutableDictionary, NSString, _LTLanguageDetectionResult, _LTLanguageDetectorFeatureCombinationModel, _LTTranslationContext;
+@class CSLanguageDetector, NSMutableArray, NSMutableDictionary, NSString, _LTLanguageDetectionResult, _LTLanguageDetectorFeatureCombinationModel, _LTTranslationContext;
 @protocol OS_dispatch_queue, _LTSpeechTranslationDelegate;
 
 @interface _LTLanguageDetector : NSObject <CSLanguageDetectorDelegate>
@@ -17,14 +17,24 @@
     CSLanguageDetector *_csLanguageDetector;
     float _sourceLocaleConfidenceThreshold;
     float _targetLocaleConfidenceThreshold;
+    unsigned long long _minimumAcousticLanguageDetectorResults;
+    unsigned long long _maximumAcousticLanguageDetectorResults;
     _Bool _endAudioCalled;
+    _Bool _useFinalThresholds;
+    _Bool _finalLIDResultSent;
+    _Bool _receivedPartialSpeechResult;
+    _Bool _havePartialASRConfidences;
+    NSMutableDictionary *_partialSpeechResultConfidences;
     NSMutableDictionary *_finalSpeechResults;
+    NSMutableDictionary *_modelVersions;
     unsigned long long _lidSignpostID;
     NSObject<OS_dispatch_queue> *_resultQueue;
+    NSObject<OS_dispatch_queue> *_finalResultWaitQueue;
     id <_LTSpeechTranslationDelegate> _delegate;
     _Bool _featureCombinationModelSupported;
     double _samplingRate;
     long long _audioBitDepth;
+    NSMutableArray *_acousticResults;
     _LTLanguageDetectionResult *_lastResult;
     _LTLanguageDetectorFeatureCombinationModel *_featureCombinationModel;
 }
@@ -33,14 +43,19 @@
 @property(retain, nonatomic) _LTLanguageDetectorFeatureCombinationModel *featureCombinationModel; // @synthesize featureCombinationModel=_featureCombinationModel;
 @property(nonatomic) _Bool featureCombinationModelSupported; // @synthesize featureCombinationModelSupported=_featureCombinationModelSupported;
 @property(retain, nonatomic) _LTLanguageDetectionResult *lastResult; // @synthesize lastResult=_lastResult;
+@property(retain, nonatomic) NSMutableArray *acousticResults; // @synthesize acousticResults=_acousticResults;
 @property(readonly, nonatomic) long long audioBitDepth; // @synthesize audioBitDepth=_audioBitDepth;
 @property(readonly, nonatomic) double samplingRate; // @synthesize samplingRate=_samplingRate;
 - (void)languageDetectorDidDetectLanguageWithConfidence:(id)arg1 confidence:(id)arg2 isConfident:(_Bool)arg3;
+- (_Bool)forceLanguageDetectionResult;
 - (void)cancelLanguageDetection;
 - (void)endAudio;
 - (void)addSpeechAudioData:(id)arg1;
 - (void)addSpeechRecognitionResult:(id)arg1;
-- (void)sendFinalLanguageDetectionResult;
+- (void)sendFinalLanguageDetectionResult:(_Bool)arg1;
+- (_Bool)haveAtLeastOneFinalASRResult;
+- (_Bool)haveFinalASRResults;
+- (void)sendLIDResult:(id)arg1;
 - (void)startLanguageDetectionWithContext:(id)arg1 delegate:(id)arg2;
 - (id)init;
 

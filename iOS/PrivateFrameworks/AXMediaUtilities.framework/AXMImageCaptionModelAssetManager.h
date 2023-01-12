@@ -15,16 +15,17 @@
     struct os_unfair_lock_s _lock;
     _Bool _didTryWaitingForAssetLookup;
     AXAssetController *_assetController;
-    NSURL *_modelURL;
+    NSURL *_baseURL;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSURL *modelURL; // @synthesize modelURL=_modelURL;
+@property(copy, nonatomic) NSURL *baseURL; // @synthesize baseURL=_baseURL;
 - (void)assetController:(id)arg1 didFinishRefreshingAssets:(id)arg2 wasSuccessful:(_Bool)arg3 error:(id)arg4;
 - (void)_performWithLock:(CDUnknownBlockType)arg1;
+- (id)_modelURLForType:(unsigned long long)arg1 baseURL:(id)arg2;
 - (id)infoForModelAtURL:(id)arg1;
-- (id)modelURLWithTimeout:(double)arg1;
+- (id)modelURLForType:(unsigned long long)arg1 timeout:(double)arg2;
 - (id)init;
 
 // Remaining properties

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PhotosUICore/PXViewControllerEventTracker.h>
+#import <PhotosUICore/PXMediaViewControllerEventTracker.h>
 
 #import <PhotosUI/PUBrowsingVideoPlayerChangeObserver-Protocol.h>
 #import <PhotosUI/PUBrowsingViewModelChangeObserver-Protocol.h>
@@ -15,7 +15,7 @@
 @protocol PUDisplayAsset;
 
 __attribute__((visibility("hidden")))
-@interface PUOneUpEventTracker : PXViewControllerEventTracker <PXChangeObserver, PUBrowsingViewModelChangeObserver, PUBrowsingVideoPlayerChangeObserver, PUOneUpEventTracker>
+@interface PUOneUpEventTracker : PXMediaViewControllerEventTracker <PXChangeObserver, PUBrowsingViewModelChangeObserver, PUBrowsingVideoPlayerChangeObserver, PUOneUpEventTracker>
 {
     _Bool _isSessionActive;
     _Bool _currentlyStreamingVideoIsActuallyPlaying;
@@ -23,9 +23,7 @@ __attribute__((visibility("hidden")))
     _Bool _currentlyStreamingVideoDidStartActualPlayback;
     PUBrowsingViewModel *_viewModel;
     long long _presentationOrigin;
-    NSString *_viewClassName;
     long long _sessionSignpost;
-    id <PUDisplayAsset> _currentlyViewedAsset;
     double _currentlyViewedAssetTimestamp;
     long long _currentlyViewedAssetGeneration;
     long long _currentAssetSignpost;
@@ -64,10 +62,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long currentAssetSignpost; // @synthesize currentAssetSignpost=_currentAssetSignpost;
 @property(readonly, nonatomic) long long currentlyViewedAssetGeneration; // @synthesize currentlyViewedAssetGeneration=_currentlyViewedAssetGeneration;
 @property(readonly, nonatomic) double currentlyViewedAssetTimestamp; // @synthesize currentlyViewedAssetTimestamp=_currentlyViewedAssetTimestamp;
-@property(retain, nonatomic) id <PUDisplayAsset> currentlyViewedAsset; // @synthesize currentlyViewedAsset=_currentlyViewedAsset;
 @property(nonatomic) long long sessionSignpost; // @synthesize sessionSignpost=_sessionSignpost;
 @property(nonatomic) _Bool isSessionActive; // @synthesize isSessionActive=_isSessionActive;
-@property(readonly, nonatomic) NSString *viewClassName; // @synthesize viewClassName=_viewClassName;
 @property(readonly, nonatomic) long long presentationOrigin; // @synthesize presentationOrigin=_presentationOrigin;
 @property(readonly, nonatomic) PUBrowsingViewModel *viewModel; // @synthesize viewModel=_viewModel;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
@@ -77,15 +73,15 @@ __attribute__((visibility("hidden")))
 - (void)_logDidStartPlaybackOfStreamedVideoAsset:(id)arg1;
 - (void)_logDidEndPlayingVideoAsset:(id)arg1 duration:(double)arg2;
 - (void)_logDidStartPlayingVideoAsset:(id)arg1;
-- (void)logAppliedEffectSuggestion:(id)arg1 toLivePhoto:(id)arg2;
 - (void)logVitalityDidEndForLivePhoto:(id)arg1;
 - (void)logUserDidPlayLivePhoto:(id)arg1;
 - (void)logUserWillPlayLivePhoto:(id)arg1;
-- (void)_logDidEndViewingAsset:(id)arg1 duration:(double)arg2;
 - (void)_handleLongEnoughViewDurationWithGeneration:(long long)arg1;
-- (void)_logDidStartViewingAsset:(id)arg1;
 - (void)_logDidEndSession;
 - (void)_logDidStartSession;
+- (void)logDidEndViewingMedia:(id)arg1 mediaKind:(long long)arg2 duration:(double)arg3;
+- (void)logDidStartViewingMedia:(id)arg1 mediaKind:(long long)arg2;
+- (void)setDisplayedAsset:(id)arg1;
 - (void)_updateCurrentVideoProperties;
 - (void)_invalidateCurrentVideoProperties;
 - (void)_updateCurrentVideoPlayer;
@@ -95,7 +91,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateIsSessionActive;
 - (void)_invalidateIsSessionActive;
 - (id)initWithViewModel:(id)arg1 presentationOrigin:(long long)arg2;
-- (id)init;
+- (id)initWithViewName:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

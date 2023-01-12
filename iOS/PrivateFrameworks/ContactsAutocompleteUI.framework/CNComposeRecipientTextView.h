@@ -11,7 +11,7 @@
 #import <ContactsAutocompleteUI/UITextViewDelegate-Protocol.h>
 
 @class CNComposeDragSource, CNComposeDropTarget, NSArray, NSMutableArray, NSMutableDictionary, NSString, NSTimer, NSUndoManager, UIButton, UIColor, UIFont, UITextView, UIView, _CNAtomTextAttachment, _CNAtomTextView;
-@protocol CNComposeRecipientTextViewDelegate;
+@protocol CNComposeRecipientTextViewDelegate, NSObject;
 
 @interface CNComposeRecipientTextView <UIContextMenuInteractionDelegate, UITextViewDelegate, NSLayoutManagerDelegate, CNComposeRecipientAtomDelegate, CNRecipientDraggingDelegate>
 {
@@ -31,6 +31,7 @@
     _Bool _collapsedStateInitialized;
     _Bool _indicatesUnsafeRecipientsWhenCollapsed;
     _Bool _notifyDelegateOfSizeChange;
+    _Bool _addButtonWasTapped;
     NSTimer *_collapsableUpdateTimer;
     NSArray *_properties;
     NSMutableArray *_recipientsBeingRemoved;
@@ -44,6 +45,7 @@
     _Bool _expandRecipientsInNamedGroups;
     _Bool _editable;
     _Bool _enabled;
+    _Bool _keyboardIsHiding;
     int _hideLastAtomComma;
     UIFont *_baseFont;
     long long _maxRecipients;
@@ -52,10 +54,15 @@
     double _trailingButtonMidlineInsetFromLayoutMargin;
     _CNAtomTextAttachment *_placeholderAttachment;
     UIView *_atomContainerView;
+    id <NSObject> _keyboardWillHideNotificationObserver;
+    id <NSObject> _keyboardDidHideNotificationObserver;
 }
 
 + (id)defaultFont;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <NSObject> keyboardDidHideNotificationObserver; // @synthesize keyboardDidHideNotificationObserver=_keyboardDidHideNotificationObserver;
+@property(retain, nonatomic) id <NSObject> keyboardWillHideNotificationObserver; // @synthesize keyboardWillHideNotificationObserver=_keyboardWillHideNotificationObserver;
+@property(nonatomic) _Bool keyboardIsHiding; // @synthesize keyboardIsHiding=_keyboardIsHiding;
 @property(nonatomic) _Bool enabled; // @synthesize enabled=_enabled;
 @property(readonly, nonatomic) UIView *atomContainerView; // @synthesize atomContainerView=_atomContainerView;
 @property(retain, nonatomic) _CNAtomTextAttachment *placeholderAttachment; // @synthesize placeholderAttachment=_placeholderAttachment;
@@ -75,8 +82,10 @@
 - (void)composeRecipientAtomSelectNext:(id)arg1;
 - (void)composeRecipientAtomSelectPrevious:(id)arg1;
 - (void)composeRecipientAtomShowPersonCard:(id)arg1;
+- (void)composeRecipientAtomStopDisambiguating;
 - (void)composeRecipientAtomDisambiguate:(id)arg1;
 - (void)deselectComposeRecipientAtom:(id)arg1;
+- (void)shiftSelectComposeRecipientAtom:(id)arg1;
 - (void)selectComposeRecipientAtom:(id)arg1;
 - (void)dropItems:(id)arg1;
 - (void)dragExited;
@@ -85,7 +94,11 @@
 - (id)dragPreviewForDraggedItem:(id)arg1 withContainer:(id)arg2;
 - (struct _NSRange)_placeholderAttachmentRange;
 - (id)_placeholderAttachmentWithStaticWidth;
+- (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
+- (void)selectAll:(id)arg1;
 - (void)deselectAllAtoms;
+- (void)selectAllAtoms;
+- (void)shiftSelectAtom:(id)arg1;
 - (void)selectAtom:(id)arg1;
 - (void)selectAtomForRecipient:(id)arg1;
 - (void)_notifyDelegateOfSizeChange;
@@ -94,6 +107,7 @@
 - (void)layoutManager:(id)arg1 didCompleteLayoutForTextContainer:(id)arg2 atEnd:(_Bool)arg3;
 - (void)atomTextView:(id)arg1 didChangeWritingDirection:(long long)arg2;
 - (void)atomTextViewDidResignFirstResponder:(id)arg1;
+- (_Bool)hostRecipientViewHasSearchResults;
 - (void)atomTextViewDidBecomeFirstResponder:(id)arg1;
 - (void)textViewDidChange:(id)arg1;
 - (void)textViewDidChangeSelection:(id)arg1;
@@ -133,11 +147,13 @@
 - (id)_textContainerExclusionPathsWithAddButton:(_Bool)arg1;
 - (void)reflow;
 - (_Bool)_useRightToLeftLayout;
+- (_Bool)resignFirstResponder;
 - (_Bool)isFirstResponder;
 - (_Bool)becomeFirstResponder;
 - (_Bool)finishEnteringRecipient;
 - (void)parentDidClose;
 - (void)parentWillClose;
+- (void)setAtomPresentationOptions:(unsigned long long)arg1 forRecipient:(id)arg2;
 - (void)invalidateAtomPresentationOptionsForRecipient:(id)arg1;
 - (void)invalidateAtomPresentationOptions;
 - (void)clearText;
@@ -165,9 +181,11 @@
 - (void)_addButtonTapped:(id)arg1;
 - (_Bool)containsAddress:(id)arg1;
 - (void)addAddress:(id)arg1;
+- (void)removeSingleRecipient:(id)arg1;
 - (void)removeRecipient:(id)arg1;
 - (void)_didRemoveRecipient:(id)arg1;
 - (id)undoManager;
+- (_Bool)shouldExpandRecipient:(id)arg1;
 - (void)addRecipient:(id)arg1 index:(unsigned long long)arg2 animate:(_Bool)arg3;
 - (void)addRecipient:(id)arg1;
 @property(copy, nonatomic) NSArray *recipients;

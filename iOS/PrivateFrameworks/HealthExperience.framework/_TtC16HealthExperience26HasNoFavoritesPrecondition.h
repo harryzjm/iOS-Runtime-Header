@@ -10,13 +10,9 @@
 
 @interface _TtC16HealthExperience26HasNoFavoritesPrecondition : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *favoritesProvider;
+    MISSING_TYPE *favoritesManager;
     MISSING_TYPE *preconditionCompletion;
 }
-
-- (void)favoritesProviderDidUpdate:(id)arg1 specificType:(id)arg2 isFavorited:(_Bool)arg3;
-- (void)favoritesProviderDidUpdate:(id)arg1;
-- (void)favoritesProviderIsReady:(id)arg1;
 
 @end
 

@@ -10,7 +10,6 @@
 
 @class MCProfileWarning, NSString, UITableView;
 
-__attribute__((visibility("hidden")))
 @interface MCProfileTitlePageWarningSectionController : NSObject <MCProfileTitlePageSectionController>
 {
     UITableView *_tableView;

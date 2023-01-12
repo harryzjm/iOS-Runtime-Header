@@ -5,10 +5,11 @@
 //
 
 #import <TelephonyUtilities/NSObject-Protocol.h>
+#import <TelephonyUtilities/TUMomentsSandboxingDataSource-Protocol.h>
 
 @class NSString, TUMomentDescriptor, TUMomentsCapabilities;
 
-@protocol TUMomentsControllerXPCClient <NSObject>
+@protocol TUMomentsControllerXPCClient <NSObject, TUMomentsSandboxingDataSource>
 - (oneway void)didReceiveLocallyRequestedMomentDescriptor:(TUMomentDescriptor *)arg1;
 - (oneway void)willCaptureRemoteRequestFromRequesterID:(NSString *)arg1;
 - (oneway void)didUpdateCapabilities:(TUMomentsCapabilities *)arg1 forVideoStreamToken:(long long)arg2;

@@ -6,18 +6,19 @@
 
 #import <PrototypeTools/PTSettings.h>
 
-@class PTOutlet;
-
 @interface SBHAppLibrarySettings : PTSettings
 {
-    PTOutlet *_minimumNumberOfIconsToShowSectionHeaderInDeweySearchOutlet;
-    long long _minimumNumberOfIconsToShowSectionHeaderInDeweySearch;
+    unsigned long long _minimumNumberOfIconsToShowSectionHeaderInDeweySearch;
+    double _criticalDismissalThresholdDurationFactor;
+    double _minimumVelocityForSwipeToDismiss;
+    double _minimumTranslationFractionForSwipeToDismiss;
 }
 
 + (id)settingsControllerModule;
-- (void).cxx_destruct;
-@property(nonatomic) long long minimumNumberOfIconsToShowSectionHeaderInDeweySearch; // @synthesize minimumNumberOfIconsToShowSectionHeaderInDeweySearch=_minimumNumberOfIconsToShowSectionHeaderInDeweySearch;
-@property(retain, nonatomic) PTOutlet *minimumNumberOfIconsToShowSectionHeaderInDeweySearchOutlet; // @synthesize minimumNumberOfIconsToShowSectionHeaderInDeweySearchOutlet=_minimumNumberOfIconsToShowSectionHeaderInDeweySearchOutlet;
+@property(nonatomic) double minimumTranslationFractionForSwipeToDismiss; // @synthesize minimumTranslationFractionForSwipeToDismiss=_minimumTranslationFractionForSwipeToDismiss;
+@property(nonatomic) double minimumVelocityForSwipeToDismiss; // @synthesize minimumVelocityForSwipeToDismiss=_minimumVelocityForSwipeToDismiss;
+@property(nonatomic) double criticalDismissalThresholdDurationFactor; // @synthesize criticalDismissalThresholdDurationFactor=_criticalDismissalThresholdDurationFactor;
+@property(nonatomic) unsigned long long minimumNumberOfIconsToShowSectionHeaderInDeweySearch; // @synthesize minimumNumberOfIconsToShowSectionHeaderInDeweySearch=_minimumNumberOfIconsToShowSectionHeaderInDeweySearch;
 - (void)setDefaultValues;
 
 @end

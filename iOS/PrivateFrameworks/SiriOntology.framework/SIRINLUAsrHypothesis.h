@@ -8,23 +8,26 @@
 
 #import <SiriOntology/NSSecureCoding-Protocol.h>
 
-@class NSString, NSUUID;
+@class NSArray, NSString, NSUUID;
 
 @interface SIRINLUAsrHypothesis : NSObject <NSSecureCoding>
 {
     NSString *_utterance;
     double _probability;
+    NSArray *_asrTokens;
     NSUUID *_uuid;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
+@property(retain, nonatomic) NSArray *asrTokens; // @synthesize asrTokens=_asrTokens;
 @property(nonatomic) double probability; // @synthesize probability=_probability;
 @property(retain, nonatomic) NSString *utterance; // @synthesize utterance=_utterance;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithUtterance:(id)arg1 probability:(double)arg2 asrTokens:(id)arg3 uuid:(id)arg4;
 - (id)initWithUtterance:(id)arg1 probability:(double)arg2 uuid:(id)arg3;
 
 @end

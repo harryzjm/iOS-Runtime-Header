@@ -7,23 +7,28 @@
 #import <objc/NSObject.h>
 
 @class NSMutableDictionary, NSNotificationCenter;
+@protocol OS_dispatch_queue;
 
 @interface CAMPriorityNotificationCenter : NSObject
 {
     NSNotificationCenter *__notificationCenter;
     NSMutableDictionary *__observersByNameHighPriority;
     NSMutableDictionary *__observersByNameNormalPriority;
+    NSObject<OS_dispatch_queue> *__mutexQueue;
 }
 
 + (id)defaultCenter;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *_mutexQueue; // @synthesize _mutexQueue=__mutexQueue;
 @property(readonly, retain, nonatomic) NSMutableDictionary *_observersByNameNormalPriority; // @synthesize _observersByNameNormalPriority=__observersByNameNormalPriority;
 @property(readonly, retain, nonatomic) NSMutableDictionary *_observersByNameHighPriority; // @synthesize _observersByNameHighPriority=__observersByNameHighPriority;
 @property(readonly, retain, nonatomic) NSNotificationCenter *_notificationCenter; // @synthesize _notificationCenter=__notificationCenter;
+- (void)_mutexQueue_removeObserver:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (id)_allSubscriptions;
 - (void)_removeObserver:(id)arg1 fromObserversByName:(id)arg2;
 - (void)addObserver:(id)arg1 selector:(SEL)arg2 name:(id)arg3 object:(id)arg4;
+- (void)_mutexQueue_addObserver:(id)arg1 priority:(unsigned long long)arg2 selector:(SEL)arg3 name:(id)arg4 object:(id)arg5;
 - (void)addObserver:(id)arg1 priority:(unsigned long long)arg2 selector:(SEL)arg3 name:(id)arg4 object:(id)arg5;
 - (id)_entriesByName:(id)arg1 forPriority:(unsigned long long)arg2 creatingEmptyIfNeeded:(_Bool)arg3;
 - (id)_observersForPriority:(unsigned long long)arg1;

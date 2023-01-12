@@ -8,15 +8,16 @@
 
 #import <MediaPlayer/MPRemoteCommandDelegate_Internal-Protocol.h>
 
-@class MPAdvanceRepeatModeCommand, MPAdvanceShuffleModeCommand, MPChangePlaybackPositionCommand, MPChangePlaybackRateCommand, MPChangeQueueEndActionCommand, MPChangeRepeatModeCommand, MPChangeShuffleModeCommand, MPFeedbackCommand, MPInsertIntoPlaybackQueueCommand, MPRatingCommand, MPRemoteCommand, MPReorderQueueCommand, MPSetPlaybackQueueCommand, MPSetPlaybackSessionCommand, MPSkipIntervalCommand, MRPlayerPath, NSMutableArray, NSString;
+@class MPAdvanceRepeatModeCommand, MPAdvanceShuffleModeCommand, MPChangePlaybackPositionCommand, MPChangePlaybackRateCommand, MPChangeQueueEndActionCommand, MPChangeRepeatModeCommand, MPChangeShuffleModeCommand, MPFeedbackCommand, MPInsertIntoPlaybackQueueCommand, MPPreloadPlaybackSessionCommand, MPRatingCommand, MPRemoteCommand, MPReorderQueueCommand, MPSetPlaybackQueueCommand, MPSetPlaybackSessionCommand, MPSetPriorityForPlaybackSessionCommand, MPSkipIntervalCommand, MRPlayerPath, NSMutableArray, NSString;
 @protocol OS_dispatch_queue;
 
 @interface MPRemoteCommandCenter : NSObject <MPRemoteCommandDelegate_Internal>
 {
     NSMutableArray *_activeCommands;
     NSObject<OS_dispatch_queue> *_serialQueue;
-    void *_mediaRemoteCommandHandler;
+    id _mediaRemoteCommandHandler;
     _Bool _scheduledSupportedCommandsChangedNotification;
+    _Bool _commandHandlersRegistered;
     _Bool _canBeNowPlayingApplication;
     MRPlayerPath *_playerPath;
     _Bool _processingEvent;
@@ -58,28 +59,41 @@
     MPFeedbackCommand *_addNowPlayingItemToLibraryCommand;
     MPFeedbackCommand *_addItemToLibraryCommand;
     MPSetPlaybackSessionCommand *_setPlaybackSessionCommand;
+    MPPreloadPlaybackSessionCommand *_preloadPlaybackSessionCommand;
+    MPSetPriorityForPlaybackSessionCommand *_setPriorityForPlaybackSessionCommand;
+    MPRemoteCommand *_discardPlaybackSessionCommand;
     MPRemoteCommand *_reshuffleCommand;
     MPChangeQueueEndActionCommand *_changeQueueEndActionCommand;
-    NSString *_playerID;
+    MPRemoteCommand *_leaveSharedPlaybackSessionCommand;
+    MPRemoteCommand *_postEventNoticeCommand;
 }
 
 + (void)getPendingCommandTypesWithCompletion:(CDUnknownBlockType)arg1;
 + (long long)_numberOfCommandCentersWithTargets;
++ (id)commandCenterForPlayerPath:(id)arg1;
 + (id)commandCenterForPlayerID:(id)arg1;
 + (id)sharedCommandCenter;
 + (void)updateLaunchCommandsWithConfigurationHandler:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool wantsSerializedEventDelivery; // @synthesize wantsSerializedEventDelivery=_wantsSerializedEventDelivery;
 @property(nonatomic) _Bool disableAutomaticCanBeNowPlaying; // @synthesize disableAutomaticCanBeNowPlaying=_disableAutomaticCanBeNowPlaying;
-@property(readonly, copy, nonatomic) NSString *playerID; // @synthesize playerID=_playerID;
+@property(readonly, copy, nonatomic) MRPlayerPath *playerPath; // @synthesize playerPath=_playerPath;
 - (void)_stopMediaRemoteSync;
 - (void)_startMediaRemoteSync;
 - (void)_scheduleSupportedCommandsChanged;
+- (id)_onQueue_stateDictionary;
+- (_Bool)containsCommand:(id)arg1;
+- (void)_updateCanBeNowPlayingApplicationIfNeeded;
 - (void)_commandTargetsDidChangeNotification:(id)arg1;
 - (id)_createRemoteCommandWithConcreteClass:(Class)arg1 mediaRemoteType:(unsigned int)arg2;
 - (id)_activeCommands;
+@property(readonly, nonatomic) MPRemoteCommand *postEventNoticeCommand; // @synthesize postEventNoticeCommand=_postEventNoticeCommand;
+@property(readonly, nonatomic) MPRemoteCommand *leaveSharedPlaybackSessionCommand; // @synthesize leaveSharedPlaybackSessionCommand=_leaveSharedPlaybackSessionCommand;
 @property(readonly, nonatomic) MPChangeQueueEndActionCommand *changeQueueEndActionCommand; // @synthesize changeQueueEndActionCommand=_changeQueueEndActionCommand;
 @property(readonly, nonatomic) MPRemoteCommand *reshuffleCommand; // @synthesize reshuffleCommand=_reshuffleCommand;
+@property(readonly, nonatomic) MPRemoteCommand *discardPlaybackSessionCommand; // @synthesize discardPlaybackSessionCommand=_discardPlaybackSessionCommand;
+@property(readonly, nonatomic) MPSetPriorityForPlaybackSessionCommand *setPriorityForPlaybackSessionCommand; // @synthesize setPriorityForPlaybackSessionCommand=_setPriorityForPlaybackSessionCommand;
+@property(readonly, nonatomic) MPPreloadPlaybackSessionCommand *preloadPlaybackSessionCommand; // @synthesize preloadPlaybackSessionCommand=_preloadPlaybackSessionCommand;
 @property(readonly, nonatomic) MPSetPlaybackSessionCommand *setPlaybackSessionCommand; // @synthesize setPlaybackSessionCommand=_setPlaybackSessionCommand;
 @property(readonly, nonatomic) MPFeedbackCommand *addItemToLibraryCommand; // @synthesize addItemToLibraryCommand=_addItemToLibraryCommand;
 @property(readonly, nonatomic) MPFeedbackCommand *addNowPlayingItemToLibraryCommand; // @synthesize addNowPlayingItemToLibraryCommand=_addNowPlayingItemToLibraryCommand;
@@ -117,9 +131,13 @@
 - (void)getPendingCommandTypesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_flushEventQueue;
 - (void)dispatchCommandEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_pushMediaRemoteCommand:(unsigned int)arg1 withOptions:(struct __CFDictionary *)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_pushMediaRemoteCommand:(unsigned int)arg1 withOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)remoteCommandDidMutatePropagatableProperty:(id)arg1;
+@property(readonly, nonatomic) _Bool canBeNowPlayingApplication;
+@property(readonly, nonatomic) _Bool commandHandlersRegistered;
+@property(readonly, copy, nonatomic) NSString *playerID;
 - (void)dealloc;
+- (id)initWithPlayerPath:(id)arg1;
 - (id)initWithPlayerID:(id)arg1;
 
 // Remaining properties

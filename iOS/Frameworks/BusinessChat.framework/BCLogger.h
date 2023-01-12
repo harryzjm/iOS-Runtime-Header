@@ -10,6 +10,7 @@
 {
 }
 
++ (void)logEventWithName:(id)arg1 businessURI:(id)arg2 callToActionText:(id)arg3 bizItemReturnedAfterAction:(_Bool)arg4 latency:(long long)arg5;
 - (void)mt_log_icloud_messages_apps_businessframework:(id)arg1;
 
 @end

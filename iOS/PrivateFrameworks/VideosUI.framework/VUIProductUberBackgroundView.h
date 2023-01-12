@@ -4,33 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
-
-@class CAGradientLayer, UIVisualEffectView, _TVImageView;
+@class CAGradientLayer, UIView, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
-@interface VUIProductUberBackgroundView : UIView
+@interface VUIProductUberBackgroundView
 {
     _Bool _isChannelBanner;
-    _TVImageView *_imageView;
-    long long _configuredBlurInterfaceStyle;
-    CAGradientLayer *_maskGradientLayer;
+    UIView *_imageView;
     UIVisualEffectView *_blurEffectView;
+    unsigned long long _configuredBlurInterfaceStyle;
+    CAGradientLayer *_maskGradientLayer;
     double _contentOffset;
     struct CGSize _imageSize;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) double contentOffset; // @synthesize contentOffset=_contentOffset;
-@property(retain, nonatomic) UIVisualEffectView *blurEffectView; // @synthesize blurEffectView=_blurEffectView;
 @property(retain, nonatomic) CAGradientLayer *maskGradientLayer; // @synthesize maskGradientLayer=_maskGradientLayer;
-@property(nonatomic) long long configuredBlurInterfaceStyle; // @synthesize configuredBlurInterfaceStyle=_configuredBlurInterfaceStyle;
-@property(retain, nonatomic) _TVImageView *imageView; // @synthesize imageView=_imageView;
+@property(nonatomic) unsigned long long configuredBlurInterfaceStyle; // @synthesize configuredBlurInterfaceStyle=_configuredBlurInterfaceStyle;
+@property(readonly, nonatomic) UIVisualEffectView *blurEffectView; // @synthesize blurEffectView=_blurEffectView;
+@property(retain, nonatomic) UIView *imageView; // @synthesize imageView=_imageView;
 @property(nonatomic) struct CGSize imageSize; // @synthesize imageSize=_imageSize;
 @property(nonatomic) _Bool isChannelBanner; // @synthesize isChannelBanner=_isChannelBanner;
-- (void)layoutSubviews;
+- (void)_configureGradientLayer:(id)arg1 currentSizeClass:(long long)arg2 mainRect:(struct CGRect)arg3;
+- (struct CGSize)vui_layoutSubviews:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
 - (void)setImageOffset:(double)arg1;
-- (void)configureBlurWithInterfaceStyle:(long long)arg1;
+- (void)setMasksBlur:(_Bool)arg1;
+- (void)configureBlurWithInterfaceStyle:(unsigned long long)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

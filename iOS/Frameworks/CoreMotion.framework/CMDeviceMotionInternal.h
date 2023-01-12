@@ -22,14 +22,16 @@
     _Bool fDoingBiasEstimation;
     float fHeading;
     float fHeadingAccuracy;
+    _Bool fFusedWithVision;
+    _Bool fUsingVisionCorrections;
     long long fSensorLocation;
 }
 
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)initWithDeviceMotion:(CDStruct_69e6d857)arg1 internal:(CDStruct_37a3040a)arg2;
-- (void)setDeviceMotion:(CDStruct_69e6d857)arg1 internal:(CDStruct_37a3040a)arg2;
+- (id)initWithDeviceMotion:(CDStruct_227c825c)arg1 internal:(CDStruct_37a3040a)arg2;
+- (void)setDeviceMotion:(CDStruct_227c825c)arg1 internal:(CDStruct_37a3040a)arg2;
 
 @end
 

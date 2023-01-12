@@ -21,6 +21,8 @@
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)valueDescriptionForFlag:(long long)arg1 object:(id)arg2 ofOtherSetting:(unsigned long long)arg3;
 - (id)keyDescriptionForOtherSetting:(unsigned long long)arg1;
+@property(readonly, nonatomic) long long playbackControlsState;
+@property(readonly, nonatomic) unsigned long long _debugValidationOrientationMask;
 @property(readonly, nonatomic) NSArray *multitaskingDragExclusionRects;
 @property(readonly, nonatomic) long long preferredPointerLockStatus;
 @property(readonly, nonatomic) struct CGRect screenFocusedFrame;

@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <ExposureNotification/CUXPCCodable-Protocol.h>
+
 @class NSData, NSString;
 
-@interface ENSignature : NSObject
+@interface ENSignature : NSObject <CUXPCCodable>
 {
     unsigned int _batchNumber;
     unsigned int _batchCount;
@@ -29,6 +31,9 @@
 @property(nonatomic) unsigned int batchNumber; // @synthesize batchNumber=_batchNumber;
 @property(copy, nonatomic) NSString *androidBundleID; // @synthesize androidBundleID=_androidBundleID;
 @property(copy, nonatomic) NSString *appleBundleID; // @synthesize appleBundleID=_appleBundleID;
+- (id)description;
+- (void)encodeWithXPCObject:(id)arg1;
+- (id)initWithXPCObject:(id)arg1 error:(id *)arg2;
 - (_Bool)_encodeInfoWithProtobufCoder:(id)arg1 error:(id *)arg2;
 - (_Bool)encodeWithProtobufCoder:(id)arg1 error:(id *)arg2;
 - (_Bool)_readSignatureInfoPtr:(const char *)arg1 length:(unsigned long long)arg2 error:(id *)arg3;

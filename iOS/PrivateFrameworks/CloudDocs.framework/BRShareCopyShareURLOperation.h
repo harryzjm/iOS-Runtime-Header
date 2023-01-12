@@ -24,7 +24,7 @@
 - (void)main;
 - (id)initWithFileURL:(id)arg1 documentType:(id)arg2;
 - (id)initWithShare:(id)arg1 documentType:(id)arg2;
-- (id)_initWithShare:(id)arg1 documentType:(id)arg2;
+- (id)initWithShare:(id)arg1 fileURL:(id)arg2 documentType:(id)arg3;
 
 @end
 

@@ -8,7 +8,5 @@
 
 @interface NSExtension (TestFlightService)
 - (id)testFlightServiceExtensionCustomServiceTime;
-- (id)testFlightServiceExtensionContainerBundleIdentifier;
-- (id)testFlightServiceExtensionContainerBundleProxy;
 @end
 

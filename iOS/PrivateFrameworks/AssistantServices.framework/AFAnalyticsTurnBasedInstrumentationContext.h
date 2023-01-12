@@ -17,10 +17,12 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)newTurnBasedContextWithPreviousTurnID:(id)arg1 analytics:(id)arg2;
 + (id)newTurnBasedContextWithPreviousTurnID:(id)arg1;
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)nextTurnBasedContextForAnalytics:(id)arg1;
 - (id)nextTurnBasedContext;
 - (void)emitInstrumentation:(id)arg1;
 - (void)emitInstrumentation:(id)arg1 machAbsoluteTime:(unsigned long long)arg2;

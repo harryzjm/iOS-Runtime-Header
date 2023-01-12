@@ -111,7 +111,7 @@
 @property(readonly, nonatomic) TSWPInteractiveCanvasController *interactiveCanvasController; // @synthesize interactiveCanvasController=_interactiveCanvasController;
 - (_Bool)shouldShowSelectedTextAsFocused;
 @property(readonly, nonatomic) _Bool suppressesTextInspector;
-- (void)addAllDictationInterpretationRangesInRange:(struct _NSRange)arg1 toRanges:(struct TSWPRangeVector *)arg2;
+- (void)addAllDictationInterpretationRangesInRange:(struct _NSRange)arg1 toRanges:(void *)arg2;
 - (id)dictationInterpretationsAtCharIndex:(unsigned long long)arg1 outRange:(struct _NSRange *)arg2;
 - (void)p_removeAutocorrectionAtCharIndex:(unsigned long long)arg1;
 - (int)valueForWritingDirectionPropertyForInspector:(id)arg1;
@@ -168,9 +168,9 @@
 - (_Bool)isCharIndex:(unsigned long long)arg1 withinTextUnit:(long long)arg2 inDirection:(long long)arg3;
 - (unsigned long long)p_charIndexByMovingCharIndex:(unsigned long long)arg1 withEolAffinity:(_Bool *)arg2 toBoundary:(int)arg3 inDirection:(long long)arg4 preferPosition:(double *)arg5 isLeadingEdge:(_Bool *)arg6;
 - (unsigned long long)charIndexByMovingPosition:(id)arg1 toBoundary:(long long)arg2 inDirection:(long long)arg3 preferPosition:(double *)arg4;
-- (const struct TSWPLineFragment *)p_nearestLineFragmentWithSameVerticalPositionAs:(unsigned long long)arg1 xPos:(double)arg2 inColumn:(id)arg3;
-- (const struct TSWPLineFragment *)p_lastVisibleLineFragmentForCharIndex:(unsigned long long)arg1 eol:(_Bool)arg2;
-- (const struct TSWPLineFragment *)p_lineFragmentForCharIndex:(unsigned long long)arg1 column:(id *)arg2 eol:(_Bool)arg3;
+- (const void *)p_nearestLineFragmentWithSameVerticalPositionAs:(unsigned long long)arg1 xPos:(double)arg2 inColumn:(id)arg3;
+- (const void *)p_lastVisibleLineFragmentForCharIndex:(unsigned long long)arg1 eol:(_Bool)arg2;
+- (const void *)p_lineFragmentForCharIndex:(unsigned long long)arg1 column:(id *)arg2 eol:(_Bool)arg3;
 - (id)logicalToVisualSelection:(id)arg1;
 - (id)calculateVisualRunsFromSelection:(id)arg1 updateControllerSelection:(_Bool)arg2;
 - (void)invalidateSelectionVisualRuns;
@@ -335,11 +335,10 @@
 @property(readonly, retain, nonatomic) TSKSelection<TSDTextSelection> *textInputSelection;
 - (struct _NSRange)tsax_rangeOfLineFragmentAtCharIndex:(unsigned long long)arg1;
 - (id)tsax_listItemLabelForCharIndex:(unsigned long long)arg1 textIsLiteral:(_Bool *)arg2;
-- (id)_repsForStorage:(id)arg1 selection:(id)arg2;
 - (id)dragItemForCurrentSelectionWithDragInteraction:(id)arg1 session:(id)arg2 withTouchPoint:(struct CGPoint)arg3;
 - (unsigned long long)p_getVisualInsertionPointIndexForString:(id)arg1 selection:(id)arg2;
 - (unsigned long long)p_getVisualDeletionIndexForSelection:(id)arg1 backward:(_Bool *)arg2;
-- (const struct TSWPLineFragment *)p_lineFragmentWithCaretInfo:(CDStruct_7549c2a6 *)arg1 forSelection:(id)arg2;
+- (const void *)p_lineFragmentWithCaretInfo:(CDStruct_7549c2a6 *)arg1 forSelection:(id)arg2;
 - (int)p_writingDirectionForCharAtIndex:(unsigned long long)arg1;
 - (void)p_selection:(id)arg1 toGlyphRange:(CDStruct_bccfccf2 *)arg2;
 - (unsigned long long)p_leftEdgeForSelection:(id)arg1 withLeadingEdge:(_Bool *)arg2;

@@ -11,6 +11,7 @@
 @protocol FAServiceProtocol <NSObject>
 - (void)didDeleteAccount:(ACAccount *)arg1 replyBlock:(void (^)(_Bool))arg2;
 - (void)didAddAccount:(ACAccount *)arg1 replyBlock:(void (^)(_Bool))arg2;
+- (void)runHeartbeatWithOptions:(NSDictionary *)arg1 replyBlock:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)fetchFollowupsWithAltDSID:(NSString *)arg1 options:(NSDictionary *)arg2 replyBlock:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)fetchEligibilityForPropertyName:(NSString *)arg1 bundleID:(NSString *)arg2 completion:(void (^)(unsigned long long, NSError *))arg3;
 - (void)launchOutOfProcessFamilyWithOptions:(NSDictionary *)arg1 completion:(void (^)(FACircleStateResponse *))arg2;

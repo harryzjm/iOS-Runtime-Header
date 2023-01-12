@@ -14,9 +14,8 @@
 }
 
 - (void).cxx_destruct;
-- (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
 - (void)locationManagerDidChangeAuthorization:(id)arg1;
-- (_Bool)shouldRun;
+- (_Bool)isTrue;
 - (void)dealloc;
 - (void)didRemoveLastObserver;
 - (void)didAddFirstObserver;

@@ -32,17 +32,15 @@
 }
 
 + (id)new;
-+ (id)keyDictionaryForQuery:(id)arg1;
 + (id)formatterWithQuery:(id)arg1;
 - (void).cxx_destruct;
-- (id)_localizedStringForKey:(id)arg1;
+- (id)inviteLinkLabel;
 - (id)timeLeftLabel;
 - (id)streetLabel;
 - (id)distanceLabel;
 - (id)destinationLabel;
 - (id)etaLabel;
 - (id)attributionPattern;
-- (id)itemLabelForBundleId:(id)arg1 typeLabel:(id)arg2;
 - (id)navigationItemLabelForTypeLabel:(id)arg1 destination:(id)arg2;
 - (id)formattedTimeInterval:(double)arg1;
 - (id)makeDateComponentFormatter;
@@ -54,10 +52,8 @@
 - (id)makeMeasurementDecimalFormatter;
 - (id)makeMeasurementWholeFormatter;
 - (id)localizedAppNameForBundleIdentifier:(id)arg1;
-- (void)_precacheDateFormats;
 - (id)formattedStringsForLabels:(id)arg1;
 - (id)formattedStringForLabel:(id)arg1;
-- (void)_initializeLocalizedLableCache;
 - (id)formattedEventTime:(id)arg1;
 - (id)formattedBirthday:(id)arg1;
 - (id)makeBirthdayFormatter;
@@ -65,11 +61,6 @@
 - (id)makeYearlessChineseBirthdayFormatter;
 - (id)makeLongEventFormatter;
 - (id)makeShortEventFormatter;
-- (id)_dateFromComponents:(id)arg1 destinationCalendar:(id)arg2;
-- (_Bool)_isYearlessComponents:(id)arg1;
-- (id)_dateFormatForTemplate:(id)arg1;
-- (id)_locale;
-- (id)initWithquery:(id)arg1;
 - (id)init;
 
 @end

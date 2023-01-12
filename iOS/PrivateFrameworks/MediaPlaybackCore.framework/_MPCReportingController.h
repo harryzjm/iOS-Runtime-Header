@@ -10,6 +10,7 @@
 
 @class MPAssistantAnalyticsReportingController, MPCJinglePlayActivityReportingController, MPCLyricsReportingController, MPCPlaybackEngine, MPCPlaybackHistoryController, MPCReportingPlaybackObserver, MPRTCReportingController, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MPCReportingController : NSObject <ICEnvironmentMonitorObserver>
 {
     MPCPlaybackEngine *_playbackEngine;

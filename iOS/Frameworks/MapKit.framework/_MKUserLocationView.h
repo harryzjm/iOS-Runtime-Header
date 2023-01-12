@@ -7,7 +7,7 @@
 #import <MapKit/_MKBalloonCalloutViewConfiguring-Protocol.h>
 #import <MapKit/_MKKVOProxyDelegate-Protocol.h>
 
-@class NSString, UIColor, UIImage, UIView, _MKKVOProxy, _MKUserLocationViewImageProvider;
+@class NSString, UIBlurEffect, UIColor, UIImage, UIView, _MKKVOProxy, _MKUserLocationViewImageProvider;
 
 @interface _MKUserLocationView <_MKBalloonCalloutViewConfiguring, _MKKVOProxyDelegate>
 {
@@ -58,6 +58,7 @@
 // Remaining properties
 @property(readonly, nonatomic, getter=_balloonCalloutShouldShowArrow) _Bool balloonCalloutShouldShowArrow;
 @property(readonly, nonatomic, getter=_balloonContentView) UIView *balloonContentView;
+@property(readonly, nonatomic, getter=_balloonMaterial) UIBlurEffect *balloonMaterial;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

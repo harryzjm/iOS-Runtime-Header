@@ -6,15 +6,15 @@
 
 #import <UIKit/UIView.h>
 
+#import <RealityKit/ARSessionProviding-Protocol.h>
 #import <RealityKit/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CALayer, MISSING_TYPE, NSArray;
+@class ARSession, CALayer, MISSING_TYPE, NSArray;
 
-@interface _TtC10RealityKit6ARView : UIView <UIGestureRecognizerDelegate>
+@interface _TtC10RealityKit6ARView : UIView <UIGestureRecognizerDelegate, ARSessionProviding>
 {
     MISSING_TYPE *_scene;
     MISSING_TYPE *__delegatePrivate;
-    MISSING_TYPE *debugOptions;
     MISSING_TYPE *initialized;
     MISSING_TYPE *engineStartedByThisView;
     MISSING_TYPE *currentIBL;
@@ -33,7 +33,15 @@
     MISSING_TYPE *layerHandle;
     MISSING_TYPE *updateSubscription;
     MISSING_TYPE *renderSubscription;
-    MISSING_TYPE *realityAssetCollisionSubscription;
+    MISSING_TYPE *realityFusionSession;
+    MISSING_TYPE *arSystem;
+    MISSING_TYPE *renderView;
+    MISSING_TYPE *interfaceOrientation;
+    MISSING_TYPE *lastInterfaceOrientation;
+    MISSING_TYPE *viewCounterRotating;
+    MISSING_TYPE *updateAfterCounterRotation;
+    MISSING_TYPE *sessionComponents;
+    MISSING_TYPE *__disableCounterRotation;
     MISSING_TYPE *__disableComposition;
     MISSING_TYPE *__nonARKitDevices;
     MISSING_TYPE *enablePresentsWithTransaction;
@@ -50,6 +58,10 @@
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithCoder:(id)arg1;
+- (void)didMoveToWindow;
+- (void)windowDidRotateWithNotification:(id)arg1;
+- (void)windowWillAnimateRotationWithNotification:(id)arg1;
+- (void)windowWillRotateWithNotification:(id)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)handleSingleTapWithRecognizer:(id)arg1;
@@ -63,6 +75,10 @@
 - (void)willResignActiveWithNotification:(id)arg1;
 @property(nonatomic) double contentScaleFactor;
 @property(nonatomic, readonly) CALayer *renderLayer;
+@property(nonatomic, retain) ARSession *session;
+- (void)handleScale:(id)arg1;
+- (void)handleRotation:(id)arg1;
+- (void)handleTranslation:(id)arg1;
 
 @end
 

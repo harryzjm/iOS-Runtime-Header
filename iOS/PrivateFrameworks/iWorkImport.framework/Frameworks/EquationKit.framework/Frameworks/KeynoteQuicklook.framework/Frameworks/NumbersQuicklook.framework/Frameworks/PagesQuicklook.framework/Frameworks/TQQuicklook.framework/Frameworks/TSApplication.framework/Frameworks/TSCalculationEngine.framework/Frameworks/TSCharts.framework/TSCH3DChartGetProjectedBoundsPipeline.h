@@ -8,35 +8,36 @@
 
 @interface TSCH3DChartGetProjectedBoundsPipeline
 {
-    box_80622335 mLayoutInPage;
-    box_80622335 mBodyLayoutInPage;
-    box_80622335 mContainingViewport;
-    struct ChartProjectedBoundsSpaces mSpaces;
-    TSCH3DCamera *mOriginalCamera;
-    TSCH3DChartScenePropertyAccessor *mOriginalSceneAccessor;
-    box_a3bd9649 mShadowsLayoutBounds;
-    box_a3bd9649 mLayoutBounds;
-    box_a3bd9649 mConstantDepthBodyLayoutBounds;
-    box_a3bd9649 mBodyLayoutBounds;
-    box_a3bd9649 mLabelsLayoutBounds;
-    box_a3bd9649 mChartBounds;
-    box_a3bd9649 mOrientBounds;
-    box_a3bd9649 mDrawingBounds;
-    box_a3bd9649 mLabelsBounds;
-    _Bool mEnableScaledDepth;
-    int mLabelsMode;
+    box_c88174d1 _layoutInPage;
+    box_c88174d1 _bodyLayoutInPage;
+    box_c88174d1 _containingViewport;
+    struct ChartProjectedBoundsSpaces _spaces;
+    TSCH3DCamera *_originalCamera;
+    TSCH3DChartScenePropertyAccessor *_originalSceneAccessor;
+    box_c9ef104e _shadowsLayoutBounds;
+    box_c9ef104e _layoutBounds;
+    box_c9ef104e _constantDepthBodyLayoutBounds;
+    box_c9ef104e _bodyLayoutBounds;
+    box_c9ef104e _labelsLayoutBounds;
+    box_c9ef104e _chartBounds;
+    box_c9ef104e _orientBounds;
+    box_c9ef104e _drawingBounds;
+    box_c9ef104e _labelsBounds;
+    _Bool _enableScaledDepth;
+    int _labelsMode;
 }
 
 - (id).cxx_construct;
-@property(nonatomic) int labelsMode; // @synthesize labelsMode=mLabelsMode;
-@property(nonatomic) _Bool enableScaledDepth; // @synthesize enableScaledDepth=mEnableScaledDepth;
-@property(nonatomic) box_80622335 containingViewport; // @synthesize containingViewport=mContainingViewport;
-@property(nonatomic) box_80622335 bodyLayoutInPage; // @synthesize bodyLayoutInPage=mBodyLayoutInPage;
-@property(nonatomic) box_80622335 layoutInPage; // @synthesize layoutInPage=mLayoutInPage;
-@property(readonly, nonatomic) const struct ChartProjectedBoundsSpaces *spaces;
+- (void).cxx_destruct;
+@property(nonatomic) int labelsMode; // @synthesize labelsMode=_labelsMode;
+@property(nonatomic) _Bool enableScaledDepth; // @synthesize enableScaledDepth=_enableScaledDepth;
+@property(nonatomic) box_c88174d1 containingViewport; // @synthesize containingViewport=_containingViewport;
+@property(nonatomic) box_c88174d1 bodyLayoutInPage; // @synthesize bodyLayoutInPage=_bodyLayoutInPage;
+@property(nonatomic) box_c88174d1 layoutInPage; // @synthesize layoutInPage=_layoutInPage;
+@property(readonly, nonatomic) const void *spaces;
 - (_Bool)run;
 - (void)updateBounds;
-- (box_a3bd9649)p_extendLabelsBoundsToBounds:(const box_a3bd9649 *)arg1;
+- (box_c9ef104e)p_extendLabelsBoundsToBounds:(const void *)arg1;
 - (void)updateLayoutBoundsIfNecessary;
 - (void)updateRenderBounds;
 - (void)calculateBoundsIfNecessary;
@@ -51,9 +52,9 @@
 - (id)drawingBoundsSceneObjectClasses;
 - (id)labelsSceneObjectClasses;
 - (id)chartSceneObjectClasses;
-- (box_a3bd9649)getBoundsFromObjectBoundsForScene:(id)arg1 boundsType:(int)arg2;
+- (box_c9ef104e)getBoundsFromObjectBoundsForScene:(id)arg1 boundsType:(int)arg2;
 - (id)updatedConstantDepthSceneFromScene:(id)arg1;
-- (box_a3bd9649)boundsFromObjectBoundsOfType:(int)arg1;
+- (box_c9ef104e)boundsFromObjectBoundsOfType:(int)arg1;
 - (_Bool)p_updatesLabelsOnly;
 - (_Bool)p_excludesLabels;
 - (void)dealloc;

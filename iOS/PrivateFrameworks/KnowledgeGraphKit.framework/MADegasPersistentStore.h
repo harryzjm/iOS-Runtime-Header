@@ -12,8 +12,7 @@
 
 @interface MADegasPersistentStore : NSObject <MAPersistentStoreProtocol>
 {
-    struct Database *_database;
-    unsigned long long _markerCounter;
+    void *_database;
     unsigned long long _batchCounter;
     struct os_unfair_lock_s _lock;
     unsigned long long _transactionCounter;
@@ -27,12 +26,7 @@
 }
 
 + (void)performBitmapTest;
-+ (_Bool)setMarkerAtURL:(id)arg1;
-+ (_Bool)hasMarker:(id)arg1;
-+ (void)deleteMarkerAtURL:(id)arg1;
-+ (id)_markerFilePathForPersistentStoreFileURL:(id)arg1;
-+ (void)deleteClosedDatabaseFilesAtBaseURL:(id)arg1;
-+ (void)deleteClosedDatabaseFilesAtStoreURL:(id)arg1;
++ (_Bool)deleteClosedSqliteFilesAtURL:(id)arg1 error:(id *)arg2;
 + (_Bool)destroyAtURL:(id)arg1 error:(id *)arg2;
 + (_Bool)migrateFromURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 + (_Bool)copyFromURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
@@ -47,30 +41,34 @@
 @property(retain, nonatomic) NSMutableDictionary *labelNameByDegasLabel; // @synthesize labelNameByDegasLabel=_labelNameByDegasLabel;
 @property(retain, nonatomic) NSMutableDictionary *degasLabelByLabelName; // @synthesize degasLabelByLabelName=_degasLabelByLabelName;
 @property(readonly, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
-@property(readonly, nonatomic) _Bool hasMarker;
-- (void)setMarker;
-- (void)deleteMarker;
-- (id)_markerFilePath;
 - (_Bool)copyToURL:(id)arg1 error:(id *)arg2;
 - (_Bool)migrateToURL:(id)arg1 error:(id *)arg2;
-- (void)removeModelEdgePropertyForKey:(id)arg1 andIdentifier:(long long)arg2;
-- (void)removeModelNodePropertyForKey:(id)arg1 andIdentifier:(long long)arg2;
+- (void)removeModelEdgePropertyForKey:(id)arg1 andIdentifier:(unsigned long long)arg2;
+- (void)removeModelNodePropertyForKey:(id)arg1 andIdentifier:(unsigned long long)arg2;
 - (void)removeModelEdgesPropertiesForIdentifiers:(id)arg1;
-- (void)removeModelEdgePropertiesForIdentifier:(long long)arg1;
+- (void)removeModelEdgePropertiesForIdentifier:(unsigned long long)arg1;
 - (void)removeModelNodesPropertiesForIdentifiers:(id)arg1;
-- (void)removeModelNodePropertiesForIdentifier:(long long)arg1;
-- (void)setEdgeWeight:(float)arg1 forIdentifier:(long long)arg2;
-- (void)setNodeWeight:(float)arg1 forIdentifier:(long long)arg2;
-- (void)setModelEdgePropertyValue:(id)arg1 forKey:(id)arg2 andIdentifier:(long long)arg3;
-- (void)_setModelEdgePropertyValue:(id)arg1 forKey:(id)arg2 andIdentifier:(long long)arg3;
-- (void)setModelNodePropertyValue:(id)arg1 forKey:(id)arg2 andIdentifier:(long long)arg3;
-- (void)_setModelNodePropertyValue:(id)arg1 forKey:(id)arg2 andIdentifier:(long long)arg3;
-- (void)setModelEdgeProperties:(id)arg1 forIdentifier:(long long)arg2 clobberExisting:(_Bool)arg3;
-- (void)setModelNodeProperties:(id)arg1 forIdentifier:(long long)arg2 clobberExisting:(_Bool)arg3;
-- (void)enumerateModelEdgesPropertiesWithBlock:(CDUnknownBlockType)arg1;
-- (void)enumerateModelNodesPropertiesWithBlock:(CDUnknownBlockType)arg1;
-- (void)enumeratePropertiesForCursor:(struct AttributeValueCursor *)arg1 block:(CDUnknownBlockType)arg2;
-- (id)propertyValueForCursor:(struct AttributeValueCursor *)arg1;
+- (void)removeModelNodePropertiesForIdentifier:(unsigned long long)arg1;
+- (void)setEdgeWeight:(float)arg1 forIdentifier:(unsigned long long)arg2;
+- (void)setNodeWeight:(float)arg1 forIdentifier:(unsigned long long)arg2;
+- (void)setModelEdgePropertyValue:(id)arg1 forKey:(id)arg2 andIdentifier:(unsigned long long)arg3;
+- (void)_setModelEdgePropertyValue:(id)arg1 forKey:(id)arg2 andIdentifier:(unsigned long long)arg3;
+- (void)setModelNodePropertyValue:(id)arg1 forKey:(id)arg2 andIdentifier:(unsigned long long)arg3;
+- (void)_setModelNodePropertyValue:(id)arg1 forKey:(id)arg2 andIdentifier:(unsigned long long)arg3;
+- (void)setModelEdgeProperties:(id)arg1 forIdentifier:(unsigned long long)arg2 clobberExisting:(_Bool)arg3;
+- (void)setModelNodeProperties:(id)arg1 forIdentifier:(unsigned long long)arg2 clobberExisting:(_Bool)arg3;
+- (void)_enumeratePropertiesForCursor:(void *)arg1 block:(CDUnknownBlockType)arg2;
+- (void)_enumerateEdgeTableWithEdgeCursor:(void *)arg1 block:(CDUnknownBlockType)arg2;
+- (void)_enumerateEdgesWithEdgeCursor:(void *)arg1 propertiesCursor:(void *)arg2 block:(CDUnknownBlockType)arg3;
+- (struct AttributeValueCursor)edgeAttributeValueCursorWithIdentifiers:(id)arg1;
+- (struct EdgeCursor)edgeCursorWithIdentifiers:(id)arg1;
+- (void)enumerateEdgesWithIdentifiers:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (void)_enumerateNodeTableWithNodeCursor:(void *)arg1 block:(CDUnknownBlockType)arg2;
+- (void)_enumerateNodesWithNodeCursor:(void *)arg1 propertiesCursor:(void *)arg2 block:(CDUnknownBlockType)arg3;
+- (struct AttributeValueCursor)nodeAttributeValueCursorWithIdentifiers:(id)arg1;
+- (struct NodeCursor)nodeCursorWithIdentifiers:(id)arg1;
+- (void)enumerateNodesWithIdentifiers:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (id)propertyValueForCursor:(void *)arg1;
 - (void)removeModelEdgesForIdentifiers:(id)arg1;
 - (void)removeModelEdgeForIdentifier:(unsigned long long)arg1;
 - (void)addEdge:(id)arg1 requiresTesting:(_Bool)arg2;
@@ -81,13 +79,11 @@
 - (void)enumerateModelEdgesForDomains:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateModelEdgesForIdentifiers:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateModelEdgesWithBlock:(CDUnknownBlockType)arg1;
-- (void)_enumerateModelEdgesForCursor:(struct EdgeCursor *)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateModelNodesForLabels:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateModelNodesForDomains:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateModelNodesForIdentifiers:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateModelNodesWithBlock:(CDUnknownBlockType)arg1;
-- (void)_enumerateModelNodesForCursor:(struct NodeCursor *)arg1 withBlock:(CDUnknownBlockType)arg2;
-- (id)returnLabelAndDomain:(short *)arg1 forDegasLabels:(struct Bitmap *)arg2;
+- (id)returnLabelAndDomain:(short *)arg1 forDegasLabels:(void *)arg2;
 - (id)propertyNameForAttrId:(unsigned long long)arg1;
 - (unsigned long long)attrIdForPropertyName:(id)arg1 sampleValue:(id)arg2;
 - (short)matisseDomainForDegasLabel:(unsigned long long)arg1;
@@ -114,7 +110,7 @@
 - (void)save:(CDUnknownBlockType)arg1;
 - (id)initWithFileURL:(id)arg1 options:(long long)arg2;
 - (void)dealloc;
-- (struct Database *)database;
+- (void *)database;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

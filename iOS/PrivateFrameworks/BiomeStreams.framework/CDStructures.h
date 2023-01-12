@@ -20,3 +20,21 @@ typedef struct {
     unsigned int val[8];
 } CDStruct_4c969caf;
 
+// Ambiguous groups
+typedef struct {
+    unsigned int reason:1;
+    unsigned int isStart:1;
+} CDStruct_a5d77586;
+
+typedef struct {
+    unsigned int absoluteTimestamp:1;
+} CDStruct_d3e759b0;
+
+typedef struct {
+    unsigned int isStart:1;
+} CDStruct_95016f1d;
+
+typedef struct {
+    unsigned int score:1;
+} CDStruct_4b1634df;
+

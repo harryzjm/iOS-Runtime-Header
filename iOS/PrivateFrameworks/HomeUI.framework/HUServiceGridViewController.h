@@ -22,17 +22,16 @@
 @property(nonatomic) _Bool shouldShowLoadingState; // @synthesize shouldShowLoadingState=_shouldShowLoadingState;
 @property(nonatomic) long long scrollDirection; // @synthesize scrollDirection=_scrollDirection;
 @property(nonatomic) unsigned long long contentMargins; // @synthesize contentMargins=_contentMargins;
-- (void)_layoutSectionHeaders;
 - (void)layoutOptionsDidChange;
 - (id)layoutOptionsForSection:(long long)arg1;
 @property(retain, nonatomic) HUGridLayoutOptions *layoutOptions;
 - (id)_defaultLayoutOptionsForViewSize:(struct CGSize)arg1;
+- (double)headerViewHeightForSectionIndex:(unsigned long long)arg1;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (double)collectionView:(id)arg1 layout:(id)arg2 minimumLineSpacingForSectionAtIndex:(long long)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 referenceSizeForHeaderInSection:(long long)arg3;
 - (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
-- (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
 - (void)configureCell:(id)arg1 forItem:(id)arg2;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (id)_performTapActionForItem:(id)arg1;

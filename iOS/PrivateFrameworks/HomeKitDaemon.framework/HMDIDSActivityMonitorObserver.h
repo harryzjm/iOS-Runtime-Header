@@ -10,17 +10,19 @@
 #import <HomeKitDaemon/IDSActivityMonitorListenerDelegate-Protocol.h>
 
 @class HMDIDSActivityMonitor, NSMutableDictionary, NSString;
-@protocol NSLocking;
+@protocol HMDIDSActivityMonitorObserverRegistrationManager, NSLocking;
 
 @interface HMDIDSActivityMonitorObserver : NSObject <IDSActivityMonitorListenerDelegate, HMFLogging>
 {
     id <NSLocking> _lock;
     HMDIDSActivityMonitor *_activityMonitor;
     NSMutableDictionary *_subactivityToDelegatesMap;
+    id <HMDIDSActivityMonitorObserverRegistrationManager> _dataSource;
 }
 
 + (id)logCategory;
 - (void).cxx_destruct;
+@property(retain) id <HMDIDSActivityMonitorObserverRegistrationManager> dataSource; // @synthesize dataSource=_dataSource;
 @property(readonly) NSMutableDictionary *subactivityToDelegatesMap; // @synthesize subactivityToDelegatesMap=_subactivityToDelegatesMap;
 @property(readonly) HMDIDSActivityMonitor *activityMonitor; // @synthesize activityMonitor=_activityMonitor;
 - (id)logIdentifier;
@@ -29,6 +31,7 @@
 - (void)startObservingPresenceForDevice:(id)arg1;
 - (void)removeObserver:(id)arg1 forSubActivity:(id)arg2;
 - (void)addObserver:(id)arg1 forSubActivity:(id)arg2;
+- (void)configureWithDataSource:(id)arg1;
 - (id)initWithActivityMonitor:(id)arg1;
 
 // Remaining properties

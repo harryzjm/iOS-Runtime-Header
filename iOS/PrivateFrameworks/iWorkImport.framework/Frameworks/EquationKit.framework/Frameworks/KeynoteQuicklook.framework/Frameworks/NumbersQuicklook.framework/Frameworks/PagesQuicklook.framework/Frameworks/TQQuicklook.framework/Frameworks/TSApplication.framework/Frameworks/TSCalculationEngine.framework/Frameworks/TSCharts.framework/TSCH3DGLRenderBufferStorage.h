@@ -9,7 +9,7 @@
 }
 
 + (id)storage;
-- (void)allocateStorageWithFramebufferAttributes:(const struct FramebufferAttributes *)arg1 size:(tvec2_3b141483 *)arg2 internalFormat:(unsigned int)arg3;
+- (void)allocateStorageWithFramebufferAttributes:(const struct FramebufferAttributes *)arg1 size:(void *)arg2 internalFormat:(unsigned int)arg3;
 - (_Bool)isEqual:(id)arg1;
 
 @end

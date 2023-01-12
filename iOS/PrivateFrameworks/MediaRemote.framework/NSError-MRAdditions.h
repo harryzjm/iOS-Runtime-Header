@@ -7,7 +7,10 @@
 #import <Foundation/NSError.h>
 
 @interface NSError (MRAdditions)
+- (id)mr_protobuf;
+- (id)mr_initWithProtobuf:(id)arg1;
 - (id)recursiveUnderlyingError;
+- (id)mr_errorByEnvelopingWithMRError:(long long)arg1;
 - (id)initWithMRError:(long long)arg1 userInfo:(id)arg2;
 - (id)initWithMRError:(long long)arg1 description:(id)arg2;
 - (id)initWithMRError:(long long)arg1 format:(id)arg2;

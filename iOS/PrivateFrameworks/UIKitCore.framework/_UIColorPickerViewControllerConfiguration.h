@@ -9,7 +9,7 @@
 #import <UIKitCore/NSCopying-Protocol.h>
 #import <UIKitCore/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface _UIColorPickerViewControllerConfiguration : NSObject <NSSecureCoding, NSCopying>
 {
@@ -19,10 +19,12 @@
     long long __userInterfaceStyleForGrid;
     NSString *_title;
     double __keyboardSpace;
+    NSArray *__suggestedColors;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *_suggestedColors; // @synthesize _suggestedColors=__suggestedColors;
 @property(nonatomic) double _keyboardSpace; // @synthesize _keyboardSpace=__keyboardSpace;
 @property(nonatomic) _Bool _isEmbedded; // @synthesize _isEmbedded=__isEmbedded;
 @property(nonatomic) _Bool showsAlpha; // @synthesize showsAlpha=_showsAlpha;

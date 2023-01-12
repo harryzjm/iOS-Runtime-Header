@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     int mPrevRowIndex;
     int mPrevColumnIndex;
     GQDTTable *mTable;
-    vector_195fe69b *mCellCountInColumns;
+    void *mCellCountInColumns;
     int mGroupLevel;
     _Bool mSplitTable;
     double mCurrentTablePosition;
@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)splitTable;
 - (void)setGroupLevel:(int)arg1;
 - (int)groupLevel;
-- (vector_195fe69b *)cellCountInColumns;
+- (void *)cellCountInColumns;
 - (void)setTable:(id)arg1;
 - (id)table;
 - (void)setPrevRowIndex:(int)arg1 columnIndex:(int)arg2;

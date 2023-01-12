@@ -11,32 +11,28 @@
 @interface PLDatabaseContext : NSObject
 {
     PLPhotoLibraryBundle *_libraryBundle;
-    PLLazyObject *_lazyHighPriorityTransientLibrary;
-    PLLazyObject *_lazyLowPriorityTransientLibrary;
-    PLLazyObject *_lazyCplLibrary;
     PLLazyObject *_lazyMomentLibrary;
     PLLazyObject *_lazyNonTransientLibrary;
 }
 
++ (id)newShortLivedLibraryWithName:(const char *)arg1 bundle:(id)arg2;
++ (void)_configureShortLivedLibraryOptionsForAutomaticPin:(id)arg1;
 - (void).cxx_destruct;
-- (id)nonTransientLibrary;
+- (id)sharedNonTransientLibrary;
 - (id)newNonTransientLibrary;
 - (id)momentLibrary;
 - (id)newMomentLibrary;
-- (id)cplLibrary;
-- (id)newCplLibrary;
-- (void)performTransactionSync:(CDUnknownBlockType)arg1;
-- (void)performSync:(CDUnknownBlockType)arg1;
-- (void)performTransaction:(CDUnknownBlockType)arg1;
-- (void)perform:(CDUnknownBlockType)arg1;
-- (id)transientLibraryWithCurrentQoS;
-- (id)lowPriorityTransientLibrary;
-- (id)newLowPriorityTransientLibrary;
-- (id)highPriorityTransientLibrary;
-- (id)newHighPriorityTransientLibrary;
+- (id)newShortLivedCplLibraryWithNameSuffix:(const char *)arg1;
+- (id)newShortLivedLibraryForHistoryPersistenceReadingWithName:(const char *)arg1;
+- (id)newShortLivedLibraryWithName:(const char *)arg1;
+- (void)performTransactionSync:(CDUnknownBlockType)arg1 withName:(const char *)arg2;
+- (void)performSync:(CDUnknownBlockType)arg1 withName:(const char *)arg2;
+- (void)performTransaction:(CDUnknownBlockType)arg1 withName:(const char *)arg2;
+- (void)perform:(CDUnknownBlockType)arg1 withName:(const char *)arg2;
 - (void)dealloc;
 - (void)invalidate;
 - (id)initWithLibraryBundle:(id)arg1;
+- (id)newShortLivedMacOpenClientLibraryWithName:(const char *)arg1;
 
 @end
 

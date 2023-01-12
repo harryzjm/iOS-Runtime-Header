@@ -24,9 +24,8 @@ __attribute__((visibility("hidden")))
 @property(readonly) __weak HMDHomeAdministratorHandler *handler; // @synthesize handler=_handler;
 @property(readonly) __weak id <HMFMessageReceiver> receiver; // @synthesize receiver=_receiver;
 - (id)logIdentifier;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;
-- (void)__handleMessage:(id)arg1;
+- (void)__handleXPCMessage:(id)arg1;
 - (void)registerForMessage:(id)arg1 policies:(id)arg2;
 - (id)shortDescription;
 - (void)dealloc;
@@ -36,6 +35,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property(readonly) Class superclass;
 
 @end

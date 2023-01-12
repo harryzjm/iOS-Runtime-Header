@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSBundle, NSDictionary, NSString, OBImage;
+@class NSArray, NSDictionary, NSString, OBBundle, OBImage;
 
 @interface OBPrivacyFlow
 {
-    NSBundle *_bundle;
+    OBBundle *_bundle;
     NSString *_splashContentName;
     NSDictionary *_splashPlist;
     _Bool _buttonIconLoaded;
@@ -36,6 +36,7 @@
 - (id)_textForConditionalItem:(id)arg1 language:(id)arg2 preferredDeviceType:(unsigned long long)arg3;
 - (_Bool)_conformsToRequirements:(id)arg1;
 - (_Bool)_conformsToRequirement:(id)arg1;
+- (id)_deviceClass;
 @property(readonly, nonatomic) _Bool showInCombinedList;
 - (void)setButtonIcon:(id)arg1;
 @property(readonly, nonatomic) OBImage *buttonIcon;
@@ -44,6 +45,7 @@
 @property(readonly, nonatomic, getter=isPersonallyIdentifiable) _Bool personallyIdentifiable;
 - (id)_bundleImageNamed:(id)arg1;
 - (id)_splashLocalizedStringForKey:(id)arg1 language:(id)arg2 table:(id)arg3 preferredDeviceType:(unsigned long long)arg4;
+- (id)_stringForPlaceholderBundleWithString:(id)arg1;
 - (id)_splashLocalizedStringForKey:(id)arg1 language:(id)arg2 preferredDeviceType:(unsigned long long)arg3;
 @property(readonly, nonatomic) _Bool platformSupported;
 - (id)_currentPlatform;

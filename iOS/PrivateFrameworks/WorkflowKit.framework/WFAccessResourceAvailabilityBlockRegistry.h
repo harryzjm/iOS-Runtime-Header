@@ -15,6 +15,7 @@
 + (CDUnknownBlockType)remoteServerAccessResourceAvailabilityBlock;
 + (void)setContactAccessResourceAvailabilityBlock:(CDUnknownBlockType)arg1;
 + (CDUnknownBlockType)contactAccessResourceAvailabilityBlock;
++ (void)registerAvailabilityBlocksInActionKit;
 
 @end
 

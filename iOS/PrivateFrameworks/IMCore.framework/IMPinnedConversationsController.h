@@ -6,29 +6,34 @@
 
 #import <objc/NSObject.h>
 
-@class NSOrderedSet, NSUbiquitousKeyValueStore;
+@class NSDictionary, NSOrderedSet, NSUbiquitousKeyValueStore;
 
 @interface IMPinnedConversationsController : NSObject
 {
     _Bool _hasCompletedInitialization;
     _Bool _hasDefferedPinnedConversationsDidChangeNotification;
+    long long _numberOfPendingForceSyncs;
     NSUbiquitousKeyValueStore *_dataStore;
     NSOrderedSet *_pinnedConversationIdentifierSet;
-    long long _numberOfPendingForceSyncs;
+    NSDictionary *_chatMetadata;
 }
 
 + (id)_forceSyncDispatchQueue;
 + (id)_ubiquitousDispatchQueue;
 + (id)requiredKeys;
++ (long long)currentPinConfigurationRevision;
 + (long long)currentPinConfigurationVersion;
++ (id)pinConfigurationMigrationKey;
 + (unsigned long long)maximumNumberOfPinnedConversations;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSDictionary *chatMetadata; // @synthesize chatMetadata=_chatMetadata;
+@property(retain, nonatomic) NSOrderedSet *pinnedConversationIdentifierSet; // @synthesize pinnedConversationIdentifierSet=_pinnedConversationIdentifierSet;
+@property(retain, nonatomic) NSUbiquitousKeyValueStore *dataStore; // @synthesize dataStore=_dataStore;
 @property(nonatomic) long long numberOfPendingForceSyncs; // @synthesize numberOfPendingForceSyncs=_numberOfPendingForceSyncs;
 @property(nonatomic) _Bool hasDefferedPinnedConversationsDidChangeNotification; // @synthesize hasDefferedPinnedConversationsDidChangeNotification=_hasDefferedPinnedConversationsDidChangeNotification;
 @property(nonatomic) _Bool hasCompletedInitialization; // @synthesize hasCompletedInitialization=_hasCompletedInitialization;
-@property(retain, nonatomic) NSOrderedSet *pinnedConversationIdentifierSet; // @synthesize pinnedConversationIdentifierSet=_pinnedConversationIdentifierSet;
-@property(readonly, nonatomic) NSUbiquitousKeyValueStore *dataStore; // @synthesize dataStore=_dataStore;
+- (id)chatMetadataFromPinConfiguration:(id)arg1;
 - (id)pinnedConversationIdentifiersFromPinConfiguration:(id)arg1;
 - (id)_ubiquitousPinConfigurationInStore:(id)arg1;
 - (id)_locallyStoredPinConfiguration;
@@ -40,28 +45,32 @@
 - (_Bool)pinConfigurationIsValid:(id)arg1;
 - (_Bool)pinConfigurationHasCompatibleVersion:(id)arg1;
 - (_Bool)shouldWriteProposedPinConfiguration:(id)arg1 toUbiquitousStoreWithExistingPinConfiguration:(id)arg2;
-- (void)_updateLocalStoreWithPinConfiguration:(id)arg1;
+- (_Bool)_updateLocalStoreWithPinConfiguration:(id)arg1;
 - (void)_updateUbiquitousStoreWithPinConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateStoresWithPinConfiguration:(id)arg1;
 - (void)handleNSUbiquitousKeyValueStoreDidChangeExternallyNotification:(id)arg1;
 - (void)forceSynchronizeUbiquitousStore;
-- (void)synchronizeDataStores;
+- (void)synchronizeLocalDataStore;
 - (void)imCloudKitHooksSetEnabledDidReturn:(id)arg1;
 - (_Bool)shouldSync;
-- (id)pinConfigurationWithCurrentVersionForPinConfiguration:(id)arg1;
-- (id)pinnedConversationIdentifiers;
+- (id)validatedPinConfigurationWithCurrentVersionForPinConfiguration:(id)arg1;
+- (void)performPinConfigValidationAndMigrationIfNecessary;
+- (unsigned long long)pinIndexForChat:(id)arg1 inIdentifierSet:(id)arg2 withMetadata:(id)arg3;
+- (id)matchingIdentifierForChat:(id)arg1 inIdentifierSet:(id)arg2 withMetadata:(id)arg3;
+- (id)matchingIdentifierForChat:(id)arg1;
+- (_Bool)pinnedConversationsContainsChat:(id)arg1;
 - (void)conversationsWereDeletedWithIdentifiers:(id)arg1;
 - (void)conversationWasDeletedWithIdentifier:(id)arg1;
 - (void)_postPinnedConversationsDidChangeNotification;
 - (void)_postDeferredPinnedConversationsDidChangeNotificationIfNecessary;
-- (void)setPinnedConversationIdentifiers:(id)arg1 shouldUpdateStores:(_Bool)arg2;
-- (void)setPinnedConversationIdentifiers:(id)arg1;
-- (_Bool)pinnedConversationsContainsChat:(id)arg1;
-- (_Bool)pinnedConversationsContainsPinningIdentifier:(id)arg1;
+- (void)_setPinnedConversationIdentifiers:(id)arg1 withChatMetadata:(id)arg2 updateReason:(id)arg3 shouldUpdateStores:(_Bool)arg4;
+- (void)setPinnedChats:(id)arg1 withUpdateReason:(id)arg2;
+- (void)_handleChatGroupIDDidChangeNotification:(id)arg1;
 - (id)mostUpToDatePinConfigurationByComparingPinConfiguration:(id)arg1 toOtherPinConfiguration:(id)arg2;
-- (id)dictionaryWithPinnedConversationIdentifiers:(id)arg1;
-- (id)_dictionaryWithPinnedConversationIdentifiers:(id)arg1 timestamp:(id)arg2;
-- (void)performOneTimeFetchIfNecessary;
+- (id)_metadataDictionaryForChat:(id)arg1;
+- (id)dictionaryWithPinnedConversationIdentifiers:(id)arg1 chatMetadata:(id)arg2 updateReason:(id)arg3;
+- (id)_dictionaryWithPinnedConversationIdentifiers:(id)arg1 chatMetadata:(id)arg2 updateReason:(id)arg3 timestamp:(id)arg4;
+- (id)pinnedConversationIdentifiers;
 - (id)init;
 
 @end

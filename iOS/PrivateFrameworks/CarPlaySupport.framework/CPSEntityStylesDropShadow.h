@@ -21,6 +21,7 @@
 @property(nonatomic) double radius; // @synthesize radius=_radius;
 @property(nonatomic) struct CGSize offset; // @synthesize offset=_offset;
 @property(retain, nonatomic) UIColor *color; // @synthesize color=_color;
+- (struct CGRect)rectsForSource:(struct CGRect)arg1 shadowRect:(struct CGRect *)arg2 unionRect:(struct CGRect *)arg3 positionTransform:(struct CGAffineTransform *)arg4;
 - (void)applyShadowToLayer:(id)arg1;
 
 @end

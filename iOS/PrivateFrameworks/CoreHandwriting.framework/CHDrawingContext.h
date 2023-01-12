@@ -14,20 +14,20 @@
     long long _numberOfSubstrokes;
     long long _numberOfSegments;
     CHClassifiableDrawing *_classifiableDrawing;
-    set_54c7c768 _strokeGroup;
-    vector_afed86a5 _delayedSegmentIDs;
+    set_f63680ae _strokeGroup;
+    vector_5c2ed87a _delayedSegmentIDs;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) vector_afed86a5 delayedSegmentIDs; // @synthesize delayedSegmentIDs=_delayedSegmentIDs;
-@property(readonly, nonatomic) set_54c7c768 strokeGroup; // @synthesize strokeGroup=_strokeGroup;
+@property(readonly, nonatomic) vector_5c2ed87a delayedSegmentIDs; // @synthesize delayedSegmentIDs=_delayedSegmentIDs;
+@property(readonly, nonatomic) set_f63680ae strokeGroup; // @synthesize strokeGroup=_strokeGroup;
 @property(readonly, retain, nonatomic) CHClassifiableDrawing *classifiableDrawing; // @synthesize classifiableDrawing=_classifiableDrawing;
 @property(readonly, nonatomic) long long numberOfSegments; // @synthesize numberOfSegments=_numberOfSegments;
 @property(readonly, nonatomic) long long numberOfSubstrokes; // @synthesize numberOfSubstrokes=_numberOfSubstrokes;
 @property(readonly, nonatomic) unsigned long long edgeIndex; // @synthesize edgeIndex=_edgeIndex;
 - (void)dealloc;
-- (id)initWithEdgeIndex:(unsigned long long)arg1 numberOfSubstrokes:(long long)arg2 numberOfSegments:(long long)arg3 classifiableDrawing:(id)arg4 strokeGroup:(set_54c7c768)arg5 delayedSegmentIDs:(vector_afed86a5)arg6;
+- (id)initWithEdgeIndex:(unsigned long long)arg1 numberOfSubstrokes:(long long)arg2 numberOfSegments:(long long)arg3 classifiableDrawing:(id)arg4 strokeGroup:(set_f63680ae)arg5 delayedSegmentIDs:(vector_5c2ed87a)arg6;
 
 @end
 

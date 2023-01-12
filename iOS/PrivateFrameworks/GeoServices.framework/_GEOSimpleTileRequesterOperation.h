@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
     GEODataSessionTask *_task;
     NSString *_responseEtag;
     struct _GEOTileKey _key;
-    NSString *_editionHeader;
     _GEOSimpleTileRequesterOperation *_baseTile;
     _GEOSimpleTileRequesterOperation *_localizationTile;
     id <GEOSimpleTileRequesterOperationDelegate> _delegate;
@@ -33,12 +32,12 @@ __attribute__((visibility("hidden")))
     unsigned long long _signpostID;
     int _attempts;
     int _checksumMethod;
-    unsigned int _tileEdition;
     _Atomic unsigned int _priority;
     _Bool _finished;
     _Bool _existingCachedDataCurrent;
     _Bool _shouldReportAnalytics;
     NSString *_requestingBundleId;
+    NSString *_requestingBundleVersion;
     double _tileLoaderCreateTime;
     _Bool _shouldDownloadToDisk;
     _Bool _isRunning;
@@ -46,8 +45,8 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(nonatomic) double tileLoaderCreateTime; // @synthesize tileLoaderCreateTime=_tileLoaderCreateTime;
+@property(retain, nonatomic) NSString *requestingBundleVersion; // @synthesize requestingBundleVersion=_requestingBundleVersion;
 @property(retain, nonatomic) NSString *requestingBundleId; // @synthesize requestingBundleId=_requestingBundleId;
-@property(nonatomic) _Bool shouldReportAnalytics; // @synthesize shouldReportAnalytics=_shouldReportAnalytics;
 @property(nonatomic) _Bool shouldDownloadToDisk; // @synthesize shouldDownloadToDisk=_shouldDownloadToDisk;
 @property(readonly, nonatomic, getter=isExistingCachedDataCurrent) _Bool existingCachedDataCurrent; // @synthesize existingCachedDataCurrent=_existingCachedDataCurrent;
 @property(retain, nonatomic) NSString *responseEtag; // @synthesize responseEtag=_responseEtag;
@@ -57,8 +56,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool finished; // @synthesize finished=_finished;
 @property(retain, nonatomic) _GEOSimpleTileRequesterOperation *localizationTile; // @synthesize localizationTile=_localizationTile;
 @property(retain, nonatomic) _GEOSimpleTileRequesterOperation *baseTile; // @synthesize baseTile=_baseTile;
-@property(nonatomic) unsigned int tileEdition; // @synthesize tileEdition=_tileEdition;
-@property(retain, nonatomic) NSString *editionHeader; // @synthesize editionHeader=_editionHeader;
 @property(retain, nonatomic) GEODataSessionTask *task; // @synthesize task=_task;
 @property(retain, nonatomic) NSData *data; // @synthesize data=_data;
 @property(nonatomic) struct _GEOTileKey key; // @synthesize key=_key;
@@ -67,12 +64,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long signpostID; // @synthesize signpostID=_signpostID;
 @property(readonly, nonatomic) GEODataRequest *request; // @synthesize request=_request;
 @property(retain, nonatomic) GEODataSession *dataSession; // @synthesize dataSession=_dataSession;
-- (void)_recordAnalyticsWithError:(id)arg1;
-- (void)taskFailed:(id)arg1 withError:(id)arg2;
-- (_Bool)validateTileIntegrityForTask:(id)arg1;
 - (void)dataSession:(id)arg1 didCompleteTask:(id)arg2;
+- (void)dataSession:(id)arg1 shouldConvertDataTask:(id)arg2 toDownloadTaskForEstimatedResponseSize:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 @property(readonly, nonatomic) NSURL *downloadedFileURL;
-- (const struct _GEOTileKey *)keyPtr;
 @property(readonly, nonatomic) _Bool responseIsCacheable;
 @property(readonly, nonatomic) long long responseSource;
 @property(readonly, nonatomic) int httpResponseStatusCode;

@@ -14,14 +14,19 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *_descriptorPublisher;
     MISSING_TYPE *descriptorProvider;
     MISSING_TYPE *extensionManager;
+    MISSING_TYPE *preferences;
     MISSING_TYPE *descriptorCache;
     MISSING_TYPE *configurationService;
     MISSING_TYPE *taskService;
     MISSING_TYPE *persistentSubscriptions;
-    MISSING_TYPE *tasks;
     MISSING_TYPE *queue;
-    MISSING_TYPE *extensionEvents;
-    MISSING_TYPE *readyDataSources;
+    MISSING_TYPE *_queue_currentExtensionsAndCompletionsBeingFetched;
+    MISSING_TYPE *_queue_tasks;
+    MISSING_TYPE *_queue_extensionEvents;
+    MISSING_TYPE *_queue_readyDataSources;
+    MISSING_TYPE *queryTimerInterval;
+    MISSING_TYPE *queryTimerLeeway;
+    MISSING_TYPE *_queue_queryTimer;
 }
 
 - (void).cxx_destruct;

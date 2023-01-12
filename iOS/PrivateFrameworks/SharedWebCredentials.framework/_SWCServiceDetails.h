@@ -29,6 +29,7 @@
 + (_Bool)auditTokenHasReadAccess:(CDStruct_6ad76789)arg1;
 + (_Bool)currentProcessHasReadAccess;
 + (void)synchronizeWithCompletionHandler:(CDUnknownBlockType)arg1;
++ (void)setAdditionalServiceDetailsForApplicationIdentifiers:(id)arg1 usingContentsOfDictionary:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (void)setDeveloperModeEnabled:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (_Bool)isDeveloperModeEnabled;
 + (id)_serviceDetailsWithServiceSpecifier:(id)arg1 URLComponents:(id)arg2 limit:(unsigned long long)arg3 callerAuditToken:(const CDStruct_6ad76789 *)arg4 error:(id *)arg5;
@@ -55,7 +56,7 @@
 @property(readonly, getter=isWatchKitExtension) _Bool watchKitExtension;
 @property(readonly, getter=isEnabledByDefault) NSNumber *enabledByDefault;
 @property(readonly, getter=isAlwaysEnabled) _Bool alwaysEnabled;
-@property(readonly, getter=wasReadFromAlternateLocationOnDisk) _Bool readFromAlternateLocationOnDisk;
+@property(readonly, getter=wasProvidedByAdditionalServiceDetailsProvider) _Bool providedByAdditionalServiceDetailsProvider;
 @property(readonly, getter=wasReadFromDisk) _Bool readFromDisk;
 @property(readonly, getter=isSystemApplication) _Bool systemApplication;
 @property(readonly, getter=isUpdating) _Bool updating;

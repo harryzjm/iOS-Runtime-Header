@@ -8,7 +8,7 @@
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDBackingStoreLocal, HMDHomeManager, HMFVersion, NSMapTable, NSOperationQueue, NSString;
+@class HMDBackingStoreLocal, HMDHomeManager, NSMapTable, NSOperationQueue, NSString;
 
 @interface HMDBackingStoreSingleton : HMFObject <HMFLogging>
 {
@@ -16,7 +16,6 @@
     NSMapTable *_classToNameTransform;
     NSMapTable *_nameToClassTransform;
     NSMapTable *_objectPropertyHashLookup;
-    HMFVersion *_dataVersion;
     HMDHomeManager *_homeManager;
     HMDBackingStoreLocal *_local;
     NSOperationQueue *_queue;
@@ -28,11 +27,11 @@
 + (void)setClass:(Class)arg1 forClassName:(id)arg2;
 + (id)sharedInstance;
 + (void)start;
++ (id)dataVersion;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSOperationQueue *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) HMDBackingStoreLocal *local; // @synthesize local=_local;
 @property(readonly, nonatomic) __weak HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
-@property(retain, nonatomic) HMFVersion *dataVersion; // @synthesize dataVersion=_dataVersion;
 @property(readonly, nonatomic) NSMapTable *objectPropertyHashLookup; // @synthesize objectPropertyHashLookup=_objectPropertyHashLookup;
 @property(readonly, nonatomic) NSMapTable *nameToClassTransform; // @synthesize nameToClassTransform=_nameToClassTransform;
 @property(readonly, nonatomic) NSMapTable *classToNameTransform; // @synthesize classToNameTransform=_classToNameTransform;

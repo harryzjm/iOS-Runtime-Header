@@ -9,8 +9,10 @@
 @interface PHAssetCreationRequestPlaceholderSupport
 {
     PLClientServerTransaction *_serverTransaction;
-    long long _placeholderCreationMode;
     NSXPCConnection *_clientConnection;
+    long long _placeholderCreationMode;
+    _Bool _downloadSourceMode_shouldBakeInAdjustments;
+    _Bool _downloadSourceMode_shouldFlattenLivePhoto;
 }
 
 - (void).cxx_destruct;
@@ -21,10 +23,10 @@
 - (id)_fetchOptionsForDuplicateAssetPhotoLibraryType:(id)arg1;
 - (void)_updateManagedAssetAfterResourceDownload:(id)arg1;
 - (id)_createPlaceholderManagedAssetFromSourceManagedAsset:(id)arg1 inPhotoLibrary:(id)arg2 error:(id *)arg3;
+- (unsigned short)_bundleScopeForPlaceholderAsset;
 - (void)changeFailedOnDaemonWithLibrary:(id)arg1 error:(id)arg2;
 - (void)changeFailedOnClientWithLibrary:(id)arg1 error:(id)arg2;
 - (id)initWithXPCDict:(id)arg1 request:(id)arg2 clientAuthorization:(id)arg3;
-- (void)_setDestinationAssetAvailabilityHandler:(CDUnknownBlockType)arg1;
 - (id)initForNewObjectWithUUID:(id)arg1;
 
 @end

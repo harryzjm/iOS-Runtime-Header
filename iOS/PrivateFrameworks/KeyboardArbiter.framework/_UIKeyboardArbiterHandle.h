@@ -29,20 +29,28 @@ __attribute__((visibility("hidden")))
     _Bool _wantsFence;
     _Bool _deactivating;
     _Bool _keyboardOnScreen;
+    _Bool _multipleScenes;
     BKSProcessAssertion *_remoteKeepAliveAssertion;
     unsigned long long _remoteKeepAliveAssertionCount;
     unsigned long long _remoteKeepAliveTimerCount;
     NSArray *_cachedContext;
     BSServiceConnectionEndpointInjector *_endpointGrantInjector;
+    _Bool _acquiringFocus;
+    _Bool _requestedCorrectionOfClientSceneIdentityWhileAcquiringFocus;
+    int _prevActiveIdentifier;
     NSXPCConnection *_connection;
     double _iavHeight;
 }
 
 + (id)handlerWithArbiter:(id)arg1 forConnection:(id)arg2;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool requestedCorrectionOfClientSceneIdentityWhileAcquiringFocus; // @synthesize requestedCorrectionOfClientSceneIdentityWhileAcquiringFocus=_requestedCorrectionOfClientSceneIdentityWhileAcquiringFocus;
+@property(nonatomic, getter=isAcquiringFocus) _Bool acquiringFocus; // @synthesize acquiringFocus=_acquiringFocus;
 @property int suppressionCount; // @synthesize suppressionCount=_suppressionCount;
+@property(readonly) _Bool multipleScenes; // @synthesize multipleScenes=_multipleScenes;
 @property(readonly) _Bool deactivating; // @synthesize deactivating=_deactivating;
 @property(readonly) _Bool wantsFence; // @synthesize wantsFence=_wantsFence;
+@property int prevActiveIdentifier; // @synthesize prevActiveIdentifier=_prevActiveIdentifier;
 @property(readonly) double iavHeight; // @synthesize iavHeight=_iavHeight;
 @property(readonly) double level; // @synthesize level=_level;
 @property(readonly) unsigned long long wantedState; // @synthesize wantedState=_wantedState;
@@ -55,6 +63,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) _Bool hasHostedPids;
 - (void)signalEventSourceChanged:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setKeyboardTotalDisable:(_Bool)arg1 withFence:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)focusApplicationWithProcessIdentifier:(int)arg1 sceneIdentity:(id)arg2 stealingKeyboard:(_Bool)arg3 onCompletion:(CDUnknownBlockType)arg4;
 - (void)focusApplicationWithProcessIdentifier:(int)arg1 sceneIdentity:(id)arg2 onCompletion:(CDUnknownBlockType)arg3;
 - (void)applicationShouldFocusWithBundle:(id)arg1 onCompletion:(CDUnknownBlockType)arg2;
 - (void)invalidate;
@@ -68,6 +77,7 @@ __attribute__((visibility("hidden")))
 - (void)retrieveMoreDebugInformationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)retrieveDebugInformation:(CDUnknownBlockType)arg1;
 - (void)transition:(id)arg1 eventStage:(unsigned long long)arg2 withInfo:(id)arg3;
+- (void)notifyHostedPIDsOfSuppression:(_Bool)arg1 active:(_Bool)arg2;
 - (void)notifyHostedPIDsOfSuppression:(_Bool)arg1;
 - (void)setWindowHostingPID:(int)arg1 active:(_Bool)arg2;
 - (void)notifyIAVHeight:(double)arg1;
@@ -80,11 +90,14 @@ __attribute__((visibility("hidden")))
 - (void)_reevaluateRemoteSceneIdentity:(id)arg1;
 - (void)setSceneIdentity:(id)arg1;
 - (void)setWindowContextID:(unsigned int)arg1 sceneIdentity:(id)arg2 windowState:(unsigned long long)arg3 withLevel:(double)arg4;
-- (_Bool)isKeyboardOnScreen;
+- (void)clearAcquiringFocusFlags;
+- (_Bool)_shouldRejectSceneIdentityUpdateCorrectingClientIfNeeded:(id)arg1 fromSelector:(SEL)arg2;
+@property(readonly) _Bool isKeyboardOnScreen;
+- (_Bool)_isKeyboardOnScreen:(id)arg1;
 - (void)_deactivateScene;
 - (void)startArbitrationWithExpectedState:(id)arg1 hostingPIDs:(id)arg2 usingFence:(_Bool)arg3 withSuppression:(int)arg4 onConnected:(CDUnknownBlockType)arg5;
 - (void)addHostedPids:(id)arg1;
-- (void)updateSuspensionCountForPids:(id)arg1;
+- (void)updateSuspensionCountForPids:(id)arg1 active:(_Bool)arg2;
 - (void)setDeactivating:(_Bool)arg1;
 @property(readonly) int processIdentifier;
 - (void)dealloc;

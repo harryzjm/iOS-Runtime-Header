@@ -13,10 +13,16 @@
     CDStruct_79c71658 _fesInputCropDimensions;
     CDStruct_79c71658 _outputCropDimensionsWhenFesIsEnabled;
     CDStruct_79c71658 _sensorCropDimensions;
+    CDStruct_79c71658 _highQualitySensorDimensions;
+    CDStruct_79c71658 _postGDCCropDimensions;
+    CDStruct_79c71658 _geometricDistortionCorrectedNativeDimensions;
     _Bool _sifrEnabled;
 }
 
+@property(readonly) CDStruct_79c71658 geometricDistortionCorrectedNativeDimensions; // @synthesize geometricDistortionCorrectedNativeDimensions=_geometricDistortionCorrectedNativeDimensions;
+@property(readonly) CDStruct_79c71658 highQualitySensorDimensions; // @synthesize highQualitySensorDimensions=_highQualitySensorDimensions;
 @property(readonly) _Bool sifrEnabled; // @synthesize sifrEnabled=_sifrEnabled;
+@property(readonly) CDStruct_79c71658 postGDCCropDimensions; // @synthesize postGDCCropDimensions=_postGDCCropDimensions;
 @property(readonly) CDStruct_79c71658 sensorCropDimensions; // @synthesize sensorCropDimensions=_sensorCropDimensions;
 @property(readonly) CDStruct_79c71658 outputCropDimensionsWhenFesIsEnabled; // @synthesize outputCropDimensionsWhenFesIsEnabled=_outputCropDimensionsWhenFesIsEnabled;
 @property(readonly) CDStruct_79c71658 fesInputCropDimensions; // @synthesize fesInputCropDimensions=_fesInputCropDimensions;

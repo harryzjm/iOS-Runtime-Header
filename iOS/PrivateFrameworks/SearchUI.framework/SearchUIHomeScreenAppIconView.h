@@ -6,77 +6,77 @@
 
 #import <SpringBoardHome/SBIconView.h>
 
+#import <SearchUI/SBIconDelegate-Protocol.h>
 #import <SearchUI/SBIconViewDelegate-Protocol.h>
-#import <SearchUI/SBLeafIconDataSource-Protocol.h>
 
-@class NSString, NSURL, SFSearchResult, TLKProminenceView;
-@protocol SearchUIHomeScreenEngagementDelegate;
+@class NSString, SearchUIRowModel, TLKProminenceView;
+@protocol SearchUIFeedbackDelegate, SearchUIHomeScreenEngagementDelegate;
 
-@interface SearchUIHomeScreenAppIconView : SBIconView <SBLeafIconDataSource, SBIconViewDelegate>
+@interface SearchUIHomeScreenAppIconView : SBIconView <SBIconViewDelegate, SBIconDelegate>
 {
     _Bool _addRoundedKeyboardHighlight;
     _Bool _labelNeedsUpdateOnMovingToWindow;
+    id <SearchUIFeedbackDelegate> _feedbackDelegate;
     id <SearchUIHomeScreenEngagementDelegate> _engagementDelegate;
     unsigned long long _variant;
-    SFSearchResult *_searchResult;
+    SearchUIRowModel *_rowModel;
     TLKProminenceView *_placeholderView;
     TLKProminenceView *_focusHighlightView;
-    NSURL *_applicationBundleURL;
-    NSString *_applicationShortcutWidgetBundleIdentifier;
 }
 
-+ (id)applicationShortcutService;
 + (id)cacheForVariant:(unsigned long long)arg1;
 - (void).cxx_destruct;
 @property _Bool labelNeedsUpdateOnMovingToWindow; // @synthesize labelNeedsUpdateOnMovingToWindow=_labelNeedsUpdateOnMovingToWindow;
-@property(copy, nonatomic) NSString *applicationShortcutWidgetBundleIdentifier; // @synthesize applicationShortcutWidgetBundleIdentifier=_applicationShortcutWidgetBundleIdentifier;
-@property(copy, nonatomic) NSURL *applicationBundleURL; // @synthesize applicationBundleURL=_applicationBundleURL;
 @property(retain) TLKProminenceView *focusHighlightView; // @synthesize focusHighlightView=_focusHighlightView;
 @property(retain) TLKProminenceView *placeholderView; // @synthesize placeholderView=_placeholderView;
-@property(retain) SFSearchResult *searchResult; // @synthesize searchResult=_searchResult;
+@property(retain) SearchUIRowModel *rowModel; // @synthesize rowModel=_rowModel;
 @property(nonatomic) _Bool addRoundedKeyboardHighlight; // @synthesize addRoundedKeyboardHighlight=_addRoundedKeyboardHighlight;
 @property(nonatomic) unsigned long long variant; // @synthesize variant=_variant;
 @property(nonatomic) __weak id <SearchUIHomeScreenEngagementDelegate> engagementDelegate; // @synthesize engagementDelegate=_engagementDelegate;
-- (void)appIconsChanged:(id)arg1;
-- (void)screenTimeChanged;
+@property(nonatomic) __weak id <SearchUIFeedbackDelegate> feedbackDelegate; // @synthesize feedbackDelegate=_feedbackDelegate;
+- (_Bool)iconViewShouldIncludeUninstallShortcutItem:(id)arg1;
+- (id)shortcutsDelegateForIconView:(id)arg1;
+- (id)delegate;
 - (long long)iconView:(id)arg1 draggingStartLocationWithProposedStartLocation:(long long)arg2;
 - (id)parallaxSettingsForShortcutsPresentationWithIconView:(id)arg1;
 - (_Bool)shouldUseSecureWindowForShortcutsPresentationWithIconView:(id)arg1;
 - (_Bool)iconView:(id)arg1 shouldActivateApplicationShortcutItem:(id)arg2 atIndex:(unsigned long long)arg3;
-- (id)applicationShortcutWidgetBundleIdentifierForShortcutsWithIconView:(id)arg1;
-- (id)applicationBundleURLForShortcutsWithIconView:(id)arg1;
-- (id)iconView:(id)arg1 applicationShortcutItemsWithProposedItems:(id)arg2;
 - (_Bool)iconViewShouldBeginShortcutsPresentation:(id)arg1;
+- (long long)_focusItemDeferralMode;
+- (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
+- (void)pressesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)launchIcon;
 - (void)iconTapped:(id)arg1;
-- (_Bool)icon:(id)arg1 launchFromLocation:(id)arg2 context:(id)arg3;
+- (void)didEngageWithTriggerEvent:(unsigned long long)arg1 destination:(unsigned long long)arg2;
+- (void)icon:(id)arg1 launchFromLocation:(id)arg2 context:(id)arg3;
 - (_Bool)isTimedOutForIcon:(id)arg1;
 - (_Bool)iconViewCanBeginDrags:(id)arg1;
 - (_Bool)shouldHideShortcutsForAppIcon:(id)arg1;
-- (id)icon:(id)arg1 displayNameForLocation:(id)arg2;
-- (id)icon:(id)arg1 imageWithInfo:(struct SBIconImageInfo)arg2;
-- (unsigned long long)priorityForIcon:(id)arg1;
 - (void)iconViewWillBeginDrag:(id)arg1 session:(id)arg2;
-- (void)fetchApplicationShortcutInfoForIcon:(id)arg1;
-- (void)fetchIconImageForIcon:(id)arg1;
-- (void)resetImageWithAppIcon:(id)arg1;
 - (void)layoutSubviews;
-- (void)updateWithResult:(id)arg1;
+- (void)hidePlaceholder:(_Bool)arg1;
+- (void)removePlaceholderAndSetShadowAnimated:(_Bool)arg1;
+- (void)iconImageViewDidEndAsynchronousImageLoadForIcon:(id)arg1;
+- (_Bool)currentIconIsPlaceholder;
+- (void)iconImageViewWillBeginAsynchronousImageLoadForIcon:(id)arg1;
+- (void)updateWithRowModel:(id)arg1;
+- (unsigned long long)imageLoadingBehavior;
 - (void)tlk_updateForAppearance:(id)arg1;
 - (void)_updateLabel;
 - (void)didMoveToWindow;
 - (void)_dynamicUserInterfaceTraitDidChange;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
+- (_Bool)canBecomeFirstResponder;
+- (id)_focusEffectStyle;
+- (_Bool)canBecomeFocused;
 - (void)setFocusHighlightFrame;
-- (void)setIcon:(id)arg1;
 - (id)init;
 
 // Remaining properties
-@property(readonly, copy, nonatomic) NSString *configurationStorageIdentifier;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
-@property(readonly, copy, nonatomic) NSString *uniqueIdentifier;
 
 @end
 

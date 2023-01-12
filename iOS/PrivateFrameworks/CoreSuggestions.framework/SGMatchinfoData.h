@@ -15,6 +15,7 @@
     NSData *_matchinfoData;
 }
 
++ (id)matchinfoDataWithEntityId:(id)arg1 detailEntityId:(id)arg2;
 + (id)matchinfoDataWithEntityId:(id)arg1 detailEntityId:(id)arg2 matchinfoData:(id)arg3;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSData *matchinfoData; // @synthesize matchinfoData=_matchinfoData;

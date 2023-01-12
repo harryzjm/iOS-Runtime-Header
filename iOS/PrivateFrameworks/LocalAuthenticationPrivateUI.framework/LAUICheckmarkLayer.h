@@ -11,12 +11,12 @@
 @interface LAUICheckmarkLayer : CALayer
 {
     CAShapeLayer *_shape_layer;
-    struct vector<CAShapeLayer *, std::__1::allocator<CAShapeLayer *>> _transient_shape_layers;
+    struct vector<CAShapeLayer *, std::allocator<CAShapeLayer *>> _transient_shape_layers;
     _Bool _animating;
     unsigned int _animation_index;
     double _line_width;
     double _effective_line_width;
-    struct vector<LAUI_CA_utilities::animation_completion_handler_container, std::__1::allocator<LAUI_CA_utilities::animation_completion_handler_container>> _completions;
+    struct vector<LAUI_CA_utilities::animation_completion_handler_container, std::allocator<LAUI_CA_utilities::animation_completion_handler_container>> _completions;
     _Bool _revealed;
     UIColor *_primary_color;
     double _line_width_scale;

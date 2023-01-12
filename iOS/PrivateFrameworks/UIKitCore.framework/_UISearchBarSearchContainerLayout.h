@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _delegateSearchFieldFrameForProposedFrame;
     CDUnknownBlockType _layoutCustomizationDelegateSearchFieldContainerWillLayoutSubviewsCallback;
     double _additionalPaddingForCancelButtonAtLeadingEdge;
+    double _additionalPaddingForSearchFieldAtLeadingEdge;
     struct UIOffset _searchFieldBackgroundPositionAdjustment;
     struct CGRect _searchFieldLayoutFrame;
     struct CGRect _cancelButtonLayoutFrame;
@@ -40,6 +41,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) double additionalPaddingForSearchFieldAtLeadingEdge; // @synthesize additionalPaddingForSearchFieldAtLeadingEdge=_additionalPaddingForSearchFieldAtLeadingEdge;
 @property(nonatomic) double additionalPaddingForCancelButtonAtLeadingEdge; // @synthesize additionalPaddingForCancelButtonAtLeadingEdge=_additionalPaddingForCancelButtonAtLeadingEdge;
 @property(copy, nonatomic) CDUnknownBlockType layoutCustomizationDelegateSearchFieldContainerWillLayoutSubviewsCallback; // @synthesize layoutCustomizationDelegateSearchFieldContainerWillLayoutSubviewsCallback=_layoutCustomizationDelegateSearchFieldContainerWillLayoutSubviewsCallback;
 @property(copy, nonatomic) CDUnknownBlockType delegateSearchFieldFrameForProposedFrame; // @synthesize delegateSearchFieldFrameForProposedFrame=_delegateSearchFieldFrameForProposedFrame;

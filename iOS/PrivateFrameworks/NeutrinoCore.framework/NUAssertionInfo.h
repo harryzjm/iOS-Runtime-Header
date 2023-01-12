@@ -18,10 +18,12 @@
     NSString *_fileName;
     unsigned long long _lineNumber;
     NSString *_message;
+    NSString *_currentlyExecutingJobName;
 }
 
 - (void).cxx_destruct;
 @property _Bool isFatal; // @synthesize isFatal=_isFatal;
+@property(retain) NSString *currentlyExecutingJobName; // @synthesize currentlyExecutingJobName=_currentlyExecutingJobName;
 @property(retain) NSString *message; // @synthesize message=_message;
 @property unsigned long long lineNumber; // @synthesize lineNumber=_lineNumber;
 @property(retain) NSString *fileName; // @synthesize fileName=_fileName;

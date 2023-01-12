@@ -17,6 +17,10 @@
 }
 
 - (void).cxx_destruct;
+@property int type; // @synthesize type=_type;
+@property(copy, nonatomic) NSString *multiUserSettingsValueString; // @synthesize multiUserSettingsValueString=_multiUserSettingsValueString;
+@property(copy, nonatomic) NSData *multiUserSettingsValueData; // @synthesize multiUserSettingsValueData=_multiUserSettingsValueData;
+@property long long multiUserSettingsValueInteger; // @synthesize multiUserSettingsValueInteger=_multiUserSettingsValueInteger;
 
 @end
 

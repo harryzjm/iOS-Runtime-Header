@@ -11,11 +11,13 @@
 #import <PhotosUICore/PXWidget-Protocol.h>
 #import <PhotosUICore/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSString, PXPeopleStripCollectionViewController, PXPeopleWidgetDataSource, PXPhotosDetailsContext, PXSectionedSelectionManager, PXTilingController, PXUITapGestureRecognizer, PXWidgetSpec;
-@protocol PXAnonymousView, PXWidgetDelegate, PXWidgetEditingDelegate, PXWidgetUnlockDelegate;
+@class NSString, PXAssetActionManager, PXPeopleStripCollectionViewController, PXPeopleWidgetDataSource, PXPhotosDetailsContext, PXSectionedSelectionManager, PXTilingController, PXUITapGestureRecognizer, PXWidgetSpec;
+@protocol PXAnonymousView, PXWidgetDelegate, PXWidgetEditingDelegate, PXWidgetInteractionDelegate, PXWidgetUnlockDelegate;
 
 @interface PXPeopleRelatedWidget : NSObject <PXPeopleStripCollectionViewControllerDelegate, PXPeopleDataSourceDelegate, UIGestureRecognizerDelegate, PXWidget>
 {
+    PXUITapGestureRecognizer *_tapGestureRecognizer;
+    PXUITapGestureRecognizer *_pressGestureRecognizer;
     _Bool _userInteractionEnabled;
     _Bool _isSummaryMode;
     _Bool _showFooter;
@@ -31,7 +33,6 @@
     double _cellMinLineSpacing;
     PXPeopleWidgetDataSource *_dataSource;
     unsigned long long _viewType;
-    PXUITapGestureRecognizer *__tapRecognizer;
     double _targetPrefetchWidth;
     struct CGSize _contentSize;
     struct CGSize _cellSize;
@@ -40,7 +41,6 @@
 - (void).cxx_destruct;
 @property(nonatomic, setter=_setHasLoadedContentData:) _Bool hasLoadedContentData; // @synthesize hasLoadedContentData=_hasLoadedContentData;
 @property(nonatomic) double targetPrefetchWidth; // @synthesize targetPrefetchWidth=_targetPrefetchWidth;
-@property(retain, nonatomic) PXUITapGestureRecognizer *_tapRecognizer; // @synthesize _tapRecognizer=__tapRecognizer;
 @property(nonatomic) unsigned long long viewType; // @synthesize viewType=_viewType;
 @property(nonatomic, getter=hasStartedLoadingDataSource) _Bool startedLoadingDataSource; // @synthesize startedLoadingDataSource=_startedLoadingDataSource;
 @property(retain, nonatomic) PXPeopleWidgetDataSource *dataSource; // @synthesize dataSource=_dataSource;
@@ -71,7 +71,7 @@
 - (void)peopleDataSource:(id)arg1 didAddMembersAtIndexPaths:(id)arg2;
 - (void)peopleDataSource:(id)arg1 didApplyIncrementalChanges:(id)arg2;
 - (void)peopleDataSourceMembersChanged:(id)arg1;
-- (void)memberTappedAtIndexPath:(id)arg1 forPeopleStripController:(id)arg2;
+- (void)memberTappedAtIndexPath:(id)arg1 atPoint:(struct CGPoint)arg2 forPeopleStripController:(id)arg3;
 - (struct UIEdgeInsets)sectionInset;
 - (double)minimumInteritemSpacing;
 - (double)minimumLineSpacing;
@@ -88,6 +88,7 @@
 
 // Remaining properties
 @property(readonly, nonatomic) _Bool allowUserInteractionWithSubtitle;
+@property(readonly, nonatomic) PXAssetActionManager *assetActionManager;
 @property(readonly, nonatomic) long long contentLayoutStyle;
 @property(readonly, nonatomic) PXTilingController *contentTilingController;
 @property(readonly, copy) NSString *debugDescription;
@@ -102,11 +103,13 @@
 @property(nonatomic) struct CGSize maxVisibleSizeInEditMode;
 @property(nonatomic, getter=isSelecting) _Bool selecting;
 @property(readonly, nonatomic) PXSectionedSelectionManager *selectionManager;
+@property(readonly, nonatomic) NSString *snappableWidgetIdentifier;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) _Bool supportsFaceMode;
 @property(readonly, nonatomic) _Bool supportsSelection;
 @property(readonly, nonatomic) _Bool wantsFocus;
 @property(nonatomic) __weak id <PXWidgetEditingDelegate> widgetEditingDelegate;
+@property(nonatomic) __weak id <PXWidgetInteractionDelegate> widgetInteractionDelegate;
 
 @end
 

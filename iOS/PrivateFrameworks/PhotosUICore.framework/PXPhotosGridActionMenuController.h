@@ -4,19 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, PXPhotoKitAssetCollectionActionManager;
+@class NSArray;
 
 @interface PXPhotosGridActionMenuController
 {
-    PXPhotoKitAssetCollectionActionManager *_assetCollectionActionManager;
     NSArray *_additionalActionTypes;
-    PXPhotoKitAssetCollectionActionManager *_assetActionManager;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) PXPhotoKitAssetCollectionActionManager *assetActionManager; // @synthesize assetActionManager=_assetActionManager;
 @property(copy, nonatomic) NSArray *additionalActionTypes; // @synthesize additionalActionTypes=_additionalActionTypes;
-@property(readonly, nonatomic) PXPhotoKitAssetCollectionActionManager *assetCollectionActionManager; // @synthesize assetCollectionActionManager=_assetCollectionActionManager;
 - (_Bool)shouldAllowPerformanceOfActionType:(id)arg1;
 - (id)availableActionTypes;
 - (id)_defaultActionTypes;

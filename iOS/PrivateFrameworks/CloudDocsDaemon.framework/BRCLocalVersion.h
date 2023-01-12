@@ -4,17 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKRecord, NSError;
+@class BRCItemGlobalID, CKRecord, NSError;
 
 __attribute__((visibility("hidden")))
 @interface BRCLocalVersion
 {
     CKRecord *_uploadedAssets;
     NSError *_uploadError;
+    BRCItemGlobalID *_prevZoneGlobalID;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) BRCItemGlobalID *prevZoneGlobalID; // @synthesize prevZoneGlobalID=_prevZoneGlobalID;
 @property(retain, nonatomic) NSError *uploadError; // @synthesize uploadError=_uploadError;
 @property(retain, nonatomic) CKRecord *uploadedAssets; // @synthesize uploadedAssets=_uploadedAssets;
 - (void)sqliteBind:(struct sqlite3_stmt *)arg1 index:(int)arg2;

@@ -8,13 +8,16 @@
 
 #import <TextInputUI/UIScrollViewDelegate-Protocol.h>
 
-@class NSString, TIKeyboardCandidate, UIColor, UIImage, UIImageView, UIKBRenderConfig, UILabel, UIMorphingLabel, UIScrollView;
+@class NSString, TIKeyboardCandidate, UIColor, UIFont, UIImage, UIImageView, UIKBRenderConfig, UILabel, UIMorphingLabel, UIScrollView;
 
 @interface TUIPredictionViewCell : UIView <UIScrollViewDelegate>
 {
     _Bool _highlighted;
+    _Bool _useContinuousCornerInHighlight;
     _Bool _labelTruncated;
     double _highlightMargin;
+    double _highlightCornerRadius;
+    unsigned long long _roundedHighlightEdges;
     unsigned long long _visibleSeparatorEdges;
     double _separatorMargin;
     TIKeyboardCandidate *_candidate;
@@ -22,6 +25,8 @@
     UIScrollView *_maskingScrollView;
     UIColor *_textColor;
     UIColor *_imageTintColor;
+    UIColor *_separatorColor;
+    UIColor *_highlightColor;
     UIView *_backgroundView;
     UIColor *_backgroundViewHighlightColor;
     UIView *_leftSeparatorView;
@@ -43,6 +48,8 @@
 @property(retain, nonatomic) UIView *leftSeparatorView; // @synthesize leftSeparatorView=_leftSeparatorView;
 @property(retain, nonatomic) UIColor *backgroundViewHighlightColor; // @synthesize backgroundViewHighlightColor=_backgroundViewHighlightColor;
 @property(retain, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
+@property(retain, nonatomic) UIColor *highlightColor; // @synthesize highlightColor=_highlightColor;
+@property(retain, nonatomic) UIColor *separatorColor; // @synthesize separatorColor=_separatorColor;
 @property(retain, nonatomic) UIColor *imageTintColor; // @synthesize imageTintColor=_imageTintColor;
 @property(retain, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
 @property(retain, nonatomic) UIScrollView *maskingScrollView; // @synthesize maskingScrollView=_maskingScrollView;
@@ -50,13 +57,19 @@
 @property(retain, nonatomic) TIKeyboardCandidate *candidate; // @synthesize candidate=_candidate;
 @property(nonatomic) double separatorMargin; // @synthesize separatorMargin=_separatorMargin;
 @property(nonatomic) unsigned long long visibleSeparatorEdges; // @synthesize visibleSeparatorEdges=_visibleSeparatorEdges;
+@property(nonatomic) unsigned long long roundedHighlightEdges; // @synthesize roundedHighlightEdges=_roundedHighlightEdges;
+@property(nonatomic) _Bool useContinuousCornerInHighlight; // @synthesize useContinuousCornerInHighlight=_useContinuousCornerInHighlight;
+@property(nonatomic) double highlightCornerRadius; // @synthesize highlightCornerRadius=_highlightCornerRadius;
 @property(nonatomic) double highlightMargin; // @synthesize highlightMargin=_highlightMargin;
 @property(nonatomic) _Bool highlighted; // @synthesize highlighted=_highlighted;
 - (void)scrollViewDidScroll:(id)arg1;
+- (void)_updateCornerRadius;
 - (void)_updateColorsForRenderConfig:(id)arg1 highlighted:(_Bool)arg2;
 - (_Bool)_renderConfigUsesDarkStyle:(id)arg1;
+- (id)labelView;
 @property(retain, nonatomic) UIImage *image; // @dynamic image;
 - (void)setCandidate:(id)arg1 animated:(_Bool)arg2;
+@property(retain, nonatomic) UIFont *labelFont;
 @property(readonly, nonatomic) long long layoutType;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
@@ -65,7 +78,7 @@
 - (_Bool)candidateRequiresTruncationForBoundingWidth:(double)arg1;
 - (struct CGSize)labelTextSizeForCandidate:(id)arg1;
 - (id)headerTextAttributes;
-- (id)displayTextAttributesForMultiline:(_Bool)arg1;
+- (id)displayTextAttributesForMultiline:(_Bool)arg1 header:(_Bool)arg2;
 - (_Bool)useAutofillStyle;
 - (id)currentTextSuggestion;
 - (id)labelViewForCandidate:(id)arg1;

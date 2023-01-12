@@ -39,7 +39,7 @@
 - (void)_legacy_setPlayerIndex:(long long)arg1;
 - (long long)_legacy_playerIndex;
 - (unsigned int)sampleRate;
-- (_Bool)supportsMotionLite;
+- (_Bool)isATVRemote;
 - (void)clearServiceRef;
 - (void)removeServiceRef:(struct __IOHIDServiceClient *)arg1;
 - (_Bool)hasServiceRef:(struct __IOHIDServiceClient *)arg1;

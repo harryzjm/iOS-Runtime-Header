@@ -21,7 +21,8 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_2d97ff7b)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_2d97ff7b)addObjectToBuffer:(void *)arg1;
+@property(readonly, nonatomic) _Bool is_final_result;
 @property(readonly, nonatomic) NSArray *n_best_translated_phrases;
 @property(readonly, nonatomic) FTTranslationLocalePair *translation_locale_pair;
 @property(readonly, nonatomic) NSString *return_str;

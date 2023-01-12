@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMDHomeKitVersion, HMDNaturalLightingContext, NSData, NSDate, NSNumber, NSString;
+@class HMDHomeKitVersion, HMDNaturalLightingContext, NSData, NSDate, NSDictionary, NSNumber, NSString;
 
 @interface HMDHomeModel
 {
@@ -14,14 +14,16 @@
 @property(copy, nonatomic) HMDNaturalLightingContext *naturalLightingContext;
 
 // Remaining properties
+@property(copy, nonatomic) NSDictionary *chipKeyValueStore; // @dynamic chipKeyValueStore;
 @property(retain, nonatomic) NSDate *creationDate; // @dynamic creationDate;
 @property(retain, nonatomic) NSString *defaultRoomUUID; // @dynamic defaultRoomUUID;
-@property(retain, nonatomic) NSNumber *doorbellChimeEnabled; // @dynamic doorbellChimeEnabled;
 @property(retain, nonatomic) NSData *encodedNaturalLightingContext; // @dynamic encodedNaturalLightingContext;
 @property(retain, nonatomic) NSDate *firstHAPAccessoryAddedDate; // @dynamic firstHAPAccessoryAddedDate;
-@property(retain, nonatomic) NSNumber *hasAnyUserAcknowledgedCameraRecordingOnboarding; // @dynamic hasAnyUserAcknowledgedCameraRecordingOnboarding;
+@property(copy, nonatomic) NSNumber *hasAnyUserAcknowledgedCameraRecordingOnboarding; // @dynamic hasAnyUserAcknowledgedCameraRecordingOnboarding;
+@property(copy, nonatomic) NSNumber *hasOnboardedForAccessCode; // @dynamic hasOnboardedForAccessCode;
+@property(copy, nonatomic) NSNumber *hasOnboardedForWalletKey; // @dynamic hasOnboardedForWalletKey;
 @property(retain, nonatomic) NSData *homeLocationData; // @dynamic homeLocationData;
-@property(retain, nonatomic) NSNumber *multiUserEnabled; // @dynamic multiUserEnabled;
+@property(copy, nonatomic) NSNumber *multiUserEnabled; // @dynamic multiUserEnabled;
 @property(retain, nonatomic) NSString *name; // @dynamic name;
 @property(retain, nonatomic) NSNumber *networkProtectionMode; // @dynamic networkProtectionMode;
 @property(retain, nonatomic) NSString *ownerName; // @dynamic ownerName;

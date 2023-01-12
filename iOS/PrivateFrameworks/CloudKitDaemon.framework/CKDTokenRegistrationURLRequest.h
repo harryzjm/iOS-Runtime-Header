@@ -6,7 +6,6 @@
 
 @class NSData, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDTokenRegistrationURLRequest
 {
     _Bool _skipBundleIDCheck;

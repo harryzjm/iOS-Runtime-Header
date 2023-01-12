@@ -23,6 +23,7 @@
 @property(readonly, nonatomic) _Bool isFlexibleSpacing;
 - (_Bool)_hasSpacing;
 @property(readonly, nonatomic) double spacing;
+- (id)_externalDescription;
 - (id)description;
 - (id)initWithSpacing:(double)arg1 isFlexible:(_Bool)arg2;
 

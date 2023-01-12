@@ -8,6 +8,7 @@
 
 @class ICStoreRequestContext, MPCModelGenericAVItemTimedMetadataResponse, MPModelGenericObject, NSArray;
 
+__attribute__((visibility("hidden")))
 @interface MPCModelGenericAVItemTimedMetadataRequest : MPModelRequest
 {
     MPCModelGenericAVItemTimedMetadataResponse *_previousResponse;

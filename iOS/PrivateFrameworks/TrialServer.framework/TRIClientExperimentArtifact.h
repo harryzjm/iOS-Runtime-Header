@@ -14,6 +14,7 @@
 {
     _Bool _internalBuildOnly;
     int _deploymentId;
+    int _deploymentEnvironment;
     int _cloudKitContainer;
     int _experimentState;
     int _experimentType;
@@ -23,7 +24,7 @@
     NSData *_encodedExperimentDefinition;
     NSString *_encodedExperimentDefinitionSignature;
     NSData *_publicCertificate;
-    NSDate *_modifiedDate;
+    NSDate *_deploymentDate;
     NSArray *_namespaces;
     NSArray *_namespaceCompatibilityVersions;
 }
@@ -32,11 +33,11 @@
 + (id)parseFromData:(id)arg1 error:(id *)arg2;
 + (id)_convertNamespaceIdsToNames:(id)arg1;
 + (id)artifactWithExperiment:(id)arg1;
-+ (id)artifactFromCKRecordResult:(id)arg1 withNamespaceDescriptorProvider:(id)arg2 container:(int)arg3 teamId:(id)arg4 paths:(id)arg5 requireDeploymentId:(_Bool)arg6;
++ (id)artifactFromCKRecordResult:(id)arg1 withNamespaceDescriptorProvider:(id)arg2 container:(int)arg3 teamId:(id)arg4 requireDeploymentId:(_Bool)arg5 completion:(CDUnknownBlockType)arg6;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *namespaceCompatibilityVersions; // @synthesize namespaceCompatibilityVersions=_namespaceCompatibilityVersions;
 @property(retain, nonatomic) NSArray *namespaces; // @synthesize namespaces=_namespaces;
-@property(retain, nonatomic) NSDate *modifiedDate; // @synthesize modifiedDate=_modifiedDate;
+@property(retain, nonatomic) NSDate *deploymentDate; // @synthesize deploymentDate=_deploymentDate;
 @property(nonatomic) _Bool internalBuildOnly; // @synthesize internalBuildOnly=_internalBuildOnly;
 @property(nonatomic) int experimentPriority; // @synthesize experimentPriority=_experimentPriority;
 @property(nonatomic) int experimentType; // @synthesize experimentType=_experimentType;
@@ -46,15 +47,18 @@
 @property(retain, nonatomic) NSData *encodedExperimentDefinition; // @synthesize encodedExperimentDefinition=_encodedExperimentDefinition;
 @property(retain, nonatomic) NSString *teamId; // @synthesize teamId=_teamId;
 @property(nonatomic) int cloudKitContainer; // @synthesize cloudKitContainer=_cloudKitContainer;
+@property(nonatomic) int deploymentEnvironment; // @synthesize deploymentEnvironment=_deploymentEnvironment;
 @property(nonatomic) int deploymentId; // @synthesize deploymentId=_deploymentId;
 @property(retain, nonatomic) NSString *experimentId; // @synthesize experimentId=_experimentId;
+- (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)data;
 - (id)asPersistedArtifact;
 - (_Bool)hasNamespacesAvailableForExperimentWithDatabase:(id)arg1;
 - (_Bool)saveWithDatabase:(id)arg1 paths:(id)arg2;
-- (_Bool)isCompatibleWithNamespaceDescriptorProvider:(id)arg1;
+- (_Bool)isCompatibleWithNamespaceDescriptorProvider:(id)arg1 error:(id *)arg2;
 - (_Bool)isValid;
 @property(readonly, nonatomic) TRIClientExperiment *experiment;
 - (id)initWithExperiment:(id)arg1;

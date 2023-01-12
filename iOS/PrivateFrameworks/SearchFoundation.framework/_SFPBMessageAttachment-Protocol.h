@@ -6,10 +6,12 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, _SFPBURL;
+@class NSData, NSDictionary, _SFPBPhotosLibraryImage, _SFPBURL;
 
 @protocol _SFPBMessageAttachment <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(retain, nonatomic) _SFPBPhotosLibraryImage *photosLibraryImage;
+@property(copy, nonatomic) NSData *linkMetadata;
 @property(retain, nonatomic) _SFPBURL *url;
 @property(nonatomic) int type;
 - (id)initWithDictionary:(NSDictionary *)arg1;

@@ -18,6 +18,7 @@
 - (id)lockViewAccessibilityLabel;
 - (_Bool)accessibilityRespondsToUserInteraction;
 - (_Bool)lockViewIsAccessibilityElement;
+- (unsigned int)_accessibilityMediaAnalysisOptions;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

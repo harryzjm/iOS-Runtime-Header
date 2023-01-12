@@ -21,9 +21,11 @@
     NSArray *_adjustmentFilters;
     NSString *_persistenceUUID;
     CAMCaptureCoordinationInfo *_coordinationInfo;
+    long long _semanticEnhancement;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) long long semanticEnhancement; // @synthesize semanticEnhancement=_semanticEnhancement;
 @property(readonly, nonatomic, getter=isExpectingPairedVideo) _Bool expectingPairedVideo; // @synthesize expectingPairedVideo=_expectingPairedVideo;
 @property(readonly, nonatomic) CAMCaptureCoordinationInfo *coordinationInfo; // @synthesize coordinationInfo=_coordinationInfo;
 @property(readonly, copy, nonatomic) NSString *persistenceUUID; // @synthesize persistenceUUID=_persistenceUUID;

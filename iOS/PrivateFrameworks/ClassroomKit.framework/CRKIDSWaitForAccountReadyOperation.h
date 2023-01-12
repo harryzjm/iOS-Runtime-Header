@@ -6,24 +6,31 @@
 
 #import <DeviceManagement/CATOperation.h>
 
-@class NSString;
-@protocol CRKIDSListener, CRKIDSLocalPrimitives;
+@class NSMutableDictionary, NSObject, NSString;
+@protocol CRKIDSLocalPrimitives;
 
 @interface CRKIDSWaitForAccountReadyOperation : CATOperation
 {
-    id <CRKIDSLocalPrimitives> _IDSLocalPrimitives;
+    _Bool _observingKnownAccountChanges;
+    NSObject<CRKIDSLocalPrimitives> *_IDSLocalPrimitives;
     NSString *_sourceAppleID;
-    id <CRKIDSListener> _accountAdditionListener;
-    id <CRKIDSListener> _accountActiveListener;
+    NSMutableDictionary *_observedAccountsByLoginID;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) id <CRKIDSListener> accountActiveListener; // @synthesize accountActiveListener=_accountActiveListener;
-@property(retain, nonatomic) id <CRKIDSListener> accountAdditionListener; // @synthesize accountAdditionListener=_accountAdditionListener;
+@property(nonatomic, getter=isObservingKnownAccountChanges) _Bool observingKnownAccountChanges; // @synthesize observingKnownAccountChanges=_observingKnownAccountChanges;
+@property(readonly, nonatomic) NSMutableDictionary *observedAccountsByLoginID; // @synthesize observedAccountsByLoginID=_observedAccountsByLoginID;
 @property(readonly, copy, nonatomic) NSString *sourceAppleID; // @synthesize sourceAppleID=_sourceAppleID;
-@property(readonly, nonatomic) id <CRKIDSLocalPrimitives> IDSLocalPrimitives; // @synthesize IDSLocalPrimitives=_IDSLocalPrimitives;
-- (void)accountDidBecomeActive:(id)arg1;
-- (void)accountDidBecomeKnownToService:(id)arg1;
+@property(readonly, nonatomic) NSObject<CRKIDSLocalPrimitives> *IDSLocalPrimitives; // @synthesize IDSLocalPrimitives=_IDSLocalPrimitives;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)endObservingAllAccounts;
+- (void)endObservingActiveChangesForAccount:(id)arg1;
+- (void)beginObservingActiveChangesForAccount:(id)arg1;
+- (void)endObservingKnownAccountChanges;
+- (void)beginObservingKnownAccountChanges;
+- (void)observedAccountDidChange:(id)arg1;
+- (void)knownAccountsDidChange;
+- (void)run;
 - (void)main;
 - (void)cancel;
 - (_Bool)isAsynchronous;

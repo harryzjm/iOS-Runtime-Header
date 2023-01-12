@@ -11,29 +11,31 @@
 #import <CoreParsec/_CPProcessableFeedback-Protocol.h>
 #import <CoreParsec/_CPStartLocalSearchFeedback-Protocol.h>
 
-@class NSData, NSDictionary, NSString;
+@class NSData, NSString, _CPPerformEntityQueryCommandForFeedback;
 
 @interface _CPStartLocalSearchFeedback : PBCodable <_CPProcessableFeedback, _CPFeedbackUUID, _CPStartLocalSearchFeedback, NSSecureCoding>
 {
     int _triggerEvent;
     int _indexType;
+    int _searchType;
     unsigned long long _timestamp;
     NSString *_input;
     NSString *_uuid;
     unsigned long long _queryId;
+    NSString *_originatingApp;
+    _CPPerformEntityQueryCommandForFeedback *_entityQueryCommand;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) _CPPerformEntityQueryCommandForFeedback *entityQueryCommand; // @synthesize entityQueryCommand=_entityQueryCommand;
+@property(copy, nonatomic) NSString *originatingApp; // @synthesize originatingApp=_originatingApp;
+@property(nonatomic) int searchType; // @synthesize searchType=_searchType;
 @property(nonatomic) int indexType; // @synthesize indexType=_indexType;
 @property(nonatomic) unsigned long long queryId; // @synthesize queryId=_queryId;
 @property(nonatomic) int triggerEvent; // @synthesize triggerEvent=_triggerEvent;
 @property(copy, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 @property(copy, nonatomic) NSString *input; // @synthesize input=_input;
 @property(nonatomic) unsigned long long timestamp;
-- (id)initWithDictionary:(id)arg1;
-- (id)initWithJSON:(id)arg1;
-@property(readonly, nonatomic) NSData *jsonData;
-@property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
@@ -44,7 +46,7 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(readonly, nonatomic) id feedbackJSON;
+@property(readonly, nonatomic) NSData *jsonData; // @dynamic jsonData;
 @property(readonly) Class superclass;
 
 @end

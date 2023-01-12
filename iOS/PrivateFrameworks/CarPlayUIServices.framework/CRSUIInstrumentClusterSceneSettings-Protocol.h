@@ -7,6 +7,7 @@
 #import <CarPlayUIServices/CRSUIMapStyleProviding-Protocol.h>
 
 @protocol CRSUIInstrumentClusterSceneSettings <CRSUIMapStyleProviding>
+@property(readonly, nonatomic) unsigned long long showsETA;
 @property(readonly, nonatomic) unsigned long long showsSpeedLimit;
 @property(readonly, nonatomic) unsigned long long showsCompass;
 @property(readonly, nonatomic) unsigned long long itemType;

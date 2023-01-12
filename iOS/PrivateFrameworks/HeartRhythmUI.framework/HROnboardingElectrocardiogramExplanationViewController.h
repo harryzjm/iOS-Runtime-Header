@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HealthUI/HKOnboardingBaseViewController.h>
+
 #import <HeartRhythmUI/HRStackedButtonViewDelegate-Protocol.h>
 
 @class HRStackedButtonView, HRVideoPlayerView, NSLayoutConstraint, UILabel;
 
-@interface HROnboardingElectrocardiogramExplanationViewController <HRStackedButtonViewDelegate>
+@interface HROnboardingElectrocardiogramExplanationViewController : HKOnboardingBaseViewController <HRStackedButtonViewDelegate>
 {
     UILabel *_titleLabel;
     HRVideoPlayerView *_animatedWatchRhythmVideoView;
@@ -36,7 +38,7 @@
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
-- (id)initForOnboarding:(_Bool)arg1;
+- (id)initForOnboarding:(_Bool)arg1 upgradingFromAlgorithmVersion:(long long)arg2;
 
 @end
 

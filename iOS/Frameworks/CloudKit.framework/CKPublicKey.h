@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSDate;
+@class NSData, NSDate, NSString;
 
 @interface CKPublicKey : NSObject
 {
@@ -14,15 +14,17 @@
     long long _version;
     NSDate *_expiration;
     NSData *_certData;
+    NSString *_protectionSource;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *protectionSource; // @synthesize protectionSource=_protectionSource;
 @property(readonly, nonatomic) NSData *certData; // @synthesize certData=_certData;
 @property(readonly, nonatomic) NSDate *expiration; // @synthesize expiration=_expiration;
 @property(readonly, nonatomic) long long version; // @synthesize version=_version;
 @property(readonly, nonatomic) NSData *publicKey; // @synthesize publicKey=_publicKey;
 - (_Bool)hasExpired;
-- (id)initWithPublicKey:(id)arg1 version:(long long)arg2 expiration:(id)arg3 certificateData:(id)arg4;
+- (id)initWithPublicKey:(id)arg1 version:(long long)arg2 expiration:(id)arg3 certificateData:(id)arg4 protectionSource:(id)arg5;
 
 @end
 

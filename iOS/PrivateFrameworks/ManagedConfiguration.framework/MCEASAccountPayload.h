@@ -66,6 +66,7 @@
 @property(copy, nonatomic) NSString *username; // @synthesize username=_username;
 @property(readonly, retain, nonatomic) NSString *hostname; // @synthesize hostname=_hostname;
 @property(readonly, retain, nonatomic) NSString *accountDescription; // @synthesize accountDescription=_accountDescription;
+@property(readonly, nonatomic) _Bool mustNotUseSynchronizableCredential;
 - (_Bool)containsSensitiveUserInformation;
 - (id)payloadDescriptionKeyValueSections;
 - (id)subtitle2Description;
@@ -87,6 +88,8 @@
 @property(readonly, nonatomic) _Bool enableMail;
 @property(readonly, nonatomic) _Bool hasCertificate;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
+- (id)calendarAccountIdentifiers;
+- (id)contactsAccountIdentifiers;
 - (id)mailAccountIdentifiers;
 
 @end

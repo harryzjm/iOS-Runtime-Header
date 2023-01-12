@@ -42,8 +42,6 @@
 - (void)endIgnoringCachedObjectEviction;
 - (void)beginIgnoringCachedObjectEviction;
 - (void)traverseComponentTreeFromRoot:(id)arg1 accessor:(CDUnknownBlockType)arg2;
-@property(readonly, nonatomic) _Bool isSupportComponentTreeModified;
-@property(readonly, nonatomic) _Bool isDocumentComponentTreeModified;
 - (void)discardOrphanedComponents;
 - (id)rootComponentForPackageIdentifier:(unsigned char)arg1;
 - (void)resumeLoadingModifiedFlushedComponents;
@@ -59,6 +57,7 @@
 - (void)componentForRootObjectIdentifier:(long long)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)retrieveOrCreateComponentForRootObject:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)enumerateComponents:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) unsigned long long componentCount;
 @property(retain) TSPComponent *viewStateComponent;
 @property(readonly, nonatomic) TSPComponent *supportMetadataComponent;
 @property(readonly, nonatomic) TSPComponent *supportObjectContainerComponent;
@@ -70,7 +69,7 @@
 - (id)documentComponentImpl;
 - (id)rootComponentWithIdentifierImpl:(long long)arg1 locator:(id)arg2 packageIdentifier:(unsigned char)arg3;
 - (void)loadFromPackage:(id)arg1 metadata:(id)arg2;
-- (void)loadComponent:(const struct ComponentInfo *)arg1 package:(id)arg2;
+- (void)loadComponent:(const void *)arg1 package:(id)arg2;
 - (_Bool)isActive;
 - (void)tearDown;
 - (void)dealloc;

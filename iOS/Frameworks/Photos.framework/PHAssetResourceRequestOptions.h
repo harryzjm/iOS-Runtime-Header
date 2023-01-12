@@ -8,15 +8,25 @@
 
 #import <Photos/NSCopying-Protocol.h>
 
+@class NSNumber;
+
 @interface PHAssetResourceRequestOptions : NSObject <NSCopying>
 {
     _Bool _networkAccessAllowed;
     _Bool _resistentToPrune;
     _Bool _downloadIsTransient;
+    _Bool _pruneAfterAvailableOnLowDisk;
     CDUnknownBlockType _progressHandler;
+    long long _downloadIntent;
+    long long _downloadPriority;
+    NSNumber *_pruneAfterAvailableLowDiskThresholdBytes;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) NSNumber *pruneAfterAvailableLowDiskThresholdBytes; // @synthesize pruneAfterAvailableLowDiskThresholdBytes=_pruneAfterAvailableLowDiskThresholdBytes;
+@property(nonatomic) _Bool pruneAfterAvailableOnLowDisk; // @synthesize pruneAfterAvailableOnLowDisk=_pruneAfterAvailableOnLowDisk;
+@property(nonatomic) long long downloadPriority; // @synthesize downloadPriority=_downloadPriority;
+@property(nonatomic) long long downloadIntent; // @synthesize downloadIntent=_downloadIntent;
 @property(nonatomic) _Bool downloadIsTransient; // @synthesize downloadIsTransient=_downloadIsTransient;
 @property(nonatomic) _Bool resistentToPrune; // @synthesize resistentToPrune=_resistentToPrune;
 @property(copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;

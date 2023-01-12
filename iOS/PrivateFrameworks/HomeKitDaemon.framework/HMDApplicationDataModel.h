@@ -4,14 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary;
+@class NSDictionary, NSUUID;
 
 @interface HMDApplicationDataModel
 {
+    NSUUID *_homeUUID;
 }
 
 + (id)properties;
 + (id)schemaHashRoot;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSUUID *homeUUID; // @synthesize homeUUID=_homeUUID;
 
 // Remaining properties
 @property(retain, nonatomic) NSDictionary *appDataDictionary; // @dynamic appDataDictionary;

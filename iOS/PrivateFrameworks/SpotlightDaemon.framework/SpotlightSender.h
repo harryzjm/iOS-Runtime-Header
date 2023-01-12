@@ -10,6 +10,7 @@
 {
 }
 
++ (id)connectionForClient:(long long)arg1 jobType:(long long)arg2;
 + (void)donateRelevantActions:(id)arg1 bundleID:(id)arg2 client:(long long)arg3;
 + (void)deleteAllInteractionsWithBundleID:(id)arg1 protectionClass:(id)arg2 client:(long long)arg3;
 + (void)deleteInteractionsWithGroupIdentifiers:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3 client:(long long)arg4;
@@ -28,6 +29,7 @@
 + (void)dispatchWithOptions:(long long)arg1 block:(CDUnknownBlockType)arg2;
 + (_Bool)jobForSuggestions:(long long)arg1;
 + (_Bool)jobForDuet:(long long)arg1;
++ (_Bool)jobForAssets:(long long)arg1;
 + (_Bool)jobForImages:(long long)arg1;
 + (_Bool)jobForTest:(long long)arg1;
 + (_Bool)enabledForClient:(long long)arg1;

@@ -12,16 +12,16 @@
 
 @interface TSCHChartPieWedgeLayoutInfo : NSObject <NSCopying>
 {
-    TSCHChartPieWedgeElement *mWedgeElement;
-    NSArray *mPieLabels;
-    struct CGAffineTransform mCombinedLabelTransformIntoPieChartCoordinateSpace;
-    NSNumber *mEnableCalloutLine;
+    TSCHChartPieWedgeElement *_wedgeElement;
+    NSArray *_pieLabels;
+    struct CGAffineTransform _combinedLabelTransformIntoPieChartCoordinateSpace;
+    NSNumber *_enableCalloutLine;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) struct CGAffineTransform combinedLabelTransformIntoPieChartCoordinateSpace; // @synthesize combinedLabelTransformIntoPieChartCoordinateSpace=mCombinedLabelTransformIntoPieChartCoordinateSpace;
-@property(copy, nonatomic) NSArray *pieLabels; // @synthesize pieLabels=mPieLabels;
-@property(retain, nonatomic) TSCHChartPieWedgeElement *wedgeElement; // @synthesize wedgeElement=mWedgeElement;
+@property(nonatomic) struct CGAffineTransform combinedLabelTransformIntoPieChartCoordinateSpace; // @synthesize combinedLabelTransformIntoPieChartCoordinateSpace=_combinedLabelTransformIntoPieChartCoordinateSpace;
+@property(copy, nonatomic) NSArray *pieLabels; // @synthesize pieLabels=_pieLabels;
+@property(retain, nonatomic) TSCHChartPieWedgeElement *wedgeElement; // @synthesize wedgeElement=_wedgeElement;
 - (struct CGPoint)combinedLabelRectBottomRightCornerInChartCoordinateSpace;
 - (struct CGPoint)combinedLabelRectTopRightCornerInChartCoordinateSpace;
 - (struct CGPoint)combinedLabelRectBottomLeftCornerInChartCoordinateSpace;

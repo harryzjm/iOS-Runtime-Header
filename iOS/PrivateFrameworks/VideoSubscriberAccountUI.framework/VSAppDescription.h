@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSNumber, NSString, NSURL, UIImage;
+@class NSArray, NSNumber, NSString, NSURL, UIImage;
 
-__attribute__((visibility("hidden")))
 @interface VSAppDescription : NSObject
 {
     _Bool _offersInAppPurchases;
+    _Bool _defaultAppForProvider;
     NSString *_displayName;
     NSNumber *_adamID;
     NSString *_buyParams;
@@ -25,10 +25,13 @@ __attribute__((visibility("hidden")))
     NSNumber *_contentRank;
     NSString *_artworkURLTemplate;
     UIImage *_icon;
+    NSArray *_deviceFamilies;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *deviceFamilies; // @synthesize deviceFamilies=_deviceFamilies;
+@property(nonatomic, getter=isDefaultAppForProvider) _Bool defaultAppForProvider; // @synthesize defaultAppForProvider=_defaultAppForProvider;
 @property(retain, nonatomic) UIImage *icon; // @synthesize icon=_icon;
 @property(copy, nonatomic) NSString *artworkURLTemplate; // @synthesize artworkURLTemplate=_artworkURLTemplate;
 @property(nonatomic) _Bool offersInAppPurchases; // @synthesize offersInAppPurchases=_offersInAppPurchases;

@@ -6,7 +6,6 @@
 
 @class CKQueryCursor, NSMutableArray, NSString;
 
-__attribute__((visibility("hidden")))
 @interface BRCMigrationQueryOperation
 {
     NSString *_migrationKey;

@@ -8,10 +8,8 @@
 
 @interface ScanContext : HMFObject
 {
-    double timeout;
+    double _timeout;
 }
-
-@property(nonatomic) double timeout; // @synthesize timeout;
 
 @end
 

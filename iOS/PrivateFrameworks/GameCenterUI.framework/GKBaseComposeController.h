@@ -24,6 +24,7 @@
     struct CGRect _lastKnownKeyboardFrame;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSLayoutConstraint *messageFieldTrailingConstraint; // @synthesize messageFieldTrailingConstraint=_messageFieldTrailingConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *contentLeadingConstraint; // @synthesize contentLeadingConstraint=_contentLeadingConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *contentHeightConstraint; // @synthesize contentHeightConstraint=_contentHeightConstraint;

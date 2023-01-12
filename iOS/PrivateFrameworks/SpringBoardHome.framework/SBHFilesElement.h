@@ -11,6 +11,9 @@
 + (id)elementIdentifier;
 - (unsigned long long)supportedGridSizeClassesForIcon:(id)arg1;
 - (id)icon:(id)arg1 imageWithInfo:(struct SBIconImageInfo)arg2;
+- (_Bool)iconSupportsRasterization:(id)arg1;
+- (id)configurationStorageIdentifier;
+- (_Bool)iconSupportsConfiguration:(id)arg1;
 - (id)displayName;
 - (id)containerBundleIdentifier;
 

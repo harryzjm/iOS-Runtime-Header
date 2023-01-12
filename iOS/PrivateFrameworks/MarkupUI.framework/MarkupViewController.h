@@ -11,7 +11,7 @@
 #import <MarkupUI/UINavigationBarDelegate-Protocol.h>
 #import <MarkupUI/UIToolbarDelegate-Protocol.h>
 
-@class AKController, AKToolbarView, NSData, NSLayoutConstraint, NSString, NSUndoManager, PDFDocument, PDFView, UIBarButtonItem, UIColor, UIImage, UIImageView, UINavigationBar, UINavigationItem, UIScrollView, UIView;
+@class AKController, AKToolbarView, NSData, NSLayoutConstraint, NSString, NSUndoManager, PDFDocument, PDFView, UIBarButtonItem, UIColor, UIImage, UIImageView, UINavigationBar, UINavigationItem, UIScrollView, UIView, UTType;
 @protocol MUContentViewControllerProtocol, MarkupViewControllerDelegate;
 
 @interface MarkupViewController : UIViewController <MUContentViewControllerDelegate, UINavigationBarDelegate, UIToolbarDelegate, PKRulerHostingDelegate>
@@ -20,6 +20,7 @@
     UIColor *_toolbarItemTintColor;
     UIColor *_toolbarTintColor;
     UIColor *_navBarTitleColor;
+    _Bool _showingSignaturesUI;
     _Bool _pencilAlwaysDraws;
     _Bool _toolbarHidden;
     _Bool _thumbnailViewHidden;
@@ -61,6 +62,7 @@
     UIView *_contentContainerView;
     UIView *_transitionDimmingView;
     UIView *_whiteView;
+    NSString *_originalImageDescription;
     NSString *_hostProcessBundleIdentifier;
     NSUndoManager *_akUndoManager;
     id <MarkupViewControllerDelegate> _delegate;
@@ -86,6 +88,7 @@
 @property(nonatomic) _Bool forcesPDFViewTopAlignment; // @synthesize forcesPDFViewTopAlignment=_forcesPDFViewTopAlignment;
 @property(copy, nonatomic) NSString *hostProcessBundleIdentifier; // @synthesize hostProcessBundleIdentifier=_hostProcessBundleIdentifier;
 @property _Bool encryptPrivateMetadata; // @synthesize encryptPrivateMetadata=_encryptPrivateMetadata;
+@property(copy, nonatomic) NSString *originalImageDescription; // @synthesize originalImageDescription=_originalImageDescription;
 @property _Bool showAsFormSheet; // @synthesize showAsFormSheet=_showAsFormSheet;
 @property _Bool userDidCancel; // @synthesize userDidCancel=_userDidCancel;
 @property _Bool isAnimatingMarkupExtensionTransition; // @synthesize isAnimatingMarkupExtensionTransition=_isAnimatingMarkupExtensionTransition;
@@ -120,6 +123,7 @@
 @property(retain, nonatomic) UINavigationBar *navBar; // @synthesize navBar=_navBar;
 @property(nonatomic) long long toolbarPosition; // @synthesize toolbarPosition=_toolbarPosition;
 @property(nonatomic, getter=isToolbarHidden) _Bool toolbarHidden; // @synthesize toolbarHidden=_toolbarHidden;
+- (id)getMenuElementsForPage:(id)arg1;
 - (long long)toolbarController:(id)arg1 positionForBar:(id)arg2;
 - (void)_toolbarShareButtonTapped:(id)arg1;
 - (long long)positionForBar:(id)arg1;
@@ -176,7 +180,11 @@
 - (id)filteredToolbarItemsForItems:(id)arg1 fromController:(id)arg2;
 - (id)_markupBlackColor;
 @property(nonatomic) unsigned long long currentPDFPageIndex;
+@property(readonly, nonatomic) UIView *imageViewCombinedContentView;
 @property(readonly, nonatomic) UIScrollView *contentViewScrollView;
+@property(nonatomic) _Bool allowsThumbnailViewPageReordering;
+@property(nonatomic) long long thumbnailViewStyle;
+@property(readonly) __weak UIView *pageLabelView;
 @property(readonly) PDFView *pdfView;
 @property(readonly) PDFDocument *pdfDocument;
 - (void)setSourceContent:(id)arg1 withArchivedModelData:(id)arg2;
@@ -188,6 +196,7 @@
 - (void)_loadSourceContentWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_updateAndLoadSourceContent:(id)arg1 withArchivedModelData:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)_setData:(id)arg1 withArchivedModelData:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (_Bool)_writeToDataConsumer:(struct CGDataConsumer *)arg1 embedSourceImageAndEditModel:(_Bool)arg2 options:(id)arg3 error:(id *)arg4;
 - (_Bool)_writeToDataConsumer:(struct CGDataConsumer *)arg1 embedSourceImageAndEditModel:(_Bool)arg2 error:(id *)arg3;
 - (void)revert;
 - (void)_cancel;
@@ -197,9 +206,12 @@
 - (id)createArchivedModelData;
 - (id)dataRepresentationWithError:(id *)arg1;
 - (id)dataRepresentationEmbeddingSourceImageAndEditModel:(_Bool)arg1 error:(id *)arg2;
+- (_Bool)writeToURL:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (_Bool)writeToURL:(id)arg1 error:(id *)arg2;
+- (_Bool)writeToURL:(id)arg1 embeddingSourceImageAndEditModel:(_Bool)arg2 options:(id)arg3 error:(id *)arg4;
 - (_Bool)writeToURL:(id)arg1 embeddingSourceImageAndEditModel:(_Bool)arg2 error:(id *)arg3;
 @property(readonly, nonatomic) NSString *outputType;
+@property(readonly, nonatomic) UTType *outputContentType;
 - (void)setData:(id)arg1;
 - (void)setData:(id)arg1 withArchivedModelData:(id)arg2;
 - (void)setData:(id)arg1 withArchivedModelData:(id)arg2 placeholderImage:(id)arg3;
@@ -210,6 +222,9 @@
 - (void)_setFileURL:(id)arg1 withArchivedModelData:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)setFileURL:(id)arg1 withArchivedModelData:(id)arg2;
 - (void)setFileURL:(id)arg1 withArchivedModelData:(id)arg2 placeholderImage:(id)arg3;
+- (_Bool)isTouchInThumbnailView:(id)arg1;
+@property(nonatomic) _Bool fixedThumbnailView;
+- (void)_setThumbnailViewHidden:(_Bool)arg1;
 - (void)setToolbarHidden:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)_setLegacyToolbarHidden:(_Bool)arg1 animated:(_Bool)arg2;
 - (_Bool)_useLegacyToolbar;
@@ -220,7 +235,6 @@
 - (void)viewDidLayoutSubviews;
 - (void)viewWillLayoutSubviews;
 - (_Bool)canBecomeFirstResponder;
-- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;

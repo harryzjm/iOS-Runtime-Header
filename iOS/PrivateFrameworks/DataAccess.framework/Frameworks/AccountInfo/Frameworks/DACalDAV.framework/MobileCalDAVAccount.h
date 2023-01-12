@@ -7,10 +7,12 @@
 #import <DataAccess/DAAccount.h>
 
 #import <DACalDAV/CDBAccountInfo-Protocol.h>
+#import <DACalDAV/DACalDAVAccount-Protocol.h>
 
 @class CalDAVPrincipalSearchPropertySet, CalDAVRefreshContext, CalDAVServerVersion, CoreDAVDiscoveryTaskGroup, DACoreDAVLogger, DACoreDAVTaskManager, MobileCalDAVAccountRefreshActor, MobileCalDAVPrincipal, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString, NSTimeZone, NSURL;
+@protocol CalDAVPrincipal;
 
-@interface MobileCalDAVAccount : DAAccount <CDBAccountInfo>
+@interface MobileCalDAVAccount : DAAccount <CDBAccountInfo, DACalDAVAccount>
 {
     int _wasMigrated;
     NSMutableDictionary *_principals;
@@ -29,7 +31,7 @@
     int _preferredEventDaysToSync;
     int _preferredToDoDaysToSync;
     NSMutableSet *_movedItemURLStrings;
-    MobileCalDAVPrincipal *_mainPrincipal;
+    MobileCalDAVPrincipal<CalDAVPrincipal> *_mainPrincipal;
     NSDictionary *_delegateUserInfos;
     CalDAVPrincipalSearchPropertySet *_searchPropertySet;
     CalDAVRefreshContext *_refreshContext;
@@ -39,6 +41,7 @@
     DACoreDAVLogger *_coreDAVLogger;
 }
 
++ (id)defaultAlarmOffsetFromICSString:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool subscribedCalendarsChanged; // @synthesize subscribedCalendarsChanged=_subscribedCalendarsChanged;
 @property(retain, nonatomic) DACoreDAVLogger *coreDAVLogger; // @synthesize coreDAVLogger=_coreDAVLogger;
@@ -52,7 +55,7 @@
 @property(nonatomic) _Bool needsAccountPropertyRefresh; // @synthesize needsAccountPropertyRefresh=_needsAccountPropertyRefresh;
 @property(retain, nonatomic) CalDAVPrincipalSearchPropertySet *searchPropertySet; // @synthesize searchPropertySet=_searchPropertySet;
 @property(retain, nonatomic) NSDictionary *delegateUserInfos; // @synthesize delegateUserInfos=_delegateUserInfos;
-@property(retain, nonatomic) MobileCalDAVPrincipal *mainPrincipal; // @synthesize mainPrincipal=_mainPrincipal;
+@property(retain, nonatomic) MobileCalDAVPrincipal<CalDAVPrincipal> *mainPrincipal; // @synthesize mainPrincipal=_mainPrincipal;
 @property(nonatomic) int preferredToDoDaysToSync; // @synthesize preferredToDoDaysToSync=_preferredToDoDaysToSync;
 @property(nonatomic) int preferredEventDaysToSync; // @synthesize preferredEventDaysToSync=_preferredEventDaysToSync;
 @property(retain, nonatomic) NSMutableSet *mCalendars; // @synthesize mCalendars=_calendars;
@@ -115,6 +118,8 @@
 @property(copy, nonatomic) NSString *calendarHomeSyncToken;
 - (void *)copyCalStore;
 - (id)_calendarConstraintsName;
+@property(nonatomic) _Bool pushDisabled;
+@property(nonatomic) double refreshInterval;
 - (id)username;
 - (id)host;
 @property(readonly, nonatomic) _Bool shouldUseCalendarHomeSyncReport;

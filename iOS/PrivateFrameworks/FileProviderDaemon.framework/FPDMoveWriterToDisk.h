@@ -9,13 +9,14 @@
 #import <FileProviderDaemon/FPDMoveWriterExecutor-Protocol.h>
 
 @class FPDMoveWriter, NSFileManager;
+@protocol FPActionLocatorAccess;
 
 __attribute__((visibility("hidden")))
 @interface FPDMoveWriterToDisk : NSObject <FPDMoveWriterExecutor>
 {
     FPDMoveWriter *_writer;
     NSFileManager *_fileManager;
-    _Bool _stopAccessingDestination;
+    id <FPActionLocatorAccess> _stopAccessingToken;
 }
 
 - (void).cxx_destruct;

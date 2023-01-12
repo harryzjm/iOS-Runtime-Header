@@ -4,20 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class BPSPublisher;
+@protocol BPSPublisher;
 
 @interface BPSMerge
 {
-    BPSPublisher *_a;
-    BPSPublisher *_b;
+    id <BPSPublisher> _a;
+    id <BPSPublisher> _b;
 }
 
++ (id)publisherWithPublisher:(id)arg1 upstreams:(id)arg2 bookmarkState:(id)arg3;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) BPSPublisher *b; // @synthesize b=_b;
-@property(readonly, nonatomic) BPSPublisher *a; // @synthesize a=_a;
+@property(readonly, nonatomic) id <BPSPublisher> b; // @synthesize b=_b;
+@property(readonly, nonatomic) id <BPSPublisher> a; // @synthesize a=_a;
 - (void)subscribe:(id)arg1;
 - (id)initWithA:(id)arg1 b:(id)arg2;
 - (id)init;
+- (_Bool)canStoreInternalStateInBookmark;
+- (id)bookmarkableUpstreams;
 
 @end
 

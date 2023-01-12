@@ -9,7 +9,7 @@
 #import <SiriVOX/SVXClientActivationServicing-Protocol.h>
 #import <SiriVOX/SVXClientServiceConsuming-Protocol.h>
 
-@class NSMutableArray, NSString, NSUUID, SVXActivationContext;
+@class AFAnalytics, NSMutableArray, NSString, NSUUID, SVXActivationContext;
 @protocol SVXClientActivationServiceDelegate, SVXClientServiceProviding, SVXPerforming;
 
 __attribute__((visibility("hidden")))
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 {
     id <SVXPerforming> _performer;
     id <SVXClientServiceProviding> _clientServiceProvider;
+    AFAnalytics *_analytics;
     NSMutableArray *_queuedButtonEvents;
     SVXActivationContext *_lastButtonActivationContext;
     NSUUID *_preheatToken;
@@ -37,15 +38,18 @@ __attribute__((visibility("hidden")))
 - (_Bool)_requestPermissionToActivateWithContext:(id)arg1;
 - (void)_processLastButtonActivationContext;
 - (void)_enqueueButtonEvent:(id)arg1;
+- (void)deactivateWithButtonEvent:(id)arg1 userInfo:(id)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)deactivateWithUserInfo:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)deactivateWithUserInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)activateWithSystemEvent:(id)arg1 userInfo:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)prewarmForSystemEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)activateWithButtonEvent:(id)arg1 userInfo:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)activateWithText:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)activateWithUserInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)enqueueButtonEvent:(id)arg1;
 - (void)handleButtonEvent:(id)arg1;
-- (void)clientServiceDidChange;
-- (id)initWithClientServiceProvider:(id)arg1 performer:(id)arg2;
+- (void)clientServiceDidChange:(_Bool)arg1;
+- (id)initWithClientServiceProvider:(id)arg1 analytics:(id)arg2 performer:(id)arg3;
 - (void)handleDidDeactivateWithContext:(id)arg1;
 - (void)handleWillDeactivateWithContext:(id)arg1;
 - (void)handleDidNotActivateWithContext:(id)arg1 error:(id)arg2;

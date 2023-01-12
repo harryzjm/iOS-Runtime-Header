@@ -44,6 +44,10 @@
 @property(copy, nonatomic) NSString *lastMigratedClientVersion;
 @property(copy, nonatomic) NSArray *importQuestions;
 @property(copy, nonatomic) NSArray *actions;
+@property(nonatomic) _Bool hasOutputFallback;
+@property(nonatomic) _Bool hasShortcutInputVariables;
+@property(copy, nonatomic) NSArray *outputClasses;
+@property(copy, nonatomic) NSDictionary *noInputBehavior;
 @property(copy, nonatomic) NSArray *inputClasses;
 @property(copy, nonatomic) NSArray *workflowTypes;
 @property(retain, nonatomic) WFWorkflowIcon *icon;

@@ -34,7 +34,7 @@
 - (_Bool)showSchumerBox;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
-- (id)init;
+- (id)initWithTermsLinkAction:(id)arg1 actionTitle:(id)arg2;
 
 @end
 

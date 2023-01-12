@@ -4,40 +4,43 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
-
-@class NSArray, VUIButton, VUIChannelBannerLayout, VUIFocusableTextView, VUILabel, VUIProductUberBackgroundView, VUISeparatorView;
+@class NSArray, UIView, VUILabel, VUIProductUberBackgroundView, VUISeparatorView;
 
 __attribute__((visibility("hidden")))
-@interface VUIChannelBannerView : UIView
+@interface VUIChannelBannerView
 {
-    VUIChannelBannerLayout *_layout;
+    _Bool _isDescriptionPreferredOnPhoneSizeClass;
     UIView *_appleTVChannelLogoView;
-    VUIButton *_subscribeButton;
+    UIView *_subscribeButton;
     VUILabel *_disclaimerTextLabel;
-    VUIFocusableTextView *_descriptionTextView;
+    UIView *_descriptionTextView;
     NSArray *_textLabels;
     VUIProductUberBackgroundView *_bgImageView;
     UIView *_bgColorView;
+    double _logoHeight;
+    double _height;
     VUISeparatorView *_separatorView;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) VUISeparatorView *separatorView; // @synthesize separatorView=_separatorView;
+@property(nonatomic) double height; // @synthesize height=_height;
+@property(nonatomic) _Bool isDescriptionPreferredOnPhoneSizeClass; // @synthesize isDescriptionPreferredOnPhoneSizeClass=_isDescriptionPreferredOnPhoneSizeClass;
+@property(nonatomic) double logoHeight; // @synthesize logoHeight=_logoHeight;
 @property(retain, nonatomic) UIView *bgColorView; // @synthesize bgColorView=_bgColorView;
 @property(retain, nonatomic) VUIProductUberBackgroundView *bgImageView; // @synthesize bgImageView=_bgImageView;
 @property(retain, nonatomic) NSArray *textLabels; // @synthesize textLabels=_textLabels;
-@property(retain, nonatomic) VUIFocusableTextView *descriptionTextView; // @synthesize descriptionTextView=_descriptionTextView;
+@property(retain, nonatomic) UIView *descriptionTextView; // @synthesize descriptionTextView=_descriptionTextView;
 @property(retain, nonatomic) VUILabel *disclaimerTextLabel; // @synthesize disclaimerTextLabel=_disclaimerTextLabel;
-@property(retain, nonatomic) VUIButton *subscribeButton; // @synthesize subscribeButton=_subscribeButton;
+@property(retain, nonatomic) UIView *subscribeButton; // @synthesize subscribeButton=_subscribeButton;
 @property(retain, nonatomic) UIView *appleTVChannelLogoView; // @synthesize appleTVChannelLogoView=_appleTVChannelLogoView;
-@property(retain, nonatomic) VUIChannelBannerLayout *layout; // @synthesize layout=_layout;
 - (void)_layoutLabels:(id)arg1 withOrigin:(struct CGPoint)arg2 maxWidth:(double)arg3;
+- (double)_subscribeButtonHeight;
+- (_Bool)_isSubscribed;
 - (struct CGSize)_layoutSubviewsWithSize:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
 @property(readonly, nonatomic) double topThreshold;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)layoutSubviews;
-- (void)setBackgroundColor:(id)arg1;
+- (struct CGSize)vui_layoutSubviews:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
+- (void)setVuiBackgroundColor:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

@@ -10,7 +10,6 @@
 
 @class BRCItemID, BRCZoneRowID;
 
-__attribute__((visibility("hidden")))
 @interface BRCItemGlobalID : NSObject <NSCopying>
 {
     BRCZoneRowID *_zoneRowID;

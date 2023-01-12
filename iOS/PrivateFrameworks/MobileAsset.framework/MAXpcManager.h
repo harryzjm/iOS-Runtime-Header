@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 
 - (void)dealloc;
 - (id)initWithServiceName:(id)arg1 callbackQueue:(id)arg2;
-- (void)attachProgressHandler:(id)arg1 assetId:(id)arg2 callBack:(CDUnknownBlockType)arg3;
+- (void)attachProgressHandler:(id)arg1 assetId:(id)arg2 callBack:(CDUnknownBlockType)arg3 withPurpose:(id)arg4;
 - (void)setClientConnectionHandler;
 - (void)sendAsync:(id)arg1 clientHandler:(CDUnknownBlockType)arg2 taskDescriptor:(id)arg3;
 - (id)sendSync:(id)arg1;

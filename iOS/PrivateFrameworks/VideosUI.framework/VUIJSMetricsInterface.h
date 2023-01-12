@@ -4,18 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ITMLKit/IKJSObject.h>
-
 #import <VideosUI/VUIJSMetricsInterface-Protocol.h>
 
 __attribute__((visibility("hidden")))
-@interface VUIJSMetricsInterface : IKJSObject <VUIJSMetricsInterface>
+@interface VUIJSMetricsInterface <VUIJSMetricsInterface>
 {
 }
 
 - (void)recordLogEvent:(id)arg1;
-- (void)recordPerfEvent:(id)arg1;
-- (void)recordEvent:(id)arg1;
 - (id)initWithAppContext:(id)arg1;
 
 @end

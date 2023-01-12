@@ -14,8 +14,6 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableArray *drawBlocks; // @synthesize drawBlocks=_drawBlocks;
-- (struct CGPoint)originOffset;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

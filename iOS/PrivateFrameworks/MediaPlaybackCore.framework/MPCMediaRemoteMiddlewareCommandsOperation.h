@@ -10,6 +10,7 @@
 
 @class MPCFuture, MPCMediaRemoteMiddleware, NSArray, NSError, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPCMediaRemoteMiddlewareCommandsOperation : MPAsyncOperation <MPMiddlewareOperation>
 {
     CDUnknownBlockType _invalidationHandler;

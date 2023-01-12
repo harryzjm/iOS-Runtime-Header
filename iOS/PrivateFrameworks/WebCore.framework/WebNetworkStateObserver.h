@@ -9,11 +9,12 @@
 __attribute__((visibility("hidden")))
 @interface WebNetworkStateObserver : NSObject
 {
-    CDUnknownBlockType block;
+    struct BlockPtr<void ()> block;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)networkStateChanged:(id)arg1;
-- (void)dealloc;
 - (id)initWithBlock:(CDUnknownBlockType)arg1;
 
 @end

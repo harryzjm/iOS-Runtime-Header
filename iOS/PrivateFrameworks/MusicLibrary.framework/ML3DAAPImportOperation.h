@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface ML3DAAPImportOperation
 {
-    struct ML3ImportSession *_importSession;
+    void *_importSession;
     NSError *_importError;
     struct shared_ptr<DAAPParserDelegate> _delegate;
     unsigned char _updateType;
@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_startImportSessionIfNeeded;
 - (_Bool)_processPersonElement:(shared_ptr_37fa1f3d)arg1;
 - (_Bool)_processDeletedContainerId:(long long)arg1;
-- (_Bool)_processContainerElement:(shared_ptr_37fa1f3d)arg1 withTrackIds:(vector_bbba3654)arg2 trackPersonIdentifiers:(vector_6e7979f9)arg3;
+- (_Bool)_processContainerElement:(shared_ptr_37fa1f3d)arg1 withTrackIds:(vector_1ee95920)arg2 trackPersonIdentifiers:(vector_c589d274)arg3;
 - (_Bool)_processContainerItemCount:(int)arg1;
 - (_Bool)_processDeletedTrackId:(long long)arg1;
 - (_Bool)_processTrackElement:(shared_ptr_37fa1f3d)arg1;
@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_importDAAPPayloadFromFile:(id)arg1 shouldProcessPlaylists:(_Bool)arg2;
 - (void)updateImportProgress:(float)arg1;
 - (shared_ptr_9dbb0ac9)personImportItemFromDAAPElement:(shared_ptr_37fa1f3d)arg1;
-- (shared_ptr_9dbb0ac9)containerImportItemFromDAAPElement:(shared_ptr_37fa1f3d)arg1 withTrackIds:(vector_bbba3654)arg2 trackPersonIdentifiers:(vector_6e7979f9)arg3;
+- (shared_ptr_9dbb0ac9)containerImportItemFromDAAPElement:(shared_ptr_37fa1f3d)arg1 withTrackIds:(vector_1ee95920)arg2 trackPersonIdentifiers:(vector_c589d274)arg3;
 - (shared_ptr_9dbb0ac9)importItemFromDAAPElement:(shared_ptr_37fa1f3d)arg1;
 - (_Bool)performImportOfSourceType:(int)arg1 usingConnection:(id)arg2;
 - (void)dealloc;

@@ -12,6 +12,7 @@
 {
 }
 
+- (void)getLinkMetadataForMessageWithGUID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)loadLinkPresentationMetdataForMessageWithGUID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end

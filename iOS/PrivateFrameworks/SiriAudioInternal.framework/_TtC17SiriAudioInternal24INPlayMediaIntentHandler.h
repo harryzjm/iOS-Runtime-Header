@@ -15,6 +15,9 @@
     MISSING_TYPE *playbackService;
     MISSING_TYPE *localSearch;
     MISSING_TYPE *deviceProvider;
+    MISSING_TYPE *nowPlaying;
+    MISSING_TYPE *seDeviceProvider;
+    MISSING_TYPE *appleMediaServicesProvider;
 }
 
 - (void).cxx_destruct;

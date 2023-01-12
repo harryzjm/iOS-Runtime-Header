@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSDictionary, NSMutableArray, NSMutableDictionary, QLCacheBlobInfo, QLCacheFileIdentifier, QLCacheIndexDatabaseQueryEnumerator, QLCacheThumbnailData, QLTGeneratorThumbnailRequest;
+@class NSData, NSDictionary, NSMutableArray, NSMutableDictionary, QLCacheBlobInfo, QLCacheFileIdentifier, QLCacheIndexDatabaseQueryEnumerator, QLCacheThumbnailData, QLTBitmapFormat, QLTGeneratorThumbnailRequest;
 
 __attribute__((visibility("hidden")))
 @interface QLDiskCacheQueryEnumerator
@@ -23,12 +23,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _cacheId;
     QLCacheFileIdentifier *_fileIdentifier;
     float _size;
-    unsigned int _width;
-    unsigned int _height;
-    unsigned int _bitsPerComponent;
-    unsigned int _bitsPerPixel;
-    unsigned int _bytesPerRow;
-    unsigned int _bitmapInfo;
+    QLTBitmapFormat *_bitmapFormat;
     NSData *_bitmapData;
     QLCacheBlobInfo *_bitmapDataBlobInfo;
     NSData *_metadata;

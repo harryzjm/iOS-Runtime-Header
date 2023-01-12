@@ -17,10 +17,14 @@
     unsigned long long _referenceTripId;
     NSData *_routingParameters;
     unsigned long long _transitId;
+    _Bool _includeAllDirectionNames;
+    _Bool _includeAllHeadsigns;
     struct {
         unsigned int has_lineId:1;
         unsigned int has_referenceTripId:1;
         unsigned int has_transitId:1;
+        unsigned int has_includeAllDirectionNames:1;
+        unsigned int has_includeAllHeadsigns:1;
     } _flags;
 }
 
@@ -41,6 +45,10 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasIncludeAllHeadsigns;
+@property(nonatomic) _Bool includeAllHeadsigns;
+@property(nonatomic) _Bool hasIncludeAllDirectionNames;
+@property(nonatomic) _Bool includeAllDirectionNames;
 @property(retain, nonatomic) NSData *routingParameters;
 @property(readonly, nonatomic) _Bool hasRoutingParameters;
 @property(nonatomic) _Bool hasReferenceTripId;

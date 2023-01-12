@@ -13,13 +13,13 @@
 @interface HUTriggerBuilderItem : HFItem <NSCopying>
 {
     HFTriggerBuilder *_triggerBuilder;
-    unsigned long long _nameType;
+    unsigned long long _naturalLanguageNameType;
 }
 
 + (id)settingsURLForForceDisableReasons:(unsigned long long)arg1;
 + (id)_detailedErrorDescriptionForForceDisableReasons:(unsigned long long)arg1 inHome:(id)arg2;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) unsigned long long nameType; // @synthesize nameType=_nameType;
+@property(readonly, nonatomic) unsigned long long naturalLanguageNameType; // @synthesize naturalLanguageNameType=_naturalLanguageNameType;
 @property(readonly, nonatomic) HFTriggerBuilder *triggerBuilder; // @synthesize triggerBuilder=_triggerBuilder;
 - (unsigned long long)_triggerType;
 - (id)_forceDisableReasons;

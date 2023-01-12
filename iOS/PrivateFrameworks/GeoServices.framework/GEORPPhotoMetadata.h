@@ -14,6 +14,8 @@
 {
     PBDataReader *_reader;
     NSString *_clientImageUuid;
+    NSString *_deviceLensMake;
+    NSString *_deviceLensModel;
     GEOLocation *_geotag;
     NSString *_imageDescription;
     NSString *_mediaType;
@@ -26,6 +28,8 @@
         unsigned int has_size:1;
         unsigned int has_source:1;
         unsigned int read_clientImageUuid:1;
+        unsigned int read_deviceLensMake:1;
+        unsigned int read_deviceLensModel:1;
         unsigned int read_geotag:1;
         unsigned int read_imageDescription:1;
         unsigned int read_mediaType:1;
@@ -40,6 +44,8 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
+- (void)clearSensitiveFields:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -48,6 +54,10 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) NSString *deviceLensModel;
+@property(readonly, nonatomic) _Bool hasDeviceLensModel;
+@property(retain, nonatomic) NSString *deviceLensMake;
+@property(readonly, nonatomic) _Bool hasDeviceLensMake;
 - (int)StringAsSource:(id)arg1;
 - (id)sourceAsString:(int)arg1;
 @property(nonatomic) _Bool hasSource;

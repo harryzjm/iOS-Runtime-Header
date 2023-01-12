@@ -36,10 +36,12 @@
     NSArray *_extensionUUIDs;
     NSObject<OS_dispatch_source> *_sendFailedTimer;
     struct cfil_crypto_state *_crypto_state;
+    CDUnknownBlockType _pendingDisposeCompletion;
 }
 
 + (_Bool)authenticateFlowWithState:(struct cfil_crypto_state *)arg1 crypto_key:(id)arg2 flow:(id)arg3 salt:(unsigned int)arg4 isKernelSocket:(_Bool)arg5;
 - (void).cxx_destruct;
+@property(copy) CDUnknownBlockType pendingDisposeCompletion; // @synthesize pendingDisposeCompletion=_pendingDisposeCompletion;
 @property int crypto_kernel_salt; // @synthesize crypto_kernel_salt=_crypto_kernel_salt;
 @property struct cfil_crypto_state *crypto_state; // @synthesize crypto_state=_crypto_state;
 @property(retain) NSObject<OS_dispatch_source> *sendFailedTimer; // @synthesize sendFailedTimer=_sendFailedTimer;
@@ -94,6 +96,7 @@
 - (void)sleepWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)startFilter;
 - (void)startWithConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)copyProcessIdentities;
 - (void)startControlExtensionWithConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)startDataExtensionWithConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)handleControlExtensionInitWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -112,7 +115,7 @@
 - (void)handleDisposeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)handleInitWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
-- (id)initWithPluginType:(id)arg1 pluginClass:(long long)arg2 pluginEndpoint:(id)arg3 pluginUUID:(id)arg4 queue:(id)arg5 factory:(id)arg6;
+- (id)initWithPluginType:(id)arg1 pluginClass:(long long)arg2 pluginEndpoint:(id)arg3 pluginProcessIdentity:(id)arg4 queue:(id)arg5 factory:(id)arg6;
 - (id)initWithPluginType:(id)arg1 pluginClass:(long long)arg2 pluginInfo:(id)arg3 queue:(id)arg4 factory:(id)arg5;
 
 // Remaining properties

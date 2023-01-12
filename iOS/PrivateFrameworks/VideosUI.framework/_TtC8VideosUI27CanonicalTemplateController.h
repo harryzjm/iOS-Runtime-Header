@@ -10,6 +10,8 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)initWithCoder:(id)arg1;
+- (void)vui_viewDidDisappear:(_Bool)arg1;
+- (void)vui_viewDidAppear:(_Bool)arg1;
 
 @end
 

@@ -19,7 +19,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)p_getTransform:(struct CGAffineTransform *)arg1 fromDescendant:(id)arg2;
-- (_Bool)appendOpticalAlignToSpec:(struct Spec *)arg1 offset:(struct CGPoint)arg2;
+- (_Bool)appendOpticalAlignToSpec:(void *)arg1 offset:(struct CGPoint)arg2;
 - (void)renderIntoContext:(struct CGContext *)arg1 offset:(struct CGPoint)arg2;
 - (struct CGRect)erasableBounds;
 - (double)depth;

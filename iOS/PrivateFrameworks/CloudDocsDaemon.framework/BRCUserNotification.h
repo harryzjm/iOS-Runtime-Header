@@ -11,7 +11,6 @@
 @class NSMutableDictionary, NSString;
 @protocol OS_dispatch_source;
 
-__attribute__((visibility("hidden")))
 @interface BRCUserNotification : NSObject <BRCUserNotifier>
 {
     struct __CFUserNotification *_cfUserNotification;

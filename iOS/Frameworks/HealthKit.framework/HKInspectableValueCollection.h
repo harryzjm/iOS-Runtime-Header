@@ -20,6 +20,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)_unitStringForValue:(id)arg1;
++ (id)_unitStringForValueCollection:(id)arg1;
 + (_Bool)hasNoValue:(id)arg1;
 + (id)inspectableValueCollectionTaggedListWithValues:(id)arg1 tags:(id)arg2;
 + (id)inspectableValueCollectionListWithValues:(id)arg1;
@@ -42,6 +44,9 @@
 - (void)_assertCollectionType;
 - (id)valuesWithTag:(id)arg1;
 @property(readonly, nonatomic) NSString *unitString;
+- (long long)referenceRangeStatusWithRanges:(id)arg1;
+- (id)valueInRangeWithReferenceRanges:(id)arg1 includeUnitString:(_Bool)arg2;
+- (id)valueInRangeWithReferenceRanges:(id)arg1 includeUnitString:(_Bool)arg2 allowsNullRange:(_Bool)arg3;
 @property(readonly, nonatomic) NSArray *inspectableValues;
 @property(readonly, nonatomic) HKInspectableValue *max;
 @property(readonly, nonatomic) HKInspectableValue *min;

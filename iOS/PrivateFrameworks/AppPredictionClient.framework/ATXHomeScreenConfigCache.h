@@ -13,10 +13,9 @@
     NSString *_rootPath;
 }
 
-+ (_Bool)_suggestionsWidgetExistsInPages:(id)arg1;
-+ (_Bool)_appPredictionPanelExistsInPages:(id)arg1;
-+ (_Bool)suggestionsWidgetExistsOnHomeScreenOrTodayPage;
-+ (_Bool)appPredictionPanelExistsOnHomeScreenOrTodayPage;
++ (_Bool)suggestionsWidgetExistsInPage:(id)arg1;
++ (_Bool)appPredictionPanelExistsInPage:(id)arg1;
++ (_Bool)hasWidgetsOnTheHomeScreenWithHomeScreenPages:(id)arg1;
 - (void).cxx_destruct;
 - (id)prettyPrintedJSON;
 - (id)loadHomeScreenAndTodayPageConfigurationsFromJSONAtPath:(id)arg1 error:(id *)arg2;
@@ -26,6 +25,9 @@
 - (_Bool)writeDockAppList:(id)arg1 error:(id *)arg2;
 - (id)loadDockAppListWithError:(id *)arg1;
 - (id)_filePathForDockConfig;
+- (long long)pageIndexOfAppPredictionPanelWithIdentifier:(id)arg1;
+- (long long)numOnboardingStacksOnTheHomeScreen;
+- (_Bool)hasWidgetsOnTheHomeScreen;
 - (_Bool)writeHomeScreenPageConfigurations:(id)arg1 error:(id *)arg2;
 - (id)loadHomeScreenPageConfigurationsWithError:(id *)arg1;
 - (id)loadHomeScreenAndTodayPageConfigurationsWithError:(id *)arg1;

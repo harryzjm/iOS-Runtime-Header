@@ -16,6 +16,8 @@
     unsigned long long _lockState;
     NSMutableArray *_assertions;
     id <BSInvalidatable> _dispatchingAssertion;
+    id <BSInvalidatable> _dispatchingAssertionForVoiceCommand;
+    id <BSInvalidatable> _keyCommandDispatchingAssertion;
     SBHIDUILockAssertion *_pocketTouchesAssertion;
     _Bool _proximityDetectionEnabled;
 }

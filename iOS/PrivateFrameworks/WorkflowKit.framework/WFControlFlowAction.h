@@ -4,18 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class WFControlFlowAttributionTracker;
+
 @interface WFControlFlowAction
 {
     long long _mode;
+    WFControlFlowAttributionTracker *_controlFlowTracker;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) __weak WFControlFlowAttributionTracker *controlFlowTracker; // @synthesize controlFlowTracker=_controlFlowTracker;
 @property(readonly, nonatomic) long long mode; // @synthesize mode=_mode;
 - (id)groupedIntermediaryActions;
 - (id)groupedCloseAction;
 - (id)groupedOpenAction;
 - (void)resetEvaluationCriteriaWithVariableSource:(id)arg1;
-- (id)outputIcon;
-- (id)icon;
+- (id)outputIconImage;
+- (id)iconImage;
 - (id)inheritedOutputContentClassesInWorkflow:(id)arg1 context:(id)arg2;
 - (id)outputContentClasses;
 - (_Bool)hasChildren;
@@ -29,6 +34,7 @@
 - (id)createAccompanyingActionWithMode:(long long)arg1;
 - (id)serializedParameters;
 - (void)generateGroupingIdentifierIfNecessary;
+@property(nonatomic, getter=isCollapsed) _Bool collapsed;
 - (id)initWithIdentifier:(id)arg1 definition:(id)arg2 serializedParameters:(id)arg3;
 
 @end

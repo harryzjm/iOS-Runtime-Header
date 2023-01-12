@@ -20,6 +20,8 @@
     NSMutableDictionary *_observersByIdentifier;
 }
 
++ (id)bundleIdentifierForLegacyAppIdentifier:(id)arg1;
++ (id)legacyAppIdentifierForBundleIdentifier:(id)arg1;
 + (id)sharedRegistry;
 - (void).cxx_destruct;
 @property(nonatomic) int urlTypesToken; // @synthesize urlTypesToken=_urlTypesToken;
@@ -36,7 +38,6 @@
 - (void)fillRegistry;
 - (void)updateRegistry;
 - (void)deleteCache;
-- (id)identifierForAppWithBundleIdentifier:(id)arg1;
 - (id)actionsWithIdentifiers:(id)arg1;
 @property(readonly, nonatomic) NSArray *allActions;
 - (id)appWithURLScheme:(id)arg1;

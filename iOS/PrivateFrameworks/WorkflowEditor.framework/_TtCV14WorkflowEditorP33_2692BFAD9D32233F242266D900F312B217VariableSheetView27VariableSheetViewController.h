@@ -13,6 +13,8 @@
     MISSING_TYPE *_variableSheetIsPresented;
     MISSING_TYPE *variableSheet;
     MISSING_TYPE *textTokenChooser;
+    MISSING_TYPE *onShowActionOutputPicker;
+    MISSING_TYPE *onRevealAction;
 }
 
 - (void).cxx_destruct;

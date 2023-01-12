@@ -24,6 +24,7 @@
     SignpostEvent *_curFrameLifetimeBegin;
 }
 
++ (void)addNeededSCToAllowlist:(id)arg1;
 + (void)addNeededSCToWhitelist:(id)arg1;
 + (_Bool)filterPassesRequiredSCForCAInstrumentation:(id)arg1;
 - (void).cxx_destruct;

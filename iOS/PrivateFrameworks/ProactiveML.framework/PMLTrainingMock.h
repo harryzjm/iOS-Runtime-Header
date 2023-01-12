@@ -20,7 +20,6 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *collectedSessions; // @synthesize collectedSessions=_collectedSessions;
 - (void)clearCollectedSessions;
-- (void)setSourceRecoverer:(CDUnknownBlockType)arg1;
 - (void)updateLastTrainingFeaturizationForModel:(id)arg1 andData:(id)arg2;
 - (id)lastTrainingFeaturizationForModelName:(id)arg1 andLocale:(id)arg2;
 - (void)updateSessionsAndLabelForModel:(id)arg1 block:(CDUnknownBlockType)arg2;
@@ -30,7 +29,6 @@
 - (void)deleteSessionsWithBundleID:(id)arg1;
 - (void)deleteSessionsWithDomainIdentifiers:(id)arg1 bundleID:(id)arg2;
 - (void)deleteSessionsWithIdentifiers:(id)arg1 bundleID:(id)arg2;
-- (void)addSessionWithCovariates:(id)arg1 source:(id)arg2 label:(long long)arg3 sessionDescriptor:(id)arg4 spotlightReference:(id)arg5 isInternal:(_Bool)arg6;
 - (void)addSessionWithCovariates:(id)arg1 label:(long long)arg2 sessionDescriptor:(id)arg3 spotlightReference:(id)arg4 isInternal:(_Bool)arg5;
 - (id)init;
 

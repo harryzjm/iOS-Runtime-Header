@@ -8,12 +8,12 @@
 {
     float _spacing;
     unsigned long long _width;
-    vector_74a7c1d0 _prevPoints;
+    vector_82477975 _prevPoints;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(nonatomic) vector_027a6188 prevPoints; // @synthesize prevPoints=_prevPoints;
+@property(nonatomic) vector_242c0691 prevPoints; // @synthesize prevPoints=_prevPoints;
 @property(nonatomic) float spacing; // @synthesize spacing=_spacing;
 @property(nonatomic) unsigned long long width; // @synthesize width=_width;
 - (void)clear;

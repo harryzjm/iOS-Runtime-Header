@@ -18,14 +18,18 @@
     _Bool _skipKeyAssetFetchesForSmartAlbums;
     _Bool _skipAssetFetches;
     _Bool _skipAssetCountFetches;
+    _Bool _simulateNonIncrementalChanges;
     PHCollectionList *_collectionList;
     PHFetchResult *_collectionsFetchResult;
     NSPredicate *_assetsFilterPredicate;
+    long long _pausedChangeDetailsBufferLength;
 }
 
 + (id)configurationWithCollectionsFetchResult:(id)arg1;
 + (id)configurationWithCollectionList:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) long long pausedChangeDetailsBufferLength; // @synthesize pausedChangeDetailsBufferLength=_pausedChangeDetailsBufferLength;
+@property(nonatomic) _Bool simulateNonIncrementalChanges; // @synthesize simulateNonIncrementalChanges=_simulateNonIncrementalChanges;
 @property(copy, nonatomic) NSPredicate *assetsFilterPredicate; // @synthesize assetsFilterPredicate=_assetsFilterPredicate;
 @property(nonatomic) _Bool skipAssetCountFetches; // @synthesize skipAssetCountFetches=_skipAssetCountFetches;
 @property(nonatomic) _Bool skipAssetFetches; // @synthesize skipAssetFetches=_skipAssetFetches;

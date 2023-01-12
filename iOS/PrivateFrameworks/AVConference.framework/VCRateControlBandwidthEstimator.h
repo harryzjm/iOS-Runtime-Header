@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
     void *_logBWEDump;
 }
 
+@property(readonly, nonatomic) double lastProbingArrivalTime; // @synthesize lastProbingArrivalTime=_referencePacketArrivalTime;
 @property(retain, nonatomic) VCRateControlServerBag *serverBag; // @synthesize serverBag=_serverBag;
 @property(nonatomic) _Bool fastSuddenBandwidthDetectionEnabled; // @synthesize fastSuddenBandwidthDetectionEnabled=_fastSuddenBandwidthDetectionEnabled;
 @property(readonly, nonatomic) int bandwidthEstimationState; // @synthesize bandwidthEstimationState=_bandwidthEstimationState;

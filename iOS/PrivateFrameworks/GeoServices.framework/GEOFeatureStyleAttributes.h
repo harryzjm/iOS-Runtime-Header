@@ -11,16 +11,12 @@
 
 @interface GEOFeatureStyleAttributes : NSObject <NSCopying, NSSecureCoding>
 {
-    CDStruct_1e94be47 *v;
-    GEOFeatureStyleAttributes *_sharedAttributes;
-    CDStruct_d008d4b8 *extAttrs;
-    unsigned char countExtAttrs;
-    unsigned char countAttrs;
-    BOOL featureType;
+    shared_ptr_659eff70 _attributes;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)styleAttributesForPlace:(id)arg1;
++ (id)nearbyTransitStyleAttributes;
 + (id)inviteStyleAttributes;
 + (id)ticketedEventStyleAttributes;
 + (id)carRentalStyleAttributes;
@@ -38,26 +34,52 @@
 + (id)searchResultStyleAttributes;
 + (id)airportStyleAttributes;
 + (id)addressMarkerStyleAttributes;
+- (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)sort;
 - (id)description;
-- (unsigned long long)hash;
-- (int)poiType;
-- (_Bool)hasAttributes;
-- (_Bool)isSuperset:(id)arg1;
+- (void)sort;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)removeKey:(unsigned int)arg1;
-- (void)replaceAttributes:(const CDStruct_1e94be47 *)arg1 count:(unsigned int)arg2;
-- (void)setExtAttributes:(const CDStruct_d008d4b8 *)arg1 count:(unsigned int)arg2;
-- (BOOL)featureType;
-- (void)dealloc;
+- (id)initWithFeatureStyleAttributesPtr:(const void *)arg1;
+- (shared_ptr_659eff70)featureStyleAttributesPtr;
+- (shared_ptr_82272e24)_sharedAttributes;
+@property(readonly, nonatomic) BOOL featureType;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithSharedStyleAttributes:(id)arg1 extAttributes:(const CDStruct_d008d4b8 *)arg2 extAttributeCount:(unsigned char)arg3;
-- (id)initWithGEOStyleAttributes:(id)arg1;
-- (id)initWithStyleAttributes:(id)arg1;
+@property(readonly, nonatomic) unsigned char countAttrs;
+@property(readonly, nonatomic) unsigned char countExtAttrs;
+@property(readonly, nonatomic) struct GeoCodecsFeatureStylePairExt *extAttrs;
+@property(readonly, nonatomic) struct GeoCodecsFeatureStylePair *v;
+@property(readonly, nonatomic) _Bool shouldSuppress3DBuildingStrokes;
+@property(readonly, nonatomic) _Bool isDrivable;
+@property(readonly, nonatomic) _Bool isWalkable;
+@property(readonly, nonatomic) int bikeLaneSide;
+@property(readonly, nonatomic) int bikeableSide;
+@property(readonly, nonatomic) int walkableSide;
+@property(readonly, nonatomic) int sidewalkSide;
+@property(readonly, nonatomic) _Bool isRoadPedestrianNavigable;
+@property(readonly, nonatomic) int drivingSide;
+@property(readonly, nonatomic) _Bool hasDrivingSide;
+@property(readonly, nonatomic) _Bool isBorder;
+@property(readonly, nonatomic) _Bool isRailway;
+@property(readonly, nonatomic) _Bool isFreeway;
+@property(readonly, nonatomic) unsigned char rampDirection;
+@property(readonly, nonatomic) int rampType;
+@property(readonly, nonatomic) _Bool isRamp;
+@property(readonly, nonatomic) _Bool isBridge;
+@property(readonly, nonatomic) _Bool isTunnel;
+@property(readonly, nonatomic) unsigned int lineType;
+- (int)poiType;
+- (_Bool)hasAttributes;
+- (void)replaceAttributes:(const struct GeoCodecsFeatureStylePair *)arg1 count:(unsigned int)arg2;
+- (void)setExtAttributes:(const struct GeoCodecsFeatureStylePairExt *)arg1 count:(unsigned int)arg2;
+- (void *)featureStyleAttributes;
+- (id)initWithPlaceDataStyleAttributes:(id)arg1;
+- (id)initWithPlaceStyleAttributes:(id)arg1;
 - (id)initWithAttributes:(unsigned int)arg1;
+- (id)initWithGEOStyleAttributes:(id)arg1;
+- (id)initWithStyleAttributes:(const void *)arg1;
+- (id)_initWithSharedStyleAttributes:(const void *)arg1 extAttributes:(const struct GeoCodecsFeatureStylePairExt *)arg2 extAttributeCount:(unsigned char)arg3;
 - (id)init;
 - (id)dictionaryRepresentation;
 - (_Bool)isTransit;
@@ -65,27 +87,6 @@
 - (_Bool)isLandmarkPOI;
 - (_Bool)isLabelPOI;
 - (id)copyWithAirportStyleAttributes;
-- (id)initWithPlaceDataStyleAttributes:(id)arg1;
-- (unsigned int)lineType;
-- (_Bool)shouldSuppress3DBuildingStrokes;
-- (_Bool)isDrivable;
-- (_Bool)isWalkable;
-- (int)bikeLaneSide;
-- (int)bikeableSide;
-- (int)walkableSide;
-- (int)sidewalkSide;
-- (_Bool)isRoadPedestrianNavigable;
-- (int)drivingSide;
-- (_Bool)hasDrivingSide;
-- (_Bool)isBorder;
-- (_Bool)isRailway;
-- (_Bool)isFreeway;
-- (int)rampDirection;
-- (int)rampType;
-- (_Bool)isRamp;
-- (_Bool)isBridge;
-- (_Bool)isTunnel;
-- (id)initWithPlaceStyleAttributes:(id)arg1;
 
 @end
 

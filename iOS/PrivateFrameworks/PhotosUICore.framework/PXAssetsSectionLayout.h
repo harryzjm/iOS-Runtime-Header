@@ -17,8 +17,8 @@
 
 @interface PXAssetsSectionLayout <PXChangeObserver, PXGShadowSource, PXGViewSource, PXGDisplayAssetSource, PXGGeneratedLayoutDelegate, PXGItemsLayoutDelegate, PXCuratedLibraryRowBasedLayout>
 {
-    CDStruct_d97c9657 _updateFlags;
-    CDStruct_d97c9657 _postUpdateFlags;
+    CDStruct_af00bf4e _updateFlags;
+    CDStruct_af00bf4e _postUpdateFlags;
     unsigned int _sectionBoundariesSpriteIndex;
     unsigned int _sectionShadowSpriteIndex;
     unsigned int _showAllButtonSpriteIndex;
@@ -41,6 +41,7 @@
     _Bool _canStartSelecting;
     _Bool _wantsShadow;
     _Bool _wantsDimmedSelectionStyle;
+    _Bool _wantsNumberedSelectionStyle;
     _Bool _removesHeaderLayoutWhenEmpty;
     _Bool _removesContentLayoutWhenEmpty;
     _Bool _showsSkimmingSlideshow;
@@ -108,6 +109,7 @@
 @property(retain, nonatomic) NSString *selectAllButtonTitle; // @synthesize selectAllButtonTitle=_selectAllButtonTitle;
 @property(retain, nonatomic) PXCuratedLibraryActionPerformer *selectAllActionPerformer; // @synthesize selectAllActionPerformer=_selectAllActionPerformer;
 @property(retain, nonatomic) PXCuratedLibraryShowAllActionPerformer *showAllActionPerformer; // @synthesize showAllActionPerformer=_showAllActionPerformer;
+@property(nonatomic) _Bool wantsNumberedSelectionStyle; // @synthesize wantsNumberedSelectionStyle=_wantsNumberedSelectionStyle;
 @property(nonatomic) _Bool wantsDimmedSelectionStyle; // @synthesize wantsDimmedSelectionStyle=_wantsDimmedSelectionStyle;
 @property(nonatomic) _Bool wantsShadow; // @synthesize wantsShadow=_wantsShadow;
 @property(nonatomic) long long numberOfPrecedingAssets; // @synthesize numberOfPrecedingAssets=_numberOfPrecedingAssets;
@@ -134,7 +136,9 @@
 - (id)itemsLayout:(id)arg1 objectReferenceForItem:(long long)arg2;
 - (long long)itemsLayout:(id)arg1 itemForObjectReference:(id)arg2 options:(unsigned long long)arg3;
 - (void)itemsLayout:(id)arg1 updateTagsInSpriteInfos:(CDStruct_9d1ebe49 *)arg2 forItemsInRange:(struct _NSRange)arg3;
-- (unsigned short)itemsLayout:(id)arg1 effectIdForItem:(long long)arg2;
+- (unsigned int)itemsLayout:(id)arg1 effectIdForItem:(long long)arg2;
+- (CDStruct_2bd92d94)itemsLayout:(id)arg1 cornerRadiusForItem:(long long)arg2;
+- (struct CGSize)itemsLayout:(id)arg1 insetForItem:(long long)arg2;
 - (struct CGRect)itemsLayout:(id)arg1 bestCropRectForItem:(long long)arg2 withAspectRatio:(double)arg3;
 - (double)itemsLayout:(id)arg1 aspectRatioForItem:(long long)arg2;
 - (id)viewUserDataForSpriteAtIndex:(unsigned int)arg1 inLayout:(id)arg2;
@@ -195,6 +199,7 @@
 @property(readonly, copy) NSString *description;
 - (void)visibleRectDidChange;
 - (id)layoutForItemChanges;
+- (_Bool)allowsDanglingUpdatesAssertions;
 - (void)update;
 - (void)_callAddContentActionHandler;
 @property(copy, nonatomic) NSSet *draggedAssetReferences;

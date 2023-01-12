@@ -24,6 +24,9 @@
     long long _updateState;
     _Bool _iOSBinaryMacOSCompatible;
     _Bool _downloaded;
+    _Bool _requiresRosetta;
+    _Bool _runsOnIntel;
+    _Bool _runsOnAppleSilicon;
     long long _deviceFamilies;
 }
 
@@ -33,14 +36,18 @@
 @property(copy, nonatomic) NSDictionary *metrics; // @synthesize metrics=_metrics;
 @property(nonatomic) long long updateState; // @synthesize updateState=_updateState;
 @property(copy, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
+@property(readonly, nonatomic) _Bool runsOnAppleSilicon; // @synthesize runsOnAppleSilicon=_runsOnAppleSilicon;
+@property(readonly, nonatomic) _Bool runsOnIntel; // @synthesize runsOnIntel=_runsOnIntel;
+@property(readonly, nonatomic) _Bool requiresRosetta; // @synthesize requiresRosetta=_requiresRosetta;
 @property(readonly, nonatomic) NSDictionary *rawUpdateDictionary; // @synthesize rawUpdateDictionary=_rawUpdateDictionary;
 @property(nonatomic, getter=isProfileValidated) _Bool profileValidated; // @synthesize profileValidated=_profileValidated;
 @property(nonatomic, getter=isPerDevice) _Bool perDevice; // @synthesize perDevice=_perDevice;
 @property(nonatomic, getter=isDownloaded) _Bool downloaded; // @synthesize downloaded=_downloaded;
 @property(nonatomic, getter=isIOSBinaryMacOSCompatible) _Bool iOSBinaryMacOSCompatible; // @synthesize iOSBinaryMacOSCompatible=_iOSBinaryMacOSCompatible;
 @property(copy, nonatomic) NSDate *installDate; // @synthesize installDate=_installDate;
-@property(readonly, nonatomic) long long deviceFamilies; // @synthesize deviceFamilies=_deviceFamilies;
+@property(nonatomic) long long deviceFamilies; // @synthesize deviceFamilies=_deviceFamilies;
 @property(copy, nonatomic) NSArray *blockedBy; // @synthesize blockedBy=_blockedBy;
+- (_Bool)_boolValueForProperty:(id)arg1 withDefaultValue:(_Bool)arg2;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

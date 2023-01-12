@@ -18,6 +18,7 @@
 {
 }
 
++ (_Bool)_subclassesMustBeExplicitlyMentionedWhenDecoded;
 + (_Bool)supportsSecureCoding;
 + (id)stringWithContentsOfFile:(id)arg1 usedEncoding:(unsigned long long *)arg2 error:(id *)arg3;
 + (id)stringWithContentsOfFile:(id)arg1 encoding:(unsigned long long)arg2 error:(id *)arg3;
@@ -47,6 +48,7 @@
 + (unsigned long long)stringEncodingForData:(id)arg1 encodingOptions:(id)arg2 convertedString:(id *)arg3 usedLossyConversion:(_Bool *)arg4;
 + (id)writableTypeIdentifiersForItemProvider;
 + (id)objectWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 error:(id *)arg3;
++ (id)_newStringFromUTF16InternalData:(id)arg1 typeIdentifier:(id)arg2 error:(id *)arg3;
 + (id)readableTypeIdentifiersForItemProvider;
 + (id)localizedNameOfStringEncoding:(unsigned long long)arg1;
 + (const unsigned long long *)availableStringEncodings;
@@ -173,6 +175,7 @@
 @property(readonly) unsigned long long length;
 - (id)_widthVariants;
 - (id)variantFittingPresentationWidth:(long long)arg1;
+@property(readonly, nonatomic) NSAttributedString *__baseAttributedString;
 - (_Bool)_getCString:(char *)arg1 maxLength:(unsigned long long)arg2 encoding:(unsigned int)arg3;
 - (unsigned int)_fastestEncodingInCFStringEncoding;
 - (unsigned int)_smallestEncodingInCFStringEncoding;
@@ -272,7 +275,6 @@
 - (struct _NSRange)_rangeOfRegularExpressionPattern:(id)arg1 options:(unsigned long long)arg2 range:(struct _NSRange)arg3 locale:(id)arg4;
 - (struct _NSRange)significantText;
 - (id)replacementObjectForPortCoder:(id)arg1;
-@property(readonly, nonatomic) NSAttributedString *__baseAttributedString;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -12,10 +12,6 @@
 
 + (id)supportedJointsGroupNamesForRevision:(unsigned long long)arg1 error:(id *)arg2;
 + (id)supportedJointNamesForRevision:(unsigned long long)arg1 error:(id *)arg2;
-+ (id)supportedIdentifiedPointGroupKeysForRevision:(unsigned long long)arg1 error:(id *)arg2;
-+ (id)supportedIdentifiedPointKeysForRevision:(unsigned long long)arg1 error:(id *)arg2;
-+ (id)supportedRecognizedPointGroupKeysForRevision:(unsigned long long)arg1 error:(id *)arg2;
-+ (id)supportedRecognizedPointKeysForRevision:(unsigned long long)arg1 error:(id *)arg2;
 + (Class)configurationClass;
 + (const CDStruct_7d93034e *)revisionAvailability;
 - (_Bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;

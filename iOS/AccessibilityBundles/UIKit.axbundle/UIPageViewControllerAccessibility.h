@@ -12,10 +12,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (_Bool)accessibilityScroll:(long long)arg1;
-- (_Bool)_axScrollPageController:(_Bool)arg1;
 - (id)_accessibilityScrollStatus;
 - (void)_pageControlValueChanged:(id)arg1;
-- (void)_accessibilitySendScrollStatus;
 
 @end
 

@@ -9,6 +9,7 @@
 @class NSString;
 
 @interface ICCloudSyncingObject (UI)
++ (_Bool)isInlineAttachment:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *shareViaICloudSystemImageName;
 @property(readonly, copy, nonatomic) NSString *shareViaICloudActionTitle;
 @end

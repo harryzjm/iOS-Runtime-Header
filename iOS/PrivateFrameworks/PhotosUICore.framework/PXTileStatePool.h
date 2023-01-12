@@ -11,7 +11,7 @@
 @interface PXTileStatePool : NSObject
 {
     struct PXTileState *_states;
-    struct unordered_map<PXTileIdentifier, unsigned long, std::__1::hash<PXTileIdentifier>, std::__1::equal_to<PXTileIdentifier>, std::__1::allocator<std::__1::pair<const PXTileIdentifier, unsigned long>>> _indexByTargetIdentifier;
+    struct unordered_map<PXTileIdentifier, unsigned long, std::hash<PXTileIdentifier>, std::equal_to<PXTileIdentifier>, std::allocator<std::pair<const PXTileIdentifier, unsigned long>>> _indexByTargetIdentifier;
     NSMapTable *_tileIndexesByPageKey;
     long long _statesMaxCount;
     NSMutableIndexSet *_usedIndexes;

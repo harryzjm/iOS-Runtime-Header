@@ -16,9 +16,6 @@
 + (_Bool)supportsSecureCoding;
 + (void)applyEntries:(id)arg1 withProfile:(id)arg2;
 - (void).cxx_destruct;
-@property(nonatomic) long long syncProvenance; // @synthesize syncProvenance=_syncProvenance;
-@property(nonatomic) double modificationDate; // @synthesize modificationDate=_modificationDate;
-@property(retain, nonatomic) NSArray *records; // @synthesize records=_records;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

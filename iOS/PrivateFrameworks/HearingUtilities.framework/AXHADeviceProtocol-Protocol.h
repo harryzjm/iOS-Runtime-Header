@@ -16,6 +16,9 @@
 @property(readonly, retain, nonatomic) AXHearingAidMode *leftSelectedProgram;
 @property(readonly, copy, nonatomic) NSArray *leftPrograms;
 @property(readonly, copy, nonatomic) NSArray *rightPrograms;
+@property(readonly, nonatomic) _Bool requiresCombinedVolumes;
+@property(readonly, nonatomic) _Bool requiresCombinedPresets;
+@property(readonly, nonatomic) _Bool requiresBinauralStreaming;
 @property(readonly, nonatomic) _Bool supportsCombinedVolumes;
 @property(readonly, nonatomic) _Bool supportsCombinedPresets;
 @property(readonly, nonatomic) _Bool supportsBinauralStreaming;

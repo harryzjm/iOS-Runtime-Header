@@ -6,19 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class NSLocale, NSString, WAForecastModelController;
+@class NSLocale, NSString, WAForecastModelController, WALocationPrivacySampler;
 @protocol WeatherUpdaterDelegate;
 
 @interface TWCCityUpdater : NSObject
 {
     id <WeatherUpdaterDelegate> _delegate;
     NSLocale *_locale;
+    WALocationPrivacySampler *_locationGeocodingSampler;
     WAForecastModelController *_forecastModelController;
 }
 
 + (id)sharedCityUpdater;
 - (void).cxx_destruct;
 @property(retain, nonatomic) WAForecastModelController *forecastModelController; // @synthesize forecastModelController=_forecastModelController;
+@property(readonly, nonatomic) WALocationPrivacySampler *locationGeocodingSampler; // @synthesize locationGeocodingSampler=_locationGeocodingSampler;
 @property(retain, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 @property(nonatomic) __weak id <WeatherUpdaterDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)updateWeatherForCities:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
@@ -27,6 +29,7 @@
 @property(retain, nonatomic) NSString *trackingParameter;
 - (void)cancel;
 - (_Bool)isUpdatingCity:(id)arg1;
+- (void)configureWithLocationGeocodingSampler:(id)arg1;
 - (id)init;
 
 @end

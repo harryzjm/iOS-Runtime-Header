@@ -11,8 +11,7 @@
 @interface _TtC16HealthExperience22MutableArrayDataSource : _TtCs12_SwiftObject
 {
     MISSING_TYPE *eventHandler;
-    MISSING_TYPE *promise;
-    MISSING_TYPE *changes;
+    MISSING_TYPE *changesSubject;
     MISSING_TYPE *arrangedSections;
     MISSING_TYPE *$__lazy_storage_$_identifier;
     MISSING_TYPE *lock;

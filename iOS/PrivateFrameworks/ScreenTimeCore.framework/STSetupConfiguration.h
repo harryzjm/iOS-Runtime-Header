@@ -22,6 +22,7 @@
 
 + (_Bool)supportsSecureCoding;
 + (_Bool)_isContactManagementStateValid:(long long)arg1 pairedWithUserHasContacts:(_Bool)arg2;
++ (_Bool)_isScreenTimeStateValid:(long long)arg1;
 - (void).cxx_destruct;
 @property(readonly) _Bool userHasContacts; // @synthesize userHasContacts=_userHasContacts;
 @property(readonly) long long contactManagementState; // @synthesize contactManagementState=_contactManagementState;

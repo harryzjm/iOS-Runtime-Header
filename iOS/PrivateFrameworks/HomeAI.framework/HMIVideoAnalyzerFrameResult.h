@@ -7,26 +7,34 @@
 #import <HMFoundation/HMFObject.h>
 
 #import <HomeAI/HMFLogging-Protocol.h>
+#import <HomeAI/HMIVideoEvent-Protocol.h>
 #import <HomeAI/NSSecureCoding-Protocol.h>
 
 @class HMIVideoFrame, NSSet, NSString;
 
-@interface HMIVideoAnalyzerFrameResult : HMFObject <HMFLogging, NSSecureCoding>
+@interface HMIVideoAnalyzerFrameResult : HMFObject <HMIVideoEvent, HMFLogging, NSSecureCoding>
 {
     HMIVideoFrame *_frame;
     NSSet *_events;
+    struct CGRect _regionOfInterest;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)combineFrameResults:(id)arg1 withResults:(id)arg2;
 + (id)logCategory;
 - (void).cxx_destruct;
+@property(readonly) struct CGRect regionOfInterest; // @synthesize regionOfInterest=_regionOfInterest;
 @property(readonly) NSSet *events; // @synthesize events=_events;
 @property(readonly) HMIVideoFrame *frame; // @synthesize frame=_frame;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+@property(readonly) CDStruct_1b6d18a9 time;
 - (id)maxConfidenceEvents;
 - (id)maxConfidenceEventForEventClass:(Class)arg1;
+- (id)attributeDescriptions;
 @property(readonly, copy) NSString *description;
+- (id)redactedCopy;
+- (id)initWithFrame:(id)arg1 events:(id)arg2 regionOfInterest:(struct CGRect)arg3;
 - (id)initWithFrame:(id)arg1 events:(id)arg2;
 
 // Remaining properties

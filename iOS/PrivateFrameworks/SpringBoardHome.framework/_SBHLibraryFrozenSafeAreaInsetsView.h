@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <SpringBoardFoundation/SBFFocusIsolationView.h>
 
-@interface _SBHLibraryFrozenSafeAreaInsetsView : UIView
+@interface _SBHLibraryFrozenSafeAreaInsetsView : SBFFocusIsolationView
 {
 }
 

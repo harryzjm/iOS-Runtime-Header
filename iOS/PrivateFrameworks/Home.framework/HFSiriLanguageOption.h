@@ -8,7 +8,7 @@
 
 #import <Home/NAIdentifiable-Protocol.h>
 
-@class NSString;
+@class HMSettingLanguageValue, NSString, UIColor;
 
 @interface HFSiriLanguageOption : NSObject <NAIdentifiable>
 {
@@ -16,14 +16,22 @@
     NSString *_recognitionLanguage;
     NSString *_outputLanguage;
     long long _outputGender;
+    HMSettingLanguageValue *_settingLanguageValue;
+    NSString *_serializableVoiceName;
 }
 
 + (id)na_identity;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *serializableVoiceName; // @synthesize serializableVoiceName=_serializableVoiceName;
+@property(retain, nonatomic) HMSettingLanguageValue *settingLanguageValue; // @synthesize settingLanguageValue=_settingLanguageValue;
 @property(readonly, nonatomic, getter=isDefaultVoiceForRecognitionLanguage) _Bool defaultVoiceForRecognitionLanguage; // @synthesize defaultVoiceForRecognitionLanguage=_defaultVoiceForRecognitionLanguage;
 @property(readonly, nonatomic) long long outputGender; // @synthesize outputGender=_outputGender;
 @property(readonly, copy, nonatomic) NSString *outputLanguage; // @synthesize outputLanguage=_outputLanguage;
 @property(readonly, copy, nonatomic) NSString *recognitionLanguage; // @synthesize recognitionLanguage=_recognitionLanguage;
+@property(readonly, nonatomic) NSString *voiceNameWithDefaultFallback;
+@property(readonly, nonatomic) NSString *voiceName;
+@property(readonly, copy, nonatomic) UIColor *voiceColor;
+@property(readonly, copy, nonatomic) NSString *localizedOutputVoiceColor;
 - (id)outputVoice;
 @property(readonly, copy, nonatomic) NSString *localizedOutputVoiceGender;
 @property(readonly, copy, nonatomic) NSString *localizedOutputVoiceAccent;
@@ -32,9 +40,11 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)allSerializedRepresentations;
 - (id)serializedRepresentation;
 - (id)initWithSerializedRepresentation:(id)arg1;
-- (id)initWithRecognitionLanguage:(id)arg1 outputLanguage:(id)arg2 outputGender:(long long)arg3 defaultVoiceForRecognitionLanguage:(_Bool)arg4;
+- (id)initWithHomeKitSettingLanguageValue:(id)arg1;
+- (id)initWithRecognitionLanguage:(id)arg1 outputLanguage:(id)arg2 outputGender:(long long)arg3 voiceName:(id)arg4 defaultVoiceForRecognitionLanguage:(_Bool)arg5;
 - (id)initWithRecognitionLanguage:(id)arg1 outputVoice:(id)arg2 defaultVoiceForRecognitionLanguage:(_Bool)arg3;
 - (id)init;
 

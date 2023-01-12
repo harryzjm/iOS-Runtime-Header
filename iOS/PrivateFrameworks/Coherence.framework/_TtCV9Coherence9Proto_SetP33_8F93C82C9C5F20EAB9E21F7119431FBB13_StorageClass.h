@@ -12,7 +12,10 @@
 {
     MISSING_TYPE *_uuid;
     MISSING_TYPE *_version;
+    MISSING_TYPE *_timestamp;
     MISSING_TYPE *_insertions;
+    MISSING_TYPE *_minVersion;
+    MISSING_TYPE *_removed;
 }
 
 @end

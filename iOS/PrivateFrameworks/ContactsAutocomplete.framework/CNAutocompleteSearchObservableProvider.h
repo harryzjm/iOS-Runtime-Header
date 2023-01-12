@@ -27,6 +27,7 @@
 - (id)calendarServersSearchObservable;
 - (id)directoryServersSearchObservable;
 - (id)localExtensionSearchObservables;
+- (_Bool)shouldAllowPredictionSearchToSourceResults;
 - (id)predictionsSearchObservableWithUnfilteredResultPromise:(id)arg1;
 - (id)suggestionsSearchObservable;
 - (id)recentsSearchObservable;

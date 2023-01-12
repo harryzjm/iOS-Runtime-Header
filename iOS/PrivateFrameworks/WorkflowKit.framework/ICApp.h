@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSString, WFImage;
+@class INAppInfo, NSArray, NSDictionary, NSString, WFImage;
 @protocol OS_dispatch_queue;
 
 @interface ICApp : NSObject
@@ -16,11 +16,13 @@
     NSArray *_schemes;
     NSString *_localizedName;
     WFImage *_icon;
+    INAppInfo *_appInfo;
     NSString *_identifier;
     NSDictionary *_definition;
     NSObject<OS_dispatch_queue> *_stateAccessQueue;
 }
 
++ (void)loadIconWithBundleIdentifier:(id)arg1 desiredSize:(struct CGSize)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *stateAccessQueue; // @synthesize stateAccessQueue=_stateAccessQueue;
 @property(nonatomic) _Bool checkedInstallStatus; // @synthesize checkedInstallStatus=_checkedInstallStatus;
@@ -35,7 +37,8 @@
 - (void)resetInstalledStatus;
 - (_Bool)isCurrentlyInstalled;
 - (_Bool)determinesInstallStatusViaURLScheme;
-@property(readonly, nonatomic) long long state;
+@property(readonly, nonatomic) INAppInfo *appInfo; // @synthesize appInfo=_appInfo;
+@property(readonly, nonatomic, getter=isRestricted) _Bool restricted;
 - (void)loadIconWithCompletionHandler:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSString *iconName;
 @property(readonly, nonatomic) NSArray *metadata;

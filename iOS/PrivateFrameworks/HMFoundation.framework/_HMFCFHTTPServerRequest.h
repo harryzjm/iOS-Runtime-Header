@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (id)URL;
 - (void)appendBodyData:(id)arg1;
 - (id)responseWithStatusCode:(long long)arg1;
+- (id)attributeDescriptions;
 - (void)dealloc;
 - (id)initWithConnection:(id)arg1 requestRef:(struct _CFHTTPServerRequest *)arg2;
 - (id)init;

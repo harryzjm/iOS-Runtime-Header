@@ -12,25 +12,25 @@
 
 @interface TSCHChartPieWedgeElement : NSObject <NSCopying>
 {
-    struct TSCHChartPieWedgeElementLayoutSystem mLayoutSystem;
-    double mRadius;
-    double mMidAngle;
-    double mStartAngle;
-    double mEndAngle;
-    double mLabelExplosion;
-    double mWedgeExplosion;
-    TSCHChartSeries *mSeries;
+    struct TSCHChartPieWedgeElementLayoutSystem _layoutSystem;
+    double _radius;
+    double _midAngle;
+    double _startAngle;
+    double _endAngle;
+    double _labelExplosion;
+    double _wedgeExplosion;
+    TSCHChartSeries *_series;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) __weak TSCHChartSeries *series; // @synthesize series=mSeries;
-@property(nonatomic) double wedgeExplosion; // @synthesize wedgeExplosion=mWedgeExplosion;
-@property(nonatomic) double labelExplosion; // @synthesize labelExplosion=mLabelExplosion;
-@property(nonatomic) double endAngle; // @synthesize endAngle=mEndAngle;
-@property(nonatomic) double startAngle; // @synthesize startAngle=mStartAngle;
-@property(nonatomic) double midAngle; // @synthesize midAngle=mMidAngle;
-@property(nonatomic) double radius; // @synthesize radius=mRadius;
-@property(nonatomic) struct TSCHChartPieWedgeElementLayoutSystem layoutSystem; // @synthesize layoutSystem=mLayoutSystem;
+@property(nonatomic) __weak TSCHChartSeries *series; // @synthesize series=_series;
+@property(nonatomic) double wedgeExplosion; // @synthesize wedgeExplosion=_wedgeExplosion;
+@property(nonatomic) double labelExplosion; // @synthesize labelExplosion=_labelExplosion;
+@property(nonatomic) double endAngle; // @synthesize endAngle=_endAngle;
+@property(nonatomic) double startAngle; // @synthesize startAngle=_startAngle;
+@property(nonatomic) double midAngle; // @synthesize midAngle=_midAngle;
+@property(nonatomic) double radius; // @synthesize radius=_radius;
+@property(nonatomic) struct TSCHChartPieWedgeElementLayoutSystem layoutSystem; // @synthesize layoutSystem=_layoutSystem;
 - (_Bool)angleInRange:(double)arg1 startAngle:(double)arg2 endAngle:(double)arg3;
 - (struct CGPoint)midpointOnClosestEdgeToWedgeTip:(struct CGRect)arg1;
 - (_Bool)lineIntersectsLineWithStartPoint:(struct CGPoint)arg1 firstLineEndPoint:(struct CGPoint)arg2 secondLineStartPoint:(struct CGPoint)arg3 secondLineEndPoint:(struct CGPoint)arg4 outIntersectionPoint:(struct CGPoint *)arg5;

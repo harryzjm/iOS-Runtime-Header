@@ -11,6 +11,16 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)offLabel;
++ (id)onLabel;
++ (id)tintColor;
++ (id)offIconTintColor;
++ (id)onIconTintColor;
++ (id)displayGlyphTintColor;
++ (id)offIcon;
++ (id)onIcon;
++ (long long)triggerBacking;
++ (id)displayGlyphName;
 + (id)localizedDisplayExplanation;
 + (id)localizedDisplayName;
 + (_Bool)isUserInitiated;

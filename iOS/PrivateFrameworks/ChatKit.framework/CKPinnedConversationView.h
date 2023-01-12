@@ -8,7 +8,7 @@
 
 #import <ChatKit/CNAvatarViewDelegate-Protocol.h>
 
-@class CAFilter, CKAvatarView, CKConversation, CKPinnedConversationActivityView, NSArray, NSMutableArray, NSString, UIImage, UIImageView, UILabel, VNFaceLandmarkRegion2D;
+@class CAFilter, CKAvatarView, CKConversation, CKLabel, CKPinnedConversationActivityView, NSArray, NSMutableArray, NSString, UIImage, UIImageView, VNFaceLandmarkRegion2D;
 @protocol CKPinnedConversationViewDelegate;
 
 @interface CKPinnedConversationView : UIView <CNAvatarViewDelegate>
@@ -22,7 +22,7 @@
     NSArray *_recentMessagesInPinnedConversations;
     CKAvatarView *_avatarView;
     UIImage *_avatarSnapshot;
-    UILabel *_titleLabel;
+    CKLabel *_titleLabel;
     UIImageView *_unreadIndicator;
     UIImageView *_radiantShadowImageView;
     long long _layoutStyle;
@@ -63,7 +63,7 @@
 @property(nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
 @property(retain, nonatomic) UIImageView *radiantShadowImageView; // @synthesize radiantShadowImageView=_radiantShadowImageView;
 @property(retain, nonatomic) UIImageView *unreadIndicator; // @synthesize unreadIndicator=_unreadIndicator;
-@property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property(retain, nonatomic) CKLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) UIImage *avatarSnapshot; // @synthesize avatarSnapshot=_avatarSnapshot;
 @property(retain, nonatomic) CKAvatarView *avatarView; // @synthesize avatarView=_avatarView;
 @property(nonatomic) _Bool preferShortConversationName; // @synthesize preferShortConversationName=_preferShortConversationName;

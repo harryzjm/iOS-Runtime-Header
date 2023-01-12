@@ -6,9 +6,10 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKCNSharingProfileOnboardingFlowManager, IMCNSharingProfileOnboardingFlowResult;
+@class CKCNSharingProfileOnboardingFlowManager;
+@protocol IMCNSharingProfileOnboardingFlowResult;
 
 @protocol CKCNSharingProfileOnboardingFlowManagerDelegate <NSObject>
-- (void)flowManager:(CKCNSharingProfileOnboardingFlowManager *)arg1 didFinishWithResult:(IMCNSharingProfileOnboardingFlowResult *)arg2;
+- (void)flowManager:(CKCNSharingProfileOnboardingFlowManager *)arg1 didFinishWithResult:(id <IMCNSharingProfileOnboardingFlowResult>)arg2;
 @end
 

@@ -27,6 +27,7 @@
 - (id)updateAltitudeforVisit:(id)arg1;
 - (id)dateIntervalForAltitudeEstimation:(id)arg1;
 - (void)updateAltitudeForCentroid:(id)arg1 locations:(id)arg2;
+- (_Bool)isValidForAltitudeUpdate:(id)arg1;
 - (void)initializeZAxisParameters;
 - (id)initWithMaxHorizontalAccuracy:(double)arg1 locationManager:(id)arg2;
 - (id)init;

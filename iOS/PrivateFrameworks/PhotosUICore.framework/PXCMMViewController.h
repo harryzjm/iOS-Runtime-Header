@@ -13,13 +13,12 @@
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
 #import <PhotosUICore/PXPhotosDetailsActionMenuDelegate-Protocol.h>
 #import <PhotosUICore/PXSectionedDataSourceManagerObserver-Protocol.h>
-#import <PhotosUICore/PXToastViewControllerDelegate-Protocol.h>
 #import <PhotosUICore/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class NSArray, NSProgress, NSString, PXCMMAssetsViewController, PXCMMSession, PXCMMSpecManager, PXMiroMoviePresenter, PXMomentShareStatusPresentation, PXOneUpPresentation, PXPhotoDetailsActionMenuController, PXUpdater, UIActivityIndicatorView, UIBarButtonItem, UINavigationBar;
+@class NSArray, NSProgress, NSString, PXCMMAssetsViewController, PXCMMSession, PXCMMSpecManager, PXMomentShareStatusPresentation, PXMoviePresenter, PXOneUpPresentation, PXPhotoDetailsActionMenuController, PXUpdater, UIActivityIndicatorView, UIBarButtonItem, UINavigationBar;
 @protocol PXCMMActionControllerDelegate, PXCMMViewControllerDelegate;
 
-@interface PXCMMViewController : UIViewController <PXChangeObserver, PXCMMAssetsViewControllerDelegate, PXCMMActionControllerDelegate, PXPhotosDetailsActionMenuDelegate, UIPopoverPresentationControllerDelegate, PXSectionedDataSourceManagerObserver, PXAssetsDataSourceManagerObserver, PXToastViewControllerDelegate, PXCMMActionPerformerDelegate>
+@interface PXCMMViewController : UIViewController <PXChangeObserver, PXCMMAssetsViewControllerDelegate, PXCMMActionControllerDelegate, PXPhotosDetailsActionMenuDelegate, UIPopoverPresentationControllerDelegate, PXSectionedDataSourceManagerObserver, PXAssetsDataSourceManagerObserver, PXCMMActionPerformerDelegate>
 {
     PXMomentShareStatusPresentation *_momentShareStatusPresentation;
     _Bool _hasStartedPreloadingTasks;
@@ -40,11 +39,11 @@
     UIBarButtonItem *_progressButton;
     UIBarButtonItem *_actionMenuButtonItem;
     PXPhotoDetailsActionMenuController *_activeActionMenuController;
-    PXMiroMoviePresenter *_miroMoviePresenter;
+    PXMoviePresenter *_moviePresenter;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) PXMiroMoviePresenter *miroMoviePresenter; // @synthesize miroMoviePresenter=_miroMoviePresenter;
+@property(retain, nonatomic) PXMoviePresenter *moviePresenter; // @synthesize moviePresenter=_moviePresenter;
 @property(nonatomic, getter=isLoadingPeopleSuggestions) _Bool loadingPeopleSuggestions; // @synthesize loadingPeopleSuggestions=_loadingPeopleSuggestions;
 @property(retain, nonatomic) PXPhotoDetailsActionMenuController *activeActionMenuController; // @synthesize activeActionMenuController=_activeActionMenuController;
 @property(retain, nonatomic) UIBarButtonItem *actionMenuButtonItem; // @synthesize actionMenuButtonItem=_actionMenuButtonItem;
@@ -62,7 +61,6 @@
 @property(nonatomic) __weak id <PXCMMViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) PXCMMSession *session; // @synthesize session=_session;
 - (void)ppt_setSelecting:(_Bool)arg1;
-- (void)didDismissToastViewController:(id)arg1;
 - (_Bool)actionPerformer:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)actionPerformer:(id)arg1 presentViewController:(id)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

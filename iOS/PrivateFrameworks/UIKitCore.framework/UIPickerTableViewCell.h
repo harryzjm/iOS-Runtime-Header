@@ -13,6 +13,8 @@ __attribute__((visibility("hidden")))
     UIPickerTableView *pickerTable;
 }
 
++ (id)_nonCenterCellDigitFont;
++ (id)_centerCellDigitFont;
 + (id)_nonCenterCellFont;
 + (id)_centerCellFont;
 - (void).cxx_destruct;

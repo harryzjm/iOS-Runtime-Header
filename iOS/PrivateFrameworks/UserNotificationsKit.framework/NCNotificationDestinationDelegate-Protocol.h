@@ -5,11 +5,12 @@
 //
 
 #import <UserNotificationsKit/NCNotificationSectionSettingsProvider-Protocol.h>
+#import <UserNotificationsKit/NCNotificationSystemSettingsProvider-Protocol.h>
 
-@class NCNotificationAction, NCNotificationRequest, NSDate, NSDictionary, NSSet, NSString;
+@class NCNotificationAction, NCNotificationRequest, NSArray, NSDate, NSDictionary, NSSet, NSString, NSUUID;
 @protocol NCNotificationDestination;
 
-@protocol NCNotificationDestinationDelegate <NCNotificationSectionSettingsProvider>
+@protocol NCNotificationDestinationDelegate <NCNotificationSectionSettingsProvider, NCNotificationSystemSettingsProvider>
 - (void)destination:(id <NCNotificationDestination>)arg1 requestsClearingNotificationRequestsInSections:(NSSet *)arg2;
 - (void)destination:(id <NCNotificationDestination>)arg1 requestsClearingNotificationRequestsFromDate:(NSDate *)arg2 toDate:(NSDate *)arg3 inSections:(NSSet *)arg4;
 - (void)destination:(id <NCNotificationDestination>)arg1 requestsClearingNotificationRequests:(NSSet *)arg2 fromDestinations:(NSSet *)arg3;
@@ -18,7 +19,13 @@
 - (void)destination:(id <NCNotificationDestination>)arg1 requestPermissionToExecuteAction:(NCNotificationAction *)arg2 forNotificationRequest:(NCNotificationRequest *)arg3 withParameters:(NSDictionary *)arg4 completion:(void (^)(_Bool))arg5;
 
 @optional
+- (NCNotificationRequest *)destination:(id <NCNotificationDestination>)arg1 notificationRequestForUUID:(NSUUID *)arg2;
+- (void)destination:(id <NCNotificationDestination>)arg1 setSystemScheduledDeliveryEnabled:(_Bool)arg2 scheduledDeliveryTimes:(NSArray *)arg3;
+- (void)destination:(id <NCNotificationDestination>)arg1 setScheduledDelivery:(_Bool)arg2 forSectionIdentifier:(NSString *)arg3;
+- (void)destination:(id <NCNotificationDestination>)arg1 setAllowsDirectMessages:(_Bool)arg2 forSectionIdentifier:(NSString *)arg3;
+- (void)destination:(id <NCNotificationDestination>)arg1 setAllowsTimeSensitive:(_Bool)arg2 forSectionIdentifier:(NSString *)arg3;
 - (void)destination:(id <NCNotificationDestination>)arg1 setAllowsCriticalAlerts:(_Bool)arg2 forSectionIdentifier:(NSString *)arg3;
+- (void)destination:(id <NCNotificationDestination>)arg1 setMuted:(_Bool)arg2 untilDate:(NSDate *)arg3 forSectionIdentifier:(NSString *)arg4 threadIdentifier:(NSString *)arg5;
 - (void)destination:(id <NCNotificationDestination>)arg1 setDeliverQuietly:(_Bool)arg2 forSectionIdentifier:(NSString *)arg3;
 - (void)destination:(id <NCNotificationDestination>)arg1 setAllowsNotifications:(_Bool)arg2 forSectionIdentifier:(NSString *)arg3;
 @end

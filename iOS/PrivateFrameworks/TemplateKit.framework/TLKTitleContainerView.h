@@ -4,18 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class TLKImageView, TLKLabel, TLKRichTextField;
+@class NUIContainerBoxView, TLKImageView, TLKLabel, TLKRichTextField;
 
 @interface TLKTitleContainerView
 {
     TLKRichTextField *_titleField;
     TLKLabel *_secondaryLabel;
+    NUIContainerBoxView *_secondaryImageViewBoxView;
     TLKImageView *_secondaryImageView;
 }
 
 + (_Bool)hasNonBoldFormattingInRichText:(id)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) TLKImageView *secondaryImageView; // @synthesize secondaryImageView=_secondaryImageView;
+@property(retain, nonatomic) NUIContainerBoxView *secondaryImageViewBoxView; // @synthesize secondaryImageViewBoxView=_secondaryImageViewBoxView;
 @property(retain, nonatomic) TLKLabel *secondaryLabel; // @synthesize secondaryLabel=_secondaryLabel;
 @property(retain, nonatomic) TLKRichTextField *titleField; // @synthesize titleField=_titleField;
 - (id)titleLabel;

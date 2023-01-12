@@ -27,6 +27,8 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) WBSSavedPassword *savedPassword; // @synthesize savedPassword=_savedPassword;
+@property(retain, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
+@property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 - (double)_iconWidth;
 - (void)showPlaceholderImageForDomain:(id)arg1 backgroundColor:(id)arg2;
 - (void)setSavedPassword:(id)arg1;

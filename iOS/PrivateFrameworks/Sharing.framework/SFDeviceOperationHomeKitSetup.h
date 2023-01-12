@@ -21,6 +21,7 @@
     int _state;
     NSObject<OS_dispatch_source> *_timeoutTimer;
     TROperationQueue *_trOperationQueue;
+    _Bool _configuredTVAudio;
     HMHomeManager *_homeKitHomeManager;
     _Bool _homeKitHomeManagerReady;
     HMAccessoryBrowser *_homeKitBrowser;
@@ -42,6 +43,7 @@
     _Bool _personalRequestsEnabled;
     int _stereoRole;
     NSDictionary *_appDataSelf;
+    HMAccessory *_tvAudioInput;
     CDUnknownBlockType _completionHandler;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     HMHome *_homeKitSelectedHome;
@@ -82,6 +84,7 @@
 @property(nonatomic) _Bool userInteractive; // @synthesize userInteractive=_userInteractive;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+@property(retain, nonatomic) HMAccessory *tvAudioInput; // @synthesize tvAudioInput=_tvAudioInput;
 @property(copy, nonatomic) NSDictionary *appDataSelf; // @synthesize appDataSelf=_appDataSelf;
 - (void)_updateAccount;
 - (void)_updateHomeStats;
@@ -90,6 +93,7 @@
 - (id)_normalizedString:(id)arg1;
 - (id)_mediaSystemForAccessory:(id)arg1;
 - (_Bool)_isOwnerOfHome:(id)arg1;
+- (id)findTVs;
 - (id)findStereoCounterpartsWithSupportedVersions:(unsigned long long)arg1;
 - (void)homeManager:(id)arg1 didUpdateStatus:(unsigned long long)arg2;
 - (void)homeManagerDidUpdateHomes:(id)arg1;
@@ -97,6 +101,7 @@
 - (void)accessoryBrowser:(id)arg1 didRemoveNewAccessory:(id)arg2;
 - (void)accessoryBrowser:(id)arg1 didFindNewAccessory:(id)arg2;
 - (void)_runPersonalRequestsStart;
+- (void)_runHomeKitUpdateAppleTVAudioDestination;
 - (_Bool)_runHomeKitConfigureStereoPairAndReturnError:(id *)arg1;
 - (void)_runHomeKitAddAppData;
 - (void)_runHomeKitAssignRoom;

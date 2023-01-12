@@ -13,8 +13,8 @@
     NSOutputStream *_stream;
 }
 
+- (void).cxx_destruct;
 - (_Bool)writeMessage:(id)arg1;
-- (void)dealloc;
 - (id)initWithOutputStream:(id)arg1;
 
 @end

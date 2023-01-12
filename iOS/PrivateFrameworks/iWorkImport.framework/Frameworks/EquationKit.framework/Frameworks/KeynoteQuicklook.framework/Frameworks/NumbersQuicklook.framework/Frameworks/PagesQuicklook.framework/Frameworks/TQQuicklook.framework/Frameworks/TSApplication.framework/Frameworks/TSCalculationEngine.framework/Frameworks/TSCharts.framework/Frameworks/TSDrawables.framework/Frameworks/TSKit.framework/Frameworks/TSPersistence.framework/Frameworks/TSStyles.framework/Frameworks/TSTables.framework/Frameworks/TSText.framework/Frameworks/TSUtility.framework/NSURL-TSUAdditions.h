@@ -11,14 +11,18 @@
 @class NSString, TSUSandboxedURL;
 
 @interface NSURL (TSUAdditions) <TSUURLWrapper>
++ (id)tsu_urlFromUserProvidedTelephoneString:(id)arg1 withDataDetector:(id)arg2;
 + (id)tsu_fileURLWithPath:(id)arg1;
+- (id)tsu_prettyStringFromTelephoneURL;
+- (_Bool)tsu_canOpenURL;
 - (_Bool)tsu_matchesURL:(id)arg1 canCompareFileID:(_Bool)arg2;
 - (_Bool)tsu_matchesURL:(id)arg1;
 - (id)tsu_URLExceptPrivate;
 - (id)tsu_pathExceptPrivate;
 - (id)tsu_contentModificationDateWithLogContext:(id)arg1;
-@property(readonly, getter=tsu_isInTrash) _Bool tsu_inTrash;
 - (void)tsu_removeCachedResourceValueForKeys:(id)arg1;
+@property(readonly, getter=tsu_isInTrash) _Bool tsu_inTrash;
+@property(readonly) _Bool tsu_isInTemporaryDirectory;
 @property(readonly) _Bool tsu_isVolumeKnownToBeLocal;
 @property(readonly) _Bool tsu_isVolumeKnownToBeRemovable;
 @property(readonly) _Bool tsu_isVolumeKnownToBeEjectable;

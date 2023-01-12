@@ -12,25 +12,30 @@
 
 @interface SBHWidgetStackDescriptor : NSObject <SBHAddWidgetSheetGalleryItem>
 {
+    NSString *_sbh_galleryItemIdentifier;
     NSArray *_smallStackDescriptors;
     NSArray *_mediumStackDescriptors;
     NSArray *_largeStackDescriptors;
+    NSArray *_extraLargeStackDescriptors;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *extraLargeStackDescriptors; // @synthesize extraLargeStackDescriptors=_extraLargeStackDescriptors;
 @property(retain, nonatomic) NSArray *largeStackDescriptors; // @synthesize largeStackDescriptors=_largeStackDescriptors;
 @property(retain, nonatomic) NSArray *mediumStackDescriptors; // @synthesize mediumStackDescriptors=_mediumStackDescriptors;
 @property(retain, nonatomic) NSArray *smallStackDescriptors; // @synthesize smallStackDescriptors=_smallStackDescriptors;
 @property(readonly, copy, nonatomic) UIColor *mostInterestingColor;
 @property(readonly, copy, nonatomic) UIColor *backgroundColor;
 @property(readonly, copy, nonatomic) UIColor *accentColor;
+@property(readonly, copy, nonatomic) NSString *sbh_galleryItemIdentifier; // @synthesize sbh_galleryItemIdentifier=_sbh_galleryItemIdentifier;
 @property(readonly, copy, nonatomic) NSString *sbh_widgetDescription;
 @property(readonly, copy, nonatomic) NSString *sbh_widgetName;
 @property(readonly, copy, nonatomic) NSString *sbh_appName;
+@property(readonly, nonatomic) _Bool sbh_canBeAddedToStack;
 @property(readonly, nonatomic) unsigned long long sbh_supportedSizeClasses;
 - (id)descriptorsForSizeClass:(long long)arg1;
 - (_Bool)isEqual:(id)arg1;
-- (id)initWithSmallStackDescriptors:(id)arg1 mediumStackDescriptors:(id)arg2 largeStackDescriptors:(id)arg3;
+- (id)initWithSmallStackDescriptors:(id)arg1 mediumStackDescriptors:(id)arg2 largeStackDescriptors:(id)arg3 extraLargeStackDescriptors:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

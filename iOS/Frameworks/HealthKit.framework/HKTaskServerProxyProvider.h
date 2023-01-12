@@ -17,7 +17,8 @@
 @property(copy) HKTaskConfiguration *taskConfiguration; // @synthesize taskConfiguration=_taskConfiguration;
 @property(copy, nonatomic) NSURL *pluginURL; // @synthesize pluginURL=_pluginURL;
 @property(readonly, copy, nonatomic) NSUUID *taskUUID; // @synthesize taskUUID=_taskUUID;
-- (void)fetchProxyServiceEndpointForIdentifier:(id)arg1 healthStore:(id)arg2 endpointHandler:(CDUnknownBlockType)arg3 errorHandler:(CDUnknownBlockType)arg4;
+- (id)debugIdentifier;
+- (void)fetchProxyServiceEndpointFromSource:(id)arg1 serviceIdentifier:(id)arg2 endpointHandler:(CDUnknownBlockType)arg3 errorHandler:(CDUnknownBlockType)arg4;
 @property(readonly, copy, nonatomic) NSString *taskIdentifier;
 - (id)initWithHealthStore:(id)arg1 taskIdentifier:(id)arg2 exportedObject:(id)arg3 exportedInterface:(id)arg4 remoteInterface:(id)arg5 taskUUID:(id)arg6;
 - (id)initWithHealthStore:(id)arg1 taskIdentifier:(id)arg2 exportedObject:(id)arg3 taskUUID:(id)arg4;

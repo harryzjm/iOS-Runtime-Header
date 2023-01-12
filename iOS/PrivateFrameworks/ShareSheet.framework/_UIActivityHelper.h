@@ -19,6 +19,7 @@
     CDUnknownBlockType _fetchShortcutsBlock;
 }
 
++ (id)activityTypeForBundleIdentifier:(id)arg1;
 + (id)builtinActivityClasses;
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType fetchShortcutsBlock; // @synthesize fetchShortcutsBlock=_fetchShortcutsBlock;
@@ -47,7 +48,6 @@
 - (id)reportExtensionsCacheResult;
 - (void)primeWithDiscoveryContext:(id)arg1;
 - (id)initWithDelegate:(id)arg1 sessionID:(id)arg2 fetchShortcutsBlock:(CDUnknownBlockType)arg3;
-- (void)registerPendingContinuousExtensionsDiscovery;
 
 @end
 

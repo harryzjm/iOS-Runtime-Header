@@ -8,17 +8,24 @@
 
 #import <VoiceShortcutClient/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDictionary, NSString, WFContentCollection, WFWorkflowRunDescriptor;
+@class NSData, NSDictionary, NSString, NSXPCListenerEndpoint, WFContentCollection, WFWorkflowRunDescriptor;
 
 @interface WFWorkflowRunRequest : NSObject <NSSecureCoding>
 {
     _Bool _isAutomationSuggestion;
+    _Bool _allowsDialogNotifications;
+    _Bool _donateInteraction;
+    _Bool _logRunEvent;
     WFWorkflowRunDescriptor *_descriptor;
     unsigned long long _presentationMode;
     NSString *_runSource;
     NSString *_automationType;
     NSString *_trialID;
     NSDictionary *_listenerEndpoints;
+    unsigned long long _outputBehavior;
+    unsigned long long _focusHandling;
+    NSString *_parentRunningContextIdentifier;
+    NSXPCListenerEndpoint *_remoteDialogPresenterEndpoint;
     NSData *_archivedInput;
     WFContentCollection *_cachedInput;
 }
@@ -27,6 +34,13 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) WFContentCollection *cachedInput; // @synthesize cachedInput=_cachedInput;
 @property(readonly, nonatomic) NSData *archivedInput; // @synthesize archivedInput=_archivedInput;
+@property(retain, nonatomic) NSXPCListenerEndpoint *remoteDialogPresenterEndpoint; // @synthesize remoteDialogPresenterEndpoint=_remoteDialogPresenterEndpoint;
+@property(retain, nonatomic) NSString *parentRunningContextIdentifier; // @synthesize parentRunningContextIdentifier=_parentRunningContextIdentifier;
+@property(nonatomic) _Bool logRunEvent; // @synthesize logRunEvent=_logRunEvent;
+@property(nonatomic) _Bool donateInteraction; // @synthesize donateInteraction=_donateInteraction;
+@property(nonatomic) _Bool allowsDialogNotifications; // @synthesize allowsDialogNotifications=_allowsDialogNotifications;
+@property(nonatomic) unsigned long long focusHandling; // @synthesize focusHandling=_focusHandling;
+@property(nonatomic) unsigned long long outputBehavior; // @synthesize outputBehavior=_outputBehavior;
 @property(copy, nonatomic) NSDictionary *listenerEndpoints; // @synthesize listenerEndpoints=_listenerEndpoints;
 @property(copy, nonatomic) NSString *trialID; // @synthesize trialID=_trialID;
 @property(nonatomic) _Bool isAutomationSuggestion; // @synthesize isAutomationSuggestion=_isAutomationSuggestion;
@@ -34,6 +48,7 @@
 @property(copy, nonatomic) NSString *runSource; // @synthesize runSource=_runSource;
 @property(readonly, nonatomic) unsigned long long presentationMode; // @synthesize presentationMode=_presentationMode;
 @property(readonly, nonatomic) WFWorkflowRunDescriptor *descriptor; // @synthesize descriptor=_descriptor;
+@property(readonly, nonatomic) id queueIdentifier;
 - (void)getInputWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)description;

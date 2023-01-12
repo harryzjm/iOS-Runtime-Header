@@ -11,14 +11,14 @@
 __attribute__((visibility("hidden")))
 @interface ETDataSourceBuf : NSObject <ETDataSource>
 {
-    struct map<std::__1::basic_string<char>, std::__1::shared_ptr<Espresso::blob<float, 2>>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::shared_ptr<Espresso::blob<float, 2>>>>> blobs;
+    struct map<std::string, std::shared_ptr<Espresso::blob<float, 2>>, std::less<std::string>, std::allocator<std::pair<const std::string, std::shared_ptr<Espresso::blob<float, 2>>>>> blobs;
     int number_of_data_points;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (float *)dataAtIndex:(unsigned long long)arg1 key:(const basic_string_90719d97 *)arg2;
-- (void)setBlobs:(const map_6aef7db1 *)arg1 numberOfDataPoints:(int)arg2 nonBatches:(const vector_ebb6ef3e *)arg3;
+- (float *)dataAtIndex:(unsigned long long)arg1 key:(const void *)arg2;
+- (void)setBlobs:(const void *)arg1 numberOfDataPoints:(int)arg2 nonBatches:(const void *)arg3;
 - (id)dataPointAtIndex:(int)arg1;
 - (int)numberOfDataPoints;
 

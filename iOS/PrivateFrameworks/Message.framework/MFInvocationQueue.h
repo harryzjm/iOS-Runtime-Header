@@ -16,7 +16,7 @@
     NSMutableArray *_items;
     unsigned long long _numThreads;
     unsigned long long _maxThreads;
-    int _threadPriorityTrigger;
+    unsigned long long _threadPriorityTrigger;
     double _threadRecycleTimeout;
 }
 
@@ -24,7 +24,7 @@
 + (id)sharedInvocationQueue;
 - (void).cxx_destruct;
 @property(nonatomic) double threadRecycleTimeout; // @synthesize threadRecycleTimeout=_threadRecycleTimeout;
-@property(nonatomic) int threadPriorityTrigger; // @synthesize threadPriorityTrigger=_threadPriorityTrigger;
+@property(nonatomic) unsigned long long threadPriorityTrigger; // @synthesize threadPriorityTrigger=_threadPriorityTrigger;
 @property(readonly, nonatomic) unsigned long long threadCount; // @synthesize threadCount=_numThreads;
 - (id)copyDiagnosticInformation;
 - (void)didCancel:(id)arg1;

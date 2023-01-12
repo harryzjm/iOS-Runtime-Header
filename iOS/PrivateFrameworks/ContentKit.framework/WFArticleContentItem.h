@@ -12,7 +12,6 @@
 {
 }
 
-+ (id)defaultSourceForRepresentation:(id)arg1;
 + (id)countDescription;
 + (id)pluralTypeDescription;
 + (id)typeDescription;
@@ -20,9 +19,11 @@
 + (id)outputTypes;
 + (id)ownedTypes;
 + (_Bool)supportedTypesMustBeDeterminedByInstance;
++ (id)stringConversionBehavior;
 + (id)attributedStringWithHTML:(id)arg1 named:(id)arg2;
 + (id)fileWithHTML:(id)arg1 named:(id)arg2;
 + (id)propertyBuilders;
+- (id)defaultSourceForRepresentation:(id)arg1;
 - (_Bool)canGenerateRepresentationForType:(id)arg1;
 - (void)generateObjectRepresentation:(CDUnknownBlockType)arg1 options:(id)arg2 forClass:(Class)arg3;
 - (id)generateObjectRepresentationForClass:(Class)arg1 options:(id)arg2 error:(id *)arg3;

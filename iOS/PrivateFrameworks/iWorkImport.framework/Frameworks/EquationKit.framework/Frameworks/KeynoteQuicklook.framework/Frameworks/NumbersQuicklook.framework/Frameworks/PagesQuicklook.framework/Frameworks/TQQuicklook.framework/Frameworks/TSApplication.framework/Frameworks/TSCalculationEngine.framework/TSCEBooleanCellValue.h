@@ -9,8 +9,8 @@
     struct TSCEBooleanValue *_booleanValue;
 }
 
-- (void)encodeToArchive:(struct BooleanCellValueArchive *)arg1;
-- (id)initWithArchive:(const struct BooleanCellValueArchive *)arg1 locale:(id)arg2;
+- (void)encodeToArchive:(void *)arg1;
+- (id)initWithArchive:(const void *)arg1 locale:(id)arg2;
 - (long long)compareToCellValue:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

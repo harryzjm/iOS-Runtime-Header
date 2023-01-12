@@ -6,27 +6,35 @@
 
 #import <DeviceManagement/CATOperation.h>
 
-@class CATOperationQueue, NSTimer;
+@class NSString;
+@protocol CRKCancelable, CRKOperationQueue, CRKTimerPrimitives;
 
 @interface CRKTimeoutHarnessOperation : CATOperation
 {
-    CATOperationQueue *_operationQueue;
+    id <CRKTimerPrimitives> _timerPrimitives;
+    id <CRKOperationQueue> _operationQueue;
     CATOperation *_operation;
+    NSString *_timerIdentifier;
     double _timeout;
-    NSTimer *_timeoutTimer;
+    id <CRKCancelable> _timeoutTimer;
 }
 
++ (id)timeoutTimerIdentifier;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSTimer *timeoutTimer; // @synthesize timeoutTimer=_timeoutTimer;
+@property(retain, nonatomic) id <CRKCancelable> timeoutTimer; // @synthesize timeoutTimer=_timeoutTimer;
 @property(readonly, nonatomic) double timeout; // @synthesize timeout=_timeout;
+@property(readonly, copy, nonatomic) NSString *timerIdentifier; // @synthesize timerIdentifier=_timerIdentifier;
 @property(readonly, nonatomic) CATOperation *operation; // @synthesize operation=_operation;
-@property(readonly, nonatomic) CATOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
-- (void)timeoutDidFire:(id)arg1;
+@property(readonly, nonatomic) id <CRKOperationQueue> operationQueue; // @synthesize operationQueue=_operationQueue;
+@property(readonly, nonatomic) id <CRKTimerPrimitives> timerPrimitives; // @synthesize timerPrimitives=_timerPrimitives;
+- (void)timeoutDidFire;
 - (void)dependentOperationDidFinish:(id)arg1;
+- (void)run;
 - (void)main;
 - (void)cancel;
 - (_Bool)isAsynchronous;
 - (id)initWithOperationQueue:(id)arg1 operation:(id)arg2 timout:(double)arg3;
+- (id)initWithTimerPrimitives:(id)arg1 operationQueue:(id)arg2 operation:(id)arg3 timerIdentifier:(id)arg4 timeout:(double)arg5;
 
 @end
 

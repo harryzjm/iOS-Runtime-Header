@@ -31,6 +31,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
+- (id)diffByMergingDiff:(id)arg1 keyGenerator:(CDUnknownBlockType)arg2;
 - (unsigned long long)hash;
 - (id)_initWithFromSet:(id)arg1 toSet:(id)arg2 additions:(id)arg3 deletions:(id)arg4 updates:(id)arg5;
 

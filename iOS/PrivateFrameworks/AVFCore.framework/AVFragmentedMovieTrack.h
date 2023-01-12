@@ -11,6 +11,7 @@
     AVFragmentedMovieTrackInternal *_fragmentedMovieTrack;
 }
 
++ (_Bool)expectsPropertyRevisedNotifications;
 - (void).cxx_destruct;
 
 @end

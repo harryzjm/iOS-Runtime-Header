@@ -10,10 +10,11 @@
 
 + (unsigned long long)abstractCurrentModeInResponse:(id)arg1;
 + (unsigned long long)abstractTargetModeInResponse:(id)arg1;
++ (id)titleStringForState:(long long)arg1;
 + (_Bool)shouldShowAverageForRange:(id)arg1;
 + (_Bool)isPercentRange;
 + (CDUnknownBlockType)displayValueComparator;
-+ (id)localizationKeyPrefix;
++ (id)unknownValueDescriptionString;
 + (id)targetModeCharacteristicTypes;
 + (id)currentModeCharacteristicTypes;
 + (id)maximumTargetValueCharacteristicType;

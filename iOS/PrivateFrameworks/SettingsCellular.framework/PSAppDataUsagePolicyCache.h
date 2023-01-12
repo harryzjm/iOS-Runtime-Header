@@ -6,10 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSCache;
+@class Logger, NSCache;
 
 @interface PSAppDataUsagePolicyCache : NSObject
 {
+    Logger *_logger;
     NSCache *_policyCache;
     struct __CTServerConnection *_ctServerConnection;
 }
@@ -18,6 +19,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) struct __CTServerConnection *ctServerConnection; // @synthesize ctServerConnection=_ctServerConnection;
 @property(retain, nonatomic) NSCache *policyCache; // @synthesize policyCache=_policyCache;
+- (id)getLogger;
 - (_Bool)setUsagePoliciesForBundle:(id)arg1 cellular:(_Bool)arg2 wifi:(_Bool)arg3;
 - (_Bool)setCellularUsagePolicy:(id)arg1 forBundle:(id)arg2;
 - (id)usagePolicyFor:(id)arg1;

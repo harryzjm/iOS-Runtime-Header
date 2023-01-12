@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+@property(nonatomic) _Bool streaming_mode;
 @property(nonatomic) long long opt_in_status;
 @property(copy, nonatomic) NSString *app_id;
 @property(nonatomic) _Bool restricted_mode;

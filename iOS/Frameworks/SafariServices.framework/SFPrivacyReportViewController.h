@@ -9,13 +9,13 @@
 #import <SafariServices/SFPrivacyReportDetailToggleTableViewCellDelegate-Protocol.h>
 #import <SafariServices/SFPrivacyReportExplanationTableViewCellDelegate-Protocol.h>
 #import <SafariServices/SFPrivacyReportGridViewDelegate-Protocol.h>
+#import <SafariServices/SFPrivacyReportPrivacyProxyTipTableViewCellDelegate-Protocol.h>
 #import <SafariServices/UITableViewDelegatePrivate-Protocol.h>
 #import <SafariServices/_SFTableViewDiffableDataSourceDelegate-Protocol.h>
 
 @class NSString, UITableView, WBSPrivacyReportData, _SFTableViewDiffableDataSource;
 
-__attribute__((visibility("hidden")))
-@interface SFPrivacyReportViewController : UIViewController <UITableViewDelegatePrivate, _SFTableViewDiffableDataSourceDelegate, SFPrivacyReportExplanationTableViewCellDelegate, SFPrivacyReportGridViewDelegate, SFPrivacyReportDetailToggleTableViewCellDelegate>
+@interface SFPrivacyReportViewController : UIViewController <SFPrivacyReportPrivacyProxyTipTableViewCellDelegate, UITableViewDelegatePrivate, _SFTableViewDiffableDataSourceDelegate, SFPrivacyReportExplanationTableViewCellDelegate, SFPrivacyReportGridViewDelegate, SFPrivacyReportDetailToggleTableViewCellDelegate>
 {
     UITableView *_tableView;
     _Bool _showExplanationDetailView;
@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *domain; // @synthesize domain=_domain;
+- (_Bool)tableView:(id)arg1 canFocusRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (_Bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
@@ -40,8 +41,11 @@ __attribute__((visibility("hidden")))
 - (id)dataSource:(id)arg1 headerTextForSection:(long long)arg2;
 - (void)setNeedsUpdateRowHeight;
 - (void)gridViewDidUpdateContentSize:(id)arg1;
+- (void)cellPrivacyProxyStateChanged:(id)arg1;
+- (void)cellPrivacyProxyUpsellDismissed:(id)arg1;
 - (void)cellDidToggleExpandDetailedExplanation:(id)arg1;
 - (void)cellDidToggleDetailType:(id)arg1;
+- (_Bool)_privacyProxyTip:(long long *)arg1;
 - (id)_cellForRowWithIndexPath:(id)arg1 itemIdentifier:(id)arg2;
 - (long long)_sectionTypeFromSectionIndex:(long long)arg1;
 - (void)_doneBarButtonItemAction:(id)arg1;

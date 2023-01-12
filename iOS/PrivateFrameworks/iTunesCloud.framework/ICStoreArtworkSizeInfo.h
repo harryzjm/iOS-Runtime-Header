@@ -21,6 +21,7 @@
 @property(nonatomic) _Bool hasMaxSupportedSize; // @synthesize hasMaxSupportedSize=_hasMaxSupportedSize;
 @property(copy, nonatomic) NSArray *supportedSizes; // @synthesize supportedSizes=_supportedSizes;
 @property(nonatomic) long long type; // @synthesize type=_type;
+- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 
 @end

@@ -22,7 +22,7 @@
 - (unsigned short)entityType;
 - (unsigned short)displayType;
 - (unsigned short)type;
-- (id)initWithPersonIdentifier:(id)arg1 ageCategory:(unsigned long long)arg2 localFactoryScore:(double)arg3;
+- (id)initWithPersonUUID:(id)arg1 ageCategory:(unsigned long long)arg2 localFactoryScore:(double)arg3;
 
 @end
 

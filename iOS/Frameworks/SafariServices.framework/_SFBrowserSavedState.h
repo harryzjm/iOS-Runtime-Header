@@ -16,15 +16,20 @@
     NSCountedSet *_tabCountByWindowUUID;
     _Bool _haveLoadedRecentlyClosedTabs;
     _Bool _secureDeleteEnabled;
+    _Bool _shouldBeUsedDuringTest;
     NSArray *_browserWindows;
 }
 
++ (id)defaultPPTBrowserStateDatabase;
++ (id)defaultBrowserStateDatabase;
++ (id)inMemoryDatabase;
 + (void)setShouldMergeAllWindowsIfNeeded:(_Bool)arg1;
 + (_Bool)shouldMergeAllWindowsIfNeeded;
 + (id)ephemeralSavedState;
 + (void)setSharedBrowserSavedState:(id)arg1;
 + (id)sharedBrowserSavedState;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool shouldBeUsedDuringTest; // @synthesize shouldBeUsedDuringTest=_shouldBeUsedDuringTest;
 @property(nonatomic) _Bool secureDeleteEnabled; // @synthesize secureDeleteEnabled=_secureDeleteEnabled;
 @property(retain, nonatomic) NSArray *recentlyClosedTabs; // @synthesize recentlyClosedTabs=_recentlyClosedTabs;
 @property(copy, nonatomic) NSArray *browserWindows; // @synthesize browserWindows=_browserWindows;
@@ -54,8 +59,6 @@
 - (void)_readBrowserControllersSavedState;
 - (void)dealloc;
 - (id)initWithDatabaseURL:(id)arg1;
-- (id)initWithDefaultBrowserStateDatabase;
-- (id)initWithInMemoryDatabase;
 
 @end
 

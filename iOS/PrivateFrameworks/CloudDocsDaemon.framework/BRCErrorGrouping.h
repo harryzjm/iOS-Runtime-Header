@@ -10,7 +10,6 @@
 
 @class NSError;
 
-__attribute__((visibility("hidden")))
 @interface BRCErrorGrouping : NSObject <NSCopying>
 {
     _Bool _isPCSChained;

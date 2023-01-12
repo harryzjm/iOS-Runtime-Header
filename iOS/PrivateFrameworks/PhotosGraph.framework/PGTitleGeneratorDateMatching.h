@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSDateInterval, NSSet, PGGraph, PGTitle;
+@class NSDateInterval, NSSet, NSString, PGGraph, PGTitle, PGTitleGenerationContext;
 
 @interface PGTitleGeneratorDateMatching : NSObject
 {
+    PGTitleGenerationContext *_titleGenerationContext;
+    NSString *_holidayName;
     _Bool _isForHighlight;
     PGGraph *_graph;
     long long _type;
@@ -34,9 +36,9 @@
 - (_Bool)_dateNodeIntersectsWithReferenceDateIntervalByIgnoringYear;
 @property(readonly, nonatomic) unsigned long long allowedTimeTitleFormats;
 @property(readonly, nonatomic) PGTitle *title;
-- (id)initWithType:(long long)arg1 referenceDateInterval:(id)arg2 momentNodes:(id)arg3;
-- (id)initWithType:(long long)arg1 referenceDateInterval:(id)arg2 highlightNode:(id)arg3;
-- (id)initWithType:(long long)arg1 referenceDateInterval:(id)arg2 momentNodes:(id)arg3 lineBreakBehavior:(unsigned long long)arg4 isForHighlight:(_Bool)arg5;
+- (id)initWithType:(long long)arg1 referenceDateInterval:(id)arg2 momentNodes:(id)arg3 titleGenerationContext:(id)arg4;
+- (id)initWithType:(long long)arg1 referenceDateInterval:(id)arg2 highlightNode:(id)arg3 titleGenerationContext:(id)arg4;
+- (id)initWithType:(long long)arg1 referenceDateInterval:(id)arg2 momentNodes:(id)arg3 lineBreakBehavior:(unsigned long long)arg4 isForHighlight:(_Bool)arg5 titleGenerationContext:(id)arg6;
 
 @end
 

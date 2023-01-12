@@ -9,15 +9,18 @@
 @class UIColor;
 
 @protocol AXPIFingerAppearanceDelegate <NSObject>
-- (double)fingerDiameter;
+- (double)fingerWidth;
 - (_Bool)showInnerCircle;
 - (double)fingerInnerCircleInnerRadius;
 - (double)fingerInnerRadius;
-- (double)fingerOuterRadius;
 - (_Bool)showFingerOutlines;
-- (double)innerCircleStrokeOutlineWidth;
+- (double)innerCircleStrokeWidth;
 - (double)strokeOutlineWidth;
 - (double)strokeWidth;
+- (double)unpressedScale;
+- (double)unpressedAlpha;
+- (double)pressedScale;
+- (double)pressedAlpha;
 - (_Bool)useSystemFilters;
 - (UIColor *)pressedCircularProgressFillColor;
 - (UIColor *)circularProgressFillColor;

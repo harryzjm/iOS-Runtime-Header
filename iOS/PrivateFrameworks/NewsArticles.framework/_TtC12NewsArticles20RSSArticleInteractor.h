@@ -13,6 +13,7 @@
     MISSING_TYPE *article;
     MISSING_TYPE *delegate;
     MISSING_TYPE *dataManager;
+    MISSING_TYPE *articleReadingHistoryRecorder;
     MISSING_TYPE *coordinator;
     MISSING_TYPE *eventManager;
 }

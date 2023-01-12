@@ -14,8 +14,8 @@
 
 - (void).cxx_destruct;
 - (void)clear;
+- (_Bool)isEmpty;
 - (_Bool)isInterned:(id)arg1;
-- (id)_intern:(id)arg1 copyInput:(_Bool)arg2;
 - (id)internNoCopy:(id)arg1;
 - (id)intern:(id)arg1;
 - (id)init;

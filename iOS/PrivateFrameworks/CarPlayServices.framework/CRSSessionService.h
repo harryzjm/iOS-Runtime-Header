@@ -10,7 +10,7 @@
 #import <CarPlayServices/CRSSessionClientToServerInterface-Protocol.h>
 
 @class BSServiceConnectionListener, NSHashTable, NSString;
-@protocol OS_dispatch_queue, OS_os_transaction;
+@protocol BSInvalidatable, OS_dispatch_queue, OS_os_transaction;
 
 @interface CRSSessionService : NSObject <CRSSessionClientToServerInterface, BSServiceConnectionListenerDelegate>
 {
@@ -18,9 +18,11 @@
     NSObject<OS_dispatch_queue> *_connectionQueue;
     NSHashTable *_connections;
     NSObject<OS_os_transaction> *_idleExitTransaction;
+    id <BSInvalidatable> _watchdogMonitoringAssertion;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <BSInvalidatable> watchdogMonitoringAssertion; // @synthesize watchdogMonitoringAssertion=_watchdogMonitoringAssertion;
 @property(retain, nonatomic) NSObject<OS_os_transaction> *idleExitTransaction; // @synthesize idleExitTransaction=_idleExitTransaction;
 @property(retain, nonatomic) NSHashTable *connections; // @synthesize connections=_connections;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *connectionQueue; // @synthesize connectionQueue=_connectionQueue;

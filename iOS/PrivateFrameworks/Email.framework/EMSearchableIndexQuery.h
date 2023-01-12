@@ -12,7 +12,8 @@
 #import <Email/EMSearchableIndexQueryBuilder-Protocol.h>
 #import <Email/NSProgressReporting-Protocol.h>
 
-@class CSSearchQuery, EFPromise, EMSearchableIndexQueryExpression, NSArray, NSError, NSLock, NSProgress, NSString;
+@class EFPromise, EMSearchableIndexQueryExpression, NSArray, NSError, NSLock, NSProgress, NSString;
+@protocol EMSearchQueryable;
 
 @interface EMSearchableIndexQuery : NSObject <EFLoggable, EMSearchableIndexQueryBuilder, EFSignpostable, EFCancelable, NSProgressReporting>
 {
@@ -24,7 +25,7 @@
     _Bool _live;
     _Bool _queryDidMoveToFinishedState;
     _Bool _liveQueryDidGather;
-    NSString *_bundleIdentifier;
+    NSString *_bundleID;
     CDUnknownBlockType _resultsBlock;
     CDUnknownBlockType _completionBlock;
     CDUnknownBlockType _failureBlock;
@@ -42,7 +43,7 @@
     NSString *_queryStatus;
     long long _count;
     NSError *_simulatedFailedQueryError;
-    CSSearchQuery *_query;
+    id <EMSearchQueryable> _query;
 }
 
 + (id)queryWithExpression:(id)arg1 builder:(CDUnknownBlockType)arg2;
@@ -58,7 +59,7 @@
 + (id)_modifierStringFromModifiers:(unsigned long long)arg1;
 + (id)_operandStringForOperand:(long long)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) CSSearchQuery *query; // @synthesize query=_query;
+@property(retain, nonatomic) id <EMSearchQueryable> query; // @synthesize query=_query;
 @property(retain, nonatomic) NSError *simulatedFailedQueryError; // @synthesize simulatedFailedQueryError=_simulatedFailedQueryError;
 @property(nonatomic) long long count; // @synthesize count=_count;
 @property(nonatomic) _Bool liveQueryDidGather; // @synthesize liveQueryDidGather=_liveQueryDidGather;
@@ -80,7 +81,7 @@
 @property(copy, nonatomic) CDUnknownBlockType failureBlock; // @synthesize failureBlock=_failureBlock;
 @property(copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property(copy, nonatomic) CDUnknownBlockType resultsBlock; // @synthesize resultsBlock=_resultsBlock;
-@property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property(copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 - (void)_logSignpostForSearchQueryDidFinishWithStatus:(id)arg1;
 - (void)_logSignpostForSearchQueryDidReceiveFirstResultsWithItemCount:(unsigned long long)arg1;
 - (void)_logSignpostForSearchQueryStart;

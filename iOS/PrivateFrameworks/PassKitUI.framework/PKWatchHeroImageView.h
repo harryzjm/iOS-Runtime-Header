@@ -6,15 +6,14 @@
 
 #import <UIKit/UIView.h>
 
-#import <PassKitUI/PKHeroImageView-Protocol.h>
+@class UILabel;
 
-@class NSString, UIImageView, UILabel;
-
-@interface PKWatchHeroImageView : UIView <PKHeroImageView>
+@interface PKWatchHeroImageView : UIView
 {
-    UIImageView *_watchView;
-    struct CGSize _originalWatchViewSize;
+    UIView *_watchView;
     UILabel *_doneLabel;
+    _Bool _useNewUI;
+    struct CGSize _originalWatchViewSize;
     _Bool _hideDoneLabel;
 }
 
@@ -22,6 +21,7 @@
 + (id)_bridgeHeroImage;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool hideDoneLabel; // @synthesize hideDoneLabel=_hideDoneLabel;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGPoint)_watchScreenInset;
 - (void)layoutSubviews;
 - (struct CGSize)_watchScreenSize:(double)arg1;
@@ -33,15 +33,9 @@
 @property(readonly, nonatomic) struct CGRect cardFrame;
 @property(readonly, nonatomic) struct CGRect watchScreenFrame;
 @property(readonly, nonatomic) struct CGPoint watchScreenCenter;
-- (double)scale;
+@property(readonly, nonatomic) double watchDeviceImageScaleFactor;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

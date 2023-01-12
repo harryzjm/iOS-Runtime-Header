@@ -27,6 +27,10 @@
 + (id)fontDescriptorWithFontAttributes:(id)arg1;
 + (id)defaultFontDescriptorWithTextStyle:(id)arg1 addingSymbolicTraits:(unsigned int)arg2 options:(unsigned long long)arg3;
 + (id)defaultFontDescriptorWithTextStyle:(id)arg1;
++ (id)_preferredFontDescriptorWithTextStyle:(id)arg1 addingSymbolicTraits:(unsigned int)arg2 design:(id)arg3 weight:(double)arg4 compatibleWithTraitCollection:(id)arg5;
++ (id)_preferredFontDescriptorWithTextStyle:(id)arg1 design:(id)arg2 weight:(double)arg3 compatibleWithTraitCollection:(id)arg4;
++ (id)_preferredFontDescriptorWithTextStyle:(id)arg1 design:(id)arg2 weight:(double)arg3;
++ (id)_preferredFontDescriptorWithTextStyle:(id)arg1 weight:(double)arg2;
 + (id)preferredFontDescriptorWithTextStyle:(id)arg1 addingSymbolicTraits:(unsigned int)arg2 options:(unsigned long long)arg3;
 + (id)preferredFontDescriptorWithTextStyle:(id)arg1 compatibleWithTraitCollection:(id)arg2;
 + (id)preferredFontDescriptorWithTextStyle:(id)arg1;

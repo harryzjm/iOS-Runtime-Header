@@ -6,7 +6,7 @@
 
 #import <AppleMediaServices/AMSBagConsumer-Protocol.h>
 
-@class AMSAuthenticateOptions, NSNumber, NSString, NSUUID;
+@class AMSAuthenticateOptions, NSDictionary, NSNumber, NSString, NSUUID;
 @protocol AMSAuthenticateTaskDelegate, AMSBagProtocol;
 
 @interface AMSAuthenticateTask <AMSBagConsumer>
@@ -22,15 +22,18 @@
     NSUUID *_homeIdentifier;
     NSUUID *_homeUserIdentifier;
     NSString *_username;
+    NSDictionary *_initialAuthenticationResults;
 }
 
 + (void)_updateAccountPasswordUsingSecondaryAccounts:(id)arg1;
++ (_Bool)_loadCreateAppleIDwithClientInfo:(id)arg1 bag:(id)arg2 error:(id *)arg3;
 + (id)_createFallbackBag;
 + (id)createBagForSubProfile;
 + (id)bagSubProfileVersion;
 + (id)bagSubProfile;
 + (id)bagKeySet;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSDictionary *initialAuthenticationResults; // @synthesize initialAuthenticationResults=_initialAuthenticationResults;
 @property(retain, nonatomic) NSString *username; // @synthesize username=_username;
 @property(retain, nonatomic) NSUUID *homeUserIdentifier; // @synthesize homeUserIdentifier=_homeUserIdentifier;
 @property(retain, nonatomic) NSUUID *homeIdentifier; // @synthesize homeIdentifier=_homeIdentifier;
@@ -58,6 +61,7 @@
 - (id)performAuthentication;
 - (id)initWithRequest:(id)arg1;
 - (id)initWithRequest:(id)arg1 bag:(id)arg2;
+- (id)initWithAuthenticationResults:(id)arg1 options:(id)arg2;
 - (id)initWithAccount:(id)arg1 options:(id)arg2 bag:(id)arg3;
 - (id)initWithAccount:(id)arg1 options:(id)arg2;
 - (id)init;

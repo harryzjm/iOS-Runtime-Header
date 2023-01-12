@@ -7,17 +7,18 @@
 #import <objc/NSObject.h>
 
 #import <SpringBoardHome/SBHIconViewConfigurationInteraction-Protocol.h>
+#import <SpringBoardHome/SBHViewControllerTransitionDelegate-Protocol.h>
 #import <SpringBoardHome/SBHWidgetConfigurationAnimationContext-Protocol.h>
-#import <SpringBoardHome/SBViewControllerTransitionContextDelegate-Protocol.h>
 #import <SpringBoardHome/WFWidgetConfigurationViewControllerDelegate-Protocol.h>
 
-@class CHSAvocadoDescriptor, INIntent, MTMaterialView, NSString, SBHWidgetSettings, SBIconView, SBViewControllerTransitionContext, UITapGestureRecognizer, UIView, UIViewController, WFWidgetConfigurationOptions, WFWidgetConfigurationViewController;
-@protocol SBHIconViewConfigurationInteractionDelegate;
+@class CHSAvocadoDescriptor, INIntent, MTMaterialView, NSString, SBHViewControllerTransition, SBHWidgetSettings, SBIconView, UITapGestureRecognizer, UIView, UIViewController, WFWidgetConfigurationOptions, WFWidgetConfigurationViewController;
+@protocol SBHIconViewConfigurationInteractionDelegate, SBLeafIconDataSource;
 
-@interface SBHWidgetConfigurationInteraction : NSObject <SBViewControllerTransitionContextDelegate, SBHWidgetConfigurationAnimationContext, WFWidgetConfigurationViewControllerDelegate, SBHIconViewConfigurationInteraction>
+@interface SBHWidgetConfigurationInteraction : NSObject <SBHViewControllerTransitionDelegate, SBHWidgetConfigurationAnimationContext, WFWidgetConfigurationViewControllerDelegate, SBHIconViewConfigurationInteraction>
 {
     INIntent *_configuration;
     id <SBHIconViewConfigurationInteractionDelegate> _delegate;
+    id <SBLeafIconDataSource> _configuredDataSource;
     SBHWidgetSettings *_widgetSettings;
     WFWidgetConfigurationOptions *_configurationOptions;
     WFWidgetConfigurationViewController *_configurationViewController;
@@ -29,8 +30,7 @@
     UIView *_backgroundTintView;
     UIView *_touchBlockingView;
     UITapGestureRecognizer *_tapToPresentGesture;
-    long long _operation;
-    SBViewControllerTransitionContext *_transition;
+    SBHViewControllerTransition *_transition;
     CHSAvocadoDescriptor *_widgetDescriptor;
     struct CGRect _sourceContentFrame;
     struct CGRect _targetContentFrame;
@@ -39,8 +39,7 @@
 
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) CHSAvocadoDescriptor *widgetDescriptor; // @synthesize widgetDescriptor=_widgetDescriptor;
-@property(retain, nonatomic) SBViewControllerTransitionContext *transition; // @synthesize transition=_transition;
-@property(nonatomic) long long operation; // @synthesize operation=_operation;
+@property(retain, nonatomic) SBHViewControllerTransition *transition; // @synthesize transition=_transition;
 @property(retain, nonatomic) UITapGestureRecognizer *tapToPresentGesture; // @synthesize tapToPresentGesture=_tapToPresentGesture;
 @property(retain, nonatomic) UIView *touchBlockingView; // @synthesize touchBlockingView=_touchBlockingView;
 @property(retain, nonatomic) UIView *backgroundTintView; // @synthesize backgroundTintView=_backgroundTintView;
@@ -55,27 +54,30 @@
 @property(retain, nonatomic) WFWidgetConfigurationViewController *configurationViewController; // @synthesize configurationViewController=_configurationViewController;
 @property(readonly, nonatomic) WFWidgetConfigurationOptions *configurationOptions; // @synthesize configurationOptions=_configurationOptions;
 @property(readonly, nonatomic) SBHWidgetSettings *widgetSettings; // @synthesize widgetSettings=_widgetSettings;
+@property(readonly, nonatomic) id <SBLeafIconDataSource> configuredDataSource; // @synthesize configuredDataSource=_configuredDataSource;
 @property(nonatomic) __weak id <SBHIconViewConfigurationInteractionDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic) INIntent *configuration; // @synthesize configuration=_configuration;
 - (void)_setUpMatchMoveAnimationForBackgroundView:(id)arg1;
-- (id)_newTransitionAnimator;
 - (struct CGRect)_targetContentFrame;
 - (struct CGRect)_sourceContentFrame;
-- (void)_handleDismissalDidFinish;
-- (void)_handlePresentationDidFinish;
 - (void)_handleTapToDismiss:(id)arg1;
 - (void)_handleTapToPresent:(id)arg1;
-- (void)_endConfigurationImmediately:(_Bool)arg1;
-- (void)transitionDidFinish:(id)arg1;
 - (void)widgetConfigurationViewControllerPreferredCardSizeDidChange:(id)arg1;
 - (void)widgetConfigurationViewController:(id)arg1 didFinishWithIntent:(id)arg2;
+- (void)transitionDidReturnToBeginningState:(id)arg1;
+- (void)transitionWillReturnToBeginningState:(id)arg1;
+- (void)transitionDidProgressToEndState:(id)arg1;
+- (void)transitionWillProgressToEndState:(id)arg1;
+- (id)animatorForTransition:(id)arg1;
+- (void)prepareTransition:(id)arg1;
+- (void)_endConfigurationImmediately:(_Bool)arg1;
 - (void)endConfigurationImmediately;
 - (void)endConfiguration;
+- (void)popConfiguration;
 - (void)beginConfiguration;
 @property(readonly, nonatomic) UIView *targetView;
 @property(readonly, nonatomic) UIView *containerView;
-@property(readonly, nonatomic) _Bool wantsAnimation;
-- (id)initWithWidgetDescriptor:(id)arg1 gridSizeClass:(unsigned long long)arg2 intent:(id)arg3;
+- (id)initWithWidgetDescriptor:(id)arg1 gridSizeClass:(unsigned long long)arg2 intent:(id)arg3 configuredDataSource:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

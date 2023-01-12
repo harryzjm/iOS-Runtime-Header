@@ -25,6 +25,7 @@
 + (id)squareMeters;
 + (id)squareKilometers;
 + (id)squareMegameters;
++ (id)icuType;
 + (id)baseUnit;
 + (void)initialize;
 

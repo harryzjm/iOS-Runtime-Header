@@ -12,6 +12,7 @@
 @interface PKMetalRenderState : NSObject
 {
     NSMutableArray *_commandBuffers;
+    NSMutableArray *_purgeableFramebuffers;
     _Bool _liveRendering;
     _Bool _waitUntilCompletedOnCommit;
     _Bool _msaaRendering;
@@ -28,41 +29,15 @@
     unsigned long long _vertexEncodeCount;
     id <MTLTexture> _destinationTexture;
     unsigned long long _destinationColorAttachmentIndex;
+    long long _sixChannelRenderMode;
+    id <MTLTexture> _sixChannelContentTexture;
     CDStruct_5f3a0cd7 _scissorRect;
+    struct CGAffineTransform _renderTextureTexCoordTransform;
 }
 
 + (void)renderTargetBarrierForRenderEncoder:(id)arg1;
 - (void).cxx_destruct;
-@property(nonatomic) CDStruct_5f3a0cd7 scissorRect; // @synthesize scissorRect=_scissorRect;
-@property(nonatomic) _Bool isRestartingForSimulator; // @synthesize isRestartingForSimulator=_isRestartingForSimulator;
-@property(nonatomic) _Bool needRenderMask; // @synthesize needRenderMask=_needRenderMask;
-@property(nonatomic) _Bool renderOnPaper; // @synthesize renderOnPaper=_renderOnPaper;
-@property(nonatomic) _Bool msaaRendering; // @synthesize msaaRendering=_msaaRendering;
-@property(nonatomic) _Bool waitUntilCompletedOnCommit; // @synthesize waitUntilCompletedOnCommit=_waitUntilCompletedOnCommit;
-@property(nonatomic) _Bool liveRendering; // @synthesize liveRendering=_liveRendering;
-@property(nonatomic) unsigned long long destinationColorAttachmentIndex; // @synthesize destinationColorAttachmentIndex=_destinationColorAttachmentIndex;
-@property(retain, nonatomic) id <MTLTexture> destinationTexture; // @synthesize destinationTexture=_destinationTexture;
-@property(nonatomic) unsigned long long vertexEncodeCount; // @synthesize vertexEncodeCount=_vertexEncodeCount;
-@property(retain, nonatomic) id <MTLRenderCommandEncoder> maskRenderEncoder; // @synthesize maskRenderEncoder=_maskRenderEncoder;
-@property(retain, nonatomic) id <MTLComputeCommandEncoder> computeEncoder; // @synthesize computeEncoder=_computeEncoder;
-@property(retain, nonatomic) id <MTLRenderCommandEncoder> renderEncoder; // @synthesize renderEncoder=_renderEncoder;
-@property(readonly, nonatomic) id <MTLCommandBuffer> maskCommandBuffer; // @synthesize maskCommandBuffer=_maskCommandBuffer;
-@property(readonly, nonatomic) id <MTLCommandBuffer> computeCommandBuffer; // @synthesize computeCommandBuffer=_computeCommandBuffer;
-@property(readonly, nonatomic) id <MTLCommandBuffer> commandBuffer; // @synthesize commandBuffer=_commandBuffer;
-@property(readonly, nonatomic) id <MTLCommandQueue> commandQueue; // @synthesize commandQueue=_commandQueue;
-- (void)renderTargetBarrier;
-- (void)popDebugGroup;
-- (void)pushDebugGroup:(id)arg1;
-- (void)addCommandBuffer:(id)arg1;
-- (void)cancel;
-- (void)commitAndPurgeResourceSet:(id)arg1;
-- (void)commitMaskCommandBuffer;
-- (void)commit;
-- (id)maskCommandBufferCreateIfNecessary;
-- (id)computeCommandBufferCreateIfNecessary;
-- (id)commandBufferCreateIfNecessary;
 - (void)dealloc;
-- (id)initWithCommandQueue:(id)arg1 liveRendering:(_Bool)arg2;
 
 @end
 

@@ -11,12 +11,14 @@
 @interface _TtC18HealthPlatformCore36HealthExperienceStoreFeedItemContext : _TtCs12_SwiftObject
 {
     MISSING_TYPE *healthStore;
-    MISSING_TYPE *favoritesProvider;
+    MISSING_TYPE *favoritesManager;
+    MISSING_TYPE *notificationManager;
     MISSING_TYPE *environment;
     MISSING_TYPE *boundingRange;
     MISSING_TYPE *storageContext;
     MISSING_TYPE *pluginInfo;
     MISSING_TYPE *hasOperationCompleted;
+    MISSING_TYPE *queueProvider;
 }
 
 @end

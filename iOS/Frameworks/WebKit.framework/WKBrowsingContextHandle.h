@@ -6,9 +6,10 @@
 
 #import <objc/NSObject.h>
 
+#import <WebKit/NSCopying-Protocol.h>
 #import <WebKit/NSSecureCoding-Protocol.h>
 
-@interface WKBrowsingContextHandle : NSObject <NSSecureCoding>
+@interface WKBrowsingContextHandle : NSObject <NSSecureCoding, NSCopying>
 {
     ObjectIdentifier_b2f7915a _pageProxyID;
     ObjectIdentifier_8136369e _webPageID;
@@ -18,6 +19,8 @@
 - (id).cxx_construct;
 @property(readonly, nonatomic, getter=_webPageID) ObjectIdentifier_8136369e webPageID; // @synthesize webPageID=_webPageID;
 @property(readonly, nonatomic, getter=_pageProxyID) ObjectIdentifier_b2f7915a pageProxyID; // @synthesize pageProxyID=_pageProxyID;
+- (id)description;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;

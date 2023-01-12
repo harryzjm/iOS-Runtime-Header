@@ -19,7 +19,7 @@
 + (_Bool)supportsBackgroundJob;
 - (void)_performPeopleSuggestionForHomeWithManager:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (void)_performPeopleSuggestionLearningWithManager:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
-- (void)enrichDataModelWithManager:(id)arg1 graphUpdateInventory:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
+- (void)enrichDataModelWithManager:(id)arg1 curationContext:(id)arg2 graphUpdateInventory:(id)arg3 progressBlock:(CDUnknownBlockType)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

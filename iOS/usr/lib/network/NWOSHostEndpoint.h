@@ -5,7 +5,7 @@
 //
 
 @class NSObject;
-@protocol OS_nw_txt_record;
+@protocol OS_dispatch_data, OS_nw_txt_record;
 
 __attribute__((visibility("hidden")))
 @interface NWOSHostEndpoint
@@ -15,13 +15,16 @@ __attribute__((visibility("hidden")))
     unsigned short priority;
     unsigned short weight;
     NSObject<OS_nw_txt_record> *txt_record;
+    NSObject<OS_dispatch_data> *ech_config;
 }
 
 - (void).cxx_destruct;
 - (unsigned long long)getHash;
 - (id)copyEndpoint;
-- (_Bool)isEqualToEndpoint:(id)arg1 matchInterface:(_Bool)arg2 matchParent:(_Bool)arg3;
+- (_Bool)isEqualToEndpoint:(id)arg1 matchFlags:(unsigned char)arg2;
 - (char *)createDescription:(_Bool)arg1;
+- (void)setEchConfig:(id)arg1;
+- (id)echConfig;
 - (void)setTxtRecord:(id)arg1;
 - (id)txtRecord;
 - (void)setWeight:(unsigned short)arg1;

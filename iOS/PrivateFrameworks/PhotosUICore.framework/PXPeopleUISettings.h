@@ -6,6 +6,10 @@
 
 @interface PXPeopleUISettings
 {
+    _Bool _enableBootstrapSpeedBump;
+    _Bool _enableFixingMergeMistakes;
+    _Bool _enableNewCropManager;
+    _Bool _enableNewOneUpWidget;
     _Bool _alwaysShowBootstrap;
     _Bool _alwaysShowCandidateWidget;
     _Bool _alwaysShowMe;
@@ -15,12 +19,14 @@
     _Bool _debugBlurredCells;
     _Bool _showContactSuggestions;
     _Bool _showMaybeContact;
-    _Bool _enableBlocking;
+    _Bool _showManageTagsTagType;
+    _Bool _debugFadeLayer;
 }
 
 + (id)sharedInstance;
 + (id)settingsControllerModule;
-@property(nonatomic) _Bool enableBlocking; // @synthesize enableBlocking=_enableBlocking;
+@property(nonatomic) _Bool debugFadeLayer; // @synthesize debugFadeLayer=_debugFadeLayer;
+@property(nonatomic) _Bool showManageTagsTagType; // @synthesize showManageTagsTagType=_showManageTagsTagType;
 @property(nonatomic, getter=shouldShowMaybeContact) _Bool showMaybeContact; // @synthesize showMaybeContact=_showMaybeContact;
 @property(nonatomic, getter=shouldShowContactSuggestions) _Bool showContactSuggestions; // @synthesize showContactSuggestions=_showContactSuggestions;
 @property(nonatomic, getter=shouldDebugBlurredCells) _Bool debugBlurredCells; // @synthesize debugBlurredCells=_debugBlurredCells;
@@ -30,6 +36,10 @@
 @property(nonatomic, getter=shouldAlwaysShowMe) _Bool alwaysShowMe; // @synthesize alwaysShowMe=_alwaysShowMe;
 @property(nonatomic, getter=shouldAlwaysShowCandidateWidget) _Bool alwaysShowCandidateWidget; // @synthesize alwaysShowCandidateWidget=_alwaysShowCandidateWidget;
 @property(nonatomic, getter=shouldAlwaysShowBootstrap) _Bool alwaysShowBootstrap; // @synthesize alwaysShowBootstrap=_alwaysShowBootstrap;
+@property(nonatomic) _Bool enableNewOneUpWidget; // @synthesize enableNewOneUpWidget=_enableNewOneUpWidget;
+@property(nonatomic) _Bool enableNewCropManager; // @synthesize enableNewCropManager=_enableNewCropManager;
+@property(nonatomic) _Bool enableFixingMergeMistakes; // @synthesize enableFixingMergeMistakes=_enableFixingMergeMistakes;
+@property(nonatomic) _Bool enableBootstrapSpeedBump; // @synthesize enableBootstrapSpeedBump=_enableBootstrapSpeedBump;
 - (void)setDefaultValues;
 - (id)parentSettings;
 

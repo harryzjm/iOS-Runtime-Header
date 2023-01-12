@@ -12,16 +12,18 @@
 {
     MISSING_TYPE *participants;
     MISSING_TYPE *focusedParticipant;
+    MISSING_TYPE *isLocalMemberAuthorizedToChangeGroupMembership;
     MISSING_TYPE *participantsViewControllerDelegate;
     MISSING_TYPE *participantView;
-    MISSING_TYPE *widthConstraint;
+    MISSING_TYPE *shouldShowActionTypePhotoCapture;
+    MISSING_TYPE *defaults;
 }
 
 - (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (_Bool)_canShowWhileLocked;
-- (void)viewDidLayoutSubviews;
 - (id)initWithCoder:(id)arg1;
 
 @end

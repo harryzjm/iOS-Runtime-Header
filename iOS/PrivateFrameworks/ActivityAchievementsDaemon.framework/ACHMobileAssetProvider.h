@@ -30,6 +30,9 @@
 - (void)_fetchLocalAssetsWithCompletion:(CDUnknownBlockType)arg1;
 - (double)_downloadDelay;
 - (void)_downloadRemoteCatalogAndAssets;
+- (_Bool)_assetIsInstalled:(id)arg1;
+- (long long)purgeAllDownloadedAssets;
+- (long long)downloadedAssetDiskUsageInBytes;
 - (void)availableAssetsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithMobileAssetDownloadManager:(id)arg1;

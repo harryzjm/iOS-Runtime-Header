@@ -9,7 +9,7 @@
 @interface TSCERangePrecedentsTile : TSPObject
 {
     unsigned short _toInternalOwnerID;
-    struct map<TSUCellCoord, std::__1::set<TSUCellRect, std::__1::less<TSUCellRect>, std::__1::allocator<TSUCellRect>>, std::__1::less<TSUCellCoord>, std::__1::allocator<std::__1::pair<const TSUCellCoord, std::__1::set<TSUCellRect, std::__1::less<TSUCellRect>, std::__1::allocator<TSUCellRect>>>>> _fromCoordToReferRect;
+    struct map<TSUCellCoord, std::set<TSUCellRect>, std::less<TSUCellCoord>, std::allocator<std::pair<const TSUCellCoord, std::set<TSUCellRect>>>> _fromCoordToReferRect;
 }
 
 - (id).cxx_construct;

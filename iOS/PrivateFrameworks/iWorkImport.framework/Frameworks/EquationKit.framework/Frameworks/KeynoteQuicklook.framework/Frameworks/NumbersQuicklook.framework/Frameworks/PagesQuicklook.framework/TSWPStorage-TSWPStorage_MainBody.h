@@ -9,6 +9,7 @@
 @interface TSWPStorage (TSWPStorage_MainBody)
 - (id)defaultSectionForContext:(id)arg1;
 - (id)uuidPathPrefixComponentsProvider;
+- (id)sectionFillForAttachment:(id)arg1;
 - (id)firstPageCountAttachment;
 - (id)firstPageNumberAttachment;
 - (struct TPSectionEnumerator)sectionEnumeratorAtSectionIndex:(unsigned long long)arg1;

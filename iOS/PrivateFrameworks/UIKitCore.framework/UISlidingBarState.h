@@ -21,8 +21,6 @@
     double _trailingOffscreenWidth;
     double _supplementaryWidth;
     double _supplementaryOffscreenWidth;
-    long long _mainPositioning;
-    double _detachedMainXOffset;
     double _mainWidth;
     double _leadingDragOffset;
     double _trailingDragOffset;
@@ -51,8 +49,6 @@
 @property(nonatomic) double trailingDragOffset; // @synthesize trailingDragOffset=_trailingDragOffset;
 @property(nonatomic) double leadingDragOffset; // @synthesize leadingDragOffset=_leadingDragOffset;
 @property(nonatomic) double mainWidth; // @synthesize mainWidth=_mainWidth;
-@property(nonatomic) double detachedMainXOffset; // @synthesize detachedMainXOffset=_detachedMainXOffset;
-@property(nonatomic) long long mainPositioning; // @synthesize mainPositioning=_mainPositioning;
 @property(nonatomic) double supplementaryOffscreenWidth; // @synthesize supplementaryOffscreenWidth=_supplementaryOffscreenWidth;
 @property(nonatomic) double supplementaryWidth; // @synthesize supplementaryWidth=_supplementaryWidth;
 @property(nonatomic) double trailingOffscreenWidth; // @synthesize trailingOffscreenWidth=_trailingOffscreenWidth;

@@ -15,6 +15,8 @@
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *iBADocumentTypes; // @synthesize iBADocumentTypes=_iBADocumentTypes;
+- (id)appChartPropertyOverrides;
+- (id)applicationTemplateVariantsForLocale:(id)arg1;
 - (id)strokeWidthsForFreehandDrawingToolType:(unsigned long long)arg1;
 - (_Bool)supportsTabNavigationOfCanvasObjects;
 - (id)bladerunnerContainerIdentifier;
@@ -29,6 +31,7 @@
 - (id)templateSFFDocumentType;
 - (id)templateDocumentType;
 - (id)nativeDocumentType;
+- (Class)documentRootClass;
 - (id)templateTypeDisplayName;
 - (id)documentTypeDisplayNameForSharingInvitation;
 - (id)documentTypeDisplayName;

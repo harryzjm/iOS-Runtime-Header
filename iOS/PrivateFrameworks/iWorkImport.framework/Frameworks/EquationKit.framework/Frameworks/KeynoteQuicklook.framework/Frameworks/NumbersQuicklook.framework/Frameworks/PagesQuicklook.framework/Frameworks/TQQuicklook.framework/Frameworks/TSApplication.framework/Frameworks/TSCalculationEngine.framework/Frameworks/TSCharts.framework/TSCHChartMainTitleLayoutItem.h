@@ -8,6 +8,7 @@
 {
 }
 
+- (id)textStyleProvidingSource;
 - (id)titleSelectionPath;
 - (unsigned long long)titleParagraphStyleIndex;
 - (id)titleTextForModel:(id)arg1;

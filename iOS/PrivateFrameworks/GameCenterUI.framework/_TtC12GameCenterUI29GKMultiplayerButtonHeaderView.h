@@ -11,27 +11,25 @@
 @interface _TtC12GameCenterUI29GKMultiplayerButtonHeaderView : UIView
 {
     MISSING_TYPE *titleLabel;
-    MISSING_TYPE *stepper;
+    MISSING_TYPE *playerCountLabel;
     MISSING_TYPE *iconView;
     MISSING_TYPE *cancelButton;
     MISSING_TYPE *cancelButtonHandler;
-    MISSING_TYPE *wantsMaterialBackground;
     MISSING_TYPE *backgroundView;
+    MISSING_TYPE *bottomSeparator;
 }
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)cancelPressed:(id)arg1;
+- (void)updateCountWithMinPlayers:(long long)arg1 maxPlayers:(long long)arg2;
 - (void)applyGame:(id)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct JUMeasurements)measurementsWithFitting:(struct CGSize)arg1 in:(id)arg2;
-@property(nonatomic) long long maximumValue;
-@property(nonatomic) long long minimumValue;
-@property(nonatomic) _Bool wantsMaterialBackground; // @synthesize wantsMaterialBackground;
-@property(nonatomic) _Bool isStepperHidden;
+- (void)wantsMaterialBackgroundWithScrollOffset:(double)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithMinimumValue:(long long)arg1 maximumValue:(long long)arg2 initialValue:(long long)arg3 titleChangedHandler:(CDUnknownBlockType)arg4 valueChangedHandler:(CDUnknownBlockType)arg5 cancelButtonHandler:(CDUnknownBlockType)arg6;
+- (id)initWithMinimumValue:(long long)arg1 maximumValue:(long long)arg2 initialValue:(long long)arg3 cancelButtonHandler:(CDUnknownBlockType)arg4;
 - (id)initWithCancelButtonHandler:(CDUnknownBlockType)arg1;
 
 @end

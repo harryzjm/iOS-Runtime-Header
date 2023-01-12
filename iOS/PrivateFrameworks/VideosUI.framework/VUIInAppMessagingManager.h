@@ -6,20 +6,27 @@
 
 #import <objc/NSObject.h>
 
+#import <VideosUI/AMSUIMessageGroupDelegate-Protocol.h>
 #import <VideosUI/IAMMessageMetricsDelegate-Protocol.h>
 
 @class IAMMessageCoordinator, NSMutableDictionary, NSString, VUIInAppMessagesConfig, VUIInAppMessagingContextProvider;
 
-@interface VUIInAppMessagingManager : NSObject <IAMMessageMetricsDelegate>
+@interface VUIInAppMessagingManager : NSObject <IAMMessageMetricsDelegate, AMSUIMessageGroupDelegate>
 {
     NSMutableDictionary *messageRegistry;
     VUIInAppMessagingContextProvider *_context;
     IAMMessageCoordinator *_coordinator;
     VUIInAppMessagesConfig *_config;
+    NSString *_purchaseOrLinkingAdamID;
+    NSString *_subscriptionChannelTitle;
+    NSString *_subscriptionChannelLink;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *subscriptionChannelLink; // @synthesize subscriptionChannelLink=_subscriptionChannelLink;
+@property(retain, nonatomic) NSString *subscriptionChannelTitle; // @synthesize subscriptionChannelTitle=_subscriptionChannelTitle;
+@property(retain, nonatomic) NSString *purchaseOrLinkingAdamID; // @synthesize purchaseOrLinkingAdamID=_purchaseOrLinkingAdamID;
 @property(retain, nonatomic) VUIInAppMessagesConfig *config; // @synthesize config=_config;
 @property(retain, nonatomic) IAMMessageCoordinator *coordinator; // @synthesize coordinator=_coordinator;
 @property(retain, nonatomic) VUIInAppMessagingContextProvider *context; // @synthesize context=_context;
@@ -33,6 +40,10 @@
 - (void)_handleActiveDownloadButtonsDidChange:(id)arg1;
 - (void)_handleIsPlaybackUIBeingShownDidChange:(id)arg1;
 - (void)_handleSubscriptionDataDidChangeNotification:(id)arg1;
+- (void)_showPostPurchaseOrLinkingConfirmation;
+- (void)_postPurchaseOrLinkingProcessing;
+- (void)messageGroup:(id)arg1 didFinishPurchaseWithResult:(id)arg2 error:(id)arg3;
+- (void)messageGroup:(id)arg1 didFinishCarrierLinkingWithResult:(id)arg2 error:(id)arg3;
 - (void)messageDidReportMetricsEvent:(id)arg1 eventProperties:(id)arg2;
 - (void)removeMessageForTargetID:(id)arg1;
 - (void)addMessage:(id)arg1 forTargetID:(id)arg2;

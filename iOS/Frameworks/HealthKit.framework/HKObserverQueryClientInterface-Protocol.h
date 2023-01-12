@@ -6,9 +6,9 @@
 
 #import <HealthKit/HKQueryClientInterface-Protocol.h>
 
-@class NSNumber, NSUUID;
+@class NSNumber, NSSet, NSUUID;
 
 @protocol HKObserverQueryClientInterface <HKQueryClientInterface>
-- (void)client_dataUpdatedInDatabaseWithAnchor:(NSNumber *)arg1 query:(NSUUID *)arg2;
+- (void)client_dataUpdatedInDatabaseForTypes:(NSSet *)arg1 withAnchor:(NSNumber *)arg2 query:(NSUUID *)arg3;
 @end
 

@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)applyToSolver:(id)arg1;
-- (id)initWithSolver:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

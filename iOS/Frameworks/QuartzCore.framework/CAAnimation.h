@@ -33,6 +33,9 @@
 + (CDUnknownFunctionPointerType)CA_getterForProperty:(const struct _CAPropertyInfo *)arg1;
 + (CDUnknownFunctionPointerType)CA_setterForProperty:(const struct _CAPropertyInfo *)arg1;
 + (id)properties;
+@property float preferredFrameRateRangePreferred;
+@property float preferredFrameRateRangeMaximum;
+@property float preferredFrameRateRangeMinimum;
 @property(retain) id <CAAnimationDelegate> delegate;
 @property(retain) CAMediaTimingFunction *timingFunction;
 @property(getter=isRemovedOnCompletion) _Bool removedOnCompletion;
@@ -57,14 +60,16 @@
 - (id)initWithCoder:(id)arg1;
 - (_Bool)shouldArchiveValueForKey:(id)arg1;
 - (void)runActionForKey:(id)arg1 object:(id)arg2 arguments:(id)arg3;
+@property struct CAFrameRateRange preferredFrameRateRange;
 - (void)dealloc;
 - (unsigned int)_propertyFlagsForLayer:(id)arg1;
-- (_Bool)_setCARenderAnimation:(struct Animation *)arg1 layer:(id)arg2;
+- (_Bool)_setCARenderAnimation:(void *)arg1 layer:(id)arg2;
+@property unsigned int highFrameRateReason;
 @property(copy) NSString *beginTimeMode;
 @property _Bool discretizesTime;
-@property double frameInterval;
 @property(getter=isEnabled) _Bool enabled;
 @property long long preferredFramesPerSecond;
+@property double frameInterval;
 - (_Bool)CAMLTypeSupportedForKey:(id)arg1;
 - (id)CAMLTypeForKey:(id)arg1;
 - (void)encodeWithCAMLWriter:(id)arg1;

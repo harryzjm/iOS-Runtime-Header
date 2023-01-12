@@ -6,11 +6,11 @@
 
 #import <CoverSheet/NSObject-Protocol.h>
 
-@class CSAdjunctListModel;
-@protocol CSAdjunctListItemProviding;
+@class CSAdjunctListItem, CSAdjunctListModel;
 
 @protocol CSAdjunctListModelDelegate <NSObject>
-- (void)adjunctListModel:(CSAdjunctListModel *)arg1 didRemoveItem:(id <CSAdjunctListItemProviding>)arg2;
-- (void)adjunctListModel:(CSAdjunctListModel *)arg1 didAddItem:(id <CSAdjunctListItemProviding>)arg2;
+- (void)adjunctListModel:(CSAdjunctListModel *)arg1 didUpdateItem:(CSAdjunctListItem *)arg2 withItem:(CSAdjunctListItem *)arg3;
+- (void)adjunctListModel:(CSAdjunctListModel *)arg1 didRemoveItem:(CSAdjunctListItem *)arg2;
+- (void)adjunctListModel:(CSAdjunctListModel *)arg1 didAddItem:(CSAdjunctListItem *)arg2;
 @end
 

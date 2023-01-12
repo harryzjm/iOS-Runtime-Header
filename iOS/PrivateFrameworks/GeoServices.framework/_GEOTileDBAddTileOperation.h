@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 @interface _GEOTileDBAddTileOperation : NSObject <_GEOTileDBWriteOperation>
 {
     struct _GEOTileKey _key;
-    unsigned int _tileSet;
+    CDUnion_23a7df3d _tileSet;
     GEOTileData *_data;
     NSString *_ETag;
     unsigned char _reason;
@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)canIncreaseDataSizeInDB;
 @property(readonly, nonatomic) unsigned long long sizeInBytes;
 @property(readonly, nonatomic) struct _GEOTileKey *key;
-- (id)initWithTileKey:(const struct _GEOTileKey *)arg1 tileSet:(unsigned int)arg2 data:(id)arg3 ETag:(id)arg4 reason:(unsigned char)arg5 externalResourceUUID:(id)arg6;
+- (id)initWithTileKey:(const struct _GEOTileKey *)arg1 tileSet:(CDUnion_23a7df3d)arg2 data:(id)arg3 ETag:(id)arg4 reason:(unsigned char)arg5 externalResourceUUID:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

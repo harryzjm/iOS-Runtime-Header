@@ -14,15 +14,17 @@
 
 @interface NSUUID (NSUUIDAdditions) <CRDataType, CREquatable, CRCoding>
 + (id)TTZero;
-+ (id)CR_UUIDFromStdString:(const basic_string_7c0a1c0b *)arg1;
++ (id)CR_UUIDFromStdString:(const void *)arg1;
++ (id)CR_unknown;
++ (id)CR_unserialized;
 + (id)CR_zero;
 + (id)CR_repeatedCharUUID:(unsigned char)arg1;
 - (id)TTShortDescription;
 - (long long)TTCompare:(id)arg1;
-- (basic_string_7c0a1c0b)CR_toStdString;
+- (basic_string_0ec669f3)CR_toStdString;
 - (void)encodeWithCRCoder:(id)arg1;
 - (id)initWithCRCoder:(id)arg1;
-- (id)CR_shortDescription;
+@property(readonly, copy, nonatomic) NSString *CR_shortDescription;
 - (long long)CR_compare:(id)arg1;
 - (id)tombstone;
 - (void)realizeLocalChangesIn:(id)arg1;

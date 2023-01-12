@@ -6,7 +6,8 @@
 
 #import <Sleep/HKSPMutableObject-Protocol.h>
 
-@class HKSPChangeSet, NSDate, NSNumber, NSSet, NSString;
+@class HKSPChangeSet, NSDate, NSDictionary, NSNumber, NSSet, NSString;
+@protocol HKSPObject;
 
 @interface HKSPMutableAlarmConfiguration <HKSPMutableObject>
 {
@@ -17,6 +18,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) HKSPChangeSet *changeSet; // @synthesize changeSet=_changeSet;
 - (void)freeze;
+@property(readonly, nonatomic) id <HKSPObject> originalObject;
 - (id)mutableCopy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -36,6 +38,7 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(copy, nonatomic) NSDate *lastModifiedDate;
+@property(readonly, nonatomic) NSDictionary *relationshipChanges;
 @property(readonly, nonatomic) NSSet *significantChanges;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) unsigned long long version;

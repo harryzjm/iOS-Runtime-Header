@@ -14,7 +14,7 @@
 + (_Bool)supportsSecureCoding;
 + (_Bool)isValidDestination:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly, copy) NSUUID *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
+@property(readonly, copy, nonatomic) NSUUID *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)destination;

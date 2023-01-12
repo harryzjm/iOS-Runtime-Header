@@ -50,6 +50,9 @@
 - (void)_LSRecord_resolve__dataContainerURLFromDatabase;
 @property(readonly) NSURL *_dataContainerURLFromDatabase;
 - (id)_dataContainerURLFromDatabaseWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleBaseData *)arg4;
+- (void)_LSRecord_resolve__baseFlags;
+@property(readonly) struct LSBundleBaseFlags _baseFlags;
+- (struct LSBundleBaseFlags)_baseFlagsWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleBaseData *)arg4;
 - (void)_LSRecord_resolve__rawGroupContainerURLs;
 @property(readonly) _LSLazyPropertyList *_rawGroupContainerURLs;
 - (id)_rawGroupContainerURLsWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleBaseData *)arg4;
@@ -76,6 +79,7 @@
 - (void)_LSRecord_resolve_claimRecords;
 @property(readonly) NSSet *claimRecords;
 - (id)claimRecordsWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleData *)arg4;
+@property(readonly, getter=wasBuiltWithThreadSanitizer) _Bool builtWithThreadSanitizer;
 - (void)_LSRecord_resolve_platform;
 @property(readonly) unsigned int platform;
 - (unsigned int)platformWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleBaseData *)arg4;
@@ -96,6 +100,9 @@
 @property(readonly) NSURL *executableURL;
 - (id)executableURLWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleBaseData *)arg4;
 @property(readonly) NSURL *URL;
+- (void)_LSRecord_resolve_teamIdentifier;
+@property(readonly) NSString *teamIdentifier;
+- (id)teamIdentifierWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleBaseData *)arg4;
 @property(readonly) NSString *applicationIdentifier;
 - (void)dealloc;
 - (void)_LSRecord_resolve_infoDictionary;
@@ -111,9 +118,15 @@
 - (id)localizedNameWithPreferredLocalizations:(id)arg1;
 @property(readonly) NSString *localizedShortName;
 @property(readonly) NSString *localizedName;
+- (void)_LSRecord_resolve_codeSignatureVersion;
+@property(readonly) unsigned int codeSignatureVersion;
+- (unsigned int)codeSignatureVersionWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleBaseData *)arg4;
 @property(readonly, getter=isFreeProfileValidated) _Bool freeProfileValidated;
 @property(readonly, getter=isUPPValidated) _Bool UPPValidated;
 @property(readonly, getter=isProfileValidated) _Bool profileValidated;
+- (void)_LSRecord_resolve_signerIdentity;
+@property(readonly) NSString *signerIdentity;
+- (id)signerIdentityWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleBaseData *)arg4;
 - (void)_LSRecord_resolve_signerOrganization;
 @property(readonly) NSString *signerOrganization;
 - (id)signerOrganizationWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleBaseData *)arg4;

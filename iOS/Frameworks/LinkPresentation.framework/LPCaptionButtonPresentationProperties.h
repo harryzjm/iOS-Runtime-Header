@@ -6,16 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class LPCaptionButtonCollapsedPresentationProperties, LPImage, NSString, UIColor;
 
 @interface LPCaptionButtonPresentationProperties : NSObject
 {
     NSString *_text;
+    LPImage *_icon;
     CDUnknownBlockType _callback;
+    long long _type;
+    UIColor *_backgroundColor;
+    LPCaptionButtonCollapsedPresentationProperties *_collapsedButton;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) LPCaptionButtonCollapsedPresentationProperties *collapsedButton; // @synthesize collapsedButton=_collapsedButton;
+@property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property(nonatomic) long long type; // @synthesize type=_type;
 @property(copy, nonatomic) CDUnknownBlockType callback; // @synthesize callback=_callback;
+@property(retain, nonatomic) LPImage *icon; // @synthesize icon=_icon;
 @property(copy, nonatomic) NSString *text; // @synthesize text=_text;
 
 @end

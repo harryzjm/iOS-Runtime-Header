@@ -11,8 +11,5 @@
 @protocol VCAudioIODelegate <VCBasebandCodecNotifications>
 - (void)didResumeAudioIO:(VCAudioIO *)arg1;
 - (void)didSuspendAudioIO:(VCAudioIO *)arg1;
-
-@optional
-- (void)spatialAudioSourceIDChanged:(unsigned long long)arg1;
 @end
 

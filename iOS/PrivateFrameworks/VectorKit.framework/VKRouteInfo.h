@@ -13,9 +13,13 @@
     GEOComposedRoute *_route;
     VKRouteEtaDescription *_etaDescription;
     NSArray *_waypoints;
+    NSArray *_trafficAnnotations;
+    NSArray *_exitSignAnnotations;
     _Bool _hasFocus;
 }
 
+@property(readonly, nonatomic) NSArray *exitSignAnnotations; // @synthesize exitSignAnnotations=_exitSignAnnotations;
+@property(readonly, nonatomic) NSArray *trafficAnnotations; // @synthesize trafficAnnotations=_trafficAnnotations;
 @property(readonly, nonatomic) NSArray *waypoints; // @synthesize waypoints=_waypoints;
 @property(nonatomic) _Bool hasFocus; // @synthesize hasFocus=_hasFocus;
 @property(retain, nonatomic) VKRouteEtaDescription *etaDescription; // @synthesize etaDescription=_etaDescription;
@@ -24,6 +28,7 @@
 - (void)dealloc;
 - (id)initWithComposedRoute:(id)arg1 etaDescription:(id)arg2;
 - (id)initWithComposedRoute:(id)arg1 etaText:(id)arg2;
+- (void)_decodeVisualInfos:(id)arg1 withRouteEtaType:(long long)arg2 into:(id)arg3;
 
 @end
 

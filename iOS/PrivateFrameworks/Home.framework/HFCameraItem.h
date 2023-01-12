@@ -13,6 +13,8 @@
 {
 }
 
++ (_Bool)shouldIgnoreStreamErrorForCameraSettings:(id)arg1;
++ (_Bool)shouldReportNotificationsAsDisabledForProfile:(id)arg1;
 + (_Bool)cameraContainsMotionServiceItem:(id)arg1;
 + (void)getErrorDescription:(out id *)arg1 detailedErrorDescription:(out id *)arg2 forCameraStreamError:(id)arg3;
 @property(readonly, nonatomic) id <HFHomeKitObject> primaryHomeKitObject;

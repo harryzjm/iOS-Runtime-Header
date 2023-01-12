@@ -27,9 +27,13 @@
     NSUUID *_uuid;
     _Bool _bypassSupportedMessageModesCheck;
     CTXPCServiceSubscriptionContext *_context;
+    _Bool _replyEnabled;
+    int _smsType;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) int smsType; // @synthesize smsType=_smsType;
+@property(readonly, nonatomic) _Bool replyEnabled; // @synthesize replyEnabled=_replyEnabled;
 @property(copy, nonatomic) CTXPCServiceSubscriptionContext *context; // @synthesize context=_context;
 @property(nonatomic) _Bool bypassSupportedMessageModesCheck; // @synthesize bypassSupportedMessageModesCheck=_bypassSupportedMessageModesCheck;
 @property(retain, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uuid;
@@ -45,6 +49,7 @@
 @property(nonatomic) unsigned int messageId; // @synthesize messageId=_messageId;
 @property(readonly) NSDate *date; // @synthesize date=_date;
 @property(readonly) NSArray *recipients; // @synthesize recipients=_recipients;
+- (void)setReplyEnabled:(_Bool)arg1;
 - (void)setCountryCode:(id)arg1;
 - (id)description;
 - (id)allContentTypeParameterNames;

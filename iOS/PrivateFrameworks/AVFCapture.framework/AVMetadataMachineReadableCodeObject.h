@@ -11,6 +11,7 @@
     AVMetadataMachineReadableCodeObjectInternal *_internal;
 }
 
++ (id)machineReadableCodeObjectWithAppClipCodeDictionary:(id)arg1 input:(id)arg2;
 + (id)machineReadableCodeObjectWithFigEmbeddedCaptureDeviceMachineReadableCodeDictionary:(id)arg1 input:(id)arg2;
 - (id)basicDescriptor;
 @property(readonly) NSString *stringValue;
@@ -18,6 +19,7 @@
 - (id)description;
 - (void)dealloc;
 - (id)initDerivedMetadataObjectFromMetadataObject:(id)arg1 withTransform:(struct CGAffineTransform)arg2 isVideoMirrored:(_Bool)arg3 rollAdjustment:(double)arg4;
+- (id)initWithAppClipCodeDictionary:(id)arg1 input:(id)arg2;
 - (id)initWithFigEmbeddedCaptureDeviceMachineReadableCodeDictionary:(id)arg1 input:(id)arg2;
 @property(readonly) CIBarcodeDescriptor *descriptor;
 

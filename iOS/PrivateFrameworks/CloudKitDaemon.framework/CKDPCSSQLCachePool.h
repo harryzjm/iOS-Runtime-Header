@@ -8,7 +8,6 @@
 
 @class NSMutableDictionary;
 
-__attribute__((visibility("hidden")))
 @interface CKDPCSSQLCachePool : NSObject
 {
     NSMutableDictionary *_cachesByPath;
@@ -19,8 +18,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *checkoutsByPath; // @synthesize checkoutsByPath=_checkoutsByPath;
 @property(retain, nonatomic) NSMutableDictionary *cachesByPath; // @synthesize cachesByPath=_cachesByPath;
-- (void)releaseCache:(id)arg1 forContext:(id)arg2;
-- (id)cacheForContext:(id)arg1;
+- (void)releaseCache:(id)arg1 forContainer:(id)arg2;
+- (id)cacheForContainer:(id)arg1;
 - (id)_init;
 
 @end

@@ -66,6 +66,7 @@
 - (void)notifyObserversOfStateChangeFromState:(unsigned long long)arg1 toState:(unsigned long long)arg2;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
+@property(readonly, nonatomic) _Bool isInSensitiveVisit;
 - (id)initWithSettings:(id)arg1 scanRequestSettings:(id)arg2;
 
 @end

@@ -10,6 +10,7 @@
 @protocol UIInteraction;
 
 @protocol UITable_UITableViewCellDelegate <UITable>
+@property(readonly, nonatomic) _Bool selectionFollowsFocus;
 @property(retain, nonatomic, getter=_swipeToDeleteCell, setter=_setSwipeToDeleteCell:) UITableViewCell *swipeToDeleteCell;
 @property(readonly, nonatomic, getter=_isEditingForSwipeDeletion) _Bool editingForSwipeDeletion;
 @property(readonly, nonatomic, getter=_wasEditing) _Bool wasEditing;
@@ -19,6 +20,7 @@
 @property(readonly, nonatomic, getter=_rowSpacing) double rowSpacing;
 - (void)_highlightDidEndForCell:(UITableViewCell *)arg1 withInteraction:(id <UIInteraction>)arg2;
 - (void)_prepareHighlightForCell:(UITableViewCell *)arg1 withInteraction:(id <UIInteraction>)arg2;
+- (_Bool)_effectiveDefaultAllowsFocus;
 - (_Bool)_shouldDrawThickSeparators;
 - (void)_userSelectCell:(UITableViewCell *)arg1;
 - (void)_accessoryButtonAction:(UIView *)arg1;
@@ -39,6 +41,7 @@
 - (void)_performAction:(SEL)arg1 forCell:(UITableViewCell *)arg2 sender:(id)arg3;
 - (_Bool)_canPerformAction:(SEL)arg1 forCell:(UITableViewCell *)arg2 sender:(id)arg3;
 - (_Bool)_shouldShowMenuForCell:(UITableViewCell *)arg1;
+- (long long)_cellFocusItemDeferral:(UITableViewCell *)arg1;
 - (void)_cellDidBecomeUnfocused:(UITableViewCell *)arg1;
 - (void)_cellDidBecomeFocused:(UITableViewCell *)arg1;
 - (_Bool)_canFocusCell:(UITableViewCell *)arg1;

@@ -8,6 +8,7 @@
 
 @class NSArray, NSURL;
 
+__attribute__((visibility("hidden")))
 @interface ICMusicRestoreBagConfiguration : NSObject
 {
     _Bool _shouldGZip;

@@ -18,12 +18,16 @@
     MISSING_TYPE *isEyesFree;
     MISSING_TYPE *isVoiceTriggerEnabled;
     MISSING_TYPE *isTextToSpeechEnabled;
-    MISSING_TYPE *isCarPlay;
-    MISSING_TYPE *isCarDNDMode;
     MISSING_TYPE *isDirectAction;
     MISSING_TYPE *renderDeviceIdiom;
     MISSING_TYPE *sessionHandOffContinuityID;
+    MISSING_TYPE *preferencesLanguageCode;
     MISSING_TYPE *personalDomainsAuthenticationMode;
+    MISSING_TYPE *bargeInContext;
+    MISSING_TYPE *endpointId;
+    MISSING_TYPE *restrictedCommands;
+    MISSING_TYPE *authenticationState;
+    MISSING_TYPE *peerName;
     MISSING_TYPE *isLockedWithPasscodeClosure;
     MISSING_TYPE *isHomePodGestalt;
     MISSING_TYPE *isAppleTVGestalt;

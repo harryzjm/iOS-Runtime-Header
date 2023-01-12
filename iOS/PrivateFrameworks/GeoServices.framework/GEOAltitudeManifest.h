@@ -28,6 +28,7 @@
 - (_Bool)hasDataVersionForRegion:(unsigned int)arg1;
 - (unsigned int)versionForRegion:(unsigned int)arg1;
 - (void)dealloc;
+- (void)getvalidFlyOverAnimationIDPool:(void *)arg1;
 - (_Bool)isValidTourId:(unsigned long long)arg1;
 - (_Bool)parseXml:(id)arg1;
 - (void)resourceManifestManagerDidChangeActiveTileGroup:(id)arg1;

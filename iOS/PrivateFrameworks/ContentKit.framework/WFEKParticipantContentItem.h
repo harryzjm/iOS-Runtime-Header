@@ -6,11 +6,12 @@
 
 #import <ContentKit/WFContentItemClass-Protocol.h>
 
+@class WFParticipant;
+
 @interface WFEKParticipantContentItem <WFContentItemClass>
 {
 }
 
-+ (id)defaultSourceForRepresentation:(id)arg1;
 + (id)countDescription;
 + (id)pluralFilterDescription;
 + (id)filterDescription;
@@ -21,8 +22,11 @@
 + (id)ownedTypes;
 + (id)possibleStatuses;
 + (id)possibleRoles;
++ (id)stringConversionBehavior;
 + (id)propertyBuilders;
 + (_Bool)supportedTypeMustBeDeterminedByInstance:(id)arg1;
+- (_Bool)getListSubtitle:(CDUnknownBlockType)arg1;
+- (id)defaultSourceForRepresentation:(id)arg1;
 - (_Bool)isCurrentUser;
 - (id)status;
 - (id)role;
@@ -30,7 +34,7 @@
 - (void)generateObjectRepresentation:(CDUnknownBlockType)arg1 options:(id)arg2 forClass:(Class)arg3;
 - (id)generateObjectRepresentationForClass:(Class)arg1 options:(id)arg2 error:(id *)arg3;
 - (_Bool)canGenerateContact;
-- (id)participant;
+@property(readonly, nonatomic) WFParticipant *participant;
 
 @end
 

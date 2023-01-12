@@ -8,7 +8,7 @@
 
 #import <FileProviderDaemon/NSXPCListenerDelegate-Protocol.h>
 
-@class FPDActionOperationEngine, FPDAppMonitor, FPDCacheDeleteService, FPDExtensionManager, FPDPresenterManager, NSString, NSXPCListener;
+@class FPDActionOperationEngine, FPDAppMonitor, FPDCacheDeleteService, FPDExtensionManager, FPDPresenterManager, FPDTelemetryService, NSString, NSXPCListener;
 @protocol OS_dispatch_group, OS_dispatch_queue, OS_dispatch_source;
 
 @interface FPDServer : NSObject <NSXPCListenerDelegate>
@@ -24,6 +24,7 @@
     NSObject<OS_dispatch_queue> *_machServerQueue;
     int _providerChangeNotificationToken;
     FPDCacheDeleteService *_cacheDelete;
+    FPDTelemetryService *_telemetry;
     FPDActionOperationEngine *_operationEngine;
     FPDAppMonitor *_appMonitor;
     FPDExtensionManager *_extensionManager;
@@ -35,7 +36,7 @@
 }
 
 + (id)appSupportPath;
-+ (id)cloudStoragePath;
++ (id)personaCloudStoragePath;
 + (id)homeDirectory;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSXPCListener *listener; // @synthesize listener=_listener;

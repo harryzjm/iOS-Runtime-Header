@@ -15,7 +15,6 @@
 + (id)actionSheetUnblock;
 + (id)actionSheetBlock;
 + (id)actionSheetStopSuggesting;
-+ (id)ignoreSuggestionActivity;
 + (id)saveSelectedActivity;
 + (id)saveActivity;
 + (id)showLessSelectedActivity;

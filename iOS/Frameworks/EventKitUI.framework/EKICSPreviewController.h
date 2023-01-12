@@ -13,7 +13,6 @@
 
 @interface EKICSPreviewController : NSObject <EKEventViewDelegatePrivate>
 {
-    EKICSPreviewModel *_model;
     EKEventStore *_eventStore;
     EKEventViewController *_currentImport;
     UIViewController *_contentViewController;
@@ -21,6 +20,7 @@
     _Bool _hasCustomCancelButton;
     long long _cancelButtonType;
     EKEvent *_eventFromUID;
+    _Bool _showListViewForOneEvent;
     _Bool _allowsImport;
     _Bool _allowsEditing;
     _Bool _allowsSubitems;
@@ -28,6 +28,7 @@
     _Bool _allowsToDos;
     int _eventUID;
     id <EKICSPreviewControllerDelegate> _previewDelegate;
+    EKICSPreviewModel *_model;
     unsigned long long _actionsState;
 }
 
@@ -39,6 +40,8 @@
 @property(nonatomic) _Bool allowsSubitems; // @synthesize allowsSubitems=_allowsSubitems;
 @property(nonatomic) _Bool allowsEditing; // @synthesize allowsEditing=_allowsEditing;
 @property(nonatomic) _Bool allowsImport; // @synthesize allowsImport=_allowsImport;
+@property(nonatomic) _Bool showListViewForOneEvent; // @synthesize showListViewForOneEvent=_showListViewForOneEvent;
+@property(readonly, nonatomic) EKICSPreviewModel *model; // @synthesize model=_model;
 @property(nonatomic) __weak id <EKICSPreviewControllerDelegate> previewDelegate; // @synthesize previewDelegate=_previewDelegate;
 - (void)eventViewController:(id)arg1 didCompleteWithAction:(long long)arg2;
 - (_Bool)eventViewControllerShouldAlwaysShowNavBar:(id)arg1;

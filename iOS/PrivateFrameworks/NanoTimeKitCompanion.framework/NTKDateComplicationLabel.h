@@ -65,6 +65,7 @@
 @property(retain, nonatomic) UIColor *textColor;
 - (void)_computeTextColor;
 - (void)_updateTextColor;
+- (void)setShadowColor:(id)arg1;
 - (id)_attributedStringAccentingNumbersInString:(id)arg1;
 - (void)setDateComplicationText:(id)arg1 withDayRange:(struct _NSRange)arg2 forDateStyle:(unsigned long long)arg3;
 - (void)traitCollectionDidChange:(id)arg1;

@@ -50,7 +50,8 @@
 - (_Bool)containsRestorableContent;
 - (id)descriptionComponents;
 - (id)init;
-- (void)getRemotePlaybackQueueRepresentationWithPlayerPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getRemotePlaybackQueueRepresentationWithCompletion:(CDUnknownBlockType)arg1;
+- (id)getSharedListeningTracklistWithCompletion:(CDUnknownBlockType)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

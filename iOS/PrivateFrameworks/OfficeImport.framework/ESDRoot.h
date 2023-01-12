@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 - (void)addChild:(id)arg1;
 - (id)childAt:(unsigned long long)arg1;
 - (unsigned long long)childCount;
-- (struct EshRoot *)eshRoot;
+- (void *)eshRoot;
 - (id)initFromReader:(struct OcReader *)arg1;
 - (id)init;
 - (id)initWithEshObject:(struct EshObject *)arg1;

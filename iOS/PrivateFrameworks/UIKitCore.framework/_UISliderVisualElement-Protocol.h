@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIEvent, UIImage, UIImageView, UISlider, UITouch, UIView, _UISliderDataModel;
+#import <UIKitCore/UISliderStyle-Protocol.h>
 
-@protocol _UISliderVisualElement
-@property(retain, nonatomic) _UISliderDataModel *data;
+@class UIEvent, UIImage, UIImageView, UISlider, UISliderDataModel, UITouch, UIView;
+
+@protocol _UISliderVisualElement <UISliderStyle>
+@property(retain, nonatomic) UISliderDataModel *data;
 @property(nonatomic) __weak UISlider *slider;
 - (UIView *)thumbViewNeue;
 - (UIView *)thumbView;
@@ -41,6 +43,7 @@
 - (struct CGRect)maximumValueImageRectForBounds:(struct CGRect)arg1;
 - (struct CGRect)minimumValueImageRectForBounds:(struct CGRect)arg1;
 - (void)didPerformLayout;
+- (void)didSetContinuous;
 - (void)didSetSelected;
 - (void)didSetHighlighted;
 - (void)didSetEnabled;
@@ -54,5 +57,6 @@
 - (void)didSetMinimumValueImage;
 - (void)setValue:(float)arg1 animated:(_Bool)arg2;
 - (void)didSetValues;
+- (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 @end
 

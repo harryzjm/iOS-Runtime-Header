@@ -22,6 +22,7 @@
     NSString *_locationTitle;
 }
 
++ (_Bool)isValidLocation:(id)arg1 event:(id)arg2;
 - (void).cxx_destruct;
 @property(retain) NSString *locationTitle; // @synthesize locationTitle=_locationTitle;
 @property _Bool hasMapItemLaunchOptionFromTimeToLeaveNotification; // @synthesize hasMapItemLaunchOptionFromTimeToLeaveNotification=_hasMapItemLaunchOptionFromTimeToLeaveNotification;

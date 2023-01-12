@@ -15,6 +15,7 @@
     _Bool _shouldFetchAssetContents;
     _Bool _shouldReportAllPerItemFailures;
     CDUnknownBlockType _recordChangedBlock;
+    CDUnknownBlockType _recordWasChangedBlock;
     CDUnknownBlockType _perRecordChangeCompletionBlock;
     CDUnknownBlockType _recordWithIDWasDeletedBlock;
     CDUnknownBlockType _recordZoneChangeTokensUpdatedBlock;
@@ -26,10 +27,12 @@
     NSMutableSet *_zoneIDsWithPendingArchivedRecords;
     NSMutableDictionary *_perItemErrors;
     NSDictionary *_assetTransferOptionsByRecordTypeAndKey;
+    long long _errorReportingStyle;
 }
 
 + (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) long long errorReportingStyle; // @synthesize errorReportingStyle=_errorReportingStyle;
 @property(nonatomic) _Bool shouldReportAllPerItemFailures; // @synthesize shouldReportAllPerItemFailures=_shouldReportAllPerItemFailures;
 @property(retain, nonatomic) NSDictionary *assetTransferOptionsByRecordTypeAndKey; // @synthesize assetTransferOptionsByRecordTypeAndKey=_assetTransferOptionsByRecordTypeAndKey;
 @property(retain, nonatomic) NSMutableDictionary *perItemErrors; // @synthesize perItemErrors=_perItemErrors;
@@ -59,6 +62,7 @@
 @property(copy, nonatomic) CDUnknownBlockType recordZoneChangeTokensUpdatedBlock; // @synthesize recordZoneChangeTokensUpdatedBlock=_recordZoneChangeTokensUpdatedBlock;
 @property(copy, nonatomic) CDUnknownBlockType recordWithIDWasDeletedBlock; // @synthesize recordWithIDWasDeletedBlock=_recordWithIDWasDeletedBlock;
 @property(copy, nonatomic) CDUnknownBlockType perRecordChangeCompletionBlock; // @synthesize perRecordChangeCompletionBlock=_perRecordChangeCompletionBlock;
+@property(copy, nonatomic) CDUnknownBlockType recordWasChangedBlock; // @synthesize recordWasChangedBlock=_recordWasChangedBlock;
 @property(copy, nonatomic) CDUnknownBlockType recordChangedBlock; // @synthesize recordChangedBlock=_recordChangedBlock;
 - (id)initWithRecordZoneIDs:(id)arg1 configurationsByRecordZoneID:(id)arg2;
 - (id)init;

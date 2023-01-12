@@ -16,6 +16,7 @@
 - (NSString *)spokenAddressForLocale:(NSString *)arg1;
 - (NSString *)phoneticLocaleIdentifier;
 - (NSOrderedSet *)titlesForMapRect:(CDStruct_90e2a262)arg1;
+- (NSString *)locationAddress;
 - (NSString *)venueShortAddress;
 - (NSString *)venueLevel;
 - (NSString *)venueLabel:(long long)arg1;
@@ -23,6 +24,7 @@
 - (NSString *)parkingDisplayName;
 - (NSString *)weatherLocationName;
 - (NSString *)weatherDisplayName;
+- (NSString *)countryName;
 - (NSString *)cityDisplayNameWithFallback:(_Bool)arg1;
 - (NSString *)shortAddress;
 - (NSString *)fullAddressNoCurrentCountryWithMultiline:(_Bool)arg1;

@@ -14,6 +14,7 @@
     UIView *_gestureRecognizerView;
     UIPanGestureRecognizer *_gestureRecognizer;
     long long __interactionState;
+    _Bool __updateRequestActive;
     _Bool __transitionWasStopped;
     _Bool __stoppedTransitionWasCancelled;
     UIViewController *__parent;

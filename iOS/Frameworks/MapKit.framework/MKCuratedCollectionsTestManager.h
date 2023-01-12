@@ -12,6 +12,7 @@
 {
 }
 
+- (_Bool)collectionIsSavedWithIdentifier:(id)arg1;
 - (_Bool)collectionIsSaved:(id)arg1;
 - (id)placeWithCollectionUsingJSONAtPath:(id)arg1;
 

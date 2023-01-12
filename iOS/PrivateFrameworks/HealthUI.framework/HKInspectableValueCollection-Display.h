@@ -7,8 +7,6 @@
 #import <HealthKit/HKInspectableValueCollection.h>
 
 @interface HKInspectableValueCollection (Display)
-+ (id)_unitStringForValue:(id)arg1;
-+ (id)_unitStringForValueCollection:(id)arg1;
 + (void)parseUncodedValueCollection:(id)arg1 referenceRanges:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 + (void)parseValueCollection:(id)arg1 referenceRanges:(id)arg2 healthRecordsStore:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (id)_joinValueStrings:(id)arg1;

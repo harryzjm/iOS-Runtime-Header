@@ -8,11 +8,12 @@
 
 #import <PassKitCore/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSData, NSString;
 
 @interface PKProtobufSubcredentialInvitationMessage : PBCodable <NSCopying>
 {
     NSString *_dataString;
+    NSData *_passThumbnailImage;
     NSString *_phoneInvitation;
     int _status;
     NSString *_uniqueIdentifier;
@@ -22,6 +23,7 @@
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSData *passThumbnailImage; // @synthesize passThumbnailImage=_passThumbnailImage;
 @property(retain, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property(retain, nonatomic) NSString *watchInvitation; // @synthesize watchInvitation=_watchInvitation;
 @property(retain, nonatomic) NSString *dataString; // @synthesize dataString=_dataString;
@@ -36,6 +38,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasPassThumbnailImage;
 @property(readonly, nonatomic) _Bool hasUniqueIdentifier;
 @property(readonly, nonatomic) _Bool hasWatchInvitation;
 @property(readonly, nonatomic) _Bool hasDataString;

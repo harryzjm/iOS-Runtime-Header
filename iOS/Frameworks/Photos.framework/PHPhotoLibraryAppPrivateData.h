@@ -19,12 +19,14 @@
 @property __weak PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property(retain) PLAppPrivateData *impl; // @synthesize impl=_impl;
 - (void)setValuesForKeysWithDictionary:(id)arg1;
+- (_Bool)setValuesForKeysWithDictionary:(id)arg1 error:(id *)arg2;
 - (id)dictionaryWithValuesForKeys:(id)arg1;
 - (void)setValue:(id)arg1 forKeyPath:(id)arg2;
+- (_Bool)setValue:(id)arg1 forKeyPath:(id)arg2 error:(id *)arg3;
 - (id)valueForKeyPath:(id)arg1;
 - (void)setValue:(id)arg1 forKey:(id)arg2;
+- (_Bool)setValue:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
 - (id)valueForKey:(id)arg1;
-- (void)_handleWriteException:(id)arg1;
 - (void)invalidate;
 - (id)debugDescription;
 - (id)initWithLibrary:(id)arg1;

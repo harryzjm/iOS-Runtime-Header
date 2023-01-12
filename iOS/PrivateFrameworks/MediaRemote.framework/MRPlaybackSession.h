@@ -13,9 +13,13 @@
     NSString *_identifier;
     NSString *_type;
     NSData *_playbackSessionData;
+    NSString *_revision;
+    NSData *_metadata;
 }
 
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSData *metadata; // @synthesize metadata=_metadata;
+@property(readonly, copy, nonatomic) NSString *revision; // @synthesize revision=_revision;
 @property(copy, nonatomic) NSData *playbackSessionData; // @synthesize playbackSessionData=_playbackSessionData;
 @property(copy, nonatomic) NSString *type; // @synthesize type=_type;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
@@ -26,7 +30,7 @@
 @property(readonly, nonatomic) _MRPlaybackSessionProtobuf *protobuf;
 - (id)initWithData:(id)arg1;
 - (id)initWithProtobuf:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 type:(id)arg2 playbackSessionData:(id)arg3;
+- (id)initWithIdentifier:(id)arg1 type:(id)arg2 playbackSessionData:(id)arg3 revision:(id)arg4 metadata:(id)arg5;
 
 @end
 

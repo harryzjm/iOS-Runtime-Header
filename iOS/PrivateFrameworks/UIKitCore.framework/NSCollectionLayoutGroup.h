@@ -54,6 +54,7 @@
 - (unsigned long long)layoutAxis;
 - (_Bool)isHorizontalGroup;
 - (_Bool)isVerticalGroup;
+- (id)_externalDescription;
 - (id)description;
 - (id)initWithSize:(id)arg1 subitems:(id)arg2 count:(long long)arg3 interItemSpacing:(id)arg4 contentInsets:(struct NSDirectionalEdgeInsets)arg5 edgeSpacing:(id)arg6 layoutDirection:(long long)arg7 supplementaryItems:(id)arg8 visualFormats:(id)arg9 itemsProvider:(CDUnknownBlockType)arg10 visualFormatItemProvider:(CDUnknownBlockType)arg11 customGroupItemProvider:(CDUnknownBlockType)arg12 options:(long long)arg13 name:(id)arg14 identifier:(id)arg15;
 

@@ -17,9 +17,13 @@
 {
     _Bool _wantsWindowedPresentation;
     _Bool _preserveModalPresentationStyle;
+    BOOL _forcedOrientation;
+    _Bool _useForcedOrientation;
     _Bool _isGroupConversation;
     _Bool _showActionMenu;
     CKMessagePartChatItem *_chatItem;
+    CKMessagePartChatItem *_supplementaryLayoutChatItem;
+    id _supplementaryLayoutContext;
     UIGestureRecognizer *_tapRecognizer;
     id <CKFullScreenBalloonViewControllerDelegate> _delegate;
     CKMessageAcknowledgmentPickerBarViewController *_pickerBar;
@@ -37,6 +41,10 @@
 @property(readonly, nonatomic) CKMessageAcknowledgmentPickerBarViewController *pickerBar; // @synthesize pickerBar=_pickerBar;
 @property(readonly, nonatomic) __weak id <CKFullScreenBalloonViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) UIGestureRecognizer *tapRecognizer; // @synthesize tapRecognizer=_tapRecognizer;
+@property(nonatomic) _Bool useForcedOrientation; // @synthesize useForcedOrientation=_useForcedOrientation;
+@property(nonatomic) BOOL forcedOrientation; // @synthesize forcedOrientation=_forcedOrientation;
+@property(retain, nonatomic) id supplementaryLayoutContext; // @synthesize supplementaryLayoutContext=_supplementaryLayoutContext;
+@property(retain, nonatomic) CKMessagePartChatItem *supplementaryLayoutChatItem; // @synthesize supplementaryLayoutChatItem=_supplementaryLayoutChatItem;
 @property(readonly, nonatomic) CKMessagePartChatItem *chatItem; // @synthesize chatItem=_chatItem;
 @property(nonatomic) _Bool preserveModalPresentationStyle; // @synthesize preserveModalPresentationStyle=_preserveModalPresentationStyle;
 @property(nonatomic) _Bool wantsWindowedPresentation; // @synthesize wantsWindowedPresentation=_wantsWindowedPresentation;

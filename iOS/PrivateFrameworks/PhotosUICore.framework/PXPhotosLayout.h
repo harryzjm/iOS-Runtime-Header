@@ -13,12 +13,12 @@
 
 @interface PXPhotosLayout <PXChangeObserver, PXGStringSource, PXGNamedImageSource>
 {
-    CDStruct_d97c9657 _updateFlags;
-    CDStruct_d97c9657 _postUpdateFlags;
+    CDStruct_af00bf4e _updateFlags;
+    CDStruct_af00bf4e _postUpdateFlags;
     unsigned short _headerTitleVersion;
     unsigned short _backgroundGradientResizableCapInsetsIndex;
     PXNumberAnimator *_alternateAppearanceMixAnimator;
-    _Bool _wantsCustomNavBarStyle;
+    _Bool _managesHeaderSprites;
     _Bool _presentedVisibility;
     PXPhotosSectionedLayout *_sectionedLayout;
     _Bool _footerHasAppearedInitially;
@@ -35,6 +35,7 @@
     id <PXPhotosSectionHeaderLayoutProvider> _sectionHeaderProvider;
     id <PXPhotosSectionBodyLayoutProvider> _sectionBodyProvider;
     double _statusBarHeight;
+    long long _pendingHideAnimationType;
     NSString *_headerTitle;
     NSDictionary *_headerTitleOverContentAttributes;
     NSDictionary *_headerTitleOverBackgroundAttributes;
@@ -56,6 +57,7 @@
 @property(copy, nonatomic) NSDictionary *headerTitleOverBackgroundAttributes; // @synthesize headerTitleOverBackgroundAttributes=_headerTitleOverBackgroundAttributes;
 @property(copy, nonatomic) NSDictionary *headerTitleOverContentAttributes; // @synthesize headerTitleOverContentAttributes=_headerTitleOverContentAttributes;
 @property(copy, nonatomic) NSString *headerTitle; // @synthesize headerTitle=_headerTitle;
+@property(nonatomic) long long pendingHideAnimationType; // @synthesize pendingHideAnimationType=_pendingHideAnimationType;
 @property(nonatomic) _Bool alignsHeaderTitleWithLayoutMargins; // @synthesize alignsHeaderTitleWithLayoutMargins=_alignsHeaderTitleWithLayoutMargins;
 @property(nonatomic) _Bool wantsHeaderInSafeArea; // @synthesize wantsHeaderInSafeArea=_wantsHeaderInSafeArea;
 @property(nonatomic) double statusBarHeight; // @synthesize statusBarHeight=_statusBarHeight;
@@ -72,11 +74,13 @@
 - (id)imageConfigurationAtIndex:(unsigned int)arg1 inLayout:(id)arg2;
 - (id)attributedStringForSpriteAtIndex:(unsigned int)arg1 inLayout:(id)arg2;
 - (long long)stringDrawingOptionsForSpriteAtIndex:(unsigned int)arg1 inLayout:(id)arg2;
+- (struct UIEdgeInsets)paddingForSpriteAtIndex:(unsigned int)arg1 inLayout:(id)arg2;
 - (long long)verticalAlignmentForStringAtIndex:(unsigned int)arg1 inLayout:(id)arg2;
 - (id)stringAttributesAtIndex:(unsigned int)arg1 inLayout:(id)arg2;
 - (id)stringAtIndex:(unsigned int)arg1 inLayout:(id)arg2;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (struct UIEdgeInsets)additionalSafeAreaInsetsForSublayout:(id)arg1;
+- (void)hideSpritesForObjectReferences:(id)arg1;
 - (id)createDefaultAnimationForCurrentContext;
 - (unsigned long long)fullyVisibleEdgesWithDefaultTolerance;
 - (void)safeAreaInsetsDidChange;
@@ -89,6 +93,10 @@
 - (void)_invalidateLocalSpritesAlpha;
 - (void)_updateLocalSprites;
 - (void)_invalidateLocalSprites;
+- (void)_updateContentBelowTitle;
+- (void)_invalidateContentBelowTitle;
+- (void)_updateLocalSpritesCount;
+- (void)_invalidateLocalSpritesCount;
 - (void)_updateSectionedLayout;
 - (void)_invalidateSectionedLayout;
 - (void)_updateFooter;
@@ -100,9 +108,12 @@
 - (void)_invalidateHeaderMeasurements;
 - (void)_updateHeaderAttributes;
 - (void)_invalidateHeaderAttributes;
+- (void)didUpdate;
 - (void)update;
+- (void)willUpdate;
 - (void)_invalidateHeaderTitle;
 - (void)_updateHeaderTitle;
+- (id)regionOfInterestForAssetReference:(id)arg1;
 - (void)enumerateItemsGeometriesInRect:(struct CGRect)arg1 dataSource:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (id)presentedItemsGeometryForSection:(unsigned long long)arg1 inDataSource:(id)arg2;
 - (id)topmostSectionHeaderSnapshotInRect:(struct CGRect)arg1;
@@ -112,6 +123,7 @@
 - (void)invalidateFooterHeight;
 @property(readonly, nonatomic) struct PXFloatRange bottomCollapsibleArea;
 @property(readonly, nonatomic) struct PXFloatRange topCollapsibleArea;
+- (_Bool)appliesAlphaToSublayouts;
 - (id)presentedDataSource;
 - (id)initWithViewModel:(id)arg1 specManager:(id)arg2;
 

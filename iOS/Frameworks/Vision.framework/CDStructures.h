@@ -14,22 +14,6 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct ATBitmap {
-    struct vector<unsigned char, std::__1::allocator<unsigned char>> _field1;
-    char *_field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
-    unsigned int _field6;
-    unsigned int _field7;
-    struct __CVBuffer *_field8;
-};
-
-struct BurstSupportVector {
-    double _field1;
-    double _field2[7];
-};
-
 struct CC_MD5state_st {
     unsigned int _field1;
     unsigned int _field2;
@@ -55,14 +39,6 @@ struct CGPoint {
     double y;
 };
 
-struct CGPointWithPts {
-    struct CGPoint _field1;
-    CDStruct_1b6d18a9 _field2;
-    float _field3;
-};
-
-struct CGPointWithRadius;
-
 struct CGRect {
     struct CGPoint origin;
     struct CGSize size;
@@ -83,20 +59,16 @@ struct CVPixelBufferWrapper {
     struct __CVBuffer *_field1;
 };
 
-struct DescriptorItemSideInfo;
-
-struct DetectedObject;
+struct CamGazePredictor;
 
 struct EPolygon;
 
 struct EPolygonList {
-    int nPolygons;
-    int maxPolygons;
-    struct EPolygon *polygons;
-    int firstFreeIndex;
+    int _field1;
+    int _field2;
+    struct EPolygon *_field3;
+    int _field4;
 };
-
-struct FaceBoxPoseAligner<signed char>;
 
 struct FaceClustering;
 
@@ -133,114 +105,26 @@ struct ForestAlgoParams {
     int minObjectSize;
 };
 
-struct GridROI_t {
-    int startX;
-    int startY;
-    int endX;
-    int endY;
-};
+struct GazeFollowPredictor;
 
 struct ImageAnalyzer;
 
-struct ImageAnalyzer_CustomClassifier;
-
-struct ImageAnalyzer_PCA {
-    vector_7584168e _field1;
-    unsigned long long _field2;
-    unsigned long long _field3;
-};
-
-struct ImageAnalyzer_Tensor2D {
-    CDStruct_cf098810 _field1;
-    void *_field2;
-    unsigned long long _field3;
-    struct vImage_Buffer _field4;
-};
+struct ImageAnalyzer_PCA;
 
 struct ImageClassfier_Graph;
 
-struct ImageClassifierAbstract {
-    CDUnknownFunctionPointerType *_field1;
-    struct vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>> _field2;
-    unordered_map_b469de21 _field3;
-    struct vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>> _field4;
-    int _field5;
-    float _field6;
-    float _field7;
-    int _field8;
-    int _field9;
-};
+struct ImageClassifierAbstract;
 
 struct ImageClassifier_HierarchicalModel {
     struct ImageClassfier_Graph *_field1;
 };
 
-struct ImageDescriptorAugmenterFlip;
+struct ImageDescriptorBufferAbstract;
 
-struct ImageDescriptorBufferAbstract {
-    CDUnknownFunctionPointerType *_field1;
-    struct vector<long long, std::__1::allocator<long long>> _field2;
-    struct map<long long, int, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, int>>> _field3;
-    void *_field4;
-    unsigned long long _field5;
-    unsigned long long _field6;
-    unsigned long long _field7;
-    _Bool _field8;
-};
-
-struct ImageDescriptorBufferFloat32 {
-    CDUnknownFunctionPointerType *_field1;
-    struct vector<long long, std::__1::allocator<long long>> _field2;
-    struct map<long long, int, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, int>>> _field3;
-    void *_field4;
-    unsigned long long _field5;
-    unsigned long long _field6;
-    unsigned long long _field7;
-    _Bool _field8;
-    unsigned long long _field9;
-    int _field10;
-    float *_field11;
-};
-
-struct ImageDescriptorBufferJoint {
-    CDUnknownFunctionPointerType *_field1;
-    struct vector<long long, std::__1::allocator<long long>> _field2;
-    struct map<long long, int, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, int>>> _field3;
-    void *_field4;
-    unsigned long long _field5;
-    unsigned long long _field6;
-    unsigned long long _field7;
-    _Bool _field8;
-    unsigned long long _field9;
-    int _field10;
-    float *_field11;
-    vector_a7cf9eda _field12;
-    struct vector<vision::mod::DescriptorItemSideInfo, std::__1::allocator<vision::mod::DescriptorItemSideInfo>> _field13;
-};
+struct ImageDescriptorBufferFloat32;
 
 struct ImageDescriptorProcessorAbstract {
     CDUnknownFunctionPointerType *_field1;
-};
-
-struct InternalObservedParabola {
-    id _field1;
-    struct vector<CGPointWithPts, std::__1::allocator<CGPointWithPts>> _field2;
-    float _field3;
-    struct vector<CGPointWithPts, std::__1::allocator<CGPointWithPts>> _field4;
-    vector_8f06c10f _field5;
-    vector_8f06c10f _field6;
-    float _field7;
-    float _field8;
-    float _field9;
-    float _field10;
-    struct CGPoint _field11;
-    float _field12;
-    struct KalmanFilter _field13;
-    float _field14;
-    unsigned char _field15;
-    vector_7584168e _field16;
-    float _field17;
-    float _field18;
 };
 
 struct InternalParameters {
@@ -265,20 +149,6 @@ struct InternalParameters {
     float rejectionScaler;
 };
 
-struct KalmanFilter {
-    CDStruct_f1db2b5e _field1;
-    CDStruct_f1db2b5e _field2;
-    CDStruct_f1db2b5e _field3;
-    CDStruct_f1db2b5e _field4;
-    CDStruct_f1db2b5e _field5;
-    CDStruct_f1db2b5e _field6;
-    CDStruct_f1db2b5e _field7;
-    vector_e1abc270 _field8;
-    vector_e1abc270 _field9;
-    double _field10;
-    double _field11;
-};
-
 struct LKTCPU;
 
 struct LandmarkAttributes;
@@ -299,17 +169,11 @@ struct MPClusteringTreeNode {
     struct MPClusteringTreeNode *_field9;
 };
 
-struct ObjectDetectorAbstract;
-
 struct ObjectDetector_DCNFaceDetector;
 
 struct ObjectDetector_DCNFaceDetector_v2;
 
-struct ObjectTrackerAbstract {
-    CDUnknownFunctionPointerType *_field1;
-    struct ObjectDetectorAbstract *_field2;
-    struct shared_ptr<vision::mod::ObjectTrackerOptions> _field3;
-};
+struct ObjectTrackerAbstract;
 
 struct ObjectTrackerOptions {
     CDUnknownFunctionPointerType *_field1;
@@ -341,25 +205,27 @@ struct ParabolaSearchBuffer {
     int maxFramesSkippedForDetection;
     int minRegionSizeX;
     int minRegionSizeY;
-    struct deque<std::__1::vector<CGPointWithPts, std::__1::allocator<CGPointWithPts>>, std::__1::allocator<std::__1::vector<CGPointWithPts, std::__1::allocator<CGPointWithPts>>>> contourPointsQ;
+    struct deque<std::vector<CGPointWithPts>, std::allocator<std::vector<CGPointWithPts>>> contourPointsQ;
 };
+
+struct PetprintGenerator;
 
 struct Projections_meanStdTable {
     float *sumTable;
     float *sumSqTable;
 };
 
-struct SharpnessGridElement_t {
-    unsigned char _field1;
-    unsigned char _field2;
-    float _field3;
-};
+struct ScreenGazePredictor;
+
+struct TapToBox;
 
 struct ThresholdSet_t {
     float _field1;
     float _field2;
     float _field3;
 };
+
+struct TorsoprintGenerator;
 
 struct _Geometry2D_point2D_ {
     float x;
@@ -487,37 +353,6 @@ struct __CCSumDerivVectors {
     int _field9;
 };
 
-struct __CVBuffer;
-
-struct __SVMParameters {
-    struct __SVMScaleOffset {
-        float _field1;
-        float _field2;
-    } _field1[7];
-    double _field2;
-    double _field3;
-    int _field4;
-    int _field5;
-    struct BurstSupportVector *_field6;
-    struct BurstSupportVector *_field7;
-};
-
-struct __compressed_pair<float * __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>> {
-    void *__value_;
-};
-
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, float>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, float>, void *>*> *_field1;
-};
-
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<std::__1::vector<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::__1::allocator<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>>>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<std::__1::vector<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::__1::allocator<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>>>, void *>*> *__next_;
-};
-
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>, void *>*> *__next_;
-};
-
 struct __rgbMinMaxFloat {
     float _field1;
     float _field2;
@@ -573,102 +408,71 @@ struct __sbuf {
 
 struct __shared_weak_count;
 
-struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
-    struct __tree_node_base<void *> *__left_;
+struct __tree_end_node<std::__tree_node_base<void *>*> {
+    void *__left_;
 };
 
-struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>;
-
-struct basic_string_view<char, std::__1::char_traits<char>> {
-    char *_field1;
-    unsigned long long _field2;
-};
-
-struct deque<std::__1::vector<CGPointWithPts, std::__1::allocator<CGPointWithPts>>, std::__1::allocator<std::__1::vector<CGPointWithPts, std::__1::allocator<CGPointWithPts>>>> {
-    struct __split_buffer<std::__1::vector<CGPointWithPts, std::__1::allocator<CGPointWithPts>>*, std::__1::allocator<std::__1::vector<CGPointWithPts, std::__1::allocator<CGPointWithPts>>*>> {
-        struct vector<CGPointWithPts, std::__1::allocator<CGPointWithPts>> **__first_;
-        struct vector<CGPointWithPts, std::__1::allocator<CGPointWithPts>> **__begin_;
-        struct vector<CGPointWithPts, std::__1::allocator<CGPointWithPts>> **__end_;
-        struct __compressed_pair<std::__1::vector<CGPointWithPts, std::__1::allocator<CGPointWithPts>>**, std::__1::allocator<std::__1::vector<CGPointWithPts, std::__1::allocator<CGPointWithPts>>*>> {
-            struct vector<CGPointWithPts, std::__1::allocator<CGPointWithPts>> **__value_;
+struct deque<std::vector<CGPointWithPts>, std::allocator<std::vector<CGPointWithPts>>> {
+    struct __split_buffer<std::vector<CGPointWithPts>*, std::allocator<std::vector<CGPointWithPts>*>> {
+        void **__first_;
+        void **__begin_;
+        void **__end_;
+        struct __compressed_pair<std::vector<CGPointWithPts>**, std::allocator<std::vector<CGPointWithPts>*>> {
+            void **__value_;
         } __end_cap_;
     } __map_;
     unsigned long long __start_;
-    struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::vector<CGPointWithPts, std::__1::allocator<CGPointWithPts>>>> {
+    struct __compressed_pair<unsigned long, std::allocator<std::vector<CGPointWithPts>>> {
         unsigned long long __value_;
     } __size_;
 };
 
-struct map<int, InternalObservedParabola, std::__1::less<int>, std::__1::allocator<std::__1::pair<const int, InternalObservedParabola>>> {
-    struct __tree<std::__1::__value_type<int, InternalObservedParabola>, std::__1::__map_value_compare<int, std::__1::__value_type<int, InternalObservedParabola>, std::__1::less<int>, true>, std::__1::allocator<std::__1::__value_type<int, InternalObservedParabola>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<int, InternalObservedParabola>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
+struct map<int, InternalObservedParabola, std::less<int>, std::allocator<std::pair<const int, InternalObservedParabola>>> {
+    struct __tree<std::__value_type<int, InternalObservedParabola>, std::__map_value_compare<int, std::__value_type<int, InternalObservedParabola>, std::less<int>, true>, std::allocator<std::__value_type<int, InternalObservedParabola>>> {
+        void *__begin_node_;
+        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<int, InternalObservedParabola>, void *>>> {
+            struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
         } __pair1_;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<int, std::__1::__value_type<int, InternalObservedParabola>, std::__1::less<int>, true>> {
+        struct __compressed_pair<unsigned long, std::__map_value_compare<int, std::__value_type<int, InternalObservedParabola>, std::less<int>, true>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
 };
 
-struct map<int, ObservedParabola, std::__1::less<int>, std::__1::allocator<std::__1::pair<const int, ObservedParabola>>> {
-    struct __tree<std::__1::__value_type<int, ObservedParabola>, std::__1::__map_value_compare<int, std::__1::__value_type<int, ObservedParabola>, std::__1::less<int>, true>, std::__1::allocator<std::__1::__value_type<int, ObservedParabola>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<int, ObservedParabola>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
+struct map<int, ObservedParabola, std::less<int>, std::allocator<std::pair<const int, ObservedParabola>>> {
+    struct __tree<std::__value_type<int, ObservedParabola>, std::__map_value_compare<int, std::__value_type<int, ObservedParabola>, std::less<int>, true>, std::allocator<std::__value_type<int, ObservedParabola>>> {
+        void *__begin_node_;
+        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<int, ObservedParabola>, void *>>> {
+            struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
         } __pair1_;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<int, std::__1::__value_type<int, ObservedParabola>, std::__1::less<int>, true>> {
+        struct __compressed_pair<unsigned long, std::__map_value_compare<int, std::__value_type<int, ObservedParabola>, std::less<int>, true>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
 };
 
-struct map<long long, int, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, int>>> {
-    struct __tree<std::__1::__value_type<long long, int>, std::__1::__map_value_compare<long long, std::__1::__value_type<long long, int>, std::__1::less<long long>, true>, std::__1::allocator<std::__1::__value_type<long long, int>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<long long, int>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<long long, std::__1::__value_type<long long, int>, std::__1::less<long long>, true>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
+struct map<unsigned long, std::shared_ptr<std::vector<std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>, std::less<unsigned long>, std::allocator<std::pair<const unsigned long, std::shared_ptr<std::vector<std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>>>> {
+    struct __tree<std::__value_type<unsigned long, std::shared_ptr<std::vector<std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>>, std::__map_value_compare<unsigned long, std::__value_type<unsigned long, std::shared_ptr<std::vector<std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>>, std::less<unsigned long>, true>, std::allocator<std::__value_type<unsigned long, std::shared_ptr<std::vector<std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>>>> {
+        void *__begin_node_;
+        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<unsigned long, std::shared_ptr<std::vector<std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>>, void *>>> {
+            struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
+        } __pair1_;
+        struct __compressed_pair<unsigned long, std::__map_value_compare<unsigned long, std::__value_type<unsigned long, std::shared_ptr<std::vector<std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>>, std::less<unsigned long>, true>> {
+            unsigned long long __value_;
+        } __pair3_;
+    } __tree_;
 };
 
-struct map<long long, std::__1::vector<long long, std::__1::allocator<long long>>, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, std::__1::vector<long long, std::__1::allocator<long long>>>>> {
-    struct __tree<std::__1::__value_type<long long, std::__1::vector<long long, std::__1::allocator<long long>>>, std::__1::__map_value_compare<long long, std::__1::__value_type<long long, std::__1::vector<long long, std::__1::allocator<long long>>>, std::__1::less<long long>, true>, std::__1::allocator<std::__1::__value_type<long long, std::__1::vector<long long, std::__1::allocator<long long>>>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<long long, std::__1::vector<long long, std::__1::allocator<long long>>>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<long long, std::__1::__value_type<long long, std::__1::vector<long long, std::__1::allocator<long long>>>, std::__1::less<long long>, true>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
-};
-
-struct map<std::__1::basic_string<char>, float, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, float>>> {
-    struct __tree<std::__1::__value_type<std::__1::basic_string<char>, float>, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, float>, std::__1::less<std::__1::basic_string<char>>, true>, std::__1::allocator<std::__1::__value_type<std::__1::basic_string<char>, float>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<std::__1::basic_string<char>, float>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, float>, std::__1::less<std::__1::basic_string<char>>, true>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
-};
-
-struct map<unsigned long, int, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, int>>> {
-    struct __tree<std::__1::__value_type<unsigned long, int>, std::__1::__map_value_compare<unsigned long, std::__1::__value_type<unsigned long, int>, std::__1::less<unsigned long>, true>, std::__1::allocator<std::__1::__value_type<unsigned long, int>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned long, int>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned long, std::__1::__value_type<unsigned long, int>, std::__1::less<unsigned long>, true>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
+struct map<unsigned long, std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::less<unsigned long>, std::allocator<std::pair<const unsigned long, std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>> {
+    struct __tree<std::__value_type<unsigned long, std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>, std::__map_value_compare<unsigned long, std::__value_type<unsigned long, std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>, std::less<unsigned long>, true>, std::allocator<std::__value_type<unsigned long, std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>> {
+        void *__begin_node_;
+        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<unsigned long, std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>, void *>>> {
+            struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
+        } __pair1_;
+        struct __compressed_pair<unsigned long, std::__map_value_compare<unsigned long, std::__value_type<unsigned long, std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>, std::less<unsigned long>, true>> {
+            unsigned long long __value_;
+        } __pair3_;
+    } __tree_;
 };
 
 struct mapped_model_file {
@@ -690,29 +494,23 @@ struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
 
-struct pair<long long, long long>;
-
-struct pair<std::__1::basic_string<char>, std::__1::basic_string<char>>;
+struct shared_ptr<apple::vision::libraries::autotrace::EPolygonList> {
+    struct EPolygonList *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+};
 
 struct shared_ptr<const vision::mod::FaceClustering> {
     struct FaceClustering *__ptr_;
     struct __shared_weak_count *__cntrl_;
 };
 
-struct shared_ptr<espresso_buffer_t>;
-
-struct shared_ptr<std::__1::vector<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::__1::allocator<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>> {
-    struct vector<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::__1::allocator<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>> *_field1;
-    struct __shared_weak_count *_field2;
-};
-
-struct shared_ptr<unsigned char> {
-    char *__ptr_;
+struct shared_ptr<vision::mod::CamGazePredictor> {
+    struct CamGazePredictor *__ptr_;
     struct __shared_weak_count *__cntrl_;
 };
 
 struct shared_ptr<vision::mod::FaceBoxPoseAligner<signed char>> {
-    struct FaceBoxPoseAligner<signed char> *__ptr_;
+    void *__ptr_;
     struct __shared_weak_count *__cntrl_;
 };
 
@@ -751,9 +549,9 @@ struct shared_ptr<vision::mod::FaceprintAndAttributes> {
     struct __shared_weak_count *__cntrl_;
 };
 
-struct shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier> {
-    struct ImageAnalyzer_CustomClassifier *_field1;
-    struct __shared_weak_count *_field2;
+struct shared_ptr<vision::mod::GazeFollowPredictor> {
+    struct GazeFollowPredictor *__ptr_;
+    struct __shared_weak_count *__cntrl_;
 };
 
 struct shared_ptr<vision::mod::ImageClassifierAbstract> {
@@ -763,11 +561,6 @@ struct shared_ptr<vision::mod::ImageClassifierAbstract> {
 
 struct shared_ptr<vision::mod::ImageClassifier_HierarchicalModel> {
     struct ImageClassifier_HierarchicalModel *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-};
-
-struct shared_ptr<vision::mod::ImageDescriptorAugmenterFlip> {
-    struct ImageDescriptorAugmenterFlip *__ptr_;
     struct __shared_weak_count *__cntrl_;
 };
 
@@ -816,121 +609,62 @@ struct shared_ptr<vision::mod::ObjectTrackerAbstract> {
     struct __shared_weak_count *__cntrl_;
 };
 
-struct shared_ptr<vision::mod::ObjectTrackerOptions> {
-    struct ObjectTrackerOptions *_field1;
-    struct __shared_weak_count *_field2;
+struct shared_ptr<vision::mod::PetprintGenerator> {
+    struct PetprintGenerator *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+};
+
+struct shared_ptr<vision::mod::ScreenGazePredictor> {
+    struct ScreenGazePredictor *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+};
+
+struct shared_ptr<vision::mod::TapToBox> {
+    struct TapToBox *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+};
+
+struct shared_ptr<vision::mod::TorsoprintGenerator> {
+    struct TorsoprintGenerator *__ptr_;
+    struct __shared_weak_count *__cntrl_;
 };
 
 struct tuple<float, float, float> {
-    struct __tuple_impl<std::__1::__tuple_indices<0, 1, 2>, float, float, float> {
+    struct __tuple_impl<std::__tuple_indices<0, 1, 2>, float, float, float> {
         float _field1;
         float _field2;
         float _field3;
     } _field1;
 };
 
-struct tuple<std::__1::basic_string<char>, float, bool>;
-
-struct unique_ptr<apple::vision::OpticalFlow::LKTCPU, std::__1::default_delete<apple::vision::OpticalFlow::LKTCPU>> {
-    struct __compressed_pair<apple::vision::OpticalFlow::LKTCPU *, std::__1::default_delete<apple::vision::OpticalFlow::LKTCPU>> {
+struct unique_ptr<apple::vision::OpticalFlow::LKTCPU, std::default_delete<apple::vision::OpticalFlow::LKTCPU>> {
+    struct __compressed_pair<apple::vision::OpticalFlow::LKTCPU *, std::default_delete<apple::vision::OpticalFlow::LKTCPU>> {
         struct LKTCPU *__value_;
     } __ptr_;
 };
 
-struct unique_ptr<cvml::util::model_file_cache, std::__1::default_delete<cvml::util::model_file_cache>> {
-    struct __compressed_pair<cvml::util::model_file_cache *, std::__1::default_delete<cvml::util::model_file_cache>> {
+struct unique_ptr<cvml::util::model_file_cache, std::default_delete<cvml::util::model_file_cache>> {
+    struct __compressed_pair<cvml::util::model_file_cache *, std::default_delete<cvml::util::model_file_cache>> {
         struct model_file_cache *__value_;
     } __ptr_;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, float>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, float>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, float>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, float>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, float>, void *>*> **_field1;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, float>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, float>, void *>*>*>> {
-                unsigned long long _field1;
-            } _field1;
-        } _field2;
-    } _field1;
-};
-
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<std::__1::vector<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::__1::allocator<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<std::__1::vector<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::__1::allocator<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>>>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<std::__1::vector<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::__1::allocator<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>>>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<std::__1::vector<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::__1::allocator<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>>>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<std::__1::vector<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::__1::allocator<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>>>, void *>*> **__value_;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<std::__1::vector<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::__1::allocator<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>>>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<std::__1::vector<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::__1::allocator<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>>>, void *>*>*>> {
-                unsigned long long __value_;
-            } __data_;
-        } __value_;
-    } __ptr_;
-};
-
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>, void *>*> **__value_;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>, void *>*>*>> {
-                unsigned long long __value_;
-            } __data_;
-        } __value_;
-    } __ptr_;
-};
-
-struct unique_ptr<vision::mod::ImageAnalyzer, std::__1::default_delete<vision::mod::ImageAnalyzer>> {
-    struct __compressed_pair<vision::mod::ImageAnalyzer *, std::__1::default_delete<vision::mod::ImageAnalyzer>> {
+struct unique_ptr<vision::mod::ImageAnalyzer, std::default_delete<vision::mod::ImageAnalyzer>> {
+    struct __compressed_pair<vision::mod::ImageAnalyzer *, std::default_delete<vision::mod::ImageAnalyzer>> {
         struct ImageAnalyzer *__value_;
     } __ptr_;
 };
 
-struct unique_ptr<vision::mod::ImageAnalyzer_PCA, std::__1::default_delete<vision::mod::ImageAnalyzer_PCA>> {
-    struct __compressed_pair<vision::mod::ImageAnalyzer_PCA *, std::__1::default_delete<vision::mod::ImageAnalyzer_PCA>> {
+struct unique_ptr<vision::mod::ImageAnalyzer_PCA, std::default_delete<vision::mod::ImageAnalyzer_PCA>> {
+    struct __compressed_pair<vision::mod::ImageAnalyzer_PCA *, std::default_delete<vision::mod::ImageAnalyzer_PCA>> {
         struct ImageAnalyzer_PCA *__value_;
     } __ptr_;
 };
 
-struct unordered_map<std::__1::basic_string<char>, float, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, float>>> {
-    struct __hash_table<std::__1::__hash_value_type<std::__1::basic_string<char>, float>, std::__1::__unordered_map_hasher<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, float>, std::__1::hash<std::__1::basic_string<char>>, true>, std::__1::__unordered_map_equal<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, float>, std::__1::equal_to<std::__1::basic_string<char>>, true>, std::__1::allocator<std::__1::__hash_value_type<std::__1::basic_string<char>, float>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, float>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, float>, void *>*>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, float>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, float>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, float>, void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, float>, std::__1::hash<std::__1::basic_string<char>>, true>> {
-            unsigned long long _field1;
-        } _field3;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, float>, std::__1::equal_to<std::__1::basic_string<char>>, true>> {
-            float _field1;
-        } _field4;
-    } _field1;
-};
-
-struct unordered_map<unsigned long, std::__1::shared_ptr<std::__1::vector<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::__1::allocator<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>>, std::__1::hash<unsigned long>, std::__1::equal_to<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, std::__1::shared_ptr<std::__1::vector<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::__1::allocator<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>>>>> {
-    struct __hash_table<std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<std::__1::vector<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::__1::allocator<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>>>, std::__1::__unordered_map_hasher<unsigned long, std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<std::__1::vector<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::__1::allocator<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>>>, std::__1::hash<unsigned long>, true>, std::__1::__unordered_map_equal<unsigned long, std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<std::__1::vector<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::__1::allocator<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>>>, std::__1::equal_to<unsigned long>, true>, std::__1::allocator<std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<std::__1::vector<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::__1::allocator<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>>>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<std::__1::vector<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::__1::allocator<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<std::__1::vector<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::__1::allocator<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>>>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<std::__1::vector<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::__1::allocator<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>>>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<std::__1::vector<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::__1::allocator<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>>>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<std::__1::vector<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::__1::allocator<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>>>, void *>*> __value_;
-        } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<unsigned long, std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<std::__1::vector<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::__1::allocator<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>>>, std::__1::hash<unsigned long>, true>> {
-            unsigned long long __value_;
-        } __p2_;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<unsigned long, std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<std::__1::vector<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::__1::allocator<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>>>, std::__1::equal_to<unsigned long>, true>> {
-            float __value_;
-        } __p3_;
-    } __table_;
-};
-
-struct unordered_map<unsigned long, std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::__1::hash<unsigned long>, std::__1::equal_to<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>> {
-    struct __hash_table<std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>, std::__1::__unordered_map_hasher<unsigned long, std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>, std::__1::hash<unsigned long>, true>, std::__1::__unordered_map_equal<unsigned long, std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>, std::__1::equal_to<unsigned long>, true>, std::__1::allocator<std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>, void *>*> __value_;
-        } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<unsigned long, std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>, std::__1::hash<unsigned long>, true>> {
-            unsigned long long __value_;
-        } __p2_;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<unsigned long, std::__1::__hash_value_type<unsigned long, std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>, std::__1::equal_to<unsigned long>, true>> {
-            float __value_;
-        } __p3_;
-    } __table_;
+struct unique_ptr<vision::mod::ImageDescriptorProcessorHyperplaneLSH<float>, std::default_delete<vision::mod::ImageDescriptorProcessorHyperplaneLSH<float>>> {
+    struct __compressed_pair<vision::mod::ImageDescriptorProcessorHyperplaneLSH<float>*, std::default_delete<vision::mod::ImageDescriptorProcessorHyperplaneLSH<float>>> {
+        void *__value_;
+    } __ptr_;
 };
 
 struct vImage_Buffer {
@@ -940,197 +674,77 @@ struct vImage_Buffer {
     unsigned long long rowBytes;
 };
 
-struct vector<CGPoint, std::__1::allocator<CGPoint>> {
-    struct CGPoint *_field1;
-    struct CGPoint *_field2;
-    struct __compressed_pair<CGPoint *, std::__1::allocator<CGPoint>> {
-        struct CGPoint *_field1;
-    } _field3;
-};
-
-struct vector<CGPointWithPts, std::__1::allocator<CGPointWithPts>> {
-    struct CGPointWithPts *_field1;
-    struct CGPointWithPts *_field2;
-    struct __compressed_pair<CGPointWithPts *, std::__1::allocator<CGPointWithPts>> {
-        struct CGPointWithPts *_field1;
-    } _field3;
-};
-
-struct vector<CGPointWithRadius, std::__1::allocator<CGPointWithRadius>> {
-    struct CGPointWithRadius *_field1;
-    struct CGPointWithRadius *_field2;
-    struct __compressed_pair<CGPointWithRadius *, std::__1::allocator<CGPointWithRadius>> {
-        struct CGPointWithRadius *_field1;
-    } _field3;
-};
-
-struct vector<MPClusteringTreeNode *, std::__1::allocator<MPClusteringTreeNode *>> {
+struct vector<MPClusteringTreeNode *, std::allocator<MPClusteringTreeNode *>> {
     struct MPClusteringTreeNode **_field1;
     struct MPClusteringTreeNode **_field2;
-    struct __compressed_pair<MPClusteringTreeNode **, std::__1::allocator<MPClusteringTreeNode *>> {
+    struct __compressed_pair<MPClusteringTreeNode **, std::allocator<MPClusteringTreeNode *>> {
         struct MPClusteringTreeNode **_field1;
     } _field3;
 };
 
-struct vector<_Geometry2D_point2D_, std::__1::allocator<_Geometry2D_point2D_>> {
+struct vector<_Geometry2D_point2D_, std::allocator<_Geometry2D_point2D_>> {
     struct _Geometry2D_point2D_ *__begin_;
     struct _Geometry2D_point2D_ *__end_;
-    struct __compressed_pair<_Geometry2D_point2D_ *, std::__1::allocator<_Geometry2D_point2D_>> {
+    struct __compressed_pair<_Geometry2D_point2D_ *, std::allocator<_Geometry2D_point2D_>> {
         struct _Geometry2D_point2D_ *__value_;
     } __end_cap_;
 };
 
-struct vector<bool, std::__1::allocator<bool>> {
-    unsigned long long *_field1;
-    unsigned long long _field2;
-    struct __compressed_pair<unsigned long, std::__1::allocator<unsigned long>> {
-        unsigned long long _field1;
-    } _field3;
+struct vector<float __attribute__((ext_vector_type(2))), std::allocator<float __attribute__((ext_vector_type(2)))>> {
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<float * __attribute__((ext_vector_type(2))), std::allocator<float __attribute__((ext_vector_type(2)))>> {
+        void *__value_;
+    } __end_cap_;
 };
 
-struct vector<double, std::__1::allocator<double>> {
-    double *_field1;
-    double *_field2;
-    struct __compressed_pair<double *, std::__1::allocator<double>> {
-        double *_field1;
-    } _field3;
-};
-
-struct vector<float, std::__1::allocator<float>> {
+struct vector<float, std::allocator<float>> {
     float *__begin_;
     float *__end_;
-    struct __compressed_pair<float *, std::__1::allocator<float>> {
+    struct __compressed_pair<float *, std::allocator<float>> {
         float *__value_;
     } __end_cap_;
 };
 
-struct vector<int, std::__1::allocator<int>> {
-    int *_field1;
-    int *_field2;
-    struct __compressed_pair<int *, std::__1::allocator<int>> {
-        int *_field1;
-    } _field3;
-};
-
-struct vector<long long, std::__1::allocator<long long>> {
-    long long *_field1;
-    long long *_field2;
-    struct __compressed_pair<long long *, std::__1::allocator<long long>> {
-        long long *_field1;
-    } _field3;
-};
-
-struct vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>> {
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> *_field1;
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> *_field2;
-    struct __compressed_pair<std::__1::basic_string<char>*, std::__1::allocator<std::__1::basic_string<char>>> {
-        struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> *_field1;
-    } _field3;
-};
-
-struct vector<std::__1::pair<long long, long long>, std::__1::allocator<std::__1::pair<long long, long long>>> {
-    struct pair<long long, long long> *_field1;
-    struct pair<long long, long long> *_field2;
-    struct __compressed_pair<std::__1::pair<long long, long long>*, std::__1::allocator<std::__1::pair<long long, long long>>> {
-        struct pair<long long, long long> *_field1;
-    } _field3;
-};
-
-struct vector<std::__1::pair<std::__1::basic_string<char>, std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<std::__1::basic_string<char>, std::__1::basic_string<char>>>> {
-    struct pair<std::__1::basic_string<char>, std::__1::basic_string<char>> *_field1;
-    struct pair<std::__1::basic_string<char>, std::__1::basic_string<char>> *_field2;
-    struct __compressed_pair<std::__1::pair<std::__1::basic_string<char>, std::__1::basic_string<char>>*, std::__1::allocator<std::__1::pair<std::__1::basic_string<char>, std::__1::basic_string<char>>>> {
-        struct pair<std::__1::basic_string<char>, std::__1::basic_string<char>> *_field1;
-    } _field3;
-};
-
-struct vector<std::__1::shared_ptr<espresso_buffer_t>, std::__1::allocator<std::__1::shared_ptr<espresso_buffer_t>>> {
-    struct shared_ptr<espresso_buffer_t> *__begin_;
-    struct shared_ptr<espresso_buffer_t> *__end_;
-    struct __compressed_pair<std::__1::shared_ptr<espresso_buffer_t>*, std::__1::allocator<std::__1::shared_ptr<espresso_buffer_t>>> {
-        struct shared_ptr<espresso_buffer_t> *__value_;
+struct vector<std::shared_ptr<espresso_buffer_t>, std::allocator<std::shared_ptr<espresso_buffer_t>>> {
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<std::shared_ptr<espresso_buffer_t>*, std::allocator<std::shared_ptr<espresso_buffer_t>>> {
+        void *__value_;
     } __end_cap_;
 };
 
-struct vector<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::__1::allocator<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>;
-
-struct vector<std::__1::tuple<std::__1::basic_string<char>, float, bool>, std::__1::allocator<std::__1::tuple<std::__1::basic_string<char>, float, bool>>> {
-    struct tuple<std::__1::basic_string<char>, float, bool> *__begin_;
-    struct tuple<std::__1::basic_string<char>, float, bool> *__end_;
-    struct __compressed_pair<std::__1::tuple<std::__1::basic_string<char>, float, bool>*, std::__1::allocator<std::__1::tuple<std::__1::basic_string<char>, float, bool>>> {
-        struct tuple<std::__1::basic_string<char>, float, bool> *__value_;
+struct vector<std::tuple<simd_float3x3, float>, std::allocator<std::tuple<simd_float3x3, float>>> {
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<std::tuple<simd_float3x3, float>*, std::allocator<std::tuple<simd_float3x3, float>>> {
+        void *__value_;
     } __end_cap_;
 };
 
-struct vector<std::__1::unordered_map<std::__1::basic_string<char>, float, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, float>>>, std::__1::allocator<std::__1::unordered_map<std::__1::basic_string<char>, float, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, float>>>>> {
-    unordered_map_b469de21 *_field1;
-    unordered_map_b469de21 *_field2;
-    struct __compressed_pair<std::__1::unordered_map<std::__1::basic_string<char>, float, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, float>>>*, std::__1::allocator<std::__1::unordered_map<std::__1::basic_string<char>, float, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, float>>>>> {
-        unordered_map_b469de21 *_field1;
-    } _field3;
-};
-
-struct vector<std::__1::vector<unsigned int, std::__1::allocator<unsigned int>>, std::__1::allocator<std::__1::vector<unsigned int, std::__1::allocator<unsigned int>>>> {
-    vector_12da65de *__begin_;
-    vector_12da65de *__end_;
-    struct __compressed_pair<std::__1::vector<unsigned int, std::__1::allocator<unsigned int>>*, std::__1::allocator<std::__1::vector<unsigned int, std::__1::allocator<unsigned int>>>> {
-        vector_12da65de *__value_;
+struct vector<std::tuple<std::string, float, bool>, std::allocator<std::tuple<std::string, float, bool>>> {
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<std::tuple<std::string, float, bool>*, std::allocator<std::tuple<std::string, float, bool>>> {
+        void *__value_;
     } __end_cap_;
 };
 
-struct vector<unsigned char, std::__1::allocator<unsigned char>> {
-    char *_field1;
-    char *_field2;
-    struct __compressed_pair<unsigned char *, std::__1::allocator<unsigned char>> {
-        char *_field1;
-    } _field3;
+struct vector<std::vector<unsigned int>, std::allocator<std::vector<unsigned int>>> {
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<std::vector<unsigned int>*, std::allocator<std::vector<unsigned int>>> {
+        void *__value_;
+    } __end_cap_;
 };
 
-struct vector<unsigned int, std::__1::allocator<unsigned int>> {
+struct vector<unsigned int, std::allocator<unsigned int>> {
     unsigned int *__begin_;
     unsigned int *__end_;
-    struct __compressed_pair<unsigned int *, std::__1::allocator<unsigned int>> {
+    struct __compressed_pair<unsigned int *, std::allocator<unsigned int>> {
         unsigned int *__value_;
     } __end_cap_;
 };
-
-struct vector<unsigned long, std::__1::allocator<unsigned long>> {
-    unsigned long long *_field1;
-    unsigned long long *_field2;
-    struct __compressed_pair<unsigned long *, std::__1::allocator<unsigned long>> {
-        unsigned long long *_field1;
-    } _field3;
-};
-
-struct vector<vision::mod::DescriptorItemSideInfo, std::__1::allocator<vision::mod::DescriptorItemSideInfo>> {
-    struct DescriptorItemSideInfo *_field1;
-    struct DescriptorItemSideInfo *_field2;
-    struct __compressed_pair<vision::mod::DescriptorItemSideInfo *, std::__1::allocator<vision::mod::DescriptorItemSideInfo>> {
-        struct DescriptorItemSideInfo *_field1;
-    } _field3;
-};
-
-struct vector<vision::mod::DetectedObject, std::__1::allocator<vision::mod::DetectedObject>> {
-    struct DetectedObject *_field1;
-    struct DetectedObject *_field2;
-    struct __compressed_pair<vision::mod::DetectedObject *, std::__1::allocator<vision::mod::DetectedObject>> {
-        struct DetectedObject *_field1;
-    } _field3;
-};
-
-#if 0
-// Names with conflicting types:
-typedef struct ?<float __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>> {
-    struct __compressed_pair<float * __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>> **_field1;
-} vector_80ea899f;
-
-typedef struct ?<float __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>> {
-    void *__begin_;
-    void *__end_;
-    struct __compressed_pair<float * __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>> __end_cap_;
-} vector_e654105b;
-
-#endif
 
 #pragma mark Typedef'd Structures
 
@@ -1141,6 +755,13 @@ typedef struct {
 } CDStruct_d47b9615;
 
 typedef struct {
+    unsigned long long _field1;
+    id *_field2;
+    unsigned long long *_field3;
+    unsigned long long _field4[5];
+} CDStruct_70511ce9;
+
+typedef struct {
     MISSING_TYPE *columns[3];
 } CDStruct_8e0628e6;
 
@@ -1149,22 +770,22 @@ typedef struct {
 } CDStruct_f1db2b5e;
 
 typedef struct {
-    void *_field1;
-    void *_field2;
-    unsigned long long _field3[4];
-    unsigned long long _field4[4];
-    unsigned long long _field5;
-    unsigned long long _field6;
-    unsigned long long _field7;
-    unsigned long long _field8;
-    unsigned long long _field9;
-    unsigned long long _field10;
-    unsigned long long _field11;
-    unsigned long long _field12;
-    unsigned long long _field13;
-    unsigned long long _field14;
-    int _field15;
-} CDStruct_cf098810;
+    void *data;
+    void *reserved;
+    unsigned long long dim[4];
+    unsigned long long stride[4];
+    unsigned long long width;
+    unsigned long long height;
+    unsigned long long channels;
+    unsigned long long batch_number;
+    unsigned long long sequence_length;
+    unsigned long long stride_width;
+    unsigned long long stride_height;
+    unsigned long long stride_channels;
+    unsigned long long stride_batch_number;
+    unsigned long long stride_sequence_length;
+    int storage_type;
+} CDStruct_0a65202a;
 
 typedef struct {
     void *plan;
@@ -1175,6 +796,12 @@ typedef struct {
     float _field1;
     float _field2;
 } CDStruct_b2fbf00d;
+
+typedef struct {
+    int _field1;
+    int _field2;
+    char *_field3;
+} CDStruct_3553761d;
 
 typedef struct {
     int _field1;
@@ -1214,59 +841,6 @@ typedef struct {
 } CDStruct_e83c9415;
 
 // Template types
-typedef struct basic_string_view<char, std::__1::char_traits<char>> {
-    char *_field1;
-    unsigned long long _field2;
-} basic_string_view_b5ef0455;
-
-typedef struct map<int, ObservedParabola, std::__1::less<int>, std::__1::allocator<std::__1::pair<const int, ObservedParabola>>> {
-    struct __tree<std::__1::__value_type<int, ObservedParabola>, std::__1::__map_value_compare<int, std::__1::__value_type<int, ObservedParabola>, std::__1::less<int>, true>, std::__1::allocator<std::__1::__value_type<int, ObservedParabola>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<int, ObservedParabola>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
-        } __pair1_;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<int, std::__1::__value_type<int, ObservedParabola>, std::__1::less<int>, true>> {
-            unsigned long long __value_;
-        } __pair3_;
-    } __tree_;
-} map_c51dd3ba;
-
-typedef struct map<long long, std::__1::vector<long long, std::__1::allocator<long long>>, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, std::__1::vector<long long, std::__1::allocator<long long>>>>> {
-    struct __tree<std::__1::__value_type<long long, std::__1::vector<long long, std::__1::allocator<long long>>>, std::__1::__map_value_compare<long long, std::__1::__value_type<long long, std::__1::vector<long long, std::__1::allocator<long long>>>, std::__1::less<long long>, true>, std::__1::allocator<std::__1::__value_type<long long, std::__1::vector<long long, std::__1::allocator<long long>>>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<long long, std::__1::vector<long long, std::__1::allocator<long long>>>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<long long, std::__1::__value_type<long long, std::__1::vector<long long, std::__1::allocator<long long>>>, std::__1::less<long long>, true>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
-} map_2e2a8070;
-
-typedef struct map<std::__1::basic_string<char>, float, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, float>>> {
-    struct __tree<std::__1::__value_type<std::__1::basic_string<char>, float>, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, float>, std::__1::less<std::__1::basic_string<char>>, true>, std::__1::allocator<std::__1::__value_type<std::__1::basic_string<char>, float>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<std::__1::basic_string<char>, float>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, float>, std::__1::less<std::__1::basic_string<char>>, true>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
-} map_400ffdbf;
-
-typedef struct map<unsigned long, int, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, int>>> {
-    struct __tree<std::__1::__value_type<unsigned long, int>, std::__1::__map_value_compare<unsigned long, std::__1::__value_type<unsigned long, int>, std::__1::less<unsigned long>, true>, std::__1::allocator<std::__1::__value_type<unsigned long, int>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned long, int>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned long, std::__1::__value_type<unsigned long, int>, std::__1::less<unsigned long>, true>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
-} map_781928e9;
-
 typedef struct optional<OpticalFlowOptions> {
     union {
         char _field1;
@@ -1280,20 +854,10 @@ typedef struct shared_ptr<const vision::mod::FaceClustering> {
     struct __shared_weak_count *__cntrl_;
 } shared_ptr_8fc713d1;
 
-typedef struct shared_ptr<std::__1::vector<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::__1::allocator<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>> {
-    struct vector<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::__1::allocator<std::__1::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>> *_field1;
-    struct __shared_weak_count *_field2;
-} shared_ptr_6ef80be1;
-
 typedef struct shared_ptr<vision::mod::FaceIDModel> {
     struct FaceIDModel *__ptr_;
     struct __shared_weak_count *__cntrl_;
 } shared_ptr_8c39738b;
-
-typedef struct shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier> {
-    struct ImageAnalyzer_CustomClassifier *_field1;
-    struct __shared_weak_count *_field2;
-} shared_ptr_74bdb789;
 
 typedef struct shared_ptr<vision::mod::ImageClassifierAbstract> {
     struct ImageClassifierAbstract *__ptr_;
@@ -1321,145 +885,18 @@ typedef struct shared_ptr<vision::mod::ImageDescriptorProcessorAbstract> {
 } shared_ptr_b26ea6de;
 
 typedef struct tuple<float, float, float> {
-    struct __tuple_impl<std::__1::__tuple_indices<0, 1, 2>, float, float, float> {
+    struct __tuple_impl<std::__tuple_indices<0, 1, 2>, float, float, float> {
         float _field1;
         float _field2;
         float _field3;
     } _field1;
-} tuple_8621cb4d;
+} tuple_8dc74180;
 
-typedef struct unordered_map<std::__1::basic_string<char>, float, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, float>>> {
-    struct __hash_table<std::__1::__hash_value_type<std::__1::basic_string<char>, float>, std::__1::__unordered_map_hasher<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, float>, std::__1::hash<std::__1::basic_string<char>>, true>, std::__1::__unordered_map_equal<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, float>, std::__1::equal_to<std::__1::basic_string<char>>, true>, std::__1::allocator<std::__1::__hash_value_type<std::__1::basic_string<char>, float>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, float>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, float>, void *>*>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, float>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, float>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, float>, void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, float>, std::__1::hash<std::__1::basic_string<char>>, true>> {
-            unsigned long long _field1;
-        } _field3;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, float>, std::__1::equal_to<std::__1::basic_string<char>>, true>> {
-            float _field1;
-        } _field4;
-    } _field1;
-} unordered_map_b469de21;
-
-typedef struct vector<CGPoint, std::__1::allocator<CGPoint>> {
-    struct CGPoint *_field1;
-    struct CGPoint *_field2;
-    struct __compressed_pair<CGPoint *, std::__1::allocator<CGPoint>> {
-        struct CGPoint *_field1;
-    } _field3;
-} vector_e1abc270;
-
-typedef struct vector<CGPointWithRadius, std::__1::allocator<CGPointWithRadius>> {
-    struct CGPointWithRadius *_field1;
-    struct CGPointWithRadius *_field2;
-    struct __compressed_pair<CGPointWithRadius *, std::__1::allocator<CGPointWithRadius>> {
-        struct CGPointWithRadius *_field1;
-    } _field3;
-} vector_f856dc63;
-
-typedef struct vector<MPClusteringTreeNode *, std::__1::allocator<MPClusteringTreeNode *>> {
+typedef struct vector<MPClusteringTreeNode *, std::allocator<MPClusteringTreeNode *>> {
     struct MPClusteringTreeNode **_field1;
     struct MPClusteringTreeNode **_field2;
-    struct __compressed_pair<MPClusteringTreeNode **, std::__1::allocator<MPClusteringTreeNode *>> {
+    struct __compressed_pair<MPClusteringTreeNode **, std::allocator<MPClusteringTreeNode *>> {
         struct MPClusteringTreeNode **_field1;
     } _field3;
-} vector_e14a6833;
-
-typedef struct vector<_Geometry2D_point2D_, std::__1::allocator<_Geometry2D_point2D_>> {
-    struct _Geometry2D_point2D_ *__begin_;
-    struct _Geometry2D_point2D_ *__end_;
-    struct __compressed_pair<_Geometry2D_point2D_ *, std::__1::allocator<_Geometry2D_point2D_>> {
-        struct _Geometry2D_point2D_ *__value_;
-    } __end_cap_;
-} vector_f48c7054;
-
-typedef struct vector<bool, std::__1::allocator<bool>> {
-    unsigned long long *_field1;
-    unsigned long long _field2;
-    struct __compressed_pair<unsigned long, std::__1::allocator<unsigned long>> {
-        unsigned long long _field1;
-    } _field3;
-} vector_a7cf9eda;
-
-typedef struct vector<double, std::__1::allocator<double>> {
-    double *_field1;
-    double *_field2;
-    struct __compressed_pair<double *, std::__1::allocator<double>> {
-        double *_field1;
-    } _field3;
-} vector_8f06c10f;
-
-typedef struct vector<float, std::__1::allocator<float>> {
-    float *__begin_;
-    float *__end_;
-    struct __compressed_pair<float *, std::__1::allocator<float>> {
-        float *__value_;
-    } __end_cap_;
-} vector_7584168e;
-
-typedef struct vector<int, std::__1::allocator<int>> {
-    int *_field1;
-    int *_field2;
-    struct __compressed_pair<int *, std::__1::allocator<int>> {
-        int *_field1;
-    } _field3;
-} vector_3203cf93;
-
-typedef struct vector<std::__1::pair<long long, long long>, std::__1::allocator<std::__1::pair<long long, long long>>> {
-    struct pair<long long, long long> *_field1;
-    struct pair<long long, long long> *_field2;
-    struct __compressed_pair<std::__1::pair<long long, long long>*, std::__1::allocator<std::__1::pair<long long, long long>>> {
-        struct pair<long long, long long> *_field1;
-    } _field3;
-} vector_22dfb71c;
-
-typedef struct vector<std::__1::pair<std::__1::basic_string<char>, std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<std::__1::basic_string<char>, std::__1::basic_string<char>>>> {
-    struct pair<std::__1::basic_string<char>, std::__1::basic_string<char>> *_field1;
-    struct pair<std::__1::basic_string<char>, std::__1::basic_string<char>> *_field2;
-    struct __compressed_pair<std::__1::pair<std::__1::basic_string<char>, std::__1::basic_string<char>>*, std::__1::allocator<std::__1::pair<std::__1::basic_string<char>, std::__1::basic_string<char>>>> {
-        struct pair<std::__1::basic_string<char>, std::__1::basic_string<char>> *_field1;
-    } _field3;
-} vector_153622dc;
-
-typedef struct vector<std::__1::tuple<std::__1::basic_string<char>, float, bool>, std::__1::allocator<std::__1::tuple<std::__1::basic_string<char>, float, bool>>> {
-    struct tuple<std::__1::basic_string<char>, float, bool> *__begin_;
-    struct tuple<std::__1::basic_string<char>, float, bool> *__end_;
-    struct __compressed_pair<std::__1::tuple<std::__1::basic_string<char>, float, bool>*, std::__1::allocator<std::__1::tuple<std::__1::basic_string<char>, float, bool>>> {
-        struct tuple<std::__1::basic_string<char>, float, bool> *__value_;
-    } __end_cap_;
-} vector_950c3afd;
-
-typedef struct vector<std::__1::unordered_map<std::__1::basic_string<char>, float, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, float>>>, std::__1::allocator<std::__1::unordered_map<std::__1::basic_string<char>, float, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, float>>>>> {
-    unordered_map_b469de21 *_field1;
-    unordered_map_b469de21 *_field2;
-    struct __compressed_pair<std::__1::unordered_map<std::__1::basic_string<char>, float, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, float>>>*, std::__1::allocator<std::__1::unordered_map<std::__1::basic_string<char>, float, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, float>>>>> {
-        unordered_map_b469de21 *_field1;
-    } _field3;
-} vector_a2e76741;
-
-typedef struct vector<unsigned int, std::__1::allocator<unsigned int>> {
-    unsigned int *__begin_;
-    unsigned int *__end_;
-    struct __compressed_pair<unsigned int *, std::__1::allocator<unsigned int>> {
-        unsigned int *__value_;
-    } __end_cap_;
-} vector_12da65de;
-
-typedef struct vector<unsigned long, std::__1::allocator<unsigned long>> {
-    unsigned long long *_field1;
-    unsigned long long *_field2;
-    struct __compressed_pair<unsigned long *, std::__1::allocator<unsigned long>> {
-        unsigned long long *_field1;
-    } _field3;
-} vector_eb9481f9;
-
-typedef struct vector<vision::mod::DetectedObject, std::__1::allocator<vision::mod::DetectedObject>> {
-    struct DetectedObject *_field1;
-    struct DetectedObject *_field2;
-    struct __compressed_pair<vision::mod::DetectedObject *, std::__1::allocator<vision::mod::DetectedObject>> {
-        struct DetectedObject *_field1;
-    } _field3;
-} vector_41a7cb1a;
+} vector_f43821d3;
 

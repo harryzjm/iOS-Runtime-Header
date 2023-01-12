@@ -11,6 +11,7 @@
 @protocol IDSServiceDelegatePrivate <IDSServiceDelegate>
 
 @optional
+- (void)service:(IDSService *)arg1 didUpdatePseudonymsWithChanges:(NSArray *)arg2;
 - (void)service:(IDSService *)arg1 didHintCheckingTransportLogWithReason:(long long)arg2;
 - (void)service:(IDSService *)arg1 didFlushCacheForRemoteURI:(NSString *)arg2 fromURI:(NSString *)arg3 guid:(NSString *)arg4;
 - (void)service:(IDSService *)arg1 token:(NSString *)arg2 time:(double)arg3 error:(NSError *)arg4;

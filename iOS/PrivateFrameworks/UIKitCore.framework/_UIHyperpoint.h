@@ -27,6 +27,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)_closestPoint:(double *)arg1 toPoint:(const double *)arg2;
+- (void)_copyValue:(const double *)arg1;
 - (void)_mutateValue:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) const double *_value;
 @property(readonly, copy) NSString *description;

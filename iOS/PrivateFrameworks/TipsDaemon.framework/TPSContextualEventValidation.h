@@ -6,17 +6,19 @@
 
 #import <TipsDaemon/TPSEventsProviderDelegate-Protocol.h>
 
-@class NSString, TPSContextualDuetEvent;
+@class NSString, TPSContextualEvent, TPSEventsProvider;
 
 @interface TPSContextualEventValidation <TPSEventsProviderDelegate>
 {
-    TPSContextualDuetEvent *_event;
+    TPSContextualEvent *_event;
+    TPSEventsProvider *_eventProvider;
     CDUnknownBlockType _completionHandler;
 }
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
-@property(retain, nonatomic) TPSContextualDuetEvent *event; // @synthesize event=_event;
+@property(retain, nonatomic) TPSEventsProvider *eventProvider; // @synthesize eventProvider=_eventProvider;
+@property(retain, nonatomic) TPSContextualEvent *event; // @synthesize event=_event;
 - (void)dataProvider:(id)arg1 didReceiveCallbackWithResult:(id)arg2;
 - (void)dataProvider:(id)arg1 didFinishQueryWithResults:(id)arg2;
 - (void)validateWithCompletion:(CDUnknownBlockType)arg1;

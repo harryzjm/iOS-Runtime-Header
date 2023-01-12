@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDate, NSPredicate, NSString;
+@class CHPhoneBookIOSManager, NSArray, NSDate, NSPredicate, NSString;
 @protocol SyncManagerProtocol;
 
 @interface CHManager
@@ -13,6 +13,7 @@
     _Bool _showsFaceTimeVideoCalls;
     _Bool _showsFaceTimeAudioCalls;
     _Bool _generateSyncTransactions;
+    _Bool _contactsDisabled;
     _Bool _cacheIsDirty;
     _Bool _reCoalesce;
     unsigned int _limitingCallTypes;
@@ -38,6 +39,7 @@
 @property(retain) id <SyncManagerProtocol> syncManager; // @synthesize syncManager=_syncManager;
 @property long long numberOfUnseenMissedCalls; // @synthesize numberOfUnseenMissedCalls=_numberOfUnseenMissedCalls;
 @property(retain, nonatomic) NSArray *recentCalls; // @synthesize recentCalls=_recentCalls;
+@property(nonatomic, getter=isContactsDisabled) _Bool contactsDisabled; // @synthesize contactsDisabled=_contactsDisabled;
 @property(nonatomic) _Bool generateSyncTransactions; // @synthesize generateSyncTransactions=_generateSyncTransactions;
 - (id)latestCallMatchingNormalizedRemoteParticipantHandleValues:(id)arg1;
 - (id)latestRecentCallMatchingPredicate:(id)arg1;
@@ -92,6 +94,7 @@
 - (void)registerForNotifications;
 - (void)dealloc;
 - (void)setInitialLimitingCallKinds:(id)arg1;
+@property(readonly, nonatomic) CHPhoneBookIOSManager *phoneBookManager;
 - (id)initWithFetchingLimitsDictionary:(id)arg1 andCoalescingStrategy:(id)arg2 andPostFetchingPredicate:(id)arg3 withQueue:(id)arg4;
 - (id)init;
 - (void)setDefaultInitValues;

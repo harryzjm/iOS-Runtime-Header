@@ -6,27 +6,60 @@
 
 #import <objc/NSObject.h>
 
+#import <ClassroomKit/CRKConcreteIDSMessageDidReceiveSubscriptionDelegate-Protocol.h>
+#import <ClassroomKit/CRKConcreteIDSMessageDidSendSubscriptionDelegate-Protocol.h>
 #import <ClassroomKit/CRKIDSLocalPrimitives-Protocol.h>
+#import <ClassroomKit/IDSAccountControllerDelegate-Protocol.h>
+#import <ClassroomKit/IDSServiceDelegate-Protocol.h>
 
-@class IDSService, NSDictionary, NSString;
+@class CRKArrayDifferenceEngine, IDSAccountController, IDSService, NSArray, NSDictionary, NSHashTable, NSMutableArray, NSString;
 
-@interface CRKConcreteIDSLocalPrimitives : NSObject <CRKIDSLocalPrimitives>
+@interface CRKConcreteIDSLocalPrimitives : NSObject <IDSServiceDelegate, IDSAccountControllerDelegate, CRKConcreteIDSMessageDidSendSubscriptionDelegate, CRKConcreteIDSMessageDidReceiveSubscriptionDelegate, CRKIDSLocalPrimitives>
 {
     NSString *_serviceName;
     IDSService *_service;
+    IDSAccountController *_accountController;
+    CRKArrayDifferenceEngine *_accountsDifferenceEngine;
+    NSMutableArray *_backingAccounts;
+    NSHashTable *_didSendSubscriptions;
+    NSHashTable *_didReceiveSubscriptions;
 }
 
++ (id)makeAccountsDifferenceEngineForPrimitives:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSHashTable *didReceiveSubscriptions; // @synthesize didReceiveSubscriptions=_didReceiveSubscriptions;
+@property(readonly, nonatomic) NSHashTable *didSendSubscriptions; // @synthesize didSendSubscriptions=_didSendSubscriptions;
+@property(readonly, nonatomic) NSMutableArray *backingAccounts; // @synthesize backingAccounts=_backingAccounts;
+@property(readonly, nonatomic) CRKArrayDifferenceEngine *accountsDifferenceEngine; // @synthesize accountsDifferenceEngine=_accountsDifferenceEngine;
+@property(readonly, nonatomic) IDSAccountController *accountController; // @synthesize accountController=_accountController;
 @property(readonly, nonatomic) IDSService *service; // @synthesize service=_service;
 @property(readonly, copy, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
-- (id)accountsDebugInfo;
+- (void)replaceObjectInAccountsAtIndex:(unsigned long long)arg1 withObject:(id)arg2;
+- (void)removeAccountsAtIndexes:(id)arg1;
+- (void)removeObjectFromAccountsAtIndex:(unsigned long long)arg1;
+- (void)insertAccounts:(id)arg1 atIndexes:(id)arg2;
+- (void)insertObject:(id)arg1 inAccountsAtIndex:(unsigned long long)arg2;
+@property(readonly, copy, nonatomic) NSArray *accounts;
+- (void)publishAccountChanges;
+- (void)didReceiveSubscriptionDidCancel:(id)arg1;
+- (void)didReceiveSubscriptionDidResume:(id)arg1;
+- (void)didSendSubscriptionDidCancel:(id)arg1;
+- (void)didSendSubscriptionDidResume:(id)arg1;
+- (void)service:(id)arg1 account:(id)arg2 incomingMessage:(id)arg3 fromID:(id)arg4 context:(id)arg5;
+- (void)service:(id)arg1 account:(id)arg2 identifier:(id)arg3 didSendWithSuccess:(_Bool)arg4 error:(id)arg5;
+- (void)accountController:(id)arg1 accountRemoved:(id)arg2;
+- (void)accountController:(id)arg1 accountAdded:(id)arg2;
 @property(readonly, copy, nonatomic) NSDictionary *debugInfo;
-- (_Bool)sendMessage:(id)arg1 toDestinationAddress:(id)arg2 identifier:(id *)arg3 error:(id *)arg4;
-- (id)listenForAccountAdditionsWithHandler:(CDUnknownBlockType)arg1;
-- (id)listenForMessageSendsWithHandler:(CDUnknownBlockType)arg1;
-- (id)listenForMessageReceivesWithHandler:(CDUnknownBlockType)arg1;
-- (id)accountForSourceAppleID:(id)arg1;
+- (_Bool)sendMessage:(id)arg1 toAddress:(id)arg2 fromID:(id)arg3 options:(id)arg4 identifier:(id *)arg5 error:(id *)arg6;
+- (id)subscribeToMessageSendsWithHandler:(CDUnknownBlockType)arg1;
+- (id)subscribeToMessageReceivesWithHandler:(CDUnknownBlockType)arg1;
 - (id)initWithServiceName:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

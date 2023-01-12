@@ -15,10 +15,12 @@
     NSString *_friendCode;
     NSString *_friendSupportPageURL;
     NSArray *_recipients;
+    NSString *_chatGUID;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool messageComposeSent; // @synthesize messageComposeSent=_messageComposeSent;
+@property(retain, nonatomic) NSString *chatGUID; // @synthesize chatGUID=_chatGUID;
 @property(retain, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
 @property(retain, nonatomic) NSString *friendSupportPageURL; // @synthesize friendSupportPageURL=_friendSupportPageURL;
 @property(retain, nonatomic) NSString *friendCode; // @synthesize friendCode=_friendCode;

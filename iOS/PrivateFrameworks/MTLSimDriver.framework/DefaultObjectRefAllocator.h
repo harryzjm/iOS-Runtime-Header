@@ -14,7 +14,7 @@
 __attribute__((visibility("hidden")))
 @interface DefaultObjectRefAllocator : NSObject <MTLSerializerObjectRefAllocator>
 {
-    struct MTLSerializerIndexGenerator *_generator;
+    void *_generator;
     NSObject<OS_dispatch_queue> *_serialQueue;
 }
 

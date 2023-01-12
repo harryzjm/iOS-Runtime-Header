@@ -8,6 +8,7 @@
 
 @interface FCRegisterDeviceTokenCommand
 {
+    int _deviceDigestMode;
     NSString *_userID;
     NSString *_deviceToken;
     NSString *_storefrontID;
@@ -15,13 +16,14 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) int deviceDigestMode; // @synthesize deviceDigestMode=_deviceDigestMode;
 @property(copy, nonatomic) NSString *storefrontID; // @synthesize storefrontID=_storefrontID;
 @property(copy, nonatomic) NSString *deviceToken; // @synthesize deviceToken=_deviceToken;
 @property(copy, nonatomic) NSString *userID; // @synthesize userID=_userID;
 - (void)executeWithContext:(id)arg1 delegate:(id)arg2 qualityOfService:(long long)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithUserID:(id)arg1 deviceToken:(id)arg2 storefrontID:(id)arg3;
+- (id)initWithUserID:(id)arg1 deviceToken:(id)arg2 storefrontID:(id)arg3 deviceDigestMode:(int)arg4;
 
 @end
 

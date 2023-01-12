@@ -17,10 +17,7 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) FCPrivateChannelMembershipController *privateChannelMembershipController; // @synthesize privateChannelMembershipController=_privateChannelMembershipController;
-@property(readonly, nonatomic) FCPurchaseController *purchaseController; // @synthesize purchaseController=_purchaseController;
 @property(readonly, copy, nonatomic) NSSet *purchasedTagIDs;
-- (id)initWithPurchaseController:(id)arg1 privateChannelMembershipController:(id)arg2;
 - (id)init;
 
 // Remaining properties

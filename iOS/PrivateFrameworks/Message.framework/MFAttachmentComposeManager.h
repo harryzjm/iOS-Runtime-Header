@@ -25,6 +25,7 @@
 - (id)attachmentForItemProvider:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3 contentID:(id)arg4 context:(id)arg5;
 - (id)attachmentForData:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3 contentID:(id)arg4 context:(id)arg5;
 - (id)_composeAttachmentDataProviderForContext:(id)arg1;
+- (id)_providerForURL:(id)arg1;
 - (id)attachmentForCID:(id)arg1;
 - (id)attachmentsForContext:(id)arg1;
 - (void)_fetchInvocationCallUsingBlock:(CDUnknownBlockType)arg1;

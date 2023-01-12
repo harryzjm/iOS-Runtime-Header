@@ -6,22 +6,16 @@
 
 #import <Preferences/PSTableCell.h>
 
-@class CTCellularPlanManager, CTCellularPlanPendingTransfer, UIButton, UILabel;
+@class CTCellularPlanManager, CTCellularPlanPendingTransfer;
 
 __attribute__((visibility("hidden")))
 @interface PSUIPlanPendingTransferCancelConsentRequestCell : PSTableCell
 {
     CTCellularPlanPendingTransfer *_planPendingTransfer;
     CTCellularPlanManager *_cellularPlanManager;
-    UIButton *_cancelButton;
-    UILabel *_rightMargin;
-    UILabel *_requestSentLabel;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) UILabel *requestSentLabel; // @synthesize requestSentLabel=_requestSentLabel;
-@property(retain, nonatomic) UILabel *rightMargin; // @synthesize rightMargin=_rightMargin;
-@property(retain, nonatomic) UIButton *cancelButton; // @synthesize cancelButton=_cancelButton;
 @property(retain, nonatomic) CTCellularPlanManager *cellularPlanManager; // @synthesize cellularPlanManager=_cellularPlanManager;
 @property(retain, nonatomic) CTCellularPlanPendingTransfer *planPendingTransfer; // @synthesize planPendingTransfer=_planPendingTransfer;
 - (void)cancelPressed;

@@ -7,7 +7,7 @@
 #import <EventKit/CalDateRangeProtocol-Protocol.h>
 #import <EventKit/EKJunkInvitationProtocol_Private-Protocol.h>
 
-@class EKCalendarDate, EKEventStore, EKParticipant, EKReadWriteLock, EKRecurrenceIdentifier, EKStructuredLocation, EKSuggestedEventInfo, NSArray, NSDate, NSNumber, NSSet, NSString, NSURL;
+@class EKCalendarDate, EKEventStore, EKParticipant, EKReadWriteLock, EKRecurrenceIdentifier, EKStructuredLocation, EKSuggestedEventInfo, EKVirtualConference, NSArray, NSDate, NSNumber, NSSet, NSString, NSURL;
 
 @interface EKEvent <EKJunkInvitationProtocol_Private, CalDateRangeProtocol>
 {
@@ -18,7 +18,7 @@
     EKReadWriteLock *_locationPredictionLock;
     _Bool _occurrenceIsAllDay;
     _Bool _requiresDetachDueToSnoozedAlarm;
-    _Bool _currentUserInvitedAttendee;
+    _Bool _preventConferenceURLDetection;
     int _clearModifiedFlags;
     NSString *_birthdayPersonUniqueID;
     EKCalendarDate *_occurrenceStartDate;
@@ -27,8 +27,11 @@
     EKCalendarDate *_originalOccurrenceEndDate;
     NSNumber *_originalOccurrenceIsAllDay;
     NSDate *_proposedEndDate;
+    NSString *_showEventURLString;
+    NSString *_virtualConferenceTextRepresentation;
 }
 
++ (id)eventFromICSEvent:(id)arg1 inStore:(id)arg2;
 + (_Bool)_calendarsAreSharedToMeInSameSourceAndHaveSameOwner:(id)arg1;
 + (id)knownPerUserPropertyKeys;
 + (id)knownRequireRSVPKeys;
@@ -39,6 +42,7 @@
 + (id)_basicChangesRequiringSpanAll;
 + (id)_updatedPredictedLocationRespectingTimeoutBudgetForEvent:(id)arg1 error:(id *)arg2;
 + (long long)_eventAvailabilityForParticipantStatus:(long long)arg1 supportedEventAvailabilities:(unsigned long long)arg2 isAllDayEvent:(_Bool)arg3;
++ (id)_modifiedNotificationUserInfoWithIdentifier:(id)arg1 forRevert:(_Bool)arg2;
 + (id)externalUriScheme;
 + (id)eventWithEventStore:(id)arg1;
 + (id)knownSingleValueKeysForComparison;
@@ -51,7 +55,9 @@
 + (id)EKObjectChangeSummarizer_multiValueDiffKeys;
 + (id)EKObjectChangeSummarizer_singleValueDiffKeys;
 - (void).cxx_destruct;
-@property(readonly, nonatomic, getter=isCurrentUserInvitedAttendee) _Bool currentUserInvitedAttendee; // @synthesize currentUserInvitedAttendee=_currentUserInvitedAttendee;
+@property(retain, nonatomic) NSString *virtualConferenceTextRepresentation; // @synthesize virtualConferenceTextRepresentation=_virtualConferenceTextRepresentation;
+@property(readonly, nonatomic) NSString *showEventURLString; // @synthesize showEventURLString=_showEventURLString;
+@property(nonatomic) _Bool preventConferenceURLDetection; // @synthesize preventConferenceURLDetection=_preventConferenceURLDetection;
 @property(retain, nonatomic) NSDate *proposedEndDate; // @synthesize proposedEndDate=_proposedEndDate;
 @property(nonatomic) int clearModifiedFlags; // @synthesize clearModifiedFlags=_clearModifiedFlags;
 @property(nonatomic) _Bool requiresDetachDueToSnoozedAlarm; // @synthesize requiresDetachDueToSnoozedAlarm=_requiresDetachDueToSnoozedAlarm;
@@ -67,6 +73,8 @@
 - (_Bool)_requirementsToMoveToCalendarHelperNeedToRemoveOriginalToMoveEventFromCalendar:(id)arg1 toCalendar:(id)arg2;
 - (_Bool)_requirementsToMoveToCalendarHelperDuplicationRequiredToMoveEventFromCalendar:(id)arg1 toCalendar:(id)arg2;
 - (_Bool)_requirementsToMoveToCalendarHelperAlterationsRequiredToMoveEventFromCalendar:(id)arg1 toCalendar:(id)arg2;
+- (_Bool)isAttendeeSameAsOrganizer:(id)arg1;
+- (id)attendeesNotIncludingOrganizer;
 - (_Bool)isValidAttendee:(id)arg1 forCalendar:(id)arg2;
 - (id)suggestedStartDateForCurrentRecurrenceRule;
 - (_Bool)_suggestedStartDateHelperRecurrenceRuleRequiresExpansion:(id)arg1 forDate:(id)arg2;
@@ -97,6 +105,10 @@
 - (_Bool)isDifferentWithDiff:(id)arg1;
 - (_Bool)isEqual:(id)arg1 comparingKeys:(id)arg2;
 - (id)diffFromCommitted;
+- (void)declineProposedTimeNotificationFromAttendee:(id)arg1;
+- (void)acceptProposedTimeNotificationFromAttendee:(id)arg1;
+- (void)_respondToProposedTimeFromAttendee:(id)arg1 shouldAccept:(_Bool)arg2;
+- (void)dismissAttendeeRepliedNotification;
 - (void)_clearAttendeeChangedFlags;
 - (void)dismissAcceptedProposeNewTimeNotification;
 @property(readonly, nonatomic) NSURL *launchURL;
@@ -110,7 +122,7 @@
 - (id)privacyLevelString;
 - (void)_detachWithStartDate:(id)arg1 newStartDate:(id)arg2 future:(_Bool)arg3;
 - (_Bool)_shouldPreserveFutureWhenSlicingWithStartDate:(id)arg1 newStartDate:(id)arg2;
-- (void)rebase;
+- (void)rebaseToEventStore:(id)arg1;
 - (_Bool)_noRemainingEarlierOccurrences;
 - (_Bool)_eventIsTheOnlyRemainingOccurrence;
 - (id)masterEvent;
@@ -143,6 +155,7 @@
 - (id)_keysToChangeForDuplicateWithOptions:(long long)arg1;
 - (id)duplicateWithOptions:(long long)arg1;
 - (_Bool)hasAttendeeProposedTimes;
+- (id)nextOccurrenceOrDetachmentAfter:(id)arg1;
 - (id)_dateForNextOccurrence;
 - (void)rollback;
 - (_Bool)revert;
@@ -150,11 +163,13 @@
 - (void)reset;
 - (void)_addNewAttendeesToRecentsIfNeeded;
 - (void)_addOrganizerToRecentsIfNeeded;
+- (void)markAsUndeleted;
 - (void)markAsCommitted;
 - (void)markAsSaved;
-- (void)_adjustAfterRebaseForMovingFromOldSource:(id)arg1 toNewSource:(id)arg2 committingItem:(id)arg3;
-- (void)_adjustForNewCalendarBeforeCommit;
-- (void)_filterExceptionDates;
+- (void)_adjustAfterRebaseForMovingFromOldSource:(id)arg1 toNewSource:(id)arg2 savingItem:(id)arg3;
+- (void)_adjustForNewCalendarBeforeSave;
+- (id)_leftoversInDates:(id)arg1 withGeneratedDates:(id)arg2;
+- (void)_filterExceptionDatesAndDetachments;
 - (void)_clearExceptionDatesAndUpdateDetachedOriginalDates;
 - (void)_applyTimeChangesToMaster;
 - (id)_updateMasterDate:(id)arg1 forChangeToOccurrenceDate:(id)arg2 fromOriginalOccurrenceDate:(id)arg3;
@@ -162,15 +177,18 @@
 @property(readonly, nonatomic) _Bool isSignificantlyDetachedIgnoringParticipation;
 @property(readonly, nonatomic) _Bool isSignificantlyDetached;
 - (void)_propagateChangesToDetachedEvents:(id)arg1 significantlyDetachedEvents:(id)arg2 startDateOffset:(id)arg3 duration:(id)arg4 calendar:(id)arg5;
+- (void)_propagateAlarmChangesToDetachedEvents:(id)arg1;
 - (void)_updateModifiedProperties;
+- (void)_updateVideoConferenceOnlyModified;
 - (void)_updateModifiedPropertiesForThisEventAndAllDetachments;
-- (_Bool)commitWithSpan:(long long)arg1 error:(id *)arg2;
-- (void)_willCommit;
+- (_Bool)saveWithSpan:(long long)arg1 error:(id *)arg2;
+- (void)_willSave;
 - (id)_generateNewUniqueID;
 - (_Bool)validateWithSpan:(long long)arg1 error:(id *)arg2;
 - (_Bool)validate:(id *)arg1;
 - (void)snoozeAlarm:(id)arg1 withTimeIntervalFromNow:(double)arg2;
 - (_Bool)validateAndUpdateOccurrenceDateFieldsAfterRefresh;
+- (_Bool)refreshAndNotify:(_Bool)arg1;
 - (_Bool)refresh;
 - (id)privacyDescription;
 @property(readonly, copy) NSString *description;
@@ -221,6 +239,9 @@
 @property(retain, nonatomic) EKStructuredLocation *endLocation; // @dynamic endLocation;
 - (void)setCalendar:(id)arg1;
 @property(retain, nonatomic) NSURL *conferenceURL;
+- (void)setConferenceURLString:(id)arg1;
+- (id)conferenceURLString;
+- (void)forceLocationPredictionUpdate;
 - (void)setLocationPredictionAllowed:(_Bool)arg1;
 - (void)setPredictedLocationFrozen:(_Bool)arg1;
 @property(readonly, nonatomic) _Bool hasPredictedLocation;
@@ -241,17 +262,21 @@
 - (void)setStructuredLocation:(id)arg1 preserveConferenceRooms:(_Bool)arg2;
 @property(copy, nonatomic) EKStructuredLocation *structuredLocation; // @dynamic structuredLocation;
 - (void)setURL:(id)arg1;
+- (void)setDisplayNotes:(id)arg1;
+- (id)displayNotes;
 - (void)setNotes:(id)arg1;
 - (_Bool)supportsAddingAttachments;
 @property(readonly, nonatomic) _Bool allowsProposedTimeModifications;
 - (_Bool)disallowProposeNewTime;
 - (_Bool)serverSupportedProposeNewTime;
+@property(nonatomic) _Bool dontSendNotificationForChanges;
 - (_Bool)canForward;
 @property(nonatomic) _Bool attendeeReplyChanged; // @dynamic attendeeReplyChanged;
 @property(nonatomic) _Bool attendeeDeclinedStartDate;
 @property(nonatomic) _Bool attendeeProposedStartDate;
 @property(nonatomic) _Bool attendeeStatus;
 @property(nonatomic) _Bool attendeeComment;
+@property(nonatomic) _Bool videoConferenceChanged;
 @property(nonatomic) _Bool locationChanged;
 @property(nonatomic) _Bool titleChanged;
 @property(nonatomic) _Bool timeChanged;
@@ -282,6 +307,11 @@
 @property(copy, nonatomic) NSSet *actions;
 - (void)clearInvitationStatus;
 @property(nonatomic) unsigned long long invitationStatus;
+- (void)setConferencesSet:(id)arg1;
+- (id)conferencesSet;
+- (id)_buildConferenceStringFromNotesWithoutConference:(id)arg1 serializedConference:(id)arg2;
+@property(retain, nonatomic) EKVirtualConference *virtualConference;
+- (id)_originallyCommittedVirtualConference;
 - (void)_removeDefaultAlarms;
 - (void)_addDefaultAlarms;
 - (void)_updateDefaultAlarms;
@@ -289,6 +319,7 @@
 - (void)setResponseComment:(id)arg1;
 - (id)responseComment;
 @property(nonatomic) long long availability;
+- (_Bool)futureOccurrencesCannotBeAffectedByChangingStartDateToDate:(id)arg1;
 @property(readonly, nonatomic) _Bool hasComplexRecurrence;
 - (id)startDateForRecurrence;
 - (void)makeRecurrenceEndCountBased;
@@ -307,6 +338,7 @@
 - (long long)_parentParticipationStatus;
 - (void)markEventAsAttendeeForward;
 - (_Bool)currentUserMayActAsOrganizer;
+@property(readonly, nonatomic, getter=isCurrentUserInvitedAttendee) _Bool currentUserInvitedAttendee;
 @property(readonly, nonatomic) long long currentUserGeneralizedParticipantRole;
 - (_Bool)_userAddressesRepresentInvitedAttendee:(id)arg1 checkEmailAddresses:(_Bool)arg2;
 @property(readonly, nonatomic) _Bool allowsParticipantStatusModifications;
@@ -358,6 +390,9 @@
 - (id)title;
 - (void)setTitle:(id)arg1;
 - (id)committedValueForKey:(id)arg1;
+- (void)setNeedsGeocoding:(_Bool)arg1;
+- (_Bool)needsGeocoding;
+- (void)postModifiedNotificationWithUserInfo:(id)arg1;
 - (void)postModifiedNotification;
 @property(readonly, nonatomic) _Bool isAllDayDirty;
 @property(readonly, nonatomic) _Bool isEndDateDirty;
@@ -379,15 +414,14 @@
 - (id)initWithPersistentObject:(id)arg1;
 - (id)initWithEventStore:(id)arg1;
 - (id)init;
-- (_Bool)_canWriteConferenceURL;
-- (void)_updateConferenceURL;
-- (_Bool)_hasChangesForConferenceURLDetection;
-- (void)updateConferenceURLIfNeeded;
 - (id)_prioritizedConferencesSources;
 - (id)_detectConferenceURL;
 - (id)conferenceURLDetected;
 - (void)clearDetectedConferenceURL;
 - (id)conferenceURLForDisplay;
+- (_Bool)conferenceURLForDisplayCached;
+- (void)clearParsedConference;
+- (id)parsedConference;
 - (void)setURLCommon:(id)arg1;
 - (void)setNotesCommon:(id)arg1;
 @property(readonly, nonatomic) NSArray *locationsWithoutPrediction;

@@ -14,38 +14,37 @@
 
 @interface TSTLayoutHint : NSObject <NSCopying, TSDHint>
 {
-    _Bool mIsValid;
-    _Bool mHorizontal;
-    struct TSUCellRect mCellRange;
-    struct TSUCellCoord mCacheHintID;
-    NSNumber *mPartitioningPass;
-    unsigned int mPartitionPosition;
-    struct CGSize mMaximumSize;
-    struct CGSize mEffectiveSize;
-    TSTLayout *mLayout;
+    _Bool _isValid;
+    _Bool _horizontal;
+    unsigned int _partitionPosition;
+    struct TSUCellCoord _cacheHintID;
+    NSNumber *_partitioningPass;
+    TSTLayout *_layout;
+    struct TSUCellRect _cellRange;
+    struct CGSize _maximumSize;
+    struct CGSize _effectiveSize;
 }
 
 + (Class)archivedHintClass;
-@property(retain, nonatomic) NSNumber *partitioningPass; // @synthesize partitioningPass=mPartitioningPass;
-@property(nonatomic) _Bool horizontal; // @synthesize horizontal=mHorizontal;
-@property(nonatomic) TSTLayout *layout; // @synthesize layout=mLayout;
-@property(nonatomic) struct CGSize effectiveSize; // @synthesize effectiveSize=mEffectiveSize;
-@property(nonatomic) struct CGSize maximumSize; // @synthesize maximumSize=mMaximumSize;
-@property(nonatomic) unsigned int partitionPosition; // @synthesize partitionPosition=mPartitionPosition;
-@property(nonatomic) struct TSUCellCoord cacheHintID; // @synthesize cacheHintID=mCacheHintID;
-@property(nonatomic) struct TSUCellRect cellRange; // @synthesize cellRange=mCellRange;
-@property(nonatomic) _Bool isValid; // @synthesize isValid=mIsValid;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool horizontal; // @synthesize horizontal=_horizontal;
+@property(nonatomic) __weak TSTLayout *layout; // @synthesize layout=_layout;
+@property(nonatomic) struct CGSize effectiveSize; // @synthesize effectiveSize=_effectiveSize;
+@property(nonatomic) struct CGSize maximumSize; // @synthesize maximumSize=_maximumSize;
+@property(nonatomic) unsigned int partitionPosition; // @synthesize partitionPosition=_partitionPosition;
+@property(retain, nonatomic) NSNumber *partitioningPass; // @synthesize partitioningPass=_partitioningPass;
+@property(nonatomic) struct TSUCellCoord cacheHintID; // @synthesize cacheHintID=_cacheHintID;
+@property(nonatomic) struct TSUCellRect cellRange; // @synthesize cellRange=_cellRange;
+@property(nonatomic) _Bool isValid; // @synthesize isValid=_isValid;
 @property(readonly, copy) NSString *description;
 - (void)invalidate;
-- (void)saveToArchive:(struct LayoutHintArchive *)arg1;
-- (id)initWithArchive:(const struct LayoutHintArchive *)arg1;
+- (void)saveToArchive:(void *)arg1;
+- (id)initWithArchive:(const void *)arg1;
 @property(readonly, nonatomic) _Bool isFirstHint;
 @property(readonly, nonatomic) id <TSDHint> lastChildHint;
 @property(readonly, nonatomic) id <TSDHint> firstChildHint;
 - (_Bool)overlapsWithSelectionPath:(id)arg1;
 - (id)copyForArchiving;
-- (oneway void)release;
-- (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)initWithRange:(struct TSUCellRect)arg1 hintId:(struct TSUCellCoord)arg2 partitionPosition:(unsigned int)arg3 maximumSize:(struct CGSize)arg4 effectiveSize:(struct CGSize)arg5 layout:(id)arg6 validity:(_Bool)arg7 horizontal:(_Bool)arg8;

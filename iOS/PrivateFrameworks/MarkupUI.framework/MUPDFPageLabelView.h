@@ -21,12 +21,11 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long currentPageIndex; // @synthesize currentPageIndex;
 - (void)fadeOut;
-- (void)showNowInSuperView:(id)arg1 atOrigin:(struct CGPoint)arg2 withText:(id)arg3 animated:(_Bool)arg4;
+- (void)showNowInSuperView:(id)arg1 withText:(id)arg2;
 - (double)_fadeOutDuration;
 - (double)_fadeOutDelay;
 @property(readonly, nonatomic, getter=isTimerInstalled) _Bool timerInstalled;
 - (void)setText:(id)arg1;
-- (void)sizeToFit;
 - (void)dealloc;
 - (void)clearTimer;
 - (id)initWithFrame:(struct CGRect)arg1;

@@ -10,8 +10,9 @@
 #import <MediaPlaybackCore/NSSecureCoding-Protocol.h>
 
 @class MPCPlaybackEngineEventStream, MPPlaceholderAVItem, MPPlaybackContext, NSString;
-@protocol MPCQueueControllerDataSource><MPCQueueControllerDataSourceStateRestoring;
+@protocol MPCQueueControllerDataSource><MPCQueueControllerDataSourceStateRestoring><MPRTCReportingItemSessionContaining;
 
+__attribute__((visibility("hidden")))
 @interface _MPCQueueControllerDataSourceState : NSObject <MPShuffleableSectionedIdentifierListDataSource, NSSecureCoding>
 {
     struct {
@@ -30,12 +31,13 @@
     _Bool _frozen;
     struct os_unfair_lock_s _stateLock;
     MPPlaceholderAVItem *_tailPlaceholderItem;
-    id <MPCQueueControllerDataSource><MPCQueueControllerDataSourceStateRestoring> _dataSource;
+    id <MPCQueueControllerDataSource><MPCQueueControllerDataSourceStateRestoring><MPRTCReportingItemSessionContaining> _dataSource;
     MPPlaybackContext *_playbackContext;
     MPPlaybackContext *_originalPlaybackContext;
     long long _state;
     NSString *_sectionIdentifier;
     NSString *_preferredStartItemIdentifier;
+    id _rtcSectionHierarchyToken;
     MPCPlaybackEngineEventStream *_eventStream;
     long long _supplementalPlaybackContextBehavior;
     MPPlaybackContext *_supplementalPlaybackContext;
@@ -47,13 +49,14 @@
 @property(readonly, nonatomic) long long supplementalPlaybackContextBehavior; // @synthesize supplementalPlaybackContextBehavior=_supplementalPlaybackContextBehavior;
 @property(readonly, nonatomic) struct os_unfair_lock_s stateLock; // @synthesize stateLock=_stateLock;
 @property(nonatomic) __weak MPCPlaybackEngineEventStream *eventStream; // @synthesize eventStream=_eventStream;
+@property(retain, nonatomic) id rtcSectionHierarchyToken; // @synthesize rtcSectionHierarchyToken=_rtcSectionHierarchyToken;
 @property(readonly, nonatomic) NSString *preferredStartItemIdentifier; // @synthesize preferredStartItemIdentifier=_preferredStartItemIdentifier;
 @property(readonly, nonatomic) NSString *sectionIdentifier; // @synthesize sectionIdentifier=_sectionIdentifier;
 @property(nonatomic, getter=isFrozen) _Bool frozen; // @synthesize frozen=_frozen;
 @property(nonatomic) long long state; // @synthesize state=_state;
 @property(readonly, nonatomic) MPPlaybackContext *originalPlaybackContext; // @synthesize originalPlaybackContext=_originalPlaybackContext;
 @property(readonly, nonatomic) MPPlaybackContext *playbackContext; // @synthesize playbackContext=_playbackContext;
-@property(readonly, nonatomic) id <MPCQueueControllerDataSource><MPCQueueControllerDataSourceStateRestoring> dataSource; // @synthesize dataSource=_dataSource;
+@property(readonly, nonatomic) id <MPCQueueControllerDataSource><MPCQueueControllerDataSourceStateRestoring><MPRTCReportingItemSessionContaining> dataSource; // @synthesize dataSource=_dataSource;
 - (void)_inLock_buildPlaceholder;
 - (void)_buildPlaceholder;
 - (_Bool)section:(id)arg1 shouldShuffleExcludeItem:(id)arg2;
@@ -75,6 +78,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(readonly, copy) NSString *description;
+- (void)updatePlaybackCoordinator:(id)arg1;
 - (id)initWithPlaybackContext:(id)arg1;
 
 // Remaining properties

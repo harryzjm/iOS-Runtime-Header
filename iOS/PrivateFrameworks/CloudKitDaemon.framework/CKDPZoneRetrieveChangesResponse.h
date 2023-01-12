@@ -10,7 +10,6 @@
 
 @class NSData, NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface CKDPZoneRetrieveChangesResponse : PBCodable <NSCopying>
 {
     NSMutableArray *_changedZones;

@@ -13,14 +13,17 @@
     _Bool _usingSymbolImage;
     _Bool _iconInheritsTint;
     _Bool _allowFullWidthIcon;
+    _Bool _underlineLinks;
     OBAnimationView *_animationView;
     OBImageView *_imageView;
     UIView *_topAssetContainer;
     NSArray *_topAssetContainerConstraints;
     OBTemplateLabel *_headerLabel;
+    OBTemplateLabel *_subtitleLabel;
     OBTemplateHeaderDetailLabel *_detailLabel;
     NSArray *_imageViewConstraints;
     NSArray *_detailLabelConstraints;
+    NSArray *_subtitleLabelConstraints;
     OBHeaderAccessoryButton *_accessoryButton;
     unsigned long long _templateType;
     UIImage *_originalIconImage;
@@ -28,13 +31,16 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool underlineLinks; // @synthesize underlineLinks=_underlineLinks;
 @property(retain, nonatomic) UIView *customIconContainerView; // @synthesize customIconContainerView=_customIconContainerView;
 @property(retain, nonatomic) UIImage *originalIconImage; // @synthesize originalIconImage=_originalIconImage;
 @property(nonatomic) unsigned long long templateType; // @synthesize templateType=_templateType;
 @property(retain, nonatomic) OBHeaderAccessoryButton *accessoryButton; // @synthesize accessoryButton=_accessoryButton;
+@property(retain, nonatomic) NSArray *subtitleLabelConstraints; // @synthesize subtitleLabelConstraints=_subtitleLabelConstraints;
 @property(retain, nonatomic) NSArray *detailLabelConstraints; // @synthesize detailLabelConstraints=_detailLabelConstraints;
 @property(retain, nonatomic) NSArray *imageViewConstraints; // @synthesize imageViewConstraints=_imageViewConstraints;
 @property(retain, nonatomic) OBTemplateHeaderDetailLabel *detailLabel; // @synthesize detailLabel=_detailLabel;
+@property(retain, nonatomic) OBTemplateLabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 @property(retain, nonatomic) OBTemplateLabel *headerLabel; // @synthesize headerLabel=_headerLabel;
 @property(retain, nonatomic) NSArray *topAssetContainerConstraints; // @synthesize topAssetContainerConstraints=_topAssetContainerConstraints;
 @property(retain, nonatomic) UIView *topAssetContainer; // @synthesize topAssetContainer=_topAssetContainer;
@@ -49,15 +55,17 @@
 - (double)iconHeight;
 - (double)bottomPadding;
 - (double)detailLabelToAccessoryButtonPadding;
-- (double)headerLabelToDetailLabelPadding;
+- (double)headerLabelToDetailAndSubtitleLabelPadding;
 - (double)iconToHeaderLabelPadding;
 - (double)topPadding;
+- (void)_updateConstraintsForSubtitle;
 - (void)_updateConstraintsForDetailLabel;
 - (id)_createDetailLabelIfNeeded;
 - (void)_layoutTopAssetContainer;
 - (void)_insertAndLayoutImageViewIfNeeded;
 - (id)_createImageView:(id)arg1;
 - (id)_detailFont;
+- (id)_subtitleFont;
 - (void)removeAccessoryButton;
 - (void)removeDetailLabel;
 - (void)setTitleHyphenationFactor:(float)arg1;
@@ -65,6 +73,7 @@
 - (void)tintColorDidChange;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)addAccessoryButton:(id)arg1;
+- (void)setSubtitleText:(id)arg1;
 - (void)setDetailedTextHeader:(id)arg1 detailedTextBody:(id)arg2;
 - (void)setLanguage:(id)arg1;
 - (void)setDetailText:(id)arg1;

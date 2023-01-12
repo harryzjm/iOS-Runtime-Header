@@ -6,11 +6,12 @@
 
 #import <HealthUI/HKCDADocumentTableViewCellDelegate-Protocol.h>
 #import <HealthUI/HKDataMetadataViewControllerDelegate-Protocol.h>
+#import <HealthUI/HKHealthPrivacyServicePickerController-Protocol.h>
 
-@class HKHealthStore, HKSource, HKTitledIconHeaderView, NSMutableArray, NSMutableSet, NSSet, NSString;
-@protocol HKDocumentPickerViewControllerDelegate;
+@class HKHealthStore, HKSource, HKTitledIconHeaderView, NSMutableArray, NSMutableSet, NSSet, NSString, NSUUID;
+@protocol HKHealthPrivacyServicePickerControllerDelegate;
 
-@interface HKDocumentPickerViewController <HKCDADocumentTableViewCellDelegate, HKDataMetadataViewControllerDelegate>
+@interface HKDocumentPickerViewController <HKCDADocumentTableViewCellDelegate, HKDataMetadataViewControllerDelegate, HKHealthPrivacyServicePickerController>
 {
     NSMutableArray *_samplesList;
     long long _presentationStyle;
@@ -21,14 +22,16 @@
     HKTitledIconHeaderView *_tableHeaderView;
     NSSet *_allSamples;
     NSMutableSet *_enabledSamples;
-    id <HKDocumentPickerViewControllerDelegate> _delegate;
+    id <HKHealthPrivacyServicePickerControllerDelegate> _delegate;
+    NSUUID *_sessionIdentifier;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) __weak id <HKDocumentPickerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(copy, nonatomic) NSUUID *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
+@property(nonatomic) __weak id <HKHealthPrivacyServicePickerControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) NSMutableSet *enabledSamples; // @synthesize enabledSamples=_enabledSamples;
 @property(readonly, nonatomic) NSSet *allSamples; // @synthesize allSamples=_allSamples;
-@property(retain, nonatomic) HKSource *source; // @synthesize source=_source;
+@property(copy, nonatomic) HKSource *source; // @synthesize source=_source;
 @property(readonly, nonatomic) HKHealthStore *healthStore;
 - (void)cdaDocumentTableViewCellDidChangeValue:(id)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

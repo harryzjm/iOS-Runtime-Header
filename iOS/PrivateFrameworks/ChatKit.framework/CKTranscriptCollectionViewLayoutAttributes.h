@@ -27,17 +27,20 @@
     NSArray *_threadGroupLayoutAttributes;
     CKChatItem *_chatItem;
     _Bool _insertingReply;
+    double _parentRotationOffset;
     struct CGSize _parentChatItemSize;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic, getter=isInsertingReply) _Bool insertingReply; // @synthesize insertingReply=_insertingReply;
+@property(nonatomic) double parentRotationOffset; // @synthesize parentRotationOffset=_parentRotationOffset;
 @property(nonatomic) struct CGSize parentChatItemSize; // @synthesize parentChatItemSize=_parentChatItemSize;
 @property(retain, nonatomic) CKChatItem *chatItem; // @synthesize chatItem=_chatItem;
 @property(readonly, nonatomic) struct CATransform3D contentTransform3D; // @synthesize contentTransform3D=_contentTransform3D;
 - (void)setAlphaOrFilterLevel:(double)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithLayoutAttributes:(id)arg1;
 - (id)init;
 
 @end

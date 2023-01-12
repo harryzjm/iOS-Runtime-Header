@@ -14,6 +14,7 @@
     MISSING_TYPE *colorStride;
     MISSING_TYPE *frameIndex;
     MISSING_TYPE *entityCount;
+    MISSING_TYPE *particleQuery;
 }
 
 @end

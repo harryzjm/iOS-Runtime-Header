@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (void)updateSpeakerImage;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (_Bool)__im_ff_systemImageAdoptionEnabled;
 
 @end
 

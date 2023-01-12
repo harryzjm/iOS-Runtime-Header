@@ -4,22 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <UIKitCore/_UIColorPickerColorQueueDelegate-Protocol.h>
 #import <UIKitCore/_UIColorPickerRemoteViewControllerHost-Protocol.h>
-#import <UIKitCore/_UIGeometryChangeObserver-Protocol.h>
 #import <UIKitCore/_UIRemoteViewControllerContaining-Protocol.h>
 
-@class NSExtension, NSLayoutConstraint, NSString, UIColor, UIPresentationController, _UIColorPickerRemoteViewController, _UIColorPickerViewControllerConfiguration, _UIRemoteViewController;
+@class NSArray, NSExtension, NSLayoutConstraint, NSString, UIColor, UIPresentationController, _UIColorPickerColorQueue, _UIColorPickerRemoteViewController, _UIColorPickerViewControllerConfiguration, _UIRemoteViewController;
 @protocol NSCopying, UIColorPickerViewControllerDelegate;
 
-@interface UIColorPickerViewController <_UIColorPickerRemoteViewControllerHost, _UIRemoteViewControllerContaining, _UIGeometryChangeObserver>
+@interface UIColorPickerViewController <_UIColorPickerRemoteViewControllerHost, _UIRemoteViewControllerContaining, _UIColorPickerColorQueueDelegate>
 {
     UIPresentationController *_presentationController;
     struct CGRect _keyboardFrame;
     struct {
-        unsigned int keyboardVisible:1;
-        unsigned int geometryReaderAttached:1;
-        unsigned int respondingToGeometryChange:1;
         unsigned int delegateImplementsDidSelectColorContinuous:1;
+        unsigned int delegateImplementsDidSelectColorContinuousSPI:1;
         unsigned int delegateImplementsDidSelectColor:1;
     } _flags;
     id <UIColorPickerViewControllerDelegate> _delegate;
@@ -28,6 +26,7 @@
     NSExtension *_extension;
     id <NSCopying> _extensionRequestIdentifier;
     NSLayoutConstraint *_bottomConstraint;
+    _UIColorPickerColorQueue *_colorQueue;
     _UIColorPickerViewControllerConfiguration *__remoteConfiguration;
     _UIColorPickerViewControllerConfiguration *_configuration;
 }
@@ -36,6 +35,7 @@
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) _UIColorPickerViewControllerConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(copy, nonatomic, setter=_setRemoteConfiguration:) _UIColorPickerViewControllerConfiguration *_remoteConfiguration; // @synthesize _remoteConfiguration=__remoteConfiguration;
+@property(retain, nonatomic) _UIColorPickerColorQueue *colorQueue; // @synthesize colorQueue=_colorQueue;
 @property(retain, nonatomic) NSLayoutConstraint *bottomConstraint; // @synthesize bottomConstraint=_bottomConstraint;
 @property(copy, nonatomic) id <NSCopying> extensionRequestIdentifier; // @synthesize extensionRequestIdentifier=_extensionRequestIdentifier;
 @property(retain, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
@@ -43,36 +43,38 @@
 @property(retain, nonatomic, setter=_setChildViewController:) _UIColorPickerRemoteViewController *_childViewController; // @synthesize _childViewController;
 @property(nonatomic) __weak id <UIColorPickerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (_Bool)_canShowWhileLocked;
+- (void)_colorPickerviewServiceDidTerminateWithError:(id)arg1;
 - (void)_pickerDidFloatEyedropper;
 - (void)_pickerDidDismissEyedropper;
 - (void)_pickerDidShowEyedropper;
 - (void)_colorPickerDidFinish;
 - (void)_pickerDidSelectColor:(id)arg1;
+- (void)_dequeue_pickerDidSelectColor:(id)arg1 colorspace:(id)arg2 isVolatile:(_Bool)arg3;
 - (void)_pickerDidSelectColor:(id)arg1 colorspace:(id)arg2 isVolatile:(_Bool)arg3;
 @property(readonly, nonatomic) _UIRemoteViewController *_containedRemoteViewController;
-- (void)_geometryChanged:(const CDStruct_ac6e8047 *)arg1 forAncestor:(id)arg2;
-- (_Bool)_geometryObserverNeedsAncestorOnly;
-- (void)updateGeometryObserver;
-- (void)repositionChildViewController;
+- (void)repositionChildViewControllerAnimated:(_Bool)arg1;
 - (void)_processKeyboardNotification:(id)arg1;
 - (void)keyboardFrameDidChange:(id)arg1;
 - (void)keyboardDidHide:(id)arg1;
 - (void)keyboardWillHide:(id)arg1;
 - (void)keyboardWillShow:(id)arg1;
+@property(copy, nonatomic, setter=_setSuggestedColors:) NSArray *_suggestedColors;
 @property(nonatomic, setter=_setUserInterfaceStyleForGrid:) long long _userInterfaceStyleForGrid;
 @property(nonatomic, setter=_setShouldUseDarkGridInDarkMode:) _Bool _shouldUseDarkGridInDarkMode;
 - (void)setTitle:(id)arg1;
 @property(nonatomic) _Bool supportsAlpha;
 - (void)_setSelectedColor:(id)arg1;
 - (id)remoteViewController;
+- (double)_detentHeightForWidth:(double)arg1;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)_presentationController:(id)arg1 prepareAdaptivePresentationController:(id)arg2;
 - (void)_updateRemoteConfiguration;
 - (void)willMoveToParentViewController:(id)arg1;
 - (void)didMoveToParentViewController:(id)arg1;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
-- (void)invalidate;
 - (void)dealloc;
 - (void)loadView;
+- (void)_tryLaunchingExtension:(long long)arg1;
 - (void)_commonUIColorPickerViewControllerInit;
 - (id)init;
 - (id)initWithConfiguration:(id)arg1;

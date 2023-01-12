@@ -4,15 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+@class NFUnfairLock, NSArray, NSString;
 
 @interface FCArticleRecordSource
 {
-    NSArray *_nonLocalizableKeys;
-    NSArray *_localizableKeys;
-    NSArray *_alwaysLocalizedKeys;
+    NFUnfairLock *_experimentalFieldsLock;
+    unsigned long long _desiredArticleRecordFieldOptions;
+    NSString *_engagementCohortsExpField;
+    NSString *_conversionCohortsExpField;
     NSArray *_engagementRecordKeys;
     NSArray *_conversionRecordKeys;
+    NSArray *_topicFlagsRecordKeys;
+    NSArray *_articleTagMetadataRecordKeys;
 }
 
 + (id)canaryRecordName;
@@ -22,26 +25,37 @@
 + (id)identifierFromCKRecord:(id)arg1;
 + (_Bool)useTaggedImages;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSArray *conversionRecordKeys; // @synthesize conversionRecordKeys=_conversionRecordKeys;
-@property(readonly, nonatomic) NSArray *engagementRecordKeys; // @synthesize engagementRecordKeys=_engagementRecordKeys;
-- (id)alwaysLocalizedKeys;
-- (id)localizableKeys;
-- (id)nonLocalizableKeys;
+@property(retain, nonatomic) NSArray *articleTagMetadataRecordKeys; // @synthesize articleTagMetadataRecordKeys=_articleTagMetadataRecordKeys;
+@property(retain, nonatomic) NSArray *topicFlagsRecordKeys; // @synthesize topicFlagsRecordKeys=_topicFlagsRecordKeys;
+@property(retain, nonatomic) NSArray *conversionRecordKeys; // @synthesize conversionRecordKeys=_conversionRecordKeys;
+@property(retain, nonatomic) NSArray *engagementRecordKeys; // @synthesize engagementRecordKeys=_engagementRecordKeys;
+@property(retain, nonatomic) NSString *conversionCohortsExpField; // @synthesize conversionCohortsExpField=_conversionCohortsExpField;
+@property(retain, nonatomic) NSString *engagementCohortsExpField; // @synthesize engagementCohortsExpField=_engagementCohortsExpField;
+@property(nonatomic) unsigned long long desiredArticleRecordFieldOptions; // @synthesize desiredArticleRecordFieldOptions=_desiredArticleRecordFieldOptions;
+@property(retain, nonatomic) NFUnfairLock *experimentalFieldsLock; // @synthesize experimentalFieldsLock=_experimentalFieldsLock;
+- (void)updateEngagementCohortsExpField:(id)arg1 conversionCohortsExpField:(id)arg2;
 - (id)saveFeedItemAndArticleRecords:(id)arg1;
 - (id)saveArticleRecords:(id)arg1;
-- (id)conversionDataFromCKRecord:(id)arg1;
-- (id)engagementDataFromCKRecord:(id)arg1;
+- (id)conversionStatsFromCKRecord:(id)arg1;
+- (id)engagementFromCKRecord:(id)arg1;
+- (id)articleTopicsFromCKRecord:(id)arg1 engagement:(id)arg2 conversionStats:(id)arg3 tagMetadata:(id)arg4;
+- (id)articleTagMetadataFromCKRecord:(id)arg1;
+- (id)topicFlagsFromCKRecord:(id)arg1;
 - (id)recordFromCKRecord:(id)arg1 base:(id)arg2;
 - (id)urlStringForThumbnailKey:(id)arg1 inRecord:(id)arg2;
-- (id)recordIDPrefix;
+- (id)recordIDPrefixes;
 - (unsigned long long)highThresholdDataSizeLimit;
 - (unsigned long long)lowThresholdDataSizeLimit;
 - (unsigned long long)storeVersion;
 - (id)storeFilename;
 - (id)localizableExperimentalizableKeys;
 - (id)experimentalizableKeys;
+- (id)alwaysLocalizedKeys;
+- (id)localizableKeys;
+- (id)nonLocalizableKeys;
 - (int)pbRecordType;
 - (id)recordType;
+- (void)_setEngagementCohortsExpField:(id)arg1 conversionCohortsExpField:(id)arg2;
 - (id)initWithContentDatabase:(id)arg1 contentDirectory:(id)arg2 desiredArticleRecordFieldOptions:(unsigned long long)arg3 experimentalizableFieldsPostfix:(id)arg4 engagementCohortsExpField:(id)arg5 conversionCohortsExpField:(id)arg6 activeTreatmentID:(id)arg7;
 - (id)initWithContentDatabase:(id)arg1 contentDirectory:(id)arg2 experimentalizableFieldsPostfix:(id)arg3 activeTreatmentID:(id)arg4;
 

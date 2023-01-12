@@ -12,11 +12,10 @@
 {
 }
 
-+ (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
 + (Class)configurationClass;
++ (const CDStruct_7d93034e *)revisionAvailability;
 + (id)knownObjectIdentifiersRecognizedByRequestRevision:(unsigned long long)arg1 error:(id *)arg2;
 + (id)descriptionForPrivateRevision:(unsigned long long)arg1;
-+ (_Bool)supportsPrivateRevision:(unsigned long long)arg1;
 @property(readonly) NSArray *supportedImageSizeSet;
 - (CDUnknownBlockType)resultsSortingComparator;
 - (_Bool)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
@@ -26,13 +25,14 @@
 @property float modelMinimumDetectionConfidence;
 @property _Bool useImageAnalyzerScaling;
 @property unsigned long long imageCropAndScaleOption;
-- (id)_recognizedObjectsIdentifiersAndReturnError:(id *)arg1;
+- (id)supportedIdentifiersAndReturnError:(id *)arg1;
 - (id)_applicableDetectorAndGetConfigurationOptions:(id *)arg1 loadedInSession:(id)arg2 error:(id *)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, copy) NSArray *results; // @dynamic results;
 @property(readonly) Class superclass;
 
 @end

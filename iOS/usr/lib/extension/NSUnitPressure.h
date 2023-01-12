@@ -21,6 +21,7 @@
 + (id)megapascals;
 + (id)gigapascals;
 + (id)newtonsPerMetersSquared;
++ (id)icuType;
 + (id)baseUnit;
 + (void)initialize;
 

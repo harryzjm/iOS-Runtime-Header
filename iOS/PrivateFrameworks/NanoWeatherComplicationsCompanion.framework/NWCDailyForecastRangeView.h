@@ -12,13 +12,11 @@ __attribute__((visibility("hidden")))
 @interface NWCDailyForecastRangeView : UIView
 {
     UILabel *_highLabel;
-    UILabel *_interpunctLabel;
     UILabel *_lowLabel;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) UILabel *lowLabel; // @synthesize lowLabel=_lowLabel;
-@property(readonly, nonatomic) UILabel *interpunctLabel; // @synthesize interpunctLabel=_interpunctLabel;
 @property(readonly, nonatomic) UILabel *highLabel; // @synthesize highLabel=_highLabel;
 - (id)_rangeLabelWithFontSize:(double)arg1;
 - (void)_applyConstraints:(CDStruct_d83abbfb)arg1;

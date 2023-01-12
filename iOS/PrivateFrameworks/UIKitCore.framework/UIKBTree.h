@@ -46,6 +46,7 @@
 - (id)cacheDisplayString;
 - (_Bool)shouldCacheKey;
 - (void)setLayoutTag:(id)arg1 passingKeyTest:(CDUnknownBlockType)arg2;
+- (_Bool)containsKeyThatIgnoresHandBias;
 - (_Bool)hasLayoutTag:(id)arg1;
 - (id)variantDisplayString;
 - (void)orderVariantKeys:(_Bool)arg1;
@@ -181,7 +182,7 @@
 - (double)primaryKeylayoutOffset;
 - (double)primaryKeylayoutWidthRatio;
 - (_Bool)isSplit;
-- (void)cacheNativeIdiomIfNecessary;
+- (void)cacheNativeIdiomIfNecessaryForScreenTraits:(id)arg1;
 - (long long)nativeIdiom;
 - (void)setResizingOffset:(double)arg1;
 - (double)resizingOffset;
@@ -206,6 +207,7 @@
 - (id)gestureKeyplaneName;
 - (id)alternateKeyplaneName;
 - (_Bool)usesAutoShift;
+- (id)keysExcludingEmptyKeys;
 - (id)keysWithString:(id)arg1;
 - (id)keysByKeyName:(id)arg1;
 - (id)geometriesOrderedByPosition;
@@ -236,6 +238,7 @@
 - (id)cachedKeysByKeyName:(id)arg1;
 - (void)setVisualStyling:(CDStruct_227bb23d)arg1;
 - (CDStruct_227bb23d)visualStyling;
+- (CDStruct_227bb23d)visualStylingForScreenTraits:(id)arg1;
 - (CDStruct_227bb23d)stylingFromVisualStyle;
 - (void)setVisualStyle:(int)arg1;
 - (int)visualStyle;

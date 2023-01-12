@@ -8,7 +8,6 @@
 
 @class NSArray, UILabel;
 
-__attribute__((visibility("hidden")))
 @interface MCInstallationWarningCell : UITableViewCell
 {
     UILabel *_warningLabel;

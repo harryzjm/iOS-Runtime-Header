@@ -9,6 +9,8 @@
 @class NSString;
 
 @protocol STDynamicAttributionXPCServerProtocol <NSObject>
+- (void)subscribeToUpdates;
+- (void)setCurrentAttributionStringWithFormat:(NSString *)arg1 maskingClientAuditToken:(CDStruct_4c969caf)arg2 reply:(void (^)(_Bool))arg3;
 - (void)setCurrentAttributionKey:(NSString *)arg1 application:(NSString *)arg2 reply:(void (^)(_Bool))arg3;
 @end
 

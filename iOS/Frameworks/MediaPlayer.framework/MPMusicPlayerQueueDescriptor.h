@@ -12,10 +12,13 @@
 
 @interface MPMusicPlayerQueueDescriptor : NSObject <NSSecureCoding>
 {
+    _Bool _private;
     long long _shuffleType;
     long long _repeatType;
     NSString *_requestingBundleIdentifier;
     NSString *_requestingBundleVersion;
+    NSString *_playActivityQueueGroupingID;
+    NSString *_playActivityFeatureName;
     NSDictionary *_startTimes;
     NSDictionary *_endTimes;
 }
@@ -24,8 +27,11 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSDictionary *endTimes; // @synthesize endTimes=_endTimes;
 @property(readonly, nonatomic) NSDictionary *startTimes; // @synthesize startTimes=_startTimes;
+@property(copy, nonatomic) NSString *playActivityFeatureName; // @synthesize playActivityFeatureName=_playActivityFeatureName;
+@property(copy, nonatomic) NSString *playActivityQueueGroupingID; // @synthesize playActivityQueueGroupingID=_playActivityQueueGroupingID;
 @property(readonly, nonatomic) NSString *requestingBundleVersion; // @synthesize requestingBundleVersion=_requestingBundleVersion;
 @property(readonly, nonatomic) NSString *requestingBundleIdentifier; // @synthesize requestingBundleIdentifier=_requestingBundleIdentifier;
+@property(nonatomic, getter=isPrivate) _Bool private; // @synthesize private=_private;
 @property(nonatomic) long long repeatType; // @synthesize repeatType=_repeatType;
 @property(nonatomic) long long shuffleType; // @synthesize shuffleType=_shuffleType;
 - (void)_setEndTime:(double)arg1 forIdentifiers:(id)arg2;

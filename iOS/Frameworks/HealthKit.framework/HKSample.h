@@ -5,10 +5,11 @@
 //
 
 #import <HealthKit/NSCopying-Protocol.h>
+#import <HealthKit/_HKDateBounded-Protocol.h>
 
-@class HKSampleType, NSDate;
+@class HKSampleType, NSDate, NSString;
 
-@interface HKSample <NSCopying>
+@interface HKSample <NSCopying, _HKDateBounded>
 {
     HKSampleType *_sampleType;
     double _startTimestamp;
@@ -27,7 +28,8 @@
 - (_Bool)isEquivalent:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)description;
+@property(readonly, copy) NSString *description;
+@property(readonly) _Bool hasUndeterminedDuration;
 - (void)_setEndDate:(id)arg1;
 - (void)_setStartDate:(id)arg1;
 @property(readonly) NSDate *endDate;
@@ -37,10 +39,17 @@
 - (void)_setSampleType:(id)arg1;
 - (long long)_externalSyncObjectCode;
 - (id)_validateWithConfiguration:(struct HKObjectValidationConfiguration)arg1;
+- (id)_timeZone;
 - (_Bool)_requiresPrivateEntitlementForQueries;
 - (id)_init;
+- (CDStruct_ef5fcbe6)hk_morningIndexRangeWithCalendarWithCalendar:(id)arg1;
 - (void)_enumerateTimePeriodsWithBlock:(CDUnknownBlockType)arg1;
-- (CDStruct_912cb5d2)hk_dayIndexRangeWithCalendar:(id)arg1;
+- (CDStruct_ef5fcbe6)hk_dayIndexRangeWithCalendar:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

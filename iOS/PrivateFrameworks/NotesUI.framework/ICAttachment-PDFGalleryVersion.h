@@ -6,17 +6,38 @@
 
 #import <NotesShared/ICAttachment.h>
 
-#import <NotesUI/DCScanDataDelegate-Protocol.h>
+@class ICDocCamImageQuad, ICNotePasteboardData, LPLinkMetadata, NSString, UIImage;
 
-@class ICDocCamImageQuad, ICNotePasteboardData, NSString, UIImage;
-
-@interface ICAttachment (PDFGalleryVersion) <DCScanDataDelegate>
+@interface ICAttachment (PDFGalleryVersion)
 + (id)imageCache;
 + (id)imageLoadingOperationQueue;
 + (id)thumbnailOperationQueue;
 @property(readonly, nonatomic) long long docCamPDFVersion;
 - (id)dataForTypeIdentifier:(id)arg1;
 - (id)fileURLForTypeIdentifier:(id)arg1;
+- (id)fallbackMapMetadata;
+- (id)fallbackWebMetadata;
+- (id)mapPreviewGenerationQueue;
+- (id)webPreviewGenerationQueue;
+- (id)filePreviewGenerationQueue;
+- (id)archiveLinkmetadata:(id)arg1;
+- (id)lpImageFromPreviewImage:(id)arg1;
+@property(readonly, nonatomic) NSString *quotedText;
+- (void)requestFileMetadataIfNecessary;
+@property(readonly, nonatomic) LPLinkMetadata *loadingAttachmentsMetadata;
+- (void)requestRemoteMetadata;
+@property(readonly, nonatomic) LPLinkMetadata *plainURLMetadata;
+@property(readonly, nonatomic) LPLinkMetadata *fallbackRemoteAttachmentMetadata;
+@property(readonly, nonatomic) LPLinkMetadata *synapseBasedMetadata;
+@property(readonly, nonatomic) LPLinkMetadata *fileMetadata;
+@property(readonly, nonatomic) LPLinkMetadata *scannedDocumentsMetadata;
+- (void)addPreviewImageToMetadata:(id)arg1;
+@property(readonly, nonatomic) _Bool alwaysUsesSmallSize;
+@property(readonly, nonatomic) _Bool usesLinkPresentation;
+@property(readonly, nonatomic) _Bool metadataExists;
+- (void)persistLinkMetadata:(id)arg1;
+- (id)retrieveLinkMetadata;
+- (void)redactAuthorAttributions;
 - (void)notifyDocCamFrameworkAttachmentWasDeleted;
 - (_Bool)fetchThumbnailImageWithMinSize:(struct CGSize)arg1 scale:(double)arg2 appearanceInfo:(id)arg3 cache:(id)arg4 cacheKey:(id)arg5 processingBlock:(CDUnknownBlockType)arg6 completionBlock:(CDUnknownBlockType)arg7 fallbackBlock:(CDUnknownBlockType)arg8 aboutToLoadHandler:(CDUnknownBlockType)arg9;
 - (_Bool)thumbnailImage:(id *)arg1 minSize:(struct CGSize)arg2 scale:(double)arg3 appearanceType:(unsigned long long)arg4 requireAppearance:(_Bool)arg5 imageScaling:(unsigned long long *)arg6 showAsFileIcon:(_Bool *)arg7 isMovie:(_Bool *)arg8 movieDuration:(CDStruct_1b6d18a9 *)arg9;
@@ -36,12 +57,10 @@
 @property(copy, nonatomic) ICDocCamImageQuad *croppingQuad;
 @property(readonly, nonatomic) UIImage *unprocessedDocumentImage;
 @property(readonly, nonatomic) UIImage *image;
+@property(readonly, nonatomic) _Bool supportsPresentingFromScrapPaperPIP;
 @property(readonly, nonatomic) _Bool isUnsupportedOnCurrentPlatform;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)inlineAttachmentWithTTAttachment:(id)arg1;
+- (id)inlineAttachmentFromObject:(id)arg1 createIfNecessary:(_Bool)arg2;
+- (void)filterInlineAttachmentsInTableColumnTextStorage:(id)arg1 range:(struct _NSRange)arg2;
 @end
 

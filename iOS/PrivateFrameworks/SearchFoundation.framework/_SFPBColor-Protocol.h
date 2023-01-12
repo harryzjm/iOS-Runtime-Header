@@ -6,10 +6,12 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, _SFPBGraphicalFloat;
+@class NSData, NSDictionary, _SFPBCalendarColor, _SFPBGraphicalFloat;
 
 @protocol _SFPBColor <NSObject>
+@property(readonly, nonatomic) unsigned long long whichValue;
 @property(readonly, nonatomic) NSData *jsonData;
+@property(retain, nonatomic) _SFPBCalendarColor *calendarColor;
 @property(retain, nonatomic) _SFPBGraphicalFloat *alphaComponent;
 @property(retain, nonatomic) _SFPBGraphicalFloat *blueComponent;
 @property(retain, nonatomic) _SFPBGraphicalFloat *greenComponent;

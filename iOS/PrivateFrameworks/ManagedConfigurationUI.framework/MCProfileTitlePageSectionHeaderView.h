@@ -8,7 +8,6 @@
 
 @class NSString, UILabel;
 
-__attribute__((visibility("hidden")))
 @interface MCProfileTitlePageSectionHeaderView : UIView
 {
     NSString *_text;

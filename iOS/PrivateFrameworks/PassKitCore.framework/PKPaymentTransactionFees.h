@@ -28,10 +28,10 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)primaryIdentifier;
-- (id)recordTypesAndNamesIncludingServerData:(_Bool)arg1;
+- (id)recordTypesAndNamesForCodingType:(unsigned long long)arg1;
 - (unsigned long long)itemType;
-- (void)encodeServerAndDeviceDataWithCloudStoreCoder:(id)arg1;
-- (void)encodeWithCloudStoreCoder:(id)arg1;
+- (void)_encodeServerDataWithCloudStoreCoder:(id)arg1;
+- (void)encodeWithCloudStoreCoder:(id)arg1 codingType:(unsigned long long)arg2;
 - (id)_feeItemsFromRecord:(id)arg1;
 - (void)applyPropertiesFromCloudStoreRecord:(id)arg1;
 - (id)initWithCloudStoreCoder:(id)arg1;

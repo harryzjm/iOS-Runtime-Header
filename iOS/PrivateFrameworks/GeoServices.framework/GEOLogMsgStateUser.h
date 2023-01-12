@@ -13,6 +13,7 @@
 @interface GEOLogMsgStateUser : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
+    struct GEOSessionID _preSyncSessionId;
     NSString *_homeCountryCode;
     NSString *_homeMetroRegion;
     double _mapsUseLastDate;
@@ -24,6 +25,7 @@
     struct os_unfair_lock_s _readerLock;
     _Bool _isTourist;
     struct {
+        unsigned int has_preSyncSessionId:1;
         unsigned int has_mapsUseLastDate:1;
         unsigned int has_mapsUseStartDate:1;
         unsigned int has_syncFirstTimestamp:1;
@@ -50,6 +52,8 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasPreSyncSessionId;
+@property(nonatomic) struct GEOSessionID preSyncSessionId;
 @property(nonatomic) _Bool hasIsTourist;
 @property(nonatomic) _Bool isTourist;
 @property(retain, nonatomic) NSString *homeMetroRegion;

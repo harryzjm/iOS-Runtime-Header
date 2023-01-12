@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isSupportedDeviceClass;
 - (id)getMomentsVideoCodecs;
 - (id)getMomentsImageTypes;
-- (int)getMomentsCapabilities;
+- (unsigned char)getMomentsCapabilities;
 - (id)initWithHardwareSettings:(id)arg1;
 
 @end

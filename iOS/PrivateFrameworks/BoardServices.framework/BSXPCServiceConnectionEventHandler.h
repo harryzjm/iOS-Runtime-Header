@@ -6,13 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class BSServiceInterface, BSServiceQuality, BSXPCCoder, BSXPCServiceConnectionProxy, NSString;
-@protocol BSServiceDispatchingQueue, OS_dispatch_queue;
+@class BSServiceInterface, BSServiceQuality, BSXPCCoder, BSXPCServiceConnection, BSXPCServiceConnectionProxy, NSString, RBSTarget;
+@protocol BSServiceDispatchingQueue, OS_dispatch_queue, OS_xpc_object;
 
 @interface BSXPCServiceConnectionEventHandler : NSObject
 {
+    RBSTarget *_assertionTarget;
     struct os_unfair_lock_s _lock;
     _Bool _nonLaunchingAware;
+    BSXPCServiceConnection *_lock_connection;
+    NSObject<OS_xpc_object> *_lock_activeXPCConnection;
+    NSObject<OS_dispatch_queue> *_lock_xpcConnectionTargetQueue;
     BSXPCServiceConnectionProxy *_lock_remoteTarget;
     id _interfaceTarget;
     CDUnknownBlockType _connectionHandler;

@@ -9,16 +9,23 @@
 #import <IntentsUI/_INUIExtensionContextVending-Protocol.h>
 
 @class NSString, _INUIExtensionContextState;
+@protocol _INUIRemoteViewControllerServing;
 
 __attribute__((visibility("hidden")))
 @interface _INUIExtensionContext : NSExtensionContext <_INUIExtensionContextVending>
 {
     _INUIExtensionContextState *_currentExtensionContextState;
+    id <_INUIRemoteViewControllerServing> _viewController;
 }
 
 + (id)_extensionAuxiliaryVendorProtocol;
 + (id)_extensionAuxiliaryHostProtocol;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <_INUIRemoteViewControllerServing> viewController; // @synthesize viewController=_viewController;
+- (void)viewWasCancelled;
+- (void)queryRepresentedPropertiesWithCompletion:(CDUnknownBlockType)arg1;
+- (void)desiresInteractivity:(CDUnknownBlockType)arg1;
+- (void)configureForParameters:(id)arg1 ofInteraction:(id)arg2 interactiveBehavior:(unsigned long long)arg3 context:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_willBeginEditing;
 - (void)_requestHandlingOfIntent:(id)arg1;
 - (id)interfaceParametersDescription;

@@ -23,6 +23,7 @@
     id <PXGTextureAtlasManagerDelegate> _delegate;
     id <PXGTextureConverter> _textureConverter;
     PXGColorProgram *_colorProgram;
+    NSObject<OS_dispatch_queue> *_layoutQueue;
     NSArray *_atlasTextures;
     struct CGSize _thumbnailSize;
 }
@@ -30,6 +31,7 @@
 - (void).cxx_destruct;
 @property(copy) NSArray *atlasTextures; // @synthesize atlasTextures=_atlasTextures;
 @property(readonly, nonatomic) unsigned int capacityPerAtlas; // @synthesize capacityPerAtlas=_capacityPerAtlas;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *layoutQueue; // @synthesize layoutQueue=_layoutQueue;
 @property(readonly, nonatomic) PXGColorProgram *colorProgram; // @synthesize colorProgram=_colorProgram;
 @property(nonatomic) __weak id <PXGTextureConverter> textureConverter; // @synthesize textureConverter=_textureConverter;
 @property(nonatomic) __weak id <PXGTextureAtlasManagerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -45,10 +47,10 @@
 @property(readonly, copy, nonatomic) NSArray *textures;
 - (void)processPendingThumbnailRequestIDsWithHandler:(CDUnknownBlockType)arg1;
 - (void)removeSpriteIndex:(unsigned int)arg1 atThumbnailIndex:(unsigned int)arg2;
-- (unsigned int)addSpriteWithTextureRequestID:(int)arg1 thumbnailData:(id)arg2 bytesPerRow:(unsigned long long)arg3 contentsRect:(struct CGRect)arg4;
+- (void)addSpriteWithTextureRequestID:(int)arg1 thumbnailData:(id)arg2 size:(struct CGSize)arg3 bytesPerRow:(unsigned long long)arg4 contentsRect:(struct CGRect)arg5;
 @property(readonly, copy) NSString *description;
 - (id)init;
-- (id)initWithThumbnailSize:(struct CGSize)arg1 pixelFormat:(unsigned long long)arg2 capacityPerAtlas:(unsigned int)arg3 requestQueue:(id)arg4 colorProgram:(id)arg5 device:(id)arg6;
+- (id)initWithThumbnailSize:(struct CGSize)arg1 pixelFormat:(unsigned long long)arg2 capacityPerAtlas:(unsigned int)arg3 requestQueue:(id)arg4 layoutQueue:(id)arg5 colorProgram:(id)arg6 device:(id)arg7;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

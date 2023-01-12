@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSValue;
+@class NSValue, TSCHLegendModelCache;
 
 @interface TSCHLegendAreaLayoutItem
 {
-    NSValue *mLegendGeometryFrame;
+    NSValue *_legendGeometryFrame;
 }
 
 - (void).cxx_destruct;
-- (struct CGPath *)newDragAndDropHighlightPathForSelection:(id)arg1;
-- (void)protected_iterateHitChartElements:(struct CGPoint)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (const struct CGPath *)newDragAndDropHighlightPathForSelection:(id)arg1;
+- (void)iterateHitChartElements:(struct CGPoint)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (struct CGAffineTransform)transformForRenderingLabel:(unsigned long long)arg1 paragraphStyle:(id)arg2 cellType:(int)arg3 range:(struct _NSRange)arg4 outElementSize:(struct CGSize *)arg5 outClipRect:(struct CGRect *)arg6;
 - (struct CGAffineTransform)transformForRenderingLabel:(unsigned long long)arg1 cellType:(int)arg2 range:(struct _NSRange)arg3 outElementSize:(struct CGSize *)arg4 outClipRect:(struct CGRect *)arg5;
 - (struct CGAffineTransform)transformForRenderingLabel:(unsigned long long)arg1 cellType:(int)arg2 outElementSize:(struct CGSize *)arg3 outClipRect:(struct CGRect *)arg4;
@@ -26,6 +26,8 @@
 - (struct CGSize)calcMinSize;
 - (double)p_legendModelWidth;
 - (void)setLayoutSize:(struct CGSize)arg1;
+@property(readonly) TSCHLegendModelCache *legendModelCache;
+- (id)textStyleProvidingSource;
 - (void)clearAll;
 - (void)clearLayoutSize;
 - (void)resetLayoutSize;

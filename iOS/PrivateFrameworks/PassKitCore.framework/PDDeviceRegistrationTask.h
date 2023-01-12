@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSString, NSURL;
 
 @interface PDDeviceRegistrationTask : NSObject
 {
     _Bool _shouldForceApplePay;
     _Bool _shouldForcePeerPayment;
+    NSURL *_brokerURL;
     NSMutableArray *_completionHandlers;
     NSString *_reason;
 }
@@ -21,6 +22,7 @@
 @property(nonatomic) _Bool shouldForceApplePay; // @synthesize shouldForceApplePay=_shouldForceApplePay;
 @property(copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property(retain, nonatomic) NSMutableArray *completionHandlers; // @synthesize completionHandlers=_completionHandlers;
+@property(copy, nonatomic) NSURL *brokerURL; // @synthesize brokerURL=_brokerURL;
 - (id)init;
 
 @end

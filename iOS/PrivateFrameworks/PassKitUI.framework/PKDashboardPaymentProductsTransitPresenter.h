@@ -37,6 +37,7 @@
 - (id)_renewActionForItem:(id)arg1 commutePlanIdentifier:(id)arg2;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 inCollectionView:(id)arg3 atIndexPath:(id)arg4;
 - (id)cellForItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
+- (id)displayableBalancesForTransitItem:(id)arg1;
 - (long long)_viewTypeForTransitItem:(id)arg1;
 - (id)_identifierForItem:(id)arg1;
 - (id)collectionViewCellClasses;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HDSQLiteStatementCache, HDSQLiteVFS, NSError, NSMutableArray, NSMutableDictionary, NSNumber, NSString, NSURL;
+@class HDSQLiteStatementCache, NSError, NSMutableArray, NSMutableDictionary, NSNumber, NSString, NSURL;
 @protocol HDSQLiteDatabaseDelegate;
 
 @interface HDSQLiteDatabase : NSObject
@@ -24,9 +24,8 @@
     struct os_unfair_lock_s _interruptionLock;
     _Bool _writer;
     _Bool _checkpointRequired;
-    int _corruptionResultCode;
+    _Bool _encounteredOutOfSpace;
     NSURL *_fileURL;
-    HDSQLiteVFS *_virtualFileSystem;
     NSString *_fileProtectionType;
     id <HDSQLiteDatabaseDelegate> _delegate;
     long long _cacheScope;
@@ -35,34 +34,25 @@
 }
 
 + (id)memoryDatabaseFromURL:(id)arg1;
-+ (int)_copyContentsFromDatabase:(struct sqlite3 *)arg1 toDatabase:(struct sqlite3 *)arg2;
 + (id)highFrequencyDatabaseURLWithProfileDirectoryPath:(id)arg1;
 + (id)protectedDatabaseURLWithProfileDirectoryPath:(id)arg1;
 + (id)mainDatabaseURLWithProfileDirectoryPath:(id)arg1;
 + (_Bool)databaseSchemas:(id)arg1 containTable:(id)arg2;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) int corruptionResultCode; // @synthesize corruptionResultCode=_corruptionResultCode;
 @property(readonly, copy, nonatomic) NSError *corruptionError; // @synthesize corruptionError=_corruptionError;
+@property(nonatomic) _Bool encounteredOutOfSpace; // @synthesize encounteredOutOfSpace=_encounteredOutOfSpace;
 @property(readonly, nonatomic) HDSQLiteStatementCache *statementCache; // @synthesize statementCache=_statementCache;
 @property(nonatomic) long long cacheScope; // @synthesize cacheScope=_cacheScope;
 @property(nonatomic) __weak id <HDSQLiteDatabaseDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool checkpointRequired; // @synthesize checkpointRequired=_checkpointRequired;
 @property(copy, nonatomic) NSString *fileProtectionType; // @synthesize fileProtectionType=_fileProtectionType;
-@property(retain, nonatomic) HDSQLiteVFS *virtualFileSystem; // @synthesize virtualFileSystem=_virtualFileSystem;
 @property(nonatomic, getter=isWriter) _Bool writer; // @synthesize writer=_writer;
 @property(readonly, copy, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
-- (_Bool)_handleInterruptionWithError:(id *)arg1;
-- (id)_statementCache;
-- (_Bool)_stepStatement:(struct sqlite3_stmt *)arg1 hasRow:(_Bool *)arg2 error:(id *)arg3;
+- (void)unitTest_setCorruptionError:(id)arg1;
 - (id)dumpSchemaWithError:(id *)arg1;
-- (id)_tableNamesForDatabaseWithName:(id)arg1 error:(id *)arg2;
-- (id)_schemaForDatabaseWithName:(id)arg1 error:(id *)arg2;
-- (id)_schemaForTableWithName:(id)arg1 database:(id)arg2 error:(id *)arg3;
-- (id)_schemaForIndexWithName:(id)arg1 database:(id)arg2 error:(id *)arg3;
 - (_Bool)isDatabaseWithNameAttached:(id)arg1;
 - (_Bool)detachDatabaseWithName:(id)arg1 error:(id *)arg2;
 - (_Bool)attachDatabaseWithName:(id)arg1 fileURL:(id)arg2 error:(id *)arg3;
-- (id)queryPlanForSQL:(id)arg1 error:(id *)arg2;
 - (_Bool)performIntegrityCheckOnDatabase:(id)arg1 error:(id *)arg2 integrityErrorHandler:(CDUnknownBlockType)arg3;
 - (_Bool)incrementalVacuumDatabaseIfNeeded:(id)arg1 error:(id *)arg2;
 - (_Bool)enableIncrementalAutovacuumForDatabaseWithName:(id)arg1 error:(id *)arg2;
@@ -74,31 +64,23 @@
 - (void)requireRollback;
 - (void)beforeCommit:(CDUnknownBlockType)arg1;
 - (void)onCommit:(CDUnknownBlockType)arg1 orRollback:(CDUnknownBlockType)arg2;
-- (_Bool)_integerValueForPragma:(id)arg1 databaseName:(id)arg2 value:(long long *)arg3 error:(id *)arg4;
-- (_Bool)_setPragma:(id)arg1 integerValue:(long long)arg2 withDatabaseName:(id)arg3 error:(id *)arg4;
 @property(readonly, copy, nonatomic) NSNumber *lastInsertRowID;
 - (long long)userVersionWithDatabaseName:(id)arg1 error:(id *)arg2;
 - (_Bool)setUserVersion:(long long)arg1 withDatabaseName:(id)arg2 error:(id *)arg3;
-- (_Bool)_executeSQL:(id)arg1 cache:(_Bool)arg2 error:(id *)arg3 bindingHandler:(CDUnknownBlockType)arg4 enumerationHandler:(CDUnknownBlockType)arg5;
 - (_Bool)executeCachedStatementForKey:(const char *)arg1 error:(id *)arg2 SQLGenerator:(CDUnknownBlockType)arg3 bindingHandler:(CDUnknownBlockType)arg4 enumerationHandler:(CDUnknownBlockType)arg5;
 - (_Bool)executeSQLStatements:(id)arg1 error:(id *)arg2;
 - (_Bool)executeUncachedSQL:(id)arg1 error:(id *)arg2;
 - (_Bool)executeUncachedSQL:(id)arg1 error:(id *)arg2 bindingHandler:(CDUnknownBlockType)arg3 enumerationHandler:(CDUnknownBlockType)arg4;
 - (_Bool)executeSQL:(id)arg1 error:(id *)arg2 bindingHandler:(CDUnknownBlockType)arg3 enumerationHandler:(CDUnknownBlockType)arg4;
-- (_Bool)_executeStatementWithError:(id *)arg1 statementProvider:(CDUnknownBlockType)arg2 bindingHandler:(CDUnknownBlockType)arg3 enumerationHandler:(CDUnknownBlockType)arg4;
 - (_Bool)performTransactionWithType:(long long)arg1 error:(id *)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (int)getChangesCount;
-- (id)getLastErrorWithResultCode:(int)arg1;
-- (_Bool)_executeUncachedSQL:(id)arg1 error:(id *)arg2 retryIfBusy:(_Bool)arg3 interruptible:(_Bool)arg4;
-- (_Bool)_executeUncachedSQL:(id)arg1 error:(id *)arg2;
-- (_Bool)_verifyDatabaseOpenAndReturnError:(id *)arg1;
+- (id)getLastErrorWithStatement:(struct sqlite3_stmt *)arg1 context:(id)arg2;
 - (void)accessDatabaseUsingBlock:(CDUnknownBlockType)arg1;
 @property _Bool transactionInterruptRequested;
 @property(readonly, nonatomic, getter=isOpen) _Bool open;
 - (void)close;
 - (int)openForReadingWithError:(id *)arg1;
 - (int)openWithError:(id *)arg1;
-- (int)_openForWriting:(_Bool)arg1 additionalFlags:(int)arg2 error:(id *)arg3;
 - (void)dealloc;
 - (id)initMemoryDatabase;
 - (id)initWithDatabaseURL:(id)arg1;
@@ -110,8 +92,6 @@
 - (_Bool)deleteDataEntitySubclassTablesIfExist:(id)arg1 intermediateTables:(id)arg2 error:(id *)arg3;
 - (_Bool)deleteDataEntitySubclassTable:(id)arg1 intermediateTables:(id)arg2 error:(id *)arg3;
 - (_Bool)deleteRowsFromDataEntitySubclassTable:(id)arg1 intermediateTables:(id)arg2 error:(id *)arg3;
-- (_Bool)correlationCountForDataEntitySubclassTable:(id)arg1 count:(long long *)arg2 error:(id *)arg3;
-- (id)statementsForDeleteRowsFromDataEntitySubclassTable:(id)arg1 intermediateTables:(id)arg2 error:(id *)arg3;
 
 @end
 

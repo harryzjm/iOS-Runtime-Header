@@ -12,10 +12,18 @@
 
 + (id)sharedLauncher;
 - (void)deactivateSiriActivationConnectionWithReason:(long long)arg1 withOptions:(unsigned long long)arg2;
-- (void)notifyRemoraVoiceTrigger:(id)arg1 deviceId:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)notifyWakeKeywordSpokenRemora:(id)arg1 deviceId:(id)arg2;
+- (void)notifyRemoraVoiceTrigger:(id)arg1 myriadPHash:(id)arg2 deviceId:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)notifyRemoraVoiceTriggerPrewarm:(id)arg1 deviceId:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)notifyWakeKeywordSpokenBluetoothDevice:(id)arg1 deviceId:(id)arg2;
 - (void)notifyBluetoothDeviceVoiceTrigger:(id)arg1 deviceId:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)notifyBluetoothDeviceVoiceTriggerPrewarm:(id)arg1 deviceId:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)notifyWakeKeywordSpokenCarPlay:(id)arg1 deviceId:(id)arg2;
 - (void)notifyCarPlayVoiceTrigger:(id)arg1 deviceId:(id)arg2 myriadPHash:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)notifyCarPlayVoiceTriggerPrewarm:(id)arg1 deviceId:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)notifyWakeKeywordSpokenInBuiltInMic:(id)arg1;
 - (void)notifyBuiltInVoiceTrigger:(id)arg1 myriadPHash:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)notifyBuiltInVoiceTriggerPrewarm:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

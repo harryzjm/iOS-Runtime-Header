@@ -16,7 +16,7 @@
     struct CGRect _bounds;
 }
 
-- (void)drawAdornmentForFragment:(const struct TSWPLineFragment *)arg1 inContext:(struct CGContext *)arg2 withFlags:(unsigned int)arg3 state:(const struct TSWPDrawingState *)arg4 bounds:(struct CGRect)arg5;
+- (void)drawAdornmentForFragment:(const void *)arg1 inContext:(struct CGContext *)arg2 withFlags:(unsigned int)arg3 state:(const void *)arg4 bounds:(struct CGRect)arg5;
 @property(readonly, nonatomic) _Bool isBackground;
 - (void)dealloc;
 - (id)initWithColor:(id)arg1 bounds:(struct CGRect)arg2;

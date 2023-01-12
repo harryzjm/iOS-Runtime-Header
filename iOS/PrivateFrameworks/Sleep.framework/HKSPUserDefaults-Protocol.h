@@ -6,21 +6,24 @@
 
 #import <Sleep/NSObject-Protocol.h>
 
-@class NSData, NSString;
+@class NSData, NSDictionary, NSSet, NSString;
 
 @protocol HKSPUserDefaults <NSObject>
-- (void)removeObjectForKey:(NSString *)arg1;
-- (NSData *)dataForKey:(NSString *)arg1;
-- (void)setBool:(_Bool)arg1 forKey:(NSString *)arg2;
-- (_Bool)boolForKey:(NSString *)arg1;
-- (void)setInteger:(long long)arg1 forKey:(NSString *)arg2;
-- (long long)integerForKey:(NSString *)arg1;
-- (void)setFloat:(float)arg1 forKey:(NSString *)arg2;
-- (float)floatForKey:(NSString *)arg1;
-- (void)setObject:(id)arg1 forKey:(NSString *)arg2;
-- (id)objectForKey:(NSString *)arg1;
-
-@optional
-- (void)synchronize;
+- (void)hksp_synchronizeKeys:(NSSet *)arg1;
+- (void)hksp_synchronize;
+- (void)hksp_removeObjectsForKeys:(NSSet *)arg1;
+- (void)hksp_saveDictionary:(NSDictionary *)arg1;
+- (NSDictionary *)hksp_dictionaryRepresentationForKeys:(NSSet *)arg1;
+- (NSDictionary *)hksp_dictionaryRepresentation;
+- (NSData *)hksp_dataForKey:(NSString *)arg1;
+- (void)hksp_setInteger:(long long)arg1 forKey:(NSString *)arg2;
+- (long long)hksp_integerForKey:(NSString *)arg1;
+- (void)hksp_setFloat:(float)arg1 forKey:(NSString *)arg2;
+- (float)hksp_floatForKey:(NSString *)arg1;
+- (void)hksp_setBool:(_Bool)arg1 forKey:(NSString *)arg2;
+- (_Bool)hksp_boolForKey:(NSString *)arg1;
+- (void)hksp_removeObjectForKey:(NSString *)arg1;
+- (void)hksp_setObject:(id)arg1 forKey:(NSString *)arg2;
+- (id)hksp_objectForKey:(NSString *)arg1;
 @end
 

@@ -45,20 +45,24 @@
 - (long long)wallpaperStyle;
 - (_Bool)isWallpaperRequiredForSwitcher;
 - (long long)homeScreenBackdropBlurType;
-- (double)opacityForIndex:(unsigned long long)arg1;
+- (double)opacityForLayoutRole:(long long)arg1 inAppLayout:(id)arg2 atIndex:(unsigned long long)arg3;
 - (double)homeScreenAlpha;
 - (_Bool)shouldScaleOverlayToFillBoundsAtIndex:(unsigned long long)arg1;
-- (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
+- (struct UIRectCornerRadii)cornerRadiiForIndex:(unsigned long long)arg1;
 - (id)layoutSettingsForTargetCenter:(struct CGPoint)arg1;
 - (id)_layoutSettings;
 - (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)visibleHomeAffordanceLayoutElements;
 - (id)visibleAppLayouts;
 - (double)scaleForIndex:(unsigned long long)arg1;
+- (struct SBSwitcherShelfPresentationAttributes)presentationAttributesForShelf:(id)arg1;
+- (id)containerLeafAppLayoutForShelf:(id)arg1;
+- (struct CGRect)fullyPresentedFrameForIndex:(unsigned long long)arg1 frame:(struct CGRect)arg2;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
 - (id)handleTimerEvent:(id)arg1;
 - (id)transitionDidEnd;
 - (id)transitionWillBegin;
-- (_Bool)shouldRasterizeLiveContentUntilDelay:(inout double *)arg1;
+- (_Bool)shouldAsyncRenderUntilDelay:(inout double *)arg1;
 - (void)didMoveToParentModifier:(id)arg1;
 - (id)initWithTransitionID:(id)arg1 appLayout:(id)arg2 direction:(unsigned long long)arg3;
 

@@ -20,6 +20,7 @@
     unsigned long long _debugLatencyMs;
     NSMutableArray *_displayLanguages;
     NSString *_displayRegion;
+    NSMutableArray *_dotPlaces;
     GEOPDPlaceGlobalResult *_globalResult;
     NSMutableArray *_mapsResults;
     NSMutableArray *_legacyPlaceResults;
@@ -39,6 +40,7 @@
         unsigned int read_debugApiKey:1;
         unsigned int read_displayLanguages:1;
         unsigned int read_displayRegion:1;
+        unsigned int read_dotPlaces:1;
         unsigned int read_globalResult:1;
         unsigned int read_mapsResults:1;
         unsigned int read_legacyPlaceResults:1;
@@ -48,6 +50,7 @@
 }
 
 + (_Bool)isValid:(id)arg1;
++ (Class)dotPlaceType;
 + (Class)mapsResultType;
 + (Class)spokenLanguageType;
 + (Class)displayLanguageType;
@@ -64,7 +67,8 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
-- (void)clearSensitiveFields;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
+- (void)clearSensitiveFields:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -73,6 +77,11 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)dotPlaceAtIndex:(unsigned long long)arg1;
+- (unsigned long long)dotPlacesCount;
+- (void)addDotPlace:(id)arg1;
+- (void)clearDotPlaces;
+@property(retain, nonatomic) NSMutableArray *dotPlaces;
 - (id)mapsResultAtIndex:(unsigned long long)arg1;
 - (unsigned long long)mapsResultsCount;
 - (void)addMapsResult:(id)arg1;

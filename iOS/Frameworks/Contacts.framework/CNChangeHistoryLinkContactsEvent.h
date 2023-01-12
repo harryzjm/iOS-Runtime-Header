@@ -6,16 +6,17 @@
 
 @class CNContact;
 
-__attribute__((visibility("hidden")))
 @interface CNChangeHistoryLinkContactsEvent
 {
     CNContact *_fromContact;
     CNContact *_toContact;
+    CNContact *_unifiedContact;
 }
 
 + (unsigned long long)instanceSortOrder;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) CNContact *unifiedContact; // @synthesize unifiedContact=_unifiedContact;
 @property(readonly, nonatomic) CNContact *toContact; // @synthesize toContact=_toContact;
 @property(readonly, nonatomic) CNContact *fromContact; // @synthesize fromContact=_fromContact;
 - (long long)comparisonResultWithinSameClass:(id)arg1;
@@ -25,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithFromContact:(id)arg1 toContact:(id)arg2;
+- (id)initWithFromContact:(id)arg1 toContact:(id)arg2 unifiedContact:(id)arg3;
 - (id)init;
 
 @end

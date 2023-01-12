@@ -6,29 +6,30 @@
 
 #import <PhotosUICore/PXObservable.h>
 
-@class NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet;
+@class NSMutableDictionary, NSMutableOrderedSet, NSSet;
 @protocol AEPackageTransportDelegate;
 
 @interface AEPackageTransport : PXObservable
 {
     id <AEPackageTransportDelegate> _delegate;
-    NSMutableArray *__stagedIdentifiersInOrder;
+    NSMutableOrderedSet *__allOrderedPackageIdentifiers;
     NSMutableDictionary *__stagedPackagesByIdentifier;
-    NSMutableSet *__pendingPackageIdentifiers;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSMutableSet *_pendingPackageIdentifiers; // @synthesize _pendingPackageIdentifiers=__pendingPackageIdentifiers;
 @property(readonly, nonatomic) NSMutableDictionary *_stagedPackagesByIdentifier; // @synthesize _stagedPackagesByIdentifier=__stagedPackagesByIdentifier;
-@property(readonly, nonatomic) NSMutableArray *_stagedIdentifiersInOrder; // @synthesize _stagedIdentifiersInOrder=__stagedIdentifiersInOrder;
+@property(readonly, nonatomic) NSMutableOrderedSet *_allOrderedPackageIdentifiers; // @synthesize _allOrderedPackageIdentifiers=__allOrderedPackageIdentifiers;
 @property(nonatomic) __weak id <AEPackageTransportDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)removePendingPackageIdentifier:(id)arg1;
 - (void)addPendingPackageIdentifier:(id)arg1;
+- (void)removeAllExpectedPackagesWithIdentifiers:(id)arg1;
 @property(readonly, nonatomic) NSSet *expectedPackageIdentifiers;
 @property(readonly, nonatomic) long long expectedPackageCount;
+- (unsigned long long)proposedStagedIndexForPendingIdentifier:(id)arg1;
 - (id)stagedPackages;
 - (id)stagedPackageForIdentifier:(id)arg1;
 - (id)orderedStagedIdentifiers;
+- (id)_orderedStagedIdentifiersIncludingPendingIdentifier:(id)arg1;
 - (void)unstagePackagesWithIdentifiers:(id)arg1;
 - (void)unstagePackageWithIdentifier:(id)arg1 andNotify:(_Bool)arg2;
 - (void)unstagePackageWithIdentifier:(id)arg1;

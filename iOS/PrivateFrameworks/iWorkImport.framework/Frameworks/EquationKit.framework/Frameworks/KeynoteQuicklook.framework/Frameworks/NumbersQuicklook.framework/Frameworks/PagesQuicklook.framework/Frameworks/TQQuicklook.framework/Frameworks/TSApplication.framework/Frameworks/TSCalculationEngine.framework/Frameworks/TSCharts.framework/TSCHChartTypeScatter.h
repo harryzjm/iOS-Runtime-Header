@@ -8,6 +8,7 @@
 {
 }
 
+- (id)name;
 - (long long)userInterfaceTag;
 - (id)allCDESectionLabels;
 - (_Bool)supportsErrorBarsScatterX;

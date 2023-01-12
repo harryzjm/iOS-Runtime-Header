@@ -22,9 +22,11 @@
 - (void).cxx_destruct;
 @property(retain) id <SFRemoteHotspotProtocol> connectionProxy; // @synthesize connectionProxy=_connectionProxy;
 @property _Bool browsing; // @synthesize browsing=_browsing;
-@property __weak id <SFRemoteHotspotSessionDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak id <SFRemoteHotspotSessionDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)xpcManagerConnectionInterrupted;
 - (void)updatedFoundDeviceList:(id)arg1;
+- (void)removeDedicatedCellularBearerWithCompletion:(CDUnknownBlockType)arg1;
+- (void)addDedicatedCellularBearer:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)enableRemoteHotspotForDevice:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)enableHotspotForDevice:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)stopBrowsing;

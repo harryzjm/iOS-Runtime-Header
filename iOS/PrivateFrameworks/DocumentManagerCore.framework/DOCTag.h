@@ -22,6 +22,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)untitledTagForRendering:(long long)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSNumber *sidebarPinned; // @synthesize sidebarPinned=_sidebarPinned;
 @property(readonly, nonatomic) NSNumber *sidebarVisible; // @synthesize sidebarVisible=_sidebarVisible;

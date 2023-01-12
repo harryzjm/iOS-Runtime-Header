@@ -16,10 +16,11 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)_resetBadLaunchInterfaceCount:(id)arg1;
 - (void)_addBadLaunchInterfaceToDenyList:(id)arg1 forError:(id)arg2;
-- (void)_generateImageForSnapshot:(id)arg1 inManifest:(id)arg2 withContext:(id)arg3 asyncImageData:(_Bool)arg4 dataProvider:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)_generateImageForSnapshot:(id)arg1 inManifest:(id)arg2 withContext:(id)arg3 asyncImageData:(_Bool)arg4 dataProvider:(id)arg5 scheduleAsyncGeneration:(_Bool)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)captureLaunchImageForManifest:(id)arg1 withCompatibilityInfo:(id)arg2 launchRequests:(id)arg3 createCaptureInfo:(_Bool)arg4 firstImageIsReady:(CDUnknownBlockType)arg5 withCompletionHandler:(CDUnknownBlockType)arg6;
-- (CDUnknownBlockType)createLaunchImageGeneratorWithContext:(id)arg1 asyncImageData:(_Bool)arg2;
+- (CDUnknownBlockType)createLaunchImageGeneratorWithContext:(id)arg1 asyncImageData:(_Bool)arg2 error:(id *)arg3;
 - (void)preheatServiceWithTimeout:(double)arg1;
 - (void)dealloc;
 - (id)init;

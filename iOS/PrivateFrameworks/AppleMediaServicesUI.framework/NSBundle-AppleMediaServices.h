@@ -9,6 +9,7 @@
 @class UIImage;
 
 @interface NSBundle (AppleMediaServices)
+- (id)ams_imageForResource:(id)arg1;
 @property(readonly, nonatomic) UIImage *icon;
 @end
 

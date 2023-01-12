@@ -11,12 +11,14 @@
     MISSING_TYPE *action;
     MISSING_TYPE *menuAttribute;
     MISSING_TYPE *cachedMenu;
+    MISSING_TYPE *token;
 }
 
 - (void).cxx_destruct;
 - (id)init;
 - (void)menuActionTriggered:(id)arg1;
 - (void)primaryActionTriggered:(id)arg1;
+- (void)dealloc;
 
 @end
 

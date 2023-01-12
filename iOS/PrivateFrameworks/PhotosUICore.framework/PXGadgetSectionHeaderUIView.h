@@ -12,7 +12,7 @@
 
 @interface PXGadgetSectionHeaderUIView : UICollectionReusableView <PXChangeObserver>
 {
-    CDStruct_d97c9657 _updateFlags;
+    CDStruct_af00bf4e _updateFlags;
     UILabel *_titleLabel;
     UIButton *_accessoryButton;
     UIView *_divider;

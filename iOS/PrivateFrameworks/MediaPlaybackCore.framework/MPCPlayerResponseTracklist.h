@@ -6,16 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/_MPCStateDumpPropertyListTransformable-Protocol.h>
+#import <MediaPlaybackCore/NSObject-Protocol.h>
 
 @class MPCPlayerResponse, MPCPlayerResponseItem, MPSectionedCollection, NSIndexPath, NSString;
 
-@interface MPCPlayerResponseTracklist : NSObject <_MPCStateDumpPropertyListTransformable>
+@interface MPCPlayerResponseTracklist : NSObject <NSObject>
 {
     unsigned long long _changeItemSupport;
     NSString *_uniqueIdentifier;
     long long _lastChangeDirection;
     long long _upNextItemCount;
+    long long _explicitContentState;
     long long _repeatType;
     long long _shuffleType;
     long long _actionAtQueueEnd;
@@ -39,6 +40,7 @@
 @property(readonly, nonatomic) long long actionAtQueueEnd; // @synthesize actionAtQueueEnd=_actionAtQueueEnd;
 @property(readonly, nonatomic) long long shuffleType; // @synthesize shuffleType=_shuffleType;
 @property(readonly, nonatomic) long long repeatType; // @synthesize repeatType=_repeatType;
+@property(readonly, nonatomic) long long explicitContentState; // @synthesize explicitContentState=_explicitContentState;
 @property(readonly, nonatomic) long long upNextItemCount; // @synthesize upNextItemCount=_upNextItemCount;
 @property(readonly, nonatomic) long long lastChangeDirection; // @synthesize lastChangeDirection=_lastChangeDirection;
 @property(readonly, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;

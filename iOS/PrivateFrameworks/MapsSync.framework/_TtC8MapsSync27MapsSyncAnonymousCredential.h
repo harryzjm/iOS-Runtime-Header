@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MISSING_TYPE, NSData, NSDate, NSSet;
+@class MISSING_TYPE, NSData, NSDate, NSSet, NSString;
 
 @interface _TtC8MapsSync27MapsSyncAnonymousCredential
 {
@@ -20,6 +20,7 @@
 + (id)fetchLatestAnonymousCredential;
 - (void).cxx_destruct;
 - (id)initWithObject:(id)arg1;
+@property(nonatomic, readonly) NSString *description;
 - (void)addEditWithBlock:(CDUnknownBlockType)arg1;
 - (Class)managedObjectClass;
 - (Class)mutableObjectClass;

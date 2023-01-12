@@ -22,6 +22,7 @@
 + (id)entityForAddress:(id)arg1;
 + (id)copyEntityForAddressString:(id)arg1;
 + (id)_copyEntityForAddressString:(id)arg1 onAccount:(id)arg2;
++ (_Bool)string:(id)arg1 hasPrefix:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) CNContact *cnContact; // @synthesize cnContact=_cnContact;
 @property(retain, nonatomic) IMChat *chat; // @synthesize chat=_chat;

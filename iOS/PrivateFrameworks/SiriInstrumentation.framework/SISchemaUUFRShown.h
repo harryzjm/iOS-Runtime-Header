@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProtocolBuffer/PBCodable.h>
+@class NSData, NSString, SISchemaGridCardSection, SISchemaSiriResponseContext, SISchemaUUID;
 
-@class NSData, NSString, SISchemaSiriResponseContext;
-
-@interface SISchemaUUFRShown : PBCodable
+@interface SISchemaUUFRShown
 {
     NSString *_viewID;
     NSString *_snippetClass;
@@ -18,6 +16,8 @@
     NSString *_aceViewID;
     NSString *_aceViewClass;
     int _viewRegionDesignation;
+    SISchemaGridCardSection *_gridCardSection;
+    SISchemaUUID *_linkId;
     struct {
         unsigned int siriUILocation:1;
         unsigned int viewRegionDesignation:1;
@@ -28,15 +28,21 @@
     _Bool _hasSiriResponseContext;
     _Bool _hasAceViewID;
     _Bool _hasAceViewClass;
+    _Bool _hasGridCardSection;
+    _Bool _hasLinkId;
+    unsigned long long _whichSubsection;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool hasLinkId; // @synthesize hasLinkId=_hasLinkId;
+@property(nonatomic) _Bool hasGridCardSection; // @synthesize hasGridCardSection=_hasGridCardSection;
 @property(nonatomic) _Bool hasAceViewClass; // @synthesize hasAceViewClass=_hasAceViewClass;
 @property(nonatomic) _Bool hasAceViewID; // @synthesize hasAceViewID=_hasAceViewID;
 @property(nonatomic) _Bool hasSiriResponseContext; // @synthesize hasSiriResponseContext=_hasSiriResponseContext;
 @property(nonatomic) _Bool hasDialogIdentifier; // @synthesize hasDialogIdentifier=_hasDialogIdentifier;
 @property(nonatomic) _Bool hasSnippetClass; // @synthesize hasSnippetClass=_hasSnippetClass;
 @property(nonatomic) _Bool hasViewID; // @synthesize hasViewID=_hasViewID;
+@property(retain, nonatomic) SISchemaUUID *linkId; // @synthesize linkId=_linkId;
 @property(nonatomic) int viewRegionDesignation; // @synthesize viewRegionDesignation=_viewRegionDesignation;
 @property(copy, nonatomic) NSString *aceViewClass; // @synthesize aceViewClass=_aceViewClass;
 @property(copy, nonatomic) NSString *aceViewID; // @synthesize aceViewID=_aceViewID;
@@ -45,6 +51,7 @@
 @property(nonatomic) int siriUILocation; // @synthesize siriUILocation=_siriUILocation;
 @property(copy, nonatomic) NSString *snippetClass; // @synthesize snippetClass=_snippetClass;
 @property(copy, nonatomic) NSString *viewID; // @synthesize viewID=_viewID;
+@property(readonly, nonatomic) unsigned long long whichSubsection; // @synthesize whichSubsection=_whichSubsection;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 @property(readonly, nonatomic) NSData *jsonData;
@@ -53,6 +60,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
+@property(retain, nonatomic) SISchemaGridCardSection *gridCardSection; // @synthesize gridCardSection=_gridCardSection;
 @property(nonatomic) _Bool hasViewRegionDesignation;
 @property(nonatomic) _Bool hasSiriUILocation;
 

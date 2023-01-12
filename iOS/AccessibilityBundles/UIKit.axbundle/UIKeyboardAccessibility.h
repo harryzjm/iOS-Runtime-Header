@@ -12,6 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityNativeFocusPreferredElement;
+- (_Bool)canBecomeFocused;
 - (void)_voiceOverStatus:(id)arg1;
 - (struct CGRect)_accessibilityDirectInteractionFrame;
 - (struct CGRect)accessibilityFrame;
@@ -22,16 +23,6 @@
 - (void)activate;
 - (void)deactivate;
 - (void)dealloc;
-- (_Bool)_accessibilitySwitchToGestureMode:(_Bool)arg1;
-- (_Bool)_axDeleteByWord;
-- (_Bool)_axDeleteByCharacter;
-- (_Bool)_axShiftLock;
-- (_Bool)_axShift;
-- (_Bool)_axAdvanceInternationalKeyboard:(_Bool)arg1;
-- (_Bool)_axAdvanceKeyboardSuggestion:(_Bool)arg1;
-- (_Bool)_axEnterTextValue:(id)arg1;
-- (_Bool)_axCommitWord;
-- (_Bool)_axAdvanceKeyboardPlane:(_Bool)arg1;
 - (_Bool)_iosAccessibilityPerformAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
 - (_Bool)_accessibilityKeyboardIsContinuousPathAvailable;
 - (unsigned long long)_accessibilityAutomationType;

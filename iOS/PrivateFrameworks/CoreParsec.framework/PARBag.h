@@ -12,14 +12,15 @@
 
 @interface PARBag : NSObject <NSSecureCoding>
 {
-    NSData *_bagData;
     NSString *_userAgent;
     NSString *_clientName;
     NSUserDefaults *_userDefaults;
+    NSData *_bagData;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSData *bagData; // @synthesize bagData=_bagData;
 @property(readonly, nonatomic) NSUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
 @property(readonly, copy, nonatomic) NSString *clientName; // @synthesize clientName=_clientName;
 @property(readonly, copy, nonatomic) NSString *userAgent; // @synthesize userAgent=_userAgent;
@@ -37,7 +38,6 @@
 - (id)_bag_objectOfClass:(Class)arg1 forKey:(id)arg2;
 @property(readonly, nonatomic) _Bool exp;
 @property(readonly, nonatomic) long long protocolVersion;
-@property(readonly, nonatomic) NSDictionary *tuscanyConfiguration;
 @property(readonly, copy, nonatomic) NSString *parsecFeedbackFormat;
 @property(readonly, nonatomic) _Bool disableAsTypedSuggestion;
 @property(readonly, nonatomic) NSArray *suggestionRankerModel;
@@ -55,7 +55,6 @@
 @property(readonly, nonatomic) unsigned long long smartHistoryMinimumQueryLength;
 @property(readonly, nonatomic) _Bool smartHistoryFeatureFeedbackEnabled;
 @property(readonly, nonatomic) unsigned long long smartHistorySampleThreshold;
-@property(readonly, nonatomic) unsigned long long smartHistoryCompletionReturnCount;
 @property(readonly, nonatomic) unsigned long long smartHistoryMaxRows;
 @property(readonly, nonatomic) unsigned long long smartHistoryTimeout;
 @property(readonly, nonatomic) _Bool smartHistoryEnabled;
@@ -99,7 +98,6 @@
 @property(readonly, nonatomic) double subscriptionTTL;
 @property(readonly, nonatomic) NSArray *subscriptionProviderBundleIdentifierWhitelist;
 @property(readonly, nonatomic) NSArray *subscriptionProviderDomainWhitelist;
-@property(readonly, nonatomic) _Bool sendGeoEnvironmentHeader;
 @property(readonly, nonatomic) NSArray *downloadResourcesList;
 @property(readonly, nonatomic) NSArray *supportedGeoLocationSources;
 @property(readonly, nonatomic) NSNumber *minSuggestionRenderTimeout;

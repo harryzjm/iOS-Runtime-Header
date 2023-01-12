@@ -9,22 +9,23 @@
 #import <CoreLocation/CLLocationManagerRoutineClientInterface-Protocol.h>
 
 @class CLLocationManagerRoutine, NSString, NSXPCConnection;
-@protocol CLLocationManagerDelegate, OS_dispatch_queue;
+@protocol OS_dispatch_queue;
 
 @interface _CLLocationManagerRoutineProxy : NSObject <CLLocationManagerRoutineClientInterface>
 {
     NSObject<OS_dispatch_queue> *_queue;
     _Bool _updating;
     NSXPCConnection *_connection;
-    id <CLLocationManagerDelegate> _delegate;
+    id _delegate;
     CLLocationManagerRoutine *_locationManagerRoutine;
 }
 
 @property(nonatomic) _Bool updating; // @synthesize updating=_updating;
 @property(nonatomic) CLLocationManagerRoutine *locationManagerRoutine; // @synthesize locationManagerRoutine=_locationManagerRoutine;
-@property(nonatomic) id <CLLocationManagerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) id delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 - (void)createConnection;
+- (void)didUpdateLocations:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)didUpdateLocations:(id)arg1;
 - (void)dealloc;
 - (id)initWithQueue:(id)arg1 locationManagerRoutine:(id)arg2;

@@ -18,6 +18,7 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) HUFaceRecognitionLibraryListItemManager *listItemManager; // @synthesize listItemManager=_listItemManager;
+- (void)dealloc;
 - (void)personEditorViewController:(id)arg1 didUpdateItem:(id)arg2;
 - (void)dismissTextViewController;
 - (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;

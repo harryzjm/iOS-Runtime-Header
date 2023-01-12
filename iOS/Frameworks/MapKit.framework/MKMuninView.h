@@ -93,6 +93,7 @@
 - (void)muninGestureController:(id)arg1 didTapLabelMarker:(id)arg2;
 - (void)muninGestureControllerDidStopUserInteraction:(id)arg1;
 - (void)muninGestureControllerDidStartUserInteraction:(id)arg1;
+- (void)snapToNorth:(id)arg1;
 - (void)removeCustomFeatureDataSource:(id)arg1;
 - (void)addCustomFeatureDataSource:(id)arg1;
 - (id)labelMarkerForCustomFeatureAnnotation:(id)arg1;

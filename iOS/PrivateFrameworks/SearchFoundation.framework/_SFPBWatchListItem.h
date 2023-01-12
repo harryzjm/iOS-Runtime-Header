@@ -13,6 +13,7 @@
 
 @interface _SFPBWatchListItem : PBCodable <_SFPBWatchListItem, NSSecureCoding>
 {
+    _Bool _isMediaContainer;
     NSString *_watchListIdentifier;
     NSString *_seasonEpisodeTextFormat;
     NSString *_continueInTextFormat;
@@ -26,6 +27,7 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isMediaContainer; // @synthesize isMediaContainer=_isMediaContainer;
 @property(copy, nonatomic) NSString *watchLiveTextFormat; // @synthesize watchLiveTextFormat=_watchLiveTextFormat;
 @property(copy, nonatomic) NSString *addedToUpNextText; // @synthesize addedToUpNextText=_addedToUpNextText;
 @property(copy, nonatomic) NSString *addToUpNextText; // @synthesize addToUpNextText=_addToUpNextText;

@@ -27,6 +27,7 @@
     UIResponder *_responder;
     double _force;
     UIKey *_key;
+    long long _modifierFlags;
     unsigned long long _source;
     unsigned long long _gameControllerComponent;
     unsigned long long _clickCount;
@@ -40,6 +41,7 @@
 @property(readonly, nonatomic) unsigned int contextID; // @synthesize contextID=_contextID;
 @property(nonatomic, getter=_gameControllerComponent, setter=_setGameControllerComponent:) unsigned long long gameControllerComponent; // @synthesize gameControllerComponent=_gameControllerComponent;
 @property(nonatomic, getter=_source, setter=_setSource:) unsigned long long source; // @synthesize source=_source;
+@property(nonatomic) long long modifierFlags; // @synthesize modifierFlags=_modifierFlags;
 @property(retain, nonatomic) UIKey *key; // @synthesize key=_key;
 @property(nonatomic) double force; // @synthesize force=_force;
 @property(retain, nonatomic) UIResponder *responder; // @synthesize responder=_responder;

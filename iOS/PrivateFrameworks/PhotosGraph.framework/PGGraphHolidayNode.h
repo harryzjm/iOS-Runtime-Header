@@ -4,30 +4,37 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PhotosGraph/PGAssetCollectionFeature-Protocol.h>
 #import <PhotosGraph/PGGraphLocalizable-Protocol.h>
 
-@class NSString;
+@class NSString, PGGraphHolidayNodeCollection;
 
-@interface PGGraphHolidayNode <PGGraphLocalizable>
+@interface PGGraphHolidayNode <PGGraphLocalizable, PGAssetCollectionFeature>
 {
     unsigned int _category:8;
     NSString *_name;
 }
 
++ (id)holidayNodeFilterWithNames:(id)arg1;
++ (id)holidayNodeFilterWithCategory:(unsigned long long)arg1;
++ (id)datesOfCelebration;
++ (id)filter;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long category; // @synthesize category=_category;
 @property(readonly) NSString *name; // @synthesize name=_name;
+@property(readonly, nonatomic) NSString *featureIdentifier;
+@property(readonly, nonatomic) unsigned long long featureType;
+@property(readonly, nonatomic) PGGraphHolidayNodeCollection *collection;
 @property(readonly, nonatomic) NSString *localizedName;
-- (void)enumerateCelebratingHighlightNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateCelebratingMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (unsigned short)domain;
 - (id)label;
 @property(readonly, copy) NSString *description;
+- (id)propertyForKey:(id)arg1;
 - (id)propertyDictionary;
 - (_Bool)hasProperties:(id)arg1;
-- (void)setLocalProperties:(id)arg1;
-- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
-- (id)init;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3 properties:(id)arg4;
+- (id)initWithName:(id)arg1 category:(unsigned long long)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

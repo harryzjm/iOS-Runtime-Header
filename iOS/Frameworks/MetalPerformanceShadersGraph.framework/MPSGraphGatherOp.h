@@ -6,12 +6,11 @@
 
 @interface MPSGraphGatherOp
 {
-    unsigned long long _axis;
     unsigned long long _batchDims;
 }
 
-- (struct Value)makeMLIROpWithBuilder:(struct OpBuilder *)arg1 symbolTable:(struct MPSSymbolTable *)arg2 inputValues:(vector_c90d9c45 *)arg3 opInitialization:(_Bool)arg4 name:(id)arg5;
-- (id)initWithGraph:(id)arg1 inputTensors:(id)arg2 controlDependencies:(id)arg3 axis:(unsigned long long)arg4 batchDimensions:(unsigned long long)arg5 name:(id)arg6;
+- (void *)makeMLIROpWithBuilder:(void *)arg1 symbolTable:(void *)arg2 inputValues:(void *)arg3 opInitialization:(_Bool)arg4 name:(id)arg5;
+- (id)initWithGraph:(id)arg1 inputTensors:(id)arg2 controlDependencies:(id)arg3 batchDimensions:(unsigned long long)arg4 name:(id)arg5;
 
 @end
 

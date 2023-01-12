@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSLayoutManager, UIImage;
+#import <UIKitCore/_UITextPreviewRenderer-Protocol.h>
 
-@interface UITextDragPreviewRenderer : NSObject
+@class NSLayoutManager, NSString, UIImage;
+
+@interface UITextDragPreviewRenderer : NSObject <_UITextPreviewRenderer>
 {
     struct _NSRange _range;
     struct CGRect _firstRect;
@@ -23,6 +25,8 @@
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSLayoutManager *layoutManager; // @synthesize layoutManager=_layoutManager;
+- (void)removeRenderingAttributes:(id)arg1;
+- (void)addRenderingAttributes:(id)arg1;
 - (void)adjustFirstLineRect:(inout struct CGRect *)arg1 bodyRect:(inout struct CGRect *)arg2 lastLineRect:(inout struct CGRect *)arg3 textOrigin:(struct CGPoint)arg4;
 - (struct CGRect)_rawBoundingRect;
 - (struct CGRect)_correctlyOffsetBoundingRect;
@@ -34,6 +38,12 @@
 @property(readonly, nonatomic) UIImage *image;
 - (id)initWithLayoutManager:(id)arg1 range:(struct _NSRange)arg2 unifyRects:(_Bool)arg3;
 - (id)initWithLayoutManager:(id)arg1 range:(struct _NSRange)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

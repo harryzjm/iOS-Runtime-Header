@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *sessionProvider;
     MISSING_TYPE *accessQueue;
+    MISSING_TYPE *accessGroup;
     MISSING_TYPE *eventProcessors;
 }
 

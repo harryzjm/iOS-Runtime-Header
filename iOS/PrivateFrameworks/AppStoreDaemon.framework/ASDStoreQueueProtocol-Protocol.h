@@ -10,8 +10,6 @@
 
 @protocol ASDStoreQueueProtocol <NSObject>
 - (void)managedApplicationRequestWithOptions:(ASDManagedApplicationRequestOptions *)arg1 completionBlock:(void (^)(_Bool, NSDictionary *, long long, NSError *))arg2;
-- (void)getDownloadQueueWithCompletionBlock:(void (^)(NSArray *, NSError *))arg1;
-- (void)getAutomaticDownloadQueueWithCompletionBlock:(void (^)(NSArray *, NSError *))arg1;
 - (void)claimApplicationsWithOptions:(ASDClaimApplicationsRequestOptions *)arg1 completionBlock:(void (^)(_Bool, NSArray *, NSError *))arg2;
 - (void)checkQueueWithOptions:(ASDCheckQueueRequestOptions *)arg1 completionBlock:(void (^)(_Bool, NSError *))arg2;
 @end

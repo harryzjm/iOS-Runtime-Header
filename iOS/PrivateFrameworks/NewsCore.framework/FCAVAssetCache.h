@@ -10,33 +10,30 @@
 #import <NewsCore/FCCacheCoordinatorDelegate-Protocol.h>
 #import <NewsCore/FCCacheFlushing-Protocol.h>
 
-@class FCCacheCoordinator, FCKeyValueStore, NFUnfairLock, NSString;
+@class FCCacheCoordinator, FCKeyValueStore, NFUnfairLock, NSString, NSURL;
 
 @interface FCAVAssetCache : NSObject <FCCacheCoordinatorDelegate, FCAVAssetCacheType, FCCacheFlushing>
 {
     NSString *_cacheDirectory;
     NFUnfairLock *_initializationLock;
     FCKeyValueStore *_metadataStore;
+    NSURL *_contentDirectoryURL;
     FCCacheCoordinator *_cacheCoordinator;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) FCCacheCoordinator *cacheCoordinator; // @synthesize cacheCoordinator=_cacheCoordinator;
-@property(readonly, nonatomic) FCKeyValueStore *metadataStore; // @synthesize metadataStore=_metadataStore;
-@property(readonly, nonatomic) NFUnfairLock *initializationLock; // @synthesize initializationLock=_initializationLock;
-@property(readonly, copy, nonatomic) NSString *cacheDirectory; // @synthesize cacheDirectory=_cacheDirectory;
-- (void)_initStores;
-- (void)_prepareForUse;
 - (void)cacheCoordinator:(id)arg1 flushKeysWithWriteLock:(id)arg2;
 - (unsigned long long)cacheCoordinatorCurrentSizeWithReadLock:(id)arg1;
 - (void)enableFlushingWithFlushingThreshold:(unsigned long long)arg1;
+- (id)importAVAsset:(id)arg1;
+- (id)contentArchiveForAssetIdentifier:(id)arg1;
 - (id)contentKeyIdentifiersForAssetIdentifier:(id)arg1;
 - (void)adoptFileAtURL:(id)arg1 forAssetIdentifier:(id)arg2 remoteURL:(id)arg3 contentKeyIdentifiers:(id)arg4 extension:(id)arg5;
 - (id)contentKeyIdentifiersForAllAssets;
 - (id)cachedFileURLForAssetIdentifier:(id)arg1;
 - (_Bool)containsAssetWithIdentifier:(id)arg1;
+- (id)interestTokenForAssetIdentifiers:(id)arg1;
 - (id)interestTokenForAssetIdentifier:(id)arg1;
-- (id)initWithCacheDirectory:(id)arg1;
 - (id)init;
 
 // Remaining properties

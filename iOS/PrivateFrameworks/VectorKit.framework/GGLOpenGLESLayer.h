@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 {
     id <GGLLayerDelegate> _delegate;
     shared_ptr_2063da68 _device;
-    struct unique_ptr<ggl::OESContext, std::__1::default_delete<ggl::OESContext>> _context;
+    struct unique_ptr<ggl::OESContext, std::default_delete<ggl::OESContext>> _context;
     struct shared_ptr<ggl::RenderBuffer> _texture;
     struct CGSize _backingSize;
 }
@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)layoutSublayers;
 - (void)dealloc;
 - (id)initWithDevice:(shared_ptr_2063da68)arg1;
-@property(readonly, nonatomic) struct Texture *texture;
+@property(readonly, nonatomic) void *texture;
 @property(readonly) int backingFormat;
 
 @end

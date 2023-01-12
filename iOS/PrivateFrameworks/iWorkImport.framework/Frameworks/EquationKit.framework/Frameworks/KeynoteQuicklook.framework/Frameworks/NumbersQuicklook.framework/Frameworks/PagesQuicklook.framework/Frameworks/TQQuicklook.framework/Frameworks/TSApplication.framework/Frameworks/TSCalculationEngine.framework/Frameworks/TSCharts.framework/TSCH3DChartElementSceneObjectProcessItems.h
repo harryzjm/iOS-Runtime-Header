@@ -6,31 +6,28 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCHUnretainedParent-Protocol.h>
-
 @class NSMutableArray, TSCH3DChartElementProperties, TSCH3DChartElementSceneObject, TSCH3DRenderProcessor, TSCH3DSceneRenderPipeline;
 
-@interface TSCH3DChartElementSceneObjectProcessItems : NSObject <TSCHUnretainedParent>
+@interface TSCH3DChartElementSceneObjectProcessItems : NSObject
 {
-    TSCH3DChartElementSceneObject *mSceneObject;
-    TSCH3DSceneRenderPipeline *mPipeline;
-    TSCH3DChartElementProperties *mProperties;
-    NSMutableArray *mDelayedItems;
+    TSCH3DChartElementSceneObject *_sceneObject;
+    TSCH3DSceneRenderPipeline *_pipeline;
+    TSCH3DChartElementProperties *_properties;
+    NSMutableArray *_delayedItems;
 }
 
 + (id)processItemsWithSceneObject:(id)arg1 properties:(id)arg2 pipeline:(id)arg3;
+- (void).cxx_destruct;
 - (void)processItems;
 - (void)performItemsProcessing;
-- (void)p_processElementInfoWithSeries:(id)arg1 position:(const tvec2_3b141483 *)arg2;
+- (void)p_processElementInfoWithSeries:(id)arg1 position:(const void *)arg2;
 - (void)processDelayedItemsWithOpacity:(float)arg1;
 - (_Bool)p_delayedItemsAreUnique;
-- (id)elementInfoWithSeries:(id)arg1 position:(const tvec2_3b141483 *)arg2;
+- (id)elementInfoWithSeries:(id)arg1 position:(const void *)arg2;
 @property(readonly, nonatomic) TSCH3DRenderProcessor *processor;
 @property(readonly, nonatomic) _Bool geometryOnly;
 @property(readonly, nonatomic) _Bool useBoundsGeometry;
 @property(readonly, nonatomic) _Bool pushStates;
-- (void)clearParent;
-- (void)dealloc;
 - (id)initWithSceneObject:(id)arg1 properties:(id)arg2 pipeline:(id)arg3;
 
 @end

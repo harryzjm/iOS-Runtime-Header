@@ -18,11 +18,13 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_rowIDs;
     NSMutableArray *_occurrenceDates;
     double _earliestExpirationDate;
+    _Bool _deleteOldNotifications;
     struct CalDatabase *_database;
     double _now;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool deleteOldNotifications; // @synthesize deleteOldNotifications=_deleteOldNotifications;
 @property(readonly, nonatomic) double now; // @synthesize now=_now;
 @property(readonly, nonatomic) struct CalDatabase *database; // @synthesize database=_database;
 - (double)endDateOfLastOccurrenceInCacheForEvent:(const void *)arg1;
@@ -36,7 +38,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSArray *occurrenceDates;
 @property(readonly, nonatomic) NSArray *rowIDs;
 @property(readonly, nonatomic) NSArray *notificationTypes;
-- (id)initWithDatabase:(struct CalDatabase *)arg1 forSourceWithExternalIdentifier:(id)arg2 excludingDelegateSources:(_Bool)arg3 filteredByShowsNotificationsFlag:(_Bool)arg4;
+- (id)initWithDatabase:(struct CalDatabase *)arg1 afterDate:(id)arg2 forSourceWithExternalIdentifier:(id)arg3 excludingDelegateSources:(_Bool)arg4 filteredByShowsNotificationsFlag:(_Bool)arg5;
 
 @end
 

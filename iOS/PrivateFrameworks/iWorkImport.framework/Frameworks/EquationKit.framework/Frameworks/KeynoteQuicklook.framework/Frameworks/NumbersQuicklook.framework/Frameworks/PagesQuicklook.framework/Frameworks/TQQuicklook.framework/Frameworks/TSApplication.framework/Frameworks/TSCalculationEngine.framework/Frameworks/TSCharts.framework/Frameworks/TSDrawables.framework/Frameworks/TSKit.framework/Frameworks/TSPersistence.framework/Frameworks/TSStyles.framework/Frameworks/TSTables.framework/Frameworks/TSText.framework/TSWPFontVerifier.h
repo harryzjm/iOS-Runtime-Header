@@ -12,6 +12,9 @@
 
 + (id)missingFontName;
 + (id)sharedInstance;
+- (_Bool)isDownloadableFontName:(id)arg1;
+- (_Bool)isCoreTextDownloadableFontName:(id)arg1;
+- (_Bool)isCloudKitDownloadableFontName:(id)arg1;
 - (_Bool)isFontWithPostscriptNameInstalled:(id)arg1;
 
 @end

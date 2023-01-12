@@ -11,6 +11,10 @@
 + (id)dateForTomorrow;
 + (id)dateWithDaysBeforeNow:(unsigned long long)arg1;
 + (id)dateWithDaysFromNow:(unsigned long long)arg1;
+- (long long)numberOfYearsFromNow;
+- (long long)numberOfMonthsFromNow;
+- (long long)numberOfWeeksFromNow;
+- (id)dateWithoutTime;
 - (_Bool)isYesterday;
 - (_Bool)isTomorrow;
 - (_Bool)isToday;

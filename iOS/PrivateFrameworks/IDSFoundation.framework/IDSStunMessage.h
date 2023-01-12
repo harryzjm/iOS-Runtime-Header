@@ -17,9 +17,9 @@
     struct IDSStunAttribute _attributes[20];
     int _numAttribute;
     NSData *_key;
-    struct _CCCryptor *_cryptorRef;
     _Bool _requiresAES128CTR;
     double _startTime;
+    struct _CCCryptor *_cryptorRef;
 }
 
 - (void).cxx_destruct;
@@ -49,7 +49,7 @@
 - (_Bool)stunResponseToBuffer:(char *)arg1 outputLength:(int *)arg2 transactionID:(id)arg3 reqCount:(int)arg4 echoTime:(unsigned short)arg5 delay:(unsigned short)arg6 keyData:(id)arg7 remainingLength:(unsigned long long)arg8;
 - (_Bool)stunRequestToBuffer:(char *)arg1 outputLength:(int *)arg2 transactionID:(char *)arg3 reqCount:(int)arg4 userName:(char *)arg5 usernameLen:(int)arg6 sendTime:(unsigned short)arg7 keyData:(id)arg8 remainingLength:(unsigned long long)arg9;
 - (_Bool)getAttribute:(long long)arg1 attribute:(struct IDSStunAttribute *)arg2;
-- (_Bool)hasAttribute:(unsigned short)arg1;
+- (_Bool)hasAttribute:(long long)arg1;
 - (_Bool)addAttribute:(struct IDSStunAttribute *)arg1;
 - (id)description;
 - (void)dealloc;

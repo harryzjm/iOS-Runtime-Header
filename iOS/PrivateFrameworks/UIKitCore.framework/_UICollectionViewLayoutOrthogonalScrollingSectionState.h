@@ -20,21 +20,21 @@ __attribute__((visibility("hidden")))
     double _groupDimension;
     struct CGPoint _orthogonalContentOffset;
     struct CGSize _contentSize;
-    struct CGRect _layoutFrame;
     struct NSDirectionalEdgeInsets _contentInsets;
+    struct NSDirectionalEdgeInsets _environmentInsets;
+    struct CGRect _layoutFrame;
 }
 
-+ (id)orthogonalScrollingSectionStateFromCompositionalLayoutSolver:(id)arg1 section:(long long)arg2;
-@property(readonly, nonatomic) struct NSDirectionalEdgeInsets contentInsets; // @synthesize contentInsets=_contentInsets;
 @property(readonly, nonatomic) struct CGSize contentSize; // @synthesize contentSize=_contentSize;
 @property(readonly, nonatomic) struct CGRect layoutFrame; // @synthesize layoutFrame=_layoutFrame;
+@property(readonly, nonatomic) struct NSDirectionalEdgeInsets environmentInsets; // @synthesize environmentInsets=_environmentInsets;
+@property(readonly, nonatomic) struct NSDirectionalEdgeInsets contentInsets; // @synthesize contentInsets=_contentInsets;
 @property(readonly, nonatomic) double groupDimension; // @synthesize groupDimension=_groupDimension;
 @property(readonly, nonatomic) double pagingDimension; // @synthesize pagingDimension=_pagingDimension;
 @property(readonly, nonatomic) unsigned long long layoutAxis; // @synthesize layoutAxis=_layoutAxis;
 @property(readonly, nonatomic) struct CGPoint orthogonalContentOffset; // @synthesize orthogonalContentOffset=_orthogonalContentOffset;
 @property(readonly, nonatomic) unsigned long long orthogonalLayoutAxis; // @synthesize orthogonalLayoutAxis=_orthogonalLayoutAxis;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithOrthogonalLayoutAxis:(unsigned long long)arg1 layoutAxis:(unsigned long long)arg2 pagingDimension:(double)arg3 groupDimension:(double)arg4 layoutFrame:(struct CGRect)arg5 contentSize:(struct CGSize)arg6 contentInsets:(struct NSDirectionalEdgeInsets)arg7 orthogonalContentOffset:(struct CGPoint)arg8;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

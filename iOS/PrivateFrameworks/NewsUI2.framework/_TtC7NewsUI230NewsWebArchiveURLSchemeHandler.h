@@ -11,6 +11,7 @@
 @class MISSING_TYPE;
 @protocol WKURLSchemeTask;
 
+__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI230NewsWebArchiveURLSchemeHandler : NSObject <SWURLSchemeHandler>
 {
     MISSING_TYPE *task;

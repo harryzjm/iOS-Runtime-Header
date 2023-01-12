@@ -9,9 +9,9 @@
 - (void)willUpdateFrameTexture;
 - (void)didPresent;
 - (void)willPresent;
-- (void)drawToTexture:(struct Texture *)arg1 withRenderQueue:(struct RenderQueue *)arg2;
-- (struct RenderQueue *)renderQueueForTimestamp:(double)arg1;
-- (void)prepareTexture:(const shared_ptr_857963ed *)arg1;
+- (void)drawToTexture:(void *)arg1 withRenderQueue:(void *)arg2;
+- (void *)renderQueueForTimestamp:(double)arg1;
+- (void)prepareTexture:(const void *)arg1;
 - (_Bool)isDelayedRenderQueueConsumptionSupported;
 @end
 

@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface SKSequence
 {
-    struct SKCSequence *_mycaction;
+    void *_mycaction;
     NSArray *_actions;
     unsigned long long _animIndex;
 }

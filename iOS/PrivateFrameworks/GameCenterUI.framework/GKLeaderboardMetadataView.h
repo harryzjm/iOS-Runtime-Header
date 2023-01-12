@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSLayoutConstraint, UILabel, UIStackView;
+@class NSLayoutConstraint, UILabel, UIStackView, UIVisualEffectView;
 
 @interface GKLeaderboardMetadataView : UIView
 {
@@ -21,9 +21,11 @@
     UIView *_avatarContainer2;
     UIView *_avatarContainer3;
     UIStackView *_body;
+    UIVisualEffectView *_vibrancyView;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIVisualEffectView *vibrancyView; // @synthesize vibrancyView=_vibrancyView;
 @property(retain, nonatomic) UIStackView *body; // @synthesize body=_body;
 @property(retain, nonatomic) UIView *avatarContainer3; // @synthesize avatarContainer3=_avatarContainer3;
 @property(retain, nonatomic) UIView *avatarContainer2; // @synthesize avatarContainer2=_avatarContainer2;
@@ -40,8 +42,9 @@
 - (void)configureFootnote:(id)arg1 altFootnote:(id)arg2;
 - (void)configureWithPlayers:(id)arg1 title:(id)arg2 footnote:(id)arg3 altFootnote:(id)arg4;
 - (void)configureWithPlayers:(id)arg1 title:(id)arg2 footnote:(id)arg3;
-- (void)configureWithRank:(id)arg1 title:(id)arg2 footnote:(id)arg3 altFootnote:(id)arg4;
-- (void)configureWithRank:(id)arg1 title:(id)arg2 footnote:(id)arg3;
+- (void)configureWithRank:(id)arg1 title:(id)arg2 footnote:(id)arg3 altFootnote:(id)arg4 vibrant:(_Bool)arg5;
+- (void)configureWithRank:(id)arg1 title:(id)arg2 footnote:(id)arg3 vibrant:(_Bool)arg4;
+- (void)configureVibrancy:(_Bool)arg1;
 - (void)awakeFromNib;
 
 @end

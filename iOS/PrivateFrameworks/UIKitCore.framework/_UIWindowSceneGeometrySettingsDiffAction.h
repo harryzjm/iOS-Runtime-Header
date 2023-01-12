@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIApplicationSceneSettingsDiffInspector *sceneSettingsGeometryMutationDiffInspector; // @synthesize sceneSettingsGeometryMutationDiffInspector=_sceneSettingsGeometryMutationDiffInspector;
-- (void)_updateSceneGeometryWithSettingObserverContext:(CDStruct_d7010776)arg1 windowScene:(id)arg2 transitionContext:(id)arg3;
+- (void)_updateSceneGeometryWithSettingObserverContext:(CDStruct_8a1bf2a3)arg1 windowScene:(id)arg2 transitionContext:(id)arg3;
 - (void)_performActionsForUIScene:(id)arg1 withUpdatedFBSScene:(id)arg2 settingsDiff:(id)arg3 fromSettings:(id)arg4 transitionContext:(id)arg5 lifecycleActionType:(unsigned int)arg6;
 
 // Remaining properties

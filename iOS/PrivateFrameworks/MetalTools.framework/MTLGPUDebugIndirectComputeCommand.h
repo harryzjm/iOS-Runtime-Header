@@ -9,10 +9,16 @@
     unsigned long long _commandIndex;
 }
 
+- (void)dealloc;
 - (void)concurrentDispatchThreadgroups:(CDStruct_14f26992)arg1 threadsPerThreadgroup:(CDStruct_14f26992)arg2;
 - (void)concurrentDispatchThreads:(CDStruct_14f26992)arg1 threadsPerThreadgroup:(CDStruct_14f26992)arg2;
+- (void)setComputePipelineState:(id)arg1;
+- (void)setThreadgroupMemoryLength:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (void)setKernelBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
-- (void)flushBindings;
+- (void)setStageInRegion:(CDStruct_1e3be3a8)arg1;
+- (void)clearBarrier;
+- (void)setBarrier;
+- (void)reset;
 - (id)initWithIndirectComputeCommand:(id)arg1 commandIndex:(unsigned long long)arg2 indirectCommandBuffer:(id)arg3;
 
 @end

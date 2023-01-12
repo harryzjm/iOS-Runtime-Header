@@ -4,13 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <objc/NSObject.h>
+
+#import <PassKitCore/NSCopying-Protocol.h>
+#import <PassKitCore/NSSecureCoding-Protocol.h>
+
 @class NSDate, NSSet, NSString, NSTimeZone, NSURL, PKCreditAccountRates, PKCreditAccountSummary, PKCurrencyAmount;
 
-@interface PKCreditAccountDetails
+@interface PKCreditAccountDetails : NSObject <NSSecureCoding, NSCopying>
 {
     _Bool _termsAcceptanceRequired;
     NSDate *_lastUpdatedDate;
     NSDate *_createdDate;
+    NSDate *_mergeDate;
     NSString *_countryCode;
     NSString *_currencyCode;
     NSTimeZone *_productTimeZone;
@@ -44,8 +50,10 @@
 @property(retain, nonatomic) NSTimeZone *productTimeZone; // @synthesize productTimeZone=_productTimeZone;
 @property(copy, nonatomic) NSString *currencyCode; // @synthesize currencyCode=_currencyCode;
 @property(copy, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
+@property(copy, nonatomic) NSDate *mergeDate; // @synthesize mergeDate=_mergeDate;
 @property(copy, nonatomic) NSDate *createdDate; // @synthesize createdDate=_createdDate;
 @property(copy, nonatomic) NSDate *lastUpdatedDate; // @synthesize lastUpdatedDate=_lastUpdatedDate;
+@property(readonly, nonatomic, getter=isInMonthOfMerge) _Bool inMonthOfMerge;
 - (long long)numberOfActiveStatementedInstallments;
 - (long long)numberOfActiveInstallments;
 @property(readonly, copy, nonatomic) PKCurrencyAmount *totalBalance;

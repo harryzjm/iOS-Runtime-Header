@@ -23,8 +23,7 @@
 - (void)accessibilityDecrement;
 - (void)accessibilityIncrement;
 - (_Bool)_accessibilityViewIsVisible;
-- (_Bool)_accessibilitySupportsActivateAction;
-- (_Bool)_accessibilityServesAsContainingParentForOrdering;
+- (_Bool)shouldGroupAccessibilityChildren;
 - (_Bool)accessibilityScroll:(long long)arg1;
 - (_Bool)_accessibilityGoToNextPage;
 - (_Bool)accessibilityActivate;

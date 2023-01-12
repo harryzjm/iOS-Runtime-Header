@@ -28,6 +28,7 @@
 @property(retain, nonatomic) SiriContext *context; // @synthesize context=_context;
 @property(nonatomic) long long activationEvent; // @synthesize activationEvent=_activationEvent;
 @property(nonatomic) long long activationType; // @synthesize activationType=_activationType;
+- (_Bool)isRemotePresentationBringUpRequest;
 - (_Bool)isSpotlightRequest;
 - (_Bool)isBluetoothRequest;
 - (_Bool)isContinuityRequest;
@@ -46,11 +47,13 @@
 - (id)initWithTestingContext:(id)arg1;
 - (id)initWithVoiceTriggerRequest;
 - (id)initWithSpotlightContext:(id)arg1;
+- (id)initWithBluetoothKeyboardShortcutActivation:(long long)arg1;
 - (id)initWithSimpleActivation:(long long)arg1;
 - (id)initWithBreadcrumbRequest;
+- (id)initWithRemotePresentationBringUpContext:(id)arg1;
 - (id)initWithVoiceTriggerContext:(id)arg1;
 - (id)initWithContinuityContext:(id)arg1;
-- (id)initWithDirectActionEvent:(long long)arg1 context:(id)arg2;
+- (id)initWithDirectActionContext:(id)arg1;
 - (id)initWithButtonIdentifier:(long long)arg1 context:(id)arg2;
 - (id)init;
 

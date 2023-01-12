@@ -10,6 +10,5 @@
 
 @protocol NUAdSettings <NSObject>
 @property(nonatomic, readonly) id <SXAdvertisingSettings> debugAdvertisementSettings;
-@property(nonatomic, readonly) _Bool debugAdSlotsEnabled;
 @end
 

@@ -24,6 +24,9 @@
 + (id)hkmc_supplementaryDataTimelineDisabledColor;
 + (id)hkmc_supplementaryDataTextFutureColor;
 + (id)hkmc_supplementaryDataTextColor;
++ (id)hkmc_highContrastCycleFactorsTimeIntervalBackgroundColor;
++ (id)hkmc_cycleFactorsTimeIntervalBackgroundColor;
++ (id)hkmc_cycleFactorsBackgroundColor;
 + (id)hkmc_supplementaryDataBackgroundColor;
 + (id)hkmc_supplementaryDataColor;
 + (id)hkmc_regularDayColor;

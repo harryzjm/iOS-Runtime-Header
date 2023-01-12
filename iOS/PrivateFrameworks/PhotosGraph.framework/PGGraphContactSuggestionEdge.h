@@ -8,7 +8,6 @@
 
 @interface PGGraphContactSuggestionEdge
 {
-    unsigned long long _sexMatch;
     _Bool _contactFaceprintMatch;
     float _weight;
     double _contactScore;
@@ -33,9 +32,11 @@
     double _sharedCMMScore;
     double _relationshipScore;
     double _scoreAfterMessagePenalty;
+    unsigned long long _sexMatch;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long sexMatch; // @synthesize sexMatch=_sexMatch;
 @property(readonly, nonatomic) double scoreAfterMessagePenalty; // @synthesize scoreAfterMessagePenalty=_scoreAfterMessagePenalty;
 @property(readonly, nonatomic) double relationshipScore; // @synthesize relationshipScore=_relationshipScore;
 @property(readonly, nonatomic) double sharedCMMScore; // @synthesize sharedCMMScore=_sharedCMMScore;
@@ -59,7 +60,6 @@
 @property(readonly, nonatomic) unsigned long long numberOfMomentsAtMentionedAddress; // @synthesize numberOfMomentsAtMentionedAddress=_numberOfMomentsAtMentionedAddress;
 @property(readonly, nonatomic) unsigned long long numberOfMomentsAtHome; // @synthesize numberOfMomentsAtHome=_numberOfMomentsAtHome;
 @property(readonly, nonatomic) double contactScore; // @synthesize contactScore=_contactScore;
-- (void)setWeight:(float)arg1;
 - (float)weight;
 - (id)_readableStringForContactSuggestionProperty:(id)arg1;
 @property(readonly, nonatomic) _Bool personContactBiologicalSexMismatch;
@@ -75,9 +75,8 @@
 - (id)edgeDescription;
 - (id)propertyDictionary;
 - (_Bool)hasProperties:(id)arg1;
-- (void)setLocalProperties:(id)arg1;
-- (id)initWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5;
-- (id)initFromPersonNode:(id)arg1 toContactNode:(id)arg2 weight:(float)arg3;
+- (id)initWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5 properties:(id)arg6;
+- (id)initFromPersonNode:(id)arg1 toContactNode:(id)arg2 weight:(float)arg3 contactScore:(double)arg4 numberOfMomentsAtHome:(unsigned long long)arg5 numberOfMomentsAtMentionedAddress:(unsigned long long)arg6 numberOfWeakBirthdayMomentsAroundBirthdayDate:(unsigned long long)arg7 numberOfWeakBirthdayMomentsAroundPotentialBirthdayDate:(unsigned long long)arg8 numberOfMomentsOverlappingWithCalendarEvents:(unsigned long long)arg9 numberOfAppearancesInSharedAssets:(unsigned long long)arg10 numberOfCMMMoments:(unsigned long long)arg11 facetimeFaceprintConfidence:(double)arg12 contactFaceprintMatch:(_Bool)arg13 relationshipsDebug:(id)arg14 socialGroupsConfidence:(double)arg15 socialGroupsDebug:(id)arg16 messageGroupsDebug:(id)arg17 birthdayScore:(double)arg18 potentialBirthdayScore:(double)arg19 addressScore:(double)arg20 mentionedAddressScore:(double)arg21 calendarScore:(double)arg22 sharedAssetScore:(double)arg23 sharedCMMScore:(double)arg24 relationshipScore:(double)arg25 scoreAfterMessagePenalty:(double)arg26 sexMatch:(unsigned long long)arg27;
 
 @end
 

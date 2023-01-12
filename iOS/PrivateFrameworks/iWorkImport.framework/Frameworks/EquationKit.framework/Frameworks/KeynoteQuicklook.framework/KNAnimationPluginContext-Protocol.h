@@ -23,6 +23,7 @@
 @property(readonly, nonatomic) _Bool isBuild;
 @property(readonly, nonatomic) NSArray *magicMoveMatches;
 @property(readonly, nonatomic) NSDictionary *transitionAttributes;
+@property(readonly, nonatomic) NSDictionary *buildAttributes;
 @property(readonly, nonatomic) KNAnimatedBuild *animatedBuild;
 @property(nonatomic) struct CGRect boundingRect;
 @property(readonly, nonatomic) struct CGRect boundingRectOnCanvas;

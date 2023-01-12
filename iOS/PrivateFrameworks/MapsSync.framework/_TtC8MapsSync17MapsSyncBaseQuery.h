@@ -24,6 +24,7 @@
 }
 
 + (id)signpostLog;
++ (id)additionalNotificationTypes;
 - (void).cxx_destruct;
 - (id)init;
 - (id)findDuplicates:(id)arg1;
@@ -36,12 +37,17 @@
 - (void)queryStoreDidChangeWithNotification:(id)arg1;
 - (void)queryContextDidChangeWithNotification:(id)arg1;
 - (void)queryContentsDidChangeWithNotification:(id)arg1;
+- (void)queryIsReady;
 - (void)watchItemsMatchingPredicate:(id)arg1;
 - (void)deleteAllObjectsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)reloadContentsWithCompletion:(CDUnknownBlockType)arg1 queue:(id)arg2;
+- (void)fetchQueryBaseContentsWithCallbackQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchQueryBaseContents:(CDUnknownBlockType)arg1;
 - (void)fetchBaseContentsWithCallbackQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchBaseContents:(CDUnknownBlockType)arg1;
+- (void)fetchCountWithCallbackQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)mergeDuplicateObjectsWithDuplicates:(id)arg1;
+- (_Bool)isReady;
 - (void)preFetchHook:(CDUnknownBlockType)arg1;
 - (_Bool)isInitComplete;
 - (void)completeInit;

@@ -39,10 +39,10 @@
 @property(readonly, nonatomic) PHAssetResourceRequestOptions *options; // @synthesize options=_options;
 @property(readonly, nonatomic) PHAssetResource *assetResource; // @synthesize assetResource=_assetResource;
 - (void)assetResourceRequest:(id)arg1 didFinishWithError:(id)arg2;
-- (void)assetResourceRequest:(id)arg1 didFindFileURL:(id)arg2;
 - (void)startRequest;
 - (void)cancel;
 @property(readonly, nonatomic, getter=isCancelled) _Bool cancelled;
+- (void)_handleDidFindFileURL:(id)arg1;
 - (void)setErrorIfNone:(id)arg1;
 - (id)initWithAssetResource:(id)arg1 destinationFileURL:(id)arg2 options:(id)arg3 requestID:(int)arg4 managerID:(unsigned long long)arg5 delegate:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
 

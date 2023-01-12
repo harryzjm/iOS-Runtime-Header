@@ -8,17 +8,19 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSSet, PKPaymentPass, PKPeerPaymentAccount;
+@class NSSet, PKAccountUser, PKPaymentPass, PKPeerPaymentAccount;
 
 @interface PKTransactionSource : NSObject <NSSecureCoding>
 {
     unsigned long long _type;
     PKPeerPaymentAccount *_peerPaymentAccount;
     PKPaymentPass *_paymentPass;
+    PKAccountUser *_accountUser;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) PKAccountUser *accountUser; // @synthesize accountUser=_accountUser;
 @property(readonly, nonatomic) PKPaymentPass *paymentPass; // @synthesize paymentPass=_paymentPass;
 @property(readonly, nonatomic) PKPeerPaymentAccount *peerPaymentAccount; // @synthesize peerPaymentAccount=_peerPaymentAccount;
 @property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
@@ -28,6 +30,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(readonly, copy, nonatomic) NSSet *transactionSourceIdentifiers;
+- (id)initWithAccountUser:(id)arg1;
 - (id)initWithPeerPaymentAccount:(id)arg1;
 - (id)initWithPaymentPass:(id)arg1;
 

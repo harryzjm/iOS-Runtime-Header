@@ -10,5 +10,6 @@
 
 @protocol PXCPLStatusProvider <NSObject>
 @property(readonly, nonatomic) PXCPLStatus *status;
+- (double)nextOverrideResumeTimeInterval;
 @end
 

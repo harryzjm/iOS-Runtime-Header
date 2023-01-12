@@ -10,20 +10,21 @@
 #import <MTLCapture/MTLAccelerationStructureSPI-Protocol.h>
 #import <MTLCapture/MTLResourceSPI-Protocol.h>
 
-@class MTLAccelerationStructureDescriptor, NSString;
+@class MTLAccelerationStructureDescriptor, NSArray, NSString;
 @protocol MTLAccelerationStructure, MTLAccelerationStructureSPI><MTLResourceSPI, MTLBuffer, MTLDevice, MTLHeap;
 
 @interface CaptureMTLAccelerationStructure : NSObject <MTLAccelerationStructureSPI, MTLResourceSPI, CaptureMTLObject>
 {
     id <MTLAccelerationStructureSPI><MTLResourceSPI> _baseObject;
     id <MTLDevice> _captureDevice;
-    id <MTLHeap> _captureHeap;
-    id <MTLBuffer> _captureBuffer;
+    id <MTLBuffer> _buffer;
     struct GTTraceContext *_traceContext;
     struct GTTraceStream *_traceStream;
+    NSArray *_primitiveAccelerationStructures;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *primitiveAccelerationStructures; // @synthesize primitiveAccelerationStructures=_primitiveAccelerationStructures;
 - (void)waitUntilComplete;
 - (unsigned long long)setPurgeableState:(unsigned long long)arg1;
 - (void)makeAliasable;
@@ -40,16 +41,15 @@
 @property(readonly, nonatomic) unsigned long long size;
 @property int responsibleProcess;
 @property(readonly) unsigned long long resourceOptions;
+@property(readonly, nonatomic) unsigned long long resourceIndex;
 @property(readonly) unsigned long long protectionOptions;
 @property(copy) NSString *label;
 @property(readonly) unsigned long long heapOffset;
 @property(readonly) id <MTLHeap> heap;
 @property(readonly) unsigned long long hazardTrackingMode;
 @property(readonly) id <MTLDevice> device;
-@property(retain, nonatomic) MTLAccelerationStructureDescriptor *descriptor;
 @property(readonly) unsigned long long cpuCacheMode;
 @property(readonly, nonatomic) unsigned long long bufferOffset;
-@property(readonly, nonatomic) id <MTLBuffer> buffer;
 @property(readonly) unsigned long long allocationID;
 @property(readonly) unsigned long long allocatedSize;
 - (_Bool)conformsToProtocol:(id)arg1;
@@ -61,11 +61,10 @@
 @property(readonly) struct GTTraceContext *traceContext;
 - (void)touch;
 - (id)originalObject;
+@property(retain, nonatomic) MTLAccelerationStructureDescriptor *descriptor;
+@property(readonly, nonatomic) id <MTLBuffer> buffer;
 @property(readonly) id <MTLAccelerationStructure> baseObject;
 - (id)initWithBaseObject:(id)arg1 captureDevice:(id)arg2;
-- (id)initWithBaseObject:(id)arg1 captureContext:(struct GTTraceContext *)arg2 captureHeap:(id)arg3;
-- (id)initWithBaseObject:(id)arg1 captureContext:(struct GTTraceContext *)arg2 captureDevice:(id)arg3;
-- (id)initWithBaseObject:(id)arg1 captureContext:(struct GTTraceContext *)arg2 captureBuffer:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -32,31 +32,15 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(retain, nonatomic) GEOStructuredAddress *structuredAddress;
-@property(readonly, nonatomic) _Bool hasStructuredAddress;
-@property(retain, nonatomic) GEOPDViewportInfo *viewportInfo;
-@property(readonly, nonatomic) _Bool hasViewportInfo;
-@property(nonatomic) _Bool hasMaxResults;
-@property(nonatomic) unsigned int maxResults;
-@property(retain, nonatomic) NSString *queryString;
-@property(readonly, nonatomic) _Bool hasQueryString;
 - (id)initWithData:(id)arg1;
 - (id)init;
 - (id)initWithForwardGeocodeAddressString:(id)arg1 maxResults:(unsigned int)arg2 traits:(id)arg3;

@@ -8,8 +8,8 @@
 {
 }
 
-- (double)shadowOpacityForIndex:(unsigned long long)arg1;
-- (double)darkeningAlphaForIndex:(unsigned long long)arg1;
+- (double)shadowOpacityForLayoutRole:(long long)arg1 atIndex:(unsigned long long)arg2;
+- (double)dimmingAlphaForLayoutRole:(long long)arg1 inAppLayout:(id)arg2;
 - (double)scaleForIndex:(unsigned long long)arg1;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
 

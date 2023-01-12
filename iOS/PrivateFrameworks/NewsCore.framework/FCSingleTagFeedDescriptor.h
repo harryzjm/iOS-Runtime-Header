@@ -26,9 +26,6 @@
 - (void)setFeedType:(long long)arg1;
 - (long long)feedType;
 @property(copy, nonatomic) id <FCTagProviding> tag; // @synthesize tag=_tag;
-- (void)prepareToProvideFeedGroupEmittersWithCallbackQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)allEmitterClasses;
-- (id)feedGroupEmittersWithConfiguration:(id)arg1 forYouConfig:(id)arg2;
 - (id)iAdSectionID;
 - (id)iAdFeedID;
 - (id)iAdPrimaryAudience;

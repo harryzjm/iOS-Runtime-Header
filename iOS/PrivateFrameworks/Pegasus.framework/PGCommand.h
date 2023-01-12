@@ -13,17 +13,25 @@
     NSDictionary *_dictionaryRepresentation;
 }
 
++ (id)commandForFaceTimeAction:(long long)arg1 associatedIntegerValue:(long long)arg2;
 + (id)commandForFaceTimeAction:(long long)arg1 associatedBoolValue:(_Bool)arg2;
 + (id)commandForFaceTimeAction:(long long)arg1;
++ (id)commandForShowHUD;
++ (id)commandForMenuItemSelected:(long long)arg1;
 + (id)commandForSwitchCamera;
 + (id)commandForSetMicrophoneMuted:(_Bool)arg1;
 + (id)commandForSetCameraEnabled:(_Bool)arg1;
++ (id)commandForTestStartPIP;
++ (id)commandForTestingAction:(long long)arg1;
++ (id)commandForInvalidateFromProxy;
++ (id)commandForStartPIP;
 + (id)commandForToggleZoom;
 + (id)commandForSendActionButtonTapped;
 + (id)commandForToggleControlsVisibility;
 + (id)commandForRestoreFromPIP;
 + (id)commandForCancelPIP;
 + (id)commandForSystemAction:(long long)arg1;
++ (id)commandForEndOrLeaveActivityRequested;
 + (id)commandForSkipByInterval:(double)arg1;
 + (id)commandForSkipPreroll;
 + (id)commandForSkipToLive;
@@ -44,7 +52,9 @@
 - (id)succinctDescription;
 - (id)description;
 @property(readonly, nonatomic) double associatedDoubleValue;
+@property(readonly, nonatomic) long long associatedIntegerValue;
 @property(readonly, nonatomic) _Bool associatedBoolValue;
+@property(readonly, nonatomic) long long testingAction;
 @property(readonly, nonatomic) long long faceTimeAction;
 @property(readonly, nonatomic) long long systemAction;
 @property(readonly, nonatomic) long long playbackAction;

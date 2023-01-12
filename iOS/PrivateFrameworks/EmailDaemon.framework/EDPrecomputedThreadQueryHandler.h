@@ -54,7 +54,6 @@
 - (id)_messageForPersistedMessage:(id)arg1;
 - (void)persistenceDidUpdateProperties:(id)arg1 message:(id)arg2 generationWindow:(id)arg3;
 - (void)persistenceDidChangeGlobalMessageID:(long long)arg1 orConversationID:(long long)arg2 message:(id)arg3 generationWindow:(id)arg4;
-- (void)persistenceWillResetThreadScope:(id)arg1 denyBlock:(CDUnknownBlockType)arg2;
 - (void)persistenceDidFinishThreadUpdates;
 - (void)persistenceIsDeletingThreadWithObjectID:(id)arg1 generationWindow:(id)arg2;
 - (_Bool)_keyPathsAffectSorting:(id)arg1;
@@ -73,7 +72,7 @@
 - (void)_onScheduler:(id)arg1 performCancelableBlock:(CDUnknownBlockType)arg2;
 - (void)test_tearDown;
 - (void)cancel;
-- (void)start;
+- (_Bool)start;
 - (id)initWithQuery:(id)arg1 threadScope:(id)arg2 messagePersistence:(id)arg3 threadPersistence:(id)arg4 hookRegistry:(id)arg5 observer:(id)arg6 observationIdentifier:(id)arg7 observationResumer:(id)arg8;
 
 // Remaining properties

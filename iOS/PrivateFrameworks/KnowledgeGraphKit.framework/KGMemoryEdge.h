@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class KGMemoryNode, NSArray, NSDictionary;
+#import <KnowledgeGraphKit/KGEdge-Protocol.h>
 
-@interface KGMemoryEdge : NSObject
+@class KGMemoryNode, NSArray, NSDictionary, NSString;
+
+@interface KGMemoryEdge : NSObject <KGEdge>
 {
     float _weight;
     unsigned long long _identifier;
@@ -19,14 +21,22 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSDictionary *properties; // @synthesize properties=_properties;
+@property(copy, nonatomic) NSDictionary *properties; // @synthesize properties=_properties;
 @property(readonly, nonatomic) KGMemoryNode *sourceNode; // @synthesize sourceNode=_sourceNode;
 @property(readonly, nonatomic) KGMemoryNode *targetNode; // @synthesize targetNode=_targetNode;
 @property(nonatomic) float weight; // @synthesize weight=_weight;
-@property(readonly, nonatomic) NSArray *labels; // @synthesize labels=_labels;
+@property(readonly, copy, nonatomic) NSArray *labels; // @synthesize labels=_labels;
 @property(readonly, nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
+@property(readonly, copy) NSString *description;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)resolveIdentifier:(unsigned long long)arg1;
 - (id)oppositeNodeFromNode:(id)arg1;
 - (id)initWithIdentifier:(unsigned long long)arg1 labels:(id)arg2 weight:(float)arg3 properties:(id)arg4 sourceNode:(id)arg5 targetNode:(id)arg6;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

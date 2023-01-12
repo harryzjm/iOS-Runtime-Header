@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NTKColoringLabel, NTKRichComplicationImageView, _TtC19ComplicationDisplay23ComplicationHostingView;
+@class CDComplicationHostingView, NTKColoringLabel, NTKRichComplicationImageView;
 
 @interface NTKRichComplicationRectangularLargeHeadlineBaseView
 {
     NTKRichComplicationImageView *_headerImageView;
-    _TtC19ComplicationDisplay23ComplicationHostingView *_headerSwiftUIView;
+    CDComplicationHostingView *_headerSwiftUIView;
     NTKColoringLabel *_headerLabel;
 }
 
@@ -19,6 +19,7 @@
 - (void)transitionToMonochromeWithFraction:(double)arg1;
 - (void)_editingDidEnd;
 - (void)_enumerateLabelsWithBlock:(CDUnknownBlockType)arg1;
+- (long long)tritiumUpdateMode;
 - (void)setPaused:(_Bool)arg1;
 - (void)_updateTemplateHeaderWithTextProvider:(id)arg1 imageProvider:(id)arg2 viewData:(id)arg3 reason:(long long)arg4;
 - (void)layoutSubviews;

@@ -23,7 +23,8 @@
     _Bool _resolved;
     _Bool _publishing;
     HMFNetAddress *_hostName;
-    long long _state;
+    long long _resolveState;
+    long long _resolveRunningState;
     id <HMFNetServiceDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSMutableArray *_resolveBlocks;
@@ -60,7 +61,8 @@
 @property(readonly, copy) NSArray *addresses;
 - (void)setHostname:(id)arg1;
 @property(readonly, copy) HMFNetAddress *hostName; // @synthesize hostName=_hostName;
-@property(nonatomic) long long state; // @synthesize state=_state;
+@property(nonatomic) long long resolveRunningState; // @synthesize resolveRunningState=_resolveRunningState;
+@property(nonatomic) long long resolveState; // @synthesize resolveState=_resolveState;
 @property(getter=isPublishing) _Bool publishing; // @synthesize publishing=_publishing;
 - (void)setResolved:(_Bool)arg1;
 @property(readonly, getter=isResolved) _Bool resolved; // @synthesize resolved=_resolved;

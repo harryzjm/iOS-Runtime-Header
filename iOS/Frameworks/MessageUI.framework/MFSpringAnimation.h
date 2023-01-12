@@ -13,7 +13,6 @@
 }
 
 + (id)springAnimationWithKeyPath:(id)arg1 fromValue:(id)arg2 toValue:(id)arg3;
-+ (double)defaultAnimationDuration;
 - (void)addCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)init;
 

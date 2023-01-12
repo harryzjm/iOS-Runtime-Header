@@ -26,10 +26,10 @@
 - (id)textureFunctionNameForVariable:(id)arg1 projective:(_Bool)arg2;
 - (struct TextureAttributes)textureAttributesForVariable:(id)arg1;
 - (id)textureVariables;
-- (const struct ObjectStateMatchObject *)state;
+- (const void *)state;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithObjectState:(const struct ObjectState *)arg1 version:(id)arg2;
+- (id)initWithObjectState:(const void *)arg1 version:(id)arg2;
 
 @end
 

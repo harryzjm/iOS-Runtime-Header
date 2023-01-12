@@ -6,13 +6,12 @@
 
 @class ACAccount;
 
-__attribute__((visibility("hidden")))
 @interface CKDBackingFakeAccount
 {
     ACAccount *_fakeCKAccount;
 }
 
-+ (id)fakeAccountWithEmail:(id)arg1 password:(id)arg2 inStore:(id)arg3 propertyOverrides:(id)arg4 overridesByDataclass:(id)arg5;
++ (id)fakeAccountWithEmail:(id)arg1 password:(id)arg2 propertyOverrides:(id)arg3 overridesByDataclass:(id)arg4;
 + (void)_setUpFakeAccountShenanigans;
 - (void).cxx_destruct;
 @property(retain, nonatomic) ACAccount *fakeCKAccount; // @synthesize fakeCKAccount=_fakeCKAccount;
@@ -22,12 +21,13 @@ __attribute__((visibility("hidden")))
 - (id)cloudKitAuthTokenWithError:(id *)arg1;
 - (id)ckAccount;
 - (void)_setOverridesOnVettingContext:(id)arg1;
-- (void)updateAccountPropertiesAndSaveAccountInStore:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)renewAuthTokenInStore:(id)arg1 withOptions:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)updateAccountPropertiesAndSaveAccount:(CDUnknownBlockType)arg1;
+- (void)renewAuthTokenWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)identifier;
 - (_Bool)isFakeAccount;
 - (_Bool)isDataclassEnabled:(id)arg1;
-- (id)_initFakeAccountWithEmail:(id)arg1 password:(id)arg2 inStore:(id)arg3;
-- (id)_initFakeAccountWithEmail:(id)arg1 password:(id)arg2 inStore:(id)arg3 propertyOverrides:(id)arg4 overridesByDataclass:(id)arg5;
+- (id)_initFakeAccountWithEmail:(id)arg1 password:(id)arg2;
+- (id)_initFakeAccountWithEmail:(id)arg1 password:(id)arg2 propertyOverrides:(id)arg3 overridesByDataclass:(id)arg4;
 - (void)_checkAndLogIfAccountError;
 
 @end

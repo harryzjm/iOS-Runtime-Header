@@ -8,7 +8,6 @@
 
 @class BRCDocumentItem, NSData, NSString;
 
-__attribute__((visibility("hidden")))
 @interface BRCSharingModifyAccessOperation <BRCOperationSubclass>
 {
     BRCDocumentItem *_document;

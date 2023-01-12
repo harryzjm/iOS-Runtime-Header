@@ -6,13 +6,13 @@
 
 #import <CoreData/NSManagedObject.h>
 
-@class NSDate;
+@class NSDate, NSNumber;
 
 @interface RTCLLocationMO : NSManagedObject
 {
 }
 
-+ (id)managedObjectWithLatitude:(double)arg1 longitude:(double)arg2 altitude:(double)arg3 horizontalAccuracy:(double)arg4 verticalAccuracy:(double)arg5 course:(double)arg6 speed:(double)arg7 timestamp:(id)arg8 inManagedObjectContext:(id)arg9;
++ (id)managedObjectWithLatitude:(double)arg1 longitude:(double)arg2 altitude:(double)arg3 horizontalAccuracy:(double)arg4 verticalAccuracy:(double)arg5 course:(double)arg6 speed:(double)arg7 timestamp:(id)arg8 type:(id)arg9 inManagedObjectContext:(id)arg10;
 + (id)fetchRequest;
 
 // Remaining properties
@@ -23,6 +23,7 @@
 @property(nonatomic) double longitude; // @dynamic longitude;
 @property(nonatomic) double speed; // @dynamic speed;
 @property(copy, nonatomic) NSDate *timestamp; // @dynamic timestamp;
+@property(copy, nonatomic) NSNumber *type; // @dynamic type;
 @property(nonatomic) double verticalAccuracy; // @dynamic verticalAccuracy;
 
 @end

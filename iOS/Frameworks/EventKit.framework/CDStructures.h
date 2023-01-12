@@ -10,6 +10,11 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct _NSRange {
+    unsigned long long location;
+    unsigned long long length;
+};
+
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
@@ -89,7 +94,11 @@ typedef struct {
     unsigned int requiresOpeningAttachmentAsLink:1;
     unsigned int shouldUseDeleteAndAddInsteadOfMoveBetweenCalendars:1;
     unsigned int supportsInvitationModificationsWithoutNotification:1;
-} CDStruct_9e0d2422;
+    unsigned int supportsManagedSubscribedCalendars:1;
+    unsigned int supportsSubscriptionMirroring:1;
+    unsigned int supportsParticipantRoles:1;
+    unsigned int supportsPush:1;
+} CDStruct_d497be9b;
 
 typedef struct {
     unsigned int _field1;

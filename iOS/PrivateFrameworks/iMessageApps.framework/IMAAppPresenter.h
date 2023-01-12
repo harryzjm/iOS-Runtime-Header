@@ -10,16 +10,16 @@
 #import <iMessageApps/CKBrowserSwitcherViewControllerDelegate-Protocol.h>
 #import <iMessageApps/CKBrowserTransitionCoordinatorDelegate-Protocol.h>
 #import <iMessageApps/CKBrowserViewControllerSendDelegate-Protocol.h>
-#import <iMessageApps/CKFullScreenAppViewControllerDelegate-Protocol.h>
+#import <iMessageApps/CKExpandedAppViewControllerDelegate-Protocol.h>
 
-@class CKBrowserSwitcherViewController, CKBrowserTransitionCoordinator, CKFullScreenAppViewController, IMBalloonPlugin, NSString, UIViewController;
+@class CKBrowserSwitcherViewController, CKBrowserTransitionCoordinator, CKExpandedAppViewController, IMBalloonPlugin, NSString, UIViewController;
 @protocol IMAAppPresenterDelegate;
 
-@interface IMAAppPresenter : NSObject <CKBrowserViewControllerSendDelegate, CKBrowserSwitcherViewControllerDelegate, CKFullScreenAppViewControllerDelegate, CKBrowserDragControllerTranscriptDelegate, CKBrowserTransitionCoordinatorDelegate>
+@interface IMAAppPresenter : NSObject <CKBrowserViewControllerSendDelegate, CKBrowserSwitcherViewControllerDelegate, CKExpandedAppViewControllerDelegate, CKBrowserDragControllerTranscriptDelegate, CKBrowserTransitionCoordinatorDelegate>
 {
     id <IMAAppPresenterDelegate> _delegate;
     IMBalloonPlugin *_currentBalloonPlugin;
-    CKFullScreenAppViewController *_expandedAppViewController;
+    CKExpandedAppViewController *_expandedAppViewController;
     CKBrowserTransitionCoordinator *_transitionCoordinator;
     _Bool _isTransitioningPresentationStyles;
     _Bool _alwaysPresentAppsExpanded;

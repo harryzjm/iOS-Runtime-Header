@@ -36,6 +36,7 @@
 - (id)photoFutureForContactFuture:(id)arg1 scheduler:(id)arg2;
 - (_Bool)isMeContact:(id)arg1;
 - (_Bool)mayIncludeSource:(long long)arg1;
+- (id)badgeObservableWithLikenessBadge:(id)arg1 workScheduler:(id)arg2;
 - (id)silhouetteWithPlaceholderProviderFactory:(id)arg1 workScheduler:(id)arg2;
 - (id)basicMonogramObservableFromString:(id)arg1 color:(id)arg2;
 - (id)basicMonogramObservableWithContactFuture:(id)arg1 monogramColor:(id)arg2;

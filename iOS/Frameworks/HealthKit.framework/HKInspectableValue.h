@@ -10,7 +10,7 @@
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class HKCodedQuantity, HKCodedValueCollection, HKConcept, HKMedicalDate, HKMedicalDateInterval, HKRatioValue, HKUCUMUnitDisplayConverter, NSArray, NSDateComponents, NSString;
+@class HKCodedQuantity, HKCodedValueCollection, HKConcept, HKMedicalDate, HKMedicalDateInterval, HKRatioValue, HKUCUMUnitDisplayConverter, NSArray, NSDateComponents, NSNumber, NSString;
 @protocol NSObject><NSSecureCoding;
 
 @interface HKInspectableValue : NSObject <NSSecureCoding, NSCopying, HKCodedObject>
@@ -26,6 +26,8 @@
 + (id)inspectableValueWithCodedValueCollection:(id)arg1;
 + (id)inspectableValueWithMedicalCodings:(id)arg1;
 + (id)inspectableValueWithNull;
++ (id)inspectableValueWithBoolean:(id)arg1;
++ (id)inspectableValueWithInteger:(id)arg1;
 + (id)inspectableValueWithDateComponents:(id)arg1;
 + (id)inspectableValueWithMedicalDateInterval:(id)arg1;
 + (id)inspectableValueWithMedicalDate:(id)arg1;
@@ -52,6 +54,8 @@
 @property(readonly, nonatomic) HKUCUMUnitDisplayConverter *converter;
 - (void)_setDataAbsentReason:(id)arg1;
 - (void)_setConcept:(id)arg1;
+@property(readonly, copy, nonatomic) NSNumber *booleanValue;
+@property(readonly, copy, nonatomic) NSNumber *inspectableIntegerValue;
 @property(readonly, copy, nonatomic) NSArray *dataAbsentReasonCodings;
 @property(readonly, copy, nonatomic) HKCodedValueCollection *codedValueCollection;
 @property(readonly, copy, nonatomic) NSArray *medicalCodings;

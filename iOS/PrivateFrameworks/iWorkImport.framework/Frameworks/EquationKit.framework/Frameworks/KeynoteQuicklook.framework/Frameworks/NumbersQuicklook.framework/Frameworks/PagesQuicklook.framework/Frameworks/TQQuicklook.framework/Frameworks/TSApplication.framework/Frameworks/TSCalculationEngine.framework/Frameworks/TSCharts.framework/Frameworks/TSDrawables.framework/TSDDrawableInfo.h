@@ -56,6 +56,11 @@
 @property(nonatomic) _Bool titleHidden; // @synthesize titleHidden=mTitleHidden;
 @property(nonatomic) _Bool captionHidden; // @synthesize captionHidden=mCaptionHidden;
 @property(nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment; // @synthesize owningAttachment=mOwningAttachment;
+@property(readonly) NSString *typeName;
+@property(readonly) NSString *defaultDescriptiveName;
+@property(readonly) NSString *displayableContainedText;
+@property(readonly) NSString *userDescription;
+@property(readonly) NSString *displayableDescriptiveName;
 - (_Bool)shouldShowOnCanvas:(id)arg1;
 @property(readonly, nonatomic) _Bool shouldShowInPrint;
 - (id)titleAndCaptionInfos;
@@ -70,6 +75,7 @@
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 @property(readonly, nonatomic) TSDGroupInfo *containingGroup;
 - (void)finalizeDataOnDeepCopyBeforeSerializingForDragAndDrop;
+- (void)adjustModelInPreparationForBecomingInline;
 - (id)promisedTSPDataForType:(id)arg1;
 - (id)promisedDataForType:(id)arg1;
 @property(readonly, nonatomic) _Bool wantsStandardTypesInAdditionToTypesToPromiseWhenDraggingSingleDrawable;
@@ -170,8 +176,8 @@
 @property(nonatomic) NSObject<TSDInfo> *parentInfo;
 - (_Bool)isChildOfPossibleParentInfo:(id)arg1;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2;
-- (void)saveToArchive:(struct DrawableArchive *)arg1 archiver:(id)arg2;
-- (void)loadFromArchive:(const struct DrawableArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)setParentInfoDuringUnarchiving:(id)arg1 inDocument:(_Bool)arg2;
 - (id)objectUUIDPath;
 - (void)setInsertionCenterPosition:(struct CGPoint)arg1;

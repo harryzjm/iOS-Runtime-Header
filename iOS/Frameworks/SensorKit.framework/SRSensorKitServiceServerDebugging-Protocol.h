@@ -5,6 +5,8 @@
 //
 
 @protocol SRSensorKitServiceServerDebugging
+- (void)dumpDefaultsWithReply:(void (^)(NSDictionary *, NSError *))arg1;
+- (void)dumpConfigurationsWithReply:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)listDatastoreWithReply:(void (^)(NSString *, NSError *))arg1;
 - (void)dumpStateCacheWithReply:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)dumpClientsWithReply:(void (^)(NSDictionary *, NSError *))arg1;

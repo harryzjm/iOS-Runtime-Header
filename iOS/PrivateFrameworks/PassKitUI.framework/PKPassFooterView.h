@@ -10,13 +10,14 @@
 #import <PassKitUI/PKPassFooterContentViewDelegate-Protocol.h>
 #import <PassKitUI/PKUIForegroundActiveArbiterDeactivationObserver-Protocol.h>
 
-@class NSObject, NSString, PKPassFooterContentView, PKPassView, PKPaymentSessionHandle;
+@class NSObject, NSString, PKPassFooterContentView, PKPassFooterViewConfiguration, PKPaymentSessionHandle;
 @protocol OS_dispatch_group, OS_dispatch_source, PKPassFooterViewDelegate;
 
 @interface PKPassFooterView : UIView <PKPassFooterContentViewDelegate, PKForegroundActiveArbiterObserver, PKUIForegroundActiveArbiterDeactivationObserver>
 {
-    PKPassView *_passView;
     PKPassFooterContentView *_contentView;
+    PKPassFooterContentView *_fadingContentView;
+    _Bool _fadingContentViewNeedsDidHide;
     NSObject<OS_dispatch_source> *_sessionStartTimer;
     _Bool _isBackgrounded;
     _Bool _isAssistantActive;
@@ -28,7 +29,7 @@
     unsigned char _visibility;
     unsigned char _contentViewVisibility;
     _Bool _physicalButtonRequired;
-    long long _state;
+    PKPassFooterViewConfiguration *_configuration;
     long long _coachingState;
     id <PKPassFooterViewDelegate> _delegate;
 }
@@ -37,8 +38,7 @@
 @property(nonatomic) __weak id <PKPassFooterViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) long long coachingState; // @synthesize coachingState=_coachingState;
 @property(readonly, nonatomic, getter=isPhysicalButtonRequired) _Bool physicalButtonRequired; // @synthesize physicalButtonRequired=_physicalButtonRequired;
-@property(readonly, nonatomic) long long state; // @synthesize state=_state;
-@property(retain, nonatomic) PKPassView *passView; // @synthesize passView=_passView;
+@property(readonly, nonatomic) PKPassFooterViewConfiguration *configuration; // @synthesize configuration=_configuration;
 - (id)_messageForPaymentApplicationState;
 - (id)_messageForPeerPaymentLockedByOwner;
 - (id)_messageForPeerPaymentZeroBalance;
@@ -54,13 +54,14 @@
 - (void)_advanceVisibilityToState:(unsigned char)arg1 animated:(_Bool)arg2;
 - (void)_setCoachingState:(long long)arg1;
 - (void)_setPhysicalButtonRequired:(_Bool)arg1;
+- (void)_commitContentViewAnimated:(_Bool)arg1;
 - (void)_setContentView:(id)arg1 animated:(_Bool)arg2;
 - (void)_configureForValueAddedServiceWithContext:(id)arg1;
 - (void)_configureForPersonalizedPaymentApplicationWithContext:(id)arg1;
-- (void)_acquireContactlessInterfaceSessionWithSessionToken:(unsigned long long)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_acquireContactlessInterfaceSessionWithSessionToken:(unsigned long long)arg1 shouldForceSessionAcquisition:(_Bool)arg2 handler:(CDUnknownBlockType)arg3;
 - (long long)_acquireContactlessInterfaceSessionErrorActionForError:(id)arg1;
-- (void)_startContactlessInterfaceSessionWithContext:(id)arg1 sessionAvailable:(CDUnknownBlockType)arg2 sessionUnavailable:(CDUnknownBlockType)arg3;
-- (void)_configureForState:(long long)arg1 context:(id)arg2 passView:(id)arg3;
+- (void)_startContactlessInterfaceSessionWithContext:(id)arg1 shouldForceSessionAcquisition:(_Bool)arg2 sessionAvailable:(CDUnknownBlockType)arg3 sessionUnavailable:(CDUnknownBlockType)arg4;
+- (void)_configureWithConfiguration:(id)arg1 context:(id)arg2 animated:(_Bool)arg3;
 - (void)_updateForNonForegroundActivePresentationAnimated:(_Bool)arg1;
 - (void)_updateForForegroundActivePresentationIfNecessaryAnimated:(_Bool)arg1;
 - (void)passFooterContentViewDidChangePileSuppressionRequirement:(id)arg1;
@@ -73,20 +74,22 @@
 - (void)passFooterContentViewRequestsSessionSuppression:(id)arg1;
 - (void)passFooterContentViewDidInvalidateAuthorizedBarcode:(id)arg1;
 - (void)passFooterContentView:(id)arg1 didAuthorizeAndRetrieveDecryptedBarcode:(id)arg2;
-- (void)passFooterContentViewDidAuthorizeTransaction:(id)arg1;
+- (void)passFooterContentViewDidTransact:(id)arg1;
 - (void)passFooterContentViewDidAuthenticate:(id)arg1;
 - (void)showFullScreenBarcode;
+- (_Bool)isViewCurrentContentView:(id)arg1;
 @property(readonly, nonatomic) _Bool requestPileSuppression;
 @property(readonly, nonatomic, getter=isPassAuthorized) _Bool passAuthorized;
 - (void)invalidate;
-- (void)configureForState:(long long)arg1 context:(id)arg2 passView:(id)arg3;
+- (void)configureWithConfiguration:(id)arg1 context:(id)arg2 options:(CDStruct_d7010776)arg3;
 - (void)didBecomeHiddenAnimated:(_Bool)arg1;
 - (void)didBecomeVisibleAnimated:(_Bool)arg1;
 - (void)willBecomeHiddenAnimated:(_Bool)arg1;
 - (void)willBecomeVisibleAnimated:(_Bool)arg1;
 - (void)layoutSubviews;
 - (void)dealloc;
-- (id)initWithPassView:(id)arg1 state:(long long)arg2 context:(id)arg3;
+- (id)init;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -11,6 +11,7 @@
 #import <UserManagement/UMUserSwitchManagement_Private-Protocol.h>
 
 @class NSData, NSDictionary, NSMutableArray, NSString, NSXPCConnection, NSXPCListener;
+@protocol UMSideEffectsProviding;
 
 __attribute__((visibility("hidden")))
 @interface UMXPCServer : NSObject <NSXPCListenerDelegate, UMUserSwitchManagement, UMUserSwitchManagement_Private>
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
     _Bool _didBroadcastUploadContent;
     _Bool _didRegisterPersonaCalbackStakeholder;
     unsigned int _interruptionRetryCount;
+    NSObject<UMSideEffectsProviding> *_se;
     id _stakeholder;
     unsigned long long _stakeholderType;
     NSString *_machServiceName;
@@ -91,27 +93,30 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *machServiceName; // @synthesize machServiceName=_machServiceName;
 @property(nonatomic) unsigned long long stakeholderType; // @synthesize stakeholderType=_stakeholderType;
 @property(nonatomic) __weak id stakeholder; // @synthesize stakeholder=_stakeholder;
+@property(retain, nonatomic) NSObject<UMSideEffectsProviding> *se; // @synthesize se=_se;
+- (id)grantSandboxExtensionForPersonaWithUniqueString:(id)arg1;
+- (int)personaSynchronousLogoutWithODuuid:(id)arg1 withUid:(unsigned int)arg2;
+- (int)personaSynchronousLoginWithODuuid:(id)arg1 withUid:(unsigned int)arg2;
+- (id)_createUMServerSyncConnection;
 - (void)setupUMUserSessionProvisioning:(id)arg1 WithCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)registerPersonaListUpdateObserver:(id)arg1 withMachService:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)registerPersonaListUpdateObserver:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_registerPersonaListObserver:(id)arg1 withMachService:(id)arg2;
 - (void)launchPersonaCallback;
 - (id)registerPersonaUpdateCallbackWithMachService:(id)arg1;
-- (void)personaLogoutWithUserODuuid:(id)arg1 withUid:(unsigned int)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)personaLoginWithUserODuuid:(id)arg1 withUid:(unsigned int)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)fetchMultiPersonaBundleIdentifierWithcompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setMultiPersonaBundleIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchBundleIdentifierForPersona:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setBundlesIdentifiers:(id)arg1 forUniquePersona:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)fetchAsidMapwithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)fetchPersonaSynchronous:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)fetchPersonaSynchronous:(id)arg1 WithError:(id *)arg2;
 - (void)fetchPersona:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)fetchListOfPersonasSynchronousWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)fetchListOfPersonasSynchronousWithError:(id *)arg1;
 - (void)fetchListOfAllUsersPersonasWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)fetchListOfPersonasWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)disableUserPersona:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)deleteUserPersona:(id)arg1 passcodeData:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)createUserPersona:(id)arg1 passcodeData:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)createUserPersona:(id)arg1 passcodeData:(id)arg2 passcodeDataType:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)personaUpdateCallbackForMachServiceCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)personaListDidUpdateCompletionHandler:(CDUnknownBlockType)arg1;
@@ -132,8 +137,6 @@ __attribute__((visibility("hidden")))
 - (void)_tearDownConnectionToUMServer;
 - (void)_setUpXPCConnectionToUMServerIfNeeded;
 - (void)_setUpUMServerXPCConnectionIfNeeded:(id)arg1;
-- (id)_syncServer;
-- (id)_server;
 - (int)_pid;
 - (void)_registerStakeholder:(id)arg1;
 - (void)userInteractionIsEnabled;

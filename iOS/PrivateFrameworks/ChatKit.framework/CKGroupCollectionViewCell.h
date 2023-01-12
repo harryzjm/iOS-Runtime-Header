@@ -17,6 +17,8 @@ __attribute__((visibility("hidden")))
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIView *avatarView; // @synthesize avatarView=_avatarView;
+- (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
+- (_Bool)shouldHighlight;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 

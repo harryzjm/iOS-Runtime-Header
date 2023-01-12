@@ -11,13 +11,13 @@ __attribute__((visibility("hidden")))
 {
     long long _index;
     id _argument;
-    long long _argumentKind;
+    long long _replacementKind;
     struct _NSRange _specifierRangeInFormatString;
     struct _NSRange _replacementRangeInResult;
 }
 
 + (id)_replacementsFromMetadataArray:(id)arg1;
-@property(readonly) long long argumentKind; // @synthesize argumentKind=_argumentKind;
+@property(readonly) long long replacementKind; // @synthesize replacementKind=_replacementKind;
 @property(readonly) id argument; // @synthesize argument=_argument;
 @property(readonly) struct _NSRange replacementRangeInResult; // @synthesize replacementRangeInResult=_replacementRangeInResult;
 @property(readonly) struct _NSRange specifierRangeInFormatString; // @synthesize specifierRangeInFormatString=_specifierRangeInFormatString;

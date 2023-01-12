@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEORPFeedbackCommonContext, GEORPFeedbackCommonCorrections, GEORPFeedbackDetails, NSString, PBDataReader, PBUnknownFields;
+@class GEORPFeedbackCommonContext, GEORPFeedbackCommonCorrections, GEORPFeedbackDetails, GEORPFeedbackDynamicForm, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEORPFeedbackSubmissionParameters : PBCodable <NSCopying>
 {
@@ -18,6 +18,7 @@
     GEORPFeedbackCommonContext *_commonContext;
     GEORPFeedbackCommonCorrections *_commonCorrections;
     GEORPFeedbackDetails *_details;
+    GEORPFeedbackDynamicForm *_dynamicForm;
     NSString *_parentFeedbackId;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
@@ -30,6 +31,7 @@
         unsigned int read_commonContext:1;
         unsigned int read_commonCorrections:1;
         unsigned int read_details:1;
+        unsigned int read_dynamicForm:1;
         unsigned int read_parentFeedbackId:1;
         unsigned int wrote_anyField:1;
     } _flags;
@@ -44,6 +46,8 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
+- (void)clearSensitiveFields:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -52,6 +56,8 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) GEORPFeedbackDynamicForm *dynamicForm;
+@property(readonly, nonatomic) _Bool hasDynamicForm;
 @property(retain, nonatomic) NSString *parentFeedbackId;
 @property(readonly, nonatomic) _Bool hasParentFeedbackId;
 @property(retain, nonatomic) GEORPFeedbackCommonCorrections *commonCorrections;

@@ -7,7 +7,7 @@
 @class NSString, NSUUID, TSPPersistedObjectUUIDMap;
 
 @protocol TSPPersistedObjectUUIDMapDelegate
-- (void)persistedObjectUUIDMap:(TSPPersistedObjectUUIDMap *)arg1 foundDuplicateUUID:(NSUUID *)arg2 firstObjectLocation:(struct ObjectLocation)arg3 secondObjectLocation:(struct ObjectLocation)arg4;
+- (void)persistedObjectUUIDMap:(TSPPersistedObjectUUIDMap *)arg1 foundDuplicateUUID:(NSUUID *)arg2 firstObjectLocation:(struct TSPObjectLocation)arg3 secondObjectLocation:(struct TSPObjectLocation)arg4;
 - (NSString *)persistedObjectUUIDMap:(TSPPersistedObjectUUIDMap *)arg1 needsDescriptionForComponentIdentifier:(long long)arg2 objectIdentifier:(long long)arg3;
 @end
 

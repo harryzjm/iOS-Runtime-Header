@@ -8,8 +8,10 @@
 
 @protocol GCPhotoVideoXPCProxyServiceRemoteServerInterface
 - (void)takeScreenshotWithReply:(void (^)(NSError *))arg1;
-- (void)generateURLFor:(NSString *)arg1 optionalFolder:(NSString *)arg2 withReply:(void (^)(NSURL *, NSString *))arg3;
+- (void)getTheLastGeneratedURLWithReply:(void (^)(NSURL *, NSError *))arg1;
+- (void)generateURLFor:(NSString *)arg1 withReply:(void (^)(NSURL *, NSString *))arg2;
 - (void)onVideoRecordingStopWithURL:(NSURL *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)onVideoRecordingStart:(void (^)(NSError *))arg1;
+- (void)checkClipBufferingEnabledWithReply:(void (^)(NSNumber *))arg1;
 @end
 

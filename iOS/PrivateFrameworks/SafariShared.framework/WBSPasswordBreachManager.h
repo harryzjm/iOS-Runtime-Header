@@ -27,12 +27,14 @@
 + (_Bool)isPasswordBreachDetectionOn;
 - (void).cxx_destruct;
 - (void)addResultRecords:(id)arg1;
+- (void)clearAllRecordsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)clearRecentlyBreachedResultRecords;
 - (id)recentlyBreachedSavedPasswords;
 - (id)recentlyBreachedResultRecords;
 - (void)_addRecentlyBreachedNotificationIfNecessaryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_completeSessionWithResults:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)_canPerformSessionIgnoringMinimumDelay:(_Bool)arg1;
+- (void)_showActiveWarningsIfNecessaryWithInitialBagFillState:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)performNextSessionLookupIgnoringMinimumDelay:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)resultRecordsForQueries:(id)arg1;
 - (id)_checker;

@@ -10,9 +10,11 @@ __attribute__((visibility("hidden")))
 @interface WebMainThreadInvoker : NSProxy
 {
     id target;
-    id exception;
+    struct RetainPtr<id> exception;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)handleException:(id)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (void)forwardInvocation:(id)arg1;

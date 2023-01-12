@@ -26,10 +26,10 @@
 - (long long)valueType;
 - (id)initWithPropertyName:(id)arg1 type:(long long)arg2;
 - (id)__INCodableDescriptionKey;
-- (id)__INIntentResponseCodableDescriptionKey;
-- (id)__INTypeCodableDescriptionKey;
 - (id)__INCodableDescriptionTypeKey;
+- (id)__INIntentResponseCodableDescriptionKey;
 - (id)__INIntentResponseCodableDescriptionTypeKey;
+- (id)__INTypeCodableDescriptionKey;
 - (id)__INTypeCodableDescriptionTypeKey;
 
 @end

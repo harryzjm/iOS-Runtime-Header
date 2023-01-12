@@ -36,6 +36,7 @@
 - (void)fillWithFloat:(float)arg1;
 - (id)initWithDataTensor:(id)arg1;
 - (id)initWithFloats:(const float *)arg1 count:(unsigned long long)arg2;
+- (id)initWithValue:(float)arg1 count:(unsigned long long)arg2;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

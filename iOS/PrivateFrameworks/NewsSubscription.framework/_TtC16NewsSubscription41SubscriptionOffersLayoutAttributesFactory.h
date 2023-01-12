@@ -16,7 +16,6 @@
     MISSING_TYPE *accessLabelTopOffset;
     MISSING_TYPE *spaceBetweenAccessTextAndSubscribeButton;
     MISSING_TYPE *webAuthButtonTopOffset;
-    MISSING_TYPE *spaceBetweenLearnMoreButtonAndLearnMoreLabel;
     MISSING_TYPE *styler;
 }
 

@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <TSPersistence/TSPDataStorageDownloadable-Protocol.h>
 #import <TSPersistence/TSPDocumentResourceDataStorageInfo-Protocol.h>
 
 @class NSString, TSPDocumentResourceInfo;
 @protocol TSUResourceFileURLProvider><TSUResourceRequest, TSUResourceRequest;
 
-@interface TSPDocumentResourceFileDataStorage <TSPDocumentResourceDataStorageInfo>
+@interface TSPDocumentResourceFileDataStorage <TSPDataStorageDownloadable, TSPDocumentResourceDataStorageInfo>
 {
     id <TSUResourceFileURLProvider><TSUResourceRequest> _resourceRequest;
     TSPDocumentResourceInfo *_documentResourceInfo;
@@ -18,10 +19,11 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) TSPDocumentResourceInfo *documentResourceInfo;
 @property(readonly, nonatomic) id <TSUResourceRequest> resourceRequest;
-- (void)addDownloadObserver:(id)arg1 forData:(id)arg2 options:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)didAddDownloadObserverWithData:(id)arg1;
 - (id)downloadProgress;
+- (_Bool)canDownload;
 - (_Bool)needsDownload;
-- (_Bool)archiveInfoMessage:(struct DataInfo *)arg1 archiver:(id)arg2 packageWriter:(id)arg3;
+- (_Bool)archiveInfoMessage:(void *)arg1 archiver:(id)arg2 packageWriter:(id)arg3;
 - (id)fileURL;
 - (struct CGSize)pixelSize;
 - (id)fallbackColor;

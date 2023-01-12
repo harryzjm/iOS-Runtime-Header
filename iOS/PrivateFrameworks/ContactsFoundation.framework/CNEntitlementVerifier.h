@@ -14,10 +14,10 @@
 {
 }
 
-+ (_Bool)auditToken:(CDStruct_4c969caf)arg1 isFirstOrSecondPartyWithError:(id *)arg2;
-+ (_Bool)secTask:(struct __SecTask *)arg1 hasBooleanEntitlement:(id)arg2 error:(id *)arg3;
-+ (_Bool)auditToken:(CDStruct_4c969caf)arg1 hasBooleanEntitlement:(id)arg2 error:(id *)arg3;
-+ (_Bool)currentProcessHasBooleanEntitlement:(id)arg1 error:(id *)arg2;
+- (_Bool)auditToken:(CDStruct_4c969caf)arg1 isFirstOrSecondPartyWithError:(id *)arg2;
+- (_Bool)secTask:(struct __SecTask *)arg1 hasBooleanEntitlement:(id)arg2 error:(id *)arg3;
+- (_Bool)auditToken:(CDStruct_4c969caf)arg1 hasBooleanEntitlement:(id)arg2 error:(id *)arg3;
+- (_Bool)currentProcessHasBooleanEntitlement:(id)arg1 error:(id *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

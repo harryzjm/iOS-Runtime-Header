@@ -19,10 +19,10 @@
 
 + (id)logCategory;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) HMDCameraNetworkConfig *localNetworkConfig; // @synthesize localNetworkConfig=_localNetworkConfig;
-@property(nonatomic) unsigned long long streamState; // @synthesize streamState=_streamState;
-@property(retain, nonatomic) HMDCameraParameterSelection *parameterSelection; // @synthesize parameterSelection=_parameterSelection;
-@property(readonly, nonatomic) id <HMDCameraRemoteStreamSenderProtocol> streamSender; // @synthesize streamSender=_streamSender;
+@property(readonly) HMDCameraNetworkConfig *localNetworkConfig; // @synthesize localNetworkConfig=_localNetworkConfig;
+@property unsigned long long streamState; // @synthesize streamState=_streamState;
+@property(retain) HMDCameraParameterSelection *parameterSelection; // @synthesize parameterSelection=_parameterSelection;
+@property(readonly) id <HMDCameraRemoteStreamSenderProtocol> streamSender; // @synthesize streamSender=_streamSender;
 - (id)logIdentifier;
 - (id)stateAsString;
 - (_Bool)containsState:(long long)arg1;

@@ -8,16 +8,21 @@
 
 @class MISSING_TYPE;
 
+__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI220SearchViewController : UIViewController
 {
     MISSING_TYPE *styler;
     MISSING_TYPE *eventHandler;
     MISSING_TYPE *blueprintViewController;
     MISSING_TYPE *toolbarManager;
+    MISSING_TYPE *sceneStateManager;
     MISSING_TYPE *parsecQueryID;
     MISSING_TYPE *searchBar;
     MISSING_TYPE *searchAction;
+    MISSING_TYPE *clearAction;
     MISSING_TYPE *sharingActivityProviderFactory;
+    MISSING_TYPE *refreshQueryParam;
+    MISSING_TYPE *refreshRecentSearch;
 }
 
 - (void).cxx_destruct;

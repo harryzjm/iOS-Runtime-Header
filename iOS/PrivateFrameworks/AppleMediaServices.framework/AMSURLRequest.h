@@ -21,7 +21,10 @@
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithRequest:(id)arg1 bag:(id)arg2;
+- (id)initWithRequest:(id)arg1 properties:(id)arg2;
 - (id)initWithRequest:(id)arg1;
+- (id)initWithURL:(id)arg1 cachePolicy:(unsigned long long)arg2 timeoutInterval:(double)arg3;
+- (id)_initWithCFURLRequest:(struct _CFURLRequest *)arg1;
 
 @end
 

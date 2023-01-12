@@ -6,19 +6,37 @@
 
 #import <objc/NSObject.h>
 
-@class BKSApplicationStateMonitor;
+#import <GameCenterFoundation/LSApplicationWorkspaceObserverProtocol-Protocol.h>
 
-@interface GKApplicationStateMonitor : NSObject
+@class NSMutableSet, NSString, RBSProcessMonitor;
+@protocol LSApplicationWorkspaceObserverProtocol;
+
+@interface GKApplicationStateMonitor : NSObject <LSApplicationWorkspaceObserverProtocol>
 {
-    BKSApplicationStateMonitor *_applicationStateMonitor;
+    CDUnknownBlockType _handler;
+    id <LSApplicationWorkspaceObserverProtocol> _delegate;
+    RBSProcessMonitor *_processMonitor;
+    NSMutableSet *_interestedBundleIDs;
 }
 
-@property(retain, nonatomic) BKSApplicationStateMonitor *applicationStateMonitor; // @synthesize applicationStateMonitor=_applicationStateMonitor;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableSet *interestedBundleIDs; // @synthesize interestedBundleIDs=_interestedBundleIDs;
+@property(retain, nonatomic) RBSProcessMonitor *processMonitor; // @synthesize processMonitor=_processMonitor;
+@property(nonatomic) __weak id <LSApplicationWorkspaceObserverProtocol> delegate; // @synthesize delegate=_delegate;
+@property(copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
+- (void)applicationsWillUninstall:(id)arg1;
+- (void)applicationsDidUninstall:(id)arg1;
+- (void)startObservingApplicationWorkspaceChanges;
 - (void)startObservingStateChangesForBundleID:(id)arg1;
 - (_Bool)observingStateChangesForBundleID:(id)arg1;
-@property(copy, nonatomic) CDUnknownBlockType handler;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

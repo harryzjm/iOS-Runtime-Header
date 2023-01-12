@@ -11,6 +11,7 @@
     TSCHChartRep *m2DRep;
 }
 
+- (void).cxx_destruct;
 - (id)p_mutationsForConverting3DFillFromSeries:(id)arg1;
 - (void)renderIntoContext:(struct CGContext *)arg1 visible:(struct CGRect)arg2;
 - (void)drawInContext:(struct CGContext *)arg1;
@@ -18,7 +19,6 @@
 - (void)addToSet:(id)arg1;
 - (void)p_create2DRep;
 - (id)p_layoutFrom3DInfo:(id)arg1 layout3D:(id)arg2;
-- (void)dealloc;
 - (id)initWithLayout:(id)arg1 canvas:(id)arg2;
 
 @end

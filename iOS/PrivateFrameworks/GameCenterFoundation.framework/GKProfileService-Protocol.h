@@ -9,6 +9,7 @@
 @class NSArray;
 
 @protocol GKProfileService <NSObject>
+- (oneway void)getFriendSupportPageURLWithHandler:(void (^)(NSString *, NSError *))arg1;
 - (oneway void)getOcelotStateForCurrentAppWithHandler:(void (^)(_Bool))arg1;
 - (oneway void)setOcelotStateForCurrentApp;
 - (oneway void)getProfilesForPlayerIDs:(NSArray *)arg1 handler:(void (^)(NSArray *, NSError *))arg2;

@@ -13,5 +13,6 @@
 - (void)queryStoreDidChangeWithNotification:(NSNotification *)arg1;
 - (void)queryContextDidChangeWithNotification:(NSNotification *)arg1;
 - (void)queryContentsDidChangeWithNotification:(NSNotification *)arg1;
+- (void)queryIsReady;
 @end
 

@@ -30,37 +30,19 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
-+ (Class)actionComponentMapEntriesType;
-+ (Class)searchAttributionSourcesType;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *sourceURL;
 @property(readonly, nonatomic) _Bool hasSourceURL;
 @property(nonatomic) _Bool hasTimestamp;
 @property(nonatomic) double timestamp;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (id)actionComponentMapEntriesAtIndex:(unsigned long long)arg1;
-- (unsigned long long)actionComponentMapEntriesCount;
-- (void)addActionComponentMapEntries:(id)arg1;
-- (void)clearActionComponentMapEntries;
-@property(retain, nonatomic) NSMutableArray *actionComponentMapEntries;
-- (id)searchAttributionSourcesAtIndex:(unsigned long long)arg1;
-- (unsigned long long)searchAttributionSourcesCount;
-- (void)addSearchAttributionSources:(id)arg1;
-- (void)clearSearchAttributionSources;
-@property(retain, nonatomic) NSMutableArray *searchAttributionSources;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

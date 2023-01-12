@@ -10,6 +10,7 @@
 
 @interface OBPrivacySplashListView : UIStackView
 {
+    _Bool _underlineLinks;
     _Bool _displayingPrivacyPane;
     UITextView *_footerTextView;
     NSMutableArray *_textViews;
@@ -20,7 +21,10 @@
 @property(retain, nonatomic) NSMutableArray *stackedIconTextLists; // @synthesize stackedIconTextLists=_stackedIconTextLists;
 @property(retain, nonatomic) NSMutableArray *textViews; // @synthesize textViews=_textViews;
 @property _Bool displayingPrivacyPane; // @synthesize displayingPrivacyPane=_displayingPrivacyPane;
+@property(nonatomic) _Bool underlineLinks; // @synthesize underlineLinks=_underlineLinks;
 @property(readonly, nonatomic) UITextView *footerTextView; // @synthesize footerTextView=_footerTextView;
+- (void)_updateTextViewsForLinkUITreatment:(id)arg1;
+- (void)tintColorDidChange;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateTextAlignment;
 - (void)updateFonts;

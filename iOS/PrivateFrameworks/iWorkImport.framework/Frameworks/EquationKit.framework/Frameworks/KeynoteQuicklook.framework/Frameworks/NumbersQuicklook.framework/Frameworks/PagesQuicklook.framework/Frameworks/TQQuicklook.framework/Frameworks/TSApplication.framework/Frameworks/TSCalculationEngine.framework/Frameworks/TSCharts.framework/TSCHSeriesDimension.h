@@ -10,13 +10,13 @@
 
 @interface TSCHSeriesDimension : NSObject <NSCopying>
 {
-    unsigned long long mSeriesIndex;
-    int mAxisType;
+    unsigned long long _seriesIndex;
+    int _axisType;
 }
 
 + (id)seriesDimensionWithSeriesIndex:(unsigned long long)arg1 axisType:(int)arg2;
-@property(readonly, nonatomic) int axisType; // @synthesize axisType=mAxisType;
-@property(readonly, nonatomic) unsigned long long seriesIndex; // @synthesize seriesIndex=mSeriesIndex;
+@property(readonly, nonatomic) int axisType; // @synthesize axisType=_axisType;
+@property(readonly, nonatomic) unsigned long long seriesIndex; // @synthesize seriesIndex=_seriesIndex;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

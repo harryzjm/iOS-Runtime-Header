@@ -10,7 +10,6 @@
 
 @class NSData, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDShareTokenMetadata : NSObject <NSCopying>
 {
     _Bool _forceDSRefetch;

@@ -6,11 +6,12 @@
 
 #import <InAppMessages/NSObject-Protocol.h>
 
-@class NSDictionary, NSSet, NSString;
+@class ICInAppMessageEntry, NSDictionary, NSSet, NSString;
 @protocol IAMMessageEntryProviderDelegate;
 
 @protocol IAMMessageEntryProvider <NSObject>
 @property(nonatomic) __weak id <IAMMessageEntryProviderDelegate> delegate;
+- (void)removeApplicationBadgeForBundleIdentifier:(NSString *)arg1 fromPresentedMessageEntry:(ICInAppMessageEntry *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)downloadResourcesForMessageWithIdentifier:(NSString *)arg1 bundleIdentifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)reportEventForMessageIdentifier:(NSString *)arg1 withParams:(NSDictionary *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)removeMessageEntryWithIdentifier:(NSString *)arg1 forBundleIdentifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;

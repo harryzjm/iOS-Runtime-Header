@@ -9,6 +9,7 @@
 #import <TSTables/TSWPTextDelegate-Protocol.h>
 
 @class TSULocale, TSWPPadding;
+@protocol TSWPStyleProviding;
 
 @interface TSTTextEngineDelegate : NSObject <TSWPTextDelegate>
 {
@@ -17,15 +18,17 @@
     double mMaxWidthForChildren;
     TSULocale *mLocale;
     _Bool mShouldHyphenate;
+    id <TSWPStyleProviding> mStyleProvidingSource;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) __weak id <TSWPStyleProviding> styleProvidingSource; // @synthesize styleProvidingSource=mStyleProvidingSource;
 @property(readonly, nonatomic) _Bool shouldHyphenate; // @synthesize shouldHyphenate=mShouldHyphenate;
 @property(readonly, nonatomic) TSULocale *locale; // @synthesize locale=mLocale;
 @property(nonatomic) double maxWidthForChildren; // @synthesize maxWidthForChildren=mMaxWidthForChildren;
-- (_Bool)forceWesternLineBreaking;
-- (int)verticalAlignment;
-- (id)padding;
-- (void)dealloc;
+@property(readonly, nonatomic) _Bool forceWesternLineBreaking;
+@property(readonly, nonatomic) int verticalAlignment;
+@property(readonly, nonatomic) TSWPPadding *padding;
 - (id)initWithPadding:(struct UIEdgeInsets)arg1 verticalAlignment:(int)arg2 locale:(id)arg3 shouldHyphenate:(_Bool)arg4;
 
 @end

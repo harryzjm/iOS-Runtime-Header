@@ -21,9 +21,11 @@ __attribute__((visibility("hidden")))
     _Bool _isAlignmentRect;
     struct CGSize _canvasSize;
     float _templateVersion;
+    _Bool _isInterpolatable;
     struct os_unfair_lock_s _lock;
 }
 
+- (_Bool)isInterpolatable;
 - (float)vectorGlyphTemplateVersion;
 - (CDStruct_3c058996)vectorGlyphAlignmentRectInsets;
 - (double)vectorGlyphReferencePointSize;

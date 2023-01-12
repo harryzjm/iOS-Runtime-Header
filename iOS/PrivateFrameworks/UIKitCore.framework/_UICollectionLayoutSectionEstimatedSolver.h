@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _layoutAxis;
     long long _frameCount;
     id <_UICollectionPreferredSizes> _preferredSizes;
+    NSString *_errorDescription;
     _UICollectionLayoutAuxillaryItemSolver *_sectionSupplementarySolution;
     _UICollectionLayoutSupplementaryRegistrar *_sectionSupplementaryRegistrar;
     id <NSCollectionLayoutContainer> _memoizedSupplementaryHostContainer;
@@ -30,24 +31,21 @@ __attribute__((visibility("hidden")))
     unsigned long long _containerLayoutAxis;
     struct CGPoint _orthogonalOffset;
     struct CGVector _orthogonalScrollingPrefetchingUnitVector;
+    struct CGRect _overrideContentRectForPinning;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) unsigned long long containerLayoutAxis; // @synthesize containerLayoutAxis=_containerLayoutAxis;
-@property(retain, nonatomic) _UICollectionLayoutSolutionState *solutionState; // @synthesize solutionState=_solutionState;
-@property(retain, nonatomic) id <NSCollectionLayoutContainer> memoizedSupplementaryHostContainer; // @synthesize memoizedSupplementaryHostContainer=_memoizedSupplementaryHostContainer;
-@property(retain, nonatomic) _UICollectionLayoutSupplementaryRegistrar *sectionSupplementaryRegistrar; // @synthesize sectionSupplementaryRegistrar=_sectionSupplementaryRegistrar;
-@property(retain, nonatomic) _UICollectionLayoutAuxillaryItemSolver *sectionSupplementarySolution; // @synthesize sectionSupplementarySolution=_sectionSupplementarySolution;
+@property(readonly, nonatomic) NSString *errorDescription; // @synthesize errorDescription=_errorDescription;
 @property(nonatomic) _Bool shouldAdjustContentSizeForPartialLastGroupSolution; // @synthesize shouldAdjustContentSizeForPartialLastGroupSolution=_shouldAdjustContentSizeForPartialLastGroupSolution;
 @property(nonatomic) struct CGVector orthogonalScrollingPrefetchingUnitVector; // @synthesize orthogonalScrollingPrefetchingUnitVector=_orthogonalScrollingPrefetchingUnitVector;
 @property(nonatomic) struct CGPoint orthogonalOffset; // @synthesize orthogonalOffset=_orthogonalOffset;
-@property(readonly, nonatomic) id <_UICollectionPreferredSizes> preferredSizes; // @synthesize preferredSizes=_preferredSizes;
 @property(readonly, nonatomic) long long frameCount; // @synthesize frameCount=_frameCount;
 @property(readonly, nonatomic) unsigned long long layoutAxis; // @synthesize layoutAxis=_layoutAxis;
 @property(readonly, nonatomic) _Bool layoutRTL; // @synthesize layoutRTL=_layoutRTL;
 @property(readonly, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 @property(readonly, nonatomic) id <NSCollectionLayoutContainer> container; // @synthesize container=_container;
 @property(readonly, nonatomic) NSCollectionLayoutSection *layoutSection; // @synthesize layoutSection=_layoutSection;
+- (double)auxillaryHostPaddingBeforeBoundarySupplementaries;
 - (id)auxillaryHostPreferredSizes;
 - (id)auxillaryHostSupplementaryEnroller;
 - (long long)auxillaryHostAuxillaryKind;
@@ -55,7 +53,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)auxillaryHostShouldLayoutRTL;
 - (id)auxillaryHostAuxillaryItems;
 - (id)auxillaryHostContainer;
-- (struct CGSize)auxillaryHostPinningContentSize;
+- (_Bool)auxillaryHostWantsOverlapAdjustmentForMatchingAlignmentsOnly;
+- (struct CGRect)auxillaryHostPinningRect;
 - (struct CGSize)auxillaryHostContentSize;
 - (struct CGRect)_rectWithContentInsetTrailingLayoutDimensionAddedToToRect:(struct CGRect)arg1 insets:(struct NSDirectionalEdgeInsets)arg2 layoutAxis:(unsigned long long)arg3;
 - (struct CGRect)_adjustContentFrameForLastPartialSolutionIfNeededForContentFrame:(struct CGRect)arg1 bookmarks:(id)arg2;
@@ -72,17 +71,18 @@ __attribute__((visibility("hidden")))
 - (id)visualDescription;
 - (id)sectionSupplementaryFrameWithKind:(id)arg1 index:(long long)arg2;
 - (long long)sectionSupplementaryKindIndexForEnrollmentIdentifier:(id)arg1;
+- (id)unpinnedSectionSupplementaryFrameForIndex:(long long)arg1;
 - (id)sectionSupplementaryFrameForIndex:(long long)arg1;
 - (id)supplementaryFrameWithKind:(id)arg1 index:(long long)arg2;
 - (id)frameForIndex:(long long)arg1;
 - (id)queryFramesIntersectingRect:(struct CGRect)arg1 frameOffset:(struct CGPoint)arg2;
 - (id)queryFramesIntersectingRect:(struct CGRect)arg1;
+- (void)updatePinnedSupplementaryItemsWithVisibleBounds:(struct CGRect)arg1 overrideContentRectForPinning:(struct CGRect)arg2;
 - (void)updatePinnedSupplementaryItemsWithVisibleBounds:(struct CGRect)arg1;
 - (id)resolveWithParameters:(id)arg1 preferredSizes:(id)arg2;
 - (void)solveForContainer:(id)arg1 traitCollection:(id)arg2 layoutAxis:(unsigned long long)arg3 frameCount:(long long)arg4 preferredSizes:(id)arg5 layoutRTL:(_Bool)arg6;
 - (void)solveForContainer:(id)arg1 traitCollection:(id)arg2 layoutAxis:(unsigned long long)arg3 frameCount:(long long)arg4 preferredSizes:(id)arg5;
 - (void)solveForContainer:(id)arg1 traitCollection:(id)arg2 layoutAxis:(unsigned long long)arg3 frameCount:(long long)arg4;
-- (id)initWithLayoutSection:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

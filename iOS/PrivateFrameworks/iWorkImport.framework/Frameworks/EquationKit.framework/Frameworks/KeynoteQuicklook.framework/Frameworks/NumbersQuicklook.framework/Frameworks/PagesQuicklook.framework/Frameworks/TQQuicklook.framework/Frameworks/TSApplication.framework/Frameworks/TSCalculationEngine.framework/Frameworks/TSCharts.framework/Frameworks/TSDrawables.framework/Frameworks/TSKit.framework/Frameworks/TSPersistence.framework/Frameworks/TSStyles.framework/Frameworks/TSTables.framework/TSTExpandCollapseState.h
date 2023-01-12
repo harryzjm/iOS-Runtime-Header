@@ -8,25 +8,27 @@
 
 #import <TSTables/NSCopying-Protocol.h>
 
-@class TSUUUIDSet;
+@class TSCEUIDSet;
 
 @interface TSTExpandCollapseState : TSKSosBase <NSCopying>
 {
-    vector_4dc5f307 _collapsedGroupUIDs;
-    vector_4dc5f307 _expandedGroupUIDs;
-    TSUUUIDSet *_uidsCollapsed;
-    TSUUUIDSet *_uidsExpanded;
+    struct vector<TSU::UUIDData<TSP::UUIDData>, std::allocator<TSU::UUIDData<TSP::UUIDData>>> _collapsedGroupUIDs;
+    struct vector<TSU::UUIDData<TSP::UUIDData>, std::allocator<TSU::UUIDData<TSP::UUIDData>>> _expandedGroupUIDs;
+    long long _dimension;
+    TSCEUIDSet *_uidsCollapsed;
+    TSCEUIDSet *_uidsExpanded;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) TSUUUIDSet *uidsExpanded; // @synthesize uidsExpanded=_uidsExpanded;
-@property(readonly, nonatomic) TSUUUIDSet *uidsCollapsed; // @synthesize uidsCollapsed=_uidsCollapsed;
+@property(readonly, nonatomic) long long dimension; // @synthesize dimension=_dimension;
+@property(readonly, nonatomic) TSCEUIDSet *uidsExpanded; // @synthesize uidsExpanded=_uidsExpanded;
+@property(readonly, nonatomic) TSCEUIDSet *uidsCollapsed; // @synthesize uidsCollapsed=_uidsCollapsed;
 - (id)makeInverse;
-- (void)saveToArchive:(struct ExpandCollapseStateArchive *)arg1;
-- (id)initWithArchive:(const struct ExpandCollapseStateArchive *)arg1;
+- (void)saveToArchive:(void *)arg1;
+- (id)initWithArchive:(const void *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithCollapsed:(id)arg1 expanded:(id)arg2;
+- (id)initWithCollapsed:(id)arg1 expanded:(id)arg2 dimension:(long long)arg3;
 
 @end
 

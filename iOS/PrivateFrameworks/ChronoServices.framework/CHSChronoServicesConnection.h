@@ -9,45 +9,47 @@
 #import <ChronoServices/CHSChronoWidgetServiceClientInterface-Protocol.h>
 #import <ChronoServices/CHSChronoWidgetServiceServer-Protocol.h>
 
-@class BSServiceConnection, CHSWidgetMetricsSpecification, NSArray, NSDictionary, NSMutableSet, NSString;
+@class BSServiceConnection, NSDictionary, NSMutableDictionary, NSMutableSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface CHSChronoServicesConnection : NSObject <CHSChronoWidgetServiceClientInterface, CHSChronoWidgetServiceServer>
 {
+    NSObject<OS_dispatch_queue> *_queue;
+    BSServiceConnection *_queue_connection;
+    _Bool _queue_connectionIsActive;
     NSMutableSet *_queue_clients;
     NSDictionary *_queue_lastDescriptorsByExtensionIdentifier;
-    BSServiceConnection *_queue_connection;
-    NSObject<OS_dispatch_queue> *_queue;
+    NSMutableDictionary *_queue_widgetConfigurationsByHostIdentifier;
     NSObject<OS_dispatch_queue> *_callOutQueue;
-    CHSWidgetMetricsSpecification *_lastMetricsSpecification;
-    NSArray *_lastConfiguredWidgetContainerDescriptors;
+    int _serverStartupToken;
 }
 
 + (id)sharedInstance;
++ (void)_debugRestartServer;
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSArray *lastConfiguredWidgetContainerDescriptors; // @synthesize lastConfiguredWidgetContainerDescriptors=_lastConfiguredWidgetContainerDescriptors;
-@property(retain, nonatomic) CHSWidgetMetricsSpecification *lastMetricsSpecification; // @synthesize lastMetricsSpecification=_lastMetricsSpecification;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *callOutQueue; // @synthesize callOutQueue=_callOutQueue;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property(retain, nonatomic) BSServiceConnection *queue_connection; // @synthesize queue_connection=_queue_connection;
-@property(retain, nonatomic, setter=_queue_setLastDescriptorsByExtensionIdentifier:) NSDictionary *queue_lastDescriptorsByExtensionIdentifier; // @synthesize queue_lastDescriptorsByExtensionIdentifier=_queue_lastDescriptorsByExtensionIdentifier;
-@property(retain, nonatomic) NSMutableSet *queue_clients; // @synthesize queue_clients=_queue_clients;
 - (void)_queue_removeClient:(id)arg1;
 - (void)_queue_addClient:(id)arg1;
 - (void)_queue_invalidateConnection;
 - (void)_queue_createConnection;
-- (id)_queue_remoteTarget;
+- (id)_queue_remoteTargetCreatingConnectionIfNecessary:(_Bool)arg1;
+- (void)_queue_noteDescriptorsDidChange:(id)arg1;
 - (oneway void)avocadoDescriptorsDidChange:(id)arg1;
+- (oneway void)suggestionBudgetsForStackIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (oneway void)loadSuggestedWidget:(id)arg1 metrics:(id)arg2 stackIdentifier:(id)arg3 reason:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (id)descriptors:(id *)arg1;
+- (oneway void)allWidgetConfigurationsByHostWithCompletion:(CDUnknownBlockType)arg1;
+- (oneway void)setWidgetConfiguration:(id)arg1 forWidgetHostWithIdentifier:(id)arg2;
+- (oneway void)removeWidgetHostWithIdentifier:(id)arg1;
 - (id)_URLSessionDidCompleteForExtensionWithBundleIdentifier:(id)arg1 info:(id)arg2;
 - (id)widgetEnvironmentDataForBundleIdentifier:(id)arg1;
-- (void)reloadTimelineForAvocadoWithIdentifier:(id)arg1 inBundleWithIdentifier:(id)arg2 error:(id *)arg3;
-- (oneway void)setConfiguredWidgetContainerDescriptors:(id)arg1;
-- (oneway void)setMetricsSpecification:(id)arg1;
+- (_Bool)reloadTimeline:(id)arg1 error:(id *)arg2;
+- (_Bool)reloadTimelineForAvocadoWithIdentifier:(id)arg1 inBundleWithIdentifier:(id)arg2 error:(id *)arg3;
 - (oneway void)applicationWithBundleIdentifierEnteredForeground:(id)arg1;
-- (oneway void)expireLocationGracePeriods;
 - (oneway void)flushPowerlog;
 - (void)removeClient:(id)arg1;
 - (void)addClient:(id)arg1;
+@property(readonly, nonatomic) NSDictionary *cachedDescriptorsByIdentifier;
+- (void)dealloc;
 - (id)_init;
 - (id)init;
 

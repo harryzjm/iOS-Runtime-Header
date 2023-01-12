@@ -8,32 +8,37 @@
 
 #import <TSTables/NSCopying-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSString;
 
 @interface TSTGroupValueTuple : TSKSosBase <NSCopying>
 {
     NSArray *_groupValues;
+    struct TSKUIDStruct _groupValueUid;
+    NSString *_combinedCanonicalKeysString;
 }
 
++ (struct TSKUIDStruct)groupValueUidForTuple:(id)arg1 appendingTuple:(id)arg2;
 - (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (void)encodeToArchive:(struct CategoryOwnerArchive_GroupByArchive_GroupNodeArchive_GroupValueTupleArchive *)arg1;
-- (id)initWithArchive:(const struct CategoryOwnerArchive_GroupByArchive_GroupNodeArchive_GroupValueTupleArchive *)arg1 locale:(id)arg2;
 - (id)description;
+- (id)canonicalKeyStringAtLevel:(unsigned char)arg1;
 - (id)groupValueAtLevel:(unsigned char)arg1;
 - (id)prefixTupleToLevel:(unsigned char)arg1;
 - (id)groupValueTupleByDemotingValueAtLevel:(unsigned char)arg1 toLevel:(unsigned char)arg2;
 - (id)groupValueTupleByPromotingValueAtLevel:(unsigned char)arg1 toLevel:(unsigned char)arg2;
 - (id)groupValueTupleByRemovingValueAtLevel:(unsigned char)arg1;
 - (id)groupValueTupleByMergingTuple:(id)arg1 toLevel:(unsigned char)arg2;
+- (id)groupValueTupleByAppendingTuple:(id)arg1;
 - (id)groupValueTupleByAppendingValue:(id)arg1;
 - (id)groupValueTupleByReplacingValue:(id)arg1 atLevel:(unsigned char)arg2;
-- (UUIDData_5fbc143e)groupValueUid;
-@property(readonly) unsigned char numberOfLevels;
+- (struct TSKUIDStruct)groupValueUid;
+@property(readonly, nonatomic) NSString *combinedCanonicalKeysString;
+@property(readonly, nonatomic) unsigned char numberOfLevels;
 - (void)updateWithDocumentRoot:(id)arg1;
 - (id)locale;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithTSCEValues:(const void *)arg1 locale:(id)arg2;
 - (id)initWithValueArray:(id)arg1;
 - (id)initWithValues:(id)arg1;
 

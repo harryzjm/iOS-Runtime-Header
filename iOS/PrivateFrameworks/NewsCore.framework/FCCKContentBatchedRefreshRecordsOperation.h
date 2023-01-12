@@ -24,20 +24,6 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSError *operationError; // @synthesize operationError=_operationError;
-@property(retain, nonatomic) NSMutableDictionary *errorsByRecordID; // @synthesize errorsByRecordID=_errorsByRecordID;
-@property(retain, nonatomic) NSMutableSet *deletedRecordIDs; // @synthesize deletedRecordIDs=_deletedRecordIDs;
-@property(retain, nonatomic) NSMutableDictionary *updatedRecordsByRecordID; // @synthesize updatedRecordsByRecordID=_updatedRecordsByRecordID;
-@property(retain, nonatomic) NSMutableSet *refreshedRecordIDs; // @synthesize refreshedRecordIDs=_refreshedRecordIDs;
-@property(retain, nonatomic) NSMutableArray *remainingRecordIDBatches; // @synthesize remainingRecordIDBatches=_remainingRecordIDBatches;
-@property(copy, nonatomic) CDUnknownBlockType refreshRecordsCompletionBlock; // @synthesize refreshRecordsCompletionBlock=_refreshRecordsCompletionBlock;
-@property(copy, nonatomic) CKRecordID *canaryRecordID; // @synthesize canaryRecordID=_canaryRecordID;
-@property(nonatomic) _Bool checkForDeletions; // @synthesize checkForDeletions=_checkForDeletions;
-@property(copy, nonatomic) NSArray *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
-@property(copy, nonatomic) NSDictionary *changeTagsByRecordID; // @synthesize changeTagsByRecordID=_changeTagsByRecordID;
-@property(copy, nonatomic) NSArray *recordIDs; // @synthesize recordIDs=_recordIDs;
-@property(retain, nonatomic) FCCKContentDatabase *database; // @synthesize database=_database;
-- (void)_continueRefreshing;
 - (void)resetForRetry;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;

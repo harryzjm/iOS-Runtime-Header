@@ -17,11 +17,15 @@
     NSString *_websheetURL;
     NSString *_planPurchaseEndpointType;
     NSString *_warningText;
+    NSString *_addOnWebsheetURL;
+    NSString *_addOnEndpointType;
     _Bool _applePaySupported;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *addOnEndpointType; // @synthesize addOnEndpointType=_addOnEndpointType;
+@property(readonly, nonatomic) NSString *addOnWebsheetURL; // @synthesize addOnWebsheetURL=_addOnWebsheetURL;
 @property(readonly, nonatomic) NSString *warningText; // @synthesize warningText=_warningText;
 @property(readonly, nonatomic) NSString *planPurchaseEndpointType; // @synthesize planPurchaseEndpointType=_planPurchaseEndpointType;
 @property(nonatomic) _Bool applePaySupported; // @synthesize applePaySupported=_applePaySupported;
@@ -31,7 +35,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithName:(id)arg1 url:(id)arg2 applePaySupported:(_Bool)arg3 responseType:(id)arg4 warningText:(id)arg5;
+- (id)initWithName:(id)arg1 url:(id)arg2 applePaySupported:(_Bool)arg3 responseType:(id)arg4 warningText:(id)arg5 addOnUrl:(id)arg6 addOnEndpointType:(id)arg7;
 
 @end
 

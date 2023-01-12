@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface OITSURectList : NSObject
 {
-    vector_a9587b3d mRectList;
+    struct vector<CGRect, std::allocator<CGRect>> mRectList;
 }
 
 + (id)rectListWithDifference:(struct CGRect)arg1 withRect:(struct CGRect)arg2;

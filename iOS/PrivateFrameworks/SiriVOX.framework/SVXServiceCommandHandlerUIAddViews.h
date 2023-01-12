@@ -8,12 +8,15 @@
 
 #import <SiriVOX/SVXServiceCommandHandling-Protocol.h>
 
-@class NSString, SVXSpeechSynthesizer;
+@class NSString, SVXModule, SVXSpeechSynthesizer;
+@protocol MDModeProviding;
 
 __attribute__((visibility("hidden")))
 @interface SVXServiceCommandHandlerUIAddViews : NSObject <SVXServiceCommandHandling>
 {
     SVXSpeechSynthesizer *_speechSynthesizer;
+    SVXModule *_module;
+    id <MDModeProviding> _modeProvider;
     NSString *_identifier;
 }
 
@@ -25,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)prepareToHandleCommand:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)shouldDependOnCommand:(id)arg1;
 - (_Bool)isCommandUUFR:(id)arg1;
-- (id)initWithSpeechSynthesizer:(id)arg1;
+- (id)initWithSpeechSynthesizer:(id)arg1 module:(id)arg2 modeProvider:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

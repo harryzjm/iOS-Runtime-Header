@@ -40,8 +40,6 @@
 + (id)transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
 + (id)entityKeyMap;
 + (id)identifierCode;
-+ (_Bool)managedObjectSupportsRejectedState;
-+ (_Bool)managedObjectSupportsPendingState;
 + (_Bool)managedObjectSupportsTrashedState;
 + (id)fetchType;
 + (id)localIdentifierWithUUID:(id)arg1;
@@ -66,7 +64,7 @@
 - (id)predicateForAllMomentsFromRepresentativeAssets;
 - (id)predicateForAllAssets;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
-- (unsigned long long)estimatedVidoesCount;
+- (unsigned long long)estimatedVideosCount;
 - (unsigned long long)estimatedPhotosCount;
 - (unsigned long long)estimatedAssetCount;
 - (id)creationDate;

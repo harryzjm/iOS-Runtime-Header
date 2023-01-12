@@ -7,34 +7,39 @@
 #import <objc/NSObject.h>
 
 #import <GeoServices/GEOConfigChangeListenerDelegate-Protocol.h>
+#import <GeoServices/GEOResourceManifestTileGroupObserver-Protocol.h>
 
-@class NSString;
+@class NSString, geo_isolater;
 
-@interface GEOMapsAuthServiceHelper : NSObject <GEOConfigChangeListenerDelegate>
+@interface GEOMapsAuthServiceHelper : NSObject <GEOConfigChangeListenerDelegate, GEOResourceManifestTileGroupObserver>
 {
+    struct atomic_flag _isRenewing;
+    NSString *_currentToken;
+    geo_isolater *_currentEnvironmentStateIsolater;
+    unsigned long long _currentEnvironmentState;
 }
 
 + (id)sharedAuthHelper;
+- (void).cxx_destruct;
+- (void)resourceManifestManagerDidChangeActiveTileGroup:(id)arg1;
 - (void)valueChangedForGEOConfigKey:(CDStruct_065526f1)arg1;
+- (void)checkNetworkError:(id)arg1 sendingGeoDErrorIfApplicable:(long long)arg2;
+- (_Bool)isCurrentEnvironmentSecure;
+- (void)invalidateTokens;
 - (id)dictionaryForAuthTokenState;
-- (_Bool)_hasMRT;
-- (_Bool)_hasMAT;
 - (void)handleSecureProxyChallenge:(id)arg1;
 - (void)addProxyAuthHeaderOrReAuth:(id)arg1 authProxyURL:(id)arg2;
 - (void)setConnectionProxyDictionary:(id)arg1 url:(id)arg2 proxyURL:(id)arg3;
-- (void)_handleFeatureFlagResponseData:(id)arg1 response:(id)arg2 error:(id)arg3;
-- (_Bool)_checkACTokenResponseData:(id)arg1 response:(id)arg2 error:(id)arg3 suppressNotification:(_Bool)arg4;
-- (_Bool)_checkMRTResponseData:(id)arg1 response:(id)arg2 error:(id)arg3 suppressNotification:(_Bool)arg4;
-- (void)updateAuthenticatedFeatureFlagStatesWithDict:(id)arg1;
 - (void)doEnvironmentSwitchCheck:(id)arg1 authProxyURL:(id)arg2 suppressNotification:(_Bool)arg3;
-- (_Bool)_successReplacingTokensFromMRTResponseData:(id)arg1;
-- (long long)_statusCodeFromResponse:(id)arg1;
+- (_Bool)updateAuthenticatedFeatureFlagStatesWithDict:(id)arg1;
 - (void)requestFeatureFlagsWithURL:(id)arg1 suppressNotification:(_Bool)arg2;
 - (void)renewMapsAuthProxyToken:(unsigned long long)arg1 fromToken:(id)arg2 authProxyURL:(id)arg3 suppressNotification:(_Bool)arg4;
 - (void)sendProxyAuthNotification:(long long)arg1;
+- (void)removeMapsAuthDidFinishObserver:(id)arg1 forRequestType:(id)arg2;
 - (void)removeMapsAuthDidFinishObserver:(id)arg1;
+- (void)addMapsAuthDidFinishObserver:(id)arg1 forRequestType:(id)arg2;
 - (void)addMapsAuthDidFinishObserver:(id)arg1;
-- (id)_tokenTypeString:(unsigned long long)arg1;
+- (void)autoUpdateClientFeatureFlags;
 - (id)init;
 
 // Remaining properties

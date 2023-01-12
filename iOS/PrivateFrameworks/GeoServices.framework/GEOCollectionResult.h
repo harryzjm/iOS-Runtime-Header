@@ -12,6 +12,7 @@
 {
     GEOPDCollectionResult *_collectionResult;
     GEOPDComponent *_collectionComponent;
+    GEOPlaceCollection *_collection;
 }
 
 + (id)collectionResultsFromResponse:(id)arg1;

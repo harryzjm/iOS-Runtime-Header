@@ -8,10 +8,16 @@
 #import <GeoServices/GEOMapServiceCorrectableTicket-Protocol.h>
 #import <GeoServices/GEOMapServiceThrottlableTicket-Protocol.h>
 
-@class GEOApplicationAuditToken, GEOCategorySearchResultSection, GEODirectionIntent, GEOMapRegion, GEOMapServiceTraits, GEOPDMerchantLookupResult, GEORPPlaceInfo, GEORelatedSearchSuggestion, GEOResolvedItem, NSArray, NSDictionary, NSObject, NSString;
+@class GEOApplicationAuditToken, GEOCategorySearchResultSection, GEODirectionIntent, GEOMapRegion, GEOMapServiceTraits, GEOPDMerchantLookupResult, GEOPDPlaceSummaryLayoutMetadata, GEORPPlaceInfo, GEORelatedSearchSuggestion, GEOResolvedItem, GEOResultRefinementGroup, GEOSearchAutoRedoThreshold, GEOSearchSectionList, NSArray, NSDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @protocol GEOMapServiceTicket <GEOMapServiceCancellableTicket, GEOMapServiceCorrectableTicket, GEOMapServiceThrottlableTicket>
+@property(readonly, nonatomic) _Bool disableAdditionalViewportPadding;
+@property(readonly, nonatomic) GEOSearchSectionList *searchSectionList;
+@property(readonly, nonatomic) GEOResultRefinementGroup *resultRefinementGroup;
+@property(readonly, nonatomic) GEOPDPlaceSummaryLayoutMetadata *placeSummaryLayoutMetadata;
+@property(readonly, nonatomic) GEOSearchAutoRedoThreshold *searchAutoRedoThreshold;
+@property(readonly, nonatomic) NSArray *dotPlaces;
 @property(readonly, nonatomic) NSArray *publisherResults;
 @property(readonly, nonatomic) NSArray *collectionResults;
 @property(readonly, nonatomic) GEOPDMerchantLookupResult *merchantLookupResult;

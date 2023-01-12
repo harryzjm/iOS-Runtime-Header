@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class LSApplicationProxy, NSMutableArray;
+#import <NewsCore/FCNewsAvailabilityMonitor-Protocol.h>
+
+@class LSApplicationProxy, NSMutableArray, NSString;
 @protocol OS_dispatch_queue;
 
-@interface FCNewsAvailabilityMonitor : NSObject
+@interface FCNewsAvailabilityMonitor : NSObject <FCNewsAvailabilityMonitor>
 {
     _Bool _NewsIsAvailable;
     NSMutableArray *_blocks;
@@ -24,13 +26,19 @@
 - (_Bool)_isNewsAvailable;
 - (void)_updateAvailability;
 - (void)addNotificationBlock:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic, getter=isNewsAvailable) _Bool NewsIsAvailable; // @synthesize NewsIsAvailable=_NewsIsAvailable;
 - (void)dealloc;
 - (void)setNewsIsAvailable:(_Bool)arg1;
-@property(readonly, nonatomic, getter=isNewsAvailable) _Bool NewsIsAvailable; // @synthesize NewsIsAvailable=_NewsIsAvailable;
 - (id)initWithProcessVariant:(unsigned long long)arg1;
 - (id)initWithProcessVariant:(unsigned long long)arg1 queue:(id)arg2;
 - (id)initWithApplicationProxy:(id)arg1 queue:(id)arg2;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

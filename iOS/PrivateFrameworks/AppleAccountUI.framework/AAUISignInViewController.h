@@ -34,11 +34,13 @@
     long long _akServiceType;
     id <AAUISignInViewControllerDelegate> _delegate;
     NSString *_username;
+    NSArray *_privacyLinkIdentifiers;
 }
 
 + (void)phoneNumberSupportedWithCompletion:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool showingPasswordCell; // @synthesize showingPasswordCell=_showingPasswordCell;
+@property(copy, nonatomic) NSArray *privacyLinkIdentifiers; // @synthesize privacyLinkIdentifiers=_privacyLinkIdentifiers;
 @property(nonatomic) _Bool canEditUsername; // @synthesize canEditUsername=_canEditUsername;
 @property(copy, nonatomic) NSString *username; // @synthesize username=_username;
 @property(nonatomic) _Bool showServiceIcons; // @synthesize showServiceIcons=_showServiceIcons;
@@ -89,6 +91,7 @@
 - (void)_nextButtonSelected:(id)arg1;
 - (void)_cancelButtonSelected:(id)arg1;
 - (void)_setEnabled:(_Bool)arg1;
+- (_Bool)_isRunningInSettings;
 - (id)_stringForFooter;
 - (_Bool)_isGreenTeaCapable;
 - (_Bool)_isPasswordFieldVisible;

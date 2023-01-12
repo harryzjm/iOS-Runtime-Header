@@ -14,32 +14,39 @@
 @interface TNChartFormulaStorage : NSObject <NSCopying, NSMutableCopying>
 {
     NSMutableDictionary *_storage;
+    int _scheme;
     int _direction;
     unsigned long long _cachedNumberOfGroups;
     _Bool _cachedNumberOfGroupsValid;
 }
 
-+ (vector_2bba1c52)persistentFormulaTypes;
++ (vector_e593cd82)persistentFormulaTypes;
++ (unsigned long long)maxGroupLabelFormulas;
++ (unsigned long long)maxLabeledGroupsForScheme:(int)arg1;
++ (int)defaultScheme;
 - (void).cxx_destruct;
-- (id)areaFormulaWithCalcEngine:(id)arg1 inOwner:(const UUIDData_5fbc143e *)arg2;
-- (void)saveToArchive:(struct ChartMediatorFormulaStorage *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct ChartMediatorFormulaStorage *)arg1 unarchiver:(id)arg2;
+@property(readonly, nonatomic) int scheme; // @synthesize scheme=_scheme;
+- (id)areaFormulaWithCalcEngine:(id)arg1 inOwner:(const struct TSKUIDStruct *)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
+- (id)descriptorForSummaryChart:(struct TSKUIDStruct)arg1 withCalcEngine:(id)arg2;
 - (void)clearCachesForCalculationEngine:(id)arg1;
-- (_Bool)dataFormulaAreRegularForSeriesInsertionWithCalcEngine:(id)arg1 inOwner:(const UUIDData_5fbc143e *)arg2;
+- (_Bool)dataFormulaAreRegularForSeriesInsertionWithCalcEngine:(id)arg1 inOwner:(const struct TSKUIDStruct *)arg2;
 @property(readonly, nonatomic) unsigned long long categoryLabelFormulaType;
 @property(readonly, nonatomic) unsigned long long seriesLabelFormulaType;
-- (unsigned long long)numberOfSeries;
+- (unsigned long long)numberOfLabelsForType:(unsigned long long)arg1 withCalcEngine:(id)arg2 inEntity:(const struct TSKUIDStruct *)arg3 shouldSkipHiddenData:(_Bool)arg4;
+- (unsigned long long)numberOfSeriesWithCalcEngine:(id)arg1 inEntity:(const struct TSKUIDStruct *)arg2 shouldSkipHiddenData:(_Bool)arg3;
 @property(readonly, nonatomic) unsigned long long numberOfDataFormulas;
-- (_Bool)labelFormulasAreAllStaticWithCalcEngine:(id)arg1 inEntity:(const UUIDData_5fbc143e *)arg2;
-- (_Bool)formulasOfType:(unsigned long long)arg1 areAllStaticWithCalcEngine:(id)arg2 inEntity:(const UUIDData_5fbc143e *)arg3;
-- (unsigned long long)numberOfTotalCategoryLabelsWithCalcEngine:(id)arg1 inEntity:(const UUIDData_5fbc143e *)arg2;
-- (unsigned long long)numberOfGroupsWithCalcEngine:(id)arg1 inEntity:(const UUIDData_5fbc143e *)arg2;
-- (unsigned long long)p_calculateNumberOfGroupsWithCalcEngine:(id)arg1 inEntity:(const UUIDData_5fbc143e *)arg2;
+- (_Bool)labelFormulasAreAllStaticWithCalcEngine:(id)arg1 inEntity:(const struct TSKUIDStruct *)arg2;
+- (_Bool)formulasOfType:(unsigned long long)arg1 areAllStaticWithCalcEngine:(id)arg2 inEntity:(const struct TSKUIDStruct *)arg3;
+- (unsigned long long)numberOfTotalCategoryLabelsWithCalcEngine:(id)arg1 inEntity:(const struct TSKUIDStruct *)arg2 shouldSkipHiddenData:(_Bool)arg3;
+- (unsigned long long)numberOfGroupsWithCalcEngine:(id)arg1 inEntity:(const struct TSKUIDStruct *)arg2 shouldSkipHiddenData:(_Bool)arg3;
+- (unsigned long long)p_calculateNumberOfGroupsWithCalcEngine:(id)arg1 inEntity:(const struct TSKUIDStruct *)arg2 shouldSkipHiddenData:(_Bool)arg3;
 - (id)description;
 - (id)formulaTypeEnumerator;
 - (id)formulaListForType:(unsigned long long)arg1;
 - (id)formulaForID:(struct TSUCellCoord)arg1;
-- (id)copyByRewriting:(_Bool)arg1 withCalcEngine:(id)arg2 andHostUID:(const UUIDData_5fbc143e *)arg3;
+- (id)copyByRewriting:(_Bool)arg1 withCalcEngine:(id)arg2 andHostUID:(const struct TSKUIDStruct *)arg3;
 - (id)referencedEntitiesWithCalcEngine:(id)arg1;
 @property(readonly, nonatomic) unsigned long long count;
 - (_Bool)isEqualToFormulaStorage:(id)arg1;
@@ -48,6 +55,7 @@
 @property(readonly, nonatomic) int direction;
 - (id)initWithChartFormulaStorage:(id)arg1;
 - (id)initWithDirection:(int)arg1;
+- (id)initWithDirection:(int)arg1 scheme:(int)arg2;
 - (id)init;
 
 @end

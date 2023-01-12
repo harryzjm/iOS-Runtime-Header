@@ -15,6 +15,7 @@
 - (_Bool)_accessibilityUserTestingIsDestructiveButton;
 - (_Bool)_accessibilityUserTestingIsCancelButton;
 - (_Bool)_accessibilityUserTestingIsDefaultButton;
+- (id)accessibilityIdentifier;
 - (id)accessibilityLanguage;
 - (id)accessibilityLocalizedStringTableName;
 - (id)accessibilityLabel;

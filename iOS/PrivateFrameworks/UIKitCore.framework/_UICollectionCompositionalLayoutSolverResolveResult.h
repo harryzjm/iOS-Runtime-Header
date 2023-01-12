@@ -17,11 +17,13 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_insertedDecorationElementKindIndexPathsDict;
     NSMutableDictionary *_deletedSupplementaryElementKindIndexPathsDict;
     NSMutableDictionary *_deletedDecorationElementKindIndexPathsDict;
+    _Bool _sectionsWereRequeried;
     struct CGPoint _contentOffsetAdjustment;
     struct CGSize _contentSizeAdjustment;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool sectionsWereRequeried; // @synthesize sectionsWereRequeried=_sectionsWereRequeried;
 @property(nonatomic) struct CGSize contentSizeAdjustment; // @synthesize contentSizeAdjustment=_contentSizeAdjustment;
 @property(nonatomic) struct CGPoint contentOffsetAdjustment; // @synthesize contentOffsetAdjustment=_contentOffsetAdjustment;
 @property(readonly, copy) NSString *description;
@@ -29,8 +31,6 @@ __attribute__((visibility("hidden")))
 - (id)indexPathsForInsertedSupplememtariesForElementKind:(id)arg1;
 - (id)indexPathsForDeletedDecorationsForElementKind:(id)arg1;
 - (id)indexPathsForDeletedSupplememtariesForElementKind:(id)arg1;
-- (void)addInsertedAuxillaryOfElementKind:(id)arg1 atIndexPath:(id)arg2 isSupplementary:(_Bool)arg3;
-- (void)addDeletedAuxillaryOfElementKind:(id)arg1 atIndexPath:(id)arg2 isSupplementary:(_Bool)arg3;
 - (id)init;
 
 // Remaining properties

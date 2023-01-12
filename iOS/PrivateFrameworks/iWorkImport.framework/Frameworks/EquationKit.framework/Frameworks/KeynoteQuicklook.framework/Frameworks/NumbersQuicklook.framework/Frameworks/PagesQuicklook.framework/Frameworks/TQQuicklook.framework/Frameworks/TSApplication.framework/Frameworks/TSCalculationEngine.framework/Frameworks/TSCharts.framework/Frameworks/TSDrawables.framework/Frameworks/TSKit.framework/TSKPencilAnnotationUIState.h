@@ -23,9 +23,9 @@
 
 + (id)strokeWidthsForToolType:(unsigned long long)arg1;
 - (void).cxx_destruct;
-- (void)saveToArchive:(struct PencilAnnotationUIState *)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
-- (void)loadFromArchive:(const struct PencilAnnotationUIState *)arg1 unarchiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

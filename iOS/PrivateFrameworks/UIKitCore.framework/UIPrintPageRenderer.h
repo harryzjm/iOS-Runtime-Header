@@ -17,9 +17,13 @@
     NSMutableArray *_printFormatters;
     struct CGContext *_printContext;
     long long _cachedPageCount;
+    long long _requestedRenderingQuality;
+    long long _currentRenderingQuality;
 }
 
 - (void).cxx_destruct;
+@property long long currentRenderingQuality; // @synthesize currentRenderingQuality=_currentRenderingQuality;
+@property long long requestedRenderingQuality; // @synthesize requestedRenderingQuality=_requestedRenderingQuality;
 @property(nonatomic) struct CGRect printableRect; // @synthesize printableRect=_printableRect;
 @property(nonatomic) struct CGRect paperRect; // @synthesize paperRect=_paperRect;
 @property(nonatomic) double footerHeight; // @synthesize footerHeight=_footerHeight;
@@ -35,6 +39,7 @@
 - (void)drawPrintFormatter:(id)arg1 forPageAtIndex:(long long)arg2;
 - (void)drawPageAtIndex:(long long)arg1 inRect:(struct CGRect)arg2;
 - (void)prepareForDrawingPages:(struct _NSRange)arg1;
+- (long long)currentRenderingQualityForRequestedRenderingQuality:(long long)arg1;
 @property(readonly, nonatomic) long long numberOfPages;
 - (long long)_numberOfPages;
 - (_Bool)_numberOfPagesIsCached;

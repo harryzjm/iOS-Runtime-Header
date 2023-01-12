@@ -18,7 +18,7 @@
     unsigned long long _numberOfClearActions;
 }
 
-+ (id)emojiSearchEventSpec;
++ (void)registerEventSpecIfNecessary;
 + (id)emojiSearchFieldSpecTuples;
 - (void).cxx_destruct;
 - (void)endSession;

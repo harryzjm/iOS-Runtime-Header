@@ -42,6 +42,7 @@
     NSDictionary *_substitutions;
     unsigned long long _numberOfNextKeywordSuggestionToProcess;
     NSArray *_nextKeywordSuggestions;
+    NSSet *_sceneIdentifiers;
     NSArray *_dedupedGroupResults;
     unsigned long long _mergeFilterTokenAssetIDsIntervalID;
 }
@@ -74,6 +75,7 @@
 @property(nonatomic) _Bool implicitTokenizationUsePrefixMatch; // @synthesize implicitTokenizationUsePrefixMatch=_implicitTokenizationUsePrefixMatch;
 @property(nonatomic) _Bool enableImplicitTokenization; // @synthesize enableImplicitTokenization=_enableImplicitTokenization;
 @property(nonatomic) _Bool calculateTokenCounts; // @synthesize calculateTokenCounts=_calculateTokenCounts;
+@property(copy, nonatomic) NSSet *sceneIdentifiers; // @synthesize sceneIdentifiers=_sceneIdentifiers;
 @property(retain, nonatomic) NSArray *nextKeywordSuggestions; // @synthesize nextKeywordSuggestions=_nextKeywordSuggestions;
 @property(nonatomic) unsigned long long numberOfNextKeywordSuggestionToProcess; // @synthesize numberOfNextKeywordSuggestionToProcess=_numberOfNextKeywordSuggestionToProcess;
 @property(retain, nonatomic) NSDictionary *substitutions; // @synthesize substitutions=_substitutions;
@@ -94,7 +96,7 @@
 - (void)bootstrap;
 @property(readonly, nonatomic) PSITokenizer *tokenizer;
 - (struct __CFSet *)_idsOfGroupsMatchingToken:(id)arg1;
-- (struct __CFSet *)_idsOfGroupsMatchingString:(id)arg1 categories:(id)arg2 textIsSearchable:(_Bool)arg3;
+- (struct __CFSet *)_idsOfGroupsMatchingString:(id)arg1 categories:(id)arg2 textIsSearchable:(_Bool)arg3 isFilterTypeToken:(_Bool)arg4;
 @property(readonly, getter=isCanceled) _Bool canceled;
 - (void)cancel;
 - (void)runWithResultsHandler:(CDUnknownBlockType)arg1;

@@ -15,6 +15,7 @@
 }
 
 - (id)_fetchImageManagerAssetForPlacesAsset:(id)arg1;
+- (void)_imageForGeotaggable:(id)arg1 ofSize:(struct CGSize)arg2 networkAccessAllowed:(_Bool)arg3 andCompletion:(CDUnknownBlockType)arg4;
 - (void)imageForGeotaggable:(id)arg1 ofSize:(struct CGSize)arg2 networkAccessAllowed:(_Bool)arg3 andCompletion:(CDUnknownBlockType)arg4;
 
 // Remaining properties

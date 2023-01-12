@@ -10,11 +10,12 @@
 #import <MobileMailUI/MFBlockedSenderBannerViewDelegate-Protocol.h>
 #import <MobileMailUI/MFHasMoreContentBannerViewDelegate-Protocol.h>
 #import <MobileMailUI/MFLoadBlockedContentBannerViewDelegate-Protocol.h>
+#import <MobileMailUI/MFLoadFailedProxyContentBannerViewDelegate-Protocol.h>
 #import <MobileMailUI/MFMailDropBannerDelegate-Protocol.h>
 #import <MobileMailUI/MFMailWebProcessDelegate-Protocol.h>
 #import <MobileMailUI/MFMessageFooterViewDelegate-Protocol.h>
 #import <MobileMailUI/MFMessageHeaderViewDelegate-Protocol.h>
-#import <MobileMailUI/MFPopoverPresentationSource-Protocol.h>
+#import <MobileMailUI/MFPresentationSource-Protocol.h>
 #import <MobileMailUI/MFReusable-Protocol.h>
 #import <MobileMailUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 #import <MobileMailUI/UIScrollViewDelegate-Protocol.h>
@@ -22,10 +23,10 @@
 #import <MobileMailUI/WKUIDelegatePrivate-Protocol.h>
 #import <MobileMailUI/_WKInputDelegate-Protocol.h>
 
-@class EFCancelationToken, EMContentRepresentation, EMDaemonInterface, MFAddressAtomStatusManager, MFBlockedSenderBannerView, MFConversationItemFooterView, MFHasMoreContentBannerView, MFLoadBlockedContentBannerView, MFMailDropBannerView, MFMailboxProvider, MFMessageContentLoadingView, MFMessageDisplayMetrics, MFMessageHeaderView, MFMessageLoadingContext, MFWebViewDictionary, MFWebViewLoadingController, MessageContentItemsHelper, MessageContentRepresentationRequest, NSArray, NSDictionary, NSError, NSMutableArray, NSMutableSet, NSString, UIBarButtonItem, UIScrollView, WKWebView;
+@class EFCancelationToken, EMContentRepresentation, EMDaemonInterface, MFAddressAtomStatusManager, MFBlockedSenderBannerView, MFConversationItemFooterView, MFHasMoreContentBannerView, MFLoadBlockedContentBannerView, MFLoadFailedProxyContentBannerView, MFMailDropBannerView, MFMailboxProvider, MFMessageContentLoadingView, MFMessageDisplayMetrics, MFMessageHeaderView, MFMessageLoadingContext, MFWebViewDictionary, MFWebViewLoadingController, MessageContentItemsHelper, MessageContentRepresentationRequest, NSArray, NSDictionary, NSError, NSMutableArray, NSMutableSet, NSSet, NSString, UIBarButtonItem, UIScrollView, WKWebView;
 @protocol EFCancelable, EFScheduler, MFMessageContentViewDataSource, MFMessageContentViewDelegate;
 
-@interface MFMessageContentView : UIView <UIPopoverPresentationControllerDelegate, _WKInputDelegate, WKNavigationDelegatePrivate, WKUIDelegatePrivate, MFHasMoreContentBannerViewDelegate, MFLoadBlockedContentBannerViewDelegate, MFBlockedSenderBannerViewDelegate, MFMessageHeaderViewDelegate, MFMessageFooterViewDelegate, MFMailDropBannerDelegate, MFPopoverPresentationSource, UIScrollViewDelegate, EFSignpostable, MFMailWebProcessDelegate, MFReusable>
+@interface MFMessageContentView : UIView <UIPopoverPresentationControllerDelegate, _WKInputDelegate, WKNavigationDelegatePrivate, WKUIDelegatePrivate, MFHasMoreContentBannerViewDelegate, MFLoadBlockedContentBannerViewDelegate, MFLoadFailedProxyContentBannerViewDelegate, MFBlockedSenderBannerViewDelegate, MFMessageHeaderViewDelegate, MFMessageFooterViewDelegate, MFMailDropBannerDelegate, MFPresentationSource, UIScrollViewDelegate, EFSignpostable, MFMailWebProcessDelegate, MFReusable>
 {
     EFCancelationToken *_loadingCancelable;
     MessageContentItemsHelper *_relatedItemsHelper;
@@ -34,8 +35,8 @@
     MFHasMoreContentBannerView *_loadHasMoreContentBanner;
     MFLoadBlockedContentBannerView *_loadImagesHeaderBlock;
     MFBlockedSenderBannerView *_blockedSenderBanner;
+    MFLoadFailedProxyContentBannerView *_loadFailedProxyContentBanner;
     UIView *_previousContentSnapshotWrapperView;
-    id <EFScheduler> _attachmentsScheduler;
     NSMutableArray *_scriptHandlers;
     UIBarButtonItem *_presentedControllerDoneButtonItem;
     struct CGRect _activatedAttachmentRect;
@@ -46,6 +47,8 @@
     _Bool _paddingConstantsNeedUpdate;
     MFConversationItemFooterView *_footerView;
     NSMutableSet *_inFlightURLs;
+    NSSet *_allRemoteURLs;
+    NSMutableSet *_failedProxyURLs;
     unsigned long long _webProcessCrashCount;
     struct {
         unsigned int delegateRespondsToDidFinishLoadingMessages:1;
@@ -146,16 +149,20 @@
 - (void)scrollViewWillBeginZooming:(id)arg1 withView:(id)arg2;
 - (id)viewForZoomingInScrollView:(id)arg1;
 - (id)presentedControllerDoneButtonItem;
+- (void)mf_setAsTargetedSourceOnSceneConfiguration:(id)arg1;
 - (void)mf_setAsSourceForPopoverPresentationController:(id)arg1;
 - (void)presentationController:(id)arg1 willPresentWithAdaptiveStyle:(long long)arg2 transitionCoordinator:(id)arg3;
 - (void)_showModalViewController:(id)arg1 presentationSource:(id)arg2 forceNavigationController:(_Bool)arg3;
 - (void)_showModalViewController:(id)arg1 presentationSource:(id)arg2;
+- (void)loadFailedProxyContentBannerDidTriggerLoad:(id)arg1;
+- (void)_clearLoadFailedProxyContentBannerAnimated:(_Bool)arg1;
 - (void)dismissPresentedViewController:(id)arg1;
 - (void)_reevaluateTrustWithNetworkAccessAllowed;
 - (void)_reloadWithRemoteContentAllowed;
 - (void)_reloadWithPartiallyEncryptedMessageAllowed;
 - (void)loadBlockedContent;
 - (void)loadBlockedContentBannerDidTriggerLoad:(id)arg1;
+- (void)presentViewController:(id)arg1;
 - (void)_clearLoadRemoteImagesBannerAnimated:(_Bool)arg1;
 - (void)_clearHasMoreContentBannerAnimated:(_Bool)arg1;
 - (void)didTapHasMoreContentBannerView:(id)arg1;
@@ -203,15 +210,18 @@
 - (void)_processDataDetectionMetricsFromResults:(id)arg1;
 - (void)webProcessDidCreateBrowserContextControllerLoadDelegate;
 - (void)_configureTrustEvaluationsForSignersInSecurityInformation:(id)arg1;
+- (void)_showLoadFailedProxyContentBannerIfNeeded;
+- (void)webProcessFailedToLoadResourceWithProxyForURL:(id)arg1;
 - (void)webProcessDidBlockLoadingResourceWithURL:(id)arg1;
 - (void)webProcessDidFinishLoadForURL:(id)arg1;
-- (void)webProcessDidFinishDocumentLoadForURL:(id)arg1;
+- (void)webProcessDidFinishDocumentLoadForURL:(id)arg1 andRequestedRemoteURLs:(id)arg2;
 - (void)webProcessDidFailLoadingResourceWithURL:(id)arg1;
 - (id)_quotedContentAttributionForMessage:(id)arg1;
 - (void)_revealActionsButtonTapped;
 - (void)_seeMoreButtonTapped;
 - (void)_expandQuoteWithCollapsedBlockquoteOffset:(double)arg1 expandedOffset:(double)arg2;
-- (struct CGRect)_adjustedRectForAttachmentRect:(struct CGRect)arg1;
+- (struct CGRect)_convertDictionaryToRect:(id)arg1;
+- (struct CGRect)_adjustedRectForWebRect:(struct CGRect)arg1;
 - (void)_handleAttachmentTapMessage:(id)arg1;
 - (void)_alertMailDropDownloadIsTooLargeForCell:(_Bool)arg1;
 - (void)_displayDismissibleAttachmentErrorWithTitle:(id)arg1 message:(id)arg2;
@@ -227,6 +237,7 @@
 - (void)_loadBlockedMessageContactWarningWithRepresentation:(id)arg1;
 - (void)_triggerWebViewLoadWithoutShowingContentRepresentation;
 - (void)_triggerWebViewLoad;
+- (void)_setRemoteContentToLoadWithoutProxy;
 - (void)_requestWebViewLoadWithLoadingContext:(id)arg1;
 - (void)_requestWebViewLoadWithRepresentation:(id)arg1;
 - (void)contentRequestDidReceiveContentRepresentation:(id)arg1 error:(id)arg2;

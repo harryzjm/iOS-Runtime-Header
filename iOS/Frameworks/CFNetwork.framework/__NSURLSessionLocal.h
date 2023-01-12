@@ -6,7 +6,6 @@
 
 #import <CFNetwork/NSURLSessionDataDelegate-Protocol.h>
 #import <CFNetwork/NSURLSessionDataDelegatePrivate-Protocol.h>
-#import <CFNetwork/NSURLSessionDataDelegate_Internal-Protocol.h>
 #import <CFNetwork/NSURLSessionDelegate_Internal-Protocol.h>
 #import <CFNetwork/NSURLSessionSubclass-Protocol.h>
 #import <CFNetwork/NSURLSessionTaskDelegatePrivate-Protocol.h>
@@ -15,10 +14,10 @@
 @class NSMutableArray, NSMutableDictionary, NSObject, NSString, NSURLSession, NSURLSessionConfiguration;
 @protocol OS_dispatch_queue;
 
-@interface __NSURLSessionLocal <NSURLSessionDataDelegate, NSURLSessionDataDelegatePrivate, NSURLSessionTaskDelegatePrivate, NSURLSessionDelegate_Internal, NSURLSessionDataDelegate_Internal, NSURLSessionSubclass, __NSURLSessionTaskGroupForConfiguration>
+@interface __NSURLSessionLocal <NSURLSessionDataDelegate, NSURLSessionDataDelegatePrivate, NSURLSessionTaskDelegatePrivate, NSURLSessionDelegate_Internal, NSURLSessionSubclass, __NSURLSessionTaskGroupForConfiguration>
 {
     unsigned long long _identSeed;
-    struct XTubeManager *_tubeManager;
+    void *_tubeManager;
     NSMutableDictionary *_connectionsToTasks;
     NSMutableArray *_outstandingTasks;
     NSObject<OS_dispatch_queue> *_invalidateQueue;
@@ -32,25 +31,12 @@
     _Bool _isInvalid;
     NSURLSessionConfiguration *_proxyConfig;
     NSURLSession *_proxySession;
-    NSMutableDictionary *_proxyDelegates;
     _Bool _shouldRecreateProxySession;
     NSURLSession *_sessionForCacheLookups;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_URLSession:(id)arg1 task:(id)arg2 getAuthHeadersForResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)URLSession:(id)arg1 task:(id)arg2 _conditionalRequirementsChanged:(_Bool)arg3;
-- (void)URLSession:(id)arg1 task:(id)arg2 _willSendRequestForEstablishedConnection:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)URLSession:(id)arg1 task:(id)arg2 _isWaitingForConnectionWithReason:(long long)arg3;
-- (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
-- (void)URLSession:(id)arg1 task:(id)arg2 didFinishCollectingMetrics:(id)arg3;
-- (void)URLSession:(id)arg1 task:(id)arg2 needNewBodyStream:(CDUnknownBlockType)arg3;
-- (void)URLSession:(id)arg1 task:(id)arg2 didSendBodyData:(long long)arg3 totalBytesSent:(long long)arg4 totalBytesExpectedToSend:(long long)arg5;
-- (void)URLSession:(id)arg1 task:(id)arg2 didReceiveChallenge:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)_URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)URLSession:(id)arg1 task:(id)arg2 willPerformHTTPRedirection:(id)arg3 newRequest:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 didBecomeInvalidWithError:(id)arg2;
 - (void)_URLSession:(id)arg1 companionAvailabilityChanged:(_Bool)arg2;
 - (void)_onqueue_completeInvalidation:(_Bool)arg1;
@@ -58,7 +44,7 @@
 - (void)_onqueue_flushWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_onqueue_resetStorageWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)AVAggregateAssetDownloadTaskForURLAsset:(id)arg1 mediaSelections:(id)arg2 assetTitle:(id)arg3 assetArtworkData:(id)arg4 options:(id)arg5;
-- (id)AVAssetDownloadTaskForURLAsset:(id)arg1 assetTitle:(id)arg2 assetArtworkData:(id)arg3 options:(id)arg4;
+- (id)AVAssetDownloadTaskForURLAsset:(id)arg1 assetTitle:(id)arg2 assetArtworkData:(id)arg3 options:(id)arg4 downloadConfiguration:(id)arg5;
 - (id)AVAssetDownloadTaskForURLAsset:(id)arg1 destinationURL:(id)arg2 options:(id)arg3;
 - (id)_AVAssetDownloadTaskForURL:(id)arg1 destinationURL:(id)arg2 options:(id)arg3;
 - (id)_downloadTaskWithTaskForClass:(id)arg1;

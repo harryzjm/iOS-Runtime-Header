@@ -9,16 +9,8 @@
 __attribute__((visibility("hidden")))
 @interface VKGlobeAnnotationTrackingCameraController
 {
-    struct GlobeView *_globeView;
-    struct Anchor {
-        int;
-        struct Coordinate2D<Radians, double>;
-        Geocentric_d8fde6f2;
-        double;
-        struct MercatorTile;
-        struct AnchorManager *;
-        _Bool;
-    } *_anchor;
+    void *_globeView;
+    void *_anchor;
     CDStruct_071ac149 _currentAnimationStartCoordinate;
     CDStruct_2c43369c _currentAnimationPresentationStartCoordinate;
     CDStruct_2c43369c _currentAnimationPresentationEndCoordinate;
@@ -27,7 +19,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property(retain, nonatomic) VKCameraRegionRestriction *regionRestriction; // @synthesize regionRestriction=_regionRestriction;
-@property(nonatomic) struct GlobeView *globeView; // @synthesize globeView=_globeView;
+@property(nonatomic) void *globeView; // @synthesize globeView=_globeView;
 - (void)_rotateToHeadingAnimated:(_Bool)arg1 duration:(double)arg2;
 - (void)_goToAnnotationAnimated:(_Bool)arg1 duration:(double)arg2 timingFunction:(CDUnknownBlockType)arg3 isInitial:(_Bool)arg4;
 - (Matrix_443f5d51)_centerCursor;

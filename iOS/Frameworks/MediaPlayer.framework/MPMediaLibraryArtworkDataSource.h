@@ -7,19 +7,24 @@
 #import <objc/NSObject.h>
 
 #import <MediaPlayer/MPArtworkDataSource-Protocol.h>
+#import <MediaPlayer/MPArtworkDataSourceIdentifiable-Protocol.h>
 
 @class MPArtworkResizeUtility, NSCache, NSString;
 
-@interface MPMediaLibraryArtworkDataSource : NSObject <MPArtworkDataSource>
+@interface MPMediaLibraryArtworkDataSource : NSObject <MPArtworkDataSource, MPArtworkDataSourceIdentifiable>
 {
     _Bool _usesFallbackCache;
+    NSString *_mediaLibraryUniqueIdentifier;
     NSCache *_fallbackCache;
     MPArtworkResizeUtility *_artworkResizeUtility;
 }
 
++ (id)artworkDataSourceWithIdentifier:(id)arg1;
++ (id)artworkDataSourceShortDescription;
 - (void).cxx_destruct;
 @property(retain, nonatomic) MPArtworkResizeUtility *artworkResizeUtility; // @synthesize artworkResizeUtility=_artworkResizeUtility;
 @property(retain, nonatomic) NSCache *fallbackCache; // @synthesize fallbackCache=_fallbackCache;
+@property(copy, nonatomic) NSString *mediaLibraryUniqueIdentifier; // @synthesize mediaLibraryUniqueIdentifier=_mediaLibraryUniqueIdentifier;
 @property(nonatomic) _Bool usesFallbackCache; // @synthesize usesFallbackCache=_usesFallbackCache;
 - (id)_resizeArtwork:(id)arg1 forCatalog:(id)arg2 toSize:(struct CGSize)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)_representationAtSize:(struct CGSize)arg1 forCatalog:(id)arg2;
@@ -27,6 +32,7 @@
 - (_Bool)_isRepresentation:(id)arg1 validForCatalog:(id)arg2;
 - (id)_cachedRepresentationForCatalog:(id)arg1;
 - (void)_cacheRepresentation:(id)arg1 forCatalog:(id)arg2;
+@property(readonly, nonatomic) NSString *artworkDataSourceIdentifier;
 - (void)loadArtworkEffectResultForEffectType:(long long)arg1 catalog:(id)arg2 options:(id)arg3 systemEffectHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)existingArtworkEffectResultForEffectType:(long long)arg1 catalog:(id)arg2 options:(id)arg3;
 - (void)getExportableArtworkPropertiesForCatalog:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

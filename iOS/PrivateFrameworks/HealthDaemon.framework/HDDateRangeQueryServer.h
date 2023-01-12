@@ -18,19 +18,12 @@
 
 + (Class)queryClass;
 - (void).cxx_destruct;
-- (void)_queue_protectedDataBecameAvailable;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(_Bool)arg2;
-- (void)_deliverErrorToClient:(id)arg1;
-- (void)_queue_sendUpdatedResultsToClient;
-- (void)_queue_updateTimePeriodsForSampleTypes:(id)arg1;
-- (void)_queue_samplesOfTypesWereRemoved:(id)arg1;
-- (void)_queue_samplesAdded:(id)arg1;
 - (void)samplesOfTypesWereRemoved:(id)arg1 anchor:(id)arg2;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
 - (void)_queue_start;
 - (_Bool)_shouldObserveAllSampleTypes;
 - (_Bool)_shouldListenForUpdates;
-- (id)dateRangeClientProxy;
 - (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;
 
 // Remaining properties

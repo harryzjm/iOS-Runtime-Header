@@ -6,18 +6,18 @@
 
 @interface TSCH3D2DDataBuffer
 {
-    struct DataBuffer2DDimension mDimension;
+    struct DataBuffer2DDimension _dimension;
 }
 
-+ (id)bufferWithCapacityDimension:(const struct DataBuffer2DDimension *)arg1;
-+ (id)bufferWithCapacitySize:(const tvec2_3b141483 *)arg1 components:(unsigned long long)arg2;
++ (id)bufferWithCapacityDimension:(const void *)arg1;
++ (id)bufferWithCapacitySize:(const void *)arg1 components:(unsigned long long)arg2;
 - (id).cxx_construct;
-@property(readonly, nonatomic) struct DataBuffer2DDimension dimension; // @synthesize dimension=mDimension;
+@property(readonly, nonatomic) struct DataBuffer2DDimension dimension; // @synthesize dimension=_dimension;
 - (struct DataBufferLevelData)dataAtLevel:(unsigned long long)arg1;
 - (_Bool)hasLevels;
 @property(readonly, nonatomic) tvec3_c2818ced size;
 - (unsigned long long)components;
-- (id)initWithCapacityDimension:(const struct DataBuffer2DDimension *)arg1;
+- (id)initWithCapacityDimension:(const void *)arg1;
 
 @end
 

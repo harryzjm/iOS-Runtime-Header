@@ -4,19 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitMetrics/HMMLogEvent.h>
+
 #import <HomeKitDaemon/HMDAWDLogEvent-Protocol.h>
 
 @class NSString;
 
-@interface HMDWatchConnectivityLogEvent <HMDAWDLogEvent>
+@interface HMDWatchConnectivityLogEvent : HMMLogEvent <HMDAWDLogEvent>
 {
     _Bool _reportComplete;
     unsigned long long _watchAddedNotificationCount;
     unsigned long long _watchRemovedNotificationCount;
 }
 
-+ (id)uuid;
-+ (void)initialize;
 @property(nonatomic, getter=isReportComplete) _Bool reportComplete; // @synthesize reportComplete=_reportComplete;
 @property(nonatomic) unsigned long long watchRemovedNotificationCount; // @synthesize watchRemovedNotificationCount=_watchRemovedNotificationCount;
 @property(nonatomic) unsigned long long watchAddedNotificationCount; // @synthesize watchAddedNotificationCount=_watchAddedNotificationCount;

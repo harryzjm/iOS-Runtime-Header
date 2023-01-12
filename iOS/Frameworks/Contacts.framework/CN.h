@@ -41,6 +41,7 @@
 + (id)mutableContactUnifyingContacts:(id)arg1 includingMainStoreContacts:(_Bool)arg2;
 + (unsigned long long)indexOfPreferredContactsForUnifying:(id)arg1 includingMainStoreContacts:(_Bool)arg2;
 + (Class)defaultDataMapperClass;
++ (id)memojiMetadataDescription;
 + (id)imageHash;
 + (id)imageType;
 + (id)downtimeWhitelistDescription;
@@ -85,6 +86,7 @@
 + (id)organizationNameDescription;
 + (id)sectionForSortingByGivenNameDescription;
 + (id)sectionForSortingByFamilyNameDescription;
++ (id)explicitDisplayNameDescription;
 + (id)pronunciationFamilyNameDescription;
 + (id)pronunciationGivenNameDescription;
 + (id)phoneticOrganizationNameDescription;

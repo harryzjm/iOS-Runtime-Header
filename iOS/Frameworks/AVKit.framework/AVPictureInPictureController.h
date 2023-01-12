@@ -29,8 +29,9 @@
     _Bool _allowsPictureInPictureFromInlineWhenEnteringBackground;
     _Bool _pictureInPictureWasStartedWhenEnteringBackground;
     _Bool _canStartAutomaticallyWhenEnteringBackground;
-    long long _controlsStyle;
     AVPlayerLayer *_playerLayer;
+    long long _controlsStyle;
+    AVPictureInPictureControllerContentSource *_contentSource;
     id <AVPictureInPictureControllerDelegate> _delegate;
     AVPictureInPicturePlatformAdapter *_platformAdapter;
     AVObservationController *_observationController;
@@ -39,7 +40,6 @@
     id <AVPictureInPictureContentSource> _source;
     AVPlayerController *_playerController;
     id <AVPictureInPicturePrerollDelegate> _prerollDelegate;
-    AVPictureInPictureControllerContentSource *_contentSource;
 }
 
 + (id)pictureInPictureButtonStopImage;
@@ -49,7 +49,6 @@
 + (id)_imageNamed:(id)arg1 compatibileWithTraitCollection:(id)arg2;
 + (_Bool)isPictureInPictureSupported;
 - (void).cxx_destruct;
-@property(retain, nonatomic) AVPictureInPictureControllerContentSource *contentSource; // @synthesize contentSource=_contentSource;
 @property(nonatomic) __weak id <AVPictureInPicturePrerollDelegate> prerollDelegate; // @synthesize prerollDelegate=_prerollDelegate;
 @property(nonatomic) _Bool canStartAutomaticallyWhenEnteringBackground; // @synthesize canStartAutomaticallyWhenEnteringBackground=_canStartAutomaticallyWhenEnteringBackground;
 @property(nonatomic) _Bool pictureInPictureWasStartedWhenEnteringBackground; // @synthesize pictureInPictureWasStartedWhenEnteringBackground=_pictureInPictureWasStartedWhenEnteringBackground;
@@ -71,13 +70,19 @@
 @property(nonatomic, getter=isPictureInPictureActive) _Bool pictureInPictureActive; // @synthesize pictureInPictureActive=_pictureInPictureActive;
 @property(nonatomic, getter=isPictureInPicturePossible) _Bool pictureInPicturePossible; // @synthesize pictureInPicturePossible=_pictureInPicturePossible;
 @property(nonatomic) __weak id <AVPictureInPictureControllerDelegate> delegate; // @synthesize delegate=_delegate;
-@property(readonly, nonatomic) AVPlayerLayer *playerLayer; // @synthesize playerLayer=_playerLayer;
+@property(retain, nonatomic) AVPictureInPictureControllerContentSource *contentSource; // @synthesize contentSource=_contentSource;
 @property(nonatomic) _Bool requiresLinearPlayback; // @synthesize requiresLinearPlayback=_requiresLinearPlayback;
 @property(nonatomic, getter=isMicrophoneEnabled) _Bool microphoneEnabled; // @synthesize microphoneEnabled=_microphoneEnabled;
 @property(nonatomic) long long controlsStyle; // @synthesize controlsStyle=_controlsStyle;
-- (void)_observePlayerLayer:(id)arg1;
+- (void)_updateEnqueuedBufferDimensions;
+- (void)_startObservingSampleBufferDisplayLayerContentSource:(id)arg1;
+- (void)_updateBackgroundPlaybackPolicyFromPlayerController;
+- (void)_startObservingPlayerLayerContentSource:(id)arg1;
+- (void)_startObservationsForContentSource:(id)arg1;
 - (void)_stopPictureInPictureAndRestoreUserInterface:(_Bool)arg1;
 - (id)_delegateIfRespondsToSelector:(SEL)arg1;
+- (void)_configureContentSourceForVideoCallsIfNeeded:(id)arg1;
+- (void)_invalidateContentSourceForVideoCallsIfNeeded:(id)arg1;
 - (id)_sbdlPlayerController;
 - (void)sampleBufferDisplayLayerDidDisappear;
 - (void)sampleBufferDisplayLayerDidAppear;
@@ -91,11 +96,16 @@
 - (void)pictureInPicturePlatformAdapterBeginReducingResourcesForEligibleOffScreenState;
 - (void)pictureInPicturePlatformAdapter:(id)arg1 handlePlaybackCommand:(long long)arg2;
 - (void)pictureInPicturePlatformAdapter:(id)arg1 failedToStartError:(id)arg2;
+@property(nonatomic) long long backgroundPlaybackPolicy;
+- (void)setActivitySessionIdentifier:(id)arg1;
+- (id)activitySessionIdentifier;
 - (void)reloadPrerollAttributes;
 - (id)sampleBufferDisplayLayer;
 - (void)stopObservingPlayerController:(id)arg1;
 - (void)startObservingPlayerController:(id)arg1;
+@property(nonatomic) _Bool canStartPictureInPictureAutomaticallyFromInline;
 @property(readonly, nonatomic) AVPictureInPictureViewController *pictureInPictureViewController;
+@property(readonly, nonatomic) AVPlayerLayer *playerLayer; // @synthesize playerLayer=_playerLayer;
 - (void)contentSourceVideoRectInWindowChanged;
 - (void)invalidate;
 - (void)stopPictureInPictureEvenWhenInBackground;

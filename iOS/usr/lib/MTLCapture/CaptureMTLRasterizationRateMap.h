@@ -21,6 +21,15 @@
 }
 
 - (void).cxx_destruct;
+- (_Bool)conformsToProtocol:(id)arg1;
+- (_Bool)respondsToSelector:(SEL)arg1;
+@property(readonly, copy) NSString *description;
+- (id)forwardingTargetForSelector:(SEL)arg1;
+@property(readonly) unsigned long long streamReference;
+@property(readonly) struct GTTraceStream *traceStream;
+@property(readonly) struct GTTraceContext *traceContext;
+- (void)touch;
+- (id)originalObject;
 - (CDStruct_14f26992)physicalSizeForLayer:(unsigned long long)arg1;
 - (CDStruct_b2fbf00d)mapScreenToPhysicalCoordinates:(CDStruct_b2fbf00d)arg1 forLayer:(unsigned long long)arg2;
 - (CDStruct_b2fbf00d)mapPhysicalToScreenCoordinates:(CDStruct_b2fbf00d)arg1 forLayer:(unsigned long long)arg2;
@@ -32,15 +41,6 @@
 @property(readonly) unsigned long long layerCount;
 @property(readonly) NSString *label;
 @property(readonly) id <MTLDevice> device;
-- (_Bool)conformsToProtocol:(id)arg1;
-- (_Bool)respondsToSelector:(SEL)arg1;
-@property(readonly, copy) NSString *description;
-- (id)forwardingTargetForSelector:(SEL)arg1;
-@property(readonly) unsigned long long streamReference;
-@property(readonly) struct GTTraceStream *traceStream;
-@property(readonly) struct GTTraceContext *traceContext;
-- (void)touch;
-- (id)originalObject;
 @property(readonly) id <MTLRasterizationRateMap> baseObject;
 - (id)initWithBaseObject:(id)arg1 captureDevice:(id)arg2;
 

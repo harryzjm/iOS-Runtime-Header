@@ -12,10 +12,10 @@
 {
 }
 
-+ (id)themeWithContext:(id)arg1 alternate:(int)arg2 withStylesheet:(id)arg3;
++ (id)themeWithContext:(id)arg1 alternate:(unsigned long long)arg2 withStylesheet:(id)arg3;
 + (void)initialize;
 - (void)saveToArchiver:(id)arg1;
-- (void)p_saveToArchive:(struct ThemeArchive *)arg1 archiver:(id)arg2;
+- (void)p_saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)localizedBodyStyleName;
 @property(readonly, nonatomic) _Bool isBookPortraitTemplateTheme;

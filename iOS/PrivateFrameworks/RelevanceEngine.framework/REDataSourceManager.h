@@ -22,6 +22,7 @@
     NSSet *_elementGroupSupportingConfigurations;
     REConcurrentDictionary *_elementGroupMap;
     _Bool _ignoreAppInstallation;
+    _Bool _disableAutomaticContentManagement;
     _Bool _completedFirstElementLoad;
     REDataSourceLoader *_loader;
     NSSet *_availableDataSourceIdentifiers;
@@ -49,6 +50,7 @@
 - (void)_queue_unloadDataSourceWithIdentifier:(id)arg1;
 - (void)_queue_loadDataSourceWithIdentifier:(id)arg1;
 - (CDStruct_2ec95fd7)minimumSupportedSystemVersionForDataSourceWithIdentifier:(id)arg1;
+- (void)enumerateElementDataSourceControllers:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)enumerateElementDataSourceControllers:(CDUnknownBlockType)arg1;
 - (void)resume;
 - (void)pause;

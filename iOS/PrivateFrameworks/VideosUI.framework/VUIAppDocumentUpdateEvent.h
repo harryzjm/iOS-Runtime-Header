@@ -15,6 +15,9 @@
     VUIAppDocumentUpdateEventDescriptor *_descriptor;
 }
 
++ (id)groupRecoUsersChanged;
++ (id)groupRecoCollectionVisiblityChanged;
++ (id)highlightsChanged;
 + (id)iamMessageReceived;
 + (id)locationRetrieved;
 + (id)locationAuthorizationChanged;

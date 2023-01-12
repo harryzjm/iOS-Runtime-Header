@@ -19,7 +19,8 @@
 - (_Bool)setParameterState:(id)arg1 forKey:(id)arg2;
 - (void)initializeParameters;
 - (void)updateForcesAllDayFlags;
-- (id)targetContentAttribution;
+- (id)smartPromptWithContentDescription:(id)arg1 contentDestination:(id)arg2 workflowName:(id)arg3;
+- (id)contentDestinationWithError:(id *)arg1;
 - (id)currentSelectedCalendar;
 - (void)runWithoutUI;
 - (void)runAsynchronouslyWithInput:(id)arg1;

@@ -6,16 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class WAAQIColor;
+@class UIColor;
 
 @interface WAAQICategory : NSObject
 {
-    WAAQIColor *_color;
+    UIColor *_color;
     struct _NSRange _range;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) WAAQIColor *color; // @synthesize color=_color;
+@property(readonly, nonatomic) UIColor *color; // @synthesize color=_color;
 @property(readonly, nonatomic) struct _NSRange range; // @synthesize range=_range;
 - (id)initWithRange:(struct _NSRange)arg1 color:(id)arg2;
 

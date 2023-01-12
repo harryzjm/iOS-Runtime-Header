@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface PRProximityDeviceParameters : NSObject
 {
-    struct BtProximityFilterBase *_filter;
+    void *_filter;
     unsigned long long _samplesize;
     NSNumber *_rssiImmediate;
     NSNumber *_rssiNear;
@@ -21,8 +21,8 @@ __attribute__((visibility("hidden")))
 @property(readonly) NSNumber *rssiNear; // @synthesize rssiNear=_rssiNear;
 @property(readonly) NSNumber *rssiImmediate; // @synthesize rssiImmediate=_rssiImmediate;
 @property(readonly) unsigned long long samplesize; // @synthesize samplesize=_samplesize;
-@property(readonly) struct BtProximityFilterBase *filter; // @synthesize filter=_filter;
-- (id)initWithFilter:(struct BtProximityFilterBase *)arg1 sampleSize:(unsigned long long)arg2 rssiImmediate:(id)arg3 rssiNear:(id)arg4;
+@property(readonly) void *filter; // @synthesize filter=_filter;
+- (id)initWithFilter:(void *)arg1 sampleSize:(unsigned long long)arg2 rssiImmediate:(id)arg3 rssiNear:(id)arg4;
 - (id)init;
 
 @end

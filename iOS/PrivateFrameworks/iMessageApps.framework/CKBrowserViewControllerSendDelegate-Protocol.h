@@ -29,6 +29,7 @@
 - (void)setEntryViewHidden:(_Bool)arg1;
 - (void)eagerUploadCancelIdentifier:(NSString *)arg1;
 - (void)eagerUploadPayload:(CKBrowserItemPayload *)arg1 identifier:(NSString *)arg2 replace:(_Bool)arg3;
+- (void)didStageAssetArchive:(CKBrowserItemPayload *)arg1 identifier:(NSString *)arg2;
 - (_Bool)handwritingIsDisplayed;
 - (void)requestPresentationStyleFullScreenModalForPlugin:(NSString *)arg1;
 - (void)requestPresentationStyleExpanded:(_Bool)arg1 forPlugin:(NSString *)arg2;

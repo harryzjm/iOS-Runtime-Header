@@ -39,6 +39,7 @@
 - (void)setEventType:(int)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithDeviceID:(id)arg1;
+- (void)saveEventTextToFileIfNeeded;
 - (id)initWithCoder:(id)arg1;
 - (void)saveTerms;
 - (id)termsText;

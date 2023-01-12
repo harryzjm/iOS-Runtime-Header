@@ -9,6 +9,7 @@
 @class NSXPCConnection;
 @protocol ICCloudServerListenerEndpointProviding, OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface ICCloudClientCloudService : NSObject
 {
     NSXPCConnection *_xpcConnection;

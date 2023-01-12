@@ -15,9 +15,11 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) MKLocalSearch *localSearch; // @synthesize localSearch=_localSearch;
+- (id)smartPromptWithContentDescription:(id)arg1 contentDestination:(id)arg2 workflowName:(id)arg3;
+- (void)getContentDestinationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (_Bool)shouldUseMetricSystem;
 - (void)cancel;
-- (void)runSearchWithLocation:(id)arg1;
+- (void)runSearchWithLocation:(id)arg1 inputDisclosureLevel:(unsigned long long)arg2;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 
 @end

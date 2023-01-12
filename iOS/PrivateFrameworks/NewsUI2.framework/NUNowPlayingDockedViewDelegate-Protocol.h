@@ -7,6 +7,7 @@
 @class NUNowPlayingDockedView;
 
 @protocol NUNowPlayingDockedViewDelegate
+- (void)nowPlayingDockedViewTogglePlayPause:(NUNowPlayingDockedView *)arg1;
 - (void)nowPlayingDockedViewDidTapPlay:(NUNowPlayingDockedView *)arg1;
 - (void)nowPlayingDockedViewDidTapPause:(NUNowPlayingDockedView *)arg1;
 - (void)nowPlayingDockedViewDidTapRewind:(NUNowPlayingDockedView *)arg1;

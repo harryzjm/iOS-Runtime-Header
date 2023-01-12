@@ -6,6 +6,7 @@
 
 #import <SafariServices/NSObject-Protocol.h>
 
+@class NSString;
 @protocol _SFSettingsAlertStepperConfiguration;
 
 @protocol _SFSettingsAlertStepperController <NSObject>
@@ -14,6 +15,7 @@
 - (void)prepareStepper:(id <_SFSettingsAlertStepperConfiguration>)arg1;
 
 @optional
+- (NSString *)longestTextForButton:(long long)arg1;
 - (void)resetValue:(id <_SFSettingsAlertStepperConfiguration>)arg1;
 @end
 

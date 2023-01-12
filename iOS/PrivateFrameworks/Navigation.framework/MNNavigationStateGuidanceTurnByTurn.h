@@ -8,7 +8,8 @@
 {
 }
 
-- (void)enterState;
+- (void)postEnterState;
+- (void)setGuidanceType:(unsigned long long)arg1;
 - (void)setFullGuidanceMode:(_Bool)arg1;
 - (unsigned long long)type;
 

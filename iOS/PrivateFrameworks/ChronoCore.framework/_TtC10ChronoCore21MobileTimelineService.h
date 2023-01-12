@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *cacheManager;
     MISSING_TYPE *configurationService;
+    MISSING_TYPE *descriptorProvider;
     MISSING_TYPE *locationService;
     MISSING_TYPE *extensionManager;
     MISSING_TYPE *environmentProvidingFactory;
@@ -22,6 +23,7 @@
     MISSING_TYPE *persistentSubscriptions;
     MISSING_TYPE *environmentSubscriptions;
     MISSING_TYPE *configurationLifetimeAssertions;
+    MISSING_TYPE *widgetKeysNeedingPrivacyContent;
     MISSING_TYPE *processMonitor;
 }
 

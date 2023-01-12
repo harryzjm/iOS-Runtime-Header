@@ -12,6 +12,8 @@
     NSDictionary *_extensionData;
 }
 
++ (long long)screenLockedBehaviorWithString:(id)arg1;
++ (long long)profileTypeWithString:(id)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *extensionData; // @synthesize extensionData=_extensionData;
 @property(retain, nonatomic) NSString *extensionTeamIdentifier; // @synthesize extensionTeamIdentifier=_extensionTeamIdentifier;

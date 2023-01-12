@@ -38,6 +38,7 @@
 - (void)generateRandomRecoveryKey:(CDUnknownBlockType)arg1;
 - (void)deleteRecoveryKey:(CDUnknownBlockType)arg1;
 - (void)generateNewRecoveryKey:(CDUnknownBlockType)arg1;
+- (_Bool)isRecoveryKeyAvailable;
 - (void)recoverAndSynchronizeStateWithServer:(CDUnknownBlockType)arg1;
 - (void)recoverState:(CDUnknownBlockType)arg1;
 - (id)initWithContext:(id)arg1 uiProvider:(id)arg2 authProvider:(id)arg3 circleProxy:(id)arg4 secureBackupProxy:(id)arg5 octagonTrustProxy:(id)arg6 pcsProxy:(id)arg7;

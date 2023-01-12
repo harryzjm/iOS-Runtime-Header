@@ -34,6 +34,7 @@
 @property(readonly, nonatomic) EFSQLSchema *protectedSchema; // @synthesize protectedSchema=_protectedSchema;
 @property(readonly, nonatomic) EFSQLSchema *schema; // @synthesize schema=_schema;
 - (id)urlForDatabasePath:(id)arg1 type:(long long)arg2;
+- (void)handleExceptionCreatingConnection:(id)arg1;
 - (id)urlForDatabasePath:(id)arg1 type:(long long)arg2 fileProtection:(id)arg3;
 - (id)fileProtectionForDatabaseType:(long long)arg1;
 - (void)scheduleRecurringActivity;

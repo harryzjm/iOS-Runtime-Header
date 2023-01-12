@@ -8,7 +8,7 @@
 
 #import <MPUFoundation/CAAnimationDelegate-Protocol.h>
 
-@class NSArray, NSPointerArray, NSString, NSUUID;
+@class CAGradientLayer, NSArray, NSPointerArray, NSString, NSUUID;
 @protocol MPUMarqueeViewDelegate;
 
 @interface MPUMarqueeView : UIView <CAAnimationDelegate>
@@ -44,6 +44,7 @@
 @property(nonatomic) double contentGap; // @synthesize contentGap=_contentGap;
 - (void)sceneWillEnterForegroundNotification:(id)arg1;
 - (void)sceneDidEnterBackgroundNotification:(id)arg1;
+@property(readonly, nonatomic) CAGradientLayer *gradientLayer;
 - (double)_duration;
 - (void)_tearDownMarqueeAnimation;
 - (void)_createMarqueeAnimationIfNeededWithMaximumDuration:(double)arg1 beginTime:(double)arg2;

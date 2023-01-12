@@ -16,10 +16,10 @@
 @property(readonly, copy) VNDetectionprint *detectionprint; // @synthesize detectionprint=_detectionprint;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)vn_cloneObject;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithDetectionprint:(id)arg1 requestRevision:(unsigned long long)arg2;
+- (id)initWithOriginatingRequestSpecifier:(id)arg1 detectionprint:(id)arg2;
 
 @end
 

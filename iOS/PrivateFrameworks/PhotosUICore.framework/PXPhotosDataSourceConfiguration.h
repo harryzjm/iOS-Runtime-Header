@@ -7,9 +7,11 @@
 #import <objc/NSObject.h>
 
 @class NSArray, NSDictionary, NSPredicate, NSSet, PHAsset, PHCollection, PHFetchResult, PHPhotoLibrary;
+@protocol OS_dispatch_queue;
 
 @interface PXPhotosDataSourceConfiguration : NSObject
 {
+    _Bool _canIncludeUnsavedSyndicatedAssets;
     _Bool _hideHiddenAssets;
     PHFetchResult *_collectionListFetchResult;
     PHCollection *_containerCollection;
@@ -25,9 +27,11 @@
     PHPhotoLibrary *_photoLibrary;
     NSArray *_fetchPropertySets;
     long long _curationType;
+    NSObject<OS_dispatch_queue> *_clientQueue;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property(nonatomic) long long curationType; // @synthesize curationType=_curationType;
 @property(retain, nonatomic) NSArray *fetchPropertySets; // @synthesize fetchPropertySets=_fetchPropertySets;
 @property(retain, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
@@ -35,6 +39,7 @@
 @property(retain, nonatomic) NSArray *filterPersons; // @synthesize filterPersons=_filterPersons;
 @property(retain, nonatomic) NSSet *allowedOIDs; // @synthesize allowedOIDs=_allowedOIDs;
 @property(retain, nonatomic) NSSet *allowedUUIDs; // @synthesize allowedUUIDs=_allowedUUIDs;
+@property(nonatomic) _Bool canIncludeUnsavedSyndicatedAssets; // @synthesize canIncludeUnsavedSyndicatedAssets=_canIncludeUnsavedSyndicatedAssets;
 @property(retain, nonatomic) NSPredicate *filterPredicate; // @synthesize filterPredicate=_filterPredicate;
 @property(retain, nonatomic) NSPredicate *basePredicate; // @synthesize basePredicate=_basePredicate;
 @property(retain, nonatomic) PHAsset *referenceAsset; // @synthesize referenceAsset=_referenceAsset;
@@ -43,6 +48,7 @@
 @property(readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property(readonly, nonatomic) PHCollection *containerCollection; // @synthesize containerCollection=_containerCollection;
 @property(readonly, nonatomic) PHFetchResult *collectionListFetchResult; // @synthesize collectionListFetchResult=_collectionListFetchResult;
+- (id)initWithAssetCollection:(id)arg1 options:(unsigned long long)arg2;
 - (id)initWithAssetFetchResult:(id)arg1 options:(unsigned long long)arg2;
 - (id)initWithCollectionListFetchResult:(id)arg1 containerCollection:(id)arg2 options:(unsigned long long)arg3;
 - (id)initWithCollectionListFetchResult:(id)arg1 options:(unsigned long long)arg2;

@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (struct CGRect)normalizedBoundingFrameForItem:(id)arg1;
 + (struct CGRect)normalizedBoundingFrameForItems:(id)arg1;
 + (struct CGRect)boundingFrameForItems:(id)arg1;
 - (struct CGRect)_rectValueForMetric:(long long)arg1;

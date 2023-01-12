@@ -7,6 +7,6 @@
 #import <Foundation/NSNumber.h>
 
 @interface NSNumber (PXDataSourceIdentifier)
-@property(readonly, nonatomic) unsigned long long PXDataSourceIdentifierValue;
+@property(readonly, nonatomic) long long PXDataSourceIdentifierValue;
 @end
 

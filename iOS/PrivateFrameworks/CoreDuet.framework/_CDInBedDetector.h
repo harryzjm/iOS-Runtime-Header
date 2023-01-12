@@ -15,6 +15,7 @@
     unsigned long long _method;
 }
 
++ (double)hoursOfSleepForResult:(id)arg1;
 + (id)inBedDetector;
 + (id)simpleLockBasedInBedDetector;
 + (id)inBedDetectorWithKnowledge:(id)arg1 method:(unsigned long long)arg2;
@@ -27,7 +28,9 @@
 - (id)findLastTimeDeviceWasPluggedInBetweenStartDate:(id)arg1 endDate:(id)arg2 error:(id *)arg3;
 - (id)findLastTimeDeviceWasLockedBetweenStartDate:(id)arg1 endDate:(id)arg2 error:(id *)arg3;
 - (id)stationaryIntervalsBetweenStartDate:(id)arg1 endDate:(id)arg2 error:(id *)arg3;
+- (id)findMotionTerminusBetweenStartDate:(id)arg1 endDate:(id)arg2 latest:(_Bool)arg3 error:(id *)arg4;
 - (id)findLatestEndOfMovementBetweenStartDate:(id)arg1 endDate:(id)arg2 error:(id *)arg3;
+- (id)detectInBedWithPolicyV2BetweenStartDate:(id)arg1 endDate:(id)arg2 error:(id *)arg3 motionBased:(_Bool)arg4;
 - (id)detectInBedWithPolicyV1BetweenStartDate:(id)arg1 endDate:(id)arg2 error:(id *)arg3;
 - (id)lockedTimesBetweenStartDate:(id)arg1 endDate:(id)arg2 error:(id *)arg3;
 - (id)detectInBedBetweenBedtimeDate:(id)arg1 wakupDate:(id)arg2 error:(id *)arg3;

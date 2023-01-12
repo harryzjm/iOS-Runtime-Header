@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSSet, PHPhotoLibrary;
+@class NSDictionary, PHPhotoLibrary;
 
 @interface PGDejunkerDeduper_PHAsset
 {
@@ -12,12 +12,9 @@
     NSDictionary *_peopleScenesByAssetUUID;
     NSDictionary *_averageFaceQualityByAssetUUID;
     PHPhotoLibrary *_photoLibrary;
-    NSSet *_verifiedPersonLocalIdentifiers;
 }
 
 - (void).cxx_destruct;
-- (void)setVerifiedPersonLocalIdentifiers:(id)arg1;
-- (id)verifiedPersonLocalIdentifiers;
 @property(readonly) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 - (id)itemsSortedByScoreWithItems:(id)arg1 options:(id)arg2;
 - (id)featureWithItem:(id)arg1;

@@ -36,7 +36,6 @@
 - (id)CKPropertiesDescription;
 - (id)ckShortDescription;
 - (id)representativeDataclass;
-- (void)_deriveContainerAttributes;
 - (id)initWithSqliteRepresentation:(id)arg1;
 - (id)sqliteRepresentation;
 - (id)initWithContainerIdentifier:(id)arg1 environment:(long long)arg2;

@@ -9,7 +9,7 @@
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSData, NSString, NSURL, PKContent, PKDataAccessor, PKDisplayProfile, PKDisplayTraitCollection, PKImageSet;
+@class NSData, NSDate, NSString, NSURL, PKContent, PKDataAccessor, PKDisplayProfile, PKDisplayTraitCollection, PKImageSet;
 
 @interface PKObject : NSObject <NSCopying, NSSecureCoding>
 {
@@ -24,6 +24,7 @@
     PKDisplayProfile *_displayProfile;
     NSURL *_webServiceURL;
     NSString *_authenticationToken;
+    NSDate *_signingDate;
     unsigned long long _settings;
     long long _shareCount;
     double _preferredImageScale;
@@ -32,13 +33,23 @@
 
 + (_Bool)supportsSecureCoding;
 + (unsigned long long)defaultSettings;
-+ (_Bool)isValidObjectWithFileURL:(id)arg1 warnings:(id *)arg2 orError:(id *)arg3;
++ (id)fetchSigningDateForObjectWithFileDataAccessor:(id)arg1 passDictionary:(id)arg2;
++ (_Bool)isValidObjectWithFileDataAccessor:(id)arg1 warnings:(id *)arg2 error:(id *)arg3 signingDate:(id *)arg4 passDictionary:(id)arg5;
++ (id)dataTypeIdentifier;
++ (Class)classForDictionary:(id)arg1 bundle:(id)arg2;
++ (Class)resolvingClass;
++ (id)_createWithFileDataAccessor:(id)arg1 validate:(_Bool)arg2 warnings:(id *)arg3 error:(id *)arg4;
++ (id)createWithValidatedFileDataAccessor:(id)arg1;
++ (id)createWithFileDataAccessor:(id)arg1 warnings:(id *)arg2 error:(id *)arg3;
++ (id)createWithFileURL:(id)arg1 warnings:(id *)arg2 error:(id *)arg3;
++ (id)createWithData:(id)arg1 warnings:(id *)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *preferredImageSuffix; // @synthesize preferredImageSuffix=_preferredImageSuffix;
 @property(nonatomic) double preferredImageScale; // @synthesize preferredImageScale=_preferredImageScale;
 @property(readonly, nonatomic) _Bool initializedViaInitWithCoder; // @synthesize initializedViaInitWithCoder=_initializedViaInitWithCoder;
 @property(nonatomic) long long shareCount; // @synthesize shareCount=_shareCount;
 @property(nonatomic) unsigned long long settings; // @synthesize settings=_settings;
+@property(copy, nonatomic) NSDate *signingDate; // @synthesize signingDate=_signingDate;
 @property(copy, nonatomic) NSString *authenticationToken; // @synthesize authenticationToken=_authenticationToken;
 @property(copy, nonatomic) NSURL *webServiceURL; // @synthesize webServiceURL=_webServiceURL;
 @property(retain, nonatomic) PKDisplayProfile *displayProfile; // @synthesize displayProfile=_displayProfile;
@@ -61,7 +72,8 @@
 - (id)serializedFileWrapper;
 - (id)archiveData;
 - (id)localizedString:(id)arg1;
-- (void)downloadRemoteAssetsWithCloudStoreCoordinatorDelegate:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)downloadRemoteAssetsWithCloudStoreCoordinatorDelegate:(id)arg1 seids:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)downloadRemoteAssetsForSEIDS:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)downloadRemoteAssetsWithCompletion:(CDUnknownBlockType)arg1;
 - (_Bool)remoteAssetsDownloadedForSEIDs:(id)arg1;
 - (void)noteShared;
@@ -85,11 +97,7 @@
 - (void)dealloc;
 - (id)initWithDictionary:(id)arg1 bundle:(id)arg2;
 - (id)init;
-- (id)initWithFileDataAccessor:(id)arg1;
-- (id)initWithFileURL:(id)arg1 validate:(_Bool)arg2 warnings:(id *)arg3 orError:(id *)arg4;
-- (id)initWithFileURL:(id)arg1 warnings:(id *)arg2 orError:(id *)arg3;
 - (id)initWithFileURL:(id)arg1 error:(id *)arg2;
-- (id)initWithData:(id)arg1 warnings:(id *)arg2 orError:(id *)arg3;
 - (id)initWithData:(id)arg1 error:(id *)arg2;
 
 @end

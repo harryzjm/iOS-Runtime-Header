@@ -6,7 +6,6 @@
 
 @class CKDZonePCSData, CKRecordZoneID;
 
-__attribute__((visibility("hidden")))
 @interface CKDPCSCacheZoneFetchOperation
 {
     _Bool _shouldCreateZoneishPCS;
@@ -21,7 +20,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_decryptPCS;
 - (_Bool)_createAdditionalPCS;
 - (_Bool)_fetchPCSDataFromServer;
-- (void)_saveNewPCSOnDefaultZone:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_saveNewPCSOnZone:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_saveZoneToServer:(id)arg1 withPCS:(struct _OpaquePCSShareProtection *)arg2 zoneishPCS:(struct _OpaquePCSShareProtection *)arg3 previousEtag:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_saveZoneToServer:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_fetchDepedentPCSInSharedDatabase;

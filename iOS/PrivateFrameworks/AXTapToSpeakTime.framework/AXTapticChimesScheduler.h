@@ -12,6 +12,7 @@
 
 @interface AXTapticChimesScheduler : NSObject <AVAudioPlayerDelegate>
 {
+    NSString *_pcServiceIdentifier;
     PCSimpleTimer *_chimeTimer;
     AVAudioPlayer *_audioPlayer;
     NSString *_previousAudioSessionCategory;
@@ -28,6 +29,7 @@
 + (void)initializeIfNeeded;
 - (void).cxx_destruct;
 - (void)audioPlayerDidFinishPlaying:(id)arg1 successfully:(_Bool)arg2;
+- (void)_chimeDidFinishPlaying;
 - (void)_denormalizeVolumeIfNecessary;
 - (void)_normalizeVolumeIfNecessary;
 - (id)nextChimeAssetForStartDate:(id)arg1 frequency:(long long)arg2 soundType:(long long)arg3 timeIntervalUntilChime:(double *)arg4;
@@ -44,6 +46,7 @@
 - (double)_preWakeTimeInterval;
 - (_Bool)canPlayScheduledTapticChime;
 - (_Bool)canScheduleTapticChimes;
+- (_Bool)processIsAllowedToInterfaceWithNanoMediaRemote;
 - (_Bool)processIsAllowedToScheduleChimes;
 - (_Bool)canPlayTapticChime;
 - (void)_tapticChimesStateDidChange:(_Bool)arg1;

@@ -37,14 +37,7 @@
 - (void)setWorkoutConfiguration:(id)arg1;
 @property(readonly, copy) NSUUID *workoutDataProcessorUUID;
 @property(readonly) HKDataFlowLink *workoutDataFlowLink;
-- (void)_forwardSamples:(id)arg1;
-- (_Bool)_enumerateSamplesOfType:(id)arg1 from:(id)arg2 to:(id)arg3 error:(id *)arg4 handler:(CDUnknownBlockType)arg5;
-- (void)_stopObservingSampleTypes:(id)arg1;
-- (void)_startObservingSampleTypes:(id)arg1;
-- (double)_collectionInterval;
-- (id)_initialMetadata;
 @property(copy, nonatomic) NSSet *sampleTypesToCollect;
-- (void)_stopCollection;
 - (void)dealloc;
 - (id)initWithConfiguration:(id)arg1 client:(id)arg2;
 

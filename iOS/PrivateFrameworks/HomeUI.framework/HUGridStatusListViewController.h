@@ -43,6 +43,7 @@
 - (id)itemManager:(id)arg1 futureToUpdateItems:(id)arg2 itemUpdateOptions:(id)arg3;
 - (void)configureCell:(id)arg1 forItem:(id)arg2;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
+- (void)diffableDataItemManager:(id)arg1 didUpdateItems:(id)arg2 addItems:(id)arg3 removeItems:(id)arg4;
 - (id)hu_preloadContent;
 - (void)_internalSetLayoutOptions:(id)arg1;
 @property(copy, nonatomic) HUGridLayoutOptions *layoutOptions;

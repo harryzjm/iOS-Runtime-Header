@@ -14,18 +14,20 @@
     CDUnknownBlockType _completion;
     long long _status;
     NSArray *_mirroringTasks;
+    long long _priority;
     NSProgress *_progress;
     HDCloudSyncManagerTask *_originalTask;
 }
 
 - (void).cxx_destruct;
 @property(readonly, copy) NSArray *mirroringTasks; // @synthesize mirroringTasks=_mirroringTasks;
-@property(readonly) HDCloudSyncManagerTask *originalTask; // @synthesize originalTask=_originalTask;
+@property(readonly) __weak HDCloudSyncManagerTask *originalTask; // @synthesize originalTask=_originalTask;
 @property(readonly) NSProgress *progress; // @synthesize progress=_progress;
+@property long long priority; // @synthesize priority=_priority;
 - (void)mirrorTask:(id)arg1;
-- (void)_addMirroringTask:(id)arg1;
 - (void)finish;
 - (void)main;
+- (void)cancel;
 - (void)startWithCompletion:(CDUnknownBlockType)arg1;
 - (_Bool)combineWithTask:(id)arg1;
 @property(readonly) long long status;

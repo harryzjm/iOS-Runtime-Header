@@ -4,18 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSURL;
-
 __attribute__((visibility("hidden")))
 @interface DDMapAction
 {
-    NSURL *_commitURL;
 }
 
 + (_Bool)actionAvailableForContact:(id)arg1;
 + (id)viewControllerProviderClass;
 + (_Bool)handlesUrl:(id)arg1 result:(struct __DDResult *)arg2;
-- (void).cxx_destruct;
 - (id)menuActionClasses;
 - (id)previewActions;
 - (id)commitURL;

@@ -6,13 +6,13 @@
 
 #import <AVConference/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSObject, NSString;
+@class NSArray, NSDictionary, NSError, NSObject, NSString;
 @protocol OS_xpc_object;
 
 @protocol VCMediaStreamProtocol <NSObject>
-- (void)setPause:(_Bool)arg1;
-- (void)stop;
-- (void)start;
+- (NSError *)setPause:(_Bool)arg1;
+- (NSError *)stop;
+- (NSError *)start;
 - (_Bool)setStreamConfig:(NSArray *)arg1 withError:(id *)arg2;
 
 @optional

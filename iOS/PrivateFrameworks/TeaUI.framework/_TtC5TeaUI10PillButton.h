@@ -4,29 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIButton.h>
+@class UIColor;
 
-@class MISSING_TYPE, UIColor;
-
-@interface _TtC5TeaUI10PillButton : UIButton
+@interface _TtC5TeaUI10PillButton
 {
-    MISSING_TYPE *contentOffset;
-    MISSING_TYPE *onTap;
-    MISSING_TYPE *_backgroundColor;
 }
 
 + (Class)layerClass;
-- (void).cxx_destruct;
-@property(nonatomic) _Bool enabled;
-- (_Bool)isEnabled;
-@property(nonatomic) _Bool highlighted;
-- (_Bool)isHighlighted;
-@property(nonatomic, retain) UIColor *backgroundColor;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)layoutSubviews;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-@property(nonatomic) struct CGPoint contentOffset; // @synthesize contentOffset;
+- (void)layoutSubviews;
+@property(nonatomic, retain) UIColor *backgroundColor;
 
 @end
 

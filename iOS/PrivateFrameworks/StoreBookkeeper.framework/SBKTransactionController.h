@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreBookkeeper/ISStoreURLOperationDelegate-Protocol.h>
+#import <StoreBookkeeper/SBKTransactionURLOperationDelegate-Protocol.h>
 
 @class NSMutableArray, NSNumber, NSOperationQueue, NSString, NSURL, SBKStoreAuthenticationController, SBKTaskAssertion, SBKTransaction, SSAccount;
 @protocol OS_dispatch_queue, SBKTransactionControllerDelegate;
 
-@interface SBKTransactionController : NSObject <ISStoreURLOperationDelegate>
+@interface SBKTransactionController : NSObject <SBKTransactionURLOperationDelegate>
 {
     _Bool _enabled;
     _Bool _shouldAuthenticateIfNecessary;
@@ -19,9 +19,9 @@
     id <SBKTransactionControllerDelegate> _delegate;
     NSString *_domain;
     NSURL *_requestURL;
+    SSAccount *_account;
     SBKStoreAuthenticationController *_authenticationController;
     SBKTransaction *_currentTransaction;
-    SSAccount *_account;
     NSObject<OS_dispatch_queue> *_queue;
     NSOperationQueue *_operationQueue;
     NSMutableArray *_pendingTransactions;
@@ -31,21 +31,21 @@
 }
 
 - (void).cxx_destruct;
-@property long long conflictResolutionAttempts; // @synthesize conflictResolutionAttempts=_conflictResolutionAttempts;
-@property __weak id networkTypeObserver; // @synthesize networkTypeObserver=_networkTypeObserver;
-@property(retain) SBKTaskAssertion *backgroundTaskAssertion; // @synthesize backgroundTaskAssertion=_backgroundTaskAssertion;
-@property _Bool isResolvingError; // @synthesize isResolvingError=_isResolvingError;
-@property(retain) NSMutableArray *pendingTransactions; // @synthesize pendingTransactions=_pendingTransactions;
-@property(retain) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
-@property(retain) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property(retain) SSAccount *account; // @synthesize account=_account;
+@property(nonatomic) long long conflictResolutionAttempts; // @synthesize conflictResolutionAttempts=_conflictResolutionAttempts;
+@property(nonatomic) __weak id networkTypeObserver; // @synthesize networkTypeObserver=_networkTypeObserver;
+@property(retain, nonatomic) SBKTaskAssertion *backgroundTaskAssertion; // @synthesize backgroundTaskAssertion=_backgroundTaskAssertion;
+@property(nonatomic) _Bool isResolvingError; // @synthesize isResolvingError=_isResolvingError;
+@property(retain, nonatomic) NSMutableArray *pendingTransactions; // @synthesize pendingTransactions=_pendingTransactions;
+@property(retain, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) SBKTransaction *currentTransaction; // @synthesize currentTransaction=_currentTransaction;
-@property _Bool shouldAuthenticateIfNecessary; // @synthesize shouldAuthenticateIfNecessary=_shouldAuthenticateIfNecessary;
-@property(retain) SBKStoreAuthenticationController *authenticationController; // @synthesize authenticationController=_authenticationController;
-@property(readonly, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
-@property(readonly) NSURL *requestURL; // @synthesize requestURL=_requestURL;
-@property(readonly, copy) NSString *domain; // @synthesize domain=_domain;
-@property __weak id <SBKTransactionControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) _Bool shouldAuthenticateIfNecessary; // @synthesize shouldAuthenticateIfNecessary=_shouldAuthenticateIfNecessary;
+@property(retain, nonatomic) SBKStoreAuthenticationController *authenticationController; // @synthesize authenticationController=_authenticationController;
+@property(readonly, nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
+@property(readonly, nonatomic) SSAccount *account; // @synthesize account=_account;
+@property(readonly, nonatomic) NSURL *requestURL; // @synthesize requestURL=_requestURL;
+@property(readonly, copy, nonatomic) NSString *domain; // @synthesize domain=_domain;
+@property(nonatomic) __weak id <SBKTransactionControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)operation:(id)arg1 failedWithError:(id)arg2;
 - (void)operation:(id)arg1 didReceiveResponse:(id)arg2;
 - (void)operation:(id)arg1 finishedWithOutput:(id)arg2;
@@ -86,7 +86,7 @@
 - (void)cancelScheduledTransaction:(id)arg1;
 - (void)scheduleTransaction:(id)arg1;
 - (void)scheduleTransaction:(id)arg1 withTransactionFinishedBlock:(CDUnknownBlockType)arg2;
-@property(readonly, getter=isIdle) _Bool idle;
+@property(readonly, nonatomic, getter=isIdle) _Bool idle;
 - (_Bool)_onQueue_isIdle;
 - (id)_onQueue_clampsController;
 - (void)_networkTypeChangedNotification:(id)arg1;
@@ -94,6 +94,7 @@
 - (void)setRequestURL:(id)arg1;
 - (void)setDomain:(id)arg1;
 - (void)dealloc;
+- (id)initWithDomain:(id)arg1 requestURL:(id)arg2 forAccount:(id)arg3;
 - (id)initWithDomain:(id)arg1 requestURL:(id)arg2;
 
 // Remaining properties

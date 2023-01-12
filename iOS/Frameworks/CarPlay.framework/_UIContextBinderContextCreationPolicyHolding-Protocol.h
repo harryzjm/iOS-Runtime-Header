@@ -7,6 +7,6 @@
 #import <CarPlay/NSObject-Protocol.h>
 
 @protocol _UIContextBinderContextCreationPolicyHolding <NSObject>
-- (_Bool)_permitContextCreationForBindingDescription:(CDStruct_a002d41c)arg1;
+- (_Bool)_permitContextCreationForBindingDescription:(CDStruct_98d137ef)arg1;
 @end
 

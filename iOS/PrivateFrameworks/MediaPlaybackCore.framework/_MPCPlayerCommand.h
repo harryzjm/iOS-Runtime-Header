@@ -8,6 +8,7 @@
 
 @class MPCPlayerPath, MPCPlayerResponse;
 
+__attribute__((visibility("hidden")))
 @interface _MPCPlayerCommand : NSObject
 {
     MPCPlayerResponse *_response;

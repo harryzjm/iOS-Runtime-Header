@@ -7,11 +7,13 @@
 #import <UIKit/UICollectionReusableView.h>
 
 @class CKLabel, NSMutableArray, UIImageView;
+@protocol CKAvatarTitleCollectionReusableViewDelegate;
 
 @interface CKAvatarTitleCollectionReusableView : UICollectionReusableView
 {
     _Bool _chevronHidden;
     _Bool _avatarPickerActive;
+    id <CKAvatarTitleCollectionReusableViewDelegate> _delegate;
     CKLabel *_titleLabel;
     long long _style;
     long long _avatarTitleAccessoryImageType;
@@ -32,6 +34,10 @@
 @property(nonatomic) long long avatarTitleAccessoryImageType; // @synthesize avatarTitleAccessoryImageType=_avatarTitleAccessoryImageType;
 @property(nonatomic) long long style; // @synthesize style=_style;
 @property(retain, nonatomic) CKLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property(nonatomic) __weak id <CKAvatarTitleCollectionReusableViewDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
+- (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (_Bool)isLTR;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
@@ -39,6 +45,7 @@
 - (void)_animateFromQueue;
 - (void)setTitle:(id)arg1 animated:(_Bool)arg2;
 - (void)_rotateChevronImageView;
+- (void)configureChevronImageView;
 @property(nonatomic, getter=isChevronHidden) _Bool chevronHidden; // @synthesize chevronHidden=_chevronHidden;
 - (id)initWithFrame:(struct CGRect)arg1;
 

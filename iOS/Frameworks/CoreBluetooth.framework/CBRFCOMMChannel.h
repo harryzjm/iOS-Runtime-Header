@@ -12,8 +12,12 @@
 {
     unsigned char _channelID;
     _Bool _isIncoming;
+    unsigned char _dataBits;
+    unsigned char _parity;
+    unsigned char _stopBits;
     unsigned short _mtu;
     int _socketFD;
+    unsigned int _baudRate;
     CBClassicPeer *_peer;
     NSInputStream *_inputStream;
     NSOutputStream *_outputStream;
@@ -21,6 +25,10 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned char stopBits; // @synthesize stopBits=_stopBits;
+@property(nonatomic) unsigned char parity; // @synthesize parity=_parity;
+@property(nonatomic) unsigned char dataBits; // @synthesize dataBits=_dataBits;
+@property(nonatomic) unsigned int baudRate; // @synthesize baudRate=_baudRate;
 @property(readonly, nonatomic) _Bool isIncoming; // @synthesize isIncoming=_isIncoming;
 @property(readonly, nonatomic) unsigned short mtu; // @synthesize mtu=_mtu;
 @property(readonly, nonatomic) unsigned char channelID; // @synthesize channelID=_channelID;
@@ -30,6 +38,7 @@
 @property(readonly, nonatomic) CBClassicPeer *peer; // @synthesize peer=_peer;
 @property(readonly, nonatomic) int socketFD; // @synthesize socketFD=_socketFD;
 - (id)description;
+- (void)configureChannelPortParams:(unsigned int)arg1 dataBits:(unsigned char)arg2 parity:(unsigned char)arg3 stopBits:(unsigned char)arg4;
 - (void)dealloc;
 - (id)initWithPeer:(id)arg1 info:(id)arg2;
 

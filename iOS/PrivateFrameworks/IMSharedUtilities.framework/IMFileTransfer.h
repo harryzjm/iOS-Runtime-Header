@@ -54,14 +54,12 @@
     long long _cloudKitSyncState;
     NSData *_cloudKitServerChangeTokenBlob;
     NSString *_cloudKitRecordID;
-    long long _srCloudKitSyncState;
-    NSData *_srCloudKitServerChangeTokenBlob;
-    NSString *_srCloudKitRecordID;
     NSString *_sandboxToken;
     NSURL *_localURL;
     NSURL *_temporaryHighQualityLocalURL;
     NSDictionary *_attributionInfo;
     NSString *_originalGUID;
+    long long _fetchOptions;
 }
 
 + (id)guidByStrippingAuxPrefix:(id)arg1;
@@ -69,15 +67,13 @@
 + (id)guidForFileTransferDictionary:(id)arg1;
 + (id)whitelistedKeys;
 + (_Bool)_doesLocalURLRequireArchiving:(id)arg1;
+@property(nonatomic, setter=_setFetchOptions:) long long fetchOptions; // @synthesize fetchOptions=_fetchOptions;
 @property(retain, nonatomic) NSString *originalGUID; // @synthesize originalGUID=_originalGUID;
 @property(nonatomic) _Bool appMessageFallbackImage; // @synthesize appMessageFallbackImage=_appMessageFallbackImage;
 @property(retain, nonatomic) NSDictionary *attributionInfo; // @synthesize attributionInfo=_attributionInfo;
 @property(retain, nonatomic) NSURL *temporaryHighQualityLocalURL; // @synthesize temporaryHighQualityLocalURL=_temporaryHighQualityLocalURL;
 @property(retain, nonatomic, setter=_setLocalURL:) NSURL *localURL; // @synthesize localURL=_localURL;
 @property(copy, nonatomic) NSString *sandboxToken; // @synthesize sandboxToken=_sandboxToken;
-@property(retain, nonatomic) NSString *srCloudKitRecordID; // @synthesize srCloudKitRecordID=_srCloudKitRecordID;
-@property(retain, nonatomic) NSData *srCloudKitServerChangeTokenBlob; // @synthesize srCloudKitServerChangeTokenBlob=_srCloudKitServerChangeTokenBlob;
-@property(nonatomic) long long srCloudKitSyncState; // @synthesize srCloudKitSyncState=_srCloudKitSyncState;
 @property(retain, nonatomic) NSString *cloudKitRecordID; // @synthesize cloudKitRecordID=_cloudKitRecordID;
 @property(retain, nonatomic) NSData *cloudKitServerChangeTokenBlob; // @synthesize cloudKitServerChangeTokenBlob=_cloudKitServerChangeTokenBlob;
 @property(nonatomic) long long cloudKitSyncState; // @synthesize cloudKitSyncState=_cloudKitSyncState;
@@ -125,6 +121,7 @@
 - (_Bool)_missingAttachmentCanBeDownloadedFromCloudKit;
 - (_Bool)_isCloudKitEnabled;
 - (id)_auxVideoPathIfItExists;
+- (id)createAndPersistLivePhotoBundleIfNecessary;
 - (id)description;
 @property(readonly, retain, nonatomic) NSString *mimeType; // @synthesize mimeType=_mimeType;
 @property(retain, nonatomic, setter=_setLocalPath:) NSString *localPath;
@@ -155,6 +152,7 @@
 - (id)_initWithGUID:(id)arg1 filename:(id)arg2 isDirectory:(_Bool)arg3 localURL:(id)arg4 account:(id)arg5 otherPerson:(id)arg6 totalBytes:(unsigned long long)arg7 hfsType:(unsigned int)arg8 hfsCreator:(unsigned int)arg9 hfsFlags:(unsigned short)arg10 isIncoming:(_Bool)arg11;
 - (id)init;
 - (void)dealloc;
+@property(readonly, nonatomic) _Bool isFromMomentShare;
 
 @end
 

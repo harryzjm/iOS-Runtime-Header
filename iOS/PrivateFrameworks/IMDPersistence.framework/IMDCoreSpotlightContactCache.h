@@ -6,11 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSCache;
+@class NSData, NSMutableDictionary;
+@protocol OS_dispatch_queue;
 
 @interface IMDCoreSpotlightContactCache : NSObject
 {
-    NSCache *_cache;
+    NSData *_currentHistoryToken;
+    NSMutableDictionary *_cache;
+    NSObject<OS_dispatch_queue> *_contactCacheQueue;
 }
 
 + (void)vCardCoordinateForMapURL:(id)arg1 outLatitude:(float *)arg2 outLongitude:(float *)arg3;
@@ -19,11 +22,19 @@
 + (id)vCardNameForContact:(id)arg1;
 + (id)contactsForVCardAtPath:(id)arg1;
 + (id)sharedInstance;
-@property(retain, nonatomic) NSCache *cache; // @synthesize cache=_cache;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *contactCacheQueue; // @synthesize contactCacheQueue=_contactCacheQueue;
+@property(retain, nonatomic) NSMutableDictionary *cache; // @synthesize cache=_cache;
+@property(retain, nonatomic) NSData *currentHistoryToken; // @synthesize currentHistoryToken=_currentHistoryToken;
 - (void)dealloc;
 - (void)contactStoreDidChange:(id)arg1;
+- (id)contactIDToAliasesMap;
 - (id)cachedContactForKey:(id)arg1 cacheHit:(_Bool *)arg2;
 - (void)cacheContact:(id)arg1 forKey:(id)arg2;
+- (void)updateCacheForAliases:(id)arg1;
+- (void)cacheContactsFromFetchResults:(id)arg1 forAliases:(id)arg2;
+- (void)removeCachedContactForKey:(id)arg1;
+- (void)resetCache;
+- (id)init;
 
 @end
 

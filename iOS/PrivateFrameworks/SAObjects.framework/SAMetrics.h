@@ -16,9 +16,11 @@
 + (id)metrics;
 - (_Bool)requiresResponse;
 @property(copy, nonatomic) NSDictionary *timings;
+@property(copy, nonatomic) NSString *speechId;
 @property(copy, nonatomic) NSString *originalCommandId;
 @property(copy, nonatomic) NSDictionary *eventInformation;
 @property(copy, nonatomic) NSString *category;
+@property(copy, nonatomic) NSString *assistantId;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 - (id)_descriptionHint;

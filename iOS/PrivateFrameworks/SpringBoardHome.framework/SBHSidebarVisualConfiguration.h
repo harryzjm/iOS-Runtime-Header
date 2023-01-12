@@ -16,11 +16,13 @@
     _Bool _contentFullscreen;
     double _contentWidth;
     double _searchBarTopOffset;
+    double _firstWidgetTopOffset;
     struct NSDirectionalEdgeInsets _insets;
 }
 
 @property(nonatomic) struct NSDirectionalEdgeInsets insets; // @synthesize insets=_insets;
 @property(nonatomic, getter=isContentFullscreen) _Bool contentFullscreen; // @synthesize contentFullscreen=_contentFullscreen;
+@property(nonatomic) double firstWidgetTopOffset; // @synthesize firstWidgetTopOffset=_firstWidgetTopOffset;
 @property(nonatomic) double searchBarTopOffset; // @synthesize searchBarTopOffset=_searchBarTopOffset;
 @property(nonatomic) double contentWidth; // @synthesize contentWidth=_contentWidth;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;

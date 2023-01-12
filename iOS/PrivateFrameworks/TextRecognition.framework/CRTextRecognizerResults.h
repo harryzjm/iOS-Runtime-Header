@@ -25,6 +25,7 @@
 @property(retain, nonatomic) NSDate *endTime; // @synthesize endTime=_endTime;
 @property(retain, nonatomic) NSDate *startTime; // @synthesize startTime=_startTime;
 @property(retain, nonatomic) NSDictionary *inputOptions; // @synthesize inputOptions=_inputOptions;
+@property(readonly) NSArray *lineFeatures;
 
 @end
 

@@ -18,7 +18,7 @@
 @interface CPSPointsOfInterestMapViewController <MKMapViewDelegate, CPSPointsOfInterestMapDelegate, CPSPointsOfInterestPickerDelegate, CPSPanEventDelegate, CPSButtonDelegate, CPSActionButtonLayoutDelegate, CPSLinearFocusProviding, CLLocationManagerDelegate>
 {
     _Bool _centerMapPending;
-    _Bool _hasPerformedInitialAnnotationLayout;
+    _Bool _hasPerformedInitialLayout;
     CPSPointsOfInterestPickerViewController *_pickerViewController;
     CPSPointsOfInterestMapControlsViewController *_mapControlsViewController;
     MKMapView *_mapView;
@@ -35,7 +35,7 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool hasPerformedInitialAnnotationLayout; // @synthesize hasPerformedInitialAnnotationLayout=_hasPerformedInitialAnnotationLayout;
+@property(nonatomic) _Bool hasPerformedInitialLayout; // @synthesize hasPerformedInitialLayout=_hasPerformedInitialLayout;
 @property(retain, nonatomic) CLLocationManager *locationManager; // @synthesize locationManager=_locationManager;
 @property(retain, nonatomic) NSTimer *panTimer; // @synthesize panTimer=_panTimer;
 @property(retain, nonatomic) CPSActionButton *donePanningButton; // @synthesize donePanningButton=_donePanningButton;
@@ -79,9 +79,11 @@
 - (void)zoomOut;
 - (void)zoomIn;
 - (void)_notifyRegionDidChange;
+- (void)mapViewDidFinishRenderingMap:(id)arg1 fullyRendered:(_Bool)arg2;
 - (void)mapView:(id)arg1 regionDidChangeAnimated:(_Bool)arg2;
 - (void)mapView:(id)arg1 didSelectAnnotationView:(id)arg2;
 - (id)mapView:(id)arg1 clusterAnnotationForMemberAnnotations:(id)arg2;
+- (void)mapView:(id)arg1 didAddAnnotationViews:(id)arg2;
 - (id)mapView:(id)arg1 viewForAnnotation:(id)arg2;
 - (void)zoomToLocation:(id)arg1;
 - (void)reloadAnnotations:(_Bool)arg1;

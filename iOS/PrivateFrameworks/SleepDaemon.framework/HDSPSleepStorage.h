@@ -7,49 +7,37 @@
 #import <objc/NSObject.h>
 
 #import <SleepDaemon/HDSPEnvironmentAware-Protocol.h>
-#import <SleepDaemon/HDSPNotificationObserver-Protocol.h>
 #import <SleepDaemon/HDSPSource-Protocol.h>
+#import <SleepDaemon/HDSPSyncedUserDefaultsExternalChangeDelegate-Protocol.h>
 
-@class HDSPEnvironment, HKSPObserverSet, NPSManager, NSString;
-@protocol HDSPSource, HKSPUserDefaults;
+@class HDSPEnvironment, HDSPSyncedDefaults, HDSPSyncedDefaultsConfiguration, HKSPObserverSet, NSString;
+@protocol HDSPSource;
 
-@interface HDSPSleepStorage : NSObject <HDSPNotificationObserver, HDSPEnvironmentAware, HDSPSource>
+@interface HDSPSleepStorage : NSObject <HDSPSyncedUserDefaultsExternalChangeDelegate, HDSPEnvironmentAware, HDSPSource>
 {
     HDSPEnvironment *_environment;
+    HDSPSyncedDefaults *_syncedDefaults;
+    HDSPSyncedDefaultsConfiguration *_configuration;
     HKSPObserverSet *_observers;
-    id <HKSPUserDefaults> _userDefaults;
-    CDUnknownBlockType _perGizmoDefaultsProvider;
-    id <HKSPUserDefaults> _perGizmoDefaults;
-    NPSManager *_npsManager;
 }
 
-+ (CDUnknownBlockType)perGizmoDefaultsProvider;
++ (id)standardConfiguration;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NPSManager *npsManager; // @synthesize npsManager=_npsManager;
-@property(readonly, nonatomic) id <HKSPUserDefaults> perGizmoDefaults; // @synthesize perGizmoDefaults=_perGizmoDefaults;
-@property(readonly, copy, nonatomic) CDUnknownBlockType perGizmoDefaultsProvider; // @synthesize perGizmoDefaultsProvider=_perGizmoDefaultsProvider;
-@property(readonly, nonatomic) id <HKSPUserDefaults> userDefaults; // @synthesize userDefaults=_userDefaults;
 @property(readonly, nonatomic) HKSPObserverSet *observers; // @synthesize observers=_observers;
+@property(readonly, nonatomic) HDSPSyncedDefaultsConfiguration *configuration; // @synthesize configuration=_configuration;
+@property(readonly, nonatomic) HDSPSyncedDefaults *syncedDefaults; // @synthesize syncedDefaults=_syncedDefaults;
 @property(readonly, nonatomic) __weak HDSPEnvironment *environment; // @synthesize environment=_environment;
 @property(readonly, nonatomic) NSString *sourceIdentifier;
-- (void)_synchronizeDefaults;
-- (id)handleExternalSync;
-- (id)handleActivePairedDeviceDidChange;
-- (id)notificationListener:(id)arg1 didReceiveNotificationWithName:(id)arg2;
+- (void)syncedUserDefaults:(id)arg1 didChangeExternallyForKeys:(id)arg2;
+- (void)syncedUserDefaultsDidChangeExternally:(id)arg1;
 - (void)environmentDidBecomeReady:(id)arg1;
 - (void)environmentWillBecomeReady:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
-- (void)_synchronizeDefaultsForKeys:(id)arg1 perGizmoKeys:(id)arg2;
-- (void)_updateDefaultsAndKeysToSync:(id)arg1 perGizmoKeysToSync:(id)arg2 propertiesToSync:(id)arg3 perGizmoProperties:(id)arg4 object:(id)arg5 key:(id)arg6;
-- (_Bool)_removeObjectProperties:(id)arg1 propertiesToSync:(id)arg2 perGizmoProperties:(id)arg3 error:(id *)arg4;
-- (_Bool)_removeObjectProperties:(id)arg1 propertiesToSync:(id)arg2 error:(id *)arg3;
-- (_Bool)_saveObjectChanges:(id)arg1 propertiesToSave:(id)arg2 propertiesToSync:(id)arg3 perGizmoProperties:(id)arg4 versionKey:(id)arg5 currentVersion:(unsigned long long)arg6 error:(id *)arg7;
-- (_Bool)_saveObjectChanges:(id)arg1 propertiesToSave:(id)arg2 propertiesToSync:(id)arg3 versionKey:(id)arg4 currentVersion:(unsigned long long)arg5 error:(id *)arg6;
-- (_Bool)_saveObject:(id)arg1 propertiesToSave:(id)arg2 propertiesToSync:(id)arg3 perGizmoProperties:(id)arg4 error:(id *)arg5;
-- (_Bool)_saveObject:(id)arg1 propertiesToSave:(id)arg2 propertiesToSync:(id)arg3 error:(id *)arg4;
-- (id)_loadObjectOfClass:(Class)arg1 propertiesToLoad:(id)arg2 perGizmoProperties:(id)arg3 perGizmoDefaultValues:(id)arg4 error:(id *)arg5;
-- (id)_loadObjectOfClass:(Class)arg1 propertiesToLoad:(id)arg2 error:(id *)arg3;
+- (_Bool)_removeObjectProperties:(id)arg1 error:(id *)arg2;
+- (_Bool)_saveObjectChanges:(id)arg1 versionKey:(id)arg2 currentVersion:(unsigned long long)arg3 error:(id *)arg4;
+- (_Bool)_saveObject:(id)arg1 error:(id *)arg2;
+- (id)_loadObjectOfClass:(Class)arg1 allowedClasses:(id)arg2 propertiesToLoad:(id)arg3 error:(id *)arg4;
 - (_Bool)saveSleepScheduleModel:(id)arg1 error:(id *)arg2;
 - (id)loadSleepScheduleModel:(id *)arg1;
 - (_Bool)removeSleepEventRecordWithError:(id *)arg1;
@@ -64,9 +52,10 @@
 - (_Bool)saveSleepScheduleChanges:(id)arg1 error:(id *)arg2;
 - (_Bool)saveSleepSchedule:(id)arg1 error:(id *)arg2;
 - (id)loadSleepSchedule:(id *)arg1;
+- (void)saveCurrentDataVersion;
 @property(readonly, nonatomic) _Bool needsMigration;
 @property(readonly, nonatomic) unsigned long long dataVersion;
-- (id)initWithEnvironment:(id)arg1 perGizmoDefaultsProvider:(CDUnknownBlockType)arg2 npsManager:(id)arg3;
+- (id)initWithEnvironment:(id)arg1 configuration:(id)arg2 syncedDefaults:(id)arg3;
 - (id)initWithEnvironment:(id)arg1;
 
 // Remaining properties

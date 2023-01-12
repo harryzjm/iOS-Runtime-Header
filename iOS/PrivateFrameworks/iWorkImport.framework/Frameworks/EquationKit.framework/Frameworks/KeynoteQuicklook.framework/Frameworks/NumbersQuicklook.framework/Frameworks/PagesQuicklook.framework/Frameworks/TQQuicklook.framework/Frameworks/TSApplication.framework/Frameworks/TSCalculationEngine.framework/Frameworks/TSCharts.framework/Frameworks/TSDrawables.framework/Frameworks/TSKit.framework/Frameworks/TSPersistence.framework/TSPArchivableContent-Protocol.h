@@ -7,7 +7,7 @@
 #import <TSPersistence/NSObject-Protocol.h>
 
 @protocol TSPArchivableContent <NSObject>
-@property(readonly, nonatomic) const struct FieldPath *fieldPath;
+@property(readonly, nonatomic) const void *fieldPath;
 @property(readonly, nonatomic) unsigned long long messageVersion;
 @property(readonly, nonatomic) _Bool isDiff;
 @property(readonly, nonatomic) _Bool isContentUnknown;

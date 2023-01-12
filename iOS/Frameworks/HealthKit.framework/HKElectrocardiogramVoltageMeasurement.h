@@ -6,15 +6,18 @@
 
 #import <objc/NSObject.h>
 
+@class HKQuantity;
+
 @interface HKElectrocardiogramVoltageMeasurement : NSObject
 {
-    float _leadIVoltage;
+    HKQuantity *_leadIVoltage;
     double _timeSinceSampleStart;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) double timeSinceSampleStart; // @synthesize timeSinceSampleStart=_timeSinceSampleStart;
 - (id)quantityForLead:(long long)arg1;
-- (id)initWithLeadIVoltage:(float)arg1 timeSinceSampleStart:(double)arg2;
+- (id)initWithLeadIVoltage:(id)arg1 timeSinceSampleStart:(double)arg2;
 
 @end
 

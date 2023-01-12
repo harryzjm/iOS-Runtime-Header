@@ -10,17 +10,17 @@
 
 @interface TSCH3DTransform : NSObject <NSCopying>
 {
-    tvec3_17f03ce0 mTranslation;
-    tvec3_17f03ce0 mScaleFactor;
-    tquat_f3d6c8fe mRotation;
-    tvec3_17f03ce0 mCenter;
-    tmat4x4_3074befe mMatrix;
-    _Bool mDirty;
+    tvec3_17f03ce0 _translation;
+    tvec3_17f03ce0 _scaleFactor;
+    tquat_f3d6c8fe _rotation;
+    tvec3_17f03ce0 _center;
+    tmat4x4_3074befe _matrix;
+    _Bool _dirty;
 }
 
 + (id)transform;
 - (id).cxx_construct;
-- (const tmat4x4_3074befe *)transform;
+- (const void *)transform;
 @property(nonatomic) tquat_f3d6c8fe rotation;
 @property(nonatomic) tvec3_17f03ce0 center;
 @property(nonatomic) tvec3_17f03ce0 scaleFactor;

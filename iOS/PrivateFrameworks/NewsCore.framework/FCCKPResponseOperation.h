@@ -10,6 +10,7 @@
 
 @class FCCKPOperation, FCCKPQueryRetrieveResponse, FCCKPRecordRetrieveResponse, FCCKPResponseOperationResult;
 
+__attribute__((visibility("hidden")))
 @interface FCCKPResponseOperation : PBCodable <NSCopying>
 {
     unsigned int _operationCost;
@@ -22,26 +23,14 @@
     } _has;
 }
 
-@property(retain, nonatomic) FCCKPResponseOperationResult *result; // @synthesize result=_result;
-@property(retain, nonatomic) FCCKPOperation *response; // @synthesize response=_response;
-@property(nonatomic) unsigned int operationCost; // @synthesize operationCost=_operationCost;
-- (void)mergeFrom:(id)arg1;
+- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasResult;
-@property(readonly, nonatomic) _Bool hasResponse;
-@property(nonatomic) _Bool hasOperationCost;
-- (void)dealloc;
-@property(retain, nonatomic) FCCKPRecordRetrieveResponse *recordRetrieveResponse;
-@property(readonly, nonatomic) _Bool hasRecordRetrieveResponse;
-@property(retain, nonatomic) FCCKPQueryRetrieveResponse *queryRetrieveResponse;
-@property(readonly, nonatomic) _Bool hasQueryRetrieveResponse;
 
 @end
 

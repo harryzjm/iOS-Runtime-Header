@@ -22,6 +22,7 @@
 - (void)reserveCapacity:(unsigned long long)arg1;
 - (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithMapType:(long long)arg1 capacity:(unsigned long long)arg2;
 - (id)initWithMapType:(long long)arg1;
 - (id)init;
 

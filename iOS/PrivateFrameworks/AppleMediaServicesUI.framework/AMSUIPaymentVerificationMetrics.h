@@ -12,6 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface AMSUIPaymentVerificationMetrics : NSObject
 {
+    NSString *_appID;
     id <AMSBagProtocol> _bag;
     NSString *_displayReason;
 }
@@ -21,12 +22,13 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *displayReason; // @synthesize displayReason=_displayReason;
 @property(retain, nonatomic) id <AMSBagProtocol> bag; // @synthesize bag=_bag;
+@property(retain, nonatomic) NSString *appID; // @synthesize appID=_appID;
 - (id)_propertiesWithTargetId:(id)arg1 pageId:(id)arg2 displayReason:(id)arg3;
 - (id)_propertiesWithPageId:(id)arg1 displayReason:(id)arg2;
 - (void)flushEvents;
 - (void)enqueueEventWithTargetId:(id)arg1 pageId:(id)arg2 displayReason:(id)arg3;
 - (void)enqueueEventWithPageId:(id)arg1 displayReason:(id)arg2;
-- (id)initWithBag:(id)arg1;
+- (id)initWithBag:(id)arg1 appID:(id)arg2;
 
 @end
 

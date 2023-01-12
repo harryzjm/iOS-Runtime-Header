@@ -8,21 +8,25 @@
 
 @interface TNFormBasedSheet
 {
+    _Bool _hasValidTableInfoForViewingForm;
+    _Bool _hasValidTableInfoForBuildingForm;
     TSTTableInfo *_tableInfo;
     NSString *_importedTargetName;
-    UUIDData_5fbc143e _tableUID;
+    struct TSKUIDStruct _tableUID;
 }
 
-- (id).cxx_construct;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *importedTargetName; // @synthesize importedTargetName=_importedTargetName;
-@property(nonatomic) UUIDData_5fbc143e tableUID; // @synthesize tableUID=_tableUID;
+@property(readonly, nonatomic) _Bool hasValidTableInfoForBuildingForm; // @synthesize hasValidTableInfoForBuildingForm=_hasValidTableInfoForBuildingForm;
+@property(readonly, nonatomic) _Bool hasValidTableInfoForViewingForm; // @synthesize hasValidTableInfoForViewingForm=_hasValidTableInfoForViewingForm;
+@property(nonatomic) struct TSKUIDStruct tableUID; // @synthesize tableUID=_tableUID;
 - (void)resolveImportedTargetNameInDocumentRoot:(id)arg1;
 - (id)initWithContext:(id)arg1 importedTargetName:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
 - (_Bool)shouldBeDisplayed;
 - (void)clearTableInfoCache;
+- (_Bool)isPrintable;
 @property(retain, nonatomic) TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
 - (_Bool)isForm;
 - (double)contentScale;

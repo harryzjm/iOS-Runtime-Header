@@ -6,17 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class GEOModuleOptions, GEOPDModule;
+@class GEOModuleConfiguration, GEOPDModule;
+@protocol GEOModuleConfigurationProvider;
 
 @interface GEOModule : NSObject
 {
     GEOPDModule *_module;
+    id <GEOModuleConfigurationProvider> _moduleConfigProvider;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) GEOModuleOptions *options;
+- (id)description;
+@property(readonly, nonatomic) _Bool isExpectedToHaveConfiguration;
+@property(readonly, nonatomic) int configurationExpectation;
+@property(readonly, nonatomic) _Bool hasConfiguration;
+@property(readonly, nonatomic) GEOModuleConfiguration *configuration;
 @property(readonly, nonatomic) int type;
-- (id)initWithModule:(id)arg1;
+- (id)initWithModule:(id)arg1 moduleConfigProvider:(id)arg2;
 
 @end
 

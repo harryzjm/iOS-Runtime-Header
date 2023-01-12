@@ -13,8 +13,6 @@
     NSLock *procLock;
     NSMutableDictionary *allProcs;
     NSMutableDictionary *filteredProcs;
-    _Bool appsOnly;
-    _Bool ownedOnly;
 }
 
 - (void).cxx_destruct;
@@ -26,10 +24,6 @@
 - (id)allPIDs;
 - (id)allProcInfos;
 - (unsigned long long)count;
-- (_Bool)appsOnly;
-- (void)setAppsOnly:(_Bool)arg1;
-- (_Bool)ownedOnly:(_Bool)arg1;
-- (void)setOwnedOnly:(_Bool)arg1;
 - (_Bool)updateFromSystem;
 - (void)_populateFromSystem;
 - (_Bool)update;

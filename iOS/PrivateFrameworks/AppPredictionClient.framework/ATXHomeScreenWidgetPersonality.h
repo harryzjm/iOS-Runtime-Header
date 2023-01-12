@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <AppPredictionClient/ATXHomeScreenWidgetPersonalityProviding-Protocol.h>
+#import <AppPredictionClient/NSCopying-Protocol.h>
 #import <AppPredictionClient/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface ATXHomeScreenWidgetPersonality : NSObject <NSSecureCoding, ATXHomeScreenWidgetPersonalityProviding>
+@interface ATXHomeScreenWidgetPersonality : NSObject <NSSecureCoding, NSCopying, ATXHomeScreenWidgetPersonalityProviding>
 {
     NSString *_extensionBundleId;
     NSString *_kind;
@@ -20,16 +21,19 @@
 + (id)widgetKindForWidgetPersonalityStringRepresentation:(id)arg1;
 + (id)widgetBundleIdForWidgetPersonalityStringRepresentation:(id)arg1;
 + (id)stringRepresentationForExtensionBundleId:(id)arg1 kind:(id)arg2;
++ (id)stringRepresentationForATXHomeScreenWidgetDescriptor:(id)arg1;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *kind; // @synthesize kind=_kind;
 @property(readonly, nonatomic) NSString *extensionBundleId; // @synthesize extensionBundleId=_extensionBundleId;
 - (id)stringRepresentation;
 - (id)description;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)initWithStringRepresentation:(id)arg1;
 @property(readonly) ATXHomeScreenWidgetPersonality *personality;
 - (id)initWithExtensionBundleId:(id)arg1 kind:(id)arg2;
 

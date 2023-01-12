@@ -6,10 +6,21 @@
 
 #import <Foundation/NSURL.h>
 
+#import <TelephonyUtilities/TUSanitizedCopying-Protocol.h>
+
 @class NSString;
 
-@interface NSURL (QueryParameters)
+@interface NSURL (QueryParameters) <TUSanitizedCopying>
++ (id)screenSharingAppURL;
++ (id)faceTimeAppJoinConversationURLForConversationLinkURL:(id)arg1;
++ (id)faceTimeAppViewLinkDetailsURLForPseudonym:(id)arg1;
 + (id)faceTimeAnswerURLWithSourceIdentifier:(id)arg1;
++ (id)faceTimeUpdateForegroundAppURLForBundleIdentifier:(id)arg1 applicationType:(long long)arg2;
++ (id)faceTimeAppJoinConversationLinkURL;
++ (id)faceTimeAppViewLinkDetailsURL;
++ (id)faceTimeUpdateForegroundAppURL;
++ (id)faceTimeShowSystemCallControlsURL;
++ (id)faceTimeShowCarPlayInCallUIURL;
 + (id)faceTimeShowInCallUIURL;
 + (id)faceTimeLaunchForOutgoingConversationURL;
 + (id)faceTimeLaunchForIncomingCallURL;
@@ -36,17 +47,31 @@
 + (id)telephonyURLWithDestinationID:(id)arg1 addressBookUID:(int)arg2;
 + (id)telephonyURLWithDestinationID:(id)arg1 promptUser:(_Bool)arg2;
 + (id)telephonyURLWithDestinationID:(id)arg1;
++ (id)tu_defaultAllowedSchemes;
 - (id)URLByDeletingQueryParameterWithKey:(id)arg1;
 - (id)URLBySettingQueryParameterValue:(id)arg1 forKey:(id)arg2;
 - (id)tuQueryParameters;
 - (id)queryParameters;
 - (id)answerRequestSourceIdentifier;
 - (_Bool)isAnswerRequestURL;
+- (long long)foregroundAppApplicationType;
+- (id)foregroundAppBundleIdentifier;
+- (_Bool)isUpdateForegroundAppURL;
+- (_Bool)isShowScreenSharingURL;
+- (_Bool)isShowSystemCallControlsURL;
+- (_Bool)isShowCarPlayInCallUIURL;
 - (_Bool)isShowInCallUIURL;
 - (_Bool)isLaunchForOutgoingConversationURL;
 - (_Bool)isLaunchForIncomingCallURL;
 - (_Bool)isDialCallURL;
 - (_Bool)hasNoPromptOption;
+- (id)conversationLinkURLForJoinConversation;
+- (_Bool)isFaceTimeAppJoinConversationLinkURL;
+- (id)conversationLinkURLForOpenLinkURL;
+- (_Bool)isFaceTimeOpenLinkURL;
+- (id)pseudonymForLinkDetailsView;
+- (_Bool)isFaceTimeAppViewLinkDetailsURL;
+- (_Bool)isSystemCallControlsURL;
 - (_Bool)isFaceTimeMultiwayURL;
 - (_Bool)isFaceTimeAudioPromptURL;
 - (_Bool)isFaceTimeAudioURL;
@@ -78,5 +103,14 @@
 @property(readonly, nonatomic) int addressBookUID;
 @property(readonly) NSString *phoneNumber;
 - (id)_destinationIDConvertingNumbersToLatin:(_Bool)arg1;
+- (id)sanitizedCopyWithZone:(struct _NSZone *)arg1 allowedSchemes:(id)arg2;
+- (id)sanitizedCopyWithZone:(struct _NSZone *)arg1;
+- (id)sanitizedCopy;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 @end
 

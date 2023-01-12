@@ -21,6 +21,7 @@
 + (id)descriptorForRequiredKeysWithThreeDTouchEnabled:(_Bool)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <CNUIObjectViewControllerDelegate> objectViewControllerDelegate; // @synthesize objectViewControllerDelegate;
+- (void)updateViewWithGroupIdentity:(id)arg1;
 - (id)initWithSettings:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

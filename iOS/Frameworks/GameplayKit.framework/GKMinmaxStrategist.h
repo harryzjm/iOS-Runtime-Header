@@ -13,7 +13,7 @@
 
 @interface GKMinmaxStrategist : NSObject <GKStrategist>
 {
-    struct GKCMinmaxStrategist *_cppMinmax;
+    void *_cppMinmax;
 }
 
 - (id)randomMoveForPlayer:(id)arg1 fromNumberOfBestMoves:(long long)arg2;

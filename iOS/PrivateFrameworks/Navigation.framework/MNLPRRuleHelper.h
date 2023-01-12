@@ -11,8 +11,7 @@
 }
 
 - (void)_loadRules:(id)arg1 asyncCompletion:(CDUnknownBlockType)arg2;
-- (void)_loadTileKeys:(id)arg1 forceUpdate:(_Bool)arg2 asyncCompletion:(CDUnknownBlockType)arg3;
-- (void)_findTileKeysForRegions:(id)arg1 forceUpdate:(_Bool)arg2 asyncCompletion:(CDUnknownBlockType)arg3;
+- (void)_findResourceNamesForRegions:(id)arg1 forceUpdate:(_Bool)arg2 asyncCompletion:(CDUnknownBlockType)arg3;
 - (void)fetchRulesForWaypoints:(id)arg1 forceUpdateManifest:(_Bool)arg2 forceUpdateRules:(_Bool)arg3 completionQueue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)prefetchRulesForWaypoints:(id)arg1;
 - (id)workQueue;

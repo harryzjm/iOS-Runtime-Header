@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIImage *originalImage; // @synthesize originalImage=_originalImage;
 - (void)tintColorDidChange;
 - (void)setImage:(id)arg1;
-- (id)initWithImage:(id)arg1 highlightedImage:(id)arg2;
+- (id)initWithImage:(id)arg1 highlightedImage:(id)arg2 tintColor:(id)arg3;
 
 @end
 

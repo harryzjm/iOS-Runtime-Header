@@ -19,7 +19,7 @@
 }
 
 + (id)AVConferenceXPCClientSingleton;
-@property(readonly) _Bool connectionPersists; // @synthesize connectionPersists;
+@property _Bool connectionPersists; // @synthesize connectionPersists;
 @property(readonly) NSMutableDictionary *registeredBlocks; // @synthesize registeredBlocks;
 @property(readonly) NSObject<OS_xpc_object> *connection; // @synthesize connection;
 - (void)deregisterFromService:(char *)arg1;
@@ -40,6 +40,7 @@
 - (id)copyConnection;
 - (id)newTimeoutDictionary;
 - (id)newServerDiedDictionary;
+- (id)newNSDictionaryFromNSDictionary:(id)arg1;
 - (id)newNSDictionaryFromNSError:(id)arg1;
 - (id)newNSErrorFromNSDictionary:(id)arg1;
 - (id)newXPCDictionaryFromNSDictionary:(id)arg1;

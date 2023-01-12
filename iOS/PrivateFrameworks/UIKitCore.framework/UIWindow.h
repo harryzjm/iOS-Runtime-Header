@@ -9,8 +9,8 @@
 #import <UIKitCore/_UIFocusEventRecognizerDelegate-Protocol.h>
 #import <UIKitCore/_UIFocusMovementActionForwarding-Protocol.h>
 
-@class CAContext, CALayer, NSArray, NSHashTable, NSMutableArray, NSMutableSet, NSString, NSUndoManager, UIAccessibilityHUDView, UIResponder, UISCurrentUserInterfaceStyleValue, UIScene, UIScreen, UITraitCollection, UIView, UIViewController, UIWindowScene, _UIContextBinder, _UIFocusEventRecognizer, _UIRootPresentationController, _UISystemGestureGateGestureRecognizer, _UIViewControllerNullAnimationTransitionCoordinator, _UIWindowAnimationController, _UIWindowOrientationUpdate;
-@protocol BSInvalidatable, UIFocusItem, _UISceneUIWindowHosting;
+@class CAContext, CALayer, NSArray, NSHashTable, NSMutableArray, NSMutableSet, NSString, NSUndoManager, UIAccessibilityHUDView, UIKeyboardLayoutGuide, UIResponder, UISCurrentUserInterfaceStyleValue, UIScene, UIScreen, UITraitCollection, UIView, UIViewController, UIWindowScene, _UIContextBinder, _UIFocusEventRecognizer, _UIRootPresentationController, _UISystemGestureGateGestureRecognizer, _UIViewControllerNullAnimationTransitionCoordinator, _UIWindowAnimationController, _UIWindowOrientationUpdate;
+@protocol UIActivityItemsConfigurationReading, UIFocusItem, _UISceneUIWindowHosting;
 
 @interface UIWindow <NSISEngineDelegate, _UIFocusEventRecognizerDelegate, _UIFocusMovementActionForwarding, _UIContextBindable>
 {
@@ -71,6 +71,7 @@
         unsigned int isUpdatingSafeAreaInsets:1;
         unsigned int needsFramePositionAdjustmentWhenWindowSceneIsAttached:1;
         unsigned int enqueuedDeferredOrientationUpdate:1;
+        unsigned int isNotifyingColorTraitChangeForSubtree:1;
     } _windowFlags;
     id _windowController;
     _UISystemGestureGateGestureRecognizer *_systemGestureGateForGestures;
@@ -84,9 +85,9 @@
     long long _verticalSizeClassStateRestorationOverride;
     long long _horizontalSizeClassStateRestorationOverride;
     UIAccessibilityHUDView *_accessibilityHUD;
-    id <BSInvalidatable> _eventFocusDeferralToken;
     NSHashTable *_windowLevelObservers;
     UISCurrentUserInterfaceStyleValue *_currentUserInterfaceStyleValue;
+    NSString *_roleHint;
     _Bool _shouldDisableTransformLayerScalingForSnapshotting;
     _Bool _canResizeToFitContent;
     _Bool __usesLegacySupportedOrientationChecks;
@@ -97,6 +98,10 @@
     _UIWindowOrientationUpdate *_deferredOrientationUpdate;
     NSArray *_windowInternalConstraints;
     NSArray *_rootViewConstraints;
+    UIKeyboardLayoutGuide *_keyboardLayoutGuide;
+    NSMutableArray *_currentKeyboardTrackingLayoutGuides;
+    UIResponder *_lastFirstResponder;
+    UIResponder *_lastNextResponder;
     id <UIFocusItem> _rememberedFocusedItem;
     long long _toWindowOrientation;
     long long _fromWindowOrientation;
@@ -129,12 +134,7 @@
 + (void)_unregisterChargedView:(id)arg1;
 + (void)_removeWindowFromStack:(id)arg1;
 + (void)_popKeyWindow:(id)arg1;
-+ (void)_popKeyWindow;
-+ (void)__popKeyWindow:(id)arg1 findNewKeyWindowIfStackEmpty:(_Bool)arg2;
 + (void)_pushKeyWindow:(id)arg1;
-+ (void)_setKeyWindowStackEnabled:(_Bool)arg1;
-+ (unsigned long long)_keyWindowStackSize;
-+ (void)_clearKeyWindowStack;
 + (_Bool)_shouldSoftAssertOnSetScreen;
 + (_Bool)_clearPreCommitHandlerRegistration;
 + (void)_synchronizeDrawingWithFence:(id)arg1 preCommitHandler:(CDUnknownBlockType)arg2;
@@ -157,6 +157,7 @@
 + (void)adjustForAccessibilityIfNeeded:(id)arg1;
 + (void)initialize;
 + (id)_externalKeyWindow;
++ (id)_applicationKeyWindow;
 + (id)keyWindow;
 + (struct CGRect)constrainFrameToScreen:(struct CGRect)arg1;
 + (long long)_preferredStatusBarStyleInWindow:(id)arg1 withPartStyles:(id *)arg2 animationProvider:(id *)arg3;
@@ -177,15 +178,20 @@
 @property(readonly, nonatomic) _Bool _usesLegacySupportedOrientationChecks; // @synthesize _usesLegacySupportedOrientationChecks=__usesLegacySupportedOrientationChecks;
 @property(nonatomic, getter=_rememberedFocusedItem, setter=_setRememberedFocusedItem:) __weak id <UIFocusItem> rememberedFocusedItem; // @synthesize rememberedFocusedItem=_rememberedFocusedItem;
 @property(nonatomic, setter=setCanResizeToFitContent:) _Bool canResizeToFitContent; // @synthesize canResizeToFitContent=_canResizeToFitContent;
-@property(nonatomic, setter=_setBoundContext:) __weak CAContext *_boundContext; // @synthesize _boundContext=_layerContext;
+@property(nonatomic, setter=_setLastNextResponder:) __weak UIResponder *_lastNextResponder; // @synthesize _lastNextResponder;
+@property(nonatomic, setter=_setLastFirstResponder:) __weak UIResponder *_lastFirstResponder; // @synthesize _lastFirstResponder;
 @property(nonatomic, setter=_setContextBinder:) __weak _UIContextBinder *_contextBinder; // @synthesize _contextBinder;
 @property(nonatomic, setter=_setShouldDisableTransformLayerScalingForSnapshotting:) _Bool _shouldDisableTransformLayerScalingForSnapshotting; // @synthesize _shouldDisableTransformLayerScalingForSnapshotting;
+@property(retain, nonatomic) NSMutableArray *_currentKeyboardTrackingLayoutGuides; // @synthesize _currentKeyboardTrackingLayoutGuides;
 @property(copy, nonatomic, setter=_setRootViewConstraints:) NSArray *_rootViewConstraints; // @synthesize _rootViewConstraints;
 @property(copy, nonatomic, setter=_setWindowInternalConstraints:) NSArray *_windowInternalConstraints; // @synthesize _windowInternalConstraints;
 @property(retain, nonatomic, setter=_setDeferredOrientationUpdate:) _UIWindowOrientationUpdate *_deferredOrientationUpdate; // @synthesize _deferredOrientationUpdate;
 @property(retain, nonatomic, setter=_setTraitCollectionChangeTransitionCoordinator:) _UIViewControllerNullAnimationTransitionCoordinator *_traitCollectionChangeTransitionCoordinator; // @synthesize _traitCollectionChangeTransitionCoordinator;
 @property(retain, nonatomic, getter=_rootPresentationController, setter=_setRootPresentationController:) _UIRootPresentationController *rootPresentationController; // @synthesize rootPresentationController=_rootPresentationController;
 @property(retain, nonatomic) UIViewController *rootViewController; // @synthesize rootViewController=_rootViewController;
+- (void)_setRoleHint:(id)arg1;
+- (id)_roleHint;
+- (void)_restoreFirstResponder;
 - (void)setRestorationIdentifier:(id)arg1;
 - (id)restorationIdentifier;
 - (id)_overridingPreferredFocusEnvironment;
@@ -194,8 +200,6 @@
 - (id)preferredFocusedView;
 - (void)_didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)_willUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
-- (void)updateFocusIfNeeded;
-- (void)setNeedsFocusUpdate;
 - (id)parentFocusEnvironment;
 - (_Bool)_isTransparentFocusRegion;
 - (void)_forwardFocusMovementAction:(id)arg1;
@@ -204,9 +208,6 @@
 - (id)_focusMovementSystemForFocusEventRecognizer:(id)arg1;
 - (_Bool)_shouldRecognizeEventsInFocusEventRecognizer:(id)arg1;
 @property(readonly, nonatomic, getter=_focusResponder) __weak UIResponder *focusResponder;
-- (void)_previousFocusContainer:(id)arg1;
-- (void)_nextFocusContainer:(id)arg1;
-- (id)keyCommands;
 - (void)_installFocusIfNeededForFocusSystemSceneComponent:(id)arg1;
 - (void)_removeFocusIfNeededForFocusSystemSceneComponent:(id)arg1;
 - (void)_resetFocusEventRecognizer;
@@ -214,8 +215,8 @@
 - (void)_installFocusEventRecognizer;
 - (_Bool)_wantsFocusEngine;
 @property(readonly, nonatomic, getter=_supportsFocus) _Bool supportsFocus;
+- (_Bool)_reversesLinearFocusWrapping;
 - (id)_focusedView;
-- (id)_focusSystem;
 - (void)_dismissAccessibilityHUD;
 - (void)_showAccessibilityHUDItem:(id)arg1 forView:(id)arg2;
 - (id)_accessibilityHUDContainerViewForView:(id)arg1;
@@ -224,6 +225,7 @@
 - (_Bool)_shouldCreateContextAsSecure;
 - (_Bool)_isSecure;
 - (void)_setSecure:(_Bool)arg1;
+- (void)_tintColorDidChange;
 - (_Bool)_definesDynamicTintColor;
 - (id)_normalInheritedTintColor;
 - (double)_touchSloppinessFactor;
@@ -284,8 +286,8 @@
 - (void)undo:(id)arg1;
 - (id)undoManager;
 - (_Bool)_needsShakesWhenInactive;
-- (id)_deepestUnambiguousResponder;
-- (id)_responderForKeyEventsInWindow;
+- (id)_deepestActionResponder;
+- (id)_responderForKeyEvents;
 - (_Bool)_supportsBecomeFirstResponderWhenPossible;
 - (_Bool)_becomeFirstResponderWhenPossible;
 - (_Bool)becomeFirstResponder;
@@ -293,6 +295,7 @@
 - (id)firstResponder;
 - (_Bool)_isSettingFirstResponder;
 - (void)_setIsSettingFirstResponder:(_Bool)arg1;
+- (_Bool)_isResigningFirstResponderFromHost;
 - (void)_setIsResigningFirstResponderFromHost:(_Bool)arg1;
 - (void)_setFirstResponder:(id)arg1;
 - (void)_unregisterScrollToTopView:(id)arg1;
@@ -305,16 +308,10 @@
 - (void)_mainQueue_makeKeyAndVisible;
 - (void)resignKeyWindow;
 - (void)becomeKeyWindow;
-- (void)_endKeyWindowDeferral;
-- (void)_beginKeyWindowDeferral;
-- (_Bool)_isKeyWindowForDeferral;
-- (_Bool)_hasFocusDeferralToken;
-- (id)_deferringTargetWithContextID:(unsigned int)arg1;
 - (long long)_overriddenInterfaceOrientation;
-- (void)_makeKeyWindowIgnoringOldKeyWindow:(_Bool)arg1;
 - (void)_makeExternalKeyWindow;
 - (void)makeKeyWindow;
-- (void)_resignKeyWindowStatus;
+@property(readonly, nonatomic, getter=_isApplicationKeyWindow) _Bool _applicationKeyWindow;
 @property(readonly, nonatomic, getter=isKeyWindow) _Bool keyWindow;
 - (void)_removeWindowLevelChangedObserver:(id)arg1;
 - (void)_addWindowLevelChangedObserver:(id)arg1;
@@ -420,10 +417,12 @@
 - (double)_rotationDuration;
 - (void)_positionHeaderView:(id)arg1 andFooterView:(id)arg2 outsideContentViewForInterfaceOrientation:(long long)arg3;
 - (void)_slideHeaderView:(id)arg1 andFooterView:(id)arg2 offScreen:(_Bool)arg3 forInterfaceOrientation:(long long)arg4;
+- (_Bool)_allowsOcclusionDetectionOverride;
 - (_Bool)_shouldScaleByPixelDoubling;
 - (_Bool)_isHostingPortalViews;
 - (_Bool)_canPromoteFromKeyWindowStack;
 - (_Bool)_canBecomeKeyWindow;
+@property(readonly, nonatomic) _Bool canBecomeKeyWindow;
 - (void)setBecomeKeyOnOrderFront:(_Bool)arg1;
 - (double)level;
 - (void)setLevel:(double)arg1;
@@ -499,13 +498,15 @@
 - (id)_bindingLayer;
 - (id)_layerForTimeOffsetModification;
 - (id)_contextOptionsWithInitialOptions:(id)arg1;
-@property(readonly, nonatomic) CDStruct_a002d41c _bindingDescription;
+@property(readonly, nonatomic) CDStruct_98d137ef _bindingDescription;
+@property(nonatomic, setter=_setBoundContext:) __weak CAContext *_boundContext; // @synthesize _boundContext=_layerContext;
 - (void)_didMoveFromScene:(id)arg1 toScene:(id)arg2;
 - (id)_canvas;
 - (void)_setCanvas:(id)arg1;
+- (id)_eventRoutingScene;
 - (id)_windowHostingScene;
 - (void)_setWindowHostingScene:(id)arg1;
-- (void)_prepareForWindowHostingSceneRemoval;
+- (void)_prepareHierarchyForWindowHostingSceneRemoval;
 @property(nonatomic) __weak UIWindowScene *windowScene;
 - (void)_updateTransformLayer;
 - (void)_configureRootLayer:(id)arg1 sceneTransformLayer:(id)arg2 transformLayer:(id)arg3;
@@ -547,9 +548,24 @@
 - (id)_scene;
 - (_Bool)_wantsSceneAssociation;
 - (id)_debugName;
+- (void)toggleKeyboardLayoutGuideAnimation:(_Bool)arg1;
+- (void)updateKeyboardAnimationOptions:(unsigned long long)arg1 duration:(double)arg2;
+- (void)updateKeyboardForAssistantBar:(_Bool)arg1;
+- (void)updateKeyboardDockedState:(_Bool)arg1;
+- (void)updateKeyboardTransitionState:(_Bool)arg1;
+- (_Bool)updateKeyboardSize:(struct CGSize)arg1;
+- (_Bool)updateKeyboardOffset:(struct UIOffset)arg1;
+- (void)removeKeyboardLayoutGuideIfNeeded:(id)arg1;
+- (void)addKeyboardLayoutGuideIfNeeded:(id)arg1;
+@property(readonly, nonatomic, getter=_keyboardLayoutGuide) UIKeyboardLayoutGuide *_keyboardLayoutGuide; // @synthesize _keyboardLayoutGuide;
+- (_Bool)isTrackingKeyboard;
 - (_Bool)isElementAccessibilityExposedToInterfaceBuilder;
+@property(readonly, nonatomic) id <UIActivityItemsConfigurationReading> _activityItemsConfigurationForScene;
+@property(readonly, nonatomic, getter=_isSystemGestureWindow) _Bool systemGestureWindow;
+- (id)gestureParent;
 - (unsigned long long)_edgesForSystemGesturesTouchDelay;
 - (long long)_interfaceOrientationForSceneSafeAreaInsetsIncludingStatusBar:(_Bool)arg1;
+- (_Bool)_constrainsHoverEventHitTesting;
 - (void)_performTouchContinuationWithOverrideHitTestedView:(id)arg1;
 - (id)_aboveWindowScrollView;
 - (void)_updateInterfaceOrientationFromActiveInterfaceOrientation:(_Bool)arg1;
@@ -570,6 +586,7 @@
 - (_Bool)_isTextEffectsWindowNotificationOwner;
 - (_Bool)_isTextEffectsWindowHosting;
 - (_Bool)_shouldTextEffectsWindowBeHostedForView:(id)arg1;
+- (_Bool)_isRemoteKeyboardWindow;
 - (_Bool)_isTextEffectsWindow;
 - (id)_hostingHandle;
 - (_Bool)_allowsLinkPreviewInteractionInViewServices;

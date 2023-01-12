@@ -39,6 +39,8 @@
 - (void)completeOnQueue:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)notifyObserversOfAppConfigRefresh;
 - (void)fetchAppConfigurationWithCompletionQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)debugOverrides;
+- (unsigned long long)debugEnvironmentFromOverride:(id)arg1;
 - (void)forceFetchAppConfiguration;
 - (void)fetchAppConfigurationIfExpired;
 - (_Bool)clearConfigCacheOnLaunchIfRequested;

@@ -29,6 +29,7 @@
     } _has;
 }
 
++ (id)options;
 - (void).cxx_destruct;
 @property(nonatomic) int algorithm; // @synthesize algorithm=_algorithm;
 @property(nonatomic) int mediaType; // @synthesize mediaType=_mediaType;

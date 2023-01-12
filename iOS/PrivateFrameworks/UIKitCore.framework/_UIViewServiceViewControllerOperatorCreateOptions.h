@@ -13,6 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface _UIViewServiceViewControllerOperatorCreateOptions : NSObject <NSSecureCoding>
 {
+    _Bool _hostCanDynamicallySpecifySupportedInterfaceOrientations;
     NSString *_viewControllerClassName;
     NSArray *_serializedAppearanceRepresentations;
     NSUUID *_contextToken;
@@ -21,12 +22,11 @@ __attribute__((visibility("hidden")))
     BSMachPortSendRight *_hostAccessibilityServerPort;
     long long _availableTextServices;
     long long _initialInterfaceOrientation;
-    long long _userInterfaceIdiom;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(nonatomic) long long userInterfaceIdiom; // @synthesize userInterfaceIdiom=_userInterfaceIdiom;
+@property(nonatomic) _Bool hostCanDynamicallySpecifySupportedInterfaceOrientations; // @synthesize hostCanDynamicallySpecifySupportedInterfaceOrientations=_hostCanDynamicallySpecifySupportedInterfaceOrientations;
 @property(nonatomic) long long initialInterfaceOrientation; // @synthesize initialInterfaceOrientation=_initialInterfaceOrientation;
 @property(nonatomic) long long availableTextServices; // @synthesize availableTextServices=_availableTextServices;
 @property(retain, nonatomic) BSMachPortSendRight *hostAccessibilityServerPort; // @synthesize hostAccessibilityServerPort=_hostAccessibilityServerPort;

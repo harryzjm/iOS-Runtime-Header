@@ -4,14 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSArray;
+
 @interface HRECharacteristicTriggerTemplate
 {
+    _Bool _characteristicPerServiceRule;
+    _Bool _enforcePriority;
+    _Bool _singleRecommendationPerSplit;
+    _Bool _allowMultipleEventsFeature;
+    NSArray *_triggerCharacteristicValues;
+    NSArray *_characteristicTypePriority;
 }
 
-- (id)naturalLanguageTitleForObjectsInContext:(id)arg1 forRecommendation:(id)arg2 options:(id)arg3;
-- (id)eventOnlyContextKeyForRecommendation:(id)arg1;
-- (id)actionOnlyContextKeyForRecommendation:(id)arg1;
-- (id)actionKeyForServiceType:(id)arg1 forRecommendation:(id)arg2;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool allowMultipleEventsFeature; // @synthesize allowMultipleEventsFeature=_allowMultipleEventsFeature;
+@property(nonatomic) _Bool singleRecommendationPerSplit; // @synthesize singleRecommendationPerSplit=_singleRecommendationPerSplit;
+@property(nonatomic) _Bool enforcePriority; // @synthesize enforcePriority=_enforcePriority;
+@property(nonatomic) _Bool characteristicPerServiceRule; // @synthesize characteristicPerServiceRule=_characteristicPerServiceRule;
+@property(retain, nonatomic) NSArray *characteristicTypePriority; // @synthesize characteristicTypePriority=_characteristicTypePriority;
+@property(retain, nonatomic) NSArray *triggerCharacteristicValues; // @synthesize triggerCharacteristicValues=_triggerCharacteristicValues;
+- (id)_subclass_triggerBuilderForRecommendation:(id)arg1 withObjects:(id)arg2;
+- (id)init;
 
 @end
 

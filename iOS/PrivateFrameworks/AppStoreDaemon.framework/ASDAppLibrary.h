@@ -19,6 +19,9 @@
 + (id)interface;
 + (void)uninstallApp:(id)arg1 requestUserConfirmation:(_Bool)arg2 withResultHandler:(CDUnknownBlockType)arg3;
 + (void)uninstallApp:(id)arg1 withResultHandler:(CDUnknownBlockType)arg2;
++ (unsigned char)openableStatusForExecutableAtPath:(id)arg1;
++ (void)lookupItemIDsForDeletableSystemAppsForWatchWithBundleIDs:(id)arg1 withResultHandler:(CDUnknownBlockType)arg2;
++ (void)lookupBundleIDsForDeletableSystemAppsForWatchWithItemIDs:(id)arg1 withResultHandler:(CDUnknownBlockType)arg2;
 + (void)lookupItemIDsForDeletableSystemAppsWithBundleIDs:(id)arg1 withResultHandler:(CDUnknownBlockType)arg2;
 + (void)lookupBundleIDsForDeletableSystemAppsWithItemIDs:(id)arg1 withResultHandler:(CDUnknownBlockType)arg2;
 + (void)launchMessagesExtensionForApp:(id)arg1 withResultHandler:(CDUnknownBlockType)arg2;

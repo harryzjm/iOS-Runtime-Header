@@ -12,7 +12,7 @@
 
 @property(readonly, nonatomic) double depth; // @synthesize depth=mDepth;
 @property(readonly, nonatomic) double height; // @synthesize height=mHeight;
-- (_Bool)appendOpticalAlignToSpec:(struct Spec *)arg1 offset:(struct CGPoint)arg2;
+- (_Bool)appendOpticalAlignToSpec:(void *)arg1 offset:(struct CGPoint)arg2;
 @property(readonly, nonatomic) double layoutDepth;
 @property(readonly, nonatomic) double layoutHeight;
 - (id)description;

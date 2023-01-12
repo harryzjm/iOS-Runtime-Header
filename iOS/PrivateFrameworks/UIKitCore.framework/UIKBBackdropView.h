@@ -15,9 +15,9 @@
 - (void)_setRenderConfig:(id)arg1;
 - (int)textEffectsVisibilityLevel;
 - (void)updateFrame:(struct CGRect)arg1 withCorners:(unsigned long long)arg2;
+- (void)updateCorners:(unsigned long long)arg1;
 - (id)_generateCornerContentsImage:(unsigned long long)arg1;
 - (void)transitionToStyle:(long long)arg1;
-- (void)setFrame:(struct CGRect)arg1;
 - (_Bool)_applyCornerMaskToSelf;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 style:(long long)arg2;

@@ -17,8 +17,8 @@
     NSArray *_availableOutputDeviceGroups;
 }
 
-+ (void)setExternalDeviceForIdentifier:(CDUnknownBlockType)arg1;
-+ (CDUnknownBlockType)externalDeviceForIdentifier;
++ (void)setExternalDeviceForOutputDeviceUID:(CDUnknownBlockType)arg1;
++ (CDUnknownBlockType)externalDeviceForOutputDeviceUID;
 + (id)externalDeviceCache;
 - (void).cxx_destruct;
 - (id)deduplicateAVODGroups:(id)arg1;

@@ -10,13 +10,14 @@
 {
 }
 
-+ (id)extensionMatchingDictionaryForItems:(id)arg1;
++ (id)extensionMatchingDictionaryForItems:(id)arg1 fpProviderDomain:(id)arg2;
 + (id)extensionForPlugin:(id)arg1;
 + (id)uiExtensionPluginForProviderDomain:(id)arg1;
 + (void)getUIExtensionPlugin:(id *)arg1 nonUIExtensionPlugin:(id *)arg2 forProviderDomain:(id)arg3;
 + (_Bool)isAction:(id)arg1 eligibleForItems:(id)arg2;
 + (id)actionsForProviderDomain:(id)arg1;
 + (id)uiActionsForProviderDomain:(id)arg1;
++ (id)createFPUIActionWithIdentifier:(id)arg1 uiActionProviderIdentifier:(id)arg2 fileProviderIdentifier:(id)arg3 displayName:(id)arg4 predicate:(id)arg5 displayInline:(_Bool)arg6 isNonUIAction:(_Bool)arg7 fpProviderDomain:(id)arg8;
 + (id)authenticationActionForProviderDomain:(id)arg1;
 
 @end

@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)tableView:(id)arg1 didEndEditingRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 willBeginEditingRowAtIndexPath:(id)arg2;
 - (id)_tableView:(id)arg1 previewForIndexPath:(id)arg2;
+- (id)tableView:(id)arg1 previewForDismissingContextMenuWithConfiguration:(id)arg2;
 - (id)tableView:(id)arg1 previewForHighlightingContextMenuWithConfiguration:(id)arg2;
 - (void)tableView:(id)arg1 willPerformPreviewActionForMenuWithConfiguration:(id)arg2 animator:(id)arg3;
 - (id)tableView:(id)arg1 contextMenuConfigurationForRowAtIndexPath:(id)arg2 point:(struct CGPoint)arg3;
@@ -45,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)tableView:(id)arg1 shouldShowMenuForRowAtIndexPath:(id)arg2;
 - (void)handleContextMenuDeleteForIndexPath:(id)arg1;
 - (void)shareSavedPassword:(id)arg1 modalPresentationSourceView:(id)arg2;
+- (_Bool)_hasMarkedText;
 @property(retain, nonatomic) NSString *searchQuery;
 - (void)setEditing:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)_sceneDidEnterBackground:(id)arg1;

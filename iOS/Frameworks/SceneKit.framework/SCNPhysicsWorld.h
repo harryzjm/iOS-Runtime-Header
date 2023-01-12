@@ -7,13 +7,14 @@
 #import <objc/NSObject.h>
 
 #import <SceneKit/NSSecureCoding-Protocol.h>
+#import <SceneKit/SCNTransactionCommandObject-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableSet, SCNPhysicsContact, SCNScene;
+@class NSArray, NSMutableArray, NSMutableSet, NSString, SCNPhysicsContact, SCNScene;
 @protocol SCNPhysicsContactDelegate;
 
-@interface SCNPhysicsWorld : NSObject <NSSecureCoding>
+@interface SCNPhysicsWorld : NSObject <SCNTransactionCommandObject, NSSecureCoding>
 {
-    struct btDiscreteDynamicsWorld *_world;
+    void *_world;
     struct btOverlappingPairCallback *_ghostPairCallback;
     struct btVehicleRaycaster *_vehicleRayCaster;
     struct btC3DDebugDraw *_debugDrawer;
@@ -32,6 +33,7 @@
     NSMutableArray *_behaviors;
     NSArray *_activeBehaviors;
     _Bool _activeBehaviorsValid;
+    struct os_unfair_lock_s _lock;
     NSMutableSet *_bodies;
 }
 
@@ -50,11 +52,11 @@
 - (void)setScene:(id)arg1;
 - (id)scene;
 - (void)_allowGhostObjects;
-- (struct btDynamicsWorld *)_handle;
+- (void *)_handle;
 - (struct btVehicleRaycaster *)_defaultVehicleRayCaster;
 - (void)_step:(double)arg1;
 - (void)_updatePhysicsFieldsTransforms;
-- (struct c3dAether *)_aetherHandle;
+- (void *)_aetherHandle;
 - (void)_removeFieldFromWorld:(id)arg1;
 - (void)_addFieldToWorld:(id)arg1;
 - (id)_findFieldAttachedToNode:(id)arg1;
@@ -89,6 +91,12 @@
 - (id)_physicsContact;
 - (void)_createDynamicWorldIfNeeded;
 - (void)_preTick:(double)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

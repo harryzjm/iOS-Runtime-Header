@@ -6,7 +6,7 @@
 
 #import <NotesShared/ICAttachmentInlineDrawingModel.h>
 
-@class NSObject, PKDrawing, UIImage;
+@class NSObject, UIImage;
 @protocol OS_dispatch_queue;
 
 @interface ICAttachmentInlineDrawingModel (UI)
@@ -23,15 +23,12 @@
 @property(nonatomic, getter=isTitleQueryEnabled) _Bool titleQueryEnabled;
 - (void)setHandwritingRecognitionDrawingQueue:(id)arg1;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *handwritingRecognitionDrawingQueue;
-- (void)setHandwritingRecognitionDrawing:(id)arg1;
-@property(readonly, nonatomic) PKDrawing *handwritingRecognitionDrawing;
 @property(nonatomic, getter=isHandwritingRecognitionEnabled) _Bool handwritingRecognitionEnabled;
 - (void)updateAfterLoadWithSubAttachmentIdentifierMap:(id)arg1;
-- (id)mergeableDataForCopying;
+- (id)mergeableDataForCopying:(id *)arg1;
 - (id)activityItems;
 - (id)activityItem;
 @property(readonly, nonatomic) UIImage *imageForActivityItem;
-- (id)newDrawingFromMergeableData;
 - (_Bool)actuallyMergeWithDrawing:(id)arg1;
 - (_Bool)mergeWithMergeableData:(id)arg1;
 - (_Bool)mergeWithDrawing:(id)arg1;

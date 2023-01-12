@@ -23,6 +23,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (void)_setLinkedOnOrAfterEverythingForTesting;
++ (void)_setLinkedOnOrBeforeEverythingForTesting;
 + (void)_forceGameControllerFramework;
 + (id)_websiteDataURLForContainerWithURL:(id)arg1 bundleIdentifierIfNotInContainer:(id)arg2;
 + (id)_websiteDataURLForContainerWithURL:(id)arg1;
@@ -45,16 +47,11 @@
 - (unsigned long long)_numberOfConnectedGamepadsForTesting;
 - (void)_garbageCollectJavaScriptObjectsForTesting;
 - (void)_seedResourceLoadStatisticsForTestingWithFirstParty:(id)arg1 thirdParty:(id)arg2 shouldScheduleNotification:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)_allowAnyTLSCertificateForWebSocketTesting;
 - (void)_clearPermanentCredentialsForProtectionSpace:(id)arg1;
-- (_Bool)_networkProcessHasEntitlementForTesting:(id)arg1;
 - (void)_getActivePagesOriginsInWebProcessForTesting:(int)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_resumeDownloadFromData:(id)arg1 websiteDataStore:(id)arg2 path:(id)arg3 originatingWebView:(id)arg4;
 - (id)_downloadURLRequest:(id)arg1 websiteDataStore:(id)arg2 originatingWebView:(id)arg3;
 @property(nonatomic, setter=_setCoreLocationProvider:) id <_WKGeolocationCoreLocationProvider> _coreLocationProvider;
-- (void)_setAllowsAnySSLCertificateForServiceWorker:(_Bool)arg1;
-- (void)_synthesizeAppIsBackground:(_Bool)arg1;
-@property(nonatomic, getter=_isStorageAccessAPIEnabled, setter=_setStorageAccessAPIEnabled:) _Bool _storageAccessAPIEnabled;
 @property(nonatomic, getter=_isCookieStoragePartitioningEnabled, setter=_setCookieStoragePartitioningEnabled:) _Bool _cookieStoragePartitioningEnabled;
 - (unsigned long long)_serviceWorkerProcessCount;
 - (unsigned long long)_processCacheSize;
@@ -66,19 +63,15 @@
 - (unsigned long long)_webProcessCountIgnoringPrewarmedAndCached;
 - (unsigned long long)_webProcessCountIgnoringPrewarmed;
 - (_Bool)_hasPrewarmedWebProcess;
-- (void)_makeNextNetworkProcessLaunchFailForTesting;
 - (void)_makeNextWebProcessLaunchFailForTesting;
+- (_Bool)_requestWebProcessTermination:(int)arg1;
+- (int)_gpuProcessIdentifier;
 - (unsigned long long)_webProcessCount;
 - (void)_clearWebProcessCache;
 - (void)_syncNetworkProcessCookies;
 - (int)_prewarmedProcessIdentifier;
-- (int)_networkProcessIdentifier;
 - (void)_setUseSeparateServiceWorkerProcess:(_Bool)arg1;
 - (void)_terminateServiceWorkers;
-- (void)_sendNetworkProcessDidResume;
-- (void)_sendNetworkProcessPrepareToSuspend:(CDUnknownBlockType)arg1;
-- (void)_sendNetworkProcessWillSuspendImminently;
-- (void)_terminateNetworkProcess;
 - (void)_clearSupportedPlugins;
 - (void)_addSupportedPlugin:(id)arg1 named:(id)arg2 withMimeTypes:(id)arg3 withExtensions:(id)arg4;
 @property(copy, nonatomic, setter=_setJavaScriptConfigurationDirectory:) NSURL *_javaScriptConfigurationDirectory;
@@ -92,6 +85,9 @@
 - (id)_objectForBundleParameter:(id)arg1;
 - (void)_setCookieAcceptPolicy:(unsigned long long)arg1;
 - (void)_setCanHandleHTTPSServerTrustEvaluation:(_Bool)arg1;
+- (void)_setDomainRelaxationForbiddenForURLScheme:(id)arg1;
+- (void)_registerURLSchemeAsBypassingContentSecurityPolicy:(id)arg1;
+- (void)_registerURLSchemeAsSecure:(id)arg1;
 - (void)_registerURLSchemeAsCanDisplayOnlyIfCanRequest:(id)arg1;
 - (void)_setAllowsSpecificHTTPSCertificate:(id)arg1 forHost:(id)arg2;
 

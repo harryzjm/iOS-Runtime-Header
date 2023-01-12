@@ -30,8 +30,6 @@ __attribute__((visibility("hidden")))
 + (id)queryWithSearchCompletion:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 + (id)queryWithCoordinate:(struct CLLocationCoordinate2D)arg1 resultHandler:(CDUnknownBlockType)arg2;
 + (id)queryWithDictionaryRepresentation:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
-+ (id)clReverseGeocoderCache;
-+ (id)mkLocalSearchGeoCodeCache;
 - (void).cxx_destruct;
 @property(nonatomic) struct CLLocationCoordinate2D unshiftedCoordinate; // @synthesize unshiftedCoordinate=_unshiftedCoordinate;
 @property(nonatomic) struct CLLocationCoordinate2D searchCoordinate; // @synthesize searchCoordinate=_searchCoordinate;

@@ -6,32 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@class NSNumber, NSString, NSXPCConnection, NSXPCListenerEndpoint;
+@class NSString, NSXPCListenerEndpoint;
 
 @interface TKClientToken : NSObject
 {
-    NSXPCListenerEndpoint *_serverEndpoint;
-    NSXPCConnection *_serverConnection;
-    _Bool _namedConnection;
-    NSNumber *_targetUID;
-    long long _connectionIdentifier;
     NSString *_tokenID;
-    NSXPCConnection *_tokenConnection;
+    NSXPCListenerEndpoint *_endpoint;
+    NSXPCListenerEndpoint *_configurationEndpoint;
+    NSXPCListenerEndpoint *_watcherEndpoint;
+    NSXPCListenerEndpoint *_SEPKeyEndpoint;
 }
 
++ (id)builtinTokenIDs;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSXPCConnection *tokenConnection; // @synthesize tokenConnection=_tokenConnection;
+@property(readonly, nonatomic) NSXPCListenerEndpoint *SEPKeyEndpoint; // @synthesize SEPKeyEndpoint=_SEPKeyEndpoint;
+@property(readonly, nonatomic) NSXPCListenerEndpoint *watcherEndpoint; // @synthesize watcherEndpoint=_watcherEndpoint;
+@property(readonly, nonatomic) NSXPCListenerEndpoint *configurationEndpoint; // @synthesize configurationEndpoint=_configurationEndpoint;
+@property(readonly, nonatomic) NSXPCListenerEndpoint *endpoint; // @synthesize endpoint=_endpoint;
 @property(readonly, nonatomic) NSString *tokenID; // @synthesize tokenID=_tokenID;
-- (void)dealloc;
 - (id)sessionWithLAContext:(id)arg1 error:(id *)arg2;
-- (id)withError:(id *)arg1 invoke:(CDUnknownBlockType)arg2;
-- (_Bool)ensureConnectionWithError:(id *)arg1;
-@property(readonly, nonatomic) NSXPCListenerEndpoint *watcherEndpoint;
-@property(readonly, nonatomic) NSXPCListenerEndpoint *configurationEndpoint;
-@property(readonly, nonatomic) NSXPCListenerEndpoint *endpoint;
-@property(readonly, nonatomic) NSXPCConnection *serverConnection;
-- (id)initWithTokenID:(id)arg1;
 - (id)initWithTokenID:(id)arg1 serverEndpoint:(id)arg2 targetUID:(id)arg3;
+- (id)initWithTokenID:(id)arg1;
+- (id)_initWithTokenID:(id)arg1;
 
 @end
 

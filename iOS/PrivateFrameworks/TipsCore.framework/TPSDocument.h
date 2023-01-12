@@ -14,7 +14,10 @@
 {
     NSString *_identifier;
     NSString *_variantID;
+    NSString *_correlationID;
+    NSString *_clonedFromID;
     NSString *_language;
+    NSString *_userLanguageCode;
     TPSNotification *_notification;
 }
 
@@ -22,11 +25,13 @@
 + (id)deliveryInfoIdForDictionary:(id)arg1;
 + (id)deliveryInfoForDictionary:(id)arg1;
 + (id)documentsForDictionary:(id)arg1;
-+ (id)classSet;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) TPSNotification *notification; // @synthesize notification=_notification;
+@property(copy, nonatomic) NSString *userLanguageCode; // @synthesize userLanguageCode=_userLanguageCode;
 @property(copy, nonatomic) NSString *language; // @synthesize language=_language;
+@property(copy, nonatomic) NSString *clonedFromID; // @synthesize clonedFromID=_clonedFromID;
+@property(copy, nonatomic) NSString *correlationID; // @synthesize correlationID=_correlationID;
 @property(copy, nonatomic) NSString *variantID; // @synthesize variantID=_variantID;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly) unsigned long long hash;

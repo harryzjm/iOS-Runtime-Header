@@ -10,7 +10,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)determineExpirationDateForCurrentDate:(id)arg1;
-- (void)bedtimeSkipped;
 - (void)bedtimeReached;
 - (void)windDownReached;
 - (unsigned long long)scheduleState;

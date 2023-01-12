@@ -11,6 +11,10 @@
 @protocol SFSymbolImage <SFImage>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(nonatomic) int secondaryColor;
+@property(nonatomic) int primaryColor;
+@property(nonatomic) int backgroundColor;
+@property(nonatomic) _Bool punchThroughBackground;
 @property(copy, nonatomic) NSString *symbolName;
 @end
 

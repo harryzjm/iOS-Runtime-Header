@@ -127,7 +127,7 @@ struct PXDisplayVelocity {
 };
 
 struct PXSimpleIndexPath {
-    unsigned long long dataSourceIdentifier;
+    long long dataSourceIdentifier;
     long long section;
     long long item;
     long long subitem;
@@ -177,8 +177,7 @@ typedef struct {
 typedef struct {
     long long privateInteger;
     float privateFloat;
-    float privateFloat2;
-} CDStruct_0b004a15;
+} CDStruct_910f5d27;
 
 typedef struct {
     long long value;

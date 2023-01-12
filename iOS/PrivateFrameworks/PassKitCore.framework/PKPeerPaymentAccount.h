@@ -19,6 +19,8 @@
     _Bool _termsAcceptanceRequired;
     NSString *_identifier;
     unsigned long long _role;
+    NSDate *_createdDate;
+    NSDate *_identifiedDate;
     unsigned long long _state;
     unsigned long long _stage;
     unsigned long long _stateReason;
@@ -28,8 +30,8 @@
     NSDecimalNumber *_maximumBalance;
     NSDate *_lastUpdated;
     double _proactiveFetchPeriod;
-    NSDate *_nextPossibleFetchDate;
-    long long _backoffRetryLevel;
+    double _accountFetchAfterTransactionWaitPeriod;
+    double _accountFetchAfterTransactionWaitTolerance;
     NSURL *_associatedPassURL;
     long long _pendingPaymentCount;
     NSString *_altDSID;
@@ -62,8 +64,8 @@
 @property(nonatomic) _Bool identityVerificationForDisbursementsRequired; // @synthesize identityVerificationForDisbursementsRequired=_identityVerificationForDisbursementsRequired;
 @property(nonatomic) long long pendingPaymentCount; // @synthesize pendingPaymentCount=_pendingPaymentCount;
 @property(copy, nonatomic) NSURL *associatedPassURL; // @synthesize associatedPassURL=_associatedPassURL;
-@property(nonatomic) long long backoffRetryLevel; // @synthesize backoffRetryLevel=_backoffRetryLevel;
-@property(retain, nonatomic) NSDate *nextPossibleFetchDate; // @synthesize nextPossibleFetchDate=_nextPossibleFetchDate;
+@property(nonatomic) double accountFetchAfterTransactionWaitTolerance; // @synthesize accountFetchAfterTransactionWaitTolerance=_accountFetchAfterTransactionWaitTolerance;
+@property(nonatomic) double accountFetchAfterTransactionWaitPeriod; // @synthesize accountFetchAfterTransactionWaitPeriod=_accountFetchAfterTransactionWaitPeriod;
 @property(nonatomic) double proactiveFetchPeriod; // @synthesize proactiveFetchPeriod=_proactiveFetchPeriod;
 @property(retain, nonatomic) NSDate *lastUpdated; // @synthesize lastUpdated=_lastUpdated;
 @property(nonatomic, getter=isAccountStateDirty) _Bool accountStateDirty; // @synthesize accountStateDirty=_accountStateDirty;
@@ -74,6 +76,8 @@
 @property(nonatomic) unsigned long long stateReason; // @synthesize stateReason=_stateReason;
 @property(nonatomic) unsigned long long stage; // @synthesize stage=_stage;
 @property(nonatomic) unsigned long long state; // @synthesize state=_state;
+@property(copy, nonatomic) NSDate *identifiedDate; // @synthesize identifiedDate=_identifiedDate;
+@property(copy, nonatomic) NSDate *createdDate; // @synthesize createdDate=_createdDate;
 @property(nonatomic) unsigned long long role; // @synthesize role=_role;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (unsigned long long)hash;

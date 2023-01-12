@@ -6,7 +6,10 @@
 
 #import <CoreServices/LSBundleRecord.h>
 
+@class LSApplicationRecord;
+
 @interface LSBundleRecord (IntentsFoundation)
 - (id)if_allIntentDefinitionURLs;
+@property(readonly) LSApplicationRecord *if_containingAppRecord;
 @end
 

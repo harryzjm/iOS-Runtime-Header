@@ -6,9 +6,18 @@
 
 @interface RBSGPUAccessGrant
 {
+    unsigned char _role;
 }
 
++ (id)grantWithRole:(unsigned char)arg1;
 + (id)grant;
+@property(readonly, nonatomic) unsigned char role; // @synthesize role=_role;
+- (id)description;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
+- (id)_initWithRole:(unsigned char)arg1;
 
 @end
 

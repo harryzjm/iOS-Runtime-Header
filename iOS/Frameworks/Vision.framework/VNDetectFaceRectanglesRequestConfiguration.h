@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     _Bool _faceCoreEnhanceEyesAndMouthLocalization;
     _Bool _faceCoreExtractBlink;
     _Bool _faceCoreExtractSmile;
+    float _precisionRecallThreshold;
     unsigned long long _faceCoreType;
     NSNumber *_faceCoreMinFaceSize;
     NSNumber *_faceCoreNumberOfDetectionAngles;
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSNumber *faceCoreNumberOfDetectionAngles; // @synthesize faceCoreNumberOfDetectionAngles=_faceCoreNumberOfDetectionAngles;
 @property(retain, nonatomic) NSNumber *faceCoreMinFaceSize; // @synthesize faceCoreMinFaceSize=_faceCoreMinFaceSize;
 @property(nonatomic) unsigned long long faceCoreType; // @synthesize faceCoreType=_faceCoreType;
+@property(nonatomic) float precisionRecallThreshold; // @synthesize precisionRecallThreshold=_precisionRecallThreshold;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithRequestClass:(Class)arg1;
 

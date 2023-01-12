@@ -6,10 +6,10 @@
 
 #import <HealthDaemon/HDProfileExtension-Protocol.h>
 
-@class HDHealthStoreClient, NSString;
+@class NSString;
 @protocol HDFeatureAvailabilityExtension;
 
 @protocol HDFeatureAvailabilityExtensionProvider <HDProfileExtension>
-- (id <HDFeatureAvailabilityExtension>)featureAvailabilityExtensionForFeatureIdentifier:(NSString *)arg1 client:(HDHealthStoreClient *)arg2;
+- (id <HDFeatureAvailabilityExtension>)featureAvailabilityExtensionForFeatureIdentifier:(NSString *)arg1;
 @end
 

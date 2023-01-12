@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSArray, NSMutableArray;
+@protocol VCIDSStreamIDGenerator;
 
 __attribute__((visibility("hidden")))
 @interface VCSessionMediaStreamConfigurationProvider : NSObject
@@ -16,26 +17,31 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_videoStreamConfigurations;
     long long _highestEncodingResolution;
     _Bool _isEncodingSqaures;
+    long long _sessionMode;
+    unsigned int _internalAudioPacketsPerSecond;
+    _Bool _use96Tier;
+    id <VCIDSStreamIDGenerator> _streamIDGenerator;
 }
 
 + (_Bool)isVideoStreamOnDemand:(struct _VCMediaStreamConfigurationProviderVideo *)arg1;
-+ (_Bool)isAudioStreamOnDemand:(struct _VCMediaStreamConfigurationProviderAudio *)arg1;
-+ (void)computeMaxNetworkBitrate:(unsigned int *)arg1 maxMediaBitrate:(unsigned int *)arg2 maxPacketsPerSecond:(float *)arg3 audioStreamIndex:(unsigned int)arg4;
++ (_Bool)isAudioStreamOnDemand:(struct _VCMediaStreamConfigurationProviderAudio *)arg1 isLowestQualityAudio:(_Bool)arg2;
++ (void)computeMaxNetworkBitrate:(unsigned int *)arg1 maxMediaBitrate:(unsigned int *)arg2 maxPacketsPerSecond:(float *)arg3 maxIDSStreamIDCount:(unsigned int)arg4 internalPacketsPerSecond:(unsigned int)arg5 audioConfig:(struct _VCMediaStreamConfigurationProviderAudio *)arg6;
++ (void)computeMaxNetworkBitrate:(unsigned int *)arg1 maxMediaBitrate:(unsigned int *)arg2 maxPacketsPerSecond:(float *)arg3 audioStreamIndex:(unsigned int)arg4 internalPacketsPerSecond:(unsigned int)arg5;
 @property(readonly, nonatomic) _Bool isEncodingSqaures; // @synthesize isEncodingSqaures=_isEncodingSqaures;
 @property(readonly, nonatomic) long long highestEncodingResolution; // @synthesize highestEncodingResolution=_highestEncodingResolution;
 @property(readonly, nonatomic) NSArray *audioStreamConfigurations; // @synthesize audioStreamConfigurations=_audioStreamConfigurations;
 @property(readonly, nonatomic) NSArray *videoStreamConfigurations; // @synthesize videoStreamConfigurations=_videoStreamConfigurations;
 - (id)audioRuleCollectionWithAudioConfig:(struct _VCMediaStreamConfigurationProviderAudio *)arg1 supportedAudioRules:(id)arg2;
-- (_Bool)initializeAudioStreamWithIndex:(unsigned int)arg1 supportedAudioRules:(id)arg2;
-- (_Bool)initializeAudioStreams;
+- (_Bool)initializeAudioStreamWithConfig:(struct _VCMediaStreamConfigurationProviderAudio *)arg1 maxIDSStreamIDCount:(unsigned int)arg2 supportedAudioRules:(id)arg3 isLowestQualityAudio:(_Bool)arg4;
+- (_Bool)initializeAudioStreamsWithSupportedRules:(id)arg1;
+- (void)audioStreamConfigs:(struct _VCMediaStreamConfigurationProviderAudio **)arg1 configCount:(unsigned int *)arg2;
 - (_Bool)initializeVideoStreamWithDefaults;
 - (_Bool)initializeVideoStreamWithConfig:(struct _VCMediaStreamConfigurationProviderVideo *)arg1 streamIndex:(unsigned int)arg2;
 - (int)streamPayloadFromProviderConfig:(struct _VCMediaStreamConfigurationProviderVideo *)arg1;
 - (_Bool)initializeVideoStreams;
-- (unsigned short)generateStreamID;
-- (_Bool)initializeStreams;
+- (_Bool)initializeStreamsWithSupportedAudioRules:(id)arg1;
 - (void)dealloc;
-- (id)init;
+- (id)initWithStreamIDGenerator:(id)arg1 sessionMode:(long long)arg2 supportedAudioRules:(id)arg3;
 
 @end
 

@@ -10,28 +10,41 @@
 #import <DoNotDisturb/NSMutableCopying-Protocol.h>
 #import <DoNotDisturb/NSSecureCoding-Protocol.h>
 
-@class DNDClientEventSource, NSString;
+@class DNDContactHandle, NSString;
 
 @interface DNDClientEventDetails : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
 {
     NSString *_identifier;
-    DNDClientEventSource *_source;
-    _Bool _shouldAlwaysInterrupt;
+    NSString *_bundleIdentifier;
+    unsigned long long _type;
+    unsigned long long _urgency;
+    DNDContactHandle *_sender;
+    NSString *_threadIdentifier;
+    _Bool _notifyAnyway;
+    unsigned long long _behavior;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) _Bool shouldAlwaysInterrupt; // @synthesize shouldAlwaysInterrupt=_shouldAlwaysInterrupt;
-@property(readonly, copy, nonatomic) DNDClientEventSource *source; // @synthesize source=_source;
+@property(readonly, nonatomic) unsigned long long behavior; // @synthesize behavior=_behavior;
+@property(readonly, nonatomic) _Bool notifyAnyway; // @synthesize notifyAnyway=_notifyAnyway;
+@property(readonly, copy, nonatomic) NSString *threadIdentifier; // @synthesize threadIdentifier=_threadIdentifier;
+@property(readonly, copy, nonatomic) DNDContactHandle *sender; // @synthesize sender=_sender;
+@property(readonly, nonatomic) unsigned long long urgency; // @synthesize urgency=_urgency;
+@property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
+@property(readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)_descriptionForRedacted:(_Bool)arg1;
+- (id)redactedDescription;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)_initWithIdentifier:(id)arg1 source:(id)arg2 shouldAlwaysInterrupt:(_Bool)arg3;
+@property(readonly, nonatomic) _Bool shouldAlwaysInterrupt; // @dynamic shouldAlwaysInterrupt;
+- (id)_initWithIdentifier:(id)arg1 bundleIdentifier:(id)arg2 type:(unsigned long long)arg3 urgency:(unsigned long long)arg4 sender:(id)arg5 threadIdentifier:(id)arg6 notifyAnyway:(_Bool)arg7 behavior:(unsigned long long)arg8;
 - (id)_initWithDetails:(id)arg1;
 - (id)init;
 

@@ -13,11 +13,11 @@
 
 + (id)secureCodedPropertyKeys;
 + (id)internalRepresentation;
+- (void).cxx_destruct;
 @property(copy, nonatomic) GKAchievementInternal *achievement; // @synthesize achievement=_achievement;
 - (id)titleText;
 - (unsigned long long)type;
 - (id)serverRepresentationForReceivingPlayer:(id)arg1;
-- (void)dealloc;
 
 @end
 

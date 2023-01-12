@@ -9,6 +9,7 @@
 #import <GeoServices/GEOMapItemTransitInfo-Protocol.h>
 
 @class GEOComposedRoute, GEOPDTransitInfoSnippet, NSArray, NSDate, NSString;
+@protocol GEOTransitNearbySchedule;
 
 __attribute__((visibility("hidden")))
 @interface _GEOMapItemTransitInfoSnippet : NSObject <GEOMapItemTransitInfo>
@@ -19,15 +20,20 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <GEOTransitNearbySchedule> nearbySchedule;
 @property(readonly, nonatomic) GEOComposedRoute *composedRoute;
 @property(readonly, nonatomic) NSString *subtitle;
 @property(readonly, nonatomic) NSString *title;
 @property(readonly, nonatomic) NSArray *transitTripStops;
 - (id)headSignsForLine:(id)arg1;
-- (id)inactiveLinesForSystem:(id)arg1 relativeToDateFromBlock:(CDUnknownBlockType)arg2 excludingIncidentEntities:(id)arg3;
-- (id)serviceResumesDateForLine:(id)arg1 excludingIncidentEntities:(id)arg2 afterDate:(id)arg3 blocked:(out _Bool *)arg4;
+- (id)inactiveLinesForSystem:(id)arg1 relativeToDateFromBlock:(CDUnknownBlockType)arg2 excludingIncidentEntities:(id)arg3 usingContainers:(_Bool)arg4;
+- (id)serviceResumesResultForLine:(id)arg1 excludingIncidentEntities:(id)arg2 afterDate:(id)arg3 usingContainers:(_Bool)arg4;
+- (id)allSequencesForSystem:(id)arg1 container:(id)arg2;
 - (id)allSequencesForSystem:(id)arg1 direction:(id)arg2;
+- (id)departureSequenceContainersForSystem:(id)arg1 excludingIncidentEntities:(id)arg2 validForDateFromBlock:(CDUnknownBlockType)arg3;
+- (id)directionsForSystem:(id)arg1 excludingIncidentEntities:(id)arg2 validForDateFromBlock:(CDUnknownBlockType)arg3;
 - (id)directionsForSystem:(id)arg1 excludingIncidentEntities:(id)arg2 validForDateFromBlock:(CDUnknownBlockType)arg3 hasSequencesWithNoDirection:(out _Bool *)arg4;
+- (id)departureSequencesForSystem:(id)arg1 excludingIncidentEntities:(id)arg2 container:(id)arg3 validForDateFromBlock:(CDUnknownBlockType)arg4;
 - (id)departureSequencesForSystem:(id)arg1 excludingIncidentEntities:(id)arg2 direction:(id)arg3 validForDateFromBlock:(CDUnknownBlockType)arg4;
 - (unsigned long long)numAdditionalDeparturesForSequence:(id)arg1;
 @property(readonly, nonatomic) NSDate *lastFullScheduleValidDate;

@@ -29,7 +29,6 @@
 - (id)masterZoneForContainerID:(id)arg1;
 @property(readonly, nonatomic) NSSet *pullZones;
 @property(readonly, nonatomic) NSSet *seizedZones;
-- (id)_storeDescriptionForTarget:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)detailedDescription;

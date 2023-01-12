@@ -14,7 +14,7 @@
 @property(readonly, nonatomic) TSDMovieInfo *movieInfo;
 - (struct CGRect)frameForCullingWithBaseFrame:(struct CGRect)arg1 additionalTransform:(struct CGAffineTransform)arg2;
 - (int)wrapType;
-- (_Bool)canFlip;
+- (_Bool)supportsFlipping;
 - (_Bool)allowsConnections;
 - (struct CGRect)alignmentFrame;
 - (struct CGRect)computeAlignmentFrameInRoot:(_Bool)arg1;

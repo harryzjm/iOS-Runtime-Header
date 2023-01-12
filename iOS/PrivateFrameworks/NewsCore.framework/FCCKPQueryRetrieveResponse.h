@@ -10,29 +10,21 @@
 
 @class NSData, NSMutableArray;
 
+__attribute__((visibility("hidden")))
 @interface FCCKPQueryRetrieveResponse : PBCodable <NSCopying>
 {
     NSData *_continuationMarker;
     NSMutableArray *_queryResults;
 }
 
-@property(retain, nonatomic) NSData *continuationMarker; // @synthesize continuationMarker=_continuationMarker;
-@property(retain, nonatomic) NSMutableArray *queryResults; // @synthesize queryResults=_queryResults;
-- (void)mergeFrom:(id)arg1;
+- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasContinuationMarker;
-- (id)queryResultsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)queryResultsCount;
-- (void)addQueryResults:(id)arg1;
-- (void)clearQueryResults;
-- (void)dealloc;
 
 @end
 

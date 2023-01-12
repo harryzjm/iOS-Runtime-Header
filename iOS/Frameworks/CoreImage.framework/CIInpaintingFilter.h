@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (id)performSinglePassInpaintingWithParameters:(id)arg1;
 - (struct CGRect)inputMaskBoundingBoxAsValidCGRect;
 - (id)outputImage;
+- (id)getSelectedFacesInpaintingModelDescriptor;
 - (id)getSelectedGeneralInpaintingModelDescriptor;
 - (_Bool)shouldFaceSpecificModelBeUsed;
 - (void)dealloc;

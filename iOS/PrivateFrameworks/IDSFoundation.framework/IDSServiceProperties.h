@@ -32,7 +32,7 @@
     unsigned int _shouldNotSyncPhoneNumberAccounts:1;
     unsigned int _shouldAllowProxyDelivery:1;
     unsigned int _wantsLocalReflectedSend:1;
-    unsigned int _wantsCheckTransportLogHint:1;
+    unsigned int _wantsNetworkAvailableHint:1;
     unsigned int _watchOnlyService:1;
     unsigned int _allowsDuplicates:1;
     unsigned int _useiMessageCallerID:1;
@@ -47,7 +47,6 @@
     unsigned int _forceHTTPQueriesOnly:1;
     unsigned int _wantsRemoteErrors:1;
     unsigned int _useTransportZone:1;
-    unsigned int _shouldFilterInactiveAliases:1;
     unsigned int _dontFilterSelfMessagesForUnknownDevice:1;
     unsigned int _passThroughMessagesFromStorage:1;
     unsigned int _pushToWakeDisabled:1;
@@ -62,6 +61,8 @@
     unsigned int _allowWakingMessages:1;
     unsigned int _allowUrgentMessages:1;
     unsigned int _prototypingOnly:1;
+    unsigned int _isFamilyService:1;
+    unsigned int _isInvitationService:1;
     unsigned char _minCompatibilityVersion;
     unsigned char _accountSyncMinCompatibilityVersion;
     unsigned int _adHocServiceType;
@@ -88,6 +89,8 @@
 @property(readonly, nonatomic) _Bool tinkerMessagingOnly; // @synthesize tinkerMessagingOnly=_tinkerMessagingOnly;
 @property(readonly, nonatomic) _Bool enabledOnlyOnStandaloneDevices; // @synthesize enabledOnlyOnStandaloneDevices=_enabledOnlyOnStandaloneDevices;
 @property(nonatomic) long long linkedDeviceRelationships; // @synthesize linkedDeviceRelationships=_linkedDeviceRelationships;
+@property(readonly, nonatomic) _Bool isInvitationService; // @synthesize isInvitationService=_isInvitationService;
+@property(readonly, nonatomic) _Bool isFamilyService; // @synthesize isFamilyService=_isFamilyService;
 @property(readonly, nonatomic) _Bool prototypingOnly; // @synthesize prototypingOnly=_prototypingOnly;
 @property(readonly, nonatomic) _Bool allowUrgentMessages; // @synthesize allowUrgentMessages=_allowUrgentMessages;
 @property(readonly, nonatomic) _Bool allowWakingMessages; // @synthesize allowWakingMessages=_allowWakingMessages;
@@ -98,7 +101,6 @@
 @property(readonly, nonatomic) _Bool pushToWakeDisabled; // @synthesize pushToWakeDisabled=_pushToWakeDisabled;
 @property(readonly, nonatomic) _Bool passThroughMessagesFromStorage; // @synthesize passThroughMessagesFromStorage=_passThroughMessagesFromStorage;
 @property(readonly, nonatomic) _Bool dontFilterSelfMessagesForUnknownDevice; // @synthesize dontFilterSelfMessagesForUnknownDevice=_dontFilterSelfMessagesForUnknownDevice;
-@property(readonly, nonatomic) _Bool shouldFilterInactiveAliases; // @synthesize shouldFilterInactiveAliases=_shouldFilterInactiveAliases;
 @property(readonly, nonatomic) _Bool useTransportZone; // @synthesize useTransportZone=_useTransportZone;
 @property(readonly, nonatomic) _Bool wantsRemoteErrors; // @synthesize wantsRemoteErrors=_wantsRemoteErrors;
 @property(readonly, nonatomic) _Bool forceHTTPQueriesOnly; // @synthesize forceHTTPQueriesOnly=_forceHTTPQueriesOnly;
@@ -112,7 +114,7 @@
 @property(readonly, nonatomic) _Bool useiMessageCallerID; // @synthesize useiMessageCallerID=_useiMessageCallerID;
 @property(readonly, nonatomic) _Bool allowsDuplicates; // @synthesize allowsDuplicates=_allowsDuplicates;
 @property(readonly, nonatomic) _Bool watchOnlyService; // @synthesize watchOnlyService=_watchOnlyService;
-@property(readonly, nonatomic) _Bool wantsCheckTransportLogHint; // @synthesize wantsCheckTransportLogHint=_wantsCheckTransportLogHint;
+@property(readonly, nonatomic) _Bool wantsNetworkAvailableHint; // @synthesize wantsNetworkAvailableHint=_wantsNetworkAvailableHint;
 @property(readonly, nonatomic) _Bool wantsLocalReflectedSend; // @synthesize wantsLocalReflectedSend=_wantsLocalReflectedSend;
 @property(readonly, nonatomic) _Bool shouldAllowProxyDelivery; // @synthesize shouldAllowProxyDelivery=_shouldAllowProxyDelivery;
 @property(readonly, nonatomic) _Bool shouldNotSyncPhoneNumberAccounts; // @synthesize shouldNotSyncPhoneNumberAccounts=_shouldNotSyncPhoneNumberAccounts;
@@ -124,7 +126,6 @@
 @property(readonly, nonatomic) _Bool iCloudBasedService; // @synthesize iCloudBasedService=_iCloudBasedService;
 @property(readonly, nonatomic) _Bool wantsPhoneNumberAccount; // @synthesize wantsPhoneNumberAccount=_wantsPhoneNumberAccount;
 @property(readonly, nonatomic) _Bool sendOnePerToken; // @synthesize sendOnePerToken=_sendOnePerToken;
-@property(readonly, nonatomic) _Bool canUseLargePayload; // @synthesize canUseLargePayload=_canUseLargePayload;
 @property(readonly, nonatomic) _Bool allowPartialSendsToSucceed; // @synthesize allowPartialSendsToSucceed=_allowPartialSendsToSucceed;
 @property(readonly, nonatomic) _Bool shouldShowUsageNotifications; // @synthesize shouldShowUsageNotifications=_shouldShowUsageNotifications;
 @property(readonly, nonatomic) _Bool allowMagnetDelivery; // @synthesize allowMagnetDelivery=_allowMagnetDelivery;
@@ -140,6 +141,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)reloadAdHocServices;
 @property(readonly, nonatomic) _Bool shouldAllowLiveMessageDelivery;
+@property(readonly, nonatomic) _Bool canUseLargePayload;
 @property(readonly, nonatomic) _Bool wantsTinkerDevices;
 @property(readonly, nonatomic) NSSet *allowedTrafficClasses;
 @property(readonly, nonatomic) NSString *launchMachServiceNotification;

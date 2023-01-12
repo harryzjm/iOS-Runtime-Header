@@ -15,7 +15,6 @@
     NSXPCConnection *_connection;
     NSObject<OS_dispatch_queue> *_queue;
     _Bool _started;
-    CDUnknownBlockType _oneShotCallback;
 }
 
 + (unsigned long long)disposition;

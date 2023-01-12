@@ -16,12 +16,12 @@
     NSLayoutConstraint *_foregroundWidthConstraint;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSLayoutConstraint *foregroundWidthConstraint; // @synthesize foregroundWidthConstraint=_foregroundWidthConstraint;
 @property(retain, nonatomic) UIImageView *foregroundImageView; // @synthesize foregroundImageView=_foregroundImageView;
 @property(retain, nonatomic) UIImageView *backgroundImageView; // @synthesize backgroundImageView=_backgroundImageView;
 @property(nonatomic) double value; // @synthesize value=_value;
 - (struct CGSize)intrinsicContentSize;
-- (void)dealloc;
 - (void)commonSetup;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)awakeFromNib;

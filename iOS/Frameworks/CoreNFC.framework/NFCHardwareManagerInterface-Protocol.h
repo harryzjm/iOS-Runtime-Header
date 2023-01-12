@@ -10,7 +10,7 @@
 @protocol NFReaderSessionCallbacks;
 
 @protocol NFCHardwareManagerInterface <NSObject>
-- (oneway void)areFeaturesSupported:(unsigned long long)arg1 callback:(void (^)(_Bool, NSError *))arg2;
-- (oneway void)queueReaderSession:(NSObject<NFReaderSessionCallbacks> *)arg1 sessionConfig:(NFReaderSessionConfig *)arg2 callback:(void (^)(NSObject<NFReaderSessionInterface> *, _Bool, NSError *))arg3;
+- (oneway void)areFeaturesSupported:(unsigned long long)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (oneway void)queueReaderSession:(NSObject<NFReaderSessionCallbacks> *)arg1 sessionConfig:(NFReaderSessionConfig *)arg2 completion:(void (^)(NSObject<NFReaderSessionInterface> *, _Bool, NSError *))arg3;
 @end
 

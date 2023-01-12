@@ -8,25 +8,27 @@
 
 #import <UserActivity/NSSecureCoding-Protocol.h>
 
-@class NSString, NSUserActivity, UABestAppSuggestion;
+@class NSString, NSUUID, NSUserActivity, UABestAppSuggestion;
 
 @interface UAUserActivityProxy : NSObject <NSSecureCoding>
 {
     _Bool _isRemoteActivity;
     NSString *_activityType;
-    NSString *_bundleId;
+    NSString *_dynamicActivityType;
+    NSString *_bundleIdentifier;
+    NSUUID *_uuid;
     NSUserActivity *_internalActivity;
     UABestAppSuggestion *_suggestedActivity;
-    unsigned long long _hashValue;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property unsigned long long hashValue; // @synthesize hashValue=_hashValue;
 @property(retain) UABestAppSuggestion *suggestedActivity; // @synthesize suggestedActivity=_suggestedActivity;
 @property(retain) NSUserActivity *internalActivity; // @synthesize internalActivity=_internalActivity;
 @property(readonly) _Bool isRemoteActivity; // @synthesize isRemoteActivity=_isRemoteActivity;
-@property(readonly) NSString *bundleId; // @synthesize bundleId=_bundleId;
+@property(copy) NSUUID *uuid; // @synthesize uuid=_uuid;
+@property(readonly) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property(readonly) NSString *dynamicActivityType; // @synthesize dynamicActivityType=_dynamicActivityType;
 @property(readonly) NSString *activityType; // @synthesize activityType=_activityType;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -40,6 +42,8 @@
 - (void)accessActivity:(CDUnknownBlockType)arg1;
 - (id)initWithSuggestion:(id)arg1;
 - (id)initWithActivity:(id)arg1 bundleId:(id)arg2;
+- (id)initWithUUID:(id)arg1 activityType:(id)arg2 bundleID:(id)arg3;
+- (id)initWithUUID:(id)arg1 activityType:(id)arg2 dynamicActivityType:(id)arg3 bundleID:(id)arg4;
 
 @end
 

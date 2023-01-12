@@ -23,11 +23,13 @@
     SFNotificationError *_error;
     NSString *_header;
     NSString *_title;
+    unsigned long long _homePodType;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned int notificationType; // @synthesize notificationType=_notificationType;
+@property(nonatomic) unsigned long long homePodType; // @synthesize homePodType=_homePodType;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
 @property(nonatomic) unsigned char interactionDirection; // @synthesize interactionDirection=_interactionDirection;
 @property(nonatomic) unsigned char interactionBehavior; // @synthesize interactionBehavior=_interactionBehavior;

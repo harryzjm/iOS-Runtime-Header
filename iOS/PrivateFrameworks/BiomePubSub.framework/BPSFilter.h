@@ -12,12 +12,15 @@
     BPSPublisher *_upstream;
 }
 
++ (id)publisherWithPublisher:(id)arg1 upstreams:(id)arg2 bookmarkState:(id)arg3;
 - (void).cxx_destruct;
 @property(retain, nonatomic) BPSPublisher *upstream; // @synthesize upstream=_upstream;
 @property(readonly, nonatomic) CDUnknownBlockType isIncluded; // @synthesize isIncluded=_isIncluded;
 - (void)subscribe:(id)arg1;
 - (id)initWithUpstream:(id)arg1 isIncluded:(CDUnknownBlockType)arg2;
 - (id)init;
+- (_Bool)canStoreInternalStateInBookmark;
+- (id)bookmarkableUpstreams;
 
 @end
 

@@ -9,8 +9,10 @@
 @class NSArray, NSDictionary, NSString;
 
 @interface NSURL (ChatKitAdditions)
++ (id)ckSMSURLFromBusinessChatURL:(id)arg1;
 + (id)ckURLForChatIdentifier:(id)arg1 entryBody:(id)arg2;
 + (id)ckURLForResource:(id)arg1 withExtension:(id)arg2;
++ (id)__ck_appleMapsURLForCoordinate:(struct CLLocationCoordinate2D)arg1 coordinateName:(id)arg2;
 @property(readonly, nonatomic) NSString *ckLaunchURLPresentContentForMessageGUID;
 @property(readonly, nonatomic) NSArray *ckSuggestedReplies;
 @property(readonly, nonatomic) NSString *ckLaunchURLPostComposeDismissal;

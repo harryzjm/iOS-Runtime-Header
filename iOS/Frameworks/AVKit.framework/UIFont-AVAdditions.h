@@ -7,6 +7,7 @@
 #import <UIKit/UIFont.h>
 
 @interface UIFont (AVAdditions)
++ (id)avkit_nonScalingFontWithTextStyle:(id)arg1 weight:(double)arg2;
 + (id)monospacedTimeFontOfSize:(double)arg1;
 + (id)italicTimeFontOfSize:(double)arg1;
 + (id)boldTimeFontOfSize:(double)arg1;

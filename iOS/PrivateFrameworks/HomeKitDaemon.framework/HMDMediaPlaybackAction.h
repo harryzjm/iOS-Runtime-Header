@@ -41,12 +41,13 @@
 - (void)_processPlaybackActionModelUpdated:(id)arg1 message:(id)arg2;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
+- (_Bool)isUnsecuringAction;
 - (id)associatedAccessories;
 - (_Bool)isAssociatedWithAccessory:(id)arg1;
 @property(readonly, copy) NSString *description;
 @property(readonly, copy) HMDMediaPlaybackActionAsCharacteristicWriteRequests *convertedCharacteristicWriteRequests;
 - (id)validate;
-- (void)executeWithSource:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)executeWithSource:(unsigned long long)arg1 clientName:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)dictionaryRepresentation;
 - (id)stateDump;
 - (unsigned long long)type;

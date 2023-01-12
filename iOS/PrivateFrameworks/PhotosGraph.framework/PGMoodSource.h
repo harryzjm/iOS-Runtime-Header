@@ -6,33 +6,38 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, PGManager, PGMoodGeneratorOptions, PGMoodVector, PHAssetCollection;
+@class NSDictionary, PGEnrichedMemory, PGMoodGeneratorOptions, PGMoodVector, PHAssetCollection, PHPhotoLibrary;
 
 @interface PGMoodSource : NSObject
 {
     PHAssetCollection *_assetCollection;
-    PGManager *_graphManager;
+    PHPhotoLibrary *_photoLibrary;
     PGMoodGeneratorOptions *_options;
     PGMoodVector *_positiveVector;
     PGMoodVector *_negativeVector;
     NSDictionary *_moodSourceDictionary;
+    PGEnrichedMemory *_enrichedMemory;
 }
 
 + (id)_plistName;
 - (void).cxx_destruct;
+@property(readonly) PGEnrichedMemory *enrichedMemory; // @synthesize enrichedMemory=_enrichedMemory;
+@property(retain) PGMoodVector *negativeVector; // @synthesize negativeVector=_negativeVector;
+@property(retain) PGMoodVector *positiveVector; // @synthesize positiveVector=_positiveVector;
 @property(readonly) PGMoodGeneratorOptions *options; // @synthesize options=_options;
-@property(readonly) PGManager *graphManager; // @synthesize graphManager=_graphManager;
+@property(readonly) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property(readonly) PHAssetCollection *assetCollection; // @synthesize assetCollection=_assetCollection;
 @property(readonly) NSDictionary *moodSourceDictionary; // @synthesize moodSourceDictionary=_moodSourceDictionary;
 - (unsigned long long)_sourceInputCount;
-- (void)_combineMoodVectors;
-- (id)_moodVectors;
+- (void)_combineMoodVectorsWithGraph:(id)arg1;
+- (id)_moodVectorsWithGraph:(id)arg1;
 - (id)_moodVectorForMoodIdentifier:(id)arg1;
-- (id)_plistMoodIdentifiers;
-@property(retain) PGMoodVector *negativeVector; // @synthesize negativeVector=_negativeVector;
-@property(retain) PGMoodVector *positiveVector; // @synthesize positiveVector=_positiveVector;
+- (id)_plistMoodIdentifiersWithGraph:(id)arg1;
+- (id)negativeVectorWithGraph:(id)arg1;
+- (id)positiveVectorWithGraph:(id)arg1;
 - (double)weight;
-- (id)initWithAssetCollection:(id)arg1 graphManager:(id)arg2 options:(id)arg3;
+- (id)initWithEnrichedMemory:(id)arg1 photoLibrary:(id)arg2 options:(id)arg3;
+- (id)initWithAssetCollection:(id)arg1 photoLibrary:(id)arg2 options:(id)arg3;
 
 @end
 

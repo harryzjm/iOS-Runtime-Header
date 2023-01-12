@@ -20,6 +20,7 @@
 + (void)addGCCallback:(CDUnknownBlockType)arg1;
 + (void)forceGC;
 + (id)validCurrentContext;
++ (void)setCurrentContext:(id)arg1;
 + (id)currentContext;
 + (void)runInContext:(id)arg1 block:(CDUnknownBlockType)arg2;
 + (id)createJSContextWithRuntimeContext:(id)arg1;

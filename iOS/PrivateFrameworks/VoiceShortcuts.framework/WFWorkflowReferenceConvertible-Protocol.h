@@ -7,8 +7,9 @@
 #import <VoiceShortcuts/NSObject-Protocol.h>
 
 @class NSArray;
+@protocol WFDatabaseProvider;
 
 @protocol WFWorkflowReferenceConvertible <NSObject>
-+ (void)getObjectsFromReferences:(NSArray *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
++ (void)getObjectsFromReferences:(NSArray *)arg1 databaseProvider:(id <WFDatabaseProvider>)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 @end
 

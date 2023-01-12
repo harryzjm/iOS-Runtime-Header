@@ -11,6 +11,8 @@
     NSMutableDictionary *_fileURLsBySection;
 }
 
++ (id)fileBackedDataSourceManagerWithDirectory:(id)arg1;
++ (id)emptyFileBackedDataSourceManager;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSDictionary *fileURLsBySection; // @synthesize fileURLsBySection=_fileURLsBySection;
 - (void)insertFileURL:(id)arg1 atIndex:(long long)arg2 inSection:(long long)arg3;

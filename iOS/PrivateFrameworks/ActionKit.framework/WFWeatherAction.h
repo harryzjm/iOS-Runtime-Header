@@ -11,7 +11,7 @@
 }
 
 - (void)getSpecifiedLocationContentItem:(CDUnknownBlockType)arg1;
-- (void)runAsynchronouslyWithInput:(id)arg1 location:(id)arg2;
+- (void)runAsynchronouslyWithInput:(id)arg1 location:(id)arg2 locationDisclosureLevel:(unsigned long long)arg3;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 
 @end

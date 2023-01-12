@@ -10,9 +10,12 @@
 
 - (void)p_renderIntoContext:(struct CGContext *)arg1 visible:(struct CGRect)arg2;
 - (void)p_renderGridlines:(struct CGContext *)arg1 axis:(id)arg2 locations:(id)arg3 showProperty:(int)arg4 strokeProperty:(int)arg5 shadowProperty:(int)arg6 opacityProperty:(int)arg7;
-- (void)p_renderBackground:(struct CGContext *)arg1;
 - (void)p_renderBackground:(struct CGContext *)arg1 style:(id)arg2;
-- (id)init;
+- (void)p_debugRenderIntoContext:(struct CGContext *)arg1 visible:(struct CGRect)arg2;
+- (void)p_drawFillWithContext:(struct CGContext *)arg1 fill:(id)arg2 frameToDraw:(struct CGRect)arg3;
+- (void)p_renderGridlinesWithContext:(struct CGContext *)arg1 axis:(id)arg2 stroke:(id)arg3 locations:(id)arg4 frame:(struct CGRect)arg5;
+- (id)p_majorLocationsWithAxis:(id)arg1;
+- (struct CGRect)p_frame;
 
 @end
 

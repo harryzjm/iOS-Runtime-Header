@@ -6,15 +6,10 @@
 
 #import <objc/NSObject.h>
 
-@class MISSING_TYPE;
-
 __attribute__((visibility("hidden")))
 @interface VNContourPerimeterAlgorithm : NSObject
 {
 }
-
-+ (_Bool)calculatePerimeter:(double *)arg1 forContourWithSIMDPoints:(const MISSING_TYPE **)arg2 pointCount:(long long)arg3 closedContour:(_Bool)arg4 error:(id *)arg5;
-+ (_Bool)calculatePerimeter:(double *)arg1 forContour:(id)arg2 error:(id *)arg3;
 
 @end
 

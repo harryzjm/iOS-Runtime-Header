@@ -16,18 +16,25 @@
 {
     Class _recordClass;
     NSURL *_fileURL;
+    NSURL *_secureFileURL;
     unsigned long long _versionNumber;
     _Bool _deviceOutOfSpace;
+    unsigned long long _securityClass;
     id <DNDSBackingStoreDelegate> _delegate;
 }
 
++ (unsigned long long)dataWritingOptionsForSecurityClass:(unsigned long long)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <DNDSBackingStoreDelegate> delegate; // @synthesize delegate=_delegate;
-- (id)sysdiagnoseDataForDate:(id)arg1;
+- (id)sysdiagnoseDataForDate:(id)arg1 redacted:(_Bool)arg2;
 @property(readonly, copy, nonatomic) NSString *sysdiagnoseDataIdentifier; // @dynamic sysdiagnoseDataIdentifier;
+- (unsigned long long)writeRecordDictionary:(id)arg1 withSecurityClass:(unsigned long long)arg2 toURL:(id)arg3 error:(id *)arg4;
+- (id)readRecordDictionaryfromURL:(id)arg1 withError:(id *)arg2;
+- (unsigned long long)writeRecord:(id)arg1 writePartition:(_Bool)arg2 error:(id *)arg3;
 - (unsigned long long)writeRecord:(id)arg1 error:(id *)arg2;
 - (id)readRecordWithError:(id *)arg1;
 - (void)dealloc;
+- (id)initWithRecordClass:(Class)arg1 fileURL:(id)arg2 secureFileURL:(id)arg3 versionNumber:(unsigned long long)arg4 securityClass:(unsigned long long)arg5;
 - (id)initWithRecordClass:(Class)arg1 fileURL:(id)arg2 versionNumber:(unsigned long long)arg3;
 
 // Remaining properties

@@ -7,7 +7,7 @@
 #import <HealthUI/HKCurrentValueViewDataSourceDelegate-Protocol.h>
 #import <HealthUI/_HKContextChangeDelegate-Protocol.h>
 
-@class HKChartCache, HKDisplayType, HKInteractiveChartDataFormatter, NSString;
+@class HKChartCache, HKChartSummaryTrendModel, HKDisplayType, HKInteractiveChartDataFormatter, HKOverlayContextLocation, NSString;
 @protocol HKSleepDataSourceProvider;
 
 @interface HKOverlayRoomSleepViewController <HKCurrentValueViewDataSourceDelegate, _HKContextChangeDelegate>
@@ -20,9 +20,13 @@
     HKInteractiveChartDataFormatter *_sleepChartFormatter;
     HKDisplayType *_sleepDisplayType;
     HKChartCache *_sharedSleepCache;
+    HKChartSummaryTrendModel *_trendModel;
+    HKOverlayContextLocation *_trendContextLocation;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) HKOverlayContextLocation *trendContextLocation; // @synthesize trendContextLocation=_trendContextLocation;
+@property(readonly, nonatomic) HKChartSummaryTrendModel *trendModel; // @synthesize trendModel=_trendModel;
 @property(retain, nonatomic) HKChartCache *sharedSleepCache; // @synthesize sharedSleepCache=_sharedSleepCache;
 @property(retain, nonatomic) HKDisplayType *sleepDisplayType; // @synthesize sleepDisplayType=_sleepDisplayType;
 @property(retain, nonatomic) HKInteractiveChartDataFormatter *sleepChartFormatter; // @synthesize sleepChartFormatter=_sleepChartFormatter;
@@ -31,8 +35,10 @@
 @property(nonatomic) _Bool baseDisplayIsSchedule; // @synthesize baseDisplayIsSchedule;
 @property(nonatomic) _Bool scheduleContextSelected; // @synthesize scheduleContextSelected;
 @property(nonatomic) _Bool durationContextSelected; // @synthesize durationContextSelected;
+- (void)saveRestorationState;
+- (id)restorationStateDictionary;
 - (id)_sleepColorForSelectedRangeData:(id)arg1;
-- (id)titleForSelectedRangeData:(id)arg1;
+- (id)titleForSelectedRangeData:(id)arg1 displayType:(id)arg2;
 - (id)stringForValueRange:(id)arg1 timeScope:(long long)arg2;
 - (id)createViewControllerForMode:(long long)arg1 displayDate:(id)arg2 applicationItems:(id)arg3;
 - (id)initialSelectedContextForMode:(long long)arg1;
@@ -41,6 +47,7 @@
 - (id)_consistencyContextForApplicationItems:(id)arg1 overlayMode:(long long)arg2 isPrimaryContext:(_Bool)arg3;
 - (id)_durationGoalContextForApplicationItems:(id)arg1 durationDisplayType:(id)arg2 overlayMode:(long long)arg3 isPrimaryContext:(_Bool)arg4;
 - (id)_fullContextsForApplicationItems:(id)arg1 overlayChartController:(id)arg2;
+- (id)_buildSleepTrendContext:(id)arg1 overlayChartController:(id)arg2;
 - (id)_primaryContextForApplicationItems:(id)arg1 overlayChartController:(id)arg2;
 - (id)contextSectionsForMode:(long long)arg1 applicationItems:(id)arg2 overlayChartController:(id)arg3;
 - (id)primaryDisplayTypeWithApplicationItems:(id)arg1;
@@ -60,7 +67,8 @@
 - (void)viewDidLoad;
 - (void)_setDefaultChartFormatterFonts;
 - (void)_installUpdateObserversForGoalsAndSchedulesWithApplicationItems:(id)arg1;
-- (id)initWithDisplayDate:(id)arg1 applicationItems:(id)arg2 sleepDataSourceProvider:(id)arg3 sleepChartFormatter:(id)arg4 mode:(long long)arg5;
+- (_Bool)_initialTrendSelectedForMode:(long long)arg1 trendModel:(id)arg2;
+- (id)initWithDisplayDate:(id)arg1 applicationItems:(id)arg2 sleepDataSourceProvider:(id)arg3 sleepChartFormatter:(id)arg4 mode:(long long)arg5 trendModel:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

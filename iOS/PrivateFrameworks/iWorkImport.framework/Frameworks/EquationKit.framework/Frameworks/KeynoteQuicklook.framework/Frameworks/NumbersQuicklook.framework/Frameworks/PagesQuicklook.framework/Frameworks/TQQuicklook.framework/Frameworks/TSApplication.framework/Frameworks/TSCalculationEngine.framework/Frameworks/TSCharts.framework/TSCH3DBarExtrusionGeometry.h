@@ -8,34 +8,33 @@
 
 @interface TSCH3DBarExtrusionGeometry
 {
-    struct BarExtrusionSetting mExtrusionSetting;
-    TSCH3DNormalDirectionMapper *mNormalDirectionMapper;
-    vector_7200ab52 mNormalizedSpine;
-    float mScaleMappingStartingHeight;
-    float mBottomCapScale;
+    struct BarExtrusionSetting _extrusionSetting;
+    TSCH3DNormalDirectionMapper *_normalDirectionMapper;
+    struct vector<glm::detail::tvec3<float>, std::allocator<glm::detail::tvec3<float>>> _normalizedSpine;
+    float _scaleMappingStartingHeight;
+    float _bottomCapScale;
 }
 
 + (id)namedBevelInterpolationShaderFunction;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) float bottomCapScale; // @synthesize bottomCapScale=mBottomCapScale;
-@property(readonly, nonatomic) float scaleMappingStartingHeight; // @synthesize scaleMappingStartingHeight=mScaleMappingStartingHeight;
-@property(readonly, nonatomic) TSCH3DNormalDirectionMapper *normalDirectionMapper; // @synthesize normalDirectionMapper=mNormalDirectionMapper;
-@property(nonatomic) struct BarExtrusionSetting extrusionSetting; // @synthesize extrusionSetting=mExtrusionSetting;
+@property(readonly, nonatomic) float bottomCapScale; // @synthesize bottomCapScale=_bottomCapScale;
+@property(readonly, nonatomic) float scaleMappingStartingHeight; // @synthesize scaleMappingStartingHeight=_scaleMappingStartingHeight;
+@property(readonly, nonatomic) TSCH3DNormalDirectionMapper *normalDirectionMapper; // @synthesize normalDirectionMapper=_normalDirectionMapper;
+@property(nonatomic) struct BarExtrusionSetting extrusionSetting; // @synthesize extrusionSetting=_extrusionSetting;
 - (id)selectionKnobPositions;
 - (unsigned int)capCount;
 - (unsigned int)capOffset;
 - (int)geometryCount;
 - (unsigned int)geometryOffset;
 - (void)generateArrays;
-- (void)p_updateNormalizedSpineScaleMappingsUsingTransform:(const tmat4x4_3074befe *)arg1 forSpineGenerator:(id)arg2;
+- (void)p_updateNormalizedSpineScaleMappingsUsingTransform:(const void *)arg1 forSpineGenerator:(id)arg2;
 - (void)debug_printDataPoints;
-- (void)p_insertCrossPointsIntoVector:(vector_d73af98f *)arg1;
+- (void)p_insertCrossPointsIntoVector:(void *)arg1;
 @property(readonly, nonatomic) float size;
 @property(readonly, nonatomic) _Bool hasBottomBevel;
 @property(readonly, nonatomic) _Bool hasTopBevel;
 @property(readonly, nonatomic) _Bool isCylindrical;
-- (void)dealloc;
 - (id)init;
 
 @end

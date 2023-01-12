@@ -6,17 +6,18 @@
 
 #import <Foundation/NSEnumerator.h>
 
-#import <MediaServices/MSVSQLRowResult-Protocol.h>
+#import <MediaServices/NSObject-Protocol.h>
 
 @class MSVSQLStatement, NSString;
 
-@interface MSVSQLRowEnumerator : NSEnumerator <MSVSQLRowResult>
+@interface MSVSQLRowEnumerator : NSEnumerator <NSObject>
 {
     MSVSQLStatement *_statement;
 }
 
 - (void).cxx_destruct;
 - (id)objectValueAtColumnIndex:(long long)arg1;
+- (id)jsonDataAtColumnIndex:(long long)arg1;
 - (id)jsonValueAtColumnIndex:(long long)arg1 error:(id *)arg2;
 - (unsigned long long)uint64ValueAtColumnIndex:(long long)arg1;
 - (id)stringValueAtColumnIndex:(long long)arg1;

@@ -7,7 +7,10 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (BUAdditions)
++ (id)bu_osProductionNameString;
++ (id)bu_osProductVersionString;
 + (id)bu_osBundleVersionString;
 + (id)bu_validFilenameWithString:(id)arg1;
+- (unsigned long long)bu_hexValue;
 @end
 

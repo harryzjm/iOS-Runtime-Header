@@ -11,22 +11,23 @@
 
 @interface WFVariableAvailability : NSObject
 {
-    _Bool _extensionInputVariableUsed;
     WFWorkflow *_workflow;
     NSMapTable *_providingActionsByVariableName;
     NSMapTable *_variableScopeLevelsByGroupingIdentifier;
     NSMapTable *_variableScopeEndActionsByStartAction;
     NSMapTable *_actionOutputVariableActionsByUUID;
+    NSHashTable *_actionsUsingShortcutInputVariable;
     NSCache *_cachedContentClassesForVariableNameAtIndex;
     NSHashTable *_variableObservers;
-    NSObject<OS_dispatch_queue> *_actionOutputWorkQueue;
+    NSObject<OS_dispatch_queue> *_queue;
 }
 
 + (_Bool)actionIsEligibleForOutputVariable:(id)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *actionOutputWorkQueue; // @synthesize actionOutputWorkQueue=_actionOutputWorkQueue;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) NSHashTable *variableObservers; // @synthesize variableObservers=_variableObservers;
 @property(retain, nonatomic) NSCache *cachedContentClassesForVariableNameAtIndex; // @synthesize cachedContentClassesForVariableNameAtIndex=_cachedContentClassesForVariableNameAtIndex;
+@property(retain, nonatomic) NSHashTable *actionsUsingShortcutInputVariable; // @synthesize actionsUsingShortcutInputVariable=_actionsUsingShortcutInputVariable;
 @property(retain, nonatomic) NSMapTable *actionOutputVariableActionsByUUID; // @synthesize actionOutputVariableActionsByUUID=_actionOutputVariableActionsByUUID;
 @property(retain, nonatomic) NSMapTable *variableScopeEndActionsByStartAction; // @synthesize variableScopeEndActionsByStartAction=_variableScopeEndActionsByStartAction;
 @property(retain, nonatomic) NSMapTable *variableScopeLevelsByGroupingIdentifier; // @synthesize variableScopeLevelsByGroupingIdentifier=_variableScopeLevelsByGroupingIdentifier;
@@ -35,6 +36,7 @@
 - (void)actionsDidMove;
 - (void)invalidateContentClassCache;
 - (void)renameVariable:(id)arg1 to:(id)arg2 fromAction:(id)arg3;
+- (void)actionDidChange:(id)arg1 moved:(_Bool)arg2 removed:(_Bool)arg3;
 - (void)notifyContentClassesChanged;
 - (void)notifyVariablesChanged;
 - (void)removeVariableObserver:(id)arg1;
@@ -43,7 +45,10 @@
 - (id)possibleContentClassesForVariableNamed:(id)arg1 atIndex:(unsigned long long)arg2 context:(id)arg3 excludingAction:(id)arg4;
 - (id)_possibleContentClassesForVariableNamed:(id)arg1 atIndex:(unsigned long long)arg2 context:(id)arg3 excludingAction:(id)arg4;
 - (id)actionsProvidingVariableName:(id)arg1 atIndex:(unsigned long long)arg2;
-@property(readonly, nonatomic) _Bool extensionInputVariableUsed; // @synthesize extensionInputVariableUsed=_extensionInputVariableUsed;
+- (void)invalidateActionsUsingShortcutInputVariableCache;
+- (void)populateActionsUsingShortcutInputVariableCache;
+- (void)updateShortcutInputVariableUsageForChangeInAction:(id)arg1 removed:(_Bool)arg2;
+@property(readonly, nonatomic, getter=isShortcutInputVariableUsed) _Bool shortcutInputVariableUsed;
 - (void)invalidateActionOutputProviderCache;
 - (id)actionProvidingVariableWithOutputUUID:(id)arg1;
 - (_Bool)isVariableWithOutputUUIDAvailable:(id)arg1 atIndex:(unsigned long long)arg2;

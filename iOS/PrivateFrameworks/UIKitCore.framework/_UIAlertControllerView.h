@@ -169,7 +169,10 @@ __attribute__((visibility("hidden")))
 - (void)configureForPresentAlongsideTransitionCoordinator:(id)arg1;
 - (void)_disableAllowGroupOpacitiyIfNecessaryAlongsideTransitionCoordinator:(id)arg1;
 @property(nonatomic) double effectAlpha;
+- (void)_prepareForWindowHostingSceneRemoval;
+- (void)_prepareForWindowDealloc;
 - (void)didMoveToWindow;
+- (void)_willMoveToWindow:(id)arg1;
 - (void)didMoveToSuperview;
 - (void)_reevaluateSuperviewSizingConstraints;
 - (void)_ensureActionViewRepresentationsHaveMetrics;

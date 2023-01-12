@@ -28,7 +28,8 @@
 - (void)client_remoteDidUpdateProfileList;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)startObservingOnlyIfSuccessful:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)startObservingWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchSharingInformationForProfileIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_fetchProxyWithHandler:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (void)_getSynchronousProxyWithHandler:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (void)setDisplayImageData:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -36,6 +37,7 @@
 - (void)setDisplayFirstName:(id)arg1 lastName:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchDisplayName:(CDUnknownBlockType)arg1;
 - (id)synchronouslyFetchFirstName;
+- (void)fetchProfileIdentifierForNRDeviceUUID:(id)arg1 ownerAppleID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchProfileIdentifierForNRDeviceUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchAllProfilesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)deleteProfile:(id)arg1 completion:(CDUnknownBlockType)arg2;

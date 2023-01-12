@@ -6,28 +6,33 @@
 
 #import <objc/NSObject.h>
 
-@class CNContactBufferDecoder, CNContactFetchRequest, NSMutableArray, NSMutableDictionary;
+@class CNContactBufferDecoder, NSMutableArray, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface CNiOSABContactBuffersDecoder : NSObject
 {
+    _Bool _unifyResults;
+    _Bool _mutableResults;
     CNContactBufferDecoder *_decoder;
+    unsigned long long _decodeBatchSize;
     NSMutableArray *_contactsWaitingForUnification;
     NSMutableDictionary *_matchInfosWaitingForUnification;
-    CNContactFetchRequest *_fetchRequest;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) CNContactFetchRequest *fetchRequest; // @synthesize fetchRequest=_fetchRequest;
 @property(readonly, nonatomic) NSMutableDictionary *matchInfosWaitingForUnification; // @synthesize matchInfosWaitingForUnification=_matchInfosWaitingForUnification;
 @property(readonly, nonatomic) NSMutableArray *contactsWaitingForUnification; // @synthesize contactsWaitingForUnification=_contactsWaitingForUnification;
+@property(readonly, nonatomic) _Bool mutableResults; // @synthesize mutableResults=_mutableResults;
+@property(readonly, nonatomic) _Bool unifyResults; // @synthesize unifyResults=_unifyResults;
+@property(readonly, nonatomic) unsigned long long decodeBatchSize; // @synthesize decodeBatchSize=_decodeBatchSize;
 @property(readonly, nonatomic) CNContactBufferDecoder *decoder; // @synthesize decoder=_decoder;
 - (id)unifyContacts:(id)arg1 moreComing:(_Bool)arg2;
 - (id)contactMatchInfosFromABMatchInfos:(id)arg1 contacts:(id)arg2;
 - (id)_contactMatchInfosFromABMatchInfos:(id)arg1 contacts:(id)arg2;
 - (void)_addContactMatchInfoFromABMatchInfos:(id)arg1 forContact:(id)arg2 toDictionary:(id)arg3;
-- (id)contactsFromData:(id)arg1 moreComing:(_Bool)arg2 error:(id *)arg3;
+- (_Bool)decodeContactsFromData:(id)arg1 moreComing:(_Bool)arg2 replyHandler:(CDUnknownBlockType)arg3 error:(id *)arg4;
 - (id)initWithFetchRequest:(id)arg1;
+- (id)initWithDecoder:(id)arg1 unifyResults:(_Bool)arg2 mutableResults:(_Bool)arg3 decodeBatchLimit:(unsigned long long)arg4;
 - (id)init;
 
 @end

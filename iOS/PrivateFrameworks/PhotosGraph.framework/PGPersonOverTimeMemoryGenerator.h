@@ -17,12 +17,21 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *personName; // @synthesize personName=_personName;
 @property(retain, nonatomic) NSString *personUUID; // @synthesize personUUID=_personUUID;
-- (_Bool)canFallbackToDejunkAndDedupeForShowMore;
-- (id)_potentialMemoriesForDryTesting;
-- (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
+- (id)titleGeneratorForTriggeredMemory:(id)arg1 withKeyAsset:(id)arg2 curatedAssets:(id)arg3 extendedCuratedAssets:(id)arg4 titleGenerationContext:(id)arg5 inGraph:(id)arg6;
+- (id)curationOptionsWithRequiredAssetUUIDs:(id)arg1 eligibleAssetUUIDs:(id)arg2 triggeredMemory:(id)arg3;
+- (id)curationOptionsWithRequiredAssetUUIDs:(id)arg1 potentialMemory:(id)arg2;
+- (id)keyAssetCurationOptionsWithTriggeredMemory:(id)arg1 inGraph:(id)arg2;
+- (id)keyAssetCurationOptionsWithPotentialMemory:(id)arg1 inGraph:(id)arg2;
+- (id)relevantCurationFeederForTriggeredMemory:(id)arg1 relevantFeeder:(id)arg2 inGraph:(id)arg3 allowGuestAsset:(_Bool)arg4 progressReporter:(id)arg5;
+- (id)relevantCurationFeederForPotentialMemory:(id)arg1 inGraph:(id)arg2;
+- (id)relevantFeederForTriggeredMemory:(id)arg1 inGraph:(id)arg2 allowGuestAsset:(_Bool)arg3 progressReporter:(id)arg4;
+- (id)relevantFeederForPotentialMemory:(id)arg1 inGraph:(id)arg2;
 - (unsigned long long)durationForExtendedCuration;
-- (void)_enumeratePotentialMemoriesUsingBlock:(CDUnknownBlockType)arg1;
-- (id)_computeOverTheTimeFacedAssetsForPersonWithUUID:(id)arg1 inFacedAssets:(id)arg2;
+- (id)peopleTitleGeneratorWithMomentNodes:(id)arg1 personNode:(id)arg2 titleGenerationContext:(id)arg3;
+- (id)_potentialMemoriesForDryTesting;
+- (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2 andGraph:(id)arg3;
+- (void)_enumeratePotentialMemoriesWithGraph:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (id)_computeOverTheTimeFacedAssetsForPersonLocalIdentifier:(id)arg1 inFacedAssets:(id)arg2 ignoresMinimumNumberOfAssets:(_Bool)arg3 numberOfInsufficientlyFacedRejects:(unsigned long long *)arg4 numberOfBuildFailureRejects:(unsigned long long *)arg5 progressReporter:(id)arg6;
 
 @end
 

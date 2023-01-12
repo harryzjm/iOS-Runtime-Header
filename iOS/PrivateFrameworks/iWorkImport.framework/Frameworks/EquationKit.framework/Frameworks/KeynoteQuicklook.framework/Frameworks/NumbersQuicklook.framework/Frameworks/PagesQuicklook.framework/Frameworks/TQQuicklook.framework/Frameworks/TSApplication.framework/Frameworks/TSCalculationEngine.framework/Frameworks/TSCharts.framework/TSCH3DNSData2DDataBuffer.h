@@ -8,13 +8,14 @@
 
 @interface TSCH3DNSData2DDataBuffer
 {
-    NSData *mConstData;
-    NSMutableData *mMutableData;
+    NSData *_constData;
+    NSMutableData *_mutableData;
 }
 
-+ (id)bufferWithCapacityDimension:(const struct DataBuffer2DDimension *)arg1 data:(id)arg2;
-+ (id)bufferWithCapacityDimension:(const struct DataBuffer2DDimension *)arg1 mutableData:(id)arg2;
-- (void)resizeFillDimension:(const struct DataBuffer2DDimension *)arg1;
++ (id)bufferWithCapacityDimension:(const void *)arg1 data:(id)arg2;
++ (id)bufferWithCapacityDimension:(const void *)arg1 mutableData:(id)arg2;
+- (void).cxx_destruct;
+- (void)resizeFillDimension:(const void *)arg1;
 - (void)fillCapacity;
 @property(readonly, nonatomic) NSData *NSData;
 - (void *)mutableData;
@@ -22,10 +23,9 @@
 - (unsigned long long)componentByteSize;
 - (int)componentType;
 - (unsigned long long)count;
-- (void)dealloc;
-- (id)initWithCapacityDimension:(const struct DataBuffer2DDimension *)arg1;
-- (id)initWithCapacityDimension:(const struct DataBuffer2DDimension *)arg1 data:(id)arg2;
-- (id)initWithCapacityDimension:(const struct DataBuffer2DDimension *)arg1 mutableData:(id)arg2;
+- (id)initWithCapacityDimension:(const void *)arg1;
+- (id)initWithCapacityDimension:(const void *)arg1 data:(id)arg2;
+- (id)initWithCapacityDimension:(const void *)arg1 mutableData:(id)arg2;
 
 @end
 

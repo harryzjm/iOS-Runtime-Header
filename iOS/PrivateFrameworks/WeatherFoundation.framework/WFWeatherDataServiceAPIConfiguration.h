@@ -22,11 +22,13 @@
 @property(readonly, nonatomic) NSString *environment; // @synthesize environment=_environment;
 @property(retain, nonatomic) id <WFForecastDataParser> forecastParser; // @synthesize forecastParser=_forecastParser;
 @property(retain, nonatomic) Class forecastRequestFormatterClass; // @synthesize forecastRequestFormatterClass=_forecastRequestFormatterClass;
-@property(readonly, nonatomic) _Bool isValid;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)hostUrl;
+- (id)parseAQIScaleNamed:(id)arg1 data:(id)arg2 error:(id *)arg3;
+- (id)aqiRequestForScaleNamed:(id)arg1 language:(id)arg2;
 - (id)parseForecast:(unsigned long long)arg1 data:(id)arg2 location:(id)arg3 units:(int)arg4 locale:(id)arg5 date:(id)arg6 error:(id *)arg7 rules:(id)arg8;
-- (id)forecastRequestForTypes:(unsigned long long)arg1 location:(id)arg2 units:(int)arg3 date:(id)arg4 error:(id *)arg5 rules:(id)arg6;
+- (id)forecastRequestForTypes:(unsigned long long)arg1 location:(id)arg2 units:(int)arg3 date:(id)arg4 error:(id *)arg5 rules:(id)arg6 options:(id)arg7;
+- (id)hostUrl;
+@property(readonly, nonatomic) _Bool isValid;
 - (id)initWithVersion:(id)arg1 environment:(id)arg2;
 
 // Remaining properties

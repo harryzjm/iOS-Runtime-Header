@@ -18,6 +18,7 @@
 + (void)setSyncHistoryToCloudForTests:(_Bool)arg1;
 + (void)setAllowGeocodeForTests:(_Bool)arg1;
 + (void)setContactsDetectionEnabledForTests:(_Bool)arg1;
++ (void)setMailSaliencyDetectionEnabledForTests:(_Bool)arg1;
 + (void)setRemindersDetectionInMailEnabledForTests:(_Bool)arg1;
 + (void)setStructuredEventsMLDetectionEnabledForTests:(_Bool)arg1;
 + (void)setRemindersDetectionEnabledForTests:(_Bool)arg1;
@@ -50,6 +51,7 @@
 + (void)setDetectNLEvents:(_Bool)arg1;
 + (void)setDetectStructuredEvents:(_Bool)arg1;
 + (void)updateDetection:(_Bool)arg1 forKey:(id)arg2;
++ (id)detectSalientMails;
 + (_Bool)detectRemindersInMail;
 + (_Bool)detectStructuredEventsML;
 + (_Bool)detectReminders;

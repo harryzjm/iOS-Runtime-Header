@@ -20,6 +20,11 @@
     unsigned long long _resultsLimitPerSyncOperation;
     NSNumber *_maximumAttachmentSizeMB;
     NSString *_minimumClientVersion;
+    unsigned long long _mentionNotificationMaxRetries;
+    unsigned long long _launchTaskMaxRetries;
+    unsigned long long _serverSideUpdateTaskMaxFailureCount;
+    unsigned long long _durationForNextPasswordReask;
+    unsigned long long _unsupportedNoteDeviceCheckIntervalSeconds;
     NSTimer *_downloadTimer;
 }
 
@@ -31,6 +36,11 @@
 + (id)sharedConfiguration;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSTimer *downloadTimer; // @synthesize downloadTimer=_downloadTimer;
+@property(nonatomic) unsigned long long unsupportedNoteDeviceCheckIntervalSeconds; // @synthesize unsupportedNoteDeviceCheckIntervalSeconds=_unsupportedNoteDeviceCheckIntervalSeconds;
+@property(nonatomic) unsigned long long durationForNextPasswordReask; // @synthesize durationForNextPasswordReask=_durationForNextPasswordReask;
+@property(nonatomic) unsigned long long serverSideUpdateTaskMaxFailureCount; // @synthesize serverSideUpdateTaskMaxFailureCount=_serverSideUpdateTaskMaxFailureCount;
+@property(nonatomic) unsigned long long launchTaskMaxRetries; // @synthesize launchTaskMaxRetries=_launchTaskMaxRetries;
+@property(nonatomic) unsigned long long mentionNotificationMaxRetries; // @synthesize mentionNotificationMaxRetries=_mentionNotificationMaxRetries;
 @property(nonatomic) _Bool shouldPerformTopHitSearch; // @synthesize shouldPerformTopHitSearch=_shouldPerformTopHitSearch;
 @property(copy, nonatomic) NSString *minimumClientVersion; // @synthesize minimumClientVersion=_minimumClientVersion;
 @property(retain, nonatomic) NSNumber *maximumAttachmentSizeMB; // @synthesize maximumAttachmentSizeMB=_maximumAttachmentSizeMB;

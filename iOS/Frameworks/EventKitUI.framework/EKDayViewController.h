@@ -197,8 +197,9 @@
 - (id)_occurrencesForDayView:(id)arg1;
 - (void)dayView:(id)arg1 didUpdateScrollPosition:(struct CGPoint)arg2;
 - (void)significantTimeChangeOccurred;
-- (void)loadDataBetweenStart:(id)arg1 end:(id)arg2 withTrigger:(int)arg3 completionForCurrentDayReload:(CDUnknownBlockType)arg4;
+- (void)loadDataBetweenStart:(id)arg1 end:(id)arg2 withTrigger:(int)arg3 generation:(int)arg4 completionForCurrentDayReload:(CDUnknownBlockType)arg5;
 - (void)loadData:(_Bool)arg1 withTrigger:(int)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)reloadDataForOccurrenceChangeWithGeneration:(int)arg1;
 - (void)reloadData;
 - (void)_performDisplayedOccurrencesChangedDelegateMethodWithTrigger:(int)arg1;
 - (_Bool)_delegateRespondsToDisplayedOccurrencesChangedMethod;

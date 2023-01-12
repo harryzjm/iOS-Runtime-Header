@@ -23,11 +23,11 @@
     SSHarvestedApplicationDocument *_document;
 }
 
-+ (id)_metadataIdentifierBlacklist;
++ (id)_metadataIdentifierBlocklist;
 - (void).cxx_destruct;
 @property(retain, nonatomic) SSHarvestedApplicationDocument *document; // @synthesize document=_document;
 @property(retain, nonatomic) SSHarvestedApplicationMetadata *metadata; // @synthesize metadata=_metadata;
-@property(readonly, nonatomic) _Bool isAppLibrary;
+@property(readonly, nonatomic) _Bool isAppLauncher;
 @property(readonly, nonatomic) _Bool supportsMetadataCapture;
 @property(readonly, nonatomic) _Bool hasKeyboardFocus;
 @property(readonly, nonatomic) NSString *elementIdentifier;

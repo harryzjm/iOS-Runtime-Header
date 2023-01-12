@@ -18,6 +18,7 @@
     UIActivityIndicatorView *_activityIndicator;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
 @property(retain, nonatomic) GKLoadableContentStateMachine *loadingMachine; // @synthesize loadingMachine=_loadingMachine;
 @property(nonatomic) double loadingIndicatorDelay; // @synthesize loadingIndicatorDelay=_loadingIndicatorDelay;
@@ -31,7 +32,6 @@
 - (void)showLoadingIndicator;
 - (void)setViewsToHideHidden:(_Bool)arg1;
 @property(retain, nonatomic) NSString *loadingState;
-- (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 
 // Remaining properties

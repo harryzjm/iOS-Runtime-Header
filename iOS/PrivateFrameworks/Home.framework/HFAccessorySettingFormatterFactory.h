@@ -14,6 +14,7 @@
 }
 
 + (id)_doorbellChimeEnabledFormatter;
++ (id)_announceEnabledFormatter;
 + (id)_siriPersonalRequestsFormatter;
 + (id)_siriOutputVoiceFormatter;
 + (id)_siriRecognitionLanguageFormatter;

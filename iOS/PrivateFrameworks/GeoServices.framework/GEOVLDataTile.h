@@ -15,6 +15,7 @@
     PBDataReader *_reader;
     CDStruct_9f2792e4 _buildIndexs;
     CDStruct_9f2792e4 _precisionIndexs;
+    CDStruct_95bda58d _purposeDenylists;
     GEOTileCoordinate *_coord;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
@@ -22,6 +23,7 @@
     struct {
         unsigned int read_buildIndexs:1;
         unsigned int read_precisionIndexs:1;
+        unsigned int read_purposeDenylists:1;
         unsigned int read_coord:1;
         unsigned int wrote_anyField:1;
     } _flags;
@@ -42,6 +44,14 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsPurposeDenylists:(id)arg1;
+- (id)purposeDenylistsAsString:(int)arg1;
+- (void)setPurposeDenylists:(int *)arg1 count:(unsigned long long)arg2;
+- (int)purposeDenylistAtIndex:(unsigned long long)arg1;
+- (void)addPurposeDenylist:(int)arg1;
+- (void)clearPurposeDenylists;
+@property(readonly, nonatomic) int *purposeDenylists;
+@property(readonly, nonatomic) unsigned long long purposeDenylistsCount;
 - (void)setPrecisionIndexs:(unsigned int *)arg1 count:(unsigned long long)arg2;
 - (unsigned int)precisionIndexAtIndex:(unsigned long long)arg1;
 - (void)addPrecisionIndex:(unsigned int)arg1;

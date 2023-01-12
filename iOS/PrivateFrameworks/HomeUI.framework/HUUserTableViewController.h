@@ -7,7 +7,7 @@
 #import <HomeUI/HFUserObserver-Protocol.h>
 #import <HomeUI/HUMediaAccountDelegate-Protocol.h>
 
-@class AMSUIUpdateMultiUserTokenTask, HFItemManager, HMHome, NAFuture, NSAttributedString, NSString, _HUUserAvatarHeaderView;
+@class AMSUIUpdateMultiUserTokenTask, HFItemManager, HFUserHandle, HMHome, NAFuture, NSAttributedString, NSString, _HUUserAvatarHeaderView;
 @protocol HUUserItemManager;
 
 @interface HUUserTableViewController <HUMediaAccountDelegate, HFUserObserver>
@@ -37,7 +37,8 @@
 - (void)_presentMediaAccountErrorsIfNeeded:(_Bool)arg1;
 - (void)user:(id)arg1 didUpdateNeedsiTunesMultiUserRepair:(_Bool)arg2;
 - (void)performRemovalAction:(id)arg1;
-- (id)userHandle;
+@property(readonly, nonatomic) HFUserHandle *userHandle;
+- (id)user;
 - (id)itemTableHeaderView;
 - (void)applicationDidEnterBackground;
 - (void)applicationWillEnterForeground;

@@ -48,6 +48,8 @@
 - (void)rebuildAllMomentsWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_runMomentAndHighlightGenerationForAssets:(id)arg1 hiddenAssets:(id)arg2 updatedAssetIDsForHighlights:(id)arg3 updatedMomentIDsForHighlights:(id)arg4 affectedMoments:(id)arg5 highlightsWithDeletedMoments:(id)arg6 insertedOrUpdatedMoments:(id *)arg7;
 - (id)_highlightGenerator;
+- (id)frequentLocationManager;
+- (id)localCreationDateCreator;
 - (void)_runIncrementalGenerationPassWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)generateWithIncrementalDataCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)generateWithAssetInsertsAndUpdates:(id)arg1 assetDeletes:(id)arg2 assetUpdatesForHighlights:(id)arg3 momentUpdatesForHighlights:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;

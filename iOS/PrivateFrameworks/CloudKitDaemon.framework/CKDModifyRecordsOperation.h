@@ -7,14 +7,13 @@
 @class C2RequestOptions, CKDDecryptRecordsOperation, CKDProtocolTranslator, CKDRecordCache, NSArray, NSData, NSDictionary, NSMapTable, NSMutableDictionary, NSObject;
 @protocol CKModifyRecordsOperationCallbacks, OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface CKDModifyRecordsOperation
 {
     CKDDecryptRecordsOperation *_decryptOperation;
     _Bool _retryPCSFailures;
     _Bool _canSetPreviousProtectionEtag;
     _Bool _trustProtectionData;
-    _Bool _shouldModifyRecordsInDatabase;
+    _Bool _alwaysFetchPCSFromServer;
     _Bool _retriedRecords;
     _Bool _shouldOnlySaveAssetContent;
     _Bool _haveOutstandingHandlers;
@@ -23,6 +22,7 @@ __attribute__((visibility("hidden")))
     _Bool _originatingFromDaemon;
     _Bool _markAsParticipantNeedsNewInvitationToken;
     _Bool _requestNeedsUserPublicKeys;
+    _Bool _shouldModifyRecordsInDatabase;
     int _saveAttempts;
     NSData *_cachedUserBoundaryKeyData;
     CDUnknownBlockType _saveProgressBlock;
@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
     NSArray *_recordsToSave;
     NSArray *_recordIDsToDelete;
     NSDictionary *_recordIDsToDeleteToEtags;
+    NSDictionary *_recordIDsToDeleteToSigningPCSIdentity;
     NSDictionary *_conflictLosersToResolveByRecordID;
     NSDictionary *_pluginFieldsForRecordDeletesByID;
     NSDictionary *_handlersByRecordID;
@@ -54,6 +55,7 @@ __attribute__((visibility("hidden")))
 + (long long)isPredominatelyDownload;
 + (_Bool)_claimPackagesInRecord:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldModifyRecordsInDatabase; // @synthesize shouldModifyRecordsInDatabase=_shouldModifyRecordsInDatabase;
 @property(copy, nonatomic) C2RequestOptions *streamingAssetRequestOptions; // @synthesize streamingAssetRequestOptions=_streamingAssetRequestOptions;
 @property(retain, nonatomic) NSArray *userPublicKeys; // @synthesize userPublicKeys=_userPublicKeys;
 @property(nonatomic) _Bool requestNeedsUserPublicKeys; // @synthesize requestNeedsUserPublicKeys=_requestNeedsUserPublicKeys;
@@ -79,6 +81,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSDictionary *handlersByRecordID; // @synthesize handlersByRecordID=_handlersByRecordID;
 @property(retain, nonatomic) NSDictionary *pluginFieldsForRecordDeletesByID; // @synthesize pluginFieldsForRecordDeletesByID=_pluginFieldsForRecordDeletesByID;
 @property(retain, nonatomic) NSDictionary *conflictLosersToResolveByRecordID; // @synthesize conflictLosersToResolveByRecordID=_conflictLosersToResolveByRecordID;
+@property(retain, nonatomic) NSDictionary *recordIDsToDeleteToSigningPCSIdentity; // @synthesize recordIDsToDeleteToSigningPCSIdentity=_recordIDsToDeleteToSigningPCSIdentity;
 @property(retain, nonatomic) NSDictionary *recordIDsToDeleteToEtags; // @synthesize recordIDsToDeleteToEtags=_recordIDsToDeleteToEtags;
 @property(retain, nonatomic) NSArray *recordIDsToDelete; // @synthesize recordIDsToDelete=_recordIDsToDelete;
 @property(retain, nonatomic) NSArray *recordsToSave; // @synthesize recordsToSave=_recordsToSave;
@@ -87,11 +90,13 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType deleteCompletionBlock; // @synthesize deleteCompletionBlock=_deleteCompletionBlock;
 @property(copy, nonatomic) CDUnknownBlockType saveCompletionBlock; // @synthesize saveCompletionBlock=_saveCompletionBlock;
 @property(copy, nonatomic) CDUnknownBlockType saveProgressBlock; // @synthesize saveProgressBlock=_saveProgressBlock;
-@property(nonatomic) _Bool shouldModifyRecordsInDatabase; // @synthesize shouldModifyRecordsInDatabase=_shouldModifyRecordsInDatabase;
 @property(copy, nonatomic) NSData *cachedUserBoundaryKeyData; // @synthesize cachedUserBoundaryKeyData=_cachedUserBoundaryKeyData;
+@property(nonatomic) _Bool alwaysFetchPCSFromServer; // @synthesize alwaysFetchPCSFromServer=_alwaysFetchPCSFromServer;
 @property(nonatomic) _Bool trustProtectionData; // @synthesize trustProtectionData=_trustProtectionData;
 @property(nonatomic) _Bool canSetPreviousProtectionEtag; // @synthesize canSetPreviousProtectionEtag=_canSetPreviousProtectionEtag;
 @property(nonatomic) _Bool retryPCSFailures; // @synthesize retryPCSFailures=_retryPCSFailures;
+- (id)relevantZoneIDs;
+- (_Bool)validateAgainstLiveContainer:(id)arg1 error:(id *)arg2;
 - (_Bool)supportsClearAssetEncryption;
 - (id)analyticsPayload;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
@@ -101,7 +106,7 @@ __attribute__((visibility("hidden")))
 - (void)_continueRecordsModify;
 - (void)_reportRecordsInFlight;
 - (id)requestedFieldsByRecordIDForRecords:(id)arg1;
-- (id)_createModifyRequestWithRecordsToSave:(id)arg1 recordsToDelete:(id)arg2 recordsToDeleteToEtags:(id)arg3 handlersByRecordID:(id)arg4;
+- (id)_createModifyRequestWithRecordsToSave:(id)arg1 recordsToDelete:(id)arg2 recordsToDeleteToEtags:(id)arg3 recordIDsToDeleteToSigningPCSIdentity:(id)arg4 handlersByRecordID:(id)arg5;
 - (void)_handleRecordDeleted:(id)arg1 handler:(id)arg2 responseCode:(id)arg3;
 - (void)_reallyHandleRecordSaved:(id)arg1 handler:(id)arg2 etag:(id)arg3 dateStatistics:(id)arg4 responseCode:(id)arg5 keysAssociatedWithETag:(id)arg6 recordForOplockFailure:(id)arg7 decryptedServerRecord:(id)arg8;
 - (void)_handleRecordSaved:(id)arg1 handler:(id)arg2 etag:(id)arg3 dateStatistics:(id)arg4 responseCode:(id)arg5 keysAssociatedWithETag:(id)arg6 recordForOplockFailure:(id)arg7 serverRecord:(id)arg8;
@@ -118,6 +123,7 @@ __attribute__((visibility("hidden")))
 - (void)_didCompleteRecordFetchOperation:(id)arg1 assetArrayByRecordID:(id)arg2;
 - (void)assetArrayByRecordID:(id)arg1 didFetchRecord:(id)arg2 recordID:(id)arg3 error:(id)arg4;
 - (void)_fetchRecordPCSData;
+- (_Bool)_needsSigningPCS;
 - (void)_fetchSharePCSData;
 - (void)_prepareParentPCS;
 - (void)_fetchShareParticipants;
@@ -138,11 +144,12 @@ __attribute__((visibility("hidden")))
 - (_Bool)makeStateTransition;
 @property(readonly, nonatomic) _Bool hasDecryptOperation;
 @property(readonly, nonatomic) CKDDecryptRecordsOperation *recordDecryptOperation;
+- (_Bool)isOperationType:(int)arg1;
 - (int)operationType;
 - (void)_enumerateHandlersInState:(unsigned long long)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (_Bool)_hasHandlerInState:(unsigned long long)arg1;
 - (id)activityCreate;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 // Remaining properties
 @property(retain, nonatomic) id <CKModifyRecordsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;

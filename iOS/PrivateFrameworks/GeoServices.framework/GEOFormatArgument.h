@@ -9,8 +9,8 @@
 #import <GeoServices/GEOServerFormatToken-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOCountdownData, GEOMeasurementData, GEONumberData, GEOPBTransitArtwork, GEOPrice, NSArray, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
-@protocol GEOServerFormatTokenCountdownValue, GEOServerFormatTokenPriceValue, GEOTransitArtworkDataSource;
+@class GEOCountdownData, GEOManeuverData, GEOMeasurementData, GEONumberData, GEOPBTransitArtwork, GEOPrice, GEOURLData, NSArray, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
+@protocol GEOServerFormatTokenCountdownValue, GEOServerFormatTokenManeuverValue, GEOServerFormatTokenPriceValue, GEOServerFormatTokenUrlValue, GEOTransitArtworkDataSource;
 
 @interface GEOFormatArgument : PBCodable <GEOServerFormatToken, NSCopying>
 {
@@ -19,11 +19,13 @@
     CDStruct_9f2792e4 _valInt3s;
     GEOPBTransitArtwork *_artwork;
     GEOCountdownData *_countdownData;
+    GEOManeuverData *_maneuverData;
     GEOMeasurementData *_measurementData;
     GEONumberData *_numberData;
     GEOPrice *_price;
     NSMutableArray *_timestampDatas;
     NSString *_token;
+    GEOURLData *_urlData;
     NSString *_valString;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
@@ -39,11 +41,13 @@
         unsigned int read_valInt3s:1;
         unsigned int read_artwork:1;
         unsigned int read_countdownData:1;
+        unsigned int read_maneuverData:1;
         unsigned int read_measurementData:1;
         unsigned int read_numberData:1;
         unsigned int read_price:1;
         unsigned int read_timestampDatas:1;
         unsigned int read_token:1;
+        unsigned int read_urlData:1;
         unsigned int read_valString:1;
         unsigned int wrote_anyField:1;
     } _flags;
@@ -71,6 +75,10 @@
 - (id)formatAsString:(int)arg1;
 @property(nonatomic) _Bool hasFormat;
 @property(nonatomic) int format;
+@property(retain, nonatomic) GEOManeuverData *maneuverData;
+@property(readonly, nonatomic) _Bool hasManeuverData;
+@property(retain, nonatomic) GEOURLData *urlData;
+@property(readonly, nonatomic) _Bool hasUrlData;
 @property(retain, nonatomic) GEOMeasurementData *measurementData;
 @property(readonly, nonatomic) _Bool hasMeasurementData;
 @property(retain, nonatomic) GEONumberData *numberData;
@@ -103,6 +111,13 @@
 - (void)dealloc;
 - (id)initWithData:(id)arg1;
 - (id)init;
+- (id)_stringForPower:(double)arg1 unit:(id)arg2;
+- (id)_formatterForDurationString;
+- (id)_stringForDurationSeconds:(double)arg1 unitsStyle:(long long)arg2;
+- (double)_secondsRoundedUpToNearestMinute:(double)arg1;
+- (id)stringWithDefaultValues;
+@property(readonly, nonatomic) id <GEOServerFormatTokenManeuverValue> maneuverValue;
+@property(readonly, nonatomic) id <GEOServerFormatTokenUrlValue> urlValue;
 @property(readonly, nonatomic) _Bool shouldScaleUnits;
 @property(readonly, nonatomic) id <GEOServerFormatTokenCountdownValue> countdownValue;
 @property(readonly, nonatomic) NSArray *timeStampValues;

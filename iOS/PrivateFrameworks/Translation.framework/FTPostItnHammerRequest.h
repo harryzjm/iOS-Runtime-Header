@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_969c4c44)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_969c4c44)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSArray *tokens;
 @property(readonly, nonatomic) NSString *post_itn_string;
 @property(readonly, nonatomic) NSString *language;

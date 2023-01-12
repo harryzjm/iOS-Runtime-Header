@@ -27,7 +27,7 @@
 @property(copy, nonatomic) NSDateComponents *simpleRuleComponents; // @synthesize simpleRuleComponents=_simpleRuleComponents;
 @property(nonatomic) __weak id <CLSHolidayCalendarEventDateRuleDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)_stringDescriptionForDateRuleComponentValue:(long long)arg1;
-- (id)debugDescription;
+- (id)description;
 - (_Bool)matchesExplicitYear:(long long)arg1;
 - (_Bool)hasExplicitYear;
 - (_Bool)hasEndYear;

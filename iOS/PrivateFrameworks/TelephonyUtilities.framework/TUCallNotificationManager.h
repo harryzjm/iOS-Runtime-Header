@@ -18,6 +18,8 @@
 - (void)conferenceParticipantCallsChangedForCallContainer:(id)arg1 conferenceParticipantCalls:(id)arg2;
 - (void)modelChangedForCall:(id)arg1;
 - (void)prefersExclusiveAccessToCellularNetworkChangedForCall:(id)arg1;
+- (void)conversationChangedForCall:(id)arg1;
+- (void)videoStreamTokenChangedForCall:(id)arg1;
 - (void)mediaPropertiesChangedForCall:(id)arg1 remoteAspectRatioDidChange:(_Bool)arg2 remoteCameraOrientationDidChange:(_Bool)arg3;
 - (void)remoteParticipantHandlesChangedForCall:(id)arg1;
 - (void)providerContextChangedForCall:(id)arg1;
@@ -31,14 +33,17 @@
 - (void)supportsTTYWithVoiceChangedForCall:(id)arg1;
 - (void)localSenderIdentityAccountUUIDChangedForCall:(id)arg1;
 - (void)remoteUplinkMutedChangedForCall:(id)arg1;
+- (void)bluetoothAudioFormatChangedForCall:(id)arg1;
 - (void)ttyTypeChangedForCall:(id)arg1;
 - (void)audioPropertiesChangedForCall:(id)arg1;
 - (void)videoPausedChangedForCall:(id)arg1;
 - (void)videoDegradedChangedForCall:(id)arg1;
 - (void)mediaStalledChangedForCall:(id)arg1;
 - (void)isThirdPartyVideoChangedForCall:(id)arg1;
+- (void)sharingScreenChangedForCall:(id)arg1;
 - (void)isSendingVideoChangedForCall:(id)arg1;
 - (void)isSendingAudioChangedForCall:(id)arg1;
+- (void)isFailureExpectedChangedForCall:(id)arg1;
 - (void)isEmergencyChangedForCall:(id)arg1;
 - (void)displayContextChangedForCall:(id)arg1;
 - (void)destinationIDChangedForCall:(id)arg1;

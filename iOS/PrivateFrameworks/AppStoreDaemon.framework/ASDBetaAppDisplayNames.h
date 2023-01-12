@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <AppStoreDaemon/NSCopying-Protocol.h>
 #import <AppStoreDaemon/NSSecureCoding-Protocol.h>
 
 @class NSDictionary, NSString;
 
-@interface ASDBetaAppDisplayNames : NSObject <NSSecureCoding>
+@interface ASDBetaAppDisplayNames : NSObject <NSCopying, NSSecureCoding>
 {
     NSDictionary *_localizedNames;
     NSString *_primaryLocale;

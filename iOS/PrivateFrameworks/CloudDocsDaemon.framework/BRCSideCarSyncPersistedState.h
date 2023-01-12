@@ -6,12 +6,11 @@
 
 @class CKOperationGroup, CKServerChangeToken, NSDate;
 
-__attribute__((visibility("hidden")))
 @interface BRCSideCarSyncPersistedState
 {
     _Bool _needsSync;
     NSDate *_lastSyncDownDate;
-    CKServerChangeToken *_changeToken;
+    CKServerChangeToken *_serverChangeToken;
     unsigned long long _requestID;
     CKOperationGroup *_ckGroup;
 }
@@ -22,7 +21,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CKOperationGroup *ckGroup; // @synthesize ckGroup=_ckGroup;
 @property(nonatomic) _Bool needsSync; // @synthesize needsSync=_needsSync;
 @property(readonly, nonatomic) unsigned long long requestID; // @synthesize requestID=_requestID;
-@property(readonly, nonatomic) CKServerChangeToken *changeToken; // @synthesize changeToken=_changeToken;
+@property(readonly, nonatomic) CKServerChangeToken *serverChangeToken; // @synthesize serverChangeToken=_serverChangeToken;
 @property(readonly) NSDate *lastSyncDownDate; // @synthesize lastSyncDownDate=_lastSyncDownDate;
 - (id)description;
 - (unsigned long long)allocateNextRequestID;

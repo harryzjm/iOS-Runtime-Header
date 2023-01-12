@@ -41,8 +41,10 @@
 - (void)reconnect;
 - (void)startWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)__registerForMessages;
-- (void)dealloc;
+- (void)_unconfigure;
+- (void)_unconfigureContext;
 - (id)init;
+- (id)initWithContext:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

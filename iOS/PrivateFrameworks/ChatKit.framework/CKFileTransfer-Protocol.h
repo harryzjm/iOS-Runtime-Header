@@ -9,6 +9,7 @@
 @class IMMessage, NSDictionary, NSError, NSString, NSURL;
 
 @protocol CKFileTransfer <NSObject>
+@property(readonly, nonatomic) _Bool isFromMomentShare;
 @property(readonly, nonatomic, getter=isRestoring) _Bool restoring;
 @property(readonly, nonatomic, getter=isDownloading) _Bool downloading;
 @property(readonly, nonatomic, getter=isDownloadable) _Bool downloadable;

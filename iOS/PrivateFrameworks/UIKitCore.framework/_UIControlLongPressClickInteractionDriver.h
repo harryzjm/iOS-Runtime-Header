@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)prefersCancelsTouchesInView;
+- (double)clickTimeoutDuration;
 
 @end
 

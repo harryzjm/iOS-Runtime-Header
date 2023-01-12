@@ -6,12 +6,26 @@
 
 #import <objc/NSObject.h>
 
+@class RCPInlinePlayer, RPTInteractionOptions, RPTSettings;
+
 @interface RPTTestRunner : NSObject
 {
+    RPTInteractionOptions *_interactionOptions;
+    RPTSettings *_settings;
+    RCPInlinePlayer *_inlinePlayer;
 }
 
 + (void)runTestWithParameters:(id)arg1;
++ (void)playInteraction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (_Bool)isRecapAvailable;
+- (void).cxx_destruct;
+@property(readonly, retain, nonatomic) RCPInlinePlayer *inlinePlayer; // @synthesize inlinePlayer=_inlinePlayer;
+@property(retain, nonatomic) RPTSettings *settings; // @synthesize settings=_settings;
+@property(retain, nonatomic) RPTInteractionOptions *interactionOptions; // @synthesize interactionOptions=_interactionOptions;
+- (void)runTestWithParameters:(id)arg1;
+- (_Bool)_manageTestStartAndEndForParameters:(id)arg1;
+- (void)playInteraction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)initWithInteractionOptions:(id)arg1;
 
 @end
 

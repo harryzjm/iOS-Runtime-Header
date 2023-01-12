@@ -26,11 +26,11 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)referenceTextForAutocompleteWithCalculationEngine:(id)arg1 contextSheetName:(id)arg2 preserveFlags:(struct TSUPreserveFlags)arg3 inputString:(id)arg4 inputStringIsComplete:(_Bool)arg5;
-- (id)referenceTextForAutocompleteWithCalculationEngine:(id)arg1 hostTableUID:(const UUIDData_5fbc143e *)arg2 preserveFlags:(struct TSUPreserveFlags)arg3 inputString:(id)arg4 inputStringIsComplete:(_Bool)arg5;
+- (id)referenceTextForAutocompleteWithCalculationEngine:(id)arg1 hostTableUID:(const struct TSKUIDStruct *)arg2 preserveFlags:(struct TSUPreserveFlags)arg3 inputString:(id)arg4 inputStringIsComplete:(_Bool)arg5;
 - (id)p_stringByUnescapingQuotedStringWithPossibleDollarPrefix:(id)arg1 partial:(_Bool)arg2;
 - (id)referenceTextWithCalculationEngine:(id)arg1 contextSheetName:(id)arg2;
-- (id)referenceTextWithCalculationEngine:(id)arg1 hostTableUID:(const UUIDData_5fbc143e *)arg2;
-@property(readonly, nonatomic) UUIDData_5fbc143e tableUID;
+- (id)referenceTextWithCalculationEngine:(id)arg1 hostTableUID:(const struct TSKUIDStruct *)arg2;
+@property(readonly, nonatomic) struct TSKUIDStruct tableUID;
 @property(readonly, nonatomic) TSCEWrappedRangeRef *rangeReference;
 @property(readonly, nonatomic) struct TSCERangeRef rangeRef;
 @property(readonly, nonatomic) struct TSCEAnyRef anyRef;

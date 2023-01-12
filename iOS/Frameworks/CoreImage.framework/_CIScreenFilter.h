@@ -16,15 +16,14 @@ __attribute__((visibility("hidden")))
     NSNumber *inputSharpness;
 }
 
-+ (id)_kernel;
 + (id)customAttributes;
-+ (id)_kernel_code;
 @property(retain, nonatomic) NSNumber *inputSharpness; // @synthesize inputSharpness;
 @property(retain, nonatomic) NSNumber *inputWidth; // @synthesize inputWidth;
 @property(retain, nonatomic) NSNumber *inputAngle; // @synthesize inputAngle;
 @property(retain, nonatomic) CIVector *inputCenter; // @synthesize inputCenter;
 @property(retain, nonatomic) CIImage *inputImage; // @synthesize inputImage;
 - (id)outputImage;
+- (id)_kernel;
 
 @end
 

@@ -18,21 +18,25 @@
     NSString *_functionName;
     NSArray *_requestLocalSerializations;
     NSArray *_requestLocalEnvelopes;
+    unsigned long long _dataProtectionType;
     NSData *_permittedRemoteMeasurement;
+    NSString *_trustedTargetDomain;
+    NSString *_trustedTargetOID;
     NSURL *_clientRuntimeProvidedServiceURL;
-    NSURL *_resolvedBaseURL;
 }
 
 + (_Bool)supportsSecureCoding;
 + (void)applyDefaultParametersToServiceURLComponents:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool shouldFetchAssetContentInMemory; // @synthesize shouldFetchAssetContentInMemory=_shouldFetchAssetContentInMemory;
-@property(copy, nonatomic) NSURL *resolvedBaseURL; // @synthesize resolvedBaseURL=_resolvedBaseURL;
 @property(nonatomic) _Bool legacyIsLocalBit; // @synthesize legacyIsLocalBit=_legacyIsLocalBit;
 @property(copy, nonatomic) NSURL *clientRuntimeProvidedServiceURL; // @synthesize clientRuntimeProvidedServiceURL=_clientRuntimeProvidedServiceURL;
 @property(nonatomic) _Bool enqueuedOnContainerService; // @synthesize enqueuedOnContainerService=_enqueuedOnContainerService;
 @property(nonatomic) _Bool shouldSendRecordPCSKeys; // @synthesize shouldSendRecordPCSKeys=_shouldSendRecordPCSKeys;
+@property(copy, nonatomic) NSString *trustedTargetOID; // @synthesize trustedTargetOID=_trustedTargetOID;
+@property(copy, nonatomic) NSString *trustedTargetDomain; // @synthesize trustedTargetDomain=_trustedTargetDomain;
 @property(copy, nonatomic) NSData *permittedRemoteMeasurement; // @synthesize permittedRemoteMeasurement=_permittedRemoteMeasurement;
+@property(nonatomic) unsigned long long dataProtectionType; // @synthesize dataProtectionType=_dataProtectionType;
 @property(copy, nonatomic) NSArray *requestLocalEnvelopes; // @synthesize requestLocalEnvelopes=_requestLocalEnvelopes;
 @property(copy, nonatomic) NSArray *requestLocalSerializations; // @synthesize requestLocalSerializations=_requestLocalSerializations;
 @property(copy, nonatomic) NSString *functionName; // @synthesize functionName=_functionName;

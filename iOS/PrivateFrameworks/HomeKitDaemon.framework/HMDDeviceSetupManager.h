@@ -6,23 +6,27 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@protocol HMFLocking;
+@class NSNotificationCenter;
+@protocol HMDDeviceSetupManagerExternalObjectSource, HMFLocking;
 
 @interface HMDDeviceSetupManager : HMFObject
 {
     id <HMFLocking> _lock;
     int _proxSetupNotificationToken;
     _Bool _running;
+    NSNotificationCenter *_notificationCenter;
+    id <HMDDeviceSetupManagerExternalObjectSource> _externalObjectSource;
 }
 
 + (id)sharedManager;
 - (void).cxx_destruct;
+@property(readonly) id <HMDDeviceSetupManagerExternalObjectSource> externalObjectSource; // @synthesize externalObjectSource=_externalObjectSource;
+@property(readonly) NSNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
 - (void)stopAdvertising;
 - (void)startAdvertising;
-- (id)followUpController;
 @property(readonly, getter=isRunning) _Bool running; // @synthesize running=_running;
 - (void)dealloc;
-- (id)init;
+- (id)initWithExternalObjectSource:(id)arg1 notificationCenter:(id)arg2;
 
 @end
 

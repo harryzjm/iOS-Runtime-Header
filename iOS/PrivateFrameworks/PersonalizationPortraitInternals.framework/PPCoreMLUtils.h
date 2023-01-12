@@ -15,7 +15,6 @@
 + (id)multiArrayForArray:(id)arg1;
 + (id)flattenMultiArray:(id)arg1;
 + (id)flattenFeatureProviderArray:(id)arg1;
-+ (id)_multiArrayForNumberArray:(id)arg1;
 
 @end
 

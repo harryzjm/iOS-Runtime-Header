@@ -24,9 +24,13 @@
 - (void)_setAnalyticsError:(id)arg1;
 - (void)_setAnalyticsKey:(id)arg1 value:(id)arg2;
 - (void)_findOutputDevicesForDestination:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)sendPlaybackArchiveWithResult:(id)arg1 toDestination:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)sendPlaybackArchive:(id)arg1 toDestination:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)sendPlaybackQueueWithResult:(id)arg1 toDestination:(id)arg2 withOptions:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)sendPlaybackQueue:(id)arg1 toDestination:(id)arg2 withOptions:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)sendPlaybackQueueWithResult:(id)arg1 toDestination:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)sendPlaybackQueue:(id)arg1 toDestination:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)sendCommandWithResult:(unsigned int)arg1 toDestination:(id)arg2 withOptions:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)sendCommand:(unsigned int)arg1 toDestination:(id)arg2 withOptions:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)init;
 

@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <AssistantServices/AFDictionaryConvertible-Protocol.h>
 #import <AssistantServices/NSCopying-Protocol.h>
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
 @class NSDictionary, NSString;
 
-@interface AFExperimentGroup : NSObject <NSCopying, NSSecureCoding>
+@interface AFExperimentGroup : NSObject <NSCopying, NSSecureCoding, AFDictionaryConvertible>
 {
     NSString *_identifier;
     unsigned long long _allocation;
@@ -24,15 +25,21 @@
 @property(readonly, copy, nonatomic) NSDictionary *properties; // @synthesize properties=_properties;
 @property(readonly, nonatomic) unsigned long long allocation; // @synthesize allocation=_allocation;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+- (id)buildDictionaryRepresentation;
+- (id)initWithDictionaryRepresentation:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (id)_descriptionWithIndent:(unsigned long long)arg1;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (id)initWithIdentifier:(id)arg1 allocation:(unsigned long long)arg2 properties:(id)arg3;
 - (id)mutatedCopyWithMutator:(CDUnknownBlockType)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

@@ -16,12 +16,12 @@
 }
 
 - (void).cxx_destruct;
-- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
+- (struct SBSwitcherAsyncRenderingAttributes)asyncRenderingAttributesForAppLayout:(id)arg1;
 - (id)keyboardSuppressionMode;
 - (id)appLayoutsToResignActive;
 - (_Bool)shouldPerformCrossfadeForReduceMotion;
 - (_Bool)isContentStatusBarVisibleForIndex:(unsigned long long)arg1;
-- (double)opacityForIndex:(unsigned long long)arg1;
+- (double)opacityForLayoutRole:(long long)arg1 inAppLayout:(id)arg2 atIndex:(unsigned long long)arg3;
 - (id)_layoutSettings;
 - (id)animationAttributesForLayoutElement:(id)arg1;
 - (id)visibleAppLayouts;
@@ -31,7 +31,7 @@
 - (id)handleTimerEvent:(id)arg1;
 - (id)transitionWillUpdate;
 - (id)transitionWillBegin;
-- (_Bool)shouldRasterizeLiveContentUntilDelay:(inout double *)arg1;
+- (_Bool)shouldAsyncRenderUntilDelay:(inout double *)arg1;
 - (id)initWithTransitionID:(id)arg1 fromAppLayout:(id)arg2 toAppLayout:(id)arg3 floatingConfiguration:(long long)arg4 direction:(unsigned long long)arg5 needsOvershoot:(_Bool)arg6;
 
 @end

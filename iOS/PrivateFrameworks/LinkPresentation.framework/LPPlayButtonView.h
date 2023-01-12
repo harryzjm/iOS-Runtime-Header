@@ -4,35 +4,42 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <LinkPresentation/LPComponentMediaPlayable-Protocol.h>
 #import <LinkPresentation/LPContentInsettable-Protocol.h>
 
-@class LPInlineMediaPlaybackInformation, LPMusicPlayButtonStyle, LPPlayButtonControl;
+@class LPAudioPlayButtonStyle, LPInlineMediaPlaybackInformation, LPPlayButtonControl;
 
 __attribute__((visibility("hidden")))
-@interface LPPlayButtonView <LPContentInsettable>
+@interface LPPlayButtonView <LPContentInsettable, LPComponentMediaPlayable>
 {
     LPPlayButtonControl *_button;
     LPInlineMediaPlaybackInformation *_playbackInformation;
     struct UIEdgeInsets _contentInset;
-    LPMusicPlayButtonStyle *_style;
+    LPAudioPlayButtonStyle *_style;
+    _Bool _hasBuilt;
 }
 
 - (void).cxx_destruct;
+- (id)playable;
 - (void)setContentInset:(struct UIEdgeInsets)arg1;
 - (void)layoutComponentView;
 - (void)updateButton;
+- (void)updateButtonForAudioFile;
+- (void)installAudioButton;
 - (void)updateButtonForPodcast;
 - (void)updateButtonForAudioBook;
-- (void)updateButtonForAudioFile;
 - (void)updateButtonForRadio;
 - (void)updateButtonForSongOrAlbum;
-- (void)installAudioButton;
 - (void)installPreviewButton;
 - (void)installDisablediTunesButton;
 - (void)installiTunesButton;
 - (void)installPlaceholderButton;
+- (id)theme;
+- (_Bool)isLyricStyle;
 - (void)dealloc;
-- (id)initWithPlaybackInformation:(id)arg1 style:(id)arg2;
+- (void)buildSubviewsIfNeeded;
+- (id)initWithHost:(id)arg1 playbackInformation:(id)arg2 style:(id)arg3;
+- (id)initWithHost:(id)arg1;
 
 @end
 

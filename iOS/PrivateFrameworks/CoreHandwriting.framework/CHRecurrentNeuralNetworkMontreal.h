@@ -20,8 +20,8 @@
 @property(readonly, retain, nonatomic) NSArray *outputNames; // @synthesize outputNames=_outputNames;
 @property(readonly, retain, nonatomic) NSDictionary *featureCounts; // @synthesize featureCounts=_featureCounts;
 @property(readonly, retain, nonatomic) NSArray *inputNames; // @synthesize inputNames=_inputNames;
-- (_Bool)_recursivelyPredictProbabilitiesForDrawing:(id)arg1 features:(vector_f9ed6fc8 *)arg2 pointRange:(struct _NSRange)arg3 modelInputName:(id)arg4 modelOutputNames:(id)arg5 probabilities:(vector_e5be908c *)arg6 probabilityPredictionBlock:(CDUnknownBlockType)arg7 error:(id *)arg8 cancellationBlock:(CDUnknownBlockType)arg9;
-- (vector_f9ed6fc8)_extractFeaturesFromDrawing:(id)arg1 inputName:(id)arg2 interpointDistance:(double)arg3 error:(id *)arg4;
+- (_Bool)_recursivelyPredictProbabilitiesForDrawing:(id)arg1 features:(void *)arg2 pointRange:(struct _NSRange)arg3 modelInputName:(id)arg4 modelOutputNames:(id)arg5 probabilities:(void *)arg6 probabilityPredictionBlock:(CDUnknownBlockType)arg7 error:(id *)arg8 cancellationBlock:(CDUnknownBlockType)arg9;
+- (vector_fef9a72d)_extractFeaturesFromDrawing:(id)arg1 inputName:(id)arg2 interpointDistance:(double)arg3 error:(id *)arg4;
 - (void)dealloc;
 - (id)initWithModelName:(id)arg1;
 

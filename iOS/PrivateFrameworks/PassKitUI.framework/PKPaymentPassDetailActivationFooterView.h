@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKit/UITableViewHeaderFooterView.h>
 
 @class UIButton, UILabel;
 
-@interface PKPaymentPassDetailActivationFooterView : UIView
+@interface PKPaymentPassDetailActivationFooterView : UITableViewHeaderFooterView
 {
     UILabel *_footerTextLabel;
     UIButton *_activationButton;
@@ -17,10 +17,11 @@
 - (void).cxx_destruct;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
-- (void)setActivationButtonTarget:(id)arg1 action:(SEL)arg2;
 - (void)setActivationButtonText:(id)arg1;
 - (void)setFooterText:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (void)setupFooter;
+- (void)setupActivationButtonWithAction:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 activationAction:(id)arg2;
 
 @end
 

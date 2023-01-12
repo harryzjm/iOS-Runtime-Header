@@ -8,6 +8,7 @@
 {
 }
 
+- (int)seriesElementType;
 - (id)userInterfaceName;
 - (id)propertiesForReferenceColors;
 - (id)elementBuilder;

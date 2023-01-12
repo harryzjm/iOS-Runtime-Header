@@ -8,10 +8,12 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-@class CKDPArchiveRecordsRequest, CKDPAssetUploadTokenRetrieveRequest, CKDPBundlesForContainerRequest, CKDPCodeFunctionInvokeRequest, CKDPDeleteContainerRequest, CKDPFetchArchivedRecordsRequest, CKDPMarkAssetBrokenRequest, CKDPNotificationMarkReadRequest, CKDPNotificationSyncRequest, CKDPOperation, CKDPQueryRetrieveRequest, CKDPRecordDeleteRequest, CKDPRecordResolveTokenRequest, CKDPRecordRetrieveChangesRequest, CKDPRecordRetrieveRequest, CKDPRecordRetrieveVersionsRequest, CKDPRecordSaveRequest, CKDPRequestOperationHeader, CKDPSetBadgeCountRequest, CKDPShareAcceptRequest, CKDPShareVettingInitiateRequest, CKDPSubscriptionCreateRequest, CKDPSubscriptionDeleteRequest, CKDPSubscriptionRetrieveRequest, CKDPTokenRegistrationRequest, CKDPTokenUnregistrationRequest, CKDPUpdateMissingAssetStatusRequest, CKDPUserAvailableQuotaRequest, CKDPUserPrivacySettingsBatchLookupRequest, CKDPUserPrivacySettingsResetRequest, CKDPUserPrivacySettingsRetrieveRequest, CKDPUserPrivacySettingsUpdateRequest, CKDPUserQueryRequest, CKDPUserRetrieveRequest, CKDPWebAuthTokenRetrieveRequest, CKDPZoneDeleteRequest, CKDPZoneRetrieveChangesRequest, CKDPZoneRetrieveRequest, CKDPZoneSaveRequest;
+@class CKDPAnonymousShareAddRequest, CKDPAnonymousShareRemoveRequest, CKDPArchiveRecordsRequest, CKDPAssetUploadTokenRetrieveRequest, CKDPBundlesForContainerRequest, CKDPCodeFunctionInvokeRequest, CKDPDeleteContainerRequest, CKDPFetchArchivedRecordsRequest, CKDPMarkAssetBrokenRequest, CKDPNotificationMarkReadRequest, CKDPNotificationSyncRequest, CKDPOperation, CKDPQueryRetrieveRequest, CKDPRecordDeleteRequest, CKDPRecordResolveTokenRequest, CKDPRecordRetrieveChangesRequest, CKDPRecordRetrieveRequest, CKDPRecordRetrieveVersionsRequest, CKDPRecordSaveRequest, CKDPRequestOperationHeader, CKDPSetBadgeCountRequest, CKDPShareAcceptRequest, CKDPShareVettingInitiateRequest, CKDPSubscriptionCreateRequest, CKDPSubscriptionDeleteRequest, CKDPSubscriptionRetrieveRequest, CKDPTokenRegistrationRequest, CKDPTokenUnregistrationRequest, CKDPUpdateMissingAssetStatusRequest, CKDPUserAvailableQuotaRequest, CKDPUserPrivacySettingsBatchLookupRequest, CKDPUserPrivacySettingsResetRequest, CKDPUserPrivacySettingsRetrieveRequest, CKDPUserPrivacySettingsUpdateRequest, CKDPUserQueryRequest, CKDPUserRetrieveRequest, CKDPWebAuthTokenRetrieveRequest, CKDPZoneDeleteRequest, CKDPZoneRetrieveChangesRequest, CKDPZoneRetrieveRequest, CKDPZoneSaveRequest;
 
 @interface CKDPRequestOperation : PBCodable <NSCopying>
 {
+    CKDPAnonymousShareAddRequest *_anonymousShareAddRequest;
+    CKDPAnonymousShareRemoveRequest *_anonymousShareRemoveRequest;
     CKDPArchiveRecordsRequest *_archiveRecordsRequest;
     CKDPAssetUploadTokenRetrieveRequest *_assetUploadTokenRetrieveRequest;
     CKDPBundlesForContainerRequest *_bundlesForContainerRequest;
@@ -109,6 +111,10 @@
 @property(readonly, nonatomic) _Bool hasUpdateMissingAssetStatusRequest;
 @property(retain, nonatomic) CKDPShareAcceptRequest *shareAcceptRequest;
 @property(readonly, nonatomic) _Bool hasShareAcceptRequest;
+@property(retain, nonatomic) CKDPAnonymousShareAddRequest *anonymousShareAddRequest;
+@property(readonly, nonatomic) _Bool hasAnonymousShareAddRequest;
+@property(retain, nonatomic) CKDPAnonymousShareRemoveRequest *anonymousShareRemoveRequest;
+@property(readonly, nonatomic) _Bool hasAnonymousShareRemoveRequest;
 @property(retain, nonatomic) CKDPCodeFunctionInvokeRequest *functionInvokeRequest;
 @property(readonly, nonatomic) _Bool hasFunctionInvokeRequest;
 @property(retain, nonatomic) CKDPSubscriptionCreateRequest *subscriptionCreateRequest;

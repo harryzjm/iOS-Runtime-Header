@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSFileProviderDomain, NSMutableDictionary, NSString, NSURL, NSXPCConnection, _FPFilePresenterObserver;
-@protocol FPDDaemon, FPDDomainServicing><NSXPCProxyCreating, OS_dispatch_queue, OS_dispatch_semaphore, OS_dispatch_source;
+@class FPProgressUpdater, NSArray, NSFileProviderDomain, NSMutableDictionary, NSString, NSURL, NSXPCConnection, _FPFilePresenterObserver;
+@protocol FPDDaemon, FPDDomainServicing><FPXPCAutomaticErrorProxy, OS_dispatch_group, OS_dispatch_queue, OS_dispatch_semaphore, OS_dispatch_source;
 
 @interface NSFileProviderManager : NSObject
 {
     NSObject<OS_dispatch_semaphore> *_sem;
-    id <FPDDomainServicing><NSXPCProxyCreating> _remoteFileProvider;
+    id <FPDDomainServicing><FPXPCAutomaticErrorProxy> _remoteFileProvider;
+    _Bool _isIncomingConnection;
     NSObject<OS_dispatch_queue> *_connectionQueue;
     NSXPCConnection<FPDDaemon> *_connection;
     _FPFilePresenterObserver *_presentedFileObserver;
@@ -22,37 +23,50 @@
     NSFileProviderDomain *_domain;
     NSObject<OS_dispatch_queue> *_signalUpdateQueue;
     NSObject<OS_dispatch_source> *_signalUpdateSource;
+    NSObject<OS_dispatch_group> *_signalUpdateGroup;
     NSMutableDictionary *_completionHandlersByItemID;
-    unsigned long long _presenceAuthorizationStatus;
-    _Bool _hasFetchedPresenceAuthorizationStatus;
+    FPProgressUpdater *_downloadProxy;
+    FPProgressUpdater *_uploadProxy;
     NSArray *_presentedFiles;
 }
 
 + (id)managerForDomain:(id)arg1;
 + (void)getDomainsWithCompletionHandler:(CDUnknownBlockType)arg1;
-+ (void)getDomainsForProviderIdentifier:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
++ (void)getDomainsForProviderIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)removeAllDomainsForProviderIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-+ (void)removeDomain:(id)arg1 forProviderIdentifier:(id)arg2 options:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (void)addDomain:(id)arg1 forProviderIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (void)addDomain:(id)arg1 forProviderIdentifier:(id)arg2 byImportingDirectoryAtURL:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (void)removeAllDomainsWithCompletionHandler:(CDUnknownBlockType)arg1;
-+ (void)removeDomain:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (void)removeDomain:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (void)removeDomain:(id)arg1 mode:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (void)addDomain:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)getIdentifierForUserVisibleFileAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)placeholderURLForURL:(id)arg1;
 + (_Bool)writePlaceholderAtURL:(id)arg1 withMetadata:(id)arg2 error:(id *)arg3;
 + (_Bool)writePlaceholderAtURL:(id)arg1 withDictionary:(id)arg2 error:(id *)arg3;
++ (id)legacyDefaultManager;
 + (id)defaultManager;
++ (void)_registerNotificationsForProviderIdentifier:(id)arg1;
++ (void)registerRootURL:(id)arg1 forDomain:(id)arg2;
++ (void)registerDomainServicer:(id)arg1 forDomain:(id)arg2;
 + (void)importDomain:(id)arg1 fromDirectoryAtURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 @property(copy) NSArray *presentedFiles; // @synthesize presentedFiles=_presentedFiles;
+- (id)startObservingGlobalProgressForKind:(id)arg1;
+- (void)startObservingDownloadProgress;
+- (void)startObservingUploadProgress;
+- (id)globalProgressForKind:(id)arg1;
 - (void)removeAllDomainsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getDomainsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)removeDomain:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)removeDomain:(id)arg1 options:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)addDomain:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (void)getUserVisibleURLForItemIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)signalErrorResolved:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (_Bool)isErrorSupportedForSignalResolved:(id)arg1;
 @property(readonly, nonatomic) NSString *providerIdentifier; // @synthesize providerIdentifier=_providerIdentifier;
+- (id)temporaryDirectoryURLWithError:(id *)arg1;
 @property(readonly, nonatomic) NSURL *documentStorageURL;
 - (void)_cacheProviderInfo;
 - (void)setEjectable:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -63,22 +77,31 @@
 - (void)_signalPendingEnumerators;
 - (void)_failToSignalPendingChangesWithError:(id)arg1 completionHandlersByItemID:(id)arg2;
 - (void)_callCompletionHandlers:(id)arg1 error:(id)arg2;
+- (void)waitForSignalDeliveryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)signalEnumeratorForContainerItemIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)itemIDForIdentifier:(id)arg1;
 - (id)_connection;
-- (void)fetchRemoteFileProviderSynchronously:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)remoteFileProviderWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)fetchDomainServicerSynchronously:(_Bool)arg1 useOutgoingConnection:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)domainServicerWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)description;
 - (id)_initWithProviderIdentifier:(id)arg1 groupName:(id)arg2 domain:(id)arg3;
 - (id)_initWithProviderIdentifier:(id)arg1 domain:(id)arg2;
 - (id)_initWithProviderIdentifier:(id)arg1 groupName:(id)arg2;
 - (id)_initWithProviderIdentifier:(id)arg1;
 - (id)enumeratorForMaterializedItems;
+- (id)enumeratorForPendingItems;
 - (void)reimportItemsBelowItemWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)evictItemWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setDownloadPolicy:(unsigned long long)arg1 forItemWithIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-@property(readonly, nonatomic) unsigned long long presenceAuthorizationStatus;
-- (void)requestPresenceAuthorization;
+- (void)waitForChangesOnItemsBelowItemWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)waitForStabilizationWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)evictItemWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)lookupRequestingApplicationIdentifier:(id)arg1 reason:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)ingestFromCacheItemWithIdentifier:(id)arg1 requestedFields:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)reconnectWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)disconnectWithReason:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)runTestingOperations:(id)arg1 error:(id *)arg2;
+- (id)listAvailableTestingOperationsWithError:(id *)arg1;
+- (id)_test_existingProgressForKind:(id)arg1;
 
 @end
 

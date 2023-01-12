@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
     NSNumber *maxBandwidth;
     _Bool allowsDynamicMaxBitrate;
     _Bool allowsContentsChangeWithAspectPreservation;
-    NSDictionary *featuresListDict;
+    NSDictionary *featureListDict;
     NSNumber *aacBlockSize;
     NSNumber *audioUnitModel;
     _Bool allowAudioRecording;
@@ -40,7 +40,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool allowsContentsChangeWithAspectPreservation; // @synthesize allowsContentsChangeWithAspectPreservation;
 @property(retain, nonatomic) NSNumber *audioUnitModel; // @synthesize audioUnitModel;
 @property(retain, nonatomic) NSNumber *aacBlockSize; // @synthesize aacBlockSize;
-@property(retain, nonatomic) NSDictionary *featuresListDict; // @synthesize featuresListDict;
+@property(retain, nonatomic) NSDictionary *featureListDict; // @synthesize featureListDict;
 @property(nonatomic) _Bool allowsDynamicMaxBitrate; // @synthesize allowsDynamicMaxBitrate;
 @property(retain, nonatomic) NSNumber *maxBandwidth; // @synthesize maxBandwidth;
 @property(retain, nonatomic) NSNumber *answerBandwidth; // @synthesize answerBandwidth;

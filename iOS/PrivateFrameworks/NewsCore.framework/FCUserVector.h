@@ -8,23 +8,31 @@
 
 #import <NewsCore/FCUserVectorProvider-Protocol.h>
 
-@class FCPersonalizationTreatment, NSString, NSURL;
+@class FCPersonalizationTreatment, FCSubscriptionList, NSOrderedSet, NSString, NSURL;
 
 @interface FCUserVector : NSObject <FCUserVectorProvider>
 {
     NSURL *_whitelistURL;
     NSURL *_modelURL;
     FCPersonalizationTreatment *_personalizationTreatment;
+    NSOrderedSet *_bundleChannelIDs;
+    NSString *_bundleChannelIDsVersion;
+    FCSubscriptionList *_subscriptionList;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) FCSubscriptionList *subscriptionList; // @synthesize subscriptionList=_subscriptionList;
+@property(retain, nonatomic) NSString *bundleChannelIDsVersion; // @synthesize bundleChannelIDsVersion=_bundleChannelIDsVersion;
+@property(retain, nonatomic) NSOrderedSet *bundleChannelIDs; // @synthesize bundleChannelIDs=_bundleChannelIDs;
 @property(retain, nonatomic) FCPersonalizationTreatment *personalizationTreatment; // @synthesize personalizationTreatment=_personalizationTreatment;
 @property(retain, nonatomic) NSURL *modelURL; // @synthesize modelURL=_modelURL;
 @property(retain, nonatomic) NSURL *whitelistURL; // @synthesize whitelistURL=_whitelistURL;
 - (id)findVector:(id)arg1 closestToBins:(id)arg2;
-- (id)computePersonalizationVectorWithBaselineAggregate:(id)arg1 allAggregates:(id)arg2;
+- (id)bundleSubscribedVector;
+- (id)subscribedBundleChannelIDs;
+- (id)computePersonalizationVectorWithBaselineAggregate:(id)arg1 allAggregates:(id)arg2 options:(long long)arg3;
 - (id)init;
-- (id)initWithWhitelistURL:(id)arg1 modelURL:(id)arg2 personalizationTreatment:(id)arg3;
+- (id)initWithWhitelistURL:(id)arg1 modelURL:(id)arg2 personalizationTreatment:(id)arg3 bundleChannelIDs:(id)arg4 bundleChannelIDsVersion:(id)arg5 subscriptionList:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -12,8 +12,13 @@
 
 @interface WFRemoteAppSettings : NSObject <WFSettings>
 {
+    _Bool _disableForecastRequestCancelation;
+    _Bool _disablePriorityForecastRequestQueue;
+    _Bool _loadSavedCitiesFromKVSOnly;
+    _Bool _disableLimitReverseGeocoding;
     float _dataSamplingRate;
     float _telemetrySamplingRate;
+    float _locationGeocodingSamplingRate;
     NSString *_apiVersion;
     NSString *_apiVersionFallback;
     NSSet *_aqiEnabledCountryCodes;
@@ -21,9 +26,13 @@
     unsigned long long _networkSwitchExpirationTimeInSeconds;
     unsigned long long _locationNumDecimalsOfPrecision;
     WFWeatherEventsConfig *_weatherEventsConfig;
+    NSDictionary *_widgetRefreshPolicy;
     NSURL *_appAnalyticsEndpointUrl;
     double _userIdentifierResetTimeInterval;
     double _privateUserIdentifierResetTimeInterval;
+    double _cachedGeocodeLocationExpirationTimeInterval;
+    double _locationUpdateMinTimeInterval;
+    double _locationUpdateMinDistance;
     NSDictionary *_config;
     long long _appConfigRefreshRate;
     NSDate *_lastModificationDate;
@@ -50,11 +59,20 @@
 @property(readonly, nonatomic) NSDate *lastModificationDate; // @synthesize lastModificationDate=_lastModificationDate;
 @property(readonly, nonatomic) long long appConfigRefreshRate; // @synthesize appConfigRefreshRate=_appConfigRefreshRate;
 @property(readonly, nonatomic) NSDictionary *config; // @synthesize config=_config;
+@property(readonly, nonatomic) _Bool disableLimitReverseGeocoding; // @synthesize disableLimitReverseGeocoding=_disableLimitReverseGeocoding;
+@property(readonly, nonatomic) _Bool loadSavedCitiesFromKVSOnly; // @synthesize loadSavedCitiesFromKVSOnly=_loadSavedCitiesFromKVSOnly;
+@property(readonly, nonatomic) _Bool disablePriorityForecastRequestQueue; // @synthesize disablePriorityForecastRequestQueue=_disablePriorityForecastRequestQueue;
+@property(readonly, nonatomic) _Bool disableForecastRequestCancelation; // @synthesize disableForecastRequestCancelation=_disableForecastRequestCancelation;
+@property(readonly, nonatomic) double locationUpdateMinDistance; // @synthesize locationUpdateMinDistance=_locationUpdateMinDistance;
+@property(readonly, nonatomic) double locationUpdateMinTimeInterval; // @synthesize locationUpdateMinTimeInterval=_locationUpdateMinTimeInterval;
+@property(readonly, nonatomic) double cachedGeocodeLocationExpirationTimeInterval; // @synthesize cachedGeocodeLocationExpirationTimeInterval=_cachedGeocodeLocationExpirationTimeInterval;
 @property(readonly, nonatomic) double privateUserIdentifierResetTimeInterval; // @synthesize privateUserIdentifierResetTimeInterval=_privateUserIdentifierResetTimeInterval;
 @property(readonly, nonatomic) double userIdentifierResetTimeInterval; // @synthesize userIdentifierResetTimeInterval=_userIdentifierResetTimeInterval;
+@property(readonly, nonatomic) float locationGeocodingSamplingRate; // @synthesize locationGeocodingSamplingRate=_locationGeocodingSamplingRate;
 @property(readonly, nonatomic) float telemetrySamplingRate; // @synthesize telemetrySamplingRate=_telemetrySamplingRate;
 @property(readonly, nonatomic) float dataSamplingRate; // @synthesize dataSamplingRate=_dataSamplingRate;
 @property(readonly, nonatomic) NSURL *appAnalyticsEndpointUrl; // @synthesize appAnalyticsEndpointUrl=_appAnalyticsEndpointUrl;
+@property(readonly, nonatomic) NSDictionary *widgetRefreshPolicy; // @synthesize widgetRefreshPolicy=_widgetRefreshPolicy;
 @property(readonly, nonatomic) WFWeatherEventsConfig *weatherEventsConfig; // @synthesize weatherEventsConfig=_weatherEventsConfig;
 @property(readonly, nonatomic) unsigned long long locationNumDecimalsOfPrecision; // @synthesize locationNumDecimalsOfPrecision=_locationNumDecimalsOfPrecision;
 @property(readonly, nonatomic) unsigned long long networkSwitchExpirationTimeInSeconds; // @synthesize networkSwitchExpirationTimeInSeconds=_networkSwitchExpirationTimeInSeconds;

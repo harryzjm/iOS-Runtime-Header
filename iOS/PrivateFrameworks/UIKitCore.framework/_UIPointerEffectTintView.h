@@ -10,16 +10,19 @@ __attribute__((visibility("hidden")))
 @interface _UIPointerEffectTintView <_UILumaTrackingBackdropViewDelegate>
 {
     unsigned long long _luminance;
+    CDUnknownBlockType _tintColorMatrixProvider;
+    _Bool _shouldAdjustIntensityOnPress;
     _Bool _disabled;
     _Bool _pressed;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, getter=isPressed) _Bool pressed; // @synthesize pressed=_pressed;
 @property(nonatomic, getter=isDisabled) _Bool disabled; // @synthesize disabled=_disabled;
 - (void)backgroundLumaView:(id)arg1 didTransitionToLevel:(unsigned long long)arg2;
 - (void)_updateBackgroundEffects;
 - (void)_updateAlpha;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithTintColorMatrixProvider:(CDUnknownBlockType)arg1;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import <AppPredictionClient/NSCopying-Protocol.h>
 
-@class NSString;
+@class ATXPBAppDirectoryEventMetadata, NSMutableArray, NSString;
 
 @interface ATXPBAppDirectoryEvent : PBCodable <NSCopying>
 {
@@ -19,7 +19,11 @@
     unsigned long long _eventType;
     unsigned long long _searchQueryLength;
     unsigned long long _searchTab;
+    NSString *_blendingCacheId;
     NSString *_bundleId;
+    NSMutableArray *_engagedSuggestionIds;
+    ATXPBAppDirectoryEventMetadata *_metadata;
+    NSMutableArray *_shownSuggestionIds;
     struct {
         unsigned int bundleIndex:1;
         unsigned int categoryID:1;
@@ -31,7 +35,13 @@
     } _has;
 }
 
++ (Class)engagedSuggestionIdsType;
++ (Class)shownSuggestionIdsType;
 - (void).cxx_destruct;
+@property(retain, nonatomic) ATXPBAppDirectoryEventMetadata *metadata; // @synthesize metadata=_metadata;
+@property(retain, nonatomic) NSMutableArray *engagedSuggestionIds; // @synthesize engagedSuggestionIds=_engagedSuggestionIds;
+@property(retain, nonatomic) NSMutableArray *shownSuggestionIds; // @synthesize shownSuggestionIds=_shownSuggestionIds;
+@property(retain, nonatomic) NSString *blendingCacheId; // @synthesize blendingCacheId=_blendingCacheId;
 @property(nonatomic) unsigned long long searchTab; // @synthesize searchTab=_searchTab;
 @property(nonatomic) unsigned long long searchQueryLength; // @synthesize searchQueryLength=_searchQueryLength;
 @property(nonatomic) unsigned long long bundleIndex; // @synthesize bundleIndex=_bundleIndex;
@@ -49,6 +59,16 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasMetadata;
+- (id)engagedSuggestionIdsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)engagedSuggestionIdsCount;
+- (void)addEngagedSuggestionIds:(id)arg1;
+- (void)clearEngagedSuggestionIds;
+- (id)shownSuggestionIdsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)shownSuggestionIdsCount;
+- (void)addShownSuggestionIds:(id)arg1;
+- (void)clearShownSuggestionIds;
+@property(readonly, nonatomic) _Bool hasBlendingCacheId;
 @property(nonatomic) _Bool hasSearchTab;
 @property(nonatomic) _Bool hasSearchQueryLength;
 @property(nonatomic) _Bool hasBundleIndex;

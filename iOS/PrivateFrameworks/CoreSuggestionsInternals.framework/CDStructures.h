@@ -10,47 +10,6 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct Mutex;
-
-struct Options {
-    int _field1;
-    _Bool _field2;
-    _Bool _field3;
-    _Bool _field4;
-    long long _field5;
-    _Bool _field6;
-    _Bool _field7;
-    _Bool _field8;
-    _Bool _field9;
-    _Bool _field10;
-    _Bool _field11;
-    _Bool _field12;
-    _Bool _field13;
-};
-
-struct Prog;
-
-struct RE2 {
-    struct Mutex *_field1;
-    struct StringPiece _field2;
-    struct Options _field3;
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field4;
-    _Bool _field5;
-    struct Regexp *_field6;
-    struct Regexp *_field7;
-    struct Prog *_field8;
-    struct Prog *_field9;
-    _Bool _field10;
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> *_field11;
-    int _field12;
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field13;
-    int _field14;
-    struct map<std::__1::basic_string<char>, int, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, int>>> *_field15;
-    struct map<int, std::__1::basic_string<char>, std::__1::less<int>, std::__1::allocator<std::__1::pair<const int, std::__1::basic_string<char>>>> *_field16;
-};
-
-struct Regexp;
-
 struct SGDSuggestManagerCTSCriteriaState {
     _Bool hasItemsHighPriority;
     _Bool hasItemsLowPriority;
@@ -94,11 +53,6 @@ struct SGMSelfIdModelType_ {
 
 struct SGUnixTimestamp_ {
     double secondsFromUnixEpoch;
-};
-
-struct StringPiece {
-    char *_field1;
-    int _field2;
 };
 
 struct _NSRange {
@@ -155,35 +109,8 @@ struct _xmlParserNodeInfo;
 
 struct _xmlValidState;
 
-struct adler32_t {
-    unsigned long long _field1;
-};
-
 struct atomic_flag {
     _Atomic _Bool _Value;
-};
-
-struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
-    struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__rep, std::__1::allocator<char>> {
-        struct __rep {
-            union {
-                struct __long {
-                    char *_field1;
-                    unsigned long long _field2;
-                    unsigned long long _field3;
-                } _field1;
-                struct __short {
-                    char _field1[23];
-                    struct {
-                        unsigned char _field1;
-                    } _field2;
-                } _field2;
-                struct __raw {
-                    unsigned long long _field1[3];
-                } _field3;
-            } _field1;
-        } _field1;
-    } _field1;
 };
 
 struct graph_t {
@@ -192,17 +119,7 @@ struct graph_t {
     struct _vertex_t *_field3;
 };
 
-struct map<int, std::__1::basic_string<char>, std::__1::less<int>, std::__1::allocator<std::__1::pair<const int, std::__1::basic_string<char>>>>;
-
-struct map<std::__1::basic_string<char>, int, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, int>>>;
-
 #pragma mark Typedef'd Structures
-
-typedef struct {
-    unsigned long long _field1;
-    unsigned long long _field2;
-    long long _field3;
-} CDStruct_69bb5998;
 
 typedef struct {
     unsigned long long _field1;
@@ -220,33 +137,9 @@ typedef struct {
 } CDStruct_a2e78aaa;
 
 typedef struct {
-    unsigned int app:1;
-    unsigned int wasSuggestedContact:1;
-} CDStruct_02d9bdfe;
-
-typedef struct {
-    int _field1;
-    int _field2;
-    unsigned int _field3;
-} CDStruct_beb4cc23;
-
-typedef struct {
     long long location;
     long long length;
 } CDStruct_627e0f85;
-
-typedef struct {
-    _Bool _field1;
-    _Bool _field2;
-    _Bool _field3;
-    int _field4;
-    int _field5;
-    int _field6;
-    CDStruct_beb4cc23 _field7;
-    CDStruct_beb4cc23 _field8;
-    CDStruct_beb4cc23 _field9;
-    long long _field10;
-} CDStruct_632d45bc;
 
 typedef struct {
     struct {
@@ -293,6 +186,11 @@ typedef struct {
     unsigned int wasKnownContact:1;
     unsigned int wasSuggestedContact:1;
 } CDStruct_73da3db5;
+
+typedef struct {
+    unsigned int app:1;
+    unsigned int wasSuggestedContact:1;
+} CDStruct_02d9bdfe;
 
 typedef struct {
     unsigned int app:1;

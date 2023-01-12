@@ -11,6 +11,8 @@
 @protocol CNContactInlineActionsViewControllerDelegate_Internal <CNContactInlineActionsViewControllerDelegate>
 
 @optional
+- (void)contactInlineActionsViewController:(CNContactInlineActionsViewController *)arg1 willPresentDisambiguationUIForActionType:(NSString *)arg2;
+- (void)contactInlineActionsViewController:(CNContactInlineActionsViewController *)arg1 didPerformActionOfType:(NSString *)arg2 fromDisambiguation:(_Bool)arg3;
 - (_Bool)contactInlineActionsViewController:(CNContactInlineActionsViewController *)arg1 overrideEnabledStateForActionOfType:(NSString *)arg2;
 - (_Bool)contactInlineActionsViewController:(CNContactInlineActionsViewController *)arg1 shouldOverrideEnabledStateForActionOfType:(NSString *)arg2;
 - (NSString *)contactInlineActionsViewController:(CNContactInlineActionsViewController *)arg1 overrideTitleForActionOfType:(NSString *)arg2;

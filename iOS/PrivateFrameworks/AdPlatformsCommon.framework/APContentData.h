@@ -8,7 +8,7 @@
 
 #import <AdPlatformsCommon/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSDictionary, NSError, NSMutableSet, NSSet, NSString, NSURL, NSUUID;
+@class APInstallAttribution, NSDate, NSDictionary, NSError, NSMutableSet, NSSet, NSString, NSURL, NSUUID;
 
 @interface APContentData : NSObject <NSSecureCoding>
 {
@@ -21,6 +21,7 @@
     NSURL *_disclosureURL;
     NSString *_disclosureRendererPayload;
     unsigned long long _minimumTimeBetweenPresentation;
+    APInstallAttribution *_installAttribution;
     NSString *_brandName;
     NSString *_campaignText;
     NSError *_error;
@@ -39,6 +40,7 @@
 @property(retain) NSString *campaignText; // @synthesize campaignText=_campaignText;
 @property(retain) NSString *brandName; // @synthesize brandName=_brandName;
 @property(retain) NSSet *representations; // @synthesize representations=_representations;
+@property(retain) APInstallAttribution *installAttribution; // @synthesize installAttribution=_installAttribution;
 @property unsigned long long minimumTimeBetweenPresentation; // @synthesize minimumTimeBetweenPresentation=_minimumTimeBetweenPresentation;
 @property(retain) NSString *disclosureRendererPayload; // @synthesize disclosureRendererPayload=_disclosureRendererPayload;
 @property(retain) NSURL *disclosureURL; // @synthesize disclosureURL=_disclosureURL;
@@ -50,9 +52,11 @@
 - (id)representationWithIdentifier:(id)arg1;
 - (id)getRepresentation;
 - (void)removeRepresentation:(id)arg1;
+- (void)addRepresentations:(id)arg1;
 - (void)addRepresentation:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (void)_correctNonNullableFields;
 - (id)init;
 
 @end

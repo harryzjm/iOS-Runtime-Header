@@ -9,13 +9,17 @@
 @interface TRIActivateTreatmentBaseTask
 {
     NSDate *_startTime;
+    _Bool _requiresTreatmentInstallation;
     _Bool _testingIgnoreDependencies;
     NSDate *_endTime;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool testingIgnoreDependencies; // @synthesize testingIgnoreDependencies=_testingIgnoreDependencies;
+@property(readonly, nonatomic) _Bool requiresTreatmentInstallation; // @synthesize requiresTreatmentInstallation=_requiresTreatmentInstallation;
 @property(retain, nonatomic) NSDate *endTime; // @synthesize endTime=_endTime;
+- (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
 - (id)runTaskUsingContext:(id)arg1;
 - (id)_nextTasksForRunStatus:(int)arg1;
 - (id)runUsingContext:(id)arg1 withTaskQueue:(id)arg2;
@@ -28,6 +32,7 @@
 - (id)dependencies;
 - (void)setStartTime:(id)arg1;
 - (id)startTime;
+- (id)initWithExperiment:(id)arg1 treatmentId:(id)arg2 taskAttributing:(id)arg3 requiresTreatmentInstallation:(_Bool)arg4;
 
 @end
 

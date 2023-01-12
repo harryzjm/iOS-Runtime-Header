@@ -22,6 +22,7 @@
     UIView *_compositingView;
     UIView *_titleLabelFillView;
     UILabel *_label;
+    UILabel *_overlayLabelForNonColoredGlyphs;
     UIActivityIndicatorView *_activityIndicator;
     double _scalingFactor;
     _Bool _wrappingSupported;
@@ -38,14 +39,21 @@
     UIImageView *_downwardChevronImageView;
 }
 
++ (id)_newTextLabel;
 + (_Bool)presentationOptions:(unsigned long long *)arg1 encodedIntoAddress:(id)arg2;
 + (id)_badgeImagesForPresentationOptions:(unsigned long long)arg1 iconOrder:(const unsigned long long *)arg2 orderingLength:(unsigned long long)arg3 tintColor:(id)arg4 large:(_Bool)arg5 variant:(int)arg6;
 + (id)_defaultLabelAttributesWithFont:(id)arg1 wrappingEnabled:(_Bool)arg2;
 + (id)_defaultLabelAttributesWithWrappingEnabled:(_Bool)arg1;
 + (id)_clearBackgroundTextTintColor;
++ (id)_faceTimeUnresolvedColor;
++ (id)_faceTimeTintColor;
++ (id)_hoveredSMSTintColor;
 + (id)_SMSTintColor;
++ (id)_hoveredDowntimeBlockedTintColor;
 + (id)_downtimeBlockedTintColor;
++ (id)_hoveredFailureTintColor;
 + (id)_failureTintColor;
++ (id)_hoveredDefaultTintColor;
 + (id)_defaultTintColor;
 + (id)primaryAtomFont;
 + (id)defaultFont;
@@ -84,6 +92,9 @@
 - (void)_updateActivityIndicator;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)_updateCompositingFilters;
+- (void)_setupOverlayLabelForNonColoredGlyphs;
+- (void)setupOverlayLabelTextForEmojiRanges:(id)arg1;
+- (void)_updateOverlayLabelText;
 @property(nonatomic) _Bool hidesVIPIndicator;
 - (void)displaySelectionChangeWithAnimation:(_Bool)arg1;
 - (void)setSelected:(_Bool)arg1 animated:(_Bool)arg2 style:(unsigned long long)arg3;

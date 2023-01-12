@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <OnBoardingKit/OBWelcomeController.h>
+
 #import <HomeUI/HFItemManagerDelegate-Protocol.h>
 #import <HomeUI/HUConfigurationViewController-Protocol.h>
 #import <HomeUI/HUItemTableModuleControllerHosting-Protocol.h>
@@ -12,7 +14,7 @@
 @class HMHome, HULocationDevice, HUPersonalRequestsDevicesModuleController, HUPersonalRequestsEditorItemManager, NSArray, NSString, OBLinkTrayButton, OBTrayButton;
 @protocol HUConfigurationViewControllerDelegate;
 
-@interface HUPersonalRequestsSetupViewController <HFItemManagerDelegate, HUItemTableModuleControllerHosting, HUConfigurationViewController, HUPreloadableViewController>
+@interface HUPersonalRequestsSetupViewController : OBWelcomeController <HFItemManagerDelegate, HUItemTableModuleControllerHosting, HUConfigurationViewController, HUPreloadableViewController>
 {
     id <HUConfigurationViewControllerDelegate> _delegate;
     HMHome *_home;
@@ -24,6 +26,7 @@
     HUPersonalRequestsDevicesModuleController *_prDevicesModuleController;
 }
 
++ (id)_bulletImageWithSystemName:(id)arg1 color:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) HUPersonalRequestsDevicesModuleController *prDevicesModuleController; // @synthesize prDevicesModuleController=_prDevicesModuleController;
 @property(retain, nonatomic) HUPersonalRequestsEditorItemManager *prEditorItemManager; // @synthesize prEditorItemManager=_prEditorItemManager;
@@ -44,6 +47,7 @@
 - (void)_dontUsePersonalRequests:(id)arg1;
 - (void)_customizePersonalRequests:(id)arg1;
 - (void)_setupPersonalRequestsItemInfrastructure;
+- (id)initWithTitle:(id)arg1 detailText:(id)arg2 icon:(id)arg3 contentLayout:(long long)arg4;
 - (id)initWithHome:(id)arg1;
 
 // Remaining properties

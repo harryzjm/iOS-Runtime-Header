@@ -8,7 +8,7 @@
 
 #import <HomeUI/FBSceneObserver-Protocol.h>
 
-@class FBApplicationUpdateScenesTransaction, FBSSceneIdentity, FBScene, HUDashboardNavigationButton, NSString, RBSProcessIdentity;
+@class FBApplicationUpdateScenesTransaction, FBSSceneIdentity, FBScene, NSString, RBSProcessIdentity, UIButton;
 @protocol UIScenePresenter;
 
 @interface HUSceneHolderViewController : UIViewController <FBSceneObserver>
@@ -19,13 +19,13 @@
     FBApplicationUpdateScenesTransaction *_transaction;
     FBScene *_scene;
     id <UIScenePresenter> _scenePresenter;
-    HUDashboardNavigationButton *_closeButton;
+    UIButton *_closeButton;
     NSString *_bundleId;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *bundleId; // @synthesize bundleId=_bundleId;
-@property(retain, nonatomic) HUDashboardNavigationButton *closeButton; // @synthesize closeButton=_closeButton;
+@property(retain, nonatomic) UIButton *closeButton; // @synthesize closeButton=_closeButton;
 - (void)close:(id)arg1;
 - (void)sceneDidInvalidate:(id)arg1;
 - (void)_updateScene;

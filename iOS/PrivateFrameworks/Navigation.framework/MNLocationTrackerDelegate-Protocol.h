@@ -6,11 +6,13 @@
 
 #import <Navigation/NSObject-Protocol.h>
 
-@class GEOComposedRouteETAUPosition, GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsResponse, MNActiveRouteInfo, MNLocation, MNLocationTracker, MNTrafficIncidentAlert, NSArray, NSError;
+@class GEOComposedRouteETAUPosition, GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsResponse, MNActiveRouteInfo, MNLocation, MNLocationTracker, MNTrafficIncidentAlert, MNTransitAlert, NSArray, NSError;
 
 @protocol MNLocationTrackerDelegate <NSObject>
 
 @optional
+- (void)locationTracker:(MNLocationTracker *)arg1 didReceiveRouteSignalStrength:(unsigned long long)arg2;
+- (void)locationTracker:(MNLocationTracker *)arg1 didReceiveTransitAlert:(MNTransitAlert *)arg2;
 - (void)locationTracker:(MNLocationTracker *)arg1 shouldShowChargingInfoForWaypoint:(GEOComposedWaypoint *)arg2;
 - (void)locationTracker:(MNLocationTracker *)arg1 updatedTrafficIncidentAlert:(MNTrafficIncidentAlert *)arg2;
 - (void)locationTracker:(MNLocationTracker *)arg1 invalidatedTrafficIncidentAlert:(MNTrafficIncidentAlert *)arg2;

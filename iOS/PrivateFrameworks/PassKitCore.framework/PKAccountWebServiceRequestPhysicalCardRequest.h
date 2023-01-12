@@ -15,6 +15,7 @@
     PKApplePayTrustHashResponse *hashResponse;
     NSData *_publicKeyHash;
     NSString *_accountIdentifier;
+    NSString *_accountUserAltDSID;
     PKPhysicalCardOrder *_order;
     PKPaymentDeviceMetadata *_deviceMetadata;
 }
@@ -23,6 +24,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) PKPaymentDeviceMetadata *deviceMetadata; // @synthesize deviceMetadata=_deviceMetadata;
 @property(retain, nonatomic) PKPhysicalCardOrder *order; // @synthesize order=_order;
+@property(copy, nonatomic) NSString *accountUserAltDSID; // @synthesize accountUserAltDSID=_accountUserAltDSID;
 @property(copy, nonatomic) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
 @property(copy, nonatomic) NSData *publicKeyHash; // @synthesize publicKeyHash=_publicKeyHash;
 @property(retain, nonatomic) PKApplePayTrustHashResponse *hashResponse; // @synthesize hashResponse;

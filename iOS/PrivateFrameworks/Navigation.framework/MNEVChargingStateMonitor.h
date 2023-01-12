@@ -15,8 +15,9 @@ __attribute__((visibility("hidden")))
 @interface MNEVChargingStateMonitor : NSObject <VGVirtualGarageObserver>
 {
     id <MNEVChargingStateMonitorDelegate> _delegate;
+    _Bool _isCharging;
     _Bool _shouldShowChargingInfo;
-    NSDate *_startDate;
+    NSDate *_arrivalDate;
     NSTimer *_timer;
     NSMeasurement *_targetBatteryCharge;
 }
@@ -28,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)virtualGarageDidUpdate:(id)arg1;
 - (void)_notifyShouldShowChargingInfo;
 - (void)_startTimer;
+- (void)updateForArrival;
 - (void)updateForLocation:(id)arg1;
 - (void)dealloc;
 - (id)initWithTargetBatteryCharge:(id)arg1;

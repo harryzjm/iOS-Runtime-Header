@@ -6,19 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCHUnretainedParent-Protocol.h>
-
 @class TSCH3DScene;
 
-@interface TSCH3DScenePropertyAccessor : NSObject <TSCHUnretainedParent>
+@interface TSCH3DScenePropertyAccessor : NSObject
 {
-    TSCH3DScene *mScene;
+    TSCH3DScene *_scene;
 }
 
 + (id)accessorWithScene:(id)arg1;
-@property(readonly, nonatomic) TSCH3DScene *scene; // @synthesize scene=mScene;
-- (void)clearParent;
-- (void)dealloc;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) __weak TSCH3DScene *scene; // @synthesize scene=_scene;
 - (id)initWithScene:(id)arg1;
 
 @end

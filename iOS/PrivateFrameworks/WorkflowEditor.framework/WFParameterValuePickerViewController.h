@@ -8,19 +8,21 @@
 
 #import <WorkflowEditor/UISearchBarDelegate-Protocol.h>
 #import <WorkflowEditor/UISearchResultsUpdating-Protocol.h>
+#import <WorkflowEditor/UITableViewDelegatePrivate-Protocol.h>
 #import <WorkflowEditor/WFParameterEventObserver-Protocol.h>
+#import <WorkflowEditor/WFParameterValuePickerTableViewCellDelegate-Protocol.h>
 
 @class INObjectCollection, NSMutableDictionary, NSSet, NSString, UIBarButtonItem, UILabel, UISearchBar, UISearchController, UIView, WFDebouncer, WFParameter, WFParameterValuePickerDataSource, WFVariableSubstitutableParameterState;
 @protocol WFParameterValuePickable, WFParameterValuePickerViewControllerDelegate, WFVariableProvider, WFVariableUIDelegate;
 
-@interface WFParameterValuePickerViewController : UITableViewController <UISearchResultsUpdating, UISearchBarDelegate, WFParameterEventObserver>
+@interface WFParameterValuePickerViewController : UITableViewController <UISearchResultsUpdating, UISearchBarDelegate, UITableViewDelegatePrivate, WFParameterEventObserver, WFParameterValuePickerTableViewCellDelegate>
 {
     _Bool _allowsMultipleSelection;
     UIBarButtonItem *_doneBarButtonItem;
     UIBarButtonItem *_removeItemBarButtonItem;
     UIBarButtonItem *_cancelBarButtonItem;
     WFParameter<WFParameterValuePickable> *_parameter;
-    NSString *_sizeClass;
+    long long _widgetFamily;
     WFVariableSubstitutableParameterState *_currentState;
     id <WFParameterValuePickerViewControllerDelegate> _delegate;
     UISearchController *_searchController;
@@ -63,21 +65,31 @@
 @property(retain, nonatomic) UISearchController *searchController; // @synthesize searchController=_searchController;
 @property(nonatomic) __weak id <WFParameterValuePickerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) WFVariableSubstitutableParameterState *currentState; // @synthesize currentState=_currentState;
-@property(readonly, nonatomic) NSString *sizeClass; // @synthesize sizeClass=_sizeClass;
+@property(readonly, nonatomic) long long widgetFamily; // @synthesize widgetFamily=_widgetFamily;
 @property(readonly, nonatomic) WFParameter<WFParameterValuePickable> *parameter; // @synthesize parameter=_parameter;
 - (_Bool)accessibilityPerformEscape;
+- (void)parameterValuePickerTableViewCell:(id)arg1 didToggleSelection:(_Bool)arg2;
 - (void)parameterAttributesDidChange:(id)arg1;
+- (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
+- (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
+- (double)tableView:(id)arg1 estimatedHeightForHeaderInSection:(long long)arg2;
+- (_Bool)tableView:(id)arg1 shouldHaveFullLengthBottomSeparatorForSection:(long long)arg2;
+- (_Bool)tableView:(id)arg1 shouldDrawBottomSeparatorForSection:(long long)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
+- (void)toggleCell:(id)arg1 atIndexPath:(id)arg2;
+- (void)resetVisibleCellsSelection;
 - (void)requestRemovingItem;
 - (void)cancelPickingValue;
 - (void)finishPickingValue;
 - (void)updateSearchResultsFromCurrentUserInput;
+- (void)searchBarSearchButtonClicked:(id)arg1;
 - (void)searchBar:(id)arg1 textDidChange:(id)arg2;
 - (void)updateSearchResultsForSearchController:(id)arg1;
 - (void)performSearchWithUserInput:(id)arg1;
 - (void)reloadDisplayingValuesWithCollection:(id)arg1 searchTerm:(id)arg2 validateCurrentState:(_Bool)arg3 animatingDifferences:(_Bool)arg4;
 - (void)validateCurrentStateWithCollection:(id)arg1;
+- (_Bool)currentSelectedValueIsVariable:(id)arg1;
 - (_Bool)currentSelectedValuesContainsState:(id)arg1;
 - (void)displayNoOptionsAvailableMessageIfNeeded;
 - (void)displayError:(id)arg1;
@@ -91,7 +103,7 @@
 @property(readonly, nonatomic) UIBarButtonItem *cancelBarButtonItem; // @synthesize cancelBarButtonItem=_cancelBarButtonItem;
 @property(readonly, nonatomic) UIBarButtonItem *removeItemBarButtonItem; // @synthesize removeItemBarButtonItem=_removeItemBarButtonItem;
 @property(readonly, nonatomic) UIBarButtonItem *doneBarButtonItem; // @synthesize doneBarButtonItem=_doneBarButtonItem;
-- (id)initWithParameter:(id)arg1 widgetSizeClass:(id)arg2 allowsVariables:(_Bool)arg3 initialCollection:(id)arg4 currentState:(id)arg5 delegate:(id)arg6;
+- (id)initWithParameter:(id)arg1 widgetFamily:(long long)arg2 allowsVariables:(_Bool)arg3 initialCollection:(id)arg4 currentState:(id)arg5 delegate:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

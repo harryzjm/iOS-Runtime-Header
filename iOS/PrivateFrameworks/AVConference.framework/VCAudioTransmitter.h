@@ -26,8 +26,6 @@ __attribute__((visibility("hidden")))
     int _audioTxBitrate;
     int _actualAudioSendingBitrate;
     unsigned int _lastSentAudioSampleTime;
-    unsigned int _sampleRate;
-    unsigned int _samplesPerFrame;
     unsigned char _inputMeter;
     long long _blockSize;
     float _blockSeconds;
@@ -81,7 +79,7 @@ __attribute__((visibility("hidden")))
     VCAudioPayload *_currentAudioPayload;
     int _currentRedPayloadType;
     unsigned int _currentAudioCap;
-    struct AudioStreamBasicDescription _inputFormat;
+    struct tagVCAudioFrameFormat _inputFormat;
     struct opaqueRTCReporting *_reportingAgent;
     int _reportingModuleID;
     int _operatingMode;
@@ -92,8 +90,9 @@ __attribute__((visibility("hidden")))
     _Bool _sendActiveVoiceOnly;
     unsigned int _qualityIndex;
     double _lastReportingCallbackTime;
-    CDStruct_3ab08b48 _currentChannelMetrics;
-    CDStruct_94aa5fb4 _idsChannelDataFormat;
+    double _lastReportingCallbackTimeShort;
+    CDStruct_a4f8a7cd _currentChannelMetrics;
+    struct tagVCIDSChannelDataFormat _idsChannelDataFormat;
     unsigned int _maxIDSStreamIdCount;
     NSArray *_supportedNumRedundantPayload;
     _Bool _currentDTXEnable;
@@ -105,15 +104,18 @@ __attribute__((visibility("hidden")))
     unsigned long long _remoteIDSParticipantID;
     _Bool _useChannelDataFormat;
     _Bool _useWiFiTiers;
+    struct tagVCCryptor *_sframeCryptor;
     unsigned int _rtpTimestampBase;
     _Bool _shouldApplyRedAsBoolean;
+    unsigned int _sentAudioBytesShort;
 }
 
 @property(nonatomic) unsigned char mediaControlInfoVersion; // @synthesize mediaControlInfoVersion=_mediaControlInfoVersion;
+@property(retain, nonatomic) VCAudioTierPicker *audioTierPicker; // @synthesize audioTierPicker=_audioTierPicker;
 @property(nonatomic) _Bool useWiFiTiers; // @synthesize useWiFiTiers=_useWiFiTiers;
 @property(nonatomic, getter=isCurrentDTXEnabled) _Bool currentDTXEnable; // @synthesize currentDTXEnable=_currentDTXEnable;
 @property(nonatomic) _Bool sendActiveVoiceOnly; // @synthesize sendActiveVoiceOnly=_sendActiveVoiceOnly;
-@property(nonatomic) CDStruct_3ab08b48 currentChannelMetrics; // @synthesize currentChannelMetrics=_currentChannelMetrics;
+@property(nonatomic) CDStruct_a4f8a7cd currentChannelMetrics; // @synthesize currentChannelMetrics=_currentChannelMetrics;
 @property(retain, nonatomic) NSArray *supportedNumRedundantPayload; // @synthesize supportedNumRedundantPayload=_supportedNumRedundantPayload;
 @property(nonatomic) unsigned int maxIDSStreamIdCount; // @synthesize maxIDSStreamIdCount=_maxIDSStreamIdCount;
 @property(nonatomic) int qualityIndicator; // @synthesize qualityIndicator=_qualityIndicator;
@@ -137,9 +139,11 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned int redMaxDelay20ms;
 @property(readonly, nonatomic) unsigned int redNumPayloads;
 @property(readonly, nonatomic) unsigned int encodedBytes;
+- (unsigned int)sentAudioBytesShort;
 @property(readonly, nonatomic) unsigned int sentAudioBytes;
 - (int)sendAudioPacket:(char *)arg1 payloadLength:(int)arg2 payloadType:(int)arg3 timestamp:(unsigned int)arg4 priority:(unsigned char)arg5 marker:(int)arg6 nextInterval:(float)arg7 padding:(char *)arg8 paddingLength:(unsigned char)arg9 sendReport:(int)arg10;
 - (int)sendAudioPacket:(struct tagAudioPacketData)arg1;
+- (int)sendSframeEncryptedAudioPacket:(struct tagAudioPacketData)arg1;
 - (void *)generateControlInfo;
 - (_Bool)sendAudioPacketImpl:(struct tagAudioPacketData *)arg1 bytesSent:(int *)arg2;
 - (void)stop;
@@ -148,6 +152,7 @@ __attribute__((visibility("hidden")))
 - (void)useAudioPayload:(id)arg1 withBitrate:(unsigned int)arg2;
 - (void)updateAudioTxBitrate;
 - (_Bool)setupAudioTierPicker;
+- (id)packetsPerBundle;
 - (void)setupAudioHeaderSize;
 - (int)bundleAndSendSamples:(char *)arg1 numEncodedBytes:(int)arg2 withPayload:(int)arg3 timeStamp:(unsigned int)arg4 bufferedSamples:(int)arg5 hasNewSamples:(_Bool)arg6 voiceActivity:(_Bool)arg7 priority:(unsigned char)arg8;
 - (int)sendAudioBundle:(_Bool)arg1 atTimeStamp:(unsigned int)arg2 nextInterval:(float)arg3;
@@ -166,7 +171,9 @@ __attribute__((visibility("hidden")))
 - (void)reportRedundancyConfigChange;
 - (void)registerReportingTask;
 - (void)gatherRealtimeStats:(struct __CFDictionary *)arg1;
+- (void)updateAudioTxRate;
 - (_Bool)setupAudio:(id *)arg1;
+- (_Bool)setupEncoderBuffer;
 - (void)setCellTech:(int)arg1 remoteCellular:(int)arg2 isIPV6:(int)arg3 audioCap:(unsigned int)arg4;
 - (_Bool)handleCodecRateModeChange:(unsigned char)arg1 withBitrate:(unsigned int)arg2;
 @property id <VCAudioTransmitterDelegate> delegate;

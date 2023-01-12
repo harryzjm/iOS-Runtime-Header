@@ -6,7 +6,6 @@
 
 @protocol CKObjectValidating;
 
-__attribute__((visibility("hidden")))
 @interface CKConstantValueExpressionValidator
 {
     id <CKObjectValidating> _validator;

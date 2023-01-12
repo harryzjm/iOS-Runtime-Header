@@ -12,7 +12,6 @@
 + (id)eventWithData:(NSData *)arg1 dataVersion:(unsigned int)arg2;
 @property(readonly, nonatomic) unsigned int dataVersion;
 - (NSData *)serialize;
-- (id)init;
 
 @optional
 - (NSData *)json;

@@ -10,6 +10,7 @@
 
 @class NSMutableArray, NSMutableDictionary, NSString;
 
+__attribute__((visibility("hidden")))
 @interface TTMergeableStringUndoGroup : NSObject <TTMergeableStringUndoCommand>
 {
     NSMutableDictionary *_seen;

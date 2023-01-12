@@ -9,13 +9,14 @@
 #import <UIKitCore/UILayoutContainerViewDelegate-Protocol.h>
 #import <UIKitCore/UITabBarDelegate-Protocol.h>
 #import <UIKitCore/_UIScrollViewScrollObserver-Protocol.h>
+#import <UIKitCore/_UIScrollViewScrollObserver_Internal-Protocol.h>
 #import <UIKitCore/_UITVScrollViewManagerDelegate-Protocol.h>
 #import <UIKitCore/_UITabBarDelegateInternal-Protocol.h>
 
-@class NSArray, NSMapTable, NSMutableArray, NSString, UIFocusContainerGuide, UIFocusGuide, UIGestureRecognizer, UILayoutContainerView, UILongPressGestureRecognizer, UIMoreNavigationController, UINavigationController, UIScrollView, UITabBar, UITapGestureRecognizer, UIView, UIViewController, _UITVScrollViewManager;
+@class NSArray, NSMapTable, NSMutableArray, NSString, UIFocusContainerGuide, UIFocusGuide, UIGestureRecognizer, UILayoutContainerView, UILongPressGestureRecognizer, UIMoreNavigationController, UINavigationController, UIScrollView, UITabBar, UITabBarAppearance, UITapGestureRecognizer, UIView, UIViewController, _UITVScrollViewManager;
 @protocol UITabBarControllerDelegate, UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning;
 
-@interface UITabBarController <UIGestureRecognizerDelegate, UILayoutContainerViewDelegate, _UIScrollViewScrollObserver, _UITVScrollViewManagerDelegate, _UITabBarDelegateInternal, UITabBarDelegate, NSCoding>
+@interface UITabBarController <UIGestureRecognizerDelegate, UILayoutContainerViewDelegate, _UIScrollViewScrollObserver_Internal, _UITVScrollViewManagerDelegate, _UITabBarDelegateInternal, _UIScrollViewScrollObserver, UITabBarDelegate, NSCoding>
 {
     UITabBar *_tabBar;
     UILayoutContainerView *_containerView;
@@ -29,6 +30,7 @@
     unsigned long long _customMaxItems;
     unsigned long long _defaultMaxItems;
     long long _tabBarPosition;
+    UITabBarAppearance *_lastUsedScrollEdgeAppearance;
     UITapGestureRecognizer *_backGestureRecognizer;
     UITapGestureRecognizer *_nudgeLeftGestureRecognizer;
     UITapGestureRecognizer *_nudgeRightGestureRecognizer;
@@ -51,6 +53,8 @@
         unsigned int delegatePreferredInterfaceOrientationForPresentation:1;
         unsigned int preferTabBarFocused:1;
         unsigned int notifySplitViewControllerForSelectionChange:1;
+        unsigned int suspendBarBackgroundUpdating:1;
+        unsigned int isAwaitingLayoutAfterTransitioningSelected:1;
         unsigned int offscreen:1;
         unsigned int hidNavBar:1;
     } _tabBarControllerFlags;
@@ -115,6 +119,7 @@
 - (void)transitionViewDidComplete:(id)arg1 fromView:(id)arg2 toView:(id)arg3;
 - (void)transitionViewDidStart:(id)arg1;
 - (void)transitionFromViewController:(id)arg1 toViewController:(id)arg2 transition:(int)arg3 shouldSetSelected:(_Bool)arg4;
+- (id)_viewControllerForObservableScrollView;
 - (id)_customAnimatorForFromViewController:(id)arg1 toViewController:(id)arg2;
 - (id)_customInteractionControllerForAnimator:(id)arg1;
 - (struct CGRect)_frameForWrapperViewForViewController:(id)arg1;
@@ -126,6 +131,7 @@
 - (void)_updateLayoutForStatusBarAndInterfaceOrientation;
 - (id)_transitionView;
 - (void)transitionFromViewController:(id)arg1 toViewController:(id)arg2;
+- (void)_setSelectedViewControllerAndNotify:(id)arg1;
 - (void)_tabBarItemClicked:(id)arg1;
 - (id)_viewControllerForTabBarItem:(id)arg1;
 - (void)_setTabBarPosition:(long long)arg1;
@@ -140,6 +146,23 @@
 - (void)_setNotifySplitViewControllerForSelectionChange:(_Bool)arg1;
 - (id)_traitCollectionForChildEnvironment:(id)arg1;
 - (id)_overrideTraitCollectionToPassDuringTraitChangeToChildViewController:(id)arg1;
+- (void)_viewDidPerformLayout;
+- (void)_observableScrollViewDidChangeFrom:(id)arg1 forViewController:(id)arg2 edges:(unsigned long long)arg3;
+- (void)_observeScrollViewGeometryAffectingContentBottomDidChange:(id)arg1;
+- (void)_updateAndObserveScrollView:(id)arg1 viewController:(id)arg2 updateBackgroundTransitionProgressForNilScrollView:(_Bool)arg3;
+- (void)_updateAndObserveScrollView:(id)arg1 viewController:(id)arg2;
+- (_Bool)_tvTabBarShouldTrackScrollView:(id)arg1;
+- (void)_stopObservingScrollView:(id)arg1;
+- (void)_updateBackgroundTransitionProgressForScrollView:(id)arg1 tabBar:(id)arg2 isNavigationTransitionUpdate:(_Bool)arg3;
+- (void)_updateBackgroundTransitionProgressForScrollView:(id)arg1 tabBar:(id)arg2;
+- (_Bool)_suspendBarBackgroundUpdating;
+- (void)_setSuspendBarBackgroundUpdating:(_Bool)arg1;
+- (void)_navigationControllerDidUpdateStack:(id)arg1;
+- (void)_navigationController:(id)arg1 didUpdateAndObserveScrollView:(id)arg2 forEdges:(unsigned long long)arg3;
+- (void)_handleObservingForScrollView:(id)arg1 sharedWithNavigationController:(id)arg2;
+- (void)_viewControllerObservableScrollViewAmbiguityStatusDidChange:(id)arg1;
+- (void)_viewSubtreeDidGainScrollView:(id)arg1 enclosingViewController:(id)arg2;
+- (_Bool)_isViewControllerContainedInSelected:(id)arg1;
 - (void)showBarWithTransition:(int)arg1;
 - (void)showBarWithTransition:(int)arg1 duration:(double)arg2;
 - (void)_showBarWithTransition:(int)arg1 isExplicit:(_Bool)arg2 duration:(double)arg3;
@@ -149,6 +172,8 @@
 - (void)_hideBarWithTransition:(int)arg1 isExplicit:(_Bool)arg2 duration:(double)arg3;
 - (void)_hideBarWithTransition:(int)arg1 isExplicit:(_Bool)arg2;
 - (void)animationDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
+- (_Bool)_isBarEffectivelyHidden;
+- (void)_tabBarVisibilityDidChange;
 - (_Bool)_isBarHidden;
 - (void)tabBar:(id)arg1 didEndCustomizingItems:(id)arg2 changed:(_Bool)arg3;
 - (void)tabBar:(id)arg1 willEndCustomizingItems:(id)arg2 changed:(_Bool)arg3;
@@ -211,7 +236,7 @@
 - (void)_performLeftGesture:(id)arg1;
 - (void)_performBackGesture:(id)arg1;
 - (void)_performFocusGesture:(unsigned long long)arg1;
-- (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (_Bool)_gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)pressesChanged:(id)arg1 withEvent:(id)arg2;
 - (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;
@@ -252,7 +277,7 @@
 - (id)_wrapperViewForViewController:(id)arg1;
 - (id)_viewForViewController:(id)arg1;
 - (void)_layoutViewController:(id)arg1;
-- (id)_deepestUnambiguousResponder;
+- (id)_deepestActionResponder;
 - (_Bool)becomeFirstResponder;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

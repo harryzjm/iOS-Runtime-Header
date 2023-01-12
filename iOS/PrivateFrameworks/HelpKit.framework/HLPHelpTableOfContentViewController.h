@@ -55,6 +55,7 @@
 - (void)willPresentSearchController:(id)arg1;
 - (void)updateSearchResultViewSeparatorValue;
 - (void)closeSectionItem:(id)arg1;
+- (void)openHelpItem:(id)arg1 reload:(_Bool)arg2 animated:(_Bool)arg3;
 - (void)openHelpItem:(id)arg1 animated:(_Bool)arg2;
 - (long long)numberOfVisibleHelpItemForSectionItem:(id)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
@@ -70,6 +71,7 @@
 - (void)updateFooterViewLayout;
 - (void)copyrightButtonTapped;
 - (void)showHelpBookInfo;
+- (void)scrollToHelpItem:(id)arg1 deselectImmediately:(_Bool)arg2 reload:(_Bool)arg3 animated:(_Bool)arg4;
 - (void)scrollToHelpItem:(id)arg1 deselectImmediately:(_Bool)arg2 animated:(_Bool)arg3;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateFooterViewBackgroundColor;

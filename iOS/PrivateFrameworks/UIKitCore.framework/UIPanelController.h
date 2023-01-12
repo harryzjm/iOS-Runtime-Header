@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
         unsigned int updateLayoutRequested:1;
         unsigned int leadingTrailingWrapsNavigationController:1;
         unsigned int shouldDelegateNavigationBarForViewController:1;
+        unsigned int isRunExpandScheduled:1;
     } _panelControllerFlags;
     NSMutableArray *_wrapperBlocksForNextUpdate;
     _Bool _animationRequestShouldCoordinate;
@@ -125,15 +126,12 @@ __attribute__((visibility("hidden")))
 - (void)__viewWillLayoutSubviews;
 - (void)_layoutContainerViewDidMoveToWindow:(id)arg1;
 - (void)_layoutContainerViewWillMoveToWindow:(id)arg1;
-@property(nonatomic, getter=areClippingViewsUnnecessary) _Bool clippingViewsUnnecessary;
-@property(nonatomic, getter=isPresentationGestureActive) _Bool presentationGestureActive;
 - (void)_withDisabledAppearanceTransitionsPerform:(CDUnknownBlockType)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2 superBlock:(CDUnknownBlockType)arg3;
 - (void)traitCollectionDidChange:(id)arg1 toNewTraits:(id)arg2;
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2 superBlock:(CDUnknownBlockType)arg3;
 - (void)_expandWithTransitionCoordinator:(id)arg1;
 - (void)_collapseWithTransitionCoordinator:(id)arg1;
-- (_Bool)_needsWorkaroundForCoordinatorBlocks;
 - (void)_updateForTraitCollection:(id)arg1 oldTraitCollection:(id)arg2 withTransitionCoordinator:(id)arg3;
 - (_Bool)_willExpandWithNewTraitCollection:(id)arg1 oldTraitCollection:(id)arg2;
 - (_Bool)_willCollapseWithNewTraitCollection:(id)arg1 oldTraitCollection:(id)arg2;
@@ -166,10 +164,12 @@ __attribute__((visibility("hidden")))
 - (void)setMainViewController:(id)arg1 changingParentage:(_Bool)arg2;
 @property(retain, nonatomic) UIViewController *mainViewController;
 @property(nonatomic) _Bool leadingTrailingWrapsNavigationController;
-- (_Bool)shouldRunOurRotationAlongSideAnimationBeforeClientAlongSideAnimation;
 - (void)dealloc;
 @property(readonly, nonatomic) _Bool supportsColumnStyle;
 - (id)initWithOwningViewController:(id)arg1;
+@property(nonatomic, getter=isRunExpandScheduled, setter=setRunExpandScheduled:) _Bool runExpandScheduled;
+@property(nonatomic, getter=areClippingViewsUnnecessary) _Bool clippingViewsUnnecessary;
+@property(nonatomic, getter=isPresentationGestureActive) _Bool presentationGestureActive;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

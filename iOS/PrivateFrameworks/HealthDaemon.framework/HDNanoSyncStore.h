@@ -40,10 +40,7 @@
     NSSet *_obliteratedDatabaseUUIDs;
 }
 
-+ (id)_observedDeviceProperties;
 + (id)orderedSyncEntitiesForProfile:(id)arg1 protocolVersion:(int)arg2 companion:(_Bool)arg3;
-+ (id)nanoSyncStoreWithProfile:(id)arg1 device:(id)arg2 delegate:(id)arg3;
-+ (id)tinkerNanoSyncStoreWithProfile:(id)arg1 device:(id)arg2 delegate:(id)arg3;
 + (id)nanoSyncStoreWithProfile:(id)arg1 device:(id)arg2 delegate:(id)arg3 tinkerPaired:(_Bool)arg4;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool needsSyncOnUnlock; // @synthesize needsSyncOnUnlock=_needsSyncOnUnlock;
@@ -51,8 +48,6 @@
 @property(readonly, nonatomic) HDNanoSyncRestoreSession *restoreSession; // @synthesize restoreSession=_restoreSession;
 @property(readonly, nonatomic) long long restoreState; // @synthesize restoreState=_restoreState;
 @property(nonatomic) __weak id <HDNanoSyncStoreDelegate> delegate; // @synthesize delegate=_delegate;
-@property(retain, nonatomic) NRDevice *nanoRegistryDevice; // @synthesize nanoRegistryDevice=_nanoRegistryDevice;
-@property(retain, nonatomic) IDSDevice *identityServicesDevice; // @synthesize identityServicesDevice=_identityServicesDevice;
 @property(readonly, getter=isMaster) _Bool master; // @synthesize master=_master;
 - (id)diagnosticDescription;
 @property(readonly, copy) NSString *description;
@@ -73,7 +68,6 @@
 - (long long)syncProvenance;
 - (_Bool)validatePairingUUIDsWithIncomingMessage:(id)arg1;
 - (void)removeExpiredIncomingSyncObservers;
-- (void)_notifyIncomingSyncObservers;
 - (void)addIncomingSyncObserverWithTimeout:(double)arg1 timeoutHandler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)didReceiveRequestWithChangeSet:(id)arg1;
 - (void)removePendingRequestContextForUUID:(id)arg1;
@@ -81,11 +75,10 @@
 - (void)addPendingRequestContext:(id)arg1 forUUID:(id)arg2;
 - (void)configureOutgoingResponse:(id)arg1;
 - (id)createRequestWithMessageID:(unsigned short)arg1;
-- (void)_setRestoreState:(long long)arg1;
+- (_Bool)resetProvenanceWithError:(id *)arg1;
 @property(readonly, nonatomic, getter=isRestoreComplete) _Bool restoreComplete;
 - (void)finishRestoreSessionWithError:(id)arg1;
 - (id)beginRestoreSessionWithUUID:(id)arg1 timeout:(double)arg2 timeoutHandler:(CDUnknownBlockType)arg3;
-- (_Bool)_savePairingEntity;
 @property(copy, nonatomic) NSUUID *persistentUUID;
 @property(copy, nonatomic) NSUUID *healthUUID;
 @property(readonly, getter=isAltAccount) _Bool altAccount;
@@ -106,7 +99,6 @@
 - (void)invalidate;
 - (id)nanoSyncStoreForProtocolVersion:(int)arg1;
 - (void)dealloc;
-- (id)_initWithIdentityServicesDevice:(id)arg1 nanoRegistryDevice:(id)arg2 pairingEntity:(id)arg3 obliteratedDatabaseUUIDs:(id)arg4 protocolVersion:(int)arg5 delegate:(id)arg6 profile:(id)arg7 tinkerPairing:(_Bool)arg8;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

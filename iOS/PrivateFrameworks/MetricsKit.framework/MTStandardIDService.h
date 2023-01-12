@@ -6,56 +6,61 @@
 
 #import <objc/NSObject.h>
 
-#import <MetricsKit/MTIDObserverDelegate-Protocol.h>
 #import <MetricsKit/MTIDService-Protocol.h>
 
-@class MTIDCache, MTNonretainedCache, MTPromise, NSString;
+@class MTIDCache, MTInterprocessChangeNotifier, MTPromise, NSMutableDictionary, NSNumber, NSString;
 @protocol MTIDSecretStore;
 
-@interface MTStandardIDService : NSObject <MTIDObserverDelegate, MTIDService>
+@interface MTStandardIDService : NSObject <MTIDService>
 {
+    NSNumber *_dsId;
+    NSString *_applicationBundleIdentifierOverrideForNetworkAttribution;
     MTPromise *_configPromise;
-    id <MTIDSecretStore> _secretStore;
     MTIDCache *_cache;
-    MTNonretainedCache *_observers;
+    MTInterprocessChangeNotifier *_accountChanged;
+    id <MTIDSecretStore> _secretStore;
+    NSNumber *_defaultDSID;
+    NSMutableDictionary *_associatedObjects;
 }
 
++ (_Bool)isTinkerPaired;
 + (id)writeDebugData:(id)arg1 toFileWithNameFormat:(id)arg2;
 + (void)triggerInterprocessChangeNotifier:(id)arg1;
 + (void)registerInterprocessChangeNotifier:(id)arg1;
-+ (id)dateFilledOptions:(id)arg1;
 + (id)localCachePath;
 + (void)setLocalCachePath:(id)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) MTNonretainedCache *observers; // @synthesize observers=_observers;
-@property(retain, nonatomic) MTIDCache *cache; // @synthesize cache=_cache;
+@property(retain, nonatomic) NSMutableDictionary *associatedObjects; // @synthesize associatedObjects=_associatedObjects;
+@property(retain, nonatomic) NSNumber *defaultDSID; // @synthesize defaultDSID=_defaultDSID;
 @property(retain, nonatomic) id <MTIDSecretStore> secretStore; // @synthesize secretStore=_secretStore;
+@property(retain, nonatomic) MTInterprocessChangeNotifier *accountChanged; // @synthesize accountChanged=_accountChanged;
+@property(retain, nonatomic) MTIDCache *cache; // @synthesize cache=_cache;
 @property(retain, nonatomic) MTPromise *configPromise; // @synthesize configPromise=_configPromise;
+@property(copy, nonatomic) NSString *applicationBundleIdentifierOverrideForNetworkAttribution; // @synthesize applicationBundleIdentifierOverrideForNetworkAttribution=_applicationBundleIdentifierOverrideForNetworkAttribution;
+@property(retain, nonatomic) NSNumber *dsId; // @synthesize dsId=_dsId;
+- (void)_getConfig;
 - (void)_getIDs;
 - (void)_getSecrets;
 - (void)_resetIDs;
 - (void)_clearLocalData;
-- (id)generateAndCacheIDInfo:(id)arg1 secret:(id)arg2 correlationIDs:(id)arg3 date:(id)arg4;
+- (id)generateIDInfo:(id)arg1 secret:(id)arg2 dsId:(id)arg3 correlationIDs:(id)arg4;
 - (id)IDInfoForNamespace:(id)arg1 options:(id)arg2 fromConfig:(id)arg3;
 - (id)IDsForNamespaces:(id)arg1 options:(id)arg2 fromConfig:(id)arg3;
-- (id)resetIDForNamespace:(id)arg1 options:(id)arg2;
-- (id)IDInfoForNamespace:(id)arg1 options:(id)arg2;
-- (void)setConfig:(id)arg1;
 - (id)IDForTopic:(id)arg1 type:(long long)arg2 options:(id)arg3;
-- (void)refreshedIDWithID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)removeIDObserver:(id)arg1;
-- (void)addIDObserver:(id)arg1;
+- (id)filledOptions:(id)arg1;
 - (void)performMaintenanceWithCompletion:(CDUnknownBlockType)arg1;
-- (id)observeIDForTopic:(id)arg1 type:(long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)queryIDForTopic:(id)arg1 type:(long long)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)queryIDForTopic:(id)arg1 type:(long long)arg2 date:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)resetIDForTopics:(id)arg1 options:(id)arg2;
 - (id)IDFieldsForTopic:(id)arg1 options:(id)arg2;
-- (id)IDFieldsForTopic:(id)arg1 date:(id)arg2;
+- (void)resetIDForTopics:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)IDFieldsForTopic:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)handleApplicationStateChange:(id)arg1;
 - (void)handleResetNotification:(id)arg1;
-- (void)handleAccountNotification:(id)arg1;
+- (void)handleRecordNotification;
+- (void)handleAccountNotification;
 - (void)dealloc;
 - (void)maybeSubscribeToDarwinNotifications;
+- (void)setConfig:(id)arg1;
 - (id)initWithConfigPromise:(id)arg1;
 - (id)initWithConfigDictionary:(id)arg1;
 - (id)init;

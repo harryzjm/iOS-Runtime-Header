@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class MTLCompiler, MTLDeviceFeatureQueries, MTLGPUBVHBuilder, MTLLoader, MTLTargetDeviceArchitecture, NSArray, NSMutableArray, NSString;
-@protocol MTLComputePipelineState, MTLRenderPipelineState, OS_dispatch_queue;
+@class MTLCompiler, MTLDeviceFeatureQueries, MTLGPUBVHBuilder, MTLLoader, MTLTargetDeviceArchitecture, NSArray, NSDictionary, NSMutableArray, NSString;
+@protocol MTLComputePipelineState, MTLRenderPipelineState, OS_dispatch_data, OS_dispatch_queue;
 
 @interface _MTLDevice : NSObject
 {
-    CDStruct_19ca2cda _limits;
+    CDStruct_b63df89e _limits;
     void *_supportedGPUFamilies;
     NSObject<OS_dispatch_queue> *_serialQueue;
     NSObject<OS_dispatch_queue> *_pipelineSerializationQueue;
@@ -25,9 +25,9 @@
     MTLDeviceFeatureQueries *_featureQueries;
     unsigned long long _globalTraceObjectID;
     _Atomic int _commandQueueCount;
-    struct MTLLibraryBuilder *_libraryBuilder;
+    void *_libraryBuilder;
     struct MTLPipelineLibraryBuilder *_pipelineLibraryBuilder;
-    struct MTLPipelineCollection *_pipelineCollection;
+    void *_pipelineCollection;
     NSString *_pipelineDescriptorsOutputFile;
     NSString *_librariesOutputDirectory;
     _Bool _collectAllLibraries;
@@ -36,7 +36,8 @@
     struct os_unfair_lock_s _GPUBVHBuilderLock;
     MTLGPUBVHBuilder *_GPUBVHBuilder;
     struct once_flag _initProgressTrackingOnceToken;
-    _Bool _DynamicFunctionPointersSupported;
+    NSDictionary *_pluginData;
+    NSObject<OS_dispatch_data> *_serializedPluginData;
     unsigned long long _commandBufferErrorOptions;
 }
 
@@ -44,12 +45,15 @@
 + (_Bool)useNewPrimitiveRestartBehavior;
 - (id).cxx_construct;
 @property(nonatomic) unsigned long long commandBufferErrorOptions; // @synthesize commandBufferErrorOptions=_commandBufferErrorOptions;
-@property(readonly, getter=isDynamicFunctionPointersSupported) _Bool DynamicFunctionPointersSupported; // @synthesize DynamicFunctionPointersSupported=_DynamicFunctionPointersSupported;
 @property _Bool shaderDebugInfoCaching; // @synthesize shaderDebugInfoCaching=_shaderDebugInfoCaching;
 @property(readonly) NSObject<OS_dispatch_queue> *concurrentQueue; // @synthesize concurrentQueue=_concurrentQueue;
 @property(readonly) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property(readonly) unsigned long long globalTraceObjectID; // @synthesize globalTraceObjectID=_globalTraceObjectID;
+@property(copy, nonatomic) NSDictionary *pluginData;
 - (void)deserializeCompileTimeStats:(id)arg1 addToDictionary:(id)arg2;
+- (id)newAccelerationStructureWithBuffer:(id)arg1 offset:(unsigned long long)arg2;
+- (_Bool)isCompatibleWithAccelerationStructure:(CDStruct_c0454aff)arg1;
+- (id)newAccelerationStructureWithSize:(unsigned long long)arg1 resourceIndex:(unsigned long long)arg2;
 - (id)newAccelerationStructureWithDescriptor:(id)arg1;
 - (id)newAccelerationStructureWithSize:(unsigned long long)arg1;
 - (CDStruct_da2e99ad)accelerationStructureSizesWithDescriptor:(id)arg1;
@@ -73,6 +77,7 @@
 - (id)newSharedEventWithMachPort:(unsigned int)arg1;
 - (id)newSharedEventWithHandle:(id)arg1;
 - (id)newSharedEvent;
+- (id)newLateEvalEvent;
 - (id)newEvent;
 - (id)newArgumentEncoderWithLayout:(id)arg1;
 - (id)newArgumentEncoderWithArguments:(id)arg1;
@@ -134,6 +139,7 @@
 - (id)newRenderPipelineStateWithDescriptor:(id)arg1 options:(unsigned long long)arg2 reflection:(id *)arg3 error:(id *)arg4;
 - (id)newRenderPipelineStateWithDescriptor:(id)arg1 error:(id *)arg2;
 @property(readonly) unsigned long long maxConstantBufferArguments;
+@property(readonly) unsigned long long maxPredicatedNestingDepth;
 @property(readonly) unsigned long long maxComputeAttributes;
 @property(readonly) unsigned long long maxTextureBufferWidth;
 @property(readonly) unsigned long long maxVertexAmplificationCount;
@@ -193,13 +199,22 @@
 @property(readonly) unsigned long long linearTextureArrayAlignmentSlice;
 @property(readonly) unsigned long long linearTextureArrayAlignmentBytes;
 @property(readonly) unsigned long long maxFramebufferStorageBits;
-@property(readonly) const CDStruct_19ca2cda *limits;
+@property(readonly) const CDStruct_b63df89e *limits;
 - (void)initLimits;
 - (_Bool)deviceSupportsFeatureSet:(unsigned long long)arg1;
 - (_Bool)deviceOrFeatureProfileSupportsFeatureSet:(unsigned long long)arg1;
 - (_Bool)supportsFeatureSet:(unsigned long long)arg1;
 - (_Bool)isMagicMipmapSupported;
 - (id)newLibraryWithImageFilterFunctionsSPI:(id)arg1 imageFilterFunctionInfo:(const CDStruct_dbc1e4aa *)arg2 error:(id *)arg3;
+- (id)newDagStringWithGraphs:(id)arg1;
+- (id)newLibraryWithDescriptorSPI:(id)arg1 error:(id *)arg2;
+- (id)newLibraryWithDescriptor:(id)arg1 destinationBinaryArchive:(id)arg2 error:(id *)arg3;
+- (void)newLibraryWithDescriptor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)newLibraryWithDescriptor:(id)arg1 error:(id *)arg2;
+- (id)newLibraryWithStitchedDescriptorSPI:(id)arg1 error:(id *)arg2;
+- (id)newLibraryWithStitchedDescriptor:(id)arg1 destinationBinaryArchive:(id)arg2 error:(id *)arg3;
+- (void)newLibraryWithStitchedDescriptor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)newLibraryWithStitchedDescriptor:(id)arg1 error:(id *)arg2;
 - (id)newLibraryWithDAG:(id)arg1 functions:(id)arg2 error:(id *)arg3;
 - (id)newComputePipelineStateWithImageFilterFunctionsSPI:(id)arg1 imageFilterFunctionInfo:(const CDStruct_dbc1e4aa *)arg2 error:(id *)arg3;
 - (void)newComputePipelineStateWithFunction:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -209,8 +224,8 @@
 @property(readonly, getter=isLargeMRTSupported) _Bool largeMRTSupported;
 - (void)compileVisibleFunction:(id)arg1 withDescriptor:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)compileVisibleFunction:(id)arg1 withDescriptor:(id)arg2 error:(id *)arg3;
+- (void)compileVisibleFunction:(id)arg1 withDescriptor:(id)arg2 destinationBinaryArchive:(id)arg3 error:(id *)arg4;
 @property(readonly, getter=isFixedLinePointFillDepthGradientSupported) _Bool FixedLinePointFillDepthGradientSupported;
-@property(readonly, getter=isBinaryFunctionPointersSupported) _Bool BinaryFunctionPointersSupported;
 @property(readonly, getter=isAnisoSampleFixSupported) _Bool AnisoSampleFixSupported;
 - (_Bool)supportsTextureWriteFPRoundingMode:(long long)arg1;
 @property(readonly) long long defaultTextureWriteRoundingMode;
@@ -227,6 +242,7 @@
 - (id)newDynamicLibraryWithURL:(id)arg1 error:(id *)arg2;
 - (id)newDynamicLibrary:(id)arg1 computeDescriptor:(id)arg2 error:(id *)arg3;
 - (id)newDynamicLibrary:(id)arg1 error:(id *)arg2;
+- (id)_newDynamicLibrary:(id)arg1 computeDescriptor:(id)arg2 error:(id *)arg3;
 - (_Bool)validateDynamicLibrary:(id)arg1 state:(_Bool)arg2 error:(id *)arg3;
 - (_Bool)validateDynamicLibraryURL:(id)arg1 error:(id *)arg2;
 - (id)newDynamicLibraryError:(unsigned long long)arg1 message:(id)arg2;
@@ -279,13 +295,23 @@
 - (_Bool)isCollectingPipelines;
 - (_Bool)isCollectingLibraries;
 - (void)initSerializationPaths;
+- (void)setRawBVHBuilderPtr:(id)arg1;
+- (id)getRawBVHBuilderPtr;
+- (struct os_unfair_lock_s *)getBVHBuilderLock;
 - (void *)getShaderCacheKeys;
 - (id)newFunctionWithGLIR:(void *)arg1 inputsDescription:(id)arg2 functionType:(unsigned long long)arg3;
 - (id)newFunctionWithGLIR:(void *)arg1 functionType:(unsigned long long)arg2;
+- (id)newFunctionWithGLESIR:(void *)arg1 inputsDescription:(id)arg2 functionType:(unsigned long long)arg3;
+- (id)newFunctionWithGLESIR:(void *)arg1 functionType:(unsigned long long)arg2;
+- (id)newFunctionWithGLCoreIR:(void *)arg1 inputsDescription:(id)arg2 functionType:(unsigned long long)arg3;
+- (id)newFunctionWithGLCoreIR:(void *)arg1 functionType:(unsigned long long)arg2;
 - (id)description;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (unsigned long long)getSupportedCommandBufferErrorOptions;
 - (_Bool)areProgrammableSamplePositionsSupported;
+- (id)loadDynamicLibrariesForFunction:(id)arg1 insertLibraries:(id)arg2 options:(unsigned long long)arg3 error:(id *)arg4;
+- (id)loadDynamicLibrariesForFunction:(id)arg1 insertLibraries:(id)arg2 error:(id *)arg3;
+- (id)loadDynamicLibrariesForComputeDescriptor:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (id)loadDynamicLibrariesForComputeDescriptor:(id)arg1 error:(id *)arg2;
 @property(readonly) MTLTargetDeviceArchitecture *targetDeviceArchitecture;
 @property(readonly) const struct MTLTargetDeviceArch *targetDeviceInfo;
@@ -296,6 +322,13 @@
 - (void)dealloc;
 - (void)initProgressTracking;
 - (id)init;
+@property(readonly, nonatomic) _Bool supportsStackOverflowErrorCode;
+@property(readonly, nonatomic) _Bool supportsCommandBufferJump;
+@property(readonly, nonatomic) _Bool supportsLossyCompression;
+@property(readonly, nonatomic) _Bool supportsAtomicUlongVoidMinMax;
+@property(readonly, nonatomic) _Bool supportsSparseDepthAttachments;
+@property(readonly, nonatomic) _Bool supportsBfloat16Format;
+@property(readonly, nonatomic) _Bool supportsSIMDShuffleAndFill;
 @property(readonly, nonatomic) _Bool supportsQuadReduction;
 @property(readonly, nonatomic) _Bool supportsInterchangeTiled;
 @property(readonly, nonatomic) _Bool supportsSIMDGroupMatrix;
@@ -317,9 +350,13 @@
 @property(readonly, nonatomic) _Bool supportsMirrorClampToEdgeSamplerMode;
 @property(readonly, nonatomic) _Bool supportsBlackOrWhiteSamplerBorderColors;
 @property(readonly, nonatomic) _Bool supportsShaderBarycentricCoordinates;
+@property(readonly, nonatomic) _Bool supportsPrimitiveMotionBlur;
+@property(readonly, nonatomic) _Bool supportsRaytracingFromRender;
+@property(readonly, nonatomic) _Bool supportsSharedFunctionTables;
+@property(readonly, nonatomic) _Bool supportsFunctionPointersFromRender;
+@property(readonly, nonatomic) _Bool supportsRenderDynamicLibraries;
 @property(readonly, nonatomic) _Bool supportsStatefulDynamicLibraries;
 @property(readonly, nonatomic) _Bool supportsDynamicLibraries;
-@property(readonly, nonatomic) _Bool supportsBinaryFunctionPointers;
 @property(readonly, nonatomic) _Bool supportsFunctionPointers;
 @property(readonly, nonatomic) _Bool supportsIndirectWritableTextures;
 @property(readonly, nonatomic) _Bool supportsSparseHeaps;
@@ -420,15 +457,21 @@
 @property(readonly, nonatomic) _Bool supportsBufferPrefetchStatistics;
 @property(readonly, nonatomic) _Bool supportsSharedTextureHandles;
 @property(readonly, nonatomic) _Bool supportsNonZeroTextureWriteLOD;
+@property(readonly, nonatomic) _Bool supportsLateEvalEvent;
 @property(readonly, nonatomic) _Bool supportsFixedLinePointFillDepthGradient;
 @property(readonly, nonatomic) _Bool supportsInt64;
 @property(readonly, nonatomic) _Bool supportsPullModelInterpolation;
 @property(readonly, nonatomic) _Bool supportsOpenCLTextureWriteSwizzles;
 @property(readonly, nonatomic) _Bool supportsPlacementHeaps;
 @property(readonly, nonatomic) _Bool supportsVertexAmplification;
+@property(readonly, nonatomic) _Bool supportsQueryTextureLOD;
 @property(readonly, nonatomic) _Bool supports32BitFloatFiltering;
 @property(readonly, nonatomic) _Bool supports32BitMSAA;
 @property(readonly, nonatomic) _Bool supports32bpcMSAATextures;
+@property(readonly, nonatomic) _Bool supportsTLS;
+@property(readonly, nonatomic) _Bool supportsGlobalVariableRelocationCompute;
+@property(readonly, nonatomic) _Bool supportsGlobalVariableRelocationRender;
+@property(readonly, nonatomic) _Bool supportsGlobalVariableRelocation;
 @property(readonly, nonatomic) _Bool supportsPrimitiveRestartOverride;
 @property(readonly, nonatomic) _Bool supportsRGBA10A2Gamma;
 @property(readonly, nonatomic) _Bool supports3DBCTextures;
@@ -437,6 +480,7 @@
 @property(readonly, nonatomic) _Bool supportsCustomBorderColor;
 @property(readonly, nonatomic) _Bool supportsLargeFramebufferConfigs;
 @property(readonly, nonatomic) _Bool supportsProgrammableSamplePositions;
+@property(readonly, nonatomic) _Bool supportsStreamingCodecSignaling;
 @property(readonly, nonatomic) _Bool supportsReadWriteTextureArgumentsTier2;
 @property(readonly, nonatomic) _Bool supportsArgumentBuffersTier2;
 @property(readonly, nonatomic) _Bool supportsRenderMemoryBarrier;

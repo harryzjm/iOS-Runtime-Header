@@ -11,20 +11,21 @@
 #import <PhotosUI/PLInvitationRecordsObserver-Protocol.h>
 #import <PhotosUI/PXChangeObserver-Protocol.h>
 #import <PhotosUI/PXForcedDismissableViewController-Protocol.h>
+#import <PhotosUI/PXNavigationActionReceiver-Protocol.h>
 #import <PhotosUI/PXRootLibraryNavigationController-Protocol.h>
 #import <PhotosUI/PXSettingsKeyObserver-Protocol.h>
 #import <PhotosUI/PXTabBarItemKeyCommandDelegate-Protocol.h>
-#import <PhotosUI/PXUIKeyCommandDelegate-Protocol.h>
 #import <PhotosUI/UINavigationControllerDelegate-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSMutableIndexSet, NSObject, NSString, PUImportViewController, PUMomentsZoomLevelManager, PUSessionInfo, PUTabbedLibraryViewControllerSpec, PUTabbedLibraryViewModel, PXForYouBadgeManager, PXProgrammaticNavigationRequest, UINavigationController;
+@class NSArray, NSMutableDictionary, NSMutableIndexSet, NSObject, NSString, PHPhotoLibrary, PUImportViewController, PUMomentsZoomLevelManager, PUSessionInfo, PUTabbedLibraryViewControllerSpec, PUTabbedLibraryViewModel, PXForYouBadgeManager, PXProgrammaticNavigationRequest, UINavigationController;
 @protocol OS_os_log, PXProgrammaticNavigationUpdateTarget;
 
-@interface PUTabbedLibraryViewController : UITabBarController <PXSettingsKeyObserver, PXChangeObserver, PXTabBarItemKeyCommandDelegate, PXUIKeyCommandDelegate, PLAssetContainerListChangeObserver, PLAssetContainerObserver, PLInvitationRecordsObserver, PXForcedDismissableViewController, PXRootLibraryNavigationController, UINavigationControllerDelegate>
+@interface PUTabbedLibraryViewController : UITabBarController <PXSettingsKeyObserver, PXChangeObserver, PXNavigationActionReceiver, PXTabBarItemKeyCommandDelegate, PLAssetContainerListChangeObserver, PLAssetContainerObserver, PLInvitationRecordsObserver, PXForcedDismissableViewController, PXRootLibraryNavigationController, UINavigationControllerDelegate>
 {
     PUTabbedLibraryViewControllerSpec *_spec;
     PUSessionInfo *_sessionInfo;
     int _pendingSelectedContentMode;
+    PHPhotoLibrary *_photoLibrary;
     _Bool _sharedTabBadgeIsDirty;
     NSString *_lastSelectedTabDescription;
     NSMutableDictionary *_filteredAlbumListsByContentMode;
@@ -61,7 +62,7 @@
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (void)px_navigationDestinationWillChange:(id)arg1;
 - (id)nextExistingParticipantOnRouteToDestination:(id)arg1;
-- (void)px_switchToTabForDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)px_switchToTabAndNavigateToDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)navigateToDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (unsigned long long)routingOptionsForDestination:(id)arg1;
 - (_Bool)prepareForDismissingForced:(_Bool)arg1;
@@ -78,15 +79,23 @@
 - (_Bool)cloudFeedAssetIsAvailableForNavigation:(id)arg1;
 - (_Bool)commentIsAvailableForNavigation:(id)arg1 inAsset:(id)arg2;
 - (_Bool)assetIsAvailableForNavigation:(id)arg1 inAlbum:(id)arg2;
+- (void)navigateToSearchWithSearchText:(id)arg1 searchCategory:(unsigned long long)arg2;
 - (void)navigateToSearchWithHashtag:(id)arg1;
+- (void)navigateToOneYearAgoSearch;
+- (void)navigateToSearch;
+- (void)_navigateToSearchWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_tabRootViewControllerInNavigationController:(id)arg1;
 - (id)_snapBackRootViewControllerInNavigationController:(id)arg1;
+- (void)navigateToPlacesAlbumAnimated:(_Bool)arg1;
 - (void)navigateToPeopleAlbumAnimated:(_Bool)arg1 revealPersonWithLocalIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)navigateToMemoryWithLocalIdentifier:(id)arg1 animated:(_Bool)arg2;
 - (void)_handleFetchedMomentShare:(id)arg1 atURL:(id)arg2 error:(id)arg3 timedOut:(_Bool)arg4;
-- (void)navigateToMomentShareWithURL:(id)arg1 animated:(_Bool)arg2;
+- (void)_navigateToMomentShareWithURL:(id)arg1 animated:(_Bool)arg2;
+- (void)navigateToCloudKitShareWithURL:(id)arg1 animated:(_Bool)arg2;
+- (void)_presentRetryAlertControllerWithTitle:(id)arg1 error:(id)arg2 retryHandler:(CDUnknownBlockType)arg3;
 - (void)navigateToInvitationCMMWithIdentifier:(id)arg1 animated:(_Bool)arg2;
 - (void)navigateToSuggestedCMMWithIdentifier:(id)arg1 animated:(_Bool)arg2;
+- (void)_navigateToSuggestionFromCuratedLibrary:(id)arg1;
 - (void)navigateToFeaturedPhotoWithSuggestionIdentifier:(id)arg1 animated:(_Bool)arg2;
 - (void)navigateToRevealTheMostRecentMemoryAnimated:(_Bool)arg1;
 - (id)_navigateToMemoriesDismissingAnyPresentedViewController:(_Bool)arg1;
@@ -105,7 +114,6 @@
 - (void)navigateToCloudFeedAsset:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)navigateToRevealCloudFeedAsset:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)navigateToCloudFeedWithCompletion:(CDUnknownBlockType)arg1;
-- (void)navigateToOneYearAgoSearch;
 - (void)navigateToPhotosContentBottomAnimated:(_Bool)arg1;
 - (void)navigateToAsset:(id)arg1 openOneUp:(_Bool)arg2 animated:(_Bool)arg3;
 - (void)_navigateToContentMode:(int)arg1 defaultLocationIfNeverDisplayed:(_Bool)arg2 animated:(_Bool)arg3;
@@ -150,8 +158,6 @@
 - (void)setViewControllers:(id)arg1 animated:(_Bool)arg2;
 - (id)localizedDiscoverabilityTitleForTabBarItem:(id)arg1 atIndex:(unsigned long long)arg2;
 - (_Bool)shouldExposeShortcutForTabBarItem:(id)arg1 atIndex:(unsigned long long)arg2;
-- (void)keyCommandDidRequestToBePerformed:(id)arg1;
-- (id)keyCommands;
 - (unsigned long long)supportedInterfaceOrientations;
 - (_Bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;

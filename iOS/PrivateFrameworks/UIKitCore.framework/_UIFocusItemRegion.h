@@ -8,8 +8,11 @@
 
 @interface _UIFocusItemRegion
 {
-    _Bool _itemIsEligibleForFocusInteraction;
-    _Bool _itemIsFocusable;
+    struct {
+        unsigned int itemIsEligibleForFocusOcclusion:1;
+        unsigned int itemIsFocusable:1;
+        unsigned int itemIsTransparent:1;
+    } _flags;
     id <UIFocusItem> _item;
 }
 
@@ -24,7 +27,6 @@
 - (unsigned long long)_focusableBoundaries;
 - (id)_nextFocusedItemForFocusMovementRequest:(id)arg1 inMap:(id)arg2;
 - (id)_defaultFocusItem;
-- (_Bool)_shouldCropRegionToSearchArea;
 - (_Bool)_canBeOccludedByRegionsAbove;
 - (_Bool)_canOccludeRegionsBelow;
 - (id)description;

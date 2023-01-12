@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)executeSaveWithConfiguration:(id)arg1;
+- (id)executeSaveWithConfiguration:(id)arg1 saveDelegate:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

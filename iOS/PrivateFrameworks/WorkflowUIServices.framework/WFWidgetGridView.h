@@ -8,34 +8,39 @@
 
 #import <WorkflowUIServices/WFWidgetCellDelegate-Protocol.h>
 
-@class NSMutableArray, NSString;
-@protocol WFWidgetGridViewDelegate;
+@class NSArray, NSObject, NSString;
+@protocol OS_os_log, WFWidgetGridViewDelegate;
 
 __attribute__((visibility("hidden")))
 @interface WFWidgetGridView : UIView <WFWidgetCellDelegate>
 {
     id <WFWidgetGridViewDelegate> _delegate;
-    unsigned long long _sizeClass;
+    NSArray *_workflows;
+    long long _family;
     double _cornerRadius;
-    NSMutableArray *_cells;
+    NSObject<OS_os_log> *_log;
+    NSString *_lastKnownContentSizeCategory;
+    struct CGSize _lastKnownSize;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableArray *cells; // @synthesize cells=_cells;
+@property(retain, nonatomic) NSString *lastKnownContentSizeCategory; // @synthesize lastKnownContentSizeCategory=_lastKnownContentSizeCategory;
+@property(readonly, nonatomic) NSObject<OS_os_log> *log; // @synthesize log=_log;
 @property(readonly, nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
-@property(readonly, nonatomic) unsigned long long sizeClass; // @synthesize sizeClass=_sizeClass;
+@property(readonly, nonatomic) long long family; // @synthesize family=_family;
+@property(nonatomic) struct CGSize lastKnownSize; // @synthesize lastKnownSize=_lastKnownSize;
+@property(retain, nonatomic) NSArray *workflows; // @synthesize workflows=_workflows;
 @property(nonatomic) __weak id <WFWidgetGridViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)widgetCellDidTransitionToState:(long long)arg1;
 - (void)widgetCellWasTapped:(id)arg1;
 - (id)cellAtIndex:(unsigned long long)arg1;
 - (_Bool)cellExistsAtIndex:(unsigned long long)arg1;
-- (void)addCell:(id)arg1;
 - (void)layoutWithWorkflows:(id)arg1;
 - (id)workflowIdentifiersForVisibleCells;
 - (id)cellForWorkflowWithIdentifier:(id)arg1;
 - (void)enableAllCells;
 - (void)disableAllCellsExceptCell:(id)arg1;
-- (id)initWithSizeClass:(unsigned long long)arg1 cornerRadius:(double)arg2;
+- (id)initWithFamily:(long long)arg1 cornerRadius:(double)arg2 log:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

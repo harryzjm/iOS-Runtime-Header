@@ -9,7 +9,7 @@
 @protocol PXZoomableInlineHeadersLayoutGeometrySource <NSObject>
 - (struct UIEdgeInsets)floatingHeadersMarginsForLevel:(unsigned long long)arg1;
 - (struct CGRect)boundsForLevel:(unsigned long long)arg1;
-- (CDStruct_3fe57b01)spriteTransformForLevel:(unsigned long long)arg1;
+- (CDStruct_c1f6e9bb)spriteTransformForLevel:(unsigned long long)arg1;
 - (struct CGRect)frameForItemAtIndexPath:(struct PXSimpleIndexPath)arg1 level:(unsigned long long)arg2;
 @end
 

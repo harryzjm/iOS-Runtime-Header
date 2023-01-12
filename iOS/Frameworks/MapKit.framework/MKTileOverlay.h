@@ -29,6 +29,7 @@
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic, getter=_providerID) unsigned int providerID; // @synthesize providerID=_providerID;
 @property(nonatomic) _Bool canReplaceMapContent; // @synthesize canReplaceMapContent=_canReplaceMapContent;
 @property long long maximumZ; // @synthesize maximumZ=_maximumZ;
 @property long long minimumZ; // @synthesize minimumZ=_minimumZ;
@@ -41,6 +42,7 @@
 - (void)_minLifetimeCacheCleanupFired;
 - (void)_scheduleMinLifetimeCacheCleanupIfNecessary;
 - (void)_receivedMemoryNotification;
+- (void)_cancelLoadingTileAtPath:(CDStruct_cbb88d5e)arg1;
 - (void)_loadTile:(const struct _GEOTileKey *)arg1 result:(CDUnknownBlockType)arg2;
 - (struct _GEOTileKey)_keyForPath:(CDStruct_cbb88d5e)arg1;
 - (void)loadTileAtPath:(CDStruct_cbb88d5e)arg1 result:(CDUnknownBlockType)arg2;

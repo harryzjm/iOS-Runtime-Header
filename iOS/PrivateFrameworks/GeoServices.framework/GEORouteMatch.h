@@ -6,13 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class GEOComposedRoute, GEOComposedRouteLeg, GEOComposedRouteSegment, GEOComposedRouteStep, GEOComposedTransitStationRouteStep, GEOComposedTransitTripRouteStep, GEONavigationMatchInfo, NSArray, NSDate;
+#import <GeoServices/NSSecureCoding-Protocol.h>
 
-@interface GEORouteMatch : NSObject
+@class GEOComposedRoute, GEOComposedRouteLeg, GEOComposedRouteSegment, GEOComposedRouteStep, GEOComposedTransitStationRouteStep, GEOComposedTransitTripRouteStep, GEOMultiSectionFeature, GEONavigationMatchInfo, NSArray, NSDate;
+
+@interface GEORouteMatch : NSObject <NSSecureCoding>
 {
     GEOComposedRoute *_route;
+    CDStruct_071ac149 _locationCoordinate;
     struct PolylineCoordinate _routeCoordinate;
-    CDStruct_2c43369c _locationCoordinate;
     unsigned long long _stepIndex;
     NSArray *_candidateSteps;
     double _matchedCourse;
@@ -22,7 +24,8 @@
     unsigned long long _consecutiveProgressionsOffRoute;
     double _distanceTraveledOffRoute;
     _Bool _isGoodMatch;
-    CDStruct_4da79865 *_road;
+    _Bool _shouldProjectLocationAlongRoute;
+    GEOMultiSectionFeature *_road;
     double _roadWidth;
     GEORouteMatch *_projectedFrom;
     NSDate *_timestamp;
@@ -31,6 +34,7 @@
     GEONavigationMatchInfo *_detailedMatchInfo;
 }
 
++ (_Bool)supportsSecureCoding;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(retain, nonatomic) GEONavigationMatchInfo *detailedMatchInfo; // @synthesize detailedMatchInfo=_detailedMatchInfo;
@@ -39,20 +43,23 @@
 @property(nonatomic) double distanceTraveledOffRoute; // @synthesize distanceTraveledOffRoute=_distanceTraveledOffRoute;
 @property(nonatomic) unsigned long long consecutiveProgressionsOffRoute; // @synthesize consecutiveProgressionsOffRoute=_consecutiveProgressionsOffRoute;
 @property(retain, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
+@property(nonatomic) _Bool shouldProjectLocationAlongRoute; // @synthesize shouldProjectLocationAlongRoute=_shouldProjectLocationAlongRoute;
 @property(nonatomic) _Bool isGoodMatch; // @synthesize isGoodMatch=_isGoodMatch;
 @property(retain, nonatomic) GEORouteMatch *projectedFrom; // @synthesize projectedFrom=_projectedFrom;
 @property(nonatomic) double modifiedCourseAccuracy; // @synthesize modifiedCourseAccuracy=_modifiedCourseAccuracy;
 @property(nonatomic) double modifiedHorizontalAccuracy; // @synthesize modifiedHorizontalAccuracy=_modifiedHorizontalAccuracy;
 @property(nonatomic) double distanceFromRoute; // @synthesize distanceFromRoute=_distanceFromRoute;
 @property(readonly, nonatomic) double roadWidth; // @synthesize roadWidth=_roadWidth;
-@property(nonatomic) CDStruct_4da79865 *road; // @synthesize road=_road;
+@property(retain, nonatomic) GEOMultiSectionFeature *road; // @synthesize road=_road;
 @property(retain, nonatomic) GEOComposedRoute *route; // @synthesize route=_route;
 @property(nonatomic) double matchedCourse; // @synthesize matchedCourse=_matchedCourse;
 @property(retain, nonatomic) NSArray *candidateSteps; // @synthesize candidateSteps=_candidateSteps;
 @property(nonatomic) unsigned long long stepIndex; // @synthesize stepIndex=_stepIndex;
-@property(nonatomic) CDStruct_c3b9c2ee locationCoordinate; // @synthesize locationCoordinate=_locationCoordinate;
+@property(nonatomic) CDStruct_39925896 locationCoordinate3D; // @synthesize locationCoordinate3D=_locationCoordinate;
 @property(nonatomic) struct PolylineCoordinate routeCoordinate; // @synthesize routeCoordinate=_routeCoordinate;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 @property(readonly, nonatomic) GEOComposedRouteLeg *leg;
 @property(readonly, nonatomic) unsigned long long legIndex;
 @property(readonly, nonatomic) GEOComposedRouteSegment *segment;
@@ -64,12 +71,12 @@
 @property(readonly, nonatomic) _Bool routeMatchedToEnd;
 - (double)fractionOfCurrentStepTraveled;
 - (_Bool)routeMatchBehind:(id)arg1;
-- (unsigned long long)hash;
 - (_Bool)isEqualIgnoringScore:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (void)updateOffRouteProgress:(id)arg1 minDistanceToGetOnRoute:(double)arg2;
+@property(readonly, nonatomic) CDStruct_c3b9c2ee locationCoordinate;
 - (void)dealloc;
-- (id)initWithRoute:(id)arg1 routeCoordinate:(struct PolylineCoordinate)arg2 locationCoordinate:(CDStruct_c3b9c2ee)arg3 stepIndex:(unsigned long long)arg4 matchedCourse:(double)arg5 timestamp:(id)arg6;
+- (id)initWithRoute:(id)arg1 routeCoordinate:(struct PolylineCoordinate)arg2 locationCoordinate:(CDStruct_39925896)arg3 stepIndex:(unsigned long long)arg4 matchedCourse:(double)arg5 timestamp:(id)arg6;
 - (id)initWithComposedRoute:(id)arg1 routeStatus:(id)arg2;
 
 @end

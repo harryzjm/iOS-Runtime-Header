@@ -9,7 +9,7 @@
 #import <CoreDuet/NSCopying-Protocol.h>
 #import <CoreDuet/NSSecureCoding-Protocol.h>
 
-@class NSString, _CDContactStatistics;
+@class NSString, NSURL, _CDContactStatistics;
 
 @interface _CDContact : NSObject <NSCopying, NSSecureCoding>
 {
@@ -20,6 +20,7 @@
     unsigned long long _personIdType;
     NSString *_displayName;
     unsigned long long _displayType;
+    NSURL *_displayImageURL;
     _CDContactStatistics *_statistics;
 }
 
@@ -42,6 +43,7 @@
 + (id)contactWithIdentifier:(id)arg1 identifierType:(id)arg2;
 - (void).cxx_destruct;
 @property(retain) _CDContactStatistics *statistics; // @synthesize statistics=_statistics;
+@property(retain) NSURL *displayImageURL; // @synthesize displayImageURL=_displayImageURL;
 @property unsigned long long displayType; // @synthesize displayType=_displayType;
 @property(retain) NSString *displayName; // @synthesize displayName=_displayName;
 @property unsigned long long personIdType; // @synthesize personIdType=_personIdType;
@@ -60,6 +62,7 @@
 @property(readonly) NSString *handle;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 type:(unsigned long long)arg2 customIdentifier:(id)arg3 displayName:(id)arg4 displayType:(unsigned long long)arg5 personId:(id)arg6 personIdType:(unsigned long long)arg7 displayImageURL:(id)arg8;
 - (id)initWithIdentifier:(id)arg1 type:(unsigned long long)arg2 customIdentifier:(id)arg3 displayName:(id)arg4 displayType:(unsigned long long)arg5 personId:(id)arg6 personIdType:(unsigned long long)arg7;
 - (id)initWithIdentifier:(id)arg1 type:(unsigned long long)arg2 displayName:(id)arg3 personId:(id)arg4 personIdType:(unsigned long long)arg5;
 - (id)initWithINPerson:(id)arg1;

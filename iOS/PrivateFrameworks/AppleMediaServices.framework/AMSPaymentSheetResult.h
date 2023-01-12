@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface AMSPaymentSheetResult : NSObject
 {
+    NSString *_delegateAuthenticateToken;
     NSString *_passwordEquivalentToken;
     NSString *_paymentToken;
     AMSBiometricsSignatureResult *_signatureResult;
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) AMSBiometricsSignatureResult *signatureResult; // @synthesize signatureResult=_signatureResult;
 @property(retain, nonatomic) NSString *paymentToken; // @synthesize paymentToken=_paymentToken;
 @property(retain, nonatomic) NSString *passwordEquivalentToken; // @synthesize passwordEquivalentToken=_passwordEquivalentToken;
+@property(retain, nonatomic) NSString *delegateAuthenticateToken; // @synthesize delegateAuthenticateToken=_delegateAuthenticateToken;
 
 @end
 

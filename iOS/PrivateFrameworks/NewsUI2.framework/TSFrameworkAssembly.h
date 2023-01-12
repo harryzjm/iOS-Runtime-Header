@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsUI2/NFFrameworkAssembly-Protocol.h>
+#import <NewsUI2/TFFrameworkAssembly-Protocol.h>
 
 @class MISSING_TYPE, NSArray;
 
-@interface TSFrameworkAssembly : NSObject <NFFrameworkAssembly>
+@interface TSFrameworkAssembly : NSObject <TFFrameworkAssembly>
 {
-    MISSING_TYPE *appConfiguration;
+    MISSING_TYPE *featureAvailabilityProvider;
 }
 
 - (void).cxx_destruct;

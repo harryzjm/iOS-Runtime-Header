@@ -5,6 +5,7 @@
 //
 
 @protocol CSPersistentContentLayoutProviding
+- (double)windowedAccessoryInset;
 - (double)bottomContentInset;
 - (double)listMinY;
 - (double)dateBaselineToListY;

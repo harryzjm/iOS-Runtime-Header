@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     UIVisualEffectView *_bgVisualEffectView;
     double _bgVisualEffectOffset;
     UIFocusContainerGuide *_previewFocusGuide;
+    UIFocusContainerGuide *_overallFocusGuide;
     _Bool _backdropEnabled;
     _Bool _floatingBanner;
     _Bool _shouldAdjustListForTabBar;

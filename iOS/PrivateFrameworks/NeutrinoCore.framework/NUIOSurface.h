@@ -6,41 +6,41 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NUGLBuffer, NUGLTexture, NUPixelFormat;
-@protocol OS_dispatch_queue;
+@class IOSurface, NSMutableDictionary, NSString, NUPixelFormat;
 
 @interface NUIOSurface : NSObject
 {
-    NSString *_name;
+    NSMutableDictionary *_textures;
     NUPixelFormat *_format;
-    NUPixelFormat *_internalFormat;
-    NUGLBuffer *_buffer;
-    NUGLTexture *_texture;
-    NSObject<OS_dispatch_queue> *_queue;
+    struct __IOSurface *_IOSurfaceRef;
     CDStruct_d58201db _size;
 }
 
-+ (id)_internalFormatForPixelFormat:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property(readonly, nonatomic) NUGLTexture *texture; // @synthesize texture=_texture;
-@property(readonly, nonatomic) NUGLBuffer *buffer; // @synthesize buffer=_buffer;
-@property(readonly, nonatomic) NUPixelFormat *internalFormat; // @synthesize internalFormat=_internalFormat;
+@property(readonly, nonatomic) struct __IOSurface *IOSurfaceRef; // @synthesize IOSurfaceRef=_IOSurfaceRef;
 @property(readonly, nonatomic) NUPixelFormat *format; // @synthesize format=_format;
 @property(readonly, nonatomic) CDStruct_912cb5d2 size; // @synthesize size=_size;
+- (id)_newTextureForDevice:(id)arg1;
+- (id)textureForDevice:(id)arg1;
 - (id)newRenderDestination;
 - (_Bool)write:(CDUnknownBlockType)arg1;
 - (_Bool)read:(CDUnknownBlockType)arg1;
+- (id)debugQuickLookObject;
 - (id)description;
+- (unsigned int)_purgeLevelToOSValue:(long long)arg1;
 - (id)_purgeStateDescription;
+- (int)_fetchPurgeState:(unsigned int *)arg1;
 - (_Bool)isPurged;
 - (_Bool)makeNonPurgeable;
 - (void)makePurgeable:(long long)arg1;
 @property(retain, nonatomic) struct CGColorSpace *colorSpace;
-@property(copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property(copy, nonatomic) NSString *name;
 @property(readonly, nonatomic) long long sizeInBytes;
 @property(readonly, nonatomic) long long rowBytes;
+- (void)dealloc;
 - (void)_allocateSurface;
+@property(readonly, nonatomic) IOSurface *IOSurface;
+- (id)initWithIOSurface:(struct __IOSurface *)arg1;
 - (id)initWithSize:(CDStruct_912cb5d2)arg1 format:(id)arg2;
 - (id)init;
 

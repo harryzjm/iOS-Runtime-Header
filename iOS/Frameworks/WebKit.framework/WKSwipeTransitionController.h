@@ -13,7 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface WKSwipeTransitionController : NSObject <_UINavigationInteractiveTransitionBaseDelegate>
 {
-    struct ViewGestureController *_gestureController;
+    void *_gestureController;
     struct RetainPtr<_UINavigationInteractiveTransitionBase> _backTransitionController;
     struct RetainPtr<_UINavigationInteractiveTransitionBase> _forwardTransitionController;
     struct WeakObjCPtr<UIView> _gestureRecognizerView;
@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (id)transitionForDirection:(int)arg1;
 - (int)directionForTransition:(id)arg1;
 - (void)invalidate;
-- (id)initWithViewGestureController:(struct ViewGestureController *)arg1 gestureRecognizerView:(id)arg2;
+- (id)initWithViewGestureController:(void *)arg1 gestureRecognizerView:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

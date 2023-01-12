@@ -17,7 +17,6 @@
 - (id)inputContentClasses;
 - (id)description;
 @property(readonly, nonatomic) WFContentProperty *defaultProperty; // @synthesize defaultProperty=_defaultProperty;
-@property(readonly, nonatomic) Class contentItemClass;
 - (id)initWithIdentifier:(id)arg1 definition:(id)arg2 serializedParameters:(id)arg3;
 
 @end

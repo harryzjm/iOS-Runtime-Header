@@ -16,7 +16,7 @@
     CLSPersonIdentity *_mePerson;
     NSMutableArray *_allPersons;
     NSMutableDictionary *_personsForCNIdentifiers;
-    NSMutableDictionary *_personsForPHIdentifiers;
+    NSMutableDictionary *_personsForLocalIdentifier;
     id <CLSSocialServiceContactsDelegate> _delegate;
     NSMutableDictionary *_personByFullName;
     NSMutableSet *_nonFoundFullNames;
@@ -43,15 +43,12 @@
 - (void)configureRequest:(id)arg1 algorithmUmbrellaVersion:(unsigned int)arg2;
 - (unsigned long long)_ageCategoryFromFaceAgeType:(unsigned short)arg1;
 - (unsigned long long)_sexFromFaceBiologicalSex:(unsigned short)arg1;
-- (void)invalidateCacheForPersonWithIdentifiers:(id)arg1;
+- (void)invalidateCacheForPersonWithLocalIdentifiers:(id)arg1;
 - (id)_personsMatchingPredicate:(id)arg1;
 - (void)enumeratePersonsForFullName:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)personForPersonHandle:(id)arg1;
 - (id)personLocalIdentifierMatchingContactPictureForContactIdentifier:(id)arg1 usingPersonsModel:(id)arg2;
-- (id)cachedPersonLocalIdentifierMatchingContactPictureForContactIdentifier:(id)arg1;
 - (void)enumeratePersonsAndRelationshipUsingBlock:(CDUnknownBlockType)arg1;
-- (void)enumeratePersonsAndBirthdayDateUsingBlock:(CDUnknownBlockType)arg1;
-- (void)enumeratePersonsAndHomeAddressUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateHomeAddressesForPersonWithContactIdentifier:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateAllPersonsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)_maidenNameForPersonRecord:(id)arg1;
@@ -70,7 +67,7 @@
 - (id)__newPersonWithContact:(id)arg1;
 - (id)_personWithContactIdentifier:(id)arg1;
 - (id)_personWithContact:(id)arg1 createPersonIfNeeded:(_Bool)arg2;
-- (id)_personResultsForPHPersonIdentifier:(id)arg1 isLackingFaces:(out _Bool *)arg2 inPhotoLibrary:(id)arg3;
+- (id)_personResultsForPersonLocalIdentifier:(id)arg1 isLackingFaces:(out _Bool *)arg2 inPhotoLibrary:(id)arg3;
 - (id)_personResultsForfullName:(id)arg1;
 - (id)personResultsForName:(id)arg1 inPhotoLibrary:(id)arg2;
 - (id)mePerson;

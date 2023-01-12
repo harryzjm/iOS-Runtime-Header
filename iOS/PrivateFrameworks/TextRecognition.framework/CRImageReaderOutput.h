@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <TextRecognition/CRCodable-Protocol.h>
 #import <TextRecognition/NSCopying-Protocol.h>
 #import <TextRecognition/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface CRImageReaderOutput : NSObject <NSCopying, NSSecureCoding>
+@interface CRImageReaderOutput : NSObject <CRCodable, NSCopying, NSSecureCoding>
 {
     _Bool _isTitle;
     int _confidence;
@@ -29,7 +30,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
-+ (int)confidenceLevelForConfidenceScore:(double)arg1 confidenceThresholdProvider:(id)arg2;
++ (int)confidenceLevelForConfidenceScore:(double)arg1 confidenceThresholds:(id)arg2;
 + (id)outputWithType:(id)arg1 textFeature:(id)arg2 imageSize:(struct CGSize)arg3 isTitle:(_Bool)arg4 confidenceThresholdProvider:(id)arg5;
 - (void).cxx_destruct;
 @property _Bool isTitle; // @synthesize isTitle=_isTitle;
@@ -45,24 +46,27 @@
 @property int confidence; // @synthesize confidence=_confidence;
 @property(retain) NSString *stringValue; // @synthesize stringValue=_stringValue;
 @property(readonly) NSString *type; // @synthesize type=_type;
-- (_Bool)_checkValidRange:(struct _NSRange)arg1 forDataLength:(unsigned long long)arg2;
 - (id)decodeOutputsArrayFromData:(id)arg1 offset:(unsigned long long *)arg2 version:(long long)arg3;
-- (id)encodingDataForOutputsArray:(id)arg1;
-- (id)decodeStringFromData:(id)arg1 offset:(unsigned long long *)arg2;
-- (id)encodingDataForString:(id)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToImageReaderOutput:(id)arg1;
 - (id)initV2WithDataRepresentation:(id)arg1;
 - (id)initV1WithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)dataRepresentation;
+- (id)crCodableDataRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (struct CGPoint)_rotatePointIfNeccessary:(struct CGPoint)arg1 anchor:(struct CGPoint)arg2 angle:(double)arg3;
+- (id)quadForCharacterRange:(struct _NSRange)arg1 error:(id *)arg2;
 - (id)cornersForCharacterRange:(struct _NSRange)arg1 error:(id *)arg2;
+- (id)boundingQuad;
 - (id)initWithType:(id)arg1 textFeature:(id)arg2 withCandidates:(_Bool)arg3 imageSize:(struct CGSize)arg4 isTitle:(_Bool)arg5 confidenceThresholdProvider:(id)arg6;
 - (id)initWithType:(id)arg1 textFeature:(id)arg2 imageSize:(struct CGSize)arg3 isTitle:(_Bool)arg4 confidenceThresholdProvider:(id)arg5;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) Class superclass;
 
 @end
 

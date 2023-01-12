@@ -12,14 +12,15 @@
 
 @interface TSCH3DPyramidBlurShadowsRenderer : NSObject <TSCH3DShadowsRenderer>
 {
-    NSArray *mPyramidResources;
-    TSCH3DPyramidBlurFBOResource *mFinalShadowResource;
-    tvec2_3b141483 mInitialSize;
-    int mRequestedSize;
-    float mTargetRadiusFactor;
+    NSArray *_pyramidResources;
+    TSCH3DPyramidBlurFBOResource *_finalShadowResource;
+    tvec2_3b141483 _initialSize;
+    int _requestedSize;
+    float _targetRadiusFactor;
 }
 
 - (id).cxx_construct;
+- (void).cxx_destruct;
 - (id)shadowsFBOForContext:(id)arg1;
 - (float)blurSlackForQuality:(float)arg1;
 - (void)invalidate;
@@ -27,7 +28,6 @@
 - (void)protectShadowForQuality:(float)arg1 pipeline:(id)arg2 renderBlock:(CDUnknownBlockType)arg3;
 - (id)p_allResources;
 - (void)p_setupResourcesForSize:(tvec2_3b141483)arg1;
-- (void)dealloc;
 - (id)initWithSize:(int)arg1 targetRadiusFactor:(float)arg2;
 
 @end

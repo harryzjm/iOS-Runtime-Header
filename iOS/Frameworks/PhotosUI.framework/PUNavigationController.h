@@ -9,16 +9,18 @@
 #import <PhotosUI/PXForcedDismissableViewController-Protocol.h>
 #import <PhotosUI/UINavigationControllerDelegate-Protocol.h>
 
-@class NSString, PUAbstractNavigationBanner, UIViewController, _UINavigationControllerPalette;
+@class NSString, PUAbstractNavigationBanner, UIKeyCommand, UIViewController, _UINavigationControllerPalette;
 
 @interface PUNavigationController : UINavigationController <PXForcedDismissableViewController, UINavigationControllerDelegate>
 {
+    _Bool __navigating;
     _Bool _pu_preventsAutorotation;
     _Bool _pu_alwaysForwardsPreferredStatusBarStyle;
     _Bool _pu_alwaysForwardsPrefersStatusBarHidden;
     CDUnknownBlockType _ppt_onDidShowViewControllerBlock;
     PUAbstractNavigationBanner *__banner;
     _UINavigationControllerPalette *__palette;
+    UIKeyCommand *__alternateBackKeyCommand;
     unsigned long long _pu_supportedInterfaceOrientations;
     long long __barStyle;
     UIViewController *__currentToolbarViewController;
@@ -32,6 +34,8 @@
 @property(nonatomic, setter=_setBarStyle:) long long _barStyle; // @synthesize _barStyle=__barStyle;
 @property(readonly, nonatomic) _Bool pu_preventsAutorotation; // @synthesize pu_preventsAutorotation=_pu_preventsAutorotation;
 @property(readonly, nonatomic) unsigned long long pu_supportedInterfaceOrientations; // @synthesize pu_supportedInterfaceOrientations=_pu_supportedInterfaceOrientations;
+@property(nonatomic, getter=_isNavigating, setter=_setNavigating:) _Bool _navigating; // @synthesize _navigating=__navigating;
+@property(retain, nonatomic, setter=_setAlternateBackKeyCommand:) UIKeyCommand *_alternateBackKeyCommand; // @synthesize _alternateBackKeyCommand=__alternateBackKeyCommand;
 @property(retain, nonatomic, setter=_setPalette:) _UINavigationControllerPalette *_palette; // @synthesize _palette=__palette;
 @property(retain, nonatomic, setter=_setBanner:) PUAbstractNavigationBanner *_banner; // @synthesize _banner=__banner;
 @property(copy, nonatomic, setter=ppt_setOnDidShowViewControllerBlock:) CDUnknownBlockType ppt_onDidShowViewControllerBlock; // @synthesize ppt_onDidShowViewControllerBlock=_ppt_onDidShowViewControllerBlock;
@@ -48,9 +52,17 @@
 - (_Bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
 - (_Bool)shouldAutorotate;
+- (void)loadView;
+- (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)_setCurrentToolbarViewController:(id)arg1 animated:(_Bool)arg2;
 - (id)_extendedToolbar;
 - (void)viewController:(id)arg1 willSetupInitialBarsVisibilityOnViewWillAppearAnimated:(_Bool)arg2;
+- (void)_performAlternateBackKeyCommand:(id)arg1;
+- (_Bool)_canUseAlternateBackKeyCommandToTriggerSidebarKeyCommandWithSender:(id)arg1;
+- (_Bool)_canPerformAlternateBackKeyCommandToPopViewController;
+- (void)_setShouldOptOutChromelessBars:(_Bool)arg1;
+- (_Bool)_shouldOptOutFromChromelessBars;
+- (void)_updateChromelessBarsIsBeforeTransition:(_Bool)arg1;
 - (void)_updateBarStyle;
 - (void)_updateStatusBarOverrides;
 - (void)pu_navigationTransitionDidEnd:(id)arg1;

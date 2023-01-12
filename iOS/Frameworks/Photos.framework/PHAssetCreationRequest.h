@@ -6,7 +6,7 @@
 
 #import <Photos/PHInsertChangeRequest-Protocol.h>
 
-@class NSDictionary, NSManagedObjectID, NSMutableArray, NSMutableDictionary, NSString, PHAssetCreationAdjustmentBakeInOptions, PHAssetCreationDerivativeContext, PHAssetCreationMetadataCopyOptions, PHAssetCreationPhotoStreamPublishingRequest, PHAssetResourceBag;
+@class NSDictionary, NSManagedObjectID, NSMutableArray, NSMutableDictionary, NSNumber, NSString, PHAssetCreationAdjustmentBakeInOptions, PHAssetCreationDerivativeContext, PHAssetCreationMetadataCopyOptions, PHAssetCreationPhotoStreamPublishingRequest, PHAssetResourceBag, PHMomentShare, PHRelationshipChangeRequestHelper;
 
 @interface PHAssetCreationRequest <PHInsertChangeRequest>
 {
@@ -21,19 +21,30 @@
     _Bool _duplicateSinglePhotoFromBurst;
     _Bool _duplicateSpatialOverCaptureResources;
     _Bool _duplicateAsAlternateAsset;
+    _Bool _createAsCompanionSyncedAsset;
     short _importedBy;
     unsigned short _duplicateAssetPhotoLibraryType;
     NSString *_importSessionID;
+    NSString *_conversationID;
+    NSDictionary *_customAssetProperties;
+    PHMomentShare *_momentShare;
     PHAssetCreationPhotoStreamPublishingRequest *__photoStreamPublishingRequest;
     NSManagedObjectID *_limitedLibraryFetchFilterObjectID;
+    NSNumber *_assetExistsWithSyndicationIdentifier;
+    NSString *_syndicationIdentifier;
+    PHRelationshipChangeRequestHelper *_momentShareHelper;
     NSString *_duplicateAssetIdentifier;
     PHAssetCreationAdjustmentBakeInOptions *_adjustmentBakeInOptions;
     PHAssetCreationMetadataCopyOptions *_metadataCopyOptions;
-    CDUnknownBlockType _destinationAssetAvailabilityHandler;
     NSString *_forcePairingIdentifier;
+    NSString *_momentShareUUID;
+    NSString *_guestAssetUUID;
+    NSString *_importedByBundleIdentifier;
     CDStruct_1b6d18a9 _duplicateStillSourceTime;
 }
 
++ (long long)_originalResourceTypeFromAdjustedResourceType:(long long)arg1 sourceAssetIsLoopingVideo:(_Bool)arg2;
++ (id)_uuidForAssetWithSyndicationIdentifier:(id)arg1 inLibrary:(id)arg2;
 + (id)_jpegDataFromRAWData:(id)arg1 derivativeContext:(id)arg2;
 + (id)_imageIOThumbnailCreationOptionsFromDerivativeContext:(id)arg1;
 + (id)_creationOptionsFromExternalResource:(id)arg1 andSourceUrl:(id)arg2;
@@ -41,19 +52,26 @@
 + (_Bool)supportsAssetResourceTypes:(id)arg1;
 + (id)creationRequestForAssetCopyFromAsset:(id)arg1;
 + (id)creationRequestForAssetCopyFromAsset:(id)arg1 options:(id)arg2;
++ (id)creationRequestForAssetFromGuestAsset:(id)arg1 checkForMomentShareAsset:(_Bool)arg2;
++ (id)creationRequestForAssetFromGuestAsset:(id)arg1;
 + (id)creationRequestForAssetFromAssetBundle:(id)arg1;
 + (id)creationRequestForAssetFromVideoComplementBundle:(id)arg1;
++ (id)creationRequestForAssetWithSyndicationIdentifier:(id)arg1;
 + (id)creationRequestForAssetFromVideoAtFileURL:(id)arg1;
 + (id)creationRequestForAssetFromImageAtFileURL:(id)arg1;
 + (id)creationRequestForAssetFromImage:(id)arg1;
 + (id)creationRequestForAssetFromScreenshotImage:(id)arg1;
 + (id)creationRequestForAssetFromImageData:(id)arg1 usingUUID:(id)arg2;
 + (id)creationRequestForAssetFromImageData:(id)arg1;
++ (id)creationRequestForAssetWithUUID:(id)arg1;
 + (id)creationRequestForAsset;
 + (id)_creationRequestForAssetUsingUUID:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool createAsCompanionSyncedAsset; // @synthesize createAsCompanionSyncedAsset=_createAsCompanionSyncedAsset;
+@property(copy, nonatomic) NSString *importedByBundleIdentifier; // @synthesize importedByBundleIdentifier=_importedByBundleIdentifier;
+@property(readonly, nonatomic) NSString *guestAssetUUID; // @synthesize guestAssetUUID=_guestAssetUUID;
+@property(readonly, nonatomic) NSString *momentShareUUID; // @synthesize momentShareUUID=_momentShareUUID;
 @property(readonly, nonatomic) NSString *forcePairingIdentifier; // @synthesize forcePairingIdentifier=_forcePairingIdentifier;
-@property(copy, nonatomic, setter=_setDestinationAssetAvailabilityHandler:) CDUnknownBlockType destinationAssetAvailabilityHandler; // @synthesize destinationAssetAvailabilityHandler=_destinationAssetAvailabilityHandler;
 @property(copy, nonatomic, setter=_setMetadataCopyOptions:) PHAssetCreationMetadataCopyOptions *metadataCopyOptions; // @synthesize metadataCopyOptions=_metadataCopyOptions;
 @property(copy, nonatomic, setter=_setAdjustmentBakeInOptions:) PHAssetCreationAdjustmentBakeInOptions *adjustmentBakeInOptions; // @synthesize adjustmentBakeInOptions=_adjustmentBakeInOptions;
 @property(nonatomic, setter=_setDuplicateAsAlternateAsset:) _Bool duplicateAsAlternateAsset; // @synthesize duplicateAsAlternateAsset=_duplicateAsAlternateAsset;
@@ -64,8 +82,13 @@
 @property(nonatomic, setter=_setDuplicateStillSourceTime:) CDStruct_1b6d18a9 duplicateStillSourceTime; // @synthesize duplicateStillSourceTime=_duplicateStillSourceTime;
 @property(nonatomic, setter=_setDuplicateAssetPhotoLibraryType:) unsigned short duplicateAssetPhotoLibraryType; // @synthesize duplicateAssetPhotoLibraryType=_duplicateAssetPhotoLibraryType;
 @property(retain, nonatomic, setter=_setDuplicateAssetIdentifier:) NSString *duplicateAssetIdentifier; // @synthesize duplicateAssetIdentifier=_duplicateAssetIdentifier;
+@property(readonly, nonatomic) PHRelationshipChangeRequestHelper *momentShareHelper; // @synthesize momentShareHelper=_momentShareHelper;
+@property(retain, nonatomic) NSString *syndicationIdentifier; // @synthesize syndicationIdentifier=_syndicationIdentifier;
+@property(retain, nonatomic) NSNumber *assetExistsWithSyndicationIdentifier; // @synthesize assetExistsWithSyndicationIdentifier=_assetExistsWithSyndicationIdentifier;
 @property(retain, nonatomic, getter=_limitedLibraryFetchFilterObjectID, setter=_setLimitedLibraryFetchFilterObjectID:) NSManagedObjectID *limitedLibraryFetchFilterObjectID; // @synthesize limitedLibraryFetchFilterObjectID=_limitedLibraryFetchFilterObjectID;
 @property(retain, nonatomic, setter=_setPhotoStreamPublishingRequest:) PHAssetCreationPhotoStreamPublishingRequest *_photoStreamPublishingRequest; // @synthesize _photoStreamPublishingRequest=__photoStreamPublishingRequest;
+@property(retain, nonatomic) NSDictionary *customAssetProperties; // @synthesize customAssetProperties=_customAssetProperties;
+@property(retain, nonatomic) NSString *conversationID; // @synthesize conversationID=_conversationID;
 @property(retain, nonatomic) NSString *importSessionID; // @synthesize importSessionID=_importSessionID;
 @property(nonatomic) short importedBy; // @synthesize importedBy=_importedBy;
 @property(readonly, nonatomic) long long accessScopeOptionsRequirement;
@@ -73,13 +96,17 @@
 @property(nonatomic, getter=_shouldCreateScreenshot, setter=_setShouldCreateScreenshot:) _Bool shouldCreateScreenshot;
 @property(nonatomic, setter=_setDuplicateAllowsPrivateMetadata:) _Bool duplicateAllowsPrivateMetadata;
 - (_Bool)isNew;
+@property(retain, nonatomic) PHMomentShare *momentShare; // @synthesize momentShare=_momentShare;
+- (id)_mutableMomentShareObjectIDsAndUUIDs;
+- (void)_prepareMomentShareHelperIfNeeded;
 - (void)performTransactionCompletionHandlingInPhotoLibrary:(id)arg1;
+- (_Bool)applyMutationsToManagedObject:(id)arg1 photoLibrary:(id)arg2 error:(id *)arg3;
 - (id)createManagedObjectForInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
 - (_Bool)_validateNewObjectUUID:(id)arg1 inPhotoLibrary:(id)arg2 error:(id *)arg3;
 - (_Bool)validateInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
 - (_Bool)_populateDuplicatingAssetCreationRequest:(id)arg1 photoLibrary:(id)arg2 error:(id *)arg3;
 - (void)_updateMutationsForDuplicatingPrivateMetadataFromAsset:(id)arg1;
-- (id)_duplicatedAssetResourcesFromAsset:(id)arg1 stillSourceTime:(CDStruct_1b6d18a9)arg2 flattenLivePhotoIntoStillPhoto:(_Bool)arg3 original:(_Bool)arg4 removeBurstIdentifier:(_Bool)arg5 error:(id *)arg6;
+- (id)duplicatedAssetResourcesFromAsset:(id)arg1 stillSourceTime:(CDStruct_1b6d18a9)arg2 flattenLivePhotoIntoStillPhoto:(_Bool)arg3 duplicateAsOriginal:(_Bool)arg4 duplicateWithAdjustmentsBakedIn:(_Bool)arg5 duplicatePhotoAsData:(_Bool)arg6 error:(id *)arg7;
 - (void)encodeToXPCDict:(id)arg1;
 - (id)initWithXPCDict:(id)arg1 request:(id)arg2 clientAuthorization:(id)arg3;
 - (long long)_mediaTypeForCreatedAsset;
@@ -111,7 +138,6 @@
 - (id)_ingestOriginalFromSrcURL:(id)arg1 toDstURL:(id)arg2 useSecureMove:(_Bool)arg3 resource:(id)arg4 resourceType:(unsigned int)arg5 asset:(id)arg6 error:(id *)arg7;
 - (_Bool)_ingestOriginalInPlaceSrcURL:(id)arg1 dstURL:(id)arg2 asset:(id)arg3 error:(id *)arg4;
 - (_Bool)_createAssetAsAdjusted:(id)arg1 fromValidatedResources:(id)arg2 mainFileMetadata:(id)arg3 error:(id *)arg4;
-- (id)makeSubstitueRenderVideoFileFromPath:(id)arg1 primaryResource:(id)arg2 fileSuffix:(id)arg3 error:(id *)arg4;
 - (id)makeSubstitueRenderImageFileFromPath:(id)arg1 primaryResource:(id)arg2 fileSuffix:(id)arg3 error:(id *)arg4;
 - (id)_secureMove:(_Bool)arg1 assetResource:(id)arg2 photoLibrary:(id)arg3 error:(id *)arg4;
 - (id)_secureMove:(_Bool)arg1 fileAtURL:(id)arg2 toURL:(id)arg3 capabilities:(id)arg4 error:(id *)arg5;

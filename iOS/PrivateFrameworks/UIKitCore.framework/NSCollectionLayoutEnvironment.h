@@ -9,20 +9,25 @@
 #import <UIKitCore/NSCollectionLayoutEnvironment_Private-Protocol.h>
 
 @class NSString, UITraitCollection;
-@protocol NSCollectionLayoutContainer, _UIDataSourceSnapshot;
+@protocol NSCollectionLayoutContainer, _UIDataSourceSnapshotTranslating;
 
 __attribute__((visibility("hidden")))
 @interface NSCollectionLayoutEnvironment : NSObject <NSCollectionLayoutEnvironment_Private>
 {
-    id <_UIDataSourceSnapshot> __dataSourceSnapshot;
+    _Bool __wantsCollapsedTopSpacing;
     id <NSCollectionLayoutContainer> _container;
     UITraitCollection *_traitCollection;
+    id <_UIDataSourceSnapshotTranslating> __dataSourceSnapshot;
+    long long __sectionIndex;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool _wantsCollapsedTopSpacing; // @synthesize _wantsCollapsedTopSpacing=__wantsCollapsedTopSpacing;
+@property(nonatomic) long long _sectionIndex; // @synthesize _sectionIndex=__sectionIndex;
+@property(retain, nonatomic) id <_UIDataSourceSnapshotTranslating> _dataSourceSnapshot; // @synthesize _dataSourceSnapshot=__dataSourceSnapshot;
 @property(retain, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 @property(retain, nonatomic) id <NSCollectionLayoutContainer> container; // @synthesize container=_container;
-@property(retain, nonatomic) id <_UIDataSourceSnapshot> _dataSourceSnapshot; // @synthesize _dataSourceSnapshot=__dataSourceSnapshot;
+- (id)initWithContainer:(id)arg1 traitCollection:(id)arg2 dataSourceSnapshot:(id)arg3 sectionIndex:(long long)arg4 wantsCollapsedTopSpacing:(_Bool)arg5;
 - (id)initWithContainer:(id)arg1 traitCollection:(id)arg2 dataSourceSnapshot:(id)arg3;
 
 // Remaining properties

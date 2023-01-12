@@ -17,12 +17,10 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) id <BCNetworkProviderProtocol> networkProvider; // @synthesize networkProvider=_networkProvider;
 - (void)_fetchNavBarBrandIconDataForMapItem:(id)arg1 desiredSize:(struct CGSize)arg2 allowSmaller:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_fetchBrandIconDataForMapItem:(id)arg1 desiredSize:(struct CGSize)arg2 allowSmaller:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)fetchNavBarBrandIconDataForMapItem:(id)arg1 desiredSize:(struct CGSize)arg2 allowSmaller:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)fetchBrandIconDataForMapItem:(id)arg1 desiredSize:(struct CGSize)arg2 allowSmaller:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
-- (id)initWithNetworkProvider:(id)arg1;
 - (id)init;
 
 // Remaining properties

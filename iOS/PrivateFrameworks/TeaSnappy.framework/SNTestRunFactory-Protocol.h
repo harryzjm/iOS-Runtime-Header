@@ -9,6 +9,7 @@
 @class NSString, SNTestRun;
 
 @protocol SNTestRunFactory <NSObject>
+@property(readonly, nonatomic) SNTestRun *extendedLaunchTestRun;
 - (SNTestRun *)testRunForTestName:(NSString *)arg1;
 @end
 

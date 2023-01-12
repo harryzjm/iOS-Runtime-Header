@@ -21,6 +21,7 @@
     NSString *_promptText;
     NSString *_sourceIdentifier;
     NSString *_title;
+    NSString *_composedTitleFormat;
     NSArray *_tags;
 }
 
@@ -32,13 +33,13 @@
 + (id)trashedItemsLocation;
 + (id)sharedItemsLocation;
 + (id)recentDocumentsLocation;
-+ (id)recentsLocation;
 + (id)searchLocation;
 - (void).cxx_destruct;
 @property _Bool canBeRestored; // @synthesize canBeRestored=_canBeRestored;
 @property _Bool isFPV2; // @synthesize isFPV2=_isFPV2;
 @property(copy) NSArray *tags; // @synthesize tags=_tags;
 @property _Bool needsToResolveHierarchy; // @synthesize needsToResolveHierarchy=_needsToResolveHierarchy;
+@property(copy) NSString *composedTitleFormat; // @synthesize composedTitleFormat=_composedTitleFormat;
 @property(copy) NSString *title; // @synthesize title=_title;
 @property(copy) NSString *sourceIdentifier; // @synthesize sourceIdentifier=_sourceIdentifier;
 @property(copy) NSString *promptText; // @synthesize promptText=_promptText;

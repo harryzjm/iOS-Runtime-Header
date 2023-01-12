@@ -24,7 +24,6 @@
 @property(copy, nonatomic) NSString *timestampReferenceIdentifier; // @synthesize timestampReferenceIdentifier=_timestampReferenceIdentifier;
 @property(readonly, nonatomic) NSUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-- (void)report:(id)arg1 payload:(id)arg2;
 @property(readonly, nonatomic) unsigned long long now;
 - (id)initWithFileManager:(id)arg1;
 - (id)init;

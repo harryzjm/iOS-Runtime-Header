@@ -6,13 +6,14 @@
 
 #import <AppPredictionUI/NSObject-Protocol.h>
 
-@class SFCard, SFImage, SFMoreResults;
+@class SFCard, SFImage, SFImageContext, SFMoreResults;
 
 @protocol SFResourceLoader <NSObject>
 
 @optional
 - (_Bool)loadMoreResults:(SFMoreResults *)arg1 withCompletionHandler:(void (^)(NSArray *, NSError *))arg2;
 - (_Bool)loadCard:(SFCard *)arg1 withCompletionHandler:(void (^)(SFCard *, NSError *))arg2;
+- (_Bool)loadImage:(SFImage *)arg1 withContext:(SFImageContext *)arg2 completionHandler:(void (^)(SFImage *, NSError *))arg3;
 - (_Bool)loadImage:(SFImage *)arg1 withCompletionHandler:(void (^)(SFImage *, NSError *))arg2;
 @end
 

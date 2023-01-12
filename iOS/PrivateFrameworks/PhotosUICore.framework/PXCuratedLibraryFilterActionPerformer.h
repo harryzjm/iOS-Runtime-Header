@@ -4,20 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PhotosUICore/PXContentFilterControllerDelegate-Protocol.h>
-#import <PhotosUICore/UIPopoverPresentationControllerDelegate-Protocol.h>
+#import <PhotosUICore/PXFilterControllerDelegate-Protocol.h>
+#import <PhotosUICore/UIAdaptivePresentationControllerDelegate-Protocol.h>
 
-@class NSString, PXUIContentFilterController;
+@class NSString, PXUIFilterController;
 
-@interface PXCuratedLibraryFilterActionPerformer <PXContentFilterControllerDelegate, UIPopoverPresentationControllerDelegate>
+@interface PXCuratedLibraryFilterActionPerformer <PXFilterControllerDelegate, UIAdaptivePresentationControllerDelegate>
 {
-    PXUIContentFilterController *_contentFilterController;
+    PXUIFilterController *_filterController;
 }
 
 - (void).cxx_destruct;
-- (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
-- (void)contentFilterControllerDidComplete:(id)arg1;
-- (void)contentFilterController:(id)arg1 filterStateChanged:(id)arg2;
+- (void)presentationControllerDidDismiss:(id)arg1;
+- (void)filterControllerDidComplete:(id)arg1;
+- (void)filterController:(id)arg1 contentFilterStateChanged:(id)arg2;
+- (id)contentFilterHiddenTypesForFilterController:(id)arg1;
+- (long long)libraryTypeForFilterController:(id)arg1;
 - (void)performUserInteractionTask;
 - (_Bool)canPerformWithActivityItems:(id)arg1 forActivity:(id)arg2;
 - (id)activitySystemImageName;

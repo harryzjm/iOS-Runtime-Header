@@ -11,14 +11,23 @@
 @protocol HMAccessoryDelegatePrivate <HMAccessoryDelegate>
 
 @optional
+- (void)accessoryDidUpdatePendingConfigurationIdentifier:(HMAccessory *)arg1;
+- (void)accessory:(HMAccessory *)arg1 didUpdateSupportsWalletKey:(_Bool)arg2;
+- (void)accessoryDidUpdatePreferredMediaUser:(HMAccessory *)arg1;
+- (void)accessoryDidUpdateSupportsPreferredMediaUser:(HMAccessory *)arg1;
 - (void)accessoryDidSetHasOnboardedForNaturalLighting:(HMAccessory *)arg1;
 - (void)accessoryDidUpdateDiagnosticsTransferSupport:(HMAccessory *)arg1;
+- (void)accessoryDidUpdateAudioDestination:(HMAccessory *)arg1;
+- (void)accessoryDidUpdateAudioDestinationController:(HMAccessory *)arg1;
+- (void)accessoryDidUpdatePairingIdentity:(HMAccessory *)arg1;
 - (void)accessory:(HMAccessory *)arg1 didUpdateDevice:(HMDevice *)arg2;
 - (void)accessoryDidUpdateReachableTransports:(HMAccessory *)arg1;
 - (void)accessory:(HMAccessory *)arg1 didUpdateLastKnownOperatingStateResponseForService:(HMService *)arg2;
 - (void)accessory:(HMAccessory *)arg1 didUpdateLastKnownSleepDiscoveryModeForService:(HMService *)arg2;
 - (void)accessoryDidUpdateSupportsDoorbellChime:(HMAccessory *)arg1;
 - (void)accessoryDidUpdateSupportsThirdPartyMusic:(HMAccessory *)arg1;
+- (void)accessoryDidUpdateSupportsAnnounce:(HMAccessory *)arg1;
+- (void)accessoryDidUpdateSupportsMusicAlarm:(HMAccessory *)arg1;
 - (void)accessoryDidUpdateSupportsCompanionInitiatedRestart:(HMAccessory *)arg1;
 - (void)accessoryDidUpdateMultiUserSupport:(HMAccessory *)arg1;
 - (void)accessoryDidRemoveSymptomsHandler:(HMAccessory *)arg1;

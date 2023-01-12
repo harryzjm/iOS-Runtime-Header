@@ -10,7 +10,7 @@
 #import <SearchFoundation/SFCardSection-Protocol.h>
 #import <SearchFoundation/SFJSONSerializable-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor, SFUserReportRequest;
+@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor, SFCommand, SFUserReportRequest;
 
 @interface SFCardSection : NSObject <SFJSONSerializable, SFCardSection, NSCopying>
 {
@@ -30,10 +30,22 @@
     SFColor *_backgroundColor;
     NSString *_resultIdentifier;
     SFUserReportRequest *_userReportRequest;
+    SFCommand *_command;
+    SFCommand *_previewCommand;
+    NSArray *_previewButtonItems;
+    NSString *_commandDetail;
+    NSString *_cardSectionDetail;
+    NSString *_previewButtonItemsTitle;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *previewButtonItemsTitle; // @synthesize previewButtonItemsTitle=_previewButtonItemsTitle;
+@property(retain, nonatomic) NSString *cardSectionDetail; // @synthesize cardSectionDetail=_cardSectionDetail;
+@property(retain, nonatomic) NSString *commandDetail; // @synthesize commandDetail=_commandDetail;
+@property(copy, nonatomic) NSArray *previewButtonItems; // @synthesize previewButtonItems=_previewButtonItems;
+@property(retain, nonatomic) SFCommand *previewCommand; // @synthesize previewCommand=_previewCommand;
+@property(retain, nonatomic) SFCommand *command; // @synthesize command=_command;
 @property(retain, nonatomic) SFUserReportRequest *userReportRequest; // @synthesize userReportRequest=_userReportRequest;
 @property(copy, nonatomic) NSString *resultIdentifier; // @synthesize resultIdentifier=_resultIdentifier;
 @property(retain, nonatomic) SFColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
@@ -49,12 +61,19 @@
 @property(nonatomic) _Bool hasBottomPadding; // @synthesize hasBottomPadding=_hasBottomPadding;
 @property(retain, nonatomic) SFCard *nextCard; // @synthesize nextCard=_nextCard;
 @property(copy, nonatomic) NSString *type; // @synthesize type=_type;
+@property(readonly, nonatomic) NSArray *sectionsWithCards;
+@property(readonly) NSArray *cardsFromEmbeddedSections;
+@property(readonly) NSArray *cardsFromButtons;
+- (id)cardsFromCommands;
+@property(readonly) NSArray *embeddedCards;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(nonatomic) _Bool hideDivider; // @synthesize hideDivider=_hideDivider;
+- (id)init;
+- (id)initWithProtobuf:(id)arg1;
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 

@@ -9,7 +9,7 @@
 #import <CameraUI/CAMAccessibilityHUDItemProvider-Protocol.h>
 #import <CameraUI/CAMControlStatusIndicatorDelegate-Protocol.h>
 
-@class CAMApertureStatusIndicator, CAMDirectionalIndicator, CAMExposureBiasStatusIndicator, CAMFilterStatusIndicator, CAMFlashStatusIndicator, CAMHDRStatusIndicator, CAMIntensityStatusIndicator, CAMLivePhotoStatusIndicator, CAMLowLightStatusIndicator, CAMTimerStatusIndicator, CAMVideoConfigurationStatusIndicator, NSArray, NSMutableDictionary, NSSet, NSString;
+@class CAMApertureStatusIndicator, CAMDirectionalIndicator, CAMExposureBiasStatusIndicator, CAMFilterStatusIndicator, CAMFlashStatusIndicator, CAMHDRStatusIndicator, CAMIntensityStatusIndicator, CAMLivePhotoStatusIndicator, CAMLowLightStatusIndicator, CAMRAWStatusIndicator, CAMSemanticStyleStatusIndicator, CAMTimerStatusIndicator, CAMVideoConfigurationStatusIndicator, NSArray, NSMutableDictionary, NSSet, NSString;
 @protocol CAMControlStatusBarDelegate;
 
 @interface CAMControlStatusBar : UIView <CAMControlStatusIndicatorDelegate, CAMAccessibilityHUDItemProvider>
@@ -55,6 +55,8 @@
 @property(copy, nonatomic) NSArray *primaryVisibleIndicatorTypes;
 - (_Bool)isIndicatorDesiredForType:(unsigned long long)arg1;
 - (void)setPrimaryDesiredIndicatorTypes:(id)arg1 secondaryDesiredIndicatorTypes:(id)arg2 animated:(_Bool)arg3;
+- (void)_handleRAWStatusIndicatorTapped:(id)arg1;
+- (void)_handleSemanticStyleStatusIndicatorTapped:(id)arg1;
 - (void)_handleLowLightStatusIndicatorTapped:(id)arg1;
 - (void)_handleExposureBiasStatusIndicatorTapped:(id)arg1;
 - (void)_handleIntensityStatusIndicatorTapped:(id)arg1;
@@ -64,6 +66,8 @@
 - (void)_handleHDRStatusIndicatorTapped:(id)arg1;
 - (void)_handleLivePhotoStatusIndicatorTapped:(id)arg1;
 - (void)_handleFlashStatusIndicatorTapped:(id)arg1;
+@property(readonly, nonatomic) CAMRAWStatusIndicator *rawIndicator;
+@property(readonly, nonatomic) CAMSemanticStyleStatusIndicator *semanticStyleIndicator;
 @property(readonly, nonatomic) CAMLowLightStatusIndicator *lowLightIndicator;
 @property(readonly, nonatomic) CAMVideoConfigurationStatusIndicator *videoConfigurationIndicator;
 @property(readonly, nonatomic) CAMExposureBiasStatusIndicator *exposureBiasIndicator;

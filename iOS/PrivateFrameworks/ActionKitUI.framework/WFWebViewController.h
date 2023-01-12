@@ -9,7 +9,6 @@
 @class WKWebView;
 @protocol WFWebViewControllerDelegate;
 
-__attribute__((visibility("hidden")))
 @interface WFWebViewController : UIViewController
 {
     id <WFWebViewControllerDelegate> _delegate;

@@ -22,7 +22,7 @@
     NSMutableArray *_backingArray;
 }
 
-+ (id)objectWithThreadSafeReference:(unique_ptr_d0e912ad)arg1 metadata:(id)arg2 realm:(id)arg3;
++ (id)objectWithThreadSafeReference:(unique_ptr_14b91335)arg1 metadata:(id)arg2 realm:(id)arg3;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *objectClassName; // @synthesize objectClassName=_objectClassName;
 @property(readonly, nonatomic, getter=isOptional) _Bool optional; // @synthesize optional=_optional;
@@ -30,7 +30,7 @@
 - (id)descriptionWithMaxDepth:(unsigned long long)arg1;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) id objectiveCMetadata;
-- (unique_ptr_d0e912ad)makeThreadSafeReference;
+- (unique_ptr_14b91335)makeThreadSafeReference;
 - (id)addNotificationBlock:(CDUnknownBlockType)arg1;
 - (id)sortedResultsUsingDescriptors:(id)arg1;
 - (id)objectsWithPredicate:(id)arg1;

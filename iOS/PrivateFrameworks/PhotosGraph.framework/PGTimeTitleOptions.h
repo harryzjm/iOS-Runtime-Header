@@ -6,22 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@class NSLocale, NSSet;
+@class NSLocale, NSSet, PGGraphYearNodeCollection;
 
 @interface PGTimeTitleOptions : NSObject
 {
     _Bool _filterDates;
+    _Bool _usePeopleSubtitleFormatWithYears;
+    _Bool _filterForSignificantDateNodes;
     NSSet *_momentNodes;
+    PGGraphYearNodeCollection *_featuredYearNodes;
     NSSet *_locationNodes;
     unsigned long long _allowedFormats;
     NSLocale *_locale;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool filterForSignificantDateNodes; // @synthesize filterForSignificantDateNodes=_filterForSignificantDateNodes;
+@property(nonatomic) _Bool usePeopleSubtitleFormatWithYears; // @synthesize usePeopleSubtitleFormatWithYears=_usePeopleSubtitleFormatWithYears;
 @property(retain, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 @property(nonatomic) _Bool filterDates; // @synthesize filterDates=_filterDates;
 @property(nonatomic) unsigned long long allowedFormats; // @synthesize allowedFormats=_allowedFormats;
 @property(retain, nonatomic) NSSet *locationNodes; // @synthesize locationNodes=_locationNodes;
+@property(retain, nonatomic) PGGraphYearNodeCollection *featuredYearNodes; // @synthesize featuredYearNodes=_featuredYearNodes;
 @property(retain, nonatomic) NSSet *momentNodes; // @synthesize momentNodes=_momentNodes;
 - (id)init;
 

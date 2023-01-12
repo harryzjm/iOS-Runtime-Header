@@ -29,6 +29,7 @@
 - (id)_createAndSubmitExtensionJob:(id)arg1 UUID:(id)arg2 error:(id *)arg3;
 - (id)_createLaunchdJobWithIdentity:(id)arg1 context:(id)arg2 error:(id *)arg3;
 - (id)_generateDataWithIdentity:(id)arg1 context:(id)arg2;
+- (unsigned int)_personaForIdentity:(id)arg1 context:(id)arg2;
 - (void)_addReslideIdentityIfNeeded:(id)arg1 exitStatus:(id)arg2;
 - (id)initWithLaunchdInterface:(id)arg1 personaManager:(id)arg2;
 

@@ -12,14 +12,6 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 struct AbstractVocabulary;
 
-struct CVNLPCTCCandidate;
-
-struct CVNLPCTCPriorityQueue {
-    struct priority_queue<CVNLPCTCCandidate, std::__1::vector<CVNLPCTCCandidate, std::__1::allocator<CVNLPCTCCandidate>>, CVNLPCTCPriorityQueue::QueueComparison> _field1;
-    _Bool _field2;
-    struct vector<CVNLPCTCCandidate, std::__1::allocator<CVNLPCTCCandidate>> _field3;
-};
-
 struct CVNLPTextDecodingPruningPolicy {
     long long strategy;
     _Bool shouldSort;
@@ -27,20 +19,43 @@ struct CVNLPTextDecodingPruningPolicy {
     unsigned int maxNumberOfCandidates;
 };
 
-struct QueueComparison;
+struct _LXCursor;
 
 struct _NSRange {
     unsigned long long location;
     unsigned long long length;
 };
 
-struct priority_queue<CVNLPCTCCandidate, std::__1::vector<CVNLPCTCCandidate, std::__1::allocator<CVNLPCTCCandidate>>, CVNLPCTCPriorityQueue::QueueComparison> {
-    struct vector<CVNLPCTCCandidate, std::__1::allocator<CVNLPCTCCandidate>> _field1;
-    struct QueueComparison _field2;
+struct __tree_end_node<std::__tree_node_base<void *>*> {
+    void *__left_;
 };
 
-struct unique_ptr<cvnlp::AbstractVocabulary, std::__1::default_delete<cvnlp::AbstractVocabulary>> {
-    struct __compressed_pair<cvnlp::AbstractVocabulary *, std::__1::default_delete<cvnlp::AbstractVocabulary>> {
+struct map<std::string, std::vector<float>, std::less<std::string>, std::allocator<std::pair<const std::string, std::vector<float>>>> {
+    struct __tree<std::__value_type<std::string, std::vector<float>>, std::__map_value_compare<std::string, std::__value_type<std::string, std::vector<float>>, std::less<std::string>, true>, std::allocator<std::__value_type<std::string, std::vector<float>>>> {
+        void *__begin_node_;
+        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<std::string, std::vector<float>>, void *>>> {
+            struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
+        } __pair1_;
+        struct __compressed_pair<unsigned long, std::__map_value_compare<std::string, std::__value_type<std::string, std::vector<float>>, std::less<std::string>, true>> {
+            unsigned long long __value_;
+        } __pair3_;
+    } __tree_;
+};
+
+struct map<std::string, std::vector<unsigned long>, std::less<std::string>, std::allocator<std::pair<const std::string, std::vector<unsigned long>>>> {
+    struct __tree<std::__value_type<std::string, std::vector<unsigned long>>, std::__map_value_compare<std::string, std::__value_type<std::string, std::vector<unsigned long>>, std::less<std::string>, true>, std::allocator<std::__value_type<std::string, std::vector<unsigned long>>>> {
+        void *__begin_node_;
+        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<std::string, std::vector<unsigned long>>, void *>>> {
+            struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
+        } __pair1_;
+        struct __compressed_pair<unsigned long, std::__map_value_compare<std::string, std::__value_type<std::string, std::vector<unsigned long>>, std::less<std::string>, true>> {
+            unsigned long long __value_;
+        } __pair3_;
+    } __tree_;
+};
+
+struct unique_ptr<cvnlp::AbstractVocabulary, std::default_delete<cvnlp::AbstractVocabulary>> {
+    struct __compressed_pair<cvnlp::AbstractVocabulary *, std::default_delete<cvnlp::AbstractVocabulary>> {
         struct AbstractVocabulary *__value_;
     } __ptr_;
 };
@@ -52,42 +67,42 @@ struct vImage_Buffer {
     unsigned long long _field4;
 };
 
-struct vector<CVNLPCTCCandidate, std::__1::allocator<CVNLPCTCCandidate>> {
-    struct CVNLPCTCCandidate *_field1;
-    struct CVNLPCTCCandidate *_field2;
-    struct __compressed_pair<CVNLPCTCCandidate *, std::__1::allocator<CVNLPCTCCandidate>> {
-        struct CVNLPCTCCandidate *_field1;
-    } _field3;
+struct vector<const _LXCursor *, std::allocator<const _LXCursor *>> {
+    struct _LXCursor **__begin_;
+    struct _LXCursor **__end_;
+    struct __compressed_pair<const _LXCursor **, std::allocator<const _LXCursor *>> {
+        struct _LXCursor **__value_;
+    } __end_cap_;
 };
 
-struct vector<double, std::__1::allocator<double>> {
+struct vector<double, std::allocator<double>> {
     double *__begin_;
     double *__end_;
-    struct __compressed_pair<double *, std::__1::allocator<double>> {
+    struct __compressed_pair<double *, std::allocator<double>> {
         double *__value_;
     } __end_cap_;
 };
 
-struct vector<float, std::__1::allocator<float>> {
-    float *_field1;
-    float *_field2;
-    struct __compressed_pair<float *, std::__1::allocator<float>> {
-        float *_field1;
-    } _field3;
+struct vector<std::string, std::allocator<std::string>> {
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<std::string *, std::allocator<std::string>> {
+        void *__value_;
+    } __end_cap_;
 };
 
-struct vector<unsigned int, std::__1::allocator<unsigned int>> {
+struct vector<unsigned int, std::allocator<unsigned int>> {
     unsigned int *__begin_;
     unsigned int *__end_;
-    struct __compressed_pair<unsigned int *, std::__1::allocator<unsigned int>> {
+    struct __compressed_pair<unsigned int *, std::allocator<unsigned int>> {
         unsigned int *__value_;
     } __end_cap_;
 };
 
-struct vector<unsigned long, std::__1::allocator<unsigned long>> {
+struct vector<unsigned long, std::allocator<unsigned long>> {
     unsigned long long *__begin_;
     unsigned long long *__end_;
-    struct __compressed_pair<unsigned long *, std::__1::allocator<unsigned long>> {
+    struct __compressed_pair<unsigned long *, std::allocator<unsigned long>> {
         unsigned long long *__value_;
     } __end_cap_;
 };
@@ -118,19 +133,43 @@ typedef struct {
 } CDStruct_2bc666a5;
 
 // Template types
-typedef struct vector<float, std::__1::allocator<float>> {
-    float *_field1;
-    float *_field2;
-    struct __compressed_pair<float *, std::__1::allocator<float>> {
-        float *_field1;
-    } _field3;
-} vector_f9ed6fc8;
+typedef struct map<std::string, std::vector<float>, std::less<std::string>, std::allocator<std::pair<const std::string, std::vector<float>>>> {
+    struct __tree<std::__value_type<std::string, std::vector<float>>, std::__map_value_compare<std::string, std::__value_type<std::string, std::vector<float>>, std::less<std::string>, true>, std::allocator<std::__value_type<std::string, std::vector<float>>>> {
+        void *__begin_node_;
+        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<std::string, std::vector<float>>, void *>>> {
+            struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
+        } __pair1_;
+        struct __compressed_pair<unsigned long, std::__map_value_compare<std::string, std::__value_type<std::string, std::vector<float>>, std::less<std::string>, true>> {
+            unsigned long long __value_;
+        } __pair3_;
+    } __tree_;
+} map_b0fe4ef5;
 
-typedef struct vector<unsigned int, std::__1::allocator<unsigned int>> {
+typedef struct map<std::string, std::vector<unsigned long>, std::less<std::string>, std::allocator<std::pair<const std::string, std::vector<unsigned long>>>> {
+    struct __tree<std::__value_type<std::string, std::vector<unsigned long>>, std::__map_value_compare<std::string, std::__value_type<std::string, std::vector<unsigned long>>, std::less<std::string>, true>, std::allocator<std::__value_type<std::string, std::vector<unsigned long>>>> {
+        void *__begin_node_;
+        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<std::string, std::vector<unsigned long>>, void *>>> {
+            struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
+        } __pair1_;
+        struct __compressed_pair<unsigned long, std::__map_value_compare<std::string, std::__value_type<std::string, std::vector<unsigned long>>, std::less<std::string>, true>> {
+            unsigned long long __value_;
+        } __pair3_;
+    } __tree_;
+} map_5c6edff9;
+
+typedef struct vector<std::string, std::allocator<std::string>> {
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<std::string *, std::allocator<std::string>> {
+        void *__value_;
+    } __end_cap_;
+} vector_bfe5b09a;
+
+typedef struct vector<unsigned int, std::allocator<unsigned int>> {
     unsigned int *__begin_;
     unsigned int *__end_;
-    struct __compressed_pair<unsigned int *, std::__1::allocator<unsigned int>> {
+    struct __compressed_pair<unsigned int *, std::allocator<unsigned int>> {
         unsigned int *__value_;
     } __end_cap_;
-} vector_12da65de;
+} vector_3b74075b;
 

@@ -6,22 +6,26 @@
 
 #import <objc/NSObject.h>
 
+#import <MapsSuggestions/MapsSuggestionsCondition-Protocol.h>
 #import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
 
 @class NSMutableDictionary, NSString;
 @protocol MapsSuggestionsBudgetDelegate;
 
-@interface MapsSuggestionsBudget : NSObject <MapsSuggestionsObject>
+@interface MapsSuggestionsBudget : NSObject <MapsSuggestionsObject, MapsSuggestionsCondition>
 {
     NSString *_name;
     struct Queue _queue;
-    struct vector<MSg::_RollingWindowBudgetRule, std::__1::allocator<MSg::_RollingWindowBudgetRule>> _rules;
+    struct vector<MSg::_RollingWindowBudgetRule, std::allocator<MSg::_RollingWindowBudgetRule>> _rules;
     NSMutableDictionary *_data;
     id <MapsSuggestionsBudgetDelegate> _delegate;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (_Bool)isTrue;
+- (id)objectForJSON;
+- (id)nameForJSON;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) NSString *uniqueName;
 - (_Bool)q_saveStateForRuleName:(id)arg1 state:(id)arg2;
@@ -30,7 +34,7 @@
 - (_Bool)spendNow;
 - (_Bool)spendAtTime:(id)arg1;
 - (_Bool)hasBudgetLeft;
-- (void)addRollingWindowOfCount:(unsigned long long)arg1 perDuration:(const struct Duration *)arg2 name:(id)arg3;
+- (void)addRollingWindowOfCount:(unsigned long long)arg1 perDuration:(const void *)arg2 name:(id)arg3;
 - (void)addRollingWindowOfCount:(unsigned long long)arg1 perTimeInterval:(double)arg2 name:(id)arg3;
 - (id)initWithDelegate:(id)arg1 name:(id)arg2;
 

@@ -30,17 +30,19 @@
     CDStruct_0f4bf8df _threadgroupMemoryArguments[31];
     unsigned int _encoderState;
     unsigned int _unknownStoreActions;
-    struct set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int>> *_visibilityOffsets;
-    vector_9706d78e _viewports;
-    vector_dc8a7a87 _scissorRects;
+    void *_visibilityOffsets;
+    struct vector<MTLViewport, std::allocator<MTLViewport>> _viewports;
+    struct vector<MTLScissorRect, std::allocator<MTLScissorRect>> _scissorRects;
     unsigned long long _amplificationMode;
     unsigned long long _amplificationValue;
     unsigned long long _vertexAmplificationCount;
-    struct deque<id, std::__1::allocator<id>> _updatedFences;
+    struct deque<id, std::allocator<id>> _updatedFences;
     NSMutableSet *_storingRenderTargets;
     MTLDebugCommandBuffer *_commandBuffer;
     unsigned long long _maxVertexBuffers;
     unsigned long long _attachmentWriteMask;
+    CDStruct_da2e99ad _objectThreadsPerTG;
+    CDStruct_da2e99ad _meshThreadsPerTG;
     float _lineWidth;
     float _depthBias;
     float _depthBiasSlopeScale;
@@ -100,6 +102,26 @@
 @property(readonly, nonatomic) unsigned long long frontFacingWinding; // @synthesize frontFacingWinding=_frontFacingWinding;
 @property(readonly, copy, nonatomic) MTLRenderPassDescriptor *descriptor; // @synthesize descriptor=_descriptor;
 @property(readonly, nonatomic) unsigned long long attachmentWriteMask; // @synthesize attachmentWriteMask=_attachmentWriteMask;
+- (void)setTileAccelerationStructure:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setFragmentAccelerationStructure:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setVertexAccelerationStructure:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setAccelerationStructure:(id)arg1 atBufferIndex:(unsigned long long)arg2 maxBuffers:(unsigned long long)arg3 buffers:(CDStruct_0f4bf8df *)arg4 buffersLength:(unsigned long long)arg5 stage:(unsigned long long)arg6;
+- (void)setTileIntersectionFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setTileIntersectionFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setFragmentIntersectionFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setFragmentIntersectionFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setVertexIntersectionFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setVertexIntersectionFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setIntersectionFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2 maxBuffers:(unsigned long long)arg3 buffers:(CDStruct_0f4bf8df *)arg4 buffersLength:(unsigned long long)arg5 stage:(unsigned long long)arg6;
+- (void)setIntersectionFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2 maxBuffers:(unsigned long long)arg3 buffers:(CDStruct_0f4bf8df *)arg4 buffersLength:(unsigned long long)arg5 stage:(unsigned long long)arg6;
+- (void)setTileVisibleFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setTileVisibleFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setFragmentVisibleFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setFragmentVisibleFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setVertexVisibleFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setVertexVisibleFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setVisibleFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2 maxBuffers:(unsigned long long)arg3 buffers:(CDStruct_0f4bf8df *)arg4 buffersLength:(unsigned long long)arg5 stage:(unsigned long long)arg6;
+- (void)setVisibleFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2 maxBuffers:(unsigned long long)arg3 buffers:(CDStruct_0f4bf8df *)arg4 buffersLength:(unsigned long long)arg5 stage:(unsigned long long)arg6;
 - (void)sampleCountersInBuffer:(id)arg1 atSampleIndex:(unsigned long long)arg2 withBarrier:(_Bool)arg3;
 - (void)executeCommandsInBuffer:(id)arg1 indirectBuffer:(id)arg2 indirectBufferOffset:(unsigned long long)arg3;
 - (void)executeCommandsInBuffer:(id)arg1 withRange:(struct _NSRange)arg2;
@@ -126,7 +148,8 @@
 - (void)drawPrimitives:(unsigned long long)arg1 vertexStart:(unsigned long long)arg2 vertexCount:(unsigned long long)arg3;
 - (void)drawPrimitives:(unsigned long long)arg1 vertexStart:(unsigned long long)arg2 vertexCount:(unsigned long long)arg3 instanceCount:(unsigned long long)arg4;
 - (void)validateDrawPrimitives:(unsigned long long)arg1 vertexStart:(unsigned long long)arg2 vertexCount:(unsigned long long)arg3 instanceCount:(unsigned long long)arg4 function:(const char *)arg5;
-- (void)_validateAllFunctionArguments;
+- (void)_validateAllFunctionArguments:(struct _MTLMessageContext *)arg1;
+- (void)validateCommonDrawErrors:(unsigned long long)arg1;
 - (void)validateCommonDrawErrors:(unsigned long long)arg1 instanceCount:(unsigned long long)arg2 baseInstance:(unsigned long long)arg3 maxVertexID:(unsigned long long)arg4;
 - (void)updatePipelineData;
 - (void)setStencilResolveTexture:(id)arg1 slice:(unsigned long long)arg2 depthPlane:(unsigned long long)arg3 level:(unsigned long long)arg4 yInvert:(_Bool)arg5;
@@ -169,6 +192,8 @@
 - (void)useResource:(id)arg1 usage:(unsigned long long)arg2 stages:(unsigned long long)arg3;
 - (void)useResource:(id)arg1 usage:(unsigned long long)arg2;
 - (void)setThreadgroupMemoryLength:(unsigned long long)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
+- (void)_dispatchThreadsPerTile:(CDStruct_14f26992)arg1 inRegion:(CDStruct_1e3be3a8 *)arg2;
+- (void)dispatchThreadsPerTile:(CDStruct_14f26992)arg1 inRegion:(CDStruct_1e3be3a8)arg2;
 - (void)dispatchThreadsPerTile:(CDStruct_14f26992)arg1;
 - (void)setTileSamplerStates:(const id *)arg1 lodMinClamps:(const float *)arg2 lodMaxClamps:(const float *)arg3 withRange:(struct _NSRange)arg4;
 - (void)setTileSamplerState:(id)arg1 lodMinClamp:(float)arg2 lodMaxClamp:(float)arg3 atIndex:(unsigned long long)arg4;
@@ -204,7 +229,7 @@
 - (void)setVertexBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setVertexBytes:(const void *)arg1 length:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setRenderPipelineState:(id)arg1;
-- (void)validateFramebufferWithRenderPipelineState:(id)arg1;
+- (void)validateFramebufferWithRenderPipelineState:(id)arg1 context:(struct _MTLMessageContext *)arg2;
 - (id)description;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (void)dealloc;
@@ -222,8 +247,8 @@
 - (void)enumerateVertexBuffersUsingBlock:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) CDStruct_33dcf794 scissorRect;
 @property(readonly, nonatomic) CDStruct_8727d297 viewport;
-@property(readonly, nonatomic) vector_dc8a7a87 *scissorRects;
-@property(readonly, nonatomic) vector_9706d78e *viewports;
+@property(readonly, nonatomic) void *scissorRects;
+@property(readonly, nonatomic) void *viewports;
 
 @end
 

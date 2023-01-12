@@ -8,8 +8,7 @@
 
 #import <Photos/PLResourceIdentity-Protocol.h>
 
-@class NSString, PLPhotoLibrary;
-@protocol PLUniformTypeIdentifierIdentity;
+@class NSString, PLPhotoLibrary, PLUniformTypeIdentifier;
 
 @interface PHImageRequestResource : NSObject <PLResourceIdentity>
 {
@@ -17,14 +16,14 @@
     unsigned int _resourceType;
     unsigned int _version;
     unsigned int _recipeID;
-    id <PLUniformTypeIdentifierIdentity> _uniformTypeIdentifierID;
+    PLUniformTypeIdentifier *_uniformTypeIdentifier;
 }
 
 + (id)possibleClassesInDictionaryRepresentation;
 + (id)dictionaryRepresentationFromResourceIdentity:(id)arg1;
 + (id)imageRequestResourceForDataStoreKey:(id)arg1 store:(id)arg2 assetObjectID:(id)arg3 context:(id)arg4;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) id <PLUniformTypeIdentifierIdentity> uniformTypeIdentifierID; // @synthesize uniformTypeIdentifierID=_uniformTypeIdentifierID;
+@property(readonly, nonatomic) PLUniformTypeIdentifier *uniformTypeIdentifier; // @synthesize uniformTypeIdentifier=_uniformTypeIdentifier;
 @property(readonly, nonatomic) unsigned int recipeID; // @synthesize recipeID=_recipeID;
 @property(readonly, nonatomic) unsigned int version; // @synthesize version=_version;
 @property(readonly, nonatomic) unsigned int resourceType; // @synthesize resourceType=_resourceType;

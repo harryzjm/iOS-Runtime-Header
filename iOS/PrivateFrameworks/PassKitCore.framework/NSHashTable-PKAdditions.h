@@ -7,6 +7,7 @@
 #import <Foundation/NSHashTable.h>
 
 @interface NSHashTable (PKAdditions)
++ (id)pk_hashTableUsingPointerPersonality;
 + (id)pk_weakObjectsHashTableUsingPointerPersonality;
 @end
 

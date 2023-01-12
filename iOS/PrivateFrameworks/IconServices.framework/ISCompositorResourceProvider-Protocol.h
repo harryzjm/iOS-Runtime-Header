@@ -6,10 +6,13 @@
 
 #import <IconServices/NSObject-Protocol.h>
 
-@class NSString;
+@class ISCompositorResourceProviderKey, NSString;
 @protocol ISCompositorResource;
 
 @protocol ISCompositorResourceProvider <NSObject>
 - (id <ISCompositorResource>)resourceNamed:(NSString *)arg1;
+
+@optional
+- (id <ISCompositorResource>)resourceForKey:(ISCompositorResourceProviderKey *)arg1;
 @end
 

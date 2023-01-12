@@ -8,26 +8,31 @@
 
 @interface TPSAnalyticsEventContentIneligible
 {
-    NSString *_contentID;
+    NSString *_tipID;
+    NSString *_correlationID;
     NSString *_bundleID;
     NSString *_context;
+    unsigned long long _displayCount;
     unsigned long long _displayType;
     long long _reason;
 }
 
-+ (id)eventWithContentID:(id)arg1 bundleID:(id)arg2 context:(id)arg3 displayType:(unsigned long long)arg4 reason:(long long)arg5 date:(id)arg6;
++ (id)eventWithTipID:(id)arg1 correlationID:(id)arg2 bundleID:(id)arg3 context:(id)arg4 displayType:(unsigned long long)arg5 reason:(long long)arg6 date:(id)arg7;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) long long reason; // @synthesize reason=_reason;
 @property(readonly, nonatomic) unsigned long long displayType; // @synthesize displayType=_displayType;
+@property(nonatomic) unsigned long long displayCount; // @synthesize displayCount=_displayCount;
 @property(readonly, nonatomic) NSString *context; // @synthesize context=_context;
 @property(readonly, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
-@property(readonly, nonatomic) NSString *contentID; // @synthesize contentID=_contentID;
+@property(readonly, nonatomic) NSString *correlationID; // @synthesize correlationID=_correlationID;
+@property(readonly, nonatomic) NSString *tipID; // @synthesize tipID=_tipID;
 - (id)mutableAnalyticsEventRepresentation;
 - (id)duetEvent;
+- (void)setDataProvider:(id)arg1;
 - (id)eventName;
 - (void)encodeWithCoder:(id)arg1;
-- (id)_initWithContentID:(id)arg1 bundleID:(id)arg2 context:(id)arg3 displayType:(unsigned long long)arg4 reason:(long long)arg5 date:(id)arg6;
+- (id)_initWithTipID:(id)arg1 correlationID:(id)arg2 bundleID:(id)arg3 context:(id)arg4 displayType:(unsigned long long)arg5 reason:(long long)arg6 date:(id)arg7;
 - (id)initWithCoder:(id)arg1;
 
 @end

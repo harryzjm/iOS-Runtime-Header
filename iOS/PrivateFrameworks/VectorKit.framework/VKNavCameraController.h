@@ -8,8 +8,8 @@
 #import <VectorKit/VKNavContextObserver-Protocol.h>
 #import <VectorKit/VKNavigationCameraController-Protocol.h>
 
-@class GEOMapRegion, NSString, VKAttachedNavGestureCameraBehavior, VKDetachedNavGestureCameraBehavior, VKGestureCameraBehavior, VKNavContext, VKSceneConfiguration, VKScreenCanvas, VKTimedAnimation;
-@protocol VKInteractiveMap, VKNavGestureCameraBehavior;
+@class GEOMapRegion, NSString, VKAttachedNavGestureCameraBehavior, VKDaVinciGestureCameraController, VKDetachedNavGestureCameraBehavior, VKGestureCameraBehavior, VKNavContext, VKSceneConfiguration, VKScreenCanvas, VKTimedAnimation;
+@protocol VKInteractiveMap;
 
 __attribute__((visibility("hidden")))
 @interface VKNavCameraController <VKNavigationCameraController, VKGesturingCameraController, VKNavContextObserver>
@@ -27,14 +27,15 @@ __attribute__((visibility("hidden")))
     struct Spring<double, 1, gdc::SpringType::Angular> _headingSpring;
     struct Spring<double, 1, gdc::SpringType::Linear> _distanceFromTargetSpring;
     struct Spring<double, 2, gdc::SpringType::Linear> _screenPositionSpring;
-    struct Unit<MeterUnitDescription, double> _cameraDistanceFromTarget;
+    Unit_09325524 _cameraDistanceFromTarget;
     Unit_3d259e8a _cameraPitch;
     double _previousUpdateTime;
     double _maxZoomScale;
     double _minZoomScale;
-    VKGestureCameraBehavior<VKNavGestureCameraBehavior> *_gestureBehavior;
+    VKGestureCameraBehavior *_gestureBehavior;
     VKAttachedNavGestureCameraBehavior *_attachedGestureBehavior;
     VKDetachedNavGestureCameraBehavior *_detachedGestureBehavior;
+    VKDaVinciGestureCameraController *_davinciGestureCameraController;
     _Bool _isDetached;
     _Bool _panning;
     _Bool _rotating;
@@ -44,11 +45,12 @@ __attribute__((visibility("hidden")))
     VKTimedAnimation *_snapPitchAnimation;
     VKTimedAnimation *_snapHeadingAnimation;
     CameraFrame_406dbd31 _transitionFrame;
-    basic_string_90719d97 _currentStyleName;
-    vector_36073df6 _coordinatesToFrame;
+    struct basic_string<char, std::char_traits<char>, std::allocator<char>> _currentStyleName;
+    struct vector<geo::Coordinate3D<Radians, double>, std::allocator<geo::Coordinate3D<Radians, double>>> _coordinatesToFrame;
     unsigned char _styleManeuversToFrame;
     unsigned char _maneuversToFrame;
     unsigned char _styleLegsToFrame;
+    unsigned char _segmentsToFrame;
     double _minCameraHeight;
     double _maxCameraHeight;
     Unit_3d259e8a _minCameraPitch;
@@ -73,6 +75,7 @@ __attribute__((visibility("hidden")))
     _Bool _enableRotate;
     float _panReturnDelayTime;
     unsigned char _alternateFramingSource;
+    unsigned char _secondaryAlternateFramingSource;
     double _maxFramingDistance;
     double _framingDistanceAfterManeuver;
     VKNavContext *_navContext;
@@ -93,6 +96,13 @@ __attribute__((visibility("hidden")))
     _Bool _enableDynamicFrameRate;
     Coordinate3D_bc242218 _cornerCoordinates[4];
     struct WindowedSampler<60> _pixelSamples;
+    struct Sampler _requesteDisplayRateSampler;
+    long long _requestedDisplayRate;
+    _Bool _isElevatedRoute;
+    double _elevationScale;
+    void *_cameraManager;
+    long long _defaultMaxDisplayRate;
+    struct vector<NavCameraPixelFrameRate, std::allocator<NavCameraPixelFrameRate>> _pixelChangeFrameRate;
     VKScreenCanvas<VKInteractiveMap> *_screenCanvas;
     VKSceneConfiguration *_sceneConfiguration;
     long long _baseDisplayRate;
@@ -104,11 +114,23 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct VKEdgeInsets clientFramingInsets; // @synthesize clientFramingInsets=_clientFramingInsets;
 @property(nonatomic) VKSceneConfiguration *sceneConfiguration; // @synthesize sceneConfiguration=_sceneConfiguration;
 @property(nonatomic) VKScreenCanvas<VKInteractiveMap> *screenCanvas; // @synthesize screenCanvas=_screenCanvas;
+- (float)maxPitchForNormalizedZoomLevel:(float)arg1;
+- (float)idealPitchForNormalizedZoomLevel:(float)arg1;
+- (float)minPitchForNormalizedZoomLevel:(float)arg1;
+- (float)minimumNormalizedZoomLevel;
+- (float)maximumNormalizedZoomLevel;
+- (long long)tileSize;
+- (void)_updateCameraLimits;
+- (void)pitchTo:(double)arg1 animated:(_Bool)arg2;
+- (void)rotateTo:(double)arg1 animated:(_Bool)arg2;
+- (_Bool)snapMapIfNecessary:(_Bool)arg1;
+- (_Bool)usesVKCamera;
 - (float)_currentRoadSignOffset;
 - (void)_setNavCameraIsDetached:(_Bool)arg1;
 - (unsigned char)cameraHeadingType;
 - (void)canvasDidLayout;
-- (void)setCamera:(id)arg1;
+- (void)setCamera:(shared_ptr_46708168)arg1;
+- (void)setVkCamera:(id)arg1;
 - (void)stopAnimations;
 - (void)setCameraFrame:(CameraFrame_406dbd31)arg1;
 - (CameraFrame_406dbd31)cameraFrame;
@@ -122,6 +144,7 @@ __attribute__((visibility("hidden")))
 - (double)minZoomHeight;
 - (double)maxZoomScale;
 - (double)minZoomScale;
+- (void)updateState;
 @property(nonatomic) double zoomScale;
 - (void)_updateZoomScaleLimts;
 - (void)_setNeedsUpdate;
@@ -129,8 +152,11 @@ __attribute__((visibility("hidden")))
 - (void)navContextStateDidChange:(id)arg1;
 - (void)_updateForAnimatedEdgeInsets;
 - (void)updateSpringsForFramingCamera;
-- (void)_addAdditionalRoutePointsToFrameToList:(vector_36073df6 *)arg1;
+- (void)_updateRouteSinuosity;
+- (void)_addAdditionalRoutePointsToFrameToList:(void *)arg1;
+- (Coordinate3D_bc242218)_coordinateForGeoLocation:(CDStruct_071ac149)arg1;
 - (void)updatePointsToFrame;
+- (_Bool)_addStepToFraming:(unsigned long long)arg1 forRoute:(id)arg2;
 - (void)updateManeuversToFrame;
 - (Coordinate3D_bc242218)routeCoordinateAtDistance:(double)arg1;
 - (Coordinate3D_bc242218)routeLocationAtDistance:(double)arg1 fromManeuver:(unsigned long long)arg2;
@@ -156,7 +182,7 @@ __attribute__((visibility("hidden")))
 - (void)setNavContext:(id)arg1;
 - (void)returnToPuck;
 - (void)returnToTrackingWithDelay:(double)arg1 resetZoom:(_Bool)arg2;
-- (void)animateCameraWithDuration:(float)arg1 fromFrame:(const CameraFrame_406dbd31 *)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)animateCameraWithDuration:(float)arg1 fromFrame:(const void *)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (CameraFrame_406dbd31)restingCameraFrame;
 - (CameraFrame_406dbd31)currentCameraFrame;
 @property(nonatomic) double pitch;
@@ -172,18 +198,23 @@ __attribute__((visibility("hidden")))
 - (Matrix_2bdd42a3)puckScreenPoint;
 - (void)_updateDebugOverlay;
 - (void)_updateDebugText;
+- (shared_ptr_60abd8cc)_getActiveSceneManager;
 - (id)_debugText:(_Bool)arg1 showNavCameraDebugConsoleAttributes:(_Bool)arg2;
 - (id)detailedDescription;
 - (_Bool)_hasRunningAnimation;
 - (double)_calculateMaxPixelChangeAndUpdateCorners;
-- (void)updateWithTimestamp:(double)arg1;
+- (void)updateWithTimestamp:(double)arg1 withContext:(void *)arg2;
+- (long long)displayRate;
+- (long long)defaultDisplayRate;
+- (void)_updateClipPlanes;
 - (void)resetSpringsToResting;
 - (void)updateCameraState;
 - (_Bool)wantsTimerTick;
-- (void)puckAnimator:(id)arg1 updatedTargetPosition:(const Coordinate3D_bc242218 *)arg2;
+- (void)puckAnimator:(id)arg1 updatedTargetPosition:(const void *)arg2;
 - (void)puckAnimatorDidStop:(id)arg1;
-- (void)updateLocation:(const Coordinate3D_bc242218 *)arg1 andCourse:(const Unit_3d259e8a *)arg2;
-- (void)puckAnimator:(id)arg1 updatedPosition:(const Coordinate3D_bc242218 *)arg2 course:(const Unit_3d259e8a *)arg3;
+- (void)updateLocation:(const void *)arg1 andCourse:(const void *)arg2;
+- (void)puckAnimator:(id)arg1 getElevation:(double *)arg2 withCoordinate:(const void *)arg3;
+- (void)puckAnimator:(id)arg1 updatedPosition:(const void *)arg2 course:(const void *)arg3;
 - (void)puckAnimator:(id)arg1 runAnimation:(id)arg2;
 - (_Bool)isGesturing;
 - (_Bool)tapAtPoint:(struct CGPoint)arg1;
@@ -204,9 +235,10 @@ __attribute__((visibility("hidden")))
 - (void)startPinchingWithFocusPoint:(struct CGPoint)arg1;
 - (void)zoom:(double)arg1 withFocusPoint:(struct CGPoint)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_setDetached:(_Bool)arg1;
+- (id)_detachedGestureController;
 - (void)startWithPounce:(_Bool)arg1 startLocation:(CDStruct_c3b9c2ee)arg2 startCourse:(double)arg3 pounceCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)dealloc;
-- (id)initWithTaskContext:(shared_ptr_e963992e)arg1 device:(struct Device *)arg2 mapDataAccess:(struct MapDataAccess *)arg3 animationRunner:(struct AnimationRunner *)arg4 runLoopController:(struct RunLoopController *)arg5 cameraDelegate:(id)arg6;
+- (id)initWithTaskContext:(shared_ptr_e963992e)arg1 device:(void *)arg2 mapDataAccess:(void *)arg3 animationRunner:(struct AnimationRunner *)arg4 runLoopController:(struct RunLoopController *)arg5 cameraDelegate:(id)arg6;
 - (id)init;
 
 // Remaining properties
@@ -217,8 +249,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool isFullyPitched;
 @property(readonly, nonatomic) _Bool isPitched;
 @property(readonly, nonatomic) _Bool isRotated;
-@property(readonly, nonatomic) struct MapDataAccess *mapDataAccess;
+@property(readonly, nonatomic) void *mapDataAccess;
 @property(readonly, nonatomic) GEOMapRegion *mapRegion;
+@property(readonly, nonatomic) GEOMapRegion *mapRegionIgnoringEdgeInsets;
 @property(readonly, nonatomic) double maxPitch;
 @property(readonly, nonatomic) double minPitch;
 @property(readonly, nonatomic) struct RunLoopController *runLoopController;

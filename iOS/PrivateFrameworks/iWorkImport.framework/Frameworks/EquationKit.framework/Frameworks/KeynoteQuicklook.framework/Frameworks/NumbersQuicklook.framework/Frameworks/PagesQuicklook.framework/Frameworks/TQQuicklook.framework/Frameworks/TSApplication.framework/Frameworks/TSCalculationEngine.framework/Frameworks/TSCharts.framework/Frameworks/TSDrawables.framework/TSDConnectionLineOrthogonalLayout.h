@@ -8,7 +8,7 @@
 {
 }
 
-- (struct CGPoint)axisSnapPoint:(struct CGPoint)arg1 toXs:(vector_8f06c10f)arg2 toYs:(vector_8f06c10f)arg3 withThreshold:(double)arg4;
+- (struct CGPoint)axisSnapPoint:(struct CGPoint)arg1 toXs:(vector_5e219421)arg2 toYs:(vector_5e219421)arg3 withThreshold:(double)arg4;
 - (_Bool)canEndpointsCoincide;
 - (struct CGPoint)controlPointForPointA:(struct CGPoint)arg1 pointB:(struct CGPoint)arg2 andOriginalA:(struct CGPoint)arg3 originalB:(struct CGPoint)arg4;
 - (id)createConnectedPathFrom:(id)arg1 to:(id)arg2 withControlPoints:(struct CGPoint [3])arg3;

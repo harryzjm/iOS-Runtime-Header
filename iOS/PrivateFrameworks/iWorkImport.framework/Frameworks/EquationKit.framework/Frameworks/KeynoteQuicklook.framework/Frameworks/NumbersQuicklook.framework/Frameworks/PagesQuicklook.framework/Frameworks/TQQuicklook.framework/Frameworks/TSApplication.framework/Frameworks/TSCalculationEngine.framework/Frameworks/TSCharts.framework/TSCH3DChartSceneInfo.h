@@ -9,6 +9,7 @@
 #import <TSCharts/NSCopying-Protocol.h>
 
 @class TSCH3DScene, TSCHChartInfo, TSCHChartSeriesType, TSCHChartType;
+@protocol TSWPStyleProviding;
 
 @interface TSCH3DChartSceneInfo : NSObject <NSCopying>
 {
@@ -16,18 +17,20 @@
     TSCHChartInfo *_chartInfo;
     TSCHChartType *_chartType;
     TSCHChartSeriesType *_seriesType;
-    CDStruct_b1c75024 _layoutSettings;
+    id <TSWPStyleProviding> _styleProvidingSource;
+    CDStruct_c48db077 _layoutSettings;
 }
 
-+ (id)infoWithScene:(id)arg1 chartInfo:(id)arg2 chartType:(id)arg3 seriesType:(id)arg4 layoutSettings:(CDStruct_b1c75024)arg5;
-@property(readonly, nonatomic) CDStruct_b1c75024 layoutSettings; // @synthesize layoutSettings=_layoutSettings;
-@property(readonly, retain, nonatomic) TSCHChartSeriesType *seriesType; // @synthesize seriesType=_seriesType;
-@property(readonly, retain, nonatomic) TSCHChartType *chartType; // @synthesize chartType=_chartType;
-@property(readonly, retain, nonatomic) TSCHChartInfo *chartInfo; // @synthesize chartInfo=_chartInfo;
-@property(readonly, retain, nonatomic) TSCH3DScene *scene; // @synthesize scene=_scene;
++ (id)infoWithScene:(id)arg1 chartInfo:(id)arg2 chartType:(id)arg3 seriesType:(id)arg4 layoutSettings:(CDStruct_c48db077)arg5 styleProvidingSource:(id)arg6;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) __weak id <TSWPStyleProviding> styleProvidingSource; // @synthesize styleProvidingSource=_styleProvidingSource;
+@property(readonly, nonatomic) CDStruct_c48db077 layoutSettings; // @synthesize layoutSettings=_layoutSettings;
+@property(readonly, nonatomic) TSCHChartSeriesType *seriesType; // @synthesize seriesType=_seriesType;
+@property(readonly, nonatomic) TSCHChartType *chartType; // @synthesize chartType=_chartType;
+@property(readonly, nonatomic) TSCHChartInfo *chartInfo; // @synthesize chartInfo=_chartInfo;
+@property(readonly, nonatomic) TSCH3DScene *scene; // @synthesize scene=_scene;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (id)initWithScene:(id)arg1 chartInfo:(id)arg2 chartType:(id)arg3 seriesType:(id)arg4 layoutSettings:(CDStruct_b1c75024)arg5;
+- (id)initWithScene:(id)arg1 chartInfo:(id)arg2 chartType:(id)arg3 seriesType:(id)arg4 layoutSettings:(CDStruct_c48db077)arg5 styleProvidingSource:(id)arg6;
 
 @end
 

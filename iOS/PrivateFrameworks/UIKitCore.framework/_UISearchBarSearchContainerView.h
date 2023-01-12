@@ -9,10 +9,13 @@
 __attribute__((visibility("hidden")))
 @interface _UISearchBarSearchContainerView
 {
+    _Bool _needsLayoutWhenThawed;
+    _Bool _frozenLayout;
     _UISearchBarSearchContainerLayout *_layout;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool frozenLayout; // @synthesize frozenLayout=_frozenLayout;
 @property(retain, nonatomic) _UISearchBarSearchContainerLayout *layout; // @synthesize layout=_layout;
 - (void)setNeedsLayout;
 - (void)layoutSubviews;

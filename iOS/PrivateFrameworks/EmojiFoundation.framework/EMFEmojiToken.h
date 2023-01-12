@@ -37,6 +37,7 @@
 - (_Bool)supportsPresentationStyle:(int)arg1;
 @property(readonly, nonatomic) int presentationStyle;
 @property(readonly, nonatomic) _Bool _shouldHighlightEmoji;
+@property(readonly, nonatomic) int gender;
 - (id)copyWithSkinToneVariantSpecifier:(id)arg1;
 - (id)copyWithSkinToneVariant:(int)arg1;
 @property(readonly, copy, nonatomic) NSArray *_skinToneVariantStrings;

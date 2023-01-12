@@ -6,7 +6,7 @@
 
 #import <SiriVOX/NSObject-Protocol.h>
 
-@class SVXActivationContext, SVXDeactivationContext, SVXDeviceSetupContext, SVXSpeechSynthesisRequest;
+@class NSUUID, SVXActivationContext, SVXDeactivationContext, SVXDeviceSetupContext, SVXSpeechSynthesisRequest;
 
 @protocol SVXClientService <NSObject>
 - (oneway void)prepareForDeviceSetupWithContext:(SVXDeviceSetupContext *)arg1 completion:(void (^)(SVXDeviceSetupFlow *, NSError *))arg2;
@@ -14,7 +14,7 @@
 - (oneway void)stopSpeechSynthesisRequest:(SVXSpeechSynthesisRequest *)arg1;
 - (oneway void)cancelPendingSpeechSynthesisRequest:(SVXSpeechSynthesisRequest *)arg1;
 - (oneway void)enqueueSpeechSynthesisRequest:(SVXSpeechSynthesisRequest *)arg1 completion:(void (^)(SVXSpeechSynthesisResult *))arg2;
-- (oneway void)synthesizeRequest:(SVXSpeechSynthesisRequest *)arg1 completion:(void (^)(SVXSpeechSynthesisResult *))arg2;
+- (oneway void)synthesizeRequest:(SVXSpeechSynthesisRequest *)arg1 handlerUUID:(NSUUID *)arg2 completion:(void (^)(SVXSpeechSynthesisResult *))arg3;
 - (oneway void)prewarmRequest:(SVXSpeechSynthesisRequest *)arg1;
 - (oneway void)fetchAudioPowerWithType:(long long)arg1 completion:(void (^)(AFXPCWrapper *, NSError *))arg2;
 - (oneway void)transitToAutomaticEndpointing;
@@ -23,6 +23,7 @@
 - (oneway void)activateWithContext:(SVXActivationContext *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)prewarmWithContext:(SVXActivationContext *)arg1 completion:(void (^)(void))arg2;
 - (oneway void)preheatWithActivationSource:(long long)arg1;
+- (oneway void)fetchAlarmAndTimerFiringContextWithCompletion:(void (^)(SVXAlarmAndTimerFiringContext *, NSError *))arg1;
 - (oneway void)fetchSessionActivityStateWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (oneway void)fetchSessionStateWithCompletion:(void (^)(long long, NSError *))arg1;
 - (oneway void)pingWithReply:(void (^)(NSError *))arg1;

@@ -22,7 +22,7 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
-- (id)initWithFeature:(CDStruct_66740237 *)arg1 coordinates:(CDStruct_2c43369c)arg2 isDeadEnd:(_Bool)arg3;
+- (id)initWithFeature:(id)arg1 coordinates:(CDStruct_2c43369c)arg2 isDeadEnd:(_Bool)arg3;
 - (id)initWithFeatureWrapper:(id)arg1 coordinates:(CDStruct_2c43369c)arg2 isDeadEnd:(_Bool)arg3;
 
 @end

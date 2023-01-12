@@ -7,9 +7,9 @@
 @class TSTCell, TSTCellMap, TSTConcurrentCellMap;
 
 @protocol TSTCellWillChangeProtocol
-- (void)willRemoveRows:(const vector_4dc5f307 *)arg1 tableUID:(const UUIDData_5fbc143e *)arg2;
-- (void)willApplyConcurrentCellMap:(TSTConcurrentCellMap *)arg1 tableUID:(const UUIDData_5fbc143e *)arg2;
-- (void)willApplyBaseCellMap:(TSTCellMap *)arg1 tableUID:(const UUIDData_5fbc143e *)arg2;
-- (void)willApplyCell:(TSTCell *)arg1 baseCellCoord:(struct TSUModelCellCoord)arg2 tableUID:(const UUIDData_5fbc143e *)arg3;
+- (void)willRemoveRows:(const void *)arg1 tableUID:(const struct TSKUIDStruct *)arg2;
+- (void)willApplyConcurrentCellMap:(TSTConcurrentCellMap *)arg1 tableUID:(const struct TSKUIDStruct *)arg2;
+- (void)willApplyBaseCellMap:(TSTCellMap *)arg1 tableUID:(const struct TSKUIDStruct *)arg2;
+- (void)willApplyCell:(TSTCell *)arg1 baseCellCoord:(struct TSUModelCellCoord)arg2 tableUID:(const struct TSKUIDStruct *)arg3;
 @end
 

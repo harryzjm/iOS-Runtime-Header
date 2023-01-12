@@ -8,7 +8,7 @@
 
 @interface _TtC15MediaFoundation15EndOfQueueState
 {
-    MISSING_TYPE *reason;
+    MISSING_TYPE *endOfQueueReason;
 }
 
 @end

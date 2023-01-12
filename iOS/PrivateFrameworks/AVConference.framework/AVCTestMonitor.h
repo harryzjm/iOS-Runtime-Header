@@ -14,12 +14,13 @@
     id _delegate;
     NSObject<OS_dispatch_queue> *_delegateNotificationQueue;
     AVConferenceXPCClient *_connection;
+    unsigned int _reportToken;
 }
 
+- (void)setEnableAudioPowerSpectrumReport:(_Bool)arg1;
 - (void)setEmulatedNetworkConfigurationPath:(id)arg1;
 - (void)setForcedCapBitrate:(int)arg1;
 - (void)setForcedTargetBitrate:(int)arg1;
-- (void)setCannedReplayPath:(id)arg1;
 - (void)setEmulatedRxPLR:(double)arg1;
 - (void)setEnableOneToOneMode:(_Bool)arg1;
 - (void)setEnableLoopbackInterface:(_Bool)arg1;

@@ -28,6 +28,7 @@
     DMFCommunicationPolicyMonitor *_communicationPolicyMonitor;
     DMFApplicationPolicyMonitor *_thirdPartyApplicationPolicyMonitor;
     NSString *_bundleIdentifier;
+    NSString *_processName;
     long long _generalScreenTimePolicy;
     long long _whileLimitedPolicy;
     unsigned long long _currentApplicationState;
@@ -53,6 +54,7 @@
 @property unsigned long long currentApplicationState; // @synthesize currentApplicationState=_currentApplicationState;
 @property long long whileLimitedPolicy; // @synthesize whileLimitedPolicy=_whileLimitedPolicy;
 @property long long generalScreenTimePolicy; // @synthesize generalScreenTimePolicy=_generalScreenTimePolicy;
+@property(readonly, copy) NSString *processName; // @synthesize processName=_processName;
 @property(readonly) _Bool isThirdPartyBundleIdentifier; // @synthesize isThirdPartyBundleIdentifier=_isThirdPartyBundleIdentifier;
 @property(readonly, copy) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(retain) DMFApplicationPolicyMonitor *thirdPartyApplicationPolicyMonitor; // @synthesize thirdPartyApplicationPolicyMonitor=_thirdPartyApplicationPolicyMonitor;

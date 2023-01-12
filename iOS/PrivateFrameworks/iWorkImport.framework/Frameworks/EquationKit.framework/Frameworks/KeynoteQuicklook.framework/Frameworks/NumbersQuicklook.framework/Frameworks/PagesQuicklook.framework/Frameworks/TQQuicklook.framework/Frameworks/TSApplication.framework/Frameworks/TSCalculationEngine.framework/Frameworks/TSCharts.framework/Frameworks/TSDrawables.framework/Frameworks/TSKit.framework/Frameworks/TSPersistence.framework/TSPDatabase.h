@@ -20,7 +20,7 @@
 }
 
 - (void).cxx_destruct;
-- (set_713dd2e1 *)newRelationshipTargetsForSourceIdentifier:(long long)arg1 error:(id *)arg2;
+- (void *)newRelationshipTargetsForSourceIdentifier:(long long)arg1 error:(id *)arg2;
 - (_Bool)insertRelationshipWithSourceIdentifier:(long long)arg1 targetIdentifier:(long long)arg2 error:(id *)arg3;
 - (struct sqlite3_blob *)openDataStateBlobWithIdentifier:(long long)arg1 willWrite:(_Bool)arg2 error:(id *)arg3;
 - (_Bool)updateDataStateWithIdentifier:(long long)arg1 size:(int)arg2 error:(id *)arg3;
@@ -37,7 +37,7 @@
 - (id)queryObjectWithIdentifier:(long long)arg1 error:(id *)arg2;
 - (struct sqlite3_blob *)openBlobForObject:(id)arg1 error:(id *)arg2;
 - (struct sqlite3_blob *)openDataStateBlobWithIdentifier:(long long)arg1 error:(id *)arg2;
-- (set_713dd2e1 *)filterIdentifiers:(const set_713dd2e1 *)arg1 error:(id *)arg2;
+- (void *)filterIdentifiers:(const void *)arg1 error:(id *)arg2;
 - (_Bool)numberOfDatabaseObjects:(unsigned long long *)arg1 error:(id *)arg2;
 - (_Bool)lastObjectIdentifier:(long long *)arg1 error:(id *)arg2;
 - (_Bool)documentVersion:(unsigned long long *)arg1 error:(id *)arg2;

@@ -8,8 +8,12 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
+@class NSMutableArray;
+
+__attribute__((visibility("hidden")))
 @interface _MRClientUpdatesConfigurationProtobuf : PBCodable <NSCopying>
 {
+    NSMutableArray *_subscribedPlayerPaths;
     _Bool _artworkUpdates;
     _Bool _keyboardUpdates;
     _Bool _nowPlayingUpdates;
@@ -26,27 +30,14 @@
     } _has;
 }
 
-@property(nonatomic) _Bool systemEndpointUpdates; // @synthesize systemEndpointUpdates=_systemEndpointUpdates;
-@property(nonatomic) _Bool outputDeviceUpdates; // @synthesize outputDeviceUpdates=_outputDeviceUpdates;
-@property(nonatomic) _Bool keyboardUpdates; // @synthesize keyboardUpdates=_keyboardUpdates;
-@property(nonatomic) _Bool volumeUpdates; // @synthesize volumeUpdates=_volumeUpdates;
-@property(nonatomic) _Bool artworkUpdates; // @synthesize artworkUpdates=_artworkUpdates;
-@property(nonatomic) _Bool nowPlayingUpdates; // @synthesize nowPlayingUpdates=_nowPlayingUpdates;
-- (void)mergeFrom:(id)arg1;
+- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasSystemEndpointUpdates;
-@property(nonatomic) _Bool hasOutputDeviceUpdates;
-@property(nonatomic) _Bool hasKeyboardUpdates;
-@property(nonatomic) _Bool hasVolumeUpdates;
-@property(nonatomic) _Bool hasArtworkUpdates;
-@property(nonatomic) _Bool hasNowPlayingUpdates;
 
 @end
 

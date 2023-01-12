@@ -6,45 +6,63 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HMIHomePersonManager, HMIVideoAnalyzerConfiguration, NSDictionary, NSSet, NSString, NSUUID;
+#import <HomeAI/HMFLogging-Protocol.h>
+
+@class HMIAnalysisStateManager, HMIHomePersonManager, HMIVideoAnalyzerConfiguration, HMIVideoAnalyzerMutableReport, HMIVideoAnalyzerState, NSDictionary, NSSet, NSString, NSUUID;
 @protocol HMIVideoAnalyzerDelegate;
 
-@interface HMIVideoAnalyzer : HMFObject
+@interface HMIVideoAnalyzer : HMFObject <HMFLogging>
 {
     id <HMIVideoAnalyzerDelegate> _delegate;
     NSUUID *_identifier;
     HMIHomePersonManager *_homePersonManager;
+    HMIAnalysisStateManager *_analysisStateManager;
     NSSet *_externalPersonManagers;
     unsigned long long _status;
-    HMIVideoAnalyzerConfiguration *_configuration;
     NSDictionary *_options;
+    HMIVideoAnalyzerConfiguration *_configuration;
+    HMIVideoAnalyzerState *_state;
+    HMIVideoAnalyzerMutableReport *_report;
 }
 
-+ (id)analyzerWithConfiguration:(id)arg1 identifier:(id)arg2 legacy:(_Bool)arg3 remote:(_Bool)arg4 error:(id *)arg5;
++ (id)logCategory;
++ (id)analyzerWithConfiguration:(id)arg1 identifier:(id)arg2 remote:(_Bool)arg3 error:(id *)arg4;
 + (id)analyzerWithConfiguration:(id)arg1 identifier:(id)arg2 error:(id *)arg3;
 + (id)analyzerWithOptions:(id)arg1 error:(id *)arg2;
 + (id)allowedClasses;
 - (void).cxx_destruct;
-@property(readonly, copy) NSDictionary *options; // @synthesize options=_options;
+@property(readonly) HMIVideoAnalyzerMutableReport *report; // @synthesize report=_report;
+@property(readonly) HMIVideoAnalyzerState *state; // @synthesize state=_state;
 @property(readonly, copy) HMIVideoAnalyzerConfiguration *configuration; // @synthesize configuration=_configuration;
+@property(readonly, copy) NSDictionary *options; // @synthesize options=_options;
 @property(readonly) unsigned long long status; // @synthesize status=_status;
 @property(retain) NSSet *externalPersonManagers; // @synthesize externalPersonManagers=_externalPersonManagers;
+@property(retain) HMIAnalysisStateManager *analysisStateManager; // @synthesize analysisStateManager=_analysisStateManager;
 @property(retain) HMIHomePersonManager *homePersonManager; // @synthesize homePersonManager=_homePersonManager;
 @property(readonly) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property __weak id <HMIVideoAnalyzerDelegate> delegate; // @synthesize delegate=_delegate;
+- (id)logIdentifier;
+- (id)finalizeFragmentResult:(id)arg1 homePersonManager:(id)arg2 analysisStateManager:(id)arg3;
 @property(nonatomic) double analysisFPS;
 @property(nonatomic) _Bool monitored;
+@property(nonatomic) _Bool encode;
 - (void)cancel;
+- (void)finishWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)finish;
 - (void)flushAsync;
 - (void)flush;
 - (void)analyzeFragment:(id)arg1 configuration:(id)arg2;
 @property(readonly) double delay;
-@property(readonly) NSString *stateDescription;
 - (void)handleMessageWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)handleAssetData:(id)arg1 withOptions:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)handleAssetData:(id)arg1 withOptions:(id)arg2 errorHandler:(CDUnknownBlockType)arg3;
+- (void)dealloc;
 - (id)initWithConfiguration:(id)arg1 identifier:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

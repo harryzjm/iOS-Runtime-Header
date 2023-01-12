@@ -18,6 +18,7 @@
 }
 
 + (id)keyForSettingKind:(CDStruct_597dd055)arg1;
++ (id)configurationForRecord:(id)arg1 coreModel:(id)arg2;
 + (id)configurationFromAvatar:(id)arg1 coreModel:(id)arg2;
 + (id)configurationFromAvatar:(id)arg1;
 + (id)configurationColorPresetWithColorPreset:(id)arg1 settingKind:(CDStruct_597dd055)arg2 coreModel:(id)arg3;

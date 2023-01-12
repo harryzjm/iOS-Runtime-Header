@@ -6,19 +6,19 @@
 
 #import <UIKit/UIImageView.h>
 
-@class UIView;
-
 @interface PXFocusableUIImageView : UIImageView
 {
-    UIView *_overlayView;
     _Bool _allowsFocus;
+    _Bool _drawsFocusRing;
+    _Bool _reusable;
 }
 
-- (void).cxx_destruct;
+@property(nonatomic) _Bool reusable; // @synthesize reusable=_reusable;
+@property(nonatomic) _Bool drawsFocusRing; // @synthesize drawsFocusRing=_drawsFocusRing;
 @property(nonatomic) _Bool allowsFocus; // @synthesize allowsFocus=_allowsFocus;
-- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
+- (id)focusEffect;
 - (_Bool)canBecomeFocused;
-- (void)layoutSubviews;
+- (_Bool)_isEligibleForFocusInteraction;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

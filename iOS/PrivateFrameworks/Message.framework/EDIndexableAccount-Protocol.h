@@ -6,10 +6,11 @@
 
 #import <Message/ECMailAccount-Protocol.h>
 
-@class NSString;
+@class ECAccount, NSString;
 
 @protocol EDIndexableAccount <ECMailAccount>
 + (NSString *)csAccountTypeString;
+@property(readonly, nonatomic) ECAccount *baseAccount;
 @property(readonly, nonatomic, getter=isManaged) _Bool managed;
 @end
 

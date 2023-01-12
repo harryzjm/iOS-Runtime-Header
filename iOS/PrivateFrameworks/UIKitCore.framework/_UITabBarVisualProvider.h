@@ -9,7 +9,6 @@
 @class NSString, UITabBar;
 @protocol _UIBarAppearanceChangeObserver;
 
-__attribute__((visibility("hidden")))
 @interface _UITabBarVisualProvider : NSObject
 {
     UITabBar *_tabBar;
@@ -37,6 +36,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double minimumWidthForHorizontalLayout;
 @property(readonly, nonatomic) id <_UIBarAppearanceChangeObserver> appearanceObserver;
 @property(nonatomic) _Bool useModernAppearance;
+@property(nonatomic) double backgroundTransitionProgress; // @dynamic backgroundTransitionProgress;
+- (void)setBackgroundTransitionProgress:(double)arg1 forceUpdate:(_Bool)arg2;
 - (void)updateBackgroundGroupName;
 - (void)changeLayout;
 - (void)changeAppearance;

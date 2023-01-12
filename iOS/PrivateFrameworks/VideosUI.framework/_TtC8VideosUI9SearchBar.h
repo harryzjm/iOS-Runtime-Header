@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (_Bool)_shouldSendContentChangedNotificationsIfOnlyMarkedTextChanged;
 - (void)setShowsScopeBar:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)layoutSubviews;
 - (id)initWithCoder:(id)arg1;

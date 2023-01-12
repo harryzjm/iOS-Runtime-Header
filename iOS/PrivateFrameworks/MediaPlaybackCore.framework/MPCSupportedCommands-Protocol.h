@@ -6,7 +6,10 @@
 
 #import <MediaPlaybackCore/NSObject-Protocol.h>
 
+@class NSDictionary;
+
 @protocol MPCSupportedCommands <NSObject>
+- (NSDictionary *)allCommandInfos;
 - (void *)commandInfoForCommand:(unsigned int)arg1;
 @end
 

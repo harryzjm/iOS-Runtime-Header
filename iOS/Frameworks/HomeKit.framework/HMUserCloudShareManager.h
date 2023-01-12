@@ -37,7 +37,7 @@
 - (void)_handleDidReceiveShare:(id)arg1;
 - (void)__registerForMessages;
 - (void)configure;
-- (void)dealloc;
+- (void)_unconfigure;
 - (id)initWithContext:(id)arg1;
 - (id)init;
 

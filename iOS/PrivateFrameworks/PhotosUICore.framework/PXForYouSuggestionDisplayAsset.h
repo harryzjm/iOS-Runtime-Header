@@ -8,7 +8,7 @@
 
 #import <PhotosUICore/PXPhotoKitAdjustedDisplayAsset-Protocol.h>
 
-@class NSDate, NSNumber, NSString, PHAsset;
+@class NSData, NSDate, NSNumber, NSString, PHAsset;
 @protocol PXDisplayAsset, PXDisplaySuggestion;
 
 @interface PXForYouSuggestionDisplayAsset : NSObject <PXPhotoKitAdjustedDisplayAsset>
@@ -36,6 +36,9 @@
 @property(readonly, nonatomic) NSString *uuid;
 - (struct CGRect)bestCropRectForAspectRatio:(double)arg1 verticalContentMode:(long long)arg2 cropMode:(long long)arg3;
 - (struct CGRect)bestCropRectForAspectRatio:(double)arg1;
+@property(readonly, nonatomic) struct CGRect faceAreaRect;
+@property(readonly, nonatomic) struct CGRect acceptableCropRect;
+@property(readonly, nonatomic) struct CGRect preferredCropRect;
 @property(readonly, nonatomic) double aspectRatio;
 @property(readonly, nonatomic) double duration;
 @property(readonly, nonatomic) long long playbackVariation;
@@ -65,10 +68,12 @@
 @property(readonly, nonatomic) unsigned long long burstSelectionTypes;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) NSData *fetchColorNormalizationData;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) NSNumber *hdrGain;
 @property(readonly, nonatomic) NSDate *importDate;
 @property(readonly, nonatomic) _Bool isAutoPlaybackEligibilityEstimated;
+@property(readonly, nonatomic) CDStruct_1b6d18a9 livePhotoVideoDuration;
 @property(readonly, nonatomic) NSString *localizedGeoDescription;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) unsigned long long thumbnailVersion;

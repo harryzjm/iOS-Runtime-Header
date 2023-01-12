@@ -7,13 +7,16 @@
 #import <objc/NSObject.h>
 
 #import <HealthDaemon/HDFeatureAvailabilityExtension-Protocol.h>
+#import <HealthDaemon/HDFeatureSettingsManagerObserver-Protocol.h>
 #import <HealthDaemon/HDOnboardingCompletionManagerObserver-Protocol.h>
 #import <HealthDaemon/HDPairedDeviceCapabilityProvidingDelegate-Protocol.h>
+#import <HealthDaemon/HDRegionAvailabilityProvidingDelegate-Protocol.h>
+#import <HealthDaemon/HDRemoteFeatureAvailabilityProvidingDelegate-Protocol.h>
 
-@class HDProfile, HKObserverSet, NSSet, NSString, NSUUID;
-@protocol HDPairedDeviceCapabilityProviding, OS_dispatch_queue, OS_os_log;
+@class HDFeatureAvailabilityOnboardingEligibilityDeterminer, HDProfile, HKFeatureAvailabilityRequirementSet, HKObserverSet, NSString, NSUUID;
+@protocol HDPairedDeviceCapabilityProviding, HDPairedFeatureAttributesProviding, HDRegionAvailabilityProviding, HDRemoteFeatureAvailabilityProviding, OS_dispatch_queue, OS_os_log;
 
-@interface HDFeatureAvailabilityManager : NSObject <HDOnboardingCompletionManagerObserver, HDPairedDeviceCapabilityProvidingDelegate, HDFeatureAvailabilityExtension>
+@interface HDFeatureAvailabilityManager : NSObject <HDFeatureSettingsManagerObserver, HDOnboardingCompletionManagerObserver, HDPairedDeviceCapabilityProvidingDelegate, HDRegionAvailabilityProvidingDelegate, HDRemoteFeatureAvailabilityProvidingDelegate, HDFeatureAvailabilityExtension>
 {
     HDProfile *_profile;
     NSObject<OS_os_log> *_loggingCategory;
@@ -21,41 +24,61 @@
     long long _currentOnboardingVersion;
     NSUUID *_pairedDeviceCapability;
     id <HDPairedDeviceCapabilityProviding> _pairedDeviceCapabilityProvider;
+    id <HDPairedFeatureAttributesProviding> _pairedFeatureAttributesProvider;
+    id <HDRegionAvailabilityProviding> _regionAvailabilityProvider;
+    id <HDRemoteFeatureAvailabilityProviding> _remoteAvailabilityProvider;
+    HDFeatureAvailabilityOnboardingEligibilityDeterminer *_onboardingEligibilityDeterminer;
+    HKFeatureAvailabilityRequirementSet *_requirements;
     HKObserverSet *_observers;
-    NSSet *_allowedCountryCodes;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long currentOnboardingVersion; // @synthesize currentOnboardingVersion=_currentOnboardingVersion;
 @property(readonly, copy, nonatomic) NSString *featureIdentifier; // @synthesize featureIdentifier=_featureIdentifier;
-- (void)unitTest_updateAllowedCountryCodes:(id)arg1;
+- (void)remoteFeatureAvailabilityProviderDidUpdate:(id)arg1;
+- (void)regionAvailabilityProvidingDidUpdate:(id)arg1;
 - (void)pairedDeviceCapabilitiesDidUpdate:(id)arg1;
+- (void)featureSettingsManager:(id)arg1 didUpdateSettingsForFeatureIdentifier:(id)arg2;
 - (void)onboardingCompletionManager:(id)arg1 didUpdateOnboardingCompletionsForFeatureIdentifier:(id)arg2;
 - (void)unregisterObserver:(id)arg1;
 - (void)registerObserver:(id)arg1 queue:(id)arg2;
-- (id)deviceForPairingID:(id)arg1;
 - (void)resetOnboardingWithCompletion:(CDUnknownBlockType)arg1;
-- (void)setCurrentOnboardingVersionCompletedForCountryCode:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)isFeatureCapabilitySupportedOnDevice:(id)arg1 error:(id *)arg2;
+- (void)removeFeatureSettingValueForKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setFeatureSettingString:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setFeatureSettingNumber:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setFeatureSettingData:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)saveOnboardingCompletion:(id)arg1 settings:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setCurrentOnboardingVersionCompletedForCountryCode:(id)arg1 countryCodeProvenance:(long long)arg2 date:(id)arg3 settings:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (id)regionAvailabilityWithError:(id *)arg1;
+- (id)featureAvailabilityRequirementsWithError:(id *)arg1;
+- (id)pairedFeatureAttributesWithError:(id *)arg1;
 - (id)isFeatureCapabilitySupportedOnActivePairedDeviceWithError:(id *)arg1;
-- (id)onboardedCountryCodeSupportedStateForDevice:(id)arg1 error:(id *)arg2;
 - (id)onboardedCountryCodeSupportedStateWithError:(id *)arg1;
-- (id)canCompleteOnboardingForCountryCode:(id)arg1 device:(id)arg2 error:(id *)arg3;
+- (id)onboardingEligibilityForCountryCode:(id)arg1 error:(id *)arg2;
 - (id)canCompleteOnboardingForCountryCode:(id)arg1 error:(id *)arg2;
-- (_Bool)_canCompleteOnboardingForCountryCode:(id)arg1;
-- (id)_onboardingCompletionsForLowestVersionWithError:(id *)arg1;
-- (id)_onboardingCompletionsForHighestVersionWithError:(id *)arg1;
 - (id)earliestDateLowestOnboardingVersionCompletedWithError:(id *)arg1;
 - (void)isCurrentOnboardingVersionCompletedWithCompletion:(CDUnknownBlockType)arg1;
 - (id)isCurrentOnboardingVersionCompletedWithError:(id *)arg1;
 - (id)highestOnboardingVersionCompletedWithError:(id *)arg1;
+- (void)getFeatureOnboardingRecordWithCompletion:(CDUnknownBlockType)arg1;
+- (id)featureOnboardingRecordWithError:(id *)arg1;
 - (void)dealloc;
-- (id)description;
-- (id)initWithProfile:(id)arg1 featureIdentifier:(id)arg2 currentOnboardingVersion:(long long)arg3 pairedDeviceCapability:(id)arg4 allowedCountryCodes:(id)arg5 loggingCategory:(id)arg6 pairedDeviceCapabilityProvider:(id)arg7;
-- (id)initWithProfile:(id)arg1 featureIdentifier:(id)arg2 currentOnboardingVersion:(long long)arg3 allowedCountryCodes:(id)arg4 pairedDeviceCapability:(id)arg5 loggingCategory:(id)arg6;
-- (id)initWithProfile:(id)arg1 featureIdentifier:(id)arg2 currentOnboardingVersion:(long long)arg3 allowedCountryCodes:(id)arg4 loggingCategory:(id)arg5;
+@property(readonly, copy) NSString *description;
+- (id)initWithProfile:(id)arg1 featureIdentifier:(id)arg2 availabilityRequirements:(id)arg3 currentOnboardingVersion:(long long)arg4 pairedDeviceCapability:(id)arg5 pairedDeviceCapabilityProvider:(id)arg6 pairedFeatureAttributesProvider:(id)arg7 regionAvailabilityProvider:(id)arg8 remoteAvailabilityProvider:(id)arg9 onboardingEligibilityDeterminer:(id)arg10 loggingCategory:(id)arg11;
+- (id)initWithProfile:(id)arg1 featureIdentifier:(id)arg2 availabilityRequirements:(id)arg3 currentOnboardingVersion:(long long)arg4 pairedDeviceCapability:(id)arg5 pairedDeviceCapabilityProvider:(id)arg6 pairedFeatureAttributesProvider:(id)arg7 regionAvailabilityProvider:(id)arg8 remoteAvailabilityProvider:(id)arg9 loggingCategory:(id)arg10;
+- (id)initWithProfile:(id)arg1 featureIdentifier:(id)arg2 currentOnboardingVersion:(long long)arg3 pairedDeviceCapability:(id)arg4 regionAvailabilityProvider:(id)arg5 loggingCategory:(id)arg6 pairedDeviceCapabilityProvider:(id)arg7 remoteAvailabilityProvider:(id)arg8 availabilityRequirements:(id)arg9;
+- (id)initWithProfile:(id)arg1 featureIdentifier:(id)arg2 currentOnboardingVersion:(long long)arg3 pairedDeviceCapability:(id)arg4 regionAvailabilityProvider:(id)arg5 loggingCategory:(id)arg6 pairedDeviceCapabilityProvider:(id)arg7 remoteAvailabilityProvider:(id)arg8;
+- (id)initWithProfile:(id)arg1 featureIdentifier:(id)arg2 currentOnboardingVersion:(long long)arg3 pairedDeviceCapability:(id)arg4 regionAvailabilityProvider:(id)arg5 loggingCategory:(id)arg6 pairedDeviceCapabilityProvider:(id)arg7;
+- (id)initWithProfile:(id)arg1 featureIdentifier:(id)arg2 currentOnboardingVersion:(long long)arg3 pairedDeviceCapability:(id)arg4 regionAvailabilityProvider:(id)arg5 loggingCategory:(id)arg6 remoteAvailabilityProvider:(id)arg7 availabilityRequirements:(id)arg8;
+- (id)initWithProfile:(id)arg1 featureIdentifier:(id)arg2 currentOnboardingVersion:(long long)arg3 pairedDeviceCapability:(id)arg4 regionAvailabilityProvider:(id)arg5 loggingCategory:(id)arg6 remoteAvailabilityProvider:(id)arg7;
+- (id)initWithProfile:(id)arg1 featureIdentifier:(id)arg2 currentOnboardingVersion:(long long)arg3 regionAvailabilityProvider:(id)arg4 loggingCategory:(id)arg5;
 - (id)initWithProfile:(id)arg1 featureIdentifier:(id)arg2 currentOnboardingVersion:(long long)arg3 loggingCategory:(id)arg4;
-- (id)initWithProfile:(id)arg1 featureIdentifier:(id)arg2 currentOnboardingVersion:(long long)arg3 pairedDeviceCapability:(id)arg4 loggingCategory:(id)arg5;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

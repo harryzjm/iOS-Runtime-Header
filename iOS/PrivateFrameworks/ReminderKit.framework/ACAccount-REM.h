@@ -7,6 +7,7 @@
 #import <Accounts/ACAccount.h>
 
 @interface ACAccount (REM)
+- (_Bool)rem_eligibleForAutoCloudKitMigration;
 - (_Bool)rem_isPrimaryAppleAccount;
 - (_Bool)rem_isRemindersMigrated;
 - (_Bool)rem_isManagedAppleID;

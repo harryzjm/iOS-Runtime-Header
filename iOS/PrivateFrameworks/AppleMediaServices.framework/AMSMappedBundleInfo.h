@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 + (id)_clientVersionFromProcessInfo:(id)arg1 clientName:(id)arg2;
 + (id)_clientNameFromProcessInfo:(id)arg1;
 + (id)_accountMediaTypeForClientName:(id)arg1 bundleID:(id)arg2;
++ (id)bundleInfoForMobileAppStoreWithProcessInfo:(id)arg1;
 + (id)currentBundleInfo;
 + (id)bundleInfoForProcessInfo:(id)arg1;
 + (id)accountMediaTypeInfoForProcessInfo:(id)arg1;

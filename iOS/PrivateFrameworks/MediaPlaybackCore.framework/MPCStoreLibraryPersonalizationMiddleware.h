@@ -11,6 +11,7 @@
 
 @class MPSectionedCollection, NSArray, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPCStoreLibraryPersonalizationMiddleware : NSObject <MPCPlayerResponseBuilder, MPMiddleware>
 {
     NSArray *_invalidationObservers;

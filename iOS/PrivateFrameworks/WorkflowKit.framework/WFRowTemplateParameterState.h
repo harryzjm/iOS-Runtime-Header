@@ -8,7 +8,7 @@
 
 #import <WorkflowKit/WFParameterState-Protocol.h>
 
-@class NSArray, NSString, WFBooleanSubstitutableState, WFByteCountUnitSubstitutableState, WFCalendarUnitSubstitutableState, WFContentProperty, WFDateSubstitutableState, WFNumberStringSubstitutableState, WFVariableStringParameterState, WFVariableSubstitutableParameterState;
+@class NSArray, NSString, NSUUID, WFBooleanSubstitutableState, WFByteCountUnitSubstitutableState, WFCalendarUnitSubstitutableState, WFContentProperty, WFDateSubstitutableState, WFNumberStringSubstitutableState, WFVariableStringParameterState, WFVariableSubstitutableParameterState;
 
 @interface WFRowTemplateParameterState : NSObject <WFParameterState>
 {
@@ -17,6 +17,7 @@
     _Bool _removable;
     _Bool _bounded;
     _Bool _hidden;
+    NSUUID *_identity;
     Class _contentItemClass;
     WFContentProperty *_contentProperty;
     NSArray *_contentProperties;
@@ -53,6 +54,7 @@
 @property(readonly, copy, nonatomic) NSArray *contentProperties; // @synthesize contentProperties=_contentProperties;
 @property(readonly, nonatomic) WFContentProperty *contentProperty; // @synthesize contentProperty=_contentProperty;
 @property(readonly, nonatomic) Class contentItemClass; // @synthesize contentItemClass=_contentItemClass;
+@property(readonly, nonatomic) NSUUID *identity; // @synthesize identity=_identity;
 - (id)stateBySettingAnotherDateValue:(id)arg1;
 - (id)stateBySettingDateValue:(id)arg1;
 - (id)stateBySettingByteCountUnitValue:(id)arg1;

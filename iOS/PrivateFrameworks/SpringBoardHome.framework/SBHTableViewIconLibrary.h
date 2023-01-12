@@ -31,6 +31,7 @@
 - (void)executeQuery:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
+- (void)dealloc;
 - (id)initWithIconModel:(id)arg1 queryEngine:(id)arg2;
 - (id)initWithIconModel:(id)arg1;
 

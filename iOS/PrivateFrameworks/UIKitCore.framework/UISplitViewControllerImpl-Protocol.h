@@ -34,7 +34,8 @@
 - (void)decodeRestorableStateWithCoder:(NSCoder *)arg1;
 - (void)encodeRestorableStateWithCoder:(NSCoder *)arg1;
 - (NSArray *)_allContainedViewControllers;
-- (UIResponder *)_deepestUnambiguousResponder;
+- (UIViewController *)_nextVisibleViewControllerForResponderAfterChildViewController:(UIViewController *)arg1;
+- (UIResponder *)_deepestActionResponder;
 - (_Bool)_disableAutomaticKeyboardBehavior;
 - (UIResponder *)_primaryContentResponder;
 - (void)_didChangeToFirstResponder:(UIResponder *)arg1;
@@ -63,6 +64,7 @@
 - (void)willRotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (_Bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (UIViewController *)childViewControllerForStatusBarStyle;
+- (long long)preferredCenterStatusBarStyle;
 - (long long)preferredTrailingStatusBarStyle;
 - (long long)preferredLeadingStatusBarStyle;
 - (_Bool)shouldUpdateFocusInContext:(UIFocusUpdateContext *)arg1;

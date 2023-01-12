@@ -4,17 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface SBTitledHomeScreenButton
+#import <SpringBoardHome/UIPointerInteractionDelegate-Protocol.h>
+
+@class NSString;
+
+@interface SBTitledHomeScreenButton <UIPointerInteractionDelegate>
 {
+    long long _type;
+    NSString *_content;
     struct CGSize _preferredContentFittingSize;
+    struct SBTitledHomeScreenButtonMetrics _metrics;
 }
 
-+ (id)contentImageWithTitle:(id)arg1;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *content; // @synthesize content=_content;
+@property(nonatomic) struct SBTitledHomeScreenButtonMetrics metrics; // @synthesize metrics=_metrics;
+@property(nonatomic) long long type; // @synthesize type=_type;
 @property(nonatomic) struct CGSize preferredContentFittingSize; // @synthesize preferredContentFittingSize=_preferredContentFittingSize;
-- (id)initWithFrame:(struct CGRect)arg1 backgroundView:(id)arg2;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)defaultContentImage;
+- (id)contentImageWithTitle:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (struct CGSize)_preferredContentFittingSize;
+- (id)initWithFrame:(struct CGRect)arg1 backgroundView:(id)arg2 type:(long long)arg3 content:(id)arg4;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

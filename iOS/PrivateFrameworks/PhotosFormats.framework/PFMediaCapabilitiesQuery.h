@@ -20,7 +20,8 @@
 - (void)addTranscodeChoiceWithOptions:(id)arg1;
 - (void)addVendorSpecificInformation;
 - (void)addHEIFContainerInformationToDictionary:(id)arg1;
-- (void)addHEVCCodecInformationToDictionary:(id)arg1;
+- (void)addCodecSupportInformationToDictionary:(id)arg1;
+- (void)addVersion1And2HEVCCodecInformationToDictionary:(id)arg1;
 - (void)addCodecInformation;
 - (void)addVersion;
 - (void)gatherCapabilitiesWithOptions:(id)arg1;

@@ -10,11 +10,13 @@
 {
 }
 
++ (id)internalStatusForKey:(id)arg1 defaultValue:(id)arg2;
 + (_Bool)permissiveURLSchemes;
 + (_Bool)useHTTPLogging;
 + (id)bootstrapURL;
 + (_Bool)boolForDefaultsKey:(id)arg1;
 + (id)stringForDefaultsKey:(id)arg1;
++ (id)dictionaryForDefaultsKey:(id)arg1;
 + (id)defaultOverrideForKey:(id)arg1;
 
 @end

@@ -18,6 +18,7 @@
 - (id)verificationDataSamplesFromMessageIDTransactionIDDictionary:(id)arg1;
 - (id)_verificationDataFromMessage:(id)arg1 messageIDTransactionIDDictionary:(id)arg2;
 - (void)attachmentItemMetadataForAttachmentID:(id)arg1 messagePersistentID:(id)arg2 name:(id)arg3 mailboxID:(long long)arg4 result:(CDUnknownBlockType)arg5;
+- (void)attachmentItemMetadataForAttachmentID:(id)arg1 attachmentPersistentID:(id)arg2 messagePersistentID:(id)arg3 name:(id)arg4 mailboxID:(long long)arg5 result:(CDUnknownBlockType)arg6;
 - (id)searchableIndexItemsFromMessages:(id)arg1 type:(long long)arg2;
 - (id)messagesWhere:(id)arg1 sortedBy:(id)arg2 limit:(long long)arg3;
 - (id)additionalFilterClause;

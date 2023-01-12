@@ -17,17 +17,19 @@
     NSString *_lastName;
     PKFamilyMember *_familyMember;
     PKPeerPaymentPreferences *_updatedPreferences;
+    long long _setupType;
     id <PKPeerPaymentAssociatedAccountSetupDelegate> _associatedAccountSetupDelegate;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id <PKPeerPaymentAssociatedAccountSetupDelegate> associatedAccountSetupDelegate; // @synthesize associatedAccountSetupDelegate=_associatedAccountSetupDelegate;
+@property(readonly, nonatomic) long long setupType; // @synthesize setupType=_setupType;
 @property(retain, nonatomic) PKPeerPaymentPreferences *updatedPreferences; // @synthesize updatedPreferences=_updatedPreferences;
 @property(readonly, nonatomic) PKFamilyMember *familyMember; // @synthesize familyMember=_familyMember;
 @property(copy, nonatomic) NSString *lastName; // @synthesize lastName=_lastName;
 @property(copy, nonatomic) NSString *firstName; // @synthesize firstName=_firstName;
 - (unsigned long long)peerPaymentSetupConfigurationType;
-- (id)initWithFamilyMember:(id)arg1 associatedAccountSetupDelegate:(id)arg2;
+- (id)initWithFamilyMember:(id)arg1 associatedAccountSetupDelegate:(id)arg2 setupType:(long long)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

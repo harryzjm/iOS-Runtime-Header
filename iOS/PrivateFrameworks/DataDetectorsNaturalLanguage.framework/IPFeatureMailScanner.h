@@ -26,7 +26,7 @@
 - (id)emailParticipantNames;
 - (double)confidenceForEvent:(id)arg1 baseConfidence:(double)arg2;
 - (void)resetScanState;
-- (_Bool)isBlacklistedSender:(id)arg1;
+- (_Bool)isBannedSender:(id)arg1;
 - (void)enrichEvents:(id)arg1 messageUnits:(id)arg2 dateInSubject:(id)arg3 dataFeatures:(id)arg4;
 - (void)processScanOfMessageUnit:(id)arg1;
 - (void)doSynchronousScanWithCompletionHandler:(CDUnknownBlockType)arg1;

@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <GameCenterUI/GKComposeControllerDelegate-Protocol.h>
+
 @class GKChallenge, NSArray, NSLayoutConstraint, NSString, UIButton, UILabel, UISearchBar, UITextField, UIView, UIViewController;
 
-@interface GKChallengePlayerPickerViewController
+@interface GKChallengePlayerPickerViewController <GKComposeControllerDelegate>
 {
     _Bool _shouldIgnoreClearSelection;
     _Bool _shouldApplyInitialOffset;
@@ -80,8 +82,11 @@
 - (void)viewWillLayoutSubviews;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)adjustCustomizeMessageConstraint;
+- (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)configureFocusGuides;
+- (void)configureButtonsFocusEffect;
 - (void)viewDidLoad;
 - (id)initWithChallenge:(id)arg1 initiallySelectedPlayers:(id)arg2;
 

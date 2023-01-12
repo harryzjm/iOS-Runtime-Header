@@ -5,11 +5,13 @@
 //
 
 #import <TipsCore/TPSAnalyticsXPCServerInterface-Protocol.h>
+#import <TipsCore/TPSRecordXPCServerInterface-Protocol.h>
 
 @class NSString;
 
-@protocol TPSXPCServerInterface <TPSAnalyticsXPCServerInterface>
+@protocol TPSXPCServerInterface <TPSAnalyticsXPCServerInterface, TPSRecordXPCServerInterface>
 - (void)contentWithCompletionHandler:(void (^)(TPSContentPackage *, NSError *))arg1;
+- (oneway void)removeNotificationForIdentifier:(NSString *)arg1;
 - (oneway void)contentViewedForIdentifier:(NSString *)arg1;
 - (oneway void)tipsAppActive;
 - (oneway void)tipNotificationInteractedByUser;

@@ -15,12 +15,15 @@
 {
     id <CRKTransportProviding> mBaseProvider;
     NSURL *_classroomAppBundleURL;
+    NSString *_instructordBundleIdentifier;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *instructordBundleIdentifier; // @synthesize instructordBundleIdentifier=_instructordBundleIdentifier;
 @property(retain, nonatomic) NSURL *classroomAppBundleURL; // @synthesize classroomAppBundleURL=_classroomAppBundleURL;
 - (void)fetchTransportWithCompletion:(CDUnknownBlockType)arg1;
 - (id)makeProviderForCurrentPlatformWithStudentDaemonProxy:(id)arg1;
+- (id)initWithStudentDaemonProxy:(id)arg1 classroomAppBundleURL:(id)arg2 instructordBundleIdentifier:(id)arg3;
 - (id)initWithStudentDaemonProxy:(id)arg1 classroomAppBundleURL:(id)arg2;
 - (id)initWithStudentDaemonProxy:(id)arg1;
 - (id)init;

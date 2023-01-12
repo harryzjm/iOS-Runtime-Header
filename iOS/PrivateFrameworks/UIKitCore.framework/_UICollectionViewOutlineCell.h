@@ -14,21 +14,20 @@
     UILabel *_textLabel;
     UIImageView *_imageView;
     _UICollectionViewOutlineCellDisclosureConfiguration *_disclosureConfiguration;
+    CDUnknownBlockType _disclosureWasTappedHandler;
     double _highlightCornerRadius;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool selectionFollowsTintColor; // @synthesize selectionFollowsTintColor=_selectionFollowsTintColor;
 @property(nonatomic) double highlightCornerRadius; // @synthesize highlightCornerRadius=_highlightCornerRadius;
+@property(copy, nonatomic) CDUnknownBlockType disclosureWasTappedHandler; // @synthesize disclosureWasTappedHandler=_disclosureWasTappedHandler;
 @property(copy, nonatomic) _UICollectionViewOutlineCellDisclosureConfiguration *disclosureConfiguration; // @synthesize disclosureConfiguration=_disclosureConfiguration;
 @property(nonatomic) _Bool automaticallyTogglesExpansionState; // @synthesize automaticallyTogglesExpansionState=_automaticallyTogglesExpansionState;
 @property(readonly, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property(readonly, nonatomic) UILabel *textLabel; // @synthesize textLabel=_textLabel;
 @property(retain, nonatomic) UIView *outlineContentView; // @synthesize outlineContentView=_outlineContentView;
 @property(retain, nonatomic) id identifier;
-
-// Remaining properties
-@property(copy, nonatomic) CDUnknownBlockType disclosureWasTappedHandler; // @dynamic disclosureWasTappedHandler;
 
 @end
 

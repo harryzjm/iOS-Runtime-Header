@@ -11,7 +11,7 @@
 @protocol CLLocationSmootherServerInterface <NSObject>
 
 @optional
-- (void)smoothLocations:(NSArray *)arg1 handler:(void (^)(NSArray *, NSError *))arg2;
+- (void)smoothLocations:(NSArray *)arg1 workoutActivity:(int)arg2 handler:(void (^)(NSArray *, NSError *))arg3;
 - (void)smoothLocations:(NSArray *)arg1 useType:(NSNumber *)arg2;
 @end
 

@@ -12,7 +12,7 @@
 #import <AssistantServices/AFInterstitialProviderDelegate-Protocol.h>
 #import <AssistantServices/NSXPCListenerDelegate-Protocol.h>
 
-@class AFAudioPowerUpdater, AFCallSiteInfo, AFClientConfiguration, AFClockAlarmSnapshot, AFClockTimerSnapshot, AFInterstitialProvider, AFOneArgumentSafetyBlock, AFQueue, AFWatchdogTimer, NSArray, NSError, NSMutableDictionary, NSString, NSUUID, NSXPCConnection;
+@class AFAnalytics, AFAudioPowerUpdater, AFCallSiteInfo, AFClientConfiguration, AFInstanceContext, AFInterstitialProvider, AFOneArgumentSafetyBlock, AFQueue, AFSiriClientStateManager, AFWatchdogTimer, NSArray, NSError, NSMutableDictionary, NSString, NSUUID, NSXPCConnection;
 @protocol AFAssistantUIService, AFSpeechDelegate, OS_dispatch_group, OS_dispatch_queue;
 
 @interface AFConnection : NSObject <NSXPCListenerDelegate, AFAudioPowerUpdaterDelegate, AFAccessibilityListening, AFDeviceRingerSwitchListening, AFInterstitialProviderDelegate>
@@ -23,8 +23,6 @@
     void *_clientID;
     AFCallSiteInfo *_initiationCallSiteInfo;
     NSArray *_cachedBulletins;
-    AFClockAlarmSnapshot *_cachedClockAlarmSnapshot;
-    AFClockTimerSnapshot *_cachedClockTimerSnapshot;
     NSUUID *_activeRequestUUID;
     long long _activeRequestType;
     long long _activeRequestUsefulUserResultType;
@@ -45,6 +43,7 @@
     double _activeRequestSpeechRecordingEndTimeInterval;
     double _activeRequestSpeechRecognitionTimeInterval;
     double _activeRequestInitialInterstitialBeginTimeInterval;
+    NSUUID *_activeTurnIdentifer;
     NSMutableDictionary *_replyHandlerForAceId;
     unsigned int _stateInSync:1;
     unsigned int _shouldSpeak:1;
@@ -62,6 +61,11 @@
     NSError *_lastRetryError;
     unsigned long long _pendingSpeechRequestCounter;
     NSObject<OS_dispatch_group> *_speechCallbackGroup;
+    unsigned long long _uufrID;
+    AFInstanceContext *_instanceContext;
+    AFAnalytics *_analytics;
+    AFSiriClientStateManager *_siriClientStateManager;
+    _Atomic unsigned long long _activePlaybackCount;
     id <AFAssistantUIService> _delegate;
     id <AFSpeechDelegate> _speechDelegate;
 }
@@ -71,6 +75,7 @@
 + (id)currentLanguageCode;
 + (void)stopMonitoringAvailability;
 + (_Bool)isAvailable;
++ (_Bool)isNetworkAvailable;
 + (void)beginMonitoringAvailability;
 + (_Bool)assistantIsSupported;
 + (_Bool)siriIsSupportedForLanguageCode:(id)arg1 productName:(id)arg2 productVersion:(id)arg3 error:(id *)arg4;
@@ -82,11 +87,11 @@
 @property(nonatomic) __weak id <AFSpeechDelegate> speechDelegate; // @synthesize speechDelegate=_speechDelegate;
 @property(nonatomic) __weak id <AFAssistantUIService> delegate; // @synthesize delegate=_delegate;
 - (id)acquireUserInteractionAssertion;
+- (void)_willStopRecordingWithSignpostID:(unsigned long long)arg1;
 - (void)_speechRecordingDidFailWithError:(id)arg1;
+- (void)fetchShouldSpeak:(CDUnknownBlockType)arg1;
 - (void)adviseSessionArbiterToContinueWithPreviousWinner:(_Bool)arg1;
 - (void)updateSpeechSynthesisRecord:(id)arg1;
-- (void)endUpdateOutputAudioPower;
-- (void)beginUpdateOutputAudioPowerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)stopAllAudioPlaybackRequests:(_Bool)arg1;
 - (void)stopAudioPlaybackRequest:(id)arg1 immediately:(_Bool)arg2;
 - (void)startAudioPlaybackRequest:(id)arg1 options:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
@@ -96,8 +101,6 @@
 - (void)usefulUserResultWillPresent;
 - (void)telephonyRequestCompleted;
 - (void)prepareForPhoneCall;
-- (void)setAlertContextWithClockTimerSnapshot:(id)arg1;
-- (void)setAlertContextWithClockAlarmSnapshot:(id)arg1;
 - (void)setAlertContextWithBulletins:(id)arg1;
 - (void)setOverriddenApplicationContext:(id)arg1 withContext:(id)arg2;
 - (void)setApplicationContextForApplicationInfos:(id)arg1;
@@ -156,6 +159,8 @@
 - (void)setShouldWaitForMyriad:(_Bool)arg1;
 - (void)setDeviceRingerSwitchState:(long long)arg1;
 - (void)setAccessibilityState:(id)arg1;
+- (void)setWatchAuthenticated:(_Bool)arg1;
+- (void)setAnnouncementRequestsPermittedByPresentationWhileActive:(_Bool)arg1;
 - (void)setCarDNDActive:(_Bool)arg1;
 - (void)setIsDeviceInStarkMode:(_Bool)arg1;
 - (void)setLockState:(_Bool)arg1 screenLocked:(_Bool)arg2;
@@ -164,6 +169,8 @@
 - (void)resumeInterruptedAudioPlaybackIfNeeded;
 - (void)forceAudioSessionInactiveWithOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)forceAudioSessionInactive;
+- (void)acquireAudioSessionWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)forceAudioSessionActiveWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)forceAudioSessionActiveWithOptions:(unsigned long long)arg1 reason:(long long)arg2 speechRequestOptions:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)forceAudioSessionActiveWithOptions:(unsigned long long)arg1 reason:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)forceAudioSessionActiveWithOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
@@ -183,8 +190,10 @@
 - (void)_willCancelRequest;
 - (void)_willEndSession;
 - (void)_willStartRequestWithSpeech:(_Bool)arg1 speechRequestOptions:(id)arg2 requestInfo:(id)arg3 analyticsEventProvider:(CDUnknownBlockType)arg4;
+- (_Bool)_shouldEmitUEIRequestLinkForRequestInfo:(id)arg1;
 - (void)_updateClientConfiguration;
 - (void)_updateState;
+- (void)_fetchShouldSpeak:(CDUnknownBlockType)arg1;
 - (void)_updateStateIfNotInSync;
 - (void)_extendExistingRequestTimeoutForReason:(id)arg1;
 - (void)_extendRequestTimeoutForReason:(id)arg1;
@@ -224,8 +233,8 @@
 - (void)_tellDelegateAudioPlaybackRequestDidStop:(id)arg1 error:(id)arg2;
 - (void)_tellDelegateAudioPlaybackRequestDidStart:(id)arg1;
 - (void)_tellDelegateAudioPlaybackRequestWillStart:(id)arg1;
-- (void)_tellDelegateAudioSessionDidEndInterruption:(_Bool)arg1;
-- (void)_tellDelegateAudioSessionDidBeginInterruption;
+- (void)_tellDelegateAudioSessionDidEndInterruption:(_Bool)arg1 userInfo:(id)arg2;
+- (void)_tellDelegateAudioSessionDidBeginInterruptionWithUserInfo:(id)arg1;
 - (void)_tellDelegateExtensionRequestFinishedForApplication:(id)arg1 error:(id)arg2;
 - (void)_tellDelegateExtensionRequestWillStartForApplication:(id)arg1;
 - (void)_tellDelegateCacheImage:(id)arg1;
@@ -236,8 +245,9 @@
 - (void)_tellDelegateWillStartAcousticIDRequest;
 - (void)_tellDelegateAudioSessionIDChanged:(unsigned int)arg1;
 - (void)_tellDelegateShouldSpeakChanged:(_Bool)arg1;
-- (void)_completeRequestWithUUID:(id)arg1 error:(id)arg2;
+- (void)_completeRequestWithUUID:(id)arg1 forReason:(long long)arg2 error:(id)arg3;
 - (void)_tellDelegateRequestWillStart;
+- (id)_siriClientStateManager;
 - (void)_updateSpeechEndHostTime:(unsigned long long)arg1;
 - (void)_markSpeechRecognized;
 - (void)_markIsTwoShot;
@@ -259,6 +269,7 @@
 - (void)dealloc;
 - (id)init;
 - (id)initWithTargetQueue:(id)arg1;
+- (id)initWithTargetQueue:(id)arg1 instanceContext:(id)arg2;
 - (void)broadcastCommandDictionary:(id)arg1;
 - (void)sendFeedbackToAppPreferencesPredictorForMetricsContext:(id)arg1 selectedBundleId:(id)arg2;
 - (void)requestBarrier:(CDUnknownBlockType)arg1;
@@ -266,8 +277,6 @@
 - (void)startSpeechRequestWithSpeechFileAtURL:(id)arg1;
 - (void)startUIRequest;
 - (id)_clientConfiguration;
-- (id)_cachedClockTimerSnapshot;
-- (id)_cachedClockAlarmSnapshot;
 - (id)_cachedBulletins;
 - (id)_clientServiceWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)_clientService;

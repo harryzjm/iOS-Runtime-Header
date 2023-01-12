@@ -13,6 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (void)setActive:(_Bool)arg1;
 - (_Bool)accessibilityPerformEscape;
+- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

@@ -25,7 +25,7 @@
     unsigned long long _pasteType;
 }
 
-+ (id)recordFromArchive:(const struct StructuredTextImportRecord *)arg1;
++ (id)recordFromArchive:(const void *)arg1;
 + (id)record;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool pasteWasUpdate; // @synthesize pasteWasUpdate=_pasteWasUpdate;
@@ -39,8 +39,8 @@
 @property(retain, nonatomic) NSDate *importDate; // @synthesize importDate=_importDate;
 @property(retain, nonatomic) NSURL *importSource; // @synthesize importSource=_importSource;
 @property(retain, nonatomic) TSKStructuredTextImportSettings *importSettings; // @synthesize importSettings=_importSettings;
-- (void)encodeToArchive:(struct StructuredTextImportRecord *)arg1;
-- (id)initFromArchive:(const struct StructuredTextImportRecord *)arg1;
+- (void)encodeToArchive:(void *)arg1;
+- (id)initFromArchive:(const void *)arg1;
 @property(readonly, nonatomic, getter=isReimportable) _Bool reimportable;
 @property(readonly, nonatomic, getter=isWholeTableImport) _Bool wholeTableImport;
 - (id)copyWithZone:(struct _NSZone *)arg1;

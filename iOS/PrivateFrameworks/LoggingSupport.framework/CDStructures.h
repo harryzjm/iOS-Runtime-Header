@@ -122,11 +122,12 @@ struct os_activity_create_s {
     char *_field5;
     struct timeval _field6;
     struct timezone _field7;
-    unsigned int _field8;
-    unsigned int _field9;
-    char *_field10;
-    unsigned long long _field11;
+    unsigned long long _field8;
+    unsigned long long _field9;
+    unsigned int _field10;
+    char *_field11;
     unsigned long long _field12;
+    unsigned long long _field13;
 };
 
 struct os_activity_loss_s {
@@ -137,11 +138,12 @@ struct os_activity_loss_s {
     char *_field5;
     struct timeval _field6;
     struct timezone _field7;
-    unsigned int _field8;
-    unsigned int _field9;
-    unsigned long long _field10;
+    unsigned long long _field8;
+    unsigned long long _field9;
+    unsigned int _field10;
     unsigned long long _field11;
-    unsigned int _field12;
+    unsigned long long _field12;
+    unsigned int _field13;
 };
 
 struct os_activity_statedump_s {
@@ -152,10 +154,11 @@ struct os_activity_statedump_s {
     char *_field5;
     struct timeval _field6;
     struct timezone _field7;
-    unsigned int _field8;
-    unsigned int _field9;
-    char *_field10;
-    unsigned long long _field11;
+    unsigned long long _field8;
+    unsigned long long _field9;
+    unsigned int _field10;
+    char *_field11;
+    unsigned long long _field12;
 };
 
 struct os_activity_stream_activity_s {
@@ -166,9 +169,10 @@ struct os_activity_stream_activity_s {
     char *_field5;
     struct timeval _field6;
     struct timezone _field7;
-    unsigned int _field8;
-    unsigned int _field9;
-    char *_field10;
+    unsigned long long _field8;
+    unsigned long long _field9;
+    unsigned int _field10;
+    char *_field11;
 };
 
 struct os_activity_stream_common_s {
@@ -179,8 +183,9 @@ struct os_activity_stream_common_s {
     char *_field5;
     struct timeval _field6;
     struct timezone _field7;
-    unsigned int _field8;
-    unsigned int _field9;
+    unsigned long long _field8;
+    unsigned long long _field9;
+    unsigned int _field10;
 };
 
 struct os_activity_stream_common_with_name_s {
@@ -191,9 +196,10 @@ struct os_activity_stream_common_with_name_s {
     char *_field5;
     struct timeval _field6;
     struct timezone _field7;
-    unsigned int _field8;
-    unsigned int _field9;
-    char *_field10;
+    unsigned long long _field8;
+    unsigned long long _field9;
+    unsigned int _field10;
+    char *_field11;
 };
 
 struct os_activity_stream_entry_s {
@@ -229,13 +235,14 @@ struct os_activity_timesync_s {
     char *_field5;
     struct timeval _field6;
     struct timezone _field7;
-    unsigned int _field8;
-    unsigned int _field9;
-    unsigned char _field10[16];
-    unsigned long long _field11;
+    unsigned long long _field8;
+    unsigned long long _field9;
+    unsigned int _field10;
+    unsigned char _field11[16];
     unsigned long long _field12;
     unsigned long long _field13;
-    unsigned char _field14;
+    unsigned long long _field14;
+    unsigned char _field15;
 };
 
 struct os_activity_transition_s {
@@ -246,9 +253,10 @@ struct os_activity_transition_s {
     char *_field5;
     struct timeval _field6;
     struct timezone _field7;
-    unsigned int _field8;
-    unsigned int _field9;
-    unsigned long long _field10;
+    unsigned long long _field8;
+    unsigned long long _field9;
+    unsigned int _field10;
+    unsigned long long _field11;
 };
 
 struct os_activity_useraction_s {
@@ -259,10 +267,11 @@ struct os_activity_useraction_s {
     char *_field5;
     struct timeval _field6;
     struct timezone _field7;
-    unsigned int _field8;
-    unsigned int _field9;
-    char *_field10;
-    _Bool _field11;
+    unsigned long long _field8;
+    unsigned long long _field9;
+    unsigned int _field10;
+    char *_field11;
+    _Bool _field12;
 };
 
 struct os_log_backtrace_frame_s;
@@ -318,23 +327,24 @@ struct os_log_message_s {
     char *_field5;
     struct timeval _field6;
     struct timezone _field7;
-    unsigned int _field8;
-    unsigned int _field9;
-    char *_field10;
+    unsigned long long _field8;
+    unsigned long long _field9;
+    unsigned int _field10;
     char *_field11;
-    unsigned long long _field12;
-    char *_field13;
-    unsigned long long _field14;
-    char *_field15;
+    char *_field12;
+    unsigned long long _field13;
+    char *_field14;
+    unsigned long long _field15;
     char *_field16;
-    unsigned int _field17;
-    unsigned char _field18;
-    _Bool _field19;
-    unsigned long long _field20;
-    char *_field21;
-    unsigned char _field22;
+    char *_field17;
+    unsigned int _field18;
+    unsigned char _field19;
+    _Bool _field20;
+    unsigned long long _field21;
+    char *_field22;
     unsigned char _field23;
-    char *_field24;
+    unsigned char _field24;
+    char *_field25;
 };
 
 struct os_procinfo_map_s;
@@ -381,12 +391,13 @@ struct os_trace_message_s {
     char *_field5;
     struct timeval _field6;
     struct timezone _field7;
-    unsigned int _field8;
-    unsigned int _field9;
-    char *_field10;
-    void *_field11;
-    unsigned long long _field12;
-    id _field13;
+    unsigned long long _field8;
+    unsigned long long _field9;
+    unsigned int _field10;
+    char *_field11;
+    void *_field12;
+    unsigned long long _field13;
+    id _field14;
 };
 
 struct os_trace_str_map_s;
@@ -509,8 +520,23 @@ struct tracev3_chunk_s {
         struct tracev3_chunk_oversize_s _field7;
         struct tracev3_chunk_oversize_old_s _field8;
         struct tracev3_chunk_statedump_s _field9;
-        unsigned char _field10[0];
+        struct tracev3_chunk_simple_s _field10;
+        unsigned char _field11[0];
     } _field2;
+};
+
+struct tracev3_chunk_simple_s {
+    unsigned long long _field1;
+    unsigned int _field2;
+    unsigned char _field3;
+    unsigned char _field4;
+    unsigned char _field5[2];
+    unsigned long long _field6;
+    unsigned long long _field7;
+    unsigned long long _field8;
+    unsigned char _field9[16];
+    unsigned char _field10[16];
+    unsigned char _field11[0];
 };
 
 struct tracev3_chunk_statedump_s {
@@ -555,15 +581,15 @@ struct uuiddb_dsc_header_s;
 struct uuiddb_dsc_map_s {
     _Atomic struct uuiddb_dsc_map_s *_field1;
     struct uuiddb_dsc_header_s *_field2;
-    struct uuiddb_dsc_range_entry_s *_field3;
-    struct uuiddb_dsc_uuid_entry_s *_field4;
+    struct uuiddb_dsc_range_entry_v2_s *_field3;
+    struct uuiddb_dsc_uuid_entry_v2_s *_field4;
     unsigned char _field5[16];
     unsigned int _field6;
 };
 
-struct uuiddb_dsc_range_entry_s;
+struct uuiddb_dsc_range_entry_v2_s;
 
-struct uuiddb_dsc_uuid_entry_s;
+struct uuiddb_dsc_uuid_entry_v2_s;
 
 #pragma mark Typedef'd Structures
 

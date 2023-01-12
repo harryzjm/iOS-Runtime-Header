@@ -18,6 +18,8 @@
 - (id)hf_errorWithOperationType:(id)arg1 failedItemName:(id)arg2;
 - (id)hf_errorWithOperationType:(id)arg1 options:(id)arg2;
 - (id)hf_errorWithAddedUserInfo:(id)arg1;
+- (_Bool)hf_isPublicHMError;
+- (_Bool)hf_isHMHomeWalletKeyErrorWithCode:(long long)arg1;
 - (_Bool)hf_isHMErrorWithCodePrivate:(long long)arg1;
 - (_Bool)hf_isHMErrorWithCode:(long long)arg1;
 - (_Bool)hf_isHFErrorWithCode:(long long)arg1;

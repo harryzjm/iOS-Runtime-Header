@@ -17,9 +17,9 @@
     CPMLDB *cpmlDB;
     struct CPMLCDB *cpCDB;
     struct CPMLAlgorithm *cpMLAlgo;
-    struct CPMLRemapper *cpRemapper;
+    void *cpRemapper;
     CPMLSchema *cpmlSchema;
-    struct CPMLStatistics *trainerCPStatistics;
+    void *trainerCPStatistics;
     struct CPMLSerialization *trainerCPSerializer;
     struct CPMLTunableData *cpTuneableData;
     int mapFunction;

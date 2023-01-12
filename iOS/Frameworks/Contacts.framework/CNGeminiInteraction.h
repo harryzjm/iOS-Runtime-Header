@@ -8,7 +8,6 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface CNGeminiInteraction : NSObject
 {
     long long _transport;

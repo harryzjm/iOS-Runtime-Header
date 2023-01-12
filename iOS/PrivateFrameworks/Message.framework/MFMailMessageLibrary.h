@@ -4,15 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <objc/NSObject.h>
+
 #import <Message/EDMessageChangeHookResponder-Protocol.h>
 #import <Message/EFContentProtectionObserver-Protocol.h>
 #import <Message/EFSignpostable-Protocol.h>
 
-@class EDMessageQueryParser, EDPersistence, EDPersistenceHookRegistry, EDSearchableIndexScheduler, MFFileCompressionQueue, MFLibrarySearchableIndex, MFMessageBodyMigrator, MFMessageChangeManager_iOS, MFPersistenceDatabase_iOS, MFWeakObjectCache, NSCache, NSMutableDictionary, NSMutableSet, NSObject, NSString, _MFMailMessageLibraryStatistics;
-@protocol EFSQLValueExpressable, EFScheduler, OS_dispatch_queue;
+@class EDMessageQueryParser, EDPersistence, EDPersistenceHookRegistry, EDSearchableIndexScheduler, MFAttachmentLibraryDataProvider, MFFileCompressionQueue, MFLibrarySearchableIndex, MFMessageAttachmentMigrator, MFMessageBodyMigrator, MFMessageChangeManager_iOS, MFPersistenceDatabase_iOS, MFWeakObjectCache, NSCache, NSMutableDictionary, NSMutableSet, NSString;
+@protocol EFCancelable, EFSQLValueExpressable, EFScheduler, OS_dispatch_queue;
 
-@interface MFMailMessageLibrary <EDMessageChangeHookResponder, EFSignpostable, EFContentProtectionObserver>
+@interface MFMailMessageLibrary : NSObject <EDMessageChangeHookResponder, EFSignpostable, EFContentProtectionObserver>
 {
+    NSString *_path;
+    MFAttachmentLibraryDataProvider *_attachmentDataProvider;
     MFWeakObjectCache *_libraryMessageCache;
     NSMutableDictionary *_mailboxCache;
     NSObject<OS_dispatch_queue> *_queue;
@@ -24,7 +28,6 @@
     NSObject<OS_dispatch_queue> *_keyBagQueue;
     NSObject<OS_dispatch_queue> *_conversationCalculationQueue;
     NSMutableSet *_messagesToThreadAtUnlock;
-    _MFMailMessageLibraryStatistics *_lastStats;
     MFFileCompressionQueue *_compressionQueue;
     MFLibrarySearchableIndex *_searchableIndex;
     struct os_unfair_lock_s _searchableIndexLock;
@@ -41,18 +44,22 @@
     id <EFScheduler> _fileRemovalAfterCompactionScheduler;
     NSMutableDictionary *_currentAddedMessagesMap;
     MFMessageBodyMigrator *_bodyMigrator;
+    id <EFCancelable> _stateCaptureCancelable;
+    MFMessageAttachmentMigrator *_attachmentMigrator;
 }
 
 + (void)_renameLibraryAtPath:(id)arg1;
 + (void)removeLibraryOnNextLaunch;
 + (id)defaultPath;
-+ (void)setDefaultInstance:(id)arg1;
++ (void)test_setDefaultInstance:(id)arg1;
 + (id)defaultInstance;
 + (_Bool)canUsePersistence;
 + (id)propertyMapper;
 + (id)signpostLog;
 + (id)log;
 - (void).cxx_destruct;
+@property(retain) MFMessageAttachmentMigrator *attachmentMigrator; // @synthesize attachmentMigrator=_attachmentMigrator;
+@property(readonly, nonatomic) id <EFCancelable> stateCaptureCancelable; // @synthesize stateCaptureCancelable=_stateCaptureCancelable;
 @property(retain) MFMessageBodyMigrator *bodyMigrator; // @synthesize bodyMigrator=_bodyMigrator;
 @property(retain, nonatomic) NSMutableDictionary *currentAddedMessagesMap; // @synthesize currentAddedMessagesMap=_currentAddedMessagesMap;
 @property(retain, nonatomic) id <EFScheduler> fileRemovalAfterCompactionScheduler; // @synthesize fileRemovalAfterCompactionScheduler=_fileRemovalAfterCompactionScheduler;
@@ -61,15 +68,23 @@
 @property(readonly, nonatomic) _Bool allowedToAccessProtectedData; // @synthesize allowedToAccessProtectedData=_allowedToAccessProtectedData;
 @property(readonly) MFPersistenceDatabase_iOS *database; // @synthesize database=_database;
 @property(readonly) EDPersistence *persistence; // @synthesize persistence=_persistence;
+- (id)dataProvider;
+- (void)_storeRemoteContentLinksFromData:(id)arg1 forMimePart:(id)arg2 linksToVerify:(id)arg3;
+- (void)storeRemoteContentLinksFromData:(id)arg1 forMessage:(id)arg2 mimePart:(id)arg3;
+- (void)_storeRemoteContentLinksFromHeaderData:(id)arg1 bodyData:(id)arg2 forMessage:(id)arg3 linksToVerify:(id)arg4;
+- (void)storeRemoteContentLinksFromHeaderData:(id)arg1 bodyData:(id)arg2 forMessage:(id)arg3;
+- (void)_storeRemoteContentLinksFromFullData:(id)arg1 forMessage:(id)arg2 linksToVerify:(id)arg3;
+- (void)storeRemoteContentLinksFromFullData:(id)arg1 forMessage:(id)arg2;
+- (_Bool)_storeRemoteContentLinksCachedOnMessage:(id)arg1 linksToVerify:(id *)arg2;
+- (_Bool)_shouldStoreRemoteContentForMessage:(id)arg1;
 - (_Bool)messageDataExistsInDatabaseForMessageLibraryID:(long long)arg1 part:(id)arg2 length:(unsigned long long *)arg3;
+- (id)stringFromAllMailboxIndexStatus;
 - (id)stringFromAllMailboxUnreadCount;
 - (id)_recipientsForMessagesWithDatabaseIDs:(id)arg1 includeTo:(_Bool)arg2 includeCC:(_Bool)arg3 includeBCC:(_Bool)arg4;
-- (id)firstMessageMatchingCriterion:(id)arg1;
 - (id)_recipientsForMessageWithDatabaseID:(long long)arg1 connection:(id)arg2;
 - (id)_messageForRow:(id)arg1 options:(unsigned int)arg2 timestamp:(unsigned long long)arg3 connection:(id)arg4 isProtectedDataAvailable:(_Bool)arg5;
 - (id)_libraryMessageWithLibraryID:(long long)arg1 wasCached:(_Bool *)arg2;
 - (id)_libraryMessageCache;
-- (id)allMailboxURLStrings;
 - (void)reindexAllSearchableItemsWithAcknowledgementHandler:(CDUnknownBlockType)arg1;
 - (void)reindexSearchableItemsWithIdentifiers:(id)arg1 acknowledgementHandler:(CDUnknownBlockType)arg2;
 - (void)_removeSearchableItemsWithLibraryIDs:(id)arg1;
@@ -78,10 +93,7 @@
 - (void)removeSearchableItemsForMailbox:(id)arg1;
 - (void)removeSearchableItemsForAccount:(id)arg1;
 - (id)indexableMessagesWhere:(id)arg1 sortedBy:(id)arg2 limit:(long long)arg3 options:(unsigned int)arg4;
-- (struct sqlite3_stmt *)_prepareBatchStatement:(id)arg1 pattern:(id)arg2 libraryIDs:(long long *)arg3 batchSize:(unsigned long long)arg4;
-- (struct sqlite3_stmt *)_prepareBatchStatement:(id)arg1 pattern:(id)arg2 objects:(id *)arg3 count:(unsigned long long)arg4;
 - (id)_stringsForIndexSet:(id)arg1;
-- (void)pruneConversationTables:(double)arg1;
 - (void)renameOrRemoveDatabaseIfNeeded;
 - (void)handleFailedMigration;
 - (void)journalReconciliationFailed;
@@ -99,8 +111,7 @@
 - (void)_schedulePeriodicStatisticsLogging;
 - (void)_logStatistics;
 - (_Bool)_shouldLogDatabaseStats;
-- (void)_collectStatistics_nts;
-- (_Bool)checkDatabaseConsistency;
+- (id)_collectStatistics;
 - (_Bool)cleanupProtectedTables;
 - (id)_indexSetOfMessagesDeleted;
 @property(readonly, nonatomic) unsigned long long protectedDataAvailability;
@@ -118,8 +129,6 @@
 - (id)_mailboxesClauseForAccounts:(id)arg1;
 - (void)deleteAccount:(id)arg1;
 - (void)invalidateAccount:(id)arg1;
-- (long long)libraryIDForAccount:(id)arg1;
-- (long long)createLibraryIDForAccount:(id)arg1;
 - (id)filterContiguousMessages:(id)arg1 forCriterion:(id)arg2 options:(unsigned int)arg3;
 - (id)messagesMatchingCriterion:(id)arg1 options:(unsigned int)arg2;
 - (id)messagesMatchingCriterion:(id)arg1 options:(unsigned int)arg2 success:(_Bool *)arg3;
@@ -147,6 +156,7 @@
 - (id)headerDataForMessage:(id)arg1;
 - (id)bodyDataForMessage:(id)arg1;
 - (id)bodyDataForMessage:(id)arg1 andHeaderDataIfReadilyAvailable:(id *)arg2 isComplete:(_Bool *)arg3;
+- (id)bodyDataForMessage:(id)arg1 andHeaderDataIfReadilyAvailable:(id *)arg2;
 - (id)headerDataAtPath:(id)arg1;
 - (id)bodyDataAtPath:(id)arg1 headerData:(id *)arg2;
 - (id)loadMeetingMetadataForMessage:(id)arg1;
@@ -162,12 +172,12 @@
 - (id)dataConsumerForMessage:(id)arg1 isPartial:(_Bool)arg2;
 - (id)dataConsumerForMessage:(id)arg1 part:(id)arg2 incomplete:(_Bool)arg3;
 - (id)dataConsumerForMessage:(id)arg1 part:(id)arg2;
-- (long long)deleteAttachmentsForMessage:(id)arg1 inMailboxFileURL:(id)arg2;
+- (void)fileURLForAttachmentPersistentID:(id)arg1 messageID:(id)arg2 result:(CDUnknownBlockType)arg3;
 - (id)fileAttributesForMessage:(id)arg1;
+- (long long)deleteAttachmentsForMessage:(id)arg1 inMailboxFileURL:(id)arg2;
 - (id)dataPathForMessage:(id)arg1 part:(id)arg2;
 - (id)dataPathForMessage:(id)arg1;
 - (id)dataPathForMessage:(id)arg1 type:(int)arg2;
-- (id)messageWithMessageID:(id)arg1 inMailbox:(id)arg2;
 - (void)removeAllMessagesFromMailbox:(id)arg1 removeMailbox:(_Bool)arg2 andNotify:(_Bool)arg3;
 - (void)deleteMailboxes:(id)arg1 account:(id)arg2;
 - (_Bool)renameMailboxes:(id)arg1 to:(id)arg2;
@@ -180,6 +190,7 @@
 - (_Bool)_addAddressesFromRecipientsForMessages:(id)arg1 toSet:(id)arg2 connection:(id)arg3;
 - (_Bool)_deleteMessages:(id)arg1 connection:(id)arg2;
 - (void)compactMessages:(id)arg1 permanently:(_Bool)arg2;
+- (void)compactMessages:(id)arg1;
 - (void)_notifyDidCompact:(_Bool)arg1 messages:(id)arg2 mailboxes:(id)arg3;
 - (void)setStoredIntegerPropertyWithName:(id)arg1 value:(id)arg2;
 - (id)storedIntegerPropertyWithName:(id)arg1;
@@ -187,7 +198,6 @@
 - (void)setConversationInfo:(long long)arg1 syncKey:(id)arg2 flags:(unsigned long long)arg3;
 - (void)setFlags:(unsigned long long)arg1 forConversationId:(long long)arg2;
 - (unsigned long long)flagsForConversationId:(long long)arg1;
-- (id)syncedConversations;
 - (void)addPostMigrationStep:(id)arg1;
 - (void)scheduleRecurringActivity;
 - (void)clearServerSearchFlagsForMessagesWithLibraryIDs:(id)arg1;
@@ -206,29 +216,21 @@
 - (id)stringForQuery:(id)arg1;
 - (id)stringForQuery:(id)arg1 monitor:(id)arg2;
 - (long long)loadMoreMessagesForThreadContainingMessage:(id)arg1 hasNoMoreMessages:(_Bool *)arg2;
-- (long long)countOfMessagesMissingFromThreadContainingMessage:(id)arg1;
 - (id)_getReferencesForHashesWithOwners:(id)arg1;
-- (id)missingReferencesForConversationContainingMessage:(id)arg1;
 - (id)_copyReferenceHashesWithoutMessagesForMessageWithConversation:(id)arg1;
 - (id)conversationIDsOfMessagesInSameThreadAsMessageWithLibraryID:(long long)arg1 messageIDHash:(long long)arg2;
 - (id)messageWithLibraryID:(long long)arg1 options:(unsigned int)arg2 inMailbox:(id)arg3 temporarilyUnavailable:(_Bool *)arg4;
+- (id)messageWithLibraryID:(long long)arg1 options:(unsigned int)arg2 inMailbox:(id)arg3;
 - (id)_keyForOptions:(unsigned int)arg1 protectedDataAvailable:(_Bool)arg2 mailboxAvailable:(_Bool)arg3 mailboxCached:(_Bool)arg4;
 - (id)messagesWithMessageIDHeader:(id)arg1;
 - (id)messageWithMessageID:(id)arg1 options:(unsigned int)arg2 inMailbox:(id)arg3;
-- (id)getDetailsForAllMessagesFromMailbox:(id)arg1;
-- (id)getDetailsForMessages:(unsigned long long)arg1 absoluteBottom:(unsigned long long)arg2 topOfDesiredRange:(unsigned long long)arg3 range:(struct _NSRange *)arg4 fromMailbox:(id)arg5;
-- (id)getDetailsForMessagesWithRemoteIDInRange:(struct _NSRange)arg1 fromMailbox:(id)arg2;
 - (void)setSequenceIdentifier:(id)arg1 forMessagesWithRemoteIDs:(id)arg2 inMailbox:(id)arg3;
 - (void)setSequenceIdentifier:(id)arg1 forMessageWithLibraryID:(long long)arg2;
 - (id)sequenceIdentifierForMessagesWithRemoteIDs:(id)arg1 inMailbox:(id)arg2;
 - (void)setSequenceIdentifier:(id)arg1 forMailbox:(id)arg2;
 - (id)sequenceIdentifierForMailbox:(id)arg1;
-- (unsigned int)minimumRemoteIDForMailbox:(id)arg1;
-- (_Bool)canProvideMinimumRemoteID;
-- (unsigned int)maximumRemoteIDForMailbox:(id)arg1;
 - (id)copyMessagesWithRemoteIDs:(id)arg1 options:(unsigned int)arg2 inRemoteMailbox:(id)arg3;
 - (id)messageWithRemoteID:(id)arg1 inRemoteMailbox:(id)arg2;
-- (id)oldestMessageInMailbox:(id)arg1;
 - (void)setMostRecentStatusCount:(unsigned long long)arg1 forMailbox:(id)arg2;
 - (unsigned long long)mostRecentStatusCountForMailbox:(id)arg1;
 - (void)increaseProtectionOnFileForMessage:(id)arg1;
@@ -237,7 +239,6 @@
 - (void)setServerUnreadOnlyOnServerCount:(unsigned long long)arg1 forMailbox:(id)arg2;
 - (unsigned long long)indexedCountForMailbox:(id)arg1 limit:(unsigned long long)arg2;
 - (unsigned long long)serverUnreadOnlyOnServerCountForMailbox:(id)arg1;
-- (unsigned long long)unseenCountForMailbox:(id)arg1;
 - (unsigned int)totalCountForMailbox:(id)arg1;
 - (unsigned int)nonDeletedCountForAggregatedMailboxes:(id)arg1;
 - (unsigned int)nonDeletedCountForAggregatedMailboxes:(id)arg1 includeServerSearchResults:(_Bool)arg2 includeThreadSearchResults:(_Bool)arg3;
@@ -245,7 +246,6 @@
 - (unsigned int)nonDeletedCountForMailbox:(id)arg1 includeServerSearchResults:(_Bool)arg2 includeThreadSearchResults:(_Bool)arg3;
 - (unsigned int)allNonDeleteCountForMailbox:(id)arg1 includeServerSearchResults:(_Bool)arg2 includeThreadSearchResults:(_Bool)arg3;
 - (unsigned int)attachmentCountForMailboxes:(id)arg1;
-- (unsigned int)deletedCountForMailbox:(id)arg1;
 - (unsigned int)includesMeCountForMailbox:(id)arg1;
 - (unsigned int)attachmentCountForMailbox:(id)arg1;
 - (unsigned int)flaggedCountForMailbox:(id)arg1;
@@ -259,24 +259,15 @@
 - (long long)countDistinctMessagesMatchingCriterion:(id)arg1;
 - (unsigned int)unreadCountForAggregatedMailboxes:(id)arg1 matchingCriterion:(id)arg2;
 - (unsigned int)unreadCountForMailbox:(id)arg1 matchingCriterion:(id)arg2;
-- (void)recomputeUnreadCountForMailboxWithURL:(id)arg1;
 - (int)_integerForQuery:(id)arg1 withTextArgument:(id)arg2;
 - (long long)_int64ForQuery:(id)arg1 connection:(id)arg2 textArgument:(id)arg3;
-- (id)messagesWithoutSummariesForMailbox:(id)arg1 fromRowID:(long long)arg2 limit:(unsigned int)arg3;
 - (id)orderedBatchOfMessagesEndingAtRowId:(long long)arg1 limit:(unsigned int)arg2 success:(_Bool *)arg3;
-- (id)messagesWithSummariesForMailbox:(id)arg1 fromRowID:(long long)arg2 limit:(unsigned int)arg3;
-- (id)messagesWithoutSummariesForMailbox:(id)arg1;
 - (id)messagesWithSummariesForMailbox:(id)arg1 range:(struct _NSRange)arg2;
-- (id)sendersByLibraryIDForConversation:(long long)arg1 mailbox:(id)arg2 limit:(long long)arg3;
 - (long long)_libraryIDForOldestKnownMessageInMailbox:(id)arg1;
-- (id)oldestKnownMessageInMailbox:(id)arg1;
-- (long long)oldestKnownConversationInMailbox:(id)arg1;
 - (id)groupedMessagesCountForCriterion:(id)arg1 groupBy:(unsigned long long)arg2;
 - (id)groupedMessagesCountByMailboxMatchingQuery:(unsigned long long)arg1 variable:(id)arg2;
 - (unsigned long long)countMessagesMatchingCriterion:(id)arg1;
 - (unsigned int)countOfRelatedMessagesMatchingCriterion:(id)arg1 forConversationsContainingMessagesMatchingCriterion:(id)arg2 forMailboxCriterion:(id)arg3;
-- (id)copyMessageInfosForConversationsContainingMessagesMatchingCriterion:(id)arg1 forMailbox:(id)arg2;
-- (id)copyMessageInfosMatchingCriterion:(id)arg1;
 - (id)copyMessageInfosForMailbox:(id)arg1;
 - (id)dateOfOldestNonIndexedNonSearchResultMessageInMailbox:(id)arg1;
 - (id)dateOfOldestNonSearchResultMessageInMailbox:(id)arg1;
@@ -303,12 +294,13 @@
 - (void)didFinishPersistenceDidAddMessages:(id)arg1;
 - (void)willStartPersistenceDidAddMessages:(id)arg1;
 - (id)addMessages:(id)arg1 withMailbox:(id)arg2 newMessagesByOldMessage:(id)arg3 remoteIDs:(id)arg4 setFlags:(unsigned long long)arg5 addPOPUIDs:(_Bool)arg6 dataSectionsByMessage:(id)arg7 generationWindow:(id)arg8;
+- (id)duplicateMessages:(id)arg1 newRemoteIDs:(id)arg2 forMailbox:(id)arg3 setFlags:(unsigned long long)arg4 clearFlags:(unsigned long long)arg5 messageFlagsForMessages:(id)arg6 createNewCacheFiles:(_Bool)arg7;
+- (id)duplicateMessages:(id)arg1 newRemoteIDs:(id)arg2 forMailbox:(id)arg3 setFlags:(unsigned long long)arg4 createNewCacheFiles:(_Bool)arg5;
 @property(readonly, nonatomic) EDPersistenceHookRegistry *hookRegistry;
 - (long long)addReferenceForContext:(id)arg1 usingDatabaseConnection:(id)arg2 generationWindow:(id)arg3 mergeHandler:(CDUnknownBlockType)arg4;
 - (_Bool)_insertThreadReferences:(id)arg1 toMessageWithLibraryID:(long long)arg2 usingDatabaseConnection:(id)arg3;
 - (id)_addThreadingInfoWithContext:(id)arg1 usingDatabaseConnection:(id)arg2;
 - (id)referencesFromHeaders:(id)arg1;
-- (void)notifyConversation:(long long)arg1 hasMergedIntoConversation:(long long)arg2;
 - (void)notifyNewDataAvailableForMessages:(id)arg1;
 - (_Bool)_writeEmlxFile:(id)arg1 withBodyData:(id)arg2 protectionClass:(int)arg3;
 - (void)setMessage:(id)arg1 isPartial:(_Bool)arg2;
@@ -317,10 +309,13 @@
 - (id)setFlagsFromDictionary:(id)arg1 forMessages:(id)arg2;
 - (id)updateFlagsForMessages:(id)arg1 changes:(id)arg2 transformer:(CDUnknownBlockType)arg3;
 - (void)updateFlagsForMessagesInPlace:(id)arg1 success:(_Bool *)arg2;
+- (void)postFlagsChangedForMessages:(id)arg1 flags:(id)arg2 oldFlagsByMessage:(id)arg3;
+- (void)postOldFlags:(unsigned long long)arg1 newFlags:(unsigned long long)arg2 forMessage:(id)arg3;
 - (void)setFlags:(unsigned long long)arg1 forMessage:(id)arg2;
 @property(readonly) MFMessageChangeManager_iOS *messageChangeManager;
 - (id)searchableIndex;
 @property(readonly, nonatomic) unsigned long long pendingIndexItemsCount;
+- (void)attachmentMigrationFinished;
 - (void)bodyMigrationFinished;
 - (id)messageBasePathForAccount:(id)arg1;
 - (void)test_tearDown;

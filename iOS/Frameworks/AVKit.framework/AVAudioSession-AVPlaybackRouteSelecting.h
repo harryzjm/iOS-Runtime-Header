@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVFoundation/AVAudioSession.h>
+#import <AVFAudio/AVAudioSession.h>
 
 @interface AVAudioSession (AVPlaybackRouteSelecting)
 - (void)prepareRouteSelectionForPlaybackWithCompletionHandler:(CDUnknownBlockType)arg1;

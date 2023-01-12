@@ -20,7 +20,7 @@
     VKRouteLine *_routeRibbon;
     id <VKPolylineOverlayRouteRibbonObserver> _routeRibbonObserver;
     double _trafficTimeStamp;
-    struct unique_ptr<md::TrafficSegmentsAlongRoute, std::__1::default_delete<md::TrafficSegmentsAlongRoute>> _trafficSegments;
+    struct unique_ptr<md::TrafficSegmentsAlongRoute, std::default_delete<md::TrafficSegmentsAlongRoute>> _trafficSegments;
     _Bool _selected;
     _Bool _hasFocus;
     _Bool _showTraffic;
@@ -43,7 +43,9 @@
 - (void)composedRouteUpdatedSnappedPaths:(id)arg1;
 - (struct DebugTreeNode)createDebugNode;
 - (_Bool)isSnappingForSceneTiles;
-- (id)getPathsForRenderRegion:(id)arg1 shouldSnapToRoads:(_Bool)arg2 verifySnapping:(_Bool)arg3 observer:(id)arg4;
+- (id)getPathsForRenderRegion:(id)arg1 shouldSnapToRoads:(_Bool)arg2 shouldGenerateSnapPath:(_Bool)arg3 verifySnapping:(_Bool)arg4 isGradientTraffic:(_Bool)arg5 observer:(id)arg6;
+- (void)createMatchedSegmentAndAddToPaths:(id)arg1 section:(id)arg2 pathStartIndex:(unsigned int)arg3 pathEndIndex:(unsigned int)arg4 shouldGenerateSnapPath:(_Bool)arg5;
+- (_Bool)_meetsMinimumPathLengthBetweenStart:(unsigned int)arg1 end:(unsigned int)arg2;
 - (void)clearSnappedPathsForObserver:(id)arg1;
 - (void)updateTraffic:(id)arg1;
 - (struct _NSRange)sectionRangeForBounds:(Box_3d7e3c2c)arg1;

@@ -8,7 +8,7 @@
 
 #import <AdID/APSConnectionDelegate-Protocol.h>
 
-@class APSConnection, NSString;
+@class ADLoggingProfileMonitor, APSConnection, NSString;
 @protocol NSObject;
 
 @interface ADAdTrackingSchedulingManager : NSObject <APSConnectionDelegate>
@@ -17,10 +17,12 @@
     id <NSObject> _storeFrontNotifyToken;
     id <NSObject> _accountChangedNotifyToken;
     APSConnection *_pushConnection;
+    ADLoggingProfileMonitor *_loggingProfileMonitor;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(retain, nonatomic) ADLoggingProfileMonitor *loggingProfileMonitor; // @synthesize loggingProfileMonitor=_loggingProfileMonitor;
 @property(nonatomic) _Bool isConfigRequestInFlight; // @synthesize isConfigRequestInFlight=_isConfigRequestInFlight;
 @property(retain, nonatomic) APSConnection *pushConnection; // @synthesize pushConnection=_pushConnection;
 @property(retain, nonatomic) id <NSObject> accountChangedNotifyToken; // @synthesize accountChangedNotifyToken=_accountChangedNotifyToken;
@@ -36,6 +38,9 @@
 - (void)refreshConfiguration:(CDUnknownBlockType)arg1;
 - (void)handleConfiguration;
 - (_Bool)_shouldSaveConfig;
+- (_Bool)isNewsOrStocksEnabledLocality;
+- (_Bool)isSearchAdsEnabled;
+- (_Bool)isSearchOrSegmentEnabled;
 - (_Bool)isAdEnabledLocality;
 - (void)migratePersonalizedAdsFromLAT;
 - (void)dealloc;

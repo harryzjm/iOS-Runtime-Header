@@ -7,6 +7,7 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (AXUtilsExtensions)
+- (id)axCapitalizeFirstLetter;
 - (id)axRegionCode;
 - (id)axLanguageCode;
 - (_Bool)axIsRegionalLanguageCode;

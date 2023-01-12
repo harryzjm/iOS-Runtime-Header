@@ -10,7 +10,7 @@
 #import <NewsCore/FCOperationThrottlerDelegate-Protocol.h>
 #import <NewsCore/FCPersonalizationDataSource-Protocol.h>
 
-@class CKRecord, FCPersonalizationTreatment, NSData, NSMutableArray, NSMutableDictionary, NSObject, NSString;
+@class CKRecord, FCPersonalizationTreatment, NSData, NSMutableDictionary, NSObject, NSString;
 @protocol FCOperationThrottler, OS_dispatch_queue;
 
 @interface FCPersonalizationData <FCOperationThrottlerDelegate, FCCoreConfigurationObserving, FCAppActivityObserving, FCDerivedPersonalizationData, FCPersonalizationDataSource>
@@ -18,8 +18,6 @@
     _Bool _attemptingUpload;
     NSData *_pbData;
     NSMutableDictionary *_aggregates;
-    NSMutableDictionary *_openChangeGroupDeltas;
-    NSMutableArray *_closedChangeGroups;
     CKRecord *_remoteRecord;
     NSObject<OS_dispatch_queue> *_accessQueue;
     FCPersonalizationTreatment *_treatment;
@@ -27,7 +25,6 @@
 }
 
 + (void)configureKeyValueStoreForJSONHandling:(id)arg1;
-+ (id)localStoreMigrator;
 + (id)desiredKeys;
 + (id)commandsToMergeLocalDataToCloud:(id)arg1;
 + (long long)commandQueueUrgency;
@@ -40,15 +37,8 @@
 + (_Bool)requiresBatchedSync;
 + (_Bool)requiresPushNotificationSupport;
 - (void).cxx_destruct;
-@property _Bool attemptingUpload; // @synthesize attemptingUpload=_attemptingUpload;
-@property(retain, nonatomic) id <FCOperationThrottler> saveThrottler; // @synthesize saveThrottler=_saveThrottler;
-@property(retain) FCPersonalizationTreatment *treatment; // @synthesize treatment=_treatment;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue=_accessQueue;
-@property(retain, nonatomic) CKRecord *remoteRecord; // @synthesize remoteRecord=_remoteRecord;
-@property(retain, nonatomic) NSMutableArray *closedChangeGroups; // @synthesize closedChangeGroups=_closedChangeGroups;
-@property(retain, nonatomic) NSMutableDictionary *openChangeGroupDeltas; // @synthesize openChangeGroupDeltas=_openChangeGroupDeltas;
-@property(retain, nonatomic) NSMutableDictionary *aggregates; // @synthesize aggregates=_aggregates;
 @property(readonly, nonatomic) NSData *pbData; // @synthesize pbData=_pbData;
+- (id)allAggregates;
 - (id)createAggregateWith:(id)arg1 clicks:(double)arg2 impressions:(double)arg3;
 - (id)lookupAggregatesWith:(id)arg1 creationBlock:(CDUnknownBlockType)arg2;
 - (void)updateAggregatesWith:(id)arg1 creationBlock:(CDUnknownBlockType)arg2 updateBlock:(CDUnknownBlockType)arg3;
@@ -60,25 +50,16 @@
 - (void)activityObservingApplicationWillTerminate;
 - (void)activityObservingApplicationWindowDidBecomeBackground;
 - (void)activityObservingApplicationWindowDidBecomeForeground;
-- (void)_reloadTreatment;
-- (void)_applicationDidEnterBackground;
-- (void)_applicationDidEnterForeground;
-- (void)_closeOpenChangeGroupFromInstance:(id)arg1;
-- (void)_writeToLocalStoreWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_updateWithRemoteRecord:(id)arg1 profile:(id)arg2;
-- (id)_instanceIdentifier;
 - (id)recordsForRestoringZoneName:(id)arg1;
 - (_Bool)canHelpRestoreZoneName:(id)arg1;
+- (id)localStoreMigrator;
 - (void)handleSyncWithChangedRecords:(id)arg1 deletedRecordNames:(id)arg2;
 - (void)loadLocalCachesFromStore;
 - (void)syncWithCompletion:(CDUnknownBlockType)arg1;
-- (void)generateDerivedDataWithQualityOfService:(long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)generateDerivedDataWithMaxAggregateCount:(unsigned long long)arg1 qualityOfService:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)d_allGlobalAggregates;
 - (void)clearPersonalizationData;
-- (id)modifyLocalAggregatesForFeatureKeys:(id)arg1 withAction:(unsigned long long)arg2 actionCount:(unsigned long long)arg3 defaultClicks:(double)arg4 defaultImpressions:(double)arg5 impressionBias:(double)arg6 groupBias:(double)arg7;
-- (void)saveReadableAggregates;
-- (void)submitPersonalizationVector;
-- (void)cacheGSToken;
+- (void)modifyLocalAggregatesForFeatureKeys:(id)arg1 withAction:(unsigned long long)arg2 actionCount:(unsigned long long)arg3 defaultClicks:(double)arg4 defaultImpressions:(double)arg5 impressionBias:(double)arg6 groupBias:(double)arg7;
 @property(readonly, nonatomic) FCPersonalizationTreatment *personalizationTreatment;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
@@ -88,7 +69,7 @@
 - (id)initWithContext:(id)arg1 pushNotificationCenter:(id)arg2 storeDirectory:(id)arg3;
 - (void)d_allResults:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)prepareAggregatesForUseWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)updateFeatures:(id)arg1 withAction:(unsigned long long)arg2 displayRank:(long long)arg3 groupRank:(long long)arg4 groupType:(long long)arg5 individually:(_Bool)arg6 configurableValues:(id)arg7 featuresUpdatedBlock:(CDUnknownBlockType)arg8;
+- (void)updateFeatures:(id)arg1 withAction:(unsigned long long)arg2 displayRank:(long long)arg3 groupRank:(long long)arg4 groupType:(long long)arg5 individually:(_Bool)arg6 configurableValues:(id)arg7;
 - (id)aggregatesForFeatures:(id)arg1;
 - (id)baselineAggregateWithConfigurableValues:(id)arg1;
 

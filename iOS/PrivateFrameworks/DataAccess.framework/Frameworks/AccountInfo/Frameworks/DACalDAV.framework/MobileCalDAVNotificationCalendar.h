@@ -13,14 +13,6 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) CalDiagNotificationCollectionSync *notificationCollectionSyncDiagnostics; // @synthesize notificationCollectionSyncDiagnostics=_notificationCollectionSyncDiagnostics;
-- (_Bool)_handleResourceChanged:(id)arg1 withResource:(id)arg2 uid:(id)arg3;
-- (id)_changedAttributesFromCalendarChanges:(id)arg1;
-- (void *)_createResourceChange:(id)arg1 withType:(unsigned int)arg2 forNotification:(void *)arg3;
-- (void *)_createResourceChange:(id)arg1 withType:(unsigned int)arg2 forNotification:(void *)arg3 withRecurrenceID:(id)arg4;
-- (void *)_copyCalItemFromAnyCalendarWithExternalID:(id)arg1;
-- (void)_handleInviteReply:(id)arg1 withResource:(id)arg2 owningNotification:(id)arg3 uid:(id)arg4;
-- (void *)_copyCalendarForReplyItem:(id)arg1;
-- (_Bool)_handleInviteNotification:(id)arg1 withResource:(id)arg2 uid:(id)arg3;
 - (void)recordDiagnosticsForAccountSync:(id)arg1;
 - (void)prepareMergeSyncActionsWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)prepareSyncActionsWithCompletionBlock:(CDUnknownBlockType)arg1;

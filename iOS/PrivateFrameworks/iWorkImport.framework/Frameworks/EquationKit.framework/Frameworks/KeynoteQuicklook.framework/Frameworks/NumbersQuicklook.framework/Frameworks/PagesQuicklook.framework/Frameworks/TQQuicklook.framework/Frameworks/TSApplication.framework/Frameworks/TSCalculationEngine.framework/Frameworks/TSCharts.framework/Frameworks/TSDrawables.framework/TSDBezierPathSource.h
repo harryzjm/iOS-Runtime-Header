@@ -23,6 +23,7 @@
 - (void)p_setBezierPath:(id)arg1;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
+- (id)name;
 - (_Bool)isClosed;
 - (_Bool)isCircular;
 - (_Bool)isRectangularForever;
@@ -36,10 +37,10 @@
 - (id)init;
 - (id)initWithNaturalSize:(struct CGSize)arg1;
 - (id)initWithBezierPath:(id)arg1;
-- (void)saveToArchive:(struct PathSourceArchive *)arg1;
-- (void)saveToArchive:(struct PathSourceArchive *)arg1 andBezierArchive:(struct BezierPathSourceArchive *)arg2;
-- (id)initWithArchive:(const struct PathSourceArchive *)arg1;
-- (id)initWithArchive:(const struct PathSourceArchive *)arg1 andBezierArchive:(const struct BezierPathSourceArchive *)arg2;
+- (void)saveToArchive:(void *)arg1;
+- (void)saveToArchive:(void *)arg1 andBezierArchive:(void *)arg2;
+- (id)initWithArchive:(const void *)arg1;
+- (id)initWithArchive:(const void *)arg1 andBezierArchive:(const void *)arg2;
 
 @end
 

@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) AMSFinanceDialogResponse *cachedDialogResponse; // @synthesize cachedDialogResponse=_cachedDialogResponse;
 @property(retain, nonatomic) AMSFinanceAuthenticateResponse *cachedAuthenticateResponse; // @synthesize cachedAuthenticateResponse=_cachedAuthenticateResponse;
 - (id)_valueForProtocolKey:(id)arg1;
-- (id)_performerForPaymentSheet;
+- (id)_performerForPaymentSheetWithDelegateAuthentication:(_Bool)arg1;
 - (id)_performerForDialog;
 - (id)_performerForCreditDisplay;
 - (id)_performerForAuthenticate;

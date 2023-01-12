@@ -8,18 +8,21 @@
 
 #import <MediaPlaybackCore/MPCPlaybackEngineEventStreamCursor-Protocol.h>
 
-@class MPCPlaybackEngineEventStream, NSString, NSUUID;
+@class MPCPlaybackEngineEvent, MPCPlaybackEngineEventStream, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MPCPlaybackEngineEventStreamCursor : NSObject <MPCPlaybackEngineEventStreamCursor>
 {
+    unsigned long long _startNS;
+    unsigned long long _endNS;
     MPCPlaybackEngineEventStream *_eventStream;
-    NSUUID *_startEventIdentifier;
-    NSUUID *_endEventIdentifier;
+    MPCPlaybackEngineEvent *_startEvent;
+    MPCPlaybackEngineEvent *_endEvent;
 }
 
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSUUID *endEventIdentifier; // @synthesize endEventIdentifier=_endEventIdentifier;
-@property(readonly, copy, nonatomic) NSUUID *startEventIdentifier; // @synthesize startEventIdentifier=_startEventIdentifier;
+@property(readonly, nonatomic) MPCPlaybackEngineEvent *endEvent; // @synthesize endEvent=_endEvent;
+@property(readonly, nonatomic) MPCPlaybackEngineEvent *startEvent; // @synthesize startEvent=_startEvent;
 @property(readonly, nonatomic) MPCPlaybackEngineEventStream *eventStream; // @synthesize eventStream=_eventStream;
 - (id)findPreviousEventWithTypes:(id)arg1 matchingPayload:(id)arg2;
 - (id)findPreviousEventWithType:(id)arg1 matchingPayload:(id)arg2;
@@ -31,11 +34,11 @@
 - (long long)countOfPreviousEventsWithType:(id)arg1 matchingPayload:(id)arg2;
 - (id)cursorFromEvent:(id)arg1 untilEvent:(id)arg2;
 - (id)cursorUntilEvent:(id)arg1;
-- (id)initWithEventStream:(id)arg1 startEventIdentifier:(id)arg2 endEventIdentifier:(id)arg3;
+@property(readonly, copy) NSString *description;
+- (id)initWithEventStream:(id)arg1 startEvent:(id)arg2 endEvent:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

@@ -48,7 +48,6 @@
 - (void)drawInLayerContext:(struct CGContext *)arg1;
 - (id)downloadProgressPlaceholderImage;
 - (_Bool)shouldShowCheckerboard;
-- (_Bool)isDataCurrentlyDownloading;
 @property(readonly) TSPData *imageDataForRendering;
 - (id)layoutsForChildReps;
 - (void)willBeRemoved;

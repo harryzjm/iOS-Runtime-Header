@@ -24,6 +24,7 @@
     struct _NSRange _activePreviewRange;
     int _contentType;
     int _autoCapitalizationMode;
+    int _autoCorrectionMode;
     _Bool _isSingleLine;
     _Bool _supportsAutoLineBreaks;
     long long _lastCharacterLevelPosition;
@@ -35,6 +36,7 @@
 @property(readonly, nonatomic) long long lastCharacterLevelPosition; // @synthesize lastCharacterLevelPosition=_lastCharacterLevelPosition;
 @property(readonly, nonatomic) _Bool supportsAutoLineBreaks; // @synthesize supportsAutoLineBreaks=_supportsAutoLineBreaks;
 @property(readonly, nonatomic) _Bool isSingleLine; // @synthesize isSingleLine=_isSingleLine;
+@property(readonly, nonatomic) int autoCorrectionMode; // @synthesize autoCorrectionMode=_autoCorrectionMode;
 @property(readonly, nonatomic) int autoCapitalizationMode; // @synthesize autoCapitalizationMode=_autoCapitalizationMode;
 @property(readonly, nonatomic) int contentType; // @synthesize contentType=_contentType;
 @property(readonly, nonatomic) struct _NSRange activePreviewRange; // @synthesize activePreviewRange=_activePreviewRange;
@@ -60,8 +62,8 @@
 - (void)dealloc;
 - (id)initWithTextInputTarget:(id)arg1 contentLength:(long long)arg2 referenceSubstring:(id)arg3 referenceSubstringRange:(struct _NSRange)arg4 charRectsInReferenceSubstring:(struct CGRect *)arg5 strokeCoveredTextRange:(struct _NSRange)arg6 selectedTextRange:(struct _NSRange)arg7 activePreviewRange:(struct _NSRange)arg8 contentType:(int)arg9 lastCharacterLevelPosition:(long long)arg10;
 - (id)initWithTextInputTarget:(id)arg1 contentLength:(long long)arg2 referenceSubstring:(id)arg3 referenceSubstringRange:(struct _NSRange)arg4 charRectsInReferenceSubstring:(struct CGRect *)arg5 strokeCoveredTextRange:(struct _NSRange)arg6 selectedTextRange:(struct _NSRange)arg7 isCursorStrong:(_Bool)arg8 activePreviewRange:(struct _NSRange)arg9 contentType:(int)arg10 isSingleLine:(_Bool)arg11 lastCharacterLevelPosition:(long long)arg12;
-- (id)initWithTextInputTarget:(id)arg1 contentLength:(long long)arg2 referenceSubstring:(id)arg3 referenceSubstringRange:(struct _NSRange)arg4 charRectsInReferenceSubstring:(struct CGRect *)arg5 strokeCoveredTextRange:(struct _NSRange)arg6 selectedTextRange:(struct _NSRange)arg7 isCursorStrong:(_Bool)arg8 activePreviewRange:(struct _NSRange)arg9 contentType:(int)arg10 autoCapitalizationMode:(int)arg11 isSingleLine:(_Bool)arg12 lastCharacterLevelPosition:(long long)arg13;
-- (id)_initWithTextInputTarget:(id)arg1 contentLength:(long long)arg2 referenceSubstring:(id)arg3 referenceSubstringRange:(struct _NSRange)arg4 charRectsInReferenceSubstring:(struct CGRect *)arg5 strokeCoveredTextRange:(struct _NSRange)arg6 selectedTextRange:(struct _NSRange)arg7 isCursorStrong:(_Bool)arg8 activePreviewRange:(struct _NSRange)arg9 contentType:(int)arg10 autoCapitalizationMode:(int)arg11 isSingleLine:(_Bool)arg12 lastCharacterLevelPosition:(long long)arg13 protectedCharacterIndexes:(id)arg14;
+- (id)initWithTextInputTarget:(id)arg1 contentLength:(long long)arg2 referenceSubstring:(id)arg3 referenceSubstringRange:(struct _NSRange)arg4 charRectsInReferenceSubstring:(struct CGRect *)arg5 strokeCoveredTextRange:(struct _NSRange)arg6 selectedTextRange:(struct _NSRange)arg7 isCursorStrong:(_Bool)arg8 activePreviewRange:(struct _NSRange)arg9 contentType:(int)arg10 autoCapitalizationMode:(int)arg11 autoCorrectionMode:(int)arg12 isSingleLine:(_Bool)arg13 lastCharacterLevelPosition:(long long)arg14;
+- (id)_initWithTextInputTarget:(id)arg1 contentLength:(long long)arg2 referenceSubstring:(id)arg3 referenceSubstringRange:(struct _NSRange)arg4 charRectsInReferenceSubstring:(struct CGRect *)arg5 strokeCoveredTextRange:(struct _NSRange)arg6 selectedTextRange:(struct _NSRange)arg7 isCursorStrong:(_Bool)arg8 activePreviewRange:(struct _NSRange)arg9 contentType:(int)arg10 autoCapitalizationMode:(int)arg11 autoCorrectionMode:(int)arg12 isSingleLine:(_Bool)arg13 lastCharacterLevelPosition:(long long)arg14 protectedCharacterIndexes:(id)arg15;
 
 @end
 

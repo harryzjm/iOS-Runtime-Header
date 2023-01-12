@@ -16,6 +16,10 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)customAttributes;
+@property(retain, nonatomic) NSNumber *inputAngle; // @synthesize inputAngle;
+@property(retain, nonatomic) CIVector *inputCenter; // @synthesize inputCenter;
+@property(retain, nonatomic) NSNumber *inputCount; // @synthesize inputCount;
+@property(retain, nonatomic) CIImage *inputImage; // @synthesize inputImage;
 - (id)outputImage;
 - (struct CGRect)_outputExtent;
 - (id)_kernel;

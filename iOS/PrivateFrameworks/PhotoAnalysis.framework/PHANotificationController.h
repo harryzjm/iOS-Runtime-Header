@@ -6,22 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class PGManager;
+@class PGManager, PHUserFeedbackCalculator;
+@protocol OS_os_log;
 
 @interface PHANotificationController : NSObject
 {
+    NSObject<OS_os_log> *_loggingConnection;
     PGManager *_graphManager;
+    PHUserFeedbackCalculator *_userFeedbackCalculator;
 }
 
 - (void).cxx_destruct;
+- (_Bool)userFeedbackScoreIsAcceptableForAssetCollection:(id)arg1 memoryFeatures:(id)arg2 userFeedbackCalculator:(id)arg3;
 - (void)postNotificationForSuggestion:(id)arg1 deliveryDate:(id)arg2;
 - (void)fireNotificationForSuggestionIdentifiers:(id)arg1;
 - (void)postNotificationForMemory:(id)arg1 withCreationReason:(unsigned long long)arg2 forceImmediateDelivery:(_Bool)arg3;
 - (void)fireNotificationForMemoryIdentifiers:(id)arg1 withCreationReason:(unsigned long long)arg2;
+- (id)_userFeedbackCalculatorWithPhotoLibrary:(id)arg1;
+- (_Bool)shouldFireNotificationForMemoriesWithScores:(id)arg1 withCreationReason:(unsigned long long)arg2;
 - (_Bool)shouldFireNotificationForMemories:(id)arg1 withCreationReason:(unsigned long long)arg2;
 - (id)bestDateForDeliveringNotification;
 - (_Bool)userIsActivelyUsingPhotos;
 - (id)initWithGraphManager:(id)arg1;
+- (id)initWithGraphManager:(id)arg1 userFeedbackCalculator:(id)arg2;
 
 @end
 

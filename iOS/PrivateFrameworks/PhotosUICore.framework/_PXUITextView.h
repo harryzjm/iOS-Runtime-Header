@@ -9,19 +9,24 @@
 #import <PhotosUICore/PKScribbleInteractionDelegate-Protocol.h>
 #import <PhotosUICore/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSString, UITapGestureRecognizer;
+@class NSString, UIKeyCommand, UITapGestureRecognizer;
 
 @interface _PXUITextView : UITextView <PKScribbleInteractionDelegate, UIGestureRecognizerDelegate>
 {
     UITapGestureRecognizer *_tapGestureRecognizer;
+    UIKeyCommand *_escapeKeyCommand;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) UIKeyCommand *escapeKeyCommand; // @synthesize escapeKeyCommand=_escapeKeyCommand;
 @property(readonly, nonatomic) UITapGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
 - (double)_distanceFromContentToGivenPoint:(struct CGPoint)arg1 charIndexAtPoint:(unsigned long long *)arg2;
 - (id)_linkTappedByGesture:(id)arg1 charIndexAtPoint:(unsigned long long *)arg2;
+- (void)_handleEscape:(id)arg1;
 - (void)_handleTapGesture:(id)arg1;
 - (_Bool)becomeFirstResponder;
+- (_Bool)canBecomeFocused;
+- (id)keyCommands;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (_Bool)_scribbleInteraction:(id)arg1 shouldBeginAtLocation:(struct CGPoint)arg2;
 - (_Bool)_scribbleInteraction:(id)arg1 focusWillTransformElement:(id)arg2;

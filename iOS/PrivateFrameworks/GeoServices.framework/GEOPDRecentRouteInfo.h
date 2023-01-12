@@ -40,45 +40,15 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
-+ (Class)zilchPointSegmentType;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(retain, nonatomic) NSData *originalWaypointRoute;
-@property(readonly, nonatomic) _Bool hasOriginalWaypointRoute;
-@property(retain, nonatomic) NSData *evChargingMetadata;
-@property(readonly, nonatomic) _Bool hasEvChargingMetadata;
-- (id)zilchPointSegmentAtIndex:(unsigned long long)arg1;
-- (unsigned long long)zilchPointSegmentsCount;
-- (void)addZilchPointSegment:(id)arg1;
-- (void)clearZilchPointSegments;
-@property(retain, nonatomic) NSMutableArray *zilchPointSegments;
-@property(retain, nonatomic) NSData *etaFilter;
-@property(readonly, nonatomic) _Bool hasEtaFilter;
-- (int)StringAsPreferredTransportType:(id)arg1;
-- (id)preferredTransportTypeAsString:(int)arg1;
-@property(nonatomic) _Bool hasPreferredTransportType;
-@property(nonatomic) int preferredTransportType;
-@property(retain, nonatomic) NSData *routeId;
-@property(readonly, nonatomic) _Bool hasRouteId;
-@property(retain, nonatomic) NSData *sessionState;
-@property(readonly, nonatomic) _Bool hasSessionState;
-@property(retain, nonatomic) NSData *zilchPoints;
-@property(readonly, nonatomic) _Bool hasZilchPoints;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

@@ -13,7 +13,6 @@
     NSArray *_results;
 }
 
-+ (id)_backgroundColor;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *results; // @synthesize results=_results;
 @property(readonly, nonatomic) _Bool hasSuggestedLocationResult;

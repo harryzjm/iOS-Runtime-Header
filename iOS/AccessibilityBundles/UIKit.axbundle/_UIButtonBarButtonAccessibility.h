@@ -19,7 +19,6 @@
 - (_Bool)accessibilityRespondsToUserInteraction;
 - (_Bool)accessibilityElementsHidden;
 - (_Bool)isAccessibilityElement;
-- (_Bool)_axIsInvisibleButton;
 - (unsigned long long)_accessibilityAutomationType;
 
 @end

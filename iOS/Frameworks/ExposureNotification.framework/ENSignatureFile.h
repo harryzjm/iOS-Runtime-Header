@@ -15,7 +15,9 @@
     NSArray *_signatures;
 }
 
++ (id)_signatureFileWithProtobufCoder:(id)arg1 error:(id *)arg2;
 + (id)signatureFileWithBytes:(const char *)arg1 length:(unsigned long long)arg2 error:(id *)arg3;
++ (id)signatureFileWithArchive:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *signatures; // @synthesize signatures=_signatures;
 - (_Bool)writeAndReturnError:(id *)arg1;

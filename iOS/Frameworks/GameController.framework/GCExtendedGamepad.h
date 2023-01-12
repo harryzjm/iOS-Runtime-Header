@@ -29,6 +29,9 @@
     GCControllerButtonInput *_leftThumbstickButton;
     GCControllerButtonInput *_rightThumbstickButton;
     id _gamepadEventObservation;
+    _Bool _snapshotUsagePresent;
+    _Bool _recordUsagePresent;
+    GCControllerButtonInput *__buttonShare;
     GCControllerButtonInput *_buttonMenu;
     GCControllerButtonInput *_buttonOptions;
     GCControllerButtonInput *_buttonHome;
@@ -50,6 +53,9 @@
 @property(readonly, nonatomic) GCControllerButtonInput *buttonMenu; // @synthesize buttonMenu=_buttonMenu;
 @property(readonly, nonatomic) GCControllerDirectionPad *dpad; // @synthesize dpad=_dpad;
 @property(copy, nonatomic) CDUnknownBlockType valueChangedHandler; // @synthesize valueChangedHandler=_valueChangedHandler;
+@property(readonly, nonatomic) _Bool recordUsagePresent; // @synthesize recordUsagePresent=_recordUsagePresent;
+@property(readonly, nonatomic) _Bool snapshotUsagePresent; // @synthesize snapshotUsagePresent=_snapshotUsagePresent;
+@property(readonly, nonatomic) GCControllerButtonInput *_buttonShare; // @synthesize _buttonShare=__buttonShare;
 @property(readonly, nonatomic) GCControllerButtonInput *buttonY; // @synthesize buttonY=_button3;
 @property(readonly, nonatomic) GCControllerButtonInput *buttonX; // @synthesize buttonX=_button2;
 @property(readonly, nonatomic) GCControllerButtonInput *buttonB; // @synthesize buttonB=_button1;
@@ -63,21 +69,23 @@
 - (id)setElementValuesFromExtendedGamepad:(id)arg1;
 - (id)name;
 - (id)saveSnapshot;
-- (void)initAuxiliaryButtonsWithInitInfo:(const CDStruct_8de101df *)arg1;
+- (void)initShareFunctionalityWithInitInfo:(const CDStruct_fc41fe5e *)arg1;
+- (void)initAuxiliaryButtonsWithInitInfo:(const CDStruct_fc41fe5e *)arg1;
 @property(readonly, nonatomic) GCControllerButtonInput *_buttonHome;
 @property(readonly, nonatomic) GCControllerButtonInput *button3;
 @property(readonly, nonatomic) GCControllerButtonInput *button2;
 @property(readonly, nonatomic) GCControllerButtonInput *button1;
 @property(readonly, nonatomic) GCControllerButtonInput *button0;
 - (void)encodeWithCoder:(id)arg1;
+- (void)populateEncodedInitInfo:(CDStruct_fc41fe5e *)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 info:(const CDStruct_8de101df *)arg2;
-- (id)initWithInfo:(const CDStruct_8de101df *)arg1;
+- (id)initWithIdentifier:(id)arg1 info:(const CDStruct_fc41fe5e *)arg2;
+- (id)initWithInfo:(const CDStruct_fc41fe5e *)arg1;
 - (id)initWithIdentifier:(id)arg1;
 - (void)handleEvent:(struct __IOHIDEvent *)arg1;
 - (id)productCategory;
 - (id)initWithController:(id)arg1;
-- (id)initWithController:(id)arg1 initInfo:(const CDStruct_8de101df *)arg2;
+- (id)initWithController:(id)arg1 initInfo:(const CDStruct_fc41fe5e *)arg2;
 - (void)setGamepadEventSource:(id)arg1;
 
 // Remaining properties

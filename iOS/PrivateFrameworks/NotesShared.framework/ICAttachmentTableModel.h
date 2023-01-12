@@ -11,19 +11,23 @@
     ICTableVersionedDocument *_tableDocument;
 }
 
-+ (id)tableFromAttributedString:(id)arg1 managedObjectContext:(id)arg2;
++ (id)tableFromAttributedString:(id)arg1 managedObjectContext:(id)arg2 replicaID:(id)arg3;
 + (id)contentInfoTextWithAttachmentCount:(unsigned long long)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) ICTableVersionedDocument *tableDocument; // @synthesize tableDocument=_tableDocument;
+- (void)removeTimestampsForReplicaID:(id)arg1;
 - (id)localizedFallbackSubtitleMac;
 - (id)localizedFallbackSubtitleIOS;
 - (id)localizedFallbackTitle;
+- (void)updateAfterLoadWithInlineAttachmentIdentifierMap:(id)arg1;
 - (void)mergeTablePrimitiveData;
 - (void)updateAttachmentByMergingWithTableData:(id)arg1;
 - (void)writeMergeableData;
 - (_Bool)mergeWithMergeableData:(id)arg1;
 - (_Bool)isReadyToPresent;
+- (id)mergeableDataForCopying:(id *)arg1;
 @property(readonly, nonatomic) ICTable *table;
+- (void)replaceChildInlineAttachment:(id)arg1 withText:(id)arg2;
 - (void)noteWillAddOrRemovePassword;
 - (void)willMarkAttachmentForDeletion;
 - (void)regenerateTextContentInNote;

@@ -33,8 +33,10 @@
 - (void)_performBlockAndWait:(CDUnknownBlockType)arg1;
 - (void)endSignpostForThumbnailGenerationForAsset:(id)arg1;
 - (void)beginSignpostForThumbnailGenerationForAsset:(id)arg1 inputResourceTypeLabel:(id)arg2;
-- (id)dataByJPEGCompressingCGImage:(struct CGImage *)arg1 toLengthLimit:(long long)arg2 initialCompressionQuality:(float)arg3 size:(struct CGSize)arg4 orientation:(long long)arg5;
+- (id)_dataByJPEGCompressingCGImage:(struct CGImage *)arg1 orSource:(struct CGImageSource *)arg2 toLengthLimit:(long long)arg3 initialCompressionQuality:(float)arg4 size:(struct CGSize)arg5 orientation:(long long)arg6;
 - (id)_generateThumbnailForAsset:(id)arg1 fromOriginalImagePath:(id)arg2 size:(struct CGSize)arg3 compressionQuality:(float)arg4;
+- (id)_dataForThumbnailImageSource:(struct CGImageSource *)arg1 options:(id)arg2 originalOrientation:(long long)arg3;
+- (void)_logData:(id)arg1 withPrefix:(id)arg2 scaledOrientation:(long long)arg3 originalOrientation:(long long)arg4;
 - (id)dataForThumbnailFileAtPath:(id)arg1 rotatedToOrientation:(long long)arg2 size:(struct CGSize)arg3 compressionQuality:(float)arg4;
 - (void)_inverseAffineTransformForExifOrientation:(long long)arg1 width:(double)arg2 height:(double)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_ptpThumbnailForPenultimateImageWithAssetID:(id)arg1 size:(struct CGSize)arg2 compressionQuality:(float)arg3;
@@ -42,6 +44,7 @@
 - (id)_ptpThumbnailForSpatialOverCaptureVideoWithAssetID:(id)arg1 size:(struct CGSize)arg2 compressionQuality:(float)arg3;
 - (id)_ptpThumbnailForSpatialOverCaptureImageWithAssetID:(id)arg1 size:(struct CGSize)arg2 compressionQuality:(float)arg3;
 - (id)_ptpThumbnailForFullSizeRenderWithAssetID:(id)arg1 size:(struct CGSize)arg2 compressionQuality:(float)arg3;
+- (id)embeddedThumbnailDataForAsset:(id)arg1 requestedSize:(struct CGSize)arg2 shouldScale:(_Bool)arg3;
 - (id)_ptpThumbnailForOriginalWithAssetID:(id)arg1 size:(struct CGSize)arg2 compressionQuality:(float)arg3;
 - (_Bool)requestedSize:(struct CGSize)arg1 fitsInSourceSize:(struct CGSize)arg2;
 - (struct CGSize)masterThumbSize;
@@ -54,6 +57,7 @@
 - (void)_expungeAsset:(id)arg1 withReason:(id)arg2;
 - (_Bool)ptpDeletePhotoForAssetHandle:(id)arg1;
 - (_Bool)ptpCanDeleteFiles;
+@property(readonly, nonatomic) long long cplStorageState;
 - (id)ptpImagePropertiesForAssetHandle:(id)arg1;
 - (id)assetReaderForFormatConvertedPTPAsset:(id)arg1 ofManagedAsset:(id)arg2 path:(id)arg3;
 - (id)adjustmentFilePathForAsset:(id)arg1 requiresTemporaryFileCleanup:(_Bool *)arg2;

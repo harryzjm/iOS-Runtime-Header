@@ -24,7 +24,7 @@
 @property __weak id <HDSynchronousTaskGroupDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)finishTask;
 - (void)failTaskWithError:(id)arg1;
-- (void)beginTask;
+- (long long)beginTask;
 @property(readonly) int taskCount;
 - (id)init;
 

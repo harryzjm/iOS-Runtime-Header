@@ -7,11 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <MediaPlayer/NSCopying-Protocol.h>
-#import <MediaPlayer/_MPStateDumpPropertyListTransformable-Protocol.h>
+#import <MediaPlayer/NSObject-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface MPResponse : NSObject <_MPStateDumpPropertyListTransformable, NSCopying>
+@interface MPResponse : NSObject <NSCopying, NSObject>
 {
     _Bool _valid;
     id _request;

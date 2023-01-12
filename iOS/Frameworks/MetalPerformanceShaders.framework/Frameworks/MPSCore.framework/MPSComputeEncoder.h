@@ -10,15 +10,18 @@
 #import <MPSCore/MTLComputeCommandEncoder-Protocol.h>
 
 @class NSString;
-@protocol MTLComputeCommandEncoder, MTLDevice;
+@protocol MTLComputeCommandEncoder, MTLComputePipelineState, MTLDevice;
 
 @interface MPSComputeEncoder : NSObject <MTLComputeCommandEncoder, MTLCommandEncoder>
 {
     id <MTLComputeCommandEncoder> _encoder;
+    id <MTLComputePipelineState> _state;
 }
 
 - (void)dealloc;
 - (_Bool)respondsToSelector:(SEL)arg1;
+- (void)dispatchThreadgroups:(CDStruct_14f26992)arg1 threadsPerThreadgroup:(CDStruct_14f26992)arg2;
+- (void)setComputePipelineState:(id)arg1;
 - (void)setBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)initWithCommandBuffer:(id)arg1 withDispatchType:(unsigned long long)arg2;

@@ -12,9 +12,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)nsStringWithHandlingMultilevelCategoryDataFromOCText:(const struct OcText *)arg1 chdFormula:(id)arg2 state:(id)arg3;
-+ (unsigned long long)edFontIndexForXlChartTextFrame:(struct XlChartTextFrame *)arg1 state:(id)arg2;
-+ (id)edStringFromXlChartTextFrame:(const struct XlChartTextFrame *)arg1 state:(id)arg2;
-+ (id)edRunsFromXlChartTextFrame:(const struct XlChartTextFrame *)arg1 state:(id)arg2;
++ (unsigned long long)edFontIndexForXlChartTextFrame:(void *)arg1 state:(id)arg2;
++ (id)edStringFromXlChartTextFrame:(const void *)arg1 state:(id)arg2;
++ (id)edRunsFromXlChartTextFrame:(const void *)arg1 state:(id)arg2;
 
 @end
 

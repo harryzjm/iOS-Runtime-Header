@@ -21,7 +21,6 @@
     _Bool _hasInvalidatedDummyTabs;
     MCDPCContainer *_container;
     UITabBarController *_tabBarController;
-    UITabBarController *_hostTabBarController;
     MCDPCModel *_model;
     NSString *_bundleID;
     CPUINowPlayingButtonWrapperView *_nowPlayingButtonView;
@@ -38,7 +37,6 @@
 @property(retain, nonatomic) CPUINowPlayingButtonWrapperView *nowPlayingButtonView; // @synthesize nowPlayingButtonView=_nowPlayingButtonView;
 @property(retain, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property(retain, nonatomic) MCDPCModel *model; // @synthesize model=_model;
-@property(nonatomic) __weak UITabBarController *hostTabBarController; // @synthesize hostTabBarController=_hostTabBarController;
 @property(retain, nonatomic) UITabBarController *tabBarController; // @synthesize tabBarController=_tabBarController;
 @property(retain, nonatomic) MCDPCContainer *container; // @synthesize container=_container;
 - (void)traitCollectionDidChange:(id)arg1;

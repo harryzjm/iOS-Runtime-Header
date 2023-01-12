@@ -12,9 +12,9 @@
 @interface PXGMetalTextureAtlas <PXGMetalSpriteTexture>
 {
     id <MTLDevice> _device;
+    NSObject<OS_dispatch_queue> *_layoutQueue;
     NSObject<OS_dispatch_queue> *_syncQueue;
     long long _cols;
-    unsigned long long _bytesPerPixel;
     NSMutableIndexSet *_thumbnailIndexesUsedBySprites;
     NSMutableIndexSet *_spriteIndexesUsedBySprites;
     unsigned int *_spriteIndexByThumbnailIndex;
@@ -72,7 +72,8 @@
 - (void)processPendingTextureRequestIDsWithHandler:(CDUnknownBlockType)arg1;
 - (void)addSpriteWithTextureRequestID:(int)arg1 deliveryOrder:(unsigned int)arg2;
 - (_Bool)containsSpriteIndex:(unsigned int)arg1;
-- (void)getTextureInfos:(CDStruct_183601bc *)arg1 forSpriteIndexes:(unsigned int *)arg2 geometries:(const CDStruct_3ab912e1 *)arg3 spriteStyles:(const CDStruct_506f5052 *)arg4 spriteInfos:(const CDStruct_9d1ebe49 *)arg5 screenScale:(double)arg6 count:(unsigned int)arg7;
+- (void)getTextureInfos:(CDStruct_183601bc *)arg1 forSpriteIndexes:(unsigned int *)arg2 geometries:(const CDStruct_4f725fed *)arg3 spriteStyles:(const CDStruct_76b550e2 *)arg4 spriteInfos:(const CDStruct_9d1ebe49 *)arg5 screenScale:(double)arg6 count:(unsigned int)arg7;
+- (void)enumerateSpriteIndexes:(CDUnknownBlockType)arg1;
 - (void)getSpriteIndexes:(unsigned int *)arg1 maxSpriteCount:(unsigned int)arg2;
 @property(readonly, nonatomic) NSIndexSet *spriteIndexes;
 @property(readonly, nonatomic) unsigned int spriteCount;
@@ -86,18 +87,20 @@
 - (void)_checkinPendingThumbnailIndexesIfNeeded;
 - (void)removeSpriteIndex:(unsigned int)arg1 atThumbnailIndex:(unsigned int)arg2;
 - (void)_invalidateRenderedSpriteIndexes;
-- (unsigned int)addSpriteWithTextureRequestID:(int)arg1 thumbnailData:(id)arg2 bytesPerRow:(unsigned long long)arg3 contentsRect:(struct CGRect)arg4;
+- (void)addSpriteWithTextureRequestID:(int)arg1 thumbnailData:(id)arg2 size:(struct CGSize)arg3 bytesPerRow:(unsigned long long)arg4 contentsRect:(struct CGRect)arg5;
 @property(readonly, copy, nonatomic) NSIndexSet *thumbnailIndexesUsedBySprites;
 @property(readonly) _Bool isUnused;
 @property(readonly, nonatomic) unsigned int count;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (id)init;
-- (id)initWithThumbnailSize:(struct CGSize)arg1 pixelFormat:(unsigned long long)arg2 capacity:(unsigned int)arg3 colorProgram:(id)arg4 device:(id)arg5;
+- (id)initWithThumbnailSize:(struct CGSize)arg1 pixelFormat:(unsigned long long)arg2 capacity:(unsigned int)arg3 colorProgram:(id)arg4 device:(id)arg5 layoutQueue:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, nonatomic) _Bool hasSprites;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool isDegraded;
 @property(readonly) Class superclass;
 
 @end

@@ -8,13 +8,14 @@
 #import <AppleMediaServices/AMSURLProtocolDelegate-Protocol.h>
 #import <AppleMediaServices/NSURLSessionDelegate-Protocol.h>
 
-@class ACAccount, AMSURLSession, NSArray, NSString;
+@class ACAccount, AMSProcessInfo, AMSURLSession, NSArray, NSString;
 @protocol AMSBagProtocol, AMSRequestPresentationDelegate;
 
 @interface AMSAutomaticDownloadKindsSetTask <NSURLSessionDelegate, AMSURLProtocolDelegate, AMSBagConsumer>
 {
     ACAccount *_account;
     id <AMSBagProtocol> _bag;
+    AMSProcessInfo *_clientInfo;
     NSArray *_enabledMediaKinds;
     id <AMSRequestPresentationDelegate> _presentationDelegate;
     AMSURLSession *_session;
@@ -29,6 +30,7 @@
 @property(retain, nonatomic) AMSURLSession *session; // @synthesize session=_session;
 @property(readonly, nonatomic) __weak id <AMSRequestPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
 @property(readonly, nonatomic) NSArray *enabledMediaKinds; // @synthesize enabledMediaKinds=_enabledMediaKinds;
+@property(retain, nonatomic) AMSProcessInfo *clientInfo; // @synthesize clientInfo=_clientInfo;
 @property(readonly, nonatomic) id <AMSBagProtocol> bag; // @synthesize bag=_bag;
 @property(readonly, nonatomic) ACAccount *account; // @synthesize account=_account;
 - (void)AMSURLSession:(id)arg1 task:(id)arg2 handleDialogRequest:(id)arg3 completion:(CDUnknownBlockType)arg4;

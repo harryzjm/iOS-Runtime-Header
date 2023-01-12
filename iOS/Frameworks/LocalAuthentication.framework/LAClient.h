@@ -62,9 +62,11 @@ __attribute__((visibility("hidden")))
 - (void)serverPropertyForOption:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)optionsForInternalOperation:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)setOptions:(id)arg1 forInternalOperation:(long long)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)credentialOfType:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)setCredential:(id)arg1 type:(long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)isCredentialSet:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)setCredential:(id)arg1 forProcessedEvent:(long long)arg2 credentialType:(long long)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)pauseProcessedEvent:(long long)arg1 pause:(_Bool)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)resetProcessedEvent:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)retryProcessedEvent:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)failProcessedEvent:(long long)arg1 failureError:(id)arg2 reply:(CDUnknownBlockType)arg3;

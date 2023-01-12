@@ -6,7 +6,7 @@
 
 #import <prequelite/PQLConnection.h>
 
-@class br_pacer;
+@class NSString, br_pacer;
 
 __attribute__((visibility("hidden")))
 @interface BRCPQLConnection : PQLConnection
@@ -19,11 +19,26 @@ __attribute__((visibility("hidden")))
     long long _changesOverride;
     _Bool _isReadonly;
     unsigned long long _vmStepsExecuted;
+    NSString *_assertionPersonaIdentifier;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *assertionPersonaIdentifier; // @synthesize assertionPersonaIdentifier=_assertionPersonaIdentifier;
 @property(readonly, nonatomic) _Bool isReadonly; // @synthesize isReadonly=_isReadonly;
 @property(readonly, nonatomic) unsigned long long vmStepsExecuted; // @synthesize vmStepsExecuted=_vmStepsExecuted;
+- (id)fetchObject:(CDUnknownBlockType)arg1 sql:(id)arg2 args:(char *)arg3;
+- (id)fetchObject:(CDUnknownBlockType)arg1 sql:(id)arg2;
+- (id)fetchObjectOfClass:(Class)arg1 sql:(id)arg2 args:(char *)arg3;
+- (id)fetchObjectOfClass:(Class)arg1 sql:(id)arg2;
+- (id)fetchObjectOfClass:(Class)arg1 initializer:(SEL)arg2 sql:(id)arg3 args:(char *)arg4;
+- (id)fetchObjectOfClass:(Class)arg1 initializer:(SEL)arg2 sql:(id)arg3;
+- (id)fetch:(id)arg1 args:(char *)arg2;
+- (id)fetch:(id)arg1;
+- (_Bool)executeRaw:(id)arg1;
+- (_Bool)execute:(id)arg1 args:(char *)arg2;
+- (_Bool)execute:(id)arg1;
+- (void)assertOnQueue;
+- (_Bool)_validateIsRunningWithCorrectPersona;
 - (void)autovacuumIfNeeded;
 - (_Bool)needsAutovacuum;
 - (long long)sizeInBytes;

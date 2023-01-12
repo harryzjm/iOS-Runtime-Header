@@ -6,31 +6,32 @@
 
 #import <objc/NSObject.h>
 
-@class ISColor, NSArray, NSMutableArray, NSString;
-@protocol ISCompositorResource, ISEffect;
+@class NSArray, NSMutableArray, NSString;
+@protocol ISEffect;
 
 __attribute__((visibility("hidden")))
 @interface ISLayer : NSObject
 {
-    ISColor *_backgroundColor;
+    int _blendMode;
     NSString *_name;
-    id <ISEffect> _effect;
-    id <ISCompositorResource> _content;
     ISLayer *_mask;
+    id <ISEffect> _effect;
     ISLayer *_internalSuperlayer;
     NSMutableArray *_internalSublayers;
+    unsigned long long _coordinateSystem;
+    unsigned long long _flipped;
     struct CGRect _frame;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long flipped; // @synthesize flipped=_flipped;
+@property(nonatomic) unsigned long long coordinateSystem; // @synthesize coordinateSystem=_coordinateSystem;
 @property(readonly, nonatomic) NSMutableArray *internalSublayers; // @synthesize internalSublayers=_internalSublayers;
 @property(nonatomic) __weak ISLayer *internalSuperlayer; // @synthesize internalSuperlayer=_internalSuperlayer;
-@property(retain, nonatomic) ISLayer *mask; // @synthesize mask=_mask;
-@property(retain, nonatomic) id <ISCompositorResource> content; // @synthesize content=_content;
+@property(nonatomic) int blendMode; // @synthesize blendMode=_blendMode;
 @property(retain, nonatomic) id <ISEffect> effect; // @synthesize effect=_effect;
+@property(retain, nonatomic) ISLayer *mask; // @synthesize mask=_mask;
 @property(retain, nonatomic) NSString *name; // @synthesize name=_name;
-@property(retain, nonatomic) ISColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
-@property(nonatomic) struct CGRect frame; // @synthesize frame=_frame;
 - (id)debugDescription;
 @property(readonly, copy, nonatomic) NSArray *sublayers;
 - (void)insertSublayer:(id)arg1 atIndex:(unsigned int)arg2;
@@ -40,6 +41,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGRect bounds;
 @property(nonatomic) struct CGPoint position;
 @property(nonatomic) struct CGSize size;
+@property(nonatomic) struct CGRect frame; // @synthesize frame=_frame;
 - (id)init;
 
 @end

@@ -10,14 +10,14 @@
 #import <Navigation/MNLocationProvider-Protocol.h>
 #import <Navigation/MNTracePlayerObserver-Protocol.h>
 
-@class MNTraceEventRecorder, MNTracePlayer, MNTraceRecorder, NSBundle, NSString;
+@class MNTracePlayer, MNTraceRecorder, NSBundle, NSString;
 @protocol GEOMotionContextProviderDelegate, MNLocationProviderDelegate, MNNavigationTraceManagerDelegate;
 
 @interface MNNavigationTraceManager : NSObject <MNTracePlayerObserver, MNLocationProvider, GEOMotionContextProvider>
 {
     MNTracePlayer *_tracePlayer;
     MNTraceRecorder *_traceRecorder;
-    MNTraceEventRecorder *_traceEventRecorder;
+    _Bool _isSimulation;
     int _navigationType;
     id <MNNavigationTraceManagerDelegate> _traceManagerDelegate;
     id <MNLocationProviderDelegate> _locationProviderDelegate;
@@ -26,7 +26,6 @@
 
 - (void).cxx_destruct;
 @property(nonatomic) int navigationType; // @synthesize navigationType=_navigationType;
-@property(readonly, nonatomic) MNTraceEventRecorder *traceEventRecorder; // @synthesize traceEventRecorder=_traceEventRecorder;
 @property(readonly, nonatomic) MNTraceRecorder *traceRecorder; // @synthesize traceRecorder=_traceRecorder;
 @property(readonly, nonatomic) MNTracePlayer *tracePlayer; // @synthesize tracePlayer=_tracePlayer;
 @property(nonatomic) __weak id <MNNavigationTraceManagerDelegate> traceManagerDelegate; // @synthesize traceManagerDelegate=_traceManagerDelegate;
@@ -37,21 +36,14 @@
 @property(readonly, nonatomic) double timeScale;
 @property(readonly, nonatomic) unsigned long long traceVersion;
 @property(readonly, nonatomic) _Bool isTracePlayer;
-@property(readonly, nonatomic) _Bool isSimulation;
-@property(readonly, nonatomic) _Bool usesCLMapCorrection;
 @property(readonly, nonatomic) _Bool coarseModeEnabled;
-@property(readonly, nonatomic) int authorizationStatus;
 @property(readonly, nonatomic) double expectedGpsUpdateInterval;
-- (void)requestWhenInUseAuthorizationWithPrompt;
-- (void)requestWhenInUseAuthorization;
-@property(copy, nonatomic) CDUnknownBlockType authorizationRequestBlock;
 @property(nonatomic) int headingOrientation;
-@property(nonatomic) _Bool matchInfoEnabled;
-@property(nonatomic) double distanceFilter;
-@property(nonatomic, getter=isLocationServicesPreferencesDialogEnabled) _Bool locationServicesPreferencesDialogEnabled;
-@property(nonatomic) double desiredAccuracy;
+@property(readonly, nonatomic) _Bool isAuthorized;
 @property(copy, nonatomic) NSString *effectiveBundleIdentifier;
 @property(retain, nonatomic) NSBundle *effectiveBundle;
+- (void)stopMonitoringForRegion:(id)arg1;
+- (void)startMonitoringForRegion:(id)arg1;
 - (void)resetForActiveTileGroupChanged;
 - (void)stopUpdatingVehicleHeading;
 - (void)startUpdatingVehicleHeading;
@@ -78,6 +70,8 @@
 - (void)tracePlayerDidPause:(id)arg1;
 - (void)tracePlayerDidStop:(id)arg1;
 - (void)tracePlayerDidStart:(id)arg1;
+- (void)_copyTraceToCrashReporterDirectory:(id)arg1;
+- (void)_createSymlinkForTracePath:(id)arg1;
 - (void)_recordStylesheet:(id)arg1;
 - (void)_recordEnvironmentInfo:(id)arg1;
 - (id)_defaultTraceExtension;
@@ -88,7 +82,7 @@
 - (_Bool)_isNavigating;
 - (void)close;
 - (void)openForSimulationWithRoute:(id)arg1 traceRecordingData:(id)arg2 traceNameOverride:(id)arg3;
-- (void)openForRecordingWithTraceRecordingData:(id)arg1 traceName:(id)arg2 isReconnecting:(_Bool)arg3 isSimulation:(_Bool)arg4;
+- (void)openForRecordingWithTraceRecordingData:(id)arg1 traceName:(id)arg2 selectedRouteIndex:(unsigned long long)arg3 isReconnecting:(_Bool)arg4 isSimulation:(_Bool)arg5;
 - (void)openForPlaybackWithTracePath:(id)arg1;
 - (void)dealloc;
 

@@ -14,8 +14,8 @@
 {
 }
 
-+ (_Bool)refreshSandboxExtensionForPath:(id)arg1 libraryID:(id)arg2 assetUUID:(id)arg3 error:(id *)arg4;
-+ (_Bool)refreshSandboxExtensionForPath:(id)arg1 assetID:(id)arg2 error:(id *)arg3;
++ (_Bool)refreshSandboxExtensionForURL:(id)arg1 libraryID:(id)arg2 assetUUID:(id)arg3 error:(id *)arg4;
++ (_Bool)refreshSandboxExtensionForURL:(id)arg1 assetID:(id)arg2 error:(id *)arg3;
 - (id)uniformTypeIdentifier;
 - (id)keyData;
 - (_Bool)isEqualToKey:(id)arg1;

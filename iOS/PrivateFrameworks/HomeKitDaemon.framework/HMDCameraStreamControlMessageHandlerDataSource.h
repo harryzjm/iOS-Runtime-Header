@@ -14,11 +14,13 @@
 {
 }
 
-@property(readonly) _Bool supportsReceivingRemoteCameraStream;
 - (id)createDynamicActivityAttributionPublisher;
-- (id)createStreamManagerSessionWithSessionID:(id)arg1 destinationID:(id)arg2 streamShowingAppIdentifier:(id)arg3 controlManager:(id)arg4 setupWaitPeriod:(double)arg5 error:(id *)arg6;
-- (id)createRemoteStreamControlManagerWithSessionID:(id)arg1 workQueue:(id)arg2 streamSnapshotHandler:(id)arg3 reachabilityPath:(unsigned long long)arg4 destinationID:(id)arg5 delegate:(id)arg6 delegateQueue:(id)arg7 accessory:(id)arg8 streamManagementService:(id)arg9 remoteCapabilities:(id)arg10 profileUniqueIdentifier:(id)arg11 residentMessageHandler:(id)arg12 streamPreference:(id)arg13;
+- (id)createStreamManagerSessionWithSessionID:(id)arg1 destinationID:(id)arg2 streamClientProcessInfo:(id)arg3 streamControlManager:(id)arg4 setupWaitPeriod:(double)arg5;
+- (id)createRemoteStreamControlManagerWithSessionID:(id)arg1 workQueue:(id)arg2 streamSnapshotHandler:(id)arg3 reachabilityPath:(unsigned long long)arg4 device:(id)arg5 delegate:(id)arg6 delegateQueue:(id)arg7 accessory:(id)arg8 streamManagementService:(id)arg9 remoteCapabilities:(id)arg10 profileUniqueIdentifier:(id)arg11 residentMessageHandler:(id)arg12 remoteAccessDevice:(id)arg13 streamPreference:(id)arg14;
 - (id)createLocalStreamControlManagerWithSessionID:(id)arg1 workQueue:(id)arg2 streamSnapshotHandler:(id)arg3 reachabilityPath:(unsigned long long)arg4 device:(id)arg5 delegate:(id)arg6 delegateQueue:(id)arg7 accessory:(id)arg8 streamManagementService:(id)arg9 remoteCapabilities:(id)arg10 supportedConfigCache:(id)arg11 streamPreference:(id)arg12;
+@property(readonly) _Bool supportsBidirectionalAudioForCameraStreaming;
+@property(readonly, getter=isMacOSDevice) _Bool macOSDevice;
+@property(readonly) _Bool supportsReceivingRemoteCameraStream;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

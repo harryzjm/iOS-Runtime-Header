@@ -6,25 +6,22 @@
 
 #import <UIFoundation/NSTextAttachment.h>
 
-@class UIImage;
-
 __attribute__((visibility("hidden")))
 @interface _UIImageTextAttachment : NSTextAttachment
 {
-    UIImage *_image;
     struct CGRect _bounds;
     struct {
         unsigned int explicitBounds:1;
     } _flags;
 }
 
-- (void).cxx_destruct;
 - (id)_deriveAttribute:(id)arg1 inStorage:(id)arg2 atIndex:(long long)arg3;
-- (id)_imageAdaptedForTextAtIndex:(long long)arg1 inContainer:(id)arg2 sizeOnly:(_Bool)arg3;
+- (id)_imageAdaptedForTextAtIndex:(long long)arg1 withAttributes:(id)arg2 inContainer:(id)arg3 sizeOnly:(_Bool)arg4;
+- (id)imageForBounds:(struct CGRect)arg1 attributes:(id)arg2 location:(id)arg3 textContainer:(id)arg4;
 - (id)imageForBounds:(struct CGRect)arg1 textContainer:(id)arg2 characterIndex:(unsigned long long)arg3;
+- (struct CGRect)attachmentBoundsForAttributes:(id)arg1 location:(id)arg2 textContainer:(id)arg3 proposedLineFragment:(struct CGRect)arg4 position:(struct CGPoint)arg5;
 - (struct CGRect)attachmentBoundsForTextContainer:(id)arg1 proposedLineFragment:(struct CGRect)arg2 glyphPosition:(struct CGPoint)arg3 characterIndex:(unsigned long long)arg4;
 - (void)setBounds:(struct CGRect)arg1;
-- (void)setImage:(id)arg1;
 - (id)_initWithImage:(id)arg1;
 
 @end

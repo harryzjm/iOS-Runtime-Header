@@ -9,7 +9,7 @@
 #import <CoreTelephony/NSCopying-Protocol.h>
 #import <CoreTelephony/NSSecureCoding-Protocol.h>
 
-@class CTDataUsage, CTDataUsed, NSString;
+@class CTDataUsed, NSString;
 
 @interface CTAppDataUsage : NSObject <NSCopying, NSSecureCoding>
 {
@@ -26,7 +26,7 @@
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-@property(readonly, nonatomic) CTDataUsage *usage;
+- (id)usage;
 - (id)init:(id)arg1 withDisplayName:(id)arg2 andUsage:(id)arg3;
 
 @end

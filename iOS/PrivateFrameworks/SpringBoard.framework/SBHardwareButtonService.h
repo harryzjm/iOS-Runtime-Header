@@ -8,10 +8,11 @@
 
 #import <SpringBoard/SBSystemServiceServerHardwareButtonDelegate-Protocol.h>
 
-@class BSMutableIntegerMap, FBServiceClientAuthenticator, NSMutableArray, NSString, RBSProcessMonitor;
+@class BSMutableIntegerMap, FBServiceClientAuthenticator, NSMutableArray, NSString, RBSProcessMonitor, SBSystemServiceServer;
 
 @interface SBHardwareButtonService : NSObject <SBSystemServiceServerHardwareButtonDelegate>
 {
+    SBSystemServiceServer *_systemServiceServer;
     FBServiceClientAuthenticator *_serviceClientHomeHardwareButtonHintSuppressionEntitlementAuthenticator;
     FBServiceClientAuthenticator *_serviceClientEventConsumerEntitlement;
     RBSProcessMonitor *_processMonitor;
@@ -69,6 +70,7 @@
 - (id)addObserver:(id)arg1;
 - (id)init;
 - (id)_init;
+- (id)_initWithSystemServiceServer:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -10,6 +10,13 @@
 {
 }
 
+- (_Bool)resolveConflictingDeviceMigrationState:(id)arg1 with:(id)arg2;
+- (_Bool)resolveConflictingAttachmentPreviewImage:(id)arg1 with:(id)arg2;
+- (_Bool)resolveConflictingNote:(id)arg1 with:(id)arg2;
+- (_Bool)resolveConflictingInlineAttachment:(id)arg1 with:(id)arg2;
+- (_Bool)resolveConflictingFolder:(id)arg1 with:(id)arg2;
+- (_Bool)resolveConflictingAttachment:(id)arg1 withInlineAttachment:(id)arg2;
+- (_Bool)resolveConstraintConflict:(id)arg1;
 - (id)initWithMergeType:(unsigned long long)arg1;
 - (id)init;
 - (_Bool)resolveConstraintConflicts:(id)arg1 error:(id *)arg2;

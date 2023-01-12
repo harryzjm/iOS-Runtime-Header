@@ -25,8 +25,11 @@
     _Bool _isUpdatingDisplayedContent;
     _Bool _isFavorite;
     _Bool _accessoryViewVisible;
+    _Bool _isAccessoryViewDoneAnimatingIn;
     _Bool _lowMemoryMode;
     _Bool _toggleCTM;
+    _Bool _revealsGainMapImage;
+    _Bool _isPresentedForPreview;
     _Bool __needsUpdateVideoPlayers;
     id <PUDisplayAsset> _asset;
     PUModelTileTransform *_modelTileTransform;
@@ -37,6 +40,7 @@
     long long _importState;
     NSObject<OS_dispatch_group> *_displayedContentUpdateGroup;
     PUBadgeInfoPromise *_badgeInfoPromise;
+    long long _assetSyndicationState;
     long long _lastAccessoryViewVisibilityChangeReason;
     long long _lastContentOffsetChangeReason;
     double _contentOffsetOverrideFactor;
@@ -47,6 +51,7 @@
     long long _displayedContentUpdateCount;
     PUMediaProvider *_mediaProvider;
     NSNumber *_isFavoriteOverride;
+    NSNumber *_assetSyndicationStateOverride;
     PUAssetReference *_assetReference;
     PUAssetSharedViewModel *_assetSharedViewModel;
     struct CGPoint _preferredContentOffset;
@@ -56,11 +61,14 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) PUAssetSharedViewModel *assetSharedViewModel; // @synthesize assetSharedViewModel=_assetSharedViewModel;
 @property(retain, nonatomic) PUAssetReference *assetReference; // @synthesize assetReference=_assetReference;
+@property(copy, nonatomic) NSNumber *assetSyndicationStateOverride; // @synthesize assetSyndicationStateOverride=_assetSyndicationStateOverride;
 @property(copy, nonatomic) NSNumber *isFavoriteOverride; // @synthesize isFavoriteOverride=_isFavoriteOverride;
 @property(retain, nonatomic) PUMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property(nonatomic) long long displayedContentUpdateCount; // @synthesize displayedContentUpdateCount=_displayedContentUpdateCount;
 @property(nonatomic, setter=_setCurrentFavoriteOverrideRequest:) long long _currentFavoriteOverrideRequest; // @synthesize _currentFavoriteOverrideRequest=__currentFavoriteOverrideRequest;
 @property(nonatomic, setter=_setNeedsUpdateVideoPlayers:) _Bool _needsUpdateVideoPlayers; // @synthesize _needsUpdateVideoPlayers=__needsUpdateVideoPlayers;
+@property(nonatomic) _Bool isPresentedForPreview; // @synthesize isPresentedForPreview=_isPresentedForPreview;
+@property(nonatomic) _Bool revealsGainMapImage; // @synthesize revealsGainMapImage=_revealsGainMapImage;
 @property(nonatomic) long long flippingFullSizeRenderState; // @synthesize flippingFullSizeRenderState=_flippingFullSizeRenderState;
 @property(nonatomic) _Bool toggleCTM; // @synthesize toggleCTM=_toggleCTM;
 @property(readonly, nonatomic) _Bool lowMemoryMode; // @synthesize lowMemoryMode=_lowMemoryMode;
@@ -70,8 +78,10 @@
 @property(nonatomic) struct CGPoint overridingContentOffset; // @synthesize overridingContentOffset=_overridingContentOffset;
 @property(nonatomic) struct CGPoint preferredContentOffset; // @synthesize preferredContentOffset=_preferredContentOffset;
 @property(nonatomic, setter=_setLastContentOffsetChangeReason:) long long lastContentOffsetChangeReason; // @synthesize lastContentOffsetChangeReason=_lastContentOffsetChangeReason;
+@property(nonatomic) _Bool isAccessoryViewDoneAnimatingIn; // @synthesize isAccessoryViewDoneAnimatingIn=_isAccessoryViewDoneAnimatingIn;
 @property(nonatomic, setter=_setLastAccessoryViewVisibilityChangeReason:) long long lastAccessoryViewVisibilityChangeReason; // @synthesize lastAccessoryViewVisibilityChangeReason=_lastAccessoryViewVisibilityChangeReason;
 @property(nonatomic, getter=isAccessoryViewVisible) _Bool accessoryViewVisible; // @synthesize accessoryViewVisible=_accessoryViewVisible;
+@property(readonly, nonatomic) long long assetSyndicationState; // @synthesize assetSyndicationState=_assetSyndicationState;
 @property(nonatomic, setter=_setFavorite:) _Bool isFavorite; // @synthesize isFavorite=_isFavorite;
 @property(copy, nonatomic) PUBadgeInfoPromise *badgeInfoPromise; // @synthesize badgeInfoPromise=_badgeInfoPromise;
 @property(retain, nonatomic) NSObject<OS_dispatch_group> *displayedContentUpdateGroup; // @synthesize displayedContentUpdateGroup=_displayedContentUpdateGroup;
@@ -91,6 +101,7 @@
 - (void)_handleBrowsingVideoPlayer:(id)arg1 didChange:(id)arg2;
 - (void)_handleAssetSharedViewModel:(id)arg1 didChange:(id)arg2;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
+- (void)_updateAssetSyndicationState;
 - (void)_updateFavoriteState;
 - (void)didUpdateDisplayedContent;
 - (void)willUpdateDisplayedContent;
@@ -108,6 +119,7 @@
 - (void)_invalidateVideoPlayers;
 - (void)_updateVideoPlayersLoadingAllowedIfNeeded;
 - (void)setSaveState:(long long)arg1;
+- (void)_setAssetSyndicationState:(long long)arg1;
 - (void)_pauseAndRewindVideoIfNeeded;
 - (_Bool)_shouldPauseAndRewindVideo;
 - (void)unregisterChangeObserver:(id)arg1;

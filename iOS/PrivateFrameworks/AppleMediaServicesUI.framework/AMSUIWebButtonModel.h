@@ -17,17 +17,25 @@ __attribute__((visibility("hidden")))
     _Bool _bold;
     _Bool _enabled;
     id <AMSUIWebActionRunnable> _action;
+    SEL _actionSelector;
     AMSUIWebActivityIndicatorModel *_activityIndicator;
+    id _target;
     NSString *_title;
+    long long _style;
+    NSString *_systemImageName;
     NSDictionary *_underlyingJSObject;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *underlyingJSObject; // @synthesize underlyingJSObject=_underlyingJSObject;
+@property(retain, nonatomic) NSString *systemImageName; // @synthesize systemImageName=_systemImageName;
+@property(nonatomic) long long style; // @synthesize style=_style;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
+@property(retain, nonatomic) id target; // @synthesize target=_target;
 @property(nonatomic) _Bool enabled; // @synthesize enabled=_enabled;
 @property(nonatomic) _Bool bold; // @synthesize bold=_bold;
 @property(retain, nonatomic) AMSUIWebActivityIndicatorModel *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
+@property(nonatomic) SEL actionSelector; // @synthesize actionSelector=_actionSelector;
 @property(retain, nonatomic) id <AMSUIWebActionRunnable> action; // @synthesize action=_action;
 - (id)createDialogAction;
 - (id)initWithJSObject:(id)arg1 context:(id)arg2;

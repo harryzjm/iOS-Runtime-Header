@@ -7,7 +7,7 @@
 #import <PlugInKit/NSXPCConnectionDelegate-Protocol.h>
 #import <PlugInKit/PKPlugInPrivate-Protocol.h>
 
-@class NSArray, NSBundle, NSDate, NSDictionary, NSObject, NSString, NSURL, NSUUID, NSUserDefaults, NSXPCConnection, Protocol;
+@class NSArray, NSBundle, NSDate, NSDictionary, NSMutableSet, NSObject, NSString, NSURL, NSUUID, NSUserDefaults, NSXPCConnection, Protocol;
 @protocol OS_dispatch_queue, PKCorePlugInProtocol, PKPlugIn;
 
 @interface PKHostPlugIn <PKPlugInPrivate, NSXPCConnectionDelegate>
@@ -16,6 +16,7 @@
     unsigned int _useCount;
     NSUserDefaults *_defaults;
     CDUnknownBlockType _notificationBlock;
+    NSArray *_preferredLanguages;
     NSXPCConnection *_pluginConnection;
     NSObject<OS_dispatch_queue> *__replyQueue;
     NSObject<OS_dispatch_queue> *__syncQueue;
@@ -37,9 +38,11 @@
     NSDate *_beganUsingAt;
     NSDictionary *_sourceForm;
     NSDictionary *_environment;
+    NSMutableSet *_requests;
 }
 
 - (void).cxx_destruct;
+@property(readonly) NSMutableSet *requests; // @synthesize requests=_requests;
 @property(retain) NSDictionary *environment; // @synthesize environment=_environment;
 @property(retain) NSDictionary *sourceForm; // @synthesize sourceForm=_sourceForm;
 @property(retain) NSDate *beganUsingAt; // @synthesize beganUsingAt=_beganUsingAt;
@@ -63,20 +66,28 @@
 @property(retain) NSObject<OS_dispatch_queue> *_syncQueue; // @synthesize _syncQueue=__syncQueue;
 @property(retain) NSObject<OS_dispatch_queue> *_replyQueue; // @synthesize _replyQueue=__replyQueue;
 @property(retain) NSXPCConnection *pluginConnection; // @synthesize pluginConnection=_pluginConnection;
+@property(copy) NSArray *preferredLanguages; // @synthesize preferredLanguages=_preferredLanguages;
 @property(copy) CDUnknownBlockType notificationBlock; // @synthesize notificationBlock=_notificationBlock;
 - (void)changeState:(unsigned long long)arg1;
 - (void)messageTraceUsage;
 - (void)unwind:(unsigned long long)arg1 force:(_Bool)arg2;
+- (_Bool)endUsingRequest:(id)arg1 error:(id *)arg2;
 - (_Bool)endUsingWithError:(id *)arg1;
+- (void)endUsingRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)endUsing:(CDUnknownBlockType)arg1;
 - (_Bool)useBundle:(id)arg1 error:(id *)arg2;
 - (_Bool)isSandboxed;
 - (_Bool)loadExtensions:(id)arg1 error:(id *)arg2;
 - (void)setBootstrapWithSubsystemOptions:(id)arg1;
 - (void)preparePlugInUsingService:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)startPlugInSynchronously:(_Bool)arg1 subsystemOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)startPlugInRequest:(id)arg1 synchronously:(_Bool)arg2 subsystemOptions:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)addRequest:(id)arg1;
+- (_Bool)beginUsingRequest:(id)arg1 error:(id *)arg2;
+- (_Bool)beginUsingRequest:(id)arg1 withSubsystemOptions:(id)arg2 error:(id *)arg3;
 - (_Bool)beginUsingWithSubsystemOptions:(id)arg1 error:(id *)arg2;
 - (_Bool)beginUsingWithError:(id *)arg1;
+- (void)beginUsingRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)beginUsingRequest:(id)arg1 withSubsystemOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)beginUsingWithSubsystemOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)beginUsing:(CDUnknownBlockType)arg1;
 @property(readonly) NSUUID *effectiveUUID;

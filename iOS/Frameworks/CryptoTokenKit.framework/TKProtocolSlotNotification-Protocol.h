@@ -7,6 +7,6 @@
 @class NSDictionary;
 
 @protocol TKProtocolSlotNotification
-- (void)notifyWithParameters:(NSDictionary *)arg1;
+- (void)notifyWithParameters:(NSDictionary *)arg1 reply:(void (^)(void))arg2;
 @end
 

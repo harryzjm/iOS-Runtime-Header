@@ -9,7 +9,7 @@
 #import <CFNetwork/NSCopying-Protocol.h>
 #import <CFNetwork/__NSURLSessionTaskGroupForConfiguration-Protocol.h>
 
-@class NSDictionary, NSMutableDictionary, NSMutableSet, NSOperationQueue, NSString, NSURLSessionConfiguration, NSUUID, __CFN_ConnectionContextManager, __CFN_SessionMetrics;
+@class NSDictionary, NSMutableDictionary, NSOperationQueue, NSString, NSURLSessionConfiguration, NSUUID, __CFN_ConnectionContextManager, __CFN_SessionMetrics, __NSCFURLSessionDelegateWrapper;
 @protocol NSURLSessionDelegate, OS_dispatch_queue;
 
 @interface NSURLSession : NSObject <NSCopying, __NSURLSessionTaskGroupForConfiguration>
@@ -20,6 +20,7 @@
     struct os_unfair_lock_s _lock;
     _Bool _invalid_ivar;
     _Bool _isSharedSession_ivar;
+    __NSCFURLSessionDelegateWrapper *_delegateWrapper;
     NSOperationQueue *_delegateQueue_ivar;
     NSObject<OS_dispatch_queue> *_delegateDispatchQueue;
     id <NSURLSessionDelegate> _delegate_ivar;
@@ -28,7 +29,7 @@
     NSObject<OS_dispatch_queue> *_workQueue;
     NSUUID *_uuid_ivar;
     NSString *_tlsSessionCachePrefix;
-    NSMutableSet *_h1FallbackHosts;
+    NSMutableDictionary *_httpFallbackHosts;
     NSMutableDictionary *_coalescing;
     __CFN_SessionMetrics *_metrics;
 }
@@ -36,6 +37,8 @@
 + (id)_sessionWithConfiguration:(id)arg1 delegate:(id)arg2 delegateDispatchQueue:(id)arg3;
 + (id)sessionWithConfiguration:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3;
 + (id)sessionWithConfiguration:(id)arg1;
++ (void)_enumerateHTTPHeaderFieldsWithRequest:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
++ (void)_enumerateHTTPHeaderFieldsWithCFHTTPMessage:(struct __CFHTTPMessage *)arg1 usingBlock:(CDUnknownBlockType)arg2;
 + (void)_disableATS;
 + (void)_disableAppSSO;
 + (void)_strictTrustEvaluate:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -60,6 +63,7 @@
 - (id)initWithConfiguration:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3 delegateDispatchQueue:(id)arg4;
 - (id)streamTaskWithNetService:(id)arg1;
 - (id)streamTaskWithHostName:(id)arg1 port:(long long)arg2;
+- (id)assetDownloadTaskWithConfiguration:(id)arg1;
 - (id)aggregateAssetDownloadTaskWithURLAsset:(id)arg1 mediaSelections:(id)arg2 assetTitle:(id)arg3 assetArtworkData:(id)arg4 options:(id)arg5;
 - (id)assetDownloadTaskWithURLAsset:(id)arg1 assetTitle:(id)arg2 assetArtworkData:(id)arg3 options:(id)arg4;
 - (id)assetDownloadTaskWithURLAsset:(id)arg1 destinationURL:(id)arg2 options:(id)arg3;

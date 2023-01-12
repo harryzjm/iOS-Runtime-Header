@@ -52,6 +52,8 @@
 - (_Bool)readFixedSInt32:(int *)arg1 error:(id *)arg2;
 - (_Bool)writeFixedFloat:(float)arg1 tag:(unsigned long long)arg2 error:(id *)arg3;
 - (_Bool)readFixedFloat:(float *)arg1 error:(id *)arg2;
+- (_Bool)writeVarIntBoolean:(_Bool)arg1 tag:(unsigned long long)arg2 error:(id *)arg3;
+- (_Bool)readVarIntBoolean:(_Bool *)arg1 error:(id *)arg2;
 - (_Bool)writeVarIntUInt64:(unsigned long long)arg1 tag:(unsigned long long)arg2 error:(id *)arg3;
 - (_Bool)readVarIntUInt64:(unsigned long long *)arg1 error:(id *)arg2;
 - (_Bool)writeVarIntSInt64:(long long)arg1 tag:(unsigned long long)arg2 error:(id *)arg3;

@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property(readonly, nonatomic) NSString *resetType; // @synthesize resetType=_resetType;
 - (id)serverMessage;
-- (id)initWithResetType:(id)arg1 reason:(id)arg2 uuid:(id)arg3;
+- (id)initWithResetType:(id)arg1 reason:(id)arg2 uuid:(id)arg3 libraryIdentifier:(id)arg4;
 
 @end
 

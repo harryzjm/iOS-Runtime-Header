@@ -10,10 +10,12 @@
 
 @interface HUPersonalRequestsDescriptionFooterItem : HFItem
 {
+    _Bool _hasSiriEndpointAccessories;
     HULocationDeviceManager *_locationDeviceManager;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool hasSiriEndpointAccessories; // @synthesize hasSiriEndpointAccessories=_hasSiriEndpointAccessories;
 @property(readonly, nonatomic) HULocationDeviceManager *locationDeviceManager; // @synthesize locationDeviceManager=_locationDeviceManager;
 - (id)_locationDeviceTextForDeviceNameString:(id)arg1;
 - (id)_itemUpdateOutcomeForLocationDeviceText:(id)arg1;

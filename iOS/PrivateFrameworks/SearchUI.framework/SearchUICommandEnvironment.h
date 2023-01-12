@@ -8,8 +8,8 @@
 
 #import <SearchUI/NSCopying-Protocol.h>
 
-@class NSString, UIView, UIViewController;
-@protocol SearchUIFeedbackDelegate, SearchUIResultsViewDelegate, SearchUIShowMoreSectionsDelegate;
+@class NSString, SFButtonItem, SFResultSection, SearchUISectionModel, UIView, UIViewController;
+@protocol SearchUICommandDelegate, SearchUIFeedbackDelegate, SearchUIResultsViewDelegate, SearchUIRowModelViewDelegate, SearchUIShowMoreSectionsDelegate;
 
 @interface SearchUICommandEnvironment : NSObject <NSCopying>
 {
@@ -20,16 +20,26 @@
     id <SearchUIFeedbackDelegate> _feedbackDelegate;
     id <SearchUIResultsViewDelegate> _resultsViewDelegate;
     id <SearchUIShowMoreSectionsDelegate> _showMoreSectionsDelegate;
+    id <SearchUICommandDelegate> _commandDelegate;
+    id <SearchUIRowModelViewDelegate> _rowModelViewDelegate;
     long long _selectableGridPunchoutIndex;
     NSString *_searchString;
     NSString *_sectionTitle;
+    unsigned long long _queryId;
+    SearchUISectionModel *_lastEngagedSection;
+    SFButtonItem *_buttonItem;
+    SFResultSection *_section;
     UIViewController *_presentingViewController;
     UIView *_sourceView;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) UIView *sourceView; // @synthesize sourceView=_sourceView;
+@property(nonatomic) __weak UIView *sourceView; // @synthesize sourceView=_sourceView;
 @property(retain, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
+@property(retain, nonatomic) SFResultSection *section; // @synthesize section=_section;
+@property(retain, nonatomic) SFButtonItem *buttonItem; // @synthesize buttonItem=_buttonItem;
+@property(nonatomic) __weak SearchUISectionModel *lastEngagedSection; // @synthesize lastEngagedSection=_lastEngagedSection;
+@property(nonatomic) unsigned long long queryId; // @synthesize queryId=_queryId;
 @property(copy, nonatomic) NSString *sectionTitle; // @synthesize sectionTitle=_sectionTitle;
 @property(copy, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
 @property(nonatomic) long long selectableGridPunchoutIndex; // @synthesize selectableGridPunchoutIndex=_selectableGridPunchoutIndex;
@@ -37,6 +47,8 @@
 @property(nonatomic) _Bool threeDTouchEnabled; // @synthesize threeDTouchEnabled=_threeDTouchEnabled;
 @property(nonatomic) _Bool shouldUseStandardSectionInsets; // @synthesize shouldUseStandardSectionInsets=_shouldUseStandardSectionInsets;
 @property(nonatomic) _Bool shouldUseInsetRoundedSections; // @synthesize shouldUseInsetRoundedSections=_shouldUseInsetRoundedSections;
+@property(nonatomic) __weak id <SearchUIRowModelViewDelegate> rowModelViewDelegate; // @synthesize rowModelViewDelegate=_rowModelViewDelegate;
+@property(nonatomic) __weak id <SearchUICommandDelegate> commandDelegate; // @synthesize commandDelegate=_commandDelegate;
 @property(nonatomic) __weak id <SearchUIShowMoreSectionsDelegate> showMoreSectionsDelegate; // @synthesize showMoreSectionsDelegate=_showMoreSectionsDelegate;
 @property(nonatomic) __weak id <SearchUIResultsViewDelegate> resultsViewDelegate; // @synthesize resultsViewDelegate=_resultsViewDelegate;
 @property(nonatomic) __weak id <SearchUIFeedbackDelegate> feedbackDelegate; // @synthesize feedbackDelegate=_feedbackDelegate;

@@ -6,12 +6,12 @@
 
 #import <BackBoardServices/NSObject-Protocol.h>
 
-@class BKSProcessExitContext, NSError, NSString;
+@class NSError, NSString, RBSProcessExitContext;
 
 @protocol BKSAlternateSystemAppClientProtocol <NSObject>
 - (void)alternateSystemAppWithBundleIDDidTerminate:(NSString *)arg1;
 - (void)alternateSystemAppWithBundleIDDidOpen:(NSString *)arg1;
-- (void)alternateSystemAppWithBundleID:(NSString *)arg1 didExitWithContext:(BKSProcessExitContext *)arg2;
+- (void)alternateSystemAppWithBundleID:(NSString *)arg1 didExitWithContext:(RBSProcessExitContext *)arg2;
 - (void)alternateSystemAppWithBundleID:(NSString *)arg1 failedToOpenWithResult:(NSError *)arg2;
 - (void)didUnblockSystemAppForAlternateSystemApp;
 - (void)didBlockSystemAppForAlternateSystemApp;

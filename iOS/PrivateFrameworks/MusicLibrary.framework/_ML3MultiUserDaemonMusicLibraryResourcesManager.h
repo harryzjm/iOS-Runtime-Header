@@ -7,7 +7,7 @@
 #import <MusicLibrary/_ML3MultiUserDaemonAccountChangeOperationDelegate-Protocol.h>
 
 @class ACAccountStore, NSObject, NSOperationQueue, NSString;
-@protocol ML3AccountInformationProviding, MLMediaLibraryAccountChangeObserver, OS_dispatch_queue;
+@protocol MLMediaLibraryAccountChangeObserver, OS_dispatch_queue, _MSVAccountInformationProviding;
 
 __attribute__((visibility("hidden")))
 @interface _ML3MultiUserDaemonMusicLibraryResourcesManager <_ML3MultiUserDaemonAccountChangeOperationDelegate>
@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_serialQueue;
     NSObject<OS_dispatch_queue> *_calloutQueue;
     NSOperationQueue *_accountChangeOperationQueue;
-    id <ML3AccountInformationProviding> _accountInfo;
+    id <_MSVAccountInformationProviding> _accountInfo;
     id <MLMediaLibraryAccountChangeObserver> _accountChangeObserver;
     ACAccountStore *_accountStore;
 }
@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
 @property(nonatomic) __weak id <MLMediaLibraryAccountChangeObserver> accountChangeObserver; // @synthesize accountChangeObserver=_accountChangeObserver;
-@property(retain, nonatomic) id <ML3AccountInformationProviding> accountInfo; // @synthesize accountInfo=_accountInfo;
+@property(retain, nonatomic) id <_MSVAccountInformationProviding> accountInfo; // @synthesize accountInfo=_accountInfo;
 @property(retain, nonatomic) NSOperationQueue *accountChangeOperationQueue; // @synthesize accountChangeOperationQueue=_accountChangeOperationQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *calloutQueue; // @synthesize calloutQueue=_calloutQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;

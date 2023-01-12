@@ -18,6 +18,7 @@
 + (id)contentCategories;
 + (id)outputTypes;
 + (id)ownedTypes;
++ (id)stringConversionBehavior;
 + (id)propertyBuilders;
 - (id)generateObjectRepresentationForClass:(Class)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)distance;

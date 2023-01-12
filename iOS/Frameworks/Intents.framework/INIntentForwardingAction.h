@@ -13,6 +13,7 @@
 @interface INIntentForwardingAction : NSObject <NSSecureCoding>
 {
     _Bool _allowsScenelessAppLaunch;
+    _Bool _allowsForegroundAppLaunch;
     NSString *_appBundleIdentifier;
     INIntent *_intent;
     CDStruct_4c969caf _hostProcessAuditToken;
@@ -21,14 +22,14 @@
 + (_Bool)supportsSecureCoding;
 + (Class)responseClass;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool allowsForegroundAppLaunch; // @synthesize allowsForegroundAppLaunch=_allowsForegroundAppLaunch;
 @property(nonatomic) _Bool allowsScenelessAppLaunch; // @synthesize allowsScenelessAppLaunch=_allowsScenelessAppLaunch;
 @property(readonly, nonatomic) CDStruct_4c969caf hostProcessAuditToken; // @synthesize hostProcessAuditToken=_hostProcessAuditToken;
 @property(readonly, nonatomic) INIntent *intent; // @synthesize intent=_intent;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)executeLocallyWithIntentDeliverer:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)executeRemotelyWithVendorRemote:(id)arg1 appHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)executeRemotelyWithVendorRemote:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (_Bool)executeRemotelyWithVendorRemote:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) NSString *appBundleIdentifier; // @synthesize appBundleIdentifier=_appBundleIdentifier;
 - (id)initWithIntent:(id)arg1;
 

@@ -8,30 +8,56 @@
 
 @interface VNDetectBarcodesRequest
 {
+    _Bool _useSegmentationPregating;
 }
 
 + (id)availableLocateModes;
-+ (void)recordDefaultOptionsInDictionary:(id)arg1;
++ (id)availableLocateModesRev2;
++ (id)availableLocateModesRev1;
 + (id)supportedSymbologies;
-+ (id)_allBarcodeSymbologies;
++ (id)supportedSymbologiesRev2Private;
++ (id)supportedSymbologiesRev2;
++ (id)_allBarcodeSymbologiesRev2Private;
++ (id)_allBarcodeSymbologiesRev2;
++ (id)supportedSymbologiesRev1;
++ (id)_allBarcodeSymbologiesRev1;
++ (id)barcodeSymbologyForMRCSymbology:(struct __CFString *)arg1;
++ (struct __CFString *)MRCSymbologyForBarcodeSymbology:(id)arg1;
 + (id)barcodeSymbologyForACBSBarcodeType:(id)arg1;
 + (id)ACBSBarcodeTypeForBarcodeSymbology:(id)arg1;
 + (Class)configurationClass;
 + (void)initialize;
++ (id)descriptionForPrivateRevision:(unsigned long long)arg1;
++ (id)supportedPrivateRevisions;
++ (const CDStruct_7d93034e *)revisionAvailability;
+@property(nonatomic) _Bool useSegmentationPregating; // @synthesize useSegmentationPregating=_useSegmentationPregating;
+- (void)resolvedRevisionDidChangeFromRevision:(unsigned long long)arg1;
 - (void)applyConfigurationOfRequest:(id)arg1;
 @property(nonatomic) _Bool stopAtFirstPyramidWith2DCode;
 @property(copy, nonatomic) NSString *locateMode;
 @property(copy, nonatomic) NSArray *symbologies;
+- (id)availableLocateModesAndReturnError:(id *)arg1;
 - (_Bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
-- (id)_barcodesDetectedInImageBuffer:(id)arg1 usingACBSConfig:(struct ACBSConfig *)arg2 requestRevision:(unsigned long long)arg3 error:(id *)arg4;
-- (id)newBarcodeObservationForACBSBarcodeInfo:(id)arg1 imageWidth:(unsigned long long)arg2 imageHeight:(unsigned long long)arg3 roiCroppingPixelRect:(struct CGRect)arg4 requestRevision:(unsigned long long)arg5 error:(id *)arg6;
+- (id)_barcodesDetectedInImageBuffer:(id)arg1 usingACBSConfig:(struct ACBSConfig *)arg2 originatingRequestSpecifier:(id)arg3 error:(id *)arg4;
+- (id)newBarcodeObservationForACBSBarcodeInfo:(id)arg1 imageWidth:(unsigned long long)arg2 imageHeight:(unsigned long long)arg3 roiCroppingPixelRect:(struct CGRect)arg4 originatingRequestSpecifier:(id)arg5 error:(id *)arg6;
 - (_Bool)_getCornerPointsFromCodeLocationPoints:(id)arg1 bottomLeft:(struct CGPoint *)arg2 topLeft:(struct CGPoint *)arg3 topRight:(struct CGPoint *)arg4 bottomRight:(struct CGPoint *)arg5;
+- (id)_machineReadableCodesDetectedInImageBuffer:(id)arg1 originatingRequestSpecifier:(id)arg2 error:(id *)arg3;
+- (id)newBarcodeObservationForMRCDescriptor:(struct __MRCDescriptor *)arg1 roiCroppingPixelRect:(struct CGRect)arg2 originatingRequestSpecifier:(id)arg3 error:(id *)arg4;
+- (struct __CFDictionary *)_createMRCDecoderOptionsAndReturnError:(id *)arg1;
+- (long long)_MRCLocateMode;
 - (struct ACBSConfig *)_createACBSConfigAndReturnError:(id *)arg1;
 - (int)_ACBarcodeRecognizerLocateMode;
+- (id)_newVNBarcodeSymbologyPDF417DescriptorForMRCDescriptor:(struct __MRCDescriptor *)arg1 error:(id *)arg2;
+- (id)_newVNBarcodeSymbologyAztecDescriptorForMRCDescriptor:(struct __MRCDescriptor *)arg1 error:(id *)arg2;
+- (id)_newVNBarcodeSymbologyQRDescriptorForMRCDescriptor:(struct __MRCDescriptor *)arg1 error:(id *)arg2;
 - (id)_newVNBarcodeSymbologyPDF417DescriptorForACBSBarcodeInfo:(id)arg1;
 - (id)_newVNBarcodeSymbologyAztecDescriptorForACBSBarcodeInfo:(id)arg1;
 - (id)_newVNBarcodeSymbologyQRDescriptorForACBSBarcodeInfo:(id)arg1;
+- (id)supportedSymbologiesAndReturnError:(id *)arg1;
 - (_Bool)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSArray *results; // @dynamic results;
 
 @end
 

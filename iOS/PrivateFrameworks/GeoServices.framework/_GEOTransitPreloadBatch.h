@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
     unsigned long long bytesLoadedFromNetwork;
     double startTime;
     double endTime;
-    struct vector<GEOLocationCoordinate2D, std::__1::allocator<GEOLocationCoordinate2D>> coords;
+    struct vector<GEOLocationCoordinate2D, std::allocator<GEOLocationCoordinate2D>> coords;
     NSMutableArray *_latLngToLoad;
     unsigned int priority;
     id <GEOMapServiceTicket> placeDataRequestTicketForBatch;

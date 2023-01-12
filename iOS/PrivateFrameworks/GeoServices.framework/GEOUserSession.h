@@ -6,24 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class GEOUserSessionEntity, GEOUserSessionSnapshot, NSData;
+@class GEOUserSessionEntity, NSData, NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 @interface GEOUserSession : NSObject
 {
-    struct GEOSessionID _sessionID;
-    double _sessionCreationTime;
-    unsigned int _sequenceNumber;
-    struct GEOSessionID _longSessionID;
-    double _longSessionIDGenerationTime;
-    struct GEOSessionID _15MonthSessionID;
-    double _15MonthSessionIDGenerationTime;
     _Bool _shareSessionWithMaps;
-    GEOUserSessionEntity *_mapsUserSessionEntity;
-    _Bool _zeroSessionIDMode;
-    struct GEOSessionID _cohortSessionID;
-    double _cohortSessionStartTime;
-    struct os_unfair_lock_s _lock;
+    struct GEOSessionID _shortSessionID;
+    double _shortSessionStartTime;
+    struct os_unfair_lock_s _shortNavSessionLock;
+    _Bool _shortNavSessionNeedsInit;
+    int _shortSessionChangedToken;
     NSData *_navigationDirectionsID;
     struct GEOSessionID _navigationSessionID;
     double _navigationSessionStartTime;
@@ -31,53 +24,66 @@
     struct GEOSessionID _previousNavigationSessionID;
     double _previousNavigationSessionStartTime;
     double _previousNavigationSessionEndTime;
+    struct os_unfair_lock_s _longSessionLock;
+    NSMutableDictionary *_longSessionByAppID;
+    _Bool _longSessionNeedsInit;
     struct GEOSessionID _zeroSessionID;
-    unsigned char _shortSessionMachElapsedShiftFactor;
-    struct GEOSessionID _shortSessionID;
-    double _shortSessionCreationTime;
-    unsigned long long _shortSessionMachTimeBasis;
-    NSObject<OS_dispatch_queue> *_snapshotQueue;
-    int _shortSessionChangedToken;
+    NSObject<OS_dispatch_queue> *_serialQueue;
 }
 
 + (id)sharedInstance;
 + (void)setInitialShareSessionWithMaps:(_Bool)arg1;
 + (_Bool)initialShareSessionWithMaps;
-+ (void)setIsGeod;
-+ (_Bool)isGeod;
++ (id)lowBytesStringFromSession:(struct GEOSessionID)arg1;
++ (id)highBytesStringFromSession:(struct GEOSessionID)arg1;
++ (id)mapsUnifiedBundleId;
++ (struct GEOSessionID)_newSessionId;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool zeroSessionIDMode; // @synthesize zeroSessionIDMode=_zeroSessionIDMode;
 @property(nonatomic) _Bool shareSessionWithMaps; // @synthesize shareSessionWithMaps=_shareSessionWithMaps;
-- (void)prepareForNewShortSession;
 - (void)endNavigationSession;
 - (void)startNavigationSessionWithDirectionsID:(id)arg1 originalDirectionsID:(id)arg2;
-@property(readonly, nonatomic) GEOUserSessionEntity *navSessionEntity;
-@property(readonly, nonatomic) GEOUserSessionEntity *fifteenMonthSessionEntity;
-@property(readonly, nonatomic) GEOUserSessionEntity *longSessionEntity;
-- (void)_updateNavSessionID;
-- (void)_generateNewNavSessionID;
-- (void)setSharedMapsUserSessionEntity:(id)arg1 shareSessionIDWithMaps:(_Bool)arg2;
-@property(readonly, nonatomic) GEOUserSessionSnapshot *userSessionSnapshot;
-@property(retain, nonatomic) GEOUserSessionEntity *mapsUserSessionEntity; // @synthesize mapsUserSessionEntity=_mapsUserSessionEntity;
-- (id)shortSessionEntity;
-@property(readonly, nonatomic) struct GEOSessionID fifteenMonthSessionID;
-@property(readonly, nonatomic) struct GEOSessionID longSessionID;
+@property(readonly, nonatomic) struct GEOSessionID navSessionID;
+- (void)_updateNavSessionIDAtTime:(double)arg1;
+- (void)_generateNewNavSessionIDAtTime:(double)arg1;
 - (void)mapsSessionEntityWithCallback:(CDUnknownBlockType)arg1 shareSessionIDWithMaps:(_Bool)arg2 resetSession:(_Bool)arg3;
-- (void)_resetSessionID;
-- (void)_renew15MonthSessionId;
-- (void)_rollInitial15MonthSessionId;
-- (void)_create15MonthSessionFirstTime:(_Bool)arg1;
-- (void)_renewLongSessionID;
-- (void)_rollInitialLongSessionId;
-- (void)_createLongSessionWithOffset:(_Bool)arg1;
-@property(readonly, nonatomic) GEOUserSessionEntity *cohortSessionEntity;
-- (void)_safe_renewLongSessionID;
-- (void)dealloc;
+- (void)setSharedMapsUserSessionEntity:(id)arg1 shareSessionIDWithMaps:(_Bool)arg2;
+@property(copy, nonatomic) GEOUserSessionEntity *mapsShortSession;
+@property(copy, nonatomic) GEOUserSessionEntity *mapsUserSessionEntity;
+- (void)_setShortSessionId:(struct GEOSessionID)arg1 sessionCreateTime:(double)arg2;
+- (id)_mapsUserSessionEntity;
+- (void)shortSessionValues:(CDUnknownBlockType)arg1;
+- (void)_mapsShortSessionValues:(CDUnknownBlockType)arg1;
+- (void)_saveSharedSessionDataByAppId:(id)arg1;
+- (id)_sharedSessionDataByAppId;
+- (void)_resetShortSessionID;
+- (void)shortAndNavSessionValues:(CDUnknownBlockType)arg1;
+- (void)_initializeShortAndNavData;
+- (void)fifteenMonthSessionValuesOnQueue:(id)arg1 valuesBlock:(CDUnknownBlockType)arg2;
+- (id)_create15MonthSessionAtTime:(double)arg1 epoch:(unsigned long long)arg2 mapsFirstUseDate:(double)arg3;
+- (void)_get15moSessionDataUsingTime:(double)arg1 currentEpoch:(unsigned long long)arg2 queue:(id)arg3 callback:(CDUnknownBlockType)arg4;
+- (void)longSessionValuesForAppId:(id)arg1 completionQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_accessLongSessionValuesInBlock:(CDUnknownBlockType)arg1;
+- (void)_initializeLongSessionData;
 - (id)init;
-- (double)_getCurrentTime;
-- (void)_overrideShortSessionId:(struct GEOSessionID)arg1 sessionMachBasisTime:(unsigned long long)arg2 sessionStartTime:(double)arg3;
-- (void)_shortSessionWithBasisComponentsCompletion:(CDUnknownBlockType)arg1;
-- (void)_updateWithNewUUIDForSessionID:(struct GEOSessionID *)arg1;
+- (id)longSessionAppIdForActualAppId:(id)arg1;
+- (void)_setPersistedLongSessionData:(id)arg1;
+- (id)_getPersistedLongSessionData;
+- (void)_removePersisted15MoSessionDeviceEpoch;
+- (unsigned long long)_getPersisted15MoSessionDeviceEpoch;
+- (void)_removePersisted15MoSessionStartTime;
+- (double)_getPersisted15MoSessionStartTime;
+- (void)_removePersisted15MoSessionId;
+- (id)_getPersisted15MoSessionIdPBData;
+- (struct GEOSessionID)_getPersisted15MoSessionId;
+- (unsigned long long)_get15moSessionConfiguredEpoch;
+- (void)_setPersisted15MoSessionData:(id)arg1 onQueue:(id)arg2 callback:(CDUnknownBlockType)arg3;
+- (void)_getPersisted15MoSessionDataOnQueue:(id)arg1 callback:(CDUnknownBlockType)arg2;
+- (struct GEOSessionID)_sessionIDFromPBData:(id)arg1;
+- (id)_pbDataForSessionID:(struct GEOSessionID)arg1;
+- (void)_currentTimeResult:(CDUnknownBlockType)arg1;
+- (double)_currentTime;
+- (void)resetLongSessionValuesForAppId:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_processMapsAppDeletion;
 
 @end
 

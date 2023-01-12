@@ -49,7 +49,7 @@
 @property(nonatomic) __weak TSDLayout *connectedTo; // @synthesize connectedTo=mConnectedTo;
 @property(nonatomic) __weak TSDLayout *connectedFrom; // @synthesize connectedFrom=mConnectedFrom;
 - (id)p_infoForConnectingToInfo:(id)arg1;
-- (_Bool)p_isInfoAKeynoteMasterObject:(id)arg1;
+- (_Bool)p_isInfoAKeynoteTemplateObject:(id)arg1;
 - (_Bool)shouldAdjustForStrokeWidthForCollabCursor;
 - (struct CGPoint)getControlKnobPosition:(unsigned long long)arg1;
 @property(readonly, nonatomic, getter=isStraightLine) _Bool straightLine;
@@ -68,8 +68,9 @@
 - (int)wrapType;
 - (_Bool)canResetTextAndObjectHandles;
 - (_Bool)canBeIntersected;
-- (_Bool)canFlip;
 - (_Bool)canEndpointsCoincide;
+- (void)i_setVisibleLine:(_Bool)arg1;
+- (_Bool)i_visibleLine;
 - (_Bool)isInvisible;
 - (void)updateConnectedPath;
 - (id)clipPath:(id)arg1 onLayout:(id)arg2 outset:(double)arg3 reversed:(_Bool)arg4 isValid:(_Bool *)arg5;
@@ -88,7 +89,6 @@
 - (void)parentDidChange;
 - (_Bool)supportsFlipping;
 - (_Bool)supportsRotation;
-- (_Bool)supportsResize;
 - (_Bool)p_isConnectedToLockedObjects;
 - (_Bool)isDraggable;
 - (id)additionalLayoutsForRepCreation;

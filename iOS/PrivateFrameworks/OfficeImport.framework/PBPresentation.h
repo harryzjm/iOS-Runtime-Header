@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 
 + (void)addHeadersFootersToDocumentContainer:(id)arg1 instance:(int)arg2;
 + (void)setFontEntites:(id)arg1 environmentHolder:(id)arg2;
-+ (void)readFrom:(struct PptBinaryReader *)arg1 to:(id)arg2 cancel:(id)arg3 asThumbnail:(_Bool)arg4 delegate:(id)arg5;
++ (void)readFrom:(void *)arg1 to:(id)arg2 cancel:(id)arg3 asThumbnail:(_Bool)arg4 delegate:(id)arg5;
 + (id)drawingGroupHolderWithDocumentContainerHolder:(id)arg1;
 + (void)readNotes:(id)arg1 masterLayoutMap:(id)arg2 slideIdMap:(id)arg3 state:(id)arg4 delegate:(id)arg5;
 + (void)readSlides:(id)arg1 masterLayoutMap:(id)arg2 slideIdMap:(id)arg3 state:(id)arg4 isThumbnail:(_Bool)arg5 delegate:(id)arg6;

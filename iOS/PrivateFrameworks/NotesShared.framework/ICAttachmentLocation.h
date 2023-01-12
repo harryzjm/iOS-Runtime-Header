@@ -7,6 +7,7 @@
 #import <NotesShared/ICSearchIndexableTarget-Protocol.h>
 
 @class ICAttachment, NSString;
+@protocol ICSearchIndexable;
 
 @interface ICAttachmentLocation <ICSearchIndexableTarget>
 {
@@ -14,7 +15,7 @@
 
 + (id)newAttachmentLocationForAttachment:(id)arg1;
 @property(readonly, nonatomic) NSString *formattedAddressWithoutAttachmentTitle;
-- (id)targetSearchIndexable;
+@property(readonly, nonatomic) id <ICSearchIndexable> targetSearchIndexable;
 
 // Remaining properties
 @property(retain, nonatomic) ICAttachment *attachment; // @dynamic attachment;

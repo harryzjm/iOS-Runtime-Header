@@ -8,25 +8,29 @@
 
 #import <VoiceShortcuts/WFDatabaseObjectObserver-Protocol.h>
 
-@class NSOrderedSet;
-@protocol OS_dispatch_queue, VCDatabaseProvider;
+@class NSOrderedSet, WFDebouncer;
+@protocol OS_dispatch_queue, WFDatabaseProvider;
 
 @interface WFSiriWorkflowVocabularyUpdater : NSObject <WFDatabaseObjectObserver>
 {
     NSObject<OS_dispatch_queue> *_queue;
-    id <VCDatabaseProvider> _databaseProvider;
+    WFDebouncer *_debouncer;
+    id <WFDatabaseProvider> _databaseProvider;
     NSOrderedSet *_speakableStrings;
 }
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSOrderedSet *speakableStrings; // @synthesize speakableStrings=_speakableStrings;
-@property(readonly, nonatomic) id <VCDatabaseProvider> databaseProvider; // @synthesize databaseProvider=_databaseProvider;
+@property(readonly, nonatomic) id <WFDatabaseProvider> databaseProvider; // @synthesize databaseProvider=_databaseProvider;
+@property(readonly, nonatomic) WFDebouncer *debouncer; // @synthesize debouncer=_debouncer;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 - (void)databaseDidChange:(id)arg1 modified:(id)arg2 inserted:(id)arg3 removed:(id)arg4;
-- (void)queue_updateFromDatabase:(id)arg1;
+- (void)queue_updateIfNeeded;
 - (void)queue_startIfPossible;
 - (void)updateIfPossible;
 - (void)startIfPossible;
+- (void)applicationWasRegistered:(id)arg1;
+- (void)assistantPreferencesDidChange;
 - (id)initWithDatabaseProvider:(id)arg1 eventHandler:(id)arg2;
 
 @end

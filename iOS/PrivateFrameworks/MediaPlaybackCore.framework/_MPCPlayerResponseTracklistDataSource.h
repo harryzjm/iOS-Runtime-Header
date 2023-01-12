@@ -10,6 +10,7 @@
 
 @class MPCPlayerResponse, NSIndexPath, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MPCPlayerResponseTracklistDataSource : NSObject <MPLazySectionedCollectionDataSource>
 {
     MPCPlayerResponse *_response;

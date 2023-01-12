@@ -6,7 +6,8 @@
 
 #import <Sleep/HKSPMutableObject-Protocol.h>
 
-@class HKSPAlarmConfiguration, HKSPChangeSet, HKSPSleepScheduleDayOccurrence, NSDate, NSDateComponents, NSSet, NSString;
+@class HKSPAlarmConfiguration, HKSPChangeSet, HKSPSleepScheduleDayOccurrence, NSDate, NSDateComponents, NSDictionary, NSSet, NSString;
+@protocol HKSPObject;
 
 @interface HKSPMutableSleepScheduleOccurrence <HKSPMutableObject>
 {
@@ -14,7 +15,6 @@
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)occurrenceWithWeekdays:(unsigned long long)arg1 bedtimeHour:(long long)arg2 bedtimeMinute:(long long)arg3 wakeUpHour:(long long)arg4 wakeUpMinute:(long long)arg5;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) HKSPChangeSet *changeSet; // @synthesize changeSet=_changeSet;
 - (void)applyHourAndMinuteFromBedtimeComponents:(id)arg1 wakeUpComponents:(id)arg2 gregorianCalendar:(id)arg3;
@@ -26,6 +26,7 @@
 - (void)turnOffWeekdays:(unsigned long long)arg1;
 - (void)turnOnWeekdays:(unsigned long long)arg1;
 - (void)freeze;
+@property(readonly, nonatomic) id <HKSPObject> originalObject;
 - (id)mutableCopy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -40,6 +41,7 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(copy, nonatomic) NSDate *lastModifiedDate;
+@property(readonly, nonatomic) NSDictionary *relationshipChanges;
 @property(readonly, nonatomic) NSSet *significantChanges;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) unsigned long long version;

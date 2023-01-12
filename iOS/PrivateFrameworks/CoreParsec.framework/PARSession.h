@@ -9,21 +9,12 @@
 #import <CoreParsec/SFFeedbackListener-Protocol.h>
 #import <CoreParsec/SFResourceLoader-Protocol.h>
 
-@class GEOSearchFoundationFeedbackListener, NSFileManager, NSSet, NSString, NSXPCConnection, PARBag, PARSearchClient, PARSessionConfiguration;
-@protocol OS_dispatch_queue, PARSessionDelegate;
+@class NSSet, NSString, NSXPCConnection, PARBag, PARSessionConfiguration, PARSessionSwiftInternal, _TtC10CoreParsec15PARSearchClient;
+@protocol PARSessionDelegate;
 
 @interface PARSession : NSObject <SFFeedbackListener, SFResourceLoader>
 {
-    NSFileManager *_fileManager;
-    GEOSearchFoundationFeedbackListener *_mapsListener;
-    PARBag *_bag;
-    _Atomic _Bool _sampled;
-    NSObject<OS_dispatch_queue> *_serialQueue;
-    NSSet *_allowedAppsForSiriSuggestions;
-    NSSet *_sampleClientTimingEventWhitelist;
-    PARSearchClient *_client;
-    PARSessionConfiguration *_configuration;
-    id <PARSessionDelegate> _delegate;
+    PARSessionSwiftInternal *_internal;
 }
 
 + (id)sessionWithConfiguration:(id)arg1 delegate:(id)arg2 startImmediately:(_Bool)arg3;
@@ -31,15 +22,15 @@
 + (id)sharedSession;
 + (id)sharedPARSessionWithConfiguration:(id)arg1;
 - (void).cxx_destruct;
-@property __weak id <PARSessionDelegate> delegate; // @synthesize delegate=_delegate;
-@property(retain) PARSessionConfiguration *configuration; // @synthesize configuration=_configuration;
-@property(readonly, nonatomic) PARSearchClient *client; // @synthesize client=_client;
-@property(retain) NSSet *allowedAppsForSiriSuggestions;
-- (void)didUpdateSiriSuggestionsAppWhitelist;
+- (void)updateParametersForSmartSearchV1:(id)arg1 smartSearchV2:(id)arg2;
+- (void)clearCompletionsFromDate:(id)arg1 toDate:(id)arg2;
+- (void)addEngagedSuggestions:(id)arg1;
+- (void)addCompletion:(id)arg1 forInput:(id)arg2;
 - (void)sendCBAEngagementFeedback:(id)arg1 query:(unsigned long long)arg2;
 - (void)reportFeedback:(id)arg1 queryId:(long long)arg2;
 - (void)reportFeedback:(id)arg1;
 - (void)reportEvent:(id)arg1;
+- (void)didPerformCommand:(id)arg1;
 - (void)didSubmitUserReportFeedback:(id)arg1;
 - (void)didReportUserResponseFeedback:(id)arg1;
 - (void)didGradeLookupHintRelevancy:(id)arg1;
@@ -54,10 +45,8 @@
 - (void)suggestionsDidBecomeVisible:(id)arg1;
 - (void)resultsDidBecomeVisible:(id)arg1;
 - (void)didEngageSuggestion:(id)arg1;
-- (void)_flushUsingConnectionToFBF:(id)arg1;
-- (void)_scheduleEagerFlush;
-- (void)sendCustomFeedback:(id)arg1;
 - (void)sendCustomFeedback:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)sendCustomFeedback:(id)arg1;
 - (void)didErrorOccur:(id)arg1;
 - (void)didEngageCardSection:(id)arg1;
 - (void)didEngageResult:(id)arg1;
@@ -71,14 +60,20 @@
 - (_Bool)loadMoreResults:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)loadCard:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)loadImage:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (_Bool)loadImage:(id)arg1 withContext:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (unsigned long long)enabledStatus;
 - (void)fileHandleAndAttributesForResource:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)loadTask:(id)arg1;
 - (id)taskWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
-@property(retain) PARBag *bag;
-@property(readonly, nonatomic) NSSet *sampleClientTimingEventWhitelist;
-@property(readonly, nonatomic) NSXPCConnection *connection;
+@property(retain) NSSet *allowedAppsForSiriSuggestions; // @dynamic allowedAppsForSiriSuggestions;
+@property(readonly, nonatomic) _TtC10CoreParsec15PARSearchClient *client; // @dynamic client;
+- (void)setBag:(id)arg1;
+@property(readonly) PARBag *bag; // @dynamic bag;
+@property __weak id <PARSessionDelegate> delegate; // @dynamic delegate;
+@property(retain) PARSessionConfiguration *configuration; // @dynamic configuration;
+@property(readonly, nonatomic) NSXPCConnection *connection; // @dynamic connection;
 - (void)start;
+- (id)initInternal:(id)arg1 startImmediately:(_Bool)arg2;
 - (id)initWithConfiguration:(id)arg1 connection:(id)arg2 delegate:(id)arg3 startImmediately:(_Bool)arg4;
 - (id)initWithConfiguration:(id)arg1;
 - (id)initWithConfiguration:(id)arg1 connection:(id)arg2;

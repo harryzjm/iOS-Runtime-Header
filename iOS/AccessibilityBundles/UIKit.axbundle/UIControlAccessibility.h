@@ -8,6 +8,7 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityAuditIssuesWithOptions:(id)arg1;
@@ -17,6 +18,7 @@
 - (_Bool)accessibilityActivate;
 - (_Bool)_accessibilitySupportsActivateAction;
 - (id)_accessibilityObscuredScreenAllowedViews;
+- (id)_systemDefaultFocusGroupIdentifier;
 
 @end
 

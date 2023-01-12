@@ -12,6 +12,7 @@
 @interface HRTimelineHeaderView : UITableViewHeaderFooterView
 {
     MISSING_TYPE *delegate;
+    MISSING_TYPE *separatorViewHidden;
     MISSING_TYPE *$__lazy_storage_$_titleLabel;
     MISSING_TYPE *$__lazy_storage_$_subtitleLabel;
     MISSING_TYPE *$__lazy_storage_$_backgroundEffectView;
@@ -29,6 +30,7 @@
 - (void)applyTitle:(id)arg1 subtitle:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithReuseIdentifier:(id)arg1;
+@property(nonatomic) _Bool separatorViewHidden; // @synthesize separatorViewHidden;
 @property(nonatomic) __weak id <HRTimelineHeaderViewDelegate> delegate; // @synthesize delegate;
 
 @end

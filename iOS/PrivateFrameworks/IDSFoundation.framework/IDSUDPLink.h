@@ -73,9 +73,9 @@
 - (_Bool)setTrafficClass:(int)arg1;
 - (id)generateLinkReport:(double)arg1 isCurrentLink:(_Bool)arg2;
 - (unsigned long long)sendPacketBufferArray:(CDStruct_183601bc **)arg1 arraySize:(int)arg2 toDeviceUniqueID:(id)arg3 cbuuid:(id)arg4;
-- (unsigned long long)sendPacketBuffer:(CDStruct_12676517 *)arg1 sourceInterface:(id)arg2 destination:(id)arg3 toDeviceID:(id)arg4;
-- (unsigned long long)sendPacketBuffer:(CDStruct_12676517 *)arg1 destination:(id)arg2 toDeviceID:(id)arg3;
-- (unsigned long long)sendPacketBuffer:(CDStruct_12676517 *)arg1 toDeviceUniqueID:(id)arg2 cbuuid:(id)arg3;
+- (unsigned long long)sendPacketBuffer:(CDStruct_727fadec *)arg1 sourceInterface:(id)arg2 destination:(id)arg3 toDeviceID:(id)arg4;
+- (unsigned long long)sendPacketBuffer:(CDStruct_727fadec *)arg1 destination:(id)arg2 toDeviceID:(id)arg3;
+- (unsigned long long)sendPacketBuffer:(CDStruct_727fadec *)arg1 toDeviceUniqueID:(id)arg2 cbuuid:(id)arg3;
 - (id)copyCurrentNetworkInterfaces;
 - (id)newSocketWithIPVersion:(unsigned long long)arg1 wantsAWDL:(_Bool)arg2 wantsWiFi:(_Bool)arg3 wantsCellular:(_Bool)arg4;
 - (id)newSocketWithIPVersion:(unsigned long long)arg1 wantsAWDL:(_Bool)arg2 wantsWiFi:(_Bool)arg3 wantsCellular:(_Bool)arg4 clientUUID:(unsigned char [16])arg5;
@@ -92,7 +92,7 @@
 - (int)_findSocketForInterfaceIndex:(int)arg1;
 - (_Bool)_isInterfaceIndexCellular:(int)arg1;
 - (int)_createNewUDPSocketWithIPVersion:(unsigned long long)arg1 localPort:(unsigned short *)arg2 wantsAWDL:(_Bool)arg3 clientUUID:(unsigned char [16])arg4;
-- (unsigned long long)_sendBytesArray:(const void **)arg1 lengthArray:(unsigned long long *)arg2 arraySize:(int)arg3 localInterfaceIndex:(int)arg4 localAddress:(const struct sockaddr *)arg5 destinationAddress:(const struct sockaddr *)arg6 trafficClass:(unsigned short)arg7;
+- (unsigned long long)_sendBytesArray:(const void **)arg1 lengthArray:(unsigned long long *)arg2 arraySize:(int)arg3 localInterfaceIndex:(int)arg4 localAddress:(const struct sockaddr *)arg5 destinationAddress:(const struct sockaddr *)arg6 trafficClass:(unsigned short)arg7 DSCP:(unsigned char)arg8;
 - (unsigned long long)_sendBytes:(const void *)arg1 length:(unsigned long long)arg2 destinationAddress:(const struct sockaddr *)arg3;
 - (unsigned long long)_sendBytes:(const void *)arg1 length:(unsigned long long)arg2;
 - (void)_processIncomingCellularPacket;

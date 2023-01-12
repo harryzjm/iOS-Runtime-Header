@@ -11,6 +11,7 @@
 @protocol CKSendAnimationContext <NSObject>
 @property(retain, nonatomic) CABackdropLayer *backdropLayer;
 @property(retain, nonatomic) NSArray *messages;
+@property(nonatomic) _Bool beginAnimationFromTranscriptPresentedState;
 @property(nonatomic) _Bool isSender;
 @property(nonatomic) _Bool shouldRepeat;
 @property(retain, nonatomic) NSString *impactIdentifier;

@@ -17,8 +17,9 @@
     NSObject<OS_dispatch_queue> *_internalQueue;
     _Bool _areSettingsLoaded;
     WBSSiteMetadataImageCache *_imageCache;
-    NSMutableDictionary *_hostsToRequestSets;
+    struct os_unfair_lock_s _templateIconsDataForHostsAccessLock;
     NSMutableDictionary *_templateIconsDataForHosts;
+    NSMutableDictionary *_hostsToRequestSets;
     NSMutableSet *_pendingTemplateIconRequestHosts;
     NSMutableSet *_pendingTemplateIconFallbackRequestHosts;
     NSMutableSet *_pendingSVGImageRenderingRequests;
@@ -32,7 +33,7 @@
 
 - (void).cxx_destruct;
 @property(nonatomic) struct CGSize defaultIconSize; // @synthesize defaultIconSize=_defaultIconSize;
-@property(nonatomic) __weak id <WBSSiteMetadataProviderDelegate> providerDelegate; // @synthesize providerDelegate=_providerDelegate;
+@property __weak id <WBSSiteMetadataProviderDelegate> providerDelegate; // @synthesize providerDelegate=_providerDelegate;
 - (void)siteMetadataImageCacheDidEmptyCache:(id)arg1;
 - (void)siteMetadataImageCache:(id)arg1 didRemoveImageFromCacheForKeyString:(id)arg2;
 - (void)siteMetadataImageCache:(id)arg1 didFinishLoadingImage:(id)arg2 forKeyString:(id)arg3;
@@ -46,12 +47,11 @@
 - (void)_notifyDidLoadIconForHost:(id)arg1;
 - (id)_imageForRequest:(id)arg1 getThemeColor:(id *)arg2;
 - (void)_upgradeCacheVersionIfNeeded;
-- (void)_removeTemplateIconsDataForHost:(id)arg1;
+- (void)_removeTemplateIconsDataForHost:(id)arg1 ifIconIsInCache:(_Bool)arg2;
 - (void)_updateTemplateIconsDataForHost:(id)arg1 image:(id)arg2 themeColor:(id)arg3 isSavedToDisk:(_Bool)arg4;
 - (void)savePendingChangesBeforeTermination;
 - (void)purgeUnneededCacheEntries;
 - (void)emptyCaches;
-- (_Bool)_shouldRequestTemplateIconForURL:(id)arg1 allowRefresh:(_Bool)arg2;
 - (_Bool)shouldRequestTemplateIconForURL:(id)arg1 allowRefresh:(_Bool)arg2;
 - (_Bool)hasDeterminedIconAvailabilityForURL:(id)arg1;
 - (void)releaseTemplateIconsForHosts:(id)arg1;
@@ -63,10 +63,9 @@
 - (void)_saveTemplateIcon:(id)arg1 withThemeColor:(id)arg2 forHost:(id)arg3 toDisk:(_Bool)arg4;
 - (void)addTemplateIconAtURL:(id)arg1 withThemeColor:(id)arg2 forHost:(id)arg3 toDisk:(_Bool)arg4;
 - (id)_monogramForRequest:(id)arg1 themeColor:(id)arg2;
-- (void)_generateResponseForRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)_generateResponseForRequest:(id)arg1;
 - (id)_templateIconForURL:(id)arg1 getThemeColor:(id *)arg2;
 - (void)_requestTemplateIconForRequest:(id)arg1;
-- (id)templateIconForURL:(id)arg1 getThemeColor:(id *)arg2;
 - (_Bool)_isLocalIconRequest:(id)arg1;
 - (void)stopWatchingUpdatesForRequest:(id)arg1;
 - (void)_registerRequest:(id)arg1;

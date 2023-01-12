@@ -20,7 +20,6 @@
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)buttonTapped:(id)arg1;
 - (void)layoutSubviews;
-- (void)dealloc;
 - (id)initWithReuseIdentifier:(id)arg1;
 
 @end

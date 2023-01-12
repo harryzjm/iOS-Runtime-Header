@@ -6,16 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class ACAccount, ACAccountStore, NSNumber, STManagementState;
+#import <WebUI/ACMonitoredAccountStoreDelegateProtocol-Protocol.h>
+
+@class ACAccount, ACMonitoredAccountStore, NSNumber, NSString, OTClique, STManagementState;
 @protocol OS_dispatch_queue;
 
-@interface WBUFeatureManager : NSObject
+@interface WBUFeatureManager : NSObject <ACMonitoredAccountStoreDelegateProtocol>
 {
     NSObject<OS_dispatch_queue> *_internalQueue;
-    ACAccountStore *_accountStore;
+    ACMonitoredAccountStore *_accountStore;
     ACAccount *_account;
     NSNumber *_cachedShouldRequestMoreTime;
     STManagementState *_managementState;
+    NSNumber *_cachedLocallyRestricted;
+    double _lastRestrictedSettingRequestedTime;
+    OTClique *_keychainClique;
+    NSString *_primaryAccountAltDSID;
     _Bool _autoFillAvailable;
     _Bool _bookmarksAvailable;
     _Bool _readingListAvailable;
@@ -34,22 +40,34 @@
 @property(readonly, nonatomic, getter=isReadingListAvailable) _Bool readingListAvailable; // @synthesize readingListAvailable=_readingListAvailable;
 @property(readonly, nonatomic, getter=isBookmarksAvailable) _Bool bookmarksAvailable; // @synthesize bookmarksAvailable=_bookmarksAvailable;
 @property(readonly, nonatomic, getter=isAutoFillAvailable) _Bool autoFillAvailable; // @synthesize autoFillAvailable=_autoFillAvailable;
+- (void)_setAccount:(id)arg1;
+- (void)accountWasRemoved:(id)arg1;
+- (void)accountWasModified:(id)arg1;
+- (void)accountWasAdded:(id)arg1;
+- (void)_updateKeychainSyncingStatus;
+@property(readonly, nonatomic, getter=isKeychainSyncEnabled) _Bool keychainSyncEnabled;
 @property(readonly, nonatomic, getter=isAirDropPasswordsAvailable) _Bool airDropPasswordsAvailable;
 - (void)determineIfUserIsRestrictedByScreenTimeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)determineIfPrivateBrowsingIsAvailableWithCompletionHandler:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic, getter=isUserRemotelyManagedAndLocallyRestricted) _Bool userRemotelyManagedAndLocallyRestricted;
+- (_Bool)_locallyRestricted;
 @property(readonly, nonatomic, getter=isPrivateBrowsingAvailable) _Bool privateBrowsingAvailable;
+- (_Bool)_isCloudTabsAvailableUsingManagedAppleID:(_Bool)arg1;
 @property(readonly, nonatomic, getter=isCloudTabsAvailable) _Bool cloudTabsAvailable;
 @property(readonly, nonatomic, getter=isCloudHistorySyncAvailable) _Bool cloudHistorySyncAvailable;
 @property(readonly, nonatomic, getter=isCloudKitBookmarksAvailable) _Bool cloudKitBookmarksAvailable;
 @property(readonly, nonatomic, getter=isCreditCardStorageAvailable) _Bool creditCardStorageAvailable;
 - (_Bool)_isUsingManagedAppleID;
-- (void)_accountStoreDidChange:(id)arg1;
-- (void)_updateAppleAccount;
-- (void)_setupAccountStore;
+- (void)_setAccountOnInternalQueue:(id)arg1;
 - (void)_updateFeatureAvailabilityByAccessLevel;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

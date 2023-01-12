@@ -9,7 +9,7 @@
 #import <PencilKit/NSItemProviderReading-Protocol.h>
 #import <PencilKit/NSItemProviderWriting-Protocol.h>
 
-@class NSArray, NSOrderedSet, NSSet, NSString, PKDrawing, PKStroke, PKStrokeSelectionImage;
+@class NSArray, NSDictionary, NSItemProvider, NSOrderedSet, NSSet, NSString, PKDrawing, PKStroke, PKStrokeSelectionImage;
 
 @interface PKStrokeSelection : NSObject <NSItemProviderReading, NSItemProviderWriting>
 {
@@ -17,20 +17,29 @@
     NSSet *_strokeIdentifiers;
     PKStroke *_lassoStroke;
     PKStrokeSelectionImage *_strokeImage;
+    PKStrokeSelectionImage *_strokeImageWithHighlight;
     PKDrawing *_drawing;
+    NSDictionary *_externalElements;
+    NSItemProvider *_externalElementsItemProvider;
 }
 
++ (id)strokeSelectionFromData:(id)arg1 forDrawingClass:(Class)arg2;
 + (id)strokeSelectionFromData:(id)arg1;
 + (id)writableTypeIdentifiersForItemProvider;
++ (id)objectWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 drawingClass:(Class)arg3 error:(id *)arg4;
 + (id)objectWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 error:(id *)arg3;
 + (id)readableTypeIdentifiersForItemProvider;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSItemProvider *externalElementsItemProvider; // @synthesize externalElementsItemProvider=_externalElementsItemProvider;
+@property(copy, nonatomic) NSDictionary *externalElements; // @synthesize externalElements=_externalElements;
 @property(readonly, nonatomic) PKDrawing *drawing; // @synthesize drawing=_drawing;
+@property(copy, nonatomic) PKStrokeSelectionImage *strokeImageWithHighlight; // @synthesize strokeImageWithHighlight=_strokeImageWithHighlight;
 @property(copy, nonatomic) PKStrokeSelectionImage *strokeImage; // @synthesize strokeImage=_strokeImage;
 @property(readonly, nonatomic) PKStroke *lassoStroke; // @synthesize lassoStroke=_lassoStroke;
 @property(readonly, nonatomic) NSSet *strokeIdentifiers; // @synthesize strokeIdentifiers=_strokeIdentifiers;
 @property(readonly, nonatomic) NSOrderedSet *strokes; // @synthesize strokes=_strokes;
-- (void)generateImageWithConfig:(id)arg1 fullSizeConfig:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)generateImageWithConfig:(id)arg1 fullSizeConfig:(id)arg2 selectionInteraction:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
+- (struct CGImage *)newExternalElementsCGImageFromCGImage:(struct CGImage *)arg1 withConfig:(id)arg2 selectionInteraction:(id)arg3 renderImage:(_Bool)arg4;
 - (_Bool)containsBitmapData;
 - (id)strokeDataForSelection;
 - (id)legacyStrokeDataForSelection;
@@ -38,8 +47,10 @@
 - (id)imageDataForSelection;
 - (id)loadDataWithTypeIdentifier:(id)arg1 forItemProviderCompletionHandler:(CDUnknownBlockType)arg2;
 @property(readonly, copy, nonatomic) NSArray *writableTypeIdentifiersForItemProvider;
+- (struct CGRect)externalElementsBounds;
 - (struct CGRect)boundsWithoutLasso;
 - (struct CGRect)bounds;
+- (id)initWithStrokes:(id)arg1 externalElements:(id)arg2 lassoStroke:(id)arg3 drawing:(id)arg4;
 - (id)initWithStrokes:(id)arg1 lassoStroke:(id)arg2 drawing:(id)arg3;
 
 // Remaining properties

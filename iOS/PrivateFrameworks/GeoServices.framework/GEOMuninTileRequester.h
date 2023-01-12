@@ -11,13 +11,15 @@
 }
 
 + (unsigned char)tileProviderIdentifier;
-- (void)failedLoadingTileForKey:(struct _GEOTileKey)arg1 baseOperation:(id)arg2 error:(id)arg3;
-- (void)finishedLoadingTileForKey:(struct _GEOTileKey)arg1 baseOperation:(id)arg2;
+- (id)additionalAnalyticsStatesForKey:(const struct _GEOTileKey *)arg1;
+- (_Bool)shouldReportAnalyticsOnErrorForTileKey:(const struct _GEOTileKey *)arg1;
+- (_Bool)shouldReportAnalyticsOnSuccessForTileKey:(const struct _GEOTileKey *)arg1;
+- (_Bool)shouldReportAnalyticsOnErrorWithRetryForTileKey:(const struct _GEOTileKey *)arg1;
 - (CDStruct_d1a7ebee)kindForTileKey:(const struct _GEOTileKey *)arg1;
 - (id)urlForTileKey:(const struct _GEOTileKey *)arg1;
 - (unsigned int)tileEditionForKey:(const struct _GEOTileKey *)arg1;
 - (id)activeTileSetForKey:(const struct _GEOTileKey *)arg1;
-- (unsigned int)tileSetForKey:(const struct _GEOTileKey *)arg1;
+- (CDUnion_23a7df3d)tileSetForKey:(const struct _GEOTileKey *)arg1;
 
 @end
 

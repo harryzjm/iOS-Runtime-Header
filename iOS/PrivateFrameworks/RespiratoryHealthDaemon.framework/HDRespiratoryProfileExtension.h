@@ -6,15 +6,19 @@
 
 #import <objc/NSObject.h>
 
+#import <RespiratoryHealthDaemon/HDFeatureAvailabilityExtensionObserver-Protocol.h>
 #import <RespiratoryHealthDaemon/HDFeatureAvailabilityExtensionProvider-Protocol.h>
 #import <RespiratoryHealthDaemon/HDProfileExtension-Protocol.h>
 
-@class HDProfile, HDRPFeatureAvailabilityManager, HDRPRespiratoryDailyAnalytics, HKRPOxygenSaturationOnboardingCacher, NSString;
+@class HDProfile, HDRPFeatureAvailabilityManager, HDRPRespiratoryDailyAnalytics, HKRPOxygenSaturationOnboardingCacher, HKRPOxygenSaturationSettings, NSString;
+@protocol OS_dispatch_queue;
 
-@interface HDRespiratoryProfileExtension : NSObject <HDProfileExtension, HDFeatureAvailabilityExtensionProvider>
+@interface HDRespiratoryProfileExtension : NSObject <HDFeatureAvailabilityExtensionObserver, HDProfileExtension, HDFeatureAvailabilityExtensionProvider>
 {
     HDRPFeatureAvailabilityManager *_featureAvailabilityManager;
     HKRPOxygenSaturationOnboardingCacher *_onboardingCacher;
+    HKRPOxygenSaturationSettings *_settings;
+    NSObject<OS_dispatch_queue> *_queue;
     HDProfile *_profile;
     HDRPRespiratoryDailyAnalytics *_dailyAnalytics;
     CDUnknownBlockType _unitTesting_healthLiteSessionWithDelegateHandler;
@@ -25,7 +29,12 @@
 @property(copy, nonatomic) CDUnknownBlockType unitTesting_healthLiteSessionWithDelegateHandler; // @synthesize unitTesting_healthLiteSessionWithDelegateHandler=_unitTesting_healthLiteSessionWithDelegateHandler;
 @property(readonly, nonatomic) HDRPRespiratoryDailyAnalytics *dailyAnalytics; // @synthesize dailyAnalytics=_dailyAnalytics;
 @property(readonly, nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
-- (id)featureAvailabilityExtensionForFeatureIdentifier:(id)arg1 client:(id)arg2;
+- (void)_updateBackgroundMeasurmentsSettings;
+- (void)featureAvailabilityExtensionDidUpdateRegionAvailability:(id)arg1;
+- (void)featureAvailabilityProvidingDidUpdatePairedDeviceCapability:(id)arg1;
+- (void)featureAvailabilityExtensionOnboardingCompletionDataDidBecomeAvailable:(id)arg1;
+- (void)featureAvailabilityProvidingDidUpdateOnboardingCompletion:(id)arg1;
+- (id)featureAvailabilityExtensionForFeatureIdentifier:(id)arg1;
 - (id)oxygenSaturationSessionWithDelegate:(id)arg1 queue:(id)arg2;
 - (id)initWithProfile:(id)arg1 forcingFeaturesEnabled:(_Bool)arg2 featureAvailabilityManager:(id)arg3;
 - (id)initWithProfile:(id)arg1 forcingFeaturesEnabled:(_Bool)arg2;

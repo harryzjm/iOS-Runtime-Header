@@ -12,25 +12,28 @@
 @interface TSCellularPlanManagerCache : NSObject
 {
     id <TSCellularPlanManagerCacheDelegate> delegate;
-    NSArray *_planItems;
     unsigned long long _supportedFlowTypes;
+    NSArray *_cachedPlanItems;
     NSArray *_danglingPlanItems;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
 @property(retain) NSArray *danglingPlanItems; // @synthesize danglingPlanItems=_danglingPlanItems;
+@property(retain) NSArray *cachedPlanItems; // @synthesize cachedPlanItems=_cachedPlanItems;
 @property(nonatomic) unsigned long long supportedFlowTypes; // @synthesize supportedFlowTypes=_supportedFlowTypes;
-@property(retain) NSArray *planItems; // @synthesize planItems=_planItems;
 @property(nonatomic) __weak id <TSCellularPlanManagerCacheDelegate> delegate; // @synthesize delegate;
 - (id)_getByteRepresentationOf:(id)arg1;
 - (id)_getValidatedPlanItemFor:(id)arg1;
 - (void)_updateLocalCachedPlanItems:(id)arg1;
 - (void)_updateCachedPlanItems;
 - (void)_updateCachedFlowTypes;
-- (void)_initialize;
+- (void)_initializePlanItems;
+- (void)didEnablePlanItems:(id)arg1;
 - (void)didTransferPlanForEid:(id)arg1 iccid:(id)arg2 srcIccid:(id)arg3 smdpURL:(id)arg4 state:(id)arg5;
-- (void)didPurchasePlanForEid:(id)arg1 iccid:(id)arg2 smdpURL:(id)arg3;
+- (void)didPurchasePlanForCarrier:(id)arg1 mnc:(id)arg2 gid1:(id)arg3 gid2:(id)arg4 state:(id)arg5;
+- (void)didPurchasePlanForEid:(id)arg1 iccid:(id)arg2 smdpURL:(id)arg3 state:(id)arg4;
+- (id)getSubscriptionContextUUIDforPlan:(id)arg1;
 - (void)sendUserResponse:(unsigned long long)arg1 confirmationCode:(id)arg2;
 - (void)provideUserResponse:(long long)arg1 confirmationCode:(id)arg2;
 - (long long)calculateInstallConsentTextTypeFor:(id)arg1;
@@ -47,7 +50,9 @@
 - (void)selectPlanForVoice:(id)arg1;
 - (void)selectPlanForData:(id)arg1;
 - (void)shouldShowPlanSetupWithCompletion:(CDUnknownBlockType)arg1;
+@property(readonly) NSArray *planItems;
 - (void)dealloc;
+- (void)planItemsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 
 @end

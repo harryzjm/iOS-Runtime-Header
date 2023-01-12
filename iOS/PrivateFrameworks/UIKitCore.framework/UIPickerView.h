@@ -41,6 +41,7 @@
         unsigned int skipsBackground:1;
         unsigned int isInLayoutSubviews:1;
         unsigned int usesDynamicRowHeight:1;
+        unsigned int selectionBarIgnoresInset:1;
     } _pickerViewFlags;
     UIColor *_textColor;
     UIColor *_textShadowColor;
@@ -58,6 +59,8 @@
 + (struct CGSize)defaultSizeForTraits:(id)arg1;
 + (struct CGSize)sizeForMainScreenTraitsThatFits:(struct CGSize)arg1;
 + (struct CGSize)sizeThatFits:(struct CGSize)arg1 forTraits:(id)arg2;
++ (_Bool)_allowsUnsupportedMacIdiomBehavior;
++ (void)_setAllowsUnsupportedMacIdiomBehavior:(_Bool)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic, getter=_magnifierLineColor, setter=_setMagnifierLineColor:) UIColor *magnifierLineColor; // @synthesize magnifierLineColor=_magnifierLineColor;
 @property(retain, nonatomic, getter=_selectionFeedbackGenerator, setter=_setSelectionFeedbackGenerator:) UISelectionFeedbackGenerator *selectionFeedbackGenerator; // @synthesize selectionFeedbackGenerator=_selectionFeedbackGenerator;
@@ -66,7 +69,7 @@
 @property(nonatomic, setter=_setMagnifierEnabled:) _Bool _magnifierEnabled; // @synthesize _magnifierEnabled;
 @property(nonatomic) __weak id <UIPickerViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak id <UIPickerViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
-- (id)_systemDefaultFocusGroupDescriptor;
+- (id)_systemDefaultFocusGroupIdentifier;
 - (_Bool)_canHostViewControllerContentScrollView;
 - (id)_scalarStatisticsForUserValueChangedEvent;
 - (void)_willPlayClickSound;
@@ -130,6 +133,8 @@
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (_Bool)_contentHuggingDefault_isUsuallyFixedWidth;
 - (_Bool)_contentHuggingDefault_isUsuallyFixedHeight;
+@property(nonatomic, setter=_setSelectionBarIgnoresInset:) _Bool _selectionBarIgnoresInset;
+- (double)_selectionBarSideInset;
 - (struct CGRect)_selectionBarRectForHeight:(double)arg1;
 - (id)imageForPickerPiece:(long long)arg1;
 - (id)_popoverSuffix;

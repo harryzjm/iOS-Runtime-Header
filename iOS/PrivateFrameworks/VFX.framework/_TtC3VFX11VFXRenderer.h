@@ -16,9 +16,14 @@
     MISSING_TYPE *texture;
     MISSING_TYPE *depthTexture;
     MISSING_TYPE *backgroundColor;
+    MISSING_TYPE *performMetalCaptureDuringSnapshot;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool additiveWritesToAlpha;
+- (id)snapshotImageWithSize:(struct CGSize)arg1 deltaTime:(double)arg2;
+- (id)snapshotWithSize:(struct CGSize)arg1 deltaTime:(double)arg2;
+- (void)finalizeEncoding;
 - (void)encodeWithCommandBuffer:(id)arg1;
 - (id)init;
 - (id)initWithCommandQueue:(id)arg1;

@@ -10,16 +10,22 @@
 {
     _Bool _shouldKeepOutOfPatternCandidates;
     _Bool _shouldKeepDuplicateTokenIDs;
+    _Bool _shouldKeepOutOfLexiconAlternatives;
+    _Bool _shouldKeepAlternativeLengths;
+    _Bool _shouldKeepSubstrings;
     _Bool _shouldKeepOriginalSpelling;
     CHRecognizer *_recognizer;
 }
 
 @property(nonatomic) _Bool shouldKeepOriginalSpelling; // @synthesize shouldKeepOriginalSpelling=_shouldKeepOriginalSpelling;
+@property(nonatomic) _Bool shouldKeepSubstrings; // @synthesize shouldKeepSubstrings=_shouldKeepSubstrings;
+@property(nonatomic) _Bool shouldKeepAlternativeLengths; // @synthesize shouldKeepAlternativeLengths=_shouldKeepAlternativeLengths;
+@property(nonatomic) _Bool shouldKeepOutOfLexiconAlternatives; // @synthesize shouldKeepOutOfLexiconAlternatives=_shouldKeepOutOfLexiconAlternatives;
 @property(nonatomic) _Bool shouldKeepDuplicateTokenIDs; // @synthesize shouldKeepDuplicateTokenIDs=_shouldKeepDuplicateTokenIDs;
 @property(nonatomic) _Bool shouldKeepOutOfPatternCandidates; // @synthesize shouldKeepOutOfPatternCandidates=_shouldKeepOutOfPatternCandidates;
 @property(nonatomic) CHRecognizer *recognizer; // @synthesize recognizer=_recognizer;
 - (id)process:(id)arg1;
-- (id)initWithRecognizer:(id)arg1 shouldKeepOutOfPatternCandidates:(_Bool)arg2 shouldKeepDuplicateTokenIDs:(_Bool)arg3;
+- (id)initWithRecognizer:(id)arg1 shouldKeepOutOfPatternCandidates:(_Bool)arg2 shouldKeepDuplicateTokenIDs:(_Bool)arg3 shouldKeepOutOfLexiconAlternatives:(_Bool)arg4 shouldKeepAlternativeLengths:(_Bool)arg5 shouldKeepSubstrings:(_Bool)arg6 shouldKeepOriginalSpelling:(_Bool)arg7;
 
 @end
 

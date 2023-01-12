@@ -8,6 +8,7 @@
 
 @interface PKPaymentAugmentBaseRequest
 {
+    long long _type;
     PKPaymentPass *_pass;
     PKPaymentApplication *_paymentApplication;
     PKSecureElementApplet *_applet;
@@ -21,8 +22,9 @@
 @property(retain, nonatomic) PKSecureElementApplet *applet; // @synthesize applet=_applet;
 @property(retain, nonatomic) PKPaymentApplication *paymentApplication; // @synthesize paymentApplication=_paymentApplication;
 @property(retain, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
+@property(nonatomic) long long type; // @synthesize type=_type;
 - (id)bodyDictionary;
-- (id)endpointName;
+- (id)endpointComponents;
 - (id)_urlRequestWithServiceURL:(id)arg1 deviceIdentifier:(id)arg2 appleAccountInformation:(id)arg3;
 - (id)initWithPaymentPass:(id)arg1;
 

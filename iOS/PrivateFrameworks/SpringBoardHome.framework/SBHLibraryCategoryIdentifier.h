@@ -14,29 +14,33 @@
 @interface SBHLibraryCategoryIdentifier : NSObject <NSCopying, NSSecureCoding>
 {
     unsigned long long _hash;
+    NSString *_localizedDisplayNameKey;
     NSString *_localizedDisplayName;
     unsigned long long _predictionCategoryID;
     unsigned long long _predictionCategoryIndex;
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)categoryWithLocalizedDisplayName:(id)arg1 categoryID:(unsigned long long)arg2;
-+ (id)categoryWithPredictionCategory:(id)arg1 categoryID:(unsigned long long)arg2 categoryIndex:(unsigned long long)arg3;
++ (id)categoryWithLocalizedDisplayName:(id)arg1 categoryID:(unsigned long long)arg2 categoryIndex:(long long)arg3;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long predictionCategoryIndex; // @synthesize predictionCategoryIndex=_predictionCategoryIndex;
 @property(readonly, nonatomic) unsigned long long predictionCategoryID; // @synthesize predictionCategoryID=_predictionCategoryID;
-@property(readonly, copy, nonatomic) NSString *localizedDisplayName; // @synthesize localizedDisplayName=_localizedDisplayName;
+@property(readonly, copy, nonatomic) NSString *localizedDisplayNameKey; // @synthesize localizedDisplayNameKey=_localizedDisplayNameKey;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+@property(readonly, copy, nonatomic) NSString *localizedDisplayName; // @dynamic localizedDisplayName;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (_Bool)isEqualToCategoryIdentifier:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithLocalizedDisplayName:(id)arg1 predictionCategoryID:(unsigned long long)arg2 categoryIndex:(unsigned long long)arg3;
+- (id)initWithPredictionCategoryID:(unsigned long long)arg1 categoryIndex:(unsigned long long)arg2 localizedDisplayName:(id)arg3 localizedDisplayNameKey:(id)arg4;
+- (id)initWithPredictionCategoryID:(unsigned long long)arg1 localizedDisplayNameKey:(id)arg2;
+- (id)initWithPredictionCategory:(id)arg1 categoryIndex:(unsigned long long)arg2;
 
 @end
 

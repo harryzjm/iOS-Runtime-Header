@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString, NSURL, NSUserActivity;
+@class NSDate, NSDictionary, NSString, NSURL, NSUserActivity;
 
 @interface CPSWebClip : NSObject
 {
@@ -24,10 +24,12 @@
     NSString *_fullAppName;
     NSString *_fullAppCaption;
     NSURL *_fullAppStoreURL;
+    NSDate *_lastActivatedTime;
 }
 
 + (id)appClips;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSDate *lastActivatedTime; // @synthesize lastActivatedTime=_lastActivatedTime;
 @property(copy, nonatomic) NSURL *fullAppStoreURL; // @synthesize fullAppStoreURL=_fullAppStoreURL;
 @property(copy, nonatomic) NSString *fullAppCaption; // @synthesize fullAppCaption=_fullAppCaption;
 @property(copy, nonatomic) NSString *fullAppName; // @synthesize fullAppName=_fullAppName;

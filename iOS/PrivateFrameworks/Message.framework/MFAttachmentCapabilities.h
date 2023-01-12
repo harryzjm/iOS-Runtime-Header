@@ -13,7 +13,6 @@
 + (id)capabilitiesDictionary;
 + (_Bool)placeholdersAvailable;
 + (unsigned long long)currentPlaceholderThreshold;
-+ (id)allowedMailDropDownloadDomains;
 + (id)mailDropPreferences;
 + (double)mailDropExpiration;
 + (_Bool)mailDropAvailable;

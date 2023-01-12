@@ -12,6 +12,8 @@
 {
 }
 
+- (id)appChartPropertyOverrides;
+- (id)applicationTemplateVariantsForLocale:(id)arg1;
 - (id)bladerunnerContainerIdentifier;
 - (id)cloudKitSyncContainerIdentifier;
 - (id)cloudKitContainerIdentifier;
@@ -22,6 +24,7 @@
 - (id)templateSFFDocumentType;
 - (id)templateDocumentType;
 - (id)nativeDocumentType;
+- (Class)documentRootClass;
 - (id)templateTypeDisplayName;
 - (id)documentTypeDisplayNameForSharingInvitation;
 - (id)documentTypeDisplayName;

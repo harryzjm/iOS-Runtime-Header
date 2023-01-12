@@ -13,8 +13,10 @@
     _Bool _allowLanguageDetectorAssetDownloading;
     _Bool _allowAdBlockerAssetDownloading;
     _Bool _allowSpeakerRecognitionAssetDownloading;
+    _Bool _allowVoiceTriggerAccessoryAssetDownloading;
 }
 
+@property(nonatomic) _Bool allowVoiceTriggerAccessoryAssetDownloading; // @synthesize allowVoiceTriggerAccessoryAssetDownloading=_allowVoiceTriggerAccessoryAssetDownloading;
 @property(nonatomic) _Bool allowSpeakerRecognitionAssetDownloading; // @synthesize allowSpeakerRecognitionAssetDownloading=_allowSpeakerRecognitionAssetDownloading;
 @property(nonatomic) _Bool allowAdBlockerAssetDownloading; // @synthesize allowAdBlockerAssetDownloading=_allowAdBlockerAssetDownloading;
 @property(nonatomic) _Bool allowLanguageDetectorAssetDownloading; // @synthesize allowLanguageDetectorAssetDownloading=_allowLanguageDetectorAssetDownloading;

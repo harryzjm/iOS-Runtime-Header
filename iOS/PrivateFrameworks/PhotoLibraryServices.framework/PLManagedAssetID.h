@@ -8,24 +8,24 @@
 
 #import <PhotoLibraryServices/PLAssetID-Protocol.h>
 
-@class NSString;
+@class NSString, PLPhotoLibraryPathManagerIdentifier;
 
 @interface PLManagedAssetID : NSObject <PLAssetID>
 {
-    unsigned char _bundleScope;
+    unsigned short _bundleScope;
     NSString *_uuid;
     NSString *_filename;
     NSString *_directory;
-    NSString *_libraryID;
+    PLPhotoLibraryPathManagerIdentifier *_libraryID;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) unsigned char bundleScope; // @synthesize bundleScope=_bundleScope;
-@property(copy, nonatomic) NSString *libraryID; // @synthesize libraryID=_libraryID;
+@property(nonatomic) unsigned short bundleScope; // @synthesize bundleScope=_bundleScope;
+@property(copy, nonatomic) PLPhotoLibraryPathManagerIdentifier *libraryID; // @synthesize libraryID=_libraryID;
 @property(copy, nonatomic) NSString *directory; // @synthesize directory=_directory;
 @property(copy, nonatomic) NSString *filename; // @synthesize filename=_filename;
 @property(copy, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
-- (id)initWithUUID:(id)arg1 filename:(id)arg2 directory:(id)arg3 libraryID:(id)arg4 bundleScope:(unsigned char)arg5;
+- (id)initWithUUID:(id)arg1 filename:(id)arg2 directory:(id)arg3 libraryID:(id)arg4 bundleScope:(unsigned short)arg5;
 - (id)initWithManagedAsset:(id)arg1;
 
 // Remaining properties

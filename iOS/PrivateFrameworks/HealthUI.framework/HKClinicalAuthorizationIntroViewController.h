@@ -8,7 +8,7 @@
 #import <HealthUI/UITableViewDataSource-Protocol.h>
 #import <HealthUI/UITableViewDelegate-Protocol.h>
 
-@class HKClinicalAuthorizationHeaderView, HKClinicalAuthorizationSequenceContext, NSString, UITableView;
+@class HKClinicalAuthorizationHeaderView, HKClinicalAuthorizationSequenceContext, NSString, UIBarButtonItem, UITableView, UIViewController;
 @protocol HKHealthPrivacyServicePromptControllerDelegate;
 
 @interface HKClinicalAuthorizationIntroViewController <UITableViewDataSource, UITableViewDelegate, HKHealthPrivacyServicePromptController>
@@ -17,9 +17,17 @@
     HKClinicalAuthorizationSequenceContext *_context;
     UITableView *_tableView;
     HKClinicalAuthorizationHeaderView *_headerView;
+    UIViewController *_nextViewController;
+    NSString *_headerTitle;
+    NSString *_buttonTitle;
+    UIBarButtonItem *_navigationRightButton;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) UIBarButtonItem *navigationRightButton; // @synthesize navigationRightButton=_navigationRightButton;
+@property(copy, nonatomic) NSString *buttonTitle; // @synthesize buttonTitle=_buttonTitle;
+@property(copy, nonatomic) NSString *headerTitle; // @synthesize headerTitle=_headerTitle;
+@property(retain, nonatomic) UIViewController *nextViewController; // @synthesize nextViewController=_nextViewController;
 @property(readonly, nonatomic) HKClinicalAuthorizationHeaderView *headerView; // @synthesize headerView=_headerView;
 @property(readonly, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
 @property(readonly, nonatomic) HKClinicalAuthorizationSequenceContext *context; // @synthesize context=_context;
@@ -39,6 +47,9 @@
 - (id)_cellForDetailsAtIndexPath:(id)arg1;
 - (long long)_rowFromIndexPath:(id)arg1;
 - (_Bool)_indexPathIsValidRow:(id)arg1;
+@property(retain, nonatomic) UIBarButtonItem *navigationButton;
+@property(retain, nonatomic) NSString *buttonText;
+@property(retain, nonatomic) NSString *headerText;
 - (id)_createFooterView;
 - (void)_configureHeaderViewWithSource:(id)arg1;
 - (void)_configureNavigationItem;
@@ -46,7 +57,7 @@
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)loadView;
-- (id)initWithContext:(id)arg1;
+- (id)initWithContext:(id)arg1 viewController:(id)arg2;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)init;
 

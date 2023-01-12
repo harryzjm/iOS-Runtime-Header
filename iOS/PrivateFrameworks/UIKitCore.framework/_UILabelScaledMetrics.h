@@ -6,34 +6,34 @@
 
 #import <objc/NSObject.h>
 
-@class NSAttributedString;
+@class NSAttributedString, _UILabelConfiguration;
 
 __attribute__((visibility("hidden")))
 @interface _UILabelScaledMetrics : NSObject
 {
+    struct CGSize _sourceSize;
+    struct CGSize _scaledSize;
     double _actualScaleFactor;
     double _baselineOffset;
     double _scaledBaselineOffset;
     double _scaledLineHeight;
     long long _measuredNumberOfLines;
     NSAttributedString *_scaledAttributedText;
-    double _unscaledFirstBaselineOffset;
-    struct CGSize _targetSize;
-    struct CGSize _scaledSize;
     struct CGSize _unscaledAndPossiblyTooLargeSize;
+    double _scaledFirstBaselineOffset;
+    struct {
+        unsigned int calculated:1;
+    } _scaledMetricsFlags;
+    _UILabelConfiguration *_configuration;
+    _UILabelScaledMetrics *_associatedScaledMetrics;
+    struct CGRect _totalBounds;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) double unscaledFirstBaselineOffset; // @synthesize unscaledFirstBaselineOffset=_unscaledFirstBaselineOffset;
-@property(nonatomic) struct CGSize unscaledAndPossiblyTooLargeSize; // @synthesize unscaledAndPossiblyTooLargeSize=_unscaledAndPossiblyTooLargeSize;
-@property(retain, nonatomic) NSAttributedString *scaledAttributedText; // @synthesize scaledAttributedText=_scaledAttributedText;
-@property(nonatomic) long long measuredNumberOfLines; // @synthesize measuredNumberOfLines=_measuredNumberOfLines;
-@property(nonatomic) double scaledLineHeight; // @synthesize scaledLineHeight=_scaledLineHeight;
-@property(nonatomic) double scaledBaselineOffset; // @synthesize scaledBaselineOffset=_scaledBaselineOffset;
-@property(nonatomic) double baselineOffset; // @synthesize baselineOffset=_baselineOffset;
-@property(nonatomic) double actualScaleFactor; // @synthesize actualScaleFactor=_actualScaleFactor;
-@property(nonatomic) struct CGSize scaledSize; // @synthesize scaledSize=_scaledSize;
-@property(nonatomic) struct CGSize targetSize; // @synthesize targetSize=_targetSize;
+- (id)description;
+- (void)_calculateIfNecessaryWithConfiguration;
+- (void)_calculateIfNecessaryWithAssociatedMetrics;
+- (void)_calculateIfNecessary;
 
 @end
 

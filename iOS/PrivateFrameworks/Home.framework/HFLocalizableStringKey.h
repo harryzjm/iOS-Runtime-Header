@@ -18,13 +18,13 @@
     CDUnknownBlockType _stringLocalizationBlock;
 }
 
-+ (id)description;
 + (id)stringKeyWithKey:(id)arg1 argumentKeys:(id)arg2;
 + (id)stringKeyWithKey:(id)arg1 arguments:(id)arg2;
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType stringLocalizationBlock; // @synthesize stringLocalizationBlock=_stringLocalizationBlock;
 @property(readonly, nonatomic) NSMutableDictionary *argumentMap; // @synthesize argumentMap=_argumentMap;
 @property(retain, nonatomic) NSString *key; // @synthesize key=_key;
+- (id)description;
 - (id)debugDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;

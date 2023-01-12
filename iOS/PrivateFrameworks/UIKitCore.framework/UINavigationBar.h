@@ -10,7 +10,7 @@
 #import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
 #import <UIKitCore/_UIBarPositioningInternal-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, UIAccessibilityHUDGestureManager, UIBarButtonItem, UIColor, UIImage, UILayoutGuide, UINavigationBarAppearance, UINavigationItem, UIView, _UINavigationBarItemStack, _UINavigationBarVisualProvider, _UINavigationBarVisualStyle, _UINavigationControllerRefreshControlHost, _UINavigationItemButtonView, _UIViewControllerTransitionContext;
+@class NSArray, NSDictionary, NSString, UIAccessibilityHUDGestureManager, UIBarButtonItem, UIColor, UIImage, UILayoutGuide, UINavigationBarAppearance, UINavigationItem, UIView, _UINavigationBarAppearanceStorage, _UINavigationBarItemStack, _UINavigationBarVisualProvider, _UINavigationBarVisualStyle, _UINavigationControllerRefreshControlHost, _UINavigationItemButtonView, _UIViewControllerTransitionContext;
 @protocol UINavigationBarDelegate, _UINavigationBarDelegatePrivate;
 
 @interface UINavigationBar <UIGestureRecognizerDelegate, UIAccessibilityHUDGestureDelegate, _UIBarPositioningInternal, NSCoding, UIBarPositioning>
@@ -18,7 +18,7 @@
     _UINavigationBarItemStack *_stack;
     id <_UINavigationBarDelegatePrivate> _delegate;
     UIColor *_barTintColor;
-    id _appearanceStorage;
+    _UINavigationBarAppearanceStorage *_appearanceStorage;
     long long _animationDisabledCount;
     long long _barStyle;
     long long _barTranslucence;
@@ -35,6 +35,7 @@
         unsigned int layoutInProgress:1;
         unsigned int delegateRespondsToFreezeLayoutForDismissalSelector:1;
         unsigned int delegateRespondsToInterfaceOrientationWindowSelector:1;
+        unsigned int delegateSupportsScrollEdgeTransitionProgress:1;
     } _navbarFlags;
     _Bool _wantsLetterpressContent;
     _Bool _prefersLargeTitles;
@@ -47,6 +48,7 @@
     NSDictionary *_largeTitleTextAttributes;
     UINavigationBarAppearance *_compactAppearance;
     UINavigationBarAppearance *_scrollEdgeAppearance;
+    UINavigationBarAppearance *_compactScrollEdgeAppearance;
     double __overrideBackgroundExtension;
     NSArray *_backgroundEffects;
     long long _requestedContentSize;
@@ -74,6 +76,7 @@
 @property(copy, nonatomic) NSArray *backgroundEffects; // @synthesize backgroundEffects=_backgroundEffects;
 @property(readonly, nonatomic) _Bool _startedAnimationTracking; // @synthesize _startedAnimationTracking=__startedAnimationTracking;
 @property(nonatomic, setter=_setOverrideBackgroundExtension:) double _overrideBackgroundExtension; // @synthesize _overrideBackgroundExtension=__overrideBackgroundExtension;
+@property(copy, nonatomic) UINavigationBarAppearance *compactScrollEdgeAppearance; // @synthesize compactScrollEdgeAppearance=_compactScrollEdgeAppearance;
 @property(copy, nonatomic) UINavigationBarAppearance *scrollEdgeAppearance; // @synthesize scrollEdgeAppearance=_scrollEdgeAppearance;
 @property(copy, nonatomic) UINavigationBarAppearance *compactAppearance; // @synthesize compactAppearance=_compactAppearance;
 @property(copy, nonatomic) NSDictionary *largeTitleTextAttributes; // @synthesize largeTitleTextAttributes=_largeTitleTextAttributes;
@@ -84,6 +87,7 @@
 @property(nonatomic, setter=_setRequestedMaxBackButtonWidth:) double _requestedMaxBackButtonWidth; // @synthesize _requestedMaxBackButtonWidth;
 @property(readonly, nonatomic) long long barPosition; // @synthesize barPosition=_barPosition;
 - (long long)_sceneDraggingBehaviorOnPan;
+- (_Bool)isTransparentFocusItem;
 - (id)preferredFocusedView;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (void)_accessibilityHUDGestureManager:(id)arg1 gestureLiftedAtPoint:(struct CGPoint)arg2;
@@ -97,6 +101,7 @@
 - (id)_accessibility_contentsOfNavigationBar;
 - (void)_accessibility_navigationBarContentsDidChange;
 - (id)_accessibility_navigationController;
+- (void)_refreshBackButtonMenu;
 - (void)_installContentClippingView:(id)arg1;
 - (void)_removeContentClippingView;
 - (void)_endAnimatingNavItemContentLayoutGuideForStaticButtonVisibilityChange;
@@ -177,6 +182,7 @@
 - (void)_animateForSearchPresentation:(_Bool)arg1;
 @property(readonly, nonatomic) _Bool _hasFixedMaximumHeight;
 @property(readonly, nonatomic) _Bool _hasVariableHeight;
+@property(readonly, nonatomic) _Bool _scrollEdgeAppearanceHasChromelessBehavior;
 @property(nonatomic, setter=_setForceScrollEdgeAppearance:) _Bool _forceScrollEdgeAppearance;
 @property(retain, nonatomic) _UINavigationControllerRefreshControlHost *refreshControlHost;
 - (_Bool)supportsRefreshControlHosting;
@@ -240,11 +246,9 @@
 - (struct NSDirectionalEdgeInsets)_resolvedLayoutMargins;
 - (_Bool)_heightDependentOnOrientation;
 - (id)_restingHeights;
-- (CDStruct_39925896)_layoutHeightsForNavigationItem:(id)arg1 fittingWidth:(double)arg2;
+- (CDStruct_cf303044)_layoutHeightsForNavigationItem:(id)arg1 fittingWidth:(double)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 @property(readonly, nonatomic) long long currentContentSize;
-- (_Bool)_canShowBackgroundEffects;
-- (id)_effectiveBackgroundEffects;
 - (long long)effectiveInterfaceOrientation;
 - (long long)_effectiveMetricsForMetrics:(long long)arg1;
 - (void)_addItems:(id)arg1 withEffectiveDelegate:(id)arg2 transition:(int)arg3;
@@ -341,6 +345,7 @@
 @property(readonly, nonatomic) double _heightIncludingBackground;
 - (void)tintColorDidChange;
 @property(readonly, nonatomic) long long _barTranslucence;
+- (_Bool)_effectiveDelegateSupportsScrollEdgeTransitionProgress;
 - (id)_effectiveDelegate;
 - (_Bool)_isAlwaysHidden;
 - (void)_palette:(id)arg1 isAttaching:(_Bool)arg2 didComplete:(_Bool)arg3;

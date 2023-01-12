@@ -17,8 +17,8 @@
     struct {
         _Bool hasDidAdd;
         _Bool hasDidRemove;
-        _Bool hasDidModify;
-        _Bool hasDidModifyMultiple;
+        _Bool hasDidUpdate;
+        _Bool hasDidUpdateMultiple;
         _Bool hasClassForController;
     } _delegateFlags;
     NSDictionary *_identifierMap;
@@ -60,6 +60,10 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, copy, nonatomic) NUComposition *composition;
 - (id)initWithComposition:(id)arg1;
+- (id)portraitVideoAdjustmentControllerCreatingIfNecessary:(_Bool)arg1;
+- (id)portraitVideoAdjustmentController;
+- (id)semanticEnhanceAdjustmentControllerCreatingIfNecessary:(_Bool)arg1;
+- (id)semanticEnhanceAdjustmentController;
 - (id)videoCrossfadeLoopAdjustmentControllerCreatingIfNecessary:(_Bool)arg1;
 - (id)videoCrossfadeLoopAdjustmentController;
 - (id)videoStabilizeAdjustmentControllerCreatingIfNecessary:(_Bool)arg1;
@@ -80,6 +84,8 @@
 - (id)sharpenAdjustmentController;
 - (id)rawNoiseReductionAdjustmentControllerCreatingIfNecessary:(_Bool)arg1;
 - (id)rawNoiseReductionAdjustmentController;
+- (id)rawAdjustmentControllerCreatingIfNecessary:(_Bool)arg1;
+- (id)rawAdjustmentController;
 - (id)highResFusionAdjustmentControllerCreatingIfNecessary:(_Bool)arg1;
 - (id)highResFusionAdjustmentController;
 - (id)autoLoopAdjustmentControllerCreatingIfNecessary:(_Bool)arg1;

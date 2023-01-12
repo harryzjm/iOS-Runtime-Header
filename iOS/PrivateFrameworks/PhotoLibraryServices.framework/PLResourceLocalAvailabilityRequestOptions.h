@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class CPLResourceTransferTaskOptions, NSString;
 
 @interface PLResourceLocalAvailabilityRequestOptions : NSObject
 {
@@ -16,11 +16,11 @@
     NSString *_taskIdentifier;
     CDUnknownBlockType _dataHandler;
     NSString *_clientBundleID;
-    unsigned long long _downloadIntent;
+    CPLResourceTransferTaskOptions *_downloadOptions;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) unsigned long long downloadIntent; // @synthesize downloadIntent=_downloadIntent;
+@property(copy, nonatomic) CPLResourceTransferTaskOptions *downloadOptions; // @synthesize downloadOptions=_downloadOptions;
 @property(copy, nonatomic) NSString *clientBundleID; // @synthesize clientBundleID=_clientBundleID;
 @property(copy, nonatomic) CDUnknownBlockType dataHandler; // @synthesize dataHandler=_dataHandler;
 @property(nonatomic, getter=isTransient) _Bool transient; // @synthesize transient=_transient;
@@ -28,6 +28,7 @@
 @property(copy, nonatomic) NSString *taskIdentifier; // @synthesize taskIdentifier=_taskIdentifier;
 @property(nonatomic, getter=isNetworkAccessAllowed) _Bool networkAccessAllowed; // @synthesize networkAccessAllowed=_networkAccessAllowed;
 @property(readonly, nonatomic) _Bool shouldPrioritize;
+- (id)init;
 
 @end
 

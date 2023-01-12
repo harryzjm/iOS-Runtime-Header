@@ -15,7 +15,6 @@
     NSDictionary *_fieldActions;
 }
 
-+ (id)performAction:(id)arg1 data:(id)arg2 keypath:(id)arg3 keyIndex:(long long)arg4 context:(id)arg5;
 + (id)treatmentWithConfigData:(id)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *fieldActions; // @synthesize fieldActions=_fieldActions;

@@ -9,8 +9,8 @@
 @class NSSet, TSSStylesheet;
 
 @protocol TSSStyleClient <TSKModel>
+@property(readonly, nonatomic) NSSet *referencedStyles;
 - (void)replaceReferencedStylesUsingBlock:(TSSStyle * (^)(TSSStyle *))arg1;
-- (NSSet *)referencedStyles;
 
 @optional
 - (void)afterReplacingReferencedStylesSetStylesheet:(TSSStylesheet *)arg1;

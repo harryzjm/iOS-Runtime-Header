@@ -17,7 +17,6 @@
 @property(readonly, nonatomic) NSString *stage;
 @property(readonly, nonatomic) NSString *language;
 @property(readonly, nonatomic) NSString *version;
-@property(readonly, nonatomic) NSString *name;
 - (id)description;
 - (id)initWithModelProperties:(id)arg1;
 

@@ -10,7 +10,7 @@
 @property(readonly, nonatomic) long long seed;
 @property(readonly, nonatomic) int blendMode;
 @property(readonly, nonatomic) _Bool rotatesImage;
-@property(readonly, nonatomic) int imageCount;
+@property(readonly, nonatomic) unsigned long long imageCount;
 @property(readonly, nonatomic) float imageScale;
 @property(readonly, nonatomic) struct CGImage *image;
 @end

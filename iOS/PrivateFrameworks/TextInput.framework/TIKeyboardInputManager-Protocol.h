@@ -6,9 +6,11 @@
 
 #import <TextInput/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, TICandidateRequestToken, TIKeyboardCandidate, TIKeyboardInput, TIKeyboardLayout, TIKeyboardState, TIKeyboardTouchEvent;
+@class NSArray, NSDictionary, NSString, TICandidateRequestToken, TIKeyboardCandidate, TIKeyboardInput, TIKeyboardLayout, TIKeyboardState, TIKeyboardTouchEvent, TISupplementalLexicon;
 
 @protocol TIKeyboardInputManager <NSObject>
+- (void)removeSupplementalLexiconWithIdentifier:(unsigned long long)arg1;
+- (void)addSupplementalLexicon:(TISupplementalLexicon *)arg1 completionHandler:(void (^)(void))arg2;
 - (void)writeTypologyLogWithCompletionHandler:(void (^)(NSURL *))arg1;
 - (void)logDiscoverabilityEvent:(int)arg1 userInfo:(NSDictionary *)arg2;
 - (void)lastAcceptedCandidateCorrected;

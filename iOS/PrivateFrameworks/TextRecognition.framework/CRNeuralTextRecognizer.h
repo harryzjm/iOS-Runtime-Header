@@ -8,7 +8,7 @@
 
 #import <TextRecognition/CRConfidenceThresholdProviding-Protocol.h>
 
-@class CRPerformanceStatistics, CRRecognizerConfiguration, NSString;
+@class CRNeuralRecognizerConfiguration, CRPerformanceStatistics, NSString;
 @protocol CRRecognizerFeatureProviding, CRTextDecoding, CRTextRecognizerModel;
 
 @interface CRNeuralTextRecognizer : NSObject <CRConfidenceThresholdProviding>
@@ -17,29 +17,35 @@
     unsigned int _desiredQoS;
     CRPerformanceStatistics *_inferenceStats;
     CRPerformanceStatistics *_decodingStats;
-    CRRecognizerConfiguration *_configuration;
+    CRNeuralRecognizerConfiguration *_configuration;
     NSObject<CRRecognizerFeatureProviding> *_featureProvider;
     NSObject<CRTextRecognizerModel> *_model;
     NSObject<CRTextDecoding> *_textDecoder;
+    long long _resourceUsers;
 }
 
 + (id)_textDecoderForRevision:(long long)arg1 configuration:(id)arg2 model:(id)arg3 error:(id *)arg4;
 + (id)_featureProviderForRevision:(long long)arg1 configuration:(id)arg2 model:(id)arg3 error:(id *)arg4;
 + (id)_modelForRevision:(long long)arg1 configuration:(id)arg2 error:(id *)arg3;
-+ (id)recognizerForRevision:(unsigned long long)arg1 imageReaderOptions:(id)arg2 error:(id *)arg3;
++ (id)recognizerForLocale:(id)arg1 imageReaderOptions:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 @property unsigned int desiredQoS; // @synthesize desiredQoS=_desiredQoS;
 @property _Bool shouldCancel; // @synthesize shouldCancel=_shouldCancel;
+@property long long resourceUsers; // @synthesize resourceUsers=_resourceUsers;
 @property(retain) NSObject<CRTextDecoding> *textDecoder; // @synthesize textDecoder=_textDecoder;
 @property(retain) NSObject<CRTextRecognizerModel> *model; // @synthesize model=_model;
 @property(retain) NSObject<CRRecognizerFeatureProviding> *featureProvider; // @synthesize featureProvider=_featureProvider;
-@property(retain) CRRecognizerConfiguration *configuration; // @synthesize configuration=_configuration;
+@property(retain) CRNeuralRecognizerConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(retain) CRPerformanceStatistics *decodingStats; // @synthesize decodingStats=_decodingStats;
 @property(retain) CRPerformanceStatistics *inferenceStats; // @synthesize inferenceStats=_inferenceStats;
-@property(readonly) float highConfidenceThreshold;
-@property(readonly) float mediumConfidenceThreshold;
-- (_Bool)shouldUseLM;
+- (_Bool)shouldModelSupportCharacterBoxes;
+- (void)_unloadResources;
+- (_Bool)_loadResourcesWithError:(id *)arg1;
+- (_Bool)performWithResource:(CDUnknownBlockType)arg1 error:(id *)arg2;
+- (_Bool)preheatWithError:(id *)arg1;
 - (_Bool)_isCancelled;
+- (id)thresholdsForTextFeature:(id)arg1;
+- (_Bool)shouldUseLM;
 - (id)recognizeInImage:(id)arg1 textFeatures:(id)arg2 progressHandler:(CDUnknownBlockType)arg3 error:(id *)arg4;
 - (void)cancel;
 - (id)init;

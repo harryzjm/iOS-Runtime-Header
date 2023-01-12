@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <ICDocCamZoomablePageContentViewDelegate> pageContentViewDelegate; // @synthesize pageContentViewDelegate=_pageContentViewDelegate;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (id)_accessibilityScrollAncestorForSelector:(SEL)arg1;
 

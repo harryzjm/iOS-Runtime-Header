@@ -46,7 +46,6 @@
 - (void)handleHomePersonManagerSettingsDidChangeNotification:(id)arg1;
 - (void)handleUserRemoteAccessDidChangeNotification:(id)arg1;
 - (void)handleUserCamerasAccessLevelDidChangeNotification:(id)arg1;
-- (void)handleFetchSettingsMessage:(id)arg1;
 - (void)handleUpdatePersonManagerSettingsMessage:(id)arg1;
 - (void)removeCloudDataForZoneUUID:(id)arg1;
 - (void)updateSettingsForCurrentCameraClipsAccess;

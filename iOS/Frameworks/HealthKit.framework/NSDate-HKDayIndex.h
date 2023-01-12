@@ -11,11 +11,15 @@
 + (id)hk_earliestPossibleDateWithDayIndex:(long long)arg1;
 + (id)hk_noonWithDayIndex:(long long)arg1 calendar:(id)arg2;
 + (id)hk_dateOnDayIndex:(long long)arg1 atHour:(long long)arg2 calendar:(id)arg3;
++ (id)hk_sleepDayStartForMorningIndex:(long long)arg1 calendar:(id)arg2;
 + (id)hk_dateWithNanosecondsSince1970:(long long)arg1;
 + (id)hk_mostRecentDate:(id)arg1;
 - (long long)hk_latestPossibleDayIndex;
 - (long long)hk_earliestPossibleDayIndex;
 - (long long)hk_dayIndexWithCalendar:(id)arg1;
+- (id)hk_sleepDayStartWithCalendar:(id)arg1;
+- (long long)hk_morningIndexWithCalendar:(id)arg1;
+- (id)hk_utcDateAdjustedToCalendar:(id)arg1;
 - (long long)hk_nanosecondsSince1970;
 - (id)hk_truncateToDay;
 - (id)hk_nearestDate:(id)arg1;

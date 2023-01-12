@@ -15,11 +15,13 @@
     TSUBezierPath *mCachedWrapPath;
     TSUBezierPath *mCachedPathForClippingConnectionLines;
     NSOrderedSet *mCachedGroupedChildren;
+    double mClampingScaleForChildLayouts;
+    struct CGRect mBoundsForChildren;
     _Bool mHasInvalidated;
 }
 
 - (void).cxx_destruct;
-- (id)p_groupedChildren;
+@property(readonly, nonatomic) NSOrderedSet *i_groupedChildren;
 - (void)p_invalidateParentForWrap;
 - (void)p_destroyDynamicCopies;
 - (void)setDynamicGeometry:(id)arg1;
@@ -36,9 +38,7 @@
 - (id)p_childWrapPathsFrom:(id)arg1 inDescendents:(id)arg2 includingTitleAndCaption:(_Bool)arg3;
 - (_Bool)supportsParentFlipping;
 - (_Bool)supportsFlipping;
-- (_Bool)canFlip;
 - (_Bool)supportsRotation;
-- (_Bool)supportsInspectorPositioning;
 - (_Bool)allowsConnections;
 - (id)layoutsForProvidingGuidesForChildLayouts;
 - (_Bool)providesGuidesForChildLayouts;
@@ -57,13 +57,21 @@
 - (struct CGRect)rectInRootForPresentingAnnotationPopoverForSelectionPath:(id)arg1;
 - (_Bool)shouldBeIncludedInParentFrameForCulling;
 - (struct CGRect)alignmentFrame;
+- (struct CGAffineTransform)transformForFindHighlightsOfChild:(id)arg1;
 - (void)updateLayoutGeometryInPreparationForPartitioning;
 - (struct CGRect)clipRect;
 - (struct CGRect)frameForCaptionPositioning;
 - (struct CGRect)boundsForStandardKnobs;
 - (void)processChangedProperty:(int)arg1;
 - (struct CGRect)rectInRootForSelectionPath:(id)arg1;
+- (struct CGRect)frameForCullingWithBaseFrame:(struct CGRect)arg1 additionalTransform:(struct CGAffineTransform)arg2;
+- (struct CGRect)baseFrameForFrameForCullingWithAdditionalTransform:(struct CGAffineTransform)arg1;
+@property(readonly, nonatomic) struct CGRect i_boundsForChildren;
+@property(readonly, nonatomic) double i_clampingScaleForChildLayouts;
+- (_Bool)protected_isNonGroupedDescendant:(id)arg1;
+@property(readonly, nonatomic) _Bool i_isClampedToParentByScaling;
 - (id)computeLayoutGeometry;
+- (id)i_computeBaseLayoutGeometry;
 - (struct CGRect)computeBoundsForStandardKnobs;
 - (id)additionalDependenciesForChildLayout:(id)arg1;
 - (id)reliedOnLayouts;
@@ -71,6 +79,7 @@
 - (id)childInfosForChildLayouts;
 - (id)visibleGeometries;
 - (id)p_groupInfo;
+- (id)initWithInfo:(id)arg1;
 
 @end
 

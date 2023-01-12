@@ -37,7 +37,6 @@
 - (void)getESimServerURL:(void (^)(NSString *))arg1;
 - (void)setIMEIPrefix:(NSString *)arg1;
 - (void)getIMEIPrefix:(void (^)(NSString *))arg1;
-- (void)launchDataActivationNextWithUrl:(NSString *)arg1;
 - (void)expirePlan;
 - (void)launchSequoia;
 - (void)userSignupInitiatedOrFailed;
@@ -73,10 +72,13 @@
 - (void)triggerAddNewDataPlan:(void (^)(NSError *))arg1;
 - (void)carrierHandoffToken:(void (^)(NSString *, NSString *, NSError *))arg1;
 - (void)didTransferPlanForCsn:(NSData *)arg1 iccid:(NSString *)arg2 srcIccid:(NSString *)arg3 profileServer:(NSString *)arg4 state:(NSString *)arg5;
+- (void)didPurchasePlanForCarrier:(NSString *)arg1 mnc:(NSString *)arg2 gid1:(NSString *)arg3 gid2:(NSString *)arg4 state:(NSString *)arg5;
+- (void)didPurchasePlanForCsn:(NSData *)arg1 iccid:(NSString *)arg2 profileServer:(NSString *)arg3 state:(NSString *)arg4;
 - (void)didPurchasePlanForCsn:(NSData *)arg1 iccid:(NSString *)arg2 profileServer:(NSString *)arg3;
 - (void)planLaunchInfoWithCompletion:(void (^)(NSString *, NSDictionary *, NSError *))arg1;
 - (void)eraseAllPlansWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)didDeletePlanItem:(CTCellularPlanItem *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)didEnablePlanItems:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)didSelectPlansForIMessage:(NSArray *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)didSelectPlanForDefaultVoice:(CTCellularPlanItem *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)setLabelForPlan:(CTCellularPlanItem *)arg1 label:(CTUserLabel *)arg2 completion:(void (^)(_Bool, NSError *))arg3;

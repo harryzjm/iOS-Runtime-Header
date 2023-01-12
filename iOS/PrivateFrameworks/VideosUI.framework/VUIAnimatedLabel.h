@@ -52,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (id)_rasterizedTextWithMarquee:(_Bool)arg1;
 - (void)drawTextInRect:(struct CGRect)arg1;
 - (_Bool)_isRTL;
+- (void)didMoveToWindow;
 - (void)stopAndResetScrollWithDuration:(double)arg1;
 - (void)stopAnimatingWithoutResetWithDuration:(double)arg1;
 - (void)stopAnimating;

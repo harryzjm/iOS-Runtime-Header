@@ -9,6 +9,8 @@
 @class NSArray, NSString;
 
 @protocol MPUniversalStoreIdentifiers <NSObject>
+@property(readonly, nonatomic) long long assetAdamID;
+@property(readonly, nonatomic) long long reportingAdamID;
 @property(readonly, copy, nonatomic) NSString *informalStaticAssetID;
 @property(readonly, copy, nonatomic) NSString *informalMediaClipID;
 @property(readonly, copy, nonatomic) NSString *socialProfileID;

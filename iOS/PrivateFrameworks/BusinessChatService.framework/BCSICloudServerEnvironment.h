@@ -27,7 +27,6 @@
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
-- (id)_productionContainerID;
 @property(readonly, nonatomic, getter=isStagingMode) _Bool isStagingMode;
 @property(readonly, nonatomic) NSDictionary *additionalRequestHTTPHeaders;
 @property(readonly, nonatomic) long long containerEnvironment;

@@ -35,8 +35,8 @@
 - (id)sign:(id)arg1 algorithms:(id)arg2 parameters:(id)arg3 error:(id *)arg4;
 - (id)operationResult:(id)arg1 error:(id *)arg2;
 - (id)operation:(long long)arg1 data:(id)arg2 algorithms:(id)arg3 parameters:(id)arg4 error:(id *)arg5;
-@property(readonly, nonatomic) struct __SecAccessControl *accessControlRef;
 - (id)initWithSession:(id)arg1 objectID:(id)arg2 attributes:(id)arg3;
+@property(readonly, nonatomic) struct __SecAccessControl *accessControlRef;
 
 @end
 

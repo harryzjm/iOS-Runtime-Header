@@ -70,7 +70,7 @@ __attribute__((visibility("hidden")))
 - (void)layoutSubviews;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)setTintColor:(id)arg1;
+- (void)tintColorDidChange;
 - (void)setBarStyle:(long long)arg1;
 - (void)setToolbarViewModel:(id)arg1 withAnimatorBlock:(CDUnknownBlockType)arg2;
 - (_Bool)_shouldStretchDuringCrossfadeTransition;

@@ -23,6 +23,7 @@
     SUICOrbView *_orbView;
     UIView *_orbContainerView;
     CRSUIStatusBarStyleAssertion *_statusBarStyleAssertion;
+    UIView *_siriXIndicatorView;
 }
 
 - (void).cxx_destruct;
@@ -37,8 +38,11 @@
 - (void)backgroundView:(id)arg1 requestsCarPlayStatusBarOverride:(_Bool)arg2 animationSettings:(id)arg3;
 - (void)_orbHeldWithGestureRecognizer:(id)arg1;
 - (void)_orbTappedWithGestureRecognizer:(id)arg1;
+- (void)setRequestHandlingStatus:(unsigned long long)arg1;
 - (void)setSiriContentDelegate:(id)arg1;
 - (void)setAuxiliaryViewsHidden:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)updateOrbViewState;
+- (void)resetOrbViewToSiriSessionState;
 - (struct CGRect)orbViewRectInCarplayView;
 - (void)updateBackgroundVisibility:(_Bool)arg1;
 - (void)updateBackgroundViewMode:(long long)arg1;

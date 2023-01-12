@@ -24,11 +24,31 @@
     double _responseStart;
     double _secureConnectEnd;
     double _secureConnectStart;
+    int _multipathServiceType;
     int _protocolName;
     int _resourceFetchType;
+    _Bool _isMultipath;
     _Bool _proxyConnection;
     _Bool _reusedConnection;
-    CDStruct_60b58840 _flags;
+    struct {
+        unsigned int has_connectEnd:1;
+        unsigned int has_connectStart:1;
+        unsigned int has_domainLookupEnd:1;
+        unsigned int has_domainLookupStart:1;
+        unsigned int has_fetchStart:1;
+        unsigned int has_requestEnd:1;
+        unsigned int has_requestStart:1;
+        unsigned int has_responseEnd:1;
+        unsigned int has_responseStart:1;
+        unsigned int has_secureConnectEnd:1;
+        unsigned int has_secureConnectStart:1;
+        unsigned int has_multipathServiceType:1;
+        unsigned int has_protocolName:1;
+        unsigned int has_resourceFetchType:1;
+        unsigned int has_isMultipath:1;
+        unsigned int has_proxyConnection:1;
+        unsigned int has_reusedConnection:1;
+    } _flags;
 }
 
 + (_Bool)isValid:(id)arg1;
@@ -48,6 +68,12 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsMultipathServiceType:(id)arg1;
+- (id)multipathServiceTypeAsString:(int)arg1;
+@property(nonatomic) _Bool hasMultipathServiceType;
+@property(nonatomic) int multipathServiceType;
+@property(nonatomic) _Bool hasIsMultipath;
+@property(nonatomic) _Bool isMultipath;
 - (int)StringAsResourceFetchType:(id)arg1;
 - (id)resourceFetchTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasResourceFetchType;

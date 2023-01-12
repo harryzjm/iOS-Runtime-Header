@@ -4,25 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+#import <PhotosGraph/MAUniquelyIdentifiableNode-Protocol.h>
 
-@interface PGGraphDayOfWeekNode
+@class MANodeFilter, NSString;
+
+@interface PGGraphDayOfWeekNode <MAUniquelyIdentifiableNode>
 {
     long long _dayOfWeek;
 }
 
 + (id)nameForDayOfWeek:(long long)arg1;
 + (long long)dayOfWeekForName:(id)arg1;
-@property(nonatomic) long long dayOfWeek; // @synthesize dayOfWeek=_dayOfWeek;
++ (id)filter;
+@property(readonly) long long dayOfWeek; // @synthesize dayOfWeek=_dayOfWeek;
 @property(readonly) NSString *name;
+@property(readonly, nonatomic) MANodeFilter *uniquelyIdentifyingFilter;
 - (unsigned short)domain;
 - (id)label;
 - (id)description;
 - (id)propertyDictionary;
 - (_Bool)hasProperties:(id)arg1;
-- (void)setLocalProperties:(id)arg1;
-- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
-- (id)init;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3 properties:(id)arg4;
+- (id)initWithDayOfWeek:(long long)arg1;
 
 @end
 

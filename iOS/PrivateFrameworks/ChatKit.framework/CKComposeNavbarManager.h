@@ -24,12 +24,13 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CKComposeNavbarManagerContentView *contentView; // @synthesize contentView=_contentView;
 - (void)commitTransitionAnimationWithConversation:(id)arg1 shouldShowBackButtonView:(_Bool)arg2;
 - (void)_setupAvatarNavBarViewControllerWithConversation:(id)arg1 shouldShowBackButtonView:(_Bool)arg2;
-- (void)_setupDefaultNavbarCanvasViewController;
+- (void)_setupDefaultNavbarCanvasViewControllerForBusinessChat:(_Bool)arg1;
 - (void)setCanvasViewControllerDelegate:(id)arg1;
 @property(readonly, nonatomic) UIButton *cancelButton;
 - (void)updateTitle:(id)arg1 animated:(_Bool)arg2;
+- (void)updateContentsForConversation:(id)arg1;
 - (void)dealloc;
-- (id)init;
+- (id)initForBusinessChat:(_Bool)arg1;
 
 @end
 

@@ -18,6 +18,7 @@
 
 + (id)entryWithString:(id)arg1 tokenID:(unsigned int)arg2 flags:(unsigned long long)arg3 probability:(double)arg4;
 - (void).cxx_destruct;
+- (id)probabilityInfo;
 @property(readonly) double probability;
 @property(readonly) unsigned long long flags;
 - (unsigned int)tokenID;

@@ -11,6 +11,7 @@
 @class NSError, NSObject;
 @protocol GSProtocol;
 
+__attribute__((visibility("hidden")))
 @interface GSDaemonProxySync : NSProxy <GSProtocol>
 {
     NSObject<GSProtocol> *_target;

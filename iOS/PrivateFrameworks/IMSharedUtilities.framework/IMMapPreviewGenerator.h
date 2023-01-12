@@ -11,7 +11,7 @@
 {
 }
 
-+ (id)titleBarMaskImageForWidth:(double)arg1 constraints:(struct IMPreviewConstraints)arg2;
++ (id)titleBarMaskImageForWidth:(double)arg1 constraints:(struct IMPreviewConstraints)arg2 error:(id *)arg3;
 + (id)valueForKey:(id)arg1 forURLComponents:(id)arg2;
 + (struct CLLocationCoordinate2D)_legacyCoordinateForvCardURL:(id)arg1;
 + (struct CLLocationCoordinate2D)coordinateForvCardURL:(id)arg1;

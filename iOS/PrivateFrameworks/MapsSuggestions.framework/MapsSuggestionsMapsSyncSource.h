@@ -19,6 +19,7 @@
 + (unsigned long long)disposition;
 + (_Bool)isEnabled;
 - (void).cxx_destruct;
+- (void)awaitQueue;
 - (void)mapsSync:(id)arg1 didChangeForContentType:(long long)arg2;
 - (_Bool)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (_Bool)canProduceEntriesOfType:(long long)arg1;

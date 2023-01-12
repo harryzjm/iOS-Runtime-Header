@@ -29,6 +29,7 @@
     } _internal;
 }
 
++ (_Bool)_subclassesMustBeExplicitlyMentionedWhenDecoded;
 + (_Bool)supportsSecureCoding;
 + (id)indexSetWithIndexes:(const unsigned long long *)arg1 count:(unsigned long long)arg2;
 + (id)indexSetWithIndexesInRange:(struct _NSRange)arg1;

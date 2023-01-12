@@ -55,6 +55,8 @@
 @property(nonatomic) _Bool displaysUnavailableActionTypes; // @synthesize displaysUnavailableActionTypes=_displaysUnavailableActionTypes;
 @property(nonatomic) __weak id <CNUIObjectViewControllerDelegate> objectViewControllerDelegate; // @synthesize objectViewControllerDelegate;
 - (id)actionImageTextStyleForViewStyle:(long long)arg1;
+- (void)notifyDelegateOfDisambiguationForActionType:(id)arg1;
+- (void)notifyDelegateOfPerformedActionType:(id)arg1 fromDisambiguation:(_Bool)arg2;
 - (_Bool)isGroupActionsView;
 - (void)performGroupActionForType:(id)arg1;
 - (void)setupGroupActions;

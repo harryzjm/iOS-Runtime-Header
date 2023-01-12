@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewCell.h>
-
 @class CALayer, GKEditActionsView, GKHairlineView, GKStaticRenderContentView, NSArray, NSLayoutConstraint, UIView;
 
-@interface GKCollectionViewCell : UICollectionViewCell
+@interface GKCollectionViewCell
 {
     _Bool _shouldDisplaySwipeToEditAccessories;
     double _contentOriginX;
@@ -29,6 +27,7 @@
 }
 
 + (void)registerCellClassesWithCollectionView:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) double trailingMargin; // @synthesize trailingMargin=_trailingMargin;
 @property(nonatomic) double leadingMargin; // @synthesize leadingMargin=_leadingMargin;
 @property(retain, nonatomic) NSLayoutConstraint *contentLeftConstraint; // @synthesize contentLeftConstraint=_contentLeftConstraint;
@@ -71,7 +70,6 @@
 - (void)_dynamicUserInterfaceTraitDidChange;
 - (id)popoverSourceView;
 - (void)_gkEnumerateSubviewsUsingBlock:(CDUnknownBlockType)arg1;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

@@ -10,7 +10,8 @@
 @protocol HDHealthRecordsProfileExtension
 - (void)removeAccountEventObserver:(id <HDHealthRecordsAccountEventObserver>)arg1;
 - (void)addAccountEventObserver:(id <HDHealthRecordsAccountEventObserver>)arg1;
-- (_Bool)hasAccounts:(_Bool *)arg1 error:(id *)arg2;
+- (long long)hasIssuerBackedAccountsWithError:(id *)arg1;
+- (long long)hasGatewayBackedAccountsWithError:(id *)arg1;
 - (void)unregisterHealthRecordsSupportedChangeObserver:(id <HDHealthRecordsSupportedChangeObserver>)arg1;
 - (void)registerHealthRecordsSupportedChangeObserver:(id <HDHealthRecordsSupportedChangeObserver>)arg1;
 - (_Bool)isSupportedFHIRResourceType:(NSString *)arg1 FHIRVersionString:(NSString *)arg2;

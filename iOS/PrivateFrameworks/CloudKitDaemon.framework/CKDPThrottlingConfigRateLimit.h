@@ -8,17 +8,25 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-__attribute__((visibility("hidden")))
 @interface CKDPThrottlingConfigRateLimit : PBCodable <NSCopying>
 {
+    long long _startTimeSecondsAfterLocalMidnight;
+    long long _startTimeSecondsAfterUnixEpoch;
     int _allowedRequestCount;
     int _intervalLengthSec;
+    int _repeatEverySec;
     struct {
+        unsigned int startTimeSecondsAfterLocalMidnight:1;
+        unsigned int startTimeSecondsAfterUnixEpoch:1;
         unsigned int allowedRequestCount:1;
         unsigned int intervalLengthSec:1;
+        unsigned int repeatEverySec:1;
     } _has;
 }
 
+@property(nonatomic) long long startTimeSecondsAfterLocalMidnight; // @synthesize startTimeSecondsAfterLocalMidnight=_startTimeSecondsAfterLocalMidnight;
+@property(nonatomic) long long startTimeSecondsAfterUnixEpoch; // @synthesize startTimeSecondsAfterUnixEpoch=_startTimeSecondsAfterUnixEpoch;
+@property(nonatomic) int repeatEverySec; // @synthesize repeatEverySec=_repeatEverySec;
 @property(nonatomic) int allowedRequestCount; // @synthesize allowedRequestCount=_allowedRequestCount;
 @property(nonatomic) int intervalLengthSec; // @synthesize intervalLengthSec=_intervalLengthSec;
 - (void)mergeFrom:(id)arg1;
@@ -30,6 +38,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasStartTimeSecondsAfterLocalMidnight;
+@property(nonatomic) _Bool hasStartTimeSecondsAfterUnixEpoch;
+@property(nonatomic) _Bool hasRepeatEverySec;
 @property(nonatomic) _Bool hasAllowedRequestCount;
 @property(nonatomic) _Bool hasIntervalLengthSec;
 

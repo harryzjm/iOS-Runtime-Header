@@ -6,17 +6,22 @@
 
 #import <UIKit/UICollectionReusableView.h>
 
-@class MISSING_TYPE;
+@class MISSING_TYPE, NSString;
 
 @interface _TtC12GameCenterUI29GKDashboardShowMoreFooterView : UICollectionReusableView
 {
     MISSING_TYPE *label;
     MISSING_TYPE *actionHandler;
+    MISSING_TYPE *showMoreText;
 }
 
 - (void).cxx_destruct;
+- (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)didTap:(id)arg1;
 - (void)layoutSubviews;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
+@property(nonatomic, readonly) _Bool canBecomeFocused;
+@property(nonatomic, copy) NSString *showMoreText;
 @property(nonatomic, copy) CDUnknownBlockType actionHandler;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

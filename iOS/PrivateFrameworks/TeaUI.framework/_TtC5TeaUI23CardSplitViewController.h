@@ -14,6 +14,7 @@
     MISSING_TYPE *commands;
     MISSING_TYPE *preservedItems;
     MISSING_TYPE *eventManager;
+    MISSING_TYPE *splitViewFocus;
 }
 
 - (void).cxx_destruct;

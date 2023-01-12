@@ -8,8 +8,8 @@
 {
 }
 
-- (void)saveToArchiver:(id)arg1 message:(struct Operation *)arg2;
-- (id)initWithUnarchiver:(id)arg1 message:(const struct Operation *)arg2;
+- (void)saveToArchiver:(id)arg1 message:(void *)arg2;
+- (id)initWithUnarchiver:(id)arg1 message:(const void *)arg2;
 
 @end
 

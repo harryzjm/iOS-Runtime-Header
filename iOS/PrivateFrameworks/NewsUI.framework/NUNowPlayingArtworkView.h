@@ -17,7 +17,7 @@
 @property(retain, nonatomic) UIImageView *trackImageView; // @synthesize trackImageView=_trackImageView;
 - (struct CGSize)artworkSizeForTitleViewWidth:(double)arg1;
 @property(readonly, nonatomic) struct CGSize artworkSize;
-- (void)setTrackImage:(id)arg1;
+- (void)setTrackImage:(id)arg1 animated:(_Bool)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;

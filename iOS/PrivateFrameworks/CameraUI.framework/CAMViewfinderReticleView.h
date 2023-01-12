@@ -10,9 +10,10 @@
 
 @interface CAMViewfinderReticleView : UIView
 {
+    _Bool _cornersVisible;
     double _viewportTopInset;
     double _viewportBottomInset;
-    long long _maskingStyle;
+    long long _material;
     UIView *__topMaskingView;
     UIView *__bottomMaskingView;
     UIImageView *__viewportBorderView;
@@ -30,15 +31,16 @@
 @property(readonly, nonatomic) UIImageView *_viewportBorderView; // @synthesize _viewportBorderView=__viewportBorderView;
 @property(readonly, nonatomic) UIView *_bottomMaskingView; // @synthesize _bottomMaskingView=__bottomMaskingView;
 @property(readonly, nonatomic) UIView *_topMaskingView; // @synthesize _topMaskingView=__topMaskingView;
-@property(nonatomic) long long maskingStyle; // @synthesize maskingStyle=_maskingStyle;
+@property(nonatomic) _Bool cornersVisible; // @synthesize cornersVisible=_cornersVisible;
+@property(nonatomic) long long material; // @synthesize material=_material;
 @property(readonly, nonatomic) double viewportBottomInset; // @synthesize viewportBottomInset=_viewportBottomInset;
 @property(readonly, nonatomic) double viewportTopInset; // @synthesize viewportTopInset=_viewportTopInset;
+- (void)setCornersVisible:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setViewportTopInset:(double)arg1 bottomInset:(double)arg2 animated:(_Bool)arg3;
 - (id)_newViewportTemplateImage;
 - (id)_newViewportCornerImage;
-- (double)_opacityForMaskingStyle:(long long)arg1;
-- (void)_updateMaskingOpacityWithDuration:(double)arg1;
-- (void)setMaskingStyle:(long long)arg1 withDuration:(double)arg2;
+- (void)_updateMaterialOpacityWithDuration:(double)arg1;
+- (void)setMaterial:(long long)arg1 withDuration:(double)arg2;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;

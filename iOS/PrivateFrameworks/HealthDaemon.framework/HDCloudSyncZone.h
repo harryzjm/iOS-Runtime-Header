@@ -6,13 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class CKRecordID, CKShare, HDCloudSyncDataUploadRequestRecord, HDCloudSyncMasterRecord, HDCloudSyncRegistryRecord, HDCloudSyncRepository, HDCloudSyncStore, HDCloudSyncStoreRecord, HDCloudSyncZoneIdentifier, NSArray, NSMutableArray, NSUUID;
+@class CKRecordID, CKShare, HDCloudSyncDataUploadRequestRecord, HDCloudSyncMasterRecord, HDCloudSyncRegistryRecord, HDCloudSyncRepository, HDCloudSyncSharedSummaryRelationshipRecord, HDCloudSyncStore, HDCloudSyncStoreRecord, HDCloudSyncZoneIdentifier, NSArray, NSMutableArray, NSUUID;
 
 @interface HDCloudSyncZone : NSObject
 {
     NSMutableArray *_records;
     NSMutableArray *_storeRecords;
     NSMutableArray *_orphanedSequenceRecords;
+    NSMutableArray *_participantRecords;
+    NSMutableArray *_authorizationRecords;
+    NSMutableArray *_transactionRecords;
     _Bool _hasLostIdentity;
     _Bool _hasFutureSchemaRecord;
     _Bool _validatedForSharing;
@@ -25,9 +28,14 @@
     HDCloudSyncMasterRecord *_masterRecord;
     HDCloudSyncStore *_store;
     HDCloudSyncDataUploadRequestRecord *_dataUploadRequestRecord;
+    HDCloudSyncSharedSummaryRelationshipRecord *_relationshipRecord;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *transactionRecords; // @synthesize transactionRecords=_transactionRecords;
+@property(readonly, nonatomic) NSArray *authorizationRecords; // @synthesize authorizationRecords=_authorizationRecords;
+@property(readonly, nonatomic) NSArray *participantRecords; // @synthesize participantRecords=_participantRecords;
+@property(readonly, nonatomic) HDCloudSyncSharedSummaryRelationshipRecord *relationshipRecord; // @synthesize relationshipRecord=_relationshipRecord;
 @property(readonly, nonatomic) HDCloudSyncDataUploadRequestRecord *dataUploadRequestRecord; // @synthesize dataUploadRequestRecord=_dataUploadRequestRecord;
 @property(retain, nonatomic) HDCloudSyncStore *store; // @synthesize store=_store;
 @property(readonly, nonatomic) HDCloudSyncMasterRecord *masterRecord; // @synthesize masterRecord=_masterRecord;

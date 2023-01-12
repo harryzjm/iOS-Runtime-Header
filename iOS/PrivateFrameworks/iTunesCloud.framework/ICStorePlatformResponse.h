@@ -18,7 +18,6 @@
     NSArray *_requestedItemIdentifiers;
     NSDictionary *_responseDictionary;
     NSString *_storefrontIdentifier;
-    _Bool _authenticated;
 }
 
 - (void).cxx_destruct;
@@ -29,7 +28,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, copy, nonatomic) id rawResponse;
 @property(readonly, copy, nonatomic) NSDictionary *resultsDictionary;
-@property(readonly, nonatomic, getter=isAuthenticated) _Bool authenticated; // @synthesize authenticated=_authenticated;
+@property(readonly, nonatomic, getter=isAuthenticated) _Bool authenticated;
 @property(readonly, copy, nonatomic) NSString *storefrontIdentifier;
 - (id)itemForIdentifier:(id)arg1;
 - (void)enumerateItemsUsingBlock:(CDUnknownBlockType)arg1;

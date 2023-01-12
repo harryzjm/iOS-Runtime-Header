@@ -24,7 +24,7 @@
 + (void)_unconfigServerAndRetry:(_Bool)arg1;
 + (void)_configServerWithMachServiceName:(char *)arg1;
 + (void)_configServer;
-+ (_Bool)_inUnitTests;
++ (_Bool)inUnitTests;
 + (void)_createConnectionRunLoop;
 + (void)initialize;
 - (void).cxx_destruct;

@@ -6,14 +6,22 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class SBFloatingDockViewController, SBFolderController;
-@protocol SBViewControllerTransitionCoordinator, UIViewControllerAnimatedTransitioning;
+@class NSString, SBFloatingDockViewController, SBFolderController, UIViewController;
+@protocol BSInvalidatable, SBViewControllerTransitionCoordinator, UIViewControllerAnimatedTransitioning;
 
 @protocol SBFloatingDockViewControllerDelegate <NSObject>
-- (_Bool)isFloatingDockViewControllerPresentedOverTransitioningContent:(SBFloatingDockViewController *)arg1;
+- (id <BSInvalidatable>)floatingDockViewController:(SBFloatingDockViewController *)arg1 acquireOrderFloatingDockContainerBeforeLibraryAssertionForReason:(NSString *)arg2;
+- (UIViewController *)foregroundLibraryContainerViewControllerForFloatingDockViewController:(SBFloatingDockViewController *)arg1;
+- (_Bool)isDefaultLibraryContainerViewControllerForegroundForFloatingDockViewController:(SBFloatingDockViewController *)arg1;
+- (UIViewController *)libraryContainerViewControllerForFloatingDockViewController:(SBFloatingDockViewController *)arg1;
+- (_Bool)isFloatingDockViewControllerPresentedOverTransitioningSwitcherContent:(SBFloatingDockViewController *)arg1;
+- (_Bool)isFloatingDockViewControllerPresentedOverTransitioningAppToAppContent:(SBFloatingDockViewController *)arg1;
+- (_Bool)isFloatingDockViewControllerPresentedOverApplication:(SBFloatingDockViewController *)arg1;
 - (double)minimumHomeScreenScaleForFloatingDockViewController:(SBFloatingDockViewController *)arg1;
 - (void)floatingDockViewController:(SBFloatingDockViewController *)arg1 willUseAnimator:(id <UIViewControllerAnimatedTransitioning>)arg2 forTransitioningWithFolder:(SBFolderController *)arg3 presenting:(_Bool)arg4;
 - (void)floatingDockViewController:(SBFloatingDockViewController *)arg1 willPerformTransitionWithFolder:(SBFolderController *)arg2 presenting:(_Bool)arg3 withTransitionCoordinator:(id <SBViewControllerTransitionCoordinator>)arg4;
+- (void)floatingDockViewController:(SBFloatingDockViewController *)arg1 didCompleteTransitionWithLibraryToPresented:(_Bool)arg2;
+- (void)floatingDockViewController:(SBFloatingDockViewController *)arg1 willPerformTransitionWithLibraryToPresented:(_Bool)arg2;
 - (void)floatingDockViewController:(SBFloatingDockViewController *)arg1 didChangeContentFrame:(struct CGRect)arg2;
 - (void)floatingDockViewController:(SBFloatingDockViewController *)arg1 didChangeContentHeight:(double)arg2;
 - (void)floatingDockViewController:(SBFloatingDockViewController *)arg1 wantsToBePresented:(_Bool)arg2;

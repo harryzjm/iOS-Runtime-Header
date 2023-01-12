@@ -9,6 +9,7 @@
 @class SBUIProudLockContainerViewController;
 
 @protocol SBUIProudLockContainerViewControllerDelegate <NSObject>
+- (_Bool)proudLockContainerViewControllerIsCoverSheetVisible:(SBUIProudLockContainerViewController *)arg1;
 - (void)proudLockContainerViewController:(SBUIProudLockContainerViewController *)arg1 guidanceTextVisibilityDidChangeAnimated:(_Bool)arg2;
 @end
 

@@ -7,6 +7,7 @@
 #import <UIKit/UIImage.h>
 
 @interface UIImage (GKAchievementProgress)
++ (void)_gkMessageGroupImageWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 + (id)_gkHostImageWithBundleIdentifier:(id)arg1 imageName:(id)arg2;
 - (id)_gkImageWithProgress:(double)arg1 achievement:(id)arg2 isDetail:(_Bool)arg3;
 - (id)_gkMaskImageWithProgress:(double)arg1 isDetail:(_Bool)arg2;

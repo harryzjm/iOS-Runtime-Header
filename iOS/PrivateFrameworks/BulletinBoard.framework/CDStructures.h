@@ -42,5 +42,6 @@ typedef struct {
     unsigned int handleBulletinActionResponseWithCompletion:1;
     unsigned int universalSectionIdentifier:1;
     unsigned int parentSectionIdentifier:1;
-} CDStruct_0e6e99aa;
+    unsigned int sectionBundlePath:1;
+} CDStruct_74159afb;
 

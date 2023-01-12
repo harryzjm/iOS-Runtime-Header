@@ -31,8 +31,6 @@
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly, nonatomic) CKRecord *asCKRecord;
 - (id)initWithEntryID:(id)arg1 tagID:(id)arg2 fontMultiplier:(id)arg3 fontMultiplierMacOS:(id)arg4 contentScale:(id)arg5 contentScaleMacOS:(id)arg6 accessToken:(id)arg7 webAccessOptIn:(_Bool)arg8;
-- (id)dictionaryRepresentation;
-- (id)initWithEntryID:(id)arg1 dictionaryRepresentation:(id)arg2;
 
 @end
 

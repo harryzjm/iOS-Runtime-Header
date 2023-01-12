@@ -26,9 +26,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool shouldDismissWithAnimation;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (struct OptionItem *)findItemAt:(id)arg1;
+- (void *)findItemAt:(id)arg1;
 - (long long)findItemIndexAt:(id)arg1;
-- (void)populateCell:(id)arg1 withItem:(const struct OptionItem *)arg2;
+- (void)populateCell:(id)arg1 withItem:(const void *)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;

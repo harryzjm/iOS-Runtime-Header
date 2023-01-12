@@ -6,17 +6,17 @@
 
 #import <SiriUI/CRKCardPresentationDelegate-Protocol.h>
 #import <SiriUI/CRKCardViewControllerDelegate-Protocol.h>
-#import <SiriUI/SiriUICardLoadingObserver-Protocol.h>
+#import <SiriUI/SRUIFCardLoaderDelegate-Protocol.h>
+#import <SiriUI/SRUIFCardLoadingObserver-Protocol.h>
 #import <SiriUI/SiriUICardSnippetViewDataSource-Protocol.h>
 #import <SiriUI/SiriUICardSnippetViewDelegate-Protocol.h>
 #import <SiriUI/SiriUIModalContainerViewControllerDelegate-Protocol.h>
 #import <SiriUI/SiriUISizeClassConfiguring-Protocol.h>
-#import <SiriUI/_SiriUICardLoaderDelegate-Protocol.h>
 
-@class CRKCardPresentation, NSMutableDictionary, NSObject, NSString, NSTimer, SACardSnippet, SiriUICardSnippetView, SiriUIModalContainerViewController, UIViewController, _SiriUICardLoader;
+@class CRKCardPresentation, NSMutableDictionary, NSMutableSet, NSObject, NSString, NSTimer, SACardSnippet, SRUIFCardLoader, SiriUICardSnippetView, SiriUIModalContainerViewController, UIViewController;
 @protocol CRKCardViewControllerDelegate, CRKCardViewControlling, OS_dispatch_group;
 
-@interface SiriUICardSnippetViewController <_SiriUICardLoaderDelegate, SiriUICardLoadingObserver, SiriUIModalContainerViewControllerDelegate, CRKCardPresentationDelegate, SiriUICardSnippetViewDataSource, SiriUICardSnippetViewDelegate, CRKCardViewControllerDelegate, SiriUISizeClassConfiguring>
+@interface SiriUICardSnippetViewController <SRUIFCardLoaderDelegate, SRUIFCardLoadingObserver, SiriUIModalContainerViewControllerDelegate, CRKCardPresentationDelegate, SiriUICardSnippetViewDataSource, SiriUICardSnippetViewDelegate, CRKCardViewControllerDelegate, SiriUISizeClassConfiguring>
 {
     SACardSnippet *_snippet;
     struct CGSize _contentSize;
@@ -24,11 +24,14 @@
     NSMutableDictionary *_referenceableSnippetsByIdentifierMap;
     NSObject<OS_dispatch_group> *_cardLoadingGroup;
     SACardSnippet *_newlyLoadedCardSnippet;
-    _SiriUICardLoader *_cardLoader;
+    SRUIFCardLoader *_cardLoader;
     CDUnknownBlockType _cardLoadingCompletionhandler;
     NSTimer *_cardLoadingTimer;
     _Bool _isCardLoading;
+    _Bool _isCardViewControllerLoading;
     long long _sizeClass;
+    NSMutableSet *_identifiersProcessedWithNewTurn;
+    NSString *_feedbackEngagementInstrumentationIdentifier;
     SiriUIModalContainerViewController *_presentedModalContainerViewController;
     UIViewController<CRKCardViewControlling> *_cardViewController;
     CRKCardPresentation *_cardPresentation;
@@ -59,21 +62,32 @@
 - (void)cardViewWillAppearForCard:(id)arg1 withAppearanceFeedback:(id)arg2;
 - (void)userDidReportFeedback:(id)arg1 fromCardSection:(id)arg2;
 - (id)_instrumentationManager;
-- (void)_instrumentCardSectionInteractionForId:(id)arg1 previousTurn:(id)arg2;
+- (void)_emitInstrumentationEventForKeyboardInvocation;
+- (void)_emitInstrumentationEventForContentChangedViaKeyboard;
+- (void)_emitInstrumentationEventWithInvocationSource:(int)arg1;
+- (void)_instrumentCardSectionInteractionForCardSection:(id)arg1 previousTurn:(id)arg2;
+- (void)_instrumentSashInteractionWithPreviousTurn:(id)arg1;
 - (void)userDidEngageCardSection:(id)arg1 withEngagementFeedback:(id)arg2;
+- (void)cardSectionView:(id)arg1 willProcessEngagementFeedback:(id)arg2;
+- (_Bool)hasGeneratedNewInstrumentationTurnForPunchOutAceCommand:(id)arg1 url:(id)arg2;
 - (void)modalContainerViewControllerViewDidDisappear:(id)arg1;
 - (void)modalContainerViewControllerViewWillDisappear:(id)arg1;
 - (void)cardViewController:(id)arg1 willDismissViewController:(id)arg2;
 - (void)presentViewController:(id)arg1 forCardViewController:(id)arg2;
 - (unsigned long long)navigationIndexOfCardViewController:(id)arg1;
 - (struct CGSize)cardViewController:(id)arg1 boundingSizeForCardSectionViewController:(id)arg2;
+- (_Bool)performFinishedEditingCommand:(id)arg1 forCardViewController:(id)arg2;
 - (_Bool)performBeganEditingCommand:(id)arg1 forCardViewController:(id)arg2;
+- (void)_inspectPayloadForMetricsEvents:(id)arg1;
+- (_Bool)performInvocationPayloadCommand:(id)arg1 forCardViewController:(id)arg2;
 - (_Bool)performPunchoutCommand:(id)arg1 forCardViewController:(id)arg2;
 - (_Bool)performNextCardCommand:(id)arg1 forCardViewController:(id)arg2;
+- (void)_populateCommand:(id)arg1 withInstrumentationTurn:(id)arg2;
 - (_Bool)performReferentialCommand:(id)arg1 forCardViewController:(id)arg2;
 - (void)cardViewController:(id)arg1 requestsHandlingOfIntent:(id)arg2;
 - (void)cardViewControllerBoundsDidChange:(id)arg1;
 - (void)cardViewControllerDidLoad:(id)arg1;
+- (void)_noteTurnGeneratedForAceCommands:(id)arg1;
 - (void)cardSnippetViewSashWasTapped:(id)arg1;
 - (double)preferredContentHeight;
 - (id)localeForCardSnippetView:(id)arg1;
@@ -92,8 +106,11 @@
 - (void)_addCardViewControllerAsChildViewController:(id)arg1;
 - (void)_removeCardViewControllerFromParentViewController:(id)arg1;
 - (void)siriDidReceiveViewsWithDialogPhase:(id)arg1;
+- (void)siriWillStartRequest;
+- (void)siriDidTapOutsideContent;
 - (void)siriDidScrollVisible:(_Bool)arg1;
 - (void)siriWillBeginScrolling;
+- (void)siriDidUpdateASRWithRecognition:(id)arg1;
 - (void)siriDidStopSpeakingWithIdentifier:(id)arg1 speechQueueIsEmpty:(_Bool)arg2;
 - (void)siriDidStartSpeakingWithIdentifier:(id)arg1;
 - (void)willCancel;

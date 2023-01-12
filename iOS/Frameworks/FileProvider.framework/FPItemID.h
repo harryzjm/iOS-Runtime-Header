@@ -42,6 +42,7 @@
 - (id)description;
 - (id)initWithProviderDomainID:(id)arg1 itemIdentifier:(id)arg2;
 - (id)initWithProviderID:(id)arg1 domainIdentifier:(id)arg2 itemIdentifier:(id)arg3;
+@property(readonly, nonatomic, getter=isDiskIdentifier) _Bool diskIdentifier;
 - (id)coreSpotlightIdentifier;
 - (id)initWithProviderID:(id)arg1 domainIdentifier:(id)arg2 coreSpotlightIdentifier:(id)arg3;
 - (id)initWithSearchableItem:(id)arg1;

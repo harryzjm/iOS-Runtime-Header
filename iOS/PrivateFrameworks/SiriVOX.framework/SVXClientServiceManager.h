@@ -9,12 +9,13 @@
 #import <SiriVOX/SVXClientServiceConnectionDelegate-Protocol.h>
 #import <SiriVOX/SVXClientServiceProviding-Protocol.h>
 
-@class NSString, SVXClientServiceConnection;
-@protocol SVXClientActivationServicing, SVXClientAudioPowerServicing, SVXClientAudioSystemServicing, SVXClientDeviceServicing, SVXClientSessionServicing, SVXClientSessionStateServicing, SVXClientSpeechSynthesisServicing, SVXPerforming;
+@class AFAnalytics, NSString, SVXClientServiceConnection;
+@protocol SVXClientActivationServicing, SVXClientAudioPowerServicing, SVXClientAudioSystemServicing, SVXClientDeviceServicing, SVXClientKeepAliveServicing, SVXClientSessionServicing, SVXClientSessionStateServicing, SVXClientSpeechSynthesisServicing, SVXPerforming;
 
 @interface SVXClientServiceManager : NSObject <SVXClientServiceConnectionDelegate, SVXClientServiceProviding>
 {
     id <SVXPerforming> _performer;
+    AFAnalytics *_analytics;
     SVXClientServiceConnection *_connection;
     id <SVXClientActivationServicing> _activationService;
     id <SVXClientSessionStateServicing> _sessionStateService;
@@ -24,10 +25,12 @@
     id <SVXClientSpeechSynthesisServicing> _speechSynthesisService;
     id <SVXClientDeviceServicing> _deviceService;
     id <SVXClientAudioSystemServicing> _audioSystemService;
+    id <SVXClientKeepAliveServicing> _keepAliveService;
 }
 
 + (id)sharedManager;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <SVXClientKeepAliveServicing> keepAliveService; // @synthesize keepAliveService=_keepAliveService;
 @property(readonly, nonatomic) id <SVXClientAudioSystemServicing> audioSystemService; // @synthesize audioSystemService=_audioSystemService;
 @property(readonly, nonatomic) id <SVXClientDeviceServicing> deviceService; // @synthesize deviceService=_deviceService;
 @property(readonly, nonatomic) id <SVXClientSpeechSynthesisServicing> speechSynthesisService; // @synthesize speechSynthesisService=_speechSynthesisService;

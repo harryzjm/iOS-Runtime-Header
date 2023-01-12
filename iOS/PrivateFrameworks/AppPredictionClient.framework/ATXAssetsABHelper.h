@@ -16,6 +16,7 @@
 
 + (void)setIndexProviderForDevice:(CDUnknownBlockType)arg1;
 + (void)setDefaultDeviceIndexPolicy;
++ (_Bool)isDefaultGroupIdentifier:(id)arg1;
 + (id)decDeviceId;
 + (void)setStaticIndexForDevice:(unsigned char)arg1;
 + (unsigned long long)saltedIndex:(unsigned long long)arg1;

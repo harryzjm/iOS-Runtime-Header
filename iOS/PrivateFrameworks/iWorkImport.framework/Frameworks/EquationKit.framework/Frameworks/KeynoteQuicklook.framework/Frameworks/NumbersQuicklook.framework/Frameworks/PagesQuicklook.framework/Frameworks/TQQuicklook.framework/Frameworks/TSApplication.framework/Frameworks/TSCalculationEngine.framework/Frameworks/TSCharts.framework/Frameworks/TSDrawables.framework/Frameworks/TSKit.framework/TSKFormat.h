@@ -13,7 +13,7 @@
     unsigned int _formatType;
 }
 
-+ (id)formatFromArchive:(const struct FormatStructArchive *)arg1;
++ (id)formatFromArchive:(const void *)arg1;
 + (unsigned int)validatedDecimalPlaces:(unsigned long long)arg1;
 + (id)defaultFormatWithFormatType:(unsigned int)arg1 locale:(id)arg2;
 + (id)booleanFormat;
@@ -21,10 +21,10 @@
 + (id)ratingFormat;
 + (id)textFormat;
 + (void)initialize;
-+ (id)formatFromTSUFormatStruct:(CDStruct_a4ff7456)arg1;
++ (id)formatFromTSUFormatStruct:(CDStruct_fef6b84f)arg1;
 @property(readonly, nonatomic) unsigned int formatType; // @synthesize formatType=_formatType;
-- (void)encodeToArchive:(struct FormatStructArchive *)arg1 archivingCustomFormats:(_Bool)arg2;
-- (void)encodeToArchive:(struct FormatStructArchive *)arg1;
+- (void)encodeToArchive:(void *)arg1 archivingCustomFormats:(_Bool)arg2;
+- (void)encodeToArchive:(void *)arg1;
 - (id)description;
 - (id)asMultipleChoiceListFormat;
 - (id)asStepperSliderFormat;
@@ -47,7 +47,7 @@
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithFormatType:(unsigned int)arg1;
-@property(readonly, nonatomic) CDStruct_a4ff7456 formatStruct;
+@property(readonly, nonatomic) CDStruct_fef6b84f formatStruct;
 
 @end
 

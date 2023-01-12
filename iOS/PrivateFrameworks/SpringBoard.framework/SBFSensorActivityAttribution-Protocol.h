@@ -10,6 +10,7 @@
 @class NSString;
 
 @protocol SBFSensorActivityAttribution <NSObject, NSCopying>
+@property(readonly, copy, nonatomic) NSString *bundleIdentifierMatchingDisplayName;
 @property(readonly, copy, nonatomic) NSString *attributionGroup;
 @property(readonly, nonatomic) long long sensor;
 @property(readonly, copy, nonatomic) NSString *bundleIdentifier;

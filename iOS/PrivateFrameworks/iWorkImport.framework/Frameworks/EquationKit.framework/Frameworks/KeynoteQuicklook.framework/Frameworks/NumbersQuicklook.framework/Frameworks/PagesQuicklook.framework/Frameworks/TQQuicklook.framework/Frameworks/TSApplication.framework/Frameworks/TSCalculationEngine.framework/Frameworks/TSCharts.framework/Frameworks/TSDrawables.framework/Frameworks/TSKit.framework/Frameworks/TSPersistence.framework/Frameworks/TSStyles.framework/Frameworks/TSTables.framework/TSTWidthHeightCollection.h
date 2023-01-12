@@ -8,8 +8,8 @@
 
 @interface TSTWidthHeightCollection : NSObject
 {
-    struct vector<std::__1::pair<TSUCellCoord, double>, std::__1::allocator<std::__1::pair<TSUCellCoord, double>>> _fittingHeights;
-    struct unordered_map<unsigned short, double, std::__1::hash<unsigned short>, std::__1::equal_to<unsigned short>, std::__1::allocator<std::__1::pair<const unsigned short, double>>> _columnToMaxFittingWidths;
+    struct vector<std::pair<TSUCellCoord, double>, std::allocator<std::pair<TSUCellCoord, double>>> _fittingHeights;
+    struct unordered_map<unsigned short, double, std::hash<unsigned short>, std::equal_to<unsigned short>, std::allocator<std::pair<const unsigned short, double>>> _columnToMaxFittingWidths;
 }
 
 - (id).cxx_construct;

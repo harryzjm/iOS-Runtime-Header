@@ -11,17 +11,20 @@
 @interface TSWPFallbackFontList : NSObject
 {
     NSDictionary *_fallbackFontList;
+    CDUnknownBlockType _localizedFontFamilyNameResolver;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType localizedFontFamilyNameResolver; // @synthesize localizedFontFamilyNameResolver=_localizedFontFamilyNameResolver;
 @property(retain, nonatomic) NSDictionary *fallbackFontList; // @synthesize fallbackFontList=_fallbackFontList;
-- (_Bool)isMasqueradingFontName:(id)arg1;
-- (_Bool)shouldShowFallbackBadgeForFont:(id)arg1;
 @property(readonly, nonatomic) NSSet *masqueradingFontNames;
+- (_Bool)isMasqueradingFontName:(id)arg1;
+- (id)localizedNameForMasqueradingFontName:(id)arg1;
 - (id)fallbackFontNameForFontWithName:(id)arg1;
 - (id)fallbackListForPostscriptFontName:(id)arg1;
 @property(readonly, nonatomic) NSSet *replaceableFontNames;
+- (id)initWithList:(id)arg1;
 - (id)init;
 
 @end

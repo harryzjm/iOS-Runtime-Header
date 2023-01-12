@@ -18,6 +18,7 @@
 
 + (void)startAutoLinkingNewPeopleInAddressBook:(void *)arg1 inProcess:(_Bool)arg2;
 + (_Bool)isLinkDataValidForAddressBook:(void *)arg1;
++ (_Bool)isInitialLinkingEnabled;
 + (_Bool)isAutoLinkingEnabled;
 - (void)linkNewlyAddedPerson:(void *)arg1;
 - (void)linkRecentlyAddedPeople;

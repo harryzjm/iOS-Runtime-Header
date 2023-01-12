@@ -40,6 +40,7 @@
 - (id)initWithSettings:(id)arg1;
 - (id)initWithFetchResult:(id)arg1;
 - (id)initWithAllAssetsWithOptions:(id)arg1;
+- (id)photoLibrary;
 - (id)initWithAssetCollection:(id)arg1 andOptions:(id)arg2;
 - (id)init;
 

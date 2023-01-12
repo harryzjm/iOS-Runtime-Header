@@ -9,7 +9,10 @@
 @class NSString, NSURL;
 
 @interface AVPlayerItem (MediaFoundation)
++ (double)HLSDownloadedDurationThreshold;
++ (double)DownloadedDurationThreshold;
 @property(nonatomic, readonly) NSString *description;
+@property(nonatomic, readonly) double time;
 @property(nonatomic) _Bool prefersSeekOverSkip;
 @property(nonatomic, readonly) _Bool isFullyDownloaded;
 @property(nonatomic, readonly) _Bool isAssetLoaded;

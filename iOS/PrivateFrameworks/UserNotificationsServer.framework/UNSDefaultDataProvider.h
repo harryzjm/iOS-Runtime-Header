@@ -18,7 +18,6 @@
 {
     BBSectionIcon *_sectionIcon;
     BBSectionInfo *_effectiveSectionInfo;
-    BSCFBundle *_bundle;
     _Bool _suppressUserAuthorizationPrompt;
     UNSNotificationSourceDescription *_notificationSourceDescription;
     UNSApplicationLauncher *_appLauncher;
@@ -31,10 +30,15 @@
     BBDataProviderProxy *_proxy;
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_categoryToParamSubType;
+    BSCFBundle *_bundle;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) BSCFBundle *bundle; // @synthesize bundle=_bundle;
 @property(retain, nonatomic) BBDataProviderProxy *proxy; // @synthesize proxy=_proxy;
+- (id)_userAvailabilityTCCApprovedBundleIds;
+- (_Bool)_isTCCUserAvailabilityGrantedForBundleId:(id)arg1;
+- (unsigned long long)_bulletinInterruptionLevelForInterruptionLevel:(unsigned long long)arg1;
 - (id)_sectionIconForNotificationSourceDescription:(id)arg1;
 - (id)_sectionIconVariantForImageName:(id)arg1 bundlePath:(id)arg2 format:(long long)arg3 precomposed:(_Bool)arg4;
 - (void)_addAttachments:(id)arg1 toBulletinRequest:(id)arg2;
@@ -50,6 +54,7 @@
 - (id)_unarchiveNotificationFromData:(id)arg1;
 - (void)_handleBulletinActionResponse:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)handleBulletinActionResponse:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (id)sectionBundlePath;
 - (id)sectionIdentifier;
 - (void)setEffectiveSectionInfo:(id)arg1;
 - (id)sortDescriptors;
@@ -71,6 +76,8 @@
 - (id)_soundsDirectoryPathForContainerBasePath:(id)arg1;
 - (id)_queue_applicableSectionInfosForSubsectionIDs:(id)arg1;
 - (_Bool)_queue_supportsCriticalAlertsForSubsectionIDs:(id)arg1;
+- (id)_bbContactFromUNContact:(id)arg1;
+- (id)_bbContentTypeFromUNContentType:(id)arg1;
 - (id)_queue_bulletinForNotification:(id)arg1;
 - (id)universalSectionIdentifier;
 - (id)displayNameForSubsectionID:(id)arg1;
@@ -86,6 +93,7 @@
 - (void)dataProviderDidLoad;
 - (void)dealloc;
 - (void)setNotificationSourceDescription:(id)arg1;
+- (void)unloadBundle;
 - (void)_setNotificationSourceDescription:(id)arg1;
 - (id)initWithNotificationSourceDescription:(id)arg1 applicationLauncher:(id)arg2 daemonLauncher:(id)arg3 categoryRepository:(id)arg4 notificationRepository:(id)arg5 topicRepository:(id)arg6 attachmentsService:(id)arg7 localizationService:(id)arg8 queue:(id)arg9;
 

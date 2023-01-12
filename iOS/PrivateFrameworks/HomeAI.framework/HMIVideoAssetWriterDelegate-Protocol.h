@@ -6,11 +6,11 @@
 
 #import <HomeAI/NSObject-Protocol.h>
 
-@class HMIVideoAssetWriter, NSData, NSError;
+@class AVAssetSegmentReport, HMIVideoAssetWriter, NSData, NSError;
 
 @protocol HMIVideoAssetWriterDelegate <NSObject>
 - (void)assetWriter:(HMIVideoAssetWriter *)arg1 didFailWithError:(NSError *)arg2;
-- (void)assetWriter:(HMIVideoAssetWriter *)arg1 didOutputSeparableSegment:(NSData *)arg2 timeRange:(CDStruct_e83c9415)arg3;
+- (void)assetWriter:(HMIVideoAssetWriter *)arg1 didOutputSeparableSegment:(NSData *)arg2 segmentReport:(AVAssetSegmentReport *)arg3;
 - (void)assetWriter:(HMIVideoAssetWriter *)arg1 didOutputInitializationSegment:(NSData *)arg2;
 @end
 

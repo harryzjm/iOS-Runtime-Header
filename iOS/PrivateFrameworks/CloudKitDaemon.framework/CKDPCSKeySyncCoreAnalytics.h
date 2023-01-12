@@ -8,7 +8,6 @@
 
 @class NSError, NSNumber, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDPCSKeySyncCoreAnalytics : NSObject
 {
     NSString *_serviceName;
@@ -20,11 +19,13 @@ __attribute__((visibility("hidden")))
     NSNumber *_throttledDurationSec;
     NSString *_context;
     NSString *_bundleID;
+    NSNumber *_KRSReturnedExistingIdentity;
     NSError *_error;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
+@property(nonatomic) NSNumber *KRSReturnedExistingIdentity; // @synthesize KRSReturnedExistingIdentity=_KRSReturnedExistingIdentity;
 @property(retain, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property(retain, nonatomic) NSString *context; // @synthesize context=_context;
 @property(retain, nonatomic) NSNumber *throttledDurationSec; // @synthesize throttledDurationSec=_throttledDurationSec;

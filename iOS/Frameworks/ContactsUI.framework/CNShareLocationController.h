@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (id)endOfDayDate;
 - (void)stopSharingLocation;
 - (void)shareLocationUntilEndDate:(id)arg1;
+- (CDUnknownBlockType)actionsMenuProvider;
 - (void)perform:(id)arg1;
 @property(readonly, nonatomic) _Bool isSharing;
 @property(readonly, nonatomic) _Bool canShare;

@@ -6,43 +6,43 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HMDPersistentStore, HMFUnfairLock, NSDate, NSMutableDictionary, NSObject;
-@protocol OS_dispatch_queue;
+@class HMFUnfairLock, NSDate, NSMutableDictionary, NSObject;
+@protocol HMDEventFlagsStoring, OS_dispatch_queue;
 
 @interface HMDEventFlagsManager : HMFObject
 {
     HMFUnfairLock *_lock;
     _Bool _saving;
     NSMutableDictionary *_eventFlags;
-    NSMutableDictionary *_definedEventPeriods;
     NSDate *_lastSaveTime;
     unsigned long long _saveCount;
     NSObject<OS_dispatch_queue> *_workQueue;
-    HMDPersistentStore *_persistentStore;
+    id <HMDEventFlagsStoring> _flagsStorage;
 }
 
 + (id)sharedEventFlagsManager;
 - (void).cxx_destruct;
-@property(readonly) HMDPersistentStore *persistentStore; // @synthesize persistentStore=_persistentStore;
+@property(readonly) id <HMDEventFlagsStoring> flagsStorage; // @synthesize flagsStorage=_flagsStorage;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(nonatomic) unsigned long long saveCount; // @synthesize saveCount=_saveCount;
 @property(retain, nonatomic) NSDate *lastSaveTime; // @synthesize lastSaveTime=_lastSaveTime;
-@property(retain, nonatomic) NSMutableDictionary *definedEventPeriods; // @synthesize definedEventPeriods=_definedEventPeriods;
 @property(retain, nonatomic) NSMutableDictionary *eventFlags; // @synthesize eventFlags=_eventFlags;
-- (void)logDiskWriteState;
 - (void)archiveEventFlagsWithEventFlagsSnapshot:(id)arg1 definedEventPeriodsSnapshot:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)unarchivedEventFlags;
+- (void)logDiskWriteState;
 @property(nonatomic, getter=isSaving) _Bool saving; // @synthesize saving=_saving;
 - (void)_save;
 - (void)_performOnUpdate;
 - (void)_resetEventFlagForEventName:(id)arg1 requestGroup:(id)arg2;
 - (void)_shiftEventFlagForEventName:(id)arg1 requestGroup:(id)arg2;
 - (id)_fetchAllDefinedEventPeriods;
+- (id)_fetchEventPeriodsForRequestGroup:(id)arg1;
 - (id)_fetchAllEventFlags;
 - (id)_fetchEventFlagsForRequestGroup:(id)arg1;
 - (unsigned long long)_fetchEventFlagForEventName:(id)arg1 requestGroup:(id)arg2;
 - (void)_defineEventPeriod:(double)arg1 forEventName:(id)arg2 requestGroup:(id)arg3;
 - (void)_setEventFlagForEventName:(id)arg1 requestGroup:(id)arg2;
+- (id)_eventFlagForEventName:(id)arg1 requestGroup:(id)arg2;
 - (void)forceSave;
 - (void)resetEventFlagsForRequestGroup:(id)arg1;
 - (void)resetEventFlagForEventName:(id)arg1 requestGroup:(id)arg2;
@@ -56,7 +56,7 @@
 - (void)defineEventPeriod:(double)arg1 forEventName:(id)arg2 requestGroup:(id)arg3;
 - (void)setEventFlagsForEventNames:(id)arg1 requestGroup:(id)arg2;
 - (void)setEventFlagForEventName:(id)arg1 requestGroup:(id)arg2;
-- (id)initWithPersistentStore:(id)arg1;
+- (id)initWithEventFlagsStorage:(id)arg1;
 - (id)init;
 
 @end

@@ -47,6 +47,8 @@
 - (unsigned long long)_caHeight;
 - (unsigned long long)_caWidth;
 - (_Bool)_isVirtualMode;
+- (id)_copyWithOverrideRefreshRate:(double)arg1;
+- (id)_copyWithOverrideSize:(struct CGSize)arg1 scale:(double)arg2;
 - (id)_copyWithOverrideSize:(struct CGSize)arg1;
 @property(readonly, nonatomic) struct CGSize size;
 @property(readonly, nonatomic) double scale;

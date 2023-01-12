@@ -45,24 +45,24 @@
     } _callbacks;
     void *_fallbackActivity;
     unsigned long long _stateHandle;
-    MRPlayerPath *_playerPath;
     id <MPNowPlayingPlaybackQueueDelegate> _playbackQueueDelegate;
-    NSString *_playerID;
+    MRPlayerPath *_playerPath;
     NSString *_representedApplicationBundleIdentifier;
     NSObject<OS_dispatch_queue> *_dataSourceQueue;
 }
 
 + (id)serviceQueue;
++ (id)infoCenterForPlayerPath:(id)arg1;
 + (id)infoCenterForPlayerID:(id)arg1;
 + (id)defaultCenter;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *dataSourceQueue; // @synthesize dataSourceQueue=_dataSourceQueue;
 @property(copy, nonatomic) NSString *representedApplicationBundleIdentifier; // @synthesize representedApplicationBundleIdentifier=_representedApplicationBundleIdentifier;
-@property(readonly, nonatomic) NSString *playerID; // @synthesize playerID=_playerID;
-@property(nonatomic) __weak id <MPNowPlayingPlaybackQueueDelegate> playbackQueueDelegate; // @synthesize playbackQueueDelegate=_playbackQueueDelegate;
 @property(readonly, nonatomic) MRPlayerPath *playerPath; // @synthesize playerPath=_playerPath;
+@property(nonatomic) __weak id <MPNowPlayingPlaybackQueueDelegate> playbackQueueDelegate; // @synthesize playbackQueueDelegate=_playbackQueueDelegate;
 - (void)_onQueue_pushContentItemsUpdate;
 - (void)_contentItemChangedNotification:(id)arg1;
+- (id)_onQueue_stateDictionary;
 - (void)_onQueue_registerPlaybackQueueDataSourceCallbacks:(id)arg1;
 - (void)_onQueue_registerLyricsDelegateCallbacks:(id)arg1;
 - (void)_onQueue_clearPlaybackQueueDataSourceCallbacks;
@@ -89,9 +89,11 @@
 - (void)resignActiveSystemFallback;
 - (void)becomeActiveSystemFallback;
 - (void)becomeActive;
+@property(readonly, nonatomic) NSString *playerID;
 @property(nonatomic) unsigned long long playbackState;
 - (void)dealloc;
 - (id)init;
+- (id)initWithPlayerPath:(id)arg1;
 - (id)initWithPlayerID:(id)arg1;
 - (void)_onQueue_pushNowPlayingInfoAndRetry:(_Bool)arg1;
 @property(copy, nonatomic) NSDictionary *nowPlayingInfo; // @dynamic nowPlayingInfo;

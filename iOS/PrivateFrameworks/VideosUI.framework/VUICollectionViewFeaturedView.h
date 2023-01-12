@@ -4,21 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
-
-@class _TVImageView;
+@class UIView;
 
 __attribute__((visibility("hidden")))
-@interface VUICollectionViewFeaturedView : UIView
+@interface VUICollectionViewFeaturedView
 {
-    _TVImageView *_imageView;
+    UIView *_imageView;
     UIView *_overlayView;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIView *overlayView; // @synthesize overlayView=_overlayView;
-@property(retain, nonatomic) _TVImageView *imageView; // @synthesize imageView=_imageView;
-- (void)layoutSubviews;
+@property(retain, nonatomic) UIView *imageView; // @synthesize imageView=_imageView;
+- (struct CGSize)vui_layoutSubviews:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

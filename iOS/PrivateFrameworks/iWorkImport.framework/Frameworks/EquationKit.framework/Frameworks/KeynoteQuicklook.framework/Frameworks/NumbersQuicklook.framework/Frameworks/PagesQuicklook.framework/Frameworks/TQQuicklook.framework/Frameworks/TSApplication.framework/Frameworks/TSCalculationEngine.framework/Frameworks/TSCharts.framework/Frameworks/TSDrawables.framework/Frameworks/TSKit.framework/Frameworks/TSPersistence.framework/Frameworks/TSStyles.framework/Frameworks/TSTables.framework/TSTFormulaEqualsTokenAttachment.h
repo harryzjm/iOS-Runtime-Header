@@ -11,8 +11,8 @@
 }
 
 - (id)description;
-- (void)saveToArchive:(struct FormulaEqualsTokenAttachmentArchive *)arg1 archiver:(id)arg2;
-- (void)loadFromArchive:(const struct FormulaEqualsTokenAttachmentArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
 - (_Bool)wantsSelectionAtPoint:(struct CGPoint)arg1;

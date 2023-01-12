@@ -19,7 +19,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)contentWithFileURL:(id)arg1;
++ (id)createWithFileURL:(id)arg1 dataTypeIdentifier:(id)arg2;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *localizedDescription; // @synthesize localizedDescription=_localizedDescription;
 @property(copy, nonatomic) NSURL *appLaunchURL; // @synthesize appLaunchURL=_appLaunchURL;

@@ -9,7 +9,7 @@
 #import <TVMLKit/TVApplicationControllerDelegate-Protocol.h>
 #import <TVMLKit/UIApplicationDelegate-Protocol.h>
 
-@class BKSProcessAssertion, IKURLBagCache, NSDictionary, NSString, NSURL, TVApplicationController, TVStoreApplicationSetupHelper, UIWindow;
+@class IKURLBagCache, NSDictionary, NSString, NSURL, TVApplicationController, TVStoreApplicationSetupHelper, UIWindow;
 
 @interface TVStoreApplicationDelegate : UIResponder <UIApplicationDelegate, TVApplicationControllerDelegate>
 {
@@ -17,7 +17,6 @@
     NSDictionary *_launchOptions;
     NSURL *_launchOpenURL;
     NSDictionary *_launchOpenURLOptions;
-    BKSProcessAssertion *_launchAssertion;
     _Bool _shouldTerminateOnEnterBackground;
     _Bool _headLess;
     _Bool _overrideOrientation;

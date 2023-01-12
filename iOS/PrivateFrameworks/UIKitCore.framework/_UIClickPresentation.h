@@ -27,6 +27,7 @@
 @property(readonly, nonatomic) UIPresentationController *presentationController; // @synthesize presentationController=_presentationController;
 @property(readonly, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
 - (id)initWithPresentedViewController:(id)arg1 presentationController:(id)arg2;
+- (_Bool)_presentsSelf;
 
 @end
 

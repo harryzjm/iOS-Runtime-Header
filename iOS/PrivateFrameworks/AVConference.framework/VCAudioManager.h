@@ -9,7 +9,7 @@
 #import <AVConference/VCAudioIOControllerControl-Protocol.h>
 #import <AVConference/VCAudioSessionDelegate-Protocol.h>
 
-@class AVAudioDevice, NSDictionary, NSMutableArray, NSString, VCAudioRelay, VCAudioRelayIO, VCAudioSessionMediaProperties, VCAudioUnitProperties;
+@class ATSpatialStreamDescriptions, AVAudioDevice, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, VCAudioRelay, VCAudioRelayIO, VCAudioSessionMediaProperties, VCAudioUnitProperties, VCAudioUnitSpatialContext;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -27,19 +27,34 @@ __attribute__((visibility("hidden")))
     AVAudioDevice *_outputDevice;
     _Bool _isGKVoiceChat;
     _Bool _isMicrophoneMuted;
+    _Bool _isMixingVoiceWithMediaEnabled;
     _Bool _isInDaemon;
     _Bool _isInputMeteringEnabled;
     _Bool _isOutputMeteringEnabled;
     _Bool _isSpeakerPhoneEnabled;
     _Bool _isSuspended;
+    _Bool _followSystemInput;
+    _Bool _followSystemOutput;
     struct _VCAudioIOControllerIOState _sinkData;
     struct _VCAudioIOControllerIOState _sourceData;
     int _interruptThreadState;
     VCAudioRelay *_interruptThread;
     VCAudioRelayIO *_interruptThreadClient;
+    _Bool _isInterrupting;
+    struct _opaque_pthread_mutex_t _interruptingMutex;
+    _Bool _spatialAudioDisabled;
+    void **_audioSession;
+    int _playbackMode;
+    NSMutableDictionary *_spatialContexts;
+    NSMutableDictionary *_audioSessionSinkMuted;
+    VCAudioUnitSpatialContext *_currentSpatialContext;
+    CDUnknownBlockType _mutedTalkerNotificationHandler;
+    NSArray *_stateStrings;
+    ATSpatialStreamDescriptions *_spatialStreamDescriptions;
 }
 
-+ (id)sharedInstance;
++ (id)sharedSystemAudioInstance;
++ (id)sharedVoiceChatInstance;
 @property(retain, nonatomic) NSDictionary *vpOperatingModeToAudioSessionMediaFormatMapping; // @synthesize vpOperatingModeToAudioSessionMediaFormatMapping=_vpOperatingModeToAudioSessionMediaFormatMapping;
 @property(nonatomic) _Bool isInDaemon; // @synthesize isInDaemon=_isInDaemon;
 @property(retain, nonatomic) VCAudioUnitProperties *currentAudioUnitProperties; // @synthesize currentAudioUnitProperties=_currentAudioUnitProperties;
@@ -47,8 +62,11 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isSpeakerPhoneEnabled) _Bool speakerPhoneEnabled; // @synthesize speakerPhoneEnabled=_isSpeakerPhoneEnabled;
 @property(retain, nonatomic) AVAudioDevice *currentOutputDevice; // @synthesize currentOutputDevice=_outputDevice;
 @property(retain, nonatomic) AVAudioDevice *currentInputDevice; // @synthesize currentInputDevice=_inputDevice;
+@property(nonatomic, getter=isMixingVoiceWithMediaEnabled) _Bool mixingVoiceWithMediaEnabled; // @synthesize mixingVoiceWithMediaEnabled=_isMixingVoiceWithMediaEnabled;
 @property(nonatomic, getter=isMicrophoneMuted) _Bool microphoneMuted; // @synthesize microphoneMuted=_isMicrophoneMuted;
 @property(nonatomic) _Bool isGKVoiceChat; // @synthesize isGKVoiceChat=_isGKVoiceChat;
+- (int)setVolume:(float)arg1 withRampTime:(float)arg2;
+- (void)setupDynamicDuckingVolumeHandlerForAUIO:(struct tagHANDLE *)arg1;
 - (void)didUpdateBasebandCodec:(const struct _VCRemoteCodecInfo *)arg1;
 - (void)didSessionEnd;
 - (void)didSessionStop;
@@ -64,10 +82,11 @@ __attribute__((visibility("hidden")))
 - (void)refreshRemoteCodecType:(unsigned int)arg1 sampleRate:(double)arg2;
 - (void)refreshOutputMetering;
 - (void)refreshInputMetering;
-- (void)updateClient:(id)arg1;
+- (void)updateClient:(id)arg1 direction:(unsigned char)arg2;
 - (void)stopClient:(id)arg1;
 - (void)startClient:(id)arg1;
 - (_Bool)updateStateWithAudioIOClient:(id)arg1;
+- (id)preferredClientWithNewClient:(id)arg1;
 - (_Bool)stateInterruptedWithAudioUnitProperties:(id)arg1 sessionProperties:(id)arg2 client:(id)arg3 newState:(unsigned int *)arg4;
 - (void)stateTransitionInterruptedToStarted;
 - (void)stateTransitionInterruptedToRunning;
@@ -81,19 +100,37 @@ __attribute__((visibility("hidden")))
 - (_Bool)stateSessionStartedWithAudioUnitProperties:(id)arg1 sessionProperties:(id)arg2 client:(id)arg3 newState:(unsigned int *)arg4;
 - (void)enterStateStarted;
 - (_Bool)stateIdleWithAudioUnitProperties:(id)arg1 sessionProperties:(id)arg2 client:(id)arg3 newState:(unsigned int *)arg4;
+- (void)activateSpatialContext:(id)arg1;
+- (void)applySpatialMetadata:(struct OpaqueCMBlockBuffer *)arg1;
+- (void)applySessionContextToAudioUnitProperties:(id)arg1 preferredClient:(id)arg2;
+- (int)setSpatialMetadata:(struct OpaqueCMBlockBuffer *)arg1 audioSessionId:(unsigned int)arg2;
+- (void)unregisterAudioSessionId:(unsigned int)arg1;
+- (int)registerAudioSessionId:(unsigned int)arg1 maxChannelCountMic:(unsigned int)arg2 maxChannelCountSpeaker:(unsigned int)arg3 spatialMetadata:(struct OpaqueCMBlockBuffer *)arg4;
+- (int)unregisterFromMutedTalkerNotification;
+- (int)registerForMutedTalkerNotification:(CDUnknownBlockType)arg1;
+- (int)unregisterForMutedTalkerNotificationWithAUIO:(struct tagHANDLE *)arg1;
+- (int)registerForMutedTalkerNotificationWithAUIO:(struct tagHANDLE *)arg1;
 - (void)applyControllerFormatToClients:(id)arg1;
 - (void)activateStartingClient:(id)arg1 applyControllerFormat:(_Bool)arg2;
 - (void)completeStartForAllStartingClients;
 - (void)unregisterClientIO:(struct _VCAudioIOControllerClientIO *)arg1 controllerIO:(struct _VCAudioIOControllerIOState *)arg2;
 - (void)registerClientIO:(struct _VCAudioIOControllerClientIO *)arg1 controllerIO:(struct _VCAudioIOControllerIOState *)arg2;
 - (void)stopAUIO;
+- (void)resetAudioLimiterWithProperties:(id)arg1;
 - (void)resetAUIOWithProperties:(id)arg1;
 - (_Bool)shouldResetAudioSessionWithProperties:(id)arg1;
 - (_Bool)shouldResetAudioUnitWithProperties:(id)arg1;
 - (_Bool)startAUIOWithProperties:(id)arg1;
+- (void)updateCurrentOutputDevice:(id)arg1;
+- (void)updateCurrentInputDevice:(id)arg1;
 - (void)setupIODevicesForAUIO:(struct tagHANDLE *)arg1;
-- (id)newAudioSessionMediaPropertiesWithClient:(id)arg1;
-- (id)newAudioUnitPropertiesWithClient:(id)arg1;
+- (id)newAudioSessionMediaPropertiesWithPreferredClient:(id)arg1 audioUnitProperties:(id)arg2;
+- (id)newAudioSessionMediaPropertiesForSystemAudioWithPreferredClient:(id)arg1 audioUnitProperties:(id)arg2;
+- (id)newAudioUnitPropertiesForSystemAudioWithPreferredClient:(id)arg1;
+- (id)newAudioUnitPropertiesWithPreferredClient:(id)arg1;
+- (_Bool)computeAllowAudioRecordingWithPreferredClient:(id)arg1;
+- (unsigned int)computeSamplePerFrameWithPreferredClient:(id)arg1 sampleRate:(unsigned int)arg2;
+- (void)computeFormatDescription:(struct AudioStreamBasicDescription *)arg1 withPreferredClient:(id)arg2;
 - (unsigned int)vpOperationModeForConferenceOperatingMode:(int)arg1 deviceRole:(int)arg2;
 - (void)_cleanupDeadClients;
 - (_Bool)removeClient:(id)arg1;
@@ -101,15 +138,23 @@ __attribute__((visibility("hidden")))
 - (_Bool)addClient:(id)arg1;
 - (void)removeAllClientsForIO:(struct _VCAudioIOControllerIOState *)arg1;
 - (void)flushEventQueue:(struct opaqueCMSimpleQueue *)arg1;
+- (int)prewarmingClientOperatingMode;
 - (void)resetAudioTimestamps;
 - (void)computeHardwarePreferences;
 - (void)setOutputMetering;
 - (void)setInputMetering;
+- (void)applyAudioSessionMute;
+- (void)setMute:(_Bool)arg1 forClient:(id)arg2;
 - (void)dealloc;
-- (id)init;
+- (id)initWithAudioSessionMode:(int)arg1;
 - (void)getPreferredFormat:(struct AudioStreamBasicDescription *)arg1 blockSize:(double *)arg2 vpOperatingMode:(unsigned int *)arg3 forOperatingMode:(int)arg4 deviceRole:(int)arg5 suggestedFormat:(struct AudioStreamBasicDescription *)arg6;
 @property(readonly, nonatomic) struct _VCAudioIOControllerIOState *sourceIO;
 @property(readonly, nonatomic) struct _VCAudioIOControllerIOState *sinkIO;
+- (id)autorelease;
+- (oneway void)release;
+- (unsigned long long)retainCount;
+- (id)retain;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

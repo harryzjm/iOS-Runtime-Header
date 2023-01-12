@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (id)defaultActivityTypeOrder;
 - (id)createActivitySharingControllerWithContext:(id)arg1;
 
 // Remaining properties

@@ -33,7 +33,7 @@
 }
 
 + (_Bool)isManagedObjectContextMomentarilyBlessed:(id)arg1;
-+ (void)_setManagedObjectContextMomentarilyBlessed:(id)arg1;
++ (void)setManagedObjectContextMomentarilyBlessed:(id)arg1;
 + (void)setManagerMomentarilyBlessed:(id)arg1;
 + (void)initialize;
 - (void).cxx_destruct;
@@ -61,8 +61,6 @@
 - (id)locationCoordinatesForAssetIDs:(id)arg1;
 - (id)insertNewPhotosHighlight;
 - (id)insertNewMoment;
-- (id)insertNewMomentListForGranularityLevel:(short)arg1;
-- (_Bool)deleteAllMomentListsWithError:(id *)arg1;
 - (_Bool)deleteAllHighlightsWithError:(id *)arg1;
 - (_Bool)deleteAllMomentsWithError:(id *)arg1;
 - (_Bool)_batchDeleteForEntityName:(id)arg1 error:(id *)arg2;
@@ -70,8 +68,6 @@
 - (id)allInvalidAssetsWithError:(id *)arg1;
 - (id)invalidAssetsIgnoringAssetIdentifiers:(id)arg1 error:(id *)arg2;
 - (id)allAssetsToBeIncludedInMomentsWithError:(id *)arg1;
-- (id)allMomentLists;
-- (id)allMomentListsForLevel:(short)arg1;
 - (id)allMomentsWithInvalidReverseLocationData;
 - (id)allInvalidMomentIDsWithError:(id *)arg1;
 - (id)allMomentIDsWithError:(id *)arg1;
@@ -85,8 +81,6 @@
 - (id)allEmptyPhotosHighlightsOfKind:(unsigned short)arg1 error:(id *)arg2;
 - (id)allInvalidPhotosHighlightsOfAllKindsWithError:(id *)arg1;
 - (id)allPhotosHighlightsOfAllKindsWithError:(id *)arg1;
-- (id)yearMomentListForYear:(long long)arg1;
-- (id)monthMomentListForMonth:(long long)arg1 year:(long long)arg2;
 - (id)momentsBetweenDate:(id)arg1 andDate:(id)arg2 sorted:(_Bool)arg3;
 - (id)momentsSinceDate:(id)arg1;
 - (id)momentsIntersectingDateInterval:(id)arg1;
@@ -114,14 +108,12 @@
 - (void)resetOnFailure;
 - (_Bool)save:(id *)arg1;
 - (Class)momentAssetDataClass;
-- (Class)momentListDataClassForGranularityLevel:(short)arg1;
 - (Class)momentDataClass;
 - (_Bool)hasChanges;
 - (void)refreshAllObjects;
 - (void)refreshObject:(id)arg1 mergeChanges:(_Bool)arg2;
 - (id)momentsForAssetsWithUniqueIDs:(id)arg1 error:(id *)arg2;
 - (id)momentsWithUniqueIDs:(id)arg1 error:(id *)arg2;
-- (id)momentListWithUniqueID:(id)arg1 forLevel:(short)arg2 error:(id *)arg3;
 - (id)momentWithUniqueID:(id)arg1 error:(id *)arg2;
 - (id)assetsWithUniqueIDs:(id)arg1 error:(id *)arg2;
 - (id)assetWithUniqueID:(id)arg1 error:(id *)arg2;

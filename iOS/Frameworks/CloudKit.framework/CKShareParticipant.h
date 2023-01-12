@@ -6,18 +6,21 @@
 
 #import <objc/NSObject.h>
 
+#import <CloudKit/CKPropertiesDescription-Protocol.h>
 #import <CloudKit/NSCopying-Protocol.h>
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
 @class CKDeviceToDeviceShareInvitationToken, CKRecordID, CKUserIdentity, NSData, NSString;
 
-@interface CKShareParticipant : NSObject <NSSecureCoding, NSCopying>
+@interface CKShareParticipant : NSObject <CKPropertiesDescription, NSSecureCoding, NSCopying>
 {
     _Bool _wantsNewInvitationToken;
     _Bool _isCurrentUser;
     _Bool _isOrgAdminUser;
     _Bool _createdInProcess;
     _Bool _acceptedInProcess;
+    _Bool _isAnonymousInvitedParticipant;
+    _Bool _forceSendPublicKeyForAnonymousParticipants;
     CKUserIdentity *_userIdentity;
     long long _role;
     long long _acceptanceStatus;
@@ -39,6 +42,8 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) CKDeviceToDeviceShareInvitationToken *invitationToken; // @synthesize invitationToken=_invitationToken;
 @property(copy, nonatomic) NSString *participantID; // @synthesize participantID=_participantID;
+@property(nonatomic) _Bool forceSendPublicKeyForAnonymousParticipants; // @synthesize forceSendPublicKeyForAnonymousParticipants=_forceSendPublicKeyForAnonymousParticipants;
+@property(nonatomic) _Bool isAnonymousInvitedParticipant; // @synthesize isAnonymousInvitedParticipant=_isAnonymousInvitedParticipant;
 @property(retain, nonatomic) NSData *encryptedPersonalInfo; // @synthesize encryptedPersonalInfo=_encryptedPersonalInfo;
 @property(retain, nonatomic) NSData *protectionInfoPublicKey; // @synthesize protectionInfoPublicKey=_protectionInfoPublicKey;
 @property(retain, nonatomic) NSData *protectionInfo; // @synthesize protectionInfo=_protectionInfo;
@@ -63,14 +68,18 @@
 @property(nonatomic) long long type;
 - (long long)invitationTokenStatus;
 - (void)_stripPersonalInfo;
-- (id)debugDescription;
-- (id)description;
-- (id)CKDescriptionPropertiesWithPublic:(_Bool)arg1 private:(_Bool)arg2 shouldExpand:(_Bool)arg3;
-- (unsigned long long)hash;
+@property(readonly, copy) NSString *debugDescription;
+- (id)redactedDescription;
+@property(readonly, copy) NSString *description;
+- (void)CKDescribePropertiesUsing:(id)arg1;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)_initWithUserIdentity:(id)arg1;
 - (id)_init;
+
+// Remaining properties
+@property(readonly) Class superclass;
 
 @end
 

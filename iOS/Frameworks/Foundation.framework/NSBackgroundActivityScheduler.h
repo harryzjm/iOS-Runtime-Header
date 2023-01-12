@@ -14,6 +14,7 @@
     id _private2;
     id _private3;
     long long _flags;
+    struct os_unfair_lock_s _invalidateLock;
 }
 
 @property(readonly) _Bool shouldDefer;

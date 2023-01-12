@@ -7,20 +7,28 @@
 #import <objc/NSObject.h>
 
 #import <SpotlightServices/SFFeedbackListener-Protocol.h>
+#import <SpotlightServices/SPCustomFeedbackSender-Protocol.h>
 
 @class NSString, PARSession;
+@protocol OS_dispatch_queue;
 
-@interface PRSFeedbackProxy : NSObject <SFFeedbackListener>
+@interface PRSFeedbackProxy : NSObject <SFFeedbackListener, SPCustomFeedbackSender>
 {
     PARSession *_listener;
+    NSObject<OS_dispatch_queue> *_feedbackQueue;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *feedbackQueue; // @synthesize feedbackQueue=_feedbackQueue;
 @property(nonatomic) __weak PARSession *listener; // @synthesize listener=_listener;
 - (void)didEngageSection:(id)arg1;
 - (void)didGradeResultRelevancy:(id)arg1;
 - (void)didReportUserResponseFeedback:(id)arg1;
+- (void)sendCustomFeedback:(id)arg1 clientID:(id)arg2;
+- (void)sendFeedback:(id)arg1 queryId:(unsigned long long)arg2;
+- (void)sendFeedback:(id)arg1;
 - (void)reportFeedback:(id)arg1 queryId:(long long)arg2;
+- (void)didPerformCommand:(id)arg1;
 - (void)cardViewDidAppear:(id)arg1;
 - (void)sectionHeaderDidBecomeVisible:(id)arg1;
 - (void)didClearInput:(id)arg1;
@@ -39,6 +47,7 @@
 - (void)cardViewDidDisappear:(id)arg1;
 - (void)searchViewDidDisappear:(id)arg1;
 - (void)searchViewDidAppear:(id)arg1;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -15,6 +15,7 @@
     MISSING_TYPE *maximumExpandedSize;
     MISSING_TYPE *expandedDestinationURL;
     MISSING_TYPE *tapGestureRecognizer;
+    MISSING_TYPE *navigationCoordinator;
     MISSING_TYPE *webProcessDelegate;
     MISSING_TYPE *actionDelegate;
     MISSING_TYPE *$__lazy_storage_$_closeButtonPadding;

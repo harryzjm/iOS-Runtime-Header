@@ -6,10 +6,12 @@
 
 #import <CarPlaySupport/CPBaseTemplateProviding-Protocol.h>
 
-@class NSArray;
+@class CPAssistantCellConfiguration, CPListTemplate, NSArray, NSUUID, UIImage;
 
 @protocol CPListTemplateProviding <CPBaseTemplateProviding>
+- (void)updateSectionHeaderImage:(UIImage *)arg1 forSectionIdentifier:(NSUUID *)arg2;
+- (void)updateAssistantCellConfiguration:(CPAssistantCellConfiguration *)arg1 withCompletion:(void (^)(_Bool, NSError *))arg2;
 - (void)reloadItems:(NSArray *)arg1;
-- (void)updateSections:(NSArray *)arg1;
+- (void)reloadTemplate:(CPListTemplate *)arg1;
 @end
 

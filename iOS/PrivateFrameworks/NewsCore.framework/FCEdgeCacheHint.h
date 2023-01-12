@@ -16,6 +16,7 @@
     NSString *_cacheControlKey;
 }
 
++ (id)edgeCacheHintForEvergreenArticles;
 + (id)edgeCacheHintForLocalNews;
 + (id)edgeCacheHintForAudioContent;
 + (id)edgeCacheHintForMagazineContent;

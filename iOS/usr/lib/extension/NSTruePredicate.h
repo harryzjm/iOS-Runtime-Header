@@ -8,7 +8,6 @@
 {
 }
 
-+ (_Bool)_allowsEvaluation;
 + (_Bool)supportsSecureCoding;
 + (id)defaultInstance;
 + (id)allocWithZone:(struct _NSZone *)arg1;
@@ -21,6 +20,8 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (void)allowEvaluation;
+- (_Bool)_allowsEvaluation;
 - (id)autorelease;
 - (_Bool)_tryRetain;
 - (_Bool)_isDeallocating;

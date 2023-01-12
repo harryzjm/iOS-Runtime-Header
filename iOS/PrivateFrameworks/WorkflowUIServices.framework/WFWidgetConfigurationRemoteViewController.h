@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 + (id)serviceViewControllerInterface;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <WFWidgetConfigurationRemoteViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)preferredCardSizeDidUpdate:(struct CGSize)arg1;
 - (void)intentWasConfigured:(id)arg1;
 - (void)requestViewControllerDismissal;
 - (void)setConfigurationCardViewFrame:(struct CGRect)arg1;

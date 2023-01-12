@@ -29,6 +29,7 @@
 + (id)scopedNetworkAgent:(id)arg1;
 + (id)triggerScopedService:(id)arg1 data:(unsigned int)arg2;
 + (id)routeRules:(id)arg1;
++ (id)removeNetworkAgentUUID:(id)arg1;
 + (id)netAgentUUID:(id)arg1;
 + (id)prohibitFilters;
 + (id)filterWithControlUnit:(unsigned int)arg1;

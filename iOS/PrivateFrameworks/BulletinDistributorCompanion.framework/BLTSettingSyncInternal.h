@@ -9,7 +9,7 @@
 #import <BulletinDistributorCompanion/BBObserverDelegate-Protocol.h>
 #import <BulletinDistributorCompanion/BLTSettingSyncingClient-Protocol.h>
 
-@class BBObserver, BBSettingsGateway, BLTMuteSync, BLTSectionConfiguration, BLTSettingSyncServer, BLTSpokenSettingSync, BLTWristStateObserver, NSString;
+@class BBObserver, BBSettingsGateway, BLTMuteSync, BLTRemoteGlobalSettingsSyncServer, BLTSectionConfiguration, BLTSettingSyncServer, BLTSpokenSettingSync, BLTWristStateObserver, NSString;
 
 @interface BLTSettingSyncInternal : NSObject <BBObserverDelegate, BLTSettingSyncingClient>
 {
@@ -20,9 +20,11 @@
     BLTSectionConfiguration *_sectionConfiguration;
     BLTSpokenSettingSync *_spokenSettingSync;
     BBObserver *_observer;
+    BLTRemoteGlobalSettingsSyncServer *_remoteGlobalSettingsSyncServer;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) BLTRemoteGlobalSettingsSyncServer *remoteGlobalSettingsSyncServer; // @synthesize remoteGlobalSettingsSyncServer=_remoteGlobalSettingsSyncServer;
 @property(retain, nonatomic) BBObserver *observer; // @synthesize observer=_observer;
 @property(retain, nonatomic) BLTSpokenSettingSync *spokenSettingSync; // @synthesize spokenSettingSync=_spokenSettingSync;
 @property(readonly, nonatomic) BLTSectionConfiguration *sectionConfiguration; // @synthesize sectionConfiguration=_sectionConfiguration;
@@ -30,6 +32,7 @@
 @property(retain, nonatomic) BLTMuteSync *muteSync; // @synthesize muteSync=_muteSync;
 @property(retain, nonatomic) BBSettingsGateway *settingsGateway; // @synthesize settingsGateway=_settingsGateway;
 - (void)observer:(id)arg1 updateGlobalSettings:(id)arg2;
+- (void)updateGlobalSettings:(id)arg1;
 - (unsigned long long)willNanoPresentNotificationForSectionID:(id)arg1 subsectionIDs:(id)arg2 subtype:(long long)arg3 category:(id)arg4 ignoresDowntime:(_Bool)arg5 isCritical:(_Bool)arg6;
 - (unsigned long long)willNanoPresentNotificationForSectionID:(id)arg1 subsectionIDs:(id)arg2 subtype:(long long)arg3;
 @property(readonly, nonatomic) _Bool isWristDetectDisabled;
@@ -45,6 +48,7 @@
 - (void)setNotificationsLevel:(unsigned long long)arg1 sectionID:(id)arg2 mirror:(_Bool)arg3 fromRemote:(_Bool)arg4;
 - (void)removeSectionWithSectionID:(id)arg1;
 - (void)setSectionSubtypeParametersIcon:(id)arg1 forSectionID:(id)arg2 forSubtypeID:(long long)arg3;
+- (void)setSectionInfo:(id)arg1 keypaths:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setSectionInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (void)connect;

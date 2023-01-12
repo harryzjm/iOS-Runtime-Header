@@ -9,14 +9,14 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMFTimer, NSArray, NSMutableSet, NSObject, NSString, RBSProcessMonitor;
+@class HMFTimer, NSArray, NSHashTable, NSMutableSet, NSObject, NSString, RBSProcessMonitor;
 @protocol HMFLocking, OS_dispatch_queue;
 
 @interface HMDProcessMonitor : HMFObject <HMFLogging, HMFTimerDelegate>
 {
     id <HMFLocking> _lock;
     RBSProcessMonitor *_internal;
-    NSMutableSet *_processes;
+    NSHashTable *_processes;
     _Bool _activeHomeKitApps;
     NSObject<OS_dispatch_queue> *_xpcListenerQueue;
     HMFTimer *_spiClientTerminationDelayTimer;

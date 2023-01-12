@@ -17,6 +17,7 @@
 }
 
 + (void)addSuggestionsObserverForLifetimeOfObject:(id)arg1 block:(CDUnknownBlockType)arg2;
++ (id)addCalendarVisibilityObserverForLifetimeOfObject:(id)arg1 block:(CDUnknownBlockType)arg2;
 + (void)addEventKitObserverForLifetimeOfObject:(id)arg1 block:(CDUnknownBlockType)arg2;
 + (void)addPortraitInvalidationObserverForLifetimeOfObject:(id)arg1 block:(CDUnknownBlockType)arg2;
 + (void)addPortraitChangeObserverForLifetimeOfObject:(id)arg1 block:(CDUnknownBlockType)arg2;
@@ -26,6 +27,7 @@
 + (id)new;
 - (void).cxx_destruct;
 - (void)addSuggestionsChangeBlock:(CDUnknownBlockType)arg1 forLifetimeOfObject:(id)arg2;
+- (id)addCalendarVisibilityChangeBlock:(CDUnknownBlockType)arg1 forLifetimeOfObject:(id)arg2;
 - (void)_registerForEventKitChangeTrackingWithGuardedData:(id)arg1;
 - (void)addEventKitChangeBlock:(CDUnknownBlockType)arg1 forLifetimeOfObject:(id)arg2;
 - (void)addPortraitInvalidationBlock:(CDUnknownBlockType)arg1 forLifetimeOfObject:(id)arg2;

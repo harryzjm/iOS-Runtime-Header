@@ -6,13 +6,13 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class PKBridgeSetupAssistantContext;
+@class PKBridgeSetupAssistantContext, PKPeerPaymentWebService;
 
 @protocol PKSetupAssistantStep <NSObject>
 + (_Bool)bridgeSetupAssistantNeedsToRunWithContext:(PKBridgeSetupAssistantContext *)arg1 returningRequirements:(unsigned long long *)arg2;
 + (_Bool)bridgeSetupAssistantNeedsToRunReturningRequirements:(unsigned long long *)arg1;
 + (_Bool)setupAssistantNeedsToRunReturningRequirements:(unsigned long long *)arg1;
-+ (_Bool)setupAssistantNeedsToRun;
++ (PKPeerPaymentWebService *)defaultWebServiceForContext:(long long)arg1;
 - (void)preflightWithCompletion:(void (^)(_Bool))arg1;
 @end
 

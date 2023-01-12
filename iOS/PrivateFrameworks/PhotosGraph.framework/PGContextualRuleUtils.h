@@ -11,7 +11,7 @@
 }
 
 + (id)dayHighlightContainingAsset:(id)arg1;
-+ (void)returnContextualKeyAssetForHighlightNode:(id)arg1 withManager:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
++ (void)returnContextualKeyAssetForHighlightNode:(id)arg1 yearHighlight:(id)arg2 score:(double)arg3 inPhotoLibrary:(id)arg4 loggingConnection:(id)arg5 usingBlock:(CDUnknownBlockType)arg6;
 + (id)onThisDayLocalDateForYearHighlight:(id)arg1 withOptions:(id)arg2;
 
 @end

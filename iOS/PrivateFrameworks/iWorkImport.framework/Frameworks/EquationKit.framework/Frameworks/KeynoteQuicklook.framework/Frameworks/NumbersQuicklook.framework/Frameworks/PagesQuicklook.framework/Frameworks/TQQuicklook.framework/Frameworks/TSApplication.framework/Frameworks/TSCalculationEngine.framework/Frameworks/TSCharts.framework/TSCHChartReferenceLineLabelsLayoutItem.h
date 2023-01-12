@@ -8,14 +8,14 @@
 
 @interface TSCHChartReferenceLineLabelsLayoutItem
 {
-    TSCHChartAxisID *mAxisID;
+    TSCHChartAxisID *_axisID;
 }
 
 - (void).cxx_destruct;
-@property(readonly, retain, nonatomic) TSCHChartAxisID *axisID; // @synthesize axisID=mAxisID;
+@property(readonly, retain, nonatomic) TSCHChartAxisID *axisID; // @synthesize axisID=_axisID;
 - (id)p_areaLayoutItem;
 - (id)subselectionKnobPositionsForSelection:(id)arg1;
-- (void)protected_iterateHitChartElements:(struct CGPoint)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)iterateHitChartElements:(struct CGPoint)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (struct CGRect)p_drawingRectForModel:(id)arg1;
 - (struct CGRect)calcDrawingRect;
 - (struct CGSize)calcMinSize;

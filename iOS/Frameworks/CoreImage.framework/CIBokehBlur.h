@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)customAttributes;
+@property(retain, nonatomic) CIImage *inputImage; // @synthesize inputImage;
 - (id)outputImage;
 - (void)setValue:(id)arg1 forKey:(id)arg2;
 - (void)dealloc;

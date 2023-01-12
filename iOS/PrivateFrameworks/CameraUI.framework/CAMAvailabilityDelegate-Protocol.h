@@ -9,6 +9,7 @@
 @class CUCaptureController;
 
 @protocol CAMAvailabilityDelegate <NSObject>
+- (void)captureController:(CUCaptureController *)arg1 didOutputFlashCompromise:(unsigned long long)arg2;
 - (void)captureController:(CUCaptureController *)arg1 didOutputTorchAvailability:(_Bool)arg2;
 - (void)captureController:(CUCaptureController *)arg1 didOutputFlashAvailability:(_Bool)arg2;
 - (void)captureController:(CUCaptureController *)arg1 didOutputConfigurationAvailability:(_Bool)arg2;

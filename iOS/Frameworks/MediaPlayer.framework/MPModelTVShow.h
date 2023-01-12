@@ -20,6 +20,7 @@
 + (id)__shortTitle_KEY;
 + (id)__title_KEY;
 + (id)kindWithSeasonKind:(id)arg1;
++ (long long)genericObjectType;
 - (id)editorialArtworkCatalog;
 - (id)artworkCatalog;
 - (id)humanDescription;

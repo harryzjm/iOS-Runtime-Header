@@ -14,6 +14,7 @@
 + (id)stringBySanitizingNumberString:(id)arg1 allowDecimalNumbers:(_Bool)arg2;
 + (_Bool)shouldChangeText:(id)arg1 allowMinus:(_Bool)arg2;
 + (void)negateTextInput:(id)arg1;
++ (id)negateText:(id)arg1;
 + (id)decimalSymbol;
 
 @end

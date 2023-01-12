@@ -6,78 +6,66 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <AvatarUI/UICollectionViewDataSource-Protocol.h>
-#import <AvatarUI/UICollectionViewDelegate-Protocol.h>
+#import <AvatarUI/AVTPoseSelectionGridViewControllerDelegate-Protocol.h>
 
-@class AVTAnimojiPoseSelectionHeaderViewController, AVTCircularButton, AVTRecordingButton, AVTStickerGenerator, AVTUIStickerGeneratorPool, AVTUIStickerRenderer, NSArray, NSLayoutConstraint, NSObject, NSString, UIBarButtonItem, UICollectionView, UICollectionViewFlowLayout, UIImage, UIView;
-@protocol AVTAvatarRecord, AVTPoseSelectionViewControllerDelegate, AVTTaskScheduler, OS_dispatch_queue;
+@class AVTAnimojiPoseSelectionHeaderViewController, AVTCircularButton, AVTPoseSelectionGridViewController, AVTRecordingButton, NSArray, NSLayoutConstraint, NSString, UIBarButtonItem, UIView;
+@protocol AVTAvatarRecord, AVTPoseSelectionViewControllerDelegate;
 
-@interface AVTPoseSelectionViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface AVTPoseSelectionViewController : UIViewController <AVTPoseSelectionGridViewControllerDelegate>
 {
+    _Bool _shouldNotifyDelegateOnSelection;
     id <AVTPoseSelectionViewControllerDelegate> _delegate;
     unsigned long long _poseTypes;
-    AVTUIStickerRenderer *_stickerRenderer;
-    AVTUIStickerGeneratorPool *_generatorPool;
-    id <AVTTaskScheduler> _scheduler;
     unsigned long long _mode;
     AVTRecordingButton *_captureButton;
     AVTCircularButton *_discardButton;
-    UIImage *_placeholderImage;
     id <AVTAvatarRecord> _avatarRecord;
     AVTAnimojiPoseSelectionHeaderViewController *_headerViewController;
     NSLayoutConstraint *_headerHeightConstraint;
-    UICollectionViewFlowLayout *_flowLayout;
-    UICollectionView *_poseCollectionView;
+    AVTPoseSelectionGridViewController *_gridViewController;
     NSArray *_stickerConfigurations;
-    AVTStickerGenerator *_stickerGenerator;
-    NSObject<OS_dispatch_queue> *_stickerGenerationQueue;
     UIView *_headerDropShadowView;
-    UIView *_cameraCellView;
     UIBarButtonItem *_doneButton;
     UIView *_borderMaskView;
 }
 
++ (id)poseConfigurationsForTypes:(unsigned long long)arg1 avatarRecord:(id)arg2;
 + (struct CGRect)borderMaskRectForContentRect:(struct CGRect)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldNotifyDelegateOnSelection; // @synthesize shouldNotifyDelegateOnSelection=_shouldNotifyDelegateOnSelection;
 @property(retain, nonatomic) UIView *borderMaskView; // @synthesize borderMaskView=_borderMaskView;
 @property(retain, nonatomic) UIBarButtonItem *doneButton; // @synthesize doneButton=_doneButton;
-@property(retain, nonatomic) UIView *cameraCellView; // @synthesize cameraCellView=_cameraCellView;
 @property(retain, nonatomic) UIView *headerDropShadowView; // @synthesize headerDropShadowView=_headerDropShadowView;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *stickerGenerationQueue; // @synthesize stickerGenerationQueue=_stickerGenerationQueue;
-@property(retain, nonatomic) AVTStickerGenerator *stickerGenerator; // @synthesize stickerGenerator=_stickerGenerator;
 @property(retain, nonatomic) NSArray *stickerConfigurations; // @synthesize stickerConfigurations=_stickerConfigurations;
-@property(retain, nonatomic) UICollectionView *poseCollectionView; // @synthesize poseCollectionView=_poseCollectionView;
-@property(retain, nonatomic) UICollectionViewFlowLayout *flowLayout; // @synthesize flowLayout=_flowLayout;
+@property(retain, nonatomic) AVTPoseSelectionGridViewController *gridViewController; // @synthesize gridViewController=_gridViewController;
 @property(retain, nonatomic) NSLayoutConstraint *headerHeightConstraint; // @synthesize headerHeightConstraint=_headerHeightConstraint;
 @property(retain, nonatomic) AVTAnimojiPoseSelectionHeaderViewController *headerViewController; // @synthesize headerViewController=_headerViewController;
 @property(retain, nonatomic) id <AVTAvatarRecord> avatarRecord; // @synthesize avatarRecord=_avatarRecord;
-@property(retain, nonatomic) UIImage *placeholderImage; // @synthesize placeholderImage=_placeholderImage;
 @property(retain, nonatomic) AVTCircularButton *discardButton; // @synthesize discardButton=_discardButton;
 @property(retain, nonatomic) AVTRecordingButton *captureButton; // @synthesize captureButton=_captureButton;
 @property(nonatomic) unsigned long long mode; // @synthesize mode=_mode;
-@property(retain, nonatomic) id <AVTTaskScheduler> scheduler; // @synthesize scheduler=_scheduler;
-@property(retain, nonatomic) AVTUIStickerGeneratorPool *generatorPool; // @synthesize generatorPool=_generatorPool;
-@property(retain, nonatomic) AVTUIStickerRenderer *stickerRenderer; // @synthesize stickerRenderer=_stickerRenderer;
 @property(nonatomic) unsigned long long poseTypes; // @synthesize poseTypes=_poseTypes;
 @property(nonatomic) __weak id <AVTPoseSelectionViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
-- (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
-- (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
-- (void)updateForPoseSelectionAtIndex:(long long)arg1 animated:(_Bool)arg2;
-- (void)updateFlowLayoutItemSize;
-- (void)contentSizeCategoryDidChange:(id)arg1;
-- (void)viewDidLayoutSubviews;
+- (void)poseSelectionGridController:(id)arg1 didSelectConfiguration:(id)arg2;
+- (void)poseSelectionGridControllerDidSelectCameraItem:(id)arg1;
+- (void)updateForPoseConfiguration:(id)arg1 animated:(_Bool)arg2;
+- (void)viewWillAppear:(_Bool)arg1;
+- (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillLayoutSubviews;
+- (void)notifyDelegateOfSelectedPose;
 - (void)didTapDone:(id)arg1;
+- (void)returnPressed:(id)arg1;
 - (void)didTapCancel:(id)arg1;
-- (id)configurationForIndex:(long long)arg1;
 - (void)didTapDiscardButton:(id)arg1;
 - (void)didTapCaptureButton:(id)arg1;
 - (void)createDiscardButtonIfNeeded;
 - (void)createCaptureButtonIfNeeded;
 - (void)updateHeaderHeightConstraint;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (_Bool)canBecomeFirstResponder;
+- (id)keyCommands;
 - (void)viewDidLoad;
+- (id)initWithSelectedRecord:(id)arg1 poseConfigurations:(id)arg2;
 - (id)initWithSelectedRecord:(id)arg1 poseTypes:(unsigned long long)arg2;
 - (id)initWithSelectedRecord:(id)arg1;
 

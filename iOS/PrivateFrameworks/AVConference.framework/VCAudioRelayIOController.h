@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstanceRemoteFacing;
 + (void)initializeStateStrings;
 - (void)didUpdateBasebandCodec:(const struct _VCRemoteCodecInfo *)arg1;
-- (void)updateClient:(id)arg1;
+- (void)updateClient:(id)arg1 direction:(unsigned char)arg2;
 - (void)stopClient:(id)arg1;
 - (void)startClient:(id)arg1;
 - (void)flushEventQueue:(struct opaqueCMSimpleQueue *)arg1;
@@ -50,6 +50,8 @@ __attribute__((visibility("hidden")))
 - (id)newRelayIOWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (_Bool)startRelayIO:(id)arg1;
 - (id)newControllerSettingsWithNewClient:(id)arg1;
+- (unsigned int)computeSamplePerFrameWithControllerSampleRate:(unsigned int)arg1;
+- (unsigned int)channelsPerFrame;
 - (void)_cleanupDeadClients;
 - (_Bool)removeClient:(id)arg1;
 - (_Bool)addClient:(id)arg1;
@@ -59,6 +61,11 @@ __attribute__((visibility("hidden")))
 - (void)unloadRelay;
 - (void)loadRelay;
 - (void)dealloc;
+- (id)autorelease;
+- (oneway void)release;
+- (unsigned long long)retainCount;
+- (id)retain;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithRelayType:(unsigned int)arg1 relayIOType:(unsigned int)arg2;
 
 // Remaining properties

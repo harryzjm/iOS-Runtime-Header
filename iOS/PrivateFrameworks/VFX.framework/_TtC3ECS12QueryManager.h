@@ -12,9 +12,9 @@
 {
     MISSING_TYPE *entityManager;
     MISSING_TYPE *lock;
-    MISSING_TYPE *queryByResultHandle;
-    MISSING_TYPE *matchingEntityClassesByQuery;
+    MISSING_TYPE *queryInfoByHandle;
     MISSING_TYPE *matchingQueriesByEntityClass;
+    MISSING_TYPE *systemsByQuery;
 }
 
 @end

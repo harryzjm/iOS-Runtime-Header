@@ -19,6 +19,7 @@
 @property(readonly, nonatomic) NSString *detail; // @synthesize detail=_detail;
 @property(readonly, nonatomic) int parent; // @synthesize parent=_parent;
 @property(readonly, nonatomic) int row; // @synthesize row=_row;
+- (id)attributeDescriptions;
 - (id)initWithRow:(id)arg1;
 
 @end

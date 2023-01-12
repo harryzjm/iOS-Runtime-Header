@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FPSandboxingURLWrapper, NSArray, NSProgress, NSSecurityScopedURLWrapper;
+@class FPSandboxingURLWrapper, NSArray, NSProgress, NSSecurityScopedURLWrapper, NSString;
 
 @protocol FPArchiveServiceProtocolInternal
-- (NSProgress *)unarchiveItemWithURLWrapper:(FPSandboxingURLWrapper *)arg1 passphrases:(NSArray *)arg2 destinationFolderURLWrapper:(NSSecurityScopedURLWrapper *)arg3 exportsStreamingReceiver:(_Bool)arg4 completionHandler:(void (^)(NSSecurityScopedURLWrapper *, NSError *))arg5;
-- (NSProgress *)archiveItemsWithURLWrappers:(NSArray *)arg1 compressionFormat:(unsigned long long)arg2 destinationFolderURLWrapper:(NSSecurityScopedURLWrapper *)arg3 completionHandler:(void (^)(NSSecurityScopedURLWrapper *, NSString *, NSError *))arg4;
+- (NSProgress *)unarchiveItemWithURLWrapper:(FPSandboxingURLWrapper *)arg1 passphrases:(NSArray *)arg2 addToKeychain:(_Bool)arg3 destinationFolderURLWrapper:(NSSecurityScopedURLWrapper *)arg4 acceptedFormats:(unsigned long long)arg5 exportsStreamingReceiver:(_Bool)arg6 completionHandler:(void (^)(NSSecurityScopedURLWrapper *, NSError *))arg7;
+- (NSProgress *)archiveItemsWithURLWrappers:(NSArray *)arg1 passphrase:(NSString *)arg2 addToKeychain:(_Bool)arg3 compressionFormat:(unsigned long long)arg4 destinationFolderURLWrapper:(NSSecurityScopedURLWrapper *)arg5 completionHandler:(void (^)(NSSecurityScopedURLWrapper *, NSString *, NSError *))arg6;
 - (void)itemDescriptorsForItemWithURLWrapper:(NSSecurityScopedURLWrapper *)arg1 passphrases:(NSArray *)arg2 completionHandler:(void (^)(NSArray *, NSError *))arg3;
 @end
 

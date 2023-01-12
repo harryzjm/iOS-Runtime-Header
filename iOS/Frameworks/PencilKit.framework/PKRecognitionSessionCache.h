@@ -10,10 +10,5 @@
 {
 }
 
-+ (void)cleanupSessionsIfNecessary;
-+ (id)_recognitionSessions;
-+ (void)addRecognitionSession:(id)arg1 forUUID:(id)arg2;
-+ (id)recognitionSessionForUUID:(id)arg1;
-
 @end
 

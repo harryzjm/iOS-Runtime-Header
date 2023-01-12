@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/NSTextAttachment.h>
+#import <UIFoundation/NSTextAttachment.h>
 
 @interface ICPrintableTextAttachment : NSTextAttachment
 {
+    struct CGPoint _frameOffset;
 }
 
+@property(nonatomic) struct CGPoint frameOffset; // @synthesize frameOffset=_frameOffset;
 - (struct CGRect)attachmentBoundsForTextContainer:(id)arg1 proposedLineFragment:(struct CGRect)arg2 glyphPosition:(struct CGPoint)arg3 characterIndex:(unsigned long long)arg4;
 
 @end

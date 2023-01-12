@@ -28,7 +28,6 @@
 - (void)connectionInvalidated;
 - (id)remoteInterface;
 - (id)exportedInterface;
-- (void)badgeHealthAppForEmergencyContactsConsolidationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)deleteMedicalIDDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateMedicalIDData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchMedicalIDClinicalContactsWithCompletion:(CDUnknownBlockType)arg1;

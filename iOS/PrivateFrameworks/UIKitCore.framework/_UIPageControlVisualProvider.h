@@ -20,6 +20,8 @@ __attribute__((visibility("hidden")))
 - (id)customIndicatorImageForPage:(long long)arg1;
 @property(retain, nonatomic) UIImage *preferredIndicatorImage;
 - (void)setCustomIndicatorImage:(id)arg1 forPage:(long long)arg2;
+- (void)didUpdateBackgroundEffect;
+- (void)didUpdateLayoutDirection;
 - (void)updateDisplayedPageToCurrentPage;
 - (void)traitCollectionDidChangeOnSubtree:(id)arg1;
 - (void)invalidateIndicators;
@@ -30,7 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)didEndTrackingWithTouch:(id)arg1;
 - (void)didUpdateCustomLayoutValues;
 - (void)didUpdateBackgroundStyle;
-- (void)didUpdateAllowsContinuousInteraction;
+- (void)didUpdateInteractionTypeAvailability;
 - (void)didUpdateCurrentPageIndicatorTintColor;
 - (void)didUpdatePageIndicatorTintColor;
 - (void)didUpdateNumberOfPages;

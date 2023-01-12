@@ -6,7 +6,7 @@
 
 #import <AVConference/VCHardwareSettingsMacProtocol-Protocol.h>
 
-@class NSString;
+@class NSArray, NSData, NSString;
 
 __attribute__((visibility("hidden")))
 @interface VCHardwareSettingsMac <VCHardwareSettingsMacProtocol>
@@ -22,17 +22,41 @@ __attribute__((visibility("hidden")))
     int _hardwareScore;
     NSString *_cpuType;
     NSString *_machineName;
+    unsigned int _screenWidth;
+    unsigned int _screenHeight;
+    unsigned long long _maxScreenEncodingSizeSupported;
+    NSString *_modelName;
+    unsigned int _modelVersion;
+    unsigned int _modelRevision;
+    NSData *_boardId;
 }
 
 + (long long)deviceClass;
 + (id)sharedInstance;
+- (_Bool)supportsPortraitCameraCapture;
+@property(readonly, nonatomic) long long screenShareCapabilities;
+- (_Bool)disableMLScalarDuringSharing;
+- (_Bool)supportsDedicatedSystemAudioStream;
+- (_Bool)limitCameraDownlinkBitrateDuringSharing;
+@property(readonly, nonatomic) NSArray *supportedVideoPayloads;
+- (id)queryBoardId;
+@property(readonly, nonatomic) unsigned int maxFrameRateSupportedScreenShare;
+@property(readonly, nonatomic) unsigned int maxActiveScreenEncoders;
+@property(readonly, nonatomic) unsigned long long maxScreenEncodingSizeSupported;
+- (float)previewPreferredAspectRatio;
+@property(readonly, nonatomic) unsigned int screenHeight;
+@property(readonly, nonatomic) unsigned int screenWidth;
+- (void)_initializeScreenDimension;
+@property(readonly, nonatomic) _Bool supportsAVFCapture;
+- (unsigned int)maxFpsCameraCaptureDuringSharing;
 - (unsigned int)maxRemoteParticipants30fps;
 @property(readonly, nonatomic) _Bool isPixelFormatAvailable;
 - (void)addPixelFormat;
 @property(readonly, nonatomic) _Bool supportsHEIFEncoding;
 @property(readonly, nonatomic) _Bool isDeviceLargeScreen;
 @property(readonly, nonatomic) unsigned int maxActiveVideoDecoders;
-@property(readonly, nonatomic) unsigned int maxMultiwayFramerateSupported;
+- (unsigned int)maxMultiwayFramerateSupported;
+- (unsigned int)maxOneToOneFramerateSupported;
 @property(readonly, nonatomic) _Bool supportsMultiway720pStream;
 @property(readonly, nonatomic) unsigned int maxActiveVideoEncoders;
 @property(readonly, nonatomic) unsigned int maxDisplayRefreshRate;
@@ -45,6 +69,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool isIMac;
 @property(readonly, nonatomic) _Bool isMacPro;
 @property(readonly, nonatomic) _Bool isMacBookWVGA;
+@property(readonly, nonatomic) _Bool isSpatialAudioSupported;
 @property(readonly, nonatomic) _Bool supports1080pDecoding;
 @property(readonly, nonatomic) _Bool supports1080pEncoding;
 @property(readonly, nonatomic) _Bool canDoHiDefDecoding;
@@ -55,6 +80,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_isMachineNewerThanSandybridge:(int)arg1;
 - (id)_getCPUTypeStringForMachineType:(int)arg1;
 - (int)_getCPUFamilyType;
+- (void)setupMachineName;
 - (void)dealloc;
 - (id)init;
 

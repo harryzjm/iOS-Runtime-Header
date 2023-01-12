@@ -47,6 +47,7 @@
 @property(readonly, nonatomic) NSString *originalName; // @synthesize originalName=_originalName;
 @property(readonly, nonatomic) BRCItemID *itemID; // @synthesize itemID=_itemID;
 @property(readonly, nonatomic) BRCUserRowID *ownerKey; // @synthesize ownerKey=_ownerKey;
+- (_Bool)canPathMatchMergeWithLocalItem:(id)arg1;
 - (id)aliasTargetItemID;
 - (id)aliasTargetAppLibrary;
 - (id)aliasTargetClientZone;

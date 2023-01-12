@@ -19,6 +19,9 @@
     struct CGRect _initialZoomFocusRect;
     NSMutableArray *_eventTapClients;
     BSProcessDeathWatcher *_heardDeathWatcher;
+    BSProcessDeathWatcher *_uiServerDeathWatcher;
+    BSProcessDeathWatcher *_astDeathWatcher;
+    BSProcessDeathWatcher *_fkaDeathWatcher;
     id <AXBackBoardServerInstanceDelegate> _delegate;
 }
 
@@ -78,7 +81,6 @@
 - (id)_handleAXUIServerPID:(id)arg1;
 - (id)_handleRegisterAssistiveTouchPID:(id)arg1;
 - (id)_handleEventListenerRegistration:(id)arg1;
-- (id)_handleEnableEventTap:(id)arg1;
 - (id)_handleSetCapsLockLightOn:(id)arg1;
 - (id)_handleUserEventOccurred:(id)arg1;
 - (id)_handlePostEvent:(id)arg1;
@@ -100,7 +102,6 @@
 - (_Bool)blueLightStatusEnabled;
 - (_Bool)brightnessFiltersEnabled;
 - (void)disableBrightnessFilters;
-- (void)eventListener:(id)arg1;
 - (void)dealloc;
 - (id)_initServer;
 - (void)_initializeHandlers;

@@ -11,6 +11,7 @@
     long long _alignment;
     _Bool _extendsBoundary;
     _Bool _pinToVisibleBounds;
+    long long _pinningZIndex;
     struct CGPoint _offset;
 }
 
@@ -20,7 +21,10 @@
 @property(readonly, nonatomic) long long alignment; // @synthesize alignment=_alignment;
 @property(nonatomic) _Bool pinToVisibleBounds; // @synthesize pinToVisibleBounds=_pinToVisibleBounds;
 @property(nonatomic) _Bool extendsBoundary; // @synthesize extendsBoundary=_extendsBoundary;
+@property(nonatomic, getter=_pinningZIndex, setter=_setPinningZIndex:) long long _pinningZIndex; // @synthesize _pinningZIndex;
+- (id)boundarySupplementaryItem;
 - (id)copyWithContainerAnchor:(id)arg1 itemAnchor:(id)arg2;
+- (void)setPinningZIndex:(long long)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithSize:(id)arg1 contentInsets:(struct NSDirectionalEdgeInsets)arg2 elementKind:(id)arg3 containerAnchor:(id)arg4 itemAnchor:(id)arg5 zIndex:(long long)arg6 alignment:(long long)arg7 offset:(struct CGPoint)arg8 extendsBoundary:(_Bool)arg9 pinToVisibleBounds:(_Bool)arg10;

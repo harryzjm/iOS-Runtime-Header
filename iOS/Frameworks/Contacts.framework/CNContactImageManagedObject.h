@@ -8,7 +8,6 @@
 
 @class NSData, NSDate, NSNumber, NSString, NSUUID;
 
-__attribute__((visibility("hidden")))
 @interface CNContactImageManagedObject : NSManagedObject
 {
 }
@@ -25,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSUUID *identifier; // @dynamic identifier;
 @property(retain, nonatomic) NSData *imageData; // @dynamic imageData;
 @property(retain, nonatomic) NSDate *lastUsedDate; // @dynamic lastUsedDate;
+@property(retain, nonatomic) NSData *poseConfigurationData; // @dynamic poseConfigurationData;
 @property(retain, nonatomic) NSNumber *source; // @dynamic source;
 @property(retain, nonatomic) NSString *sourceIdentifier; // @dynamic sourceIdentifier;
 @property(retain, nonatomic) NSString *variant; // @dynamic variant;

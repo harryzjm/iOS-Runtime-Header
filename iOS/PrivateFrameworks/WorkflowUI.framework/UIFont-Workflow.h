@@ -4,15 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIFont.h>
+#import <UIFoundation/UIFont.h>
 
 @interface UIFont (Workflow)
 + (id)chicletDescriptionFont;
 + (id)chicletTitleFont;
-+ (id)drawerSiriSuggestionSectionTitleFont;
-+ (id)drawerCategoryTitleFont;
-+ (id)drawerSectionHeaderDetailFont;
-+ (id)drawerSectionHeaderTitleFont;
 + (id)gallerySuggestionTextFont;
 + (id)galleryCardDescriptionFont;
 + (id)gallerySearchCollectionSubtitleFont;

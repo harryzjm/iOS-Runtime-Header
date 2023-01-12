@@ -10,22 +10,21 @@
 {
 }
 
++ (id)_fetchPersistentHistoryStatsWithLibraryPathManager:(id)arg1;
++ (void)_addPersistentHistoryStatsToLibrarySummaryEvent:(id)arg1 withLibraryPathManager:(id)arg2;
 + (void)performLibraryStatisticsLoggingForLibrary:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)performCMMSummaryLogging:(id)arg1 cloudPhotoLibraryEnabled:(_Bool)arg2;
-+ (void)performPersistentHistorySummaryLogging:(id)arg1;
-+ (void)performLibrarySummaryLogging:(id)arg1;
++ (void)_configureEnumeratorForLibrarySummaryLogging:(id)arg1 cloudPhotoLibraryEnabled:(_Bool)arg2 dataForCA:(id)arg3;
++ (void)_configureEnumeratorForSyndicationLibrarySummaryLogging:(id)arg1 dataForCA:(id)arg2;
++ (void)configureEnumeratorForLibrarySummaryForLibraryEnumerator:(id)arg1 withSyndicationLibraryEnumerator:(id)arg2 cloudPhotoLibraryEnabled:(_Bool)arg3 dataForCA:(id)arg4;
++ (void)configureEnumeratorForHyperionLocalResourcesLogging:(id)arg1 cloudPhotoLibraryEnabled:(_Bool)arg2 dataForCA:(id)arg3 dataForCK:(id)arg4;
++ (void)configureEnumeratorForLibrarySizeLogging:(id)arg1 cloudPhotoLibraryEnabled:(_Bool)arg2 dataForCA:(id)arg3 dataForCK:(id)arg4;
 + (void)_addLibrarySummaryDataToCollectionIfPresent:(id)arg1 fromCPLEventData:(id)arg2 forKey:(id)arg3;
-+ (id)_performMedianCalculation:(id)arg1;
-+ (double)_getDateMedian:(id)arg1 fromStartDate:(id)arg2 forCameraCapture:(_Bool)arg3;
 + (void)_addPrefix:(id)arg1 toKeysInDictionary:(id)arg2 inPrefixedDictionary:(id)arg3;
-+ (_Bool)performHyperionLocalResourcesLoggingForContext:(id)arg1 cloudPhotoLibraryEnabled:(_Bool)arg2 prefixAggdDataForCK:(id)arg3 dataForCA:(id)arg4;
-+ (void)performAnalysisStateLogging:(id)arg1 library:(id)arg2;
 + (id)_analyticsDescriptionForAssetCount:(long long)arg1;
 + (id)_analyticsDescriptionForMediaAge:(double)arg1;
 + (void)_addDistributionStatisticsOfValues:(id)arg1 withPrefix:(id)arg2 toDictionary:(id)arg3 formatter:(CDUnknownBlockType)arg4;
 + (void)performSlideshowProjectStatisticsLogging:(id)arg1;
-+ (void)performYearsStaticsLogging:(id)arg1;
-+ (void)performCollectionsStaticsLogging:(id)arg1;
 + (void)performMomentsStatisticsLogging:(id)arg1;
 
 @end

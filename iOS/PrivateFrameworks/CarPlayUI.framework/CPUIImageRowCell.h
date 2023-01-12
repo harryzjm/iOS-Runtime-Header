@@ -45,6 +45,7 @@
 - (long long)artworkViewCountThatFits:(struct CGSize)arg1;
 - (void)applyConfiguration:(id)arg1;
 - (void)configureCell;
+- (void)_updateTintColors;
 
 @end
 

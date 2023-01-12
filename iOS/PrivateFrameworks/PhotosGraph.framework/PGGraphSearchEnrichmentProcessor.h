@@ -17,9 +17,9 @@
 + (double)backgroundJobTimeout;
 + (id)backgroundJobName;
 + (_Bool)supportsBackgroundJob;
-- (void)_processGraphUpdateInventory:(id)arg1 manager:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
+- (void)_processGraphUpdateInventory:(id)arg1 onGraph:(id)arg2 photoLibrary:(id)arg3 curationManager:(id)arg4 curationContext:(id)arg5 searchComputationCache:(id)arg6 progressBlock:(CDUnknownBlockType)arg7 completionBlock:(CDUnknownBlockType)arg8;
 - (_Bool)_shouldProcessGraphUpdate:(id)arg1;
-- (void)enrichDataModelWithManager:(id)arg1 graphUpdateInventory:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
+- (void)enrichDataModelWithManager:(id)arg1 curationContext:(id)arg2 graphUpdateInventory:(id)arg3 progressBlock:(CDUnknownBlockType)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

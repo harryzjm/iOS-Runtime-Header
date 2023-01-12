@@ -20,6 +20,7 @@
 - (_Bool)hasPendingIdentifiers;
 - (_Bool)markAllPendingIdentifiersForScopeWithIdentifier:(id)arg1 asFinalWithError:(id *)arg2;
 - (_Bool)setFinalCloudScopedIdentifier:(id)arg1 forPendingCloudScopedIdentifier:(id)arg2 error:(id *)arg3;
+- (id)firstAvailableCloudScopedIdentifierForProposedCloudScopedIdentifier:(id)arg1;
 - (id)setupCloudScopedIdentifier:(id)arg1 forLocalScopedIdentifier:(id)arg2 isFinal:(_Bool)arg3 direction:(unsigned long long)arg4 error:(id *)arg5;
 - (_Bool)addCloudScopedIdentifier:(id)arg1 forLocalScopedIdentifier:(id)arg2 isFinal:(_Bool)arg3 direction:(unsigned long long)arg4 error:(id *)arg5;
 - (id)localScopedIdentifierForCloudScopedIdentifierIncludeRemappedRecords:(id)arg1;

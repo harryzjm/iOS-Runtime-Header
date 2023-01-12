@@ -16,7 +16,7 @@
     CHStrokeClassificationResult *_strokeClassificationLastResult;
 }
 
-+ (double)containerSupportForPoints:(const vector_2e7754b6 *)arg1 withBounds:(struct CGRect)arg2;
++ (double)containerSupportForPoints:(const void *)arg1 withBounds:(struct CGRect)arg2;
 + (id)nonTextCandidateForStroke:(id)arg1 withSubstrokes:(id)arg2;
 @property(readonly, nonatomic) _Bool textOnly; // @synthesize textOnly=_textOnly;
 @property(readonly, retain, nonatomic) CHStrokeClassificationResult *strokeClassificationLastResult; // @synthesize strokeClassificationLastResult=_strokeClassificationLastResult;

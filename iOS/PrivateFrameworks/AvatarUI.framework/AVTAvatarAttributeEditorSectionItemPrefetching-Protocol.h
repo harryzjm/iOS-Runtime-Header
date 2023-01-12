@@ -10,6 +10,7 @@
 
 @protocol AVTAvatarAttributeEditorSectionItemPrefetching <NSObject>
 @property(readonly, copy, nonatomic) CDUnknownBlockType presetResourcesProvider;
+@property(readonly, copy, nonatomic) CDUnknownBlockType stickerResourceProvider;
 @property(readonly, copy, nonatomic) CDUnknownBlockType thumbnailProvider;
 @property(readonly, copy, nonatomic) NSString *prefetchingIdentifier;
 @end

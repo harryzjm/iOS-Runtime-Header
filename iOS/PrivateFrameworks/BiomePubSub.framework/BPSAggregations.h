@@ -10,6 +10,9 @@
 {
 }
 
++ (id)approximateDistinctCount;
++ (id)approxPercentileWithDigestCapacity:(unsigned long long)arg1;
++ (id)approxPercentile;
 + (id)avg;
 + (id)sum;
 + (id)count;

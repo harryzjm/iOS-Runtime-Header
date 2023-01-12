@@ -14,6 +14,7 @@
 + (id)userDefaultsConfigurationDictionaryAndReturnError:(id *)arg1;
 + (void)postNotificationAsync:(char *)arg1;
 + (void)postNotification:(char *)arg1;
++ (id)dictionaryStrippingNSNullValues:(id)arg1;
 + (id)hashArrayOfStrings:(id)arg1 lastHash:(id)arg2;
 + (id)hashData:(id)arg1 lastHashData:(id)arg2;
 + (id)hashData:(id)arg1 lastHash:(id)arg2;

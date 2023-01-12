@@ -14,5 +14,8 @@
 @property(readonly, nonatomic) _Bool containsTweening;
 @property(readonly, nonatomic) _Bool enablePostProcessing;
 @property(readonly, nonatomic) CDStruct_e83c9415 timeRange;
+
+@optional
+@property(readonly, nonatomic) NSArray *requiredSourceSampleDataTrackIDs;
 @end
 

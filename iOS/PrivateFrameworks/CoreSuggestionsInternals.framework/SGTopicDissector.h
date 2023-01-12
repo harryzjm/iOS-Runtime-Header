@@ -12,7 +12,6 @@
 {
     CKContextClient *_contextClient;
     PPTextToTopicTransform *_transform;
-    _Bool _significanceCheckEnabled;
 }
 
 + (id)sharedInstance;
@@ -23,8 +22,7 @@
 - (void)dissectMailMessage:(id)arg1 entity:(id)arg2 context:(id)arg3;
 - (id)extractionsFromContextKitWithText:(id)arg1 isPlainText:(_Bool)arg2 bundleId:(id)arg3 language:(id)arg4 weight:(double)arg5;
 - (id)init;
-- (id)initWithSignificanceCheckEnabled:(_Bool)arg1;
-- (id)initWithContextClient:(id)arg1 significanceCheckEnabled:(_Bool)arg2;
+- (id)initWithContextClient:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

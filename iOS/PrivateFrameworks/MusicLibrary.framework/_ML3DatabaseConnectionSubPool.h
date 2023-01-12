@@ -17,7 +17,7 @@
     NSObject<OS_dispatch_semaphore> *_waitingSemaphore;
     NSMutableSet *_availableConnections;
     NSMutableSet *_busyConnections;
-    int _connectionsProfilingLevel;
+    long long _connectionsProfilingLevel;
     int _willDeleteDatabaseNotifyToken;
     int _homeSharingCachesClearedNotifyToken;
     _Bool _useReadOnlyConnections;
@@ -39,7 +39,7 @@
 - (void)checkInConnection:(id)arg1 returnToPool:(_Bool)arg2;
 - (void)checkInConnection:(id)arg1;
 - (id)checkoutConnection:(_Bool *)arg1;
-@property(nonatomic) int connectionsProfilingLevel;
+@property(nonatomic) long long connectionsProfilingLevel;
 - (void)dealloc;
 - (id)init;
 - (id)initWithDatabasePath:(id)arg1 maxConcurrentConnections:(unsigned long long)arg2;

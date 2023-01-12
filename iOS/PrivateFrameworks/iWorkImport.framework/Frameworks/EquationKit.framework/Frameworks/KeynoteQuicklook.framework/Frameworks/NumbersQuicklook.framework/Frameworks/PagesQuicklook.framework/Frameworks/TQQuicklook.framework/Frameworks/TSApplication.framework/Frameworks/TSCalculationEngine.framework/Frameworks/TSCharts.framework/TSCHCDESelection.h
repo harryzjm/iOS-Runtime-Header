@@ -10,19 +10,19 @@
 
 @interface TSCHCDESelection : TSKSelection
 {
-    TSCHChartDrawableInfo *mInfo;
-    struct _NSRange mRowRange;
-    struct _NSRange mColumnRange;
+    TSCHChartDrawableInfo *_info;
+    struct _NSRange _rowRange;
+    struct _NSRange _columnRange;
 }
 
 + (Class)archivedSelectionClass;
 + (id)selectionWithChartInfo:(id)arg1 rowRange:(struct _NSRange)arg2 columnRange:(struct _NSRange)arg3;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) struct _NSRange columnRange; // @synthesize columnRange=mColumnRange;
-@property(readonly, nonatomic) struct _NSRange rowRange; // @synthesize rowRange=mRowRange;
-@property(readonly, retain, nonatomic) TSCHChartDrawableInfo *chartInfo; // @synthesize chartInfo=mInfo;
-- (void)saveToArchive:(struct ChartCDESelectionArchive *)arg1 archiver:(id)arg2;
-- (id)initFromArchive:(const struct ChartCDESelectionArchive *)arg1 unarchiver:(id)arg2;
+@property(readonly, nonatomic) struct _NSRange columnRange; // @synthesize columnRange=_columnRange;
+@property(readonly, nonatomic) struct _NSRange rowRange; // @synthesize rowRange=_rowRange;
+@property(readonly, retain, nonatomic) TSCHChartDrawableInfo *chartInfo; // @synthesize chartInfo=_info;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)description;

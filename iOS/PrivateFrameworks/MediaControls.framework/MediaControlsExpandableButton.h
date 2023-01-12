@@ -6,22 +6,24 @@
 
 #import <UIKit/UIControl.h>
 
-#import <MediaControls/MTVisualStylingProviderObservingPrivate-Protocol.h>
-#import <MediaControls/_UICursorInteractionDelegate-Protocol.h>
+#import <MediaControls/MRUVisualStylingProviderObserver-Protocol.h>
+#import <MediaControls/UIPointerInteractionDelegate-Protocol.h>
 
-@class MTVisualStylingProvider, MediaControlsExpandableButtonOption, NSArray, NSMutableArray, NSString, NSTimer, UILabel, UIView;
+@class MRUVisualStylingProvider, MTVisualStylingProvider, MediaControlsExpandableButtonOption, NSArray, NSMutableArray, NSString, NSTimer, UILabel, UIView;
 
-@interface MediaControlsExpandableButton : UIControl <MTVisualStylingProviderObservingPrivate, _UICursorInteractionDelegate>
+@interface MediaControlsExpandableButton : UIControl <MRUVisualStylingProviderObserver, UIPointerInteractionDelegate>
 {
     _Bool _expanded;
     _Bool _animating;
     _Bool _toggleEnabled;
     _Bool _displayMessage;
     _Bool _resetTracking;
+    _Bool _isControlCenter;
     NSArray *_options;
     long long _selectedOptionIndex;
     NSString *_title;
     long long _axis;
+    MRUVisualStylingProvider *_stylingProvider;
     NSMutableArray *_buttons;
     UIView *_backgroundView;
     UIView *_overlaySelectionView;
@@ -33,11 +35,13 @@
     NSTimer *_messageTimer;
     MTVisualStylingProvider *_visualStylingProvider;
     struct CGSize _maximumExpandedSize;
+    struct CGSize _buttonImageSize;
 }
 
-+ (_Bool)_cursorInteractionEnabled;
++ (double)collapsedHeightWithImageHeight:(double)arg1 maximumHeight:(double)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) MTVisualStylingProvider *visualStylingProvider; // @synthesize visualStylingProvider=_visualStylingProvider;
+@property(nonatomic) _Bool isControlCenter; // @synthesize isControlCenter=_isControlCenter;
 @property(nonatomic) _Bool resetTracking; // @synthesize resetTracking=_resetTracking;
 @property(nonatomic) _Bool displayMessage; // @synthesize displayMessage=_displayMessage;
 @property(nonatomic) _Bool toggleEnabled; // @synthesize toggleEnabled=_toggleEnabled;
@@ -50,6 +54,8 @@
 @property(retain, nonatomic) UIView *overlaySelectionView; // @synthesize overlaySelectionView=_overlaySelectionView;
 @property(retain, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property(retain, nonatomic) NSMutableArray *buttons; // @synthesize buttons=_buttons;
+@property(retain, nonatomic) MRUVisualStylingProvider *stylingProvider; // @synthesize stylingProvider=_stylingProvider;
+@property(nonatomic) struct CGSize buttonImageSize; // @synthesize buttonImageSize=_buttonImageSize;
 @property(nonatomic) struct CGSize maximumExpandedSize; // @synthesize maximumExpandedSize=_maximumExpandedSize;
 @property(nonatomic, getter=isAnimating) _Bool animating; // @synthesize animating=_animating;
 @property(nonatomic, getter=isExpanded) _Bool expanded; // @synthesize expanded=_expanded;
@@ -57,31 +63,34 @@
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(nonatomic) long long selectedOptionIndex; // @synthesize selectedOptionIndex=_selectedOptionIndex;
 @property(retain, nonatomic) NSArray *options; // @synthesize options=_options;
-- (void)_contentSizeCategoryDidChange;
+- (void)updateContentSizeCategory;
 - (long long)_buttonLayoutAxis;
 - (void)_resetSelectionView;
-- (void)_animateSelectedGlyphState;
+- (void)_animateGlyphStateSelected:(_Bool)arg1;
 - (void)_springAnimate:(CDUnknownBlockType)arg1;
 - (void)_layoutSelectionView;
 - (void)_layoutLabels;
 - (void)_updateSelectionVisiblity;
-- (void)_updateLabelVisualStyling;
+- (void)updateVisualStyling;
 - (void)_updateButtonsVisiblity;
-- (void)cursorInteraction:(id)arg1 willExitRegion:(id)arg2 withAnimator:(id)arg3;
-- (void)cursorInteraction:(id)arg1 willEnterRegion:(id)arg2 withAnimator:(id)arg3;
-- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
-- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
-- (void)providedStylesDidChangeForProvider:(id)arg1;
-- (void)didTapButton:(id)arg1;
+- (void)pointerInteraction:(id)arg1 willExitRegion:(id)arg2 animator:(id)arg3;
+- (void)pointerInteraction:(id)arg1 willEnterRegion:(id)arg2 animator:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
+- (void)visualStylingProviderDidChange:(id)arg1;
+- (void)didTapButton:(id)arg1;
 - (void)cancelTrackingWithEvent:(id)arg1;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (_Bool)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (_Bool)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
-- (void)setHighlighted:(_Bool)arg1;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)showMessage:(id)arg1;
+- (void)setHighlighted:(_Bool)arg1;
+- (void)setEnabled:(_Bool)arg1;
+- (void)setContentVerticalAlignment:(long long)arg1;
 @property(readonly, nonatomic) MediaControlsExpandableButtonOption *selectedOption;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initForControlCenter;

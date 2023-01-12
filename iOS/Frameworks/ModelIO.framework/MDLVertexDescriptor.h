@@ -16,9 +16,15 @@
     NSMutableArray *_layouts;
 }
 
++ (id)decodeVertexDescriptorWithCoder:(id)arg1;
++ (id)_decodeVertexDescriptorLayoutsWithCoder:(id)arg1;
++ (id)_decodeVertexDescriptorAttributesWithCoder:(id)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *layouts; // @synthesize layouts=_layouts;
 @property(retain, nonatomic) NSMutableArray *attributes; // @synthesize attributes=_attributes;
+- (void)encodeVertexDescriptorWithCoder:(id)arg1;
+- (void)_encodeVertexDescriptorAttributesWithCoder:(id)arg1;
+- (void)_encodeVertexDescriptorLayoutsWithCoder:(id)arg1;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

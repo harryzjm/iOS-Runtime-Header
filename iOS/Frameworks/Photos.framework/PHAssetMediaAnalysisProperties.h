@@ -4,29 +4,43 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDate;
+@class NSData, NSDate;
 
 @interface PHAssetMediaAnalysisProperties
 {
     short _audioClassification;
+    short _probableRotationDirection;
+    short _screenTimeDeviceImageSensitivity;
+    unsigned short _syndicationProcessingValue;
     float _blurrinessScore;
     float _exposureScore;
     float _autoplaySuggestionScore;
     float _videoScore;
     float _activityScore;
+    float _probableRotationDirectionConfidence;
     NSDate *_mediaAnalysisTimeStamp;
     unsigned long long _mediaAnalysisVersion;
     unsigned long long _faceCount;
+    NSData *_colorNormalizationData;
+    unsigned long long _syndicationProcessingVersion;
     CDStruct_1b6d18a9 _bestKeyFrameTime;
     struct CGRect _bestPlaybackRect;
     CDStruct_e83c9415 _bestVideoTimeRange;
 }
 
++ (id)additionalPropertiesToFetchOnPrimaryObject;
 + (id)propertiesToFetch;
 + (id)entityName;
++ (id)keyPathToPrimaryObject;
 + (id)keyPathFromPrimaryObject;
 + (id)propertySetName;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long syndicationProcessingVersion; // @synthesize syndicationProcessingVersion=_syndicationProcessingVersion;
+@property(readonly, nonatomic) unsigned short syndicationProcessingValue; // @synthesize syndicationProcessingValue=_syndicationProcessingValue;
+@property(readonly, nonatomic) short screenTimeDeviceImageSensitivity; // @synthesize screenTimeDeviceImageSensitivity=_screenTimeDeviceImageSensitivity;
+@property(readonly, nonatomic) NSData *colorNormalizationData; // @synthesize colorNormalizationData=_colorNormalizationData;
+@property(readonly, nonatomic) float probableRotationDirectionConfidence; // @synthesize probableRotationDirectionConfidence=_probableRotationDirectionConfidence;
+@property(readonly, nonatomic) short probableRotationDirection; // @synthesize probableRotationDirection=_probableRotationDirection;
 @property(readonly, nonatomic) short audioClassification; // @synthesize audioClassification=_audioClassification;
 @property(readonly, nonatomic) unsigned long long faceCount; // @synthesize faceCount=_faceCount;
 @property(readonly, nonatomic) float activityScore; // @synthesize activityScore=_activityScore;

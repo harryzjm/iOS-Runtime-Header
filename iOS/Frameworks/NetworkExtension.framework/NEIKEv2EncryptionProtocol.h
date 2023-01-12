@@ -20,6 +20,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+@property(readonly) _Bool isIIV;
 @property(readonly) _Bool isGCM;
 @property(readonly) _Bool isAuthenticated;
 - (id)description;

@@ -10,7 +10,6 @@
 
 @class NSData;
 
-__attribute__((visibility("hidden")))
 @interface CKDPStreamingAssetFooter : PBCodable <NSCopying>
 {
     NSData *_md5;

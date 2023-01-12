@@ -47,7 +47,6 @@
 - (unsigned long long)getSyncCountThrottleThreshold;
 - (unsigned long long)getSyncCountThresholdHalfLifeHours;
 - (unsigned long long)getSyncCount;
-- (void)requestSyncIfPendingLocalChanges;
 - (_Bool)isAccountAvailable;
 - (void)queryMigrationStatusOnCloudWithCallback:(CDUnknownBlockType)arg1;
 - (void)pushMigrationStatusToCloud:(_Bool)arg1;
@@ -60,8 +59,7 @@
 - (void)pushAllLocalData;
 - (void)accountDidChange:(id)arg1;
 - (void)importSampleShortcutsIfNecessary;
-- (void)queryCloudIfFirstPullOrAccountChanged;
-- (id)userIdentity;
+- (void)queryCloudIfFirstPullOrAccountChanged:(_Bool)arg1;
 - (void)dealloc;
 - (id)initWithDirectoryPath:(id)arg1;
 

@@ -22,6 +22,7 @@
 - (void)removeRequest:(id)arg1;
 - (void)addRequestInBackground:(id)arg1 withObserver:(id)arg2;
 - (_Bool)addRequest:(id)arg1 withObserver:(id)arg2 error:(id *)arg3;
+- (id)initWithAudioConfiguration:(id)arg1;
 - (id)initWithImpl:(id)arg1;
 - (id)init;
 

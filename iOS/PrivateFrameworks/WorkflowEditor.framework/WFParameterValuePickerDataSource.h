@@ -7,26 +7,24 @@
 #import <UIKit/UITableViewDiffableDataSource.h>
 
 @class INObjectCollection, NSSet, UILocalizedIndexedCollation, WFParameter;
-@protocol WFVariableProvider, WFVariableUIDelegate;
+@protocol WFParameterValuePickable, WFVariableProvider, WFVariableUIDelegate;
 
 @interface WFParameterValuePickerDataSource : UITableViewDiffableDataSource
 {
     UILocalizedIndexedCollation *_localizedCollation;
     INObjectCollection *_collection;
-    SEL _collationStringSelector;
     id <WFVariableProvider> _variableProvider;
     id <WFVariableUIDelegate> _variableUIDelegate;
     NSSet *_allowedVariableTypes;
-    WFParameter *_parameter;
+    WFParameter<WFParameterValuePickable> *_parameter;
 }
 
 + (id)variableSectionIdentifier;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) WFParameter *parameter; // @synthesize parameter=_parameter;
+@property(readonly, nonatomic) WFParameter<WFParameterValuePickable> *parameter; // @synthesize parameter=_parameter;
 @property(copy, nonatomic) NSSet *allowedVariableTypes; // @synthesize allowedVariableTypes=_allowedVariableTypes;
-@property(retain, nonatomic) id <WFVariableUIDelegate> variableUIDelegate; // @synthesize variableUIDelegate=_variableUIDelegate;
-@property(retain, nonatomic) id <WFVariableProvider> variableProvider; // @synthesize variableProvider=_variableProvider;
-@property(nonatomic) SEL collationStringSelector; // @synthesize collationStringSelector=_collationStringSelector;
+@property(nonatomic) __weak id <WFVariableUIDelegate> variableUIDelegate; // @synthesize variableUIDelegate=_variableUIDelegate;
+@property(nonatomic) __weak id <WFVariableProvider> variableProvider; // @synthesize variableProvider=_variableProvider;
 @property(retain, nonatomic) INObjectCollection *collection; // @synthesize collection=_collection;
 - (long long)tableView:(id)arg1 sectionForSectionIndexTitle:(id)arg2 atIndex:(long long)arg3;
 - (id)sectionIndexTitlesForTableView:(id)arg1;
@@ -37,6 +35,7 @@
 - (id)snapshotForCollection:(id)arg1 filterVariableTitle:(id)arg2;
 - (id)parameterStateAtIndexPath:(id)arg1;
 - (id)initWithParameter:(id)arg1 tableView:(id)arg2 cellProvider:(CDUnknownBlockType)arg3;
+@property(readonly, nonatomic) unsigned long long sectionsCount;
 @property(readonly, nonatomic) unsigned long long itemsCount;
 - (id)displayVariablesWithTitle:(id)arg1;
 - (id)displayVariables;

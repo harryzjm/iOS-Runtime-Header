@@ -8,6 +8,7 @@
 
 @class NSArray, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MPCPlayerActionAtQueueEndCommand <MPCPlayerActionAtQueueEndCommand>
 {
     long long _actionAtQueueEnd;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSUUID, TSUCustomFormat, TSUCustomFormatData;
+@class NSUUID, TSKCurrencyFormat, TSKFormat, TSUCustomFormat, TSUCustomFormatData;
 
 @interface TSKCustomFormatWrapper
 {
+    TSKFormat *_cachedDefaultNonCustomFormat;
+    TSKCurrencyFormat *_cachedNoAccountingStyleFormat;
     unsigned char _appliedConditionKey;
     _Bool _isMarkedCorrupt;
     NSUUID *_customFormatKey;
@@ -21,6 +23,10 @@
 @property(nonatomic) unsigned char appliedConditionKey; // @synthesize appliedConditionKey=_appliedConditionKey;
 @property(readonly, nonatomic) TSUCustomFormat *customFormat; // @synthesize customFormat=_customFormat;
 @property(readonly, nonatomic) NSUUID *customFormatKey; // @synthesize customFormatKey=_customFormatKey;
+- (id)nonCustomCurrencyFormatSansAccountingStyleForLocale:(id)arg1;
+- (id)defaultNonCustomFormatForLocale:(id)arg1;
+- (id)p_nonCustomCurrencyFormatRemovingAccountingStyle:(_Bool)arg1 locale:(id)arg2;
+- (id)p_defaultNumberFormatForLocale:(id)arg1;
 - (id)asCustomFormatWrapper;
 - (id)currencyCodeForValue:(double)arg1;
 - (id)stringFromDate:(id)arg1 locale:(id)arg2;

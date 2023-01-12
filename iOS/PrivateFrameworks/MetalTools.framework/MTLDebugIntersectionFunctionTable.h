@@ -6,16 +6,18 @@
 
 #import <MetalTools/MTLDebugResourcePurgeable-Protocol.h>
 
-@class MTLDebugComputePipelineState;
+@class MTLToolsObject;
 
 @interface MTLDebugIntersectionFunctionTable <MTLDebugResourcePurgeable>
 {
     struct atomic<int> _purgeableStateToken;
     _Bool _purgeableStateHasBeenSet;
     unsigned long long _functionCount;
-    MTLDebugComputePipelineState *_pipelineState;
+    MTLToolsObject *_pipelineState;
+    unsigned long long _stage;
 }
 
+@property(readonly) unsigned long long stage; // @synthesize stage=_stage;
 @property(readonly) unsigned long long functionCount; // @synthesize functionCount=_functionCount;
 - (void)setOpaqueTriangleIntersectionFunctionWithSignature:(unsigned long long)arg1 withRange:(struct _NSRange)arg2;
 - (void)setOpaqueTriangleIntersectionFunctionWithSignature:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
@@ -26,8 +28,8 @@
 - (void)lockPurgeableState;
 - (unsigned long long)setPurgeableState:(unsigned long long)arg1;
 - (id)initWithBaseObject:(id)arg1 parent:(id)arg2;
-- (id)initWithIntersectionFunctionTable:(id)arg1 parent:(id)arg2 descriptor:(id)arg3 pipelineState:(id)arg4;
-- (id)initWithIntersectionFunctionTable:(id)arg1 parent:(id)arg2 descriptor:(id)arg3;
+- (id)initWithIntersectionFunctionTable:(id)arg1 parent:(id)arg2 descriptor:(id)arg3 pipelineState:(id)arg4 stage:(unsigned long long)arg5;
+- (id)initWithIntersectionFunctionTable:(id)arg1 parent:(id)arg2 descriptor:(id)arg3 stage:(unsigned long long)arg4;
 - (void)dealloc;
 
 @end

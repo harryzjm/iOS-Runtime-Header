@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 {
     GEOMapAccess *_map;
     shared_ptr_035a2da2 _edge;
-    struct vector<GEOLocationCoordinate2D, std::__1::allocator<GEOLocationCoordinate2D>> _coordinates;
+    struct vector<GEOLocationCoordinate2D, std::allocator<GEOLocationCoordinate2D>> _coordinates;
 }
 
 - (id).cxx_construct;

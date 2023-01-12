@@ -45,6 +45,9 @@
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateLayout;
 - (void)viewDidAppear:(_Bool)arg1;
+- (void)setupVisualEffect;
+- (id)contentScrollView;
+- (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)dealloc;
 - (void)viewDidLoad;

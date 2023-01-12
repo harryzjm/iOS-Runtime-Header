@@ -8,7 +8,7 @@
 
 #import <PassKitUI/PKPGSVSectionHeaderView-Protocol.h>
 
-@class NSString, UIActivityIndicatorView, UIButton, UILabel;
+@class NSString, PKButtonBadgeView, UIActivityIndicatorView, UIButton, UILabel;
 @protocol PKPGSVSectionHeaderViewDelegate;
 
 @interface PKPGSVSectionHeaderView : UIView <PKPGSVSectionHeaderView>
@@ -17,6 +17,8 @@
     UILabel *_titleView;
     UILabel *_environmentLabel;
     UIButton *_actionButton;
+    UIButton *_inboxButton;
+    PKButtonBadgeView *_inboxBadge;
     UIActivityIndicatorView *_activityIndicator;
     struct UIEdgeInsets _margins;
     id <PKPGSVSectionHeaderViewDelegate> _delegate;
@@ -30,8 +32,12 @@
 - (_Bool)needsUpdate;
 - (id)trailingView;
 - (id)leadingView;
+- (id)_inboxBadgeValue;
+- (_Bool)_shouldShowInboxButton;
 - (_Bool)_shouldShowMoreInfoButtonForBarcodePass;
+- (void)_inboxTapped;
 - (void)_addTapped;
+- (void)inboxTapped;
 - (void)addTapped;
 - (void)layoutSubviews;
 - (void)traitCollectionDidChange:(id)arg1;

@@ -4,23 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CROrderedSet, ICCRDTIdentifierOrderedSetVersionedDocument;
+@class CROrderedSet, TTOrderedSetVersionedDocument;
 
 @interface ICAttachmentGalleryModel
 {
-    ICCRDTIdentifierOrderedSetVersionedDocument *_attachmentIdentifiersOrderedSetDocument;
+    TTOrderedSetVersionedDocument *_attachmentIdentifiersOrderedSetDocument;
 }
 
 + (id)contentInfoTextWithAttachmentCount:(unsigned long long)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) ICCRDTIdentifierOrderedSetVersionedDocument *attachmentIdentifiersOrderedSetDocument; // @synthesize attachmentIdentifiersOrderedSetDocument=_attachmentIdentifiersOrderedSetDocument;
+@property(retain, nonatomic) TTOrderedSetVersionedDocument *attachmentIdentifiersOrderedSetDocument; // @synthesize attachmentIdentifiersOrderedSetDocument=_attachmentIdentifiersOrderedSetDocument;
 - (long long)previewImageOrientation;
 - (id)searchableStringArray;
 - (id)searchableTextContent;
 - (id)standaloneTitleForNote;
 - (_Bool)providesStandaloneTitleForNote;
 - (void)undeleteSubAttachments;
-- (void)updateAttachmentMarkedForDeletionStateAttachmentIsInNote:(_Bool)arg1;
+- (void)updateAttachmentMarkedForDeletionStateAttachmentIsInUse:(_Bool)arg1;
 - (void)updateAfterLoadWithSubAttachmentIdentifierMap:(id)arg1;
 - (short)sectionForSubAttachments;
 - (void)writeMergeableData;

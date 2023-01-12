@@ -11,19 +11,19 @@ __attribute__((visibility("hidden")))
 @interface CHBReaderState
 {
     EBReaderSheetState *mEBReaderSheetState;
-    struct XlChartBinaryReader *mXlReader;
+    void *mXlReader;
     id <CHAutoStyling> mAutoStyling;
     int mAxisGroup;
-    struct XlChartPlot *mXlCurrentPlot;
+    void *mXlCurrentPlot;
     int mXlCurrentPlotIndex;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) OADColorScheme *colorScheme;
-- (const struct XlChartSeriesFormat *)defaultFormatForXlSeries:(const struct XlChartDataSeries *)arg1;
+- (const struct XlChartSeriesFormat *)defaultFormatForXlSeries:(const void *)arg1;
 - (const struct XlChartSeriesFormat *)xlCurrentDefaultSeriesFormat;
-- (void)setXlCurrentPlot:(struct XlChartPlot *)arg1;
-- (struct XlChartPlot *)xlCurrentPlot;
+- (void)setXlCurrentPlot:(void *)arg1;
+- (void *)xlCurrentPlot;
 - (void)setXlCurrentPlotIndex:(int)arg1;
 - (int)xlCurrentPlotIndex;
 - (int)xlPlotCount;
@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
 - (int)axisGroup;
 - (id)autoStyling;
 - (void)setChart:(id)arg1;
-- (struct XlChartBinaryReader *)xlReader;
+- (void *)xlReader;
 - (id)resources;
 - (id)workbook;
 - (id)ebReaderSheetState;

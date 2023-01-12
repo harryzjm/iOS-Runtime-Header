@@ -10,31 +10,42 @@
 #import <HomeKitDaemon/HMDDatabaseZoneManagerDataSource-Protocol.h>
 #import <HomeKitDaemon/HMDDatabaseZoneManagerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDPersonDataSource-Protocol.h>
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
+#import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMBCloudZone, HMBLocalZone, HMDDatabaseZoneManager, NSObject, NSSet, NSString, NSUUID;
+@class HMBCloudZone, HMBLocalZone, HMDDatabaseZoneManager, HMFTimer, NSObject, NSSet, NSString, NSUUID;
 @protocol HMDPersonManagerSettings, OS_dispatch_queue;
 
-@interface HMDPersonManager : HMFObject <HMBLocalZoneModelObserver, HMDDatabaseZoneManagerDataSource, HMDDatabaseZoneManagerDelegate, HMDPersonDataSource>
+@interface HMDPersonManager : HMFObject <HMBLocalZoneModelObserver, HMDDatabaseZoneManagerDataSource, HMDDatabaseZoneManagerDelegate, HMFLogging, HMFTimerDelegate, HMDPersonDataSource>
 {
     _Bool _syncsPersonData;
+    NSString *_logIdentifier;
     NSUUID *_UUID;
     HMBCloudZone *_cloudZone;
+    HMFTimer *_unassociatedFaceCropsCleanupTimer;
+    unsigned long long _fetchBatchLimit;
+    CDUnknownBlockType _unassociatedFaceCropsCleanupTimerFactory;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMDDatabaseZoneManager *_zoneManager;
     NSSet *_dataReceivers;
     HMBLocalZone *_localZone;
 }
 
++ (id)logCategory;
 - (void).cxx_destruct;
 @property(retain) HMBLocalZone *localZone; // @synthesize localZone=_localZone;
 @property(readonly) NSSet *dataReceivers; // @synthesize dataReceivers=_dataReceivers;
 @property(readonly) HMDDatabaseZoneManager *zoneManager; // @synthesize zoneManager=_zoneManager;
 @property(readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+@property(copy) CDUnknownBlockType unassociatedFaceCropsCleanupTimerFactory; // @synthesize unassociatedFaceCropsCleanupTimerFactory=_unassociatedFaceCropsCleanupTimerFactory;
+@property unsigned long long fetchBatchLimit; // @synthesize fetchBatchLimit=_fetchBatchLimit;
+@property(retain) HMFTimer *unassociatedFaceCropsCleanupTimer; // @synthesize unassociatedFaceCropsCleanupTimer=_unassociatedFaceCropsCleanupTimer;
 @property(retain) HMBCloudZone *cloudZone; // @synthesize cloudZone=_cloudZone;
 @property(readonly) _Bool syncsPersonData; // @synthesize syncsPersonData=_syncsPersonData;
 @property(readonly, copy) NSUUID *UUID; // @synthesize UUID=_UUID;
+@property(readonly, copy) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
+- (void)timerDidFire:(id)arg1;
 - (id)attributeDescriptions;
-- (id)updateSettingsUsingMessagePayload:(id)arg1;
 @property(readonly, copy) id <HMDPersonManagerSettings> settings;
 - (id)removeFaceprintsWithUUIDs:(id)arg1;
 - (id)disassociateFaceCropsWithUUIDs:(id)arg1;
@@ -62,6 +73,7 @@
 - (void)handleResidentWasUpdatedNotification:(id)arg1;
 - (void)handleResidentWasAddedNotification:(id)arg1;
 - (void)handleUserPrivilegeDidChangeNotification:(id)arg1;
+- (void)_cleanUpExpiredUnassociatedFaceCrops;
 - (id)_removeZones;
 - (void)_createZones;
 - (void)_notifyDataReceiversOfCurrentIsDataSyncInProgress;
@@ -70,6 +82,7 @@
 - (void)_handleCreatedOrUpdatedModel:(id)arg1 mirrorOutputFuture:(id)arg2;
 - (id)_removeFaceprintsForFaceCropsWithUUIDs:(id)arg1;
 - (id)_faceCropsModelsWithUUIDs:(id)arg1;
+- (id)_unassociatedFaceCropsModelsWithUUIDs:(id)arg1;
 - (_Bool)isDataSyncInProgress;
 - (void)_createOrRemoveZonesForSettings:(id)arg1;
 - (id)faceCropUUIDsForPersonWithUUID:(id)arg1;
@@ -81,12 +94,14 @@
 - (id)addUnassociatedFaceCropWithData:(id)arg1;
 - (void)handleFaceMisclassificationForFaceCropData:(id)arg1 personUUID:(id)arg2;
 - (id)faceCropsForPersonWithUUID:(id)arg1;
-- (id)faceCropWithUUID:(id)arg1;
+- (id)personFaceCropWithUnassociatedFaceCropUUID:(id)arg1;
+- (id)unassociatedFaceCropWithUUID:(id)arg1;
 - (id)personWithUUID:(id)arg1;
 @property(readonly) _Bool sharesFaceClassifications;
 - (_Bool)syncsDataToAllUsers;
 - (void)remove;
 - (void)configureWithHome:(id)arg1;
+- (void)dealloc;
 - (id)initWithUUID:(id)arg1 zoneManager:(id)arg2 dataReceivers:(id)arg3 workQueue:(id)arg4;
 
 // Remaining properties

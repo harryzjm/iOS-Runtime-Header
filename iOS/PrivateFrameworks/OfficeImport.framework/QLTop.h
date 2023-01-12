@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)supportsProgressiveMapping;
 + (void)fillHTMLArchiveForOfficeData:(id)arg1 fileName:(id)arg2 dataFormat:(unsigned long long)arg3 archiver:(id)arg4;
++ (id)searchableAttributesForBinaryOfficeFileAtURL:(id)arg1 error:(id *)arg2;
 + (id)metadataForBinaryOfficeFileAtURL:(id)arg1 error:(id *)arg2;
 + (void)fillHTMLArchiveForOfficeFile:(id)arg1 dataFormat:(unsigned long long)arg2 archiver:(id)arg3;
 + (void)fillHTMLArchiveForOfficeFile:(id)arg1 orData:(id)arg2 dataFileName:(id)arg3 dataFormat:(unsigned long long)arg4 archiver:(id)arg5;

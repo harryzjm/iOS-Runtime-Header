@@ -6,14 +6,20 @@
 
 #import <SAObjects/SAServerBoundCommand-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSData, NSString, SAIntentGroupSiriKitMetrics, SASVSystemDialogActOutput;
 
 @interface SARDNativeFlowContextUpdate <SAServerBoundCommand>
 {
 }
 
 - (_Bool)requiresResponse;
+@property(retain, nonatomic) SASVSystemDialogActOutput *systemDialogActOutput;
+@property(retain, nonatomic) SAIntentGroupSiriKitMetrics *siriKitMetrics;
+@property(nonatomic) _Bool resetFlowTaskState;
+@property(copy, nonatomic) NSData *promptContextProto;
 @property(copy, nonatomic) NSArray *clientFlowUpdateContextList;
+@property(copy, nonatomic) NSArray *attachments;
+@property(copy, nonatomic) NSArray *applicationContext;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

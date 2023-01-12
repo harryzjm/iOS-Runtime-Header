@@ -6,11 +6,11 @@
 
 #import <CoreHandwriting/NSObject-Protocol.h>
 
-@class CHTextCorrectionRecognizer, NSLocale;
+@class CHTextCorrectionRecognizer, NSArray, NSLocale;
 @protocol CHRecognizing;
 
 @protocol CHRecognitionSessionTaskDelegate <NSObject>
-- (CHTextCorrectionRecognizer *)textCorrectionRecognizerForLocale:(NSLocale *)arg1;
+- (CHTextCorrectionRecognizer *)textCorrectionRecognizerForLocales:(NSArray *)arg1;
 - (id <CHRecognizing>)recognizerForLocale:(NSLocale *)arg1;
 @end
 

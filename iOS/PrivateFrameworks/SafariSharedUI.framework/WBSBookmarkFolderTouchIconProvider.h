@@ -21,7 +21,7 @@
 
 + (_Bool)_appUsesLeftToRightLayout;
 - (void).cxx_destruct;
-@property(nonatomic) __weak id <WBSSiteMetadataProviderDelegate> providerDelegate; // @synthesize providerDelegate=_providerDelegate;
+@property __weak id <WBSSiteMetadataProviderDelegate> providerDelegate; // @synthesize providerDelegate=_providerDelegate;
 - (id)_drawTouchIconForRequest:(id)arg1;
 - (void)_dispatchResponseForRequest:(id)arg1 touchIcon:(id)arg2;
 - (void)_dispatchResponseForRequest:(id)arg1;

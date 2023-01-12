@@ -4,11 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol WFFileStorageServiceOperation, WFSaveFileActionUserInterface;
+@protocol WFFileStorageServiceOperation;
 
 @interface WFSaveFileAction
 {
-    id <WFSaveFileActionUserInterface> _actionUserInterface;
     id <WFFileStorageServiceOperation> _saveOperation;
 }
 
@@ -16,15 +15,18 @@
 + (id)userInterfaceProtocol;
 - (void).cxx_destruct;
 @property(retain, nonatomic) id <WFFileStorageServiceOperation> saveOperation; // @synthesize saveOperation=_saveOperation;
-@property(retain, nonatomic) id <WFSaveFileActionUserInterface> actionUserInterface; // @synthesize actionUserInterface=_actionUserInterface;
-- (id)targetContentAttribution;
+- (id)minimumSupportedClientVersion;
+- (id)smartPromptWithContentDescription:(id)arg1 contentDestination:(id)arg2 workflowName:(id)arg3;
+- (id)contentDestinationWithError:(id *)arg1;
+- (void)updatePathPrefix;
 - (_Bool)outputsMultipleItems;
 - (_Bool)inputsMultipleItems;
 - (id)showPickerKey;
 - (id)filePathKey;
 - (void)finishRunningWithError:(id)arg1;
 - (void)cancel;
-- (void)runWithRemoteUserInterface:(id)arg1 path:(id)arg2 input:(id)arg3 storageService:(id)arg4;
+- (void)runWithRemoteUserInterface:(id)arg1 input:(id)arg2 storageService:(id)arg3 subpath:(id)arg4;
+- (void)runWithStorageService:(id)arg1 directory:(id)arg2 subpath:(id)arg3 input:(id)arg4;
 - (void)runAsynchronouslyWithInput:(id)arg1 storageService:(id)arg2;
 
 @end

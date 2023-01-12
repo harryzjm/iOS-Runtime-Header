@@ -9,7 +9,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/_SFPBCardSection-Protocol.h>
 
-@class NSArray, NSData, NSString, _SFPBCard, _SFPBCardSectionValue, _SFPBUserReportRequest;
+@class NSArray, NSData, NSString, _SFPBCard, _SFPBCardSectionValue, _SFPBCommand, _SFPBUserReportRequest;
 
 @interface _SFPBCardSection : PBCodable <_SFPBCardSection, NSSecureCoding>
 {
@@ -21,9 +21,21 @@
     NSString *_cardSectionId;
     NSString *_resultIdentifier;
     _SFPBUserReportRequest *_userReportRequest;
+    _SFPBCommand *_command;
+    _SFPBCommand *_previewCommand;
+    NSArray *_previewButtonItems;
+    NSString *_commandDetail;
+    NSString *_cardSectionDetail;
+    NSString *_previewButtonItemsTitle;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *previewButtonItemsTitle; // @synthesize previewButtonItemsTitle=_previewButtonItemsTitle;
+@property(copy, nonatomic) NSString *cardSectionDetail; // @synthesize cardSectionDetail=_cardSectionDetail;
+@property(copy, nonatomic) NSString *commandDetail; // @synthesize commandDetail=_commandDetail;
+@property(copy, nonatomic) NSArray *previewButtonItems; // @synthesize previewButtonItems=_previewButtonItems;
+@property(retain, nonatomic) _SFPBCommand *previewCommand; // @synthesize previewCommand=_previewCommand;
+@property(retain, nonatomic) _SFPBCommand *command; // @synthesize command=_command;
 @property(retain, nonatomic) _SFPBUserReportRequest *userReportRequest; // @synthesize userReportRequest=_userReportRequest;
 @property(copy, nonatomic) NSString *resultIdentifier; // @synthesize resultIdentifier=_resultIdentifier;
 @property(copy, nonatomic) NSString *cardSectionId; // @synthesize cardSectionId=_cardSectionId;
@@ -40,6 +52,10 @@
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
+- (id)previewButtonItemsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)previewButtonItemsCount;
+- (void)addPreviewButtonItems:(id)arg1;
+- (void)clearPreviewButtonItems;
 - (id)parameterKeyPathsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)parameterKeyPathsCount;
 - (void)addParameterKeyPaths:(id)arg1;
@@ -48,6 +64,7 @@
 - (unsigned long long)commandsCount;
 - (void)addCommands:(id)arg1;
 - (void)clearCommands;
+- (id)initWithFacade:(id)arg1;
 - (id)initWithSFCardSection:(id)arg1;
 
 // Remaining properties

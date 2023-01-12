@@ -6,9 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <BackBoardServices/BSDescriptionStreamable-Protocol.h>
 #import <BackBoardServices/NSSecureCoding-Protocol.h>
 
-@interface BKSHitTestRegion : NSObject <NSSecureCoding>
+@class NSString;
+
+@interface BKSHitTestRegion : NSObject <BSDescriptionStreamable, NSSecureCoding>
 {
     struct CGRect _rect;
     struct CGRect _exclusiveTouchNormalizedSubRect;
@@ -21,12 +24,17 @@
 @property(readonly, nonatomic) struct CGRect rect; // @synthesize rect=_rect;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (void)appendDescriptionToFormatter:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
-- (unsigned long long)hash;
-- (id)description;
+@property(readonly) unsigned long long hash;
+@property(readonly, copy) NSString *description;
 - (id)_initWithRect:(struct CGRect)arg1 exclusiveTouchNormalizedSubRect:(struct CGRect)arg2;
 - (id)initWithRect:(struct CGRect)arg1 exclusiveTouchSubRect:(struct CGRect)arg2;
 - (id)initWithRect:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

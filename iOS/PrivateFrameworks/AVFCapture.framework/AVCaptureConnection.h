@@ -33,6 +33,7 @@
 - (void)handleChangedActiveFormat:(id)arg1 forDevice:(id)arg2;
 - (_Bool)sourcesFromFrontFacingCamera;
 - (id)sourceDevice;
+- (id)sourceDeviceInput;
 - (void)setVideoMirroringMethodForMovieRecording:(long long)arg1;
 - (long long)videoMirroringMethodForMovieRecording;
 - (id)supportedVideoMirroringMethodsForMovieRecording;
@@ -64,7 +65,6 @@
 - (CDStruct_1b6d18a9)_videoMinFrameDuration;
 - (_Bool)isVideoMinFrameDurationSet;
 @property(readonly, nonatomic, getter=isVideoMinFrameDurationSupported) _Bool supportsVideoMinFrameDuration;
-- (long long)mappedVideoOrientation;
 @property(nonatomic) long long videoOrientation;
 @property(readonly, nonatomic, getter=isVideoOrientationSupported) _Bool supportsVideoOrientation;
 @property(nonatomic) _Bool automaticallyAdjustsVideoMirroring;

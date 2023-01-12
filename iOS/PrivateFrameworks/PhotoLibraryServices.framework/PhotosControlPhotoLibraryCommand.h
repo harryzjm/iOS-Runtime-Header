@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSManagedObjectContext, NSObject, NSURL, PHPhotoLibrary, PLPhotosCTL;
+@class NSManagedObjectContext, NSObject, NSString, NSURL, PHPhotoLibrary, PLPhotosCTL;
 @protocol OS_dispatch_group;
 
 @interface PhotosControlPhotoLibraryCommand
@@ -12,6 +12,7 @@
     NSManagedObjectContext *_moc;
     PHPhotoLibrary *_photoLibrary;
     NSURL *_libraryURL;
+    NSString *_libraryArg;
     NSObject<OS_dispatch_group> *_group;
     PLPhotosCTL *_ctl;
     struct _NSRange _argumentRangeForRunOnManagedObjects;
@@ -26,6 +27,7 @@
 + (id)usage;
 + (id)usagesummary;
 - (void).cxx_destruct;
+@property(readonly) NSString *libraryArg; // @synthesize libraryArg=_libraryArg;
 @property(readonly) NSURL *libraryURL; // @synthesize libraryURL=_libraryURL;
 - (int)runOnPhotoKitAssetArgumentsAllowAll:(_Bool)arg1 propertySets:(id)arg2 additionalPredicate:(id)arg3 block:(CDUnknownBlockType)arg4;
 - (id)managedObjectContext;
@@ -33,6 +35,7 @@
 - (id)plPhotoLibrary;
 - (_Bool)libraryProcessOption:(BOOL)arg1 arg:(id)arg2;
 - (_Bool)processOption:(int)arg1 arg:(id)arg2;
+- (id)libraryURLFromArgument:(id)arg1;
 - (id)processBooleanOptionArg:(id)arg1;
 - (int)save;
 - (id)jsonDictionaryFromError:(id)arg1;

@@ -6,27 +6,26 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCHUnretainedParent-Protocol.h>
-
 @class TSCH3DChartMeshSharedResource, TSCH3DChartTexcoordSharedResource, TSCH3DGeometry, TSCH3DGeometryArrays, TSCH3DResource, TSCHChartSeries, TSUOnce;
 @protocol TSCH3DChartMeshCreator;
 
-@interface TSCH3DChartMeshResources : NSObject <TSCHUnretainedParent>
+@interface TSCH3DChartMeshResources : NSObject
 {
-    NSObject<TSCH3DChartMeshCreator> *mCreator;
-    TSCHChartSeries *mSeries;
-    TSCH3DChartMeshSharedResource *mVertex;
-    TSCH3DChartMeshSharedResource *mBounds;
-    TSCH3DResource *mCachedBounds;
-    TSUOnce *mCachedBoundsOnce;
-    TSCH3DChartMeshSharedResource *mNormal;
-    TSCH3DChartTexcoordSharedResource *mTexcoord;
-    TSCH3DGeometryArrays *mArrays;
-    TSCH3DGeometry *mGeometry;
+    NSObject<TSCH3DChartMeshCreator> *_creator;
+    TSCHChartSeries *_series;
+    TSCH3DChartMeshSharedResource *_vertex;
+    TSCH3DChartMeshSharedResource *_bounds;
+    TSCH3DResource *_cachedBounds;
+    TSUOnce *_cachedBoundsOnce;
+    TSCH3DChartMeshSharedResource *_normal;
+    TSCH3DChartTexcoordSharedResource *_texcoord;
+    TSCH3DGeometryArrays *_arrays;
+    TSCH3DGeometry *_geometry;
 }
 
 + (id)resourcesWithSeries:(id)arg1 creator:(id)arg2;
 + (id)nullBuffer;
+- (void).cxx_destruct;
 - (void)regenerateForChild:(id)arg1;
 - (void)regenerateBounds;
 - (id)geometryResourceWithPrimitiveType:(int)arg1;
@@ -35,7 +34,6 @@
 @property(readonly, nonatomic) TSCH3DResource *normal;
 @property(readonly, nonatomic) TSCH3DResource *vertex;
 @property(readonly, nonatomic) TSCH3DResource *bounds;
-- (void)clearParent;
 - (void)dealloc;
 - (id)initWithSeries:(id)arg1 creator:(id)arg2;
 

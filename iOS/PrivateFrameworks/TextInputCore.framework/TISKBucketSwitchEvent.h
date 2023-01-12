@@ -13,8 +13,10 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) TISKSessionSamples *sessionSamples; // @synthesize sessionSamples=_sessionSamples;
+- (id)privateDescription;
 - (id)description;
-- (id)init:(id)arg1 order:(long long)arg2;
+- (void)reportToSession:(id)arg1;
+- (id)init:(id)arg1 emojiSearchMode:(_Bool)arg2 order:(long long)arg3;
 
 @end
 

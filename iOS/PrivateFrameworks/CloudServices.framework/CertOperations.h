@@ -10,10 +10,12 @@
 {
 }
 
-+ (_Bool)verifyCertData:(id)arg1 withCert:(struct __SecCertificate **)arg2 withPubKey:(struct __SecKey **)arg3 stingray:(_Bool)arg4 enroll:(_Bool)arg5 env:(id)arg6 duplicate:(_Bool)arg7 sigVerification:(_Bool)arg8 error:(id *)arg9;
-+ (id)rootCurrentVersionForRootType:(unsigned int)arg1 inEnvironment:(id)arg2;
-+ (id)rootTrustedVersionsForRootType:(unsigned int)arg1 inEnvironment:(id)arg2 duplicate:(_Bool)arg3;
-+ (id)rootBaseVersionsForRootType:(unsigned int)arg1 inEnvironment:(id)arg2 duplicate:(_Bool)arg3;
++ (void)fetchTermsWithAltDSID:(id)arg1 reply:(CDUnknownBlockType)arg2;
++ (void)storeTerms:(id)arg1 withAltDSID:(id)arg2 reply:(CDUnknownBlockType)arg3;
++ (_Bool)verifyCertData:(id)arg1 withCert:(struct __SecCertificate **)arg2 withPubKey:(struct __SecKey **)arg3 stingray:(_Bool)arg4 enroll:(_Bool)arg5 altDSID:(id)arg6 env:(id)arg7 duplicate:(_Bool)arg8 sigVerification:(_Bool)arg9 error:(id *)arg10;
++ (id)rootCurrentVersionForRootType:(unsigned int)arg1 altDSID:(id)arg2 inEnvironment:(id)arg3;
++ (id)rootTrustedVersionsForRootType:(unsigned int)arg1 altDSID:(id)arg2 inEnvironment:(id)arg3 duplicate:(_Bool)arg4;
++ (id)rootBaseVersionsForRootType:(unsigned int)arg1 altDSID:(id)arg2 inEnvironment:(id)arg3 duplicate:(_Bool)arg4;
 + (id)certVersion:(struct __SecCertificate *)arg1;
 
 @end

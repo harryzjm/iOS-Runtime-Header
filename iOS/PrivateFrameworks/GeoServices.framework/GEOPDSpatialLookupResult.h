@@ -30,36 +30,16 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
 + (id)spatialLookupResultForPlaceData:(id)arg1;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (int)StringAsMappedCategorys:(id)arg1;
-- (id)mappedCategorysAsString:(int)arg1;
-- (void)setMappedCategorys:(int *)arg1 count:(unsigned long long)arg2;
-- (int)mappedCategoryAtIndex:(unsigned long long)arg1;
-- (void)addMappedCategory:(int)arg1;
-- (void)clearMappedCategorys;
-@property(readonly, nonatomic) int *mappedCategorys;
-@property(readonly, nonatomic) unsigned long long mappedCategorysCount;
-@property(retain, nonatomic) GEOPDBounds *bounds;
-@property(readonly, nonatomic) _Bool hasBounds;
-@property(retain, nonatomic) GEOLatLng *center;
-@property(readonly, nonatomic) _Bool hasCenter;
 - (void)dealloc;
 - (id)initWithData:(id)arg1;
 - (id)init;

@@ -14,8 +14,10 @@
 {
 }
 
+- (_Bool)routeFromWaypoint:(id)arg1 destination:(id)arg2 currentLocation:(id)arg3 routeAttributes:(id)arg4 feedback:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (_Bool)ETAFromWaypoint:(id)arg1 toWaypoint:(id)arg2 transportType:(int)arg3 automobileOptions:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (_Bool)composedWaypointForAddressString:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)composedWaypointForCurrentLocation:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)composedWaypointForLocation:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)composedWaypointForMapItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)resolveMapItemHandleData:(id)arg1 completion:(CDUnknownBlockType)arg2;

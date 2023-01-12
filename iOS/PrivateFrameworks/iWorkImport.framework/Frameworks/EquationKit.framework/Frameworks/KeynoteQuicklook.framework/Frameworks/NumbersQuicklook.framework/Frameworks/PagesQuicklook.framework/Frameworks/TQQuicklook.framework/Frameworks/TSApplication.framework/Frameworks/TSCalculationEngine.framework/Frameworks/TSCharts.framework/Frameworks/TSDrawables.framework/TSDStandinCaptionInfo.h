@@ -11,9 +11,9 @@
 }
 
 + (_Bool)needsObjectUUID;
-- (void)saveToMessage:(struct StandinCaptionArchive *)arg1 archiver:(id)arg2;
+- (void)saveToMessage:(void *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
-- (void)loadFromMessage:(const struct StandinCaptionArchive *)arg1 unarchiver:(id)arg2;
+- (void)loadFromMessage:(const void *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)copyWithContext:(id)arg1;
 

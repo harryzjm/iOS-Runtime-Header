@@ -6,10 +6,10 @@
 
 #import <Photos/NSObject-Protocol.h>
 
-@protocol PLUniformTypeIdentifierIdentity;
+@class PLUniformTypeIdentifier;
 
 @protocol PLResourceIdentity <NSObject>
-@property(readonly, nonatomic) id <PLUniformTypeIdentifierIdentity> uniformTypeIdentifierID;
+@property(readonly, nonatomic) PLUniformTypeIdentifier *uniformTypeIdentifier;
 @property(readonly, nonatomic) unsigned int recipeID;
 @property(readonly, nonatomic) unsigned int version;
 @property(readonly, nonatomic) unsigned int resourceType;

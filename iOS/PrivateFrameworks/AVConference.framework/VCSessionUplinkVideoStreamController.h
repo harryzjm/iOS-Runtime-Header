@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_streamScheduleWifi;
     NSMutableDictionary *_streamScheduleCell;
     NSMutableDictionary *_currentStreamSchedule;
-    NSDictionary *_pendingVideoStreams;
+    NSMutableDictionary *_pendingVideoStreams;
     VCIDRScheduler *_schedulerWifi;
     VCIDRScheduler *_schedulerCell;
     _Bool _pendingStreamsUpdated;
@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
     NSArray *_streamIDsCell;
     unsigned int _captureFrameRate;
     _Bool _dynamicVideoPriorityEnabled;
+    _Bool _streamsUseRTCP;
 }
 
 @property(nonatomic) _Bool dynamicVideoPriorityEnabled; // @synthesize dynamicVideoPriorityEnabled=_dynamicVideoPriorityEnabled;
@@ -42,10 +43,13 @@ __attribute__((visibility("hidden")))
 @property unsigned int captureFrameRate; // @synthesize captureFrameRate=_captureFrameRate;
 @property(copy, nonatomic) NSDictionary *pendingVideoStreams; // @synthesize pendingVideoStreams=_pendingVideoStreams;
 @property(readonly) NSMutableDictionary *activeVideoStreams; // @synthesize activeVideoStreams=_activeVideoStreams;
+- (_Bool)filterPendingTemporalStreams;
+- (void)restart;
 - (void)unlock;
 - (void)lock;
 - (id)schedulerStreamWithVideoStream:(id)arg1;
 - (id)newVideoStreamKeyFrameScheduleWithStreamIDs:(id)arg1;
+- (id)getMultiwayConfigForStreamID:(id)arg1;
 - (void)handleStreamsResetIDR;
 - (id)videoStreamPendingKeyFrameGenerationWithStreamID:(id)arg1 shouldRemoveFromPendingArray:(_Bool *)arg2;
 - (void)handleStreamsPendingKeyFrameGeneration;
@@ -55,7 +59,8 @@ __attribute__((visibility("hidden")))
 - (id)delegate;
 - (void)initilizeStreamInfoMapWithStreamInfos:(id)arg1;
 - (id)anchorStreamIDWithCappedVideoStreamIDs:(id)arg1;
-- (void)generateKeyFrameWithStreamID:(unsigned int)arg1;
+- (_Bool)setStreamsUseRTCPWithStreamInfos:(id)arg1;
+- (void)generateKeyFrameWithStreamID:(id)arg1;
 - (void)setIsLocalOnCellular:(_Bool)arg1 cappedVideoStreamIDs:(id)arg2;
 - (void)selectVideoStreamForVideoPriority;
 - (void)dealloc;

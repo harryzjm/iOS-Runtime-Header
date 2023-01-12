@@ -10,7 +10,7 @@
 {
 }
 
-- (_Bool)runOnNetwork:(struct net *)arg1;
+- (_Bool)runOnNetwork:(void *)arg1;
 
 @end
 

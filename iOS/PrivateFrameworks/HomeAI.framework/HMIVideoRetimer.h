@@ -18,7 +18,7 @@
 + (id)logCategory;
 - (void).cxx_destruct;
 @property __weak id <HMIVideoRetimerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)flush;
+- (void)flushWithNextSamplePTS:(CDStruct_1b6d18a9)arg1;
 - (void)handleSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
 - (void)dealloc;
 - (id)init;

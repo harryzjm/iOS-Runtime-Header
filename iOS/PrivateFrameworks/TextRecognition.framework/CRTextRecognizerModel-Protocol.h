@@ -7,12 +7,14 @@
 #import <TextRecognition/CRTextRecognizerModelInputProvider-Protocol.h>
 #import <TextRecognition/NSObject-Protocol.h>
 
-@class CRRecognizerConfiguration, NSArray;
+@class CRNeuralRecognizerConfiguration, NSArray;
 
 @protocol CRTextRecognizerModel <NSObject, CRTextRecognizerModelInputProvider>
 @property(nonatomic) long long ctcBlankLabelIndex;
 @property(nonatomic) int *codemapArray;
+- (_Bool)supportCharacterBoxes;
+- (_Bool)preheatWithError:(id *)arg1;
 - (NSArray *)predictFromInputs:(NSArray *)arg1 error:(id *)arg2;
-- (id)initWithConfiguration:(CRRecognizerConfiguration *)arg1 error:(id *)arg2;
+- (id)initWithConfiguration:(CRNeuralRecognizerConfiguration *)arg1 error:(id *)arg2;
 @end
 

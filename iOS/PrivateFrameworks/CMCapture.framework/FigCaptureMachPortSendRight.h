@@ -13,6 +13,7 @@
 }
 
 @property(readonly, nonatomic) unsigned int port; // @synthesize port=_port;
+- (id)description;
 - (void)dealloc;
 - (void)invalidate;
 - (id)initWithPort:(unsigned int)arg1;

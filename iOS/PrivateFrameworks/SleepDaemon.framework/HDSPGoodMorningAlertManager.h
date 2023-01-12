@@ -40,9 +40,9 @@
 @property(readonly, nonatomic) HKSPSleepScheduleModel *sleepScheduleModel;
 @property(readonly, nonatomic) _Bool goodMorningAlertEnabled;
 @property(readonly, nonatomic) NSDate *currentDate;
-- (void)goodMorningWasDismissed:(id)arg1;
+- (void)goodMorningWasDismissed;
 - (void)sleepScheduleStateDidChange:(unsigned long long)arg1 previousState:(unsigned long long)arg2 reason:(unsigned long long)arg3;
-- (void)sleepScheduleModelManager:(id)arg1 source:(id)arg2 didUpdateSleepScheduleModel:(id)arg3;
+- (void)sleepScheduleModelManager:(id)arg1 didUpdateSleepScheduleModel:(id)arg2;
 - (void)significantTimeChangeDetected:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;

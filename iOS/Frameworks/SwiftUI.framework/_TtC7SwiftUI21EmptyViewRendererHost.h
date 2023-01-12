@@ -12,12 +12,13 @@
 {
     MISSING_TYPE *viewGraph;
     MISSING_TYPE *eventBindingManager;
-    MISSING_TYPE *needsRootViewUpdate;
-    MISSING_TYPE *needsEnvironmentUpdate;
-    MISSING_TYPE *needsFocusedValuesUpdate;
+    MISSING_TYPE *propertiesNeedingUpdate;
     MISSING_TYPE *isRendering;
     MISSING_TYPE *externalUpdateCount;
     MISSING_TYPE *currentTimestamp;
+    MISSING_TYPE *accessibilityVersion;
+    MISSING_TYPE *focusedValues;
+    MISSING_TYPE *currentAccessibilityFocusStore;
 }
 
 @end

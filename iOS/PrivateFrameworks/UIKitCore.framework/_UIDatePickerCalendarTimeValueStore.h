@@ -11,6 +11,9 @@
 __attribute__((visibility("hidden")))
 @interface _UIDatePickerCalendarTimeValueStore : NSObject
 {
+    _Bool _isPM;
+    long long _minuteInterval;
+    long long _decrementBehaviour;
     unsigned long long *_inputBuffer;
     _UIDatePickerCalendarTimeFormat *_timeFormat;
 }
@@ -18,6 +21,12 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _UIDatePickerCalendarTimeFormat *timeFormat; // @synthesize timeFormat=_timeFormat;
 @property(readonly, nonatomic) unsigned long long *inputBuffer; // @synthesize inputBuffer=_inputBuffer;
+@property(nonatomic) long long decrementBehaviour; // @synthesize decrementBehaviour=_decrementBehaviour;
+@property(nonatomic) long long minuteInterval; // @synthesize minuteInterval=_minuteInterval;
+@property(nonatomic) _Bool isPM; // @synthesize isPM=_isPM;
+- (void)decrementDigitForScope:(long long)arg1;
+- (void)incrementDigitForScope:(long long)arg1;
+- (_Bool)roundToMinuteInterval;
 @property(nonatomic) unsigned long long minuteValue;
 @property(nonatomic) unsigned long long hourValue;
 - (void)removeLastDigitInScope:(long long)arg1;
@@ -29,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)__setIntegerInBuffer:(unsigned long long)arg1 range:(struct _NSRange)arg2;
 - (void)_verifyInputWithScope:(long long)arg1;
 - (void)dealloc;
+- (id)initWithTimeFormat:(id)arg1 minuteInterval:(long long)arg2 decrementBehaviour:(long long)arg3;
 - (id)initWithTimeFormat:(id)arg1;
 
 @end

@@ -9,11 +9,14 @@
 #import <HeartRhythmUI/HKHeartRhythmAvailabilityObserver-Protocol.h>
 #import <HeartRhythmUI/HRFeatureRegulatoryReenableFeatureActionDelegate-Protocol.h>
 
-@class HKHeartRhythmAvailability, NSArray, NSString, UINavigationController, UIViewController;
+@class HKHealthStore, HKHeartRhythmAvailability, NSArray, NSString, UINavigationController, UIViewController;
 @protocol HRFeatureRegulatoryReenableFeatureActionDelegate;
 
 @interface HRFeatureRegulatoryPanelViewController : HKTableViewController <HKHeartRhythmAvailabilityObserver, HRFeatureRegulatoryReenableFeatureActionDelegate>
 {
+    _Bool _isElectrocardiogramRecordingOnboarded;
+    _Bool _isAtrialFibrillationDetectionOnboarded;
+    HKHealthStore *_healthStore;
     NSArray *_displayableItems;
     HKHeartRhythmAvailability *_heartRhythmAvailability;
     UIViewController<HRFeatureRegulatoryReenableFeatureActionDelegate> *_delegate;
@@ -24,8 +27,11 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) UINavigationController *onboardingNavigationController; // @synthesize onboardingNavigationController=_onboardingNavigationController;
 @property(nonatomic) __weak UIViewController<HRFeatureRegulatoryReenableFeatureActionDelegate> *delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) _Bool isAtrialFibrillationDetectionOnboarded; // @synthesize isAtrialFibrillationDetectionOnboarded=_isAtrialFibrillationDetectionOnboarded;
+@property(nonatomic) _Bool isElectrocardiogramRecordingOnboarded; // @synthesize isElectrocardiogramRecordingOnboarded=_isElectrocardiogramRecordingOnboarded;
 @property(retain, nonatomic) HKHeartRhythmAvailability *heartRhythmAvailability; // @synthesize heartRhythmAvailability=_heartRhythmAvailability;
 @property(readonly, nonatomic) NSArray *displayableItems; // @synthesize displayableItems=_displayableItems;
+@property(readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 - (void)protectedDataDidBecomeAvailable:(id)arg1;
 - (void)heartRhythmAvailabilityDidUpdate;
 - (void)didSelectReenableFeatureForProductName:(id)arg1;

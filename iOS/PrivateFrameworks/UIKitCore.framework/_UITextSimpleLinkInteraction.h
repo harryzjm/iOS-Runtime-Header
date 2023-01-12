@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     UITapGestureRecognizer *_linkTap;
     UILongPressGestureRecognizer *_highlighter;
     _UITextInteractableItem *_highlightedItem;
+    _Bool _presentingFromSimpleTap;
 }
 
 - (void).cxx_destruct;

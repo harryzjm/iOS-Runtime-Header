@@ -9,10 +9,10 @@
 @class NSDate, NSError, NSNumber, NSString;
 @protocol OS_dispatch_group;
 
-__attribute__((visibility("hidden")))
 @interface CKDPCSKeySyncTracker : NSObject
 {
     _Bool _manatee;
+    _Bool _KRSReturnedExistingIdentity;
     NSString *_serviceName;
     NSObject<OS_dispatch_group> *_syncGroup;
     NSDate *_completionDate;
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool KRSReturnedExistingIdentity; // @synthesize KRSReturnedExistingIdentity=_KRSReturnedExistingIdentity;
 @property(retain, nonatomic) NSError *syncError; // @synthesize syncError=_syncError;
 @property(retain, nonatomic) NSNumber *syncStatus; // @synthesize syncStatus=_syncStatus;
 @property(retain, nonatomic) NSDate *completionDate; // @synthesize completionDate=_completionDate;

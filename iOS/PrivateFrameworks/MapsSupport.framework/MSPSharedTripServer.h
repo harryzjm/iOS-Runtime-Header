@@ -12,8 +12,7 @@
 #import <MapsSupport/MSPSharedTripXPCServer-Protocol.h>
 #import <MapsSupport/NSXPCListenerDelegate-Protocol.h>
 
-@class MSPReceiverETAController, MSPSenderETAController, MSPSharedTripRelay, NSMapTable, NSMutableSet, NSString, NSXPCListener;
-@protocol OS_dispatch_queue;
+@class MSPReceiverETAController, MSPSenderETAController, MSPSharedTripRelay, NSMapTable, NSMutableDictionary, NSMutableSet, NSString, NSXPCListener;
 
 @interface MSPSharedTripServer : NSObject <NSXPCListenerDelegate, MSPReceiverETAControllerDelegate, MSPSenderETAControllerDelegate, MSPSharedTripAvailabiltyDelegate, MSPSharedTripXPCServer>
 {
@@ -22,8 +21,8 @@
     MSPSharedTripRelay *_idsRelay;
     NSXPCListener *_listener;
     NSMutableSet *_connections;
+    NSMutableDictionary *_connectionSubscriptionsByTripID;
     NSMapTable *_peersByConnection;
-    NSObject<OS_dispatch_queue> *_isolationQueue;
 }
 
 - (void).cxx_destruct;
@@ -37,10 +36,9 @@
 - (void)fetchActiveHandlesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)stopSharingTrip;
 - (void)stopSharingTripWithMessagesGroup:(id)arg1;
-- (void)startSharingTripWithMessagesGroup:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)stopSharingTripWithMessagesContacts:(id)arg1;
-- (void)startSharingTripWithMessagesContacts:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)stopSharingTripWithContacts:(id)arg1;
+- (void)startSharingTripWithMessagesGroup:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)startSharingTripWithMessagesContacts:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)startSharingTripWithContacts:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)reportUserConfirmationOfSharingIdentity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchRequiresUserConfirmationOfSharingIdentityWithCompletion:(CDUnknownBlockType)arg1;
@@ -55,11 +53,12 @@
 - (void)etaController:(id)arg1 didUpdateDestinationForSharedTrip:(id)arg2;
 - (void)_setNotificationCenter:(id)arg1;
 - (void)createControllers;
+- (void)_purgeSubscriptionsForConnection:(id)arg1;
+- (id)_subscribedConnectionsForTripID:(id)arg1 createIfNeeded:(_Bool)arg2;
 - (id)connections;
 - (_Bool)_connectionCanControlReceiving:(id)arg1;
 - (_Bool)_connectionCanControlSharing:(id)arg1;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
-- (void)_createXPCListener;
 - (void)createXPCListener;
 - (void)cleanConnections;
 - (void)dealloc;

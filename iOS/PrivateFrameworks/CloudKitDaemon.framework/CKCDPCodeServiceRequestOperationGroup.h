@@ -10,7 +10,6 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKCDPCodeServiceRequestOperationGroup : PBCodable <NSCopying>
 {
     long long _operationGroupQuantity;

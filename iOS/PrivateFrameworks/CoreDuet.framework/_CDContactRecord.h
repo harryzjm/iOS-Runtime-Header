@@ -6,7 +6,7 @@
 
 #import <CoreData/NSManagedObject.h>
 
-@class NSSet, NSString, _CDContact;
+@class NSSet, NSString, NSURL, _CDContact;
 
 @interface _CDContactRecord : NSManagedObject
 {
@@ -19,6 +19,7 @@
 // Remaining properties
 @property(nonatomic) double creationDate; // @dynamic creationDate;
 @property(retain, nonatomic) NSString *customIdentifier; // @dynamic customIdentifier;
+@property(retain, nonatomic) NSURL *displayImageURL; // @dynamic displayImageURL;
 @property(retain, nonatomic) NSString *displayName; // @dynamic displayName;
 @property(nonatomic) int displayType; // @dynamic displayType;
 @property(nonatomic) double firstIncomingRecipientDate; // @dynamic firstIncomingRecipientDate;

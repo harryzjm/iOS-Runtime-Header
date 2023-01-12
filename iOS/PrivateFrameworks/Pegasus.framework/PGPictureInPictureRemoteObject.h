@@ -6,72 +6,97 @@
 
 #import <objc/NSObject.h>
 
+#import <Pegasus/PGCommandHandler-Protocol.h>
 #import <Pegasus/PGPictureInPictureRemoteObjectInterface-Protocol.h>
 #import <Pegasus/PGPictureInPictureViewControllerDelegate-Protocol.h>
 
-@class BKSProcessAssertion, NSString, NSTimer, NSUUID, NSXPCConnection, PGInterruptionAssistant, PGPictureInPictureApplication, PGPictureInPictureViewController;
+@class FBScene, NSArray, NSString, NSTimer, NSUUID, NSXPCConnection, PGInterruptionAssistant, PGPictureInPictureApplication, PGPictureInPictureViewController, PGPlaybackState, PGProcessAssertion, UIImage;
 @protocol BSInvalidatable, OS_dispatch_queue, PGPictureInPictureAnalyticsDelegate, PGPictureInPictureRemoteObjectDelegate;
 
 __attribute__((visibility("hidden")))
-@interface PGPictureInPictureRemoteObject : NSObject <PGPictureInPictureRemoteObjectInterface, PGPictureInPictureViewControllerDelegate>
+@interface PGPictureInPictureRemoteObject : NSObject <PGPictureInPictureRemoteObjectInterface, PGPictureInPictureViewControllerDelegate, PGCommandHandler>
 {
     NSXPCConnection *_connection;
     NSObject<OS_dispatch_queue> *_queue;
+    long long _queue_outstandingRotationAnimationsCount;
     long long _controlsStyle;
     long long _currentState;
-    BKSProcessAssertion *_processAssertion;
-    BKSProcessAssertion *_interruptionBeganFinishTaskAssertion;
-    BKSProcessAssertion *_cancelPictureInPictureFinishTaskAssertion;
+    PGProcessAssertion *_processAssertion;
+    PGProcessAssertion *_startBackgroundPIPAssertion;
+    PGProcessAssertion *_interruptionBeganFinishTaskAssertion;
+    PGProcessAssertion *_cancelPictureInPictureFinishTaskAssertion;
     NSUUID *_finishTaskInvalidationUUID;
-    NSTimer *_twoStagedStopInvalidationTimer;
+    NSTimer *_timerForInvalidatingIfStopOrCancelFails;
     NSUUID *_analyticsSourceUUID;
     _Bool _shouldNoteStartedAutomaticallyForAnalytics;
     _Bool _isPictureInPicturePossible;
+    _Bool _hasPendingCancellationRequest;
+    _Bool _hasPendingStopRequest;
     _Bool _pictureInPictureShouldStartWhenEnteringBackground;
     _Bool _shouldShowAlternateActionButtonImage;
     _Bool _shouldShowLoadingIndicator;
+    NSArray *_menuItems;
+    NSString *_activitySessionIdentifier;
+    PGPlaybackState *_playbackState;
     PGInterruptionAssistant *_interruptionAssistant;
-    unsigned long long _transitioningState;
-    _Bool _hasBegunTwoStateStop;
+    _Bool _hasBegunTwoStageStop;
+    _Bool _stashed;
     unsigned long long _resourcesUsageReductionReasons;
+    unsigned long long _UILockedResourcesUsageReductionReasons;
+    unsigned long long _externalResourcesUsageReductionReasons;
+    NSTimer *_considerStashedPlaybackAsBackgroundAudioTimer;
     id <BSInvalidatable> _stateCaptureInvalidatable;
+    FBScene *_sourceScene;
+    NSString *_screenSharingTitle;
+    UIImage *_screenSharingAvatar;
+    NSString *_activitySessionIdentifierForLastActivePIPSession;
     id <PGPictureInPictureRemoteObjectDelegate> _delegate;
-    struct {
-        unsigned int pictureInPictureRemoteObject_shouldAcceptSetupRequest:1;
-        unsigned int pictureInPictureRemoteObject_shouldCancelActivePictureInPictureOnStart:1;
-        unsigned int pictureInPictureRemoteObject_shouldUpdateCancellationPolicyOnStart:1;
-        unsigned int pictureInPictureRemoteObject_didCreatePictureInPictureViewController:1;
-        unsigned int pictureInPictureRemoteObject_willShowPictureInPictureViewController:1;
-        unsigned int pictureInPictureRemoteObject_didShowPictureInPictureViewController:1;
-        unsigned int pictureInPictureRemoteObject_willHidePictureInPictureViewController:1;
-        unsigned int pictureInPictureRemoteObject_didHidePictureInPictureViewController:1;
-        unsigned int pictureInPictureRemoteObject_willDestroyPictureInPictureViewController:1;
-        unsigned int pictureInPictureRemoteObject_didRequestPictureInPictureStopForViewController_sourceSceneSessionIdentifier_animated:1;
-    } _delegateRespondsTo;
     PGPictureInPictureApplication *_pictureInPictureApplication;
     PGPictureInPictureViewController *_pictureInPictureViewController;
     id <PGPictureInPictureAnalyticsDelegate> _analyticsDelegate;
+    PGPictureInPictureRemoteObject *_tetheredRemoteObject;
+    PGPictureInPictureRemoteObject *_tetheringRemoteObject;
     NSString *_sourceSceneSessionPersistentIdentifier;
+    NSString *_exemptAttribution;
     struct CGSize _preferredContentSize;
     struct CGRect _initialLayerFrame;
 }
 
++ (void)tetherRemoteObject:(id)arg1 toRemoteObject:(id)arg2 mode:(long long)arg3;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *exemptAttribution; // @synthesize exemptAttribution=_exemptAttribution;
 @property(readonly, nonatomic) NSString *sourceSceneSessionPersistentIdentifier; // @synthesize sourceSceneSessionPersistentIdentifier=_sourceSceneSessionPersistentIdentifier;
 @property(readonly, nonatomic) struct CGSize preferredContentSize; // @synthesize preferredContentSize=_preferredContentSize;
 @property(readonly, nonatomic) struct CGRect initialLayerFrame; // @synthesize initialLayerFrame=_initialLayerFrame;
 @property(readonly, nonatomic) long long currentState; // @synthesize currentState=_currentState;
+@property(retain, nonatomic) PGPictureInPictureRemoteObject *tetheringRemoteObject; // @synthesize tetheringRemoteObject=_tetheringRemoteObject;
+@property(retain, nonatomic) PGPictureInPictureRemoteObject *tetheredRemoteObject; // @synthesize tetheredRemoteObject=_tetheredRemoteObject;
 @property(nonatomic) __weak id <PGPictureInPictureAnalyticsDelegate> analyticsDelegate; // @synthesize analyticsDelegate=_analyticsDelegate;
+@property(nonatomic) __weak id <PGPictureInPictureRemoteObjectDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) PGPictureInPictureViewController *pictureInPictureViewController; // @synthesize pictureInPictureViewController=_pictureInPictureViewController;
 @property(readonly, nonatomic) PGPictureInPictureApplication *pictureInPictureApplication; // @synthesize pictureInPictureApplication=_pictureInPictureApplication;
-- (void)pictureInPictureViewController:(id)arg1 didTransitionToStashed:(_Bool)arg2 shouldBeginOrEndInterruption:(_Bool)arg3;
+- (_Bool)isAssociatedWithRemoteObject:(id)arg1;
+- (_Bool)canPreventOrSuspendRemoteObject:(id)arg1;
+- (_Bool)pictureInPictureViewControllerShouldHideTetheredViewControllerAlongsideControls:(id)arg1;
+- (_Bool)pictureInPictureViewControllerWantsStashTabSuppression:(id)arg1;
+- (void)pictureInPictureViewController:(id)arg1 didTransitionToStashed:(_Bool)arg2;
 - (void)pictureInPictureViewControllerDidRequestCancel:(id)arg1;
 - (void)pictureInPictureViewController:(id)arg1 didReceiveCommand:(id)arg2;
 - (void)pictureInPictureViewControllerDidRequestStop:(id)arg1;
 - (void)pictureInPictureViewControllerHostedWindowSizeChangeEnded:(id)arg1;
 - (void)pictureInPictureViewControllerHostedWindowSizeChangeBegan:(id)arg1;
 - (void)pictureInPictureViewController:(id)arg1 updateHostedWindowSize:(struct CGSize)arg2 animationType:(long long)arg3 initialSpringVelocity:(double)arg4;
+- (void)handleCommand:(id)arg1;
+- (void)_queue_notifyProxyOfInterruptionEnded;
+- (void)_queue_notifyProxyOfInterruptionBegan;
+- (void)_acquireOrInvalidateProcessAssertionIfNeeded;
+- (_Bool)_wantsProcessAssertion;
+- (_Bool)_currentStateAllowsProcessAssertion;
+- (void)_updateActiveProxyAndViewControllerOfInterruptionIfNeeded;
 - (oneway void)stopPictureInPictureAndRestoreUserInterface;
+- (oneway void)setScreenSharingTitle:(id)arg1 avatar:(id)arg2;
+- (oneway void)setActivitySessionIdentifier:(id)arg1;
+- (oneway void)updateMenuItems:(id)arg1;
 - (oneway void)updatePlaybackStateWithDiff:(id)arg1;
 - (oneway void)setPictureInPictureShouldStartWhenEnteringBackground:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (oneway void)cleanupWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -79,45 +104,67 @@ __attribute__((visibility("hidden")))
 - (oneway void)setupStopAnimated:(_Bool)arg1 needsApplicationActivation:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (oneway void)rotateContentContainer:(long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (oneway void)checkActivePictureInPictureCancellationPolicyWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_updatePreferredContentSize:(struct CGSize)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (oneway void)updatePreferredContentSize:(struct CGSize)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (oneway void)updateSourceSceneSessionPersistentIdentifierForInteractiveTransitionAnimationUponBackgrounding:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (oneway void)updateInitialLayerFrameForInteractiveTransitionAnimationUponBackgrounding:(struct CGRect)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (oneway void)startPictureInPictureAnimated:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (oneway void)setupStartAnimated:(_Bool)arg1 hostedWindowHostingHandle:(id)arg2 sceneSessionPersistentIdentifier:(id)arg3 preferredContentSize:(struct CGSize)arg4 initialInterfaceOrientation:(long long)arg5 initialLayerFrame:(struct CGRect)arg6 playbackState:(id)arg7 completionHandler:(CDUnknownBlockType)arg8;
+- (oneway void)setupStartAnimated:(_Bool)arg1 hostedWindowHostingHandle:(id)arg2 sceneSessionPersistentIdentifier:(id)arg3 preferredContentSize:(struct CGSize)arg4 initialInterfaceOrientation:(long long)arg5 initialLayerFrame:(struct CGRect)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (oneway void)initializePictureInPictureWithControlsStyle:(long long)arg1 preferredContentSize:(struct CGSize)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_startPreventingCancelAndRestoreUserActions;
+- (void)_invalidateForFailureToStartStopOrCancel;
+- (_Bool)_isInActivitySession;
+- (_Bool)_isAssociatedWithOtherObject:(id)arg1;
+- (_Bool)_isAppICS;
+- (_Bool)_isICSVideoCall;
 - (id)_invalidationTimerWithTimeout:(double)arg1 block:(CDUnknownBlockType)arg2;
 - (id)_invalidationTimerWithTimeout:(double)arg1;
-- (void)_tearDownAndNotifyClientAboutCancellation:(_Bool)arg1;
+- (void)_finishCleanup;
+- (void)_invalidateAllAssertions;
 - (void)_invalidateInterruptionBeganFinishTaskAssertion;
-- (id)_finishTaskAssertionForProcessIdentifier:(int)arg1;
-- (id)_processAssertionForProcessIdentifier:(int)arg1;
+- (_Bool)_canTransitionToState:(long long)arg1;
 - (void)_setCurrentState:(long long)arg1;
+- (_Bool)_isUnderLock;
+- (void)_stopTethering;
+- (_Bool)canTetherRemoteObjectAsMicroPIP:(id)arg1;
+- (_Bool)canStartMicroPIP;
+- (_Bool)supportsMicroPIP;
+@property(readonly, nonatomic) _Bool canStartBackgroundPIPForCurrentActivitySessionIdentifier;
+@property(readonly, copy, nonatomic) NSString *activitySessionIdentifier;
+- (void)_setResolvedResourcesUsageReductionReasons:(unsigned long long)arg1;
+- (void)_setUILockedResourcesUsageReductionReasons:(unsigned long long)arg1;
 - (void)setCurrentResourcesUsageReductionReasons:(unsigned long long)arg1;
 - (void)invalidate;
 - (void)cancel;
 - (void)resume;
 - (void)suspend;
-- (void)pictureInPictureInterruptionEndedWithReason:(long long)arg1;
-- (void)pictureInPictureInterruptionBeganWithReason:(long long)arg1;
+- (void)_notifyProxyOfStashedOrUnderLock:(_Bool)arg1;
+- (void)pictureInPictureInterruptionEndedWithReason:(long long)arg1 attribution:(id)arg2;
+- (void)pictureInPictureInterruptionBeganWithReason:(long long)arg1 attribution:(id)arg2;
+- (void)startPictureInPictureFromBackground;
+- (void)sendStartPictureInPictureTestAction;
 - (void)endTwoStageStopPictureInPictureWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)beginTwoStageStopPictureInPictureByRestoringUserInterfaceWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)stopPictureInPictureAnimated:(_Bool)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)startPictureInPictureEnteringBackgroundAnimated:(_Bool)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+@property(readonly, nonatomic, getter=isVideoCall) _Bool videoCall;
+@property(readonly, nonatomic, getter=isPIPAllowedForCurrentContentType) _Bool pipAllowedForCurrentContentType;
+@property(readonly, nonatomic) long long contentType;
+- (void)setSourceSceneSessionPersistentIdentifier:(id)arg1;
 @property(nonatomic, getter=isPictureInPicturePossible) _Bool pictureInPicturePossible;
-@property(readonly, nonatomic) unsigned long long transitioningState;
-@property(readonly, nonatomic) _Bool isStartingStoppingOrCancellingPictureInPicture;
+@property(readonly, nonatomic, getter=isInterrupted) _Bool interrupted;
 @property(readonly, nonatomic) _Bool canEndTwoStageStopPictureInPicture;
+@property(readonly, nonatomic) _Bool isStartingStoppingOrCancellingPictureInPicture;
+@property(readonly, nonatomic) _Bool isStoppingOrCancellingPictureInPicture;
+- (_Bool)isStartingPictureInPicture;
 @property(readonly, nonatomic) _Bool canCancelPictureInPicture;
 @property(readonly, nonatomic) _Bool canStopPictureInPicture;
 @property(readonly, nonatomic) _Bool shouldStartPictureInPictureEnteringBackground;
-@property(nonatomic) __weak id <PGPictureInPictureRemoteObjectDelegate> delegate;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue;
 @property(readonly, nonatomic) NSXPCConnection *connection;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (id)init;
-- (id)initWithConnection:(id)arg1;
+- (id)initWithConnection:(id)arg1 interruptionAssistant:(id)arg2;
 - (_Bool)matchesSceneSessionIdentifier:(id)arg1;
 
 // Remaining properties

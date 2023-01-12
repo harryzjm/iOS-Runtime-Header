@@ -4,19 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSString, SBSwitcherDropRegionContext;
 
 @interface SBDragAndDropGestureSwitcherModifierEvent
 {
+    _Bool _previewHasLifted;
+    _Bool _platterized;
+    _Bool _windowDrag;
+    _Bool _switcherDrag;
     long long _dropAction;
     NSString *_draggedSceneIdentifier;
+    long long _draggedSceneLayoutRole;
     double _platterScale;
+    SBSwitcherDropRegionContext *_switcherDropRegionContext;
     struct CGRect _platterViewFrame;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) SBSwitcherDropRegionContext *switcherDropRegionContext; // @synthesize switcherDropRegionContext=_switcherDropRegionContext;
+@property(nonatomic, getter=isSwitcherDrag) _Bool switcherDrag; // @synthesize switcherDrag=_switcherDrag;
+@property(nonatomic, getter=isWindowDrag) _Bool windowDrag; // @synthesize windowDrag=_windowDrag;
+@property(nonatomic, getter=hasPlatterized) _Bool platterized; // @synthesize platterized=_platterized;
+@property(nonatomic, getter=hasPreviewLifted) _Bool previewHasLifted; // @synthesize previewHasLifted=_previewHasLifted;
 @property(nonatomic) double platterScale; // @synthesize platterScale=_platterScale;
 @property(nonatomic) struct CGRect platterViewFrame; // @synthesize platterViewFrame=_platterViewFrame;
+@property(nonatomic) long long draggedSceneLayoutRole; // @synthesize draggedSceneLayoutRole=_draggedSceneLayoutRole;
 @property(retain, nonatomic) NSString *draggedSceneIdentifier; // @synthesize draggedSceneIdentifier=_draggedSceneIdentifier;
 @property(nonatomic) long long dropAction; // @synthesize dropAction=_dropAction;
 - (id)copyWithZone:(struct _NSZone *)arg1;

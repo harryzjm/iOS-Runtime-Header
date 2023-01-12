@@ -24,10 +24,10 @@
 - (_Bool)_isIndexActive:(unsigned long long)arg1;
 - (_Bool)_isEffectivelyFullScreen;
 - (id)_newAppExposeModifier;
-- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
+- (struct SBSwitcherAsyncRenderingAttributes)asyncRenderingAttributesForAppLayout:(id)arg1;
 - (id)visibleAppLayouts;
 - (double)plusButtonAlpha;
-- (double)opacityForIndex:(unsigned long long)arg1;
+- (double)opacityForLayoutRole:(long long)arg1 inAppLayout:(id)arg2 atIndex:(unsigned long long)arg3;
 - (double)scaleForIndex:(unsigned long long)arg1;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
 - (id)adjustedAppLayoutsForAppLayouts:(id)arg1;

@@ -7,7 +7,6 @@
 @class CKDPCSCache, CKDPCSData, CKDRecordPCSData, NSError, NSObject, NSString;
 @protocol CKSQLiteItem, OS_dispatch_group;
 
-__attribute__((visibility("hidden")))
 @interface CKDPCSCacheFetchOperation
 {
     _Bool _didFetchData;
@@ -56,7 +55,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)makeStateTransition;
 - (_Bool)canBeUsedForOperation:(id)arg1 withOptions:(unsigned long long)arg2;
 - (_Bool)_errorShouldImpactFlowControl:(id)arg1;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 // Remaining properties
 @property(nonatomic) unsigned long long state; // @dynamic state;

@@ -7,14 +7,14 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDBackgroundTaskAgentTimer, HMDHomePresence, HMDHomePresenceUpdate, NSMutableDictionary, NSString;
+@class HMDBackgroundTaskAgentTimer, HMDHomePresence, HMDHomePresenceUpdate, NSDictionary, NSMutableDictionary, NSString;
 @protocol HMFLocking;
 
 @interface HMDHomePresenceMonitor <HMFLogging, NSSecureCoding>
 {
     id <HMFLocking> _lock;
-    HMDHomePresence *_currentHomePresence;
     NSMutableDictionary *_presenceMap;
+    HMDHomePresence *_currentHomePresence;
     HMDHomePresenceUpdate *_homePresenceUpdate;
     HMDBackgroundTaskAgentTimer *_btaAuditTimer;
 }
@@ -24,7 +24,6 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) HMDBackgroundTaskAgentTimer *btaAuditTimer; // @synthesize btaAuditTimer=_btaAuditTimer;
 @property(retain, nonatomic) HMDHomePresenceUpdate *homePresenceUpdate; // @synthesize homePresenceUpdate=_homePresenceUpdate;
-@property(readonly, nonatomic) NSMutableDictionary *presenceMap; // @synthesize presenceMap=_presenceMap;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)_submitPresenceReportMetricWithPayload:(id)arg1 error:(id)arg2;
@@ -46,6 +45,7 @@
 - (void)_submitHomePresenceMetric;
 - (void)registerQueriableAwdMetrics;
 @property(retain, nonatomic) HMDHomePresence *currentHomePresence; // @synthesize currentHomePresence=_currentHomePresence;
+@property(readonly, copy, nonatomic) NSDictionary *presenceMap;
 - (void)_registerForMessages;
 - (void)configure:(id)arg1 messageDispatcher:(id)arg2;
 - (void)dealloc;

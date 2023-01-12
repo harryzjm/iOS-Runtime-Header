@@ -15,12 +15,10 @@
 }
 
 + (id)_sharedPowerSourceController;
-+ (id)sharedInstance;
 - (void)removeBatteryDeviceObserver:(id)arg1;
 - (void)addBatteryDeviceObserver:(id)arg1 queue:(id)arg2;
 @property(readonly, copy, nonatomic) NSArray *connectedDevices;
 - (id)init;
-- (void)connectedDevicesWithResult:(CDUnknownBlockType)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

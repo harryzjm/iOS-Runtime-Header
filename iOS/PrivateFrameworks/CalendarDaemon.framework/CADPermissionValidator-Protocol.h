@@ -13,7 +13,6 @@
 @property(readonly) _Bool hasChangeIdTrackingOverrideEntitlement;
 @property(readonly) _Bool hasCalendarToolEntitlement;
 @property(readonly) _Bool hasSyncClientEntitlement;
-@property(readonly) _Bool hasMigrationEntitlement;
 @property(readonly) _Bool hasContactsUIEntitlement;
 @property(readonly) _Bool storageManagementAccessGranted;
 @property(readonly) _Bool internalAccessLevelGranted;
@@ -22,6 +21,7 @@
 @property(readonly) _Bool canModifyBirthdayCalendar;
 @property(readonly) _Bool canMakeSpotlightChanges;
 @property(readonly) _Bool canModifySuggestedEventCalendar;
+@property(readonly) _Bool canAccessDatabaseBookmarks;
 @property(readonly) _Bool isCalendarDaemon;
 @property(readonly) _Bool isFirstPartyCalendarApp;
 @end

@@ -17,6 +17,7 @@
     UIColor *_subTextLabelColorOverride;
     NSLayoutConstraint *_labelStackTrailingAnchorToCell;
     NSArray *_accessoryStackConstraints;
+    unsigned int _snapshotCounter;
     _Bool _showBillingAddress;
     _Bool _dimCardArt;
     _Bool _activityIndicatorActive;

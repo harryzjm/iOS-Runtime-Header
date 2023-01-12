@@ -15,6 +15,7 @@
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    CDStruct_95bda58d _initialPromptTypes;
     NSMutableArray *_arrivalParameters;
     GEOWaypointRouteFeatures *_feature;
     NSMutableArray *_incidentsOnRouteLegs;
@@ -42,6 +43,7 @@
         unsigned int has_transportType:1;
         unsigned int has_type:1;
         unsigned int read_unknownFields:1;
+        unsigned int read_initialPromptTypes:1;
         unsigned int read_arrivalParameters:1;
         unsigned int read_feature:1;
         unsigned int read_incidentsOnRouteLegs:1;
@@ -73,6 +75,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -81,6 +84,14 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 @property(readonly, copy) NSString *description;
+- (int)StringAsInitialPromptTypes:(id)arg1;
+- (id)initialPromptTypesAsString:(int)arg1;
+- (void)setInitialPromptTypes:(int *)arg1 count:(unsigned long long)arg2;
+- (int)initialPromptTypeAtIndex:(unsigned long long)arg1;
+- (void)addInitialPromptType:(int)arg1;
+- (void)clearInitialPromptTypes;
+@property(readonly, nonatomic) int *initialPromptTypes;
+@property(readonly, nonatomic) unsigned long long initialPromptTypesCount;
 @property(retain, nonatomic) GEOTrafficBannerText *rerouteBannerText;
 @property(readonly, nonatomic) _Bool hasRerouteBannerText;
 @property(retain, nonatomic) GEOOutOfMapsAlertsInfo *outOfMapsAlertsInfo;
@@ -139,6 +150,7 @@
 @property(retain, nonatomic) NSMutableArray *routeLegs;
 @property(nonatomic) _Bool hasIdentifier;
 @property(nonatomic) unsigned int identifier;
+- (void)dealloc;
 - (id)initWithData:(id)arg1;
 - (id)init;
 - (id)_geoTrafficSignals;

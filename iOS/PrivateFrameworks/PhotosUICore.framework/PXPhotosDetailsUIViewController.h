@@ -6,35 +6,39 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <PhotosUICore/PXActionManagerProvider-Protocol.h>
 #import <PhotosUICore/PXActionPerformerDelegate-Protocol.h>
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
 #import <PhotosUICore/PXForcedDismissableViewController-Protocol.h>
 #import <PhotosUICore/PXPurgeableController-Protocol.h>
 #import <PhotosUICore/PXScrollViewControllerObserver-Protocol.h>
 #import <PhotosUICore/PXUIViewControllerZoomTransitionEndPoint-Protocol.h>
+#import <PhotosUICore/PXUserInterfaceFeatureViewController-Protocol.h>
 #import <PhotosUICore/PXWidgetCompositionDelegate-Protocol.h>
 #import <PhotosUICore/PXWidgetEditingDelegate-Protocol.h>
+#import <PhotosUICore/PXWidgetInteractionDelegate-Protocol.h>
 #import <PhotosUICore/PXWidgetUnlockDelegate-Protocol.h>
 #import <PhotosUICore/UIContextMenuInteractionDelegate-Protocol.h>
 #import <PhotosUICore/UIPointerInteractionDelegate-Protocol.h>
 
-@class NSArray, NSMapTable, NSMutableArray, NSString, NSUserActivity, PXAssetSelectionUserActivityController, PXBarsController, PXMiroMoviePresenter, PXPhotosDetailsContext, PXPhotosDetailsHeaderTileWidget, PXPhotosDetailsSpecManager, PXPhotosDetailsViewModel, PXScrollViewController, PXSwipeSelectionManager, PXTilingController, PXUIScrollViewController, PXWidgetComposition, PXWidgetSpec, UIContextMenuInteraction, UIPointerInteraction, UIScrollView, UIView;
+@class NSArray, NSMapTable, NSMutableArray, NSString, NSUserActivity, PXActionManager, PXAssetReference, PXAssetSelectionUserActivityController, PXBarsController, PXMiroMoviePresenter, PXPhotosDetailsContext, PXPhotosDetailsHeaderTileWidget, PXPhotosDetailsSpecManager, PXPhotosDetailsViewModel, PXScrollViewController, PXSwipeSelectionManager, PXTilingController, PXUIScrollViewController, PXWidgetComposition, PXWidgetSpec, UIContextMenuInteraction, UIPointerInteraction, UIScrollView, UIView;
 @protocol PXAssetCollectionActionPerformerDelegate, PXDisplayAsset, PXPhotosDetailsUIViewControllerDelegate, PXUIWidget, PXViewControllerEventTracker;
 
-@interface PXPhotosDetailsUIViewController : UIViewController <PXWidgetCompositionDelegate, PXChangeObserver, PXUIViewControllerZoomTransitionEndPoint, PXActionPerformerDelegate, PXWidgetUnlockDelegate, PXWidgetEditingDelegate, PXForcedDismissableViewController, UIContextMenuInteractionDelegate, UIPointerInteractionDelegate, PXScrollViewControllerObserver, PXPurgeableController>
+@interface PXPhotosDetailsUIViewController : UIViewController <PXWidgetCompositionDelegate, PXChangeObserver, PXUIViewControllerZoomTransitionEndPoint, PXActionManagerProvider, PXActionPerformerDelegate, PXWidgetUnlockDelegate, PXWidgetInteractionDelegate, PXWidgetEditingDelegate, PXForcedDismissableViewController, PXUserInterfaceFeatureViewController, UIContextMenuInteractionDelegate, UIPointerInteractionDelegate, PXScrollViewControllerObserver, PXPurgeableController>
 {
     struct {
         _Bool requestDismissal;
+        _Bool compositionDidChange;
     } _delegateRespondsTo;
     _Bool __hasAppeared;
     _Bool _didAppearOnce;
-    _Bool __shouldFocusHeader;
     _Bool __previewCommitting;
     _Bool _empty;
     PXAssetSelectionUserActivityController *_userActivityController;
     PXPhotosDetailsContext *_context;
     unsigned long long _options;
     id <PXPhotosDetailsUIViewControllerDelegate> _delegate;
+    PXAssetReference *_initiallyPresentedAssetReference;
     id <PXViewControllerEventTracker> _eventTracker;
     PXPhotosDetailsViewModel *__viewModel;
     PXUIScrollViewController *__scrollViewController;
@@ -42,7 +46,6 @@
     NSMapTable *__widgetOptions;
     PXPhotosDetailsHeaderTileWidget *__headerWidget;
     PXTilingController *__headerAssetWidgetTilingController;
-    PXWidgetComposition *__composition;
     PXPhotosDetailsSpecManager *__specManager;
     NSMutableArray *__widgetDisablingDimmingViews;
     PXWidgetSpec *__widgetSpec;
@@ -51,7 +54,7 @@
     CDUnknownBlockType __unlockStatus;
     CDUnknownBlockType __unlockHandler;
     id <PXUIWidget> __previewWidget;
-    UIView *__headerTileView;
+    UIView *_widgetsBackgroundView;
     CDUnknownBlockType __ppt_allWidgetLoadingCompleteHandler;
     CDUnknownBlockType __ppt_variationsWidgetLoadingCompleteHandler;
     UIContextMenuInteraction *__contextMenuInteraction;
@@ -61,6 +64,7 @@
     PXMiroMoviePresenter *_miroMoviePresenter;
     PXBarsController *_barsController;
     id <PXAssetCollectionActionPerformerDelegate> _actionPerformerDelegate;
+    PXWidgetComposition *_composition;
     unsigned long long _occludedContentEdges;
     struct UIEdgeInsets _contentEdgeInsets;
 }
@@ -68,6 +72,7 @@
 + (void)preloadResources;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long occludedContentEdges; // @synthesize occludedContentEdges=_occludedContentEdges;
+@property(readonly, nonatomic) PXWidgetComposition *composition; // @synthesize composition=_composition;
 @property(nonatomic, getter=isEmpty) _Bool empty; // @synthesize empty=_empty;
 @property(nonatomic) __weak id <PXAssetCollectionActionPerformerDelegate> actionPerformerDelegate; // @synthesize actionPerformerDelegate=_actionPerformerDelegate;
 @property(nonatomic) struct UIEdgeInsets contentEdgeInsets; // @synthesize contentEdgeInsets=_contentEdgeInsets;
@@ -80,9 +85,8 @@
 @property(retain, nonatomic, setter=_setContextMenuInteraction:) UIContextMenuInteraction *_contextMenuInteraction; // @synthesize _contextMenuInteraction=__contextMenuInteraction;
 @property(copy, nonatomic, setter=_ppt_setVariationsWidgetLoadingCompleteHandler:) CDUnknownBlockType _ppt_variationsWidgetLoadingCompleteHandler; // @synthesize _ppt_variationsWidgetLoadingCompleteHandler=__ppt_variationsWidgetLoadingCompleteHandler;
 @property(copy, nonatomic, setter=_ppt_setAllWidgetLoadingCompleteHandler:) CDUnknownBlockType _ppt_allWidgetLoadingCompleteHandler; // @synthesize _ppt_allWidgetLoadingCompleteHandler=__ppt_allWidgetLoadingCompleteHandler;
-@property(retain, nonatomic, setter=_setHeaderTileView:) UIView *_headerTileView; // @synthesize _headerTileView=__headerTileView;
-@property(nonatomic, setter=_setShouldFocusHeader:) _Bool _shouldFocusHeader; // @synthesize _shouldFocusHeader=__shouldFocusHeader;
 @property(nonatomic) _Bool didAppearOnce; // @synthesize didAppearOnce=_didAppearOnce;
+@property(retain, nonatomic) UIView *widgetsBackgroundView; // @synthesize widgetsBackgroundView=_widgetsBackgroundView;
 @property(readonly, nonatomic) id <PXUIWidget> _previewWidget; // @synthesize _previewWidget=__previewWidget;
 @property(readonly, copy, nonatomic) CDUnknownBlockType _unlockHandler; // @synthesize _unlockHandler=__unlockHandler;
 @property(readonly, copy, nonatomic) CDUnknownBlockType _unlockStatus; // @synthesize _unlockStatus=__unlockStatus;
@@ -92,7 +96,6 @@
 @property(retain, nonatomic, setter=_setWidgetSpec:) PXWidgetSpec *_widgetSpec; // @synthesize _widgetSpec=__widgetSpec;
 @property(readonly, nonatomic) NSMutableArray *_widgetDisablingDimmingViews; // @synthesize _widgetDisablingDimmingViews=__widgetDisablingDimmingViews;
 @property(readonly, nonatomic) PXPhotosDetailsSpecManager *_specManager; // @synthesize _specManager=__specManager;
-@property(readonly, nonatomic) PXWidgetComposition *_composition; // @synthesize _composition=__composition;
 @property(readonly, nonatomic) PXTilingController *_headerAssetWidgetTilingController; // @synthesize _headerAssetWidgetTilingController=__headerAssetWidgetTilingController;
 @property(readonly, nonatomic) PXPhotosDetailsHeaderTileWidget *_headerWidget; // @synthesize _headerWidget=__headerWidget;
 @property(readonly, nonatomic) NSMapTable *_widgetOptions; // @synthesize _widgetOptions=__widgetOptions;
@@ -100,17 +103,18 @@
 @property(readonly, nonatomic) PXUIScrollViewController *_scrollViewController; // @synthesize _scrollViewController=__scrollViewController;
 @property(readonly, nonatomic) PXPhotosDetailsViewModel *_viewModel; // @synthesize _viewModel=__viewModel;
 @property(readonly, nonatomic) id <PXViewControllerEventTracker> eventTracker; // @synthesize eventTracker=_eventTracker;
+@property(retain, nonatomic) PXAssetReference *initiallyPresentedAssetReference; // @synthesize initiallyPresentedAssetReference=_initiallyPresentedAssetReference;
 @property(nonatomic) __weak id <PXPhotosDetailsUIViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property(readonly, nonatomic) PXPhotosDetailsContext *context; // @synthesize context=_context;
 - (void)_ppt_informWidgetsLoadedHandlerIfNeeded;
-- (void)ppt_navigateToMovieWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)ppt_performBlockAfterVariationsWidgetLoadingCompletes:(CDUnknownBlockType)arg1;
 - (void)ppt_performBlockAfterAllWidgetLoadingCompletes:(CDUnknownBlockType)arg1;
 - (void)ppt_toggleDiscloseWidgets;
 @property(readonly, nonatomic) UIScrollView *ppt_scrollView;
 - (_Bool)prepareForDismissingForced:(_Bool)arg1;
 - (void)actionPerformer:(id)arg1 didChangeState:(unsigned long long)arg2;
+@property(readonly, nonatomic) PXActionManager *assetActionManager;
 - (void)_performAddToMemoriesAnimation;
 - (id)_previewViewControllerForLocation:(struct CGPoint)arg1;
 - (id)_widgetAtLocation:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
@@ -122,7 +126,7 @@
 - (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
-- (void)playMiroMovieWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)playMovieWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)contentViewForZoomTransition:(id)arg1;
 - (id)zoomAnimationCoordinatorForZoomTransition:(id)arg1;
 - (void)prepareForInteractiveTransition:(id)arg1;
@@ -141,6 +145,7 @@
 - (void)scrollViewControllerWillBeginScrolling:(id)arg1;
 - (void)scrollViewControllerWillLayoutSubviews:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
+- (void)widgetTapped:(id)arg1;
 - (void)widgetComposition:(id)arg1 didUpdateCompositionWithDefaultAnimationOptions:(id)arg2;
 - (void)widgetComposition:(id)arg1 widgetHasLoadedContentDataDidChange:(id)arg2;
 - (_Bool)widgetComposition:(id)arg1 widget:(id)arg2 transitionToViewController:(id)arg3 withTransitionType:(long long)arg4;
@@ -153,6 +158,7 @@
 - (void)widget:(id)arg1 didChangeEditingMode:(_Bool)arg2;
 - (void)widget:(id)arg1 performAfterUnlockingDeviceIfNecessary:(CDUnknownBlockType)arg2 failurehandler:(CDUnknownBlockType)arg3;
 - (_Bool)widgetDeviceIsUnlocked:(id)arg1;
+@property(readonly, nonatomic) long long userInterfaceFeature;
 - (void)_updateBarSpec;
 - (void)_invalidateBarSpec;
 - (void)_updateWidgetSpec;
@@ -163,13 +169,14 @@
 @property(readonly, nonatomic) PXAssetSelectionUserActivityController *userActivityController; // @synthesize userActivityController=_userActivityController;
 - (void)informFirstWidgetAvailableVisibleRectInEditMode:(struct CGRect)arg1;
 - (void)requestExitEditModeWithChangeSavingMode:(long long)arg1;
+- (void)visualSearchLookupWidgetDidTap;
 - (void)editorHeightDidChange;
 - (void)editingDidChange:(_Bool)arg1;
+- (void)_handleSpaceBar:(id)arg1;
 - (void)_handleDeviceDidUnlock;
 - (void)_updateWidgetDisablingWithAnimationOptions:(id)arg1;
 - (void)_updateTitleAndSubtitle;
 - (id)standaloneMapViewController;
-- (id)preferredFocusEnvironments;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)_photosDetailsContextForTransitionWithViewController:(id)arg1;
@@ -179,15 +186,16 @@
 - (void)_updateAllWidgetsSelectionState;
 - (void)_updateAllWidgetsSpec;
 - (void)_loadWidgets;
+- (void)_addSwiftUIWidgetForHelperClassName:(id)arg1 addCallback:(CDUnknownBlockType)arg2;
 - (_Bool)_shouldShowMovieHeader;
 - (void)_loadComposition;
 - (void)_ensureComposition;
+- (void)_updateWidgetsBackground;
 - (void)_ensureScrollViewController;
 @property(readonly, nonatomic) double captionWidgetCurrentContentHeight;
 @property(readonly, nonatomic) double captionWidgetPreferredHeight;
 - (void)_handleWidgetsLoadingDelay;
 @property(readonly, nonatomic) _Bool shouldUpdateStatusBarTitle;
-- (id)contentScrollView;
 @property(readonly, nonatomic) PXScrollViewController *scrollViewController;
 - (void)_updateScrollViewControllerContentInset;
 - (_Bool)_dismissSelfIfSafeAnimated:(_Bool)arg1;

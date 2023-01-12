@@ -12,18 +12,22 @@
 
 @interface _EARSpeechRecognitionResult : NSObject <NSCopying>
 {
-    vector_2f7ba0dc _quasarTokens;
-    vector_2f7ba0dc _quasarPreItnTokens;
+    double _confidence;
+    vector_b9be07b7 _quasarTokens;
+    vector_b9be07b7 _quasarPreItnTokens;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) vector_2f7ba0dc quasarPreItnTokens; // @synthesize quasarPreItnTokens=_quasarPreItnTokens;
-@property(readonly, nonatomic) vector_2f7ba0dc quasarTokens; // @synthesize quasarTokens=_quasarTokens;
+@property(readonly, nonatomic) vector_b9be07b7 quasarPreItnTokens; // @synthesize quasarPreItnTokens=_quasarPreItnTokens;
+@property(readonly, nonatomic) vector_b9be07b7 quasarTokens; // @synthesize quasarTokens=_quasarTokens;
+@property(readonly, nonatomic) double confidence; // @synthesize confidence=_confidence;
+- (id)description;
 @property(readonly, copy, nonatomic) NSArray *preITNTokens;
 @property(readonly, copy, nonatomic) NSArray *tokens;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)_initWithTokens:(vector_2f7ba0dc)arg1 preITNTokens:(vector_2f7ba0dc)arg2;
+- (id)_initWithTokens:(vector_b9be07b7)arg1 preITNTokens:(vector_b9be07b7)arg2 confidence:(double)arg3;
+- (id)_initWithTokens:(vector_b9be07b7)arg1 preITNTokens:(vector_b9be07b7)arg2;
 
 @end
 

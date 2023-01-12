@@ -23,6 +23,9 @@
 - (const struct CGPath *)_generatePath;
 - (id)_normalizeGradientLocations:(id)arg1;
 - (struct CGPoint)_pointAtProgress:(float)arg1;
+- (struct CGPoint)_centerPoint;
+- (double)_outerRadius;
+- (double)_totalDrawableAngle;
 - (double)_angleAtProgress:(float)arg1;
 - (double)_shapeLineWidth;
 - (void)_setupGradientLayer:(id)arg1;

@@ -32,14 +32,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableOrderedSet *fakeRecordIDsToDeleteForSerializationTests; // @synthesize fakeRecordIDsToDeleteForSerializationTests=_fakeRecordIDsToDeleteForSerializationTests;
 @property(retain, nonatomic) NSMutableOrderedSet *fakeRecordIDsToSaveForSerializationTests; // @synthesize fakeRecordIDsToSaveForSerializationTests=_fakeRecordIDsToSaveForSerializationTests;
-@property(nonatomic) unsigned long long internalChangeCount; // @synthesize internalChangeCount=_internalChangeCount;
-@property(retain, nonatomic) NSMutableOrderedSet *inFlightModificationsSet; // @synthesize inFlightModificationsSet=_inFlightModificationsSet;
-@property(retain, nonatomic) NSMutableOrderedSet *pendingModificationsSet; // @synthesize pendingModificationsSet=_pendingModificationsSet;
-@property(retain, nonatomic) NSMutableOrderedSet *zoneIDsToDeleteSet; // @synthesize zoneIDsToDeleteSet=_zoneIDsToDeleteSet;
-@property(retain, nonatomic) NSMutableDictionary *zonesToSaveDictionary; // @synthesize zonesToSaveDictionary=_zonesToSaveDictionary;
 @property(retain, nonatomic) NSMutableDictionary *serverChangeTokensByZoneID; // @synthesize serverChangeTokensByZoneID=_serverChangeTokensByZoneID;
-@property(retain, nonatomic) NSMutableSet *zoneIDsNeedingToFetchChangesSet; // @synthesize zoneIDsNeedingToFetchChangesSet=_zoneIDsNeedingToFetchChangesSet;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(nonatomic) _Bool needsToSaveDatabaseSubscription; // @synthesize needsToSaveDatabaseSubscription=_needsToSaveDatabaseSubscription;
 @property(nonatomic) _Bool needsToFetchDatabaseChanges; // @synthesize needsToFetchDatabaseChanges=_needsToFetchDatabaseChanges;
 @property(retain, nonatomic) CKServerChangeToken *serverChangeTokenForDatabase; // @synthesize serverChangeTokenForDatabase=_serverChangeTokenForDatabase;
@@ -70,8 +63,7 @@
 - (id)CKDescriptionPropertiesWithPublic:(_Bool)arg1 private:(_Bool)arg2 shouldExpand:(_Bool)arg3;
 - (id)description;
 - (id)init;
-- (void)commonInit;
-- (id)initWithData:(id)arg1;
+- (id)initWithData:(id)arg1 error:(id *)arg2;
 
 @end
 

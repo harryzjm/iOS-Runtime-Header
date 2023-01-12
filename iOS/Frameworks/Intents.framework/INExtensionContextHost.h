@@ -6,17 +6,26 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-@class NSBundle;
+#import <Intents/INExtensionContextHosting-Protocol.h>
 
-@interface INExtensionContextHost : NSExtensionContext
+@class NSBundle, NSString;
+
+@interface INExtensionContextHost : NSExtensionContext <INExtensionContextHosting>
 {
     NSBundle *_extensionBundle;
 }
 
++ (id)_allowedItemPayloadClasses;
 + (id)_extensionAuxiliaryVendorProtocol;
 + (id)_extensionAuxiliaryHostProtocol;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSBundle *extensionBundle; // @synthesize extensionBundle=_extensionBundle;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

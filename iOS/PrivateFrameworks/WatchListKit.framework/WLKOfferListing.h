@@ -17,7 +17,6 @@
 @property(readonly, copy, nonatomic) NSArray *storeOffers; // @synthesize storeOffers=_storeOffers;
 - (id)_bestStoreOfferForOfferType:(unsigned long long)arg1;
 - (_Bool)_prefersSD;
-- (_Bool)_supportsHD;
 - (id)_highDefinitionPredicate;
 - (id)_standardDefinitionPredicate;
 - (id)_filteredStoreContentSource:(id)arg1;

@@ -17,12 +17,17 @@
 }
 
 + (_Bool)supportsRBSXPCSecureCoding;
++ (id)predicateMatchingAnyPredicate:(id)arg1;
 + (id)predicateMatchingPredicates:(id)arg1;
 + (id)predicateMatching:(id)arg1;
 + (id)predicate;
++ (id)predicateMatchingProcessTypeApplication;
 + (id)predicatePowerLogProcesses;
++ (id)predicateMatchingAuid:(unsigned int)arg1;
 + (id)predicateMatchingEuid:(unsigned int)arg1;
 + (id)predicateMatchingPlatform:(int)arg1;
++ (id)predicateMatchingExecPathStartsWith:(id)arg1;
++ (id)predicateMatchingBundleIdentifiers:(id)arg1;
 + (id)predicateMatchingBeforeTranslocationBundlePath:(id)arg1;
 + (id)predicateMatchingExtensionPoint:(id)arg1;
 + (id)predicateMatchingBundleIdentifier:(id)arg1;
@@ -45,6 +50,7 @@
 - (id)processPredicate;
 - (_Bool)matchesProcess:(id)arg1;
 - (id)initWithPredicate:(id)arg1;
+- (unsigned int)auid;
 @property(readonly, nonatomic) unsigned int euid;
 @property(readonly, copy, nonatomic) NSString *beforeTranslocationBundlePath;
 @property(readonly, copy, nonatomic) NSString *extensionPoint;

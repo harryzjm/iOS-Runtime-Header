@@ -9,12 +9,13 @@
 #import <TSTables/TSWPColumnMetrics-Protocol.h>
 #import <TSTables/TSWPLayoutParent-Protocol.h>
 #import <TSTables/TSWPStorageObserver-Protocol.h>
+#import <TSTables/TSWPStyleProviding-Protocol.h>
 
-@class NSString, TSTLayoutHint, TSTLayoutSpaceBundle, TSTMasterLayout, TSTTableInfo, TSUPointerKeyDictionary, TSWPLayout, TSWPPadding;
+@class NSString, TSTLayoutEngine, TSTLayoutHint, TSTLayoutSpaceBundle, TSTTableInfo, TSUPointerKeyDictionary, TSWPLayout, TSWPPadding, TSWPStorage;
 
-@interface TSTLayout : TSWPTextHostLayout <TSWPColumnMetrics, TSWPLayoutParent, TSWPStorageObserver>
+@interface TSTLayout : TSWPTextHostLayout <TSWPStyleProviding, TSWPColumnMetrics, TSWPLayoutParent, TSWPStorageObserver>
 {
-    TSTMasterLayout *mMasterLayout;
+    TSTLayoutEngine *_layoutEngine;
     TSTLayoutHint *mLayoutHint;
     struct CGRect mCanvasVisibleRect;
     struct CGRect mCanvasSafeRect;
@@ -52,29 +53,38 @@
     unsigned long long mPageCount;
     unsigned long long mPageNumber;
     TSUPointerKeyDictionary *_attachmentCellStorageToLayoutMap;
+    TSWPStorage *_tableNameEditingStorage;
+    struct CGRect _cellRangeVisibleRect;
 }
 
 + (id)findLayoutIfAvailableInSet:(id)arg1 intersectingRow:(unsigned int)arg2;
+- (void).cxx_destruct;
+@property(nonatomic) __weak TSWPStorage *tableNameEditingStorage; // @synthesize tableNameEditingStorage=_tableNameEditingStorage;
 @property(readonly) TSUPointerKeyDictionary *attachmentCellStorageToLayoutMap; // @synthesize attachmentCellStorageToLayoutMap=_attachmentCellStorageToLayoutMap;
 @property(nonatomic) _Bool processChangesFiltering; // @synthesize processChangesFiltering=mProcessChangesFiltering;
 @property(retain, nonatomic) TSTLayoutHint *layoutHint; // @synthesize layoutHint=mLayoutHint;
-@property(retain, nonatomic) TSTMasterLayout *masterLayout; // @synthesize masterLayout=mMasterLayout;
-@property(readonly, nonatomic) _Bool containedTextEditorWraps; // @synthesize containedTextEditorWraps=mContainedTextEditorTextWraps;
-@property(readonly, nonatomic) _Bool containedTextEditorSpills; // @synthesize containedTextEditorSpills=mContainedTextEditorSpills;
-@property(readonly, nonatomic) _Bool layoutDirectionIsLeftToRight; // @synthesize layoutDirectionIsLeftToRight=mLayoutDirectionIsLeftToRight;
-@property(nonatomic) struct TSUCellRect prevEditingSpillingTextRange; // @synthesize prevEditingSpillingTextRange=mPrevEditingSpillingTextRange;
-@property(readonly, nonatomic) struct TSUCellRect editingSpillingTextRange; // @synthesize editingSpillingTextRange=mEditingSpillingTextRange;
+@property(retain, nonatomic) TSTLayoutEngine *layoutEngine; // @synthesize layoutEngine=_layoutEngine;
 @property(retain, nonatomic) TSTLayoutSpaceBundle *spaceBundle; // @synthesize spaceBundle=mSpaceBundle;
+@property(nonatomic) struct TSUCellRect prevEditingSpillingTextRange; // @synthesize prevEditingSpillingTextRange=mPrevEditingSpillingTextRange;
 @property(readonly, nonatomic) struct UIEdgeInsets paddingForEditingCell; // @synthesize paddingForEditingCell=mCachedPaddingForEditingCell;
-@property(retain, nonatomic) TSWPLayout *containedTextEditingLayout; // @synthesize containedTextEditingLayout=mContainedTextEditingLayout;
 @property(nonatomic) _Bool newCanvasRevealedVertically; // @synthesize newCanvasRevealedVertically=mNewCanvasRevealedVertically;
 @property(nonatomic) _Bool newCanvasRevealedHorizontally; // @synthesize newCanvasRevealedHorizontally=mNewCanvasRevealedHorizontally;
+@property(readonly, nonatomic) _Bool layoutDirectionIsLeftToRight; // @synthesize layoutDirectionIsLeftToRight=mLayoutDirectionIsLeftToRight;
+@property(readonly, nonatomic) struct TSUCellRect editingSpillingTextRange; // @synthesize editingSpillingTextRange=mEditingSpillingTextRange;
+@property(readonly, nonatomic) _Bool containedTextEditorWraps; // @synthesize containedTextEditorWraps=mContainedTextEditorTextWraps;
+@property(readonly, nonatomic) _Bool containedTextEditorSpills; // @synthesize containedTextEditorSpills=mContainedTextEditorSpills;
+@property(retain, nonatomic) TSWPLayout *containedTextEditingLayout; // @synthesize containedTextEditingLayout=mContainedTextEditingLayout;
+- (_Bool)wantsToProvideStylesForTextLayout:(id)arg1;
+- (id)styleProviderForTextLayout:(id)arg1;
+- (id)styleProvider;
+- (struct CGRect)_visibleFrameForOverscrolledChildFrame:(struct CGRect)arg1;
 - (_Bool)shouldShowCaption;
 @property(readonly, nonatomic) unsigned long long pageCount;
 @property(readonly, nonatomic) unsigned long long pageNumber;
 - (void)validatePageNumberCount;
 - (_Bool)p_getLayoutDirectionLeftToRight;
 - (int)p_defaultAlignmentForTableWritingDirection;
+- (id)p_getStyleProvidingAncestorLayout;
 - (int)reapCoordinatesChangedMaskForChrome;
 - (struct CGSize)initialTextSize;
 - (struct CGRect)p_maskRectForRichTextLayout:(id)arg1;
@@ -96,6 +106,7 @@
 - (int)verticalAlignmentForTextLayout:(id)arg1;
 - (double)maxAutoGrowLineWidthForTextLayout:(id)arg1;
 - (unsigned long long)autosizeFlagsForTextLayout:(id)arg1;
+- (_Bool)forceParentAutosizeFlagsForTextLayout:(id)arg1;
 - (int)naturalAlignmentForTextLayout:(id)arg1;
 - (struct TSUCellCoord)p_cellIDForWPLayout:(id)arg1;
 - (int)naturalAlignmentForCellID:(struct TSUCellCoord)arg1;
@@ -111,7 +122,7 @@
 @property(readonly, nonatomic) _Bool columnsAreLeftToRight;
 @property(readonly, nonatomic) unsigned long long columnCount;
 @property(readonly, nonatomic) TSWPPadding *layoutMargins;
-- (struct CGSize)adjustedInsetsForTarget:(id)arg1;
+- (struct UIEdgeInsets)adjustedInsetsForTarget:(id)arg1;
 - (_Bool)canvasShouldScrollForSelectionPath:(id)arg1;
 - (_Bool)orderedBefore:(id)arg1;
 - (id)unscaledCommentFlagAnchorInfoForSearchReference:(id)arg1;
@@ -135,13 +146,18 @@
 - (_Bool)isBeingManipulated;
 - (void)validateTableNameVisibility;
 - (void)invalidateTableNameVisibility;
+- (void)didEndTableNameEditing;
+- (void)willBeginTableNameEditingWithStorage:(id)arg1;
 - (void)bezierPathsForCellRegion:(id)arg1 selectionMask:(unsigned int)arg2 transform:(struct CGAffineTransform)arg3 viewScale:(double)arg4 inset:(double)arg5 clipToVisibleRect:(_Bool)arg6 cornerRadius:(double)arg7 block:(CDUnknownBlockType)arg8;
+- (id)alignedStrokeFramePathForGridRange:(CDStruct_58eae27c)arg1 frameType:(int)arg2 viewScale:(double)arg3 inset:(double)arg4 reoriginToZero:(_Bool)arg5 clipToVisibleRect:(_Bool)arg6 cornerRadius:(double)arg7 outMaskPath:(id *)arg8;
+- (id)alignedStrokeFramePathForRange:(struct TSUCellRect)arg1 frameType:(int)arg2 viewScale:(double)arg3 inset:(double)arg4 reoriginToZero:(_Bool)arg5 clipToVisibleRect:(_Bool)arg6 cornerRadius:(double)arg7 outMaskPath:(id *)arg8;
 - (struct CGRect)alignedStrokeFrameForGridRange:(CDStruct_58eae27c)arg1;
 - (struct CGRect)alignedStrokeFrameForRange:(struct TSUCellRect)arg1;
 - (struct CGRect)alignedStrokeFrame;
 - (struct TSUCellRect)_floatingCellRangeAtRect:(struct CGRect)arg1 inLayoutSpace:(id)arg2 withTransform:(struct CGAffineTransform)arg3;
 - (struct TSUCellRect)floatingHeaderColumnRangeAtRect:(struct CGRect)arg1;
 - (struct TSUCellRect)floatingHeaderRowRangeAtRect:(struct CGRect)arg1;
+@property(nonatomic) struct CGRect cellRangeVisibleRect; // @synthesize cellRangeVisibleRect=_cellRangeVisibleRect;
 - (double)tabsRowWidthAndOptionalLeftGap:(out double *)arg1;
 - (struct TSUCellRect)extendedPartitionRangeSingleSpaceIntersectionWithCellRange:(struct TSUCellRect)arg1;
 - (void)invalidatePosition;
@@ -158,9 +174,11 @@
 - (_Bool)suppressFrozenHeadersForEditing;
 - (_Bool)inFindReplaceMode;
 - (_Bool)inPrintPreviewMode;
+- (_Bool)inspectorGeometryIsAffectedByChangeRecord:(id)arg1;
 - (id)inspectorGeometry;
 - (struct CGRect)alignmentFrame;
 - (struct CGRect)frameForCaptionPositioning;
+- (struct CGRect)selectionHighlightFrameFittingParentWidthForChildWithFrame:(struct CGRect)arg1;
 - (int)wrapFitType;
 - (id)initialInfoGeometry;
 - (id)computeInfoGeometryFromPureLayoutGeometry:(id)arg1;
@@ -178,7 +196,6 @@
 - (id)initWithInfo:(id)arg1;
 - (id)initWithInfo:(id)arg1 layoutHint:(id)arg2;
 @property(readonly, nonatomic) struct CGSize scaleToFitParent;
-@property(readonly, nonatomic) TSTTableInfo *tableModel;
 @property(readonly, nonatomic) TSTTableInfo *tableInfo;
 @property(nonatomic) struct CGSize scaleToFit;
 - (void)iterateCellsInRange:(struct TSUCellRect)arg1 flags:(unsigned long long)arg2 searchFlags:(unsigned long long)arg3 usingBlock:(CDUnknownBlockType)arg4;

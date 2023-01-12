@@ -17,7 +17,8 @@
 - (void)_configureBackgroundViewIfNecessary;
 - (void)_updateBackgroundVisualStyling;
 - (void)_handleHoverGestureRecognizerEvent:(id)arg1;
-- (void)_setCornerRadius:(double)arg1;
+- (void)_setContinuousCornerRadius:(double)arg1;
+- (double)_continuousCornerRadius;
 - (void)setHighlighted:(_Bool)arg1;
 - (void)layoutSubviews;
 - (id)init;

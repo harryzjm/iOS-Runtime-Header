@@ -8,14 +8,20 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
+@class NSString, PKDiscoveryItem;
+
 @interface PKDiscoveryShelf : NSObject <NSSecureCoding>
 {
+    NSString *_itemIdentifier;
+    PKDiscoveryItem *_item;
     long long _type;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)shelfWithDictionary:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) long long type; // @synthesize type=_type;
+@property(nonatomic) __weak PKDiscoveryItem *item; // @synthesize item=_item;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

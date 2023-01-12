@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class VUILabel, VUISeparatorView, _TVImageView;
+@class VUIImageView, VUILabel, VUISeparatorView;
 
 __attribute__((visibility("hidden")))
 @interface VUISeasonPickerCollectionViewCell
@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
     VUILabel *_titleLabel;
     VUILabel *_subtitleLabel;
     VUILabel *_secondSubtitleLabel;
-    _TVImageView *_seasonImageView;
+    VUIImageView *_seasonImageView;
     VUISeparatorView *_topSeparatorView;
     VUISeparatorView *_bottomSeparatorView;
 }
@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) VUISeparatorView *bottomSeparatorView; // @synthesize bottomSeparatorView=_bottomSeparatorView;
 @property(retain, nonatomic) VUISeparatorView *topSeparatorView; // @synthesize topSeparatorView=_topSeparatorView;
-@property(retain, nonatomic) _TVImageView *seasonImageView; // @synthesize seasonImageView=_seasonImageView;
+@property(retain, nonatomic) VUIImageView *seasonImageView; // @synthesize seasonImageView=_seasonImageView;
 @property(retain, nonatomic) VUILabel *secondSubtitleLabel; // @synthesize secondSubtitleLabel=_secondSubtitleLabel;
 @property(retain, nonatomic) VUILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 @property(retain, nonatomic) VUILabel *titleLabel; // @synthesize titleLabel=_titleLabel;

@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (void)enumerateDirtyObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)replaceObjectAtIndex:(unsigned long long)arg1 withObject:(id)arg2;
 - (void)removeObjectAtIndex:(unsigned long long)arg1;
 - (void)removeLastObject;
@@ -24,7 +23,6 @@ __attribute__((visibility("hidden")))
 - (void)addObject:(id)arg1;
 - (id)objectAtIndex:(unsigned long long)arg1;
 - (unsigned long long)count;
-- (id)initWithConnection:(id)arg1;
 
 @end
 

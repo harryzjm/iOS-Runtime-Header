@@ -13,6 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface CNContactViewCache : NSObject <CNUICoreParentContainerProvider>
 {
+    CNCache *_cachedContactToContainerIDs;
     CNCache *_cachedContainers;
     CNCache *_cachedPolicies;
     CNCache *_cachedAccounts;
@@ -26,17 +27,24 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CNCache *cachedAccounts; // @synthesize cachedAccounts=_cachedAccounts;
 @property(retain, nonatomic) CNCache *cachedPolicies; // @synthesize cachedPolicies=_cachedPolicies;
 @property(retain, nonatomic) CNCache *cachedContainers; // @synthesize cachedContainers=_cachedContainers;
-- (id)_accountForContact:(id)arg1;
+@property(retain, nonatomic) CNCache *cachedContactToContainerIDs; // @synthesize cachedContactToContainerIDs=_cachedContactToContainerIDs;
+- (id)_accountForContainer:(id)arg1;
 - (id)bestPolicyForContact:(id)arg1;
 - (id)defaultContainerPolicy;
 - (id)_policyForContact:(id)arg1;
+- (id)_uncachedContainerForContact:(id)arg1 inStore:(id)arg2;
 - (id)predicateForContainerForContact:(id)arg1 inStore:(id)arg2;
 - (id)containerForContact:(id)arg1;
+- (id)containerIdentifierForContact:(id)arg1;
 - (void)resetCache;
+- (id)accountForContainer:(id)arg1;
 - (id)accountForContact:(id)arg1;
+- (id)policyForContainerWithIdentifier:(id)arg1;
 - (id)policyForDefaultContainer;
+- (id)policyForContainer:(id)arg1;
 - (id)policyForContact:(id)arg1;
 - (id)nts_lazyContactStore;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

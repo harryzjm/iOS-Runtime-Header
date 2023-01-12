@@ -4,33 +4,39 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CLLocation, NSDate;
+#import <PhotosGraph/MAUniquelyIdentifiableEdge-Protocol.h>
 
-@interface PGGraphAddressEdge
+@class CLLocation, MAEdgeFilter, NSDate;
+
+@interface PGGraphAddressEdge <MAUniquelyIdentifiableEdge>
 {
     float _weight;
-    double _timestampUTCStart;
-    double _timestampUTCEnd;
+    NSDate *_universalStartDate;
+    NSDate *_universalEndDate;
+    unsigned long long _numberOfAssets;
     struct CLLocationCoordinate2D _photoCoordinate;
 }
 
++ (void)setUniversalEndDate:(id)arg1 onAddressEdgeForIdentifier:(unsigned long long)arg2 inGraph:(id)arg3;
++ (void)setUniversalStartDate:(id)arg1 onAddressEdgeForIdentifier:(unsigned long long)arg2 inGraph:(id)arg3;
 + (id)filter;
-@property(nonatomic) struct CLLocationCoordinate2D photoCoordinate; // @synthesize photoCoordinate=_photoCoordinate;
-@property(readonly, nonatomic) double timestampUTCEnd; // @synthesize timestampUTCEnd=_timestampUTCEnd;
-@property(readonly, nonatomic) double timestampUTCStart; // @synthesize timestampUTCStart=_timestampUTCStart;
-- (void)setWeight:(float)arg1;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long numberOfAssets; // @synthesize numberOfAssets=_numberOfAssets;
+@property(readonly, nonatomic) struct CLLocationCoordinate2D photoCoordinate; // @synthesize photoCoordinate=_photoCoordinate;
+@property(readonly, nonatomic) NSDate *universalEndDate; // @synthesize universalEndDate=_universalEndDate;
+@property(readonly, nonatomic) NSDate *universalStartDate; // @synthesize universalStartDate=_universalStartDate;
 - (float)weight;
-@property(retain, nonatomic) CLLocation *photoLocation;
-@property(retain, nonatomic) NSDate *universalEndDate;
-@property(retain, nonatomic) NSDate *universalStartDate;
+@property(readonly, nonatomic) CLLocation *photoLocation;
+@property(readonly, nonatomic) double timestampUTCEnd;
+@property(readonly, nonatomic) double timestampUTCStart;
 - (unsigned short)domain;
 - (id)label;
+@property(readonly, nonatomic) MAEdgeFilter *uniquelyIdentifyingFilter;
 - (id)edgeDescription;
 - (id)propertyDictionary;
 - (_Bool)hasProperties:(id)arg1;
-- (void)setLocalProperties:(id)arg1;
-- (id)initWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5;
-- (id)initWithLabel:(id)arg1 fromMomentNode:(id)arg2 toAddressNode:(id)arg3 weight:(float)arg4;
+- (id)initWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5 properties:(id)arg6;
+- (id)initFromMomentNode:(id)arg1 toAddressNode:(id)arg2 weight:(float)arg3 universalStartDate:(id)arg4 universalEndDate:(id)arg5 photoCoordinate:(struct CLLocationCoordinate2D)arg6 numberOfAssets:(unsigned long long)arg7;
 
 @end
 

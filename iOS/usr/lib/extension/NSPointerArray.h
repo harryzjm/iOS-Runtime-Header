@@ -16,6 +16,7 @@
 {
 }
 
++ (_Bool)_subclassesMustBeExplicitlyMentionedWhenDecoded;
 + (_Bool)supportsSecureCoding;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)pointerArrayWithPointerFunctions:(id)arg1;

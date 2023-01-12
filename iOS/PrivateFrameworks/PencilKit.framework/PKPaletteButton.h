@@ -8,12 +8,15 @@
 
 #import <PencilKit/PKPaletteViewSizeScaling-Protocol.h>
 
-@class NSHashTable, NSString, UIButton;
+@class NSHashTable, NSString, UIButton, UIMenu;
+@protocol PKPaletteButtonDelegate;
 
 @interface PKPaletteButton : UIControl <PKPaletteViewSizeScaling>
 {
     _Bool _useCompactLayout;
     double _scalingFactor;
+    id <PKPaletteButtonDelegate> _delegate;
+    UIMenu *_menu;
     UIButton *_button;
     NSHashTable *_observers;
 }
@@ -31,7 +34,10 @@
 @property(retain, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property(retain, nonatomic) UIButton *button; // @synthesize button=_button;
 @property(nonatomic) _Bool useCompactLayout; // @synthesize useCompactLayout=_useCompactLayout;
+@property(retain, nonatomic) UIMenu *menu; // @synthesize menu=_menu;
+@property(nonatomic) __weak id <PKPaletteButtonDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) double scalingFactor; // @synthesize scalingFactor=_scalingFactor;
+- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 - (struct CGAffineTransform)_buttonTransform;
 - (void)_updateUI;
@@ -39,7 +45,9 @@
 - (void)setHighlighted:(_Bool)arg1;
 - (void)setEnabled:(_Bool)arg1;
 - (void)setHidden:(_Bool)arg1;
+- (_Bool)_wantsCustomBackgroundColor;
 - (id)_backgroundColor;
+- (_Bool)_wantsCustomTintColor;
 - (id)_tintColorForCurrentState;
 - (void)layoutSubviews;
 - (struct CGSize)intrinsicContentSize;

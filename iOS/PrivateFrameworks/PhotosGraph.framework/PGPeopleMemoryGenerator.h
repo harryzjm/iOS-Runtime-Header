@@ -21,14 +21,18 @@
 @property(retain, nonatomic) NSSet *birthdayPersonUUIDs; // @synthesize birthdayPersonUUIDs=_birthdayPersonUUIDs;
 @property(retain, nonatomic) NSSet *personNodes; // @synthesize personNodes=_personNodes;
 @property(retain, nonatomic) NSString *peopleUUID; // @synthesize peopleUUID=_peopleUUID;
-- (_Bool)canFallbackToDejunkAndDedupeForShowMore;
-- (_Bool)_upcomingBirthdayWillCollideWithPotentialMemory:(id)arg1;
-- (id)_potentialMemoriesForDryTesting;
-- (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
+- (id)titleGeneratorForTriggeredMemory:(id)arg1 withKeyAsset:(id)arg2 curatedAssets:(id)arg3 extendedCuratedAssets:(id)arg4 titleGenerationContext:(id)arg5 inGraph:(id)arg6;
+- (id)keyAssetCurationOptionsWithTriggeredMemory:(id)arg1 inGraph:(id)arg2;
+- (id)keyAssetCurationOptionsWithPotentialMemory:(id)arg1 inGraph:(id)arg2;
+- (id)relevantFeederForTriggeredMemory:(id)arg1 inGraph:(id)arg2 allowGuestAsset:(_Bool)arg3 progressReporter:(id)arg4;
+- (id)relevantFeederForPotentialMemory:(id)arg1 inGraph:(id)arg2;
 - (_Bool)semanticalDedupingEnabledForExtendedCuration;
 - (unsigned long long)durationForExtendedCuration;
 - (unsigned long long)durationForCuration;
-- (void)_enumeratePotentialMemoriesUsingBlock:(CDUnknownBlockType)arg1;
+- (_Bool)_upcomingBirthdayWillCollideWithPotentialMemory:(id)arg1;
+- (id)_potentialMemoriesForDryTesting;
+- (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2 andGraph:(id)arg3;
+- (void)_enumeratePotentialMemoriesWithGraph:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)_potentialMemoriesWithPeopleNode:(id)arg1 inYear:(long long)arg2 result:(CDUnknownBlockType)arg3;
 
 @end

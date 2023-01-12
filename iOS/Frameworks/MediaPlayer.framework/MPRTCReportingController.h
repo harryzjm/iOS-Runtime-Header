@@ -8,14 +8,13 @@
 
 #import <MediaPlayer/ICEnvironmentMonitorObserver-Protocol.h>
 
-@class MPAVController, MPAVItem, MPQueueFeeder, MPRTCReportingSessionSummaryEvent, NSMutableDictionary, NSNumber, NSString;
+@class MPAVController, MPAVItem, MPRTCReportingSessionSummaryEvent, NSMutableDictionary, NSNumber, NSString;
 
 @interface MPRTCReportingController : NSObject <ICEnvironmentMonitorObserver>
 {
     long long _currentInterfaceType;
     MPAVItem *_currentItem;
     _Bool _isReloadingWithPlaybackContext;
-    MPQueueFeeder *_pendingFailureQueueFeeder;
     NSNumber *_tracklistStartUptime;
     MPRTCReportingSessionSummaryEvent *_tracklistSummaryEvent;
     NSMutableDictionary *_uniqueIdentifierToReportingSession;
@@ -52,7 +51,6 @@
 - (void)_avItemAssetLoadedNotification:(id)arg1;
 - (void)_avControllerWillReloadWithPlaybackContextNotification:(id)arg1;
 - (void)_avControllerItemWillChangeNotification:(id)arg1;
-- (void)_avControllerPlaylistManagerFailedToQueueNotification:(id)arg1;
 - (void)_avControllerDidReloadWithPlaybackContextNotification:(id)arg1;
 - (void)_avControllerBufferingStateDidChangeNotification:(id)arg1;
 - (void)dealloc;

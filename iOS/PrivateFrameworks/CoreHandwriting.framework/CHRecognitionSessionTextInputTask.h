@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CHTextInputQuery, NSArray, NSLocale;
+@class CHTextInputQuery, NSArray;
 @protocol CHRecognitionSessionTextInputTaskDelegate;
 
 @interface CHRecognitionSessionTextInputTask
@@ -18,17 +18,16 @@
 @property(retain, nonatomic) CHTextInputQuery *activeTextInputQuery; // @synthesize activeTextInputQuery=_activeTextInputQuery;
 @property(readonly, retain, nonatomic) NSArray *initialTextInputTargets; // @synthesize initialTextInputTargets=_initialTextInputTargets;
 - (id)_dataSource:(id)arg1 textInputTargetForStrokeGroup:(id)arg2 simultaneousGroups:(id)arg3;
-- (id)_dataSource:(id)arg1 inputTargetContentInfoForStrokeGroups:(id)arg2 locale:(id)arg3 groupingManager:(id)arg4;
-- (id)_textCorrectionResultForStrokeGroup:(id)arg1 groupingManager:(id)arg2 targetContentInfo:(id)arg3 locale:(id)arg4 previousCorrectionResult:(id)arg5;
+- (id)_dataSource:(id)arg1 inputTargetContentInfoForStrokeGroups:(id)arg2 groupingManager:(id)arg3;
+- (id)_textCorrectionResultForStrokeGroup:(id)arg1 groupingManager:(id)arg2 targetContentInfo:(id)arg3 locales:(id)arg4 previousCorrectionResult:(id)arg5;
 - (id)newGroupingManager;
 - (id)newStrokeClassifier;
 - (id)clutterFilter;
 - (id)textCorrectionResultsForGroupingResult:(id)arg1 groupingManager:(id)arg2;
 - (id)recognitionResultsForGroupingResult:(id)arg1 groupingManager:(id)arg2;
-@property(readonly, nonatomic) NSLocale *locale;
 - (void)dealloc;
 - (id)initWithLocales:(id)arg1 preferredLocales:(id)arg2 strokeProvider:(id)arg3 inputResult:(id)arg4 recognitionQOSClass:(unsigned int)arg5;
-- (id)initWithLocale:(id)arg1 strokeProvider:(id)arg2 initialTextInputTargets:(id)arg3 inputResult:(id)arg4 recognitionEnvironment:(long long)arg5;
+- (id)initWithLocales:(id)arg1 strokeProvider:(id)arg2 initialTextInputTargets:(id)arg3 inputResult:(id)arg4 recognitionEnvironment:(long long)arg5;
 
 // Remaining properties
 @property(nonatomic) id <CHRecognitionSessionTextInputTaskDelegate> delegate; // @dynamic delegate;

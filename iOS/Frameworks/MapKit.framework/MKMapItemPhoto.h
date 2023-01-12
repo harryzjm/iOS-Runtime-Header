@@ -6,20 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSURL;
+@class NSArray, NSString, NSURL, _MKMapItemPhotosAttribution;
 @protocol GEOMapItemPhoto;
 
 @interface MKMapItemPhoto : NSObject
 {
+    _MKMapItemPhotosAttribution *_attribution;
     NSString *_title;
-    NSString *_subtitle;
+    NSArray *_subtitleComponents;
     id <GEOMapItemPhoto> _geoMapItemPhoto;
+    NSString *_subtitle;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) id <GEOMapItemPhoto> geoMapItemPhoto; // @synthesize geoMapItemPhoto=_geoMapItemPhoto;
 @property(copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
+@property(readonly, nonatomic) id <GEOMapItemPhoto> geoMapItemPhoto; // @synthesize geoMapItemPhoto=_geoMapItemPhoto;
+@property(readonly, nonatomic) NSArray *subtitleComponents; // @synthesize subtitleComponents=_subtitleComponents;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property(readonly, nonatomic) _MKMapItemPhotosAttribution *attribution; // @synthesize attribution=_attribution;
 @property(readonly, nonatomic) _Bool displayFullScreenPhotoGallery;
 - (id)urlForBestPhotoForSize:(struct CGSize)arg1;
 @property(readonly, nonatomic) long long format;
@@ -27,9 +31,10 @@
 @property(readonly, nonatomic) NSString *photoID;
 @property(readonly, nonatomic) NSURL *largestPhotoURL;
 @property(readonly, nonatomic) NSString *license;
+- (id)initWithGeoMapItemPhoto:(id)arg1 fallbackTitle:(id)arg2;
 - (id)initWithGeoMapItemPhoto:(id)arg1;
 - (id)initWithPictureItem:(id)arg1;
-- (id)initWithGeoMapItemPhoto:(id)arg1 title:(id)arg2 subtitle:(id)arg3;
+- (id)initWithGeoMapItemPhoto:(id)arg1 title:(id)arg2 subtitleComponents:(id)arg3;
 
 @end
 

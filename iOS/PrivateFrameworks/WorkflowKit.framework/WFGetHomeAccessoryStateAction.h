@@ -17,6 +17,7 @@
 - (id)characteristic;
 - (id)homeName;
 - (id)home;
+@property(readonly, nonatomic) NSString *homeIdentifier;
 - (void)homeManagerDidUpdateHomes:(id)arg1;
 - (id)localizedDefaultOutputName;
 - (id)outputMeasurementUnitType;

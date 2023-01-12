@@ -14,10 +14,10 @@
 
 + (id)secureCodedPropertyKeys;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *message; // @synthesize message=_message;
 @property(retain, nonatomic) NSDate *date; // @synthesize date=_date;
 - (int)defaultFamiliarity;
-- (void)dealloc;
 
 @end
 

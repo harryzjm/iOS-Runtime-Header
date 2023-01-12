@@ -13,12 +13,14 @@
 
 @class MPCPlaybackEngine, MPMusicPlayerControllerSystemCache, MPMusicPlayerQueueDescriptor, NSMutableArray, NSString, NSXPCListener, NSXPCListenerEndpoint;
 
+__attribute__((visibility("hidden")))
 @interface _MPCMusicPlayerControllerServer : NSObject <MPMusicPlayerControllerSystemServer, MPMusicPlayerControllerApplicationServer, NSXPCListenerDelegate, MPCPlaybackEngineEventObserving>
 {
     MPMusicPlayerQueueDescriptor *_queueDescriptor;
     MPMusicPlayerQueueDescriptor *_preparingDescriptor;
     CDUnknownBlockType _prepareCompletionHandler;
     _Bool _skipWaitingForLikelyToKeepUp;
+    _Bool _resumed;
     MPCPlaybackEngine *_playbackEngine;
     MPMusicPlayerControllerSystemCache *_systemCache;
     NSXPCListener *_listener;
@@ -30,6 +32,10 @@
 @property(readonly, nonatomic) NSXPCListener *listener; // @synthesize listener=_listener;
 @property(readonly, nonatomic) MPMusicPlayerControllerSystemCache *systemCache; // @synthesize systemCache=_systemCache;
 @property(readonly, nonatomic) __weak MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
+- (void)_applyServerStateUpdateRecord:(id)arg1;
+- (void)_addContentItemIDsToUpdateRecord:(id)arg1;
+- (void)_registerForCommandHandlersRegisteredNotification;
+- (void)_handleCommandHandlersRegistered:(id)arg1;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)engine:(id)arg1 didChangeItemElapsedTime:(double)arg2 rate:(float)arg3;
 - (void)engine:(id)arg1 didEndPlaybackOfItem:(id)arg2;
@@ -41,6 +47,8 @@
 - (void)engine:(id)arg1 didChangeToItem:(id)arg2;
 - (void)engine:(id)arg1 didChangeQueueWithReason:(id)arg2;
 - (void)engine:(id)arg1 didChangeToState:(unsigned long long)arg2;
+- (void)setDisableAutomaticCanBeNowPlaying:(_Bool)arg1;
+- (void)setRelativeVolume:(float)arg1;
 - (void)beginPlaybackAtHostTime:(id)arg1;
 - (void)prerollWithCompletion:(CDUnknownBlockType)arg1;
 - (void)performQueueModifications:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -69,9 +77,11 @@
 - (void)setNowPlayingItem:(id)arg1 itemIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getNowPlayingAtIndex:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)_nowPlayingWithItem:(id)arg1;
+- (void)getNowPlayingsForContentItemIDs:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getNowPlayingWithReply:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSXPCListenerEndpoint *endpoint;
 - (void)stopServer;
+- (void)resumeIfNeeded;
 - (void)startServer;
 @property(readonly, nonatomic, getter=isRunning) _Bool running;
 - (id)initWithPlaybackEngine:(id)arg1;

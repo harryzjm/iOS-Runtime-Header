@@ -12,7 +12,7 @@
 
 + (id)knownRelationshipSingleValueKeys;
 + (Class)frozenClass;
-- (_Bool)commit:(id *)arg1;
+- (_Bool)save:(id *)arg1;
 - (id)calendar;
 @property(copy, nonatomic) NSString *UUID;
 @property(copy, nonatomic) NSString *externalModificationTag;

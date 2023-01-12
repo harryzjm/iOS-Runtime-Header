@@ -25,7 +25,6 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) HDXPCListener *listener; // @synthesize listener=_listener;
 @property(nonatomic) __weak id <HDTaskServerDelegate> taskServerDelegate; // @synthesize taskServerDelegate=_taskServerDelegate;
 @property(nonatomic) __weak id <HDTaskServerEndpointDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) __weak id <HDTaskServer> taskServer; // @synthesize taskServer=_taskServer;

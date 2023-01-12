@@ -9,12 +9,16 @@
 #import <CoverSheet/CSEventHandling-Protocol.h>
 
 @class NSString;
+@protocol CSFaceOcclusionMonitorDelegate;
 
 @interface CSFaceOcclusionMonitor : NSObject <CSEventHandling>
 {
     unsigned long long _faceOcclusionsSinceScreenOn;
+    id <CSFaceOcclusionMonitorDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) __weak id <CSFaceOcclusionMonitorDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) unsigned long long faceOcclusionsSinceScreenOn; // @synthesize faceOcclusionsSinceScreenOn=_faceOcclusionsSinceScreenOn;
 - (_Bool)handleEvent:(id)arg1;
 - (_Bool)wouldHandleButtonEvent:(id)arg1;

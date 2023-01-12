@@ -35,7 +35,7 @@ struct CGSize {
 };
 
 struct PXSimpleIndexPath {
-    unsigned long long _field1;
+    long long _field1;
     long long _field2;
     long long _field3;
     long long _field4;

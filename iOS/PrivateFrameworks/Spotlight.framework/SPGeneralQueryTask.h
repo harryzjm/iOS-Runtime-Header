@@ -20,6 +20,7 @@
     NSString *_mutableSessionEntityString;
 }
 
++ (id)searchInAppButtonItemWithCommand:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly) SPSearchQuery *query; // @synthesize query=_query;
 @property(retain) NSMutableArray *mutableSections; // @synthesize mutableSections=_mutableSections;
@@ -41,6 +42,14 @@
 - (void)start;
 - (void)clearInternal:(int)arg1 invalidate:(_Bool)arg2;
 - (id)initForSession:(id)arg1 withQuery:(id)arg2;
+- (id)buildResultsInSections:(id)arg1 isUniversalSearchEnabled:(_Bool)arg2;
+- (id)buildResultsInSections:(id)arg1;
+- (id)buildCollectionResultWithSection:(id)arg1 queryContext:(id)arg2;
+- (id)searchStringWithEntityFallback;
+- (id)buildSocialMediaContactSectionWithResultBuilder:(id)arg1;
+- (id)buildHeaderContactSectionWithResultBuilder:(id)arg1;
+- (id)buildFooterContactSectionWithResultBuilder:(id)arg1;
+- (id)buildSectionWithResult:(id)arg1 sectionBundleId:(id)arg2 sectionTitleKey:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

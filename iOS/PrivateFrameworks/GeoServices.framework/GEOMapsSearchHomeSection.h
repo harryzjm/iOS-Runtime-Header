@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEOCollectionSuggestionResult, GEOPublisherSuggestionResult, NSArray, NSString;
+@class GEOCollectionSuggestionResult, GEOGuideLocationSuggestionResults, GEOPublisherSuggestionResult, NSArray, NSString;
 
 @interface GEOMapsSearchHomeSection : NSObject
 {
@@ -14,11 +14,13 @@
     NSString *_name;
     GEOPublisherSuggestionResult *_publisherSuggestions;
     NSArray *_searchCategories;
+    GEOGuideLocationSuggestionResults *_guideLocationSuggestsions;
     unsigned long long _sectionType;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long sectionType; // @synthesize sectionType=_sectionType;
+@property(readonly, nonatomic) GEOGuideLocationSuggestionResults *guideLocationSuggestsions; // @synthesize guideLocationSuggestsions=_guideLocationSuggestsions;
 @property(readonly, nonatomic) NSArray *searchCategories; // @synthesize searchCategories=_searchCategories;
 @property(readonly, nonatomic) GEOPublisherSuggestionResult *publisherSuggestions; // @synthesize publisherSuggestions=_publisherSuggestions;
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;

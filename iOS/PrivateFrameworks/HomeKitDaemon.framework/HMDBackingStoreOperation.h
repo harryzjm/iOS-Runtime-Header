@@ -6,24 +6,35 @@
 
 #import <Foundation/NSOperation.h>
 
-@class HMDBackingStore, NSUUID;
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@interface HMDBackingStoreOperation : NSOperation
+@class HMDBackingStore, NSString, NSUUID;
+
+@interface HMDBackingStoreOperation : NSOperation <HMFLogging>
 {
     CDUnknownBlockType _resultBlock;
     NSUUID *_operationUUID;
+    CDUnknownBlockType _operationFinishBlock;
     HMDBackingStore *_store;
 }
 
++ (id)logCategory;
 - (void).cxx_destruct;
 @property(retain, nonatomic) HMDBackingStore *store; // @synthesize store=_store;
+@property(copy) CDUnknownBlockType operationFinishBlock; // @synthesize operationFinishBlock=_operationFinishBlock;
 @property(readonly, nonatomic) NSUUID *operationUUID; // @synthesize operationUUID=_operationUUID;
 @property(copy, nonatomic) CDUnknownBlockType resultBlock; // @synthesize resultBlock=_resultBlock;
-- (id)description;
+- (id)logIdentifier;
+@property(readonly, copy) NSString *description;
 - (void)main;
 - (id)mainReturningError;
 - (id)init;
 - (id)initWithResultBlock:(CDUnknownBlockType)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

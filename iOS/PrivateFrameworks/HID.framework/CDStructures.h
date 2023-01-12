@@ -18,3 +18,7 @@ typedef struct {
     char *_field2;
 } CDStruct_d29ee3f1;
 
+typedef struct {
+    unsigned int _field1[8];
+} CDStruct_6ad76789;
+

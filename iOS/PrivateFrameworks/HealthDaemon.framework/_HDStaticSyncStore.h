@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSUUID *storeIdentifier; // @synthesize storeIdentifier=_storeIdentifier;
 @property(readonly, nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
 @property(readonly) long long syncStoreType;
 - (id)databaseIdentifier;
@@ -38,8 +37,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)canRecieveSyncObjectsForEntityClass:(Class)arg1;
 @property(readonly) int protocolVersion;
 @property(readonly, copy) NSString *description;
-- (_Bool)resetReceivedSyncAnchorMapWithError:(id *)arg1;
-- (_Bool)replacePersistedAnchorMap:(id)arg1 error:(id *)arg2;
 - (id)initWithProfile:(id)arg1 storeIdentifier:(id)arg2 error:(id *)arg3;
 
 // Remaining properties

@@ -21,8 +21,16 @@ __attribute__((visibility("hidden")))
     _Bool isRemoteExpensive;
     _Bool isLocalDelegated;
     _Bool isRemoteDelegated;
+    _Bool isVirtualRelayLink;
+    _Bool isLocalOn5G;
+    _Bool isRemoteOn5G;
+    int maxConnectionMTU;
 }
 
+@property(readonly) _Bool isRemoteOn5G; // @synthesize isRemoteOn5G;
+@property(readonly) _Bool isLocalOn5G; // @synthesize isLocalOn5G;
+@property int maxConnectionMTU; // @synthesize maxConnectionMTU;
+@property(readonly) _Bool isVirtualRelayLink; // @synthesize isVirtualRelayLink;
 @property(readonly) _Bool isRemoteDelegated; // @synthesize isRemoteDelegated;
 @property(readonly) _Bool isLocalDelegated; // @synthesize isLocalDelegated;
 @property(readonly) _Bool isRemoteExpensive; // @synthesize isRemoteExpensive;
@@ -38,8 +46,11 @@ __attribute__((visibility("hidden")))
 - (_Bool)matchesSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1;
 - (struct tagIPPORT)IPPortForNWConnection:(id)arg1;
 - (void)getSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1;
+@property unsigned int uplinkBitrateCapOneToOne;
+@property unsigned int uplinkAudioBitrateCapOneToOne;
 @property unsigned int uplinkBitrateCap;
 @property unsigned int downlinkBitrateCap;
+@property(readonly) NSString *localInterfaceName;
 @property(readonly) NSUUID *connectionUUID;
 @property int connectionMTU;
 - (int)cellularMTU;
@@ -51,6 +62,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) _Bool isReplaceOnly;
 @property(readonly) _Bool isUpgraded;
 @property(readonly) _Bool serverIsDegraded;
+@property(readonly) _Bool isEndToEndLink;
 @property(readonly) _Bool isVPN;
 @property(readonly) int connectionId;
 @property(readonly) _Bool isRelay;
@@ -59,10 +71,12 @@ __attribute__((visibility("hidden")))
 @property(readonly) _Bool isLocalOnCellular;
 @property(readonly) _Bool isRemoteOnWiFi;
 @property(readonly) _Bool isLocalOnWiFi;
+- (unsigned short)updateMaxConnectionMTU:(unsigned short)arg1;
 - (_Bool)isSameAsConnection:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (id)ipportToString:(struct tagIPPORT *)arg1;
 - (_Bool)isOnSameInterfacesWithConnection:(id)arg1;
+@property(readonly) _Bool isWifiToWifi;
 - (_Bool)isOnSameIPPortWithConnection:(id)arg1;
 - (_Bool)isRemoteIPPort:(struct tagIPPORT *)arg1;
 - (_Bool)isLocalIPPort:(struct tagIPPORT *)arg1;

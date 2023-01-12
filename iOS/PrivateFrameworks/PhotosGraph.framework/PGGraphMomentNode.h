@@ -4,15 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PhotosGraph/PGAssetCollectionFeature-Protocol.h>
 #import <PhotosGraph/PGEventEnrichment-Protocol.h>
 #import <PhotosGraph/PGGraphFullEvent-Protocol.h>
 #import <PhotosGraph/PGGraphPhotoEvent-Protocol.h>
 #import <PhotosGraph/PGGraphRelatableEvent-Protocol.h>
-#import <PhotosGraph/PLMomentProtocol-Protocol.h>
+#import <PhotosGraph/PLMomentProcessingProtocol-Protocol.h>
 
-@class CLLocation, CLSHolidayCalendarEventRuleTraits, NSDate, NSSet, NSString, PGGraphHighlightGroupNode, PGGraphHighlightNode;
+@class CLLocation, NSDate, NSSet, NSString, PGGraphHighlightGroupNode, PGGraphHighlightNode, PGGraphMomentNodeCollection;
+@protocol PGGraphEventCollection;
 
-@interface PGGraphMomentNode <PLMomentProtocol, PGGraphFullEvent, PGGraphPhotoEvent, PGGraphRelatableEvent, PGEventEnrichment>
+@interface PGGraphMomentNode <PLMomentProcessingProtocol, PGGraphFullEvent, PGGraphPhotoEvent, PGGraphRelatableEvent, PGEventEnrichment, PGAssetCollectionFeature>
 {
     NSString *_localIdentifier;
     double _localStartTimestamp;
@@ -41,24 +43,41 @@
     unsigned long long _numberOfAssetsInExtendedCuration;
 }
 
++ (id)highlightOfMoment;
++ (id)cityOfMoment;
 + (id)socialGroupInMoment;
 + (id)meaningHierarchyOfMoment;
++ (id)celebratedHolidayOfMoment;
++ (id)personActivityMeaningOfMoment;
++ (id)reliableMeaningOfMoment;
 + (id)meaningOfMoment;
 + (id)businessOfMoment;
 + (id)petPresentInMoment;
 + (id)babyPresentInMoment;
 + (id)mobilityOfMoment;
 + (id)partOfDayOfMoment;
++ (id)remoteAddressOfMoment;
 + (id)addressOfMoment;
 + (id)frequentLocationOfMoment;
++ (id)featureOfMoment;
++ (id)memoryOfMoment;
++ (id)authorOfMoment;
++ (id)anniversaryPersonInMoment;
++ (id)birthdayPersonInMoment;
++ (id)personExcludingMeInMoment;
++ (id)consolidatedPersonInMoment;
 + (id)personInMoment;
 + (id)publicEventOfMoment;
++ (id)specialPOIOfMoment;
++ (id)improvedPOIOfMoment;
 + (id)poiOfMoment;
 + (id)roiOfMoment;
 + (id)weekendOfMoment;
 + (id)weekdayOfMoment;
 + (id)sceneOfMoment;
 + (id)dateOfMoment;
++ (id)previousMomentOfMoment;
++ (id)nextMomentOfMoment;
 + (id)inclusivePathToTargetNodeDomain:(unsigned short)arg1 withName:(id)arg2;
 + (id)inclusivePathFromTargetNodeDomain:(unsigned short)arg1 withName:(id)arg2;
 + (id)pathToTargetNodeDomain:(unsigned short)arg1;
@@ -66,15 +85,28 @@
 + (id)pathToMoment;
 + (id)pathFromMoment;
 + (id)firstAndLastMomentNodesInMomentNodes:(id)arg1;
++ (void)setNumberOfAssets:(unsigned long long)arg1 onMomentNodeForIdentifier:(unsigned long long)arg2 inGraph:(id)arg3;
++ (void)setUniversalEndDate:(id)arg1 onMomentNodeForIdentifier:(unsigned long long)arg2 inGraph:(id)arg3;
++ (void)setUniversalStartDate:(id)arg1 onMomentNodeForIdentifier:(unsigned long long)arg2 inGraph:(id)arg3;
++ (void)setLocalEndDate:(id)arg1 onMomentNodeForIdentifier:(unsigned long long)arg2 inGraph:(id)arg3;
++ (void)setLocalStartDate:(id)arg1 onMomentNodeForIdentifier:(unsigned long long)arg2 inGraph:(id)arg3;
 + (id)contentBasedPropertiesWithMoment:(id)arg1;
 + (id)propertiesWithMoment:(id)arg1;
++ (long long)breakoutOfRoutineTypeWithNeighborScore:(double)arg1;
 + (id)contentScoreSortDescriptors;
 + (id)scoreSortDescriptors;
++ (id)filterWithLocalDateInterval:(id)arg1;
++ (id)filterWithTotalNumberOfPersonsGreaterThanOrEqualTo:(unsigned long long)arg1;
++ (id)filterWithUUID:(id)arg1;
++ (id)filterWithUUIDs:(id)arg1;
++ (id)smartInterestingFilter;
++ (id)interestingWithAlternateJunkingFilter;
++ (id)interestingFilter;
 + (id)filter;
 - (void).cxx_destruct;
-@property(nonatomic) unsigned long long numberOfAssetsInExtendedCuration; // @synthesize numberOfAssetsInExtendedCuration=_numberOfAssetsInExtendedCuration;
-@property(nonatomic) double facesProcessedRatio; // @synthesize facesProcessedRatio=_facesProcessedRatio;
-@property(nonatomic) double scenesProcessedRatio; // @synthesize scenesProcessedRatio=_scenesProcessedRatio;
+@property(readonly) unsigned long long numberOfAssetsInExtendedCuration; // @synthesize numberOfAssetsInExtendedCuration=_numberOfAssetsInExtendedCuration;
+@property(readonly) double facesProcessedRatio; // @synthesize facesProcessedRatio=_facesProcessedRatio;
+@property(readonly) double scenesProcessedRatio; // @synthesize scenesProcessedRatio=_scenesProcessedRatio;
 @property(readonly) unsigned long long totalNumberOfPersons; // @synthesize totalNumberOfPersons=_totalNumberOfPersons;
 @property(readonly) double timestampUTCEnd; // @synthesize timestampUTCEnd=_universalEndTimestamp;
 @property(readonly) double timestampUTCStart; // @synthesize timestampUTCStart=_universalStartTimestamp;
@@ -85,20 +117,18 @@
 @property(readonly) double contentScore; // @synthesize contentScore=_contentScore;
 @property(readonly) unsigned long long numberOfShinyGemAssets; // @synthesize numberOfShinyGemAssets=_numberOfShinyGemAssets;
 @property(readonly) unsigned long long numberOfRegularGemAssets; // @synthesize numberOfRegularGemAssets=_numberOfRegularGemAssets;
-@property(nonatomic) unsigned long long numberOfAssets; // @synthesize numberOfAssets=_numberOfAssets;
+@property(readonly) unsigned long long numberOfAssets; // @synthesize numberOfAssets=_numberOfAssets;
 @property(readonly) unsigned long long numberOfAssetsWithPersons; // @synthesize numberOfAssetsWithPersons=_numberOfAssetsWithPersons;
-@property(nonatomic) _Bool containsNonJunkAssets; // @synthesize containsNonJunkAssets=_containsNonJunkAssets;
+@property(readonly) _Bool containsNonJunkAssets; // @synthesize containsNonJunkAssets=_containsNonJunkAssets;
 @property(readonly) _Bool containsBetterScoringAsset; // @synthesize containsBetterScoringAsset=_containsBetterScoringAsset;
 @property(readonly) _Bool hasAssetsWithInterestingScenes; // @synthesize hasAssetsWithInterestingScenes=_hasAssetsWithInterestingScenes;
 @property(readonly) _Bool hasHigherThanImprovedAssets; // @synthesize hasHigherThanImprovedAssets=_hasHigherThanImprovedAssets;
 @property(readonly) double inhabitationScore; // @synthesize inhabitationScore=_inhabitationScore;
-@property(retain, nonatomic) NSString *name; // @synthesize name=_name;
+@property(readonly) NSString *name; // @synthesize name=_name;
+@property(readonly, nonatomic) NSString *featureIdentifier;
+@property(readonly, nonatomic) unsigned long long featureType;
 @property(readonly) _Bool petIsPresent;
 @property(readonly) _Bool babyIsPresent;
-- (_Bool)_isMePresent;
-- (unsigned long long)_eventRuleLocationTrait;
-- (unsigned long long)_eventRulePeopleTrait;
-@property(readonly) CLSHolidayCalendarEventRuleTraits *holidayCalendarEventRuleTraits;
 - (id)associatedNodesForRemoval;
 - (id)sameMonthMoments;
 - (id)sameWeekendMoments;
@@ -109,11 +139,13 @@
 - (id)connectedEventsWithTargetDomain:(unsigned short)arg1;
 - (id)photoEvent;
 - (double)weightForMoment:(id)arg1;
-- (id)fetchAssetCollection;
-- (id)anniversaryPersonNode;
-- (id)birthdayPersonNode;
+- (id)fetchAssetCollectionInPhotoLibrary:(id)arg1;
+- (id)anniversaryPersonNodes;
+- (id)birthdayPersonNodes;
 - (id)reliableMeaningLabels;
 @property(readonly, nonatomic) NSString *uuid;
+- (id)eventEnrichmentSortedMomentNodes;
+- (id)eventEnrichmentMomentNodes;
 - (id)naturalLanguageFeatures;
 - (id)keywordsForRelatedType:(unsigned long long)arg1 focusOnNodes:(id)arg2;
 - (id)debugDictionary;
@@ -128,7 +160,9 @@
 - (id)locatedEvent;
 - (id)timedEvent;
 - (void)enumerateMeaningfulEventsUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateReliableMeaningNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateMeaningNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateMeaningEdgesAndNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)meaningLabelsIncludingParents;
 - (id)meaningNodes;
 - (id)meaningLabels;
@@ -139,9 +173,6 @@
 - (id)businessNodes;
 - (id)addressNodes;
 @property(readonly) _Bool hasLocation;
-- (id)searchConfidenceSceneNodes;
-- (id)highConfidenceSceneNodes;
-- (id)sceneNodes;
 - (id)roiNodes;
 - (id)poiNodes;
 - (id)celebratedHolidayNodes;
@@ -156,25 +187,30 @@
 - (void)enumerateBabyNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumeratePetNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateFrequentLocationNodesUsingBlock:(CDUnknownBlockType)arg1;
-- (void)eventEnumerateMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
-- (id)sortedMomentNodes;
-- (id)momentNodes;
-- (unsigned long long)numberOfMoments;
+- (id)eventSortedMomentNodes;
 - (void)enumeratePublicEventNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumeratePublicEventEdgesAndNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateBusinessesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateBusinessNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateBusinessEdgesAndNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateSceneNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateSceneEdgesAndNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateROINodesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateROIEdgesAndNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumeratePOINodesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumeratePOIEdgesAndNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateSocialGroupNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateSocialGroupEdgesAndNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateHighlightNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumeratePersonNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumeratePersonEdgesAndNodesUsingBlock:(CDUnknownBlockType)arg1;
 @property(readonly) unsigned long long numberOfPersonNodes;
 - (id)remoteAddressEdges;
 - (void)enumerateConsolidatedAddressesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateRemoteAddressNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumeratePreciseAddressNodesUsingBlock:(CDUnknownBlockType)arg1;
-- (void)enumerateAddressNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumeratePreciseAddressEdgesAndNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateAddressEdgesAndNodesUsingBlock:(CDUnknownBlockType)arg1;
 @property(readonly) _Bool hasAddressNodes;
 - (id)countryNodes;
 - (id)cityNodes;
@@ -183,17 +219,20 @@
 @property(readonly) _Bool hasPersonNodes;
 - (void)enumerateCelebratedHolidayNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateDateNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateDateEdgesAndNodesUsingBlock:(CDUnknownBlockType)arg1;
 @property(readonly) _Bool isAggregation;
 @property(readonly) _Bool isTrip;
 @property(readonly) _Bool isShortTrip;
 @property(readonly) _Bool isLongTrip;
 - (_Bool)endsBeforeLocalDate:(id)arg1;
 - (_Bool)startsAfterLocalDate:(id)arg1;
-@property(retain, nonatomic) NSDate *universalEndDate;
-@property(retain, nonatomic) NSDate *universalStartDate;
-@property(retain, nonatomic) NSDate *localEndDate;
-@property(retain, nonatomic) NSDate *localStartDate;
-- (void)enumeratePartOfDayNodesUsingBlock:(CDUnknownBlockType)arg1;
+@property(readonly) NSDate *universalEndDate;
+@property(readonly) NSDate *universalStartDate;
+@property(readonly) NSDate *localEndDate;
+@property(readonly) NSDate *localStartDate;
+@property(readonly) id <PGGraphEventCollection> scenedEventCollection;
+@property(readonly) id <PGGraphEventCollection> eventCollection;
+- (void)enumeratePartOfDayEdgesAndNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)_enumeratePartsOfDayWithThreshold:(float)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (unsigned long long)_partsOfDayWithThreshold:(float)arg1;
 - (void)enumerateSignificantPartsOfDayUsingBlock:(CDUnknownBlockType)arg1;
@@ -204,6 +243,7 @@
 - (id)bestAddressNode;
 @property(readonly) PGGraphMomentNode *nextMomentNode;
 @property(readonly) PGGraphMomentNode *previousMomentNode;
+@property(readonly, nonatomic) PGGraphMomentNodeCollection *collection;
 @property(readonly) _Bool isMeaningful;
 @property(readonly) _Bool isPartOfTrip;
 @property(readonly) PGGraphHighlightGroupNode *highlightGroupNode;
@@ -212,24 +252,23 @@
 @property(readonly) _Bool isInterestingForMemories;
 @property(readonly) _Bool hasEnoughFacesProcessed;
 @property(readonly) _Bool hasEnoughScenesProcessed;
-@property(readonly) long long breakoutOfRoutineType;
-@property(readonly) _Bool isBreakoutOfRoutineHigh;
-@property(readonly) _Bool happensPartiallyAtMyHomeOrWork;
-@property(readonly) _Bool happensPartiallyAtMyWork;
-@property(readonly) _Bool happensPartiallyAtMyHome;
-@property(readonly) double neighborScore;
+- (_Bool)happensPartiallyAtHomeOrWorkOfPersonNodes:(id)arg1;
+- (_Bool)happensPartiallyAtWorkOfPersonNodes:(id)arg1;
+- (_Bool)happensPartiallyAtHomeOfPersonNodes:(id)arg1;
 @property(readonly) NSString *UUID;
 @property(readonly) NSString *localIdentifier;
 - (unsigned short)domain;
 - (id)label;
 @property(readonly, copy) NSString *description;
-- (void)mergeProperties:(id)arg1;
+- (id)propertyForKey:(id)arg1;
+- (id)changingPropertiesWithProperties:(id)arg1;
 - (id)propertyDictionary;
 - (_Bool)hasProperties:(id)arg1;
 - (void)setLocalProperties:(id)arg1;
-- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
-- (id)init;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3 properties:(id)arg4;
+- (id)initFromMoment:(id)arg1;
 - (double)graphScore;
+@property(readonly, nonatomic) short pl_originatorState;
 @property(readonly, nonatomic) unsigned long long pl_numberOfAssets;
 @property(readonly, nonatomic) struct CLLocationCoordinate2D pl_coordinate;
 @property(readonly, nonatomic) CLLocation *pl_location;

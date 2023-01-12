@@ -7,11 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <RecapPerformanceTesting/RPTBlockBasedScrollTestParameters-Protocol.h>
-#import <RecapPerformanceTesting/RPTScrollTestParameters-Protocol.h>
+#import <RecapPerformanceTesting/RPTTestParameters-Protocol.h>
 
-@class NSArray, NSString, RCPSyntheticEventStream;
+@class NSArray, NSString;
 
-@interface RPTGroupScrollTestParameters : NSObject <RPTScrollTestParameters, RPTBlockBasedScrollTestParameters>
+@interface RPTGroupScrollTestParameters : NSObject <RPTBlockBasedScrollTestParameters, RPTTestParameters>
 {
     NSString *testName;
     CDUnknownBlockType _completionHandler;
@@ -24,12 +24,13 @@
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property(copy, nonatomic) NSString *testName; // @synthesize testName;
 - (CDUnknownBlockType)composerBlock;
-@property(readonly, nonatomic) RCPSyntheticEventStream *eventStream;
+- (void)prepareWithComposer:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool managesTestStartAndEnd;
 @property(readonly) Class superclass;
 
 @end

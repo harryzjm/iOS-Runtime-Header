@@ -10,7 +10,7 @@
 
 @interface _TtC16SiriDialogEngine10CATWrapper : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *bundle;
+    MISSING_TYPE *templateDir;
     MISSING_TYPE *options;
     MISSING_TYPE *mockGlobals;
 }

@@ -7,16 +7,18 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (TSPArchiveUtilities)
-- (id)tsp_initWithNSRangeArray:(const RepeatedPtrField_6e0d89e6 *)arg1;
-- (void)tsp_saveToNSRangeArray:(RepeatedPtrField_6e0d89e6 *)arg1;
-- (id)tsp_initWithProtobufUUIDArray:(const RepeatedPtrField_c4607516 *)arg1;
-- (void)tsp_saveToProtobufUUIDArray:(RepeatedPtrField_c4607516 *)arg1;
-- (id)tsp_initWithUInt32Array:(const RepeatedField_92283dc2 *)arg1;
-- (void)tsp_saveToUInt32Array:(RepeatedField_92283dc2 *)arg1;
-- (id)tsp_initWithColorArray:(const RepeatedPtrField_c17961e4 *)arg1;
-- (void)tsp_saveToColorArray:(RepeatedPtrField_c17961e4 *)arg1;
-- (id)tsp_initWithProtobufStringArray:(const RepeatedPtrField_fe7cf120 *)arg1;
-- (void)tsp_saveToProtobufStringArray:(RepeatedPtrField_fe7cf120 *)arg1;
+- (id)tsp_initWithNSRangeArray:(const void *)arg1;
+- (void)tsp_saveToNSRangeArray:(void *)arg1;
+- (id)tsp_initWithProtobufUUIDArray:(const void *)arg1;
+- (void)tsp_saveToProtobufUUIDArray:(void *)arg1;
+- (id)tsp_initWithDoubleArray:(const void *)arg1;
+- (void)tsp_saveToDoubleArray:(void *)arg1;
+- (id)tsp_initWithUInt32Array:(const void *)arg1;
+- (void)tsp_saveToUInt32Array:(void *)arg1;
+- (id)tsp_initWithColorArray:(const void *)arg1;
+- (void)tsp_saveToColorArray:(void *)arg1;
+- (id)tsp_initWithProtobufStringArray:(const void *)arg1;
+- (void)tsp_saveToProtobufStringArray:(void *)arg1;
 - (id)tsp_deepCopyWithContext:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)tsp_deepCopyWithContext:(id)arg1 options:(id)arg2 objectMap:(id *)arg3 error:(id *)arg4;
 - (void)tsp_deepCopyWithContext:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;

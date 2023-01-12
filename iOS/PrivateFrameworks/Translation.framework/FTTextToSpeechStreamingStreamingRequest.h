@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_d397d874)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_d397d874)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) FTStartTextToSpeechStreamingRequest *contentAsFTStartTextToSpeechStreamingRequest;
 @property(readonly, nonatomic) long long content_type;
 - (id)copyWithZone:(struct _NSZone *)arg1;

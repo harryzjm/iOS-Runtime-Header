@@ -8,26 +8,37 @@
 
 @interface SBRemovalSwitcherModifier
 {
+    long long _layoutRole;
     SBAppLayout *_appLayout;
     long long _reason;
     SBSwitcherModifier *_multitaskingModifier;
-    _Bool _simulatingPostRemovalState;
+    _Bool _hasResizedEnoughToUnblur;
     unsigned long long _indexToScrollToAfterRemoval;
     unsigned long long _indexOfAppLayoutPriorToRemoval;
     NSSet *_visibleAppLayoutsPriorToRemoval;
+    SBAppLayout *_resultingAppLayoutIfAny;
     unsigned long long _phase;
 }
 
 - (void).cxx_destruct;
 - (id)topMostLayoutElements;
+- (double)blurViewIconScaleForIndex:(unsigned long long)arg1;
 - (_Bool)clipsToUnobscuredMarginAtIndex:(unsigned long long)arg1;
 - (void)_performBlockWhileSimulatingPostRemovalAppLayoutState:(CDUnknownBlockType)arg1;
+- (_Bool)shouldAccessoryDrawShadowForAppLayout:(id)arg1;
+- (_Bool)shouldScaleContentToFillBoundsAtIndex:(unsigned long long)arg1;
+- (id)resizeProgressNotificationsForLayoutRole:(long long)arg1 inAppLayout:(id)arg2;
+- (_Bool)shouldUseAnchorPointToPinLayoutRolesToSpace:(unsigned long long)arg1;
 - (id)animationAttributesForLayoutElement:(id)arg1;
 - (id)visibleAppLayouts;
-- (struct CGPoint)scrollViewContentOffset;
+- (_Bool)isLayoutRoleBlurred:(long long)arg1 inAppLayout:(id)arg2;
+- (struct SBSwitcherAsyncRenderingAttributes)asyncRenderingAttributesForAppLayout:(id)arg1;
+- (id)handleSceneReadyEvent:(id)arg1;
+- (id)handleResizeProgressEvent:(id)arg1;
 - (id)handleInsertionEvent:(id)arg1;
 - (id)handleRemovalEvent:(id)arg1;
-- (id)initWithAppLayout:(id)arg1 reason:(long long)arg2;
+- (id)_remainingAppLayoutForRemovingLayoutRole:(long long)arg1 inAppLayout:(id)arg2;
+- (id)initWithLayoutRole:(long long)arg1 inAppLayout:(id)arg2 reason:(long long)arg3;
 
 @end
 

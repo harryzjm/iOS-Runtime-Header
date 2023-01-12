@@ -13,13 +13,14 @@
 __attribute__((visibility("hidden")))
 @interface WKScrollingNodeScrollViewDelegate : NSObject <UIScrollViewDelegate>
 {
-    struct ScrollingTreeScrollingNodeDelegateIOS *_scrollingTreeNodeDelegate;
+    void *_scrollingTreeNodeDelegate;
     _Bool _inUserInteraction;
 }
 
 @property(nonatomic, getter=_isInUserInteraction) _Bool inUserInteraction; // @synthesize inUserInteraction=_inUserInteraction;
 - (void)cancelPointersForGestureRecognizer:(id)arg1;
 - (void)scrollViewWillBeginZooming:(id)arg1 withView:(id)arg2;
+- (void)_scrollView:(id)arg1 asynchronouslyHandleScrollEvent:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (struct CGPoint)_scrollView:(id)arg1 adjustedOffsetForOffset:(struct CGPoint)arg2 translation:(struct CGPoint)arg3 startPoint:(struct CGPoint)arg4 locationInView:(struct CGPoint)arg5 horizontalVelocity:(inout double *)arg6 verticalVelocity:(inout double *)arg7;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(_Bool)arg2;
@@ -27,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (id)_actingParentScrollViewForScrollView:(id)arg1;
-- (id)initWithScrollingTreeNodeDelegate:(struct ScrollingTreeScrollingNodeDelegateIOS *)arg1;
+- (id)initWithScrollingTreeNodeDelegate:(void *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

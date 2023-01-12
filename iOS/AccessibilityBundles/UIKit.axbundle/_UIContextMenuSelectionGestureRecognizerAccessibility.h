@@ -9,6 +9,7 @@
 }
 
 + (_Bool)_supportsTouchContinuation;
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 

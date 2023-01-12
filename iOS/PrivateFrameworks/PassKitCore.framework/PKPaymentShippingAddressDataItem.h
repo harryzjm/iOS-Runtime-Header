@@ -12,6 +12,7 @@
 
 + (long long)dataType;
 - (_Bool)isValidWithError:(id *)arg1;
+- (_Bool)isShippingServicableWithError:(id *)arg1;
 @property(readonly, nonatomic) _Bool isShippingEditable;
 - (id)paymentContactFormatErrors;
 - (id)errors;

@@ -28,7 +28,9 @@
 - (id)_incidentsForRoute:(id)arg1 etaRoute:(id)arg2;
 - (id)_incidentsForRoute:(id)arg1;
 - (void)_buildIncidentsForRoute:(id)arg1 etaRoute:(id)arg2 initializerData:(id)arg3;
+- (id)_trafficColorInfosFromDebugSettingsForRoute:(id)arg1;
 - (id)_trafficColorInfosFromTrafficBuilder:(id)arg1 route:(id)arg2;
+- (id)initWithColorInfos:(id)arg1 incidentInfos:(id)arg2;
 - (id)initWithRoute:(id)arg1 etaRoute:(id)arg2;
 - (id)initWithRoute:(id)arg1 initializerData:(id)arg2;
 @property(readonly, nonatomic) unsigned long long trafficColorOffsetsCount;

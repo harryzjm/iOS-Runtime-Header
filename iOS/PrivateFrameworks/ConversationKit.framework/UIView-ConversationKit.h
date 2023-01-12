@@ -7,6 +7,7 @@
 #import <UIKit/UIView.h>
 
 @interface UIView (ConversationKit)
++ (double)screenScale;
 @property(nonatomic, readonly) struct CGRect safeAreaInsetFrame;
 @end
 

@@ -25,7 +25,7 @@
 
 + (Class)mutableClass;
 + (id)dropCap;
-+ (id)instanceWithArchive:(const struct DropCapArchive *)arg1 unarchiver:(id)arg2;
++ (id)instanceWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 @property(nonatomic) unsigned long long numberOfCharacters; // @synthesize numberOfCharacters=_numberOfCharacters;
 @property(nonatomic) long long wrapType; // @synthesize wrapType=_wrapType;
 @property(nonatomic) double characterScale; // @synthesize characterScale=_characterScale;
@@ -46,8 +46,8 @@
 - (id)initWithType:(long long)arg1 numberOfLines:(unsigned long long)arg2 numberOfRaisedLines:(unsigned long long)arg3 outdent:(double)arg4 padding:(double)arg5 shapeEnabled:(_Bool)arg6 cornerRadius:(double)arg7 characterScale:(double)arg8 wrapType:(long long)arg9 numberOfCharacters:(unsigned long long)arg10;
 - (id)initWithType:(long long)arg1 numberOfLines:(unsigned long long)arg2 numberOfRaisedLines:(unsigned long long)arg3;
 - (id)init;
-- (void)saveToArchive:(struct DropCapArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct DropCapArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 @end
 

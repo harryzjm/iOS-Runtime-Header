@@ -20,6 +20,9 @@
 + (id)builtInCommandWithStringValue:(id)arg1;
 + (id)allBuiltInCommands;
 + (id)Invalid;
++ (id)ToggleSettingsHUD;
++ (id)MoveOut;
++ (id)MoveIn;
 + (id)GesturedTextInputNextBrailleTable;
 + (id)GesturedTextInputNextKeyboardLanguage;
 + (id)GesturedTextInputLaunchApp;
@@ -37,6 +40,7 @@
 + (id)AnnounceHandwritingCharacterMode;
 + (id)NextHandwritingCharacterMode;
 + (id)PreviousHandwritingCharacterMode;
++ (id)ToggleQuickNote;
 + (id)SwitchToNextApp;
 + (id)SwitchToPreviousApp;
 + (id)TakeScreenshot;
@@ -50,6 +54,8 @@
 + (id)ActivateSpeakScreen;
 + (id)ShowControlCenter;
 + (id)ShowNotificationCenter;
++ (id)VolumeDown;
++ (id)VolumeUp;
 + (id)ToggleAutomaticAccessibility;
 + (id)ToggleSyncNativeAndExploreFocus;
 + (id)ToggleNavigationStyle;
@@ -58,7 +64,7 @@
 + (id)ToggleSingleLetterQuickNav;
 + (id)ActivateBrailleScreenInput;
 + (id)MonitorElement;
-+ (id)LaunchSocialDistancing;
++ (id)LaunchPeopleDetection;
 + (id)DescribeImage;
 + (id)LabelElement;
 + (id)ToggleCaptionPanel;
@@ -184,6 +190,7 @@
 + (id)PerformLongPress;
 + (id)SecondaryActivate;
 + (id)PrimaryActivate;
++ (id)None;
 + (id)commandWithSiriShortcut:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) long long commandType; // @synthesize commandType=_commandType;
@@ -191,6 +198,8 @@
 @property(readonly, nonatomic) NSString *localizedName;
 @property(readonly, nonatomic) AXSiriShortcut *siriShortcut;
 @property(readonly, nonatomic) NSString *rawValue;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
 - (id)description;
 - (id)_initBuiltInCommandWithRawValue:(id)arg1 votEventCommandName:(id)arg2;
 - (id)_initWithSiriShortcut:(id)arg1;

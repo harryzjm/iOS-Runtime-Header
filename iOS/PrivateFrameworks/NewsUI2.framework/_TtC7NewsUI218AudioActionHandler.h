@@ -11,15 +11,16 @@
 @interface _TtC7NewsUI218AudioActionHandler : _TtCs12_SwiftObject
 {
     MISSING_TYPE *headlineConverter;
-    MISSING_TYPE *actionSheetProvider;
+    MISSING_TYPE *audioUIMenuProvider;
     MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *commandCenter;
     MISSING_TYPE *playbackState;
-    MISSING_TYPE *sceneProvider;
 }
 
 - (id)accessibilityActionsForSheetFor:(id)arg1 willPerform:(CDUnknownBlockType)arg2;
 - (void)performActionsFor:(id)arg1 willPerform:(CDUnknownBlockType)arg2;
+- (id)buttonActionsFor:(id)arg1 willPerform:(CDUnknownBlockType)arg2;
+- (void)setAudioButtonMenuOn:(id)arg1;
 
 @end
 

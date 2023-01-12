@@ -6,14 +6,15 @@
 
 #import <UIKit/UIView.h>
 
-#import <PencilKit/PKEdgeLocatable-Protocol.h>
+#import <PencilKit/PKPaletteEdgeLocating-Protocol.h>
 #import <PencilKit/PKPalettePopoverDismissing-Protocol.h>
 #import <PencilKit/PKPaletteViewSizeScaling-Protocol.h>
 
 @class NSLayoutConstraint, NSString, PKDrawingPaletteInputAssistantView, PKPaletteColorPickerContainerView, PKPaletteColorPickerView, PKPaletteToolPickerContainerView, PKPaletteToolPickerView, UIStackView;
 
-@interface PKPaletteToolPickerAndColorPickerView : UIView <PKEdgeLocatable, PKPalettePopoverDismissing, PKPaletteViewSizeScaling>
+@interface PKPaletteToolPickerAndColorPickerView : UIView <PKPaletteEdgeLocating, PKPalettePopoverDismissing, PKPaletteViewSizeScaling>
 {
+    _Bool _wantsColorPickerContainerViewInHierarchy;
     _Bool _isSmallestSupportedCompactWidth;
     _Bool _colorPickerViewVisible;
     _Bool _inputAssistantViewVisible;
@@ -39,12 +40,14 @@
 @property(nonatomic) _Bool isSmallestSupportedCompactWidth; // @synthesize isSmallestSupportedCompactWidth=_isSmallestSupportedCompactWidth;
 @property(nonatomic) long long contextEditingMode; // @synthesize contextEditingMode=_contextEditingMode;
 @property(readonly, nonatomic) PKDrawingPaletteInputAssistantView *paletteInputAssistantView; // @synthesize paletteInputAssistantView=_paletteInputAssistantView;
+@property(nonatomic) _Bool wantsColorPickerContainerViewInHierarchy; // @synthesize wantsColorPickerContainerViewInHierarchy=_wantsColorPickerContainerViewInHierarchy;
 @property(retain, nonatomic) PKPaletteColorPickerContainerView *colorPickerContainerView; // @synthesize colorPickerContainerView=_colorPickerContainerView;
 @property(retain, nonatomic) PKPaletteToolPickerContainerView *toolPickerContainerView; // @synthesize toolPickerContainerView=_toolPickerContainerView;
 @property(nonatomic) double scalingFactor; // @synthesize scalingFactor=_scalingFactor;
 @property(nonatomic) unsigned long long edgeLocation; // @synthesize edgeLocation=_edgeLocation;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)dismissPalettePopoverWithCompletion:(CDUnknownBlockType)arg1;
+- (_Bool)_hasColorPickerContainerView;
 - (double)_stackViewSpacing;
 - (void)_updateUI;
 - (_Bool)_useCompactSize;

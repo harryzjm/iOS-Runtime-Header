@@ -14,8 +14,8 @@
 @property(retain) id toValue;
 @property(retain) id fromValue;
 - (void)CA_prepareRenderValue;
-- (struct Animation *)_copyRenderAnimationForLayer:(id)arg1;
-- (_Bool)_setCARenderAnimation:(struct Animation *)arg1 layer:(id)arg2;
+- (void *)_copyRenderAnimationForLayer:(id)arg1;
+- (_Bool)_setCARenderAnimation:(void *)arg1 layer:(id)arg2;
 @property double endAngle;
 @property double startAngle;
 @property _Bool roundsToInteger;

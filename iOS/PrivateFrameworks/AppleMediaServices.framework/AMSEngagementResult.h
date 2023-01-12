@@ -8,7 +8,7 @@
 
 #import <AppleMediaServices/NSSecureCoding-Protocol.h>
 
-@class NSDictionary;
+@class NSDictionary, NSString;
 
 @interface AMSEngagementResult : NSObject <NSSecureCoding>
 {
@@ -16,10 +16,13 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)_updatedBodyFromValue:(id)arg1 request:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)ams_requestActionFromRequest:(id)arg1;
+@property(readonly, nonatomic) NSString *ams_buyParams;
 
 @end
 

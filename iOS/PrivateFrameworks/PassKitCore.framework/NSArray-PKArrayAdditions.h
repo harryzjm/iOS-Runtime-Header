@@ -14,11 +14,17 @@
 + (id)paymentBillingAddressInvalidErrorWithKey:(id)arg1 localizedDescription:(id)arg2;
 + (id)paymentShippingAddressInvalidErrorWithKey:(id)arg1 localizedDescription:(id)arg2;
 + (id)paymentContactInvalidErrorWithContactField:(id)arg1 localizedDescription:(id)arg2;
+- (id)pk_firstObjectPassingTest:(CDUnknownBlockType)arg1;
 - (_Bool)pk_containsObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)pk_intersectArray:(id)arg1;
+- (id)pk_groupDictionaryByApplyingBlock:(CDUnknownBlockType)arg1;
+- (id)pk_indexDictionaryByApplyingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)pk_countObjectsPassingTest:(CDUnknownBlockType)arg1;
 - (id)pk_objectsPassingTest:(CDUnknownBlockType)arg1;
 - (id)pk_shuffledArray;
+- (id)pk_arrayBySafelyApplyingBlock:(CDUnknownBlockType)arg1;
 - (id)pk_arrayByApplyingBlock:(CDUnknownBlockType)arg1;
+- (id)pk_createArrayBySafelyApplyingBlock:(CDUnknownBlockType)arg1;
 - (id)pk_createArrayByApplyingBlock:(CDUnknownBlockType)arg1;
 - (id)pk_arrayByRemovingObjectsInArray:(id)arg1;
 - (id)pk_arrayByRemovingObject:(id)arg1;

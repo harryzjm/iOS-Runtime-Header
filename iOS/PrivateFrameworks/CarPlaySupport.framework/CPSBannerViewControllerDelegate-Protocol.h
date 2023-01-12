@@ -6,9 +6,12 @@
 
 #import <CarPlaySupport/NSObject-Protocol.h>
 
-@class CPSBannerViewController, NSString;
+@class CPSBannerViewController, NSString, NSUUID;
 
 @protocol CPSBannerViewControllerDelegate <NSObject>
+- (void)bannerViewControllerDidDisappearWithIdentifier:(NSUUID *)arg1;
+- (void)bannerViewControllerDidAppearWithIdentifier:(NSUUID *)arg1;
+- (void)bannerViewControllerTappedWithIdentifier:(NSUUID *)arg1;
 - (void)bannerViewController:(CPSBannerViewController *)arg1 requestsDismissalWithReason:(NSString *)arg2;
 @end
 

@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlayer/_MPStateDumpPropertyListTransformable-Protocol.h>
+#import <MediaPlayer/NSObject-Protocol.h>
 
 @class NSMutableDictionary, NSString;
 @protocol MPRemoteCommandDelegate_Internal, MPRemoteCommandDelegate_Private, OS_dispatch_queue;
 
-@interface MPRemoteCommand : NSObject <_MPStateDumpPropertyListTransformable>
+@interface MPRemoteCommand : NSObject <NSObject>
 {
     NSObject<OS_dispatch_queue> *_serialQueue;
     NSMutableDictionary *_handlers;
@@ -20,6 +20,8 @@
     _Bool _skipSerializedEventDelivery;
     unsigned int _mediaRemoteCommandType;
     id <MPRemoteCommandDelegate_Internal> _commandCenterDelegate;
+    long long _disabledReason;
+    double _timeout;
     id <MPRemoteCommandDelegate_Private> _delegate;
 }
 
@@ -27,6 +29,8 @@
 @property(nonatomic) _Bool skipSerializedEventDelivery; // @synthesize skipSerializedEventDelivery=_skipSerializedEventDelivery;
 @property(nonatomic) __weak id <MPRemoteCommandDelegate_Private> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) unsigned int mediaRemoteCommandType; // @synthesize mediaRemoteCommandType=_mediaRemoteCommandType;
+@property(nonatomic) double timeout; // @synthesize timeout=_timeout;
+@property(nonatomic) long long disabledReason; // @synthesize disabledReason=_disabledReason;
 @property(nonatomic, getter=isObserving) _Bool observing; // @synthesize observing=_observing;
 @property(nonatomic) __weak id <MPRemoteCommandDelegate_Internal> commandCenterDelegate; // @synthesize commandCenterDelegate=_commandCenterDelegate;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
@@ -38,7 +42,8 @@
 - (id)newCommandEventWithContentItemIdentifier:(id)arg1;
 - (id)newCommandEvent;
 - (void)notifyPropagatablePropertyChanged;
-- (void *)createCommandInfoRepresentation;
+- (id)commandInfoRepresentations;
+- (id)_mediaRemoteCommandInfo;
 - (void)invokeCommandWithEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) _Bool hasTargets;
 @property(readonly, nonatomic, getter=isSupportedAndEnabled) _Bool supportedAndEnabled;
@@ -46,6 +51,7 @@
 - (id)addTargetWithHandler:(CDUnknownBlockType)arg1;
 - (void)removeTarget:(id)arg1;
 - (void)removeTarget:(id)arg1 action:(SEL)arg2;
+- (void)addTarget:(id)arg1 action:(SEL)arg2 usingExtendedStatus:(_Bool)arg3;
 - (void)addTarget:(id)arg1 action:(SEL)arg2;
 - (_Bool)isEnabledForContentItemIdentifier:(id)arg1;
 - (_Bool)isSupportedForContentItemIdentifier:(id)arg1;

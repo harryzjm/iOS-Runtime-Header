@@ -10,6 +10,7 @@
 {
     MISSING_TYPE *event;
     MISSING_TYPE *interruptedState;
+    MISSING_TYPE *interruptedItem;
 }
 
 @end

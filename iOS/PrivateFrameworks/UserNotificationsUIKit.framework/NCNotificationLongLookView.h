@@ -11,7 +11,7 @@
 #import <UserNotificationsUIKit/NCNotificationStaticContentAccepting-Protocol.h>
 #import <UserNotificationsUIKit/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NCNotificationContentView, NSArray, NSDate, NSString, NSTimeZone, UIButton, UIControl, UIImage, UIScrollView, UITapGestureRecognizer, UIView;
+@class MTVisualStylingProvider, NCNotificationContentView, NSArray, NSAttributedString, NSDate, NSString, NSTimeZone, UIButton, UIControl, UIImage, UIImageConfiguration, UIScrollView, UITapGestureRecognizer, UIView;
 @protocol NCNotificationLongLookViewDelegate;
 
 @interface NCNotificationLongLookView : PLExpandedPlatterView <UIGestureRecognizerDelegate, NCNotificationContentViewDelegate, NCNotificationStaticContentAccepting, NCCustomContentContainingLookView>
@@ -48,6 +48,8 @@
 - (void)_configureCustomContentView;
 - (long long)lookStyle;
 - (struct CGSize)_contentSizeThatFitsContentWithSizeExcludingActions:(struct CGSize)arg1;
+@property(copy, nonatomic) UIImage *subordinateIcon;
+@property(copy, nonatomic) UIImage *prominentIcon;
 @property(copy, nonatomic) NSString *secondaryText;
 @property(copy, nonatomic) NSString *primarySubtitleText;
 @property(copy, nonatomic) NSString *primaryText;
@@ -69,18 +71,27 @@
 @property(nonatomic) __weak id <NCNotificationLongLookViewDelegate> delegate; // @dynamic delegate;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) UIControl *dismissControl;
+@property(nonatomic, getter=isDismissControlEnabled) _Bool dismissControlEnabled;
 @property(readonly, nonatomic) struct UIEdgeInsets dismissControlInsets;
 @property(nonatomic) long long dismissControlPosition;
+@property(copy, nonatomic) NSString *footerText;
 @property(nonatomic) _Bool hasShadow;
 @property(readonly) unsigned long long hash;
+@property(nonatomic, getter=isHeaderEnabled) _Bool headerEnabled;
 @property(readonly, nonatomic) NSArray *iconButtons;
 @property(copy, nonatomic) NSArray *icons;
+@property(copy, nonatomic) NSAttributedString *importantAttributedText;
+@property(copy, nonatomic) NSString *importantText;
+@property(readonly, copy, nonatomic) UIImageConfiguration *importantTextImageConfiguration;
+@property(retain, nonatomic) MTVisualStylingProvider *importantTextVisualStylingProvider;
 @property(retain, nonatomic) NSArray *interfaceActions;
+@property(copy, nonatomic) NSArray *menuActions;
 @property(copy, nonatomic) NSString *preferredContentSizeCategory;
+@property(copy, nonatomic) UIView *prominentIconView;
 @property(readonly, nonatomic) UIScrollView *scrollView;
 @property(copy, nonatomic) NSString *summaryText;
 @property(readonly) Class superclass;
-@property(retain, nonatomic) UIImage *thumbnail;
+@property(copy, nonatomic) UIImage *thumbnail;
 @property(copy, nonatomic) NSTimeZone *timeZone;
 @property(copy, nonatomic) NSString *title;
 @property(readonly, nonatomic) UIButton *utilityButton;

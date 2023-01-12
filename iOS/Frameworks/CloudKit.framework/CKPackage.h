@@ -10,13 +10,11 @@
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
 @class CKRecord, CKSQLite, NSArray, NSData, NSString;
-@protocol OS_dispatch_queue;
 
 @interface CKPackage : NSObject <NSSecureCoding, CKRecordValue>
 {
     struct _OpaquePCSShareProtection *_recordPCS;
     _Bool _open;
-    _Bool _transaction;
     _Bool _wasCached;
     _Bool _uploaded;
     _Bool _downloaded;
@@ -28,7 +26,6 @@
     NSData *_archiverInfo;
     CKSQLite *_sqlite;
     unsigned long long _nextItemIndex;
-    NSObject<OS_dispatch_queue> *_queue;
     unsigned long long _size;
     long long _storageGroupingPolicy;
     long long _uploadRank;
@@ -41,12 +38,8 @@
 + (void)gcPackagesInDirectory:(id)arg1 dbInUseBlock:(CDUnknownBlockType)arg2;
 + (_Bool)supportsSecureCoding;
 + (void)destroyClientPackageWithDatabaseBasePath:(id)arg1 UUID:(id)arg2;
-+ (id)_createPackageDBWithPath:(id)arg1;
 + (id)clientPackageDatabaseDirectory;
 + (id)packageProcessBasePath;
-+ (id)_packageDatabasePathWithBasePath:(id)arg1 UUID:(id)arg2 state:(long long)arg3;
-+ (id)_packageDatabaseDirectoryWithBasePath:(id)arg1 state:(long long)arg2;
-+ (id)_packagesBasePathForBundleID:(id)arg1;
 + (id)stagingPathSuffixForCloudKitCachesDirectoryWithBundleIdentifier:(id)arg1;
 + (id)packageInDaemonWithBasePath:(id)arg1 error:(id *)arg2;
 + (id)packageInClientWithBasePath:(id)arg1 error:(id *)arg2;
@@ -65,8 +58,6 @@
 @property(nonatomic) _Bool uploaded; // @synthesize uploaded=_uploaded;
 @property(nonatomic) _Bool wasCached; // @synthesize wasCached=_wasCached;
 @property(nonatomic) unsigned long long size; // @synthesize size=_size;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property(nonatomic, getter=inTransaction) _Bool transaction; // @synthesize transaction=_transaction;
 @property(nonatomic, getter=isOpen) _Bool open; // @synthesize open=_open;
 @property(nonatomic) unsigned long long nextItemIndex; // @synthesize nextItemIndex=_nextItemIndex;
 @property(retain, nonatomic) CKSQLite *sqlite; // @synthesize sqlite=_sqlite;
@@ -79,29 +70,23 @@
 @property(copy, nonatomic) NSString *databaseBasePath;
 - (_Bool)claimOwnershipWithError:(id *)arg1;
 @property(copy, nonatomic) NSData *signature;
-- (void)_locked_endTransaction;
-- (void)_locked_beginTransaction;
-- (void)endTransaction;
-- (void)beginTransaction;
-- (void)testAddSectionConstraintAndRaise:(id)arg1;
-- (void)addSection:(id)arg1;
+- (id)performTransactionBlock:(CDUnknownBlockType)arg1;
+- (id)testAddSectionConstraintViolation:(id)arg1;
+- (_Bool)addSection:(id)arg1;
 - (id)sectionAtIndex:(unsigned long long)arg1;
 - (unsigned long long)sectionCount;
-- (void)updateItemsAtIndexes:(id)arg1 fileURLs:(id)arg2;
-- (void)updateItemAtIndex:(long long)arg1 withFileURL:(id)arg2;
-- (void)updateItemAtIndex:(long long)arg1 withSignature:(id)arg2 size:(unsigned long long)arg3 itemID:(unsigned long long)arg4 sectionIndex:(unsigned long long)arg5;
-- (void)addItem:(id)arg1;
+- (_Bool)updateItemsAtIndexes:(id)arg1 fileURLs:(id)arg2;
+- (_Bool)updateItemAtIndex:(long long)arg1 withFileURL:(id)arg2;
+- (_Bool)updateItemAtIndex:(long long)arg1 withSignature:(id)arg2 size:(unsigned long long)arg3 itemID:(unsigned long long)arg4 sectionIndex:(unsigned long long)arg5;
+- (_Bool)addItem:(id)arg1;
 - (id)itemEnumeratorForSectionAtIndex:(unsigned long long)arg1;
 - (id)itemEnumerator;
 - (id)itemAtIndex:(unsigned long long)arg1;
 - (id)_itemOrNilAtIndex:(unsigned long long)arg1;
 - (id)_itemWithColumnsByName:(id)arg1;
+- (unsigned long long)itemCountWithError:(id *)arg1;
 - (unsigned long long)itemCount;
-- (id)sqliteOrRaise;
 - (void)close;
-- (void)open;
-- (_Bool)_locked_openWithError:(id *)arg1;
-- (void)_locked_open;
 - (_Bool)openWithError:(id *)arg1;
 @property(readonly, copy) NSString *description;
 - (id)CKDescriptionPropertiesWithPublic:(_Bool)arg1 private:(_Bool)arg2 shouldExpand:(_Bool)arg3;

@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) LPPointUnit *lastLineDescent; // @synthesize lastLineDescent=_lastLineDescent;
 @property(retain, nonatomic) LPPointUnit *firstLineLeading; // @synthesize firstLineLeading=_firstLineLeading;
 - (void)applyToAllTextViewStyles:(CDUnknownBlockType)arg1;
-- (id)initWithPlatform:(long long)arg1;
+- (id)initWithPlatform:(long long)arg1 fontScalingFactor:(double)arg2;
 
 @end
 

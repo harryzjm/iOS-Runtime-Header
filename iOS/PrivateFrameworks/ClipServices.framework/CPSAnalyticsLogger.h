@@ -16,6 +16,7 @@
 + (id)sharedLogger;
 - (void).cxx_destruct;
 - (void)_sendEventLazyWithName:(id)arg1 clipBundleIdentifier:(id)arg2 payload:(id)arg3;
+- (void)recordReportProblemStepCompletedWithBundleID:(id)arg1 problemLabel:(id)arg2 event:(long long)arg3;
 - (void)recordDidOpenAppClipWithBundleID:(id)arg1 launchReason:(id)arg2 didShowCard:(_Bool)arg3 didOpenFullApp:(_Bool)arg4 didInstallAppClip:(_Bool)arg5;
 - (void)recordDidShowLocationConsentWithBundleID:(id)arg1 response:(unsigned long long)arg2;
 - (void)recordDidTapAppStoreBannerWithBundleID:(id)arg1;

@@ -11,6 +11,7 @@
     NSArray *_objects;
 }
 
++ (_Bool)tsp_isInternalObjectContainerClass;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *objects; // @synthesize objects=_objects;
 - (id)tsp_publicLoggingDescription;

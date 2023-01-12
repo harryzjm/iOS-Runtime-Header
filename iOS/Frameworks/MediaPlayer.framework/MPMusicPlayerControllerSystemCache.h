@@ -15,7 +15,7 @@
 
 + (id)sharedCache;
 - (void).cxx_destruct;
-- (void)_saveObject:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
+- (_Bool)_saveObject:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
 - (id)_objectOfClass:(Class)arg1 forKey:(id)arg2 error:(id *)arg3;
 @property(retain, nonatomic) MPMusicPlayerQueueDescriptor *queueDescriptor;
 @property(retain, nonatomic) MPMusicPlayerControllerNowPlaying *nowPlaying;

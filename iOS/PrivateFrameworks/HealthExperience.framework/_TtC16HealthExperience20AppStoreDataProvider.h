@@ -13,6 +13,7 @@
     MISSING_TYPE *bag;
     MISSING_TYPE *$__lazy_storage_$_tokenService;
     MISSING_TYPE *$__lazy_storage_$_currentStoreFront;
+    MISSING_TYPE *$__lazy_storage_$_hostURL;
     MISSING_TYPE *$__lazy_storage_$_session;
     MISSING_TYPE *$__lazy_storage_$_encoder;
 }

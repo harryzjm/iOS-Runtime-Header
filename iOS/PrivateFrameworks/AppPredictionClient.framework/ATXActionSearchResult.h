@@ -6,13 +6,13 @@
 
 #import <SearchFoundation/SFSearchResult.h>
 
-@class ATXAction, ATXActionResponse, ATXHeroAppPrediction, ATXProactiveSuggestion;
+@class ATXAction, ATXActionResponse, ATXHeroData, ATXProactiveSuggestion;
 
 @interface ATXActionSearchResult : SFSearchResult
 {
     ATXActionResponse *_actionResponse;
     ATXAction *_atxAction;
-    ATXHeroAppPrediction *_heroApp;
+    ATXHeroData *_heroApp;
     ATXProactiveSuggestion *_proactiveSuggestion;
 }
 
@@ -32,7 +32,7 @@
 + (id)actionResponseForDeveloperModeWithShouldShowRecentDonations:(_Bool)arg1 shouldShowParameterCombinations:(_Bool)arg2 shouldShowUpcomingMedia:(_Bool)arg3;
 + (id)_demoModeActionResponse;
 + (id)generatedSearchResultForProactiveSuggestion:(id)arg1 actionResponse:(id)arg2;
-+ (id)_unarchiveATXHeroAppPredictionFromSuggestion:(id)arg1;
++ (id)_unarchiveATXHeroDataFromSuggestion:(id)arg1;
 + (id)_unarchiveATXActionFromSuggestion:(id)arg1;
 + (id)_unarchiveObjectFromSuggestion:(id)arg1;
 + (id)actionSearchResultFromProactiveSuggestion:(id)arg1 actionResponse:(id)arg2 avRoutingSessionHelper:(id)arg3 nowPlayingDataProvider:(id)arg4;
@@ -41,7 +41,7 @@
 + (id)predictedActionSearchResultsWithLimit:(long long)arg1 forBundleIdentifiers:(id)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) ATXProactiveSuggestion *proactiveSuggestion; // @synthesize proactiveSuggestion=_proactiveSuggestion;
-@property(readonly, nonatomic) ATXHeroAppPrediction *heroApp; // @synthesize heroApp=_heroApp;
+@property(readonly, nonatomic) ATXHeroData *heroApp; // @synthesize heroApp=_heroApp;
 @property(readonly, nonatomic) ATXAction *atxAction; // @synthesize atxAction=_atxAction;
 @property(retain, nonatomic) ATXActionResponse *actionResponse; // @synthesize actionResponse=_actionResponse;
 - (void)encodeWithCoder:(id)arg1;

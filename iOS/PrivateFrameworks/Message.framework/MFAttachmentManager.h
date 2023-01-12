@@ -8,18 +8,20 @@
 
 #import <Message/EFLoggable-Protocol.h>
 
-@class MFFileCompressionQueue, NSLock, NSMutableDictionary, NSString;
+@class EDAttachmentPersistenceManager, MFFileCompressionQueue, NSLock, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface MFAttachmentManager : NSObject <EFLoggable>
 {
     NSObject<OS_dispatch_queue> *_arrayAccessQueue;
     NSMutableDictionary *_providers;
+    struct os_unfair_lock_s _providersLock;
     NSMutableDictionary *_attachments;
     NSMutableDictionary *_metadata;
     NSLock *_metaDataLock;
     NSObject<OS_dispatch_queue> *_imageScalingQueue;
     MFFileCompressionQueue *_compressionQueue;
+    EDAttachmentPersistenceManager *_persistenceManager;
 }
 
 + (id)supportedDocumentUTIs;
@@ -27,6 +29,7 @@
 + (id)allManagers;
 + (id)log;
 - (void).cxx_destruct;
+@property(retain, nonatomic) EDAttachmentPersistenceManager *persistenceManager; // @synthesize persistenceManager=_persistenceManager;
 - (void)clearMetadataForAttachment:(id)arg1;
 - (id)metadataForAttachment:(id)arg1 forKey:(id)arg2;
 - (void)setMetadataForAttachment:(id)arg1 toValue:(id)arg2 forKey:(id)arg3;
@@ -44,6 +47,7 @@
 - (void)fetchDataSynchronouslyForAttachment:(id)arg1;
 - (id)fetchDataForAttachment:(id)arg1;
 - (id)_fetchDataForAttachment:(id)arg1 withProvider:(id)arg2 request:(id)arg3 syncLock:(id *)arg4;
+- (void)insertMessageAttachmentMetadataToPersistence:(id)arg1 forMessage:(id)arg2;
 - (id)attachmentsForContext:(id)arg1;
 - (id)attachmentForContentID:(id)arg1 preferredSchemes:(id)arg2;
 - (id)attachmentForContentID:(id)arg1;

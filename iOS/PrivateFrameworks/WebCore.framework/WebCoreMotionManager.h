@@ -6,15 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class CLLocationManager, CMMotionManager, NSTimer;
-
 @interface WebCoreMotionManager : NSObject
 {
-    CMMotionManager *m_motionManager;
-    CLLocationManager *m_locationManager;
+    struct RetainPtr<CMMotionManager> m_motionManager;
+    struct RetainPtr<CLLocationManager> m_locationManager;
     struct WeakHashSet<WebCore::MotionManagerClient, WTF::EmptyCounter> m_deviceMotionClients;
     struct WeakHashSet<WebCore::MotionManagerClient, WTF::EmptyCounter> m_deviceOrientationClients;
-    NSTimer *m_updateTimer;
+    struct RetainPtr<NSTimer> m_updateTimer;
     _Bool m_gyroAvailable;
     _Bool m_headingAvailable;
     _Bool m_initialized;
@@ -30,10 +28,10 @@
 - (void)initializeOnMainThread;
 - (_Bool)headingAvailable;
 - (_Bool)gyroAvailable;
-- (void)removeOrientationClient:(struct MotionManagerClient *)arg1;
-- (void)addOrientationClient:(struct MotionManagerClient *)arg1;
-- (void)removeMotionClient:(struct MotionManagerClient *)arg1;
-- (void)addMotionClient:(struct MotionManagerClient *)arg1;
+- (void)removeOrientationClient:(void *)arg1;
+- (void)addOrientationClient:(void *)arg1;
+- (void)removeMotionClient:(void *)arg1;
+- (void)addMotionClient:(void *)arg1;
 - (void)dealloc;
 - (id)init;
 

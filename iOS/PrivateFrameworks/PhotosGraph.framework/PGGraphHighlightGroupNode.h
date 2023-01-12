@@ -4,24 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, PGGraphHighlightTypeNode;
+@class NSArray, PGGraphHighlightGroupNodeCollection;
 
 @interface PGGraphHighlightGroupNode
 {
 }
 
++ (id)momentInHighlight;
++ (id)typeOfHighlightGroup;
++ (id)highlightOfHighlightGroup;
++ (id)filterWithUUIDs:(id)arg1;
 + (id)inclusivePathToTargetNodeDomain:(unsigned short)arg1 withName:(id)arg2;
 + (id)inclusivePathFromTargetNodeDomain:(unsigned short)arg1 withName:(id)arg2;
 + (id)pathToTargetNodeDomain:(unsigned short)arg1;
 + (id)pathFromTargetNodeDomain:(unsigned short)arg1;
 + (id)pathToMoment;
 + (id)pathFromMoment;
-- (void)eventEnumerateMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
-- (void)enumerateMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
++ (id)filter;
+- (unsigned long long)featureType;
+- (void)enumerateMomentEdgesAndNodesUsingBlock:(CDUnknownBlockType)arg1;
 @property(readonly) NSArray *sortedHighlightNodes;
 @property(readonly) NSArray *highlightNodes;
-- (id)momentNodes;
 - (void)enumerateHighlightNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateHighlightEdgesAndNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (_Bool)isPartOfAggregation;
 - (_Bool)isPartOfShortTrip;
 - (_Bool)isPartOfLongTrip;
@@ -30,7 +35,7 @@
 - (_Bool)isShortTrip;
 - (_Bool)isLongTrip;
 - (_Bool)isTrip;
-@property(readonly) PGGraphHighlightTypeNode *typeNode;
+@property(readonly, nonatomic) PGGraphHighlightGroupNodeCollection *collection;
 - (id)label;
 
 @end

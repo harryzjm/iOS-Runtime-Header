@@ -11,11 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)croppedAndCenteredAvatarImageForImage:(id)arg1 usingTransparencyInsets:(struct UIEdgeInsets)arg2 widthMultiplier:(double)arg3;
 + (id)croppedAndCenteredAvatarImageForImage:(id)arg1 widthMultiplier:(double)arg2;
-+ (struct CGRect)centeredSquareCropRectInRect:(struct CGRect)arg1;
-+ (struct CGRect)intersectingSquareCropRect:(struct CGRect)arg1 forRect:(struct CGRect)arg2;
-+ (struct CGRect)adjustedSquareCropRect:(struct CGRect)arg1 toFitImageOfSize:(struct CGSize)arg2;
-+ (struct CGRect)scaledCropRect:(struct CGRect)arg1 fromSize:(struct CGSize)arg2 toSize:(struct CGSize)arg3;
 + (id)trimmedImageByTrimmingTransparentPixelsFromImage:(id)arg1 requiringFullOpacity:(_Bool)arg2;
 + (id)trimmedImageByTrimmingTransparentPixelsFromImage:(id)arg1;
 + (struct UIEdgeInsets)transparencyInsetsForImage:(id)arg1 requiringFullOpacity:(_Bool)arg2;

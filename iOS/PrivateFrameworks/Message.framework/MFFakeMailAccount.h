@@ -25,7 +25,6 @@
 - (void)invalidate;
 - (id)connectionForStore:(id)arg1 delegate:(id)arg2 options:(int)arg3 failedToSelectMailbox:(_Bool *)arg4;
 - (void)setCachedConnection:(id)arg1;
-- (int)cachePolicy;
 - (unsigned int)minID;
 - (id)powerAssertionIdentifierWithPrefix:(id)arg1;
 - (id)uniqueID;

@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class CNContactStore, NSArray, NSDictionary, NSSet, NSString, NSUserDefaults, PPContactStore, PPTopicStore, _CDInteractionCache, _CDInteractionStore, _PSContactResolver, _PSHeuristics, _PSInteractionAndContactMonitor, _PSKNNModel, _PSRuleMiningModel;
+@class CNContactStore, NSArray, NSDictionary, NSSet, NSString, NSUserDefaults, PPContactStore, PPTopicStore, _CDInteractionCache, _CDInteractionStore, _PSConfidenceModelForSharing, _PSContactResolver, _PSHeuristics, _PSInteractionAndContactMonitor, _PSKNNModel, _PSRuleMiningModel, _PSSharingContactRankerModel;
 @protocol _DKKnowledgeQuerying><_DKKnowledgeSaving;
 
 @interface _PSEnsembleModel : NSObject
 {
     struct os_unfair_lock_s _lock;
+    _Bool _PSConfidenceModelInUse;
     _Bool _allowNonSupportedBundleIDs;
     _CDInteractionStore *_interactionStore;
     id <_DKKnowledgeQuerying><_DKKnowledgeSaving> _knowledgeStore;
@@ -19,11 +20,14 @@
     PPContactStore *_portraitContactStore;
     _CDInteractionCache *_messageInteractionCache;
     _CDInteractionCache *_shareInteractionCache;
+    NSArray *_groupActivityInteractionCache;
     NSUserDefaults *_peopleSuggesterDefaults;
     CNContactStore *_contactStore;
     NSArray *_defaultContactKeysToFetch;
     NSString *_trialID;
     _PSRuleMiningModel *_ruleMiningModel;
+    _PSSharingContactRankerModel *_sharingContactRankerModel;
+    _PSConfidenceModelForSharing *_confidenceModelForSharing;
     _PSKNNModel *_knnModel;
     _PSKNNModel *_knnMapsModel;
     _PSKNNModel *_knnZkwModel;
@@ -50,11 +54,15 @@
 @property(retain, nonatomic) _PSKNNModel *knnZkwModel; // @synthesize knnZkwModel=_knnZkwModel;
 @property(retain, nonatomic) _PSKNNModel *knnMapsModel; // @synthesize knnMapsModel=_knnMapsModel;
 @property(retain, nonatomic) _PSKNNModel *knnModel; // @synthesize knnModel=_knnModel;
+@property _Bool PSConfidenceModelInUse; // @synthesize PSConfidenceModelInUse=_PSConfidenceModelInUse;
+@property(retain, nonatomic) _PSConfidenceModelForSharing *confidenceModelForSharing; // @synthesize confidenceModelForSharing=_confidenceModelForSharing;
+@property(retain, nonatomic) _PSSharingContactRankerModel *sharingContactRankerModel; // @synthesize sharingContactRankerModel=_sharingContactRankerModel;
 @property(retain, nonatomic) _PSRuleMiningModel *ruleMiningModel; // @synthesize ruleMiningModel=_ruleMiningModel;
 @property(retain, nonatomic) NSString *trialID; // @synthesize trialID=_trialID;
 @property(retain, nonatomic) NSArray *defaultContactKeysToFetch; // @synthesize defaultContactKeysToFetch=_defaultContactKeysToFetch;
 @property(retain, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 @property(retain, nonatomic) NSUserDefaults *peopleSuggesterDefaults; // @synthesize peopleSuggesterDefaults=_peopleSuggesterDefaults;
+@property(retain, nonatomic) NSArray *groupActivityInteractionCache; // @synthesize groupActivityInteractionCache=_groupActivityInteractionCache;
 @property(retain, nonatomic) _CDInteractionCache *shareInteractionCache; // @synthesize shareInteractionCache=_shareInteractionCache;
 @property(retain, nonatomic) _CDInteractionCache *messageInteractionCache; // @synthesize messageInteractionCache=_messageInteractionCache;
 @property(retain, nonatomic) PPContactStore *portraitContactStore; // @synthesize portraitContactStore=_portraitContactStore;
@@ -64,20 +72,24 @@
 - (id)appExtensionSuggestionsFromContext:(id)arg1;
 - (id)rankedHandlesFromCandidateHandles:(id)arg1;
 - (id)rankedSiriMLCRHandles:(id)arg1 context:(id)arg2;
+- (id)autocompleteSearchResultsWithPredictionContext:(id)arg1;
 - (id)rankedAutocompleteSuggestionsFromContext:(id)arg1 candidates:(id)arg2;
 - (id)rankedNameSuggestionsWithPredictionContext:(id)arg1 name:(id)arg2;
 - (id)rankedGlobalSuggestionsForSiriNLWithPredictionContext:(id)arg1 maxSuggestions:(unsigned long long)arg2 interactionId:(id)arg3;
 - (id)rankedGlobalSuggestionsWithPredictionContext:(id)arg1 contactsOnly:(_Bool)arg2 maxSuggestions:(unsigned long long)arg3;
-- (id)suggestZKWMessagesSuggestionsWithPredictionContext:(id)arg1 maxSuggestions:(unsigned long long)arg2;
+- (id)_knnZKWSuggestionsWithPredictionContext:(id)arg1 modelConfiguration:(id)arg2 maxSuggestions:(unsigned long long)arg3;
+- (id)suggestZKWSuggestionsWithPredictionContext:(id)arg1 maxSuggestions:(unsigned long long)arg2;
 - (id)mapsSuggestionArrayWithArray:(id)arg1 appendingUniqueElementsFromArray:(id)arg2 contactResolver:(id)arg3 meContactId:(id)arg4;
 - (id)predictWithMapsPredictionContext:(id)arg1 maxSuggestions:(unsigned long long)arg2;
 - (id)mergedSuggestionsWithFamilySuggestions:(id)arg1 shareSheetSuggestions:(id)arg2 maxSuggestions:(unsigned long long)arg3 supportedBundleIds:(id)arg4;
 - (id)suggestionsFromSuggestionProxies:(id)arg1 supportedBundleIDs:(id)arg2 contactKeysToFetch:(id)arg3 meContactIdentifier:(id)arg4 maxSuggestions:(unsigned long long)arg5;
 - (void)addSupportedBundleIDs:(id)arg1;
+- (void)addUTIInfo:(id)arg1 predictionContext:(id)arg2;
 - (void)addAdaptedModelUsageInfoToSuggestions:(id)arg1;
 - (id)predictWithPredictionContext:(id)arg1 maxSuggestions:(unsigned long long)arg2 contactKeysToFetch:(id)arg3;
 - (id)familyPredictionsWithMaxSuggestions:(unsigned long long)arg1;
 - (id)predictWithPredictionContext:(id)arg1 maxSuggestions:(unsigned long long)arg2;
+- (void)refreshCaches;
 - (void)populateCachesWithSupportedBundleIDs:(id)arg1;
 - (void)populateCaches;
 - (id)fetchShareSheetSupportedBundleIDs;

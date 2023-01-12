@@ -24,11 +24,13 @@
 - (void)didRemoveLastObserver;
 - (void)didAddFirstObserver;
 - (void)stop;
+- (void)startWithMinimumDistance:(double)arg1;
 - (void)startWithMinimumUpdateTime:(double)arg1 minimumDistance:(double)arg2;
 - (void)restartWithUpdateTime:(double)arg1;
 - (void)changeMinDistance:(double)arg1;
 - (void)_forceLocationUpdate;
 - (id)initWithLocationUpdater:(id)arg1 forcingLocationUpdater:(id)arg2;
+- (id)initWithLocationUpdater:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

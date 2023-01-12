@@ -13,14 +13,20 @@
 @interface UISDShareSheetSessionConfiguration : NSObject <NSSecureCoding>
 {
     _Bool _wantsAnimation;
+    _Bool _reloadData;
     NSNumber *_nearbyCountSlotID;
     NSArray *_peopleProxies;
     NSArray *_shareProxies;
     NSArray *_actionProxies;
+    NSArray *_peopleSuggestions;
+    NSArray *_restrictedActivityTypes;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *restrictedActivityTypes; // @synthesize restrictedActivityTypes=_restrictedActivityTypes;
+@property(copy, nonatomic) NSArray *peopleSuggestions; // @synthesize peopleSuggestions=_peopleSuggestions;
+@property(nonatomic) _Bool reloadData; // @synthesize reloadData=_reloadData;
 @property(nonatomic) _Bool wantsAnimation; // @synthesize wantsAnimation=_wantsAnimation;
 @property(retain, nonatomic) NSArray *actionProxies; // @synthesize actionProxies=_actionProxies;
 @property(retain, nonatomic) NSArray *shareProxies; // @synthesize shareProxies=_shareProxies;

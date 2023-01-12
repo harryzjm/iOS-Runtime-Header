@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ActionKit/WFRemoteUserInterface-Protocol.h>
+#import <ActionKit/WFActionRemoteUserInterface-Protocol.h>
 
 @class NSSet;
 
-@protocol WFSelectPhotoActionUserInterface <WFRemoteUserInterface>
+@protocol WFSelectPhotoActionUserInterface <WFActionRemoteUserInterface>
 - (void)showWithPhotoPickerTypes:(NSSet *)arg1 selectMultiple:(_Bool)arg2 completionHandler:(void (^)(NSArray *, NSError *))arg3;
 @end
 

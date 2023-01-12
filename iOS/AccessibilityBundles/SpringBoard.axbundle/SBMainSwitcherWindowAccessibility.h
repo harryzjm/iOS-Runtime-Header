@@ -11,14 +11,18 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_axMainSwitcher;
 - (_Bool)_accessibilityUseWindowBoundsForOutOfBoundsChecking;
 - (long long)_accessibilityInterfaceOrientationForScreenCoordinates;
 - (_Bool)_axIsControlCenterVisible;
 - (_Bool)_accessibilityWindowVisible;
 - (_Bool)accessibilityElementsHidden;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (_Bool)_axFloatingAppHasInlineSwitcher;
 - (_Bool)_axIsVisible;
+- (_Bool)_axIsAnySwitcherVisible;
+- (_Bool)_axMultiAppNubletsVisible;
+- (id)_axSideAppDivider;
+- (id)_axTongueGrabber;
 
 @end
 

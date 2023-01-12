@@ -23,7 +23,7 @@
 @property(readonly, nonatomic) _Bool isEmphasized;
 @property(readonly, nonatomic) NSString *value;
 @property(readonly, nonatomic) NSString *label;
-- (id)initWithAmount:(id)arg1 transactionSource:(id)arg2;
+- (id)initWithAmount:(id)arg1 transactionSourceCollection:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

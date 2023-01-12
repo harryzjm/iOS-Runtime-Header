@@ -14,10 +14,12 @@
     PKImage *_dynamicLayerStaticFallbackImage;
     PKImage *_backgroundParallaxEmitterImage;
     PKImage *_backgroundParallaxImage;
+    PKImage *_backgroundParallaxCrossDissolveImage;
     PKImage *_neutralEmitterImage;
     PKImage *_neutralImage;
     PKImage *_foregroundParallaxEmitterImage;
     PKImage *_foregroundParallaxImage;
+    PKImage *_foregroundParallaxCrossDissolveImage;
     PKImage *_staticOverlayEmitterImage;
     PKImage *_staticOverlayImage;
     PKImage *_transactionEffectEmitterImage;
@@ -36,10 +38,12 @@
 @property(retain, nonatomic) PKImage *transactionEffectEmitterImage; // @synthesize transactionEffectEmitterImage=_transactionEffectEmitterImage;
 @property(retain, nonatomic) PKImage *staticOverlayImage; // @synthesize staticOverlayImage=_staticOverlayImage;
 @property(retain, nonatomic) PKImage *staticOverlayEmitterImage; // @synthesize staticOverlayEmitterImage=_staticOverlayEmitterImage;
+@property(retain, nonatomic) PKImage *foregroundParallaxCrossDissolveImage; // @synthesize foregroundParallaxCrossDissolveImage=_foregroundParallaxCrossDissolveImage;
 @property(retain, nonatomic) PKImage *foregroundParallaxImage; // @synthesize foregroundParallaxImage=_foregroundParallaxImage;
 @property(retain, nonatomic) PKImage *foregroundParallaxEmitterImage; // @synthesize foregroundParallaxEmitterImage=_foregroundParallaxEmitterImage;
 @property(retain, nonatomic) PKImage *neutralImage; // @synthesize neutralImage=_neutralImage;
 @property(retain, nonatomic) PKImage *neutralEmitterImage; // @synthesize neutralEmitterImage=_neutralEmitterImage;
+@property(retain, nonatomic) PKImage *backgroundParallaxCrossDissolveImage; // @synthesize backgroundParallaxCrossDissolveImage=_backgroundParallaxCrossDissolveImage;
 @property(retain, nonatomic) PKImage *backgroundParallaxImage; // @synthesize backgroundParallaxImage=_backgroundParallaxImage;
 @property(retain, nonatomic) PKImage *backgroundParallaxEmitterImage; // @synthesize backgroundParallaxEmitterImage=_backgroundParallaxEmitterImage;
 @property(retain, nonatomic) PKImage *dynamicLayerStaticFallbackImage; // @synthesize dynamicLayerStaticFallbackImage=_dynamicLayerStaticFallbackImage;

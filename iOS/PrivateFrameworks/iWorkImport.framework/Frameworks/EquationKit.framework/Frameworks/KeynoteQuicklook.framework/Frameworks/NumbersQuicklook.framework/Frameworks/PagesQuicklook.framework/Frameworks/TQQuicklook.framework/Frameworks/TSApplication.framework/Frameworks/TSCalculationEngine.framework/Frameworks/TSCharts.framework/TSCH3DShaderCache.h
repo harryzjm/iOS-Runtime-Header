@@ -11,11 +11,12 @@
 
 @interface TSCH3DShaderCache : NSObject
 {
-    id <TSCH3DProtectResourceDelegate> mProtectResourceDelegate;
-    NSMutableArray *mShaderCache;
+    id <TSCH3DProtectResourceDelegate> _protectResourceDelegate;
+    NSMutableArray *_shaderCache;
 }
 
-@property(nonatomic) id <TSCH3DProtectResourceDelegate> protectResourceDelegate; // @synthesize protectResourceDelegate=mProtectResourceDelegate;
+- (void).cxx_destruct;
+@property(nonatomic) __weak id <TSCH3DProtectResourceDelegate> protectResourceDelegate; // @synthesize protectResourceDelegate=_protectResourceDelegate;
 - (id)description;
 - (void)flush;
 - (id)shaderForShaderContext:(id)arg1 initializeProgramBlock:(CDUnknownBlockType)arg2;

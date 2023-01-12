@@ -18,22 +18,9 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic, getter=isSyncingEnabled) _Bool syncingEnabled; // @synthesize syncingEnabled=_syncingEnabled;
-@property(retain, nonatomic) NSMapTable *recordZoneObservers; // @synthesize recordZoneObservers=_recordZoneObservers;
-@property(retain, nonatomic) FCCKPrivateDatabase *privateDatabase; // @synthesize privateDatabase=_privateDatabase;
-- (void)_saveDatabaseServerChangeToken:(id)arg1;
-- (void)_deleteLocalDataForRecordZoneIDs:(id)arg1;
-- (void)_fetchChangesForRecordZoneIDs:(id)arg1;
-- (id)serverChangeTokenKey;
-- (void)_handlePrivateDatabaseNotification:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)handleRemoteNotification:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)removeRecordZoneObserver:(id)arg1;
-- (void)addObserver:(id)arg1 forChangesToRecordZoneID:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
-- (id)initWithPrivateDatabase:(id)arg1 storeDirectory:(id)arg2;
 - (id)init;
 - (void)prepareForUse;
-- (void)disableSyncing;
-- (void)enableSyncing;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

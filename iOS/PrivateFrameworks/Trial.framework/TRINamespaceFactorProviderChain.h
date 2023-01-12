@@ -8,36 +8,43 @@
 
 #import <Trial/TRINamespaceFactorProviding-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSDictionary, NSString;
 @protocol TRINamespaceFactorProviding;
 
 @interface TRINamespaceFactorProviderChain : NSObject <TRINamespaceFactorProviding>
 {
-    NSArray *_directoryChain;
+    NSString *_namespaceName;
     NSArray *_providerChain;
     id <TRINamespaceFactorProviding> _installedProvider;
     id <TRINamespaceFactorProviding> _rolloutProvider;
     id <TRINamespaceFactorProviding> _experimentProvider;
-    unsigned int _namespaceId;
-    NSString *_namespaceName;
+    NSDictionary *_aliasMap;
 }
 
-+ (id)factorProviderWithNamespaceName:(id)arg1 directoryChain:(id)arg2 treatmentLayers:(id)arg3;
-+ (id)factorProviderWithNamespaceName:(id)arg1 directoryChain:(id)arg2;
++ (id)factorProviderWithPaths:(id)arg1 namespaceName:(id)arg2 resolver:(id)arg3;
++ (id)factorProviderWithPaths:(id)arg1 namespaceName:(id)arg2 excludingTreatmentLayers:(unsigned long long)arg3;
 + (id)factorProviderWithPaths:(id)arg1 namespaceName:(id)arg2;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSString *namespaceName; // @synthesize namespaceName=_namespaceName;
-@property(readonly, nonatomic) unsigned int namespaceId; // @synthesize namespaceId=_namespaceId;
+- (unsigned int)namespaceId;
+- (void)dispose;
+- (id)factorNamesWithObfuscation:(id)arg1;
 - (id)factorLevels;
+- (id)_dealiasedFactorLevelForFactorLevel:(id)arg1 unaliasedName:(id)arg2;
+- (id)promotableFactorPackId;
+- (void)computeTreatmentAssetIndexes:(id *)arg1 withAssociatedExperimentIds:(id *)arg2 andFactorPackAssetIds:(id *)arg3 withAssociatedRolloutDeployments:(id *)arg4 withExperimentFactorNames:(id *)arg5 andRolloutFactorNames:(id *)arg6 forFactors:(id)arg7 usingFilter:(CDUnknownBlockType)arg8;
+- (id)levelForFactor:(id)arg1 outProvider:(id *)arg2;
 - (id)levelForFactor:(id)arg1;
-- (id)treatmentIdForFactor:(id)arg1;
 - (_Bool)hasAnyTreatmentInLayers:(unsigned long long)arg1;
 - (_Bool)isRegistered;
 - (unsigned int)namespaceCompatibilityVersion;
-- (unsigned int)namespaceVersion;
+- (id)providerForTreatmentLayer:(unsigned long long)arg1;
 - (id)rolloutId;
 - (id)treatmentId;
-- (id)initWithNamespaceName:(id)arg1 directoryChain:(id)arg2 treatmentLayers:(id)arg3;
+- (int)deploymentId;
+- (id)experimentId;
+- (id)namespaceName;
+- (id)initWithNamespaceName:(id)arg1 typedProviderChain:(id)arg2 paths:(id)arg3 excludingTreatmentLayers:(unsigned long long)arg4;
+- (id)initWithNamespaceName:(id)arg1 typedProviderChain:(id)arg2 paths:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

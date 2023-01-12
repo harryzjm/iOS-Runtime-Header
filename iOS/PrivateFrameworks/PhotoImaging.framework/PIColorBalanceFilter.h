@@ -18,7 +18,6 @@
     NSNumber *_inputIsRaw;
 }
 
-+ (struct CGColorSpace *)linearWideGamutColorSpace;
 + (id)colorBalanceKernel;
 + (id)PPtogHDRKernel;
 + (id)gHDRtoPPKernel;

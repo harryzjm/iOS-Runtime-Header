@@ -28,6 +28,7 @@
 - (_Bool)_isAuthorizedForReadWriteWithContext:(id)arg1;
 - (_Bool)_isAuthorizedViaTCCWithContext:(id)arg1;
 - (id)_verifyAuthorizationWithContext:(id)arg1;
+- (void)refreshCachedAuthorizationsWithContext:(id)arg1;
 - (id)verifyPermissionsWithContext:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithPermissions:(id)arg1;

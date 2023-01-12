@@ -6,7 +6,11 @@
 
 #import <SiriVOX/NSObject-Protocol.h>
 
+@class NSObject;
+@protocol OS_dispatch_group;
+
 @protocol SVXPerforming <NSObject>
+- (void)performBlock:(void (^)(void))arg1 afterGroup:(NSObject<OS_dispatch_group> *)arg2;
 - (void)performBlock:(void (^)(void))arg1 withOptions:(unsigned long long)arg2;
 - (void)performBlock:(void (^)(void))arg1 afterDelay:(double)arg2;
 - (void)performBlock:(void (^)(void))arg1;

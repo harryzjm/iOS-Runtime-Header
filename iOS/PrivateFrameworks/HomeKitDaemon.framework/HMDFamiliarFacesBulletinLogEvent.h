@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeKitDaemon/HMDCoreAnalyticsLogging-Protocol.h>
+#import <HomeKitMetrics/HMMLogEvent.h>
+
+#import <HomeKitDaemon/HMMCoreAnalyticsLogging-Protocol.h>
 
 @class NSString;
 
-@interface HMDFamiliarFacesBulletinLogEvent <HMDCoreAnalyticsLogging>
+@interface HMDFamiliarFacesBulletinLogEvent : HMMLogEvent <HMMCoreAnalyticsLogging>
 {
     _Bool _doorbellPressed;
     long long _numberOfKnownPersons;
@@ -17,7 +19,6 @@
     double _secondsFromDoorbellToFaceClassification;
 }
 
-+ (id)identifier;
 - (void).cxx_destruct;
 @property(readonly) double secondsFromDoorbellToFaceClassification; // @synthesize secondsFromDoorbellToFaceClassification=_secondsFromDoorbellToFaceClassification;
 @property(readonly) _Bool doorbellPressed; // @synthesize doorbellPressed=_doorbellPressed;
@@ -27,6 +28,9 @@
 - (id)initWithNumberOfKnownPersons:(long long)arg1 numberOfUnknownPersons:(long long)arg2 bulletinReason:(id)arg3 doorbellPressed:(_Bool)arg4 secondsFromDoorbellToFaceClassification:(double)arg5;
 - (id)serializedEvent;
 - (id)eventName;
+
+// Remaining properties
+@property(readonly, nonatomic) NSString *accessoryIdentifier;
 
 @end
 

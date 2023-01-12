@@ -32,8 +32,9 @@
 - (void)revertToOriginalWithObjectURI:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)enqueuePrefetch;
 - (void)clearPrefetchState;
-- (void)getCPLStateWithReply:(CDUnknownBlockType)arg1;
+- (void)getCPLStateForDebug:(_Bool)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)getXPCTransactionStatusWithReply:(CDUnknownBlockType)arg1;
+- (void)rebuildTableThumbsWithReply:(CDUnknownBlockType)arg1;
 - (void)rebuildAllThumbnails;
 - (void)resetDupesAnalysis;
 - (void)rebuildCloudFeedWithReply:(CDUnknownBlockType)arg1;
@@ -51,6 +52,7 @@
 - (void)asynchronousUnloadImageFilesForAssetWithObjectURI:(id)arg1 minimumFormat:(unsigned short)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)statusWithReply:(CDUnknownBlockType)arg1;
 - (id)initWithLibraryServicesManager:(id)arg1 resourceDownloader:(id)arg2 bundleController:(id)arg3;
+- (id)_persistentStoreCoordinator;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

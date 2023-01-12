@@ -9,12 +9,13 @@
 #import <HealthDaemon/HDNanoSyncDescription-Protocol.h>
 #import <HealthDaemon/NSCopying-Protocol.h>
 
-@class HDCodableNanoSyncActivationRestore, HDCodableNanoSyncChangeSet, HDCodableNanoSyncStatus, NSData, NSString;
+@class HDCodableNanoSyncActivationRestore, HDCodableNanoSyncChangeSet, HDCodableNanoSyncStatus, HDCodableSyncEntityVersionMap, NSData, NSString;
 
 @interface HDCodableNanoSyncMessage : PBCodable <HDNanoSyncDescription, NSCopying>
 {
     HDCodableNanoSyncActivationRestore *_activationRestore;
     HDCodableNanoSyncChangeSet *_changeSet;
+    HDCodableSyncEntityVersionMap *_entityVersionMap;
     NSData *_healthPairingUUID;
     NSData *_persistentPairingUUID;
     HDCodableNanoSyncStatus *_status;
@@ -27,6 +28,7 @@
 + (id)messageWithSyncStore:(id)arg1;
 + (id)messageFromPersistentUserInfo:(id)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) HDCodableSyncEntityVersionMap *entityVersionMap; // @synthesize entityVersionMap=_entityVersionMap;
 @property(retain, nonatomic) HDCodableNanoSyncActivationRestore *activationRestore; // @synthesize activationRestore=_activationRestore;
 @property(retain, nonatomic) HDCodableNanoSyncStatus *status; // @synthesize status=_status;
 @property(retain, nonatomic) HDCodableNanoSyncChangeSet *changeSet; // @synthesize changeSet=_changeSet;
@@ -42,6 +44,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) _Bool hasEntityVersionMap;
 @property(readonly, nonatomic) _Bool hasActivationRestore;
 @property(readonly, nonatomic) _Bool hasStatus;
 @property(readonly, nonatomic) _Bool hasChangeSet;

@@ -6,14 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableDictionary;
-
 __attribute__((visibility("hidden")))
 @interface WebHistoryPrivate : NSObject
 {
-    NSMutableDictionary *_entriesByURL;
-    struct unique_ptr<WTF::HashMap<long long, WTF::RetainPtr<NSMutableArray>, WTF::DefaultHash<long long>, WTF::HashTraits<long long>, WTF::HashTraits<WTF::RetainPtr<NSMutableArray>>>, std::__1::default_delete<WTF::HashMap<long long, WTF::RetainPtr<NSMutableArray>, WTF::DefaultHash<long long>, WTF::HashTraits<long long>, WTF::HashTraits<WTF::RetainPtr<NSMutableArray>>>>> _entriesByDate;
-    NSMutableArray *_orderedLastVisitedDays;
+    struct RetainPtr<NSMutableDictionary> _entriesByURL;
+    struct unique_ptr<WTF::HashMap<long long, WTF::RetainPtr<NSMutableArray>>, std::default_delete<WTF::HashMap<long long, WTF::RetainPtr<NSMutableArray>>>> _entriesByDate;
+    struct RetainPtr<NSMutableArray> _orderedLastVisitedDays;
     _Bool itemLimitSet;
     int itemLimit;
     _Bool ageInDaysLimitSet;
@@ -23,7 +21,7 @@ __attribute__((visibility("hidden")))
 + (void)initialize;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)addVisitedLinksToVisitedLinkStore:(struct WebVisitedLinkStore *)arg1;
+- (void)addVisitedLinksToVisitedLinkStore:(void *)arg1;
 - (_Bool)saveToURL:(id)arg1 error:(id *)arg2;
 - (id)data;
 - (_Bool)loadFromURL:(id)arg1 collectDiscardedItemsInto:(id)arg2 error:(id *)arg3;
@@ -51,7 +49,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)removeItemFromDateCaches:(id)arg1;
 - (void)insertItem:(id)arg1 forDateKey:(long long)arg2;
 - (_Bool)findKey:(long long *)arg1 forDay:(double)arg2;
-- (void)dealloc;
 - (id)init;
 
 @end

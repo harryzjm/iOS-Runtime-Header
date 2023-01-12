@@ -7,7 +7,7 @@
 #import <ScreenTimeSettingsUI/STAlwaysAllowListControllerDelegate-Protocol.h>
 #import <ScreenTimeSettingsUI/STDeviceBedtimeListControllerDelegate-Protocol.h>
 
-@class NSString, PSSpecifier;
+@class NSString, NSTimer, PSSpecifier;
 
 __attribute__((visibility("hidden")))
 @interface STAllowancesConfigurationGroupSpecifierProvider <STAlwaysAllowListControllerDelegate, STDeviceBedtimeListControllerDelegate>
@@ -17,9 +17,11 @@ __attribute__((visibility("hidden")))
     PSSpecifier *_alwaysAllowedSpecifier;
     PSSpecifier *_communicationLimitsSpecifier;
     PSSpecifier *_contentPrivacySpecifier;
+    NSTimer *_downtimeScheduleRefreshTimer;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSTimer *downtimeScheduleRefreshTimer; // @synthesize downtimeScheduleRefreshTimer=_downtimeScheduleRefreshTimer;
 @property(retain, nonatomic) PSSpecifier *contentPrivacySpecifier; // @synthesize contentPrivacySpecifier=_contentPrivacySpecifier;
 @property(retain, nonatomic) PSSpecifier *communicationLimitsSpecifier; // @synthesize communicationLimitsSpecifier=_communicationLimitsSpecifier;
 @property(retain, nonatomic) PSSpecifier *alwaysAllowedSpecifier; // @synthesize alwaysAllowedSpecifier=_alwaysAllowedSpecifier;
@@ -33,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)_resetCommunicationLimitsDetailText;
 - (void)_communicationLimitsDidChangeFrom:(id)arg1 to:(id)arg2;
 - (void)_isRemoteUserDidChangeFrom:(_Bool)arg1 to:(_Bool)arg2;
+- (void)_isManagedDidChangeTo:(_Bool)arg1;
 - (void)_userTypeDidChange:(unsigned long long)arg1;
 - (void)alwaysAllowListController:(id)arg1 didFinishEditingAlwaysAllowList:(id)arg2;
 - (void)showAlwaysAllowedViewController:(id)arg1;
@@ -43,7 +46,10 @@ __attribute__((visibility("hidden")))
 - (void)bedtimeListController:(id)arg1 didFinishEditingBedtime:(id)arg2;
 - (void)showDeviceBedtimeViewController:(id)arg1;
 - (id)_subtitleTextForDeviceBedtime:(id)arg1;
+- (void)_refreshBedtimeSpecifiersForBedtime:(id)arg1;
 - (void)_deviceBedtimeDidChange:(id)arg1;
+- (void)scheduleDowntimeRefreshIfNeeded;
+- (void)scheduleDowntimeRefreshAndReloadSpecifiersForBedtime:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)setCoordinator:(id)arg1;
 - (id)init;

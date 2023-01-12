@@ -21,11 +21,11 @@
 + (void)migratePreBlacktailAccountInformation;
 + (id)authMachineForEnvironment:(long long)arg1;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) long long serverEnvironment; // @synthesize serverEnvironment=_serverEnvironment;
 @property(retain, nonatomic) NSString *accountName; // @synthesize accountName=_accountName;
 @property(nonatomic) long long loginCancelledCount; // @synthesize loginCancelledCount=_loginCancelledCount;
 - (void)encodeWithCoder:(id)arg1;
-- (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 
 @end

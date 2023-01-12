@@ -15,6 +15,10 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)submitSimSetupUsage:(id)arg1;
+- (_Bool)deviceSupportsHydra;
+- (void)getSubscriptionInfo:(CDUnknownBlockType)arg1;
+- (void)convertPhysicalSIMToeSIMWithCompletion:(CDUnknownBlockType)arg1;
 - (void)hideTransferPlan:(id)arg1 fromDevice:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)installPendingPlanList:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)installPendingPlan:(id)arg1 completion:(CDUnknownBlockType)arg2;

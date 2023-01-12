@@ -9,11 +9,12 @@
 #import <TSText/TSWPColumnMetrics-Protocol.h>
 #import <TSText/TSWPLayoutOwner-Protocol.h>
 #import <TSText/TSWPLayoutTarget-Protocol.h>
+#import <TSText/TSWPStyleProviding-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, TSDCanvas, TSDLayout, TSDLayoutController, TSPObject, TSSStylesheet, TSUColor, TSULocale, TSWPColumnStyle, TSWPListStyle, TSWPPadding, TSWPParagraphStyle, TSWPStorage, TSWPTextParentInfo, TSWPTextParentLayout;
+@class NSArray, NSMutableArray, NSString, TSDCanvas, TSDLayoutController, TSPObject, TSSStylesheet, TSUColor, TSULocale, TSWPColumnStyle, TSWPListStyle, TSWPPadding, TSWPParagraphStyle, TSWPStorage, TSWPTextParentInfo, TSWPTextParentLayout;
 @protocol TSDHint, TSWPFootnoteHeightMeasurer, TSWPFootnoteMarkProvider, TSWPOffscreenColumn, TSWPTextDelegate, TSWPTopicNumberHints;
 
-@interface TSWPText : NSObject <TSWPLayoutTarget, TSWPLayoutOwner, TSWPColumnMetrics>
+@interface TSWPText : NSObject <TSWPLayoutTarget, TSWPLayoutOwner, TSWPColumnMetrics, TSWPStyleProviding>
 {
     TSWPListStyle *_listStyle;
     TSWPColumnStyle *_columnStyle;
@@ -37,16 +38,19 @@
     TSWPParagraphStyle *_paragraphStyle;
 }
 
-+ (double)columnLayoutWidthForBodyWidth:(double)arg1 padding:(double)arg2 delta:(inout double *)arg3;
++ (double)columnLayoutWidthForBodyWidth:(double)arg1 insets:(inout struct UIEdgeInsets *)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) TSWPParagraphStyle *paragraphStyle; // @synthesize paragraphStyle=_paragraphStyle;
-@property(nonatomic) NSObject<TSWPTextDelegate> *delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak NSObject<TSWPTextDelegate> *delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) TSUColor *textColorOverride; // @synthesize textColorOverride=_textColorOverride;
 @property(readonly, nonatomic) int naturalDirection; // @synthesize naturalDirection=_naturalDirection;
 @property(readonly, nonatomic) int naturalAlignment; // @synthesize naturalAlignment=_naturalAlignment;
 @property(nonatomic) _Bool vertical; // @synthesize vertical=_vertical;
 @property(readonly, nonatomic) TSWPStorage *storage; // @synthesize storage=_storage;
 @property(readonly, nonatomic) NSMutableArray *columns; // @synthesize columns=_columns;
+- (_Bool)wantsToProvideStylesForTextLayout:(id)arg1;
+- (id)styleProviderForTextLayout:(id)arg1;
+- (id)styleProvider;
 - (void)p_setParentLayoutMaximumFrameSizeForChildren;
 - (_Bool)forceWesternLineBreaking;
 - (id)textWrapper;
@@ -66,7 +70,7 @@
 @property(readonly, nonatomic) unsigned long long pageNumber;
 @property(readonly, nonatomic) double maxAnchorInBlockDirection;
 - (id)currentAnchoredDrawableLayouts;
-- (void)addAttachmentLayout:(id)arg1;
+- (id)addPartitionableAttachmentLayout:(id)arg1;
 - (id)currentInlineDrawableLayouts;
 - (id)validatedLayoutForAnchoredDrawable:(id)arg1;
 - (id)layoutForInlineDrawable:(id)arg1;
@@ -87,8 +91,7 @@
 @property(readonly, nonatomic) id <TSWPFootnoteMarkProvider> footnoteMarkProvider;
 @property(readonly, nonatomic) id <TSWPFootnoteHeightMeasurer> footnoteHeightMeasurer;
 @property(readonly, nonatomic) id <TSWPOffscreenColumn> nextTargetFirstColumn;
-@property(readonly, nonatomic) NSObject<TSWPTopicNumberHints> *nextTargetTopicNumbers;
-@property(readonly, nonatomic) NSObject<TSWPTopicNumberHints> *previousTargetTopicNumbers;
+@property(readonly, nonatomic) NSObject<TSWPTopicNumberHints> *nextTargetTopicNumberHints;
 @property(readonly, nonatomic) id <TSWPOffscreenColumn> previousTargetLastColumn;
 - (id)columnMetricsForCharIndex:(unsigned long long)arg1 outRange:(struct _NSRange *)arg2;
 @property(readonly, nonatomic) _Bool columnsAreLeftToRight;
@@ -99,7 +102,7 @@
 - (double)widthForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2;
 @property(readonly, nonatomic) unsigned long long columnCount;
 @property(readonly, nonatomic) TSWPPadding *layoutMargins;
-- (struct CGSize)adjustedInsetsForTarget:(id)arg1;
+- (struct UIEdgeInsets)adjustedInsetsForTarget:(id)arg1;
 @property(readonly, nonatomic) struct __CFLocale *hyphenationLocale;
 @property(readonly, nonatomic) _Bool shouldHyphenate;
 @property(readonly, nonatomic) TSULocale *locale;
@@ -107,6 +110,7 @@
 - (void)drawColumn:(id)arg1 inContext:(struct CGContext *)arg2 isFlipped:(_Bool)arg3 viewScale:(double)arg4;
 - (void)drawColumn:(id)arg1 selection:(id)arg2 inContext:(struct CGContext *)arg3 isFlipped:(_Bool)arg4 viewScale:(double)arg5;
 - (void)drawColumn:(id)arg1 selection:(id)arg2 inContext:(struct CGContext *)arg3 isFlipped:(_Bool)arg4 viewScale:(double)arg5 renderMode:(unsigned long long)arg6;
+- (struct CGSize)measureText:(id)arg1 withMaxWidth:(double)arg2;
 - (struct CGSize)measureText:(id)arg1;
 - (id)layoutText:(id)arg1 context:(id)arg2 kind:(unsigned char)arg3 minSize:(struct CGSize)arg4 maxSize:(struct CGSize)arg5 anchor:(struct CGPoint)arg6 flags:(int)arg7;
 - (id)layoutText:(id)arg1 minSize:(struct CGSize)arg2 maxSize:(struct CGSize)arg3 anchor:(struct CGPoint)arg4 flags:(int)arg5;
@@ -120,17 +124,22 @@
 - (id)initWithStylesheet:(id)arg1 paragraphStyle:(id)arg2 listStyle:(id)arg3 columnStyle:(id)arg4 alignmentForNaturalAlignment:(int)arg5 naturalDirection:(int)arg6;
 
 // Remaining properties
+@property(readonly, nonatomic) _Bool alwaysIncludesSpaceAfter;
+@property(readonly, nonatomic) _Bool alwaysIncludesSpaceBefore;
 @property(retain, nonatomic) NSMutableArray *anchoredDrawablesForRelayout;
 @property(readonly, nonatomic) TSDCanvas *canvas;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) Class inlineTableOfContentsLayoutClass;
 @property(readonly, nonatomic) _Bool isLinked;
 @property(readonly, nonatomic) _Bool marginsAreMirrored;
 @property(readonly, nonatomic) struct CGRect maskRect;
-@property(readonly, nonatomic) TSDLayout *parentLayoutForInlineAttachments;
 @property(readonly, nonatomic) _Bool repShouldPreventCaret;
+@property(readonly, nonatomic) struct _NSRange restrictedLayoutCharRange;
+@property(readonly, nonatomic) _Bool shouldIgnoreAnchoredAttachments;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) _Bool supportsPageNumbers;
 @property(readonly, nonatomic) double textScaleFactor;
 
 @end

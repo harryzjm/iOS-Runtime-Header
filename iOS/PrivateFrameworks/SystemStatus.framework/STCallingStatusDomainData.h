@@ -10,16 +10,21 @@
 #import <SystemStatus/STStatusDomainData-Protocol.h>
 #import <SystemStatus/STStatusDomainDataDifferencing-Protocol.h>
 
-@class NSSet, NSString, STActivityAttributionCatalog;
+@class NSArray, NSSet, NSString, STListData;
 
 @interface STCallingStatusDomainData : NSObject <STStatusDomainDataDifferencing, NSSecureCoding, STStatusDomainData>
 {
-    STActivityAttributionCatalog *_attributionCatalog;
+    STListData *_callDescriptorListData;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) STActivityAttributionCatalog *attributionCatalog; // @synthesize attributionCatalog=_attributionCatalog;
+@property(readonly, copy, nonatomic) STListData *callDescriptorListData; // @synthesize callDescriptorListData=_callDescriptorListData;
+- (id)_ringingVideoCallDescriptors;
+- (id)_videoOrCopresenceCallDescriptorsWithCallState:(unsigned long long)arg1;
+- (id)_activeVideoCallDescriptors;
+- (id)_ringingAudioCallDescriptors;
+- (id)_activeAudioCallDescriptors;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)dataByApplyingDiff:(id)arg1;
@@ -37,8 +42,9 @@
 @property(readonly, copy, nonatomic) NSSet *activeVideoConferenceAttributions;
 @property(readonly, copy, nonatomic) NSSet *ringingCallAttributions;
 @property(readonly, copy, nonatomic) NSSet *activeCallAttributions;
-- (id)_initWithAttributionCatalog:(id)arg1;
-- (id)initWithAttributionCatalog:(id)arg1;
+@property(readonly, copy, nonatomic) NSArray *callDescriptors;
+- (id)_initWithCallDescriptorListData:(id)arg1;
+- (id)initWithCallDescriptorListData:(id)arg1;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

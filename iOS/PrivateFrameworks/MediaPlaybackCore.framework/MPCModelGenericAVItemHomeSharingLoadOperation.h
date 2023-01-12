@@ -8,6 +8,7 @@
 
 @class MPCModelGenericAVItemAssetLoadProperties;
 
+__attribute__((visibility("hidden")))
 @interface MPCModelGenericAVItemHomeSharingLoadOperation : MPAsyncOperation
 {
     MPCModelGenericAVItemAssetLoadProperties *_assetLoadProperties;

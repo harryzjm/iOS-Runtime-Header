@@ -12,6 +12,7 @@
 {
     _Bool _requiresCoreLocationAssertion;
     _Bool _supportsAppRelaunchForRecovery;
+    _Bool _supports3rdPartyAOT;
     NSUUID *_sessionIdentifier;
     HKWorkoutConfiguration *_workoutConfiguration;
     HDHealthStoreClient *_client;
@@ -20,6 +21,7 @@
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool supports3rdPartyAOT; // @synthesize supports3rdPartyAOT=_supports3rdPartyAOT;
 @property(readonly, nonatomic) _Bool supportsAppRelaunchForRecovery; // @synthesize supportsAppRelaunchForRecovery=_supportsAppRelaunchForRecovery;
 @property(readonly, nonatomic) _Bool requiresCoreLocationAssertion; // @synthesize requiresCoreLocationAssertion=_requiresCoreLocationAssertion;
 @property(readonly, copy, nonatomic) NSString *clientApplicationIdentifier; // @synthesize clientApplicationIdentifier=_clientApplicationIdentifier;
@@ -27,7 +29,7 @@
 @property(readonly, nonatomic) HDHealthStoreClient *client; // @synthesize client=_client;
 @property(readonly, copy, nonatomic) HKWorkoutConfiguration *workoutConfiguration; // @synthesize workoutConfiguration=_workoutConfiguration;
 @property(readonly, copy, nonatomic) NSUUID *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
-- (id)initWithSessionIdentifier:(id)arg1 workoutConfiguration:(id)arg2 client:(id)arg3 processBundleIdentifier:(id)arg4 applicationIdentifier:(id)arg5 requiresCoreLocationAssertion:(_Bool)arg6 supportsAppRelaunchForRecovery:(_Bool)arg7;
+- (id)initWithSessionIdentifier:(id)arg1 workoutConfiguration:(id)arg2 client:(id)arg3 processBundleIdentifier:(id)arg4 applicationIdentifier:(id)arg5 requiresCoreLocationAssertion:(_Bool)arg6 supportsAppRelaunchForRecovery:(_Bool)arg7 supports3rdPartyAOT:(_Bool)arg8;
 
 @end
 

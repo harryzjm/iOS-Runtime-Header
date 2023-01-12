@@ -6,7 +6,7 @@
 
 #import <AVFCore/AVContentKeyRecipient-Protocol.h>
 
-@class AVAssetResourceLoader, AVURLAssetInternal, NSString, NSURL;
+@class AVAssetResourceLoader, AVURLAssetInternal, NSArray, NSString, NSURL;
 
 @interface AVURLAsset <AVContentKeyRecipient>
 {
@@ -14,6 +14,7 @@
 }
 
 + (id)_getFigAssetCreationOptionsFromURLAssetInitializationOptions:(id)arg1 assetLoggingIdentifier:(id)arg2 figAssetCreationFlags:(unsigned long long *)arg3 error:(id *)arg4;
++ (id)_initializationOptionsClasses;
 + (id)_getFigAssetiTunesStoreContentInfoFromURLAssetiTunesStoreContentInfo:(id)arg1;
 + (id)URLAssetWithURL:(id)arg1 options:(id)arg2;
 + (_Bool)isPlayableExtendedMIMEType:(id)arg1;
@@ -41,6 +42,7 @@
 + (long long)_preferredRepresentationForItemProviderReadableTypeIdentifier:(id)arg1;
 + (id)objectWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 error:(id *)arg3;
 + (id)readableTypeIdentifiersForItemProvider;
+- (id)contentKeySpecifiersEligibleForPreloading;
 - (_Bool)_requiresInProcessOperation;
 - (unsigned long long)referenceRestrictions;
 - (id)lyrics;
@@ -64,10 +66,12 @@
 - (void)_addFigAssetNotifications;
 - (void)_ensureAssetDownloadCache;
 - (id)_errorForFigNotificationPayload:(struct __CFDictionary *)arg1 key:(struct __CFString *)arg2;
+- (id)initWithFileURL:(id)arg1 offset:(long long)arg2 length:(long long)arg3 options:(id)arg4;
 - (id)initWithURL:(id)arg1 options:(id)arg2;
 - (id)init;
 - (id)assetCache;
 - (id)_managedAssetCache;
+- (_Bool)_clientURLLoadingRepresentsAccurateNetworkStatistics;
 - (_Bool)_shouldOptimizeAccessForLinearMoviePlayback;
 - (id)SHA1Digest;
 - (unsigned long long)downloadToken;
@@ -80,6 +84,7 @@
 @property(readonly, nonatomic) NSString *cacheKey;
 @property(readonly, nonatomic) _Bool shouldMatchDataInCacheByURLWithoutQueryComponent;
 @property(readonly, nonatomic) _Bool shouldMatchDataInCacheByURLPathComponentOnly;
+@property(readonly, nonatomic) NSArray *variants;
 - (id)_resourceLoaderWithRemoteHandlerContext:(id)arg1;
 - (_Bool)_hasResourceLoaderDelegate;
 @property(readonly, nonatomic) AVAssetResourceLoader *resourceLoader;

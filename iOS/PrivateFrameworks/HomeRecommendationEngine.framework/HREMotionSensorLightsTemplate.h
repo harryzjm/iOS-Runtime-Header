@@ -8,15 +8,9 @@
 {
 }
 
-- (_Bool)recommendationIsForOccupancySensor:(id)arg1;
-- (id)iconDescriptorForHomeObjects:(id)arg1 forRecommendation:(id)arg2;
-- (_Bool)usesRoomNameGrouping;
-- (id)actionKeyForServiceType:(id)arg1 forRecommendation:(id)arg2;
-- (id)verboseContextKey;
-- (id)actionOnlyContextKey;
-- (id)eventOnlyContextKey;
-- (id)titleFormat;
-- (id)initWithConfiguration:(id)arg1;
+- (id)_lazy_allowedVariance;
+- (id)_lazy_actionMap;
+- (id)init;
 
 @end
 

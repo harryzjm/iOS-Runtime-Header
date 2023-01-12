@@ -16,10 +16,12 @@
 {
     DNDScheduleTime *_startTime;
     DNDScheduleTime *_endTime;
+    unsigned long long _weekdays;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long weekdays; // @synthesize weekdays=_weekdays;
 @property(readonly, copy, nonatomic) DNDScheduleTime *endTime; // @synthesize endTime=_endTime;
 @property(readonly, copy, nonatomic) DNDScheduleTime *startTime; // @synthesize startTime=_startTime;
 - (void)encodeWithCoder:(id)arg1;
@@ -29,7 +31,7 @@
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)_initWithStartTime:(id)arg1 endTime:(id)arg2;
+- (id)_initWithStartTime:(id)arg1 endTime:(id)arg2 weekdays:(unsigned long long)arg3;
 - (id)_initWithPeriod:(id)arg1;
 - (id)init;
 

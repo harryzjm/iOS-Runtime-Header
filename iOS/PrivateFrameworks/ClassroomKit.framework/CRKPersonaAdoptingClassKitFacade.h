@@ -4,35 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+@class CRKClassKitPersonaAdopter;
 
-#import <ClassroomKit/CRKClassKitFacade-Protocol.h>
-
-@class NSString;
-@protocol CRKClassKitFacade;
-
-@interface CRKPersonaAdoptingClassKitFacade : NSObject <CRKClassKitFacade>
+@interface CRKPersonaAdoptingClassKitFacade
 {
-    id <CRKClassKitFacade> _classKitFacade;
+    CRKClassKitPersonaAdopter *_personaAdopter;
 }
 
-+ (id)keyPathsForValuesAffectingAccountState;
++ (id)keyPathsForValuesAffectingCurrentPersonaUniqueString;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) id <CRKClassKitFacade> classKitFacade; // @synthesize classKitFacade=_classKitFacade;
+@property(readonly, nonatomic) CRKClassKitPersonaAdopter *personaAdopter; // @synthesize personaAdopter=_personaAdopter;
 - (void)executeQuery:(id)arg1;
-- (id)makeQueryForPersonsWithIdentifiers:(id)arg1;
-- (id)makeInstructorQueryForSearchString:(id)arg1 locationIDs:(id)arg2 sortingGivenNameFirst:(_Bool)arg3 pageSize:(long long)arg4;
-- (id)makeStudentQueryForSearchString:(id)arg1 locationIDs:(id)arg2 sortingGivenNameFirst:(_Bool)arg3 pageSize:(long long)arg4;
 - (void)removeClass:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)locationsWithObjectIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)locationsWithManagePermissionsForUserWithObjectID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)makeClassWithLocationID:(id)arg1 name:(id)arg2;
-- (id)objectIDsOfInstructorsInClass:(id)arg1;
-- (void)removeInstructor:(id)arg1 fromClass:(id)arg2;
-- (void)addInstructor:(id)arg1 toClass:(id)arg2;
-- (id)objectIDsOfStudentsInClass:(id)arg1;
-- (void)removeStudent:(id)arg1 fromClass:(id)arg2;
-- (void)addStudent:(id)arg1 toClass:(id)arg2;
 - (void)saveClass:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)studentsInClassWithObjectID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)instructorsInClassWithObjectID:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -41,27 +26,9 @@
 - (void)currentUserWithCompletion:(CDUnknownBlockType)arg1;
 - (void)deregisterDataObserver:(id)arg1;
 - (void)registerDataObserver:(id)arg1;
-- (id)locationsObserverWithSortDescriptors:(id)arg1;
-- (id)studentObserverWithSortDescriptors:(id)arg1;
-- (id)instructorObserverWithSortDescriptors:(id)arg1;
-- (id)currentUserDataObserverWithSortDescriptors:(id)arg1;
-- (id)classDataObserverWithSortDescriptors:(id)arg1;
-@property(readonly, copy, nonatomic) NSString *studentClassMembershipChangeDarwinNotificationName;
-@property(readonly, copy, nonatomic) NSString *currentUserInfoKey;
-@property(readonly, copy, nonatomic) NSString *currentUserDidChangeNotificationName;
-- (_Bool)ownsError:(id)arg1;
-@property(readonly, nonatomic) long long accountState;
-- (id)currentPersona;
-- (id)personalPersonaUniqueString;
-- (void)explicitlyAdoptPersonalPersonaAndPerformBlock:(CDUnknownBlockType)arg1;
-- (void)performBlockWithPersonalPersona:(CDUnknownBlockType)arg1;
-- (id)initWithClassKitFacade:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)currentPersonaUniqueString;
+- (void)performBlockWithClassKitPersona:(CDUnknownBlockType)arg1;
+- (id)initWithClassKitFacade:(id)arg1 personaBlockPerformer:(id)arg2;
 
 @end
 

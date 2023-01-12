@@ -28,6 +28,7 @@
 - (void)_postHSA2LoginCode:(id)arg1 withNotification:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_postHSA2PasswordChangeForAppleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_postHSA2LoginNotification:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)updateBadgesForTimer;
 - (void)clearPendingFollowUpItemsWithUniqueIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)clearPendingFollowUpItemsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)pendingFollowUpItemsWithCompletion:(CDUnknownBlockType)arg1;

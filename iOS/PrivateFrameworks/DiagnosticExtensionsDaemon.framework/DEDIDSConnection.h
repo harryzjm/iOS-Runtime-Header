@@ -36,14 +36,14 @@
 @property __weak id <DEDClientProtocol> remoteSideDelegate; // @synthesize remoteSideDelegate=_remoteSideDelegate;
 - (void)incomingDeviceReceived:(id)arg1;
 - (void)discoverDevicesWithCompletion:(CDUnknownBlockType)arg1;
-- (void)didStartBugSessionWithInfo:(id)arg1 forID:(id)arg2;
-- (void)startBugSessionWithIdentifier:(id)arg1 configuration:(id)arg2 caller:(id)arg3 target:(id)arg4;
+- (void)ids_didStartBugSessionWithInfo:(id)arg1 forID:(id)arg2;
+- (void)ids_startBugSessionWithIdentifier:(id)arg1 configuration:(id)arg2 caller:(id)arg3 target:(id)arg4;
 - (_Bool)sendMessage:(int)arg1 withData:(id)arg2 forIDSDeviceIDs:(id)arg3 localIDSDeviceIDs:(id)arg4 isResponse:(_Bool)arg5;
 - (_Bool)sendMessage:(int)arg1 withData:(id)arg2 forIDSDeviceIDs:(id)arg3 isResponse:(_Bool)arg4;
 - (_Bool)sendMessage:(int)arg1 withData:(id)arg2 forDevices:(id)arg3 isResponse:(_Bool)arg4;
 - (_Bool)sendMessage:(int)arg1 withData:(id)arg2 forIDSDeviceID:(id)arg3 isResponse:(_Bool)arg4;
 - (void)setDeviceCallback:(CDUnknownBlockType)arg1;
-- (id)initWithConroller:(id)arg1;
+- (id)initWithController:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

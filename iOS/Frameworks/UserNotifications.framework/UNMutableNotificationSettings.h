@@ -9,6 +9,9 @@
 }
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(nonatomic) long long directMessagesSetting; // @dynamic directMessagesSetting;
+@property(nonatomic) long long scheduledDeliverySetting; // @dynamic scheduledDeliverySetting;
+@property(nonatomic) long long timeSensitiveSetting; // @dynamic timeSensitiveSetting;
 @property(nonatomic) long long groupingSetting; // @dynamic groupingSetting;
 @property(nonatomic) long long announcementSetting; // @dynamic announcementSetting;
 @property(nonatomic) _Bool providesAppNotificationSettings; // @dynamic providesAppNotificationSettings;

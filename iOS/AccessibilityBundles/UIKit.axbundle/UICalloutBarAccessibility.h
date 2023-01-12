@@ -19,8 +19,6 @@
 - (void)show;
 - (void)appear;
 - (void)_axCalloutBarDidAppearWithAnimation:(_Bool)arg1;
-- (void)_axMoveToLastAccessibleSubviewAfterAnimation:(_Bool)arg1;
-- (void)_axMoveToElement:(id)arg1;
 - (_Bool)shouldGroupAccessibilityChildren;
 
 @end

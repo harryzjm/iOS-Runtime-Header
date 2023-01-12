@@ -22,7 +22,7 @@
 @property(copy) CDUnknownBlockType assetWriterDidOutputSeparableSegment; // @synthesize assetWriterDidOutputSeparableSegment=_assetWriterDidOutputSeparableSegment;
 @property(copy) CDUnknownBlockType assetWriterDidOutputInitializationSegment; // @synthesize assetWriterDidOutputInitializationSegment=_assetWriterDidOutputInitializationSegment;
 - (void)assetWriter:(id)arg1 didFailWithError:(id)arg2;
-- (void)assetWriter:(id)arg1 didOutputSeparableSegment:(id)arg2 timeRange:(CDStruct_e83c9415)arg3;
+- (void)assetWriter:(id)arg1 didOutputSeparableSegment:(id)arg2 segmentReport:(id)arg3;
 - (void)assetWriter:(id)arg1 didOutputInitializationSegment:(id)arg2;
 
 // Remaining properties

@@ -23,12 +23,11 @@
 @property(readonly, copy) NSString *type;
 @property(readonly) unsigned long long hash;
 - (id)initWithIndex:(unsigned long long)arg1;
-- (id)shortDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, copy) NSString *debugDescription;
 @property(readonly, getter=isEndOfDocument) _Bool endOfDocument;
 
 // Remaining properties
-@property(readonly, copy) NSString *debugDescription;
 @property(readonly) Class superclass;
 
 @end

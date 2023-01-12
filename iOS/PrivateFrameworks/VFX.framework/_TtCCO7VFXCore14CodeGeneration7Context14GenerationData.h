@@ -10,20 +10,20 @@
 
 @interface _TtCCO7VFXCore14CodeGeneration7Context14GenerationData : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *language;
+    MISSING_TYPE *context;
+    MISSING_TYPE *settings;
     MISSING_TYPE *domain;
     MISSING_TYPE *libFunctionsToInclude;
     MISSING_TYPE *inArgs;
     MISSING_TYPE *inOutArgs;
     MISSING_TYPE *code;
     MISSING_TYPE *templatesAlreadyDefined;
-    MISSING_TYPE *unsupportedBaseObjectUIDs;
-    MISSING_TYPE *sortInArgsAlphabetically;
+    MISSING_TYPE *errorInfos;
+    MISSING_TYPE *allSwitchCases;
+    MISSING_TYPE *hasTimeDependentSnippet;
     MISSING_TYPE *addAllInputsAndOutputs;
-    MISSING_TYPE *codeSnippetsAlreadyDeclaredDuringCodeGeneration;
-    MISSING_TYPE *customCodeSnippetsAlreadyDeclaredDuringCodeGeneration;
-    MISSING_TYPE *contextEntriesAlreadyDeclaredDuringCodeGeneration;
-    MISSING_TYPE *subContextAlreadyDeclaredDuringCodeGeneration;
+    MISSING_TYPE *cleanupCodeArr;
+    MISSING_TYPE *baseObjectUidsAlreadyDeclaredDuringCodeGeneration;
 }
 
 @end

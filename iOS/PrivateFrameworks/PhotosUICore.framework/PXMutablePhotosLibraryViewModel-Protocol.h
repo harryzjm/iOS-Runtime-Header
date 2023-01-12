@@ -6,8 +6,8 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class NSMutableSet, NSNumber, NSObject, NSSet, PXAssetCollectionReference, PXAssetReference, PXCuratedLibraryAssetCollectionSkimmingInfo, PXGView;
-@protocol PXCuratedLibraryViewModelPresenter, PXFilterState;
+@class NSMutableSet, NSNumber, NSSet, PXAssetCollectionReference, PXAssetReference, PXContentFilterState, PXCuratedLibraryAssetCollectionSkimmingInfo, PXGView;
+@protocol PXCuratedLibraryViewModelPresenter;
 
 @protocol PXMutablePhotosLibraryViewModel <NSObject>
 @property(copy, nonatomic) NSNumber *userWantsAspectFitContent;
@@ -16,7 +16,7 @@
 @property(retain, nonatomic) Class cplActionManagerClass;
 @property(nonatomic) _Bool wantsDarkStatusBar;
 @property(nonatomic) _Bool wantsOptionalChromeVisible;
-@property(copy, nonatomic) NSObject<PXFilterState> *allPhotosFilterState;
+@property(copy, nonatomic) PXContentFilterState *allPhotosContentFilterState;
 @property(nonatomic) long long zoomLevel;
 @property(copy, nonatomic) NSSet *draggedAssetReferences;
 @property(retain, nonatomic) PXCuratedLibraryAssetCollectionSkimmingInfo *skimmingInfo;

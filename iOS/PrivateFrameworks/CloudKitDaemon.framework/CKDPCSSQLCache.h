@@ -7,7 +7,6 @@
 @class NSObject;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface CKDPCSSQLCache
 {
     NSObject<OS_dispatch_queue> *_recordQueue;
@@ -16,16 +15,16 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)_evictPCSSQLCachesForAppContainerAccountTuples:(id)arg1;
-+ (void)evictPCSSQLCachesForKnownClientContexts;
++ (void)evictPCSSQLCachesForKnownContainers;
 + (void)registerPCSSQLCacheEvictionActivity;
 + (id)globalPCSSQLCacheEvictionQueue;
-+ (id)pathForContext:(id)arg1;
++ (id)pathForContainer:(id)arg1;
 - (void).cxx_destruct;
 @property unsigned long long cacheHitCount; // @synthesize cacheHitCount=_cacheHitCount;
 @property unsigned long long cacheRequestCount; // @synthesize cacheRequestCount=_cacheRequestCount;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *recordQueue; // @synthesize recordQueue=_recordQueue;
 - (id)CKStatusReportArray;
-- (void)clearInvalidatedCacheEntriesWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)clearInvalidatedCacheEntriesWithSkipZonePCS:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)clearCache;
 - (void)removePCSDataForItemsInShareWithID:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)removePCSDataForItemsInZoneWithID:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
@@ -43,7 +42,7 @@ __attribute__((visibility("hidden")))
 - (id)createInitialTablesSQL;
 - (id)path;
 - (void)dealloc;
-- (id)_initWithClientContext:(id)arg1;
+- (id)_initWithContainer:(id)arg1;
 
 @end
 

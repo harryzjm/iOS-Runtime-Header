@@ -4,17 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface PGGraphAreaEdge
+#import <PhotosGraph/MAUniquelyIdentifiableEdge-Protocol.h>
+
+@class MAEdgeFilter;
+
+@interface PGGraphAreaEdge <MAUniquelyIdentifiableEdge>
 {
     float _weight;
 }
 
-- (void)setWeight:(float)arg1;
++ (id)filter;
 - (float)weight;
 - (unsigned short)domain;
 - (id)label;
+@property(readonly, nonatomic) MAEdgeFilter *uniquelyIdentifyingFilter;
 - (id)edgeDescription;
-- (id)initWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5;
+- (id)initWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5 properties:(id)arg6;
 - (id)initFromAddressNode:(id)arg1 toAreaNode:(id)arg2 weight:(float)arg3;
 
 @end

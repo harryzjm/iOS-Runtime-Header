@@ -16,7 +16,7 @@
 
 - (id)bluetoothAddress;
 - (int)transport;
-- (struct __IOHIDDevice *)hidDevice;
+- (void *)hidDevice;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)initWithIOObject:(unsigned int)arg1;

@@ -7,6 +7,8 @@
 #import <Foundation/NSError.h>
 
 @interface NSError (HKSPSleep)
++ (id)hksp_validationErrorWithReason:(unsigned long long)arg1;
 - (_Bool)hksp_shouldRetryMessage;
+- (_Bool)hksp_isHealthDatabaseInaccessibleError;
 @end
 

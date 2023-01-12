@@ -87,7 +87,8 @@
 @property(readonly, nonatomic) NSArray *serverFormattedNotices;
 @property(readonly, nonatomic) NSArray *serverFormattedDetails;
 @property(readonly, nonatomic) NSArray *serverFormattedCommands;
-- (void)_transit_prepareForDeepMergeFrom:(id)arg1;
+- (void)_transit_mergeFrom:(id)arg1;
+- (_Bool)_transit_hasAnyFieldSet;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

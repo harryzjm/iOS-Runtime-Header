@@ -19,6 +19,7 @@ struct CXCallUpdateHasSet {
     unsigned int remoteHandle:1;
     unsigned int localizedCallerName:1;
     unsigned int emergency:1;
+    unsigned int failureExpected:1;
     unsigned int usingBaseband:1;
     unsigned int blocked:1;
     unsigned int ttyType:1;
@@ -45,9 +46,12 @@ struct CXCallUpdateHasSet {
     unsigned int ISOCountryCode:1;
     unsigned int localSenderIdentityUUID:1;
     unsigned int localSenderIdentityAccountUUID:1;
+    unsigned int participantGroupUUID:1;
     unsigned int remoteParticipantHandles:1;
+    unsigned int otherInvitedHandles:1;
     unsigned int activeRemoteParticipantHandles:1;
     unsigned int handoffContext:1;
+    unsigned int screenShareAttributes:1;
     unsigned int context:1;
     unsigned int prefersExclusiveAccessToCellularNetwork:1;
     unsigned int remoteUplinkMuted:1;
@@ -57,6 +61,11 @@ struct CXCallUpdateHasSet {
     unsigned int originatingUIType:1;
     unsigned int junkConfidence:1;
     unsigned int identificationCategory:1;
+    unsigned int conversation:1;
+    unsigned int mixesVoiceWithMedia:1;
+    unsigned int oneToOneModeEnabled:1;
+    unsigned int sharingScreen:1;
+    unsigned int bluetoothAudioFormat:1;
 };
 
 struct CXVoicemailUpdateHasSet {

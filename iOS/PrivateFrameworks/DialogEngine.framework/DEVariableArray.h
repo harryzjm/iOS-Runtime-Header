@@ -12,7 +12,7 @@
 - (id)getItem:(unsigned long long)arg1;
 - (void)addItem:(id)arg1;
 - (id)initWithName:(id)arg1;
-- (id)initWithSharedPtr:(shared_ptr_695b9c0c *)arg1;
+- (id)initWithSharedPtr:(void *)arg1;
 - (id)init;
 
 @end

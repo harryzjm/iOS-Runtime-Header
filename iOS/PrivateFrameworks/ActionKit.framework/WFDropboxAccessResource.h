@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSArray;
+
 @interface WFDropboxAccessResource
 {
 }
@@ -12,6 +14,9 @@
 - (Class)accountClass;
 - (id)initWithDefinition:(id)arg1;
 - (id)associatedAppIdentifier;
+
+// Remaining properties
+@property(readonly, copy, nonatomic) NSArray *accounts; // @dynamic accounts;
 
 @end
 

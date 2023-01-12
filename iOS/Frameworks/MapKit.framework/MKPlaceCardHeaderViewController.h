@@ -87,7 +87,7 @@
 - (id)_currentTitle;
 - (double)secondaryNameLabelPadding;
 - (void)animateSecondLabelWithPercentage:(double)arg1;
-- (void)_upateContentAlpha;
+- (void)updateContentAlpha;
 @property(nonatomic) double contentAlpha; // @synthesize contentAlpha=_contentAlpha;
 - (void)_setAlpha:(double)arg1 toView:(id)arg2 ifIntersects:(struct CGRect)arg3;
 - (void)updateMaskAlpha:(double)arg1 onHeight:(double)arg2 withOffset:(double)arg3;

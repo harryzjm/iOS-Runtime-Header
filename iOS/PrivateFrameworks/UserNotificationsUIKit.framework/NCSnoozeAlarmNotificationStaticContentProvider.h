@@ -19,6 +19,7 @@
 @property(retain, nonatomic) NCNotificationViewController *viewController; // @synthesize viewController=_viewController;
 - (void)_tickTimerFired:(id)arg1;
 - (id)_formatDuration:(double)arg1;
+- (id)date;
 - (id)secondaryText;
 - (id)title;
 - (void)invalidateTimer;

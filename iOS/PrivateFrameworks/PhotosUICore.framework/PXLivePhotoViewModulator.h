@@ -17,8 +17,14 @@
     _Bool _isPerformingUpdates;
     struct {
         _Bool input;
+        _Bool gainMapImage;
     } _needsUpdateFlags;
+    _Bool _revealsGainMapImage;
+    _Bool _animateGainMapAppearance;
+    _Bool _displayingVideoComplement;
+    float _gainMapValue;
     ISLivePhotoUIView *_livePhotoView;
+    struct CGImage *_gainMapImage;
     PXImageLayerModulator *_imageModulator;
     PXImageLayerModulator *_videoModulator;
 }
@@ -26,13 +32,24 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) PXImageLayerModulator *videoModulator; // @synthesize videoModulator=_videoModulator;
 @property(readonly, nonatomic) PXImageLayerModulator *imageModulator; // @synthesize imageModulator=_imageModulator;
+@property(nonatomic) _Bool displayingVideoComplement; // @synthesize displayingVideoComplement=_displayingVideoComplement;
+@property(nonatomic) _Bool animateGainMapAppearance; // @synthesize animateGainMapAppearance=_animateGainMapAppearance;
+@property(readonly, nonatomic) _Bool revealsGainMapImage; // @synthesize revealsGainMapImage=_revealsGainMapImage;
+@property(readonly, nonatomic) float gainMapValue; // @synthesize gainMapValue=_gainMapValue;
+@property(readonly, nonatomic) struct CGImage *gainMapImage; // @synthesize gainMapImage=_gainMapImage;
 @property(readonly, nonatomic) ISLivePhotoUIView *livePhotoView; // @synthesize livePhotoView=_livePhotoView;
 - (void)basePlayerUIView:(id)arg1 didChange:(unsigned long long)arg2 withAnimationDuration:(double)arg3;
+- (void)_updateGainMapImage;
+- (void)_invalidateGainMapImage;
 - (void)_updateInput;
 - (void)_invalidateInput;
 - (void)_updateIfNeeded;
 - (void)_setNeedsUpdate;
 - (_Bool)_needsUpdate;
+- (void)setRevealsGainMapImage:(_Bool)arg1;
+- (void)setGainMapValue:(float)arg1;
+- (void)setGainMapImage:(struct CGImage *)arg1 animated:(_Bool)arg2;
+- (void)setGainMapImage:(struct CGImage *)arg1;
 - (void)setLivePhotoView:(id)arg1;
 - (void)prepareForReuse;
 - (void)performChanges_Private:(CDUnknownBlockType)arg1;

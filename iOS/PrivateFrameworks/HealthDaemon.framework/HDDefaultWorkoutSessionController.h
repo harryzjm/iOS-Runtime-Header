@@ -9,7 +9,7 @@
 #import <HealthDaemon/HDWorkoutEventCollectorDelegate-Protocol.h>
 #import <HealthDaemon/HDWorkoutSessionController-Protocol.h>
 
-@class HDProfile, HDSessionAssertionGroup, HDWorkoutEventsManager, HDWorkoutSessionConfiguration;
+@class HDBiomeInterface, HDProfile, HDSessionAssertionGroup, HDWorkoutEventsManager, HDWorkoutSessionConfiguration;
 @protocol HDWorkoutSessionStateController, OS_dispatch_queue;
 
 @interface HDDefaultWorkoutSessionController : NSObject <HDWorkoutEventCollectorDelegate, HDWorkoutSessionController>
@@ -21,28 +21,13 @@
     HDSessionAssertionGroup *_assertionGroup;
     HDWorkoutEventsManager *_eventsManager;
     long long _sessionServerState;
+    HDBiomeInterface *_bmInterface;
     CDUnknownBlockType _hkTestTransitionCompletionHandler;
 }
 
 + (void)willFinishSessionWithRecoveryData:(id)arg1 profile:(id)arg2;
 + (id)recoveryIdentifier;
 - (void).cxx_destruct;
-- (long long)_currentActivityMoveMode;
-- (id)_relaunchPayloadOptions;
-- (id)_queue_assertionsPerStateForActivityType:(unsigned long long)arg1;
-- (id)_takeQuietModeAssertion;
-- (id)_takePowerSavingAssertion;
-- (id)_takePlatinumAssertion;
-- (id)_takeHeartRateRecoveryAssertion;
-- (id)_takeEventsCollectionAssertion;
-- (id)_takeDataCollectionAssertion;
-- (id)_takeCarouselAssertion;
-- (id)_takeCoreMotionAssertion;
-- (id)_takeClientKeepAliveAssertion;
-- (id)_takeAlertSuppressionAssertion;
-- (id)_takeBackgroundRunningAssertion;
-- (id)_ownerIdentifier;
-- (void)_queue_setupAssertionGroup;
 - (void)unitTest_setCMWorkoutManager:(id)arg1;
 - (void)hktest_setStateTransitionCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)receivedWorkoutEvent:(id)arg1;

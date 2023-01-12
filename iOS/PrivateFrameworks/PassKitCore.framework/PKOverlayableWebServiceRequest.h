@@ -6,7 +6,7 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableDictionary;
+@class NSArray, NSDictionary, NSMutableDictionary, PKZeroingDataContainer;
 
 @interface PKOverlayableWebServiceRequest <NSSecureCoding>
 {
@@ -34,6 +34,7 @@
 - (id)overlayValueForKey:(id)arg1;
 - (void)setOverlayValue:(id)arg1 forKey:(id)arg2;
 - (id)init;
+@property(readonly, nonatomic) PKZeroingDataContainer *archivedData;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

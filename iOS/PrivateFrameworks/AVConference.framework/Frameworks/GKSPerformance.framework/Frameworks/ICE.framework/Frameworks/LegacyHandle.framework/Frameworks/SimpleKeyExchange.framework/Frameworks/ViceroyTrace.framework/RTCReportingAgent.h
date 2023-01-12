@@ -9,8 +9,8 @@
 #import <ViceroyTrace/RTCReportingMessageSentNotifier-Protocol.h>
 #import <ViceroyTrace/VCAggregatorDelegate-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString, RTCReporting, VCAggregator;
-@protocol OS_dispatch_queue;
+@class NSArray, NSDate, NSMutableDictionary, NSNumber, NSString, RTCReporting, VCAggregator;
+@protocol OS_dispatch_queue, OS_nw_activity;
 
 __attribute__((visibility("hidden")))
 @interface RTCReportingAgent : NSObject <VCAggregatorDelegate, RTCReportingMessageSentNotifier>
@@ -25,8 +25,12 @@ __attribute__((visibility("hidden")))
     int _nextUnassignedReportingModuleID;
     NSMutableDictionary *_userInfoMap;
     _Bool _forceDisableABC;
+    NSObject<OS_nw_activity> *_nwActivity;
+    NSDate *_conversationTimeBase;
+    NSNumber *_subSessionId;
 }
 
+@property NSNumber *subSessionId; // @synthesize subSessionId=_subSessionId;
 @property(getter=isABCForceDisabled) _Bool forceDisableABC; // @synthesize forceDisableABC=_forceDisableABC;
 @property(readonly) NSMutableDictionary *userInfoMap; // @synthesize userInfoMap=_userInfoMap;
 @property int clientType; // @synthesize clientType=_clientType;
@@ -47,11 +51,14 @@ __attribute__((visibility("hidden")))
 - (void)reportQR:(id)arg1;
 - (void)report:(id)arg1 segmentDirection:(int)arg2;
 - (unsigned short)reportingSegmentMethodForClientType:(int)arg1;
+- (void)sendMessageWithCategory:(unsigned short)arg1 type:(unsigned short)arg2 payload:(id)arg3;
 - (void)dealloc;
+- (void)reportingSetNetworkActivityReportingEnabled:(_Bool)arg1;
 - (void)finalizeAggregation;
 - (void)initAdaptiveLearningWithParameters:(id)arg1;
-- (id)aggregatorForClientType:(int)arg1;
-- (id)initWithCallID:(unsigned int)arg1 clientType:(int)arg2 parentHierarchyToken:(id)arg3;
+- (void)setAggregatorForClientType:(int)arg1;
+- (id)newAggregatorForClientType:(int)arg1 nwActivity:(id)arg2;
+- (id)initWithConfig:(CDStruct_48bb2f2d)arg1;
 - (id)deriveFromParentHierarchyToken:(id)arg1;
 @property(readonly) int nextUnassignedReportingModuleID;
 

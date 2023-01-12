@@ -9,6 +9,8 @@
 @class WiFiAwareDataSessionIssueReport;
 
 @protocol WiFiAwareDatapathXPC <NSObject>
+- (void)generateStatisticsReportWithCompletionHandler:(void (^)(long long, WiFiAwareDataSessionStatisticsReport *))arg1;
+- (void)updateLinkStatus:(long long)arg1;
 - (void)reportIssue:(WiFiAwareDataSessionIssueReport *)arg1;
 - (void)cancel;
 @end

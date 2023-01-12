@@ -8,14 +8,15 @@ __attribute__((visibility("hidden")))
 @interface VCPixelBufferOverlay
 {
     struct CGContext *_bitmapContext;
-    struct __CFDictionary *_stringAttributes;
-    struct __CTLine *_ellipsisToken;
+    struct VCInfoDetails _currentDetails;
 }
 
-- (void)setupStringAttributes:(double)arg1 height:(double)arg2;
+@property struct VCInfoDetails currentDetails; // @synthesize currentDetails=_currentDetails;
 - (id)reverseString:(id)arg1;
 - (void)drawOverlayMessage:(id)arg1 onPixelBuffer:(struct __CVBuffer *)arg2 attributes:(struct __CFDictionary *)arg3;
+- (void)updateOverlayWithPixelBuffer:(struct __CVBuffer *)arg1;
 - (void)dealloc;
+- (id)init;
 
 @end
 

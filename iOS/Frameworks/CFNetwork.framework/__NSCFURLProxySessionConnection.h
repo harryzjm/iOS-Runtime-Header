@@ -6,13 +6,12 @@
 
 #import <CFNetwork/NSURLSessionDataDelegate-Protocol.h>
 #import <CFNetwork/NSURLSessionDataDelegatePrivate-Protocol.h>
-#import <CFNetwork/NSURLSessionDataDelegate_Internal-Protocol.h>
 #import <CFNetwork/NSURLSessionDelegate_Internal-Protocol.h>
 #import <CFNetwork/NSURLSessionTaskDelegatePrivate-Protocol.h>
 
 @class NSArray, NSCachedURLResponse, NSString, NSURLRequest, NSURLSessionTask;
 
-@interface __NSCFURLProxySessionConnection <NSURLSessionDataDelegate, NSURLSessionDataDelegatePrivate, NSURLSessionTaskDelegatePrivate, NSURLSessionDelegate_Internal, NSURLSessionDataDelegate_Internal>
+@interface __NSCFURLProxySessionConnection <NSURLSessionDataDelegate, NSURLSessionDataDelegatePrivate, NSURLSessionTaskDelegatePrivate, NSURLSessionDelegate_Internal>
 {
     NSURLSessionTask *_proxyTask;
     NSURLSessionTask *_cacheTask;
@@ -36,7 +35,7 @@
 - (void)URLSession:(id)arg1 task:(id)arg2 needNewBodyStream:(CDUnknownBlockType)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 didSendBodyData:(long long)arg3 totalBytesSent:(long long)arg4 totalBytesExpectedToSend:(long long)arg5;
 - (void)URLSession:(id)arg1 task:(id)arg2 didReceiveChallenge:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)_URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)URLSession:(id)arg1 dataTask:(id)arg2 _didReceiveData:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 task:(id)arg2 willPerformHTTPRedirection:(id)arg3 newRequest:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 didBecomeInvalidWithError:(id)arg2;

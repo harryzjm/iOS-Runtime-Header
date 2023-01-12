@@ -28,8 +28,8 @@
     double _rtpTimeOutInterval;
     double _rtcpTimeOutInterval;
     unsigned long long _recommendedMTU;
-    NSData *_sendMasterKey;
-    NSData *_receiveMasterKey;
+    NSData *_sendMediaKey;
+    NSData *_receiveMediaKey;
     long long _SRTPCipherSuite;
     long long _SRTCPCipherSuite;
     AVCAudioStreamConfig *_audio;
@@ -47,8 +47,8 @@
 @property(retain, nonatomic) AVCAudioStreamConfig *audio; // @synthesize audio=_audio;
 @property(nonatomic) long long SRTCPCipherSuite; // @synthesize SRTCPCipherSuite=_SRTCPCipherSuite;
 @property(nonatomic) long long SRTPCipherSuite; // @synthesize SRTPCipherSuite=_SRTPCipherSuite;
-@property(retain, nonatomic) NSData *receiveMasterKey; // @synthesize receiveMasterKey=_receiveMasterKey;
-@property(retain, nonatomic) NSData *sendMasterKey; // @synthesize sendMasterKey=_sendMasterKey;
+@property(retain, nonatomic) NSData *receiveMediaKey; // @synthesize receiveMediaKey=_receiveMediaKey;
+@property(retain, nonatomic) NSData *sendMediaKey; // @synthesize sendMediaKey=_sendMediaKey;
 @property(nonatomic) unsigned long long recommendedMTU; // @synthesize recommendedMTU=_recommendedMTU;
 @property(nonatomic) double rtcpTimeOutInterval; // @synthesize rtcpTimeOutInterval=_rtcpTimeOutInterval;
 @property(nonatomic) double rtpTimeOutInterval; // @synthesize rtpTimeOutInterval=_rtpTimeOutInterval;
@@ -76,6 +76,8 @@
 - (_Bool)isValidAudioConfig;
 - (void)dealloc;
 - (id)init;
+@property(retain, nonatomic) NSData *receiveMasterKey;
+@property(retain, nonatomic) NSData *sendMasterKey;
 
 @end
 

@@ -12,7 +12,9 @@
 + (id)_childKeyForParentType:(id)arg1 type:(id)arg2;
 + (id)_unsupportedParentChildRelationships;
 + (id)_unsupportedMediaKitTypes;
-- (_Bool)performWithDatabaseOperations:(id)arg1 augmentingPayload:(id *)arg2 error:(id *)arg3;
+- (id)_sinfDataFromSinfType:(long long)arg1 payload:(id)arg2;
+- (long long)_sinfTypeFromPayload:(id)arg1;
+- (_Bool)performWithDatabaseOperations:(id)arg1 augmentingPayload:(id *)arg2 playableAssetIdentifiers:(id *)arg3 error:(id *)arg4;
 - (id)initWithPayload:(id)arg1;
 
 @end

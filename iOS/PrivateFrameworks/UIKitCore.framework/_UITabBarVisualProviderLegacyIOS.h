@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <UIKitCore/PTSettingsKeyObserver-Protocol.h>
+#import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
 #import <UIKitCore/_UIBarAppearanceChangeObserver-Protocol.h>
-#import <UIKitCore/_UICursorInteractionDelegate-Protocol.h>
 
-@class NSString, UIView, _UIBarBackground, _UIBarBackgroundLayout, _UICursorInteraction;
+@class NSString, UIPointerInteraction, UIView, _UIBarBackground, _UIBarBackgroundLayout;
 
 __attribute__((visibility("hidden")))
-@interface _UITabBarVisualProviderLegacyIOS <_UIBarAppearanceChangeObserver, _UICursorInteractionDelegate>
+@interface _UITabBarVisualProviderLegacyIOS <_UIBarAppearanceChangeObserver, UIPointerInteractionDelegate, PTSettingsKeyObserver>
 {
-    _UICursorInteraction *_cursorInteraction;
+    UIPointerInteraction *_pointerInteraction;
     _UIBarBackground *_backgroundView;
     _UIBarBackgroundLayout *_backgroundViewLayout;
     UIView *_customBackgroundView;
@@ -20,11 +21,14 @@ __attribute__((visibility("hidden")))
     double _minimumWidthForHorizontalLayout;
     _Bool _useModernAppearance;
     long long _style;
+    double _backgroundTransitionProgress;
 }
 
 - (void).cxx_destruct;
-- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2;
-- (id)cursorInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (double)backgroundTransitionProgress;
+- (void)settings:(id)arg1 changedValueForKey:(id)arg2;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (void)appearance:(id)arg1 categoriesChanged:(long long)arg2;
 - (id)_focusedItemHighlightView;
 - (double)_shim_heightForCustomizingItems;
@@ -44,6 +48,8 @@ __attribute__((visibility("hidden")))
 - (void)setSemanticContentAttribute:(long long)arg1;
 - (id)traitCollectionForChild:(id)arg1 baseTraitCollection:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)setBackgroundTransitionProgress:(double)arg1 forceUpdate:(_Bool)arg2;
+- (void)setBackgroundTransitionProgress:(double)arg1;
 - (void)layoutSubviews;
 - (void)updateBackgroundGroupName;
 - (void)_updateBackground;

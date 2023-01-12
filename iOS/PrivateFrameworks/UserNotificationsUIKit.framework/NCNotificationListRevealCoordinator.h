@@ -20,8 +20,9 @@
     _Bool _hapticPrepared;
     int _revealState;
     id <NCNotificationListRevealCoordinatorDelegate> _delegate;
-    double _revealPercentage;
+    unsigned long long _indexForReveal;
     NSArray *_subLists;
+    double _revealPercentage;
     UIImpactFeedbackGenerator *_feedbackGenerator;
 }
 
@@ -31,9 +32,10 @@
 @property(nonatomic) _Bool shouldLimitTargetContentOffsetForNotificationListReveal; // @synthesize shouldLimitTargetContentOffsetForNotificationListReveal=_shouldLimitTargetContentOffsetForNotificationListReveal;
 @property(nonatomic, getter=isSectionRevealedStateLocked) _Bool sectionRevealedStateLocked; // @synthesize sectionRevealedStateLocked=_sectionRevealedStateLocked;
 @property(nonatomic, getter=isSectionRevealed) _Bool sectionRevealed; // @synthesize sectionRevealed=_sectionRevealed;
-@property(retain, nonatomic) NSArray *subLists; // @synthesize subLists=_subLists;
 @property(nonatomic) double revealPercentage; // @synthesize revealPercentage=_revealPercentage;
 @property(nonatomic) int revealState; // @synthesize revealState=_revealState;
+@property(retain, nonatomic) NSArray *subLists; // @synthesize subLists=_subLists;
+@property(nonatomic) unsigned long long indexForReveal; // @synthesize indexForReveal=_indexForReveal;
 @property(nonatomic, getter=isForceRevealed) _Bool forceRevealed; // @synthesize forceRevealed=_forceRevealed;
 @property(nonatomic) __weak id <NCNotificationListRevealCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_performHaptic;
@@ -42,13 +44,13 @@
 - (id)_stringForRevealState:(int)arg1;
 - (void)_performRevealForSubviewsIfNecessary;
 - (id)_revealListView;
-- (id)_topView;
 - (double)_updateRevealPercentageForNotificationListView:(id)arg1;
 - (_Bool)_isRevealed;
 - (double)_settlingYPositionForReveal;
 - (_Bool)_isRevealSectionVisibleForListView:(id)arg1;
 - (_Bool)_revealSectionHasContent;
 - (_Bool)_shouldAllowNotificationListReveal;
+- (void)_refetchSubListViews;
 - (void)notificationListViewWillEndDragging:(id)arg1 withTargetContentOffset:(inout struct CGPoint *)arg2;
 - (void)notificationListDidScroll:(id)arg1;
 - (void)notificationListWillBeginDragging:(id)arg1;

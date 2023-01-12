@@ -17,12 +17,16 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSDateComponents *significantEventOffset; // @synthesize significantEventOffset=_significantEventOffset;
 @property(copy, nonatomic) NSString *significantEvent; // @synthesize significantEvent=_significantEvent;
+- (id)comparisonKey;
+- (id)eventType;
 @property(readonly, copy) NSString *description;
 - (id)performValidation;
-- (id)naturalLanguageWithOptions:(id)arg1 recurrences:(id)arg2;
+- (id)naturalLanguageNameWithOptions:(id)arg1;
+- (id)naturalLanguageNameWithOptions:(id)arg1 recurrences:(id)arg2;
 - (id)naturalLanguageNameOfType:(unsigned long long)arg1 withHome:(id)arg2 recurrences:(id)arg3;
-- (id)buildNewEventFromCurrentState;
+- (id)buildNewEventsFromCurrentState;
 - (id)initWithEvent:(id)arg1;
+- (id)compareToObject:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

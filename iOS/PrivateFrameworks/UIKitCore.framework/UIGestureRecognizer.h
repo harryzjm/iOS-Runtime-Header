@@ -13,7 +13,7 @@
 #import <UIKitCore/_UITouchesEventRespondable-Protocol.h>
 
 @class NSArray, NSMutableArray, NSMutableSet, NSObservation, NSObservationSource, NSString, UIGestureEnvironment, UIView, _UIForceLevelClassifier, _UITouchForceObservable;
-@protocol UIGestureRecognizerDelegate;
+@protocol UIGestureRecognizerDelegate, _UIGestureOwning;
 
 @interface UIGestureRecognizer : NSObject <_UIForceLevelClassifierDelegate, _UIEventRespondable, _UIExcludable, _UITouchesEventRespondable, _UIPressesEventRespondable>
 {
@@ -76,13 +76,12 @@
         unsigned int conformsToHoverEventRespondable:1;
         unsigned int conformsToScrollEventRespondable:1;
         unsigned int conformsToTransformEventRespondable:1;
-        unsigned int conformsToLookupEventRespondable:1;
         unsigned int canBeCancelledByAffectedViews:1;
     } _gestureFlags;
     NSMutableArray *_targets;
     NSMutableArray *_delayedTouches;
     NSMutableArray *_delayedPresses;
-    UIView *_view;
+    id <_UIGestureOwning> _owner;
     double _lastTouchTimestamp;
     double _firstEventTimestamp;
     long long _state;
@@ -162,13 +161,13 @@
 - (_Bool)_shouldReceiveTouch:(id)arg1 forEvent:(id)arg2 recognizerView:(id)arg3;
 - (long long)_modifierFlags;
 @property(readonly, nonatomic) long long modifierFlags;
-- (_Bool)_wantsHoverEventsWhilePointerIsLocked;
 - (_Bool)_shouldReceivePress:(id)arg1;
 - (_Bool)_shouldReceivePress:(id)arg1 forPressesEvent:(id)arg2;
 - (_Bool)_shouldReceiveTouch:(id)arg1 withEvent:(id)arg2;
 - (_Bool)_shouldReceiveEvent:(id)arg1;
 - (_Bool)shouldReceiveEvent:(id)arg1;
-- (long long)_depthFirstViewCompare:(id)arg1;
+- (_Bool)_wantsHoverEventsWhilePointerIsLocked;
+- (long long)_depthFirstGestureOwnerCompare:(id)arg1;
 - (_Bool)_isActive;
 - (_Bool)_isRecognized;
 - (_Bool)_paused;
@@ -208,6 +207,8 @@
 @property(nonatomic) _Bool delaysTouchesBegan;
 @property(nonatomic) _Bool cancelsTouchesInView;
 - (void)setView:(id)arg1;
+- (void)setOwner:(id)arg1;
+- (id)owner;
 @property(readonly, nonatomic) UIView *view;
 - (id)stringValue;
 - (void)_resetGestureRecognizer;
@@ -224,7 +225,6 @@
 - (void)_connectInterfaceBuilderEventConnection:(id)arg1;
 @property(readonly, nonatomic) NSMutableSet *_pairedGestureIdentifiers;
 - (id)_pairedGestureIdentifiersAndCreate:(_Bool)arg1;
-- (void)_detach;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -4,25 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PhotosGraph/PGAssetCollectionFeature-Protocol.h>
 #import <PhotosGraph/PGGraphLocalizable-Protocol.h>
 #import <PhotosGraph/PGGraphPortraitTopic-Protocol.h>
 #import <PhotosGraph/PGGraphSynonymSupport-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, PGGraphMeaningNodeCollection;
 
-@interface PGGraphMeaningNode <PGGraphPortraitTopic, PGGraphLocalizable, PGGraphSynonymSupport>
+@interface PGGraphMeaningNode <PGGraphPortraitTopic, PGGraphLocalizable, PGGraphSynonymSupport, PGAssetCollectionFeature>
 {
     NSString *_label;
     long long _isVeryMeaningfulCachedValue;
 }
 
++ (id)filterWithMeaning:(unsigned long long)arg1;
++ (id)momentOfReliableMeaning;
 + (id)momentOfMeaning;
++ (id)eventOfReliableMeaning;
 + (id)eventOfMeaning;
-+ (id)submeaningOfMeaning;
-+ (id)meaningLabelsForMeaningNodes:(id)arg1;
++ (id)parentMeaningOfMeaning;
++ (id)childMeaningOfMeaning;
++ (id)filter;
 - (void).cxx_destruct;
 @property(nonatomic) long long isVeryMeaningfulCachedValue; // @synthesize isVeryMeaningfulCachedValue=_isVeryMeaningfulCachedValue;
 - (id)label;
+@property(readonly, nonatomic) NSString *featureIdentifier;
+@property(readonly, nonatomic) unsigned long long featureType;
+@property(readonly, nonatomic) PGGraphMeaningNodeCollection *collection;
 - (id)associatedNodesForRemoval;
 @property(readonly, nonatomic) NSArray *localizedSynonyms;
 - (id)_localizationKeyForMeaningLabel:(id)arg1;
@@ -33,12 +41,8 @@
 - (void)traverseSubmeaningHierarchyUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateSubmeaningsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateMeaningfulEventsUsingBlock:(CDUnknownBlockType)arg1;
-- (void)enumerateMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
-- (id)momentNodes;
-- (void)enumerateHighlightNodesUsingBlock:(CDUnknownBlockType)arg1;
-- (id)highlightNodes;
 - (unsigned short)domain;
-- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3 properties:(id)arg4;
 - (id)initWithLabel:(id)arg1;
 @property(readonly, nonatomic) NSString *pg_topic;
 

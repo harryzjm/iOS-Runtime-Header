@@ -8,7 +8,7 @@
 
 #import <SiriOntology/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, NSUUID;
+@class NSArray, NSString, NSUUID, SIRINLUParser, SIRINLURepetitionResult;
 
 @interface SIRINLUUserParse : NSObject <NSSecureCoding>
 {
@@ -16,10 +16,14 @@
     double _probability;
     NSUUID *_nsUUID;
     NSString *_parserId;
+    SIRINLURepetitionResult *_repetitionResult;
+    SIRINLUParser *_parser;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) SIRINLUParser *parser; // @synthesize parser=_parser;
+@property(retain, nonatomic) SIRINLURepetitionResult *repetitionResult; // @synthesize repetitionResult=_repetitionResult;
 @property(retain, nonatomic) NSString *parserId; // @synthesize parserId=_parserId;
 @property(retain, nonatomic) NSUUID *nsUUID; // @synthesize nsUUID=_nsUUID;
 @property(nonatomic) double probability; // @synthesize probability=_probability;
@@ -27,7 +31,12 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithUserDialogActs:(id)arg1 probability:(double)arg2 nsUUID:(id)arg3 parserId:(id)arg4 repetitionResult:(id)arg5 parser:(id)arg6;
+- (id)initWithUserDialogActs:(id)arg1 probability:(double)arg2 nsUUID:(id)arg3 parserId:(id)arg4 repetitionResult:(id)arg5;
 - (id)initWithUserDialogActs:(id)arg1 probability:(double)arg2 nsUUID:(id)arg3 parserId:(id)arg4;
+- (id)initWithUserDialogActs:(id)arg1 probability:(double)arg2 parserId:(id)arg3;
+- (id)initWithUserDialogActs:(id)arg1 probability:(double)arg2 parserId:(id)arg3 repetitionResult:(id)arg4;
+- (id)initWithUserDialogActs:(id)arg1 probability:(double)arg2 parserId:(id)arg3 repetitionResult:(id)arg4 parser:(id)arg5;
 
 @end
 

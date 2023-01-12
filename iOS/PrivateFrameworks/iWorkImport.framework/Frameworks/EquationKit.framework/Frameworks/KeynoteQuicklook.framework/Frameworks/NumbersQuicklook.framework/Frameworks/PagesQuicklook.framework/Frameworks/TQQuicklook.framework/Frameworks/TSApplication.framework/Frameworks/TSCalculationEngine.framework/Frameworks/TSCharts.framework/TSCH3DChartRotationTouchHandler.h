@@ -10,7 +10,7 @@
 {
 }
 
-+ (tvec3_17f03ce0)clampRotation:(tvec3_17f03ce0 *)arg1 chartType:(id)arg2;
++ (tvec3_17f03ce0)clampRotation:(void *)arg1 chartType:(id)arg2;
 
 @end
 

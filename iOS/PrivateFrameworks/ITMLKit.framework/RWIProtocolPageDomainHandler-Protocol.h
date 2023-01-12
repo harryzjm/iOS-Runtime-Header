@@ -11,6 +11,7 @@
 @protocol RWIProtocolPageDomainHandler <NSObject>
 
 @optional
+- (void)setScreenSizeOverrideWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 width:(int *)arg3 height:(int *)arg4;
 - (void)snapshotRectWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSString *))arg2 x:(int)arg3 y:(int)arg4 width:(int)arg5 height:(int)arg6 coordinateSystem:(long long)arg7;
 - (void)snapshotNodeWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSString *))arg2 nodeId:(int)arg3;
 - (void)setEmulatedMediaWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 media:(NSString *)arg3;

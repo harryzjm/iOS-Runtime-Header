@@ -37,6 +37,8 @@
 @property(readonly) NSData *data; // @synthesize data=_data;
 - (id)pixelBufferFrameWithError:(id *)arg1;
 - (id)compressedFrameWithScale:(double)arg1 quality:(double)arg2 error:(id *)arg3;
+- (id)base64Encoded;
+- (id)redactedCopy;
 - (id)initWithSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
 - (id)initWithPixelBuffer:(struct __CVBuffer *)arg1 presentationTimeStamp:(CDStruct_1b6d18a9)arg2;
 - (id)initWithJPEGData:(id)arg1 size:(struct CGSize)arg2 presentationTimeStamp:(CDStruct_1b6d18a9)arg3;

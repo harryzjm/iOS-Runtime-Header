@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HealthDaemonFoundation/HDAssertion.h>
+
 __attribute__((visibility("hidden")))
-@interface _HDDisableAOTAssertion
+@interface _HDDisableAOTAssertion : HDAssertion
 {
 }
-
-- (id)initWithOwnerIdentifier:(id)arg1;
 
 @end
 

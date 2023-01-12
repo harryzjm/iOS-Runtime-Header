@@ -8,7 +8,8 @@
 
 @interface _TtC7SwiftUIP33_59ABB005D29F0E32A3A965407533FE0D11Coordinator
 {
-    MISSING_TYPE *configuration;
+    MISSING_TYPE *index;
+    MISSING_TYPE *lastIndicators;
 }
 
 - (void).cxx_destruct;

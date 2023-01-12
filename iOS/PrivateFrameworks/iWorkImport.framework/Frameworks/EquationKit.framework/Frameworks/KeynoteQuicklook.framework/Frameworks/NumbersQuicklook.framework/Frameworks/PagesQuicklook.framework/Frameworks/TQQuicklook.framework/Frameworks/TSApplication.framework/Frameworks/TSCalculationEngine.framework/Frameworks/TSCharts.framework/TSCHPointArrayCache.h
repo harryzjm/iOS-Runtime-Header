@@ -10,11 +10,11 @@
 
 @interface TSCHPointArrayCache : NSObject
 {
-    TSCHChartSeries *mSeries;
-    struct CGRect mAreaFrame;
-    NSIndexSet *mGroupIndexSet;
-    _Bool mCull;
-    NSData *mData;
+    TSCHChartSeries *_series;
+    struct CGRect _areaFrame;
+    NSIndexSet *_groupIndexSet;
+    _Bool _cull;
+    NSData *_data;
 }
 
 + (void)clearCache;

@@ -21,6 +21,7 @@
 + (id)insertLightweightWithManagedObjectContext:(id)arg1 index:(long long)arg2 sourceModelVersion:(unsigned long long)arg3 migrationDate:(id)arg4;
 + (id)insertCreatedWithManagedObjectContext:(id)arg1 index:(long long)arg2 migrationDate:(id)arg3;
 + (id)entityName;
++ (void)initialize;
 - (_Bool)supportsCloudUpload;
 - (id)payloadForChangedKeys:(id)arg1;
 - (id)payloadIDForTombstone:(id)arg1;

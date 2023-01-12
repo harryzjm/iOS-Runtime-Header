@@ -6,12 +6,11 @@
 
 #import <TSPersistence/NSObject-Protocol.h>
 
-@class NSArray, NSUUID, TSPCancellationState, TSPData, TSPLazyReference, TSPObject, TSPObjectContext, TSPReader;
+@class NSArray, NSUUID, Protocol, TSPCancellationState, TSPData, TSPLazyReference, TSPObject, TSPObjectContext, TSPReader;
 @protocol TSPLazyReferenceDelegate, TSPObjectDelegate;
 
 @protocol TSPReaderDelegate <NSObject>
-@property(readonly, nonatomic) _Bool canRetainObjectReferencedByWeakLazyReference;
-@property(readonly, nonatomic) long long sourceType;
+@property(readonly, nonatomic) unsigned int sourceType;
 @property(readonly, nonatomic) _Bool hasDocumentVersionUUID;
 @property(readonly, nonatomic) _Bool isReadingFromDocument;
 @property(readonly, nonatomic) NSUUID *baseObjectUUID;
@@ -19,8 +18,8 @@
 @property(readonly, nonatomic) unsigned long long readVersion;
 @property(readonly, nonatomic) unsigned long long fileFormatVersion;
 - (void)reader:(TSPReader *)arg1 didReadLazyReference:(TSPLazyReference *)arg2;
-- (void)reader:(TSPReader *)arg1 didFindExternalRepeatedReference:(NSArray *)arg2 isWeak:(_Bool)arg3 allowUnknownObject:(_Bool)arg4 fromParentObject:(TSPObject *)arg5 completion:(void (^)(id))arg6;
-- (void)reader:(TSPReader *)arg1 didFindExternalReferenceToObjectIdentifier:(long long)arg2 componentIdentifier:(long long)arg3 isWeak:(_Bool)arg4 allowUnknownObject:(_Bool)arg5 fromParentObject:(TSPObject *)arg6 completion:(void (^)(id))arg7;
+- (void)reader:(TSPReader *)arg1 didFindExternalRepeatedReference:(NSArray *)arg2 isWeak:(_Bool)arg3 allowUnknownObject:(_Bool)arg4 objectClass:(Class)arg5 objectProtocol:(Protocol *)arg6 fromParentObject:(TSPObject *)arg7 completion:(void (^)(id))arg8;
+- (void)reader:(TSPReader *)arg1 didFindExternalReferenceToObjectIdentifier:(long long)arg2 componentIdentifier:(long long)arg3 isWeak:(_Bool)arg4 allowUnknownObject:(_Bool)arg5 objectClass:(Class)arg6 objectProtocol:(Protocol *)arg7 fromParentObject:(TSPObject *)arg8 completion:(void (^)(id))arg9;
 - (TSPData *)reader:(TSPReader *)arg1 wantsDataForIdentifier:(long long)arg2;
 - (long long)reader:(TSPReader *)arg1 wantsObjectIdentifierForUUID:(NSUUID *)arg2;
 - (TSPCancellationState *)cancellationStateForReader:(TSPReader *)arg1;

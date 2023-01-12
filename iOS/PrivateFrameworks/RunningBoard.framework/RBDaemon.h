@@ -12,8 +12,8 @@
 #import <RunningBoard/RBPowerAssertionManagerDelegate-Protocol.h>
 #import <RunningBoard/RBProcessManagerDelegate-Protocol.h>
 
-@class NSString, RBAssertionDescriptorValidator, RBAssertionManager, RBAssertionOriginatorPidStore, RBBundlePropertiesManager, RBConnectionListener, RBDomainAttributeManager, RBEntitlementManager, RBJetsamBandProvider, RBPowerAssertionManager, RBProcess, RBProcessManager, RBProcessMonitor, RBProcessReconnectManager, RBStateCaptureManager, RBThrottleBestEffortNetworkingManager;
-@protocol RBAssertionManaging, RBEntitlementManaging, RBProcessManaging, RBProcessMonitoring, RBStateCaptureManaging;
+@class NSString, RBAssertionDescriptorValidator, RBAssertionManager, RBAssertionOriginatorPidStore, RBBundlePropertiesManager, RBConnectionListener, RBDomainAttributeManager, RBEntitlementManager, RBPowerAssertionManager, RBProcess, RBProcessManager, RBProcessMonitor, RBProcessReconnectManager, RBStateCaptureManager, RBThrottleBestEffortNetworkingManager;
+@protocol RBAssertionManaging, RBAssertionOriginatorPidPersisting, RBDomainAttributeManaging, RBEntitlementManaging, RBProcessManaging, RBProcessMonitoring, RBStateCaptureManaging;
 
 @interface RBDaemon : NSObject <RBAssertionManagerDelegate, RBProcessManagerDelegate, RBBundlePropertiesManagerDelegate, RBPowerAssertionManagerDelegate, RBDaemonContextProviding>
 {
@@ -24,7 +24,6 @@
     RBBundlePropertiesManager *_bundlePropertiesManager;
     RBEntitlementManager *_entitlementManager;
     RBConnectionListener *_listener;
-    RBJetsamBandProvider *_jetsamBandProvider;
     RBPowerAssertionManager *_powerAssertionManager;
     RBProcessManager *_processManager;
     RBProcessMonitor *_processMonitor;
@@ -35,6 +34,8 @@
 
 + (void)run;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <RBDomainAttributeManaging> domainAttributeManager; // @synthesize domainAttributeManager=_domainAttributeManager;
+@property(readonly, nonatomic) id <RBAssertionOriginatorPidPersisting> assertionOriginatorPidStore; // @synthesize assertionOriginatorPidStore=_assertionOriginatorPidStore;
 @property(readonly, nonatomic) id <RBStateCaptureManaging> stateCaptureManager; // @synthesize stateCaptureManager=_stateCaptureManager;
 @property(readonly, nonatomic) id <RBProcessMonitoring> processMonitor; // @synthesize processMonitor=_processMonitor;
 @property(readonly, nonatomic) id <RBProcessManaging> processManager; // @synthesize processManager=_processManager;

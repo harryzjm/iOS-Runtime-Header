@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlayer/_MPStateDumpPropertyListTransformable-Protocol.h>
+#import <MediaPlayer/NSObject-Protocol.h>
 
 @class MPAVRoute, MPAVRoutingControllerSelectionQueue, MPAVRoutingDataSource, NSArray, NSSet, NSString;
-@protocol MPAVOutputDevicePlaybackDataSource, MPAVRoutingControllerDelegate;
+@protocol MPAVOutputDevicePlaybackDataSource, MPAVRoutingControllerDelegate, OS_dispatch_queue;
 
-@interface MPAVRoutingController : NSObject <_MPStateDumpPropertyListTransformable>
+@interface MPAVRoutingController : NSObject <NSObject>
 {
     NSArray *_cachedRoutes;
     NSArray *_cachedPickedRoutes;
@@ -22,6 +22,9 @@
     MPAVRoutingControllerSelectionQueue *_routingControllerSelectionQueue;
     int _deviceAvailabilityNotifyToken;
     _Bool _deviceAvailabilityOverrideState;
+    NSObject<OS_dispatch_queue> *_serialQueue;
+    unsigned long long _stateHandle;
+    _Bool _alwaysAllowUpdates;
     _Bool _fetchAvailableRoutesSynchronously;
     _Bool _representsLongFormVideoContent;
     id <MPAVRoutingControllerDelegate> _delegate;
@@ -36,23 +39,33 @@
     NSString *_representedBundleID;
 }
 
-+ (void)_getActiveRouteWithTimeout:(double)arg1 discoveredRoutes:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)_getActiveRouteWithTimeout:(double)arg1 type:(long long)arg2 discoveredRoutes:(id)arg3 completion:(CDUnknownBlockType)arg4;
++ (id)_symbolNameForModelID:(id)arg1;
++ (id)_currentDeviceRoutingSymbolName;
 + (id)_currentDeviceRoutingIconImageName;
 + (_Bool)bundleIdRepresentsLongFormVideoContent:(id)arg1;
 + (id)systemRouteWithContextUID:(id)arg1;
 + (id)systemRoute;
 + (void)setActiveRoute:(id)arg1 reason:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)setActiveRoute:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)getProactiveRouteWithTimeout:(double)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)getProactiveRouteWithCompletion:(CDUnknownBlockType)arg1;
 + (void)getActiveRouteWithTimeout:(double)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)getActiveRouteWithCompletion:(CDUnknownBlockType)arg1;
-+ (id)_iconImageNameForDeviceSubtypes:(id)arg1;
-+ (id)_iconImageNameForDeviceComposition:(id)arg1;
++ (id)_iconImageNameForClusterRoute:(id)arg1 isSymbol:(_Bool)arg2;
++ (id)_currentDeviceRoutingSymbolImage;
 + (id)_currentDeviceRoutingIconImage;
++ (id)_iconNameForRoutes:(id)arg1 isSymbol:(_Bool)arg2;
++ (id)_iconNameForRoute:(id)arg1 isSymbol:(_Bool)arg2;
++ (id)_symbolNameForRoutes:(id)arg1;
++ (id)_symbolNameForRoute:(id)arg1;
 + (id)_iconNameForRoute:(id)arg1;
++ (id)_symbolImageForRoute:(id)arg1;
 + (id)_iconImageForRoute:(id)arg1;
++ (id)_symbolImageForRoutes:(id)arg1;
 + (id)_iconImageForRoutes:(id)arg1;
 + (id)_iconImageForIdentifier:(id)arg1;
-+ (id)_sharedSerialQueue;
++ (id)_sharedWorkerQueue;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool representsLongFormVideoContent; // @synthesize representsLongFormVideoContent=_representsLongFormVideoContent;
 @property(copy, nonatomic) NSString *representedBundleID; // @synthesize representedBundleID=_representedBundleID;
@@ -66,6 +79,7 @@
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, nonatomic) MPAVRoutingDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property(nonatomic) __weak id <MPAVRoutingControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (id)_fullStateDumpObject;
 - (id)_stateDumpObject;
 - (_Bool)removePickedRoute:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)removePickedRoute:(id)arg1;
@@ -91,6 +105,7 @@
 - (void)_sendDelegatePickedRoutesChanged;
 - (void)_sendDelegateFailedToPickRouteWithError:(id)arg1;
 - (void)_scheduleSendDelegateRoutesChanged;
+- (_Bool)_shouldSendDelegateRoutesChanged;
 - (void)_promptForHijackIfNeeded:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)_pickedRoutesInArray:(id)arg1;
 - (id)_pickedRouteInArray:(id)arg1;
@@ -134,6 +149,7 @@
 - (id)cachedPickedRoutes;
 - (void)setCachedRoutes:(id)arg1;
 - (id)cachedRoutes;
+@property(nonatomic) _Bool alwaysAllowUpdates;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (id)init;

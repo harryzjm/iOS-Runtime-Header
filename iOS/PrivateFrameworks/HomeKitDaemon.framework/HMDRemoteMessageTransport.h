@@ -12,6 +12,7 @@
 
 @interface HMDRemoteMessageTransport : HMFMessageTransport <HMFLogging>
 {
+    int _transportType;
     HMDAccountRegistry *_accountRegistry;
     long long _qualityOfService;
 }
@@ -21,6 +22,7 @@
 + (unsigned long long)restriction;
 + (id)remoteMessageTransportsForProductInfo:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) int transportType; // @synthesize transportType=_transportType;
 @property(readonly, nonatomic) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
 @property(readonly, nonatomic) HMDAccountRegistry *accountRegistry; // @synthesize accountRegistry=_accountRegistry;
 - (long long)compareCapability:(id)arg1 key:(id)arg2 withCapability:(id)arg3;

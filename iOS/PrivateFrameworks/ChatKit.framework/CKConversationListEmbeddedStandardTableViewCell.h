@@ -11,13 +11,11 @@
 
 @interface CKConversationListEmbeddedStandardTableViewCell <CKConversationListEmbeddedTableViewCellProtocol>
 {
-    double _widthForDeterminingAvatarVisibility;
     struct UIEdgeInsets _marginInsets;
     struct CGRect _containerBounds;
 }
 
 + (id)reuseIdentifier;
-@property(nonatomic) double widthForDeterminingAvatarVisibility; // @synthesize widthForDeterminingAvatarVisibility=_widthForDeterminingAvatarVisibility;
 @property(nonatomic) struct CGRect containerBounds; // @synthesize containerBounds=_containerBounds;
 @property(nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets=_marginInsets;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;

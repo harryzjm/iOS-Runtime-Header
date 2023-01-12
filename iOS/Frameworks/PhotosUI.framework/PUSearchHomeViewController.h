@@ -13,7 +13,6 @@
 
 @interface PUSearchHomeViewController : PXGadgetUIViewController <UISearchControllerDelegate>
 {
-    _Bool _shouldActiveSearchFieldUponAppearing;
     PXProgrammaticNavigationDestination *_px_navigationDestination;
     PUSearchHomeGadgetDataSourceManager *_searchHomeDataSourceManager;
     id <PXViewControllerEventTracker> _searchControllerEventTracker;
@@ -22,7 +21,6 @@
 + (Class)gadgetSpecClass;
 - (void).cxx_destruct;
 @property(retain, nonatomic) id <PXViewControllerEventTracker> searchControllerEventTracker; // @synthesize searchControllerEventTracker=_searchControllerEventTracker;
-@property(nonatomic) _Bool shouldActiveSearchFieldUponAppearing; // @synthesize shouldActiveSearchFieldUponAppearing=_shouldActiveSearchFieldUponAppearing;
 @property(retain, nonatomic) PUSearchHomeGadgetDataSourceManager *searchHomeDataSourceManager; // @synthesize searchHomeDataSourceManager=_searchHomeDataSourceManager;
 - (void)didDismissSearchController:(id)arg1;
 - (void)didPresentSearchController:(id)arg1;
@@ -39,14 +37,15 @@
 - (unsigned long long)routingOptionsForDestination:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (_Bool)pu_scrollToInitialPositionAnimated:(_Bool)arg1;
+- (void)presentSearchWithText:(id)arg1 searchCategory:(unsigned long long)arg2;
 - (void)presentForSearchHashtag:(id)arg1;
 - (void)presentOneYearAgo;
+- (void)presentSpotlightSearch:(id)arg1;
 - (void)presentSiriSearchRequest:(id)arg1 resultCount:(unsigned long long)arg2;
-- (void)performRecentSearchNew:(id)arg1;
 - (void)performRecentSearch:(id)arg1;
 - (void)selectZeroKeyword:(id)arg1;
 - (void)_clearSearchField;
-- (void)_activateSearchField;
+- (void)activateSearchField;
 - (void)_configureSearchNavigationBar;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;

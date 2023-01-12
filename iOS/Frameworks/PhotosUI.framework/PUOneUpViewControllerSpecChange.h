@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     _Bool _shouldDisplayAssetExplorerReviewScreenBadgesChanged;
     _Bool _shouldDisplayPlayButtonsChanged;
     _Bool _shouldDisplayProgressIndicatorsChanged;
+    _Bool _shouldDisplayPeopleRowChanged;
     _Bool _shouldAutoplayOnAppearChanged;
     _Bool _shouldDisplayEmptyPlaceholderChanged;
     _Bool _shouldDisplayBufferingIndicatorsChanged;
@@ -34,8 +35,22 @@ __attribute__((visibility("hidden")))
     _Bool _shouldPinContentToTopChanged;
     _Bool _shouldLayoutReviewScreenControlBarVerticallyChanged;
     _Bool _shouldPlaceScrubberInScrubberBarChanged;
+    _Bool _hideNavigationBarWhenShowingAccessoryView;
+    _Bool _hideScrubberWhenShowingAccessoryView;
+    _Bool _prefersSquareImageInDetails;
+    _Bool _hideStatusBarWhenShowingAccessoryView;
+    _Bool _hideBadgesWhenShowingAccessoryView;
+    _Bool _peopleRowSizeChanged;
+    _Bool _shouldDisplaySyndicationAttribution;
 }
 
+@property(nonatomic, setter=_setShouldDisplaySyndicationAttribution:) _Bool shouldDisplaySyndicationAttribution; // @synthesize shouldDisplaySyndicationAttribution=_shouldDisplaySyndicationAttribution;
+@property(nonatomic, setter=_setPeopleRowSizeChanged:) _Bool peopleRowSizeChanged; // @synthesize peopleRowSizeChanged=_peopleRowSizeChanged;
+@property(nonatomic, setter=_setHideBadgesWhenShowingAccessoryView:) _Bool hideBadgesWhenShowingAccessoryView; // @synthesize hideBadgesWhenShowingAccessoryView=_hideBadgesWhenShowingAccessoryView;
+@property(nonatomic, setter=_setHideStatusBarWhenShowingAccessoryView:) _Bool hideStatusBarWhenShowingAccessoryView; // @synthesize hideStatusBarWhenShowingAccessoryView=_hideStatusBarWhenShowingAccessoryView;
+@property(nonatomic, setter=_setPrefersSquareImageInDetails:) _Bool prefersSquareImageInDetails; // @synthesize prefersSquareImageInDetails=_prefersSquareImageInDetails;
+@property(nonatomic, setter=_setHideScrubberWhenShowingAccessoryView:) _Bool hideScrubberWhenShowingAccessoryView; // @synthesize hideScrubberWhenShowingAccessoryView=_hideScrubberWhenShowingAccessoryView;
+@property(nonatomic, setter=_setHideNavigationBarWhenShowingAccessoryView:) _Bool hideNavigationBarWhenShowingAccessoryView; // @synthesize hideNavigationBarWhenShowingAccessoryView=_hideNavigationBarWhenShowingAccessoryView;
 @property(nonatomic, setter=_setShouldPlaceScrubberInScrubberBarChanged:) _Bool shouldPlaceScrubberInScrubberBarChanged; // @synthesize shouldPlaceScrubberInScrubberBarChanged=_shouldPlaceScrubberInScrubberBarChanged;
 @property(nonatomic, setter=_setShouldLayoutReviewScreenControlBarVerticallyChanged:) _Bool shouldLayoutReviewScreenControlBarVerticallyChanged; // @synthesize shouldLayoutReviewScreenControlBarVerticallyChanged=_shouldLayoutReviewScreenControlBarVerticallyChanged;
 @property(nonatomic, setter=_setShouldPinContentToTopChanged:) _Bool shouldPinContentToTopChanged; // @synthesize shouldPinContentToTopChanged=_shouldPinContentToTopChanged;
@@ -51,6 +66,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, setter=_setShouldDisplayBufferingIndicatorsChanged:) _Bool shouldDisplayBufferingIndicatorsChanged; // @synthesize shouldDisplayBufferingIndicatorsChanged=_shouldDisplayBufferingIndicatorsChanged;
 @property(nonatomic, setter=_setShouldDisplayEmptyPlaceholderChanged:) _Bool shouldDisplayEmptyPlaceholderChanged; // @synthesize shouldDisplayEmptyPlaceholderChanged=_shouldDisplayEmptyPlaceholderChanged;
 @property(nonatomic, setter=_setShouldAutoplayOnAppearChanged:) _Bool shouldAutoplayOnAppearChanged; // @synthesize shouldAutoplayOnAppearChanged=_shouldAutoplayOnAppearChanged;
+@property(nonatomic, setter=_setShouldDisplayPeopleRowChanged:) _Bool shouldDisplayPeopleRowChanged; // @synthesize shouldDisplayPeopleRowChanged=_shouldDisplayPeopleRowChanged;
 @property(nonatomic, setter=_setShouldDisplayProgressIndicatorsChanged:) _Bool shouldDisplayProgressIndicatorsChanged; // @synthesize shouldDisplayProgressIndicatorsChanged=_shouldDisplayProgressIndicatorsChanged;
 @property(nonatomic, setter=_setShouldDisplayPlayButtonsChanged:) _Bool shouldDisplayPlayButtonsChanged; // @synthesize shouldDisplayPlayButtonsChanged=_shouldDisplayPlayButtonsChanged;
 @property(nonatomic, setter=_setShouldDisplayAssetExplorerReviewScreenBadgesChanged:) _Bool shouldDisplayAssetExplorerReviewScreenBadgesChanged; // @synthesize shouldDisplayAssetExplorerReviewScreenBadgesChanged=_shouldDisplayAssetExplorerReviewScreenBadgesChanged;

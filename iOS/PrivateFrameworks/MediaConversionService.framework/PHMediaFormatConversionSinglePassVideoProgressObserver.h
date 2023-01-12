@@ -22,7 +22,7 @@
 @property(retain) NSFileHandle *observedFileHandle; // @synthesize observedFileHandle=_observedFileHandle;
 @property(retain) NSURL *observedFileURL; // @synthesize observedFileURL=_observedFileURL;
 @property __weak PHMediaFormatConversionRequest *request; // @synthesize request=_request;
-@property(retain) NSProgress *progress; // @synthesize progress=_progress;
+@property __weak NSProgress *progress; // @synthesize progress=_progress;
 - (void)stopObserving;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)startObservingProgress:(id)arg1 forRequest:(id)arg2;

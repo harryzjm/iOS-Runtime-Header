@@ -6,10 +6,13 @@
 
 #import <Foundation/NSExtensionContext.h>
 
+#import <QuickLook/QLPreviewCollectionHostProtocol-Protocol.h>
 #import <QuickLook/QLPreviewCollectionServiceProtocol-Protocol.h>
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
-@interface QLPreviewCollectionHostContext : NSExtensionContext <QLPreviewCollectionServiceProtocol>
+@interface QLPreviewCollectionHostContext : NSExtensionContext <QLPreviewCollectionServiceProtocol, QLPreviewCollectionHostProtocol>
 {
 }
 
@@ -20,13 +23,18 @@ __attribute__((visibility("hidden")))
 - (void)overrideParentApplicationDisplayIdentifierWithIdentifier:(id)arg1;
 - (void)setLoadingString:(id)arg1;
 - (void)setAllowInteractiveTransitions:(_Bool)arg1;
+- (void)notifyStateRestorationUserInfo:(id)arg1;
 - (void)notifyFirstTimeAppearanceWithActions:(unsigned long long)arg1;
 - (void)setAppearance:(id)arg1 animated:(_Bool)arg2;
 - (void)tearDownTransition:(_Bool)arg1;
 - (void)startTransitionWithSourceViewProvider:(id)arg1 transitionController:(id)arg2 presenting:(_Bool)arg3 useInteractiveTransition:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)keyCommandWasPerformed:(id)arg1;
 - (void)keyCommandsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)requestLockForCurrentItem;
+- (void)shouldDisplayLockActivityWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)actionSheetDidDismiss;
 - (void)prepareForActionSheetPresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)getCurrentPreviewActivityUserInfoWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)saveCurrentPreviewEditsSynchronously:(_Bool)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)toolbarButtonPressedWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)toolbarButtonsForTraitCollection:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
@@ -43,6 +51,12 @@ __attribute__((visibility("hidden")))
 - (id)_synchronousProtocolServiceWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)_protocolServiceWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)_protocolService;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

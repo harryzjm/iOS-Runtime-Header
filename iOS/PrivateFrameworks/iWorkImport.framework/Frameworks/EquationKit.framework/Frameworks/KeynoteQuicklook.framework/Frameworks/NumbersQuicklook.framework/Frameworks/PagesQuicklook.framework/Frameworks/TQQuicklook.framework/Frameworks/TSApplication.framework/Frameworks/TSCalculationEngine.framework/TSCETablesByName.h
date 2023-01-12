@@ -6,19 +6,19 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCalculationEngine/NSCopying-Protocol.h>
+@class NSMutableDictionary, TSCECalculationEngine, TSCETablesByNameDistributor;
 
-@class NSMutableDictionary, TSCECalculationEngine;
-
-@interface TSCETablesByName : NSObject <NSCopying>
+@interface TSCETablesByName : NSObject
 {
     NSMutableDictionary *_tablesByTableNameByContainerName;
     TSCECalculationEngine *_calcEngine;
+    TSCETablesByNameDistributor *_tableNameChangeDistributor;
 }
 
 + (id)tableNameForTable:(id)arg1;
 + (id)containerNameForTable:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) TSCETablesByNameDistributor *tableNameChangeDistributor; // @synthesize tableNameChangeDistributor=_tableNameChangeDistributor;
 - (_Bool)resolverNameIsUsed:(id)arg1;
 - (id)resolversMatchingPrefix:(id)arg1;
 - (id)resolverMatchingName:(id)arg1;
@@ -30,7 +30,6 @@
 - (void)dropTable:(id)arg1 withTableName:(id)arg2 withContainerName:(id)arg3;
 - (void)addTable:(id)arg1;
 - (void)removeAllObjects;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCalcEngine:(id)arg1;
 
 @end

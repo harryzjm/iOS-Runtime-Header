@@ -74,7 +74,7 @@
 @property(readonly, nonatomic) NSURL *peerPaymentServiceURL;
 @property(readonly, nonatomic) _Bool needsRegistration;
 - (void)sharedPeerPaymentServiceChanged:(id)arg1;
-- (id)logFacility;
+- (long long)logFacilityType;
 - (void)handleWillPerformHTTPRedirectionWithResponse:(id)arg1 originalRequest:(id)arg2 redirectHandler:(CDUnknownBlockType)arg3;
 - (id)forbiddenErrorWithResponse:(id)arg1;
 - (id)badRequestErrorWithResponse:(id)arg1;

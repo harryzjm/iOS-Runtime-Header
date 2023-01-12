@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 + (_Bool)removeAllSettingsReturningError:(id *)arg1;
 + (_Bool)setSettingsSwitchState:(long long)arg1 forApplicationIdentifier:(id)arg2 error:(id *)arg3;
 + (long long)settingsSwitchStateForApplicationIdentifier:(id)arg1;
++ (void)afterAppLinksBecomeAvailableForURL:(id)arg1 limit:(unsigned long long)arg2 performBlock:(CDUnknownBlockType)arg3;
 + (_Bool)_areAppLinksEnabledForServiceDetails:(id)arg1 cachedSettings:(id *)arg2;
 + (_Bool)_setSWCSetting:(id)arg1 forKey:(id)arg2 withApplicationIdentifier:(id)arg3 error:(id *)arg4;
 + (id)_SWCSettingsWithApplicationIdentifier:(id)arg1 error:(id *)arg2;

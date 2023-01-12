@@ -6,12 +6,10 @@
 
 #import <GeoServices/GEOComposedRoute.h>
 
-@class NSMapTable;
-
 @interface GEOComposedRoute (MNTimeball)
-+ (id)_stringForPoint:(const Matrix_2bdd42a3 *)arg1;
++ (id)_stringForPoint:(const void *)arg1;
 + (void)_addPointsToArray:(id)arg1 forMapPoints:(CDStruct_c3b9c2ee *)arg2 pointCount:(unsigned long long)arg3 isPolylineA:(_Bool)arg4;
-+ (unsigned long long)_startIndexForPoints:(Matrix_2bdd42a3)arg1 withPoints:(Matrix_2bdd42a3 *)arg2 pointCount:(unsigned long long)arg3 toleranceSquared:(double)arg4;
++ (unsigned long long)_startIndexForPoints:(Matrix_2bdd42a3)arg1 withPoints:(void *)arg2 pointCount:(unsigned long long)arg3 toleranceSquared:(double)arg4;
 + (void)_findDivergenceAndConvergence:(CDStruct_c3b9c2ee *)arg1 pointCount:(unsigned long long)arg2 otherPoints:(CDStruct_c3b9c2ee *)arg3 pointCount:(unsigned long long)arg4 divergenceTolerance:(double)arg5 convergenceTolerance:(double)arg6 outDivergenceCoordinateA:(out struct PolylineCoordinate *)arg7 outDivergenceCoordinateB:(out struct PolylineCoordinate *)arg8 outConvergenceCoordinateA:(out struct PolylineCoordinate *)arg9 outConvergenceCoordinateB:(out struct PolylineCoordinate *)arg10;
 + (void)findDivergenceAndConvergence:(CDStruct_c3b9c2ee *)arg1 pointCount:(unsigned long long)arg2 otherPoints:(CDStruct_c3b9c2ee *)arg3 pointCount:(unsigned long long)arg4 outDivergenceCoordinateA:(out struct PolylineCoordinate *)arg5 outDivergenceCoordinateB:(out struct PolylineCoordinate *)arg6 outConvergenceCoordinateA:(out struct PolylineCoordinate *)arg7 outConvergenceCoordinateB:(out struct PolylineCoordinate *)arg8;
 + (void)findDivergenceAndConvergence:(CDStruct_c3b9c2ee *)arg1 pointCount:(unsigned long long)arg2 otherCoordinates:(CDStruct_c3b9c2ee *)arg3 pointCount:(unsigned long long)arg4 distanceInMeters:(double)arg5 outDivergenceCoordinateA:(out struct PolylineCoordinate *)arg6 outDivergenceCoordinateB:(out struct PolylineCoordinate *)arg7 outConvergenceCoordinateA:(out struct PolylineCoordinate *)arg8 outConvergenceCoordinateB:(out struct PolylineCoordinate *)arg9;
@@ -22,6 +20,7 @@
 + (_Bool)_pointsDiverge:(CDStruct_c3b9c2ee *)arg1 pointCount:(unsigned long long)arg2 otherPoints:(CDStruct_c3b9c2ee *)arg3 pointCount:(unsigned long long)arg4 tolerance:(double)arg5 outCoordinateA:(out struct PolylineCoordinate *)arg6 outCoordinateB:(out struct PolylineCoordinate *)arg7;
 + (_Bool)pointsDiverge:(CDStruct_c3b9c2ee *)arg1 pointCount:(unsigned long long)arg2 otherPoints:(CDStruct_c3b9c2ee *)arg3 pointCount:(unsigned long long)arg4 outCoordinateA:(out struct PolylineCoordinate *)arg5 outCoordinateB:(out struct PolylineCoordinate *)arg6;
 - (_Bool)_timeball_isEqualToRoute:(id)arg1;
+- (_Bool)_isNavigableForWatch;
 - (id)_mapPoints;
 - (id)divergenceAndConvergenceWithRoute:(id)arg1 outOtherRoutePoints:(out id *)arg2;
 - (id)divergenceAndConvergenceWithRoute:(id)arg1;
@@ -31,7 +30,5 @@
 - (double)remainingTimeFromLocation:(id)arg1 etaRoute:(id)arg2 outRemainingDistanceToEndOfLeg:(out double *)arg3 outDistanceToManeuverStart:(out double *)arg4 outDistanceToManeuverEnd:(out double *)arg5 outRemainingTimeToEndOfRoute:(out double *)arg6 outRemainingDistanceToEndOfRoute:(out double *)arg7;
 - (double)remainingTimeFromLocation:(id)arg1 etaRoute:(id)arg2;
 - (double)remainingTimeFromLocation:(id)arg1;
-- (int)cameraFocusStyleForStep:(id)arg1;
-@property(retain, nonatomic) NSMapTable *turnAnglesLookup;
 @end
 

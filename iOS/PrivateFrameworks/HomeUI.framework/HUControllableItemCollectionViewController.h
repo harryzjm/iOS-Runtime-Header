@@ -45,7 +45,6 @@
 - (id)collectionView:(id)arg1 dropSessionDidUpdate:(id)arg2 withDestinationIndexPath:(id)arg3;
 - (_Bool)collectionView:(id)arg1 canHandleDropSession:(id)arg2;
 - (id)collectionView:(id)arg1 itemsForBeginningDragSession:(id)arg2 atIndexPath:(id)arg3;
-- (void)_logUserMetricsAfterTapOfItem:(id)arg1;
 - (void)_showQuickControlsForSelectedMenuItem;
 - (void)_showSettingsForSelectedMenuItem;
 - (_Bool)canBecomeFirstResponder;
@@ -72,11 +71,13 @@
 - (void)configureCell:(id)arg1 forItem:(id)arg2;
 - (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
 - (void)_itemSetDidChange;
+- (void)diffableDataItemManager:(id)arg1 didUpdateItems:(id)arg2 addItems:(id)arg3 removeItems:(id)arg4;
+- (void)didReorderItemWithTransaction:(id)arg1;
 - (void)collectionView:(id)arg1 moveItemAtIndexPath:(id)arg2 toIndexPath:(id)arg3;
 - (id)collectionView:(id)arg1 targetIndexPathForMoveFromItemAtIndexPath:(id)arg2 toProposedIndexPath:(id)arg3;
 - (_Bool)collectionView:(id)arg1 canMoveItemAtIndexPath:(id)arg2;
 - (_Bool)collectionView:(id)arg1 shouldHighlightItemAtIndexPath:(id)arg2;
-- (_Bool)_isMultiServiceAccessory:(id)arg1;
+- (_Bool)_isMultiControllableServiceAccessory:(id)arg1;
 - (void)_updateEditingStateForCell:(id)arg1;
 - (id)prepareToPerformToggleActionForItem:(id)arg1 sourceItem:(id)arg2;
 - (id)_childItemsForItem:(id)arg1;

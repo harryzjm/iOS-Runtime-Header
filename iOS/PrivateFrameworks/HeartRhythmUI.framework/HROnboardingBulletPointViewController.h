@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HealthUI/HKOnboardingBaseViewController.h>
+
 #import <HeartRhythmUI/HRStackedButtonViewDelegate-Protocol.h>
 
 @class HRStackedButtonView, NSArray, NSHashTable, NSLayoutConstraint, NSString, UILabel, UIStackView, UIView;
 
-@interface HROnboardingBulletPointViewController <HRStackedButtonViewDelegate>
+@interface HROnboardingBulletPointViewController : HKOnboardingBaseViewController <HRStackedButtonViewDelegate>
 {
     UILabel *_titleLabel;
     UILabel *_bodyLabel;

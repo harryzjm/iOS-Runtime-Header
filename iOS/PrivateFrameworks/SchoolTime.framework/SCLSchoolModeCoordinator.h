@@ -9,7 +9,7 @@
 #import <SchoolTime/SCLSchoolModeServerObserver-Protocol.h>
 #import <SchoolTime/SCLTransportControllerDelegate-Protocol.h>
 
-@class NSMutableSet, NSString, NSURL, SCLPersistentSettings, SCLScheduleSettings, SCLSchoolModeCoordinatorConfiguration, SCLSettingsSyncCoordinator, SCLState, SCLUnlockHistoryItem;
+@class NSMutableSet, NSString, NSURL, SCLActiveDurationAnalyticsSource, SCLPersistentSettings, SCLScheduleSettings, SCLSchoolModeCoordinatorConfiguration, SCLSettingsSyncCoordinator, SCLState, SCLUnlockHistoryItem;
 
 @interface SCLSchoolModeCoordinator : NSObject <SCLTransportControllerDelegate, SCLSchoolModeServerObserver>
 {
@@ -25,9 +25,11 @@
     SCLPersistentSettings *_persistentSettings;
     SCLSettingsSyncCoordinator *_settingsSyncCoordinator;
     unsigned long long _stateHandle;
+    SCLActiveDurationAnalyticsSource *_activeDurationAnalyticsSource;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) SCLActiveDurationAnalyticsSource *activeDurationAnalyticsSource; // @synthesize activeDurationAnalyticsSource=_activeDurationAnalyticsSource;
 @property(nonatomic) unsigned long long stateHandle; // @synthesize stateHandle=_stateHandle;
 @property(retain, nonatomic) SCLSettingsSyncCoordinator *settingsSyncCoordinator; // @synthesize settingsSyncCoordinator=_settingsSyncCoordinator;
 @property(retain, nonatomic) SCLPersistentSettings *persistentSettings; // @synthesize persistentSettings=_persistentSettings;
@@ -63,6 +65,7 @@
 - (void)removeClient:(id)arg1;
 - (void)addClient:(id)arg1;
 - (void)_registerForFirstUnlockIfNeeded;
+- (void)_checkIfClassCDataIsAvailable;
 - (void)activateSettingsSyncCoordinatorWithSettings:(id)arg1;
 - (void)_classCDataIsAvailable;
 - (void)_requestRemoteScheduleSettingsIfNeeded;

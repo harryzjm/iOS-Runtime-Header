@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class PGMeaningfulEventLocationMobilityTrait, PGMeaningfulEventLocationSetTrait, PGMeaningfulEventNumberTrait, PGMeaningfulEventPartOfDayTrait, PGMeaningfulEventSceneSetTrait, PGMeaningfulEventSetTrait;
+@class PGMeaningfulEventLocationMobilityTrait, PGMeaningfulEventLocationSetTrait, PGMeaningfulEventNumberTrait, PGMeaningfulEventPartOfDayTrait, PGMeaningfulEventSceneCollectionTrait, PGMeaningfulEventSetTrait;
 
 @interface PGMeaningfulEventCriteria : NSObject
 {
     _Bool _debug;
-    PGMeaningfulEventSceneSetTrait *_scenesTrait;
+    PGMeaningfulEventSceneCollectionTrait *_scenesTrait;
     PGMeaningfulEventSetTrait *_roisTrait;
     PGMeaningfulEventSetTrait *_poisTrait;
     PGMeaningfulEventLocationSetTrait *_locationsTrait;
@@ -42,7 +42,7 @@
 @property(retain, nonatomic) PGMeaningfulEventLocationSetTrait *locationsTrait; // @synthesize locationsTrait=_locationsTrait;
 @property(retain, nonatomic) PGMeaningfulEventSetTrait *poisTrait; // @synthesize poisTrait=_poisTrait;
 @property(retain, nonatomic) PGMeaningfulEventSetTrait *roisTrait; // @synthesize roisTrait=_roisTrait;
-@property(retain, nonatomic) PGMeaningfulEventSceneSetTrait *scenesTrait; // @synthesize scenesTrait=_scenesTrait;
+@property(retain, nonatomic) PGMeaningfulEventSceneCollectionTrait *scenesTrait; // @synthesize scenesTrait=_scenesTrait;
 - (id)_debugDescriptionWithMomentNode:(id)arg1;
 - (id)init;
 

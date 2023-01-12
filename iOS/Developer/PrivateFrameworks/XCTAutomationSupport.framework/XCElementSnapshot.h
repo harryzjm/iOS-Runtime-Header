@@ -25,6 +25,7 @@
     id <XCUIElementSnapshotApplication> _application;
     unsigned long long _generation;
     id <XCTElementSnapshotAttributeDataSource> _dataSource;
+    long long _displayID;
     NSString *_title;
     NSString *_label;
     id _value;
@@ -69,7 +70,6 @@
 - (_Bool)_isAncestorOfElement:(id)arg1;
 - (_Bool)_isDescendantOfElement:(id)arg1;
 @property(readonly) NSSet *uniqueDescendantSubframes;
-@property(readonly) NSArray *suggestedHitpoints;
 @property(readonly) _Bool isRemote;
 @property(readonly) XCElementSnapshot *rootElement;
 @property(readonly) double centerY;
@@ -82,6 +82,7 @@
 @property(readonly) XCElementSnapshot *menuItem;
 @property(readonly) XCElementSnapshot *menu;
 @property(readonly) XCElementSnapshot *scrollView;
+@property(readonly) XCElementSnapshot *window;
 - (id)nearestSharedAncestorOfElement:(id)arg1 matchingType:(long long)arg2;
 - (id)_nearestAncestorMatchingAnyOfTypes:(id)arg1;
 - (id)nearestAncestorMatchingType:(long long)arg1;
@@ -134,6 +135,7 @@
 @property(copy) NSString *placeholderValue; // @synthesize placeholderValue=_placeholderValue;
 @property(copy) id value; // @synthesize value=_value;
 @property(readonly, copy) NSString *truncatedValueString;
+@property long long displayID; // @synthesize displayID=_displayID;
 @property struct CGRect frame; // @synthesize frame=_frame;
 @property unsigned long long elementType; // @synthesize elementType=_elementType;
 - (id)_fetchPrivilegedValueForKey:(id)arg1;

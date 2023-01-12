@@ -24,6 +24,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *currentBluetoothListeningMode;
 @property(readonly, nonatomic) NSArray *availableBluetoothListeningModes;
 @property(readonly, nonatomic, getter=isHeadTrackedSpatialAudioActive) _Bool headTrackedSpatialAudioActive;
+- (_Bool)setHeadTrackedSpatialAudioMode:(id)arg1 error:(id *)arg2;
+@property(readonly, nonatomic) NSString *headTrackedSpatialAudioMode;
+- (_Bool)setAllowsHeadTrackedSpatialAudio:(_Bool)arg1 error:(id *)arg2;
+@property(readonly, nonatomic) _Bool allowsHeadTrackedSpatialAudio;
 @property(readonly, nonatomic) _Bool supportsHeadTrackedSpatialAudio;
 @property(readonly, nonatomic) long long HAPConformance;
 @property(readonly, nonatomic) _Bool supportsBluetoothSharing;
@@ -56,6 +60,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool requiresAuthorization;
 @property(readonly, nonatomic) unsigned long long deviceFeatures;
 @property(readonly, copy, nonatomic) NSArray *connectedPairedDevices;
+@property(readonly, nonatomic) _Bool producesLowFidelityAudio;
 @property(readonly, nonatomic, getter=isInUseByPairedDevice) _Bool inUseByPairedDevice;
 @property(readonly, nonatomic) NSDictionary *airPlayProperties;
 @property(readonly, nonatomic) NSNumber *isInEar;

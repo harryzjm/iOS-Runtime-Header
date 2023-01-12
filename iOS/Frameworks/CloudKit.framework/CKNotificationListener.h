@@ -25,34 +25,22 @@
     unsigned long long _strategy;
 }
 
-+ (unsigned long long)suggestedStrategy;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool useOpportunisticPushTopics; // @synthesize useOpportunisticPushTopics=_useOpportunisticPushTopics;
-@property(nonatomic) unsigned long long strategy; // @synthesize strategy=_strategy;
 @property(copy, nonatomic) NSString *machServiceName; // @synthesize machServiceName=_machServiceName;
-@property(retain, nonatomic) APSConnection *apsConnection; // @synthesize apsConnection=_apsConnection;
-@property(retain, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property(retain, nonatomic) NSMutableDictionary *subscriptionInfos; // @synthesize subscriptionInfos=_subscriptionInfos;
 - (void)didReceiveIncomingPushWithPayload:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (void)updatePKPushRegistry;
 - (void)connectionDidReconnect:(id)arg1;
 - (void)connection:(id)arg1 didChangeConnectedStatus:(_Bool)arg2;
 - (void)handlePushNotificationWithPayload:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)connection:(id)arg1 didReceiveIncomingMessage:(id)arg2;
 - (void)connection:(id)arg1 didReceivePublicToken:(id)arg2;
-- (void)registerForMachServiceAPSConnectionNotifications;
-@property(readonly, nonatomic) NSString *apsEnvironment; // @synthesize apsEnvironment=_apsEnvironment;
-- (void)updateAPSConnection;
-- (void)updatePushNotificationListeners;
+- (id)apsConnectionOnQueue;
 - (id)uniqueKeyForSubscriptionID:(id)arg1 inDatabase:(id)arg2;
 - (_Bool)isRegisteredForSubscriptionWithID:(id)arg1 inDatabase:(id)arg2;
 - (void)unregisterForSubscriptionWithID:(id)arg1 inDatabase:(id)arg2;
 - (void)registerForSubscription:(id)arg1 inDatabase:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (_Bool)hasInitializedAPSConnection;
-- (_Bool)hasAPSConnectionInitiateEntitlement;
-- (void)checkConfiguration;
 - (void)dealloc;
 - (id)initWithStrategy:(unsigned long long)arg1 machServiceName:(id)arg2;
 - (id)initWithMachServiceName:(id)arg1;

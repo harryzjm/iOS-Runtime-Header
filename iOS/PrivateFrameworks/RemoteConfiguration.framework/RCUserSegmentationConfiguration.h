@@ -17,12 +17,14 @@
     unsigned long long _modThreshold;
     unsigned long long _modMax;
     NSString *_endpointURLString;
+    NSString *_widgetEndpointURLString;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)userSegmentationConfigurationWithConfigDict:(id)arg1 environment:(unsigned long long)arg2;
 + (id)defaultConfiguration;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *widgetEndpointURLString; // @synthesize widgetEndpointURLString=_widgetEndpointURLString;
 @property(readonly, copy, nonatomic) NSString *endpointURLString; // @synthesize endpointURLString=_endpointURLString;
 @property(readonly, nonatomic) unsigned long long modMax; // @synthesize modMax=_modMax;
 @property(readonly, nonatomic) unsigned long long modThreshold; // @synthesize modThreshold=_modThreshold;
@@ -33,7 +35,7 @@
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)initWithForegroundRefreshRate:(unsigned long long)arg1 backgroundRefreshRate:(unsigned long long)arg2 modThreshold:(unsigned long long)arg3 modMax:(unsigned long long)arg4 endpointURLString:(id)arg5;
+- (id)initWithForegroundRefreshRate:(unsigned long long)arg1 backgroundRefreshRate:(unsigned long long)arg2 modThreshold:(unsigned long long)arg3 modMax:(unsigned long long)arg4 endpointURLString:(id)arg5 widgetEndpointURLString:(id)arg6;
 
 @end
 

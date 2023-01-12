@@ -9,14 +9,14 @@
 @interface MTLDebugCommandBuffer
 {
     _MTLCommandEncoder *_currentEncoder;
-    struct unordered_multiset<AttachmentDescriptorSimple, AttachmentDescriptorSimple::hash_t, AttachmentDescriptorSimple::equal_t, std::__1::allocator<AttachmentDescriptorSimple>> _attachmentSet;
+    struct unordered_multiset<AttachmentDescriptorSimple, AttachmentDescriptorSimple::hash_t, AttachmentDescriptorSimple::equal_t, std::allocator<AttachmentDescriptorSimple>> _attachmentSet;
     struct array<AttachmentDescriptorSimple, 8> _prevAttachments;
     struct array<AttachmentDescriptorSimple, 8> _currAttachments;
     struct os_unfair_lock_s _purgeableObjectsLock;
-    struct unordered_set<id<MTLDebugResourcePurgeable>, std::__1::hash<id<MTLDebugResourcePurgeable>>, std::__1::equal_to<id<MTLDebugResourcePurgeable>>, std::__1::allocator<id<MTLDebugResourcePurgeable>>> _referencedPurgeableObjects;
+    struct unordered_set<id<MTLDebugResourcePurgeable>, std::hash<id<MTLDebugResourcePurgeable>>, std::equal_to<id<MTLDebugResourcePurgeable>>, std::allocator<id<MTLDebugResourcePurgeable>>> _referencedPurgeableObjects;
     struct os_unfair_lock_s _retainedObjectsLock;
-    struct unordered_set<MTLToolsObject *, std::__1::hash<MTLToolsObject *>, std::__1::equal_to<MTLToolsObject *>, std::__1::allocator<MTLToolsObject *>> _externallyRetainedObjects;
-    struct unordered_set<MTLToolsObject *, std::__1::hash<MTLToolsObject *>, std::__1::equal_to<MTLToolsObject *>, std::__1::allocator<MTLToolsObject *>> _internallyRetainedObjects;
+    struct unordered_set<MTLToolsObject *, std::hash<MTLToolsObject *>, std::equal_to<MTLToolsObject *>, std::allocator<MTLToolsObject *>> _externallyRetainedObjects;
+    struct unordered_set<MTLToolsObject *, std::hash<MTLToolsObject *>, std::equal_to<MTLToolsObject *>, std::allocator<MTLToolsObject *>> _internallyRetainedObjects;
     MTLToolsObject *_referencedDeadObject;
     struct os_unfair_lock_s _renderTargetAttachmentLock;
     NSMutableSet *_renderTargetAttachments;
@@ -27,6 +27,9 @@
 - (_Bool)renderTargetInActiveRenderTargets:(id)arg1;
 - (void)addActiveRenderTarget:(id)arg1;
 - (void)addActiveRenderTargets:(id)arg1;
+- (void)encodeDashboardFinalizeForResourceGroup:(id)arg1 dashboard:(unsigned long long)arg2 values:(const unsigned long long *)arg3 indices:(const unsigned long long *)arg4 count:(unsigned long long)arg5;
+- (void)encodeDashboardFinalizeForResourceGroup:(id)arg1 dashboard:(unsigned long long)arg2 value:(unsigned long long)arg3 forIndex:(unsigned long long)arg4;
+- (void)encodeDashboardTagForResourceGroup:(id)arg1;
 - (id)accelerationStructureCommandEncoder;
 - (void *)debugBufferContentsWithLength:(unsigned long long *)arg1;
 - (void)executeSynchronizationNotifications:(int)arg1 scope:(unsigned long long)arg2 resources:(const id *)arg3 count:(unsigned long long)arg4;

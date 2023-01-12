@@ -9,6 +9,7 @@
 @class NSData, NSError;
 
 @protocol HMDDataStreamSocketPrivate <HMDDataStreamSocket>
+- (void)closeInitiated;
 - (void)handleIncomingData:(NSData *)arg1;
 - (void)closeWithError:(NSError *)arg1;
 @end

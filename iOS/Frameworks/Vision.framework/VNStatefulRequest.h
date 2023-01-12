@@ -8,12 +8,10 @@
 
 @interface VNStatefulRequest
 {
-    NSUUID *_requestUUID;
 }
 
 + (Class)configurationClass;
-- (void).cxx_destruct;
-@property(readonly) NSUUID *requestUUID; // @synthesize requestUUID=_requestUUID;
+@property(readonly) NSUUID *requestUUID;
 @property(readonly) CDStruct_1b6d18a9 requestFrameAnalysisSpacing;
 @property(readonly) long long minimumLatencyFrameCount;
 @property(readonly) CDStruct_1b6d18a9 frameAnalysisSpacing;

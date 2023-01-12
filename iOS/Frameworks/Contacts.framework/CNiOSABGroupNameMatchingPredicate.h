@@ -14,10 +14,13 @@ __attribute__((visibility("hidden")))
     NSString *_name;
 }
 
++ (id)groupNameTokenizingCharacterSet;
++ (id)tokenizeString:(id)arg1;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, copy) NSString *description;
+- (_Bool)groupName:(id)arg1 matchesSearchTokens:(id)arg2;
 - (struct __CFArray *)cn_copyGroupsInAddressBook:(void *)arg1 error:(struct __CFError **)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

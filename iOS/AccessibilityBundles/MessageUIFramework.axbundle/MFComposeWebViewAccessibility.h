@@ -11,8 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_setTrailingInputAssistantItemGroups:(id)arg1;
-- (void)_setLeadingInputAssistantItemGroup:(id)arg1;
+- (void)set_trailingInputAssistantItemGroups:(id)arg1;
+- (void)set_leadingInputAssistantItemGroups:(id)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

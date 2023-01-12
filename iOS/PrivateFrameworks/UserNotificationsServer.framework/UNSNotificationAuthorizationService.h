@@ -6,21 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class CRCarPlayAppPolicyEvaluator, UNSCriticalAlertAuthorizationAlertController, UNSDefaultDataProviderFactory, UNSNotificationAuthorizationAlertController;
+@class CRCarPlayAppPolicyEvaluator, UNSCriticalAlertAuthorizationAlertController, UNSDefaultDataProviderFactory, UNSNotificationAuthorizationAlertController, UNSNotificationDeliveryAuthorizationAlertController, UNSNotificationSettingsService;
 @protocol OS_dispatch_queue;
 
 @interface UNSNotificationAuthorizationService : NSObject
 {
     UNSDefaultDataProviderFactory *_dataProviderFactory;
+    UNSNotificationSettingsService *_settingsService;
     UNSCriticalAlertAuthorizationAlertController *_criticalAlertAuthorizationAlertController;
     UNSNotificationAuthorizationAlertController *_notificationAuthorizationAlertController;
+    UNSNotificationDeliveryAuthorizationAlertController *_notificationDeliveryAuthorizationAlertController;
     NSObject<OS_dispatch_queue> *_queue;
     CRCarPlayAppPolicyEvaluator *_policyEvaluator;
 }
 
 - (void).cxx_destruct;
 - (void)_queue_requestRemoveAuthorizationForNotificationSourceDescription:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (_Bool)_queue_isSpokenAvailableForApplication:(id)arg1;
 - (_Bool)_queue_isCarPlayAvailableForApplication:(id)arg1;
 - (void)_queue_requestCriticalAlertAuthorizationForNotificationSourceDescription:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_queue_requestAuthorizationWithOptions:(unsigned long long)arg1 forNotificationSourceDescription:(id)arg2 withExpirationDate:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -30,7 +31,7 @@
 - (void)requestRemoveAuthorizationForNotificationSourceDescription:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)requestAuthorizationWithOptions:(unsigned long long)arg1 expirationDate:(id)arg2 forNotificationSourceDescription:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)requestAuthorizationWithOptions:(unsigned long long)arg1 forNotificationSourceDescription:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (id)initWithDataProviderFactory:(id)arg1;
+- (id)initWithDataProviderFactory:(id)arg1 settingsService:(id)arg2;
 
 @end
 

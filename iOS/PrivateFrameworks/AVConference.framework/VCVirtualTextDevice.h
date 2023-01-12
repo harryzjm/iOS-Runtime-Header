@@ -27,11 +27,11 @@ __attribute__((visibility("hidden")))
 - (void)didReceiveText:(id)arg1;
 - (void)sendText:(id)arg1;
 - (void)sendCharacter:(unsigned short)arg1;
-- (void)setPause:(_Bool)arg1;
-- (void)resume;
-- (void)pause;
-- (void)stop;
-- (void)start;
+- (id)setPause:(_Bool)arg1;
+- (id)resume;
+- (id)pause;
+- (id)stop;
+- (id)start;
 - (id)sendDelegate;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *mediaStreamDelegateQueue;
 @property(nonatomic) NSObject<VCMediaStreamDelegate> *mediaStreamDelegate;

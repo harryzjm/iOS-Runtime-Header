@@ -18,6 +18,9 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *relayConnectionID; // @synthesize relayConnectionID=_relayConnectionID;
 @property(retain, nonatomic) id <VCConnectionProtocol> pendingSecondaryConnection; // @synthesize pendingSecondaryConnection=_pendingSecondaryConnection;
 @property(retain, nonatomic) id <VCConnectionProtocol> pendingPrimaryConnection; // @synthesize pendingPrimaryConnection=_pendingPrimaryConnection;
+- (void)updateNegotiatedSettingsOnetoOne:(id)arg1;
+- (void)updateAllBitrateCapsForConnection:(id)arg1;
+- (void)updateOneToOneBitrateCapsForConnection:(id)arg1;
 - (void)flushLinkProbingStatusWithOptions:(id)arg1;
 - (void)queryProbingResultsWithOptions:(id)arg1;
 - (void)stopActiveProbingWithOptions:(id)arg1;

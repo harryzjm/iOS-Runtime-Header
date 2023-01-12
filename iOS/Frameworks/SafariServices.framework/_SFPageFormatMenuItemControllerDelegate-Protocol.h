@@ -10,6 +10,7 @@
 @protocol _SFPageFormatMenuItemController;
 
 @protocol _SFPageFormatMenuItemControllerDelegate <NSObject>
+- (void)presentModalViewController:(UIViewController *)arg1 completion:(void (^)(void))arg2;
 - (UIViewController *)viewControllerForPresentationForItemController:(id <_SFPageFormatMenuItemController>)arg1;
 @end
 

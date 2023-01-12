@@ -10,7 +10,8 @@
 {
 }
 
-- (id)targetContentAttribution;
+- (id)smartPromptWithContentDescription:(id)arg1 contentDestination:(id)arg2 workflowName:(id)arg3;
+- (id)contentDestinationWithError:(id *)arg1;
 - (void)uploadInput:(id)arg1 withAccount:(id)arg2;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 definition:(id)arg2 serializedParameters:(id)arg3;

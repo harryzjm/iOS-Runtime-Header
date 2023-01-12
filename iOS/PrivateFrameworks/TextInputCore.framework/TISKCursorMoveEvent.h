@@ -9,7 +9,7 @@
 }
 
 - (id)description;
-- (id)init:(double)arg1 order:(long long)arg2;
+- (id)init:(double)arg1 emojiSearchMode:(_Bool)arg2 order:(long long)arg3;
 
 @end
 

@@ -37,8 +37,8 @@ __attribute__((visibility("hidden")))
 - (void)_buildViews;
 - (void)layoutComponentView;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (id)initWithStyle:(id)arg1;
-- (id)init;
+- (id)initWithHost:(id)arg1 style:(id)arg2;
+- (id)initWithHost:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

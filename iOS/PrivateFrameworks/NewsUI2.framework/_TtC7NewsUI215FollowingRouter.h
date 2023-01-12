@@ -14,6 +14,7 @@
     MISSING_TYPE *tracker;
     MISSING_TYPE *navigator;
     MISSING_TYPE *featureAvailability;
+    MISSING_TYPE *controller;
 }
 
 @end

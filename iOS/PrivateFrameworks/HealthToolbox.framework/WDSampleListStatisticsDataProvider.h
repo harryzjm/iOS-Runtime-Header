@@ -13,6 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface WDSampleListStatisticsDataProvider : NSObject <WDDataListViewControllerDataProvider>
 {
+    _Bool _hasDetailViewController;
     _Bool _hasCompleteDataSet;
     NSPredicate *defaultQueryPredicate;
     NSString *_profileName;
@@ -33,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property(retain) NSMutableArray *data; // @synthesize data=_data;
 @property(copy, nonatomic) NSString *profileName; // @synthesize profileName=_profileName;
 @property _Bool hasCompleteDataSet; // @synthesize hasCompleteDataSet=_hasCompleteDataSet;
+@property(nonatomic) _Bool hasDetailViewController; // @synthesize hasDetailViewController=_hasDetailViewController;
 @property(retain, nonatomic) NSPredicate *defaultQueryPredicate; // @synthesize defaultQueryPredicate;
 - (id)_predicateForTheLastMonth;
 - (void)_startCompleteDataStatisticsCollectionQueryForSampleType:(id)arg1 updateHandler:(CDUnknownBlockType)arg2;

@@ -13,8 +13,8 @@
 __attribute__((visibility("hidden")))
 @interface WKSafeBrowsingWarning : UIScrollView <UITextViewDelegate>
 {
-    CompletionHandler_2c34b13f _completionHandler;
-    struct RefPtr<const WebKit::SafeBrowsingWarning, WTF::DumbPtrTraits<const WebKit::SafeBrowsingWarning>> _warning;
+    struct CompletionHandler<void (WTF::Variant<WebKit::ContinueUnsafeLoad, WTF::URL>&&)> _completionHandler;
+    struct RefPtr<const WebKit::SafeBrowsingWarning, WTF::RawPtrTraits<const WebKit::SafeBrowsingWarning>, WTF::DefaultRefDerefTraits<const WebKit::SafeBrowsingWarning>> _warning;
     struct WeakObjCPtr<WKSafeBrowsingTextView> _details;
     struct WeakObjCPtr<WKSafeBrowsingBox> _box;
 }
@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)updateContentSize;
 - (void)showDetailsClicked;
 - (void)addContent;
-- (id)initWithFrame:(struct CGRect)arg1 safeBrowsingWarning:(const struct SafeBrowsingWarning *)arg2 completionHandler:(CompletionHandler_2c34b13f *)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 safeBrowsingWarning:(const void *)arg2 completionHandler:(void *)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

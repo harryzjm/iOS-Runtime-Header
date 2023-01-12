@@ -13,8 +13,10 @@
 
 @interface CKTranscriptCollectionViewCell : UICollectionViewCell <CKTranscriptCellProtocol, CKTranscriptCollectionViewCellProtocol>
 {
+    _Bool isAnimatingInDarkEffect;
     _Bool _wantsDrawerLayout;
     BOOL _orientation;
+    _Bool _isInReplyContext;
     UILabel *_debugLabel;
     double _drawerPercentRevealed;
     double _associatedItemOffset;
@@ -22,11 +24,13 @@
 
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isInReplyContext; // @synthesize isInReplyContext=_isInReplyContext;
 @property(nonatomic) double associatedItemOffset; // @synthesize associatedItemOffset=_associatedItemOffset;
 @property(nonatomic) double drawerPercentRevealed; // @synthesize drawerPercentRevealed=_drawerPercentRevealed;
 @property(nonatomic) BOOL orientation; // @synthesize orientation=_orientation;
 @property(nonatomic) _Bool wantsDrawerLayout; // @synthesize wantsDrawerLayout=_wantsDrawerLayout;
 @property(retain, nonatomic) UILabel *debugLabel; // @synthesize debugLabel=_debugLabel;
+@property(nonatomic) _Bool isAnimatingInDarkEffect; // @synthesize isAnimatingInDarkEffect;
 - (void)clearFilters;
 - (void)addFilter:(id)arg1;
 - (void)performReveal:(CDUnknownBlockType)arg1;
@@ -37,7 +41,7 @@
 - (void)layoutSubviewsForAlignmentContents;
 - (void)layoutSubviewsForDrawer;
 - (void)layoutSubviewsForContents;
-- (void)configureForChatItem:(id)arg1;
+- (void)configureForChatItem:(id)arg1 context:(id)arg2;
 @property(readonly, copy) NSString *description;
 - (void)prepareForReuse;
 - (void)layoutSubviews;

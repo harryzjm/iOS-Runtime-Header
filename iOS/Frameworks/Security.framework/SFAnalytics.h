@@ -22,7 +22,11 @@
 
 + (void)addOSVersionToEvent:(id)arg1;
 + (id)hwModelID;
++ (id)fuzzyNumber:(id)arg1;
++ (long long)fuzzyInteger:(long long)arg1;
 + (long long)fuzzyDaysSinceDate:(id)arg1;
++ (id)defaultProtectedAnalyticsDatabasePath:(id)arg1;
++ (id)defaultProtectedAnalyticsDatabasePath:(id)arg1 uuid:(id)arg2;
 + (id)defaultAnalyticsDatabasePath:(id)arg1;
 + (id)databasePath;
 + (id)logger;

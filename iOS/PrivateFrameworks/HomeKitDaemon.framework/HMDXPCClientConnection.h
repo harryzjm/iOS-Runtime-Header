@@ -7,12 +7,12 @@
 #import <HMFoundation/HMFMessageTransport.h>
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
-#import <HomeKitDaemon/HMXPCMessageTransport-Protocol.h>
+#import <HomeKitDaemon/HMXPCServerMessageHandling-Protocol.h>
 
-@class HMDProcessInfo, HMDXPCMessageCountTracker, HMDXPCMessageSendPolicyParameters, HMDXPCRequestTracker, NSDictionary, NSObject, NSSet, NSString, NSXPCConnection;
+@class HMDProcessInfo, HMDXPCMessageCountTracker, HMDXPCMessageSendPolicyParameters, HMDXPCRequestTracker, NSDictionary, NSObject, NSSet, NSString, NSUUID, NSXPCConnection;
 @protocol HMFLocking, OS_dispatch_queue;
 
-@interface HMDXPCClientConnection : HMFMessageTransport <HMXPCMessageTransport, HMFLogging>
+@interface HMDXPCClientConnection : HMFMessageTransport <HMXPCServerMessageHandling, HMFLogging>
 {
     id <HMFLocking> _lock;
     NSObject<OS_dispatch_queue> *_queue;
@@ -24,12 +24,15 @@
     _Bool _entitledForCameraClipsAccess;
     _Bool _entitledForMultiUserSetupAccess;
     _Bool _entitledForPersonManagerAccess;
+    _Bool _entitledForWalletKeyAccess;
     HMDXPCMessageSendPolicyParameters *_sendPolicyParameters;
     NSDictionary *_userInfo;
     HMDProcessInfo *_processInfo;
+    NSString *_logIdentifier;
     NSXPCConnection *_xpcConnection;
     unsigned long long _entitlements;
     NSString *_clientName;
+    NSUUID *_clientUUID;
     HMDXPCRequestTracker *_requestTracker;
     NSDictionary *_privateAccessEntitlement;
 }
@@ -39,7 +42,9 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *privateAccessEntitlement; // @synthesize privateAccessEntitlement=_privateAccessEntitlement;
 @property(readonly, nonatomic) HMDXPCRequestTracker *requestTracker; // @synthesize requestTracker=_requestTracker;
-@property(retain, nonatomic) NSString *clientName; // @synthesize clientName=_clientName;
+@property(copy, nonatomic) NSUUID *clientUUID; // @synthesize clientUUID=_clientUUID;
+@property(copy, nonatomic) NSString *clientName; // @synthesize clientName=_clientName;
+@property(readonly, nonatomic, getter=isEntitledForWalletKeyAccess) _Bool entitledForWalletKeyAccess; // @synthesize entitledForWalletKeyAccess=_entitledForWalletKeyAccess;
 @property(readonly, nonatomic, getter=isEntitledForPersonManagerAccess) _Bool entitledForPersonManagerAccess; // @synthesize entitledForPersonManagerAccess=_entitledForPersonManagerAccess;
 @property(readonly, nonatomic, getter=isEntitledForMultiUserSetupAccess) _Bool entitledForMultiUserSetupAccess; // @synthesize entitledForMultiUserSetupAccess=_entitledForMultiUserSetupAccess;
 @property(readonly, nonatomic, getter=isEntitledForCameraClipsAccess) _Bool entitledForCameraClipsAccess; // @synthesize entitledForCameraClipsAccess=_entitledForCameraClipsAccess;
@@ -48,7 +53,7 @@
 @property(readonly) unsigned long long entitlements; // @synthesize entitlements=_entitlements;
 @property(nonatomic, getter=isActivated) _Bool activated; // @synthesize activated=_activated;
 @property(nonatomic) __weak NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
-- (id)logIdentifier;
+@property(copy, nonatomic) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
 - (void)sendMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateUserInfo:(id)arg1;
 - (void)handleMessage:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
@@ -57,11 +62,9 @@
 - (void)deactivate;
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;
 - (_Bool)canSendMessage:(id)arg1;
-- (void)_notifyOfNewIncomingClientMessage;
 - (_Bool)shouldSendResponseForMessageIdentifier:(id)arg1;
 @property(readonly, nonatomic) NSSet *activeRequests;
 - (void)updateSendPolicyParameters:(id)arg1;
-@property(readonly, nonatomic) id remoteProxy;
 @property(readonly, nonatomic) NSString *companionAppBundleIdentifier;
 @property(readonly, nonatomic) NSString *applicationBundleIdentifier;
 @property(retain, nonatomic) HMDXPCMessageSendPolicyParameters *sendPolicyParameters; // @synthesize sendPolicyParameters=_sendPolicyParameters;
@@ -71,6 +74,9 @@
 @property(readonly, nonatomic) int clientPid;
 @property(readonly, nonatomic) NSString *name;
 - (id)_displayName;
+@property(readonly, nonatomic, getter=isEntitledForHomeLocationFeedbackAccess) _Bool entitledForHomeLocationFeedbackAccess;
+@property(readonly, nonatomic, getter=isEntitledForAssistantIdentifiers) _Bool entitledForAssistantIdentifiers;
+@property(readonly, nonatomic, getter=isEntitledForStateDump) _Bool entitledForStateDump;
 @property(readonly, nonatomic, getter=isEntitledForSecureAccess) _Bool entitledForSecureAccess;
 @property(readonly, nonatomic, getter=isEntitledForShortcutsAutomationAccess) _Bool entitledForShortcutsAutomationAccess;
 @property(readonly, nonatomic, getter=isEntitledToProvideAccessorySetupPayload) _Bool entitledToProvideAccessorySetupPayload;
@@ -80,13 +86,14 @@
 @property(readonly, nonatomic, getter=isAuthorizedForMicrophoneAccess) _Bool authorizedForMicrophoneAccess;
 @property(readonly, nonatomic, getter=isAuthorizedForHomeDataAccess) _Bool authorizedForHomeDataAccess;
 - (id)counterIdentifierForMessage:(id)arg1;
-- (unsigned long long)homeManagerOptions;
+@property(readonly, nonatomic) unsigned long long homeManagerOptions;
 @property(readonly) Class principalClass;
 @property(readonly, copy) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 - (id)attributeDescriptions;
 - (id)shortDescription;
 - (void)dealloc;
 - (id)initWithConnection:(id)arg1 counterTracker:(id)arg2;
+- (id)initForTestingWithName:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

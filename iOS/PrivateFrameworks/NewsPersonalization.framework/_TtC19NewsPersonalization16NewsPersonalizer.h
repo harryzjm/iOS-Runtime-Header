@@ -4,18 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import <objc/NSObject.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC19NewsPersonalization16NewsPersonalizer : _TtCs12_SwiftObject
+@interface _TtC19NewsPersonalization16NewsPersonalizer : NSObject
 {
-    MISSING_TYPE *feedPersonalizer;
+    MISSING_TYPE *treatment;
+    MISSING_TYPE *classicConfiguration;
     MISSING_TYPE *trainer;
     MISSING_TYPE *context;
     MISSING_TYPE *queue;
     MISSING_TYPE *xavierEnabled;
 }
+
+- (void).cxx_destruct;
+- (id)init;
 
 @end
 

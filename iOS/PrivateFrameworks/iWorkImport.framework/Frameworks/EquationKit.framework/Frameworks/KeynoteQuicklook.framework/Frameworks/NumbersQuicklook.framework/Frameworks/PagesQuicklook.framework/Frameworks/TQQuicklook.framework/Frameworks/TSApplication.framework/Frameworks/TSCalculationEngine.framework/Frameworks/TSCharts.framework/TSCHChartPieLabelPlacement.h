@@ -10,13 +10,13 @@
 
 @interface TSCHChartPieLabelPlacement : NSObject
 {
-    NSArray *mAllWedgeLayoutInfos;
-    NSArray *mAllWedgeLayoutInfosSortedBySeriesIndex;
-    struct CGRect mTitleRect;
+    NSArray *_allWedgeLayoutInfos;
+    NSArray *_allWedgeLayoutInfosSortedBySeriesIndex;
+    struct CGRect _titleRect;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) struct CGRect titleRect; // @synthesize titleRect=mTitleRect;
+@property(readonly, nonatomic) struct CGRect titleRect; // @synthesize titleRect=_titleRect;
 - (struct CGRect)paddedTitleRectWithRect:(struct CGRect)arg1;
 - (struct CGRect)paddedLabelRectWithRect:(struct CGRect)arg1;
 - (double)distanceFromCenterToChordOfLength:(double)arg1 wedgeAngle:(double)arg2;

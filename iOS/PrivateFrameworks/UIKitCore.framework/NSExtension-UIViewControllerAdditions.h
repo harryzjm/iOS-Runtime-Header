@@ -8,9 +8,10 @@
 
 @interface NSExtension (UIViewControllerAdditions)
 - (id)__UIKit_upcall_icons;
+- (void)instantiateViewControllerWithInputItems:(id)arg1 traitCollection:(id)arg2 connectionHandler:(CDUnknownBlockType)arg3;
 - (void)_instantiateAccessoryViewControllerWithInputItems:(id)arg1 connectionHandler:(CDUnknownBlockType)arg2;
 - (void)instantiateViewControllerWithInputItems:(id)arg1 connectionHandler:(CDUnknownBlockType)arg2;
-- (void)_instantiateViewControllerWithInputItems:(id)arg1 asAccessory:(_Bool)arg2 listenerEndpoint:(id)arg3 connectionHandler:(CDUnknownBlockType)arg4;
+- (void)_instantiateViewControllerWithInputItems:(id)arg1 asAccessory:(_Bool)arg2 traitCollection:(id)arg3 listenerEndpoint:(id)arg4 connectionHandler:(CDUnknownBlockType)arg5;
 - (void)instantiateViewControllerWithInputItems:(id)arg1 listenerEndpoint:(id)arg2 connectionHandler:(CDUnknownBlockType)arg3;
 @end
 

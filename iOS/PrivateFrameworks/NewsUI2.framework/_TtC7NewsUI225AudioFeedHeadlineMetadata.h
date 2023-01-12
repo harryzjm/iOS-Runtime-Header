@@ -8,6 +8,7 @@
 
 @class MISSING_TYPE, NSDate, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI225AudioFeedHeadlineMetadata : NSObject
 {
     MISSING_TYPE *displayDate;

@@ -9,7 +9,7 @@
 #import <SpringBoard/CMPocketStateDelegate-Protocol.h>
 #import <SpringBoard/SBIdleTimerResetSource-Protocol.h>
 
-@class CMPocketStateManager, DNDEventBehaviorResolutionService, NSString, SBBacklightController, SBLockScreenManager, SBLockStateAggregator;
+@class CMPocketStateManager, NSString, SBBacklightController, SBLockScreenManager, SBLockStateAggregator;
 
 @interface SBNCScreenController : NSObject <CMPocketStateDelegate, SBIdleTimerResetSource>
 {
@@ -20,11 +20,9 @@
     SBLockStateAggregator *_lockStateAggregator;
     CMPocketStateManager *_pocketStateManager;
     NSString *_powerAssertionName;
-    DNDEventBehaviorResolutionService *_dndEventBehaviorResolutionService;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) DNDEventBehaviorResolutionService *dndEventBehaviorResolutionService; // @synthesize dndEventBehaviorResolutionService=_dndEventBehaviorResolutionService;
 @property(nonatomic) unsigned int powerAssertionID; // @synthesize powerAssertionID=_powerAssertionID;
 @property(copy, nonatomic) NSString *powerAssertionName; // @synthesize powerAssertionName=_powerAssertionName;
 @property(nonatomic) _Bool turnOnScreenForOutOfPocketEvent; // @synthesize turnOnScreenForOutOfPocketEvent=_turnOnScreenForOutOfPocketEvent;

@@ -11,6 +11,7 @@
 @interface CALNTriggeredEventNotificationSourceNotificationInfo : NSObject
 {
     _Bool _isAllDay;
+    _Bool _isTimeSensitive;
     _Bool _isLocationEvent;
     _Bool _hasSuggestedLocation;
     _Bool _eventHasAlarms;
@@ -56,6 +57,7 @@
 @property(readonly, copy, nonatomic) NSString *eventID; // @synthesize eventID=_eventID;
 @property(readonly, nonatomic) _Bool isLocationEvent; // @synthesize isLocationEvent=_isLocationEvent;
 @property(readonly, copy, nonatomic) NSURL *launchURL; // @synthesize launchURL=_launchURL;
+@property(readonly, nonatomic) _Bool isTimeSensitive; // @synthesize isTimeSensitive=_isTimeSensitive;
 @property(readonly, nonatomic) _Bool isAllDay; // @synthesize isAllDay=_isAllDay;
 @property(readonly, copy, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
 @property(readonly, copy, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
@@ -64,7 +66,7 @@
 @property(readonly, copy, nonatomic) NSString *location; // @synthesize location=_location;
 @property(readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
 - (id)description;
-- (id)initWithTitle:(id)arg1 location:(id)arg2 locationWithoutPrediction:(id)arg3 preferredLocation:(id)arg4 startDate:(id)arg5 endDate:(id)arg6 isAllDay:(_Bool)arg7 launchURL:(id)arg8 isLocationEvent:(_Bool)arg9 eventID:(id)arg10 eventObjectID:(id)arg11 eventRepresentationDictionary:(id)arg12 legacyIdentifier:(id)arg13 mapItemURL:(id)arg14 conferenceURL:(id)arg15 mailtoURL:(id)arg16 hasSuggestedLocation:(_Bool)arg17 eventHasAlarms:(_Bool)arg18 alarmID:(id)arg19 isOffsetFromTravelTimeStart:(_Bool)arg20 lastFireTimeOfAlertOffsetFromTravelTime:(id)arg21 allowsLocationAlerts:(_Bool)arg22 hypothesis:(id)arg23 travelAdvisoryTimelinessPeriod:(unsigned long long)arg24 forceDisplayOfNewTravelAdvisoryHypotheses:(_Bool)arg25;
+- (id)initWithTitle:(id)arg1 location:(id)arg2 locationWithoutPrediction:(id)arg3 preferredLocation:(id)arg4 startDate:(id)arg5 endDate:(id)arg6 isAllDay:(_Bool)arg7 isTimeSensitive:(_Bool)arg8 launchURL:(id)arg9 isLocationEvent:(_Bool)arg10 eventID:(id)arg11 eventObjectID:(id)arg12 eventRepresentationDictionary:(id)arg13 legacyIdentifier:(id)arg14 mapItemURL:(id)arg15 conferenceURL:(id)arg16 mailtoURL:(id)arg17 hasSuggestedLocation:(_Bool)arg18 eventHasAlarms:(_Bool)arg19 alarmID:(id)arg20 isOffsetFromTravelTimeStart:(_Bool)arg21 lastFireTimeOfAlertOffsetFromTravelTime:(id)arg22 allowsLocationAlerts:(_Bool)arg23 hypothesis:(id)arg24 travelAdvisoryTimelinessPeriod:(unsigned long long)arg25 forceDisplayOfNewTravelAdvisoryHypotheses:(_Bool)arg26;
 
 @end
 

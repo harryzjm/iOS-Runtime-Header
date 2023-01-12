@@ -10,7 +10,7 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBSearchForPhotosIntent-Protocol.h>
 
-@class NSString, _INPBActivityList, _INPBContactList, _INPBDataStringList, _INPBDateTimeRange, _INPBEventList, _INPBGeographicalFeatureList, _INPBIntentMetadata, _INPBLocation, _INPBPlaceList, _INPBString, _INPBStringList;
+@class NSString, _INPBActivityList, _INPBContactList, _INPBDateTimeRange, _INPBEventList, _INPBGeographicalFeatureList, _INPBIntentMetadata, _INPBLocation, _INPBPlaceList, _INPBString, _INPBStringList;
 
 @interface _INPBSearchForPhotosIntent : PBCodable <_INPBSearchForPhotosIntent, NSSecureCoding, NSCopying>
 {
@@ -19,13 +19,10 @@
     struct _has;
     _INPBActivityList *_activities;
     _INPBString *_albumName;
-    _INPBContactList *_contentPerson;
     _INPBDateTimeRange *_dateCreated;
     _INPBEventList *_events;
     _INPBGeographicalFeatureList *_geographicalFeatures;
     _INPBIntentMetadata *_intentMetadata;
-    _INPBDataStringList *_keyword;
-    _INPBStringList *_keywordString;
     _INPBLocation *_locationCreated;
     _INPBString *_memoryName;
     _INPBContactList *_peopleInPhoto;
@@ -40,13 +37,10 @@
 @property(retain, nonatomic) _INPBContactList *peopleInPhoto; // @synthesize peopleInPhoto=_peopleInPhoto;
 @property(retain, nonatomic) _INPBString *memoryName; // @synthesize memoryName=_memoryName;
 @property(retain, nonatomic) _INPBLocation *locationCreated; // @synthesize locationCreated=_locationCreated;
-@property(retain, nonatomic) _INPBStringList *keywordString; // @synthesize keywordString=_keywordString;
-@property(retain, nonatomic) _INPBDataStringList *keyword; // @synthesize keyword=_keyword;
 @property(retain, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property(retain, nonatomic) _INPBGeographicalFeatureList *geographicalFeatures; // @synthesize geographicalFeatures=_geographicalFeatures;
 @property(retain, nonatomic) _INPBEventList *events; // @synthesize events=_events;
 @property(retain, nonatomic) _INPBDateTimeRange *dateCreated; // @synthesize dateCreated=_dateCreated;
-@property(retain, nonatomic) _INPBContactList *contentPerson; // @synthesize contentPerson=_contentPerson;
 @property(retain, nonatomic) _INPBString *albumName; // @synthesize albumName=_albumName;
 @property(retain, nonatomic) _INPBActivityList *activities; // @synthesize activities=_activities;
 - (id)dictionaryRepresentation;
@@ -63,8 +57,6 @@
 @property(readonly, nonatomic) _Bool hasPeopleInPhoto;
 @property(readonly, nonatomic) _Bool hasMemoryName;
 @property(readonly, nonatomic) _Bool hasLocationCreated;
-@property(readonly, nonatomic) _Bool hasKeywordString;
-@property(readonly, nonatomic) _Bool hasKeyword;
 @property(readonly, nonatomic) _Bool hasIntentMetadata;
 - (int)StringAsIncludedAttributes:(id)arg1;
 - (id)includedAttributesAsString:(int)arg1;
@@ -85,7 +77,6 @@
 - (void)setExcludedAttributes:(int *)arg1 count:(unsigned long long)arg2;
 @property(readonly, nonatomic) _Bool hasEvents;
 @property(readonly, nonatomic) _Bool hasDateCreated;
-@property(readonly, nonatomic) _Bool hasContentPerson;
 @property(readonly, nonatomic) _Bool hasAlbumName;
 @property(readonly, nonatomic) _Bool hasActivities;
 

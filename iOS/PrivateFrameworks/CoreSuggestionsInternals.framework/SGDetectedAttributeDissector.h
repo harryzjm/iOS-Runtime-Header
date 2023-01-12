@@ -45,8 +45,9 @@
 - (void)_removeUnwantedContactDetails:(id)arg1 entity:(id)arg2;
 - (void)_addAuthorContactForMessage:(id)arg1 entity:(id)arg2;
 - (void)handleTextMessageSelfIdentification:(id)arg1 entity:(id)arg2 withConversationHistory:(id)arg3;
+- (id)getResponsesForBirthdayExtractionFromMessage:(id)arg1 withLanguage:(id)arg2;
 - (void)handleTextMessageBirthdayCongratulation:(id)arg1 entity:(id)arg2 withConversationHistory:(id)arg3;
-- (void)logBirthdayExtractionMetricForPerson:(id)arg1 forDate:(id)arg2 isFromCongratulation:(unsigned char)arg3 withModelVersion:(id)arg4 didRegexTrigger:(unsigned char)arg5;
+- (void)logBirthdayExtractionMetricForPerson:(id)arg1 forDate:(id)arg2 isFromCongratulation:(unsigned char)arg3 withModelVersion:(id)arg4 didRegexTrigger:(unsigned char)arg5 didResponseKitTrigger:(unsigned char)arg6;
 - (id)processTextMessageConversation:(id)arg1 threadLength:(unsigned long long)arg2;
 - (id)filterDangerousSigDetections:(id)arg1 message:(id)arg2;
 - (id)filterDangerousSigEmailDetections:(id)arg1 message:(id)arg2;

@@ -12,23 +12,32 @@
 {
 }
 
-+ (_Bool)isValidForPersistenceWithObjectDictionary:(id)arg1;
++ (_Bool)isValidForPersistenceWithObjectDictionary:(id)arg1 additionalEntityName:(id)arg2;
 + (unsigned int)minimumSnapshotPayloadVersion;
 + (unsigned int)payloadVersion;
 + (id)payloadClassID;
++ (id)persistedPropertyNamesForEntityNames;
 + (id)modelProperties;
 + (id)nonPersistedModelPropertiesDescription;
 + (id)modelPropertiesDescription;
+- (id)initWithDetectionTrait:(id)arg1 changedKeys:(id)arg2;
 - (_Bool)comparePayloadValue:(id)arg1 toObjectDictionaryValue:(id)arg2 forPayloadProperty:(id)arg3;
-- (void)updatePayloadAttributes:(id)arg1 withDecodedAttributes:(id)arg2 forPayloadProperty:(id)arg3;
-- (void)updateEncodableAttributes:(id)arg1 fromPayloadAttributes:(id)arg2 forPayloadProperty:(id)arg3;
-- (_Bool)updatePayloadAttributes:(id)arg1 withManagedObject:(id)arg2 forPayloadProperty:(id)arg3;
+- (void)appendAttributeKey:(id)arg1 value:(id)arg2 toDescriptionBuilder:(id)arg3;
+- (_Bool)updatePayloadAttributes:(id)arg1 andNilAttributes:(id)arg2 withManagedObject:(id)arg3 forPayloadProperty:(id)arg4;
+- (id)detectionTraits;
+- (id)clusterRejectedPersonsUUIDs;
+- (id)rejectedPersonsUUIDs;
 @property(readonly, nonatomic, getter=isClusterRejected) _Bool clusterRejected;
 @property(readonly, nonatomic) int cloudNameSource;
 @property(readonly, nonatomic) int nameSource;
 @property(readonly, nonatomic, getter=isRepresentative) _Bool representative;
 @property(readonly, nonatomic, getter=isManual) _Bool manual;
 @property(readonly, nonatomic, getter=isHidden) _Bool hidden;
+- (id)detectionType;
+- (double)bodyHeight;
+- (double)bodyWidth;
+- (double)bodyCenterY;
+- (double)bodyCenterX;
 @property(readonly, nonatomic) double size;
 @property(readonly, nonatomic) double centerY;
 @property(readonly, nonatomic) double centerX;
@@ -40,10 +49,11 @@
 - (id)_insertDeferredRebuildFacesFromDataInManagedObjectContext:(id)arg1;
 - (id)_insertDetectedFaceFromDataInManagedObjectContext:(id)arg1;
 - (id)_insertDeferredRebuildFaceForPersonUUID:(id)arg1 inManagedObjectContext:(id)arg2;
-@property(readonly, copy) NSString *description;
+- (id)additionalDescription;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

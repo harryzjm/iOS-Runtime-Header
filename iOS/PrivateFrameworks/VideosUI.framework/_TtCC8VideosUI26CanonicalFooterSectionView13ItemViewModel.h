@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtCC8VideosUI26CanonicalFooterSectionView13ItemViewModel : UIView
+@interface _TtCC8VideosUI26CanonicalFooterSectionView13ItemViewModel
 {
     MISSING_TYPE *headerView;
     MISSING_TYPE *dataViews;

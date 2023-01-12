@@ -10,11 +10,11 @@
 
 @class GEOPDAutocompleteFilter, GEOPDAutocompleteParametersAddressOnly, GEOPDAutocompleteParametersAllEntries, GEOPDAutocompleteParametersAllEntriesWithBrowse, GEOPDAutocompleteParametersBrandProfileSearch, GEOPDAutocompleteParametersCollectionOnly, GEOPDAutocompleteParametersFullEntriesOnly, GEOPDAutocompleteParametersLocalitiesAndLandmarks, GEOPDAutocompleteParametersPoiAddressOnly, GEOPDAutocompleteParametersSiriSearch, GEOPDAutocompleteParametersVenueSearch, GEOPDAutocompleteSessionData, PBDataReader, PBUnknownFields;
 
-__attribute__((visibility("hidden")))
 @interface GEOPDAutocompleteParameters : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    CDStruct_95bda58d _supportedClientResolvedTypeWithSetupPrompts;
     GEOPDAutocompleteParametersAddressOnly *_addressOnly;
     GEOPDAutocompleteParametersAllEntriesWithBrowse *_allEntriesWithBrowse;
     GEOPDAutocompleteParametersAllEntries *_allEntries;
@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
         unsigned int has_shouldPopulateMapsIdentifier:1;
         unsigned int has_supportAutocompleteSessionData:1;
         unsigned int read_unknownFields:1;
+        unsigned int read_supportedClientResolvedTypeWithSetupPrompts:1;
         unsigned int read_addressOnly:1;
         unsigned int read_allEntriesWithBrowse:1;
         unsigned int read_allEntries:1;
@@ -63,7 +64,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
-- (void)clearSensitiveFields;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
+- (void)clearSensitiveFields:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -72,6 +74,14 @@ __attribute__((visibility("hidden")))
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsSupportedClientResolvedTypeWithSetupPrompts:(id)arg1;
+- (id)supportedClientResolvedTypeWithSetupPromptsAsString:(int)arg1;
+- (void)setSupportedClientResolvedTypeWithSetupPrompts:(int *)arg1 count:(unsigned long long)arg2;
+- (int)supportedClientResolvedTypeWithSetupPromptAtIndex:(unsigned long long)arg1;
+- (void)addSupportedClientResolvedTypeWithSetupPrompt:(int)arg1;
+- (void)clearSupportedClientResolvedTypeWithSetupPrompts;
+@property(readonly, nonatomic) int *supportedClientResolvedTypeWithSetupPrompts;
+@property(readonly, nonatomic) unsigned long long supportedClientResolvedTypeWithSetupPromptsCount;
 @property(retain, nonatomic) GEOPDAutocompleteParametersCollectionOnly *collectionOnly;
 @property(readonly, nonatomic) _Bool hasCollectionOnly;
 @property(retain, nonatomic) GEOPDAutocompleteSessionData *autocompleteSessionData;
@@ -104,6 +114,7 @@ __attribute__((visibility("hidden")))
 - (id)requestTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasRequestType;
 @property(nonatomic) int requestType;
+- (void)dealloc;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

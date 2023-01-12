@@ -12,7 +12,9 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityCustomActions;
-- (_Bool)_accessibilityFavoriteButtonActivate:(id)arg1;
+- (_Bool)_accessibilityToggleFavoriteActivate:(id)arg1;
+- (id)_accessibilityUserTestingChildren;
+- (id)_accessibilityUnfavoriteButton;
 - (id)_accessibilityFavoriteButton;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;

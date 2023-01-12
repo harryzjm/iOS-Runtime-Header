@@ -12,6 +12,7 @@
 
 @interface HMIFaceClassification : HMFObject <NSSecureCoding>
 {
+    _Bool _fromTorsoClassification;
     NSString *_identifier;
     NSString *_name;
     NSString *_personsModelIdentifier;
@@ -27,6 +28,7 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly) _Bool fromTorsoClassification; // @synthesize fromTorsoClassification=_fromTorsoClassification;
 @property(readonly) double confidence; // @synthesize confidence=_confidence;
 @property(readonly) long long familiarity; // @synthesize familiarity=_familiarity;
 @property(readonly) NSUUID *sessionEntityUUID; // @synthesize sessionEntityUUID=_sessionEntityUUID;
@@ -47,6 +49,7 @@
 - (id)initWithUUID:(id)arg1 sourceUUID:(id)arg2 faceBoundingBox:(struct CGRect)arg3;
 - (id)initWithUUID:(id)arg1 name:(id)arg2 personsModelIdentifier:(id)arg3 faceBoundingBox:(struct CGRect)arg4;
 - (id)initWithUUID:(id)arg1 sourceUUID:(id)arg2 sessionEntityUUID:(id)arg3 faceBoundingBox:(struct CGRect)arg4 facecrop:(id)arg5 faceprint:(id)arg6 confidence:(double)arg7;
+- (id)initWithUUID:(id)arg1 sourceUUID:(id)arg2 sessionEntityUUID:(id)arg3 faceCrop:(id)arg4 faceprint:(id)arg5 confidence:(double)arg6 fromTorsoClassification:(_Bool)arg7 familiarity:(long long)arg8;
 - (id)initWithUUID:(id)arg1 sourceUUID:(id)arg2 sessionEntityUUID:(id)arg3 faceCrop:(id)arg4 faceprint:(id)arg5 confidence:(double)arg6 familiarity:(long long)arg7;
 - (id)initWithPersonUUID:(id)arg1 sourceUUID:(id)arg2 sessionEntityUUID:(id)arg3 confidence:(double)arg4 familiarity:(long long)arg5;
 

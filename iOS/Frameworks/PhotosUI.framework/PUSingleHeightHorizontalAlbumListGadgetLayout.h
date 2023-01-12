@@ -8,6 +8,8 @@
 {
 }
 
+- (void)_adjustLayoutAttributes:(id)arg1;
+- (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;
 - (struct CGSize)collectionViewContentSize;
 - (_Bool)pagingEnabled;
 

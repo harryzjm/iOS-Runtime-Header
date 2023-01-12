@@ -6,16 +6,23 @@
 
 #import <SettingsCellular/PSAppDataUsagePolicySwitchSpecifier.h>
 
+@class Logger;
+
 __attribute__((visibility("hidden")))
 @interface PSUIWiFiAssistSwitchSpecifier : PSAppDataUsagePolicySwitchSpecifier
 {
+    struct __CTServerConnection *_serverConnection;
+    Logger *_logger;
 }
 
 + (id)wifiAssistGroupSpecifier;
 + (_Bool)shouldShowWifiAssist;
+- (void).cxx_destruct;
+- (id)getLogger;
 - (void)setCellularUsagePolicy:(id)arg1;
 - (id)cellularUsagePolicy;
 - (unsigned long long)dataUsage;
+- (void)dealloc;
 - (id)initDefault;
 
 @end

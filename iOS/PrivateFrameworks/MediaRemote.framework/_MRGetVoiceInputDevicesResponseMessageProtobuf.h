@@ -8,6 +8,7 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface _MRGetVoiceInputDevicesResponseMessageProtobuf : PBCodable <NSCopying>
 {
     struct {
@@ -19,23 +20,13 @@
     CDStruct_70a7dc3e _has;
 }
 
-@property(nonatomic) unsigned int errorCode; // @synthesize errorCode=_errorCode;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasErrorCode;
-- (void)setDeviceIDs:(unsigned int *)arg1 count:(unsigned long long)arg2;
-- (unsigned int)deviceIDsAtIndex:(unsigned long long)arg1;
-- (void)addDeviceIDs:(unsigned int)arg1;
-- (void)clearDeviceIDs;
-@property(readonly, nonatomic) unsigned int *deviceIDs;
-@property(readonly, nonatomic) unsigned long long deviceIDsCount;
 - (void)dealloc;
 
 @end

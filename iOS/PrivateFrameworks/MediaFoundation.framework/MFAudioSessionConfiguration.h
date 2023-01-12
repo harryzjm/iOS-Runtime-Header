@@ -11,14 +11,13 @@
 @interface MFAudioSessionConfiguration : NSObject
 {
     MISSING_TYPE *category;
-    MISSING_TYPE *mode;
     MISSING_TYPE *routeSharingPolicy;
     MISSING_TYPE *options;
 }
 
 - (void).cxx_destruct;
 - (id)init;
-- (id)initWithCategory:(id)arg1 mode:(id)arg2 routeSharingPolicy:(unsigned long long)arg3 options:(unsigned long long)arg4;
+- (id)initWithCategory:(id)arg1 routeSharingPolicy:(unsigned long long)arg2 options:(unsigned long long)arg3;
 
 @end
 

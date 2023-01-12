@@ -9,6 +9,10 @@
 }
 
 + (Class)defaultIconListViewClass;
+- (void)_orientationDidChange:(long long)arg1;
+- (void)_configureIconListView:(id)arg1;
+- (struct CGSize)_iconSpacingForIconListView;
+- (_Bool)isLibraryPodCategoryFolderView;
 
 @end
 

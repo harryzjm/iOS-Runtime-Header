@@ -6,16 +6,16 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMDCameraStreamMetrics, NSDictionary, NSError, NSNumber, NSString;
+@class HMDCameraStreamMetrics, HMDDevice, NSDictionary, NSError, NSNumber;
 
 @protocol HMDCameraStreamControlManagerProtocol <NSObject>
 @property(readonly, nonatomic) HMDCameraStreamMetrics *streamMetrics;
-- (void)remoteSetup:(NSString *)arg1;
+- (void)setUpRemoteConnectionWithDevice:(HMDDevice *)arg1;
 - (void)updateAudioVolume:(NSNumber *)arg1 callback:(void (^)(_Bool))arg2;
 - (void)updateAudioSetting:(unsigned long long)arg1;
-- (void)stopStream:(NSError *)arg1;
+- (void)stopStreamWithError:(NSError *)arg1;
 - (void)reconfigureStream:(NSDictionary *)arg1;
-- (void)startStream:(NSDictionary *)arg1;
+- (void)startStreamWithRemoteSettings:(NSDictionary *)arg1;
 - (void)negotiateStream;
 @end
 

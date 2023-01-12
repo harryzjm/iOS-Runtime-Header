@@ -27,6 +27,7 @@
 - (_Bool)eventViewControllerShouldHandleInlineEdit:(EKEventViewController *)arg1;
 - (_Bool)eventViewControllerShouldHideInlineEditButton;
 - (void)eventViewController:(EKEventViewController *)arg1 requestsDismissalOfEditViewController:(EKEventEditViewController *)arg2;
+- (void)eventViewControllerModifiedEventWithoutEditing:(EKEventViewController *)arg1;
 - (void)eventViewControllerWillFinishEditingEvent:(EKEventViewController *)arg1 deleted:(_Bool)arg2;
 - (void)eventViewControllerDidBeginEditingEventWithEditViewController:(EKEventEditViewController *)arg1;
 - (void)eventViewController:(EKEventViewController *)arg1 didDismissEditViewController:(EKEventEditViewController *)arg2 deleted:(_Bool)arg3;

@@ -17,6 +17,7 @@
     id <HMDCameraClipUploaderDelegate> _delegate;
     NSDate *_startDate;
     double _targetFragmentDuration;
+    long long _quality;
     HMBLocalZone *_localZone;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSString *_logIdentifier;
@@ -35,6 +36,7 @@
 @property(readonly) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
 @property(readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(readonly) HMBLocalZone *localZone; // @synthesize localZone=_localZone;
+@property(readonly) long long quality; // @synthesize quality=_quality;
 @property(readonly) double targetFragmentDuration; // @synthesize targetFragmentDuration=_targetFragmentDuration;
 @property(readonly, copy) NSDate *startDate; // @synthesize startDate=_startDate;
 @property __weak id <HMDCameraClipUploaderDelegate> delegate; // @synthesize delegate=_delegate;
@@ -46,14 +48,16 @@
 - (void)_operationCompleted:(id)arg1 finalizeOnError:(_Bool)arg2 future:(id)arg3;
 - (id)_addOperation:(id)arg1 finalizeClipOnError:(_Bool)arg2;
 - (id)_createClipWithSignificantEvent:(id)arg1 homePresenceByPairingIdentity:(id)arg2;
+- (id)_createClip;
 - (_Bool)hasAddedCreateClipOperation;
 - (id)finish;
 - (id)addPosterFrameData:(id)arg1 timeOffsetWithinClip:(double)arg2 width:(unsigned long long)arg3 height:(unsigned long long)arg4;
 - (id)addVideoSegmentData:(id)arg1 duration:(double)arg2 timeOffsetWithinClip:(double)arg3 clipFinalizedBecauseMaxDurationExceeded:(_Bool)arg4;
 - (id)addVideoInitData:(id)arg1;
 - (id)addNotificationForSignificantEvent:(id)arg1 homePresenceByPairingIdentity:(id)arg2;
-- (id)initWithClipUUID:(id)arg1 startDate:(id)arg2 targetFragmentDuration:(double)arg3 localZone:(id)arg4 workQueue:(id)arg5 logIdentifier:(id)arg6 encryptionManager:(id)arg7 factory:(id)arg8;
-- (id)initWithClipUUID:(id)arg1 startDate:(id)arg2 targetFragmentDuration:(double)arg3 localZone:(id)arg4 workQueue:(id)arg5 logIdentifier:(id)arg6;
+- (id)createClip;
+- (id)initWithClipUUID:(id)arg1 startDate:(id)arg2 targetFragmentDuration:(double)arg3 quality:(long long)arg4 localZone:(id)arg5 workQueue:(id)arg6 logIdentifier:(id)arg7 encryptionManager:(id)arg8 factory:(id)arg9;
+- (id)initWithClipUUID:(id)arg1 startDate:(id)arg2 targetFragmentDuration:(double)arg3 quality:(long long)arg4 localZone:(id)arg5 workQueue:(id)arg6 logIdentifier:(id)arg7;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

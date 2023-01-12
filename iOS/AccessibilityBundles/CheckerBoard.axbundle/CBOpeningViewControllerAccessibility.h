@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)infoButtonTapped:(id)arg1;
+- (void)didTappedStartDiagnosticsButton;
 
 @end
 

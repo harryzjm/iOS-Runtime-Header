@@ -4,21 +4,44 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class GEOMapFeatureJunction, NSString;
+#import <GeoServices/NSCopying-Protocol.h>
 
-@interface GEOMapFeatureRoad
+@class GEOMapFeatureJunction, GEOMultiSectionFeature, GEOVectorTile, NSString;
+
+@interface GEOMapFeatureRoad <NSCopying>
 {
-    CDStruct_4da79865 *_feature;
-    unsigned long long _roadID;
+    GEOMultiSectionFeature *_feature;
+    union {
+        unsigned long long roadID;
+        struct {
+            unsigned int flipped:1;
+            unsigned int featureIndex:12;
+            unsigned int tileY:16;
+            unsigned int tileX:16;
+            unsigned int unused:19;
+        } ;
+    } _roadKey;
     GEOMapFeatureJunction *_junctionA;
     GEOMapFeatureJunction *_junctionB;
     _Bool _checkedJunctionA;
     _Bool _checkedJunctionB;
+    GEOVectorTile *_tile;
 }
 
-+ (double)estimatedWidthForRoad:(CDStruct_4da79865 *)arg1;
 - (void).cxx_destruct;
-- (CDStruct_6e3f967a *)_tilePointsForSection:(unsigned long long)arg1 withCount:(out unsigned long long *)arg2;
+- (id)_formattedProtobufEnum:(id)arg1;
+- (id)debugDescription;
+- (id)description;
+@property(readonly, nonatomic) GEOMultiSectionFeature *endFeature;
+@property(readonly, nonatomic) GEOMultiSectionFeature *startFeature;
+@property(readonly, nonatomic) _Bool isFlipped;
+@property(readonly, nonatomic) unsigned long long featureIndex;
+@property(readonly, nonatomic) GEOMultiSectionFeature *feature;
+@property(readonly, nonatomic) struct _GEOTileKey tileKey;
+- (id)initWithFeature:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (float *)_elevationsForSection:(unsigned long long)arg1 outCount:(out unsigned long long *)arg2;
+- (struct GeoCodecsVectorTilePoint *)_tilePointsForSection:(unsigned long long)arg1 outCount:(out unsigned long long *)arg2;
 - (id)_attributes;
 - (id)_containingTile;
 - (int)_flippedBikeLaneSideFor:(int)arg1;
@@ -27,7 +50,9 @@
 - (int)_flippedWalkableSideFor:(int)arg1;
 - (id)_junctionB;
 - (id)_junctionA;
+- (id)coordinatesDescription;
 - (id)localizedRoadName:(out id *)arg1;
+- (id)flippedCopy;
 - (void)flip;
 @property(readonly, nonatomic) NSString *internalRoadName;
 @property(readonly, nonatomic) int rampType;
@@ -45,19 +70,14 @@
 @property(readonly, nonatomic) unsigned long long speedLimit;
 @property(readonly, nonatomic) double roadWidth;
 @property(readonly, nonatomic) long long laneCount;
+@property(readonly, nonatomic) _Bool isValidTravelDirection;
 @property(readonly, nonatomic) int travelDirection;
 @property(readonly, nonatomic) int formOfWay;
 @property(readonly, nonatomic) int roadClass;
 @property(readonly, nonatomic) GEOMapFeatureJunction *endJunction;
 @property(readonly, nonatomic) GEOMapFeatureJunction *startJunction;
+@property(readonly, nonatomic) unsigned long long muid;
 @property(readonly, nonatomic) unsigned long long roadID;
-- (id)debugDescription;
-@property(readonly, nonatomic) _Bool isFlipped;
-@property(readonly, nonatomic) unsigned long long featureIndex;
-@property(readonly, nonatomic) CDStruct_4da79865 *feature;
-@property(readonly, nonatomic) struct _GEOTileKey tileKey;
-- (void)dealloc;
-- (id)initWithFeature:(CDStruct_4da79865 *)arg1;
 - (void)updateForDesiredRoadDirectionality:(unsigned long long)arg1 isOutboundRoad:(_Bool)arg2;
 
 @end

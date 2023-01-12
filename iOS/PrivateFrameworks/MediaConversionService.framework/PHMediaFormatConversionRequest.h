@@ -18,6 +18,7 @@
     _Bool _shouldStripLocation;
     _Bool _useTransferBehaviorUserPreference;
     _Bool _requiresSinglePassVideoConversion;
+    _Bool _shouldExportAsHDR;
     _Bool _preflighted;
     long long _livePhotoPairingIdentifierBehavior;
     NSString *_livePhotoPairingIdentifier;
@@ -63,6 +64,7 @@
 @property(readonly) long long creationDateMetadataBehavior; // @synthesize creationDateMetadataBehavior=_creationDateMetadataBehavior;
 @property(readonly) CLLocation *location; // @synthesize location=_location;
 @property(readonly) long long locationMetadataBehavior; // @synthesize locationMetadataBehavior=_locationMetadataBehavior;
+@property _Bool shouldExportAsHDR; // @synthesize shouldExportAsHDR=_shouldExportAsHDR;
 @property _Bool requiresSinglePassVideoConversion; // @synthesize requiresSinglePassVideoConversion=_requiresSinglePassVideoConversion;
 @property(copy) CDUnknownBlockType singlePassVideoConversionUpdateHandler; // @synthesize singlePassVideoConversionUpdateHandler=_singlePassVideoConversionUpdateHandler;
 @property long long transferBehaviorUserPreference; // @synthesize transferBehaviorUserPreference=_transferBehaviorUserPreference;
@@ -72,7 +74,7 @@
 @property(retain) PHMediaFormatConversionSource *source; // @synthesize source=_source;
 @property(readonly) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property(retain) id userInfo; // @synthesize userInfo=_userInfo;
-@property(retain) PHMediaFormatConversionDestination *destination; // @synthesize destination=_destination;
+@property(retain, nonatomic) PHMediaFormatConversionDestination *destination; // @synthesize destination=_destination;
 @property _Bool useTransferBehaviorUserPreference; // @synthesize useTransferBehaviorUserPreference=_useTransferBehaviorUserPreference;
 @property(retain) NSString *outputFilename; // @synthesize outputFilename=_outputFilename;
 @property(retain) NSError *error; // @synthesize error=_error;
@@ -96,6 +98,7 @@
 - (void)setCaptionMetadataBehavior:(long long)arg1 withCaption:(id)arg2;
 - (void)setCreationDateMetadataBehavior:(long long)arg1 withCreationDate:(id)arg2 inTimeZone:(id)arg3;
 - (void)setLocationMetadataBehavior:(long long)arg1 withLocation:(id)arg2;
+- (_Bool)destinationCapabilitiesHintsIndicateSupportForSource;
 @property(readonly) _Bool requiresFormatConversion;
 - (_Bool)requiresAccessibilityDescriptionMetadataChange;
 - (_Bool)requiresCaptionMetadataChange;

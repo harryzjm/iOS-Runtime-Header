@@ -19,6 +19,9 @@
 
 - (void).cxx_destruct;
 - (id)onPresentationRemoveViewControllersAfterMarker;
+- (id)_analyticsErrorTextForError:(long long)arg1;
+- (void)_analyticsReportError:(id)arg1;
+- (void)_analyticsReportRowTapForFieldCell:(id)arg1;
 - (void)_terminateFlow;
 - (void)_handleNextViewController:(id)arg1 displayableError:(id)arg2 terminationHandler:(CDUnknownBlockType)arg3;
 - (void)_handleNextStep;
@@ -28,6 +31,8 @@
 - (void)_showSubmissionSpinner:(_Bool)arg1;
 - (void)handleNextButtonTapped:(id)arg1;
 - (_Bool)shouldAppearWithFirstEmptyFieldAsFirstResponder;
+- (_Bool)fieldCellEditableTextFieldShouldBeginEditing:(id)arg1;
+- (void)fieldCellDidTapButton:(id)arg1;
 - (void)_completeInWalletLater;
 - (void)_withdrawApplicationTapped;
 - (void)_featureApplicationUpdated;

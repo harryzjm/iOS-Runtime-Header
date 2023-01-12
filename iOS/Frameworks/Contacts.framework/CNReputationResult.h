@@ -8,7 +8,6 @@
 
 @class CNReputationHandle;
 
-__attribute__((visibility("hidden")))
 @interface CNReputationResult : NSObject
 {
     CNReputationHandle *_handle;

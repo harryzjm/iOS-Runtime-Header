@@ -6,10 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class UIColor;
+@class UIColor, UIFont;
 
 @interface RUIStyle : NSObject
 {
+    _Bool _useNonOBStyleButton;
     UIColor *_backgroundColor;
     UIColor *_radioGroupSelectedColor;
     UIColor *_buttonRowTextColor;
@@ -27,14 +28,44 @@
     long long _footerLabelAlignment;
     long long _footerLinkAlignment;
     UIColor *_tintColor;
+    UIFont *_footerFont;
+    double _subHeaderTopMargin;
+    double _headerImagePadding;
+    double _footerTopMargin;
+    double _multiChoiceStackViewTopAndBottomMargin;
+    double _multiChoiceStackViewElementSpacing;
+    double _headerContainerSideMargin;
+    double _sectionHeaderHeight;
+    UIColor *_spinnerLabelColor;
+    UIFont *_spinnerLabelFont;
+    UIFont *_navBarButtonLabelFont;
+    double _navBarLabelSpacingWithImage;
+    struct UIEdgeInsets _headerMargin;
 }
 
++ (id)_staticButtonTitleColorWithTintColor:(id)arg1;
++ (id)watchDefaultStyle;
 + (id)frontRowStyle;
 + (id)setupAssistantModalStyle;
 + (id)setupAssistantStyle;
++ (id)osloStyle;
 + (id)defaultStyle;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(nonatomic) double navBarLabelSpacingWithImage; // @synthesize navBarLabelSpacingWithImage=_navBarLabelSpacingWithImage;
+@property(retain, nonatomic) UIFont *navBarButtonLabelFont; // @synthesize navBarButtonLabelFont=_navBarButtonLabelFont;
+@property(retain, nonatomic) UIFont *spinnerLabelFont; // @synthesize spinnerLabelFont=_spinnerLabelFont;
+@property(retain, nonatomic) UIColor *spinnerLabelColor; // @synthesize spinnerLabelColor=_spinnerLabelColor;
+@property(nonatomic) double sectionHeaderHeight; // @synthesize sectionHeaderHeight=_sectionHeaderHeight;
+@property(nonatomic) double headerContainerSideMargin; // @synthesize headerContainerSideMargin=_headerContainerSideMargin;
+@property(nonatomic) double multiChoiceStackViewElementSpacing; // @synthesize multiChoiceStackViewElementSpacing=_multiChoiceStackViewElementSpacing;
+@property(nonatomic) double multiChoiceStackViewTopAndBottomMargin; // @synthesize multiChoiceStackViewTopAndBottomMargin=_multiChoiceStackViewTopAndBottomMargin;
+@property(nonatomic) struct UIEdgeInsets headerMargin; // @synthesize headerMargin=_headerMargin;
+@property(nonatomic) _Bool useNonOBStyleButton; // @synthesize useNonOBStyleButton=_useNonOBStyleButton;
+@property(nonatomic) double footerTopMargin; // @synthesize footerTopMargin=_footerTopMargin;
+@property(nonatomic) double headerImagePadding; // @synthesize headerImagePadding=_headerImagePadding;
+@property(nonatomic) double subHeaderTopMargin; // @synthesize subHeaderTopMargin=_subHeaderTopMargin;
+@property(retain, nonatomic) UIFont *footerFont; // @synthesize footerFont=_footerFont;
 @property(retain, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 @property(nonatomic) long long footerLinkAlignment; // @synthesize footerLinkAlignment=_footerLinkAlignment;
 @property(nonatomic) long long footerLabelAlignment; // @synthesize footerLabelAlignment=_footerLabelAlignment;
@@ -52,10 +83,13 @@
 @property(retain, nonatomic) UIColor *buttonRowTextColor; // @synthesize buttonRowTextColor=_buttonRowTextColor;
 @property(retain, nonatomic) UIColor *radioGroupSelectedColor; // @synthesize radioGroupSelectedColor=_radioGroupSelectedColor;
 @property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+- (id)boldButtonTitleColorWithTintColor:(id)arg1;
 - (id)init;
+- (void)applyToNavigationBar:(id)arg1;
 - (void)applyToNavigationController:(id)arg1;
 - (void)applyToObjectModel:(id)arg1;
 - (void)applyToLabel:(id)arg1;
+@property(readonly, nonatomic) long long tableViewStyle;
 @property(readonly, nonatomic) long long navBarActivityIndicatorStyle;
 
 @end

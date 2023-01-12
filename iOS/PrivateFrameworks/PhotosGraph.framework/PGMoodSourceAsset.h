@@ -9,7 +9,7 @@
 }
 
 + (id)_plistName;
-- (id)_plistMoodIdentifiers;
+- (id)_plistMoodIdentifiersWithGraph:(id)arg1;
 - (double)weight;
 
 @end

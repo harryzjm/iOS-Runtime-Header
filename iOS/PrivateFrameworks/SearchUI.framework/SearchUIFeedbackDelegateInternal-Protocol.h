@@ -6,11 +6,13 @@
 
 #import <SearchUI/SearchUIFeedbackDelegate-Protocol.h>
 
-@class NSString, SearchUICommandEnvironment, SearchUIRowModel;
+@class NSString, SFCardSection, SFSearchResult, SearchUICommandEnvironment, SearchUIRowModel;
 
 @protocol SearchUIFeedbackDelegateInternal <SearchUIFeedbackDelegate>
 
 @optional
+@property(nonatomic) _Bool dragInteractionEnabled;
+- (void)didUpdateKeyboardFocusToResult:(SFSearchResult *)arg1 cardSection:(SFCardSection *)arg2;
 - (SearchUICommandEnvironment *)searchUICommandEnvironment;
 - (NSString *)queryString;
 - (void)removeRowModel:(SearchUIRowModel *)arg1;

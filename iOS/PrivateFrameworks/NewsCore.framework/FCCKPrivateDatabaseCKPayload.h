@@ -18,11 +18,6 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) long long destination; // @synthesize destination=_destination;
-@property(retain, nonatomic) NSArray *zones; // @synthesize zones=_zones;
-@property(retain, nonatomic) NSArray *zoneIDs; // @synthesize zoneIDs=_zoneIDs;
-@property(retain, nonatomic) NSArray *records; // @synthesize records=_records;
-@property(retain, nonatomic) NSArray *recordIDs; // @synthesize recordIDs=_recordIDs;
 
 @end
 

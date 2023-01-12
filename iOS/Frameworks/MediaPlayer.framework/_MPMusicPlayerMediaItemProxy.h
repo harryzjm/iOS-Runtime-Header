@@ -8,7 +8,6 @@
 
 @class MPMediaItem, NSString;
 
-__attribute__((visibility("hidden")))
 @interface _MPMusicPlayerMediaItemProxy : NSProxy
 {
     MPMediaItem *_item;
@@ -18,6 +17,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
 @property(readonly, nonatomic) MPMediaItem *item; // @synthesize item=_item;
+- (id)description;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (void)forwardInvocation:(id)arg1;
 - (_Bool)isEqual:(id)arg1;

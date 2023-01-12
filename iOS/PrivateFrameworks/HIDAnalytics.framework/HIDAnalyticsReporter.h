@@ -14,6 +14,7 @@
     NSMutableSet *_events;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_source> *_timer;
+    struct os_unfair_lock_s _lock;
 }
 
 - (void).cxx_destruct;

@@ -24,7 +24,7 @@
 - (double)widthForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2;
 - (unsigned long long)columnCount;
 - (id)layoutMargins;
-- (struct CGSize)adjustedInsetsForTarget:(id)arg1;
+- (struct UIEdgeInsets)adjustedInsetsForTarget:(id)arg1;
 - (_Bool)textLayoutShouldWrapAroundExternalDrawables:(id)arg1;
 - (double)maxAutoGrowBlockHeightForTextLayout:(id)arg1;
 - (Class)repClassForTextLayout:(id)arg1;

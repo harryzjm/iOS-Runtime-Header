@@ -11,6 +11,7 @@
 @protocol RWIProtocolCSSDomainHandler <NSObject>
 
 @optional
+- (void)setLayoutContextTypeChangedModeWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 mode:(long long)arg3;
 - (void)forcePseudoStateWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 nodeId:(int)arg3 forcedPseudoClasses:(NSArray *)arg4;
 - (void)getSupportedSystemFontFamilyNamesWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSArray *))arg2;
 - (void)getSupportedCSSPropertiesWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSArray *))arg2;
@@ -22,6 +23,7 @@
 - (void)getStyleSheetTextWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSString *))arg2 styleSheetId:(NSString *)arg3;
 - (void)getStyleSheetWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(RWIProtocolCSSStyleSheetBody *))arg2 styleSheetId:(NSString *)arg3;
 - (void)getAllStyleSheetsWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSArray *))arg2;
+- (void)getFontDataForNodeWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(RWIProtocolCSSFont *))arg2 nodeId:(int)arg3;
 - (void)getComputedStyleForNodeWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSArray *))arg2 nodeId:(int)arg3;
 - (void)getInlineStylesForNodeWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(id *, id *))arg2 nodeId:(int)arg3;
 - (void)getMatchedStylesForNodeWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(id *, id *, id *))arg2 nodeId:(int)arg3 includePseudo:(_Bool *)arg4 includeInherited:(_Bool *)arg5;

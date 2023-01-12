@@ -12,10 +12,10 @@ __attribute__((visibility("hidden")))
     id <UIPrintPanelAppearanceDelegate> _appearanceDelegate;
 }
 
++ (_Bool)_preventsAppearanceProxyCustomization;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <UIPrintPanelAppearanceDelegate> appearanceDelegate; // @synthesize appearanceDelegate=_appearanceDelegate;
 - (void)_presentationControllerDidDismiss:(id)arg1;
-- (void)__viewWillLayoutSubviews;
 
 @end
 

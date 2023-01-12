@@ -8,35 +8,31 @@
 
 #import <CoreServices/LSInstallationServiceCallbackProtocol-Protocol.h>
 
-@class NSDictionary, NSString, NSURL, NSXPCConnection;
-@protocol OS_dispatch_group;
+@class NSDictionary, NSString, NSXPCConnection;
+@protocol LSMIInstallUninstallCall, OS_dispatch_group;
 
 __attribute__((visibility("hidden")))
 @interface _LSInstallerClient : NSObject <LSInstallationServiceCallbackProtocol>
 {
-    _Bool _uninstaller;
     unsigned long long _operationType;
     NSString *_operationTypeString;
     NSXPCConnection *_connection;
     CDUnknownBlockType _progressBlock;
-    NSString *_bundleID;
-    NSURL *_bundleURL;
+    id <LSMIInstallUninstallCall> _miCall;
     NSDictionary *_options;
     NSObject<OS_dispatch_group> *_callbackDeliveryGroup;
     struct os_unfair_lock_s _lock;
     _Bool _allCallbacksDeleviered;
 }
 
++ (id)revertInstallerWithBundleID:(id)arg1 options:(id)arg2 callbackBlock:(CDUnknownBlockType)arg3;
 + (id)installerWithBundleID:(id)arg1 bundleURL:(id)arg2 options:(id)arg3 callbackBlock:(CDUnknownBlockType)arg4;
 + (id)unInstallerWithBundleID:(id)arg1 options:(id)arg2 callbackBlock:(CDUnknownBlockType)arg3;
-+ (id)installerWithBundleID:(id)arg1 options:(id)arg2 callbackBlock:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long operationType; // @synthesize operationType=_operationType;
 @property(retain, nonatomic) NSDictionary *options; // @synthesize options=_options;
 @property(copy, nonatomic) CDUnknownBlockType progressBlock; // @synthesize progressBlock=_progressBlock;
-@property(retain, nonatomic) NSURL *bundleURL; // @synthesize bundleURL=_bundleURL;
-@property(retain, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
-@property(nonatomic, getter=isUninstaller) _Bool uninstaller; // @synthesize uninstaller=_uninstaller;
+@property(copy, nonatomic) id <LSMIInstallUninstallCall> miCall; // @synthesize miCall=_miCall;
 @property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property(readonly, nonatomic) NSString *operationTypeString; // @dynamic operationTypeString;
 - (void)_invalidate;
@@ -45,7 +41,9 @@ __attribute__((visibility("hidden")))
 @property(readonly) _Bool allCallbacksDeleviered; // @synthesize allCallbacksDeleviered=_allCallbacksDeleviered;
 - (void)callbackDeliveryComplete;
 - (void)updateCallbackWithData:(id)arg1;
-- (id)init;
+- (id)initWithMICall:(id)arg1 options:(id)arg2 callbackBlock:(CDUnknownBlockType)arg3;
+@property(readonly) NSString *bundleID; // @dynamic bundleID;
+@property(readonly, getter=isUninstaller) _Bool uninstaller; // @dynamic uninstaller;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

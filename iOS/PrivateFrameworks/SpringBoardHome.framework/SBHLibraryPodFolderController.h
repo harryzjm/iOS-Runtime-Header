@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SpringBoardHome/SBHLibraryCategoriesFolderDataSourceDelegate-Protocol.h>
+#import <SpringBoardHome/SBHLibraryCategoriesFolderDataSourceObserver-Protocol.h>
 #import <SpringBoardHome/SBHLibraryChildViewController-Protocol.h>
 #import <SpringBoardHome/SBHLibraryPodIconZoomAnimationContaining-Protocol.h>
 #import <SpringBoardHome/SBHLibrarySearchControllerContentViewControllerScrollViewProvider-Protocol.h>
@@ -13,7 +13,7 @@
 @class NSArray, NSSet, NSString, SBFolderIconImageCache, SBHIconImageCache, SBHIconModel, SBHLibraryCategoriesFolderDataSource, SBHLibraryCategoryMap, SBIconListView, SBRootFolder, UITapGestureRecognizer, UIView, UIWindow, _UILegibilitySettings;
 @protocol BSUIScrollViewDelegate, SBHLibraryPodFolderControllerDelegate, SBIconListLayoutProvider;
 
-@interface SBHLibraryPodFolderController <SBHLibraryCategoriesFolderDataSourceDelegate, UIGestureRecognizerDelegate, SBHLibraryChildViewController, SBHLibraryPodIconZoomAnimationContaining, SBHLibrarySearchControllerContentViewControllerScrollViewProvider>
+@interface SBHLibraryPodFolderController <SBHLibraryCategoriesFolderDataSourceObserver, UIGestureRecognizerDelegate, SBHLibraryChildViewController, SBHLibraryPodIconZoomAnimationContaining, SBHLibrarySearchControllerContentViewControllerScrollViewProvider>
 {
     SBHIconImageCache *_iconImageCache;
     id <SBIconListLayoutProvider> _listLayoutProvider;
@@ -53,6 +53,7 @@
 - (id)firstNonSuggestionsOrRecentsIconViewForIcon:(id)arg1;
 - (id)firstIconViewForIcon:(id)arg1;
 - (id)firstIconViewForIcon:(id)arg1 inLocations:(id)arg2;
+- (id)iconViewForIcon:(id)arg1 location:(id)arg2 options:(unsigned long long)arg3;
 - (id)iconViewForIcon:(id)arg1 location:(id)arg2;
 @property(readonly, copy, nonatomic) NSSet *presentedIconLocations;
 - (_Bool)isPresentingIconLocation:(id)arg1;

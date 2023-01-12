@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSCollectionLayoutSize, _UICollectionPreferredSizingCustomizations;
+@class NSCollectionLayoutSize;
 
 __attribute__((visibility("hidden")))
 @interface _UICollectionPreferredSize : NSObject
@@ -15,18 +15,11 @@ __attribute__((visibility("hidden")))
     struct CGSize _fittingSize;
     struct CGSize _preferredSize;
     NSCollectionLayoutSize *_layoutSize;
-    _UICollectionPreferredSizingCustomizations *_customizations;
+    id _additionalData;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) _UICollectionPreferredSizingCustomizations *customizations; // @synthesize customizations=_customizations;
-@property(readonly, nonatomic) struct CGSize preferredSize; // @synthesize preferredSize=_preferredSize;
-@property(readonly, nonatomic) NSCollectionLayoutSize *layoutSize; // @synthesize layoutSize=_layoutSize;
-@property(readonly, nonatomic) struct CGSize fittingSize; // @synthesize fittingSize=_fittingSize;
-@property(readonly, nonatomic) struct CGSize originalSize; // @synthesize originalSize=_originalSize;
 - (id)description;
-- (id)initWithOriginalSize:(struct CGSize)arg1 fittingSize:(struct CGSize)arg2 layoutSize:(id)arg3 customizations:(id)arg4;
-- (id)initWithOriginalSize:(struct CGSize)arg1 fittingSize:(struct CGSize)arg2 layoutSize:(id)arg3;
 
 @end
 

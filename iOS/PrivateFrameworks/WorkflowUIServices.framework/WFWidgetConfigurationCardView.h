@@ -16,6 +16,7 @@
     WFWidgetConfigurationCardHeaderView *_headerView;
     UIView *_contentView;
     id <WFWidgetConfigurationCardViewDelegate> _delegate;
+    double _widgetDescriptionTallScriptCompensatedSpacing;
     MTVisualStylingProvider *_strokeProvider;
     MTVisualStylingProvider *_fillProvider;
     MTStylingProvidingSolidColorView *_backgroundView;
@@ -27,6 +28,7 @@
 @property(readonly, nonatomic) MTStylingProvidingSolidColorView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property(readonly, nonatomic) MTVisualStylingProvider *fillProvider; // @synthesize fillProvider=_fillProvider;
 @property(readonly, nonatomic) MTVisualStylingProvider *strokeProvider; // @synthesize strokeProvider=_strokeProvider;
+@property(nonatomic) double widgetDescriptionTallScriptCompensatedSpacing; // @synthesize widgetDescriptionTallScriptCompensatedSpacing=_widgetDescriptionTallScriptCompensatedSpacing;
 @property(nonatomic) __weak id <WFWidgetConfigurationCardViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property(readonly, nonatomic) WFWidgetConfigurationCardHeaderView *headerView; // @synthesize headerView=_headerView;

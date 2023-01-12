@@ -29,9 +29,12 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <_GCDefaultDeviceManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property __weak id <GCPhysicalDeviceRegistry><GCLogicalDeviceRegistry> deviceRegistry; // @synthesize deviceRegistry=_deviceRegistry;
 @property(readonly) id <NSObject><NSCopying><NSSecureCoding> identifier; // @synthesize identifier=_identifier;
+- (_Bool)acceptFilterConnection:(id)arg1 forHIDDevice:(id)arg2;
 - (_Bool)acceptDriverConnection:(id)arg1 forHIDDevice:(id)arg2;
 - (void)relinquishHIDDevice:(id)arg1;
+- (void)_onqueue_relinquishHIDDevice:(id)arg1;
 - (void)claimHIDDevice:(id)arg1;
+- (void)_onqueue_checkAndDisconnectDuplicateDevice:(id)arg1;
 - (id)matchHIDDevice:(id)arg1;
 - (void)_onqueue_registerDefaultConfigurationForDevice:(id)arg1;
 - (id)makeDeviceWithConfiguration:(id)arg1 dependencies:(id)arg2;

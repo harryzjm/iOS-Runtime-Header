@@ -6,13 +6,20 @@
 
 #import <UIFoundation/NSTextAttachmentViewProvider.h>
 
+@class UIView;
+
 __attribute__((visibility("hidden")))
 @interface _UISearchTokenAttachmentViewProvider : NSTextAttachmentViewProvider
 {
+    UIView *_parentView;
 }
 
+- (void).cxx_destruct;
+- (struct CGRect)attachmentBoundsForAttributes:(id)arg1 location:(id)arg2 textContainer:(id)arg3 proposedLineFragment:(struct CGRect)arg4 position:(struct CGPoint)arg5;
 - (struct CGRect)attachmentBoundsForTextContainer:(id)arg1 proposedLineFragment:(struct CGRect)arg2 glyphPosition:(struct CGPoint)arg3 characterIndex:(unsigned long long)arg4;
+- (_Bool)isLastAttachmentBeforeText;
 - (void)loadView;
+- (id)initWithTextAttachment:(id)arg1 parentView:(id)arg2 textLayoutManager:(id)arg3 location:(id)arg4;
 
 @end
 

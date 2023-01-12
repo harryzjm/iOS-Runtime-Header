@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIColor, UIImage, _UILegibilitySettings, _UIPageControlVisualProvider;
+@class UIColor, UIImage, UIVisualEffect, _UIPageControlVisualProvider;
 
 @interface UIPageControl
 {
@@ -13,69 +13,64 @@
         unsigned int hideForSinglePage:1;
         unsigned int defersCurrentPageDisplay:1;
         unsigned int allowScrubbing:1;
+        unsigned int allowTapping:1;
         unsigned int flickToEndGestureEnabled:1;
     } _pageControlFlags;
     struct {
         unsigned int verticalPadding:1;
         unsigned int horizontalPadding:1;
         unsigned int indicatorSpacing:1;
+        unsigned int layoutDirection:1;
     } _custom;
     double _horizontalPadding;
     double _verticalPadding;
     double _indicatorSpacing;
     unsigned long long _preferredNumberOfVisibleIndicators;
+    long long _layoutDirection;
     long long _numberOfPages;
     long long _currentPage;
     UIColor *_pageIndicatorTintColor;
     UIColor *_currentPageIndicatorTintColor;
     long long _backgroundStyle;
     long long _previousPage;
+    UIVisualEffect *__platterEffect;
 }
 
 + (id)_visualProviderForPageControl:(id)arg1;
-+ (_Bool)_supportsInteractivePageControl;
 + (_Bool)doesOverrideMethod:(SEL)arg1 inBaseClass:(Class)arg2;
 - (void).cxx_destruct;
+@property(retain, nonatomic, setter=_setPlatterEffect:) UIVisualEffect *_platterEffect; // @synthesize _platterEffect=__platterEffect;
 @property(nonatomic) long long previousPage; // @synthesize previousPage=_previousPage;
 @property(nonatomic) long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
 @property(retain, nonatomic) UIColor *currentPageIndicatorTintColor; // @synthesize currentPageIndicatorTintColor=_currentPageIndicatorTintColor;
 @property(retain, nonatomic) UIColor *pageIndicatorTintColor; // @synthesize pageIndicatorTintColor=_pageIndicatorTintColor;
 @property(nonatomic) long long currentPage; // @synthesize currentPage=_currentPage;
 @property(nonatomic) long long numberOfPages; // @synthesize numberOfPages=_numberOfPages;
-- (void)_setCurrentPageImage:(id)arg1;
-- (void)_setPageImage:(id)arg1;
 - (_Bool)canBecomeFocused;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (unsigned long long)_controlEventsForActionTriggered;
-- (void)_transitionIndicator:(id)arg1 toEnabled:(_Bool)arg2 index:(long long)arg3;
-- (id)_indicatorViewEnabled:(_Bool)arg1 index:(long long)arg2;
-- (id)_createModernIndicatorImageFromView:(id)arg1;
-- (void)_drawModernIndicatorInView:(id)arg1 enabled:(_Bool)arg2;
 - (void)_invalidateIndicators;
-@property(retain, nonatomic, getter=_legibilitySettings, setter=_setLegibilitySettings:) _UILegibilitySettings *legibilitySettings;
-@property(nonatomic, getter=_legibilityStyle, setter=_setLegibilityStyle:) long long legibilityStyle;
+- (void)_setAllowsDiscreteInteraction:(_Bool)arg1;
+- (_Bool)_allowsDiscreteInteraction;
+@property(nonatomic, setter=_setLayoutDirection:) long long _layoutDirection;
+- (void)_setVertical:(_Bool)arg1;
 - (void)_setPreferredNumberOfVisibleIndicators:(unsigned long long)arg1;
 - (void)_setCustomIndicatorSpacing:(double)arg1;
 - (void)_setCustomVerticalPadding:(double)arg1;
 - (void)_setCustomHorizontalPadding:(double)arg1;
+- (_Bool)_isVertical;
 - (double)_customIndicatorSpacing;
 - (double)_customVerticalPadding;
 - (double)_customHorizontalPadding;
-- (id)_pageIndicatorCurrentImageForPage:(long long)arg1;
-- (id)_pageIndicatorImageForPage:(long long)arg1;
 - (void)_traitCollectionDidChangeOnSubtreeInternal:(const struct _UITraitCollectionChangeDescription *)arg1;
 - (_Bool)_contentHuggingDefault_isUsuallyFixedHeight;
 - (_Bool)_contentHuggingDefault_isUsuallyFixedWidth;
+- (void)setSemanticContentAttribute:(long long)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)intrinsicContentSize;
 @property(nonatomic, setter=_setFlickToEndGestureEnabled:) _Bool _flickToEndGestureEnabled;
-- (void)_setIndicatorImage:(id)arg1;
-- (void)_setIndicatorImage:(id)arg1 forPage:(long long)arg2;
-- (void)_setDisplayMode:(long long)arg1;
-- (long long)_displayMode;
-- (long long)_interactionState;
 - (void)setIndicatorImage:(id)arg1 forPage:(long long)arg2;
 - (id)indicatorImageForPage:(long long)arg1;
 @property(retain, nonatomic) UIImage *preferredIndicatorImage;

@@ -18,6 +18,7 @@
 - (_Bool)_canShowWhileLocked;
 - (void)sendFeedbackForResult:(id)arg1 cardSection:(id)arg2 selectedPunchout:(id)arg3;
 - (void)viewWillDisappear:(_Bool)arg1;
+- (id)initWithResult:(id)arg1 cardSection:(id)arg2 userReportRequest:(id)arg3 feedbackDelegate:(id)arg4 sourceView:(id)arg5;
 - (id)initWithResult:(id)arg1 cardSection:(id)arg2 feedbackDelegate:(id)arg3 sourceView:(id)arg4;
 
 @end

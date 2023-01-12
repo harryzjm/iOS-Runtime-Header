@@ -6,7 +6,6 @@
 
 @class CKRecordID, NSArray;
 
-__attribute__((visibility("hidden")))
 @interface CKDUpdateMissingAssetStatusURLRequest
 {
     _Bool _recovered;

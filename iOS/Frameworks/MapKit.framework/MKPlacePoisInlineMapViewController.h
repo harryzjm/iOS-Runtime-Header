@@ -8,7 +8,6 @@
 
 @class CLLocation, NSArray, NSString, _MKPlacePoisInlineMapContentView;
 
-__attribute__((visibility("hidden")))
 @interface MKPlacePoisInlineMapViewController <MKStackingViewControllerFixedHeightAware>
 {
     NSArray *_fetchedMapItems;

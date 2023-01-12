@@ -15,7 +15,8 @@
     NSArray *_materials;
 }
 
-+ (id)instanceWithArchive:(const struct Chart3DEnvironmentPackageArchive *)arg1 unarchiver:(id)arg2;
++ (id)instanceWithArchive:(const void *)arg1 unarchiver:(id)arg2;
+- (void).cxx_destruct;
 - (void)didInitFromSOS;
 - (void)affect:(id)arg1 states:(id)arg2 scene:(id)arg3 texturePool:(id)arg4;
 - (void)addMaterial:(id)arg1;
@@ -25,10 +26,9 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)init;
-- (void)saveToArchive:(struct Chart3DEnvironmentPackageArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct Chart3DEnvironmentPackageArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 @end
 

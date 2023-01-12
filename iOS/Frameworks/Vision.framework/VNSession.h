@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+#import <Vision/VNDetectorCacheDelegate-Protocol.h>
 #import <Vision/VNDetectorProviding-Protocol.h>
 #import <Vision/VNDetectorReleasing-Protocol.h>
 #import <Vision/VNLegacyForcedCleanupImplementing-Protocol.h>
@@ -14,7 +15,7 @@
 
 @class NSMutableSet, NSString, VNDetectorCache, VNFrameworkManager;
 
-@interface VNSession : NSObject <VNDetectorProviding, VNDetectorReleasing, VNTrackerProviding, VNLegacyForcedCleanupImplementing, VNRequestWarming>
+@interface VNSession : NSObject <VNDetectorCacheDelegate, VNDetectorProviding, VNDetectorReleasing, VNTrackerProviding, VNLegacyForcedCleanupImplementing, VNRequestWarming>
 {
     VNFrameworkManager *_frameworkManager;
     VNDetectorCache *_detectorCache_onlyAccessWithDetectorAccessingLock;
@@ -37,17 +38,13 @@
 - (id)detectorOfType:(id)arg1 configuredWithOptions:(id)arg2 error:(id *)arg3;
 - (_Bool)prepareForPerformingRequestsOfClass:(id)arg1 error:(id *)arg2;
 - (_Bool)prepareForPerformingRequests:(id)arg1 error:(id *)arg2;
+- (void)detectorCache:(id)arg1 didEvictDetector:(id)arg2;
+- (void)detectorCache:(id)arg1 didCacheDetector:(id)arg2;
 - (void)_releaseDetectorsThatCanBeReplacedByDetectorOfClass:(Class)arg1 withConfiguration:(id)arg2;
 - (id)_cachedDetectorOfClass:(Class)arg1 configuredWithOptions:(id)arg2;
+- (void)releaseCachedResourcesWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)releaseCachedResources;
 - (id)init;
-- (id)_locateDetectorOfClass:(Class)arg1 configuredWithOptions:(id)arg2 allowingCreation:(_Bool)arg3 error:(id *)arg4;
-- (void)_releaseAllDetectors;
-- (void)_releaseDetectorTypes:(id)arg1;
-- (void)_releaseDetectorsOfClasses:(id)arg1;
-- (void)_releaseDetectorsPassingTest:(CDUnknownBlockType)arg1;
-- (void)_enumerateDetectorsUsingBlock:(CDUnknownBlockType)arg1;
-- (void)_releaseAllTrackers;
 - (void)dealloc;
 
 // Remaining properties

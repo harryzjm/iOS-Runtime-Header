@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <HomeKit/HMObjectMerge-Protocol.h>
+#import <HomeKit/NSCopying-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
 @class HMFUnfairLock, NSArray, NSNumber, NSString, NSUUID;
 
-@interface HMCharacteristicMetadata : NSObject <NSSecureCoding, HMObjectMerge>
+@interface HMCharacteristicMetadata : NSObject <NSSecureCoding, HMObjectMerge, NSCopying>
 {
     HMFUnfairLock *_lock;
     NSNumber *_minimumValue;
@@ -26,6 +27,9 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (_Bool)isEqual:(id)arg1;
+@property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) NSUUID *uniqueIdentifier;
 - (_Bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 @property(readonly, copy) NSString *description;
@@ -43,7 +47,6 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

@@ -19,6 +19,8 @@
     struct CGSize _glyphSize;
 }
 
++ (void)drawGlyphsIntoWorkflowsIfNecessary:(id)arg1 glyphSize:(struct CGSize)arg2 synchronously:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
++ (void)drawGlyphsIntoWorkflowsIfNecessary:(id)arg1 glyphSize:(struct CGSize)arg2;
 + (void)drawGlyphsIntoWorkflowsIfNecessary:(id)arg1 glyphSize:(struct CGSize)arg2 completion:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool observingDistributedNotifications; // @synthesize observingDistributedNotifications=_observingDistributedNotifications;

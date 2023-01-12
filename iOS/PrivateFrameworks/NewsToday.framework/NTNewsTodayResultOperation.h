@@ -26,6 +26,7 @@
 @property(copy, nonatomic) NTCatchUpOperationForYouFetchInfo *forYouFetchInfo; // @synthesize forYouFetchInfo=_forYouFetchInfo;
 @property(copy, nonatomic) NSDate *filterDate; // @synthesize filterDate=_filterDate;
 @property(copy, nonatomic) NTPBTodayConfig *todayConfig; // @synthesize todayConfig=_todayConfig;
+- (id)_firstRefreshDateDefaultsKey;
 - (_Bool)_useForegroundMinimumUpdateInterval;
 - (void)_finalizeTodayResultsWithSectionDescriptors:(id)arg1 catchUpOperationResultsBySectionDescriptor:(id)arg2 slotAllocationByDynamicSlotItemID:(id)arg3 appConfiguration:(id)arg4 feedPersonalizer:(id)arg5 todayData:(id)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)_registerForYouFetchWithForYouFetchInfo:(id)arg1;

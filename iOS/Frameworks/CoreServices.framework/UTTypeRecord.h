@@ -14,7 +14,7 @@
 + (id)_typeRecordWithContext:(struct LSContext *)arg1 forPromiseResourceValues:(id)arg2 error:(id *)arg3;
 + (id)_typeRecordWithContext:(struct LSContext *)arg1 forPromiseAtNode:(id)arg2 error:(id *)arg3;
 + (_Bool)_typeIdentifier:(id)arg1 conformsToTypeIdentifier:(id)arg2;
-+ (id)_typeRecordWithContext:(struct LSContext *)arg1 identifier:(id)arg2;
++ (id)_typeRecordWithContext:(struct LSContext *)arg1 identifier:(id)arg2 allowUndeclared:(_Bool)arg3;
 + (id)typeRecordForPromiseAtURL:(id)arg1 error:(id *)arg2;
 + (id)typeRecordForImportedTypeWithIdentifier:(id)arg1 conformingToIdentifier:(id)arg2;
 + (id)typeRecordsWithTag:(id)arg1 ofClass:(id)arg2;
@@ -24,14 +24,16 @@
 + (id)typeRecordsWithTag:(id)arg1 ofClass:(id)arg2 conformingToTypeRecord:(id)arg3;
 + (id)typeRecordWithTag:(id)arg1 ofClass:(id)arg2 conformingToTypeRecord:(id)arg3;
 + (id)typeRecordsWithIdentifiers:(id)arg1;
++ (id)typeRecordWithPotentiallyUndeclaredIdentifier:(id)arg1;
 + (id)typeRecordWithIdentifier:(id)arg1;
++ (id)_typeRecordWithIdentifier:(id)arg1 allowUndeclared:(_Bool)arg2;
 + (id)enumerator;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)debugDescription;
 - (void)_detachFromContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const void *)arg4;
 - (id)_initWithContext:(struct LSContext *)arg1 persistentIdentifierData:(const struct LSPersistentIdentifierData *)arg2 length:(unsigned long long)arg3;
-- (void)_enumerateRelatedTypesWithContext:(struct LSContext *)arg1 unitID:(unsigned int)arg2 maximumDegreeOfSeparation:(long long)arg3 block:(CDUnknownBlockType)arg4;
+- (void)_enumerateRelatedTypeUnitsOrDynamicIdsWithContext:(struct LSContext *)arg1 unitID:(unsigned int)arg2 maximumDegreeOfSeparation:(long long)arg3 block:(CDUnknownBlockType)arg4;
 - (void)_enumerateRelatedTypesWithMaximumDegreeOfSeparation:(long long)arg1 block:(CDUnknownBlockType)arg2;
 @property(readonly) NSString *_delegatePath;
 @property(readonly) NSData *_declaringBundleBookmark;

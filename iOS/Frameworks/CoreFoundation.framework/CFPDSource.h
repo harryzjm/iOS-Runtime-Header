@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     struct __CFString *_userName;
     struct __CFString *_domain;
     char *_actualPath;
+    char *_fileName;
     struct __CFSet *_observingConnections;
     NSObject<OS_os_transaction> *_dirtyTransaction;
     struct __CFString *_uncanonicalizedPathCache;
@@ -26,9 +27,11 @@ __attribute__((visibility("hidden")))
     struct os_unfair_lock_s _observingConnectionsLock;
     struct os_unfair_lock_s _writeLock;
     struct os_unfair_lock_s _lock;
+    unsigned int _plistFileOwner;
     unsigned int _lastEuid;
     unsigned int _lastEgid;
     int _fileProtectionClass;
+    int _parentFD;
     short _generationShmemIndex;
     _Bool _byHost;
     _Bool _managed;
@@ -41,26 +44,33 @@ __attribute__((visibility("hidden")))
     unsigned int _restrictedReadability:1;
     unsigned int _waitingForDeviceUnlock:1;
     unsigned int _disableBackup:1;
+    unsigned int _plistFileOwnerReadable:1;
+    unsigned int _plistFileWorldReadable:1;
+    unsigned int _actualPathRedirectedByTerminalSymlink:1;
 }
 
 - (void)dealloc;
 - (void)cleanUpAfterAcceptingMessage:(id)arg1;
 - (void)processEndOfMessageIntendingToRemoveSource:(_Bool *)arg1;
 - (id)acceptMessage:(id)arg1;
-- (int)validateMessage:(id)arg1 withNewKey:(id)arg2 newValue:(id)arg3 plistIsAvailableToRead:(_Bool)arg4 containerPath:(const char *)arg5 diagnosticMessage:(const char **)arg6;
+- (int)validateMessage:(id)arg1 withNewKey:(id)arg2 newValue:(id)arg3 plistIsAvailableToRead:(_Bool)arg4 containerPath:(const char *)arg5 fileUID:(unsigned int)arg6 mode:(unsigned short)arg7 diagnosticMessage:(const char **)arg8;
 - (void)lockedSync:(CDUnknownBlockType)arg1;
 - (void)lockedAsync:(CDUnknownBlockType)arg1;
+- (void)unlock;
+- (void)lock;
+- (void)clearCacheForReason:(struct __CFString *)arg1;
 - (struct __CFString *)debugDump;
-- (_Bool)enqueueNewKey:(id)arg1 value:(id)arg2 encoding:(int)arg3 inBatch:(_Bool)arg4;
+- (_Bool)enqueueNewKey:(id)arg1 value:(id)arg2 encoding:(int)arg3 inBatch:(_Bool)arg4 fromMessage:(id)arg5;
 - (void)drainPendingChanges;
 - (void)observingConnectionWasInvalidated:(id)arg1;
 - (void)asyncNotifyObserversOfWriteFromConnection:(id)arg1 message:(id)arg2;
 - (id)copyPropertyListValidatingPlist:(_Bool)arg1;
-- (id)copyPropertyListWithoutDrainingPendingChangesValidatingPlist:(_Bool)arg1;
+- (id)copyPropertyListWithoutDrainingPendingChangesValidatingPlist:(_Bool)arg1 andReturnFileUID:(unsigned int *)arg2 andMode:(unsigned short *)arg3;
 - (void)syncWriteToDisk;
 - (void)syncWriteToDiskAndFlushCacheForReason:(struct __CFString *)arg1;
-- (void)finishedNonRequestWriteWithError:(int)arg1;
-- (CDUnknownBlockType)createDiskWriteShouldPerformSynchronously:(_Bool *)arg1;
+- (void)finishedNonRequestWriteWithResult:(struct __CFDictionary *)arg1;
+- (void)handleWritingResult:(struct __CFDictionary *)arg1;
+- (CDUnknownBlockType)createDiskWrite;
 - (void)setDirty:(_Bool)arg1;
 - (void)updateShmemEntry;
 - (short)shmemIndex;
@@ -76,7 +86,8 @@ __attribute__((visibility("hidden")))
 - (id)initWithDomain:(struct __CFString *)arg1 userName:(struct __CFString *)arg2 byHost:(_Bool)arg3 managed:(_Bool)arg4 shmemIndex:(short)arg5 daemon:(id)arg6;
 - (void)setUncanonicalizedPathCached:(_Bool)arg1;
 - (struct __CFString *)copyUncanonicalizedPath;
-- (void)cacheActualPath;
+- (int)cacheFileInfoForWriting:(_Bool)arg1 euid:(unsigned int)arg2 egid:(unsigned int)arg3 didCreate:(_Bool *)arg4;
+- (void)cacheFileInfo;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 

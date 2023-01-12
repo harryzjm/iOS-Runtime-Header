@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WorkflowKit/WFActionUserInterface.h>
+#import <WorkflowUICore/WFEmbeddableActionUserInterface.h>
 
 #import <ActionKitUI/SKStoreProductViewControllerDelegate-Protocol.h>
 #import <ActionKitUI/WFShowInStoreActionUserInterface-Protocol.h>
@@ -12,7 +12,7 @@
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WFShowInStoreActionUIKitUserInterface : WFActionUserInterface <SKStoreProductViewControllerDelegate, WFShowInStoreActionUserInterface>
+@interface WFShowInStoreActionUIKitUserInterface : WFEmbeddableActionUserInterface <SKStoreProductViewControllerDelegate, WFShowInStoreActionUserInterface>
 {
     CDUnknownBlockType _completionHandler;
 }
@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) NSString *userInterfaceType;
 
 @end
 

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SearchUILabel, TLKStackView;
+@class NUIContainerGridView, SearchUIImageView, SearchUILabel;
 
 @interface SearchUICompactCardSectionView
 {
-    TLKStackView *_stackView;
+    SearchUIImageView *_imageView;
     SearchUILabel *_titleLabel;
     SearchUILabel *_subtitleLabel;
 }
@@ -17,10 +17,13 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) SearchUILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 @property(retain, nonatomic) SearchUILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property(retain, nonatomic) TLKStackView *stackView; // @synthesize stackView=_stackView;
+@property(retain, nonatomic) SearchUIImageView *imageView; // @synthesize imageView=_imageView;
 - (void)updateWithRowModel:(id)arg1;
 - (id)richTextForSearchUIText:(id)arg1 withMaxLines:(unsigned long long)arg2;
 - (id)setupContentView;
+
+// Remaining properties
+@property(retain, nonatomic) NUIContainerGridView *contentView; // @dynamic contentView;
 
 @end
 

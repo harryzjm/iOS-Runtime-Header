@@ -25,16 +25,28 @@ __attribute__((visibility("hidden")))
     unsigned int _burstyLossArrayIndex;
     unsigned int _redundancyMode;
     unsigned char _mediaControlInfoFECFeedbackVersion;
+    _Atomic _Bool _isRedundancyStrategyResetPending;
     struct OpaqueVCFECFeedbackAnalyzer *_feedbackAnalyzer;
+    float _offChannelTimeRatio;
+    _Bool _isNWConnectionEnabled;
+    int _freezeReason;
+    int _state;
 }
 
 @property(readonly, nonatomic) double redundancyInterval; // @synthesize redundancyInterval=_redundancyInterval;
 @property(readonly, nonatomic) unsigned int redundancyPercentage; // @synthesize redundancyPercentage=_redundancyPercentage;
-- (CDStruct_cd7ddd1c)getFecLevelPerFrameSizeVector;
+@property(nonatomic) _Bool isRedundancyStrategyResetPending;
+- (CDStruct_d7e2e0ee)getFecLevelPerFrameSizeVector;
 - (unsigned int)computeRedundancyWithBurstyLoss;
 - (unsigned int)computeRedundancyWithLossPercentage;
 - (void)updateBurstyLoss:(unsigned int)arg1;
-- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_56e8fa21)arg1;
+- (void)processRCNetworkStatistics:(CDStruct_c0785916)arg1;
+- (void)processNWConnectionStatistics:(CDStruct_c0785916)arg1;
+- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_c0785916)arg1;
+- (void)reset;
+- (void)checkForRedundancyFreeze:(CDStruct_c0785916)arg1;
+- (void)stateFrozen:(CDStruct_c0785916)arg1;
+- (void)stateRunning:(CDStruct_c0785916)arg1;
 - (CDStruct_9650830d)setupFeedbackAnalyzerConfig;
 - (void)dealloc;
 - (id)initWithRedundancyControllerMode:(unsigned int)arg1 maxAllowedRedundancyPercentage:(unsigned int)arg2 mediaControlInfoFECFeedbackVersion:(unsigned char)arg3;

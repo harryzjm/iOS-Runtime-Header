@@ -7,6 +7,7 @@
 #import <UIKit/UIColor.h>
 
 @interface UIColor (MessageUI)
++ (id)mailPopoverBackgroundCellColor;
 + (id)mailMessageContentViewBackgroundColor;
 + (id)mailQuoteColorsForInterfaceStyle:(long long)arg1;
 + (id)quoteColorsForSupportedInterfaceStyle;

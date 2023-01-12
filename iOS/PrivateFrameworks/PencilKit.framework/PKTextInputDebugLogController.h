@@ -8,7 +8,7 @@
 
 #import <PencilKit/PKTextInputDebugStateReporting-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString;
+@class NSMutableArray, NSString;
 
 @interface PKTextInputDebugLogController : NSObject <PKTextInputDebugStateReporting>
 {
@@ -16,15 +16,9 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSMutableArray *_logEntries; // @synthesize _logEntries=__logEntries;
 - (id)debugStateDetailViewController;
 - (_Bool)debugStateCanDisplayDetails;
 - (void)reportDebugStateDescription:(CDUnknownBlockType)arg1;
-- (void)_purgeOldLogEntries;
-- (void)logEntryForAppliedResult:(id)arg1;
-- (_Bool)_isLoggingEnabled;
-- (id)sharpenerLogWithCurrentContent;
-@property(readonly, nonatomic) NSArray *currentLogEntries;
 - (id)init;
 
 // Remaining properties

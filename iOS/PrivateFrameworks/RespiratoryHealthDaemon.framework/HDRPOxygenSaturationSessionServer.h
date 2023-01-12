@@ -9,7 +9,7 @@
 #import <RespiratoryHealthDaemon/HKRPOxygenSaturationSessionServerInterface-Protocol.h>
 #import <RespiratoryHealthDaemon/HLOxygenSaturationSessionDelegate-Protocol.h>
 
-@class HLOxygenSaturationSession, NSObject, NSString;
+@class HLOxygenSaturationSession, NSDate, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HDRPOxygenSaturationSessionServer : HDStandardTaskServer <HKRPOxygenSaturationSessionServerInterface, HLOxygenSaturationSessionDelegate>
@@ -19,11 +19,13 @@
     HLOxygenSaturationSession *_sensorSession;
     double _startTime;
     double _expectedDuration;
+    NSDate *_expectedEndDate;
 }
 
 + (id)requiredEntitlements;
 + (id)taskIdentifier;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSDate *expectedEndDate; // @synthesize expectedEndDate=_expectedEndDate;
 @property(nonatomic) double expectedDuration; // @synthesize expectedDuration=_expectedDuration;
 @property(nonatomic) double startTime; // @synthesize startTime=_startTime;
 @property(retain, nonatomic) HLOxygenSaturationSession *sensorSession; // @synthesize sensorSession=_sensorSession;

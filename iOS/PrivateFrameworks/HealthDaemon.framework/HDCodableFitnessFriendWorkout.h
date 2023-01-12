@@ -28,7 +28,8 @@
     NSString *_deviceModel;
     NSData *_friendUUID;
     HDCodableSample *_sample;
-    NSString *_scwi;
+    NSString *_seymourCatalogWorkoutIdentifier;
+    NSString *_seymourMediaType;
     struct {
         unsigned int amm:1;
         unsigned int duration:1;
@@ -44,7 +45,8 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSString *scwi; // @synthesize scwi=_scwi;
+@property(retain, nonatomic) NSString *seymourMediaType; // @synthesize seymourMediaType=_seymourMediaType;
+@property(retain, nonatomic) NSString *seymourCatalogWorkoutIdentifier; // @synthesize seymourCatalogWorkoutIdentifier=_seymourCatalogWorkoutIdentifier;
 @property(nonatomic) long long amm; // @synthesize amm=_amm;
 @property(retain, nonatomic) NSString *deviceModel; // @synthesize deviceModel=_deviceModel;
 @property(retain, nonatomic) NSString *deviceManufacturer; // @synthesize deviceManufacturer=_deviceManufacturer;
@@ -69,7 +71,8 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 @property(readonly, copy) NSString *description;
-@property(readonly, nonatomic) _Bool hasScwi;
+@property(readonly, nonatomic) _Bool hasSeymourMediaType;
+@property(readonly, nonatomic) _Bool hasSeymourCatalogWorkoutIdentifier;
 @property(nonatomic) _Bool hasAmm;
 @property(readonly, nonatomic) _Bool hasDeviceModel;
 @property(readonly, nonatomic) _Bool hasDeviceManufacturer;

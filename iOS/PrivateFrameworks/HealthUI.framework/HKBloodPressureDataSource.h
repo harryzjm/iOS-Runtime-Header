@@ -11,8 +11,12 @@
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType userInfoCreationBlock; // @synthesize userInfoCreationBlock=_userInfoCreationBlock;
-- (void)_callCompletionWithSystolicResults:(id)arg1 diastolicResults:(id)arg2 statisticsOptions:(unsigned long long)arg3 blockStart:(id)arg4 blockEnd:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (id)chartPointsFromQueryData:(id)arg1 dataIsFromRemoteSource:(_Bool)arg2;
+- (CDUnknownBlockType)queryDataForStartDate:(id)arg1 endDate:(id)arg2 statisticsInterval:(id)arg3 healthStore:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (_Bool)supportsChartQueryDataGeneration;
+- (id)_chartPointsWithSystolicResults:(id)arg1 diastolicResults:(id)arg2 blockStart:(id)arg3 blockEnd:(id)arg4 sourceTimeZone:(id)arg5;
 - (id)queriesForStartDate:(id)arg1 endDate:(id)arg2 statisticsInterval:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (unsigned long long)queryStatisticsOption;
 - (id)queryDescription;
 
 @end

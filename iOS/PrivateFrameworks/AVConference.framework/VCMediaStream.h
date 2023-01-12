@@ -7,18 +7,16 @@
 #import <AVConference/RTCPReportProvider-Protocol.h>
 #import <AVConference/VCConnectionChangedHandler-Protocol.h>
 #import <AVConference/VCMediaStreamProtocol-Protocol.h>
-#import <AVConference/VCMediaStreamTransportDelegate-Protocol.h>
 #import <AVConference/VCSecurityEventHandler-Protocol.h>
 
-@class AVCBasebandCongestionDetector, AVCRateControlFeedbackController, NSArray, NSError, NSMutableArray, NSObject, NSString, VCCallInfoBlob, VCDatagramChannelIDS, VCMasterKeyIndex, VCMediaStreamConfig, VCMediaStreamTransport, VCTransportSession, VCWeakObjectHolder;
+@class AVCBasebandCongestionDetector, AVCRateControlFeedbackController, AVCStatisticsCollector, NSArray, NSError, NSMutableArray, NSObject, NSString, VCCallInfoBlob, VCDatagramChannelIDS, VCMediaKeyIndex, VCMediaStreamConfig, VCMediaStreamTransport, VCNetworkFeedbackController, VCTransportSession, VCWeakObjectHolder;
 @protocol OS_dispatch_queue, OS_dispatch_source, RTCPReportProvider, VCMediaStreamDelegate, VCMediaStreamNotification, VCMomentsCollectorDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VCMediaStream <VCMediaStreamProtocol, RTCPReportProvider, VCSecurityEventHandler, VCMediaStreamTransportDelegate, VCConnectionChangedHandler>
+@interface VCMediaStream <VCMediaStreamProtocol, RTCPReportProvider, VCSecurityEventHandler, VCConnectionChangedHandler>
 {
     NSObject<OS_dispatch_queue> *_delegateNotificationQueue;
     struct _opaque_pthread_mutex_t _streamLock;
-    int _state;
     VCDatagramChannelIDS *_datagramChannel;
     NSString *_idsDestination;
     id <VCMediaStreamDelegate> _delegate;
@@ -35,6 +33,7 @@ __attribute__((visibility("hidden")))
     double _lastRTPTimeoutReportTime;
     double _lastRTCPTimeoutReportTime;
     double _lastDecryptionTimeoutReportTime;
+    double _lastDecryptionMKMRecoveryTime;
     double _decryptionErrorStartTime;
     unsigned int _localSSRC;
     unsigned int _transportSessionID;
@@ -46,7 +45,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_transportArray;
     CDUnknownFunctionPointerType _vcMediaCallback;
     struct tagVCMediaQueue *_mediaQueue;
-    VCMasterKeyIndex *_lastReceivedMKI;
+    VCMediaKeyIndex *_lastReceivedMKI;
     VCCallInfoBlob *_remoteEndpointInfo;
     VCTransportSession *_transportSession;
     NSError *_cachedError;
@@ -55,13 +54,29 @@ __attribute__((visibility("hidden")))
     struct tagVCNWConnectionMonitor *_nwMonitor;
     long long _streamToken;
     void *_mediaControlInfoGenerator;
+    void *_oneToOneControlInfoGenerator;
     unsigned int _mediaControlInfoGeneratorType;
     AVCRateControlFeedbackController *_feedbackController;
+    AVCRateControlFeedbackController *_oneToOneFeedbackController;
     _Bool _mediaControlInfoCallbacksRegistered;
+    CDUnknownFunctionPointerType _statisticsHandler;
+    VCNetworkFeedbackController *_networkFeedbackController;
+    _Bool _isWRMinitialized;
+    NSArray *_compoundStreamIDs;
+    _Bool _isNWMonitorSignalEnabled;
+    _Bool _isRTTBasedFIRThrottlingEnabled;
+    _Bool _areStatisticsRegistered;
+    AVCStatisticsCollector *_statisticsCollector;
+    int _nwMonitorHandlerIndex;
+    int _rttMonitorHandlerIndex;
+    int _state;
     AVCBasebandCongestionDetector *_basebandCongestionDetector;
 }
 
 + (_Bool)isSameSRTPKey:(id)arg1 newKey:(id)arg2;
+@property(readonly, nonatomic) int state; // @synthesize state=_state;
+@property(retain, nonatomic) VCNetworkFeedbackController *networkFeedbackController; // @synthesize networkFeedbackController=_networkFeedbackController;
+@property(copy) NSArray *compoundStreamIDs; // @synthesize compoundStreamIDs=_compoundStreamIDs;
 @property(retain, nonatomic) AVCBasebandCongestionDetector *basebandCongestionDetector; // @synthesize basebandCongestionDetector=_basebandCongestionDetector;
 @property(readonly, nonatomic) NSArray *transportArray; // @synthesize transportArray=_transportArray;
 @property(readonly, nonatomic) unsigned int mediaControlInfoGeneratorType; // @synthesize mediaControlInfoGeneratorType=_mediaControlInfoGeneratorType;
@@ -71,12 +86,11 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) int operatingMode; // @synthesize operatingMode=_operatingMode;
 @property(nonatomic) struct tagVCMediaQueue *mediaQueue; // @synthesize mediaQueue=_mediaQueue;
 @property(readonly, nonatomic) unsigned int localSSRC; // @synthesize localSSRC=_localSSRC;
-@property(readonly, nonatomic) int state; // @synthesize state=_state;
 - (int)handleMediaCallbackNotification:(int)arg1 inData:(void *)arg2 outData:(void *)arg3;
 - (void)handleActiveConnectionChange:(id)arg1;
-- (void)collectTxChannelMetrics:(CDStruct_3ab08b48 *)arg1;
-- (void)collectRxChannelMetrics:(CDStruct_3ab08b48 *)arg1;
-- (void)collectRxChannelMetrics:(CDStruct_3ab08b48 *)arg1 interval:(float)arg2;
+- (void)collectTxChannelMetrics:(CDStruct_a4f8a7cd *)arg1;
+- (void)collectRxChannelMetrics:(CDStruct_a4f8a7cd *)arg1;
+- (void)collectRxChannelMetrics:(CDStruct_a4f8a7cd *)arg1 interval:(float)arg2;
 @property(readonly, nonatomic) double rtcpHeartbeatLeeway;
 @property(readonly, nonatomic) double lastReceivedRTCPPacketTime;
 @property(readonly, nonatomic) double lastReceivedRTPPacketTime;
@@ -95,6 +109,7 @@ __attribute__((visibility("hidden")))
 - (void)startTimeoutHeartbeat;
 - (void)timeoutHeartbeat;
 - (void)checkForDecryptionTimeout;
+- (void)checkDecryptionTimeoutForMKMRecoveryAgainstTime:(double)arg1 decryptionErrorStartTime:(double)arg2;
 - (void)checkDecryptionTimeoutAgainstTime:(double)arg1 decryptionErrorStartTime:(double)arg2;
 - (void)checkRTCPPacketTimeoutAgainstTime:(double)arg1 lastReceivedPacketTime:(double)arg2;
 - (void)checkRTPPacketTimeoutAgainstTime:(double)arg1 lastReceivedPacketTime:(double)arg2;
@@ -109,7 +124,6 @@ __attribute__((visibility("hidden")))
 - (void)startRTCPSendHeartbeat;
 - (void)rtcpSendHeartbeat;
 - (void)resetRTCPSendHeartbeatTimer:(unsigned long long)arg1;
-- (void)vcMediaStreamTransport:(id)arg1 didReceiveRTCPPackets:(id)arg2;
 - (unsigned int)getExtendedSequenceNumberForSequenceNumber:(unsigned short)arg1;
 - (unsigned int)getRTCPReportNTPTimeMiddle32ForReportId:(unsigned char)arg1;
 - (_Bool)generateReceptionReportList:(struct _RTCP_RECEPTION_REPORT *)arg1 reportCount:(char *)arg2;
@@ -129,17 +143,23 @@ __attribute__((visibility("hidden")))
 - (_Bool)isRTCPTimeoutEnabled;
 - (_Bool)isRTPTimeoutEnabled;
 - (void)setRtcpEnabled:(_Bool)arg1;
+- (void)sendControlPacketWithParameters:(struct _RTCP_SEND_CONTROL_PARAMETERS *)arg1;
 - (long long)streamDirection;
 - (void)setStreamDirection:(long long)arg1;
 - (id)setLocalParticipantInfo:(id)arg1 networkSockets:(id)arg2 withError:(id *)arg3;
-- (void)setPause:(_Bool)arg1;
-- (void)stopInternal;
-- (void)stop;
+- (void)setPause:(_Bool)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (id)setPause:(_Bool)arg1;
+- (void)stopInternalWithHandler:(CDUnknownBlockType)arg1;
+- (id)stop;
 - (void)stopMediaTransports;
 - (_Bool)startMediaTransportsWithError:(id *)arg1;
-- (void)notifyDelegateStartDidSucceed:(_Bool)arg1 withError:(id)arg2;
+- (void)notifyDelegateDidReceiveRTCPPackets:(struct _RTCPPacketList *)arg1;
 - (void)handleStartDidSucceed:(_Bool)arg1 withError:(id)arg2;
-- (void)start;
+- (void)willExitState:(int)arg1 newState:(int)arg2;
+- (void)didEnterState:(int)arg1 oldState:(int)arg2;
+- (void)setState:(int)arg1;
+- (void)startWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)start;
 - (_Bool)setStreamConfig:(id)arg1 withError:(id *)arg2;
 - (_Bool)updateRemoteAddressWithConfig:(id)arg1 error:(id *)arg2;
 - (void)resetDecryptionTimeout;
@@ -149,6 +169,11 @@ __attribute__((visibility("hidden")))
 - (void)createLocalMediaControlInfoGeneratorWithType:(unsigned int)arg1 version:(unsigned char)arg2;
 - (id)getMediaStreamConfigForControlInfoGenerator:(id)arg1;
 - (void)registerMediaControlInfoGeneratorWithConfigs:(id)arg1;
+- (void)unregisterWRMCallback;
+- (void)initializeWRMUsingRtpHandle:(struct tagHANDLE *)arg1;
+- (void)registerStatistics:(id)arg1;
+- (int)registerStatisticsHandler:(id)arg1 statisticType:(int)arg2;
+- (void)unregisterStatistics;
 - (id)createTransportWithStreamConfig:(id)arg1 ssrc:(unsigned int)arg2;
 - (struct tagHANDLE *)createRTPHandleWithStreamConfig:(id)arg1 payloadType:(int)arg2 localSSRC:(unsigned int)arg3;
 - (char *)streamStateToString:(int)arg1;
@@ -179,10 +204,12 @@ __attribute__((visibility("hidden")))
 - (id)setupRTPWithSocketDictionary:(id)arg1 error:(id *)arg2;
 - (void)decryptionStatusChanged:(_Bool)arg1;
 @property(readonly, nonatomic) _Bool isSendingMedia;
+@property(readonly, nonatomic) VCMediaStreamConfig *oneToOneStreamConfig;
 @property(readonly, nonatomic) VCMediaStreamConfig *defaultStreamConfig;
 @property(readonly, nonatomic) VCMediaStreamTransport *defaultTransport;
 @property(nonatomic) id <VCMomentsCollectorDelegate> momentsCollectorDelegate; // @synthesize momentsCollectorDelegate=_momentsCollectorDelegate;
 @property(nonatomic) id <VCMediaStreamDelegate> delegate;
+- (id)copyDelegate;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

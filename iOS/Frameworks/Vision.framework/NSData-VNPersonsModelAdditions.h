@@ -7,7 +7,7 @@
 #import <Foundation/NSData.h>
 
 @interface NSData (VNPersonsModelAdditions)
-- (id)VNSubdataWithRange:(struct _NSRange)arg1 rangeDescription:(id)arg2 error:(id *)arg3;
-- (id)VNSubdataWithRange:(struct _NSRange)arg1 rangeDescriptionProvidingBlock:(CDUnknownBlockType)arg2 error:(id *)arg3;
+- (id)VNPersonsModelSubdataWithRange:(struct _NSRange)arg1 rangeDescription:(id)arg2 error:(id *)arg3;
+- (id)VNPersonsModelSubdataWithRange:(struct _NSRange)arg1 rangeDescriptionProvidingBlock:(CDUnknownBlockType)arg2 error:(id *)arg3;
 @end
 

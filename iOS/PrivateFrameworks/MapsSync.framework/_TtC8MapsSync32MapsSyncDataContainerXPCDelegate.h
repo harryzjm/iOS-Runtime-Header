@@ -12,6 +12,7 @@
 {
 }
 
+- (id)identifierForConnection:(id)arg1;
 - (_Bool)willPerformRecoveryForError:(id)arg1 fromContext:(id)arg2;
 
 @end

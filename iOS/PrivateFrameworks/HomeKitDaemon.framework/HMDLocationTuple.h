@@ -4,27 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
-@class CLLocation, NSDate;
+@class CLLocation;
 
-@interface HMDLocationTuple : NSObject
+@interface HMDLocationTuple : HMFObject
 {
     CLLocation *_location;
-    unsigned long long _numberOfReachableIPAccessory;
-    unsigned long long _numberOfReachableBTLEAccessory;
-    unsigned long long _numberOfreachableMediaAccessory;
-    NSDate *_date;
+    unsigned long long _reachableIPAccessoryCount;
+    unsigned long long _reachableBTLEAccessoryCount;
+    unsigned long long _reachableMediaAccessoryCount;
 }
 
-+ (id)tupleWithLocation:(id)arg1 reachableIPAccessory:(unsigned long long)arg2 reachableBTLEAccessory:(unsigned long long)arg3 reachableMediaAccessory:(unsigned long long)arg4 date:(id)arg5;
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSDate *date; // @synthesize date=_date;
-@property(nonatomic) unsigned long long numberOfreachableMediaAccessory; // @synthesize numberOfreachableMediaAccessory=_numberOfreachableMediaAccessory;
-@property(nonatomic) unsigned long long numberOfReachableBTLEAccessory; // @synthesize numberOfReachableBTLEAccessory=_numberOfReachableBTLEAccessory;
-@property(nonatomic) unsigned long long numberOfReachableIPAccessory; // @synthesize numberOfReachableIPAccessory=_numberOfReachableIPAccessory;
-@property(retain, nonatomic) CLLocation *location; // @synthesize location=_location;
-- (id)description;
+@property(readonly) unsigned long long reachableMediaAccessoryCount; // @synthesize reachableMediaAccessoryCount=_reachableMediaAccessoryCount;
+@property(readonly) unsigned long long reachableBTLEAccessoryCount; // @synthesize reachableBTLEAccessoryCount=_reachableBTLEAccessoryCount;
+@property(readonly) unsigned long long reachableIPAccessoryCount; // @synthesize reachableIPAccessoryCount=_reachableIPAccessoryCount;
+@property(readonly, copy) CLLocation *location; // @synthesize location=_location;
+- (id)attributeDescriptions;
+- (id)initWithLocation:(id)arg1 reachableIPAccessoryCount:(unsigned long long)arg2 reachableBTLEAccessoryCount:(unsigned long long)arg3 reachableMediaAccessoryCount:(unsigned long long)arg4;
 
 @end
 

@@ -25,7 +25,6 @@
 - (_Bool)isLayoutSizeDependentOnPerpendicularAxis;
 - (double)effectiveFirstBaselineOffsetFromTop;
 - (double)effectiveBaselineOffsetFromBottom;
-- (void)_setHasValidSize;
 - (struct CGSize)effectiveLayoutSizeFittingSize:(struct CGSize)arg1;
 - (void)nukeContentLayoutSizeCacheFromOrbit;
 - (void)_didInvalidateIntrinsicContentSize;
@@ -42,9 +41,6 @@
 - (id)debugSizeCacheDict;
 - (id)contentLayoutSizeCacheDescription;
 - (long long)_nui_baselineViewType;
-- (CDStruct_c3b9c2ee)_nui_additionalInsetsForBaselines;
-- (double)_nui_lineHeight;
-- (_Bool)_nui_isImageView;
 - (_Bool)_isContainerView;
 - (void)_intrinsicContentSizeInvalidatedForChildView:(id)arg1;
 

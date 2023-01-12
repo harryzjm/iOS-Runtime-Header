@@ -6,14 +6,14 @@
 
 #import <Preferences/PSListController.h>
 
+#import <ScreenTimeSettingsUI/PSDateTimePickerCellDelegate-Protocol.h>
 #import <ScreenTimeSettingsUI/STCustomizeDaysListControllerDelegate-Protocol.h>
-#import <ScreenTimeSettingsUI/STUIDateTimePickerCellDelegate-Protocol.h>
 
 @class NSArray, NSObject, NSString, PSSpecifier, STAllowance, UIColor;
 @protocol STAllowanceDetailListControllerDelegate, STRootViewModelCoordinator;
 
 __attribute__((visibility("hidden")))
-@interface STAllowanceDetailListController : PSListController <STCustomizeDaysListControllerDelegate, STUIDateTimePickerCellDelegate>
+@interface STAllowanceDetailListController : PSListController <PSDateTimePickerCellDelegate, STCustomizeDaysListControllerDelegate>
 {
     _Bool _isSetupController;
     _Bool _useBackButton;

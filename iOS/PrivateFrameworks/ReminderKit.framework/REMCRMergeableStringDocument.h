@@ -8,10 +8,11 @@
 
 #import <ReminderKit/NSCopying-Protocol.h>
 #import <ReminderKit/NSSecureCoding-Protocol.h>
+#import <ReminderKit/REMTTHashtagHosting-Protocol.h>
 
-@class NSAttributedString, NSString, REMReplicaIDSource, TTMergeableStringVersionedDocument;
+@class NSAttributedString, NSString, REMReplicaIDSource, TTMergeableAttributedString, TTMergeableStringVersionedDocument;
 
-@interface REMCRMergeableStringDocument : NSObject <NSCopying, NSSecureCoding>
+@interface REMCRMergeableStringDocument : NSObject <REMTTHashtagHosting, NSCopying, NSSecureCoding>
 {
     REMReplicaIDSource *_replicaIDSource;
     TTMergeableStringVersionedDocument *_document;
@@ -28,12 +29,15 @@
 - (id)mutableDocument;
 @property(readonly, nonatomic) NSString *string;
 @property(readonly, nonatomic) NSAttributedString *attributedString;
+@property(readonly, nonatomic) TTMergeableAttributedString *mergeableString;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithReplicaIDSource:(id)arg1 document:(id)arg2;
 - (id)initWithReplicaIDSource:(id)arg1 serializedData:(id)arg2 error:(id *)arg3;
 - (id)initWithReplicaIDSource:(id)arg1 string:(id)arg2;
+- (void)enumerateHashtagInRange:(struct _NSRange)arg1 options:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (id)hashtagAtIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
 
 @end
 

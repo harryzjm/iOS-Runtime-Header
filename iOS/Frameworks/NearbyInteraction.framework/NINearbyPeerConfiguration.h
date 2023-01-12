@@ -8,12 +8,14 @@
 
 @interface NINearbyPeerConfiguration
 {
+    _Bool _longRangeEnabled;
     NIDiscoveryToken *_peerDiscoveryToken;
 }
 
 + (id)new;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic, getter=isLongRangeEnabled) _Bool longRangeEnabled; // @synthesize longRangeEnabled=_longRangeEnabled;
 @property(copy, nonatomic) NIDiscoveryToken *peerDiscoveryToken; // @synthesize peerDiscoveryToken=_peerDiscoveryToken;
 - (id)descriptionInternal;
 - (id)description;

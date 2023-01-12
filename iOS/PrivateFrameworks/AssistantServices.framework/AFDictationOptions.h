@@ -16,6 +16,9 @@
     _Bool _forceOfflineRecognition;
     _Bool _preferOnlineRecognition;
     _Bool _detectUtterances;
+    _Bool _continuousListening;
+    _Bool _shouldHandleCapitalization;
+    _Bool _preferOnDeviceRecognition;
     _Bool _secureOfflineOnly;
     _Bool _farField;
     _Bool _releaseAudioSessionOnRecordingCompletion;
@@ -68,6 +71,9 @@
 @property(nonatomic) _Bool releaseAudioSessionOnRecordingCompletion; // @synthesize releaseAudioSessionOnRecordingCompletion=_releaseAudioSessionOnRecordingCompletion;
 @property(nonatomic) _Bool farField; // @synthesize farField=_farField;
 @property(nonatomic) _Bool secureOfflineOnly; // @synthesize secureOfflineOnly=_secureOfflineOnly;
+@property(nonatomic) _Bool preferOnDeviceRecognition; // @synthesize preferOnDeviceRecognition=_preferOnDeviceRecognition;
+@property(nonatomic) _Bool shouldHandleCapitalization; // @synthesize shouldHandleCapitalization=_shouldHandleCapitalization;
+@property(nonatomic) _Bool continuousListening; // @synthesize continuousListening=_continuousListening;
 @property(nonatomic) _Bool detectUtterances; // @synthesize detectUtterances=_detectUtterances;
 @property(nonatomic) _Bool preferOnlineRecognition; // @synthesize preferOnlineRecognition=_preferOnlineRecognition;
 @property(nonatomic) _Bool forceOfflineRecognition; // @synthesize forceOfflineRecognition=_forceOfflineRecognition;

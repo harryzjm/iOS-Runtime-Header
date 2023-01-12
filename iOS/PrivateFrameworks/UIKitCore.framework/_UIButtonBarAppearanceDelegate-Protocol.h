@@ -7,7 +7,7 @@
 #import <UIKitCore/NSObject-Protocol.h>
 #import <UIKitCore/UICoordinateSpace-Protocol.h>
 
-@class UIBarButtonItem, UIColor, UIImage, _UIBarButtonItemAppearanceStorage;
+@class UIBarButtonItem, UIColor, UIImage, UIImageSymbolConfiguration, _UIBarButtonItemAppearanceStorage;
 
 @protocol _UIButtonBarAppearanceDelegate <NSObject, UICoordinateSpace>
 @property(readonly, nonatomic) double backButtonMaximumWidth;
@@ -24,5 +24,8 @@
 - (UIImage *)backIndicatorMaskImage;
 - (UIImage *)backIndicatorImage;
 - (unsigned long long)edgesPaddingBarButtonItem:(UIBarButtonItem *)arg1;
+
+@optional
+@property(readonly, nonatomic) UIImageSymbolConfiguration *imageSymbolConfiguration;
 @end
 

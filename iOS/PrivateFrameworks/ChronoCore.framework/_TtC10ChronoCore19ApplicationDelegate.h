@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 @interface _TtC10ChronoCore19ApplicationDelegate : UIResponder <UIApplicationDelegate>
 {
     MISSING_TYPE *environmentProvidingFactory;
-    MISSING_TYPE *avocadoController;
+    MISSING_TYPE *widgetCenterServer;
     MISSING_TYPE *servicesServer;
     MISSING_TYPE *toolServicesServer;
     MISSING_TYPE *extensionManager;
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *timelineService;
     MISSING_TYPE *snapshotService;
     MISSING_TYPE *cacheByExtensionProvider;
+    MISSING_TYPE *keybagStateProvider;
     MISSING_TYPE *taskService;
     MISSING_TYPE *descriptorService;
     MISSING_TYPE *configurationService;
@@ -29,17 +30,27 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *dataProtectionMonitor;
     MISSING_TYPE *powerlogViewService;
     MISSING_TYPE *powerlogUpdateService;
+    MISSING_TYPE *powerlogSuggestionService;
     MISSING_TYPE *locationService;
+    MISSING_TYPE *localeChangeCoordinator;
+    MISSING_TYPE *layerSnapshotter;
+    MISSING_TYPE *userManager;
     MISSING_TYPE *subscriptions;
+    MISSING_TYPE *servicesBootstrapExtension;
     MISSING_TYPE *finishLaunchingToken;
     MISSING_TYPE *enableGarbageCollection;
     MISSING_TYPE *appAuthorizationMonitor;
+    MISSING_TYPE *reaperNotificationQueue;
+    MISSING_TYPE *preferences;
+    MISSING_TYPE *wakeManager;
+    MISSING_TYPE *sigtermSource;
 }
 
 - (void).cxx_destruct;
 - (id)application:(id)arg1 configurationForConnectingSceneSession:(id)arg2 options:(id)arg3;
 - (_Bool)application:(id)arg1 didFinishLaunchingWithOptions:(id)arg2;
 - (id)init;
+- (void)applicationDidReceiveMemoryWarning:(id)arg1;
 
 @end
 

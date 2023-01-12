@@ -14,8 +14,6 @@
     NSNumber *_referenceTimestamp;
 }
 
-+ (id)uuid;
-+ (void)initialize;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSNumber *referenceTimestamp; // @synthesize referenceTimestamp=_referenceTimestamp;
 @property(readonly, nonatomic) _Bool snapshotForNotification; // @synthesize snapshotForNotification=_snapshotForNotification;

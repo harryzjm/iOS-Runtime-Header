@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString, NSURL, NSURLRequest, NSURLResponse, QLPreviewParts;
+@class NSDictionary, NSString, NSURL, NSURLRequest, NSURLResponse, QLPreviewConverterParts;
 @protocol OS_dispatch_io;
 
 @interface QLPreviewConverter : NSObject
 {
-    QLPreviewParts *_previewParts;
+    QLPreviewConverterParts *_previewParts;
     NSDictionary *_options;
     NSObject<OS_dispatch_io> *_io_write;
     NSURL *_tmpFileURL;
@@ -35,6 +35,7 @@
 + (id)_rtfUTIs;
 + (id)_iWorkUTIs;
 + (id)_officeUTIs;
++ (id)convertibleTypes;
 + (id)convertibleUTIs;
 + (id)_spreadSheetMIMETypes;
 + (id)_csvMIMETypes;
@@ -54,7 +55,7 @@
 - (id)safeRequestForRequest:(id)arg1;
 @property(readonly, nonatomic) NSURLResponse *previewResponse;
 @property(readonly, nonatomic) NSURLRequest *previewRequest;
-@property(readonly, nonatomic) QLPreviewParts *previewParts;
+@property(readonly, nonatomic) QLPreviewConverterParts *previewParts;
 @property(readonly, nonatomic) NSString *previewUTI;
 @property(readonly, nonatomic) NSString *previewFileName;
 - (_Bool)isComputed;

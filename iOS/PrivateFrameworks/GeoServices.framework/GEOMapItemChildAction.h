@@ -6,15 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class GEOMapItemChildActionSearch;
+@class GEOGuideLocation, GEOMapItemChildActionSearch;
 
 @interface GEOMapItemChildAction : NSObject
 {
     long long _childActionType;
     GEOMapItemChildActionSearch *_childActionSearch;
+    GEOGuideLocation *_guideLocation;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) GEOGuideLocation *guideLocation; // @synthesize guideLocation=_guideLocation;
 @property(retain, nonatomic) GEOMapItemChildActionSearch *childActionSearch; // @synthesize childActionSearch=_childActionSearch;
 @property(nonatomic) long long childActionType; // @synthesize childActionType=_childActionType;
 - (id)initWithChildAction:(id)arg1;

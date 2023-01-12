@@ -65,6 +65,7 @@
 @property(nonatomic) _Bool limitedUI; // @synthesize limitedUI;
 @property(nonatomic) __weak Class tableCellClass; // @synthesize tableCellClass;
 @property(readonly, copy, nonatomic) NSString *nowPlayingBundleID;
+- (_Bool)nowPlayingViewControllerIsRightHandDrive:(id)arg1;
 - (void)_performChangeRequest:(id)arg1;
 - (_Bool)nowPlayingViewControllerShouldUseMusicExplicitGlyph:(id)arg1;
 - (id)nowPlayingViewControllerGetPlaybackRate:(id)arg1;

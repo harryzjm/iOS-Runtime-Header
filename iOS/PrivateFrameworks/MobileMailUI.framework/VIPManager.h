@@ -33,6 +33,7 @@
 - (void)deleteVIPWithIdentifier:(id)arg1;
 - (void)saveVIP:(id)arg1;
 - (void)_vipsDidChange:(id)arg1;
+- (void)getAllVIPsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)removeVIPsWithEmailAddresses:(id)arg1;
 - (void)removeVIPsWithIdentifiers:(id)arg1;
 - (void)saveVIPs:(id)arg1;

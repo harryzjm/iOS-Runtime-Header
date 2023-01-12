@@ -4,8 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <IconServices/NSCopying-Protocol.h>
 #import <IconServices/NSObject-Protocol.h>
 
-@protocol ISImageDescriptor <NSObject>
+@protocol ISImageDescriptor <NSObject, NSCopying>
 @end
 

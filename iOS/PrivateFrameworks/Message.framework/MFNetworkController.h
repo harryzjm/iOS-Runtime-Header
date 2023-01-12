@@ -9,40 +9,45 @@
 #import <Message/CXCallObserverDelegate-Protocol.h>
 #import <Message/RadiosPreferencesDelegate-Protocol.h>
 
-@class AWDMailNetworkDiagnosticsReport, CXCallObserver, CoreTelephonyClient, EFObservable, NSLock, NSMutableArray, NSMutableSet, NSString, RadiosPreferences;
+@class AWDMailNetworkDiagnosticsReport, CXCallObserver, CoreTelephonyClient, EFObservable, MFLock, NSString, RadiosPreferences;
 @protocol EFCancelable, OS_dispatch_queue;
 
 @interface MFNetworkController : NSObject <RadiosPreferencesDelegate, CXCallObserverDelegate>
 {
-    NSLock *_lock;
+    id <EFCancelable> _stateCancelable;
+    struct __SCNetworkReachability *_reachability;
+    struct __SCDynamicStore *_store;
+    struct __CFRunLoopSource *_store_source;
+    CXCallObserver *_callObserver;
+    MFLock *_lock;
     struct __CFRunLoop *_rl;
-    NSMutableArray *_observers;
     unsigned int _flags;
-    _Bool _dns;
+    _Bool _hasDNS;
     unsigned long long _activeCalls;
-    NSMutableSet *_backgroundWifiClients;
     struct __SCPreferences *_wiFiPreferences;
     _Bool _hasCellDataCapability;
     _Bool _hasWiFiCapability;
     _Bool _isWiFiEnabled;
     _Bool _isRoamingAllowed;
-    _Bool _alternateAdviceState;
     RadiosPreferences *_radiosPreferences;
     NSObject<OS_dispatch_queue> *_prefsQueue;
     int _symptomsToken;
     CoreTelephonyClient *_ctc;
     NSObject<OS_dispatch_queue> *_dataStatusQueue;
     _Bool _cellularDataAvailable;
-    id <EFCancelable> _stateCancelable;
-    struct __SCNetworkReachability *_reachability;
-    struct __SCDynamicStore *_store;
-    struct __CFRunLoopSource *_store_source;
-    CXCallObserver *_callObserver;
+    struct os_unfair_lock_s _dataStatusInitializerLock;
+    _Bool _dataStatusInitialized;
+    _Bool _callObserverInitialized;
     int _dataIndicator;
 }
 
++ (void)removeNetworkObserver:(id)arg1;
++ (id)addNetworkObserverBlock:(CDUnknownBlockType)arg1 queue:(id)arg2;
 + (id)networkAssertionWithIdentifier:(id)arg1;
++ (void)performExecuteOnObservers;
++ (id)observers;
 + (id)sharedInstance;
++ (id)signpostLog;
 - (void).cxx_destruct;
 @property(readonly) int dataIndicator; // @synthesize dataIndicator=_dataIndicator;
 - (void)_registerStateCaptureHandler;
@@ -55,19 +60,13 @@
 - (void)preferredDataSimChanged:(id)arg1;
 - (void)connectionActivationError:(id)arg1 connection:(int)arg2 error:(int)arg3;
 - (void)_carrierBundleDidChange;
-- (void)removeBackgroundWifiClient:(id)arg1;
-- (void)addBackgroundWifiClient:(id)arg1;
-- (void)_updateWifiClientType;
 @property(readonly, nonatomic) EFObservable *wifiObservable;
 @property(readonly, nonatomic) EFObservable *networkObservable;
-- (void)removeNetworkObserver:(id)arg1;
-- (id)addNetworkObserverBlock:(CDUnknownBlockType)arg1 queue:(id)arg2;
 - (id)copyCarrierBundleValue:(id)arg1;
 - (id)_networkAssertionWithIdentifier:(id)arg1;
 - (void)_handleWiFiNotification:(unsigned int)arg1;
 - (void)_checkKeys:(id)arg1 forStore:(struct __SCDynamicStore *)arg2;
 - (void)_setFlags:(unsigned int)arg1 forReachability:(struct __SCNetworkReachability *)arg2;
-@property(readonly) _Bool hasAlternateAdvice;
 @property(readonly) long long transportType;
 @property(readonly) _Bool is4GConnection;
 @property(readonly) _Bool is3GConnection;
@@ -80,12 +79,12 @@
 - (int)dataStatus;
 - (void)_setDataStatus_nts:(id)arg1;
 - (_Bool)_simulationOverrideForType:(unsigned long long)arg1 actualValue:(_Bool)arg2;
-- (void)invalidate;
 - (void)dealloc;
 - (void)_setupSymptons;
+- (void)_resetDataStatusInitialized;
 - (void)_initializeDataStatus;
-- (void)_inititializeWifiManager;
 - (id)init;
+- (unsigned long long)signpostID;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

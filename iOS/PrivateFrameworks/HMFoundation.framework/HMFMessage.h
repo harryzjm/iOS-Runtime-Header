@@ -15,7 +15,7 @@
     HMFMessageInternal *_internal;
 }
 
-+ (id)supportedClasses;
++ (id)allowedClassesForXPC;
 + (_Bool)supportsSecureCoding;
 + (id)shortDescription;
 + (id)messageWithName:(id)arg1 qualityOfService:(long long)arg2 destination:(id)arg3 payload:(id)arg4;
@@ -59,12 +59,15 @@
 - (id)initWithName:(id)arg1 qualityOfService:(long long)arg2 destination:(id)arg3 payload:(id)arg4;
 - (id)initWithName:(id)arg1 destination:(id)arg2 payload:(id)arg3;
 - (id)init;
+- (_Bool)respondWithOutcomeOf:(id)arg1;
 - (id)initWithName:(id)arg1 identifier:(id)arg2 messagePayload:(id)arg3 responseHandler:(CDUnknownBlockType)arg4;
+- (id)fileHandleForKey:(id)arg1;
 - (id)unarchivedObjectForKey:(id)arg1 ofClasses:(id)arg2;
 - (id)arrayOfDateComponentsForKey:(id)arg1;
 - (id)predicateForKey:(id)arg1;
 - (id)calendarForKey:(id)arg1;
 - (id)errorForKey:(id)arg1;
+- (id)URLForKey:(id)arg1;
 - (id)dateComponentsForKey:(id)arg1;
 - (id)timeZoneForKey:(id)arg1;
 - (id)nullForKey:(id)arg1;

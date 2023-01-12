@@ -10,6 +10,7 @@
 @protocol NSSecureCoding;
 
 @protocol TKProtocolSmartCardSlot <TKProtocolSlot>
+- (void)waitForNextState:(long long)arg1 reply:(void (^)(long long))arg2;
 - (void)runUserInteraction:(TKSmartCardUserInteraction<NSSecureCoding> *)arg1 reply:(void (^)(NSData *, NSError *))arg2;
 - (void)setAttrib:(unsigned int)arg1 data:(NSData *)arg2 reply:(void (^)(_Bool, _Bool))arg3;
 - (void)getAttrib:(unsigned int)arg1 reply:(void (^)(NSData *, long long))arg2;

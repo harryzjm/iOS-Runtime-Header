@@ -10,6 +10,9 @@
 {
 }
 
++ (_Bool)_associatedDomainIsApprovedForURL:(id)arg1 applicationIdentifier:(id)arg2 serviceType:(id)arg3;
++ (_Bool)validDomainAssociationWithAnyServiceTypeForURL:(id)arg1 applicationIdentifier:(id)arg2;
++ (_Bool)appClipAssociatedDomainIsApprovedForURL:(id)arg1 applicationIdentifier:(id)arg2;
 + (_Bool)deviceHasCapabilities:(id)arg1;
 + (_Bool)isNetworkConstrained;
 + (_Bool)isBundleIdentifierBeingInstalled:(id)arg1;

@@ -8,60 +8,55 @@
 
 #import <AvatarUI/AVTAvatarStore-Protocol.h>
 #import <AvatarUI/AVTAvatarStoreInternal-Protocol.h>
-#import <AvatarUI/AVTStoreBackendDelegate-Protocol.h>
+#import <AvatarUI/AVTPBackendImageHandlingDelegate-Protocol.h>
 
-@class AVTAvatarRecordImageGenerator, AVTPuppetStore, AVTUIEnvironment, NSString;
-@protocol AVTStickerBackend, AVTStickerBackendDelegate, AVTStoreBackend, AVTUILogger, OS_dispatch_queue;
+@class AVTAvatarRecordImageGenerator, AVTImageStore, NSString;
+@protocol AVTAvatarStore, AVTAvatarStoreInternal, AVTStickerBackendDelegate, AVTUILogger;
 
-@interface AVTAvatarStore : NSObject <AVTStoreBackendDelegate, AVTAvatarStoreInternal, AVTAvatarStore>
+@interface AVTAvatarStore : NSObject <AVTPBackendImageHandlingDelegate, AVTAvatarStoreInternal, AVTAvatarStore>
 {
-    NSObject<OS_dispatch_queue> *_workQueue;
-    NSObject<OS_dispatch_queue> *_backendAccessQueue;
-    NSObject<OS_dispatch_queue> *_puppetStoreAccessQueue;
-    AVTUIEnvironment *_environment;
-    id <AVTStoreBackend> _backend;
-    AVTPuppetStore *_puppetStore;
     AVTAvatarRecordImageGenerator *_imageGenerator;
+    id <AVTAvatarStore> _persistenceAvatarStore;
+    AVTImageStore *_imageStore;
     id <AVTUILogger> _logger;
-    id <AVTStickerBackend> _stickerBackend;
+    id <AVTAvatarStoreInternal> _internalStore;
 }
 
 + (unsigned long long)maximumNumberOfFetchableAvatars;
 + (unsigned long long)maximumNumberOfSavableAvatars;
 + (id)defaultImageGeneratorForEnvironment:(id)arg1;
-+ (id)defaultBackendWithWorkQueue:(id)arg1 environment:(id)arg2;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) id <AVTStickerBackend> stickerBackend; // @synthesize stickerBackend=_stickerBackend;
+@property(nonatomic) __weak id <AVTAvatarStoreInternal> internalStore; // @synthesize internalStore=_internalStore;
 @property(readonly, nonatomic) id <AVTUILogger> logger; // @synthesize logger=_logger;
+@property(readonly, nonatomic) AVTImageStore *imageStore; // @synthesize imageStore=_imageStore;
+@property(readonly, nonatomic) id <AVTAvatarStore> persistenceAvatarStore; // @synthesize persistenceAvatarStore=_persistenceAvatarStore;
 @property(readonly, nonatomic) AVTAvatarRecordImageGenerator *imageGenerator; // @synthesize imageGenerator=_imageGenerator;
-@property(readonly, nonatomic) AVTPuppetStore *puppetStore; // @synthesize puppetStore=_puppetStore;
-@property(readonly, nonatomic) id <AVTStoreBackend> backend; // @synthesize backend=_backend;
-@property(readonly, nonatomic) AVTUIEnvironment *environment; // @synthesize environment=_environment;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *puppetStoreAccessQueue; // @synthesize puppetStoreAccessQueue=_puppetStoreAccessQueue;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *backendAccessQueue; // @synthesize backendAccessQueue=_backendAccessQueue;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 - (void)deleteRecentStickersForChangeTracker:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)deleteRecentStickersWithAvatarIdentifier:(id)arg1 stickerIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)didUseStickerWithAvatarIdentifier:(id)arg1 stickerIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)recentStickersForFetchRequest:(id)arg1 error:(id *)arg2;
 @property(nonatomic) __weak id <AVTStickerBackendDelegate> stickerBackendDelegate;
-- (void)backend:(id)arg1 didChangeRecordsWithIdentifiers:(id)arg2;
-- (void)postChangeNotificationForRecordWithIdentifiers:(id)arg1 remote:(_Bool)arg2;
-- (void)duplicateAvatar:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)updateThumbnailsForChangesWithTracker:(id)arg1 recordProvider:(CDUnknownBlockType)arg2;
+- (void)deleteImagesForAvatarRecordIdentifier:(id)arg1 error:(id *)arg2;
+- (void)clearStickersForAvatarRecordIdentifier:(id)arg1 withEnvironment:(id)arg2;
+- (_Bool)deleteThumbnailsForAvatarRecordsWithIdentifiers:(id)arg1 error:(id *)arg2;
+- (_Bool)generateThumbnailsForDuplicateAvatarRecord:(id)arg1 originalRecord:(id)arg2 error:(id *)arg3;
+- (_Bool)generateThumbnailsForAvatarRecords:(id)arg1 error:(id *)arg2;
+- (_Bool)generateThumbnailsForAvatarRecord:(id)arg1 avatar:(id)arg2 error:(id *)arg3;
+- (void)clearContentAtLocation:(id)arg1;
 - (void)deleteAvatarWithIdentifier:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)duplicateAvatar:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)deleteAvatar:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)saveAvatarRecord:(id)arg1 thumbnailAvatar:(id)arg2 completionBlock:(CDUnknownBlockType)arg3 thumbnailGenerationCompletionBlock:(CDUnknownBlockType)arg4;
 - (void)fetchAvatarsForFetchRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)performAsynchronousWork:(CDUnknownBlockType)arg1;
-- (void)performPuppetStoreWork:(CDUnknownBlockType)arg1;
-- (void)performBackendWork:(CDUnknownBlockType)arg1;
 - (id)avatarsForFetchRequest:(id)arg1 error:(id *)arg2;
 - (_Bool)canCreateAvatarWithError:(id *)arg1;
 - (_Bool)canCreateAvatar;
-- (id)initWithBackend:(id)arg1 backendAccessQueue:(id)arg2 puppetStore:(id)arg3 imageGenerator:(id)arg4 stickerBackend:(id)arg5 environment:(id)arg6;
+- (id)initWithPersistenceAvatarStore:(id)arg1 imageGenerator:(id)arg2 imageStore:(id)arg3 environment:(id)arg4;
+- (id)initWithPersistenceAvatarStore:(id)arg1 imageGenerator:(id)arg2 environment:(id)arg3;
+- (id)initWithPersistenceAvatarStore:(id)arg1;
 - (id)initWithImageGenerator:(id)arg1 environment:(id)arg2;
 - (id)init;
-- (id)initWithDomainIdentifier:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

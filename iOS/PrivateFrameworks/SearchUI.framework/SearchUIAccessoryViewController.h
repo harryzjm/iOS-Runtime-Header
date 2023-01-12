@@ -26,6 +26,7 @@
 @property(nonatomic) __weak id <SearchUIFeedbackDelegate> feedbackDelegate; // @synthesize feedbackDelegate;
 @property(retain, nonatomic) UIView *view; // @synthesize view;
 @property(retain, nonatomic) SearchUIDetailedRowModel *rowModel; // @synthesize rowModel;
+- (void)tlk_updateForAppearance:(id)arg1;
 - (void)updateWithContacts:(id)arg1;
 @property(readonly) unsigned long long type;
 - (_Bool)shouldTopAlignForAccessibilityContentSizes;

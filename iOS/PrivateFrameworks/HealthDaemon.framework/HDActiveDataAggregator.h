@@ -19,8 +19,6 @@
 - (id)initialAggregationState;
 - (void)recomputeCollectorConfiguration;
 - (void)requestAggregationThroughDate:(id)arg1 mode:(long long)arg2 options:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_requestAggregationThroughDate:(id)arg1 mode:(long long)arg2 options:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_aggregateForAllDevicesForCollector:(id)arg1 date:(id)arg2 mode:(long long)arg3 options:(unsigned long long)arg4;
 - (double)aggregationInterval;
 - (id)aggregateForState:(id)arg1 collector:(id)arg2 device:(id)arg3 requestedAggregationDate:(id)arg4 mode:(long long)arg5 options:(unsigned long long)arg6 error:(id *)arg7;
 - (Class)sensorDatumClass;
@@ -30,8 +28,6 @@
 - (void)dataCollector:(id)arg1 didCollectSensorData:(id)arg2 device:(id)arg3;
 - (void)unregisterDataCollector:(id)arg1;
 - (void)registerDataCollector:(id)arg1 state:(id)arg2;
-- (void)_reconsiderDelayedAggregation;
-- (void)_aggregateForCollector:(id)arg1 device:(id)arg2 requestedAggregationDate:(id)arg3 mode:(long long)arg4 options:(unsigned long long)arg5;
 - (id)initWithDataCollectionManager:(id)arg1;
 
 @end

@@ -13,12 +13,15 @@
     _Bool _displaysUnavailableActionTypes;
     NSArray *_supportedActionTypes;
     NSDictionary *_actionsPerType;
+    long long _actionViewStyle;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) long long actionViewStyle; // @synthesize actionViewStyle=_actionViewStyle;
 @property(readonly, nonatomic) NSDictionary *actionsPerType; // @synthesize actionsPerType=_actionsPerType;
 @property(readonly, nonatomic) NSArray *supportedActionTypes; // @synthesize supportedActionTypes=_supportedActionTypes;
 @property(readonly, nonatomic) _Bool displaysUnavailableActionTypes; // @synthesize displaysUnavailableActionTypes=_displaysUnavailableActionTypes;
+- (id)initWithDefaultActionItems:(id)arg1 displaysUnavailableActionTypes:(_Bool)arg2 actionViewStyle:(long long)arg3;
 - (id)initWithDefaultActionItems:(id)arg1 displaysUnavailableActionTypes:(_Bool)arg2;
 - (id)initWithActions:(id)arg1 displaysUnavailableActionTypes:(_Bool)arg2;
 

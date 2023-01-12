@@ -40,7 +40,7 @@
 - (void)_configureView:(id)arg1 indexPath:(id)arg2 animated:(_Bool)arg3;
 - (CDUnknownBlockType)_actionHandlerForIndexPath:(id)arg1;
 - (id)_allocView;
-- (id)_topUpActionForIndexPath:(id)arg1 balanceIdentifier:(id)arg2;
+- (id)_topUpActionForIndexPath:(id)arg1 balanceIdentifiers:(id)arg2;
 - (id)_renewActionForCommutePlanIdentifier:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewWillLayoutSubviews;
@@ -53,6 +53,7 @@
 - (void)_reloadBalance;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithTransitPassProperties:(id)arg2;
 - (void)dealloc;
+- (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceivePlanUpdate:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveBalanceUpdate:(id)arg2;
 
 // Remaining properties

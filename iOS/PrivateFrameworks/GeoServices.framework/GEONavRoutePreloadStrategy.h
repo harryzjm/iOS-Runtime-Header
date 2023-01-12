@@ -9,7 +9,7 @@
 #import <GeoServices/GEOResourceManifestTileGroupObserver-Protocol.h>
 #import <GeoServices/GEORoutePreloadStrategy-Protocol.h>
 
-@class GEOComposedRoute, GEORoutePreloader, GEOTileKeyList, NSMapTable, NSMutableArray, NSMutableDictionary, NSString;
+@class GEOComposedRoute, GEOMapAssetMetadataFetcher, GEORoutePreloader, GEOSPRMetroAvailabilityFetcher, GEOTileKeyList, NSMutableArray, NSMutableDictionary, NSString;
 @protocol GEORoutePreloadCamera, OS_dispatch_queue, OS_dispatch_source;
 
 @interface GEONavRoutePreloadStrategy : NSObject <GEOResourceManifestTileGroupObserver, GEORoutePreloadStrategy>
@@ -17,6 +17,7 @@
     NSObject<OS_dispatch_queue> *_workQueue;
     GEORoutePreloader *_preloader;
     GEOComposedRoute *_route;
+    unsigned long long _signpostID;
     double _currentRoutePosition;
     int _downloadState;
     id <GEORoutePreloadCamera> _camera;
@@ -25,8 +26,9 @@
     NSMutableArray *_steps;
     unsigned int _stepGeneration;
     long long _currentLoadingSteps;
-    NSMapTable *_stepErrors;
-    NSMapTable *_stepLifetimeErrors;
+    _Bool _shouldLoadAssets;
+    _Bool _forceDisableMetros;
+    _Bool _useCellularCoverage;
     _Bool _anyErrors;
     _Bool _finished;
     double _beginTime;
@@ -37,9 +39,13 @@
     _Bool _enabled;
     double _stepSizeInMeters;
     NSMutableDictionary *_tileSetStyles;
+    GEOSPRMetroAvailabilityFetcher *_sprAvailabilityFetcher;
+    GEOMapAssetMetadataFetcher *_assetMetadataFetcher;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool forceDisableMetros; // @synthesize forceDisableMetros=_forceDisableMetros;
+@property(nonatomic) _Bool shouldLoadAssets; // @synthesize shouldLoadAssets=_shouldLoadAssets;
 @property(retain, nonatomic) GEOComposedRoute *route; // @synthesize route=_route;
 @property(nonatomic) __weak GEORoutePreloader *preloader; // @synthesize preloader=_preloader;
 @property(retain, nonatomic) id <GEORoutePreloadCamera> camera; // @synthesize camera=_camera;
@@ -52,10 +58,8 @@
 - (void)start;
 - (void)_performNextRequests;
 - (void)_performTileRequestsWithCurrentRoutePositionStepIndex:(long long)arg1 firstErrorStepIndex:(long long)arg2 firstLoadStepIndex:(long long)arg3 loadStepsAhead:(long long)arg4 loadStepsAheadIfNoWiFi:(long long)arg5;
-- (void)_cancelRequestsInPast;
-- (id)_descriptionForStep:(id)arg1;
-- (void)_incrementErrorForStep:(id)arg1;
-- (_Bool)_loadStep:(id)arg1 requireWiFi:(_Bool)arg2;
+- (void)_cancelRequestsBehindCurrentPosition;
+- (void)_loadStep:(id)arg1 requireWiFi:(_Bool)arg2;
 - (void)_cancelAllSteps;
 - (void)_cancelStep:(id)arg1;
 - (void)_accumulateSteps;
@@ -63,6 +67,7 @@
 - (void)_retryFailuresWithErrorsReset:(_Bool)arg1;
 - (void)_resetErrCounts;
 - (void)observedNetworkQualityDidChangeFrom:(unsigned long long)arg1 to:(unsigned long long)arg2;
+- (void)addTileSetStyle:(int)arg1 betweenZoom:(unsigned int)arg2 andZoom:(unsigned int)arg3 restrictions:(unsigned long long)arg4;
 - (void)addTileSetStyle:(int)arg1 betweenZoom:(unsigned int)arg2 andZoom:(unsigned int)arg3;
 - (void)performTearDown;
 - (id)init;

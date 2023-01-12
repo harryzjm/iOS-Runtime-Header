@@ -10,6 +10,7 @@
 {
 }
 
++ (id)__traits_KEY;
 + (id)__downloadedDate_KEY;
 + (id)__cloudVersionHash_KEY;
 + (id)__lastDevicePlaybackDate_KEY;
@@ -47,6 +48,7 @@
 + (id)requiredLibraryRemovalProperties;
 + (_Bool)supportsKeepLocalStatusObservation;
 + (id)requiredKeepLocalStatusObservationProperties;
++ (long long)genericObjectType;
 + (id)requiredStoreLibraryPersonalizationProperties;
 - (id)tracksTiledArtworkCatalogWithRows:(unsigned long long)arg1 columns:(unsigned long long)arg2;
 - (id)trackArtworkCatalogsWithCount:(long long)arg1;
@@ -88,6 +90,7 @@
 @property(nonatomic, getter=isSubscribed) _Bool subscribed; // @dynamic subscribed;
 @property(copy, nonatomic) MPTiledArtworkRequest *tiledArtworkRequest; // @dynamic tiledArtworkRequest;
 @property(nonatomic) unsigned long long trackCount; // @dynamic trackCount;
+@property(nonatomic) unsigned long long traits; // @dynamic traits;
 @property(nonatomic) long long type; // @dynamic type;
 @property(nonatomic) long long userEditableComponents; // @dynamic userEditableComponents;
 @property(nonatomic, getter=isVisiblePlaylist) _Bool visiblePlaylist; // @dynamic visiblePlaylist;

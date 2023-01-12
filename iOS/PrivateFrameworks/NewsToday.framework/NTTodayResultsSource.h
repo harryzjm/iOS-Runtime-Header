@@ -9,24 +9,25 @@
 #import <NewsToday/NTTodayResultsSource-Protocol.h>
 
 @class FCAsyncSerialQueue, NSString;
-@protocol FCContentContext, NTReadablePrivateDataStorage, NTTodayResultsFetchDescriptor;
+@protocol FCContentContext, FCReadablePrivateDataStorage, NTTodayResultsFetchDescriptor;
 
 @interface NTTodayResultsSource : NSObject <NTTodayResultsSource>
 {
     _Bool _flushingHasBeenEnabled;
     id <NTTodayResultsFetchDescriptor> _fetchDescriptor;
-    id <NTReadablePrivateDataStorage> _privateDataStorage;
+    id <FCReadablePrivateDataStorage> _privateDataStorage;
     id <FCContentContext> _contentContext;
     FCAsyncSerialQueue *_serialQueue;
     NSObject *_latestResultRecordsHoldToken;
 }
 
++ (id)placeholderResultsWithFetchDescriptor:(id)arg1 contentContext:(id)arg2 operationInfo:(id)arg3;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject *latestResultRecordsHoldToken; // @synthesize latestResultRecordsHoldToken=_latestResultRecordsHoldToken;
 @property(nonatomic, getter=hasFlushingBeenEnabled) _Bool flushingHasBeenEnabled; // @synthesize flushingHasBeenEnabled=_flushingHasBeenEnabled;
 @property(readonly, nonatomic) FCAsyncSerialQueue *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property(readonly, nonatomic) id <FCContentContext> contentContext; // @synthesize contentContext=_contentContext;
-@property(readonly, nonatomic) id <NTReadablePrivateDataStorage> privateDataStorage; // @synthesize privateDataStorage=_privateDataStorage;
+@property(readonly, nonatomic) id <FCReadablePrivateDataStorage> privateDataStorage; // @synthesize privateDataStorage=_privateDataStorage;
 @property(readonly, copy, nonatomic) id <NTTodayResultsFetchDescriptor> fetchDescriptor; // @synthesize fetchDescriptor=_fetchDescriptor;
 - (void)_fetchLatestResultsWithOperationInfo:(id)arg1 prefetchedContent:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_fetchTodayModuleDescriptorsWithContentRequests:(id)arg1 requireRefreshedAppConfig:(_Bool)arg2 qualityOfService:(long long)arg3 completion:(CDUnknownBlockType)arg4;

@@ -13,8 +13,8 @@
 #import <HomeKitDaemon/HMFNetMonitorDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMBCloudZone, HMBLocalZone, HMDBulletinBoard, HMDCameraRecordingReachabilityEventModel, HMDHAPAccessory, HMDLogEventDispatcher, HMFMessageDispatcher, HMFTimer, NSDate, NSHashTable, NSObject, NSString, NSUUID, _HMCameraUserSettings;
-@protocol OS_dispatch_queue;
+@class HMBCloudZone, HMBLocalZone, HMDAppleAccountSettings, HMDBulletinBoard, HMDCameraRecordingReachabilityEventModel, HMDHAPAccessory, HMFMessageDispatcher, HMFTimer, NSDate, NSHashTable, NSObject, NSString, NSUUID, _HMCameraUserSettings;
+@protocol HMMLogEventSubmitting, OS_dispatch_queue;
 
 @interface HMDCameraRecordingReachabilityEventManager : HMFObject <HMBLocalZoneModelObserver, HMFTimerDelegate, HMFMessageReceiver, HMFLogging, HMDCameraClipManagerDelegate, HMFNetMonitorDelegate>
 {
@@ -22,13 +22,15 @@
     _Bool _currentDeviceConnectedToNetwork;
     _Bool _lastKnownCameraReachability;
     _Bool _currentCameraReachability;
+    _Bool _currentBridgedCameraReachability;
     HMDHAPAccessory *_hapAccessory;
     NSUUID *_uniqueIdentifier;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMDBulletinBoard *_bulletinBoard;
+    HMDAppleAccountSettings *_accountSettings;
     HMFMessageDispatcher *_messageDispatcher;
     NSHashTable *_clientConnections;
-    HMDLogEventDispatcher *_logEventDispatcher;
+    id <HMMLogEventSubmitting> _logEventSubmitter;
     unsigned long long _reachabilityChangeDebounceCount;
     _HMCameraUserSettings *_currentSettings;
     HMDCameraRecordingReachabilityEventModel *_mostRecentReachabilityEventModel;
@@ -37,6 +39,7 @@
     HMFTimer *_initialReachabilityTimer;
     HMFTimer *_reachabilityChangeDebounceTimer;
     NSDate *_reachabilityChangeDebounceStartDate;
+    NSDate *_suppressNotificationsBeforeDate;
     CDUnknownBlockType _initialReachabilityTimerFactory;
     CDUnknownBlockType _reachabilityChangeDebounceTimerFactory;
 }
@@ -45,7 +48,8 @@
 - (void).cxx_destruct;
 @property(copy) CDUnknownBlockType reachabilityChangeDebounceTimerFactory; // @synthesize reachabilityChangeDebounceTimerFactory=_reachabilityChangeDebounceTimerFactory;
 @property(copy) CDUnknownBlockType initialReachabilityTimerFactory; // @synthesize initialReachabilityTimerFactory=_initialReachabilityTimerFactory;
-@property(retain) NSDate *reachabilityChangeDebounceStartDate; // @synthesize reachabilityChangeDebounceStartDate=_reachabilityChangeDebounceStartDate;
+@property(copy) NSDate *suppressNotificationsBeforeDate; // @synthesize suppressNotificationsBeforeDate=_suppressNotificationsBeforeDate;
+@property(copy) NSDate *reachabilityChangeDebounceStartDate; // @synthesize reachabilityChangeDebounceStartDate=_reachabilityChangeDebounceStartDate;
 @property(retain) HMFTimer *reachabilityChangeDebounceTimer; // @synthesize reachabilityChangeDebounceTimer=_reachabilityChangeDebounceTimer;
 @property(retain) HMFTimer *initialReachabilityTimer; // @synthesize initialReachabilityTimer=_initialReachabilityTimer;
 @property(retain) HMBCloudZone *cloudZone; // @synthesize cloudZone=_cloudZone;
@@ -53,11 +57,13 @@
 @property(copy) HMDCameraRecordingReachabilityEventModel *mostRecentReachabilityEventModel; // @synthesize mostRecentReachabilityEventModel=_mostRecentReachabilityEventModel;
 @property(copy) _HMCameraUserSettings *currentSettings; // @synthesize currentSettings=_currentSettings;
 @property unsigned long long reachabilityChangeDebounceCount; // @synthesize reachabilityChangeDebounceCount=_reachabilityChangeDebounceCount;
+@property _Bool currentBridgedCameraReachability; // @synthesize currentBridgedCameraReachability=_currentBridgedCameraReachability;
 @property _Bool currentCameraReachability; // @synthesize currentCameraReachability=_currentCameraReachability;
 @property _Bool lastKnownCameraReachability; // @synthesize lastKnownCameraReachability=_lastKnownCameraReachability;
-@property(retain) HMDLogEventDispatcher *logEventDispatcher; // @synthesize logEventDispatcher=_logEventDispatcher;
+@property(retain) id <HMMLogEventSubmitting> logEventSubmitter; // @synthesize logEventSubmitter=_logEventSubmitter;
 @property(retain) NSHashTable *clientConnections; // @synthesize clientConnections=_clientConnections;
 @property(retain) HMFMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
+@property(readonly) HMDAppleAccountSettings *accountSettings; // @synthesize accountSettings=_accountSettings;
 @property(readonly) HMDBulletinBoard *bulletinBoard; // @synthesize bulletinBoard=_bulletinBoard;
 @property(readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(readonly) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
@@ -80,8 +86,9 @@
 - (void)handleFetchCountOfEventsMessage:(id)arg1;
 - (void)handleFetchEventsMessage:(id)arg1;
 - (void)handleRemoteCameraReachabilityChange:(id)arg1;
-- (void)handleHAPNotificationPingFailedAccessoryNotReachable:(id)arg1;
-- (void)handleHAPNotificationPingSucceededAccessoryReachable:(id)arg1;
+- (void)handleAppleAccountSettingsHomeStateUpdated:(id)arg1;
+- (void)handleHMDBridgedAccessoryUnreachableNotification:(id)arg1;
+- (void)handleHMDBridgedAccessoryReachableNotification:(id)arg1;
 - (void)handleAccessoryDisconnected:(id)arg1;
 - (void)handleAccessoryConnected:(id)arg1;
 - (void)handleCameraProfileSettingsDidChange:(id)arg1;
@@ -106,7 +113,7 @@
 - (void)cleanUpEvents;
 - (void)configureWithMessageDispatcher:(id)arg1 isCurrentDeviceConfirmedPrimaryResident:(_Bool)arg2;
 - (id)initWithHAPAccessory:(id)arg1 workQueue:(id)arg2;
-- (id)initWithAccessory:(id)arg1 workQueue:(id)arg2 identifier:(id)arg3 bulletinBoard:(id)arg4 logEventDispatcher:(id)arg5;
+- (id)initWithAccessory:(id)arg1 workQueue:(id)arg2 identifier:(id)arg3 bulletinBoard:(id)arg4 logEventSubmitter:(id)arg5 accountSettings:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

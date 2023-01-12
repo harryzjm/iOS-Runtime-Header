@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *application; // @dynamic application;
 @property(nonatomic) long long consistencyVerified; // @dynamic consistencyVerified;
 @property(retain, nonatomic) NSSet *failures; // @dynamic failures;
+@property(nonatomic) long long gossip; // @dynamic gossip;
 @property(nonatomic) long long inclusionVerified; // @dynamic inclusionVerified;
 @property(nonatomic) _Bool isMapHead; // @dynamic isMapHead;
 @property(nonatomic) long long logBeginTime; // @dynamic logBeginTime;

@@ -6,15 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class ICQOffer, NSNumber, NSTimer;
+@class NSMutableDictionary, NSNumber, NSTimer;
 @protocol OS_dispatch_queue;
 
 @interface ICQOfferManager : NSObject
 {
     NSObject<OS_dispatch_queue> *_cachedOfferQueue;
-    ICQOffer *_cachedOffer;
-    NSTimer *_invalidationTimer;
-    _Bool _isRegisteredForDarwinNotifications;
+    NSTimer *_regularOfferInvalidationTimer;
+    NSTimer *_premiumOfferInvalidationTimer;
+    NSMutableDictionary *_cachedOffers;
+    NSMutableDictionary *_registeredDarwinNotifications;
 }
 
 + (id)defaultBundleIdentifier;
@@ -25,22 +26,47 @@
 + (_Bool)buddyOfferMightNeedPresenting;
 + (id)ckBackupDeviceID;
 - (void).cxx_destruct;
-- (void)_firedInvalidationTimer:(id)arg1;
-- (void)_teardownInvalidationTimer;
-- (void)_setupTimerForInvalidationDate:(id)arg1;
-- (void)_unregisterForDarwinNotifications;
-- (void)_registerForDarwinNotifications;
-- (void)_handlePushReceivedDarwinNotification;
+@property(retain, nonatomic) NSMutableDictionary *registeredDarwinNotifications; // @synthesize registeredDarwinNotifications=_registeredDarwinNotifications;
+@property(retain, nonatomic) NSMutableDictionary *cachedOffers; // @synthesize cachedOffers=_cachedOffers;
+- (void)_firedPremiumOfferInvalidationTimer:(id)arg1;
+- (void)_firedRegularOfferInvalidationTimer:(id)arg1;
+- (void)_teardownPremiumOfferInvalidationTimer;
+- (void)_teardownRegularOfferInvalidationTimer;
+- (void)_teardownInvalidationTimerForRequestType:(long long)arg1;
+- (void)_setupTimerForPremiumOfferInvalidationDate:(id)arg1;
+- (void)_setupTimerForRegularOfferInvalidationDate:(id)arg1;
+- (void)_setupTimerForInvalidationDate:(id)arg1 forType:(long long)arg2;
+- (void)_handlePushReceivedDarwinNotificationRequestType:(long long)arg1;
+- (void)_unregisterForAllDarwinNotifications;
+- (void)_unregisterForDarwinNotification:(id)arg1;
+- (void)_registerForDarwinNotification:(id)arg1;
 - (_Bool)fetchOfferIfNeeded;
-- (void)_refetchOffer;
-@property(retain, nonatomic) ICQOffer *cachedOffer;
-- (void)_getOfferForAccount:(id)arg1 bundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_getOfferForAccount:(id)arg1 bundleIdentifier:(id)arg2 offerContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_refetchDefaultOffer;
+- (void)_refetchPremiumOffer;
+- (void)_refetchRegularOffer;
+- (void)setCachedOfferForType:(long long)arg1 newOffer:(id)arg2;
+- (id)cachedOfferForType:(long long)arg1;
+- (void)_getOfferForAccount:(id)arg1 bundleIdentifier:(id)arg2 options:(id)arg3 offerContext:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (_Bool)_offerTypeMatchesRequestOptions:(id)arg1 offer:(id)arg2;
+- (void)_getOfferForBundleIdentifier:(id)arg1 options:(id)arg2 offerContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (_Bool)_shouldUseOffer:(id)arg1 forBundleIdentifier:(id)arg2;
+- (id)_currentOfferForBundleIdentifier:(id)arg1 options:(id)arg2;
+- (id)_premiumOptions;
+- (void)getPremiumOfferForBundleIdentifier:(id)arg1 offerContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getOfferForBundleIdentifier:(id)arg1 offerContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)getPremiumOfferAndOpportunityBubbleForBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getPremiumOfferAndOpportunityBubbleWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getPremiumOfferForBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getOfferForBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getPremiumOfferWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getOfferWithCompletion:(CDUnknownBlockType)arg1;
+- (id)currentPremiumOfferForBundleIdentifier:(id)arg1;
 - (id)currentOfferForBundleIdentifier:(id)arg1;
+- (void)fetchServiceAvailabilityForJourneyID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (unsigned long long)fetchServiceAvailabilityForJourneyID:(id)arg1;
+- (id)currentDefaultOffer;
+- (void)getDefaultOfferWithCompletion:(CDUnknownBlockType)arg1;
+- (id)currentPremiumOffer;
 - (id)currentOffer;
 - (void)dealloc;
 - (id)init;
@@ -52,6 +78,7 @@
 @property(nonatomic, getter=isSimulatedDeviceStorageAlmostFull) _Bool simulatedDeviceStorageAlmostFull;
 @property(readonly, nonatomic) _Bool isDeviceStorageAlmostFull;
 - (void)teardownCachedOffers;
+- (void)teardownCachedPremiumOffer;
 - (void)teardownCachedBuddyOffer;
 - (void)teardownCachedOffer;
 - (void)postBuddyOfferType:(id)arg1;

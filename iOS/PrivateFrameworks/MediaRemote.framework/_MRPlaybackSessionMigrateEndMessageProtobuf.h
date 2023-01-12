@@ -10,6 +10,7 @@
 
 @class NSString, _MRNowPlayingPlayerPathProtobuf, _MRPlaybackSessionRequestProtobuf;
 
+__attribute__((visibility("hidden")))
 @interface _MRPlaybackSessionMigrateEndMessageProtobuf : PBCodable <NSCopying>
 {
     long long _errorCode;
@@ -20,23 +21,13 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSString *errorDescription; // @synthesize errorDescription=_errorDescription;
-@property(nonatomic) long long errorCode; // @synthesize errorCode=_errorCode;
-@property(retain, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;
-@property(retain, nonatomic) _MRPlaybackSessionRequestProtobuf *request; // @synthesize request=_request;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasErrorDescription;
-@property(nonatomic) _Bool hasErrorCode;
-@property(readonly, nonatomic) _Bool hasPlayerPath;
-@property(readonly, nonatomic) _Bool hasRequest;
 
 @end
 

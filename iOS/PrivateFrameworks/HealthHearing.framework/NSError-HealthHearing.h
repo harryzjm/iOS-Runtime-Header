@@ -7,7 +7,7 @@
 #import <Foundation/NSError.h>
 
 @interface NSError (HealthHearing)
-- (_Bool)hk_isSimulatorNotSupportedError;
-- (_Bool)hk_isFeatureDisabledError;
+- (_Bool)hearing_audioDSP_isHAENDisabled;
+- (_Bool)hearing_isExpectedError;
 @end
 

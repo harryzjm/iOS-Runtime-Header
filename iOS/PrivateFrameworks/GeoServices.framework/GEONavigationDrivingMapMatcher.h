@@ -13,7 +13,7 @@
 - (id)_routeMatcherForRoute:(id)arg1;
 - (double)_courseFromLocation:(id)arg1;
 - (CDStruct_c3b9c2ee)_coordinateFromLocation:(id)arg1;
-- (double)_approximateMaxSpeedForRoad:(CDStruct_4da79865 *)arg1;
+- (double)_approximateMaxSpeedForRoad:(id)arg1;
 - (_Bool)_shouldConsiderRoadMatch:(id)arg1 overRouteMatch:(id)arg2 forLocation:(id)arg3;
 - (_Bool)_locationMeetsSpeedThresholdForRoadMatch:(id)arg1 distanceFromRoute:(double)arg2;
 - (int)transportType;

@@ -10,7 +10,8 @@
 #import <Email/EFLoggable-Protocol.h>
 #import <Email/NSProgressReporting-Protocol.h>
 
-@class CSTopHitSearchQuery, EFPromise, NSArray, NSLock, NSMutableArray, NSProgress, NSString;
+@class EFPromise, NSArray, NSLock, NSMutableArray, NSProgress, NSString;
+@protocol EMTopHitSearchQueryable;
 
 @interface EMSearchableIndexTopHitsQuery : NSObject <EFLoggable, EFCancelable, NSProgressReporting>
 {
@@ -18,7 +19,8 @@
     NSArray *_filterQueries;
     NSString *_keyboardLanguage;
     unsigned long long _limit;
-    CSTopHitSearchQuery *_topHitSearchQuery;
+    id <EMTopHitSearchQueryable> _topHitSearchQuery;
+    NSString *_bundleID;
     NSMutableArray *_foundItems;
     EFPromise *_spotlightTopHitsQueryResultPromise;
     NSProgress *_progress;
@@ -35,7 +37,8 @@
 @property(retain, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
 @property(retain, nonatomic) EFPromise *spotlightTopHitsQueryResultPromise; // @synthesize spotlightTopHitsQueryResultPromise=_spotlightTopHitsQueryResultPromise;
 @property(retain, nonatomic) NSMutableArray *foundItems; // @synthesize foundItems=_foundItems;
-@property(retain) CSTopHitSearchQuery *topHitSearchQuery; // @synthesize topHitSearchQuery=_topHitSearchQuery;
+@property(copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
+@property(retain) id <EMTopHitSearchQueryable> topHitSearchQuery; // @synthesize topHitSearchQuery=_topHitSearchQuery;
 @property(readonly, nonatomic) unsigned long long limit; // @synthesize limit=_limit;
 @property(readonly, copy, nonatomic) NSString *keyboardLanguage; // @synthesize keyboardLanguage=_keyboardLanguage;
 @property(readonly, copy, nonatomic) NSArray *filterQueries; // @synthesize filterQueries=_filterQueries;
@@ -47,7 +50,7 @@
 - (void)_searchDidCompleteWithError:(id)arg1;
 - (void)_searchFoundItems:(id)arg1;
 - (void)_configureTopHitsSearchQuery:(id)arg1;
-- (id)initWithSearchString:(id)arg1 filterQueries:(id)arg2 keyboardLanguage:(id)arg3 limit:(unsigned long long)arg4;
+- (id)initWithSearchString:(id)arg1 filterQueries:(id)arg2 bundleID:(id)arg3 keyboardLanguage:(id)arg4 limit:(unsigned long long)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

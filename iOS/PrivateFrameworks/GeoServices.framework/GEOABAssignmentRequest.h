@@ -10,7 +10,6 @@
 
 @class GEOPDClientMetadata, NSString, PBDataReader, PBUnknownFields;
 
-__attribute__((visibility("hidden")))
 @interface GEOABAssignmentRequest : PBRequest <NSCopying>
 {
     PBDataReader *_reader;
@@ -41,7 +40,8 @@ __attribute__((visibility("hidden")))
 - (void)copyTo:(id)arg1;
 - (Class)responseClass;
 - (unsigned int)requestTypeCode;
-- (void)clearSensitiveFields;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
+- (void)clearSensitiveFields:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;

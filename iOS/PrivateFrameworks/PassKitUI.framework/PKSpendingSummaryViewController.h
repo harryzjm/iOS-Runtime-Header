@@ -10,21 +10,26 @@
 #import <PassKitUI/PKSpendingSummaryFetcherObserver-Protocol.h>
 #import <PassKitUI/UIScrollViewDelegate-Protocol.h>
 
-@class NSArray, NSCalendar, NSIndexSet, NSMutableDictionary, NSMutableSet, NSObject, NSString, PKAccount, PKPaymentPass, PKSpendingSummaryFetcher, PKSpendingSummaryFooterContainer, PKTransactionSource, UIBarButtonItem, UIScrollView;
+@class NSArray, NSCalendar, NSIndexSet, NSMutableDictionary, NSMutableSet, NSObject, NSString, PKAccount, PKAccountUserCollection, PKContactAvatarManager, PKFamilyMemberCollection, PKPaymentPass, PKSpendingSummaryFetcher, PKSpendingSummaryFooterContainer, PKTransactionSourceCollection, UIScrollView;
 @protocol OS_dispatch_source, PKSpendingSummaryViewControllerDelegate;
 
 @interface PKSpendingSummaryViewController : UIViewController <PKSpendingSummaryFetcherObserver, UIScrollViewDelegate, PKSpendingSingleSummaryViewControllerDelegate>
 {
-    PKTransactionSource *_transactionSource;
+    PKTransactionSourceCollection *_transactionSourceCollection;
+    PKFamilyMemberCollection *_familyCollection;
     PKAccount *_account;
+    PKAccountUserCollection *_accountUserCollection;
     PKPaymentPass *_pass;
     PKSpendingSummaryFetcher *_summaryFetcher;
+    PKContactAvatarManager *_avatarManager;
     NSCalendar *_currentCalendar;
     NSArray *_weeks;
     NSArray *_months;
+    NSArray *_years;
     NSString *_navTitle;
     NSArray *_currentDataSet;
     unsigned long long _currentSummaryType;
+    unsigned long long _displayType;
     unsigned long long _numberOfItems;
     double _currentWidth;
     double _currentHeight;
@@ -33,7 +38,6 @@
     _Bool _isDragging;
     _Bool _hasPrefetchedLeft;
     _Bool _hasPrefetchedRight;
-    UIBarButtonItem *_changeModeButton;
     UIScrollView *_scrollView;
     double _collectionViewVerticalOffset;
     struct CGRect _previousBounds;
@@ -50,11 +54,12 @@
     NSObject<OS_dispatch_source> *_scrollTimer;
     struct os_unfair_lock_s _lockUpdate;
     NSMutableDictionary *_pendingUpdates;
-    unsigned long long _selectionType;
+    unsigned long long _categorization;
     id <PKSpendingSummaryViewControllerDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long categorization; // @synthesize categorization=_categorization;
 @property(nonatomic) __weak id <PKSpendingSummaryViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_reportTappedButtonWithTag:(id)arg1;
 - (void)invalidatedSummariesAvailable;
@@ -82,12 +87,12 @@
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)_loadSummariesForContentOffset:(struct CGPoint)arg1;
 - (void)_updateAlphaAndFooterDuringTransition;
-- (void)_updateNavBarContent;
 - (void)_updatePrimaryViewScrolling;
 - (void)_reloadPendingVCs;
 - (void)_scrollViewStoppedScrolling;
-- (void)_performModeChange;
-- (void)_changeMode;
+- (unsigned long long)_newDataSetIndexAfterTransitionFromMode:(unsigned long long)arg1 toMode:(unsigned long long)arg2;
+- (void)_changeModeTo:(unsigned long long)arg1;
+- (void)_updateBackTitle;
 - (void)_updateScrollViewContentSize;
 - (void)_layoutCollectionViews;
 - (void)viewWillLayoutSubviews;
@@ -95,7 +100,7 @@
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)dealloc;
-- (id)initWithTransactionSource:(id)arg1 account:(id)arg2 fetcher:(id)arg3 weeks:(id)arg4 months:(id)arg5 type:(unsigned long long)arg6 unit:(unsigned long long)arg7 currentMonthTransactions:(id)arg8 upcomingScheduledPayments:(id)arg9;
+- (id)initWithTransactionSourceCollection:(id)arg1 familyCollection:(id)arg2 avatarManager:(id)arg3 account:(id)arg4 accountUserCollection:(id)arg5 fetcher:(id)arg6 weeks:(id)arg7 months:(id)arg8 years:(id)arg9 type:(unsigned long long)arg10 unit:(unsigned long long)arg11 currentMonthTransactions:(id)arg12 upcomingScheduledPayments:(id)arg13 dispayType:(unsigned long long)arg14;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

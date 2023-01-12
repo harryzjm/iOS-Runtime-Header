@@ -20,6 +20,7 @@
 @property(copy, nonatomic) NSArray *calls; // @synthesize calls=_calls;
 - (id)_callGroupsFromCalls:(id)arg1;
 @property(readonly, copy, nonatomic) NSArray *callGroupsOnDefaultPairedDevice;
+@property(readonly, copy, nonatomic) NSArray *currentAudioAndVideoCallGroups;
 @property(readonly, copy, nonatomic) NSArray *currentCallGroups;
 @property(readonly, nonatomic) _Bool existingCallsHaveMultipleProviders;
 - (_Bool)allCallsAreOfService:(int)arg1;

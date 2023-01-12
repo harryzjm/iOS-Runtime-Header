@@ -24,7 +24,7 @@
 @property(readonly, nonatomic) NSString *value;
 @property(readonly, nonatomic) NSString *label;
 - (id)initWithAmount:(id)arg1 credentialType:(long long)arg2 dpanSuffix:(id)arg3 cardDescription:(id)arg4;
-- (id)initWithAmount:(id)arg1 transactionSource:(id)arg2;
+- (id)initWithAmount:(id)arg1 transactionSourceCollection:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

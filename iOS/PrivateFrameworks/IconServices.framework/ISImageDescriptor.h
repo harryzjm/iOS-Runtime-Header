@@ -10,8 +10,7 @@
 #import <IconServices/NSCopying-Protocol.h>
 #import <IconServices/NSSecureCoding-Protocol.h>
 
-@class NSString;
-@protocol NSCopying;
+@class IFColor, NSString, NSUUID;
 
 @interface ISImageDescriptor : NSObject <NSSecureCoding, ISImageDescriptor, NSCopying>
 {
@@ -21,15 +20,20 @@
     unsigned long long _badgeOptions;
     unsigned long long _backgroundStyle;
     _Bool _preferExtendedColorResources;
+    _Bool _ignoreCache;
     NSString *_preferedResourceName;
     unsigned long long _languageDirection;
+    IFColor *_tintColor;
 }
 
++ (id)imageDescriptorWithIconVariant:(int)arg1 options:(int)arg2;
 + (_Bool)supportsSecureCoding;
 + (id)imageDescriptorNamed:(id)arg1;
 + (id)icnsImageDescriptors;
 - (void).cxx_destruct;
+@property _Bool ignoreCache; // @synthesize ignoreCache=_ignoreCache;
 @property _Bool preferExtendedColorResources; // @synthesize preferExtendedColorResources=_preferExtendedColorResources;
+@property(retain, nonatomic) IFColor *tintColor; // @synthesize tintColor=_tintColor;
 @property(nonatomic) unsigned long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
 @property(nonatomic) unsigned long long badgeOptions; // @synthesize badgeOptions=_badgeOptions;
 @property unsigned long long languageDirection; // @synthesize languageDirection=_languageDirection;
@@ -38,7 +42,7 @@
 @property(nonatomic) double scale; // @synthesize scale=_scale;
 @property(nonatomic) struct CGSize size; // @synthesize size=_size;
 @property(readonly, copy) NSString *description;
-@property(retain) id <NSCopying> imageCacheKey; // @dynamic imageCacheKey;
+@property(readonly) NSUUID *digest; // @dynamic digest;
 @property(readonly) double sanitizedScale;
 @property(readonly) struct CGSize sanitizedSize;
 @property(nonatomic) _Bool drawBadge;
@@ -53,6 +57,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSize:(struct CGSize)arg1 scale:(double)arg2;
 - (id)init;
+- (id)_recipe;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

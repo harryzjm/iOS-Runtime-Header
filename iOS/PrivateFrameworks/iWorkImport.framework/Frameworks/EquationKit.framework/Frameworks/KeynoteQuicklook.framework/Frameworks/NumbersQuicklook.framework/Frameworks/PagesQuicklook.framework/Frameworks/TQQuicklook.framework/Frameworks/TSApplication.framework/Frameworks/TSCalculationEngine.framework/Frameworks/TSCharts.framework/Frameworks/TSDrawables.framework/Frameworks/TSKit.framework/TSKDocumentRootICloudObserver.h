@@ -17,7 +17,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool suspendedCollaboration; // @synthesize suspendedCollaboration=_suspendedCollaboration;
 @property(readonly, nonatomic) long long identifer; // @synthesize identifer=_identifer;
-- (void)invokeWithDocumentRoot:(id)arg1;
+- (void)invokeWithDocumentRoot:(id)arg1 reason:(unsigned long long)arg2;
 - (id)initWithSuspendedCollaboration:(_Bool)arg1 block:(CDUnknownBlockType)arg2;
 
 @end

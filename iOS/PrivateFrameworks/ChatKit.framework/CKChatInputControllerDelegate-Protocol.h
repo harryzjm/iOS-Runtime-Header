@@ -12,6 +12,7 @@
 @protocol CKChatInputControllerDelegate <NSObject>
 - (_Bool)chatInputControllerShouldShowHandwriting:(CKChatInputController *)arg1;
 - (void)chatInputControllerDidSelectFunCamera:(CKChatInputController *)arg1;
+- (void)chatInputControllerCancelSelectFunCamera:(CKChatInputController *)arg1;
 - (void)chatInputControllerWillSelectFunCamera:(CKChatInputController *)arg1;
 - (void)showContactForHandle:(NSString *)arg1;
 - (void)sendCurrentLocation;
@@ -43,6 +44,7 @@
 - (void)sendSticker:(IMSticker *)arg1 withDragTarget:(CKBrowserDragControllerTarget *)arg2;
 - (void)chatInputControllerRequestInputViewFocusFromFullscreen:(CKChatInputController *)arg1;
 - (UIView *)viewForDragAndChatInputDropTarget;
+- (NSString *)chatInputTranscriptIdentifier;
 - (UIViewController *)viewControllerForChatInputModalPresentation;
 @end
 

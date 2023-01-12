@@ -10,17 +10,21 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFMessageAttachment-Protocol.h>
 
-@class NSData, NSDictionary, NSString, NSURL;
+@class NSData, NSDictionary, NSString, NSURL, SFPhotosLibraryImage;
 
 @interface SFMessageAttachment : NSObject <SFMessageAttachment, NSSecureCoding, NSCopying>
 {
     CDStruct_f953fb60 _has;
     int _type;
     NSURL *_url;
+    NSData *_linkMetadata;
+    SFPhotosLibraryImage *_photosLibraryImage;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) SFPhotosLibraryImage *photosLibraryImage; // @synthesize photosLibraryImage=_photosLibraryImage;
+@property(copy, nonatomic) NSData *linkMetadata; // @synthesize linkMetadata=_linkMetadata;
 @property(copy, nonatomic) NSURL *url; // @synthesize url=_url;
 @property(nonatomic) int type; // @synthesize type=_type;
 - (id)copyWithZone:(struct _NSZone *)arg1;

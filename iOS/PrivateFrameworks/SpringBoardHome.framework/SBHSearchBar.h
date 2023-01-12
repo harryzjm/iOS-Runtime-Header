@@ -4,40 +4,48 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <SpringBoardFoundation/SBFTouchPassThroughView.h>
 
 #import <SpringBoardHome/UITextFieldDelegate-Protocol.h>
 
-@class NSString, SBHFeatherBlurView, SBHSearchTextField, UIButton;
+@class NSString, SBFFeatherBlurView, SBHSearchTextField, SBHSearchVisualConfiguration, UIButton;
 @protocol SBHSearchBarDelegate, SBIconListLayoutProvider;
 
-@interface SBHSearchBar : UIView <UITextFieldDelegate>
+@interface SBHSearchBar : SBFTouchPassThroughView <UITextFieldDelegate>
 {
-    struct UIEdgeInsets _searchTextFieldEdgeInsetsForCancelButton;
-    struct UIEdgeInsets _searchTextFieldLayoutInsets;
+    struct UIEdgeInsets _textFieldHorizontalLayoutInsets;
+    double _textFieldCancelButtonSpacing;
     _Bool _showsCancelButton;
+    _Bool _alignsTextFieldOnPixelBoundaries;
+    _Bool _portraitOrientation;
     SBHSearchTextField *_searchTextField;
     id <SBHSearchBarDelegate> _delegate;
     UIButton *_cancelButton;
     id <SBIconListLayoutProvider> _listLayoutProvider;
-    double _searchTextFieldBottomEdgeInset;
-    SBHFeatherBlurView *_backgroundView;
-    struct UIEdgeInsets _searchTextFieldHorizontalEdgeInsets;
+    SBHSearchVisualConfiguration *_activeSearchConfiguration;
+    SBHSearchVisualConfiguration *_inactiveSearchConfiguration;
+    SBFFeatherBlurView *_backgroundView;
+    double _backgroundViewBottomInsetToTextField;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) SBHFeatherBlurView *backgroundView; // @synthesize backgroundView=_backgroundView;
-@property(nonatomic) double searchTextFieldBottomEdgeInset; // @synthesize searchTextFieldBottomEdgeInset=_searchTextFieldBottomEdgeInset;
-@property(nonatomic) struct UIEdgeInsets searchTextFieldHorizontalEdgeInsets; // @synthesize searchTextFieldHorizontalEdgeInsets=_searchTextFieldHorizontalEdgeInsets;
+@property(nonatomic) double backgroundViewBottomInsetToTextField; // @synthesize backgroundViewBottomInsetToTextField=_backgroundViewBottomInsetToTextField;
+@property(readonly, nonatomic) SBFFeatherBlurView *backgroundView; // @synthesize backgroundView=_backgroundView;
+@property(nonatomic, getter=isPortraitOrientation) _Bool portraitOrientation; // @synthesize portraitOrientation=_portraitOrientation;
+@property(copy, nonatomic) SBHSearchVisualConfiguration *inactiveSearchConfiguration; // @synthesize inactiveSearchConfiguration=_inactiveSearchConfiguration;
+@property(readonly, copy, nonatomic) SBHSearchVisualConfiguration *activeSearchConfiguration; // @synthesize activeSearchConfiguration=_activeSearchConfiguration;
 @property(nonatomic) __weak id <SBIconListLayoutProvider> listLayoutProvider; // @synthesize listLayoutProvider=_listLayoutProvider;
+@property(nonatomic) _Bool alignsTextFieldOnPixelBoundaries; // @synthesize alignsTextFieldOnPixelBoundaries=_alignsTextFieldOnPixelBoundaries;
 @property(nonatomic) _Bool showsCancelButton; // @synthesize showsCancelButton=_showsCancelButton;
 @property(readonly, nonatomic) UIButton *cancelButton; // @synthesize cancelButton=_cancelButton;
 @property(nonatomic) __weak id <SBHSearchBarDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) SBHSearchTextField *searchTextField; // @synthesize searchTextField=_searchTextField;
 - (void)_updateCancelButtonFont;
-- (double)_performHeightCalculation;
+- (double)_performHeightCalculationForVisualConfiguration:(id)arg1;
+- (void)_invalidateIntrinsicContentSizeAndNotify;
+- (id)_currentVisualConfiguration;
 - (void)_searchBarTextFieldDidChangeText:(id)arg1;
-- (void)_cancelButtonWasHit:(id)arg1;
+- (void)_cancelButtonTapped:(id)arg1;
 - (_Bool)textFieldShouldReturn:(id)arg1;
 - (_Bool)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (void)textFieldDidEndEditing:(id)arg1;
@@ -47,6 +55,7 @@
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)intrinsicContentSize;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1 forVisualConfiguration:(id)arg2;
 - (void)setShowsCancelButton:(_Bool)arg1 animated:(_Bool)arg2;
 @property(readonly, nonatomic) NSString *text;
 - (_Bool)isFirstResponder;

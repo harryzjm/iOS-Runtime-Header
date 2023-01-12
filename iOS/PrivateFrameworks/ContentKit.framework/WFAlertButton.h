@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, WFAlert;
+@class NSArray, NSString, WFAlert;
 
 @interface WFAlertButton : NSObject
 {
@@ -15,6 +15,7 @@
     long long _style;
     CDUnknownBlockType _handler;
     WFAlert *_alert;
+    NSArray *_alternativeSpeakableMatches;
 }
 
 + (id)buttonWithTitle:(id)arg1 style:(long long)arg2 preferred:(_Bool)arg3 handler:(CDUnknownBlockType)arg4;
@@ -24,6 +25,7 @@
 + (id)okButtonWithHandler:(CDUnknownBlockType)arg1;
 + (id)cancelButtonWithHandler:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *alternativeSpeakableMatches; // @synthesize alternativeSpeakableMatches=_alternativeSpeakableMatches;
 @property(nonatomic) __weak WFAlert *alert; // @synthesize alert=_alert;
 @property(readonly, copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
 @property(readonly, nonatomic, getter=isPreferred) _Bool preferred; // @synthesize preferred=_preferred;

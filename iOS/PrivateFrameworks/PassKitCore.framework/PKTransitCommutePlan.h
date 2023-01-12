@@ -40,6 +40,7 @@
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+@property(copy, nonatomic) NSString *titleText;
 - (id)_startField;
 - (id)_expiryField;
 - (id)copyWithZone:(struct _NSZone *)arg1;

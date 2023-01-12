@@ -53,6 +53,7 @@
 @property(readonly, nonatomic) _Bool otherSessionsRequestNoRingtoneInterruption;
 - (_Bool)shouldSuppressCallUsingRoute:(id)arg1;
 - (id)pickableRouteWithUniqueIdentifier:(id)arg1;
+- (void)switchBluetoothAudioFormats;
 - (_Bool)pickRoute:(id)arg1 error:(id *)arg2;
 - (void)_getPickableRoutesForCategory:(id)arg1 mode:(id)arg2 onlyKnownCombinations:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)getPickableRoutesForCategory:(id)arg1 mode:(id)arg2 completion:(CDUnknownBlockType)arg3;

@@ -4,28 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableSet, NSObject, NSSet;
+@class NSObject, NSSet;
 @protocol OS_dispatch_queue;
 
 @interface TSPSupportMetadata
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
-    NSMutableSet *_acknowledgedServerData;
+    struct DigestMap<TSP::DataCollaborationProperties> _dataCollaborationPropertiesMap;
+    struct os_unfair_lock_s _archivingLock;
     _Bool _isInCollaborationModeForArchiving;
-    NSSet *_acknowledgedServerDataForArchiving;
+    struct DigestMap<TSP::DataCollaborationProperties> _dataCollaborationPropertiesMapForArchiving;
+    NSSet *_knownDataDigests;
 }
 
+- (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)saveToArchiver:(id)arg1;
+- (void)setKnownDataDigestsForAutosave:(id)arg1;
 - (void)takeSnapshotWithCollaborationMode:(_Bool)arg1;
 - (id)packageLocator;
 - (unsigned char)componentRequiredPackageIdentifier;
 - (long long)tsp_identifier;
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)setData:(id)arg1 acknowledgedByServer:(_Bool)arg2;
-- (void)isDataAcknowledgedByServer:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (_Bool)isDataAcknowledgedByServer:(id)arg1;
-- (void)resetAcknowledgedServerData;
+- (void)setCollaborationPropertiesForData:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)collaborationPropertiesForData:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (struct DataCollaborationProperties)collaborationPropertiesForData:(id)arg1;
+- (void)validateDataCollaborationProperties:(struct DataCollaborationProperties *)arg1 forData:(id)arg2;
+- (void)p_resetServerDataFlags;
 - (id)initWithContext:(id)arg1;
 - (void)commonInit;
 

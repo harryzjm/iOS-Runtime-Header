@@ -7,6 +7,7 @@
 #import <Foundation/NSAttributedString.h>
 
 @interface NSAttributedString (PKUIUtilities)
++ (id)pkui_attriutedStringWithString:(id)arg1 font:(id)arg2 paragraphStyle:(id)arg3;
 - (struct CGSize)pkui_sizeThatFits:(struct CGSize)arg1 withNumberOfLines:(unsigned long long)arg2 forceWordWrap:(_Bool)arg3;
 - (struct CGSize)pkui_sizeThatFits:(struct CGSize)arg1 withNumberOfLines:(unsigned long long)arg2;
 - (struct CGSize)pkui_sizeThatFits:(struct CGSize)arg1;

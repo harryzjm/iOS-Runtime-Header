@@ -11,6 +11,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)axCustomActionForContextualAction:(id)arg1;
+- (_Bool)_axPerformCustomAction:(id)arg1;
+- (id)_privateAccessibilityCustomActions;
+- (id)_accessibilityIndexPathForCell;
 - (unsigned long long)accessibilityTraits;
 - (id)_accessibilityUserTestingChildren;
 - (id)accessibilityCustomActions;

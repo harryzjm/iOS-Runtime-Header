@@ -8,6 +8,7 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface _MRReceivedCommandAppOptionsProtobuf : PBCodable <NSCopying>
 {
     _Bool _launchApplication;
@@ -16,17 +17,13 @@
     } _has;
 }
 
-@property(nonatomic) _Bool launchApplication; // @synthesize launchApplication=_launchApplication;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasLaunchApplication;
 
 @end
 

@@ -21,8 +21,8 @@
 @property(readonly, nonatomic) struct CKComponentBoundsAnimation boundsAnimation; // @synthesize boundsAnimation=_boundsAnimation;
 @property(readonly, nonatomic) CKComponentScopeRoot *scopeRoot; // @synthesize scopeRoot=_scopeRoot;
 @property(readonly, nonatomic) id model; // @synthesize model=_model;
-- (const struct CKComponentLayout *)layout;
-- (id)initWithLayout:(const struct CKComponentLayout *)arg1 model:(id)arg2 scopeRoot:(id)arg3 boundsAnimation:(struct CKComponentBoundsAnimation)arg4;
+- (const void *)layout;
+- (id)initWithLayout:(const void *)arg1 model:(id)arg2 scopeRoot:(id)arg3 boundsAnimation:(struct CKComponentBoundsAnimation)arg4;
 
 @end
 

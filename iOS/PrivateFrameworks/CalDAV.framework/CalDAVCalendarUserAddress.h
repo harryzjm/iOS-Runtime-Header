@@ -14,6 +14,8 @@
     long long _preferred;
 }
 
++ (_Bool)compareAddressURL:(id)arg1 localURL:(id)arg2;
++ (_Bool)compareAddressURL:(id)arg1 localString:(id)arg2;
 + (id)_preferredAddressNoPreferred:(id)arg1;
 + (id)_minPreferredAddress:(id)arg1;
 + (id)preferredAddress:(id)arg1;
@@ -23,6 +25,7 @@
 - (void).cxx_destruct;
 @property long long preferred; // @synthesize preferred=_preferred;
 @property(retain, nonatomic) NSURL *address; // @synthesize address=_address;
+- (_Bool)isSameAsUserAddressURL:(id)arg1;
 - (long long)compare:(id)arg1;
 - (id)initWithAddress:(id)arg1 preferred:(long long)arg2;
 

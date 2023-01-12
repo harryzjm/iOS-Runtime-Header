@@ -7,7 +7,7 @@
 #import <UIKitCore/NSCopying-Protocol.h>
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class UIColor, UIView, UIVisualEffect;
+@class UIColor, UIImage, UIView, UIVisualEffect;
 @protocol UIConfigurationState, _UIBackgroundConfigurationInternal;
 
 @protocol _UIBackgroundConfigurationInternal <NSObject, NSCopying>
@@ -20,12 +20,16 @@
 @property(nonatomic) double strokeOutset;
 @property(nonatomic) double strokeWidth;
 @property(retain, nonatomic) UIColor *strokeColor;
+@property(nonatomic) long long imageContentMode;
+@property(retain, nonatomic) UIImage *image;
 @property(copy, nonatomic) UIVisualEffect *visualEffect;
+@property(readonly, nonatomic) _Bool isTintBackgroundColor;
 @property(retain, nonatomic) UIColor *backgroundColor;
 @property(nonatomic) unsigned long long edgesAddingLayoutMarginsToBackgroundInsets;
 @property(nonatomic) struct NSDirectionalEdgeInsets backgroundInsets;
 @property(nonatomic) double cornerRadius;
 @property(retain, nonatomic) UIView *customView;
+- (_Bool)_isEqualToInternalConfigurationQuick:(id <_UIBackgroundConfigurationInternal>)arg1;
 - (_Bool)_backgroundFillIsEqual:(id <_UIBackgroundConfigurationInternal>)arg1 withTintColor:(UIColor *)arg2;
 - (UIColor *)resolvedStrokeColorForTintColor:(UIColor *)arg1;
 - (UIColor *)resolvedBackgroundColorForTintColor:(UIColor *)arg1;

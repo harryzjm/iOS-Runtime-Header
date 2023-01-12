@@ -16,6 +16,7 @@
 - (struct TransformMetadataItemPair)pu_stillAssetTransformMetadataPair;
 - (CDStruct_8e0628e6)pu_perspectiveTransformForMetadata:(id)arg1;
 - (_Bool)_pu_getVitalityTransform:(out CDStruct_8e0628e6 *)arg1 dimensions:(out struct CGSize *)arg2;
+- (_Bool)_pu_isVitalityLimitingAllowed;
 - (void)_pu_handleRequiredPropertiesLoadedWithAdditionalNormalizedTransform:(CDStruct_8e0628e6)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)pu_loadNormalizedVitalityPerspectiveTransformWithAdditionalNormalizedTransform:(CDStruct_8e0628e6)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)pu_stillImageTransformAssetTrack;

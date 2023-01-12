@@ -100,7 +100,7 @@
 - (void)didTap:(id)arg1;
 - (void)didPinch:(id)arg1;
 - (_Bool)userIsScrubbing;
-- (void)_updatePlaybackPosition:(id)arg1 animated:(_Bool)arg2;
+- (void)updatePlaybackPosition:(id)arg1 animated:(_Bool)arg2;
 - (void)updateAccessoryViews;
 - (void)_scrubberDisplayLinkTick:(id)arg1;
 - (void)updateScrubberDisplayLinkState;
@@ -116,6 +116,8 @@
 - (void)changeToLiveMode;
 - (void)togglePlayPause;
 - (void)_addConstraints;
+- (void)_removeDisplayLink;
+- (void)_createAndStartDisplayLink;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;

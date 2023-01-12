@@ -26,6 +26,7 @@
     NSData *_serializedQuarantineData;
     NSData *_serializedAccessResourcePerWorkflowStateData;
     NSString *_lastSavedOnDeviceName;
+    NSData *_serializedSmartPromptsPerWorkflowStateData;
     WFWorkflowRecord *_cachedRecord;
 }
 
@@ -34,6 +35,7 @@
 + (id)recordType;
 - (void).cxx_destruct;
 @property(retain, nonatomic) WFWorkflowRecord *cachedRecord; // @synthesize cachedRecord=_cachedRecord;
+@property(copy, nonatomic) NSData *serializedSmartPromptsPerWorkflowStateData; // @synthesize serializedSmartPromptsPerWorkflowStateData=_serializedSmartPromptsPerWorkflowStateData;
 @property(copy, nonatomic) NSString *lastSavedOnDeviceName; // @synthesize lastSavedOnDeviceName=_lastSavedOnDeviceName;
 @property(copy, nonatomic) NSData *serializedAccessResourcePerWorkflowStateData; // @synthesize serializedAccessResourcePerWorkflowStateData=_serializedAccessResourcePerWorkflowStateData;
 @property(copy, nonatomic) NSData *serializedQuarantineData; // @synthesize serializedQuarantineData=_serializedQuarantineData;

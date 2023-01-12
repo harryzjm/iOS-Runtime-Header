@@ -11,20 +11,22 @@
 {
     _Bool _downloadAssets;
     long long _cacheLifetimeHint;
+    unsigned long long _maxConcurrentFetchCount;
     CDUnknownBlockType _progressHandler;
+    CDUnknownBlockType _interestTokenHandler;
+    CDUnknownBlockType _archiveHandler;
     id <FCContentContext> _context;
     NSArray *_resourceIDs;
     NSArray *_resources;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSArray *resources; // @synthesize resources=_resources;
-@property(readonly, nonatomic) _Bool downloadAssets; // @synthesize downloadAssets=_downloadAssets;
-@property(readonly, nonatomic) NSArray *resourceIDs; // @synthesize resourceIDs=_resourceIDs;
-@property(retain, nonatomic) id <FCContentContext> context; // @synthesize context=_context;
+@property(copy, nonatomic) CDUnknownBlockType archiveHandler; // @synthesize archiveHandler=_archiveHandler;
+@property(copy, nonatomic) CDUnknownBlockType interestTokenHandler; // @synthesize interestTokenHandler=_interestTokenHandler;
 @property(copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
+@property(nonatomic) unsigned long long maxConcurrentFetchCount; // @synthesize maxConcurrentFetchCount=_maxConcurrentFetchCount;
 @property(nonatomic) long long cacheLifetimeHint; // @synthesize cacheLifetimeHint=_cacheLifetimeHint;
-- (_Bool)_shoudUsePermanentURLForResourceID:(id)arg1;
+- (void)operationWillFinishWithError:(id)arg1;
 - (id)completeFetchOperation;
 - (id)downloadAssetsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)fetchResourcesWithCompletion:(CDUnknownBlockType)arg1;

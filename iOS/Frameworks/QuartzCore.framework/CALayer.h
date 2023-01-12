@@ -61,7 +61,7 @@
 @property(copy) NSArray *filters;
 @property _Bool masksToBounds;
 @property struct CGColor *backgroundColor;
-@property float opacity;
+@property float gain;
 @property float minificationFilterBias;
 @property(copy) NSString *minificationFilter;
 @property(copy) NSString *magnificationFilter;
@@ -137,8 +137,10 @@
 @property(retain) CALayer *mask;
 @property(readonly) CALayer *superlayer;
 @property(copy) NSArray *sublayers;
+@property float opacity;
 @property(copy) NSString *contentsScaling;
 @property(copy) NSString *contentsGravity;
+@property(readonly) long long contentsGravityEnum;
 @property(copy) NSString *contentsFormat;
 @property(copy) NSString *securityMode;
 @property unsigned int disableUpdateMask;
@@ -208,8 +210,7 @@
 @property struct CGSize sizeRequisition;
 @property _Bool allowsGroupBlending;
 @property _Bool toneMapToStandardDynamicRange;
-- (void)setWantsExtendedDynamicRangeContent:(_Bool)arg1;
-- (_Bool)wantsExtendedDynamicRangeContent;
+@property _Bool wantsExtendedDynamicRangeContent;
 @property _Bool allowsDisplayCompositing;
 @property _Bool createsCompositingGroup;
 @property _Bool preloadsCache;
@@ -240,9 +241,6 @@
 - (void)encodeWithCAMLWriter:(id)arg1;
 - (void)CAMLParser:(id)arg1 setValue:(id)arg2 forKey:(id)arg3;
 - (id)recursiveDescription;
-@property(copy) NSArray *layoutDependents;
-- (void)removeLayoutDependent:(id)arg1;
-- (void)addLayoutDependent:(id)arg1;
 @property(copy) NSArray *presentationModifiers;
 - (void)removePresentationModifier:(id)arg1;
 - (void)addPresentationModifier:(id)arg1;
@@ -250,8 +248,8 @@
 - (void)layerDidBecomeVisible:(_Bool)arg1;
 - (unsigned int)_renderLayerPropertyAnimationFlags:(unsigned int)arg1;
 - (_Bool)_renderLayerDefinesProperty:(unsigned int)arg1;
-- (void)_didCommitLayer:(struct Transaction *)arg1;
-- (struct Layer *)_copyRenderLayer:(struct Transaction *)arg1 layerFlags:(unsigned int)arg2 commitFlags:(unsigned int *)arg3;
+- (void)_didCommitLayer:(void *)arg1;
+- (void *)_copyRenderLayer:(void *)arg1 layerFlags:(unsigned int)arg2 commitFlags:(unsigned int *)arg3;
 - (id)layerAtTime:(double)arg1;
 - (id)layerBeingDrawn;
 - (struct CGSize)size;

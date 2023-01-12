@@ -8,7 +8,7 @@
 
 #import <Photos/NSSecureCoding-Protocol.h>
 
-@class NSData, NSNumber, NSURL, PHAdjustmentData;
+@class NSData, NSNumber, NSString, NSURL, PHAdjustmentData;
 
 @interface PHContentEditingOutput : NSObject <NSSecureCoding>
 {
@@ -21,6 +21,7 @@
     NSNumber *_originalResourceChoice;
     long long _fullSizeRenderWidth;
     long long _fullSizeRenderHeight;
+    double _fullSizeRenderDuration;
     NSData *_penultimateRenderedJPEGData;
     NSURL *_penultimateRenderedVideoContentURL;
     NSURL *_renderedVideoPosterURL;
@@ -32,6 +33,7 @@
     NSNumber *_playbackVariation;
     NSNumber *_videoDuration;
     NSNumber *_reframeVariation;
+    NSString *_accessibilityDescription;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -40,6 +42,7 @@
 + (id)renderURLWithExtensionForMediaType:(long long)arg1;
 + (id)outputForFlippingFullSizeRenderWithContentEditingInput:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *accessibilityDescription; // @synthesize accessibilityDescription=_accessibilityDescription;
 @property(retain, nonatomic) NSNumber *reframeVariation; // @synthesize reframeVariation=_reframeVariation;
 @property(retain, nonatomic) NSNumber *videoDuration; // @synthesize videoDuration=_videoDuration;
 @property(retain, nonatomic) NSNumber *playbackVariation; // @synthesize playbackVariation=_playbackVariation;
@@ -53,6 +56,7 @@
 @property(copy) NSURL *renderedVideoPosterURL; // @synthesize renderedVideoPosterURL=_renderedVideoPosterURL;
 @property(copy) NSURL *penultimateRenderedVideoContentURL; // @synthesize penultimateRenderedVideoContentURL=_penultimateRenderedVideoContentURL;
 @property(retain) NSData *penultimateRenderedJPEGData; // @synthesize penultimateRenderedJPEGData=_penultimateRenderedJPEGData;
+@property(nonatomic) double fullSizeRenderDuration; // @synthesize fullSizeRenderDuration=_fullSizeRenderDuration;
 @property(nonatomic) long long fullSizeRenderHeight; // @synthesize fullSizeRenderHeight=_fullSizeRenderHeight;
 @property(nonatomic) long long fullSizeRenderWidth; // @synthesize fullSizeRenderWidth=_fullSizeRenderWidth;
 @property(nonatomic) _Bool isSubstandardRender; // @synthesize isSubstandardRender=_isSubstandardRender;

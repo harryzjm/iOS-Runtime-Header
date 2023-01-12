@@ -17,6 +17,8 @@
 {
     NSString *_identifier;
     NSString *_title;
+    NSString *_iconImageName;
+    NSString *_iconImageBundlePath;
     unsigned long long _activationMode;
     NSURL *_launchURL;
     NSString *_launchBundleID;
@@ -38,6 +40,8 @@
 @property(readonly, copy, nonatomic) NSString *launchBundleID; // @synthesize launchBundleID=_launchBundleID;
 @property(readonly, copy, nonatomic) NSURL *launchURL; // @synthesize launchURL=_launchURL;
 @property(readonly, nonatomic) unsigned long long activationMode; // @synthesize activationMode=_activationMode;
+@property(readonly, copy, nonatomic) NSString *iconImageBundlePath; // @synthesize iconImageBundlePath=_iconImageBundlePath;
+@property(readonly, copy, nonatomic) NSString *iconImageName; // @synthesize iconImageName=_iconImageName;
 @property(readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)succinctDescriptionBuilder;

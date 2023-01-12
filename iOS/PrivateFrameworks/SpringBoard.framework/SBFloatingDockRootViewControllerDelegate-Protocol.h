@@ -6,18 +6,25 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class SBFloatingDockRootViewController, SBFolderController;
-@protocol SBViewControllerTransitionCoordinator;
+@class NSString, SBFloatingDockRootViewController, SBFolderController, UIViewController;
+@protocol BSInvalidatable, SBViewControllerTransitionCoordinator;
 
 @protocol SBFloatingDockRootViewControllerDelegate <NSObject>
 - (void)floatingDockRootViewController:(SBFloatingDockRootViewController *)arg1 floatingDockWantsToBePresented:(_Bool)arg2;
 - (void)floatingDockRootViewController:(SBFloatingDockRootViewController *)arg1 didChangeToFrame:(struct CGRect)arg2;
-- (void)floatingDockRootViewController:(SBFloatingDockRootViewController *)arg1 willChangeToHeight:(double)arg2;
+- (void)floatingDockRootViewController:(SBFloatingDockRootViewController *)arg1 willChangeToHeight:(double)arg2 interactive:(_Bool)arg3;
 
 @optional
+- (id <BSInvalidatable>)floatingDockRootViewController:(SBFloatingDockRootViewController *)arg1 acquireOrderFloatingDockContainerBeforeLibraryAssertionForReason:(NSString *)arg2;
+- (UIViewController *)foregroundLibraryContainerViewControllerForFloatingDockRootViewController:(SBFloatingDockRootViewController *)arg1;
+- (_Bool)isDefaultLibraryContainerViewControllerForegroundForFloatingDockRootViewController:(SBFloatingDockRootViewController *)arg1;
+- (UIViewController *)libraryContainerViewControllerForFloatingDockRootViewController:(SBFloatingDockRootViewController *)arg1;
 - (double)minimumHomeScreenScaleForFloatingDockRootViewController:(SBFloatingDockRootViewController *)arg1;
 - (void)floatingDockRootViewControllerDidEndPresentationTransition:(SBFloatingDockRootViewController *)arg1;
+- (void)floatingDockRootViewController:(SBFloatingDockRootViewController *)arg1 didUpdateContentEligibilityForAsynchronousRendering:(_Bool)arg2;
 - (void)floatingDockRootViewController:(SBFloatingDockRootViewController *)arg1 willPerformTransitionWithFolder:(SBFolderController *)arg2 presenting:(_Bool)arg3 withTransitionCoordinator:(id <SBViewControllerTransitionCoordinator>)arg4;
+- (void)floatingDockRootViewController:(SBFloatingDockRootViewController *)arg1 didCompleteTransitionWithLibraryToPresented:(_Bool)arg2;
+- (void)floatingDockRootViewController:(SBFloatingDockRootViewController *)arg1 willPerformTransitionWithLibraryToPresented:(_Bool)arg2;
 - (void)floatingDockRootViewController:(SBFloatingDockRootViewController *)arg1 modifyProgress:(double)arg2 interactive:(_Bool)arg3 completion:(void (^)(_Bool))arg4;
 - (_Bool)floatingDockRootViewControllerShouldHandlePanGestureRecognizer:(SBFloatingDockRootViewController *)arg1;
 @end

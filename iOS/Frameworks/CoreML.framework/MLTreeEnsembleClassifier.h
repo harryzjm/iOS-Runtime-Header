@@ -13,21 +13,21 @@
 @interface MLTreeEnsembleClassifier <MLModelSpecificationLoader, MLCompiledModelLoader, MLSpecificationCompiler>
 {
     shared_ptr_0841df90 _mmapped_model;
-    vector_aab22ae2 _cached_model;
+    vector_ce5fcef0 _cached_model;
     unsigned long long num_dimensions;
-    vector_ebb6ef3e _classes_by_string;
-    vector_bbba3654 _classes_by_int64_t;
+    vector_bfe5b09a _classes_by_string;
+    vector_1ee95920 _classes_by_int64_t;
     long long _class_type;
     NSArray *_class_values;
     NSString *_single_array_key;
 }
 
-+ (id)loadModelFromCompiledArchive:(struct _MLModelInputArchiver *)arg1 modelVersionInfo:(id)arg2 compilerVersionInfo:(id)arg3 configuration:(id)arg4 error:(id *)arg5;
-+ (id)compiledVersionForSpecification:(struct _MLModelSpecification *)arg1 options:(id)arg2 error:(id *)arg3;
-+ (id)compileSpecification:(struct _MLModelSpecification *)arg1 toArchive:(struct _MLModelOutputArchiver *)arg2 options:(id)arg3 error:(id *)arg4;
-+ (id)loadModelFromSpecification:(struct _MLModelSpecification *)arg1 configuration:(id)arg2 error:(id *)arg3;
-+ (id)loadModelFromSpecificationWithCompilationOptions:(struct _MLModelSpecification *)arg1 options:(id)arg2 error:(id *)arg3;
-+ (_Bool)_convertStringClassVector:(const vector_ebb6ef3e *)arg1 int64ClassVector:(const vector_bbba3654 *)arg2 dimensions:(unsigned long long)arg3 toClassLabel:(id *)arg4 classType:(long long *)arg5 andReturnError:(id *)arg6;
++ (id)loadModelFromCompiledArchive:(void *)arg1 modelVersionInfo:(id)arg2 compilerVersionInfo:(id)arg3 configuration:(id)arg4 error:(id *)arg5;
++ (id)compiledVersionForSpecification:(void *)arg1 options:(id)arg2 error:(id *)arg3;
++ (id)compileSpecification:(void *)arg1 toArchive:(void *)arg2 options:(id)arg3 error:(id *)arg4;
++ (id)loadModelFromSpecification:(void *)arg1 configuration:(id)arg2 error:(id *)arg3;
++ (id)loadModelFromSpecificationWithCompilationOptions:(void *)arg1 options:(id)arg2 error:(id *)arg3;
++ (_Bool)_convertStringClassVector:(const void *)arg1 int64ClassVector:(const void *)arg2 dimensions:(unsigned long long)arg3 toClassLabel:(id *)arg4 classType:(long long *)arg5 andReturnError:(id *)arg6;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)classify:(id)arg1 options:(id)arg2 error:(id *)arg3;

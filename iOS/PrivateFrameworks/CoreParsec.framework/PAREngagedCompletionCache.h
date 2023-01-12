@@ -12,6 +12,7 @@
 
 + (id)sharedInstance;
 - (void)updateParametersForSmartSearchV1:(id)arg1 smartSearchV2:(id)arg2;
+- (void)addEngagedSuggestions:(id)arg1;
 - (void)clearAllCompletions;
 - (void)clearCompletionsFromDate:(id)arg1 toDate:(id)arg2;
 - (void)addCompletion:(id)arg1 forInput:(id)arg2;

@@ -15,7 +15,6 @@
 - (void).cxx_destruct;
 @property(nonatomic) _Bool includeSecondaryContainers; // @synthesize includeSecondaryContainers=_includeSecondaryContainers;
 @property(readonly, copy, nonatomic) NSDictionary *subscriptions; // @synthesize subscriptions=_subscriptions;
-- (id)_operationForContainer:(id)arg1 configuration:(id)arg2 cloudState:(id)arg3;
 - (void)main;
 - (id)initWithConfiguration:(id)arg1 cloudState:(id)arg2 subscriptions:(id)arg3;
 - (id)initWithConfiguration:(id)arg1 cloudState:(id)arg2;

@@ -6,18 +6,23 @@
 
 #import <Intents/INIntent.h>
 
-@class DeviceQuery, NSArray, SignedDuration;
+@class NSArray, SignedDuration;
 
 @interface SkipTimeIntent : INIntent
 {
 }
 
+- (id)initWithDomain:(id)arg1 verb:(id)arg2 parametersByName:(id)arg3;
+- (id)initWithIdentifier:(id)arg1 backingStore:(id)arg2;
+- (id)initWithCoder:(id)arg1;
+- (id)init;
 
 // Remaining properties
-@property(copy, nonatomic) NSArray *deviceContext; // @dynamic deviceContext;
-@property(copy, nonatomic) DeviceQuery *deviceQuery; // @dynamic deviceQuery;
-@property(copy, nonatomic) NSArray *devices; // @dynamic devices;
-@property(copy, nonatomic) SignedDuration *duration; // @dynamic duration;
+@property(nonatomic, copy) NSArray *deviceContext; // @dynamic deviceContext;
+@property(nonatomic, copy) NSArray *deviceQueries; // @dynamic deviceQueries;
+@property(nonatomic, copy) NSArray *devices; // @dynamic devices;
+@property(nonatomic, retain) SignedDuration *duration; // @dynamic duration;
 @property(nonatomic) long long mediaType; // @dynamic mediaType;
+
 @end
 

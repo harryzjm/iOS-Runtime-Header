@@ -10,14 +10,23 @@
 @protocol GEOTransitDeparture, GEOTransitDepartureFrequency, GEOTransitLine;
 
 @protocol GEOTransitDepartureSequence <NSObject>
+@property(readonly, nonatomic) NSTimeZone *timeZone;
+@property(readonly, nonatomic) unsigned long long walkingETA;
+@property(readonly, nonatomic) _Bool hasWalkingETA;
 @property(readonly, nonatomic) NSSet *nextStopIDs;
 @property(readonly, nonatomic) NSArray *operatingHours;
+@property(readonly, nonatomic) NSArray *containerLabelItems;
+@property(readonly, nonatomic) NSString *containerDisplayName;
+@property(readonly, nonatomic) NSString *originName;
+@property(readonly, nonatomic) NSString *displayName;
 @property(readonly, nonatomic) NSString *headsign;
 @property(readonly, nonatomic) NSString *direction;
 @property(readonly, nonatomic) long long displayStyle;
 @property(readonly, nonatomic) _Bool isLowFrequency;
 @property(readonly, nonatomic) id <GEOTransitLine> line;
+@property(readonly, nonatomic) unsigned long long transitId;
 - (NSArray *)operatingHoursForDate:(NSDate *)arg1 inTimeZone:(NSTimeZone *)arg2;
+- (NSDate *)serviceResumesAfterDate:(NSDate *)arg1;
 - (_Bool)isDepartureDateInactive:(NSDate *)arg1 withReferenceDate:(NSDate *)arg2;
 - (id <GEOTransitDepartureFrequency>)frequencyToDescribeAtDate:(NSDate *)arg1;
 - (double)frequencyForSortingAtDate:(NSDate *)arg1;

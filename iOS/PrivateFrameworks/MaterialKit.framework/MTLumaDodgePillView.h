@@ -24,6 +24,7 @@
     NSMutableArray *_bounceAnimationKeys;
 }
 
++ (struct CGSize)suggestedSizeForContentWidth:(double)arg1 withSettings:(id)arg2;
 + (_Bool)supportsBackgroundLuminanceObserving;
 + (Class)layerClass;
 + (void)initialize;

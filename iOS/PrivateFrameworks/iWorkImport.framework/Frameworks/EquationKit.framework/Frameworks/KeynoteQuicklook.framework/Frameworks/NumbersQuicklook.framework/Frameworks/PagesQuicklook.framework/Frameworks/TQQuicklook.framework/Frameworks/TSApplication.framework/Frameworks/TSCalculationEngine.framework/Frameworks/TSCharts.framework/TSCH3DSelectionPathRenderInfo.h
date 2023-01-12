@@ -10,16 +10,16 @@
 
 @interface TSCH3DSelectionPathRenderInfo : NSObject
 {
-    NSString *mString;
-    unsigned long long mStyleIndex;
-    double mRotation;
+    NSString *_string;
+    unsigned long long _styleIndex;
+    double _rotation;
 }
 
 + (id)renderInfoWithString:(id)arg1 styleIndex:(unsigned long long)arg2 rotation:(double)arg3;
-@property(readonly, nonatomic) double rotation; // @synthesize rotation=mRotation;
-@property(readonly, nonatomic) unsigned long long styleIndex; // @synthesize styleIndex=mStyleIndex;
-@property(readonly, nonatomic) NSString *string; // @synthesize string=mString;
-- (void)dealloc;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) double rotation; // @synthesize rotation=_rotation;
+@property(readonly, nonatomic) unsigned long long styleIndex; // @synthesize styleIndex=_styleIndex;
+@property(readonly, nonatomic) NSString *string; // @synthesize string=_string;
 - (id)initWithString:(id)arg1 styleIndex:(unsigned long long)arg2 rotation:(double)arg3;
 
 @end

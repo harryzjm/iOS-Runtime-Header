@@ -18,7 +18,9 @@
 + (id)mainDisplay;
 + (void)updateDisplays;
 + (id)displays;
+- (float)highestLocalPreferredFrameRateRequest;
 - (void)overrideDisplayTimings:(id)arg1;
+- (id)flipBookWithOptions:(id)arg1;
 - (id)flipBookWithCapacity:(unsigned long long)arg1;
 - (id)allowedHDRModes;
 - (id)preferredHDRModes;
@@ -40,6 +42,7 @@
 @property(readonly, nonatomic) struct CGSize overscanAmounts;
 @property(readonly, nonatomic) double overscanAmount;
 @property(readonly, nonatomic, getter=isOverscanned) _Bool overscanned;
+@property(readonly, nonatomic) _Bool hasNativeFrameRateRequest;
 @property(readonly, nonatomic) long long minimumFrameDuration;
 @property(readonly, nonatomic) double heartbeatRate;
 @property(readonly, nonatomic) double refreshRate;
@@ -67,9 +70,10 @@
 - (_Bool)setDisplayProperties:(id)arg1;
 - (id)immutableCopy;
 - (void)update;
+- (void *)timingsControl;
 - (void)_invalidate;
 - (void)dealloc;
-- (id)_initWithDisplay:(struct Display *)arg1;
+- (id)_initWithDisplay:(void *)arg1;
 
 @end
 

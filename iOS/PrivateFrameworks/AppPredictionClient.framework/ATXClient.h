@@ -29,7 +29,7 @@
 - (void)logUserFeedback:(id)arg1 consumerSubType:(unsigned char)arg2 engagementType:(unsigned long long)arg3 bundleIdentifier:(id)arg4 bundleIdsShown:(id)arg5 explicitlyRejectedIds:(id)arg6;
 - (id)atxResponseFromBlendingAppPredictionCacheForConsumerSubType:(unsigned char)arg1 filterPredicate:(id)arg2 limit:(int)arg3;
 - (id)appPredictionsForConsumerSubType:(unsigned char)arg1 blackList:(id)arg2 limit:(int)arg3 runningDiagnostics:(_Bool)arg4;
-- (id)_predicateForBlacklist:(id)arg1;
+- (id)_predicateForDenyList:(id)arg1;
 - (id)appPredictionsForConsumerSubType:(unsigned char)arg1 limit:(int)arg2;
 - (void)sortAppsByLaunches:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)_syncProxy;

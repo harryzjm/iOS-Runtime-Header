@@ -9,7 +9,7 @@
 }
 
 - (id)description;
-- (id)init:(long long)arg1;
+- (id)init:(_Bool)arg1 order:(long long)arg2;
 
 @end
 

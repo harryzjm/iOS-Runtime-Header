@@ -14,6 +14,10 @@
 + (id)deviceInputWithDevice:(id)arg1 error:(id *)arg2;
 + (void)initialize;
 - (id)videoDevice;
+- (void)setBackgroundBlurAllowed:(_Bool)arg1;
+- (_Bool)isBackgroundBlurAllowed;
+- (void)setCenterStageAllowed:(_Bool)arg1;
+- (_Bool)isCenterStageAllowed;
 - (float)portraitLightingEffectStrength;
 - (void)setPortraitLightingEffectStrength:(float)arg1;
 - (float)simulatedAperture;
@@ -25,6 +29,7 @@
 - (void)setBuiltInMicrophoneStereoAudioCaptureEnabled:(_Bool)arg1;
 - (_Bool)isBuiltInMicrophoneStereoAudioCaptureEnabled;
 - (_Bool)isBuiltInMicrophoneStereoAudioCaptureSupported;
+- (void)_bumpChangeSeedForFirstPortWithMediaType:(id)arg1;
 - (void)_sourceFormatDidChange:(struct opaqueCMFormatDescription *)arg1;
 - (void)_handleNotification:(id)arg1 payload:(id)arg2;
 - (_Bool)_authorizedToUseDeviceAndRequestIfNecessary:(id)arg1;

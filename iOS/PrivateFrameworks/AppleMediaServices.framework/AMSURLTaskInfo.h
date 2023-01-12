@@ -6,26 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class AMSURLAction, AMSURLRequestProperties, AMSURLSession, NSError, NSMutableData, NSMutableDictionary, NSMutableSet, NSURLResponse, NSURLSessionTask, NSURLSessionTaskMetrics;
+@class AMSURLAction, AMSURLRequestProperties, AMSURLSession, NSData, NSError, NSMutableData, NSMutableSet, NSSet, NSURLResponse, NSURLSessionTask, NSURLSessionTaskMetrics;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface AMSURLTaskInfo : NSObject
 {
     NSMutableData *_data;
+    NSMutableSet *_retryIdentifiers;
+    CDUnknownBlockType _completionBlock;
     NSError *_error;
-    unsigned long long _previousAuthorizationCredentialSource;
     NSURLSessionTaskMetrics *_metrics;
+    unsigned long long _previousAuthorizationCredentialSource;
     AMSURLRequestProperties *_properties;
     AMSURLAction *_receivedAction;
     NSURLResponse *_response;
     long long _retryCount;
-    NSMutableSet *_retryIdentifiers;
     AMSURLSession *_session;
     NSURLSessionTask *_task;
+    struct os_unfair_recursive_lock_s _taskLock;
     NSObject<OS_dispatch_queue> *_taskQueue;
-    NSMutableDictionary *_userInfo;
-    CDUnknownBlockType _completionBlock;
 }
 
 + (id)sharedTaskQueue;
@@ -34,21 +34,29 @@ __attribute__((visibility("hidden")))
 + (id)createTaskInfoForTask:(id)arg1;
 + (id)taskInfoForTask:(id)arg1;
 - (void).cxx_destruct;
-@property(copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
-@property(readonly, nonatomic) NSMutableDictionary *userInfo; // @synthesize userInfo=_userInfo;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *taskQueue; // @synthesize taskQueue=_taskQueue;
-@property(retain, nonatomic) NSURLSessionTask *task; // @synthesize task=_task;
+@property(readonly, nonatomic) struct os_unfair_recursive_lock_s taskLock; // @synthesize taskLock=_taskLock;
+@property(readonly, nonatomic) NSURLSessionTask *task; // @synthesize task=_task;
+- (void)performSyncBlockWithExclusiveAccess:(CDUnknownBlockType)arg1;
+- (void)performSyncBlock:(CDUnknownBlockType)arg1;
+- (void)performAsyncBlock:(CDUnknownBlockType)arg1;
+- (void)migrateFromTaskInfo:(id)arg1;
+- (id)createMetricsContextForDecodedObject:(id)arg1;
+- (void)assertIsOnPrivateQueue;
+- (void)assertHasExclusiveAccess;
+- (void)appendData:(id)arg1;
+- (void)addRetryIdentifier:(id)arg1;
 @property(retain, nonatomic) AMSURLSession *session; // @synthesize session=_session;
-@property(retain, nonatomic) NSMutableSet *retryIdentifiers; // @synthesize retryIdentifiers=_retryIdentifiers;
 @property(nonatomic) long long retryCount; // @synthesize retryCount=_retryCount;
 @property(retain, nonatomic) NSURLResponse *response; // @synthesize response=_response;
 @property(retain, nonatomic) AMSURLAction *receivedAction; // @synthesize receivedAction=_receivedAction;
 @property(retain, nonatomic) AMSURLRequestProperties *properties; // @synthesize properties=_properties;
-@property(retain, nonatomic) NSURLSessionTaskMetrics *metrics; // @synthesize metrics=_metrics;
 @property(nonatomic) unsigned long long previousAuthorizationCredentialSource; // @synthesize previousAuthorizationCredentialSource=_previousAuthorizationCredentialSource;
+@property(retain, nonatomic) NSURLSessionTaskMetrics *metrics; // @synthesize metrics=_metrics;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
-@property(retain, nonatomic) NSMutableData *data; // @synthesize data=_data;
-- (void)migrateFromTaskInfo:(id)arg1;
+@property(copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
+@property(readonly, nonatomic) NSSet *retryIdentifiers;
+@property(readonly, nonatomic) NSData *data;
 - (id)initWithTask:(id)arg1;
 
 @end

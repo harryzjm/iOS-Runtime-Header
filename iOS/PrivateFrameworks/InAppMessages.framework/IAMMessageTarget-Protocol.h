@@ -11,5 +11,8 @@
 @protocol IAMMessageTarget <NSObject>
 @property(readonly, nonatomic) NSString *targetIdentifier;
 - (void)messageCoordinator:(IAMMessageCoordinator *)arg1 didUpdatePriorityMessage:(IAMMessage *)arg2 forTarget:(NSString *)arg3;
+
+@optional
+@property(readonly, nonatomic) _Bool shouldBeNotifiedOfNilPriorityMessageAfterRegistration;
 @end
 

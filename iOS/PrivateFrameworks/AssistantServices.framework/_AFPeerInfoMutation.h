@@ -14,9 +14,12 @@
 {
     AFPeerInfo *_baseModel;
     _Bool _isDeviceOwnedByCurrentUser;
+    NSString *_assistantIdentifier;
+    NSString *_sharedUserIdentifier;
     NSString *_idsIdentifier;
     NSString *_idsDeviceUniqueIdentifier;
     NSString *_rapportEffectiveIdentifier;
+    NSString *_homeKitAccessoryIdentifier;
     NSString *_mediaSystemIdentifier;
     NSString *_mediaRouteIdentifier;
     _Bool _isCommunalDevice;
@@ -29,9 +32,12 @@
     struct _mutationFlags {
         unsigned int isDirty:1;
         unsigned int hasIsDeviceOwnedByCurrentUser:1;
+        unsigned int hasAssistantIdentifier:1;
+        unsigned int hasSharedUserIdentifier:1;
         unsigned int hasIdsIdentifier:1;
         unsigned int hasIdsDeviceUniqueIdentifier:1;
         unsigned int hasRapportEffectiveIdentifier:1;
+        unsigned int hasHomeKitAccessoryIdentifier:1;
         unsigned int hasMediaSystemIdentifier:1;
         unsigned int hasMediaRouteIdentifier:1;
         unsigned int hasIsCommunalDevice:1;
@@ -55,9 +61,12 @@
 - (void)setIsCommunalDevice:(_Bool)arg1;
 - (void)setMediaRouteIdentifier:(id)arg1;
 - (void)setMediaSystemIdentifier:(id)arg1;
+- (void)setHomeKitAccessoryIdentifier:(id)arg1;
 - (void)setRapportEffectiveIdentifier:(id)arg1;
 - (void)setIdsDeviceUniqueIdentifier:(id)arg1;
 - (void)setIdsIdentifier:(id)arg1;
+- (void)setSharedUserIdentifier:(id)arg1;
+- (void)setAssistantIdentifier:(id)arg1;
 - (void)setIsDeviceOwnedByCurrentUser:(_Bool)arg1;
 - (id)initWithBaseModel:(id)arg1;
 - (id)init;

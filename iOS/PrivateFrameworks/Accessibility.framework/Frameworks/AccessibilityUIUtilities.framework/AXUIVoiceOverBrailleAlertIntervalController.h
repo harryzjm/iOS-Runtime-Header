@@ -16,6 +16,9 @@
 - (double)numericalPreferenceValue;
 - (double)maximumValue;
 - (double)minimumValue;
+- (_Bool)userCanDisableNumericalPreference;
+- (void)setNumericalPreferenceEnabledFromUser:(_Bool)arg1;
+- (_Bool)numericalPreferenceEnabled;
 
 @end
 

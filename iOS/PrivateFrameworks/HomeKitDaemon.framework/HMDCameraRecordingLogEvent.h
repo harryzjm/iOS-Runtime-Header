@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitMetrics/HMMLogEvent.h>
+
 @class NSUUID;
 
-@interface HMDCameraRecordingLogEvent
+@interface HMDCameraRecordingLogEvent : HMMLogEvent
 {
     NSUUID *_sessionID;
     unsigned long long _sequenceNumber;
@@ -21,7 +23,7 @@
 @property(readonly, copy) NSUUID *ephemeralCameraID;
 @property(readonly) unsigned long long endTimestamp;
 @property(readonly) unsigned long long startTimestamp;
-- (id)initWithEventType:(id)arg1 sessionID:(id)arg2 cameraID:(id)arg3 sequenceNumber:(unsigned long long)arg4;
+- (id)initWithSessionID:(id)arg1 cameraID:(id)arg2 sequenceNumber:(unsigned long long)arg3;
 
 @end
 

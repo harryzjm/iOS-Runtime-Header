@@ -23,6 +23,8 @@
 @property(nonatomic, getter=get_kCalRemindersPreferredDaysToSyncKey, setter=set_kCalRemindersPreferredDaysToSyncKey:) long long kCalRemindersPreferredDaysToSyncKey;
 @property(readonly) _Bool has_kCalPreferredDaysToSyncKey;
 @property(nonatomic, getter=get_kCalPreferredDaysToSyncKey, setter=set_kCalPreferredDaysToSyncKey:) long long kCalPreferredDaysToSyncKey;
+@property(readonly) _Bool has_overrideParticipantRoleConstraint;
+@property(nonatomic, getter=get_overrideParticipantRoleConstraint, setter=set_overrideParticipantRoleConstraint:) _Bool overrideParticipantRoleConstraint;
 @property(readonly) _Bool has_suggestedLocationsTestMode;
 @property(nonatomic, getter=get_suggestedLocationsTestMode, setter=set_suggestedLocationsTestMode:) _Bool suggestedLocationsTestMode;
 @property(readonly) _Bool has_sqlProfileLoggingEnabled;

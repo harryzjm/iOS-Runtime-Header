@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WorkflowKit/WFActionUserInterface.h>
+#import <WorkflowUICore/WFEmbeddableActionUserInterface.h>
 
 #import <ActionKitUI/WFShareActionUserInterface-Protocol.h>
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WFShareActionUIKitUserInterface : WFActionUserInterface <WFShareActionUserInterface>
+@interface WFShareActionUIKitUserInterface : WFEmbeddableActionUserInterface <WFShareActionUserInterface>
 {
     CDUnknownBlockType _completionHandler;
 }
@@ -22,14 +22,17 @@ __attribute__((visibility("hidden")))
 - (void)prewarmInput:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)cancelPresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)finishWithExtensionItems:(id)arg1 error:(id)arg2;
-- (void)showWithItems:(id)arg1 usesExtensionItems:(_Bool)arg2 isContentManaged:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)presentItems:(id)arg1 isContentManaged:(_Bool)arg2;
+- (void)showWithArchivedItems:(id)arg1 isContentManaged:(_Bool)arg2 extensionBundleIdentifier:(id)arg3 extensionPointIdentifier:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)presentItems:(id)arg1 extensionBundleIdentifier:(id)arg2 extensionPointIdentifier:(id)arg3 isContentManaged:(_Bool)arg4;
+- (void)presentActivityViewControllerForItems:(id)arg1 isContentManaged:(_Bool)arg2;
+- (void)presentExtensionViewControllerForItems:(id)arg1 extensionBundleIdentifier:(id)arg2 extensionPointIdentifier:(id)arg3 isContentManaged:(_Bool)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) NSString *userInterfaceType;
 
 @end
 

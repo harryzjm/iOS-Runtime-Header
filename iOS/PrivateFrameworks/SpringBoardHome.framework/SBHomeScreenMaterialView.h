@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class UIImageView;
+@class UIImage, UIImageView;
 
 @interface SBHomeScreenMaterialView : UIView
 {
@@ -15,7 +15,6 @@
     UIImageView *_xColorBurnView;
     UIImageView *_xPlusDView;
     UIView *_highlightView;
-    struct CGPoint _wallpaperRelativeCenter;
     _Bool _highlighted;
     struct UIEdgeInsets _backgroundInsets;
 }
@@ -29,6 +28,7 @@
 - (void)layoutSubviews;
 @property(nonatomic) double brightness;
 - (void)setLegibilityStyle:(long long)arg1;
+@property(retain, nonatomic) UIImage *foregroundImage;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 backgroundView:(id)arg2 foregroundImage:(id)arg3;
 

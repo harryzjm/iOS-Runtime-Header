@@ -8,15 +8,17 @@
 
 #import <MediaServices/MSVSQLExecutable-Protocol.h>
 
-@class NSString;
+@class NSString, NSURL;
 
 @interface MSVSQLDatabase : NSObject <MSVSQLExecutable>
 {
+    NSURL *_databaseURL;
     struct sqlite3 *_databaseHandle;
     NSString *_databasePath;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSURL *databaseURL; // @synthesize databaseURL=_databaseURL;
 - (id)executeSQL:(id)arg1;
 - (id)resultsForStatement:(id)arg1;
 - (_Bool)executeStatement:(id)arg1 error:(id *)arg2;

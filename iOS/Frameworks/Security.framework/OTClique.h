@@ -6,18 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSString, OTConfigurationContext;
+@class NSString, OTConfigurationContext;
 
 @interface OTClique : NSObject
 {
-    NSString *_cliqueMemberIdentifier;
     OTConfigurationContext *_ctx;
-    NSMutableDictionary *_defaults;
+    NSString *_cliqueMemberIdentifier;
 }
 
 + (id)resetProtectedData:(id)arg1 error:(id *)arg2;
 + (long long)getCDPStatus:(id)arg1 error:(id *)arg2;
 + (_Bool)setCDPEnabled:(id)arg1 error:(id *)arg2;
++ (void)removeInheritanceKey:(id)arg1 inheritanceKeyUUID:(id)arg2 reply:(CDUnknownBlockType)arg3;
++ (void)preflightRecoverOctagonUsingInheritanceKey:(id)arg1 inheritanceKey:(id)arg2 reply:(CDUnknownBlockType)arg3;
++ (void)recoverOctagonUsingInheritanceKey:(id)arg1 inheritanceKey:(id)arg2 reply:(CDUnknownBlockType)arg3;
++ (void)createInheritanceKey:(id)arg1 uuid:(id)arg2 reply:(CDUnknownBlockType)arg3;
++ (void)removeCustodianRecoveryKey:(id)arg1 custodianRecoveryKeyUUID:(id)arg2 reply:(CDUnknownBlockType)arg3;
++ (void)preflightRecoverOctagonUsingCustodianRecoveryKey:(id)arg1 custodianRecoveryKey:(id)arg2 reply:(CDUnknownBlockType)arg3;
++ (void)recoverOctagonUsingCustodianRecoveryKey:(id)arg1 custodianRecoveryKey:(id)arg2 reply:(CDUnknownBlockType)arg3;
++ (void)createCustodianRecoveryKey:(id)arg1 uuid:(id)arg2 reply:(CDUnknownBlockType)arg3;
 + (void)recoverOctagonUsingData:(id)arg1 recoveryKey:(id)arg2 reply:(CDUnknownBlockType)arg3;
 + (void)setNewRecoveryKeyWithData:(id)arg1 recoveryKey:(id)arg2 reply:(CDUnknownBlockType)arg3;
 + (id)recoverWithContextData:(id)arg1 bottleID:(id)arg2 escrowedEntropy:(id)arg3 error:(id *)arg4;
@@ -29,9 +36,8 @@
 + (id)newFriendsWithContextData:(id)arg1 error:(id *)arg2;
 + (_Bool)platformSupportsSOS;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableDictionary *defaults; // @synthesize defaults=_defaults;
-@property(retain, nonatomic) OTConfigurationContext *ctx; // @synthesize ctx=_ctx;
 @property(copy, nonatomic) NSString *cliqueMemberIdentifier; // @synthesize cliqueMemberIdentifier=_cliqueMemberIdentifier;
+@property(readonly, nonatomic) OTConfigurationContext *ctx; // @synthesize ctx=_ctx;
 - (void)performedSuccessfulCDPStateMachineRun:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)performedFailureCDPStateMachineRun:(id)arg1 error:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (_Bool)waitForOctagonUpgrade:(id *)arg1;
@@ -69,9 +75,6 @@
 - (_Bool)establish:(id *)arg1;
 - (id)makeOTControl:(id *)arg1;
 - (id)initWithContextData:(id)arg1;
-- (void)removePairingDefault;
-- (void)setPairingDefault:(_Bool)arg1;
-- (_Bool)isOctagonPairingEnabled;
 
 @end
 

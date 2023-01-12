@@ -16,7 +16,7 @@
     _Bool _ignoreCollisionsWithExistingSuggestions;
     _Bool _ignoreCollisionsWithSameBatchSuggestions;
     _Bool _generatesInvalidSuggestions;
-    _Bool _computesReasons;
+    _Bool _computeReasons;
     _Bool _clearFeaturedSuggestions;
     NSDate *_localToday;
     NSDate *_universalStartDate;
@@ -25,18 +25,18 @@
     unsigned long long _maximumNumberOfSuggestions;
     NSIndexSet *_suggestionTypeWhitelist;
     NSIndexSet *_suggestionSubtypeWhitelist;
-    NSIndexSet *_suggestionTypeBlacklist;
-    NSIndexSet *_suggestionSubtypeBlacklist;
+    NSIndexSet *_suggestionTypeBlocklist;
+    NSIndexSet *_suggestionSubtypeBlocklist;
     NSDictionary *_additionalOptions;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool clearFeaturedSuggestions; // @synthesize clearFeaturedSuggestions=_clearFeaturedSuggestions;
 @property(retain, nonatomic) NSDictionary *additionalOptions; // @synthesize additionalOptions=_additionalOptions;
-@property(nonatomic) _Bool computeReasons; // @synthesize computeReasons=_computesReasons;
+@property(nonatomic) _Bool computeReasons; // @synthesize computeReasons=_computeReasons;
 @property(nonatomic) _Bool generateInvalidSuggestions; // @synthesize generateInvalidSuggestions=_generatesInvalidSuggestions;
-@property(retain, nonatomic) NSIndexSet *suggestionSubtypeBlacklist; // @synthesize suggestionSubtypeBlacklist=_suggestionSubtypeBlacklist;
-@property(retain, nonatomic) NSIndexSet *suggestionTypeBlacklist; // @synthesize suggestionTypeBlacklist=_suggestionTypeBlacklist;
+@property(retain, nonatomic) NSIndexSet *suggestionSubtypeBlocklist; // @synthesize suggestionSubtypeBlocklist=_suggestionSubtypeBlocklist;
+@property(retain, nonatomic) NSIndexSet *suggestionTypeBlocklist; // @synthesize suggestionTypeBlocklist=_suggestionTypeBlocklist;
 @property(retain, nonatomic) NSIndexSet *suggestionSubtypeWhitelist; // @synthesize suggestionSubtypeWhitelist=_suggestionSubtypeWhitelist;
 @property(retain, nonatomic) NSIndexSet *suggestionTypeWhitelist; // @synthesize suggestionTypeWhitelist=_suggestionTypeWhitelist;
 @property(nonatomic) _Bool ignoreCollisionsWithSameBatchSuggestions; // @synthesize ignoreCollisionsWithSameBatchSuggestions=_ignoreCollisionsWithSameBatchSuggestions;
@@ -51,6 +51,7 @@
 @property(retain, nonatomic) NSDate *localToday; // @synthesize localToday=_localToday;
 - (void)setDefaultStartAndEndDatesIfNeededWithNumberOfDays:(long long)arg1;
 - (void)setDefaultStartAndEndDatesIfNeeded;
+- (id)initWithOptionsDictionary:(id)arg1;
 - (id)init;
 
 @end

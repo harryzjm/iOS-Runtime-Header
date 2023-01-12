@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSString, NSURL;
+@class NSArray, NSDictionary, NSMutableDictionary, NSString, NSURL;
 
 @interface NSBundle : NSObject
 {
     unsigned long long _flags;
     _Atomic struct __CFBundle *_cfBundle;
-    unsigned long long _reserved2;
+    NSMutableDictionary *_attributedStringTable;
     Class _principalClass;
     id _initialPath;
     id _resolvedPath;
@@ -39,7 +39,8 @@
 + (id)pathForResource:(id)arg1 ofType:(id)arg2 inDirectory:(id)arg3;
 + (id)findBundleResourceURLsCallingMethod:(SEL)arg1 baseURL:(id)arg2 passingTest:(CDUnknownBlockType)arg3;
 + (id)findBundleResources:(id)arg1 callingMethod:(SEL)arg2 directory:(id)arg3 languages:(id)arg4 name:(id)arg5 types:(id)arg6 limit:(unsigned long long)arg7;
-- (id)localizedAttributedStringForKey:(id)arg1 value:(id)arg2 table:(id)arg3 locale:(id)arg4;
+- (id)_localizedStringNoCacheNoMarkdownParsingForKey:(id)arg1 value:(id)arg2 table:(id)arg3 localization:(id)arg4 actualTableURL:(id *)arg5 formatSpecifierConfiguration:(id *)arg6;
+- (id)localizedAttributedStringForKey:(id)arg1 value:(id)arg2 table:(id)arg3 localization:(id)arg4;
 - (id)localizedAttributedStringForKey:(id)arg1 value:(id)arg2 table:(id)arg3;
 @property(readonly, copy) NSArray *executableArchitectures;
 - (_Bool)preflightAndReturnError:(id *)arg1;
@@ -89,6 +90,7 @@
 - (_Bool)loadAndReturnError:(id *)arg1;
 - (_Bool)load;
 - (_Bool)_searchForLocalizedString:(id)arg1 foundKey:(id *)arg2 foundTable:(id *)arg3;
+- (id)localizedStringForKey:(id)arg1 value:(id)arg2 table:(id)arg3 localization:(id)arg4;
 - (id)localizedStringForKey:(id)arg1 value:(id)arg2 table:(id)arg3;
 - (id)URLsForResourcesWithExtension:(id)arg1 subdirectory:(id)arg2;
 - (id)pathsForResourcesOfType:(id)arg1 inDirectory:(id)arg2;

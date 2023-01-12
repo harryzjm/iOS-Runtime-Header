@@ -18,7 +18,7 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) __weak id <WBSSiteMetadataProviderDelegate> providerDelegate; // @synthesize providerDelegate=_providerDelegate;
+@property __weak id <WBSSiteMetadataProviderDelegate> providerDelegate; // @synthesize providerDelegate=_providerDelegate;
 - (void)webViewMetadataFetchOperation:(id)arg1 didFinishUsingWebView:(id)arg2;
 - (void)webViewMetadataFetchOperation:(id)arg1 getWebViewOfSize:(struct CGSize)arg2 withConfiguration:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)prepareResponseForRequest:(id)arg1 allowDelayedResponse:(_Bool)arg2;

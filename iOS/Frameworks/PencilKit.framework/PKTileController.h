@@ -12,25 +12,13 @@
 @interface PKTileController : NSObject
 {
     _Bool _invertColors;
+    _Bool _sixChannelBlending;
     _Bool _previewsSuspended;
     PKMetalRendererController *_rendererController;
     NSObject<OS_dispatch_queue> *_previewQueue;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *previewQueue; // @synthesize previewQueue=_previewQueue;
-@property(nonatomic) _Bool previewsSuspended; // @synthesize previewsSuspended=_previewsSuspended;
-@property(retain, nonatomic) PKMetalRendererController *rendererController; // @synthesize rendererController=_rendererController;
-@property(nonatomic) _Bool invertColors; // @synthesize invertColors=_invertColors;
-- (void)flushMemoryIfPossible;
-- (void)renderStrokes:(id)arg1 additionalStrokes:(id)arg2 intoTile:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
-- (id)strokes:(id)arg1 updateWithAdditionalStrokes:(id)arg2;
-- (void)callbackAfterTileGeneration:(CDUnknownBlockType)arg1;
-- (void)renderTilesIntoTiles:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)resumePreviews;
-- (void)suspendPreviews;
-- (void)teardown;
-- (id)initWithPixelSize:(struct CGSize)arg1 actualSize:(struct CGSize)arg2 renderQueue:(id)arg3 usePrivateResourceHandler:(_Bool)arg4 pixelFormat:(unsigned long long)arg5;
 
 @end
 

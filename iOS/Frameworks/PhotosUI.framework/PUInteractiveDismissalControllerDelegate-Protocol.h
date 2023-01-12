@@ -14,6 +14,7 @@
 - (UIView *)interactiveDismissalControllerViewHostingGestureRecognizers:(PUInteractiveDismissalController *)arg1;
 
 @optional
+- (void)interactiveDismissalControllerChangedIsHandlingDismissalInteraction:(PUInteractiveDismissalController *)arg1;
 - (PUTileController *)interactiveDismissalControllerDesignatedTileController:(PUInteractiveDismissalController *)arg1;
 - (PUTilingView *)interactiveDismissalControllerTilingView:(PUInteractiveDismissalController *)arg1;
 - (_Bool)interactiveDismissalController:(PUInteractiveDismissalController *)arg1 canBeginDismissalAtLocationFromProvider:(id <PUDisplayLocationProvider>)arg2;

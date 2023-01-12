@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *interestToken;
     MISSING_TYPE *identifier;
+    MISSING_TYPE *source;
     MISSING_TYPE *state;
     MISSING_TYPE *progress;
     MISSING_TYPE *cancelHandler;

@@ -20,7 +20,7 @@
 - (void)setDeliveryStatus:(id)arg1 status:(unsigned long long)arg2;
 - (unsigned long long)deliveryStatus:(id)arg1;
 - (id)candidatesFromData:(id)arg1 token:(id)arg2;
-- (id)dataFromCandidates:(id)arg1 token:(id)arg2;
+- (id)dataFromCandidates:(id)arg1 token:(id)arg2 remoteDeviceVersion:(unsigned int)arg3;
 
 @end
 

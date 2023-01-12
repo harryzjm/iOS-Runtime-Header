@@ -6,10 +6,11 @@
 
 #import <CoreParsec/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, _CPError;
+@class NSData, NSDictionary, NSString, _CPError;
 
 @protocol _CPErrorFeedback <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(copy, nonatomic) NSString *relatedStartNetworkSearchFeedbackId;
 @property(retain, nonatomic) _CPError *underlyingError;
 @property(retain, nonatomic) _CPError *error;
 @property(nonatomic) unsigned long long timestamp;

@@ -11,18 +11,17 @@
 @interface APXPCConnection : NSObject
 {
     NSString *_bundleID;
-    NSString *_appVersion;
     NSXPCConnection *_connection;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
-@property(retain, nonatomic) NSString *appVersion; // @synthesize appVersion=_appVersion;
 @property(retain, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property(readonly) int processIdentifier;
 - (id)remoteObjectProxy;
 - (_Bool)hasEntitlement:(id)arg1;
 - (void)invalidate;
+- (CDStruct_6ad76789)auditToken;
 - (id)initWithConnection:(id)arg1;
 
 @end

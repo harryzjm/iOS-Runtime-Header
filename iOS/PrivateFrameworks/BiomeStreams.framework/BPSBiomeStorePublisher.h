@@ -4,32 +4,39 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <BiomePubSub/BPSPublisher.h>
+#import <BiomePubSub/BMBookmarkablePublisher.h>
 
-#import <BiomeStreams/BMBookmarkablePublisher-Protocol.h>
+@class BMStoreBookmark, BMStreamDatastoreReader, BMStreamsAccessClient, NSString;
 
-@class BMStoreBookmark, BMStoreConfig, BMStoreEnumerator, NSString;
-
-@interface BPSBiomeStorePublisher : BPSPublisher <BMBookmarkablePublisher>
+@interface BPSBiomeStorePublisher : BMBookmarkablePublisher
 {
-    NSString *_streamId;
-    BMStoreConfig *_storeConfig;
     double _startTime;
-    BMStoreEnumerator *_enumerator;
+    double _endTime;
+    unsigned long long _maxEvents;
+    unsigned long long _lastEventCount;
+    unsigned long long _direction;
     BMStoreBookmark *_bookmark;
-    _Bool _nilEnumerator;
+    BMStreamsAccessClient *_accessClient;
+    BMStreamDatastoreReader *_streamDatastoreReader;
 }
 
++ (id)publisherWithPublisher:(id)arg1 upstreams:(id)arg2 bookmarkState:(id)arg3;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool nilEnumerator; // @synthesize nilEnumerator=_nilEnumerator;
-- (void)_configEnumeratorWithStartTime:(double)arg1;
-- (void)_configEnumeratorWithBookmark:(id)arg1;
 - (id)bookmarkableUpstreams;
+- (_Bool)canStorePassThroughValueInBookmark;
+- (_Bool)canStoreInternalStateInBookmark;
 - (id)withBookmark:(id)arg1;
+- (id)withLastEvents:(unsigned long long)arg1;
+- (id)withMaxEvents:(unsigned long long)arg1;
+- (id)withEndTime:(double)arg1;
 - (id)withStartTime:(double)arg1;
+- (id)reverse;
 - (void)subscribe:(id)arg1;
+@property(readonly, nonatomic) NSString *streamId;
+- (id)initWithStreamDatastoreReader:(id)arg1 streamsAccessClient:(id)arg2;
+- (id)initWithStreamId:(id)arg1 storeConfig:(id)arg2 streamsAccessClient:(id)arg3;
 - (id)initWithStreamId:(id)arg1 storeConfig:(id)arg2;
-- (id)enumerator;
+- (id)init;
 
 @end
 

@@ -6,9 +6,12 @@
 
 #import <PhotosUI/NSObject-Protocol.h>
 
-@class NSArray, PUAssetPickerCoordinator;
+@class NSOrderedSet, PUAssetPickerCoordinator;
 
 @protocol PUAssetPickerCoordinatorActionHandler <NSObject>
-- (void)coordinator:(PUAssetPickerCoordinator *)arg1 didFinishWithAssets:(NSArray *)arg2;
+- (void)coordinator:(PUAssetPickerCoordinator *)arg1 didFinishPicking:(NSOrderedSet *)arg2;
+
+@optional
+- (void)coordinator:(PUAssetPickerCoordinator *)arg1 didRequestExpandedMessagesLayout:(_Bool)arg2;
 @end
 

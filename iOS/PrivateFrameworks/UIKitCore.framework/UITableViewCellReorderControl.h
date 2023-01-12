@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIImageView, UITableViewCell;
+@class UIColor, UIImageView, UITableViewCell;
 
 __attribute__((visibility("hidden")))
 @interface UITableViewCellReorderControl
@@ -14,9 +14,11 @@ __attribute__((visibility("hidden")))
     double _focalY;
     double _focalHeight;
     UIImageView *_imageView;
+    UIColor *_accessoryTintColor;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIColor *accessoryTintColor; // @synthesize accessoryTintColor=_accessoryTintColor;
 - (id)_imageView;
 - (void)cancelTrackingWithEvent:(id)arg1;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;

@@ -4,32 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class HDProfile;
+
 @interface HDDemoDataHeartSampleGenerator
 {
+    _Bool _lastVO2MaxWorkoutWasActive;
+    HDProfile *_profile;
     double _nextElectrocardiogramSampleTime;
     unsigned long long _nextElectrocardiogramClassification;
     double _nextRestingHeartRateSampleTime;
     double _nextWalkingHeartRateAverageSampleTime;
     double _lastRestingHeartRate;
     double _lastWalkingHeartRateAverage;
+    double _nextVO2MaxSampleTime;
+    double _lastVO2MaxValue;
+    double _meanVO2MaxValue;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic) double lastWalkingHeartRateAverage; // @synthesize lastWalkingHeartRateAverage=_lastWalkingHeartRateAverage;
-@property(nonatomic) double lastRestingHeartRate; // @synthesize lastRestingHeartRate=_lastRestingHeartRate;
-@property(nonatomic) double nextWalkingHeartRateAverageSampleTime; // @synthesize nextWalkingHeartRateAverageSampleTime=_nextWalkingHeartRateAverageSampleTime;
-@property(nonatomic) double nextRestingHeartRateSampleTime; // @synthesize nextRestingHeartRateSampleTime=_nextRestingHeartRateSampleTime;
-@property(nonatomic) unsigned long long nextElectrocardiogramClassification; // @synthesize nextElectrocardiogramClassification=_nextElectrocardiogramClassification;
-@property(nonatomic) double nextElectrocardiogramSampleTime; // @synthesize nextElectrocardiogramSampleTime=_nextElectrocardiogramSampleTime;
-- (id)_generateSymptomSamplesForElectrocardiogram:(id)arg1;
-- (id)_generateElectrocardiogramForDemoPerson:(id)arg1 atTime:(double)arg2 classification:(unsigned long long)arg3 sampleDate:(id)arg4;
-- (double)_computeWalkingHeartRateAverageForDemoPerson:(id)arg1 atTime:(double)arg2;
-- (double)_computeRestingHeartRateForDemoPerson:(id)arg1 atTime:(double)arg2;
-- (id)electrocardiogramForDemoPerson:(id)arg1 atTime:(double)arg2 sampleDate:(id)arg3;
-- (id)walkingHeartRateAverageForDemoPerson:(id)arg1 atTime:(double)arg2;
-- (id)restingHeartRateForDemoPerson:(id)arg1 atTime:(double)arg2;
-- (void)generateSamplesForDemoPerson:(id)arg1 atTime:(double)arg2 sampleDate:(id)arg3 objectCollection:(id)arg4;
+- (void).cxx_destruct;
+- (void)generateSamplesForDemoPerson:(id)arg1 fromTime:(double)arg2 toTime:(double)arg3 currentDate:(id)arg4 objectCollection:(id)arg5;
+- (void)generateFirstRunSampleForDemoPerson:(id)arg1 firstDate:(id)arg2 objectCollection:(id)arg3;
 - (void)setupWithDemoDataGenerator:(id)arg1;
+- (void)setProfile:(id)arg1 provenance:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;

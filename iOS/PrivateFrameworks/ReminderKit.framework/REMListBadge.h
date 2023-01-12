@@ -17,6 +17,7 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *emoji; // @synthesize emoji;
 @property(copy, nonatomic) NSString *emblem; // @synthesize emblem;
+- (_Bool)isEqual:(id)arg1;
 - (_Bool)_isJSONString:(id)arg1;
 - (id)_emojiFromRawString:(id)arg1;
 - (_Bool)_isSingleCharacterEmoji:(id)arg1;

@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)readFrom:(struct XlChartTrendLine *)arg1 state:(id)arg2;
++ (id)readFrom:(void *)arg1 state:(id)arg2;
 
 @end
 

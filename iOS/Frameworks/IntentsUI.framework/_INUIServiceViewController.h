@@ -20,15 +20,13 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)_isSecureForRemoteViewService;
-+ (id)_remoteViewControllerInterface;
-+ (id)_exportedInterface;
 - (void).cxx_destruct;
 - (struct CGSize)_constrainedSizeForDesiredSize:(struct CGSize)arg1;
 - (void)queryRepresentedPropertiesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)desiresInteractivity:(CDUnknownBlockType)arg1;
 - (void)viewWasCancelled;
 - (void)configureForParameters:(id)arg1 ofInteraction:(id)arg2 interactiveBehavior:(unsigned long long)arg3 context:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
-- (id)_errorHandlingRemoteViewControllerProxy;
+- (void)beginRequestWithExtensionContext:(id)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)addChildViewController:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

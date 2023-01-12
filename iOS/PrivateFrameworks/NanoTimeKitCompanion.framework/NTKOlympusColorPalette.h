@@ -4,81 +4,86 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <NanoTimeKitCompanion/NTKCircularAnalogDialColorPalette-Protocol.h>
+#import <NanoTimeKitCompanion/NTKOlympusColorPalette-Protocol.h>
 
-@class CLKDevice, NSString, UIColor;
+@class NSString, UIColor;
 
-@interface NTKOlympusColorPalette : NSObject <NTKCircularAnalogDialColorPalette>
+@interface NTKOlympusColorPalette <NTKOlympusColorPalette, NTKCircularAnalogDialColorPalette>
 {
     _Bool _useSmallFont;
-    unsigned long long _color;
     unsigned long long _style;
     unsigned long long _dial;
-    CLKDevice *_device;
-    UIColor *_mainColor;
-    UIColor *_darkMainColor;
-    UIColor *_accentColor;
-    UIColor *_blackColor;
-    UIColor *_softWhiteColor;
-    UIColor *_softBlackColor;
-    UIColor *_lightMainColor;
-    UIColor *_primaryBackgroundColor;
-    UIColor *_primaryTextColor;
-    UIColor *_primaryLogoColor;
-    UIColor *_secondaryBackgroundColor;
-    UIColor *_secondaryTextColor;
-    UIColor *_secondaryLogoColor;
-    UIColor *_largeHandsColor;
-    UIColor *_secondHandColor;
-    UIColor *_cornerComplicationsAccentColor;
-    UIColor *_circularDialSubtickColor;
 }
 
-+ (id)paletteForDevice:(id)arg1 color:(unsigned long long)arg2 dial:(unsigned long long)arg3 style:(unsigned long long)arg4 useSmallFont:(_Bool)arg5;
-+ (id)paletteForDevice:(id)arg1 color:(unsigned long long)arg2 dial:(unsigned long long)arg3 style:(unsigned long long)arg4;
-- (void).cxx_destruct;
-@property(retain, nonatomic) UIColor *circularDialSubtickColor; // @synthesize circularDialSubtickColor=_circularDialSubtickColor;
-@property(retain, nonatomic) UIColor *cornerComplicationsAccentColor; // @synthesize cornerComplicationsAccentColor=_cornerComplicationsAccentColor;
-@property(retain, nonatomic) UIColor *secondHandColor; // @synthesize secondHandColor=_secondHandColor;
-@property(retain, nonatomic) UIColor *largeHandsColor; // @synthesize largeHandsColor=_largeHandsColor;
-@property(retain, nonatomic) UIColor *secondaryLogoColor; // @synthesize secondaryLogoColor=_secondaryLogoColor;
-@property(retain, nonatomic) UIColor *secondaryTextColor; // @synthesize secondaryTextColor=_secondaryTextColor;
-@property(retain, nonatomic) UIColor *secondaryBackgroundColor; // @synthesize secondaryBackgroundColor=_secondaryBackgroundColor;
-@property(retain, nonatomic) UIColor *primaryLogoColor; // @synthesize primaryLogoColor=_primaryLogoColor;
-@property(retain, nonatomic) UIColor *primaryTextColor; // @synthesize primaryTextColor=_primaryTextColor;
-@property(retain, nonatomic) UIColor *primaryBackgroundColor; // @synthesize primaryBackgroundColor=_primaryBackgroundColor;
-@property(retain, nonatomic) UIColor *lightMainColor; // @synthesize lightMainColor=_lightMainColor;
-@property(retain, nonatomic) UIColor *softBlackColor; // @synthesize softBlackColor=_softBlackColor;
-@property(retain, nonatomic) UIColor *softWhiteColor; // @synthesize softWhiteColor=_softWhiteColor;
-@property(retain, nonatomic) UIColor *blackColor; // @synthesize blackColor=_blackColor;
-@property(retain, nonatomic) UIColor *accentColor; // @synthesize accentColor=_accentColor;
-@property(retain, nonatomic) UIColor *darkMainColor; // @synthesize darkMainColor=_darkMainColor;
-@property(retain, nonatomic) UIColor *mainColor; // @synthesize mainColor=_mainColor;
-@property(retain, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property(nonatomic) _Bool useSmallFont; // @synthesize useSmallFont=_useSmallFont;
 @property(nonatomic) unsigned long long dial; // @synthesize dial=_dial;
 @property(nonatomic) unsigned long long style; // @synthesize style=_style;
-@property(nonatomic) unsigned long long color; // @synthesize color=_color;
-@property(readonly, nonatomic) _Bool isBlackBackground;
-- (_Bool)isEqual:(id)arg1;
-- (id)circularDialFillColor;
-- (id)circularDialTickColor;
-@property(readonly, nonatomic) UIColor *bezelComplicationColor;
-@property(readonly, nonatomic) UIColor *secondaryOutlineTextColor;
-@property(readonly, nonatomic) UIColor *primaryOutlineTextColor;
-- (id)colorForCircularTicksForHour:(unsigned long long)arg1;
+- (id)tritium_secondaryOutlineTextColor;
+- (id)tritium_primaryOutlineTextColor;
+- (id)tritium_secondaryTextColor;
+- (id)tritium_primaryTextColor;
+- (id)tritium_secondaryBackgroundColor;
+- (id)tritium_primaryBackgroundColor;
+- (id)_customBlack;
 - (id)colorForCircularTicksForMinute:(unsigned long long)arg1;
+- (id)colorForCircularTicksForHour:(unsigned long long)arg1;
+- (double)colorBrightness:(id)arg1;
+@property(readonly, nonatomic) UIColor *secondaryLogoColor;
+@property(readonly, nonatomic) UIColor *secondaryOutlineTextColor;
+@property(readonly, nonatomic) UIColor *secondaryTextColor;
+@property(readonly, nonatomic) UIColor *secondaryBackgroundColor;
+- (id)_circularDialFillColor;
+- (id)_circularDialSubtickColor;
+- (id)_circularDialTickColor;
+- (id)_bezelComplicationColor;
+- (id)_largeHandsColor;
+- (id)_cornerComplicationsAccentColor;
+- (id)_secondHandForColorName:(id)arg1;
+- (id)_secondHandColor;
+- (id)_logo;
+- (id)_primaryLogoColor;
+- (id)_primaryOutlineTextColor;
+- (id)_primaryBackgroundColor;
+- (id)_darker;
+- (id)_digits;
+- (id)_primaryTextColor;
+- (id)mainColor;
 @property(readonly, nonatomic) _Bool isMulticolorPalette;
-- (_Bool)_shouldHideColor:(unsigned long long)arg1;
-- (id)initWithDevice:(id)arg1 color:(unsigned long long)arg2 dial:(unsigned long long)arg3 style:(unsigned long long)arg4 useSmallFont:(_Bool)arg5;
+- (id)identifier;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)init;
 
 // Remaining properties
+@property(readonly, nonatomic) UIColor *bezelComplicationColor; // @dynamic bezelComplicationColor;
+@property(readonly, nonatomic) UIColor *black; // @dynamic black;
+@property(readonly, nonatomic) UIColor *circularDialFillColor; // @dynamic circularDialFillColor;
+@property(readonly, nonatomic) UIColor *circularDialSubtickColor; // @dynamic circularDialSubtickColor;
+@property(readonly, nonatomic) UIColor *circularDialTickColor; // @dynamic circularDialTickColor;
+@property(readonly, nonatomic) UIColor *cornerComplicationsAccentColor; // @dynamic cornerComplicationsAccentColor;
+@property(readonly, nonatomic) UIColor *customBlack; // @dynamic customBlack;
+@property(readonly, nonatomic) UIColor *darker; // @dynamic darker;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) UIColor *digits; // @dynamic digits;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) UIColor *largeHandsColor; // @dynamic largeHandsColor;
+@property(readonly, nonatomic) UIColor *logo; // @dynamic logo;
+@property(readonly, nonatomic) UIColor *orangeLogo; // @dynamic orangeLogo;
+@property(readonly, nonatomic) UIColor *primaryBackgroundColor; // @dynamic primaryBackgroundColor;
+@property(readonly, nonatomic) UIColor *primaryColor;
+@property(readonly, nonatomic) UIColor *primaryLogoColor; // @dynamic primaryLogoColor;
+@property(readonly, nonatomic) UIColor *primaryOutlineTextColor; // @dynamic primaryOutlineTextColor;
+@property(readonly, nonatomic) UIColor *primaryShiftedColor;
+@property(readonly, nonatomic) UIColor *primaryTextColor; // @dynamic primaryTextColor;
+@property(readonly, nonatomic) UIColor *secondHandColor; // @dynamic secondHandColor;
+@property(readonly, nonatomic) UIColor *secondaryColor;
+@property(readonly, nonatomic) UIColor *secondaryShiftedColor;
+@property(readonly, nonatomic) UIColor *softBlack; // @dynamic softBlack;
+@property(readonly, nonatomic) UIColor *softerBlack; // @dynamic softerBlack;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) UIColor *swatch;
+@property(readonly, nonatomic) UIColor *ticks; // @dynamic ticks;
 
 @end
 

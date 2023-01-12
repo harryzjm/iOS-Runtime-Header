@@ -6,7 +6,7 @@
 
 #import <Pegasus/UIPointerInteractionDelegate-Protocol.h>
 
-@class NSString, UIFont, UIPointerInteraction, UIViewPropertyAnimator, _PGButton;
+@class NSString, UIFont, UIImage, UIPointerInteraction, UIViewPropertyAnimator, _PGButton;
 @protocol BSInvalidatable, PGButtonViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -14,11 +14,13 @@ __attribute__((visibility("hidden")))
 {
     double _currentGlyphSize;
     NSString *_currentGlyphImageName;
+    UIImage *_currentCustomImage;
     id <BSInvalidatable> _preventAutoHideOfControlsAssertion;
     _Bool _circular;
     _Bool _highlighted;
     id <PGButtonViewDelegate> _delegate;
     NSString *_systemImageName;
+    UIImage *_image;
     double _glyphSize;
     _PGButton *_actualButton;
     UIViewPropertyAnimator *_highlightAnimator;
@@ -36,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) _PGButton *actualButton; // @synthesize actualButton=_actualButton;
 @property(nonatomic) double glyphSize; // @synthesize glyphSize=_glyphSize;
 @property(nonatomic, getter=isCircular) _Bool circular; // @synthesize circular=_circular;
+@property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
 @property(copy, nonatomic) NSString *systemImageName; // @synthesize systemImageName=_systemImageName;
 @property(nonatomic) __weak id <PGButtonViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_handleDragExit:(id)arg1;
@@ -51,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)sizeToFit;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (_Bool)_shouldHitTest;
 - (void)layoutSubviews;
 @property(copy, nonatomic) UIFont *font;
 @property(copy, nonatomic) NSString *text;

@@ -6,8 +6,11 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC12NewsArticles33ArticleRecirculationConfigFactory : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *personalizationService;
 }
 
 @end

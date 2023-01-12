@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MPCModelStorePlaybackItemsRequest, MPMutableSectionedCollection, MPPropertySet, MPSectionedCollection, MPServerObjectDatabase, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSString;
+@class MPCModelStorePlaybackItemsRequest, MPMutableSectionedCollection, MPPropertySet, MPSectionedCollection, MPServerObjectDatabase, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSString;
 
 @interface MPCModelStorePlaybackItemsRequestAccumulator : NSObject
 {
@@ -21,7 +21,6 @@
     long long _unknownEndpointLibraryPersonalizationStyle;
     NSMutableDictionary *_equivalencyMapping;
     NSMutableOrderedSet *_pendingStoreIDs;
-    NSMutableSet *_failedStoreIDs;
     long long _storePersonalizationStyle;
     MPMutableSectionedCollection *_progressiveContentDescriptors;
 }
@@ -37,6 +36,7 @@
 - (void)_addEquivalencyForMetadata:(id)arg1 requestStoreIdentifier:(id)arg2;
 - (id)newStoreItemMetadataRequest;
 - (struct MPCModelStorePlaybackItemsRequestAccumulatorResult)handleResponse:(id)arg1;
+@property(readonly, nonatomic) struct MPCModelStorePlaybackItemsRequestAccumulatorResult accumulatorResult;
 @property(readonly, nonatomic) MPSectionedCollection *unpersonalizedContentDescriptors;
 - (id)initWithRequest:(id)arg1 serverObjectDatabase:(id)arg2;
 - (id)initWithRequest:(id)arg1;

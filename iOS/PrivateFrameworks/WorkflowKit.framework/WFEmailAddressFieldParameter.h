@@ -8,6 +8,8 @@
 {
 }
 
+- (void)setAllowsCustomHandles:(_Bool)arg1;
+- (_Bool)allowsCustomHandles;
 - (id)supportedContactProperties;
 - (Class)singleStateClass;
 - (Class)multipleStateClass;

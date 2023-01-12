@@ -10,6 +10,7 @@
 
 @interface VSImageLoadOperation : VSAsyncOperation
 {
+    _Bool _nonAppInitiated;
     NSItemProvider *_itemProvider;
     VSAuditToken *_auditToken;
     VSOptional *_result;
@@ -23,6 +24,7 @@
 @property(copy, nonatomic) VSAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 @property(readonly, nonatomic) struct CGSize preferredImageSize; // @synthesize preferredImageSize=_preferredImageSize;
 @property(readonly, nonatomic) NSItemProvider *itemProvider; // @synthesize itemProvider=_itemProvider;
+@property(nonatomic, getter=isNonAppInitiated) _Bool nonAppInitiated; // @synthesize nonAppInitiated=_nonAppInitiated;
 - (void)cancel;
 - (void)executionDidBegin;
 - (void)_beginFetchingDataFromURL:(id)arg1;

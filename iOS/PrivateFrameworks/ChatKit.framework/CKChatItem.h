@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class CNContact, IMTranscriptChatItem, NSAttributedString, NSString, UITraitCollection, UNNotification;
+#import <ChatKit/CKTranscriptItemLayoutProvider-Protocol.h>
 
-@interface CKChatItem : NSObject
+@class CKMessagePartHighlightChatItem, CNContact, IMTranscriptChatItem, NSArray, NSAttributedString, NSString, UITraitCollection, UNNotification;
+
+@interface CKChatItem : NSObject <CKTranscriptItemLayoutProvider>
 {
     _Bool _zOrder;
     _Bool _wantsOverlayLayout;
@@ -17,8 +19,10 @@
     UNNotification *_notification;
     double _maxWidth;
     UITraitCollection *_transcriptTraitCollection;
+    Class _customLayoutGroupProviderClass;
     NSAttributedString *_transcriptText;
     NSAttributedString *_transcriptDrawerText;
+    NSString *_transcriptIdentifier;
     struct CGSize _size;
     struct UIEdgeInsets _textAlignmentInsets;
 }
@@ -26,15 +30,20 @@
 + (id)chatItemWithNotification:(id)arg1 balloonMaxWidth:(double)arg2 otherMaxWidth:(double)arg3;
 + (id)chatItemWithIMChatItem:(id)arg1 balloonMaxWidth:(double)arg2 otherMaxWidth:(double)arg3 transcriptTraitCollection:(id)arg4 overlayLayout:(_Bool)arg5;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *transcriptIdentifier; // @synthesize transcriptIdentifier=_transcriptIdentifier;
 @property(nonatomic, getter=isSizeLoaded) _Bool sizeLoaded; // @synthesize sizeLoaded=_sizeLoaded;
 @property(copy, nonatomic) NSAttributedString *transcriptDrawerText; // @synthesize transcriptDrawerText=_transcriptDrawerText;
 @property(copy, nonatomic) NSAttributedString *transcriptText; // @synthesize transcriptText=_transcriptText;
 @property(nonatomic) _Bool wantsOverlayLayout; // @synthesize wantsOverlayLayout=_wantsOverlayLayout;
+@property(readonly, nonatomic) Class customLayoutGroupProviderClass; // @synthesize customLayoutGroupProviderClass=_customLayoutGroupProviderClass;
 @property(retain, nonatomic) UITraitCollection *transcriptTraitCollection; // @synthesize transcriptTraitCollection=_transcriptTraitCollection;
 @property(nonatomic) double maxWidth; // @synthesize maxWidth=_maxWidth;
 @property(readonly, nonatomic) _Bool zOrder; // @synthesize zOrder=_zOrder;
 @property(retain, nonatomic) UNNotification *notification; // @synthesize notification=_notification;
 @property(retain, nonatomic) IMTranscriptChatItem *IMChatItem; // @synthesize IMChatItem=_imChatItem;
+@property(readonly, nonatomic) long long syndicationType;
+@property(readonly, nonatomic, getter=isHighlighted) _Bool highlighted;
+@property(readonly, nonatomic) long long syndicationBehavior;
 - (void)_setSizeForTesting:(struct CGSize)arg1;
 @property(readonly, nonatomic) struct CKBalloonDescriptor_t balloonDescriptor; // @dynamic balloonDescriptor;
 - (id)loadTranscriptDrawerText;
@@ -42,6 +51,8 @@
 - (id)loadTranscriptText;
 - (id)initWithNotification:(id)arg1 maxWidth:(double)arg2;
 - (id)initWithIMChatItem:(id)arg1 maxWidth:(double)arg2;
+@property(readonly, nonatomic) _Bool supportsInlineReplyTransition;
+@property(readonly, nonatomic) _Bool canQuickSave;
 @property(readonly, nonatomic) _Bool stickersSnapToPoint;
 @property(readonly, nonatomic) _Bool canAttachStickers;
 @property(readonly, copy, nonatomic) NSString *menuTitle;
@@ -68,16 +79,23 @@
 @property(readonly, nonatomic) _Bool hasTail;
 @property(readonly, nonatomic) unsigned char attachmentContiguousType;
 @property(readonly, nonatomic) unsigned char contiguousType;
+@property(readonly, nonatomic) NSString *layoutGroupIdentifier;
 - (id)description;
+- (id)syndicationBehaviorString;
 - (_Bool)isEqual:(id)arg1;
-- (id)supplementaryItemsWithLayoutEnvironment:(id)arg1;
-- (_Bool)wantsAvatarViewForLayoutEnvironment:(id)arg1;
-- (id)layoutGroupSpacingForEnvironment:(id)arg1 supplementaryItems:(id)arg2;
-- (id)layoutItemSpacingForEnvironment:(id)arg1 supplementaryItems:(id)arg2;
-- (id)layoutGroupForEnvironment:(id)arg1;
-- (Class)collectionViewCellClass;
+- (_Bool)previousPhotoActionItemIsOccluded:(unsigned long long)arg1 allDatasourceItems:(id)arg2;
+- (_Bool)previousReplyCount:(unsigned long long)arg1 allDatasourceItems:(id)arg2 isOccludedForAssociatedSize:(struct CGSize)arg3 outMaxY:(double *)arg4;
+- (id)layoutItemSpacingForReplyThreadOriginatorWithEnvironment:(id)arg1 datasourceItemIndex:(long long)arg2 allDatasourceItems:(id)arg3 supplementryItems:(id)arg4;
+- (id)layoutItemSpacingForReplyContextPreviewWithEnvironment:(id)arg1 datasourceItemIndex:(long long)arg2 allDatasourceItems:(id)arg3 supplementryItems:(id)arg4;
+- (id)layoutItemSpacingForReplyItemWithEnvironment:(id)arg1 datasourceItemIndex:(long long)arg2 allDatasourceItems:(id)arg3 supplementryItems:(id)arg4;
+- (double)_additionalBottomPaddingForChatItem:(id)arg1 datasourceItemIndex:(long long)arg2 allDatasourceItems:(id)arg3 prevChatItem:(id)arg4 layoutEnvironment:(id)arg5;
+- (double)_additionalTopPaddingForChatItem:(id)arg1 datasourceItemIndex:(long long)arg2 allDatasourceItems:(id)arg3 prevChatItem:(id)arg4 layoutEnvironment:(id)arg5;
+- (id)layoutItemSpacingWithEnvironment:(id)arg1 datasourceItemIndex:(long long)arg2 allDatasourceItems:(id)arg3 supplementryItems:(id)arg4;
+- (id)layoutItemWithEnvironment:(id)arg1 datasourceItemIndex:(long long)arg2 allDatasourceItems:(id)arg3;
+@property(readonly, nonatomic) Class chatItemClass;
 - (unsigned long long)layoutType;
-- (id)visibleAssociatedMessageChatItems;
+@property(readonly, nonatomic) CKMessagePartHighlightChatItem *messageHighlightChatItem;
+@property(readonly, nonatomic) NSArray *visibleAssociatedMessageChatItems;
 - (_Bool)itemIsReplyCount;
 - (_Bool)itemIsThreadOriginator;
 - (_Bool)itemIsReplyContextPreview;

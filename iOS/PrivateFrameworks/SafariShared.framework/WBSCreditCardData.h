@@ -27,6 +27,7 @@
 @property(copy, nonatomic) NSString *cardNumber; // @synthesize cardNumber=_cardNumber;
 @property(copy, nonatomic) NSString *cardholderName; // @synthesize cardholderName=_cardholderName;
 @property(copy, nonatomic) NSString *cardName; // @synthesize cardName=_cardName;
+@property(readonly) _Bool shouldHide;
 - (_Bool)hasSameCreditCardInformationAs:(id)arg1;
 - (id)creditCardDataByUpdatingLastUsedDate:(id)arg1;
 - (id)creditCardDataByMergingCardholderNameAndExpirationDateFromCard:(id)arg1;

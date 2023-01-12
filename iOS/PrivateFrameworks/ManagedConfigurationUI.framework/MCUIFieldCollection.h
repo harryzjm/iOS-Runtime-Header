@@ -8,7 +8,6 @@
 
 @class MCUIPayloadUserInputField, NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface MCUIFieldCollection : NSObject
 {
     NSMutableArray *_payloadFieldArrays;

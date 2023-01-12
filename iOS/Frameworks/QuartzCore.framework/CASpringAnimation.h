@@ -16,8 +16,8 @@
 @property(readonly) double settlingDuration;
 - (double)_timeFunction:(double)arg1;
 - (unsigned int)_propertyFlagsForLayer:(id)arg1;
-- (struct Animation *)_copyRenderAnimationForLayer:(id)arg1;
-- (_Bool)_setCARenderAnimation:(struct Animation *)arg1 layer:(id)arg2;
+- (void *)_copyRenderAnimationForLayer:(id)arg1;
+- (_Bool)_setCARenderAnimation:(void *)arg1 layer:(id)arg2;
 - (float)_solveForInput:(float)arg1;
 - (double)durationForEpsilon:(double)arg1;
 @property double velocity;

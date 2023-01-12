@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 + (double)edgeOffset;
 - (void).cxx_destruct;
 - (void)invalidate;
+- (void)_updateKeyboardLayoutGuideForPopover:(struct CGRect)arg1;
 - (void)applyProperties:(id)arg1;
 - (void)updateBackdropStyle:(long long)arg1;
 - (id)initWithView:(id)arg1 usingBackdropStyle:(long long)arg2;

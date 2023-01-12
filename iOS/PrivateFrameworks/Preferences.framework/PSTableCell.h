@@ -6,7 +6,7 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class NSString, NSURL, NSURLSession, PSSpecifier, PSTableCellHighlightContext, UIImageView, UILongPressGestureRecognizer;
+@class NSArray, NSString, NSURL, NSURLSession, PSSpecifier, PSTableCellHighlightContext, UIImageView, UILongPressGestureRecognizer;
 
 @interface PSTableCell : UITableViewCell
 {
@@ -32,6 +32,7 @@
     _Bool _forceHideDisclosureIndicator;
     _Bool _isCopyable;
     UILongPressGestureRecognizer *_longTapRecognizer;
+    NSArray *_constraints;
 }
 
 + (double)defaultCellHeight;
@@ -43,6 +44,7 @@
 + (id)stringFromCellType:(long long)arg1;
 + (long long)cellTypeFromString:(id)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *constraints; // @synthesize constraints=_constraints;
 @property(retain, nonatomic) UILongPressGestureRecognizer *longTapRecognizer; // @synthesize longTapRecognizer=_longTapRecognizer;
 @property(nonatomic) _Bool isCopyable; // @synthesize isCopyable=_isCopyable;
 @property(nonatomic) _Bool forceHideDisclosureIndicator; // @synthesize forceHideDisclosureIndicator=_forceHideDisclosureIndicator;
@@ -92,6 +94,9 @@
 - (id)titleTextLabel;
 - (void)setValueChangedTarget:(id)arg1 action:(SEL)arg2 specifier:(id)arg3;
 - (void)layoutSubviews;
+- (_Bool)modernLayoutEnabled;
+- (void)setupModernLayoutConstraints;
+- (_Bool)shouldUseModernLayout;
 - (void)prepareForReuse;
 - (id)lazyIconQueue:(id)arg1;
 - (void)refreshCellContentsWithSpecifier:(id)arg1;
@@ -103,6 +108,7 @@
 - (_Bool)canBecomeFirstResponder;
 - (void)dealloc;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 specifier:(id)arg3;
+@property(retain, nonatomic) NSURL *lazyIconURL;
 - (id)scriptingInfoWithChildren;
 - (id)_automationID;
 

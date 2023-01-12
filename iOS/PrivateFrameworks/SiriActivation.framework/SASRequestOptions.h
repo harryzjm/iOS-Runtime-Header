@@ -9,7 +9,7 @@
 #import <SiriActivation/NSCopying-Protocol.h>
 #import <SiriActivation/NSSecureCoding-Protocol.h>
 
-@class AFBulletin, AFRequestInfo, AFSpeechRequestOptions, NSArray, NSDictionary, NSMutableArray, NSNumber, NSString, NSURL, NSUUID, SAGuidanceCheckForGuideUpdateContext, SASPronunciationContext;
+@class AFApplicationContext, AFBulletin, AFRequestInfo, AFSpeechRequestOptions, NSArray, NSDictionary, NSMutableArray, NSNumber, NSString, NSURL, NSUUID, SASPronunciationContext;
 
 @interface SASRequestOptions : NSObject <NSCopying, NSSecureCoding>
 {
@@ -24,12 +24,12 @@
     _Bool _acousticIdEnabled;
     _Bool _releaseAudioSessionOnRecordingCompletion;
     _Bool _predictedRecordRouteIsZLL;
+    _Bool _isRemotePresentationBringUp;
     _Bool _shortButtonPressAction;
     NSString *_activationDeviceIdentifier;
     AFBulletin *_bulletin;
     NSString *_appBundleIdentifier;
-    NSDictionary *_directActionContextPayload;
-    SAGuidanceCheckForGuideUpdateContext *_checkForGuideUpdateContext;
+    AFApplicationContext *_directActionApplicationContext;
     long long _directActionEvent;
     NSString *_serverCommandId;
     SASPronunciationContext *_pronunciationContext;
@@ -53,10 +53,12 @@
     NSString *_startRecordingSoundId;
     SASRequestOptions *_originalRequestOptions;
     long long _presentationMode;
+    unsigned long long _tvRemoteType;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long tvRemoteType; // @synthesize tvRemoteType=_tvRemoteType;
 @property(nonatomic) long long presentationMode; // @synthesize presentationMode=_presentationMode;
 @property(copy, nonatomic) SASRequestOptions *originalRequestOptions; // @synthesize originalRequestOptions=_originalRequestOptions;
 @property(nonatomic, getter=isShortButtonPressAction) _Bool shortButtonPressAction; // @synthesize shortButtonPressAction=_shortButtonPressAction;
@@ -67,6 +69,7 @@
 @property(retain, nonatomic) NSUUID *previousTurnIdentifier; // @synthesize previousTurnIdentifier=_previousTurnIdentifier;
 @property(retain, nonatomic) NSMutableArray *instrumentationEvents; // @synthesize instrumentationEvents=_instrumentationEvents;
 @property(retain, nonatomic) NSString *uiPresentationIdentifier; // @synthesize uiPresentationIdentifier=_uiPresentationIdentifier;
+@property(readonly, nonatomic) _Bool isRemotePresentationBringUp; // @synthesize isRemotePresentationBringUp=_isRemotePresentationBringUp;
 @property(nonatomic) _Bool predictedRecordRouteIsZLL; // @synthesize predictedRecordRouteIsZLL=_predictedRecordRouteIsZLL;
 @property(nonatomic) _Bool releaseAudioSessionOnRecordingCompletion; // @synthesize releaseAudioSessionOnRecordingCompletion=_releaseAudioSessionOnRecordingCompletion;
 @property(nonatomic) _Bool acousticIdEnabled; // @synthesize acousticIdEnabled=_acousticIdEnabled;
@@ -91,8 +94,7 @@
 @property(nonatomic, getter=isPronunciationRequest) _Bool pronunciationRequest; // @synthesize pronunciationRequest=_pronunciationRequest;
 @property(copy, nonatomic) NSString *serverCommandId; // @synthesize serverCommandId=_serverCommandId;
 @property(nonatomic) long long directActionEvent; // @synthesize directActionEvent=_directActionEvent;
-@property(copy, nonatomic) SAGuidanceCheckForGuideUpdateContext *checkForGuideUpdateContext; // @synthesize checkForGuideUpdateContext=_checkForGuideUpdateContext;
-@property(copy, nonatomic) NSDictionary *directActionContextPayload; // @synthesize directActionContextPayload=_directActionContextPayload;
+@property(copy, nonatomic) AFApplicationContext *directActionApplicationContext; // @synthesize directActionApplicationContext=_directActionApplicationContext;
 @property(copy, nonatomic) NSString *appBundleIdentifier; // @synthesize appBundleIdentifier=_appBundleIdentifier;
 @property(retain, nonatomic) AFBulletin *bulletin; // @synthesize bulletin=_bulletin;
 @property(copy, nonatomic) NSString *activationDeviceIdentifier; // @synthesize activationDeviceIdentifier=_activationDeviceIdentifier;
@@ -102,10 +104,12 @@
 - (void)updateIfNeededWithSystemState:(id)arg1;
 - (_Bool)isHTTRequestSource;
 - (_Bool)isB288Activation;
+@property(readonly, nonatomic) _Bool isForUIFree;
 @property(readonly, nonatomic) _Bool isForEyesFree;
 @property(readonly, nonatomic, getter=isForStark) _Bool forStark;
 @property(readonly, nonatomic) _Bool isForAppleTV;
-@property(readonly, nonatomic, getter=isForSpeechRequest) _Bool forSpeechRequest;
+- (_Bool)_isForSpeechRequest;
+@property(readonly, nonatomic) long long inputType;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

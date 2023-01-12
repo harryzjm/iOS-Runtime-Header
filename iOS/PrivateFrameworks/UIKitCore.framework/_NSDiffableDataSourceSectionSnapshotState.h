@@ -12,6 +12,9 @@
 
 @interface _NSDiffableDataSourceSectionSnapshotState : NSObject <NSCopying>
 {
+    struct {
+        unsigned int identifiersHaveGuaranteedPerformance:1;
+    } _stateFlags;
     _UITreeDataSourceSnapshotter *_snapshotter;
     NSOrderedSet *_identifiers;
 }
@@ -22,6 +25,9 @@
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (_Bool)containsIdentifier:(id)arg1;
+- (long long)indexOfIdentifier:(id)arg1;
+- (id)initWithSnapshotter:(id)arg1 identifiers:(id)arg2 identifiersHaveGuaranteedPerformance:(_Bool)arg3;
 - (id)initWithSnapshotter:(id)arg1 identifiers:(id)arg2;
 - (id)init;
 

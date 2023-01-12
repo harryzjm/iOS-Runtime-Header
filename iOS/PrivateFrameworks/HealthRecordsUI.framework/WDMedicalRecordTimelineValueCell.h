@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HealthRecordsUI/WDAttributedSubtitleDisplayable-Protocol.h>
+
 @class NSLayoutConstraint, NSString, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface WDMedicalRecordTimelineValueCell
+@interface WDMedicalRecordTimelineValueCell <WDAttributedSubtitleDisplayable>
 {
     NSString *_titleString;
     NSString *_subtitleString;
@@ -46,6 +48,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 - (id)_generateValueDisplayAttributedStringWithValueFont:(id)arg1 unitFont:(id)arg2;
 - (id)_generateValueDisplayAttributedString;
+- (void)setAttributedSubtitleText:(id)arg1;
 - (void)setValue:(id)arg1 unit:(id)arg2;
 - (id)unit;
 - (id)value;

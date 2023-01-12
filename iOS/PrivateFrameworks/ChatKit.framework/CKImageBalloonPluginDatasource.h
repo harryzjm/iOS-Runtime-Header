@@ -11,13 +11,13 @@
 __attribute__((visibility("hidden")))
 @interface CKImageBalloonPluginDatasource : IMBalloonPluginDataSource
 {
-    CKBalloonView *_balloonView;
     CKMediaObject *_mediaObject;
+    CKBalloonView *_balloonView;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) CKMediaObject *mediaObject; // @synthesize mediaObject=_mediaObject;
 @property(retain, nonatomic) CKBalloonView *balloonView; // @synthesize balloonView=_balloonView;
+@property(retain, nonatomic) CKMediaObject *mediaObject; // @synthesize mediaObject=_mediaObject;
 - (void)previewDidChange:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)imageBalloon;

@@ -15,16 +15,18 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_deletedItemIDs;
     NSData *_originalSyncAnchor;
     CDUnknownBlockType _finishedBlock;
+    long long _suggestedBatchSize;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long suggestedBatchSize; // @synthesize suggestedBatchSize=_suggestedBatchSize;
 @property(copy) CDUnknownBlockType finishedBlock; // @synthesize finishedBlock=_finishedBlock;
 - (void)finishEnumeratingWithError:(id)arg1;
 - (void)finishEnumeratingChangesUpToSyncAnchor:(id)arg1 moreComing:(_Bool)arg2;
 - (void)didUpdateItems:(id)arg1;
 - (void)didDeleteItemsWithIdentifiers:(id)arg1;
-- (id)initWithObservedItemID:(id)arg1 domainContext:(id)arg2 previousChangeToken:(id)arg3;
-- (id)initWithObservedItemID:(id)arg1 domainContext:(id)arg2;
+- (id)initWithObservedItemID:(id)arg1 domainContext:(id)arg2 previousChangeToken:(id)arg3 nsFileProviderRequest:(id)arg4;
+- (id)initWithObservedItemID:(id)arg1 domainContext:(id)arg2 nsFileProviderRequest:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

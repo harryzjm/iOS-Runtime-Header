@@ -31,7 +31,9 @@
 + (_Bool)itemExistsInKeychain:(void *)arg1 useSystemKeychain:(_Bool)arg2;
 + (void)removeItemWithPersistentID:(id)arg1 useSystemKeychain:(_Bool)arg2 enforcePersonalPersona:(_Bool)arg3;
 + (void)removeItemWithPersistentID:(id)arg1 useSystemKeychain:(_Bool)arg2;
++ (id)saveItem:(void *)arg1 withLabel:(id)arg2 group:(id)arg3 useSystemKeychain:(_Bool)arg4 enforcePersonalPersona:(_Bool)arg5 accessibility:(struct __CFString *)arg6;
 + (id)saveItem:(void *)arg1 withLabel:(id)arg2 group:(id)arg3 useSystemKeychain:(_Bool)arg4 enforcePersonalPersona:(_Bool)arg5;
++ (id)saveItem:(void *)arg1 withLabel:(id)arg2 group:(id)arg3 useSystemKeychain:(_Bool)arg4 accessibility:(struct __CFString *)arg5;
 + (id)saveItem:(void *)arg1 withLabel:(id)arg2 group:(id)arg3 useSystemKeychain:(_Bool)arg4;
 + (struct __SecIdentity *)copyIdentityWithPersistentID:(id)arg1 useSystemKeychain:(_Bool)arg2 enforcePersonalPersona:(_Bool)arg3;
 + (struct __SecIdentity *)copyIdentityWithPersistentID:(id)arg1 useSystemKeychain:(_Bool)arg2;

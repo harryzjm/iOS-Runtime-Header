@@ -14,6 +14,7 @@
     unsigned long long _sectionCount;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long sectionCount; // @synthesize sectionCount=_sectionCount;
 @property(retain, nonatomic) NSMutableDictionary *globalSectionToMappings; // @synthesize globalSectionToMappings=_globalSectionToMappings;
 @property(retain, nonatomic) NSMapTable *dataSourceToMappings; // @synthesize dataSourceToMappings=_dataSourceToMappings;
@@ -57,7 +58,6 @@
 - (id)wrapperForView:(id)arg1 mapping:(id)arg2;
 - (id)_gkDescription;
 - (id)_gkDescriptionWithChildren:(long long)arg1;
-- (void)dealloc;
 - (id)init;
 
 @end

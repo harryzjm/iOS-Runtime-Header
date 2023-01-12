@@ -10,7 +10,9 @@
 @protocol HMDAccessoryBrowserProtocol
 @property(readonly, nonatomic) HMDMediaBrowser *mediaBrowser;
 @property(readonly, nonatomic) HAPAccessoryServerBrowserRelay *relayAccessoryServerBrowser;
+@property(readonly, nonatomic) _Bool active;
 @property(readonly, copy) NSArray *unassociatedAccessories;
+- (void)setBrowseableLinkTypes:(NSArray *)arg1;
 - (void)removePairingInformationForAccessoryServer:(HAPAccessoryServer *)arg1;
 - (HMDUnpairedHAPAccessory *)unpairedHAPAccessoryWithAccessoryDescription:(HMSetupAccessoryDescription *)arg1;
 - (void)removeUnassociatedAccessoryWithIdentifier:(NSString *)arg1;
@@ -18,6 +20,7 @@
 - (void)addUnassociatedAccessory:(HMDUnassociatedAccessory *)arg1 forDeviceSetup:(_Bool)arg2;
 - (id <HMDAccessoryBrowserHapProtocol>)acessoryBrowserHapProtocol;
 - (void)handleStartDiscoveringAssociatedMediaAccessories:(_Bool)arg1 forTransport:(HMFMessageTransport *)arg2 completionHandler:(void (^)(NSError *, NSDictionary *))arg3;
+- (void)currentlyFoundHAPAccessoryServerWithIdentifier:(NSString *)arg1 linkType:(long long)arg2 completion:(void (^)(HAPAccessoryServer *))arg3;
 - (void)handleNewlyPairedAccessory:(NSString *)arg1 linkType:(long long)arg2;
 - (_Bool)isBrowsingAllowed;
 - (void)discoverAccessoryServer:(NSString *)arg1 linkType:(long long)arg2 errorHandler:(void (^)(NSError *))arg3;
@@ -45,9 +48,13 @@
 - (void)pairAccessory:(HMDUnpairedHAPAccessory *)arg1 configuration:(HMDUnpairedHAPAccessoryConfiguration *)arg2 completionHandler:(void (^)(HAPAccessoryServer *, NSUUID *, long long, _Bool, _Bool, NSError *))arg3;
 - (void)registerProgressHandler:(void (^)(long long, HMDAddAccessoryProgressState *))arg1 unpairedAccessoryUUID:(NSUUID *)arg2;
 - (void)startDiscoveringAccessoriesNeedingReprovisioning;
+- (void)startDiscoveringPairedAccessoriesWithLinkType:(long long)arg1;
 - (void)startDiscoveringPairedAccessories;
+- (void)stopDiscoveringAccessoriesWithLinkType:(long long)arg1;
 - (void)stopDiscoveringAccessories;
+- (void)startDiscoveringAccessoriesWithLinkType:(long long)arg1;
 - (void)startDiscoveringAccessories;
+- (_Bool)isDiscoveringAccessoriesWithLinkType:(long long)arg1;
 - (void)endActiveAssertion:(id <NSObject>)arg1;
 - (id <NSObject>)beginActiveAssertionWithReason:(NSString *)arg1;
 - (HMDUnpairedHAPAccessory *)unpairedAccessoryWithUUID:(NSUUID *)arg1;

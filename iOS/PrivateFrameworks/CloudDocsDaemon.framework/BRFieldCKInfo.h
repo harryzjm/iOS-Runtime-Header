@@ -45,7 +45,9 @@
 @property(nonatomic) _Bool hasKnownToServer;
 - (void)sqliteBind:(struct sqlite3_stmt *)arg1 index:(int)arg2;
 - (void)setCKInfoFieldsInRecord:(id)arg1;
-- (void)markMovedToCloudDocsZone;
+- (void)clearCrossZoneMoveEtag;
+- (void)revertEtagsForOldZoneTombstone;
+- (void)markCrossZoneMoved;
 - (id)initWithRecord:(id)arg1;
 
 // Remaining properties

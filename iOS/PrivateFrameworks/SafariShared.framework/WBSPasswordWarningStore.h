@@ -12,7 +12,7 @@
 @interface WBSPasswordWarningStore : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
-    struct unique_ptr<SafariShared::SuddenTerminationDisabler, std::__1::default_delete<SafariShared::SuddenTerminationDisabler>> _suddenTerminationDisabler;
+    struct unique_ptr<SafariShared::SuddenTerminationDisabler, std::default_delete<SafariShared::SuddenTerminationDisabler>> _suddenTerminationDisabler;
     _Bool _hasPendingChanges;
     NSURL *_backingStoreURL;
     NSMutableDictionary *_lastWarningDatesByPersistentIdentifier;

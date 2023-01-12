@@ -8,13 +8,14 @@
 
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
 
-@class BKSApplicationStateMonitor, NSHashTable, NSMutableDictionary, NSString;
+@class BKSApplicationStateMonitor, NSHashTable, NSMutableDictionary, NSSet, NSString;
 @protocol HDApplicationStateMonitorProvider, OS_dispatch_queue;
 
 @interface HDProcessStateManager : NSObject <HDDiagnosticObject>
 {
     NSMutableDictionary *_processObserversByBundleID;
     NSHashTable *_foregroundClientProcessObservers;
+    NSSet *_foregroundClientBundleIdentifiers;
     BKSApplicationStateMonitor *_applicationMonitor;
     struct os_unfair_lock_s _lock;
     NSObject<OS_dispatch_queue> *_clientCalloutQueue;
@@ -25,12 +26,6 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) __weak id <HDApplicationStateMonitorProvider> applicationStateMonitorProvider; // @synthesize applicationStateMonitorProvider=_applicationStateMonitorProvider;
 - (id)diagnosticDescription;
-- (void)_lock_notifyObserversProcessWithBundleIdentifier:(id)arg1 processIdentifier:(int)arg2 applicationStateChanged:(unsigned int)arg3 previousApplicationState:(unsigned int)arg4;
-- (void)_lock_handleProcessInfoChangedWithAllPreviousProcessInfos:(id)arg1;
-- (void)_lock_unregisterObserver:(id)arg1 forBundleIdentifier:(id)arg2;
-- (void)_lock_handleBackboardApplicationInfoChanged:(id)arg1;
-- (_Bool)_lock_registerObserver:(id)arg1 forBundleIdentifier:(id)arg2;
-- (void)_handleBackboardApplicationInfoChanged:(id)arg1;
 - (int)processIdentifierForApplicationIdentifier:(id)arg1;
 - (_Bool)applicationIsForeground:(id)arg1;
 - (_Bool)isApplicationInExtendedRuntimeSessionForBundleIdentifier:(id)arg1;

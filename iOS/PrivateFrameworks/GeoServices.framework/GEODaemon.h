@@ -6,32 +6,37 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSMutableSet, NSSet;
+@class NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet;
 @protocol OS_dispatch_source, OS_xpc_object;
 
 @interface GEODaemon : NSObject
 {
     NSMutableDictionary *_servers;
+    NSMutableArray *_serversToStart;
     NSMutableSet *_peers;
     NSObject<OS_dispatch_source> *_sigInfoSrc;
     NSObject<OS_dispatch_source> *_sigTermSrc;
+    NSObject<OS_dispatch_source> *_sigUsr1Src;
     NSObject<OS_xpc_object> *_listener;
 }
 
++ (void)setCreateXPCListenerBlock:(CDUnknownBlockType)arg1;
++ (CDUnknownBlockType)createXPCListenerBlock;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSSet *peers; // @synthesize peers=_peers;
 - (id)description;
 - (void)_localeChanged:(id)arg1;
 - (void)dealloc;
-- (void)startServerClassIfNecessary:(Class)arg1;
+- (id)startServerClassIfNecessary:(Class)arg1;
 - (void)addServerClass:(Class)arg1;
-- (void)addServerInstance:(id)arg1;
 - (void)peerDidDisconnect:(id)arg1;
 - (void)peerDidConnect:(id)arg1;
 - (void)handleIncomingMessage:(id)arg1 fromPeer:(id)arg2;
 - (void)_handleNewConnection:(id)arg1;
 - (id)_createPeerForConnection:(id)arg1;
 - (id)_createListenerWithQueue:(id)arg1 onPort:(const char *)arg2;
+- (void)_shutdown:(_Bool)arg1;
+- (void)shutdown:(_Bool)arg1;
 - (void)start;
 - (id)initWithPort:(const char *)arg1;
 - (id)init;

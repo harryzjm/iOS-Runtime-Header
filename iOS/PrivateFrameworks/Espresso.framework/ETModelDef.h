@@ -10,7 +10,7 @@
 
 @interface ETModelDef : NSObject
 {
-    struct map<std::__1::basic_string<char>, std::__1::vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>> layer_variable_names;
+    struct map<std::string, std::vector<std::string>, std::less<std::string>, std::allocator<std::pair<const std::string, std::vector<std::string>>>> layer_variable_names;
     NSMutableArray *_all_variables;
     shared_ptr_d082c67d _network;
     shared_ptr_c14ee569 _gb;
@@ -30,10 +30,10 @@
 - (void)randomizeWeightsForLayer:(id)arg1 withSeed:(float)arg2;
 - (void)updateLayer:(id)arg1 withBiases:(shared_ptr_6c49034a)arg2 length:(unsigned long long)arg3;
 - (void)updateLayer:(id)arg1 withWeights:(shared_ptr_6c49034a)arg2 length:(unsigned long long)arg3;
-- (shared_ptr_0954c506)biasesForLayer:(id)arg1;
-- (shared_ptr_e18d3254)weightsForLayer:(id)arg1;
-- (struct layer *)layerForName:(id)arg1;
-- (shared_ptr_210dbb06)topNamesForLayerIndex:(int)arg1;
+- (shared_ptr_b3167edd)biasesForLayer:(id)arg1;
+- (shared_ptr_5ca6912b)weightsForLayer:(id)arg1;
+- (void *)layerForName:(id)arg1;
+- (shared_ptr_90db2d03)topNamesForLayerIndex:(int)arg1;
 - (id)initWithNetwork:(id)arg1;
 - (void)transformForTraining:(shared_ptr_d082c67d)arg1;
 

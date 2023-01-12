@@ -10,6 +10,7 @@
 {
 }
 
++ (id)combinedMenuFromKeyboardMenu:(id)arg1 withLanguageMenu:(id)arg2;
 + (void)performReturn;
 + (_Bool)isReturnKeyEnabled;
 + (long long)textInputReturnKeyTypeForEditing;

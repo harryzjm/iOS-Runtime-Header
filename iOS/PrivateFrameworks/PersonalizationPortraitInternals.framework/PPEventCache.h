@@ -20,16 +20,13 @@
 }
 
 - (void).cxx_destruct;
-- (id)cachedEventHighlightForEvent:(id)arg1 rankingOptions:(int)arg2;
+- (id)cachedEventHighlightForEvent:(id)arg1 rankingOptions:(int)arg2 trialWrapper:(id)arg3;
 - (void)setEventHighlight:(id)arg1;
-- (void)evictAllEventsNotInRanges:(id)arg1;
 - (void)evictAllEventsNotInRange:(struct _NSRange)arg1;
 - (void)removeAllObjects;
-- (void)_refreshCachedEvent:(id)arg1;
 - (id)refreshCacheWithChanges:(id)arg1 changesContainDeletion:(_Bool *)arg2;
 - (id)evictEventWithIdentifier:(id)arg1;
 - (id)objectForRange:(struct _NSRange)arg1;
-- (void)_handleMemoryPressureStatus;
 - (void)setExtraSecondsToBackfill:(unsigned long long)arg1;
 - (id)initWithEventStorage:(id)arg1;
 

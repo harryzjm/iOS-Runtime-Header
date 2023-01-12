@@ -10,6 +10,11 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct mach_timebase_info {
+    unsigned int numer;
+    unsigned int denom;
+};
+
 struct os_state_data_decoder_s {
     char _field1[64];
     char _field2[64];

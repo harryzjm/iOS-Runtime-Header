@@ -13,9 +13,5 @@ __attribute__((visibility("hidden")))
     struct CGSize _size;
 }
 
-@property(readonly, nonatomic) unsigned long long axis; // @synthesize axis=_axis;
-@property(readonly, nonatomic) struct CGSize size; // @synthesize size=_size;
-- (id)initWithSize:(struct CGSize)arg1 axis:(unsigned long long)arg2;
-
 @end
 

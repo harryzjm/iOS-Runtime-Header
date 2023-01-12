@@ -19,8 +19,7 @@ __attribute__((visibility("hidden")))
 @interface VCVirtualTTYDevice : NSObject <VCMediaStreamProtocol, VCTextSender, VCAudioIOSink, VCAudioIOSource, VCAudioIODelegate>
 {
     int _clientPid;
-    struct AudioStreamBasicDescription vpioFormat;
-    unsigned int _vpioSamplesPerFrame;
+    struct tagVCAudioFrameFormat _vpioFormat;
     int deviceRole;
     _Bool isValid;
     NSObject<VCMediaStreamDelegate> *delegate;
@@ -47,13 +46,11 @@ __attribute__((visibility("hidden")))
 - (void)pullAudioSamples:(struct opaqueVCAudioBufferList *)arg1;
 - (void)unlock;
 - (void)lock;
-- (void)setPause:(_Bool)arg1;
-- (void)stopAudioWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)stop;
+- (id)setPause:(_Bool)arg1;
+- (id)stop;
 - (void)sendText:(id)arg1;
 - (void)sendCharacter:(unsigned short)arg1;
-- (void)startVirtualTTYWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)start;
+- (id)start;
 - (void)dealloc;
 - (id)initWithMode:(long long)arg1 clientPid:(int)arg2;
 - (_Bool)setStreamConfig:(id)arg1 withError:(id *)arg2;

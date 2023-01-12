@@ -8,9 +8,6 @@
 {
 }
 
-- (id)_pushStoreIdentifier;
-- (id)_pushStores;
-- (id)_pushOperationWithStore:(id)arg1;
 - (void)main;
 - (id)initWithConfiguration:(id)arg1 cloudState:(id)arg2;
 

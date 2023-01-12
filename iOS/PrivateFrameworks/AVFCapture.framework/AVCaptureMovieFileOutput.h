@@ -16,6 +16,9 @@
 + (id)new;
 + (long long)uniqueID;
 + (void)initialize;
+- (void)setDepthCaptureEnabled:(_Bool)arg1;
+- (_Bool)isDepthCaptureEnabled;
+- (void)_updateDepthDataDeliverySupportedForSourceDevice:(id)arg1;
 - (void)setConnectionsActive:(_Bool)arg1;
 - (void)_updateBravoCameraSelectionBehaviorForSourceDevice:(id)arg1;
 - (void)_updateAvailableVideoCodecTypesForSourceDevice:(id)arg1;
@@ -41,6 +44,11 @@
 @property(copy, nonatomic) NSArray *metadata;
 - (id)outputSettingsForConnection:(id)arg1;
 - (void)setOutputSettings:(id)arg1 forConnection:(id)arg2;
+@property(readonly, nonatomic) unsigned long long primaryConstituentDeviceRestrictedSwitchingBehaviorConditionsForRecording;
+@property(readonly, nonatomic) long long primaryConstituentDeviceSwitchingBehaviorForRecording;
+- (void)_propagateBravoSwitchingBehaviorWhenRecording;
+- (void)setPrimaryConstituentDeviceSwitchingBehaviorForRecording:(long long)arg1 restrictedSwitchingBehaviorConditions:(unsigned long long)arg2;
+@property(nonatomic, getter=isPrimaryConstituentDeviceSwitchingBehaviorForRecordingEnabled) _Bool primaryConstituentDeviceSwitchingBehaviorForRecordingEnabled;
 - (void)setBravoCameraSelectionBehaviorForRecording:(id)arg1;
 - (id)bravoCameraSelectionBehaviorForRecording;
 - (id)supportedOutputSettingsKeysForConnection:(id)arg1;

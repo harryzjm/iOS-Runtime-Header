@@ -22,12 +22,20 @@
 + (_Bool)isLaunchingQuickNoteViaPencil:(id)arg1;
 + (_Bool)isQuickNoteModeURL:(id)arg1;
 + (id)urlForQuickNoteWithOptions:(id)arg1;
++ (id)predicateForFolderWithNoteFocusedInURL:(id)arg1;
++ (id)appURLForContainingFolderWithNoteFocused:(id)arg1;
++ (_Bool)isShowNoteFocusedInFolderURL:(id)arg1;
++ (_Bool)isShowPaperURL:(id)arg1;
++ (_Bool)isNewNoteURL:(id)arg1;
++ (_Bool)isSystemPaperURL:(id)arg1;
++ (_Bool)isShowSmartFoldersHelpURL:(id)arg1;
 + (_Bool)isShowHTMLNoteURL:(id)arg1;
 + (_Bool)isShowLegacyNoteURL:(id)arg1;
 + (_Bool)isShowNoteURL:(id)arg1;
 + (_Bool)isShowHTMLFolderURL:(id)arg1;
 + (_Bool)isShowFolderURL:(id)arg1;
 + (_Bool)isShowFolderListURL:(id)arg1;
++ (id)appURLforShowSmartFoldersHelp;
 + (id)appURLForFolderList;
 + (id)objectIDURIRepresentationForHTMLFolderMentionedInURL:(id)arg1;
 + (id)appURLForHTMLFolder:(id)arg1;
@@ -35,10 +43,9 @@
 + (id)appURLForFolder:(id)arg1;
 + (id)objectIDURIRepresentationForHTMLNoteMentionedInURL:(id)arg1;
 + (id)appURLForHTMLNote:(id)arg1;
++ (id)predicateForNoteMentionedInURL:(id)arg1 action:(id)arg2;
 + (id)predicateForNoteMentionedInURL:(id)arg1;
 + (id)appURLForNote:(id)arg1;
-+ (long long)appURLActionFromURL:(id)arg1;
-+ (id)urlForAppURLAction:(long long)arg1;
 
 @end
 

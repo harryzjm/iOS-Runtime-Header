@@ -10,6 +10,7 @@
 @class HFHomeKitSettingsAdapterManager, HFHomeKitSettingsValueManager, HMHome, HMSettings, NSSet;
 
 @protocol HFHomeKitSettingsVendor <HFHomeKitObject, HFGroupableItemProtocol>
+@property(readonly, nonatomic) NSSet *homekitObjectIdentifiers;
 @property(readonly) HMSettings *settings;
 @property(readonly, nonatomic) _Bool hasValidSettings;
 @property(readonly, nonatomic) HFHomeKitSettingsValueManager *hf_settingsValueManager;

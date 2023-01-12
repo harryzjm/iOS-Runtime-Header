@@ -16,18 +16,19 @@
     id <MapsSuggestionsVirtualGarageConnector> _connector;
     MapsSuggestionsObservers *_observers;
     NSObject<OS_dispatch_queue> *_queue;
+    _Bool _isConnectedToVG;
 }
 
 - (void).cxx_destruct;
 - (void)stateOfChargeForVehicleWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)virtualGarageDidUpdateUnpairedVehicles:(id)arg1;
-- (void)removeObserver:(id)arg1;
-- (void)addObserver:(id)arg1;
+- (void)unregisterObserver:(id)arg1;
+- (void)registerObserver:(id)arg1;
 - (void)closeConnection;
 - (void)openConnection;
 - (_Bool)entriesForUnpairedVehiclesWithHandler:(CDUnknownBlockType)arg1;
-- (id)initFromResourceDepot:(id)arg1;
 - (id)initWithConnector:(id)arg1;
+- (id)initFromResourceDepot:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

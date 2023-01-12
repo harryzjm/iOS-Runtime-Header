@@ -18,10 +18,12 @@ __attribute__((visibility("hidden")))
     NSXPCConnection *_connection;
     NSObject<OS_dispatch_source> *_timeoutTimer;
     MSVTaskAssertion *_taskAssertion;
+    NSString *_bundleID;
 }
 
 + (id)observerWithConnection:(id)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property(nonatomic, getter=hasTimedOut) _Bool timedOut; // @synthesize timedOut=_timedOut;
 @property(retain, nonatomic) MSVTaskAssertion *taskAssertion; // @synthesize taskAssertion=_taskAssertion;
 @property(retain, nonatomic) NSObject<OS_dispatch_source> *timeoutTimer; // @synthesize timeoutTimer=_timeoutTimer;

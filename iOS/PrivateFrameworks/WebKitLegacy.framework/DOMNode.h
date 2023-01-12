@@ -67,7 +67,7 @@
 - (struct CGRect)hrefFrame;
 - (id)hrefTarget;
 - (id)hrefURL;
-- (struct Element *)_linkElement;
+- (void *)_linkElement;
 - (id)lineBoxQuads;
 - (struct CGRect)boundingBoxUsingTransforms;
 - (struct _WKQuad)absoluteQuadAndInsideFixedPosition:(_Bool *)arg1;

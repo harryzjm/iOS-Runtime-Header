@@ -23,6 +23,10 @@
     _Bool _usesEvenOddFillRule;
     struct CGPath *_immutablePath;
     _Bool _immutablePathIsValid;
+    _Bool _isRoundedRect;
+    double _cornerRadius;
+    _Bool _hasContinuousCorners;
+    unsigned long long _cornerMask;
 }
 
 + (id)_continuousRoundedRectBezierPath:(struct CGRect)arg1 withRoundedCorners:(unsigned long long)arg2 cornerRadii:(id)arg3 segments:(int)arg4 smoothPillShapes:(_Bool)arg5;
@@ -51,6 +55,11 @@
 @property(nonatomic) int lineJoinStyle; // @synthesize lineJoinStyle=_lineJoinStyle;
 @property(nonatomic) int lineCapStyle; // @synthesize lineCapStyle=_lineCapStyle;
 @property(nonatomic) double lineWidth; // @synthesize lineWidth=_lineWidth;
+- (unsigned long long)_cornerMask;
+- (_Bool)_hasContinuousCorners;
+- (double)_cornerRadius;
+- (_Bool)_isRoundedRect;
+- (id)_bezierPathConvertedFromCoordinateSpace:(id)arg1 toCoordinateSpace:(id)arg2;
 - (void)appendBezierPathWithArcWithCenter:(struct CGPoint)arg1 radius:(double)arg2 startAngle:(double)arg3 endAngle:(double)arg4 clockwise:(_Bool)arg5;
 - (void)appendBezierPathWithOvalInRect:(struct CGRect)arg1 transform:(struct CGAffineTransform)arg2;
 - (void)appendBezierPathWithOvalInRect:(struct CGRect)arg1;
@@ -59,6 +68,7 @@
 - (void)clip;
 - (void)lineToPoint:(struct CGPoint)arg1;
 - (struct CGPath *)_pathRef;
+- (id)_objcCodeDescription;
 - (id)description;
 - (void)_addRoundedCornerWithTrueCorner:(struct CGPoint)arg1 radius:(struct CGSize)arg2 corner:(unsigned long long)arg3 clockwise:(_Bool)arg4 leadInIsContinuous:(_Bool)arg5 leadOutIsContinuous:(_Bool)arg6;
 - (void)_addRoundedCornerWithTrueCorner:(struct CGPoint)arg1 radius:(struct CGSize)arg2 corner:(unsigned long long)arg3 clockwise:(_Bool)arg4;
@@ -77,6 +87,7 @@
 @property(readonly, getter=isEmpty) _Bool empty;
 @property(nonatomic) const struct CGPath *CGPath;
 - (id)bezierPathByReversingPath;
+- (void)_invalidatePathMetadata;
 - (void)removeAllPoints;
 - (void)closePath;
 - (void)applyTransform:(struct CGAffineTransform)arg1;

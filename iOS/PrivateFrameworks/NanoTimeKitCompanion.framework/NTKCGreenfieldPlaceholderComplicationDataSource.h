@@ -18,6 +18,7 @@
 - (id)_currentTimelineEntry;
 - (void)getCurrentTimelineEntryWithHandler:(CDUnknownBlockType)arg1;
 - (id)currentSwitcherTemplate;
+- (Class)richComplicationDisplayViewClassForDevice:(id)arg1;
 - (void)resume;
 - (void)pause;
 - (id)initWithComplication:(id)arg1 family:(long long)arg2 forDevice:(id)arg3;

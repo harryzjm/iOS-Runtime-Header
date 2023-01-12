@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ITMLKit/IKJSObject.h>
-
 #import <VideosUI/VUIJSSportsInterface-Protocol.h>
 
 __attribute__((visibility("hidden")))
-@interface VUIJSSportsInterface : IKJSObject <VUIJSSportsInterface>
+@interface VUIJSSportsInterface <VUIJSSportsInterface>
 {
 }
 

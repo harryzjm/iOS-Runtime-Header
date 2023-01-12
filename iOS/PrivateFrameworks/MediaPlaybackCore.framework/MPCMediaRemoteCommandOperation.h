@@ -6,15 +6,18 @@
 
 #import <MediaPlayer/MPAsyncOperation.h>
 
-@class MPCPlayerCommandRequest;
+@class MPCPlayerCommandRequest, MPCPlayerCommandStatus;
 
+__attribute__((visibility("hidden")))
 @interface MPCMediaRemoteCommandOperation : MPAsyncOperation
 {
     MPCPlayerCommandRequest *_request;
     unsigned long long _options;
+    MPCPlayerCommandStatus *_status;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) MPCPlayerCommandStatus *status; // @synthesize status=_status;
 @property(readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property(readonly, nonatomic) MPCPlayerCommandRequest *request; // @synthesize request=_request;
 - (void)execute;

@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsFeed/NFFrameworkAssembly-Protocol.h>
+#import <NewsFeed/TFFrameworkAssembly-Protocol.h>
 
 @class MISSING_TYPE, NSArray;
 
-@interface NEAssembly : NSObject <NFFrameworkAssembly>
+@interface NEAssembly : NSObject <TFFrameworkAssembly>
 {
     MISSING_TYPE *assemblies;
 }

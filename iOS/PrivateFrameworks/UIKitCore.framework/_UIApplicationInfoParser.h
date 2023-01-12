@@ -24,12 +24,17 @@ __attribute__((visibility("hidden")))
     _Bool _supportsMultiwindow;
     _Bool _supportedOnLockScreen;
     _Bool _supportsIndirectInputEvents;
-    int _ignoredOverrides;
+    _Bool _requiresGameControllerBasedFocus;
+    _Bool _focusEnabledInLimitedControls;
+    _Bool _forcesDefaultFocusAppearance;
+    _Bool _focusSystemEnabled;
+    _Bool _supportsPrintCommand;
     long long _requestedStatusBarStyle;
     long long _interfaceOrientation;
     long long _launchingInterfaceOrientationForSpringBoard;
     unsigned long long _supportedInterfaceOrientations;
     long long _backgroundStyle;
+    unsigned long long _ignoredOverrides;
     long long _whitePointAdaptivityStyle;
     unsigned long long _viewControllerBasedStatusBarAppearance;
     NSString *_launchImageFile;
@@ -42,6 +47,11 @@ __attribute__((visibility("hidden")))
 
 + (id)mainBundleInfoParser;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool supportsPrintCommand; // @synthesize supportsPrintCommand=_supportsPrintCommand;
+@property(readonly, nonatomic) _Bool focusSystemEnabled; // @synthesize focusSystemEnabled=_focusSystemEnabled;
+@property(readonly, nonatomic) _Bool forcesDefaultFocusAppearance; // @synthesize forcesDefaultFocusAppearance=_forcesDefaultFocusAppearance;
+@property(readonly, nonatomic) _Bool focusEnabledInLimitedControls; // @synthesize focusEnabledInLimitedControls=_focusEnabledInLimitedControls;
+@property(readonly, nonatomic) _Bool requiresGameControllerBasedFocus; // @synthesize requiresGameControllerBasedFocus=_requiresGameControllerBasedFocus;
 @property(readonly, copy, nonatomic) NSArray *deviceFamilies; // @synthesize deviceFamilies=_deviceFamilies;
 @property(readonly, nonatomic) _Bool supportsIndirectInputEvents; // @synthesize supportsIndirectInputEvents=_supportsIndirectInputEvents;
 @property(readonly, nonatomic) long long supportedUserInterfaceStyle; // @synthesize supportedUserInterfaceStyle=_supportedUserInterfaceStyle;
@@ -62,7 +72,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) NSString *launchImageFile; // @synthesize launchImageFile=_launchImageFile;
 @property(readonly, nonatomic) unsigned long long viewControllerBasedStatusBarAppearance; // @synthesize viewControllerBasedStatusBarAppearance=_viewControllerBasedStatusBarAppearance;
 @property(readonly, nonatomic) long long whitePointAdaptivityStyle; // @synthesize whitePointAdaptivityStyle=_whitePointAdaptivityStyle;
-@property(readonly, nonatomic) int ignoredOverrides; // @synthesize ignoredOverrides=_ignoredOverrides;
+@property(readonly, nonatomic) unsigned long long ignoredOverrides; // @synthesize ignoredOverrides=_ignoredOverrides;
 @property(readonly, nonatomic) long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
 @property(readonly, nonatomic) unsigned long long supportedInterfaceOrientations; // @synthesize supportedInterfaceOrientations=_supportedInterfaceOrientations;
 @property(readonly, nonatomic) long long launchingInterfaceOrientationForSpringBoard; // @synthesize launchingInterfaceOrientationForSpringBoard=_launchingInterfaceOrientationForSpringBoard;

@@ -23,6 +23,7 @@
 - (void)trimScrubber:(PXLivePhotoTrimScrubber *)arg1 didEndInteractivelyEditingElement:(long long)arg2 successful:(_Bool)arg3;
 - (void)trimScrubber:(PXLivePhotoTrimScrubber *)arg1 didBeginInteractivelyEditingElement:(long long)arg2;
 - (_Bool)trimScrubber:(PXLivePhotoTrimScrubber *)arg1 canBeginInteractivelyEditingElement:(long long)arg2;
+- (void)trimScrubber:(PXLivePhotoTrimScrubber *)arg1 didTapTimelineAtTime:(CDStruct_1b6d18a9)arg2;
 - (void)trimScrubber:(PXLivePhotoTrimScrubber *)arg1 didTapElement:(long long)arg2;
 - (void)trimScrubberAssetDurationDidChange:(PXLivePhotoTrimScrubber *)arg1;
 @end

@@ -24,7 +24,6 @@
 + (id)sharedService;
 - (void).cxx_destruct;
 - (id)_geoMapItemsForPlacesInDetails:(id)arg1;
-- (id)_geoMapItemForData:(id)arg1 withSource:(unsigned long long)arg2;
 - (id)_geoMapItemForData:(id)arg1;
 - (void)_geoMapItemsForResponseData:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)locallyResolvedMapItemFromHandle:(id)arg1 error:(id *)arg2;
@@ -39,9 +38,13 @@
 - (id)handleForMapItem:(id)arg1;
 - (void)trackMapItem:(id)arg1;
 - (void)trackSerializedPlaceData:(id)arg1;
+- (id)ticketForMapsHomeWithTraits:(id)arg1;
+- (id)ticketForGuideLocationLookupWithIds:(id)arg1 identifiers:(id)arg2 traits:(id)arg3;
+- (id)ticketForCitySelectorViewWithTraits:(id)arg1 batchSize:(unsigned int)arg2;
 - (id)ticketForAllCollectionViewWithBatchSize:(unsigned int)arg1 keywordFilter:(id)arg2 addressFilter:(id)arg3 withTraits:(id)arg4;
 - (id)ticketForCuratedCollectionItems:(id)arg1 collection:(id)arg2 traits:(id)arg3;
-- (id)ticketForCuratedCollections:(id)arg1 isBatchLookup:(_Bool)arg2 traits:(id)arg3;
+- (id)ticketForCuratedCollections:(id)arg1 isBatchLookup:(_Bool)arg2 overrideSuppress:(_Bool)arg3 traits:(id)arg4;
+- (id)ticketForGuideHomeWithFilter:(id)arg1 guideLocation:(id)arg2 withTraits:(id)arg3;
 - (id)ticketForPublisherViewPublisherIdentifier:(id)arg1 keywordFilter:(id)arg2 addressFilter:(id)arg3 batchSize:(unsigned int)arg4 withTraits:(id)arg5;
 - (id)ticketForSearchHomeWithTraits:(id)arg1;
 - (id)_ticketForRefreshingHandle:(id)arg1 traits:(id)arg2;
@@ -61,7 +64,6 @@
 - (id)ticketForNearestTransitStation:(id)arg1 coordinate:(CDStruct_c3b9c2ee)arg2 traits:(id)arg3;
 - (id)ticketForTransitLines:(id)arg1 withTraits:(id)arg2;
 - (id)ticketForSearchFieldPlaceholderWithTraits:(id)arg1;
-- (id)ticketForSpotlightCategoryListWithTraits:(id)arg1;
 - (id)ticketForDFRCategoryListWithTraits:(id)arg1;
 - (id)ticketForCategoryListWithTraits:(id)arg1 isFromNoQueryState:(_Bool)arg2;
 - (id)ticketForSectionedLocalitiesAndLandmarksSearchFragment:(id)arg1 sessionData:(id)arg2 traits:(id)arg3;
@@ -72,6 +74,7 @@
 - (id)ticketForInterleavedLocalitiesAndLandmarksSearchFragment:(id)arg1 sessionData:(id)arg2 traits:(id)arg3;
 - (id)ticketForInterleavedAutoCompleteSearchFragment:(id)arg1 filters:(id)arg2 sessionData:(id)arg3 traits:(id)arg4;
 - (id)ticketForInterleavedInstantSearchFragment:(id)arg1 filters:(id)arg2 sessionData:(id)arg3 traits:(id)arg4;
+- (id)ticketForCategoryIdentifier:(id)arg1 mapItemIdentifier:(id)arg2 range:(struct _NSRange)arg3 traits:(id)arg4;
 - (id)ticketForVendorIdentifier:(id)arg1 mapItemIdentifier:(id)arg2 range:(struct _NSRange)arg3 traits:(id)arg4;
 - (id)_ticketForAutocompleteFragment:(id)arg1 type:(int)arg2 traits:(id)arg3 filters:(id)arg4 retainedSearch:(id)arg5 tappedQuerySuggestion:(id)arg6 sessionData:(id)arg7;
 - (id)ticketForURLQuery:(id)arg1 identifier:(id)arg2 resultProviderId:(int)arg3 contentProvider:(id)arg4 maxResults:(unsigned int)arg5 traits:(id)arg6;
@@ -85,11 +88,12 @@
 - (id)ticketForSearchQuery:(id)arg1 completionItem:(id)arg2 relatedSearchSuggestion:(id)arg3 retainedSearch:(id)arg4 maxResults:(unsigned int)arg5 traits:(id)arg6;
 - (id)ticketForSearchQuery:(id)arg1 completionItem:(id)arg2 retainedSearch:(id)arg3 maxResults:(unsigned int)arg4 traits:(id)arg5;
 - (id)ticketForSearchQuery:(id)arg1 completionItem:(id)arg2 maxResults:(unsigned int)arg3 traits:(id)arg4;
+- (id)ticketForNearbyTransitDeparturesWithLookupOrigin:(id)arg1 userLocation:(id)arg2 traits:(id)arg3;
 - (id)ticketForTransitTripIdentifiers:(id)arg1 traits:(id)arg2;
-- (id)ticketForTransitTripDetailsAtStation:(unsigned long long)arg1 line:(unsigned long long)arg2 referenceTripID:(unsigned long long)arg3 routingParameters:(id)arg4 traits:(id)arg5;
-- (id)ticketForTransitDeparturesAtStation:(unsigned long long)arg1 line:(unsigned long long)arg2 referenceTripID:(unsigned long long)arg3 traits:(id)arg4;
-- (id)ticketForUpdatedTransitScheduleDetailsAtStation:(unsigned long long)arg1 line:(unsigned long long)arg2 referenceTripID:(unsigned long long)arg3 routingParameters:(id)arg4 traits:(id)arg5;
-- (id)ticketForTransitScheduleAtStation:(unsigned long long)arg1 line:(unsigned long long)arg2 referenceTripID:(unsigned long long)arg3 routingParameters:(id)arg4 traits:(id)arg5;
+- (id)ticketForTransitTripDetailsAtStation:(unsigned long long)arg1 line:(unsigned long long)arg2 referenceTripID:(unsigned long long)arg3 includeAllDirectionNames:(_Bool)arg4 routingParameters:(id)arg5 traits:(id)arg6;
+- (id)ticketForTransitDeparturesAtStation:(unsigned long long)arg1 line:(unsigned long long)arg2 referenceTripID:(unsigned long long)arg3 includeAllDirectionNames:(_Bool)arg4 traits:(id)arg5;
+- (id)ticketForUpdatedTransitScheduleDetailsAtStation:(unsigned long long)arg1 line:(unsigned long long)arg2 referenceTripID:(unsigned long long)arg3 includeAllDirectionNames:(_Bool)arg4 routingParameters:(id)arg5 traits:(id)arg6;
+- (id)ticketForTransitScheduleAtStation:(unsigned long long)arg1 line:(unsigned long long)arg2 referenceTripID:(unsigned long long)arg3 includeAllDirectionNames:(_Bool)arg4 routingParameters:(id)arg5 traits:(id)arg6;
 - (id)ticketForSearchPoisForBrandMUID:(unsigned long long)arg1 traits:(id)arg2;
 - (id)ticketForPlaceLookupWithSearchCategory:(id)arg1 parentMuid:(unsigned long long)arg2 traits:(id)arg3;
 - (id)ticketForFeedbackRequest:(id)arg1 traits:(id)arg2;

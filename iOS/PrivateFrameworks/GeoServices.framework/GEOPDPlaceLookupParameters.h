@@ -33,38 +33,20 @@ __attribute__((visibility("hidden")))
 }
 
 + (Class)identifierType;
-+ (_Bool)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (id)identifierAtIndex:(unsigned long long)arg1;
 - (unsigned long long)identifiersCount;
 - (void)addIdentifier:(id)arg1;
 - (void)clearIdentifiers;
 @property(retain, nonatomic) NSMutableArray *identifiers;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasEnablePartialClientization;
-@property(nonatomic) _Bool enablePartialClientization;
-- (void)setMuids:(unsigned long long *)arg1 count:(unsigned long long)arg2;
-- (unsigned long long)muidAtIndex:(unsigned long long)arg1;
-- (void)addMuid:(unsigned long long)arg1;
-- (void)clearMuids;
-@property(readonly, nonatomic) unsigned long long *muids;
-@property(readonly, nonatomic) unsigned long long muidsCount;
-@property(nonatomic) _Bool hasResultProviderId;
-@property(nonatomic) int resultProviderId;
 - (void)dealloc;
 - (id)initWithData:(id)arg1;
 - (id)init;

@@ -12,6 +12,7 @@
 
 + (id)downsampleDataUsingGridPartitioningWithSeries:(id)arg1 xAxis:(id)arg2 yAxis:(id)arg3 sizeAxis:(id)arg4;
 + (id)downsampleDataUsingGridPartitioningWithSeries:(id)arg1 xAxis:(id)arg2 yAxis:(id)arg3;
++ (id)downsampleDataUsingTrianglesWithSeries:(id)arg1 toValueCount:(unsigned long long)arg2 radiusAxis:(id)arg3 angleAxis:(id)arg4;
 + (id)downsampleDataUsingTrianglesWithSeries:(id)arg1 toValueCount:(unsigned long long)arg2 xAxis:(id)arg3 yAxis:(id)arg4;
 
 @end

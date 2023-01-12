@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <Message/ECAccountPropertyProviding-Protocol.h>
 #import <Message/NSCopying-Protocol.h>
 #import <Message/NSObject-Protocol.h>
 
 @class ACAccount, NSArray, NSString;
 
-@protocol ECMailAccount <NSObject, NSCopying>
+@protocol ECMailAccount <NSObject, NSCopying, ECAccountPropertyProviding>
+@property(readonly, nonatomic) ACAccount *systemAccount;
 @property(readonly, copy, nonatomic) NSString *identifier;
 @property(copy, nonatomic) NSString *password;
 @property(copy, nonatomic) NSString *hostname;
 @property(readonly, copy, nonatomic) NSArray *emailAddressStrings;
-- (ACAccount *)systemAccount;
 @end
 

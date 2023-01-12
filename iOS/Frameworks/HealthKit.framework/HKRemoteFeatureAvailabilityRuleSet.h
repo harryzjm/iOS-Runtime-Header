@@ -6,18 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class NSMutableDictionary, NSSet;
 
 @interface HKRemoteFeatureAvailabilityRuleSet : NSObject
 {
     NSMutableDictionary *_conditions;
+    NSSet *_supportedConditions;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSSet *supportedConditions; // @synthesize supportedConditions=_supportedConditions;
 @property(retain, nonatomic) NSMutableDictionary *conditions; // @synthesize conditions=_conditions;
 - (id)evaluateAll;
 - (void)_parseRulesFromRawValue:(id)arg1 dataSource:(id)arg2;
-- (id)initWithRawValue:(id)arg1 dataSource:(id)arg2;
+- (id)initWithRawValue:(id)arg1 dataSource:(id)arg2 supportedConditions:(id)arg3;
 
 @end
 

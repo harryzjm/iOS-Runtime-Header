@@ -4,81 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITableViewController.h>
+#import <UIKit/UIViewController.h>
 
-#import <WorkflowUI/UIViewControllerTransitioningDelegate-Protocol.h>
-#import <WorkflowUI/WFAddToHomeScreenActivityDelegate-Protocol.h>
-#import <WorkflowUI/WFContentClassesViewControllerDelegate-Protocol.h>
-#import <WorkflowUI/WFGalleryImportViewControllerDelegate-Protocol.h>
-#import <WorkflowUI/WFHealthFeatureObserver-Protocol.h>
-#import <WorkflowUI/WFTableViewFooterLinkViewDelegate-Protocol.h>
-#import <WorkflowUI/WFWorkflowSettingsViewDataSourceDelegate-Protocol.h>
-#import <WorkflowUI/WFWorkflowWizardNameCellDelegate-Protocol.h>
-
-@class NSString, UINavigationController, WFAddToHomeScreenActivity, WFDatabase, WFHealthFeatureAvailability, WFWorkflow, WFWorkflowSettingsLayoutMetrics, WFWorkflowSettingsViewDataSource;
+@class MISSING_TYPE;
 @protocol WFWorkflowSettingsViewControllerDelegate;
 
-@interface WFWorkflowSettingsViewController : UITableViewController <WFAddToHomeScreenActivityDelegate, UIViewControllerTransitioningDelegate, WFContentClassesViewControllerDelegate, WFGalleryImportViewControllerDelegate, WFWorkflowWizardNameCellDelegate, WFWorkflowSettingsViewDataSourceDelegate, WFTableViewFooterLinkViewDelegate, WFHealthFeatureObserver>
+@interface WFWorkflowSettingsViewController : UIViewController
 {
-    WFWorkflowSettingsLayoutMetrics *_layoutMetrics;
-    id <WFWorkflowSettingsViewControllerDelegate> _delegate;
-    WFWorkflow *_workflow;
-    WFDatabase *_database;
-    WFAddToHomeScreenActivity *_homeScreenActivity;
-    UINavigationController *_cardPresentationNavigationController;
-    WFWorkflowSettingsViewDataSource *_dataSource;
-    WFHealthFeatureAvailability *_healthFeatureAvailability;
+    MISSING_TYPE *workflow;
+    MISSING_TYPE *database;
+    MISSING_TYPE *hideNavigationBar;
+    MISSING_TYPE *delegate;
+    MISSING_TYPE *hostingController;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) WFHealthFeatureAvailability *healthFeatureAvailability; // @synthesize healthFeatureAvailability=_healthFeatureAvailability;
-@property(retain, nonatomic) WFWorkflowSettingsViewDataSource *dataSource; // @synthesize dataSource=_dataSource;
-@property(retain, nonatomic) UINavigationController *cardPresentationNavigationController; // @synthesize cardPresentationNavigationController=_cardPresentationNavigationController;
-@property(retain, nonatomic) WFAddToHomeScreenActivity *homeScreenActivity; // @synthesize homeScreenActivity=_homeScreenActivity;
-@property(retain, nonatomic) WFDatabase *database; // @synthesize database=_database;
-@property(retain, nonatomic) WFWorkflow *workflow; // @synthesize workflow=_workflow;
-@property(nonatomic) __weak id <WFWorkflowSettingsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)workflowWizardNameCellDidSelectEditIcon:(id)arg1;
-- (void)workflowWizardNameCell:(id)arg1 didUpdateName:(id)arg2;
-- (void)healthFeatureAvailability:(id)arg1 sleepOnboardingStatusDidChange:(unsigned long long)arg2;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)galleryImportViewControllerDidCancel:(id)arg1;
-- (void)galleryImportViewController:(id)arg1 didFinishWithWorkflow:(id)arg2;
-- (void)homeScreenActivityDidFinish:(id)arg1 success:(_Bool)arg2;
-- (void)dismissIconViewController;
-- (void)didSelectSettingsSectionImportQuestionsAtRow:(long long)arg1;
-- (void)didSelectSettingsSectionButtonsAtRow:(long long)arg1;
-- (void)didSelectSettingsSectionShowInAtRow:(long long)arg1;
-- (void)didSelectSettingsSectionHelpAtRow:(long long)arg1;
-- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
-- (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
-- (void)footerLinkView:(id)arg1 didTapURL:(id)arg2;
-- (void)contentClassesViewController:(id)arg1 didChangeSelectedClasses:(id)arg2;
-- (void)toggledBedSheetSwitch:(id)arg1;
-- (void)toggledActionExtensionSwitch:(id)arg1;
-- (void)toggledWatchSwitch:(id)arg1;
-- (void)toggleWorkflowType:(id)arg1 sender:(id)arg2;
-- (id)watchIneligibleActions;
-- (_Bool)showInputTypeSelection;
-- (void)invalidateLayoutMetrics;
-- (void)contentSizeCategoryDidChange;
-- (void)traitCollectionDidChange:(id)arg1;
-@property(readonly, nonatomic) WFWorkflowSettingsLayoutMetrics *layoutMetrics; // @synthesize layoutMetrics=_layoutMetrics;
-- (void)finishByDismissing:(_Bool)arg1;
-- (_Bool)accessibilityPerformEscape;
-- (void)didTapDone;
-- (void)viewWillDisappear:(_Bool)arg1;
-- (void)viewWillAppear:(_Bool)arg1;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)viewDidLoad;
-- (void)dealloc;
-- (id)initWithWorkflow:(id)arg1 database:(id)arg2;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithWorkflow:(id)arg1 database:(id)arg2 hideNavigationBar:(_Bool)arg3;
+@property(nonatomic) __weak id <WFWorkflowSettingsViewControllerDelegate> delegate; // @synthesize delegate;
 
 @end
 

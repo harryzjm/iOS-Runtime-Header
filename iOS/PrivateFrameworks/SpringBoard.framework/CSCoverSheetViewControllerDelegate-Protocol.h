@@ -6,9 +6,16 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class CSCoverSheetViewController, NSString, SBLockScreenUnlockRequest;
+@class CSCoverSheetViewController, NSString, SBLockScreenUnlockRequest, SBSearchGesture;
 
 @protocol CSCoverSheetViewControllerDelegate <NSObject>
+- (_Bool)coverSheetViewControllerIsShowingSecureApp:(CSCoverSheetViewController *)arg1;
+- (_Bool)coverSheetViewControllerHasSecureApp:(CSCoverSheetViewController *)arg1;
+- (void)coverSheetViewController:(CSCoverSheetViewController *)arg1 startSpotlightInteractiveGestureTransactionForGesture:(SBSearchGesture *)arg2;
+- (_Bool)coverSheetViewControllerIsPasscodeVisible:(CSCoverSheetViewController *)arg1;
+- (void)coverSheetViewControllerHandleUnlockAttemptSucceeded:(CSCoverSheetViewController *)arg1;
+- (void)coverSheetWindowedAccessoryViewControllerDidPresent:(CSCoverSheetViewController *)arg1;
+- (void)coverSheetWindowedAccessoryViewControllerDidDismiss:(CSCoverSheetViewController *)arg1;
 - (void)coverSheetViewControllerShouldDismissContextMenu:(CSCoverSheetViewController *)arg1;
 - (void)coverSheetViewController:(CSCoverSheetViewController *)arg1 unlockWithRequest:(SBLockScreenUnlockRequest *)arg2 completion:(void (^)(_Bool))arg3;
 - (void)coverSheetViewController:(CSCoverSheetViewController *)arg1 requestsTouchIDDisabled:(_Bool)arg2 forReason:(NSString *)arg3;

@@ -4,19 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SpriteKit/SKView.h>
+#import <UIKit/UIView.h>
 
-@interface DTSSceneView : SKView
+@class NSMutableDictionary, SKView;
+
+@interface DTSSceneView : UIView
 {
     _Bool _shouldDelayLayout;
     _Bool _didDelayLayout;
+    SKView *_sceneView;
+    _Bool _shouldCullNonVisibleNodes;
+    _Bool _ignoresSiblingOrder;
+    _Bool _allowsTransparency;
+    _Bool _paused;
+    long long _preferredFramesPerSecond;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) long long preferredFramesPerSecond; // @synthesize preferredFramesPerSecond=_preferredFramesPerSecond;
+@property(nonatomic) _Bool paused; // @synthesize paused=_paused;
+@property(nonatomic) _Bool allowsTransparency; // @synthesize allowsTransparency=_allowsTransparency;
+@property(nonatomic) _Bool ignoresSiblingOrder; // @synthesize ignoresSiblingOrder=_ignoresSiblingOrder;
+@property(nonatomic) _Bool shouldCullNonVisibleNodes; // @synthesize shouldCullNonVisibleNodes=_shouldCullNonVisibleNodes;
 - (void)layoutSubviews;
 - (void)_updateLayout;
 - (void)_applicationDidBecomeActive;
 - (void)_applicationWillEnterForeground;
 - (void)_applicationDidEnterBackground;
+@property(readonly) NSMutableDictionary *options;
+- (void)presentScene:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

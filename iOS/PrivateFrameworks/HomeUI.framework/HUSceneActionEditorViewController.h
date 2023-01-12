@@ -53,6 +53,7 @@
 - (void)_updateActionSetBuilderName;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (_Bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
+- (id)contentConfigurationForHeaderViewAtSectionIndex:(unsigned long long)arg1;
 - (void)textFieldDidEndEditing:(id)arg1 item:(id)arg2;
 - (void)textDidChange:(id)arg1 forTextField:(id)arg2 item:(id)arg3;
 - (id)currentTextForTextField:(id)arg1 item:(id)arg2;
@@ -61,8 +62,7 @@
 - (_Bool)shouldManageTextFieldForItem:(id)arg1;
 - (id)childViewControllersToPreload;
 - (_Bool)shouldHideSeparatorsForCell:(id)arg1 indexPath:(id)arg2;
-- (_Bool)shouldHideHeaderAboveSection:(long long)arg1;
-- (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
+- (void)itemManagerDidUpdate:(id)arg1;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3 animated:(_Bool)arg4;
 - (void)setupCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;

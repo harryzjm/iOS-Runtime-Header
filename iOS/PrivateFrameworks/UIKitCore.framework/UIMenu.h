@@ -4,17 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString;
+#import <UIKitCore/UIMenuSelectable-Protocol.h>
+#import <UIKitCore/_UIMenuElementStateObserver-Protocol.h>
 
-@interface UIMenu
+@class NSArray, NSString;
+@protocol UIMenuForcedAutomaticSelectionDelegate;
+
+@interface UIMenu <UIMenuSelectable, _UIMenuElementStateObserver>
 {
+    _Bool _forceAutomaticSelection;
     struct {
         _Bool isPreparedForDisplay;
-        _Bool containsSelectedItem;
+        _Bool hasVisibleSelectedItem;
+        _Bool hasDeepHierarchy;
+        _Bool hasAtLeastOneVisibleItem;
     } _metadata;
     NSString *_identifier;
     unsigned long long _options;
     NSArray *_children;
+    id <UIMenuForcedAutomaticSelectionDelegate> _forcedAutomaticSelectionDelegate;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -22,15 +30,31 @@
 + (id)menuWithTitle:(id)arg1 imageName:(id)arg2 identifier:(id)arg3 options:(unsigned long long)arg4 children:(id)arg5;
 + (id)menuWithTitle:(id)arg1 children:(id)arg2;
 + (id)menuWithChildren:(id)arg1;
++ (id)_defaultInlineMenuWithIdentifier:(id)arg1 children:(id)arg2;
++ (id)_defaultMenuWithIdentifier:(id)arg1 children:(id)arg2;
++ (id)_defaultMenuTitles;
 - (void).cxx_destruct;
-@property(nonatomic) CDStruct_3d581f42 metadata; // @synthesize metadata=_metadata;
+@property(nonatomic) __weak id <UIMenuForcedAutomaticSelectionDelegate> forcedAutomaticSelectionDelegate; // @synthesize forcedAutomaticSelectionDelegate=_forcedAutomaticSelectionDelegate;
+@property(nonatomic) CDStruct_8024420c metadata; // @synthesize metadata=_metadata;
 @property(readonly, nonatomic) NSArray *children; // @synthesize children=_children;
 @property(readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(nonatomic) _Bool forceAutomaticSelection; // @synthesize forceAutomaticSelection=_forceAutomaticSelection;
+- (id)recurisvelySelectDefaultForcedSelection;
+- (void)updateChildrenForSingleSelectedElement:(id)arg1;
+- (void)_elementStateDidChange:(id)arg1;
+- (void)_elementWillPerformAction:(id)arg1;
+- (id)childElementForElement:(id)arg1;
+@property(readonly, copy, nonatomic) NSArray *_selectedElements;
+@property(readonly, nonatomic) NSArray *selectedElements;
+- (void)establishInitialDefaultSingleSelection;
+- (void)removeAsStateObserver;
+- (void)addAsStateObserver;
 - (_Bool)isEqual:(id)arg1;
-- (unsigned long long)hash;
-- (id)description;
+@property(readonly) unsigned long long hash;
+@property(readonly, copy) NSString *description;
 - (id)_mutableCopy;
+- (id)_immutableCopySharingLeafObservers:(_Bool)arg1;
 - (id)_immutableCopy;
 - (_Bool)_acceptBoolMenuVisit:(CDUnknownBlockType)arg1 leafVisit:(CDUnknownBlockType)arg2;
 - (void)_acceptMenuVisit:(CDUnknownBlockType)arg1 leafVisit:(CDUnknownBlockType)arg2;
@@ -41,10 +65,12 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)menuByReplacingChildren:(id)arg1;
 - (id)initWithMenu:(id)arg1 overrideChildren:(id)arg2;
-- (id)initWithTitle:(id)arg1 image:(id)arg2 identifier:(id)arg3 options:(unsigned long long)arg4 children:(id)arg5;
 - (id)initWithTitle:(id)arg1 image:(id)arg2 imageName:(id)arg3 identifier:(id)arg4 options:(unsigned long long)arg5 children:(id)arg6;
-- (_Bool)_containsSelectedItem;
 - (id)_spiRepresentation;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

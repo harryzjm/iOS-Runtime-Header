@@ -33,7 +33,12 @@
         unsigned int shareShortURL:1;
         unsigned int descriptionText:1;
         unsigned int cloudVersionHash:1;
-        CDStruct_63a3d127 curator;
+        unsigned int traits:1;
+        struct {
+            unsigned int identifiers:1;
+            unsigned int name:1;
+            unsigned int handle:1;
+        } curator;
     } _requestedPlaylistProperties;
 }
 

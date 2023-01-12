@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitMetrics/HMMLogEvent.h>
+
 @class NSString;
 
-@interface HMDIncomingCloudPushLogEvent
+@interface HMDIncomingCloudPushLogEvent : HMMLogEvent
 {
     NSString *_topic;
 }
 
 + (id)incomingCloudPush:(id)arg1;
-+ (id)uuid;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *topic; // @synthesize topic=_topic;
 - (id)initWithTopic:(id)arg1;

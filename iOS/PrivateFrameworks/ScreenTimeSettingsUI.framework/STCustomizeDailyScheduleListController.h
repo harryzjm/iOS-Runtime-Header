@@ -6,12 +6,12 @@
 
 #import <Preferences/PSListController.h>
 
-#import <ScreenTimeSettingsUI/STUIDateTimePickerCellDelegate-Protocol.h>
+#import <ScreenTimeSettingsUI/PSDateTimePickerCellDelegate-Protocol.h>
 
-@class NSDateComponents, NSString, PSSpecifier, STBlueprintScheduleCustomDayItem;
+@class NSDateComponents, PSSpecifier, STBlueprintScheduleCustomDayItem;
 
 __attribute__((visibility("hidden")))
-@interface STCustomizeDailyScheduleListController : PSListController <STUIDateTimePickerCellDelegate>
+@interface STCustomizeDailyScheduleListController : PSListController <PSDateTimePickerCellDelegate>
 {
     _Bool _weekdayEnabled;
     STBlueprintScheduleCustomDayItem *_dailySchedule;
@@ -49,12 +49,6 @@ __attribute__((visibility("hidden")))
 - (void)viewWillDisappear:(_Bool)arg1;
 - (_Bool)canBeShownFromSuspendedState;
 - (id)initWithDailySchedule:(id)arg1 weekdayIndex:(unsigned long long)arg2 weekdayName:(id)arg3 minimumStartTime:(id)arg4;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

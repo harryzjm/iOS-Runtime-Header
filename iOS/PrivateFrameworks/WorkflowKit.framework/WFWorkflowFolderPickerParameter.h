@@ -12,7 +12,7 @@
 }
 
 - (void).cxx_destruct;
-- (id)accessoryIconForPossibleState:(id)arg1;
+- (id)accessoryImageForPossibleState:(id)arg1;
 - (id)localizedLabelForPossibleState:(id)arg1;
 - (id)defaultSerializedRepresentation;
 - (id)possibleStates;

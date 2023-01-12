@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ActionKit/WFRemoteUserInterface-Protocol.h>
+#import <ActionKit/WFActionRemoteUserInterface-Protocol.h>
 
 @class NSLocale, NSString;
 
-@protocol WFDictateTextActionRecordingUserInterface <WFRemoteUserInterface>
+@protocol WFDictateTextActionRecordingUserInterface <WFActionRemoteUserInterface>
 - (void)showWithLocale:(NSLocale *)arg1 stopListeningValue:(NSString *)arg2 completionHandler:(void (^)(NSString *, NSError *))arg3;
 @end
 

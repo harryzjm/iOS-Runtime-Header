@@ -12,6 +12,7 @@
 
 + (void)_deviceLockSetup;
 + (_Bool)unlockedSinceBoot;
++ (_Bool)migrationComplete;
 + (_Bool)deviceFirstUnlockedInSB;
 + (_Bool)deviceFirstUnlockedInMKB;
 + (_Bool)deviceUnlocked;

@@ -18,7 +18,6 @@
 - (id)_accessibilitySubviews;
 - (id)_accessibilityFuzzyHitTestElements;
 - (_Bool)_accessibilityHitTestShouldFallbackToNearestChild;
-- (id)_accessibilitySearchBarMaskView;
 - (id)imageForSearchBarIcon:(long long)arg1 state:(unsigned long long)arg2;
 
 @end

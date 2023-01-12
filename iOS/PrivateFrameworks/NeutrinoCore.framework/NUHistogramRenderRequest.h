@@ -7,16 +7,20 @@
 #import <NeutrinoCore/NUTimeBased-Protocol.h>
 
 @class NSString, NUColorSpace, NUHistogramParameters;
+@protocol NUScalePolicy;
 
 @interface NUHistogramRenderRequest <NUTimeBased>
 {
     NUHistogramParameters *_parameters;
     NUColorSpace *_histogramCalculationColorSpace;
+    id <NUScalePolicy> _scalePolicy;
 }
 
 - (void).cxx_destruct;
+@property(retain) id <NUScalePolicy> scalePolicy; // @synthesize scalePolicy=_scalePolicy;
 @property(retain, nonatomic) NUColorSpace *histogramCalculationColorSpace; // @synthesize histogramCalculationColorSpace=_histogramCalculationColorSpace;
 @property(copy, nonatomic) NUHistogramParameters *parameters;
+- (id)submitSynchronous:(out id *)arg1;
 - (void)submit:(CDUnknownBlockType)arg1;
 - (id)newRenderJob;
 - (long long)mediaComponentType;

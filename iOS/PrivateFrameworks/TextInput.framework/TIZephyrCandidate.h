@@ -37,7 +37,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) int dynamicPenaltyCount; // @synthesize dynamicPenaltyCount=_dynamicPenaltyCount;
 @property(nonatomic) int dynamicUsageCount; // @synthesize dynamicUsageCount=_dynamicUsageCount;
-@property(nonatomic) NSString *lexiconLocale; // @synthesize lexiconLocale=_lexiconLocale;
+@property(copy, nonatomic) NSString *lexiconLocale; // @synthesize lexiconLocale=_lexiconLocale;
 @property(nonatomic) double wordScore; // @synthesize wordScore=_wordScore;
 @property(nonatomic) double geometryScore; // @synthesize geometryScore=_geometryScore;
 @property(nonatomic, getter=confidence) int confidence; // @synthesize confidence=_confidence;

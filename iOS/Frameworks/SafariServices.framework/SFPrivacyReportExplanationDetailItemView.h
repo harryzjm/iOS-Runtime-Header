@@ -7,32 +7,37 @@
 #import <UIKit/UIView.h>
 
 #import <SafariServices/SFPrivacyReportGridItem-Protocol.h>
+#import <SafariServices/UITextViewDelegate-Protocol.h>
 
-@class NSLayoutConstraint, NSString, UILabel;
+@class NSLayoutConstraint, NSString, UILabel, UITextView;
 @protocol SFPrivacyReportGridItemDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SFPrivacyReportExplanationDetailItemView : UIView <SFPrivacyReportGridItem>
+@interface SFPrivacyReportExplanationDetailItemView : UIView <SFPrivacyReportGridItem, UITextViewDelegate>
 {
     UIView *_hairline;
     NSLayoutConstraint *_titleTopConstraint;
     NSLayoutConstraint *_hairlineTopConstraint;
+    _Bool _usesInsetStyle;
     id <SFPrivacyReportGridItemDelegate> _delegate;
     unsigned long long _gridPosition;
     UILabel *_titleLabel;
-    UILabel *_bodyLabel;
+    UITextView *_bodyTextView;
     double _titleLabelTopSpacing;
     double _hairlineTopSpacing;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool usesInsetStyle; // @synthesize usesInsetStyle=_usesInsetStyle;
 @property(nonatomic) double hairlineTopSpacing; // @synthesize hairlineTopSpacing=_hairlineTopSpacing;
 @property(nonatomic) double titleLabelTopSpacing; // @synthesize titleLabelTopSpacing=_titleLabelTopSpacing;
-@property(readonly, nonatomic) UILabel *bodyLabel; // @synthesize bodyLabel=_bodyLabel;
+@property(readonly, nonatomic) UITextView *bodyTextView; // @synthesize bodyTextView=_bodyTextView;
 @property(readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(nonatomic) unsigned long long gridPosition; // @synthesize gridPosition=_gridPosition;
 @property(nonatomic) __weak id <SFPrivacyReportGridItemDelegate> delegate; // @synthesize delegate=_delegate;
+- (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)_updateTopSpacing;
 - (void)_updateTopConstraints;
 - (id)initWithFrame:(struct CGRect)arg1;
 

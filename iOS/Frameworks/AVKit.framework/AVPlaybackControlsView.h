@@ -6,12 +6,13 @@
 
 #import <UIKit/UIView.h>
 
-@class AVButton, AVLayoutView, AVObservationController, AVPlaybackControlsRoutePickerView, AVPlayerViewControllerCustomControlsView, AVScrubber, AVStyleSheet, AVTouchIgnoringView, AVTransportControlsView, AVView, AVVolumeButtonControl, AVVolumeSlider, NSArray, NSUUID, NSValue, UIViewPropertyAnimator;
+@class AVButton, AVControlOverflowButton, AVLayoutView, AVObservationController, AVPlaybackControlsRoutePickerView, AVPlayerViewControllerCustomControlsView, AVScrubber, AVStyleSheet, AVTouchIgnoringView, AVTransportControlsView, AVView, AVVolumeButtonControl, AVVolumeSlider, NSArray, NSUUID, NSValue, UIViewPropertyAnimator;
 @protocol AVPlaybackControlsViewVisibilityDelegate;
 
 __attribute__((visibility("hidden")))
 @interface AVPlaybackControlsView : UIView
 {
+    NSArray *_customControlsViewLayoutGuideConstraints;
     _Bool _fullScreen;
     _Bool _prefersVolumeSliderExpandedAutomatically;
     _Bool _showsPlaybackControls;
@@ -51,6 +52,8 @@ __attribute__((visibility("hidden")))
     AVScrubber *_scrubber;
     AVPlaybackControlsRoutePickerView *_routePickerView;
     AVButton *_mediaSelectionButton;
+    AVControlOverflowButton *_controlOverflowButton;
+    AVButton *_playbackSpeedButton;
     NSArray *_customMediaItems;
     NSArray *_customControlItems;
     id <AVPlaybackControlsViewVisibilityDelegate> _visibilityDelegate;
@@ -88,6 +91,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool prefersVolumeSliderExpandedAutomatically; // @synthesize prefersVolumeSliderExpandedAutomatically=_prefersVolumeSliderExpandedAutomatically;
 @property(readonly, copy, nonatomic) NSArray *customControlItems; // @synthesize customControlItems=_customControlItems;
 @property(readonly, copy, nonatomic) NSArray *customMediaItems; // @synthesize customMediaItems=_customMediaItems;
+@property(readonly, nonatomic) AVButton *playbackSpeedButton; // @synthesize playbackSpeedButton=_playbackSpeedButton;
+@property(readonly, nonatomic) AVControlOverflowButton *controlOverflowButton; // @synthesize controlOverflowButton=_controlOverflowButton;
 @property(readonly, nonatomic) AVButton *mediaSelectionButton; // @synthesize mediaSelectionButton=_mediaSelectionButton;
 @property(readonly, nonatomic) AVPlaybackControlsRoutePickerView *routePickerView; // @synthesize routePickerView=_routePickerView;
 @property(readonly, nonatomic) AVScrubber *scrubber; // @synthesize scrubber=_scrubber;
@@ -116,6 +121,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long preferredUnobscuredArea; // @synthesize preferredUnobscuredArea=_preferredUnobscuredArea;
 @property(nonatomic, getter=isFullScreen) _Bool fullScreen; // @synthesize fullScreen=_fullScreen;
 @property(retain, nonatomic) AVStyleSheet *styleSheet; // @synthesize styleSheet=_styleSheet;
+@property(retain, nonatomic) AVPlayerViewControllerCustomControlsView *customControlsView; // @synthesize customControlsView=_customControlsView;
 - (id)_customControlsViewIfLoaded;
 - (id)_playbackControlsViewsForControlItems:(id)arg1 withType:(long long)arg2;
 - (id)_playbackControlsViewItems;
@@ -157,7 +163,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool includesAudioControlsContainer;
 @property(readonly, nonatomic) _Bool showsProminentPlayButton;
 - (void)setIncludedContainers:(long long)arg1 animations:(CDUnknownBlockType)arg2;
-@property(readonly, nonatomic) AVPlayerViewControllerCustomControlsView *customControlsView; // @synthesize customControlsView=_customControlsView;
+- (void)_setUpCustomControlsViewConstraintsIfNeeded;
 - (void)setupInitialLayout;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 styleSheet:(id)arg2;

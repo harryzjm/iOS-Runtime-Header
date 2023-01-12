@@ -9,7 +9,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)_specifiersForRemoteManagmentAccount;
 - (id)_specifiersForOtherCalendarAccounts;
 - (id)_specifiersForOtherContactsAccounts;
 - (id)_specifiersForOtherMailAccounts;

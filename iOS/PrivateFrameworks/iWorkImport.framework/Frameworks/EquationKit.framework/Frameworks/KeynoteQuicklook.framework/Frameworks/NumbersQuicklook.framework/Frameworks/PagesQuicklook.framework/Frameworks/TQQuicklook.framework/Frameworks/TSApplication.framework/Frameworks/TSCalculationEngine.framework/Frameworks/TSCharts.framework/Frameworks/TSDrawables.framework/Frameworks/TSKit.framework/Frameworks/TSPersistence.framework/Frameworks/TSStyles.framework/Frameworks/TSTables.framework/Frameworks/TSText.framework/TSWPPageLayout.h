@@ -20,6 +20,7 @@
 - (void)i_clearHeaderFooterLayouts;
 - (id)i_insertValidatedHeaderFooterLayouts:(out _Bool *)arg1;
 - (_Bool)i_updateHeaderFooterLayouts;
+- (unsigned long long)autosizeFlagsForTextLayout:(id)arg1 inShapeLayout:(id)arg2;
 - (struct CGRect)borderRectForHeaderFooter:(long long)arg1 atIndex:(long long)arg2;
 - (void)p_updateHeaderFooterClipAndBorderRect;
 - (void)p_updateHeaderFooterClipAndBorderRects:(long long)arg1;

@@ -15,12 +15,12 @@
     NSArray *_edges;
     GEOMapRequest *_edgeSearchRequest;
     struct __CFSet *_observers;
-    struct unique_ptr<geo::RouteMapMatchingSection, std::__1::default_delete<geo::RouteMapMatchingSection>> _mapMatchingSection;
+    struct unique_ptr<geo::RouteMapMatchingSection, std::default_delete<geo::RouteMapMatchingSection>> _mapMatchingSection;
     _Bool _hasCompletedMapMatching;
     unsigned int _routeStartIndex;
     unsigned int _routeEndIndex;
     unsigned int _unsnappedPointCount;
-    CDStruct_869f9c67 *_unsnappedPoints;
+    struct GeoCodecsVectorTilePoint3D *_unsnappedPoints;
 }
 
 - (id).cxx_construct;
@@ -30,11 +30,11 @@
 @property(readonly) __weak GEOComposedRouteSection *section; // @synthesize section=_section;
 @property(readonly) NSArray *edges; // @synthesize edges=_edges;
 - (_Bool)hasObserver:(id)arg1;
-- (void)addObserver:(id)arg1;
-- (_Bool)removeObserver:(id)arg1;
+- (void)registerObserver:(id)arg1;
+- (_Bool)unregisterObserver:(id)arg1;
 @property(readonly) const struct RouteMapMatchingSection *mapMatchingSection;
 - (void)matchWithDecoder:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (float)_calculateEdgeLengthFrom:(const Matrix_8746f91e *)arg1 to:(const Matrix_8746f91e *)arg2 startCoord:(const struct PolylineCoordinate *)arg3 endCoord:(const struct PolylineCoordinate *)arg4;
+- (float)_calculateEdgeLengthFrom:(const void *)arg1 to:(const void *)arg2 startCoord:(const struct PolylineCoordinate *)arg3 endCoord:(const struct PolylineCoordinate *)arg4;
 @property(readonly) _Bool isMapMatching;
 @property(readonly) _Bool isMapMatched;
 @property(readonly) _Bool hasCompletedMapMatching;

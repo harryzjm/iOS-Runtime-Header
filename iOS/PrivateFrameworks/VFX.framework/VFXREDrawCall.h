@@ -13,6 +13,8 @@
     MISSING_TYPE *drawCall;
     MISSING_TYPE *material;
     MISSING_TYPE *aabb;
+    MISSING_TYPE *reProvidedBuffers;
+    MISSING_TYPE *reProvidedTextures;
 }
 
 - (void).cxx_destruct;
@@ -20,9 +22,19 @@
 - (MISSING_TYPE *)boundingBoxMax;
 - (MISSING_TYPE *)boundingBoxMin;
 - (void)enumerateTextures:(CDUnknownBlockType)arg1;
+- (unsigned long long)winding;
 - (unsigned long long)primitiveType;
 - (long long)instanceCount;
 - (long long)vertexCount;
+- (long long)indexBufferSize;
+- (long long)indexBufferOffset;
+- (id)indexBuffer;
+- (unsigned char)indexType;
+- (long long)indexCount;
+- (void)withDefaultIBLConstantBuffer:(void *)arg1:(CDUnknownBlockType)arg2;
+- (void)withDefaultLightConstantBuffer:(void *)arg1:(CDUnknownBlockType)arg2;
+- (_Bool)hasLightingEnabled;
+- (id)meshIdentifier;
 - (void)enumerateBuffers:(CDUnknownBlockType)arg1;
 - (unsigned long long)materialIdentifier;
 

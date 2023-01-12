@@ -25,7 +25,7 @@
 - (void)addScriptMessageHandlerWithReply:(id)arg1 contentWorld:(id)arg2 name:(id)arg3;
 - (void)addScriptMessageHandler:(id)arg1 contentWorld:(id)arg2 name:(id)arg3;
 - (void)addScriptMessageHandler:(id)arg1 name:(id)arg2;
-- (void)_addScriptMessageHandler:(struct WebScriptMessageHandler *)arg1;
+- (void)_addScriptMessageHandler:(void *)arg1;
 - (void)removeAllContentRuleLists;
 - (void)removeContentRuleList:(id)arg1;
 - (void)addContentRuleList:(id)arg1;

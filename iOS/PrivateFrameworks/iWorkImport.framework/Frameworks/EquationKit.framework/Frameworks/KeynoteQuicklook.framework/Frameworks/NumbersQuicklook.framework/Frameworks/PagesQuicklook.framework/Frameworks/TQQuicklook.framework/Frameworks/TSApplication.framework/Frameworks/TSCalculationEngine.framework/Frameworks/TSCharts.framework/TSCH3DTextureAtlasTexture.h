@@ -10,24 +10,23 @@
 
 @interface TSCH3DTextureAtlasTexture : NSObject
 {
-    tvec2_3b141483 mSize;
-    float mSamples;
-    NSMutableArray *mLabels;
-    struct vector<glm::detail::tvec2<int>, std::__1::allocator<glm::detail::tvec2<int>>> mPositions;
-    long long mCurrentxpos;
-    long long mCurrentypos;
-    long long mCurrentheight;
-    TSCH3DTextureAtlasTextureResource *mResource;
+    tvec2_3b141483 _size;
+    float _samples;
+    NSMutableArray *_labels;
+    struct vector<glm::detail::tvec2<int>, std::allocator<glm::detail::tvec2<int>>> _positions;
+    long long _currentxpos;
+    long long _currentypos;
+    long long _currentheight;
+    TSCH3DTextureAtlasTextureResource *_resource;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) tvec2_3b141483 size; // @synthesize size=mSize;
+@property(readonly, nonatomic) tvec2_3b141483 size; // @synthesize size=_size;
 - (id)resource;
 - (id)getTextureDataBuffer;
 - (tvec2_3b141483)addLabel:(id)arg1;
 - (void)p_invalidateResource;
-- (void)dealloc;
 - (id)initWithSize:(tvec2_3b141483)arg1;
 
 @end

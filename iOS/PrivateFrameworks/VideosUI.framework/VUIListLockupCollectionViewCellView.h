@@ -4,42 +4,34 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
-
-@class TVImageLayout, VUIButton, VUIFocusableTextView, VUILabel, VUISeparatorView, _TVImageView, _TVMonogramView;
+@class FocusableTextView, UIView, VUIButton, VUILabel, VUISeparatorView;
 
 __attribute__((visibility("hidden")))
-@interface VUIListLockupCollectionViewCellView : UIView
+@interface VUIListLockupCollectionViewCellView
 {
-    _TVImageView *_imageView;
-    _TVMonogramView *_monogramView;
-    TVImageLayout *_imageLayout;
+    UIView *_imageView;
     VUILabel *_titleLabel;
     VUILabel *_subTitleLabel;
-    VUIFocusableTextView *_descriptionTextView;
+    FocusableTextView *_descriptionTextView;
     VUIButton *_primaryButton;
     VUIButton *_secondaryButton;
     long long _imagePosition;
-    TVImageLayout *_monogramImageLayout;
     VUISeparatorView *_separatorView;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) VUISeparatorView *separatorView; // @synthesize separatorView=_separatorView;
-@property(retain, nonatomic) TVImageLayout *monogramImageLayout; // @synthesize monogramImageLayout=_monogramImageLayout;
 @property(nonatomic) long long imagePosition; // @synthesize imagePosition=_imagePosition;
 @property(retain, nonatomic) VUIButton *secondaryButton; // @synthesize secondaryButton=_secondaryButton;
 @property(retain, nonatomic) VUIButton *primaryButton; // @synthesize primaryButton=_primaryButton;
-@property(retain, nonatomic) VUIFocusableTextView *descriptionTextView; // @synthesize descriptionTextView=_descriptionTextView;
+@property(retain, nonatomic) FocusableTextView *descriptionTextView; // @synthesize descriptionTextView=_descriptionTextView;
 @property(retain, nonatomic) VUILabel *subTitleLabel; // @synthesize subTitleLabel=_subTitleLabel;
 @property(retain, nonatomic) VUILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property(retain, nonatomic) TVImageLayout *imageLayout; // @synthesize imageLayout=_imageLayout;
-@property(retain, nonatomic) _TVMonogramView *monogramView; // @synthesize monogramView=_monogramView;
-@property(retain, nonatomic) _TVImageView *imageView; // @synthesize imageView=_imageView;
-- (void)prepareForCellReuse;
-- (struct CGSize)_layoutSubviewsWithSize:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)layoutSubviews;
+@property(retain, nonatomic) UIView *imageView; // @synthesize imageView=_imageView;
+- (void)vui_prepareForReuse;
+- (struct CGSize)vui_layoutSubviews:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
+- (void)vui_setHighlighted:(_Bool)arg1;
+- (void)setHighlighted:(_Bool)arg1;
 - (void)setSemanticContentAttribute:(long long)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

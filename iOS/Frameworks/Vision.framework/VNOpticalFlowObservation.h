@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
     LKTOpticalFlow *_opticalFlow;
 }
 
++ (id)defaultOriginatingRequestClassNameForRequestRevision:(unsigned long long)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) LKTOpticalFlow *opticalFlow; // @synthesize opticalFlow=_opticalFlow;
 @property(retain, nonatomic) VNImageSignature *targetImageSignature; // @synthesize targetImageSignature=_targetImageSignature;

@@ -12,7 +12,9 @@
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(copy, nonatomic) NSDate *userVisibleEndDate; // @dynamic userVisibleEndDate;
+@property(nonatomic) unsigned long long reason; // @dynamic reason;
 @property(copy, nonatomic) DNDModeAssertionLifetime *lifetime; // @dynamic lifetime;
+@property(copy, nonatomic) NSDate *modeConfigurationModifiedDate; // @dynamic modeConfigurationModifiedDate;
 @property(copy, nonatomic) NSString *modeIdentifier; // @dynamic modeIdentifier;
 @property(copy, nonatomic) NSString *identifier; // @dynamic identifier;
 

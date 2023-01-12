@@ -16,15 +16,19 @@
     NSString *_contentId;
     int _widgetAppearanceType;
     int _widgetArticleCount;
+    int _widgetExposureStackLocation;
     int _widgetHeadlineExposureCount;
     NSString *_widgetIdentifier;
     NSMutableArray *_widgetPersonalizationFeatureCTRPairs;
     NSMutableArray *_widgetSectionsArticleCountPairs;
+    int _widgetType;
     struct {
         unsigned int contentFetchDate:1;
         unsigned int widgetAppearanceType:1;
         unsigned int widgetArticleCount:1;
+        unsigned int widgetExposureStackLocation:1;
         unsigned int widgetHeadlineExposureCount:1;
+        unsigned int widgetType:1;
     } _has;
 }
 
@@ -46,6 +50,14 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsWidgetType:(id)arg1;
+- (id)widgetTypeAsString:(int)arg1;
+@property(nonatomic) _Bool hasWidgetType;
+@property(nonatomic) int widgetType; // @synthesize widgetType=_widgetType;
+- (int)StringAsWidgetExposureStackLocation:(id)arg1;
+- (id)widgetExposureStackLocationAsString:(int)arg1;
+@property(nonatomic) _Bool hasWidgetExposureStackLocation;
+@property(nonatomic) int widgetExposureStackLocation; // @synthesize widgetExposureStackLocation=_widgetExposureStackLocation;
 @property(readonly, nonatomic) _Bool hasContentId;
 @property(nonatomic) _Bool hasContentFetchDate;
 @property(readonly, nonatomic) _Bool hasWidgetIdentifier;

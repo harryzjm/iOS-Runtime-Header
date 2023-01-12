@@ -14,21 +14,24 @@
     float _portraitStrength;
     NSNumber *_minimumAperture;
     NSNumber *_maximumAperture;
+    unsigned long long _SDOFRenderingVersion;
     unsigned long long _portraitMajorVersion;
     unsigned long long _portraitMinorVersion;
-    CDStruct_6ed351db _versionInfo;
+    CDStruct_6ed351db _depthVersionInfo;
 }
 
 + (id)valuesAtCaptureFromImageProperties:(id)arg1 error:(out id *)arg2;
 - (void).cxx_destruct;
-@property(nonatomic) CDStruct_6ed351db versionInfo; // @synthesize versionInfo=_versionInfo;
+@property(nonatomic) CDStruct_6ed351db depthVersionInfo; // @synthesize depthVersionInfo=_depthVersionInfo;
 @property(nonatomic) unsigned long long portraitMinorVersion; // @synthesize portraitMinorVersion=_portraitMinorVersion;
 @property(nonatomic) unsigned long long portraitMajorVersion; // @synthesize portraitMajorVersion=_portraitMajorVersion;
+@property(nonatomic) unsigned long long SDOFRenderingVersion; // @synthesize SDOFRenderingVersion=_SDOFRenderingVersion;
 @property(retain, nonatomic) NSNumber *maximumAperture; // @synthesize maximumAperture=_maximumAperture;
 @property(retain, nonatomic) NSNumber *minimumAperture; // @synthesize minimumAperture=_minimumAperture;
 @property(nonatomic) float portraitStrength; // @synthesize portraitStrength=_portraitStrength;
 @property(nonatomic) float aperture; // @synthesize aperture=_aperture;
 - (id)description;
+- (id)initFromMinAperture:(float)arg1 maxAperture:(float)arg2 aperture:(float)arg3 portraitStrength:(float)arg4 SDOFRenderingVerion:(unsigned long long)arg5 depthVersionInfo:(CDStruct_6ed351db)arg6;
 
 @end
 

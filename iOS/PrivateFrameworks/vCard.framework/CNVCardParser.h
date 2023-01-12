@@ -59,6 +59,7 @@
 + (id)newParsingSelectorMap;
 + (_Bool)parseFirstResultInData:(id)arg1 resultBuilder:(id)arg2;
 + (unsigned long long)countOfCardsInData:(id)arg1;
++ (id)os_log;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSData *imageData; // @synthesize imageData=_imageData;
 @property(readonly, nonatomic) id <CNVCardParsedResultBuilder> resultBuilder; // @synthesize resultBuilder=_resultBuilder;

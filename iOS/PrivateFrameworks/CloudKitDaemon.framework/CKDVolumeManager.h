@@ -12,12 +12,10 @@
 
 + (id)volumeUUIDForDeviceID:(id)arg1;
 + (id)deviceIDForVolumeUUID:(id)arg1;
-+ (void)shutdownVolumes;
-+ (void)startVolumes;
-+ (id)createVolumeForDevice:(int)arg1 error:(id *)arg2;
-+ (void)invalidateVolume:(id)arg1;
-+ (id)existingVolumeForDevice:(int)arg1;
-+ (id)_volumeForDisk:(const CDStruct_46dcf1da *)arg1 mountToPath:(id)arg2 error:(id *)arg3;
++ (id)volumeForDeviceID:(id)arg1;
++ (id)volumeForVolumeUUID:(id)arg1;
++ (void)_rebuildVolumes;
++ (void)initialize;
 
 @end
 

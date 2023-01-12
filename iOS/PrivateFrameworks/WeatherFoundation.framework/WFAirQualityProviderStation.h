@@ -17,6 +17,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) CLLocation *location; // @synthesize location=_location;
 @property(readonly, nonatomic) NSDate *lastReadDate; // @synthesize lastReadDate=_lastReadDate;
+- (id)description;
 - (id)initWithLocation:(id)arg1 lastReadDate:(id)arg2;
 
 @end

@@ -22,7 +22,7 @@
     _Bool _canShowShareSheetPlugIns;
     _Bool _whitelistActionActivitiesOnly;
     _Bool _linkedBeforeYukon;
-    _Bool _canSaveImages;
+    _Bool _wantsPeopleSuggestionsData;
     _Bool __unitTest_disableExcludingSourceApplicationFromOpenActivities;
     double _preferredWidth;
     NSArray *_hostActivityConfigurations;
@@ -39,6 +39,8 @@
     UITraitCollection *_hostTraitCollection;
     NSLocale *_hostLocale;
     NSArray *_preferredLocalizations;
+    long long _numberOfVisibleSharingActivities;
+    long long _numberOfVisibleActionActivities;
     NSArray *_includedActivityTypes;
     NSArray *_excludedActivityTypes;
     NSArray *_activityTypeOrder;
@@ -56,7 +58,7 @@
 @property(retain, nonatomic) NSArray *activityTypeOrder; // @synthesize activityTypeOrder=_activityTypeOrder;
 @property(retain, nonatomic) NSArray *excludedActivityTypes; // @synthesize excludedActivityTypes=_excludedActivityTypes;
 @property(retain, nonatomic) NSArray *includedActivityTypes; // @synthesize includedActivityTypes=_includedActivityTypes;
-@property(nonatomic) _Bool canSaveImages; // @synthesize canSaveImages=_canSaveImages;
+@property(nonatomic) _Bool wantsPeopleSuggestionsData; // @synthesize wantsPeopleSuggestionsData=_wantsPeopleSuggestionsData;
 @property(nonatomic) _Bool linkedBeforeYukon; // @synthesize linkedBeforeYukon=_linkedBeforeYukon;
 @property(nonatomic) _Bool whitelistActionActivitiesOnly; // @synthesize whitelistActionActivitiesOnly=_whitelistActionActivitiesOnly;
 @property(nonatomic) _Bool canShowShareSheetPlugIns; // @synthesize canShowShareSheetPlugIns=_canShowShareSheetPlugIns;
@@ -67,6 +69,8 @@
 @property(nonatomic) _Bool shouldMatchOnlyUserElectedExtensions; // @synthesize shouldMatchOnlyUserElectedExtensions=_shouldMatchOnlyUserElectedExtensions;
 @property(nonatomic) _Bool isContentManaged; // @synthesize isContentManaged=_isContentManaged;
 @property(nonatomic) _Bool allowsEmbedding; // @synthesize allowsEmbedding=_allowsEmbedding;
+@property(nonatomic) long long numberOfVisibleActionActivities; // @synthesize numberOfVisibleActionActivities=_numberOfVisibleActionActivities;
+@property(nonatomic) long long numberOfVisibleSharingActivities; // @synthesize numberOfVisibleSharingActivities=_numberOfVisibleSharingActivities;
 @property(retain, nonatomic) NSArray *preferredLocalizations; // @synthesize preferredLocalizations=_preferredLocalizations;
 @property(retain, nonatomic) NSLocale *hostLocale; // @synthesize hostLocale=_hostLocale;
 @property(nonatomic) struct NSDirectionalEdgeInsets hostLayoutMargins; // @synthesize hostLayoutMargins=_hostLayoutMargins;

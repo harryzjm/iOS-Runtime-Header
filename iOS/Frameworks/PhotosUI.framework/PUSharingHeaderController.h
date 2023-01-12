@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) LPLinkMetadata *linkMetadata; // @synthesize linkMetadata=_linkMetadata;
 @property(readonly, nonatomic) __weak id <PUSharingHeaderDataProvider> dataProvider; // @synthesize dataProvider=_dataProvider;
+- (id)_linkPresentationImageForPerson:(id)arg1;
 - (id)_linkPresentationImageForAsset:(id)arg1;
 - (id)_sharingHeaderStatus;
 - (void)updateIfNeeded;

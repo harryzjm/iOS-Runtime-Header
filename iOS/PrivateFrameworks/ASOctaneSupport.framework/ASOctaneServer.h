@@ -20,6 +20,8 @@
 - (id)getStringValueForIdentifier:(unsigned long long)arg1 forBundleID:(id)arg2;
 - (id)setIntegerValue:(long long)arg1 forIdentifier:(unsigned long long)arg2 forBundleID:(id)arg3;
 - (long long)getIntegerValueForIdentifier:(unsigned long long)arg1 forBundleID:(id)arg2;
+- (void)unregisterForEventWithIdentifier:(id)arg1;
+- (id)registerForEventOfType:(long long)arg1 withFilterData:(id)arg2;
 - (void)useConfigurationDirectory:(id)arg1 forBundleID:(id)arg2;
 - (id)setStorefront:(id)arg1 forBundleID:(id)arg2;
 - (id)resolveIssueForTransactionWithIdentifier:(unsigned long long)arg1 forBundleID:(id)arg2;

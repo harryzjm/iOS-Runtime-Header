@@ -8,19 +8,20 @@
 
 @interface TSCH3DSceneRenderPipeline
 {
-    TSCH3DSceneRenderPipeline *mOriginal;
-    TSCH3DScene *mScene;
-    TSCH3DFramebuffer *mFramebuffer;
-    TSCH3DSceneRenderSetup *mSetup;
-    TSCH3DCamera *mCamera;
-    NSNumber *mScale;
-    NSNumber *mSamples;
-    NSNumber *mSuperSamples;
-    NSNumber *mPreserveFramebufferContent;
+    TSCH3DSceneRenderPipeline *_original;
+    TSCH3DScene *_scene;
+    TSCH3DFramebuffer *_framebuffer;
+    TSCH3DSceneRenderSetup *_setup;
+    TSCH3DCamera *_camera;
+    NSNumber *_scale;
+    NSNumber *_samples;
+    NSNumber *_superSamples;
+    NSNumber *_preserveFramebufferContent;
 }
 
 + (id)pipelineWithProcessor:(id)arg1 session:(id)arg2 scene:(id)arg3;
-@property(retain, nonatomic) TSCH3DSceneRenderPipeline *original; // @synthesize original=mOriginal;
+- (void).cxx_destruct;
+@property(retain, nonatomic) TSCH3DSceneRenderPipeline *original; // @synthesize original=_original;
 - (_Bool)run;
 - (_Bool)render;
 - (_Bool)renderWithFramebuffer:(id)arg1;
@@ -29,7 +30,6 @@
 - (_Bool)activateFramebuffer:(id)arg1;
 - (void)clearFramebuffer;
 - (tvec4_ac57c72d)backgroundClearColor;
-- (void)renderSelector:(SEL)arg1;
 @property(readonly, nonatomic) TSCH3DCamera *camera;
 - (void)clearCamera;
 - (id)concreteSetup;
@@ -50,7 +50,6 @@
 - (id)cloneWithProcessor:(id)arg1 scene:(id)arg2;
 - (id)baseRecloneWithProcessor:(id)arg1 scene:(id)arg2;
 - (id)recloneWithPipelineClass:(Class)arg1 processor:(id)arg2 scene:(id)arg3;
-- (void)dealloc;
 - (id)initWithProcessor:(id)arg1 session:(id)arg2 scene:(id)arg3;
 - (_Bool)shouldSkipLabelsIfHidden;
 - (id)labelsMeshRendererForLabelsRenderer:(id)arg1;

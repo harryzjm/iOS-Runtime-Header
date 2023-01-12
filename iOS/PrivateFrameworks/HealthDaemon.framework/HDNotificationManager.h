@@ -24,32 +24,21 @@
 
 - (void).cxx_destruct;
 - (id)diagnosticDescription;
-- (void)_postBadgesDidUpdateNotification;
-- (CDUnknownBlockType)_objectCompletionOnClientQueue:(CDUnknownBlockType)arg1;
-- (CDUnknownBlockType)_actionCompletionOnClientQueue:(CDUnknownBlockType)arg1;
-- (void)_resourceQueue_updateApplicationBadge;
-- (id)_resourceQueue_coaleseDomainBadges;
-- (_Bool)_resourceQueue_setBadge:(id)arg1 domain:(long long)arg2 error:(out id *)arg3;
 - (id)_resourceQueue_badgeForDomain:(long long)arg1 error:(out id *)arg2;
-- (id)_resourceQueue_badgeForDomain:(long long)arg1;
 - (id)_aggregateBadge;
 - (id)_badgeForDomain:(long long)arg1 error:(out id *)arg2;
-- (void)_resourceQueue_notifyObserversWithBadge:(id)arg1 domain:(long long)arg2;
-- (void)_resourceQueue_notifyObserversWithNotification:(id)arg1;
 - (void)removeNotificationObserver:(id)arg1;
 - (void)addNotificationObserver:(id)arg1;
 - (void)removeDeliveredNotificationsWithIdentifiers:(id)arg1;
-- (void)_sendCompanionUserNotificationResponse:(CDUnknownBlockType)arg1 error:(id)arg2;
 - (void)receivedCompanionUserNotificationRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)postCompanionUserNotificationOfType:(long long)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_postNotificationWithTitle:(id)arg1 body:(id)arg2 categoryIdentifier:(id)arg3 subtitle:(id)arg4 domain:(long long)arg5 url:(id)arg6 accessoryImageName:(id)arg7 completion:(CDUnknownBlockType)arg8;
-- (void)postNotificationWithTitle:(id)arg1 body:(id)arg2 categoryIdentifier:(id)arg3 subtitle:(id)arg4 domain:(long long)arg5 accessoryImageName:(id)arg6 completion:(CDUnknownBlockType)arg7;
+- (void)postNotificationWithTitle:(id)arg1 body:(id)arg2 categoryIdentifier:(id)arg3 subtitle:(id)arg4 domain:(long long)arg5 url:(id)arg6 accessoryImageName:(id)arg7 header:(id)arg8 completion:(CDUnknownBlockType)arg9;
+- (void)postNotificationWithTitle:(id)arg1 body:(id)arg2 categoryIdentifier:(id)arg3 subtitle:(id)arg4 domain:(long long)arg5 accessoryImageName:(id)arg6 header:(id)arg7 completion:(CDUnknownBlockType)arg8;
 - (void)postNotificationWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)postNotificationWithIdentifier:(id)arg1 content:(id)arg2 trigger:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)setBadge:(id)arg1 forDomain:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)incrementBadgeForDomain:(long long)arg1 count:(long long)arg2 error:(out id *)arg3;
 - (void)badgeForDomain:(long long)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)registerWithUserNotificationCenter;
 - (void)dealloc;
 - (id)initWithProfile:(id)arg1;
 

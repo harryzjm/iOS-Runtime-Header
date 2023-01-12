@@ -9,6 +9,7 @@
 @class CRVectorTimestamp;
 @protocol CRDataType;
 
+__attribute__((visibility("hidden")))
 @interface CRDictionaryElement : NSObject
 {
     id <CRDataType> _value;

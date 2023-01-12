@@ -11,13 +11,13 @@
 #import <PencilKit/CHTextInputQueryTargetDataSource-Protocol.h>
 #import <PencilKit/PKTextInputDebugStateReporting-Protocol.h>
 
-@class CHRecognitionSession, CHTextInputQuery, NSArray, NSLocale, NSString;
+@class CHRecognitionSession, CHTextInputQuery, NSArray, NSString;
 @protocol PKTextInputRecognitionManagerDataSource;
 
 @interface PKTextInputRecognitionManager : NSObject <CHQueryDelegate, CHRecognitionSessionDataSource, CHTextInputQueryTargetDataSource, PKTextInputDebugStateReporting>
 {
     _Bool _preferOutOfProcessRecognition;
-    NSLocale *_recognitionLocale;
+    NSArray *_recognitionLocales;
     id <PKTextInputRecognitionManagerDataSource> _currentDataSource;
     CHRecognitionSession *__recognitionSession;
     CHTextInputQuery *__textInputQuery;
@@ -26,24 +26,13 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) double _lastRecognitionDuration; // @synthesize _lastRecognitionDuration=__lastRecognitionDuration;
-@property(nonatomic) double _beganRecognitionTimestamp; // @synthesize _beganRecognitionTimestamp=__beganRecognitionTimestamp;
-@property(retain, nonatomic) CHTextInputQuery *_textInputQuery; // @synthesize _textInputQuery=__textInputQuery;
-@property(retain, nonatomic) CHRecognitionSession *_recognitionSession; // @synthesize _recognitionSession=__recognitionSession;
-@property(retain, nonatomic) id <PKTextInputRecognitionManagerDataSource> currentDataSource; // @synthesize currentDataSource=_currentDataSource;
-@property(nonatomic) _Bool preferOutOfProcessRecognition; // @synthesize preferOutOfProcessRecognition=_preferOutOfProcessRecognition;
-@property(retain, nonatomic) NSLocale *recognitionLocale; // @synthesize recognitionLocale=_recognitionLocale;
 - (void)reportDebugStateDescription:(CDUnknownBlockType)arg1;
 - (void)fetchContentInfoForTextInputTarget:(id)arg1 strokeIdentifiers:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)textInputTargetForItemStableIdentifier:(id)arg1 strokeIdentifiers:(id)arg2 simultaneousItemStableIdentifiers:(id)arg3;
 - (id)textInputTargetForItemStableIdentifier:(id)arg1 strokeIdentifiers:(id)arg2;
 @property(readonly, copy, nonatomic) NSArray *textInputTargets;
 - (id)strokeProviderSnapshot;
-- (void)_processQueryDidUpdateResult:(id)arg1;
 - (void)queryDidUpdateResult:(id)arg1;
-- (void)_updateTextInputQuery;
-- (void)_updateRecognitionSession;
-- (void)beginRecognitionRequestWithDataSource:(id)arg1;
 - (void)dealloc;
 
 // Remaining properties

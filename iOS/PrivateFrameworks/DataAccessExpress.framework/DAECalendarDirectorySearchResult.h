@@ -13,6 +13,8 @@
 @interface DAECalendarDirectorySearchResult : NSObject <NSSecureCoding>
 {
     NSString *_displayName;
+    NSString *_firstName;
+    NSString *_lastName;
     NSString *_preferredAddress;
     NSString *_principalPath;
 }
@@ -21,6 +23,8 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *principalPath; // @synthesize principalPath=_principalPath;
 @property(retain, nonatomic) NSString *preferredAddress; // @synthesize preferredAddress=_preferredAddress;
+@property(retain, nonatomic) NSString *lastName; // @synthesize lastName=_lastName;
+@property(retain, nonatomic) NSString *firstName; // @synthesize firstName=_firstName;
 @property(retain, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

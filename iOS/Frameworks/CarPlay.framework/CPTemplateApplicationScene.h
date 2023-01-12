@@ -47,7 +47,7 @@
 - (id)_definition;
 - (id)_componentForKey:(id)arg1;
 - (id)_fbsSceneLayerForWindow:(id)arg1;
-- (_Bool)_permitContextCreationForBindingDescription:(CDStruct_a002d41c)arg1;
+- (_Bool)_permitContextCreationForBindingDescription:(CDStruct_98d137ef)arg1;
 - (struct CGRect)convertRect:(struct CGRect)arg1 toCoordinateSpace:(id)arg2;
 - (struct CGRect)convertRect:(struct CGRect)arg1 fromCoordinateSpace:(id)arg2;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 toCoordinateSpace:(id)arg2;

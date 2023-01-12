@@ -9,7 +9,7 @@
 #import <MTLCapture/CaptureMTLObject-Protocol.h>
 #import <MTLCapture/MTLComputePipelineStateSPI-Protocol.h>
 
-@class CaptureMTLDevice, MTLComputePipelineDescriptor, MTLDebugInstrumentationData, NSString;
+@class CaptureMTLDevice, MTLComputePipelineDescriptor, MTLDebugInstrumentationData, NSMapTable, NSString;
 @protocol MTLComputePipelineState, MTLComputePipelineStateSPI, MTLDevice, MTLFunction;
 
 @interface CaptureMTLComputePipelineState : NSObject <MTLComputePipelineStateSPI, CaptureMTLObject>
@@ -19,6 +19,7 @@
     CaptureMTLComputePipelineState *_captureComputePipelineState;
     struct GTTraceContext *_traceContext;
     struct GTTraceStream *_traceStream;
+    NSMapTable *_functionHandleMap;
     id <MTLFunction> _function;
     MTLComputePipelineDescriptor *_descriptor;
 }
@@ -26,11 +27,10 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) MTLComputePipelineDescriptor *descriptor; // @synthesize descriptor=_descriptor;
 @property(retain, nonatomic) id <MTLFunction> function; // @synthesize function=_function;
-- (id)newIntersectionFunctionTableWithDescriptor:(id)arg1;
 - (unsigned long long)imageblockMemoryLengthForDimensions:(CDStruct_14f26992)arg1;
 - (id)functionPointerHandlesWithFunctions:(id)arg1 range:(struct _NSRange)arg2;
 - (id)functionPointerHandleWithFunction:(id)arg1;
-- (id)functionHandleWithFunction:(id)arg1;
+- (void)dealloc;
 @property(readonly) unsigned long long uniqueIdentifier;
 @property(readonly) unsigned long long threadExecutionWidth;
 @property(readonly) long long textureWriteRoundingMode;
@@ -41,6 +41,7 @@
 @property(readonly) NSString *label;
 @property(readonly, nonatomic) unsigned long long gpuAddress;
 @property(readonly) id <MTLDevice> device;
+@property(readonly, nonatomic) unsigned long long allocatedSize;
 - (_Bool)conformsToProtocol:(id)arg1;
 - (_Bool)respondsToSelector:(SEL)arg1;
 @property(readonly, copy) NSString *description;
@@ -50,11 +51,14 @@
 @property(readonly) struct GTTraceContext *traceContext;
 - (void)touch;
 - (id)originalObject;
-- (id)newComputePipelineStateWithAdditionalBinaryFunctions:(id)arg1 error:(id *)arg2;
+- (id)newIntersectionFunctionTableWithDescriptor:(id)arg1;
 - (id)newVisibleFunctionTableWithDescriptor:(id)arg1;
-- (void)dealloc;
+- (id)functionHandleWithFunction:(id)arg1;
+- (id)newComputePipelineStateWithAdditionalBinaryFunctions:(id)arg1 error:(id *)arg2;
 @property(readonly) id <MTLComputePipelineState> baseObject;
 - (void)swapObject:(id)arg1;
+- (_Bool)newFunctionHandle:(out id *)arg1 associatedWithBaseFunctionHandle:(id)arg2 captureFunction:(id)arg3;
+- (id)functionHandleMap;
 - (id)initWithBaseObject:(id)arg1 captureComputePipelineState:(id)arg2;
 - (id)initWithBaseObject:(id)arg1 captureDevice:(id)arg2;
 

@@ -12,10 +12,12 @@
 
 @interface TSDMaskInfo <TSDMixing, TSDInfoWithPathSource>
 {
-    TSDPathSource *mPathSource;
+    TSDPathSource *_pathSource;
 }
 
-@property(copy, nonatomic) TSDPathSource *pathSource; // @synthesize pathSource=mPathSource;
++ (_Bool)wantsTitleAndCaptionUUIDs;
+- (void).cxx_destruct;
+@property(copy, nonatomic) TSDPathSource *pathSource; // @synthesize pathSource=_pathSource;
 - (id)objectForProperty:(int)arg1;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
@@ -24,11 +26,10 @@
 - (Class)layoutClass;
 - (_Bool)isEqualToMaskInfo:(id)arg1;
 - (id)copyWithContext:(id)arg1;
-- (void)dealloc;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 pathSource:(id)arg3;
-- (void)saveToArchive:(struct MaskArchive *)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
-- (void)loadFromArchive:(const struct MaskArchive *)arg1 unarchiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 
 // Remaining properties

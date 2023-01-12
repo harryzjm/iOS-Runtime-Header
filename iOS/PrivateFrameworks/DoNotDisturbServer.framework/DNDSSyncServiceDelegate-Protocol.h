@@ -6,13 +6,14 @@
 
 #import <DoNotDisturbServer/NSObject-Protocol.h>
 
-@class NSDictionary, NSString;
+@class NSDictionary, NSError, NSString;
 @protocol DNDSSyncService;
 
 @protocol DNDSSyncServiceDelegate <NSObject>
-- (void)syncService:(id <DNDSSyncService>)arg1 didReceiveMessage:(NSDictionary *)arg2 withVersionNumber:(unsigned long long)arg3 fromDeviceIdentifier:(NSString *)arg4;
+- (void)syncService:(id <DNDSSyncService>)arg1 didReceiveMessage:(NSDictionary *)arg2 withVersionNumber:(unsigned long long)arg3 messageType:(NSString *)arg4 fromDeviceIdentifier:(NSString *)arg5;
 
 @optional
-- (_Bool)syncService:(id <DNDSSyncService>)arg1 shouldAcceptIncomingMessage:(NSDictionary *)arg2 withVersionNumber:(unsigned long long)arg3 fromDeviceIdentifier:(NSString *)arg4;
+- (void)syncService:(id <DNDSSyncService>)arg1 didSendWithRequestIdentifier:(NSString *)arg2 withSuccess:(_Bool)arg3 error:(NSError *)arg4;
+- (_Bool)syncService:(id <DNDSSyncService>)arg1 shouldAcceptIncomingMessage:(NSDictionary *)arg2 withVersionNumber:(unsigned long long)arg3 messageType:(NSString *)arg4 fromDeviceIdentifier:(NSString *)arg5;
 @end
 

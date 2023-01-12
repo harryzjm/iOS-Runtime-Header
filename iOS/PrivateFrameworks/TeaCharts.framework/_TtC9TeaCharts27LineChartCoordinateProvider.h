@@ -14,6 +14,7 @@
     MISSING_TYPE *categoryCoordinateCalculator;
     MISSING_TYPE *coordinateSpace;
     MISSING_TYPE *size;
+    MISSING_TYPE *lock;
 }
 
 @end

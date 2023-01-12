@@ -19,10 +19,10 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)parameterDescriptionForKey:(id)arg1 defaultValue:(id)arg2 numericConstraint:(id)arg3;
-+ (id)parameterDescriptionForKey:(id)arg1 boolParameterSpec:(const struct BoolParameter *)arg2;
-+ (id)parameterDescriptionForKey:(id)arg1 stringParameterSpec:(const struct StringParameter *)arg2;
-+ (id)parameterDescriptionForKey:(id)arg1 doubleParameterSpec:(const struct DoubleParameter *)arg2;
-+ (id)parameterDescriptionForKey:(id)arg1 int64ParameterSpec:(const struct Int64Parameter *)arg2;
++ (id)parameterDescriptionForKey:(id)arg1 boolParameterSpec:(const void *)arg2;
++ (id)parameterDescriptionForKey:(id)arg1 stringParameterSpec:(const void *)arg2;
++ (id)parameterDescriptionForKey:(id)arg1 doubleParameterSpec:(const void *)arg2;
++ (id)parameterDescriptionForKey:(id)arg1 int64ParameterSpec:(const void *)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) MLNumericConstraint *numericConstraint; // @synthesize numericConstraint=_numericConstraint;
 @property(retain, nonatomic) id defaultValue; // @synthesize defaultValue=_defaultValue;

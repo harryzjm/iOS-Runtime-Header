@@ -4,15 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UserNotificationsUIKit/PLTitled-Protocol.h>
+#import <UserNotificationsUIKit/NSObject-Protocol.h>
 
-@class NSArray, NSString, UIImage, UIView;
+@class MTVisualStylingProvider, NSArray, NSAttributedString, NSDate, NSString, NSTimeZone, UIImage, UIImageConfiguration, UIView;
 
-@protocol NCNotificationStaticContentAccepting <PLTitled>
-@property(retain, nonatomic) NSArray *interfaceActions;
+@protocol NCNotificationStaticContentAccepting <NSObject>
+@property(nonatomic) long long dateFormatStyle;
+@property(copy, nonatomic) NSTimeZone *timeZone;
+@property(nonatomic, getter=isDateAllDay) _Bool dateAllDay;
+@property(copy, nonatomic) NSDate *date;
 @property(copy, nonatomic) NSString *secondaryText;
 @property(copy, nonatomic) NSString *primarySubtitleText;
 @property(copy, nonatomic) NSString *primaryText;
+@property(copy, nonatomic) UIImage *subordinateIcon;
+@property(copy, nonatomic) UIImage *prominentIcon;
 
 @optional
 @property(nonatomic) unsigned long long maximumNumberOfSecondaryLargeTextLines;
@@ -20,7 +25,16 @@
 @property(nonatomic) unsigned long long maximumNumberOfPrimaryLargeTextLines;
 @property(nonatomic) unsigned long long maximumNumberOfPrimaryTextLines;
 @property(retain, nonatomic) UIView *accessoryView;
-@property(retain, nonatomic) UIImage *thumbnail;
+@property(copy, nonatomic) NSArray *menuActions;
+@property(retain, nonatomic) NSArray *interfaceActions;
+@property(copy, nonatomic) UIImage *thumbnail;
+@property(copy, nonatomic) NSString *footerText;
+@property(retain, nonatomic) MTVisualStylingProvider *importantTextVisualStylingProvider;
+@property(readonly, copy, nonatomic) UIImageConfiguration *importantTextImageConfiguration;
+@property(copy, nonatomic) NSAttributedString *importantAttributedText;
+@property(copy, nonatomic) NSString *importantText;
 @property(copy, nonatomic) NSString *summaryText;
+@property(copy, nonatomic) NSString *title;
+@property(copy, nonatomic) UIView *prominentIconView;
 @end
 

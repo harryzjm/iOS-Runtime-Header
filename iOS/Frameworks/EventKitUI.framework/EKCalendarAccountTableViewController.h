@@ -24,6 +24,8 @@
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 @property(readonly) NSMutableArray *accounts;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)resetBackgroundColor;
 - (void)loadView;
 - (id)initWithCalendar:(id)arg1 andStore:(id)arg2;
 

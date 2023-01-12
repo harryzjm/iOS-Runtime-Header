@@ -42,7 +42,7 @@
 @property(retain, nonatomic) NSNumberFormatter *noUnitFormatter; // @synthesize noUnitFormatter=_noUnitFormatter;
 @property(retain, nonatomic) NSMeasurement *noMeasurement; // @synthesize noMeasurement=_noMeasurement;
 @property(readonly, nonatomic) int temperatureUnit; // @synthesize temperatureUnit=_temperatureUnit;
-@property(readonly) NSLocale *locale; // @synthesize locale=_locale;
+@property(retain) NSLocale *locale; // @synthesize locale=_locale;
 @property(getter=shouldAvoidDegreeSymbolOnly) _Bool avoidDegreeSymbolOnly; // @synthesize avoidDegreeSymbolOnly=_avoidDegreeSymbolOnly;
 @property(getter=isCelsiusPreferred) _Bool celsiusPreferred; // @synthesize celsiusPreferred=_celsiusPreferred;
 - (void)_localeChanged:(id)arg1;

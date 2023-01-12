@@ -18,8 +18,8 @@
     NSString *_suffix;
 }
 
-+ (void)initialize;
 + (id)nameWithString:(id)arg1;
++ (id)patterns;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *suffix; // @synthesize suffix=_suffix;
 @property(readonly, nonatomic) NSString *prefix; // @synthesize prefix=_prefix;

@@ -16,9 +16,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSDateInterval *dateInterval; // @synthesize dateInterval=_dateInterval;
-@property(readonly, copy, nonatomic) HKQuantity *quantity; // @synthesize quantity=_quantity;
-- (id)initWithQuantity:(id)arg1 dateInterval:(id)arg2;
 
 @end
 

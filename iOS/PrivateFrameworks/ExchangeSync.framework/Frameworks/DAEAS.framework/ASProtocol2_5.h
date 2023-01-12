@@ -8,6 +8,7 @@
 {
 }
 
+- (int)supportsUniqueServerId;
 - (_Bool)versionChangeRequiresAccountUpgrade:(id)arg1;
 - (id)protocolVersion;
 

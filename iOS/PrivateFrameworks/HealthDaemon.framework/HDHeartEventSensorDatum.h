@@ -18,7 +18,6 @@
 @property(readonly, nonatomic) NSArray *associatedSampleUUIDs; // @synthesize associatedSampleUUIDs=_associatedSampleUUIDs;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)metadata;
 - (id)initWithIdentifier:(id)arg1 dateInterval:(id)arg2 heartRateThreshold:(id)arg3 associatedSampleUUIDs:(id)arg4 resumeContext:(id)arg5;
 
 @end

@@ -8,20 +8,52 @@
 
 #import <MediaPlaybackCore/MPCPlaybackEngineEventConsumer-Protocol.h>
 
-@class NSString;
-@protocol MPCPlaybackEngineEventStreamSubscription;
+@class NSString, RTCReporting;
+@protocol MPCPlaybackEngineEventStreamSubscription, MPCRTCEventConsumerTestingDelegate, OS_dispatch_group, OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface MPCRTCEventConsumer : NSObject <MPCPlaybackEngineEventConsumer>
 {
+    NSObject<OS_dispatch_group> *_rtcGroup;
+    NSObject<OS_dispatch_queue> *_rtcQueue;
+    id <MPCRTCEventConsumerTestingDelegate> _testingDelegate;
     id <MPCPlaybackEngineEventStreamSubscription> _subscription;
+    RTCReporting *_playbackSessionRTCSession;
+    RTCReporting *_playbackQueueRTCSession;
+    RTCReporting *_playbackItemRTCSession;
 }
 
 + (id)identifier;
++ (id)dateFormatter;
++ (id)NSStringFromMPCRTCReportingEventCategory:(long long)arg1;
 - (void).cxx_destruct;
+@property(retain) RTCReporting *playbackItemRTCSession; // @synthesize playbackItemRTCSession=_playbackItemRTCSession;
+@property(retain) RTCReporting *playbackQueueRTCSession; // @synthesize playbackQueueRTCSession=_playbackQueueRTCSession;
+@property(retain) RTCReporting *playbackSessionRTCSession; // @synthesize playbackSessionRTCSession=_playbackSessionRTCSession;
 @property(readonly, nonatomic) id <MPCPlaybackEngineEventStreamSubscription> subscription; // @synthesize subscription=_subscription;
-- (id)_reportingSessionWithToken:(id)arg1 serviceIdentifier:(id)arg2;
+@property(nonatomic) __weak id <MPCRTCEventConsumerTestingDelegate> testingDelegate; // @synthesize testingDelegate=_testingDelegate;
+- (void)_sendReportWithSession:(id)arg1 category:(long long)arg2 type:(long long)arg3 payload:(id)arg4;
+- (id)_rtcUserInfoWithServiceName:(id)arg1;
+- (id)_rtcSessionInfoWithToken:(id)arg1;
+- (void)_generateConfiguredReportingSessionWithToken:(id)arg1 serviceName:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)_perceivedItemStartTime:(id)arg1 fromItemStartEvent:(id)arg2;
+- (id)_payloadForItemSummary:(id)arg1 fromItemEvent:(id)arg2;
+- (id)_payloadForItemSummary:(id)arg1 fromEvent:(id)arg2;
+- (id)_payloadForItemAssetLoad:(id)arg1 fromItemEvent:(id)arg2;
+- (id)_payloadForQueueLoad:(id)arg1 fromQueueLoadEndEvent:(id)arg2;
+- (id)_payloadForSessionSummary:(id)arg1 fromEvent:(id)arg2;
+- (id)_payloadForSessionStart:(id)arg1 fromEvent:(id)arg2;
+- (void)_sendReportForItemSummaryWithEndReason:(id)arg1 cursor:(id)arg2 event:(id)arg3;
+- (void)_sendReportForItemSummary:(id)arg1 event:(id)arg2;
+- (void)_sendReportForItemAssetLoad:(id)arg1 event:(id)arg2;
+- (void)_sendQueueLoadEventIfNeeded:(id)arg1 forItemEvent:(id)arg2;
+- (void)_sendReportForSessionStart:(id)arg1 event:(id)arg2 withType:(long long)arg3;
+- (void)_sendSessionStartIfNeeded:(id)arg1 forItemEvent:(id)arg2;
+- (void)_sendReportForSessionSummary:(id)arg1 event:(id)arg2 withType:(long long)arg3;
+- (void)_handleReportingForItemStartEvent:(id)arg1 event:(id)arg2;
 - (void)unsubscribeFromEventStream:(id)arg1;
 - (void)subscribeToEventStream:(id)arg1;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

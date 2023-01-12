@@ -8,25 +8,27 @@
 
 #import <CalendarDaemon/NSSecureCoding-Protocol.h>
 
-@class CADChangeTrackingClientId, NSString;
+@class CADChangeTrackingClientId, NSString, NSURL;
 
 @interface CADDatabaseInitializationOptions : NSObject <NSSecureCoding>
 {
     _Bool _enablePropertyModificationLogging;
     _Bool _unitTesting;
+    _Bool _spotlightTesting;
     _Bool _allowDelegateSources;
     int _databaseInitOptions;
     int _management;
     CADChangeTrackingClientId *_changeTrackingClientId;
     NSString *_managementBundleIdentifier;
-    NSString *_databasePath;
+    NSURL *_databaseDirectory;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool allowDelegateSources; // @synthesize allowDelegateSources=_allowDelegateSources;
+@property(nonatomic) _Bool spotlightTesting; // @synthesize spotlightTesting=_spotlightTesting;
 @property(nonatomic) _Bool unitTesting; // @synthesize unitTesting=_unitTesting;
-@property(retain, nonatomic) NSString *databasePath; // @synthesize databasePath=_databasePath;
+@property(retain, nonatomic) NSURL *databaseDirectory; // @synthesize databaseDirectory=_databaseDirectory;
 @property(retain, nonatomic) NSString *managementBundleIdentifier; // @synthesize managementBundleIdentifier=_managementBundleIdentifier;
 @property(nonatomic) int management; // @synthesize management=_management;
 @property(nonatomic) _Bool enablePropertyModificationLogging; // @synthesize enablePropertyModificationLogging=_enablePropertyModificationLogging;

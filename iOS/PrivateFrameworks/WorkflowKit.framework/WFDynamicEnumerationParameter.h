@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class INObjectCollection, NSArray, NSError;
+#import <WorkflowKit/WFParameterValuePickable-Protocol.h>
+
+@class INObjectCollection, NSArray, NSError, NSString;
 @protocol WFDynamicEnumerationDataSource;
 
-@interface WFDynamicEnumerationParameter
+@interface WFDynamicEnumerationParameter <WFParameterValuePickable>
 {
     NSArray *_possibleStates;
     INObjectCollection *_possibleStatesCollection;
@@ -24,14 +26,17 @@
 @property(nonatomic) unsigned long long defaultValueLoadingState; // @synthesize defaultValueLoadingState=_defaultValueLoadingState;
 @property(nonatomic) __weak id <WFDynamicEnumerationDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property(retain, nonatomic) INObjectCollection *possibleStatesCollection; // @synthesize possibleStatesCollection=_possibleStatesCollection;
-- (void)createDialogRequestWithAttribution:(id)arg1 defaultState:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)createDialogRequestWithAttribution:(id)arg1 defaultState:(id)arg2 prompt:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (_Bool)isAsynchronous;
 - (void)defaultSerializedRepresentationDidChange;
 - (void)loadPossibleStatesWithCompletionHandler:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSArray *possibleStates; // @synthesize possibleStates=_possibleStates;
 - (id)accessoryColorForPossibleState:(id)arg1;
 - (id)defaultSerializedRepresentation;
+- (id)accessoryIconForPossibleState:(id)arg1;
+- (id)accessoryImageForPossibleState:(id)arg1;
 - (id)localizedLabelForPossibleState:(id)arg1;
+- (id)possibleStatesForLocalization;
 - (void)setPossibleStatesFromRemoteSource:(id)arg1;
 - (void)setPossibleStates:(id)arg1;
 - (void)reloadPossibleStates;
@@ -40,6 +45,21 @@
 - (_Bool)parameterStateIsValid:(id)arg1;
 - (_Bool)alwaysShowsButton;
 - (_Bool)allowsMultipleValues;
+- (void)wf_reloadFromAttributesDidChangeWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)wf_loadStatesWithSearchTerm:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+@property(readonly, nonatomic) _Bool wf_shouldValidateCurrentStateOnCollectionChanged;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
+@property(readonly, nonatomic) _Bool wf_allowsMultipleSelection;
+@property(readonly, nonatomic) _Bool wf_alwaysScaleIconImage;
+@property(readonly, nonatomic) NSString *wf_displayLocalizedPrompt;
+@property(readonly, nonatomic) _Bool wf_supportsSearch;
+@property(readonly, nonatomic) _Bool wf_usesGroupTableViewStyle;
+@property(readonly, nonatomic) _Bool wf_usesTogglesForSelection;
 
 @end
 

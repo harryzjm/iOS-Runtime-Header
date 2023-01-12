@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)configureDecompressionSession;
 - (int)resetDecompressionSession;
 - (long long)releaseDecoder;
+- (void)setError:(int)arg1;
 - (void)setCallback:(CDUnknownBlockType)arg1;
 - (long long)decodeData:(const char *)arg1 size:(unsigned long long)arg2 timeStamp:(unsigned int)arg3;
 - (long long)decode:(id)arg1 missingFrames:(_Bool)arg2 codecSpecificInfo:(id)arg3 renderTimeMs:(long long)arg4;

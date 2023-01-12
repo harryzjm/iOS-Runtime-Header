@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CUICatalog;
+@class CUICatalog, CUINamedLookup, NSDictionary;
 
 @interface CUINamedVectorGlyph
 {
@@ -16,43 +16,62 @@
     long long _layoutDirection;
     unsigned int _generatedImage:1;
     unsigned int _flippable:1;
+    unsigned int _canUsePathConcatenation:1;
+    long long _glyphSize;
+    long long _glyphWeight;
+    CUINamedLookup *_ultralightInterpolationSource;
+    CUINamedLookup *_blackInterpolationSource;
+    struct CGPath *_templatePath;
+    NSDictionary *_multicolorPaths;
+    NSDictionary *_hierarchicalPaths;
 }
 
++ (id)_layerHierarchyStyleNames;
 + (id)_knockoutStyleNames;
 + (id)_colorStyleNames;
 - (void).cxx_destruct;
-- (struct CGImage *)rasterizeImageUsingScaleFactor:(double)arg1 forTargetSize:(struct CGSize)arg2 withTintColors:(id)arg3;
-- (id)makeLayerTintedWithColors:(id)arg1;
-- (id)makeLayerTintedWithColor:(struct CGColor *)arg1;
-- (struct CGImage *)imageTintedWithColors:(id)arg1;
-- (struct CGImage *)imageTintedWithColor:(struct CGColor *)arg1;
-- (struct CGImage *)maskForLayerAtIndex:(unsigned long long)arg1;
-- (_Bool)layerAtIndexContainsColor:(unsigned long long)arg1;
-@property(readonly, nonatomic) unsigned long long numberOfLayers;
-- (void)_prepareDocumentfromRendition:(id)arg1 withColorResolver:(CDUnknownBlockType)arg2;
-@property(readonly, nonatomic) float templateVersion;
 - (id)debugDescription;
-- (_Bool)generatedImage;
-@property(nonatomic) double fontMatchingScaleFactor;
-- (struct CGImage *)rasterizeImageUsingScaleFactor:(double)arg1 forTargetSize:(struct CGSize)arg2;
+- (id)colorNameForRenderingStyle:(id)arg1;
+- (id)_layersForRenderingMode:(int)arg1 inRendition:(id)arg2;
+- (id)_stylePrefixForRenderingMode:(int)arg1;
+- (id)_referencePathsForHierarchicalMode;
+- (id)_referencePathsForMulticolorMode;
+- (struct CGPath *)_referencePathForTemplateMode;
+- (void)_drawHierarchicalLayersInContext:(struct CGContext *)arg1 scaleFactor:(double)arg2 targetSize:(struct CGSize)arg3 colorResolver:(CDUnknownBlockType)arg4;
+- (void)_drawHierarchicalLayerNamed:(id)arg1 inContext:(struct CGContext *)arg2 colorResolver:(CDUnknownBlockType)arg3;
+- (void)_drawMulticolorLayersInContext:(struct CGContext *)arg1 scaleFactor:(double)arg2 targetSize:(struct CGSize)arg3 colorResolver:(CDUnknownBlockType)arg4;
+- (void)_drawMulticolorLayerNamed:(id)arg1 inContext:(struct CGContext *)arg2 colorResolver:(CDUnknownBlockType)arg3;
+- (void)drawInContext:(struct CGContext *)arg1 withPaletteColors:(id)arg2;
+- (struct CGImage *)rasterizeImageUsingScaleFactor:(double)arg1 forTargetSize:(struct CGSize)arg2 withPaletteColors:(id)arg3;
+- (struct CGImage *)imageWithPaletteColors:(id)arg1;
+- (void)drawHierarchyLayerAtIndex:(unsigned long long)arg1 inContext:(struct CGContext *)arg2 withColorResolver:(CDUnknownBlockType)arg3;
+- (struct CGImage *)rasterizeImageUsingScaleFactor:(double)arg1 forTargetSize:(struct CGSize)arg2 withHierarchyColorResolver:(CDUnknownBlockType)arg3;
+- (struct CGImage *)imageWithHierarchyColorResolver:(CDUnknownBlockType)arg1;
+- (id)hierarchyLayers;
+- (unsigned long long)numberOfHierarchyLayers;
+- (id)multicolorColorNames;
+- (_Bool)containsNamedColorStyle:(id)arg1;
+- (_Bool)containsNamedColorStyles;
+- (void)drawMulticolorLayerAtIndex:(unsigned long long)arg1 inContext:(struct CGContext *)arg2 withColorResolver:(CDUnknownBlockType)arg3;
+- (id)makeLayerWithColorResolver:(CDUnknownBlockType)arg1;
 - (struct CGImage *)rasterizeImageUsingScaleFactor:(double)arg1 forTargetSize:(struct CGSize)arg2 withColorResolver:(CDUnknownBlockType)arg3;
-- (struct CGImage *)_rasterizeFromRendition:(id)arg1 imageUsingScaleFactor:(double)arg2 forTargetSize:(struct CGSize)arg3;
-- (struct CGSVGDocument *)referenceGlyph;
+- (struct CGImage *)imageWithColorResolver:(CDUnknownBlockType)arg1;
+- (unsigned long long)numberOfMulticolorLayers;
+- (const struct CGPath *)CGPath;
+- (void)drawInContext:(struct CGContext *)arg1;
+- (struct CGImage *)rasterizeImageUsingScaleFactor:(double)arg1 forTargetSize:(struct CGSize)arg2;
+- (struct CGImage *)image;
+- (_Bool)generatedImage;
+@property(readonly, nonatomic) float templateVersion;
+@property(nonatomic) double fontMatchingScaleFactor;
 @property(readonly, nonatomic) struct CGRect contentBounds;
 @property(readonly, nonatomic) struct CGRect contentBoundsUnrounded;
 @property(readonly, nonatomic) struct CGRect alignmentRect;
 @property(readonly, nonatomic) struct CGRect alignmentRectUnrounded;
-- (id)_fillColorsOfStylesNamed:(id)arg1 inDocument:(struct CGSVGDocument *)arg2;
-- (void)_setFillColor:(struct CGColor *)arg1 ofStyle:(struct CGSVGAttributeMap *)arg2;
-- (struct CGColor *)_fillColorOfStyle:(struct CGSVGAttributeMap *)arg1;
-- (_Bool)_containsKnockoutStylesFromRendition:(id)arg1;
-- (id)makeLayerWithColorResolver:(CDUnknownBlockType)arg1;
-- (struct CGImage *)_imageForTemplateRendering:(_Bool)arg1 withColorResolver:(CDUnknownBlockType)arg2;
-- (struct CGImage *)imageWithColorResolver:(CDUnknownBlockType)arg1;
-- (struct CGImage *)image;
 - (long long)layoutDirection;
 - (id)knownAvailableVectorSizes;
 @property(readonly, nonatomic) _Bool isFlippable;
+- (struct CGSize)referenceCanvasSize;
 - (double)referencePointSize;
 @property(readonly, nonatomic) double capHeight;
 @property(readonly, nonatomic) double capHeightUnrounded;
@@ -63,9 +82,17 @@
 - (long long)glyphWeight;
 - (long long)glyphSize;
 - (double)scale;
-- (void)_performWithLockedRendition:(CDUnknownBlockType)arg1;
+- (struct CGSVGDocument *)referenceGlyph;
+- (void)setRepresentsOnDemandContent:(_Bool)arg1;
 - (void)dealloc;
+- (void)_lookupCatalogImageForIdiom:(long long)arg1;
 - (id)initWithName:(id)arg1 scaleFactor:(double)arg2 deviceIdiom:(long long)arg3 pointSize:(double)arg4 fromCatalog:(id)arg5 usingRenditionKey:(id)arg6 fromTheme:(unsigned long long)arg7;
+- (id)intWithName:(id)arg1 scaleFactor:(double)arg2 deviceIdiom:(long long)arg3 pointSize:(double)arg4 weight:(long long)arg5 glyphSize:(long long)arg6 interpolatedFromRegular:(id)arg7 ultralight:(id)arg8 black:(id)arg9 fromCatalog:(id)arg10 themeRef:(unsigned long long)arg11;
+- (CDStruct_3c058996)_interpolatedAlignmentRectInsetsWithWeight:(long long)arg1 glyphSize:(long long)arg2 fromUltralight:(CDStruct_3c058996)arg3 regular:(CDStruct_3c058996)arg4 black:(CDStruct_3c058996)arg5;
+- (struct CGSize)_interpolatedCanvasSizeWithWeight:(long long)arg1 glyphSize:(long long)arg2 fromUltralight:(struct CGSize)arg3 regular:(struct CGSize)arg4 black:(struct CGSize)arg5;
+- (double)_interpolatedCapHeightWithWeight:(long long)arg1 glyphSize:(long long)arg2 fromUltralight:(double)arg3 regular:(double)arg4 black:(double)arg5;
+- (double)_interpolatedBaselineOffsetWithWeight:(long long)arg1 glyphSize:(long long)arg2 fromUltralight:(double)arg3 regular:(double)arg4 black:(double)arg5;
+- (struct CGPath *)_interpolatedPathWithWeight:(long long)arg1 glyphSize:(long long)arg2 fromUltralightSmall:(struct CGPath *)arg3 regularSmall:(struct CGPath *)arg4 blackSmall:(struct CGPath *)arg5;
 
 @end
 

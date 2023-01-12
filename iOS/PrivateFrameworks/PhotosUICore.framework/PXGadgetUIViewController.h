@@ -43,6 +43,7 @@
     PXGadgetAnchorHelper *_anchorHelper;
     unsigned long long _numberOfInitialGadgetsToLoad;
     UIColor *_backgroundColor;
+    PXGadgetCollectionViewLayout *_layout;
     UIContextMenuInteraction *_contextMenuInteraction;
     id <PXGadget> _interactionPreviewGadget;
     UIViewController *_interactionPreviewViewController;
@@ -85,6 +86,7 @@
 @property(retain, nonatomic) id <PXGadget> interactionPreviewGadget; // @synthesize interactionPreviewGadget=_interactionPreviewGadget;
 @property(retain, nonatomic) UIContextMenuInteraction *contextMenuInteraction; // @synthesize contextMenuInteraction=_contextMenuInteraction;
 @property(nonatomic) _Bool isScrolling; // @synthesize isScrolling=_isScrolling;
+@property(readonly, nonatomic) PXGadgetCollectionViewLayout *layout; // @synthesize layout=_layout;
 @property(copy, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(nonatomic) unsigned long long numberOfInitialGadgetsToLoad; // @synthesize numberOfInitialGadgetsToLoad=_numberOfInitialGadgetsToLoad;
 @property(readonly, nonatomic) PXGadgetAnchorHelper *anchorHelper; // @synthesize anchorHelper=_anchorHelper;
@@ -172,7 +174,6 @@
 - (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
 - (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (void)setLayout:(id)arg1;
-@property(readonly, nonatomic) PXGadgetCollectionViewLayout *layout;
 - (id)debugURLsForDiagnostics;
 - (id)gadgetAtLocation:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (void)reloadContent;

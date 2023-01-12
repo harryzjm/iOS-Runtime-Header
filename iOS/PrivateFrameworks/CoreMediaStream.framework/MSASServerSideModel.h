@@ -169,6 +169,7 @@
 - (void)rejectInvitationWithGUID:(id)arg1;
 - (void)acceptInvitationWithGUID:(id)arg1 info:(id)arg2;
 - (void)acceptInvitationWithGUID:(id)arg1;
+- (void)validateInvitationToken:(id)arg1 albumName:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)acceptInvitationWithToken:(id)arg1 info:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)acceptInvitationWithToken:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)unsubscribeFromAlbumWithGUID:(id)arg1 info:(id)arg2;

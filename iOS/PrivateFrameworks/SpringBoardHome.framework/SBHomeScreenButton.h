@@ -6,18 +6,21 @@
 
 #import <UIKit/UIButton.h>
 
-@class SBHomeScreenMaterialView, UIView;
+@class SBHomeScreenMaterialView, UIImage, UIView;
 
 @interface SBHomeScreenButton : UIButton
 {
     SBHomeScreenMaterialView *_materialView;
+    UIView *_backgroundView;
 }
 
-+ (struct UIEdgeInsets)backgroundInsets;
-+ (id)defaultContentImage;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property(readonly, nonatomic) SBHomeScreenMaterialView *materialView; // @synthesize materialView=_materialView;
-@property(readonly, nonatomic) UIView *backgroundView;
+@property(readonly, nonatomic) struct UIEdgeInsets backgroundInsets;
+@property(readonly, nonatomic) UIImage *defaultContentImage;
+- (_Bool)_shouldAnimatePropertyWithKey:(id)arg1;
+- (void)setEnabled:(_Bool)arg1;
 - (void)setHighlighted:(_Bool)arg1;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;

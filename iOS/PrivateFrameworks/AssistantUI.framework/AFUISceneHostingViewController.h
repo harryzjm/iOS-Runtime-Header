@@ -8,7 +8,7 @@
 
 #import <AssistantUI/AFUISceneControllerDelegate-Protocol.h>
 
-@class AFUISceneConfiguration, AFUISceneController, FBScene, FBSceneClientProviderInvalidationAction, NSString, UIView;
+@class AFUISceneConfiguration, AFUISceneController, FBScene, NSString, UIView;
 @protocol BSInvalidatable, UIScenePresenter;
 
 @interface AFUISceneHostingViewController : UIViewController <AFUISceneControllerDelegate>
@@ -21,10 +21,10 @@
     AFUISceneController *_sceneController;
     UIView *_windowSceneHostingView;
     id <UIScenePresenter> _presentation;
-    FBSceneClientProviderInvalidationAction *_invalidationAction;
     FBScene *_scene;
     id <BSInvalidatable> _predicateInvalidationHandler;
     long long _currentOrientation;
+    struct CGRect _currentFrame;
     struct UIEdgeInsets _effectiveSafeAreaInsets;
     struct UIEdgeInsets _suspendedSafeAreaInsets;
 }
@@ -33,11 +33,11 @@
 @property(nonatomic) struct UIEdgeInsets suspendedSafeAreaInsets; // @synthesize suspendedSafeAreaInsets=_suspendedSafeAreaInsets;
 @property(nonatomic) struct UIEdgeInsets effectiveSafeAreaInsets; // @synthesize effectiveSafeAreaInsets=_effectiveSafeAreaInsets;
 @property(nonatomic) _Bool safeAreaInsetsAreSuspended; // @synthesize safeAreaInsetsAreSuspended=_safeAreaInsetsAreSuspended;
+@property(nonatomic) struct CGRect currentFrame; // @synthesize currentFrame=_currentFrame;
 @property(nonatomic) long long currentOrientation; // @synthesize currentOrientation=_currentOrientation;
 @property(nonatomic) _Bool pauseDeferrals; // @synthesize pauseDeferrals=_pauseDeferrals;
 @property(retain, nonatomic) id <BSInvalidatable> predicateInvalidationHandler; // @synthesize predicateInvalidationHandler=_predicateInvalidationHandler;
 @property(retain, nonatomic) FBScene *scene; // @synthesize scene=_scene;
-@property(retain, nonatomic) FBSceneClientProviderInvalidationAction *invalidationAction; // @synthesize invalidationAction=_invalidationAction;
 @property(retain, nonatomic) id <UIScenePresenter> presentation; // @synthesize presentation=_presentation;
 @property(retain, nonatomic) UIView *windowSceneHostingView; // @synthesize windowSceneHostingView=_windowSceneHostingView;
 @property(retain, nonatomic) AFUISceneController *sceneController; // @synthesize sceneController=_sceneController;
@@ -57,7 +57,6 @@
 - (void)_handleSceneDidActivateWithIdentifier:(id)arg1;
 - (void)_audioCategoriesDisablingVolumeHUDDidChangeTo:(id)arg1;
 - (void)_handleInvalidationForReason:(unsigned long long)arg1 explanation:(id)arg2;
-- (void)deactivateSceneForExtendingTTSInBackground;
 - (void)viewSafeAreaInsetsDidChange;
 - (void)_updateSceneSafeAreaInsets;
 - (void)traitCollectionDidChange:(id)arg1;
@@ -72,7 +71,7 @@
 - (void)stopHostingScene;
 - (void)startHostingSceneForConfiguration:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (void)updateRemoteSceneWithFrontMostAppInterfaceOrientation:(long long)arg1;
-- (void)updateSettingsForInterfaceOrientationChange:(long long)arg1 willAnimationWithDuration:(double)arg2;
+- (void)_updateSceneSettingsToSize:(struct CGSize)arg1 interfaceOrientation:(long long)arg2 withAnimationSettings:(id)arg3 animationFence:(id)arg4;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)_commonInit;
 - (id)initWithCoder:(id)arg1;

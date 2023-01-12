@@ -4,31 +4,38 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
-
 #import <SpringBoardHome/SBHAddWidgetSheetViewControllerDelegate-Protocol.h>
+#import <SpringBoardHome/SBHMainAddSheetViewControlling-Protocol.h>
 #import <SpringBoardHome/SBHWidgetDragHandlerPassing-Protocol.h>
 #import <SpringBoardHome/SBHWidgetSheetViewControlling-Protocol.h>
 #import <SpringBoardHome/SBHWidgetWrapperViewControllerDelegate-Protocol.h>
-#import <SpringBoardHome/UICollectionViewDataSource-Protocol.h>
 #import <SpringBoardHome/UICollectionViewDelegate-Protocol.h>
 #import <SpringBoardHome/UISearchControllerDelegate-Protocol.h>
 #import <SpringBoardHome/UISearchResultsUpdating-Protocol.h>
-#import <SpringBoardHome/_UISheetPresentationControllerDelegate-Protocol.h>
+#import <SpringBoardHome/UISheetPresentationControllerDelegate-Protocol.h>
 
-@class MTMaterialView, NSArray, NSString, SBHAddWidgetSheetAppCollectionViewCellConfigurator, SBHWidgetAddSheetTransitionContext, SBHWidgetSearchController, UIButton, UICollectionView;
-@protocol SBHAddWidgetSheetViewControllerDelegate, SBHWidgetDragHandling, SBHWidgetSheetViewControllerPresenter, SBIconListLayoutProvider, SBIconViewProviding;
+@class MTMaterialView, NSArray, NSIndexPath, NSMapTable, NSMutableDictionary, NSString, SBHWidgetAddSheetTransitionContext, SBHWidgetSearchController, UIButton, UICollectionView, UICollectionViewDiffableDataSource, UIViewController;
+@protocol SBHWidgetDragHandling, SBHWidgetSheetViewControllerPresenter;
 
-@interface SBHAddWidgetSheetViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, UISearchResultsUpdating, _UISheetPresentationControllerDelegate, SBHAddWidgetSheetViewControllerDelegate, SBHWidgetWrapperViewControllerDelegate, UISearchControllerDelegate, SBHWidgetSheetViewControlling, SBHWidgetDragHandlerPassing>
+@interface SBHAddWidgetSheetViewController <UICollectionViewDelegate, UISheetPresentationControllerDelegate, SBHAddWidgetSheetViewControllerDelegate, SBHWidgetWrapperViewControllerDelegate, SBHMainAddSheetViewControlling, SBHWidgetSheetViewControlling, SBHWidgetDragHandlerPassing, UISearchResultsUpdating, UISearchControllerDelegate>
 {
-    UIViewController *_barSwipeViewController;
-    id <SBHAddWidgetSheetViewControllerDelegate> _delegate;
+    NSMutableDictionary *_userInfo;
+    struct SBHPadAddWidgetSheetMetrics _landscapeMetrics;
+    struct SBHPadAddWidgetSheetMetrics _portraitMetrics;
+    double _widgetScaleFactor;
+    NSIndexPath *_lastSelectedIndexPath;
+    _Bool _performedInitialSelection;
+    CDStruct_b3b36088 _sheetIconMetrics;
+    UICollectionViewDiffableDataSource *_diffableDataSource;
+    NSMapTable *_galleryIdentifierToGalleryItemLookupTable;
+    NSMapTable *_applicationWidgetCollectionForApplicationWidgetCollectionIdentifierLookupTable;
+    _Bool _shouldShowGalleryOnly;
     id <SBHWidgetSheetViewControllerPresenter> _presenter;
-    NSArray *_suggestedItems;
+    NSMutableDictionary *_suggestedItemsByGalleryLayoutSize;
     NSArray *_applicationWidgetCollections;
-    id <SBIconListLayoutProvider> _listLayoutProvider;
-    id <SBIconViewProviding> _iconViewProvider;
-    SBHAddWidgetSheetAppCollectionViewCellConfigurator *_appCellConfigurator;
+    unsigned long long _galleryLayoutSize;
+    UIViewController *_barSwipeViewController;
+    SBHWidgetSearchController *_externalSearchController;
     MTMaterialView *_backgroundView;
     UICollectionView *_collectionView;
     SBHWidgetSearchController *_searchController;
@@ -58,23 +65,33 @@
 @property(retain, nonatomic) SBHWidgetSearchController *searchController; // @synthesize searchController=_searchController;
 @property(retain, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property(retain, nonatomic) MTMaterialView *backgroundView; // @synthesize backgroundView=_backgroundView;
-@property(retain, nonatomic) SBHAddWidgetSheetAppCollectionViewCellConfigurator *appCellConfigurator; // @synthesize appCellConfigurator=_appCellConfigurator;
-@property(retain, nonatomic) id <SBIconViewProviding> iconViewProvider; // @synthesize iconViewProvider=_iconViewProvider;
-@property(retain, nonatomic) id <SBIconListLayoutProvider> listLayoutProvider; // @synthesize listLayoutProvider=_listLayoutProvider;
-@property(retain, nonatomic) NSArray *applicationWidgetCollections; // @synthesize applicationWidgetCollections=_applicationWidgetCollections;
-@property(retain, nonatomic) NSArray *suggestedItems; // @synthesize suggestedItems=_suggestedItems;
-@property(nonatomic) __weak id <SBHWidgetSheetViewControllerPresenter> presenter; // @synthesize presenter=_presenter;
-@property(nonatomic) __weak id <SBHAddWidgetSheetViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) _Bool shouldShowGalleryOnly; // @synthesize shouldShowGalleryOnly=_shouldShowGalleryOnly;
+@property(retain, nonatomic) SBHWidgetSearchController *externalSearchController; // @synthesize externalSearchController=_externalSearchController;
 @property(retain, nonatomic) UIViewController *barSwipeViewController; // @synthesize barSwipeViewController=_barSwipeViewController;
+@property(nonatomic) unsigned long long galleryLayoutSize; // @synthesize galleryLayoutSize=_galleryLayoutSize;
+@property(retain, nonatomic) NSArray *applicationWidgetCollections; // @synthesize applicationWidgetCollections=_applicationWidgetCollections;
+@property(retain, nonatomic) NSMutableDictionary *suggestedItemsByGalleryLayoutSize; // @synthesize suggestedItemsByGalleryLayoutSize=_suggestedItemsByGalleryLayoutSize;
+@property(nonatomic) __weak id <SBHWidgetSheetViewControllerPresenter> presenter; // @synthesize presenter=_presenter;
+- (id)_generateLayoutSectionForSectionIdx:(unsigned long long)arg1 width:(double)arg2;
+- (struct SBHPadAddWidgetSheetMetrics)_metricsForOrientation:(long long)arg1;
+- (id)_effectiveSearchController;
+- (void)_selectFirstItem;
 - (void)_updateCollectionViewInsets;
 - (void)_updateSearchBarContentInsets;
 - (id)_newWrapperViewControllerWithGalleryItem:(id)arg1 sizeClass:(long long)arg2;
-- (id)_collectionViewLayoutApplicationsSectionWithWidth:(double)arg1;
+- (id)_materialViewForVisualStyling;
+- (_Bool)_shouldShowSuggestionsListItem;
+- (_Bool)_shouldShowGallery;
+- (unsigned long long)_addWidgetSheetStyle;
+- (id)_collectionViewLayoutApplicationsSectionWithStyle:(unsigned long long)arg1;
+- (id)_podsArrayWithSizeClasses:(id)arg1 columnCount:(long long)arg2;
+- (id)_newPadCollectionViewLayoutGallerySectionWithWidth:(double)arg1 sizeClasses:(id)arg2;
 - (id)_collectionViewLayoutGallerySectionWithWidth:(double)arg1 sizeClasses:(id)arg2;
 - (id)_itemsArrayWithSizeClasses:(id)arg1 nSmallsGroup:(id)arg2 mediumAndSmallGroup:(id)arg3 usesThreeColumnLayout:(_Bool)arg4;
 - (id)_sizeClasses;
-- (_Bool)_shouldUseTableViewCellStyle;
+- (void)_makeFakeGalleryItemsFromHomeScreenItems:(id)arg1;
 - (void)_makeGalleryItemsFromHomeScreenItems:(id)arg1;
+- (id)backgroundViewMatchingMaterialBeneathAddWidgetSheetViewController:(id)arg1;
 - (void)addWidgetSheetViewControllerDidDisappear:(id)arg1;
 - (void)addWidgetSheetViewControllerWillDisappear:(id)arg1;
 - (void)addWidgetSheetViewControllerDidAppear:(id)arg1;
@@ -82,37 +99,62 @@
 - (void)addWidgetSheetViewController:(id)arg1 didSelectWidgetIconView:(id)arg2;
 - (void)addWidgetSheetViewControllerDidCancel:(id)arg1;
 - (void)presentationControllerWillDismiss:(id)arg1;
+- (void)configureBackgroundView:(id)arg1 matchingMaterialBeneathWrapperViewController:(id)arg2;
+- (id)backgroundViewMatchingMaterialBeneathWrapperViewController:(id)arg1;
 @property(readonly, nonatomic) __weak id <SBHWidgetDragHandling> widgetDragHandler;
 - (_Bool)_isSearchVisible;
 - (void)updateSearchResultsForSearchController:(id)arg1;
+- (void)willPresentSearchController:(id)arg1;
 - (void)didDismissSearchController:(id)arg1;
+@property(readonly, nonatomic) NSMutableDictionary *userInfo;
+- (id)_presentedGalleryViewController;
 - (id)_currentPresenter;
 - (void)_presentDetailSheetForGalleryCellAtIndexPath:(id)arg1;
+- (void)_clearDetailViewController;
+- (void)_presentDetailViewController:(id)arg1 fromCell:(id)arg2;
 - (void)_presentDetailSheetViewControllerForApplicationWidgetCollection:(id)arg1 configuredWithGalleryItem:(id)arg2 selectedSizeClass:(long long)arg3 fromCell:(id)arg4 atIndexPath:(id)arg5;
 - (void)_presentDetailSheetViewControllerForApplicationWidgetCollection:(id)arg1;
+- (void)_collectionView:(id)arg1 updateSeparatorVisibility:(_Bool)arg2 forHighlightAtIndexPath:(id)arg3;
+- (void)collectionView:(id)arg1 didUnhighlightItemAtIndexPath:(id)arg2;
+- (void)collectionView:(id)arg1 didHighlightItemAtIndexPath:(id)arg2;
+- (void)_presentGalleryCell;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
+- (_Bool)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;
 - (id)applicationWidgetCollectionsToUse;
-- (id)_collectionViewGalleryCellForItemAtIndexPath:(id)arg1;
-- (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
+- (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2 itemIdentifier:(id)arg3;
+- (_Bool)_shouldAnimateChanges;
+- (unsigned long long)_itemIndexForApplicationWidgetCollectionIndex:(unsigned long long)arg1;
+- (unsigned long long)_applicationWidgetCollectionIndexForItemIndex:(unsigned long long)arg1;
 - (unsigned long long)_sectionIndexForSection:(unsigned long long)arg1;
-- (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
-- (long long)numberOfSectionsInCollectionView:(id)arg1;
+- (void)_reloadData:(_Bool)arg1;
+- (void)_reloadData;
+- (void)_refreshData:(_Bool)arg1;
+- (id)_generateSnapshotDiffedFromSnapshot:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)_keyboardWillDismiss:(id)arg1;
 - (void)_keyboardWillShow:(id)arg1;
 - (void)_backgroundTapped:(id)arg1;
 - (void)closeButtonTapped:(id)arg1;
 - (void)_addBarSwipeView;
+- (void)didMoveToParentViewController:(id)arg1;
 - (void)_layoutSearchBarGradientMaskLayers;
+- (void)_layoutCollectionViewForScalingIfNeeded;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (CDStruct_b3b36088)sheetIconMetrics;
+- (void)_contentSizeCategoryDidChange:(id)arg1;
+- (id)_newBackgroundView;
 - (void)loadView;
+- (id)_suggestedItems;
+- (id)suggestedItemsForGalleryLayoutSize:(unsigned long long)arg1;
+- (void)setSuggestedItems:(id)arg1 forGalleryLayoutSize:(unsigned long long)arg2;
 - (unsigned long long)supportedInterfaceOrientations;
-- (id)initWithListLayoutProvider:(id)arg1 iconViewProvider:(id)arg2 suggestedItems:(id)arg3;
+- (void)dealloc;
+- (id)initWithListLayoutProvider:(id)arg1 iconViewProvider:(id)arg2 allowedWidgets:(struct SBHWidgetFilteringParameters)arg3 appCellConfigurator:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

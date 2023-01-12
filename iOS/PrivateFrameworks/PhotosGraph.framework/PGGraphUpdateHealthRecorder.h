@@ -8,10 +8,11 @@
 
 #import <PhotosGraph/PGGraphUpdateHealthRecording-Protocol.h>
 
-@class NSString;
+@class CPAnalytics, NSString;
 
 @interface PGGraphUpdateHealthRecorder : NSObject <PGGraphUpdateHealthRecording>
 {
+    CPAnalytics *_analytics;
     _Bool _changeConsumer;
     unsigned long long _numberOfDatabaseChangesReceivedInForeground;
     unsigned long long _numberOfDatabaseChangesReceivedInBackground;
@@ -21,6 +22,7 @@
     unsigned long long _maximumTransactionSize;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isChangeConsumer) _Bool changeConsumer; // @synthesize changeConsumer=_changeConsumer;
 @property(readonly, nonatomic) unsigned long long maximumTransactionSize; // @synthesize maximumTransactionSize=_maximumTransactionSize;
 @property(readonly, nonatomic) unsigned long long numberOfTimesGraphUpdatePaused; // @synthesize numberOfTimesGraphUpdatePaused=_numberOfTimesGraphUpdatePaused;
@@ -30,11 +32,12 @@
 @property(readonly, nonatomic) unsigned long long numberOfDatabaseChangesReceivedInForeground; // @synthesize numberOfDatabaseChangesReceivedInForeground=_numberOfDatabaseChangesReceivedInForeground;
 - (void)endRecordingInBackground:(_Bool)arg1;
 - (void)beginRecording;
+- (void)recordNumberOfDaysSinceMajorOSUpgrade:(unsigned long long)arg1;
 - (void)recordTransactionSize:(unsigned long long)arg1;
 - (void)recordNumberOfTimesGraphUpdatePaused:(unsigned long long)arg1;
 - (void)recordNumberOfDatabaseChangesConvertedToGraphChanges:(unsigned long long)arg1 inBackground:(_Bool)arg2;
 - (void)recordNumberOfDatabaseChangesReceived:(unsigned long long)arg1 inBackground:(_Bool)arg2;
-- (id)initForChangeConsumer:(_Bool)arg1;
+- (id)initForChangeConsumer:(_Bool)arg1 analytics:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

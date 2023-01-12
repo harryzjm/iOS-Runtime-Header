@@ -22,6 +22,7 @@
 }
 
 + (id)fetchDefaultAttributesForIdentifiers:(id)arg1;
++ (id)fetchModernNoteSearchableItemAttributesFromCoreDataForObjectIDURIs:(id)arg1 context:(id)arg2;
 + (id)defaultAttributesToReturnFromCoreSpotlight;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_semaphore> *synchronousSemaphore; // @synthesize synchronousSemaphore=_synchronousSemaphore;

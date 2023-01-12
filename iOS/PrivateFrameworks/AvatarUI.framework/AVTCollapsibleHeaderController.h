@@ -70,6 +70,7 @@
 - (void)scrollToTopAnimated:(_Bool)arg1;
 - (struct CGPoint)topContentOffsetWithHeaderHeight:(double)arg1;
 - (void)scrollToTopPreservingHeaderHeight:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)animationDidUpdateWithDisplayLink:(id)arg1;
 - (void)updateHeaderForHeight:(double)arg1 withOffset:(struct CGPoint)arg2 animated:(_Bool)arg3;
 - (void)snapToMinMaxIfNeededAnimated:(_Bool)arg1;
 - (void)collapseAnimated:(_Bool)arg1;

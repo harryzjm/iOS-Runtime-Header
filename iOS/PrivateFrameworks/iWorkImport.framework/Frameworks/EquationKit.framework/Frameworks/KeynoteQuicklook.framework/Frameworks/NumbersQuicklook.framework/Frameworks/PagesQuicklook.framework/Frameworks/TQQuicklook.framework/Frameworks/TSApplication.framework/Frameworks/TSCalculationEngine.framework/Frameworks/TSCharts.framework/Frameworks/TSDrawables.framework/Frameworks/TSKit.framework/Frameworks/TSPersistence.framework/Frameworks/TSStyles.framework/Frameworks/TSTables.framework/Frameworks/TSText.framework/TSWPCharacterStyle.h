@@ -23,11 +23,17 @@
 - (_Bool)transformsFontSizes;
 - (id)archivableRepresentationOfChangeSet:(id)arg1;
 - (void)saveToArchiver:(id)arg1;
-- (void)saveToArchive:(struct CharacterStyleArchive *)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (int)writingDirection;
-- (void)loadFromArchive:(const struct CharacterStyleArchive *)arg1 unarchiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 @property(readonly, nonatomic) NSString *presetKind;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

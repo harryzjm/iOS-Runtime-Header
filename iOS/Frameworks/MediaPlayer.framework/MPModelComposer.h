@@ -12,6 +12,7 @@
 
 + (id)__libraryAddedDate_KEY;
 + (id)kindWithAlbumKind:(id)arg1;
++ (long long)genericObjectType;
 
 // Remaining properties
 @property(copy, nonatomic) NSDate *libraryAddedDate; // @dynamic libraryAddedDate;

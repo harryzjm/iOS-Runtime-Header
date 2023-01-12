@@ -11,7 +11,7 @@
 #import <BoardServices/BSXPCServiceConnectionParent-Protocol.h>
 
 @class BSServiceQuality, NSHashTable, NSString;
-@protocol OS_xpc_object;
+@protocol OS_dispatch_queue, OS_xpc_object;
 
 @interface BSXPCServiceConnectionListener : NSObject <BSXPCServiceConnectionListenerConfiguring, BSXPCServiceConnectionParent, BSInvalidatable>
 {
@@ -24,11 +24,14 @@
     BSServiceQuality *_config_qos;
     CDUnknownBlockType _lock_connectionHandler;
     CDUnknownBlockType _lock_errorHandler;
+    NSObject<OS_dispatch_queue> *_lock_queue;
     NSObject<OS_xpc_object> *_lock_listener;
     NSHashTable *_lock_childConnections;
     NSObject<OS_xpc_object> *_lock_endpoint;
     _Bool _lock_nonLaunching;
+    _Bool _lock_sealed;
     _Bool _lock_activated;
+    _Bool _lock_resumed;
     _Bool _lock_invalidated;
     _Bool _lock_clientInvalidated;
 }

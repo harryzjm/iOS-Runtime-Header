@@ -19,6 +19,7 @@
 - (double)_listInsetXForPage:(id)arg1;
 - (unsigned long long)_listLayoutForPage:(id)arg1;
 - (unsigned long long)_listWidthStrategyForPage:(id)arg1;
+- (struct CGRect)suggestedVisibleFrameForSleeveInScreenCoordinates:(struct CGRect)arg1 forceCenteredX:(_Bool)arg2;
 - (struct UIEdgeInsets)suggestedContentInsetsForListForPage:(id)arg1;
 - (struct CGRect)suggestedFrameForListForPage:(id)arg1 bounds:(struct CGRect)arg2;
 - (struct CGRect)suggestedFrameForDateTimeViewInScreenCoordinates:(struct CGRect)arg1 forceCenteredX:(_Bool)arg2;

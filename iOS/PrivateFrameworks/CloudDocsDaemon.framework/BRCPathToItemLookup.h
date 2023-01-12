@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class BRCClientZone, BRCDocumentItem, BRCLocalItem, BRCPQLConnection, BRCPackageItem, BRCRelativePath, BRCServerItem;
+@class BRCClientZone, BRCDirectoryItem, BRCDocumentItem, BRCLocalItem, BRCPQLConnection, BRCPackageItem, BRCRelativePath, BRCServerItem;
 
 @interface BRCPathToItemLookup : NSObject
 {
@@ -17,7 +17,7 @@
     BRCLocalItem *_matchByPath;
     BRCServerItem *_serverByPath;
     BRCPackageItem *_packageItem;
-    BRCLocalItem *_parentItem;
+    BRCDirectoryItem *_parentItem;
     BRCLocalItem *_matchByFileIDGlobally;
     BRCDocumentItem *_matchByDocumentIDGlobally;
     BRCClientZone *_clientZone;
@@ -55,7 +55,7 @@
 @property(retain, nonatomic) BRCDocumentItem *byDocumentID;
 @property(readonly, retain) BRCLocalItem *byFileIDGlobally;
 @property(retain, nonatomic) BRCLocalItem *byFileID;
-@property(readonly, nonatomic) BRCLocalItem *parentItem;
+@property(readonly, nonatomic) BRCDirectoryItem *parentItem;
 - (id)initWithRelativePath:(id)arg1;
 - (id)initWithRelativePath:(id)arg1 db:(id)arg2;
 

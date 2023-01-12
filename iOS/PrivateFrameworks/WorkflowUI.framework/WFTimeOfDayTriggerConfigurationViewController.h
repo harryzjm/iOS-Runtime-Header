@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <WorkflowEditor/WFTriggerConfigurationViewController.h>
+
 #import <WorkflowUI/UITableViewDataSource-Protocol.h>
 #import <WorkflowUI/UITableViewDelegate-Protocol.h>
 #import <WorkflowUI/WFTimeOffsetPickerViewControllerDelegate-Protocol.h>
@@ -12,20 +14,18 @@
 @class NSArray, NSString, UITableView;
 @protocol _CDUserContext;
 
-@interface WFTimeOfDayTriggerConfigurationViewController <UITableViewDataSource, UITableViewDelegate, WFTimeOffsetPickerViewControllerDelegate, WFTimeTriggerDayOfWeekCellDelegate>
+@interface WFTimeOfDayTriggerConfigurationViewController : WFTriggerConfigurationViewController <UITableViewDataSource, UITableViewDelegate, WFTimeOffsetPickerViewControllerDelegate, WFTimeTriggerDayOfWeekCellDelegate>
 {
-    _Bool _showingPicker;
     id <_CDUserContext> _userContext;
-    NSArray *_sections;
     UITableView *_tableView;
     unsigned long long _timeOfDayInterval;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long timeOfDayInterval; // @synthesize timeOfDayInterval=_timeOfDayInterval;
-@property(nonatomic) _Bool showingPicker; // @synthesize showingPicker=_showingPicker;
 @property(readonly, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
-- (void)updateSunriseSunsetTimesIfNeeded;
+- (id)currentSunsetTime;
+- (id)currentSunriseTime;
 @property(readonly, nonatomic) id <_CDUserContext> userContext; // @synthesize userContext=_userContext;
 - (id)dateComponentsFromTriggerDays;
 - (void)dayOfWeekPickerCell:(id)arg1 didChangeSelectedRecurrences:(id)arg2;
@@ -51,10 +51,11 @@
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)infoForSection:(long long)arg1;
+@property(readonly, nonatomic) _Bool showingPicker;
 - (void)viewWillAppear:(_Bool)arg1;
-@property(readonly, nonatomic) NSArray *sections; // @synthesize sections=_sections;
+@property(readonly, nonatomic) NSArray *sections;
 - (void)loadView;
-- (id)initWithTrigger:(id)arg1 triggerManager:(id)arg2 mode:(unsigned long long)arg3;
+- (id)initWithTrigger:(id)arg1 mode:(unsigned long long)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

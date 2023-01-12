@@ -18,6 +18,7 @@
 @property(readonly) unsigned long long globalTraceObjectID; // @synthesize globalTraceObjectID=_globalTraceObjectID;
 @property(readonly) unsigned int eventPort; // @synthesize eventPort=_eventPort;
 - (void)notifyListener:(id)arg1 atValue:(unsigned long long)arg2 block:(CDUnknownBlockType)arg3;
+- (_Bool)waitUntilSignaledValue:(unsigned long long)arg1 timeoutMS:(unsigned long long)arg2;
 @property unsigned long long signaledValue;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;

@@ -9,11 +9,15 @@
 #import <NanoTimeKitCompanion/UIScrollViewDelegate-Protocol.h>
 
 @class NSString, UIView;
+@protocol NTKCCenteringScrollViewDelegate;
 
 @interface NTKCCenteringScrollView : UIScrollView <UIScrollViewDelegate>
 {
     struct CGRect _originalCrop;
+    struct UIEdgeInsets _minimumDisplayInsets;
+    id <NTKCCenteringScrollViewDelegate> _ntk_delegate;
     UIView *_centeredView;
+    double _cropRectCushion;
     double _maximumZoomRatio;
     struct CGSize _minimumDisplaySize;
     struct CGRect _cropRect;
@@ -22,18 +26,25 @@
 - (void).cxx_destruct;
 @property(nonatomic) double maximumZoomRatio; // @synthesize maximumZoomRatio=_maximumZoomRatio;
 @property(nonatomic) struct CGSize minimumDisplaySize; // @synthesize minimumDisplaySize=_minimumDisplaySize;
+@property(readonly, nonatomic) double cropRectCushion; // @synthesize cropRectCushion=_cropRectCushion;
 @property(nonatomic) struct CGRect cropRect; // @synthesize cropRect=_cropRect;
 @property(retain, nonatomic) UIView *centeredView; // @synthesize centeredView=_centeredView;
+@property(nonatomic) __weak id <NTKCCenteringScrollViewDelegate> ntk_delegate; // @synthesize ntk_delegate=_ntk_delegate;
 - (void)_updateCrop;
 - (void)_centerOnCrop;
+- (void)safeAreaInsetsDidChange;
 - (void)_updateInsets;
 - (void)_updateZoomScales;
+- (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(_Bool)arg2;
 - (void)scrollViewDidEndZooming:(id)arg1 withView:(id)arg2 atScale:(double)arg3;
+- (void)scrollViewWillBeginDragging:(id)arg1;
+- (void)scrollViewWillBeginZooming:(id)arg1 withView:(id)arg2;
 - (id)viewForZoomingInScrollView:(id)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
+- (void)setMinimumDisplaySize:(struct CGSize)arg1 withCropRectCushion:(double)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

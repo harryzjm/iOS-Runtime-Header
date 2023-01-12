@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (void)applyContactListStyleToBannerTitle:(id)arg1 primaryAppearance:(_Bool)arg2;
 - (void)applyContactListStyleToEmergencyIcon:(id)arg1 ofCell:(id)arg2;
 - (void)applyContactListStyleToMeContactLabel:(id)arg1 ofCell:(id)arg2;
+- (void)applyContactListStyleToText:(id)arg1 ofSearchResultCell:(id)arg2 withColor:(id)arg3 highlightColor:(id)arg4;
 - (void)applyContactListStyleToText:(id)arg1 ofSearchResultCell:(id)arg2;
 - (void)applyContactListStyleToText:(id)arg1 ofUnhighlightedCell:(id)arg2;
 - (void)applyContactListStyleToText:(id)arg1 ofHighlightedCell:(id)arg2;
@@ -29,10 +30,11 @@ __attribute__((visibility("hidden")))
 - (void)applyContactListStyleToSearchBar:(id)arg1;
 - (void)applyContactListStyleToNavigationBar:(id)arg1;
 - (void)applyContactListStyleToHeaderFooter:(id)arg1;
+- (void)applyContactListStyleToSearchHeader:(id)arg1 withTitle:(id)arg2;
 - (void)applyContactListStyleToSearchCell:(id)arg1;
 - (void)applyContactListStyleToCell:(id)arg1;
-- (void)applyContactListStyleToSelectedCell:(id)arg1;
-- (void)applySelectionTextStyleToCell:(id)arg1;
+- (void)applyDefaultTextColorsToContactListCell:(id)arg1;
+- (void)applyLightTextColorsToContactListCell:(id)arg1;
 @property(readonly, nonatomic) _Bool usesInsetPlatterStyle;
 @property(readonly, nonatomic) unsigned long long tableNoContactsAvailableStyle;
 @property(readonly, nonatomic) double cellEstimatedHeight;

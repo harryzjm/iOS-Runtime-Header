@@ -7,6 +7,6 @@
 #import <Foundation/NSMapTable.h>
 
 @interface NSMapTable (HomeKit)
-- (id)allKeys;
+- (id)hm_allKeys;
 @end
 

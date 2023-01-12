@@ -9,10 +9,10 @@
 @class CLLocation, FMFMapImageRequest;
 
 @protocol FMFMapXPCInterface <NSObject>
-- (oneway void)mapImageForLocation:(CLLocation *)arg1 altitude:(double)arg2 pitch:(double)arg3 screenRatio:(double)arg4 andCompletion:(void (^)(NSData *, NSError *))arg5;
+- (oneway void)mapImageForLocation:(CLLocation *)arg1 isShifted:(_Bool)arg2 altitude:(double)arg3 pitch:(double)arg4 screenRatio:(double)arg5 andCompletion:(void (^)(NSData *, NSError *))arg6;
 - (oneway void)noLocationImageForScreenRatio:(double)arg1 andCompletion:(void (^)(NSData *, NSError *))arg2;
 - (oneway void)gridImageForScreenRatio:(double)arg1 andCompletion:(void (^)(NSData *, NSError *))arg2;
-- (oneway void)mapImageForLocation:(CLLocation *)arg1 altitude:(double)arg2 pitch:(double)arg3 width:(double)arg4 height:(double)arg5 andCompletion:(void (^)(NSData *, NSError *))arg6;
+- (oneway void)mapImageForLocation:(CLLocation *)arg1 isShifted:(_Bool)arg2 altitude:(double)arg3 pitch:(double)arg4 width:(double)arg5 height:(double)arg6 andCompletion:(void (^)(NSData *, NSError *))arg7;
 - (oneway void)mapImageForRequest:(FMFMapImageRequest *)arg1 andCompletion:(void (^)(NSData *, NSError *))arg2;
 - (oneway void)noLocationImageForWidth:(double)arg1 height:(double)arg2 andCompletion:(void (^)(NSData *, NSError *))arg3;
 - (oneway void)gridImageForWidth:(double)arg1 height:(double)arg2 andCompletion:(void (^)(NSData *, NSError *))arg3;

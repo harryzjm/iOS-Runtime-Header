@@ -17,23 +17,36 @@
     _Bool _hasRefreshedPreviewAfterError;
     NSObject<OS_dispatch_queue> *_serialQueue;
     id <TUVideoDeviceControllerProvider><TUVideoEffectsProvider> _provider;
+    struct CGSize _localScreenLandscapeAspectRatio;
 }
 
 + (int)_tuOrientationForVideoOrientation:(int)arg1;
 + (int)_videoOrientationForTUOrientation:(int)arg1;
++ (void)prewarm;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool hasRefreshedPreviewAfterError; // @synthesize hasRefreshedPreviewAfterError=_hasRefreshedPreviewAfterError;
 @property(nonatomic) _Bool wantsPreview; // @synthesize wantsPreview=_wantsPreview;
 @property(readonly, nonatomic) id <TUVideoDeviceControllerProvider><TUVideoEffectsProvider> provider; // @synthesize provider=_provider;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
+@property(readonly, nonatomic) struct CGSize localScreenLandscapeAspectRatio; // @synthesize localScreenLandscapeAspectRatio=_localScreenLandscapeAspectRatio;
+- (void)provider:(id)arg1 cameraBlurEnabledDidChange:(_Bool)arg2;
+- (void)provider:(id)arg1 cameraCinematicFramingEnabledDidChange:(_Bool)arg2;
+- (void)provider:(id)arg1 cameraCinematicFramingAvailabilityDidChange:(_Bool)arg2;
 - (void)provider:(id)arg1 cameraZoomAvailabilityDidChange:(_Bool)arg2;
 - (void)captureDevicesChangedForProvider:(id)arg1;
+- (void)didPausePreviewForProvider:(id)arg1;
 - (void)didStopPreviewForProvider:(id)arg1;
 - (void)provider:(id)arg1 didChangeLocalVideoAttributes:(id)arg2;
 - (void)provider:(id)arg1 didReceiveFirstPreviewFrameFromCameraUniqueID:(id)arg2;
 - (void)didStartPreviewForProvider:(id)arg1;
 - (void)provider:(id)arg1 cameraDidBecomeAvailableForUniqueID:(id)arg2;
 - (void)provider:(id)arg1 didReceiveErrorFromCameraUniqueID:(id)arg2 error:(id)arg3;
+- (id)landscapeScreenAttributes;
+- (id)portraitScreenAttributes;
+- (struct CGSize)localLandscapePortraitAspectRatio;
+@property(readonly, nonatomic) struct CGSize localVideoLandscapeAspectRatio;
+@property(readonly, nonatomic) struct CGSize localScreenPortraitAspectRatio;
+@property(readonly, nonatomic) struct CGSize localVideoPortraitAspectRatio;
 @property(readonly, nonatomic) struct CGRect localScreenContentsRect;
 - (void)setLocalPortraitAspectRatio:(struct CGSize)arg1 localLandscapeAspectRatio:(struct CGSize)arg2;
 - (void)noteEndAnimationToPIP;
@@ -43,6 +56,11 @@
 - (void)noteBeginAnimationToPreview;
 - (void)rampCameraZoomFactor:(double)arg1 withRate:(double)arg2;
 - (void)setCameraZoomFactor:(double)arg1;
+@property(nonatomic) _Bool cameraBlurEnabled;
+@property(nonatomic) _Bool allowsCameraBlurToggling;
+@property(readonly, nonatomic) _Bool supportsCameraBlur;
+- (void)setCinematicFramingEnabled:(_Bool)arg1;
+@property(readonly, nonatomic, getter=isCinematicFramingEnabled) _Bool cinematicFramingEnabled;
 - (void)pausePreview;
 - (void)stopPreview;
 - (void)startPreview;

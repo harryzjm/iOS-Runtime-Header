@@ -14,6 +14,7 @@
 @interface AFUISiriSetupViewController : UIViewController <UIAdaptivePresentationControllerDelegate>
 {
     UIView *_contentView;
+    NSString *_selectedRecognitionLanguageCode;
     _Bool _visible;
     _Bool _lastTimeShown;
     id <AFUISiriSetupViewControllerDelegate> _delegate;
@@ -28,11 +29,13 @@
 @property(nonatomic, getter=isVisible) _Bool visible; // @synthesize visible=_visible;
 @property(nonatomic) __weak id <AFUISiriSetupViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (_Bool)_canShowWhileLocked;
+- (_Bool)presentationControllerShouldDismiss:(id)arg1;
 - (void)presentationControllerDidDismiss:(id)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (unsigned long long)supportedInterfaceOrientations;
 - (_Bool)shouldAutorotate;
 - (void)_laterTapped:(id)arg1;
+- (void)_continueWithLanguageCode:(id)arg1 commitLanguageCodeToPreferences:(_Bool)arg2;
 - (void)_continueTapped:(id)arg1;
 - (void)animatedDisappearanceWithFactory:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)animatedAppearanceWithFactory:(id)arg1 completion:(CDUnknownBlockType)arg2;

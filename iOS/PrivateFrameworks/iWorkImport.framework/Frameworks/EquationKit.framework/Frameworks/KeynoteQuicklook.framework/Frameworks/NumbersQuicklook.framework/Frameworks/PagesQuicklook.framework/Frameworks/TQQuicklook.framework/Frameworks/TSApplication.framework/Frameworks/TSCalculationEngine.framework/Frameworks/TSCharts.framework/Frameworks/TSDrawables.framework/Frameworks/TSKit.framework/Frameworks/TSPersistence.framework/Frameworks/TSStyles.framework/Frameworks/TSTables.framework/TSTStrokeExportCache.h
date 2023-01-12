@@ -15,11 +15,11 @@
     struct TSTSimpleRange _range;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) TSDStroke *stroke; // @synthesize stroke=_stroke;
 @property(nonatomic) struct TSTSimpleRange range; // @synthesize range=_range;
 @property(retain, nonatomic) TSTStrokeLayerMergedStack *mergedStrokes; // @synthesize mergedStrokes=_mergedStrokes;
 - (id)strokeAtIndex:(unsigned int)arg1;
-- (void)dealloc;
 - (id)initWithMergedStack:(id)arg1;
 
 @end

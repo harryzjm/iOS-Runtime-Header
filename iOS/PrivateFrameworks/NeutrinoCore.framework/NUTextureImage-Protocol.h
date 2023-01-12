@@ -7,8 +7,9 @@
 #import <NeutrinoCore/NUImage-Protocol.h>
 
 @class NURegion;
+@protocol NUDevice;
 
 @protocol NUTextureImage <NUImage>
-- (void)readTextureRegion:(NURegion *)arg1 withBlock:(void (^)(id <NUTextureTile>, _Bool *))arg2;
+- (void)readTextureRegion:(NURegion *)arg1 device:(id <NUDevice>)arg2 withBlock:(void (^)(id <NUTextureTile>, _Bool *))arg3;
 @end
 

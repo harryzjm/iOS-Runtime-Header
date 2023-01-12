@@ -10,12 +10,15 @@
 {
 }
 
++ (id)birthdayFormatter;
 + (id)reminderAllDayDateFormatter;
++ (id)reminderDateTimeFormatter;
 + (id)reminderDateFormatter;
 + (id)mediumDateFormatter;
 + (id)multiDayDateFormatter;
 + (id)singleDayTimeFormatter;
 + (id)singleDayDateFormatter;
++ (id)fullDayTimeFormatter;
 + (id)fullDayFormatter;
 + (id)allDayFormatter;
 

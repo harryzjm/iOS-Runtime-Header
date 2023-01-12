@@ -23,8 +23,6 @@
 - (void)_axDismissPreview;
 - (_Bool)_axShowMoreActions:(id)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (id)_axTitleForPreviewAction:(id)arg1;
-- (void)_axSetupContainerView;
 
 @end
 

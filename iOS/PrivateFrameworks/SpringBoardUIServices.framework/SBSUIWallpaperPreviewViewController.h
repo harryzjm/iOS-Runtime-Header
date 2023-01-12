@@ -10,7 +10,7 @@
 #import <SpringBoardUIServices/SBFLegibilitySettingsProviderDelegate-Protocol.h>
 #import <SpringBoardUIServices/SBSUIWallpaperPreviewViewDelegate-Protocol.h>
 
-@class AVURLAsset, NSDictionary, NSString, NSTimer, SBFWallpaperConfiguration, SBFWallpaperConfigurationManager, SBFWallpaperOptions, SBSUIProgressHUD, UIImage, _SBSUIOrientedImageView, _UILegibilitySettings;
+@class AVURLAsset, NSDictionary, NSString, NSTimer, SBFWallpaperConfiguration, SBFWallpaperConfigurationManager, SBFWallpaperCoreAnalyticsLogger, SBFWallpaperOptions, SBSUIProgressHUD, UIImage, _SBSUIOrientedImageView, _UILegibilitySettings;
 @protocol SBFLegibilitySettingsProviderDelegate, SBSUIWallpaperPreviewViewControllerDelegate;
 
 @interface SBSUIWallpaperPreviewViewController : UIViewController <SBFLegibilitySettingsProviderDelegate, SBSUIWallpaperPreviewViewDelegate, SBFLegibilitySettingsProvider>
@@ -36,6 +36,7 @@
     _Bool _disableParallax;
     SBSUIProgressHUD *_hud;
     _SBSUIOrientedImageView *_homeScreenPreviewView;
+    SBFWallpaperCoreAnalyticsLogger *_wallpaperCoreAnalyticsLogger;
     _Bool _motionEnabled;
     _Bool _irisEnabled;
     id <SBFLegibilitySettingsProviderDelegate> _delegate;
@@ -63,6 +64,7 @@
 - (void)_stopDateTimer;
 - (void)_updateDateView;
 - (id)_dateView;
+- (void)_logWallpaperChangeForLocations:(long long)arg1;
 - (void)_enableIrisOrParallaxIfEligible;
 - (void)_displaySettingWallpaperHUD;
 - (id)_wallpaperViewIfLoaded;

@@ -16,17 +16,19 @@
 #import <CarPlaySupport/NSXPCListenerDelegate-Protocol.h>
 #import <CarPlaySupport/UINavigationControllerDelegate-Protocol.h>
 
-@class CPSApplicationStateMonitor, CPSBannerSource, CPSDashboardEstimatesViewController, CPSDashboardGuidanceViewController, CPSNowPlayingViewController, CPSOverlayViewController, CPSTabBarViewController, CPSTemplateEnvironment, FBScene, NSMutableDictionary, NSString, NSUUID, NSXPCConnection, NSXPCListener, SiriDirectActionSource, UIViewController, UIWindowScene;
+@class CPSApplicationStateMonitor, CPSBannerSource, CPSDashboardEstimatesViewController, CPSDashboardGuidanceViewController, CPSNowPlayingViewController, CPSOverlayViewController, CPSTabBarViewController, CPSTemplateEnvironment, FBScene, NSMapTable, NSMutableDictionary, NSString, NSUUID, NSXPCConnection, NSXPCListener, SiriDirectActionSource, UIViewController, UIWindowScene;
 @protocol CPDashboardClientInterface, CPTemplateServiceClientInterface;
 
 @interface CPSTemplateInstance : NSObject <NSXPCListenerDelegate, UINavigationControllerDelegate, CPSTemplateViewControllerDelegate, CPSSafeAreaDelegate, CPBannerDelegate, CPDashboardProviding, CPSNavigatorObserving, CPTemplateProviding, BSInvalidatable>
 {
+    _Bool _pendingLaunchToNowPlaying;
     NSString *_sceneIdentifier;
     CPSOverlayViewController *_overlayViewController;
     FBScene *_scene;
     UIWindowScene *_windowSceneForTemplateApplicationScene;
     UIWindowScene *_windowSceneForMapWidgetScene;
     UIWindowScene *_windowSceneForGuidanceWidgetScene;
+    UIWindowScene *_windowSceneForInstrumentClusterMapWidgetScene;
     FBScene *_mapWidgetScene;
     CPSDashboardGuidanceViewController *_dashboardGuidanceViewController;
     CPSDashboardEstimatesViewController *_dashboardEstimatesViewController;
@@ -45,10 +47,12 @@
     CPSNowPlayingViewController *_nowPlayingViewController;
     CPSTemplateEnvironment *_templateEnvironment;
     SiriDirectActionSource *_siriActivationSource;
+    NSMapTable *_instrumentClusterViewControllerMapTable;
     struct UIEdgeInsets _currentSafeAreaInsets;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMapTable *instrumentClusterViewControllerMapTable; // @synthesize instrumentClusterViewControllerMapTable=_instrumentClusterViewControllerMapTable;
 @property(retain, nonatomic) SiriDirectActionSource *siriActivationSource; // @synthesize siriActivationSource=_siriActivationSource;
 @property(retain, nonatomic) CPSTemplateEnvironment *templateEnvironment; // @synthesize templateEnvironment=_templateEnvironment;
 @property(retain, nonatomic) CPSNowPlayingViewController *nowPlayingViewController; // @synthesize nowPlayingViewController=_nowPlayingViewController;
@@ -68,6 +72,7 @@
 @property(readonly, nonatomic) CPSDashboardEstimatesViewController *dashboardEstimatesViewController; // @synthesize dashboardEstimatesViewController=_dashboardEstimatesViewController;
 @property(readonly, nonatomic) CPSDashboardGuidanceViewController *dashboardGuidanceViewController; // @synthesize dashboardGuidanceViewController=_dashboardGuidanceViewController;
 @property(nonatomic) __weak FBScene *mapWidgetScene; // @synthesize mapWidgetScene=_mapWidgetScene;
+@property(nonatomic) __weak UIWindowScene *windowSceneForInstrumentClusterMapWidgetScene; // @synthesize windowSceneForInstrumentClusterMapWidgetScene=_windowSceneForInstrumentClusterMapWidgetScene;
 @property(nonatomic) __weak UIWindowScene *windowSceneForGuidanceWidgetScene; // @synthesize windowSceneForGuidanceWidgetScene=_windowSceneForGuidanceWidgetScene;
 @property(nonatomic) __weak UIWindowScene *windowSceneForMapWidgetScene; // @synthesize windowSceneForMapWidgetScene=_windowSceneForMapWidgetScene;
 @property(nonatomic) __weak UIWindowScene *windowSceneForTemplateApplicationScene; // @synthesize windowSceneForTemplateApplicationScene=_windowSceneForTemplateApplicationScene;
@@ -75,6 +80,7 @@
 @property(retain, nonatomic) CPSOverlayViewController *overlayViewController; // @synthesize overlayViewController=_overlayViewController;
 @property(readonly, nonatomic) NSString *sceneIdentifier; // @synthesize sceneIdentifier=_sceneIdentifier;
 - (void)didCreateNavigator:(id)arg1;
+- (id)instrumentClusterViewControllerForDisplayIdentifier:(id)arg1;
 - (void)hostSetShortcutButtons:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateInterestingInsets:(struct UIEdgeInsets)arg1;
 - (void)viewController:(id)arg1 didUpdateSafeAreaInsets:(struct UIEdgeInsets)arg2;
@@ -83,6 +89,7 @@
 - (void)templateViewControllerDidPop:(id)arg1;
 - (void)navigationController:(id)arg1 didShowViewController:(id)arg2 animated:(_Bool)arg3;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(_Bool)arg3;
+- (void)_pushNowPlayingIfNeeded;
 - (void)whitelistClassesForBaseTemplateProvider:(id)arg1;
 - (void)_dashboardConnectionInvalidationHandler;
 - (_Bool)_handleDashboardConnection:(id)arg1;

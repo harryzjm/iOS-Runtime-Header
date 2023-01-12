@@ -14,7 +14,7 @@
 - (double)distanceToLeadingEdgeOfLeadingCardFromTrailingEdgeOfScreenWithVisibleIndexToStartSearch:(unsigned long long)arg1;
 - (double)minimumTranslationToKillIndex:(unsigned long long)arg1;
 - (struct CGPoint)restingOffsetForScrollOffset:(struct CGPoint)arg1 velocity:(struct CGPoint)arg2;
-- (struct CGPoint)contentOffsetForIndex:(unsigned long long)arg1 centered:(_Bool)arg2;
+- (struct CGPoint)contentOffsetForIndex:(unsigned long long)arg1 alignment:(long long)arg2;
 - (SBSwitcherScrollViewAttributes *)scrollViewAttributes;
 - (double)contentPageViewScaleForAppLayout:(SBAppLayout *)arg1;
 - (double)snapshotScaleForAppLayout:(SBAppLayout *)arg1;

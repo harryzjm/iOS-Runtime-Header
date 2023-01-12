@@ -10,18 +10,17 @@
 #import <WorkflowKit/WFSequentialParameterInputProviderDelegate-Protocol.h>
 #import <WorkflowKit/WFUserInterfaceHost-Protocol.h>
 
-@class NSArray, NSDate, NSString, WFAction, WFDialogAttribution, WFSequentialParameterInputProvider, WFWorkflowController, WFWorkflowReference;
-@protocol WFDialogPresenter;
+@class NSArray, NSDate, NSString, WFAction, WFDialogAttributions, WFSequentialParameterInputProvider, WFUIPresenter, WFWorkflow, WFWorkflowController;
 
 @interface WFDialogTransformer : NSObject <WFSequentialParameterInputProviderDelegate, WFUserInterfaceHost, WFActionParameterInputProvider>
 {
     NSString *_userInterfaceType;
-    WFWorkflowReference *_workflow;
     WFAction *_currentAction;
     WFWorkflowController *_workflowController;
-    id <WFDialogPresenter> _dialogPresenter;
+    WFUIPresenter *_userInterfacePresenter;
     NSArray *_allowedParameterClasses;
     long long _numberOfDialogsPresented;
+    WFWorkflow *_workflow;
     WFSequentialParameterInputProvider *_parameterInputProvider;
     CDUnknownBlockType _parameterInputCompletionHandler;
     NSDate *_workflowStartTime;
@@ -31,16 +30,17 @@
 @property(retain, nonatomic) NSDate *workflowStartTime; // @synthesize workflowStartTime=_workflowStartTime;
 @property(copy, nonatomic) CDUnknownBlockType parameterInputCompletionHandler; // @synthesize parameterInputCompletionHandler=_parameterInputCompletionHandler;
 @property(retain, nonatomic) WFSequentialParameterInputProvider *parameterInputProvider; // @synthesize parameterInputProvider=_parameterInputProvider;
+@property(retain, nonatomic) WFWorkflow *workflow; // @synthesize workflow=_workflow;
 @property(nonatomic) long long numberOfDialogsPresented; // @synthesize numberOfDialogsPresented=_numberOfDialogsPresented;
 @property(retain, nonatomic) NSArray *allowedParameterClasses; // @synthesize allowedParameterClasses=_allowedParameterClasses;
-@property(retain, nonatomic) id <WFDialogPresenter> dialogPresenter; // @synthesize dialogPresenter=_dialogPresenter;
+@property(retain, nonatomic) WFUIPresenter *userInterfacePresenter; // @synthesize userInterfacePresenter=_userInterfacePresenter;
 @property(nonatomic) __weak WFWorkflowController *workflowController; // @synthesize workflowController=_workflowController;
 @property(retain, nonatomic) WFAction *currentAction; // @synthesize currentAction=_currentAction;
-@property(retain, nonatomic) WFWorkflowReference *workflow; // @synthesize workflow=_workflow;
 @property(readonly, nonatomic) NSString *userInterfaceType; // @synthesize userInterfaceType=_userInterfaceType;
 - (_Bool)openURL:(id)arg1 withBundleIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)dialogTransformer;
 - (_Bool)shouldNotHandoff;
+- (void)resolveDescriptor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dismissPresentedContentWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)requestActionInterfacePresentationForActionClassName:(id)arg1 classNamesByType:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)showPreviewForContentCollection:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -48,23 +48,31 @@
 - (void)showConfirmInteraction:(id)arg1 prompt:(id)arg2 requireAuthentication:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)sequentialParameterInputProviderDidCancel:(id)arg1;
 - (void)sequentialParameterInputProvider:(id)arg1 didFinishWithInputtedStates:(id)arg2;
-- (void)showAskParameterDialogForParameter:(id)arg1 action:(id)arg2 defaultState:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)showAskParameterDialogForParameter:(id)arg1 action:(id)arg2 defaultState:(id)arg3 prompt:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (_Bool)usesModalComponentStyleWhenAskingForParameter:(id)arg1;
-- (void)sequentialParameterInputProvider:(id)arg1 didAdvanceToParameter:(id)arg2 action:(id)arg3 defaultState:(id)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)action:(id)arg1 provideInputForParameters:(id)arg2 withDefaultStates:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)sequentialParameterInputProvider:(id)arg1 didAdvanceToParameter:(id)arg2 action:(id)arg3 defaultState:(id)arg4 prompt:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)action:(id)arg1 provideInputForParameters:(id)arg2 withDefaultStates:(id)arg3 prompts:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (_Bool)action:(id)arg1 canProvideInputForParameter:(id)arg2;
 - (void)handleAlertWithMultipleButtons:(id)arg1;
 - (void)handleAlertWithDatePicker:(id)arg1;
 - (void)handleAlertWithTextField:(id)arg1;
 - (void)handleSimpleAlert:(id)arg1;
 - (void)presentAlert:(id)arg1;
+- (void)requestFileAccessForLocation:(id)arg1 workflowName:(id)arg2 workflowID:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)requestAuthorizationWithConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)showDialogRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-@property(readonly, nonatomic) WFDialogAttribution *attribution;
+- (id)attributionForMode:(unsigned long long)arg1;
+- (id)associatedAppBundleIdentifier;
+- (id)attributionIconImage;
+- (id)attributionIcon;
+- (id)attributionTitle;
+- (id)workflowName;
+@property(readonly, nonatomic) WFDialogAttributions *attributions;
 - (id)actionForAttribution;
 - (void)cancel;
 - (void)workflowWillBegin;
-- (id)initWithWorkflow:(id)arg1 dialogPresenter:(id)arg2 userInterfaceType:(id)arg3;
-- (id)initWithWorkflow:(id)arg1 dialogPresenter:(id)arg2;
+- (id)initWithWorkflow:(id)arg1 userInterfacePresenter:(id)arg2 userInterfaceType:(id)arg3;
+- (id)initWithWorkflow:(id)arg1 userInterfacePresenter:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

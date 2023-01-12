@@ -8,13 +8,13 @@
 
 @interface TSDBitmapRenderingQualityImageMapValue : NSObject
 {
-    struct CGSize mMaxSize;
     struct CGImage *mDegradedImageRef;
+    struct CGSize mMaxSize;
 }
 
 @property(readonly, nonatomic) struct CGSize maxSize; // @synthesize maxSize=mMaxSize;
-- (struct CGImage *)getDegradedImageRefFromProvider:(id)arg1 quality:(int)arg2 canvasScale:(float)arg3;
-- (struct CGImage *)degradedImageRefForForProvider:(id)arg1 quality:(int)arg2 canvasScale:(float)arg3;
+- (struct CGImage *)getDegradedImageRefFromProvider:(id)arg1 quality:(int)arg2 canvasScale:(double)arg3;
+- (struct CGImage *)degradedImageRefForProvider:(id)arg1 quality:(int)arg2 canvasScale:(double)arg3;
 - (void)addSize:(struct CGSize)arg1;
 - (void)dealloc;
 

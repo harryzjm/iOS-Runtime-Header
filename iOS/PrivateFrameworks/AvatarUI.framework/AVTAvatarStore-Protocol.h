@@ -6,10 +6,11 @@
 
 #import <AvatarUI/NSObject-Protocol.h>
 
-@class AVTAvatarFetchRequest, AVTMemoji, NSArray;
+@class AVTAvatarFetchRequest, AVTMemoji, NSArray, NSString;
 @protocol AVTAvatarRecord;
 
 @protocol AVTAvatarStore <NSObject>
+- (void)deleteAvatarWithIdentifier:(NSString *)arg1 completionBlock:(void (^)(_Bool, NSError *))arg2;
 - (void)duplicateAvatar:(id <AVTAvatarRecord>)arg1 completionBlock:(void (^)(_Bool, id <AVTAvatarRecord>, NSError *))arg2;
 - (void)deleteAvatar:(id <AVTAvatarRecord>)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
 - (void)saveAvatarRecord:(id <AVTAvatarRecord>)arg1 thumbnailAvatar:(AVTMemoji *)arg2 completionBlock:(void (^)(_Bool, NSError *))arg3 thumbnailGenerationCompletionBlock:(void (^)(_Bool, NSError *))arg4;

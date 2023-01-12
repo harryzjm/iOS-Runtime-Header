@@ -6,10 +6,15 @@
 
 #import <TeaSnappy/SNTestSuite.h>
 
+@class MISSING_TYPE;
+
+__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI213RootTestSuite : SNTestSuite
 {
+    MISSING_TYPE *navigator;
 }
 
+- (void).cxx_destruct;
 - (id)init;
 - (void)setupTestWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 

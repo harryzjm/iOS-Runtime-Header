@@ -10,12 +10,13 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface TTMergeableStringUndoAttributeCommand : NSObject <TTMergeableStringUndoCommand>
 {
-    vector_5b9fc061 *_attributeRanges;
+    void *_attributeRanges;
 }
 
-@property(readonly, nonatomic) vector_5b9fc061 *attributeRanges; // @synthesize attributeRanges=_attributeRanges;
+@property(readonly, nonatomic) void *attributeRanges; // @synthesize attributeRanges=_attributeRanges;
 @property(readonly, copy) NSString *description;
 - (_Bool)addToGroup:(id)arg1;
 - (void)applyToString:(id)arg1;

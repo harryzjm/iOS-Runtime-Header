@@ -4,18 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ML3EntityReplacer;
-
 __attribute__((visibility("hidden")))
 @interface ML3HomeSharingImportOperation
 {
-    ML3EntityReplacer *_containerReplacer;
     int _playlistNameOrder;
 }
 
-- (void).cxx_destruct;
 - (void)updateImportProgress:(float)arg1;
-- (shared_ptr_9dbb0ac9)containerImportItemFromDAAPElement:(shared_ptr_37fa1f3d)arg1 withTrackIds:(vector_bbba3654)arg2 trackPersonIdentifiers:(vector_6e7979f9)arg3;
+- (shared_ptr_9dbb0ac9)containerImportItemFromDAAPElement:(shared_ptr_37fa1f3d)arg1 withTrackIds:(vector_1ee95920)arg2 trackPersonIdentifiers:(vector_c589d274)arg3;
 - (shared_ptr_9dbb0ac9)importItemFromDAAPElement:(shared_ptr_37fa1f3d)arg1;
 - (_Bool)_performHomeSharingImportWithTransaction:(id)arg1;
 - (void)main;

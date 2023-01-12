@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class CADisplayLink, UIImage, _SBIconProgressFractionTransition, _SBIconProgressPausedTransition, _SBIconProgressStateTransition;
+@class CADisplayLink, _SBIconProgressFractionTransition, _SBIconProgressPausedTransition, _SBIconProgressStateTransition;
 @protocol SBIconProgressViewDelegate;
 
 @interface SBIconProgressView : UIView
@@ -19,11 +19,10 @@
     double _modelFraction;
     CADisplayLink *_displayLink;
     double _lastUpdate;
-    UIImage *_maskImage;
     _Bool _canAnimate;
+    _Bool _hasOpaqueIconImage;
     _Bool _displayingPaused;
     id <SBIconProgressViewDelegate> _delegate;
-    UIImage *_overlayImage;
     double _backgroundAlpha;
     double _foregroundAlpha;
     double _circleRadiusFraction;
@@ -47,14 +46,13 @@
 @property(nonatomic) double foregroundAlpha; // @synthesize foregroundAlpha=_foregroundAlpha;
 @property(nonatomic) double backgroundAlpha; // @synthesize backgroundAlpha=_backgroundAlpha;
 @property(nonatomic) struct SBIconImageInfo iconImageInfo; // @synthesize iconImageInfo=_iconImageInfo;
+@property(nonatomic) _Bool hasOpaqueIconImage; // @synthesize hasOpaqueIconImage=_hasOpaqueIconImage;
 @property(nonatomic) _Bool canAnimate; // @synthesize canAnimate=_canAnimate;
-@property(retain, nonatomic) UIImage *overlayImage; // @synthesize overlayImage=_overlayImage;
 @property(nonatomic) __weak id <SBIconProgressViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)description;
 @property(readonly, nonatomic) struct CGRect circleBoundingRect;
-- (id)_maskImage;
 - (void)_drawPauseUIWithCenter:(struct CGPoint)arg1;
 - (void)_drawIncomingCircleWithCenter:(struct CGPoint)arg1;
 - (void)_drawOutgoingCircleWithCenter:(struct CGPoint)arg1;

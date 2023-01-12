@@ -10,7 +10,6 @@
 {
 }
 
-+ (id)_combinedURLFromScheme:(id)arg1 host:(id)arg2 password:(id)arg3 path:(id)arg4 query:(id)arg5 port:(id)arg6 user:(id)arg7 fragment:(id)arg8;
 + (id)normalizedURLForURL:(id)arg1;
 
 @end

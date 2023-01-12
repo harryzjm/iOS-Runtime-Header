@@ -6,14 +6,26 @@
 
 #import <UIKit/UIMutableApplicationSceneSettings.h>
 
+@class NSUUID;
+
 @interface SBSUIMutableInCallSceneSettings : UIMutableApplicationSceneSettings
 {
+    _Bool _screenSharingPresentation;
+    _Bool _beingShownAboveCoverSheet;
     long long _inCallPresentationMode;
+    NSUUID *_requestedPresentationConfigurationIdentifier;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic, getter=isBeingShownAboveCoverSheet) _Bool beingShownAboveCoverSheet; // @synthesize beingShownAboveCoverSheet=_beingShownAboveCoverSheet;
+@property(retain, nonatomic) NSUUID *requestedPresentationConfigurationIdentifier; // @synthesize requestedPresentationConfigurationIdentifier=_requestedPresentationConfigurationIdentifier;
+@property(nonatomic, getter=isScreenSharingPresentation) _Bool screenSharingPresentation; // @synthesize screenSharingPresentation=_screenSharingPresentation;
 @property(nonatomic) long long inCallPresentationMode; // @synthesize inCallPresentationMode=_inCallPresentationMode;
 - (id)valueDescriptionForFlag:(long long)arg1 object:(id)arg2 ofSetting:(unsigned long long)arg3;
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;
+@property(nonatomic) _Bool systemControlsShouldPresentAsEmbedded;
+@property(nonatomic) struct CGRect windowedAccessoryCutoutFrameInScreen;
+@property(nonatomic, getter=isAttachedToWindowedAccessory) _Bool attachedToWindowedAccessory;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

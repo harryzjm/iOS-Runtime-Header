@@ -9,6 +9,6 @@
 @class SVXClientServiceServerConnection;
 
 @protocol SVXClientServiceServerConnectionDelegate <NSObject>
-- (void)clientServiceServerConnectionWasDisconnected:(SVXClientServiceServerConnection *)arg1;
+- (void)clientServiceServerConnectionDidInvalidate:(SVXClientServiceServerConnection *)arg1;
 @end
 

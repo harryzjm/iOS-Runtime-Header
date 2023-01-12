@@ -11,7 +11,8 @@
 
 @property(nonatomic) int operationType; // @synthesize operationType=_operationType;
 - (void)main;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2 operationType:(int)arg3;
+- (_Bool)shouldKeepXPCConnectionAlive;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2 operationType:(int)arg3;
 
 @end
 

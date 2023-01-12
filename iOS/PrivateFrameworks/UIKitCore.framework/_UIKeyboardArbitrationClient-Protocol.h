@@ -7,6 +7,7 @@
 @class FBSSceneIdentityToken, NSDictionary, NSString, _UIKeyboardChangedInformation;
 
 @protocol _UIKeyboardArbitrationClient
+- (void)queue_activeProcessResignWithCompletion:(void (^)(void))arg1;
 - (void)queue_setLastEventSource:(long long)arg1 withCompletion:(void (^)(void))arg2;
 - (void)queue_setKeyboardDisabled:(_Bool)arg1 withCompletion:(void (^)(void))arg2;
 - (void)queue_getDebugInfoWithCompletion:(void (^)(NSDictionary *))arg1;

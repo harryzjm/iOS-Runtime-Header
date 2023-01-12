@@ -6,7 +6,9 @@
 
 #import <UIKitCore/_UIStatusBarVisualProvider-Protocol.h>
 
+@class UIScreen;
+
 @protocol _UIStatusBarFixedWidthVisualProvider <_UIStatusBarVisualProvider>
-+ (double)referenceWidth;
++ (double)referenceWidthForScreen:(UIScreen *)arg1;
 @end
 

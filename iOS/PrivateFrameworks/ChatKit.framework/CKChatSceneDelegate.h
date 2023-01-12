@@ -39,12 +39,16 @@
 - (void)_chatItemsDidChange:(id)arg1;
 - (void)scene:(id)arg1 continueUserActivity:(id)arg2;
 - (id)stateRestorationActivityForScene:(id)arg1;
+- (void)showConversation:(id)arg1 scrollToMessage:(id)arg2 withInlineReplyOverlay:(_Bool)arg3;
 - (void)showConversation:(id)arg1;
+- (void)showConversationAndMessageForChatGUID:(id)arg1 messageGUID:(id)arg2 withInlineReplyOverlay:(_Bool)arg3 animate:(_Bool)arg4;
+- (void)loadAndShowConversationWithMessageGUID:(id)arg1 withInlineReplyOverlay:(_Bool)arg2;
 - (id)conversation;
 - (void)scene:(id)arg1 openURLContexts:(id)arg2;
 - (void)sceneDidDisconnect:(id)arg1;
 - (void)sceneDidEnterBackground:(id)arg1;
 - (void)sceneWillEnterForeground:(id)arg1;
+- (void)windowSceneDidBecomeVisible:(id)arg1;
 - (void)scene:(id)arg1 willConnectToSession:(id)arg2 options:(id)arg3;
 - (long long)type;
 - (id)init;

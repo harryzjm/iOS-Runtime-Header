@@ -49,7 +49,6 @@
 @property(readonly, copy) NSString *hostName;
 - (void)setArguments:(id)arg1;
 @property(readonly, copy) NSArray *arguments;
-- (void)_registerForHardwareStateNotifications;
 @property(readonly, copy) NSDictionary *environment;
 - (void)dealloc;
 - (void)performExpiringActivityWithReason:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;

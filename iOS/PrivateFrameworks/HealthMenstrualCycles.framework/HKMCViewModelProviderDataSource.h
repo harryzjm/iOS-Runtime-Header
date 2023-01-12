@@ -6,17 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class HKCalendarCache, HKHealthStore, HKMCDaySummaryObserverQuery, NSMutableIndexSet, NSMutableSet;
+#import <HealthMenstrualCycles/HKMCViewModelProviderDataSource-Protocol.h>
+
+@class HKCalendarCache, HKHealthStore, HKMCDaySummaryObserverQuery, HKSampleIteratorQuery, NSMutableIndexSet, NSMutableSet, NSString, _HKDatabaseChangesQuery;
 @protocol HKMCViewModelProviderDataSourceDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface HKMCViewModelProviderDataSource : NSObject
+@interface HKMCViewModelProviderDataSource : NSObject <HKMCViewModelProviderDataSource>
 {
     HKHealthStore *_healthStore;
     id <HKMCViewModelProviderDataSourceDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableSet *_summaryQueries;
     HKMCDaySummaryObserverQuery *_summaryObserverQuery;
+    HKSampleIteratorQuery *_factorQuery;
+    _HKDatabaseChangesQuery *_factorObserverQuery;
     NSMutableIndexSet *_canceledDayIndexes;
     HKCalendarCache *_calendarCache;
 }
@@ -24,10 +28,20 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <HKMCViewModelProviderDataSourceDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)dealloc;
+- (void)_handleCycleFactorsSampleTypeChanges:(id)arg1 error:(id)arg2;
+- (void)_startObservingCycleFactorsUpdates;
+- (void)_handleDaySummaryObserverUpdateWithError:(id)arg1;
 - (void)_startObservingDaySummaryUpdates;
+- (void)fetchCycleFactorsInDayIndexRange:(CDStruct_ef5fcbe6)arg1;
 - (void)cancelFetchForDaySummariesInDayIndexRange:(CDStruct_ef5fcbe6)arg1;
 - (void)fetchDaySummariesInDayIndexRange:(CDStruct_ef5fcbe6)arg1;
-- (id)initWithHealthStore:(id)arg1 delegate:(id)arg2 calendarCache:(id)arg3 queue:(id)arg4;
+- (id)initWithHealthStore:(id)arg1 calendarCache:(id)arg2 queue:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

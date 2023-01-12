@@ -10,5 +10,8 @@
 
 @protocol PKRenderLoopDelegate <NSObject>
 - (void)renderLoop:(PKRenderLoop *)arg1 drawAtTime:(double)arg2;
+
+@optional
+- (void)renderLoop:(PKRenderLoop *)arg1 didChangeForcingPause:(_Bool)arg2;
 @end
 

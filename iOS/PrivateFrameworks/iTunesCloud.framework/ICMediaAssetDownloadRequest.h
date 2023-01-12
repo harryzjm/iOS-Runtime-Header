@@ -4,37 +4,63 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ICMediaAVAssetDownloadOptions, ICStoreRequestContext, ICURLRequest, ICURLResponse, ICURLSession, NSData, NSURL;
+#import <iTunesCloud/AVAssetResourceLoaderDelegate-Protocol.h>
 
-@interface ICMediaAssetDownloadRequest
+@class ICContentKeySession, ICStoreMediaResponseItem, ICStoreRequestContext, ICURLRequest, ICURLResponse, ICURLSession, NSData, NSMutableDictionary, NSNumber, NSString, NSURL;
+
+@interface ICMediaAssetDownloadRequest <AVAssetResourceLoaderDelegate>
 {
     ICStoreRequestContext *_requestContext;
-    NSURL *_assetURL;
-    ICMediaAVAssetDownloadOptions *_downloadOptions;
+    ICStoreMediaResponseItem *_storeMediaResponseItem;
+    NSMutableDictionary *_additionalHTTPHeaderFields;
     ICURLSession *_downloadSession;
     ICURLRequest *_request;
     ICURLResponse *_response;
+    ICContentKeySession *_contentKeySession;
     _Bool _allowsCellularData;
     _Bool _allowsCellularFallback;
+    _Bool _allowDownloadOnConstrainedNetworks;
     _Bool _discretionary;
     _Bool _requiresPower;
+    _Bool _prefersHLSAsset;
+    _Bool _prefersLossless;
+    _Bool _prefersMultichannel;
     NSURL *_destinationURL;
     NSData *_resumeData;
+    NSNumber *_minimumBitrate;
+    NSNumber *_maximumSampleRate;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool prefersMultichannel; // @synthesize prefersMultichannel=_prefersMultichannel;
+@property(nonatomic) _Bool prefersLossless; // @synthesize prefersLossless=_prefersLossless;
+@property(copy, nonatomic) NSNumber *maximumSampleRate; // @synthesize maximumSampleRate=_maximumSampleRate;
+@property(copy, nonatomic) NSNumber *minimumBitrate; // @synthesize minimumBitrate=_minimumBitrate;
 @property(copy, nonatomic) NSData *resumeData; // @synthesize resumeData=_resumeData;
+@property(nonatomic) _Bool prefersHLSAsset; // @synthesize prefersHLSAsset=_prefersHLSAsset;
 @property(nonatomic) _Bool requiresPower; // @synthesize requiresPower=_requiresPower;
 @property(nonatomic, getter=isDiscretionary) _Bool discretionary; // @synthesize discretionary=_discretionary;
+@property(nonatomic) _Bool allowDownloadOnConstrainedNetworks; // @synthesize allowDownloadOnConstrainedNetworks=_allowDownloadOnConstrainedNetworks;
 @property(nonatomic) _Bool allowsCellularFallback; // @synthesize allowsCellularFallback=_allowsCellularFallback;
 @property(nonatomic) _Bool allowsCellularData; // @synthesize allowsCellularData=_allowsCellularData;
 @property(copy, nonatomic) NSURL *destinationURL; // @synthesize destinationURL=_destinationURL;
+- (id)_mediaKindFromResponseItemMetadata:(id)arg1;
+- (id)_createAVAssetDownloadOptionsDictionary;
 - (id)_sessionIdentifier;
+- (_Bool)resourceLoader:(id)arg1 shouldWaitForLoadingOfRequestedResource:(id)arg2;
+- (_Bool)resourceLoader:(id)arg1 shouldWaitForRenewalOfRequestedResource:(id)arg2;
 - (void)finishWithError:(id)arg1;
 - (void)cancel;
+- (void)setValue:(id)arg1 forHTTPHeaderField:(id)arg2;
 - (void)execute;
 - (void)performRequestWithResponseHandler:(CDUnknownBlockType)arg1;
-- (id)initWithRequestContext:(id)arg1 assetURL:(id)arg2 avAssetDownloadOptions:(id)arg3 resumeData:(id)arg4;
+- (id)initWithRequestContext:(id)arg1 storeMediaResponseItem:(id)arg2 resumeData:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

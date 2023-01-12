@@ -25,19 +25,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) struct CGRect solvedFittingFrame; // @synthesize solvedFittingFrame=_solvedFittingFrame;
-@property(readonly, nonatomic) NSArray *availableLayoutSpaces; // @synthesize availableLayoutSpaces=_availableLayoutSpaces;
-@property(readonly, nonatomic) long long supplementaryFrameCount; // @synthesize supplementaryFrameCount=_supplementaryFrameCount;
-@property(readonly, nonatomic) long long itemFrameCount; // @synthesize itemFrameCount=_itemFrameCount;
-@property(readonly, nonatomic) NSArray *solutionFrames; // @synthesize solutionFrames=_solutionFrames;
-- (void)_generateMemoizedSolutionFramesBasedData;
-@property(readonly, nonatomic) id <_UICollectionLayoutAuxillaryOffsets> supplementaryFrameOffsets; // @synthesize supplementaryFrameOffsets=_supplementaryFrameOffsets;
-@property(readonly, nonatomic) NSDictionary *supplementaryDictByKindIndex; // @synthesize supplementaryDictByKindIndex=_supplementaryDictByKindIndex;
-@property(readonly, nonatomic) NSArray *auxillaryFrames; // @synthesize auxillaryFrames=_auxillaryFrames;
-@property(readonly, nonatomic) NSArray *itemFrames; // @synthesize itemFrames=_itemFrames;
-- (void)_generateGeometricIndexer;
-@property(readonly, nonatomic) _UIRTree *geometricIndexer; // @synthesize geometricIndexer=_geometricIndexer;
-- (id)initWithSolutionFrames:(id)arg1 itemFrameCount:(long long)arg2 supplementaryFrameCount:(long long)arg3 availableLayoutSpaces:(id)arg4 solvedFittingFrame:(struct CGRect)arg5;
 
 @end
 

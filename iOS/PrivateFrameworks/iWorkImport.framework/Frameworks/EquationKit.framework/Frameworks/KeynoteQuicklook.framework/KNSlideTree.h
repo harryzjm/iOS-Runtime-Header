@@ -42,8 +42,8 @@
 - (id)slideNamesMatchingPrefix:(id)arg1;
 - (id)slideNodeForFormulaReferenceName:(id)arg1 caseSensitive:(_Bool)arg2;
 - (id)formulaReferenceNameForSlideNode:(id)arg1;
-- (id)slidesUsingMasterSlide:(id)arg1;
-- (unsigned long long)numberOfSlidesUsingMasterSlide:(id)arg1;
+- (id)slidesUsingTemplateSlide:(id)arg1;
+- (unsigned long long)numberOfSlidesUsingTemplateSlide:(id)arg1;
 - (void)slideIndex:(unsigned long long *)arg1 andEventIndex:(unsigned long long *)arg2 forByBuildPageIndex:(unsigned long long)arg3;
 - (unsigned long long)byBuildPageIndexForSlideIndex:(unsigned long long)arg1 andEventIndex:(unsigned long long)arg2;
 - (unsigned long long)visiblePageCountIsSeparatedByBuilds:(_Bool)arg1;
@@ -68,8 +68,8 @@
 - (id)objectEnumerator;
 - (void)dealloc;
 - (id)initWithOwner:(id)arg1;
-- (void)saveToArchive:(struct SlideTreeArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct SlideTreeArchive *)arg1 unarchiver:(id)arg2 owner:(id)arg3;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2 owner:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

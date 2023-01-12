@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSDictionary *orderedDisplayItemPlacements; // @synthesize orderedDisplayItemPlacements=_orderedDisplayItemPlacements;
 - (id)orderedDisplayItemPlacementsInRegionWithIdentifier:(id)arg1;
 - (id)setupInContainerView:(id)arg1;
+- (void)itemCreated:(id)arg1;
 
 @end
 

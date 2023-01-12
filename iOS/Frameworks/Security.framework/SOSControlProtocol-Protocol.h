@@ -6,9 +6,15 @@
 
 #import <Security/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary;
+@class NSArray, NSData, NSDictionary, NSString;
 
 @protocol SOSControlProtocol <NSObject>
+- (NSString *)sosIsEnabledString;
+- (_Bool)sosIsEnabled;
+- (void)sosIsEnabledCB:(void (^)(_Bool))arg1;
+- (void)sosEnable;
+- (void)sosDisable;
+- (void)removeV0Peers:(void (^)(_Bool, NSError *))arg1;
 - (void)rpcTriggerRingUpdate:(void (^)(NSError *))arg1;
 - (void)rpcTriggerBackup:(NSArray *)arg1 complete:(void (^)(NSError *))arg2;
 - (void)setWatchdogParmeters:(NSDictionary *)arg1 complete:(void (^)(NSError *))arg2;

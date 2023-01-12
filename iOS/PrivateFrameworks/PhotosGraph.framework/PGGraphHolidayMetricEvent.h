@@ -4,35 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-#import <PhotosGraph/PLMetricEvent-Protocol.h>
-
 @class NSDictionary, NSString;
 
-@interface PGGraphHolidayMetricEvent : NSObject <PLMetricEvent>
+@interface PGGraphHolidayMetricEvent
 {
-    NSString *_identifier;
     NSDictionary *_payload;
     NSString *_holidayName;
     unsigned long long _numberOfCelebrations;
 }
 
 + (id)celebratedHolidayMetricEventsWithGraphManager:(id)arg1;
-+ (id)eventIdentifier;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long numberOfCelebrations; // @synthesize numberOfCelebrations=_numberOfCelebrations;
 @property(retain, nonatomic) NSString *holidayName; // @synthesize holidayName=_holidayName;
-@property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property(readonly, copy) NSString *description;
-@property(readonly, nonatomic) NSDictionary *payload; // @synthesize payload=_payload;
-- (void)gatherMetricsWithProgressBlock:(CDUnknownBlockType)arg1;
+- (id)payload;
+- (id)identifier;
 - (id)initWithHolidayName:(id)arg1 numberOfCelebrations:(unsigned long long)arg2;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

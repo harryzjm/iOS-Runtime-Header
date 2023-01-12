@@ -16,11 +16,12 @@
 }
 
 + (id)localizedStringForShortcut:(id)arg1;
-@property(nonatomic) TSADocumentRoot *documentRoot; // @synthesize documentRoot=_documentRoot;
+- (void).cxx_destruct;
+@property(nonatomic) __weak TSADocumentRoot *documentRoot; // @synthesize documentRoot=_documentRoot;
 - (void)saveToArchiver:(id)arg1;
-- (void)saveToArchive:(struct ShortcutControllerArchive *)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)loadFromArchive:(const struct ShortcutControllerArchive *)arg1 unarchiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)removeStylesNotInTheme;
 - (void)setStyle:(id)arg1 forShortcut:(id)arg2;
 - (id)styleForShortcut:(id)arg1;

@@ -11,8 +11,10 @@
 }
 
 + (_Bool)isRiskyFileFormatWithAsset:(id)arg1;
-+ (_Bool)isBlocklistedCreatorBundleID:(id)arg1;
-+ (id)blockedCreatorBundleIDs;
++ (_Bool)isBlockedForMemoriesWithImportedByBundleIdentifier:(id)arg1;
++ (_Bool)isBlocklistedImportedByBundleIdentifier:(id)arg1;
++ (id)importedByBundleIdentifiersForBlockedForMemories;
++ (id)blockedImportedByBundleIdentifiers;
 
 @end
 

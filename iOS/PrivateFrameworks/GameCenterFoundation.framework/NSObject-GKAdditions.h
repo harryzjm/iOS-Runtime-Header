@@ -11,6 +11,7 @@
 - (id)_gkInvokeSelector:(SEL)arg1 withNullableObject:(id)arg2;
 - (id)_gkInvokeSelector:(SEL)arg1 withObject:(id)arg2;
 - (id)_gkInvokeSelector:(SEL)arg1;
+- (void)_gkPerformSelector:(SEL)arg1 withObject:(id)arg2 withObject:(id)arg3;
 - (void)_gkPerformSelector:(SEL)arg1 withNullableObject:(id)arg2;
 - (void)_gkPerformSelector:(SEL)arg1 withObject:(id)arg2;
 - (void)_gkPerformSelector:(SEL)arg1;

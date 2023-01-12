@@ -10,16 +10,6 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct _CSTypeRef {
-    unsigned long long _field1;
-    unsigned long long _field2;
-};
-
-struct _VMURange {
-    unsigned long long _field1;
-    unsigned long long _field2;
-};
-
 struct __sFILE {
     char *_field1;
     int _field2;
@@ -74,8 +64,8 @@ struct jetsam_snapshot_entry {
     int _field3;
     unsigned int _field4;
     unsigned int _field5;
-    unsigned char _field6[16];
-    unsigned long long _field7;
+    int _field6;
+    unsigned char _field7[16];
     unsigned long long _field8;
     unsigned long long _field9;
     unsigned long long _field10;
@@ -94,9 +84,10 @@ struct jetsam_snapshot_entry {
     unsigned long long _field23;
     unsigned long long _field24;
     unsigned long long _field25;
-    struct timeval64 _field26;
-    unsigned long long _field27;
+    unsigned long long _field26;
+    struct timeval64 _field27;
     unsigned long long _field28;
+    unsigned long long _field29;
 };
 
 struct kcdata_item;
@@ -124,33 +115,6 @@ struct memorystatus_kernel_stats {
     unsigned long long _field15;
     unsigned long long _field16;
     char _field17[80];
-};
-
-struct proc_workqueueinfo {
-    unsigned int _field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-};
-
-struct stackshot_thread_turnstileinfo {
-    unsigned long long _field1;
-    unsigned long long _field2;
-    unsigned char _field3;
-    unsigned char _field4;
-    unsigned long long _field5;
-};
-
-struct stackshot_thread_waitinfo {
-    unsigned long long _field1;
-    unsigned long long _field2;
-    unsigned long long _field3;
-    unsigned char _field4;
-};
-
-struct timeval {
-    long long tv_sec;
-    int tv_usec;
 };
 
 struct timeval64 {

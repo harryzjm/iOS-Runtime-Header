@@ -68,6 +68,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool rotationSnappingEnabled; // @synthesize rotationSnappingEnabled=_rotationSnappingEnabled;
 @property(nonatomic) _Bool panWithMomentum; // @synthesize panWithMomentum=_panWithMomentum;
 @property(retain, nonatomic) MKRotationFilter *rotationFilter; // @synthesize rotationFilter=_rotationFilter;
 @property(retain, nonatomic) MKCompassView *compassView; // @synthesize compassView=_compassView;
@@ -90,6 +91,8 @@ __attribute__((visibility("hidden")))
 - (void)cancelZoomInOrOut;
 - (void)zoomOut;
 - (void)zoomIn;
+- (_Bool)keyUp:(id)arg1;
+- (_Bool)keyDown:(id)arg1;
 - (void)_handleInterrupt:(id)arg1;
 - (void)_handleZoomPan:(id)arg1;
 - (void)_handleRotationPan:(id)arg1;

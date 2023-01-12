@@ -10,10 +10,11 @@
 {
 }
 
-+ (_Bool)isValidForPersistenceWithObjectDictionary:(id)arg1;
++ (_Bool)isValidForPersistenceWithObjectDictionary:(id)arg1 additionalEntityName:(id)arg2;
 + (unsigned int)minimumSnapshotPayloadVersion;
 + (unsigned int)payloadVersion;
 + (id)payloadClassID;
++ (id)persistedPropertyNamesForEntityNames;
 + (id)modelProperties;
 + (id)nonPersistedModelPropertiesDescription;
 + (id)modelPropertiesDescription;
@@ -22,9 +23,8 @@
 - (id)insertAlbumListFromDataInManagedObjectContext:(id)arg1;
 @property(readonly, nonatomic) short albumListType;
 @property(readonly, nonatomic) NSOrderedSet *albumUUIDs;
-- (void)updatePayloadAttributes:(id)arg1 withDecodedAttributes:(id)arg2 forPayloadProperty:(id)arg3;
-- (void)updateEncodableAttributes:(id)arg1 fromPayloadAttributes:(id)arg2 forPayloadProperty:(id)arg3;
-- (_Bool)updatePayloadAttributes:(id)arg1 withManagedObject:(id)arg2 forPayloadProperty:(id)arg3;
+- (void)appendAttributeKey:(id)arg1 value:(id)arg2 toDescriptionBuilder:(id)arg3;
+- (_Bool)updatePayloadAttributes:(id)arg1 andNilAttributes:(id)arg2 withManagedObject:(id)arg3 forPayloadProperty:(id)arg4;
 
 @end
 

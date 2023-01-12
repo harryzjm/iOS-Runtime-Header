@@ -35,10 +35,11 @@
 - (id)_promptForAccount;
 - (id)_performPurchaseWithError:(id *)arg1;
 - (id)_performPreauthenticate;
-- (void)_generateFraudScoreWithInfo:(id)arg1;
 - (id)performPurchase;
 @property(nonatomic) __weak id <AMSPurchaseDelegate> delegate;
 - (id)initWithPurchase:(id)arg1 bag:(id)arg2;
+- (void)_regenerateFraudScoreWithInfo:(id)arg1 bag:(id)arg2 action:(unsigned long long)arg3;
+- (void)generateFraudScoreWithInfo:(id)arg1 bag:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <PhotoAnalysis/PHAJobTimeHandlerProtocol-Protocol.h>
 #import <PhotoAnalysis/PHAServiceOperationHandling-Protocol.h>
 #import <PhotoAnalysis/PHAWorkerConfiguration-Protocol.h>
 
 @class NSString, NSURL, PFSerialQueue, PHAManager, PHAServiceCancelableOperation, PHPhotoLibrary;
-@protocol PHAAssetResourceDataLoading;
+@protocol OS_os_log, PHAAssetResourceDataLoading;
 
-@interface PHAWorker : NSObject <PHAWorkerConfiguration, PHAServiceOperationHandling>
+@interface PHAWorker : NSObject <PHAWorkerConfiguration, PHAServiceOperationHandling, PHAJobTimeHandlerProtocol>
 {
     PHAManager *_photoAnalysisManager;
     PFSerialQueue *_userInitiatedRequestQueue;
@@ -20,14 +21,17 @@
     _Bool _warmedUp;
     id <PHAAssetResourceDataLoading> _dataLoader;
     PHAServiceCancelableOperation *_currentOperation;
+    NSObject<OS_os_log> *_loggingConnection;
 }
 
 + (void)configureXPCConnection:(id)arg1;
 + (_Bool)persistsState;
 + (_Bool)runsExclusively;
 + (short)workerType;
++ (id)persistentStorageDirectoryURLForPhotoLibrary:(id)arg1;
 + (long long)applicationDataFolderIdentifier;
 - (void).cxx_destruct;
+@property(readonly) NSObject<OS_os_log> *loggingConnection; // @synthesize loggingConnection=_loggingConnection;
 @property(retain) PHAServiceCancelableOperation *currentOperation; // @synthesize currentOperation=_currentOperation;
 @property(retain, nonatomic) id <PHAAssetResourceDataLoading> dataLoader; // @synthesize dataLoader=_dataLoader;
 @property(nonatomic, getter=isWarmedUp) _Bool warmedUp; // @synthesize warmedUp=_warmedUp;
@@ -39,12 +43,12 @@
 - (_Bool)stopAnalysisJob:(id)arg1 error:(id *)arg2;
 - (_Bool)startAnalysisJob:(id)arg1 error:(id *)arg2;
 - (void)handleOperation:(id)arg1;
-- (void)operationDidFinish:(id)arg1;
-- (void)operationWillStart:(id)arg1;
 - (void)shutdown;
 - (void)cooldown;
 - (void)warmupWithProgressBlock:(CDUnknownBlockType)arg1;
 - (void)startup;
+- (_Bool)completedJobTodayForKey:(id)arg1;
+- (_Bool)didExceedTimeInterval:(double)arg1 forKey:(id)arg2;
 - (id)libraryScopedWorkerPreferencesURL;
 - (void)setLibraryScopedWorkerPreferencesValue:(id)arg1 forKey:(id)arg2;
 - (void)updateLibraryScopedWorkerPreferencesWithEntriesFromDictionary:(id)arg1 keysToRemove:(id)arg2;

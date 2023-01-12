@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)_openURL:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setDelegate:(id)arg1;
 - (id)_displayInfoProvider;
+- (void)_screenInterfaceOrientationChanged:(id)arg1;
 - (void)_screenDisconnected:(id)arg1;
 - (void)_detachWindow:(id)arg1;
 - (void)_attachWindow:(id)arg1;
@@ -36,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)_referenceBoundsForOrientation:(long long)arg1;
 - (struct CGRect)_referenceBounds;
 - (id)screen;
+- (void)_invalidate;
 - (id)initWithScreen:(id)arg1 session:(id)arg2 lookupKey:(id)arg3;
 
 @end

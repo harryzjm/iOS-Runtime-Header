@@ -6,7 +6,7 @@
 
 #import <CoverSheet/CSPageViewControllerProtocol-Protocol.h>
 
-@class CSAppearance, CSBehavior, CSLayoutStrategy, CSPresentation, NSArray, NSSet, NSString, UIColor, _UILegibilitySettings;
+@class CSAppearance, CSBehavior, CSLayoutStrategy, CSPresentation, NSArray, NSSet, NSString, _UILegibilitySettings;
 @protocol CSCoverSheetViewControllerProtocol, CSCoverSheetViewPresenting, UICoordinateSpace;
 
 @interface CSPageViewController <CSPageViewControllerProtocol>
@@ -45,8 +45,6 @@
 @property(readonly, copy, nonatomic) CSAppearance *activeAppearance;
 @property(readonly, copy, nonatomic) CSBehavior *activeBehavior;
 @property(readonly, copy, nonatomic) NSString *appearanceIdentifier;
-@property(readonly, nonatomic) UIColor *backgroundColor;
-@property(readonly, nonatomic) long long backgroundStyle;
 @property(readonly, copy, nonatomic) NSSet *components;
 @property(readonly, copy, nonatomic) NSString *coverSheetIdentifier;
 @property(readonly, nonatomic) double customIdleExpirationTimeout;
@@ -62,6 +60,8 @@
 @property(readonly, nonatomic) long long notificationBehavior;
 @property(readonly, copy, nonatomic) NSString *pageRole;
 @property(readonly, nonatomic) __weak id <UICoordinateSpace> presentationCoordinateSpace;
+@property(readonly, nonatomic) unsigned int presentationFrameRateRangeReason;
+@property(readonly, nonatomic) struct CAFrameRateRange presentationPreferredFrameRateRange;
 @property(readonly, nonatomic) long long presentationPriority;
 @property(readonly, copy, nonatomic) NSArray *presentationRegions;
 @property(readonly, nonatomic) long long presentationStyle;

@@ -11,7 +11,7 @@
 @interface VKDebugTree : NSObject
 {
     struct DebugTreeNode _debugTree;
-    bitset_dc343b9a _options;
+    struct bitset<4> _options;
     NSArray *_nodes;
 }
 
@@ -21,18 +21,18 @@
 - (id)serializeZippedTree;
 - (_Bool)deserializeTree:(id)arg1;
 - (id)serializeTree;
-- (optional_d7aa20cf)_deserializeNode:(id)arg1;
-- (id)_serializeNode:(const struct DebugTreeNode *)arg1;
-- (optional_dea32acd)_deserializeProperty:(id)arg1;
-- (id)_serializeProperty:(const struct DebugTreeProperty *)arg1;
-- (optional_19b353d7)_deserializeValue:(id)arg1;
-- (id)_serializeValue:(const struct DebugTreeValue *)arg1;
+- (optional_5531298a)_deserializeNode:(id)arg1;
+- (id)_serializeNode:(const void *)arg1;
+- (optional_d73dbd1d)_deserializeProperty:(id)arg1;
+- (id)_serializeProperty:(const void *)arg1;
+- (optional_8257a73d)_deserializeValue:(id)arg1;
+- (id)_serializeValue:(const void *)arg1;
 - (id)logTree;
 - (void)printTree;
-- (void)_outputTree:(basic_ostream_374c280d *)arg1;
+- (void)_outputTree:(void *)arg1;
 - (id)nodes;
-- (const struct DebugTreeNode *)internalData;
-- (void)replaceInternalData:(const struct DebugTreeNode *)arg1;
+- (const void *)internalData;
+- (void)replaceInternalData:(const void *)arg1;
 - (void)populateData:(id)arg1;
 - (void)_populateData;
 - (void)disableAllOptions;

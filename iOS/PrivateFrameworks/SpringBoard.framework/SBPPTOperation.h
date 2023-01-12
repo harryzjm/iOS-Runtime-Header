@@ -6,10 +6,21 @@
 
 #import <Foundation/NSOperation.h>
 
+@class NSString;
+
 @interface SBPPTOperation : NSOperation
 {
+    CDUnknownBlockType _finishTestBlock;
+    CDUnknownBlockType _startTestBlock;
+    CDUnknownBlockType _finishSubTestBlock;
+    CDUnknownBlockType _startSubTestBlock;
+    double _operationStartTime;
+    double _operationEndTime;
+    NSString *_operationName;
 }
 
++ (id)operationToFinishTest:(id)arg1;
++ (id)operationToStartTest:(id)arg1;
 + (id)operationToSwipeRightInMiddleOfInterface;
 + (id)operationToSwipeLeftInMiddleOfInterface;
 + (id)operationToSwipeDownInMiddleOfInterface;
@@ -17,8 +28,14 @@
 + (id)operationToSynthesizeEventsForEventStream:(id)arg1;
 + (id)operationToSynthesizeEventsForCommandString:(id)arg1;
 + (id)operationToSynthesizeEventsForEventActions:(CDUnknownBlockType)arg1;
++ (id)operationToSetAllApplicationsBlockedForScreenTime:(_Bool)arg1;
++ (id)operationToSetApplicationWithBundleIdentifier:(id)arg1 blockedForScreenTime:(_Bool)arg2;
++ (id)operationToTerminateNullOffscreenApp;
++ (id)operationToActivateNullOffscreenApp;
 + (id)operationToTerminateApplicationWithBundleIdentifier:(id)arg1;
 + (id)operationToActivateApplicationWithBundleIdentifier:(id)arg1;
++ (id)operationToRemoveExampleNotifications;
++ (id)operationToPublishExampleNotificationsWithNotificationCount:(unsigned long long)arg1 threadCount:(unsigned long long)arg2;
 + (id)operationToDismissBannerNotification;
 + (id)operationToPresentBannerNotification;
 + (id)operationToDismissFloatingDock;
@@ -28,18 +45,63 @@
 + (id)operationToLoadPPTAppSwitcherState;
 + (id)operationToRestoreAppSwitcherState;
 + (id)operationToSaveAppSwitcherState;
-+ (id)operationToDismissAppSwitcher;
++ (id)operationToDismissAppSwitcherAndReturnToSource;
 + (id)operationToPresentAppSwitcher;
++ (id)operationToOpenFolderWithName:(id)arg1;
++ (id)operationToCreateFolderWithName:(id)arg1 containingIconsForBundleIdentifiers:(id)arg2;
 + (id)operationToRestoreHomeScreenState;
 + (id)operationToSaveHomeScreenState;
 + (id)operationToTransitionToHomeScreen;
 + (id)operationToWaitForNotificationName:(id)arg1 object:(id)arg2 timeout:(double)arg3;
 + (id)operationToWaitForTimeInterval:(double)arg1;
++ (id)operationToResumeSystemIdle;
++ (id)operationToPreventSystemIdle;
 + (id)operationToSetInterfaceOrientation:(long long)arg1;
 + (id)operationToLockInterface;
 + (id)operationToUnlockInterfaceFinishingUIUnlock:(_Bool)arg1;
 + (id)operationToUnlockInterface;
 + (void)enqueueOperations:(id)arg1;
++ (id)operationToDismissPageManagement;
++ (id)operationToPresentPageManagement;
++ (void)_appLibrarySupport_performDragFromPoint:(struct CGPoint)arg1 andDragTo:(struct CGPoint)arg2 duration:(double)arg3 fromView:(id)arg4 withCompletion:(CDUnknownBlockType)arg5;
++ (void)_appLibrarySupport_performTapAtPoint:(struct CGPoint)arg1 fromView:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
++ (void)_appLibrarySupport__performPanGesturesOnScreenFromPage:(unsigned long long)arg1 toPage:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)_appLibrarySupport_performPanGesturesOnScreenUntilOnDeweyOverlayWithCompletion:(CDUnknownBlockType)arg1;
++ (void)_appLibrarySupport_performPanGesturesOnScreenUntilOnDefaultHomeScreenIconPageWithCompletion:(CDUnknownBlockType)arg1;
++ (void)_appLibrarySupport_performPanGesturesOnScreenUntilOnPage:(unsigned long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
++ (void)_appLibrarySupport_performPanWithComposer:(id)arg1 startLocation:(struct CGPoint)arg2 endLocation:(struct CGPoint)arg3 duration:(double)arg4;
++ (void)_appLibrarySupport_performLeftToRightPanGestureOnScreenWithDuration:(double)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)_appLibrarySupport_performRightToLeftPanGestureOnScreenWithDuration:(double)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)_appLibrarySupport_performPanGestureAwayFromUserInterfaceLayoutDirectionOnScreenWithDuration:(double)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)_appLibrarySupport_performPanGestureTowardsUserInterfaceLayoutDirectionOnScreenWithDuration:(double)arg1 completion:(CDUnknownBlockType)arg2;
++ (id)configureAppLibraryForEachAppHavingOwnPod;
++ (id)configureAppLibraryForAllAppsInOnePod;
++ (id)dismissAppLibraryOverlay;
++ (id)performTapAtPointWithBlock:(CDUnknownBlockType)arg1;
++ (id)appLibraryDismissExpandedPod;
++ (id)appLibraryExpandFirstPod;
++ (id)dismissOverlaysAndResetHomeScreenToFirstIconPageAnimated:(_Bool)arg1;
++ (id)dismissOverlaysAndResetHomeScreenToLastIconPageAnimated:(_Bool)arg1;
++ (void)_dismissOverlaysAndResetHomeScreenToPage:(unsigned long long)arg1 animated:(_Bool)arg2 operation:(id)arg3 completion:(CDUnknownBlockType)arg4;
++ (id)dismissOverlaysAndResetHomeScreenToPage:(unsigned long long)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
++ (id)presentAppLibraryPhone;
++ (id)presentAppLibrary;
++ (id)pullToAppLibrarySearch;
++ (id)dismissAppLibrarySearch;
++ (id)resetAppLibraryToTop;
++ (id)presentAppLibrarySearchByTappingSearchField;
++ (id)resetAndPrepareforNextTest;
++ (id)dismissAppLibraryPad:(_Bool)arg1;
++ (id)presentAppLibrary:(_Bool)arg1;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *operationName; // @synthesize operationName=_operationName;
+- (id)init;
+- (void)operationDidFinish;
+- (void)operationWillStart;
+- (id)markFinishedSubTest:(id)arg1 forTestName:(id)arg2;
+- (id)markStartSubTest:(id)arg1 forTestName:(id)arg2;
+- (id)markFinishedTest:(id)arg1;
+- (id)markStartedTest:(id)arg1;
 
 @end
 

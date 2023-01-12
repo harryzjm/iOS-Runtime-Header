@@ -9,18 +9,17 @@
 #import <RenderBox/RBDrawableStatistics-Protocol.h>
 #import <RenderBox/_RBDrawableDelegate-Protocol.h>
 
-@class NSDictionary, NSTimer, RBDevice;
+@class NSDictionary, NSString, NSTimer, RBDevice;
 
 @interface RBLayer : CALayer <_RBDrawableDelegate, RBDrawableStatistics>
 {
+    struct spin_lock _lock;
     struct objc_ptr<RBDevice *> _device;
-    _Bool _pendingFlush;
     NSTimer *_collectionTimer;
-    struct unique_ptr<RB::Drawable, std::__1::default_delete<RB::Drawable>> _drawable;
-    struct refcounted_ptr<(anonymous namespace)::ImageQueue> _imageQueue;
+    struct refcounted_ptr<RB::Drawable> _drawable;
+    struct objc_ptr<RBImageQueueLayer *> _queueLayer;
     unsigned long long _statistics_mask;
     double _statistics_alpha;
-    struct spin_lock _statistics_handler_lock;
     struct objc_ptr<void (^)(id<RBDrawableStatistics>)> _statistics_handler;
     struct atomic<bool> _deallocating;
     _Bool _visible;
@@ -47,6 +46,7 @@
 @property(nonatomic) int colorMode; // @synthesize colorMode=_colorMode;
 @property(nonatomic) _Bool needsSynchronousUpdate; // @synthesize needsSynchronousUpdate=_needsSynchronousUpdate;
 @property(nonatomic) _Bool rendersAsynchronously; // @synthesize rendersAsynchronously=_rendersAsynchronously;
+- (void)_renderForegroundInContext:(struct CGContext *)arg1;
 - (void)copyImageInRect:(struct CGRect)arg1 options:(id)arg2 completionQueue:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)_RBDrawableStatisticsDidChange;
 @property(copy, nonatomic) CDUnknownBlockType statisticsHandler;
@@ -57,14 +57,20 @@
 - (void)setContents:(id)arg1;
 - (void)waitUntilAsyncRenderingCompleted;
 - (void)drawInDisplayList:(id)arg1;
+- (_Bool)displayWithBounds:(struct CGRect)arg1 callback:(CDUnknownBlockType)arg2;
 - (void)display;
 @property(readonly, nonatomic, getter=isDrawableAvailable) _Bool drawableAvailable;
 @property(retain, nonatomic) RBDevice *device;
 - (void)dealloc;
-- (void)rb_init;
 - (id)initWithLayer:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -19,6 +19,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) REMStore *store; // @synthesize store=_store;
 - (id)debugFetchPhantomListsWithError:(id *)arg1;
+- (id)fetchDefaultListRequiringCloudKitWithError:(id *)arg1;
 - (id)fetchDefaultListWithError:(id *)arg1;
 - (id)fetchEligibleDefaultListsWithError:(id *)arg1;
 - (id)fetchListsWithObjectIDs:(id)arg1 error:(id *)arg2;
@@ -30,9 +31,8 @@
 - (id)fetchListIncludingSpecialContainerWithExternalIdentifier:(id)arg1 inAccount:(id)arg2 error:(id *)arg3;
 - (id)fetchListsIncludingSpecialContainersWithObjectIDs:(id)arg1 error:(id *)arg2;
 - (id)fetchListIncludingSpecialContainerWithObjectID:(id)arg1 error:(id *)arg2;
-- (id)fetchListsIncludingMarkedForDeleteWithObjectIDs:(id)arg1 error:(id *)arg2;
-- (id)fetchListIncludingMarkedForDeleteWithObjectID:(id)arg1 error:(id *)arg2;
 - (id)fetchListsIncludingSpecialContainersInAccount:(id)arg1 error:(id *)arg2;
+- (id)fetchListIncludingConcealedWithObjectID:(id)arg1 includeMarkedForDeletionOnly:(_Bool)arg2 error:(id *)arg3;
 - (id)fetchAllListsWithExternalIdentifier:(id)arg1 inAccount:(id)arg2 error:(id *)arg3;
 
 @end

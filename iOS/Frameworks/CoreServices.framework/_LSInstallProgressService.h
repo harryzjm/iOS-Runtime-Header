@@ -46,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (id)_prepareApplicationProxiesForNotification:(int)arg1 identifiers:(id)arg2 withPlugins:(_Bool)arg3 options:(id)arg4;
 - (void)sendNotification:(int)arg1 forAppProxies:(id)arg2 Plugins:(_Bool)arg3;
 - (SEL)observerSelectorForNotification:(int)arg1;
+- (void)sendNotification:(id)arg1 forApplicationExtensionRecords:(id)arg2;
 - (void)sendNotification:(id)arg1 ForPlugins:(id)arg2;
 - (void)_placeholdersUninstalled:(id)arg1;
 - (void)_placeholderIconUpdatedForApp:(id)arg1;

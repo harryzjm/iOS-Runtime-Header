@@ -19,10 +19,13 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(copy, nonatomic, setter=_setPlugins:) NSArray *_plugins; // @synthesize _plugins=__plugins;
 @property(readonly) unsigned long long mediaType; // @synthesize mediaType=_mediaType;
+- (id)pluginActivitiesExceptMarkup;
 - (id)pluginActivities;
 - (void)_discoveredAvailableExtensions:(id)arg1;
 - (void)rediscoverAvailablePlugins;
 - (id)_allowedPluginTypes;
+- (_Bool)hasMarkupPlugin;
+- (_Bool)hasNonMarkupPlugins;
 - (_Bool)hasPlugins;
 - (id)_initWithMediaType:(unsigned long long)arg1;
 

@@ -13,11 +13,10 @@
     UIColor *_keyColor;
     UIColor *_contextViewPrimaryTextColor;
     UIColor *_contextViewSecondaryTextColor;
-    UIColor *_contextViewInfoButtonGlyphColor;
-    UIColor *_contextViewInfoButtonBackgroundColor;
 }
 
 + (id)workoutContextViewColors;
++ (id)disabledContextViewColor;
 + (id)defaultContextViewColorsUsingColor:(id)arg1;
 + (id)symptomsColors;
 + (id)otherColors;
@@ -25,6 +24,7 @@
 + (id)hearingHealthColors;
 + (id)sleepColors;
 + (id)reproductiveHealthColors;
++ (id)nutritionColors;
 + (id)mobilityColors;
 + (id)mindfulnessColors;
 + (id)bodyMeasurementColors;
@@ -43,10 +43,7 @@
 + (id)carePlansClinicalColors;
 + (id)allergiesClinicalColors;
 + (id)defaultClinicalColors;
-+ (id)metricColorsForHeartRateContext:(long long)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) UIColor *contextViewInfoButtonBackgroundColor; // @synthesize contextViewInfoButtonBackgroundColor=_contextViewInfoButtonBackgroundColor;
-@property(retain, nonatomic) UIColor *contextViewInfoButtonGlyphColor; // @synthesize contextViewInfoButtonGlyphColor=_contextViewInfoButtonGlyphColor;
 @property(retain, nonatomic) UIColor *contextViewSecondaryTextColor; // @synthesize contextViewSecondaryTextColor=_contextViewSecondaryTextColor;
 @property(retain, nonatomic) UIColor *contextViewPrimaryTextColor; // @synthesize contextViewPrimaryTextColor=_contextViewPrimaryTextColor;
 @property(retain, nonatomic) UIColor *keyColor; // @synthesize keyColor=_keyColor;

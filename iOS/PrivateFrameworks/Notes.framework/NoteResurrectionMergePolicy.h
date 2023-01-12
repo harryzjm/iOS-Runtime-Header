@@ -6,6 +6,7 @@
 
 #import <CoreData/NSMergePolicy.h>
 
+__attribute__((visibility("hidden")))
 @interface NoteResurrectionMergePolicy : NSMergePolicy
 {
 }

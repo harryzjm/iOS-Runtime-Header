@@ -16,6 +16,7 @@
     struct {
         _Bool didDisplay;
         _Bool keypress;
+        _Bool userEventOccured;
         _Bool replaceTextRange;
         _Bool keyWillMem;
         _Bool keymem;
@@ -49,14 +50,15 @@
 - (void)handleBrailleDriverDisconnected;
 - (void)handleBrailleDidShowNextAnnouncement:(id)arg1;
 - (void)handleBrailleDidShowPreviousAnnouncement:(id)arg1;
-- (void)handleBrailleDidPanRight:(id)arg1 elementToken:(id)arg2 appToken:(id)arg3;
-- (void)handleBrailleDidPanLeft:(id)arg1 elementToken:(id)arg2 appToken:(id)arg3;
+- (void)handleBrailleDidPanRight:(id)arg1 elementToken:(id)arg2 appToken:(id)arg3 lineOffset:(id)arg4;
+- (void)handleBrailleDidPanLeft:(id)arg1 elementToken:(id)arg2 appToken:(id)arg3 lineOffset:(id)arg4;
 - (void)handleBrailleDidDisplay:(id)arg1;
 - (void)handleBrailleKeyMemorize:(id)arg1;
 - (void)handleBrailleKeyWillMemorize:(id)arg1;
 - (void)handleBrailleDeletedUntranslatedText:(id)arg1 speakLiterally:(_Bool)arg2;
 - (void)handleBrailleInsertedUntranslatedText:(id)arg1 speakLiterally:(_Bool)arg2;
 - (void)handleStartEditing;
+- (void)handleUserEventOccured;
 - (void)handleBrailleReplaceTextRange:(struct _NSRange)arg1 withString:(id)arg2 cursor:(unsigned long long)arg3;
 - (void)handleBrailleKeypress:(id)arg1;
 - (int)handlePerformActionForKey:(int)arg1 trusted:(_Bool)arg2;

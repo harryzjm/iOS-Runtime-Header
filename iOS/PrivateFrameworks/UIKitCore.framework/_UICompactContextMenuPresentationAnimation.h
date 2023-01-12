@@ -18,7 +18,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) _UIContextMenuLayoutArbiterOutput *expandedLayout; // @synthesize expandedLayout=_expandedLayout;
 - (void)_setBackgroundVisible:(_Bool)arg1;
 - (id)_backgroundView;
-- (void)performTransitionFromView:(id)arg1 toView:(id)arg2 containerView:(id)arg3;
+- (void)_performAlongsideAnimations;
+- (void)_actuallyPerformTransitionFromView:(id)arg1 toView:(id)arg2 containerView:(id)arg3;
 - (void)prepareTransitionFromView:(id)arg1 toView:(id)arg2 containerView:(id)arg3;
 
 @end

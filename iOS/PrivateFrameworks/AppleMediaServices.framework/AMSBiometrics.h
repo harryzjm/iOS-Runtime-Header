@@ -27,6 +27,7 @@
 + (_Bool)deleteKeysWithError:(id *)arg1;
 + (id)disableForAccount:(id)arg1;
 + (id)ACLVersionForConstraints:(id)arg1;
++ (id)ACLVersionForAccount:(id)arg1 options:(id)arg2 error:(id *)arg3;
 + (id)ACLVersionForAccessControl:(struct __SecAccessControl *)arg1;
 + (void)setDeviceState:(long long)arg1;
 + (long long)type;

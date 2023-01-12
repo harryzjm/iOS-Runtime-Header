@@ -14,6 +14,8 @@
 @interface PPLocationQuery : NSObject <NSCopying, NSSecureCoding>
 {
     _Bool _excludingWithoutSentiment;
+    _Bool _orderByAscendingDate;
+    _Bool _filterByRelevanceDate;
     unsigned long long _limit;
     NSDate *_fromDate;
     NSDate *_toDate;
@@ -24,7 +26,6 @@
     double _perRecordDecayRate;
     double _decayRate;
     NSString *_fuzzyMatchingString;
-    NSSet *_fuzzyMatchingFields;
     NSSet *_matchingCategories;
     NSSet *_matchingAlgorithms;
     NSSet *_excludingAlgorithms;
@@ -37,13 +38,14 @@
 + (id)_matchingCategoriesDescription:(id)arg1;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool filterByRelevanceDate; // @synthesize filterByRelevanceDate=_filterByRelevanceDate;
+@property(nonatomic) _Bool orderByAscendingDate; // @synthesize orderByAscendingDate=_orderByAscendingDate;
 @property(nonatomic) unsigned long long consumer; // @synthesize consumer=_consumer;
 @property(retain, nonatomic) NSString *matchingContactHandle; // @synthesize matchingContactHandle=_matchingContactHandle;
 @property(nonatomic) _Bool excludingWithoutSentiment; // @synthesize excludingWithoutSentiment=_excludingWithoutSentiment;
 @property(retain, nonatomic) NSSet *excludingAlgorithms; // @synthesize excludingAlgorithms=_excludingAlgorithms;
 @property(retain, nonatomic) NSSet *matchingAlgorithms; // @synthesize matchingAlgorithms=_matchingAlgorithms;
 @property(retain, nonatomic) NSSet *matchingCategories; // @synthesize matchingCategories=_matchingCategories;
-@property(retain, nonatomic) NSSet *fuzzyMatchingFields; // @synthesize fuzzyMatchingFields=_fuzzyMatchingFields;
 @property(retain, nonatomic) NSString *fuzzyMatchingString; // @synthesize fuzzyMatchingString=_fuzzyMatchingString;
 @property(nonatomic) double decayRate; // @synthesize decayRate=_decayRate;
 @property(nonatomic) double perRecordDecayRate; // @synthesize perRecordDecayRate=_perRecordDecayRate;

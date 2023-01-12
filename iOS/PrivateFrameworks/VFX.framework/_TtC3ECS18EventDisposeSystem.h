@@ -6,8 +6,12 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC3ECS18EventDisposeSystem : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *destroyEvents;
+    MISSING_TYPE *newEvents;
 }
 
 @end

@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_5879e2d8)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_5879e2d8)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) double posterior;
 @property(readonly, nonatomic) NSString *keyword_orthography;
 - (id)copyWithZone:(struct _NSZone *)arg1;

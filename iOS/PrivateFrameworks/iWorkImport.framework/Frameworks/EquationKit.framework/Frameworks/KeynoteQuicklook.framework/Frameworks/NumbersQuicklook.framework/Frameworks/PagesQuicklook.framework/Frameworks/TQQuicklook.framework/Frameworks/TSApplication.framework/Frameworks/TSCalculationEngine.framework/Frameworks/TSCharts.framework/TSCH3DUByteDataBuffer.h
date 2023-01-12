@@ -6,7 +6,7 @@
 
 @interface TSCH3DUByteDataBuffer
 {
-    vector_1798193c mContainer;
+    struct vector<TSCH3D::PODType<unsigned char>, std::allocator<TSCH3D::PODType<unsigned char>>> _container;
 }
 
 - (id).cxx_construct;
@@ -19,7 +19,7 @@
 - (unsigned long long)count;
 - (void)fillCapacity;
 - (const void *)data;
-@property(readonly, nonatomic) vector_1798193c *container;
+@property(readonly, nonatomic) void *container;
 - (id)initWithCapacity:(unsigned long long)arg1;
 
 @end

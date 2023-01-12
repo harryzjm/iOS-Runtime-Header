@@ -6,30 +6,59 @@
 
 #import <AuthKit/AKAppleIDServerAuthenticationUIProvider-Protocol.h>
 
-@class NSNumber, NSString;
+@class AKCommandLineUtilities, NSDate, NSNumber, NSString;
 
 @interface AKAppleIDAuthenticationCommandLineContext <AKAppleIDServerAuthenticationUIProvider>
 {
+    _Bool _termsAccepted;
     NSNumber *_secondFactorCode;
     long long _verificationType;
+    NSString *_phoneNumber;
+    NSString *_firstName;
+    NSString *_lastName;
+    NSDate *_birthday;
+    NSString *_securityCode;
+    AKCommandLineUtilities *_utility;
+    NSString *_rootPath;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) long long verificationType; // @synthesize verificationType=_verificationType;
+@property(readonly, nonatomic) NSString *rootPath; // @synthesize rootPath=_rootPath;
+@property(readonly, nonatomic) AKCommandLineUtilities *utility; // @synthesize utility=_utility;
+@property(retain, nonatomic) NSString *securityCode; // @synthesize securityCode=_securityCode;
+@property(nonatomic) _Bool termsAccepted; // @synthesize termsAccepted=_termsAccepted;
+@property(copy, nonatomic) NSDate *birthday; // @synthesize birthday=_birthday;
+@property(copy, nonatomic) NSString *lastName; // @synthesize lastName=_lastName;
+@property(copy, nonatomic) NSString *firstName; // @synthesize firstName=_firstName;
+@property(copy, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
+@property(readonly, nonatomic) long long verificationType; // @synthesize verificationType=_verificationType;
 @property(copy, nonatomic) NSNumber *secondFactorCode; // @synthesize secondFactorCode=_secondFactorCode;
 - (id)_jsonPostbackDictionaryForCode:(id)arg1 numberId:(id)arg2;
-- (id)_jsonDictionaryForData:(id)arg1 error:(id)arg2;
-- (id)_mutableJSONRequestForURL:(id)arg1;
-- (id)_mutableJSONRequestForPath:(id)arg1;
+- (id)_promptUserForTermsWithResponseDictionary:(id)arg1;
+- (id)_promptForLastName;
+- (id)_promptForFirstName;
+- (id)_promptForPhoneNumber;
+- (id)_promptForUsername;
+- (id)_promptForPassword;
+- (id)_promptForBirthday;
+- (id)_promptForVerificationCodeWithSecureEntry:(_Bool)arg1 forTrustedNumber:(id)arg2;
 - (id)_xmlUIRequestForURL:(id)arg1 withPostbackDictionary:(id)arg2;
 - (id)_xmlUIRequestForURL:(id)arg1 withServerInfo:(id)arg2;
 - (id)_parseHeaderTitleForPasscodeView:(id)arg1;
 - (void)_beginDataTaskWithRequest:(id)arg1 configuration:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_verifySecondFactorCodeWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)_promptForVerificationCodeWithSecureEntry:(_Bool)arg1;
+- (id)_accountDictionary;
+- (id)_createContextDictionaryFromResponse:(id)arg1;
+- (id)_accountCreationRequestBodyFromResponseDictionary:(id)arg1 shouldIncludePhoneNumber:(_Bool)arg2 shouldIncludeForSecurityCode:(_Bool)arg3;
+- (id)_parseTrustedPhoneNumberFromResponseDictionary:(id)arg1;
 - (id)_promptUserForSelectionWithTrustedNumbers:(id)arg1;
-- (void)_collectAndPostSecondFactorCodeForTrustedNumber:(id)arg1 configuration:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_handleServerUISMSSecondFactorWithDictionary:(id)arg1 statusCode:(long long)arg2 configuration:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_collectAndPostSecondFactorCodeWithRequestBody:(id)arg1 configuration:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_handleServerUISMSVerificationWithResponseDictionary:(id)arg1 statusCode:(long long)arg2 configuration:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_collectAndHandleTermsAndConditionsWithResponseDictionary:(id)arg1 configuration:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_handleServerUIPhoneVerificationWithResponseDictionary:(id)arg1 configuration:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_handleServerUIPasswordVerificationWithResponseDictionary:(id)arg1 configuration:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_handleServerUIBirthdayVerificationWithResponseDictionary:(id)arg1 configuration:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_verifySecondFactorCodeWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_handleServerUIWithDictionary:(id)arg1 statusCode:(long long)arg2 configuration:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_handleServerUISecondFactorWithObjectModel:(id)arg1 configuration:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_presentServerUISecondFactorWithConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dismissServerProvidedUIWithCompletion:(CDUnknownBlockType)arg1;
@@ -40,6 +69,8 @@
 - (void)presentLoginAlertWithError:(id)arg1 title:(id)arg2 message:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)dismissBasicLoginUIWithCompletion:(CDUnknownBlockType)arg1;
 - (void)presentBasicLoginUIWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_rootPath;
+- (void)setNeedsNewAppleID:(_Bool)arg1;
 - (unsigned long long)_capabilityForUIDisplay;
 - (id)initWithVerificationType:(long long)arg1;
 - (id)init;

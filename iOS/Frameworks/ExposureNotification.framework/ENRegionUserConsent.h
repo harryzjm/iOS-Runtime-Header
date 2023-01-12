@@ -30,6 +30,7 @@
 @property(retain, nonatomic) NSString *consentText; // @synthesize consentText=_consentText;
 @property(nonatomic) long long consent; // @synthesize consent=_consent;
 - (_Bool)isEqual:(id)arg1;
+- (id)updatedConsent:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

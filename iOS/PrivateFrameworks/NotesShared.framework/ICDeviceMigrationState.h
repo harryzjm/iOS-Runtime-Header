@@ -26,9 +26,10 @@
 - (_Bool)isMigrating;
 - (id)cloudAccount;
 - (void)deleteFromLocalDatabase;
+- (void)objectWasFetchedFromCloudWithRecord:(id)arg1 accountID:(id)arg2 force:(_Bool)arg3;
 - (void)objectWasDeletedFromCloudByAnotherDevice;
 - (void)objectWasDeletedFromCloud;
-- (void)mergeDataFromRecord:(id)arg1 accountID:(id)arg2;
+- (void)mergeDataFromRecord:(id)arg1 accountID:(id)arg2 force:(_Bool)arg3;
 - (id)newlyCreatedRecord;
 - (_Bool)isInICloudAccount;
 - (id)recordZoneName;

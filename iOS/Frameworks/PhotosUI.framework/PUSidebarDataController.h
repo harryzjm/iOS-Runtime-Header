@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     PUStackView *_reusableStackView;
 }
 
++ (void)_prepareConfiguration:(id)arg1;
 + (id)fromMyMacAlbumsDataSectionManagerWithWorkQueue:(id)arg1;
 + (id)otherAlbumsDataSectionManagerWithWorkQueue:(id)arg1 sectionEnablementProvider:(id)arg2;
 + (id)sharedAlbumsDataSectionManagerWithWorkQueue:(id)arg1;
@@ -26,9 +27,9 @@ __attribute__((visibility("hidden")))
 - (id)sidebarCustomSymbolImageWithName:(id)arg1 symbolColor:(id)arg2 scale:(double)arg3;
 - (id)backedPlusButtonImage;
 - (id)_createReusableStackViewWithTargetSize:(struct CGSize)arg1;
-- (void)_requestImageForAsset:(id)arg1 size:(struct CGSize)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)_imageForGlyphName:(id)arg1;
-- (void)requestImageForItem:(id)arg1 parentItem:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (long long)_requestImageForAsset:(id)arg1 size:(struct CGSize)arg2 completion:(CDUnknownBlockType)arg3;
+- (long long)requestImageForItem:(id)arg1 parentItem:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)appearanceDidChange;
 - (id)_singleItemDataSourceManagerForCollection:(id)arg1 workQueue:(id)arg2;
 - (id)sectionManagersForLibrary:(id)arg1 workQueue:(id)arg2 sectionEnablementProvider:(id)arg3;
 

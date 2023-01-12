@@ -12,6 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface AMSUIWebPlaceholderViewController <AMSUIWebPagePresenter>
 {
+    _Bool _animateFadeIn;
     _Bool _hasAppeared;
     _Bool _isVisible;
     _Bool _shouldSnapshot;
@@ -37,10 +38,11 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIViewController<AMSUIWebPagePresenter> *originalViewController; // @synthesize originalViewController=_originalViewController;
 @property(retain, nonatomic) AMSUIWebLoadingPageModel *model; // @synthesize model=_model;
 @property(retain, nonatomic) AMSUIWebAppearance *appearance; // @synthesize appearance=_appearance;
+@property(nonatomic) _Bool animateFadeIn; // @synthesize animateFadeIn=_animateFadeIn;
 - (void)_transitionToSnapshot;
-- (void)_transitionToLoading;
-- (void)_replacePrimaryViewWithView:(id)arg1;
-- (void)_startReappearTransitionTimer;
+- (void)_transitionToLoadingAnimated:(_Bool)arg1;
+- (void)_replacePrimaryViewWithView:(id)arg1 animated:(_Bool)arg2;
+- (void)_startReappearTransitionTimerAnimated:(_Bool)arg1;
 - (void)_applyAppearance;
 - (void)willPresentPageModel:(id)arg1 appearance:(id)arg2;
 - (void)viewWillLayoutSubviews;

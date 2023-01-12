@@ -9,7 +9,7 @@
 @interface TSTFunctionNode
 {
     TSTFunctionEndNode *_functionEndNode;
-    int _functionIndex;
+    unsigned short _functionIndex;
     NSString *_whitespaceAfterLeftParen;
     NSArray *_whitespaceAfterDelimiters;
     NSString *_whitespaceAfterFunctionName;
@@ -17,23 +17,23 @@
 }
 
 + (id)newSumNodeWithContext:(id)arg1 children:(id)arg2;
-+ (id)newDefaultFunctionNodeWithContext:(id)arg1 functionIndex:(int)arg2;
++ (id)newDefaultFunctionNodeWithContext:(id)arg1 functionIndex:(unsigned short)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *invalidFunctionName; // @synthesize invalidFunctionName=_invalidFunctionName;
 @property(retain, nonatomic) NSString *whitespaceAfterFunctionName; // @synthesize whitespaceAfterFunctionName=_whitespaceAfterFunctionName;
 @property(retain, nonatomic) NSArray *whitespaceAfterDelimiters; // @synthesize whitespaceAfterDelimiters=_whitespaceAfterDelimiters;
 @property(retain) NSString *whitespaceAfterLeftParen; // @synthesize whitespaceAfterLeftParen=_whitespaceAfterLeftParen;
-@property(readonly, nonatomic) int functionIndex; // @synthesize functionIndex=_functionIndex;
+@property(readonly, nonatomic) unsigned short functionIndex; // @synthesize functionIndex=_functionIndex;
 - (void)p_resetArgumentSpecForChildren;
 - (id)p_functionSpec;
-- (void)saveToArchive:(struct FunctionNodeArchive *)arg1 archiver:(id)arg2;
-- (void)loadFromArchive:(const struct FunctionNodeArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)addTSTCanvasReferencesToSet:(id)arg1 inRangeContext:(unsigned char)arg2 withColorHelper:(id)arg3 preferringNodesFromStorage:(id)arg4 allVisitedNodes:(id)arg5;
 - (id)formulaPlainText;
 - (id)exportString;
-- (void)buildASTNodeArray:(struct TSCEASTNodeArray *)arg1 hostCell:(struct TSUCellCoord)arg2 symbolTable:(struct TSCESymbolTable *)arg3;
+- (void)buildASTNodeArray:(struct TSCEASTNodeArray *)arg1 hostCell:(struct TSUCellCoord)arg2 symbolTable:(void *)arg3;
 - (void)insertFormulaText:(id)arg1 includeWhitespace:(_Bool)arg2 unwrapped:(_Bool)arg3;
 - (void)insertFormulaText:(id)arg1 includeWhitespace:(_Bool)arg2;
 - (id)string;
@@ -55,7 +55,7 @@
 - (_Bool)isFunctionNode;
 - (id)initAsCopyOf:(id)arg1 intoContext:(id)arg2 children:(id)arg3;
 - (id)initWithContext:(id)arg1 children:(id)arg2 firstIndex:(unsigned long long)arg3 lastIndex:(unsigned long long)arg4;
-- (id)initWithContext:(id)arg1 functionIndex:(int)arg2 children:(id)arg3 firstIndex:(unsigned long long)arg4 lastIndex:(unsigned long long)arg5;
+- (id)initWithContext:(id)arg1 functionIndex:(unsigned short)arg2 children:(id)arg3 firstIndex:(unsigned long long)arg4 lastIndex:(unsigned long long)arg5;
 
 @end
 

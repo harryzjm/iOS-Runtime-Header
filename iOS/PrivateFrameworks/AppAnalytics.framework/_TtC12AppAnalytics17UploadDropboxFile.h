@@ -17,6 +17,10 @@
     MISSING_TYPE *state;
     MISSING_TYPE *fileHandle;
     MISSING_TYPE *lock;
+    MISSING_TYPE *userAgent;
+    MISSING_TYPE *contentType;
+    MISSING_TYPE *groupName;
+    MISSING_TYPE *sessionStartDate;
 }
 
 @end

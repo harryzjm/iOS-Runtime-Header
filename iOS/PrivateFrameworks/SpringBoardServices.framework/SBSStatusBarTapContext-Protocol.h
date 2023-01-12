@@ -5,6 +5,6 @@
 //
 
 @protocol SBSStatusBarTapContext
-@property(readonly, nonatomic) int styleOverride;
+@property(readonly, nonatomic) unsigned long long styleOverride;
 @end
 

@@ -6,7 +6,7 @@
 
 #import <DACalDAV/NSObject-Protocol.h>
 
-@class AKAppleIDSession, CoreDAVTask, NSData, NSDictionary, NSError, NSObject, NSSet, NSString, NSURL, NSURLAuthenticationChallenge, NSURLConnection, NSURLProtectionSpace;
+@class AKAppleIDSession, CoreDAVTask, NSData, NSDictionary, NSError, NSObject, NSSet, NSString, NSURL, NSURLAuthenticationChallenge, NSURLProtectionSpace, NSURLSessionTask;
 @protocol CoreDAVClientCertificateInfoProvider, CoreDAVOAuthInfoProvider, OS_dispatch_queue;
 
 @protocol CoreDAVAccountInfoProvider <NSObject>
@@ -48,11 +48,9 @@
 - (_Bool)shouldHandleHTTPCookiesForURL:(NSURL *)arg1;
 - (void)noteHomeSetOnDifferentHost:(NSURL *)arg1;
 - (_Bool)handleShouldUseCredentialStorage;
-- (_Bool)shouldRetryUnauthorizedConnection:(NSURLConnection *)arg1;
-- (_Bool)handleAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)arg1 withConnection:(NSURLConnection *)arg2;
+- (_Bool)shouldRetryUnauthorizedTask:(NSURLSessionTask *)arg1;
 - (_Bool)handleAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)arg1;
-- (_Bool)handleTrustChallenge:(NSURLAuthenticationChallenge *)arg1 withConnection:(NSURLConnection *)arg2;
-- (_Bool)handleTrustChallenge:(NSURLAuthenticationChallenge *)arg1;
+- (_Bool)handleTrustChallenge:(NSURLAuthenticationChallenge *)arg1 completionHandler:(void (^)(long long, NSURLCredential *))arg2;
 - (id <CoreDAVOAuthInfoProvider>)oauthInfoProvider;
 - (id <CoreDAVClientCertificateInfoProvider>)clientCertificateInfoProvider;
 - (NSDictionary *)customConnectionProperties;

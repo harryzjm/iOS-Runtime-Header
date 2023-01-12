@@ -12,9 +12,12 @@
 {
     MISSING_TYPE *bootstrapPresenter;
     MISSING_TYPE *statePresenter;
-    MISSING_TYPE *collectionContent;
+    MISSING_TYPE *compositionalLayout;
+    MISSING_TYPE *diffableDataSource;
     MISSING_TYPE *components;
     MISSING_TYPE *clippingLayer;
+    MISSING_TYPE *startTime;
+    MISSING_TYPE *friendSuggestionsSectionFocusGuide;
     MISSING_TYPE *_rootController;
     MISSING_TYPE *_specifier;
 }
@@ -29,6 +32,8 @@
 - (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)viewDidLayoutSubviews;
+- (void)viewWillDisappear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 @property(nonatomic, readonly) _TtC12GameCenterUI22PlayerProfilePresenter *dataPresenter;
 @property(nonatomic, retain) _TtC12GameCenterUI18BootstrapPresenter *bootstrapPresenter; // @synthesize bootstrapPresenter;

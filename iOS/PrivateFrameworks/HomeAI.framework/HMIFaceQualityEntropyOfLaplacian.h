@@ -17,7 +17,7 @@
     int _minLaplacianScore;
     float _binWidth;
     float _maxScore;
-    struct vector<float, std::__1::allocator<float>> _histogram;
+    vector_8ca568ff _histogram;
 }
 
 + (id)logCategory;

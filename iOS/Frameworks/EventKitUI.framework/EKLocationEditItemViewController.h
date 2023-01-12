@@ -4,49 +4,87 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <EventKitUI/EKLocationVirtualConferenceSearchFieldsDelegate-Protocol.h>
 #import <EventKitUI/EKUILocationSearchModelDelegate-Protocol.h>
 #import <EventKitUI/EKUIManagedViewController-Protocol.h>
 #import <EventKitUI/UISearchBarDelegate-Protocol.h>
 #import <EventKitUI/UITableViewDataSource-Protocol.h>
 #import <EventKitUI/UITableViewDelegate-Protocol.h>
+#import <EventKitUI/VirtualConferenceRoomTypeSelectionDelegate-Protocol.h>
 
-@class EKCalendarItem, EKStructuredLocation, EKUIConferenceRoom, EKUILocationSearchModel, NSMutableDictionary, NSString, UISearchBar, UITableView;
+@class EKCalendarItem, EKLocationVirtualConferenceSearchFieldsView, EKStructuredLocation, EKUIConferenceRoom, EKUILocationRowModel, EKUILocationSearchModel, EKVirtualConference, EKVirtualConferenceRoomType, NSError, NSMutableDictionary, NSString, UISearchBar, UITableView, _UINavigationControllerPalette;
 
-@interface EKLocationEditItemViewController <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, EKUILocationSearchModelDelegate, EKUIManagedViewController>
+@interface EKLocationEditItemViewController <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, EKLocationVirtualConferenceSearchFieldsDelegate, EKUILocationSearchModelDelegate, VirtualConferenceRoomTypeSelectionDelegate, EKUIManagedViewController>
 {
     UITableView *_tableView;
+    _UINavigationControllerPalette *_palette;
+    UISearchBar *_searchBar;
+    EKLocationVirtualConferenceSearchFieldsView *_searchFieldsView;
     EKUILocationSearchModel *_searchModel;
     EKCalendarItem *_calendarItem;
+    EKVirtualConferenceRoomType *_checkedRoomType;
+    _Bool _shouldShowCheckedVirtualConference;
     NSMutableDictionary *_cachedConferenceRooms;
     struct CGSize _preferredContentSize;
     _Bool _supportsStructuredLocations;
     _Bool _tableConstraintsInstalled;
-    _Bool _onlyAllowConferenceRooms;
     _Bool _rotating;
     _Bool _wasFirstResponder;
     _Bool _needsSave;
-    _Bool _onlyDisplayMapLocations;
-    _Bool _fillSearchbarWithStructuredLocation;
-    EKStructuredLocation *_structuredLocation;
+    _Bool _autoFillSelectedTextField;
+    _Bool _forceSingleTextField;
+    _Bool _conferenceTextFieldSelected;
+    _Bool _disableConferenceTextField;
+    _Bool _pendingVirtualConference;
+    unsigned long long _supportedSearchTypes;
+    EKUILocationRowModel *_locationViewModel;
+    EKUILocationRowModel *_conferenceViewModel;
     EKStructuredLocation *_selectedLocation;
     EKUIConferenceRoom *_selectedConferenceRoom;
-    UISearchBar *_searchBar;
+    EKVirtualConference *_selectedVirtualConference;
+    NSError *_pendingVirtualConferenceError;
     CDUnknownBlockType _viewDidAppearBlock;
 }
 
 + (id)_sectionNameForSection:(unsigned long long)arg1;
++ (id)_boldTitleFont;
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType viewDidAppearBlock; // @synthesize viewDidAppearBlock=_viewDidAppearBlock;
-@property(readonly, nonatomic) UISearchBar *searchBar; // @synthesize searchBar=_searchBar;
+@property(retain, nonatomic) NSError *pendingVirtualConferenceError; // @synthesize pendingVirtualConferenceError=_pendingVirtualConferenceError;
+@property(nonatomic) _Bool pendingVirtualConference; // @synthesize pendingVirtualConference=_pendingVirtualConference;
+@property(retain, nonatomic) EKVirtualConference *selectedVirtualConference; // @synthesize selectedVirtualConference=_selectedVirtualConference;
 @property(retain, nonatomic) EKUIConferenceRoom *selectedConferenceRoom; // @synthesize selectedConferenceRoom=_selectedConferenceRoom;
 @property(retain, nonatomic) EKStructuredLocation *selectedLocation; // @synthesize selectedLocation=_selectedLocation;
-@property(retain, nonatomic) EKStructuredLocation *structuredLocation; // @synthesize structuredLocation=_structuredLocation;
-@property(nonatomic) _Bool fillSearchbarWithStructuredLocation; // @synthesize fillSearchbarWithStructuredLocation=_fillSearchbarWithStructuredLocation;
-@property(nonatomic) _Bool onlyDisplayMapLocations; // @synthesize onlyDisplayMapLocations=_onlyDisplayMapLocations;
+@property(retain, nonatomic) EKUILocationRowModel *conferenceViewModel; // @synthesize conferenceViewModel=_conferenceViewModel;
+@property(retain, nonatomic) EKUILocationRowModel *locationViewModel; // @synthesize locationViewModel=_locationViewModel;
+@property(nonatomic) _Bool disableConferenceTextField; // @synthesize disableConferenceTextField=_disableConferenceTextField;
+@property(nonatomic) _Bool conferenceTextFieldSelected; // @synthesize conferenceTextFieldSelected=_conferenceTextFieldSelected;
+@property(nonatomic) _Bool forceSingleTextField; // @synthesize forceSingleTextField=_forceSingleTextField;
+@property(nonatomic) _Bool autoFillSelectedTextField; // @synthesize autoFillSelectedTextField=_autoFillSelectedTextField;
+@property(nonatomic) unsigned long long supportedSearchTypes; // @synthesize supportedSearchTypes=_supportedSearchTypes;
 @property(nonatomic) _Bool needsSave; // @synthesize needsSave=_needsSave;
+- (void)pendingVideoConferenceUpdated:(id)arg1;
+- (void)selectedRoomType:(id)arg1;
+- (void)selectedTextFieldChanged:(id)arg1;
+- (void)textFieldDoneTapped:(id)arg1;
+- (void)textField:(id)arg1 didChange:(id)arg2;
+- (void)searchBarSearchButtonClicked:(id)arg1;
+- (void)searchBar:(id)arg1 textDidChange:(id)arg2;
+- (void)searchDoneTapped;
+- (void)searchTextChanged:(id)arg1;
+- (void)searchBecomeFirstResponder;
+- (void)searchResignFirstResponder;
+- (_Bool)searchIsFirstResponder;
+- (id)searchText;
+- (void)setSearchText:(id)arg1;
+- (id)_focusedTextField;
+- (_Bool)_singleSearchBar;
+@property(readonly) _Bool conferenceViewModelRemoved;
+@property(readonly) _Bool locationViewModelRemoved;
 - (_Bool)canManagePresentationStyle;
 - (_Bool)wantsManagement;
 - (id)_cellForConferenceRoom:(id)arg1 atIndexPath:(id)arg2;
+- (void)virtualConferenceSearchUpdated:(id)arg1;
 - (void)eventsSearchUpdated:(id)arg1;
 - (void)frequentsSearchUpdated:(id)arg1;
 - (void)mapSearchUpdated:(id)arg1;
@@ -57,8 +95,6 @@
 - (_Bool)shouldIncludeConferenceRoom:(id)arg1;
 - (void)locationSearchModel:(id)arg1 selectedLocation:(id)arg2 withError:(id)arg3;
 - (id)calendarItemForSearchModel:(id)arg1;
-- (void)searchBarSearchButtonClicked:(id)arg1;
-- (void)searchBar:(id)arg1 textDidChange:(id)arg2;
 - (id)pinImage;
 - (id)contactsImage;
 - (id)locationArrowImage;
@@ -74,21 +110,18 @@
 - (id)conferenceRoomForRecent:(id)arg1;
 - (id)itemAtIndexPath:(id)arg1;
 - (void)useAsString:(id)arg1;
+- (_Bool)showAvailableConferenceTypesAsRows;
 - (_Bool)showingCurrentLocationRow;
 - (_Bool)showingTextRow;
-@property(nonatomic) _Bool onlyAllowConferenceRooms;
 - (_Bool)presentModally;
-- (void)viewDidDisappear:(_Bool)arg1;
-- (void)_setupConstraints;
+- (void)_setupViewsAndConstraints;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewDidAppear:(_Bool)arg1;
 - (struct CGSize)preferredContentSize;
 - (void)setPreferredContentSize:(struct CGSize)arg1;
 - (void)viewDidLoad;
-- (void)loadView;
 - (id)title;
 - (void)setViewAppearedBlock:(CDUnknownBlockType)arg1;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 styleProvider:(id)arg2 calendarItem:(id)arg3 eventStore:(id)arg4;
 - (id)initWithFrame:(struct CGRect)arg1 styleProvider:(id)arg2;
 

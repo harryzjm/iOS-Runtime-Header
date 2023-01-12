@@ -6,11 +6,11 @@
 
 #import <ProactiveInputPredictionsInternals/NSObject-Protocol.h>
 
-@class NSString;
+@class NSString, TRIExperimentIdentifiers, TRIRolloutIdentifiers;
 
 @protocol PSGExpConfigProtocol <NSObject>
-@property(readonly, nonatomic) NSString *treatmentId;
-@property(readonly, nonatomic) NSString *experimentId;
+@property(readonly, nonatomic) TRIExperimentIdentifiers *experimentIdentifiers;
+@property(readonly, nonatomic) TRIRolloutIdentifiers *rolloutIdentifiers;
 @property(readonly, nonatomic) NSString *treatmentName;
 @end
 

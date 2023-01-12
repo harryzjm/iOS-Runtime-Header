@@ -7,9 +7,12 @@
 #import <SiriKitFlow/JSExport-Protocol.h>
 #import <SiriKitFlow/NSObject-Protocol.h>
 
-@class INCallRecord, INCallRecordFilter, NSArray;
+@class INCallRecord, INCallRecordFilter, NSArray, NSNumber, NSString;
 
 @protocol INStartCallIntentExport <NSObject, JSExport>
+@property(nonatomic, copy) NSString *notificationThreadIdentifier;
+@property(nonatomic, copy) NSArray *callGroups;
+@property(nonatomic, copy) NSNumber *isGroupCall;
 @property(nonatomic) long long callCapability;
 - (void)setTTYType:(long long)arg1;
 @property(nonatomic) long long ttyType;

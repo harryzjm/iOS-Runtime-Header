@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_d4bcbfdd)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_d4bcbfdd)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) int processed_audio_duration_ms;
 @property(readonly, nonatomic) int end_point_likelihood;
 @property(readonly, nonatomic) NSString *return_str;

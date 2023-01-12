@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <BiomePubSub/BPSSubscription.h>
+#import <BiomePubSub/BMBookmarkableSubscription.h>
 
-@class BMStoreEnumerator, NSString;
+@class BMStoreEnumerator, BMStreamsAccessClient, NSString;
 @protocol BPSSubscriber;
 
-@interface _BPSInnerBiomeSubscription : BPSSubscription
+@interface _BPSInnerBiomeSubscription : BMBookmarkableSubscription
 {
     BMStoreEnumerator *_enumerator;
     struct os_unfair_lock_s _lock;
@@ -17,6 +17,7 @@
     long long _pendingDemand;
     _Bool _recursion;
     NSString *_streamId;
+    BMStreamsAccessClient *_accessClient;
 }
 
 - (void).cxx_destruct;
@@ -24,9 +25,7 @@
 - (id)upstreamSubscriptions;
 - (void)cancel;
 - (void)requestDemand:(long long)arg1;
-- (id)initWithStreamEnumerator:(id)arg1 downstream:(id)arg2 streamId:(id)arg3;
-- (id)initWithStreamDatastoreReader:(id)arg1 bookmark:(id)arg2 downstream:(id)arg3 streamId:(id)arg4;
-- (id)initWithStreamDatastoreReader:(id)arg1 startTime:(double)arg2 downstream:(id)arg3 streamId:(id)arg4;
+- (id)initWithStreamEnumerator:(id)arg1 downstream:(id)arg2 streamId:(id)arg3 accessClient:(id)arg4;
 
 @end
 

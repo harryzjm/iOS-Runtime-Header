@@ -21,8 +21,6 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) _HKExpiringCompletionTimer *timer; // @synthesize timer=_timer;
-@property(retain, nonatomic) NSMutableArray *completionHandlers; // @synthesize completionHandlers=_completionHandlers;
 @property(nonatomic) long long sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
 @property(readonly, nonatomic, getter=isFinished) _Bool finished; // @synthesize finished=_finished;
 @property(readonly, nonatomic) HDNanoSyncStore *nanoSyncStore; // @synthesize nanoSyncStore=_nanoSyncStore;
@@ -31,7 +29,6 @@
 @property(readonly, nonatomic) NSUUID *sessionUUID; // @synthesize sessionUUID=_sessionUUID;
 - (void)scheduleTimeoutWithInterval:(double)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)addCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_finishWithError:(id)arg1;
 - (void)finishWithError:(id)arg1;
 - (void)dealloc;
 - (id)initWithSyncStore:(id)arg1 sessionUUID:(id)arg2;

@@ -9,7 +9,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/_SFPBImage-Protocol.h>
 
-@class NSData, NSString, _SFPBAppIconImage, _SFPBCalendarImage, _SFPBContactImage, _SFPBGraphicalFloat, _SFPBLocalImage, _SFPBMediaArtworkImage, _SFPBMonogramImage, _SFPBPointSize, _SFPBSymbolImage, _SFPBURLImage;
+@class NSData, NSString, _SFPBAppIconImage, _SFPBCalendarImage, _SFPBContactImage, _SFPBGraphicalFloat, _SFPBLocalImage, _SFPBMediaArtworkImage, _SFPBMonogramImage, _SFPBPhotosLibraryImage, _SFPBPointSize, _SFPBQuickLookThumbnailImage, _SFPBSymbolImage, _SFPBURLImage;
 
 @interface _SFPBImage : PBCodable <_SFPBImage, NSSecureCoding>
 {
@@ -25,6 +25,7 @@
     NSString *_contentType;
     NSString *_keyColor;
     NSString *_identifier;
+    NSString *_accessibilityLabel;
     _SFPBURLImage *_urlImage;
     _SFPBContactImage *_contactImage;
     _SFPBMonogramImage *_monogramImage;
@@ -33,9 +34,13 @@
     _SFPBMediaArtworkImage *_mediaArtworkImage;
     _SFPBCalendarImage *_calendarImage;
     _SFPBSymbolImage *_symbolImage;
+    _SFPBPhotosLibraryImage *_photosLibraryImage;
+    _SFPBQuickLookThumbnailImage *_quickLookThumbnailImage;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) _SFPBQuickLookThumbnailImage *quickLookThumbnailImage; // @synthesize quickLookThumbnailImage=_quickLookThumbnailImage;
+@property(retain, nonatomic) _SFPBPhotosLibraryImage *photosLibraryImage; // @synthesize photosLibraryImage=_photosLibraryImage;
 @property(retain, nonatomic) _SFPBSymbolImage *symbolImage; // @synthesize symbolImage=_symbolImage;
 @property(retain, nonatomic) _SFPBCalendarImage *calendarImage; // @synthesize calendarImage=_calendarImage;
 @property(retain, nonatomic) _SFPBMediaArtworkImage *mediaArtworkImage; // @synthesize mediaArtworkImage=_mediaArtworkImage;
@@ -45,6 +50,7 @@
 @property(retain, nonatomic) _SFPBContactImage *contactImage; // @synthesize contactImage=_contactImage;
 @property(retain, nonatomic) _SFPBURLImage *urlImage; // @synthesize urlImage=_urlImage;
 @property(nonatomic) int type; // @synthesize type=_type;
+@property(copy, nonatomic) NSString *accessibilityLabel; // @synthesize accessibilityLabel=_accessibilityLabel;
 @property(nonatomic) int cornerRoundingStyle; // @synthesize cornerRoundingStyle=_cornerRoundingStyle;
 @property(nonatomic) int source; // @synthesize source=_source;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;

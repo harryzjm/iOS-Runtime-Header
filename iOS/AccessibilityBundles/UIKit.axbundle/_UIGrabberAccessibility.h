@@ -10,6 +10,7 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)accessibilityLabel;
 - (struct CGPoint)_accessibilityVisiblePoint;
 
 @end

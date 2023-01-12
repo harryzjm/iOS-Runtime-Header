@@ -8,27 +8,31 @@
 
 #import <HomeUI/UIContextMenuInteractionDelegate-Protocol.h>
 
-@class HMCameraProfile, HUCameraPlayerViewController, HUClipScrubberDataSource, HUDiagnosticsCameraTimelineView, NSString;
+@class AVPlayerViewController, HFCameraPlaybackEngine, HMCameraProfile, HUClipScrubberDataSource, HUDiagnosticsCameraTimelineView, NSString;
 
 @interface HUDiagnosticsCameraPlayerController : NSObject <UIContextMenuInteractionDelegate>
 {
-    HUCameraPlayerViewController *_cameraPlayerViewController;
+    AVPlayerViewController *_cameraPlayerViewController;
     HUDiagnosticsCameraTimelineView *_diagnosticsView;
     HUClipScrubberDataSource *_clipScrubberDataSource;
+    HFCameraPlaybackEngine *_playbackEngine;
     HMCameraProfile *_cameraProfile;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) HMCameraProfile *cameraProfile; // @synthesize cameraProfile=_cameraProfile;
+@property(nonatomic) __weak HFCameraPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
 @property(nonatomic) __weak HUClipScrubberDataSource *clipScrubberDataSource; // @synthesize clipScrubberDataSource=_clipScrubberDataSource;
 @property(retain, nonatomic) HUDiagnosticsCameraTimelineView *diagnosticsView; // @synthesize diagnosticsView=_diagnosticsView;
-@property(nonatomic) __weak HUCameraPlayerViewController *cameraPlayerViewController; // @synthesize cameraPlayerViewController=_cameraPlayerViewController;
+@property(nonatomic) __weak AVPlayerViewController *cameraPlayerViewController; // @synthesize cameraPlayerViewController=_cameraPlayerViewController;
+- (void)dismissDetailsViewController;
+- (void)displayTimelapseDetails;
 - (void)dismissDiagnosticDetails;
 - (void)displayDiagnosticDetails;
 - (void)launchPlaybackEngineDiagnosticsView;
 - (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (void)updateWithPlaybackEngine:(id)arg1;
-- (id)initWithCameraPlayerViewController:(id)arg1 clipScrubberDataSource:(id)arg2 cameraProfile:(id)arg3;
+- (id)initWithCameraPlayerViewController:(id)arg1 playbackEngine:(id)arg2 clipScrubberDataSource:(id)arg3 cameraProfile:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

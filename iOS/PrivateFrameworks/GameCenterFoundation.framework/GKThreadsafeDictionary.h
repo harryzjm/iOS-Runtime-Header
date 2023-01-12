@@ -15,6 +15,7 @@
     NSMutableDictionary *_dictionary;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *dictionary; // @synthesize dictionary=_dictionary;
 - (id)dictionaryCopy;
 - (id)allKeys;
@@ -31,7 +32,6 @@
 - (id)objectForKey:(id)arg1;
 - (id)allObjects;
 - (id)description;
-- (void)dealloc;
 - (id)initWithName:(id)arg1;
 
 @end

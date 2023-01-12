@@ -10,7 +10,7 @@
 
 @interface HKHealthStore (HKDisplayTypeControllerAccessorAdditions)
 + (_Bool)_assignMostRecentQuantity:(id *)arg1 dateInterval:(id *)arg2 forQuantitySample:(id)arg3;
-+ (id)_mostRecentStartDateSortDescriptorForQuantityType:(id)arg1;
++ (id)_mostRecentEndDateSortDescriptorForQuantityType:(id)arg1;
 + (_Bool)_isHighFrequencyQuantityType:(id)arg1;
 + (void)_processStatisticsCollection:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)_processQuantitySample:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -29,6 +29,5 @@
 - (void)_primaryProfileFetchFirstAndLastNamesForInfoWrapper:(id)arg1 meContact:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_fetchFirstAndLastNamesForInfoWrapper:(id)arg1 meContact:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)hk_fetchExistingDemographicInformationWithOptions:(long long)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)hk_researchAppBundleIdentifiers;
 @end
 

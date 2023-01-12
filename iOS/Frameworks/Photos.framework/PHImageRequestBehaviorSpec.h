@@ -12,6 +12,8 @@
     _Bool _networkAccessAllowed;
     _Bool _allowPlaceholder;
     _Bool _onlyUseFetchedAssetPropertiesDuringChoosing;
+    _Bool _includeHDRGainMap;
+    _Bool _includeHDRGainMapInIntermediateImage;
     _Bool _useLowMemoryMode;
     _Bool _useLimitedLibraryMode;
     long long _choosingPolicy;
@@ -20,13 +22,17 @@
     long long _resizeMode;
     double _minimumTableThumbnailLongSide;
     long long _downloadIntent;
+    long long _downloadPriority;
 }
 
 + (unsigned long long)loadingOptionsFromLoadingMode:(long long)arg1;
+@property(nonatomic) long long downloadPriority; // @synthesize downloadPriority=_downloadPriority;
 @property(nonatomic) long long downloadIntent; // @synthesize downloadIntent=_downloadIntent;
 @property(nonatomic) _Bool useLimitedLibraryMode; // @synthesize useLimitedLibraryMode=_useLimitedLibraryMode;
 @property(nonatomic) _Bool useLowMemoryMode; // @synthesize useLowMemoryMode=_useLowMemoryMode;
 @property(nonatomic) double minimumTableThumbnailLongSide; // @synthesize minimumTableThumbnailLongSide=_minimumTableThumbnailLongSide;
+@property(nonatomic) _Bool includeHDRGainMapInIntermediateImage; // @synthesize includeHDRGainMapInIntermediateImage=_includeHDRGainMapInIntermediateImage;
+@property(nonatomic) _Bool includeHDRGainMap; // @synthesize includeHDRGainMap=_includeHDRGainMap;
 @property(nonatomic) _Bool onlyUseFetchedAssetPropertiesDuringChoosing; // @synthesize onlyUseFetchedAssetPropertiesDuringChoosing=_onlyUseFetchedAssetPropertiesDuringChoosing;
 @property(nonatomic) _Bool allowPlaceholder; // @synthesize allowPlaceholder=_allowPlaceholder;
 @property(nonatomic, getter=isNetworkAccessAllowed) _Bool networkAccessAllowed; // @synthesize networkAccessAllowed=_networkAccessAllowed;
@@ -35,6 +41,7 @@
 @property(nonatomic) long long version; // @synthesize version=_version;
 @property(nonatomic) unsigned long long loadingOptions; // @synthesize loadingOptions=_loadingOptions;
 @property(nonatomic) long long choosingPolicy; // @synthesize choosingPolicy=_choosingPolicy;
+- (_Bool)isExplicitUserAction;
 - (_Bool)shouldLoadDataOrURL;
 - (_Bool)shouldLoadURL;
 - (_Bool)shouldLoadData;

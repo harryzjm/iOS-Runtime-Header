@@ -18,12 +18,18 @@
     int _size;
     NSString *_widgetKind;
     NSString *_widgetUniqueId;
+    _Bool _onboardingWidget;
+    _Bool _suggestedWidget;
     struct {
         unsigned int size:1;
+        unsigned int onboardingWidget:1;
+        unsigned int suggestedWidget:1;
     } _has;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool onboardingWidget; // @synthesize onboardingWidget=_onboardingWidget;
+@property(nonatomic) _Bool suggestedWidget; // @synthesize suggestedWidget=_suggestedWidget;
 @property(retain, nonatomic) NSString *widgetUniqueId; // @synthesize widgetUniqueId=_widgetUniqueId;
 @property(retain, nonatomic) NSData *intent; // @synthesize intent=_intent;
 @property(retain, nonatomic) NSString *appBundleId; // @synthesize appBundleId=_appBundleId;
@@ -38,6 +44,8 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasOnboardingWidget;
+@property(nonatomic) _Bool hasSuggestedWidget;
 - (int)StringAsSize:(id)arg1;
 - (id)sizeAsString:(int)arg1;
 @property(nonatomic) _Bool hasSize;

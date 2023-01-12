@@ -22,11 +22,13 @@
     NSString *_referenceMessageId;
     NSString *_standaloneReferenceMessageId;
     NSString *_accountId;
+    NSArray *_attachments;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool includeAttachments; // @synthesize includeAttachments=_includeAttachments;
+@property(retain, nonatomic) NSArray *attachments; // @synthesize attachments=_attachments;
 @property(retain, nonatomic) NSString *accountId; // @synthesize accountId=_accountId;
 @property(retain, nonatomic) NSString *standaloneReferenceMessageId; // @synthesize standaloneReferenceMessageId=_standaloneReferenceMessageId;
 @property(retain, nonatomic) NSString *referenceMessageId; // @synthesize referenceMessageId=_referenceMessageId;
@@ -40,6 +42,7 @@
 - (id)copyWithNewId;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (unsigned long long)size;
 - (id)init;
 
 @end

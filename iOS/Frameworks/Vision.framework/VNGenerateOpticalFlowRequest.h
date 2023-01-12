@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSArray;
+
 @interface VNGenerateOpticalFlowRequest
 {
     unsigned long long _computationAccuracy;
@@ -36,6 +38,9 @@
 - (_Bool)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 - (_Bool)allowsCachingOfResults;
 - (id)initWithTargetedImageBuffer:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSArray *results; // @dynamic results;
 
 @end
 

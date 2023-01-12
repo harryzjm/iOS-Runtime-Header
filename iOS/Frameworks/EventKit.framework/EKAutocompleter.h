@@ -54,6 +54,9 @@
 @property(nonatomic) _Bool findSuggestions; // @synthesize findSuggestions=_findSuggestions;
 @property(nonatomic) _Bool findPeople; // @synthesize findPeople=_findPeople;
 @property(nonatomic) _Bool findRooms; // @synthesize findRooms=_findRooms;
+- (_Bool)autocompleteFetch:(id)arg1 shouldExpectSupplementalResultsForRequest:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)doCalDAVSearchWithAutocompleteBlock:(CDUnknownBlockType)arg1;
+- (id)autocompleteResultsFromDirectoryRecords:(id)arg1 withType:(long long)arg2;
 - (void)autocompleteFetchDidEndNetworkActivity:(id)arg1;
 - (void)autocompleteFetchDidBeginNetworkActivity:(id)arg1;
 - (void)autocompleteFetchDidFinish:(id)arg1;

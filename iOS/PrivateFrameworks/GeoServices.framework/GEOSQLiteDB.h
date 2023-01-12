@@ -12,6 +12,10 @@
 @interface GEOSQLiteDB : NSObject
 {
     NSObject<OS_os_log> *_log;
+    NSObject<OS_dispatch_queue> *_externalFilesQueue;
+    NSObject<OS_dispatch_group> *_externalFilesGroup;
+    NSMutableArray *_externalFilesActiveChannels;
+    _Bool _didEncounterExternalResourceErrorInTransaction;
     struct sqlite3 *_db;
     NSError *_lastError;
     NSURL *_databaseFileURL;
@@ -19,26 +23,25 @@
     NSDictionary *_pragmas;
     CDUnknownBlockType _setupBlock;
     NSObject<OS_dispatch_queue> *_queue;
-    NSObject<OS_dispatch_queue> *_externalFilesQueue;
-    NSObject<OS_dispatch_group> *_externalFilesGroup;
-    NSMutableArray *_externalFilesActiveChannels;
     NSMapTable *_preparedStatements;
     _Bool _isInTransaction;
     _Bool _isTemporaryInMemoryDatabase;
-    _Bool _didEncounterExternalResourceErrorInTransaction;
     NSMutableArray *_filesAddedDuringTransaction;
     NSMutableArray *_filesDeletedDuringTransaction;
     NSMapTable *_virtualTables;
-    union {
-        struct atomic_flag flag;
-        int dummy;
-    } _didTearDown;
+    struct atomic_flag _didTearDown;
 }
 
 + (_Bool)renameAllDBFilesFrom:(id)arg1 to:(id)arg2;
 + (id)_findAllDBFilesForURL:(id)arg1 error:(id *)arg2;
 + (id)defaultPragmas;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSObject<OS_os_log> *log; // @synthesize log=_log;
+@property(readonly, nonatomic) NSError *lastError; // @synthesize lastError=_lastError;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *isolationQueue; // @synthesize isolationQueue=_queue;
+@property(readonly, nonatomic) int sqliteFlags; // @synthesize sqliteFlags=_sqliteFlags;
+@property(readonly, nonatomic) struct sqlite3 *sqliteDB; // @synthesize sqliteDB=_db;
+@property(readonly, nonatomic) NSURL *databaseFileURL; // @synthesize databaseFileURL=_databaseFileURL;
 - (_Bool)writeBlobData:(id)arg1 toTable:(const char *)arg2 column:(const char *)arg3 rowID:(long long)arg4 error:(id *)arg5;
 - (long long)lastInsertRowID;
 - (_Bool)deleteExternalResourceAtURL:(id)arg1 error:(id *)arg2;
@@ -102,12 +105,8 @@
 - (id)init;
 @property(nonatomic) long long user_version;
 @property(readonly, nonatomic) NSDictionary *pragmas;
-@property(readonly, nonatomic) NSObject<OS_os_log> *log;
 @property(readonly, nonatomic) _Bool isDBReady;
-@property(readonly, nonatomic) NSError *lastError;
 @property(readonly, nonatomic) NSString *dbFilePath;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *isolationQueue;
-@property(readonly, nonatomic) struct sqlite3 *sqliteDB;
 - (id)UUIDForColumn:(int)arg1 inStatment:(struct sqlite3_stmt *)arg2;
 - (_Bool)bindParameter:(const char *)arg1 toUUID:(id)arg2 inStatement:(struct sqlite3_stmt *)arg3 error:(id *)arg4;
 - (_Bool)_waitForAllTransactionExternalResources;

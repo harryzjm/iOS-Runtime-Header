@@ -26,6 +26,7 @@
     NSString *_videoPathSandboxExtensionToken;
     NSURL *_fullSizeImageURL;
     NSString *_fullSizeImageURLSandboxExtensionToken;
+    NSString *_accessibilityDescription;
     NSString *_uniformTypeIdentifier;
     CDStruct_1b6d18a9 _livePhotoStillDisplayTime;
 }
@@ -33,6 +34,7 @@
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *uniformTypeIdentifier; // @synthesize uniformTypeIdentifier=_uniformTypeIdentifier;
+@property(copy, nonatomic) NSString *accessibilityDescription; // @synthesize accessibilityDescription=_accessibilityDescription;
 @property(nonatomic) int fullSizeImageExifOrientation; // @synthesize fullSizeImageExifOrientation=_fullSizeImageExifOrientation;
 @property(copy, nonatomic) NSString *fullSizeImageURLSandboxExtensionToken; // @synthesize fullSizeImageURLSandboxExtensionToken=_fullSizeImageURLSandboxExtensionToken;
 @property(retain, nonatomic) NSURL *fullSizeImageURL; // @synthesize fullSizeImageURL=_fullSizeImageURL;

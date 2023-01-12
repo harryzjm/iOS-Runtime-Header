@@ -6,9 +6,10 @@
 
 #import <FindMyDevice/NSObject-Protocol.h>
 
-@class FMDUserNotificationContent;
+@class FMDUserNotificationContent, NSString;
 
 @protocol FindMyDeviceUserNotificationsXPCInterface <NSObject>
+- (oneway void)removeNotificationWithIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)addNotificationRequest:(FMDUserNotificationContent *)arg1 completion:(void (^)(NSError *))arg2;
 @end
 

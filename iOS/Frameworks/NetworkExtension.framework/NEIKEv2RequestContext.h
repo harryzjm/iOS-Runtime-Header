@@ -6,16 +6,28 @@
 
 #import <objc/NSObject.h>
 
+@class NSString;
+
 @interface NEIKEv2RequestContext : NSObject
 {
     _Bool _requestInitiator;
+    _Bool _preventSleepUntilFinished;
     int _requestType;
+    unsigned int _powerAssertionID;
+    NSString *_powerAssertionName;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) unsigned int powerAssertionID; // @synthesize powerAssertionID=_powerAssertionID;
+@property(retain, nonatomic) NSString *powerAssertionName; // @synthesize powerAssertionName=_powerAssertionName;
+@property(nonatomic) _Bool preventSleepUntilFinished; // @synthesize preventSleepUntilFinished=_preventSleepUntilFinished;
 @property(nonatomic) _Bool requestInitiator; // @synthesize requestInitiator=_requestInitiator;
 @property(nonatomic) int requestType; // @synthesize requestType=_requestType;
+- (void)releasePowerAssertionIfNeeded;
+- (void)takePowerAssertionIfNeededWithSession:(id)arg1;
 - (void)sendCallbackSuccess:(_Bool)arg1 session:(id)arg2;
 - (id)description;
+- (void)dealloc;
 - (id)initWithRequestType:(int)arg1;
 
 @end

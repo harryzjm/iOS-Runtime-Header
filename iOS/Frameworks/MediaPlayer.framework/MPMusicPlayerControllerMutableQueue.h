@@ -16,7 +16,9 @@
 @property(retain, nonatomic) NSMutableArray *removedItems; // @synthesize removedItems=_removedItems;
 @property(retain, nonatomic) NSMutableDictionary *insertedDescriptors; // @synthesize insertedDescriptors=_insertedDescriptors;
 @property(readonly, nonatomic) MPMusicPlayerControllerApplicationQueueModifications *modifications;
+- (void)_removeItemWithIdentifier:(id)arg1;
 - (void)removeItem:(id)arg1;
+- (void)_insertQueueDescriptor:(id)arg1 afterItemWithIdentifier:(id)arg2;
 - (void)insertQueueDescriptor:(id)arg1 afterItem:(id)arg2;
 - (id)initWithController:(id)arg1;
 

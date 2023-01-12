@@ -9,7 +9,7 @@
 #import <MapKit/MKInactiveTransitLine-Protocol.h>
 
 @class NSDate, NSString, NSTimeZone;
-@protocol GEOTransitLine;
+@protocol GEOTransitDepartureSequence, GEOTransitLine;
 
 __attribute__((visibility("hidden")))
 @interface _MKTransitInactiveLine : NSObject <MKInactiveTransitLine>
@@ -19,12 +19,14 @@ __attribute__((visibility("hidden")))
     NSDate *_serviceResumesDate;
     NSTimeZone *_timeZone;
     NSDate *_referenceDate;
+    id <GEOTransitDepartureSequence> _departuresSequence;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <GEOTransitDepartureSequence> departuresSequence; // @synthesize departuresSequence=_departuresSequence;
 @property(readonly, nonatomic) NSString *serviceResumesDescription;
 @property(readonly, nonatomic) id <GEOTransitLine> line;
-- (id)initWithTransitLine:(id)arg1 blocked:(_Bool)arg2 serviceResumesDate:(id)arg3 timeZone:(id)arg4 referenceDate:(id)arg5;
+- (id)initWithTransitLine:(id)arg1 blocked:(_Bool)arg2 serviceResumesDate:(id)arg3 timeZone:(id)arg4 referenceDate:(id)arg5 departuresSequence:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

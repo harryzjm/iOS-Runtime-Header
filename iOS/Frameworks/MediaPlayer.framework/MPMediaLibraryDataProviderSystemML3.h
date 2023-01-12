@@ -5,12 +5,11 @@
 //
 
 @class NSObject;
-@protocol MPArtworkDataSource, OS_dispatch_queue;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface MPMediaLibraryDataProviderSystemML3
 {
-    id <MPArtworkDataSource> _completeMyCollectionArtworkDataSource;
     long long _currentRevision;
     NSObject<OS_dispatch_queue> *_queue;
 }
@@ -21,7 +20,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)supportsEntityChangeTrackingForMediaEntityType:(long long)arg1 collectionGroupingType:(long long)arg2 dataProviderClass:(out Class *)arg3;
 - (void)updateEntitesToCurrentRevision;
 - (id)errorResolverForItem:(id)arg1;
-- (id)completeMyCollectionArtworkDataSource;
 - (void)_seedCloudPlaylistWithTrack:(id)arg1 container:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)geniusItemsForSeedItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)releaseGeniusClusterPlaylist:(void *)arg1;

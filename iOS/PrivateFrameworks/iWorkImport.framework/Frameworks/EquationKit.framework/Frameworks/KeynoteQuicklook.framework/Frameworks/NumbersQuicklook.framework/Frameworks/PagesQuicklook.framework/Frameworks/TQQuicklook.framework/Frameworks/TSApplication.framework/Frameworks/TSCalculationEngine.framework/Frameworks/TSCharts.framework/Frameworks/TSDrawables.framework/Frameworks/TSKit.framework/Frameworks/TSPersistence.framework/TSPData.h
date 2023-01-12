@@ -7,19 +7,27 @@
 #import <objc/NSObject.h>
 
 #import <TSPersistence/TSPRemoteDataStorageDelegate-Protocol.h>
-#import <TSPersistence/TSPSplitableData-Protocol.h>
+#import <TSPersistence/TSPStyleObjectDataContainer-Protocol.h>
 
-@class NSDate, NSString, TSPDataAttributes, TSPDataManager, TSPDataMetadata, TSPDataUniqueIdentifier, TSPDigest, TSPObjectContext;
+@class NSArray, NSDate, NSError, NSString, NSUUID, TSPDataAttributes, TSPDataManager, TSPDataMetadata, TSPDataUniqueIdentifier, TSPDigest, TSPObjectContext;
 @protocol OS_dispatch_queue, TSPDataStorage;
 
-@interface TSPData : NSObject <TSPSplitableData, TSPRemoteDataStorageDelegate>
+@interface TSPData : NSObject <TSPStyleObjectDataContainer, TSPRemoteDataStorageDelegate>
 {
     _Atomic _Bool _didCull;
     NSObject<OS_dispatch_queue> *_accessQueue;
     id <TSPDataStorage> _storage;
     NSString *_filename;
     NSString *_type;
+    long long _typeClass;
+    _Bool _hasTypeClass;
     NSString *_normalizedExtension;
+    NSUUID *_anonymousUniqueIdentifier;
+    _Atomic _Bool _hasValidatedDigestMatch;
+    _Atomic int _lastValidationResult;
+    NSError *_lastValidationError;
+    struct os_unfair_lock_s _lastMismatchedDigestLock;
+    TSPDigest *_lastMismatchedDigest;
     TSPDataAttributes *_attributes;
     long long _identifier;
     TSPDataUniqueIdentifier *_uniqueIdentifier;
@@ -28,6 +36,7 @@
     TSPDataMetadata *_metadata;
 }
 
++ (_Bool)p_writeStorage:(id)arg1 toURL:(id)arg2 withRange:(struct _NSRange)arg3 error:(id *)arg4;
 + (_Bool)writeStorage:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 + (id)normalizedExtensionForFilename:(id)arg1;
 + (id)typeForFilename:(id)arg1;
@@ -46,8 +55,7 @@
 + (id)dataFromURL:(id)arg1 useExternalReferenceIfAllowed:(_Bool)arg2 context:(id)arg3;
 + (id)dataFromURL:(id)arg1 context:(id)arg2;
 + (_Bool)isSupportedURL:(id)arg1;
-+ (id)pasteboardTypeForIdentifier:(long long)arg1;
-+ (id)remoteDataWithURL:(id)arg1 digest:(id)arg2 filename:(id)arg3 canDownload:(_Bool)arg4 downloadPriority:(long long)arg5 context:(id)arg6;
++ (id)remoteDataWithURL:(id)arg1 digest:(id)arg2 filename:(id)arg3 length:(unsigned long long)arg4 canDownload:(_Bool)arg5 downloadPriority:(long long)arg6 uploadStatus:(long long)arg7 modificationDate:(id)arg8 context:(id)arg9;
 + (id)resourceNameForFilename:(id)arg1 identifier:(long long)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) TSPDataMetadata *metadata; // @synthesize metadata=_metadata;
@@ -61,30 +69,55 @@
 - (struct CGSize)pixelSize;
 - (void)setFallbackColor:(id)arg1;
 - (id)fallbackColor;
-@property(readonly, nonatomic) _Bool gilligan_isRemote;
-- (_Bool)archiveInfoMessage:(struct DataInfo *)arg1 archiver:(id)arg2 packageWriter:(id)arg3;
-- (_Bool)isStorageInPackage:(id)arg1;
+@property(readonly, nonatomic) _Bool reservedInServer;
+@property(nonatomic) long long uploadStatus;
+- (_Bool)materializeFromPartiallyDownloadedDocumentWithContentsOfURL:(id)arg1 canMove:(_Bool)arg2 error:(id *)arg3;
+@property(readonly, nonatomic) _Bool isUnmaterializedDueToPartiallyDownloadedDocument;
+- (_Bool)archiveInfoMessage:(void *)arg1 archiver:(id)arg2 packageWriter:(id)arg3;
+- (id)temporaryDataStorageForReplacingDataContentsWithDecryptionInfo:(id)arg1 writer:(CDUnknownBlockType)arg2 error:(id *)arg3;
+- (_Bool)replaceContentsWithDataFrom:(id)arg1 error:(id *)arg2;
+- (void)replaceContentsWithMissingData;
 - (id)preferredFilename;
 - (void)setFilename:(id)arg1 storage:(id)arg2 ifStorageIs:(id)arg3;
 - (void)setFilename:(id)arg1 storage:(id)arg2;
 @property(retain, nonatomic) id <TSPDataStorage> storage;
-- (id)initWithIdentifier:(long long)arg1 digest:(id)arg2 filename:(id)arg3 lastModificationDate:(id)arg4 storage:(id)arg5 manager:(id)arg6;
+- (id)initWithIdentifier:(long long)arg1 digest:(id)arg2 hasValidatedDigestMatch:(_Bool)arg3 filename:(id)arg4 lastModificationDate:(id)arg5 storage:(id)arg6 manager:(id)arg7;
 - (id)init;
+- (id)newDataCopyInputStreamProviderWithEncryptionInfo:(id)arg1 error:(id *)arg2;
+- (id)newDataCopyReadChannelProviderWithEncryptionInfo:(id)arg1 error:(id *)arg2;
+- (id)newDataCopyURLProviderWithEncryptionInfo:(id)arg1 error:(id *)arg2;
+@property(readonly, nonatomic) unsigned long long reservedLengthIfLocal;
 @property(readonly, nonatomic) unsigned long long encodedLengthIfLocal;
 @property(readonly, nonatomic) unsigned long long encodedLength;
 - (_Bool)isLengthLikelyToBeGreaterThan:(unsigned long long)arg1;
 @property(readonly, nonatomic) unsigned long long lengthIfLocal;
 @property(readonly, nonatomic) unsigned long long length;
+- (_Bool)writeToURL:(id)arg1 withRange:(struct _NSRange)arg2 error:(id *)arg3;
 - (_Bool)writeToURL:(id)arg1 error:(id *)arg2;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
+- (void)didAddDownloadObserver;
 - (void)addDownloadObserver:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+@property(readonly, nonatomic) _Bool canDownload;
 @property(readonly, nonatomic) _Bool needsDownload;
 - (void)performInputStreamReadWithAccessor:(CDUnknownBlockType)arg1;
 - (void)performIOChannelReadWithAccessor:(CDUnknownBlockType)arg1;
+- (void)updateAnonymousUniqueIdentifierWithDocumentProperties:(id)arg1 passphrase:(id)arg2;
 - (void)setToCopyOfMetadataIfNil:(id)arg1;
 - (id)copyWithContext:(id)arg1;
+@property(readonly, nonatomic) unsigned long long creationVersion;
+- (unsigned long long)creationVersionWithDocumentMetadata:(id)arg1;
+- (_Bool)validateDataDigestWithReason:(id)arg1 options:(unsigned long long)arg2 documentMetadata:(id)arg3 error:(id *)arg4;
+- (_Bool)validateDataDigestWithReason:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
+- (void)resetLastValidationResult;
+- (void)setLastValidationError:(id)arg1;
+- (id)lastValidationError;
+- (void)setLastValidationResult:(int)arg1;
+@property(readonly) int lastValidationResult;
+@property(readonly, nonatomic) _Bool hasValidatedDigestMatch;
+@property(readonly, nonatomic) NSString *lastMismatchedDigestString;
+@property(copy, nonatomic) TSPDigest *lastMismatchedDigest;
 @property(readonly, nonatomic) NSString *digestString;
 @property(readonly, nonatomic) TSPDigest *digest;
 @property(readonly, nonatomic) __weak TSPObjectContext *context;
@@ -95,7 +128,10 @@
 @property(readonly, nonatomic) _Bool isExternalData;
 @property(readonly, nonatomic) _Bool isApplicationData;
 @property(readonly, nonatomic) _Bool isReadable;
+@property(readonly) NSUUID *anonymousUniqueIdentifier;
 @property(readonly, nonatomic) NSString *normalizedExtension;
+@property(readonly, nonatomic) long long typeClass;
+- (id)p_type;
 @property(readonly, nonatomic) NSString *type;
 @property(readonly, nonatomic) NSString *filename;
 - (id)AVAssetWithOptions:(id)arg1;
@@ -111,16 +147,25 @@
 - (void)willCullWithFlags:(unsigned long long)arg1;
 - (void)willCull;
 - (void)dealloc;
-@property(nonatomic, getter=isAcknowledgedByServer) _Bool acknowledgedByServer;
+- (void)replaceStorageWithRemoteDataStorageWithLength:(unsigned long long)arg1;
+- (void)replaceStorageWithEmptyRemoteDataStorage;
+@property(nonatomic) _Bool isRemoteDataEver;
+@property(readonly, nonatomic) NSArray *referencingObjects;
+@property(readonly, nonatomic) _Bool isInDocument;
 - (id)UIImage;
-- (void)tsp_splitDataWithMaxSize:(unsigned long long)arg1 subdataHandlerBlock:(CDUnknownBlockType)arg2;
-@property(readonly, nonatomic) unsigned long long tsp_length;
-- (id)pasteboardType;
+@property(readonly, nonatomic) NSArray *referencedDataList;
+- (id)dataForRemoteDataStorage:(id)arg1;
 - (id)temporaryDataStorageURLForRemoteDataStorage:(id)arg1;
 - (void)didReceiveRemoteDataWithReadChannel:(id)arg1 completionQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)didReceiveRemoteDataAtURL:(id)arg1 canMove:(_Bool)arg2 decryptionInfo:(id)arg3 completionQueue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)didReceiveRemoteData:(id)arg1 decryptionInfo:(id)arg2 completionQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)didReceivePartialRemoteData:(id)arg1 decryptionKey:(id)arg2 range:(struct _NSRange)arg3 completionQueue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)didReceiveRemoteDataWithHandler:(CDUnknownBlockType)arg1 completionQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+@property(readonly, nonatomic) _Bool isUnmaterializedRemoteData;
+@property(readonly, nonatomic) NSDate *modificationDate;
+@property(readonly, nonatomic) unsigned long long materializedLength;
+@property(readonly, nonatomic) unsigned long long firstUnmaterializedIndex;
+@property(readonly, nonatomic) _Bool isMaterialized;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

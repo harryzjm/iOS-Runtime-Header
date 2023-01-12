@@ -94,7 +94,6 @@
 - (void)_animateCardSendFinished;
 - (void)animateCardSendOrientation:(long long)arg1;
 - (void)presentSettingsAlertWithTitle:(id)arg1 message:(id)arg2 targetURL:(id)arg3;
-- (void)showLocationDeniedAlertWithTitle:(id)arg1 settingsURL:(id)arg2;
 - (void)postButtonTapped:(id)arg1;
 - (void)cancelButtonTapped:(id)arg1;
 - (void)setServiceIconImage:(id)arg1;

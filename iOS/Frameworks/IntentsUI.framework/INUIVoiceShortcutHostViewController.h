@@ -8,13 +8,14 @@
 
 #import <IntentsUI/INUIVoiceShortcutRemoteHostingInterface-Protocol.h>
 
-@class NSString;
+@class INUIVoiceShortcutHostContext, NSString;
 @protocol INUIVoiceShortcutRemoteViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface INUIVoiceShortcutHostViewController : _UIRemoteViewController <INUIVoiceShortcutRemoteHostingInterface>
 {
     id <INUIVoiceShortcutRemoteViewControllerDelegate> _delegate;
+    INUIVoiceShortcutHostContext *_serviceContext;
     long long _mode;
 }
 
@@ -27,12 +28,14 @@ __attribute__((visibility("hidden")))
 + (void)initialize;
 - (void).cxx_destruct;
 @property(nonatomic) long long mode; // @synthesize mode=_mode;
+@property(retain, nonatomic) INUIVoiceShortcutHostContext *serviceContext; // @synthesize serviceContext=_serviceContext;
 @property(nonatomic) __weak id <INUIVoiceShortcutRemoteViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)remoteViewControllerDidCancel;
 - (void)remoteViewControllerDidDeleteVoiceShortcutWithIdentifier:(id)arg1;
 - (void)remoteViewControllerDidUpdateVoiceShortcut:(id)arg1 error:(id)arg2;
 - (void)remoteViewControllerDidCreateVoiceShortcut:(id)arg1 error:(id)arg2;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
+- (id)remoteViewControllerProxy;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

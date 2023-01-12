@@ -9,7 +9,7 @@
 #import <CoreTelephony/NSCopying-Protocol.h>
 #import <CoreTelephony/NSSecureCoding-Protocol.h>
 
-@class NSNumber, NSString;
+@class NSArray, NSNumber, NSString;
 
 @interface CTDataConnectionStatus : NSObject <NSCopying, NSSecureCoding>
 {
@@ -19,13 +19,17 @@
     int _state;
     int _ipFamily;
     int _contextType;
+    int _transportType;
     NSNumber *_pdp;
     NSString *_interfaceName;
     NSString *_apnName;
+    NSArray *_qosFlows;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *qosFlows; // @synthesize qosFlows=_qosFlows;
+@property(nonatomic) int transportType; // @synthesize transportType=_transportType;
 @property(nonatomic) int contextType; // @synthesize contextType=_contextType;
 @property(nonatomic) _Bool publicNetAllowed; // @synthesize publicNetAllowed=_publicNetAllowed;
 @property(nonatomic) _Bool suspended; // @synthesize suspended=_suspended;

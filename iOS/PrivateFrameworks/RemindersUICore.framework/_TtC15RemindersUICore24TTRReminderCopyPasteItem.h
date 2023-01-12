@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *metadata;
     MISSING_TYPE *storages;
+    MISSING_TYPE *titles;
 }
 
 - (void).cxx_destruct;

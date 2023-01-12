@@ -9,18 +9,18 @@
 @interface TSCEFormulaRewriteInfo_RangeEntry : NSObject
 {
     struct _NSRange _range;
-    vector_4dc5f307 _orderedUuids;
+    TSKUIDStructVectorTemplate_de88e035 _orderedUuids;
     unsigned int _offset;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property unsigned int offset; // @synthesize offset=_offset;
-@property(readonly) const vector_4dc5f307 *orderedUuids; // @synthesize orderedUuids=_orderedUuids;
+@property(readonly) const void *orderedUuids; // @synthesize orderedUuids=_orderedUuids;
 @property(readonly) struct _NSRange range; // @synthesize range=_range;
-- (void)saveToMessage:(struct RewriteRangeEntryArchive *)arg1;
-- (id)initFromMessage:(const struct RewriteRangeEntryArchive *)arg1;
-- (id)initWithRange:(struct _NSRange)arg1 orderedUuids:(const vector_4dc5f307 *)arg2 offset:(unsigned int)arg3;
+- (void)saveToMessage:(void *)arg1;
+- (id)initFromMessage:(const void *)arg1;
+- (id)initWithRange:(struct _NSRange)arg1 orderedUuids:(const void *)arg2 offset:(unsigned int)arg3;
 
 @end
 

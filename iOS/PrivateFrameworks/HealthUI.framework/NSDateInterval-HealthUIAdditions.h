@@ -8,5 +8,8 @@
 
 @interface NSDateInterval (HealthUIAdditions)
 + (id)hk_dateIntervalWithValueRange:(id)arg1;
++ (id)hk_julianDayDateIntervalFromOpenUpperBoundDateInterval:(id)arg1 sourceCalendar:(id)arg2 localCalendar:(id)arg3;
++ (id)hk_dateIntervalWithCodableDateInterval:(id)arg1 sourceTimeZone:(id)arg2;
+- (id)hk_codableDateInterval;
 @end
 

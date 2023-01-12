@@ -4,15 +4,46 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSArray, NSData, NSMutableArray;
+
 @interface IDSGFTGL
 {
+    NSArray *_remoteCandidatePairs;
+    NSMutableArray *_virtualCandidatePairs;
+    _Bool _allowE2E;
+    _Bool _keyMaterialReady;
+    NSData *_keyMaterialData;
+    CDUnknownBlockType _keyMaterialSentHandler;
 }
 
+- (void).cxx_destruct;
+- (void)_discardKeyMaterialMessage:(long long)arg1;
+- (void)sendKeyMaterialMessageData:(id)arg1 relayGroupID:(id)arg2 destinationURIs:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)setTimeBase:(id)arg1;
+- (void)updateURIToParticipantIDs:(id)arg1 relaySessionID:(id)arg2 sessionInfo:(id)arg3;
+- (void)_destroyVirtualRelayLinksForCandidatePair:(id)arg1;
+- (void)removeParticipantIDs:(id)arg1 relayGroupID:(id)arg2 relaySessionID:(id)arg3 sessionStateCounter:(unsigned int)arg4;
+- (void)manageDesignatedDestinations:(id)arg1 relayGroupID:(id)arg2 relaySessionID:(id)arg3 withType:(unsigned short)arg4 sessionStateCounter:(unsigned int)arg5;
+- (_Bool)_processRemovedLocalAddressList:(id)arg1;
+- (void)_discardCandidatePairsWithOption:(_Bool)arg1;
+- (void)enableUPlusOneSessionForTransition:(_Bool)arg1;
+- (void)setIsUPlusOneSession:(_Bool)arg1;
+- (void)receiveJoinNotificationFromAParticipant;
+- (void)_sendConnectionDataWithRemovedAddressList:(id)arg1;
+- (void)_disableE2E;
+- (void)_enableE2E;
 - (_Bool)_setupNewQRLinkIfNecessary:(id)arg1;
+- (void)_sendRelayInterfaceInfo:(id)arg1;
 - (long long)_getQRAllocateType;
 - (_Bool)_postProcessAllocbindResponse:(id)arg1 candidatePair:(id)arg2 candidatePairToken:(id)arg3;
+- (void)_processCommandRelayInterfaceInfo:(id)arg1 candidatePairToken:(id)arg2;
+- (void)_processReceivedRemoteCandidatePairs:(id)arg1;
+- (id)_findVirtualCandidatePair:(id)arg1;
+- (void)_setupVirtualCandidatePairs:(id)arg1 remoteCandidatePair:(id)arg2;
 - (void)_notifyDefaultUnderlyingLinkChanged:(id)arg1 error:(long long)arg2;
+- (void)setDefaultUnderlyingLink:(BOOL)arg1;
 - (void)disconnectWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)invalidate;
 - (void)startWithOptions:(id)arg1;
 
 @end

@@ -6,10 +6,13 @@
 
 #import <HealthUI/NSObject-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, UIAction;
 
 @protocol HKDisplayTypeContextItemSection <NSObject>
 @property(retain, nonatomic) NSArray *items;
 @property(retain, nonatomic) NSString *title;
+
+@optional
+@property(retain, nonatomic) UIAction *accessoryButtonAction;
 @end
 

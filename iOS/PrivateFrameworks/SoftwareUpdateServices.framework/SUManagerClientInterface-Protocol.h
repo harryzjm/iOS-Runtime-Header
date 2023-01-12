@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSError, NSUUID, SUDescriptor, SUDownload, SUInstallPolicy, SUScanOptions;
+@class NSError, NSUUID, SUDescriptor, SUDownload, SUInstallPolicy, SUScanOptions, SUScanResults;
 
 @protocol SUManagerClientInterface
+- (void)scanDidCompleteWithNewUpdateAvailable:(SUDescriptor *)arg1 error:(NSError *)arg2;
+- (void)scanRequestDidFinishForOptions:(SUScanOptions *)arg1 update:(SUDescriptor *)arg2 error:(NSError *)arg3;
+- (void)installTonightScheduled:(_Bool)arg1 operationID:(NSUUID *)arg2;
 - (void)autoInstallOperationPasscodePolicyChanged:(NSUUID *)arg1 passcodePolicyType:(unsigned long long)arg2;
 - (void)autoInstallOperationIsReadyToInstall:(NSUUID *)arg1 withResult:(void (^)(_Bool, NSError *))arg2;
 - (void)autoInstallOperationDidConsent:(NSUUID *)arg1;
@@ -17,15 +20,16 @@
 - (void)installDidFinish:(SUDescriptor *)arg1;
 - (void)installDidFail:(SUDescriptor *)arg1 withError:(NSError *)arg2;
 - (void)installDidStart:(SUDescriptor *)arg1;
+- (void)automaticDownloadDidFailToStartForNewUpdateAvailable:(SUDescriptor *)arg1 withError:(NSError *)arg2;
 - (void)downloadDidFinish:(SUDownload *)arg1 withInstallPolicy:(SUInstallPolicy *)arg2;
 - (void)downloadDidFinish:(SUDownload *)arg1;
 - (void)downloadDidFail:(SUDownload *)arg1 withError:(NSError *)arg2;
 - (void)downloadProgressDidChange:(SUDownload *)arg1;
 - (void)downloadDidStart:(SUDownload *)arg1;
+- (void)downloadWasInvalidatedForNewUpdatesAvailable:(SUScanResults *)arg1;
 - (void)downloadWasInvalidatedForNewUpdateAvailable:(SUDescriptor *)arg1;
-- (void)automaticDownloadDidFailToStartForNewUpdateAvailable:(SUDescriptor *)arg1 withError:(NSError *)arg2;
-- (void)scanDidCompleteWithNewUpdateAvailable:(SUDescriptor *)arg1 error:(NSError *)arg2;
-- (void)scanRequestDidFinishForOptions:(SUScanOptions *)arg1 update:(SUDescriptor *)arg2 error:(NSError *)arg3;
+- (void)scanDidCompleteForOptions:(SUScanOptions *)arg1 results:(SUScanResults *)arg2 error:(NSError *)arg3;
+- (void)scanRequestDidFinishForOptions:(SUScanOptions *)arg1 results:(SUScanResults *)arg2 error:(NSError *)arg3;
 - (void)scanRequestDidStartForOptions:(SUScanOptions *)arg1;
 @end
 

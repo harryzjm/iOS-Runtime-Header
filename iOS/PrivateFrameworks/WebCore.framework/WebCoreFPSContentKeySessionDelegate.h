@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     struct AVContentKeySessionDelegateClient *_parent;
 }
 
+- (void)contentKeySession:(id)arg1 externalProtectionStatusDidChangeForContentKeyRequest:(id)arg2;
 - (void)contentKeySession:(id)arg1 contentProtectionSessionIdentifierDidChangeForReportGroup:(id)arg2;
 - (void)contentKeySession:(id)arg1 contentProtectionSessionIdentifierDidChangeForKeyGroup:(id)arg2;
 - (void)contentKeySessionContentProtectionSessionIdentifierDidChange:(id)arg1;

@@ -5,11 +5,12 @@
 //
 
 #import <Sleep/NSCopying-Protocol.h>
+#import <Sleep/NSObject-Protocol.h>
 #import <Sleep/NSSecureCoding-Protocol.h>
 
 @protocol HKSPSyncAnchor;
 
-@protocol HKSPSyncAnchor <NSSecureCoding, NSCopying>
+@protocol HKSPSyncAnchor <NSSecureCoding, NSCopying, NSObject>
 - (id)hksp_increment;
 - (long long)compare:(id <HKSPSyncAnchor>)arg1;
 @end

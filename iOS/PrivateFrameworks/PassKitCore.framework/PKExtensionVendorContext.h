@@ -21,6 +21,7 @@
 - (void)prepareWithPaymentRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handleDismissWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleHostApplicationDidCancel;
+- (void)authorizationDidChangeCouponCodeCompleteWithUpdate:(id)arg1;
 - (void)authorizationDidSelectPaymentMethodCompleteWithPaymentSummaryItems:(id)arg1;
 - (void)authorizationDidSelectPaymentMethodCompleteWithUpdate:(id)arg1;
 - (void)authorizationDidSelectShippingAddressCompleteWithStatus:(long long)arg1 shippingMethods:(id)arg2 paymentSummaryItems:(id)arg3;

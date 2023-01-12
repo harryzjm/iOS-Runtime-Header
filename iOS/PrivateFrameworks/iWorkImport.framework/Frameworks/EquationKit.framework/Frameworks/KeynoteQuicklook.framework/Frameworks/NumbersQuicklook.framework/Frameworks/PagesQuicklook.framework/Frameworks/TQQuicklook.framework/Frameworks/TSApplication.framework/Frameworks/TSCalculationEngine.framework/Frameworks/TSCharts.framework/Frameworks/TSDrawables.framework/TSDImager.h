@@ -32,7 +32,6 @@
     struct CGRect mActualScaledClipRect;
     _Bool mDrawingIntoPDF;
     _Bool mIsPrinting;
-    _Bool mImageIsRenderingForMovie;
     struct CGContext *mReusableBitmapContext;
     struct CGRect mReusableBounds;
     struct CGRect mReusableIntegralBounds;
@@ -56,7 +55,6 @@
 @property(nonatomic) _Bool shouldShowComments; // @synthesize shouldShowComments=mShouldShowComments;
 @property(nonatomic) _Bool shouldSuppressBackgrounds; // @synthesize shouldSuppressBackgrounds=mShouldSuppressBackgrounds;
 @property(nonatomic) _Bool mayBeReused; // @synthesize mayBeReused=mMayBeReused;
-@property(nonatomic) _Bool imageIsRenderingForMovie; // @synthesize imageIsRenderingForMovie=mImageIsRenderingForMovie;
 @property(copy, nonatomic) NSSet *previousRenderDatasNeedingDownload; // @synthesize previousRenderDatasNeedingDownload=mPreviousRenderDatasNeedingDownload;
 @property(nonatomic) _Bool isPrinting; // @synthesize isPrinting=mIsPrinting;
 @property(nonatomic) _Bool shouldShowInstructionalText; // @synthesize shouldShowInstructionalText=mShouldShowInstructionalText;
@@ -85,6 +83,7 @@
 - (_Bool)drawPageInContext:(struct CGContext *)arg1 createPage:(_Bool)arg2;
 - (id)pdfData;
 - (id)pngData;
+- (id)generateImage;
 - (struct CGImage *)newImage;
 - (void)i_setDrawsOnlyBelowInfo:(id)arg1;
 - (void)setDynamicOverride:(id)arg1 forInfo:(id)arg2;

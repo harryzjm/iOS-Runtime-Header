@@ -8,11 +8,11 @@
 {
 }
 
-- (void)saveToArchive:(struct PostfixOperatorNodeArchive *)arg1 archiver:(id)arg2;
-- (void)loadFromArchive:(const struct PostfixOperatorNodeArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)buildASTNodeArray:(struct TSCEASTNodeArray *)arg1 hostCell:(struct TSUCellCoord)arg2 symbolTable:(struct TSCESymbolTable *)arg3;
+- (void)buildASTNodeArray:(struct TSCEASTNodeArray *)arg1 hostCell:(struct TSUCellCoord)arg2 symbolTable:(void *)arg3;
 - (void)insertFormulaText:(id)arg1 includeWhitespace:(_Bool)arg2;
 
 @end

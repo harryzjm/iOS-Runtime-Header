@@ -11,7 +11,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_axPostNotificationForPhase:(unsigned long long)arg1;
 - (void)_layoutForPresentationPhase:(unsigned long long)arg1;
 
 @end

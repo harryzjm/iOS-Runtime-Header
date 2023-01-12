@@ -9,23 +9,29 @@
 #import <SpringBoard/BSDescriptionProviding-Protocol.h>
 #import <SpringBoard/NSCopying-Protocol.h>
 
-@class NSString, SBApplication;
+@class NSString, STActivityAttribution;
 
 @interface SBActivityAttribution : NSObject <NSCopying, BSDescriptionProviding>
 {
+    STActivityAttribution *_attribution;
     NSString *_executablePath;
     _Bool _isSystemExecutable;
+    int _pid;
     NSString *_bundleIdentifier;
     NSString *_displayName;
     NSString *_attributionGroup;
+    NSString *_bundleIdentifierMatchingDisplayName;
     CDStruct_4c969caf _auditToken;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) int pid; // @synthesize pid=_pid;
+@property(readonly, copy, nonatomic) NSString *bundleIdentifierMatchingDisplayName; // @synthesize bundleIdentifierMatchingDisplayName=_bundleIdentifierMatchingDisplayName;
 @property(readonly, copy, nonatomic) NSString *attributionGroup; // @synthesize attributionGroup=_attributionGroup;
 @property(readonly, copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property(readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(readonly, nonatomic) CDStruct_4c969caf auditToken; // @synthesize auditToken=_auditToken;
+- (id)_resolvedFormattedString:(id)arg1 forApplication:(id)arg2;
 - (void)_prepareDisplayName;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
@@ -35,7 +41,8 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
-@property(readonly, nonatomic) SBApplication *application;
+- (_Bool)hasSameProcessAsAttribution:(id)arg1;
+- (id)initWithSBActivityAttribution:(id)arg1;
 - (id)initWithSTActivityAttribution:(id)arg1;
 
 // Remaining properties

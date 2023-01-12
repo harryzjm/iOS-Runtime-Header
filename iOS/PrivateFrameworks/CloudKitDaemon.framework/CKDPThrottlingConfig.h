@@ -10,7 +10,6 @@
 
 @class CKDPThrottlingConfigCriteria, CKDPThrottlingConfigRateLimit, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDPThrottlingConfig : PBCodable <NSCopying>
 {
     CKDPThrottlingConfigCriteria *_criteria;

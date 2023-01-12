@@ -15,6 +15,7 @@
     _Bool _isSticker;
     _Bool _hideAttachment;
     _Bool _isDirectory;
+    _Bool _isFromMomentShare;
     NSString *_guid;
     NSURL *_fileURL;
     NSDictionary *_transcoderUserInfo;
@@ -27,6 +28,7 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSDictionary *attributionInfo; // @synthesize attributionInfo=_attributionInfo;
 @property(nonatomic) long long transferState; // @synthesize transferState=_transferState;
+@property(readonly, nonatomic) _Bool isFromMomentShare; // @synthesize isFromMomentShare=_isFromMomentShare;
 @property(readonly, nonatomic) _Bool isDirectory; // @synthesize isDirectory=_isDirectory;
 @property(readonly, nonatomic) _Bool hideAttachment; // @synthesize hideAttachment=_hideAttachment;
 @property(readonly, nonatomic) _Bool isSticker; // @synthesize isSticker=_isSticker;

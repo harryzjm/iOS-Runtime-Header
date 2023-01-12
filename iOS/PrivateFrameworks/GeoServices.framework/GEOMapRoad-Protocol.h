@@ -26,7 +26,7 @@
 - (GEOMapRequest *)findRoadsToPreviousIntersection:(void (^)(id <GEOMapRoad>))arg1 completionHandler:(void (^)(GEOMapRequest *))arg2;
 - (GEOMapRequest *)findRoadsFromPreviousIntersection:(void (^)(id <GEOMapRoad>))arg1 completionHandler:(void (^)(GEOMapRequest *))arg2;
 - (GEOMapRequest *)findRoadsFrom:(void (^)(id <GEOMapRoad>))arg1 completionHandler:(void (^)(GEOMapRequest *))arg2;
-- (void)roadEdgesWithHandler:(void (^)(struct *))arg1;
-- (void)roadFeaturesWithHandler:(void (^)(struct *))arg1;
+- (void)roadEdgesWithHandler:(void (^)(GEORoadEdge *))arg1;
+- (void)roadFeaturesWithHandler:(void (^)(GEOMultiSectionFeature *))arg1;
 @end
 

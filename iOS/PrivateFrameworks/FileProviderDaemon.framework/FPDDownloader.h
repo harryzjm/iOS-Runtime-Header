@@ -17,20 +17,23 @@
     NSMutableDictionary *_parentToChildMap;
     NSMutableDictionary *_childProxies;
     NSObservation *_observation;
+    _Bool _dryRun;
     FPDDomain *_domain;
     NSProgress *_cancellationProgress;
     NSProgress *_progress;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic, getter=isDryRun) _Bool dryRun; // @synthesize dryRun=_dryRun;
 @property(readonly, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
 @property(readonly, nonatomic) NSProgress *cancellationProgress; // @synthesize cancellationProgress=_cancellationProgress;
 @property(readonly, nonatomic) __weak FPDDomain *domain; // @synthesize domain=_domain;
 - (void)_didDownloadItem:(id)arg1 withError:(id)arg2;
-- (void)_recursiveDownloadOfItem:(id)arg1 request:(id)arg2 perItemCompletion:(CDUnknownBlockType)arg3 withCompletion:(CDUnknownBlockType)arg4;
+- (void)_recursiveDownloadOfItem:(id)arg1 request:(id)arg2 recursively:(unsigned long long)arg3 perItemCompletion:(CDUnknownBlockType)arg4 withCompletion:(CDUnknownBlockType)arg5;
 - (void)_nonRecursiveDownloadOfItem:(id)arg1 request:(id)arg2 perItemCompletion:(CDUnknownBlockType)arg3 withCompletion:(CDUnknownBlockType)arg4;
-- (void)downloadItem:(id)arg1 recursively:(_Bool)arg2 request:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
-- (void)downloadURL:(id)arg1 recursively:(_Bool)arg2 request:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
+- (void)_downloadItem:(id)arg1 recursively:(unsigned long long)arg2 retryCount:(int)arg3 request:(id)arg4 withCompletion:(CDUnknownBlockType)arg5;
+- (void)downloadItem:(id)arg1 recursively:(unsigned long long)arg2 request:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
+- (void)downloadURL:(id)arg1 recursively:(unsigned long long)arg2 request:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)_logRootProgress;
 - (void)_createChildItem:(id)arg1;
 - (void)_stopTrackingFileURLs;

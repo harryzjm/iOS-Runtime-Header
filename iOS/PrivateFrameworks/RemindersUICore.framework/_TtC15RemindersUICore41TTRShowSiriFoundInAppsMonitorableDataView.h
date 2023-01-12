@@ -11,6 +11,7 @@
 @interface _TtC15RemindersUICore41TTRShowSiriFoundInAppsMonitorableDataView : _TtCs12_SwiftObject
 {
     MISSING_TYPE *store;
+    MISSING_TYPE *sortingStyle;
     MISSING_TYPE *remindersToPrefetchCount;
 }
 

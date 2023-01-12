@@ -21,20 +21,21 @@
 + (_Bool)supportsSecureCoding;
 + (id)new;
 - (void).cxx_destruct;
-@property(nonatomic) double confidence; // @synthesize confidence=_confidence;
-@property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(readonly) double confidence; // @synthesize confidence=_confidence;
+@property(readonly, copy) NSString *identifier; // @synthesize identifier=_identifier;
+@property(readonly, copy) NSString *description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqualToClassification:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithIdentifier:(id)arg1 confidence:(double)arg2;
 - (id)_init;
 - (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) Class superclass;
 
 @end

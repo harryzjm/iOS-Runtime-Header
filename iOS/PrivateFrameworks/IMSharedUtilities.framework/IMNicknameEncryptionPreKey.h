@@ -16,7 +16,7 @@
 
 + (id)preKeyWithDataRepresentation:(id)arg1 error:(id *)arg2;
 + (id)generatePreKeyWithError:(id *)arg1;
-- (id)_subDerviedKeyDataAtIndex:(unsigned long long)arg1;
+- (id)_subDerivedKeyDataAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) IMNicknameRecordTaggingKey *recordTaggingKey;
 @property(readonly, nonatomic) IMNicknameFieldTaggingKey *fieldTaggingKey;
 @property(readonly, nonatomic) IMNicknameFieldEncryptionKey *fieldEncryptionKey;

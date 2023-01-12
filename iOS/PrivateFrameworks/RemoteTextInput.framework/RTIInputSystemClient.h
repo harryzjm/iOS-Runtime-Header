@@ -22,6 +22,7 @@
     NSMutableSet *_begunSessionIDs;
     NSMutableSet *_allowanceRequestors;
     NSArray *_machNames;
+    NSMutableSet *_invalidatedServices;
     NSMutableDictionary *_connections;
     NSMutableSet *_endpointConnections;
 }
@@ -29,6 +30,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableSet *endpointConnections; // @synthesize endpointConnections=_endpointConnections;
 @property(retain, nonatomic) NSMutableDictionary *connections; // @synthesize connections=_connections;
+@property(readonly, nonatomic) NSMutableSet *invalidatedServices; // @synthesize invalidatedServices=_invalidatedServices;
 @property(retain, nonatomic) NSArray *machNames; // @synthesize machNames=_machNames;
 @property(retain, nonatomic) NSMutableSet *allowanceRequestors; // @synthesize allowanceRequestors=_allowanceRequestors;
 @property(retain, nonatomic) NSMutableSet *begunSessionIDs; // @synthesize begunSessionIDs=_begunSessionIDs;
@@ -60,7 +62,8 @@
 - (void)beginAllowingRemoteTextInput:(id)arg1;
 - (void)removeEndpoint:(id)arg1;
 - (void)addEndpoint:(id)arg1;
-- (void)_initializeConnection:(id)arg1 withMachName:(id)arg2;
+- (void)_configureConnection:(id)arg1 withMachName:(id)arg2;
+- (void)_initializeConnectionWithMachName:(id)arg1;
 - (void)dealloc;
 - (id)initWithMachNames:(id)arg1;
 

@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)proxyWithTarget:(id)arg1 exportedProtocol:(id)arg2;
+- (void)__flushCATransationIfNeededForFence:(id)arg1 hostPresentationTime:(unsigned long long)arg2;
 - (void)__participateInSystemAnimationFence:(id)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;
 

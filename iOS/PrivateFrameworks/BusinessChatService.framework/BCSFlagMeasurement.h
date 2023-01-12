@@ -17,10 +17,7 @@
 + (id)newFlagMeasurement:(long long)arg1 withHandlers:(id)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) long long flagMeasurementType; // @synthesize flagMeasurementType=_flagMeasurementType;
-@property(readonly, nonatomic) NSArray *realTimeMeasurementHandlers; // @synthesize realTimeMeasurementHandlers=_realTimeMeasurementHandlers;
-@property(nonatomic) _Bool flagWasSet; // @synthesize flagWasSet=_flagWasSet;
 @property(nonatomic) _Bool flag; // @synthesize flag=_flag;
-- (id)_initWithType:(long long)arg1 handlers:(id)arg2;
 
 @end
 

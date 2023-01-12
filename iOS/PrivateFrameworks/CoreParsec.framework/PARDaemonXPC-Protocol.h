@@ -6,22 +6,21 @@
 
 #import <CoreParsec/NSObject-Protocol.h>
 
-@class NSData, NSDate, NSFileHandle, NSString, PARRequest, PARSessionConfiguration, PARSmartSearchV1Parameters, PARSmartSearchV2Parameters;
+@class NSArray, NSData, NSDate, NSString, PARRequest, PARSessionConfiguration, PARSmartSearchV1Parameters, PARSmartSearchV2Parameters;
 
 @protocol PARDaemonXPC <NSObject>
 - (void)getImageMap:(void (^)(NSDictionary *))arg1;
 - (void)updateParametersForSmartSearchV1:(PARSmartSearchV1Parameters *)arg1 smartSearchV2:(PARSmartSearchV2Parameters *)arg2;
-- (void)addCompletion:(NSString *)arg1 forInput:(NSString *)arg2;
+- (void)addEncodedEngagedSuggestions:(NSArray *)arg1;
 - (void)clearEngagedCompletionsFromDate:(NSDate *)arg1 toDate:(NSDate *)arg2;
 - (void)fileHandleForWritingFeedbackType:(unsigned long long)arg1 reply:(void (^)(NSFileHandle *, NSError *))arg2;
 - (void)fileHandleAndAttributesForResource:(NSString *)arg1 completion:(void (^)(NSFileHandle *, NSDictionary *, NSError *))arg2;
 - (void)listSessions:(void (^)(NSArray *))arg1;
 - (void)stopSessions:(void (^)(NSError *))arg1;
-- (void)teeFeedbackFromClient:(NSString *)arg1 to:(NSFileHandle *)arg2 prettyPrint:(_Bool)arg3 completion:(void (^)(NSError *))arg4;
-- (void)reportFeedbackPayloadData:(PARSessionConfiguration *)arg1 payloadData:(NSData *)arg2 queryId:(unsigned long long)arg3;
+- (void)teeFeedback:(void (^)(NSError *))arg1;
+- (void)reportFeedback:(PARSessionConfiguration *)arg1 payloadData:(NSData *)arg2 queryId:(unsigned long long)arg3;
 - (void)request:(PARSessionConfiguration *)arg1 request:(PARRequest *)arg2 reply:(void (^)(unsigned long long, PARReply *, NSError *))arg3;
 - (void)forceFetchBag:(PARSessionConfiguration *)arg1 reply:(void (^)(PARBag *, NSError *))arg2;
 - (void)bag:(PARSessionConfiguration *)arg1 reply:(void (^)(PARBag *, NSError *))arg2;
-- (void)configure:(PARSessionConfiguration *)arg1 reply:(void (^)(void))arg2;
 @end
 

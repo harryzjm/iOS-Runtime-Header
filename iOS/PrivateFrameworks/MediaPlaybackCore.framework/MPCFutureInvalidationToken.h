@@ -10,6 +10,7 @@
 
 @class MPCFuture;
 
+__attribute__((visibility("hidden")))
 @interface MPCFutureInvalidationToken : NSObject <NSCopying>
 {
     MPCFuture *_future;

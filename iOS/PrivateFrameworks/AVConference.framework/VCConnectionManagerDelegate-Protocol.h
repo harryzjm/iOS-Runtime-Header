@@ -10,12 +10,15 @@
 @protocol VCConnectionProtocol;
 
 @protocol VCConnectionManagerDelegate <VCLinkProbingHandlerDelegate>
+- (void)didUpdatePreferredInterfaceForDuplication:(unsigned char)arg1 notifyPeer:(_Bool)arg2 enableDuplication:(_Bool)arg3 isMediaUnrecoverableSignal:(_Bool)arg4;
 - (void)didEnableDuplication:(_Bool)arg1 activeConnection:(id <VCConnectionProtocol>)arg2;
 - (void)connectionCallback:(id <VCConnectionProtocol>)arg1 isInitialConnection:(_Bool)arg2;
-- (void)primaryConnectionChanged:(id <VCConnectionProtocol>)arg1 oldPrimaryConnection:(id <VCConnectionProtocol>)arg2;
+- (void)primaryConnectionChanged:(id <VCConnectionProtocol>)arg1 oldPrimaryConnection:(id <VCConnectionProtocol>)arg2 activeConnection:(id <VCConnectionProtocol>)arg3;
 
 @optional
+- (void)setRemoteDeviceVersionIDS;
 - (void)handleRATChanged:(NSNumber *)arg1;
+- (void)optIntoExistingSubscribedStreamsForConnection:(id <VCConnectionProtocol>)arg1;
 - (void)optOutAllStreamsForConnection:(id <VCConnectionProtocol>)arg1;
 - (void)resetParticipantGenerationCounter;
 - (void)updateParticipantGenerationCounter:(unsigned char)arg1;

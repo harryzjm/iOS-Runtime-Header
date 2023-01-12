@@ -53,6 +53,11 @@
 - (_Bool)allowsTitle;
 - (_Bool)allowsCaption;
 @property(readonly, copy, nonatomic) NSArray *childInfos;
+- (id)typeName;
+- (id)defaultDescriptiveName;
+- (id)displayableContainedText;
+@property(readonly, nonatomic) _Bool shouldDisplayTextAsTypeName;
+@property(readonly, nonatomic) _Bool isAutoresizingTextBox;
 - (id)copyAcceptingTrackedChangesWithContext:(id)arg1;
 - (id)copyWithContext:(id)arg1;
 - (Class)repClass;
@@ -113,9 +118,9 @@
 - (id)textStorageForHeadOfTextFlow;
 - (_Bool)textStorageAllowsCommentsIgnoringParent;
 @property(readonly, nonatomic) TSWPStorage *textStorage;
-- (void)saveToArchive:(struct ShapeInfoArchive *)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
-- (void)loadFromArchive:(const struct ShapeInfoArchive *)arg1 unarchiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)upgradeOwnedStorageWithFileFormatVersion:(unsigned long long)arg1;
 - (void)upgradeWithNewOwnedStorage;

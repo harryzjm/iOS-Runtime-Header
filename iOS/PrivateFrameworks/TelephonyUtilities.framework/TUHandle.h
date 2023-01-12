@@ -29,7 +29,10 @@
 + (id)handleWithDictionaryRepresentation:(id)arg1;
 + (id)normalizedHandleWithDestinationID:(id)arg1;
 + (id)handleWithDestinationID:(id)arg1;
++ (long long)handleTypeForCHHandle:(id)arg1;
++ (id)handlesForCHRecentCall:(id)arg1 validHandlesOnly:(_Bool)arg2;
 + (id)handlesForCHRecentCall:(id)arg1;
++ (id)handleForCHRecentCall:(id)arg1 validHandlesOnly:(_Bool)arg2;
 + (id)handleForCHRecentCall:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *normalizedValue; // @synthesize normalizedValue=_normalizedValue;

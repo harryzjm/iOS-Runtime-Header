@@ -5,20 +5,22 @@
 //
 
 #import <PassKitUI/PKExplanationViewDelegate-Protocol.h>
+#import <PassKitUI/PKPaymentSetupHideSetupLaterButtonProtocol-Protocol.h>
 
-@class ACAccountStore, NSArray, NSString, PKPaymentHeroImageController, PKPaymentProvisioningController, PKPaymentSetupHeroView, PKPaymentWebService, UIViewController;
+@class ACAccountStore, NSArray, NSString, PKPaymentHeroImageController, PKPaymentProvisioningController, PKPaymentSetupHeroView, PKPaymentSetupProduct, PKPaymentWebService, UIViewController;
 @protocol PKPaymentSetupViewControllerDelegate;
 
-@interface PKPaymentSetupHeroViewController <PKExplanationViewDelegate>
+@interface PKPaymentSetupHeroViewController <PKExplanationViewDelegate, PKPaymentSetupHideSetupLaterButtonProtocol>
 {
     ACAccountStore *_accountStore;
     _Bool _nextButtonPushed;
     PKPaymentSetupHeroView *_splashView;
-    _Bool _hideSetupLater;
     _Bool _hasFelicaSecureElement;
     _Bool _preflightComplete;
+    PKPaymentSetupProduct *_product;
     NSArray *_featuredImages;
     _Bool _allowsManualEntry;
+    _Bool _checkSecurity;
     PKPaymentProvisioningController *_provisioningController;
     id <PKPaymentSetupViewControllerDelegate> _delegate;
     PKPaymentHeroImageController *_heroImageController;
@@ -27,16 +29,20 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool checkSecurity; // @synthesize checkSecurity=_checkSecurity;
 @property(retain, nonatomic) UIViewController *deferredNextViewController; // @synthesize deferredNextViewController=_deferredNextViewController;
 @property(nonatomic) long long paymentSetupMode; // @synthesize paymentSetupMode=_paymentSetupMode;
 @property(nonatomic) _Bool allowsManualEntry; // @synthesize allowsManualEntry=_allowsManualEntry;
 @property(readonly, nonatomic) PKPaymentHeroImageController *heroImageController; // @synthesize heroImageController=_heroImageController;
 @property(nonatomic) __weak id <PKPaymentSetupViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) PKPaymentProvisioningController *provisioningController; // @synthesize provisioningController=_provisioningController;
+- (void)setHideSetupLaterButton:(_Bool)arg1;
 - (void)explanationViewDidSelectSetupLater:(id)arg1;
 - (void)explanationViewDidSelectContinue:(id)arg1;
 - (void)_terminateSetupFlow;
 - (id)_bodyText;
+- (void)_setUserInteractionEnabled:(_Bool)arg1;
+- (void)_presentNextViewController:(id)arg1;
 - (void)_next:(id)arg1;
 - (void)setFeaturedHeroImages:(id)arg1;
 @property(readonly, nonatomic) PKPaymentWebService *webService;
@@ -46,7 +52,7 @@
 - (void)_preflightWithCompletion:(CDUnknownBlockType)arg1;
 - (void)viewDidLoad;
 - (void)loadView;
-- (id)initWithProvisioningController:(id)arg1 context:(long long)arg2 delegate:(id)arg3;
+- (id)initWithProvisioningController:(id)arg1 context:(long long)arg2 delegate:(id)arg3 product:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

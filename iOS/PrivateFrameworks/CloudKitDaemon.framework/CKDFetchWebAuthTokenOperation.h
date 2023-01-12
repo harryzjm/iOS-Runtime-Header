@@ -7,7 +7,6 @@
 @class NSString;
 @protocol CKFetchWebAuthTokenOperationCallbacks;
 
-__attribute__((visibility("hidden")))
 @interface CKDFetchWebAuthTokenOperation
 {
     NSString *_webAuthToken;
@@ -20,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (void)main;
 - (int)operationType;
 - (id)activityCreate;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 // Remaining properties
 @property(retain, nonatomic) id <CKFetchWebAuthTokenOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;

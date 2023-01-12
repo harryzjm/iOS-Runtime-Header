@@ -17,7 +17,7 @@
     struct __CTLine *_lineRef;
 }
 
-+ (id)mapWithAttachment:(id)arg1 layout:(id)arg2 pageNumber:(unsigned long long)arg3 pageCount:(unsigned long long)arg4 footnoteMarkProvider:(id)arg5 styleProvider:(id)arg6 colorOverride:(id)arg7 textScalePercent:(unsigned long long)arg8;
++ (id)mapWithAttachment:(id)arg1 layout:(id)arg2 pageNumber:(unsigned long long)arg3 pageCount:(unsigned long long)arg4 footnoteMarkProvider:(id)arg5 styleProvider:(id)arg6 colorOverride:(id)arg7 textScalePercent:(unsigned long long)arg8 targetSupportsPageNumbers:(_Bool)arg9;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool isWithinVerticalText; // @synthesize isWithinVerticalText=_isWithinVerticalText;
 @property(readonly, nonatomic) struct __CTLine *lineRef; // @synthesize lineRef=_lineRef;

@@ -19,16 +19,20 @@
     NSString *_contextStamp;
     NSTimer *_transferTimer;
     NSMutableArray *_transferringTransfers;
+    NSMutableSet *_activeExplicitlyRequestedTransfers;
 }
 
++ (id)localFileURLRetrievalErrorWithReason:(long long)arg1 underlyingReason:(long long)arg2 description:(id)arg3;
++ (id)localFileURLRetrievalErrorWithReason:(long long)arg1 description:(id)arg2;
++ (id)fileTransferErrorWithReason:(long long)arg1 description:(id)arg2;
 + (id)sharedInstance;
 @property(retain, nonatomic) NSString *contextStamp; // @synthesize contextStamp=_contextStamp;
+- (void)_reset;
 - (_Bool)populateLocalURLsForTransfer:(id)arg1 fromCKRecord:(id)arg2;
 - (void)resetSyncStateForRecord:(id)arg1 toState:(long long)arg2;
 - (void)markTransferAsNotSuccessfullyDownloadedFromCloud:(id)arg1;
 - (void)markTransferAsNotSyncedSuccessfully:(id)arg1;
 - (id)updateTransfersWithCKRecord:(id)arg1 recordWasFetched:(_Bool)arg2 downloadAsset:(_Bool *)arg3;
-- (_Bool)_usingStingRay;
 - (_Bool)_shouldDownloadAssetForTransfer:(id)arg1 forMessageItem:(id)arg2;
 - (void)_updateSyncStatsForAttachments:(id)arg1 incrementTotalAttachmentCount:(unsigned long long)arg2;
 - (_Bool)_shouldUpdateSyncStats:(id)arg1 originalSyncState:(long long)arg2;
@@ -39,6 +43,7 @@
 - (_Bool)_transferRequiresPreviewSizing:(id)arg1;
 - (id)_transcodeControllerSharedInstance;
 - (void)sizePreviewsForTransferGUIDs:(id)arg1;
+- (_Bool)initiateExplicitDownloadWithGUID:(id)arg1;
 - (_Bool)initiateHighQualityDownload:(id)arg1;
 - (_Bool)markAttachment:(id)arg1 sender:(id)arg2 recipients:(id)arg3 isIncoming:(_Bool)arg4;
 - (id)guidsForStoredAttachmentPayloadDataURLs:(id)arg1 messageGUID:(id)arg2;
@@ -46,7 +51,7 @@
 - (id)_getNewFileTransferForStoredAttachmentPayloadDataWithTransferGUID:(id)arg1 messageGUID:(id)arg2;
 - (void)_handleFileTransferRemoved:(id)arg1;
 - (void)_handleFileTransferStopped:(id)arg1;
-- (void)_handleFileTransfer:(id)arg1 acceptedWithPath:(id)arg2 autoRename:(_Bool)arg3 overwrite:(_Bool)arg4 postNotification:(_Bool)arg5;
+- (void)_handleFileTransfer:(id)arg1 acceptedWithPath:(id)arg2 autoRename:(_Bool)arg3 overwrite:(_Bool)arg4 options:(long long)arg5 postNotification:(_Bool)arg6;
 - (void)_handleFileTransfer:(id)arg1 updatedWithProperties:(id)arg2;
 - (void)_handleFileTransfer:(id)arg1 createdWithProperties:(id)arg2 withAuditToken:(CDStruct_6ad76789)arg3;
 - (void)_handleSendFileTransfer:(id)arg1;
@@ -67,11 +72,17 @@
 - (void)updateTransfer:(id)arg1;
 - (void)updateTransfer:(id)arg1 currentBytes:(unsigned long long)arg2 totalBytes:(unsigned long long)arg3;
 - (void)startTransfer:(id)arg1;
+- (void)_updateTransferGUID:(id)arg1 toGUID:(id)arg2;
+- (void)updateTransferGUID:(id)arg1 toGUID:(id)arg2;
 - (void)removeTransferForGUID:(id)arg1;
 - (id)transferForGUID:(id)arg1;
+- (void)_addTransfer:(id)arg1 forGUID:(id)arg2 shouldNotify:(_Bool)arg3 forceNotify:(_Bool)arg4;
+- (void)_addTransfer:(id)arg1 forGUID:(id)arg2 shouldNotify:(_Bool)arg3;
+- (void)addTransfer:(id)arg1 forGUID:(id)arg2 forceNotify:(_Bool)arg3;
 - (void)addTransfer:(id)arg1 forGUID:(id)arg2;
 - (void)removeUnassignedTransfers;
 - (void)assignTransfer:(id)arg1 toAccount:(id)arg2 otherPerson:(id)arg3;
+- (_Bool)registerGUID:(id)arg1 forNewOutgoingTransferWithLocalURL:(id)arg2;
 - (id)guidForNewOutgoingTransferWithFilename:(id)arg1 isDirectory:(_Bool)arg2 totalBytes:(unsigned long long)arg3 hfsType:(unsigned int)arg4 hfsCreator:(unsigned int)arg5 hfsFlags:(unsigned short)arg6;
 - (id)guidForNewIncomingTransferWithFilename:(id)arg1 isDirectory:(_Bool)arg2 totalBytes:(unsigned long long)arg3 hfsType:(unsigned int)arg4 hfsCreator:(unsigned int)arg5 hfsFlags:(unsigned short)arg6;
 - (void)makeNewOutgoingTransferWithGUID:(id)arg1 filename:(id)arg2 isDirectory:(_Bool)arg3 totalBytes:(unsigned long long)arg4 hfsType:(unsigned int)arg5 hfsCreator:(unsigned int)arg6 hfsFlags:(unsigned short)arg7;
@@ -81,6 +92,9 @@
 - (void)_transferTimerTick:(id)arg1;
 - (void)_removeTransferringTransfer:(id)arg1;
 - (void)_addTransferringTransfer:(id)arg1;
+- (void)_removeActiveExplicitlyRequestedTransfer:(id)arg1;
+- (void)_addActiveExplicitlyRequestedTransfer:(id)arg1;
+- (_Bool)hasActiveExplicitlyRequestedFileTransfers;
 - (void)_removeActiveTransfer:(id)arg1;
 - (void)_addActiveTransfer:(id)arg1;
 @property(readonly, nonatomic) _Bool hasActiveFileTransfers;
@@ -95,6 +109,8 @@
 - (void)archiveFileTransfer:(id)arg1;
 - (void)_archiveFileTransfer:(id)arg1;
 - (id)_dictionaryRepresentationsForFileTransfers:(id)arg1 toSave:(_Bool)arg2;
+- (void)_completeExplicitDownloadForTransfer:(id)arg1 success:(_Bool)arg2 error:(id)arg3;
+- (void)_postUpdated:(id)arg1 forceNotify:(_Bool)arg2;
 - (void)_postUpdated:(id)arg1;
 - (void)_updateContextStamp;
 - (void)_completeProgressForTransferGUID:(id)arg1;
@@ -102,6 +118,7 @@
 - (id)_progressForTransferGUID:(id)arg1 allowCreate:(_Bool)arg2 path:(id)arg3;
 - (void)dealloc;
 - (id)init;
+- (_Bool)__im_ff_isBlastDoorAttachmentPreviewEnabled;
 
 @end
 

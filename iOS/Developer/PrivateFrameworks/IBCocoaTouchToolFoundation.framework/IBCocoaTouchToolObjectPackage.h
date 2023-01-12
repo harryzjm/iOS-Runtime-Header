@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <IBFoundation/IBMarshallableObjectPackage.h>
+#import <IBAutolayoutFoundation/IBMarshallableObjectPackage.h>
 
 @class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet;
+@protocol IBCocoaTouchToolObjectPackageDelegate;
 
 @interface IBCocoaTouchToolObjectPackage : IBMarshallableObjectPackage
 {
@@ -24,12 +25,15 @@
     NSMutableSet *_replacementObjectsAddedDuringEnumeration;
     NSMutableDictionary *_objectIDsToKeyPathsToTraitStorages;
     NSMutableDictionary *_globalMarshallingContext;
+    id <IBCocoaTouchToolObjectPackageDelegate> _strongDelegate;
+    id <IBCocoaTouchToolObjectPackageDelegate> _weakDelegate;
     NSArray *_accessibilityConfigurations;
     NSArray *_initializationWarningMessages;
     unsigned long long _applicableTraits;
 }
 
 + (id)decodeWithBinaryUnarchiver:(id)arg1;
++ (id)objectPackageFromRequest:(id)arg1 globalMarshallingContext:(id)arg2 delegate:(id)arg3;
 + (id)objectPackageFromRequest:(id)arg1 globalMarshallingContext:(id)arg2;
 + (id)objectPackageFromRequest:(id)arg1;
 - (void).cxx_destruct;
@@ -54,11 +58,11 @@
 - (_Bool)usesTraitStorages;
 @property(readonly, nonatomic) NSArray *traitStorageLists;
 @property(readonly, nonatomic) NSArray *connections; // @synthesize connections=_processedConnections;
+@property(readonly, nonatomic) __weak id <IBCocoaTouchToolObjectPackageDelegate> delegate;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (void)dealloc;
-- (id)initWithRequest:(id)arg1 globalMarshallingContext:(id)arg2;
+- (id)initWithRequest:(id)arg1 globalMarshallingContext:(id)arg2 delegate:(id)arg3;
 - (id)init;
-- (id)connectionsByProcessingConnections:(id)arg1;
 
 @end
 

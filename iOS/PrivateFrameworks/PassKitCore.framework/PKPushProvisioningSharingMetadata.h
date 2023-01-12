@@ -16,14 +16,17 @@
     NSString *_sharingInstanceIdentifier;
     NSString *_provisioningCredentialHash;
     unsigned long long _sharingStatus;
+    long long _source;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) long long source; // @synthesize source=_source;
 @property(nonatomic) unsigned long long sharingStatus; // @synthesize sharingStatus=_sharingStatus;
 @property(copy, nonatomic) NSString *provisioningCredentialHash; // @synthesize provisioningCredentialHash=_provisioningCredentialHash;
 @property(copy, nonatomic) NSString *sharingInstanceIdentifier; // @synthesize sharingInstanceIdentifier=_sharingInstanceIdentifier;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqualToEncryptedProvisioningTarget:(id)arg1;
 - (_Bool)isEqual:(id)arg1;

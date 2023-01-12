@@ -6,10 +6,11 @@
 
 #import <PrototypeTools/PTSettings.h>
 
-@class CSBounceSettings, CSCoverSheetDismissGestureSettings, CSCoverSheetTransitionsSettings, CSDashBoardNotificationVersusPagingScrollSettings, CSDashBoardQuickActionsButtonSettings, CSDashBoardRemoteContentSettings, CSDashBoardScrollModifierSettings, CSHorizontalScrollFailureRecognizerSettings, CSLockScreenMesaSettings, CSLockScreenPasscodeSettings, CSLockScreenPearlSettings, CSLockScreenTestPluginSettings, PTOutlet, SBFAnimationSettings;
+@class CSBounceSettings, CSCoverSheetDismissGestureSettings, CSCoverSheetTransitionsSettings, CSDashBoardNotificationVersusPagingScrollSettings, CSDashBoardQuickActionsButtonSettings, CSDashBoardRemoteContentSettings, CSDashBoardScrollModifierSettings, CSFocusSettings, CSHorizontalScrollFailureRecognizerSettings, CSLockScreenChargingSettings, CSLockScreenIdleTimerSettings, CSLockScreenMesaSettings, CSLockScreenPasscodeSettings, CSLockScreenPearlSettings, CSLockScreenTestPluginSettings, PTOutlet, SBFAnimationSettings;
 
 @interface CSLockScreenSettings : PTSettings
 {
+    _Bool _showRawErrorCodes;
     _Bool _autoDismissUnlockedLockScreen;
     _Bool _showNowPlaying;
     _Bool _showUserPicture;
@@ -19,20 +20,19 @@
     _Bool _showResetRestore;
     _Bool _showEmergencyDialer;
     _Bool _showRegionsDebugView;
+    _Bool _alwaysEnableUserRequestedErase;
     _Bool _alwaysPutPluginsBelowScrollView;
     _Bool _killsInsecureDrawingApps;
     _Bool _prewarmsCameraHardwareOnSwipe;
     _Bool _prewarmsCameraHardwareOnTap;
     _Bool _prelaunchesCameraAppOnSwipe;
     _Bool _prelaunchesCameraAppOnTap;
-    double _minTouchIDDuration;
-    double _idleUntilShimmerDuration;
-    double _restToOpenDuration;
-    double _restToOpenIdleDuration;
     PTOutlet *_addNotificationOutlet;
     CSBounceSettings *_verticalBounceSettings;
     CSBounceSettings *_horizontalBounceSettings;
     CSLockScreenPasscodeSettings *_passcodeSettings;
+    CSLockScreenChargingSettings *_chargingSettings;
+    CSFocusSettings *_focusSettings;
     CSLockScreenMesaSettings *_mesaSettings;
     CSLockScreenPearlSettings *_pearlSettings;
     CSCoverSheetTransitionsSettings *_coverSheetTransitionsSettings;
@@ -42,18 +42,16 @@
     CSDashBoardQuickActionsButtonSettings *_dashBoardQuickActionButtonSettings;
     CSDashBoardRemoteContentSettings *_dashBoardRemoteContentSettings;
     CSCoverSheetDismissGestureSettings *_coverSheetDismissGestureSettings;
+    CSLockScreenIdleTimerSettings *_idleTimerSettings;
     SBFAnimationSettings *_unlockToPhoneWallpaperOutSettings;
     SBFAnimationSettings *_unlockToPhoneWallpaperInSettings;
     SBFAnimationSettings *_unlockWallpaperOutSettings;
     SBFAnimationSettings *_unlockWallpaperInSettings;
     CSLockScreenTestPluginSettings *_testPluginSettings;
-    double _nowPlayingHeight;
+    double _nowPlayingHeightCompact;
+    double _nowPlayingHeightExpanded;
     double _mainToCameraViewSlideCompletionPercentage;
     double _mainToTodayViewSlideCompletionPercentage;
-    double _unlockSlideForIdleTimerDisabledPercentage;
-    double _unlockSlideForIdleTimerDisabledPercentageIPad;
-    double _notificationScrollForIdleTimerDisabledOffset;
-    double _notificationScrollForIdleTimerDisabledOffsetIPad;
     double _appGrabberSlideUpVelocityThreshold;
     double _unlockPasscodeThreshold;
     double _unlockRubberBandThreshold;
@@ -88,18 +86,16 @@
 @property double unlockRubberBandThreshold; // @synthesize unlockRubberBandThreshold=_unlockRubberBandThreshold;
 @property double unlockPasscodeThreshold; // @synthesize unlockPasscodeThreshold=_unlockPasscodeThreshold;
 @property double appGrabberSlideUpVelocityThreshold; // @synthesize appGrabberSlideUpVelocityThreshold=_appGrabberSlideUpVelocityThreshold;
-@property double notificationScrollForIdleTimerDisabledOffsetIPad; // @synthesize notificationScrollForIdleTimerDisabledOffsetIPad=_notificationScrollForIdleTimerDisabledOffsetIPad;
-@property double notificationScrollForIdleTimerDisabledOffset; // @synthesize notificationScrollForIdleTimerDisabledOffset=_notificationScrollForIdleTimerDisabledOffset;
-@property double unlockSlideForIdleTimerDisabledPercentageIPad; // @synthesize unlockSlideForIdleTimerDisabledPercentageIPad=_unlockSlideForIdleTimerDisabledPercentageIPad;
-@property double unlockSlideForIdleTimerDisabledPercentage; // @synthesize unlockSlideForIdleTimerDisabledPercentage=_unlockSlideForIdleTimerDisabledPercentage;
 @property double mainToTodayViewSlideCompletionPercentage; // @synthesize mainToTodayViewSlideCompletionPercentage=_mainToTodayViewSlideCompletionPercentage;
 @property double mainToCameraViewSlideCompletionPercentage; // @synthesize mainToCameraViewSlideCompletionPercentage=_mainToCameraViewSlideCompletionPercentage;
-@property double nowPlayingHeight; // @synthesize nowPlayingHeight=_nowPlayingHeight;
+@property double nowPlayingHeightExpanded; // @synthesize nowPlayingHeightExpanded=_nowPlayingHeightExpanded;
+@property double nowPlayingHeightCompact; // @synthesize nowPlayingHeightCompact=_nowPlayingHeightCompact;
 @property(retain) CSLockScreenTestPluginSettings *testPluginSettings; // @synthesize testPluginSettings=_testPluginSettings;
 @property(retain) SBFAnimationSettings *unlockWallpaperInSettings; // @synthesize unlockWallpaperInSettings=_unlockWallpaperInSettings;
 @property(retain) SBFAnimationSettings *unlockWallpaperOutSettings; // @synthesize unlockWallpaperOutSettings=_unlockWallpaperOutSettings;
 @property(retain) SBFAnimationSettings *unlockToPhoneWallpaperInSettings; // @synthesize unlockToPhoneWallpaperInSettings=_unlockToPhoneWallpaperInSettings;
 @property(retain) SBFAnimationSettings *unlockToPhoneWallpaperOutSettings; // @synthesize unlockToPhoneWallpaperOutSettings=_unlockToPhoneWallpaperOutSettings;
+@property(retain) CSLockScreenIdleTimerSettings *idleTimerSettings; // @synthesize idleTimerSettings=_idleTimerSettings;
 @property(retain) CSCoverSheetDismissGestureSettings *coverSheetDismissGestureSettings; // @synthesize coverSheetDismissGestureSettings=_coverSheetDismissGestureSettings;
 @property(retain) CSDashBoardRemoteContentSettings *dashBoardRemoteContentSettings; // @synthesize dashBoardRemoteContentSettings=_dashBoardRemoteContentSettings;
 @property(retain) CSDashBoardQuickActionsButtonSettings *dashBoardQuickActionButtonSettings; // @synthesize dashBoardQuickActionButtonSettings=_dashBoardQuickActionButtonSettings;
@@ -109,10 +105,13 @@
 @property(retain) CSCoverSheetTransitionsSettings *coverSheetTransitionsSettings; // @synthesize coverSheetTransitionsSettings=_coverSheetTransitionsSettings;
 @property(retain) CSLockScreenPearlSettings *pearlSettings; // @synthesize pearlSettings=_pearlSettings;
 @property(retain) CSLockScreenMesaSettings *mesaSettings; // @synthesize mesaSettings=_mesaSettings;
+@property(retain) CSFocusSettings *focusSettings; // @synthesize focusSettings=_focusSettings;
+@property(retain) CSLockScreenChargingSettings *chargingSettings; // @synthesize chargingSettings=_chargingSettings;
 @property(retain) CSLockScreenPasscodeSettings *passcodeSettings; // @synthesize passcodeSettings=_passcodeSettings;
 @property(retain) CSBounceSettings *horizontalBounceSettings; // @synthesize horizontalBounceSettings=_horizontalBounceSettings;
 @property(retain) CSBounceSettings *verticalBounceSettings; // @synthesize verticalBounceSettings=_verticalBounceSettings;
 @property(retain) PTOutlet *addNotificationOutlet; // @synthesize addNotificationOutlet=_addNotificationOutlet;
+@property _Bool alwaysEnableUserRequestedErase; // @synthesize alwaysEnableUserRequestedErase=_alwaysEnableUserRequestedErase;
 @property _Bool showRegionsDebugView; // @synthesize showRegionsDebugView=_showRegionsDebugView;
 @property _Bool showEmergencyDialer; // @synthesize showEmergencyDialer=_showEmergencyDialer;
 @property _Bool showResetRestore; // @synthesize showResetRestore=_showResetRestore;
@@ -122,10 +121,7 @@
 @property _Bool showUserPicture; // @synthesize showUserPicture=_showUserPicture;
 @property _Bool showNowPlaying; // @synthesize showNowPlaying=_showNowPlaying;
 @property _Bool autoDismissUnlockedLockScreen; // @synthesize autoDismissUnlockedLockScreen=_autoDismissUnlockedLockScreen;
-@property double restToOpenIdleDuration; // @synthesize restToOpenIdleDuration=_restToOpenIdleDuration;
-@property double restToOpenDuration; // @synthesize restToOpenDuration=_restToOpenDuration;
-@property double idleUntilShimmerDuration; // @synthesize idleUntilShimmerDuration=_idleUntilShimmerDuration;
-@property double minTouchIDDuration; // @synthesize minTouchIDDuration=_minTouchIDDuration;
+@property _Bool showRawErrorCodes; // @synthesize showRawErrorCodes=_showRawErrorCodes;
 - (void)setDefaultValues;
 
 @end

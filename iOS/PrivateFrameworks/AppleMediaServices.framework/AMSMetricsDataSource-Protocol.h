@@ -7,9 +7,9 @@
 @class NSArray, NSString;
 
 @protocol AMSMetricsDataSource
-- (void)willStartBatchingWithLogKey:(NSString *)arg1 error:(id *)arg2;
-- (void)removeEvents:(NSArray *)arg1 error:(id *)arg2;
-- (void)skipEvents:(NSArray *)arg1 error:(id *)arg2;
+- (_Bool)willStartBatchingWithLogKey:(NSString *)arg1 error:(id *)arg2;
+- (_Bool)removeEvents:(NSArray *)arg1 error:(id *)arg2;
+- (_Bool)skipEvents:(NSArray *)arg1 error:(id *)arg2;
 - (void)enumerateSortedEventsForTopic:(NSString *)arg1 block:(void (^)(AMSMetricsEvent *, NSString *, NSError *, _Bool *))arg2;
 - (void)didFinishBatching;
 - (void)cancel;

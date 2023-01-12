@@ -13,6 +13,7 @@
 @protocol NTHeadlineAdElement, NTHeadlineAnalyticsElementProviding, NTHeadlineBackingElement, NTHeadlinePersonalizationMetadata;
 
 @protocol NTHeadlineProviding <NSObject, NFCopying, NSSecureCoding, NTTodayItem>
+@property(readonly, nonatomic) _Bool isBundlePaid;
 @property(readonly, copy, nonatomic) NSURL *flintDocumentURL;
 @property(readonly, copy, nonatomic) NSObject<NTHeadlineBackingElement> *backingElement;
 @property(readonly, copy, nonatomic) NSObject<NTHeadlinePersonalizationMetadata> *personalizationMetadata;

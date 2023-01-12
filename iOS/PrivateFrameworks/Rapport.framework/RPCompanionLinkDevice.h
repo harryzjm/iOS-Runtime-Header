@@ -13,8 +13,10 @@
     _Bool _personal;
     _Bool _changed;
     _Bool _daemon;
+    unsigned char _nearbyActionV2Type;
     _Bool _uiTriggered;
     unsigned int _flags;
+    int _mediaAccessControlSetting;
     int _mediaSystemRole;
     int _mediaSystemState;
     int _personalDeviceState;
@@ -30,6 +32,7 @@
     NSString *_roomName;
     NSDictionary *_siriInfo;
     NSString *_role;
+    NSUUID *_launchInstanceID;
     NSUUID *_mediaSystemIdentifierEffective;
     NSUUID *_pairingIdentifier;
     NSString *_password;
@@ -41,8 +44,10 @@
 @property(nonatomic) int serversChangedState; // @synthesize serversChangedState=_serversChangedState;
 @property(copy, nonatomic) NSString *password; // @synthesize password=_password;
 @property(copy, nonatomic) NSUUID *pairingIdentifier; // @synthesize pairingIdentifier=_pairingIdentifier;
+@property(nonatomic) unsigned char nearbyActionV2Type; // @synthesize nearbyActionV2Type=_nearbyActionV2Type;
 @property(nonatomic) int mediaSystemRoleEffective; // @synthesize mediaSystemRoleEffective=_mediaSystemRoleEffective;
 @property(copy, nonatomic) NSUUID *mediaSystemIdentifierEffective; // @synthesize mediaSystemIdentifierEffective=_mediaSystemIdentifierEffective;
+@property(copy, nonatomic) NSUUID *launchInstanceID; // @synthesize launchInstanceID=_launchInstanceID;
 @property(nonatomic) _Bool daemon; // @synthesize daemon=_daemon;
 @property(nonatomic) _Bool changed; // @synthesize changed=_changed;
 @property(copy, nonatomic) NSString *role; // @synthesize role=_role;
@@ -56,10 +61,12 @@
 @property(nonatomic) int mediaSystemRole; // @synthesize mediaSystemRole=_mediaSystemRole;
 @property(copy, nonatomic) NSString *mediaSystemName; // @synthesize mediaSystemName=_mediaSystemName;
 @property(copy, nonatomic) NSUUID *mediaSystemIdentifier; // @synthesize mediaSystemIdentifier=_mediaSystemIdentifier;
+@property(nonatomic) int mediaAccessControlSetting; // @synthesize mediaAccessControlSetting=_mediaAccessControlSetting;
 @property(copy, nonatomic) NSString *idsPersonalDeviceIdentifier; // @synthesize idsPersonalDeviceIdentifier=_idsPersonalDeviceIdentifier;
 @property(copy, nonatomic) NSUUID *homeKitIdentifier; // @synthesize homeKitIdentifier=_homeKitIdentifier;
 @property(nonatomic) unsigned int flags; // @synthesize flags=_flags;
 @property(copy, nonatomic) NSString *deviceColor; // @synthesize deviceColor=_deviceColor;
+- (_Bool)isEqualToDevice:(id)arg1;
 - (unsigned int)updateWithSFDevice:(id)arg1;
 - (unsigned int)updateWithBonjourDevice:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *effectiveIdentifier;

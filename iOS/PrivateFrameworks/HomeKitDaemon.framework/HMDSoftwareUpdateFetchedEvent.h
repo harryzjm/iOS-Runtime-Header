@@ -4,19 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitMetrics/HMMLogEvent.h>
+
 #import <HomeKitDaemon/HMDAWDLogEvent-Protocol.h>
 
 @class NSString;
 
-@interface HMDSoftwareUpdateFetchedEvent <HMDAWDLogEvent>
+@interface HMDSoftwareUpdateFetchedEvent : HMMLogEvent <HMDAWDLogEvent>
 {
     _Bool _userInitiated;
     _Bool _newUpdateFetched;
 }
 
 + (id)eventWasUserInitiated:(_Bool)arg1 wasNewUpdateFetched:(_Bool)arg2;
-+ (id)uuid;
-+ (void)initialize;
 @property(nonatomic, getter=wasNewUpdateFetched) _Bool newUpdateFetched; // @synthesize newUpdateFetched=_newUpdateFetched;
 @property(nonatomic, getter=wasUserInitiated) _Bool userInitiated; // @synthesize userInitiated=_userInitiated;
 - (id)metricForAWD;

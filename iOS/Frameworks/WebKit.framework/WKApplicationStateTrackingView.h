@@ -10,7 +10,7 @@ __attribute__((visibility("hidden")))
 @interface WKApplicationStateTrackingView : UIView
 {
     struct WeakObjCPtr<WKWebView> _webViewToTrack;
-    struct unique_ptr<WebKit::ApplicationStateTracker, std::__1::default_delete<WebKit::ApplicationStateTracker>> _applicationStateTracker;
+    struct unique_ptr<WebKit::ApplicationStateTracker, std::default_delete<WebKit::ApplicationStateTracker>> _applicationStateTracker;
 }
 
 - (id).cxx_construct;

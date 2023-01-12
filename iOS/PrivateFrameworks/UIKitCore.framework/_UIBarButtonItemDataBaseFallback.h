@@ -20,6 +20,8 @@ __attribute__((visibility("hidden")))
 - (id)backgroundImageForState:(long long)arg1 style:(long long)arg2;
 - (struct UIOffset)titlePositionAdjustmentForState:(long long)arg1 style:(long long)arg2;
 - (id)colorForState:(long long)arg1 style:(long long)arg2;
+- (id)backIndicatorTextStyleForSymbolConfiguration;
+- (id)textStyleForSymbolConfiguration;
 - (id)fontForState:(long long)arg1 style:(long long)arg2;
 
 // Remaining properties

@@ -7,37 +7,51 @@
 #import <HomeUI/HUSoftwareUpdateItemModuleControllerDelegate-Protocol.h>
 #import <HomeUI/HUSwitchCellDelegate-Protocol.h>
 
-@class HUSoftwareUpdateItemModuleController, HUSoftwareUpdateStandaloneItemManager, NAFuture, NSString;
+@class HUFirmwareUpdateItemModuleController, HUSoftwareUpdateItemModuleController, HUSoftwareUpdateStandaloneItemManager, NAFuture, NSString, UIBarButtonItem;
 
 @interface HUSoftwareUpdateStandaloneViewController <HUSoftwareUpdateItemModuleControllerDelegate, HUSwitchCellDelegate>
 {
     _Bool _showDoneButtonInNavBar;
     _Bool _allowRefresh;
-    HUSoftwareUpdateItemModuleController *_softwareUpdateModule;
+    _Bool _viewVisible;
+    HUSoftwareUpdateItemModuleController *_softwareUpdateItemModuleController;
+    HUFirmwareUpdateItemModuleController *_firmwareUpdateItemModuleController;
+    UIBarButtonItem *_updateAllBarButton;
     NAFuture *_softwareUpdateFetchFuture;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool viewVisible; // @synthesize viewVisible=_viewVisible;
 @property(nonatomic) _Bool allowRefresh; // @synthesize allowRefresh=_allowRefresh;
 @property(retain, nonatomic) NAFuture *softwareUpdateFetchFuture; // @synthesize softwareUpdateFetchFuture=_softwareUpdateFetchFuture;
-@property(retain, nonatomic) HUSoftwareUpdateItemModuleController *softwareUpdateModule; // @synthesize softwareUpdateModule=_softwareUpdateModule;
+@property(retain, nonatomic) UIBarButtonItem *updateAllBarButton; // @synthesize updateAllBarButton=_updateAllBarButton;
+@property(retain, nonatomic) HUFirmwareUpdateItemModuleController *firmwareUpdateItemModuleController; // @synthesize firmwareUpdateItemModuleController=_firmwareUpdateItemModuleController;
+@property(retain, nonatomic) HUSoftwareUpdateItemModuleController *softwareUpdateItemModuleController; // @synthesize softwareUpdateItemModuleController=_softwareUpdateItemModuleController;
 @property(nonatomic) _Bool showDoneButtonInNavBar; // @synthesize showDoneButtonInNavBar=_showDoneButtonInNavBar;
 - (id)keyCommands;
 - (void)_kickoffSoftwareUpdate;
 - (void)_triggerRefresh:(id)arg1;
-- (void)_setupRefreshControl;
 - (void)itemManager:(id)arg1 didUpdateResultsForItem:(id)arg2 atIndexPath:(id)arg3;
+- (void)diffableDataItemManager:(id)arg1 didUpdateItems:(id)arg2 addItems:(id)arg3 removeItems:(id)arg4;
 - (id)softwareUpdateModuleController:(id)arg1 navigateToViewController:(id)arg2;
 - (id)softwareUpdateModuleController:(id)arg1 dismissViewController:(id)arg2;
 - (id)softwareUpdateModuleController:(id)arg1 presentViewController:(id)arg2;
 - (void)switchCell:(id)arg1 didTurnOn:(_Bool)arg2;
 - (void)doneButtonPressed:(id)arg1;
+- (void)_didTapUpdateAllButton:(id)arg1;
+- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (_Bool)shouldHideSeparatorsForCell:(id)arg1 indexPath:(id)arg2;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3 animated:(_Bool)arg4;
 - (void)setupCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (id)itemModuleControllers;
+- (void)viewWillLayoutSubviews;
+- (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)scrollViewDidScroll:(id)arg1;
+- (void)_refreshUpdateAllBarButton;
+- (id)_createUpdateAllBarButton;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (id)initWithItemManager:(id)arg1 tableViewStyle:(long long)arg2;
 - (id)initWithHome:(id)arg1;

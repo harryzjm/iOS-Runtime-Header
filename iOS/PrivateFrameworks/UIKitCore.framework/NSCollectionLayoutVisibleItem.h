@@ -19,9 +19,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(nonatomic, getter=isDirty) _Bool dirty; // @synthesize dirty=_dirty;
-@property(retain, nonatomic) NSCollectionLayoutItem *layoutItem; // @synthesize layoutItem=_layoutItem;
-@property(retain, nonatomic) UICollectionViewLayoutAttributes *layoutAttributes; // @synthesize layoutAttributes=_layoutAttributes;
 @property(readonly, nonatomic) struct CGRect bounds;
 @property(nonatomic) struct CGPoint center;
 @property(readonly, nonatomic) struct CGRect frame;
@@ -35,7 +32,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGAffineTransform transform;
 @property(nonatomic) struct CATransform3D transform3D;
 @property(readonly, copy) NSString *description;
-- (id)initWithLayoutAttributes:(id)arg1 layoutItem:(id)arg2;
 
 // Remaining properties
 @property(readonly, nonatomic) UIBezierPath *collisionBoundingPath;

@@ -21,8 +21,9 @@ __attribute__((visibility("hidden")))
 
 @property(readonly) NSArray *sinkArray; // @synthesize sinkArray=_sinkArray;
 - (void)distributeVideoFrame:(struct opaqueCMSampleBuffer *)arg1 frameTime:(CDStruct_1b6d18a9)arg2 preview:(_Bool)arg3 orientation:(int)arg4 fromCamera:(_Bool)arg5 camera:(int)arg6 switching:(_Bool)arg7 videoMirrored:(_Bool)arg8;
-- (void)removeSink:(id)arg1;
-- (void)addSink:(id)arg1;
+- (unsigned int)removeSink:(id)arg1;
+- (unsigned int)addSink:(id)arg1;
+@property(readonly) unsigned int sinkCount;
 @property(readonly) NSObject<VCVideoCaptureServer> *captureServer;
 - (void)dealloc;
 - (id)initWithCaptureServer:(id)arg1;

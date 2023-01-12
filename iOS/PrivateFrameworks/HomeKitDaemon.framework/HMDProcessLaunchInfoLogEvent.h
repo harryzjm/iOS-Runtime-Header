@@ -4,25 +4,46 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeKitDaemon/HMDCoreAnalyticsLogging-Protocol.h>
+#import <HomeKitMetrics/HMMLogEvent.h>
+
+#import <HomeKitDaemon/HMMCoreAnalyticsLogging-Protocol.h>
 
 @class NSString;
 
-@interface HMDProcessLaunchInfoLogEvent <HMDCoreAnalyticsLogging>
+@interface HMDProcessLaunchInfoLogEvent : HMMLogEvent <HMMCoreAnalyticsLogging>
 {
+    long long _submissionState;
     NSString *_dataSyncState;
-    double _timeSincePreviousProcessLaunch;
-    double _timeSinceLaunchToDataSyncStateGood;
+    double _timeIntervalSincePreviousProcessLaunch;
+    unsigned long long _millisecondsSinceLaunchToDataSyncStateGood;
+    long long _numUncommittedRecords;
+    long long _numUncommittedAndPushedRecords;
+    NSString *_processExitType;
+    NSString *_processExitReason;
+    unsigned long long _processLaunchCount;
+    unsigned long long _processJetsamCount;
+    unsigned long long _processCrashCount;
 }
 
-+ (id)uuid;
++ (_Bool)submitEventWithHistogrammedCommonConfigurationDimensions;
 - (void).cxx_destruct;
-@property(readonly) double timeSinceLaunchToDataSyncStateGood; // @synthesize timeSinceLaunchToDataSyncStateGood=_timeSinceLaunchToDataSyncStateGood;
-@property(readonly) double timeSincePreviousProcessLaunch; // @synthesize timeSincePreviousProcessLaunch=_timeSincePreviousProcessLaunch;
+@property(readonly) unsigned long long processCrashCount; // @synthesize processCrashCount=_processCrashCount;
+@property(readonly) unsigned long long processJetsamCount; // @synthesize processJetsamCount=_processJetsamCount;
+@property(readonly) unsigned long long processLaunchCount; // @synthesize processLaunchCount=_processLaunchCount;
+@property(readonly, nonatomic) NSString *processExitReason; // @synthesize processExitReason=_processExitReason;
+@property(readonly, nonatomic) NSString *processExitType; // @synthesize processExitType=_processExitType;
+@property(readonly) long long numUncommittedAndPushedRecords; // @synthesize numUncommittedAndPushedRecords=_numUncommittedAndPushedRecords;
+@property(readonly) long long numUncommittedRecords; // @synthesize numUncommittedRecords=_numUncommittedRecords;
+@property(readonly) unsigned long long millisecondsSinceLaunchToDataSyncStateGood; // @synthesize millisecondsSinceLaunchToDataSyncStateGood=_millisecondsSinceLaunchToDataSyncStateGood;
+@property(readonly) double timeIntervalSincePreviousProcessLaunch; // @synthesize timeIntervalSincePreviousProcessLaunch=_timeIntervalSincePreviousProcessLaunch;
 @property(readonly, copy, nonatomic) NSString *dataSyncState; // @synthesize dataSyncState=_dataSyncState;
-- (id)initWithDataSyncState:(id)arg1 timeSincePreviousProcessLaunch:(double)arg2 timeSinceLaunchToDataSyncStateGood:(double)arg3;
+@property(readonly) long long submissionState; // @synthesize submissionState=_submissionState;
 - (id)serializedEvent;
 - (id)eventName;
+- (id)initWithSubmissionState:(long long)arg1 dataSyncState:(id)arg2 timeIntervalSincePreviousProcessLaunch:(double)arg3 millisecondsSinceLaunchToDataSyncStateGood:(unsigned long long)arg4 numUncommittedRecords:(long long)arg5 numUncommittedAndPushedRecords:(long long)arg6 processExitType:(id)arg7 processExitReason:(id)arg8 processLaunchCount:(unsigned long long)arg9 processJetsamCount:(unsigned long long)arg10 processCrashCount:(unsigned long long)arg11;
+
+// Remaining properties
+@property(readonly, nonatomic) NSString *accessoryIdentifier;
 
 @end
 

@@ -7,15 +7,15 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (TSCHArchivingUtilities)
-- (id)tsch_initTSCHChartGridValuesArrayWithProtobufGridRowArray:(const RepeatedPtrField_36342b27 *)arg1;
-- (void)tsch_saveTSCHChartGridValuesArrayToProtobufGridRowArray:(RepeatedPtrField_36342b27 *)arg1;
-- (id)tsch_initTSCHChartGridValuesWithProtobufGridRow:(const struct GridRow *)arg1;
-- (void)tsch_saveTSCHChartGridValuesToProtobufGridRow:(struct GridRow *)arg1;
-- (id)tsch_initWithSwapTuplesArray:(const RepeatedPtrField_e6d64692 *)arg1 unarchiver:(id)arg2;
-- (void)tsch_saveToSwapTuplesArray:(RepeatedPtrField_e6d64692 *)arg1 archiver:(id)arg2;
-- (id)tsch_initWithSwapTuples:(const struct StyleSwapUndoTuplesArchive *)arg1 unarchiver:(id)arg2;
-- (void)tsch_saveToSwapTuples:(struct StyleSwapUndoTuplesArchive *)arg1 archiver:(id)arg2;
-- (id)tsch_initWithSwapTupleArray:(const RepeatedPtrField_6c786866 *)arg1 unarchiver:(id)arg2;
-- (void)tsch_saveToSwapTupleArray:(RepeatedPtrField_6c786866 *)arg1 archiver:(id)arg2;
+- (id)tsch_initTSCHChartGridValuesArrayWithProtobufGridRowArray:(const void *)arg1;
+- (void)tsch_saveTSCHChartGridValuesArrayToProtobufGridRowArray:(void *)arg1;
+- (id)tsch_initTSCHChartGridValuesWithProtobufGridRow:(const void *)arg1;
+- (void)tsch_saveTSCHChartGridValuesToProtobufGridRow:(void *)arg1;
+- (id)tsch_initWithSwapTuplesArray:(const void *)arg1 unarchiver:(id)arg2;
+- (void)tsch_saveToSwapTuplesArray:(void *)arg1 archiver:(id)arg2;
+- (id)tsch_initWithSwapTuples:(const void *)arg1 unarchiver:(id)arg2;
+- (void)tsch_saveToSwapTuples:(void *)arg1 archiver:(id)arg2;
+- (id)tsch_initWithSwapTupleArray:(const void *)arg1 unarchiver:(id)arg2;
+- (void)tsch_saveToSwapTupleArray:(void *)arg1 archiver:(id)arg2;
 @end
 

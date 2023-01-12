@@ -7,7 +7,6 @@
 @class NSString;
 
 @protocol PPInternalServerProtocol
-- (void)resetTrialMLModelsForNamespaceName:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)setTrialUseDefaultFiles:(_Bool)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)trialOverridePath:(NSString *)arg1 namespaceName:(NSString *)arg2 factorName:(NSString *)arg3 completion:(void (^)(_Bool, NSError *))arg4;
 - (void)sysdiagnoseInformationWithCompletion:(void (^)(NSString *, NSError *))arg1;

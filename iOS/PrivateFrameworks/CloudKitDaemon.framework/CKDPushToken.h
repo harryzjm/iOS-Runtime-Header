@@ -8,7 +8,6 @@
 
 @class NSData, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDPushToken : NSObject
 {
     NSString *_apsEnvironmentString;

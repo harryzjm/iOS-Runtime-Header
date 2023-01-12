@@ -8,7 +8,7 @@
 
 #import <IMCore/NSCopying-Protocol.h>
 
-@class IMBalloonPluginDataSource, IMHandle, IMMessageItem, NSArray, NSAttributedString, NSData, NSDate, NSDictionary, NSError, NSString;
+@class IMHandle, IMMessageItem, NSArray, NSAttributedString, NSData, NSDate, NSDictionary, NSError, NSString;
 
 @interface IMMessage : NSObject <NSCopying>
 {
@@ -36,12 +36,15 @@
     _Bool _isAddressedToMe;
     _Bool _hasMention;
     _Bool _isSOS;
+    _Bool _useStandalone;
     NSString *_associatedMessageGUID;
     long long _associatedMessageType;
     NSDictionary *_messageSummaryInfo;
     NSString *_threadIdentifier;
     IMMessage *_threadOriginator;
     NSDictionary *_replyCountsByPart;
+    NSArray *_syndicationRanges;
+    NSArray *_syncedSyndicationRanges;
     NSString *_associatedBalloonBundleID;
     NSString *_sourceApplicationID;
     NSData *_customTypingIndicatorIcon;
@@ -74,6 +77,7 @@
 + (id)instantMessageWithAssociatedMessageContent:(id)arg1 flags:(unsigned long long)arg2 associatedMessageGUID:(id)arg3 associatedMessageType:(long long)arg4 associatedMessageRange:(struct _NSRange)arg5 messageSummaryInfo:(id)arg6 threadIdentifier:(id)arg7;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long sortID; // @synthesize sortID=_sortID;
+@property(nonatomic) _Bool useStandalone; // @synthesize useStandalone=_useStandalone;
 @property(nonatomic) _Bool isSOS; // @synthesize isSOS=_isSOS;
 @property(retain, nonatomic) NSString *notificationIDSTokenURI; // @synthesize notificationIDSTokenURI=_notificationIDSTokenURI;
 @property(retain, nonatomic) NSData *customTypingIndicatorIcon; // @synthesize customTypingIndicatorIcon=_customTypingIndicatorIcon;
@@ -85,6 +89,8 @@
 @property(retain, nonatomic) NSString *associatedBalloonBundleID; // @synthesize associatedBalloonBundleID=_associatedBalloonBundleID;
 @property(retain, nonatomic) NSData *payloadData; // @synthesize payloadData=_payloadData;
 @property(retain, nonatomic) NSString *balloonBundleID; // @synthesize balloonBundleID=_balloonBundleID;
+@property(copy, nonatomic, setter=_syncedSyndicationRanges:) NSArray *syncedSyndicationRanges; // @synthesize syncedSyndicationRanges=_syncedSyndicationRanges;
+@property(copy, nonatomic, setter=_syndicationRanges:) NSArray *syndicationRanges; // @synthesize syndicationRanges=_syndicationRanges;
 @property(retain, nonatomic) NSDictionary *replyCountsByPart; // @synthesize replyCountsByPart=_replyCountsByPart;
 @property(retain, nonatomic) IMMessage *threadOriginator; // @synthesize threadOriginator=_threadOriginator;
 @property(copy, nonatomic) NSString *threadIdentifier; // @synthesize threadIdentifier=_threadIdentifier;
@@ -111,11 +117,14 @@
 - (void)_ovverrideGUIDForTest:(id)arg1;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
+- (id)messagesSeparatedByByteLength:(long long)arg1;
 - (id)messagesBySeparatingRichLinks;
 @property(readonly, nonatomic) IMMessageItem *_imMessageItem;
 - (long long)compare:(id)arg1 comparisonType:(long long)arg2;
 - (long long)compare:(id)arg1;
 - (_Bool)isReply;
+@property(readonly, nonatomic) _Bool didNotifyRecipient;
+@property(readonly, nonatomic) _Bool wasDeliveredQuietly;
 @property(readonly, nonatomic) _Bool wasDataDetected;
 @property(readonly, nonatomic) _Bool wasDowngraded;
 @property(readonly, nonatomic) _Bool isAlert;
@@ -127,6 +136,7 @@
 @property(readonly, nonatomic) _Bool isAutoReply;
 @property(readonly, nonatomic) _Bool isDelayed;
 @property(readonly, nonatomic) _Bool isEmpty;
+@property(readonly, nonatomic, getter=isSenderUnknown) _Bool senderUnknown;
 @property(readonly, nonatomic) _Bool isFromMe;
 @property(readonly, nonatomic) _Bool isEmote;
 @property(readonly, nonatomic) NSArray *inlineAttachmentAttributesArray;
@@ -154,7 +164,7 @@
 - (id)descriptionForPurpose:(long long)arg1 inChat:(id)arg2 senderDisplayName:(id)arg3;
 - (id)descriptionForPurpose:(long long)arg1 inChat:(id)arg2;
 - (id)descriptionForPurpose:(long long)arg1;
-@property(readonly, nonatomic) IMBalloonPluginDataSource *richLinkDataSource;
+- (id)richLinkDataSourceWithChatContext:(id)arg1;
 @property(readonly, nonatomic) _Bool isRichLinkMessage;
 @property(readonly, nonatomic) _Bool isAssociatedMessage;
 - (id)initWithSender:(id)arg1 time:(id)arg2 text:(id)arg3 messageSubject:(id)arg4 fileTransferGUIDs:(id)arg5 flags:(unsigned long long)arg6 error:(id)arg7 guid:(id)arg8 subject:(id)arg9 associatedMessageGUID:(id)arg10 associatedMessageType:(long long)arg11 associatedMessageRange:(struct _NSRange)arg12 associatedMessageInfo:(id)arg13;

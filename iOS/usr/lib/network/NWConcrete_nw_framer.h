@@ -9,7 +9,7 @@
 #import <network/OS_nw_framer-Protocol.h>
 
 @class NSString;
-@protocol OS_dispatch_data, OS_nw_context, OS_nw_dictionary, OS_nw_endpoint, OS_nw_parameters, OS_nw_protocol_definition, OS_nw_protocol_metadata;
+@protocol OS_nw_array, OS_nw_context, OS_nw_dictionary, OS_nw_endpoint, OS_nw_parameters, OS_nw_protocol_definition, OS_nw_protocol_metadata;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_framer : NSObject <OS_nw_framer>
@@ -29,6 +29,8 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType stop;
     CDUnknownBlockType cleanup;
     CDUnknownBlockType copy_metadata;
+    unsigned long long handshake_milliseconds;
+    unsigned long long handshake_rtt_milliseconds;
     struct nw_frame_array_s inbound_frames;
     struct nw_frame_array_s outbound_frames;
     unsigned long long input_needed;
@@ -36,11 +38,10 @@ __attribute__((visibility("hidden")))
     struct nw_frame_array_s received_input_frames;
     struct nw_frame_array_s pending_input_frames;
     unsigned int pending_input_frame_count;
-    NSObject<OS_dispatch_data> *output_data;
+    NSObject<OS_nw_array> *output_data_array;
     CDUnknownBlockType wakeup_block;
     struct nw_frame_array_s received_output_frames;
     NSObject<OS_nw_protocol_metadata> *pending_output_message;
-    _Bool pending_output_message_complete;
     unsigned int pending_output_message_length;
     unsigned int pending_output_frames;
     unsigned int pending_output_cursor;
@@ -57,10 +58,15 @@ __attribute__((visibility("hidden")))
     unsigned int new_input_available:1;
     unsigned int in_output_callout:1;
     unsigned int pending_input_should_mark_complete:1;
+    unsigned int pending_output_message_complete:1;
+    unsigned int pending_output_connection_complete:1;
+    unsigned int pending_output_finished:1;
     unsigned int failed:1;
     unsigned int pass_through_input:1;
     unsigned int pass_through_output:1;
-    unsigned int __pad_bits:2;
+    unsigned int input_suspended:1;
+    unsigned int wait_for_early_data:1;
+    unsigned int block_lower_metadata:1;
     char log_str[84];
 }
 

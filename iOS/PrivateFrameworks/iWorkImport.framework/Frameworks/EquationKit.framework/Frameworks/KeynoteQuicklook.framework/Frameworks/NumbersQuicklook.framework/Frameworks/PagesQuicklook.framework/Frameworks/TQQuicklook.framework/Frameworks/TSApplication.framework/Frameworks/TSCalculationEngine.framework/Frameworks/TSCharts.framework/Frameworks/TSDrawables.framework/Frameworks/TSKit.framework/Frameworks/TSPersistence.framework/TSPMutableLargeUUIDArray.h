@@ -9,9 +9,9 @@
 }
 
 + (Class)arraySegmentClass;
-- (void)loadFromMessage:(const struct LargeUUIDArray *)arg1 unarchiver:(id)arg2;
+- (void)loadFromMessage:(const void *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)saveToMessage:(struct LargeUUIDArray *)arg1 archiver:(id)arg2;
+- (void)saveToMessage:(void *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)replaceUUIDAtIndex:(unsigned long long)arg1 withUUID:(UUIDData_d8cf1c72)arg2;
 - (void)addUUID:(UUIDData_d8cf1c72)arg1;

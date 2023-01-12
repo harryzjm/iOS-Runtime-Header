@@ -17,9 +17,11 @@ __attribute__((visibility("hidden")))
     id <PXNavigationListItem> _item;
     id <PUOutlineCellDelegate> _delegate;
     long long _style;
+    long long _mediaRequestID;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long mediaRequestID; // @synthesize mediaRequestID=_mediaRequestID;
 @property(nonatomic) long long style; // @synthesize style=_style;
 @property(nonatomic) __weak id <PUOutlineCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) id <PXNavigationListItem> item; // @synthesize item=_item;
@@ -28,8 +30,8 @@ __attribute__((visibility("hidden")))
 - (void)_renameItem:(id)arg1 toTitle:(id)arg2;
 - (id)_editingConfigurationForState:(unsigned long long)arg1;
 - (void)prepareForReuse;
+- (_Bool)canBecomeFocused;
 - (_Bool)_hasEditSpecificAccessories;
-- (void)_setAdditionalPropertiesForConfiguration:(id)arg1 state:(unsigned long long)arg2;
 - (void)_updateViewConfigurationsWithState:(unsigned long long)arg1;
 
 @end

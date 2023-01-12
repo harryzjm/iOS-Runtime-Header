@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 - (void)webView:(id)arg1 didFinishNavigation:(id)arg2;
 - (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
 - (void)webViewDidClose:(id)arg1;
-- (id)initWithSession:(struct PopUpSOAuthorizationSession *)arg1;
+- (id)initWithSession:(void *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

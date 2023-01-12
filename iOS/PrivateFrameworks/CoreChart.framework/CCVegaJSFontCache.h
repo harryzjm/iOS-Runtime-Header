@@ -15,6 +15,7 @@
     NSMutableDictionary *_internalNameCache;
 }
 
++ (void)cleanUp;
 + (struct __CTFont *)cacheedFontForInternalName:(id)arg1;
 + (void)cacheFont:(struct __CTFont *)arg1 forInternalName:(id)arg2;
 + (id)fontMetricsForTextStyle:(id)arg1 options:(id)arg2;

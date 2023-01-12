@@ -13,20 +13,21 @@
 #import <ChatKit/CKBrowserTransitionCoordinatorDelegate-Protocol.h>
 #import <ChatKit/CKBrowserViewControllerStoreSendDelegate-Protocol.h>
 #import <ChatKit/CKDeviceOrientationManagerDelegate-Protocol.h>
-#import <ChatKit/CKFullScreenAppViewControllerDelegate-Protocol.h>
+#import <ChatKit/CKExpandedAppViewControllerDelegate-Protocol.h>
 #import <ChatKit/CKHandwritingPresentationControllerDelegate-Protocol.h>
 #import <ChatKit/CKHandwritingViewControllerSendDelegate-Protocol.h>
 #import <ChatKit/CKMessageEntryViewInputDelegate-Protocol.h>
 #import <ChatKit/CKPhotoBrowserViewControllerSendDelegate-Protocol.h>
 #import <ChatKit/CKPluginEntryViewControllerDelegate-Protocol.h>
 #import <ChatKit/SKStoreProductViewControllerDelegate-Protocol.h>
+#import <ChatKit/UIPopoverPresentationControllerDelegate-Protocol.h>
 #import <ChatKit/UITextInputPayloadDelegate-Protocol.h>
 #import <ChatKit/UIViewControllerTransitioningDelegate-Protocol.h>
 
 @class CKBrowserSwitcherViewController, CKChatEagerUploadController, CKDeviceOrientationManager, CKHandwritingPresentationController, CKKeyboardContentViewController, CKMessageEntryView, CKScheduledUpdater, IMBalloonPlugin, IMBalloonPluginDataSource, IMScheduledUpdater, NSDate, NSString, UINavigationController, UITextInputPayloadController, UIViewController;
-@protocol CKBrowserViewControllerProtocol, CKChatInputControllerDelegate;
+@protocol CKBrowserViewControllerProtocol, CKChatInputControllerDelegate, CKExternalPluginViewControllerProvider;
 
-@interface CKChatInputController : NSObject <UITextInputPayloadDelegate, CKMessageEntryViewInputDelegate, CKPhotoBrowserViewControllerSendDelegate, CKHandwritingViewControllerSendDelegate, CKBrowserViewControllerStoreSendDelegate, CKPluginEntryViewControllerDelegate, CKFullScreenAppViewControllerDelegate, CKDeviceOrientationManagerDelegate, CKBrowserSwitcherViewControllerDelegate, CKBrowserTransitionCoordinatorDelegate, CKHandwritingPresentationControllerDelegate, CKBrowserAppManagerViewControllerDelegate, CKAppMenuViewControllerDelegate, UIViewControllerTransitioningDelegate, SKStoreProductViewControllerDelegate, CKAppSelectionInterface>
+@interface CKChatInputController : NSObject <UITextInputPayloadDelegate, CKMessageEntryViewInputDelegate, CKPhotoBrowserViewControllerSendDelegate, CKHandwritingViewControllerSendDelegate, CKBrowserViewControllerStoreSendDelegate, CKPluginEntryViewControllerDelegate, CKExpandedAppViewControllerDelegate, CKDeviceOrientationManagerDelegate, CKBrowserSwitcherViewControllerDelegate, CKBrowserTransitionCoordinatorDelegate, CKHandwritingPresentationControllerDelegate, CKBrowserAppManagerViewControllerDelegate, CKAppMenuViewControllerDelegate, UIViewControllerTransitioningDelegate, UIPopoverPresentationControllerDelegate, SKStoreProductViewControllerDelegate, CKAppSelectionInterface>
 {
     _Bool _isDismissingAppModal;
     _Bool _shouldSuppressStatusBarForHandwriting;
@@ -37,6 +38,7 @@
     _Bool _inCollapseOrExpandAnimation;
     _Bool _shouldRestoreAppSwitcher;
     id <CKChatInputControllerDelegate> _delegate;
+    id <CKExternalPluginViewControllerProvider> _externalPluginControllerProvider;
     IMBalloonPlugin *_browserPlugin;
     IMBalloonPluginDataSource *_browserPluginDataSource;
     UIViewController *_statusBarStyleViewController;
@@ -86,11 +88,13 @@
 @property(readonly, nonatomic) _Bool isDismissingAppModal; // @synthesize isDismissingAppModal=_isDismissingAppModal;
 @property(retain, nonatomic) IMBalloonPluginDataSource *browserPluginDataSource; // @synthesize browserPluginDataSource=_browserPluginDataSource;
 @property(retain, nonatomic) IMBalloonPlugin *browserPlugin; // @synthesize browserPlugin=_browserPlugin;
+@property(nonatomic) __weak id <CKExternalPluginViewControllerProvider> externalPluginControllerProvider; // @synthesize externalPluginControllerProvider=_externalPluginControllerProvider;
 @property(nonatomic) __weak id <CKChatInputControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)productViewControllerDidFinish:(id)arg1;
 - (id)animationControllerForDismissedController:(id)arg1;
 - (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (id)presentationControllerForPresentedViewController:(id)arg1 presentingViewController:(id)arg2 sourceViewController:(id)arg3;
+- (void)presentationControllerDidDismiss:(id)arg1;
 - (id)participantHandles;
 - (void)eagerUploadPayload:(id)arg1 identifier:(id)arg2 replace:(_Bool)arg3;
 - (void)eagerUploadCancelIdentifier:(id)arg1;
@@ -102,6 +106,7 @@
 - (void)handwritingPresentationControllerWillHideHandwriting:(id)arg1;
 - (void)handwritingPresentationControllerDidShowHandwriting:(id)arg1;
 - (void)dismissPlugin;
+- (void)didStageAssetArchive:(id)arg1 identifier:(id)arg2;
 - (void)stageAssetArchive:(id)arg1 skipShelf:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)workingDraftDirForPluginIdentifier:(id)arg1;
 - (id)workingDirForDraft;
@@ -109,12 +114,12 @@
 - (void)showModalViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)showEntryViewShelf:(id)arg1 forPlugin:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)showEntryViewShelf:(id)arg1;
-- (void)fullscreenAppViewControllerDidTransitionFromOrientation:(long long)arg1 toOrientation:(long long)arg2;
-- (void)fullscreenAppViewControllerSwitcherDidSelectAppManager:(id)arg1;
-- (void)fullscreenAppViewControllerSwitcherDidSelectAppStore:(id)arg1;
-- (void)fullscreenAppViewController:(id)arg1 hasUpdatedLastTouchDate:(id)arg2;
-- (void)fullscreenAppViewController:(id)arg1 wantsToSwitchToPlugin:(id)arg2 datasource:(id)arg3;
-- (void)fullscreenAppViewControllerWantsToCollapse:(id)arg1;
+- (void)expandedAppViewControllerDidTransitionFromOrientation:(long long)arg1 toOrientation:(long long)arg2;
+- (void)expandedAppViewControllerSwitcherDidSelectAppManager:(id)arg1;
+- (void)expandedAppViewControllerSwitcherDidSelectAppStore:(id)arg1;
+- (void)expandedAppViewController:(id)arg1 hasUpdatedLastTouchDate:(id)arg2;
+- (void)expandedAppViewController:(id)arg1 wantsToSwitchToPlugin:(id)arg2 datasource:(id)arg3;
+- (void)expandedAppViewControllerWantsToCollapse:(id)arg1;
 - (void)setLocalUserIsTyping:(_Bool)arg1;
 - (id)pluginBundleID;
 - (_Bool)_shouldSendTypingIndicatorDataForPluginIdentifier:(id)arg1;
@@ -162,8 +167,10 @@
 - (_Bool)messageEntryShouldHideCaret:(id)arg1;
 - (void)messageEntryViewBrowserButtonHit:(id)arg1;
 - (void)messageEntryViewHandwritingButtonHit:(id)arg1;
+- (void)messageEntryViewPhotoButtonTouchUpOutside:(id)arg1;
 - (void)messageEntryViewPhotoButtonTouchDown:(id)arg1;
 - (void)messageEntryViewPhotoButtonHit:(id)arg1;
+- (void)browserWillDismiss;
 - (void)messageEntryViewDidTakeFocus:(id)arg1;
 - (void)messageEntryViewDidCollapse:(id)arg1;
 - (void)messageEntryViewDidExpand:(id)arg1;
@@ -186,9 +193,12 @@
 - (void)showKeyboard;
 - (void)_dismissBrowserViewControllerAndReloadInputViews:(_Bool)arg1;
 - (void)dismissBrowserViewController;
+- (void)presentModernCardForPlugin:(id)arg1 presentationStyle:(unsigned long long)arg2;
+- (void)showBrowserForPlugin:(id)arg1 dataSource:(id)arg2 style:(unsigned long long)arg3 presentationConfiguration:(id)arg4;
 - (void)showBrowserForPlugin:(id)arg1 dataSource:(id)arg2 style:(unsigned long long)arg3;
-- (void)macShowExpandedBrowser:(id)arg1;
-- (void)macShowBrowserForPlugin:(id)arg1 dataSource:(id)arg2 style:(unsigned long long)arg3;
+- (void)macShowExpandedBrowser:(id)arg1 presentationConfiguration:(id)arg2;
+- (void)macShowBrowserForPlugin:(id)arg1 dataSource:(id)arg2 style:(unsigned long long)arg3 presentationConfiguration:(id)arg4;
+- (void)launchAndShowBrowserForPlugin:(id)arg1 dataSource:(id)arg2 style:(unsigned long long)arg3 presentationConfiguration:(id)arg4;
 - (void)launchAndShowBrowserForPlugin:(id)arg1 dataSource:(id)arg2 style:(unsigned long long)arg3;
 - (void)_setupObserverForLaunchAppExtensionForDebugging;
 - (void)_launchAppExtensionForDebugging;
@@ -197,6 +207,7 @@
 - (void)switcherViewControllerDidSelectAppManager:(id)arg1 shouldRestoreAppSwitcher:(_Bool)arg2;
 - (void)switcherViewControllerDidSelectAppStore:(id)arg1 shouldRestoreAppSwitcher:(_Bool)arg2;
 - (void)switcherViewControllerDidCollapse:(id)arg1;
+- (void)setConversationAndRecipientsForBrowser:(id)arg1;
 - (void)switcherViewControllerDidFinishSwitching:(id)arg1 toViewController:(id)arg2;
 - (id)appIconOverride;
 - (id)appTitleOverride;
@@ -214,6 +225,8 @@
 - (void)keyboardWillHide:(id)arg1;
 - (void)applicationWillAddDeactivationReasonNotification:(id)arg1;
 - (void)prepareForSuspend;
+- (void)requestPhotoBrowserToUnstageImages:(id)arg1;
+- (void)requestPhotoBrowserToEnumerateSelectedImagesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)requestPhotoBrowserInitFromDraft:(id)arg1;
 - (void)requestPhotoBrowserToPrepareForDraft;
 - (void)requestPhotoBrowserToAppendFinalImagesToComposition;
@@ -223,13 +236,13 @@
 - (void)presentAppStoreForURL:(id)arg1;
 - (void)presentAppStoreForAdamID:(id)arg1;
 - (void)macPresentStoreViewControllerForAdamID:(id)arg1;
+- (void)presentViewControllerWithPluginChatItem:(id)arg1 presentationStyle:(unsigned long long)arg2 presentationConfiguration:(id)arg3;
 - (void)presentViewControllerWithPluginChatItem:(id)arg1 presentationStyle:(unsigned long long)arg2;
 - (id)_adamIDFromPluginPayloadData:(id)arg1;
 - (void)swipeDismissBrowser;
 - (void)showHandwritingBrowser;
 - (void)appSelectionInterfaceSelectedItem:(id)arg1;
 - (void)appMenuViewController:(id)arg1 didSelectMenuItem:(id)arg2;
-- (void)macShowAppMenu;
 - (void)_showFullScreenBrowser:(id)arg1;
 - (void)showDTCompose;
 - (void)showFunCamera:(id)arg1;
@@ -247,6 +260,8 @@
 - (id)_entryViewSnapshotWithFrame:(struct CGRect)arg1;
 - (void)_dismissCompactSwitcherOverKeyboardWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_presentCompactSwitcherOverKeyboardWithCompletion:(CDUnknownBlockType)arg1;
+- (_Bool)__im_ff_modernAppPresentationEnabled;
+@property(readonly, nonatomic) _Bool hasExternalPluginViewControllerProvider;
 - (void)_presentPluginWithBundleID:(id)arg1 sendingTextInputPayload:(id)arg2 withPayloadID:(id)arg3 style:(unsigned long long)arg4;
 - (void)_presentPluginWithBundleID:(id)arg1 sendingTextInputPayload:(id)arg2 withPayloadID:(id)arg3;
 - (id)_formattedPayload:(id)arg1 forPayloadID:(id)arg2;

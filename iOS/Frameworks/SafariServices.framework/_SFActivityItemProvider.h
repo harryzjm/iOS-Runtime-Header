@@ -28,7 +28,6 @@
 - (void)main;
 - (id)item;
 - (id)activityViewController:(id)arg1 itemForActivityType:(id)arg2;
-- (id)activityViewControllerPlaceholderItem:(id)arg1;
 - (id)initWithURL:(id)arg1 pageTitle:(id)arg2 webView:(id)arg3;
 - (id)initWithPlaceholderItem:(id)arg1 URL:(id)arg2 pageTitle:(id)arg3 webView:(id)arg4;
 - (id)initWithPlaceholderItem:(id)arg1;

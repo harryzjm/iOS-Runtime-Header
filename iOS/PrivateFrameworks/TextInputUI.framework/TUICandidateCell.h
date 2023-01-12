@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class TIKeyboardCandidate, TUICandidateLabel, UILabel;
+@class TIKeyboardCandidate, TUICandidateLabel, UIImage, UIImageView, UILabel;
 
 @interface TUICandidateCell
 {
@@ -14,6 +14,7 @@
     unsigned long long _candidateNumber;
     long long _alignment;
     double _minimumTextLabelHeight;
+    UIImageView *_imageView;
     TUICandidateLabel *_textLabel;
     TUICandidateLabel *_alternativeTextLabel;
     UILabel *_candidateNumberLabel;
@@ -28,6 +29,7 @@
 @property(retain, nonatomic) UILabel *candidateNumberLabel; // @synthesize candidateNumberLabel=_candidateNumberLabel;
 @property(retain, nonatomic) TUICandidateLabel *alternativeTextLabel; // @synthesize alternativeTextLabel=_alternativeTextLabel;
 @property(retain, nonatomic) TUICandidateLabel *textLabel; // @synthesize textLabel=_textLabel;
+@property(retain, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property(nonatomic) double minimumTextLabelHeight; // @synthesize minimumTextLabelHeight=_minimumTextLabelHeight;
 @property(nonatomic) long long alignment; // @synthesize alignment=_alignment;
 @property(nonatomic) _Bool rowSelected; // @synthesize rowSelected=_rowSelected;
@@ -41,11 +43,13 @@
 - (void)updateLabels;
 - (void)updateStyle;
 - (void)layoutSubviews;
+- (void)_computeImageViewFrame;
 - (void)applyLayoutAttributes:(id)arg1;
 - (_Bool)isFocused;
 - (_Bool)_canFocusProgrammatically;
 - (void)setStyle:(id)arg1;
 - (void)prepareForReuse;
+@property(retain, nonatomic) UIImage *image;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)commonInit;

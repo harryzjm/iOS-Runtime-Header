@@ -21,10 +21,10 @@
     float fBarometricBaseAltitude;
     _Bool fBaselineReceived;
     float fMostRecentFilteredPressure;
-    struct deque<float, std::__1::allocator<float>> fPressureSamples;
+    struct deque<float, std::allocator<float>> fPressureSamples;
     NSObject<OS_dispatch_queue> *fInternalQueue;
     NSObject<OS_dispatch_queue> *fAppQueue;
-    struct CLConnectionClient *fLocationdConnection;
+    void *fLocationdConnection;
     CDUnknownBlockType fHandler;
     CDUnknownBlockType fSignificantElevationSampleHandler;
     double fElevationAscendedOffset;

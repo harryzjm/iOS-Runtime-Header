@@ -7,6 +7,7 @@
 @class NSArray;
 
 @protocol CADSpotlightInterface
+- (void)CADWaitForSpotlightUpdatesWithReply:(void (^)(int))arg1;
 - (void)CADPushItemsToSpotlight:(NSArray *)arg1 reply:(void (^)(int))arg2;
 @end
 

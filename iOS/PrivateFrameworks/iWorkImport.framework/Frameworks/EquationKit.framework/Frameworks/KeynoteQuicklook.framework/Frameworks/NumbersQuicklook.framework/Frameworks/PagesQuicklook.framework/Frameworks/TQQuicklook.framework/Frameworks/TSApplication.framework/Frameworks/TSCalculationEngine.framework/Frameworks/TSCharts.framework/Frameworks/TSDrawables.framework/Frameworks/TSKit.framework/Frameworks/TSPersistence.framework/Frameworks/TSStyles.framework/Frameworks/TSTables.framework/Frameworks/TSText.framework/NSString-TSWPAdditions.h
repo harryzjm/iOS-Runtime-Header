@@ -8,10 +8,10 @@
 
 @interface NSString (TSWPAdditions)
 + (id)tswp_stringForValue:(unsigned int)arg1 withPageNumberFormat:(int)arg2;
-+ (id)tswp_stringForValue:(unsigned int)arg1 withListNumberFormat:(int)arg2 includeFormatting:(_Bool)arg3;
-+ (id)tswp_stringForValue:(unsigned int)arg1 withListNumberFormat:(int)arg2;
++ (id)tswp_stringForValue:(unsigned int)arg1 withListNumberFormat:(unsigned long long)arg2 includeFormatting:(_Bool)arg3;
++ (id)tswp_stringForValue:(unsigned int)arg1 withListNumberFormat:(unsigned long long)arg2;
 + (unsigned long long)tswp_numberForString:(id)arg1 withPageNumberFormat:(int)arg2;
-+ (unsigned long long)tswp_numberForString:(id)arg1 withListNumberFormat:(int)arg2;
++ (unsigned long long)tswp_numberForString:(id)arg1 withListNumberFormat:(unsigned long long)arg2;
 - (id)tswp_stringWithoutControlCharacters;
 - (id)tswp_stringWithUnambiguousNeutralEnding;
 - (id)tswp_stringWithAddedIsolatesBasedOn:(int)arg1;
@@ -21,6 +21,7 @@
 - (unsigned int)tswp_utf32CharacterAtIndex:(unsigned long long)arg1;
 - (int)tswp_contentsScriptInRange:(struct _NSRange)arg1;
 - (int)tswp_contentsScript;
+@property(readonly, nonatomic) _Bool tswp_NSDetectorMatchStringIsStrictPhoneNumber;
 - (id)tswp_replaceOccurrencesOfCharactersInSet:(id)arg1 minimumConsecutiveLength:(unsigned long long)arg2 replaceString:(id)arg3;
 - (_Bool)tswp_isAllWhitespaceInRange:(struct _NSRange)arg1;
 - (_Bool)tswp_isHyphenationAtCharacterIndex:(unsigned long long)arg1;

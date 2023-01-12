@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVFullScreenViewController, AVPresentationContainerView, AVPresentationContextTransition, AVPresentationController, UIView, UIViewController, UIWindow;
+@class AVFullScreenViewController, AVPresentationConfiguration, AVPresentationContainerView, AVPresentationContextTransition, AVPresentationController, UIView, UIViewController, UIWindow;
 @protocol UIViewControllerContextTransitioning;
 
 __attribute__((visibility("hidden")))
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     _Bool _allowsSecondWindowPresentations;
     _Bool _wasInitiallyPresentedWithoutSecondWindow;
     _Bool _allowsPausingWhenTransitionCompletes;
+    AVPresentationConfiguration *_configuration;
     UIView *_sourceView;
     UIView *_touchBlockingView;
     UIView *_backgroundView;
@@ -40,6 +41,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property(readonly, nonatomic) UIView *touchBlockingView; // @synthesize touchBlockingView=_touchBlockingView;
 @property(nonatomic) __weak UIView *sourceView; // @synthesize sourceView=_sourceView;
+@property(readonly, nonatomic) AVPresentationConfiguration *configuration; // @synthesize configuration=_configuration;
 - (id)dismissalToView;
 - (id)presentationFromView;
 @property(readonly, nonatomic) _Bool canBeInteractivelyDismissed;
@@ -55,7 +57,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) __weak UIWindow *presentationWindow;
 - (id)presentingView;
 @property(readonly, nonatomic) __weak UIView *containerView;
-- (id)initWithPresentationController:(id)arg1;
+- (id)initWithPresentationController:(id)arg1 configuration:(id)arg2;
 
 @end
 

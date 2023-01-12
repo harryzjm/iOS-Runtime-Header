@@ -40,7 +40,7 @@
 @property(readonly, nonatomic) double preferredIconScale; // @synthesize preferredIconScale=_preferredIconScale;
 @property(readonly, nonatomic) struct CGSize preferredIconSize; // @synthesize preferredIconSize=_preferredIconSize;
 @property(readonly, nonatomic) NSURL *baseURL; // @synthesize baseURL=_baseURL;
-@property(nonatomic) __weak id <WBSSiteMetadataProviderDelegate> providerDelegate; // @synthesize providerDelegate=_providerDelegate;
+@property __weak id <WBSSiteMetadataProviderDelegate> providerDelegate; // @synthesize providerDelegate=_providerDelegate;
 - (void)_linkPageURL:(id)arg1 toIconWithInfo:(id)arg2 isPrivate:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_atomicallyLinkPageURLs:(id)arg1 toIconWithInfo:(id)arg2 isPrivate:(_Bool)arg3;
 - (void)_getIconForRequest:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

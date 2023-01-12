@@ -21,7 +21,6 @@
 
 + (id)secondHandColor;
 + (id)schoolTimeColor;
-+ (long long)uiSensitivity;
 - (void).cxx_destruct;
 - (void)_handleChangeNotification;
 - (void)_stopObserving;

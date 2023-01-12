@@ -17,7 +17,7 @@
     NSObject<OS_dispatch_queue> *_subsectionParameterIconSenderQueue;
     NSObject<OS_dispatch_queue> *_subsectionParameterIconProcessingQueue;
     NSObject<OS_dispatch_semaphore> *_subsectionParameterIconSemaphore;
-    NSDictionary *_iconWhitelist;
+    NSDictionary *_iconAllowList;
     CDUnknownBlockType _sectionParametersProvider;
     CDUnknownBlockType _sectionInfoSender;
     CDUnknownBlockType _sectionIconSender;
@@ -29,7 +29,7 @@
 @property(copy, nonatomic) CDUnknownBlockType sectionIconSender; // @synthesize sectionIconSender=_sectionIconSender;
 @property(copy, nonatomic) CDUnknownBlockType sectionInfoSender; // @synthesize sectionInfoSender=_sectionInfoSender;
 @property(copy, nonatomic) CDUnknownBlockType sectionParametersProvider; // @synthesize sectionParametersProvider=_sectionParametersProvider;
-@property(retain, nonatomic) NSDictionary *iconWhitelist; // @synthesize iconWhitelist=_iconWhitelist;
+@property(retain, nonatomic) NSDictionary *iconAllowList; // @synthesize iconAllowList=_iconAllowList;
 - (void)_sendSectionIcon:(id)arg1 forSectionID:(id)arg2 forSubtypeID:(long long)arg3 waitForAcknowledgement:(_Bool)arg4 withQueue:(id)arg5 spoolToFile:(_Bool)arg6 andCompletion:(CDUnknownBlockType)arg7;
 - (void)_sendEffectiveSectionInfo:(id)arg1 waitForAcknowledgement:(_Bool)arg2 withQueue:(id)arg3 spoolToFile:(_Bool)arg4 andCompletion:(CDUnknownBlockType)arg5;
 - (void)sendSectionSubtypeParameterIcons:(id)arg1 sectionID:(id)arg2 waitForAcknowledgement:(_Bool)arg3 spoolToFile:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;

@@ -17,6 +17,7 @@
     PHPhotoLibrary *_photoLibrary;
 }
 
++ (id)persistentStoreURLWithManager:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property(readonly, nonatomic) NSMutableDictionary *locationInformationByNodeUUID; // @synthesize locationInformationByNodeUUID=_locationInformationByNodeUUID;
@@ -32,7 +33,7 @@
 - (void)setKeyAssetLocalIdentifier:(id)arg1 forNodeIdentifier:(id)arg2 withAssociatedMomentUUID:(id)arg3;
 - (void)invalidateCache;
 - (void)save;
-- (id)initWithManager:(id)arg1;
+- (id)initWithPersistentStoreURL:(id)arg1 photoLibrary:(id)arg2;
 
 @end
 

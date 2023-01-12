@@ -22,6 +22,9 @@ __attribute__((visibility("hidden")))
     _Bool _activityViewControllerWasCreated;
     _Bool _allowsAirPlayActivity;
     _Bool _allowsRemoveFromFeaturedPhotosActivity;
+    _Bool _allowsSuggestLessPersonActivity;
+    _Bool _allowsEditDateTimeActivity;
+    _Bool _allowsEditLocationActivity;
     _Bool _excludeShareActivity;
     id <PXActivitySharingControllerDelegate> _delegate;
     PUActivitySharingViewModel *_viewModel;
@@ -29,7 +32,6 @@ __attribute__((visibility("hidden")))
     PHPerson *_person;
     NSArray *_excludedActivityTypes;
     NSArray *_activities;
-    const struct __CFString *_aggregateKey;
     PUCarouselSharingViewController *_carouselViewController;
     PHResourceLocalAvailabilityRequest *_resourcesPreheatRequest;
     PUActivityViewController *_internalActivityViewController;
@@ -40,10 +42,12 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) PHResourceLocalAvailabilityRequest *resourcesPreheatRequest; // @synthesize resourcesPreheatRequest=_resourcesPreheatRequest;
 @property(readonly, nonatomic) _Bool excludeShareActivity; // @synthesize excludeShareActivity=_excludeShareActivity;
 @property(retain, nonatomic) PUCarouselSharingViewController *carouselViewController; // @synthesize carouselViewController=_carouselViewController;
-@property(nonatomic) const struct __CFString *aggregateKey; // @synthesize aggregateKey=_aggregateKey;
 @property(copy, nonatomic) NSArray *activities; // @synthesize activities=_activities;
 @property(copy, nonatomic) NSArray *excludedActivityTypes; // @synthesize excludedActivityTypes=_excludedActivityTypes;
 @property(retain, nonatomic) PHPerson *person; // @synthesize person=_person;
+@property(nonatomic) _Bool allowsEditLocationActivity; // @synthesize allowsEditLocationActivity=_allowsEditLocationActivity;
+@property(nonatomic) _Bool allowsEditDateTimeActivity; // @synthesize allowsEditDateTimeActivity=_allowsEditDateTimeActivity;
+@property(nonatomic) _Bool allowsSuggestLessPersonActivity; // @synthesize allowsSuggestLessPersonActivity=_allowsSuggestLessPersonActivity;
 @property(nonatomic) _Bool allowsRemoveFromFeaturedPhotosActivity; // @synthesize allowsRemoveFromFeaturedPhotosActivity=_allowsRemoveFromFeaturedPhotosActivity;
 @property(nonatomic) _Bool allowsAirPlayActivity; // @synthesize allowsAirPlayActivity=_allowsAirPlayActivity;
 @property(copy, nonatomic) NSDictionary *assetsFetchResultsByAssetCollection; // @synthesize assetsFetchResultsByAssetCollection=_assetsFetchResultsByAssetCollection;
@@ -71,6 +75,7 @@ __attribute__((visibility("hidden")))
 - (void)_activityViewControllerDidCompleteWithActivityType:(id)arg1 success:(_Bool)arg2 error:(id)arg3;
 - (void)_updateExcludedActivityTypes;
 - (id)_createActivityViewControllerWithActivities:(id)arg1;
+- (void)selectAllAssets;
 @property(readonly, nonatomic) NSArray *selectedAssets;
 @property(readonly, nonatomic) NSDictionary *selectedAssetsByAssetCollection;
 @property(readonly, nonatomic) PXSelectionSnapshot *selectionSnapshot;
@@ -78,7 +83,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UIActivityViewController<PXActivityViewController> *activityViewController;
 - (id)activityViewControllerIfAvailable;
 - (void)_createCarouselSharingViewControllerIfNeeded;
-- (void)dealloc;
 - (id)initWithActivitySharingConfiguration:(id)arg1;
 - (id)new;
 - (id)init;

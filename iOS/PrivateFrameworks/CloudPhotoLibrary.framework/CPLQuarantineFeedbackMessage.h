@@ -17,7 +17,7 @@
 @property(readonly, nonatomic) Class recordClass; // @synthesize recordClass=_recordClass;
 @property(readonly, nonatomic) NSString *reason; // @synthesize reason=_reason;
 - (id)serverMessage;
-- (id)initWithClass:(Class)arg1 reason:(id)arg2;
+- (id)initWithClass:(Class)arg1 reason:(id)arg2 libraryIdentifier:(id)arg3;
 
 @end
 

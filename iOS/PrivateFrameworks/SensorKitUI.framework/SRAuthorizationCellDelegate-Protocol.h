@@ -9,6 +9,6 @@
 @class NSIndexPath;
 
 @protocol SRAuthorizationCellDelegate <NSObject>
-- (void)setValue:(_Bool)arg1 indexPath:(NSIndexPath *)arg2;
+- (void)authorizationSwitchToggledWithValue:(_Bool)arg1 indexPath:(NSIndexPath *)arg2;
 @end
 

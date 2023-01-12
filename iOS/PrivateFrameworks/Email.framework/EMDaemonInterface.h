@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <Email/EFLoggable-Protocol.h>
+#import <Email/EMRemoteProxyGenerator-Protocol.h>
 
-@class EMAccountRepository, EMActivityRegistry, EMBlockedSenderManager, EMClientState, EMDonationController, EMFetchController, EMInteractionLogger, EMMailboxRepository, EMMessageRepository, EMOutgoingMessageRepository, EMSearchableIndex, NSHashTable, NSString, NSXPCConnection;
+@class EMAccountRepository, EMActivityRegistry, EMBlockedSenderManager, EMClientState, EMDiagnosticInfoGatherer, EMDonationController, EMFetchController, EMInteractionLogger, EMMailboxRepository, EMMessageRepository, EMOutgoingMessageRepository, EMSearchableIndex, NSHashTable, NSString, NSXPCConnection;
 @protocol EFCancelable, EMVIPManager, NSXPCProxyCreating, OS_dispatch_queue;
 
-@interface EMDaemonInterface : NSObject <EFLoggable>
+@interface EMDaemonInterface : NSObject <EFLoggable, EMRemoteProxyGenerator>
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSXPCConnection *_connection;
@@ -32,6 +33,7 @@
     EMActivityRegistry *_activityRegistry;
     id <EMVIPManager> _vipManager;
     EMBlockedSenderManager *_blockedSenderManager;
+    EMDiagnosticInfoGatherer *_diagnosticInfoGatherer;
     EMSearchableIndex *_searchableIndex;
 }
 
@@ -42,6 +44,7 @@
 + (id)log;
 - (void).cxx_destruct;
 @property(readonly) EMSearchableIndex *searchableIndex; // @synthesize searchableIndex=_searchableIndex;
+@property(readonly) EMDiagnosticInfoGatherer *diagnosticInfoGatherer; // @synthesize diagnosticInfoGatherer=_diagnosticInfoGatherer;
 @property(readonly) EMBlockedSenderManager *blockedSenderManager; // @synthesize blockedSenderManager=_blockedSenderManager;
 @property(readonly) id <EMVIPManager> vipManager; // @synthesize vipManager=_vipManager;
 @property(readonly) EMActivityRegistry *activityRegistry; // @synthesize activityRegistry=_activityRegistry;
@@ -58,6 +61,7 @@
 - (void)launchDaemon;
 - (void)resetProtocolConnections;
 - (id)connectionForProtocol:(id)arg1;
+- (id)generateProxyForProtocol:(id)arg1 error:(id *)arg2;
 - (id)_connectionForProtocol:(id)arg1 error:(id *)arg2;
 @property(readonly) id <NSXPCProxyCreating> proxyCreator;
 @property(readonly, nonatomic) NSXPCConnection *test_connection;

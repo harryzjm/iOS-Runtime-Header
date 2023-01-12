@@ -9,6 +9,7 @@
 @class NSArray;
 
 @protocol XBApplicationProviding <NSObject>
+- (NSArray *)recentlyUsedBundleIDs;
 - (NSArray *)allInstalledApplications;
 - (NSArray *)splashBoardSystemApplications;
 - (NSArray *)allSplashBoardApplications;

@@ -10,7 +10,19 @@
 {
 }
 
-+ (void)fetchAssetsWithLanguage:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)promoteAssets;
++ (void)setAssetsAsProvisional;
++ (void)purgeAssetsForLanguage:(id)arg1 error:(id *)arg2;
++ (id)configParametersForVoicemailWithLanguage:(id)arg1;
++ (id)assetPathForLanguage:(id)arg1;
++ (void)fetchAssetsForLanguage:(id)arg1 urgent:(_Bool)arg2 forceUpgrade:(_Bool)arg3 detailedProgress:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
++ (void)fetchAssetsForLanguage:(id)arg1 urgent:(_Bool)arg2 forceUpgrade:(_Bool)arg3 progress:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
++ (void)fetchAssetsForLanguage:(id)arg1 urgent:(_Bool)arg2 progress:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
++ (void)fetchAssetsForLanguage:(id)arg1 progress:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)installedLanguagesWithCompletion:(CDUnknownBlockType)arg1;
++ (id)installedLanguages;
++ (id)fetchMAAssetPathForInstalledLanguage:(id)arg1;
++ (id)_assetQueryForLanguage:(id)arg1;
 
 @end
 

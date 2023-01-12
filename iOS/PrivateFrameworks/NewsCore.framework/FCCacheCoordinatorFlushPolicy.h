@@ -13,11 +13,10 @@
     unsigned long long _lowWaterMark;
 }
 
-@property(nonatomic) unsigned long long lowWaterMark; // @synthesize lowWaterMark=_lowWaterMark;
-@property(nonatomic) unsigned long long highWaterMark; // @synthesize highWaterMark=_highWaterMark;
-@property(nonatomic) _Bool alwaysFlushKeysWithZeroInterest; // @synthesize alwaysFlushKeysWithZeroInterest=_alwaysFlushKeysWithZeroInterest;
-- (_Bool)canPreemptiveFlushWithDataSize:(unsigned long long)arg1;
-- (_Bool)canFlushWithDataSize:(unsigned long long)arg1;
+@property(readonly, nonatomic) unsigned long long lowWaterMark; // @synthesize lowWaterMark=_lowWaterMark;
+@property(readonly, nonatomic) unsigned long long highWaterMark; // @synthesize highWaterMark=_highWaterMark;
+@property(readonly, nonatomic) _Bool alwaysFlushKeysWithZeroInterest; // @synthesize alwaysFlushKeysWithZeroInterest=_alwaysFlushKeysWithZeroInterest;
+- (id)initWithLowWaterMark:(unsigned long long)arg1 highWaterMark:(unsigned long long)arg2 alwaysFlushKeysWithZeroInterest:(_Bool)arg3;
 
 @end
 

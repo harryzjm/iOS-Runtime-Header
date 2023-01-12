@@ -15,14 +15,13 @@
     TSDCommentStorage *mStorage;
     TSTTableInfo *_tableInfo;
     NSString *_annotationUUID;
-    struct TSTCellUID _cellUID;
+    struct TSKUIDStructCoord _cellUID;
 }
 
-- (id).cxx_construct;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *annotationUUID; // @synthesize annotationUUID=_annotationUUID;
 @property(retain, nonatomic) TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
-@property(readonly, nonatomic) struct TSTCellUID cellUID; // @synthesize cellUID=_cellUID;
+@property(readonly, nonatomic) struct TSKUIDStructCoord cellUID; // @synthesize cellUID=_cellUID;
 - (_Bool)isInDocument;
 - (void)commentWillBeAddedToDocumentRoot;
 @property(readonly, nonatomic) _Bool isHighlight;
@@ -38,7 +37,7 @@
 @property(copy, nonatomic) TSDCommentStorage *storage;
 - (void)p_updateAnnotationUUID;
 - (id)initWithStorage:(id)arg1 forTableInfo:(id)arg2 baseCellCoord:(struct TSUModelCellCoord)arg3;
-- (id)initWithStorage:(id)arg1 forTableInfo:(id)arg2 cellUID:(struct TSTCellUID)arg3;
+- (id)initWithStorage:(id)arg1 forTableInfo:(id)arg2 cellUID:(struct TSKUIDStructCoord)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

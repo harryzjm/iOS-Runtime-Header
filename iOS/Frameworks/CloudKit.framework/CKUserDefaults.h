@@ -6,7 +6,6 @@
 
 #import <Foundation/NSUserDefaults.h>
 
-__attribute__((visibility("hidden")))
 @interface CKUserDefaults : NSUserDefaults
 {
 }

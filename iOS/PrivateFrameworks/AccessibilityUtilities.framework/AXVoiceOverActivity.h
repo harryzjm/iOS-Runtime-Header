@@ -24,6 +24,8 @@
     NSNumber *_speakEmojis;
     NSNumber *_containerFeedback;
     NSNumber *_imageDescriptions;
+    NSNumber *_hints;
+    NSNumber *_numberFeedback;
     NSString *_voiceIdentifier;
     NSNumber *_speechRate;
     NSNumber *_volume;
@@ -56,6 +58,8 @@
 @property(retain, nonatomic) NSNumber *volume; // @synthesize volume=_volume;
 @property(retain, nonatomic) NSNumber *speechRate; // @synthesize speechRate=_speechRate;
 @property(retain, nonatomic) NSString *voiceIdentifier; // @synthesize voiceIdentifier=_voiceIdentifier;
+@property(retain, nonatomic) NSNumber *numberFeedback; // @synthesize numberFeedback=_numberFeedback;
+@property(retain, nonatomic) NSNumber *hints; // @synthesize hints=_hints;
 @property(retain, nonatomic) NSNumber *imageDescriptions; // @synthesize imageDescriptions=_imageDescriptions;
 @property(retain, nonatomic) NSNumber *containerFeedback; // @synthesize containerFeedback=_containerFeedback;
 @property(retain, nonatomic) NSNumber *speakEmojis; // @synthesize speakEmojis=_speakEmojis;

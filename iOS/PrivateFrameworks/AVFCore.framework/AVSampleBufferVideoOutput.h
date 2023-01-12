@@ -15,6 +15,7 @@
 }
 
 - (void)_dispatchOutputSequenceWasFlushed;
+- (struct OpaqueFigVisualContext *)_visualContext;
 - (void)_resetLastImageTime;
 - (_Bool)_configureWithVideoQueue:(struct OpaqueFigVideoQueue *)arg1;
 - (struct __CVBuffer *)copyLastPixelBuffer:(CDStruct_1b6d18a9 *)arg1;

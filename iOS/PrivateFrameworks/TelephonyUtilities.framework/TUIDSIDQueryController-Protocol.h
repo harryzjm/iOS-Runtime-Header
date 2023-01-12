@@ -10,6 +10,9 @@
 @protocol OS_dispatch_queue;
 
 @protocol TUIDSIDQueryController <NSObject>
+- (_Bool)currentRemoteDevicesForDestinations:(NSArray *)arg1 service:(NSString *)arg2 listenerID:(NSString *)arg3 queue:(NSObject<OS_dispatch_queue> *)arg4 completionBlock:(void (^)(NSDictionary *))arg5;
 - (_Bool)currentIDStatusForDestinations:(NSArray *)arg1 service:(NSString *)arg2 listenerID:(NSString *)arg3 queue:(NSObject<OS_dispatch_queue> *)arg4 completionBlock:(void (^)(NSDictionary *))arg5;
+- (_Bool)requiredIDStatusForDestinations:(NSArray *)arg1 service:(NSString *)arg2 listenerID:(NSString *)arg3 queue:(NSObject<OS_dispatch_queue> *)arg4 completionBlock:(void (^)(NSDictionary *))arg5;
+- (_Bool)refreshIDStatusForDestinations:(NSArray *)arg1 service:(NSString *)arg2 listenerID:(NSString *)arg3 queue:(NSObject<OS_dispatch_queue> *)arg4 completionBlock:(void (^)(NSDictionary *))arg5;
 @end
 

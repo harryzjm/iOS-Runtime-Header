@@ -17,13 +17,13 @@
 
 + (id)linkedVariable;
 - (id).cxx_construct;
+- (void).cxx_destruct;
 @property(nonatomic) struct TSCH3DShaderVariableScopeType scope; // @synthesize scope;
 @property(retain, nonatomic) TSCH3DShaderVariable *variable; // @synthesize variable;
 @property(retain, nonatomic) NSString *name; // @synthesize name;
 - (id)inputVariableName;
 - (_Bool)isAttribute;
 - (id)description;
-- (void)dealloc;
 
 @end
 

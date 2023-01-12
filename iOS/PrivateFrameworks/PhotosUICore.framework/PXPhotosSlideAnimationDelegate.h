@@ -9,8 +9,8 @@
     struct CGPoint _viewportShift;
 }
 
-- (void)animation:(id)arg1 adjustGeometries:(inout CDStruct_3ab912e1 *)arg2 styles:(inout CDStruct_506f5052 *)arg3 infos:(inout CDStruct_9d1ebe49 *)arg4 forSpriteDisappearingFromRootIndexRange:(struct _PXGSpriteIndexRange)arg5;
-- (void)animation:(id)arg1 adjustGeometries:(inout CDStruct_3ab912e1 *)arg2 styles:(inout CDStruct_506f5052 *)arg3 infos:(inout CDStruct_9d1ebe49 *)arg4 forSpriteAppearingIntoRootIndexRange:(struct _PXGSpriteIndexRange)arg5;
+- (void)animation:(id)arg1 adjustGeometries:(inout CDStruct_4f725fed *)arg2 styles:(inout CDStruct_76b550e2 *)arg3 infos:(inout CDStruct_9d1ebe49 *)arg4 forSpriteDisappearingFromRootIndexRange:(struct _PXGSpriteIndexRange)arg5;
+- (void)animation:(id)arg1 adjustGeometries:(inout CDStruct_4f725fed *)arg2 styles:(inout CDStruct_76b550e2 *)arg3 infos:(inout CDStruct_9d1ebe49 *)arg4 forSpriteAppearingIntoRootIndexRange:(struct _PXGSpriteIndexRange)arg5;
 - (void)animation:(id)arg1 prepareWithRootLayout:(id)arg2 viewportShift:(struct CGPoint)arg3;
 
 @end

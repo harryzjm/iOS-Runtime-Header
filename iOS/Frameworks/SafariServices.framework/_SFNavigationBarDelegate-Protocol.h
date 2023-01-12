@@ -4,33 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SafariServices/NSObject-Protocol.h>
+#import <SafariServices/_SFNavigationBarDelegateCommon-Protocol.h>
 
 @class NSItemProvider, NSURL, NSUUID, UIToolbar, _SFNavigationBar, _SFNavigationIntent;
 
-@protocol _SFNavigationBarDelegate <NSObject>
+@protocol _SFNavigationBarDelegate <_SFNavigationBarDelegateCommon>
 - (NSURL *)navigationBarURLForSharing:(_SFNavigationBar *)arg1;
-- (void)navigationBarStopLoadingButtonWasTapped:(_SFNavigationBar *)arg1;
-- (void)navigationBarReloadButtonWasTapped:(_SFNavigationBar *)arg1;
 - (void)navigationBarCancelButtonWasTapped:(_SFNavigationBar *)arg1;
-- (void)navigationBarReaderButtonWasTapped:(_SFNavigationBar *)arg1;
-- (void)compressedNavigationBarWasTapped:(_SFNavigationBar *)arg1;
 
 @optional
 - (void)navigationBarDidLayoutSubviews:(_SFNavigationBar *)arg1;
 - (void)navigationBar:(_SFNavigationBar *)arg1 didCreateLeadingToolbar:(UIToolbar *)arg2 trailingToolbar:(UIToolbar *)arg3;
-- (void)navigationBarTranslateButtonWasTapped:(_SFNavigationBar *)arg1;
 - (NSUUID *)currentContentUUIDForNavigationBar:(_SFNavigationBar *)arg1;
 - (long long)dataOwnerForNavigationBar:(_SFNavigationBar *)arg1;
 - (NSItemProvider *)itemProviderForNavigationBar:(_SFNavigationBar *)arg1;
 - (void)navigationBarDidUpdateBackdropEffect:(_SFNavigationBar *)arg1;
 - (void)navigationBar:(_SFNavigationBar *)arg1 didProduceNavigationIntent:(_SFNavigationIntent *)arg2;
-- (void)navigationBarFormatMenuButtonStartedInteraction:(_SFNavigationBar *)arg1;
-- (void)navigationBarFormatMenuButtonBecameUnavailable:(_SFNavigationBar *)arg1;
-- (void)navigationBarFormatMenuButtonWasTapped:(_SFNavigationBar *)arg1;
-- (void)navigationBarMediaStateMuteButtonWasTapped:(_SFNavigationBar *)arg1;
 - (void)navigationBarDoneButtonWasTapped:(_SFNavigationBar *)arg1;
-- (void)navigationBarURLWasTapped:(_SFNavigationBar *)arg1 completionHandler:(void (^)(void))arg2;
-- (void)navigationBarMetricsDidChange:(_SFNavigationBar *)arg1;
 @end
 

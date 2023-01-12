@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProtocolBuffer/PBCodable.h>
-
 @class NSData;
 
-@interface SISchemaSiriCue : PBCodable
+@interface SISchemaSiriCue
 {
     int _siriCueType;
     struct {

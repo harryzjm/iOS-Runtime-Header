@@ -4,8 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableDictionary;
-
 @interface UIColorAccessibility
 {
 }
@@ -13,9 +11,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityColorDescriptionWithOptions:(unsigned long long)arg1;
-- (id)_accessibilityColorDescriptionWithLuma;
 - (id)_accessibilityColorDescription;
-@property(retain, nonatomic, setter=_accessibilitySetCachedColorDescriptions:) NSMutableDictionary *_accessibilityCachedColorDescriptions;
 
 @end
 

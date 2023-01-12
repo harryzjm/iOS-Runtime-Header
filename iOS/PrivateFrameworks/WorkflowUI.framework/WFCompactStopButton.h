@@ -17,6 +17,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) WFWorkflowProgressView *progressView; // @synthesize progressView=_progressView;
 @property(retain, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
+- (void)popCompletedCheckmarkWithHaptic:(_Bool)arg1;
 - (void)popCompletedCheckmark;
 - (void)transitionToCompleted:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

@@ -18,20 +18,5 @@
     unsigned long long _textInputValue;
 }
 
-+ (id)controlInfoWithInteractionValue:(unsigned long long)arg1 targetValue:(unsigned long long)arg2 actionValue:(unsigned long long)arg3 controlEvents:(unsigned long long)arg4 textInputValue:(unsigned long long)arg5 shouldWaitForFirstResponderChange:(_Bool)arg6;
-+ (id)controlInfoWithInteractionValue:(unsigned long long)arg1 targetValue:(unsigned long long)arg2 actionValue:(unsigned long long)arg3 controlEvents:(unsigned long long)arg4 textInputValue:(unsigned long long)arg5;
-+ (id)controlInfoWithInteractionValue:(unsigned long long)arg1;
-+ (id)tapGestureInfoWithInteractionValue:(unsigned long long)arg1 firstSubviewValue:(unsigned long long)arg2 textInputValue:(unsigned long long)arg3;
-+ (id)tapGestureInfoWithInteractionValue:(unsigned long long)arg1 firstSubviewValue:(unsigned long long)arg2;
-+ (id)textFieldInfoWithInteractionValue:(unsigned long long)arg1;
-@property(readonly, nonatomic) _Bool shouldWaitForFirstResponderChange; // @synthesize shouldWaitForFirstResponderChange=_shouldWaitForFirstResponderChange;
-@property(readonly, nonatomic) unsigned long long textInputValue; // @synthesize textInputValue=_textInputValue;
-@property(nonatomic) unsigned long long controlEvents; // @synthesize controlEvents=_controlEvents;
-@property(readonly, nonatomic) unsigned long long actionValue; // @synthesize actionValue=_actionValue;
-@property(readonly, nonatomic) unsigned long long targetValue; // @synthesize targetValue=_targetValue;
-@property(readonly, nonatomic) unsigned long long firstSubviewValue; // @synthesize firstSubviewValue=_firstSubviewValue;
-@property(readonly, nonatomic) unsigned long long interactionValue; // @synthesize interactionValue=_interactionValue;
-@property(readonly, nonatomic) long long type; // @synthesize type=_type;
-
 @end
 

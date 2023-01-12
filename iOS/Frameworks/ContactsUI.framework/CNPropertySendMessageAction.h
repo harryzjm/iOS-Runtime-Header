@@ -5,25 +5,30 @@
 //
 
 #import <ContactsUI/CNContactActionsControllerDelegate-Protocol.h>
+#import <ContactsUI/CNPropertyContextMenuAction-Protocol.h>
 
-@class CNContactActionsController, CNUIUserActionListDataSource, NSString, UIAlertController;
+@class CNActionMenuHelper, CNContactActionsController, CNUIUserActionListDataSource, NSString, UIContextMenuInteraction;
 
 __attribute__((visibility("hidden")))
-@interface CNPropertySendMessageAction <CNContactActionsControllerDelegate>
+@interface CNPropertySendMessageAction <CNContactActionsControllerDelegate, CNPropertyContextMenuAction>
 {
-    UIAlertController *_alertController;
     CNContactActionsController *_actionsController;
     CNUIUserActionListDataSource *_actionsDataSource;
+    CNActionMenuHelper *_actionMenuHelper;
+    UIContextMenuInteraction *_contextMenuInteraction;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIContextMenuInteraction *contextMenuInteraction; // @synthesize contextMenuInteraction=_contextMenuInteraction;
+@property(retain, nonatomic) CNActionMenuHelper *actionMenuHelper; // @synthesize actionMenuHelper=_actionMenuHelper;
 @property(retain, nonatomic) CNUIUserActionListDataSource *actionsDataSource; // @synthesize actionsDataSource=_actionsDataSource;
 @property(retain, nonatomic) CNContactActionsController *actionsController; // @synthesize actionsController=_actionsController;
-@property(retain, nonatomic) UIAlertController *alertController; // @synthesize alertController=_alertController;
+- (void)contactActionsController:(id)arg1 didUpdateWithMenu:(id)arg2;
 - (void)contactActionsController:(id)arg1 didSelectAction:(id)arg2;
-- (void)presentDisambiguationAlertWithSender:(id)arg1;
 - (void)performActionForItem:(id)arg1 sender:(id)arg2;
 - (void)performActionWithSender:(id)arg1;
+- (CDUnknownBlockType)menuProviderForContextMenuInteraction:(id)arg1;
+- (_Bool)shouldPresentDisambiguationMenu;
 - (id)initWithContact:(id)arg1 propertyItems:(id)arg2 actionDataSource:(id)arg3;
 
 // Remaining properties

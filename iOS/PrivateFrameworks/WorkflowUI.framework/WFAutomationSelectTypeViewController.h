@@ -17,16 +17,20 @@
     id <WFAutomationSelectTypeViewControllerDelegate> _delegate;
     WFTriggerManager *_triggerManager;
     NSArray *_tableContent;
+    NSArray *_availableFocusModes;
 }
 
-+ (id)buildTableContent;
++ (_Bool)kettleEnabled;
 + (id)allKnownTriggersSortedAsInUI;
-+ (id)allTriggerTypeGroups;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *availableFocusModes; // @synthesize availableFocusModes=_availableFocusModes;
 @property(readonly, nonatomic) NSArray *tableContent; // @synthesize tableContent=_tableContent;
 @property(readonly, nonatomic) WFTriggerManager *triggerManager; // @synthesize triggerManager=_triggerManager;
 @property(nonatomic) __weak id <WFAutomationSelectTypeViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (Class)triggerSourceClassForIndexPath:(id)arg1;
+- (id)buildTableContent;
+- (id)allTriggerTypeGroups;
+- (id)triggerForIndexPath:(id)arg1;
+- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;

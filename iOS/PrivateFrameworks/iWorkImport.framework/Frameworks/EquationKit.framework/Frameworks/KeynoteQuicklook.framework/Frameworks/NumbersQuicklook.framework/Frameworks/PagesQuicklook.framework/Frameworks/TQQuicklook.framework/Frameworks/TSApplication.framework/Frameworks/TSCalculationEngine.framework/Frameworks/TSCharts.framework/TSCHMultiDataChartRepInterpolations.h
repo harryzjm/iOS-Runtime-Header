@@ -10,14 +10,14 @@
 
 @interface TSCHMultiDataChartRepInterpolations : NSObject
 {
-    CAMediaTimingFunction *mOverallTimingFunction;
-    CAMediaTimingFunction *mIndividualTimingFunction;
+    CAMediaTimingFunction *_overallTimingFunction;
+    CAMediaTimingFunction *_individualTimingFunction;
 }
 
 + (id)interpolationsWithOverallTimingFunction:(id)arg1 individualTimingFunction:(id)arg2;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) CAMediaTimingFunction *individual; // @synthesize individual=mIndividualTimingFunction;
-@property(readonly, nonatomic) CAMediaTimingFunction *overall; // @synthesize overall=mOverallTimingFunction;
+@property(readonly, nonatomic) CAMediaTimingFunction *individual; // @synthesize individual=_individualTimingFunction;
+@property(readonly, nonatomic) CAMediaTimingFunction *overall; // @synthesize overall=_overallTimingFunction;
 - (id)initWithOverallTimingFunction:(id)arg1 individualTimingFunction:(id)arg2;
 
 @end

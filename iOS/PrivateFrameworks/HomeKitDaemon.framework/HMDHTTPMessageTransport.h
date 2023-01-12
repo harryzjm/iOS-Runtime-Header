@@ -71,6 +71,7 @@
 - (_Bool)isDeviceConnected:(id)arg1;
 - (long long)qualityOfService;
 - (id)logIdentifier;
+- (int)transportType;
 @property(readonly, copy) NSString *description;
 @property(readonly, copy) NSString *debugDescription;
 - (id)descriptionWithPointer:(_Bool)arg1;

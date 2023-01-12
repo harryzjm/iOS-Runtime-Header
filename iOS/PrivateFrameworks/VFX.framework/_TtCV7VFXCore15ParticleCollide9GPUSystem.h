@@ -11,8 +11,6 @@
 @interface _TtCV7VFXCore15ParticleCollide9GPUSystem : _TtCs12_SwiftObject
 {
     MISSING_TYPE *staticPlaneColliderQuery;
-    MISSING_TYPE *movingPlaneColliderQuery;
-    MISSING_TYPE *localPlane;
     MISSING_TYPE *movingSphereColliderQuery;
     MISSING_TYPE *sphereUnit;
     MISSING_TYPE *movingBoxColliderQuery;

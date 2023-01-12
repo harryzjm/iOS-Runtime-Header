@@ -7,21 +7,21 @@
 #import <objc/NSObject.h>
 
 #import <PhotosUICore/PXSearchDataSourceSectionProvider-Protocol.h>
-#import <PhotosUICore/PXSettingsKeyObserver-Protocol.h>
 
 @class NSArray, NSString;
 @protocol PXSearchDataSourceSectionProviderChangeObserver, PXSearchTapToRadarSectionProviderDelegate;
 
-@interface PXSearchTapToRadarSectionProvider : NSObject <PXSettingsKeyObserver, PXSearchDataSourceSectionProvider>
+@interface PXSearchTapToRadarSectionProvider : NSObject <PXSearchDataSourceSectionProvider>
 {
+    _Bool _shouldDisplayRadarDescriptionLabel;
     id <PXSearchDataSourceSectionProviderChangeObserver> changeObserver;
     id <PXSearchTapToRadarSectionProviderDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldDisplayRadarDescriptionLabel; // @synthesize shouldDisplayRadarDescriptionLabel=_shouldDisplayRadarDescriptionLabel;
 @property(nonatomic) __weak id <PXSearchTapToRadarSectionProviderDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak id <PXSearchDataSourceSectionProviderChangeObserver> changeObserver; // @synthesize changeObserver;
-- (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (id)layoutForSectionIdentifier:(id)arg1 environment:(id)arg2 collectionViewLayoutMargins:(struct UIEdgeInsets)arg3;
 - (void)configureSupplementaryView:(id)arg1 kind:(id)arg2 indexPath:(id)arg3;
 - (id)supplementaryViewReuseIdentifierForKind:(id)arg1 indexPath:(id)arg2;
@@ -32,7 +32,6 @@
 - (id)itemIdentifiersInSectionWithIdentifier:(id)arg1;
 @property(readonly, copy, nonatomic) NSArray *sectionIdentifiers;
 @property(readonly, nonatomic) unsigned long long type;
-- (void)dealloc;
 - (id)initWithDelegate:(id)arg1;
 - (id)init;
 

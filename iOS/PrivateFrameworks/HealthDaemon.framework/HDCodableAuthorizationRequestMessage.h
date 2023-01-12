@@ -46,7 +46,6 @@
 @property(readonly, nonatomic) _Bool hasRequestIdentifier;
 @property(readonly, nonatomic) _Bool hasAppBundleIdentifier;
 - (void)dealloc;
-- (id)_objectTypeForCode:(long long)arg1;
 - (id)decodedWriteTypes;
 - (id)decodedReadTypes;
 

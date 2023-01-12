@@ -6,7 +6,7 @@
 
 #import <ControlCenterUIKit/CCUIContinuousSliderView.h>
 
-@class NSObject, UIImpactFeedbackGenerator, UIView;
+@class NSObject, UIImageSymbolConfiguration, UIImpactFeedbackGenerator, UIView;
 @protocol OS_dispatch_queue;
 
 @interface MediaControlsVolumeSliderView : CCUIContinuousSliderView
@@ -21,12 +21,14 @@
     _Bool _euDevice;
     _Bool _euVolumeLimitEnforced;
     float _euVolumeLimit;
+    UIImageSymbolConfiguration *_imageSymbolConfiguration;
 }
 
 - (void).cxx_destruct;
 @property float euVolumeLimit; // @synthesize euVolumeLimit=_euVolumeLimit;
 @property(getter=isEUVolumeLimitEnforced) _Bool euVolumeLimitEnforced; // @synthesize euVolumeLimitEnforced=_euVolumeLimitEnforced;
 @property(getter=isEUDevice) _Bool euDevice; // @synthesize euDevice=_euDevice;
+@property(retain, nonatomic) UIImageSymbolConfiguration *imageSymbolConfiguration; // @synthesize imageSymbolConfiguration=_imageSymbolConfiguration;
 - (void)_EUVolumeEnforcementChanged:(id)arg1;
 - (void)_EUVolumeLimitChanged:(id)arg1;
 - (void)_serverConnectionDied:(id)arg1;
@@ -38,6 +40,9 @@
 - (float)filteredValueForValue:(float)arg1;
 - (void)setupEUDevice;
 - (void)layoutSubviews;
+- (void)setGlyphImage:(id)arg1 packageDescription:(id)arg2 state:(id)arg3 animated:(_Bool)arg4;
+- (void)setGlyphPackageDescription:(id)arg1 state:(id)arg2 animated:(_Bool)arg3;
+- (void)setOutputDeviceAsset:(id)arg1 state:(id)arg2 animated:(_Bool)arg3;
 - (void)resetThresholdAcknowledgment;
 - (id)createBackgroundView;
 - (id)initWithFrame:(struct CGRect)arg1;

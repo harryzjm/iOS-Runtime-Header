@@ -18,11 +18,6 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) unsigned long long topK; // @synthesize topK=_topK;
-@property(nonatomic) unsigned long long resultsLimit; // @synthesize resultsLimit=_resultsLimit;
-@property(nonatomic) unsigned long long minOrder; // @synthesize minOrder=_minOrder;
-@property(nonatomic) unsigned long long maxOrder; // @synthesize maxOrder=_maxOrder;
-@property(copy, nonatomic) NSString *feedID; // @synthesize feedID=_feedID;
 - (id)description;
 - (id)init;
 

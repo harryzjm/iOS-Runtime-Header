@@ -27,7 +27,7 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSURL *injectedBundleURL; // @synthesize injectedBundleURL=_injectedBundleURL;
+@property(readonly, nonatomic) NSURL *injectedBundleURL; // @synthesize injectedBundleURL=_injectedBundleURL;
 - (void)siteMetadataProvider:(id)arg1 didFinishUsingWebView:(id)arg2;
 - (void)siteMetadataProvider:(id)arg1 getWebViewOfSize:(struct CGSize)arg2 withConfiguration:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)siteMetadataProvider:(id)arg1 cancelRequestsWithTokens:(id)arg2;

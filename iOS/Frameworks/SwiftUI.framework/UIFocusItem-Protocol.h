@@ -6,7 +6,7 @@
 
 #import <SwiftUI/UIFocusEnvironment-Protocol.h>
 
-@class UIFocusMovementHint;
+@class UIFocusEffect, UIFocusMovementHint;
 
 @protocol UIFocusItem <UIFocusEnvironment>
 @property(nonatomic, readonly) struct CGRect frame;
@@ -14,5 +14,8 @@
 
 @optional
 - (void)didHintFocusMovement:(UIFocusMovementHint *)arg1;
+@property(nonatomic, readonly) _Bool isTransparentFocusItem;
+@property(nonatomic, readonly) long long focusGroupPriority;
+@property(nonatomic, readonly) UIFocusEffect *focusEffect;
 @end
 

@@ -8,20 +8,20 @@
 
 #import <CoreSuggestionsInternals/PMLTransformerProtocol-Protocol.h>
 
-@class NSLinguisticTagger, NSString;
+@class NSString, _PASLazyPurgeableResult;
 
 @interface SGTokenizerMappingTransformer : NSObject <PMLTransformerProtocol>
 {
-    NSLinguisticTagger *_tagger;
+    _PASLazyPurgeableResult *_tagger;
     _Bool _nameTagging;
     _Bool _trustCoreNLP;
     NSString *_punctuationMapping;
     NSString *_personalNameMapping;
     NSString *_locale;
-    void *_nlpTagger;
-    int _linguisticDataNotificationToken;
 }
 
++ (id)_purgeableNSLinguisticTaggerWithTagSchemes:(id)arg1;
++ (id)_purgeableNLTaggerWithNameTagging:(_Bool)arg1;
 + (id)forLocale:(id)arg1 tagNames:(_Bool)arg2 trustCoreNLP:(_Bool)arg3 personalNameMapping:(id)arg4 punctuationMapping:(id)arg5;
 + (id)forLocale:(id)arg1 tagNames:(_Bool)arg2 personalNameMapping:(id)arg3 punctuationMapping:(id)arg4;
 + (id)forLocale:(id)arg1 withPersonalNameMapping:(id)arg2;
@@ -35,8 +35,7 @@
 - (id)transform:(id)arg1;
 - (void)transformWithNLLinguisticTagger:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)transformWithCoreNLP:(id)arg1 block:(CDUnknownBlockType)arg2;
-- (void)_registerForNotifications;
-- (void)dealloc;
+- (void *)_createOrReuseNLPTagger;
 - (id)initForLocale:(id)arg1 tagNames:(_Bool)arg2 trustCoreNLP:(_Bool)arg3 personalNameMapping:(id)arg4 punctuationMapping:(id)arg5;
 
 // Remaining properties

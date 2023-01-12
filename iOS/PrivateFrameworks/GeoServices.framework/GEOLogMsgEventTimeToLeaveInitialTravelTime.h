@@ -11,7 +11,9 @@
 @interface GEOLogMsgEventTimeToLeaveInitialTravelTime : PBCodable <NSCopying>
 {
     int _travelTime;
-    CDStruct_b5054928 _flags;
+    struct {
+        unsigned int has_travelTime:1;
+    } _flags;
 }
 
 + (_Bool)isValid:(id)arg1;

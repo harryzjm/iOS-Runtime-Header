@@ -34,7 +34,6 @@
 - (void)applyOutputAttenuation:(float *)arg1 nonzeroCounts:(unsigned short *)arg2;
 - (void)applyOutputActivation:(float *)arg1;
 - (void)applyFeatureNormalization:(float *)arg1 vectorLength:(int)arg2;
-- (void)_applyScaling:(float *)arg1 vectorLength:(int)arg2 scalingType:(unsigned char)arg3 scalingFactor:(float)arg4;
 - (void)applyOutputScaling:(float *)arg1 vectorLength:(int)arg2;
 - (void)applyFeatureScaling:(float *)arg1 vectorLength:(int)arg2;
 - (void)applyFeatureSmoothing:(float *)arg1 vectorLength:(int)arg2;
@@ -42,13 +41,9 @@
 - (id)QIDWeightsWithMappedTopicIdentifier:(id)arg1;
 - (void)addWeightedTopicScoreToBuffer:(float *)arg1 qid:(unsigned int)arg2 score:(float)arg3;
 - (void)addWeightedTopicScoreToBuffer:(float *)arg1 countNonZeroComponentsInBuffer:(unsigned short *)arg2 qid:(unsigned int)arg3 score:(float)arg4;
-- (void)_enumerateSparseColumnAtIndex:(unsigned int)arg1 block:(CDUnknownBlockType)arg2;
-- (void)_enumerateSparseRowAtIndex:(unsigned int)arg1 block:(CDUnknownBlockType)arg2;
 - (id)payloadForTopic:(unsigned int)arg1;
 - (_Bool)containsMappedTopic:(id)arg1;
 @property(readonly, nonatomic) unsigned long long outputTopicCount;
-- (void)_readHyperparameters:(id)arg1;
-- (id)initWithPath:(id)arg1 mappingId:(id)arg2 hyperparameters:(id)arg3;
 - (id)init;
 - (id)initWithPath:(id)arg1 mappingId:(id)arg2;
 

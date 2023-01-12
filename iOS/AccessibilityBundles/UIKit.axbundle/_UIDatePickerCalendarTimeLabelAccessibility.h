@@ -11,19 +11,24 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_pushCurrentStateIntoUIAndNotify;
+- (void)pushCurrentStateIntoUIAndNotify;
 - (void)dealloc;
 - (id)initWithTimeFormat:(id)arg1 minuteInterval:(long long)arg2;
 - (void)_accessibilityFocusChanged:(id)arg1;
 - (void)_accessibilitySetSelectedTextRange:(struct _NSRange)arg1;
 - (struct _NSRange)_accessibilitySelectedTextRange;
-- (void)_accessibilitySetInternalSelectedTextRange:(struct _NSRange)arg1;
-- (struct _NSRange)_accessibilityInternalSelectedTextRange;
-- (id)_accessibilityInternalData;
 - (struct CGRect)accessibilityFrame;
-- (unsigned long long)accessibilityTraits;
-- (id)accessibilityValue;
 - (id)accessibilityLabel;
+- (id)_accessibilityMinuteElement;
+- (id)_accessibilityHourElement;
+- (id)accessibilityElements;
+- (id)_accessibilityResponderElement;
+- (_Bool)_axIsMinutesEditing;
+- (_Bool)_axIsHoursEditing;
+- (_Bool)_axSelfIsFirstResponder;
+- (long long)accessibilityContainerType;
+- (unsigned long long)accessibilityTraits;
+- (unsigned long long)_accessibilityAutomationType;
 - (_Bool)isAccessibilityElement;
 
 @end

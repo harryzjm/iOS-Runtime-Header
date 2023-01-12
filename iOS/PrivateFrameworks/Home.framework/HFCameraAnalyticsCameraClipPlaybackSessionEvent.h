@@ -8,7 +8,7 @@
 {
 }
 
-- (void)sendEventForState:(unsigned long long)arg1;
+- (id)sendEventForState:(unsigned long long)arg1;
 
 @end
 

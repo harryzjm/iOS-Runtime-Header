@@ -9,10 +9,14 @@
 @interface IMItem (IMChat_Internal)
 + (Class)contextClass;
 - (id)_copy;
+- (_Bool)_isSenderUnknown;
 - (_Bool)_isInvitation;
 - (void)_setInvitation:(_Bool)arg1;
 - (id)_otherHandle;
 - (id)_senderHandle;
+- (void)_refreshContextWithAccountHandles;
+- (id)_serviceWithInternalName:(id)arg1;
+- (id)_accountController;
 - (void)_updateContextWithSenderHandle:(id)arg1 otherHandle:(id)arg2;
 - (id)message;
 - (_Bool)shouldGenerateTopLevelChatItem;

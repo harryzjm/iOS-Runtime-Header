@@ -6,7 +6,7 @@
 
 #import <AssistantServices/NSObject-Protocol.h>
 
-@class AFApplicationInfo, AFAudioPlaybackRequest, AFClientConfiguration, AFMetrics, AFRequestInfo, AFSpeechRequestOptions, AFSpeechSynthesisRecord, NSArray, NSData, NSDictionary, NSError, NSSet, NSString, NSURL, SASPronunciationContext, SASetApplicationContext;
+@class AFApplicationInfo, AFAudioPlaybackRequest, AFClientConfiguration, AFMetrics, AFRequestInfo, AFSetAudioSessionActiveContext, AFSpeechRequestOptions, AFSpeechSynthesisRecord, NSArray, NSData, NSDate, NSDictionary, NSError, NSSet, NSString, NSURL, SASPronunciationContext, SASetApplicationContext;
 
 @protocol AFClientService <NSObject>
 - (oneway void)_refreshAssistantValidation;
@@ -26,8 +26,6 @@
 - (oneway void)reportIssueForError:(NSError *)arg1 type:(long long)arg2 subtype:(NSString *)arg3 context:(NSDictionary *)arg4;
 - (oneway void)reportIssueForError:(NSError *)arg1 type:(long long)arg2 context:(NSDictionary *)arg3;
 - (oneway void)updateSpeechSynthesisRecord:(AFSpeechSynthesisRecord *)arg1;
-- (oneway void)endUpdateOutputAudioPower;
-- (oneway void)beginUpdateOutputAudioPowerWithReply:(void (^)(AFXPCWrapper *))arg1;
 - (oneway void)stopAllAudioPlaybackRequests:(_Bool)arg1;
 - (oneway void)stopAudioPlaybackRequest:(AFAudioPlaybackRequest *)arg1 immediately:(_Bool)arg2;
 - (oneway void)startAudioPlaybackRequest:(AFAudioPlaybackRequest *)arg1 options:(unsigned long long)arg2 reply:(void (^)(NSError *))arg3;
@@ -50,24 +48,27 @@
 - (oneway void)clearContext;
 - (oneway void)performGenericAceCommand:(NSDictionary *)arg1 interruptOutstandingRequest:(_Bool)arg2 reply:(void (^)(_Bool))arg3;
 - (oneway void)requestStateUpdateWithReply:(void (^)(_Bool, unsigned int))arg1;
+- (oneway void)requestShouldSpeakStateWithReply:(void (^)(_Bool))arg1;
 - (oneway void)stopSpeechWithOptions:(AFSpeechRequestOptions *)arg1;
 - (oneway void)rollbackRequest;
-- (oneway void)cancelRequestForReason:(long long)arg1;
+- (oneway void)cancelRequestForReason:(long long)arg1 withError:(NSError *)arg2;
 - (oneway void)updateSpeechOptions:(AFSpeechRequestOptions *)arg1;
 - (oneway void)continuePendingSpeechRequestWithId:(unsigned long long)arg1 fromTimestamp:(double)arg2;
 - (oneway void)startAcousticIDRequestWithOptions:(AFSpeechRequestOptions *)arg1 context:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)startSpeechPronunciationRequestWithOptions:(AFSpeechRequestOptions *)arg1 context:(SASPronunciationContext *)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)startRecordingForPendingSpeechRequestWithOptions:(AFSpeechRequestOptions *)arg1 requestId:(unsigned long long)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)startRequestWithInfo:(AFRequestInfo *)arg1 completion:(void (^)(NSError *))arg2;
+- (oneway void)willPresentUsefulUserResultAtDate:(NSDate *)arg1;
 - (oneway void)endSession;
 - (oneway void)didDismissUI;
 - (oneway void)willPresentUIWithReply:(void (^)(void))arg1;
 - (oneway void)setConfiguration:(AFClientConfiguration *)arg1;
+- (oneway void)setWatchAuthenticated:(_Bool)arg1;
 - (oneway void)setCarDNDActive:(_Bool)arg1;
 - (oneway void)setLockState:(_Bool)arg1 showingLockScreen:(_Bool)arg2;
 - (oneway void)resumeInterruptedAudioPlaybackIfNeeded;
 - (oneway void)forceAudioSessionInactiveWithOptions:(unsigned long long)arg1 completion:(void (^)(void))arg2;
-- (oneway void)forceAudioSessionActiveWithOptions:(unsigned long long)arg1 reason:(long long)arg2 speechRequestOptions:(AFSpeechRequestOptions *)arg3 completion:(void (^)(unsigned int, NSError *))arg4;
+- (oneway void)forceAudioSessionActiveWithContext:(AFSetAudioSessionActiveContext *)arg1 completion:(void (^)(AFSetAudioSessionActiveResult *))arg2;
 - (oneway void)boostedPreheatWithStyle:(long long)arg1 completion:(void (^)(void))arg2;
 - (oneway void)preheatWithStyle:(long long)arg1 forOptions:(AFSpeechRequestOptions *)arg2;
 @end

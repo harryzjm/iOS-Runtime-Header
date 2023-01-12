@@ -13,7 +13,7 @@
 - (double)touchUpTimestamp;
 - (double)touchDownTimestamp;
 - (_Bool)isMissingATouch;
-- (id)init:(int)arg1 timestamp:(double)arg2 order:(long long)arg3;
+- (id)init:(int)arg1 timestamp:(double)arg2 emojiSearchMode:(_Bool)arg3 order:(long long)arg4;
 
 @end
 

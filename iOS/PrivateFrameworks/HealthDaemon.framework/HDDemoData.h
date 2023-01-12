@@ -15,12 +15,7 @@
 }
 
 + (id)demoDataDirectory;
-+ (_Bool)willBeGeneratingDemoData;
-+ (_Bool)shouldUseDemoDataDirectory;
 - (void).cxx_destruct;
-- (id)_directoryPath;
-- (_Bool)_resetDemoDataDB;
-- (id)initWithProfileType:(long long)arg1;
 
 @end
 

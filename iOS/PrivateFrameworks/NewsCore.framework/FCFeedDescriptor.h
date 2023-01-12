@@ -11,10 +11,11 @@
 #import <NewsCore/NSCopying-Protocol.h>
 
 @class NSArray, NSString;
-@protocol FCChannelProviding, FCContentContext, FCFeedPaginating, FCFeedTheming, FCTagProviding;
+@protocol FCChannelProviding, FCContentContext, FCFeedTheming, FCTagProviding;
 
 @interface FCFeedDescriptor : NSObject <NSCopying, FCFeedHeadlineSource, FCFeedAdMetadataProviding>
 {
+    _Bool _isIssueBackCatalog;
     long long _feedType;
     NSString *_identifier;
     id <FCContentContext> _context;
@@ -22,10 +23,12 @@
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool isIssueBackCatalog; // @synthesize isIssueBackCatalog=_isIssueBackCatalog;
 @property(retain, nonatomic) NSArray *otherArticleIDs; // @synthesize otherArticleIDs=_otherArticleIDs;
 @property(retain, nonatomic) id <FCContentContext> context; // @synthesize context=_context;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(nonatomic) long long feedType; // @synthesize feedType=_feedType;
+- (id)issueBackCatalogFeedDescriptor;
 - (void)fetchHeadlinesWithContext:(id)arg1 forIdentifiers:(id)arg2 downloadAssets:(_Bool)arg3 qualityOfService:(long long)arg4 completion:(CDUnknownBlockType)arg5;
 @property(readonly, copy) NSString *description;
 - (void)d_fetchAllHeadlinesWithCloudContext:(id)arg1 sinceDate:(id)arg2 filter:(_Bool)arg3 personalize:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
@@ -33,13 +36,6 @@
 @property(readonly, nonatomic) long long feedPersonalizationConfigurationSet;
 @property(readonly, nonatomic) long long feedFilterOptions;
 @property(readonly, nonatomic) long long feedSortMethod;
-@property(readonly, nonatomic) id <FCFeedPaginating> feedPaginator;
-- (_Bool)shouldFilterFeedGroupEmitter:(id)arg1 withConfiguration:(id)arg2;
-@property(readonly, nonatomic) _Bool needsForYouConfig;
-- (void)prepareToProvideFeedGroupEmittersWithCallbackQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)allEmitterClasses;
-- (id)offlineFeedGroupEmittersWithConfiguration:(id)arg1 forYouConfig:(id)arg2;
-- (id)feedGroupEmittersWithConfiguration:(id)arg1 forYouConfig:(id)arg2;
 - (id)fetchOperationForHeadlinesWithIDs:(id)arg1 context:(id)arg2;
 - (id)streamOfLatestHeadlinesWithContext:(id)arg1;
 - (id)streamOfHeadlinesWithIDs:(id)arg1 context:(id)arg2 cachedOnly:(_Bool)arg3 maxCachedAge:(double)arg4;
@@ -63,8 +59,6 @@
 @property(readonly, nonatomic) _Bool isSubscribable;
 @property(readonly, nonatomic) _Bool hideAccessoryText;
 @property(readonly, nonatomic) NSString *name;
-@property(readonly, nonatomic) _Bool hasEditions;
-@property(readonly, nonatomic) _Bool derivesContentsFromExplicitSubscriptions;
 - (id)languagesWithSubscriptionController:(id)arg1;
 @property(readonly, nonatomic) id <FCFeedTheming> theme;
 @property(readonly) unsigned long long hash;

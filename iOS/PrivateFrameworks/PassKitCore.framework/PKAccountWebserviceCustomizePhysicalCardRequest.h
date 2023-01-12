@@ -10,9 +10,11 @@
 {
     NSURL *_baseURL;
     NSString *_accountIdentifier;
+    NSString *_accountUserAltDSID;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *accountUserAltDSID; // @synthesize accountUserAltDSID=_accountUserAltDSID;
 @property(copy, nonatomic) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
 @property(retain, nonatomic) NSURL *baseURL; // @synthesize baseURL=_baseURL;
 - (id)_urlRequestWithAppleAccountInformation:(id)arg1;

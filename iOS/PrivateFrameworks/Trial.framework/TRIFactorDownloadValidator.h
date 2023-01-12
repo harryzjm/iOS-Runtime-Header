@@ -10,7 +10,7 @@
 {
 }
 
-+ (_Bool)validateDownloadForFactors:(id)arg1 withNamespace:(id)arg2 paths:(id)arg3 container:(int *)arg4 assetIndexesByTreatment:(id *)arg5 error:(id *)arg6;
++ (_Bool)validateDownloadForFactors:(id)arg1 withNamespace:(id)arg2 paths:(id)arg3 container:(int *)arg4 assetIndexesByTreatment:(id *)arg5 experimentIds:(id *)arg6 assetIdsByFactorPack:(id *)arg7 rolloutFactorNames:(id *)arg8 rolloutDeployments:(id *)arg9 error:(id *)arg10;
 
 @end
 

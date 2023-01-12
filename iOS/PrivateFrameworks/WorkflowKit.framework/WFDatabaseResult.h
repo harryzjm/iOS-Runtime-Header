@@ -15,6 +15,7 @@
     WFDatabase *_database;
     NSError *_fetchError;
     NSPredicate *_searchPredicate;
+    NSArray *_staticDescriptors;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     NSHashTable *_observersTable;
@@ -32,23 +33,24 @@
 @property(readonly, nonatomic) NSHashTable *observersTable; // @synthesize observersTable=_observersTable;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property(readonly, nonatomic) NSArray *staticDescriptors; // @synthesize staticDescriptors=_staticDescriptors;
 @property(copy, nonatomic) NSPredicate *searchPredicate; // @synthesize searchPredicate=_searchPredicate;
 @property(readonly, nonatomic) NSError *fetchError; // @synthesize fetchError=_fetchError;
 @property(readonly, nonatomic) WFDatabase *database; // @synthesize database=_database;
-- (void)removeObserver:(id)arg1;
-- (void)addObserver:(id)arg1;
+- (void)unregisterObserver:(id)arg1;
+- (void)registerObserver:(id)arg1;
 @property(readonly, nonatomic) NSArray *observers;
 - (void)notifyObserversAboutChange:(id)arg1 fromPreviousDescriptors:(id)arg2;
 @property(readonly, nonatomic) WFCoreDataResultState *state;
 - (void)invalidateCacheWithCompletionHandler:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSArray *descriptors; // @synthesize descriptors=_descriptors;
-- (id)descriptorsIfLoaded;
 @property(readonly, nonatomic) unsigned long long count;
 - (id)description;
 - (id)initWithDatabase:(id)arg1 fetchRequest:(id)arg2 relationshipKeysAffectingDescriptors:(id)arg3;
 - (id)initWithDatabase:(id)arg1 fetchRequest:(id)arg2;
 - (id)initWithDatabase:(id)arg1 fetchOperation:(id)arg2 relationshipKeysAffectingDescriptors:(id)arg3;
 - (id)initWithDatabase:(id)arg1 fetchOperation:(id)arg2;
+- (id)initWithStaticDescriptors:(id)arg1;
 
 @end
 

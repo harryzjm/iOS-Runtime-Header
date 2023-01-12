@@ -15,33 +15,27 @@
     _Bool _isPushTriggerFired;
     _Bool _hasBeenSubmitted;
     _Bool _inferredAllowsCellular;
+    _Bool _inferredAllowsExpensive;
     _Bool _inferredPreferAnonymousRequests;
     _Bool _isCKInternalMetric;
     NSString *_eventName;
     NSDate *_startTime;
     NSDate *_endTime;
+    NSMutableDictionary *_attributes;
     NSUUID *_metricUUID;
+    long long _inferredDatabaseScope;
     NSString *_inferredDeviceIdentifier;
     NSString *_inferredSourceApplicationBundleIdentifier;
+    NSString *_inferredApplicationBundleIdentifierOverrideForContainerAccess;
+    NSString *_inferredApplicationBundleIdentifierOverrideForNetworkAttribution;
     NSString *_inferredSourceApplicationSecondaryIdentifier;
-    NSMutableDictionary *_attributes;
     NSMutableDictionary *_associatedOperations;
     NSMutableDictionary *_associatedOperationGroups;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool isCKInternalMetric; // @synthesize isCKInternalMetric=_isCKInternalMetric;
-@property(readonly, nonatomic) NSMutableDictionary *associatedOperationGroups; // @synthesize associatedOperationGroups=_associatedOperationGroups;
-@property(readonly, nonatomic) NSMutableDictionary *associatedOperations; // @synthesize associatedOperations=_associatedOperations;
 @property(readonly, nonatomic) NSMutableDictionary *attributes; // @synthesize attributes=_attributes;
-@property(retain, nonatomic) NSString *inferredSourceApplicationSecondaryIdentifier; // @synthesize inferredSourceApplicationSecondaryIdentifier=_inferredSourceApplicationSecondaryIdentifier;
-@property(retain, nonatomic) NSString *inferredSourceApplicationBundleIdentifier; // @synthesize inferredSourceApplicationBundleIdentifier=_inferredSourceApplicationBundleIdentifier;
-@property(retain, nonatomic) NSString *inferredDeviceIdentifier; // @synthesize inferredDeviceIdentifier=_inferredDeviceIdentifier;
-@property(nonatomic) _Bool inferredPreferAnonymousRequests; // @synthesize inferredPreferAnonymousRequests=_inferredPreferAnonymousRequests;
-@property(nonatomic) _Bool inferredAllowsCellular; // @synthesize inferredAllowsCellular=_inferredAllowsCellular;
-@property(readonly, nonatomic) NSUUID *metricUUID; // @synthesize metricUUID=_metricUUID;
-@property(nonatomic) _Bool hasBeenSubmitted; // @synthesize hasBeenSubmitted=_hasBeenSubmitted;
 @property(nonatomic) _Bool isPushTriggerFired; // @synthesize isPushTriggerFired=_isPushTriggerFired;
 @property(copy) NSDate *endTime; // @synthesize endTime=_endTime;
 @property(copy) NSDate *startTime; // @synthesize startTime=_startTime;

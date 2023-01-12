@@ -26,8 +26,6 @@
 - (void)presentationCoordinator:(id)arg1 willBeginPresentationWithContext:(id)arg2;
 - (id)prepareToPerformToggleActionForItem:(id)arg1 sourceItem:(id)arg2;
 - (id)layoutOptionsForSection:(long long)arg1;
-- (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
-- (_Bool)collectionView:(id)arg1 shouldHighlightItemAtIndexPath:(id)arg2;
 - (void)configureCell:(id)arg1 forItem:(id)arg2;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;

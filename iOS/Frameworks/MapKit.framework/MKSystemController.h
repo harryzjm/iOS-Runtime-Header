@@ -18,7 +18,7 @@
 @property(nonatomic) __weak id <MKSystemControllerOpenURLDelegate> openURLDelegate; // @synthesize openURLDelegate=_openURLDelegate;
 - (_Bool)shouldCaptureMapViewGestureAnalytics;
 - (_Bool)overrideBlurStyle;
-- (void)openUserActivity:(id)arg1 withApplicationProxy:(id)arg2 requireOptionKeyPromptUnlockDevice:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)openUserActivity:(id)arg1 withApplicationRecord:(id)arg2 requireOptionKeyPromptUnlockDevice:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)openURL:(id)arg1 bundleIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)placeDialRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_transformURLIfNecessary:(id)arg1;
@@ -27,7 +27,7 @@
 - (_Bool)openURL:(id)arg1;
 - (_Bool)_isRunningInLockScreen;
 - (_Bool)_shouldUseLaunchServices;
-- (_Bool)_openURLsOnBackgroundThread;
+- (_Bool)_isInSpotlight;
 - (id)_defaultOpenURLOptions;
 - (_Bool)reduceMotionEnabled;
 - (_Bool)requiresRTT;

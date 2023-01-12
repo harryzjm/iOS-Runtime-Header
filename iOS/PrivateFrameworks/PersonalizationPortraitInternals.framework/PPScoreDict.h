@@ -13,8 +13,8 @@
 @interface PPScoreDict : NSObject <MLFeatureProvider>
 {
     PPBaseScoreInputSet *_scoreInputSet;
-    struct unique_ptr<std::__1::vector<float, std::__1::allocator<float>>, std::__1::default_delete<std::__1::vector<float, std::__1::allocator<float>>>> _scalarValueStorage;
-    struct unique_ptr<std::__1::vector<std::__1::shared_ptr<std::__1::vector<float, std::__1::allocator<float>>>, std::__1::allocator<std::__1::shared_ptr<std::__1::vector<float, std::__1::allocator<float>>>>>, std::__1::default_delete<std::__1::vector<std::__1::shared_ptr<std::__1::vector<float, std::__1::allocator<float>>>, std::__1::allocator<std::__1::shared_ptr<std::__1::vector<float, std::__1::allocator<float>>>>>>> _arrayValueStorage;
+    struct unique_ptr<std::vector<float>, std::default_delete<std::vector<float>>> _scalarValueStorage;
+    struct unique_ptr<std::vector<std::shared_ptr<std::vector<float>>>, std::default_delete<std::vector<std::shared_ptr<std::vector<float>>>>> _arrayValueStorage;
     NSMutableArray *_objectStorage;
 }
 
@@ -31,14 +31,13 @@
 - (unsigned long long)scalarValueCount;
 - (void)setObject:(id)arg1 forIndex:(unsigned long long)arg2;
 - (id)objectForIndex:(unsigned long long)arg1;
-- (void)setArraySharedPtr:(shared_ptr_07d87f91)arg1 forIndex:(unsigned long long)arg2;
-- (void)setArrayStorage:(vector_f9ed6fc8 *)arg1 forIndex:(unsigned long long)arg2;
+- (void)setArraySharedPtr:(shared_ptr_60ebf058)arg1 forIndex:(unsigned long long)arg2;
+- (void)setArrayStorage:(void *)arg1 forIndex:(unsigned long long)arg2;
 - (void)setArrayValue:(id)arg1 forIndex:(unsigned long long)arg2;
-- (shared_ptr_07d87f91)arraySharedPtrForIndex:(unsigned long long)arg1;
+- (shared_ptr_60ebf058)arraySharedPtrForIndex:(unsigned long long)arg1;
 - (id)arrayValueForIndex:(unsigned long long)arg1;
 - (void)setScalarValue:(float)arg1 forIndex:(unsigned long long)arg2;
 - (float)scalarValueForIndex:(unsigned long long)arg1;
-- (id)initWithScalarValueCount:(unsigned long long)arg1 arrayValueCount:(unsigned long long)arg2 objectCount:(unsigned long long)arg3 scoreInputSet:(id)arg4;
 - (id)initWithScoreInputSet:(id)arg1;
 - (id)initWithScalarValueCount:(unsigned long long)arg1 arrayValueCount:(unsigned long long)arg2 objectCount:(unsigned long long)arg3;
 - (id)init;

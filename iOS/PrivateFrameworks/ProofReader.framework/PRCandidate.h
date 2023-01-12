@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
+@class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface PRCandidate : NSObject
@@ -14,7 +14,8 @@ __attribute__((visibility("hidden")))
     NSArray *_candidateWords;
     struct _NSRange _replacementRange;
     double _errorScore;
-    double _lmScore;
+    double _linguisticScore;
+    double _lexiconScore;
     _Bool _blocklisted;
     _Bool _hasCustomErrorScore;
 }
@@ -29,19 +30,16 @@ __attribute__((visibility("hidden")))
 + (id)candidateWithString:(id)arg1 replacementRange:(struct _NSRange)arg2 errorScore:(double)arg3;
 + (id)candidateWithWords:(id)arg1 replacementRange:(struct _NSRange)arg2 errorType:(unsigned long long)arg3 errorModel:(id)arg4;
 + (id)candidateWithWords:(id)arg1 replacementRange:(struct _NSRange)arg2 errorScore:(double)arg3;
-- (double)score;
-- (_Bool)hasCustomErrorScore;
-- (void)setCustomErrorScore:(_Bool)arg1;
-- (_Bool)isBlocklisted;
-- (void)setBlocklisted:(_Bool)arg1;
-- (double)languageModelScore;
-- (void)setLanguageModelScore:(double)arg1;
-- (double)errorScore;
-- (void)setErrorScore:(double)arg1;
-- (struct _NSRange)replacementRange;
-- (id)string;
-- (unsigned long long)numberOfWords;
-- (id)candidateWords;
+@property(nonatomic, getter=hasCustomErrorScore) _Bool customErrorScore; // @synthesize customErrorScore=_hasCustomErrorScore;
+@property(nonatomic, getter=isBlocklisted) _Bool blocklisted; // @synthesize blocklisted=_blocklisted;
+@property(nonatomic) double lexiconScore; // @synthesize lexiconScore=_lexiconScore;
+@property(nonatomic) double linguisticScore; // @synthesize linguisticScore=_linguisticScore;
+@property(nonatomic) double errorScore; // @synthesize errorScore=_errorScore;
+@property(readonly, nonatomic) struct _NSRange replacementRange; // @synthesize replacementRange=_replacementRange;
+@property(readonly, copy, nonatomic) NSArray *candidateWords; // @synthesize candidateWords=_candidateWords;
+@property(readonly, nonatomic) double score;
+@property(readonly, copy, nonatomic) NSString *string;
+@property(readonly, nonatomic) unsigned long long numberOfWords;
 - (void)dealloc;
 - (id)description;
 - (id)initWithString:(id)arg1 replacementRange:(struct _NSRange)arg2 errorScore:(double)arg3;

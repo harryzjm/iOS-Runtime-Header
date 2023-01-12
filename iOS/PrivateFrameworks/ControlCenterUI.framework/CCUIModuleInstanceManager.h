@@ -30,6 +30,9 @@
 @property(copy, nonatomic) NSSet *enabledModuleIdentifiers; // @synthesize enabledModuleIdentifiers=_enabledModuleIdentifiers;
 @property(nonatomic) __weak id <CCUIContentModuleContextDelegate> contextDelegate; // @synthesize contextDelegate=_contextDelegate;
 - (id)_instantiateModuleWithMetadata:(id)arg1;
+- (struct CCUIModuleLayoutSize)moduleLayoutSizeForContentModuleContext:(id)arg1 forOrientation:(long long)arg2;
+- (id)contentModuleContext:(id)arg1 requestsSensorActivityDataForActiveSensorType:(unsigned long long)arg2;
+- (void)requestModuleLayoutSizeUpdateForContentModuleContext:(id)arg1;
 - (void)dismissControlCenterForContentModuleContext:(id)arg1;
 - (void)dismissExpandedViewForContentModuleContext:(id)arg1;
 - (void)requestExpandModuleForContentModuleContext:(id)arg1;

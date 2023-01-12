@@ -8,7 +8,7 @@
 
 #import <SystemStatus/STDynamicActivityAttributionServerHandle-Protocol.h>
 
-@class NSMutableDictionary, NSString, STDynamicActivityAttributionListener;
+@class NSMutableDictionary, NSMutableSet, NSString, STDynamicActivityAttributionListener;
 @protocol OS_dispatch_queue;
 
 @interface STDynamicActivityAttributionManager : NSObject <STDynamicActivityAttributionServerHandle>
@@ -16,14 +16,23 @@
     STDynamicActivityAttributionListener *_dynamicAttributionListener;
     NSObject<OS_dispatch_queue> *_internalQueue;
     NSMutableDictionary *_clientAttributionMap;
+    NSMutableSet *_monitorClients;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableSet *monitorClients; // @synthesize monitorClients=_monitorClients;
 @property(retain, nonatomic) NSMutableDictionary *clientAttributionMap; // @synthesize clientAttributionMap=_clientAttributionMap;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
 @property(readonly, nonatomic) STDynamicActivityAttributionListener *dynamicAttributionListener; // @synthesize dynamicAttributionListener=_dynamicAttributionListener;
+- (void)_updateAttributionMapWithAttribution:(id)arg1 clientID:(id)arg2;
+- (void)_internalQueue_setAttributionStringWithFormat:(id)arg1 maskingClientAuditToken:(CDStruct_4c969caf)arg2 forClient:(id)arg3;
 - (void)_internalQueue_setAttributionKey:(id)arg1 andApplication:(id)arg2 forClient:(id)arg3;
+- (void)unsubscribeFromUpdates:(id)arg1;
+- (void)subscribeToUpdates:(id)arg1;
+- (void)setAttributionStringWithFormat:(id)arg1 maskingClientAuditToken:(CDStruct_4c969caf)arg2 forClient:(id)arg3;
 - (void)setLocalizableAttributionKey:(id)arg1 andApplication:(id)arg2 forClient:(id)arg3;
+- (id)currentAttributionForAttribution:(id)arg1;
+- (id)currentAttributionForClient:(CDStruct_4c969caf)arg1;
 - (id)currentAttributedAppForClient:(id)arg1;
 - (id)currentAttributionKeyForClient:(id)arg1;
 - (id)init;

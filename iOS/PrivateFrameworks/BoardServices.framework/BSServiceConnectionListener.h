@@ -28,7 +28,7 @@
     BSServiceConnectionEndpoint *_endpoint;
 }
 
-+ (void)disableLaunchWhitelist;
++ (id)extendBootstrap;
 + (id)listenerWithConfigurator:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) BSServiceConnectionEndpoint *endpoint; // @synthesize endpoint=_endpoint;

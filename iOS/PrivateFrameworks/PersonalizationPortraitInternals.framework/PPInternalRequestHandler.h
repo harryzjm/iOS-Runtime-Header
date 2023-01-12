@@ -14,7 +14,6 @@
 
 - (void)abGroupInfoWithCompletion:(CDUnknownBlockType)arg1;
 - (void)sysdiagnoseInformationWithCompletion:(CDUnknownBlockType)arg1;
-- (void)resetTrialMLModelsForNamespaceName:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setTrialUseDefaultFiles:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)trialOverridePath:(id)arg1 namespaceName:(id)arg2 factorName:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)assetVersionsWithCompletion:(CDUnknownBlockType)arg1;

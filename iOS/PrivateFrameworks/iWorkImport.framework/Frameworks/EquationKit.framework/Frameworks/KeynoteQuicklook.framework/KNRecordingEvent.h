@@ -14,9 +14,9 @@
 }
 
 @property(readonly, nonatomic) double startTime; // @synthesize startTime=_startTime;
-- (void)saveToMessage:(struct RecordingEventArchive *)arg1 archiver:(id)arg2;
-- (void)loadFromMessage:(const struct RecordingEventArchive *)arg1 unarchiver:(id)arg2 parentEventTrack:(id)arg3;
-- (id)initWithMessage:(const struct RecordingEventArchive *)arg1 unarchiver:(id)arg2 parentEventTrack:(id)arg3;
+- (void)saveToMessage:(void *)arg1 archiver:(id)arg2;
+- (void)loadFromMessage:(const void *)arg1 unarchiver:(id)arg2 parentEventTrack:(id)arg3;
+- (id)initWithMessage:(const void *)arg1 unarchiver:(id)arg2 parentEventTrack:(id)arg3;
 - (id)recordingEventByAddingTimeOffset:(double)arg1;
 @property(readonly, nonatomic) _Bool canPrecedeDiscontinuity;
 @property(readonly, nonatomic, getter=isIgnoredWhenSeeking) _Bool ignoredWhenSeeking;

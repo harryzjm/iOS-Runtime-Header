@@ -8,12 +8,12 @@
 
 #import <NeutrinoKit/CAAnimationDelegate-Protocol.h>
 
-@class CALayer, NSString, NUImageGeometry, NUImageLayer, _NUContainerLayer;
+@class CALayer, NSString, NUImageGeometry, NUTiledImageLayer, _NUContainerLayer;
 
 @interface NURenderView : UIView <CAAnimationDelegate>
 {
-    NUImageLayer *_backfillLayer;
-    NUImageLayer *_roiLayer;
+    NUTiledImageLayer *_backfillLayer;
+    NUTiledImageLayer *_roiLayer;
     _NUContainerLayer *_containerLayer;
     NUImageGeometry *_geometry;
     _Bool _transitionAnimationInFlight;

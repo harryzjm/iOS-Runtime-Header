@@ -16,7 +16,6 @@
 - (id)colorForTouchContentSelected;
 - (_Bool)shouldUpdateButtonOpacityForKnobUnfocused;
 - (_Bool)showBezelInTouch;
-- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

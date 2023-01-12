@@ -12,6 +12,7 @@
     int _notifyToken;
 }
 
++ (_Bool)canAccessFilesWithProtection:(unsigned long long)arg1;
 + (id)sharedObject;
 - (void)updateState;
 @property(readonly, nonatomic) int state;

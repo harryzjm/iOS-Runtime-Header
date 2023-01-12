@@ -16,7 +16,7 @@
 
 - (void).cxx_destruct;
 - (id)_appLayoutToScrollToDuringTransition;
-- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
+- (struct SBSwitcherAsyncRenderingAttributes)asyncRenderingAttributesForAppLayout:(id)arg1;
 - (id)appLayoutToScrollToBeforeTransitioning;
 - (id)appLayoutsToCacheSnapshots;
 - (id)topMostLayoutElements;
@@ -26,14 +26,14 @@
 - (long long)wallpaperStyle;
 - (_Bool)isWallpaperRequiredForSwitcher;
 - (long long)homeScreenBackdropBlurType;
-- (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
-- (double)opacityForIndex:(unsigned long long)arg1;
+- (struct UIRectCornerRadii)cornerRadiiForIndex:(unsigned long long)arg1;
+- (double)opacityForLayoutRole:(long long)arg1 inAppLayout:(id)arg2 atIndex:(unsigned long long)arg3;
 - (id)_layoutSettings;
 - (id)animationAttributesForLayoutElement:(id)arg1;
 - (id)visibleAppLayouts;
-- (id)handleMainTransitionEvent:(id)arg1;
+- (id)handleTransitionEvent:(id)arg1;
 - (id)transitionWillBegin;
-- (_Bool)shouldRasterizeLiveContentUntilDelay:(inout double *)arg1;
+- (_Bool)shouldAsyncRenderUntilDelay:(inout double *)arg1;
 - (id)initWithTransitionID:(id)arg1 direction:(long long)arg2 fullScreenAppLayout:(id)arg3 deckModifier:(id)arg4;
 
 @end

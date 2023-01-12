@@ -16,6 +16,7 @@
     NSArray *_results;
     NSObject<OS_dispatch_queue> *_searchQueue;
     id <TUIEmojiSearchSourceDelegate> _delegate;
+    NSArray *_multilingualSearchLocales;
     NSLocale *_locale;
     EMFEmojiLocaleData *_localeData;
 }
@@ -23,9 +24,12 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) EMFEmojiLocaleData *localeData; // @synthesize localeData=_localeData;
 @property(retain, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
+@property(retain, nonatomic) NSArray *multilingualSearchLocales; // @synthesize multilingualSearchLocales=_multilingualSearchLocales;
 @property(readonly, nonatomic) NSArray *results; // @synthesize results=_results;
 @property(nonatomic) __weak id <TUIEmojiSearchSourceDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_deliverResults:(id)arg1 forExactQuery:(id)arg2 autocorrectedQuery:(id)arg3;
+- (id)_repeatSearchQuery:(id)arg1 forLocales:(id)arg2;
+- (id)languagesForMultilingualSearch;
 - (id)_emojiResultSetForExactQuery:(id)arg1 autocorrectedQuery:(id)arg2;
 @property(readonly, nonatomic) NSArray *suggestedEmojis;
 - (id)_filteredTokensIgnoringModifiers:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSObject;
+@class NSMutableArray, NSObject;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -24,19 +24,21 @@ __attribute__((visibility("hidden")))
     int _minReceivedRate;
     double _lastUpdateTimestamp;
     unsigned int _reliableMessageResendInterval;
+    NSMutableArray *_optionalTopics;
     NSObject<OS_dispatch_queue> *_asyncProcessingQueue;
 }
 
 @property(readonly, nonatomic) unsigned int reliableMessageResendInterval; // @synthesize reliableMessageResendInterval=_reliableMessageResendInterval;
 - (void)setEncryptionWithEncryptionMaterial:(CDStruct_791df8ea *)arg1;
-- (void)broadcastUnreliableMessage:(id)arg1;
-- (void)sendUnreliableMessage:(id)arg1 participantID:(unsigned long long)arg2;
-- (void)sendReliableMessage:(id)arg1 participantID:(unsigned long long)arg2;
-- (_Bool)sendReliableMessageAndWait:(id)arg1 participantID:(unsigned long long)arg2;
-- (void)sendReliableMessage:(id)arg1;
-- (_Bool)sendReliableMessageAndWait:(id)arg1;
+- (void)sendUnreliableMessage:(id)arg1 withTopic:(id)arg2 participantID:(unsigned long long)arg3;
+- (_Bool)sendReliableMessage:(id)arg1 withTopic:(id)arg2 participantID:(unsigned long long)arg3 timeout:(unsigned int)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)sendReliableMessage:(id)arg1 withTopic:(id)arg2 participantID:(unsigned long long)arg3;
+- (_Bool)sendReliableMessageAndWait:(id)arg1 withTopic:(id)arg2 participantID:(unsigned long long)arg3;
+- (void)sendReliableMessage:(id)arg1 withTopic:(id)arg2;
+- (_Bool)sendReliableMessageAndWait:(id)arg1 withTopic:(id)arg2;
 - (void)throwNotSupportedExceptionForMethod:(id)arg1;
 - (void)flushActiveMessages;
+- (void)addOptionalTopic:(id)arg1;
 - (void)dealloc;
 @property(nonatomic) id dataReceivedDelegate;
 @property(nonatomic) id messageReceivedDelegate; // @synthesize messageReceivedDelegate=_messageReceivedDelegate;

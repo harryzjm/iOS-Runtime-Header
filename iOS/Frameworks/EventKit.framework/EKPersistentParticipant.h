@@ -14,6 +14,8 @@
 - (id)url;
 - (id)displayName;
 - (id)semanticIdentifier;
+- (void)setScheduleStatus:(int)arg1;
+- (int)scheduleStatus;
 - (void)setProposedStartDateStatus:(int)arg1;
 - (int)proposedStartDateStatus;
 - (id)invitedBy;
@@ -22,8 +24,8 @@
 - (id)owner;
 - (void)setComment:(id)arg1;
 - (id)comment;
-- (void)setURL:(id)arg1;
-- (id)URL;
+- (void)setURLString:(id)arg1;
+- (id)URLString;
 - (void)setLastName:(id)arg1;
 - (id)lastName;
 - (void)setFirstName:(id)arg1;

@@ -17,7 +17,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) __weak WFWorkflow *workflow; // @synthesize workflow=_workflow;
 - (_Bool)parameterStateIsValid:(id)arg1;
-- (id)accessoryIconForPossibleState:(id)arg1;
+- (id)accessoryImageForPossibleState:(id)arg1;
 - (id)localizedLabelForPossibleState:(id)arg1;
 - (id)workflowForState:(id)arg1;
 - (id)possibleStates;

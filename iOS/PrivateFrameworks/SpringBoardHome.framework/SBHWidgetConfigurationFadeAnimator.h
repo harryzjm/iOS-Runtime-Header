@@ -6,16 +6,24 @@
 
 #import <objc/NSObject.h>
 
-#import <SpringBoardHome/SBHWidgetConfigurationAnimating-Protocol.h>
+#import <SpringBoardHome/SBHViewControllerTransitionAnimating-Protocol.h>
 
-@interface SBHWidgetConfigurationFadeAnimator : NSObject <SBHWidgetConfigurationAnimating>
+@class BSAnimationSettings;
+
+@interface SBHWidgetConfigurationFadeAnimator : NSObject <SBHViewControllerTransitionAnimating>
 {
+    _Bool _alreadyAnimating;
+    BSAnimationSettings *_animationSettings;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic, getter=isAlreadyAnimating) _Bool alreadyAnimating; // @synthesize alreadyAnimating=_alreadyAnimating;
+@property(readonly, copy, nonatomic) BSAnimationSettings *animationSettings; // @synthesize animationSettings=_animationSettings;
 - (void)_configureForEndpoint:(long long)arg1 context:(id)arg2;
 - (void)finalizeAnimationAtEndpoint:(long long)arg1 withContext:(id)arg2;
 - (void)animateToEndpoint:(long long)arg1 withContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)prepareToAnimateFromEndpoint:(long long)arg1 withContext:(id)arg2;
+- (id)init;
 
 @end
 

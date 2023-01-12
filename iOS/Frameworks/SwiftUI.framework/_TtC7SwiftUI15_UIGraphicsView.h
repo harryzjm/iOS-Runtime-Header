@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (_Bool)_shouldAnimatePropertyWithKey:(id)arg1;
 
 @end
 

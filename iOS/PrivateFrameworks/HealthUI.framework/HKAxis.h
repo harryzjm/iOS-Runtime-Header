@@ -7,12 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <HealthUI/HKAxisLabelDataSource-Protocol.h>
-#import <HealthUI/NSCopying-Protocol.h>
 
 @class HKAxisLabelCache, HKAxisStyle, HKCoordinateTransform, HKValueRange, NSMutableArray, NSString;
 @protocol HKAxisLabelDataSource, HKZoomScale;
 
-@interface HKAxis : NSObject <NSCopying, HKAxisLabelDataSource>
+@interface HKAxis : NSObject <HKAxisLabelDataSource>
 {
     _Bool _requiresScaling;
     _Bool _automaticallyFitData;
@@ -55,7 +54,7 @@
 - (void)addAxisAnnotation:(id)arg1 modelCoordinate:(id)arg2;
 - (void)_renderTickMarksForModelRange:(id)arg1 chartRect:(struct CGRect)arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint)arg4 style:(id)arg5 renderView:(id)arg6;
 - (void)_addTickMarksForPosition:(unsigned long long)arg1 axisRect:(struct CGRect)arg2 modelRange:(id)arg3 zoomScale:(double)arg4 contentOffset:(struct CGPoint)arg5 toBezierPath:(id)arg6 style:(id)arg7;
-- (id)_gridLinesForModelRange:(id)arg1 axisRect:(struct CGRect)arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint)arg4 style:(id)arg5 gridLineType:(long long)arg6;
+- (id)_gridLinesForModelRange:(id)arg1 axisRect:(struct CGRect)arg2 gridlineRanges:(id)arg3 zoomScale:(double)arg4 contentOffset:(struct CGPoint)arg5 style:(id)arg6 gridLineType:(long long)arg7;
 - (id)_baselineForModelRange:(id)arg1 axisRect:(struct CGRect)arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint)arg4 style:(id)arg5;
 - (double)topBaselineYCoordinateForModelRange:(id)arg1 axisRect:(struct CGRect)arg2 zoomScale:(double)arg3;
 - (_Bool)_containsTopBaselineWithModelRange:(id)arg1 zoomScale:(double)arg2;
@@ -64,7 +63,7 @@
 - (double)_axisFillWidthForStyle:(id)arg1 labels:(id)arg2 font:(id)arg3;
 - (void)_drawTextBackgroundWithLabels:(id)arg1 font:(id)arg2 offset:(double)arg3 rect:(struct CGRect)arg4 style:(id)arg5 renderView:(id)arg6;
 - (double)_maximumWidthOfAnnotations:(id)arg1 axisStyle:(id)arg2;
-- (struct CGRect)_labelBackgroundRectWithLabels:(id)arg1 font:(id)arg2 offset:(double)arg3 rect:(struct CGRect)arg4 style:(id)arg5;
+- (struct CGRect)_labelBackgroundRectWithLabels:(id)arg1 font:(id)arg2 maxAnnotationWidth:(double)arg3 rect:(struct CGRect)arg4 style:(id)arg5;
 - (struct CGPoint)renderPositionForLabelLocation:(id)arg1 rect:(struct CGRect)arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint)arg4 constantOffset:(double)arg5 isHorizontal:(_Bool)arg6 optionalOffset:(struct CGPoint)arg7;
 - (void)_drawTextForModelRange:(id)arg1 inRect:(struct CGRect)arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint)arg4 renderView:(id)arg5 style:(id)arg6 maximumLabelSize:(struct CGSize *)arg7 omitOffscreenLabels:(_Bool)arg8;
 - (long long)dateZoomForZoomScale:(double)arg1;
@@ -74,7 +73,7 @@
 - (void)_offsetForChartRect:(struct CGRect)arg1 chartRange:(struct HKRange)arg2 zoomScaleOut:(double *)arg3 contentOffsetOut:(struct CGPoint *)arg4;
 - (struct HKRange)_chartRangeForChartRect:(struct CGRect)arg1 zoomScale:(double)arg2 contentOffset:(struct CGPoint)arg3;
 - (_Bool)_styleIsHorizontal:(id)arg1;
-- (void)drawGridlinesForModelRange:(id)arg1 chartRect:(struct CGRect)arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint)arg4 renderView:(id)arg5 blendMode:(int)arg6;
+- (void)drawGridlinesForModelRange:(id)arg1 chartRect:(struct CGRect)arg2 gridlineRanges:(id)arg3 zoomScale:(double)arg4 contentOffset:(struct CGPoint)arg5 renderView:(id)arg6 blendMode:(int)arg7;
 - (void)drawBaselineForModelRange:(id)arg1 chartRect:(struct CGRect)arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint)arg4 renderView:(id)arg5;
 - (void)drawLabelsWithModelRange:(id)arg1 chartRect:(struct CGRect)arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint)arg4 renderView:(id)arg5 maximumLabelSize:(struct CGSize *)arg6 omitOffscreenLabels:(_Bool)arg7;
 - (struct CGRect)labelRectWithModelRange:(id)arg1 chartRect:(struct CGRect)arg2 zoomScale:(double)arg3;
@@ -87,7 +86,6 @@
 - (id)findAxisLabelsInModelRange:(id)arg1 zoomScale:(double)arg2;
 - (struct HKLinearTransform)_pointTransformFromSeriesRanges:(id)arg1 linearTransform:(struct HKLinearTransform)arg2 chartRange:(struct HKRange)arg3;
 - (struct HKLinearTransform)pointTransformFittingValueRange:(id)arg1 toChartRange:(struct HKRange)arg2;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqualToAxis:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithTransform:(id)arg1 zoomScale:(id)arg2;

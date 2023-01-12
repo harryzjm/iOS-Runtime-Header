@@ -11,6 +11,7 @@
 @protocol CKFunCameraViewControllerDelegate <NSObject>
 - (void)presentPhotosApp;
 - (void)stageAssetArchive:(NSData *)arg1 skipShelf:(_Bool)arg2 completionHandler:(void (^)(NSError *))arg3;
+- (void)didDismissFunCamera:(CKFunCameraViewController *)arg1;
 - (void)willDismissFunCamera:(CKFunCameraViewController *)arg1;
 - (void)startCommitPayload:(CKBrowserItemPayload *)arg1 forConversation:(CKConversation *)arg2;
 - (void)startDeferredEditingPayload:(CKBrowserItemPayload *)arg1 forConversation:(CKConversation *)arg2;

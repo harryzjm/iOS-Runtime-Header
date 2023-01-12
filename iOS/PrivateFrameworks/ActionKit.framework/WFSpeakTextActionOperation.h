@@ -6,31 +6,31 @@
 
 #import <objc/NSObject.h>
 
-#import <ActionKit/AVSpeechSynthesizerDelegate-Protocol.h>
 #import <ActionKit/WFActionExtendedOperation-Protocol.h>
+#import <ActionKit/WFSpeechSynthesizerDelegate-Protocol.h>
 
-@class AVSpeechSynthesizer, NSMutableArray, NSProgress, NSString;
+@class NSMutableArray, NSProgress, NSString, WFSpeechSynthesizer;
 @protocol OS_dispatch_queue;
 
-@interface WFSpeakTextActionOperation : NSObject <WFActionExtendedOperation, AVSpeechSynthesizerDelegate>
+@interface WFSpeakTextActionOperation : NSObject <WFActionExtendedOperation, WFSpeechSynthesizerDelegate>
 {
     NSProgress *_progress;
-    AVSpeechSynthesizer *_synthesizer;
+    WFSpeechSynthesizer *_synthesizer;
     NSMutableArray *_completionHandlers;
-    NSObject<OS_dispatch_queue> *_internalQueue;
+    NSObject<OS_dispatch_queue> *_queue;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly, nonatomic) NSMutableArray *completionHandlers; // @synthesize completionHandlers=_completionHandlers;
-@property(readonly, nonatomic) AVSpeechSynthesizer *synthesizer; // @synthesize synthesizer=_synthesizer;
+@property(readonly, nonatomic) WFSpeechSynthesizer *synthesizer; // @synthesize synthesizer=_synthesizer;
 @property(nonatomic) __weak NSProgress *progress; // @synthesize progress=_progress;
 - (void)addCompletionHandlerIfRunning:(CDUnknownBlockType)arg1;
-- (void)callCompletionHandlers;
+- (void)callCompletionHandlersWithError:(id)arg1;
 - (void)cleanupSpeechSynthesizer;
-- (void)speechSynthesizer:(id)arg1 didCancelSpeechUtterance:(id)arg2;
-- (void)speechSynthesizer:(id)arg1 didFinishSpeechUtterance:(id)arg2;
-- (void)speechSynthesizer:(id)arg1 willSpeakRangeOfSpeechString:(struct _NSRange)arg2 utterance:(id)arg3;
+- (void)speechSynthesizer:(id)arg1 didFailSpeakingUtterance:(id)arg2 error:(id)arg3;
+- (void)speechSynthesizer:(id)arg1 didFinishSpeakingUtterance:(id)arg2;
+- (void)speechSynthesizer:(id)arg1 willSpeakRangeOfUtterance:(struct _NSRange)arg2 utterance:(id)arg3;
 - (void)cancel;
 - (void)speakTextUsingSynthesizer:(id)arg1 voice:(id)arg2 rate:(float)arg3 pitch:(float)arg4;
 - (id)init;

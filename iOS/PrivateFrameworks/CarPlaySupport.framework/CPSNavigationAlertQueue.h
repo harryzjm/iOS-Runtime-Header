@@ -31,6 +31,7 @@
 @property(readonly, nonatomic) __weak id <CPSNavigationAlertQueueDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)applicationStateMonitor:(id)arg1 didBecomeActive:(_Bool)arg2;
 - (void)didSelectButton:(id)arg1;
+- (void)_clearAlertViewIfNecessaryForDismissedAlertView:(id)arg1;
 - (void)_visibleAlertTimerFired:(id)arg1;
 - (void)_startAlertAnimations;
 - (_Bool)_canBeginAnimatingAlert;

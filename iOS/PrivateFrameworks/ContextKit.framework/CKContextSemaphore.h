@@ -21,7 +21,7 @@
         _Atomic unsigned int _field3;
         _Atomic unsigned int _field4;
         _Atomic int _field5;
-        _Atomic unsigned int _field6;
+        _Atomic int _field6;
         _Atomic unsigned long long _field7;
         _Atomic unsigned int _field8;
         _Atomic unsigned int _field9;
@@ -32,14 +32,14 @@
 + (_Bool)supportsSecureCoding;
 + (void)initialize;
 - (void).cxx_destruct;
-- (_Bool)tryAcquire;
+- (_Bool)tryAcquireNeedsIncPending:(_Bool)arg1;
 - (long long)waitFor:(double)arg1;
 - (void)notifyAll;
 - (void)notify;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)requestsServed;
 - (unsigned long long)numAcquired;
-- (unsigned long long)pendingExceptionsCount;
+- (long long)pendingExceptionsCount;
 - (void)decPending;
 - (void)incPending;
 - (void)resetPending;

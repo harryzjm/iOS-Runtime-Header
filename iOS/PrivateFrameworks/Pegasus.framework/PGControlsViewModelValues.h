@@ -8,7 +8,7 @@
 
 #import <Pegasus/NSCopying-Protocol.h>
 
-@class NSMutableDictionary, NSString, PGPlaybackStatePrerollAttributes, UIColor;
+@class NSMutableDictionary, NSString, PGPlaybackStatePrerollAttributes, UIColor, UIImage;
 
 @interface PGControlsViewModelValues : NSObject <NSCopying>
 {
@@ -47,6 +47,8 @@
 @property(readonly, nonatomic) _Bool includesContentLoadingIndicator;
 @property(readonly, nonatomic) _Bool includesRestoreButton;
 @property(readonly, nonatomic) _Bool actionButtonsWantBackground;
+@property(readonly, copy, nonatomic) NSString *cancelButtonCustomText;
+@property(readonly, nonatomic) UIImage *cancelButtonCustomImage;
 @property(readonly, copy, nonatomic) NSString *skipForwardButtonSystemImageName;
 @property(readonly, copy, nonatomic) NSString *skipBackButtonSystemImageName;
 @property(readonly, nonatomic) UIColor *cancelButtonBackgroundTintColor;

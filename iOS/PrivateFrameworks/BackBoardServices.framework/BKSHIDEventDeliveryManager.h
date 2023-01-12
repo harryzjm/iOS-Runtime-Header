@@ -8,7 +8,7 @@
 
 #import <BackBoardServices/BSDebugDescriptionProviding-Protocol.h>
 
-@class BKSHIDEventDispatchingTarget, BSMutableIntegerMap, NSArray, NSDictionary, NSHashTable, NSMutableArray, NSMutableDictionary, NSSet, NSString;
+@class BSMutableIntegerMap, NSArray, NSDictionary, NSHashTable, NSMutableArray, NSMutableDictionary, NSSet, NSString;
 @protocol BKSHIDEventDeliveryService, BSInvalidatable, OS_dispatch_queue;
 
 @interface BKSHIDEventDeliveryManager : NSObject <BSDebugDescriptionProviding>
@@ -35,7 +35,6 @@
     NSArray *_lock_lastSentDeferringRules;
     NSDictionary *_lock_lastSentKeyCommandsRegistrations;
     NSSet *_lock_lastSentSetOfKeyCommandsRegistrations;
-    BKSHIDEventDispatchingTarget *_lock_focusTargetOverride;
 }
 
 + (id)sharedInstance;
@@ -52,7 +51,7 @@
 - (void)_lock_implicitFlush;
 - (id)_lock_transactionAssertionWithReason:(id)arg1;
 - (void)_syncServiceFlushState;
-- (void)_setFocusTargetOverride:(id)arg1;
+- (long long)authenticateMessage:(id)arg1;
 - (id)dispatchKeyCommandsForReason:(id)arg1 withRule:(id)arg2;
 - (id)dispatchDiscreteEventsForReason:(id)arg1 withRules:(id)arg2;
 - (id)transactionAssertionWithReason:(id)arg1;

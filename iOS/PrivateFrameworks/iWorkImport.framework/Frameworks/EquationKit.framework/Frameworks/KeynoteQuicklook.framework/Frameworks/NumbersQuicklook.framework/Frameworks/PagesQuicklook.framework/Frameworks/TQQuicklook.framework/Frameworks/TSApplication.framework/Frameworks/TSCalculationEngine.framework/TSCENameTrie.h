@@ -22,7 +22,7 @@
 - (_Bool)insertName:(id)arg1;
 - (_Bool)insertFoldedName:(id)arg1;
 - (id)foldName:(id)arg1;
-- (struct TSCENameTrieNode *)nodeForName:(id)arg1 createIfMissing:(_Bool)arg2;
+- (void *)nodeForName:(id)arg1 createIfMissing:(_Bool)arg2;
 - (void)setLocale:(id)arg1;
 - (id)initWithLocale:(id)arg1;
 

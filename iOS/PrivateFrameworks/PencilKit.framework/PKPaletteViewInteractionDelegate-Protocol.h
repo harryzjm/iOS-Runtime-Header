@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PencilKit/UIInputResponderControllerVisibilityObserver-Protocol.h>
+#import <PencilKit/UIKeyboardSceneDelegateVisibilityObserver-Protocol.h>
 
 @class PKPaletteViewInteraction;
 
-@protocol PKPaletteViewInteractionDelegate <UIInputResponderControllerVisibilityObserver>
+@protocol PKPaletteViewInteractionDelegate <UIKeyboardSceneDelegateVisibilityObserver>
 - (void)paletteViewInteractionWillEnterForeground:(PKPaletteViewInteraction *)arg1;
 - (void)paletteViewInteractionDidActivate:(PKPaletteViewInteraction *)arg1;
 @end

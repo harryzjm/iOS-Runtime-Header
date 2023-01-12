@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)knownAccountFiles;
-+ (id)appleProviderBrand;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *cachedAccounts; // @synthesize cachedAccounts=_cachedAccounts;
 @property(copy, nonatomic) NSArray *accountDataBatches; // @synthesize accountDataBatches=_accountDataBatches;

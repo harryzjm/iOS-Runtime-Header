@@ -14,6 +14,7 @@
 @interface PVPersonCluster : NSObject <PVPersonProtocol>
 {
     unsigned long long _hash;
+    NSDate *_firstSeenDateWithoutOutliers;
     _Bool _highlyInteresting;
     _Bool _quarantined;
     id <PVPhotoLibraryProtocol> _photoLibrary;
@@ -47,8 +48,11 @@
 @property(retain, nonatomic) id <PVFaceGroupProtocol> sourceFaceGroup; // @synthesize sourceFaceGroup=_sourceFaceGroup;
 @property(retain, nonatomic) id <PVPersonProtocol> sourcePerson; // @synthesize sourcePerson=_sourcePerson;
 @property(nonatomic) __weak id <PVPhotoLibraryProtocol> photoLibrary; // @synthesize photoLibrary=_photoLibrary;
+- (double)sideFaceRatio;
 - (void)invalidateCaches;
+- (void)_cacheDatesWithoutOutliersWithMaximumDistanceBetweenMoments:(double)arg1;
 - (void)_cacheDates;
+- (id)firstSeenDateWithoutOutliersForAgeType:(unsigned short)arg1;
 @property(readonly, nonatomic) double libraryTimespan;
 - (void)pv_addMergeCandidatePersons:(id)arg1;
 @property(readonly, nonatomic) NSString *anonymizedName;

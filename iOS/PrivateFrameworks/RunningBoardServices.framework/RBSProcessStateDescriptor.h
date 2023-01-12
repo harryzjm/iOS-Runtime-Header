@@ -28,7 +28,6 @@
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 - (void)filterState:(id)arg1;
-- (id)_endowmentNamespaces;
 @property(copy, nonatomic) NSArray *endowmentNamespaces;
 - (id)init;
 

@@ -13,15 +13,14 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)mailComposeController:(id)arg1 didFinishWithResult:(long long)arg2 error:(id)arg3;
-- (id)viewController;
 - (_Bool)canBePerformedByOpeningURL;
 - (void)performFromView:(id)arg1;
 - (int)interactionType;
 - (id)notificationURL;
 - (id)notificationIconBundleIdentifier;
 - (id)notificationTitle;
-- (id)icon;
+- (id)compactTitle;
+- (id)iconName;
 - (id)localizedName;
 - (id)initWithURL:(id)arg1 result:(struct __DDResult *)arg2 context:(id)arg3;
 

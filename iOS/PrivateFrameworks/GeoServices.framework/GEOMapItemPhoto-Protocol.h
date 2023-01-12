@@ -6,10 +6,13 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class GEOMapItemPhotoOptions, NSString, NSURL;
+@class GEOMapItemPhotoOptions, GEOMapItemPhotosAttribution, NSDate, NSString, NSURL;
 @protocol GEOMapItemPhotoInfo;
 
 @protocol GEOMapItemPhoto <NSObject>
+@property(readonly, nonatomic) NSDate *dateCreated;
+@property(readonly, nonatomic) GEOMapItemPhotosAttribution *attribution;
+@property(readonly, nonatomic) _Bool isBackgroundJoeColorCurated;
 @property(readonly, nonatomic) NSString *backgroundJoeColor;
 @property(readonly, nonatomic) _Bool businessProvided;
 @property(readonly, nonatomic) _Bool highQuality;

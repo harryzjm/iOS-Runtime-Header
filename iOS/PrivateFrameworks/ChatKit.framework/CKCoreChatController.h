@@ -16,6 +16,7 @@
     _Bool _viewIsVisible;
     _Bool _transitionedFromComposing;
     _Bool _userInitiatedTranscriptPush;
+    _Bool _showingInStandAloneWindow;
     _Bool _initialLayoutComplete;
     _Bool _ignoreLastBalloonVisibleInMarkAsReadCheck;
     _Bool _disableAnimationsUnderTest;
@@ -52,6 +53,7 @@
 @property(retain, nonatomic) CKScheduledUpdater *refreshServiceForSendingUpdater; // @synthesize refreshServiceForSendingUpdater=_refreshServiceForSendingUpdater;
 @property(nonatomic) _Bool ignoreLastBalloonVisibleInMarkAsReadCheck; // @synthesize ignoreLastBalloonVisibleInMarkAsReadCheck=_ignoreLastBalloonVisibleInMarkAsReadCheck;
 @property(nonatomic) _Bool initialLayoutComplete; // @synthesize initialLayoutComplete=_initialLayoutComplete;
+@property(nonatomic) _Bool showingInStandAloneWindow; // @synthesize showingInStandAloneWindow=_showingInStandAloneWindow;
 @property(nonatomic) _Bool userInitiatedTranscriptPush; // @synthesize userInitiatedTranscriptPush=_userInitiatedTranscriptPush;
 @property(nonatomic) _Bool transitionedFromComposing; // @synthesize transitionedFromComposing=_transitionedFromComposing;
 @property(nonatomic) _Bool viewIsVisible; // @synthesize viewIsVisible=_viewIsVisible;
@@ -59,6 +61,11 @@
 @property(retain, nonatomic) CKViewController<CKCoreTranscriptControllerProtocol> *collectionViewController; // @synthesize collectionViewController=_collectionViewController;
 @property(retain, nonatomic) CKConversation *conversation; // @synthesize conversation=_conversation;
 @property(nonatomic) __weak id <CKCoreChatControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)fullScreenBalloonViewControllerMessageHighlightButtonDidFinishAnimating:(id)arg1;
+- (void)fullScreenBalloonViewController:(id)arg1 sendMessageHighlight:(_Bool)arg2 forChatItem:(id)arg3;
+- (_Bool)fullScreenBalloonViewControllerShouldShowHightlightButton:(id)arg1 forChatItem:(id)arg2;
+- (id)selectedChatItems;
+- (void)copySelectedChatItemsToPasteboard;
 - (void)presentMacToolbarController;
 - (id)toolbarItemForIdentifier:(id)arg1;
 - (_Bool)itemProviderDisablesTouches;
@@ -86,6 +93,7 @@
 - (id)textInputContextIdentifier;
 - (void)_refreshActiveChat:(id)arg1;
 - (void)significantTimeChange;
+- (void)_conversationListFinishedMerging:(id)arg1;
 - (void)_handleAddressBookChangedNotification:(id)arg1;
 - (void)_transferRestoredNotification:(id)arg1;
 - (void)_increaseContrastDidChangeNotification:(id)arg1;
@@ -93,6 +101,10 @@
 - (void)_transferFinishedNotification:(id)arg1;
 - (void)_chatRegistryDidReloadNotification:(id)arg1;
 - (void)_localeDidChangeNotification:(id)arg1;
+- (void)_handleAvailabilityStateChangedNotification:(id)arg1;
+- (void)_handleAvailabilityInvitationReceivedNotification:(id)arg1;
+- (void)_handleAvailabilityChangedNotification:(id)arg1;
+- (void)_availabilityDaemonDisconnectedNotification:(id)arg1;
 - (void)_displayNameUpdatedNotification:(id)arg1;
 - (void)_downgradeStateChangedNotification:(id)arg1;
 - (void)_preferredServiceChangedNotification:(id)arg1;
@@ -120,9 +132,9 @@
 - (void)_updateForNewPreferredService;
 - (struct CGRect)gradientFrameWithInsets:(struct UIEdgeInsets)arg1;
 - (_Bool)transcriptCollectionViewController:(id)arg1 balloonViewDidRequestCommitSticker:(id)arg2 forPlugin:(id)arg3 allowAllCommits:(_Bool)arg4 error:(id *)arg5;
-- (void)transcriptCollectionViewController:(id)arg1 balloonViewDidRequestStartEditingPayload:(id)arg2 forPlugin:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)transcriptCollectionViewController:(id)arg1 balloonViewDidRequestStartEditingPayload:(id)arg2 forPlugin:(id)arg3 allowAllCommits:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (_Bool)transcriptCollectionViewController:(id)arg1 balloonViewDidRequestCommitPayload:(id)arg2 forPlugin:(id)arg3 allowAllCommits:(_Bool)arg4 error:(id *)arg5;
-- (void)transcriptCollectionViewController:(id)arg1 balloonViewDidRequestPresentationStyle:(unsigned long long)arg2 forChatItem:(id)arg3 allowAllStyles:(_Bool)arg4;
+- (void)transcriptCollectionViewController:(id)arg1 balloonView:(id)arg2 didRequestPresentationStyle:(unsigned long long)arg3 forChatItem:(id)arg4 allowAllStyles:(_Bool)arg5;
 - (void)transcriptCollectionViewController:(id)arg1 didEndImpactEffectAnimationWithSendAnimationContext:(id)arg2;
 - (void)transcriptCollectionViewController:(id)arg1 willBeginImpactEffectAnimationWithSendAnimationContext:(id)arg2;
 - (id)transcriptCollectionViewControllerAdditionalFullscreenEffectViews:(id)arg1;
@@ -138,6 +150,7 @@
 - (void)transcriptCollectionViewControllerWillScrollToBottom:(id)arg1;
 - (void)transcriptCollectionViewControllerRestingStateDidChange:(id)arg1;
 - (void)transcriptCollectionViewController:(id)arg1 collectionViewContentSizeDidChange:(struct CGSize)arg2;
+- (void)transcriptCollectionViewControllerPerformBatchUpdateCompleted:(id)arg1;
 - (void)transcriptCollectionViewControllerChatItemsDidChange:(id)arg1;
 - (void)transcriptCollectionViewControllerPlayingAudioDidChange:(id)arg1;
 - (_Bool)transcriptCollectionViewControllerShouldPlayAudio:(id)arg1;
@@ -168,6 +181,7 @@
 @property(readonly, nonatomic) double balloonMaxWidth;
 @property(readonly, nonatomic) IMChat *chat;
 - (id)gradientReferenceView;
+@property(readonly, nonatomic) _Bool shouldDisplayTextEntry;
 @property(readonly, nonatomic) _Bool shouldDismissAfterSend;
 @property(readonly, nonatomic) CKTranscriptCollectionView *collectionView;
 - (void)setupStateForLaunchURL:(id)arg1;
@@ -177,6 +191,7 @@
 - (void)parentControllerDidResume:(_Bool)arg1 animating:(_Bool)arg2;
 - (void)systemApplicationWillEnterForeground;
 - (void)parentControllerDidBecomeActive;
+- (_Bool)_controllerEligibleForSetConversation;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppearDeferredSetup;
@@ -185,6 +200,8 @@
 - (void)loadView;
 - (id)initWithConversation:(id)arg1;
 - (void)dealloc;
+- (_Bool)__im_ff_hubbleTranscriptEnabled;
+- (_Bool)__im_ff_isInterstellarEnabled;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

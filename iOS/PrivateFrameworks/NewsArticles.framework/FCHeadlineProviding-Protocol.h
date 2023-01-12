@@ -5,18 +5,18 @@
 //
 
 #import <NewsArticles/FCClassifiable-Protocol.h>
-#import <NewsArticles/FCFeedElement-Protocol.h>
 #import <NewsArticles/FCFeedTransformationItem-Protocol.h>
 #import <NewsArticles/NFCopying-Protocol.h>
 #import <NewsArticles/NSObject-Protocol.h>
 
-@class FCArticleAudioTrack, FCArticleContentManifest, FCCoverArt, FCFeedPersonalizedItemScoreProfile, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCIssue, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSSet, NSString, NSURL;
-@protocol FCChannelProviding, FCContentContext, FCHeadlineStocksFields, FCNativeAdProviding;
+@class FCArticleAudioTrack, FCArticleContent, FCColor, FCCoverArt, FCFeedPersonalizedItemScoreProfile, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCIssue, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSSet, NSString, NSURL;
+@protocol FCChannelProviding, FCContentContext, FCHeadlineMetadata, FCHeadlineStocksFields, FCNativeAdProviding;
 
-@protocol FCHeadlineProviding <NSObject, NFCopying, FCFeedElement, FCClassifiable, FCFeedTransformationItem>
+@protocol FCHeadlineProviding <NSObject, NFCopying, FCClassifiable, FCFeedTransformationItem>
 @property(nonatomic, readonly) _Bool isFullTrackAvailableToAll;
 @property(nonatomic, readonly) NSArray *publisherSpecifiedArticleIDs;
 @property(nonatomic, readonly) NSString *articleRecirculationConfigJSON;
+@property(nonatomic, readonly) NSString *nativeAdCampaignData;
 @property(nonatomic, readonly) id <FCNativeAdProviding> associatedAd;
 @property(nonatomic, readonly) _Bool showPublisherLogo;
 @property(nonatomic, readonly) _Bool isBlockedExplicitContent;
@@ -81,6 +81,9 @@
 @property(nonatomic, readonly) FCHeadlineThumbnail *thumbnailLQ;
 @property(nonatomic, readonly) _Bool hasThumbnail;
 @property(nonatomic, readonly) struct CGRect thumbnailFocalFrame;
+@property(nonatomic, readonly) NSString *excerpt;
+@property(nonatomic, readonly) NSArray *narrators;
+@property(nonatomic, readonly) NSArray *authors;
 @property(nonatomic, readonly) NSString *sourceName;
 @property(nonatomic, readonly) id <FCChannelProviding> sourceChannel;
 @property(nonatomic, readonly) long long backendArticleVersion;
@@ -96,24 +99,33 @@
 @property(nonatomic, readonly) NSString *versionIdentifier;
 
 @optional
+@property(nonatomic, readonly) id <FCHeadlineMetadata> appliedOverrideMetadata;
+@property(nonatomic, readonly) FCColor *thumbnailImageAccentColor;
+@property(nonatomic, readonly) FCColor *thumbnailImageTextColor;
+@property(nonatomic, readonly) FCColor *thumbnailImageBackgroundColor;
+@property(nonatomic, readonly) FCColor *thumbnailImagePrimaryColor;
+@property(nonatomic, readonly) double layeredThumbnailAspectRatio;
+@property(nonatomic, readonly) NSString *layeredThumbnailJSON;
+@property(nonatomic, readonly) NSString *surfacedByArticleListID;
 @property(nonatomic, readonly) NSString *narrativeTrackTextRanges;
 @property(nonatomic, readonly) FCArticleAudioTrack *narrativeTrackSample;
 @property(nonatomic, readonly) FCArticleAudioTrack *narrativeTrack;
-@property(nonatomic, readonly) _Bool useTransparentNavigationBar;
 @property(nonatomic, readonly) _Bool isLocalDraft;
 @property(nonatomic, readonly) NSString *callToActionText;
 @property(nonatomic, readonly) NSArray *linkedIssueIDs;
 @property(nonatomic, readonly) NSArray *linkedArticleIDs;
-@property(nonatomic, readonly) _Bool showBundleSoftPaywall;
 - (_Bool)isIssueOnly;
 @property(nonatomic, readonly) FCIssue *masterIssue;
+@property(nonatomic, readonly) _Bool disableBookmarking;
+@property(nonatomic, readonly) _Bool showBundleSoftPaywall;
+@property(nonatomic, readonly) _Bool useTransparentNavigationBar;
 @property(nonatomic, readonly) _Bool webEmbedsEnabled;
 @property(nonatomic, readonly) FCHeadlineExperimentalTitleMetadata *experimentalTitleMetadata;
 @property(nonatomic, readonly) NSData *backingArticleRecordData;
 @property(nonatomic, readonly) id <FCHeadlineStocksFields> stocksFields;
 - (_Bool)isBundlePaid;
 @property(nonatomic, readonly) unsigned long long role;
-- (FCArticleContentManifest *)contentManifestWithContext:(id <FCContentContext>)arg1;
+- (FCArticleContent *)contentWithContext:(id <FCContentContext>)arg1;
 
 // Remaining properties
 @property(nonatomic, readonly) _Bool boundToContext;

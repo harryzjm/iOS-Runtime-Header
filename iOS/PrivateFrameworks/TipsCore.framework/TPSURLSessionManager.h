@@ -44,6 +44,7 @@
 - (void)URLSession:(id)arg1 didReceiveChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 didReceiveChallenge:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
+- (void)URLSession:(id)arg1 task:(id)arg2 didFinishCollectingMetrics:(id)arg3;
 - (void)URLSession:(id)arg1 downloadTask:(id)arg2 didFinishDownloadingToURL:(id)arg3;
 - (void)URLSession:(id)arg1 downloadTask:(id)arg2 didWriteData:(long long)arg3 totalBytesWritten:(long long)arg4 totalBytesExpectedToWrite:(long long)arg5;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 willCacheResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -55,8 +56,8 @@
 - (void)sessionTask:(id)arg1 didCompleteWithError:(id)arg2;
 - (void)cancelSessionItem:(id)arg1;
 - (void)resumeSessionItem:(id)arg1;
-- (id)newURLSessionItemWithRequest:(id)arg1 identifier:(id)arg2 attributionIdentifier:(id)arg3 networkDelegate:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (id)newURLSessionItemWithRequest:(id)arg1 identifier:(id)arg2 attributionIdentifier:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)newURLSessionItemWithRequest:(id)arg1 identifier:(id)arg2 attributionIdentifier:(id)arg3 requestType:(id)arg4 networkDelegate:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (id)newURLSessionItemWithRequest:(id)arg1 identifier:(id)arg2 attributionIdentifier:(id)arg3 requestType:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)_mappedURLRequest:(id)arg1;
 - (id)URLSessionForAttributionIdentifier:(id)arg1;
 - (id)init;

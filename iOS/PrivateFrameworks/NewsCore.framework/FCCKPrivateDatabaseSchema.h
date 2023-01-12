@@ -15,16 +15,7 @@
     NSArray *_defaultZoneSchemas;
 }
 
-+ (id)databaseSchemaWithZones:(id)arg1;
 - (void).cxx_destruct;
-- (void)enumerateDefaultZoneSchemasWithBlock:(CDUnknownBlockType)arg1;
-- (void)enumerateZoneSchemasWithBlock:(CDUnknownBlockType)arg1;
-- (id)schemaForZoneContainingServerRecordID:(id)arg1;
-- (id)schemaForZoneContainingClientRecordID:(id)arg1;
-- (id)schemaForZoneWithServerName:(id)arg1;
-- (id)schemaForZoneWithClientName:(id)arg1;
-- (id)initWithSchemaDictionary:(id)arg1;
-- (id)initWithZoneSchemas:(id)arg1;
 - (id)init;
 
 @end

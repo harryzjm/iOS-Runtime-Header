@@ -6,11 +6,12 @@
 
 #import <PhotosUICore/NSCopying-Protocol.h>
 #import <PhotosUICore/PXDisplayAsset-Protocol.h>
+#import <PhotosUICore/PXMetadataDetailsContentItem-Protocol.h>
 
-@class NSDate, NSDictionary, NSError, NSMutableDictionary, NSNumber, NSString, PHImportAsset, PHImportAssetDataRequest, PXImportAssetCollection;
+@class CLLocation, NSData, NSDate, NSDictionary, NSError, NSMutableDictionary, NSNumber, NSString, NSTimeZone, PHImportAsset, PHImportAssetDataRequest, PXImportAssetCollection;
 @protocol PXImportDisplayDelegate;
 
-@interface PXImportItemViewModel <PXDisplayAsset, NSCopying>
+@interface PXImportItemViewModel <PXDisplayAsset, PXMetadataDetailsContentItem, NSCopying>
 {
     NSString *_collectionIdentifier;
     _Bool _selected;
@@ -105,6 +106,9 @@
 - (long long)isContentEqualTo:(id)arg1;
 @property(readonly, nonatomic) Class defaultImageProviderClass;
 @property(readonly, nonatomic) _Bool isEligibleForAutoPlayback;
+@property(readonly, nonatomic) struct CGRect faceAreaRect;
+@property(readonly, nonatomic) struct CGRect acceptableCropRect;
+@property(readonly, nonatomic) struct CGRect preferredCropRect;
 @property(readonly, nonatomic) unsigned long long pixelHeight;
 @property(readonly, nonatomic) unsigned long long pixelWidth;
 @property(readonly, nonatomic) _Bool isInCloud;
@@ -114,12 +118,77 @@
 @property(readonly, nonatomic) NSDate *creationDate;
 @property(readonly, nonatomic) unsigned long long mediaSubtypes;
 @property(readonly, nonatomic) long long mediaType;
+@property(readonly, nonatomic) NSNumber *px_semanticStylePreset;
+@property(readonly, nonatomic) _Bool px_isHEVC;
+@property(readonly, nonatomic) _Bool px_isH264;
+@property(readonly, nonatomic) _Bool px_isCinematicVideo;
+@property(readonly, nonatomic) _Bool px_shotWithNightMode;
+@property(readonly, nonatomic) _Bool px_isScreenRecording;
+@property(readonly, nonatomic) _Bool px_isScreenshot;
+@property(readonly, nonatomic) _Bool px_isSelfie;
+@property(readonly, nonatomic) _Bool px_isPanorama;
+@property(readonly, nonatomic) _Bool px_isDepthEffect;
+@property(readonly, nonatomic) _Bool px_representsBurst;
+@property(readonly, nonatomic) _Bool px_isSloMo;
+@property(readonly, nonatomic) _Bool px_isTimelapse;
+@property(readonly, nonatomic) _Bool px_isLivePhoto;
+@property(readonly, nonatomic) _Bool px_reverseLocationDataIsValid;
+@property(readonly, nonatomic) _Bool px_canUseLocation;
+- (id)px_localizedGeoDescriptionForRTL:(_Bool)arg1;
+@property(readonly, nonatomic) unsigned int px_audioTrackFormat;
+@property(readonly, nonatomic) NSNumber *px_whiteBalance;
+@property(readonly, nonatomic) NSNumber *px_shutterSpeed;
+@property(readonly, nonatomic) NSNumber *px_meteringMode;
+@property(readonly, nonatomic) NSString *px_formattedCameraModel;
+@property(readonly, nonatomic) NSString *px_model;
+@property(readonly, nonatomic) NSString *px_make;
+@property(readonly, nonatomic) NSString *px_lensModel;
+@property(readonly, nonatomic) NSNumber *px_ISORating;
+@property(readonly, nonatomic) NSNumber *px_digitalZoomRatio;
+@property(readonly, nonatomic) NSNumber *px_focalLengthIn35mm;
+@property(readonly, nonatomic) NSNumber *px_focalLength;
+@property(readonly, nonatomic) NSNumber *px_flash;
+@property(readonly, nonatomic) NSNumber *px_exposureBias;
+@property(readonly, nonatomic) NSNumber *px_aperture;
+@property(readonly, nonatomic) NSString *px_codec;
+@property(readonly, nonatomic) NSNumber *px_sampleRate;
+@property(readonly, nonatomic) NSNumber *px_bitRate;
+@property(readonly, nonatomic) NSNumber *px_FPS;
+@property(readonly, nonatomic) NSNumber *px_duration;
+@property(readonly, nonatomic) unsigned short px_fetchCloudLocalState;
+@property(readonly, nonatomic) _Bool px_hasKeywords;
+@property(readonly, nonatomic, getter=px_isHidden) _Bool px_hidden;
+@property(readonly, nonatomic, getter=px_isInTrash) _Bool px_inTrash;
+@property(readonly, nonatomic, getter=ipx_isFavorite) _Bool px_favorite;
+@property(readonly, nonatomic) _Bool px_supportsImageProperties;
+@property(readonly, nonatomic) NSString *px_burstUUID;
+@property(readonly, nonatomic) CLLocation *px_originalLocation;
+@property(readonly, nonatomic) NSString *px_uniformTypeIdentifier;
+@property(readonly, nonatomic) struct PXIntSize_st px_resolution;
+@property(readonly, nonatomic) NSTimeZone *px_originalTimeZone;
+@property(readonly, nonatomic) NSTimeZone *px_timeZone;
+@property(readonly, nonatomic) NSDate *px_originalCreationDate;
+@property(readonly, nonatomic) NSDate *px_creationDate;
+@property(readonly, nonatomic) NSNumber *px_filesize;
+@property(readonly, nonatomic) NSString *px_filename;
+@property(readonly, nonatomic) _Bool *px_isExtendedPropertiesProcessed;
+@property(readonly, nonatomic) NSString *px_assetDescription;
+@property(readonly, nonatomic) NSString *px_title;
+@property(readonly, nonatomic) unsigned long long px_originalFileType;
+@property(readonly, nonatomic) unsigned long long px_fileType;
+@property(readonly, nonatomic) unsigned long long px_originalType;
+@property(readonly, nonatomic) unsigned long long px_type;
+@property(readonly, nonatomic, getter=px_isVideo) _Bool px_video;
+@property(readonly, nonatomic, getter=px_isAudio) _Bool px_audio;
+@property(readonly, nonatomic, getter=px_isImage) _Bool px_image;
 
 // Remaining properties
 @property(readonly, nonatomic) unsigned long long burstSelectionTypes;
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, nonatomic) NSData *fetchColorNormalizationData;
 @property(readonly, nonatomic) NSNumber *hdrGain;
 @property(readonly, nonatomic) _Bool isAutoPlaybackEligibilityEstimated;
+@property(readonly, nonatomic) CDStruct_1b6d18a9 livePhotoVideoDuration;
 @property(readonly, nonatomic) NSString *localizedGeoDescription;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) unsigned long long thumbnailVersion;

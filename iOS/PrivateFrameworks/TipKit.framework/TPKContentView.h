@@ -6,75 +6,52 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, NSBundle, NSLayoutConstraint, NSString, TPKContent, UIColor, UITraitCollection;
+@class MISSING_TYPE, TPKContent, UIColor, UIImageView, UITraitCollection, UIVisualEffect;
 @protocol TPKContentViewDelegate;
 
 @interface TPKContentView : UIView
 {
-    _Bool _isPopOverView;
-    UITraitCollection *__preferredTraitCollection;
-    long long __cacheHorizontalSizeClass;
-    NSString *__cacheContentSizeCategory;
-    NSBundle *__frameworkBundle;
-    UIView *__contentView;
-    UIView *__bottomSeparatorView;
-    NSLayoutConstraint *__bottomSeparatorHeightConstraint;
-    NSLayoutConstraint *__contentViewBottomConstraint;
-    NSLayoutConstraint *__contentViewTopConstraint;
-    NSArray *_compactSizeClassHorizontalConstraints;
-    NSArray *_regularSizeClassHorizontalConstraints;
-    _Bool _displaysBottomSeparator;
-    _Bool _asPopover;
-    _Bool __accessbilitySizeCategory;
-    TPKContent *_content;
-    UIColor *_preferredIconImageTintColor;
-    UIColor *_preferredActionTintColor;
-    unsigned long long _arrowDirection;
-    id <TPKContentViewDelegate> __delegate;
-    struct CGSize _preferredMicaLayerSize;
-    struct UIEdgeInsets _contentInsets;
+    MISSING_TYPE *displayBottomSeparator;
+    MISSING_TYPE *directionalEdgeInsets;
+    MISSING_TYPE *contentViewBackgroundColor;
+    MISSING_TYPE *preferredTraitCollection;
+    MISSING_TYPE *imageProxy;
+    MISSING_TYPE *hostingView;
+    MISSING_TYPE *viewDelegate;
+    MISSING_TYPE *viewModel;
+    MISSING_TYPE *content;
 }
 
-+ (struct CGSize)preferredIconImageSizeWithImageSize:(struct CGSize)arg1 isSymbol:(_Bool)arg2;
-+ (struct CGSize)defaultMicaSize;
-+ (id)systemImageWithIdentifier:(id)arg1;
 + (id)TipsIconWithTraitCollection:(id)arg1;
 + (id)SiriIconWithTraitCollection:(id)arg1;
++ (struct CGSize)defaultMicaSize;
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSBundle *_frameworkBundle; // @synthesize _frameworkBundle=__frameworkBundle;
-@property(copy, nonatomic) UIView *_contentView; // @synthesize _contentView=__contentView;
-@property(nonatomic) __weak id <TPKContentViewDelegate> _delegate; // @synthesize _delegate=__delegate;
-@property(nonatomic, getter=_isAccessbilitySizeCategory) _Bool _accessbilitySizeCategory; // @synthesize _accessbilitySizeCategory=__accessbilitySizeCategory;
-@property(nonatomic) unsigned long long arrowDirection; // @synthesize arrowDirection=_arrowDirection;
-@property(nonatomic) _Bool asPopover; // @synthesize asPopover=_asPopover;
-@property(copy, nonatomic) UIColor *preferredActionTintColor; // @synthesize preferredActionTintColor=_preferredActionTintColor;
-@property(copy, nonatomic) UIColor *preferredIconImageTintColor; // @synthesize preferredIconImageTintColor=_preferredIconImageTintColor;
-@property(copy, nonatomic) TPKContent *content; // @synthesize content=_content;
-@property(nonatomic) struct CGSize preferredMicaLayerSize; // @synthesize preferredMicaLayerSize=_preferredMicaLayerSize;
-@property(nonatomic) _Bool displaysBottomSeparator; // @synthesize displaysBottomSeparator=_displaysBottomSeparator;
-@property(nonatomic) struct UIEdgeInsets contentInsets; // @synthesize contentInsets=_contentInsets;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (void)updatePreferredTraitCollection:(id)arg1;
+- (void)updateContentBackgroundColor:(id)arg1;
+- (void)updateDisplaysBottomSeparator:(_Bool)arg1;
+- (void)updatePreferredDirectionEdgeInsets:(struct NSDirectionalEdgeInsets)arg1;
+- (void)resetHostingView;
+- (void)deviceOrientationDidChange:(id)arg1;
+- (void)contentSizeCategoryDidChange:(id)arg1;
+- (void)monitorDeviceOrientationChanges;
+- (void)monitorContentSizeCategoryChanges;
+- (void)bottomSeperatorNeedsUpdate;
 - (void)willMoveToWindow:(id)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
-- (id)_currentContentSizeCategory;
-- (_Bool)_isContentSizeCategoryChanged;
-- (_Bool)_isContentSizeAccessibilityCategory;
-- (_Bool)_isAccessibilitySizeCategoryChanged;
-- (void)_contentSizeCategoryDidChange;
-- (void)_accessibilitySizeCategoryDidChange;
-- (void)updateHorizontalContraints;
-- (void)_setPreferredTraitCollection:(id)arg1;
-- (id)_preferredTraitCollection;
-- (_Bool)_isHorizontalSizeClassChanged:(id)arg1;
-- (void)updateConstraints;
-- (id)init;
-- (id)_initWithContent:(id)arg1 asPopover:(_Bool)arg2;
-- (double)bottomPadding;
-- (double)topPadding;
-- (double)sidePadding;
-@property(copy, nonatomic) UIColor *contentBackgroundColor; // @dynamic contentBackgroundColor;
-- (id)layoutIdentifier;
-- (void)_configureAsPopover:(_Bool)arg1 withContent:(id)arg2;
-- (void)dealloc;
+- (id)initWithReusableTipView:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithController:(id)arg1 content:(id)arg2;
+@property(nonatomic, retain) UIVisualEffect *visualEffect;
+@property(nonatomic) _Bool displaysBottomSeparator;
+@property(nonatomic, readonly) UIImageView *iconImageView;
+@property(nonatomic, retain) UITraitCollection *_preferredTraitCollection;
+@property(nonatomic) struct CGSize preferredMicaLayerSize;
+@property(nonatomic, retain) UIColor *preferredIconImageTintColor;
+@property(nonatomic, retain) UIColor *preferredActionTintColor;
+@property(nonatomic) struct NSDirectionalEdgeInsets defaultDirectionalEdgeInsets;
+@property(nonatomic, retain) UIColor *contentBackgroundColor;
+@property(nonatomic, retain) TPKContent *content; // @synthesize content;
+@property(nonatomic) __weak id <TPKContentViewDelegate> viewDelegate; // @synthesize viewDelegate;
 
 @end
 

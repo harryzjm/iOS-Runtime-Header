@@ -32,9 +32,9 @@
 - (id)_portraitModeSessionPreset;
 - (id)_timelapseSessionPreset;
 - (id)_panoramaDeviceFormatForConfiguration:(id)arg1;
-- (id)_keyForVideoConfiguration:(long long)arg1 videoEncodingBehavior:(long long)arg2;
-- (id)_highestQualitySessionPresetForVideoConfiguration:(long long)arg1 videoEncodingBehavior:(long long)arg2;
-- (id)_highestQualityDeviceFormatForVideoConfiguration:(long long)arg1 videoEncodingBehavior:(long long)arg2;
+- (id)_keyForVideoConfiguration:(long long)arg1 videoEncodingBehavior:(long long)arg2 enableHDR10BitVideo:(_Bool)arg3;
+- (id)_highestQualitySessionPresetForVideoConfiguration:(long long)arg1 videoEncodingBehavior:(long long)arg2 enableHDR10BitVideo:(_Bool)arg3;
+- (id)_highestQualityDeviceFormatForVideoConfiguration:(long long)arg1 videoEncodingBehavior:(long long)arg2 enableHDR10BitVideo:(_Bool)arg3;
 @property(readonly, nonatomic) AVCaptureDeviceInput *captureDeviceInput; // @synthesize captureDeviceInput=_captureDeviceInput;
 - (id)initWithEngine:(id)arg1 captureDevice:(id)arg2;
 

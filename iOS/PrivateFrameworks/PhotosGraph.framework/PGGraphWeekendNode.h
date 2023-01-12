@@ -4,13 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class PGGraphWeekendNodeCollection;
+
 @interface PGGraphWeekendNode
 {
 }
 
 + (id)filter;
+@property(readonly, nonatomic) PGGraphWeekendNodeCollection *collection;
 - (id)label;
-- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3 properties:(id)arg4;
 - (id)init;
 
 @end

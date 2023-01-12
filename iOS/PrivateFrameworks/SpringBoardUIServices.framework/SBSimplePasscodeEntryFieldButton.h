@@ -15,9 +15,11 @@
     struct UIEdgeInsets _paddingOutsideRing;
     UIColor *_color;
     UIView *_ringView;
+    _Bool _animatingUnreveal;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic, getter=isAnimatingUnreveal) _Bool animatingUnreveal; // @synthesize animatingUnreveal=_animatingUnreveal;
 - (void)setRevealed:(_Bool)arg1 animated:(_Bool)arg2 delay:(double)arg3;
 - (void)setRevealed:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)layoutSubviews;

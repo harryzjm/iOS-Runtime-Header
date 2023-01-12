@@ -8,28 +8,24 @@
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMFUnfairLock, NSMutableArray, NSString;
+@class NSString;
+@protocol HMMLogEventSubmitting;
 
 @interface HMDMemoryUtilizationTracker : NSObject <HMFLogging>
 {
-    HMFUnfairLock *_lock;
-    NSMutableArray *_memoryUseSnapshots;
+    id <HMMLogEventSubmitting> _logEventSubmitter;
 }
 
 + (id)logCategory;
-+ (id)memoryTracker;
 - (void).cxx_destruct;
-@property(readonly, copy) NSString *description;
-- (void)log;
+@property(readonly) __weak id <HMMLogEventSubmitting> logEventSubmitter; // @synthesize logEventSubmitter=_logEventSubmitter;
 - (void)trackMemoryUsageWithReason:(id)arg1;
-- (id)dumpState;
-- (id)snapshots;
-- (void)reset;
-- (id)__init;
+- (id)initWithLogEventSubmitter:(id)arg1;
 - (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

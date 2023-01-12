@@ -40,9 +40,12 @@
 @property(copy, nonatomic) NSNumber *historySequenceNumber; // @synthesize historySequenceNumber=_historySequenceNumber;
 @property(nonatomic, getter=isBlacklisted) _Bool blacklisted; // @synthesize blacklisted=_blacklisted;
 - (void)addEnrouteTransitType:(id)arg1;
+- (id)transitPassPropertiesWithPaymentApplication:(id)arg1 fieldCollection:(id)arg2;
+- (id)transitPassPropertiesWithPaymentApplication:(id)arg1 pass:(id)arg2;
 - (id)transitPassPropertiesWithPaymentApplication:(id)arg1;
-- (void)_resolveTransactionsFromState:(id)arg1 toState:(id)arg2 withHistoryRecords:(id)arg3 concreteTransactions:(id *)arg4 ephemeralTransaction:(id *)arg5 balanceLabels:(id)arg6 unitDictionary:(id)arg7;
+- (void)_resolveTransactionsFromState:(id)arg1 toState:(id)arg2 withHistoryRecords:(id)arg3 concreteTransactions:(id *)arg4 ephemeralTransaction:(id *)arg5 balanceLabels:(id)arg6 unitDictionary:(id)arg7 planLabels:(id)arg8;
 - (id)updatedEnrouteTransitTypesFromExistingTypes:(id)arg1 newTypes:(id)arg2;
+- (id)processUpdateWithAppletHistory:(id)arg1 concreteTransactions:(id *)arg2 ephemeralTransaction:(id *)arg3 mutatedBalances:(id *)arg4 balanceLabelDictionary:(id)arg5 unitDictionary:(id)arg6 planLabelDictionary:(id)arg7;
 - (id)processUpdateWithAppletHistory:(id)arg1 concreteTransactions:(id *)arg2 ephemeralTransaction:(id *)arg3 mutatedBalances:(id *)arg4 balanceLabelDictionary:(id)arg5 unitDictionary:(id)arg6;
 - (id)processUpdateWithAppletHistory:(id)arg1 concreteTransactions:(id *)arg2 ephemeralTransaction:(id *)arg3 mutatedBalances:(id *)arg4 balanceLabelDictionary:(id)arg5;
 - (id)processUpdateWithAppletHistory:(id)arg1 concreteTransactions:(id *)arg2 ephemeralTransaction:(id *)arg3 mutatedBalances:(id *)arg4;

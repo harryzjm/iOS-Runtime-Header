@@ -6,11 +6,20 @@
 
 #import <SafariCore/WBSCyclerCloudBookmarksAssistant-Protocol.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSDictionary, NSString, NSURL;
 
 @protocol WBSSafariBookmarksSyncAgentProtocol <WBSCyclerCloudBookmarksAssistant>
+- (void)syncUpSafariSettingsSyncWithCompletion:(void (^)(void))arg1;
+- (void)syncDownSafariSettingsSyncWithCompletion:(void (^)(void))arg1;
+- (void)triggerImmediateBackgroundImageSaveIfApplicable;
+- (void)scheduleCloudBackgroundImageSaveWithURL:(NSURL *)arg1 isLightAppearance:(_Bool)arg2 successCompletionHandler:(void (^)(void))arg3;
+- (void)deleteBackgroundImageFromCloudKitWithCompletionHandler:(void (^)(NSError *))arg1;
+- (void)saveCloudBackgroundImageWithURL:(NSURL *)arg1 isLightAppearance:(_Bool)arg2 successCompletionHandler:(void (^)(void))arg3;
+- (void)saveCloudSettingWithDictionaryRepresentation:(NSDictionary *)arg1 successCompletionHandler:(void (^)(void))arg2;
+- (void)fetchCloudSettingsChangesImmediately;
 - (void)fetchCloudTabDevicesAndCloseRequests;
 - (void)getCloudTabContainerManateeStateWithCompletionHandler:(void (^)(_Bool))arg1;
+- (void)triggerSafariTabGroupSync;
 - (void)fetchSyncedCloudTabDevicesAndCloseRequestsWithCompletionHandler:(void (^)(NSArray *, NSArray *, NSError *))arg1;
 - (void)getCloudTabDevicesWithCompletionHandler:(void (^)(NSArray *))arg1;
 - (void)deleteCloudTabCloseRequestsWithUUIDStrings:(NSArray *)arg1 completionHandler:(void (^)(NSError *))arg2;

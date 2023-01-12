@@ -10,8 +10,7 @@
 + (id)hdmc_menstrualCyclesDefaultsDomainWithProfile:(id)arg1;
 - (id)hdmc_lastLoggedInCycleTrackingDateWithError:(id *)arg1;
 - (_Bool)hdmc_setLastLoggedInCycleTrackingDate:(id)arg1 error:(id *)arg2;
-- (id)hdmc_onboardingFirstCompletedDateWithError:(id *)arg1;
-- (id)hdmc_onboardingVersionCompletedWithError:(id *)arg1;
-- (id)hdmc_isOnboardingCompletedWithError:(id *)arg1;
+- (id)hdmc_legacyOnboardingFirstCompletedDateWithError:(id *)arg1;
+- (id)hdmc_legacyOnboardingVersionCompletedWithError:(id *)arg1;
 @end
 

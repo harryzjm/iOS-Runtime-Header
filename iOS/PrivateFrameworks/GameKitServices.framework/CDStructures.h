@@ -87,6 +87,7 @@ struct tagCONNRESULT {
     int bIfPrimary;
     int bIfReplaceOnly;
     struct tagCONNRESULT *next;
+    int channelID;
 };
 
 struct tagIPPORT {

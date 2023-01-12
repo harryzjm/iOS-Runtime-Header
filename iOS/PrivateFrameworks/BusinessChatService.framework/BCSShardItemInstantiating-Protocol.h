@@ -10,6 +10,6 @@
 @protocol BCSShardItemProtocol;
 
 @protocol BCSShardItemInstantiating <NSObject>
-- (id <BCSShardItemProtocol>)shardItemFromURL:(NSURL *)arg1;
+- (id <BCSShardItemProtocol>)shardItemFromURL:(NSURL *)arg1 type:(long long)arg2;
 @end
 

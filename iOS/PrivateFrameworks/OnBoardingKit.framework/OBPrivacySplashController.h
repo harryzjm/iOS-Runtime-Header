@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, OBPrivacyFlow, UIButton, UILabel;
+@class NSString, OBPrivacyFlow, UIButton, UIColor, UILabel;
 
 @interface OBPrivacySplashController
 {
     OBPrivacyFlow *_flow;
+    _Bool _underlineLinks;
     _Bool _suppressPerPageAnalyticsLogging;
     _Bool _allowsOpeningSafari;
     _Bool _showLinkToPrivacyGateway;
@@ -16,6 +17,7 @@
     _Bool _forceLargeMargins;
     _Bool _useModalStyle;
     _Bool _isCombined;
+    UIColor *_customTintColor;
     NSString *_displayLanguage;
     unsigned long long _displayDeviceType;
     UIButton *_linkToPrivacyGatewayButton;
@@ -41,6 +43,8 @@
 @property(nonatomic) _Bool showLinkToPrivacyGateway; // @synthesize showLinkToPrivacyGateway=_showLinkToPrivacyGateway;
 @property _Bool allowsOpeningSafari; // @synthesize allowsOpeningSafari=_allowsOpeningSafari;
 @property _Bool suppressPerPageAnalyticsLogging; // @synthesize suppressPerPageAnalyticsLogging=_suppressPerPageAnalyticsLogging;
+@property(nonatomic) _Bool underlineLinks; // @synthesize underlineLinks=_underlineLinks;
+@property(retain, nonatomic) UIColor *customTintColor; // @synthesize customTintColor=_customTintColor;
 - (_Bool)_canShowWhileLocked;
 - (void)defaultButtonPressed:(id)arg1;
 - (void)updateFontForUnifiedAboutButton;
@@ -51,6 +55,7 @@
 - (void)viewDidLoad;
 - (void)showPrivacyGateway:(id)arg1;
 - (void)showUnifiedAbout:(id)arg1;
+- (void)loadView;
 - (id)initWithFlow:(id)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (id)_defaultButtonTitle;

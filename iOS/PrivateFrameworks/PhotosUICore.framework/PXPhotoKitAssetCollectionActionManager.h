@@ -28,11 +28,14 @@
 - (void)_handleBarButtonItem:(id)arg1;
 - (id)activityForActionType:(id)arg1;
 - (id)alertActionForActionType:(id)arg1;
+- (id)standardActionForActionType:(id)arg1;
 - (id)barButtonItemForActionType:(id)arg1;
+- (Class)_firstPossiblePerformerForActionType:(id)arg1 assetCollectionReference:(id)arg2 requireThatPerformerCanPerformAction:(_Bool)arg3;
 - (Class)_firstPossiblePerformerForActionType:(id)arg1 assetCollectionReference:(id)arg2;
 - (id)systemImageNameForActionType:(id)arg1 assetCollectionReference:(id)arg2;
 - (id)localizedTitleForActionType:(id)arg1 useCase:(unsigned long long)arg2 assetCollectionReference:(id)arg3;
 - (id)actionPerformerForActionType:(id)arg1 assetCollectionReference:(id)arg2;
+- (_Bool)supportsActionType:(id)arg1;
 - (_Bool)canPerformActionType:(id)arg1 assetCollectionReference:(id)arg2;
 @property(readonly, nonatomic) PXAssetsDataSource *assetsDataSource;
 - (id)initWithAssetCollectionReference:(id)arg1 displayTitleInfo:(id)arg2;

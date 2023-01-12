@@ -4,15 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDate, NSMutableDictionary, NSMutableSet, NSString;
+@class NSDate, NSDictionary, NSMutableDictionary, NSMutableSet, NSString, TPSContextualEventBookmark;
 
 @interface TPSContextualEvent
 {
     unsigned int _minObservationCount;
-    unsigned long long _status;
+    long long _status;
     long long _type;
+    long long _lookBackDays;
+    long long _daysSinceLastMajorUpdate;
+    NSDictionary *_userInfoQuery;
+    NSDictionary *_userInfoPersistent;
     NSDate *_matchedDate;
     NSDate *_eventSinceDate;
+    TPSContextualEventBookmark *_bookmark;
     NSString *_key;
     NSString *_identifier;
     TPSContextualEvent *_state;
@@ -22,7 +27,6 @@
 
 + (long long)typeFromEventDictionary:(id)arg1;
 + (id)identifierFromEventInfoDictionary:(id)arg1;
-+ (id)classSet;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableSet *observerIdentifiers; // @synthesize observerIdentifiers=_observerIdentifiers;
@@ -30,18 +34,29 @@
 @property(copy, nonatomic) TPSContextualEvent *state; // @synthesize state=_state;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(copy, nonatomic) NSString *key; // @synthesize key=_key;
+@property(copy, nonatomic) TPSContextualEventBookmark *bookmark; // @synthesize bookmark=_bookmark;
 @property(copy, nonatomic) NSDate *eventSinceDate; // @synthesize eventSinceDate=_eventSinceDate;
 @property(copy, nonatomic) NSDate *matchedDate; // @synthesize matchedDate=_matchedDate;
+@property(copy, nonatomic) NSDictionary *userInfoPersistent; // @synthesize userInfoPersistent=_userInfoPersistent;
+@property(copy, nonatomic) NSDictionary *userInfoQuery; // @synthesize userInfoQuery=_userInfoQuery;
 @property(nonatomic) unsigned int minObservationCount; // @synthesize minObservationCount=_minObservationCount;
+@property(nonatomic) long long daysSinceLastMajorUpdate; // @synthesize daysSinceLastMajorUpdate=_daysSinceLastMajorUpdate;
+@property(nonatomic) long long lookBackDays; // @synthesize lookBackDays=_lookBackDays;
 @property(nonatomic) long long type; // @synthesize type=_type;
-@property(nonatomic) unsigned long long status; // @synthesize status=_status;
+@property(nonatomic) long long status; // @synthesize status=_status;
 - (id)debugDescription;
 - (id)description;
+@property(readonly, nonatomic) double eventTimeToLiveInterval; // @dynamic eventTimeToLiveInterval;
 - (void)removeOutdatedObservationDates;
 - (void)removeAllObservations;
 - (void)removeObserverIdentifiers:(id)arg1;
 - (_Bool)observedWithResults:(id)arg1;
+- (_Bool)hasDaysSinceLastMajorUpdate;
+- (_Bool)hasLookBackDays;
 - (void)addObserverIdentifier:(id)arg1;
+- (id)eventSinceLastMajorUpdateDate;
+- (double)daysSinceLastMajorUpdateTimeIntervalInSeconds;
+- (double)lookbackTimeIntervalInSeconds;
 - (_Bool)canBeRemoved;
 - (id)newStateFromStateDictionary:(id)arg1;
 @property(readonly, nonatomic) unsigned int currentObservationCount; // @dynamic currentObservationCount;

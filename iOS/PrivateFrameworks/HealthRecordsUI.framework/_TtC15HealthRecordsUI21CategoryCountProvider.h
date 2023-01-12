@@ -10,10 +10,10 @@
 
 @interface _TtC15HealthRecordsUI21CategoryCountProvider : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *category;
     MISSING_TYPE *healthStore;
-    MISSING_TYPE *sampleTypeCountProviders;
-    MISSING_TYPE *$__lazy_storage_$_categoryRecordCountPublisher;
+    MISSING_TYPE *categories;
+    MISSING_TYPE *$__lazy_storage_$_categoryCountsPublisher;
+    MISSING_TYPE *$__lazy_storage_$_sampleTypeCountProvider;
 }
 
 @end

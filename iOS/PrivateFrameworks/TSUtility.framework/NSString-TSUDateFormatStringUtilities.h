@@ -66,8 +66,6 @@
 - (id)tsu_stringByExpandingTableFormatting;
 - (_Bool)tsu_isPathCreatedByAppendingPathComponent:(id)arg1 insideBasePath:(id)arg2;
 - (id)tsu_pathToRelativeComponentPath:(id)arg1;
-- (id)tsu_stringWithPathRelativeTo:(id)arg1 allowBacktracking:(_Bool)arg2;
-- (id)tsu_stringWithPathRelativeTo:(id)arg1;
 - (_Bool)tsu_containsSubstring:(id)arg1;
 - (void)tsu_enumerateRangesOfCharactersInSet:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (struct _NSRange)tsu_range;

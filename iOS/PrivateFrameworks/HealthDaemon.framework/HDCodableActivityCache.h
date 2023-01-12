@@ -135,7 +135,6 @@
 @property(nonatomic) _Bool hasEnergyBurned;
 @property(nonatomic) _Bool hasCacheIndex;
 @property(readonly, nonatomic) _Bool hasSample;
-- (id)_decodeCodableActivityStatisticsQuantityInfos:(id)arg1;
 - (_Bool)applyToObject:(id)arg1;
 - (id)decodedWalkingAndRunningDistanceQuantity;
 - (id)decodedEnergyBurnedGoalQuantity;

@@ -14,5 +14,6 @@
 - (id)attributesForSharingHTMLWithTagName:(id *)arg1 textContent:(id *)arg2;
 - (_Bool)canConvertToHTMLForSharing;
 - (id)htmlString;
+- (void)redactAuthorAttributions;
 @end
 

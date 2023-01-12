@@ -6,14 +6,16 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthDaemon/HDDeletedObjectIterator-Protocol.h>
 #import <HealthDaemon/HDRestorableIterator-Protocol.h>
 #import <HealthDaemon/HDSampleIterator-Protocol.h>
 
-@class HDProfile, HDSortedSampleIterator, HKSample, HKSortedQueryAnchor, NSArray, NSMutableArray, NSString;
+@class HDProfile, HDSortedSampleIterator, HKDeletedObject, HKSample, HKSortedQueryAnchor, NSArray, NSMutableArray, NSString;
 
-@interface HDMultiTypeSortedSampleIterator : NSObject <HDSampleIterator, HDRestorableIterator>
+@interface HDMultiTypeSortedSampleIterator : NSObject <HDSampleIterator, HDDeletedObjectIterator, HDRestorableIterator>
 {
-    NSArray *_sampleQueryDescriptions;
+    NSArray *_queryDescriptors;
+    _Bool _includeDeletedObjects;
     NSArray *_sortDescriptors;
     long long _bufferSize;
     HDProfile *_profile;
@@ -23,7 +25,6 @@
     _Bool _isInitialized;
 }
 
-+ (id)_upstreamIteratorsWithSampleQueryDescriptions:(id)arg1 sortDescriptors:(id)arg2 anchor:(id)arg3 bufferSize:(long long)arg4 profile:(id)arg5;
 - (void).cxx_destruct;
 - (id)iteratorStateData;
 - (_Bool)restoreIteratorStateFromData:(id)arg1 error:(id *)arg2;
@@ -31,12 +32,11 @@
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) long long objectID;
+@property(readonly, nonatomic) HKDeletedObject *deletedObject;
 @property(readonly, nonatomic) HKSample *sample;
 - (id)object;
 - (_Bool)advanceWithError:(id *)arg1;
-- (_Bool)_prepareIteratorsWithError:(id *)arg1;
-- (id)initWithSampleQueryDescriptions:(id)arg1 sortDescriptors:(id)arg2 bufferSize:(long long)arg3 profile:(id)arg4;
-- (id)initForCopying;
+- (id)initWithQueryDescriptors:(id)arg1 includeDeletedObjects:(_Bool)arg2 anchor:(id)arg3 sortDescriptors:(id)arg4 bufferSize:(long long)arg5 profile:(id)arg6;
 - (id)init;
 
 // Remaining properties

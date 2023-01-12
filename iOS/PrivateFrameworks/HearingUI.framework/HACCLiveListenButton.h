@@ -4,50 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIControl.h>
+@class HACCLiveListenLevelGroup;
 
-#import <HearingUI/HACCContentModule-Protocol.h>
-
-@class HACCLiveListenLevelGroup, NSString, UILabel, UIView, UIVisualEffectView;
-@protocol HACCContentModuleDelegate;
-
-@interface HACCLiveListenButton : UIControl <HACCContentModule>
+@interface HACCLiveListenButton
 {
-    UIVisualEffectView *_titleContainer;
-    UIView *_subtitleContainer;
     _Bool _isListening;
-    unsigned long long module;
-    id <HACCContentModuleDelegate> delegate;
-    UILabel *_titleLabel;
-    UILabel *_subtitleLabel;
     HACCLiveListenLevelGroup *_levelGroup;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool isListening; // @synthesize isListening=_isListening;
 @property(retain, nonatomic) HACCLiveListenLevelGroup *levelGroup; // @synthesize levelGroup=_levelGroup;
-@property(retain, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
-@property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property(nonatomic) __weak id <HACCContentModuleDelegate> delegate; // @synthesize delegate;
-@property(nonatomic) unsigned long long module; // @synthesize module;
-- (unsigned long long)accessibilityTraits;
-- (id)accessibilityValue;
-- (id)accessibilityLabel;
-- (_Bool)isAccessibilityElement;
 - (id)contentValue;
 - (_Bool)enabled;
 - (void)updateValue;
-- (void)buttonTapped:(id)arg1;
 - (void)liveListenAudioLevelDidChange:(double)arg1;
-- (unsigned long long)lineCountForWidth:(double)arg1;
-- (struct CGSize)preferredSizeForSize:(struct CGSize)arg1;
+- (id)accessoryView;
 - (id)initWithFrame:(struct CGRect)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

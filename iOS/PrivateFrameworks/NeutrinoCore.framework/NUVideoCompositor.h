@@ -23,6 +23,7 @@
 - (void).cxx_destruct;
 - (void)failVideoCompositionRequest:(id)arg1 error:(id)arg2;
 - (void)setColorSpaceOfDestinationBuffer:(struct __CVBuffer *)arg1 fromPrimarySourceBufferOfRequest:(id)arg2;
+- (id)videoMetadataSamplesFromRequest:(id)arg1;
 - (id)videoFramesFromRequest:(id)arg1;
 - (void)finishCompositionRequest:(id)arg1 withComposedVideoFrame:(struct __CVBuffer *)arg2;
 - (void)fulfillVideoCompositionRequest:(id)arg1;
@@ -34,14 +35,16 @@
 - (id)init;
 @property(readonly, nonatomic) NSDictionary *requiredPixelBufferAttributesForRenderContext;
 @property(readonly, nonatomic) NSDictionary *sourcePixelBufferAttributes;
-- (id)standardPixelFormatsAllowCompressed:(_Bool)arg1;
+- (id)hdrPixelFormats:(long long)arg1;
+- (id)standardPixelFormats:(long long)arg1;
+@property(readonly, nonatomic) _Bool supportsHDRSourceFrames;
+@property(readonly, nonatomic) _Bool canConformColorOfSourceFrames;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
-@property(readonly, nonatomic) _Bool supportsHDRSourceFrames;
 
 @end
 

@@ -27,12 +27,12 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned char version; // @synthesize version=_version;
 @property(readonly) unsigned int type; // @synthesize type=_type;
 - (void)disposeControlInfo:(id)arg1;
-- (void *)newControlInfoWithBuffer:(const char *)arg1 length:(unsigned long long)arg2 optionalControlInfo:(CDStruct_39aa150d *)arg3;
+- (void *)newControlInfoWithBuffer:(const char *)arg1 length:(unsigned long long)arg2 optionalControlInfo:(CDStruct_d3f1d543 *)arg3;
 - (void *)newControlInfo;
 - (id)newControlInfoFromPool;
 - (unsigned long long)feedbackSize;
 - (int)addMediaControlInfoOption:(unsigned int)arg1;
-- (void *)newMediaControlInfoWithBuffer:(const char *)arg1 length:(unsigned long long)arg2 optionalControlInfo:(CDStruct_39aa150d *)arg3;
+- (void *)newMediaControlInfoWithBuffer:(const char *)arg1 length:(unsigned long long)arg2 optionalControlInfo:(CDStruct_d3f1d543 *)arg3;
 - (void *)newMediaControlInfo;
 - (void)passMediaControlInfo:(id)arg1 isFillBlobCallback:(_Bool)arg2;
 - (int)deregisterCallbacksWithContext:(void *)arg1;

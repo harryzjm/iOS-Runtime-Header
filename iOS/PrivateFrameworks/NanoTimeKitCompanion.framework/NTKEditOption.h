@@ -21,8 +21,10 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) CLKDevice *device; // @synthesize device=_device;
 - (_Bool)optionExistsInDevice:(id)arg1;
+- (_Bool)isPrideOption;
 - (_Bool)isValidOption;
 - (id)initWithJSONObjectRepresentation:(id)arg1 forDevice:(id)arg2;
+- (id)JSONObjectRepresentationForFace:(id)arg1;
 - (id)JSONObjectRepresentation;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

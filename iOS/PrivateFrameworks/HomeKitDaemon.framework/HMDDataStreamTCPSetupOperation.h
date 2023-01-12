@@ -23,6 +23,7 @@
 @property(readonly, nonatomic) NSData *controllerKeySalt; // @synthesize controllerKeySalt=_controllerKeySalt;
 @property(retain, nonatomic) HMFNetAddress *remoteNetAddress; // @synthesize remoteNetAddress=_remoteNetAddress;
 - (void)_finishStreamTransport;
+- (id)_createTCPTransport;
 - (void)_generateStreamKeys;
 - (void)processTransportSetupResponse:(id)arg1;
 - (void)startSetup;

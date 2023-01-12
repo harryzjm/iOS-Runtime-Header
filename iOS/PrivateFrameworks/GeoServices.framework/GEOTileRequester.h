@@ -20,9 +20,6 @@
     NSString *_deviceRegion;
 }
 
-+ (id)locationSensitiveTilesets;
-+ (CDStruct_e4886f83 *)newExpiringTilesets;
-+ (unsigned long long)expiringTilesetsCount;
 + (unsigned char)tileProviderIdentifier;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *deviceRegion; // @synthesize deviceRegion=_deviceRegion;
@@ -32,7 +29,7 @@
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property(readonly, nonatomic) __weak id <GEOTileRequesterDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)activeTileSetForKey:(const struct _GEOTileKey *)arg1;
-- (unsigned int)tileSetForKey:(const struct _GEOTileKey *)arg1;
+- (CDUnion_23a7df3d)tileSetForKey:(const struct _GEOTileKey *)arg1;
 - (void)reprioritizeKey:(const struct _GEOTileKey *)arg1 newPriority:(unsigned int)arg2;
 - (void)cancelKey:(const struct _GEOTileKey *)arg1;
 - (void)cancel;

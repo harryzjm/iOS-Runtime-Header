@@ -16,12 +16,12 @@
 
 + (id)secureCodedPropertyKeys;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) int source; // @synthesize source=_source;
 @property(nonatomic) unsigned int rid; // @synthesize rid=_rid;
 @property(retain, nonatomic) NSString *reason2; // @synthesize reason2=_reason2;
 @property(retain, nonatomic) NSString *reason; // @synthesize reason=_reason;
 - (int)defaultFamiliarity;
-- (void)dealloc;
 
 @end
 

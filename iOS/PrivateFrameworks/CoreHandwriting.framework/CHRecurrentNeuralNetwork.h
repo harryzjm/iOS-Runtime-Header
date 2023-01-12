@@ -13,8 +13,9 @@
     NSString *_modelName;
 }
 
++ (id)normalizedDrawing:(id)arg1 scaleFactor:(double)arg2 interpolationDistance:(double)arg3 outputPointMap:(void *)arg4;
 @property(readonly, retain, nonatomic) NSString *modelName; // @synthesize modelName=_modelName;
-- (id)normalizedDrawing:(id)arg1 targetHeight:(double)arg2 minimumDrawingSize:(struct CGSize)arg3 interpolationDistance:(double)arg4 outScaleFactor:(double *)arg5 outputPointMap:(vector_1dba4e4e *)arg6;
+- (id)normalizedDrawing:(id)arg1 targetHeight:(double)arg2 minimumDrawingSize:(struct CGSize)arg3 interpolationDistance:(double)arg4 outScaleFactor:(double *)arg5 outputPointMap:(void *)arg6;
 - (void)dealloc;
 - (id)initWithModelName:(id)arg1;
 

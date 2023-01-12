@@ -24,6 +24,8 @@
 - (id)encodedAsUserInfo;
 - (id)initWithBundleIdentifier:(id)arg1;
 - (id)initWithBundleIdentifier:(id)arg1 preloadingLaunchInfo:(id)arg2;
+- (id)initWithBundleURL:(id)arg1;
+- (id)initWithBundleURL:(id)arg1 preloadingLaunchInfo:(id)arg2;
 
 @end
 

@@ -16,6 +16,7 @@
 + (id)_availabilityPlistURL;
 + (_Bool)isCountryAllowed:(id)arg1;
 + (id)allowedCountryCodesISO3166;
++ (id)allowedCountrySet;
 + (id)allowedCountryCodesByVersion;
 - (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isDeviceSupported) _Bool deviceSupported;

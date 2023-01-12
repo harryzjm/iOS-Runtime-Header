@@ -35,6 +35,7 @@
 - (void)_touch;
 - (void)touch;
 - (void)close;
+- (id)transferAssets:(id)arg1 toBundle:(id)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_newTouchCoalescer;
 - (id)newBoundAssetsdServicesTable;
 - (id)newLibraryServicesManager;

@@ -41,12 +41,14 @@
 @property(readonly, nonatomic) unsigned long long algorithm; // @synthesize algorithm=_algorithm;
 @property(readonly, nonatomic) PPSource *source; // @synthesize source=_source;
 @property(readonly, nonatomic) PPTopic *topic; // @synthesize topic=_topic;
+- (id)identifier;
 - (id)featureValueForName:(id)arg1;
 @property(readonly, nonatomic) NSSet *featureNames;
 @property(readonly, nonatomic) double sentimentScore; // @dynamic sentimentScore;
 - (_Bool)isEqualToTopicRecord:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
+- (id)description;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

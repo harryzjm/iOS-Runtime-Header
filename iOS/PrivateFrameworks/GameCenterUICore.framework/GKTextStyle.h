@@ -89,10 +89,6 @@
 - (id)leaderboardRankLarge;
 - (id)leaderboardRankMedium;
 - (id)leaderboardRankSmall;
-- (id)signInLink;
-- (id)signInFieldLabel;
-- (id)signInField;
-- (id)signInSubtitle;
 - (id)detailSecondaryHeaderText;
 - (id)gameDetailNameText;
 - (id)thinNumberText;
@@ -128,6 +124,7 @@
 - (id)roundButtonTitle;
 - (id)caption;
 - (id)bannerMessage;
+- (id)bannerShortTitle;
 - (id)bannerTitle;
 - (id)caption2;
 - (id)caption1;

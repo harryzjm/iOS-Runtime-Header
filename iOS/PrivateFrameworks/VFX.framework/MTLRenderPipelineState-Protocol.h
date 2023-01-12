@@ -6,10 +6,14 @@
 
 #import <VFX/NSObject-Protocol.h>
 
-@class NSString;
-@protocol MTLDevice;
+@class MTLIntersectionFunctionTableDescriptor, MTLRenderPipelineFunctionsDescriptor, MTLVisibleFunctionTableDescriptor, NSString;
+@protocol MTLDevice, MTLFunction, MTLFunctionHandle, MTLIntersectionFunctionTable, MTLRenderPipelineState, MTLVisibleFunctionTable;
 
 @protocol MTLRenderPipelineState <NSObject>
+- (id <MTLRenderPipelineState>)newRenderPipelineStateWithAdditionalBinaryFunctions:(MTLRenderPipelineFunctionsDescriptor *)arg1 error:(id *)arg2;
+- (id <MTLIntersectionFunctionTable>)newIntersectionFunctionTableWithDescriptor:(MTLIntersectionFunctionTableDescriptor *)arg1 stage:(unsigned long long)arg2;
+- (id <MTLVisibleFunctionTable>)newVisibleFunctionTableWithDescriptor:(MTLVisibleFunctionTableDescriptor *)arg1 stage:(unsigned long long)arg2;
+- (id <MTLFunctionHandle>)functionHandleWithFunction:(id <MTLFunction>)arg1 stage:(unsigned long long)arg2;
 @property(nonatomic, readonly) _Bool supportIndirectCommandBuffers;
 - (unsigned long long)imageblockMemoryLengthForDimensions:(CDStruct_14f26992)arg1;
 @property(nonatomic, readonly) long long imageblockSampleLength;

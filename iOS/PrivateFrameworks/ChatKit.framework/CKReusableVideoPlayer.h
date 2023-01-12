@@ -6,23 +6,46 @@
 
 #import <objc/NSObject.h>
 
+#import <ChatKit/AVPlayerViewControllerDelegate-Protocol.h>
+
 @class AVPlayerViewController, NSString;
+@protocol CKReusableVideoPlayerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CKReusableVideoPlayer : NSObject
+@interface CKReusableVideoPlayer : NSObject <AVPlayerViewControllerDelegate>
 {
+    _Bool _observingPlayer;
     _Bool _playing;
+    _Bool _wasPlayingBeforeDisappearing;
     NSString *_videoTransferGUID;
+    id <CKReusableVideoPlayerDelegate> _delegate;
     AVPlayerViewController *_playerViewController;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool wasPlayingBeforeDisappearing; // @synthesize wasPlayingBeforeDisappearing=_wasPlayingBeforeDisappearing;
+@property(nonatomic, getter=isPlaying) _Bool playing; // @synthesize playing=_playing;
+@property(nonatomic, getter=isObservingPlayer) _Bool observingPlayer; // @synthesize observingPlayer=_observingPlayer;
 @property(retain, nonatomic) AVPlayerViewController *playerViewController; // @synthesize playerViewController=_playerViewController;
-@property(readonly, nonatomic, getter=isPlaying) _Bool playing; // @synthesize playing=_playing;
+@property(nonatomic) __weak id <CKReusableVideoPlayerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic) NSString *videoTransferGUID; // @synthesize videoTransferGUID=_videoTransferGUID;
+- (void)removeRateObserverIfNecessary;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)selectedConversationChanged;
 @property(readonly, nonatomic, getter=isPictureInPictureActive) _Bool pictureInPictureActive;
+- (void)pause;
 - (_Bool)isReadyForReuse;
+- (void)windowDidClose;
+- (void)willDisappear;
 - (void)configureWithPlayerItem:(id)arg1;
+- (id)init;
+- (void)dealloc;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

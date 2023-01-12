@@ -10,7 +10,7 @@
 #import <CoreParsec/_CPLookupHintRelevancyFeedback-Protocol.h>
 #import <CoreParsec/_CPProcessableFeedback-Protocol.h>
 
-@class NSData, NSDictionary, NSString, _CPRange;
+@class NSData, NSString, _CPRange;
 
 @interface _CPLookupHintRelevancyFeedback : PBCodable <_CPProcessableFeedback, _CPLookupHintRelevancyFeedback, NSSecureCoding>
 {
@@ -29,21 +29,17 @@
 @property(copy, nonatomic) NSString *domain; // @synthesize domain=_domain;
 @property(retain, nonatomic) _CPRange *hintRange; // @synthesize hintRange=_hintRange;
 @property(nonatomic) unsigned long long timestamp;
-- (id)initWithDictionary:(id)arg1;
-- (id)initWithJSON:(id)arg1;
-@property(readonly, nonatomic) NSData *jsonData;
-@property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)init;
 - (id)initWithFacade:(id)arg1;
-@property(readonly, nonatomic) id feedbackJSON;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) NSData *jsonData; // @dynamic jsonData;
 @property(readonly) Class superclass;
 
 @end

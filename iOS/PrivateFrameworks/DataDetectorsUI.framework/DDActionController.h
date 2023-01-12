@@ -38,9 +38,10 @@ __attribute__((visibility("hidden")))
 - (void)actionDidFinish:(id)arg1;
 - (void)actionDidFinish:(id)arg1 shouldDismiss:(_Bool)arg2;
 - (void)failedToPrepareViewControllerForAction:(id)arg1;
-- (void)action:(id)arg1 becameCancellable:(_Bool)arg2;
+- (void)action:(id)arg1 presentationShouldBeModal:(_Bool)arg2;
 - (void)action:(id)arg1 viewControllerReady:(id)arg2;
 - (void)performAction:(id)arg1;
+- (_Bool)presentingAreaIsLargeEnough;
 - (void)_dismissCurrentViewControllerOurselves;
 - (void)_presentCurrentViewControllerOurselves;
 - (void)prepareForPopoverPresentation:(id)arg1;

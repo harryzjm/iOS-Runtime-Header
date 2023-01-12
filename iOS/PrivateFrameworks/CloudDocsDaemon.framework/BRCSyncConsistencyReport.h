@@ -6,33 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class BRCItemGlobalID, BRMangledID, NSError, NSURL;
+@class NSArray, NSError;
 
 __attribute__((visibility("hidden")))
 @interface BRCSyncConsistencyReport : NSObject
 {
-    long long _failureRetryCount;
-    NSURL *_fileURL;
-    _Bool _containsSharedToMeItem;
     _Bool _wasAbleToRun;
-    long long _itemCountDifference;
+    NSArray *_telemetryErrorEvents;
+    NSArray *_telemetryWarningEvents;
     NSError *_lastError;
-    BRCItemGlobalID *_itemGlobalID;
-    BRMangledID *_zoneMangledID;
 }
 
-+ (void)generateReportForSharedFolder:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-+ (void)_finishReport:(id)arg1 session:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (void)generateReportWithSession:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)cleanupApfsSnapshotWithMountFD:(int)arg1;
++ (void)cleanupApfsSnapshotWithMountPath:(id)arg1;
++ (void)_finishReport:(id)arg1 session:(id)arg2 temporaryDBURL:(id)arg3 mountFD:(int)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) BRMangledID *zoneMangledID; // @synthesize zoneMangledID=_zoneMangledID;
-@property(readonly, nonatomic) BRCItemGlobalID *itemGlobalID; // @synthesize itemGlobalID=_itemGlobalID;
-@property(readonly, nonatomic) NSError *lastError; // @synthesize lastError=_lastError;
 @property(readonly, nonatomic) _Bool wasAbleToRun; // @synthesize wasAbleToRun=_wasAbleToRun;
-@property(readonly, nonatomic) long long itemCountDifference; // @synthesize itemCountDifference=_itemCountDifference;
-- (id)telemetryEvent;
-- (void)incrementErrorRetryCountWithSession:(id)arg1;
-- (void)shareChangedDuringCheckWithSession:(id)arg1;
-- (id)initWithURL:(id)arg1;
+@property(readonly, nonatomic) NSError *lastError; // @synthesize lastError=_lastError;
+@property(readonly, nonatomic) NSArray *telemetryWarningEvents; // @synthesize telemetryWarningEvents=_telemetryWarningEvents;
+@property(readonly, nonatomic) NSArray *telemetryErrorEvents; // @synthesize telemetryErrorEvents=_telemetryErrorEvents;
 
 @end
 

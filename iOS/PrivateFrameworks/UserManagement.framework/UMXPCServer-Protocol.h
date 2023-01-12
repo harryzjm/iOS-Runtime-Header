@@ -24,6 +24,7 @@
 - (void)fetchPersonaListforPid:(int)arg1 withCompletionHandler:(void (^)(NSArray *, NSError *))arg2;
 - (void)disablePersona:(NSDictionary *)arg1 forPid:(int)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)deletePersona:(NSDictionary *)arg1 forPid:(int)arg2 completionHandler:(void (^)(NSError *))arg3;
+- (void)createPersona:(NSDictionary *)arg1 passcodeData:(NSData *)arg2 passcodeDataType:(unsigned long long)arg3 forPid:(int)arg4 completionHandler:(void (^)(NSDictionary *, NSError *))arg5;
 - (void)createPersona:(NSDictionary *)arg1 passcodeData:(NSData *)arg2 forPid:(int)arg3 completionHandler:(void (^)(NSDictionary *, NSError *))arg4;
 - (void)loginComplete;
 - (void)reengageUserQuotaForPID:(int)arg1 completionHandler:(void (^)(NSError *))arg2;

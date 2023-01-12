@@ -21,6 +21,8 @@
     UIViewController<HUConfigurationViewController> *_setupViewController;
 }
 
++ (_Bool)home:(id)arg1 canShowNaturalLightingOnboardingWithUsageOptions:(id)arg2;
++ (id)needsOnboardingForHome:(id)arg1 options:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIViewController<HUConfigurationViewController> *setupViewController; // @synthesize setupViewController=_setupViewController;
 @property(nonatomic) _Bool shouldAbortAllOnboarding; // @synthesize shouldAbortAllOnboarding=_shouldAbortAllOnboarding;

@@ -11,9 +11,14 @@
     _Bool _enableMemoriesLivingOnFeedback;
     _Bool _enableManualRefreshUI;
     _Bool _fakePeopleProximity;
+    _Bool _showEphemeralMemories;
+    _Bool _useOnlyMusicForTopicInTopPickSuggestions;
+    _Bool _includeChillMixInMusicForYou;
+    _Bool _includeGetUpMixInMusicForYou;
     _Bool _recoverBlacklistedMemories;
     _Bool _showMemoryTitleLayer;
     _Bool _enableIPadWideHeader;
+    _Bool _enableDiscoveryFeed;
     double _refreshPhotoKitTimeout;
     double _widgetRefreshTimeInterval;
     long long _minimumNumberOfCuratedAssetsForInterestingMoments;
@@ -22,6 +27,7 @@
     unsigned long long _deleteBehavior;
     long long _subtitleFontSize;
     unsigned long long _timelineSchedulerMode;
+    unsigned long long _discoveryRankingMode;
 }
 
 + (id)schedulerOptionsFromTimelineSchedulerMode:(unsigned long long)arg1;
@@ -30,6 +36,8 @@
 + (void)_presentAlertForMemoriesGenerationResult:(id)arg1 error:(id)arg2 inModuleController:(id)arg3;
 + (void)_generateQuestionsWithOptions:(long long)arg1 count:(unsigned long long)arg2 inModuleController:(id)arg3;
 + (id)settingsControllerModule;
+@property(nonatomic) unsigned long long discoveryRankingMode; // @synthesize discoveryRankingMode=_discoveryRankingMode;
+@property(nonatomic) _Bool enableDiscoveryFeed; // @synthesize enableDiscoveryFeed=_enableDiscoveryFeed;
 @property(nonatomic) unsigned long long timelineSchedulerMode; // @synthesize timelineSchedulerMode=_timelineSchedulerMode;
 @property(nonatomic) long long subtitleFontSize; // @synthesize subtitleFontSize=_subtitleFontSize;
 @property(nonatomic) _Bool enableIPadWideHeader; // @synthesize enableIPadWideHeader=_enableIPadWideHeader;
@@ -41,6 +49,10 @@
 @property(nonatomic) long long minimumNumberOfCuratedAssetsForInterestingMoments; // @synthesize minimumNumberOfCuratedAssetsForInterestingMoments=_minimumNumberOfCuratedAssetsForInterestingMoments;
 @property(nonatomic) double widgetRefreshTimeInterval; // @synthesize widgetRefreshTimeInterval=_widgetRefreshTimeInterval;
 @property(nonatomic) double refreshPhotoKitTimeout; // @synthesize refreshPhotoKitTimeout=_refreshPhotoKitTimeout;
+@property(nonatomic) _Bool includeGetUpMixInMusicForYou; // @synthesize includeGetUpMixInMusicForYou=_includeGetUpMixInMusicForYou;
+@property(nonatomic) _Bool includeChillMixInMusicForYou; // @synthesize includeChillMixInMusicForYou=_includeChillMixInMusicForYou;
+@property(nonatomic) _Bool useOnlyMusicForTopicInTopPickSuggestions; // @synthesize useOnlyMusicForTopicInTopPickSuggestions=_useOnlyMusicForTopicInTopPickSuggestions;
+@property(nonatomic) _Bool showEphemeralMemories; // @synthesize showEphemeralMemories=_showEphemeralMemories;
 @property(nonatomic) _Bool fakePeopleProximity; // @synthesize fakePeopleProximity=_fakePeopleProximity;
 @property(nonatomic) _Bool enableManualRefreshUI; // @synthesize enableManualRefreshUI=_enableManualRefreshUI;
 @property(nonatomic) _Bool enableMemoriesLivingOnFeedback; // @synthesize enableMemoriesLivingOnFeedback=_enableMemoriesLivingOnFeedback;

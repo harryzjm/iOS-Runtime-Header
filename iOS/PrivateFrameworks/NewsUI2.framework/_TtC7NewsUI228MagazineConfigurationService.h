@@ -12,7 +12,6 @@
 {
     MISSING_TYPE *dataService;
     MISSING_TYPE *bundleVersion;
-    MISSING_TYPE *$__lazy_storage_$_dateFormatter;
 }
 
 @end

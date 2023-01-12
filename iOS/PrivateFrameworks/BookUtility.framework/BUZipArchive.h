@@ -22,6 +22,9 @@
 @property(retain, nonatomic) NSMutableOrderedSet *entries; // @synthesize entries=_entries;
 @property(retain, nonatomic) NSMutableDictionary *entriesMap; // @synthesize entriesMap=_entriesMap;
 @property(nonatomic) unsigned long long options; // @synthesize options=_options;
+- (_Bool)extractToURL:(id)arg1 error:(id *)arg2 shouldExtractEntry:(CDUnknownBlockType)arg3 didExtractEntry:(CDUnknownBlockType)arg4;
+- (_Bool)extractToURL:(id)arg1 error:(id *)arg2;
+@property(readonly, nonatomic) unsigned long long totalSize;
 - (id)debugDescription;
 @property(readonly, nonatomic) _Bool isValid;
 - (id)newArchiveReadChannel;

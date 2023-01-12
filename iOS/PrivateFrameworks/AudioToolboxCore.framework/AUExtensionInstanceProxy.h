@@ -9,10 +9,10 @@
 __attribute__((visibility("hidden")))
 @interface AUExtensionInstanceProxy : NSObject
 {
-    struct AUv3InstanceBase *_auInstance;
+    void *_auInstance;
 }
 
-@property(nonatomic) struct AUv3InstanceBase *auInstance; // @synthesize auInstance=_auInstance;
+@property(nonatomic) void *auInstance; // @synthesize auInstance=_auInstance;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 
 @end

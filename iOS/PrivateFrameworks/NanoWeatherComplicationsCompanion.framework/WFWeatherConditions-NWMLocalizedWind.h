@@ -13,7 +13,7 @@
 + (id)_localizedWindspeed:(double)arg1 withUnit:(int)arg2 forLocale:(id)arg3;
 + (id)_defaultWindSpeedWithUnit:(double)arg1;
 + (id)nwm_localizedWindpeedUnit;
-+ (id)_nwc_prefixForFamily:(long long)arg1;
++ (id)nwc_symbolNameForTimeOfDay:(unsigned long long)arg1 code:(unsigned long long)arg2;
 + (id)nwc_noDataImageForComplicationFamily:(long long)arg1;
 + (id)_nwm_shortSuffixedKey:(id)arg1;
 + (id)nwm_localizedNoDataRounded;
@@ -34,8 +34,8 @@
 @property(readonly, nonatomic) NSString *nwm_localizedWindDirectionAbbreviationCompact;
 @property(readonly, nonatomic) NSString *nwm_localizedWindDirectionAbbreviation;
 - (unsigned long long)_nwc_code;
-- (id)nwc_conditionImageProviderForTimeOfDay:(unsigned long long)arg1 andFamily:(long long)arg2;
-- (id)nwc_conditionImageForTimeOfDay:(unsigned long long)arg1 andFamily:(long long)arg2;
+- (id)nwc_symbolNameForTimeOfDay:(unsigned long long)arg1;
+- (id)nwc_conditionImageForTimeOfDay:(unsigned long long)arg1 withScale:(long long)arg2;
 - (unsigned long long)nw_timeOfDay;
 - (id)nwm_localizedDescriptionShort;
 - (id)nwm_localizedDescriptionKey;
@@ -48,6 +48,8 @@
 @property(readonly, nonatomic) unsigned long long nwc_ultravioletIndexCategory;
 @property(readonly, nonatomic) NSDate *nwc_expirationDate;
 @property(readonly, nonatomic) NSDate *nwc_date;
+@property(readonly, nonatomic) unsigned long long simplifiedPrecipitationCondition;
+@property(readonly, nonatomic, getter=isTypeOfPrecipitation) _Bool typeOfPrecipitation;
 @property(readonly, nonatomic) unsigned long long nwm_ultravioletIndexCategory;
 @property(readonly, nonatomic) NSString *nwm_localizedUltravioletIndexRiskDescription;
 @end

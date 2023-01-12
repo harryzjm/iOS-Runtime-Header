@@ -10,6 +10,7 @@
 
 @protocol _SFPBWatchListItem <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(nonatomic) _Bool isMediaContainer;
 @property(copy, nonatomic) NSString *watchLiveTextFormat;
 @property(copy, nonatomic) NSString *addedToUpNextText;
 @property(copy, nonatomic) NSString *addToUpNextText;

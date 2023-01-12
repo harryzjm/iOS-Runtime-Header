@@ -6,13 +6,13 @@
 
 #import <Photos/NSObject-Protocol.h>
 
-@class NSString;
+@class NSString, PLPhotoLibraryPathManagerIdentifier;
 
 @protocol PLAssetID <NSObject>
-- (unsigned char)bundleScope;
+- (unsigned short)bundleScope;
 - (NSString *)filename;
 - (NSString *)directory;
-- (NSString *)libraryID;
+- (PLPhotoLibraryPathManagerIdentifier *)libraryID;
 - (NSString *)uuid;
 @end
 

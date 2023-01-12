@@ -50,6 +50,8 @@
 - (_Bool)_setGeometryFromProperties:(id)arg1 error:(out id *)arg2;
 - (id)resolvedNodeWithCachedInputs:(id)arg1 settings:(id)arg2 pipelineState:(id)arg3 error:(out id *)arg4;
 - (id)preparedNodeWithSourceContainer:(id)arg1 pipelineState:(id)arg2 pipelineSettings:(id)arg3 sourceSettings:(id)arg4 error:(out id *)arg5;
+- (_Bool)canPropagateOriginalAuxiliaryData;
+- (id)_evaluateAuxiliaryImageForType:(long long)arg1 error:(out id *)arg2;
 - (id)resolvedAuxiliaryImageNodeForPipelineState:(id)arg1 error:(out id *)arg2;
 - (id)auxiliaryImagePropertiesForAuxImageType:(long long)arg1;
 - (_Bool)supportsPipelineState:(id)arg1 error:(out id *)arg2;

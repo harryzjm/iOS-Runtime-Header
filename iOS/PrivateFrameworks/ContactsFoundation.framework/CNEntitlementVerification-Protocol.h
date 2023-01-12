@@ -9,8 +9,8 @@
 @class NSString;
 
 @protocol CNEntitlementVerification <NSObject>
-+ (_Bool)auditToken:(CDStruct_4c969caf)arg1 isFirstOrSecondPartyWithError:(id *)arg2;
-+ (_Bool)auditToken:(CDStruct_4c969caf)arg1 hasBooleanEntitlement:(NSString *)arg2 error:(id *)arg3;
-+ (_Bool)currentProcessHasBooleanEntitlement:(NSString *)arg1 error:(id *)arg2;
+- (_Bool)auditToken:(CDStruct_4c969caf)arg1 isFirstOrSecondPartyWithError:(id *)arg2;
+- (_Bool)auditToken:(CDStruct_4c969caf)arg1 hasBooleanEntitlement:(NSString *)arg2 error:(id *)arg3;
+- (_Bool)currentProcessHasBooleanEntitlement:(NSString *)arg1 error:(id *)arg2;
 @end
 

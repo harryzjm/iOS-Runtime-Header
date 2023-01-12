@@ -6,11 +6,11 @@
 
 @interface TSTWrappedFormula
 {
-    int _functionIndex;
+    unsigned short _functionIndex;
 }
 
 + (_Bool)storageExceedsMaxFormulaLength:(id)arg1;
-@property(nonatomic) int functionIndex; // @synthesize functionIndex=_functionIndex;
+@property(nonatomic) unsigned short functionIndex; // @synthesize functionIndex=_functionIndex;
 - (void)reparseWithStorage:(id)arg1 adjustExpressionTree:(CDUnknownBlockType)arg2;
 - (void)insertFormulaText:(id)arg1 includeWhitespace:(_Bool)arg2;
 - (id)nodesToCheckForBareArgumentPlaceholders;

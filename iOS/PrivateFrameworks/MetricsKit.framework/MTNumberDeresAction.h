@@ -4,15 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSNumber;
+@class NSArray;
 
 @interface MTNumberDeresAction
 {
-    NSNumber *_precision;
+    double _precision;
+    NSArray *_buckets;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSNumber *precision; // @synthesize precision=_precision;
+@property(retain, nonatomic) NSArray *buckets; // @synthesize buckets=_buckets;
+@property(nonatomic) double precision; // @synthesize precision=_precision;
 - (id)performAction:(id)arg1 context:(id)arg2;
 - (id)initWithField:(id)arg1 configDictionary:(id)arg2;
 

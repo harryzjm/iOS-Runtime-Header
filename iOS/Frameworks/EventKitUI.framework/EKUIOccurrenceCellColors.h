@@ -12,14 +12,12 @@
 
 + (id)tentativeStripeColor:(_Bool)arg1;
 + (id)needsReplyStripeColor:(_Bool)arg1;
-+ (id)invitationPrimaryTextColor;
 + (id)secondaryPastTextColor;
-+ (id)secondaryStrikethroughTextColor;
++ (id)quaternaryTextColor;
++ (id)tertiaryTextColor;
 + (id)secondaryTextColor;
-+ (id)primaryPastTextColor;
-+ (id)primaryStrikethroughTextColor;
 + (id)primaryTextColor;
-+ (id)prefixTextColor;
++ (id)primaryPastTextColor;
 + (id)cancelledDeclinedColorBarColor;
 
 @end

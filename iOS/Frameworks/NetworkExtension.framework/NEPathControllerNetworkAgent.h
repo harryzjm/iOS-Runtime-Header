@@ -12,6 +12,7 @@
     _Bool _isForcedAdvisory;
     _Bool _weakAdvisory;
     _Bool _noAdvisoryTimer;
+    _Bool _preferAdvisory;
     CDUnknownBlockType _internalAssertHandler;
     CDUnknownBlockType _internalUnassertHandler;
     NSMutableArray *_predictedInterfaceArray;
@@ -23,6 +24,7 @@
 + (id)agentFromData:(id)arg1;
 + (id)agentType;
 - (void).cxx_destruct;
+@property _Bool preferAdvisory; // @synthesize preferAdvisory=_preferAdvisory;
 @property _Bool noAdvisoryTimer; // @synthesize noAdvisoryTimer=_noAdvisoryTimer;
 @property _Bool weakAdvisory; // @synthesize weakAdvisory=_weakAdvisory;
 @property(retain) NSString *advisoryAgentType; // @synthesize advisoryAgentType=_advisoryAgentType;

@@ -22,6 +22,7 @@
     CDUnknownBlockType _childCollectionsSortingComparator;
     unsigned long long _unreadAssetCollectionsCount;
     unsigned long long _estimatedChildCollectionCount;
+    NSString *_cloudGUID;
 }
 
 + (id)transientCollectionListWithAssetCollectionsFetchResult:(id)arg1 title:(id)arg2 identifier:(id)arg3;
@@ -39,8 +40,6 @@
 + (id)fetchRootProjectCollectionListWithOptions:(id)arg1;
 + (id)fetchRootAlbumCollectionListWithOptions:(id)arg1;
 + (id)fetchCollectionListsWithType:(long long)arg1 subtype:(long long)arg2 options:(id)arg3;
-+ (id)fetchCollectionListsWithType:(long long)arg1 localIdentifiers:(id)arg2 options:(id)arg3;
-+ (id)fetchCollectionListsWithCloudIdentifiers:(id)arg1 options:(id)arg2;
 + (id)fetchCollectionListsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)fetchCollectionListsContainingCollection:(id)arg1 options:(id)arg2;
 + (id)entityKeyMap;
@@ -52,6 +51,7 @@
 + (id)fetchCollectionListsForReferences:(id)arg1 photoLibrary:(id)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *transientIdentifier; // @synthesize transientIdentifier=_transientIdentifier;
+@property(readonly, nonatomic) NSString *cloudGUID; // @synthesize cloudGUID=_cloudGUID;
 @property(readonly, nonatomic) unsigned long long estimatedChildCollectionCount; // @synthesize estimatedChildCollectionCount=_estimatedChildCollectionCount;
 @property(readonly, nonatomic) unsigned long long unreadAssetCollectionsCount; // @synthesize unreadAssetCollectionsCount=_unreadAssetCollectionsCount;
 @property(readonly, copy, nonatomic) CDUnknownBlockType childCollectionsSortingComparator; // @synthesize childCollectionsSortingComparator=_childCollectionsSortingComparator;

@@ -20,6 +20,7 @@
     NSMutableArray *_readingSignatureServices;
     NSMapTable *_characteristicSignatures;
     NSMapTable *_serviceSignatures;
+    NSMutableArray *_discoveredAccessoryCharacteriticsPendingRead;
     long long _retries;
     CDUnknownBlockType _completionHandler;
 }
@@ -27,6 +28,7 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property(nonatomic) long long retries; // @synthesize retries=_retries;
+@property(retain, nonatomic) NSMutableArray *discoveredAccessoryCharacteriticsPendingRead; // @synthesize discoveredAccessoryCharacteriticsPendingRead=_discoveredAccessoryCharacteriticsPendingRead;
 @property(readonly, nonatomic) NSMapTable *serviceSignatures; // @synthesize serviceSignatures=_serviceSignatures;
 @property(readonly, nonatomic) NSMapTable *characteristicSignatures; // @synthesize characteristicSignatures=_characteristicSignatures;
 @property(readonly, nonatomic) NSMutableArray *readingSignatureServices; // @synthesize readingSignatureServices=_readingSignatureServices;

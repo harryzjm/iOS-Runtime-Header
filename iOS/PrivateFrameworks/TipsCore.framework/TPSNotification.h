@@ -18,7 +18,6 @@
 
 + (id)na_identity;
 + (id)notificationFromDictionary:(id)arg1;
-+ (id)classSet;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) TPSAssets *assets; // @synthesize assets=_assets;

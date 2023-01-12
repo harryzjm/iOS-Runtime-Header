@@ -4,7 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MXMInstrument, NSDate, NSString;
+@class MXMInstrument, NSDate, NSObject, NSString;
+@protocol OS_dispatch_semaphore;
 
 @interface MXMOSSignpostMetric
 {
@@ -12,6 +13,8 @@
     NSDate *_stopDate;
     unsigned long long _startMachContTime;
     unsigned long long _stopMachContTime;
+    NSObject<OS_dispatch_semaphore> *_startDate_semaphore;
+    NSObject<OS_dispatch_semaphore> *_stopDate_semaphore;
 }
 
 + (_Bool)supportsSecureCoding;

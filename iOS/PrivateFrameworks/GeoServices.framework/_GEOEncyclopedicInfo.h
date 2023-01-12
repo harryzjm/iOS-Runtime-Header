@@ -18,8 +18,11 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (id)firstFactoidForSemantic:(int)arg1;
+- (id)factoidAtIndex:(int)arg1;
 @property(readonly, nonatomic) _Bool hasStandAloneFactoids;
 @property(readonly, nonatomic) GEOMapItemAttribution *encyclopedicAttribution;
+@property(readonly, nonatomic) NSArray *placeSummaryFactoids;
 @property(readonly, nonatomic) NSArray *factoids;
 @property(readonly, nonatomic) _Bool hasPairOfFactoids;
 @property(readonly, nonatomic) NSString *textBlockText;

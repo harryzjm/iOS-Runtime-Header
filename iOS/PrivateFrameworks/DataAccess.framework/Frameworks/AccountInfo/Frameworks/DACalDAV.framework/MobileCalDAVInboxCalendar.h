@@ -19,7 +19,7 @@
 - (_Bool)updateResourcesFromServer:(id)arg1;
 - (id)etagsForItemURLs:(id)arg1;
 - (void)setETag:(id)arg1 forInvitationAtURL:(id)arg2 uniqueIdentifier:(id)arg3;
-- (void *)_copyEventActionWithURL:(id)arg1;
+- (void *)_copyEventActionWithURL:(id)arg1 forCalItemWithUniqueIdentifier:(id)arg2;
 - (id)allItemURLs;
 - (_Bool)shouldCalendarBeHidden;
 - (_Bool)isScheduleInbox;

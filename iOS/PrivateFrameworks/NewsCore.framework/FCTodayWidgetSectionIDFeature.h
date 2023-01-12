@@ -12,10 +12,6 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSString *sectionID; // @synthesize sectionID=_sectionID;
-- (id)fc_description;
-- (id)initWithPersonalizationIdentifier:(id)arg1;
-- (id)initWithSectionID:(id)arg1;
 - (id)init;
 
 @end

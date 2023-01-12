@@ -51,7 +51,6 @@
 @property(nonatomic) unsigned long long activityType; // @synthesize activityType=_activityType;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (_Bool)createdFromNSKeyedUnarchiver;
 - (id)initWithPrototype:(id)arg1 currentDemoDataTime:(double)arg2;
 
 @end

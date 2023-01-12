@@ -13,7 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface WK_RTCWrappedNativeVideoDecoder : NSObject <RTCVideoDecoder>
 {
-    unique_ptr_28850a1b _wrappedDecoder;
+    unique_ptr_8ce5ae0d _wrappedDecoder;
 }
 
 - (id).cxx_construct;
@@ -23,8 +23,8 @@ __attribute__((visibility("hidden")))
 - (long long)releaseDecoder;
 - (long long)startDecodeWithNumberOfCores:(int)arg1;
 - (void)setCallback:(CDUnknownBlockType)arg1;
-- (unique_ptr_28850a1b)releaseWrappedDecoder;
-- (id)initWithNativeDecoder:(unique_ptr_28850a1b)arg1;
+- (unique_ptr_8ce5ae0d)releaseWrappedDecoder;
+- (id)initWithNativeDecoder:(unique_ptr_8ce5ae0d)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class HDProfile, HDRestorableAlarm, NSDate, NSDateComponents;
+@class HDPrimaryProfile, HDRestorableAlarm, NSDate, NSDateComponents;
 @protocol OS_dispatch_queue;
 
 @interface HDTinkerPrivacyAlertCoordinator : NSObject
 {
-    HDProfile *_profile;
+    HDPrimaryProfile *_profile;
     HDRestorableAlarm *_scheduler;
     NSObject<OS_dispatch_queue> *_queue;
     NSDate *__unitTest_currentDate;
@@ -24,17 +24,11 @@
 - (_Bool)_unitTest_scheduleTransparencyAlertIfRequiredForBirthdate:(id)arg1 error:(id *)arg2;
 - (_Bool)removeAllEventsWithError:(id *)arg1;
 - (void)_userCharacteristicsDidChangeNotification:(id)arg1;
-- (_Bool)_queue_scheduleTransparencyAlertIfRequiredForBirthdate:(id)arg1 error:(id *)arg2;
-- (_Bool)_shouldScheduleTransparencyAlertsWithError:(id *)arg1;
-- (_Bool)_shouldEnableTransparencyAlertsWithError:(id *)arg1;
-- (_Bool)_queue_scheduleEventIfRequiredForDateComponents:(id)arg1 eventIdentifier:(id)arg2 error:(id *)arg3;
 - (_Bool)scheduleEventIfRequiredForDateComponents:(id)arg1 eventIdentifier:(id)arg2 error:(id *)arg3;
-- (_Bool)_queue_showAlertIfRequiredForDueEvents:(id)arg1 error:(id *)arg2;
-- (id)allScheduledDueDates:(id *)arg1;
-- (id)allScheduledEvents:(id *)arg1;
+- (id)allScheduledDueDatesWithError:(id *)arg1;
+- (id)allScheduledEventsWithError:(id *)arg1;
 - (_Bool)_unitTest_didReceiveDueEvents:(id)arg1;
 - (void)_queue_clearDueEvents:(id)arg1;
-- (_Bool)_queue_alarm:(id)arg1 didReceiveDueEvents:(id)arg2;
 - (id)initWithProfile:(id)arg1;
 
 @end

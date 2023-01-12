@@ -16,6 +16,7 @@
 + (id)volts;
 + (id)kilovolts;
 + (id)megavolts;
++ (id)icuType;
 + (id)baseUnit;
 + (void)initialize;
 

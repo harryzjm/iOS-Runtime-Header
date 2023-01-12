@@ -12,27 +12,26 @@
 
 @interface TSCH3DPickedPoint : NSObject <NSCopying>
 {
-    tvec2_3b141483 mElement;
-    TSCH3DSceneObject *mSceneObject;
-    tvec3_17f03ce0 mObjectSpacePoint;
-    tvec2_84d5962d mCenterProjectionPoint;
-    tmat4x4_3074befe mProjection;
-    tmat4x4_3074befe mTransform;
+    tvec2_3b141483 _element;
+    TSCH3DSceneObject *_sceneObject;
+    tvec3_17f03ce0 _objectSpacePoint;
+    tvec2_84d5962d _centerProjectionPoint;
+    tmat4x4_3074befe _projection;
+    tmat4x4_3074befe _transform;
 }
 
-+ (id)pickedPointWithSceneObject:(id)arg1 element:(const tvec2_3b141483 *)arg2 projection:(const tmat4x4_3074befe *)arg3 transform:(const tmat4x4_3074befe *)arg4 objectSpacePoint:(const tvec3_17f03ce0 *)arg5 centerProjectionPoint:(const tvec2_84d5962d *)arg6;
++ (id)pickedPointWithSceneObject:(id)arg1 element:(const void *)arg2 projection:(const void *)arg3 transform:(const void *)arg4 objectSpacePoint:(const void *)arg5 centerProjectionPoint:(const void *)arg6;
 - (id).cxx_construct;
-@property(readonly, retain, nonatomic) TSCH3DSceneObject *sceneObject; // @synthesize sceneObject=mSceneObject;
-@property(readonly, nonatomic) tmat4x4_3074befe transform; // @synthesize transform=mTransform;
-@property(readonly, nonatomic) tmat4x4_3074befe projection; // @synthesize projection=mProjection;
-@property(readonly, nonatomic) tvec2_84d5962d centerProjectionPoint; // @synthesize centerProjectionPoint=mCenterProjectionPoint;
-@property(readonly, nonatomic) tvec3_17f03ce0 objectSpacePoint; // @synthesize objectSpacePoint=mObjectSpacePoint;
-@property(readonly, nonatomic) tvec2_3b141483 element; // @synthesize element=mElement;
+- (void).cxx_destruct;
+@property(readonly, retain, nonatomic) TSCH3DSceneObject *sceneObject; // @synthesize sceneObject=_sceneObject;
+@property(readonly, nonatomic) tmat4x4_3074befe transform; // @synthesize transform=_transform;
+@property(readonly, nonatomic) tmat4x4_3074befe projection; // @synthesize projection=_projection;
+@property(readonly, nonatomic) tvec2_84d5962d centerProjectionPoint; // @synthesize centerProjectionPoint=_centerProjectionPoint;
+@property(readonly, nonatomic) tvec3_17f03ce0 objectSpacePoint; // @synthesize objectSpacePoint=_objectSpacePoint;
+@property(readonly, nonatomic) tvec2_3b141483 element; // @synthesize element=_element;
 @property(readonly, nonatomic) tvec3_17f03ce0 cameraSpacePoint;
-- (void)clearParent;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (id)initWithSceneObject:(id)arg1 element:(const tvec2_3b141483 *)arg2 projection:(const tmat4x4_3074befe *)arg3 transform:(const tmat4x4_3074befe *)arg4 objectSpacePoint:(const tvec3_17f03ce0 *)arg5 centerProjectionPoint:(const tvec2_84d5962d *)arg6;
+- (id)initWithSceneObject:(id)arg1 element:(const void *)arg2 projection:(const void *)arg3 transform:(const void *)arg4 objectSpacePoint:(const void *)arg5 centerProjectionPoint:(const void *)arg6;
 
 @end
 

@@ -4,19 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITableViewController.h>
+#import <UIKit/UIViewController.h>
 
 #import <EventKitUI/EKEditItemViewControllerDelegate-Protocol.h>
 #import <EventKitUI/EKEditItemViewControllerProtocol-Protocol.h>
 #import <EventKitUI/UITableViewDataSource-Protocol.h>
 #import <EventKitUI/UITableViewDelegate-Protocol.h>
 
-@class EKEvent, EKInviteeAlternativeTimeSearcher, EKUIEventInviteesEditViewController, EKUIEventInviteesView, EKUIInviteesViewAddInviteesSection, EKUIInviteesViewAllInviteesCanAttendSection, EKUIInviteesViewInvisibleInviteeStatusSection, EKUIInviteesViewMessageSendingManager, EKUIInviteesViewNotRespondedInviteesSection, EKUIInviteesViewOriginalConflictSection, EKUIInviteesViewProposedTimeSection, EKUIInviteesViewSomeInviteesCanAttendSection, NSArray, NSDate, NSMutableArray, NSString;
+@class EKEvent, EKInviteeAlternativeTimeSearcher, EKUIEmailCompositionManager, EKUIEventInviteesEditViewController, EKUIEventInviteesView, EKUIInviteesViewAddInviteesSection, EKUIInviteesViewAllInviteesCanAttendSection, EKUIInviteesViewInvisibleInviteeStatusSection, EKUIInviteesViewNotRespondedInviteesSection, EKUIInviteesViewOriginalConflictSection, EKUIInviteesViewProposedTimeSection, EKUIInviteesViewSomeInviteesCanAttendSection, NSArray, NSDate, NSMutableArray, NSString, UITableView;
 @protocol EKEditItemViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface EKUIEventInviteesViewController : UITableViewController <EKEditItemViewControllerDelegate, UITableViewDataSource, UITableViewDelegate, EKEditItemViewControllerProtocol>
+@interface EKUIEventInviteesViewController : UIViewController <EKEditItemViewControllerDelegate, UITableViewDataSource, UITableViewDelegate, EKEditItemViewControllerProtocol>
 {
+    _Bool _hidesManagedAttendeesSection;
+    _Bool _usesCustomToolbar;
+    _Bool _usesRaisedCustomToolbar;
     _Bool _resetAttendeesSections;
     _Bool _resetConflictResolutionSections;
     _Bool _viewIsVisible;
@@ -26,6 +29,7 @@ __attribute__((visibility("hidden")))
     EKUIEventInviteesEditViewController *_parentController;
     NSDate *_selectedStartDate;
     NSDate *_selectedEndDate;
+    UITableView *_tableView;
     EKUIEventInviteesView *_inviteesView;
     EKEvent *_event;
     NSArray *_sections;
@@ -38,13 +42,13 @@ __attribute__((visibility("hidden")))
     EKUIInviteesViewSomeInviteesCanAttendSection *_someInviteesCanAttendSection;
     EKUIInviteesViewAllInviteesCanAttendSection *_allInviteesCanAttendSection;
     EKInviteeAlternativeTimeSearcher *_availabilitySearcher;
-    EKUIInviteesViewMessageSendingManager *_messageSendingManager;
+    EKUIEmailCompositionManager *_messageSendingManager;
 }
 
 + (id)_participantsInArray:(id)arg1 thatAreNotInArray:(id)arg2;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool prohibitCallingSearcherStateChanged; // @synthesize prohibitCallingSearcherStateChanged=_prohibitCallingSearcherStateChanged;
-@property(retain, nonatomic) EKUIInviteesViewMessageSendingManager *messageSendingManager; // @synthesize messageSendingManager=_messageSendingManager;
+@property(retain, nonatomic) EKUIEmailCompositionManager *messageSendingManager; // @synthesize messageSendingManager=_messageSendingManager;
 @property(retain, nonatomic) EKInviteeAlternativeTimeSearcher *availabilitySearcher; // @synthesize availabilitySearcher=_availabilitySearcher;
 @property(retain, nonatomic) EKUIInviteesViewAllInviteesCanAttendSection *allInviteesCanAttendSection; // @synthesize allInviteesCanAttendSection=_allInviteesCanAttendSection;
 @property(retain, nonatomic) EKUIInviteesViewSomeInviteesCanAttendSection *someInviteesCanAttendSection; // @synthesize someInviteesCanAttendSection=_someInviteesCanAttendSection;
@@ -62,6 +66,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool resetConflictResolutionSections; // @synthesize resetConflictResolutionSections=_resetConflictResolutionSections;
 @property(nonatomic) _Bool resetAttendeesSections; // @synthesize resetAttendeesSections=_resetAttendeesSections;
 @property(retain, nonatomic) EKUIEventInviteesView *inviteesView; // @synthesize inviteesView=_inviteesView;
+@property(retain, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
+@property(nonatomic) _Bool usesRaisedCustomToolbar; // @synthesize usesRaisedCustomToolbar=_usesRaisedCustomToolbar;
+@property(nonatomic) _Bool usesCustomToolbar; // @synthesize usesCustomToolbar=_usesCustomToolbar;
+@property(nonatomic) _Bool hidesManagedAttendeesSection; // @synthesize hidesManagedAttendeesSection=_hidesManagedAttendeesSection;
 @property(retain, nonatomic) NSDate *selectedEndDate; // @synthesize selectedEndDate=_selectedEndDate;
 @property(retain, nonatomic) NSDate *selectedStartDate; // @synthesize selectedStartDate=_selectedStartDate;
 @property(nonatomic) __weak EKUIEventInviteesEditViewController *parentController; // @synthesize parentController=_parentController;
@@ -72,12 +80,11 @@ __attribute__((visibility("hidden")))
 - (void)_smoothRefreshIfNeededForSections:(id)arg1;
 - (id)_sectionForIndex:(unsigned long long)arg1;
 - (long long)_indexForSection:(id)arg1;
-- (id)_viewControllerForPresentingViewControllers;
 - (void)_dismissPresentedViewControllerAnimated:(_Bool)arg1;
 - (void)_presentViewController:(id)arg1;
+- (void)addInviteesTapped;
 - (void)_fontSizeDefinitionsChanged:(id)arg1;
 - (void)_eventModified:(id)arg1;
-- (void)_sendMessageToParticipants:(id)arg1;
 - (void)_dismiss:(id)arg1;
 - (id)editItemEventToDetach;
 - (_Bool)editItemViewControllerShouldShowDetachAlert;
@@ -91,16 +98,26 @@ __attribute__((visibility("hidden")))
 - (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;
 - (_Bool)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (void)tableView:(id)arg1 willDisplayHeaderView:(id)arg2 forSection:(long long)arg3;
+- (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
+- (_Bool)showsManagedAttendeesSectionFooter;
+- (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
+- (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
+- (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
+- (void)willEnterForeground;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
-- (void)updateCustomBackButton;
+- (void)updateCustomNavigationItemButtons;
 @property(nonatomic) _Bool useCustomBackButton;
+- (void)_sendMessageToParticipants:(id)arg1;
 - (void)viewDidLoad;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)resetBackgroundColor;
 - (void)loadView;
 - (void)dealloc;
 - (id)initWithEvent:(id)arg1 fromDetail:(_Bool)arg2;

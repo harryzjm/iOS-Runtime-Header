@@ -11,7 +11,6 @@
 
 + (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
 + (unsigned int)frameCVPixelBufferFormatForRequestRevision:(unsigned long long)arg1;
-+ (void)recordDefaultOptionsInDictionary:(id)arg1;
 + (id)trackerTypeForRequestRevision:(unsigned long long)arg1 error:(id *)arg2;
 + (const CDStruct_7d93034e *)revisionAvailability;
 @property(nonatomic) struct CGSize trackingFrameSizeInPixels; // @synthesize trackingFrameSizeInPixels=_trackingFrameSizeInPixels;

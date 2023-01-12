@@ -15,11 +15,11 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)espressoModelInputImageDimensionsBlobNameForConfigurationOptions:(id)arg1;
-+ (float)_faceBoundingBoxScalingFactorForFaceObservation:(unsigned long long)arg1;
++ (float)faceBoundingBoxScalingFactorForFaceObservation:(unsigned long long)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (_Bool)_isFaceprintJunk:(shared_ptr_0a6daad2)arg1;
-- (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
+- (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4 progressHandler:(CDUnknownBlockType)arg5;
 - (_Bool)completeInitializationForSession:(id)arg1 error:(id *)arg2;
 
 @end

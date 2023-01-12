@@ -11,11 +11,11 @@
     NSMutableArray *_accessoryServers;
     long long _certificationStatus;
     NSData *_setupHash;
-    long long _awd_linkType;
+    long long _linkType;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) long long awd_linkType; // @synthesize awd_linkType=_awd_linkType;
+@property(readonly, nonatomic) long long linkType; // @synthesize linkType=_linkType;
 @property(retain, nonatomic) NSData *setupHash; // @synthesize setupHash=_setupHash;
 @property(nonatomic) long long certificationStatus; // @synthesize certificationStatus=_certificationStatus;
 - (long long)associationOptions;

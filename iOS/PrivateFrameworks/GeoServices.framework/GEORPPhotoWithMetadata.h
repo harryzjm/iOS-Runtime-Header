@@ -14,7 +14,7 @@
 {
     PBDataReader *_reader;
     double _creationDate;
-    NSData *_data;
+    NSData *_imageData;
     GEOLatLng *_geotagCoordinate;
     double _geotagHorizontalAccuracy;
     double _geotagTimestamp;
@@ -25,7 +25,7 @@
         unsigned int has_creationDate:1;
         unsigned int has_geotagHorizontalAccuracy:1;
         unsigned int has_geotagTimestamp:1;
-        unsigned int read_data:1;
+        unsigned int read_imageData:1;
         unsigned int read_geotagCoordinate:1;
         unsigned int wrote_anyField:1;
     } _flags;
@@ -38,6 +38,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -54,8 +55,8 @@
 @property(readonly, nonatomic) _Bool hasGeotagCoordinate;
 @property(nonatomic) _Bool hasCreationDate;
 @property(nonatomic) double creationDate;
-@property(retain, nonatomic) NSData *data;
-@property(readonly, nonatomic) _Bool hasData;
+@property(retain, nonatomic) NSData *imageData;
+@property(readonly, nonatomic) _Bool hasImageData;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

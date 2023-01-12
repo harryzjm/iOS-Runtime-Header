@@ -10,7 +10,6 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDPStreamingAssetRetrieveAssetResponse : PBCodable <NSCopying>
 {
     long long _downloadURLExpirationTimeSeconds;

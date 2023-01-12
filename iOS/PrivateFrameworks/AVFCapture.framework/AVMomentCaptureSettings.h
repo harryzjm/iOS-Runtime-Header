@@ -24,10 +24,12 @@
     NSString *_bravoCameraSelectionBehaviorForRecording;
     _Bool _autoSpatialOverCaptureEnabled;
     _Bool _autoDeferredProcessingEnabled;
+    unsigned int _rawOutputFormat;
 }
 
 + (id)settingsWithUserInitiatedCaptureTime:(unsigned long long)arg1 uniqueID:(long long)arg2;
 + (id)settingsWithUserInitiatedCaptureTime:(unsigned long long)arg1;
+@property(nonatomic) unsigned int rawOutputFormat; // @synthesize rawOutputFormat=_rawOutputFormat;
 @property(nonatomic, getter=isAutoDeferredProcessingEnabled) _Bool autoDeferredProcessingEnabled; // @synthesize autoDeferredProcessingEnabled=_autoDeferredProcessingEnabled;
 @property(nonatomic, getter=isAutoSpatialOverCaptureEnabled) _Bool autoSpatialOverCaptureEnabled; // @synthesize autoSpatialOverCaptureEnabled=_autoSpatialOverCaptureEnabled;
 @property(nonatomic, getter=isAutoOriginalPhotoDeliveryEnabled) _Bool autoOriginalPhotoDeliveryEnabled; // @synthesize autoOriginalPhotoDeliveryEnabled=_autoOriginalPhotoDeliveryEnabled;

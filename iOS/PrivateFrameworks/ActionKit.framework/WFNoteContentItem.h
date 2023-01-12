@@ -12,7 +12,6 @@
 {
 }
 
-+ (id)defaultSourceForRepresentation:(id)arg1;
 + (_Bool)hasLibrary;
 + (id)countDescription;
 + (id)pluralTypeDescription;
@@ -21,7 +20,9 @@
 + (id)outputTypes;
 + (id)ownedTypes;
 + (void)runQuery:(id)arg1 withItems:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (id)stringConversionBehavior;
 + (id)propertyBuilders;
+- (id)defaultSourceForRepresentation:(id)arg1;
 - (id)generateObjectRepresentationForClass:(Class)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)fullText;
 - (id)body;

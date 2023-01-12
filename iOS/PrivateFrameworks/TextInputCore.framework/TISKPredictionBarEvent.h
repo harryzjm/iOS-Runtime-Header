@@ -4,13 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface TISKPredictionBarEvent
 {
+    _Bool _emojiPrediction;
+    NSString *_emojiBucketCategory;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *emojiBucketCategory; // @synthesize emojiBucketCategory=_emojiBucketCategory;
+@property(nonatomic) _Bool emojiPrediction; // @synthesize emojiPrediction=_emojiPrediction;
 - (id)description;
 - (void)reportInterKeyTiming:(id)arg1 previousEvent:(id)arg2;
-- (id)init:(double)arg1 order:(long long)arg2;
+- (void)reportToSession:(id)arg1;
+- (id)init:(double)arg1 emojiPrediction:(_Bool)arg2 emojiSearchMode:(_Bool)arg3 order:(long long)arg4 emojiBucketCategory:(id)arg5;
 
 @end
 

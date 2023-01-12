@@ -6,16 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class CNPhotoPickerColorVariant, PRMonogramColor;
+@class CNPhotoPickerColorVariant, NSData, PRMonogramColor;
 
 __attribute__((visibility("hidden")))
 @interface CNSharingProfileAvatarItemProviderConfiguration : NSObject
 {
     PRMonogramColor *_monogramColor;
     CNPhotoPickerColorVariant *_animojiColor;
+    NSData *_memojiMetadata;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSData *memojiMetadata; // @synthesize memojiMetadata=_memojiMetadata;
 @property(retain, nonatomic) CNPhotoPickerColorVariant *animojiColor; // @synthesize animojiColor=_animojiColor;
 @property(retain, nonatomic) PRMonogramColor *monogramColor; // @synthesize monogramColor=_monogramColor;
 

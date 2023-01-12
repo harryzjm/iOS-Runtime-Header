@@ -12,7 +12,7 @@
 #import <UIKitCore/_UIRemoteKeyboardDistributedViewSource-Protocol.h>
 #import <UIKitCore/_UIRemoteKeyboardViewSource-Protocol.h>
 
-@class NSLayoutConstraint, NSMutableDictionary, NSString, UIInputSetHostView, UIInputViewSet, UIInputViewSetPlacement, UIInputWindowController, UIInputWindowControllerHosting, UIKBInputBackdropView, UIScrollToDismissSupport, UISplitKeyboardSupport, UISystemKeyboardDockController, UIView, UIViewController;
+@class NSLayoutConstraint, NSMutableDictionary, NSString, TUIInputAssistantHostView, UIFlickingAssistantViewSupport, UIInputSetHostView, UIInputViewSet, UIInputViewSetPlacement, UIInputWindowController, UIInputWindowControllerHosting, UIKBInputBackdropView, UIScrollToDismissSupport, UISplitKeyboardSupport, UISystemKeyboardDockController, UIView, UIViewController;
 @protocol UIInputViewSetPlacementApplicator, _UIRemoteKeyboardControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 {
     UISplitKeyboardSupport *_cachedSplitKeyboardController;
     UIScrollToDismissSupport *_cachedScrollDismissController;
+    UIFlickingAssistantViewSupport *_cachedFlickingAssistantViewController;
     CDUnknownBlockType _interactiveTransitionCleanupBlock;
     double _backdropHeightDelta;
     NSLayoutConstraint *_inputViewHeightConstraint;
@@ -36,9 +37,11 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_accessoryBackdropViewEdgeConstraints;
     UIView *_inputBackdropBackgroundView;
     UISystemKeyboardDockController *_dockViewController;
+    double _verticalTranslationForSplitKeyboard;
     _Bool _scrolling;
     UIInputViewSetPlacement *_cachedPlacement;
     _Bool _supportsDockViewController;
+    TUIInputAssistantHostView *_inputAssistantHostView;
     UIInputWindowControllerHosting *_container;
     UIKBInputBackdropView *_inputBackdropView;
     UIKBInputBackdropView *_inputAssistantBackdropView;
@@ -59,7 +62,9 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic, setter=setInputBackdropView:) UIKBInputBackdropView *_inputBackdropView; // @synthesize _inputBackdropView;
 @property(readonly, nonatomic) __weak UIInputWindowControllerHosting *container; // @synthesize container=_container;
 @property(readonly, nonatomic) _Bool scrollKeyboardActive; // @synthesize scrollKeyboardActive=_scrolling;
+@property(readonly, retain, nonatomic) UIFlickingAssistantViewSupport *flickingAssistantViewSupport; // @synthesize flickingAssistantViewSupport=_cachedFlickingAssistantViewController;
 @property(readonly, retain, nonatomic) UISplitKeyboardSupport *splitKeyboardController; // @synthesize splitKeyboardController=_cachedSplitKeyboardController;
+- (void)configureFlickingAssistantViewController:(_Bool)arg1;
 - (void)enumerateBoundingRects:(CDUnknownBlockType)arg1;
 - (void)clearInteractiveTransitionStateIfNecessary;
 - (void)finishScrollViewTransition;
@@ -93,8 +98,11 @@ __attribute__((visibility("hidden")))
 - (void)checkPlaceholdersForRemoteKeyboards;
 @property(nonatomic) _Bool dontDismissReachability;
 @property(readonly, nonatomic) _Bool isOnScreenRotating;
+@property _Bool hideInputAssistantBackdrop;
 @property(readonly) long long inputViewBackdropStyle;
+@property _Bool hideInputView;
 @property _Bool hideInputViewBackdrops;
+@property(readonly) struct UIEdgeInsets inputViewPadding;
 @property(readonly, retain) UIView *containerView;
 @property(readonly) _Bool keyboardController;
 - (void)updateProgress:(double)arg1 startHeight:(double)arg2 endHeight:(double)arg3;
@@ -126,11 +134,13 @@ __attribute__((visibility("hidden")))
 - (id)_updateOrCreateConstraintInDict:(id)arg1 key:(id)arg2 fromView:(id)arg3 toView:(id)arg4 tracker:(id)arg5 creator:(CDUnknownBlockType)arg6;
 - (void)clearInputAccessoryViewEdgeConstraints;
 - (void)clearInputAssistantViewEdgeConstraints;
+- (void)resetInputViewVisibility;
 - (void)clearInputViewEdgeConstraints;
 - (void)updateViewSizingConstraints:(id)arg1;
 - (void)disableViewSizingConstraints:(unsigned long long)arg1 forNewView:(id)arg2;
 - (struct UIEdgeInsets)_aligningInsetsForChildInputViewController:(id)arg1 includeSceneBounds:(_Bool)arg2;
 - (void)updateConstraintInsets;
+@property(readonly) TUIInputAssistantHostView *inputAssistantHostView;
 - (id)inputAccessoryViewController;
 - (id)inputAssistantViewController;
 - (id)inputViewController;

@@ -6,7 +6,7 @@
 
 #import <UIKit/UITableViewController.h>
 
-@class CSSearchableItem, NSMutableArray, NSMutableDictionary, PKPaymentTransaction, PKSearchService;
+@class CSSearchableItem, NSError, NSMutableArray, NSMutableDictionary, PKPaymentTransaction, PKSearchService;
 
 @interface PKTransactionSpotlightDebugDetailsViewController : UITableViewController
 {
@@ -14,6 +14,7 @@
     PKSearchService *_searchService;
     _Bool _loading;
     _Bool _inBridge;
+    NSError *_error;
     NSMutableArray *_attributes;
     NSMutableDictionary *_attributesPerKey;
     NSMutableArray *_customAttributes;

@@ -17,19 +17,19 @@
 + (id)getDoubleHeightStatusStringForStyle:(long long)arg1;
 + (_Bool)getGlowAnimationStateForStyle:(long long)arg1;
 + (double)getGlowAnimationEndTimeForStyle:(long long)arg1;
-+ (int)getStyleOverrides;
-+ (CDStruct_e922dd9d *)getStatusBarOverrideData;
-+ (const CDStruct_3fd7985f *)getStatusBarData;
-+ (id)_cachedTimeStringFromData:(CDStruct_3fd7985f *)arg1;
++ (unsigned long long)getStyleOverrides;
++ (CDStruct_0caf55ee *)getStatusBarOverrideData;
++ (const CDStruct_e9def42b *)getStatusBarData;
++ (id)_cachedTimeStringFromData:(CDStruct_e9def42b *)arg1;
 + (void)permanentizeStatusBarOverrideData;
-+ (void)postStatusBarOverrideData:(CDStruct_e922dd9d *)arg1;
++ (void)postStatusBarOverrideData:(CDStruct_0caf55ee *)arg1;
 + (void)removeStatusBarItem:(int)arg1;
 + (void)addStatusBarItem:(int)arg1;
 + (void)postDoubleHeightStatusString:(id)arg1 forStyle:(long long)arg2;
 + (void)postGlowAnimationState:(_Bool)arg1 forStyle:(long long)arg2;
-+ (void)removeStyleOverrides:(int)arg1;
-+ (void)addStyleOverrides:(int)arg1;
-+ (void)postStatusBarData:(const CDStruct_3fd7985f *)arg1 withActions:(int)arg2;
++ (void)removeStyleOverrides:(unsigned long long)arg1;
++ (void)addStyleOverrides:(unsigned long long)arg1;
++ (void)postStatusBarData:(const CDStruct_e9def42b *)arg1 withActions:(int)arg2;
 + (unsigned int)_publisherPort;
 + (unsigned int)_serverPort;
 + (const char *)serviceName;
@@ -38,8 +38,8 @@
 @property(retain, nonatomic) id <UIStatusBarServerClient> statusBar; // @synthesize statusBar=_statusBar;
 - (void)_receivedDoubleHeightStatus:(const char *)arg1 forStyle:(long long)arg2;
 - (void)_receivedGlowAnimationState:(_Bool)arg1 forStyle:(long long)arg2;
-- (void)_receivedStyleOverrides:(int)arg1;
-- (void)_receivedStatusBarData:(CDStruct_3fd7985f *)arg1 actions:(int)arg2 animated:(_Bool)arg3;
+- (void)_receivedStyleOverrides:(unsigned long long)arg1;
+- (void)_receivedStatusBarData:(CDStruct_e9def42b *)arg1 actions:(int)arg2 animated:(_Bool)arg3;
 - (void)dealloc;
 - (id)initWithStatusBar:(id)arg1;
 

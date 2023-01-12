@@ -39,7 +39,7 @@
 - (void)offsetGeometryBy:(struct CGPoint)arg1;
 @property(readonly, nonatomic) TSDShadow *textShadow;
 @property(readonly, nonatomic) struct CGColor *textColor;
-- (_Bool)canFlip;
+- (_Bool)supportsFlipping;
 - (_Bool)supportsRotation;
 @property(readonly, nonatomic) TSWPEquationInfo *equationInfo;
 - (void)setParent:(id)arg1;

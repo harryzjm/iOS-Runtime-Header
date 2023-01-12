@@ -11,10 +11,11 @@
 #import <HomeUI/UINavigationControllerDelegate-Protocol.h>
 #import <HomeUI/UITextViewDelegate-Protocol.h>
 
-@class HFUserItem, HUAboutResidentDeviceFooterView, HUAccessorySettingsItemModuleController, HUEditUserItemManager, HUPendingAccessoriesGridViewController, NSString;
+@class HFPinCodeManager, HFUserItem, HUAboutResidentDeviceFooterView, HUAccessorySettingsItemModuleController, HUEditUserItemManager, HUPendingAccessoriesGridViewController, NSString;
 
 @interface HUEditUserViewController <HUAboutResidentDeviceFooterViewDelegate, HUAboutResidentDeviceViewControllerDelegate, HUSwitchCellDelegate, HUAccessorySettingsItemModuleControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate>
 {
+    HFPinCodeManager *_pinCodeManager;
     HFUserItem *_userItem;
     HUEditUserItemManager *_editUserItemManager;
     HUPendingAccessoriesGridViewController *_pendingAccessoriesViewController;
@@ -28,6 +29,10 @@
 @property(readonly, nonatomic) HUPendingAccessoriesGridViewController *pendingAccessoriesViewController; // @synthesize pendingAccessoriesViewController=_pendingAccessoriesViewController;
 @property(readonly, nonatomic) HUEditUserItemManager *editUserItemManager; // @synthesize editUserItemManager=_editUserItemManager;
 @property(readonly, copy, nonatomic) HFUserItem *userItem; // @synthesize userItem=_userItem;
+@property(retain, nonatomic) HFPinCodeManager *pinCodeManager; // @synthesize pinCodeManager=_pinCodeManager;
+- (void)diffableDataItemManager:(id)arg1 didUpdateItems:(id)arg2 addItems:(id)arg3 removeItems:(id)arg4;
+- (id)presentPinDetailsViewController;
+- (void)_handleUpdatedItem:(id)arg1 atIndexPath:(id)arg2;
 - (void)itemManager:(id)arg1 didUpdateResultsForItem:(id)arg2 atIndexPath:(id)arg3;
 - (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (id)_lazyAboutResidentDeviceFooterView;
@@ -50,7 +55,7 @@
 - (void)updateCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3 animated:(_Bool)arg4;
 - (void)setupCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
-- (id)userHandle;
+- (id)user;
 - (void)doneButtonTapped:(id)arg1;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(_Bool)arg3;
 - (void)viewWillAppear:(_Bool)arg1;

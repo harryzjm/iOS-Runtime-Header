@@ -4,11 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UICursorInteractionDelegate-Protocol.h>
-
 @class NSArray, NSDictionary, NSMutableArray, NSString, UICalloutBarBackground, UICalloutBarButton, UIResponder, UIScrollView, UIStackView, UIView;
+@protocol UICalloutBarDelegate;
 
-@interface UICalloutBar <_UICursorInteractionDelegate>
+@interface UICalloutBar
 {
     id m_delegate;
     struct CGPoint m_pointBelowControls;
@@ -41,7 +40,7 @@
     double m_fadedTime;
     _Bool m_fadedDueToCommand;
     NSDictionary *m_currentAppearOrFadeContext;
-    id m_responderTarget;
+    UIResponder *m_responderTarget;
     CDUnknownBlockType m_responderTargetCompletionHandler;
     NSArray *m_replacements;
     NSArray *m_extraItems;
@@ -51,6 +50,7 @@
     _Bool m_ignoreFade;
     _Bool m_suppressesAppearance;
     _Bool m_isDisplayingVertically;
+    _Bool m_isUsingVerticalFallbackPosition;
     UIScrollView *m_verticalScrollView;
     UIStackView *m_verticalStackView;
     NSMutableArray *m_separatorViews;
@@ -70,6 +70,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) UIStackView *verticalStackView; // @synthesize verticalStackView=m_verticalStackView;
 @property(readonly, nonatomic) UIScrollView *verticalScrollView; // @synthesize verticalScrollView=m_verticalScrollView;
+@property(readonly, nonatomic) _Bool isUsingVerticalFallbackPosition; // @synthesize isUsingVerticalFallbackPosition=m_isUsingVerticalFallbackPosition;
 @property(nonatomic) _Bool suppressesAppearance; // @synthesize suppressesAppearance=m_suppressesAppearance;
 @property(retain, nonatomic) NSDictionary *currentAppearOrFadeContext; // @synthesize currentAppearOrFadeContext=m_currentAppearOrFadeContext;
 @property(nonatomic) _Bool supressesHorizontalMovement; // @synthesize supressesHorizontalMovement=m_supressesHorizontalMovement;
@@ -82,7 +83,7 @@
 @property(nonatomic) __weak UIView *targetView; // @synthesize targetView=m_targetView;
 @property(nonatomic) struct CGRect targetRect; // @synthesize targetRect=m_targetRect;
 @property(readonly, nonatomic) NSArray *rectsToEvade; // @synthesize rectsToEvade=m_rectsToEvade;
-@property(nonatomic) __weak id delegate; // @synthesize delegate=m_delegate;
+@property(nonatomic) __weak id <UICalloutBarDelegate> delegate; // @synthesize delegate=m_delegate;
 @property(nonatomic) struct CGRect controlFrame; // @synthesize controlFrame=m_controlFrame;
 @property(nonatomic) _Bool targetHorizontal; // @synthesize targetHorizontal=m_targetHorizontal;
 @property(nonatomic) int targetDirection; // @synthesize targetDirection=m_targetDirection;
@@ -116,6 +117,7 @@
 - (void)show;
 - (void)buttonHighlighted:(id)arg1 highlighted:(_Bool)arg2;
 - (void)buttonHovered:(id)arg1 index:(long long)arg2 hovered:(_Bool)arg3;
+- (_Bool)containsButtonForAction:(SEL)arg1;
 - (long long)indexOfButton:(id)arg1;
 - (void)setTargetRect:(struct CGRect)arg1 view:(id)arg2 arrowDirection:(int)arg3;
 - (void)setTargetRect:(struct CGRect)arg1 view:(id)arg2 pointLeftOfControls:(struct CGPoint)arg3 pointRightOfControls:(struct CGPoint)arg4;
@@ -128,7 +130,8 @@
 - (void)updateForCurrentPage;
 - (void)configureButtons:(double)arg1;
 - (void)configureButtonsForVerticalView:(double)arg1;
-- (void)shrinkButtonTextSize:(id)arg1;
+- (void)scrollableButtonTouchDown:(id)arg1;
+- (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (_Bool)setFrameForSize:(struct CGSize)arg1;
 - (void)updateAvailableButtons;
 - (_Bool)calculateControlFrameInsideTargetRect:(struct CGSize)arg1;
@@ -153,12 +156,6 @@
 - (void)applicationDidAddDeactivationReason:(id)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

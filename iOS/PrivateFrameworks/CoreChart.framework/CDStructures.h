@@ -53,23 +53,23 @@ struct CGSize {
     double height;
 };
 
-struct deque<CCVegaAccessibilityHelperState, std::__1::allocator<CCVegaAccessibilityHelperState>> {
-    struct __split_buffer<CCVegaAccessibilityHelperState *, std::__1::allocator<CCVegaAccessibilityHelperState *>> {
+struct deque<CCVegaAccessibilityHelperState, std::allocator<CCVegaAccessibilityHelperState>> {
+    struct __split_buffer<CCVegaAccessibilityHelperState *, std::allocator<CCVegaAccessibilityHelperState *>> {
         CDStruct_183601bc **__first_;
         CDStruct_183601bc **__begin_;
         CDStruct_183601bc **__end_;
-        struct __compressed_pair<CCVegaAccessibilityHelperState **, std::__1::allocator<CCVegaAccessibilityHelperState *>> {
+        struct __compressed_pair<CCVegaAccessibilityHelperState **, std::allocator<CCVegaAccessibilityHelperState *>> {
             CDStruct_183601bc **__value_;
         } __end_cap_;
     } __map_;
     unsigned long long __start_;
-    struct __compressed_pair<unsigned long, std::__1::allocator<CCVegaAccessibilityHelperState>> {
+    struct __compressed_pair<unsigned long, std::allocator<CCVegaAccessibilityHelperState>> {
         unsigned long long __value_;
     } __size_;
 };
 
-struct stack<CCVegaAccessibilityHelperState, std::__1::deque<CCVegaAccessibilityHelperState, std::__1::allocator<CCVegaAccessibilityHelperState>>> {
-    struct deque<CCVegaAccessibilityHelperState, std::__1::allocator<CCVegaAccessibilityHelperState>> c;
+struct stack<CCVegaAccessibilityHelperState, std::deque<CCVegaAccessibilityHelperState>> {
+    struct deque<CCVegaAccessibilityHelperState, std::allocator<CCVegaAccessibilityHelperState>> c;
 };
 
 #pragma mark Typedef'd Structures

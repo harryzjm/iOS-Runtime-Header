@@ -12,13 +12,16 @@
 
 + (struct CGImage *)roundedRectPlaceholderImageForSize:(struct CGSize)arg1 backgroundStyle:(unsigned long long)arg2 scale:(double)arg3;
 + (struct CGImage *)circularPlaceholderImageForSize:(struct CGSize)arg1 backgroundStyle:(unsigned long long)arg2 scale:(double)arg3;
-+ (id)layerForCGImages:(struct CGImage **)arg1 inRect:(struct CGRect)arg2 forItemCount:(long long)arg3 scope:(id)arg4;
++ (id)avatarLayerForCGImages:(struct CGImage **)arg1 inRect:(struct CGRect)arg2 forItemCount:(long long)arg3 scope:(id)arg4;
 + (struct CGSize)sizeForImageAtIndex:(unsigned long long)arg1 inRect:(struct CGRect)arg2 forItemCount:(unsigned long long)arg3 scope:(id)arg4;
 + (id)roundedRectContainerLayerForRect:(struct CGRect)arg1 backgroundStyle:(unsigned long long)arg2;
 + (id)circularContainerLayerForRect:(struct CGRect)arg1 backgroundStyle:(unsigned long long)arg2;
 + (id)containerLayerForRect:(struct CGRect)arg1 backgroundStyle:(unsigned long long)arg2;
++ (struct CGColor *)backgroundColorForBackgroundStyle:(unsigned long long)arg1;
++ (struct CGColor *)defaultDarkBackgroundColor;
++ (struct CGColor *)defaultBackgroundColor;
 + (struct CGImage *)imageForLayer:(id)arg1 inRect:(struct CGRect)arg2;
-+ (struct CGImage *)imageForCGImages:(struct CGImage **)arg1 rect:(struct CGRect)arg2 itemCount:(long long)arg3 scope:(id)arg4;
++ (struct CGImage *)imageForAvatarImages:(struct CGImage **)arg1 badgeImages:(struct CGImage **)arg2 badgeTypes:(id)arg3 rect:(struct CGRect)arg4 itemCount:(long long)arg5 scope:(id)arg6;
 + (_Bool)enableGroupPhoto;
 
 @end

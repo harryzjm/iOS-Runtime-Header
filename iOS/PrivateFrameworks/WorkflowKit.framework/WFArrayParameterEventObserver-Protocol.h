@@ -15,6 +15,6 @@
 - (void)arrayParameter:(WFArrayParameter *)arg1 itemWasDeletedAtIndex:(unsigned long long)arg2;
 - (void)arrayParameter:(WFArrayParameter *)arg1 itemWasUpdatedAtIndex:(unsigned long long)arg2 toValue:(WFPropertyListParameterValue *)arg3;
 - (void)arrayParameter:(WFArrayParameter *)arg1 itemWasMovedFromIndex:(unsigned long long)arg2 toIndex:(unsigned long long)arg3;
-- (void)arrayParameter:(WFArrayParameter *)arg1 itemWasAppended:(WFPropertyListParameterValue *)arg2;
+- (void)arrayParameter:(WFArrayParameter *)arg1 itemWasInserted:(WFPropertyListParameterValue *)arg2 atIndex:(unsigned long long)arg3;
 @end
 

@@ -9,6 +9,7 @@
 @class CPLScopedIdentifier;
 
 @protocol CPLEngineIDMapping <NSObject>
+- (CPLScopedIdentifier *)firstAvailableCloudScopedIdentifierForProposedCloudScopedIdentifier:(CPLScopedIdentifier *)arg1;
 - (CPLScopedIdentifier *)setupCloudScopedIdentifier:(CPLScopedIdentifier *)arg1 forLocalScopedIdentifier:(CPLScopedIdentifier *)arg2 isFinal:(_Bool)arg3 direction:(unsigned long long)arg4 error:(id *)arg5;
 - (CPLScopedIdentifier *)localScopedIdentifierForCloudScopedIdentifierIncludeRemappedRecords:(CPLScopedIdentifier *)arg1;
 - (_Bool)addCloudScopedIdentifier:(CPLScopedIdentifier *)arg1 forLocalScopedIdentifier:(CPLScopedIdentifier *)arg2 isFinal:(_Bool)arg3 direction:(unsigned long long)arg4 error:(id *)arg5;

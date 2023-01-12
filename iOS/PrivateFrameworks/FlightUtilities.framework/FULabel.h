@@ -6,7 +6,7 @@
 
 #import <TemplateKit/TLKLabel.h>
 
-@class NSAttributedString, NSString;
+@class NSAttributedString, NSLayoutConstraint, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FULabel : TLKLabel
@@ -18,9 +18,11 @@ __attribute__((visibility("hidden")))
     _Bool _useCurrentLocale;
     CDUnknownBlockType _onTap;
     FULabel *_associatedScalingLabel;
+    NSLayoutConstraint *_associatedLabelConstraint;
 }
 
 - (void).cxx_destruct;
+@property __weak NSLayoutConstraint *associatedLabelConstraint; // @synthesize associatedLabelConstraint=_associatedLabelConstraint;
 @property(nonatomic) __weak FULabel *associatedScalingLabel; // @synthesize associatedScalingLabel=_associatedScalingLabel;
 @property(readonly) _Bool useCurrentLocale; // @synthesize useCurrentLocale=_useCurrentLocale;
 @property(readonly, nonatomic) _Bool uppercase; // @synthesize uppercase=_uppercase;
@@ -28,9 +30,9 @@ __attribute__((visibility("hidden")))
 - (void)setAttributedText:(id)arg1;
 - (void)setStyleProvider:(id)arg1 primaryStyle:(_Bool)arg2;
 - (void)setText:(id)arg1;
+- (void)updateWidthConstraintWithRatio:(double)arg1;
 - (void)layoutSubviews;
 - (id)_associatedScalingLabel;
-- (void)setAssociatedLabel:(id)arg1;
 - (void)performTap:(id)arg1;
 - (void)awakeFromNib;
 - (void)setUppercase:(_Bool)arg1 usingCurrentLocale:(_Bool)arg2;

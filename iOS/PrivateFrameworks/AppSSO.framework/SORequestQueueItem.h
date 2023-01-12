@@ -6,22 +6,31 @@
 
 #import <objc/NSObject.h>
 
-@class SOAuthorizationRequestParameters;
+#import <AppSSO/SOQueueItem-Protocol.h>
+
+@class NSString, SOAuthorizationRequestParameters;
 @protocol SOServiceProtocol;
 
-@interface SORequestQueueItem : NSObject
+@interface SORequestQueueItem : NSObject <SOQueueItem>
 {
+    _Bool _isRunning;
     id <SOServiceProtocol> _service;
     SOAuthorizationRequestParameters *_requestParameters;
     CDUnknownBlockType _completionBlock;
 }
 
 - (void).cxx_destruct;
+@property _Bool isRunning; // @synthesize isRunning=_isRunning;
 @property(readonly, copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property(readonly, nonatomic) SOAuthorizationRequestParameters *requestParameters; // @synthesize requestParameters=_requestParameters;
 @property(readonly, nonatomic) id <SOServiceProtocol> service; // @synthesize service=_service;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (id)initWithService:(id)arg1 requestParameters:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

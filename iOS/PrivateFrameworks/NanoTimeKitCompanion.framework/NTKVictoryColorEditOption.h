@@ -4,19 +4,39 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface NTKVictoryColorEditOption
+#import <NanoTimeKitCompanion/NTKPigmentEditOptionConvertible-Protocol.h>
+
+@class NSString;
+
+@interface NTKVictoryColorEditOption <NTKPigmentEditOptionConvertible>
 {
 }
 
++ (unsigned long long)colorCodeForPigmentEditOption:(id)arg1 forDevice:(id)arg2;
++ (id)colorNameForColorValue:(unsigned long long)arg1;
 + (id)_orderedValuesRestrictedByDevice:(id)arg1;
-+ (id)_localizedNameForValue:(unsigned long long)arg1 forDevice:(id)arg2;
 + (id)_snapshotKeyForValue:(unsigned long long)arg1 forDevice:(id)arg2;
++ (id)gloryVictoryColors;
++ (id)gloryEVictoryColors;
++ (id)graceVictoryColors;
++ (id)spring2020VictoryColors;
++ (id)fall2020VictoryColors;
 + (id)_orderedValuesForDevice:(id)arg1;
 + (id)optionWithVictoryColor:(unsigned long long)arg1 forDevice:(id)arg2;
++ (id)pigmentFaceDomain;
+- (id)pigmentEditOption;
+- (id)pigmentCollectionName;
 - (id)_valueToFaceBundleStringDict;
 - (_Bool)optionExistsInDevice:(id)arg1;
 @property(readonly, nonatomic) unsigned long long victoryColor;
+- (id)localizedName;
 - (long long)swatchStyle;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

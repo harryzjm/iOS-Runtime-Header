@@ -9,6 +9,7 @@
 #import <TSTables/NSCopying-Protocol.h>
 
 @class NSString, TSWPParagraphStyle;
+@protocol TSWPStyleProviding;
 
 @interface TSTLayoutContentCachedKey : NSObject <NSCopying>
 {
@@ -17,16 +18,20 @@
     double mHeight;
     TSWPParagraphStyle *mParagraphStyle;
     _Bool mCellWraps;
-    int mValueType;
+    unsigned char mValueType;
     struct UIEdgeInsets mPaddingInsets;
     int mVerticalAlignment;
     int mWritingDirection;
+    int mNaturalAlignment;
+    id <TSWPStyleProviding> mStyleProvidingSource;
 }
 
+@property(readonly, nonatomic) id <TSWPStyleProviding> styleProvidingSource; // @synthesize styleProvidingSource=mStyleProvidingSource;
+@property(readonly, nonatomic) int naturalAlignment; // @synthesize naturalAlignment=mNaturalAlignment;
 @property(readonly, nonatomic) int writingDirection; // @synthesize writingDirection=mWritingDirection;
 @property(readonly, nonatomic) int verticalAlignment; // @synthesize verticalAlignment=mVerticalAlignment;
 @property(readonly, nonatomic) struct UIEdgeInsets paddingInsets; // @synthesize paddingInsets=mPaddingInsets;
-@property(readonly, nonatomic) int valueType; // @synthesize valueType=mValueType;
+@property(readonly, nonatomic) unsigned char valueType; // @synthesize valueType=mValueType;
 @property(readonly, nonatomic) _Bool cellWraps; // @synthesize cellWraps=mCellWraps;
 @property(readonly, nonatomic) TSWPParagraphStyle *paragraphStyle; // @synthesize paragraphStyle=mParagraphStyle;
 @property(readonly, nonatomic) double height; // @synthesize height=mHeight;
@@ -38,7 +43,7 @@
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)initWithString:(id)arg1 width:(double)arg2 height:(double)arg3 paragraphStyle:(id)arg4 cellWraps:(_Bool)arg5 valueType:(int)arg6 paddingInsets:(struct UIEdgeInsets)arg7 verticalAlignment:(int)arg8 writingDirection:(int)arg9;
+- (id)initWithString:(id)arg1 width:(double)arg2 height:(double)arg3 paragraphStyle:(id)arg4 cellWraps:(_Bool)arg5 valueType:(unsigned char)arg6 paddingInsets:(struct UIEdgeInsets)arg7 verticalAlignment:(int)arg8 writingDirection:(int)arg9 naturalAlignment:(int)arg10 styleProvidingSource:(id)arg11;
 
 @end
 

@@ -8,13 +8,14 @@
 
 #import <PassKitCore/NSCopying-Protocol.h>
 
-@class NSData, NSMutableArray, NSString;
+@class NSData, NSMutableArray, NSString, PKProtobufCustomPrecisionAmount;
 
 @interface PKProtobufPaymentInstrument : PBCodable <NSCopying>
 {
     double _ingestedDate;
     long long _peerPaymentAccountBalance;
     NSMutableArray *_associatedWebDomains;
+    PKProtobufCustomPrecisionAmount *_customPrecisionPeerPaymentAccountBalance;
     NSString *_displayName;
     NSString *_issuerCountryCode;
     NSData *_manifestHash;
@@ -39,6 +40,7 @@
 + (Class)associatedWebDomainsType;
 + (Class)paymentApplicationsType;
 - (void).cxx_destruct;
+@property(retain, nonatomic) PKProtobufCustomPrecisionAmount *customPrecisionPeerPaymentAccountBalance; // @synthesize customPrecisionPeerPaymentAccountBalance=_customPrecisionPeerPaymentAccountBalance;
 @property(retain, nonatomic) NSString *organizationName; // @synthesize organizationName=_organizationName;
 @property(nonatomic) unsigned int peerPaymentAccountState; // @synthesize peerPaymentAccountState=_peerPaymentAccountState;
 @property(nonatomic) long long peerPaymentAccountBalance; // @synthesize peerPaymentAccountBalance=_peerPaymentAccountBalance;
@@ -63,6 +65,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasCustomPrecisionPeerPaymentAccountBalance;
 @property(readonly, nonatomic) _Bool hasOrganizationName;
 @property(nonatomic) _Bool hasPeerPaymentAccountState;
 @property(nonatomic) _Bool hasPeerPaymentAccountBalance;

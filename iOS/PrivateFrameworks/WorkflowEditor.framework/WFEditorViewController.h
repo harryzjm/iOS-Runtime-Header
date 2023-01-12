@@ -6,10 +6,15 @@
 
 #import <UIKit/UIViewController.h>
 
-@class WFEditorHostingViewController, WFWorkflow;
+#import <WorkflowEditor/WFEditorHostingViewControllerDelegate-Protocol.h>
 
-@interface WFEditorViewController : UIViewController
+@class NSProgress, WFEditorHostingViewController, WFWorkflow;
+@protocol WFEditorAuxiliaryViewPresenter, WFEditorViewControllerDelegate;
+
+@interface WFEditorViewController : UIViewController <WFEditorHostingViewControllerDelegate>
 {
+    id <WFEditorViewControllerDelegate> _delegate;
+    id <WFEditorAuxiliaryViewPresenter> _auxiliaryViewPresenter;
     WFWorkflow *_workflow;
     WFEditorHostingViewController *_hostingViewController;
 }
@@ -17,7 +22,25 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) WFEditorHostingViewController *hostingViewController; // @synthesize hostingViewController=_hostingViewController;
 @property(readonly, nonatomic) WFWorkflow *workflow; // @synthesize workflow=_workflow;
+@property(nonatomic) __weak id <WFEditorAuxiliaryViewPresenter> auxiliaryViewPresenter; // @synthesize auxiliaryViewPresenter=_auxiliaryViewPresenter;
+@property(nonatomic) __weak id <WFEditorViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)actionsDidChangeInEditorHostingViewController:(id)arg1;
+- (void)editorHostingViewController:(id)arg1 didChangeVariablePickingState:(_Bool)arg2;
+- (void)editorHostingViewControllerDidFinishRunning:(id)arg1 cancelled:(_Bool)arg2;
+- (void)editorHostingViewController:(id)arg1 didChangeRunningState:(_Bool)arg2 isWaiting:(_Bool)arg3;
+- (id)contentScrollViewForEdge:(unsigned long long)arg1;
+- (void)performScrollingTest:(id)arg1;
+- (void)scrollToAction:(id)arg1;
+- (void)appendAction:(id)arg1;
+- (void)stopPickingVariables;
+- (void)stop;
+- (void)runWithSource:(id)arg1;
+@property(readonly, nonatomic) NSProgress *workflowRunningProgress;
+@property(nonatomic, getter=isHomeWorkflow) _Bool homeWorkflow;
+@property(nonatomic) _Bool canShowInputAction;
+@property(nonatomic) _Bool canShowEmptyState;
 @property(nonatomic, getter=isEditable) _Bool editable;
+@property(readonly, nonatomic, getter=isRunning) _Bool running;
 - (void)loadView;
 - (id)initWithWorkflow:(id)arg1;
 

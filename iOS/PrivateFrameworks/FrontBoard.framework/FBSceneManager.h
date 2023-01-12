@@ -6,22 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <FrontBoard/FBSceneManagerSceneDelegate-Protocol.h>
 #import <FrontBoard/FBWorkspaceEventDispatcherTarget-Protocol.h>
 
-@class FBSceneEventQueue, FBSceneManagerObserver, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSString;
+@class FBSceneWorkspace, NSString;
 @protocol FBSceneManagerDelegate;
 
-@interface FBSceneManager : NSObject <FBSceneManagerSceneDelegate, FBWorkspaceEventDispatcherTarget>
+@interface FBSceneManager : NSObject <FBWorkspaceEventDispatcherTarget>
 {
-    FBSceneManagerObserver *_delegateProxy;
-    NSMutableOrderedSet *_observerProxies;
-    unsigned long long _synchronizationBlockDepth;
-    NSMutableDictionary *_scenesByID;
-    NSMapTable *_providerToScenesMap;
-    FBSceneEventQueue *_eventQueue;
-    NSMutableArray *_pendingIdleEvents;
-    _Bool _suppressConnectionHandshakeForCurrentProcess;
+    FBSceneWorkspace *_workspace;
+    _Bool _suppressConnectionHandshakes;
 }
 
 + (void)synchronizeChanges:(CDUnknownBlockType)arg1;
@@ -31,51 +24,30 @@
 + (void)_clearKeyboardScene;
 + (id)keyboardScene;
 - (void).cxx_destruct;
-@property(nonatomic, setter=_setSuppressConnectionHandshakeForCurrentProcess:) _Bool _suppressConnectionHandshakeForCurrentProcess; // @synthesize _suppressConnectionHandshakeForCurrentProcess;
-- (void)didReceiveHandshake:(id)arg1;
-- (void)scene:(id)arg1 didReceiveActions:(id)arg2;
-- (void)scene:(id)arg1 didUpdateClientSettingsWithDiff:(id)arg2 oldClientSettings:(id)arg3 transitionContext:(id)arg4;
-- (void)scene:(id)arg1 handleUpdateToSettings:(id)arg2 withTransitionContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)scene:(id)arg1 enumerateAndCalloutToObserversWithEventName:(id)arg2 block:(CDUnknownBlockType)arg3;
-- (void)_executeNextIdleEventIfAppropriate;
-- (void)_executeEventWhenIdle:(id)arg1;
-- (void)_enqueueObserverCalloutsForScene:(id)arg1 eventName:(id)arg2 preferInternal:(_Bool)arg3 sceneObserverBlock:(CDUnknownBlockType)arg4 sceneManagerObserverBlock:(CDUnknownBlockType)arg5;
-- (void)_enqueueObserverCalloutsForScene:(id)arg1 eventName:(id)arg2 sceneObserverBlock:(CDUnknownBlockType)arg3 sceneManagerObserverBlock:(CDUnknownBlockType)arg4;
-- (void)_enqueueSceneObserverCalloutsForScene:(id)arg1 eventName:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
-- (void)_enqueueSceneManagerObserverCalloutsForScene:(id)arg1 eventName:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
-- (void)_enqueueSceneManagerInternalObserverCalloutsForScene:(id)arg1 eventName:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
-- (void)_enqueueEventForScene:(id)arg1 withName:(id)arg2 block:(CDUnknownBlockType)arg3;
-- (id)_eventForScene:(id)arg1 withName:(id)arg2 block:(CDUnknownBlockType)arg3;
-- (void)_destroyScene:(id)arg1 withTransitionContext:(id)arg2;
-- (void)_updateScene:(id)arg1 withSettings:(id)arg2 transitionContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_applyMutableSettings:(id)arg1 toScene:(id)arg2 withTransitionContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (id)_createSceneWithDefinition:(id)arg1 settings:(id)arg2 initialClientSettings:(id)arg3 transitionContext:(id)arg4 fromRemnant:(id)arg5 usingClientProvider:(id)arg6 completion:(CDUnknownBlockType)arg7;
-- (void)_endSynchronizationBlock;
-- (void)_beginSynchronizationBlock;
-- (void)_appendCommonDescriptionItemsToBuilder:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
+@property(nonatomic, setter=_setSuppressConnectionHandshakes:) _Bool _suppressConnectionHandshakes; // @synthesize _suppressConnectionHandshakes;
+@property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+- (void)didReceiveHandshake:(id)arg1;
+- (id)_createSceneWithDefinition:(id)arg1 settings:(id)arg2 initialClientSettings:(id)arg3 transitionContext:(id)arg4 fromRemnant:(id)arg5 usingClientProvider:(id)arg6 completion:(CDUnknownBlockType)arg7;
+- (_Bool)_isSynchronizingSceneUpdates;
 - (id)newSceneIdentityTokenForIdentity:(id)arg1;
 - (void)destroyScene:(id)arg1 withTransitionContext:(id)arg2;
 - (id)createSceneWithIdentifier:(id)arg1 settings:(id)arg2 initialClientSettings:(id)arg3 clientProvider:(id)arg4 transitionContext:(id)arg5;
 - (id)createSceneFromRemnant:(id)arg1 withSettings:(id)arg2 transitionContext:(id)arg3;
 - (id)createSceneWithIdentifier:(id)arg1 parameters:(id)arg2 clientProvider:(id)arg3 transitionContext:(id)arg4;
 - (id)createSceneWithDefinition:(id)arg1 initialParameters:(id)arg2;
-- (_Bool)_isSynchronizingSceneUpdates;
+- (id)createSceneWithDefinition:(id)arg1;
 - (id)sceneFromIdentityTokenStringRepresentation:(id)arg1;
 - (id)sceneFromIdentityToken:(id)arg1;
 - (id)scenesPassingTest:(CDUnknownBlockType)arg1;
-- (id)scenesMatchingPredicate:(id)arg1;
 - (void)enumerateScenesWithBlock:(CDUnknownBlockType)arg1;
 - (id)sceneWithIdentifier:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
 @property(nonatomic) __weak id <FBSceneManagerDelegate> delegate;
-- (void)dealloc;
 - (id)init;
 
 // Remaining properties
-@property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

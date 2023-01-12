@@ -44,13 +44,13 @@
 - (id)test_subtitle1;
 - (id)test_title;
 - (void)_contentSizeCategoryDidChange:(id)arg1;
-- (void)_tapGesture:(id)arg1;
 - (void)_updateOpaqueAncestorBackgroundColor;
 - (_Bool)_updateSubtitle2;
 - (_Bool)_updateSubtitle1;
 - (_Bool)_updateTitle;
 - (void)_updateHeaderView;
 - (struct CGSize)_performLayoutInWidth:(double)arg1 updateSubviewFrames:(_Bool)arg2;
+- (id)focusEffect;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 @property(readonly, nonatomic) UIView *previewView;

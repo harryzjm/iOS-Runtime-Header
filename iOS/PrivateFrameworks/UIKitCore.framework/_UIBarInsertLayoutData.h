@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
     long long _order;
 }
 
-+ (CDStruct_39925896)calculateLayoutHeights:(id)arg1;
++ (CDStruct_cf303044)calculateLayoutHeights:(id)arg1;
 + (id)calculateRestingHeightsForLayouts:(id)arg1;
 + (void)updateLayoutParameters:(id)arg1 overflowLayout:(id)arg2 forAvailableHeight:(double)arg3;
 - (void).cxx_destruct;

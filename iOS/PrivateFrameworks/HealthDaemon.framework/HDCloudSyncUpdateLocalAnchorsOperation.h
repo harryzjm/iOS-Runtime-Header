@@ -8,11 +8,7 @@
 {
 }
 
-+ (_Bool)shouldLogAtOperationStart;
-- (_Bool)_updateFrozenAnchorsForTarget:(id)arg1 error:(id *)arg2;
-- (_Bool)_updateExpectedSyncAnchorsForTarget:(id)arg1 error:(id *)arg2;
-- (_Bool)_queue_updateExpectedSyncAnchorsForTarget:(id)arg1 sequenceHeader:(id)arg2 error:(id *)arg3;
-- (void)main;
+- (_Bool)performWithError:(id *)arg1;
 
 @end
 

@@ -4,23 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeKitDaemon/HMDCoreAnalyticsLogging-Protocol.h>
+#import <HomeKitMetrics/HMMLogEvent.h>
+
+#import <HomeKitDaemon/HMMCoreAnalyticsLogging-Protocol.h>
 
 @class NSString;
 
-@interface HMDMessageHandlerFailureMetricEvent <HMDCoreAnalyticsLogging>
+@interface HMDMessageHandlerFailureMetricEvent : HMMLogEvent <HMMCoreAnalyticsLogging>
 {
     NSString *_messageName;
     NSString *_type;
 }
 
-+ (id)identifier;
 - (void).cxx_destruct;
 @property(readonly, copy) NSString *type; // @synthesize type=_type;
 @property(readonly, copy) NSString *messageName; // @synthesize messageName=_messageName;
 - (id)initWithFailureType:(unsigned long long)arg1 messageName:(id)arg2;
 - (id)serializedEvent;
 - (id)eventName;
+
+// Remaining properties
+@property(readonly, nonatomic) NSString *accessoryIdentifier;
 
 @end
 

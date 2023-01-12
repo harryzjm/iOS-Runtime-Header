@@ -6,18 +6,21 @@
 
 #import <UIKit/UIView.h>
 
-@class NSMutableArray;
-
 __attribute__((visibility("hidden")))
 @interface WKInspectorHighlightView : UIView
 {
-    NSMutableArray *_layers;
+    struct RetainPtr<NSMutableArray<CAShapeLayer *>> _layers;
+    struct RetainPtr<NSMutableArray<CALayer *>> _gridOverlayLayers;
 }
 
-- (void)update:(const struct Highlight *)arg1;
-- (void)_layoutForRectsHighlight:(const struct Highlight *)arg1;
-- (void)_layoutForNodeListHighlight:(const struct Highlight *)arg1;
-- (void)_layoutForNodeHighlight:(const struct Highlight *)arg1 offset:(unsigned int)arg2;
+- (id).cxx_construct;
+- (void).cxx_destruct;
+- (void)update:(const void *)arg1 scale:(double)arg2;
+- (id)_createGridOverlayLayer:(const void *)arg1 scale:(double)arg2;
+- (void)_createGridOverlayLayers:(const void *)arg1 scale:(double)arg2;
+- (void)_layoutForRectsHighlight:(const void *)arg1;
+- (void)_layoutForNodeListHighlight:(const void *)arg1;
+- (void)_layoutForNodeHighlight:(const void *)arg1 offset:(unsigned int)arg2;
 - (void)_createLayers:(unsigned long long)arg1;
 - (void)_removeAllLayers;
 - (void)dealloc;

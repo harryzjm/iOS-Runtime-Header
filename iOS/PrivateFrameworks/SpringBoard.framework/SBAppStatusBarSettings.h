@@ -26,7 +26,7 @@
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, copy) NSString *description;
-@property(readonly, nonatomic) int styleOverridesToCancel; // @dynamic styleOverridesToCancel;
+@property(readonly, nonatomic) unsigned long long styleOverridesToCancel; // @dynamic styleOverridesToCancel;
 @property(readonly, nonatomic) _UILegibilitySettings *legibilitySettings; // @dynamic legibilitySettings;
 @property(readonly, nonatomic) long long style; // @dynamic style;
 @property(readonly, nonatomic) NSNumber *alpha; // @dynamic alpha;

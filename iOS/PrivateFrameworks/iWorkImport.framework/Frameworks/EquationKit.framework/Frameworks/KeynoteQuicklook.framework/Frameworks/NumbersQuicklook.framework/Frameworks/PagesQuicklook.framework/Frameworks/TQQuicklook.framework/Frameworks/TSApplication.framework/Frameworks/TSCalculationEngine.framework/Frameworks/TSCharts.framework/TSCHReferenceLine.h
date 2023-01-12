@@ -9,18 +9,17 @@
 #import <TSCharts/TSCHPropertyMapsGeneratedProtocol-Protocol.h>
 #import <TSCharts/TSCHStyleOwnerCollaborationSupport-Protocol.h>
 #import <TSCharts/TSCHStyleOwning-Protocol.h>
-#import <TSCharts/TSCHUnretainedParent-Protocol.h>
 
 @class NSString, NSUUID, TSCHChartAxis, TSCHChartAxisID, TSCHChartModel, TSCHReferenceLineNonStyle, TSCHReferenceLineStyle;
 
-@interface TSCHReferenceLine : NSObject <TSCHPropertyMapsGeneratedProtocol, TSCHStyleOwnerCollaborationSupport, TSCHUnretainedParent, TSCHStyleOwning>
+@interface TSCHReferenceLine : NSObject <TSCHPropertyMapsGeneratedProtocol, TSCHStyleOwnerCollaborationSupport, TSCHStyleOwning>
 {
-    TSCHChartModel *mModel;
-    TSCHChartAxisID *mAxisID;
-    TSCHReferenceLineStyle *mStyle;
-    TSCHReferenceLineNonStyle *mNonStyle;
-    NSUUID *mUUID;
-    unsigned long long mStyleSwapIndex;
+    TSCHChartModel *_model;
+    TSCHChartAxisID *_axisID;
+    TSCHReferenceLineStyle *_style;
+    TSCHReferenceLineNonStyle *_nonStyle;
+    NSUUID *_UUID;
+    unsigned long long _styleSwapIndex;
 }
 
 + (id)p_lineLabelForType:(unsigned long long)arg1;
@@ -32,8 +31,8 @@
 + (unsigned long long)maxNumberOfReferenceLines;
 + (unsigned char)styleOwnerPathType;
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) TSCHChartAxisID *axisID; // @synthesize axisID=mAxisID;
-@property(readonly, copy, nonatomic) NSUUID *uuid; // @synthesize uuid=mUUID;
+@property(readonly, copy, nonatomic) TSCHChartAxisID *axisID; // @synthesize axisID=_axisID;
+@property(readonly, copy, nonatomic) NSUUID *uuid; // @synthesize uuid=_UUID;
 - (void)setStyle:(id)arg1 nonStyle:(id)arg2;
 - (id)nonstyle;
 - (id)style;
@@ -57,14 +56,12 @@
 - (id)operationPropertyNameFromGenericProperty:(int)arg1;
 - (id)defaultProperties;
 - (id)p_genericToDefaultPropertyMap;
-- (void)clearParent;
 @property(readonly, nonatomic) unsigned long long refLineType; // @dynamic refLineType;
 @property(readonly, nonatomic) _Bool valueLabelShowing; // @dynamic valueLabelShowing;
 @property(readonly, nonatomic) _Bool labelShowing; // @dynamic labelShowing;
 @property(readonly, nonatomic) _Bool lineShowing; // @dynamic lineShowing;
 - (id)localizedTypeName;
 - (double)referenceLineAxisValue;
-- (void)dealloc;
 - (id)initWithModel:(id)arg1 axisID:(id)arg2 index:(unsigned long long)arg3 uuid:(id)arg4;
 - (id)g_operationPropertyNameForGenericProperty:(int)arg1;
 - (id)g_genericToDefaultPropertyMap;

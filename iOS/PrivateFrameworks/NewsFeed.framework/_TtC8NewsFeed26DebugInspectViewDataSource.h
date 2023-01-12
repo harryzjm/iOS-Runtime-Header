@@ -21,7 +21,8 @@
     MISSING_TYPE *sections;
     MISSING_TYPE *feedItemImages;
     MISSING_TYPE *layoutImages;
-    MISSING_TYPE *featureAvailability;
+    MISSING_TYPE *inventory;
+    MISSING_TYPE *headlineService;
 }
 
 @end

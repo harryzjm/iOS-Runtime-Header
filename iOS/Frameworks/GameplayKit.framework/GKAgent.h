@@ -40,7 +40,7 @@
 @property(nonatomic) float speed;
 @property(nonatomic) float radius;
 @property(nonatomic) float mass;
-- (struct GKSimpleVehicle *)vehicle;
+- (void *)vehicle;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;

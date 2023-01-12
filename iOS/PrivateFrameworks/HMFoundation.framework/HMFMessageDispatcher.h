@@ -26,6 +26,7 @@
 }
 
 + (id)logCategory;
++ (id)allMessagesForMessageNameTarget;
 - (void).cxx_destruct;
 @property(readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(nonatomic) _Bool shouldAutomaticallyIndex; // @synthesize shouldAutomaticallyIndex=_shouldAutomaticallyIndex;
@@ -37,6 +38,7 @@
 - (void)deregisterReceiver:(id)arg1;
 - (void)deregisterForMessage:(id)arg1 receiver:(id)arg2;
 - (void)registerForMessage:(id)arg1 receiver:(id)arg2 policies:(id)arg3 messageHandler:(CDUnknownBlockType)arg4;
+- (void)registerForMessage:(id)arg1 targetUUID:(id)arg2 receiver:(id)arg3 policies:(id)arg4 selector:(SEL)arg5;
 - (void)registerForMessage:(id)arg1 receiver:(id)arg2 policies:(id)arg3 selector:(SEL)arg4;
 - (void)registerForMessage:(id)arg1 receiver:(id)arg2 messageHandler:(CDUnknownBlockType)arg3;
 - (void)registerForMessage:(id)arg1 receiver:(id)arg2 selector:(SEL)arg3;
@@ -47,6 +49,7 @@
 - (void)dealloc;
 - (id)initWithTransport:(id)arg1;
 - (id)init;
+- (id)sendMessageExpectingResponse:(id)arg1;
 - (void)sendMessage:(id)arg1 target:(id)arg2 responseQueue:(id)arg3 responseHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)sendMessage:(id)arg1 target:(id)arg2 andInvokeCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)sendMessage:(id)arg1 target:(id)arg2 responseQueue:(id)arg3 responseHandler:(CDUnknownBlockType)arg4;

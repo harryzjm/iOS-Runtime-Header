@@ -4,45 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary;
+@class NSDictionary, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface VCSessionBandwidthAllocationTable
 {
     unsigned char _type;
-    NSMutableArray *_sortedAudioEntries;
-    NSMutableArray *_sortedVideoEntries;
-    NSMutableDictionary *_videoStreamIdToRepairStreamIdMap;
-    NSMutableDictionary *_audioTable;
-    NSMutableDictionary *_videoTable;
-    NSMutableDictionary *_audioOnlyBitrateToStreamIDsTable;
-    NSMutableDictionary *_audioVideoBitrateToStreamIDsTable;
-    NSMutableDictionary *_videoOnlyBitrateToStreamIDsTable;
+    NSMutableDictionary *_streamTokenEntries;
+    NSMutableDictionary *_sortedEntriesForStreamToken;
     NSMutableDictionary *_streamIDToEntryTable;
+    unsigned int _currentScreenEncoderGroupCount;
+    unsigned int _maxActiveScreenEncoders;
+    _Bool _shouldScreenCapEncoderCount;
+    NSDictionary *_audioOnlyBitrateToStreamIDsTable;
+    NSDictionary *_audioVideoBitrateToStreamIDsTable;
+    NSDictionary *_videoOnlyBitrateToStreamIDsTable;
+    NSDictionary *_videoStreamIdToRepairStreamIdMap;
 }
 
+@property(readonly, nonatomic) NSDictionary *videoStreamIdToRepairStreamIdMap; // @synthesize videoStreamIdToRepairStreamIdMap=_videoStreamIdToRepairStreamIdMap;
 @property(readonly, nonatomic) NSDictionary *videoOnlyBitrateToStreamIDsTable; // @synthesize videoOnlyBitrateToStreamIDsTable=_videoOnlyBitrateToStreamIDsTable;
-@property(readonly, nonatomic) NSDictionary *audioOnlyBitrateToStreamIDsTable; // @synthesize audioOnlyBitrateToStreamIDsTable=_audioOnlyBitrateToStreamIDsTable;
 @property(readonly, nonatomic) NSDictionary *audioVideoBitrateToStreamIDsTable; // @synthesize audioVideoBitrateToStreamIDsTable=_audioVideoBitrateToStreamIDsTable;
+@property(readonly, nonatomic) NSDictionary *audioOnlyBitrateToStreamIDsTable; // @synthesize audioOnlyBitrateToStreamIDsTable=_audioOnlyBitrateToStreamIDsTable;
 - (void)printTable:(id)arg1;
-- (id)newBitrateToStreamIDsTableWithAudioTable:(id)arg1 videoTable:(id)arg2;
-- (unsigned int)getTotalBitrateForEntries:(id)arg1 repairStreamEnabled:(_Bool)arg2;
-- (_Bool)shouldAddBackupEntry:(id)arg1 videoEnabled:(_Bool)arg2 audioEnabled:(_Bool)arg3 availableStreamArray:(id)arg4;
-- (_Bool)getAudioActiveFromAudioTable:(id)arg1;
-- (void)checkAndRemoveBackupEntries:(id)arg1 redundancyEnabled:(_Bool)arg2 currentNetworkBitrate:(unsigned int *)arg3;
-- (void)appendEntry:(id)arg1 entries:(id)arg2 currentNetworkBitrate:(unsigned int *)arg3 isRedundancyEnabled:(_Bool)arg4 isRedundancyEnabledFor720Stream:(_Bool)arg5;
-- (id)newAggregateTableWithAudioTable:(id)arg1 videoTable:(id)arg2 isVideoEnabled:(_Bool)arg3 isRedundancyEnabled:(_Bool)arg4 redundancyEnabledFor720Stream:(_Bool)arg5;
-- (id)newAggregatedBandwidthTableWithRedundancy:(_Bool)arg1 videoEnabled:(_Bool)arg2 redundancyEnabledFor720Stream:(_Bool)arg3;
-- (void)_generateVideoStreamIDToRepairStreamIDMap;
-- (void)_generateSortedAudioEntries;
-- (void)_generateSortedVideoEntries;
-- (void)generateVideoOnlyBitrateToStreamIDsTable;
-- (void)generateAudioVideoBitrateToStreamIDsTable;
-- (void)generateAudioOnlyBitrateToStreamIDsTable;
-@property(readonly, nonatomic) NSDictionary *videoStreamIdToRepairStreamIdMap;
-@property(readonly, nonatomic) NSArray *videoEntries;
-@property(readonly, nonatomic) NSArray *audioEntries;
-- (void)generate;
+- (_Bool)shouldAddBackupEntry:(id)arg1 referenceTable:(id)arg2 referenceQualityIndices:(id)arg3;
+- (void)appendEntry:(id)arg1 streamTokenEntries:(id)arg2 currentNetworkBitrate:(unsigned int *)arg3 isRedundancyEnabled:(_Bool)arg4 isRedundancyEnabledFor720Stream:(_Bool)arg5 screenEncoderGroups:(id)arg6;
+- (void)cleanupStreamTokenEntries:(id)arg1 currentNetworkBitrate:(unsigned int *)arg2 isRedundancyEnabled:(_Bool)arg3 screenEncoderGroups:(id)arg4;
+- (_Bool)shouldAppendEntry:(id)arg1 screenEncoderGroups:(id)arg2;
+- (id)newAggregatedBandwidthTableWithRedundancy:(_Bool)arg1 redundancyEnabledFor720Stream:(_Bool)arg2 enableMap:(id)arg3;
+- (id)tableEntriesForStreamToken:(long long)arg1;
 - (void)addBandwidthAllocationTableEntry:(id)arg1;
 - (id)entryForStreamID:(id)arg1;
 - (void)dealloc;

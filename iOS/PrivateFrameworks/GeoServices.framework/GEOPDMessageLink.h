@@ -40,46 +40,16 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
-+ (Class)hoursOfOperationType;
 + (id)messageLinkForPlaceData:(id)arg1;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(retain, nonatomic) NSString *navTintColor;
-@property(readonly, nonatomic) _Bool hasNavTintColor;
-@property(retain, nonatomic) NSString *navBackgroundColor;
-@property(readonly, nonatomic) _Bool hasNavBackgroundColor;
-@property(nonatomic) _Bool hasIsVerified;
-@property(nonatomic) _Bool isVerified;
-@property(retain, nonatomic) GEOTimezone *timezone;
-@property(readonly, nonatomic) _Bool hasTimezone;
-- (id)hoursOfOperationAtIndex:(unsigned long long)arg1;
-- (unsigned long long)hoursOfOperationsCount;
-- (void)addHoursOfOperation:(id)arg1;
-- (void)clearHoursOfOperations;
-@property(retain, nonatomic) NSMutableArray *hoursOfOperations;
-- (int)StringAsResponseTime:(id)arg1;
-- (id)responseTimeAsString:(int)arg1;
-@property(nonatomic) _Bool hasResponseTime;
-@property(nonatomic) int responseTime;
-@property(retain, nonatomic) NSString *messageUrl;
-@property(readonly, nonatomic) _Bool hasMessageUrl;
-@property(retain, nonatomic) NSString *messageId;
-@property(readonly, nonatomic) _Bool hasMessageId;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

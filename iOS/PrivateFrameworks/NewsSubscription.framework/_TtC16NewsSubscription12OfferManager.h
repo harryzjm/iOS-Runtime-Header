@@ -13,7 +13,6 @@
     MISSING_TYPE *clientIdentifier;
     MISSING_TYPE *clientVersion;
     MISSING_TYPE *serviceType;
-    MISSING_TYPE *deDuperKey;
     MISSING_TYPE *cachedBestOffers;
     MISSING_TYPE *cachedServicesBundleOffers;
     MISSING_TYPE *cachedNewsPlusOffers;
@@ -25,6 +24,7 @@
     MISSING_TYPE *offersResetTimeInterval;
     MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *deduper;
+    MISSING_TYPE *dedeuperToken;
 }
 
 - (void).cxx_destruct;

@@ -16,6 +16,7 @@
 + (id)friendPickerFlowForChallenge:(id)arg1 selectPlayers:(id)arg2 defaultMessage:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (id)composeFlowForChallenge:(id)arg1 players:(id)arg2 defaultMessage:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (void)composeAndSendFlowForChallenge:(id)arg1 selectPlayers:(id)arg2 defaultMessage:(id)arg3 forcePicker:(_Bool)arg4 readyHandler:(CDUnknownBlockType)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *playersToLoad; // @synthesize playersToLoad=_playersToLoad;
 @property(retain, nonatomic) GKChallenge *challenge; // @synthesize challenge=_challenge;
 @property(retain, nonatomic) GKComposeHeaderField *challengeField; // @synthesize challengeField=_challengeField;
@@ -24,7 +25,6 @@
 - (void)loadView;
 - (void)updateChallengeText;
 - (void)viewWillAppear:(_Bool)arg1;
-- (void)dealloc;
 - (id)initWithChallenge:(id)arg1 defaultMessage:(id)arg2 players:(id)arg3;
 - (id)init;
 - (void)viewDidLoad;

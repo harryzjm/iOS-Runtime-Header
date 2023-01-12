@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSMutableArray, NSString, TimingCollection, VCConnectionManager;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, VCConnectionProtocol;
 
 __attribute__((visibility("hidden")))
 @interface VCTransportSession : NSObject
@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
     _Bool _isCallActive;
     _Bool _requiresWiFi;
     _Bool _useCompressedConnectionData;
-    _Bool _didRegisterForBasebandNotifications;
     unsigned int _basebandNotificationRegistrationToken;
     NSObject<OS_dispatch_queue> *_stateQueue;
     NSObject<OS_dispatch_queue> *_notificationQueue;
@@ -28,10 +27,12 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _eventHandler;
     NSMutableArray *_streams;
     struct _opaque_pthread_mutex_t _stateLock;
+    id <VCConnectionProtocol> _registeredConnection;
 }
 
 + (int)vtpPacketTypeForStreamType:(unsigned int)arg1;
 + (unsigned int)trafficClassForStreamType:(unsigned int)arg1;
+@property(retain, nonatomic) id <VCConnectionProtocol> registeredConnection; // @synthesize registeredConnection=_registeredConnection;
 @property(retain, nonatomic) NSObject *connectionSetupPiggybackBlob; // @synthesize connectionSetupPiggybackBlob=_connectionSetupPiggybackBlob;
 @property(readonly, nonatomic) unsigned int basebandNotificationRegistrationToken; // @synthesize basebandNotificationRegistrationToken=_basebandNotificationRegistrationToken;
 @property(retain, nonatomic) TimingCollection *perfTimings; // @synthesize perfTimings=_perfTimings;
@@ -42,6 +43,8 @@ __attribute__((visibility("hidden")))
 @property(readonly) _Bool isIPv6;
 @property(readonly) unsigned int networkMTU;
 @property(readonly) int networkInterfaceType;
+- (void)resetActiveConnection;
+- (void)setOneToOneModeEnabled:(_Bool)arg1 isInitiator:(_Bool)arg2;
 - (void)reportNetworkConditionsDegraded;
 - (void)handleMediaReceivedOverPeerToPeerLinkWithConnectionId:(int)arg1;
 - (void)handleMediaReceivedOverRelayLinkWithConnectionId:(int)arg1;

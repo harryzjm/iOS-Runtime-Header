@@ -14,21 +14,25 @@
 @interface BPSDrivableSink : NSObject <BPSSubscriber, BPSCancellable>
 {
     struct os_unfair_lock_s _lock;
+    _Bool _finished;
+    BPSSubscriptionStatus *_status;
     CDUnknownBlockType _receivedCompletion;
     CDUnknownBlockType _shouldContinue;
-    BPSSubscriptionStatus *_status;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) BPSSubscriptionStatus *status; // @synthesize status=_status;
+@property(nonatomic) _Bool finished; // @synthesize finished=_finished;
 @property(copy, nonatomic) CDUnknownBlockType shouldContinue; // @synthesize shouldContinue=_shouldContinue;
 @property(copy, nonatomic) CDUnknownBlockType receivedCompletion; // @synthesize receivedCompletion=_receivedCompletion;
+@property(retain, nonatomic) BPSSubscriptionStatus *status; // @synthesize status=_status;
 - (void)cancel;
 - (long long)receiveInput:(id)arg1;
 - (void)receiveCompletion:(id)arg1;
 - (void)receiveSubscription:(id)arg1;
 - (id)initWithReceiveCompletion:(CDUnknownBlockType)arg1 shouldContinue:(CDUnknownBlockType)arg2;
 - (id)init;
+- (id)newBookmark;
+- (id)initWithReceiveBookmarkedCompletion:(CDUnknownBlockType)arg1 shouldContinue:(CDUnknownBlockType)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

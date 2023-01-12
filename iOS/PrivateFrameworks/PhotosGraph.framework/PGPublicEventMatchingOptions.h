@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDateInterval, PGGraphMomentNode, PGMeaningfulEventMatchingCriteria;
+@class NSArray, NSDateInterval, PGGraphMomentNode, PGMeaningfulEventMatchingCriteria;
 @protocol CLSTimeLocationTuple;
 
 @interface PGPublicEventMatchingOptions : NSObject
@@ -16,6 +16,7 @@
     NSDateInterval *_actualAttendanceDateInterval;
     NSDateInterval *_expandedAttendanceDateInterval;
     PGMeaningfulEventMatchingCriteria *_matchingCriteria;
+    NSArray *_temporalClusterEvents;
     struct CLLocationCoordinate2D _coordinates;
 }
 
@@ -23,7 +24,9 @@
 @property(readonly, nonatomic) struct CLLocationCoordinate2D coordinates; // @synthesize coordinates=_coordinates;
 @property(readonly, nonatomic) PGGraphMomentNode *momentNode; // @synthesize momentNode=_momentNode;
 @property(readonly, nonatomic) id <CLSTimeLocationTuple> timeLocationTuple; // @synthesize timeLocationTuple=_timeLocationTuple;
+- (id)_readTemporalClusterEvents;
 - (void)_createAttendanceDateIntervals;
+@property(readonly, nonatomic) NSArray *temporalClusterEvents; // @synthesize temporalClusterEvents=_temporalClusterEvents;
 @property(readonly, nonatomic) PGMeaningfulEventMatchingCriteria *matchingCriteria; // @synthesize matchingCriteria=_matchingCriteria;
 @property(readonly, nonatomic) NSDateInterval *expandedAttendanceDateInterval; // @synthesize expandedAttendanceDateInterval=_expandedAttendanceDateInterval;
 @property(readonly, nonatomic) NSDateInterval *actualAttendanceDateInterval; // @synthesize actualAttendanceDateInterval=_actualAttendanceDateInterval;

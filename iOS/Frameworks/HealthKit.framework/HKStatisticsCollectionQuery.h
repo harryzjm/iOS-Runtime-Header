@@ -6,7 +6,7 @@
 
 #import <HealthKit/HKStatisticsCollectionQueryClientInterface-Protocol.h>
 
-@class HKStatisticsCollection, NSDate, NSDateComponents, NSMutableArray, NSNumber, NSString;
+@class HKStatisticsCollection, HKStatisticsCollectionCacheSettings, NSDate, NSDateComponents, NSDateInterval, NSMutableArray, NSNumber, NSString;
 
 @interface HKStatisticsCollectionQuery <HKStatisticsCollectionQueryClientInterface>
 {
@@ -20,6 +20,9 @@
     CDUnknownBlockType _statisticsUpdateHandler;
     NSNumber *_lastAnchor;
     HKStatisticsCollection *_statisticsCollection;
+    NSDateInterval *_dateInterval;
+    HKStatisticsCollectionCacheSettings *_cacheSettings;
+    CDUnknownBlockType _unitTest_finishedCachingStatisticsHandler;
     unsigned long long _mergeStrategy;
 }
 
@@ -28,6 +31,9 @@
 + (Class)configurationClass;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long mergeStrategy; // @synthesize mergeStrategy=_mergeStrategy;
+@property(copy, nonatomic) CDUnknownBlockType unitTest_finishedCachingStatisticsHandler; // @synthesize unitTest_finishedCachingStatisticsHandler=_unitTest_finishedCachingStatisticsHandler;
+@property(copy, nonatomic) HKStatisticsCollectionCacheSettings *cacheSettings; // @synthesize cacheSettings=_cacheSettings;
+@property(copy, nonatomic) NSDateInterval *dateInterval; // @synthesize dateInterval=_dateInterval;
 @property(retain) HKStatisticsCollection *statisticsCollection; // @synthesize statisticsCollection=_statisticsCollection;
 @property(retain) NSNumber *lastAnchor; // @synthesize lastAnchor=_lastAnchor;
 @property(copy, nonatomic) CDUnknownBlockType statisticsUpdateHandler; // @synthesize statisticsUpdateHandler=_statisticsUpdateHandler;
@@ -35,9 +41,12 @@
 @property(readonly, copy) NSDateComponents *intervalComponents; // @synthesize intervalComponents=_intervalComponents;
 @property(readonly) unsigned long long options; // @synthesize options=_options;
 @property(readonly) NSDate *anchorDate; // @synthesize anchorDate=_anchorDate;
+- (_Bool)_comparisonPredicateContainsStrictStartOrEndDateComparisonPredicate:(id)arg1;
+- (_Bool)_predicateContainsStrictStartOrEndDateComparisonPredicate:(id)arg1;
 - (void)_queue_deliverStatisticsObjects:(id)arg1 forQuery:(id)arg2;
 - (void)_queue_deliverResetStatisticsObjects:(id)arg1 forQuery:(id)arg2;
 - (void)_queue_deliverInitialStatisticsObjects:(id)arg1 anchor:(id)arg2 queryUUID:(id)arg3;
+- (void)client_finishedCachingStatisticsWithCacheHits:(long long)arg1 error:(id)arg2;
 - (void)client_deliverUpdatedStatistics:(id)arg1 anchor:(id)arg2 query:(id)arg3;
 - (void)client_deliverStatisticsBatch:(id)arg1 resetStatistics:(_Bool)arg2 isFinal:(_Bool)arg3 anchor:(id)arg4 query:(id)arg5;
 - (void)queue_deliverError:(id)arg1;

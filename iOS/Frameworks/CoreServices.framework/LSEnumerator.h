@@ -6,12 +6,14 @@
 
 #import <Foundation/NSEnumerator.h>
 
+#import <CoreServices/NSCopying-Protocol.h>
+
 @class NSPredicate;
 
-@interface LSEnumerator : NSEnumerator
+@interface LSEnumerator : NSEnumerator <NSCopying>
 {
     CDUnknownBlockType _filter;
-    struct atomic_flag _hasFiredErrorHandler;
+    struct atomic<bool> _hasFiredErrorHandler;
     CDUnknownBlockType _errorHandler;
 }
 
@@ -22,11 +24,14 @@
 + (void)initialize;
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType errorHandler; // @synthesize errorHandler=_errorHandler;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)copy;
+- (id)swift_firstWhere:(CDUnknownBlockType)arg1;
+- (void)swift_forEach:(CDUnknownBlockType)arg1;
 - (id)nextObject;
 @property(copy, nonatomic) CDUnknownBlockType filter;
 @property(copy, nonatomic) NSPredicate *predicate;
 - (id)init;
-- (void)_fireErrorHandlerWithError:(id)arg1;
 - (id)_initWithContext:(struct LSContext *)arg1;
 
 @end

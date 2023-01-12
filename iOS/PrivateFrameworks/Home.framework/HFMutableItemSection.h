@@ -16,10 +16,14 @@
 
 // Remaining properties
 @property(copy, nonatomic) NSAttributedString *attributedFooterTitle; // @dynamic attributedFooterTitle;
+@property(copy, nonatomic) NSAttributedString *attributedHeaderTitle; // @dynamic attributedHeaderTitle;
 @property(copy, nonatomic) NSString *footerTitle; // @dynamic footerTitle;
 @property(nonatomic) __weak id <HFItemSectionAccessoryButtonHeaderDelegate> headerAccessoryButtonDelegate; // @dynamic headerAccessoryButtonDelegate;
 @property(copy, nonatomic) NSString *headerAccessoryButtonTitle; // @dynamic headerAccessoryButtonTitle;
+@property(copy, nonatomic) NSString *headerSecondaryText; // @dynamic headerSecondaryText;
 @property(copy, nonatomic) NSString *headerTitle; // @dynamic headerTitle;
+@property(nonatomic) _Bool hideAccessoryButton; // @dynamic hideAccessoryButton;
+@property(nonatomic) _Bool hideHeaderText; // @dynamic hideHeaderText;
 @property(copy, nonatomic) NSArray *items; // @dynamic items;
 @property(copy, nonatomic) NSDictionary *userInfo; // @dynamic userInfo;
 

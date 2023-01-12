@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 @property(readonly, nonatomic) NSString *localizedIndex; // @synthesize localizedIndex=_localizedIndex;
 @property(readonly, nonatomic) double fraction; // @synthesize fraction=_fraction;
+- (void)logSpectrum;
 
 @end
 

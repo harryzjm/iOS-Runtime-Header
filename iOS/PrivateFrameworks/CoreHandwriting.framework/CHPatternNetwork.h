@@ -10,7 +10,7 @@
 
 @interface CHPatternNetwork : NSObject
 {
-    struct Network *_network;
+    void *_network;
     NSDictionary *_symbols;
     NSDictionary *_startNodes;
     NSDictionary *_startCursorForContentTypes;

@@ -31,6 +31,7 @@
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
     int _altitude;
+    int _courseType;
     int _formOfWay;
     int _levelOrdinal;
     int _matchQuality;
@@ -52,6 +53,7 @@
         unsigned int has_transitID:1;
         unsigned int has_verticalAccuracy:1;
         unsigned int has_altitude:1;
+        unsigned int has_courseType:1;
         unsigned int has_formOfWay:1;
         unsigned int has_levelOrdinal:1;
         unsigned int has_matchQuality:1;
@@ -103,8 +105,6 @@
 @property(nonatomic) _Bool isMatchedLocation;
 @property(nonatomic) _Bool hasSpeedAccuracy;
 @property(nonatomic) double speedAccuracy;
-@property(nonatomic) _Bool hasCourseAccuracy;
-@property(nonatomic) double courseAccuracy;
 - (void)clearUnknownFields:(_Bool)arg1;
 @property(readonly, nonatomic) PBUnknownFields *unknownFields;
 - (void)mergeFrom:(id)arg1;
@@ -112,7 +112,8 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
-- (void)clearSensitiveFields;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
+- (void)clearSensitiveFields:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -121,10 +122,16 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsCourseType:(id)arg1;
+- (id)courseTypeAsString:(int)arg1;
+@property(nonatomic) _Bool hasCourseType;
+@property(nonatomic) int courseType;
 @property(retain, nonatomic) GEOCoarseLocationMetadata *coarseMetadata;
 @property(readonly, nonatomic) _Bool hasCoarseMetadata;
 @property(nonatomic) _Bool hasLevelOrdinal;
 @property(nonatomic) int levelOrdinal;
+@property(nonatomic) _Bool hasCourseAccuracy;
+@property(nonatomic) double courseAccuracy;
 @property(nonatomic) _Bool hasCourse;
 @property(nonatomic) double course;
 @property(nonatomic) _Bool hasHeading;

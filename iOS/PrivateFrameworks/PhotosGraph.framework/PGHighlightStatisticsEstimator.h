@@ -6,28 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString, PGManager;
+@class NSDictionary, NSString, PGManagerWorkingContext;
 
 @interface PGHighlightStatisticsEstimator : NSObject
 {
-    PGManager *_manager;
+    PGManagerWorkingContext *_workingContext;
     NSDictionary *_highlightEstimatesDictionary;
 }
 
 - (void).cxx_destruct;
-@property(retain) PGManager *manager; // @synthesize manager=_manager;
 - (id)_stringDescriptionForMomentsDetails:(id)arg1;
 - (id)_stringDescriptionForHomeWorkAggregations:(id)arg1;
 - (id)_stringDescriptionForTripWeekendDetails:(id)arg1;
 - (id)_highlightEstimatesDescriptionWithData:(id)arg1;
-- (id)_collectDetailsForAggregations:(id)arg1;
-- (id)_collectDetailsForTripsAndWeekends:(id)arg1;
+- (id)_collectDetailsForAggregations:(id)arg1 inGraph:(id)arg2;
+- (id)_collectDetailsForTripsAndWeekends:(id)arg1 inGraph:(id)arg2;
 - (unsigned long long)_numberOfUtilityAssetsForAssetCollection:(id)arg1;
 - (_Bool)_isUtilityAsset:(id)arg1;
 - (id)_createHighlightEstimatesDictionary;
 @property(readonly, nonatomic) NSString *highlightEstimatesDescription; // @dynamic highlightEstimatesDescription;
 @property(readonly, nonatomic) NSDictionary *highlightEstimatesDictionary; // @synthesize highlightEstimatesDictionary=_highlightEstimatesDictionary;
-- (id)initWithManager:(id)arg1;
+- (id)initWithWorkingContext:(id)arg1;
 
 @end
 

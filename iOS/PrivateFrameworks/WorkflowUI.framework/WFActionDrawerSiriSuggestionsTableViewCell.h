@@ -8,13 +8,12 @@
 
 #import <WorkflowUI/WFActionDrawerSiriSuggestionsCollectionViewManagerDelegate-Protocol.h>
 
-@class INIntent, NSLayoutConstraint, UIButton, UICollectionView, UIImage, UIViewController, WFActionDrawerCoordinator, WFActionDrawerSection, WFActionDrawerSiriSuggestionsCollectionViewManager, WFModuleTitleView;
+@class INIntent, NSLayoutConstraint, UIButton, UICollectionView, UIImage, UIViewController, WFActionDrawerSection, WFActionDrawerSiriSuggestionsCollectionViewManager, WFModuleTitleView;
 @protocol WFActionDrawerSiriSuggestionsTableViewCellDailyRoutineDelegate;
 
 @interface WFActionDrawerSiriSuggestionsTableViewCell : UITableViewCell <WFActionDrawerSiriSuggestionsCollectionViewManagerDelegate>
 {
     WFActionDrawerSection *_section;
-    WFActionDrawerCoordinator *_coordinator;
     UIViewController *_viewController;
     id <WFActionDrawerSiriSuggestionsTableViewCellDailyRoutineDelegate> _dailyRoutineDelegate;
     WFModuleTitleView *_titleView;
@@ -26,6 +25,7 @@
     NSLayoutConstraint *_collectionViewHeightConstraint;
 }
 
++ (long long)cellTypeForIntent:(id)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSLayoutConstraint *collectionViewHeightConstraint; // @synthesize collectionViewHeightConstraint=_collectionViewHeightConstraint;
 @property(retain, nonatomic) WFActionDrawerSiriSuggestionsCollectionViewManager *donationsCollectionViewManager; // @synthesize donationsCollectionViewManager=_donationsCollectionViewManager;
@@ -36,7 +36,6 @@
 @property(nonatomic) __weak WFModuleTitleView *titleView; // @synthesize titleView=_titleView;
 @property(nonatomic) __weak id <WFActionDrawerSiriSuggestionsTableViewCellDailyRoutineDelegate> dailyRoutineDelegate; // @synthesize dailyRoutineDelegate=_dailyRoutineDelegate;
 @property(nonatomic) __weak UIViewController *viewController; // @synthesize viewController=_viewController;
-@property(nonatomic) __weak WFActionDrawerCoordinator *coordinator; // @synthesize coordinator=_coordinator;
 @property(readonly, nonatomic) WFActionDrawerSection *section; // @synthesize section=_section;
 - (void)infoButtonPressed;
 - (void)siriSuggestionsCollectionViewManager:(id)arg1 showViewController:(id)arg2;
@@ -45,7 +44,6 @@
 - (void)configureWithActionDrawerSection:(id)arg1;
 - (void)configureLoading;
 - (void)configureWithActionDrawerSection:(id)arg1 dailyRoutineDelegate:(id)arg2 viewController:(id)arg3;
-- (void)configureWithActionDrawerSection:(id)arg1 coordinator:(id)arg2 viewController:(id)arg3;
 - (void)configureForDailyRoutines:(_Bool)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 

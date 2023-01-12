@@ -5,12 +5,13 @@
 //
 
 #import <NewsCore/FCArticleAccessCheckable-Protocol.h>
+#import <NewsCore/FCContentArchivable-Protocol.h>
 #import <NewsCore/FCHeadlineStocksFields-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, FCArticleAudioTrack, FCCoverArt, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCInterestToken, FCIssue, FCTopStoriesStyleConfiguration, NSArray, NSDate, NSString, NSURL, NTPBArticleRecord;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLLIVERPOOLTagMetadata, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, FCArticleAudioTrack, FCColor, FCContentArchive, FCCoverArt, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCInterestToken, FCIssue, FCTopStoriesStyleConfiguration, NSArray, NSDate, NSString, NSURL, NTPBArticleRecord;
 @protocol FCChannelProviding;
 
-@interface FCArticleHeadline <FCHeadlineStocksFields, FCArticleAccessCheckable>
+@interface FCArticleHeadline <FCHeadlineStocksFields, FCArticleAccessCheckable, FCContentArchivable>
 {
     _Bool _hasThumbnail;
     _Bool _sponsored;
@@ -31,6 +32,7 @@
     _Bool _canBePurchased;
     _Bool _showBundleSoftPaywall;
     _Bool _useTransparentNavigationBar;
+    _Bool _disableBookmarking;
     NSString *_versionIdentifier;
     NSString *_identifier;
     NSString *_articleID;
@@ -65,6 +67,7 @@
     COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *_publisherCohorts;
     COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *_globalConversionStats;
     COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *_publisherConversionStats;
+    COMAPPLEFELDSPARPROTOCOLLIVERPOOLTagMetadata *_publisherTagMetadata;
     NSURL *_videoURL;
     double _videoDuration;
     NSArray *_iAdCategories;
@@ -92,20 +95,35 @@
     NSString *_narrativeTrackTextRanges;
     COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *_personalizationVector;
     COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *_personalizationVectorAlt;
+    NSString *_layeredThumbnailJSON;
+    double _layeredThumbnailAspectRatio;
+    FCColor *_thumbnailImagePrimaryColor;
+    FCColor *_thumbnailImageBackgroundColor;
+    FCColor *_thumbnailImageTextColor;
+    FCColor *_thumbnailImageAccentColor;
+    NSArray *_authors;
+    NSArray *_narrators;
+    NSString *_excerpt;
     NTPBArticleRecord *_articleRecord;
     FCInterestToken *_articleInterestToken;
     long long _behaviorFlags;
     struct CGRect _thumbnailFocalFrame;
 }
 
-+ (id)_tempOverrideMIMETypeForURL:(id)arg1;
-+ (_Bool)_fakeArticlesTimestamp;
-+ (_Bool)_simulateTopStoriesBadges;
-+ (_Bool)_forceArticlesToBeShownAsSponsored;
 - (void).cxx_destruct;
 @property(nonatomic) long long behaviorFlags; // @synthesize behaviorFlags=_behaviorFlags;
 @property(retain, nonatomic) FCInterestToken *articleInterestToken; // @synthesize articleInterestToken=_articleInterestToken;
 @property(retain, nonatomic) NTPBArticleRecord *articleRecord; // @synthesize articleRecord=_articleRecord;
+- (void)setExcerpt:(id)arg1;
+- (id)excerpt;
+- (id)narrators;
+- (id)authors;
+- (id)thumbnailImageAccentColor;
+- (id)thumbnailImageTextColor;
+- (id)thumbnailImageBackgroundColor;
+- (id)thumbnailImagePrimaryColor;
+- (double)layeredThumbnailAspectRatio;
+- (id)layeredThumbnailJSON;
 - (id)personalizationVectorAlt;
 - (id)personalizationVector;
 - (id)narrativeTrackTextRanges;
@@ -116,6 +134,7 @@
 - (id)linkedArticleIDs;
 - (void)setHalfLife:(unsigned long long)arg1;
 - (unsigned long long)halfLife;
+- (_Bool)disableBookmarking;
 - (_Bool)useTransparentNavigationBar;
 - (_Bool)showBundleSoftPaywall;
 - (void)setRole:(unsigned long long)arg1;
@@ -135,6 +154,7 @@
 - (_Bool)isHiddenFromFeeds;
 - (_Bool)isBoundToContext;
 - (_Bool)showMinimalChrome;
+- (void)setNeedsRapidUpdates:(_Bool)arg1;
 - (_Bool)needsRapidUpdates;
 - (void)setStoryStyle:(id)arg1;
 - (id)storyStyle;
@@ -157,6 +177,7 @@
 - (_Bool)isSponsored;
 - (double)videoDuration;
 - (id)videoURL;
+- (id)publisherTagMetadata;
 - (id)publisherConversionStats;
 - (id)globalConversionStats;
 - (id)publisherCohorts;
@@ -209,17 +230,17 @@
 - (id)articleID;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)versionIdentifier;
-- (void)_adoptNarrativeTrackFromArticleRecord:(id)arg1 assetManager:(id)arg2;
 - (_Bool)hasAudioTrack;
 - (id)publisherID;
 @property(readonly, copy, nonatomic) NSString *stocksScoresJSON;
 @property(readonly, copy, nonatomic) NSString *stocksMetadataJSON;
 @property(readonly, copy, nonatomic) NSString *stocksClusterID;
 - (id)stocksFields;
+@property(readonly, nonatomic) FCContentArchive *contentArchive;
 - (id)publisherSpecifiedArticleIDs;
 - (id)articleRecirculationConfigJSON;
 - (id)backingArticleRecordData;
-- (id)contentManifestWithContext:(id)arg1;
+- (id)contentWithContext:(id)arg1;
 - (id)initWithArticleRecordData:(id)arg1 sourceChannel:(id)arg2 masterIssue:(id)arg3 assetManager:(id)arg4;
 - (id)initWithArticleRecord:(id)arg1 articleInterestToken:(id)arg2 sourceChannel:(id)arg3 masterIssue:(id)arg4 storyStyleConfigs:(id)arg5 storyTypeTimeout:(long long)arg6 rapidUpdatesTimeout:(long long)arg7 assetManager:(id)arg8 experimentalTitleProvider:(id)arg9;
 - (id)init;

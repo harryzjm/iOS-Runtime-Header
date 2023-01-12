@@ -21,6 +21,7 @@
 @property(readonly, nonatomic) NSString *remoteHostname;
 @property(readonly, copy, nonatomic) NSString *service;
 @property(readonly, copy, nonatomic) NSArray *serverCertificates;
+@property(nonatomic) _Bool isNonAppInitiated;
 @property(copy, nonatomic) NSString *connectionServiceType;
 @property(copy, nonatomic) NSString *networkAccountIdentifier;
 @property(copy, nonatomic) NSString *accountIdentifier;

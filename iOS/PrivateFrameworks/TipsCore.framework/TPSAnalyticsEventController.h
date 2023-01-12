@@ -18,7 +18,6 @@
     _TPSXPCConnection *_xpcConnection;
 }
 
-+ (_Bool)callerIsTipsd;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 @property(retain, nonatomic) _TPSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
